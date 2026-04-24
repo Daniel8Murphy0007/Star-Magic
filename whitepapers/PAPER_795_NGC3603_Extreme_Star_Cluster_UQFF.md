@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_795
 title: "NGC 3603 — Extreme Star Cluster with UQFF Stellar Wind Pressure Reduction"
 session: 189
@@ -121,7 +121,7 @@ $$
 $$
 
 This term is physically motivated by the ionization timescale of the surrounding molecular cloud. As
-stellar winds excavate the surrounding clump, effective mass available for DPM-emergent gravity
+stellar winds excavate the surrounding clump, effective mass available for DPM-seeded gravity
 decreases. UQFF predicts this feedback does NOT suppress the Aether EM term, which depends only on v
 and B — both maintained by the stellar cluster internal dispersion velocity.
 

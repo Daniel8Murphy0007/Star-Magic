@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_272
 title: "Gravitational Vacuum Drag — k_vac = G, Velocity-Dependent Gravitational Force, and UQFF
 Vacuum-Gravitational Duality"
@@ -29,7 +29,7 @@ The UQFF Source10 Catalogue introduces a vacuum repulsion force `F_vac_rep = k_v
 with coupling constant `k_vac = 6.674×10-11 m3/kg·s2`. The discovery reported here is that **k_vac =
 G** (Newton's gravitational constant) exactly. This identification, verified by dimensional
 analysis, elevates F_vac_rep from a phenomenological fitting force to a first-principles
-gravitational effect: a velocity-dependent gravitational force not present in standard DPM-emergent
+gravitational effect: a velocity-dependent gravitational force not present in standard DPM-seeded
 gravity or general relativity. We demonstrate that F_vac_rep = G × Δρ_vac × M × v establishes a
 **Vacuum-Gravitational Duality** under Newton's G: the same constant G governs both the static
 gravitational attraction between masses and the dynamic momentum drag of a mass moving through a
@@ -47,7 +47,7 @@ present in Standard Model treatments.
 
 ## 1. Introduction
 
-Standard DPM-emergent gravity gives:
+Standard DPM-seeded gravity gives:
 $$F_\text{grav} = G \frac{M M'}{r^2}$$
 
 General relativity extends this to curved spacetime but retains G as the fundamental coupling. In
@@ -110,9 +110,9 @@ depending on the interpretation of Δρ_vac.
 
 ## 3. The Velocity-Dependent Gravitational Force
 
-### 3.1 Rewriting in DPM-emergent Form
+### 3.1 Rewriting in DPM-seeded Form
 
-DPM-emergent gravity per unit mass is `g = G M / r2`. The vacuum drag acceleration is:
+DPM-seeded gravity per unit mass is `g = G M / r2`. The vacuum drag acceleration is:
 $$a_\text{vac} = \frac{F_\text{vac\_rep}}{M} = G \times \Delta\rho_\text{vac} \times v$$
 
 This is not conservative (it depends on v) and not central (it has no 1/r2 dependence). It is:
@@ -237,7 +237,7 @@ This is significantly below the Pioneer anomaly (~8.74×10-10 m/s2) and current 
 (Newton's gravitational constant).
 
 2. This identification establishes `F_vac_rep = G × Δρ_vac × M × v` as a **velocity-dependent
-gravitational force** — the first such force in the UQFF framework, absent from standard DPM-emergent
+gravitational force** — the first such force in the UQFF framework, absent from standard DPM-seeded
 gravity and GR.
 
 3. Dimensional analysis confirms the formula produces force [N] when Δρ_vac carries appropriate

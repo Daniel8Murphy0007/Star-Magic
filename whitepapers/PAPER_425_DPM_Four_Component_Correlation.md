@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_425
 title: "DPM Four-Component Correlation Within the F_U_Bi_i Master Integral"
 session: 114
@@ -54,7 +54,7 @@ the DPM dipole.
 $$\text{DPM}_{\text{mom}} = \frac{m_e c^2 \costheta}{r^2}$$
 
 ### 3.2 DPM_gravity  
-**Physical role:** DPM-emergent gravitational coupling of the DPM mass within the buoyancy field.
+**Physical role:** DPM-seeded gravitational coupling of the DPM mass within the buoyancy field.
 
 $$\text{DPM}_{\text{grav}} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}$$
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_267
 title: "SFR Normalization as Dimensionless Coupling Constant — Starburst-Buoyancy Coherence in NGC
 1792"
@@ -112,12 +112,12 @@ buoyancy enhancement** due to starburst activity is:
 $$\Delta g_\text{buoy} = \text{buoy\_tiers}(t) - \text{buoy\_tiers}(t \to \infty)$$
 
 For Tier 1:
-$$\Deltatext{term\_Ubi} = 0.5 \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot e^{-t/\tau_text{SF}}$$
+$$\Delta\text{term\_Ubi} = 0.5 \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot e^{-t/\tau_text{SF}}$$
 
 For Tiers 2 and 3 (at t=0):
-$$\Deltatext{term\_F_UBii}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_0}{r} \cdot [UA]$$
+$$\Delta\text{term\_F_UBii}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_0}{r} \cdot [UA]$$
 
-$$\Deltatext{term\_Ub_i}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA]$$
+$$\Delta\text{term\_Ub_i}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA]$$
 
 The total coherent buoyancy boost is:
 
@@ -129,7 +129,7 @@ where the superscript ∞ denotes the static (non-sSFR) component amplitudes.
 
 **Starburst-buoyancy coherence:** The peak buoyancy enhancement Δg_buoy_total(t=0) occurs
 simultaneously with peak sSFR. Both decay with the **same timescale τ_SF = 100 Myr** = 3.15576×1015
-s. This is a unique prediction: in standard DPM-emergent gravity, buoyancy has no dependence on star
+s. This is a unique prediction: in standard DPM-seeded gravity, buoyancy has no dependence on star
 formation rate.
 
 ### 3.3 Numerical Values for NGC 1792

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_237
 title: "UQFFSource10 Catalogue — Master Buoyancy Integral F_U_Bi_i and 26-Layer Triadic g_UQFF"
 session: 59
@@ -85,7 +85,7 @@ Each layer $i$ contributes four Triadic Ug terms:
 
 | Term | Formula | Physics |
 |------|---------|---------|
-| $U_{g1,i}$ | $G\,M_i / r^2$ | DPM-emergent gravity per layer |
+| $U_{g1,i}$ | $G\,M_i / r^2$ | DPM-seeded gravity per layer |
 | $U_{g2,i}$ | $Q^2 / (4\pivarepsilon_0 M_i r^2)$ | Charge-gravity coupling |
 | $U_{g3,i}$ | $\omega_i^2\,r$ | String rotation acceleration |
 | $U_{g4,i}$ | $f_{\rm vac}\,c^2$ | Vacuum concentration |

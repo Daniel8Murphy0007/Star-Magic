@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 production_scaling_v27.py — Production Scaling to 1.1M calc/s
 
@@ -87,7 +87,7 @@ _LAYER_COEFFS = [
 ]
 
 
-# ── §2  DPM-emergent gravity helpers ───────────────────────────────────────
+# ── §2  DPM-FOUNDATION GRAVITY helpers ───────────────────────────────────────
 
 def _dpm_ug1(r: float, mu: float = 1e15, R_body: float = 1e7) -> float:
     if r <= 0:

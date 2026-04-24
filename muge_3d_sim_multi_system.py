@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 muge_3d_sim_multi_system.py — Unified 3D MUGE Simulation for 8 Astrophysical Systems
 
@@ -12,7 +12,7 @@ Systems: Sgr A*, M87, CenA, El Gordo, SPT-CL J2215, Stephan's Quintet,
 
 Gap closed:
   - Unified 3D gravity field g(r,θ,φ) for all 8 systems
-  - DPM-emergent MUGE: a_DPM = F_DPM·f_DPM·E_vac/(c·V_sys)
+  - DPM-seeded MUGE: a_DPM = F_DPM·f_DPM·E_vac/(c·V_sys)
   - 5-frequency resonance decomposition per system
   - Volume rendering of gravity field magnitude
 
@@ -71,7 +71,7 @@ _LAYER_COEFFS = [
 ]
 
 
-# ── §1  DPM-EMERGENT GRAVITY COMPONENTS ───────────────────────────────────
+# ── §1  DPM-FOUNDATION GRAVITY COMPONENTS ───────────────────────────────────
 
 def ug1_magnetic_dipole(r: float, mu: float, R_body: float) -> float:
     """Ug1 = μ/(4π·r³) · S₂₆⁽³⁾ — DPM magnetic dipole gravity."""
@@ -103,7 +103,7 @@ def ug4_vacuum_concentration(r: float, rho_vac: float = 1e-10) -> float:
 
 def dpm_gravity(r: float, F_DPM: float, f_DPM: float,
                 E_vac_neb: float, V_sys: float) -> float:
-    """DPM-emergent acceleration: a_DPM = F_DPM·f_DPM·E_vac/(c·V_sys)."""
+    """DPM-seeded acceleration: a_DPM = F_DPM·f_DPM·E_vac/(c·V_sys)."""
     if V_sys <= 0:
         return 0.0
     return F_DPM * f_DPM * E_vac_neb / (C * V_sys)

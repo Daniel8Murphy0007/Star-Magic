@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_148
 title: "UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq
 Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics"
@@ -133,7 +133,7 @@ $$
 
 The MUGE g = 1.773e-9 m/s^2 is NOT the surface gravity (which is G*M/R^2 ~ 1.4e13 m/s^2). Instead,
 it characterizes the gravitational acceleration at the magnetospheric scale — the scale at which
-trapped charged particles and X-ray burst ejecta experience the MUGE correction to DPM-emergent
+trapped charged particles and X-ray burst ejecta experience the MUGE correction to DPM-seeded
 dynamics.
 
 At the light cylinder radius (where the co-rotation velocity = c):
@@ -146,13 +146,13 @@ $$
 \end{aligned}
 $$
 
-At this scale, the DPM-emergent gravity is:
+At this scale, the DPM-seeded gravity is:
 
 $$
 g_Newt(r_lc) = G*M/r_lc^2 ~ 6.67e-11 * 2.8e30 / (1.8e8)^2 ~ 5.8e4 m/s^2
 $$
 
-The MUGE correction (1.773e-9 vs 5.8e4 DPM-emergent) shows the fluid resonance term is ~15 orders of
+The MUGE correction (1.773e-9 vs 5.8e4 DPM-seeded) shows the fluid resonance term is ~15 orders of
 magnitude weaker than bulk gravity at this scale — but still physically significant for
 ultra-sensitive measurements of pulse arrival times and X-ray spectral signatures.
 

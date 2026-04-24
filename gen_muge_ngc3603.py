@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_ngc3603.py — Generator for NGC3603.h
 Module 11: NGC 3603 extreme star cluster.
 Unique physics: cavity pressure P(t)=P0*exp(-t/tau_exp)/rho_fluid,
@@ -157,7 +157,7 @@ public:
     double P_t(double t) const { return P0 * std::exp(-t / tau_exp); }
 
     double compute_Ug(double Mt) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_681
 title: "Gross-Pitaevskii Vortex Simulation of the UQFF Aether Around Black Holes"
 session: 173
@@ -31,7 +31,7 @@ We numerically solve the radial Gross-Pitaevskii equation for the [UA] Aether wa
 ## Primary UQFF Equation
 
 $$
-i\hbar \frac{\partialpsi}{\partial t} = \left[-\frac{\hbar^2}{2m_{\text{UA}}} \nabla^2 +
+i\hbar \frac{\partial\psi}{\partial t} = \left[-\frac{\hbar^2}{2m_{\text{UA}}} \nabla^2 +
 V_{\text{grav}}(r) + g_{\text{UA}}|\psi|^2 + U_m(r,t)\right]\psi
 $$
 

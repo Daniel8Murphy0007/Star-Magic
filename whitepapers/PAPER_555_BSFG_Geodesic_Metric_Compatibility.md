@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_555
 title: "BSFG Metric Compatibility and Geodesic Equation — Torsion-Free Connection and Aether Fifth
 Force"
@@ -91,7 +91,7 @@ At leading order ($\varepsilon \ll 1$, slow orbit $|dr/d\lambda| \ll |dt/d\lambd
 
 $$\boxed{\frac{d^2 r}{d\lambda^2} \approx -\frac{GM_\odot}{r^2} + \frac{\varepsilon'}{2}}$$
 
-where the first term is the DPM-emergent limit recovered from the Minkowski background, and the second
+where the first term is the DPM-seeded limit recovered from the Minkowski background, and the second
 is the **Aether fifth force**:
 
 $$\Delta g_r^{(\rm Aether)} = \frac{\varepsilon'(r)}{2} = -\frac{3\etacos(\pi t_n)\,C_{\rm num}}{2r^4}$$
@@ -106,7 +106,7 @@ $$\frac{v^2_{\rm orbit}}{r} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} -
 
 $$v^2_{\rm orbit} = \underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}} + \frac{r\,c^2\,|\varepsilon'(r)|}{2}$$
 
-(Note: $\varepsilon' < 0$ so $-\varepsilon'/2 > 0$, meaning the Aether field slightly *increases* the required orbital velocity compared to pure DPM-emergent.)
+(Note: $\varepsilon' < 0$ so $-\varepsilon'/2 > 0$, meaning the Aether field slightly *increases* the required orbital velocity compared to pure DPM-seeded.)
 
 **Numerical values at $r = R_\odot$, $t_n = 0$:**
 
@@ -287,7 +287,7 @@ LISA or BepiColombo precision gravitational measurements.
 
 ## §6 Physical Interpretation: The Aether Fifth Force
 
-The geodesic correction $\Delta g_r^{(\rm Aether)} \propto r^{-4}$ falls off faster than the $r^{-2}$ DPM-emergent force, ensuring it is negligible at astronomical distances. However, it becomes meaningful in the near-stellar regime, providing:
+The geodesic correction $\Delta g_r^{(\rm Aether)} \propto r^{-4}$ falls off faster than the $r^{-2}$ DPM-seeded force, ensuring it is negligible at astronomical distances. However, it becomes meaningful in the near-stellar regime, providing:
 
 1. **A UQFF orbital precession correction** — the $r^{-4}$ force produces a perihelion advance with a distinct signature from GR's $r^{-5}$ correction (from the Schwarzschild metric).
 2. **A temporal modulation** via $\cos(\pi t_n)$ — the fifth force reverses sign at each half-cycle of $t_n$, consistent with PAPER_417's pi-cycle temporal reversal.

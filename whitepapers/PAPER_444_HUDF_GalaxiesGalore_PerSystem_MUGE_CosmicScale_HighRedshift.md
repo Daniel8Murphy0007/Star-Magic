@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_444
 title: "Hubble Ultra Deep Field \"Galaxies Galore\": Per-System MUGE at Cosmic Scale z=3.5"
 session: 119
@@ -90,7 +90,7 @@ At $t = 3$ Gyr: $I \approx 0.0025$ — essentially gone by cosmic noon ($z \sim 
 
 $$\boxed{g_\text{HUDF}(r,t) = T_1(1+I) + T_2(1+I) + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-emergent + H(z)t + B + interaction:**
+**T1 — DPM-seeded + H(z)t + B + interaction:**
 $$T_1 = \frac{GM(t)}{r^2}(1+H(z)t)(1-B/B_\text{crit})(1+I(t))$$
 $$\frac{GM_0}{r^2} = \frac{6.674\times10^{-11}\times1.989\times10^{42}}{(1.230\times10^{27})^2} = \frac{1.327\times10^{32}}{1.513\times10^{54}} \approx 8.77\times10^{-23} \, \text{m/s}^2$$
 $$T_1(t=0) = \frac{GM(0)}{r^2}(1+I_0) = \frac{6.674\times10^{-11}\times3.978\times10^{42}}{1.513\times10^{54}}\times1.05 \approx 1.84\times10^{-22} \times 1.05 \approx 1.93\times10^{-22} \, \text{m/s}^2$$
@@ -115,7 +115,7 @@ At $t = 0$ (redshift $z = 3.5$, early universe):
 | Term | Value (m/s2) | Fraction |
 |------|-------------|---------|
 | $T_3$ Λ (cosmological) | $4.11 \times 10^{-9}$ | **$\gg$ all other terms** |
-| $T_1$ DPM-emergent×(1+I) | $1.93 \times 10^{-22}$ | negligible |
+| $T_1$ DPM-seeded×(1+I) | $1.93 \times 10^{-22}$ | negligible |
 | $T_2$ UQFF×(1+I) | $4.24 \times 10^{-22}$ | negligible |
 | $T_9$ Wind | $8.13 \times 10^{-16}$ | trace |
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_037
 title: "UQFF Buoyancy Proof Variants 26: Terminal Velocity, Ionization, Energy Coupling, Orbital
 Decay, and Kilonova Buoyancy"
@@ -275,8 +275,8 @@ normalization and E_LEP = 1.22×10?? J quantum granularity (Paper #36).
 *Validator: `BuoyancyProofVariants.py` ? All 17 F_UBii variants operational ? | κ = 0.0005/day |
 [SSq] = 0.57*
 
----
-*See also: PAPER_036 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_036 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -424,7 +424,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

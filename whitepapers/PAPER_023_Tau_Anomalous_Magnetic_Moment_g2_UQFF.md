@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_023
 title: "UQFF Analysis"
 session: 0
@@ -267,8 +267,8 @@ UQFF predicts:
 6. UQFF Calibration: kappa = 0.0005/day, [SSq] = 0.57
 7. arXiv:2506.14881
 
----
-*See also: PAPER_022 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_022 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -387,7 +387,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_336
 title: "g_Compressed Complete All-Forces Equation and R(t) 26-Component 4-Subterm Resonant
 Decomposition"
@@ -67,7 +67,7 @@ $$
 $$
 (G M(t) / r2) · (1 + H(t,z)) · (1 - B(t)/B_crit) · (1 + F_env(t))
 $$
-- G M(t)/r2: time-evolving DPM-emergent gravity (M(t) for accreting/star-forming systems)
+- G M(t)/r2: time-evolving DPM-seeded gravity (M(t) for accreting/star-forming systems)
 - (1+H(t,z)): Hubble expansion correction at redshift z
 - (1-B/B_crit): Meissner-type magnetic suppression [from B=0: full gravity; B=B_crit: zero gravity]
 - (1+F_env(t)): envelope feedback correction

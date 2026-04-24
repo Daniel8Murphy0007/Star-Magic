@@ -27,7 +27,7 @@ calibrated defaults, and interrelationships.
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM_s}{r^2}, \quad \text{with}\; \kappa =
+U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM_s}{r^2}, \quad \text{with}\; \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57
 $$
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_076
 title: "Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions"
 session: 0
@@ -83,7 +83,7 @@ For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
 - ?_Crab = 2p  29.65 = 186.3 rad/s
 - UQFF Resonant: g_R = cos(186.3t)  10-5
 - At emission pulse (t = 0): g_R = 10-5 m/s maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10-8 relative to DPM-emergent g
+- This corresponds to a phase-dependent gravity variation of 3.6×10-8 relative to DPM-seeded g
 
 The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV100 GeV) =
 5.65×10-7 ph/cm/s. UQFF does not modify the average flux but predicts a 10-5 amplitude modulation
@@ -232,7 +232,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

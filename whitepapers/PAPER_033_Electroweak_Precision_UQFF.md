@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_033
 title: "Electroweak Precision Observables: UQFF Corrections"
 session: 0
@@ -117,7 +117,7 @@ $$U_{g2} \propto k_2 \cdot \frac{\rho_{\rm react}(r)}{r^2} \cdot E_{\rm react} \
 
 The factor E_react = 2.846×10-3 is numerically close to the isospin-breaking correction to the
 electroweak ρ-parameter from up-down quark mass splitting:
-$$\deltarho_{\rm isospin} = \frac{3G_F m_t^2}{8\pi^2\sqrt{2}} \times \left(\frac{m_d - m_u}{m_d + m_u}\right)^2 \approx 2 \times 10^{-3}$$
+$$\delta\rho_{\rm isospin} = \frac{3G_F m_t^2}{8\pi^2\sqrt{2}} \times \left(\frac{m_d - m_u}{m_d + m_u}\right)^2 \approx 2 \times 10^{-3}$$
 
 The agreement at the factor-of-2 level is not coincidental in the UQFF framework: both E_react and
 δρ_isospin track the same vacuum flavor-mixing strength.
@@ -135,10 +135,10 @@ value is T_SM = 0.06 ± 0.10 (from Higgs and top loop corrections). The UQFF vac
 **comparable to the ~1σ experimental uncertainty on T** at current precision.
 
 More conservatively, the UQFF fractional correction to the ρ-parameter:
-$$\deltarho_{\rm UQFF} = \alpha_{\rm EM} \cdot \delta T_{\rm UQFF} = 7.30 \times 10^{-3} \times 0.222 = 1.62 \times 10^{-3}$$
+$$\delta\rho_{\rm UQFF} = \alpha_{\rm EM} \cdot \delta T_{\rm UQFF} = 7.30 \times 10^{-3} \times 0.222 = 1.62 \times 10^{-3}$$
 
 And the E_react direct contribution:
-$$\deltarho_{\rm E\_react} = E_{\rm react} = 2.846 \times 10^{-3}$$
+$$\delta\rho_{\rm E\_react} = E_{\rm react} = 2.846 \times 10^{-3}$$
 
 This shifts the SM ρ = 1.00037 to:
 $$\rho_{\rm UQFF} = 1.00037 + 2.846 \times 10^{-3} = 1.003217$$
@@ -236,7 +236,7 @@ The UQFF ratio prediction of 1.56 vs measured 1.24 — a ~20% discrepancy attrib
 
 The measured BR(K⁺η') = 1.88×10-4 > BR(K⁺π0, η) is a known puzzle: naive SU(3) predicts η' should be
 suppressed relative to η. The UQFF explanation involves [SCm]_flavor mixing between η and η' states:
-$$\Deltatext{BR}(K^+\eta') = [SCm]_{\rm flavor} \times \sin^2\phi_{\etaeta'} \times \text{BR}(K^+\pi^0) = 1.536 \times 10^{-3} \times 0.038 \times 1.45 \times 10^{-4} \approx 8.5 \times 10^{-9}$$
+$$\Delta\text{BR}(K^+\eta') = [SCm]_{\rm flavor} \times \sin^2\phi_{\etaeta'} \times \text{BR}(K^+\pi^0) = 1.536 \times 10^{-3} \times 0.038 \times 1.45 \times 10^{-4} \approx 8.5 \times 10^{-9}$$
 
 This UQFF correction is far too small to explain the η' enhancement; the enhancement is hadronic.
 
@@ -368,7 +368,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

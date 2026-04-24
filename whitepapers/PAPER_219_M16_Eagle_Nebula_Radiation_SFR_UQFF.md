@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_219
 title: "M16 Eagle Nebula UQFF — Star Formation Rate Enhancement and Radiation Subtraction"
 session: 0
@@ -53,7 +53,7 @@ $$
 \end{aligned}
 $$
 
-**Critical structure:** `(1+M_sf(t))` acts AS A MULTIPLIER on the DPM-emergent term, while `-E_rad` is
+**Critical structure:** `(1+M_sf(t))` acts AS A MULTIPLIER on the DPM-seeded term, while `-E_rad` is
 an ADDITIVE SUBTRACTION from the total sum.
 
 ---

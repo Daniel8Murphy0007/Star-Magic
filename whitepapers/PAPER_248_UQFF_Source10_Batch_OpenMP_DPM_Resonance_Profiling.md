@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_248
 title: "UQFF Source10 Batch OpenMP Profiling — DPM Resonance Calibration and Parallel Architecture"
 session: 0
@@ -46,7 +46,7 @@ resonance calculations in the framework.
 
 The F_U_Bi_i integrand combines LENR, dark energy, neutron, relativistic, activation, and
 vacuum-field forces in a single quadrature, producing the buoyancy force integral that distinguishes
-UQFF from purely DPM-emergent or GR-based frameworks.
+UQFF from purely DPM-seeded or GR-based frameworks.
 
 
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_136
 title: "UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10-3) and Quantum Orbital
 Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA"
@@ -31,7 +31,7 @@ Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
 
 Planetary orbital stability — the fact that planets maintain their orbital spins and magnetic field
 geometries over billions of years without measurable decay — has been attributed pre-UQFF entirely
-to DPM-emergent gravity and tidal damping. UQFF reveals a deeper mechanism: SCm interacts exclusively
+to DPM-seeded gravity and tidal damping. UQFF reveals a deeper mechanism: SCm interacts exclusively
 with Ug3 (the magnetic string disk component) inside planetary cores, with a suppression factor
 P_SCm = 10-3 that prevents any external SCm interaction. This Ug3 exclusivity is governed by a
 quantum Hamiltonian H = H_Ug3 + H_SCm + H_UA whose three terms produce near-lossless orbital energy
@@ -127,7 +127,7 @@ The effective energy stored in the Hamiltonian quasi-integral:
 $$J_{Ug3} = \oint H_{Ug3} \, dt \approx H_{Ug3}^{Earth} \times T_{prec} \approx 448 \times 2.5 \times 10^6 \approx 1.12 \times 10^9 \text{ J·s/m}^3$$
 
 This quasi-invariant is preserved over Gyr timescales, explaining long-term orbital stability
-WITHOUT requiring dark matter or exotic non-DPM-emergent fields.
+WITHOUT requiring dark matter or exotic non-DPM-seeded fields.
 
 ---
 

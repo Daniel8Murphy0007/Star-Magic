@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_985
 title: "Production Kernel kernel_fu_bi_i_complete — Full 6-Layer Callable"
 session: 217
@@ -82,7 +82,7 @@ Function `kernel_fu_bi_i_complete()` in `fubi_master_calculator.py`, §9 Product
 
 ## §A. Cosmogenesis-Linked Lagrangian
 
-The kernel is the numerical evaluation of $\delta S[\mathcal{L}_{\text{SCm}}] / \deltaphi = 0$, producing the force from the variational principle in a single call.
+The kernel is the numerical evaluation of $\delta S[\mathcal{L}_{\text{SCm}}] / \delta\phi = 0$, producing the force from the variational principle in a single call.
 
 ## §B. VDS/DVP/BSH Deep Synthesis
 

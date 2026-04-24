@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_731
 title: "NGC 1316 (Fornax A) Merger-Driven Elliptical Galaxy Evolution MUGE"
 session: 177
@@ -113,9 +113,9 @@ $$\boxed{g_{NGC1316}(r,t) = \frac{G\,M(t)}{r^2}\left(1 + H_z\right)\left(1-\frac
 
 $$+ (U_{g1}+U_{g2}+U_{g3}'+U_{g4}) + U_i + \frac{\Lambda c^2}{3}$$
 
-$$+ e^{-r^2/\sigma_{dust}^2}\,g_{local} + \frac{(M_{vis}+M_{DM})\,M_\odot,\deltarho/\rhocdot G}{r^2}$$
+$$+ e^{-r^2/\sigma_{dust}^2}\,g_{local} + \frac{(M_{vis}+M_{DM})\,M_\odot,\delta\rho/\rho\cdot G}{r^2}$$
 
-with $\deltarho/\rho = 10^{-5}$ dark matter density perturbation.
+with $\delta\rho/\rho = 10^{-5}$ dark matter density perturbation.
 
 ## 8. Solved Values (t = 0, r = 46 kpc)
 

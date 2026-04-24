@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_antennae.py — Generator for AntennaeGalaxies.h
 Module 13: Antennae Galaxies NGC 4038/4039.
 Unique physics: Merger interaction term I(t)=I_0*exp(-t/tau_merger)
@@ -147,7 +147,7 @@ public:
     }
 
     double compute_Ug(double Mt, double It) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B / B_crit;
         // (1+I) boosts Ug during merger
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ) * (1.0 + It);

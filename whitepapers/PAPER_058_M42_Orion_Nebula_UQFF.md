@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_058
 title: "M42 Great Orion Nebula: The Highest g_grav Object in the UQFF Cross-Validation Suite –
 Proximity-Driven Gravitational Dominance and the Trapezium OB Cluster"
@@ -228,8 +228,8 @@ Tarantula), all reproduced from ? and [SSq] alone
 
 *Validator: `v`alidate_all_models`.py` M42Model  4/4 PASS | κ = 0.0005/day | [SSq] = 0.57*
 
----
-*See also: PAPER_057 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_057 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -317,7 +317,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

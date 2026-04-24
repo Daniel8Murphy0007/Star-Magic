@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_517
 title: "Negative Time Dilation Proof: Spooky Distance & Dual Existence Mathematics"
 session: 140
@@ -64,7 +64,7 @@ $$t_{\text{adj}}^{\text{old}} = \frac{t_{\text{obs}}}{1 + \Delta_{\text{rel}}}$$
 $$\boxed{t_{\text{adj}} = \frac{t_{\text{obs}}}{1 + \Delta_{\text{dil}}} + t_{\text{neg}}}$$
 
 where $t_{\text{neg}} < 0$. Setting $\Delta_{\text{dil}} = 0$ and
-$t_{\text{neg}} = 0$ recovers DPM-emergent time (backward compatibility).
+$t_{\text{neg}} = 0$ recovers DPM-seeded time (backward compatibility).
 
 ---
 
@@ -273,7 +273,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*See also: PAPER_516 (DPM Shell Radiance), PAPER_518 (DPM Forces),
+> See also: PAPER_516 (DPM Shell Radiance), PAPER_518 (DPM Forces),
 PAPER_519 (Shell Radiance Prototype), PAPER_520 (Session 140 Hub).*
 
 

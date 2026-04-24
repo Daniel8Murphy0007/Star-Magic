@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_1091
 title: "Production Scaling v23 Benchmark: 900k Calculations per Second Target Validation"
 session: 225
@@ -39,7 +39,7 @@ canonical astrophysical systems through the full UQFF pipeline
 
 $$g_{\text{base}} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}$$
 
-Single-evaluation of DPM-emergent gravity. Minimum-cost baseline.
+Single-evaluation of DPM-seeded gravity. Minimum-cost baseline.
 
 ### §2.2 Phonon Kernel
 

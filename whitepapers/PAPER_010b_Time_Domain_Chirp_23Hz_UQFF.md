@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_010b
 title: "Time-Domain Chirp Analysis — 23 Hz Onset and UQFF Frequency Evolution"
 session: 0
@@ -397,7 +397,7 @@ bridge.*
 1. LIGO Scientific Collaboration, *Advanced LIGO*, Class. Quantum Grav. **32**, 074001 (2015)
 2. Punturo et al., *The Einstein Telescope: a third-generation gravitational wave observatory*,
 Class. Quantum Grav. **27**, 194002 (2010)
-3. Blanchet, L., *Gravitational Radiation from Post-DPM-emergent Sources*, Living Rev. Rel. **17**, 2
+3. Blanchet, L., *Gravitational Radiation from Post-DPM-seeded Sources*, Living Rev. Rel. **17**, 2
 (2014)
 4. Murphy, D., `validate_gw_inspiral.py` — UQFF chirp simulation (2026)
 
@@ -463,7 +463,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

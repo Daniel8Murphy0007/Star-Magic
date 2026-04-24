@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_066
 title: "Magnetar Systems in the UQFF: Field Predictions for SGR1745, Crab, Vela, and ASKAP
 J1832-0911"
@@ -34,7 +34,7 @@ T), classifying them as the most extreme electromagnetic environments in the obs
 The UQFF assigns each magnetar system all four operational modes (Compressed, Resonant, Buoyant,
 Superconductive) plus the Ug1 magnetic dipole enhancement. This paper presents UQFF predictions for
 SGR1745-2900 (canonical), the Crab Pulsar (PSRB0531+21), the Vela Pulsar, and ASKAP J1832-0911. The
-magnetic Ug1 dominates over standard DPM-emergent gravity by factors of 10105, consistent with magnetar
+magnetic Ug1 dominates over standard DPM-seeded gravity by factors of 10105, consistent with magnetar
 X-ray timing observations.
 
 
@@ -117,7 +117,7 @@ SGR1745.r = 2.62e20 m      // Distance from SgrA* (~8.5 kpc)
 ```
 
 UQFF prediction for SGR1745:
-- **Ug1**: G-gravity  [0(2.3×10)/8p] = G-gravity  6.64×10 ? dominates over DPM-emergent
+- **Ug1**: G-gravity  [0(2.3×10)/8p] = G-gravity  6.64×10 ? dominates over DPM-seeded
 - **Ug4 (vacuum BH coupling)**: linked to SgrA* (M_BH = 4×106 M_sun) at d_g = 2.62×10 m
 - **F_UQFF**: Combined Compressed + Superconductive modes (nearest to BH uses Ug4 strongly)
 
@@ -170,8 +170,8 @@ $$v_{\rm kick} = \frac{F_{U,Bi,i} \times \Delta t}{M} = \frac{8.3 \times 10^{219
 *Source: `uqff_validation_test`.py, `observational_systems_config`.h, `MAIN_1_CoAnQi`.cpp SOURCE4 | κ =
 0.0005/day | [SSq] = 0.57*
 
----
-*See also: PAPER_065 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_065 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 
 **UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]exp(-??t) = 1 - 5.7e-1 
@@ -294,7 +294,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

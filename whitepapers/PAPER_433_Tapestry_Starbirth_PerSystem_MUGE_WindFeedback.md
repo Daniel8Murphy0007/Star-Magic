@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_433
 title: "Tapestry of Blazing Starbirth: Per-System MUGE with Stellar Wind Feedback M(t)"
 session: 119
@@ -69,7 +69,7 @@ This models the LMC cluster evolution: initial burst of star formation multiplie
 
 $$\boxed{g_\text{Tap}(r,t) = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)(1 + f_\text{TRZ}) + \sum_text{Ug} + T_\Lambda + T_Q + T_\text{EM} + T_\text{fluid} + T_\text{osc} + T_\text{DM} + T_\text{wind}}$$
 
-**Term 1 — DPM-emergent with M(t) and ISM B-field correction:**
+**Term 1 — DPM-seeded with M(t) and ISM B-field correction:**
 $$T_1 = \frac{G M(t)}{r^2} (1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)$$
 
 At $t = 0$: $T_1 = G \times 10{,}000 M_\odot / r^2 \approx 7.45 \times 10^{-26}$ m/s2 (low density, large r)
@@ -91,7 +91,7 @@ $$T_6 = \frac{\rho_f V g_\text{local}}{M(t)}$$
 $$T_7 = A_\text{osc} \sin(k_\text{osc} r)\cos(\omega_text{osc} t)$$
 
 **Term 8 — Dark matter perturbation:**
-$$T_8 = (M(t) + M_\text{DM})\frac{\deltarho/\rho + 3GM(t)/r^3}{r^2}$$
+$$T_8 = (M(t) + M_\text{DM})\frac{\delta\rho/\rho + 3GM(t)/r^3}{r^2}$$
 
 **Term 9 — Stellar wind ram pressure (ninth term — unique to this system):**
 $$\boxed{T_9 = \frac{\rho_w v_w^2}{\rho_f} = \frac{10^{-21} \times (10^3)^2}{10^{-21}} = 10^6 \text{ m}^2/\text{s}^2 \cdot r^{-1} \Rightarrow a_\text{wind} = \frac{\rho_w v_w^2}{r \rho_f}}$$

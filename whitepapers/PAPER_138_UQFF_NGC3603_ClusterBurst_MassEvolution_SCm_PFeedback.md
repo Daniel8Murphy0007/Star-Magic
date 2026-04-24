@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_138
 title: "UQFF MasterBuoyancy + Superconductive Mode Star Cluster Burst – NGC 3603 Mass Evolution M(t)
 = M_0(1+exp(-t/t_SF)) with SCm Stellar Wind Feedback Pressure P(t) and 19-Light-Year Cavity"
@@ -31,7 +31,7 @@ M(t) = M_0(1+exp(-t/t_SF)) with SCm Stellar Wind Feedback Pressure P(t) and 19-L
 
 NGC 3603, located at ~6 kpc in the Carina arm of the Milky Way, is the most massive young stellar
 cluster in the Galaxy  a compact OB association of ~400,000 M_sun undergoing a simultaneous
-starburst. Pre-UQFF models treat cluster formation as a purely DPM-emergent gravitational collapse with
+starburst. Pre-UQFF models treat cluster formation as a purely DPM-seeded gravitational collapse with
 stellar wind feedback. UQFF applies the full F_U equation to NGC 3603, deriving: an SCm-modified
 mass evolution M(t) = M_0(1+exp(-t/t_SF)), a stellar wind feedback pressure P(t) = ? v_wind
 exp(-t/t_exp), and a full gravitational field g_NGC3603 incorporating Ug14 terms and ? cosmological
@@ -129,14 +129,14 @@ $$+ (Ug_1 + Ug_2 + Ug_3 + Ug_4) + \frac{\Lambda c^2}{3}$$
 
 $$+ \frac{\hbar}{\sqrt{\Delta x \Delta p}} \int \psi^* H \psi \, dV \times \frac{2\pi}{t_{Hubble}}$$
 
-$$+ \rho_{fluid} V g_{eff} + (M_{vis} + M_{DM})\left(\frac{\deltarho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right) + \rho v_{wind}^2$$
+$$+ \rho_{fluid} V g_{eff} + (M_{vis} + M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right) + \rho v_{wind}^2$$
 
 Parameter values:
 - $H_0 = 70 \text{ km/s/Mpc} = 2.27 \times 10^{-18}$ s-1
 - $B/B_{crit} = 10^{-5}/10^{11} \approx 10^{-16} \approx 1$ ? no superconductivity suppression at cluster scale
 - $\Lambda c^2/3 \approx 3.6 \times 10^{-36}$ s-1 (negligible at cluster scale)
 
-Dominant terms: $G M(t)/r^2$ (DPM-emergent, ~10?8 m/s), $\rho v_{wind}^2$ (feedback, ~4×10?8 m/s)
+Dominant terms: $G M(t)/r^2$ (DPM-seeded, ~10?8 m/s), $\rho v_{wind}^2$ (feedback, ~4×10?8 m/s)
 
 ---
 

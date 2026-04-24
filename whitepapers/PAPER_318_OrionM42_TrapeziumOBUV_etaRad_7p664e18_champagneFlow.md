@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_318
 title: "Trapezium OB Cluster UV Radiation Dominance — Champagne Flow Condition"
 session: 91
@@ -45,7 +45,7 @@ PAPER_306).
 | r | 1.18×1017 m | HII region half-span |
 | ρ_fluid | 1×10-20 kg/m3 | HII gas density |
 | c | 2.998×108 m/s | Speed of light |
-| g_base | 1.907×10-11 m/s2 | DPM-emergent self-gravity |
+| g_base | 1.907×10-11 m/s2 | DPM-seeded self-gravity |
 
 ---
 

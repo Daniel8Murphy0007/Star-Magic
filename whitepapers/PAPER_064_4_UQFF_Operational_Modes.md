@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_064
 title: "The Four UQFF Operational Modes: Compressed, Resonant, Buoyant, and Superconductive –
 Theoretical Basis, Implementation, and Batch 23 Validation"
@@ -42,7 +42,7 @@ present in Standard Model treatments.
 
 ## 1. Theoretical Motivation
 
-Standard gravity (DPM-emergent + GR) provides a single field value g = μ_s·∇(M_s/r) + GR corrections. UQFF
+Standard gravity (DPM-seeded + GR) provides a single field value g = μ_s·∇(M_s/r) + GR corrections. UQFF
 argues that physical systems exist simultaneously in four quantum gravitational "modes"  much as a
 quantum harmonic oscillator occupies superpositions of energy levels. The measured gravity is then:
 
@@ -66,7 +66,7 @@ $$g_{\rm Compressed} = \frac{M}{r} \times 10^{-10}$$
 | Scaling factor | 10? |
 | Physical origin | Compressed vacuum energy density in mass concentration |
 | Applies to | Dense objects: NS, BH, white dwarfs, galactic cores |
-| Relation to DPM-emergent | $g_C = g_{
+| Relation to DPM-seeded | $g_C = g_{
 m DPM} \times (r/c^2) \times 10^{-10}$ |
 
 **Physical interpretation**: In highly compressed systems, vacuum energy is squeezed into a reduced
@@ -198,7 +198,7 @@ From MAIN_1_CoAnQi.cpp Batch 23 commit (13 UQFF Operational Modes):
 | Widom-Larsen LENR | Superconductive | – |  |
 
 **Gaia DR4 validation**: Proper motions of stars in 5 nearby galaxies (d < 10 Mpc) match UQFF
-Compressed mode predictions within 7% (vs. 12% for pure DPM-emergent with dark matter halo).
+Compressed mode predictions within 7% (vs. 12% for pure DPM-seeded with dark matter halo).
 
 **LIGO GWTC-4.0 validation**: Post-merger ringdown frequencies match UQFF Resonant mode predictions
 (?_ringdown = ?_UQFF) within 0.5% for 3 events in GWTC-4.0 catalog.
@@ -415,7 +415,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

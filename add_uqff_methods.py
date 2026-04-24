@@ -36,7 +36,7 @@ METHODS_TEMPLATE = '''
         
         # Universal gravity components (26 layers simplified to primary terms)
         k_1, k_2, k_3, k_4 = 1.5, 1.2, 0.8, 0.5
-        # DPM-emergent: Ug1 from magnetic moment coupling (not Newtonian base)
+        # DPM-seeded: Ug1 from magnetic moment coupling (not Newtonian base)
         Ug1 = k_1 * g_grav                          # Magnetic dipole
         Ug2 = k_2 * g_grav * (1 + self.z)           # Charge-reactivity
         Ug3 = k_3 * g_grav * math.sin(2 * math.pi * t / self.t_age) if self.t_age > 0 else 0  # String rotation

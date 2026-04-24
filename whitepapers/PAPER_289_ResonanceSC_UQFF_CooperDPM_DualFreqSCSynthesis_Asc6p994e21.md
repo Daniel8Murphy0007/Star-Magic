@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_289
 title: "Cooper-DPM Dual-Frequency SC Synthesis — ħ×f_super×f_DPM Triple-Mode Quantum Product (A_sc =
 6.994×1021)"
@@ -115,7 +115,7 @@ The UQFF Resonance-Channel Meissner Quench differs from PAPER_266 (HUDF galactic
 
 The RSC module demonstrates that the Meissner quench acts *selectively* on resonance channels —
 a clear prediction: in magnetar environments where B ≈ B_crit, the resonance-SC gravity contribution
-is completely suppressed while non-resonant gravitational terms (DPM-emergent, Λ) remain unaffected.
+is completely suppressed while non-resonant gravitational terms (DPM-seeded, Λ) remain unaffected.
 
 ---
 

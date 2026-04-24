@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_981
 title: "F_U_Bi_i Variational Derivation from Lagrangian Mechanics"
 session: 217
@@ -16,7 +16,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We derive the master buoyancy force $F_{U,\text{Bi}_i}$ from first principles via the stationary action principle $\delta S / \deltaphi = 0$. The SCm-unified Lagrangian $\mathcal{L}_{\text{SCm}}$ incorporates kinetic, gravitational, buoyancy, phonon resonance, and neutron-drop sectors. The resulting Euler-Lagrange equation yields $F_{U,\text{Bi}_i}(r,t,\Gamma)$ identically to the direct-sum construction, confirming theoretical self-consistency.
+We derive the master buoyancy force $F_{U,\text{Bi}_i}$ from first principles via the stationary action principle $\delta S / \delta\phi = 0$. The SCm-unified Lagrangian $\mathcal{L}_{\text{SCm}}$ incorporates kinetic, gravitational, buoyancy, phonon resonance, and neutron-drop sectors. The resulting Euler-Lagrange equation yields $F_{U,\text{Bi}_i}(r,t,\Gamma)$ identically to the direct-sum construction, confirming theoretical self-consistency.
 
 ## 1. SCm Lagrangian
 

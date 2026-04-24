@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_945
 title: "Merger Phase Lag"
 session: 213
@@ -23,13 +23,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We derive the UQFF phonon-induced gravitational-wave phase lag for SMBH binary mergers in the LISA band (1--100 mHz). The cumulative phase shift $\DeltaPhi = 2\pi(f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$ yields 200--400 cycles depending on mass ratio, providing a distinctive observational signature separable from GR waveform templates.
+We derive the UQFF phonon-induced gravitational-wave phase lag for SMBH binary mergers in the LISA band (1--100 mHz). The cumulative phase shift $\delta\phi = 2\pi(f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$ yields 200--400 cycles depending on mass ratio, providing a distinctive observational signature separable from GR waveform templates.
 
 ---
 
 ## 1. Phase Lag Formula
 
-$$\DeltaPhi = 2\pi (f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$$
+$$\delta\phi = 2\pi (f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$$
 
 where $S_{26} = \sum_{k=1}^{26} e^{-[\text{SSq}] \cdot k/26}$ with $[\text{SSq}] = 0.57$.
 
@@ -37,7 +37,7 @@ where $S_{26} = \sum_{k=1}^{26} e^{-[\text{SSq}] \cdot k/26}$ with $[\text{SSq}]
 
 ## 2. Phase Lag vs Mass Ratio
 
-| $q$ | $D_\text{total}$ | $\DeltaPhi$ (rad) | Cycles |
+| $q$ | $D_\text{total}$ | $\delta\phi$ (rad) | Cycles |
 |-----|-------------------|---------------------|--------|
 | 0.2 | 0.491 | $\sim 1900$ | $\sim 302$ |
 | 0.5 | 0.432 | $\sim 1670$ | $\sim 266$ |
@@ -48,7 +48,7 @@ where $S_{26} = \sum_{k=1}^{26} e^{-[\text{SSq}] \cdot k/26}$ with $[\text{SSq}]
 
 ## 3. Detectability
 
-At LISA sensitivity ($\deltaPhi \sim 0.1$ rad), phase lags of $\sim 200$--$400$ cycles are detectable with SNR $> 10^3$, making this the most constraining UQFF prediction for space-based GW detectors.
+At LISA sensitivity ($\delta\phi \sim 0.1$ rad), phase lags of $\sim 200$--$400$ cycles are detectable with SNR $> 10^3$, making this the most constraining UQFF prediction for space-based GW detectors.
 
 ---
 
@@ -148,7 +148,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\delta\phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM

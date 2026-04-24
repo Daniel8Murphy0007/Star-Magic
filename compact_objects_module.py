@@ -109,7 +109,7 @@ class NeutronStarCalculator:
     @staticmethod
     def surface_gravity(M: float, R: float) -> float:
         """
-        Surface gravity as DPM-emergent Ug1.
+        Surface gravity as DPM-seeded Ug1.
 
         In reduced observational form this matches GM/R^2 scaling, but the
         implementation intentionally routes through dpm_ug1_seed().

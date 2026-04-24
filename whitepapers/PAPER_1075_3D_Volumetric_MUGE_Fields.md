@@ -1,4 +1,4 @@
----
+﻿---
 title: "3D Volumetric MUGE Gravitational Field Generator"
 paper_id: PAPER_1075
 session: 224
@@ -31,7 +31,7 @@ $$
 | Term | Expression | Origin |
 |------|-----------|--------|
 | $g_{
-m DPM}$ | $μ_s∇(M_s/r)$ | DPM-emergent |
+m DPM}$ | $μ_s∇(M_s/r)$ | DPM-seeded |
 | $g_{\text{exp}}$ | $-H_0^2 r$ | Hubble expansion |
 | $g_{\text{super}}$ | $-B^2/(2\mu_0\rho r)$ | Magnetic suppression |
 | $g_{\text{env}}$ | $\Omega^2 r$ | Rotation envelope |

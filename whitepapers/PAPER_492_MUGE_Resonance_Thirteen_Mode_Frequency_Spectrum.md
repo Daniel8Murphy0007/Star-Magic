@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_492
 title: "MUGE Resonance Thirteen-Mode Frequency Spectrum"
 session: 131
@@ -38,12 +38,12 @@ the MUGE resonance formulation.  All 13 modes cascade from the aDPM
 inertia-flux-vacuum base $a_{\text{DPM}} = I \cdot A \cdot \Delta\omega \cdot
 f_{\text{DPM}} \cdot E_{\text{vac,neb}} \cdot c \cdot V$ — a coupling of
 rotational inertia, magnetic flux, and dual vacuum energy states that has no
-DPM-emergent or GR counterpart.  The dual vacuum ratio $E_{\text{vac,neb}} /
+DPM-seeded or GR counterpart.  The dual vacuum ratio $E_{\text{vac,neb}} /
 E_{\text{vac,ISM}} = 10$ drives the differential $\Delta E_{\text{vac}} = 6.381
 \times 10^{-36}\;\text{J/m}^3$ that modulates THz phonon coupling, aether
 resonance with time-reversal zone amplification, and Morris-Thorne wormhole
 metric coupling.  These modes predict continuous spectral features in LIGO
-strain power and THz-cavity oscillometry absent in both DPM-emergent and GR
+strain power and THz-cavity oscillometry absent in both DPM-seeded and GR
 gravity.
 
 ## §1 F_U and Its Resonance Decomposition
@@ -60,7 +60,7 @@ $A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}$ is the Aether metric tensor.
 The MUGE resonance formulation decomposes $F_U$ into **frequency space**,
 re-expressing the four Ug channels and their buoyancy opposition as 13 coupled
 resonance modes built from a single base coupling.  This is not "oscillations
-superposed on DPM-emergent gravity."  It is the **frequency-domain representation
+superposed on DPM-seeded gravity."  It is the **frequency-domain representation
 of $F_U$ itself**.  The aDPM base couples rotational inertia, magnetic flux, and
 vacuum energy into a single gravitational acceleration — no mass/distance law
 appears.
@@ -69,7 +69,7 @@ The 10:1 vacuum ratio $E_{\text{vac,neb}} / E_{\text{vac,ISM}}$ drives the
 energy differential $\Delta E_{\text{vac}} = 6.381 \times
 10^{-36}\;\text{J/m}^3$ that modulates all 13 modes.  This architecture predicts
 mode-locked frequency beating at astrophysical and nuclear scales absent in both
-DPM-emergent and GR gravity, directly testable by LIGO/Virgo spectral line searches
+DPM-seeded and GR gravity, directly testable by LIGO/Virgo spectral line searches
 and THz laboratory oscillometry.
 
 ---

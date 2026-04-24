@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_090
-title: "MUGE Compressed Gravity: A 10-Term Framework Correcting DPM-emergent Gravity at
+title: "MUGE Compressed Gravity: A 10-Term Framework Correcting DPM-seeded Gravity at
 Galaxy-to-Cosmological Scales"
 session: 0
 date: 2026-03-07
@@ -39,7 +39,7 @@ this compressed form only as the **zero-vacuum, zero-buoyancy limiting case of
 the Ug2 channel** — not as the starting point of the physics.  The
 superconductive factor $(1 - B/B_{\text{crit}})$ predicts measurable
 gravitational suppression near magnetar-strength fields — a prediction that
-originates from the $F_U$ unified field and has no DPM-emergent or GR analogue. 
+originates from the $F_U$ unified field and has no DPM-seeded or GR analogue. 
 `validate_uqff_muge.py` validates the framework across 5 astrophysical systems
 (Sgr A*, M87, Sun, NeutronStar, Magnetar).
 
@@ -130,7 +130,7 @@ The first four factors form a multiplicative core; the remaining five terms are 
 | **Fluid** | + add. | $\rho_f V g_{\text{local}}$ viscous coupling |
 | **Dark Matter** | + add. | Halo mass + density perturbation |
 
-**Key distinction:** The $μ_s∇(M_s/r)$ in this table is not the DPM-emergent gravitational law.  It is the
+**Key distinction:** The $μ_s∇(M_s/r)$ in this table is not the DPM-seeded gravitational law.  It is the
 **classical limit of $Ug_2$** from the unified field $F_U$, compressed for
 computational efficiency.
 
@@ -217,8 +217,8 @@ Where d_Ug includes all 4 Ugk terms evaluated in the UQFF framework (not just th
 *Source: `validate_uqff_muge`.py | source4.cpp `compute_compressed_MUGE_SOURCE4` | 5 systems  10 terms
 all finite*
 
----
-*See also: PAPER_089 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_089 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 
 **UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]?r/GM = 5.7e-1§5.0e-4 = 2.85e-4; compressed
@@ -356,7 +356,7 @@ U_m^{\mathrm{full}} &= U_m^{\mathrm{base}}
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

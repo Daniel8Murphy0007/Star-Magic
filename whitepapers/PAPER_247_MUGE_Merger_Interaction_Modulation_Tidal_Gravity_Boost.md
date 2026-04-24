@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_247
 title: "MUGE Merger Interaction Modulation — Tidal Gravity Boost with Exponential Decay"
 session: 0
@@ -102,11 +102,11 @@ for major mergers.
 
 ### 2.2 Base Gravity Construction from UQFF Sub-Terms
 
-The merger modulation amplifies the UQFF base gravity, not the DPM-emergent gravity alone. The base
+The merger modulation amplifies the UQFF base gravity, not the DPM-seeded gravity alone. The base
 gravity is:
 
 ```
-Ug1    = G·M/r2                    [DPM-emergent-equivalent dipole term]
+Ug1    = G·M/r2                    [DPM-seeded-equivalent dipole term]
 Ug4    = Ug1·(1-B/B_crit)         [vacuum-field reduction: Ug4 < Ug1 for B > 0]
 
 g_base = (Ug1 + Ug4)·(1 + f_TRZ)
@@ -125,7 +125,7 @@ $$
 \end{aligned}
 $$
 
-This ˜ 2.4× DPM-emergent gravity at closest approach — consistent with observed tidal distortion
+This ˜ 2.4× DPM-seeded gravity at closest approach — consistent with observed tidal distortion
 amplitudes in Antennae-class mergers.
 
 ### 2.3 Temporal Decay Analysis

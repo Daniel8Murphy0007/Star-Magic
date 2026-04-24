@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_436
 title: "Rings of Relativity: Per-System MUGE with L(t) Lensing Amplification at z=0.5"
 session: 119
@@ -32,7 +32,7 @@ Star-Magic/UQFF framework.
 
 PAPER_436 delivers the **complete per-system MUGE** for the "Rings of Relativity" — a near-perfect Einstein ring designated **GAL-CLUS-022058s** (the "Molten Ring") at cosmological redshift $z_\text{lens} = 0.5$, discovered in 2020 via Hubble WFC3 imaging. The lensing cluster mass is $M \approx 10^{14} \, M_\odot$, with Einstein radius $r_E \approx 10$ kpc $= 3.086 \times 10^{20}$ m.
 
-**Novel claim (Q1):** First UQFF MUGE for a cosmological Einstein ring system that introduces the **lensing amplification factor** $L = (GM)/(c^2 r) \times D_{LS}/D_S$ as a multiplicative correction $(1 + L)$ on the base gravity term — representing the UQFF interpretation that the lensing mass distribution creates an effective additional gravitational channel beyond the DPM-emergent/GR baseline.
+**Novel claim (Q1):** First UQFF MUGE for a cosmological Einstein ring system that introduces the **lensing amplification factor** $L = (GM)/(c^2 r) \times D_{LS}/D_S$ as a multiplicative correction $(1 + L)$ on the base gravity term — representing the UQFF interpretation that the lensing mass distribution creates an effective additional gravitational channel beyond the DPM-seeded/GR baseline.
 
 ---
 
@@ -65,7 +65,7 @@ The Einstein ring is formed when $L \approx 1$ (strong lensing regime), but the 
 
 $$\boxed{g_\text{Ring}(r,t) = T_1 \cdot (1+L) + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-emergent + H(z)t + B correction + lensing amplification:**
+**T1 — DPM-seeded + H(z)t + B correction + lensing amplification:**
 $$T_1 = \underbrace{\frac{GM}{r_E^2}}_{\text{DPM mass gradient}}(1 + H(z)t)\left(1 - \frac{B}{B_\text{crit}}\right)(1+L)$$
 $$\underbrace{\frac{GM}{r_E^2}}_{\text{DPM mass gradient}} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{44}}{(3.086 \times 10^{20})^2} = \frac{1.327 \times 10^{34}}{9.523 \times 10^{40}} \approx 1.394 \times 10^{-7} \, \text{m/s}^2$$
 $$T_1(t=0) \approx 1.394 \times 10^{-7} \times 1.00032 \approx 1.394 \times 10^{-7} \, \text{m/s}^2$$

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_250
 title: "SN 1006 Type Ia SNR F_U_Bi_i — Ejecta Knot Stabilisation and Force Equivalence Class
 Founding Member"
@@ -40,7 +40,7 @@ Three physically distinct phenomena are discoverable from this system:
 1. **F_neutron ejecta knot stabilisation:** The neutron drop term `F_neutron = k_neutron × s_n = 106
 N` is the mechanism by which the UQFF framework stabilises the observed filamentary ejecta knot
 structure of SN 1006. At velocities of ~3,000 km/s, ejecta knot coherence over 1,019 years requires
-a non-zero stabilising force beyond simple DPM-emergent dynamics — F_neutron provides this through
+a non-zero stabilising force beyond simple DPM-seeded dynamics — F_neutron provides this through
 Kozima neutron capture phonon coupling.
 
 2. **LENR dominance:** F_LENR ˜ 6.17 × 103? N (driven by ?_LENR = 2p × 1.25 THz and ?0 = 10?12
@@ -96,7 +96,7 @@ $$
 \end{aligned}
 $$
 
-F_LENR is 33 orders of magnitude larger than the DPM-emergent gravity term (~106 N), confirming LENR as
+F_LENR is 33 orders of magnitude larger than the DPM-seeded gravity term (~106 N), confirming LENR as
 the dominant contributor to the F_U_Bi_i integrand.
 
 ### 2.3 Ejecta Knot Stabilisation via F_neutron

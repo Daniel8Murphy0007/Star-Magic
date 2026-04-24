@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_026
 title: "UQFF Analysis"
 session: 0
@@ -404,8 +404,8 @@ orders of magnitude in mass.**
 Leptogenesis: ?_B^GUT=6.12×10? (0.1% of Planck 6.12×10?). DM: O_s1 h§0.12, sin(2?)=1.78×10? < 3×10?
 (XMM). κ = 0.0005/day, [SSq] = 0.57*
 
----
-*See also: PAPER_025 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_025 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -586,7 +586,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

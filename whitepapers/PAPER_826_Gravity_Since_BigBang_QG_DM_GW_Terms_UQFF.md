@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_826
 title: "Gravity Since the Big Bang — QG_term, DM_term, and GW_term in UQFF Cosmic Evolution"
 session: 0
@@ -38,7 +38,7 @@ gravity evolved since the Big Bang?" using the UQFF framework.
 ## 1. Introduction
 
 The history of cosmic gravity spans 13.8 billion years and nine orders of magnitude in energy scale.
-Classical treatments describe gravity via the DPM-emergent constant G or Einstein's field equations.
+Classical treatments describe gravity via the DPM-seeded constant G or Einstein's field equations.
 Neither includes quantum gravity effects at Planck scale, explicit dark matter coupling dynamics, or
 the contribution of gravitational waves to effective gravitational potential.
 
@@ -258,7 +258,7 @@ At z = -1 (future): H → H_0*sqrt(Omega_Lambda) = H_0*0.836 (de Sitter limit)
 
 | Term | Layer |
 |------|-------|
-| (G*M(t))/r^2 * (1+H(z)*t) | Layer 1 — DPM-emergent + FLRW |
+| (G*M(t))/r^2 * (1+H(z)*t) | Layer 1 — DPM-seeded + FLRW |
 | (1-B/B_crit) | Layer 2 — Superconductive |
 | Ug1+Ug2+Ug3+Ug4 | Layer 3 — UQFF Gravity Modes |
 | hbar/sqrt(Dx*Dp)*psi_total | Layer 4 — Quantum Coherence |

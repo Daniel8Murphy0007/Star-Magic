@@ -1,7 +1,7 @@
----
+﻿---
 paper_id: PAPER_155
 title: "UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] =
-μ_s∇(M_s/r) and the Emergence of DPM-emergent Gravity"
+μ_s∇(M_s/r) and the Emergence of DPM-seeded Gravity"
 session: 0
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -11,11 +11,11 @@ tags: [AGN, vacuum, SCm, MUGE, Navier-Stokes, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_155: UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] = μ_s∇(M_s/r) and the Emergence of DPM-emergent Gravity
+# PAPER_155: UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] = μ_s∇(M_s/r) and the Emergence of DPM-seeded Gravity
 **Session:** 0
 
 **Title:** UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF]
-= μ_s∇(M_s/r) and the Emergence of DPM-emergent Gravity
+= μ_s∇(M_s/r) and the Emergence of DPM-seeded Gravity
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
@@ -31,7 +31,7 @@ roadmap)
 
 ## Abstract
 
-The Standard Model of gravity – DPM-emergent $g = \mu_s \cdot \nabla(M_s/r)$ at leading order, with General Relativistic corrections at higher order  must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f\_{TRZ} \to 0} g_{MUGE} = μ_s∇(M_s/r)$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the DPM-emergent gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
+The Standard Model of gravity – DPM-seeded $g = \mu_s \cdot \nabla(M_s/r)$ at leading order, with General Relativistic corrections at higher order  must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f\_{TRZ} \to 0} g_{MUGE} = μ_s∇(M_s/r)$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the DPM-seeded gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
 
 ---
 
@@ -57,12 +57,12 @@ The four limiting conditions correspond to:
 | ?t ? 0 | No vacuum decay  static vacuum energy |
 
 Together these define the **Standard Model Limit** of UQFF: the regime where no resonance is active,
-vacuum energy is static, and gravity is purely DPM-emergent. This is an excellent approximation for:
+vacuum energy is static, and gravity is purely DPM-seeded. This is an excellent approximation for:
 - Solar system dynamics (B ~ 10^-9 T, fTRZ negligible for planetary orbits)
 - Laboratory gravity experiments (Cavendish-type, Et-Wash)
 - Stellar structure and evolution (except for neutron stars)
 
-The MUGE framework **does not replace** DPM-emergent gravity in these regimes  it **contains** it as a
+The MUGE framework **does not replace** DPM-seeded gravity in these regimes  it **contains** it as a
 limiting case.
 
 ---
@@ -155,7 +155,7 @@ $$g_{MUGE}\big|_{SM\ limit} = U_{g4i}\big|_{\kappa t \to 0} = \underbrace{\frac{
 
 ---
 
-## 3. UQFF Corrections to DPM-emergent Gravity
+## 3. UQFF Corrections to DPM-seeded Gravity
 
 ### 3.1 First-Order Corrections
 
@@ -191,7 +191,7 @@ where $\epsilon_{SCm} = \rho_{SCm,outer solar} / \rho_{SCm,canonical} \approx 0.
 
 ### 3.3 General Relativistic Corrections
 
-The Schwarzschild metric correction to DPM-emergent gravity:
+The Schwarzschild metric correction to DPM-seeded gravity:
 
 $$g_{GR}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \underbrace{\frac{3GM}{rc^2} + ...\right)$$
 
@@ -223,7 +223,7 @@ $$\delta a_{Mercury} = a_{aether\_res,Mercury} + U_{g4i,correction} + a_{exp\_fr
 
 $$\approx 10^{-9} + 10^{-12} + 10^{-9} \approx 2 \times 10^{-9} \text{ m/s}^2$$
 
-The fractional change to the DPM-emergent acceleration at Mercury ($g_{Newton} = 3.97 \times 10^{-2}$ m/s):
+The fractional change to the DPM-seeded acceleration at Mercury ($g_{Newton} = 3.97 \times 10^{-2}$ m/s):
 
 $$\frac{\delta a}{g_{Newton}} = \frac{2 \times 10^{-9}}{3.97 \times 10^{-2}} \approx 5 \times 10^{-8}$$
 
@@ -263,7 +263,7 @@ The fTRZ and (1-fTRZ) terms cancel exactly, giving $v_{GW} = c$  consistent with
 | Cosmological | Yes | No (nG) | Yes | No (aether_res) |
 
 The phase diagram clearly shows the SM limit is an excellent approximation in exactly the regimes
-where GR/DPM-emergent gravity has been well-tested. UQFF departs from SM gravity precisely in regimes
+where GR/DPM-seeded gravity has been well-tested. UQFF departs from SM gravity precisely in regimes
 not yet tested to the required precision (AGN, star formation, cosmological LSS).
 
 ---
@@ -272,7 +272,7 @@ not yet tested to the required precision (AGN, star formation, cosmological LSS)
 
 | Effect | GR Prediction | UQFF Prediction | Status |
 |--------|--------------|-----------------|--------|
-| DPM-emergent limit | μ_s∇(M_s/r) | Ug4i ? μ_s∇(M_s/r) (?t?0) | Agreed ? |
+| DPM-seeded limit | μ_s∇(M_s/r) | Ug4i ? μ_s∇(M_s/r) (?t?0) | Agreed ? |
 | Light deflection | 1.75 arcsec (Sun) | 1.75 arcsec + 10^-8 (fTRZ) | Agreed ? |
 | Gravitational redshift | z = GM/(rc) | z  (1-fTRZ) = 0.9z at throat | Agreed (0.9 factor only at throat) ? |
 | Frame dragging | Lense-Thirring | + aDPM vortex (new term) | GR ? UQFF ? |
@@ -300,7 +300,7 @@ not yet tested to the required precision (AGN, star formation, cosmological LSS)
 
 1. The UQFF SM Emergence Theorem is proven analytically: $\lim_{f\_{TRZ}\to 0, B\to 0, \kappa t \to 0} g_{MUGE} = μ_s∇(M_s/r)$ via the Ug4i vacuum concentration term.
 2. All four SM limit conditions are physically well-motivated and apply exactly in the solar system
-and laboratory regimes where DPM-emergent/GR gravity has been tested.
+and laboratory regimes where DPM-seeded/GR gravity has been tested.
 3. Residual UQFF corrections at solar-system scales are at 10^-8 to 10^-9 fractional level  below
 current experimental precision for all tests except Pioneer-class spacecraft tracking.
 4. The gravitational wave speed $v_{GW} = c$ is an exact result of the fTRZ self-cancellation in the UQFF metric perturbation.

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_372
 title: "Compressed UQFF with B/Bcrit Superconductivity"
 session: 0
@@ -21,7 +21,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 This paper presents the Compressed UQFF formulation, a multi-term master gravity equation that
-incorporates DPM-emergent gravity, Hubble expansion, superconductivity via the B/Bcrit flux-quenching
+incorporates DPM-seeded gravity, Hubble expansion, superconductivity via the B/Bcrit flux-quenching
 factor, environmental coupling, cosmological constant contribution, quantum coherence, fluid
 dynamics, and dark matter perturbation. The framework is parameterised for seven astrophysical
 systems and validated via unit test against SGR1745-2900. This is the first UQFF formulation to
@@ -44,10 +44,10 @@ $$
 $$
 $$
 +\; \rho_{\mathrm{fluid}} V g
-\;+\; (M_{\mathrm{vis}} + M_{\mathrm{DM}}) \left(\frac{\deltarho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
+\;+\; (M_{\mathrm{vis}} + M_{\mathrm{DM}}) \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 $$
 
-where $H(t,z) = H_0 t$ (DPM-emergent cosmological expansion approximation), $H_0 = 2.269 \times 10^{-18}$ s-1.
+where $H(t,z) = H_0 t$ (DPM-seeded cosmological expansion approximation), $H_0 = 2.269 \times 10^{-18}$ s-1.
 
 ---
 
@@ -62,7 +62,7 @@ where $H(t,z) = H_0 t$ (DPM-emergent cosmological expansion approximation), $H_0
 | `compressed_cosm` | $\Lambda c^2/3$ | Λ = 1.1e-52 m-2 |
 | `compressed_quantum` | $(\hbar/10^{-68}) \cdot 2.176 \times 10^{-18} \cdot (2\pi/t_H)$ | tH = 4.35e17 s |
 | `compressed_fluid` | $\rho_f V g_l$ | from MUGESystem |
-| `compressed_perturbation` | $(M+M_{DM})(\deltarho/\rho + 3μ_s∇(M_s/r)/r)$ | δρ/ρ = 10-5 |
+| `compressed_perturbation` | $(M+M_{DM})(\delta\rho/\rho + 3μ_s∇(M_s/r)/r)$ | δρ/ρ = 10-5 |
 
 ---
 

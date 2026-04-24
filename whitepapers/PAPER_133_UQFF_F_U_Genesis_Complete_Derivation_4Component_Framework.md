@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_133
 title: "UQFF Star-Magic F_U Genesis – First Principles Construction of the 4-Component Unified
 Quantum Field Equation: Ug1 Magnetic Dipole + Ug2 Outer Bubble + Ug3 String Disk + Ug4 Galaxy + Um +
@@ -54,7 +54,7 @@ present in Standard Model treatments.
 |-----------|---------------------|---------------------|
 | Solar heliosphere formation | Solar wind + interstellar medium ram pressure | Ug2 outer field bubble (k_2=1.2, E_react) |
 | Quasar jet asymmetry | Relativistic Doppler / jet precession | cos(pt_n) negative-time buoyancy asymmetry |
-| Planetary orbital stability | DPM-emergent gravity + GR corrections | SCm Ug3 core exclusivity, P_SCm=10? |
+| Planetary orbital stability | DPM-seeded gravity + GR corrections | SCm Ug3 core exclusivity, P_SCm=10? |
 | Galactic rotation curves | Dark matter halo | Ug4 vacuum density + SCm reactivity |
 | Stellar magnetic cycles | MHD + convection zone | Ug1 κ_s(t,SCm) dipole cycling |
 

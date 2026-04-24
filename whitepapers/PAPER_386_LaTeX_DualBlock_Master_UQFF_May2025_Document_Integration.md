@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_386
 title: "LaTeX Dual-Block Cohesive UQFF Master Equation & May-2025 Document Integration"
 session: 104
@@ -54,7 +54,7 @@ encoding** that was the explicit output of the document integration exercise.
 ### Document 1: Compressed UQFF Equation (14 May 2025)
 
 **Core equation:**
-$$g_\text{compressed}(r,t) = \frac{GM(t)}{r^2}\left(1 + H(t,z)\right)\left(1 - \frac{B(t)}{B_\text{crit}}\right)(1 + F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_H} + \rho_f V g_\text{local} + (M+M_{DM})\left(\frac{\deltarho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_\text{compressed}(r,t) = \frac{GM(t)}{r^2}\left(1 + H(t,z)\right)\left(1 - \frac{B(t)}{B_\text{crit}}\right)(1 + F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_H} + \rho_f V g_\text{local} + (M+M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 **Variable definitions:**
 - $H(t,z) = H_0\sqrt{0.3(1+z)^3 + 0.7}$ -- Friedmann-ΛCDM expansion (Planck CMB values)
@@ -98,7 +98,7 @@ smooth vortex penetration regime.
 
 **Proof 4 — Boundary Conditions:**
 - $r \rightarrow \infty$: $\Lambda c^2/3 = 3.3\times10^{-36}$ m/s^2 dominates (correct -- CMB-scale gravity IS cosmological constant)
-- $t \rightarrow 0$: Compressed -> DPM-emergent $μ_s∇(M_s/r)$ when $H(t,z) \approx 0$ and SC correction = 1
+- $t \rightarrow 0$: Compressed -> DPM-seeded $μ_s∇(M_s/r)$ when $H(t,z) \approx 0$ and SC correction = 1
 - $r \rightarrow 0$: Perturbation term diverges (quantum gravity regime -- signals model breakdown)
 
 **Proof 5 — Empirical Alignment:**
@@ -112,7 +112,7 @@ smooth vortex penetration regime.
 
 This is the definitive **unified UQFF expression** encoding both models in one formula:
 
-$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\intpsi^\daggerhat{H}\psi,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\deltarho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
+$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\intpsi^\daggerhat{H}\psi,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\delta\rho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
 
 Where:
 $$a_{worm} = \frac{f_{worm} \cdot E_{vac,neb}}{b^2 + r^2}$$
@@ -156,7 +156,7 @@ PAPER_375 captures this for J1610+1811.
 
 | Document | Contribution to Unified Framework | Grok Assessment |
 |----------|------------------------------------|:---------------:|
-| Compressed (14 May) | DPM-emergent + quantum + DM + SC -- the macroscopic block | Strong base; Ug subtraction weakness |
+| Compressed (14 May) | DPM-seeded + quantum + DM + SC -- the macroscopic block | Strong base; Ug subtraction weakness |
 | Resonance (14 May) | 12 independent micro-scale coupling mechanisms | Novel; speculative but predictive |
 | Proof Set (15 May) | Dimensional proofs + boundary conditions + empirical match | Validates combined framework |
 | Together | Complete UQFF -- covers scales from quantum (10^{-}8^4 m/s^2) to SMBH (10^{2}9 m/s^2) | Unified |

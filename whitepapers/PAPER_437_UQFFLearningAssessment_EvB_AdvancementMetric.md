@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_437
 title: "UQFF Learning Assessment Evolution_B: Advancement Metric for Regime Diversity and Dynamic
 Term Inclusion"
@@ -79,7 +79,7 @@ contribution fraction):
 
 | MUGE Term | Westerlund 2 Dominant? | Pillars PoC Dominant? | Rings Dominant? |
 |-----------|----------------------|----------------------|----------------|
-| $T_1$: DPM-emergent×(1+H₀t)×(1-B/B_c)×corrections | Secondary | Secondary×(1-E) | Secondary×(1+L) |
+| $T_1$: DPM-seeded×(1+H₀t)×(1-B/B_c)×corrections | Secondary | Secondary×(1-E) | Secondary×(1+L) |
 | $T_2$: UQFF Ug (f_TRZ) | Secondary | Secondary | **PRIMARY** (68%) |
 | $T_3$: Λ | Negligible | Negligible | Negligible |
 | $T_4$: Quantum | Negligible | Negligible | Negligible |

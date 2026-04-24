@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_451
 title: "MUGE Evolution of Gravity Since the Big Bang: QG + DM + GW Composite F_cosmo"
 session: 115
@@ -103,7 +103,7 @@ m DPM}(t) = 0.268 \times \frac{GM(t)}{r(t)^2}$$
 
 $$g_{\rm DM}(t) = 0.268 \cdot \frac{G M_{\rm total} t}{c^2 t_H \cdot t^2} = \frac{0.268 G M_{\rm total}}{c^2 t_H \cdot t}$$
 
-The DM enhancement grows relative to DPM-emergent as: $g_{\rm Total, matter} = 1.268 \cdot g_{
+The DM enhancement grows relative to DPM-seeded as: $g_{\rm Total, matter} = 1.268 \cdot g_{
 m DPM}$
 
 This 26.8% enhancement is **constant across cosmic time** in this model — DM tracks matter
@@ -133,7 +133,7 @@ $$F_{\rm cosmo}(t_H) = g_{\rm QG}(t_H) + g_{\rm DM}(t_H) + g_{\rm GW}(t_H)$$
 | g_GW | 8.3×10-36 × 0.92 m/s2 | ~10-27 (negligible) |
 | **g_total** | **7.46×10-10 m/s2** | **1.268** |
 
-**The universe today is 26.8% more gravitationally active than DPM-emergent gravity predicts**, with
+**The universe today is 26.8% more gravitationally active than DPM-seeded gravity predicts**, with
 dark matter driving the entire correction. QG and GW terms are negligible at present epoch but are
 encoded for full-timeline simulation.
 

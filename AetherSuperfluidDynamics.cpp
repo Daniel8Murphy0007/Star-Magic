@@ -35,7 +35,7 @@ double AetherSuperfluidDynamics::compute_vortex_circulation() const{
 double AetherSuperfluidDynamics::compute_g_eff(double r,double M) const{
     double B_sys = 1e-4;  // DPM magnetic field [T]
     double mu_s = B_sys * r * r * r;
-    double g_N = mu_s * G * M / (r * r);  // DPM-emergent: mu_s * grad(M_s/r)
+    double g_N = mu_s * G * M / (r * r);  // DPM-seeded: mu_s * grad(M_s/r)
     double c_UA=compute_sound_speed(N_UA_REF);
     double boost=1.0+(c_UA*c_UA/(C*C))*F_TRZ*(RHO_UA/RHO_SCM);
     double val=g_N*boost;
@@ -54,7 +54,7 @@ void AetherSuperfluidDynamics::simulate_radial_profile(double r0,double r1,doubl
     for(double r=r0;r<=r1;r+=dr){
         double B_sys = 1e-4;  // DPM magnetic field [T]
         double mu_s = B_sys * r * r * r;
-        double g_N = mu_s * G * M / (r * r);  // DPM-emergent: mu_s * grad(M_s/r)
+        double g_N = mu_s * G * M / (r * r);  // DPM-seeded: mu_s * grad(M_s/r)
         double g_u=compute_g_eff(r,M);
         // UA density: enhanced near BH by gravitational compression
         double n_local=N_UA_REF*(1.0+_AetherSuperfluidDynamics_r_s(M)/r*F_TRZ);

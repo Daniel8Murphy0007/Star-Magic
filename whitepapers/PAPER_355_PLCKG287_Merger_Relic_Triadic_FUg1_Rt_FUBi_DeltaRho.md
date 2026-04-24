@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_355
 title: "PLCK G287.0+32.9 Merger Relic: Triadic FU_g1 / R(t) / FU_Bi Form"
 session: 97
@@ -52,11 +52,11 @@ $$FU\_Bi_i \approx -8.32 \times 10^{217}\ \mathrm{N}$$
 
 ### 2.2 Density Perturbation
 
-$$\frac{\deltarho}{\rho} \approx 10^{-4}$$
+$$\frac{\delta\rho}{\rho} \approx 10^{-4}$$
 
 The relic shock front is a weak perturbation above the ambient ICM density. In UQFF this
 perturbation modulates FU_g1 via:
-$$FU_{g1}^{\rm pert} = FU_{g1}^{\rm mean} \cdot \left(1 + \frac{\deltarho}{\rho}\right)$$
+$$FU_{g1}^{\rm pert} = FU_{g1}^{\rm mean} \cdot \left(1 + \frac{\delta\rho}{\rho}\right)$$
 
 ### 2.3 ICM Gas Density
 

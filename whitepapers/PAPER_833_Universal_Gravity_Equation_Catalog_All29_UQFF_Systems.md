@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_833
 title: "Universal Gravity Equation Catalog: Complete Raw Equations for All 29 UQFF Systems (Docs
 1–38)"
@@ -53,7 +53,7 @@ $$
 **Gravity mode definitions:**
 $$
 \begin{aligned}
-  & Ug1 = (G*M)/r^2                           Standard DPM-emergent gravity \\
+  & Ug1 = (G*M)/r^2                           Standard DPM-seeded gravity \\
   & Ug2 = potential energy change term        DeltaPhi/r \\
   & Ug3'= (G*M_ext)/r_ext^2                   External gravity field \\
   & Ug4 = superconductive gravity term        B^2-dependent

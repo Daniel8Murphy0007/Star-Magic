@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_440
 title: "Bubble Nebula NGC 7635: Per-System MUGE with E(t) GROWING Expansion and Low-Mass Central
 Star"
@@ -71,7 +71,7 @@ $$\boxed{E(t) = 0.1\left(1 - e^{-t/\tau_text{exp}}\right)}$$
 
 $$\boxed{g_\text{Bub}(r,t) = T_1 (1-E(t)) + T_2(1-E(t)) + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-emergent + H₀t + B × (1-E(t)):**
+**T1 — DPM-seeded + H₀t + B × (1-E(t)):**
 $$T_1 = \frac{GM_\star}{r^2}(1+H_0 t)(1-B/B_\text{crit})(1-E(t))$$
 $$\frac{GM_\star}{r^2} = \frac{6.674\times10^{-11}\times9.149\times10^{31}}{(4.731\times10^{16})^2} = \frac{6.104\times10^{21}}{2.238\times10^{33}} \approx 2.73\times10^{-12} \, \text{m/s}^2$$
 

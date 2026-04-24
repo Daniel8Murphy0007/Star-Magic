@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 whitepaper_appendix_engine.py — Automated Whitepaper Appendix Injection Engine
 
@@ -117,7 +117,7 @@ $$
 
 where $c_i = [SSq]^i / i^{{26}} \\cdot R_n(i,3)$.
 
-### DPM-Emergent Acceleration
+### DPM-seeded Acceleration
 
 $$
 a_{{DPM}} = \\frac{{F_{{DPM}} \\cdot f_{{DPM}} \\cdot E_{{\\text{{vac,neb}}}}}}{{c \\cdot V_{{\\text{{sys}}}}}}

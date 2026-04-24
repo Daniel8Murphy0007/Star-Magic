@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_520
 title: "Session 140 Hub: grok_share_0f5d4c91f2c.txt — DPM Shell-Energy Radiance, Negative Time, and
 DPM-Unified Forces"
@@ -94,7 +94,7 @@ $$F_{\text{centrip}} = \frac{DPM_n(SCm) \cdot \omega_{CW}^2 \cdot r^l}{1+\Delta_
 $$F_{\text{centrif}} = DPM_s(UA') \cdot \omega_{CCW}^2 \cdot r^l \cdot t_{\text{neg}}$$
 $$F_{\text{inert}} = F_{\text{centrip}} - F_{\text{centrif}} \quad [M = F_{\text{inert}}/a^{26}]$$
 
-Resolves classical fictitious-force conundrum: all 3 are pure DPM-emergent.
+Resolves classical fictitious-force conundrum: all 3 are pure DPM-seeded.
 
 ---
 

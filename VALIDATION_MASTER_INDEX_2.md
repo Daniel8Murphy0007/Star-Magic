@@ -1,4 +1,4 @@
-# VALIDATION MASTER INDEX 2 (VMI2)
+﻿# VALIDATION MASTER INDEX 2 (VMI2)
 ## Star-Magic UQFF Whitepaper Inventory — Continuation Volume
 
 > **CANONICAL ONTOLOGY LOCK (v1)** — Cross-ref: Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_emergent.h, QCalc.py
@@ -56,15 +56,15 @@ arXiv anchor:            arxiv_validation_data.csv
 | **CP4 Calculator Classes** | **551** (CondensedPhysics4.py, 36,200 lines; Sessions 209–222 additions including MUGE Compression Cycle 3) |
 | **CP3 Calculator Classes** | **218** (CondensedPhysics3.py, 12,275 lines; unchanged Sessions 132â€"204) |
 | **CP2 Calculator Classes** | **680** (CondensedPhysics2.py, 48,093 lines; last updated Session 176) |
-| **QCalc.py Calculators** | **32 classes** (10,076 lines â€" DPM-emergent + MUGE resonance upgrades Session 226) |
+| **QCalc.py Calculators** | **32 classes** (10,076 lines â€" DPM-Foundation + MUGE resonance upgrades Session 226) |
 | **C++ Modules (full UQFF 2.0)** | **51 modules** (Sessions 63â€"138) â€" source179.cpp (Session 138) + 50 prior modules; 6,698 physics terms; Batch 22+23 registered |
 | **Standalone Python Modules** | **47+ modules** (Sessions 204–226-B): Prior 29 + Session 226: cfd_paper369_navierstokes.py, bsm_bounds_derivation.py, lenr_rotor_extensions.py, solar_pcore_simulations.py, scm_quantum_computing.py, scm_superconductivity_mechanisms.py, vds_dvp_bsh_expanded.py, dpm_helpers.py + Session 226-B: production_scaling_v26/v27.py, ramanujan_applications_expanded.py, ramanujan_cryptography_pi_math.py, muge_3d_sim_multi_system.py, whitepaper_appendix_engine.py, test_muge_resonance_validation.py |
-| **DPM-Emergent Paradigm** | âœ… **COMPLETE** â€" Newtonian GM/rÂ² replaced with DPM-emergent forms across 607+ files (Session 226); Core/dpm_emergent.h header; all whitepapers + 220 PDFs regenerated |
+| **DPM-FOUNDATION PARADIGM** | âœ… **COMPLETE** â€" Newtonian GM/rÂ² replaced with DPM-Foundation forms across 607+ files (Session 226); Core/dpm_emergent.h header; all whitepapers + 220 PDFs regenerated |
 | **VMI2 opens at Session** | **89** |
 | **VMI2 opens at paper** | **PAPER_311** |
 | **Last VMI session** | Session 88: v4.44; PAPER_308â€“310; commit 307â†’310 âœ… |
-| **Last VMI2 session** | Session 222 v5.76: MUGE Compression Cycle 3 â€" PAPER_1019â€"1029 (11 new CP4 #603â€"#613); DPM-emergent audit across 607+ files; 18 gap-filling modules (Session 226/226-B); MUGE 12-Term Resonance fixes; QCalc ecosystem upgrade; Core/dpm_emergent.h; 1,125 papers (112.5%); commit 1d3802bc |
-| **PDFs generated** | **1,134 PDFs** in pdf/ directory (Session 226: 220 PDFs regenerated with DPM-emergent forms; prior: Session 209: PAPER_878â€"900 23 PDFs + 9 upgraded; A4 595x842 standardized Session 182) |
+| **Last VMI2 session** | Session 222 v5.76: MUGE Compression Cycle 3 â€" PAPER_1019â€"1029 (11 new CP4 #603â€"#613); DPM-Foundation audit across 607+ files; 18 gap-filling modules (Session 226/226-B); MUGE 12-Term Resonance fixes; QCalc ecosystem upgrade; Core/dpm_emergent.h; 1,125 papers (112.5%); commit 1d3802bc |
+| **PDFs generated** | **1,134 PDFs** in pdf/ directory (Session 226: 220 PDFs regenerated with DPM-Foundation forms; prior: Session 209: PAPER_878â€"900 23 PDFs + 9 upgraded; A4 595x842 standardized Session 182) |
 
 ### Session 222 Corpus Analysis (1,125/1,125 papers scanned)
 

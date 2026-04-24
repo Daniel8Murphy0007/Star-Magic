@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_979
 title: "Complete 6-Layer F_U_Bi_i Master Buoyancy Force"
 session: 217
@@ -54,7 +54,7 @@ At $r = 1\text{ AU}$, $M = M_\odot$, $t = 1\text{ day}$, $\Gamma = 0.1\text{ THz
 - $F_{U,\text{Bi}_i} \approx -2.4 \times 10^{-2}$ m/s2 (buoyancy-dominant at heliospheric distance)
 
 At $r = R_\odot$:
-- $g_N = 274.03$ m/s2 (DPM-emergent surface gravity, verified)
+- $g_N = 274.03$ m/s2 (DPM-seeded surface gravity, verified)
 
 ## 4. Implementation
 
@@ -202,7 +202,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 $$\mathcal{L}_{\text{FUBi}} = T_{\text{kin}} - V_{\text{grav}} + V_{\text{buoy}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{neutron}}$$
 
-Euler-Lagrange: $\delta S/\deltaphi = 0 \Rightarrow F_{U,\text{Bi}_i}$ emerges as the variational master force of the SCm vacuum manifold.
+Euler-Lagrange: $\delta S/\delta\phi = 0 \Rightarrow F_{U,\text{Bi}_i}$ emerges as the variational master force of the SCm vacuum manifold.
 
 ## §B. VDS/DVP/BSH Deep Synthesis
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_525
 title: "Session 141 Hub: Universal Spectrum Spectral Divisions, DPM Frequency Drive, Quantum Egg
 Simulation, and Proplyd Bidirectional Framework"
@@ -54,7 +54,7 @@ Negative Time, Force Unification).
 | 7 | Quantum egg | Qualitative description | Full numerical $t_\text{neg}$ simulation |
 | 8 | Plasma orb | Not defined | Probabilistic emergence threshold |
 | 9 | Proplyd explanation | Not connected | Bidirectional DPM ↔ Proplyd framework |
-| 10 | Centrip/Centrif forces | DPM-emergent (Session 140) | += US spectral weights 1/3 attract / 2/3 repel |
+| 10 | Centrip/Centrif forces | DPM-seeded (Session 140) | += US spectral weights 1/3 attract / 2/3 repel |
 
 ---
 

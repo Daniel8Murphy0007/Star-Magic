@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_sgra.py — Generator for SMBHSgrAStar.h
 Module 5 in MUGE series: Sagittarius A* SMBH gravity evolution.
 Unique physics: M(t) mass accretion, B in Gauss->Tesla conversion, spin_factor=0.3,
@@ -162,7 +162,7 @@ public:
 
     // Ug terms using M(t)
     double compute_Ug(double Mt) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B_T() / B_crit;
         double Ug4 = ug1 * corr_B;
         return (ug1 + Ug4) * (1.0 + f_TRZ);

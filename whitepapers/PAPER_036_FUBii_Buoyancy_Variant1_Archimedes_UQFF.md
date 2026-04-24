@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_036
 title: "The Unified Quantum Buoyancy Force F_UBii: Derivation from Archimedes' Principle to the UQFF
 Virial X-Ray Cluster Framework"
@@ -171,7 +171,7 @@ The magnitude 2.024×1060 N must be compared to the gravitational weight of the 
 
 $$F_{\rm grav}^{\rm Perseus} \approx \frac{G M_{\rm cluster}^2}{r_h^2} \approx \frac{6.674\times10^{-11} \times (10^{15} \times 1.989\times10^{30})^2}{(2.5\times10^{22})^2} \approx 8.5\times10^{53} \text{ N}$$
 
-The UQFF F_UBii_virx = 2.024×1060 N is ~7×106 times larger than the DPM-emergent gravitational spring
+The UQFF F_UBii_virx = 2.024×1060 N is ~7×106 times larger than the DPM-seeded gravitational spring
 force. This reflects the **σ_X3** scaling in the virx formula — the UQFF buoyancy is
 velocity-dispersion-cubed dominant, capturing the full phase-space entropy of the ICM rather than
 just the mass.
@@ -447,7 +447,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

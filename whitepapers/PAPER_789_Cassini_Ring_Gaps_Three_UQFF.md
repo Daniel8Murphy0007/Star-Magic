@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_789
 title: "Cassini Ring Gaps — Three-UQFF Saturn Ring Resonance Analysis"
 session: 181
@@ -50,7 +50,7 @@ to galaxy clusters.
 
 ## 2. Three-UQFF Framework for Ring Gaps
 
-For each gap at radius r, the DPM-emergent gravitational acceleration from Saturn is:
+For each gap at radius r, the DPM-seeded gravitational acceleration from Saturn is:
 $$
 g_Saturn(r) = G × M_Saturn / r2
 $$
@@ -136,9 +136,9 @@ $$
 ## 5. Physical Interpretation
 
 At ring scales (r ~ 108 m, B ~ 10-7 T), the UQFF electromagnetic Aether term is completely
-negligible (~10-16 m/s2), and the result is dominated entirely by DPM-emergent gravity. This is
+negligible (~10-16 m/s2), and the result is dominated entirely by DPM-seeded gravity. This is
 expected — the UQFF EM term only becomes relevant when v ~ 105 – 106 m/s with B ~ 10-5 – 10-4 T.
-Saturn's ring particles with v_orbital ~ 5 km/s and B ~ 10-7 T are deep in the DPM-emergent regime. The
+Saturn's ring particles with v_orbital ~ 5 km/s and B ~ 10-7 T are deep in the DPM-seeded regime. The
 Three-UQFF resonant correction (κ × [SSq] = 2.85×10-4) provides a ~0.0285% correction — detectable
 in principle by Cassini spacecraft ring dynamics measurements. The gap structure, driven by Mimas
 2:1 resonance at the Cassini Division, is captured by the sharp g gradient: g_Encke = 2.130,
@@ -150,9 +150,9 @@ inverse-square law at these scales.
 ## 6. Conclusions
 
 Three-UQFF applied to Saturn's Cassini, Encke, and Maxwell ring gaps: primary result
-g_Cassini_Division = 2.635 m/s2. At ring scales, UQFF reduces to DPM-emergent gravity with a negligible
+g_Cassini_Division = 2.635 m/s2. At ring scales, UQFF reduces to DPM-seeded gravity with a negligible
 ~0.03% resonant correction. Saturn's ring gaps provide the closest-to-home validation that UQFF
-reduces correctly to the DPM-emergent limit when EM parameters are small.
+reduces correctly to the DPM-seeded limit when EM parameters are small.
 
 *PAPER_789, CP4 Three-UQFF class #373. v5.42.*
 

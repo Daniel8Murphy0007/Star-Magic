@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_158
 title: "Hybrid MUGE Blending Model: g_hybrid = β·g_compressed + (1-β)·g_resonance"
 session: 47
@@ -22,9 +22,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper introduces the **Hybrid MUGE Blending Model**, a continuous interpolation between
 the Compressed MUGE and Resonance MUGE gravity frameworks. The blending parameter
 β = exp(−B/B_crit) transitions smoothly from β → 0 (pure resonance, magnetar regime) to
-β → 1 (pure compressed DPM-emergent+, weak-field regime). This unified hybrid is the **first
-algebraic bridge** between the DPM-emergent limit and the full resonance superconductive regime
-within the UQFF framework, extending §2.2 PAPER_155 which proved DPM-emergent emergence
+β → 1 (pure compressed DPM-seeded+, weak-field regime). This unified hybrid is the **first
+algebraic bridge** between the DPM-seeded limit and the full resonance superconductive regime
+within the UQFF framework, extending §2.2 PAPER_155 which proved DPM-seeded emergence
 only in the fTRZ→0 limit.
 
 ---
@@ -51,7 +51,7 @@ where
 
 $$\boxed{\beta = e^{-B/B_{crit}}}$$
 
-- $g_{comp}$ = compressed MUGE gravity (PAPER_090, 9-term DPM-emergent+corrections)
+- $g_{comp}$ = compressed MUGE gravity (PAPER_090, 9-term DPM-seeded+corrections)
 - $g_{res}$ = resonance MUGE gravity (PAPER_146/159, 12/13-term superconductive resonance)
 - $B$ = local magnetic field strength [T]
 - $B_{crit}$ = critical quantum field (4.4×1013 T for magnetars)
@@ -76,7 +76,7 @@ For Sun (B_s = 10-4 T):
 
 $$\beta_{Sun} = e^{-10^{-4}/4.4\times10^{13}} \approx 1.000000$$
 
-→ g_hybrid → g_comp (pure DPM-emergent+ regime)
+→ g_hybrid → g_comp (pure DPM-seeded+ regime)
 
 ### 3.3 Neutron Star Surface (B ~ 1012 T)
 
@@ -137,7 +137,7 @@ The hybrid model provides:
 1. **A unified equation** replacing case-by-case selection of compressed vs. resonance
 2. **Continuous parameter space** enabling interpolation between observational regimes
 3. **Automatic mode selection**: β encodes the magnetic suppression factor from PAPER_090
-4. **Extends PAPER_155**: While PAPER_155 proves DPM-emergent emergence at fTRZ→0, this model
+4. **Extends PAPER_155**: While PAPER_155 proves DPM-seeded emergence at fTRZ→0, this model
    handles intermediate B fields without requiring fTRZ → 0
 
 Connection to 4 UQFF Operational Modes (PAPER_064):
@@ -150,7 +150,7 @@ Connection to 4 UQFF Operational Modes (PAPER_064):
 
 **Status:** ✅ Complete | **CP Stage:** CP3 (new `c`ompute_hybrid_muge`()` function)
 **Supersedes:** N/A (new model) | **Related:** PAPER_090 (compressed), PAPER_146 (12-term
-resonance), PAPER_155 (DPM-emergent limit), PAPER_064 (4 modes)
+resonance), PAPER_155 (DPM-seeded limit), PAPER_064 (4 modes)
 
 
 **UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]?r/GM = 5.7e-1§5.0e-4 = 2.85e-4; compressed

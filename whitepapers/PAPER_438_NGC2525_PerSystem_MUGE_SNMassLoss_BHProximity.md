@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_438
 title: "Galaxy NGC 2525: Per-System MUGE with M_SN(t) Supernova Mass-Loss and g_BH Proximity"
 session: 119
@@ -67,7 +67,7 @@ At $t=10$ yr: $M_\text{SN} \rightarrow 0$ (remnant phase)
 
 $$\boxed{g_\text{N2525}(r,t) = T_1 + T_\text{BH} + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_\text{SN}}$$
 
-**T1 — DPM-emergent + H(z)t + B:**
+**T1 — DPM-seeded + H(z)t + B:**
 $$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H(z)t)\left(1-\frac{B}{B_\text{crit}}\right) \approx \frac{6.674\times10^{-11} \times 1.989\times10^{40}}{(2.836\times10^{20})^2} \approx 1.65 \times 10^{-11} \, \text{m/s}^2$$
 
 **T_BH — SMBH proximity gravity:**
@@ -87,7 +87,7 @@ $$T_2 = 2 \times 1.65\times10^{-11} \times 1.1 \approx 3.63\times10^{-11} \, \te
 **T7 — Oscillatory spiral arm modes:** minor (oscillatory density waves)
 
 **T8 — DM perturbation:**
-$$T_8 \approx \frac{(M + 0.1M)\deltarho/\rho + 3μ_s∇(M_s/r)/r}{M} \sim 10^{-11} \, \text{m/s}^2$$
+$$T_8 \approx \frac{(M + 0.1M)\delta\rho/\rho + 3μ_s∇(M_s/r)/r}{M} \sim 10^{-11} \, \text{m/s}^2$$
 
 **T_SN — SN Ia mass loss (negative term):**
 $$\boxed{T_\text{SN}(t) = -\frac{GM_\text{SN}(t)}{r^2} = -\frac{6.674\times10^{-11} \times 2.785\times10^{30}}{(2.836\times10^{20})^2} \times e^{-t/\tau_text{SN}} \approx -2.31\times10^{-21} \, e^{-t/\tau} \, \text{m/s}^2}$$
@@ -104,7 +104,7 @@ At $t = 0$, $r = r_\text{galaxy} = 2.836 \times 10^{20}$ m:
 |------|-------------|-------|
 | $T_\text{BH}$ | $+1.334 \times 10^5$ | Dominant (at $r_\text{BH} = 1$ AU) |
 | $T_2$ UQFF Ug | $+3.63 \times 10^{-11}$ | Primary at galaxy scale |
-| $T_1$ DPM-emergent | $+1.65 \times 10^{-11}$ | Standard |
+| $T_1$ DPM-seeded | $+1.65 \times 10^{-11}$ | Standard |
 | $T_8$ DM | $+\sim10^{-11}$ | Minor |
 | $T_\text{SN}$ (galaxy scale) | $-2.31 \times 10^{-21}$ | Negligible at galaxy $r$ |
 

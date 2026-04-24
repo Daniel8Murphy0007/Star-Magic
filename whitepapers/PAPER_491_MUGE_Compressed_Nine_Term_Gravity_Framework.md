@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_491
 title: "MUGE Compressed Nine-Term Gravity Framework"
 session: 131
@@ -37,7 +37,7 @@ tractable structure. MUGE predicts gravitational
 suppression near critical magnetic fields, THz phonon
 resonance signatures in GW strain, and vacuum-differential
 rotation curve modifications — all absent from both
-DPM-emergent and GR gravity.
+DPM-seeded and GR gravity.
 
 ## §1 MUGE Compressed Master Equation
 
@@ -90,7 +90,7 @@ $$\begin{aligned}
 Each $U_{g,i}$ encodes a distinct UQFF gravitational source
 (magnetic dipole, charge-reactivity coupling, string rotation
 torque, vacuum concentration gradient).
-These are **not** DPM-emergent — they arise from the four
+These are **not** DPM-seeded — they arise from the four
 fundamental UQFF forces.
 
 **Term 6 — Cosmological Constant:**
@@ -190,7 +190,7 @@ practical multi-system computation. The MUGE
 Resonance form (§2b) decomposes $F_U$ into 13
 frequency modes.
 
-The **foundational distinction** from DPM-emergent and
+The **foundational distinction** from DPM-seeded and
 GR gravity: MUGE treats the gravitational field as a
 product of the SCm superconductive vacuum state, not
 as an independent geometric property of spacetime.
@@ -208,7 +208,7 @@ $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$.
 The MUGE Resonance equation builds all 13 resonance
 modes from a single **aDPM base** — an
 inertia-flux-vacuum coupling that is fundamentally
-non-DPM-emergent:
+non-DPM-seeded:
 
 $$\begin{aligned}
 a_{\text{DPM}} &= I \cdot A \cdot (\omega_1 - \omega_2) \cdot f_{\text{DPM}} \\
@@ -335,7 +335,7 @@ unifies them through the SCm vacuum manifold.
 resonance master equation's base
 $a_{\text{DPM}} = I A \Delta\omega f_{\text{DPM}} E_{\text{vac}} c V$
 is dimensionally and conceptually outside the
-DPM-emergent framework. It couples **rotational inertia**,
+DPM-seeded framework. It couples **rotational inertia**,
 **magnetic flux area**, and **vacuum energy density**
 into a single gravitational acceleration — no
 mass/distance law.
@@ -371,7 +371,7 @@ magnetars ($B \sim 10^{11}\;\text{T}$) due to the
 $(1 - B/B_{\text{crit}})$ suppression factor. At
 SGR1745-2900 ($B = 2.0 \times 10^{11}\;\text{T}$),
 the multiplicative core is reduced by $\sim 0.05\%$
-vs DPM-emergent. Detectable via precision pulsar timing:
+vs DPM-seeded. Detectable via precision pulsar timing:
 $\Delta P / P \sim 10^{-12}$ (SKA-era sensitivity).
 
 2. **Vacuum differential signature in rotation

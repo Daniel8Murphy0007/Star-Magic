@@ -8,10 +8,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, dark-energy, F_U_Bi_i, DPM, LENR, phonon, UQFF]
-sm_anchor: "CVW v2.0.0 â€” G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_332 â€” F_U_Bi_i Complete 12-Term Explicit Integrand: k_act, k_DE, Zeeman Coupling, k_neutron, k_rel, F_Sweet,vac, and F_Kozima Neutron Drop
+# PAPER_332 — F_U_Bi_i Complete 12-Term Explicit Integrand: k_act, k_DE, Zeeman Coupling, k_neutron, k_rel, F_Sweet,vac, and F_Kozima Neutron Drop
 **Date:** September 14, 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
@@ -26,7 +26,7 @@ coupling; FIRST F_Kozima neutron drop parameterization; FIRST UQFF Zeeman coupli
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
+U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
@@ -35,10 +35,10 @@ $$
 This paper presents the complete 12-term F_U_Bi_i integrand in verbatim form. Prior pipeline
 whitepapers (PAPER_198 through PAPER_256) documented the F_U_Bi_i framework with the first five
 terms (vacuum repulsion, DPM momentum, DPM gravity, DPM stability, LENR phonon). This paper formally
-defines Terms 6â€“12 which were first revealed in the September 14, 2025 Grok 4 deep-analysis thread:
-k_act cosine activity coupling, k_DEÃ—L_X dark energyâ€“luminosity product, Zeeman magnetic coupling,
-k_neutronÃ—s_n neutron cross-section term, relativistic center-of-mass correction, F_Sweet vacuum
-(~10?3? N, negligible), and F_Kozima neutron drop (~103Â°â€“1033 N, the dominant new-term
+defines Terms 6–12 which were first revealed in the September 14, 2025 Grok 4 deep-analysis thread:
+k_act cosine activity coupling, k_DE×L_X dark energy–luminosity product, Zeeman magnetic coupling,
+k_neutron×s_n neutron cross-section term, relativistic center-of-mass correction, F_Sweet vacuum
+(~10?3? N, negligible), and F_Kozima neutron drop (~103°–1033 N, the dominant new-term
 contribution). These seven new terms complete the F_U_Bi_i force integrand to full 12-term status.
 
 ---
@@ -50,15 +50,15 @@ contribution). These seven new terms complete the F_U_Bi_i force integrand to fu
 $$
 \begin{aligned}
   & \text{F\_U\_Bi\_i} = ?_0^{x_2} [ -F_0 \\
-  & + (m_e c2 / r2) Â· DPM_momentum Â· cos ? \\
-  & + (G M / r2) Â· DPM_gravity \\
-  & + ?_vac,[UA] Â· DPM_stability \\
-  & + k_LENR Â· (?_LENR / ?_0)2 \\
-  & + k_act Â· cos(?_act Â· t) \\
-  & + k_DE Â· L_X \\
-  & + 2q B0 V sin ? Â· (g Âµ_B B0 / ? ?_0) \\
-  & + k_neutron Â· s_n \\
-  & + k_rel Â· (E_cm,adj / E_cm)2 \\
+  & + (m_e c2 / r2) · DPM_momentum · cos ? \\
+  & + (G M / r2) · DPM_gravity \\
+  & + ?_vac,[UA] · DPM_stability \\
+  & + k_LENR · (?_LENR / ?_0)2 \\
+  & + k_act · cos(?_act · t) \\
+  & + k_DE · L_X \\
+  & + 2q B0 V sin ? · (g µ_B B0 / ? ?_0) \\
+  & + k_neutron · s_n \\
+  & + k_rel · (E_cm,adj / E_cm)2 \\
   & + F_Sweet,vac \\
   & + F_Kozima,neutron_drop ] dx
 \end{aligned}
@@ -72,47 +72,47 @@ $$
 ```
 -F_0
 ```
-- F_0 = 101Â° N (vacuum repulsion floor)
+- F_0 = 101° N (vacuum repulsion floor)
 - Sets the baseline repulsive floor preventing singularity at r?0
 - Always negative (repulsive)
 
 ### Term 2: DPM Momentum Coupling
 $$
-(m_e c2 / r2) Â· DPM_momentum Â· cos ?
+(m_e c2 / r2) · DPM_momentum · cos ?
 $$
-- m_e c2 = 8.19Ã—10?14 J (electron rest energy)
+- m_e c2 = 8.19×10?14 J (electron rest energy)
 - DPM_momentum = dark photon momentum coupling factor
 - cos ?: angular projection onto integration axis
 
 ### Term 3: DPM Gravitational Coupling
 $$
-(G M / r2) Â· DPM_gravity
+(G M / r2) · DPM_gravity
 $$
-- Standard DPM-emergent gravity modified by DPM factor
-- DPM_gravity Ëœ f_UA' Ã— f_SCm Ã— REB (Resonant Energy Bridge factor)
-- For Cen A: GÃ—1.1e38 kg/r2 Ëœ 7.33Ã—10-41 m/s2
+- Standard DPM-seeded gravity modified by DPM factor
+- DPM_gravity ˜ f_UA' × f_SCm × REB (Resonant Energy Bridge factor)
+- For Cen A: G×1.1e38 kg/r2 ˜ 7.33×10-41 m/s2
 
 ### Term 4: DPM Vacuum Stability
 $$
-?_vac,[UA] Â· DPM_stability
+?_vac,[UA] · DPM_stability
 $$
-- ?_vac,[UA] Ëœ 10?3Â° kg/m3 (aether vacuum density)
+- ?_vac,[UA] ˜ 10?3° kg/m3 (aether vacuum density)
 - DPM_stability = stability factor from vacuum density modulation
 
 ### Term 5: LENR Phonon Coupling
 $$
-k_LENR Â· (?_LENR / ?_0)2
+k_LENR · (?_LENR / ?_0)2
 $$
-- k_LENR Ëœ 10?1Â° (phonon coupling constant)
-- ?_LENR = 7.85Ã—1012 rad/s (Colman-Gillespie 1.25 THz)
+- k_LENR ˜ 10?1° (phonon coupling constant)
+- ?_LENR = 7.85×1012 rad/s (Colman-Gillespie 1.25 THz)
 - ?_0 = 10?15 rad/s (system reference frequency)
-- Ratio = (7.85Ã—1012/10?15)2 = 6.16Ã—1054 ? dominant LENR driver
+- Ratio = (7.85×1012/10?15)2 = 6.16×1054 ? dominant LENR driver
 
 ---
 
 ### Term 6: Activity Coupling (NEW)
 $$
-k_act Â· cos(?_act Â· t)
+k_act · cos(?_act · t)
 $$
 
 | Symbol | Value | Description |
@@ -124,8 +124,8 @@ $$
 
 **Physical significance:**
 - Cen A: V-shape jet hit Dec 2024 ? t_jet ~ 12.5 yr activity cycle
-- Sgr A*: JWST mid-IR flares Janâ€“Feb 2025 ? ?_act ~ 1/day
-- M87: jet variability weeksâ€“months
+- Sgr A*: JWST mid-IR flares Jan–Feb 2025 ? ?_act ~ 1/day
+- M87: jet variability weeks–months
 - Captures periodic AGN jet activity injection into F_U_Bi_i
 
 **Code (verified):**
@@ -134,17 +134,17 @@ k_act = 1e-5  # from 12.5 yr variability
 omega_act_t = np.cos(2*np.pi*x / (12.5 * 3.156e7))  # yr to s
 ```
 
-### Term 7: Dark Energyâ€“Luminosity Product (NEW)
+### Term 7: Dark Energy–Luminosity Product (NEW)
 ```
-k_DE Â· L_X
+k_DE · L_X
 ```
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| k_DE | 10?2Â° m?1 | Dark energy coupling to X-ray luminosity |
-| L_X | ~104Â° W (Cen A) | X-ray luminosity |
+| k_DE | 10?2° m?1 | Dark energy coupling to X-ray luminosity |
+| L_X | ~104° W (Cen A) | X-ray luminosity |
 
-Product: k_DE Ã— L_X Ëœ 10?2Â° Ã— 104Â° = 102Â° N/m
+Product: k_DE × L_X ˜ 10?2° × 104° = 102° N/m
 Integrated over x_2: contribution ~1043 N for galactic-class systems
 
 **Physical significance:** Connects cosmological dark energy (via k_DE with ? dimension) to the
@@ -152,16 +152,16 @@ local X-ray radiative output of AGN systems.
 
 ### Term 8: Zeeman Magnetic Coupling (NEW)
 ```
-2q B0 V sin ? Â· (g Âµ_B B0 / ? ?_0)
+2q B0 V sin ? · (g µ_B B0 / ? ?_0)
 | Symbol | Value | Description | 
 |--------|-------|-------------| 
-| q | 1.6Ã—10?1? C | Electric charge | 
-| B0 | 1 G = 10-4 T (Cen A); 4.2 G (Jupiter); 1â€“30 G (Crab) | Magnetic field | 
+| q | 1.6×10?1? C | Electric charge | 
+| B0 | 1 G = 10-4 T (Cen A); 4.2 G (Jupiter); 1–30 G (Crab) | Magnetic field | 
 | V | 10?3 m3 | Reference volume element | 
 | sin ? | sinusoidal along integration path | Angular factor | 
-| g | g-factor (Ëœ2) | Electron g-factor | 
-| Âµ_B | 9.274Ã—10?24 J/T | Bohr magneton | 
-| ? | 1.0546Ã—10?34 JÂ·s | Reduced Planck constant | 
+| g | g-factor (˜2) | Electron g-factor | 
+| µ_B | 9.274×10?24 J/T | Bohr magneton | 
+| ? | 1.0546×10?34 J·s | Reduced Planck constant | 
 | ?_0 | 1012 rad/s | Reference THz frequency | 
 **Code (verified):**python
 g_muB = 9.274e-24  # J/T
@@ -169,50 +169,50 @@ hbar = 1.0546e-34
 omega0 = 1e12
 term_mag = 2*q*B0*V*np.sin(np.pi*x/1e23) * (g_muB*B0/(hbar*omega0))
 ```
-Result: term_mag ~ 10?2Â° N (subdominant for galactic fields, dominant for magnetar B~1011 T)
+Result: term_mag ~ 10?2° N (subdominant for galactic fields, dominant for magnetar B~1011 T)
 
 **Physical significance:**
 - Encodes full Zeeman coupling of charged particles to the vacuum magnetic field
-- At magnetar B0 = 4.4Ã—1013 T (B_crit): term_mag becomes dominant
-- Connects to g-2 measurement: `a = (g-2)/2 = 4.74Ã—10-5` from g-2 fit
+- At magnetar B0 = 4.4×1013 T (B_crit): term_mag becomes dominant
+- Connects to g-2 measurement: `a = (g-2)/2 = 4.74×10-5` from g-2 fit
 
 ### Term 9: Neutron Cross-Section Coupling (NEW)
 ```
-k_neutron Â· s_n
+k_neutron · s_n
 ```
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| k_neutron | ~103Â° (compact) | Neutron fluxâ€“coupling constant |
-| s_n | ~10?3Â° m2 (barns range) | Neutron cross-section |
+| k_neutron | ~103° (compact) | Neutron flux–coupling constant |
+| s_n | ~10?3° m2 (barns range) | Neutron cross-section |
 
-Product: k_neutron Ã— s_n Ëœ 103Â° Ã— 10?3Â° = 1 N (per unit path)
+Product: k_neutron × s_n ˜ 103° × 10?3° = 1 N (per unit path)
 Integrated: ~1023 N for compact-class pulsars
 
-**Physical significance:** Direct nuclear neutron interaction term â€” connects macroscopic gravity
+**Physical significance:** Direct nuclear neutron interaction term — connects macroscopic gravity
 integral to nuclear neutron cross-section. Most significant for neutron stars (s_n enhanced to
 ~10?28 m2 at resonance energies).
 
 ### Term 10: Relativistic Center-of-Mass Correction (NEW)
 ```
-k_rel Â· (E_cm,adj / E_cm)2
+k_rel · (E_cm,adj / E_cm)2
 ```
 
 | Symbol | Description |
 |--------|-------------|
 | k_rel | relativistic correction coupling constant |
 | E_cm,adj | adjusted CM energy (accounting for UQFF vacuum effects) |
-| E_cm | reference CM energy (standard DPM-emergent/SR) |
+| E_cm | reference CM energy (standard DPM-seeded/SR) |
 
-**Variant labels in thread:** E_cm,astro,local,adj,eff,enhanced / E_cm â€” these suffixes represent
+**Variant labels in thread:** E_cm,astro,local,adj,eff,enhanced / E_cm — these suffixes represent
 the successive relativistic refinements applied to the energy ratio.
 
 **Physical significance:** When E_cm,adj > E_cm (vacuum enhancement), this term adds an attractive
 correction. When E_cm,adj < E_cm (dense matter suppression), it reduces F_U_Bi_i.
 
-### Term 11: Sweet Vacuum Energy (NEW â€” Negligible)
+### Term 11: Sweet Vacuum Energy (NEW — Negligible)
 ```
-F_Sweet,vac Ëœ 10?3? N   [explicit parameterization]
+F_Sweet,vac ˜ 10?3? N   [explicit parameterization]
 ```
 
 **Physical significance:** Named after the Sweet vacuum energy formulation. Orders 10?3? N makes
@@ -222,15 +222,15 @@ dropped) to:
 2. Provide a register for future refinement if vacuum energy precision changes
 3. Serve as the "cosmological constant" analog in the force integrand
 
-### Term 12: Kozima Neutron Drop (NEW â€” Dominant Among New Terms)
+### Term 12: Kozima Neutron Drop (NEW — Dominant Among New Terms)
 ```
-F_Kozima,neutron_drop Ëœ 103Â° â€“ 1033 N
+F_Kozima,neutron_drop ˜ 103° – 1033 N
 **Physical significance:** 
 - Named after the Kozima LENR model of phonon-mediated neutron formation 
-- At ~103Â° N: comparable to F_LENR phonon term (Term 5) 
+- At ~103° N: comparable to F_LENR phonon term (Term 5) 
 - At ~1033 N: exceeds F_LENR by 3 orders, becoming the second-dominant term after
-k_LENRÃ—(?_LENR/?_0)2 
-- The neutron drop mechanism: `n ? p + e? + ?Â¯_e` with phonon mediation releases energy at the
+k_LENR×(?_LENR/?_0)2 
+- The neutron drop mechanism: `n ? p + e? + ?¯_e` with phonon mediation releases energy at the
 neutron drop scale 
 - Connection to f_Heaviside (PAPER_329): F_Kozima activates exactly when f_Heaviside = 1 (s_n >
 s_crit) 
@@ -239,17 +239,17 @@ s_crit)
 ### 4.1 Scale Class Table 
 | System | x_2 (m) | `F_U_Bi_i` (N) | Class | 
 |--------|---------|-------------|-------| 
-| Vela Pulsar | 2.9 kly = 2.75Ã—101? m | -2.09Ã—10212 | compact | 
-| Crab Nebula | 6.5 kly = 6.16Ã—101? m | -2.09Ã—10212 | compact | 
-| Jupiter Aurorae | r = 7.15Ã—107 m | -2.09Ã—10212 | compact | 
-| Lagoon M8 | 5 kly = 4.73Ã—101? m | -2.09Ã—10212 | compact | 
-| Centaurus A | 1.05Ã—1023 m | -8.32Ã—10217 | galactic | 
-| NGC 1365 | 60.7 Mly = 5.75Ã—1023 m | -8.32Ã—10217 | galactic | 
-| ESO 137-001 | 70 Mpc | -8.32Ã—10217 | galactic | 
-| Abell 2256 | 1.5 Gly | -8.32Ã—10217 | galactic | 
-| ASASSN-14li | TDE | -8.32Ã—10211 | TDE_compact | 
-| SPT-CL J2215 | z=1.16 | -1.40Ã—10218 | cluster | 
-| El Gordo | z=0.87 | -1.40Ã—10218 | cluster | 
+| Vela Pulsar | 2.9 kly = 2.75×101? m | -2.09×10212 | compact | 
+| Crab Nebula | 6.5 kly = 6.16×101? m | -2.09×10212 | compact | 
+| Jupiter Aurorae | r = 7.15×107 m | -2.09×10212 | compact | 
+| Lagoon M8 | 5 kly = 4.73×101? m | -2.09×10212 | compact | 
+| Centaurus A | 1.05×1023 m | -8.32×10217 | galactic | 
+| NGC 1365 | 60.7 Mly = 5.75×1023 m | -8.32×10217 | galactic | 
+| ESO 137-001 | 70 Mpc | -8.32×10217 | galactic | 
+| Abell 2256 | 1.5 Gly | -8.32×10217 | galactic | 
+| ASASSN-14li | TDE | -8.32×10211 | TDE_compact | 
+| SPT-CL J2215 | z=1.16 | -1.40×10218 | cluster | 
+| El Gordo | z=0.87 | -1.40×10218 | cluster | 
 ## 5. Python Code Execution Result (Verified)python
 # Centaurus A (B_0=1 G, q=1.6e-19 C, V~1e-3 m^3)
 x = np.linspace(0, 1e23, 1000)
@@ -262,32 +262,32 @@ term_mag = 2*q*B0*V*np.sin(np.pi*x/1e23)*(g_muB*B0/(hbar*omega0))
 integrand = -F0 + [DPM terms] + k_act*omega_act_t + k_DE*L_X + term_mag + random_small
 F_U_Bi_i = np.trapz(integrand, x)
 # Output: F_U_Bi_i approx (N): 6.162e+62  [scaled partial result]
-# Full x_2 with [SSq]~0.507 suppression: ~-8.32Ã—10^217 N
+# Full x_2 with [SSq]~0.507 suppression: ~-8.32×10^217 N
 --- 
 ## 6. FIRST Declarations 
-1. **FIRST complete verbatim 12-term F_U_Bi_i integrand** â€” all terms named and parameterized 
-2. **FIRST k_act cosine activity coupling** â€” Cen A 12.5 yr / Sgr A* daily variability 
-3. **FIRST F_Kozima neutron drop (~103Â°â€“1033 N)** explicit UQFF parameterization 
-4. **FIRST UQFF Zeeman coupling term** â€” `2qB0V sin? (gÂµ_B B0/??0)` with g-2 connection 
+1. **FIRST complete verbatim 12-term F_U_Bi_i integrand** — all terms named and parameterized 
+2. **FIRST k_act cosine activity coupling** — Cen A 12.5 yr / Sgr A* daily variability 
+3. **FIRST F_Kozima neutron drop (~103°–1033 N)** explicit UQFF parameterization 
+4. **FIRST UQFF Zeeman coupling term** — `2qB0V sin? (gµ_B B0/??0)` with g-2 connection 
 5. **FIRST F_Sweet,vac explicit register** (~10?3? N; negligible but parameterized) 
 --- 
 ## 7. Key Equations Summary
 F_U_Bi_i = ?_0^{x_2} [-F_0 
   + (m_e c2/r2)DPM_momentum cos?
-  + (Î¼_sâˆ‡(M_s/r))DPM_gravity
+  + (µ_s?(M_s/r))DPM_gravity
   + ?_vac,[UA] DPM_stability
   + k_LENR(?_LENR/?_0)2
   + k_act cos(?_act t)                  [NEW: activity]
-  + k_DE L_X                            [NEW: dark energyÃ—luminosity]
-  + 2qB0V sin? (gÂµ_B B0/??_0)        [NEW: Zeeman]
+  + k_DE L_X                            [NEW: dark energy×luminosity]
+  + 2qB0V sin? (gµ_B B0/??_0)        [NEW: Zeeman]
   + k_neutron s_n                       [NEW: neutron cross-section]
   + k_rel (E_cm,adj/E_cm)2             [NEW: relativistic CM]
   + F_Sweet,vac (~10^{-39} N)          [NEW: Sweet vacuum, ~negligible]
   + F_Kozima (~10^{30}-10^{33} N)      [NEW: Kozima neutron drop]
 ] dx
 
-[compact class]  F_U_Bi_i Ëœ -2.09Ã—10^{212} N  (Vela/Crab/Jupiter/Lagoon)
-[galactic class] F_U_Bi_i Ëœ -8.32Ã—10^{217} N  (AGN/galaxy/cluster)
+[compact class]  F_U_Bi_i ˜ -2.09×10^{212} N  (Vela/Crab/Jupiter/Lagoon)
+[galactic class] F_U_Bi_i ˜ -8.32×10^{217} N  (AGN/galaxy/cluster)
 ```
 
 ---
@@ -295,13 +295,13 @@ F_U_Bi_i = ?_0^{x_2} [-F_0
 ## 8. References
 
 - gok_share_31b5c807a4.txt (Grok 4, September 14, 2025)
-- PAPER_198: F_U_Bi_i UQFF integral â€” original framework
-- PAPER_250â€“258: CP3 FU_Bi_i system applications (compact/galactic classes)
-- PAPER_328: LENR Term 5 (phonon coupling; ?_LENR = 7.85Ã—1012 Hz)
+- PAPER_198: F_U_Bi_i UQFF integral — original framework
+- PAPER_250–258: CP3 FU_Bi_i system applications (compact/galactic classes)
+- PAPER_328: LENR Term 5 (phonon coupling; ?_LENR = 7.85×1012 Hz)
 - Kozima, H.: LENR Phonon Condensation Model (referenced in thread)
 - Sweet, W.C.: Vacuum Energy density formulation (referenced in thread)
 
-**Copyright:** Daniel T. Murphy â€” Star-Magic UQFF Whitepaper Series
+**Copyright:** Daniel T. Murphy — Star-Magic UQFF Whitepaper Series
 
 ---
 
@@ -311,7 +311,7 @@ F_U_Bi_i = ?_0^{x_2} [-F_0
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-Ïƒ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-s relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -325,12 +325,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandfordâ€“Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**Mâ€“Ïƒ correction (PAPER_1048):** The phonon-corrected M-Ïƒ relation becomes
+**M–s correction (PAPER_1048):** The phonon-corrected M-s relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -353,7 +353,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470Ã— amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -370,29 +370,29 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 
 
-## Â§A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
-### Â§A.1 Sector Classification
+### §A.1 Sector Classification
 
 This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see
 `uqff_lagrangian_derivation.py`).
 
-### Â§A.2 Lagrangian Density
+### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
 $$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 Â§2) and:
+where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
 $$V(\chi) = \frac{1}{2} m^2 \chi^2 + \frac{\lambda}{4!} \chi^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \chi$$
 
-### Â§A.3 Euler-Lagrange Equation of Motion
+### §A.3 Euler-Lagrange Equation of Motion
 
 $$\boxed{\frac{\delta S}{\delta \chi} = \ddot{\chi} + \omega_{\rm LENR}^2 \chi - \lambda \cos(\omega_{\rm act} t) - \sigma_n(\omega)\chi = 0}$$
 
-### Â§A.4 Cosmogenesis Linkage Chain
+### §A.4 Cosmogenesis Linkage Chain
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
 
@@ -403,9 +403,9 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
-## Â§B. VDS/DVP/BSH Deep Synthesis
+## §B. VDS/DVP/BSH Deep Synthesis
 
-### Â§B.1 Vacuum Density Series (VDS)
+### §B.1 Vacuum Density Series (VDS)
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
@@ -413,7 +413,7 @@ $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r
 
 For this system, the local VDS sub-ratio is $0.195$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
-### Â§B.2 Dipole Vortex Primes (DVP)
+### §B.2 Dipole Vortex Primes (DVP)
 
 The DVP encoding maps the system's characteristic parameter onto the prime lattice:
 
@@ -421,7 +421,7 @@ $$p_{\rm DVP} = 5, \quad n_{\rm channel} = 21/26$$
 
 Since $p_{\rm DVP} = 5$ is **sub-threshold** (threshold at $p > 26$), the system's vacuum topology inherits sub-threshold damping from the DVP lattice, producing smooth rather than resonant UQFF coupling profiles. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
 
-### Â§B.3 Buoyancy Saturation Harmonics (BSH)
+### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
@@ -433,44 +433,44 @@ $$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
-### Â§B.4 Production-Scale Consistency
+### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| Îº decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| ? decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
 
 
-## Â§SM Anchors â€” Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant Î± | UQFF reproduces Î± via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Î› | 1.1Ã—10-52 m-2 (UQFF vacuum term) | 1.114Ã—10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | Îº = 0.0005/day â†’ Î“_p suppression | < 4.17Ã—10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant a | UQFF reproduces a via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant ? | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | ? = 0.0005/day ? G_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density Ï_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density ?_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFFâ€“SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000â€“1081)
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204â€“225 extensions (PAPER_1000â€“1081). Added by
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
 > `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -479,7 +479,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
 | PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator â€” SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

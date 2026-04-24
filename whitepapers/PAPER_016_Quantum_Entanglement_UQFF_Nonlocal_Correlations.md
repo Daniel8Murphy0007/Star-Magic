@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_016
 title: "Quantum Entanglement and UQFF Nonlocal Correlations"
 session: 0
@@ -63,7 +63,7 @@ The UQFF-modified entangled state evolution:
 
 $$|\psi(t)\rangle_{UQFF} = \exp!\left[-i\hat{H}_{eff}\,t - \frac{\gamma_{damp}(E)\,t}{2}\right]|\psi(0)\rangle$$
 
-$$\hat{H}_{eff} = \hat{H}_0 + \hat{H}_{int} + \hat{H}_{UQFF},\quad \hat{H}_{UQFF} = \alpha_Qnabla^2\psi + \beta_{damp}\frac{\partialpsi}{\partial t}$$
+$$\hat{H}_{eff} = \hat{H}_0 + \hat{H}_{int} + \hat{H}_{UQFF},\quad \hat{H}_{UQFF} = \alpha_Qnabla^2\psi + \beta_{damp}\frac{\partial\psi}{\partial t}$$
 
 **Key numerical results:** gamma_damp ~ kappa × E/E_ref = 5.0e-4 × (E/E_ref), alpha_Q ~ 1.0e-2,
 D_total = 3.33e-1, entanglement range extended by 1/D_total = 3.0e0
@@ -609,7 +609,7 @@ bridge.*
 ---
 
 **Validator:** `validate_uqff_calculators.py` — PASSED (8/8)  
-*All 8 UQFF master equation calculators validated: Base (F_U = Ug − Ub + Um), Compressed (DPM-emergent
+*All 8 UQFF master equation calculators validated: Base (F_U = Ug − Ub + Um), Compressed (DPM-seeded
 + 9 corrections), Superconductive (H_SCm modulation), Triadic (26-layer gravitational scaling),
 Buoyant (F_U_Bi atomic scale), MasterBuoyant (F_U_Bi_i cosmic scale), Resonant (aDPM + 13 frequency
 modes), Quadratic (dual-solution roots); κ = 0.0005/day, [SSq] = 0.57*
@@ -669,7 +669,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

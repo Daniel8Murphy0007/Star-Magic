@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_143
 title: "UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schrdinger/Dirac Split in
 the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)"
@@ -49,7 +49,7 @@ present in Standard Model treatments.
 
 ### 1.1 MUGE Complete
 
-$$g_{MUGE}(r, t, Z) = \underbrace{\frac{G m_{eff}(t) m_p}{r^2} + \sum_{Z=1}^{126} \frac{G M_Z}{r_Z^2}}_{\text{DPM-emergent + Z-dependence}} \times \underbrace{(1 + f_{sc}(Z, t))}_{\text{SCm correction}} \times \underbrace{e^{H_0 t / c}}_{\text{Hubble}}$$
+$$g_{MUGE}(r, t, Z) = \underbrace{\frac{G m_{eff}(t) m_p}{r^2} + \sum_{Z=1}^{126} \frac{G M_Z}{r_Z^2}}_{\text{DPM-seeded + Z-dependence}} \times \underbrace{(1 + f_{sc}(Z, t))}_{\text{SCm correction}} \times \underbrace{e^{H_0 t / c}}_{\text{Hubble}}$$
 
 plus UQFF extension terms: $Ug_1 + Ug_2 + Ug_3 + Ug_4 + Ug_{4i} + Ub + Um + U_{A\_{\mu\nu}}$
 

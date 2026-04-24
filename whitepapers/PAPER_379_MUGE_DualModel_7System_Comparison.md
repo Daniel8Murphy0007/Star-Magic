@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_379
 title: "MUGE Dual-Model 7-System Numeric Comparison: Compressed vs Resonance"
 session: 103
@@ -43,7 +43,7 @@ This data was NOT captured in PAPER_371 (resonance only) or PAPER_372 (compresse
 
 | System | Compressed MUGE g (m/s2) | Resonance MUGE g (m/s2) | Dominant Term (Compressed) | Dominant Term (Resonance) |
 |--------|------------------------|------------------------|---------------------------|--------------------------|
-| Magnetar SGR 1745-2900 | $1.782 \times 10^{39}$ | $1.773 \times 10^{-9}$ | Perturbation $(M·\deltarho/\rho)$ | Fluid $a_{fluid\_freq}$ |
+| Magnetar SGR 1745-2900 | $1.782 \times 10^{39}$ | $1.773 \times 10^{-9}$ | Perturbation $(M·\delta\rho/\rho)$ | Fluid $a_{fluid\_freq}$ |
 | Sagittarius A* | $3.552 \times 10^{20}$ | $4.105 \times 10^{29}$ | Fluid $\rho_{fl}·V·g$ | Fluid $a_{fluid\_freq}$ |
 | Tapestry of Blazing Starbirth | $1.001 \times 10^{27}$ | $1.001 \times 10^{27}$ | Fluid/Perturbation (tie) | Fluid $a_{fluid\_freq}$ |
 | Westerlund 2 | $1.001 \times 10^{27}$ | $1.001 \times 10^{27}$ | Fluid/Perturbation (tie) | Fluid $a_{fluid\_freq}$ |
@@ -73,7 +73,7 @@ $$
 $$
 
 **Physical interpretation:** The compressed model's perturbation term is **unphysically large**
-for a magnetar (dense neutron star) — the $\deltarho/\rho$ density perturbation applied to
+for a magnetar (dense neutron star) — the $\delta\rho/\rho$ density perturbation applied to
 the full mass at neutron-star densities gives an unphysical result. The resonance model,
 which relies on vacuum energy density ratios and system volume, gives a physically
 plausible acceleration for a magnetar at scale.

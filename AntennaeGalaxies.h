@@ -131,8 +131,8 @@ public:
     }
 
     double compute_Ug(double Mt, double It) const {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double ug1 = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double corr_B = 1.0 - B / B_crit;
         // (1+I) boosts Ug during merger

@@ -9,7 +9,7 @@ CANONICAL RULE (STAR-MAGIC_NEWTON GRAVITY FIX.py):
   - GM/r^2 is EMERGENT from DPM/Ug family. It is NOT the seed.
   - g_base / g_N / g_surface must NOT be set as G*M/r^2 directly as the foundation.
   - Every calculator class must have compute(self, dataset: dict) -> dict.
-  - DPM-emergent chain: 0 -> grad(UA) -> DPM -> mu_s -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2
+  - DPM-seeded chain: 0 -> grad(UA) -> DPM -> mu_s -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2
 """
 
 import re
@@ -21,7 +21,7 @@ import ast as _ast
 # ---------------------------------------------------------------------------
 DPM_BLOCK = '''
 # ===========================================================================
-# DPM-EMERGENT HELPERS (injected by _fix_newton_compute.py)
+# DPM-seeded HELPERS (injected by _fix_newton_compute.py)
 # CANONICAL: GM/r^2 is projection AFTER family assembly, never the seed.
 # Ug1 = mu_s * grad(M_s/r), mu_s = B*r^3, grad = G*M/r^2
 # ===========================================================================
@@ -51,7 +51,7 @@ dpm_ug2_shell = dpm_ug2_shell  # backward-compat alias
 # ---------------------------------------------------------------------------
 COMPUTE_METHOD = '''
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -67,7 +67,7 @@ COMPUTE_METHOD = '''
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-FOUNDATION GRAVITY family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -93,7 +93,7 @@ COMPUTE_METHOD = '''
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -120,83 +120,83 @@ NEWTON_PATTERNS = [
     # g_base = G * M / (r ** 2) if r > 0 else 0   [most common]
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M\s*/\s*\(r\s*\*\*\s*2\)\s*if\s*r\s*>\s*0\s*else\s*0',
-        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection, not Newton seed'
+        r'\1dpm_ug1_seed(M, r)  # DPM-seeded projection, not Newton seed'
     ),
     # g_N = G * M / (r ** 2) if r > 0 else 0
     (
         r'([ \t]+g_N\s*=\s*)G\s*\*\s*M\s*/\s*\(r\s*\*\*\s*2\)\s*if\s*r\s*>\s*0\s*else\s*0',
-        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M, r)  # DPM-seeded projection'
     ),
     # g_surface = G * M_body / r ** 2
     (
         r'([ \t]+g_surface\s*=\s*)G\s*\*\s*M_body\s*/\s*r\s*\*\*\s*2\b',
-        r'\1dpm_ug1_seed(M_body, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M_body, r)  # DPM-seeded projection'
     ),
     # g_base = G * M_visible / (r**2)
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M_visible\s*/\s*\(r\*\*2\)',
-        r'\1dpm_ug1_seed(M_visible, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M_visible, r)  # DPM-seeded projection'
     ),
     # g_DM = G * M_DM / (r**2)
     (
         r'([ \t]+g_DM\s*=\s*)G\s*\*\s*M_DM\s*/\s*\(r\*\*2\)',
-        r'\1dpm_ug1_seed(M_DM, r)  # DPM-emergent dark matter projection'
+        r'\1dpm_ug1_seed(M_DM, r)  # DPM-seeded dark matter projection'
     ),
     # g_base = G * M / (r**2)  [no spaces variant]
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M\s*/\s*\(r\*\*2\)',
-        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection, not Newton seed'
+        r'\1dpm_ug1_seed(M, r)  # DPM-seeded projection, not Newton seed'
     ),
     # g_N = G * M / (r**2)  [no spaces variant]
     (
         r'([ \t]+g_N\s*=\s*)G\s*\*\s*M\s*/\s*\(r\*\*2\)',
-        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M, r)  # DPM-seeded projection'
     ),
     # g_base = G * M / r**2  (no parens)
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M\s*/\s*r\s*\*\*\s*2\b(?!\s*if)',
-        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection, not Newton seed'
+        r'\1dpm_ug1_seed(M, r)  # DPM-seeded projection, not Newton seed'
     ),
     # CP3 pattern: g_BH = G * M_BH / r_BH**2  (SMBH contribution used as seed base)
     (
         r'([ \t]+g_BH\s*=\s*)G\s*\*\s*M_BH\s*/\s*r_BH\*\*2\b',
-        r'\1dpm_ug1_seed(M_BH, r_BH)  # DPM-emergent BH projection'
+        r'\1dpm_ug1_seed(M_BH, r_BH)  # DPM-seeded BH projection'
     ),
     # term_BH = G * M_BH / r_BH**2  (used as Newton base in multi-system calc)
     (
         r'([ \t]+term_BH\s*=\s*)G\s*\*\s*M_BH\s*/\s*r_BH\*\*2\b',
-        r'\1dpm_ug1_seed(M_BH, r_BH)  # DPM-emergent BH projection'
+        r'\1dpm_ug1_seed(M_BH, r_BH)  # DPM-seeded BH projection'
     ),
     # g_Sun_tidal  = G * M_Sun / (r_orbit * r_orbit)
     (
         r'([ \t]+g_Sun_tidal\s*=\s*)G\s*\*\s*M_Sun\s*/\s*\(r_orbit\s*\*\s*r_orbit\)',
-        r'\1dpm_ug1_seed(M_Sun, r_orbit)  # DPM-emergent solar tidal projection'
+        r'\1dpm_ug1_seed(M_Sun, r_orbit)  # DPM-seeded solar tidal projection'
     ),
     # CP2 specific: Ug_per_plasmoid = G * m / r  [used as proxy in plasmoid]
     (
         r'([ \t]+Ug_per_plasmoid\s*=\s*)G\s*\*\s*m\s*/\s*r\b',
-        r'\1dpm_ug1_seed(m, r)  # DPM-emergent plasmoid projection'
+        r'\1dpm_ug1_seed(m, r)  # DPM-seeded plasmoid projection'
     ),
     # CP2: Ug_proxy = G * M_total / d_m**2
     (
         r'([ \t]+Ug_proxy\s*=\s*)G\s*\*\s*M_total\s*/\s*d_m\*\*2\b',
-        r'\1dpm_ug1_seed(M_total, d_m)  # DPM-emergent proxy projection'
+        r'\1dpm_ug1_seed(M_total, d_m)  # DPM-seeded proxy projection'
     ),
     # CP2: U_red_dwarf = G * M_red_dwarf / R_red_dwarf  (potential energy, not gravity seed)
     # NOTE: This is a potential energy term, so we leave it as a comment only
     (
         r'([ \t]+U_red_dwarf\s*=\s*)G\s*\*\s*M_red_dwarf\s*/\s*R_red_dwarf\b',
-        r'\1dpm_ug1_seed(M_red_dwarf, R_red_dwarf)  # DPM-emergent red dwarf projection'
+        r'\1dpm_ug1_seed(M_red_dwarf, R_red_dwarf)  # DPM-seeded red dwarf projection'
     ),
     # CP4: Ug1 = G * M_star * mu_B * B_T / r_m**3 * (1 + H_SCm)  -- uses G*M directly as base
     (
         r'([ \t]+Ug1\s*=\s*)G\s*\*\s*M_star\s*\*\s*mu_B\s*\*\s*B_T\s*/\s*r_m\*\*3\s*\*\s*\(1\s*\+\s*H_SCm\)',
-        r'\1dpm_ug1_seed(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-emergent'
+        r'\1dpm_ug1_seed(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-seeded'
     ),
     # CP4: Ug2 = G * M_star * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm
     (
         r'([ \t]+Ug2\s*=\s*)G\s*\*\s*M_star\s*\*\s*eps0\s*\*\s*E_field\*\*2\s*/\s*\(2\s*\*\s*r_m\)\s*\*\s*rho_sum\s*\*\s*H_SCm',
-        r'\1dpm_ug1_seed(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-emergent'
+        r'\1dpm_ug1_seed(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-seeded'
     ),
 ]
 

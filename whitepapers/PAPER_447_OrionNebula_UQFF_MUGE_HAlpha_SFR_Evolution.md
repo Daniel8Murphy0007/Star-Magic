@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_447
 title: "Orion Nebula UQFF/MUGE Evolution: H-Alpha Resonance, SFR, Trapezium Radiation"
 session: 115
@@ -32,7 +32,7 @@ system models M1-67/Orion molecular cloud gravitational dynamics across the star
 incorporating H-Alpha resonant oscillations (λ=656.3 nm, f=4.57×1014 Hz), Trapezium cluster
 radiation pressure (L=1.53×1032 W), stellar wind coupling (v_wind=8×103 m/s), and SFR-dependent mass
 growth (SFR=0.1 MM_sun/yr). The total effective gravity g_UQFF ≈ 1×10-11 m/s2 at t=1 Myr is dominated by
-wind and radiation terms over the DPM-emergent base (~10-12 m/s2), demonstrating that H-Alpha feedback
+wind and radiation terms over the DPM-seeded base (~10-12 m/s2), demonstrating that H-Alpha feedback
 is the primary gravitational modifier in this system.
 
 ---
@@ -82,7 +82,7 @@ $$P_{\rm rad} = \frac{L_{\rm Trap}}{4\pi r^2 c} \cdot \frac{\rho_{\rm fluid}}{m_
 
 $$P_{\rm rad} = \frac{1.53 \times 10^{32}}{4\pi (1.18 \times 10^{17})^2 \times 3 \times 10^8} \cdot \frac{10^{-20}}{1.67 \times 10^{-27}} \approx 2.06 \times 10^{-9}\ \rm m/s^2$$
 
-**Radiation pressure exceeds DPM-emergent gravity** by 3 orders of magnitude, asserting Trapezium
+**Radiation pressure exceeds DPM-seeded gravity** by 3 orders of magnitude, asserting Trapezium
 feedback as the dominant dispersal mechanism.
 
 ### 2.5 Stellar Wind Term
@@ -103,7 +103,7 @@ Negligible at local redshift; confirms UQFF expansion term is subdominant for Mi
 
 | Term | Value (m/s2) | Dominance |
 |------|-------------|-----------|
-| DPM-emergent base (M_sf) | ~6.4×10-12 | Baseline |
+| DPM-seeded base (M_sf) | ~6.4×10-12 | Baseline |
 | Radiation pressure P_rad | ~2.1×10-9 | **Dominant** |
 | Stellar wind W_stellar | ~2.8×108 | Very large |
 | H-Alpha resonant g_res | ~10-10 | Oscillatory |
@@ -111,7 +111,7 @@ Negligible at local redshift; confirms UQFF expansion term is subdominant for Mi
 | Quantum term | ~10-34 | Negligible |
 | UQFF total | ~1×10-11 | Net effective |
 
-The dominance of radiation + wind over bare DPM-emergent gravity is a fundamental prediction of UQFF
+The dominance of radiation + wind over bare DPM-seeded gravity is a fundamental prediction of UQFF
 for HII region nebulae.
 
 ---

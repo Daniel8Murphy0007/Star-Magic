@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
+U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 

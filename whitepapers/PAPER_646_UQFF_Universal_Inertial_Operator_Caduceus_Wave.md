@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_646
 title: "UQFF Universal Inertial Operator & Caduceus Wave Topology"
 session: 168
@@ -29,7 +29,7 @@ $$U_i = \lambda_i \cdot \frac{\rho_{\text{vac},[SCm]}}{\rho_{\text{vac},[UA]}} \
 
 The Universal Inertial Operator (Ui) is derived within the UQFF framework as an active,
 dynamic quantity governing Universal Buoyancy and the material anchoring of matter to the
-Universal Aether (UA). Unlike the DPM-emergent definition of inertia as passive resistance
+Universal Aether (UA). Unlike the DPM-seeded definition of inertia as passive resistance
 to acceleration, Ui arises from the ratio of vacuum energy densities of the superconductive
 medium [SCm] and the Universal Aether [UA], modulated by stellar rotation ωs and
 a temporal harmonic cos(πtn). Quantum wave patterns are identified as spherical entities
@@ -45,7 +45,7 @@ as a modulator rather than a dominant force.
 ## §1 Physical Motivation
 
 ### 1.1 Failures of Classical Inertia Definition
-Classical DPM-emergent inertia is mass-as-resistance: F = ma, inertia = m. General Relativity
+Classical DPM-seeded inertia is mass-as-resistance: F = ma, inertia = m. General Relativity
 embeds inertia in spacetime geometry via the equivalence principle. The Higgs mechanism
 grounds it in field interactions. None of these frameworks explain:
 - Why inertia is perfectly proportional to gravitational mass (equivalence principle mystery)

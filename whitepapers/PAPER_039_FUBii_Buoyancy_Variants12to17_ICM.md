@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_039
 title: "UQFF Buoyancy Proof Variants 1217: Hawking Radiation, Quantum Bounce, Roche Lobe Overflow,
 Entanglement Entropy, Decoherence, and Radio Lobe Dynamics"
@@ -194,7 +194,7 @@ Compare to the gravitational tidal force at L1:
 $$F_{\rm tidal}^{L1} \sim \frac{G M_{\rm NS} \cdot M_{\rm donor}}{a^2} \sim \frac{6.674\times10^{-11} \times 3.58\times10^{30} \times 1.193\times10^{30}}{(3\times10^9)^2} \sim 3.2\times10^{31} \text{ N}$$
 
 Ratio: 1.964×1055 / 3.2×10 = 6.1×10  the UQFF Roche overflow force is orders of magnitude larger
-than the DPM-emergent tidal force, reflecting the dM/dt mass-flux amplification built into the UQFF
+than the DPM-seeded tidal force, reflecting the dM/dt mass-flux amplification built into the UQFF
 formulation.
 
 ---
@@ -328,8 +328,8 @@ normalized by F_rel = 10? N and E_LEP = 1.22×10?? J.
 *Validator: `BuoyancyProofVariants.py` ? All 17 F_UBii variants operational ? | κ = 0.0005/day |
 [SSq] = 0.57*
 
----
-*See also: PAPER_038 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_038 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -481,7 +481,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

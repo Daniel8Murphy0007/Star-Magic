@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_296
 title: "UQFF Cosmological Constant Direct Vacuum Acceleration"
 session: 84
@@ -31,7 +31,7 @@ acceleration contribution. In all 25 prior UQFF C++ modules, the cosmological co
 only implicitly through the Friedmann equation `H(z) = H₀√(Ω_m(1+z)3 + Ω_Λ)`. At the Observable
 Universe scale (r = 4.4×1026 m), the direct dark-energy vacuum acceleration is `a_Λ = 3.30×10-36
 m/s2`, establishing the **UQFF Cosmological Vacuum Screening Constant** Γ_Λ = 9.57×10-27 — the first
-dimensionless ratio linking dark energy to DPM-emergent gravity within the UQFF framework.
+dimensionless ratio linking dark energy to DPM-seeded gravity within the UQFF framework.
 
 ---
 
@@ -63,7 +63,7 @@ $$\boxed{a_\Lambda = \frac{\Lambda c^2}{3}}$$
 
 $$a_\Lambda = \frac{1.1 \times 10^{-52} \times (3 \times 10^8)^2}{3} = \frac{1.1 \times 10^{-52} \times 9 \times 10^{16}}{3} = \frac{9.9 \times 10^{-36}}{3} = 3.30 \times 10^{-36} \text{ m/s}^2$$
 
-**DPM-emergent base gravity:**
+**DPM-seeded base gravity:**
 $$g_{base} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674 \times 10^{-11} \times 10^{54}}{(4.4 \times 10^{26})^2} = \frac{6.674 \times 10^{43}}{1.936 \times 10^{53}} = 3.447 \times 10^{-10} \text{ m/s}^2$$
 
 **UQFF Cosmological Vacuum Screening Constant:**
@@ -92,7 +92,7 @@ acceleration** from the cosmological constant as an independent source term in E
 equations:
 $$G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$$
 
-The `Λg_{\mu\nu}` term contributes directly to acceleration, which in the DPM-emergent limit gives:
+The `Λg_{\mu\nu}` term contributes directly to acceleration, which in the DPM-seeded limit gives:
 $$\ddot{r} = -\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} + \frac{\Lambda c^2}{3} r$$
 
 At the Universe boundary (r = r_obs), the dark energy repulsion is: `Λc2r_obs/3 = 3.30×10-36 ×
@@ -155,7 +155,7 @@ $$
 |----------|--------|-------|------|
 | Cosmological constant | Λ | 1.1×10-52 | m-2 |
 | Dark-energy acceleration | a_Λ | **3.30×10-36** | m/s2 |
-| DPM-emergent base | g_base | 3.447×10-10 | m/s2 |
+| DPM-seeded base | g_base | 3.447×10-10 | m/s2 |
 | Vacuum screening ratio | Γ_Λ | **9.57×10-27** | dimensionless |
 | Cosmic displacement | d_Λ | **0.313** | m |
 | Universe age | t_H | 4.355×1017 | s |

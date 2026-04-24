@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_449
 title: "Young Stars Sculpt Gas with Powerful Outflows: UQFF Bipolar Jet Pressure Evolution"
 session: 115
@@ -31,8 +31,8 @@ bipolar jet feedback, using the UQFF/MUGE framework with an explicit outflow pre
 module models a 1000 MM_sun protostellar cluster at r=2.365×1017 m (25 ly) over t_evolve=5×106 yr with
 bipolar jet outflows at v_out=105 m/s (100 km/s). The outflow pressure term P_outflow = ρ v_out2 (1
 + t/t_evolve) is the **first such term in the UQFF framework**, establishing that momentum-driven
-jet feedback adds a time-growing gravitational modifier that eventually dominates over the DPM-emergent
-base gravity. At t = t_evolve, P_outflow ≈ 2ρ v_out2 ≈ 2×10-10 m/s2, which exceeds the DPM-emergent g
+jet feedback adds a time-growing gravitational modifier that eventually dominates over the DPM-seeded
+base gravity. At t = t_evolve, P_outflow ≈ 2ρ v_out2 ≈ 2×10-10 m/s2, which exceeds the DPM-seeded g
 by ~20×.
 
 ---
@@ -87,7 +87,7 @@ $$P_{\rm outflow}(t) = 10^{-10}\left(1 + \frac{t}{t_{\rm evolve}}\right)\ \rm m/
 | 2.5 | 1.5×10-10 | 2.37×10-12 | 63× |
 | 5.0 | 2.0×10-10 | 2.37×10-12 | 84× |
 
-At all epochs, outflow pressure **completely dominates** the DPM-emergent base — demonstrating that jet
+At all epochs, outflow pressure **completely dominates** the DPM-seeded base — demonstrating that jet
 feedback in YSO clusters fundamentally alters the gravitational landscape.
 
 ---
@@ -105,7 +105,7 @@ Negligible compared to P_outflow.
 $$g_{\rm DM} = 0.268 \times g_{
 m DPM} \approx 6.35 \times 10^{-13}\ \rm m/s^2$$
 
-At 26.8% DM fraction (cosmic average). Contributes ~30% of DPM-emergent base.
+At 26.8% DM fraction (cosmic average). Contributes ~30% of DPM-seeded base.
 
 ### 3.3 Hubble Factor at z=0.05
 

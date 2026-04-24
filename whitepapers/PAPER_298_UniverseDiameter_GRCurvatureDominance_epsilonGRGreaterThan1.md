@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_298
 title: "UQFF Universe-Scale GR Curvature Dominance: ε_GR = 3GM/(rc2) = 5.056 > 1"
 session: 84
@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_298 — UQFF Universe-Scale GR Curvature Dominance: ε_GR = 3GM/(rc2) = 5.056 > 1
 **Author:** Daniel T. Murphy
 **Date:** March 17, 2026
-## First UQFF Module Where Post-DPM-emergent GR Correction Exceeds DPM-emergent Base
+## First UQFF Module Where Post-DPM-seeded GR Correction Exceeds DPM-seeded Base
 
 **Session:** 84  
 **Module:** `UNIVERSE_DIAMETER_UQFF_MODULE.cpp` (26th C++ UQFF module — Observable Universe as
@@ -28,7 +28,7 @@ System)
 The Observable Universe UQFF module reveals that, at Universe scale, the **post-Newtonian GR
 curvature parameter** `ε_GR = 3GM/(rc2) = 5.056 > 1`. This makes the GR correction acceleration
 `a_GR = g_base × ε_GR = 1.743×10-9 m/s2` the **dominant term** in the UQFF sum — exceeding the
-DPM-emergent base `g_base = 3.447×10-10 m/s2` by a factor of 5.056. For all 25 prior UQFF modules
+DPM-seeded base `g_base = 3.447×10-10 m/s2` by a factor of 5.056. For all 25 prior UQFF modules
 (Saturn: ε_GR = 1.4×10-8; Andromeda: ε_GR = 2.8×10-6; HUDF: ε_GR = 3.6×10-12), the GR correction was
 negligible. The observable universe is the **first UQFF system in the GR-Dominant Regime** —
 operating inside 30% of its own Schwarzschild radius.
@@ -47,10 +47,10 @@ operating inside 30% of its own Schwarzschild radius.
 
 ## 2. Master Parameter
 
-**Post-DPM-emergent GR Curvature Parameter:**
+**Post-DPM-seeded GR Curvature Parameter:**
 $$\boxed{\varepsilon_{GR} = \underbrace{\frac{3GM}{r \cdot c^2}}$$
 
-This arises from the first post-Newtonian (1PN) correction to DPM-emergent gravity in the weak-field,
+This arises from the first post-Newtonian (1PN) correction to DPM-seeded gravity in the weak-field,
 slow-motion expansion of GR. For ε_GR >> 1, the full GR treatment is required.
 
 **Computation for Observable Universe:**
@@ -58,7 +58,7 @@ $$\varepsilon_{GR} = \frac{3 \times 6.6743 \times 10^{-11} \times 10^{54}}{4.4 \
 $$= \frac{3 \times 6.6743 \times 10^{43}}{4.4 \times 10^{26} \times 9 \times 10^{16}} = \frac{2.002 \times 10^{44}}{3.96 \times 10^{43}}$$
 $$= \boxed{5.056}$$
 
-Since ε_GR = 5.056 > 1, the **GR correction dominates over DPM-emergent gravity** at Universe scale.
+Since ε_GR = 5.056 > 1, the **GR correction dominates over DPM-seeded gravity** at Universe scale.
 
 ---
 
@@ -70,7 +70,7 @@ $$a_{GR} = g_{base} \times \varepsilon_{GR} = 3.447 \times 10^{-10} \times 5.056
 This is the **largest single term** in the UQFF 9-term sum at Universe scale.
 
 **Ratio analysis:**
-$$\frac{a_{GR}}{g_{base}} = \varepsilon_{GR} = 5.056 \quad \text{(GR exceeds DPM-emergent by 5×)}$$
+$$\frac{a_{GR}}{g_{base}} = \varepsilon_{GR} = 5.056 \quad \text{(GR exceeds DPM-seeded by 5×)}$$
 
 ---
 
@@ -98,8 +98,8 @@ M_obs ≈ critical mass for the Hubble sphere, which gives ε_GR of order unity)
 
 | Regime | Condition | ε_GR range |
 |--------|-----------|------------|
-| DPM-emergent | ε_GR << 1 | < 10-4 |
-| Post-DPM-emergent | ε_GR < 1 | 10-4 — 1 |
+| DPM-seeded | ε_GR << 1 | < 10-4 |
+| Post-DPM-seeded | ε_GR < 1 | 10-4 — 1 |
 | GR-Dominant | ε_GR ≥ 1 | ≥ 1 |
 | Schwarzschild | ε_GR = 3/2 | 1.5 |
 | Universe | ε_GR = 5.056 | 5.056 |
@@ -108,14 +108,14 @@ M_obs ≈ critical mass for the Hubble sphere, which gives ε_GR of order unity)
 
 | Module | Session | r_obs (m) | M (kg) | ε_GR | Regime |
 |--------|---------|-----------|--------|------|--------|
-| Saturn | 78 | 6.03×107 | 5.68×1026 | ~1.4×10-8 | DPM-emergent |
-| NGC1792 | 73 | 7.57×1020 | 1.99×1040 | ~3.9×10-8 | DPM-emergent |
-| Andromeda | 75 | 1.04×1021 | 1.99×1042 | ~2.8×10-6 | DPM-emergent |
-| HUDF (z=3.5) | 72g | 1.23×1027 | 2×1042 | ~3.6×10-12 | DPM-emergent |
-| Sombrero | 77 | 2.36×1020 | 1.99×1041 | ~2.4×10-7 | DPM-emergent |
+| Saturn | 78 | 6.03×107 | 5.68×1026 | ~1.4×10-8 | DPM-seeded |
+| NGC1792 | 73 | 7.57×1020 | 1.99×1040 | ~3.9×10-8 | DPM-seeded |
+| Andromeda | 75 | 1.04×1021 | 1.99×1042 | ~2.8×10-6 | DPM-seeded |
+| HUDF (z=3.5) | 72g | 1.23×1027 | 2×1042 | ~3.6×10-12 | DPM-seeded |
+| Sombrero | 77 | 2.36×1020 | 1.99×1041 | ~2.4×10-7 | DPM-seeded |
 | **Universe** | **84** | **4.4×1026** | **1054** | **5.056** | **GR-Dominant** |
 
-Every prior UQFF module was firmly in the DPM-emergent regime. The Universe Diameter module is the
+Every prior UQFF module was firmly in the DPM-seeded regime. The Universe Diameter module is the
 first to cross into GR-Dominant.
 
 ---
@@ -147,9 +147,9 @@ The measured value ε_GR = 5.056 quantitatively reflects the 30% matter + 70% da
 ## 7. Physical Implication: The UQFF GR-Dominant Regime
 
 When ε_GR > 1:
-- The **DPM-Emergent Approximation breaks down** — GR corrections are the dominant contribution
+- The **DPM-seeded Approximation breaks down** — GR corrections are the dominant contribution
 - The observable universe requires a **full GR treatment**, not a post-Newtonian expansion
-- The UQFF framework, operating in the DPM-emergent limit for most modules, reaches its **natural extension boundary** at Universe scale
+- The UQFF framework, operating in the DPM-seeded limit for most modules, reaches its **natural extension boundary** at Universe scale
 
 This paper establishes the **UQFF GR Transition Criterion**:
 $$\varepsilon_{GR}^{*} = \frac{3GM^*}{r^* c^2} = 1 \implies r^* = \frac{3GM^*}{c^2} = \frac{3}{2} r_S$$
@@ -165,7 +165,7 @@ $$
 \begin{aligned}
   & epsilon_GR=3GM/(r*c2)=3*6.674e-11*1e54/(4.4e26*9e16)=5.056>1; \\
   & FIRST UQFF epsilon_GR>1; \\
-  & a_GR=g_base*epsilon_GR=1.743e-9m/s2(5x DPM-emergent!); \\
+  & a_GR=g_base*epsilon_GR=1.743e-9m/s2(5x DPM-seeded!); \\
   & r_S/r_obs=2*epsilon_GR/3=3.371; \\
   & r_obs=0.297*r_S; \\
   & all 25 prior UQFF epsilon_GR<<1 [PAPER_298]
@@ -180,8 +180,8 @@ $$
 |----------|--------|-------|------|
 | GR curvature parameter | ε_GR | **5.056** | dimensionless |
 | GR correction acceleration | a_GR | **1.743×10-9** | m/s2 |
-| DPM-emergent base | g_base | 3.447×10-10 | m/s2 |
-| GR/DPM-emergent ratio | a_GR/g_base | **5.056 > 1** | dimensionless |
+| DPM-seeded base | g_base | 3.447×10-10 | m/s2 |
+| GR/DPM-seeded ratio | a_GR/g_base | **5.056 > 1** | dimensionless |
 | Schwarzschild radius | r_S | 1.483×1027 | m |
 | r_S/r_obs ratio | r_S/r_obs | 3.371 | dimensionless |
 | r_obs/r_S fraction | r_obs/r_S | **0.297** | dimensionless |

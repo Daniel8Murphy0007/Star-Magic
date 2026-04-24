@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_027
 title: "Lepton Flavor Violation Processes in UQFF"
 session: 0
@@ -133,7 +133,7 @@ where:
 | Term | Physical Content | Domain |
 |------|-----------------|--------|
 | **Ug1** | Rest-mass gravitational energy | All scales |
-| **Ug2** | Inter-body gravitational potential | DPM-emergent + corrections |
+| **Ug2** | Inter-body gravitational potential | DPM-seeded + corrections |
 | **Ug3** | Topological resonance / t_n oscillation | Quantum sector |
 | **Ug4** | Vacuum density ratio (UA/SCm) | Dark sector |
 | **Um** | Magnetic dipole / spin coupling | EM sector |
@@ -610,8 +610,8 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 *LFV: BR(B0→K*0τ-e⁺) < 5.9×10-6 (LHCb 90% CL exact), BR(B0→K*0τ⁺e-) < 4.9×10-6; UQFF t_n(τ-e⁺) =
 3.833, Δt_n(CP) = 0.067; LFV suppression S = exp(−0.57) = 0.5655; κ = 0.0005/day, [SSq] = 0.57*
 
----
-*See also: PAPER_026 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_026 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -666,7 +666,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 production_scaling_v26.py — Production Scaling to 1M calc/s
 
@@ -87,17 +87,17 @@ _LAYER_COEFFS = [
 ]
 
 
-# ── §2  DPM-emergent gravity helpers ───────────────────────────────────────
+# ── §2  DPM-FOUNDATION GRAVITY helpers ───────────────────────────────────────
 
 def _dpm_ug1(r: float, mu: float = 1e15, R_body: float = 1e7) -> float:
-    """DPM-emergent Ug1 (magnetic dipole)."""
+    """DPM-seeded Ug1 (magnetic dipole)."""
     if r <= 0:
         return 0.0
     return mu / (4 * PI * r ** 3) * S26_3RD
 
 
 def _dpm_ug2(r: float, Z: float = 26, alpha: float = 1.0) -> float:
-    """DPM-emergent Ug2 (charge-reactivity)."""
+    """DPM-seeded Ug2 (charge-reactivity)."""
     if r <= 0:
         return 0.0
     return Z * alpha / r ** 2 * S26_3RD

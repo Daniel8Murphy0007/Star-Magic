@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_304
 title: "Aether-Gravitational Dominance at Atomic Scale: ξ_aether = 1.852×1024"
 session: 86
@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Module:** HYDROGEN_PTOE_RESONANCE_UQFF_MODULE.cpp (28th C++ UQFF module — FIRST PToE Resonance
 module)  
 **System:** Hydrogen Z=1, ground state Bohr orbit  
-**Category:** Aether Dominance over DPM-emergent Gravity at r = Bohr radius  
+**Category:** Aether Dominance over DPM-seeded Gravity at r = Bohr radius  
 **UQFF Version:** 2.0  
 
 ---
@@ -30,7 +30,7 @@ scale—has been established at two prior scales: Λ (cosmological constant) dom
 scale (PAPER_296, Session 84) and electromagnetic coupling dominates at the neutron star surface
 (PAPER_299, Session 85). PAPER_304 establishes the THIRD rung: at the Bohr radius r = 5.2918×10-11
 m, the **aether resonance acceleration** a_aether = **7.38×107 m/s2** exceeds the Proton-hydrogen
-DPM-emergent surface gravity g_DPM = **3.986×10-17 m/s2** by a factor
+DPM-seeded surface gravity g_DPM = **3.986×10-17 m/s2** by a factor
 
 $$\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = \mathbf{1.852 \times 10^{24}}$$
 
@@ -56,7 +56,7 @@ scale. This completes the three-rung UQFF vacuum dominance hierarchy: cosmos →
 
 ## 2. Core Equations
 
-### 2.1 DPM-emergent Gravity at Bohr Radius [reference]
+### 2.1 DPM-seeded Gravity at Bohr Radius [reference]
 
 $$g_{	ext{DPM}} = \frac{G M_p}{r_{\text{Bohr}}^2} = \frac{6.674 \times 10^{-11} \times 1.6726 \times 10^{-27}}{(5.2918 \times 10^{-11})^2}$$
 
@@ -91,7 +91,7 @@ $$\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = \frac{7.38 \ti
 
 | Quantity | Symbol | Value | Units | Role |
 |----------|--------|-------|-------|------|
-| Proton DPM-emergent gravity at r_Bohr | g_DPM | **3.986×10-17** | m/s2 | Gravity reference |
+| Proton DPM-seeded gravity at r_Bohr | g_DPM | **3.986×10-17** | m/s2 | Gravity reference |
 | Volume at r_Bohr | V_sys | 6.207×10-31 | m3 | Aether volume |
 | Aether resonance acceleration | a_aether | **7.38×107** | m/s2 | **[PAPER_304]** dominant |
 | Aether/Newton ratio | ξ_aether | **1.852×1024** | — | **[PAPER_304]** key ratio |
@@ -148,9 +148,9 @@ Within the 6-term resonance sum of the HYDROGEN_PTOE module:
 | DPM | 6.71×10-4 | 5th (seed) |
 | g_DPM | 3.99×10-17 | 6th |
 
-All five computed UQFF channels exceed DPM-emergent gravity at the Bohr radius. The aether channel
+All five computed UQFF channels exceed DPM-seeded gravity at the Bohr radius. The aether channel
 alone exceeds g_DPM by 1.852×1024 — yet it is the FOURTH-largest of the five UQFF terms. This
-demonstrates that DPM-emergent gravity is effectively negligible at atomic UQFF scale.
+demonstrates that DPM-seeded gravity is effectively negligible at atomic UQFF scale.
 
 ---
 
@@ -172,11 +172,11 @@ WOLFRAM_TERM_PTOE_AETHER = "a_aether = E_vac*f_res*V_sys/hbar = 7.38e7 m/s^2; xi
 ## 8. Significance
 
 1. **Completes the 3-rung UQFF vacuum driver hierarchy** (Λ→EM→Aether at cosmos→NS→atom scales)
-2. **ξ_aether = 1.852×1024** — the aether channel exceeds DPM-emergent gravity by 24 orders of
+2. **ξ_aether = 1.852×1024** — the aether channel exceeds DPM-seeded gravity by 24 orders of
 magnitude at the Bohr radius; all five UQFF terms exceed g_DPM
 3. **E_vac (plasmonic vacuum) ≠ Λ** — proves UQFF vacuum energy density E_vac=7.09e-36 J/m3 is a
 distinct physical entity from the cosmological constant, with different scale-coupling
-4. **DPM-emergent gravity is negligible** at UQFF atomic scale; the PToE resonance field is entirely
+4. **DPM-seeded gravity is negligible** at UQFF atomic scale; the PToE resonance field is entirely
 dominated by quantum-vacuum (aether, U_g4i) and frequency-locked (THz/qorb) channels
 5. **Cross-hierarchy bridge**: The scale-dependence of ξ_aether vs ξ_Λ defines the boundary between
 aether-dominated (atomic) and Λ-dominated (cosmological) vacuum regimes
@@ -198,12 +198,12 @@ $$\boxed{a_{\text{aether}} = \frac{E_{\text{vac}} \cdot f_{\text{res}} \cdot V_{
 
 $$\boxed{g_{	ext{DPM}} = \frac{G M_p}{r_{\text{Bohr}}^2} = 3.986 \times 10^{-17} \; \text{m/s}^2}$$
 
-$$\boxed{\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = 1.852 \times 10^{24} \quad \text{(aether dominates DPM-emergent gravity at atomic scale)}}$$
+$$\boxed{\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = 1.852 \times 10^{24} \quad \text{(aether dominates DPM-seeded gravity at atomic scale)}}$$
 
 The three-rung UQFF vacuum driver hierarchy is complete: at Universe scale, the cosmological Λ
 dominates; at neutron star surfaces, electromagnetic coupling dominates; at the Bohr radius, the
 UQFF plasmonic aether (seeded by E_vac=7.09×10-36 J/m3, amplified by f_res/ħ) dominates — by 24
-orders of magnitude over classical DPM-emergent gravity.
+orders of magnitude over classical DPM-seeded gravity.
 
 
 **Testable Prediction:** This UQFF result is directly testable with next-generation atomic

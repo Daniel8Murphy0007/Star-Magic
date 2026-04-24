@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_262
 title: "Galaxy NGC 2525 — SN Type Ia Negative-Mass-Loss Gravitational Sign Reversal: A New UQFF
 Mechanism Distinct from Buoyancy-Inversion"
@@ -121,7 +121,7 @@ buoyancy force flips due to a regime change in the frequency parameter.
 |----------|--------------------|----------------------|
 | **Mechanism** | ω₀ regime change → F_LENR dominance | SN ejecta mass escape |
 | **Physical driver** | Black hole proximity + frequency shift | Thermonuclear event |
-| **Mathematical form** | `F_U_Bi_i` sign flip (complex expression) | `−G·M_SN(t)/r2` (simple DPM-emergent) |
+| **Mathematical form** | `F_U_Bi_i` sign flip (complex expression) | `−G·M_SN(t)/r2` (simple DPM-seeded) |
 | **Timescale** | Instantaneous (field property) | ~10–100 Myr (ejecta crossing time) |
 | **Reversibility** | Reversible (if ω₀ changes back) | **Irreversible** (mass permanently lost) |
 | **Magnitude** | ~10208 N (enormous) | ~10-27 m/s2 (tiny) |
@@ -129,7 +129,7 @@ buoyancy force flips due to a regime change in the frequency parameter.
 | **UQFF channel** | Buoyancy tier sign inversion | Gravitational kernel mass reduction |
 
 **Critical distinction:** The NGC 2525 mechanism is the **first UQFF gravitational sign contribution
-from mass removal rather than field inversion**. It operates at the level of the DPM-emergent
+from mass removal rather than field inversion**. It operates at the level of the DPM-seeded
 gravitational kernel `G·M/r2`, not through the UQFF field equations.
 
 ### 2.4 Uniqueness Among Mass-Loss Terms

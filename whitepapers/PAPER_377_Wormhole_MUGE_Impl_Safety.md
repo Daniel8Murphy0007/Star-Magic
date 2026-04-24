@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_377
 title: "compute_a_wormhole() Implementation & MUGE Safety Infrastructure"
 session: 102
@@ -129,7 +129,7 @@ double compute_compressed_perturbation(const MUGESystem& sys) {
 The final test suite (`run_unit_tests()`) contains 24 tests: 
 | Test Function | Expected Value | Source | 
 |---|---|---| 
-| `test_compute_compressed_base` | G×M_sun/(1AU)2 ≈ 0.0059 | DPM-emergent validation | 
+| `test_compute_compressed_base` | G×M_sun/(1AU)2 ≈ 0.0059 | DPM-seeded validation | 
 | `test_compute_compressed_expansion` | 1.0 (at t=0) | Zero-time boundary | 
 | `test_compute_compressed_super_adj` | 0.9 (B=1e10, Bcrit=1e11) | B/Bcrit = 0.1 | 
 | `test_compute_compressed_fluid` | 4.189e-2 | ρ×V×g product | 

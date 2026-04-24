@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_209
 title: "UQFF vs Lambda-CDM Comparison Framework"
 session: 50
@@ -61,7 +61,7 @@ $$
   & + ?_fluid·V·g \\
   & + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r) \\
   & Lambda-CDM limit of UQFF: set Ug1=Ug2=Ug3'=Ug4=0, B=0, F_env=0, quantum term=0, fluid=0 \\
-  & ? g_LCDM = G·M/r2 · (1+H(t,z)) + ?c2/3 = DPM-emergent + H(z) + ? ?
+  & ? g_LCDM = G·M/r2 · (1+H(t,z)) + ?c2/3 = DPM-seeded + H(z) + ? ?
 \end{aligned}
 $$
 

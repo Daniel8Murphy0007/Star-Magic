@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_432
 title: "Sagittarius A* SMBH: Per-System MUGE with M(t) Accretion and DM Precession"
 session: 119
@@ -73,7 +73,7 @@ $$\Omega(t) = a \cdot \frac{c}{r} \cdot e^{-t/\tau_Omega}$$
 
 $$\boxed{g_\text{SgrA}(r,t) = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B(t)}{B_\text{crit}}\right) + T_\text{UQFF} + T_\Lambda + T_Q + T_\text{EM} + T_\text{fluid} + T_\text{osc} + T_\text{DM} + T_\text{GW}}$$
 
-**Term 1 — DPM-emergent base with accreting M(t):**
+**Term 1 — DPM-seeded base with accreting M(t):**
 $$T_1 = \frac{G M(t)}{r^2} (1 + H_0 t)\left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
 
 At $t = 5 \times 10^9$ yr: $T_1 \approx 2.98 \times 10^3$ m/s2
@@ -99,9 +99,9 @@ $$T_6 = \frac{\rho_f V g_\text{local}}{M(t)} \quad [\text{accretion disk contrib
 $$T_7 = A_\text{osc} \sin(k_\text{osc} r) \cos(\omega_text{osc} t)$$
 
 **Term 8 — Dark matter perturbation with precession:**
-$$T_8 = \sin(30°) \times (M + M_\text{DM}) \frac{\deltarho/\rho + 3GM(t)/r^3}{r^2}$$
+$$T_8 = \sin(30°) \times (M + M_\text{DM}) \frac{\delta\rho/\rho + 3GM(t)/r^3}{r^2}$$
 
-$$= 0.5 \times (M_0 + 0.1 M_0) \frac{\deltarho/\rho + 3GM(t)/r^3}{r^2}$$
+$$= 0.5 \times (M_0 + 0.1 M_0) \frac{\delta\rho/\rho + 3GM(t)/r^3}{r^2}$$
 
 The $\sin(30°) = 0.5$ factor models the galactic disc inclination angle to the DM halo precession axis — **first UQFF angular DM coupling in any per-system MUGE**.
 
@@ -135,7 +135,7 @@ The DM precession factor $\sin(30°)$ reduces the DM perturbation contribution b
 
 ## 7. Comparison to Standard Model
 
-Standard DPM-emergent: $g_\text{SM} = G M_0/r^2 \approx 2.97 \times 10^3$ m/s2
+Standard DPM-seeded: $g_\text{SM} = G M_0/r^2 \approx 2.97 \times 10^3$ m/s2
 
 UQFF enhancement includes accreting mass term and EM channel but the SMBH regime is dominated by relativistic effects. The novel $\sin(30°)$ DM precession coupling predicts a **2.5% anomalous gravitational effect** on infalling stellar orbits with DM-halo inclination.
 

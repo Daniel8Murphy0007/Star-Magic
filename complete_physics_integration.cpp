@@ -1,4 +1,4 @@
-// ==========================================================================================
+﻿// ==========================================================================================
 // COMPLETE PHYSICS INTEGRATION - ALL 4,890+ PATTERNS
 // Integration Date: November 22, 2025
 // Source: 172 source files (source1.cpp - source173.cpp)
@@ -8823,7 +8823,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         f_sc = 1 - (B / B_crit);
     }
@@ -10722,7 +10722,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         // Update dependent params if needed, e.g., delta_p = hbar / delta_x; but kept independent
     }
@@ -12646,7 +12646,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -12897,7 +12897,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt, double Bt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -14916,7 +14916,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -15158,7 +15158,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -16343,7 +16343,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -16585,7 +16585,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -17653,7 +17653,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -17913,7 +17913,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -18215,7 +18215,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         L_t = ((G * M) / (pow(c_light, 2) * r)) * L_factor;
     }
@@ -19591,7 +19591,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -20141,7 +20141,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -20401,7 +20401,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -20704,7 +20704,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -21249,7 +21249,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -21515,7 +21515,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt, double It) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -21816,7 +21816,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -22364,7 +22364,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -22945,7 +22945,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -23211,7 +23211,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt, double It) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -23515,7 +23515,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -23763,7 +23763,7 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -40480,7 +40480,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         f_sc = 1 - (B / B_crit);
     }
@@ -42521,7 +42521,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         // Update dependent params if needed, e.g., delta_p = hbar / delta_x; but kept independent
     }
@@ -45086,7 +45086,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -45310,7 +45310,7 @@ dOmega_dt(double t) const
 
 compute_Ug(double Mt, double Bt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -46141,7 +46141,7 @@ computeUb1() {
     cdouble base_buoyancy = beta * V * rho_A * a;
     
     // Galaxy cluster gravitational enhancement
-    cdouble cluster_grav = emergent_Ug1(M, r)  /* DPM-emergent */;
+    cdouble cluster_grav = emergent_Ug1(M, r)  /* DPM-seeded */;
     
     // Intracluster medium (ICM) buoyancy effects
     cdouble rho_ICM = variables["rho_gas"];  // ICM gas density
@@ -47263,7 +47263,7 @@ computeUb1(const std::string& system) {
     cdouble base_buoyancy = beta * V * rho_A * a;
     
     // System-specific gravitational enhancement
-    cdouble grav_enhancement = emergent_Ug1(M, r)  /* DPM-emergent */;
+    cdouble grav_enhancement = emergent_Ug1(M, r)  /* DPM-seeded */;
     
     // Vacuum energy contribution
     cdouble vacuum_term = rho_vac * c * c / 3.0;
@@ -49559,7 +49559,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -49789,7 +49789,7 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -53183,7 +53183,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -53413,7 +53413,7 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -55013,7 +55013,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -55255,7 +55255,7 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -55400,7 +55400,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         L_t = ((G * M) / (pow(c_light, 2) * r)) * L_factor;
     }
@@ -56211,7 +56211,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -56592,7 +56592,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -56834,7 +56834,7 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -56981,7 +56981,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -57356,7 +57356,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -57604,7 +57604,7 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt, double It) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -57749,7 +57749,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -58125,7 +58125,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -58530,7 +58530,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -58778,7 +58778,7 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt, double It) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
@@ -58925,7 +58925,7 @@ initializeDefaults()
 
 updateCache()
     {
-        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        // DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -59161,7 +59161,7 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation

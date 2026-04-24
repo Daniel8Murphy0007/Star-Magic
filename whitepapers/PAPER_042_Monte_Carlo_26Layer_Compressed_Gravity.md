@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_042
 title: "Monte Carlo Ensemble Validation of UQFF 26-Layer Compressed Gravity: Ug1 Formula, Layer
 Amplification, and Cross-Scale Consistency from Planck to Hubble Volume"
@@ -410,8 +410,8 @@ framework is validated as consistent and operational.
 *Validator: `t`est_grok_thread_e3cc481989964390_validation`.py` ? 22/24 PASSED | κ = 0.0005/day |
 [SSq] = 0.57*
 
----
-*See also: PAPER_041 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_041 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -531,7 +531,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

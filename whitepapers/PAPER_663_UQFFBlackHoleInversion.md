@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_663
 title: "UQFF Black Hole Inversion Probability"
 session: 0
@@ -28,7 +28,7 @@ undergoes a [UA]/[SCm] gradient reversal, converting it to a white-hole-like sta
 criterion Θ_inv > 1 yields P_invert ≈ 0.95 for Sgr A*.
 
 ## 1. Modified Schwarzschild Radius
-$$r_{s,UQFF} = r_s \cdot (1 - \deltarho), \quad \deltarho = \frac{\rho_{SCm}}{\rho_{UA}} \approx 0.1$$
+$$r_{s,UQFF} = r_s \cdot (1 - \delta\rho), \quad \delta\rho = \frac{\rho_{SCm}}{\rho_{UA}} \approx 0.1$$
 
 ## 2. Inversion Energy
 $$E_{inv,UQFF} = \frac{G M^2}{r_{s,UQFF}}$$
@@ -36,7 +36,7 @@ $$E_{inv,UQFF} = \frac{G M^2}{r_{s,UQFF}}$$
 ## 3. Inversion Probability Components
 $$P_{inv} = f_{TRZ} \cdot \exp!\left(-\frac{E_{inv}}{k_B T_H}\right)$$
 
-$$\Phi_{inv} = \frac{1}{\deltarho} \cdot \underbrace{\frac{GM}{c}}_{\text{DPM mass gradient}} \cdot (1 + f_{TRZ})$$
+$$\Phi_{inv} = \frac{1}{\delta\rho} \cdot \underbrace{\frac{GM}{c}}_{\text{DPM mass gradient}} \cdot (1 + f_{TRZ})$$
 
 $$S_{U\_m} = \exp!\left(\frac{U_m}{k_B T_H}\right)$$
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_560
 title: "Buoyancy-Stratified Factorial Geometry — Holonomy Group and Parallel Transport"
 session: 149
@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **CP4 Class:** `BSFGHolonomyGroupParallelTransportCalculator` (#155)  
 **Date:** 2026-03-27  
 
-> **Context note:** The holonomy group of a manifold records how vectors rotate under parallel transport around closed loops. PAPER_554 showed BSFG has non-zero Riemann curvature $R^r{}_{0r0} \neq 0$; PAPER_556 showed the 22 extra dimensions compactify to flat tori $T^{22}$. This paper combines both to determine the complete holonomy group $G_{\rm hol}(\mathcal{M}^{26})$ and derives the parallel transport phase $\deltaphi$ for a given loop area.
+> **Context note:** The holonomy group of a manifold records how vectors rotate under parallel transport around closed loops. PAPER_554 showed BSFG has non-zero Riemann curvature $R^r{}_{0r0} \neq 0$; PAPER_556 showed the 22 extra dimensions compactify to flat tori $T^{22}$. This paper combines both to determine the complete holonomy group $G_{\rm hol}(\mathcal{M}^{26})$ and derives the parallel transport phase $\delta\phi$ for a given loop area.
 
 ---
 
@@ -36,9 +36,9 @@ $$\boxed{G_{\rm hol}(\mathcal{M}^{26}) = SO^+(3,1) \times U(1)^{22}}$$
 
 Exceptional holonomies $G_2$ and $Spin(7)$ are rigorously excluded. The parallel transport angle around a small loop of coordinate area $\Delta A$:
 
-$$\deltaphi = R^r{}_{0r0} \cdot \Delta A = \frac{6\etacos(\pi t_n)C_{\rm num}}{r^5} \cdot \Delta A$$
+$$\delta\phi = R^r{}_{0r0} \cdot \Delta A = \frac{6\etacos(\pi t_n)C_{\rm num}}{r^5} \cdot \Delta A$$
 
-At a Planck-area loop $(l_P^2)$: $\deltaphi_P \approx 4.07 \times 10^{-89}$ rad — completely unobservable at current precision.
+At a Planck-area loop $(l_P^2)$: $\delta\phi_P \approx 4.07 \times 10^{-89}$ rad — completely unobservable at current precision.
 
 ---
 
@@ -102,11 +102,11 @@ Note: This is consistent with but distinct from the isometry group $G_{\rm iso} 
 
 The Ambrose–Singer theorem relates the holonomy algebra to the curvature 2-form. For an infinitesimal closed loop with coordinate area element $\Delta A$ in the $(r, t)$ plane:
 
-$$\deltaphi^r{}_0 = R^r{}_{0r0} \cdot \Delta A = \frac{6\etacos(\pi t_n)C_{\rm num}}{r^5} \cdot \Delta A$$
+$$\delta\phi^r{}_0 = R^r{}_{0r0} \cdot \Delta A = \frac{6\etacos(\pi t_n)C_{\rm num}}{r^5} \cdot \Delta A$$
 
 **Step 6.** Values at $r = R_\odot$, $t_n = 0$:
 
-| Loop area $\Delta A$ | $\deltaphi$ (rad) |
+| Loop area $\Delta A$ | $\delta\phi$ (rad) |
 |---|---|
 | $l_P^2 = (1.616 \times 10^{-35})^2\ {\rm m}^2$ | $\approx 4.07 \times 10^{-89}$ |
 | $R_\odot^2 = (6.96 \times 10^8)^2\ {\rm m}^2$ | $\approx 7.53 \times 10^{-2}$ |

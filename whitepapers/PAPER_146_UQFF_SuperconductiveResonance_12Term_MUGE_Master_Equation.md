@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_146
 title: "UQFF Star-Magic Superconductive Resonance — First-Principles Derivation of All 12 MUGE
 Resonance Terms: aDPM through fTRZ"
@@ -290,7 +290,7 @@ scales.
 |--------|---------------|----------|----------------|-------|
 | SGR1745-2900 | 1.773e-9 | afluid_freq | ~1.4e13 (surface) | MUGE captures magnetosphere |
 | Sgr A* | 4.105e29 | aDPM | ~3.6e10 (1 AU) | MUGE 10^19x amplification |
-| Tapestry | 1.001e27 | afluid_freq | ~1e-10 | Non-DPM-emergent SFR regime |
+| Tapestry | 1.001e27 | afluid_freq | ~1e-10 | Non-DPM-seeded SFR regime |
 | Westerlund 2 | 1.001e27 | afluid_freq | ~1e-10 | Cluster formation |
 | Pillars | 2.001e26 | afluid_freq | ~1e-11 | Molecular pillar dynamics |
 | Rings | 5.005e25 | afluid_freq | ~1e-12 | Lensing geometry |

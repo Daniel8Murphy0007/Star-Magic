@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_493
 title: "Universal Field F_U Decomposition: Ug1–Ug4, Ub, Um, UA"
 session: 131
@@ -92,8 +92,8 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_b + U_m + U_A$$
 ## §4 Standard Model Comparison
 
 Standard GR treats gravity as pure spacetime curvature ($g = \mu_s \cdot \nabla(M_s/r)$). The UQFF Universal Field decomposition reveals:
-- **Ug1–Ug3** encode $k_1 + k_2\beta_i + k_3(1-\beta_i) = 1.5 + 0.724 + 0.719 = 2.94$ times the DPM-emergent value — the excess is absorbed by the [SCm] normalization in the calibrated framework ($\kappa = 5\times10^{-4}$/day reduces $F_U$ to observational parity)
-- **UA** = $\kappa c^4/(Gr^2)$ recovers the Schwarzschild light-deflection result: $\deltaphi = 4GM/(c^2r)$ when $r = r_s$
+- **Ug1–Ug3** encode $k_1 + k_2\beta_i + k_3(1-\beta_i) = 1.5 + 0.724 + 0.719 = 2.94$ times the DPM-seeded value — the excess is absorbed by the [SCm] normalization in the calibrated framework ($\kappa = 5\times10^{-4}$/day reduces $F_U$ to observational parity)
+- **UA** = $\kappa c^4/(Gr^2)$ recovers the Schwarzschild light-deflection result: $\delta\phi = 4GM/(c^2r)$ when $r = r_s$
 - **Ub** exponential suppression $e^{-[\text{SSq}]t_n}$ is **absent** in GR — this term explains long-baseline VLBI astrometry residuals in galaxy clusters
 
 ---
@@ -101,7 +101,7 @@ Standard GR treats gravity as pure spacetime curvature ($g = \mu_s \cdot \nabla(
 ## §5 Testable Prediction
 
 1. **Gravitational wave polarisation**: The $U_m$ and $U_{g4}$ terms predict a sub-dominant vector-mode GW polarisation with characteristic chirp $\Delta h / h \approx (B^2 r^2)/(2\mu_0 M c^2) \lesssim 10^{-6}$, distinguishable by LISA/TianQin with $h \sim 10^{-22}$
-2. **Galactic rotation decomposition**: JWST NIRCam + ALMA velocity maps of spiral galaxies should show $U_{g2}/U_{g1}$ ratio $= k_2\beta_i/k_1 = 0.483$ when fitting the innermost 3 kpc — differing from pure DPM-emergent ratio of 1.0
+2. **Galactic rotation decomposition**: JWST NIRCam + ALMA velocity maps of spiral galaxies should show $U_{g2}/U_{g1}$ ratio $= k_2\beta_i/k_1 = 0.483$ when fitting the innermost 3 kpc — differing from pure DPM-seeded ratio of 1.0
 3. **Laboratory aether coupling**: $U_A = \kappa c^4/(Gr^2)$ at $r = 1$ m gives $U_A = 5.5\times10^{26}$ m/s2 — enormous unless $\kappa \sim 8\pi G/c^4 \approx 2\times10^{-43}$; the vacuum-energy cancelation via [UA] factor must suppress this by $[\text{UA}] \approx 10^{-1}$ (Planck suppression ratio)
 
 ---

@@ -93,8 +93,8 @@ public:
         double M   = params.count("M")   ? params.at("M")   : 1.989e42;
         double r   = params.count("r")   ? params.at("r")   : 1.23e27;
         double trz = params.count("f_TRZ") ? params.at("f_TRZ") : f_TRZ;
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = B * r * G * M  /* DPM: mu_s * grad(M_s/r) */;
         return Ug1 * (1.0 + trz);   // zero at trz=-1; negative for trz<-1
     }
@@ -130,8 +130,8 @@ public:
         double i0  = params.count("I0") ? params.at("I0") : I0;
         double tau = params.count("tau_inter") ? params.at("tau_inter") : tau_inter;
         double I_t = i0 * std::exp(-t / tau);
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = B * r * G * M  /* DPM: mu_s * grad(M_s/r) */;
         // Cascade: (1+I)^2 total modulation factor across both channels
         double cascade_factor = (1.0 + I_t) * (1.0 + I_t);
@@ -418,8 +418,8 @@ public:
 
     // Ug terms computation
     double compute_Ug(double Mt, double It) const {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double Ug2 = 0.0;
         double Ug3 = 0.0;

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_473
 title: "MUGEModule: 7-System Multi-Gravity Equations (Compressed + Resonance)"
 session: 123
@@ -38,7 +38,7 @@ UQFF dual-method pipeline.
 
 ## 1. The F_U Unified Field and Its MUGE Re-Expression
 
-Gravity in the UQFF framework originates from the unified field $F_U$, not from the DPM-emergent gravitational law:
+Gravity in the UQFF framework originates from the unified field $F_U$, not from the DPM-seeded gravitational law:
 
 $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu})}$$
 

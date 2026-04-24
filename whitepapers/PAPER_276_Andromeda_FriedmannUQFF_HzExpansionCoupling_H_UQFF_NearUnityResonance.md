@@ -38,7 +38,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-seeded,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.
@@ -248,7 +248,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-seeded,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.
@@ -461,7 +461,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-seeded,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.
@@ -675,7 +675,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-seeded,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.

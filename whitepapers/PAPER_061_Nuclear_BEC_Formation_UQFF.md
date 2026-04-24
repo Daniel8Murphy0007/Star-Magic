@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_061
 title: "Nuclear Bose-Einstein Condensate Formation: From the C Hoyle State to Neutron Star Surface
 Coherence – UQFF Multi-Scale Framework"
@@ -185,8 +185,8 @@ framework treats this as a renormalization correction to the bare T_c.
 *Source: GrokThread system_50 (BEC Alpha-Cluster), alpha_clustering_lenr_module.py
 NuclearAstroScaler | κ = 0.0005/day | [SSq] = 0.57*
 
----
-*See also: PAPER_060 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_060 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -373,7 +373,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

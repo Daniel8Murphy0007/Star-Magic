@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_477
 title: "Buoyancy Coupling Constants β_i in the UQFF Framework"
 session: 123
@@ -81,7 +81,7 @@ The value β = 0.6 emerges from three independent calibrations:
 
 **Calibration 1 — Solar system orbital closure:**
 If β were 1.0, the net UQFF gravity would be 0 → no planetary orbits. If β were 0, buoyancy is
-absent → pure DPM-emergent (inconsistent with UQFF). At β = 0.6: net UQFF force = 0.4 × Ug → consistent
+absent → pure DPM-seeded (inconsistent with UQFF). At β = 0.6: net UQFF force = 0.4 × Ug → consistent
 with planetary orbit corrections at the 10-7 level.
 
 **Calibration 2 — [SSq] = 0.57 consistency:**

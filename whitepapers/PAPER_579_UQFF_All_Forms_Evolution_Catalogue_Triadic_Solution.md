@@ -146,7 +146,7 @@ $$\text{UQFF}_{comp} = \begin{pmatrix}
 \dfrac{13!\,\kappa(\text{DPM}_n-\text{DPM}_s)}{(U_g\cdot f)^{14}} &
 \dfrac{P}{3} + \dfrac{26!\,\kappa(\text{DPM})}{f^{27}} & 0 \\[8pt]
 0 & 0 &
-\dfrac{2P}{3} + \dfrac{26!\,g}{(\rhocdot f)^{27}}
+\dfrac{2P}{3} + \dfrac{26!\,g}{(\rho\cdot f)^{27}}
 \end{pmatrix}$$
 
 **Frequency-Driven Equilibrium Proof:**
@@ -183,7 +183,7 @@ $$g\,\frac{SCm}{UA}\sum_i Ug_i = -\!\left[\frac{\kappa(\text{DPM}_n-\text{DPM}_s
 $$r_{eq} \approx \left[\frac{\kappa(\text{DPM}_n-\text{DPM}_s)}{g\,SCm/UA - \rho g(1-1/\rho)}\right]^{1/26}$$
 
 **Simplified form (dominant terms at nuclear scale):**
-$$\boxed{r_{eq} \approx \sqrt{\frac{\kappacdot\text{DPM}}{g\,\rho}}}$$
+$$\boxed{r_{eq} \approx \sqrt{\frac{\kappa\cdot\text{DPM}}{g\,\rho}}}$$
 
 **26 roots** (unique per $\pi$ irrationality of hypergraph seeds).
 

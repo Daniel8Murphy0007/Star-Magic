@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_434
 title: "Westerlund 2: Per-System MUGE with τ=2 Myr Wind Evolution and M₀=30,000 MM_sun"
 session: 119
@@ -67,7 +67,7 @@ At $t \gg \tau_text{SF}$: $M \rightarrow 30{,}000 \, M_\odot$
 
 $$\boxed{g_\text{WD2}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-emergent + expansion + SC:**
+**T1 — DPM-seeded + expansion + SC:**
 $$T_1 = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right) \approx \frac{G \times 30000 M_\odot}{r^2} \approx 2.80 \times 10^{-22} \text{ m/s}^2$$
 
 **T2 — UQFF Ug1 + Ug4 × (1 + f_TRZ):**
@@ -86,7 +86,7 @@ $$T_6 = \rho_f V_\text{cluster} g_\text{local}/M(t)$$
 **T7 — Oscillatory OB stellar modes:** $\sim A_\text{osc}\sin(k r)\cos(\omega t)$ (sub-dominant)
 
 **T8 — DM perturbation:**
-$$T_8 = (M + 0.1M)\frac{\deltarho/\rho + 3μ_s∇(M_s/r)/r}{r^2}$$
+$$T_8 = (M + 0.1M)\frac{\delta\rho/\rho + 3μ_s∇(M_s/r)/r}{r^2}$$
 
 **T9 — Stellar wind ram pressure (dominant):**
 $$\boxed{T_9 = \frac{\rho_w v_w^2}{\rho_f} = \frac{10^{-20} \times (2 \times 10^6)^2}{10^{-20}} = 4 \times 10^{12} \text{ m}^2/\text{s}^2 \Rightarrow a_\text{wind} = \frac{4 \times 10^{12}}{r} \approx 4.23 \times 10^{-5} \text{ m/s}^2}$$

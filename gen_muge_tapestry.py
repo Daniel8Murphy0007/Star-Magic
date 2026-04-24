@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_tapestry.py — Generator for StarbirthTapestry.h
 Module 6: Tapestry of Blazing Starbirth (NGC 2014/2020, LMC).
 Unique physics: stellar wind feedback rho_wind*v_wind^2/rho_fluid,
@@ -153,7 +153,7 @@ public:
     }
 
     double compute_Ug(double Mt) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }

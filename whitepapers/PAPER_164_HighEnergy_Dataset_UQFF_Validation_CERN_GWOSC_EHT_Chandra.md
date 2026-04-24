@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_164
 title: "High-Energy Dataset UQFF Validation Framework: CERN, GWOSC, EHT, Chandra"
 session: 47
@@ -114,7 +114,7 @@ $$B/B_{crit} = 2.3\times10^{10} / 4.4\times10^{13} = 5.23\times10^{-4}$$
 → MUGE suppression factor: $f_{super} = 1 - 5.23\times10^{-4} \approx 0.9995$
 
 The magnetar is nearly unsuppressed → resonance MUGE dominates → consistent with
-PAPER_155 DPM-emergent emergence proof (β ≈ 1 for this B/B_crit ratio).
+PAPER_155 DPM-seeded emergence proof (β ≈ 1 for this B/B_crit ratio).
 
 ---
 

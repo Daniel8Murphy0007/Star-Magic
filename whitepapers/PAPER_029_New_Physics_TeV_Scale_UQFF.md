@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_029
 title: "Whitepaper #29  New Physics at TeV Scale: UQFF Predictions"
 session: 0
@@ -556,8 +556,8 @@ universe fraction f_SM = 5%; KK spectrum E_1 = 1.97×10 GeV (R=10?? m); GZK hori
 Einstein radius SgrA* 1.454 arcsec; UQFF 26D projection 16% extended + 84% compact; DPM: κ_s =
 4.877, k_? = 0.130, [SCm]_flavor = 1.537×10?; κ = 0.0005/day, [SSq] = 0.57*
 
----
-*See also: PAPER_028 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+> See also: PAPER_028 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 ---
 
@@ -612,7 +612,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

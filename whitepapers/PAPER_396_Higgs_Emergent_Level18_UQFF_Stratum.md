@@ -181,7 +181,7 @@ for $n = 18$ and appropriate $\rho$ values.
 | Level-18 suppression | $e^{-10.26} \approx 3.49\times10^{-5}$ |
 | $m_H c^2$ | 125.25 GeV (observed) |
 | $(2\pi)^3$ | 248.05 |
-| $\phicdot(2\pi)^3$ | 401.3 |
+| $\phi\cdot(2\pi)^3$ | 401.3 |
 
 ---
 
@@ -189,8 +189,8 @@ for $n = 18$ and appropriate $\rho$ values.
 
 PAPER_396 formalizes the UQFF claim that the Higgs field is **emergent** from the [UA] Aether
 tensor at level $n=18$ of the 26D quantum sphere stratification, governed by
-$\delta_n(18) = \phicdot(2\pi)^3 = 401.3$ and suppressed by $e^{-0.57\times18} \approx 3.49\times10^{-5}$.
-The formula $\delta_n(n) = \phicdot(2\pi)^{n/6}$ provides a unified taxonomy of field
+$\delta_n(18) = \phi\cdot(2\pi)^3 = 401.3$ and suppressed by $e^{-0.57\times18} \approx 3.49\times10^{-5}$.
+The formula $\delta_n(n) = \phi\cdot(2\pi)^{n/6}$ provides a unified taxonomy of field
 emergences across all 26 stratum levels, with the golden ratio encoding recursive self-similar
 growth and $(2\pi)^{n/6}$ encoding UQFF phase scaling. CERN HiggsML dataset validation
 confirms the φ-scaling at the collider energy scale.

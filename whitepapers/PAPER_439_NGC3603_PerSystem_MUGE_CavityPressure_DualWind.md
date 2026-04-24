@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_439
 title: "NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind"
 session: 119
@@ -72,7 +72,7 @@ At $t\ggtau$: $P \rightarrow 0$ (cavity fully expanded)
 
 $$\boxed{g_\text{N3603}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-emergent + H₀t + B:**
+**T1 — DPM-seeded + H₀t + B:**
 $$T_1 = \frac{GM(t)}{r^2}(1+H_0 t)(1-B/B_\text{crit})$$
 $$\frac{GM_0}{r^2} = \frac{6.674\times10^{-11} \times 7.956\times10^{35}}{(8.988\times10^{16})^2} = \frac{5.308\times10^{25}}{8.078\times10^{33}} \approx 6.57\times10^{-9} \, \text{m/s}^2$$
 $$T_1(t=0) \approx 2 \times 6.57\times10^{-9} \approx 1.31\times10^{-8} \, \text{m/s}^2 \quad [M_f=1 \Rightarrow M(0)=2M_0]$$
@@ -109,7 +109,7 @@ At $t = 0$:
 | $T_9$ Wind | $4.45 \times 10^{-5}$ | 50.0% |
 | $T_{10}$ Cavity $P$ | $4.45 \times 10^{-5}$ | 50.0% |
 | $T_2$ UQFF Ug | $2.88 \times 10^{-8}$ | <0.001% |
-| $T_1$ DPM-emergent | $1.31 \times 10^{-8}$ | <0.001% |
+| $T_1$ DPM-seeded | $1.31 \times 10^{-8}$ | <0.001% |
 
 $$g_\text{N3603}(t=0) \approx 8.90\times10^{-5} \, \text{m/s}^2 \quad [\text{dual wind+pressure dominated}]$$
 

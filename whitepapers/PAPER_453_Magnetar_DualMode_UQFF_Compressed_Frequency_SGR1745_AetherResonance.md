@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_453
 title: "Magnetar SGR 1745-2900 Dual-Mode UQFF: Compressed vs Frequency Resonance"
 session: 115
@@ -46,7 +46,7 @@ SGR 1745-2900 is the magnetar closest to Sagittarius A*, orbiting at ~0.3 pc wit
 | τ_decay | 3.156×108 s (10 yr) | Characteristic spin-down timescale |
 | B/B_crit | 1×1011/4.4×1013 ≈ 2.27×10-3 | Magnetic suppression factor |
 
-### 2.2 Surface Gravity (DPM-emergent Base)
+### 2.2 Surface Gravity (DPM-seeded Base)
 
 $$g_{
 m DPM} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674\times10^{-11}\times5.574\times10^{30}}{(10^4)^2} = \frac{3.72\times10^{20}}{10^8} = 3.72\times10^{12}\ \rm m/s^2$$

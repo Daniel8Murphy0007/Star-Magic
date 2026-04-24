@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_hudf.py — Generator for HUDFGalaxies.h
 Module 16: Hubble Ultra Deep Field (HUDF) galaxy ensemble.
 Key physics: cosmic scale z_avg=3.5 with full H(z) correction,
@@ -132,7 +132,7 @@ public:
     }
 
     double compute_Ug() const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }

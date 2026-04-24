@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_740
 title: "Mass Without Weight: f_Ub Buoyancy Calibration and the UQFF Mass-as-Ratio Framework"
 session: 180
@@ -44,7 +44,7 @@ ratio.
 
 | Framework | "Mass" is... | Units | Context-independent? |
 |---|---|---|---|
-| SM (DPM-emergent) | Intrinsic property of matter | kg | Yes (assumed) |
+| SM (DPM-seeded) | Intrinsic property of matter | kg | Yes (assumed) |
 | GR | Source of spacetime curvature | kg | Yes (in vacuum) |
 | **UQFF** | **Ratio of gravity to buoyancy** | **dimensionless** | **No — always context-specific** |
 
@@ -246,7 +246,7 @@ universe.
 
 $$
 \begin{aligned}
-  & v_flat2 = \text{FU\_g1\_compressed} * r  [DPM-emergent prediction → falls off as r increases] \\
+  & v_flat2 = \text{FU\_g1\_compressed} * r  [DPM-seeded prediction → falls off as r increases] \\
   & \text{v\_flat2\_observed} = constant at large r   ["missing mass" ≈ dark matter in SM] \\
   & UQFF correction: \\
   & \text{v\_flat2\_corrected} = (FU_g1 + \text{F\_U\_Bi}) * r \\

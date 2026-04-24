@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_519
 title: "Shell Radiance Prototype Equation: Full 26D Layer Formulation"
 session: 140
@@ -277,7 +277,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*See also: PAPER_516 (DPM Shell Radiance), PAPER_517 (Negative Time Proof),
+> See also: PAPER_516 (DPM Shell Radiance), PAPER_517 (Negative Time Proof),
 PAPER_518 (DPM Forces), PAPER_520 (Session 140 Hub).*
 
 

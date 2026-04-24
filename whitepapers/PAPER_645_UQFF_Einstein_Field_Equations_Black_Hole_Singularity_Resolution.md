@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_645
 title: "UQFF Applied to Einstein Field Equations and Black Hole Singularity Resolution"
 session: 167
@@ -126,7 +126,7 @@ At r → 0 in the UQFF embedding of EFE:
 $$U_g(r \to 0) + U_m(r \to 0) + U_b(r \to 0) + \frac{d^{26}}{dr^{26}}\left(\frac{SCm \cdot g \cdot \nabla UA}{UA}\right) = 0$$
 
 As r → 0:
-- U_g diverges (DPM-emergent analog: G M/r2→ ∞) — **attractive**
+- U_g diverges (DPM-seeded analog: G M/r2→ ∞) — **attractive**
 - U_b = g(1 - 1/∇UA) → −∞ as ∇UA → 0 at ultra-high density — **divergently repulsive**
 - 26th derivative → +∞ acting as additional repulsive barrier
 

@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_bubble.py — Generator for BubbleNebula.h
 Module 12: Bubble Nebula NGC 7635.
 Unique physics: GROWING expansion term E(t)=E_0*(1-exp(-t/tau_exp))
@@ -135,7 +135,7 @@ public:
     double E_t(double t) const { return E_0 * (1.0 - std::exp(-t / tau_exp)); }
 
     double compute_Ug(double t) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
         double corr_B = 1.0 - B / B_crit;
         double E = E_t(t);
         // (1-E) factor: expansion reduces effective Ug

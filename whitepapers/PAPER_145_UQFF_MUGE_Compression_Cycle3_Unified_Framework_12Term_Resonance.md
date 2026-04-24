@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_145
 title: "UQFF Star-Magic MUGE Compression Cycle 3 — Complete Unified Architecture: F_U Master
 Equation + 12-Term Superconductive Resonance Sub-System with Calibrated Constants"
@@ -225,7 +225,7 @@ the UQFF gravitational framework. The 12-term architecture:
 - Preserves the UQFF F_U master equation structure
 - Extends MUGE from 8-term (Cycle 2) to 12-term (Cycle 3)
 - Validates universally from magnetar surfaces to SMBH horizons
-- Recovers DPM-emergent gravity as the fTRZ->0 limiting case
+- Recovers DPM-seeded gravity as the fTRZ->0 limiting case
 - Provides the bridge equations for Navier-Stokes and Morris-Thorne wormholes (PAPER_153, 154)
 
 The detailed paper series PAPER_146-156 provides term-by-term derivations, system-by-system

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_407
 title: "FU: Complete 4-Body Solar System Numerical Verification Table"
 session: 108
@@ -109,7 +109,7 @@ For the Sun, the FU magnitude $2.064\times10^{59}$ N decomposes approximately as
 | Term | Approximate Contribution | Fraction |
 |------|--------------------------|----------|
 | $U_{bi}$ (from Ug2, E_react-amplified) | $\sim10^{59}$ N | Dominant |
-| $U_{g1}$ (DPM-emergent-like) | $\sim10^{40}$ N | Significant |
+| $U_{g1}$ (DPM-seeded-like) | $\sim10^{40}$ N | Significant |
 | $U_{g4}$ (vacuum floor) | $\sim10^{20}$ N | Background |
 | tr($A_{\mu\nu}$) | $-2.0$ (dimensionless) | Metric |
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_375
 title: "UQFF Advanced Integration"
 session: 0
@@ -144,7 +144,7 @@ g(r,t) = \underbrace{\left[\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H_
 + \sum U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta
 p}\intpsi^*\hat{H}\psi,dV\cdot\frac{2\pi}{t_H}
 + \rho_f V g +
-(M_{\mathrm{vis}}+M_{\mathrm{DM}})\left(\frac{\deltarho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed
+(M_{\mathrm{vis}}+M_{\mathrm{DM}})\left(\frac{\delta\rho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed
 UQFF (PAPER 372, Meissner exp)}}
 $$
 $$

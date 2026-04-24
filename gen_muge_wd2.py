@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_wd2.py — Generator for Westerlund2.h
 Module 7: Westerlund 2 super star cluster.
 Physics: wind feedback, SFR M(t) growth, tau_SF=2 Myr.
@@ -139,7 +139,7 @@ public:
     }
 
     double compute_Ug(double Mt) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }

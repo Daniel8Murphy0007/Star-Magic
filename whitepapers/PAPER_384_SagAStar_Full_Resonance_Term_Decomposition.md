@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_384
 title: "Sagittarius A* Full Resonance + Compressed Term Decomposition"
 session: 104
@@ -105,7 +105,7 @@ $$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \qua
 
 ## 4. Compressed MUGE — Per-Term Decomposition
 
-### Term 1+2: DPM-emergent + SC adjustment
+### Term 1+2: DPM-seeded + SC adjustment
 
 $$g_\text{base} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674\times10^{-11} \times 8.155\times10^{36}}{(10^{12})^2}$$
 
@@ -121,7 +121,7 @@ $$\boxed{g_\text{fluid}^{\text{SgrA}*} = 3.552\times10^{20} \ \text{m/s}^2}$$
 
 ### Term 4: Dark Matter Perturbation (DOMINANT in compressed model)
 
-$$g_\text{pert} = (M + M_{DM})\left(\frac{\deltarho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_\text{pert} = (M + M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 With $3μ_s∇(M_s/r)/r = 3\times6.674\times10^{-11}\times8.155\times10^{36}/(10^{12})^3 = 1.63\times10^{-15}$:
 
@@ -150,7 +150,7 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 |------|:------------:|-------|
 | **Perturbation** | **2.966e34** | DOMINANT |
 | Fluid | 3.552e20 | sub-dominant by 14 orders |
-| DPM-emergent SC | 4.899e2 | base |
+| DPM-seeded SC | 4.899e2 | base |
 
 **Total compressed: ≈ 2.966e34 m/s2**
 

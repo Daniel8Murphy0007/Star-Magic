@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_297
 title: "UQFF Superluminal Hubble Expansion Ratio η_exp = 3.328 > 1"
 session: 84
@@ -30,7 +30,7 @@ recession velocity exceeds the speed of light: `v_exp = H₀ × r_obs = 9.984×1
 dimensionless Superluminal Expansion Ratio `η_exp = v_exp/c = 3.328 > 1` is a new UQFF parameter
 encoding the cosmological property that the observable universe spans **3.328 Hubble lengths**
 (`r_obs = 3.328 × r_H`). The Hubble-expansion coupling factor at t_Hubble is `(1 + H₀ × t_H) =
-1.988` — a near-doubling of the DPM-emergent base over cosmic time. All 25 prior UQFF modules had
+1.988` — a near-doubling of the DPM-seeded base over cosmic time. All 25 prior UQFF modules had
 `η_exp << 1` (sub-luminal expansion).
 
 ---
@@ -90,7 +90,7 @@ Numerically:
 $$a_{EM} = \frac{1.602 \times 10^{-19} \times 9.984 \times 10^8 \times 10^{-15}}{1.673 \times 10^{-27}} \times 4.328 \times 10^{-12}$$
 $$= 95.59 \times 4.328 \times 10^{-12} = 4.136 \times 10^{-10} \text{ m/s}^2$$
 
-The EM term (4.136×10-10 m/s2) is **comparable to the DPM-emergent base** (3.447×10-10 m/s2) — another
+The EM term (4.136×10-10 m/s2) is **comparable to the DPM-seeded base** (3.447×10-10 m/s2) — another
 first for UQFF modules.
 
 ---

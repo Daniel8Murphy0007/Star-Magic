@@ -26,7 +26,7 @@ Heaviside/quasi corrections
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-m_\nu^\text{UQFF} = \frac{m_D^2}{M_N}\Bigl(1 + \kappacdot[SSq]\cdot\frac{v^2}{M_N^2}\Bigr), \quad
+m_\nu^\text{UQFF} = \frac{m_D^2}{M_N}\Bigl(1 + \kappa\cdot[SSq]\cdot\frac{v^2}{M_N^2}\Bigr), \quad
 \kappa[SSq] = 2.85\times10^{-4}
 $$
 

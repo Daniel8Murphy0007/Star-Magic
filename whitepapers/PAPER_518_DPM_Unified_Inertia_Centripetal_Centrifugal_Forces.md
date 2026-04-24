@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_518
 title: "DPM-Unified Inertia, Centripetal, and Centrifugal Forces: Resolving the Classical Conundrum"
 session: 140
@@ -347,7 +347,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*See also: PAPER_516 (DPM Shell Radiance), PAPER_517 (Negative Time Proof),
+> See also: PAPER_516 (DPM Shell Radiance), PAPER_517 (Negative Time Proof),
 PAPER_519 (Shell Radiance Prototype), PAPER_520 (Session 140 Hub).*
 
 

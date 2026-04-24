@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_317
 title: "Orion M42 Trapezium Wind Ram Pressure Dominance"
 session: 91
@@ -81,7 +81,7 @@ $$\frac{W_{\rm KE}}{W_{\rm grav}} \approx \frac{a_{\rm wind}}{g_{\rm base}} = 28
 
 | Quantity | Value | Significance |
 |----------|-------|--------------|
-| g_base | 1.907×10-11 m/s2 | DPM-emergent self-gravity |
+| g_base | 1.907×10-11 m/s2 | DPM-seeded self-gravity |
 | a_wind(t=0) | 5.424×10-10 m/s2 | Initial ram pressure |
 | η_wind(t=0) | **28.47** | Wind >> gravity at birth |
 | a_wind(t_age) | 1.085×10-9 m/s2 | Ram pressure at 300 kyr |

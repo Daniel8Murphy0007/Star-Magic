@@ -1,4 +1,4 @@
-# Star-Magic.md
+﻿# Star-Magic.md
 
 ## INTEGRATION STATUS (April 18, 2026)
 
@@ -11,8 +11,8 @@
 **Build:** CMake 3.31.0 + MSVC 19.44.35219, C++20 standard  
 **Executables:** MAIN_1_CoAnQi.exe (1.43 MB, UPX 5.0.2 compressed, 15.51% ratio)  
 **Commit:** 1d3802bc - Session 222 comprehensive README update  
-**Framework:** 2.0-Enhanced Self-Expanding with dynamic term registration + DPM-emergent paradigm  
-**Phase:** Session 222 - DPM-Emergent Paradigm + MUGE Compression Cycle 3  
+**Framework:** 2.0-Enhanced Self-Expanding with dynamic term registration + DPM-FOUNDATION PARADIGM  
+**Phase:** Session 222 - DPM-FOUNDATION PARADIGM + MUGE Compression Cycle 3  
 **Whitepapers:** 1,125 papers (PAPER_001–PAPER_1029) | 1,134 PDFs  
 **Repository:** Daniel8Murphy0007/Star-Magic
 
@@ -84,7 +84,7 @@ cmake --build build --target MAIN_1_CoAnQi
 2. **d67f38f1** (Apr 18, 2026) - MUGE_18April2026: 5 files, 17,295 insertions
 3. **8bebc698** (Apr 18, 2026) - Session 222: 3 CP4 calculators — PAPER_1027-1029 (#611-#613)
 4. **782da068** (Apr 18, 2026) - MUGE Compression Cycle 3 gap fill: 8 new CP4 calculators + compute_Um fix
-5. **ca75dd64** (Apr 17, 2026) - DPM-emergent: Replace Newtonian GM/r² in all whitepapers + regenerate 220 PDFs (607 files)
+5. **ca75dd64** (Apr 17, 2026) - DPM-Foundation: Replace Newtonian GM/r² in all whitepapers + regenerate 220 PDFs (607 files)
 
 ---
 
@@ -148,7 +148,7 @@ cmake --build build --target MAIN_1_CoAnQi
 
 ## Construction Phase Status
 
-**Current Phase:** SESSION 222 — DPM-EMERGENT PARADIGM + ACTIVE PRODUCTION
+**Current Phase:** SESSION 222 — DPM-FOUNDATION PARADIGM + ACTIVE PRODUCTION
 
 ### Completed
 ✅ **Phase 1:** Core UQFF framework (SOURCE1-116, 446 modules)  

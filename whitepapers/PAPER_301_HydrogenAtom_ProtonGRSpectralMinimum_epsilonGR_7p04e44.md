@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_301
 title: "Hydrogen Atom Proton GR Spectral Minimum: ε_GR = 7.04×10-44"
 session: 85
@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Session:** 85  
 **Module:** HYDROGEN_ATOM_UQFF_MODULE.cpp (27th C++ UQFF module — FIRST atomic-scale module)  
 **System:** Hydrogen ground state — proton at Bohr radius r_Bohr = 5.2918×10-11 m  
-**Category:** GR Spectral Minimum — FIRST ε_GR << 1 sub-DPM-emergent regime at Bohr radius  
+**Category:** GR Spectral Minimum — FIRST ε_GR << 1 sub-DPM-seeded regime at Bohr radius  
 **UQFF Version:** 2.0  
 
 ---
@@ -37,7 +37,7 @@ spanning 7.18×1043 in ε_GR — a spectral range of **44 orders of magnitude**.
 ## 1. Physical Setup
 
 The GR curvature parameter ε_GR is the post-Newtonian correction ratio that measures how strongly
-general relativistic effects modify DPM-emergent gravity. For the hydrogen proton at its electron's
+general relativistic effects modify DPM-seeded gravity. For the hydrogen proton at its electron's
 Bohr orbit:
 
 | Parameter | Value | Units |
@@ -129,12 +129,12 @@ The ε_GR parameter classifies UQFF modules into three gravitational regimes:
 
 | Regime | Criterion | Systems |
 |--------|-----------|---------|
-| **Sub-DPM-emergent** (new) | ε_GR < 10-10 | Hydrogen, planets, stars, galaxies (most modules) |
-| **Post-DPM-emergent** | 10-2 < ε_GR < 1 | Magnetars, black hole vicinity |
+| **Sub-DPM-seeded** (new) | ε_GR < 10-10 | Hydrogen, planets, stars, galaxies (most modules) |
+| **Post-DPM-seeded** | 10-2 < ε_GR < 1 | Magnetars, black hole vicinity |
 | **GR-Dominant** (PAPER_298) | ε_GR > 1 | Observable Universe only |
 
-The hydrogen atom sits at the extreme sub-DPM-emergent end: ε_GR = 7.04×10-44 tells us that GR
-corrections to DPM-emergent gravity at the Bohr radius are 44 orders of magnitude below the DPM-emergent
+The hydrogen atom sits at the extreme sub-DPM-seeded end: ε_GR = 7.04×10-44 tells us that GR
+corrections to DPM-seeded gravity at the Bohr radius are 44 orders of magnitude below the DPM-seeded
 term. The electron is nowhere near the proton's gravitational "strong-field" region.
 
 ### 5.2 Connection to PAPER_298 (Universe Scale)
@@ -184,7 +184,7 @@ WOLFRAM_TERM: `HYDROGEN_GR_MIN = "epsilon_GR=7.04e-44; r_S=2.484e-54 m; GR span 
 lower bound of the UQFF GR spectrum
 2. **Completes the GR Spectral Range**: With PAPER_298 (ε_GR = 5.056) establishing the maximum,
 PAPER_301 establishes the minimum — together spanning 44 orders
-3. **Validates UQFF Sub-DPM-emergent Regime**: First formal UQFF computation at r < 1 m, confirming GR
+3. **Validates UQFF Sub-DPM-seeded Regime**: First formal UQFF computation at r < 1 m, confirming GR
 negligibility at quantum scales
 4. **r_S Spectral Minimum**: r_S(proton) = 2.484×10-54 m is the smallest Schwarzschild radius in
 UQFF (54 orders below 1 m)

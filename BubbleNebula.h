@@ -120,8 +120,8 @@ public:
     double E_t(double t) const { return E_0 * (1.0 - std::exp(-t / tau_exp)); }
 
     double compute_Ug(double t) const {
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-seeded: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double ug1 = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
         double corr_B = 1.0 - B / B_crit;
         double E = E_t(t);

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_243
 title: "NGC 3603 Full MUGE: Time-Varying Mass M(t) and Additive Cavity Pressure P(t)/ρ"
 session: 60
@@ -122,7 +122,7 @@ $$T_{\rm fl} = \frac{\rho_{\rm fluid}\,V\,g_{\rm base}(t)}{M(t)}$$
 $$T_{\rm osc} = 2A\cos(kx)\cos(\omega t) + \frac{2\pi}{t_{\rm Gyr}}A\cos(kx - \omega t)$$
 
 **Term 8 — Dark matter with $3GM(t)/r^3$ tidal perturbation:**
-$$T_{\rm DM} = \frac{(M(t) + M_{\rm DM})\!\left(\deltarho/\rho + 3GM(t)/r^3\right)}{M(t)}$$
+$$T_{\rm DM} = \frac{(M(t) + M_{\rm DM})\!\left(\delta\rho/\rho + 3GM(t)/r^3\right)}{M(t)}$$
 
 **Term 9 — Stellar wind ram pressure:**
 $$T_{\rm wind} = \frac{\rho_{\rm wind}\,v_{\rm wind}^2}{\rho_{\rm fluid}}$$

@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_ngc1792.py — Generator for GalaxyNGC1792.h
 Module 17: NGC 1792 — starburst spiral galaxy.
 Key physics: SFR-driven mass growth M(t)=M0*(1+SFR_factor*exp(-t/tau_SF))
@@ -143,7 +143,7 @@ public:
     }
 
     double compute_Ug(double Mt) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_947
 title: "GW190425 Mass-Gap Phonon Classification"
 session: 213
@@ -197,7 +197,7 @@ deconfinement phase transition observed at ALICE/LHC.
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\delta\phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM

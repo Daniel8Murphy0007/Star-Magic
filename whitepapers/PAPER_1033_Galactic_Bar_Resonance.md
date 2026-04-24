@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_1033
 title: "Galactic Bar Resonance -- SCm Phonon Pattern Speed Coupling"
 session: 222-P1
@@ -145,7 +145,7 @@ Lindblad resonance locations.
 $$\mathcal{L}_{\text{bar}} = \frac{1}{2}I\Omega_p^2 - \Phi_{\text{bar}}(R,\theta) + \Phi_{\text{SCm}} S_{26} \Omega_p$$
 
 ### A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\ddot{R} - R\dot{\theta}^2 = -\frac{\partialPhi}{\partial R} + f_{\text{phonon}}(R)}$$
+$$\boxed{\ddot{R} - R\dot{\theta}^2 = -\frac{\partial\Phi}{\partial R} + f_{\text{phonon}}(R)}$$
 
 ### A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms -> SCm vacuum -> phonon $\omega_{\text{SCm}}$ -> galactic disk -> bar instability -> pattern speed -> phonon coupling -> $F_{U,Bi\_i}$ unified force -> observational prediction

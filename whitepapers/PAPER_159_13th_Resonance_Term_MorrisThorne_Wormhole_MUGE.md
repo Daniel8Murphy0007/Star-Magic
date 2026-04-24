@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_159
 title: "13th Resonance Term: Morris-Thorne Wormhole in MUGE (a_worm = f_worm·E_vac/(b2+r2))"
 session: 47
@@ -63,7 +63,7 @@ $$\boxed{a_{worm}(r) = \frac{f_{worm} \cdot E_{vac,neb}}{b^2 + r^2}}$$
 | b             | 1.0            | m       | Morris-Thorne throat radius          |
 | r             | radial distance| m       | Distance from throat                 |
 
-At large r: $a_{worm} \approx E_{vac,neb}/r^2$ → same 1/r2 decay as DPM-emergent gravity
+At large r: $a_{worm} \approx E_{vac,neb}/r^2$ → same 1/r2 decay as DPM-seeded gravity
 At r=0 (throat): $a_{worm} = E_{vac,neb}/b^2 = 7.09 \times 10^{-36}$ m/s2
 
 ---
@@ -104,7 +104,7 @@ double compute_resonance_MUGE(const MUGESystem& sys, const ResonanceParams& res)
 ## 5. Physical Magnitude Compared to Other Terms 
 For r = 1 AU = 1.496×1011 m: 
 $$a_{worm}(1\,AU) = \frac{7.09\times10^{-36}}{1 + (1.496\times10^{11})^2} \approx 3.17\times10^{-58}\,\text{m/s}^2$$ 
-This is 1058 times smaller than DPM-emergent gravity at 1 AU (5.93×10-3 m/s2), making 
+This is 1058 times smaller than DPM-seeded gravity at 1 AU (5.93×10-3 m/s2), making 
 a_worm astrophysically negligible in the Solar System but **dominant** in quantum gravity 
 regimes where b ~ $\ell_{Planck}$ and r ~ b. 
 --- 

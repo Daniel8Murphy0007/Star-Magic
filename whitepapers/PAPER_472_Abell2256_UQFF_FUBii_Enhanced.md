@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_472
 title: "Abell 2256 Galaxy Cluster UQFF F_U_Bi_i_enhanced Integral"
 session: 123
@@ -54,7 +54,7 @@ $$F_{U,Bi,i} = \int_{r\_0}^{r_{max}} \left[ -F_0 + F_{DPM,mom} + F_{DPM,grav} + 
 
 | Term | Expression | Physical Role |
 |------|-----------|---------------|
-| F₀ | G M2 / r2 | DPM-emergent gravitational baseline |
+| F₀ | G M2 / r2 | DPM-seeded gravitational baseline |
 | F_DPM,mom | DPM_mom × Δr | 26-sphere momentum coupling |
 | F_DPM,grav | 2 G M / 5 r2 (3kT/m) | DPM gravitational-thermal |
 | F_DPM,stab | G M2 / 3 r2 | DPM stability term |
@@ -89,7 +89,7 @@ $$
 
 | Term | Contribution (N) | % of Total |
 |------|----------------|------------|
-| F₀ (DPM-emergent) | −2.95e217 | −24% |
+| F₀ (DPM-seeded) | −2.95e217 | −24% |
 | F_LENR | +1.84e212 | ~0% |
 | F_rel | +2.69e255 | dominant+ |
 | F_Kozima | +7.85e30 | negligible |

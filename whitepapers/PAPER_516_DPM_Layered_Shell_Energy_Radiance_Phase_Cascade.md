@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_516
 title: "DPM Layered Shell-Energy Radiance Phase Cascade"
 session: 140
@@ -303,7 +303,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*See also: PAPER_517 (Negative Time Proof), PAPER_518 (DPM-Unified Forces),
+> See also: PAPER_517 (Negative Time Proof), PAPER_518 (DPM-Unified Forces),
 PAPER_519 (Shell Radiance Prototype), PAPER_520 (Session 140 Hub).*
 
 

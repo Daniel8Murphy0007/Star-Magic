@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_1054
 title: "SUSY Breaking Soft Terms -- SCm Phonon Mediation of Soft Masses"
 session: 204
@@ -23,7 +23,7 @@ affecting neutralino dark matter relic abundance by delta_Omega / Omega approx 1
 ## 1. Key Equations
 
 - $M_{1/2,\text{UQFF}} = \frac{F_\phi}{M_{\text{Pl}}}(1 + \beta_i S_{26} \Phi)$
-- Gaugino mass shift: $0.3\%$; scalar mass shift: $0.7\%$; $\deltaOmega_{\chi} / \Omega \approx 1.2\%$
+- Gaugino mass shift: $0.3\%$; scalar mass shift: $0.7\%$; $\delta\omega_{\chi} / \Omega \approx 1.2\%$
 
 ## 2. Results
 

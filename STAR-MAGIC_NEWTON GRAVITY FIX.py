@@ -431,7 +431,7 @@ if __name__ == "__main__":
 # =============================================================================
 #
 # PHASE 1 — INITIATING ERROR (COMMIT 332AC0C2)
-#   "DPM-emergent audit: Newtonian gravity is EMERGENT, not foundational"
+#   "DPM-seeded audit: Newtonian gravity is EMERGENT, not foundational"
 #   CREATED: dpm_helpers.py with dpm_ug1_seed/ug2
 #   CREATED: Core/dpm_emergent.h with same backwards naming
 #   ERROR 1: Name "dpm_emergent" implies DPM is emergent — BACKWARDS.

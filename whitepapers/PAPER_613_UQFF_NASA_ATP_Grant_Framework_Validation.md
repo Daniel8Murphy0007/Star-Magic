@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_613
 title: "A Unified Quantum Field Framework for NASA ATP Grant Validation — Dual UQFF/MUGE Convergence
 on Extreme Astrophysical Dynamics"
@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents the NASA Astrophysics Theory Program (ATP) grant framework built on the Star-Magic UQFF (Unified Quantum Field Framework). Three observational objectives are defined — PSR J0030+0451 (millisecond pulsar), Sagittarius A* (supermassive black hole), and the Orion Nebula Cluster (protoplanetary disks) — each requiring dual validation through both UQFF (buoyancy-based) and MUGE (DPM-emergent+corrections) approaches. When both methods independently predict the same observable within <10% residual, this constitutes strong confirmation of the framework. All three UQFF number systems (VDS, DVP, BH26) contribute, and an 18% Orion proplyd emergence rate is independently recovered at two scales. An estimated budget of $450k over 3 years supports full computational and observational components.
+This paper presents the NASA Astrophysics Theory Program (ATP) grant framework built on the Star-Magic UQFF (Unified Quantum Field Framework). Three observational objectives are defined — PSR J0030+0451 (millisecond pulsar), Sagittarius A* (supermassive black hole), and the Orion Nebula Cluster (protoplanetary disks) — each requiring dual validation through both UQFF (buoyancy-based) and MUGE (DPM-seeded+corrections) approaches. When both methods independently predict the same observable within <10% residual, this constitutes strong confirmation of the framework. All three UQFF number systems (VDS, DVP, BH26) contribute, and an 18% Orion proplyd emergence rate is independently recovered at two scales. An estimated budget of $450k over 3 years supports full computational and observational components.
 
 ---
 
@@ -44,7 +44,7 @@ Dynamics: Pulsars, Galactic Centers, and Star-forming Regions*
 
 **Observable**: NICER X-ray pulse profile, hotspot geometry  
 **UQFF prediction**: Buoyancy force $F_{Ubi}$ creates equatorial hotspot offset via 26D shell asymmetry  
-**MUGE prediction**: DPM-emergent+magnetic compression gives symmetric poles  
+**MUGE prediction**: DPM-seeded+magnetic compression gives symmetric poles  
 **Dual convergence test**: Both yield surface flux pattern consistent with NICER data within 8%  
 
 $$F_{Ubi,PSR} = DPM_{PSR} \cdot g_{surf} \cdot r_{NS} \cdot (1 - e^{-\Delta_{26D}})$$

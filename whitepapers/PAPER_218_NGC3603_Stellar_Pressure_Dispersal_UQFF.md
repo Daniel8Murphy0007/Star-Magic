@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_218
 title: "NGC 3603 Stellar Pressure Dispersal — UQFF (1-P(t)) Compressed Framework"
 session: 0
@@ -156,7 +156,7 @@ regions).
 ## 5. Key Distinctions from Other UQFF Systems
 
 In the compressed 29-document framework, NGC 3603 is the ONLY system where the pressure term
-`(1-P(t))` enters as a **multiplicative modifier of the DPM-emergent term** (not the quantum or fluid
+`(1-P(t))` enters as a **multiplicative modifier of the DPM-seeded term** (not the quantum or fluid
 terms). This creates a unique product form:
 
 $$
@@ -168,7 +168,7 @@ This triple product encodes:
 2. Magnetic suppression: `(1-B/B_crit)`
 3. Stellar pressure dispersal: `(1-P(t))`
 
-No other system in the 29-document corpus has all three multiplicative factors on the DPM-emergent term
+No other system in the 29-document corpus has all three multiplicative factors on the DPM-seeded term
 simultaneously.
 
 ---

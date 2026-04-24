@@ -175,7 +175,7 @@ F_AETHER      = 1.576e-35   # Hz
 
 
 # ---------------------------------------------------------------------------
-# DPM-emergent helpers.
+# DPM-seeded helpers.
 # CANONICAL: GM/r^2 is a reduced observational projection term, not a seed.
 # In Ug1, G*M/r^2 is used as the mass-gradient operator within dipole form.
 # ---------------------------------------------------------------------------
@@ -2835,7 +2835,7 @@ class SGR1745CompressedMUGESpectralTermDecompositionCalculator(_CP4Calculator):
         c = self.c
 
         # Term 1: reduced projection baseline
-        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
+        # DPM-seeded: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
         g_base = dpm_ug1_seed(M, r)
 
         # Term 2: Hubble expansion factor
@@ -6588,7 +6588,7 @@ class OrionNebulaHAlphaUQFFCalculator(_CP4Calculator):
         psi_res = (2*A * math.cos(k*x) * math.cos(w*t) +
                    (2*math.pi/13.8) * A * math.cos(k*x - w*t))
 
-        # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+        # DPM-seeded: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
 
         Ug1 = dpm_ug1_seed(M, r)
         Ug4 = Ug1 * f_sc
@@ -6860,7 +6860,7 @@ class BigBangCosmicQGDMGWCalculator(_CP4Calculator):
         r_t = c * t
         z_t = t_Hub / t - 1.0
 
-        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
+        # DPM-seeded: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
 
         g_base = dpm_ug1_seed(M_t, r_t) if r_t > 0 else 0.0
 
@@ -7183,7 +7183,7 @@ class UQFFExpandedSystemRegistryCalculator(_CP4Calculator):
             A_res  = 1.0e-10
             F_env  = 1.0
             H_res  = A_res * math.sin(2*math.pi * f_res * t_s) + F_env * SC_m
-            # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
+            # DPM-seeded: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
             g_base = dpm_ug1_seed(M, r)
             g_total = g_base + H_res
         else:
@@ -8602,7 +8602,7 @@ class Session140GrokShare0f5d4c91f2cHubCalculator(_CP4Calculator):
         ],
         'traditional_conundrum_resolved': (
             'Classical: inertia=intrinsic, centripetal=real, centrifugal=fictitious. '
-            'Resolution: all 3 pure DPM-emergent from 26D layered radiance fall; '
+            'Resolution: all 3 pure DPM-seeded from 26D layered radiance fall; '
             'mass = equilibrium where F_inert=F_centrip−F_centrif.'
         ),
     }
@@ -11026,7 +11026,7 @@ class BSFGGeodesicMetricCompatibilityCalculator(_CP4Calculator):
         dt_dlam = E_geo / A00
         aether_accel = -G_r00 * dt_dlam ** 2
 
-        # DPM-emergent comparison (g_dpm via dpm_ug1_seed; Newton is downstream observational projection)
+        # DPM-seeded comparison (g_dpm via dpm_ug1_seed; Newton is downstream observational projection)
         g_dpm = dpm_ug1_seed(Ms, r)
 
         # UQFF fifth-force: extra radial acceleration from Aether geodesic correction
@@ -18397,13 +18397,13 @@ class UQFFGalacticDiscreteBandSimulatorCalculator:
         # Ug1 � internal dipole (simplified)
         H_SCm  = 0.99
         B_T    = B_gauss * 1e-4   # Gauss ? Tesla
-        Ug1 = dpm_ug1_seed(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-emergent
+        Ug1 = dpm_ug1_seed(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-seeded
         # Ug2 � field bubble
         rho_SCm = 7.09e-37
         rho_UA  = 7.09e-36
         rho_Ui  = 2.84e-36
         rho_sum = rho_SCm + rho_UA + rho_Ui
-        Ug2 = dpm_ug1_seed(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-emergent
+        Ug2 = dpm_ug1_seed(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-seeded
         # Ug3 � string disk (single exemplar string)
         omega_s = 2.5e-6     # rad/s stellar spin
         t       = 0.0
@@ -23660,7 +23660,7 @@ class UQFF38SystemCompressedMasterCalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -23676,7 +23676,7 @@ class UQFF38SystemCompressedMasterCalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -23702,7 +23702,7 @@ class UQFF38SystemCompressedMasterCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -23777,7 +23777,7 @@ class SombreroGalaxyDustMUGECalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -23793,7 +23793,7 @@ class SombreroGalaxyDustMUGECalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -23819,7 +23819,7 @@ class SombreroGalaxyDustMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -23892,7 +23892,7 @@ class SaturnRingTidalMUGECalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -23908,7 +23908,7 @@ class SaturnRingTidalMUGECalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -23934,7 +23934,7 @@ class SaturnRingTidalMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24004,7 +24004,7 @@ class M16EagleNebulaRadiationMUGECalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -24020,7 +24020,7 @@ class M16EagleNebulaRadiationMUGECalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -24046,7 +24046,7 @@ class M16EagleNebulaRadiationMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24119,7 +24119,7 @@ class CrabNebulaExpandingMUGECalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -24135,7 +24135,7 @@ class CrabNebulaExpandingMUGECalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -24161,7 +24161,7 @@ class CrabNebulaExpandingMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24241,7 +24241,7 @@ class GeneralizedHydrogenResonanceAllElementsCalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -24257,7 +24257,7 @@ class GeneralizedHydrogenResonanceAllElementsCalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -24283,7 +24283,7 @@ class GeneralizedHydrogenResonanceAllElementsCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24352,7 +24352,7 @@ class UniverseDiameterUQFFCalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -24368,7 +24368,7 @@ class UniverseDiameterUQFFCalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -24394,7 +24394,7 @@ class UniverseDiameterUQFFCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24481,7 +24481,7 @@ class Doc43dInertiaAetherSuperconductiveCalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -24497,7 +24497,7 @@ class Doc43dInertiaAetherSuperconductiveCalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -24523,7 +24523,7 @@ class Doc43dInertiaAetherSuperconductiveCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24612,7 +24612,7 @@ class FiveQuantumVariableSetsCalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -24628,7 +24628,7 @@ class FiveQuantumVariableSetsCalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -24654,7 +24654,7 @@ class FiveQuantumVariableSetsCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24776,7 +24776,7 @@ class M51NGC1316MUGESimulationCalculator:
     def self_expand(self): pass
 
     def compute(self, dataset: dict) -> dict:
-        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        """Canonical UQFF compute. DPM-seeded: GM/r^2 is Step 10 projection, not seed.
         Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
         """
         import math
@@ -24792,7 +24792,7 @@ class M51NGC1316MUGESimulationCalculator:
         Omega_g = dataset.get('Omega_g', 7.3e-16)
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
-        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        # --- DPM-seeded gravity family (NOT Newton-first) ---
         g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
@@ -24818,7 +24818,7 @@ class M51NGC1316MUGESimulationCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-seeded, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -42273,7 +42273,7 @@ class THzHoleResonanceFormulaCalculator(object):
 
         # ── Ug1: UQFF_g + SM_g ─────────────────────────────────────
         UQFF_g = 1.5 * mu_j / r_j * G_NEWTON * M / (r ** 2)  # k1·mu·grad(M/r)
-        SM_g = G_NEWTON * M / (r ** 2)                         # DPM-emergent observational projection (SM reference form)
+        SM_g = G_NEWTON * M / (r ** 2)                         # DPM-seeded observational projection (SM reference form)
         Ug1_total = UQFF_g + SM_g
 
         # ── SCm exponent: superconductive suppression ───────────────

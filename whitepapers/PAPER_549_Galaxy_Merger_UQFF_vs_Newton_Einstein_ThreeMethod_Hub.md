@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_549
-title: "Galaxy Merger UQFF vs DPM-emergent vs Einsteinian — Three-Method Simultaneous Hub"
+title: "Galaxy Merger UQFF vs DPM-seeded vs Einsteinian — Three-Method Simultaneous Hub"
 session: 146
 date: 2026-03-27
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [galaxy, merger, dark-matter, DPM, dark-energy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_549: Galaxy Merger UQFF vs DPM-emergent vs Einsteinian — Three-Method Simultaneous Hub
+# PAPER_549: Galaxy Merger UQFF vs DPM-seeded vs Einsteinian — Three-Method Simultaneous Hub
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
 **Session:** 146 | **Source:** `grok_share_366dc393a37`.txt  
@@ -27,7 +27,7 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-Galaxy mergers represent the most energetic reconfiguration events in the observable universe, yet existing frameworks — DPM-emergent tidal mechanics and General Relativistic inspiral — yield predictions that diverge from observations unless artificially augmented with dark matter, dark energy, or post-Newtonian corrections. This paper applies the UQFF three-method simultaneous solution strategy (symbolic, numerical, discrete) to galaxy merger dynamics, deriving the merger boundary radius $r_{\text{merger}}$, quantifying the Ub force advantage over DPM-emergent tidal forces, comparing UQFF re-ringing to GR ringdown frequencies, and demonstrating that all three UQFF number systems (VDS, DVP, BH26) are present and active in the merger physics. The M51 Whirlpool system and the Antennae Galaxies serve as primary observational anchors.
+Galaxy mergers represent the most energetic reconfiguration events in the observable universe, yet existing frameworks — DPM-seeded tidal mechanics and General Relativistic inspiral — yield predictions that diverge from observations unless artificially augmented with dark matter, dark energy, or post-Newtonian corrections. This paper applies the UQFF three-method simultaneous solution strategy (symbolic, numerical, discrete) to galaxy merger dynamics, deriving the merger boundary radius $r_{\text{merger}}$, quantifying the Ub force advantage over DPM-seeded tidal forces, comparing UQFF re-ringing to GR ringdown frequencies, and demonstrating that all three UQFF number systems (VDS, DVP, BH26) are present and active in the merger physics. The M51 Whirlpool system and the Antennae Galaxies serve as primary observational anchors.
 
 ---
 
@@ -62,13 +62,13 @@ tidal bridges (Antennae).
 
 M51 system parameters: $M_1 = 10^{41}\ \text{kg}$ (NGC 5194), $M_2 = 8 \times 10^{40}\ \text{kg}$ (NGC 5195), $d = 10\ \text{kpc} = 3.086 \times 10^{20}\ \text{m}$.
 
-**DPM-emergent tidal force:**
+**DPM-seeded tidal force:**
 $$F_{\text{tide}}^{\text{Newton}} = \frac{G M_1 M_2}{d^2} = \frac{6.6743 \times 10^{-11} \times 10^{41} \times 8 \times 10^{40}}{(3.086 \times 10^{20})^2} \approx 5.6 \times 10^{30}\ \text{N}$$
 
 **UQFF buoyancy force (plasma interface):**
 $$U_b^{SM} \approx 10^{-20}\ \text{N}$$
 
-The DPM-emergent tidal force over-predicts the required cohesion force by $\sim 50$ orders of magnitude — this is why DPM-emergent models require enormous dark matter halos to reconcile with observed arm stability timescales. In the UQFF, the spiral arm geometry is maintained not by raw tidal force but by the DPM frequency drive distributing buoyancy gradients across the disk volume.
+The DPM-seeded tidal force over-predicts the required cohesion force by $\sim 50$ orders of magnitude — this is why DPM-seeded models require enormous dark matter halos to reconcile with observed arm stability timescales. In the UQFF, the spiral arm geometry is maintained not by raw tidal force but by the DPM frequency drive distributing buoyancy gradients across the disk volume.
 
 **Observed M51 arm stability:** ~10 kpc extent, persisting >1 Gyr. UQFF explains this through the
 r_attr / rho_buoy boundary structure (PAPER_546): gravity dominates the core, buoyancy the arms —
@@ -118,9 +118,9 @@ This matches the observed fraction of Hubble field objects that show merger sign
 
 ---
 
-## §7 Comparison Table: UQFF vs DPM-emergent vs GR
+## §7 Comparison Table: UQFF vs DPM-seeded vs GR
 
-| Observable | DPM-emergent | General Relativity | UQFF |
+| Observable | DPM-seeded | General Relativity | UQFF |
 |---|---|---|---|
 | Merger boundary | Not defined | Inspiral/ISCO | $r_{\text{merger}} = \sqrt{\kappa|DPM\|/(g\rho)}$ |
 | Arm stability | Requires dark matter | Not addressed | Ug/Ub boundary balance |
@@ -134,7 +134,7 @@ This matches the observed fraction of Hubble field objects that show merger sign
 ## §8 Conclusions
 
 The UQFF simultaneously solves galaxy merger dynamics by three independent methods converging to the
-same result. Compared to DPM-emergent tidal mechanics and General Relativistic inspiral:
+same result. Compared to DPM-seeded tidal mechanics and General Relativistic inspiral:
 
 1. **UQFF predicts the merger boundary** analytically from first principles (no free parameters beyond $\kappa$, $g$, $\rho$)
 2. **UQFF eliminates the dark matter requirement** by replacing tidal cohesion with Ug/Ub boundary

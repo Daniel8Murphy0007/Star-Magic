@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_225
 title: "UQFF Early-Universe Relativistic UV Coupling — (v/c)2 · L_UV for Proto-Galactic Formation at
 High Redshift"
@@ -248,7 +248,7 @@ The class automatically classifies the velocity regime:
 
 | $v/c$ | Regime |
 |-------|--------|
-| $< 0.01$ | DPM-emergent (non-relativistic) |
+| $< 0.01$ | DPM-seeded (non-relativistic) |
 | $0.01$–$0.10$ | Mildly relativistic (proto-galactic infall) |
 | $0.10$–$0.50$ | Moderately relativistic (AGN wind / radio jet) |
 | $> 0.50$ | Highly relativistic (blazar / GRB jet) |

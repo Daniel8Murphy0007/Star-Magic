@@ -1,4 +1,4 @@
-"""
+﻿"""
 gen_muge_ngc1275.py — Generator for NGC1275.h
 Module 15: NGC 1275 — Perseus A galaxy cluster BCG.
 Unique physics:
@@ -164,7 +164,7 @@ public:
     }
 
     double compute_Ug(double Bt, double Ft) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
+        // DPM-seeded: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
         double corr_B = 1.0 - Bt / B_crit;
         // (1+F) filament enhancement
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ) * (1.0 + Ft);

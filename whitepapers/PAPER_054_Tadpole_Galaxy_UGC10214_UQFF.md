@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_054
 title: "UGC 10214 Tadpole Galaxy: UQFF Tidal Compression Analysis of the Extended Stellar Tail and
 Companion Interaction"
@@ -59,7 +59,7 @@ present in Standard Model treatments.
 UGC10214's lower g_grav compared to NGC2264 reflects its more diffuse mass distribution at greater
 distance:
 - g_grav = **7.8551×10?** m/s (9.3 lower than NGC2264's 5.9×10?)
-- Physical interpretation: At 420 Mpc with a 10 M? spiral, the UQFF DPM-emergent base gravity at the effective radius is ~8×10? m/s, consistent with galaxy-scale gravitational fields
+- Physical interpretation: At 420 Mpc with a 10 M? spiral, the UQFF DPM-seeded base gravity at the effective radius is ~8×10? m/s, consistent with galaxy-scale gravitational fields
 - **PASS** (positive, within expected galactic scale)
 
 ### Test 2: Hubble Factor
@@ -253,7 +253,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

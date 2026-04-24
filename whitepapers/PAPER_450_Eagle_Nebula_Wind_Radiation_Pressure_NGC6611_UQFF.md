@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_450
 title: "Eagle Nebula UQFF Wind + Radiation Pressure: NGC 6611 Radiation-Dominated Environment"
 session: 115
@@ -30,7 +30,7 @@ The Eagle Nebula (M16, NGC 6611) hosts some of the most dramatic photon-driven e
 (the "Pillars of Creation") driven by OB-star radiation from the embedded NGC 6611 cluster (L =
 3.83×1033 W). This paper quantifies the gravitational dynamics of the Eagle Nebula system under
 UQFF-MUGE, combining radiation pressure from NGC 6611, stellar wind ram pressure, and the standard
-UQFF Ug terms. With M=5000 MM_sun at r = 3.31×1017 m (~35 ly), the DPM-emergent base gravity is ~1.2×10-12
+UQFF Ug terms. With M=5000 MM_sun at r = 3.31×1017 m (~35 ly), the DPM-seeded base gravity is ~1.2×10-12
 m/s2, while the NGC 6611 radiation pressure term P_rad ≈ 1.5×10-9 m/s2 exceeds it by 1250×,
 identifying radiation as the dominant dynamical agent in the Pillars formation process.
 
@@ -71,16 +71,16 @@ The factor $\rho/m_H$ converts from photon momentum flux to acceleration. At ρ 
 
 $$P_{\rm rad,eff} \approx 1.52 \times 10^{-9}\ \rm m/s^2$$
 
-This is **1250× the DPM-emergent base gravity** for this system — radiation completely governs M16
+This is **1250× the DPM-seeded base gravity** for this system — radiation completely governs M16
 dynamics.
 
 ### 2.4 Stellar Wind Ram Pressure
 
 $$W_{\rm wind}(t) = \rho_{\rm fluid} v_{\rm wind}^2 = 10^{-20} \times (10^4)^2 = 10^{-12}\ \rm m/s^2$$
 
-Comparable to DPM-emergent gravity; wind contributes ~100% of DPM-emergent value as secondary pressure.
+Comparable to DPM-seeded gravity; wind contributes ~100% of DPM-seeded value as secondary pressure.
 
-### 2.5 DPM-emergent Base and Hubble Factor
+### 2.5 DPM-seeded Base and Hubble Factor
 
 $$g_{
 m DPM} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674 \times 10^{-11} \times 9.945 \times 10^{33}}{(3.31 \times 10^{17})^2} = \frac{6.636 \times 10^{23}}{1.096 \times 10^{35}} \approx 6.05 \times 10^{-12}\ \rm m/s^2$$
@@ -133,10 +133,10 @@ compact objects.
 
 | Term | Value (m/s2) | Comment |
 |------|-------------|---------|
-| DPM-emergent g | 6.05×10-12 | Baseline |
+| DPM-seeded g | 6.05×10-12 | Baseline |
 | Hubble correction | ~6.1×10-12 | 1.001× baseline |
 | Radiation pressure P_rad | **1.52×10-9** | **Dominant (250×)** |
-| Wind ram pressure | 1.0×10-12 | ~17% of DPM-emergent |
+| Wind ram pressure | 1.0×10-12 | ~17% of DPM-seeded |
 | Dark matter (26.8%) | 1.62×10-12 | ~27% addition |
 | Cosmological Λ term | ~3×10-34 | Negligible |
 | Quantum term | ~10-38 | Negligible |

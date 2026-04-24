@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_378
 title: "Cohesive UQFF Integration Formula: Compressed×Resonance Unification with Resonance Damping
 and SM Gravity Emergence"
@@ -48,13 +48,13 @@ e^{-\alpha t}
 $$
 
 **Where:**
-- $g_{\mathrm{compressed}}$ — Full 6-term Compressed MUGE (PAPER_372): DPM-emergent base ×
+- $g_{\mathrm{compressed}}$ — Full 6-term Compressed MUGE (PAPER_372): DPM-seeded base ×
   expansion × superconductivity + Ug-sum + cosmological + quantum coherence + fluid + perturbation
 - $\sum_{i} a_{\mathrm{resonance},i}$ — Sum of all 12 Resonance MUGE terms (PAPER_371):
   $a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res} + U_{g4i}
   + a_{quantum\_freq} + a_{Aether\_freq} + a_{fluid\_freq} + Osc_{term} + a_{exp\_freq} + f_{TRZ}$
 - $\alpha$ — Resonance damping factor (s-1); governs the timescale over which resonance
-  corrections decay toward the DPM-emergent baseline.  
+  corrections decay toward the DPM-seeded baseline.  
   *Physical meaning:* In weak-field or late-epoch regimes, resonance terms average out and
   $g_{\mathrm{cohesive}} \to g_{\mathrm{compressed}}$.
 
@@ -141,7 +141,7 @@ Demonstrating the discrepancy and when each model dominates:
 
 | Quantity | Compressed MUGE | Resonance MUGE | Ratio |
 |----------|----------------|----------------|-------|
-| Dominant term | Perturbation $(M·\deltarho/\rho)$ | Fluid $a_{fluid\_freq}$ | — |
+| Dominant term | Perturbation $(M·\delta\rho/\rho)$ | Fluid $a_{fluid\_freq}$ | — |
 | g value | $1.782 \times 10^{39}$ m/s2 | $1.773 \times 10^{-9}$ m/s2 | 48 orders |
 
 For this system at $t = 3.799 \times 10^{10}$ s, the resonance contribution is entirely

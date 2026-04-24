@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_273
 title: "Blueshift UQFF Gravitational Approach Amplifier — κ_approach = 1/(1+z) for Negative Redshift
 Systems"
@@ -42,7 +42,7 @@ the first UQFF treatment of negative redshift as a gravitational degree of freed
 
 ## 1. Introduction
 
-Standard DPM-emergent and GR gravity treats the gravitational force between two masses as independent
+Standard DPM-seeded and GR gravity treats the gravitational force between two masses as independent
 of relative velocity in the non-relativistic limit. Doppler blueshift is traditionally interpreted
 as a spectral phenomenon with no consequence for the gravitational interaction energy.
 
@@ -147,7 +147,7 @@ This is small but non-zero — a definite prediction of UQFF for approaching gal
 
 | Framework | Treatment of z < 0 |
 |-----------|-------------------|
-| DPM-emergent gravity | No z dependence |
+| DPM-seeded gravity | No z dependence |
 | General Relativity | Kinetic energy contribution (relativistic only) |
 | ΛCDM cosmology | No blueshift gravitational term |
 | **UQFF (this paper)** | **κ_approach = 1/(1+z) — direct multiplicative amplifier** |

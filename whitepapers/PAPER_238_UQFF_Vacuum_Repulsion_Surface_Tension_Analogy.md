@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_238
 title: "UQFF Vacuum Repulsion Force — Surface-Tension Analogy F_vac_rep"
 session: 59
@@ -72,7 +72,7 @@ The surface-tension analogy captures the following physics:
 
 **Vacuum contrast:** $F_{\rm vac\_rep} \propto \Delta\rho_{\rm vac}$ — vanishes in uniform vacuum (no boundary effect)
 
-**Relative strength vs DPM-emergent gravity:**
+**Relative strength vs DPM-seeded gravity:**
 $$\frac{F_{\rm vac\_rep}}{F_{\rm grav}} = \frac{k_{\rm vac}\,\Delta\rho_{\rm vac}\,v\,r^2}{G\,M}$$
 
 At $r=10^{14}$ m, $v=10^6$ m/s, $\Delta\rho_{\rm vac}=10^{-12}$ J/m3: ratio $\sim 10^{18}$ (vacuum repulsion dominates at extreme scales).
@@ -84,7 +84,7 @@ At $r=10^{14}$ m, $v=10^6$ m/s, $\Delta\rho_{\rm vac}=10^{-12}$ J/m3: ratio $\si
 1. **Velocity-coupled vacuum force** — first UQFF repulsive term to scale with $v$
 2. **Surface-tension physical model** — quantum vacuum boundary physics, not cosmological $\Lambda$
 3. **Distinct from DE term** — $F_{\rm vac\_rep}$ vanishes at rest; $F_{\rm DE}$ is always present
-4. **$k_{\rm vac} = G$** — reuses gravitational constant as coupling, establishing dimensional consistency with DPM-emergent sector
+4. **$k_{\rm vac} = G$** — reuses gravitational constant as coupling, establishing dimensional consistency with DPM-seeded sector
 
 ---
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_457
 title: "MUGE 38-System Extended Environment: F_torque + F_shock + F_cosmo Auto-Cascade"
 session: 116
@@ -66,7 +66,7 @@ $$F_{\rm torque} = 1\times10^{-11}\ \rm m/s^2 \quad [\text{canonical value for W
 
 The torque term represents tidal dissipation rate — the transfer of orbital angular momentum of the
 binary into the envelope's gravitational field. This is a **new gravitational coupling** that does
-not appear in any standard DPM-emergent or GR treatment.
+not appear in any standard DPM-seeded or GR treatment.
 
 **Physical origin:** In NGC 6302, the white dwarf binary separated at distance d ≈ few AU exerts
 differential tidal force on the bipolar lobes. The torque term captures the aspherical
@@ -121,11 +121,11 @@ WR 151 (WN4 star) has documented terminal wind velocity v_wind = 2000 km/s = 2×
 
 $$F_{\rm wind,WR} = \rho_{\rm ISM} v_{\rm wind}^2 = 10^{-21} \times (2\times10^6)^2 = 4\times10^{-9}\ \rm m/s^2$$
 
-This exceeds the DPM-emergent gravity of the WR star at OB-association separation (~1 pc ≈ 3×1016 m):
+This exceeds the DPM-seeded gravity of the WR star at OB-association separation (~1 pc ≈ 3×1016 m):
 
 $$g_{\rm WR,Newton} = \frac{GM_{\rm WR}}{r^2} = \frac{6.674\times10^{-11}\times 2times10^{31}}{(3\times10^{16})^2} = 1.48\times10^{-12}\ \rm m/s^2$$
 
-The WR wind term exceeds DPM-emergent gravity by **2700×** — confirming that stellar wind dynamics
+The WR wind term exceeds DPM-seeded gravity by **2700×** — confirming that stellar wind dynamics
 govern WR system gravitational environments.
 
 ---

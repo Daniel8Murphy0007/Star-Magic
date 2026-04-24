@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_097
 title: "Whittaker Decomposition in UQFF Spacetime: Separating Scalar Fields via 26-Layer Basis
 Functions"
@@ -99,7 +99,7 @@ The Whittaker decomposition separates the UQFF field into:
 - **?_k (vector-tensor potentials):** represent dynamic rotational/magnetic effects (Ug1, Ug3 dominant in layers 1-4)
 
 This separation is physically meaningful: an infalling observer at the horizon couples primarily to
-?_k (rotation-dominated), while approaching from infinity the static f_k (DPM-emergent-type) dominates.
+?_k (rotation-dominated), while approaching from infinity the static f_k (DPM-seeded-type) dominates.
 
 ---
 
@@ -268,7 +268,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

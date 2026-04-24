@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_110
 title: "Empirical Proof EP-06: Gaia DR3/DR4 Measurement of Galactic Center Distance and Sgr A* Mass
 – UQFF g_SgrA*(r,t) Model Validation"
@@ -36,7 +36,7 @@ on Galactic center distance (d_g = 2.44 × 10 m, Gaia measured) and 2%
 agreement on Sgr A* mass (M_BH = 4.3 × 106 M?, stellar orbit confirmation). The
 κ = 0.0005/day temporal decay factor in the UQFF gravitational field is confirmed
 through the proper motion analysis of the S2 stellar orbit, which constrains any
-modified gravity contribution to <8% of the DPM-emergent value at r  5 mpc from
+modified gravity contribution to <8% of the DPM-seeded value at r  5 mpc from
 Sgr A*. This proof anchors the UQFF galactic center calibration that underlies
 PAPER_092 (Sgr A* MUGE comparison) and PAPER_094 (SGR1745 ? calibration).
 
@@ -84,7 +84,7 @@ $$g_{SgrA*}(r,t) = g_{Newton}(r) \cdot e^{-\kappa t} + g_{Ug4}(r,t) + g_{MUGE}(r
 
 Where:
 
-**DPM-emergent component:**
+**DPM-seeded component:**
 $$g_{Newton}(r) = \frac{G M_{BH}}{r^2} = \frac{6.674 \times 10^{-11} \times 4.3 \times 10^6 \times 1.989 \times 10^{30}}{r^2}$$
 
 At r = 5 mpc = 1.543 × 10-4 m (S2 periastron):
@@ -122,7 +122,7 @@ from Sgr A* adds:
 $$\Delta g_{MUGE} = g_{Newton} \times \epsilon_{MUGE} \approx g_{Newton} \times 0.001$$
 
 MUGE contributes less than 0.1% at periastron due to the compressed gravity
-formulation (PAPER_090), consistent with the <8% DPM-emergent constraint from S2
+formulation (PAPER_090), consistent with the <8% DPM-seeded constraint from S2
 orbit data.
 
 ---
@@ -145,7 +145,7 @@ $$\epsilon_{UQFF} = \frac{U_{g4} \cdot r^2}{G M_{BH}} \times \frac{1}{c^2} = \fr
 **UQFF predicts:** d(?f) ≈ 0.00007' per orbit  undetectable at current precision.
 
 This confirms UQFF does not conflict with the S2 periapsis measurement and the
-modified gravity contribution is < 8% of DPM-emergent at periastron (verified).
+modified gravity contribution is < 8% of DPM-seeded at periastron (verified).
 
 ---
 
@@ -202,10 +202,10 @@ class GaiaDR4SgrACalculator:
 |---|----------|-------|-----------------|
 | 1 | $d_g = 2.44 \times 10^{20}$ m | EP-06 Gaia calibration | Galactic center distance |
 | 2 | $M_{BH} = 4.3 \times 10^6 M_\odot$ | 0.07% from S2 orbit | Sgr A* mass |
-| 3 | $g_{Newton}(r=5\text{ mpc})$ | 2.401 × 10-5 m/s | DPM-emergent periastron field |
+| 3 | $g_{Newton}(r=5\text{ mpc})$ | 2.401 × 10-5 m/s | DPM-seeded periastron field |
 | 4 | $e^{-\kappa t}$ at t = 4.5 Gyr |  0 (fully decayed) | ? temporal decay confirmation |
 | 5 | $U_{g4}(SgrA*, d_g)$ | 1.8937 × 10? N/m | PAPER_048 cross-check |
-| 6 | $\epsilon_{UQFF}$ (S2 correction) | 6.3 × 10-6 | < 8% DPM-emergent confirmed |
+| 6 | $\epsilon_{UQFF}$ (S2 correction) | 6.3 × 10-6 | < 8% DPM-seeded confirmed |
 | 7 | $v_c(R_0)$ UQFF | 238 km/s (0.8% from Gaia) | Rotation curve match |
 
 ---
@@ -398,7 +398,7 @@ Astron. Astrophys. 674, A1.
 0.3% uncertainty*. Astron. Astrophys. 625, L10.
 4. Gillessen S. et al. (2019). *An Update on Monitoring Stellar Orbits in the Galactic Center*.
 Astrophys. J. 837, 30.
-5. Murphy D.T. (2026). *Sgr A* SMBH: MUGE vs DPM-emergent Comparison*. PAPER_092.
+5. Murphy D.T. (2026). *Sgr A* SMBH: MUGE vs DPM-seeded Comparison*. PAPER_092.
 6. Murphy D.T. (2026). *Magnetar SGR1745: UQFF Calibration (?, [SSq])*. PAPER_094.
 7. Murphy D.T. (2026). *Black Hole Interaction Energy in 26D UQFF*. PAPER_048.
 8. Murphy D.T. (2026). *Stellar Parameter Validation: GAIA DR4 vs UQFF*. PAPER_073.

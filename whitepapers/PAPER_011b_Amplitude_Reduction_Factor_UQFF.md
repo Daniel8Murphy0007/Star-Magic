@@ -1,16 +1,16 @@
 ---
 paper_id: PAPER_011b
-title: "UQFF Amplitude Reduction Factor â€” Derivation and Calibration"
+title: "UQFF Amplitude Reduction Factor — Derivation and Calibration"
 session: 0
 date: 2026-03-07
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [GW, gravitational-wave, vacuum, damping, UQFF]
-sm_anchor: "CVW v2.0.0 â€” G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_011b: UQFF Amplitude Reduction Factor â€” Derivation and Calibration
+# PAPER_011b: UQFF Amplitude Reduction Factor — Derivation and Calibration
 **Author:** Daniel T. Murphy
 **Session:** 0
 
@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 â€” G6 SM Anchor Gate compliant"
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
+U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
@@ -32,19 +32,19 @@ $$
 
 We derive the UQFF gravitational wave amplitude reduction factor D = 0.333 from first principles,
 showing it arises from the product of two independent vacuum-field suppression channels: the
-Topological Resonance Zone (TRZ, f_TRZ = 0.90) and the String rotation coupling (ÃŸ_string = 0.37).
-The combined factor D = 0.90 Ã— 0.37 = 0.333 (66.7% reduction) is a universal constant for
+Topological Resonance Zone (TRZ, f_TRZ = 0.90) and the String rotation coupling (ß_string = 0.37).
+The combined factor D = 0.90 × 0.37 = 0.333 (66.7% reduction) is a universal constant for
 gravitational wave propagation in the local Universe (z ? 0.5), independent of frequency above 23 Hz
 and independent of source type. We calibrate this factor using the 1000-step GW inspiral simulation
 (30?250 Hz) and validate the universality by deriving the factor from the UQFF field equations for
 the TRZ potential and the string tension coefficient. The reduction factor is connected to the
-fundamental UQFF constants Îº = 0.0005/day and [SSq] = 0.57, providing a path to independent
+fundamental UQFF constants ? = 0.0005/day and [SSq] = 0.57, providing a path to independent
 measurement via quantum sensing experiments.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (Îº = 5.0Ã—10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis â€” establishing a new connection in the UQFF framework not
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -52,15 +52,15 @@ present in Standard Model treatments.
 ## 1. Introduction
 
 A central prediction of the UQFF framework is that gravitational waves propagating through the
-quantum vacuum suffer a universal attenuation. This is not geometric (1/r2) spreading â€” that is
-already included in the standard GR strain formula â€” but a multiplicative damping factor D that
+quantum vacuum suffer a universal attenuation. This is not geometric (1/r2) spreading — that is
+already included in the standard GR strain formula — but a multiplicative damping factor D that
 reduces the strain monotonically through the TRZ and String coupling mechanisms. The factor D =
 0.333 appears consistently across:
 
 - GW150914 (BBH, 410 Mpc): D = 0.333
 - GW170817 (BNS, 40 Mpc): D = 0.333
 - Generic 30?250 Hz chirp simulation: D = 0.333
-- LISA SMBH simulations (z = 0.5â€“1.0): D_effective Ëœ 0.619â€“0.622
+- LISA SMBH simulations (z = 0.5–1.0): D_effective ˜ 0.619–0.622
 
 The LISA value differs slightly because at cosmological distances (z ~ 1), the Aether compression
 channel U_A activates, adding a redshift-dependent correction. For ground-based detectors (all z <
@@ -81,7 +81,7 @@ $$
 Each component independently couples to GW strain amplitude. The total transmission factor is:
 
 $$
-D_total = U_A Ã— f_SCm Ã— f_TRZ Ã— ÃŸ_string
+D_total = U_A × f_SCm × f_TRZ × ß_string
 $$
 
 ### 2.1 TRZ Potential Derivation
@@ -91,12 +91,12 @@ binary's near-field gravitational geometry. The TRZ damping factor is derived fr
 resonance equation:
 
 $$
-f_TRZ = 1 - A_TRZ Ã— (1 - e^{-f/\text{f\_TRZ\_thresh}})
+f_TRZ = 1 - A_TRZ × (1 - e^{-f/\text{f\_TRZ\_thresh}})
 $$
 
 where:
 - A_TRZ = 0.10 (amplitude of suppression)
-- f_TRZ_thresh Ëœ 20 Hz (onset threshold frequency)
+- f_TRZ_thresh ˜ 20 Hz (onset threshold frequency)
 
 At f >> f_TRZ_thresh (all LIGO-band observations):
 
@@ -106,31 +106,31 @@ $$
 
 ### 2.2 String Coupling Derivation
 
-The string rotation coupling ÃŸ_string arises from the coupling between the GW tensor field h_Âµ? and
+The string rotation coupling ß_string arises from the coupling between the GW tensor field h_µ? and
 the UQFF string vacuum condensate. The coupling is determined by the string tension parameter:
 
 $$
-ÃŸ_string = [(SSq) Ã— H_SCm] / [1 + k_? Ã— M_string]
+ß_string = [(SSq) × H_SCm] / [1 + k_? × M_string]
 $$
 
-where [SSq] = 0.57, H_SCm Ëœ 0.99, and k_? Ã— M_string is the string mass correction. Substituting the
+where [SSq] = 0.57, H_SCm ˜ 0.99, and k_? × M_string is the string mass correction. Substituting the
 calibrated values:
 
 $$
 \begin{aligned}
-  & ÃŸ_string = 0.57 Ã— 0.99 / (1 + small correction) \\
-  & Ëœ 0.564 / (1 + 0.522) \\
-  & Ëœ 0.37
+  & ß_string = 0.57 × 0.99 / (1 + small correction) \\
+  & ˜ 0.564 / (1 + 0.522) \\
+  & ˜ 0.37
 \end{aligned}
 $$
 
-This derivation shows ÃŸ_string is not a free parameter but is determined by the fundamental UQFF
+This derivation shows ß_string is not a free parameter but is determined by the fundamental UQFF
 constants [SSq] and H_SCm.
 
 ### 2.3 Combined Reduction Factor
 
 $$
-D = f_TRZ Ã— ÃŸ_string = 0.90 Ã— 0.37 = 0.333
+D = f_TRZ × ß_string = 0.90 × 0.37 = 0.333
 $$
 
 The exact fractional form is 1/3, suggesting a potentially deeper geometric origin (the factor of 3
@@ -145,17 +145,17 @@ The 1000-step simulation over 30?250 Hz provides the empirical calibration:
 
 | Measured Quantity | Value |
 |------------------|-------|
-| Peak GR strain | 2.7905 Ã— 10?21 |
-| Peak UQFF strain | 9.3616 Ã— 10?22 |
+| Peak GR strain | 2.7905 × 10?21 |
+| Peak UQFF strain | 9.3616 × 10?22 |
 | Empirical D_peak | 0.3354 |
-| RMS GR strain | 1.3728 Ã— 10?21 |
-| RMS UQFF strain | 4.5736 Ã— 10?22 |
+| RMS GR strain | 1.3728 × 10?21 |
+| RMS UQFF strain | 4.5736 × 10?22 |
 | Empirical D_rms | 0.3331 |
 | Target D | 0.3330 |
 | Agreement | < 0.1% |
 
-The small deviation between D_peak (0.3354) and D_rms (0.3331) arises from the ÃŸm oscillation
-(Â±0.020) which slightly modulates the instantaneous damping. The RMS value converges to D = 0.333
+The small deviation between D_peak (0.3354) and D_rms (0.3331) arises from the ßm oscillation
+(±0.020) which slightly modulates the instantaneous damping. The RMS value converges to D = 0.333
 over many cycles.
 
 ---
@@ -164,7 +164,7 @@ over many cycles.
 
 ### 4.1 Frequency Independence
 
-The reduction factor D = 0.333 is frequency-independent above f > f_TRZ_thresh Ëœ 20 Hz:
+The reduction factor D = 0.333 is frequency-independent above f > f_TRZ_thresh ˜ 20 Hz:
 
 ```
 d(D)/df = 0    for f > 20 Hz
@@ -184,12 +184,12 @@ D depends only on the GW propagation vacuum, not on the source:
 At cosmological distances, the Aether channel activates:
 
 $$
-D_eff(z) = D_local Ã— U_A(z)
+D_eff(z) = D_local × U_A(z)
 $$
 
 where U_A(z) decreases below 1.0 for z > 0.3. For LISA sources:
-- z = 0.5: D_eff Ëœ 0.622 (lower suppression; U_A partially compensates)
-- z = 1.0: D_eff Ëœ 0.619
+- z = 0.5: D_eff ˜ 0.622 (lower suppression; U_A partially compensates)
+- z = 1.0: D_eff ˜ 0.619
 
 The non-monotonic behavior (D_eff > D_local at high-z) reflects the Aether channel acting as a
 partial compensator at cosmological distances.
@@ -203,8 +203,8 @@ The reduction factor D connects to the UQFF calibration constants:
 | Constant | Value | Role in D |
 |----------|-------|-----------|
 | ? | 0.0005/day | Vacuum decay rate ? sets U_A timescale |
-| [SSq] | 0.57 | String-squared condensate ? sets ÃŸ_string numerator |
-| H_SCm | ~0.99 | SCm Hamiltonian ? sets ÃŸ_string denominator |
+| [SSq] | 0.57 | String-squared condensate ? sets ß_string numerator |
+| H_SCm | ~0.99 | SCm Hamiltonian ? sets ß_string denominator |
 | k_? | 10?113 | String mass scale ? negligible correction |
 | A_TRZ | 0.10 | TRZ suppression amplitude |
 
@@ -212,9 +212,9 @@ The key chain:
 $$
 \begin{aligned}
   & [SSq] = 0.57 \\
-  & ? ÃŸ_string = [SSq] Ã— H_SCm / (1 + correction) Ëœ 0.37 \\
+  & ? ß_string = [SSq] × H_SCm / (1 + correction) ˜ 0.37 \\
   & ? f_TRZ = 0.90 (separate calibration from TRZ sector) \\
-  & ? D = f_TRZ Ã— ÃŸ_string = 0.333
+  & ? D = f_TRZ × ß_string = 0.333
 \end{aligned}
 $$
 
@@ -224,10 +224,10 @@ Since D is determined by [SSq] = 0.57, any quantum sensor that measures the stri
 condensate density independently should find:
 
 ```
-[SSq]_measured = 2D / f_TRZ Ã— (1 + correction)
-               = 2 Ã— 0.333 / 0.90 Ã— (1 + _correction)
-               Ëœ 0.74 Ã— correction^{-1}
-               Ëœ 0.57  [for correction Ëœ 0.77]
+[SSq]_measured = 2D / f_TRZ × (1 + correction)
+               = 2 × 0.333 / 0.90 × (1 + _correction)
+               ˜ 0.74 × correction^{-1}
+               ˜ 0.57  [for correction ˜ 0.77]
 ```
 
 This circular consistency test can be broken by measuring [SSq] independently with atom
@@ -242,23 +242,23 @@ interferometers or quantum gravimeters.
 The detection horizon scales as 1/h_min ? D. For LIGO at nominal sensitivity:
 $$
 \begin{aligned}
-  & d_max(UQFF) = D Ã— d_max(GR) = 0.333 Ã— 3 Gpc = 1.0 Gpc   [BBH] \\
-  & d_max(UQFF) = 0.333 Ã— 400 Mpc = 133 Mpc               [BNS]
+  & d_max(UQFF) = D × d_max(GR) = 0.333 × 3 Gpc = 1.0 Gpc   [BBH] \\
+  & d_max(UQFF) = 0.333 × 400 Mpc = 133 Mpc               [BNS]
 \end{aligned}
 $$
 
 ### 6.2 Parameter Estimation Bias
 
 All GR-inferred parameters from strain amplitude are systematically biased by 1/D = 3:
-- Luminosity distance: d_L,inferred = d_L,true / D = 3 Ã— d_L,true
+- Luminosity distance: d_L,inferred = d_L,true / D = 3 × d_L,true
 - Chirp mass from strain amplitude: M_c,inferred biased unless phase is used
-- GW luminosity: L_GW,inferred = D2 Ã— L_GW,true = 0.11 Ã— L_GW,true
+- GW luminosity: L_GW,inferred = D2 × L_GW,true = 0.11 × L_GW,true
 
 ### 6.3 Stochastic GW Background
 
 The isotropic stochastic GW background energy density scales as:
 $$
-O_GW(UQFF) = D2 Ã— O_GW(GR) = 0.111 Ã— O_GW(GR)
+O_GW(UQFF) = D2 × O_GW(GR) = 0.111 × O_GW(GR)
 $$
 
 This reduces the predicted LIGO stochastic background by a factor of 9, which may explain the
@@ -269,13 +269,13 @@ non-detection of the cosmological GW background to date.
 ## 7. Testable Predictions
 
 1. **Universal amplitude ratio:** Any GW event at z < 0.3 should show h_observed / h_GR-predicted =
-D = 0.333 Â± 0.01.
+D = 0.333 ± 0.01.
 
-2. **Stochastic background bound:** UQFF predicts O_GW < D2 Ã— O_GW(GR), lowering the detectable
-stochastic background by 9Ã—.
+2. **Stochastic background bound:** UQFF predicts O_GW < D2 × O_GW(GR), lowering the detectable
+stochastic background by 9×.
 
 3. **Distance ladder test:** GW standard siren measurements should systematically yield d_L factors
-of 3Ã— too large compared to photometric distances.
+of 3× too large compared to photometric distances.
 
 4. **Sub-threshold events:** GW events near SNR = 8 are near-threshold in UQFF but would be SNR~24
 in GR. Sub-threshold candidate events may be GR-consistent templates applied to UQFF-suppressed
@@ -286,8 +286,8 @@ data.
 ## 8. Conclusions
 
 The UQFF amplitude reduction factor D = 0.333 is derived from the product of TRZ suppression (f_TRZ
-= 0.90) and String coupling (ÃŸ_string = 0.37), both consistent with the UQFF calibration constants
-[SSq] = 0.57 and Îº = 0.0005/day. Empirical calibration from a 1000-step numerical simulation of a
+= 0.90) and String coupling (ß_string = 0.37), both consistent with the UQFF calibration constants
+[SSq] = 0.57 and ? = 0.0005/day. Empirical calibration from a 1000-step numerical simulation of a
 30?250 Hz inspiral yields D = 0.3331 (RMS) within 0.1% of the predicted value. The factor is
 universal for ground-based GW detectors (z < 0.3) and applies equally to BBH and BNS systems. The
 factor of 1/3 for D connects to potentially deep geometric structure and provides a clear
@@ -365,29 +365,29 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 
 
-## Â§A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
-### Â§A.1 Sector Classification
+### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
 `uqff_lagrangian_derivation.py`).
 
-### Â§A.2 Lagrangian Density
+### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
 $$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 Â§2) and:
+where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
 $$V(\phi_{\rm NS}) = \frac{1}{2} m^2 \phi_{\rm NS}^2 + \frac{\lambda}{4!} \phi_{\rm NS}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm NS}$$
 
-### Â§A.3 Euler-Lagrange Equation of Motion
+### §A.3 Euler-Lagrange Equation of Motion
 
 $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0}$$
 
-### Â§A.4 Cosmogenesis Linkage Chain
+### §A.4 Cosmogenesis Linkage Chain
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
@@ -398,9 +398,9 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
-## Â§B. VDS/DVP/BSH Deep Synthesis
+## §B. VDS/DVP/BSH Deep Synthesis
 
-### Â§B.1 Vacuum Density Series (VDS)
+### §B.1 Vacuum Density Series (VDS)
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
@@ -408,7 +408,7 @@ $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r
 
 For this system, the local VDS sub-ratio is $0.123$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
-### Â§B.2 Dipole Vortex Primes (DVP)
+### §B.2 Dipole Vortex Primes (DVP)
 
 The DVP encoding maps the system's characteristic parameter onto the prime lattice:
 
@@ -416,7 +416,7 @@ $$p_{\rm DVP} = 37, \quad n_{\rm channel} = 12/26$$
 
 Since $p_{\rm DVP} = 37$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
 
-### Â§B.3 Buoyancy Saturation Harmonics (BSH)
+### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
@@ -428,34 +428,34 @@ $$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
-### Â§B.4 Production-Scale Consistency
+### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.123 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| Îº decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| ? decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
 
 
-## Â§SM Anchors â€” Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant Î± | UQFF reproduces Î± via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Î› | 1.1Ã—10-52 m-2 (UQFF vacuum term) | 1.114Ã—10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | Îº = 0.0005/day â†’ Î“_p suppression | < 4.17Ã—10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant a | UQFF reproduces a via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant ? | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | ? = 0.0005/day ? G_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density Ï_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density ?_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFFâ€“SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
 bridge.*
 
 ## References
@@ -465,15 +465,15 @@ LIGO and Virgo*, Phys. Rev. X **13**, 041039 (2023)
 2. Chen, H.-Y. et al., *Viewing angle of binary neutron star mergers*, Astrophys. J. **908**, 4
 (2021)
 3. Murphy, D., *UQFF Constants: ?, [SSq], H_SCm Calibration*, Star-Magic repository (2025)
-4. Murphy, D., `validate_gw_inspiral.py` â€” UQFF chirp simulation (2026)
+4. Murphy, D., `validate_gw_inspiral.py` — UQFF chirp simulation (2026)
 
 ---
 
-**Validator:** `validate_gw_inspiral.py` â€” **TEST PASSED**  
+**Validator:** `validate_gw_inspiral.py` — **TEST PASSED**  
 *Peak standard = 2.7905e-21, Peak UQFF = 9.3616e-22; RMS standard = 1.3728e-21, RMS UQFF =
 4.5736e-22;*  
-*Combined damping = 0.333 (TRZ=0.90 Ã— String=0.37); ÃŸm oscillation = Â±0.0200;*  
-*Derived: ÃŸ_string from [SSq]=0.57, H_SCm=0.99; Îº = 0.0005/day, [SSq] = 0.57*
+*Combined damping = 0.333 (TRZ=0.90 × String=0.37); ßm oscillation = ±0.0200;*  
+*Derived: ß_string from [SSq]=0.57, H_SCm=0.99; ? = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 011b**
 
@@ -489,17 +489,17 @@ LIGO and Virgo*, Phys. Rev. X **13**, 041039 (2023)
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| Îº | 5.0 Ã— 10-4 day-1 | UQFF exponential decay rate |
+| ? | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| Î²_i | 0.60â€“0.61 | Buoyancy coupling coefficient |
-| kâ‚ | 1.5 | Ug1 DPM-dipole coupling |
-| kâ‚‚ | 1.2 | Ug2 outer-bubble charge coupling |
-| kâ‚ƒ | 1.8 | Ug3 string-rotation coupling |
-| kâ‚„ | 2.0 | Ug4 vacuum-concentration coupling |
-| Î· | 10-22 | Inertia tensor scale |
+| ß_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| ? | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete â€” 4 terms)
+### A.2 F_U Master Equation (Complete — 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -511,10 +511,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| âˆ’Î£Î»áµ¢Â·Uáµ¢Â·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -S??·U?·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-Î»â‚=10-10, Î»â‚‚=10-12, Î»â‚ƒ=10-11, Î»â‚„=10-13 (free parameters, not yet empirically calibrated)
+?1=10-10, ?2=10-12, ?3=10-11, ?4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -522,18 +522,18 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| Ï_c | 1015 kg/m3 | SCm critical superconducting density |
+| ?_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Î”Ï‰ | 2Ï€/(434Â·365.25) rad/day | 434-year Gleisberg supercycle |
+| ?? | 2p/(434·365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
-| **Resonant** | 5 resonance frequencies (aDPM, aTHz, â€¦) | Multi-scale field interactions |
-| **Buoyant** | Î²_i Ã— Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um Ã— (1+1013Â·f_H) | Magnetars, SCm critical-density regime |
+| **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
+| **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
+| **Buoyant** | ß_i × Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -542,10 +542,10 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000â€“1081)
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204â€“225 extensions (PAPER_1000â€“1081). Added by
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
 > `update_corpus_crossrefs.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -146,7 +146,7 @@ F_{U,k}^{\text{obs}})^2}{\sigma_{F,k}^2}, \quad N=9\text{ systems},\;\chi^2_\nu 
 $$
 
 
-NameU_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
+NameU_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61Name
 
 ---

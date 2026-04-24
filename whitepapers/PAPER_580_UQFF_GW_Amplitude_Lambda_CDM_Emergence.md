@@ -62,7 +62,7 @@ $$h \propto \frac{\text{Tr}(\delta,\text{UQFF}_{comp})}{3\,r}
 
 **Step 3 — Include $\Lambda$ via $U_b$ expansion:**
 
-$$\frac{\Lambda}{3} \approx \frac{2P}{3} + \frac{26!\,g}{(\rhocdot f)^{27}}$$
+$$\frac{\Lambda}{3} \approx \frac{2P}{3} + \frac{26!\,g}{(\rho\cdot f)^{27}}$$
 
 **Step 4 — Full amplitude ($k$-form):**
 
@@ -117,7 +117,7 @@ $$h \approx \frac{10^{-52}}{3}\cdot1 \approx 3.3\times10^{-53}$$
 
 The cosmological constant $\Lambda$ emerges naturally from the UQFF $(3,3)$ entry:
 
-$$\frac{\Lambda}{3} = \frac{2P}{3} + \frac{26!\,g}{(\rhocdot f_{vac})^{27}}$$
+$$\frac{\Lambda}{3} = \frac{2P}{3} + \frac{26!\,g}{(\rho\cdot f_{vac})^{27}}$$
 
 Rearranging:
 

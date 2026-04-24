@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_607
 title: "Centripetal Force as Inward CW DPM North-Pole 26D Shell Coherence"
 session: 0
@@ -76,7 +76,7 @@ For $DPM_n(SCm) \approx 1$ (normalized to solar system SCm density) and $\Delta_
 
 $$F_{centrip} \approx \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = F_{gravity}$$
 
-This proves consistency with the DPM-emergent gravitational law at leading order, with $DPM_n(SCm)$ replacing the purely conceptual gravitational coupling.
+This proves consistency with the DPM-seeded gravitational law at leading order, with $DPM_n(SCm)$ replacing the purely conceptual gravitational coupling.
 
 ---
 

@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_242
 title: "Rings of Relativity: Einstein Ring Lensing Amplification in the Full MUGE"
 session: 60
@@ -107,10 +107,10 @@ The first mode is a **standing wave decomposition** ($2\coscos$); the second mod
 **Gyr-scaled traveling wave**. Together they form a beating-mode pair unique to this system.
 
 **Term 8 — Dark matter with $\delta_2 = 3μ_s∇(M_s/r)/r$ perturbation:**
-$$T_{\rm DM} = \frac{(M + M_{\rm DM})(\deltarho/\rho + 3μ_s∇(M_s/r)/r)}{M}$$
+$$T_{\rm DM} = \frac{(M + M_{\rm DM})(\delta\rho/\rho + 3μ_s∇(M_s/r)/r)}{M}$$
 
 The second-order perturbation $3μ_s∇(M_s/r)/r$ is a tidal-force density correction distinct from
-density-contrast $\deltarho/\rho$.
+density-contrast $\delta\rho/\rho$.
 
 **Term 9 — Stellar wind feedback:**
 $$T_{\rm wind} = \frac{\rho_{\rm wind}\,v_{\rm wind}^2}{\rho_{\rm fluid}}$$

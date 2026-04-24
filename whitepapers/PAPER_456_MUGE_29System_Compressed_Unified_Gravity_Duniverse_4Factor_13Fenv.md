@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_456
 title: "MUGE 29-System Compressed Unified Gravity: D_universe 4-Factor + 13-Term F_env Calculator"
 session: 116
@@ -97,7 +97,7 @@ The 13 F_env components for the 29-system registry:
 
 | # | Component | Formula | Systems |
 |---|----------|---------|---------|
-| 1 | F_DPM-emergent | GM_ext/r_ext2 | All |
+| 1 | F_DPM-seeded | GM_ext/r_ext2 | All |
 | 2 | F_Hubble | g_N×H_z×t | All |
 | 3 | F_B | g_N×(1-B/B_crit) | Magnetar, SgrA |
 | 4 | F_wind | ρ_fluid×v_wind2 | OB star systems |

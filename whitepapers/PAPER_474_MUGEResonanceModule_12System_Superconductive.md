@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_474
 title: "MUGEResonanceModule: 12-System Superconductive Resonance MUGE"
 session: 123
@@ -126,7 +126,7 @@ Merging pair with SFR ~ 20 MM_sun/yr each:
 Dense molecular cloud pillar illuminated by σ Ori:
 - M = 5 MM_sun, r = 9.46e15 m
 - v_sw = 2 × 103 m/s (UV-driven photoevaporation flow)
-- [SCm] aether coupling suppresses gravity relative to DPM-emergent: effective g reduced 15%
+- [SCm] aether coupling suppresses gravity relative to DPM-seeded: effective g reduced 15%
 - g_res ≈ 2 × 10-12 m/s2
 
 ---
