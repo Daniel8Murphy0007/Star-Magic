@@ -58,6 +58,38 @@ def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
     P = N_clusters * (6.626e-34 * 1.25e12) * 1.4531e26 * 0.84 * _math_99.exp(-kappa * t_hours * 24)
     return P / 1e3  # kW
 
+def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
+    """F_U_Bi_i integral numerical [canonical: pdf/scm_vacuum_manifold.py]"""
+    import math as _m_fubi
+    G_N = 6.6743e-11; rho_ua = 7.09e-36; rho_scm_v = 7.09e-37
+    cos_pi_tn = _m_fubi.cos(_m_fubi.pi * -100.0)
+    grav_proj = G_N * float(M_bh) / (float(r)**2) if float(r) > 0 else 0.0
+    integrand = -1.0e-10 + grav_proj * cos_pi_tn + rho_ua * cos_pi_tn + rho_scm_v
+    return integrand * float(r) * abs(cos_pi_tn)
+
+def monte_carlo_fubi_i(n_samples=10000):
+    """F_U_Bi_i Monte-Carlo on reactor parameters [canonical: pdf/scm_vacuum_manifold.py]"""
+    import numpy as _np_mc
+    results = []
+    for _ in range(n_samples):
+        tn_var = _np_mc.random.uniform(-2512, -10)
+        m_var  = _np_mc.random.normal(1.989e30, 1e28)
+        r_val  = 1.496e11
+        fubi   = -0.6 * (m_var / r_val**2) * _np_mc.cos(_np_mc.pi * tn_var) * \
+                 (1 + 0.01 * _np_mc.sin(0.001 * abs(tn_var)))
+        results.append(fubi)
+    return _np_mc.mean(results), _np_mc.std(results), _np_mc.percentile(results, [5, 95])
+
+try:
+    from mpmath import polylog as _polylog_scm_local
+    def vds_numerical(terms=1000):
+        """VDS: Li_26([SSq]) — 26D Vacuum Density Series [canonical: pdf/scm_vacuum_manifold.py]"""
+        return float(_polylog_scm_local(26, 0.57))
+except ImportError:
+    def vds_numerical(terms=1000):
+        """VDS fallback: partial sum of SSq^n/n^26 [canonical: pdf/scm_vacuum_manifold.py]"""
+        return sum((0.57**n) / (n**26) for n in range(1, min(terms + 1, 201)))
+
 KAPPA     = 0.0005 / 86400.0
 F_NEUTRON = 1e-10
 

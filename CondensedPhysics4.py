@@ -160,6 +160,7 @@ try:
         RHO_VAC_SCM  as _SCM_RHO_VAC,      # 7.09e-37 kg/m³ vacuum manifold baseline
         THZ_PHONON   as _SCM_THz,          # 1.25 THz Gaussian phonon activation
         compute_F_U_Bi_i_numerical as _scm_F_U_Bi_i_num,
+        monte_carlo_fubi_i         as _scm_monte_carlo_fubi_i,
         vds_numerical              as _scm_vds_num,
         export_all_to_latex        as _scm_export_latex,
     )
@@ -171,6 +172,7 @@ except ImportError:
     _SCM_RHO_VAC  = 7.09e-37
     _SCM_THz      = 1.25e12
     def _scm_F_U_Bi_i_num(**kw): return 0.0
+    def _scm_monte_carlo_fubi_i(n_samples=10000): return 0.0, 0.0, [0.0, 0.0]
     def _scm_vds_num(terms=1000): return 0.0
     def _scm_export_latex(): return {}
 
@@ -196,6 +198,21 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
     P_excess = PdD_loading * volume * E_phonon * S26_3 * Phi * buoyancy_factor * 1e6
     return P_excess / 1e3  # kW (typical 1-50 W range)
 # Mizuno LENR: SCm phonon + F_U_Bi_i buoyancy explains transmutation without high radiation
+# Rossi E-Cat: SCm phonon + negative-time modulation gives COP 10-20 with low radiation
+
+def monte_carlo_fubi_i(n_samples=10000):
+    """F_U_Bi_i Monte-Carlo on reactor parameters [canonical: pdf/scm_vacuum_manifold.py]"""
+    import numpy as _np_mc
+    results = []
+    for _ in range(n_samples):
+        tn_var = _np_mc.random.uniform(-2512, -10)
+        m_var  = _np_mc.random.normal(1.989e30, 1e28)
+        r_val  = 1.496e11
+        fubi   = -0.6 * (m_var / r_val**2) * _np_mc.cos(_np_mc.pi * tn_var) * \
+                 (1 + 0.01 * _np_mc.sin(0.001 * abs(tn_var)))
+        results.append(fubi)
+    return _np_mc.mean(results), _np_mc.std(results), _np_mc.percentile(results, [5, 95])
+
 def parkhomov_excess_heat_cp4(N_clusters=1e22, t_hours=1):
     kappa = 0.0005
     import numpy as _np_cp4
