@@ -41,13 +41,17 @@ E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
 S26_3         = 1.4531e26                   # 26D Ramanujan amplification
 PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
 KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
+SCALING_SCM   = 630 * 1.60217662e-19 / (E_PHONON_SCM * S26_3 * PHI_RESONANCE)  # exact 630 eV normalizer
+KAPPA_FLOAT   = 0.0005  # float(KAPPA)
 # --- import from canonical source when available [pdf/scm_vacuum_manifold.py] ---
 try:
     from scm_vacuum_manifold import (
-        E_phonon      as E_PHONON_SCM,
-        S26_3         as S26_3,
-        Phi_resonance as PHI_RESONANCE,
-        KER_SCm       as KER_SCM,
+        E_phonon       as E_PHONON_SCM,
+        S26_3          as S26_3,
+        Phi_resonance  as PHI_RESONANCE,
+        KER_SCm        as KER_SCM,
+        scaling_factor as SCALING_SCM,    # exact 630 eV normalizer
+        KAPPA_FLOAT    as KAPPA_FLOAT,    # float(KAPPA) = 0.0005
     )
 except ImportError:
     pass  # fallback values already set above
@@ -55,9 +59,9 @@ except ImportError:
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
-    """Pons-Fleischmann low-radiation excess heat: loading·V·KER_SCM·buoyancy [canonical: pdf/scm_vacuum_manifold.py]"""
-    P_excess = PdD_loading * volume * KER_SCM * 0.001 * 1e6  # buoyancy_factor=0.001 (F_U_Bi_i suppresses radiation)
-    return P_excess / 1e3  # kW (typical 1-50 W range)
+    """Pons-Fleischmann low-radiation excess heat: loading·V·(E_phonon*scaling_factor)·Phi·buoyancy [canonical: pdf/scm_vacuum_manifold.py]"""
+    P_excess = PdD_loading * volume * (E_PHONON_SCM * SCALING_SCM) * PHI_RESONANCE * 0.001 * 1e6
+    return P_excess / 1e3  # kW
 # ===========================================================================
 # LENR PHYSICS: Holmlid KER + Rossi E-Cat (all variants) + Parkhomov + Pons-Fleischmann + Mizuno
 # ---------------------------------------------------------------------------
@@ -79,8 +83,8 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
 # Mizuno LENR: SCm phonon + F_U_Bi_i buoyancy explains transmutation without high radiation
 # Rossi E-Cat: SCm phonon + negative-time modulation gives COP 10-20 with low radiation
 def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
-    """Parkhomov Ni-H excess heat: N_clusters * KER_SCM * exp(-κ·t) [canonical: pdf/scm_vacuum_manifold.py]"""
-    P = N_clusters * KER_SCM * _math_99.exp(-0.0005 * t_hours * 24)
+    """Parkhomov Ni-H excess heat: N*(E_phonon*scaling_factor)*Phi*exp(-KAPPA_FLOAT·t) [canonical: pdf/scm_vacuum_manifold.py]"""
+    P = N_clusters * (E_PHONON_SCM * SCALING_SCM) * PHI_RESONANCE * _math_99.exp(-KAPPA_FLOAT * t_hours * 24)
     return P / 1e3  # kW
 
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
