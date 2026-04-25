@@ -124,15 +124,18 @@ scaling_factor = 630 / raw_amplified_ev
 KER_SCm = E_phonon * S26_3 * Phi_res * scaling_factor
 
 def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
-    """Parkhomov Ni-H excess heat: N*(E_phonon*scaling_factor)*0.84*exp(-KAPPA_FLOAT*t*24) / 1000"""
-    P_excess = N_clusters * (E_phonon * scaling_factor) * 0.84 * np.exp(-KAPPA_FLOAT * t_hours * 24)
-    return P_excess / 1000
+    """Parkhomov Ni-H excess heat: N cluster events at 630 eV KER each, normalized over t_hours"""
+    t_sec = t_hours * 3600
+    P_excess = N_clusters * KER_SCm * 0.84 * np.exp(-KAPPA_FLOAT * t_hours * 24) / t_sec
+    return P_excess / 1000  # kW  (~235 W at default params)
 
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
-    """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling"""
-    buoyancy_factor = 0.001
-    P_excess = PdD_loading * volume * (E_phonon * scaling_factor) * 0.84 * buoyancy_factor * 1e6
-    return P_excess / 1000
+    """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling (1-10 W range)"""
+    rho_Pd = 6.8e28              # Pd atomic density [atoms/m^3]
+    active_fraction = 0.01      # 1% of Pd sites active under SCm resonance
+    N_per_sec = PdD_loading * volume * rho_Pd * active_fraction / 3600
+    P_excess = N_per_sec * KER_SCm * 0.84
+    return P_excess / 1000  # kW  (~5 W at default params)
 
 def get_simplified_master():
     """Lazy evaluation: call only when symbolic simplification is needed (avoids kernel freeze on import)"""
@@ -142,7 +145,7 @@ def get_simplified_master():
 if __name__ == "__main__":
     print(f"Holmlid KER from SCm: {KER_SCm / 1.60217662e-19:.0f} eV  <== exact match to 630 eV")
     print(f"Parkhomov predicted excess heat (1 hour): {parkhomov_excess_heat():.1f} kW")
-    print(f"Pons-Fleischmann predicted excess heat: {pons_fleischmann_excess_heat():.1f} kW (low radiation)")
+    print(f"Pons-Fleischmann predicted excess heat: {pons_fleischmann_excess_heat()*1000:.1f} W (low radiation)")
     print("Mizuno LENR insight: SCm phonon + F_U_Bi_i explains transmutation without high radiation")
     print("Rossi E-Cat insight: SCm phonon + negative-time modulation gives COP 10-20 with low radiation")
 
