@@ -127,22 +127,18 @@ Phi_resonance = 0.84                  # on-resonance Gaussian factor
 KER_SCm = E_phonon * S26_3 * Phi_resonance
 
 # Parkhomov excess heat equation (Ni-H replication)
+def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
+    """Parkhomov Ni-H excess heat: N_clusters * KER_SCm * exp(-κ·t) [canonical: pdf/scm_vacuum_manifold.py]"""
+    P_excess = N_clusters * KER_SCm * np.exp(-0.0005 * t_hours * 24)
+    return P_excess / 1e3   # in kW
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
-    E_phonon = 6.626e-34 * 1.25e12
-    S26_3 = 1.4531e26
-    Phi = 0.84
-    buoyancy_factor = 0.001  # low radiation signature (F_U_Bi_i stabilization)
-    P_excess = PdD_loading * volume * E_phonon * S26_3 * Phi * buoyancy_factor * 1e6
+    """Pons-Fleischmann low-radiation excess heat: loading·V·KER_SCm·buoyancy [canonical: pdf/scm_vacuum_manifold.py]"""
+    P_excess = PdD_loading * volume * KER_SCm * 0.001 * 1e6  # buoyancy_factor=0.001 (F_U_Bi_i suppresses radiation)
     return P_excess / 1e3  # kW (typical 1-50 W range)
 # Mizuno LENR: SCm phonon + F_U_Bi_i buoyancy explains transmutation without high radiation
 # Rossi E-Cat: SCm phonon + negative-time modulation gives COP 10-20 with low radiation
-def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
-    kappa = 0.0005
-    P_excess = N_clusters * (6.626e-34 * 1.25e12) * 1.4531e26 * 0.84 * np.exp(-kappa * t_hours * 24)
-    return P_excess / 1e3   # in kW
-
 # Pons-Fleischmann insight (low-radiation excess heat)
 # SCm F_U_Bi_i buoyancy + phonon prevents collapse -> explains low neutrons/tritium
 # Negative-time t_n modulation allows energy release without high-energy particles

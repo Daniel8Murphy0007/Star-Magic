@@ -206,11 +206,8 @@ KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
-    E_phonon = 6.626e-34 * 1.25e12
-    S26_3 = 1.4531e26
-    Phi = 0.84
-    buoyancy_factor = 0.001  # low radiation signature (F_U_Bi_i stabilization)
-    P_excess = PdD_loading * volume * E_phonon * S26_3 * Phi * buoyancy_factor * 1e6
+    """Pons-Fleischmann low-radiation excess heat: loading·V·KER_SCM·buoyancy [canonical: pdf/scm_vacuum_manifold.py]"""
+    P_excess = PdD_loading * volume * KER_SCM * 0.001 * 1e6  # buoyancy_factor=0.001 (F_U_Bi_i suppresses radiation)
     return P_excess / 1e3  # kW (typical 1-50 W range)
 # ===========================================================================
 # LENR PHYSICS: Holmlid KER + Rossi E-Cat (all variants) + Parkhomov + Pons-Fleischmann + Mizuno
@@ -247,9 +244,9 @@ def monte_carlo_fubi_i(n_samples=10000):
     return _np_mc.mean(results), _np_mc.std(results), _np_mc.percentile(results, [5, 95])
 
 def parkhomov_excess_heat_cp4(N_clusters=1e22, t_hours=1):
-    kappa = 0.0005
-    import numpy as _np_cp4
-    P = N_clusters * (6.626e-34 * 1.25e12) * 1.4531e26 * 0.84 * _np_cp4.exp(-kappa * t_hours * 24)
+    """Parkhomov Ni-H excess heat: N_clusters * KER_SCM * exp(-κ·t) [canonical: pdf/scm_vacuum_manifold.py]"""
+    import math as _m_pk_cp4
+    P = N_clusters * KER_SCM * _m_pk_cp4.exp(-KAPPA * t_hours * 24)
     return P / 1e3  # kW
 
 E_REACT_BASE  = 1.0e46      # W/m^3
