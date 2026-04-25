@@ -179,7 +179,19 @@ except ImportError:
 # ---------------------------------------------------------------------------
 KAPPA         = 0.0005      # day^{-1} — E_react decay
 SSQ           = 0.57        # self-similar quotient [SSq]
-BETA_I        = 0.61        # buoyancy coupling β_i
+BETA_I        = 0.6         # buoyancy coupling beta_i  [canonical: pdf/scm_vacuum_manifold.py]
+# ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
+E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
+S26_3         = 1.4531e26                   # 26D Ramanujan amplification
+PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
+KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
+
+def parkhomov_excess_heat_cp4(N_clusters=1e22, t_hours=1):
+    kappa = 0.0005
+    import numpy as _np_cp4
+    P = N_clusters * (6.626e-34 * 1.25e12) * 1.4531e26 * 0.84 * _np_cp4.exp(-kappa * t_hours * 24)
+    return P / 1e3  # kW
+
 E_REACT_BASE  = 1.0e46      # W/m^3
 RHO_VAC_SCM   = 7.09e-37    # J/m^3
 RHO_VAC_UA    = 7.09e-36    # J/m^3
@@ -16966,7 +16978,7 @@ class UQFFTauLeptonG2SMBridgeCalculator:
 
     # UQFF calibration constants
     KAPPA = 0.0005                  # day⁻¹
-    BETA_I = 0.61                   # buoyancy coupling
+    BETA_I = 0.6  # canonical: pdf/scm_vacuum_manifold.py                   # buoyancy coupling
     K_HIGGS = 47.34                 # UQFF Higgs coupling (g-2 fit)
 
     def compute(self, mu_s: float = 1.17721e-3, g_base: float = 9.8,
@@ -17255,7 +17267,7 @@ class UQFFALICERunThreeSqrtS13p6TeVMultiplicityCalculator:
 
     # UQFF calibration
     SSQ = 0.57                     # [SSq] quantum vacuum saturation
-    BETA_I = 0.61                  # buoyancy coupling β_i
+    BETA_I = 0.6  # canonical: pdf/scm_vacuum_manifold.py                  # buoyancy coupling β_i
     RHO_VAC_SCM = 1.77e-9          # kg/m³ (vacuum density)
 
     def compute(self, dataset: dict = None) -> dict:
@@ -17547,7 +17559,7 @@ class UQFFElectroweakSinThetaWSCmVacuumConnectionCalculator:
     # UQFF calibration (PAPER_341, PAPER_208)
     H_SCM = 0.99                    # SCm reactivity parameter
     SSQ = 0.57                      # [SSq] quantum vacuum saturation
-    BETA_I = 0.61                   # buoyancy coupling
+    BETA_I = 0.6  # canonical: pdf/scm_vacuum_manifold.py                   # buoyancy coupling
 
     def compute(self, dataset: dict = None) -> dict:
 
@@ -37528,7 +37540,7 @@ class RosetteNebulaNGC2237UQFFCalc(_CP4Calculator):  # PAPER_903 #487
         v_wind_km_s = v_wind / 1.0e3
 
         g_dpm = dpm_ug1_seed(M, r) if r > 0 else 0.0
-        beta_i = 0.61;  omega_g = 7.3e-16
+        beta_i = 0.6;  omega_g = 7.3e-16
         Ug1 = beta_i * M * omega_g / r if r > 0 else 0.0
         compressed_g = g_dpm * (1 + self.SSQ / 26.0) * s26
         VDS_ratio = 0.1
@@ -37738,7 +37750,7 @@ class StellarWindBuoyancyLagrangianCalc(_CP4Calculator):  # PAPER_907 #491
     Ug1-Ug4 layers with neutron drop force and phonon resonance.
     CP4 class #491. Session 210."""
 
-    SSQ = 0.57;  BETA_I = 0.61;  OMEGA_G = 7.3e-16
+    SSQ = 0.57;  BETA_I = 0.6  # canonical: pdf/scm_vacuum_manifold.py;  OMEGA_G = 7.3e-16
     PHI_0 = 1e20;  G = 6.6743e-11
 
     PARAMETERS = [

@@ -79,7 +79,19 @@ except ImportError:
 # ---------------------------------------------------------------------------
 KAPPA        = 0.0005    # day^{-1}  â€” E_react exponential decay
 SSQ          = 0.57      # self-similar quotient [SSq]
-BETA_I       = 0.61      # buoyancy coupling Î²_i
+BETA_I       = 0.6       # buoyancy coupling beta_i  [canonical: pdf/scm_vacuum_manifold.py]
+# ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
+import numpy as _np_cp3
+E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
+S26_3         = 1.4531e26                   # 26D Ramanujan amplification
+PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
+KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
+
+def parkhomov_excess_heat_cp3(N_clusters=1e22, t_hours=1):
+    kappa = 0.0005
+    P = N_clusters * (6.626e-34 * 1.25e12) * 1.4531e26 * 0.84 * _np_cp3.exp(-kappa * t_hours * 24)
+    return P / 1e3  # kW
+ Î²_i
 E_REACT_BASE = 1e46      # W/m^3  â€” reactor efficiency base
 RHO_VAC_SCM  = 7.09e-37  # J/m^3  â€” SCm vacuum density
 RHO_VAC_UA   = 7.09e-36  # J/m^3  â€” UA vacuum density

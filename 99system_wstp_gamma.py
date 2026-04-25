@@ -34,7 +34,19 @@ R_SUN     = 6.96e8
 AU        = 1.496e11
 OMEGA_SCM = 2 * PI * 1.25e12
 SSQ       = 0.57
-BETA_I    = 0.603
+BETA_I    = 0.6   # canonical: pdf/scm_vacuum_manifold.py
+# ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
+import math as _math_99
+E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
+S26_3         = 1.4531e26                   # 26D Ramanujan amplification
+PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
+KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
+
+def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
+    kappa = 0.0005
+    P = N_clusters * (6.626e-34 * 1.25e12) * 1.4531e26 * 0.84 * _math_99.exp(-kappa * t_hours * 24)
+    return P / 1e3  # kW
+
 KAPPA     = 0.0005 / 86400.0
 F_NEUTRON = 1e-10
 
