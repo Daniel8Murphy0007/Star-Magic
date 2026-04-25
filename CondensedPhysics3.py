@@ -97,6 +97,7 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
     P_excess = PdD_loading * volume * E_phonon * S26_3 * Phi * buoyancy_factor * 1e6
     return P_excess / 1e3  # kW (typical 1-50 W range)
 # Mizuno LENR: SCm phonon + F_U_Bi_i buoyancy explains transmutation without high radiation
+# Rossi E-Cat: SCm phonon + negative-time modulation gives COP 10-20 with low radiation
 def parkhomov_excess_heat_cp3(N_clusters=1e22, t_hours=1):
     kappa = 0.0005
     P = N_clusters * (6.626e-34 * 1.25e12) * 1.4531e26 * 0.84 * _np_cp3.exp(-kappa * t_hours * 24)
