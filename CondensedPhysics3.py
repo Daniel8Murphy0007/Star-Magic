@@ -86,6 +86,16 @@ E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
 S26_3         = 1.4531e26                   # 26D Ramanujan amplification
 PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
 KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
+# --- import from canonical source when available [pdf/scm_vacuum_manifold.py] ---
+try:
+    from scm_vacuum_manifold import (
+        E_phonon      as E_PHONON_SCM,
+        S26_3         as S26_3,
+        Phi_resonance as PHI_RESONANCE,
+        KER_SCm       as KER_SCM,
+    )
+except ImportError:
+    pass  # fallback values already set above
 
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]

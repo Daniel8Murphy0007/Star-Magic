@@ -159,10 +159,16 @@ try:
         KAPPA        as _SCM_KAPPA,         # κ = 5.0 × 10^{-4} day^{-1}
         RHO_VAC_SCM  as _SCM_RHO_VAC,      # 7.09e-37 kg/m³ vacuum manifold baseline
         THZ_PHONON   as _SCM_THz,          # 1.25 THz Gaussian phonon activation
+        E_phonon     as _SCM_E_PHONON,     # h * f_THz [J]  — new module-level const
+        S26_3        as _SCM_S26_3,        # 1.4531e26 Ramanujan amplification
+        Phi_resonance as _SCM_PHI_RES,     # 0.84 on-resonance Gaussian factor
+        KER_SCm      as _SCM_KER_SCm,      # E_phonon * S26_3 * Phi_resonance [J]
         compute_F_U_Bi_i_numerical as _scm_F_U_Bi_i_num,
         monte_carlo_fubi_i         as _scm_monte_carlo_fubi_i,
         vds_numerical              as _scm_vds_num,
         export_all_to_latex        as _scm_export_latex,
+        parkhomov_excess_heat       as _scm_parkhomov,      # Ni-H excess heat [kW]
+        pons_fleischmann_excess_heat as _scm_pons_fleischmann, # Pd-D excess heat [kW]
     )
     _SCM_MANIFOLD_LOADED = True
 except ImportError:
@@ -171,10 +177,19 @@ except ImportError:
     _SCM_KAPPA    = 5.0e-4
     _SCM_RHO_VAC  = 7.09e-37
     _SCM_THz      = 1.25e12
+    _SCM_E_PHONON = 6.62607015e-34 * 1.25e12
+    _SCM_S26_3    = 1.4531e26
+    _SCM_PHI_RES  = 0.84
+    _SCM_KER_SCm  = _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES
     def _scm_F_U_Bi_i_num(**kw): return 0.0
     def _scm_monte_carlo_fubi_i(n_samples=10000): return 0.0, 0.0, [0.0, 0.0]
     def _scm_vds_num(terms=1000): return 0.0
     def _scm_export_latex(): return {}
+    def _scm_parkhomov(N_clusters=1e22, t_hours=1.0):
+        import math as _m_pk
+        return N_clusters * _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES * _m_pk.exp(-5e-4 * t_hours * 24) / 1e3
+    def _scm_pons_fleischmann(PdD_loading=0.9, volume=1e-6):
+        return PdD_loading * volume * _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES * 0.001 * 1e6 / 1e3
 
 # ---------------------------------------------------------------------------
 # UQFF PHASE-4 CONSTANTS (canonical, matching CP3)
