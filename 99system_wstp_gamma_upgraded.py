@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 99system_wstp_gamma_upgraded.py — Upgraded WSTP Kernel for 99-System with Varying Γ
 

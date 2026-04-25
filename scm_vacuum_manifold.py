@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # scm_vacuum_manifold.py
 # Generated from clean 27FEB2026_A.docx thread + repo alignment
 # SCm Vacuum Manifold, Buoyancy, Phonon, Negative-Time, Primordial Split
