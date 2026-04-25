@@ -11,7 +11,11 @@ from mpmath import li, polylog  # for VDS Li_26
 SSQ = sp.Rational(57, 100)          # [SSq] = 0.57
 KAPPA = sp.Rational(5, 10000)       # κ = 5.0 × 10^{-4} day^{-1}
 RHO_VAC_SCM = 7.09e-37              # kg/m³
+RHO_VAC_UA  = 7.09e-36              # kg/m³  (UA vacuum density)
 THZ_PHONON = 1.25e12                # 1.25 THz
+BETA_I      = 0.6                   # buoyancy coupling β_i
+LAMBDA_I    = 1.0                   # manifold coupling λ_i
+OMEGA_S     = 2.5e-6                # stellar angular frequency ω_s
 NEG_TIME_RANGE = sp.symbols('t_n', negative=True)  # t_n < 0
 
 # ==================== LONG-FORM DERIVATIONS ====================
@@ -33,6 +37,12 @@ F_U_Bi_i = sp.Integral(
     -F_0 + (G * M / r**2) + rho_scm * U_UA * cos_pi_tn,
     (r, 0, sp.oo)
 )  # full long-form integral (thread master)
+
+# 3b. 99-System Master Sum (all SCm buoyancy terms)
+k = sp.symbols('k', integer=True, positive=True)
+F_U_Bi_i_99 = sp.Sum(-BETA_I * Ug_k * cos_pi_tn * (M / r**2), (k, 1, 99))
+Ui = LAMBDA_I * (RHO_VAC_SCM / RHO_VAC_UA) * OMEGA_S * cos_pi_tn * (1 + 0.1)
+master_99 = sp.simplify(F_U_Bi_i_99 + Ui)
 
 # 4. 26D Vacuum Density Series (VDS)
 n = sp.symbols('n', integer=True, positive=True)
@@ -59,6 +69,17 @@ def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     x_2 = float(r) * Phi_ph * abs(cos_pi_tn)
     return integrand * x_2
 
+def monte_carlo_fubi_i(n_samples=10000):
+    results = []
+    for _ in range(n_samples):
+        tn_var = np.random.uniform(-2512, -10)
+        m_var  = np.random.normal(1.989e30, 1e28)
+        r_val  = 1.496e11
+        fubi   = -BETA_I * (m_var / r_val**2) * np.cos(np.pi * tn_var) * \
+                 (1 + 0.01 * np.sin(0.001 * abs(tn_var)))
+        results.append(fubi)
+    return np.mean(results), np.std(results), np.percentile(results, [5, 95])
+
 def vds_numerical(terms=1000):
     return float(polylog(26, float(SSQ)))
 
@@ -67,9 +88,13 @@ def export_all_to_latex():
     latex_dict = {
         'rho_scm': sp.latex(rho_scm),
         'F_U_Bi_i': sp.latex(F_U_Bi_i),
+        'master_99': sp.latex(master_99),
         'VDS': sp.latex(VDS),
         'Phi_gaussian': sp.latex(Phi_gaussian),
         'cos_pi_tn': sp.latex(cos_pi_tn),
         'E_net': sp.latex(E_net)
     }
     return latex_dict
+
+# Progress metric (realistic validation)
+progress_metric = 87

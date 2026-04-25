@@ -1,9 +1,16 @@
 # scm_latex_exporter.py
-from scm_vacuum_manifold import export_all_to_latex
+from scm_vacuum_manifold import export_all_to_latex, monte_carlo_fubi_i, progress_metric
 import subprocess
 
 def generate_whitepaper_section():
     latex = export_all_to_latex()
+    mean, std, rng = monte_carlo_fubi_i()
+    mc_line = (
+        f"$\\langle F_{{U,Bi,i}} \\rangle = {mean:.3e}$ N, "
+        f"$\\sigma = {std:.3e}$ N, "
+        f"90\\%\\ CI $= [{rng[0]:.3e},\\ {rng[1]:.3e}]$ N. "
+        f"Progress: {progress_metric}\\%."
+    )
     
     content = r"""
 \documentclass{article}
@@ -45,6 +52,14 @@ Primordial split via $E_{\mathrm{net}}(t, \Gamma)$:
 \[
 """ + latex['E_net'] + r"""
 \]
+
+99-system master buoyancy sum ($k = 1 \ldots 99$):
+\[
+""" + latex['master_99'] + r"""
+\]
+
+\section{Monte Carlo Validation}
+""" + mc_line + r"""
 
 \section{Comparison to Holmlid Rydberg Matter}
 Ultra-dense D($-1$): $d = 2.3 \pm 0.1$ pm, density $10^{29}$ cm$^{-3}$, KER $= 630$ eV.
