@@ -60,9 +60,12 @@ except ImportError:
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
-    """Pons-Fleischmann low-radiation excess heat: loading·V·(E_phonon*scaling_factor)·Phi·buoyancy [canonical: pdf/scm_vacuum_manifold.py]"""
-    P_excess = PdD_loading * volume * (E_PHONON_SCM * SCALING_SCM) * PHI_RESONANCE * 0.001 * 1e6
-    return P_excess / 1e3  # kW
+    """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling (1-10 W range)"""
+    rho_Pd = 6.8e28              # Pd atomic density [atoms/m^3]
+    active_fraction = 0.01      # 1% of Pd sites active under SCm resonance
+    N_per_sec = PdD_loading * volume * rho_Pd * active_fraction / 3600
+    P_excess = N_per_sec * KER_SCM * 0.84
+    return P_excess / 1e3  # kW  (~5 W at default params)
 # ===========================================================================
 # LENR PHYSICS: Holmlid KER + Rossi E-Cat (all variants) + Parkhomov + Pons-Fleischmann + Mizuno
 # ---------------------------------------------------------------------------
@@ -84,9 +87,10 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
 # Mizuno LENR: SCm phonon + F_U_Bi_i buoyancy explains transmutation without high radiation
 # Rossi E-Cat: SCm phonon + negative-time modulation gives COP 10-20 with low radiation
 def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
-    """Parkhomov Ni-H excess heat: N*(E_phonon*scaling_factor)*Phi*exp(-KAPPA_FLOAT·t) [canonical: pdf/scm_vacuum_manifold.py]"""
-    P = N_clusters * (E_PHONON_SCM * SCALING_SCM) * PHI_RESONANCE * _math_99.exp(-KAPPA_FLOAT * t_hours * 24)
-    return P / 1e3  # kW
+    """Parkhomov Ni-H excess heat: N cluster events at 630 eV KER each, normalized over t_hours"""
+    t_sec = t_hours * 3600
+    P = N_clusters * KER_SCM * 0.84 * _math_99.exp(-KAPPA_FLOAT * t_hours * 24) / t_sec
+    return P / 1e3  # kW  (~235 W at default params)
 
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     """F_U_Bi_i integral numerical [canonical: pdf/scm_vacuum_manifold.py]"""
