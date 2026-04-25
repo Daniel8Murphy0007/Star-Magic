@@ -1,6 +1,9 @@
 # scm_latex_exporter.py
 from scm_vacuum_manifold import export_all_to_latex, monte_carlo_fubi_i, progress_metric
 import subprocess
+import os
+
+OUT_DIR = os.path.join(os.path.dirname(__file__))  # pdf/
 
 def generate_whitepaper_section():
     latex = export_all_to_latex()
@@ -76,12 +79,21 @@ SCm supplies the stabilizing $F_{U,Bi,i}$ and phonon background.
 
 \end{document}
 """
-    with open("SCm_Whitepaper_Section.tex", "w", encoding="utf-8") as f:
+    tex_path = os.path.join(OUT_DIR, "SCm_Whitepaper_Section.tex")
+    with open(tex_path, "w", encoding="utf-8") as f:
         f.write(content)
-    
-    # Compile to PDF
-    subprocess.run(["pdflatex", "SCm_Whitepaper_Section.tex"])
-    print("✅ SCm_Whitepaper_Section.pdf generated — ready for review")
+
+    # Compile to PDF inside pdf/ so output lands there
+    subprocess.run(
+        ["pdflatex", "-interaction=nonstopmode", "-output-directory", OUT_DIR,
+         "SCm_Whitepaper_Section.tex"],
+        cwd=OUT_DIR
+    )
+    pdf_path = os.path.join(OUT_DIR, "SCm_Whitepaper_Section.pdf")
+    if os.path.exists(pdf_path):
+        print(f"\u2705 PDF ready: {pdf_path}")
+    else:
+        print("\u274c PDF generation failed -- check SCm_Whitepaper_Section.log")
 
 if __name__ == "__main__":
     generate_whitepaper_section()
