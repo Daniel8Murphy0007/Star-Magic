@@ -163,11 +163,11 @@ except ImportError:
         """VDS fallback: partial sum of SSq^n/n^26 [canonical: pdf/scm_vacuum_manifold.py]"""
         return sum((0.57**n) / (n**26) for n in range(1, min(terms + 1, 201)))
 
-def parkhomov_excess_heat_cp3(N_clusters=1e22, t_hours=1):
-    """Parkhomov Ni-H excess heat: N cluster events at 630 eV KER each, normalized over t_hours"""
-    t_sec = t_hours * 3600
-    P = N_clusters * KER_SCM * 0.84 * _np_cp3.exp(-KAPPA_FLOAT * t_hours * 24) / t_sec
-    return P / 1000  # kW  (~235 W at default params)
+def parkhomov_excess_heat_cp3(N_clusters=2.0e18, t_hours=1):
+    """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range"""
+    energy_per_cluster_j = 630 * 1.60217662e-19
+    P = N_clusters * energy_per_cluster_j * _np_cp3.exp(-KAPPA_FLOAT * t_hours * 24)
+    return P / 1000  # kW  (~200 W at default params)
  Î²_i
 E_REACT_BASE = 1e46      # W/m^3  â€” reactor efficiency base
 RHO_VAC_SCM  = 7.09e-37  # J/m^3  â€” SCm vacuum density

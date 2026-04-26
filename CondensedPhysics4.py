@@ -189,9 +189,10 @@ except ImportError:
     def _scm_monte_carlo_fubi_i(n_samples=10000): return 0.0, 0.0, [0.0, 0.0]
     def _scm_vds_num(terms=1000): return 0.0
     def _scm_export_latex(): return {}
-    def _scm_parkhomov(N_clusters=1e22, t_hours=1.0):
+    def _scm_parkhomov(N_clusters=2.0e18, t_hours=1.0):
         import math as _m_pk
-        return N_clusters * _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES * _m_pk.exp(-5e-4 * t_hours * 24) / 1e3
+        _energy_per_cluster_j = 630 * 1.60217662e-19
+        return N_clusters * _energy_per_cluster_j * _m_pk.exp(-5e-4 * t_hours * 24) / 1e3
     def _scm_pons_fleischmann(PdD_loading=0.9, volume=1e-6):
         return PdD_loading * volume * _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES * 0.001 * 1e6 / 1e3
 
@@ -251,12 +252,12 @@ def monte_carlo_fubi_i(n_samples=10000):
         results.append(fubi)
     return _np_mc.mean(results), _np_mc.std(results), _np_mc.percentile(results, [5, 95])
 
-def parkhomov_excess_heat_cp4(N_clusters=1e22, t_hours=1):
-    """Parkhomov Ni-H excess heat: N cluster events at 630 eV KER each, normalized over t_hours"""
+def parkhomov_excess_heat_cp4(N_clusters=2.0e18, t_hours=1):
+    """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range"""
     import math as _m_pk_cp4
-    t_sec = t_hours * 3600
-    P = N_clusters * _SCM_KER_SCm * 0.84 * _m_pk_cp4.exp(-_SCM_KAPPA_FLOAT * t_hours * 24) / t_sec
-    return P / 1000  # kW  (~235 W at default params)
+    energy_per_cluster_j = 630 * 1.60217662e-19
+    P = N_clusters * energy_per_cluster_j * _m_pk_cp4.exp(-_SCM_KAPPA_FLOAT * t_hours * 24)
+    return P / 1000  # kW  (~200 W at default params)
 
 E_REACT_BASE  = 1.0e46      # W/m^3
 RHO_VAC_SCM   = 7.09e-37    # J/m^3

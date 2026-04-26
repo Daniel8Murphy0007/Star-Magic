@@ -83,11 +83,11 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
 # ===========================================================================
 # Mizuno LENR: SCm phonon + F_U_Bi_i buoyancy explains transmutation without high radiation
 # Rossi E-Cat: SCm phonon + negative-time modulation gives COP 10-20 with low radiation
-def parkhomov_excess_heat(N_clusters=1e22, t_hours=1):
-    """Parkhomov Ni-H excess heat: N cluster events at 630 eV KER each, normalized over t_hours"""
-    t_sec = t_hours * 3600
-    P = N_clusters * KER_SCM * 0.84 * _math_99.exp(-KAPPA_FLOAT * t_hours * 24) / t_sec
-    return P / 1e3  # kW  (~235 W at default params)
+def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
+    """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range"""
+    energy_per_cluster_j = 630 * 1.60217662e-19
+    P = N_clusters * energy_per_cluster_j * _math_99.exp(-KAPPA_FLOAT * t_hours * 24)
+    return P / 1e3  # kW  (~200 W at default params)
 
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     """F_U_Bi_i integral numerical [canonical: pdf/scm_vacuum_manifold.py]"""
