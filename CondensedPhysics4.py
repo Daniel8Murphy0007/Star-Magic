@@ -44616,10 +44616,10 @@ class HolmlidKERReactorValidationCalculator(_CP4Calculator):
     def compute(self, dataset: dict) -> dict:
         import numpy as np
         t_hours = float(dataset.get("t_hours", 1.0))
-        N       = float(dataset.get("N_clusters", 1e22))
+        N       = float(dataset.get("N_clusters", 2.0e18))
         KER_eV  = self.KER_SCM / 1.60217662e-19
-        P_park  = N * self.E_PHONON * self.S26_3 * self.PHI_RES * \
-                  np.exp(-self.KAPPA * t_hours * 24) / 1e3
+        _energy_j = 630 * 1.60217662e-19
+        P_park  = N * _energy_j * np.exp(-self.KAPPA * t_hours * 24) / 1e3
         return {
             "class":     "HolmlidKERReactorValidationCalculator",
             "paper":     self.PAPER,
@@ -44658,10 +44658,10 @@ class HolmlidRossiParkhomovValidationCalculator(_CP4Calculator):
     def compute(self, dataset: dict) -> dict:
         import numpy as np
         t_hours = float(dataset.get("t_hours", 1.0))
-        N       = float(dataset.get("N_clusters", 1e22))
+        N       = float(dataset.get("N_clusters", 2.0e18))
         KER_eV  = self.E_PHONON * self.S26_3 * self.PHI_RES / 1.60217662e-19
-        P_park  = N * self.E_PHONON * self.S26_3 * self.PHI_RES * \
-                  np.exp(-self.KAPPA * t_hours * 24) / 1e3
+        _energy_j = 630 * 1.60217662e-19
+        P_park  = N * _energy_j * np.exp(-self.KAPPA * t_hours * 24) / 1e3
         rossi_COP = 10.0   # Rossi E-Cat typical COP (SCm prediction: 10-20)
         return {
             "class":     "HolmlidRossiParkhomovValidationCalculator",
@@ -44702,12 +44702,12 @@ class HolmlidParkhomovPonsFleischmannUpgradeCalculator(_CP4Calculator):
     def compute(self, dataset: dict) -> dict:
         import numpy as np
         t_hours      = float(dataset.get("t_hours", 1.0))
-        N_park       = float(dataset.get("N_park", 1e22))
+        N_park       = float(dataset.get("N_park", 2.0e18))
         PdD_loading  = float(dataset.get("PdD_loading", 0.9))
         volume       = float(dataset.get("volume", 1e-6))
         KER_eV  = self.E_PHONON * self.S26_3 * self.PHI_RES / 1.60217662e-19
-        P_park  = N_park * self.E_PHONON * self.S26_3 * self.PHI_RES * \
-                  np.exp(-self.KAPPA * t_hours * 24) / 1e3
+        _energy_j = 630 * 1.60217662e-19
+        P_park  = N_park * _energy_j * np.exp(-self.KAPPA * t_hours * 24) / 1e3
         P_pf    = PdD_loading * volume * self.E_PHONON * self.S26_3 * \
                   self.PHI_RES * 0.001 * 1e6 / 1e3
         return {
@@ -44793,8 +44793,8 @@ class SCmMizunoLENRTransmutationCalculator(_CP4Calculator):
         N_M     = float(dataset.get("N_clusters", 5e20))   # Mizuno: 1e20-1e21
         t_hours = float(dataset.get("t_hours", 1.0))
         f_b     = float(dataset.get("f_b", 0.5))           # system buoyancy scaling
-        P_miz   = N_M * self.E_PHONON * self.S26_3 * self.PHI_RES * \
-                  np.exp(-self.KAPPA * t_hours * 24) * f_b / 1e3
+        _energy_j = 630 * 1.60217662e-19
+        P_miz   = N_M * _energy_j * np.exp(-self.KAPPA * t_hours * 24) * f_b / 1e3
         return {
             "class":     "SCmMizunoLENRTransmutationCalculator",
             "paper":     self.PAPER,
