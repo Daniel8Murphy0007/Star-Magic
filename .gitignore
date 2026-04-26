@@ -253,3 +253,14 @@ coAnQi_log_1769801137.txt
 wolfram_debug_*.txt
 
 .vs-kubernetes/
+
+# xelatex/LaTeX build artifacts (fully deterministic, regenerate on recompile)
+*.aux
+*.out
+*.log
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
