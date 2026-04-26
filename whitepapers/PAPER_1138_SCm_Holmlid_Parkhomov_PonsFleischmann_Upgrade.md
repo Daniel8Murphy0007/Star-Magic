@@ -32,7 +32,7 @@ The raw amplified energy is normalised to the Holmlid experimental benchmark via
 \mathrm{KER}_{\text{SCm}} = E_{\text{phonon}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot \xi = 630\ \text{eV} = 1.009 \times 10^{-16}\ \text{J}
 \end{equation}
 
-Eq.~\eqref{eq:ker} is an exact match to Holmlid's measured 630 eV KER per D–D pair. The canonical energy-per-cluster $\varepsilon_{\text{cluster}} = 630\ \text{eV}$ defined here propagates into the Parkhomov equation (Eq.~\eqref{eq:parkhomov}) and all subsequent LENR calculations.
+Eq.~\eqref{eq:ker} is an exact match to Holmlid's measured 630 eV KER per D–D pair~[1,2]. The canonical energy-per-cluster $\varepsilon_{\text{cluster}} = 630\ \text{eV}$ defined here propagates into the Parkhomov equation (Eq.~\eqref{eq:parkhomov}) and all subsequent LENR calculations.
 
 ---
 
@@ -50,7 +50,7 @@ where $\varepsilon_{\text{cluster}} = 630 \times 1.60217662 \times 10^{-19}\ \te
 P_{\text{excess}}(t=1\ \text{hr}) = 2\times10^{18} \times 1.009\times10^{-16} \times e^{-0.0005\times24} \approx 0.197\ \text{kW}\ (\approx 200\ \text{W})
 \end{equation}
 
-This is consistent with Parkhomov's reported 150–280 W excess heat in independent Ni–H replications.
+This is consistent with Parkhomov's reported 150–280 W excess heat in independent Ni–H replications~[3,4].
 
 ```python
 def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
@@ -98,6 +98,26 @@ All consistent with SCm phonon + buoyancy stabilization.
 ## 5. Conclusion
 
 The SCm upgrade adds quantitative Holmlid, Parkhomov, and Pons–Fleischmann correspondence to the canonical UQFF framework. The key revision from prior analyses is the use of the Holmlid-calibrated canonical energy-per-cluster $\varepsilon_{\text{cluster}} = 630\ \text{eV}$ (Eq.~\eqref{eq:ker}) as the basis for all heat predictions, rather than the raw $E_{\text{phonon}}\cdot S_{26}^{(3)}\cdot\Phi_{\text{res}}$ product. This yields the physically correct Parkhomov output of $\approx 200\ \text{W}$ (Eq.~\eqref{eq:parkhomov_num}) consistent with experimental observations. Validation metric: 87\% on internal consistency and experimental echo.
+
+---
+
+## References
+
+[1] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(−1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
+
+[2] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(−1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
+
+[3] A.G. Parkhomov, "Research into heat generators similar to high temperature Rossi reactor," *Proc. 10th Int. Seminar on Non-Standard Energy*, Moscow, 2015.
+
+[4] A.G. Parkhomov, "Nickel-hydrogen reactors: new data," *J. Condensed Matter Nucl. Sci.*, vol. 20, pp. 95–108, 2016.
+
+[5] M. Fleischmann and S. Pons, "Electrochemically induced nuclear fusion of deuterium," *J. Electroanal. Chem.*, vol. 261, no. 2, pp. 301–308, 1989. DOI: 10.1016/0022-0728(89)80006-7
+
+[6] A. Widom and L. Larsen, "Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces," *Eur. Phys. J. C*, vol. 46, pp. 107–111, 2006. DOI: 10.1140/epjc/s2006-02479-8
+
+[7] G.H. Hardy and S. Ramanujan, "Asymptotic formulae in combinatory analysis," *Proc. London Math. Soc.*, ser. 2, vol. 17, pp. 75–115, 1918. DOI: 10.1112/plms/s2-17.1.75
+
+[8] E. Storms, "The science of low energy nuclear reaction," *J. Condensed Matter Nucl. Sci.*, vol. 4, pp. 1–58, 2010.
 
 ---
 

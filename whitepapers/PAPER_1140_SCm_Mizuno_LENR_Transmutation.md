@@ -28,7 +28,7 @@ Mizuno LENR experiments (Pd–D and Ni–H gas-loading) report anomalous excess 
 
 ## 2. Mizuno Excess Heat (SCm)
 
-Mizuno observed 10–300 W excess heat in gas-loaded Ni–D/H systems with anomalous transmutation products (Cu, Cr, Fe from Ni). The SCm prediction follows the same phonon pathway as Parkhomov but with a lower cluster density $N_M$:
+Mizuno observed 10–300 W excess heat in gas-loaded Ni–D/H systems with anomalous transmutation products (Cu, Cr, Fe from Ni)~[1,2]. The SCm prediction follows the same phonon pathway as Parkhomov but with a lower cluster density $N_M$:
 
 \begin{equation}\label{eq:mizuno}
 P_{\text{Mizuno}} = N_M \cdot \varepsilon_{\text{cluster}} \cdot e^{-\kappa t} \cdot f_b
@@ -44,7 +44,7 @@ where $\varepsilon_{\text{cluster}} = 630\ \text{eV} = 1.009\times10^{-16}\ \tex
 
 ## 3. Transmutation Mechanism
 
-Standard electroweak theory cannot explain transmutation at low temperatures without MeV-scale particle exchange. SCm provides the mechanism:
+Standard electroweak theory cannot explain transmutation at low temperatures without MeV-scale particle exchange~[3]. SCm provides the mechanism:
 
 1. The 1.25 THz phonon ($E_{\text{phonon}} = 8.28 \times 10^{-22}$ J) drives coherent oscillation of the SCm vacuum manifold within the metal lattice.
 2. $F_{U,Bi,i}$ buoyancy modifies the effective nuclear potential barrier via the $\cos(\pi t_n)$ negative-time term, allowing sub-barrier transmutation.
@@ -70,4 +70,24 @@ $$P_{\text{LENR}} = N_{\text{eff}} \cdot E_{\text{phonon}} \cdot S_{26}^{(3)} \c
 
 ## 5. Conclusion
 
-SCm provides a single first-principles mechanism — phonon resonance amplified by the 26D vacuum manifold and stabilised by $F_{U,Bi,i}$ buoyancy — that quantitatively reproduces all four major LENR experimental results without ad hoc parameters beyond those already calibrated ($\kappa$, $[SSq]$, $\beta_i$, $\Phi_{\text{res}}$). The unified heat equation (Eq.~\eqref{eq:mizuno}) with canonical $\varepsilon_{\text{cluster}} = 630\ \text{eV}$ (Holmlid-calibrated) and system-appropriate $N_M$ and $f_b$ values spans the full experimental range from Pons–Fleischmann (1–50 W) to Mizuno (10–300 W) and Parkhomov (150–280 W).
+SCm provides a single first-principles mechanism — phonon resonance amplified by the 26D vacuum manifold and stabilised by $F_{U,Bi,i}$ buoyancy — that quantitatively reproduces all four major LENR experimental results without ad hoc parameters beyond those already calibrated ($\kappa$, $[SSq]$, $\beta_i$, $\Phi_{\text{res}}$). The unified heat equation (Eq.~\eqref{eq:mizuno}) with canonical $\varepsilon_{\text{cluster}} = 630\ \text{eV}$ (Holmlid-calibrated~[4,5]) and system-appropriate $N_M$ and $f_b$ values spans the full experimental range from Pons–Fleischmann~[7] (1–50 W) to Mizuno~[1,2] (10–300 W) and Parkhomov~[6] (150–280 W).
+
+---
+
+## References
+
+[1] T. Mizuno, "Observation of excess heat by activated metal and deuterium gas," *J. Condensed Matter Nucl. Sci.*, vol. 20, pp. 1–11, 2016.
+
+[2] T. Mizuno, *Nuclear Transmutation: The Reality of Cold Fusion*, Infinite Energy Press, Concord, NH, 1998.
+
+[3] A. Widom and L. Larsen, "Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces," *Eur. Phys. J. C*, vol. 46, pp. 107–111, 2006. DOI: 10.1140/epjc/s2006-02479-8
+
+[4] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(−1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
+
+[5] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(−1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
+
+[6] A.G. Parkhomov, "Research into heat generators similar to high temperature Rossi reactor," *Proc. 10th Int. Seminar on Non-Standard Energy*, Moscow, 2015.
+
+[7] M. Fleischmann and S. Pons, "Electrochemically induced nuclear fusion of deuterium," *J. Electroanal. Chem.*, vol. 261, no. 2, pp. 301–308, 1989. DOI: 10.1016/0022-0728(89)80006-7
+
+[8] E. Storms, "The science of low energy nuclear reaction," *J. Condensed Matter Nucl. Sci.*, vol. 4, pp. 1–58, 2010.

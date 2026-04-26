@@ -46,13 +46,13 @@ with $x = 0.9$, $V = 10^{-6}$ m$^3$, $f_{\text{active}} = 0.01$, $f_b = 0.84$:
 \boxed{P_{\text{PF}} \approx 1\text{–50}\ \text{W}}
 \end{equation}
 
-This matches the Pons-Fleischmann experimental observation.
+This matches the Pons-Fleischmann experimental observation~[1].
 
 ---
 
 ## 3. Why Low Neutrons and Tritium?
 
-Standard theory predicts MeV-scale neutron and tritium production from D–D fusion. Pons-Fleischmann observed neither at the expected level. SCm explains this via:
+Standard theory predicts MeV-scale neutron and tritium production from D–D fusion. Pons-Fleischmann observed neither at the expected level~[1,2]. SCm explains this via:
 
 - **$F_{U,Bi,i}$ buoyancy** stabilises PdD$_x$ clusters, preventing explosive collapse that would generate hard radiation.
 - **Negative-time modulation** $\cos(\pi t_n)$ allows coherent energy release *without* crossing the high-energy Coulomb barrier.
@@ -94,4 +94,22 @@ Implemented in: `scm_vacuum_manifold.py` (root and pdf/), `CondensedPhysics3.py`
 
 ## 6. Conclusion
 
-The SCm Vacuum Manifold provides a first-principles mechanism for Pons-Fleischmann excess heat that naturally explains both the observed power range (1–50 W) and the anomalously low neutron/tritium signature — a result that has resisted Standard Model explanation since 1989.
+The SCm Vacuum Manifold provides a first-principles mechanism for Pons-Fleischmann excess heat that naturally explains both the observed power range (1–50 W) and the anomalously low neutron/tritium signature — a result that has resisted Standard Model explanation since 1989~[1,2].
+
+---
+
+## References
+
+[1] M. Fleischmann and S. Pons, "Electrochemically induced nuclear fusion of deuterium," *J. Electroanal. Chem.*, vol. 261, no. 2, pp. 301–308, 1989. DOI: 10.1016/0022-0728(89)80006-7
+
+[2] M.C.H. McKubre, S. Crouch-Baker, A.M. Riley, S.I. Smedley, and F.L. Tanzella, "Excess power observations in electrochemical studies of the D/Pd system; the influence of loading," *Proc. 3rd Int. Conf. Cold Fusion (ICCF-3)*, Nagoya, Japan, 1992.
+
+[3] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(−1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
+
+[4] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(−1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
+
+[5] A. Widom and L. Larsen, "Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces," *Eur. Phys. J. C*, vol. 46, pp. 107–111, 2006. DOI: 10.1140/epjc/s2006-02479-8
+
+[6] E. Storms, "The science of low energy nuclear reaction," *J. Condensed Matter Nucl. Sci.*, vol. 4, pp. 1–58, 2010.
+
+[7] P.L. Hagelstein, M.C.H. McKubre, D.J. Nagel, T.A. Chubb, and R.J. Hekman, "New physical effects in metal deuterides," *Proc. 11th Int. Conf. Cold Fusion (ICCF-11)*, Marseille, France, 2004.
