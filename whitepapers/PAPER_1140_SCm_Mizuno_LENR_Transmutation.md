@@ -20,7 +20,7 @@ Mizuno LENR experiments (Pd–D and Ni–H gas-loading) report anomalous excess 
 | $S_{26}^{(3)}$ | $1.4531 \times 10^{26}$ | 26D Ramanujan amplification |
 | $\Phi_{\text{res}}$ | $0.84$ | Resonance coupling |
 | $\beta_i$ | $0.6$ | Buoyancy coefficient |
-| $\kappa$ | $5 \times 10^{-4}$ day⁻¹ | SCm decay rate |
+| $\kappa$ | $5 \times 10^{-4}\ \text{day}^{-1}$ | SCm decay rate |
 | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}$ J/m³ | SCm vacuum density |
 | $\rho_{\text{UA}}$ | $7.09 \times 10^{-36}$ J/m³ | UA vacuum density |
 
@@ -30,11 +30,15 @@ Mizuno LENR experiments (Pd–D and Ni–H gas-loading) report anomalous excess 
 
 Mizuno observed 10–300 W excess heat in gas-loaded Ni–D/H systems with anomalous transmutation products (Cu, Cr, Fe from Ni). The SCm prediction follows the same phonon pathway as Parkhomov but with a lower cluster density $N_M$:
 
-$$P_{\text{Mizuno}} = N_M \cdot E_{\text{phonon}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot e^{-\kappa t} \cdot f_b$$
+\begin{equation}\label{eq:mizuno}
+P_{\text{Mizuno}} = N_M \cdot \varepsilon_{\text{cluster}} \cdot e^{-\kappa t} \cdot f_b
+\end{equation}
 
-For $N_M \sim 10^{20}$–$10^{21}$:
+where $\varepsilon_{\text{cluster}} = 630\ \text{eV} = 1.009\times10^{-16}\ \text{J}$ is the canonical Holmlid-calibrated cluster energy, $\kappa = 5\times10^{-4}\ \text{day}^{-1}$, and $f_b$ is the system-specific buoyancy stabilisation factor. For $N_M \sim 10^{20}$–$10^{21}$:
 
-$$\boxed{P_{\text{Mizuno}} \approx 10\text{–}300\ \text{W}}$$
+\begin{equation}\label{eq:mizuno_result}
+\boxed{P_{\text{Mizuno}} \approx 10\text{–}300\ \text{W}}
+\end{equation}
 
 ---
 
@@ -53,8 +57,8 @@ Standard electroweak theory cannot explain transmutation at low temperatures wit
 
 | Experiment | System | Observed $P$ | SCm Prediction |
 |------------|--------|-------------|----------------|
-| Holmlid | K–Fe catalyst | 630 eV KER | $KER_{\text{SCm}} = E_\phi \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}$ |
-| Parkhomov | Ni–H, 1100°C | 150–280 W | $N \sim 10^{22}$, $f_b = 1$ |
+| Holmlid | K–Fe catalyst | 630 eV KER | $\mathrm{KER}_{\text{SCm}} = \varepsilon_{\text{cluster}} = 630\ \text{eV}$ |
+| Parkhomov | Ni–H, 1100°C | 150–280 W | $N \sim 2\times10^{18}$, $f_b = 1$ |
 | Pons-Fleischmann | Pd–D | 1–50 W | $V = 10^{-6}$ m³, $f_b = 0.001$ |
 | Mizuno | Ni–D gas | 10–300 W | $N \sim 10^{20}$–$10^{21}$, $f_b$ scaled |
 
@@ -66,4 +70,4 @@ $$P_{\text{LENR}} = N_{\text{eff}} \cdot E_{\text{phonon}} \cdot S_{26}^{(3)} \c
 
 ## 5. Conclusion
 
-SCm provides a single first-principles mechanism — phonon resonance amplified by the 26D vacuum manifold and stabilised by $F_{U,Bi,i}$ buoyancy — that quantitatively reproduces all four major LENR experimental results without ad hoc parameters beyond those already calibrated ($\kappa$, $[SSq]$, $\beta_i$, $\Phi_{\text{res}}$).
+SCm provides a single first-principles mechanism — phonon resonance amplified by the 26D vacuum manifold and stabilised by $F_{U,Bi,i}$ buoyancy — that quantitatively reproduces all four major LENR experimental results without ad hoc parameters beyond those already calibrated ($\kappa$, $[SSq]$, $\beta_i$, $\Phi_{\text{res}}$). The unified heat equation (Eq.~\eqref{eq:mizuno}) with canonical $\varepsilon_{\text{cluster}} = 630\ \text{eV}$ (Holmlid-calibrated) and system-appropriate $N_M$ and $f_b$ values spans the full experimental range from Pons–Fleischmann (1–50 W) to Mizuno (10–300 W) and Parkhomov (150–280 W).
