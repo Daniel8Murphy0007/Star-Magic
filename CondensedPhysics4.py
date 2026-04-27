@@ -171,6 +171,11 @@ try:
         export_all_to_latex        as _scm_export_latex,
         parkhomov_excess_heat       as _scm_parkhomov,      # Ni-H excess heat [kW]
         pons_fleischmann_excess_heat as _scm_pons_fleischmann, # Pd-D excess heat [kW]
+        F_TRZ                       as _SCM_F_TRZ,
+        coleman_guillespie_scm      as _scm_coleman_guillespie,
+        neutrino_oscillation_prob_lenr as _scm_neutrino_osc,
+        quark_production_prob_ui    as _scm_quark_prod,
+        mckubre_lenr                as _scm_mckubre,
     )
     _SCM_MANIFOLD_LOADED = True
 except ImportError:
@@ -195,6 +200,11 @@ except ImportError:
         return N_clusters * _energy_per_cluster_j * _m_pk.exp(-5e-4 * t_hours * 24) / 1e3
     def _scm_pons_fleischmann(PdD_loading=0.9, volume=1e-6):
         return PdD_loading * volume * _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES * 0.001 * 1e6 / 1e3
+    _SCM_F_TRZ = 0.1
+    def _scm_coleman_guillespie(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12): return 0.0
+    def _scm_neutrino_osc(t_n=-100.0): return 0.0
+    def _scm_quark_prod(t_n=-100.0, Gamma=1.0e12): return 0.0
+    def _scm_mckubre(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
 
 # ---------------------------------------------------------------------------
 # UQFF PHASE-4 CONSTANTS (canonical, matching CP3)

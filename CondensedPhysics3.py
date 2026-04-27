@@ -97,9 +97,19 @@ try:
         KER_SCm        as KER_SCM,
         scaling_factor as SCALING_SCM,    # exact 630 eV normalizer
         KAPPA_FLOAT    as KAPPA_FLOAT,    # float(KAPPA) = 0.0005
+        F_TRZ                       as F_TRZ,
+        coleman_guillespie_scm      as coleman_guillespie_scm,
+        neutrino_oscillation_prob_lenr as neutrino_oscillation_prob_lenr,
+        quark_production_prob_ui    as quark_production_prob_ui,
+        mckubre_lenr                as mckubre_lenr,
     )
 except ImportError:
     pass  # fallback values already set above
+    F_TRZ = 0.1
+    def coleman_guillespie_scm(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12): return 0.0
+    def neutrino_oscillation_prob_lenr(t_n=-100.0): return 0.0
+    def quark_production_prob_ui(t_n=-100.0, Gamma=1.0e12): return 0.0
+    def mckubre_lenr(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
 
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
