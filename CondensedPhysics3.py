@@ -102,6 +102,10 @@ try:
         neutrino_oscillation_prob_lenr as neutrino_oscillation_prob_lenr,
         quark_production_prob_ui    as quark_production_prob_ui,
         mckubre_lenr                as mckubre_lenr,
+        s26_3_from_vds              as s26_3_from_vds,
+        qgp_energy_density_scm      as qgp_energy_density_scm,
+        strange_quark_matter_density as strange_quark_matter_density,
+        mit_bag_scm                 as mit_bag_scm,
     )
 except ImportError:
     pass  # fallback values already set above
@@ -110,6 +114,10 @@ except ImportError:
     def neutrino_oscillation_prob_lenr(t_n=-100.0): return 0.0
     def quark_production_prob_ui(t_n=-100.0, Gamma=1.0e12): return 0.0
     def mckubre_lenr(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
+    s26_3_from_vds = lambda: 1.4531e26
+    def qgp_energy_density_scm(T_plasma=1.0e11): return 0.0
+    def strange_quark_matter_density(): return (1.0e18, 0.0)
+    def mit_bag_scm(): return 0.0
 
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]

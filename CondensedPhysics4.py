@@ -176,6 +176,10 @@ try:
         neutrino_oscillation_prob_lenr as _scm_neutrino_osc,
         quark_production_prob_ui    as _scm_quark_prod,
         mckubre_lenr                as _scm_mckubre,
+        s26_3_from_vds              as _scm_s26_3_from_vds,
+        qgp_energy_density_scm      as _scm_qgp_energy_density,
+        strange_quark_matter_density as _scm_sqm_density,
+        mit_bag_scm                 as _scm_mit_bag,
     )
     _SCM_MANIFOLD_LOADED = True
 except ImportError:
@@ -205,6 +209,10 @@ except ImportError:
     def _scm_neutrino_osc(t_n=-100.0): return 0.0
     def _scm_quark_prod(t_n=-100.0, Gamma=1.0e12): return 0.0
     def _scm_mckubre(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
+    _scm_s26_3_from_vds = lambda: 1.4531e26
+    def _scm_qgp_energy_density(T_plasma=1.0e11): return 0.0
+    def _scm_sqm_density(): return (1.0e18, 0.0)
+    def _scm_mit_bag(): return 0.0
 
 # ---------------------------------------------------------------------------
 # UQFF PHASE-4 CONSTANTS (canonical, matching CP3)
