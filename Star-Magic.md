@@ -1,19 +1,19 @@
 ﻿# Star-Magic.md
 
-## INTEGRATION STATUS (April 18, 2026)
+## INTEGRATION STATUS (April 27, 2026)
 
-**Platform:** MAIN_1_CoAnQi.cpp (97,119 lines) - Conscious Quantum Intelligence UQFF Calculator  
-**HEAD PROGRAM:** source2.cpp (15,762 lines) - Principal GUI Application (21 tabs, Qt6)  
+**Platform:** MAIN_1_CoAnQi.cpp (109,031 lines) - Conscious Quantum Intelligence UQFF Calculator  
+**HEAD PROGRAM:** source2.cpp (16,984 lines) - Principal GUI Application (22 tabs, Qt6)  
 **Modules:** 446 integrated physics terms across SOURCE1-116 blocks  
 **Physics Classes:** 6,698+ registered  
-**Python Calculators:** 2,748 classes (CP1=1,299 + CP2=680 + CP3=218 + CP4=551)  
+**Python Calculators:** 2,773 classes (CP1=1,299 + CP2=680 + CP3=219 + CP4=575)  
 **Wolfram Companions:** 71 files + source82 extensions  
 **Build:** CMake 3.31.0 + MSVC 19.44.35219, C++20 standard  
-**Executables:** MAIN_1_CoAnQi.exe (1.43 MB, UPX 5.0.2 compressed, 15.51% ratio)  
-**Commit:** 1d3802bc - Session 222 comprehensive README update  
+**Executables:** MAIN_1_CoAnQi.exe (9.77 MB Release build)  
+**Commit:** 5004091d - feat: add QCD/SQM physics functions + cascade imports  
 **Framework:** 2.0-Enhanced Self-Expanding with dynamic term registration + DPM-FOUNDATION PARADIGM  
-**Phase:** Session 222 - DPM-FOUNDATION PARADIGM + MUGE Compression Cycle 3  
-**Whitepapers:** 1,125 papers (PAPER_001–PAPER_1029) | 1,134 PDFs  
+**Phase:** Session 222+ — SCm LENR/QCD/SQM physics canonicalized; QCalc fixed; 575 CP4 classes  
+**Whitepapers:** 1,154 papers | 1,179 PDFs  
 **Repository:** Daniel8Murphy0007/Star-Magic
 
 ---
@@ -22,23 +22,23 @@
 
 | Metric | Value |
 |--------|-------|
-| MAIN_1 Lines | 97,119 |
-| source2.cpp Lines | 15,762 (Principal GUI, 21 tabs, Qt6) |
-| index.js Lines | 21,269 (UQFF Library, 106 systems) |
-| QCalc.py Lines | 10,076 |
-| CondensedPhysics.py | 168,852 lines / 1,299 calculator classes |
-| CondensedPhysics2.py | 48,093 lines / 680 calculator classes |
-| CondensedPhysics3.py | 12,275 lines / 218 calculator classes |
-| CondensedPhysics4.py | 36,200 lines / 551 calculator classes |
-| Total Python Calculators | 2,748 classes |
+| MAIN_1 Lines | 109,031 |
+| source2.cpp Lines | 16,984 (Principal GUI, 22 tabs, Qt6) |
+| index.js Lines | 24,288 (UQFF Library, 106 systems) |
+| QCalc.py Lines | 10,435 |
+| CondensedPhysics.py | 205,634 lines / 1,299 calculator classes |
+| CondensedPhysics2.py | 55,262 lines / 680 calculator classes |
+| CondensedPhysics3.py | 14,788 lines / 219 calculator classes |
+| CondensedPhysics4.py | 44,909 lines / 575 calculator classes |
+| Total Python Calculators | 2,773 classes |
 | C++ Standard | C++20 |
 | Compiler | MSVC 14.44.35219 (Visual Studio 2022) |
-| Executable Size | 1.43 MB (UPX 5.0.2, 15.51% ratio) |
+| Executable Size | 9.77 MB Release build |
 | Registered C++ Terms | 6,698+ |
-| Whitepapers | 1,125 (PAPER_001–PAPER_1029) |
-| PDFs | 1,134 |
+| Whitepapers | 1,154 (PAPER_001–PAPER_1029+) |
+| PDFs | 1,179 |
 | source*.cpp Files | 279 |
-| Total .cpp Files | 1,315 |
+| Total .cpp Files | 1,053 |
 | Threading | Windows native (SimpleMutex, SimpleLockGuard) |
 | WSTP Version | 14.3 (Wolfram Symbolic Transfer Protocol) |
 | Grok AI | ✅ Integrated (source178_grok_api.cpp) |
@@ -80,11 +80,11 @@ cmake --build build --target MAIN_1_CoAnQi
 
 ## Recent Commits (Last 5)
 
-1. **1d3802bc** (Apr 18, 2026) - README.md: comprehensive update reflecting full codebase state (Session 222)
-2. **d67f38f1** (Apr 18, 2026) - MUGE_18April2026: 5 files, 17,295 insertions
-3. **8bebc698** (Apr 18, 2026) - Session 222: 3 CP4 calculators — PAPER_1027-1029 (#611-#613)
-4. **782da068** (Apr 18, 2026) - MUGE Compression Cycle 3 gap fill: 8 new CP4 calculators + compute_Um fix
-5. **ca75dd64** (Apr 17, 2026) - DPM-Foundation: Replace Newtonian GM/r² in all whitepapers + regenerate 220 PDFs (607 files)
+1. **5004091d** (Apr 27, 2026) - feat: add QCD/SQM physics functions (s26_3_from_vds, qgp_energy_density_scm, strange_quark_matter_density, mit_bag_scm) + cascade imports to CP3/CP4/99system files
+2. **6a512f31** (Apr 27, 2026) - feat: add 4 new SCm LENR functions (Coleman/Guillespie, neutrino osc, quark production, McKubre) + cascade imports
+3. **b8bf158a** (Apr 27, 2026) - fix: add missing dpm_ug1_seed import to QCalc.py (NameError at 13 call sites)
+4. **1d3802bc** (Apr 18, 2026) - README.md: comprehensive update reflecting full codebase state (Session 222)
+5. **d67f38f1** (Apr 18, 2026) - MUGE_18April2026: 5 files, 17,295 insertions
 
 ---
 
@@ -112,16 +112,17 @@ cmake --build build --target MAIN_1_CoAnQi
 ## Project Structure
 
 ### Core Files
-- `MAIN_1_CoAnQi.cpp` - Primary platform (97,119 lines, SOURCE1-116 + SOURCE4)
-- `source2.cpp` - Principal GUI application (15,762 lines, 21 tabs, Qt6) — USER STARTS HERE
-- `source2(HEAD PROGRAM).cpp` - VR/VM backend (2,625 lines, GPU heavy)
+- `MAIN_1_CoAnQi.cpp` - Primary platform (109,031 lines, SOURCE1-116 + SOURCE4)
+- `source2.cpp` - Principal GUI application (16,984 lines, 22 tabs, Qt6) — USER STARTS HERE
+- `source2(HEAD PROGRAM).cpp` - VR/VM backend (4,382 lines, GPU heavy)
 - `physics_backend.cpp` - CPU-bound headless physics server (~12,000 lines)
-- `index.js` - JavaScript LIBRARY (21,269 lines, 106 systems) — NOT a calculator
-- `QCalc.py` - Python unified field solver (10,076 lines)
-- `CondensedPhysics.py` - Primary calculator (168,852 lines, 1,299 classes)
-- `CondensedPhysics2.py` - UQFF extensions (48,093 lines, 680 classes)
-- `CondensedPhysics3.py` - Additional calculators (12,275 lines, 218 classes)
-- `CondensedPhysics4.py` - Latest calculators (36,200 lines, 551 classes)
+- `index.js` - JavaScript LIBRARY (24,288 lines, 106 systems) — NOT a calculator
+- `QCalc.py` - Python unified field solver (10,435 lines)
+- `CondensedPhysics.py` - Primary calculator (205,634 lines, 1,299 classes)
+- `CondensedPhysics2.py` - UQFF extensions (55,262 lines, 680 classes)
+- `CondensedPhysics3.py` - Additional calculators (14,788 lines, 219 classes)
+- `CondensedPhysics4.py` - Latest calculators (44,909 lines, 575 classes)
+- `scm_vacuum_manifold.py` - SCm canonical physics module (289 lines, 9 importable functions: LENR + QCD/SQM + QGP + VDS)
 - `Core/dpm_foundation.h` - DPM foundation gravity helpers (DPM is first; Newton is the emergent last output)
 - `observational_systems_config.h` - 35+ astrophysical systems parameters
 
@@ -165,10 +166,11 @@ cmake --build build --target MAIN_1_CoAnQi
 ✅ **Phase 12:** Whitepaper pipeline (1,125 papers, 1,134 PDFs, CVW v2.0.0 compliant)  
 ✅ **Phase 13:** DPM-Foundation paradigm (Core/dpm_foundation.h — DPM is first, Newton is last; 607+ files updated)  
 ✅ **Phase 14:** MUGE Compression Cycle 3 (PAPER_1019–1029)  
+✅ **Phase 15:** SCm LENR/QCD/SQM physics canonicalized (scm_vacuum_manifold.py — 9 importable functions; QCalc.py dpm_ug1_seed fix; cascade to CP3/CP4/99system)  
 
 ### In Progress
-🔨 **Phase 15:** Observational validation pipeline (arXiv cross-validation)  
-🔨 **Phase 16:** Publication preparation (peer review documentation)
+🔨 **Phase 16:** Observational validation pipeline (arXiv cross-validation)  
+🔨 **Phase 17:** Publication preparation (peer review documentation)
 
 ---
 
@@ -227,7 +229,7 @@ For complete information, see:
 
 ---
 
-**Last Updated:** April 18, 2026  
+**Last Updated:** April 27, 2026  
 **Update Frequency:** Every commit (per WORKSPACE_UPDATE_CHECKLIST.md)  
 **Authoritative Source:** This file tracks live workspace status, not historical snapshots
 
