@@ -59,6 +59,8 @@ try:
         qgp_energy_density_scm      as qgp_energy_density_scm,
         strange_quark_matter_density as strange_quark_matter_density,
         mit_bag_scm                 as mit_bag_scm,
+        ads_cft_scm_dual            as ads_cft_scm_dual,
+        scm_gw_metric_perturbation  as scm_gw_metric_perturbation,
     )
 except ImportError:
     pass  # fallback values already set above
@@ -71,6 +73,8 @@ except ImportError:
     def qgp_energy_density_scm(T_plasma=1.0e11): return 0.0
     def strange_quark_matter_density(): return (1.0e18, 0.0)
     def mit_bag_scm(): return 0.0
+    ads_cft_scm_dual = lambda: {}
+    def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22): return 0.0
 
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]

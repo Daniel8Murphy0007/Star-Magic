@@ -180,6 +180,8 @@ try:
         qgp_energy_density_scm      as _scm_qgp_energy_density,
         strange_quark_matter_density as _scm_sqm_density,
         mit_bag_scm                 as _scm_mit_bag,
+        ads_cft_scm_dual            as _scm_ads_cft_dual,
+        scm_gw_metric_perturbation  as _scm_gw_metric_pert,
     )
     _SCM_MANIFOLD_LOADED = True
 except ImportError:
@@ -213,6 +215,8 @@ except ImportError:
     def _scm_qgp_energy_density(T_plasma=1.0e11): return 0.0
     def _scm_sqm_density(): return (1.0e18, 0.0)
     def _scm_mit_bag(): return 0.0
+    def _scm_ads_cft_dual(): return {}
+    def _scm_gw_metric_pert(f_gw=100.0, r_detector=3.086e22): return 0.0
 
 # ---------------------------------------------------------------------------
 # UQFF PHASE-4 CONSTANTS (canonical, matching CP3)
