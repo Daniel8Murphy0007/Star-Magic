@@ -48,7 +48,7 @@ MATH_CHARS = {
     '∪': r'\cup',      '∩': r'\cap',
     '∀': r'\forall',   '∃': r'\exists',   '∄': r'\nexists',
     '∼': r'\sim',      '⊕': r'\oplus',    '⊗': r'\otimes',
-    '√': r'\sqrt{}',   '∘': r'\circ',
+    '∘': r'\circ',
     # Blackboard bold
     'ℚ': r'\mathbb{Q}','ℝ': r'\mathbb{R}','ℂ': r'\mathbb{C}',
     'ℤ': r'\mathbb{Z}','ℕ': r'\mathbb{N}',
@@ -121,6 +121,22 @@ def replace_in_text(text):
             result.append(SUPERSCRIPT_DIGITS[c])
         elif c in MATH_SET:
             result.append('$' + MATH_CHARS[c] + '$')
+        elif c == '√':
+            # Handle √N or √(expr) — consume following char(s) into \sqrt{...}
+            j = i + 1
+            if j < len(text) and text[j] == '(':
+                # √(...) → $\sqrt{...}$
+                k = text.find(')', j)
+                if k != -1:
+                    result.append('$\\sqrt{' + text[j+1:k] + '}$')
+                    i = k + 1
+                    continue
+            elif j < len(text) and (text[j].isdigit() or text[j].isalpha() or text[j] == '{'):
+                result.append('$\\sqrt{' + text[j] + '}$')
+                i = j + 1
+                continue
+            # fallback
+            result.append('$\\sqrt{}$')
         else:
             result.append(c)
         i += 1
