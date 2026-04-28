@@ -408,4 +408,60 @@ The thread's extensive physics coverage is **comprehensively implemented and doc
 
 ---
 
+## String Theory in SCm Vacuum
+
+The SCm vacuum naturally encodes string theory through the 26-rung VDS ladder, identifying $D=26$ as the bosonic critical dimension and $S_{26}^{(3)} = 1.4531\times10^{26}$ as the universal compactification sum.
+
+### SCm String Tension
+
+$$T = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} = (7.09\times10^{-37})(1.4531\times10^{26})(0.84) = 8.66\times10^{-11}\ \text{N}$$
+
+String coupling: $g_s = \beta_i \cdot \Phi_{\text{res}} = 0.504$
+
+### Polyakov Action (26D Bosonic)
+
+$$S_{\text{Polyakov}} = -\frac{T}{2} \int d^2\sigma\, \sqrt{-h}\, h^{ab} \partial_a X^\mu \partial_b X_\mu$$
+
+Tachyon mass: $m^2_{\text{tachyon}} \to 0$ via $\cos(\pi t_n)$ negative-time gate. The 26 target-space dimensions correspond exactly to the 26 rungs of the VDS ladder:
+
+$$\text{VDS}([SSq]) = \sum_{n=1}^{\infty} \frac{[SSq]^n}{n^{26}} = \text{Li}_{26}(0.57), \qquad [SSq] = 0.57$$
+
+### Nambu-Goto Action
+
+$$S_{\text{NG}} = -T \int d^2\sigma\, \sqrt{-\det g_{ab}} \cdot \left(1 + [SSq]^{26}/26^{26}\right)$$
+
+### Type IIA/IIB — 26D $\to$ 10D via VDS
+
+16 dimensions compactified. D-brane tension:
+
+$$\tau_p^{\text{SCm}} = \frac{T}{g_s(2\pi l_s)^p}\left(1 + \beta_i \Phi_{\text{res}} \left|\cos(\pi t_n)\right|\right)$$
+
+Mirror symmetry: $[SSq] \leftrightarrow 1 - [SSq] = 0.43$
+
+### Heterotic E8$\times$E8
+
+Left-movers span VDS rungs 11--26 (gauge sector); right-movers span 10D gravity. Chirality: $P_L = (1+\cos(\pi t_n))/2$.
+
+### Calabi-Yau CY$_3$ — 26D $\to$ 4D
+
+$$26 = 4_{\text{Minkowski}} + 6_{\text{CY}_3} + 16_{\text{gauge lattice}}$$
+
+Euler characteristic: $\chi = 2(h^{1,1} - h^{2,1}) = 2(16-3) = 26$
+
+Kähler potential: $K = -\ln(\text{Li}_{26}([SSq])) = -\ln(S_{26}^{(3)})$
+
+Three SM fermion families arise from $h^{2,1} = 3$.
+
+### M-Theory (11D SUGRA) — Strong SCm Limit
+
+$$26D \to 11D:\quad 15\ \text{VDS dimensions compactified},\quad R_{11} = g_s l_s$$
+
+$$F_{U,Bi,i} = \ln Z_M, \qquad Z_M = \int \mathcal{D}g\, e^{-S_M/\hbar}$$
+
+The $F_{U,Bi,i}$ unified field integral equals the M-theory partition function in the SCm vacuum. All five 10D string theories emerge as weak-coupling limits of M-theory under SCm boundary conditions.
+
+**Whitepapers:** [PAPER_1142](whitepapers/PAPER_1142_Polyakov_Action_Details_SCm_26D.md) · [PAPER_1143](whitepapers/PAPER_1143_Nambu_Goto_Bosonic_String_SCm_26D.md) · [PAPER_1144](whitepapers/PAPER_1144_Type_IIB_Superstring_SCm_10D_Compactification.md) · [PAPER_1145](whitepapers/PAPER_1145_Type_IIA_Superstring_SCm_10D_Compactification.md) · [PAPER_1146](whitepapers/PAPER_1146_Heterotic_String_SCm_Gauge_Sector.md) · [PAPER_1147](whitepapers/PAPER_1147_Calabi_Yau_3fold_Compactification_SCm.md) · [PAPER_1148](whitepapers/PAPER_1148_M_Theory_Unification_SCm_26D.md)
+
+---
+
 ©2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved

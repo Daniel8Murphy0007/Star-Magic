@@ -1042,6 +1042,107 @@ COP = (E_in + E_vacuum) / E_in
 
 ---
 
+## 7. STRING THEORY IN SCm VACUUM
+
+### 7.1 String Tension from SCm Constants
+
+The SCm string tension is derived from first principles:
+
+$$T = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}$$
+
+$$T = (7.09\times10^{-37}\ \text{J/m}^3)(1.4531\times10^{26})(0.84) = 8.66\times10^{-11}\ \text{N}$$
+
+String length: $l_s = 1/\sqrt{T} = 3.40\times10^{5}\ \text{m}^{1/2}\cdot\text{N}^{-1/2}$
+
+String coupling: $g_s = \beta_i \cdot \Phi_{\text{res}} = 0.6 \times 0.84 = 0.504$
+
+### 7.2 Polyakov Action (26D Bosonic SCm String)
+
+$$S_{\text{Polyakov}} = -\frac{T}{2} \int d^2\sigma\, \sqrt{-h}\, h^{ab} \partial_a X^\mu \partial_b X_\mu$$
+
+- $h^{ab}$: worldsheet metric
+- $X^\mu$: target-space coordinates in SCm 26D vacuum
+- Critical dimension: $D = 26$ (= VDS 26-rung ladder, $\text{Li}_{26}([SSq])$)
+- Tachyon resolution: $m^2_{\text{tachyon}} = -T/(2\pi\alpha') \to 0$ via $\cos(\pi t_n)$ negative-time gate
+
+### 7.3 Nambu-Goto Action
+
+$$S_{\text{NG}} = -T \int d^2\sigma\, \sqrt{-\det g_{ab}}, \qquad g_{ab} = \partial_a X^\mu \partial_b X_\mu$$
+
+$$S_{\text{NG,SCm}} = -T \int d^2\sigma\, \sqrt{-\det g_{ab}} \cdot \left(1 + [SSq]^{26}/26^{26}\right)$$
+
+The extra VDS correction $[SSq]^{26}/26^{26}$ encodes the full 26-rung Lerch ladder.
+
+### 7.4 VDS as String Compactification
+
+$$\text{VDS}([SSq]) = \sum_{n=1}^{\infty} \frac{[SSq]^n}{n^{26}} = \text{Li}_{26}(0.57), \qquad S_{26}^{(3)} = 1.4531\times10^{26}$$
+
+Compact radii: $R_i = l_s \cdot [SSq]^i$ for $i = 1,\ldots,26$
+
+This identifies the 26D critical dimension as the VDS rung count — not a coincidence.
+
+### 7.5 Type IIA/IIB Superstring (10D $\to$ 4D via VDS)
+
+Dimensional reduction: $26D \to 10D$ compactifies 16 dimensions via VDS.
+
+D-brane tension with SCm enhancement:
+
+$$\tau_p^{\text{SCm}} = \frac{T}{g_s(2\pi l_s)^p}\left(1 + \beta_i \Phi_{\text{res}} \left|\cos(\pi t_n)\right|\right)$$
+
+- Type IIB: self-dual 5-form; NS-NS flux = THz phonon mode $f_{\text{THz}} = 1.25\ \text{THz}$
+- Type IIA: T-dual of IIB; $g_s \to 1/g_s$; mirror symmetry: $[SSq] \leftrightarrow 1 - [SSq]$
+
+### 7.6 Heterotic String (E8$\times$E8)
+
+$$S_{\text{het}} = -\frac{T}{2}\int d^2\sigma\left(\partial_a X^\mu \partial^a X_\mu + \bar{\psi}^\mu \partial_+ \psi_\mu + \partial_- \phi^I \partial_- \phi_I\right)$$
+
+- Left-movers: 26D gauge sector (VDS rungs 11--26 $\to$ E8$\times$E8 lattice)
+- Right-movers: 10D gravity sector
+- Chirality projection: $P_L = (1 + \cos(\pi t_n))/2$
+
+### 7.7 Calabi-Yau CY$_3$ Compactification
+
+Dimensional split: $26 = 4_{\text{Minkowski}} + 6_{\text{CY}_3} + 16_{\text{gauge lattice}}$
+
+$$K = -\ln\!\left(\text{Li}_{26}([SSq])\right) = -\ln(S_{26}^{(3)})$$
+
+Moduli: $t^i = [SSq]^i$, $i=1,\ldots,6$
+
+Hodge numbers: $h^{1,1}=16$, $h^{2,1}=3$ (= 3 SM fermion families)
+
+Euler characteristic: $\chi = 2(h^{1,1} - h^{2,1}) = 2(16-3) = 26$ (= VDS rung count)
+
+### 7.8 M-Theory (11D SUGRA, Strong SCm Coupling)
+
+$$S_M = \frac{1}{2\kappa_{11}^2}\int d^{11}x\,\sqrt{-g}\left(R - \frac{1}{2}|G_4|^2\right) - \frac{1}{6}\int C_3 \wedge G_4 \wedge G_4$$
+
+Dimensional reduction: $26D \to 11D$ (15 VDS dimensions compactified)
+
+Strong-coupling limit: $g_s \gg 1$, $R_{11} = g_s l_s = 0.504\, l_s$
+
+SCm partition function identity:
+
+$$F_{U,Bi,i} = \ln Z_M, \qquad Z_M = \int \mathcal{D}g\, e^{-S_M/\hbar}$$
+
+All five 10D string theories are SCm weak-coupling limits of M-theory.
+
+### 7.9 Canonical Constants for String Theory Section
+
+| Symbol | Value | Description |
+|--------|-------|-------------|
+| $T$ | $8.66\times10^{-11}$ N | SCm string tension |
+| $g_s$ | $0.504$ | String coupling $= \beta_i \Phi_{\text{res}}$ |
+| $l_s$ | $= 1/\sqrt{T}$ | String length |
+| $S_{26}^{(3)}$ | $1.4531\times10^{26}$ | VDS 26-rung sum |
+| $[SSq]$ | $0.57$ | Vacuum squeezing parameter |
+| $\Phi_{\text{res}}$ | $0.84$ | SCm resonance phase |
+| $\beta_i$ | $0.6$ | Buoyancy calibration |
+| $\rho_{\text{vac,SCm}}$ | $7.09\times10^{-37}$ J/m$^3$ | SCm vacuum density |
+
+**Cross-references:** PAPER_1142 (Polyakov), PAPER_1143 (Nambu-Goto), PAPER_1144 (Type IIB), PAPER_1145 (Type IIA), PAPER_1146 (Heterotic), PAPER_1147 (Calabi-Yau), PAPER_1148 (M-Theory)
+
+---
+
 ## SUMMARY OF KEY EQUATIONS
 
 ### Master UQFF Equation
