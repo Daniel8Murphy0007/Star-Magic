@@ -24,7 +24,7 @@ $$\Phi(\omega, \Gamma) = \exp\left(-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Ga
 
 At resonance ($\omega = \omega_{\text{SCm}}$): $\Phi_{\max} = S_{26} \approx 19.5$.
 
-## 2. Γ-Dependent F_U_Bi_i
+## 2. $\Gamma$-Dependent F_U_Bi_i
 
 $$F_{U,\text{Bi}_i}(\Gamma) = U_g + U_m + U_A - U_b + F_n \cdot S_{26} \cdot \Phi(\Gamma) \cdot E_{\text{net}}(\Gamma)$$
 
@@ -79,7 +79,7 @@ The phonon sector Lagrangian $\mathcal{L}_{\text{phon}} = \Phi(\Gamma) \cdot S_{
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -98,7 +98,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->

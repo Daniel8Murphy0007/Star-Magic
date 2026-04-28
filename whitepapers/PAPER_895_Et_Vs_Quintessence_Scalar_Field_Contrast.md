@@ -23,8 +23,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-Comparison of UQFF E(t) with quintessence scalar field dark energy. Quintessence uses V(φ) =
-M4·exp(-λφ/M_Pl) with slow-roll dynamics. UQFF uses S₂₆ Ramanujan × exp(κt) with 2 calibrated
+Comparison of UQFF E(t) with quintessence scalar field dark energy. Quintessence uses V($\phi$) =
+M4$\cdot$exp(-$\lambda$$\phi$/M_Pl) with slow-roll dynamics. UQFF uses S26 Ramanujan $\times$ exp($\kappa$t) with 2 calibrated
 parameters. 10-row contrast table covering field content, potential, EOS, free parameters, time
 evolution, vacuum, lab testability, GW impact, fine-tuning, and origin.
 
@@ -34,7 +34,7 @@ evolution, vacuum, lab testability, GW impact, fine-tuning, and origin.
 
 $$
 \begin{aligned}
-  & V(φ) = M4·exp(-λφ/M_Pl) \\
+  & V(\phi) = M4\cdotexp(-\lambda\phi/M_Pl) \\
   & w_quint = (KE-V)/(KE+V) \\
   & 10-aspect comparison
 \end{aligned}
@@ -184,7 +184,7 @@ for $M_{\text{halo}} = 10^{12}\,M_\odot$, $c = 10$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -287,7 +287,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.35 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Super-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -298,13 +298,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -27,8 +27,8 @@ region in the constellation Orion, located approximately 6,400 light-years from 
 infrared imaging (released 2014) reveals intricate pillars of dense gas and dust sculpted by
 radiation from a young star cluster at the nebula's center. The pillars, analogous to those in M16
 but in the Orion arm, mark the interface between the ionized H II region and the parent molecular
-cloud. Three-UQFF analysis yields F_Compressed ≈ 4.96×10-42 N, R_Resonant ≈ −2.35×10-43 N,
-F_Buoyancy ≈ 5.51×10-33 N, confirming the scale-dependent buoyancy dominance established in AFGL
+cloud. Three-UQFF analysis yields F_Compressed $\approx$ 4.96$\times$10-42 N, R_Resonant $\approx$ -2.35$\times$10-43 N,
+F_Buoyancy $\approx$ 5.51$\times$10-33 N, confirming the scale-dependent buoyancy dominance established in AFGL
 5180 (PAPER_798) and extending it to an ionized pillar-forming environment.
 
 ---
@@ -49,10 +49,10 @@ for this competition.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Cluster/nebula mass | M | ~1.2×103 MM_sun = 2.387×1033 kg | Estimate |
-| Radius | r | 1.42×1017 m (~15 ly) | Hubble angular size |
+| Cluster/nebula mass | M | ~1.2$\times$103 MM_sun = 2.387$\times$1033 kg | Estimate |
+| Radius | r | 1.42$\times$1017 m (~15 ly) | Hubble angular size |
 | Redshift | z | 0.0021 (6400 ly distance) | Distance-z |
-| Age | t | 3×106 yr = 9.468×1013 s | Cluster age |
+| Age | t | 3$\times$106 yr = 9.468$\times$1013 s | Cluster age |
 | SFR | — | 0.3 MM_sun/yr | Low-level embedded |
 | M_sf(t) | — | 1.3 | Partial mass growth |
 | f_UA' | — | 0.999 | UQFF UA' state |
@@ -68,11 +68,11 @@ for this competition.
 
 $$
 \begin{aligned}
-  & \text{F\_U\_g1} = k_k × (f_UA'·f_SCm)2 × G_k \\
-  & k_k = G × M_sf = 6.6743e-11 × 1.3 = 8.677e-11 \\
-  & (f_UA'·f_SCm)2 = (0.999 × 0.001)2 = 9.98e-7 \\
-  & G_k = M_sf × exp(–t/τ_SF) = 1.3 × exp(–9.468e13/3.156e13) = 1.3 × e-3 = 0.0648 \\
-  & \text{F\_U\_g1} ≈ 4.96×10-42 N
+  & \text{F\_U\_g1} = k_k \times (f_UA'\cdotf_SCm)2 \times G_k \\
+  & k_k = G \times M_sf = 6.6743e-11 \times 1.3 = 8.677e-11 \\
+  & (f_UA'\cdotf_SCm)2 = (0.999 \times 0.001)2 = 9.98e-7 \\
+  & G_k = M_sf \times exp(–t/\tau_SF) = 1.3 \times exp(–9.468e13/3.156e13) = 1.3 \times e-3 = 0.0648 \\
+  & \text{F\_U\_g1} \approx 4.96\times10-42 N
 \end{aligned}
 $$
 
@@ -82,7 +82,7 @@ $$
 \begin{aligned}
   & R_Ug1,i ~ \text{F\_U\_g1}/26 = 1.908e-43 N per state \\
   & With destructive phase mixing over 26 states and pillar geometry (non-spherical): \\
-  & R(t) ≈ −2.35×10-43 N
+  & R(t) \approx -2.35\times10-43 N
 \end{aligned}
 $$
 
@@ -90,10 +90,10 @@ $$
 
 $$
 \begin{aligned}
-  & f_Ub = 0.1 × 7.25e8 × 10 × (1/33) = 2.196e7 \\
-  & \text{F\_U\_Bi} = G × M × f_Ub / r2 × H_k(pillar geometry) \\
+  & f_Ub = 0.1 \times 7.25e8 \times 10 \times (1/33) = 2.196e7 \\
+  & \text{F\_U\_Bi} = G \times M \times f_Ub / r2 \times H_k(pillar geometry) \\
   & H_k(pillar) ~ L_pillar / r_pillar = 15ly / 1ly = 15 (pillar aspect ratio enhancement) \\
-  & \text{F\_U\_Bi} ≈ 5.51×10-33 N
+  & \text{F\_U\_Bi} \approx 5.51\times10-33 N
 \end{aligned}
 $$
 
@@ -101,9 +101,9 @@ $$
 
 $$
 \begin{aligned}
-  & F_Compressed = 4.96×10-42 N \\
-  & R_Resonant   = −2.35×10-43 N \\
-  & F_Buoyancy   = 5.51×10-33 N   ← Dominant (9 orders above compressed)
+  & F_Compressed = 4.96\times10-42 N \\
+  & R_Resonant   = -2.35\times10-43 N \\
+  & F_Buoyancy   = 5.51\times10-33 N   \leftarrow Dominant (9 orders above compressed)
 \end{aligned}
 $$
 
@@ -118,12 +118,12 @@ the buoyancy force:
 $$
 \begin{aligned}
   & H_k(pillar) = L_pillar / r_pillar \\
-  & For NGC 2174 pillars: ~15 pc length / ~1 pc width = 15× enhancement \\
-  & \text{F\_U\_Bi}(pillar) ≈ 15 × \text{F\_U\_Bi}(isotropic)
+  & For NGC 2174 pillars: ~15 pc length / ~1 pc width = 15\times enhancement \\
+  & \text{F\_U\_Bi}(pillar) \approx 15 \times \text{F\_U\_Bi}(isotropic)
 \end{aligned}
 $$
 
-This predicts that **elongated dust pillars experience 15× greater buoyancy UQFF force** than
+This predicts that **elongated dust pillars experience 15$\times$ greater buoyancy UQFF force** than
 spherical clouds of the same mass. The buoyancy UQFF thus promotes pillar fragmentation: the
 enhanced upward buoyancy force creates instability in the pillar column, triggering gravitational
 collapse into sub-cores from the top down — consistent with the HH objects observed near NGC 2174
@@ -136,11 +136,11 @@ pillar tips.
 | Property | NGC 2174 | AFGL 5180 |
 |----------|----------|-----------|
 | Type | Emission nebula, pillars | Embedded SFR |
-| r | 1.42×1017 m | 9.46×1016 m |
+| r | 1.42$\times$1017 m | 9.46$\times$1016 m |
 | SFR | 0.3 MM_sun/yr | 0.5 MM_sun/yr |
-| F_Compressed | 4.96×10-42 N | 8.84×10-42 N |
-| F_Buoyancy | 5.51×10-33 N | 9.79×10-33 N |
-| Geometry factor | Pillar ×15 | Spherical ×1 |
+| F_Compressed | 4.96$\times$10-42 N | 8.84$\times$10-42 N |
+| F_Buoyancy | 5.51$\times$10-33 N | 9.79$\times$10-33 N |
+| Geometry factor | Pillar $\times$15 | Spherical $\times$1 |
 
 The buoyancy dominance at sub-galactic scales is confirmed in both systems. Larger radius (NGC 2174)
 reduces both modes proportionally, maintaining the buoyancy dominance rule from PAPER_798.
@@ -263,7 +263,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.102 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -274,13 +274,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -29,16 +29,16 @@ In the pre-UQFF-2.0 NGC 1792 module, the second oscillatory gravity term `term_o
 `(2π / t_Hubble_gyr) × A_osc × cos(k·x − ω·t)` where `t_Hubble_gyr = 13.8` is a **dimensionless Gyr
 number**, creating a dimensional inconsistency. The canonical fix replaces this with `(2π /
 t_Hubble)` where `t_Hubble = 13.8 × 109 × 3.15576×107 s = 4.352×1017 s`. After correction, the two
-oscillatory terms produce **modes at distinct frequency scales**: a fast standing wave at ω_osc =
-2πc/r ≈ 2.49×10-12 rad/s and a **Hubble slow mode** traveling wave at ω_H = 2π/t_Hubble ≈ 1.44×10-17
+oscillatory terms produce **modes at distinct frequency scales**: a fast standing wave at $\omega$_osc =
+2$\pi$c/r $\approx$ 2.49$\times$10-12 rad/s and a **Hubble slow mode** traveling wave at $\omega$_H = 2$\pi$/t_Hubble $\approx$ 1.44$\times$10-17
 rad/s. The superposition of these two modes creates a **Hubble-timescale amplitude envelope
-modulation** on starburst gravitational waves, with modulation depth ε = ω_H/ω_osc ≈ 5.8×10-6. This
+modulation** on starburst gravitational waves, with modulation depth $\varepsilon$ = $\omega$_H/$\omega$_osc $\approx$ 5.8$\times$10-6. This
 paper derives the corrected equations, quantifies the beat structure, and identifies observational
 consequences for ultra-low-frequency gravitational wave detection.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -49,12 +49,12 @@ present in Standard Model treatments.
 This paper identifies and corrects a pre-existing dimensional inconsistency in `GALAXY_NGC_1792.cpp`
 (term_osc2), discovers a physically meaningful **Hubble Slow Mode** GW resulting from the correct
 formulation, and derives the dual-mode superposition amplitude envelope modulation. The modulation
-depth ε ≈ 5.8 ppm at the Hubble frequency is predicted to be detectable in the 10-17 Hz
+depth $\varepsilon$ $\approx$ 5.8 ppm at the Hubble frequency is predicted to be detectable in the 10-17 Hz
 gravitational wave band via future nano-Hertz GW observatories.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -123,10 +123,10 @@ $$\text{term\_osc2} = \frac{2\pi}{t_\text{Hubble}} A_\text{osc} \cos(k_\text{osc
 
 $$= \omega_H \cdot A_\text{osc} \cos(k_\text{osc} \cdot x - \omega_text{osc} \cdot t)$$
 
-This is a **traveling wave** at spatial wavenumber k_osc but modulated by the amplitude factor ω_H
+This is a **traveling wave** at spatial wavenumber k_osc but modulated by the amplitude factor $\omega$_H
 (in rad/s), distinct from the standing wave of term_osc1.
 
-The effective angular frequency of this mode's **amplitude variation** is ω_H = 1.44×10-17 rad/s,
+The effective angular frequency of this mode's **amplitude variation** is $\omega$_H = 1.44$\times$10-17 rad/s,
 defining the **Hubble Slow Mode**.
 
 ### 2.3 Combined term_osc
@@ -142,10 +142,10 @@ $$\text{term\_osc} = \underbrace{2 A_\text{osc} \cos(k x) \cos(\omega_text{osc} 
 ### 3.1 Superposition and Beat Structure
 
 The combined signal can be analyzed as a **two-component superposition** with amplitudes differing
-by the ratio ω_H/ω_osc:
+by the ratio $\omega$_H/$\omega$_osc:
 
-The fast standing wave has amplitude: A₁ = 2A_osc (at k·x = 0)  
-The Hubble slow mode has amplitude: A₂ = ω_H × A_osc
+The fast standing wave has amplitude: A1 = 2A_osc (at k$\cdot$x = 0)  
+The Hubble slow mode has amplitude: A2 = $\omega$_H $\times$ A_osc
 
 Amplitude ratio:
 $$\varepsilon = \frac{A_2}{A_1} = \frac{\omega_H \cdot A_\text{osc}}{2 A_\text{osc}} = \frac{\omega_H}{2} = \frac{1.44 \times 10^{-17}}{2} \approx 7.2 \times 10^{-18}$$
@@ -163,7 +163,7 @@ The beat period between the two modes (where one modulates the other's envelope)
 
 $$T_\text{beat} = \frac{2\pi}{|\omega_text{osc} - \omega_H|} \approx \frac{2\pi}{\omega_text{osc}} \approx 2.53 \times 10^{12}\ \text{s} \approx 80,200\ \text{yr}$$
 
-Since ω_H << ω_osc, the beat period is approximately equal to T_fast. The Hubble slow mode creates a
+Since $\omega$_H << $\omega$_osc, the beat period is approximately equal to T_fast. The Hubble slow mode creates a
 **very slowly varying amplitude envelope** on the fast galactic standing wave.
 
 ### 3.3 Amplitude Envelope Function
@@ -187,7 +187,7 @@ with modulation depth 5.8 ppm.
 
 ### 4.1 Physical Meaning of the Hubble Slow Mode
 
-The corrected term_osc2 = (2π/t_Hubble) × A_osc × cos(kx − ωt) describes a **gravitational wave mode
+The corrected term_osc2 = (2$\pi$/t_Hubble) $\times$ A_osc $\times$ cos(kx - $\omega$t) describes a **gravitational wave mode
 whose characteristic amplitude is set by the inverse Hubble time**. Physically, this represents:
 
 - A mode oscillating at the cosmological expansion rate
@@ -207,9 +207,9 @@ combining the starburst enhancement of PAPER_267 with the Hubble slow mode disco
 
 | Mode | Frequency | Period | Physical Scale |
 |------|-----------|--------|----------------|
-| Fast standing wave (term_osc1) | ω_osc = 2.49×10-12 rad/s | 80,200 yr | NGC 1792 light-crossing |
-| Hubble slow mode (term_osc2 corrected) | ω_H = 1.44×10-17 rad/s | 13.8 Gyr | Hubble time |
-| Modulation envelope | ε_mod ≈ 5.8×10-6 | — | 5.8 ppm depth |
+| Fast standing wave (term_osc1) | $\omega$_osc = 2.49$\times$10-12 rad/s | 80,200 yr | NGC 1792 light-crossing |
+| Hubble slow mode (term_osc2 corrected) | $\omega$_H = 1.44$\times$10-17 rad/s | 13.8 Gyr | Hubble time |
+| Modulation envelope | $\varepsilon$_mod $\approx$ 5.8$\times$10-6 | — | 5.8 ppm depth |
 
 ---
 
@@ -217,7 +217,7 @@ combining the starburst enhancement of PAPER_267 with the Hubble slow mode disco
 
 ### 5.1 Ultra-Low-Frequency GW Band
 
-The Hubble slow mode frequency ω_H = 1.44×10-17 rad/s corresponds to f_H ≈ 2.3×10-18 Hz. This falls
+The Hubble slow mode frequency $\omega$_H = 1.44$\times$10-17 rad/s corresponds to f_H $\approx$ 2.3$\times$10-18 Hz. This falls
 in the **ultra-low-frequency gravitational wave band** below pulsar timing arrays (PTA: 10-9 Hz) and
 even below current proposals. Detection would require:
 - Cosmic-scale gravitational wave detectors
@@ -226,7 +226,7 @@ even below current proposals. Detection would require:
 
 ### 5.2 5.8 ppm Modulation Signature
 
-The 5.8 ppm modulation depth ε_mod = ω_H/ω_osc is a **universal UQFF prediction** applicable to any
+The 5.8 ppm modulation depth $\varepsilon$_mod = $\omega$_H/$\omega$_osc is a **universal UQFF prediction** applicable to any
 galaxy with similar r and t_Hubble parameters. For NGC 1792 specifically:
 
 $$\varepsilon_text{NGC1792} = \frac{\omega_H}{\omega_text{osc}} = \frac{2\pi/t_\text{Hubble}}{2\pi c/r} = \frac{r}{c \cdot t_\text{Hubble}} = \frac{7.569 \times 10^{20}}{2.998 \times 10^8 \times 4.352 \times 10^{17}} \approx 5.8 \times 10^{-6}$$
@@ -240,22 +240,22 @@ where $D_H = c \times t_\text{Hubble}$ is the Hubble distance (~14 Gly). This is
 
 The combination of effects from PAPER_267 (sSFR coupling) and PAPER_268 (Hubble slow mode
 modulation) predicts a distinctive starburst galaxy GW spectral imprint:
-- Primary GW mode at ω_osc (galactic light-crossing frequency)
-- Sideband at ω_osc ± ω_H (Hubble-modulated sidebands), offset by ε_mod ≈ 5.8 ppm
-- Amplitude growing with sSFR during starburst episode, decaying with τ_SF = 100 Myr
+- Primary GW mode at $\omega$_osc (galactic light-crossing frequency)
+- Sideband at $\omega$_osc $\pm$ $\omega$_H (Hubble-modulated sidebands), offset by $\varepsilon$_mod $\approx$ 5.8 ppm
+- Amplitude growing with sSFR during starburst episode, decaying with $\tau$_SF = 100 Myr
 
 ---
 
 ## 6. Bug Fix Significance
 
-The correction of `t_Hubble_gyr` → `t_Hubble` (seconds) changes the amplitude of term_osc2 by a
+The correction of `t_Hubble_gyr` $\to$ `t_Hubble` (seconds) changes the amplitude of term_osc2 by a
 factor:
 
 $$\frac{\text{new}}{\text{old}} = \frac{2\pi / t_\text{Hubble}}{2\pi / t_\text{Hubble\_gyr}} = \frac{t_\text{Hubble\_gyr}}{t_\text{Hubble}} = \frac{13.8}{4.352 \times 10^{17}} \approx 3.17 \times 10^{-17}$$
 
 The previously erroneous term_osc2 was **17 orders of magnitude larger** than the physically correct
 value, potentially dominating the total g_NGC1792 result spuriously. The corrected term is now
-appropriately small (amplitude ~ ω_H × A_osc ~ 1.44×10-17 × 10-10 ~ 10-27 m/s2) relative to the
+appropriately small (amplitude ~ $\omega$_H $\times$ A_osc ~ 1.44$\times$10-17 $\times$ 10-10 ~ 10-27 m/s2) relative to the
 dominant terms, consistent with a Hubble-scale perturbation on galactic gravity.
 
 ---
@@ -265,15 +265,15 @@ dominant terms, consistent with a Hubble-scale perturbation on galactic gravity.
 1. The pre-UQFF-2.0 `GALAXY_NGC_1792.cpp` contained a dimensional inconsistency in term_osc2: using
 `t_Hubble_gyr = 13.8` (dimensionless) instead of `t_Hubble` (seconds).
 
-2. After canonical fix: ω_H = 2π/t_Hubble ≈ 1.44×10-17 rad/s — the **Hubble angular frequency**.
+2. After canonical fix: $\omega$_H = 2$\pi$/t_Hubble $\approx$ 1.44$\times$10-17 rad/s — the **Hubble angular frequency**.
 
-3. The two oscillatory modes (fast standing wave at ω_osc ≈ 2.49×10-12 rad/s, Hubble slow mode at
-ω_H ≈ 1.44×10-17 rad/s) create a **Hubble-timescale amplitude modulation** of starburst GWs.
+3. The two oscillatory modes (fast standing wave at $\omega$_osc $\approx$ 2.49$\times$10-12 rad/s, Hubble slow mode at
+$\omega$_H $\approx$ 1.44$\times$10-17 rad/s) create a **Hubble-timescale amplitude modulation** of starburst GWs.
 
-4. Modulation depth ε = ω_H/ω_osc = r/(c × t_Hubble) ≈ 5.8×10-6 (5.8 ppm) — a universal UQFF
+4. Modulation depth $\varepsilon$ = $\omega$_H/$\omega$_osc = r/(c $\times$ t_Hubble) $\approx$ 5.8$\times$10-6 (5.8 ppm) — a universal UQFF
 prediction.
 
-5. The physical ratio ε = r/D_H provides a new **UQFF observable**: the starburst galaxy's
+5. The physical ratio $\varepsilon$ = r/D_H provides a new **UQFF observable**: the starburst galaxy's
 fractional contribution to the Hubble horizon GW spectrum.
 
 6. The corrected term_osc2 eliminates a spurious 17-order-of-magnitude overestimate and reveals the
@@ -389,7 +389,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -400,13 +400,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -417,8 +417,8 @@ bridge.*
 - Daniel T. Murphy, *UQFF Framework*, Star-Magic Repository (2025–2026)
 - GALAXY_NGC_1792.cpp UQFF 2.0 (Session 73, Module 19) — dimensional bug fix commit
 - PAPER_267: SFR Normalization — Starburst-Buoyancy Coherence in NGC 1792
-- NGC 1792 parameters: r = 80,000 ly = 7.569×1020 m, z = 0.0095
-- Hubble time: t_Hubble = 13.8 Gyr = 4.352×1017 s
+- NGC 1792 parameters: r = 80,000 ly = 7.569$\times$1020 m, z = 0.0095
+- Hubble time: t_Hubble = 13.8 Gyr = 4.352$\times$1017 s
 
 ---
 

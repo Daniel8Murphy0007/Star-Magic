@@ -11,21 +11,21 @@ tags: [LENR, SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_734 — LENR K_n Three-Scenario Calibration Constants: kη Multipliers for Neutron Production Rate and Solar Corona Transmutation
+# PAPER_734 — LENR K_n Three-Scenario Calibration Constants: k$\eta$ Multipliers for Neutron Production Rate and Solar Corona Transmutation
 **Date:** June 5, 2025
 
 **Whitepaper Series:** Star-Magic UQFF Session 179 — LENR Calibration Physics
 **Session:** 179 Part 3
 **Source:** thread_05June2025.txt (June 5, 2025) —
 K_n_Neutron_Production_Calibration_Constant_19April2025.docx
-**Classification:** FIRST explicit kη multiplier table in K_n document form for three LENR
-scenarios; FIRST documentation of ktrans=5.26×10^44 solar corona transmutation constant
+**Classification:** FIRST explicit k$\eta$ multiplier table in K_n document form for three LENR
+scenarios; FIRST documentation of ktrans=5.26$\times$10^44 solar corona transmutation constant
 **Author:** Daniel T. Murphy
 **CP4 Class:** #318 — `LENRKnScenarioCalibrationCalculator`
 **Version:** v5.36
 **CVW:** v2.0.0
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001, k_η = 1e-113, β_i ≈
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001, k_$\eta$ = 1e-113, $\beta$_i $\approx$
 0.603 —>
 
 ---
@@ -39,14 +39,14 @@ introduces a specific UQFF equation form:
 
 $$\eta(t, n) = k_\eta \cdot \exp!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp!\left(-(\pi - t) \cdot \frac{U_m}{\rho_{\mathrm{vac},[\mathrm{UA}]}}\right) \qquad \mathrm{cm}^{-2}\mathrm{s}^{-1}$$
 
-where $k_\eta$ is a **multiplicative calibration constant** distinct from the target η values in
+where $k_\eta$ is a **multiplicative calibration constant** distinct from the target $\eta$ values in
 PAPER_471. This paper documents the three-scenario $k_\eta$ table and introduces $k_{\mathrm{trans}} \approx 5.26 \times 10^{44}$ for solar corona transmutation.
 
 ---
 
 ## 1. Background
 
-PAPER_471 (LENR K_η Calibration, Session 122) established the first UQFF neutron production
+PAPER_471 (LENR K_$\eta$ Calibration, Session 122) established the first UQFF neutron production
 calibration using the form:
 
 $$\eta_{\mathrm{PAPER471}} = K_\eta \cdot \exp!\left(-[\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi-t}\right) \cdot \frac{U_m}{\rho_{\mathrm{vac}}}$$
@@ -87,13 +87,13 @@ $$\gamma = 5 \times 10^{-5}\ \mathrm{day}^{-1}, \quad P_{\mathrm{SCm}} = 1.0, \q
 
 ---
 
-## 3. Three-Scenario kη Calibration Table
+## 3. Three-Scenario k$\eta$ Calibration Table
 
-| Scenario | Dominant Mechanism | E_field | η Target | **k_η (K_n form)** | Accuracy |
+| Scenario | Dominant Mechanism | E_field | $\eta$ Target | **k_$\eta$ (K_n form)** | Accuracy |
 |----------|-------------------|---------|----------|---------------------|----------|
-| **Metallic Hydride Cells** | Plasma oscillations Ω≈10^16 rad/s | 2×10^11 V/m | 10^13 cm-2/s | **2.75×10^8** | 100% |
-| **Exploding Wires** | Alfvén current I_A=17 kA | 28.8×10^11 V/m | 10^8 cm-2/s | **≈191 (1.91×10^2)** | 100% |
-| **Solar Corona** | Solar flare E≈1.2×10^-3(β-β0)2 | 1.2×10^-3(β-β0)2 V/m | 7×10^-3 cm-2/s | **6.06×10^-6** | 100% |
+| **Metallic Hydride Cells** | Plasma oscillations $\Omega$$\approx$10^16 rad/s | 2$\times$10^11 V/m | 10^13 cm-2/s | **2.75$\times$10^8** | 100% |
+| **Exploding Wires** | Alfvén current I_A=17 kA | 28.8$\times$10^11 V/m | 10^8 cm-2/s | **$\approx$191 (1.91$\times$10^2)** | 100% |
+| **Solar Corona** | Solar flare E$\approx$1.2$\times$10^-3($\beta$-$\beta$0)2 | 1.2$\times$10^-3($\beta$-$\beta$0)2 V/m | 7$\times$10^-3 cm-2/s | **6.06$\times$10^-6** | 100% |
 
 ### 3.1 Transmutation Calibration (Solar Corona)
 
@@ -110,7 +110,7 @@ where $\mathcal{N}$ is the non-local operator from the K_n equation form.
 
 ## 4. Pseudo-Monopole States and Vacuum Density Ratio
 
-The pseudo-monopole states modulate all kη corrections:
+The pseudo-monopole states modulate all k$\eta$ corrections:
 
 $$\delta_n = \left(2\pi\right)^{n/6}$$
 
@@ -125,11 +125,11 @@ $$\delta_1 \approx 1.047\ \mathrm{rad}, \qquad \rho_{\mathrm{vac,[\mathrm{UA'}:S
 
 | Aspect | PAPER_471 Form | K_n Document Form (PAPER_734) |
 |--------|---------------|-------------------------------|
-| K_η role | = target η value (1e13, 1e8, 7e-3) | = multiplicative pre-factor (2.75e8, 191, 6.06e-6) |
+| K_$\eta$ role | = target $\eta$ value (1e13, 1e8, 7e-3) | = multiplicative pre-factor (2.75e8, 191, 6.06e-6) |
 | Non-local operator | $[\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi-t}$ | $[\mathrm{SSq}] \cdot n/26$ + $(\pi-t) \cdot U_m/\rho$ |
 | Separability | Single exponential | Two separable exponentials |
-| Transmutation | Not specified | ktrans = 5.26×10^44 (solar corona) |
-| kHiggs cross-ref | Not in PAPER_471 | kHiggs = 1.79×10^18 per PAPER_718 |
+| Transmutation | Not specified | ktrans = 5.26$\times$10^44 (solar corona) |
+| kHiggs cross-ref | Not in PAPER_471 | kHiggs = 1.79$\times$10^18 per PAPER_718 |
 
 Both forms provide 100% accuracy to LENR benchmarks via different calibration strategies.
 
@@ -140,11 +140,11 @@ Both forms provide 100% accuracy to LENR benchmarks via different calibration st
 Per the June 5, 2025 teaching directive, buoyancy $U_b$ is tracked as the **difference in
 calibration values** (not replacing accuracy):
 
-| Scenario | kη (actual) | k_expected (hypothetical) | ΔkUb (tracked) |
+| Scenario | k$\eta$ (actual) | k_expected (hypothetical) | $\Delta$kUb (tracked) |
 |----------|------------|--------------------------|----------------|
-| Metallic Hydride | 2.75×10^8 | ~10^9 | ~7.25×10^8 |
-| Exploding Wires | ~191 | ~10^3 | ~8.09×10^2 |
-| Solar Corona | 6.06×10^-6 | ~10^-5 | ~3.94×10^-6 |
+| Metallic Hydride | 2.75$\times$10^8 | ~10^9 | ~7.25$\times$10^8 |
+| Exploding Wires | ~191 | ~10^3 | ~8.09$\times$10^2 |
+| Solar Corona | 6.06$\times$10^-6 | ~10^-5 | ~3.94$\times$10^-6 |
 
 This difference encodes the **massless buoyant portion** of the UQFF vacuum interaction.
 U_b remains an undefined variable at this stage (ACP early stage, pre-mass definition).
@@ -155,21 +155,21 @@ U_b remains an undefined variable at this stage (ACP early stage, pre-mass defin
 
 The 47-page LENR document comprises:
 1. **Srivastava, Widom, Larsen** (2008) — "A Primer for Electro-Weak Induced LENR"
-   (Pramana J. Phys.) — 11 pages; establishes three LENR scenarios and W+e-+p→n+νe mechanism
+   (Pramana J. Phys.) — 11 pages; establishes three LENR scenarios and W+e-+p$\to$n+$\nu$e mechanism
 2. **Colman et al. Patent** — "A New Apparatus for Producing an Electric Current" — quartz tube
-   with Cd, P, Co; brass caps; magnetic flux tubes; λ~10^-2 m ultra-short waves
-3. **ATLAS+CMS Higgs Collider Data** (14 pages) — mH=125.9±0.42/0.28 GeV (ATLAS),
-   124.7±0.31/0.15 GeV (CMS), combined 125.0±0.30 GeV; μ_ATLAS=1.18±0.14; κV≈1.01–1.09
-4. **NGC 346 Image** — star-forming region, U_g3 modeling T≈1.424×10^6 K (see PAPER_718)
+   with Cd, P, Co; brass caps; magnetic flux tubes; $\lambda$~10^-2 m ultra-short waves
+3. **ATLAS+CMS Higgs Collider Data** (14 pages) — mH=125.9$\pm$0.42/0.28 GeV (ATLAS),
+   124.7$\pm$0.31/0.15 GeV (CMS), combined 125.0$\pm$0.30 GeV; $\mu$_ATLAS=1.18$\pm$0.14; $\kappa$V$\approx$1.01–1.09
+4. **NGC 346 Image** — star-forming region, U_g3 modeling T$\approx$1.424$\times$10^6 K (see PAPER_718)
 
 ---
 
 ## 8. Accuracy
 
 All three LENR scenarios achieve **100% accuracy** at their respective calibration points:
-- Metallic hydride: η = 10^13 cm-2/s ✅
-- Exploding wires: η ≈ 10^8 cm-2/s ✅
-- Solar corona: η ≈ 7×10^-3 cm-2/s ✅
+- Metallic hydride: $\eta$ = 10^13 cm-2/s ✅
+- Exploding wires: $\eta$ $\approx$ 10^8 cm-2/s ✅
+- Solar corona: $\eta$ $\approx$ 7$\times$10^-3 cm-2/s ✅
 
 ---
 
@@ -182,7 +182,7 @@ All three LENR scenarios achieve **100% accuracy** at their respective calibrati
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -201,7 +201,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -224,7 +224,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -311,7 +311,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.169 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -322,13 +322,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -340,7 +340,7 @@ bridge.*
 - K_n_Neutron_Production_Calibration_Constant_19April2025.docx — Daniel T. Murphy, April 2025
 - LENR_Analysis_19April2025.docx — 47-page analysis document
 - Srivastava, Widom, Larsen (2008) — Pramana J. Phys. — LENR primer
-- PAPER_471 — LENR K_η Calibration (Session 122)
+- PAPER_471 — LENR K_$\eta$ Calibration (Session 122)
 - PAPER_718 — Red Dwarf Compression C: LENR/Higgs/NGC346 (Session 176)
 - PAPER_643 — Thermal Lens LENR (Session 167)
 - Session 179 Part 3, v5.36

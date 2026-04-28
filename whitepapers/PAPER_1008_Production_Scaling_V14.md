@@ -17,14 +17,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 We upgrade the production benchmark from v13 (550k calc/s, 20 kernels) to v14 (600k calc/s, 24
-kernels). Four new kernels using S₂₆⁽3⁾:
+kernels). Four new kernels using S26(3):
 
 | Kernel | Description |
 |--------|-------------|
-| `k`ernel_agn_merger_fub`i` | AGN merger `F_U_Bi` with S₂₆⁽3⁾ |
-| `k`ernel_qgp_vacuum_densit`y` | QGP vacuum density ρ_QGP(T) |
-| `k`ernel_alice_multiplicit`y` | ALICE dN_ch/dη SCm scaling |
-| `k`ernel_ym_mass_ga`p` | Yang-Mills Δ_YM via BCS phonon |
+| `k`ernel_agn_merger_fub`i` | AGN merger `F_U_Bi` with S26(3) |
+| `k`ernel_qgp_vacuum_densit`y` | QGP vacuum density $\rho$_QGP(T) |
+| `k`ernel_alice_multiplicit`y` | ALICE dN_ch/d$\eta$ SCm scaling |
+| `k`ernel_ym_mass_ga`p` | Yang-Mills $\Delta$_YM via BCS phonon |
 
 ## 1. Scaling History
 
@@ -37,7 +37,7 @@ kernels). Four new kernels using S₂₆⁽3⁾:
 ## 2. REST API
 
 20 total routes including new endpoints:
-- `POST /api/fubi/agn-merger` — AGN merger F_U_Bi with S₂₆⁽3⁾
+- `POST /api/fubi/agn-merger` — AGN merger F_U_Bi with S26(3)
 - `POST /api/qgp/scm-dynamics` — QGP SCm phonon dynamics
 
 ## 3. Implementation
@@ -53,7 +53,7 @@ File: `production_scaling_v14.py`, class `ProductionScalingV14`. CP4 class #592.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -187,7 +187,7 @@ $$\mathcal{L}_{Production\_benchmark} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i}
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → computational throughput → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ computational throughput $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

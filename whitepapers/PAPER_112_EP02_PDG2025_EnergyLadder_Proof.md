@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 26-Level Energy Ladder E_n = 10^(n-20) J
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-02, AprilSept 2025)  
@@ -31,16 +31,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 Empirical Proof EP-02 cross-correlates the complete PDG 2025 particle mass table
 against the UQFF 26-level energy ladder E_n = 10^(n-20) J (n = 1 to 26, spanning
-10?? J to 106 J). The correlation coefficient R ≈ 0.95 confirms that particle
+10?? J to 106 J). The correlation coefficient R $\approx$ 0.95 confirms that particle
 rest masses cluster at discrete UQFF energy levels, with n = 8 corresponding to
 nuclear / MeV-scale masses and n = 12 corresponding to the Higgs boson (125 GeV
-= 2.0 × 10-8 J ? Level 12). The PDG 2025 mass table provides 241 entries spanning
+= 2.0 $\times$ 10-8 J ? Level 12). The PDG 2025 mass table provides 241 entries spanning
 12 orders of magnitude in rest-mass energy, and 218/241 (90.5%) fall within 25%
 of a UQFF energy level, confirming the ladder as a structural feature of the mass
 spectrum rather than coincidence. This proof unifies the BSM domain (§1.4) and the
 26D energy structure domain (§1.6) through a common mass-level assignment.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -98,20 +98,20 @@ $$n_{particle} = \log_{10}(E_{rest}/\text{J}) + 20$$
 
 | Particle | Mass | E_rest (J) | n_UQFF | Nearest Level | ?n |
 |---------|------|-----------|--------|--------------|-----|
-| Electron | 0.511 MeV | 8.19 × 10?4 | 6.91 | 7 | 0.09 |
-| Muon | 105.7 MeV | 1.69 × 10? | 8.23 | 8 | 0.23 |
-| Tau | 1776.9 MeV | 2.85 × 10? | 9.45 | 9×10 | 0.45 |
-| Pion p | 134.98 MeV | 2.16 × 10? | 8.33 | 8 | 0.33 |
-| Proton | 938.3 MeV | 1.503 × 10? | 9.18 | 9 | 0.18 |
-| Neutron | 939.6 MeV | 1.505 × 10? | 9.18 | 9 | 0.18 |
-| He-4 nucleus | 3727 MeV | 5.97 × 10? | 9.78 | 10 | 0.22 |
-| Kaon K | 493.7 MeV | 7.91 × 10? | 8.90 | 9 | 0.10 |
-| Charm quark (c) | 1.27 GeV | 2.04 × 10? | 9.31 | 9 | 0.31 |
-| Bottom quark (b) | 4.18 GeV | 6.70 × 10? | 9.83 | 10 | 0.17 |
-| Top quark (t) | 172.7 GeV | 2.77 × 10-8 | 12.44 | 12 | 0.44 |
-| W boson | 80.38 GeV | 1.29 × 10-8 | 12.11 | 12 | 0.11 |
-| Z boson | 91.19 GeV | 1.46 × 10-8 | 12.16 | 12 | 0.16 |
-| Higgs | 125.25 GeV | 2.01 × 10-8 | 12.30 | 12 | 0.30 |
+| Electron | 0.511 MeV | 8.19 $\times$ 10?4 | 6.91 | 7 | 0.09 |
+| Muon | 105.7 MeV | 1.69 $\times$ 10? | 8.23 | 8 | 0.23 |
+| Tau | 1776.9 MeV | 2.85 $\times$ 10? | 9.45 | 9$\times$10 | 0.45 |
+| Pion p | 134.98 MeV | 2.16 $\times$ 10? | 8.33 | 8 | 0.33 |
+| Proton | 938.3 MeV | 1.503 $\times$ 10? | 9.18 | 9 | 0.18 |
+| Neutron | 939.6 MeV | 1.505 $\times$ 10? | 9.18 | 9 | 0.18 |
+| He-4 nucleus | 3727 MeV | 5.97 $\times$ 10? | 9.78 | 10 | 0.22 |
+| Kaon K | 493.7 MeV | 7.91 $\times$ 10? | 8.90 | 9 | 0.10 |
+| Charm quark (c) | 1.27 GeV | 2.04 $\times$ 10? | 9.31 | 9 | 0.31 |
+| Bottom quark (b) | 4.18 GeV | 6.70 $\times$ 10? | 9.83 | 10 | 0.17 |
+| Top quark (t) | 172.7 GeV | 2.77 $\times$ 10-8 | 12.44 | 12 | 0.44 |
+| W boson | 80.38 GeV | 1.29 $\times$ 10-8 | 12.11 | 12 | 0.11 |
+| Z boson | 91.19 GeV | 1.46 $\times$ 10-8 | 12.16 | 12 | 0.16 |
+| Higgs | 125.25 GeV | 2.01 $\times$ 10-8 | 12.30 | 12 | 0.30 |
 
 ### 2.3 Statistical Summary
 
@@ -160,10 +160,10 @@ The identification of n = 8 as the "nuclear binding" level is confirmed by:
 
 | System | Binding energy (J) | n_UQFF | |
 |--------|-------------------|--------|--|
-| Deuterium | 3.56 × 10? | 7.55 | ~8 |
-| He-4 binding | 4.54 × 10? | 8.66 | 89 |
-| Fe-56 binding/nucleon | 1.41 × 10? | 8.15 | **8** |
-| Pb-208 binding/nucleon | 1.36 × 10? | 8.13 | **8** |
+| Deuterium | 3.56 $\times$ 10? | 7.55 | ~8 |
+| He-4 binding | 4.54 $\times$ 10? | 8.66 | 89 |
+| Fe-56 binding/nucleon | 1.41 $\times$ 10? | 8.15 | **8** |
+| Pb-208 binding/nucleon | 1.36 $\times$ 10? | 8.13 | **8** |
 | Average nuclear BE/A | ~10? | **8.0** | Level 8 anchor |
 
 The Fe-56 maximum binding energy per nucleon (most stable nucleus) falls at
@@ -204,7 +204,7 @@ that:
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ## References
@@ -216,7 +216,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 5. Murphy D.T. (2026). *New Physics at TeV Scale: UQFF Predictions*. PAPER_029.
 6. Murphy D.T. (2026). *BSM Scalar Sectors in UQFF*. PAPER_032.
 7. `EnergyLadderParticleCalculator`  CondensedPhysics2.py.
-.Groups[1].Value   Empirical Proof EP-02: PDG 2025 Particle Masses – UQFF E_n = E_0 × 10^n Energy
+.Groups[1].Value   Empirical Proof EP-02: PDG 2025 Particle Masses – UQFF E_n = E_0 $\times$ 10^n Energy
 Ladder
 
 <!-- PKG-AGN-S225 -->
@@ -225,7 +225,7 @@ Ladder
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -244,7 +244,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -312,7 +312,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -416,7 +416,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.107 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

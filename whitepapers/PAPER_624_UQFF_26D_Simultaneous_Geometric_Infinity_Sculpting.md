@@ -39,7 +39,7 @@ processes rewriting rules sequentially, one edge at a time. UQFF physics require
 **simultaneous** processing of ALL hyperedges at each iteration, because the Universal
 Aether acts on the entire field instantaneously. This simultaneous processing produces:
 
-1. **External↔internal cycling** — infinity loops where boundary nodes become interior
+1. **External$\leftrightarrow$internal cycling** — infinity loops where boundary nodes become interior
    nodes in the next iteration (inf cycling)
 2. **Intercepting lensing formations** — intersection regions at hyperedge boundaries
 3. **Metallic irregular strings** — emergent EM-gravity carriers at lens intersections
@@ -63,7 +63,7 @@ $$
   & For iteration i: \\
   & For ALL edges e in hypergraph (simultaneously): \\
   & If arity(e) >= arity_threshold: \\
-  & n_splits = random ∈ {1, 2, 3}  (multi-split) \\
+  & n_splits = random \in {1, 2, 3}  (multi-split) \\
   & For each split: \\
   & v_new = centroid(e) + oscillation + lensing \\
   & Add (e_1, e_2) to next-generation hypergraph
@@ -84,8 +84,8 @@ The difference: **all boundary regions form simultaneously**, allowing intersect
 node_coord[d] += sin(i * pi/5) * 0.3  for all d
 ```
 
-This gives 5 oscillation modes per 2π period — matching the **BH26 five harmonic modes**
-(5 oscillation modes per π-period in the BH26 buoyancy series).
+This gives 5 oscillation modes per 2$\pi$ period — matching the **BH26 five harmonic modes**
+(5 oscillation modes per $\pi$-period in the BH26 buoyancy series).
 
 ---
 
@@ -93,7 +93,7 @@ This gives 5 oscillation modes per 2π period — matching the **BH26 five harmo
 
 At each iteration, 30% of new nodes receive a **lensing perturbation**:
 $$
-coord[random_dim] += epsilon_lens,   epsilon_lens ∈ [0.2, 0.4]
+coord[random_dim] += epsilon_lens,   epsilon_lens \in [0.2, 0.4]
 $$
 
 These perturbations simulate boundary regions where two expanding void shells intersect.
@@ -126,7 +126,7 @@ for CenA).
 
 ---
 
-## §6 External↔Internal Infinity Cycling
+## §6 External$\leftrightarrow$Internal Infinity Cycling
 
 In simultaneous processing, the topology satisfies:
 
@@ -213,7 +213,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -314,7 +314,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -325,14 +325,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Gravitational lensing (GR) | EM gravity string = Σ\|nablaUA\|*max/N; lensing from UA void pocket intersections | GR: α_lens = 4GM/(c^2b) | GR + Chandra | UQFF extends GR: adds geometric void topology |
+| Gravitational lensing (GR) | EM gravity string = $\Sigma$\|nablaUA\|*max/N; lensing from UA void pocket intersections | GR: $\alpha$_lens = 4GM/(c^2b) | GR + Chandra | UQFF extends GR: adds geometric void topology |
 | f^3 frequency rebound (X-ray) | freq ~  cumsum(\|nablaUA\|)^3 x 10^{1}5 Hz -> 5.71e16-10^{1}8 Hz | Chandra X-ray jets: 5x10^{1}6-10^{1}8 Hz range | Chandra Dec 2025 | PASS Consistent range |
-| Oscillation mode energies | 5-mode: [0, 0.187, 0.300, 0.300, 0.187] | QED vacuum oscillation n=1-5: Σ(2n+1)hbarω | QED (Casimir) | UQFF geometric analog of vacuum oscillator |
-| 26D factorial bound | 26! = 4.03e26 (BH26 upper bound) | 26D compactification scale M_string ~ 10^{2}6GeV | String th. | 26! ≈ M_string dimensionless |
+| Oscillation mode energies | 5-mode: [0, 0.187, 0.300, 0.300, 0.187] | QED vacuum oscillation n=1-5: $\Sigma$(2n+1)hbar$\omega$ | QED (Casimir) | UQFF geometric analog of vacuum oscillator |
+| 26D factorial bound | 26! = 4.03e26 (BH26 upper bound) | 26D compactification scale M_string ~ 10^{2}6GeV | String th. | 26! $\approx$ M_string dimensionless |
 
-**New physics claim:** Simultaneous external↔internal boundary cycling produces emergent knotted
+**New physics claim:** Simultaneous external$\leftrightarrow$internal boundary cycling produces emergent knotted
 jet morphology that linear GR/QED models cannot replicate — predicting correlation length
-ξ_jet = integral |nablaUA|dr in cluster jets (measurable with IXPE extended monitoring).
+$\xi$_jet = integral |nablaUA|dr in cluster jets (measurable with IXPE extended monitoring).
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 

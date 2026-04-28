@@ -22,13 +22,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 1672 is a large barred spiral galaxy (SBb) ~60 million light-years away (z ≈ 0.004) in the
+NGC 1672 is a large barred spiral galaxy (SBb) ~60 million light-years away (z $\approx$ 0.004) in the
 constellation Dorado, noted for its remarkably well-defined bar structure and prominent spiral arms
 containing numerous HII regions and star clusters. It was imaged by Hubble ACS in 2005 and again by
 JWST in 2023 with extraordinary resolution. NGC 1672 hosts an active nucleus and an above-average
 star-formation rate for its mass class (~3 MM_sun/yr), with its bar efficiently funneling gas toward the
 central starburst ring. Under UQFF, the elevated bar-driven SFR increases M_sf and the outflow
-velocity to v = 2×105 m/s, doubling the standard result to g_NGC1672 ≈ 2.107×10-3 m/s2.
+velocity to v = 2$\times$105 m/s, doubling the standard result to g_NGC1672 $\approx$ 2.107$\times$10-3 m/s2.
 
 ---
 
@@ -38,8 +38,8 @@ NGC 1672's bar is classified as one of the strongest (type SB rather than SAB), 
 gas inflow to the central region. JWST NIRCam and MIRI imaging in 2023 revealed hundreds of star
 clusters in the spiral arms and the details of the central ring starburst. The combined bar-driven
 gas flow plus centrally concentrated starburst ring make NGC 1672 a higher-velocity system than
-symmetric spirals like M74. UQFF captures the bar-driven enhancement through v = 2×105 m/s (double
-the symmetric spiral value) and M_sf = 0.06, yielding g_NGC1672 = 2.107×10-3 m/s2 — twice the
+symmetric spirals like M74. UQFF captures the bar-driven enhancement through v = 2$\times$105 m/s (double
+the symmetric spiral value) and M_sf = 0.06, yielding g_NGC1672 = 2.107$\times$10-3 m/s2 — twice the
 standard result.
 
 ---
@@ -47,20 +47,20 @@ standard result.
 ## 2. Master UQFF Gravity Equation
 
 $$
-g_NGC1672(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) + a_EM
+g_NGC1672(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 + f_TRZ) + a_EM
 $$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | HST/JWST |
-| Disk radius | r | 3×1020 m (~32 kly) | NED |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | HST/JWST |
+| Disk radius | r | 3$\times$1020 m (~32 kly) | NED |
 | SFR (bar-driven) | — | 3 MM_sun/yr | JWST 2023 |
-| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.06 | UQFF bar-enhanced |
 | Redshift | z | 0.004 | Spectroscopic |
-| v_EM | v | 2×105 m/s | Bar-driven outflow |
+| v_EM | v | 2$\times$105 m/s | Bar-driven outflow |
 | B_EM | B | 10-5 T | Galactic field |
 | f_TRZ | — | 0.05 | UQFF bar |
 
@@ -70,12 +70,12 @@ $$
 
 ### Step 1: Base Gravitational Term
 $$
-g_grav = 6.6743e-11 × 1.989e41 / (3e20)2 = 1.476e-10 m/s2
+g_grav = 6.6743e-11 \times 1.989e41 / (3e20)2 = 1.476e-10 m/s2
 $$
 
 ### Step 2: Cosmic Expansion Factor
 $$
-H(z) = 2.285e-18 s-1; H(z)×t = 0.361; factor = 1.361
+H(z) = 2.285e-18 s-1; H(z)\timest = 0.361; factor = 1.361
 $$
 
 ### Step 3: SFR Mass Fraction (Bar-Enhanced)
@@ -90,17 +90,17 @@ $$
 
 ### Step 5: Gravitational Total
 $$
-\text{g\_grav\_total} = 1.476e-10 × 1.361 × 1.06 × 1.05 = 2.237e-10 m/s2
+\text{g\_grav\_total} = 1.476e-10 \times 1.361 \times 1.06 \times 1.05 = 2.237e-10 m/s2
 $$
 
 ### Step 6: Aether EM Correction (Bar-Enhanced v)
 $$
-a_EM = (1.602e-19 × 2e5 × 1e-5 / 1.673e-27) × 11 × 1e-12 = 2.107e-3 m/s2
+a_EM = (1.602e-19 \times 2e5 \times 1e-5 / 1.673e-27) \times 11 \times 1e-12 = 2.107e-3 m/s2
 $$
 
 ### Step 7: Final Solution
 $$
-g_NGC1672 = 2.237e-10 + 2.107e-3 ≈ 2.107e-3 m/s2
+g_NGC1672 = 2.237e-10 + 2.107e-3 \approx 2.107e-3 m/s2
 $$
 
 ---
@@ -108,16 +108,16 @@ $$
 ## 4. Physical Interpretation
 
 NGC 1672's strong SB bar drives gas flow at double the symmetric spiral velocity. JWST 2023 imagery
-confirms the central starburst ring fed by this bar, validating v = 2×105 m/s as the UQFF bar-flow
-parameter. The 2× enhancement relative to standard spirals (g = 2.107×10-3 vs. 1.053×10-3 m/s2)
+confirms the central starburst ring fed by this bar, validating v = 2$\times$105 m/s as the UQFF bar-flow
+parameter. The 2$\times$ enhancement relative to standard spirals (g = 2.107$\times$10-3 vs. 1.053$\times$10-3 m/s2)
 directly reflects the bar-driven kinematic intensification captured by UQFF's linear v-dependence.
 
 ---
 
 ## 5. Conclusions
 
-UQFF applied to NGC 1672 yields g ≈ 2.107×10-3 m/s2, exactly double the standard SBbc result. Strong
-bar-driven gas inflow and the central starburst ring, confirmed by JWST 2023, validate v = 2×105 m/s
+UQFF applied to NGC 1672 yields g $\approx$ 2.107$\times$10-3 m/s2, exactly double the standard SBbc result. Strong
+bar-driven gas inflow and the central starburst ring, confirmed by JWST 2023, validate v = 2$\times$105 m/s
 as UQFF's bar-drive velocity parameter.
 
 *PAPER_782, CP4 class #366. v5.42.*
@@ -227,7 +227,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.182 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -238,13 +238,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -26,7 +26,7 @@ M42, the Orion Nebula (~1,344 ly), is the nearest and best-studied massive star-
 With ~2,000 MM_sun of gas and dust spanning ~2 ly around the Trapezium cluster, Hubble's iconic mosaic
 (1995) revealed hundreds of protoplanetary disks (proplyds) being photoevaporated by Trapezium's UV
 radiation. Under UQFF, the moderate star-formation rate (0.3 MM_sun/yr), Aether electromagnetic
-correction, and expansion factor yield g_M42 ≈ 1.053×10-3 m/s2, establishing M42 as the canonical
+correction, and expansion factor yield g_M42 $\approx$ 1.053$\times$10-3 m/s2, establishing M42 as the canonical
 low-SFR HII region reference.
 
 ---
@@ -47,7 +47,7 @@ standard HII regime under UQFF, where the Aether EM term dominates via the ioniz
 
 $$
 \begin{aligned}
-  & g_M42(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ) \\
+  & g_M42(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 - E_rad) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -56,10 +56,10 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula mass | M | 2,000 MM_sun = 3.978×1033 kg | Hubble |
-| Nebula radius | r | 2×1016 m (~2.1 ly) | Hubble |
+| Nebula mass | M | 2,000 MM_sun = 3.978$\times$1033 kg | Hubble |
+| Nebula radius | r | 2$\times$1016 m (~2.1 ly) | Hubble |
 | SFR | SFR | 0.3 MM_sun/yr | Labs |
-| Age | t | 3×105 yr = 9.468×1012 s | Cluster age |
+| Age | t | 3$\times$105 yr = 9.468$\times$1012 s | Cluster age |
 | M_sf | — | 0.045 | UQFF integral |
 | E_rad | — | 0.12 | UQFF Trapezium UV |
 | Redshift | z | 0.0004 | Distance |
@@ -74,7 +74,7 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 3.978e33) / (2e16)2 \\
+  & g_grav = (6.6743e-11 \times 3.978e33) / (2e16)2 \\
   & = 2.655e23 / 4e32 = 6.638e-10 m/s2
 \end{aligned}
 $$
@@ -82,8 +82,8 @@ $$
 ### Step 2: Star-Formation Mass Fraction
 $$
 \begin{aligned}
-  & SFR = 0.3 MM_sun/yr; t = 3×105 yr; M₀ = 2,000 MM_sun \\
-  & M_sf = 0.3 × 3e5 / 2000 = 45 → UQFF bounded: M_sf = 0.045 \\
+  & SFR = 0.3 MM_sun/yr; t = 3\times105 yr; M0 = 2,000 MM_sun \\
+  & M_sf = 0.3 \times 3e5 / 2000 = 45 \to UQFF bounded: M_sf = 0.045 \\
   & 1 + M_sf = 1.045
 \end{aligned}
 $$
@@ -91,7 +91,7 @@ $$
 ### Step 3: Radiation Energy Loss (Trapezium UV)
 $$
 \begin{aligned}
-  & E_rad (Trapezium 4 O-stars, L_trap ≈ 2.5×104 LM_sun): \\
+  & E_rad (Trapezium 4 O-stars, L_trap \approx 2.5\times104 LM_sun): \\
   & UQFF coupling: E_rad = 0.12 (moderate UV photoionization) \\
   & 1 - E_rad = 0.88
 \end{aligned}
@@ -100,9 +100,9 @@ $$
 ### Step 4: Cosmic Expansion Factor
 $$
 \begin{aligned}
-  & H(z) = 2.268e-18 × √(0.3×(1.0004)3 + 0.7) = 2.268e-18 s-1 \\
-  & H(z) × t = 2.268e-18 × 9.468e12 = 2.147e-5 \\
-  & 1 + H(z) × t = 1.0000215
+  & H(z) = 2.268e-18 \times \sqrt{}(0.3\times(1.0004)3 + 0.7) = 2.268e-18 s-1 \\
+  & H(z) \times t = 2.268e-18 \times 9.468e12 = 2.147e-5 \\
+  & 1 + H(z) \times t = 1.0000215
 \end{aligned}
 $$
 
@@ -111,9 +111,9 @@ $$
 \begin{aligned}
   & v = 105 m/s (photoionized gas velocity) \\
   & B = 10-5 T \\
-  & q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e5 \times 1e-5 = 1.602e-19 N \\
   & a = 1.602e-19 / m_p = 1.602e-19 / 1.673e-27 = 9.575e7 m/s2 \\
-  & a_EM = 9.575e7 × 11 × 1e-12 = 1.053e-3 m/s2
+  & a_EM = 9.575e7 \times 11 \times 1e-12 = 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -125,12 +125,12 @@ $$
 ### Step 7: Final Solution
 $$
 \begin{aligned}
-  & g_M42 = (6.638e-10) × (1.0000215) × (1.045) × (0.88) × (1.1) + 1.053e-3 \\
-  & = 6.638e-10 × 1.046 = 6.943e-10 \\
-  & × 0.88 = 6.110e-10 \\
-  & × 1.1 = 6.721e-10 \\
+  & g_M42 = (6.638e-10) \times (1.0000215) \times (1.045) \times (0.88) \times (1.1) + 1.053e-3 \\
+  & = 6.638e-10 \times 1.046 = 6.943e-10 \\
+  & \times 0.88 = 6.110e-10 \\
+  & \times 1.1 = 6.721e-10 \\
   & = 6.721e-10 + 1.053e-3 \\
-  & ≈ 1.053e-3 m/s2
+  & \approx 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -138,8 +138,8 @@ $$
 
 ## 4. Physical Interpretation
 
-M42's result (1.053×10-3 m/s2) confirms the canonical UQFF frequency for standard HII region ionized
-gas (v = 100 km/s, B = 10-5 T). Classical gravity (6.638×10-10) contributes ~0.06% of the total,
+M42's result (1.053$\times$10-3 m/s2) confirms the canonical UQFF frequency for standard HII region ionized
+gas (v = 100 km/s, B = 10-5 T). Classical gravity (6.638$\times$10-10) contributes ~0.06% of the total,
 negligible against the Aether EM correction. The M_sf = 0.045 and E_rad = 0.12 modifiers change the
 gravitational baseline by only ~8%, leaving the result dominated by the Aether term. This places M42
 as the archetypal UQFF HII region benchmark alongside M16, NGC 2264, and NGC 3324.
@@ -150,16 +150,16 @@ as the archetypal UQFF HII region benchmark alongside M16, NGC 2264, and NGC 332
 
 - M42 validated as the canonical nearby HII region UQFF reference (d = 1,344 ly)
 - Trapezium UV E_rad = 0.12 established as the UQFF HII radiation constant
-- Confirms g = 1.053×10-3 m/s2 as the universal standard HII value at v = 100 km/s
+- Confirms g = 1.053$\times$10-3 m/s2 as the universal standard HII value at v = 100 km/s
 
 ---
 
 ## 6. Conclusions
 
-UQFF applied to M42 (Orion Nebula) yields g_M42 ≈ 1.053×10-3 m/s2, confirming the canonical HII
+UQFF applied to M42 (Orion Nebula) yields g_M42 $\approx$ 1.053$\times$10-3 m/s2, confirming the canonical HII
 region result. The Aether electromagnetic correction at v = 100 km/s completely dominates over
 classical gravity. With over 1.5 billion Hubble observations of M42 making it the most-studied
-nebula in human history, UQFF's prediction of 1.053×10-3 m/s2 is the best-constrained result in the
+nebula in human history, UQFF's prediction of 1.053$\times$10-3 m/s2 is the best-constrained result in the
 batch.
 
 *PAPER_773, CP4 class #357. v5.41.*
@@ -172,7 +172,7 @@ batch.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -191,7 +191,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

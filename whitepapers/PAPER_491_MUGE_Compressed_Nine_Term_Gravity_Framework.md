@@ -70,7 +70,7 @@ g_{\text{core}} &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot (1 + H
 &\quad \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}
 \end{aligned}$$
 
-- **$μ_s∇(M_s/r)$** — mass-distance kernel
+- **$\mu_s\nabla(M_s/r)$** — mass-distance kernel
 - **$(1 + H_0 t)$** — Hubble expansion modulation, $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$
 - **$(1 - B/B_{\text{crit}})$** — SCm superconductive
   vacuum suppression,
@@ -116,7 +116,7 @@ embedded.
 $$g_{\text{DM}} = (M + M_{\text{DM}}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 This is a **density-perturbation coupling**, not the
-trivial $\Omega_{\text{CDM}} \cdot μ_s∇(M_s/r)$. It includes
+trivial $\Omega_{\text{CDM}} \cdot \mu_s\nabla(M_s/r)$. It includes
 both dark matter halo mass and local density contrast.
 
 ---
@@ -179,7 +179,7 @@ to $Ug_2$ alone with $Q_A = Q_{UA} = 0$,
 $H_{SCm} \to 1$, $E_{\text{react}} \to 1$,
 $S(r-R_b) \to 1$, and $\delta_{sw} \to 0$, the
 outer-field-bubble term reduces to
-$k_2 \cdot M_s/r^2 \to μ_s∇(M_s/r)$. This is where
+$k_2 \cdot M_s/r^2 \to \mu_s\nabla(M_s/r)$. This is where
 Newton lives — as a **single-channel, zero-vacuum,
 zero-buoyancy** limit of $F_U$.
 
@@ -243,11 +243,11 @@ g_{\text{resonance}} &= a_{\text{DPM}} + a_{\text{THz}} + a_{\text{vac\_diff}} +
 
 | Mode | Physics |
 |------|---------|
-| $a_{\text{THz}}$ | 1.25 THz phonon × vacuum ratio |
+| $a_{\text{THz}}$ | 1.25 THz phonon $\times$ vacuum ratio |
 | $a_{\text{vac\_diff}}$ | Vacuum energy differential |
 | $a_{\text{SuperFreq}}$ | Superconductive frequency |
 | $a_{\text{AetherRes}}$ | Aether resonance + TRZ |
-| $U_{g4,i}$ | Reactor × vacuum concentration |
+| $U_{g4,i}$ | Reactor $\times$ vacuum concentration |
 | $a_{\text{QuantumFreq}}$ | Quantum frequency mode |
 | $a_{\text{AetherFreq}}$ | Aether frequency mode |
 | $a_{\text{FluidFreq}}$ | Fluid viscosity frequency |
@@ -320,7 +320,7 @@ prediction with no GR analogue.
 
 ---
 
-## §4 Why F_U ≠ Newton, Why F_U ≠ GR
+## §4 Why F_U $\neq$ Newton, Why F_U $\neq$ GR
 
 The unified field $F_U = \sum(Ug_i + Ub_i) + Um + A_{\mu\nu}$ is structurally different from both frameworks:
 
@@ -380,7 +380,7 @@ $E_{\text{vac,neb}} / E_{\text{vac,ISM}} = 10$
 ratio predicts that galactic rotation curves flatten
 **differently** in nebula-rich vs ISM-dominated
 regions. The resonance MUGE produces $v_c(r)$
-profiles distinguishable from NFW+ΛCDM at
+profiles distinguishable from NFW+$\Lambda$CDM at
 $r > 3\,r_s$ for halos with
 $M > 10^{12}\,M_\odot$.
 
@@ -409,7 +409,7 @@ testable via magnetar QPO frequency modeling.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -434,7 +434,7 @@ P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \\
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -627,7 +627,7 @@ which initializes the harmonic series at cosmogenesis.
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.165 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -638,15 +638,15 @@ which initializes the harmonic series at cosmogenesis.
 
 | Observable | UQFF Prediction | Measured | Alignment |
 |------------|-----------------|----------|-----------|
-| Λ | $1.09\times10^{-52}$ m$^{-2}$ | $1.114\times10^{-52}$ (Planck+DESI) | 97.8% |
-| Ω_Λ | [SSq]×1.20 = 0.684 | 0.6847±0.0073 (Planck) | 99.9% |
+| $\Lambda$ | $1.09\times10^{-52}$ m$^{-2}$ | $1.114\times10^{-52}$ (Planck+DESI) | 97.8% |
+| $\Omega$_$\Lambda$ | [SSq]$\times$1.20 = 0.684 | 0.6847$\pm$0.0073 (Planck) | 99.9% |
 | T_CMB | 2.726 K | 2.72548 K (FIRAS) | 99.98% |
-| H₀ | 67.4 km/s/Mpc | 67.4±0.5 (Planck) | PASS |
+| H0 | 67.4 km/s/Mpc | 67.4$\pm$0.5 (Planck) | PASS |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-Ω_Λ via [SSq]×1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from
-astrophysical magnetar burst profiles, not from CMB data. The coincidence Ω_Λ ≈ [SSq]×1.20
-constitutes a falsifiable prediction: if future DESI data shifts Ω_Λ by >2%, [SSq] must be
+$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit — [SSq] was calibrated from
+astrophysical magnetar burst profiles, not from CMB data. The coincidence $\Omega$_$\Lambda$ $\approx$ [SSq]$\times$1.20
+constitutes a falsifiable prediction: if future DESI data shifts $\Omega$_$\Lambda$ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

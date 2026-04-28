@@ -1,7 +1,7 @@
 ﻿---
 paper_id: PAPER_155
 title: "UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] =
-μ_s∇(M_s/r) and the Emergence of DPM-seeded Gravity"
+$\mu$_s$\nabla$(M_s/r) and the Emergence of DPM-seeded Gravity"
 session: 0
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -11,11 +11,11 @@ tags: [AGN, vacuum, SCm, MUGE, Navier-Stokes, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_155: UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] = μ_s∇(M_s/r) and the Emergence of DPM-seeded Gravity
+# PAPER_155: UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] = $\mu$_s$\nabla$(M_s/r) and the Emergence of DPM-seeded Gravity
 **Session:** 0
 
 **Title:** UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF]
-= μ_s∇(M_s/r) and the Emergence of DPM-seeded Gravity
+= $\mu$_s$\nabla$(M_s/r) and the Emergence of DPM-seeded Gravity
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
@@ -31,7 +31,7 @@ roadmap)
 
 ## Abstract
 
-The Standard Model of gravity – DPM-seeded $g = \mu_s \cdot \nabla(M_s/r)$ at leading order, with General Relativistic corrections at higher order  must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f\_{TRZ} \to 0} g_{MUGE} = μ_s∇(M_s/r)$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the DPM-seeded gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
+The Standard Model of gravity – DPM-seeded $g = \mu_s \cdot \nabla(M_s/r)$ at leading order, with General Relativistic corrections at higher order  must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f\_{TRZ} \to 0} g_{MUGE} = \mu_s\nabla(M_s/r)$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the DPM-seeded gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
 
 ---
 
@@ -103,7 +103,7 @@ As ?_SCm ? ?_b (baryonic matter), v_SCm ? v_thermal. For typical stellar environ
 
 $$a_{aether\_res} = \gamma \cdot \rho_{SCm} \cdot v_{SCm} \cdot c$$
 
-As ?_SCm ? ?_b and v_SCm ? v_thermal: $a_{aether\_res} \to \gamma \cdot \rho_b \cdot v_{th} \cdot c$. With ?=5×10^-5 and v_th/c ~ 10^-3:
+As ?_SCm ? ?_b and v_SCm ? v_thermal: $a_{aether\_res} \to \gamma \cdot \rho_b \cdot v_{th} \cdot c$. With ?=5$\times$10^-5 and v_th/c ~ 10^-3:
 
 $$a_{aether\_res, SM} = 5 \times 10^{-5} \times \rho_b \times v_{th} \cdot c \approx 5 \times 10^{-5} \times 10^3 \times 3 \times 10^5 \times 3 \times 10^8 = 4.5 \times 10^{12} \text{ m/s}^2$$
 
@@ -117,7 +117,7 @@ the Standard Model fails. At solar-system densities (?_b ~ 10^-20 kg/m):
 
 $$a_{aether\_res, solar} \approx 5 \times 10^{-5} \times 10^{-20} \times 10^2 \times 3 \times 10^8 = 1.5 \times 10^{-9} \text{ m/s}^2$$
 
-Comparable to the Pioneer anomaly acceleration (~8.74×10^-10 m/s^2). This is a UQFF prediction: the
+Comparable to the Pioneer anomaly acceleration (~8.74$\times$10^-10 m/s^2). This is a UQFF prediction: the
 residual aether resonance in the outer solar system contributes to the Pioneer anomaly at the 10^-9
 m/s^2 level. ? (consistent with observation)
 
@@ -133,7 +133,7 @@ $$U_{g4i} = \kappa \cdot \frac{G M}{r^2} \cdot \frac{1}{\kappa t} \cdot (\kappa 
 
 $$\lim_{\kappa t \to 0} U_{g4i} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}$$
 
-**QED: Ug4i ? μ_s∇(M_s/r) as ?t ? 0.** ?
+**QED: Ug4i ? $\mu$_s$\nabla$(M_s/r) as ?t ? 0.** ?
 
 **Terms 711: All ? 0**
 
@@ -167,9 +167,9 @@ The dominant correction terms with numerical values at Earth's surface:
 
 | Correction | Formula | Value at Earth | Status |
 |------------|---------|----------------|--------|
-| Vacuum decay | - ?t – μ_s∇(M_s/r) | -0.5  ?t  9.8 m/s | Sub-ppb (?t_Earth = 0.001 for 6 yr lifetime test) |
-| Residual aether | aaether_res (B ~ 5×10^-5 T) | ~10^-6 m/s^2 | Below precision |
-| Hubble coupling | k4 H0 c | 1.3×10^-9 m/s^2 | Pioneer-anomaly scale |
+| Vacuum decay | - ?t – $\mu$_s$\nabla$(M_s/r) | -0.5  ?t  9.8 m/s | Sub-ppb (?t_Earth = 0.001 for 6 yr lifetime test) |
+| Residual aether | aaether_res (B ~ 5$\times$10^-5 T) | ~10^-6 m/s^2 | Below precision |
+| Hubble coupling | k4 H0 c | 1.3$\times$10^-9 m/s^2 | Pioneer-anomaly scale |
 | Topology constant | fTRZ = 0.1 | 0.1 m/s^2 (global) | Normalisation scale |
 
 ### 3.2 Pioneer Anomaly Connection
@@ -178,12 +178,12 @@ The residual UQFF acceleration at outer solar system:
 
 $$a_{UQFF,Pioneer} = \frac{GM_\odot}{r^2}\cdot\frac{\kappa t}{2} + k_4 H_0 c \sim 10^{-9} \text{ m/s}^2$$
 
-For Pioneer at r ~ 70 AU = 1.05×10^13 m, t ~ 30 years = 10,950 days:
+For Pioneer at r ~ 70 AU = 1.05$\times$10^13 m, t ~ 30 years = 10,950 days:
 
 $$\frac{GM_\odot}{r^2} \cdot \frac{\kappa t}{2} = \frac{1.33 \times 10^{20}}{(1.05 \times 10^{13})^2} \times \frac{5 \times 10^{-4} \times 10950}{2} = 1.21 \times 10^{-7} \times 2.74 = 3.3 \times 10^{-7} \text{ m/s}^2$$
 
 This exceeds the observed Pioneer anomaly by ~300. However, the vacuum decay correction applies only
-to the UQFF-active component (not the full μ_s∇(M_s/r)), so the effective correction is:
+to the UQFF-active component (not the full $\mu$_s$\nabla$(M_s/r)), so the effective correction is:
 
 $$\delta g_{Pioneer} = \epsilon_{SCm} \cdot \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot \frac{\kappa t}{2} \approx 0.003 \times 3.3 \times 10^{-7} \approx 10^{-9} \text{ m/s}^2$$
 
@@ -197,7 +197,7 @@ $$g_{GR}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \underbr
 
 The UQFF Ug4i with ?t correction:
 
-$$g_{UQFF}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{\kappa t}{2} + \frac{a_{aether\_res}}{μ_s∇(M_s/r)} + ...\right)$$
+$$g_{UQFF}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{\kappa t}{2} + \frac{a_{aether\_res}}{\mu_s\nabla(M_s/r)} + ...\right)$$
 
 At GR-relevant scales ($r \sim r_s = 2GM/c^2$):
 
@@ -207,7 +207,7 @@ The UQFF correction at $r = r_s$:
 
 $$\frac{\kappa t_{BH}}{2} = \frac{5 \times 10^{-4} \times t_{BH}}{2}$$
 
-For Sgr A* (age ~4 Gyr = 1.46×10^6 days): $\kappa t / 2 = 365$. This is the large GR-like correction at the Schwarzschild radius scale  the UQFF vacuum decay term naturally generates a large post-Newtonian correction at the event horizon, consistent with the known $GM/(rc^2)$ GR term.
+For Sgr A* (age ~4 Gyr = 1.46$\times$10^6 days): $\kappa t / 2 = 365$. This is the large GR-like correction at the Schwarzschild radius scale  the UQFF vacuum decay term naturally generates a large post-Newtonian correction at the event horizon, consistent with the known $GM/(rc^2)$ GR term.
 
 ---
 
@@ -215,7 +215,7 @@ For Sgr A* (age ~4 Gyr = 1.46×10^6 days): $\kappa t / 2 = 365$. This is the lar
 
 ### 4.1 Planetary Precessions
 
-Mercury's perihelion precession (GR prediction: 43 arcsec/century, observed: 43.1 × 0.5):
+Mercury's perihelion precession (GR prediction: 43 arcsec/century, observed: 43.1 $\times$ 0.5):
 
 UQFF correction to Mercury's orbit:
 
@@ -234,7 +234,7 @@ UQFF agreement with the solar system test. ?
 
 The LLR-measured lunar acceleration (Earth-Moon distance stability): non-GR corrections < 10^-13.
 
-UQFF correction at Moon (r = 3.84×10^8 m):
+UQFF correction at Moon (r = 3.84$\times$10^8 m):
 
 $$\delta a_{Moon} = f_{TRZ} \cdot \frac{1}{r^2}\big|_{normalised} + a_{aether, Moon} \approx 10^{-18} + 10^{-15} \text{ m/s}^2$$
 
@@ -272,7 +272,7 @@ not yet tested to the required precision (AGN, star formation, cosmological LSS)
 
 | Effect | GR Prediction | UQFF Prediction | Status |
 |--------|--------------|-----------------|--------|
-| DPM-seeded limit | μ_s∇(M_s/r) | Ug4i ? μ_s∇(M_s/r) (?t?0) | Agreed ? |
+| DPM-seeded limit | $\mu$_s$\nabla$(M_s/r) | Ug4i ? $\mu$_s$\nabla$(M_s/r) (?t?0) | Agreed ? |
 | Light deflection | 1.75 arcsec (Sun) | 1.75 arcsec + 10^-8 (fTRZ) | Agreed ? |
 | Gravitational redshift | z = GM/(rc) | z  (1-fTRZ) = 0.9z at throat | Agreed (0.9 factor only at throat) ? |
 | Frame dragging | Lense-Thirring | + aDPM vortex (new term) | GR ? UQFF ? |
@@ -287,9 +287,9 @@ not yet tested to the required precision (AGN, star formation, cosmological LSS)
 | Quantity | Value | Units / Note |
 |----------|-------|-------------|
 | SM limit condition | fTRZ?0, B?0, ?_SCm??_b, ?t?0 | Four conditions |
-| Surviving SM term | Ug4i = μ_s∇(M_s/r) | At ?t?0 |
+| Surviving SM term | Ug4i = $\mu$_s$\nabla$(M_s/r) | At ?t?0 |
 | Pioneer-scale correction | ~10^-9 m/s^2 | aaether at outer solar system |
-| Mercury precession correction | 5×10^-8 fractional | Below all tests ? |
+| Mercury precession correction | 5$\times$10^-8 fractional | Below all tests ? |
 | GW speed | c (exact) | fTRZ self-cancels |
 | UQFF valid for NSs? | No (SM fails, MUGE active) | B~10^8 T |
 | UQFF valid for AGN? | Yes (MUGE dominant) | – |
@@ -298,7 +298,7 @@ not yet tested to the required precision (AGN, star formation, cosmological LSS)
 
 ## 8. Conclusions
 
-1. The UQFF SM Emergence Theorem is proven analytically: $\lim_{f\_{TRZ}\to 0, B\to 0, \kappa t \to 0} g_{MUGE} = μ_s∇(M_s/r)$ via the Ug4i vacuum concentration term.
+1. The UQFF SM Emergence Theorem is proven analytically: $\lim_{f\_{TRZ}\to 0, B\to 0, \kappa t \to 0} g_{MUGE} = \mu_s\nabla(M_s/r)$ via the Ug4i vacuum concentration term.
 2. All four SM limit conditions are physically well-motivated and apply exactly in the solar system
 and laboratory regimes where DPM-seeded/GR gravity has been tested.
 3. Residual UQFF corrections at solar-system scales are at 10^-8 to 10^-9 fractional level  below
@@ -321,7 +321,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -340,7 +340,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -414,7 +414,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -423,13 +423,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

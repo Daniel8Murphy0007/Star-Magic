@@ -18,16 +18,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 and IMBH Masses for M13 and Omega Centauri
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `experimental_validation_system.py` GC category (4 tests, 100% pass), Gaia DR4,
 Hubble, X-ray observations  
 **Index Slot:** §1.9 Automated 121-System Validation,  
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
-Globular clusters (GCs) are gravitationally bound systems of 104×107 stars that formed early in
+Globular clusters (GCs) are gravitationally bound systems of 104$\times$107 stars that formed early in
 galaxy history (t > 10 Gyr). Standard dynamics requires dark matter halos to explain their velocity
 dispersions, but the UQFF proposes that the Ui_galaxy field (galaxy-mediated gravitational
 interaction term) replaces the dark matter requirement. All four experimental tests for M13 and
@@ -35,7 +35,7 @@ Omega Centauri pass with deviations of 1.6%§5.0%, confirming Ui_galaxy mediatio
 and Ug4 star-BH coupling for intermediate-mass black holes. This paper presents the full UQFF
 globular cluster framework and validated predictions.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -61,7 +61,7 @@ matter sub-halos within globular clusters.
 
 ## 2. M13 (Hercules Cluster)  Full Validation
 
-**Observed properties:** M13 (NGC 6205), distance = 7.1 kpc, M_total  6×105 M_sun, r_half = 1.49 pc
+**Observed properties:** M13 (NGC 6205), distance = 7.1 kpc, M_total  6$\times$105 M_sun, r_half = 1.49 pc
 
 | Test | Predicted | Measured | Source | Deviation | Status |
 |------|----------|---------|-------|----------|--------|
@@ -78,7 +78,7 @@ This exceeds observations by ~3.4. The UQFF Ui_galaxy correction reduces the eff
 
 $$M_{\rm eff} = M_{\rm M13} \times (1 - U_{\rm UA} \times [SCm]) = 6 \times 10^5 M_\odot \times (1 - 0.0001 \times 0.99) \approx 5.94 \times 10^5 M_\odot$$
 
-Combined with an anisotropy factor κ_iso = 0.94 from the velocity ellipsoid, the UQFF yields:
+Combined with an anisotropy factor $\kappa$_iso = 0.94 from the velocity ellipsoid, the UQFF yields:
 $$\sigma_{\rm UQFF} = 41.6 \times \sqrt{1 - \beta_{\rm iso}} \approx 41.6 \times 0.293 = 12.2 \text{ km/s}$$
 ? 12.1 km/s measured ? (0.8% residual)
 
@@ -90,19 +90,19 @@ winds and gravitational ejection. The UQFF prediction f_Z = 0.89 is based on:
 $$f_Z = 1 - \frac{v_{\rm escape}^2}{\sigma_*^2 + v_{\rm UQFF}^2}$$
 
 Where v_UQFF = 0.62 km/s (Ug2 charge bubble added velocity component) and v_escape ~ 52 km/s.
-Result: f_Z ≈ 0.89 UQFF vs 0.87 measured (ROMULUS25 simulation ? 2.25% deviation ?).
+Result: f_Z $\approx$ 0.89 UQFF vs 0.87 measured (ROMULUS25 simulation ? 2.25% deviation ?).
 
 ---
 
 ## 3. Omega Centauri (? Cen)  UQFF Analysis
 
-**Observed properties:** ? Cen (NGC 5139), distance = 5.2 kpc, M_total  4×106 M_sun, r_half = 4.8
+**Observed properties:** ? Cen (NGC 5139), distance = 5.2 kpc, M_total  4$\times$106 M_sun, r_half = 4.8
 pc, multi-population stellar system (unusual for GC  suggests stripped dwarf galaxy nucleus)
 
 | Test | Predicted | Measured | Source | Deviation | Status |
 |------|----------|---------|-------|----------|--------|
 | Velocity dispersion s* | 18.7 km/s | **18.2 km/s** | Hubble + Gaia | 2.75% | ? |
-| Central IMBH mass | 4.2×104 M? | **4.0×104 M?** | X-ray observations | 5.00% | ? |
+| Central IMBH mass | 4.2$\times$104 M? | **4.0$\times$104 M?** | X-ray observations | 5.00% | ? |
 
 ### IMBH Mass Prediction via Ug4
 
@@ -110,7 +110,7 @@ The Ug4 star-BH coupling links the IMBH mass to the cluster velocity:
 
 $$M_{\rm IMBH} = \frac{\sigma_*^4}{G \cdot k_4 \cdot \rho_{\rm vac,[SCm]} \cdot \Omega_g^{1/2}}$$
 
-With s* = 18.7 km/s, G = 6.674×10?, k4 = 10?, ?_vac,[SCm] = 7.09×10?7, Og = 10?5:
+With s* = 18.7 km/s, G = 6.674$\times$10?, k4 = 10?, ?_vac,[SCm] = 7.09$\times$10?7, Og = 10?5:
 
 $$M_{\rm IMBH} = \frac{(1.87 \times 10^4)^4}{6.674 \times 10^{-11} \times 10^{-30} \times 7.09 \times 10^{-37} \times 10^{-7.5}}$$
 $$\approx 4.2 \times 10^4 M_\odot$$
@@ -125,10 +125,10 @@ s4) but with the vacuum k4 coupling replacing the standard stellar dispersion co
 | System | s_UQFF (km/s) | M_IMBH (M?) | f_Z | [SSq] BEC fraction |
 |--------|--------------|-------------|-----|-------------------|
 | M13 | **12.3** | < 10 (no IMBH) | **0.89** | 0.21 (outer halo) |
-| Omega Cen | **18.7** | **4.2×104** | 0.91 | 0.57 (multi-pop nucleus) |
+| Omega Cen | **18.7** | **4.2$\times$104** | 0.91 | 0.57 (multi-pop nucleus) |
 | 47 Tucanae | **11.4** (predicted) | < 10 | 0.92 | 0.19 |
 | NGC 6397 | **5.4** (predicted) | < 10 | 0.95 | 0.08 |
-| M15 | **13.9** (predicted) | ~3×10 | 0.88 | 0.31 |
+| M15 | **13.9** (predicted) | ~3$\times$10 | 0.88 | 0.31 |
 
 ### Omega Cen as Stripped Dwarf Galaxy
 
@@ -146,7 +146,7 @@ The UQFF eliminates the need for dark matter within globular clusters by providi
 
 | Standard Explanation | UQFF Replacement |
 |-------------------|-----------------|
-| Dark matter sub-halo (DMH) mass | Ui_galaxy field correction: dG = G  2.3×10-4 |
+| Dark matter sub-halo (DMH) mass | Ui_galaxy field correction: dG = G  2.3$\times$10-4 |
 | Anisotropy free parameter | UQFF velocity ellipsoid:  = 1 - [U_A]  (1 - [SCm]) |
 | NFW profile (inner CDM halo) | Ug4 SMBH vacuum concentration |
 | Tidal stripping history | ? decay: M_eff(t) = M0  e^{-?t} |
@@ -158,9 +158,9 @@ The UQFF eliminates the need for dark matter within globular clusters by providi
 | System | s* (km/s) | Deviation | M_IMBH (M?) | Deviation | Overall Status |
 |--------|----------|---------|------------|---------|--------------|
 | M13 | 12.1 measured vs 12.3 predicted | **1.63%** | < 10 | – | ? |
-| Omega Cen | 18.2 measured vs 18.7 predicted | **2.75%** | 4.0×104 vs 4.2×104 | **5.0%** | ? |
+| Omega Cen | 18.2 measured vs 18.7 predicted | **2.75%** | 4.0$\times$104 vs 4.2$\times$104 | **5.0%** | ? |
 
-*Source: `experimental_validation_system`.py GC category, Gaia DR4, ROMULUS25, Hubble X-ray | κ =
+*Source: `experimental_validation_system`.py GC category, Gaia DR4, ROMULUS25, Hubble X-ray | $\kappa$ =
 0.0005/day | [SSq] = 0.57*
 
 ---
@@ -235,14 +235,14 @@ the phonon transmission efficiency across the ICM.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -257,10 +257,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -268,9 +268,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -278,8 +278,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -355,7 +355,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.171 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -364,13 +364,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

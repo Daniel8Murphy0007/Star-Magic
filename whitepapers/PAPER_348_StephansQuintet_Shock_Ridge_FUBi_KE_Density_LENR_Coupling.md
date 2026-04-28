@@ -20,16 +20,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
 The complete UQFF buoyancy-unified force F_U_Bi_i is computed for the Stephan's Quintet compact
 group intergalactic shock ridge. The 1500 km/s relative velocity of the NGC 7318b intruder galaxy
-generates a kinetic energy density KE_den = 1/2ρ*Δv^2, which couples to the UQFF vacuum field via
+generates a kinetic energy density KE_den = 1/2$\rho$*$\Delta$v^2, which couples to the UQFF vacuum field via
 FLEENR (Low Energy Nuclear Reaction force component). The shock ridge lies at x_2 = 290 Mly and
-yields F_U_Bi_i ≈ -8.32x10^{2}1^7 N.
+yields F_U_Bi_i $\approx$ -8.32x10^{2}1^7 N.
 
 ---
 
@@ -43,7 +43,7 @@ $$F_{U\_Bi\_i} \approx -8.32 \times 10^{217}\ \mathrm{N}$$
 
 $$KE_{\rm den} = \frac{1}{2} \rho_{\rm IGM} \cdot \Delta v^2 = \frac{1}{2} \rho_{\rm IGM} \cdot (1500 \times 10^3\ \mathrm{m/s})^2$$
 
-where ρ_IGM ≈ 10^{-}2^6 kg/m^3 (intragroup medium density at z ≈ 0.021).
+where $\rho$_IGM $\approx$ 10^{-}2^6 kg/m^3 (intragroup medium density at z $\approx$ 0.021).
 
 $$KE_{\rm den} \approx \frac{1}{2} \times 10^{-26} \times (1.5\times 10^6)^2 = 1.125 \times 10^{-14}\ \mathrm{J/m}^3$$
 
@@ -66,12 +66,12 @@ Distance from observer to the Stephan's Quintet shock ridge (Hickson Compact Gro
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| Δv | Relative shock velocity | 1500 km/s |
-| KE_den | 1/2ρ*Δv^2 | ~10^{-}1^4 J/m^3 |
+| $\Delta$v | Relative shock velocity | 1500 km/s |
+| KE_den | 1/2$\rho$*$\Delta$v^2 | ~10^{-}1^4 J/m^3 |
 | `F_U_Bi_i` | UQFF full 5-eq | -8.32x10^{2}1^7 N |
 | x_2 | Distance (observer) | 290 Mly |
-| E_FLENR | LENR coupling | Kozima x [SSq] x ρ_ratio |
-| ρ_IGM | Intragroup medium | ~10^{-}2^6 kg/m^3 |
+| E_FLENR | LENR coupling | Kozima x [SSq] x $\rho$_ratio |
+| $\rho$_IGM | Intragroup medium | ~10^{-}2^6 kg/m^3 |
 
 ---
 
@@ -84,7 +84,7 @@ hydrodynamic models. The FLEENR term represents the possibility that ultra-high-
 (>10^4x ambient) may trigger sub-threshold nuclear reactions mediated by vacuum buoyancy.
 
 The x_2 = 290 Mly cosmic baseline sets the scale for UQFF long-range vacuum coherence tests: the
-F_U_Bi_i ≈ -8.32x10^{2}1^7 N over 290 Mly suggests that UQFF maintains coherent force coupling at
+F_U_Bi_i $\approx$ -8.32x10^{2}1^7 N over 290 Mly suggests that UQFF maintains coherent force coupling at
 intergalactic baselines.
 
 ---
@@ -124,7 +124,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -243,7 +243,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.164 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -254,13 +254,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

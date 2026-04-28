@@ -36,7 +36,7 @@ $$\mathcal{L}_{\text{grav}} = -\beta_i \cdot U_g \cdot \Omega \cdot \frac{M}{d} 
 with:
 
 - $\beta_i = 0.603$ (buoyancy coupling)
-- $U_g = μ_s·∇(M_s/r)$ (gravitational potential energy)
+- $U_g = \mu_s\cdot\nabla(M_s/r)$ (gravitational potential energy)
 - $\Omega$ = angular rotation frequency
 - $M/d$ = mass-to-distance linear density
 - $[\text{UA}] = 10^{-4}$ (universal abundance parameter)

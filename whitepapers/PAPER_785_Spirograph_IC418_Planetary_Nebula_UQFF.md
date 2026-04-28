@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 IC 418, the "Spirograph Nebula," is one of the most intricately structured planetary nebulae,
-located ~2,000 light-years away (z ≈ 0.0007) in the constellation Lepus. Hubble WFPC2 imaging
+located ~2,000 light-years away (z $\approx$ 0.0007) in the constellation Lepus. Hubble WFPC2 imaging
 reveals a complex pattern of nested shells and radial spokes resembling a spirograph drawing. The
-central white dwarf (T_eff ~36,000 K) drives a fast stellar wind at ~1,500 km/s (v = 1.5×106 m/s),
-ionizing the ejected AGB envelope. Under UQFF, the fast wind velocity (v = 1.5×106 m/s) with
-standard PN B-field (B = 10-5 T) yields g_IC418 ≈ 1.580×10-2 m/s2.
+central white dwarf (T_eff ~36,000 K) drives a fast stellar wind at ~1,500 km/s (v = 1.5$\times$106 m/s),
+ionizing the ejected AGB envelope. Under UQFF, the fast wind velocity (v = 1.5$\times$106 m/s) with
+standard PN B-field (B = 10-5 T) yields g_IC418 $\approx$ 1.580$\times$10-2 m/s2.
 
 ---
 
@@ -38,27 +38,27 @@ years ago, creating the current planetary nebula shell. The Hubble image reveals
 interference pattern from multiple overlapping AGB pulsation shells that were ejected at slightly
 different angles. The central star's fast wind at ~1,500 km/s (confirmed by UV spectroscopy) is the
 highest drive velocity in the slow/fast wind PN interaction model. UQFF encodes this through v =
-1.5×106 m/s, which is 1.5× the LBV eruptive velocity (and thus 15× the standard HII velocity),
-yielding g = 1.580×10-2 m/s2.
+1.5$\times$106 m/s, which is 1.5$\times$ the LBV eruptive velocity (and thus 15$\times$ the standard HII velocity),
+yielding g = 1.580$\times$10-2 m/s2.
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
 $$
-g_IC418(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 - E_rad) × (1 + f_TRZ) + a_EM
+g_IC418(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 - E_rad) \times (1 + f_TRZ) + a_EM
 $$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula mass (envelope) | M | ~0.6 MM_sun = 1.193×1030 kg | Hubble |
-| Nebula radius | r | 1×1016 m (~0.1 pc) | Hubble |
-| Age | t | ~3,000 yr = 9.468×1010 s | Expansion age |
+| Nebula mass (envelope) | M | ~0.6 MM_sun = 1.193$\times$1030 kg | Hubble |
+| Nebula radius | r | 1$\times$1016 m (~0.1 pc) | Hubble |
+| Age | t | ~3,000 yr = 9.468$\times$1010 s | Expansion age |
 | E_rad | — | 0.20 | EUV photoionization loss |
 | Redshift | z | 0.0007 | Distance |
-| v_EM | v | 1.5×106 m/s | Central star fast wind |
+| v_EM | v | 1.5$\times$106 m/s | Central star fast wind |
 | B_EM | B | 10-5 T | PN field |
 | f_TRZ | — | 0.05 | UQFF |
 
@@ -68,12 +68,12 @@ $$
 
 ### Step 1: Base Gravitational Term
 $$
-g_grav = 6.6743e-11 × 1.193e30 / (1e16)2 = 7.962e-13 m/s2
+g_grav = 6.6743e-11 \times 1.193e30 / (1e16)2 = 7.962e-13 m/s2
 $$
 
 ### Step 2: Cosmic Expansion Factor
 $$
-H(z)×t ≈ negligible (2.268e-18 × 9.468e10 ≈ 2.15e-7); factor ≈ 1.0000002
+H(z)\timest \approx negligible (2.268e-18 \times 9.468e10 \approx 2.15e-7); factor \approx 1.0000002
 $$
 
 ### Step 3: Radiation Energy Loss (EUV Photoionization)
@@ -88,29 +88,29 @@ $$
 
 ### Step 5: Gravitational Total
 $$
-\text{g\_grav\_total} = 7.962e-13 × 1.0 × 0.80 × 1.05 = 6.689e-13 m/s2
+\text{g\_grav\_total} = 7.962e-13 \times 1.0 \times 0.80 \times 1.05 = 6.689e-13 m/s2
 $$
 
 ### Step 6: Aether EM Correction (Fast Wind)
 $$
 \begin{aligned}
-  & v = 1.5×106 m/s, B = 10-5 T \\
-  & a_EM = (1.602e-19 × 1.5e6 × 1e-5 / 1.673e-27) × 11 × 1e-12 = 1.580e-2 m/s2
+  & v = 1.5\times106 m/s, B = 10-5 T \\
+  & a_EM = (1.602e-19 \times 1.5e6 \times 1e-5 / 1.673e-27) \times 11 \times 1e-12 = 1.580e-2 m/s2
 \end{aligned}
 $$
 
 ### Step 7: Final Solution
 $$
-g_IC418 = 6.689e-13 + 1.580e-2 ≈ 1.580e-2 m/s2
+g_IC418 = 6.689e-13 + 1.580e-2 \approx 1.580e-2 m/s2
 $$
 
 ---
 
 ## 4. Physical Interpretation
 
-IC 418's result (g = 1.580×10-2) falls precisely between the standard HII (1.053×10-3) and LBV
-eruptive (1.053×10-2) regimes. The 1.5× velocity multiplier (1.5×106 vs. 1.0×106 m/s) directly
-yields a 1.5× larger result. IC 418 establishes the "fast wind PN" UQFF subcategory at v = 1.5×106
+IC 418's result (g = 1.580$\times$10-2) falls precisely between the standard HII (1.053$\times$10-3) and LBV
+eruptive (1.053$\times$10-2) regimes. The 1.5$\times$ velocity multiplier (1.5$\times$106 vs. 1.0$\times$106 m/s) directly
+yields a 1.5$\times$ larger result. IC 418 establishes the "fast wind PN" UQFF subcategory at v = 1.5$\times$106
 m/s and will be shared with NGC 6307+7027 (PAPER_788) and M57 (PAPER_791) as the canonical planetary
 nebula fast-wind value.
 
@@ -118,8 +118,8 @@ nebula fast-wind value.
 
 ## 5. Conclusions
 
-UQFF applied to IC 418 Spirograph Nebula yields g_IC418 ≈ 1.580×10-2 m/s2, establishing the
-planetary nebula fast-wind UQFF parameter class. The 1.5×106 m/s central star wind velocity is
+UQFF applied to IC 418 Spirograph Nebula yields g_IC418 $\approx$ 1.580$\times$10-2 m/s2, establishing the
+planetary nebula fast-wind UQFF parameter class. The 1.5$\times$106 m/s central star wind velocity is
 directly observed in UV spectroscopy, providing an observational anchor for the PN fast-wind UQFF
 subcategory.
 
@@ -134,7 +134,7 @@ subcategory.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -237,7 +237,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -248,13 +248,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -42,9 +42,9 @@ The entire universe is built from three elemental interactions:
 
 1. **Electrostatic Barrier (REB)** — The boundary condition that prevents collapse, defining system
 shells
-2. **Universal Aether (UA')** — Non-local connectivity medium, vacuum energy carrier, ρ_UA' =
+2. **Universal Aether (UA')** — Non-local connectivity medium, vacuum energy carrier, $\rho$_UA' =
 7.09e-36 J/m3
-3. **Super Conductive Material (SCm)** — Superconductive magnetism mediator, ρ_SCm = 7.09e-37 J/m3
+3. **Super Conductive Material (SCm)** — Superconductive magnetism mediator, $\rho$_SCm = 7.09e-37 J/m3
 
 $$
 DPM = UA' + SCm
@@ -60,13 +60,13 @@ at any scale from atomic to cosmic.
 ### Stage 1: DPM Initiation
 $$
 \begin{aligned}
-  & UA' + SCm → DPM (Di-Pseudo-Monopole) \\
-  & DPM → vacuum density ρ_vac
+  & UA' + SCm \to DPM (Di-Pseudo-Monopole) \\
+  & DPM \to vacuum density \rho_vac
 \end{aligned}
 $$
 - UA' provides non-local field connectivity
 - SCm provides superconductive coherence
-- Product: localized vacuum energy density (capacitance) → proto-nuclear seed
+- Product: localized vacuum energy density (capacitance) $\to$ proto-nuclear seed
 - Billions of coherent DPM nuclear cells operate simultaneously at every location
 
 ### Stage 2: U_i Creation (Intelligent Operator)
@@ -79,10 +79,10 @@ DPM → U_i  (repulsive + intelligent quantum operator)
 
 ### Stage 3: U_m String Formation
 $$
-U_i → U_m strings  (\text{U\_mag\_i} = magnetic string sequences)
+U_i \to U_m strings  (\text{U\_mag\_i} = magnetic string sequences)
 $$
 - U_i creates coherent U_m (U_mag_i) strings
-- Strings wind concentrically around the vacuum density core → proto-nucleus
+- Strings wind concentrically around the vacuum density core $\to$ proto-nucleus
 - String winding number corresponds to quantum state number (1..26)
 - Each winding creates one of the 26 quantum states (Russian doll nesting)
 
@@ -108,7 +108,7 @@ U_b (buoyancy) maintains stability against SM_gravity
 - Result: stable proto-nucleus with 26-state organization
 - Still pre-mass at this stage
 
-### Stage 6: Electron Shell Formation → Mass Emergence
+### Stage 6: Electron Shell Formation $\to$ Mass Emergence
 $$
 \begin{aligned}
   & U_g2 governs electron shell placement via U_m \\
@@ -148,17 +148,17 @@ $$
 
 ---
 
-## 5. U_b Tracking → f_Ub Definition
+## 5. U_b Tracking $\to$ f_Ub Definition
 
 During ACP, U_b is tracked through calibration differences:
 
 $$
 \begin{aligned}
-  & f_Ub ∝ Δk_η  (deviation from expected calibration constant k_η) \\
-  & k_η_expected ≈ 10^9 (galaxy-scale) \\
-  & k_η_actual = measured value from observation \\
-  & Δk_η = k_η_expected - k_η_actual \\
-  & f_Ub = Δk_η / k_η_reference
+  & f_Ub \propto \Deltak_\eta  (deviation from expected calibration constant k_\eta) \\
+  & k_\eta_expected \approx 10^9 (galaxy-scale) \\
+  & k_\eta_actual = measured value from observation \\
+  & \Deltak_\eta = k_\eta_expected - k_\eta_actual \\
+  & f_Ub = \Deltak_\eta / k_\eta_reference
 \end{aligned}
 $$
 
@@ -185,7 +185,7 @@ $$
   & State i (i=1..26): pre-mass nuclear configuration level \\
   & - Shell radius: r_i = r_system / i \\
   & - Superconductive magnetism: [SCm]_i = 1e-5 * i2 T \\
-  & - Angular coverage: θ_i = 90° - (i-1)*3.346°   (spans 90° → ~5°) \\
+  & - Angular coverage: \theta_i = 90° - (i-1)*3.346°   (spans 90° \to ~5°) \\
   & - THz hole radius: r_THz,i = 1e-9 / i  m \\
   & - Resonance factor: f_TRZ,i = 0.1 * i / 26 \\
   & - Buoyancy coupling: f_Um,i = 0.05 * i / 26
@@ -203,7 +203,7 @@ $$
 \begin{aligned}
   & Coherence length = "all atoms in a body share the same DPM phase" \\
   & Number of coherent DPMs per cubic centimeter ~ 10^23 (Avogadro-scale) \\
-  & Result: macroscopic quantum phenomena → superconductivity at scale
+  & Result: macroscopic quantum phenomena \to superconductivity at scale
 \end{aligned}
 $$
 
@@ -222,11 +222,11 @@ All of these are manifestations of coherent DPM nuclear cell behavior.
 $$
 \begin{aligned}
   & Step 1: DPM = UA' + SCm \\
-  & Step 2: U_i = k_η * (ρ_vac,SCm - ρ_vac,UA) * ω_i * cos(π*t_n) \\
-  & Step 3: U_m,i = U_i * μ_dipole * (1/r_i) * (1 - e^(-γt)) * cos(πt_n) \\
-  & Step 4: Ψ_proto = Σ_{i=1}^{26} U_m,i  →  capacitance threshold reached \\
-  & Step 5: F_stab = SM_mag * Ψ_proto + U_b  →  U_b = -β*Ug*Ω_g*(M_bh/d_g)*cos(πt_n) \\
-  & Step 6: E_shell = c * ν_res * h(f_SCm) * G_geo  →  atomic mass emerges
+  & Step 2: U_i = k_\eta * (\rho_vac,SCm - \rho_vac,UA) * \omega_i * cos(\pi*t_n) \\
+  & Step 3: U_m,i = U_i * \mu_dipole * (1/r_i) * (1 - e^(-\gammat)) * cos(\pit_n) \\
+  & Step 4: \Psi_proto = \Sigma_{i=1}^{26} U_m,i  \to  capacitance threshold reached \\
+  & Step 5: F_stab = SM_mag * \Psi_proto + U_b  \to  U_b = -\beta*Ug*\Omega_g*(M_bh/d_g)*cos(\pit_n) \\
+  & Step 6: E_shell = c * \nu_res * h(f_SCm) * G_geo  \to  atomic mass emerges
 \end{aligned}
 $$
 
@@ -246,7 +246,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -265,7 +265,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -341,7 +341,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.156 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -352,13 +352,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

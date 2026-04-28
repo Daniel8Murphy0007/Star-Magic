@@ -43,17 +43,17 @@ $a_{Aether\_freq}$. This defines a UQFF term hierarchy for compact objects.
 
 | Parameter | Value | Units |
 |-----------|-------|-------|
-| Mass M | 2.984×1030 | kg |
-| Radius r | 1×104 | m |
-| B-field | 1×1010 | T |
-| B_crit | 1×1011 | T |
-| Age t | 3.799×1010 | s |
+| Mass M | 2.984$\times$1030 | kg |
+| Radius r | 1$\times$104 | m |
+| B-field | 1$\times$1010 | T |
+| B_crit | 1$\times$1011 | T |
+| Age t | 3.799$\times$1010 | s |
 | Redshift z | 0.0009 | — |
-| V_sys | 4.189×1012 | m3 |
-| v_exp | 1×103 | m/s |
-| f_fluid | 1.269×10-14 | Hz |
-| E_vac,neb | 7.09×10-36 | J/m3 |
-| E_vac,ISM | 7.09×10-37 | J/m3 |
+| V_sys | 4.189$\times$1012 | m3 |
+| v_exp | 1$\times$103 | m/s |
+| f_fluid | 1.269$\times$10-14 | Hz |
+| E_vac,neb | 7.09$\times$10-36 | J/m3 |
+| E_vac,ISM | 7.09$\times$10-37 | J/m3 |
 
 ---
 
@@ -157,20 +157,20 @@ $$\boxed{f_{TRZ} = 0.1 \ \text{m/s}^2 \quad \text{(canonical parametric value)}}
 
 | Rank | Term | Value (m/s2) | Dynamic Range vs afluid |
 |------|------|:------------:|:-----------------------:|
-| 1 (DOMINANT) | **afluid_freq** | **1.773×10-9** | — |
-| 2 | asuper_freq | 1.048×10-21 | ×10-12 |
-| 3 | aaether_res | 3.900×10-38 | ×10-29 |
-| 4 | aTHz | 1.182×10-33 | ×10-24 |
-| 5 | aDPM | 3.545×10-42 | ×10-33 |
-| 6 | avac_diff | 3.545×10-53 | ×10-44 |
-| 7 | aexp_freq | 1.623×10-57 | ×10-48 |
-| 8 | aquantum_freq | 1.708×10-66 | ×10-57 |
-| 9 (MINIMUM) | aAether_freq | 1.863×10-84 | ×10-75 |
-| — (zero) | Ug4i | ≈ 0 | (ancient system) |
+| 1 (DOMINANT) | **afluid_freq** | **1.773$\times$10-9** | — |
+| 2 | asuper_freq | 1.048$\times$10-21 | $\times$10-12 |
+| 3 | aaether_res | 3.900$\times$10-38 | $\times$10-29 |
+| 4 | aTHz | 1.182$\times$10-33 | $\times$10-24 |
+| 5 | aDPM | 3.545$\times$10-42 | $\times$10-33 |
+| 6 | avac_diff | 3.545$\times$10-53 | $\times$10-44 |
+| 7 | aexp_freq | 1.623$\times$10-57 | $\times$10-48 |
+| 8 | aquantum_freq | 1.708$\times$10-66 | $\times$10-57 |
+| 9 (MINIMUM) | aAether_freq | 1.863$\times$10-84 | $\times$10-75 |
+| — (zero) | Ug4i | $\approx$ 0 | (ancient system) |
 | — (zero) | Osc_term | 0 | (no active osc.) |
 | — (param) | fTRZ | 0.1 | (coupling constant) |
 
-**Total resonance MUGE for SGR1745 ≈ 1.773×10-9 m/s2** (fluid-dominated; all other terms negligible
+**Total resonance MUGE for SGR1745 $\approx$ 1.773$\times$10-9 m/s2** (fluid-dominated; all other terms negligible
 in sum but physically distinct mechanisms)
 
 ---
@@ -241,7 +241,7 @@ per-term numeric tabulation of all 12 resonance MUGE terms for any system*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -260,7 +260,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -335,7 +335,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -346,13 +346,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

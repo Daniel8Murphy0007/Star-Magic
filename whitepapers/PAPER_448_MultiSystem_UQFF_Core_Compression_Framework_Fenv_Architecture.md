@@ -21,7 +21,7 @@ dynamic variable storage for astrophysical UQFF systems
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `MultiSystemUQFFCoreCalculator` (#2, PAPER_448)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001 —>
 ---
 
 ## Abstract
@@ -65,9 +65,9 @@ With $\{p_j\}$ = system-specific parameter map for system $j$.
 $$H(t,z) = H_0\sqrt{\Omega_m(1+z)^3 + \Omega_Lambda}$$
 
 Evaluated at z for each system:
-- Local (z≈0): H ≈ 70 km/s/Mpc
-- Intermediate (z=0.5): H ≈ 85 km/s/Mpc  
-- Cosmological (z=1100, CMB): H ≈ 70×√(0.3×11003+0.7) km/s/Mpc
+- Local (z$\approx$0): H $\approx$ 70 km/s/Mpc
+- Intermediate (z=0.5): H $\approx$ 85 km/s/Mpc  
+- Cosmological (z=1100, CMB): H $\approx$ 70$\times$$\sqrt{}$(0.3$\times$11003+0.7) km/s/Mpc
 
 $$H_z = H(z)/H_0 \;[\text{dimensionless Hubble factor}]$$
 
@@ -152,7 +152,7 @@ $$g_{\rm fluid} \approx \rho_{\rm fluid} v_{\rm exp}^2 / r$$
 
 ---
 
-## 5. Ψ_total Integration
+## 5. $\Psi$_total Integration
 
 The full quantum-gravitational wave function total combines UQFF modes:
 
@@ -183,9 +183,9 @@ Where $w_j$ = system weight (default: equal weights = 1/N).
 require zero recompilation — only map insertion. Testable by adding any new entry and verifying
 output.
 2. **F_env additivity:** For two weakly-interacting systems (e.g., Tapestry + Pillars at large
-separation), F_env_total ≈ F_env_1 + F_env_2 within 0.1%.
+separation), F_env_total $\approx$ F_env_1 + F_env_2 within 0.1%.
 3. **Hubble evolution consistency:** H(z=0.5) from the modular H(t,z) function should reproduce
-H₀√(0.3×1.53+0.7) = H₀×0.894 = 62.6 km/s/Mpc (±1%).
+H0$\sqrt{}$(0.3$\times$1.53+0.7) = H0$\times$0.894 = 62.6 km/s/Mpc ($\pm$1%).
 
 ---
 
@@ -197,7 +197,7 @@ H₀√(0.3×1.53+0.7) = H₀×0.894 = 62.6 km/s/Mpc (±1%).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -216,7 +216,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -325,7 +325,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.054 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -336,10 +336,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 
 We derive a complete inflationary cosmology from the UQFF SCm vacuum phonon framework, eliminating
 the need for an ad-hoc inflaton scalar field. The SCm vacuum density at GUT scale ($\rho_{\text{SCm}}
-\sim 10^{76}$ kg/m³) drives exponential expansion through the SCm Hubble parameter:
+\sim 10^{76}$ kg/m3) drives exponential expansion through the SCm Hubble parameter:
 
 $$H_{\text{SCm}} = \sqrt{\frac{8\pi G}{3} \rho_{\text{SCm}}} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\text{THz}}(\omega, \Gamma)$$
 
@@ -39,7 +39,7 @@ $$H_{\text{SCm}} = \sqrt{\frac{8\pi G}{3} \rho_{\text{SCm}}} \cdot S_{26}^{(3)}(
 
 where $S_{26}^{(3)} = \sum_{n=1}^{26} \frac{[\text{SSq}]^n}{n^{26}} R_n^{(26,3)}$ (Ramanujan-accelerated),
 $\Phi = \exp(-({\Gamma - \Gamma_0})^2 / 2\sigma_\Gamma^2) \cdot S_{26}^{(3)}$, and 
-$\rho_{\text{SCm}} \sim 10^{76}$ kg/m³ at GUT epoch.
+$\rho_{\text{SCm}} \sim 10^{76}$ kg/m3 at GUT epoch.
 
 ### 1.2 Inflationary Scale Factor
 
@@ -74,7 +74,7 @@ Derivation chain:
 3. **NEC violation:** $\rho + P < 0$ required at wormhole throat
 4. **SCm energy:** $\rho_{\text{exotic}} = \rho_{\text{SCm}} \cdot (r_S/r_0)^2 \cdot S_{26}^2$
 5. **Buoyancy pressure:** $P_{\text{SCm}} = -\beta_i \rho_{\text{exotic}} c^2 [\text{SSq}] \Phi$
-6. **Result:** $(\rho + P)_{\text{SCm}} = -1.75 \times 10^5$ kg/m³ (PAPER_877)
+6. **Result:** $(\rho + P)_{\text{SCm}} = -1.75 \times 10^5$ kg/m3 (PAPER_877)
 
 ### 1.7 UQFF Number System Proofs
 
@@ -91,11 +91,11 @@ DVP prime sieve, BSH harmonic saturation, wormhole phonon damping. Target: 800,0
 
 | Quantity | Value | Constraint |
 |----------|-------|------------|
-| $H_{\text{SCm}}$ | computed from $\rho_{\text{SCm}} = 10^{76}$ kg/m³ | GUT-scale |
+| $H_{\text{SCm}}$ | computed from $\rho_{\text{SCm}} = 10^{76}$ kg/m3 | GUT-scale |
 | $N$ e-foldings | ~60 (for $t_{\text{infl}} = 10^{-33}$ s) | CMB horizon |
 | $n_s$ | 0.9833 | Planck: $0.9649 \pm 0.0042$ |
 | $r$ | 0.133 | BICEP: $r < 0.036$ |
-| $(\rho+P)_{\text{SCm}}$ | $-1.75 \times 10^5$ kg/m³ | PAPER_877 |
+| $(\rho+P)_{\text{SCm}}$ | $-1.75 \times 10^5$ kg/m3 | PAPER_877 |
 | VDS $\text{Li}_{26}(0.57)$ | convergent | $|[\text{SSq}]| < 1$ |
 | BSH 99% saturation | $m > 8.08$ | exp decay |
 | Kernels | 36 | v16 production |
@@ -128,7 +128,7 @@ DVP prime sieve, BSH harmonic saturation, wormhole phonon damping. Target: 800,0
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LAG-S225 -->
 
@@ -214,7 +214,7 @@ mock-theta framework with the SCm phonon spectrum.
 |------------|-----------------|-----------------|--------|-----------|
 | $n_s$ spectral index | 0.9833 (SCm slow-roll) | $0.9649 \pm 0.0042$ | Planck 2018 | 97% |
 | $r$ tensor-to-scalar | 0.133 | $< 0.036$ | BICEP/Keck | Testable |
-| NEC violation | $-1.75 \times 10^5$ kg/m³ | Required for traversable wormholes | Morris-Thorne 1988 | Structural |
+| NEC violation | $-1.75 \times 10^5$ kg/m3 | Required for traversable wormholes | Morris-Thorne 1988 | Structural |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
@@ -242,7 +242,7 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\text{inflation}}} = 0 \implies \beta_i \s
 This determines the inflation exit condition: when the 26-layer buoyancy sum exceeds the phonon driving force, inflation terminates.
 
 ### A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}} = 1.25$ THz → inflation buoyancy → $H_{\text{SCm}}$ → $a(t) = a_0 e^{H_{\text{SCm}} t}$ → $E_{\text{net}}$ sign-flip → 60 e-foldings → hot Big Bang → CMB → $n_s$, $r$ → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}} = 1.25$ THz $\to$ inflation buoyancy $\to$ $H_{\text{SCm}}$ $\to$ $a(t) = a_0 e^{H_{\text{SCm}} t}$ $\to$ $E_{\text{net}}$ sign-flip $\to$ 60 e-foldings $\to$ hot Big Bang $\to$ CMB $\to$ $n_s$, $r$ $\to$ observational prediction
 
 ---
 

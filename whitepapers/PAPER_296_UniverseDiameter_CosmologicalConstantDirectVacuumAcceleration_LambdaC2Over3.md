@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_296 — UQFF Cosmological Constant Direct Vacuum Acceleration
 **Author:** Daniel T. Murphy
 **Date:** March 17, 2026
-## a_Λ = Λc2/3 = 3.30×10-36 m/s2 — First UQFF Explicit Dark-Energy Term
+## a_$\Lambda$ = $\Lambda$c2/3 = 3.30$\times$10-36 m/s2 — First UQFF Explicit Dark-Energy Term
 
 **Session:** 84  
 **Module:** `UNIVERSE_DIAMETER_UQFF_MODULE.cpp` (26th C++ UQFF module — Observable Universe as
@@ -27,10 +27,10 @@ System)
 
 The UQFF Observable Universe Diameter Module introduces, for the **first time** in the UQFF
 framework, an explicit cosmological constant term `a_Λ = Λc2/3` as an independent gravitational
-acceleration contribution. In all 25 prior UQFF C++ modules, the cosmological constant Λ appeared
+acceleration contribution. In all 25 prior UQFF C++ modules, the cosmological constant $\Lambda$ appeared
 only implicitly through the Friedmann equation `H(z) = H₀√(Ω_m(1+z)3 + Ω_Λ)`. At the Observable
-Universe scale (r = 4.4×1026 m), the direct dark-energy vacuum acceleration is `a_Λ = 3.30×10-36
-m/s2`, establishing the **UQFF Cosmological Vacuum Screening Constant** Γ_Λ = 9.57×10-27 — the first
+Universe scale (r = 4.4$\times$1026 m), the direct dark-energy vacuum acceleration is `a_Λ = 3.30×10-36
+m/s2`, establishing the **UQFF Cosmological Vacuum Screening Constant** $\Gamma$_$\Lambda$ = 9.57$\times$10-27 — the first
 dimensionless ratio linking dark energy to DPM-seeded gravity within the UQFF framework.
 
 ---
@@ -38,12 +38,12 @@ dimensionless ratio linking dark energy to DPM-seeded gravity within the UQFF fr
 ## 1. Physical Setup
 
 **System:** Observable Universe (the universe itself as the gravitating body)  
-**Radius:** r_obs = 4.4×1026 m (~46.5 billion light-years, co-moving half-diameter)  
-**Total mass (matter+DM):** M = 1×1054 kg (from ρ_c × Ω_m × V_obs = 9.21×10-27 × 0.3 × 3.57×1080 ≈
-9.86×1053 kg)  
-**Cosmological constant:** Λ = 1.1×10-52 m-2  
-**Hubble constant:** H₀ = 70 km/s/Mpc = 2.269×10-18 s-1  
-**Age of universe:** t_H = 13.8 Gyr = 4.355×1017 s (canonical)  
+**Radius:** r_obs = 4.4$\times$1026 m (~46.5 billion light-years, co-moving half-diameter)  
+**Total mass (matter+DM):** M = 1$\times$1054 kg (from $\rho$_c $\times$ $\Omega$_m $\times$ V_obs = 9.21$\times$10-27 $\times$ 0.3 $\times$ 3.57$\times$1080 $\approx$
+9.86$\times$1053 kg)  
+**Cosmological constant:** $\Lambda$ = 1.1$\times$10-52 m-2  
+**Hubble constant:** H0 = 70 km/s/Mpc = 2.269$\times$10-18 s-1  
+**Age of universe:** t_H = 13.8 Gyr = 4.355$\times$1017 s (canonical)  
 
 ---
 
@@ -81,11 +81,11 @@ this is a macroscopic, observable quantity arising from quantum vacuum accelerat
 
 ---
 
-## 4. Implicit vs Explicit Λ in UQFF
+## 4. Implicit vs Explicit $\Lambda$ in UQFF
 
 In all prior 25 UQFF modules, the cosmological constant appeared only through:
 $$H(z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_Lambda}$$
-where `Ω_Λ = 0.7` absorbs Λ. This makes Λ **degenerate** with Ω_Λ inside the square root.
+where `Ω_Λ = 0.7` absorbs $\Lambda$. This makes $\Lambda$ **degenerate** with $\Omega$_$\Lambda$ inside the square root.
 
 The explicit separation `a_Λ = Λc2/3` is the **dark energy contribution to gravitational
 acceleration** from the cosmological constant as an independent source term in Einstein's field
@@ -109,14 +109,14 @@ PAPER_296 establishes that the observable universe, when treated as a UQFF gravi
 reveals the **direct dark-energy vacuum acceleration** contribution as a measurable additive term.
 This term was previously invisible in all prior modules because it was folded into H(z).
 
-### 5.2 UQFF Cosmological Vacuum Screening Constant Γ_Λ
+### 5.2 UQFF Cosmological Vacuum Screening Constant $\Gamma$_$\Lambda$
 $$\Gamma_Lambda = \frac{a_\Lambda}{g_{base}} = 9.57 \times 10^{-27}$$
 
 This is a new dimensionless UQFF constant characterizing the ratio of dark-energy to gravitational
 acceleration at any scale where M and r satisfy the same critical density condition. For systems at
 critical density (universe-scale), this ratio is universal.
 
-### 5.3 Macroscopic Cosmic Displacement d_Λ = 0.313 m
+### 5.3 Macroscopic Cosmic Displacement d_$\Lambda$ = 0.313 m
 The cumulative displacement from dark-energy vacuum acceleration over the cosmic age is 31.3 cm —
 comparable to laboratory length scales. This provides a potential **observational bridge** between
 cosmological dark energy and laboratory quantum vacuum experiments.
@@ -125,13 +125,13 @@ cosmological dark energy and laboratory quantum vacuum experiments.
 
 ## 6. Comparison with Prior Modules
 
-| Module | Session | Λ treatment | a_Λ explicit |
+| Module | Session | $\Lambda$ treatment | a_$\Lambda$ explicit |
 |--------|---------|-------------|--------------|
 | HUDF (z=3.5) | 72g | Implicit in H(z=3.5) | No |
 | Andromeda | 75 | Implicit in H(z=-0.001) | No |
 | Sombrero | 77 | Implicit in H(z=+0.0063) | No |
-| M16 | 80 | κ_neb = Δ H(z)/H(0) | No |
-| **Universe Diameter** | **84** | **Explicit a_Λ = Λc2/3** | **Yes — FIRST** |
+| M16 | 80 | $\kappa$_neb = $\Delta$ H(z)/H(0) | No |
+| **Universe Diameter** | **84** | **Explicit a_$\Lambda$ = $\Lambda$c2/3** | **Yes — FIRST** |
 
 ---
 
@@ -153,12 +153,12 @@ $$
 
 | Quantity | Symbol | Value | Unit |
 |----------|--------|-------|------|
-| Cosmological constant | Λ | 1.1×10-52 | m-2 |
-| Dark-energy acceleration | a_Λ | **3.30×10-36** | m/s2 |
-| DPM-seeded base | g_base | 3.447×10-10 | m/s2 |
-| Vacuum screening ratio | Γ_Λ | **9.57×10-27** | dimensionless |
-| Cosmic displacement | d_Λ | **0.313** | m |
-| Universe age | t_H | 4.355×1017 | s |
+| Cosmological constant | $\Lambda$ | 1.1$\times$10-52 | m-2 |
+| Dark-energy acceleration | a_$\Lambda$ | **3.30$\times$10-36** | m/s2 |
+| DPM-seeded base | g_base | 3.447$\times$10-10 | m/s2 |
+| Vacuum screening ratio | $\Gamma$_$\Lambda$ | **9.57$\times$10-27** | dimensionless |
+| Cosmic displacement | d_$\Lambda$ | **0.313** | m |
+| Universe age | t_H | 4.355$\times$1017 | s |
 
 ---
 
@@ -173,7 +173,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -192,7 +192,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -267,7 +267,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

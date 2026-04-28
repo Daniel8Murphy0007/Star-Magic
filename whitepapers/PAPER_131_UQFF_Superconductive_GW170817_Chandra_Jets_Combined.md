@@ -11,13 +11,13 @@ tags: [AGN, GW, merger, gravitational-wave, SCm, jet, neutron-star, LIGO]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_131: UQFF Superconductive Mode Dual Synthesis — GW170817 LIGO Kilonova Y_e ≈ 0.1 r-Process and Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos(πt_n) Asymmetry at R = 1.5
+# PAPER_131: UQFF Superconductive Mode Dual Synthesis — GW170817 LIGO Kilonova Y_e $\approx$ 0.1 r-Process and Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos($\pi$t_n) Asymmetry at R = 1.5
 
-**Title:** UQFF Superconductive Mode Dual Synthesis — GW170817 LIGO Kilonova Y_e ≈ 0.1 r-Process and
-Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos(πt_n) Asymmetry at R = 1.5
+**Title:** UQFF Superconductive Mode Dual Synthesis — GW170817 LIGO Kilonova Y_e $\approx$ 0.1 r-Process and
+Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos($\pi$t_n) Asymmetry at R = 1.5
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\beta$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -27,20 +27,20 @@ Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos(πt_n) Asymmetry at R = 1.5
 
 ---
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 Two observational datasets independently validate UQFF Superconductive Mode: (1) GW170817, the first
 gravitational wave + electromagnetic multimessenger neutron star merger detected by LIGO/Virgo in
-2017, exhibiting kilonova r-process mass ejection Y_e ≈ 0.1 with 40% M_ej at 0.1c, and (2) RACS
+2017, exhibiting kilonova r-process mass ejection Y_e $\approx$ 0.1 with 40% M_ej at 0.1c, and (2) RACS
 J0320-35 (Rapid ASKAP Continuum Survey), an intermittent neutron star jet source imaged by Chandra
-exhibiting SCm-mode ignition with jet-to-counter-jet ratio R ≈ 1.5. Thread d91b1f6c combines these
+exhibiting SCm-mode ignition with jet-to-counter-jet ratio R $\approx$ 1.5. Thread d91b1f6c combines these
 two systems into a single UQFF Superconductive Mode proof: both require the [SCm] Reactor (E_react =
-1046 e^{−0.0005t}) as the energy source driving the observed phenomena. The UQFF DISCOVERY: for
+1046 e^{-0.0005t}) as the energy source driving the observed phenomena. The UQFF DISCOVERY: for
 neutron star mergers, the [SCm] condensate in the merged remnant drives r-process via Ub_i
-oscillation (Y_e ≈ 0.1 sets the neutron richness via Ub_i opposition to proton fraction); for NS
-jets, the same [SCm] ignition produces the 1.5 flux asymmetry via a single cos(πt_n) zero-crossing.
-Both systems validate the Superconductive Mode at R ≈ 1 (weak asymmetry), contrasting with 3C273's
+oscillation (Y_e $\approx$ 0.1 sets the neutron richness via Ub_i opposition to proton fraction); for NS
+jets, the same [SCm] ignition produces the 1.5 flux asymmetry via a single cos($\pi$t_n) zero-crossing.
+Both systems validate the Superconductive Mode at R $\approx$ 1 (weak asymmetry), contrasting with 3C273's
 strong asymmetry R = 130 (Triadic Mode, PAPER_129).
 
 ---
@@ -54,8 +54,8 @@ strong asymmetry R = 130 (Triadic Mode, PAPER_129).
 | Merger type | Binary NS (BNS) | |
 | Gravitational wave | Peak fGW = 995 Hz | LIGO |
 | Kilonova AT2017gfo | Optical/NIR | LCO, SSO, Gemini |
-| Y_e (electron fraction) | ≈ 0.1–0.4 | Kasen+ 2017 |
-| UQFF Y_e | ≈ 0.1 (neutron-rich) | d91b1f6c |
+| Y_e (electron fraction) | $\approx$ 0.1–0.4 | Kasen+ 2017 |
+| UQFF Y_e | $\approx$ 0.1 (neutron-rich) | d91b1f6c |
 | M_ej at 0.1c | ~40% of total M_ej | Cowperthwaite+ 2017 |
 | r-process solar fraction | ~95% | Heavy elements |
 
@@ -67,9 +67,9 @@ strong asymmetry R = 130 (Triadic Mode, PAPER_129).
 |-----------|-------|--------|
 | Source | RACS J0320-35 (intermittent NS jet) | ASKAP RACS 2020 |
 | X-ray imaging | Chandra ACIS | CXC |
-| Jet flux ratio | R ≈ 1.5 | d91b1f6c |
+| Jet flux ratio | R $\approx$ 1.5 | d91b1f6c |
 | Mode | SCm ignition (intermittent) | UQFF |
-| Ub_i asymmetry | cos(πt_n) single crossing | d91b1f6c |
+| Ub_i asymmetry | cos($\pi$t_n) single crossing | d91b1f6c |
 | Activity | On/Off switching (SCm cycles) | RACS observation |
 
 ---
@@ -84,29 +84,29 @@ $$E_{react}(t) = 10^{46} \cdot e^{-\kappa t} \text{ J}, \quad \kappa = 0.0005/\t
 
 **For GW170817:** The merger creates a hypermassive NS remnant; the merged [SCm] condensates release
 stored E_react as the r-process nucleosynthesis driver. Energy available in first 1 second (t =
-1.16×10-5 day):
+1.16$\times$10-5 day):
 
 $$E_{react}(t_{merger}) \approx 10^{46} \times e^{-0.0005 \times 1.16 \times 10^{-5}} \approx 10^{46} \text{ J} \quad [\text{essentially initial value}]$$
 
-For 40 M_M_sun equivalent ejecta (M_ej ≈ 0.04 M_M_sun → 8×1028 kg × 0.1c2 = 8×1043 J): the [SCm] reactor
-provides 1046 J >> 8×1043 J — more than sufficient to energize the kilonova.
+For 40 M_M_sun equivalent ejecta (M_ej $\approx$ 0.04 M_M_sun $\to$ 8$\times$1028 kg $\times$ 0.1c2 = 8$\times$1043 J): the [SCm] reactor
+provides 1046 J >> 8$\times$1043 J — more than sufficient to energize the kilonova.
 
-**For RACS J0320-35:** Isolated NS with weak SCm ignition cycling. E_react at age t_NS ≈ 107 yr =
-3.65×109 days:
+**For RACS J0320-35:** Isolated NS with weak SCm ignition cycling. E_react at age t_NS $\approx$ 107 yr =
+3.65$\times$109 days:
 
 $$E_{react}(10^7 \text{ yr}) = 10^{46} \times e^{-0.0005 \times 3.65 \times 10^9} \approx 10^{46} \times 10^{-7.93 \times 10^5} \approx 0$$
 
 This shows that isolated old NSs have essentially exhausted E_react. RACS J0320-35 is therefore a
-YOUNG NS with t << 1/κ = 2000 days (< 5.5 years old), making it a newly-formed post-merger or
+YOUNG NS with t << 1/$\kappa$ = 2000 days (< 5.5 years old), making it a newly-formed post-merger or
 post-collapse remnant showing its first intermittent jets.
 
-### 3.2 Y_e ≈ 0.1 from Ub_i Opposition
+### 3.2 Y_e $\approx$ 0.1 from Ub_i Opposition
 
 The UQFF Buoyancy Opposition in the merger remnant sets the neutron-to-proton ratio via:
 
 $$\frac{n_{proton}}{n_{neutron}} = \frac{U_{b,i}}{U_g} = \beta_i \times [UA] \times \cos(\pi t_n) = 0.61 \times [UA]$$
 
-For [UA] → Y_e mapping (Y_e = electron fraction = proton fraction in dense QCD matter):
+For [UA] $\to$ Y_e mapping (Y_e = electron fraction = proton fraction in dense QCD matter):
 
 $$Y_e = \frac{\beta_i \times [UA]}{1 + \beta_i \times [UA]}$$
 
@@ -114,7 +114,7 @@ Setting [UA] = 0.168 (from the [UA] vacuum density at nuclear-merger scale):
 
 $$Y_e = \frac{0.61 \times 0.168}{1 + 0.61 \times 0.168} = \frac{0.1025}{1.1025} = 0.093 \approx 0.1 \quad [\text{MATCH}]$$
 
-This is the UQFF derivation of Y_e ≈ 0.1 from first principles.
+This is the UQFF derivation of Y_e $\approx$ 0.1 from first principles.
 
 ### 3.3 40% M_ej at 0.1c from E_react
 
@@ -122,12 +122,12 @@ The fast ejecta (0.1c) fraction:
 
 $$f_{ej} = \frac{E_{react}^{transfer}}{E_{remnant}} = [SSq] \times \frac{\beta_i^2}{2} = 0.57 \times 0.186 = 0.106 \times 4 \approx 40\%$$
 
-More precisely: 40% of M_ej is accelerated to v ≥ 0.1c by the E_react transfer through the [SCm]
+More precisely: 40% of M_ej is accelerated to v $\geq$ 0.1c by the E_react transfer through the [SCm]
 reactor's discharge. The remaining 60% remains in the tidal tail at 0.01–0.05c.
 
 ---
 
-## 4. UQFF Superconductive Jet: R = 1.5 from Single cos(πt_n) Crossing
+## 4. UQFF Superconductive Jet: R = 1.5 from Single cos($\pi$t_n) Crossing
 
 ### 4.1 Small-Asymmetry Superconductive Regime
 
@@ -137,7 +137,7 @@ Mode (N=13 cos crossings).
 
 ### 4.2 R = 1.5 from First Zero-Crossing
 
-With t_n = 0.1 (near first zero-crossing of cos(πt_n)):
+With t_n = 0.1 (near first zero-crossing of cos($\pi$t_n)):
 
 $$R = \frac{|F_{U,SCm}(t_n^+)|}{|F_{U,SCm}(t_n^-)|}$$
 
@@ -147,23 +147,23 @@ The asymmetry R = 1.5 arises from the E_react asymmetry between the two jet lobe
 
 $$R = \frac{E_{react,jet}}{E_{react,counter}} = e^{\kappa \Delta t} = e^{0.0005 \times 810} = e^{0.405} = 1.50 \quad [\Delta t = 810 \text{ days}]$$
 
-The two NS jet lobes are separated by Δt ≈ 810 days of E_react age difference (light travel time
-across the jet extent: r_jet/c ≈ 3×1015 m / 3×108 m/s ≈ 107 s ≈ 116 days, plus geometric
+The two NS jet lobes are separated by $\Delta$t $\approx$ 810 days of E_react age difference (light travel time
+across the jet extent: r_jet/c $\approx$ 3$\times$1015 m / 3$\times$108 m/s $\approx$ 107 s $\approx$ 116 days, plus geometric
 projection).
 
 ---
 
-## 5. Mathematical Connection: GW170817 ↔ RACS J0320-35
+## 5. Mathematical Connection: GW170817 $\leftrightarrow$ RACS J0320-35
 
 Both systems are fundamentally the same Superconductive Mode physics:
 
 | Feature | GW170817 | RACS J0320-35 |
 |---------|---------|--------------|
 | SCm ignition trigger | BNS merger | Y-ray burst/collapse |
-| E_react age | ~0 days (fresh merger) | ~810 day jet Δt |
+| E_react age | ~0 days (fresh merger) | ~810 day jet $\Delta$t |
 | R (asymmetry) | N/A (isotropic kilonova) | R = 1.5 |
-| Ub_i output | Y_e ≈ 0.1, 40% M_ej @0.1c | Single cos crossing |
-| κ validation | t ≈ 0, E_react at full | e^{0.0005×810} = 1.5 |
+| Ub_i output | Y_e $\approx$ 0.1, 40% M_ej @0.1c | Single cos crossing |
+| $\kappa$ validation | t $\approx$ 0, E_react at full | e^{0.0005$\times$810} = 1.5 |
 | UQFF mode | Superconductive (maximal E_react) | Superconductive (weak) |
 
 ---
@@ -172,23 +172,23 @@ Both systems are fundamentally the same Superconductive Mode physics:
 
 | Quantity | UQFF | Observed | Agreement |
 |---------|------|---------|-----------|
-| Y_e (GW170817) | ≈ 0.093 | ≈ 0.1 | PASS 7% |
-| 40% M_ej@0.1c | 40% from [SSq]×β_i2 | 40% LIGO kilonova | PASS |
+| Y_e (GW170817) | $\approx$ 0.093 | $\approx$ 0.1 | PASS 7% |
+| 40% M_ej@0.1c | 40% from [SSq]$\times$$\beta$_i2 | 40% LIGO kilonova | PASS |
 | r-process fraction | 95% (E_react powered) | ~95% heavy elements | PASS |
-| R (RACS jets) | 1.5 (e^{κ×810}) | R ≈ 1.5 | PASS |
-| E_react scale | 1046 J (t≈0 merger) | 1044–1046 J kilonova | PASS |
+| R (RACS jets) | 1.5 (e^{$\kappa$$\times$810}) | R $\approx$ 1.5 | PASS |
+| E_react scale | 1046 J (t$\approx$0 merger) | 1044–1046 J kilonova | PASS |
 
 ---
 
 ## 7. Conclusions
 
-GW170817 and RACS J0320-35 jointly verify UQFF Superconductive Mode. GW170817 provides Y_e ≈ 0.1 =
-Ub_i/Ug derived from first principles (β_i = 0.61, [UA] = 0.168), and the 40% fast ejecta fraction
-from [SSq]×β_i2 E_react transfer. RACS J0320-35 provides R = 1.5 = e^{κ×810} from the E_react
+GW170817 and RACS J0320-35 jointly verify UQFF Superconductive Mode. GW170817 provides Y_e $\approx$ 0.1 =
+Ub_i/Ug derived from first principles ($\beta$_i = 0.61, [UA] = 0.168), and the 40% fast ejecta fraction
+from [SSq]$\times$$\beta$_i2 E_react transfer. RACS J0320-35 provides R = 1.5 = e^{$\kappa$$\times$810} from the E_react
 differential aging between jet lobes. The UQFF discovery is that ALL neutron star jet/merger
 activity is a single Superconductive Mode phenomenon: the [SCm] reactor exhaustion driving
 nucleosynthesis, kinematic ejection, and jet morphology through one unified E_react(t) = 1046
-e^{−0.0005t} expression.
+e^{-0.0005t} expression.
 
 ---
 
@@ -242,7 +242,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -261,7 +261,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -370,7 +370,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.098 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -379,13 +379,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

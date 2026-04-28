@@ -40,7 +40,7 @@ from standard cosmological models.
 ### 1.1 Standard PBH Formation
 
 Standard models require:
-- Density perturbations δρ/ρ > 0.3
+- Density perturbations $\delta$$\rho$/$\rho$ > 0.3
 - Horizon re-entry during radiation domination
 - Specific inflationary power spectrum features
 
@@ -390,7 +390,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.145 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -401,13 +401,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
@@ -424,7 +424,7 @@ bridge.*
 
 **Validator:** `validate_hawking_temperature.py` — PASSED (7/7)  
 *Hawking temperature ratio T_UQFF/T_H = 0.990 (universal TRZ suppression); PBH (10^{1}0 kg) t_evap =
-2.665x10^6 yr; κ = 0.0005/day, [SSq] = 0.57*
+2.665x10^6 yr; $\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 014**
 ---
@@ -439,14 +439,14 @@ bridge.*
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60-0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60-0.61 | Buoyancy coupling coefficient |
 | k_1 | 1.5 | Ug1 DPM-dipole coupling |
 | k_2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k_3 | 1.8 | Ug3 string-rotation coupling |
 | k_4 | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10^{-}2^2 | Inertia tensor scale |
+| $\eta$ | 10^{-}2^2 | Inertia tensor scale |
 | E_react(0) | 10^{4}6 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -461,10 +461,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| -Σλᵢ*Uᵢ*E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i*Ui*E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ_1=10^{-}1^0, λ_2=10^{-}1^2, λ_3=10^{-}1^1, λ_4=10^{-}1^3 (free parameters, not yet empirically
+$\lambda$_1=10^{-}1^0, $\lambda$_2=10^{-}1^2, $\lambda$_3=10^{-}1^1, $\lambda$_4=10^{-}1^3 (free parameters, not yet empirically
 calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
@@ -473,9 +473,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
+| $\rho$_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434*365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434*365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -483,7 +483,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i x Ubi | Expanding nebulae, stellar winds |
+| **Buoyant** | $\beta$_i x Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um x (1+10^{1}3*f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and

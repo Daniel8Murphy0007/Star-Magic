@@ -110,7 +110,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
-| $E_\text{net}$ sign-flip | Expansion ↔ erosion phase transition | Derived |
+| $E_\text{net}$ sign-flip | Expansion $\leftrightarrow$ erosion phase transition | Derived |
 | $F_{UBi}$ buoyancy force | Acts outward against $g_\text{comp}$ | Validated |
 
 ---
@@ -127,7 +127,7 @@ $$\mathcal{L}_\text{buoy} = F_{UBi}(r) \cdot r - \int_0^r g_\text{comp}(r')\,dr'
 $$\boxed{E_\text{net}(r) = F_{UBi}(r) \cdot r - \int_0^r g_\text{comp}(r')\,dr',\quad \text{sign}(E_\text{net}): +\text{expand}, -\text{erode}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → buoyancy force $F_{UBi}$ → net energy balance → expansion/erosion phase → triadic branch 3/3
+PAPER_877 $\to$ buoyancy force $F_{UBi}$ $\to$ net energy balance $\to$ expansion/erosion phase $\to$ triadic branch 3/3
 
 ---
 

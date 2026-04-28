@@ -18,24 +18,24 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
 **Index Slot:** §1.8 Alpha Multiplicity & BEC Nuclear Physics,  
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework
 (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across
 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological
-references, the integral yields F_U_Bi_i_mean = -6.05×107 N with a bootstrap standard deviation of
-3%. The corresponding cosmic x_2 quadratic solution is -3.40×10-7 m. KAPPA_MCMC calibration across
+references, the integral yields F_U_Bi_i_mean = -6.05$\times$107 N with a bootstrap standard deviation of
+3%. The corresponding cosmic x_2 quadratic solution is -3.40$\times$10-7 m. KAPPA_MCMC calibration across
 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the
 residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject
 normality; bootstrap 3% std is robust).
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -92,10 +92,10 @@ in the nuclear limit (Papers #59#61).
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| `F_U_Bi_i` mean | **-6.05×107 N** |
+| `F_U_Bi_i` mean | **-6.05$\times$107 N** |
 | Log bootstrap std | **3%** |
 | `F_U_Bi_i` range | ~10 N (nuclear) to ~10-4 N (AGN clusters) |
-| x_2 cosmic | **-3.40×10-7 m** |
+| x_2 cosmic | **-3.40$\times$10-7 m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -147,11 +147,11 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 | System | B (T) | Q_wave (J/m) |
 |--------|-------|---------------|
-| Intergalactic medium | 10?? | 3.98×10? |
-| ISM average | 10-5 | **3.98×10-5** |
-| Crab Nebula | 10-4 | **3.98×10?** |
-| Pulsar wind nebula | 10-4 to 10? | 3.98×10? to 3.98×10? |
-| Magnetar surface | 4.4×10 | 7.70×10-7 |
+| Intergalactic medium | 10?? | 3.98$\times$10? |
+| ISM average | 10-5 | **3.98$\times$10-5** |
+| Crab Nebula | 10-4 | **3.98$\times$10?** |
+| Pulsar wind nebula | 10-4 to 10? | 3.98$\times$10? to 3.98$\times$10? |
+| Magnetar surface | 4.4$\times$10 | 7.70$\times$10-7 |
 
 ---
 
@@ -170,13 +170,13 @@ $$\kappa_{\rm MCMC} = \argmin_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm ob
 |-----------|-------|
 | Canonical ? | **0.0005**/day |
 | MCMC ? | **0.00052**/day |
-| MCMC std | 1.23×10-5/day |
+| MCMC std | 1.23$\times$10-5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
 The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The
-canonical κ = 0.0005/day is retained as the production parameter, consistent with the CI lower
+canonical $\kappa$ = 0.0005/day is retained as the production parameter, consistent with the CI lower
 bound.
 
 ---
@@ -194,7 +194,7 @@ bound.
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5×10-4 providing the strongest
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5$\times$10-4 providing the strongest
 rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is
 **globally similar to normal** but has **fat tails** (leptokurtosis):
 
@@ -223,8 +223,8 @@ This force magnitude corresponds to:
 |----------------|-----------|-------|
 | Strong nuclear force (hadron) | ~104 | 10 |
 | Gravitational force (NS-NS) | ~10 | 10-85 |
-| Planck force F_P = c4/G | 1.21×1044 | 10-7 |
-| **`F_U_Bi_i` mean** | **6.05×107** | – |
+| Planck force F_P = c4/G | 1.21$\times$1044 | 10-7 |
+| **`F_U_Bi_i` mean** | **6.05$\times$107** | – |
 
 The F_U_Bi_i mean far exceeds the Planck force by 10-7, which at first appears unphysical. However,
 the UQFF framework operates across all 52 systems simultaneously  the mean includes cosmological
@@ -241,14 +241,14 @@ factor) returns physical values.
 | Integral Form C-1 (galactic) | Og  (M_bh/d_g)  S(Ug + Ub) |
 | Integral Form C-2 (resonant) | F_Bi  (1+f_TRZ)/(1-Og) |
 | Master Form | M  (Ug_i - Ub_i + Ui_i) |
-| Ensemble mean | -6.05×107 N |
+| Ensemble mean | -6.05$\times$107 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | -3.40×10-7 m |
-| Q_wave mean | 3.98×10-5 J/m |
+| Cosmic x_2 | -3.40$\times$10-7 m |
+| Q_wave mean | 3.98$\times$10-5 J/m |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: `GrokThread_UQFF_0904_Validation`.py | κ = 0.0005/day | [SSq] = 0.57*
+*Source: `GrokThread_UQFF_0904_Validation`.py | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -288,7 +288,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -307,7 +307,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -418,14 +418,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -440,10 +440,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -451,9 +451,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -461,8 +461,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -538,7 +538,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.118 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -547,13 +547,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

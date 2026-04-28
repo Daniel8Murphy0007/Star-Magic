@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 This paper derives the galactic rotation and dark matter coupling term **F_gal** within the UQFF U_b
 model framework. F_gal incorporates both the flat galactic rotation curve (v_gal = 220 km/s) and the
-Navarro-Frenk-White (NFW) dark matter density profile (ρ_DM = 4.2×10-2 kg/m3 at 8 kpc) to provide a
+Navarro-Frenk-White (NFW) dark matter density profile ($\rho$_DM = 4.2$\times$10-2 kg/m3 at 8 kpc) to provide a
 physically motivated galactic environmental correction to the unified gravitational field. This term
 enables UQFF to address the galaxy rotation curve problem and the nature of dark matter halos
 directly within standard UQFF calculations.
@@ -51,15 +51,15 @@ within radius r_gal, according to the NFW profile.
 
 | Symbol | Value | Source |
 |--------|-------|--------|
-| v_gal | 220 km/s = 2.20×105 m/s | Milky Way rotation curve |
-| r_gal | 8 kpc = 2.47×1020 m | Solar galactocentric radius |
+| v_gal | 220 km/s = 2.20$\times$105 m/s | Milky Way rotation curve |
+| r_gal | 8 kpc = 2.47$\times$1020 m | Solar galactocentric radius |
 
 Rotational acceleration:
 $$
 \begin{aligned}
-  & a_rot = v_gal2 / r_gal = (2.20×105)2 / (2.47×1020) \\
-  & = 4.84×1010 / (2.47×1020) \\
-  & ≈ 1.96×10-10 m/s2
+  & a_rot = v_gal2 / r_gal = (2.20\times105)2 / (2.47\times1020) \\
+  & = 4.84\times1010 / (2.47\times1020) \\
+  & \approx 1.96\times10-10 m/s2
 \end{aligned}
 $$
 
@@ -67,14 +67,14 @@ $$
 
 The Navarro-Frenk-White (NFW 1996) profile for galactic halos:
 $$
-ρ_NFW(r) = ρ_s / [(r/r_s)(1 + r/r_s)2]
+\rho_NFW(r) = \rho_s / [(r/r_s)(1 + r/r_s)2]
 $$
 
 At the solar galactocentric radius (r = 8 kpc), the local dark matter density is constrained by
 stellar kinematics and microlensing:
 
 $$
-ρ_DM = 4.2×10-2 kg/m3    (at r_gal = 8 kpc)
+\rho_DM = 4.2\times10-2 kg/m3    (at r_gal = 8 kpc)
 $$
 
 This is consistent with the NFW best-fit parameters for the Milky Way halo from Kepler DR25 galactic
@@ -85,10 +85,10 @@ context analysis and ScienceDirect galactic dynamics literature.
 Approximating the dark matter distribution as uniform within r_gal (valid to first order at 8 kpc):
 $$
 \begin{aligned}
-  & M_DM = ρ_DM * (4/3) * π * r_gal3 \\
-  & = 4.2×10-2 * (4/3) * π * (2.47×1020)3 \\
-  & = 4.2×10-2 * 6.31×1061 \\
-  & ≈ 2.57×1040 kg
+  & M_DM = \rho_DM * (4/3) * \pi * r_gal3 \\
+  & = 4.2\times10-2 * (4/3) * \pi * (2.47\times1020)3 \\
+  & = 4.2\times10-2 * 6.31\times1061 \\
+  & \approx 2.57\times1040 kg
 \end{aligned}
 $$
 
@@ -100,9 +100,9 @@ integration from 0 to r_gal gives the same order of magnitude.
 $$
 \begin{aligned}
   & F_DM = G * M_DM / r_gal2 \\
-  & = (6.6743×10-11) * (2.57×1040) / (2.47×1020)2 \\
-  & = 1.715×1030 / (6.10×1040) \\
-  & ≈ 2.83×10-10 m/s2
+  & = (6.6743\times10-11) * (2.57\times1040) / (2.47\times1020)2 \\
+  & = 1.715\times1030 / (6.10\times1040) \\
+  & \approx 2.83\times10-10 m/s2
 \end{aligned}
 $$
 
@@ -111,8 +111,8 @@ $$
 $$
 \begin{aligned}
   & F_gal = a_rot + F_DM \\
-  & = 1.96×10-10 + 2.83×10-10 \\
-  & = 4.79×10-10 m/s2
+  & = 1.96\times10-10 + 2.83\times10-10 \\
+  & = 4.79\times10-10 m/s2
 \end{aligned}
 $$
 
@@ -129,7 +129,7 @@ MUST be maintained by some gravitational source (conventionally attributed to da
 2. **NFW dark matter term (G*M_DM/r_gal2):** The direct gravitational contribution from the dark
 matter halo mass enclosed within the solar circle, parameterized via the NFW density profile.
 
-The sum F_gal = 4.79×10-10 m/s2 represents the total galactic environmental gravitational background
+The sum F_gal = 4.79$\times$10-10 m/s2 represents the total galactic environmental gravitational background
 experienced by any object at the solar galactocentric radius, providing a "galactic floor" to the
 UQFF F_env(t) calculation.
 
@@ -142,13 +142,13 @@ $$
 F_env(t) = 0.50 * F_orbit + 0.30 * F_tide + 0.20 * F_gal
 $$
 
-F_gal contributes 20% of the total environmental force. Its magnitude of 4.79×10-10 m/s2 is small
-compared to F_orbit (1.30×10-1 m/s2) but provides the long-range galactic context that stabilizes
+F_gal contributes 20% of the total environmental force. Its magnitude of 4.79$\times$10-10 m/s2 is small
+compared to F_orbit (1.30$\times$10-1 m/s2) but provides the long-range galactic context that stabilizes
 the entire planetary system against disruption by passing stars and molecular clouds.
 
 F_gal contribution to F_env:
 $$
-0.20 * 4.79×10-10 ≈ 9.58×10-11 m/s2
+0.20 * 4.79\times10-10 \approx 9.58\times10-11 m/s2
 $$
 
 This is negligible in the Kepler context but becomes dominant for wide-separation binary stars,
@@ -158,11 +158,11 @@ isolated halo objects, or any system at r > 100 pc from the Galactic center.
 
 ## 6. Galaxy Rotation Curve Problem — UQFF Perspective
 
-The galaxy rotation curve problem: observed v(r) = constant instead of Keplerian v(r) ∝ 1/√r.
+The galaxy rotation curve problem: observed v(r) = constant instead of Keplerian v(r) $\propto$ 1/$\sqrt{}$r.
 
 UQFF addresses this through the D_term:
 $$
-D_term = (M_vis + M_DM) * (δρ/ρ + 3μ_s∇(M_s/r)/r)
+D_term = (M_vis + M_DM) * (\delta\rho/\rho + 3\mu_s\nabla(M_s/r)/r)
 $$
 
 Combined with F_gal explicitly encoding the NFW dark matter contribution, UQFF provides two
@@ -181,24 +181,24 @@ physics beyond the already-integrated dark matter density parameterization.
 $$
 \begin{aligned}
   & v(8 kpc) = 220 km/s  (observed, VLBI/Gaia DR2) \\
-  & v(8 kpc) = √(G*M_total/r_gal) requires M_total >> M_visible \\
-  & F_gal = 4.79×10-10 m/s2 → M_total = F_gal * r_gal2 / G = 1.74×1041 kg ≈ 8.75×1010 M_Sun
+  & v(8 kpc) = \sqrt{}(G*M_total/r_gal) requires M_total >> M_visible \\
+  & F_gal = 4.79\times10-10 m/s2 \to M_total = F_gal * r_gal2 / G = 1.74\times1041 kg \approx 8.75\times1010 M_Sun
 \end{aligned}
 $$
 This is consistent with the Milky Way's total gravitating mass within 8 kpc (including dark matter
-halo): ~8–12×1010 M_Sun (van der Marel et al. 2019).
+halo): ~8–12$\times$1010 M_Sun (van der Marel et al. 2019).
 
 ### 7.2 Galactic Context from Kepler Orrery V Frames
-- Frames 7, 17, 25 (approx.) confirm stable spacing at r_gal ≈ 8 kpc
-- v_orbital ≈ 10–100 km/s for planets; background stability provided by F_gal
+- Frames 7, 17, 25 (approx.) confirm stable spacing at r_gal $\approx$ 8 kpc
+- v_orbital $\approx$ 10–100 km/s for planets; background stability provided by F_gal
 - Outer orbit stability in frames consistent with F_gal providing long-range coherence
 
 ### 7.3 Cross-Reference
-| Source | ρ_DM at 8 kpc | Consistent? |
+| Source | $\rho$_DM at 8 kpc | Consistent? |
 |--------|--------------|-------------|
 | Bovy & Tremaine 2012 | 0.008–0.015 M_Sun/pc3 | PASS (order same) |
 | Piffl et al. 2014 | 0.01–0.03 M_Sun/pc3 | PASS |
-| NFW fit (Iocco et al. 2015) | 0.3–0.6 GeV/cm3 ≈ 0.01 M_Sun/pc3 | PASS |
+| NFW fit (Iocco et al. 2015) | 0.3–0.6 GeV/cm3 $\approx$ 0.01 M_Sun/pc3 | PASS |
 
 ---
 
@@ -212,7 +212,7 @@ $$
 Where v_c(r) is the circular velocity at radius r and M_DM(r) is the NFW-integrated dark matter mass
 within r:
 $$
-M_DM(r) = 4π * ρ_s * r_s3 * [ln(1 + r/r_s) - (r/r_s)/(1 + r/r_s)]
+M_DM(r) = 4\pi * \rho_s * r_s3 * [ln(1 + r/r_s) - (r/r_s)/(1 + r/r_s)]
 $$
 
 This enables UQFF to compute F_gal for:
@@ -226,37 +226,37 @@ This enables UQFF to compute F_gal for:
 
 The file also introduces THz hole (electron-hole recombination) timing:
 $$
-τ = 1 / (A + B*N + C*N2)
+\tau = 1 / (A + B*N + C*N2)
 $$
 
 Where:
-- τ: recombination time [s]
+- $\tau$: recombination time [s]
 - N: carrier density [m-3]
 - A, B, C: Shockley-Read-Hall, radiative, Auger coefficients respectively
 
 This equation bridges the galactic (F_gal) and quantum (Q_term) layers of UQFF via the same
 NFW-scale density dependence: dense regions (high N) recombine faster, creating temporal quantum
-coherence windows that couple to the ℏ/√(ΔxΔp) quantum term. This suggests a future unification
+coherence windows that couple to the ℏ/$\sqrt{}$($\Delta$x$\Delta$p) quantum term. This suggests a future unification
 pathway between galactic dark matter density and quantum decoherence timescales.
 
 ---
 
 ## 10. Conclusion
 
-F_gal = 4.79×10-10 m/s2 provides the UQFF galactic environmental floor using the NFW dark matter
+F_gal = 4.79$\times$10-10 m/s2 provides the UQFF galactic environmental floor using the NFW dark matter
 density profile at 8 kpc. Combined with F_orbit and F_tide in the U_b model, it completes the
 three-component environmental force decomposition validated against 62 Kepler Orrery V frames. F_gal
-encodes flat galactic rotation (v_gal = 220 km/s) and dark matter halo gravity (ρ_DM = 4.2×10-2
+encodes flat galactic rotation (v_gal = 220 km/s) and dark matter halo gravity ($\rho$_DM = 4.2$\times$10-2
 kg/m3) into a single computable term that can be generalized to any galactocentric radius via the
 full NFW profile integral.
 
 **Key equations:**
 $$
 \begin{aligned}
-  & F_gal = v_gal2 / r_gal + G * M_DM / r_gal2    ≈ 4.79×10-10 m/s2 \\
-  & M_DM  = ρ_DM * (4/3) * π * r_gal3              ≈ 2.57×1040 kg \\
-  & ρ_DM  = 4.2×10-2 kg/m3  (NFW at 8 kpc) \\
-  & τ_THz = 1 / (A + B*N + C*N2)                   [THz recombination interface]
+  & F_gal = v_gal2 / r_gal + G * M_DM / r_gal2    \approx 4.79\times10-10 m/s2 \\
+  & M_DM  = \rho_DM * (4/3) * \pi * r_gal3              \approx 2.57\times1040 kg \\
+  & \rho_DM  = 4.2\times10-2 kg/m3  (NFW at 8 kpc) \\
+  & \tau_THz = 1 / (A + B*N + C*N2)                   [THz recombination interface]
 \end{aligned}
 $$
 
@@ -430,7 +430,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.092 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -441,13 +441,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

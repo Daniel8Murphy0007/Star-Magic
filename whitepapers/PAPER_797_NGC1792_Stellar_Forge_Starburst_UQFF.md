@@ -22,12 +22,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 1792 is a starburst spiral galaxy approximately 42 million light-years away (z ≈ 0.0095) in the
+NGC 1792 is a starburst spiral galaxy approximately 42 million light-years away (z $\approx$ 0.0095) in the
 constellation Columba. It is nicknamed the "Stellar Forge" due to its intense star formation rate of
 ~10 MM_sun/yr — approximately 10 times higher than the Milky Way. Hubble ACS imaging reveals extensive
 blue star-forming regions and warm dust lanes throughout the spiral arms. UQFF analysis of NGC 1792
 introduces a **starburst supernova feedback reduction term** F_sn(t) that models the exponential
-buildup of supernova-driven ISM enrichment, yielding g_primary ≈ 1.053×10-3 m/s2 in the EM-dominated
+buildup of supernova-driven ISM enrichment, yielding g_primary $\approx$ 1.053$\times$10-3 m/s2 in the EM-dominated
 regime. The extreme SFR provides the first UQFF calibration point for high-rate starburst spirals.
 
 ---
@@ -48,14 +48,14 @@ supernova history and the effective UQFF gravitational mass.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Spiral estimate |
-| Disk radius | r | 3.78×1020 m (~40 kly) | Optical size |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Spiral estimate |
+| Disk radius | r | 3.78$\times$1020 m (~40 kly) | Optical size |
 | SFR | — | 10 MM_sun/yr | Starburst |
-| τ_sn | — | 1×108 yr = 3.156×1015 s | Feedback timescale |
+| $\tau$_sn | — | 1$\times$108 yr = 3.156$\times$1015 s | Feedback timescale |
 | F_sn,max | — | 0.05 | 5% mass reduction |
 | M_sf | — | 0.10 | High SFR |
 | Redshift | z | 0.0095 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
 | v_EM | v | 105 m/s | Rotation |
 | B_EM | B | 10-5 T | Galactic field |
 
@@ -67,20 +67,20 @@ supernova history and the effective UQFF gravitational mass.
 
 $$
 \begin{aligned}
-  & g_NGC1792(r,t) = (G·M)/r2 · (1 + H(z)·t) · (1 – F_sn(t)) · (1 + M_sf) · (1 + f_TRZ) \\
-  & + q·(v×B)/m_p · (1 + ρ_vac,[UA]/ρ_vac,[SCm]) · 10-12
+  & g_NGC1792(r,t) = (G\cdotM)/r2 \cdot (1 + H(z)\cdott) \cdot (1 – F_sn(t)) \cdot (1 + M_sf) \cdot (1 + f_TRZ) \\
+  & + q\cdot(v\timesB)/m_p \cdot (1 + \rho_vac,[UA]/\rho_vac,[SCm]) \cdot 10-12
 \end{aligned}
 $$
 
-where **F_sn(t) = F₀·(1 – exp(–t/τ_sn))** = **starburst supernova feedback reduction** (novel UQFF
+where **F_sn(t) = F0$\cdot$(1 – exp(–t/$\tau$_sn))** = **starburst supernova feedback reduction** (novel UQFF
 term)
 
 ### Supernova Feedback Term
 
 $$
 \begin{aligned}
-  & F_sn(t) = 0.05 × (1 – exp(–1.578e17/3.156e15)) \\
-  & = 0.05 × (1 – e-50) = 0.05 × 1.000 = 0.05 \\
+  & F_sn(t) = 0.05 \times (1 – exp(–1.578e17/3.156e15)) \\
+  & = 0.05 \times (1 – e-50) = 0.05 \times 1.000 = 0.05 \\
   & (Fully saturated feedback: cumulative SN history has maximally enriched ISM after 5 Gyr)
 \end{aligned}
 $$
@@ -89,15 +89,15 @@ $$
 
 $$
 \begin{aligned}
-  & G·M / r2     = 6.6743e-11 × 1.989e41 / (3.78e20)2 \\
+  & G\cdotM / r2     = 6.6743e-11 \times 1.989e41 / (3.78e20)2 \\
   & = 1.328e31 / 1.429e41 = 9.294e-11 m/s2 \\
-  & H(z = 0.0095): Hz = H0·√(0.3·(1.0095)3 + 0.7) = 2.269e-18 \\
-  & (1 + Hz·t) = 1 + 2.269e-18 × 1.578e17 = 1.358 \\
+  & H(z = 0.0095): Hz = H0\cdot\sqrt{}(0.3\cdot(1.0095)3 + 0.7) = 2.269e-18 \\
+  & (1 + Hz\cdott) = 1 + 2.269e-18 \times 1.578e17 = 1.358 \\
   & factor_sn = (1 – 0.05) = 0.95 \\
   & factor_sf = 1.10; factor_TRZ = 1.05 \\
-  & \text{g\_grav\_total} = 9.294e-11 × 1.358 × 0.95 × 1.10 × 1.05 = 1.397e-10 m/s2 \\
-  & a_EM = (1.602e-19 × 1e5 × 1e-5 / 1.673e-27) × 11e-12 = 1.053e-3 m/s2 \\
-  & g_primary ≈ 1.053×10-3 m/s2
+  & \text{g\_grav\_total} = 9.294e-11 \times 1.358 \times 0.95 \times 1.10 \times 1.05 = 1.397e-10 m/s2 \\
+  & a_EM = (1.602e-19 \times 1e5 \times 1e-5 / 1.673e-27) \times 11e-12 = 1.053e-3 m/s2 \\
+  & g_primary \approx 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -105,11 +105,11 @@ $$
 
 $$
 \begin{aligned}
-  & g_compressed = 1.053×10-3 m/s2 \\
-  & g_resonant   = 1.053×10-3 m/s2 \\
-  & g_buoyancy   = 1.053×10-3 m/s2 \\
-  & g_primary    = 1.053×10-3 m/s2 \\
-  & F_sn(t→∞) = 0.969 (97% saturation at t = 5 Gyr × 50 feedback cycles)
+  & g_compressed = 1.053\times10-3 m/s2 \\
+  & g_resonant   = 1.053\times10-3 m/s2 \\
+  & g_buoyancy   = 1.053\times10-3 m/s2 \\
+  & g_primary    = 1.053\times10-3 m/s2 \\
+  & F_sn(t\to\infty) = 0.969 (97% saturation at t = 5 Gyr \times 50 feedback cycles)
 \end{aligned}
 $$
 
@@ -117,11 +117,11 @@ $$
 
 ## 4. Novel Physics: Starburst Feedback Saturation
 
-The supernova feedback reduction term reaches saturation at t >> τ_sn:
+The supernova feedback reduction term reaches saturation at t >> $\tau$_sn:
 
 $$
 \begin{aligned}
-  & F_sn(t→∞) → F₀ = 0.05 \\
+  & F_sn(t\to\infty) \to F0 = 0.05 \\
   & Residual mass available: (1 – 0.05) = 95% of original M \\
   & SFR at t = 5 Gyr: reduced from 10 MM_sun/yr to ~1 MM_sun/yr (factor 10, consistent with observations)
 \end{aligned}
@@ -132,7 +132,7 @@ star formation drives sufficient feedback to reduce SFR by a factor of ~10 over 
 UQFF framework predicts this as a direct consequence of the supernova mass-loss factor saturating
 the gravitational term.
 
-**SFR–UQFF coupling:** SFR_eff(t) = SFR₀ × (1 – F_sn(t)) — the UQFF mass factor directly predicts
+**SFR–UQFF coupling:** SFR_eff(t) = SFR0 $\times$ (1 – F_sn(t)) — the UQFF mass factor directly predicts
 the observed SFR reduction.
 
 ---
@@ -140,8 +140,8 @@ the observed SFR reduction.
 ## 5. Physical Interpretation
 
 NGC 1792's "Stellar Forge" designation is fully consistent with the UQFF result: high SFR drives
-cumulative supernova feedback (F_sn → 5%), reducing effective gravitational mass while the Aether EM
-ground state remains constant at g = 1.053×10-3 m/s2. The saturation of F_sn at 5% over cosmological
+cumulative supernova feedback (F_sn $\to$ 5%), reducing effective gravitational mass while the Aether EM
+ground state remains constant at g = 1.053$\times$10-3 m/s2. The saturation of F_sn at 5% over cosmological
 timescales represents a UQFF equilibrium state between star formation and feedback in starburst
 spirals.
 
@@ -149,8 +149,8 @@ spirals.
 
 ## 6. Conclusions
 
-UQFF applied to NGC 1792 yields g_primary ≈ 1.053×10-3 m/s2 despite its 10× enhanced SFR. The novel
-starburst supernova feedback term F_sn(t) = F₀·(1 – exp(–t/τ_sn)) establishes a UQFF-based model for
+UQFF applied to NGC 1792 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 despite its 10$\times$ enhanced SFR. The novel
+starburst supernova feedback term F_sn(t) = F0$\cdot$(1 – exp(–t/$\tau$_sn)) establishes a UQFF-based model for
 SFR quenching in starburst spirals. This is the first UQFF system in which cumulative stellar
 feedback is encoded directly through a time-dependent mass-reduction factor, extending UQFF
 applicability to all starburst environments.
@@ -166,7 +166,7 @@ applicability to all starburst environments.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-CLU-S225 -->
 
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.135 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -10,7 +10,7 @@ tags: [vacuum, DPM, pulsar, UQFF, nebula, supernova]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_290: Crab SNR DPM Vacuum Dilution — a_DPM(t) ∝ r(t)-3 in Expanding Pulsar Wind Nebula
+# PAPER_290: Crab SNR DPM Vacuum Dilution — a_DPM(t) $\propto$ r(t)-3 in Expanding Pulsar Wind Nebula
 **Author:** Daniel T. Murphy
 
 **Authors:** Daniel T. Murphy  
@@ -25,7 +25,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper establishes the first UQFF module in which the Dirac-Plasmotic Momentum (DPM)
 vacuum seed acceleration is explicitly time-dependent, evolving as the inverse cube of the
 expanding Supernova Remnant (SNR) radius. The Crab Nebula (M1, SN 1054 CE, ~2 kpc) is the
-reference system: a pulsar-wind nebula whose shock-driven filaments expand at v_exp = 1.5×106 m/s.
+reference system: a pulsar-wind nebula whose shock-driven filaments expand at v_exp = 1.5$\times$106 m/s.
 We derive the DPM dilution law, compute the current gravity signal, and show that the DPM
 vacuum coupling diminishes by a factor D = 6.69 over the 971-year life of the nebula.
 
@@ -35,15 +35,15 @@ vacuum coupling diminishes by a factor D = 6.69 over the 971-year life of the ne
 
 | Parameter | Symbol | Value | Notes |
 |-----------|--------|-------|-------|
-| Remnant mass | M | 9.149×1030 kg | 4.6 M_sun |
-| Initial radius | r₀ | 5.2×1016 m | ~1.7 pc current |
-| Expansion velocity | v_exp | 1.5×106 m/s | Crab shock front |
-| DPM frequency | f_DPM | 1×1012 Hz | THz resonance |
-| Plasmotic vacuum energy | E_vac | 7.09×10-36 J/m3 | UQFF universal |
-| Current proxy | I_curr | 1×1021 A | Pulsar wind current |
-| Vortical area | A_vort | 3.142×108 m2 | PWN proxy |
-| ω1 − ω2 | Δω | 2×10-3 rad/s | Differential spin |
-| Age at current epoch | t_age | 3.064×1010 s | 971 years |
+| Remnant mass | M | 9.149$\times$1030 kg | 4.6 M_sun |
+| Initial radius | r0 | 5.2$\times$1016 m | ~1.7 pc current |
+| Expansion velocity | v_exp | 1.5$\times$106 m/s | Crab shock front |
+| DPM frequency | f_DPM | 1$\times$1012 Hz | THz resonance |
+| Plasmotic vacuum energy | E_vac | 7.09$\times$10-36 J/m3 | UQFF universal |
+| Current proxy | I_curr | 1$\times$1021 A | Pulsar wind current |
+| Vortical area | A_vort | 3.142$\times$108 m2 | PWN proxy |
+| $\omega$1 - $\omega$2 | $\Delta$$\omega$ | 2$\times$10-3 rad/s | Differential spin |
+| Age at current epoch | t_age | 3.064$\times$1010 s | 971 years |
 
 ---
 
@@ -55,7 +55,7 @@ $$F_{\text{DPM}} = I_{\text{curr}} \times A_{\text{vort}} \times (\omega_1 - \om
 
 ### 2.2 Dynamic System Volume
 
-The SNR expands as a sphere of radius r(t) = r₀ + v_exp · t:
+The SNR expands as a sphere of radius r(t) = r0 + v_exp $\cdot$ t:
 
 $$V_{\text{sys}}(t) = \frac{4}{3}\pi \left(r_0 + v_{\text{exp}} \cdot t\right)^3$$
 
@@ -72,7 +72,7 @@ $$a_{\text{DPM}}(t) = \frac{F_{\text{DPM}} \cdot f_{\text{DPM}} \cdot E_{\text{v
 $$V_0 = \frac{4}{3}\pi (5.2\times10^{16})^3 = 5.889\times10^{50}\ \text{m}^3$$
 $$a_{\text{DPM}}(t=0) = \frac{6.284\times10^{26} \times 10^{12} \times 7.09\times10^{-36}}{3\times10^8 \times 5.889\times10^{50}} = 2.521\times10^{-56}\ \text{m/s}^2$$
 
-**At t = 971 yr = 3.064×1010 s (current epoch):**
+**At t = 971 yr = 3.064$\times$1010 s (current epoch):**
 $$r(971\text{ yr}) = 5.2\times10^{16} + 1.5\times10^6 \times 3.064\times10^{10} = 9.796\times10^{16}\ \text{m}$$
 $$V(971\text{ yr}) = \frac{4}{3}\pi (9.796\times10^{16})^3 = 3.936\times10^{51}\ \text{m}^3$$
 $$a_{\text{DPM}}(971\text{ yr}) = \frac{6.284\times10^{26} \times 10^{12} \times 7.09\times10^{-36}}{3\times10^8 \times 3.936\times10^{51}} = 3.772\times10^{-57}\ \text{m/s}^2$$
@@ -85,12 +85,12 @@ $$D = \frac{a_{\text{DPM}}(t=0)}{a_{\text{DPM}}(971\text{ yr})} = \frac{V(971\te
 
 | Epoch | r(t) [m] | V_sys(t) [m3] | a_DPM(t) [m/s2] |
 |-------|----------|----------------|-----------------|
-| t = 0 (SN 1054 CE) | 5.200×1016 | 5.889×1050 | 2.521×10-56 |
-| t = 100 yr | 6.674×1016 | 1.242×1051 | 1.194×10-56 |
-| t = 500 yr | 8.566×1016 | 2.629×1051 | 5.641×10-57 |
-| t = 971 yr (now) | 9.796×1016 | 3.936×1051 | 3.772×10-57 |
-| t = 2000 yr | 1.154×1017 | 6.432×1051 | 2.308×10-57 |
-| t = 10000 yr | 1.520×1017 | 1.470×1052  | 1.009×10-57 |
+| t = 0 (SN 1054 CE) | 5.200$\times$1016 | 5.889$\times$1050 | 2.521$\times$10-56 |
+| t = 100 yr | 6.674$\times$1016 | 1.242$\times$1051 | 1.194$\times$10-56 |
+| t = 500 yr | 8.566$\times$1016 | 2.629$\times$1051 | 5.641$\times$10-57 |
+| t = 971 yr (now) | 9.796$\times$1016 | 3.936$\times$1051 | 3.772$\times$10-57 |
+| t = 2000 yr | 1.154$\times$1017 | 6.432$\times$1051 | 2.308$\times$10-57 |
+| t = 10000 yr | 1.520$\times$1017 | 1.470$\times$1052  | 1.009$\times$10-57 |
 
 **Dilution factor over 971 years: D = 6.69**
 
@@ -103,10 +103,10 @@ The Crab-specific expansion velocity yields a dramatically enhanced THz amplific
 $$\Gamma_{\text{THz}} = \frac{10 \cdot f_{\text{THz}} \cdot v_{\text{exp}}}{c} = \frac{10 \times 10^{12} \times 1.5\times10^6}{3\times10^8} = 5.0\times10^{10}$$
 
 **Comparison with RSC module (Session 81):**
-- RSC v_exp = 1×103 m/s → Γ = 3.33×107
-- Crab v_exp = 1.5×106 m/s → Γ = 5.0×1010 (**1500× larger**)
+- RSC v_exp = 1$\times$103 m/s $\to$ $\Gamma$ = 3.33$\times$107
+- Crab v_exp = 1.5$\times$106 m/s $\to$ $\Gamma$ = 5.0$\times$1010 (**1500$\times$ larger**)
 
-This makes the Crab the highest Γ_THz value among all current UQFF modules. The SNR shock expansion
+This makes the Crab the highest $\Gamma$_THz value among all current UQFF modules. The SNR shock expansion
 directly amplifies the THz cascade chain by over three orders of magnitude relative to neutron star
 scale systems.
 
@@ -120,9 +120,9 @@ $$g_{\text{Crab}}(t,B) = \left[\sum_{i} a_i(t)\right] \times \left(1 - \frac{B}{
 
 where the sum includes: a_DPM(t), a_THz, a_aether, a_u_g4i, a_quantum, a_fluid, a_osc, a_exp.
 
-At t = 971 yr, B = 1×10-8 T:
-- SCm = 1 − 10-8/1011 ≈ 1.000 (no quench)
-- g_Crab ≈ dominated by a_THz = Γ_THz × a_DPM = 5.0×1010 × 3.772×10-57 = 1.886×10-46 m/s2
+At t = 971 yr, B = 1$\times$10-8 T:
+- SCm = 1 - 10-8/1011 $\approx$ 1.000 (no quench)
+- g_Crab $\approx$ dominated by a_THz = $\Gamma$_THz $\times$ a_DPM = 5.0$\times$1010 $\times$ 3.772$\times$10-57 = 1.886$\times$10-46 m/s2
 
 ---
 
@@ -133,7 +133,7 @@ a measurable time-signature as an SNR expands. The gravity signal decreases mono
 r(t)-3, encoding the full expansion history since SN 1054. Observational correlates include:
 
 1. **Hubble Space Telescope (HST):** Crab optical wisp proper motion ~0.015 arcsec/yr confirms
-   v_exp ≈ 1500 km/s at the shock front (consistent with v_exp = 1.5×106 m/s)
+   v_exp $\approx$ 1500 km/s at the shock front (consistent with v_exp = 1.5$\times$106 m/s)
 
 2. **Chandra X-ray Observatory:** Ring/jet variability on 1–3 year timescales provides
    empirical window into the DPM vacuum coupling variation as V_sys(t) changes
@@ -145,11 +145,11 @@ r(t)-3, encoding the full expansion history since SN 1054. Observational correla
 
 ## 7. Relationship to Prior UQFF Papers
 
-- **PAPER_287 (Session 81 RSC):** Established fixed-volume DPM (V_sys = constant = 4.189×1012 m3)
+- **PAPER_287 (Session 81 RSC):** Established fixed-volume DPM (V_sys = constant = 4.189$\times$1012 m3)
 - **PAPER_290 (This paper):** FIRST dynamic V_sys(t) — the DPM signal evolves as V(t)-1
-- The V_sys in RSC (4.189×1012 m3, neutron star ~r=104 m) is 12 orders of magnitude smaller
-  than the Crab V₀ (5.889×1050 m3), explaining why RSC a_DPM (3.545×10-18 m/s2) is
-  38 orders of magnitude larger than Crab a_DPM (3.772×10-57 m/s2)
+- The V_sys in RSC (4.189$\times$1012 m3, neutron star ~r=104 m) is 12 orders of magnitude smaller
+  than the Crab V0 (5.889$\times$1050 m3), explaining why RSC a_DPM (3.545$\times$10-18 m/s2) is
+  38 orders of magnitude larger than Crab a_DPM (3.772$\times$10-57 m/s2)
 
 ---
 
@@ -176,7 +176,7 @@ $$
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 
@@ -338,7 +338,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.182 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -349,13 +349,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

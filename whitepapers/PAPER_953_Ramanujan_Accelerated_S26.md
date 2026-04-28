@@ -77,7 +77,7 @@ where $a_k = \exp(-[\text{SSq}] \cdot k/26)$ and $B_2 = 1/6$, $B_4 = -1/30$, $B_
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -138,7 +138,7 @@ $$S_{26}^{(R)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26)} \xrightar
 $$\boxed{S_N^{(R)} = S_N + \sum_{k=1}^{p} \frac{B_{2k}}{(2k)!} f^{(2k-1)}(N)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → VDS $\text{Li}_{26}$ → Ramanujan $R_n^{(26)}$ acceleration → all phonon/jet/NS calculations
+PAPER_877 $\to$ VDS $\text{Li}_{26}$ $\to$ Ramanujan $R_n^{(26)}$ acceleration $\to$ all phonon/jet/NS calculations
 
 ---
 

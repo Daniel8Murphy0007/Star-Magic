@@ -152,14 +152,14 @@ $$
   & W_stellar = 2.52e16 * 2e6 / (4*pi*(3.09e15)^2 * 3.34e-24) \\
   & = 5.04e22 / (1.198e32 * 3.34e-24) \\
   & = 5.04e22 / 3.999e8 \\
-  & ≈ 1.26e14 m/s^2  (dominated by proximity to OB cluster) \\
+  & \approx 1.26e14 m/s^2  (dominated by proximity to OB cluster) \\
   & P_rad = 7.7e31 / (4*pi*(3.09e15)^2 * 3e8 * 3.34e-24 * 0.01) \\
   & = 7.7e31 / (1.198e32 * 3e8 * 3.34e-26) \\
-  & ≈ 6.4e15 m/s^2
+  & \approx 6.4e15 m/s^2
 \end{aligned}
 $$
 Note: At r = 0.1 pc, both terms are large because we are at the ionization front edge. The net
-W_stellar - P_rad ≈ +1.19e14 → 6.4e15 m/s^2 (sign competition determines pillar orientation).
+W_stellar - P_rad $\approx$ +1.19e14 $\to$ 6.4e15 m/s^2 (sign competition determines pillar orientation).
 
 **For Eagle Nebula "Pillars of Creation" (NGC 6611 OB cluster):**
 $$
@@ -167,10 +167,10 @@ $$
   & Mdot_wind = 1e-6 M_Sun/yr = 6.3e16 kg/s (cluster total) \\
   & v_wind = 1500 km/s = 1.5e6 m/s \\
   & r = 1 pc = 3.086e16 m \\
-  & W_stellar ≈ 6.3e16 * 1.5e6 / (4*pi*(3.086e16)^2 * 5e-24) \\
-  & ≈ 9.45e22 / (1.196e34 * 5e-24) \\
-  & ≈ 9.45e22 / 5.98e10 \\
-  & ≈ 1.58e12 m/s^2
+  & W_stellar \approx 6.3e16 * 1.5e6 / (4*pi*(3.086e16)^2 * 5e-24) \\
+  & \approx 9.45e22 / (1.196e34 * 5e-24) \\
+  & \approx 9.45e22 / 5.98e10 \\
+  & \approx 1.58e12 m/s^2
 \end{aligned}
 $$
 
@@ -212,13 +212,13 @@ $$
   & P_term = 2.4e-6 * (5.29e-11)^3 / (13.6 * 1.6e-19) \\
   & = 2.4e-6 * 1.48e-31 / 2.18e-18 \\
   & = 3.55e-37 / 2.18e-18 \\
-  & ≈ 1.63e-19  (dimensionless, utterly negligible classically)
+  & \approx 1.63e-19  (dimensionless, utterly negligible classically)
 \end{aligned}
 $$
 
 For extreme environments (e.g., near a laser with P_ext ~ 10^12 Pa):
 $$
-P_term = 1e12 * 1.48e-31 / 2.18e-18 ≈ 6.8e-2 (significant — ~7% correction)
+P_term = 1e12 * 1.48e-31 / 2.18e-18 \approx 6.8e-2 (significant — ~7% correction)
 $$
 
 **This is why P_term appears alongside F_tech** (technological fields): P_term is only physically
@@ -280,8 +280,8 @@ $$
 $$
 
 **Net force sign determines pillar evolution:**
-- W_stellar > P_rad: wind compresses pillars → active star formation
-- P_rad > W_stellar: radiation evaporates pillars → photo-evaporation dominant
+- W_stellar > P_rad: wind compresses pillars $\to$ active star formation
+- P_rad > W_stellar: radiation evaporates pillars $\to$ photo-evaporation dominant
 
 ### 5.2 Hydrogen Atom — Atomic Pressure and Technological Field Form
 
@@ -467,7 +467,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.114 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -478,13 +478,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

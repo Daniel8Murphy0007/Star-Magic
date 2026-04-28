@@ -27,15 +27,15 @@ pillar photographed by Hubble WFC3 in 2010 for the telescope's 20th anniversary.
 spew from embedded protostars at its tips while ultraviolet radiation from hot O-stars carves its
 surface. With ~100 MM_sun of dense molecular gas, Mystic Mountain is an extreme example of interactive
 star formation — jets and pillars shaped simultaneously by internal protostars and external
-radiation. Under UQFF, the protostellar jet velocity (v ≈ 100 km/s), standard HII B-field, and
-modest SFR yield g_Mystic ≈ 1.053×10-3 m/s2.
+radiation. Under UQFF, the protostellar jet velocity (v $\approx$ 100 km/s), standard HII B-field, and
+modest SFR yield g_Mystic $\approx$ 1.053$\times$10-3 m/s2.
 
 ---
 
 ## 1. Introduction
 
 Mystic Mountain forms part of the NGC 3372 complex (Carina Nebula) but at a denser, more compact ~1
-ly × 3 ly scale. The protostars embedded within drive HH (Herbig-Haro) jets at ~100–500 km/s that
+ly $\times$ 3 ly scale. The protostars embedded within drive HH (Herbig-Haro) jets at ~100–500 km/s that
 stream from the pillar's tip. Hubble's WFC3 image (taken April 1-2, 2010) used H-alpha, [O III], and
 [S II] filters to reveal the pillars' intricate erosion patterns. Under UQFF, the compact scale (r =
 1e16 m) and standard protostellar jet velocity (v = 105 m/s) yield the classic HII result, with M_sf
@@ -47,7 +47,7 @@ and E_rad adjustments reflecting the intense star-formation activity within the 
 
 $$
 \begin{aligned}
-  & g_Mystic(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ) \\
+  & g_Mystic(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 - E_rad) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -56,10 +56,10 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Pillar mass | M | 100 MM_sun = 1.989×1032 kg | Hubble |
-| Pillar radius | r | 1×1016 m (~1.06 ly) | Hubble |
+| Pillar mass | M | 100 MM_sun = 1.989$\times$1032 kg | Hubble |
+| Pillar radius | r | 1$\times$1016 m (~1.06 ly) | Hubble |
 | Embedded SFR | SFR | 0.1 MM_sun/yr | Labs |
-| Age | t | 105 yr = 3.156×1012 s | Pillar age |
+| Age | t | 105 yr = 3.156$\times$1012 s | Pillar age |
 | M_sf | — | 0.1 | UQFF integral |
 | E_rad | — | 0.15 | External UV erosion |
 | Redshift | z | 0.0025 | Distance |
@@ -74,7 +74,7 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e32) / (1e16)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e32) / (1e16)2 \\
   & = 1.328e22 / 1e32 = 1.328e-10 m/s2
 \end{aligned}
 $$
@@ -82,7 +82,7 @@ $$
 ### Step 2: Star-Formation Mass Fraction
 $$
 \begin{aligned}
-  & M_sf = SFR × t / M₀ = 0.1 × 1e5 / 100 = 100 → UQFF bounded: M_sf = 0.1 \\
+  & M_sf = SFR \times t / M0 = 0.1 \times 1e5 / 100 = 100 \to UQFF bounded: M_sf = 0.1 \\
   & 1 + M_sf = 1.1
 \end{aligned}
 $$
@@ -90,7 +90,7 @@ $$
 ### Step 3: Radiation Energy Loss (External UV + Jet Erosion)
 $$
 \begin{aligned}
-  & External UV from η Carinae and Trumpler 14: \\
+  & External UV from \eta Carinae and Trumpler 14: \\
   & E_rad = 0.15 (combined photo-erosion, jet disruption) \\
   & 1 - E_rad = 0.85
 \end{aligned}
@@ -100,8 +100,8 @@ $$
 $$
 \begin{aligned}
   & H(z) = 2.269e-18 s-1 (z = 0.0025) \\
-  & H(z) × t = 2.269e-18 × 3.156e12 = 7.162e-6 \\
-  & 1 + H(z) × t ≈ 1.0000072
+  & H(z) \times t = 2.269e-18 \times 3.156e12 = 7.162e-6 \\
+  & 1 + H(z) \times t \approx 1.0000072
 \end{aligned}
 $$
 
@@ -110,9 +110,9 @@ $$
 \begin{aligned}
   & v = 105 m/s (protostellar Herbig-Haro jet velocity) \\
   & B = 10-5 T \\
-  & q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e5 \times 1e-5 = 1.602e-19 N \\
   & a = 1.602e-19 / m_p = 9.575e7 m/s2 \\
-  & a_EM = 9.575e7 × 11 × 1e-12 = 1.053e-3 m/s2
+  & a_EM = 9.575e7 \times 11 \times 1e-12 = 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -124,12 +124,12 @@ $$
 ### Step 7: Final Solution
 $$
 \begin{aligned}
-  & g_Mystic = (1.328e-10) × (1.0000072) × (1.1) × (0.85) × (1.1) + 1.053e-3 \\
-  & = 1.328e-10 × 1.1 = 1.461e-10 \\
-  & × 0.85 = 1.242e-10 \\
-  & × 1.1 = 1.366e-10 \\
+  & g_Mystic = (1.328e-10) \times (1.0000072) \times (1.1) \times (0.85) \times (1.1) + 1.053e-3 \\
+  & = 1.328e-10 \times 1.1 = 1.461e-10 \\
+  & \times 0.85 = 1.242e-10 \\
+  & \times 1.1 = 1.366e-10 \\
   & = 1.366e-10 + 1.053e-3 \\
-  & ≈ 1.053e-3 m/s2
+  & \approx 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -137,12 +137,12 @@ $$
 
 ## 4. Physical Interpretation
 
-Mystic Mountain's compact scale (100 MM_sun, 1 ly) yields a higher classical gravity (1.328×10-10 m/s2)
-than NGC 3372's 3.319×10-10 per unit, but both remain negligible vs. the Aether EM term. The
+Mystic Mountain's compact scale (100 MM_sun, 1 ly) yields a higher classical gravity (1.328$\times$10-10 m/s2)
+than NGC 3372's 3.319$\times$10-10 per unit, but both remain negligible vs. the Aether EM term. The
 simultaneous action of internal protostellar jets (providing the Aether coupling velocity) and
 external UV erosion (providing E_rad = 0.15) captures the dual nature of pillar formation physics.
 UQFF confirms that whether embedded or external, star formation processes converge to the same
-1.053×10-3 m/s2 result when v = 100 km/s.
+1.053$\times$10-3 m/s2 result when v = 100 km/s.
 
 ---
 
@@ -156,7 +156,7 @@ UQFF confirms that whether embedded or external, star formation processes conver
 
 ## 6. Conclusions
 
-UQFF applied to Mystic Mountain yields g_Mystic ≈ 1.053×10-3 m/s2, consistent with HII star-forming
+UQFF applied to Mystic Mountain yields g_Mystic $\approx$ 1.053$\times$10-3 m/s2, consistent with HII star-forming
 pillars. The dual action of protostellar jets (Aether EM coupling) and external UV radiation (E_rad
 = 0.15) is captured within the standard UQFF HII framework. Mystic Mountain's result matches the
 Pillars of Creation (M16, PAPER_757) and NGC 2264 Cone Nebula, confirming UQFF universality for
@@ -172,7 +172,7 @@ star-forming molecular pillars.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -191,7 +191,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.122 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

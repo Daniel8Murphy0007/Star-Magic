@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Domain:** 1.3  Gravitational Waves: Extended Waveform & Multi-Band  
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 **Primary Validation File:** `validate_lensing_uqff.py`  
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
@@ -41,7 +41,7 @@ GW detectors, providing an independent cross-check.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -71,11 +71,11 @@ The matter power spectrum amplitude s8 parameterizes density fluctuation amplitu
 
 | Measurement | s8 | Method |  
 |-------------|-----|--------|  
-| Planck CMB (2020) | 0.811 × 0.006 | Primary CMB |  
-| DES Year 3 | 0.759 × 0.023 | Weak lensing |  
-| HSC Year 3 | 0.763 × 0.040 | Weak lensing |  
-| KiDS-1000 | 0.766 × 0.020 | Weak lensing |  
-| **Combined WL** | **0.762 × 0.012** | **Weak lensing** |  
+| Planck CMB (2020) | 0.811 $\times$ 0.006 | Primary CMB |  
+| DES Year 3 | 0.759 $\times$ 0.023 | Weak lensing |  
+| HSC Year 3 | 0.763 $\times$ 0.040 | Weak lensing |  
+| KiDS-1000 | 0.766 $\times$ 0.020 | Weak lensing |  
+| **Combined WL** | **0.762 $\times$ 0.012** | **Weak lensing** |  
 | **Tension** | **3.2s** | **CMB vs WL** |
 
 This ~6% discrepancy is one of the most significant tensions in modern cosmology.
@@ -103,12 +103,12 @@ $$\rho_{TRZ} = [SSq]^2 \times f_{TRZ} \times \rho_{crit} = 0.325 \times 0.12 \ti
 $$\alpha_{UQFF} = \frac{4G(M + M_{vac,eff})}{c^2 b},\qquad \sigma_{8,UQFF} = 0.917\,\sigma_{8,GR}$$
 
 Using UQFF calibration constants:
-- **?_aether = U_UA  ?_crit = 0.0001 × 9.47 × 10? g/cm = 9.47 × 10?4 g/cm**  
-- **?_TRZ = [SSq]  ?_crit  f_TRZ = 0.325 × 9.47 × 10? ≈ 0.12 = 3.69 × 10? g/cm**  
+- **?_aether = U_UA  ?_crit = 0.0001 $\times$ 9.47 $\times$ 10? g/cm = 9.47 $\times$ 10?4 g/cm**  
+- **?_TRZ = [SSq]  ?_crit  f_TRZ = 0.325 $\times$ 9.47 $\times$ 10? $\approx$ 0.12 = 3.69 $\times$ 10? g/cm**  
 - **?_string = ?  t_Hubble  ?_crit = negligible**
 
 Total UQFF vacuum density:  
-**?_vac,UQFF  3.70 × 10? g/cm = 3.91 × 10? ?_crit**
+**?_vac,UQFF  3.70 $\times$ 10? g/cm = 3.91 $\times$ 10? ?_crit**
 
 ### 2.2 Modified Deflection Angle
 
@@ -126,7 +126,7 @@ where the vacuum correction:
 
 For galaxy cluster lensing (?_lens ~ 10?6 g/cm, b/r_s ~ 0.3):
 
-**d_vac = -3.70 × 10? / (2 × 10?6) ≈ 0.09 = -1.67 × 10?6**
+**d_vac = -3.70 $\times$ 10? / (2 $\times$ 10?6) $\approx$ 0.09 = -1.67 $\times$ 10?6**
 
 This is negligible for individual lenses but cumulative over cosmic distances.
 
@@ -176,7 +176,7 @@ Parameters derived from UQFF vacuum density:
 
 ### 3.2 Modified Power Spectrum
 
-**P_UQFF(k) = P_GR(k)  Wκ_UQFF(k)**
+**P_UQFF(k) = P_GR(k)  W$\kappa$_UQFF(k)**
 
 Key scales:
 
@@ -190,13 +190,13 @@ Key scales:
 
 ### 3.3 s8 Prediction
 
-**s8,UQFF = s8,GR ≈ 0.940 = 0.811 × 0.940 = 0.762**
+**s8,UQFF = s8,GR $\approx$ 0.940 = 0.811 $\times$ 0.940 = 0.762**
 
 | Source | s8 |  
 |--------|-----|  
 | Planck CMB | 0.811 |  
 | UQFF prediction | **0.762** |  
-| DES/HSC/KiDS observed | **0.762 × 0.012** |  
+| DES/HSC/KiDS observed | **0.762 $\times$ 0.012** |  
 | **Match** | **? Perfect (0.0s tension)** |
 
 ---
@@ -207,7 +207,7 @@ Key scales:
 
 Gravitational waves are also lensed. UQFF modifies the GW lensing magnification:
 
-**κ_GW,UQFF = κ_GW,GR  (1 + d_GW,vac)**
+**$\kappa$_GW,UQFF = $\kappa$_GW,GR  (1 + d_GW,vac)**
 
 The GW vacuum correction:
 
@@ -237,7 +237,7 @@ At z = 0.5: **2.4% magnification deficit**
 
 ### 5.1 Einstein Ring Radius
 
-**?_E,UQFF = ?_E,GR  v(1 - f_vac(z_lens)) = ?_E,GR ≈ 0.969**
+**?_E,UQFF = ?_E,GR  v(1 - f_vac(z_lens)) = ?_E,GR $\approx$ 0.969**
 
 3.1% reduction  measurable with JWST precision astrometry.
 
@@ -253,12 +253,12 @@ At z = 0.5: **2.4% magnification deficit**
 
 | Observable | GR | UQFF | Observed | UQFF Match |  
 |------------|-----|------|----------|------------|  
-| s8 | 0.811 | **0.762** | 0.762 × 0.012 | ? |  
+| s8 | 0.811 | **0.762** | 0.762 $\times$ 0.012 | ? |  
 | ? suppression | 0% | 16% | ~15% vs CMB | ? |  
 | Arc abundance | Baseline | -8.3% | ~-10% | ? |  
 | Einstein radius | Baseline | -3.1% | Under-measured | ? |  
 | GW mag. deficit | 0% | 2.4% | Not yet measured | Prediction |  
-| S8 = s8v(Om/0.3) | 0.832 | 0.782 | 0.776 × 0.017 | ? |
+| S8 = s8v(Om/0.3) | 0.832 | 0.782 | 0.776 $\times$ 0.017 | ? |
 
 ---
 
@@ -294,12 +294,12 @@ tensions:
 
 1. **s8 tension (3.2s ? 0s):** UQFF predicts s8 = 0.762, exactly matching DES/HSC/KiDS ?  
 2. **Arc abundance deficit:** 8.3% fewer arcs predicted, ~10% observed ?  
-3. **S8 tension:** UQFF S8 = 0.782 matches observed 0.776 × 0.017 ?
+3. **S8 tension:** UQFF S8 = 0.782 matches observed 0.776 $\times$ 0.017 ?
 
 New prediction: **2.4% GW lensing magnification deficit**, detectable by Einstein Telescope within 2
 years.
 
-**Calibration constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 **Validation file:** `validate_lensing_uqff.py`  
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
@@ -344,7 +344,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -363,7 +363,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -474,7 +474,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.157 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -485,13 +485,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -505,7 +505,7 @@ bridge.*
 4. Hikage, C. et al. (2019). "Cosmology from cosmic shear with Subaru HSC." *PASJ*, 71, 43.  
 5. Bartelmann, M. & Schneider, P. (2001). "Weak gravitational lensing." *Phys. Rep.*, 340, 291.  
 6. UQFF Source Files: `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp`  
-7. UQFF Calibration: κ = 0.0005/day, [SSq] = 0.57.Groups[1].Value : Gravitational Lensing
+7. UQFF Calibration: $\kappa$ = 0.0005/day, [SSq] = 0.57.Groups[1].Value : Gravitational Lensing
 Corrections from UQFF Vacuum Density
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
@@ -513,7 +513,7 @@ Corrections from UQFF Vacuum Density
 **Domain:** 1.3  Gravitational Waves: Extended Waveform & Multi-Band  
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 **Primary Validation File:** `validate_lensing_uqff.py`  
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
@@ -529,14 +529,14 @@ Corrections from UQFF Vacuum Density
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -551,10 +551,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -562,9 +562,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -572,8 +572,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*

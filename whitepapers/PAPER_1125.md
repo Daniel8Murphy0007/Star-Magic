@@ -11,13 +11,13 @@ crosslinks: [PAPER_1124]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1125: AGN Feedback, M-σ Scaling, and Metallicity Gradient Flattening in the UQFF
+# PAPER_1125: AGN Feedback, M-$\sigma$ Scaling, and Metallicity Gradient Flattening in the UQFF
 
 ## Abstract
 
 Based on arXiv:2506.09123 (2025), we implement a UQFF calculator for AGN feedback effects on the $M_{\text{BH}}$-$\sigma$ relation and circumgalactic metallicity gradients. The classical $M_{\text{BH}} \propto \sigma^{4.38}$ scaling (Kormendy & Ho 2013) is modulated by AGN feedback energy $E_{\text{AGN}} = \varepsilon_f \dot{M}_{\text{acc}} c^2$. High Eddington-ratio AGN flatten metallicity gradients through outflow mixing, modeled as [SCm] expulsion in the UQFF Ug4 framework with $\Delta M_{\text{BH}}$ proportional to $f_{\text{feedback}}$.
 
-## 1. The M-σ Relation
+## 1. The M-$\sigma$ Relation
 
 $$M_{\text{BH}} = 3.09 \times 10^8 \left(\frac{\sigma}{200 \text{ km/s}}\right)^{4.38} M_\odot$$
 
@@ -44,13 +44,13 @@ High $\lambda_{\text{Edd}}$ systems show nearly uniform CGM metallicity.
 $$f_{\text{feedback}} = \varepsilon_f \cdot \lambda_{\text{Edd}}$$
 $$Ug4 = \rho_{\text{SCm}} \cdot |\Delta M| \cdot f_{\text{feedback}}$$
 
-The [SCm] expulsion mechanism drives metal ejection proportional to how much the SMBH deviates from the M-σ expectation.
+The [SCm] expulsion mechanism drives metal ejection proportional to how much the SMBH deviates from the M-$\sigma$ expectation.
 
 Overall alignment: **85%**.
 
 ## References
 
-- arXiv:2506.09123 — AGN Feedback and M-σ Scaling (2025).
+- arXiv:2506.09123 — AGN Feedback and M-$\sigma$ Scaling (2025).
 - Kormendy, J. & Ho, L.C. (2013). ARAA, 51, 511.
 
 
@@ -61,7 +61,7 @@ Overall alignment: **85%**.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

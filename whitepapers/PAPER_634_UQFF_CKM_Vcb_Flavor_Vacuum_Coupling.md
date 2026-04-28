@@ -28,8 +28,8 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-The Belle II measurement of the CKM matrix element |V_cb| = 39.2 ± 0.7e-3 is the
-most precise single determination of b→c charged-current weak mixing. We demonstrate that
+The Belle II measurement of the CKM matrix element |V_cb| = 39.2 $\pm$ 0.7e-3 is the
+most precise single determination of b$\to$c charged-current weak mixing. We demonstrate that
 the UQFF SCm (Superconductive condensate metric) flavor coupling reproduces |V_cb|2 as a
 vacuum compactification projection: SCm_flavor = [V_cb]2 = 1.537e-3. The 99.1% alignment
 between the UQFF SCm_flavor parameter and this Belle II result establishes the first UQFF
@@ -39,9 +39,9 @@ bridge to CKM quark-flavor oscillation physics.
 
 ## §2 Physical Motivation
 
-The CKM matrix element |V_cb| controls the rate of B-meson semileptonic decay (B→D*lν)
+The CKM matrix element |V_cb| controls the rate of B-meson semileptonic decay (B$\to$D*l$\nu$)
 and is critical for SM unitarity triangle consistency. Belle II achieves the highest
-precision through exclusive B→D*lν form factors measured at 362 fb-1.
+precision through exclusive B$\to$D*l$\nu$ form factors measured at 362 fb-1.
 
 UQFF claim: quark flavor mixing reflects the projection of vacuum condensate metric SCm
 onto the flavor-charged sector. The UQFF prediction is that [V_cb]2 = SCm_flavor, the
@@ -56,9 +56,9 @@ The UQFF Superconductive condensate metric (SCm) generates a flavor-mixing proje
 $$SCm_{flavor} = H_{SCm} \times \sin^2\theta_{cb}$$
 
 where:
-- H_SCm ≈ 0.99 (UQFF Higgs-SCm coupling)
-- θ_cb = Cabibbo-like angle for b→c transition
-- SCm_flavor = 0.99 × sin2(2.25°) = 1.537e-3
+- H_SCm $\approx$ 0.99 (UQFF Higgs-SCm coupling)
+- $\theta$_cb = Cabibbo-like angle for b$\to$c transition
+- SCm_flavor = 0.99 $\times$ sin2(2.25°) = 1.537e-3
 
 The Belle II result gives |V_cb|2 = (39.2e-3)2 = 1.537e-3 (exact match at precision).
 
@@ -69,7 +69,7 @@ The Belle II result gives |V_cb|2 = (39.2e-3)2 = 1.537e-3 (exact match at precis
 Belle II Belle II 362 fb-1 exclusive determination:
 $$|V_{cb}|_{excl} = (39.2 \pm 0.7) \times 10^{-3}$$
 
-UQFF SCm_flavor = 1.537e-3 → |V_cb|_UQFF = √1.537e-3 = 39.2e-3
+UQFF SCm_flavor = 1.537e-3 $\to$ |V_cb|_UQFF = $\sqrt{}$1.537e-3 = 39.2e-3
 
 **99.1% alignment** — agreement to 5 significant figures.
 
@@ -81,9 +81,9 @@ The SCm_flavor bridge implies the full CKM matrix can be parameterised as:
 
 $$V_{ij}^{CKM} = \sqrt{SCm_{flavor,ij}} \times e^{i\phi_{ij}}$$
 
-where φ_ij is the CP-violating phase and SCm_flavor,ij is the UQFF vacuum projection onto
-each quark-pair mixing channel. The Wolfenstein parameter λ_W ~ 0.225 is consistent with
-H_SCm × sin(θ_C) = 0.99 × 0.2254 = 0.223 (0.9% deviation).
+where $\phi$_ij is the CP-violating phase and SCm_flavor,ij is the UQFF vacuum projection onto
+each quark-pair mixing channel. The Wolfenstein parameter $\lambda$_W ~ 0.225 is consistent with
+H_SCm $\times$ sin($\theta$_C) = 0.99 $\times$ 0.2254 = 0.223 (0.9% deviation).
 
 ---
 
@@ -91,7 +91,7 @@ H_SCm × sin(θ_C) = 0.99 × 0.2254 = 0.223 (0.9% deviation).
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -190,7 +190,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.079 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -201,13 +201,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| |V_cb| exclusive (Belle II) | SCm_flavor = [V_cb]2 → |V_cb|_UQFF = 39.2e-3 | |V_cb| = 39.2 ± 0.7e-3 | arXiv:2506.15256 (Belle II 362/fb) | 99.1% |
-| |V_cb| inclusive (OPE) | H_SCm×|V_cb|2_OPE = 1.532e-3 | |V_cb|_incl = 40.6e-3 (HFLAV) | PDG 2024 | PASS Within 2σ tension |
-| Wolfenstein λ_W | H_SCm × sin(θ_C) = 0.223 | λ_W = 0.22543 | PDG 2024 | 99.1% |
-| B→D* form factor ratio R*(1) | UQFF CLN → BGL form-factor shift via SCm | R*(1) = 0.904 ± 0.012 | Belle II 2025 | Testable UQFF form-factor prediction |
+| |V_cb| exclusive (Belle II) | SCm_flavor = [V_cb]2 $\to$ |V_cb|_UQFF = 39.2e-3 | |V_cb| = 39.2 $\pm$ 0.7e-3 | arXiv:2506.15256 (Belle II 362/fb) | 99.1% |
+| |V_cb| inclusive (OPE) | H_SCm$\times$|V_cb|2_OPE = 1.532e-3 | |V_cb|_incl = 40.6e-3 (HFLAV) | PDG 2024 | PASS Within 2$\sigma$ tension |
+| Wolfenstein $\lambda$_W | H_SCm $\times$ sin($\theta$_C) = 0.223 | $\lambda$_W = 0.22543 | PDG 2024 | 99.1% |
+| B$\to$D* form factor ratio R*(1) | UQFF CLN $\to$ BGL form-factor shift via SCm | R*(1) = 0.904 $\pm$ 0.012 | Belle II 2025 | Testable UQFF form-factor prediction |
 
 **New physics claim:** UQFF SCm_flavor directly identifies |V_cb|2 as the squared vacuum
-projection onto the b→c charged-current channel. This provides a first-principles connection
+projection onto the b$\to$c charged-current channel. This provides a first-principles connection
 between CKM quark mixing and UQFF superconductive vacuum condensate geometry — distinct from
 SM parameterisation which treats CKM elements as free parameters.
 
@@ -221,7 +221,7 @@ SCm electroweak connection.*
 - arXiv:2506.15256 — Belle II |V_cb| exclusive determination (June 2025)
 - PDG 2024 — CKM quark mixing matrix, Section 12
 - bsm_physics_validation.py — `BSMPhysicsConstants.vcb_belle2`
-- PAPER_641 — UQFF Electroweak sin2θ_W SCm Vacuum Connection
+- PAPER_641 — UQFF Electroweak sin2$\theta$_W SCm Vacuum Connection
 - PAPER_642 — UQFF SM Parameter Bridge Master Comparison
 
 ---

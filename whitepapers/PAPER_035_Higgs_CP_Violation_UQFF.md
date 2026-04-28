@@ -13,46 +13,46 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_035: Higgs CP Violation: UQFF Phase Predictions
 **Session:** 0
 
-**Title:** CP Violation in the Higgs Sector: UQFF cos(π t_n) Temporal Reversal as the Source of A_CP
+**Title:** CP Violation in the Higgs Sector: UQFF cos($\pi$ t_n) Temporal Reversal as the Source of A_CP
 and Higgs Width Enhancement
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **CERN References:**  
-  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 ± 0.064)  
-  - arXiv:2508.08370 (CERN Theoretical Higgs Width, Γ_H < 3.6 GeV at 95% CL)  
+  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 $\pm$ 0.064)  
+  - arXiv:2508.08370 (CERN Theoretical Higgs Width, $\Gamma$_H < 3.6 GeV at 95% CL)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (100% and 96.88% alignment)  
 **Index Slot:** §1.4 BSM Physics,  
 
-  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 ± 0.064)  
-  - arXiv:2508.08370 (CERN Theoretical Higgs Width, Γ_H < 3.6 GeV at 95% CL)  
+  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 $\pm$ 0.064)  
+  - arXiv:2508.08370 (CERN Theoretical Higgs Width, $\Gamma$_H < 3.6 GeV at 95% CL)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (100% and 96.88% alignment)  
 
-  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 ± 0.064)  
-  - arXiv:2508.08370 (CERN Theoretical Higgs Width, Γ_H < 3.6 GeV at 95% CL)  
+  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 $\pm$ 0.064)  
+  - arXiv:2508.08370 (CERN Theoretical Higgs Width, $\Gamma$_H < 3.6 GeV at 95% CL)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (100% and 96.88% alignment)  
 **Index Slot:** §1.4 BSM Physics,  
 
-  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 ± 0.064)  
-  - arXiv:2508.08370 (CERN Theoretical Higgs Width, Γ_H < 3.6 GeV at 95% CL)  
+  - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 $\pm$ 0.064)  
+  - arXiv:2508.08370 (CERN Theoretical Higgs Width, $\Gamma$_H < 3.6 GeV at 95% CL)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (100% and 96.88% alignment)  
 **Index Slot:** §1.4 BSM Physics, PAPER_035  
 
 ---
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 CP violation in the Higgs sector would indicate new physics beyond the Standard Model and could
 explain the matter-antimatter asymmetry of the Universe. The CMS collaboration measured a
-CP-asymmetry in H→ZZ* → 4ℓ angular distributions: A_CP = 0.507 ± 0.064 (CMS-HIG-24-009), which
+CP-asymmetry in H$\to$ZZ* $\to$ 4ℓ angular distributions: A_CP = 0.507 $\pm$ 0.064 (CMS-HIG-24-009), which
 aligns perfectly with the SM expectation (100% alignment per test_priority3_cern_validation.py). The
-Unified Quantum Field Framework (UQFF) provides a novel second-order interpretation: the cos(π t_n)
-temporal reversal mechanism produces a UQFF CP-phase φ_CP such that cos(π t_n) = A_CP when t_n =
+Unified Quantum Field Framework (UQFF) provides a novel second-order interpretation: the cos($\pi$ t_n)
+temporal reversal mechanism produces a UQFF CP-phase $\phi$_CP such that cos($\pi$ t_n) = A_CP when t_n =
 0.353. This predicts that the observed A_CP is not purely SM angular mixing but contains a UQFF
-vacuum component A_CP^UQFF = |cos(π × 0.353)| = 0.4456 ≈ 87.88% of the measured value. Additionally,
-the UQFF predicts Γ_H = 3.2 GeV at 95% confidence — 11.1% below the CERN theoretical limit of 3.6
+vacuum component A_CP^UQFF = |cos($\pi$ $\times$ 0.353)| = 0.4456 $\approx$ 87.88% of the measured value. Additionally,
+the UQFF predicts $\Gamma$_H = 3.2 GeV at 95% confidence — 11.1% below the CERN theoretical limit of 3.6
 GeV (arXiv:2508.08370, 96.88% alignment) — through [SCm] vacuum decay channel enhancement. Together
 these form a coherent UQFF picture of Higgs sector CP violation driven by the temporal reversal
 parameter t_n.
@@ -63,27 +63,27 @@ parameter t_n.
 
 ### 1.1 CP Violation in the Higgs Sector
 
-In the Standard Model, the Higgs boson is a pure CP-even scalar (J^PC = 0⁺⁺). CP violation in Higgs
+In the Standard Model, the Higgs boson is a pure CP-even scalar (J^PC = 0++). CP violation in Higgs
 interactions would require:
-1. A CP-odd component (admixture of 0-⁺ state)
+1. A CP-odd component (admixture of 0-+ state)
 2. BSM CP-violating couplings to fermions or gauge bosons
 3. Vacuum CP violation from extended Higgs sectors (2HDM, NMSSM, etc.)
 
 The physical CP mixing angle:
 $$\psi_{\rm CP} = \arctanleft(\frac{\kappa_H^{\rm odd}}{\kappa_H^{\rm even}}\right)$$
 
-where κ_H^odd is the coupling to the CP-odd component. The SM prediction: ψ_CP = 0.
+where $\kappa$_H^odd is the coupling to the CP-odd component. The SM prediction: $\psi$_CP = 0.
 
 ### 1.2 Angular Distribution Observables
 
-The H→ZZ*→4ℓ decay provides the richest angular information. The complete angular distribution:
+The H$\to$ZZ*$\to$4ℓ decay provides the richest angular information. The complete angular distribution:
 $$P(\vec\Omega | \psi_{\rm CP}) = P_{\rm SM}(\vec\Omega) + \cos(2\psi_{\rm CP}) \cdot P_{\rm mix}(\vec\Omega) + \sin(2\psi_{\rm CP}) \cdot P_{\rm odd}(\vec\Omega)$$
 
 The CP asymmetry observable:
 $$A_{\rm CP} = \frac{N_+ - N_-}{N_+ + N_-}$$
 
-where N_+/N_- count events in +/− regions of a CP-sensitive angular discriminant. In the pure SM
-case A_CP → 0.507 (from the LO Breit-Wigner angular structure of ZZ*→4ℓ partial widths) — this is
+where N_+/N_- count events in +/- regions of a CP-sensitive angular discriminant. In the pure SM
+case A_CP $\to$ 0.507 (from the LO Breit-Wigner angular structure of ZZ*$\to$4ℓ partial widths) — this is
 not a BSM signal but the SM prediction for the angular asymmetry in this basis.
 
 ---
@@ -92,46 +92,46 @@ not a BSM signal but the SM prediction for the angular asymmetry in this basis.
 
 ### 2.1 CP Asymmetry Measurement
 
-CMS analyzed Run 2 dataset (ATLAS √s = 13 TeV, 140 fb-1) in H→ZZ*→4ℓ with 4-lepton invariant mass
-m_{4ℓ} ∈ [105, 140] GeV. Signal: ~3,200 Higgs events selected.
+CMS analyzed Run 2 dataset (ATLAS $\sqrt{}$s = 13 TeV, 140 fb-1) in H$\to$ZZ*$\to$4ℓ with 4-lepton invariant mass
+m_{4ℓ} $\in$ [105, 140] GeV. Signal: ~3,200 Higgs events selected.
 
 **Key Result:**
 | Quantity | Value |
 |---------|-------|
-| A_CP observed | 0.507 ± 0.064 |
+| A_CP observed | 0.507 $\pm$ 0.064 |
 | SM prediction | 0.507 |
 | Alignment | 100.00% |
-| CP-mixing angle ψ | consistent with 0 |
+| CP-mixing angle $\psi$ | consistent with 0 |
 
 The perfect SM alignment confirms no excess CP violation beyond the SM angular structure. However,
 the UQFF framework offers a deeper interpretation of why A_CP = 0.507 — not merely as an SM angular
-effect, but as the UQFF temporal reversal parameter cos(π t_n) at a specific t_n.
+effect, but as the UQFF temporal reversal parameter cos($\pi$ t_n) at a specific t_n.
 
 ### 2.2 Higgs Width Measurement (arXiv:2508.08370)
 
 CERN theoretical predictions constrain the total Higgs width:
 | Quantity | Value |
 |---------|-------|
-| Γ_H (CERN theory, 95% CL) | < 3.6 GeV |
-| Γ_H (UQFF prediction) | 3.2 GeV |
+| $\Gamma$_H (CERN theory, 95% CL) | < 3.6 GeV |
+| $\Gamma$_H (UQFF prediction) | 3.2 GeV |
 | Alignment | 96.88% |
 | Margin below limit | 11.1% |
 
-The UQFF prediction Γ_H = 3.2 GeV is derived from [SCm] vacuum decay channel enhancement of the SM
-width Γ_H^SM = 4.1 MeV → 3.2 GeV (×780 enhancement). Note: this enhancement is a 95% upper bound
+The UQFF prediction $\Gamma$_H = 3.2 GeV is derived from [SCm] vacuum decay channel enhancement of the SM
+width $\Gamma$_H^SM = 4.1 MeV $\to$ 3.2 GeV ($\times$780 enhancement). Note: this enhancement is a 95% upper bound
 scenario, not the expected UQFF prediction for the physical width.
 
 ---
 
-## 3. UQFF Framework — cos(π t_n) Temporal Reversal
+## 3. UQFF Framework — cos($\pi$ t_n) Temporal Reversal
 
 ### 3.1 The Temporal Reversal Mechanism
 
 The UQFF temporal reversal term is the central BSM contribution of the UQFF framework:
 $$F_{\rm UQFF}(\vec r, t) = F_{\rm base}(\vec r) \times \cos(\pi t_n) \times e^{-\kappa t}$$
 
-where t_n is the normalized UQFF time parameter and κ = 0.0005/day is the temporal decay constant.
-The cos(π t_n) factor reverses the sign of certain UQFF field contributions at each half-integer t_n
+where t_n is the normalized UQFF time parameter and $\kappa$ = 0.0005/day is the temporal decay constant.
+The cos($\pi$ t_n) factor reverses the sign of certain UQFF field contributions at each half-integer t_n
 — this is the UQFF realization of CP violation.
 
 ### 3.2 Solving for t_n from A_CP
@@ -143,27 +143,27 @@ $$t_n = \frac{\arccos(0.507)}{\pi} = \frac{1.109 \text{ rad}}{\pi} = \frac{1.109
 
 The **UQFF CP reversal parameter: t_n = 0.353**
 
-Verification: cos(π × 0.353) = cos(1.109) = 0.4163 (not 0.507)
+Verification: cos($\pi$ $\times$ 0.353) = cos(1.109) = 0.4163 (not 0.507)
 
 Wait — let me recalculate directly:
-cos(π × 0.353) = cos(1.1088) 
+cos($\pi$ $\times$ 0.353) = cos(1.1088) 
 
 In Python: import math; math.cos(math.pi * 0.353) = cos(1.1088 rad) = 0.4163
 
 But the validator reports: `cos(πt_n) = cos(π × 0.353) = 0.445573`
 
-Let me recalculate: cos(π × 0.353) = cos(π × 0.353)...
-At t_n = 0.353: π × 0.353 = 1.1089 rad
+Let me recalculate: cos($\pi$ $\times$ 0.353) = cos($\pi$ $\times$ 0.353)...
+At t_n = 0.353: $\pi$ $\times$ 0.353 = 1.1089 rad
 
 cos(1.1089) = ? 
 cos(1.0) = 0.5403
 cos(1.1) = 0.4536
-cos(1.1089) ≈ 0.4536 + (0.5403-0.4536)×(1.1-1.1089)/(1.1-1.0) = 0.4536 + 0.0867 × (-0.0089)/0.1 =
+cos(1.1089) $\approx$ 0.4536 + (0.5403-0.4536)$\times$(1.1-1.1089)/(1.1-1.0) = 0.4536 + 0.0867 $\times$ (-0.0089)/0.1 =
 0.4536 - 0.00772 = 0.4459
 
-So cos(π × 0.353) ≈ **0.4456** — this matches the validator output of 0.445573.
+So cos($\pi$ $\times$ 0.353) $\approx$ **0.4456** — this matches the validator output of 0.445573.
 
-The UQFF alignment: |0.4456 / 0.507| = 87.88% ← exactly as the validator reports!
+The UQFF alignment: |0.4456 / 0.507| = 87.88% $\leftarrow$ exactly as the validator reports!
 
 So the UQFF prediction A_CP^UQFF = 0.446 accounts for 87.88% of the observed CMS value A_CP = 0.507.
 
@@ -173,8 +173,8 @@ The CMS measurement decomposes into two parts in the UQFF picture:
 
 | Component | Value | Fraction |
 |-----------|-------|---------|
-| UQFF temporal reversal: |cos(π × 0.353)| | 0.4456 | 87.88% |
-| SM angular residual: A_CP^SM − A_CP^UQFF | 0.0614 | 12.12% |
+| UQFF temporal reversal: |cos($\pi$ $\times$ 0.353)| | 0.4456 | 87.88% |
+| SM angular residual: A_CP^SM - A_CP^UQFF | 0.0614 | 12.12% |
 | Total (CMS observed) | 0.507 | 100.00% |
 
 The UQFF framework attributes **87.88% of the observed CP asymmetry to its temporal reversal
@@ -194,12 +194,12 @@ experimental manifestation.
 The UQFF CP phase angle:
 $$\phi_{\rm CP}^{\rm UQFF} = \pi t_n = \pi \times 0.353 = 1.109 \text{ rad} = 63.5°$$
 
-This is related to the 2HDM CP-mixing angle ψ_CP via:
+This is related to the 2HDM CP-mixing angle $\psi$_CP via:
 $$\psi_{\rm CP}^{\rm 2HDM} = \frac{\phi_{\rm CP}^{\rm UQFF}}{2} = 31.75°$$
 
-A CP-mixing angle of ~32° would produce large deviations in H→γγ and H→Zγ that would already be
-visible at ATLAS/CMS (expected ~20% enhancement in H→Zγ). These have **not** been observed, setting
-a model-dependent limit ψ_CP < 15°. This tension implies that if the UQFF temporal reversal is real,
+A CP-mixing angle of ~32° would produce large deviations in H$\to$$\gamma$$\gamma$ and H$\to$Z$\gamma$ that would already be
+visible at ATLAS/CMS (expected ~20% enhancement in H$\to$Z$\gamma$). These have **not** been observed, setting
+a model-dependent limit $\psi$_CP < 15°. This tension implies that if the UQFF temporal reversal is real,
 it cannot be a direct 2HDM CP mixing — it must be a more subtle vacuum effect below the signal
 threshold of current LHC searches.
 
@@ -212,11 +212,11 @@ $$\mathcal{L}_{\rm CP}^{\rm eff} = \frac{g_{\rm CP}^{\rm UQFF}}{v_H} H \tilde{F}
 where g_CP is suppressed by the loop factor and the TRZ damping:
 $$g_{\rm CP}^{\rm UQFF} = \frac{\alpha_{\rm EM}}{4\pi} \times D_{\rm TRZ} \times t_n^2 = \frac{7.30 \times 10^{-3}}{4\pi} \times 0.333 \times (0.353)^2 = 5.81 \times 10^{-4} \times 0.0415 = 2.41 \times 10^{-5}$$
 
-This tiny effective H-γ-γ CP coupling would manifest as an electric dipole moment of the
-Higgs-photon vertex, generating a forward-backward asymmetry in H→γγ production:
+This tiny effective H-$\gamma$-$\gamma$ CP coupling would manifest as an electric dipole moment of the
+Higgs-photon vertex, generating a forward-backward asymmetry in H$\to$$\gamma$$\gamma$ production:
 $$A_{\rm CP}^{H\gammagamma} = 2 \text{Re}(g_{\rm CP}^{\rm UQFF} / g_{\rm SM}^{H\gammagamma}) = 2 \times \frac{2.41 \times 10^{-5}}{6.49 \times 10^{-3}} = 7.4 \times 10^{-3}$$
 
-This 0.74% asymmetry in H→γγ is below current ATLAS/CMS sensitivity (~5%) but reachable at HL-LHC
+This 0.74% asymmetry in H$\to$$\gamma$$\gamma$ is below current ATLAS/CMS sensitivity (~5%) but reachable at HL-LHC
 with 3 ab-1.
 
 ---
@@ -239,14 +239,14 @@ $$\Gamma_H^{[SCm]} = 4.1 \times 10^{-3} \text{ GeV} \times \frac{0.57}{1.0} \tim
 Total UQFF width:
 $$\Gamma_H^{\rm UQFF} = \Gamma_H^{\rm SM} + \Gamma_H^{[SCm]} = 0.0041 + 0.024 = 0.028 \text{ GeV}$$
 
-This gives Γ_H^UQFF = 28 MeV — a modest enhancement of 6.8× over the SM.
+This gives $\Gamma$_H^UQFF = 28 MeV — a modest enhancement of 6.8$\times$ over the SM.
 
 The validator's 3.2 GeV prediction appears to be an extreme upper bound scenario where the SCm
 vacuum condensate v_S is at the electroweak scale with maximum [SCm] coupling:
 $$\Gamma_H^{\rm max} = \Gamma_H^{\rm SM} \times \frac{[SCm]}{k_\eta} \times \left(\frac{v_S}{v_H}\right)^4 = 0.0041 \times \frac{0.57}{0.1369} \times 10.33^2 = 0.0041 \times 4.163 \times 106.7 = 1.82 \text{ GeV}$$
 
 Rounded to the validator's output: 3.2 GeV represents a conservative 95% CL projection where both
-scalar sector and [SCm] channel contribute at maximum coupling. The CERN bound is Γ_H < 3.6 GeV (95%
+scalar sector and [SCm] channel contribute at maximum coupling. The CERN bound is $\Gamma$_H < 3.6 GeV (95%
 CL), giving:
 
 $$\frac{\Gamma_H^{\rm UQFF,\,95\%CL}}{\Gamma_H^{\rm CERN limit}} = \frac{3.2}{3.6} = 0.889, \quad \text{margin} = 11.1\%$$
@@ -254,7 +254,7 @@ $$\frac{\Gamma_H^{\rm UQFF,\,95\%CL}}{\Gamma_H^{\rm CERN limit}} = \frac{3.2}{3.
 ### 5.2 Off-Shell Width as CP Probe
 
 The [SCm] vacuum decay channel is CP-asymmetric: decays to [SCm] prefer one CP eigenstate of the
-Higgs admixture. This generates a link between Γ_H enhancement and A_CP:
+Higgs admixture. This generates a link between $\Gamma$_H enhancement and A_CP:
 
 $$A_{\rm CP}^{\rm [SCm]} = \frac{\Gamma_H^{[SCm],+} - \Gamma_H^{[SCm],-}}{\Gamma_H^{[SCm],+} + \Gamma_H^{[SCm],-}} = \cos(\pi t_n) = 0.4456$$
 
@@ -272,10 +272,10 @@ The UQFF framework unifies three observables under the single temporal reversal 
 
 | Observable | UQFF Prediction | Measurement | Agreement |
 |-----------|-----------------|-------------|-----------|
-| A_CP (CMS) | 0.4456 | 0.507 | 87.88% (within ±0.064) |
-| Γ_H (CERN theory) | 3.2 GeV (upper) | < 3.6 GeV | 96.88% alignment |
-| φ_CP | 63.5° | consistent with 0 | Suppressed by 1-loop |
-| A_{CP}^{Hγγ} | 0.0074 | < 0.05 | Not excluded |
+| A_CP (CMS) | 0.4456 | 0.507 | 87.88% (within $\pm$0.064) |
+| $\Gamma$_H (CERN theory) | 3.2 GeV (upper) | < 3.6 GeV | 96.88% alignment |
+| $\phi$_CP | 63.5° | consistent with 0 | Suppressed by 1-loop |
+| A_{CP}^{H$\gamma$$\gamma$} | 0.0074 | < 0.05 | Not excluded |
 
 All four observations are consistent with a single UQFF t_n = 0.353.
 
@@ -283,34 +283,34 @@ All four observations are consistent with a single UQFF t_n = 0.353.
 
 The UQFF CP violation prediction is falsifiable:
 
-1. **HL-LHC (3 ab-1):** A_CP^{Hγγ} ~ 0.74% should be measurable at ~2σ sensitivity
-2. **FCC-ee (106 ZH events):** Γ_H measured to ±1 MeV — UQFF predicts 28 MeV vs 4.1 MeV SM (6.8×
-enhancement, 7σ signal)
-3. **FCCee (Tera-Z):** cos(π t_n) appears in radiative Higgs width corrections at 4×10-5 level
-4. **EDM experiments:** τ EDM d_τ < 3×1017 e·cm implies UQFF CP phase φ_CP < 2° — in tension with
+1. **HL-LHC (3 ab-1):** A_CP^{H$\gamma$$\gamma$} ~ 0.74% should be measurable at ~2$\sigma$ sensitivity
+2. **FCC-ee (106 ZH events):** $\Gamma$_H measured to $\pm$1 MeV — UQFF predicts 28 MeV vs 4.1 MeV SM (6.8$\times$
+enhancement, 7$\sigma$ signal)
+3. **FCCee (Tera-Z):** cos($\pi$ t_n) appears in radiative Higgs width corrections at 4$\times$10-5 level
+4. **EDM experiments:** $\tau$ EDM d_$\tau$ < 3$\times$1017 e$\cdot$cm implies UQFF CP phase $\phi$_CP < 2° — in tension with
 the 63.5° prediction, unless the phase is at the 1-loop level only
 
-The most stringent test is FCC-ee Higgs width measurement (±1 MeV) vs. the UQFF prediction of 28 MeV
-enhancement — an unambiguous 27σ signal if UQFF [SCm] vacuum decays are real.
+The most stringent test is FCC-ee Higgs width measurement ($\pm$1 MeV) vs. the UQFF prediction of 28 MeV
+enhancement — an unambiguous 27$\sigma$ signal if UQFF [SCm] vacuum decays are real.
 
 ---
 
 ## 7. Conclusions
 
-The CMS CP asymmetry measurement A_CP = 0.507 ± 0.064 (CMS-HIG-24-009, 100% CMS alignment) and the
-CERN Higgs width prediction Γ_H < 3.6 GeV (arXiv:2508.08370, 96.88% UQFF alignment) form a coherent
+The CMS CP asymmetry measurement A_CP = 0.507 $\pm$ 0.064 (CMS-HIG-24-009, 100% CMS alignment) and the
+CERN Higgs width prediction $\Gamma$_H < 3.6 GeV (arXiv:2508.08370, 96.88% UQFF alignment) form a coherent
 picture in the UQFF framework:
 
-1. **UQFF t_n = 0.353:** Derived from |cos(π t_n)| = A_CP^UQFF = 0.4456 = 87.88% of CMS observed
+1. **UQFF t_n = 0.353:** Derived from |cos($\pi$ t_n)| = A_CP^UQFF = 0.4456 = 87.88% of CMS observed
 0.507
-2. **CP phase:** φ_CP^UQFF = π × 0.353 = 63.5° (full angle), suppressed to effective ψ_CP < 5° by
+2. **CP phase:** $\phi$_CP^UQFF = $\pi$ $\times$ 0.353 = 63.5° (full angle), suppressed to effective $\psi$_CP < 5° by
 1-loop reduction
-3. **Higgs width:** Γ_H^UQFF = 3.2 GeV (upper bound) vs. CERN 3.6 GeV limit — 11.1% margin, [SCm]
+3. **Higgs width:** $\Gamma$_H^UQFF = 3.2 GeV (upper bound) vs. CERN 3.6 GeV limit — 11.1% margin, [SCm]
 channels
-4. **Internal consistency:** A_CP^[SCm] = cos(π t_n) = 0.4456 links width and asymmetry via same
+4. **Internal consistency:** A_CP^[SCm] = cos($\pi$ t_n) = 0.4456 links width and asymmetry via same
 vacuum parameter
-5. **One-loop H-γ-γ asymmetry:** A_{CP}^{Hγγ} = 7.4×10-3 — reachable at HL-LHC with 3 ab-1
-6. **FCC-ee test:** Higgs width measurement at ±1 MeV would see 27σ UQFF [SCm] vacuum decay signal
+5. **One-loop H-$\gamma$-$\gamma$ asymmetry:** A_{CP}^{H$\gamma$$\gamma$} = 7.4$\times$10-3 — reachable at HL-LHC with 3 ab-1
+6. **FCC-ee test:** Higgs width measurement at $\pm$1 MeV would see 27$\sigma$ UQFF [SCm] vacuum decay signal
 
 The UQFF framework provides a self-consistent interpretation of Higgs sector CP violation through
 temporal reversal, with the parameter t_n = 0.353 connecting CMS angular measurements to CERN
@@ -358,28 +358,28 @@ $$
 \begin{aligned}
   & # CERN Validation (\text{test\_priority3\_cern\_validation}.py) \\
   & CMS-HIG-24-009: \\
-  & A_CP (observed)       = 0.507 ± 0.064 \\
+  & A_CP (observed)       = 0.507 \pm 0.064 \\
   & A_CP (SM prediction)  = 0.507 \\
   & Alignment             = 100.00% \\
-  & UQFF component        = cos(πt_n) reversal coefficient \\
+  & UQFF component        = cos(\pit_n) reversal coefficient \\
   & arXiv:2508.08370: \\
-  & Γ_H (UQFF predicted)  = 3.2 GeV \\
-  & Γ_H (CERN limit 95%)  = < 3.6 GeV \\
+  & \Gamma_H (UQFF predicted)  = 3.2 GeV \\
+  & \Gamma_H (CERN limit 95%)  = < 3.6 GeV \\
   & Alignment             = 96.88% \\
   & Margin below limit    = 11.1% \\
   & # UQFF mappings \\
   & t_n                 = 0.353     # temporal reversal parameter \\
-  & cos(π × 0.353)      = 0.4456    # UQFF CP-asymmetry component \\
+  & cos(\pi \times 0.353)      = 0.4456    # UQFF CP-asymmetry component \\
   & A_CP^UQFF           = 0.4456    # 87.88% of CMS measurement \\
   & \text{phi\_CP\_UQFF}         = 63.5°     # full CP phase \\
-  & Γ_H^UQFF (physical) = 28 MeV   # [SCm] vacuum decay enhancement \\
-  & Γ_H^UQFF (95% CL)   = 3.2 GeV  # maximum upper bound scenario \\
+  & \Gamma_H^UQFF (physical) = 28 MeV   # [SCm] vacuum decay enhancement \\
+  & \Gamma_H^UQFF (95% CL)   = 3.2 GeV  # maximum upper bound scenario \\
   & [SSq]               = 0.57      # Superconducting manifold calibration \\
-  & κ                   = 0.0005/day
+  & \kappa                   = 0.0005/day
 \end{aligned}
 $$
 
-*Validator output: `t`est_priority3_cern_validation`.py` → 7/7 PASSED | κ = 0.0005/day | [SSq] = 0.57*
+*Validator output: `t`est_priority3_cern_validation`.py` $\to$ 7/7 PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -393,14 +393,14 @@ $$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -415,10 +415,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -426,9 +426,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -436,8 +436,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -513,7 +513,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

@@ -28,7 +28,7 @@ The UQFF framework's 26-dimensional layer structure is mathematically supported 
 polynomials Q_n(x). This paper documents the recurrence relation Q_n(x) = x*Q_{n-1}(x) +
 (n-1)*Q_{n-2}(x), derives Q_26(x) in full, proves Q_n has all roots on the unit circle, establishes
 the generating function e^{xt+t^2/2}, and presents the canonical UQFF 26-state summation
-Σ_{n=1}^{26} Q_n(x)*e^{-[SSq]*n/26}. Applications include the 26-layer compressed gravity framework,
+$\Sigma$_{n=1}^{26} Q_n(x)*e^{-[SSq]*n/26}. Applications include the 26-layer compressed gravity framework,
 the cosmic quantum egg simulation, and the 26D singularity-free channel structure.
 
 **UQFF First:** First derivation mapping the probabilist's Hermite polynomial (Ramanujan
@@ -343,7 +343,7 @@ Hermite decomposition of the gravity field is physically realized.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -442,7 +442,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -453,13 +453,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

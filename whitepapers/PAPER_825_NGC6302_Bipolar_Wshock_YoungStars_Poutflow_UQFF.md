@@ -40,7 +40,7 @@ these distinct terms.
 
 ### 1.1 NGC 6302 — The Butterfly Nebula
 
-NGC 6302 (RA 17h 13m, Dec -37° 06') is a planetary nebula at D ≈ 1.17 kpc located in the
+NGC 6302 (RA 17h 13m, Dec -37° 06') is a planetary nebula at D $\approx$ 1.17 kpc located in the
 constellation Scorpius. Its central white dwarf (~200,000 K photospheric temperature) produces a
 high-velocity stellar wind (~200 km/s) that collides with a dense equatorial dust torus, redirecting
 the wind into two elongated bipolar lobes extending ~1 pc each.
@@ -98,7 +98,7 @@ $$
   & Mdot_wind = 1e-5 M_Sun/yr = 6.3e14 kg/s \\
   & r_lobe = 1 pc = 3.086e16 m \\
   & theta_lobe = 25° = 0.436 rad \\
-  & W_shock(at r_lobe) ≈ 4.8e-11 m/s^2
+  & W_shock(at r_lobe) \approx 4.8e-11 m/s^2
 \end{aligned}
 $$
 
@@ -116,7 +116,7 @@ $$
 $$
 
 **Directionality:** W_shock is directed along the bipolar axis. At the equatorial plane (theta =
-pi/2), W_shock → 0. Maximum at the pole (theta = 0).
+pi/2), W_shock $\to$ 0. Maximum at the pole (theta = 0).
 
 ---
 
@@ -145,7 +145,7 @@ $$
   & Mdot_jet = 2e-7 M_Sun/yr = 1.26e16 kg/s \\
   & v_jet = 300 km/s = 3e5 m/s \\
   & rho_jet at base = Mdot_jet / (pi * r_jet^2 * v_jet) = 8.1e-11 kg/m^3 \\
-  & P_outflow(at r = 100 AU = 1.5e13 m) ≈ 2.4e-13 m/s^2
+  & P_outflow(at r = 100 AU = 1.5e13 m) \approx 2.4e-13 m/s^2
 \end{aligned}
 $$
 
@@ -153,7 +153,7 @@ For Orion-class star-forming regions with multiple jets:
 $$
 \begin{aligned}
   & N_jets = 50 (typical dense region) \\
-  & \text{P\_outflow\_total} = N_jets * \text{P\_outflow\_single} ≈ 1.2e-11 m/s^2
+  & \text{P\_outflow\_total} = N_jets * \text{P\_outflow\_single} \approx 1.2e-11 m/s^2
 \end{aligned}
 $$
 
@@ -252,7 +252,7 @@ from cluster)
 
 **Young Stars P_outflow validation:**
 - VLA radio observations of HH objects in Perseus molecular cloud: momentum flux 10^-12 to 10^-9 dyne/cm^2 — matches P_outflow range
-- Spitzer c2d survey: 22 protostellar outflows in Perseus, average P_outflow ≈ 3e-12 m/s^2 per jet at 500 AU
+- Spitzer c2d survey: 22 protostellar outflows in Perseus, average P_outflow $\approx$ 3e-12 m/s^2 per jet at 500 AU
 - ALMA obs: Class 0 source HH211 v_jet = 280 km/s, mass loss = 8e-7 M_Sun/yr — within 20% of model prediction
 
 ---
@@ -283,7 +283,7 @@ PAPER_825, grok_share_96da8158-f7c5.txt, Documents 32 and 35.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -302,7 +302,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -377,7 +377,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.128 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -388,13 +388,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

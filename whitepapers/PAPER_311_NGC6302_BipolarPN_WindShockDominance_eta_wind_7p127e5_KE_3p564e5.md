@@ -12,8 +12,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 # PAPER_311: NGC 6302 Bipolar Planetary Nebula — UQFF Wind Shock Gravitational Dominance
 
-**Subtitle:** FIRST UQFF Bipolar PN Wind Shock Analysis — η_wind = 7.127×105; KE/grav_well =
-3.564×105
+**Subtitle:** FIRST UQFF Bipolar PN Wind Shock Analysis — $\eta$_wind = 7.127$\times$105; KE/grav_well =
+3.564$\times$105
 
 **Author:** Daniel T. Murphy  
 **Session:** 89 | **Date:** March 17, 2026  
@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 analysis
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 
@@ -35,12 +35,12 @@ This paper presents UQFF derivations and numerical results for: PAPER_311: NGC 6
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M | 3.978×1030 kg | Total PN ejected mass = 2.0 M_sun |
-| r | 9.46×1015 m | Half-lobe radius ≈ 1 ly |
-| v_wind | 1.0×105 m/s | Central star fast wind (100 km/s) |
-| t_eject | 6.312×1010 s | Bipolar lobe age (2000 yr) |
-| ρ_fluid | 1.0×10-20 kg/m3 | Ionized lobe gas |
-| z | 9.5×10-4 | Distance ≈ 1.2 kpc |
+| M | 3.978$\times$1030 kg | Total PN ejected mass = 2.0 M_sun |
+| r | 9.46$\times$1015 m | Half-lobe radius $\approx$ 1 ly |
+| v_wind | 1.0$\times$105 m/s | Central star fast wind (100 km/s) |
+| t_eject | 6.312$\times$1010 s | Bipolar lobe age (2000 yr) |
+| $\rho$_fluid | 1.0$\times$10-20 kg/m3 | Ionized lobe gas |
+| z | 9.5$\times$10-4 | Distance $\approx$ 1.2 kpc |
 
 ---
 
@@ -71,8 +71,8 @@ $$a_{wind}(t_{eject}) = 2 \times \frac{(10^5)^2}{9.46 \times 10^{15}} = \mathbf{
 
 $$\eta_{wind} \equiv \frac{a_{wind}(t_{eject})}{g_{base}} = \frac{2.114 \times 10^{-6}}{2.967 \times 10^{-12}} = \mathbf{7.127 \times 10^5}$$
 
-The stellar wind shock acceleration exceeds the gravitational binding by **7.127×105** at t =
-t_eject. This explains the observed bipolar expansion kinematics: the wind force is ~712,700×
+The stellar wind shock acceleration exceeds the gravitational binding by **7.127$\times$105** at t =
+t_eject. This explains the observed bipolar expansion kinematics: the wind force is ~712,700$\times$
 stronger than gravity at the lobe radius, making gravitational confinement impossible and
 guaranteeing outward bipolar expansion.
 
@@ -83,7 +83,7 @@ $$\frac{KE_{wind}}{\Phi_{grav}} = \frac{v_{wind}^2}{G M / r} = \frac{10^{10}}{6.
 $$= \frac{10^{10}}{2.806 \times 10^4} = \mathbf{3.564 \times 10^5}$$
 
 The specific kinetic energy of the stellar wind exceeds the gravitational well depth by a factor of
-**3.564×105**, confirming wind outflow is thermodynamically guaranteed regardless of the
+**3.564$\times$105**, confirming wind outflow is thermodynamically guaranteed regardless of the
 gravitational mass.
 
 ---
@@ -100,7 +100,7 @@ This additive term is dominant over $g_{base}$ by $\eta_{wind} \sim 10^5$, confi
 
 ## 4. Astrophysical Context
 
-NGC 6302 (the "Bug Nebula") hosts one of the hottest known white dwarf central stars (T_eff ≈
+NGC 6302 (the "Bug Nebula") hosts one of the hottest known white dwarf central stars (T_eff $\approx$
 200,000 K). The fast stellar wind (100 km/s for the slow component; up to 600 km/s for the fast
 component observed by HST) carves the bipolar morphology through interaction with the equatorial
 dust torus. The UQFF analysis quantitatively confirms that the wind kinematic energy exceeds
@@ -112,11 +112,11 @@ gravitational binding by ~6 orders of magnitude at the 1 ly lobe scale.
 
 | Quantity | Value | Unit |
 |---------|-------|------|
-| g_base | 2.967×10-12 | m/s2 |
-| a_wind(t=0) | 1.057×10-6 | m/s2 |
-| a_wind(t_eject) | 2.114×10-6 | m/s2 |
-| **η_wind** | **7.127×105** | dimensionless |
-| KE/grav_well | 3.564×105 | dimensionless |
+| g_base | 2.967$\times$10-12 | m/s2 |
+| a_wind(t=0) | 1.057$\times$10-6 | m/s2 |
+| a_wind(t_eject) | 2.114$\times$10-6 | m/s2 |
+| **$\eta$_wind** | **7.127$\times$105** | dimensionless |
+| KE/grav_well | 3.564$\times$105 | dimensionless |
 
 ---
 
@@ -232,7 +232,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.130 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -243,13 +243,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

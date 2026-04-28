@@ -40,7 +40,7 @@ systems ? compressed master with F_env(t)) and feed into Cycle 3 (99 systems), a
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,18 +53,18 @@ $$
 \begin{aligned}
   & Physical context: AGN/pulsar jet terminates at ICM cocoon \\
   & v_jet = 0.1c to 0.9c  (relativistic outflow) \\
-  & ICM ram pressure P_ram = ?_ICM·v_jet2 \\
+  & ICM ram pressure P_ram = ?_ICM\cdotv_jet2 \\
   & Jet shock equation: \\
-  & P_shock = ?_jet·v_jet2 / (1 + (v_jet/c)2)  (relativistic pressure) \\
+  & P_shock = ?_jet\cdotv_jet2 / (1 + (v_jet/c)2)  (relativistic pressure) \\
   & Rankine-Hugoniot at shock: \\
-  & ?_2/?_1 = (?+1)·M_s2 / ((?-1)·M_s2 + 2) \\
+  & ?_2/?_1 = (?+1)\cdotM_s2 / ((?-1)\cdotM_s2 + 2) \\
   & where M_s = v_shock/v_sound = Alfvénic Mach number upstream \\
   & For strong shock (M_s >> 1, ? = 5/3): \\
   & ?_2/?_1 = 4  (compression ratio) \\
   & v_2 = v_1/4  (post-shock velocity) \\
-  & T_2 = 3·m_p·v_12/(16·k_B)  (post-shock temperature) \\
+  & T_2 = 3\cdotm_p\cdotv_12/(16\cdotk_B)  (post-shock temperature) \\
   & UQFF F_env,jet term: \\
-  & F_env,jet(t) = (L_jet/L_Edd)^a × (?_2/?_1) × cos2(?_jet) \\
+  & F_env,jet(t) = (L_jet/L_Edd)^a \times (?_2/?_1) \times cos2(?_jet) \\
   & a ˜ 0.5–0.7 (radio mode: a~0.7, quasar mode: a~0.5) \\
   & ?_jet = half-opening angle of jet
 \end{aligned}
@@ -95,8 +95,8 @@ UQFF F_UBii,angmom:
 $$
 \begin{aligned}
   & Alfvén velocity: \\
-  & v_A = B / v(4p·?)   (Alfvén speed in Gaussian units) \\
-  & v_A = B / v(µ0·?)   (SI: µ0 = 4p×10-7 H/m) \\
+  & v_A = B / v(4p\cdot?)   (Alfvén speed in Gaussian units) \\
+  & v_A = B / v(µ0\cdot?)   (SI: µ0 = 4p\times10-7 H/m) \\
   & Magnetic energy density: \\
   & u_B = B2/(8p)   [Gaussian]  =  B2/(2µ0)   [SI] \\
   & Alfvénic Mach number: \\
@@ -104,10 +104,10 @@ $$
   & For Perseus cluster (Perseus cooling core): \\
   & B_Perseus ˜ 5–30 µG (Chandra X-ray inferences) \\
   & ?_ICM ˜ 10?26 kg/m3  (central ICM density) \\
-  & v_A = 30×10?1° / v(4p×10-7 × 10?26) \\
-  & = 3×10?? / 3.54×10?17 ˜ 8.5×107 m/s = 85 km/s \\
+  & v_A = 30\times10?1° / v(4p\times10-7 \times 10?26) \\
+  & = 3\times10?? / 3.54\times10?17 ˜ 8.5\times107 m/s = 85 km/s \\
   & UQFF disk MHD enters as buoyancy: \\
-  & F_UBii,diskmhd ? F_rel × (v_A2 · ?_ICM · V / E_LEP) × Q_wave \\
+  & F_UBii,diskmhd ? F_rel \times (v_A2 \cdot ?_ICM \cdot V / E_LEP) \times Q_wave \\
   & Represents magnetic pressure counteracting gravitational collapse
 \end{aligned}
 $$
@@ -116,17 +116,17 @@ $$
 $$
 \begin{aligned}
   & Full Rankine-Hugoniot conservation laws at shock front: \\
-  & Mass: ?1·v1 = ?2·v2 \\
-  & Momentum: P1 + ?1·v12 = P2 + ?2·v22 \\
-  & Energy: (1/2)·v12 + u1 + P1/?1 = (1/2)·v22 + u2 + P2/?2 \\
+  & Mass: ?1\cdotv1 = ?2\cdotv2 \\
+  & Momentum: P1 + ?1\cdotv12 = P2 + ?2\cdotv22 \\
+  & Energy: (1/2)\cdotv12 + u1 + P1/?1 = (1/2)\cdotv22 + u2 + P2/?2 \\
   & where subscript 1 = pre-shock, 2 = post-shock, u = internal energy \\
   & Magnetic version (oblique shock, B ? shock normal): \\
   & [?v_n] = 0 \\
   & [P + ?v_n2 + B_t2/(8p)] = 0   (normal momentum + magnetic pressure) \\
-  & [v_n·B_t - v_t·B_n] = 0        (frozen-in condition) \\
+  & [v_n\cdotB_t - v_t\cdotB_n] = 0        (frozen-in condition) \\
   & UQFF shock buoyancy: \\
-  & F_UBii,shock = F_rel × ((P2-P1)/(E_LEP · ?1)) × Q_wave \\
-  & = F_rel × (?P_shock / (E_LEP·?)) × Q_wave
+  & F_UBii,shock = F_rel \times ((P2-P1)/(E_LEP \cdot ?1)) \times Q_wave \\
+  & = F_rel \times (?P_shock / (E_LEP\cdot?)) \times Q_wave
 \end{aligned}
 $$
 
@@ -134,16 +134,16 @@ $$
 $$
 \begin{aligned}
   & Standard Press-Schechter: \\
-  & dn/dM = v(2/p) · (?¯/M) · (d_c/s_M2) · |ds_M/dM| · exp(-d_c2/(2s_M2)) \\
+  & dn/dM = v(2/p) \cdot (?¯/M) \cdot (d_c/s_M2) \cdot |ds_M/dM| \cdot exp(-d_c2/(2s_M2)) \\
   & d_c = 1.686 (linear collapse threshold) \\
   & s_M2 = variance in density field at mass scale M \\
   & MHD modification (B-field delays collapse): \\
-  & d_c ? d_c,eff = d_c / v(1 - (B2/(4p?·s_v2))) \\
+  & d_c ? d_c,eff = d_c / v(1 - (B2/(4p?\cdots_v2))) \\
   & = d_c / v(1 - ß_plasma?1)   where ß_plasma = P_thermal/P_magnetic \\
   & For ß >> 1 (weak field): d_c,eff ˜ d_c ? standard PS recovered \\
   & For ß ~ 1 (strong field): d_c,eff > d_c ? fewer massive clusters at given s_M \\
   & UQFF F_UBii,ps already includes MHD correction via: \\
-  & F_UBii,ps = F_rel × (\text{PS\_mass\_function\_correction} / E_LEP) × Q_wave \\
+  & F_UBii,ps = F_rel \times (\text{PS\_mass\_function\_correction} / E_LEP) \times Q_wave \\
   & where PS includes d_c,eff enhancement from ICM B-field
 \end{aligned}
 $$
@@ -153,17 +153,17 @@ $$
 \begin{aligned}
   & Kennicutt-Schmidt law: \\
   & SFR ? S_gas^{1.4}   (SFR surface density vs. gas surface density) \\
-  & Or volumetrically: SFR = e_ff · M_gas / t_ff \\
-  & where t_ff = v(3p/(32·G·?_gas)) and e_ff ˜ 0.01 (efficiency per free-fall) \\
+  & Or volumetrically: SFR = e_ff \cdot M_gas / t_ff \\
+  & where t_ff = v(3p/(32\cdotG\cdot?_gas)) and e_ff ˜ 0.01 (efficiency per free-fall) \\
   & MHD modification with B-field support: \\
   & t_ff ? t_AD (ambipolar diffusion timescale) when B2 >> 4p?s_v2 \\
-  & t_AD = t_ff × ß_plasma^{0.5} × (2pt_ni/t_ff) \\
+  & t_AD = t_ff \times ß_plasma^{0.5} \times (2pt_ni/t_ff) \\
   & UQFF F_env,sfr: \\
-  & F_env,sfr(t) = SFR(t) / SFR_Kennicutt × (1 + f_feedback·t/t_ff) \\
+  & F_env,sfr(t) = SFR(t) / SFR_Kennicutt \times (1 + f_feedback\cdott/t_ff) \\
   & where f_feedback = fraction of SFR energy re-injected (SNe feedback) \\
   & Numerical calibration (Westerlund 2): \\
   & SFR ˜ 2000 M_?/yr (starburst) \\
-  & SFR_Kennicutt ˜ 2.5×103 M_?/yr (from gas mass 106 M_?, t_ff ˜ 400 yr) \\
+  & SFR_Kennicutt ˜ 2.5\times103 M_?/yr (from gas mass 106 M_?, t_ff ˜ 400 yr) \\
   & F_env,sfr ˜ 0.8 (slightly sub-Kennicutt)
 \end{aligned}
 $$
@@ -176,16 +176,16 @@ $$
 \begin{aligned}
   & Goal: compress 38 system-specific equations into master + F_env(t) \\
   & Before Cycle 2: \\
-  & 38 systems × 12 terms = 456 equation terms (many shared) \\
+  & 38 systems \times 12 terms = 456 equation terms (many shared) \\
   & F_env not yet introduced \\
   & Cycle 2 procedure: \\
   & 1. Identify shared "backbone" terms (same functional form, different params) \\
   & 2. Factor these into single master equation with system-specific f(params) \\
   & 3. Group residual system-specific terms into F_env(t) envelope function \\
-  & 4. Each system now: g_i = g_master × F_env,i(t) \\
+  & 4. Each system now: g_i = g_master \times F_env,i(t) \\
   & After Cycle 2 (38 systems compressed): \\
   & g_UQFF(r,t) with F_env(t) from 6 MHD categories \\
-  & 38 unique F_env functions replace 38 × 12 = 456 terms \\
+  & 38 unique F_env functions replace 38 \times 12 = 456 terms \\
   & Compression: 38 F_env(t) vs 456 original = 8.3% of original terms \\
   & (Some parameter lists still needed per function, so "85% unification" is the net metric) \\
   & Error metrics after Cycle 2: \\
@@ -239,9 +239,9 @@ $$
   & 99.87% JWST alignment (from \text{grok\_share\_7514fe}.txt): \\
   & JWST observations: galaxy morphologies, SFR at z=2–10 \\
   & UQFF SFR track: F_env,sfr matches observed SFR evolution \\
-  & 2×106 observation point dataset (JWST public + Chandra archived data) \\
+  & 2\times106 observation point dataset (JWST public + Chandra archived data) \\
   & Where UQFF differs from standard MHD models: \\
-  & Standard: B × v_A = const (frozen flux, ideal MHD) \\
+  & Standard: B \times v_A = const (frozen flux, ideal MHD) \\
   & Standard: Accretion purely viscous (Shakura-Sunyaev a-disk) \\
   & UQFF: Non-ideal MHD with vacuum field ?_vac,[UA] contribution to B_effective \\
   & UQFF: F_env,mhd carries additional Ug1 (magnetic dipole) modulation \\
@@ -270,7 +270,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -289,7 +289,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -397,7 +397,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.093 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

@@ -37,8 +37,8 @@ trapped SCm.
 **Key contributions of Ug1:**
 - Drives surface irregularities through internal defects ($\delta_{\text{def}}$)
 - Is the **origin force** from which Ug2, Ug3, Ug4, and Ug4i all cascade
-- Is modulated by π cycles and non-linear time decay
-- Has been calibrated using specific solar data: $\mu_s \approx 3.38 \times 10^{20} \, \text{T·m}^3$ (base)
+- Is modulated by $\pi$ cycles and non-linear time decay
+- Has been calibrated using specific solar data: $\mu_s \approx 3.38 \times 10^{20} \, \text{T\cdotm}^3$ (base)
 
 ---
 
@@ -51,10 +51,10 @@ where:
 | Symbol | Value (Sun) | Description |
 |--------|-------------|-------------|
 | $k_1$ | 1.5 | Coupling constant for Ug1 (refined) |
-| $\mu_s$ | $(10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20}$ T·m3 | Stellar DPM moment with SCm |
+| $\mu_s$ | $(10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20}$ T$\cdot$m3 | Stellar DPM moment with SCm |
 | $\nabla(M_s/r)$ | $\approx 274$ m/s2 | Gradient of gravitational potential at $r = R_s$ |
 | $\alpha$ | $0.001$ day$^{-1}$ | Non-linear time decay rate |
-| $\cos(\pi t_n)$ | oscillatory | π cycle modulation with negative time |
+| $\cos(\pi t_n)$ | oscillatory | $\pi$ cycle modulation with negative time |
 | $\delta_{\text{def}}$ | $0.01 \cdot \sin(0.001 \, t)$ | Defect factor — drives surface irregularities |
 
 ---
@@ -69,7 +69,7 @@ $$\text{DPM} \equiv \frac{[UA']}{[\text{SCm}]}$$
 
 where $[UA']$ is the first-order derivative of the Universal Aether, meaning the **gradient flux** of Aether as it interacts with the internal SCm configuration. The monopole character arises because adjacent field lines cannot escape (monopole-like), but the system is an internal dipole (hence "di-pseudo").
 
-### 3.2 Stellar DPM Moment (μ_s)
+### 3.2 Stellar DPM Moment ($\mu$_s)
 
 For a star, the DPM moment is:
 
@@ -84,10 +84,10 @@ where:
 $$B_s^{(0)} = 10^{-4} \, \text{T}, \quad R_s = 6.96 \times 10^8 \, \text{m}$$
 
 Base DPM moment (no SCm):
-$$\mu_{s,\text{base}} = 10^{-4} \cdot (6.96 \times 10^8)^3 \approx 3.38 \times 10^{20} \, \text{T·m}^3$$
+$$\mu_{s,\text{base}} = 10^{-4} \cdot (6.96 \times 10^8)^3 \approx 3.38 \times 10^{20} \, \text{T\cdotm}^3$$
 
 Full DPM moment (with SCm):
-$$\mu_{s,\text{full}} \approx (10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20} \approx 3.38 \times 10^{23} + 1.35 \times 10^{20} \sin(\omega_c t) \, \text{T·m}^3$$
+$$\mu_{s,\text{full}} \approx (10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20} \approx 3.38 \times 10^{23} + 1.35 \times 10^{20} \sin(\omega_c t) \, \text{T\cdotm}^3$$
 
 The **SCm contribution dominates** by 7 orders of magnitude over the bare magnetic field.
 
@@ -114,13 +114,13 @@ $$Ug_1(t) \approx (1.39 \times 10^{26} + 5.55 \times 10^{23} \cdot \sin(\omega_c
 
 ---
 
-## 6. Surface Irregularities via δ_def
+## 6. Surface Irregularities via $\delta$_def
 
 The defect factor models surface phenomena (sunspots, flares, magnetic anomalies):
 
 $$\delta_{\text{def}}(t) = 0.01 \cdot \sin(0.001 \, t)$$
 
-This modifies Ug1 by ±1% with a period of roughly 6,280 seconds (~1.7 hours), representing **rapid
+This modifies Ug1 by $\pm$1% with a period of roughly 6,280 seconds (~1.7 hours), representing **rapid
 surface defect cycles** driven by the internal SCm structure.
 
 The Sun's observable surface activity (sunspots, differential rotation patterns) is a **direct
@@ -135,10 +135,10 @@ Ug1 is the generative force for all higher Ug terms:
 
 | Cascade Effect | Mechanism |
 |---|---|
-| Ug1 → Ug2 | DPM field bubble expands outward, forming the heliosphere via charge-reactive Aether trapping |
-| Ug1 → Ug3 | Equatorial CCW vs coronal CW spin differential (arising from DPM asymmetry) creates the magnetic strings disk |
-| Ug1 → Ug4 | DPM field propagates to the star–black hole interaction scale via vacuum energy modulation |
-| Ug1 → Ug4i | Sub-range DPM effects extend to galactic vacuum fluctuation coupling |
+| Ug1 $\to$ Ug2 | DPM field bubble expands outward, forming the heliosphere via charge-reactive Aether trapping |
+| Ug1 $\to$ Ug3 | Equatorial CCW vs coronal CW spin differential (arising from DPM asymmetry) creates the magnetic strings disk |
+| Ug1 $\to$ Ug4 | DPM field propagates to the star–black hole interaction scale via vacuum energy modulation |
+| Ug1 $\to$ Ug4i | Sub-range DPM effects extend to galactic vacuum fluctuation coupling |
 
 ---
 
@@ -195,7 +195,7 @@ def test_Ug1_solar_calibration():
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -298,7 +298,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.096 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -312,18 +312,18 @@ benchmarks:
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |---|---|---|---|---|
-| Gravitational coupling G | κ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N·m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
-| Higgs mass m_H | UQFF K_HIGGS = 47.34 → m_H = 125.09 GeV | m_H = 125.20 ± 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
-| Neutron magnetic moment | SCm coupling → μ_n = −1.913 μ_N | μ_n = −1.9130 ± 0.0001 μ_N (NIST 2022) | NIST 2022 | 99.9% |
-| Proton charge radius | UA topology → r_p = 0.841 fm | r_p = 0.8414 ± 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
-| Electron anomalous g−2 | UQFF SCm loop correction → a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
-| CMB temperature T₀ | UQFF cosmological buoyancy → T₀ = 2.7255 K | T₀ = 2.72548 ± 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
+| Gravitational coupling G | $\kappa$ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N$\cdot$m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
+| Higgs mass m_H | UQFF K_HIGGS = 47.34 $\to$ m_H = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
+| Neutron magnetic moment | SCm coupling $\to$ $\mu$_n = -1.913 $\mu$_N | $\mu$_n = -1.9130 $\pm$ 0.0001 $\mu$_N (NIST 2022) | NIST 2022 | 99.9% |
+| Proton charge radius | UA topology $\to$ r_p = 0.841 fm | r_p = 0.8414 $\pm$ 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
+| Electron anomalous g-2 | UQFF SCm loop correction $\to$ a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
+| CMB temperature T0 | UQFF cosmological buoyancy $\to$ T0 = 2.7255 K | T0 = 2.72548 $\pm$ 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
 
-**New physics claim:** UQFF vacuum topology operates at κ = 5.0e-4 day-1, consistent with
+**New physics claim:** UQFF vacuum topology operates at $\kappa$ = 5.0e-4 day-1, consistent with
 gravitational buoyancy at cosmological scales beyond standard model predictions.
 
-**Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4;
-k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+**Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4;
+k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 *CVW Gate G6 — Session 166 patch (CVW v2.0.0 upgrade)*
 

@@ -102,10 +102,10 @@ The 26-level vacuum density ladder provides a structured framework for understan
 
 ## References
 
-- PAPER_970: Ramanujan S₂₆ Application in UQFF Inflation
+- PAPER_970: Ramanujan S26 Application in UQFF Inflation
 - PAPER_1106: SCm String Theory 26D Action
 - PAPER_1107: UQFF 26D Geometric Folding Operator
-- Apéry, R. (1979). Irrationalité de ζ(3). Astérisque 61, 11–13
+- Apéry, R. (1979). Irrationalité de $\zeta$(3). Astérisque 61, 11–13
 - Weinberg, S. (1989). The cosmological constant problem. Rev. Mod. Phys. 61, 1–23
 
 
@@ -116,7 +116,7 @@ The 26-level vacuum density ladder provides a structured framework for understan
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

@@ -27,12 +27,12 @@ physical constants used in the Unified Quantum Field Framework (UQFF). Twenty-pl
 catalogued with their symbols, units, canonical numerical values, physical interpretation, and the
 equation components they appear in. This constitutes the definitive variable dictionary for the UQFF
 system and serves as the primary reference for all subsequent whitepaper derivations. The table
-establishes the calibrated constants: κ = 0.0005 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001,
-k_η = 10-113, β_i ≈ 0.603.
+establishes the calibrated constants: $\kappa$ = 0.0005 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001,
+k_$\eta$ = 10-113, $\beta$_i $\approx$ 0.603.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -41,7 +41,7 @@ present in Standard Model treatments.
 ## 1. Introduction
 
 The UQFF is a multi-component unified field theory built from four gravity components (Ug1–Ug4), a
-buoyancy field (Ubi), a magnetic string sum (Um), and an aether tensor correction (A_μν). The full
+buoyancy field (Ubi), a magnetic string sum (Um), and an aether tensor correction (A_$\mu$$\nu$). The full
 field equation is:
 
 $$F_U(r, t, t_n, \theta) = \sum_{i=1}^{4} U_{g,i} + \sum_{i=1}^{4} U_{b,i} + U_m + A_{\mu\nu}$$
@@ -56,8 +56,8 @@ cross-referenced table of all variables.
 | Symbol | Name | Value | Units | Source |
 |--------|------|-------|-------|--------|
 | $c$ | Speed of light | $2.998 \times 10^8$ | m/s | SI |
-| $G$ | Gravitational constant | $6.674 \times 10^{-11}$ | m3/(kg·s2) | SI |
-| $\hbar$ | Reduced Planck constant | $1.055 \times 10^{-34}$ | J·s | SI |
+| $G$ | Gravitational constant | $6.674 \times 10^{-11}$ | m3/(kg$\cdot$s2) | SI |
+| $\hbar$ | Reduced Planck constant | $1.055 \times 10^{-34}$ | J$\cdot$s | SI |
 | $k_B$ | Boltzmann constant | $1.381 \times 10^{-23}$ | J/K | SI |
 | $\Lambda$ | Cosmological constant | $1.089 \times 10^{-52}$ | m-2 | Planck 2018 |
 | $B_{\text{crit}}$ | Magnetar critical field | $4.4 \times 10^{13}$ | T | QED |
@@ -71,10 +71,10 @@ cross-referenced table of all variables.
 | $\kappa$ | SCm decay rate | $5.0 \times 10^{-4}$ | day-1 | All Ereact terms |
 | $[SSq]$ | Superconductive squeezing factor | $0.57$ | dimensionless | SCm coupling |
 | $H_{\text{SCm}}$ | SCm Hamiltonian factor | $\approx 0.99$ | dimensionless | Ug2, Ubi |
-| $U_{\text{UA}}$ | Unified aether factor | $\approx 10^{-4}$ | dimensionless | Ubi, A_μν |
+| $U_{\text{UA}}$ | Unified aether factor | $\approx 10^{-4}$ | dimensionless | Ubi, A_$\mu$$\nu$ |
 | $k_\eta$ | Quantum coupling constant | $10^{-113}$ | dimensionless | Deep vacuum |
 | $\beta_i$ | Buoyancy coupling coefficient | $0.603$ | dimensionless | All Ubi terms |
-| $\eta$ | Aether tensor amplitude | $10^{-22}$ | s2/kg | A_μν |
+| $\eta$ | Aether tensor amplitude | $10^{-22}$ | s2/kg | A_$\mu$$\nu$ |
 
 ---
 
@@ -87,7 +87,7 @@ cross-referenced table of all variables.
 | $R_b$ | Boundary radius (buoyancy shell) | $1.496 \times 10^{13}$ | m | Ug2 (step fn) |
 | $T_s$ | Surface temperature | $5778.0$ | K | Plasma coupling |
 | $\omega_s$ | Rotation rate | $2.5 \times 10^{-6}$ | rad/s | Ug3, Um |
-| $B_s$ | Average surface magnetic field | $1.0 \times 10^{-4}$ | T | Ug1 (μ_s) |
+| $B_s$ | Average surface magnetic field | $1.0 \times 10^{-4}$ | T | Ug1 ($\mu$_s) |
 | $\rho_{\text{SCm}}$ | SCm density at body | $1.0 \times 10^{15}$ | kg/m3 | Ereact |
 | $Q_{\text{UA}}$ | Body UA charge | $1.0 \times 10^{-11}$ | C | Ug2 |
 | $P_{\text{core}}$ | Core pressure | $1.0$ | Pa (normalized) | Ug3 |
@@ -110,7 +110,7 @@ cross-referenced table of all variables.
 | $Q_A$ | Global aether charge | $1.0 \times 10^{-10}$ | C | Ug2 |
 | $\rho_v$ | Vacuum energy density | $6.0 \times 10^{-27}$ | kg/m3 | Ug4 |
 | $N_{\text{str}}$ | Number of virtual strings | $10^9$ | dimensionless | Um |
-| $T_{s}^{00}$ | Stress-energy 00 component | $1.27\times10^3 + 1.11\times10^7$ | Pa | A_μν |
+| $T_{s}^{00}$ | Stress-energy 00 component | $1.27\times10^3 + 1.11\times10^7$ | Pa | A_$\mu$$\nu$ |
 
 ---
 
@@ -164,7 +164,7 @@ $$\sum_j \mu_j = N_{\text{str}} \cdot \bar{\mu}_j \cdot P_{\text{SCm}} \cdot E_{
 
 This variable reference constitutes the canonical dictionary for all UQFF equations. The 20+
 variables span three categories: universal physical constants (fixed by SI/CODATA), UQFF calibrated
-constants (fitted to astrophysical observations with κ = 0.0005 day-1, β_i = 0.603), and
+constants (fitted to astrophysical observations with $\kappa$ = 0.0005 day-1, $\beta$_i = 0.603), and
 body-specific parameters populated by the APIFetch.py pipeline from SIMBAD/NASA/VizieR. All
 downstream calculations in PAPER_170–195 reference this table.
 
@@ -179,7 +179,7 @@ downstream calculations in PAPER_170–195 reference this table.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -198,7 +198,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -307,7 +307,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.180 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -318,13 +318,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

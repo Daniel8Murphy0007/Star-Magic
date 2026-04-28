@@ -40,7 +40,7 @@ other system in the 29 UQFF documents uses a positive expansion multiplier of th
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -52,10 +52,10 @@ From Document 12 of grok_share_7514fe:
 
 $$
 \begin{aligned}
-  & g_Bubble(r, t) = (G·M)/r2 · (1+H(z)·t) · (1-B/B_crit) · (1+E(t)) \\
+  & g_Bubble(r, t) = (G\cdotM)/r2 \cdot (1+H(z)\cdott) \cdot (1-B/B_crit) \cdot (1+E(t)) \\
   & + (Ug1 + Ug2 + Ug3 + Ug4) \\
-  & + ?c2/3 + QM + q(v×B) + fluid + DM \\
-  & + ?·v_wind2
+  & + ?c2/3 + QM + q(v\timesB) + fluid + DM \\
+  & + ?\cdotv_wind2
 \end{aligned}
 $$
 
@@ -82,14 +82,14 @@ The expansion enhancement fraction:
 $$
 \begin{aligned}
   & E(t) = P_wind(r, t) / P_gravity(r) \\
-  & = ?_wind · v_wind2 · r2 / (G · M · ?_shell)
+  & = ?_wind \cdot v_wind2 \cdot r2 / (G \cdot M \cdot ?_shell)
 \end{aligned}
 $$
 
 Parameters for NGC 7635:
-- BD+60°2522: O6.5 star, mass-loss rate ? ˜ 3×10-6 M?/yr
+- BD+60°2522: O6.5 star, mass-loss rate ? ˜ 3$\times$10-6 M?/yr
 - v_wind ˜ 1500 km/s (characteristic O-type stellar wind)
-- r_bubble ˜ 3 ly ˜ 2.84×1016 m (bubble shell radius)
+- r_bubble ˜ 3 ly ˜ 2.84$\times$1016 m (bubble shell radius)
 
 Steady-state: `E(t) ˜ 0.05` (5% wind enhancement) when wind pressure = 5% of gravity. This small but
 nonzero term can be observed via the optical-IR morphology: the Bubble Nebula shell is distinctly
@@ -108,7 +108,7 @@ $$
 In the compressed-shell quasi-equilibrium:
 $$
 \begin{aligned}
-  & P_wind = ?_w · v_w2 ˜ P_gravity + dP \\
+  & P_wind = ?_w \cdot v_w2 ˜ P_gravity + dP \\
   & ? (effective gravity enhancement) = dP / P_gravity = E(t)
 \end{aligned}
 $$
@@ -121,10 +121,10 @@ morphology (unlike an unconstrained free-expansion bubble).
 
 $$
 \begin{aligned}
-  & g_base = G·M/r2 · (1+H·t) · (1-B/B_crit) \\
-  & ˜ 6.674e-11 · 1.5e31 / (2.84e16)2 · 1.000 · 0.9999 \\
-  & ˜ 1.23×10-52 m/s2 \\
-  & g_shell = g_base · (1+0.05) = g_base · 1.05 \\
+  & g_base = G\cdotM/r2 \cdot (1+H\cdott) \cdot (1-B/B_crit) \\
+  & ˜ 6.674e-11 \cdot 1.5e31 / (2.84e16)2 \cdot 1.000 \cdot 0.9999 \\
+  & ˜ 1.23\times10-52 m/s2 \\
+  & g_shell = g_base \cdot (1+0.05) = g_base \cdot 1.05 \\
   & ? 5% enhancement over purely DPM-seeded value
 \end{aligned}
 $$
@@ -260,7 +260,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.157 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -271,13 +271,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

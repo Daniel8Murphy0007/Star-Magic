@@ -57,13 +57,13 @@ encoding** that was the explicit output of the document integration exercise.
 $$g_\text{compressed}(r,t) = \frac{GM(t)}{r^2}\left(1 + H(t,z)\right)\left(1 - \frac{B(t)}{B_\text{crit}}\right)(1 + F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_H} + \rho_f V g_\text{local} + (M+M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 **Variable definitions:**
-- $H(t,z) = H_0\sqrt{0.3(1+z)^3 + 0.7}$ -- Friedmann-ΛCDM expansion (Planck CMB values)
+- $H(t,z) = H_0\sqrt{0.3(1+z)^3 + 0.7}$ -- Friedmann-$\Lambda$CDM expansion (Planck CMB values)
 - $\psi_text{total} = \psi_text{mag} + \psi_text{standing} + \psi_text{quantum}$ -- 3-component wavefunction superposition
 - $\int \psi^\dagger \hat{H} \psi \, dV = 2.176\times10^{-18}$ J -- quantum coherence integral (magnetar)
 - $\Delta x \cdot \Delta p = 10^{-68}$ J^2*s^2 -- uncertainty product for compact objects
 - $t_H = 4.35\times10^{17}$ s -- Hubble time
 
-**Strengths:** Bridges classical μ_s∇(M_s/r) to quantum corrections; ΛCDM expansion embedded  
+**Strengths:** Bridges classical $\mu$_s$\nabla$(M_s/r) to quantum corrections; $\Lambda$CDM expansion embedded  
 **Weakness (Grok analysis):** $U_{gi}$ modes labeled "negligible" -- incorrect for compact objects; Ug4i needs exponential form
 
 ### Document 2: Master UQFF Resonance Equation (14 May 2025)
@@ -98,7 +98,7 @@ smooth vortex penetration regime.
 
 **Proof 4 — Boundary Conditions:**
 - $r \rightarrow \infty$: $\Lambda c^2/3 = 3.3\times10^{-36}$ m/s^2 dominates (correct -- CMB-scale gravity IS cosmological constant)
-- $t \rightarrow 0$: Compressed -> DPM-seeded $μ_s∇(M_s/r)$ when $H(t,z) \approx 0$ and SC correction = 1
+- $t \rightarrow 0$: Compressed -> DPM-seeded $\mu_s\nabla(M_s/r)$ when $H(t,z) \approx 0$ and SC correction = 1
 - $r \rightarrow 0$: Perturbation term diverges (quantum gravity regime -- signals model breakdown)
 
 **Proof 5 — Empirical Alignment:**
@@ -168,13 +168,13 @@ PAPER_375 captures this for J1610+1811.
 | Constant | Symbol | Value | Defined in |
 |----------|--------|-------|:----------:|
 | Hubble constant | H_0 | 2.269e-18 s^{-}1 | Doc 1 |
-| Cosmological constant | Λ | 1.1e-52 m^{-}2 | Doc 1 |
+| Cosmological constant | $\Lambda$ | 1.1e-52 m^{-}2 | Doc 1 |
 | Hubble time | t_H | 4.35e17 s | Doc 1 |
-| Uncertainty product | Δx*Δp | 10^{-}6^8 J^2*s^2 | Doc 1 |
-| Coherence integral | integral ψ†Ĥψ dV | 2.176e-18 J | Doc 1 |
-| Resonance frequency | ω_res | 1.445e-17 rad/s | Doc 3 |
-| TRZ coupling | k_η | 10^{-}1^{1}3 | Doc 2 |
-| Decay constant | κ | 0.0005 day^{-}1 | Doc 3 |
+| Uncertainty product | $\Delta$x*$\Delta$p | 10^{-}6^8 J^2*s^2 | Doc 1 |
+| Coherence integral | integral $\psi$†Ĥ$\psi$ dV | 2.176e-18 J | Doc 1 |
+| Resonance frequency | $\omega$_res | 1.445e-17 rad/s | Doc 3 |
+| TRZ coupling | k_$\eta$ | 10^{-}1^{1}3 | Doc 2 |
+| Decay constant | $\kappa$ | 0.0005 day^{-}1 | Doc 3 |
 | Wormhole coupling | f_worm | 1x10^{-}1^0 | C++ final |
 | Wormhole throat | b | 1.0 m | C++ final |
 
@@ -187,7 +187,7 @@ PAPER_375 captures this for J1610+1811.
 | 3-document analysis | PAPER_371-377 (derived from docs) | NEW -- the integration *exercise* itself |
 | Dual-block LaTeX | PAPER_378 (cohesive formula concept) | NEW -- formal LaTeX encoding |
 | Meissner exponential | PAPER_375 (mentioned as extension) | Gap-fill: formal derivation motivation |
-| Error propagation | PAPER_375 (mentions δg formula) | Gap-fill: formal application |
+| Error propagation | PAPER_375 (mentions $\delta$g formula) | Gap-fill: formal application |
 | Document 3 proofs | PAPER_376 (same proofs) | OVERLAP -- PAPER_376 covers this |
 
 ---
@@ -197,7 +197,7 @@ PAPER_375 captures this for J1610+1811.
 - PAPER_371: Resonance MUGE 12-term framework
 - PAPER_372: Compressed MUGE 8-term framework
 - PAPER_373: Morris-Thorne wormhole term
-- PAPER_375: Advanced UQFF (Meissner exp + Lorentz + δg)
+- PAPER_375: Advanced UQFF (Meissner exp + Lorentz + $\delta$g)
 - PAPER_376: Formal proof set (Document 3 proofs)
 - PAPER_378: Cohesive UQFF integration formula
 - `UQFFWormholeMeissnerRelativisticGammaCalculator` (CP4 #23): All 3 improvements encoded
@@ -216,7 +216,7 @@ synthesis*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -235,7 +235,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -337,7 +337,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

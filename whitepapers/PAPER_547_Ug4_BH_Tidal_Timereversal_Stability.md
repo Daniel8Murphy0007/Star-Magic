@@ -27,7 +27,7 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-The fourth sub-component of Universal Gravity, $U_{g4}(r,t) = r \cdot t$, captures tidal defects in extreme environments — specifically the interaction of stellar bodies with black hole horizons. Derived from Diophantine approximations applied to BH event radii and validated against SNR G272.2-03.2 and magnetar SGR 1745-2900 data, Ug4 introduces a time-dependent tidal term that participates in time-reversal stability (negative $t$ bounding BH accretion rates). The Dipole Vortex Primes (DVP) π-overlay generates a non-repeating sequence of Ug4 values anchored by the prime $p = 113$, establishing irreducibility of the BH tidal fingerprint.
+The fourth sub-component of Universal Gravity, $U_{g4}(r,t) = r \cdot t$, captures tidal defects in extreme environments — specifically the interaction of stellar bodies with black hole horizons. Derived from Diophantine approximations applied to BH event radii and validated against SNR G272.2-03.2 and magnetar SGR 1745-2900 data, Ug4 introduces a time-dependent tidal term that participates in time-reversal stability (negative $t$ bounding BH accretion rates). The Dipole Vortex Primes (DVP) $\pi$-overlay generates a non-repeating sequence of Ug4 values anchored by the prime $p = 113$, establishing irreducibility of the BH tidal fingerprint.
 
 ---
 
@@ -64,7 +64,7 @@ This $-10^{-4}$ contribution to $F_U$ balances jet ejections in quasar-scale env
 
 ---
 
-## §4 DVP π-Overlay Sequence
+## §4 DVP $\pi$-Overlay Sequence
 
 The Dipole Vortex Primes (DVP) number system generates a non-repeating overlay via:
 
@@ -88,7 +88,7 @@ The step sizes $\pi^1 \cdot r$ and $\pi^2 \cdot r$ are provably distinct (since 
 |---|---|---|---|
 | SGR 1745-2900 magnetar | BH field near Sgr A* | $B \sim 10^{-3}\ G$ | $U_{g4}$ contribution $\sim -10^{-4}$ (same order) |
 | SNR G272.2-03.2 | Remnant radius | $\sim 10\ \text{pc}$ | $r \cdot t$ scaling at stellar-BH separation |
-| VLA H41α (BH jets) | Frequency | 92 GHz | Freq_drive $= 6.93 \times 10^9$ Hz (sub-harmonic) |
+| VLA H41$\alpha$ (BH jets) | Frequency | 92 GHz | Freq_drive $= 6.93 \times 10^9$ Hz (sub-harmonic) |
 | BH26 re-ringing | ReRing_BB | $1.15 \times 10^{14}$ Hz | Ug4 tidal modulation |
 
 ---
@@ -107,7 +107,7 @@ Ug4 activates in the BH-tidal regime ($r < 10^{-3}\ \text{AU}$) where the $r \cd
 
 The Ug4 term $r \cdot t$ is a minimal, physically motivated extension of the Ug hierarchy that:
 1. Bounds BH accretion via time-reversal stability ($t_{\text{stab}}$ finite and negative)
-2. Generates unique non-repeating tidal sequences via DVP π-overlay
+2. Generates unique non-repeating tidal sequences via DVP $\pi$-overlay
 3. Connects to BH26 re-ringing harmonics at $1.15 \times 10^{14}$ Hz
 4. Completes the four-sub-term Ug structure required for full F_U equilibrium
 
@@ -121,7 +121,7 @@ The Ug4 term $r \cdot t$ is a minimal, physically motivated extension of the Ug 
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -140,7 +140,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -215,7 +215,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.156 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -226,10 +226,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -240,7 +240,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*Star Magic / UQFF Framework · Session 146 · grok_share_366dc393a37.txt*
+*Star Magic / UQFF Framework $\cdot$ Session 146 $\cdot$ grok_share_366dc393a37.txt*
 
 
 

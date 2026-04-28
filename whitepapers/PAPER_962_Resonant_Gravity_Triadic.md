@@ -111,7 +111,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -194,7 +194,7 @@ $$\mathcal{L}_\text{res} = g_\text{comp}(r) \cdot \prod_{f \in \{\text{Super,Qua
 $$\boxed{g_\text{res}(r,t) = g_\text{comp}(r)\prod_{f=1}^{5}\bigl(1 + A_f\sin(\omega_f t + \phi_f)\bigr),\quad \Phi_text{crit}: g_\text{res} > g_\text{neutron-drop}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → compressed gravity → 5-frequency modulation → resonant amplification → $\Phi_text{crit}$ phase boundary
+PAPER_877 $\to$ compressed gravity $\to$ 5-frequency modulation $\to$ resonant amplification $\to$ $\Phi_text{crit}$ phase boundary
 
 ---
 

@@ -10,7 +10,7 @@ tags: [AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_162 — Solar Cycle UQFF: omega_c = 2π/(11yr), Time-Varying B(t), delta_def Defect Factor
+# PAPER_162 — Solar Cycle UQFF: omega_c = 2$\pi$/(11yr), Time-Varying B(t), delta_def Defect Factor
 **Author:** Daniel T. Murphy
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
@@ -19,16 +19,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper establishes **per-body cycle frequency ω_c** as a new first-class UQFF parameter,
+This paper establishes **per-body cycle frequency $\omega$_c** as a new first-class UQFF parameter,
 replacing the static magnetic field B_s with a time-varying field B(t) in the Ug1 magnetic
-dipole term. The 11-year solar cycle drives B(t) = B_s + 0.4·sin(ω_c·t) for the Sun, while
-each planet uses its own orbital/rotation period. A new Ug1 **defect factor** δ_def = 0.01
+dipole term. The 11-year solar cycle drives B(t) = B_s + 0.4$\cdot$sin($\omega$_c$\cdot$t) for the Sun, while
+each planet uses its own orbital/rotation period. A new Ug1 **defect factor** $\delta$_def = 0.01
 modulates the magnetic dipole oscillation amplitude. This paper is the theoretical foundation
-for PAPER_157's per-body ω_c parameters.
+for PAPER_157's per-body $\omega$_c parameters.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -37,11 +37,11 @@ present in Standard Model treatments.
 ## 1. Motivation
 
 Previous UQFF implementations used static magnetic field B_s. The Sun's magnetic field
-varies by ±40% over the 11-year solar cycle (B range: ~0.6 G to ~2 G at solar average).
+varies by $\pm$40% over the 11-year solar cycle (B range: ~0.6 G to ~2 G at solar average).
 This time variation affects:
-- Ug1 (magnetic dipole term) via μ_s(t) = B(t)·Rs3
-- Ug3 (string rotation) via ω'_s(t) = ω_s + ω_c·cos(ω_c·t)
-- Solar wind velocity → δ_sw term in Ug2
+- Ug1 (magnetic dipole term) via $\mu$_s(t) = B(t)$\cdot$Rs3
+- Ug3 (string rotation) via $\omega$'_s(t) = $\omega$_s + $\omega$_c$\cdot$cos($\omega$_c$\cdot$t)
+- Solar wind velocity $\to$ $\delta$_sw term in Ug2
 
 ---
 
@@ -51,16 +51,16 @@ $$\boxed{B(t) = B_s + 0.4 \cdot \sin(\omega_c \cdot t) + S_{Cm,contrib}}$$
 
 where $S_{Cm,contrib}$ is the superconductive medium contribution (perturbative, typically ~B_s/100).
 
-### 2.1 Magnetic Dipole Moment μ_s(t)
+### 2.1 Magnetic Dipole Moment $\mu$_s(t)
 
 $$\mu_s(t) = B(t) \cdot R_s^3$$
 
-| Body    | B_s [T]   | ΔB/B_s    | Period        | ω_c [rad/s]             |
+| Body    | B_s [T]   | $\Delta$B/B_s    | Period        | $\omega$_c [rad/s]             |
 |---------|-----------|-----------|---------------|--------------------------|
-| Sun     | 1×10-4   | 40%       | 11 yr         | 2π/(11·365.25·86400)    |
-| Earth   | 3×10-5   | varies    | 1 yr (proxy)  | 2π/(1·365.25·86400)     |
-| Jupiter | 4×10-4   | varies    | 11.86 yr      | 2π/(11.86·365.25·86400) |
-| Neptune | 1×10-4   | varies    | 164.8 yr      | 2π/(164.8·365.25·86400) |
+| Sun     | 1$\times$10-4   | 40%       | 11 yr         | 2$\pi$/(11$\cdot$365.25$\cdot$86400)    |
+| Earth   | 3$\times$10-5   | varies    | 1 yr (proxy)  | 2$\pi$/(1$\cdot$365.25$\cdot$86400)     |
+| Jupiter | 4$\times$10-4   | varies    | 11.86 yr      | 2$\pi$/(11.86$\cdot$365.25$\cdot$86400) |
+| Neptune | 1$\times$10-4   | varies    | 164.8 yr      | 2$\pi$/(164.8$\cdot$365.25$\cdot$86400) |
 
 ---
 
@@ -68,10 +68,10 @@ $$\mu_s(t) = B(t) \cdot R_s^3$$
 
 $$\boxed{U_{g1}(r,t) = k_1 \cdot \mu_s(t) \cdot \nabla\frac{M_s}{r} \cdot e^{-\alpha t} \cos(\pi t_n) \cdot (1 + \delta_{def} \cdot \sin(0.001t))}$$
 
-where the **defect factor** δ_def = 0.01 introduces a slow perturbation at 0.001 rad/s
+where the **defect factor** $\delta$_def = 0.01 introduces a slow perturbation at 0.001 rad/s
 (~6.3 second period) representing surface magnetic flux tube defects.
 
-Physical basis for δ_def: Magnetic flux tube emergence/submergence at the solar surface
+Physical basis for $\delta$_def: Magnetic flux tube emergence/submergence at the solar surface
 creates ~1% modulation in the effective dipole moment on timescales of seconds to minutes
 (observed in solar magnetogram data).
 
@@ -87,7 +87,7 @@ $$U_{g3}(r,t) = k_3 \cdot B_j(t) \cdot \cos(\omega'_s(t) \cdot t \cdot \pi) \cdo
 
 ---
 
-## 5. Per-Body ω_c Implementation (C++)
+## 5. Per-Body $\omega$_c Implementation (C++)
 
 ```cpp
 // omega_c assignments (radians per second)
@@ -109,7 +109,7 @@ double compute_B_t(const CelestialBody& body, double t) {
 
 ## 6. Testable Predictions
 
-At solar maximum (B_s + 0.4 = 1.4×10-4 T vs minimum B_s - 0.4 = 0.6×10-4 T):
+At solar maximum (B_s + 0.4 = 1.4$\times$10-4 T vs minimum B_s - 0.4 = 0.6$\times$10-4 T):
 
 $$\frac{U_{g1}^{max}}{U_{g1}^{min}} = \frac{1.4}{0.6} \approx 2.33$$
 
@@ -129,7 +129,7 @@ modulation should correlate with:
 ---
 
 **Status:** ✅ Complete | **CP Stage:** CP2
-**Supersedes:** N/A (extends static B_s) | **Related:** PAPER_157 (per-body ω_c usage), PAPER_027
+**Supersedes:** N/A (extends static B_s) | **Related:** PAPER_157 (per-body $\omega$_c usage), PAPER_027
 (5-freq resonance including solar), PAPER_086 (Ug1 derivation)
 
 
@@ -144,7 +144,7 @@ modulation should correlate with:
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -163,7 +163,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -272,7 +272,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.093 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -283,13 +283,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

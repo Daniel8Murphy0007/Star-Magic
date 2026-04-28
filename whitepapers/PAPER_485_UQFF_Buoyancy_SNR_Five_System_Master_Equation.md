@@ -86,11 +86,11 @@ For systems with $\Delta = b^2 - 4ac < 0$ (complex modes), the real part $x = -b
 
 | Constant | Symbol | Value |
 |----------|--------|-------|
-| Normalization force | $F_0$ | 1.83 × 1071 N |
-| Vacuum energy density | $\rho_{vac}$ | 7.09 × 10-36 J/m3 |
-| LENR angular frequency | $\omega_{LENR}$ | 2π × 1.25 × 1012 rad/s |
-| Activation frequency | $\omega_{ACT}$ | 2π × 300 rad/s |
-| Relativistic base | $F_{rel,0}$ | 4.30 × 1033 N |
+| Normalization force | $F_0$ | 1.83 $\times$ 1071 N |
+| Vacuum energy density | $\rho_{vac}$ | 7.09 $\times$ 10-36 J/m3 |
+| LENR angular frequency | $\omega_{LENR}$ | 2$\pi$ $\times$ 1.25 $\times$ 1012 rad/s |
+| Activation frequency | $\omega_{ACT}$ | 2$\pi$ $\times$ 300 rad/s |
+| Relativistic base | $F_{rel,0}$ | 4.30 $\times$ 1033 N |
 | g_rt placeholder | — | $F_{total} / (M_\odot \cdot Q_{wave})$ |
 
 ---
@@ -104,7 +104,7 @@ but operating via vacuum energy displacement.
 **LENR component:** Models low-energy nuclear reactions triggered by the extreme thermodynamic
 conditions in SNR shock fronts, contributing to neutron flux.
 
-**F_DE (Dark Energy):** The rho_vac × r2 term captures the cosmological constant's contribution to
+**F_DE (Dark Energy):** The rho_vac $\times$ r2 term captures the cosmological constant's contribution to
 remnant expansion at large scales (Galactic Center, Chandra Archive).
 
 **F_rel:** Relativistic ejecta (v_exp ~ 0.002c for SN1006) require the Lorentz-suppression factor
@@ -132,7 +132,7 @@ e^(-v/c), preventing unphysical super-luminal contributions.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -151,7 +151,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -174,7 +174,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -295,7 +295,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -306,10 +306,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

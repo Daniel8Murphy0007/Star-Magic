@@ -10,7 +10,7 @@ tags: [ALICE, vacuum, QGP, 26D, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_972: ALICE Centrality Multiplicity via S₂₆^{(k)}
+# PAPER_972: ALICE Centrality Multiplicity via S26^{(k)}
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
@@ -102,7 +102,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -163,7 +163,7 @@ mock-theta framework with the SCm phonon spectrum.
 $$\boxed{\frac{dN_\text{ch}}{d\eta} = A \cdot \sqrt{s}^{\,0.156} \cdot (1 - c/100)^\alpha \cdot S_{26}^{(k)}}$$
 
 ### §A.3 Cosmogenesis Linkage Chain
-PAPER_877 → vacuum density → $S_{26}^{(k)}$ → QGP formation → hadron multiplicity → ALICE $dN/d\eta$
+PAPER_877 $\to$ vacuum density $\to$ $S_{26}^{(k)}$ $\to$ QGP formation $\to$ hadron multiplicity $\to$ ALICE $dN/d\eta$
 
 ---
 

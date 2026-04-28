@@ -49,7 +49,7 @@ $$E^{26D\,Egg} = UA + SCm_{inj} \cdot \sum_{k=1}^{5} [UA^{(k)}] + Grind_{opp} + 
 |------|--------|---------------|-----------------|
 | Universal Aether energy | UA | 10-12 J | Ground state before SCm formation |
 | SCm injection density | SCm_inj | 10-6 kg/m3 | Superconductor condensation rate |
-| Layer k aether energy | UA^(k) | k×10-13 J | Per-layer aether contribution |
+| Layer k aether energy | UA^(k) | k$\times$10-13 J | Per-layer aether contribution |
 | DPM grinding opposition | Grind_opp | 0.5e-12 J | Net energy from DPM friction |
 | Big Bang Dilation Term | BBDT | 2.3e-15 J | Cosmological redshift energy |
 
@@ -78,18 +78,18 @@ observer's time frame:
 
 $$BBDT = UA \cdot H_0 \cdot t_{adj}$$
 
-where $H_0 \approx 67.4\text{ km/s/Mpc}$ and $t_{adj}$ is the age-adjusted time. For the pre-Big-Bang epoch, BBDT/E_egg ≈ 0.2%, consistent with the observed cosmological constant's small but non-zero contribution.
+where $H_0 \approx 67.4\text{ km/s/Mpc}$ and $t_{adj}$ is the age-adjusted time. For the pre-Big-Bang epoch, BBDT/E_egg $\approx$ 0.2%, consistent with the observed cosmological constant's small but non-zero contribution.
 
 ---
 
 ## 5. Numerical Validation
 
 With default parameters:
-- UA = 10-12 J, SCm_inj = 10-6, layers = [10-13, 2×10-13, ..., 5×10-13]
-- SCm_sum = 10-6 × (1.5e-12) = 1.5e-18 J
-- E_egg = 10-12 + 1.5e-18 + 0.5e-12 + 2.3e-15 → **1.5023e-12**  J
+- UA = 10-12 J, SCm_inj = 10-6, layers = [10-13, 2$\times$10-13, ..., 5$\times$10-13]
+- SCm_sum = 10-6 $\times$ (1.5e-12) = 1.5e-18 J
+- E_egg = 10-12 + 1.5e-18 + 0.5e-12 + 2.3e-15 $\to$ **1.5023e-12**  J
 
-The BBD fraction (BBDT/E_egg) ≈ 0.15%, consistent with Λ contribution being small.
+The BBD fraction (BBDT/E_egg) $\approx$ 0.15%, consistent with $\Lambda$ contribution being small.
 
 ---
 
@@ -103,7 +103,7 @@ $E^{26D\,Egg}$ is the first complete equation for the total energy budget of the
 
 **BH26**: The 5 injection layers = 5 dominant harmonic bins from 26D egg spectrum.  
 **DVP**: SCm injection is mediated by DPM north-pole vortex (see PAPER_607/608).  
-**VDS**: UA ground state energy = VDS zero-mode (n→∞ tail).
+**VDS**: UA ground state energy = VDS zero-mode (n$\to$$\infty$ tail).
 
 **Keywords**: 26D cosmic egg, universal aether, SCm injection, Big Bang Dilation Term, BH26
 harmonics, UQFF
@@ -146,7 +146,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -247,7 +247,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.188 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -258,13 +258,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

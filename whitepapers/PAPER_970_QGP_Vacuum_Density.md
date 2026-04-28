@@ -10,7 +10,7 @@ tags: [ALICE, vacuum, SCm, QGP, Yang-Mills, 26D, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_970: QGP Vacuum Density ρ_QGP(T) via S₂₆^{(k)}
+# PAPER_970: QGP Vacuum Density $\rho$_QGP(T) via S26^{(k)}
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
@@ -102,7 +102,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -166,7 +166,7 @@ $$\boxed{\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)} \cdot \exp!\left(
 $$\mathcal{L}_\text{QGP} = -\rho_text{QGP}(T) \cdot c^2 + \frac{1}{2}\left(\frac{\partial \rho_text{QGP}}{\partial T}\right)^2 \dot{T}^2$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → vacuum density → $\rho_text{SCm}$ → $S_{26}^{(k)}$ → QGP deconfinement → quark-gluon freedom
+PAPER_877 $\to$ vacuum density $\to$ $\rho_text{SCm}$ $\to$ $S_{26}^{(k)}$ $\to$ QGP deconfinement $\to$ quark-gluon freedom
 
 ---
 

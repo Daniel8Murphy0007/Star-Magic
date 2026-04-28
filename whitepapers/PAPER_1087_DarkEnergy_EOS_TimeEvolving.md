@@ -71,6 +71,6 @@ $$w_{\text{DE}}(t_0) = -1 + \frac{2 \times 5.787 \times 10^{-9} \times 4.35 \tim
 
 ## References
 
-- PAPER_1086: SCm Dark Energy Density with Γ-Coupled Phonon Modulation
-- PAPER_1076: SCm Dark Energy with Phonon Linewidth Γ-Modulation
+- PAPER_1086: SCm Dark Energy Density with $\Gamma$-Coupled Phonon Modulation
+- PAPER_1076: SCm Dark Energy with Phonon Linewidth $\Gamma$-Modulation
 - PAPER_889: EtVsLambdaCDMDarkEnergyContrastCalc

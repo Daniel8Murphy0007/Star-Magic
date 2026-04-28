@@ -29,7 +29,7 @@ $$\rho_{\text{vac}} \in \{7.09 \times 10^{-37},\ 7.09 \times 10^{-36},\ 2.84 \ti
 The UQFF Vacuum Density Series (VDS) is a multi-scale logarithmic scaffold of vacuum
 energy densities representing distinct layers of the Universal Aether (UA) medium. Five
 primary density values span sixteen orders of magnitude, from the [SCm] superconductive
-vacuum (7.09×10-37 J/m3) to the solar wind vacuum (8×10-21 J/m3), with the fundamental
+vacuum (7.09$\times$10-37 J/m3) to the solar wind vacuum (8$\times$10-21 J/m3), with the fundamental
 Aether baseline at 10-23 J/m3 (= 10-20 kg/m3). An extended series from Aether13_16
 spans 77 orders from proton volume (10-39 cm3) through the universe mass (1054 gm),
 providing the density anchor chain for all UQFF gravity, buoyancy, and inertia equations.
@@ -44,31 +44,31 @@ the discrete banding of Universal Gravity ranges Ug1–Ug4.
 
 | Layer | Symbol | Value | Physical Domain |
 |-------|--------|-------|-----------------|
-| [SCm] superconductive | ρvac,[SCm] | 7.09×10-37 J/m3 | Extra-universal conductive medium |
-| Universal Aether [UA] | ρvac,[UA] | 7.09×10-36 J/m3 | Primary gravitational medium |
-| Universal Inertia | ρvac,Ui | 2.84×10-36 J/m3 | Inertial modulation layer |
-| Aether baseline | ρvac,A | 10-23 J/m3 | Cosmological vacuum floor |
-| Solar wind | ρvac,sw | 8×10-21 J/m3 | Stellar heliospheric boundary |
+| [SCm] superconductive | $\rho$vac,[SCm] | 7.09$\times$10-37 J/m3 | Extra-universal conductive medium |
+| Universal Aether [UA] | $\rho$vac,[UA] | 7.09$\times$10-36 J/m3 | Primary gravitational medium |
+| Universal Inertia | $\rho$vac,Ui | 2.84$\times$10-36 J/m3 | Inertial modulation layer |
+| Aether baseline | $\rho$vac,A | 10-23 J/m3 | Cosmological vacuum floor |
+| Solar wind | $\rho$vac,sw | 8$\times$10-21 J/m3 | Stellar heliospheric boundary |
 
-The ratio ρvac,[SCm] / ρvac,[UA] = 0.1 is the fundamental suppression factor entering the Ui, Ug2,
+The ratio $\rho$vac,[SCm] / $\rho$vac,[UA] = 0.1 is the fundamental suppression factor entering the Ui, Ug2,
 and Ereact equations.
 
 The reactor efficiency factor encodes the full series:
 $$E_{\text{react}} = \frac{\rho_{\text{vac},[SCm]} \cdot v_{SCm}^2}{\rho_{\text{vac},A}} \cdot e^{-\kappa t} \approx 10^{46} \cdot e^{-0.0005t}$$
 
-where κ = 0.0005 day-1 is the [SCm] reactivity decay rate.
+where $\kappa$ = 0.0005 day-1 is the [SCm] reactivity decay rate.
 
 ### 1.2 Extended Cosmological Series (Aether13_16)
 
 | Quantity | Value | Scale |
 |----------|-------|-------|
-| Planck length | 1.616×10-35 m (= 1.616×10-33 cm) | Minimum spatial resolution |
+| Planck length | 1.616$\times$10-35 m (= 1.616$\times$10-33 cm) | Minimum spatial resolution |
 | Proton volume | ~10-39 cm3 | Nuclear UQFF density anchor |
 | Nuclear volume energy | ~10-35 gm | Nuclear-scale density |
 | Vacuum density of space | 10-23 gm/cm3 = 10-20 kg/m3 | Cosmic Aether baseline |
 | Universe mass | ~1054 gm | Total cosmological energy content |
 
-**Density range spanned:** 10-39 cm3 (proton volume) ↔ 1054 gm (universe mass) → 93 orders total.
+**Density range spanned:** 10-39 cm3 (proton volume) $\leftrightarrow$ 1054 gm (universe mass) $\to$ 93 orders total.
 
 ### 1.3 Physical Interpretation of the Ratio Chain
 
@@ -76,7 +76,7 @@ $$\frac{\rho_{\text{vac},[SCm]}}{\rho_{\text{vac},[UA]}} = 0.1 \quad \Rightarrow
 
 This 13-order-of-magnitude gap between the UA field and the baseline Aether is the source
 of the Casimir effect — the residual pressure between two conducting plates measuring the
-differential vacuum density between ρvac,A and ρvac,[SCm].
+differential vacuum density between $\rho$vac,A and $\rho$vac,[SCm].
 
 ---
 
@@ -86,27 +86,27 @@ differential vacuum density between ρvac,A and ρvac,[SCm].
 
 $$U_{g2} = k_2 \cdot \frac{(\rho_{\text{vac},[UA]} + \rho_{\text{vac},[SCm]}) \cdot M_s}{r^2} \cdot S(r - R_b) \cdot (1 + \delta_{sw} \cdot v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}$$
 
-Solution (Sun, r = Rb = 1.496×1013 m, t=0):
+Solution (Sun, r = Rb = 1.496$\times$1013 m, t=0):
 $$U_{g2} = 1.2 \cdot \frac{(7.09 \times 10^{-36} + 7.09 \times 10^{-37}) \cdot 1.989 \times 10^{30}}{(1.496 \times 10^{13})^2} \cdot 1 \cdot 5001 \cdot 10^{46} \approx 1.18 \times 10^{53}\ \text{J/m}^3$$
 
-The sum ρvac,[UA] + ρvac,[SCm] = 7.80×10-36 J/m3 drives the outer field bubble energy density.
+The sum $\rho$vac,[UA] + $\rho$vac,[SCm] = 7.80$\times$10-36 J/m3 drives the outer field bubble energy density.
 
 ### 2.2 Ug4 (Star–Black Hole Interaction)
 
 $$U_{g4} = k_4 \cdot \frac{\rho_{\text{vac},[SCm]} \cdot M_{bh}}{d_g} \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + f_{\text{feedback}})$$
 
-Solution (Sun, t=0, tn=0): Ug4 ≈ 2.50×10-20 J/m3
+Solution (Sun, t=0, tn=0): Ug4 $\approx$ 2.50$\times$10-20 J/m3
 
 [SCm] is the intermediary vacuum that carries the gravitational influence of the galactic
-black hole (Mbh = 8.15×1036 kg) to the individual star across dg = 2.55×1020 m.
+black hole (Mbh = 8.15$\times$1036 kg) to the individual star across dg = 2.55$\times$1020 m.
 
 ### 2.3 Buoyancy Modulation (Ub1)
 
 $$U_{b1} = -\beta_i \cdot U_{g1} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1 + \epsilon_{sw} \cdot \rho_{\text{vac},sw}) \cdot U_{UA} \cdot \cos(\pi t_n)$$
 
-The solar wind vacuum density ρvac,sw = 8×10-21 J/m3 modulates buoyancy via the factor
-(1 + ϵsw·ρvac,sw) = 1 + 0.001·8×10-21 ≈ 1 (negligible 10-24 correction at t=0,
-but becomes significant during solar maximum when ρvac,sw spikes).
+The solar wind vacuum density $\rho$vac,sw = 8$\times$10-21 J/m3 modulates buoyancy via the factor
+(1 + ϵsw$\cdot$$\rho$vac,sw) = 1 + 0.001$\cdot$8$\times$10-21 $\approx$ 1 (negligible 10-24 correction at t=0,
+but becomes significant during solar maximum when $\rho$vac,sw spikes).
 
 ---
 
@@ -136,7 +136,7 @@ In UQFF, this maps to the differential vacuum pressure between Aether layers:
 $$\Delta \rho_{\text{vac}} = \rho_{\text{vac},[UA]} - \rho_{\text{vac},[SCm]} = 7.09 \times 10^{-36} - 7.09 \times 10^{-37} = 6.38 \times 10^{-36}\ \text{J/m}^3$$
 
 This differential is the source of the Casimir attractive force: two conducting plates
-locally suppress [SCm] permeability, increasing ρvac,[SCm]/ρvac,[UA] ratio above 0.1,
+locally suppress [SCm] permeability, increasing $\rho$vac,[SCm]/$\rho$vac,[UA] ratio above 0.1,
 which drives plates together via the Ub1 buoyancy gradient.
 
 ---
@@ -149,7 +149,7 @@ which drives plates together via the Ub1 buoyancy gradient.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -168,7 +168,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -243,7 +243,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -254,10 +254,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | SM Value | UQFF VDS Prediction | Alignment |
 |------------|----------|---------------------|-----------|
-| Cosmological constant Λ | ~10-9 J/m3 | ρvac,A = 10-23 J/m3 (14-order gap) | Hierarchy problem — documented |
-| Casimir force | F/A ∝ ℏc/d4 | Δρvac·d2 ∝ 6.38×10-36 J/m3·d2 | ✅ 97.1% functional analog |
-| Solar wind pressure | ~3×10-10 Pa | ρvac,sw·c2 ~ 7.2×10-4 J/m3 | 🔍 Ub1 correction factor |
-| Vacuum permittivity (ε₀) | 8.85×10-12 F/m | ρvac,A / (c2·ρmatter) | ✅ dimensional bridge |
+| Cosmological constant $\Lambda$ | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (14-order gap) | Hierarchy problem — documented |
+| Casimir force | F/A $\propto$ ℏc/d4 | $\Delta$$\rho$vac$\cdot$d2 $\propto$ 6.38$\times$10-36 J/m3$\cdot$d2 | ✅ 97.1% functional analog |
+| Solar wind pressure | ~3$\times$10-10 Pa | $\rho$vac,sw$\cdot$c2 ~ 7.2$\times$10-4 J/m3 | 🔍 Ub1 correction factor |
+| Vacuum permittivity ($\varepsilon$0) | 8.85$\times$10-12 F/m | $\rho$vac,A / (c2$\cdot$$\rho$matter) | ✅ dimensional bridge |
 
 > **SM Anchor Reference:** PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator) —
 > canonical SM alignment table for all UQFF calibration constants.
@@ -268,7 +268,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 1. Aether13_16.cpp + AetherInertiaAnalysis2.cpp — grok_share_b2e2c5cba7a.txt (Session 168)
 2. PAPER_642 — SM Parameter Bridge Master Comparison
-3. PAPER_646 — Universal Inertial Operator (Ui uses ρvac,[SCm]/ρvac,[UA])
+3. PAPER_646 — Universal Inertial Operator (Ui uses $\rho$vac,[SCm]/$\rho$vac,[UA])
 4. Casimir HBG (1948): *Proc. Koninkl. Ned. Akad. Wetenschap* 51, 793 — Casimir effect
 5. Wheeler JA (1968): "Superspace and the nature of quantum geometrodynamics" — Wheeler-DeWitt
 6. ARCHITECTURE_FLOW_DIAGRAM.md v5.24 — UQFF canonical constants table

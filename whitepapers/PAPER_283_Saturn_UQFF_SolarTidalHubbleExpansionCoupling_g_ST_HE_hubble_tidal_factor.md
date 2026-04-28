@@ -12,7 +12,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 # PAPER_283: Saturn UQFF Solar Tidal Hubble Expansion Coupling
 **Date:** March 2026
-## g_ST_HE = g_Sun_tidal × (1 + H₀ × t); hubble_tidal_factor(4.5 Gyr) = 1.3222; Δg = 2.09×10-5 m/s2
+## g_ST_HE = g_Sun_tidal $\times$ (1 + H0 $\times$ t); hubble_tidal_factor(4.5 Gyr) = 1.3222; $\Delta$g = 2.09$\times$10-5 m/s2
 ### First UQFF Solar-Tidal-Hubble Coupling Term — Planetary-Stellar-Cosmological Three-Body Channel
 
 **Author:** Daniel T. Murphy  
@@ -122,12 +122,12 @@ $$\boxed{g_{ST\_HE}(t) = \frac{G M_\star}{r_{orbit}^2} \times \left(1 + H_0 \cdo
 
 | Planet | $r_{orbit}$ (m) | $g_{tidal,0}$ (m/s2) | $\xi_{HT}$ | $\Delta g$ (m/s2) |
 |--------|-----------------|-----------------------|-------------|---------------------|
-| Jupiter | 7.78×1011 | 2.20×10-4 | 1.3222 | 7.09×10-5 |
-| **Saturn** | **1.43×1012** | **6.49×10-5** | **1.3222** | **2.09×10-5** |
-| Uranus | 2.87×1012 | 1.61×10-5 | 1.3222 | 5.19×10-6 |
-| Neptune | 4.50×1012 | 6.56×10-6 | 1.3222 | 2.11×10-6 |
+| Jupiter | 7.78$\times$1011 | 2.20$\times$10-4 | 1.3222 | 7.09$\times$10-5 |
+| **Saturn** | **1.43$\times$1012** | **6.49$\times$10-5** | **1.3222** | **2.09$\times$10-5** |
+| Uranus | 2.87$\times$1012 | 1.61$\times$10-5 | 1.3222 | 5.19$\times$10-6 |
+| Neptune | 4.50$\times$1012 | 6.56$\times$10-6 | 1.3222 | 2.11$\times$10-6 |
 
-Key insight: **ξ_HT is universal** (depends only on system age and H₀, not on which planet). The
+Key insight: **$\xi$_HT is universal** (depends only on system age and H0, not on which planet). The
 Hubble tidal correction scales with the static tidal strength: larger planets closer to the Sun
 receive larger corrections.
 
@@ -137,7 +137,7 @@ receive larger corrections.
 
 $$g_{total}(r,t) = \left[ g_{grav} + U_{g,sum}^{(26)} + \Lambda_{term} + U_{quantum} + U_{Lorentz} + U_{fluid} + F_{ring}(t) + \underbrace{g_{Sun\_tidal}\left(1 + H_0 t\right)}_{\text{PAPER\_280+283}} + g_{exp} + a_{wind} \right] \times \text{corr}_{SC}$$
 
-This form unifies PAPER_280 (Solar tidal ratio τ_Sun) and PAPER_283 (Hubble expansion coupling) in a
+This form unifies PAPER_280 (Solar tidal ratio $\tau$_Sun) and PAPER_283 (Hubble expansion coupling) in a
 single coherent term.
 
 ---
@@ -223,7 +223,7 @@ N-body codes that treat the Sun's gravitational coefficient as constant.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -326,7 +326,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -337,13 +337,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

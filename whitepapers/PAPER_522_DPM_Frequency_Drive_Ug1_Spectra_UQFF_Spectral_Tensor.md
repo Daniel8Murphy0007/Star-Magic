@@ -57,7 +57,7 @@ $$Ug1_{\text{spectra}}(r,\theta) =
 \cdot \left(\tfrac{1}{3} A_{\text{stable}} - \tfrac{2}{3} R_{\text{destruct}}\right)
 \cdot ReRing_{BB}$$
 
-### UQFF Spectral Tensor (3 × 3)
+### UQFF Spectral Tensor (3 $\times$ 3)
 
 $$\mathbf{UQFF}_{\text{comp}} =
 \begin{pmatrix}
@@ -149,7 +149,7 @@ represent cross-regime spectral leakage mediated by quantum eggs.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -252,7 +252,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.060 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -263,10 +263,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Navier-Stokes regularity (Millennium) | UQFF DVP hypergraph flow → bounded vorticity |ω|2 ≤ C via buoyancy | Clay Math. Navier-Stokes Problem: global regularity unknown | Clay / Fefferman 2006 | UQFF establishes bounded criterion |
-| QCD viscosity η/s | UQFF: κ × [SSq] / β_i ≈ 4.7e-4 (dimensionless) | η/s = 1/(4π) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound PASS |
-| Turbulent dissipation scale (Kolmogorov) | η_K = (ν3/ε)^0.25; UQFF sets ε via DVP pocket scale ~10-13 m | Kolmogorov scale lab: 10-4–10-3 m (turbulent flows) | Fluid dynamics | UQFF sets quantum floor, not macroscopic |
-| Quark-gluon plasma viscosity (ALICE) | UQFF vacuum buoyancy coupling → QGP η/s consistent | ALICE QGP: η/s ~ 0.1–0.2 at √s=2.76 TeV | ALICE 2013 | PASS Consistent with viscous QGP regime |
+| Navier-Stokes regularity (Millennium) | UQFF DVP hypergraph flow $\to$ bounded vorticity |$\omega$|2 $\leq$ C via buoyancy | Clay Math. Navier-Stokes Problem: global regularity unknown | Clay / Fefferman 2006 | UQFF establishes bounded criterion |
+| QCD viscosity $\eta$/s | UQFF: $\kappa$ $\times$ [SSq] / $\beta$_i $\approx$ 4.7e-4 (dimensionless) | $\eta$/s = 1/(4$\pi$) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound PASS |
+| Turbulent dissipation scale (Kolmogorov) | $\eta$_K = ($\nu$3/$\varepsilon$)^0.25; UQFF sets $\varepsilon$ via DVP pocket scale ~10-13 m | Kolmogorov scale lab: 10-4–10-3 m (turbulent flows) | Fluid dynamics | UQFF sets quantum floor, not macroscopic |
+| Quark-gluon plasma viscosity (ALICE) | UQFF vacuum buoyancy coupling $\to$ QGP $\eta$/s consistent | ALICE QGP: $\eta$/s ~ 0.1–0.2 at $\sqrt{}$s=2.76 TeV | ALICE 2013 | PASS Consistent with viscous QGP regime |
 
 **New physics claim:** UQFF provides a buoyancy-regularisation mechanism for Navier-Stokes
 equations at the quantum vacuum scale — DVP pocket shells set a minimum dissipation scale

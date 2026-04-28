@@ -50,7 +50,7 @@ knotty morphology of CenA.
 | BH mass | 5.5e7 MM_sun = 1.09e38 kg |
 | Distance | 12–13 Mly = 1.23e23 m |
 | Jet length | 25,000 ly = 7.7e19 m |
-| ∇UA (jet base) | ~10-19 m-1 |
+| $\nabla$UA (jet base) | ~10-19 m-1 |
 | RA/Dec | per MNRAS 2025 catalog |
 | Observation | MNRAS 2025 VHE knots + JWST MICONIC + Chandra superluminal knots |
 
@@ -63,7 +63,7 @@ knotty morphology of CenA.
 | Arity threshold | 8 | 4 |
 | n_iterations | 200 | 200 |
 | Multi-split | 1–2 per edge | 1 per edge |
-| Oscillation | sin(i·π/5)·0.3 | none |
+| Oscillation | sin(i$\cdot$$\pi$/5)$\cdot$0.3 | none |
 | Lensing perturbation | 30% probability | none |
 | Final nodes | ~35 | 12 |
 | Final hyperedges | ~7 | 4 |
@@ -81,11 +81,11 @@ knotty morphology of CenA.
 **f3 rebound frequencies (Hz), first 5:**
 $$
 \begin{aligned}
-  & f₁ = 6.14e16   (VHE X-ray floor, MNRAS 2025 knots) \\
-  & f₂ = 1.25e17 \\
-  & f₃ = 2.48e17 \\
-  & f₄ = 3.19e17 \\
-  & f₅ = 4.52e17
+  & f1 = 6.14e16   (VHE X-ray floor, MNRAS 2025 knots) \\
+  & f2 = 1.25e17 \\
+  & f3 = 2.48e17 \\
+  & f4 = 3.19e17 \\
+  & f5 = 4.52e17
 \end{aligned}
 $$
 
@@ -93,14 +93,14 @@ Full ramp: 6.14e16 – 1018 Hz (VHE to hard X-ray).
 
 **f3 accumulation law (BH26 cubic rebound):**
 $$
-freq_k = (Σ_{i=1}^{k} ∇UA_i)3 × 1015  Hz
+freq_k = (\Sigma_{i=1}^{k} \nablaUA_i)3 \times 1015  Hz
 $$
 
 ---
 
 ## §5 BH26 Oscillation Modes
 
-Five oscillation modes from sin(i·π/5)·0.3:
+Five oscillation modes from sin(i$\cdot$$\pi$/5)$\cdot$0.3:
 
 $$
 \begin{aligned}
@@ -113,7 +113,7 @@ $$
 $$
 
 These five modes correspond to the five BH26 harmonic oscillation modes per
-π-period. The knots in the CenA jet visually show this 5-mode pulsation in
+$\pi$-period. The knots in the CenA jet visually show this 5-mode pulsation in
 Chandra time-domain data.
 
 ---
@@ -138,9 +138,9 @@ trajectory, creating the characteristic V-morphology.
 
 Apparent superluminal speed (1–2c) from DVP vortex-pocket propagation:
 $$
-β_app = v·sin(φ) / (c − v·cos(φ))
+\beta_app = v\cdotsin(\phi) / (c - v\cdotcos(\phi))
 $$
-For v = 0.97c, viewing angle φ = 15°: β_app ≈ 1.4c (consistent with Chandra knots).
+For v = 0.97c, viewing angle $\phi$ = 15°: $\beta$_app $\approx$ 1.4c (consistent with Chandra knots).
 
 The DVP vortex carries the knot outward at relativistic speed; the apparent
 superluminal motion is a geometric projection effect enhanced by the CenA jet
@@ -186,7 +186,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -205,12 +205,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -313,7 +313,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.073 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -324,10 +324,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Apparent superluminal speed β_app | β_app = v·sin(φ)/(c−v·cos(φ)); v=0.97c, φ=15° → β_app ≈ 1.4c | Chandra/VLBI: apparent speed 1–2c | Chandra CenA | PASS 1.4c within 1–2c range |
+| Apparent superluminal speed $\beta$_app | $\beta$_app = v$\cdot$sin($\phi$)/(c-v$\cdot$cos($\phi$)); v=0.97c, $\phi$=15° $\to$ $\beta$_app $\approx$ 1.4c | Chandra/VLBI: apparent speed 1–2c | Chandra CenA | PASS 1.4c within 1–2c range |
 | VHE gamma-ray threshold (CenA) | DVP high-arity branching produces photons > 100 GeV | H.E.S.S./VERITAS CenA VHE: E_VHE > 100 GeV | MNRAS 2025 | PASS Consistent |
-| Synchrotron self-Compton (QED) | U_m Compton scattering: f_IC = (4/3)γ2f_sync; γ~106 | QED SSC: E_γ_max ~ γ2 × 1 keV | QED | PASS Energy range aligned |
-| Black hole mass (M87 BH) | BH26 pocket shell at r_S = 2GM/c2; M_M87 = 6.5e9 `M_M_sun` | EHT shadow: M_M87 = 6.5±0.2e9 `M_M_sun` | EHT 2019 | Shared input |
+| Synchrotron self-Compton (QED) | U_m Compton scattering: f_IC = (4/3)$\gamma$2f_sync; $\gamma$~106 | QED SSC: E_$\gamma$_max ~ $\gamma$2 $\times$ 1 keV | QED | PASS Energy range aligned |
+| Black hole mass (M87 BH) | BH26 pocket shell at r_S = 2GM/c2; M_M87 = 6.5e9 `M_M_sun` | EHT shadow: M_M87 = 6.5$\pm$0.2e9 `M_M_sun` | EHT 2019 | Shared input |
 
 **New physics claim:** The CenA knotted jet exhibits arity-8 branching nodes that
 produce VHE photon bursts uncorrelated with core accretion rate — a UQFF prediction

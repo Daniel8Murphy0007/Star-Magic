@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_317: Orion M42 Trapezium Wind Ram Pressure Dominance
 **Author:** Daniel T. Murphy
 **Date:** March 2026
-## η_wind = 28.47 | t_erosion = 467 kyr | a_wind = 5.424×10-10 m/s2
+## $\eta$_wind = 28.47 | t_erosion = 467 kyr | a_wind = 5.424$\times$10-10 m/s2
 ### FIRST UQFF HII Region Ram Pressure Dominance Ratio
 
 **Session:** 91  
@@ -24,11 +24,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 Within the UQFF framework, this paper quantifies the ram pressure dominance of the Trapezium-driven
-stellar wind over self-gravity in the Orion Nebula. The dimensionless wind-gravity ratio **η_wind =
+stellar wind over self-gravity in the Orion Nebula. The dimensionless wind-gravity ratio **$\eta$_wind =
 P_ram/P_grav = 28.47** demonstrates that the HII region was born in a wind-dominated (unbound)
 state. The erosion timescale **t_erosion = 467 kyr** shows that protoplanetary discs (proplyds)
 currently observed at ~300 kyr age survive inside a wind-dominated environment. This is the FIRST
@@ -40,12 +40,12 @@ UQFF computation of an HII region ram pressure dominance ratio.
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| M | 2000 M_sun = 3.978×1033 kg | Total nebular mass |
-| r | 1.18×1017 m (~12.5 ly) | Half-span |
-| ρ_fluid | 1×10-20 kg/m3 | HII gas density |
-| v_wind | 8×103 m/s | Ionization front expansion speed |
-| t_age | 3×105 yr = 9.467×1012 s | Nebula age |
-| G | 6.6743×10-11 m3 kg-1 s-2 | Gravitational constant |
+| M | 2000 M_sun = 3.978$\times$1033 kg | Total nebular mass |
+| r | 1.18$\times$1017 m (~12.5 ly) | Half-span |
+| $\rho$_fluid | 1$\times$10-20 kg/m3 | HII gas density |
+| v_wind | 8$\times$103 m/s | Ionization front expansion speed |
+| t_age | 3$\times$105 yr = 9.467$\times$1012 s | Nebula age |
+| G | 6.6743$\times$10-11 m3 kg-1 s-2 | Gravitational constant |
 
 ---
 
@@ -81,20 +81,20 @@ $$\frac{W_{\rm KE}}{W_{\rm grav}} \approx \frac{a_{\rm wind}}{g_{\rm base}} = 28
 
 | Quantity | Value | Significance |
 |----------|-------|--------------|
-| g_base | 1.907×10-11 m/s2 | DPM-seeded self-gravity |
-| a_wind(t=0) | 5.424×10-10 m/s2 | Initial ram pressure |
-| η_wind(t=0) | **28.47** | Wind >> gravity at birth |
-| a_wind(t_age) | 1.085×10-9 m/s2 | Ram pressure at 300 kyr |
-| η_wind(t_age) | **56.9** | Wind dominance doubles |
+| g_base | 1.907$\times$10-11 m/s2 | DPM-seeded self-gravity |
+| a_wind(t=0) | 5.424$\times$10-10 m/s2 | Initial ram pressure |
+| $\eta$_wind(t=0) | **28.47** | Wind >> gravity at birth |
+| a_wind(t_age) | 1.085$\times$10-9 m/s2 | Ram pressure at 300 kyr |
+| $\eta$_wind(t_age) | **56.9** | Wind dominance doubles |
 | t_erosion | **467 kyr** | Pröplyd lifetime > t_age |
-| P_ram | 6.4×10-13 Pa | Ram pressure |
-| P_grav | 2.248×10-14 Pa | Gravitational pressure |
+| P_ram | 6.4$\times$10-13 Pa | Ram pressure |
+| P_grav | 2.248$\times$10-14 Pa | Gravitational pressure |
 
 ---
 
 ## UQFF Physical Interpretation
 
-The Orion Nebula at t_age = 300 kyr is still **28.5–57× wind-dominated** (η_wind ranging from 28.47
+The Orion Nebula at t_age = 300 kyr is still **28.5–57$\times$ wind-dominated** ($\eta$_wind ranging from 28.47
 at t=0 to 56.9 at t_age). The erosion timescale t_erosion = 467 kyr > t_age = 300 kyr confirms that
 proplyds currently observed by HST survive because they have not yet been fully ablated by the ram
 pressure — consistent with observational evidence of ~150–180 proplyds in the Orion Nebula.
@@ -116,7 +116,7 @@ wind shocks.
 ```
 
 *Series first: FIRST UQFF HII region ram pressure dominance ratio. Distinguishes compact OB-driven
-HII (η_wind=28.47) from extended GMC HII and from bipolar PN wind shocks (η_wind~7×105, PAPER_311).*
+HII ($\eta$_wind=28.47) from extended GMC HII and from bipolar PN wind shocks ($\eta$_wind~7$\times$105, PAPER_311).*
 
 ---
 
@@ -223,7 +223,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.120 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -234,13 +234,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

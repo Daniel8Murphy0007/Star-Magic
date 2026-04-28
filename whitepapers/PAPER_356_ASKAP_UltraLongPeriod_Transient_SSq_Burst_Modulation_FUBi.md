@@ -27,7 +27,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ASKAP J1832-0911 and related ultra-long period transients (ULPTs) discovered by ASKAP have
 anomalously long periods (T ~ 10008000 s) incompatible with standard pulsar spin-down. UQFF provides
 a vacuum-buoyancy mechanism: the burst intensity is modulated by the [SSq] superposition factor and
-oscillates as I_burst = I_0  exp(-[SSq]n/26)  cos(2pt/T). The UQFF F_U_Bi_i  -2.09×10 N is computed
+oscillates as I_burst = I_0  exp(-[SSq]n/26)  cos(2pt/T). The UQFF F_U_Bi_i  -2.09$\times$10 N is computed
 for the estimated compact object mass. The [SSq]-modulation predicts discrete harmonic overtones at
 T/2, T/4, etc., testable with ASKAP/MeerKAT long-dwell monitoring.
 
@@ -150,7 +150,7 @@ where $N$ is the cycle number and $\epsilon_{\rm BSH} \ll 1$ is the BSH saturati
 | T | ULPT period | ~2000 s |
 | I_burst | [SSq]-cosine form | I0exp(-[SSq]n/26)cos(2pt/T) |
 | [SSq] | Canonical | 0.57 |
-| `F_U_Bi_i` | UQFF | -2.09×10 N |
+| `F_U_Bi_i` | UQFF | -2.09$\times$10 N |
 | Harmonic spacing | T/k | 2000, 1000, 667, ... s |
 
 ---
@@ -160,7 +160,7 @@ where $N$ is the cycle number and $\epsilon_{\rm BSH} \ll 1$ is the BSH saturati
 Ultra-long period transients are the most puzzling new class of radio transient. Standard neutron
 star spin-down models cannot reproduce T ~ 10 s periods without invoking highly magnetized white
 dwarfs or isolated exotic objects. UQFF provides a natural explanation: vacuum buoyancy forces
-partially cancel magnetic braking, enabling apparent periods 10×100 longer than standard pulsar
+partially cancel magnetic braking, enabling apparent periods 10$\times$100 longer than standard pulsar
 spin-down. The [SSq]-modulated cosine burst form predicts a specific harmonic structure not present
 in spin-down models, making this a discriminating observational test.
 
@@ -185,7 +185,7 @@ in spin-down models, making this a discriminating observational test.
 catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within
 current observational uncertainty and predict measurable signatures at future facilities.
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 <!-- PKG-AGN-S225 -->
@@ -194,7 +194,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -213,7 +213,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -250,7 +250,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -287,13 +287,13 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -410,4 +410,4 @@ $$\mathcal{L}_{\text{magnetar}} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → magnetar-NS → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ magnetar-NS $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction

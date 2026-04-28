@@ -23,9 +23,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-A field generator apparatus (24-inch / 0.61 m diameter, 6000 Hz) exhibits a 17 W → 7 W power drop
-(10 W absorbed by the field medium) and a 7°F temperature decrease at range. The spooky factor = r ×
-f = 15 m × 6000 Hz = 90,000 quantifies the non-local coupling strength. Within the UQFF framework,
+A field generator apparatus (24-inch / 0.61 m diameter, 6000 Hz) exhibits a 17 W $\to$ 7 W power drop
+(10 W absorbed by the field medium) and a 7°F temperature decrease at range. The spooky factor = r $\times$
+f = 15 m $\times$ 6000 Hz = 90,000 quantifies the non-local coupling strength. Within the UQFF framework,
 this maps to Aether-mediated non-local energy transfer where power absorption represents
 field-medium exchange and the temperature drop is an Aether cooling signature.
 
@@ -44,7 +44,7 @@ field-medium exchange and the temperature drop is an Aether cooling signature.
 ## 2. UQFF Integration
 
 The spooky non-local effect (power absorbed without direct contact, temperature drop at range) is
-modeled as Aether-mediated coupling. The spooky factor product r×f provides a dimensionless measure
+modeled as Aether-mediated coupling. The spooky factor product r$\times$f provides a dimensionless measure
 of non-local reach analogous to UQFF buoyancy propagation distance. This calculator operates as a
 stateless physics calculator within CondensedPhysics4.py.
 
@@ -201,7 +201,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -210,13 +210,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -226,7 +226,7 @@ bridge.*
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Podkletnov, E. -- Weak gravitational shielding properties (Physica C, 1992)  
-3. Poynting vector S = E×H for electromagnetic energy flux
+3. Poynting vector S = E$\times$H for electromagnetic energy flux
 4. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
 5. scm_superconductivity_axiom.py -- SCm Superconductivity Axiom Module (Session 204)
 

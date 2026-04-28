@@ -18,10 +18,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 ## Abstract
-NGC 1277 hosts one of the most overmassive black holes known relative to its host galaxy: M_BH ≈ 17
-billion MM_sun, constituting ≈14% of the galaxy's bulge mass. The Wolfram hypergraph BFS dimension
-estimator in SOURCE179 computes D_eff from causal graph growth rates and applies UQFF correction δD
-= k_PCR × (D_eff − 3). Near ultramassive BHs, spacetime curvature should produce measurable D_eff
+NGC 1277 hosts one of the most overmassive black holes known relative to its host galaxy: M_BH $\approx$ 17
+billion MM_sun, constituting $\approx$14% of the galaxy's bulge mass. The Wolfram hypergraph BFS dimension
+estimator in SOURCE179 computes D_eff from causal graph growth rates and applies UQFF correction $\delta$D
+= k_PCR $\times$ (D_eff - 3). Near ultramassive BHs, spacetime curvature should produce measurable D_eff
 deviations above 3.
 
 ---
@@ -52,10 +52,10 @@ $$
 |-----------|-------|
 | BH mass | M_BH = 1.7e10 MM_sun |
 | Schwarzschild radius | r_s = 50 AU |
-| Host galaxy stellar mass | M_* ≈ 1.2e11 MM_sun |
-| BH/bulge ratio | ≈14% (vs typical 0.1%) |
+| Host galaxy stellar mass | M_* $\approx$ 1.2e11 MM_sun |
+| BH/bulge ratio | $\approx$14% (vs typical 0.1%) |
 | Distance | 73 Mpc (Perseus cluster) |
-| Velocity dispersion | σ ≈ 333 km/s |
+| Velocity dispersion | $\sigma$ $\approx$ 333 km/s |
 
 ---
 
@@ -72,15 +72,15 @@ $$
 \delta D = 0.314\times(4.83 - 3) = 0.575 \Rightarrow D_\text{corrected} \approx 5.40
 $$
 
-A D_corrected ≈ 5.4 indicates the UQFF framework interprets the extreme curvature near NGC 1277's BH
+A D_corrected $\approx$ 5.4 indicates the UQFF framework interprets the extreme curvature near NGC 1277's BH
 as requiring 2 additional effective dimensions — consistent with 26D layer gravity framework
 predictions.
 
 ---
 
 ## 4. Validation
-- C++ term: `SOURCE179::NGC1277_HypergraphD_Term` → `NGC1277_HypergraphDimension`
-- CP2 class: `NGC1277HypergraphDimCalculator` → D_eff, D_corrected, δD, k_PCR
+- C++ term: `SOURCE179::NGC1277_HypergraphD_Term` $\to$ `NGC1277_HypergraphDimension`
+- CP2 class: `NGC1277HypergraphDimCalculator` $\to$ D_eff, D_corrected, $\delta$D, k_PCR
 
 ---
 
@@ -119,7 +119,7 @@ the phonon transmission efficiency across the ICM.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -220,7 +220,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.192 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -231,10 +231,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Massive object (Eta Carinae/TON618/NGC1277) luminosity X-ray + optical | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X M_BH ~ 109–1010 `M_M_sun` | Chandra/HST | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra/HST | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Massive object (Eta Carinae/TON618/NGC1277) luminosity X-ray + optical | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X M_BH ~ 109–1010 `M_M_sun` | Chandra/HST | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra/HST | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Massive object (Eta Carinae/TON618/NGC1277)

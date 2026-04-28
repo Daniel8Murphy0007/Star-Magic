@@ -21,7 +21,7 @@ compression from magnetar through cosmological scales
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `MultiSystemCompressionCycle2Calculator` (#8, PAPER_454)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57 —>
 ---
 
 ## Abstract
@@ -30,7 +30,7 @@ Compression Cycle 2 expands the 7-system canonical registry (PAPER_452) to a 19-
 catalogue incorporating objects from neutron star surfaces (r~104 m) to cosmological filaments
 (r~1026 m). The 12 newly added systems span HII regions, galaxy mergers, galaxy clusters, and the
 Hubble Ultra-Deep Field, each contributing system-specific F_env terms. The single compressed
-equation g_UQFF = g_DPM × (1 + H_z t) + F_env(t) applies uniformly across 22 orders of magnitude
+equation g_UQFF = g_DPM $\times$ (1 + H_z t) + F_env(t) applies uniformly across 22 orders of magnitude
 in spatial scale — demonstrating the universality of the MUGE compression framework for all observed
 astrophysical environments.
 
@@ -44,25 +44,25 @@ The 19-system registry extends the 7-system base (PAPER_452) with 12 additional 
 
 | # | System | Type | M (kg) | r (m) | F_env dominant |
 |---|--------|------|--------|-------|----------------|
-| 1 | MagnetarSGR1745 | Neutron star | 5.58×1030 | 1×104 | B-field + decay |
-| 2 | SagittariusA | SMBH | 8.17×1036 | 6×109 | Accretion disk |
-| 3 | TapestryStarbirth | SF region | 9.96×1033 | 1×1016 | SFR + outflow |
-| 4 | Westerlund2 | Star cluster | 1.99×1034 | 6×1016 | Stellar wind |
-| 5 | PillarsCreation | HII pillars | 3.98×1032 | 6×1016 | Radiation |
-| 6 | RingsRelativity | GL system | 1×1039 | 1×1020 | Lensing |
-| 7 | UniverseGuide | Cosmological | 1×1053 | 4.4×1026 | F_cosmo |
-| 8 | **NGC2525** | Barred spiral | ~2×1041 | ~5×1020 | Tidal arm |
-| 9 | **NGC3603** | Massive cluster | ~4×1034 | ~3×1017 | OB wind |
-| 10 | **BubbleNebula** | Wind bubble | ~1×1032 | ~2×1017 | Stellar bubble |
-| 11 | **AntennaeGalaxies** | Merger | ~4×1040 | ~2×1021 | Tidal merger |
-| 12 | **HorseheadNebula** | Barnard 33 | ~5×1031 | ~5×1015 | B-field + PDR |
-| 13 | **NGC1275** | Perseus cluster | ~1×1043 | ~3×1022 | Cluster ICM |
-| 14 | **NGC1792** | Spiral galaxy | ~1×1041 | ~4×1020 | Disk wind |
-| 15 | **HubbleUDF** | Deep field | ~1053 | ~4×1026 | Statistical ensemble |
+| 1 | MagnetarSGR1745 | Neutron star | 5.58$\times$1030 | 1$\times$104 | B-field + decay |
+| 2 | SagittariusA | SMBH | 8.17$\times$1036 | 6$\times$109 | Accretion disk |
+| 3 | TapestryStarbirth | SF region | 9.96$\times$1033 | 1$\times$1016 | SFR + outflow |
+| 4 | Westerlund2 | Star cluster | 1.99$\times$1034 | 6$\times$1016 | Stellar wind |
+| 5 | PillarsCreation | HII pillars | 3.98$\times$1032 | 6$\times$1016 | Radiation |
+| 6 | RingsRelativity | GL system | 1$\times$1039 | 1$\times$1020 | Lensing |
+| 7 | UniverseGuide | Cosmological | 1$\times$1053 | 4.4$\times$1026 | F_cosmo |
+| 8 | **NGC2525** | Barred spiral | ~2$\times$1041 | ~5$\times$1020 | Tidal arm |
+| 9 | **NGC3603** | Massive cluster | ~4$\times$1034 | ~3$\times$1017 | OB wind |
+| 10 | **BubbleNebula** | Wind bubble | ~1$\times$1032 | ~2$\times$1017 | Stellar bubble |
+| 11 | **AntennaeGalaxies** | Merger | ~4$\times$1040 | ~2$\times$1021 | Tidal merger |
+| 12 | **HorseheadNebula** | Barnard 33 | ~5$\times$1031 | ~5$\times$1015 | B-field + PDR |
+| 13 | **NGC1275** | Perseus cluster | ~1$\times$1043 | ~3$\times$1022 | Cluster ICM |
+| 14 | **NGC1792** | Spiral galaxy | ~1$\times$1041 | ~4$\times$1020 | Disk wind |
+| 15 | **HubbleUDF** | Deep field | ~1053 | ~4$\times$1026 | Statistical ensemble |
 | 16 | **StudentsGuideUniverse** | Pedagogical | variable | variable | All terms |
-| 17 | **LagoonNebula** | M8 HII region | ~5×1033 | ~1×1017 | Radiation + ionisation |
-| 18 | **TrifiidNebula** | M20 trifurcated | ~1×1033 | ~8×1016 | Radiation + dust |
-| 19 | **OmegaNebula** | M17 Swan | ~3×1033 | ~1×1017 | O-star radiation |
+| 17 | **LagoonNebula** | M8 HII region | ~5$\times$1033 | ~1$\times$1017 | Radiation + ionisation |
+| 18 | **TrifiidNebula** | M20 trifurcated | ~1$\times$1033 | ~8$\times$1016 | Radiation + dust |
+| 19 | **OmegaNebula** | M17 Swan | ~3$\times$1033 | ~1$\times$1017 | O-star radiation |
 
 ### 2.2 Compressed MUGE Equation (Universal Form)
 
@@ -78,7 +78,7 @@ Where $d_{12}$ = separation between merging cores, $r$ = field evaluation point.
 **ICM (NGC 1275 Perseus cluster):**
 $$F_{\rm env,ICM} = \frac{kT_{\rm ICM}}{\mu m_H r_{\rm cool}} = \frac{1.38\times10^{-23}\times 5times10^7}{0.62\times1.67\times10^{-27}\times 3times10^{22}} \approx 2.7\times10^{-12}\ \rm m/s^2$$
 
-With T_ICM ≈ 5×107 K (Perseus cooling flow).
+With T_ICM $\approx$ 5$\times$107 K (Perseus cooling flow).
 
 **Stellar wind bubble (NGC 3603/Bubble Nebula):**
 $$F_{\rm env,bubble} = \frac{\dot{M}_{\rm wind} v_{\rm wind}}{4\pi r_{\rm bubble}^2}$$
@@ -94,8 +94,8 @@ The 19 systems span 22 orders of magnitude in radius and 22 orders in mass:
 
 | Property | Min | Max | Range |
 |----------|-----|-----|-------|
-| Radius (m) | 104 (magnetar) | 4.4×1026 (universe) | 22 dex |
-| Mass (kg) | 5.6×1030 (magnetar) | 1053 (universe) | 22+ dex |
+| Radius (m) | 104 (magnetar) | 4.4$\times$1026 (universe) | 22 dex |
+| Mass (kg) | 5.6$\times$1030 (magnetar) | 1053 (universe) | 22+ dex |
 | g_UQFF (m/s2) | ~10-34 (ultra-low) | ~1012 (magnetar surface) | 46 dex |
 
 The **single compressed equation** handles the full range with only F_env changing between systems.
@@ -116,7 +116,7 @@ For normalised comparison (setting g_Magnetar = 1 reference):
 | System | g / g_Magnetar |
 |--------|---------------|
 | Magnetar | 1.0 |
-| SgrA* (at r=6×109 m) | 3.0×10-7 |
+| SgrA* (at r=6$\times$109 m) | 3.0$\times$10-7 |
 | Galaxy clusters | ~10-15 |
 | Universe | ~10-21 |
 
@@ -135,13 +135,13 @@ For normalised comparison (setting g_Magnetar = 1 reference):
 
 ## 6. Testable Predictions
 
-1. **Scale-free universality:** g_UQFF ∝ μ_s∇(M_s/r) for all 19 systems to leading order, with
+1. **Scale-free universality:** g_UQFF $\propto$ $\mu$_s$\nabla$(M_s/r) for all 19 systems to leading order, with
 F_env/g_DPM < 102 for all systems — testable by comparing UQFF output at each system's
 characteristic radius.
-2. **ICM temperature coupling:** F_env,ICM ∝ T_ICM — doubling Perseus cluster temperature to 108 K
+2. **ICM temperature coupling:** F_env,ICM $\propto$ T_ICM — doubling Perseus cluster temperature to 108 K
 should double the F_env contribution. Testable via Chandra X-ray spectra.
-3. **Tidal merger timing:** F_env,tidal for Antennae grows as d₁₂ decreases — UQFF predicts F_env ∝
-d₁₂-3 increasing by 8× as separation halves. Observable in VLBI proper-motion measurements.
+3. **Tidal merger timing:** F_env,tidal for Antennae grows as d12 decreases — UQFF predicts F_env $\propto$
+d12-3 increasing by 8$\times$ as separation halves. Observable in VLBI proper-motion measurements.
 
 ---
 
@@ -183,7 +183,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -202,7 +202,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -312,7 +312,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.078 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -323,10 +323,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

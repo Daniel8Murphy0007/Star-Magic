@@ -121,19 +121,19 @@ $$
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| fDPM | 1×1012 | Hz | DPM frequency |
-| fTHz | 1×1012 | Hz | THz coupling frequency |
-| Evac_neb | 7.09×10-36 | J | Nebular vacuum energy |
-| Evac_ISM | 7.09×10-37 | J | ISM vacuum energy |
-| ΔEvac | 6.381×10-36 | J | Vacuum energy differential |
-| Fsuper | 6.287×10-19 | N | Superconductive force |
+| fDPM | 1$\times$1012 | Hz | DPM frequency |
+| fTHz | 1$\times$1012 | Hz | THz coupling frequency |
+| Evac_neb | 7.09$\times$10-36 | J | Nebular vacuum energy |
+| Evac_ISM | 7.09$\times$10-37 | J | ISM vacuum energy |
+| $\Delta$Evac | 6.381$\times$10-36 | J | Vacuum energy differential |
+| Fsuper | 6.287$\times$10-19 | N | Superconductive force |
 | UA_SCM | 10 | — | Aether SCm coupling |
-| ωi | 1×10-8 | rad/s | Intrinsic angular frequency |
+| $\omega$i | 1$\times$10-8 | rad/s | Intrinsic angular frequency |
 | k4_res | 1.0 | — | Resonance Ug4 coupling |
-| freact | 1×1010 | Hz | Reactive frequency |
-| fquantum | 1.445×10-17 | Hz | Quantum frequency |
-| fAether | 1.576×10-35 | Hz | Aether frequency |
-| fosc | 4.57×1014 | Hz | Oscillation frequency |
+| freact | 1$\times$1010 | Hz | Reactive frequency |
+| fquantum | 1.445$\times$10-17 | Hz | Quantum frequency |
+| fAether | 1.576$\times$10-35 | Hz | Aether frequency |
+| fosc | 4.57$\times$1014 | Hz | Oscillation frequency |
 | fTRZ | 0.1 | — | Time-reversal correction |
 
 ---
@@ -142,15 +142,15 @@ $$
 
 | Test | System | Expected Value |
 |------|--------|----------------|
-| afluid_freq | SGR1745-2900 | 1.773×10-9 m/s2 |
-| resonance_MUGE | SGR1745-2900 | 1.773×10-9 m/s2 |
-| aTHz (aDPM=3.545e-42, vexp=1e3) | — | 1.182×10-33 |
-| avac_diff | — | 3.545×10-53 |
-| asuper_freq | — | 1.048×10-21 |
-| aaether_res | — | 3.900×10-38 |
-| aquantum_freq | — | 1.708×10-66 |
-| aAether_freq | — | 1.863×10-84 |
-| aexp_freq (t=3.799e10) | — | 1.623×10-57 |
+| afluid_freq | SGR1745-2900 | 1.773$\times$10-9 m/s2 |
+| resonance_MUGE | SGR1745-2900 | 1.773$\times$10-9 m/s2 |
+| aTHz (aDPM=3.545e-42, vexp=1e3) | — | 1.182$\times$10-33 |
+| avac_diff | — | 3.545$\times$10-53 |
+| asuper_freq | — | 1.048$\times$10-21 |
+| aaether_res | — | 3.900$\times$10-38 |
+| aquantum_freq | — | 1.708$\times$10-66 |
+| aAether_freq | — | 1.863$\times$10-84 |
+| aexp_freq (t=3.799e10) | — | 1.623$\times$10-57 |
 
 ---
 
@@ -179,7 +179,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -198,7 +198,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -307,7 +307,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.072 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -318,13 +318,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

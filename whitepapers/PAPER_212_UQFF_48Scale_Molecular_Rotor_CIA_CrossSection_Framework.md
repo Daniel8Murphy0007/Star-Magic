@@ -30,16 +30,16 @@ $$
 
 ## Abstract
 
-The UQFF framework spans 48 distinct physical scales from molecular rotational torques (~10?34 N·m)
-to the observable universe diameter (~93 Gly ˜ 8.8×1026 m). This paper enumerates the complete
+The UQFF framework spans 48 distinct physical scales from molecular rotational torques (~10?34 N$\cdot$m)
+to the observable universe diameter (~93 Gly ˜ 8.8$\times$1026 m). This paper enumerates the complete
 48-scale table, identifies the physical mechanisms and characteristic UQFF variables at each scale,
 and presents the collision-induced absorption (CIA) cross-section refit for H2O-H2 collisions from
 arXiv:2506.09257. The CIA refit yields b = 0.004997 Å2/(cm?1) and s(?j=2, 400 cm?1) = 11.65 Å2,
-shifting the UQFF k_? parameter by ?k_? ˜ 7.25×108 relative units.
+shifting the UQFF k_? parameter by ?k_? ˜ 7.25$\times$108 relative units.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,7 +53,7 @@ $$
   & Physics does not change its fundamental structure across scales; \\
   & only the dominant terms and their coupling strengths change. \\
   & UQFF's claim: ALL 48 scales are governed by the same master equation \\
-  & g(r,t) = G·M/r2 · modifiers + Ug1...Ug4 + ?c2/3 + quantum + fluid + perturbation \\
+  & g(r,t) = G\cdotM/r2 \cdot modifiers + Ug1...Ug4 + ?c2/3 + quantum + fluid + perturbation \\
   & Scale-bridging principle: \\
   & Each scale identified by its dominant UQFF term: \\
   & - Molecular: CIA cross-section ? k_? coupling \\
@@ -69,7 +69,7 @@ $$
 
 | Scale # | Physical Scale | Characteristic Size | Dominant System | UQFF Variable | Order of Magnitude |
 |---------|---------------|-------------------|-----------------|---------------|--------------------|
-| 1 | Quantum foam | l_P = 1.6×10?35 m | Planck epoch | [SCm], [UA] transitions | 10?35 m |
+| 1 | Quantum foam | l_P = 1.6$\times$10?35 m | Planck epoch | [SCm], [UA] transitions | 10?35 m |
 | 2 | H2 molecule rotor | r_H2 ~ 0.74 Å | H2-H2 CIA | k_?, CIA s | 10?1° m |
 | 3 | H2O molecule | r_H2O ~ 0.96 Å | CIA H2O-H2 | CIA b=0.004997 | 10?1° m |
 | 4 | Nuclear strong force | r_nuc ~ 1 fm | A+Z nucleus | k_nuc, Z_magic | 10?15 m |
@@ -77,14 +77,14 @@ $$
 | 6 | Nuclear lattice pin | a_lat ~ 10?15 m | NS crust | ?_vac,[UA], [SSq] | 10?15 m |
 | 7 | Neutron Cooper pair | ? ~ 10 fm | NS superfluid | ?_pair, d_pair | 10?14 m |
 | 8 | Atomic size | r_atom ~ 1 Å | Molecular/atomic | H_res, S_shell | 10?1° m |
-| 9 | Molecular rotor | t_rot ~ 10?34 N·m | Gas opacity | k_?, CIA | 10?1° m |
+| 9 | Molecular rotor | t_rot ~ 10?34 N$\cdot$m | Gas opacity | k_?, CIA | 10?1° m |
 | 10 | Dust grain | d ~ 0.1 µm | Dust optics | F_UBii,photoevap | 10-7 m |
 | 11 | Photon mean free path | ?_mfp (stellar) ~ 1 cm | Stellar interior | Ug3' (radiation) | 10?2 m |
 | 12 | Neutron star surface | R_NS ~ 10 km | Magnetar | F_UBii,tov | 104 m |
 | 13 | NS crust depth | d_crust ~ 1 km | NS vortex lattice | F_UBii,glitch | 103 m |
 | 14 | White dwarf | R_WD ~ 0.01 R_? | CO/ONeMg WD | F_UBii,arnett | 106 m |
 | 15 | Low-mass star | R_? ~ 0.1 R_? | M dwarf | Ug1 (dipole) | 108 m |
-| 16 | Solar radius | R_? = 6.96×108 m | Solar/G-type | Ug1, ?, f_flare | 108 m |
+| 16 | Solar radius | R_? = 6.96$\times$108 m | Solar/G-type | Ug1, ?, f_flare | 108 m |
 | 17 | OB supergiant | R_? ~ 100 R_? | Massive star | F_UBii,arnett | 101° m |
 | 18 | AGB star | R_AGB ~ 300 R_? | Asymptotic giant | F_UBii,pn | 1011 m |
 | 19 | Protostellar disk | R_disk ~ 100 AU | T Tauri | F_UBii,angmom | 1013 m |
@@ -176,7 +176,7 @@ Comparison to previous value:
 $$
 \begin{aligned}
   & UQFF k_? definition: \\
-  & k_? = ?E_vacuum/(E_ZPF · s_CIA · ?_ISM)    (vacuum-CIA coupling) \\
+  & k_? = ?E_vacuum/(E_ZPF \cdot s_CIA \cdot ?_ISM)    (vacuum-CIA coupling) \\
   & Physical meaning: k_? measures how vacuum energy fluctuations couple \\
   & to molecular CIA cross-sections in dense gas clouds and planetary atmospheres. \\
   & Old value: k_? ~ 10?113 (calibrated, dimensionless at natural units) \\
@@ -185,11 +185,11 @@ $$
   & Since k_? ? s_CIA?1 (inverse coupling): \\
   & ?k_?/k_? = -0.059  (k_? decreases by 5.9%) \\
   & Absolute d notation: \\
-  & ?k_? ˜ +7.25×108  (as stated in grok_share PDF3) \\
-  & This is interpreted as: ?(1/k_?) = 7.25×108  (shift in inverse k_?) \\
+  & ?k_? ˜ +7.25\times108  (as stated in grok_share PDF3) \\
+  & This is interpreted as: ?(1/k_?) = 7.25\times108  (shift in inverse k_?) \\
   & UQFF prediction update (planetary atmospheres): \\
   & Uranus/Neptune CIA Ug4 opacity: \\
-  & t_CIA = n2 · s_new · l ? increases by 5.9% \\
+  & t_CIA = n2 \cdot s_new \cdot l ? increases by 5.9% \\
   & Effect on F_UBii,neptune, F_UBii,uranus: \\
   & Small correction ˜ 0.06% in computed g(r,t) values \\
   & Within systematic uncertainty of observational calibration
@@ -203,13 +203,13 @@ $$
 $$
 \begin{aligned}
   & H2 molecular rotor torque (lowest-energy scale in 48-scale table): \\
-  & Rotational energy levels: E_J = B·J(J+1)  where B = h2/(2µr2) \\
-  & B(H2) = 60.853 cm?1 = 7.55×10?23 J (rotational constant) \\
+  & Rotational energy levels: E_J = B\cdotJ(J+1)  where B = h2/(2µr2) \\
+  & B(H2) = 60.853 cm?1 = 7.55\times10?23 J (rotational constant) \\
   & Torque t_rot from first excited state: \\
-  & t_rot = dE/d? ~ B·J ~ 60.853 cm?1 × J (classical limit) \\
-  & For J=1: t_rot ~ 2 × 60.853 cm?1 × h/period ˜ 10?34 N·m \\
+  & t_rot = dE/d? ~ B\cdotJ ~ 60.853 cm?1 \times J (classical limit) \\
+  & For J=1: t_rot ~ 2 \times 60.853 cm?1 \times h/period ˜ 10?34 N\cdotm \\
   & This is the smallest physical UQFF scale: \\
-  & t_rot ˜ 10?34 N·m \\
+  & t_rot ˜ 10?34 N\cdotm \\
   & Compare: F_UBii,glitch vortex avalanche ~ 10?32 N (2 orders up) \\
   & Compare: D_universe extent ~ 1027 m (61 orders up) \\
   & 61-decade span is covered by UQFF with a single master equation.
@@ -222,10 +222,10 @@ $$
 
 | Comparison | Scale A | Scale B | Ratio |
 |-----------|---------|---------|-------|
-| H2 rotor : D_universe | t_rot ~ 10?34 N·m | D_u ~ 1027 m | 1061 |
+| H2 rotor : D_universe | t_rot ~ 10?34 N$\cdot$m | D_u ~ 1027 m | 1061 |
 | Nuclear : Hubble radius | r_nuc ~ 10?15 m | r_H ~ 1026 m | 1041 |
-| k_? : G | 10?113 | 6.67×10?11 | 10?1°3 |
-| h : E_Hubble | 10?34 J·s | H0?1 ~ 4×1017 s | h/H0 ~ 2.5×10-52 J·s2 |
+| k_? : G | 10?113 | 6.67$\times$10?11 | 10?1°3 |
+| h : E_Hubble | 10?34 J$\cdot$s | H0?1 ~ 4$\times$1017 s | h/H0 ~ 2.5$\times$10-52 J$\cdot$s2 |
 
 ---
 
@@ -247,7 +247,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -266,7 +266,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -351,7 +351,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -442,7 +442,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.079 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

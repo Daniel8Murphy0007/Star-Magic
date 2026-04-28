@@ -27,13 +27,13 @@ Bridge)
 
 $$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} = \frac{1}{137.035999084}; \qquad a_e = \frac{\alpha}{2\pi} - 0.328\frac{\alpha^2}{\pi^2} + \ldots = 0.001159652$$
 
-The fine structure constant α = 1/137 is the most precisely measured dimensionless constant
+The fine structure constant $\alpha$ = 1/137 is the most precisely measured dimensionless constant
 in physics, with fractional uncertainty 0.37 ppb (via electron g-2). This paper develops
-the UQFF framework's interpretation of α: (1) 137 is prime — its primality is the DVP
+the UQFF framework's interpretation of $\alpha$: (1) 137 is prime — its primality is the DVP
 fingerprint of electromagnetic coupling in the Dipole Vortex Prime sequence (PAPER_649);
-(2) The Quantum Hall Effect expression R_K = h/e2 = μ₀c/(2α) connects α to the Aether
-impedance 377Ω; (3) The atomic recoil relation
-α2 = 2R∞c·(m/M)·(h/e2·1/R_K) provides a direct c-independent route to α;
+(2) The Quantum Hall Effect expression R_K = h/e2 = $\mu$0c/(2$\alpha$) connects $\alpha$ to the Aether
+impedance 377$\Omega$; (3) The atomic recoil relation
+$\alpha$2 = 2R$\infty$c$\cdot$(m/M)$\cdot$(h/e2$\cdot$1/R_K) provides a direct c-independent route to $\alpha$;
 and (4) The g-2 anomalous magnetic moment multi-loop expansion is shown to be a
 truncated n-wave mixing series (PAPER_649), linking DVP to QED precision.
 
@@ -47,12 +47,12 @@ $$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} = \frac{e^2 \mu_0 c}{2h} = \fra
 
 | Quantity | Value |
 |---------|-------|
-| e | 1.602×10-19 C |
-| ε₀ | 8.854×10-12 F/m |
-| ℏ | 1.055×10-34 J·s |
-| c | 2.998×108 m/s |
-| μ₀ | 4π×10-7 H/m |
-| h | 6.626×10-34 J·s |
+| e | 1.602$\times$10-19 C |
+| $\varepsilon$0 | 8.854$\times$10-12 F/m |
+| ℏ | 1.055$\times$10-34 J$\cdot$s |
+| c | 2.998$\times$108 m/s |
+| $\mu$0 | 4$\pi$$\times$10-7 H/m |
+| h | 6.626$\times$10-34 J$\cdot$s |
 
 ### 1.2 Quantum Hall Expression
 
@@ -63,10 +63,10 @@ $$Z_0 = \mu_0 c = 376.73\ \Omega \approx 377\ \Omega$$
 
 $$\alpha = \frac{Z_0}{2 R_K} = \frac{376.73}{2 \times 25812.8} = \frac{1}{137.036}\ PASS$$
 
-This means α encodes the **ratio of Aether impedance to twice the von Klitzing constant** —
-a direct connection between the Universal Aether's electromagnetic property (Z₀) and
-the discrete quantum Hall ladder. The Heaviside 7Ω from PAPER_649 resonates:
-7Ω × 20 levels = 140Ω ≈ Z_0/2.68, confirming the nested impedance structure of the Aether.
+This means $\alpha$ encodes the **ratio of Aether impedance to twice the von Klitzing constant** —
+a direct connection between the Universal Aether's electromagnetic property (Z0) and
+the discrete quantum Hall ladder. The Heaviside 7$\Omega$ from PAPER_649 resonates:
+7$\Omega$ $\times$ 20 levels = 140$\Omega$ $\approx$ Z_0/2.68, confirming the nested impedance structure of the Aether.
 
 ### 1.3 Atomic Recoil (Speed-of-Light-Independent)
 
@@ -76,9 +76,9 @@ Simplified:
 
 $$\alpha^2 = \frac{2 R_\infty c \cdot m_e}{M} \cdot \frac{h}{e^2}$$
 
-where R∞ = 10973731.568 m-1 (Rydberg constant), m_e/M the mass ratio.
+where R$\infty$ = 10973731.568 m-1 (Rydberg constant), m_e/M the mass ratio.
 This is the **recoil route** measured in atom interferometry — the most c-independent
-precision route to α.
+precision route to $\alpha$.
 
 ---
 
@@ -98,7 +98,7 @@ The QED loop expansion above is structurally identical to the **n-wave mixing su
 
 $$\sum_{k=1}^{n} A_k \left(\frac{\alpha}{\pi}\right)^k \equiv \sum_{k=1}^{n}\left(a_k + b_k e^{i\theta_k}\right)$$
 
-where the loop order k maps to the n-wave mode k. The mixing threshold φ (PAPER_649)
+where the loop order k maps to the n-wave mode k. The mixing threshold $\phi$ (PAPER_649)
 maps to the anomalous correction limit $a_e^{\text{max}}$.
 
 The DVP interpretation: each order in the g-2 expansion represents one additional
@@ -113,7 +113,7 @@ the QED series is the n-wave phase coherence condition.
 
 - 137 is the 33rd prime number
 - It is not representable as sum of two primes (Goldbach: 137 = 131+6, not prime+prime — PASS since 6 is not prime; 137 is prime itself)
-- 1/137: the only inverse-integer approximation to α accurate to 4 decimal places
+- 1/137: the only inverse-integer approximation to $\alpha$ accurate to 4 decimal places
 
 ### 3.2 Historical Significance
 
@@ -123,7 +123,7 @@ The room number was discovered to be 137, and Pauli noted the coincidence to a c
 *"Certainly, that room number is 137. And I am sure it is significant."*
 
 In the DVP framework: 137 is the 5th level of the Dipole Vortex Prime sequence
-(PAPER_649: 7, 9, 26, 139, 137). Its primality means α cannot be factored from
+(PAPER_649: 7, 9, 26, 139, 137). Its primality means $\alpha$ cannot be factored from
 simpler coupling constants — it is a fundamental "prime coupling" of the Aether.
 
 ### 3.3 Numerological Correlation in UQFF
@@ -132,24 +132,24 @@ $$\frac{1}{\alpha} = 137.036 \approx 137 \qquad \text{(prime)}$$
 $$\pi(\text{meson}) = 139.57\ \text{MeV} \approx 139 \qquad \text{(prime)}$$
 
 The consecutive prime pair (137, 139) forms a **prime twin** appearing in:
-- Electromagnetic coupling: 1/α ≈ 137
-- Hadronic mass: πmeson ≈ 139 MeV
+- Electromagnetic coupling: 1/$\alpha$ $\approx$ 137
+- Hadronic mass: $\pi$meson $\approx$ 139 MeV
 
 This twin-prime signature in the DVP sequence is the UQFF marker for
 **Aether resonance at the electromagnetic-strong force interface**.
 
 ---
 
-## §4 UQFF α Integration
+## §4 UQFF $\alpha$ Integration
 
-The Aether field coupling via α appears in Um (Universal Magnetism):
+The Aether field coupling via $\alpha$ appears in Um (Universal Magnetism):
 
 $$U_m = k_m \cdot \frac{\mu_0 \mu}{4\pi r^3} = k_m \cdot \frac{\alpha \cdot \hbar c}{r^3} \cdot \frac{\mu}{\mu_B \cdot 4\pi}$$
 
-Thus α directly gates the magnetic coupling term Um, meaning the fine structure constant
+Thus $\alpha$ directly gates the magnetic coupling term Um, meaning the fine structure constant
 is the **electromagnetic gateway** of the full UQFF field equation:
-Ug1, Ug2, Ug3, Ug4 → gravitational chains;
-Um → electromagnetic chain (gated by α = 1/137).
+Ug1, Ug2, Ug3, Ug4 $\to$ gravitational chains;
+Um $\to$ electromagnetic chain (gated by $\alpha$ = 1/137).
 
 ---
 
@@ -161,7 +161,7 @@ Um → electromagnetic chain (gated by α = 1/137).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -180,7 +180,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -255,7 +255,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -266,11 +266,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | SM/NIST Value | UQFF Prediction | Alignment |
 |------------|--------------|-----------------|-----------|
-| Fine structure α | 1/137.035999084 | DVP prime level 5 = 1/137 | ✅ exact |
+| Fine structure $\alpha$ | 1/137.035999084 | DVP prime level 5 = 1/137 | ✅ exact |
 | Electron g-2 anomaly ae | 0.001159652181 | n-wave DVP series to 4th order | ✅ 0.37 ppb |
-| von Klitzing R_K | 25812.807 Ω | h/e2 = μ₀c/(2α) | ✅ exact |
-| Aether impedance Z₀ | 376.73 Ω | μ₀c = Z₀ (free space) | ✅ exact match |
-| Proton:Rydberg ratio | R∞·r_p independent | Recoil route α2 | ✅ structural |
+| von Klitzing R_K | 25812.807 $\Omega$ | h/e2 = $\mu$0c/(2$\alpha$) | ✅ exact |
+| Aether impedance Z0 | 376.73 $\Omega$ | $\mu$0c = Z0 (free space) | ✅ exact match |
+| Proton:Rydberg ratio | R$\infty$$\cdot$r_p independent | Recoil route $\alpha$2 | ✅ structural |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
 

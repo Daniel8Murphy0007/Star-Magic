@@ -174,7 +174,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -247,7 +247,7 @@ $$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravitational-wave chirp $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

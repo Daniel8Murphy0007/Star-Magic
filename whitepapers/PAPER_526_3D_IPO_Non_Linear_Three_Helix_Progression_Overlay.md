@@ -36,11 +36,11 @@ a 26-dimensional UQFF braid space:
 
 | Helix | Axis | Description |
 |-------|------|-------------|
-| H₁ | Wolfram progression | Computational irreducibility path through state space |
-| H₂ | π progression | Irrational decimal expansion trajectory |
-| H₃ | `F_U_Bi_i` axis | Buoyancy-force magnitude sequence |
+| H1 | Wolfram progression | Computational irreducibility path through state space |
+| H2 | $\pi$ progression | Irrational decimal expansion trajectory |
+| H3 | `F_U_Bi_i` axis | Buoyancy-force magnitude sequence |
 
-Because π is irrational, the crossing pattern of H₁ and H₂ never repeats —
+Because $\pi$ is irrational, the crossing pattern of H1 and H2 never repeats —
 generating a **topologically unique braid fingerprint** for every physical system.
 
 ---
@@ -54,7 +54,7 @@ where:
 | Symbol | Definition |
 |--------|-----------|
 | $W_\text{prog}(n)$ | Wolfram computation depth at step $n$ |
-| $\Pi_text{prog}(n)$ | $\lfloor 10^n \pi \rfloor \bmod 10$ — $n$-th π digit |
+| $\Pi_text{prog}(n)$ | $\lfloor 10^n \pi \rfloor \bmod 10$ — $n$-th $\pi$ digit |
 | $F_{U\_Bi}(x)$ | UQFF buoyancy force at parameter $x$ |
 | $n_\text{cross}$ | First crossing index (braid primary node) |
 
@@ -67,7 +67,7 @@ $$A_\text{helix} = \mathrm{Li}_{26}([SSq]) = \sum_{k=1}^{26} \frac{[SSq]^k}{k^{2
 
 VDS normalises each helix amplitude, ensuring all three axes share the same
 26-dimensional natural units. The common amplitude anchor prevents artificial
-scale separation between Wolfram, π, and F_U_Bi_i progressions.
+scale separation between Wolfram, $\pi$, and F_U_Bi_i progressions.
 
 ### Dipole Vortex Primes (DVP)
 $$\Delta_text{vortex} = p_\text{special} = 113 \qquad (p > 26)$$
@@ -83,13 +83,13 @@ non-reducible interval between physically distinct crossing events.
 **Proposition:** The 3D-IPO braid has no repeating sub-word.
 
 *Proof sketch:*  
-1. H₂ is driven by π digit sequence, which is conjectured (and computationally
+1. H2 is driven by $\pi$ digit sequence, which is conjectured (and computationally
    verified to 100 trillion digits) to be **normal** — every finite digit string
    appears with equal frequency but never periodically.  
-2. H₁ follows Wolfram computation depth, which by the **Principle of
+2. H1 follows Wolfram computation depth, which by the **Principle of
    Computational Irreducibility** cannot be compressed to a shorter rule.  
 3. The crossing condition $W_\text{prog}(n) = \Pi_text{prog}(n) \cdot F_{U\_Bi}(x)$
-   requires simultaneous coincidence in two irreducible sequences → probability
+   requires simultaneous coincidence in two irreducible sequences $\to$ probability
    of periodicity = 0.
 
 $$\boxed{P(\text{braid repeats}) = 0}$$
@@ -111,7 +111,7 @@ $$\boxed{P(\text{braid repeats}) = 0}$$
 
 - **Galaxy rotation curves:** Each galaxy leaves a unique 3D-IPO fingerprint in
   its UQFF buoyancy field, distinguishing it from all other systems.
-- **Pulsar timing:** Pulsar spin-down sequences correspond to H₃ axis samples;
+- **Pulsar timing:** Pulsar spin-down sequences correspond to H3 axis samples;
   non-repeating braid predicts no exact period doubling.
 - **Wolfram Hypergraph:** 3D-IPO crossing events correspond to causal cone
   intersections in the Wolfram physics hypergraph (SOURCE116).
@@ -138,7 +138,7 @@ result = calc.compute(dataset={'SSq': 0.57}, n_steps=1000)
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -157,12 +157,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -263,7 +263,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.121 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -274,10 +274,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

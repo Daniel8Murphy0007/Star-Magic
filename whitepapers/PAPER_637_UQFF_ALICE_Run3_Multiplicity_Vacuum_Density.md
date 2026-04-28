@@ -10,10 +10,10 @@ tags: [ALICE, vacuum, SCm, buoyancy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_637: UQFF and ALICE Run 3 √s=13.6 TeV Multiplicity Vacuum Density Ratio
+# PAPER_637: UQFF and ALICE Run 3 $\sqrt{}$s=13.6 TeV Multiplicity Vacuum Density Ratio
 **Author:** Daniel T. Murphy
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **Version:** 1.0.0  
@@ -31,10 +31,10 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-ALICE Run 3 has measured the charged-particle pseudorapidity density at √s = 13.6 TeV:
-dN/dη|_{η=0} = 17.43 ± 0.06. We demonstrate that the UQFF vacuum density ratio
-ρ_vac_ratio = [SSq] × (√s/√s_0) at the Run 3 energy reproduces this measurement:
-[SSq] × 1.077 = 0.614 ≈ β_i = 0.61. The convergence of the UQFF ρ_vac_ratio with β_i at
+ALICE Run 3 has measured the charged-particle pseudorapidity density at $\sqrt{}$s = 13.6 TeV:
+dN/d$\eta$|_{$\eta$=0} = 17.43 $\pm$ 0.06. We demonstrate that the UQFF vacuum density ratio
+$\rho$_vac_ratio = [SSq] $\times$ ($\sqrt{}$s/$\sqrt{}$s_0) at the Run 3 energy reproduces this measurement:
+[SSq] $\times$ 1.077 = 0.614 $\approx$ $\beta$_i = 0.61. The convergence of the UQFF $\rho$_vac_ratio with $\beta$_i at
 the Run 3 energy constitutes a predicted coincidence: ALICE 13.6 TeV sits at the UQFF
 buoyancy-coupling resonance point.
 
@@ -43,11 +43,11 @@ buoyancy-coupling resonance point.
 ## §2 Physical Motivation
 
 Charged-particle multiplicity in pp collisions is a fundamental QCD observable probing
-the soft sector of strong interactions. The dN/dη at mid-rapidity scales approximately
+the soft sector of strong interactions. The dN/d$\eta$ at mid-rapidity scales approximately
 logarithmically with collision energy following BFKL/CGC dynamics.
 
 UQFF claim: The bulk of soft pp multiplicity reflects the vacuum buoyancy sector, and
-the 13.6 TeV ALICE datum falls on the ρ_vac = β_i resonance in UQFF space.
+the 13.6 TeV ALICE datum falls on the $\rho$_vac = $\beta$_i resonance in UQFF space.
 
 ---
 
@@ -57,12 +57,12 @@ The UQFF vacuum contribution to charged-particle production is:
 
 $$\frac{dN}{d\eta}\bigg|_{\text{UQFF}} = \frac{[\text{SSq}]}{\beta_i} \times \frac{\ln(\sqrt{s}/\Lambda_{QCD})}{\ln(\sqrt{s_0}/\Lambda_{QCD})} \times N_{ch,0}$$
 
-At √s = 13.6 TeV, √s_0 = 13 TeV (reference), Λ_QCD = 0.217 GeV:
+At $\sqrt{}$s = 13.6 TeV, $\sqrt{}$s_0 = 13 TeV (reference), $\Lambda$_QCD = 0.217 GeV:
 
 $$\text{ratio} = \frac{0.57}{0.61} \times \frac{\ln(13.6/\text{ref})}{\ln(13/\text{ref})} = 0.9344 \times \frac{7.648}{7.540} = 0.9344 \times 1.014 = 0.948$$
 
-Combined with N_ch,0 = 17.43 × 0.948 ≈ 16.5 (offset by inelastic-diffractive correction):
-- Full prediction with diffractive correction factor (1.056): 16.5 × 1.056 = 17.42 PASS
+Combined with N_ch,0 = 17.43 $\times$ 0.948 $\approx$ 16.5 (offset by inelastic-diffractive correction):
+- Full prediction with diffractive correction factor (1.056): 16.5 $\times$ 1.056 = 17.42 PASS
 
 ---
 
@@ -72,10 +72,10 @@ The UQFF buoyancy resonance condition:
 $$[\text{SSq}] \times E_{ratio} = \beta_i$$
 $$0.57 \times E_{ratio} = 0.61 \implies E_{ratio} = 1.070$$
 
-This maps to √s_resonance = 13.0 × 1.070 = 13.91 TeV — within 2.3% of ALICE 13.6 TeV.
+This maps to $\sqrt{}$s_resonance = 13.0 $\times$ 1.070 = 13.91 TeV — within 2.3% of ALICE 13.6 TeV.
 
 The interpretation: ALICE Run 3 at 13.6 TeV lies within 2% of the UQFF vacuum buoyancy
-resonance point, explaining the anomalously clean dN/dη = 17.43 measurement.
+resonance point, explaining the anomalously clean dN/d$\eta$ = 17.43 measurement.
 
 ---
 
@@ -184,7 +184,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -195,24 +195,24 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| dN/dη at √s=13.6 TeV | [SSq]×1.077×N_ref = 17.42 (with diffractive correction) | dN/dη = 17.43 ± 0.06 | arXiv:2506.14989 (ALICE Run 3) | 99.9% |
-| UQFF resonance √s | [SSq]/β_i = 1.070 → √s_res = 13.91 TeV | √s_ALICE = 13.6 TeV (2.3% offset) | ALICE Run 3 | PASS Near resonance |
-| Λ_QCD (QCD running) | UQFF uses Λ_QCD = 0.217 GeV as denominator | Λ_QCD = 0.210–0.217 GeV (MS-bar) | PDG 2024 | 100% (direct input) |
-| ALICE Pb-Pb dN/dη prediction | UQFF ρ_vac_ratio scales by A^{1/3}: predicts PbPb 5.5 TeV dN/dη ≈ 1870 | ALICE PbPb √s_NN = 5.5 TeV upcoming | ALICE Run 3+ | Testable UQFF prediction |
+| dN/d$\eta$ at $\sqrt{}$s=13.6 TeV | [SSq]$\times$1.077$\times$N_ref = 17.42 (with diffractive correction) | dN/d$\eta$ = 17.43 $\pm$ 0.06 | arXiv:2506.14989 (ALICE Run 3) | 99.9% |
+| UQFF resonance $\sqrt{}$s | [SSq]/$\beta$_i = 1.070 $\to$ $\sqrt{}$s_res = 13.91 TeV | $\sqrt{}$s_ALICE = 13.6 TeV (2.3% offset) | ALICE Run 3 | PASS Near resonance |
+| $\Lambda$_QCD (QCD running) | UQFF uses $\Lambda$_QCD = 0.217 GeV as denominator | $\Lambda$_QCD = 0.210–0.217 GeV (MS-bar) | PDG 2024 | 100% (direct input) |
+| ALICE Pb-Pb dN/d$\eta$ prediction | UQFF $\rho$_vac_ratio scales by A^{1/3}: predicts PbPb 5.5 TeV dN/d$\eta$ $\approx$ 1870 | ALICE PbPb $\sqrt{}$s_NN = 5.5 TeV upcoming | ALICE Run 3+ | Testable UQFF prediction |
 
-**New physics claim:** The UQFF vacuum buoyancy resonance condition [SSq]/β_i = 1.070
-predicts a resonance at √s = 13.91 TeV — only 2.3% above the ALICE operating energy of
-13.6 TeV. This is not a parameter-fitted coincidence: the UQFF constants κ, [SSq], β_i
+**New physics claim:** The UQFF vacuum buoyancy resonance condition [SSq]/$\beta$_i = 1.070
+predicts a resonance at $\sqrt{}$s = 13.91 TeV — only 2.3% above the ALICE operating energy of
+13.6 TeV. This is not a parameter-fitted coincidence: the UQFF constants $\kappa$, [SSq], $\beta$_i
 were fixed by astrophysical calibration, not by ALICE pp data.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full [SSq] and β_i
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full [SSq] and $\beta$_i
 SM anchor mapping.*
 
 ---
 
 ## §6 References
 
-- arXiv:2506.14989 — ALICE Run 3 dN/dη at 13.6 TeV (June 2025)
+- arXiv:2506.14989 — ALICE Run 3 dN/d$\eta$ at 13.6 TeV (June 2025)
 - PDG 2024 — QCD running coupling, Section 9
 - bsm_physics_validation.py — `BSMPhysicsConstants.alice_run3_energy_tev`, `dNdeta_alice`
 - PAPER_642 — UQFF SM Parameter Bridge Master Comparison

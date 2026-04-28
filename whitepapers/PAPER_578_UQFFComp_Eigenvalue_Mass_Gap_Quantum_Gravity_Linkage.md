@@ -29,7 +29,7 @@ framework.
 
 ## §1 Abstract
 
-This paper presents the simplified UQFF_comp 3×3 matrix derivation from the grok_share
+This paper presents the simplified UQFF_comp 3$\times$3 matrix derivation from the grok_share
 file, proving that all three eigenvalues are strictly positive for all $r>0$ and $P>0$.
 This constitutes the UQFF mass gap theorem (Yang-Mills) and Navier-Stokes smoothness bound.
 The paper then maps UQFF mechanisms onto four quantum gravity frameworks: Loop Quantum Gravity,
@@ -46,7 +46,7 @@ $$\text{UQFF}_{\text{comp}} = \begin{pmatrix}
 0 & 0 & \frac{2P}{3} + \frac{26!\,g}{\rho^{27}}
 \end{pmatrix}$$
 
-Block upper-triangular structure: eigenvalues $\lambda_1, \lambda_2$ from upper-left 2×2 block;
+Block upper-triangular structure: eigenvalues $\lambda_1, \lambda_2$ from upper-left 2$\times$2 block;
 $\lambda_3$ isolated in lower-right scalar entry.
 
 ---
@@ -81,10 +81,10 @@ $$\omega_{\max}(t) = \lambda_3 = \frac{2P}{3} + \frac{26!\,g}{\rho^{27}} < \inft
 
 | QG Framework | UQFF Mechanism | Mapping |
 |-------------|---------------|---------|
-| **LQG** | UA hypergraph | Wolfram graph updates → discrete Ricci curvature $R_{\text{disc}} \sim \sumdelta_i/V$ |
-| **String/M-theory** | 26D manifold | 26 dims (not 10) ↔ 26!-bounded series; DPM = open string; SCm = D-brane |
+| **LQG** | UA hypergraph | Wolfram graph updates $\to$ discrete Ricci curvature $R_{\text{disc}} \sim \sumdelta_i/V$ |
+| **String/M-theory** | 26D manifold | 26 dims (not 10) $\leftrightarrow$ 26!-bounded series; DPM = open string; SCm = D-brane |
 | **Yang-Mills** | DPM gauge field | Mass gap $\Delta_{YM} = 26!\,c/r^{26} > 0$ PASS |
-| **Navier-Stokes** | $U_b$ buoyancy | $\lambda_3 > 0$ → vorticity bounded → no singularity |
+| **Navier-Stokes** | $U_b$ buoyancy | $\lambda_3 > 0$ $\to$ vorticity bounded $\to$ no singularity |
 | **Emergent gravity** | UA Ruliad | $U_g$ = emergent from hypergraph Ricci; no separate graviton needed |
 
 ---
@@ -116,7 +116,7 @@ This result provides UQFF-native proofs of two Millennium Prize problems:
 2. **Navier-Stokes Existence & Smoothness:** $\omega_{\max} = \lambda_3 < \infty$ for all $t \geq 0$
 
 *Formal §1.13 proofs committed in PAPER_544 (YM) and PAPER_543 (NS). This paper provides the
-nuclear-regime 3×3 matrix specialisation from the grok_share_efc8a971378f.txt analysis.*
+nuclear-regime 3$\times$3 matrix specialisation from the grok_share_efc8a971378f.txt analysis.*
 
 ---
 
@@ -225,7 +225,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -236,10 +236,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

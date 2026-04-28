@@ -38,7 +38,7 @@ surveys.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -84,13 +84,13 @@ The UQFF proposes:
 Standard vacuum energy from zero-point fluctuations:
 
 $$
-?_vac = ?_0^k_max (??_k/2) × (d^3k/(2p)^3)
+?_vac = ?_0^k_max (??_k/2) \times (d^3k/(2p)^3)
 $$
 
 UQFF-modified vacuum energy:
 
 $$
-?_vac,UQFF(t) = ?_0^k_Q (??_k/2) × exp[-?_damp(k) t] × F_UQFF(k) × (d^3k/(2p)^3)
+?_vac,UQFF(t) = ?_0^k_Q (??_k/2) \times exp[-?_damp(k) t] \times F_UQFF(k) \times (d^3k/(2p)^3)
 $$
 
 Where:
@@ -103,7 +103,7 @@ Where:
 The vacuum energy evolves as:
 
 $$
-?_vac,UQFF(t) = ?_vac,0 × exp[-G_eff t] + ?_?,eff × [1 - exp(-G_eff t)]
+?_vac,UQFF(t) = ?_vac,0 \times exp[-G_eff t] + ?_?,eff \times [1 - exp(-G_eff t)]
 $$
 
 Parameters:
@@ -116,7 +116,7 @@ Parameters:
 At cosmic time `t_0 = 13.8 Gyr`:
 
 $$
-?_vac,UQFF(t_0) ˜ ?_?,eff ˜ 6 × 10^(-10) J/m^3
+?_vac,UQFF(t_0) ˜ ?_?,eff ˜ 6 \times 10^(-10) J/m^3
 $$
 
 This matches observed dark energy density!
@@ -150,7 +150,7 @@ UQFF predictions:
 Explicit time evolution:
 
 $$
-w_UQFF(z) = -1 + e_w × [(1+z)/100]^?_w
+w_UQFF(z) = -1 + e_w \times [(1+z)/100]^?_w
 $$
 
 Parameters:
@@ -244,7 +244,7 @@ Effect on CMB peaks:
 Time-varying dark energy affects ISW:
 
 $$
-?ISW_UQFF/?ISW_?CDM ˜ 1 + 0.15 × (l/100)^(-0.5)
+?ISW_UQFF/?ISW_?CDM ˜ 1 + 0.15 \times (l/100)^(-0.5)
 $$
 
 Predicted enhancement at low multipoles: ~10-20%.
@@ -273,7 +273,7 @@ $$
 
 Where:
 $$
-?_UQFF = 0.55 + 0.05 × [1 + w_UQFF(a)]
+?_UQFF = 0.55 + 0.05 \times [1 + w_UQFF(a)]
 $$
 
 ### 7.2 RSD Measurements
@@ -281,7 +281,7 @@ $$
 Redshift-space distortions parameter:
 
 $$
-fs_8,UQFF(z) = fs_8,?CDM(z) × [1 - 0.03 (z/1)^1.2]
+fs_8,UQFF(z) = fs_8,?CDM(z) \times [1 - 0.03 (z/1)^1.2]
 $$
 
 Prediction: ~3% suppression at z=1 compared to ?CDM.
@@ -291,7 +291,7 @@ Prediction: ~3% suppression at z=1 compared to ?CDM.
 Lensing convergence power spectrum modification:
 
 $$
-P_?,UQFF(l) / P_?,?CDM(l) = 1 - 0.02 × (l/1000)^0.5
+P_?,UQFF(l) / P_?,?CDM(l) = 1 - 0.02 \times (l/1000)^0.5
 $$
 
 Testable with Euclid and LSST surveys.
@@ -311,17 +311,17 @@ Testable with Euclid and LSST surveys.
 UQFF modifies late-time expansion:
 
 $$
-H_0,UQFF = H_0,?CDM × [1 + d_H]
+H_0,UQFF = H_0,?CDM \times [1 + d_H]
 $$
 
 Where:
 $$
-d_H = 0.04 ± 0.01 (UQFF prediction)
+d_H = 0.04 \pm 0.01 (UQFF prediction)
 $$
 
 This yields:
 $$
-H_0,UQFF = 67.4 × 1.04 = 70.1 ± 1.0 km/s/Mpc
+H_0,UQFF = 67.4 \times 1.04 = 70.1 \pm 1.0 km/s/Mpc
 $$
 
 Reduces tension to 2.1s.
@@ -331,7 +331,7 @@ Reduces tension to 2.1s.
 UQFF affects sound horizon at recombination:
 
 $$
-r_s,UQFF = r_s,?CDM × [1 - 0.02]
+r_s,UQFF = r_s,?CDM \times [1 - 0.02]
 $$
 
 Smaller sound horizon ? larger inferred H_0 from CMB.
@@ -350,7 +350,7 @@ $$
 
 Where coupling term:
 $$
-Q(t) = a_Q H(t) ?_m(t) × [?_?(t)/?_?,0 - 1]
+Q(t) = a_Q H(t) ?_m(t) \times [?_?(t)/?_?,0 - 1]
 $$
 
 Coupling strength: `a_Q = 0.001` (weak coupling).
@@ -443,10 +443,10 @@ UQFF advantages:
 
 | Observable | ?CDM | UQFF Prediction | Current Constraint |
 |------------|------|-----------------|-------------------|
-| w(z=0.5) | -1.000 | -0.980 ± 0.015 | -1.03 ± 0.03 |
-| H_0 (late) | 67.4 km/s/Mpc | 70.1 ± 1.0 | 73.0 ± 1.0 |
-| ??µ(z=2) | 0.000 mag | +0.12 ± 0.03 | ±0.15 mag |
-| fs_8(z=1) | 0.46 | 0.45 ± 0.01 | 0.46 ± 0.02 |
+| w(z=0.5) | -1.000 | -0.980 $\pm$ 0.015 | -1.03 $\pm$ 0.03 |
+| H_0 (late) | 67.4 km/s/Mpc | 70.1 $\pm$ 1.0 | 73.0 $\pm$ 1.0 |
+| ??µ(z=2) | 0.000 mag | +0.12 $\pm$ 0.03 | $\pm$0.15 mag |
+| fs_8(z=1) | 0.46 | 0.45 $\pm$ 0.01 | 0.46 $\pm$ 0.02 |
 
 ---
 
@@ -507,7 +507,7 @@ Why was ?_vac,0 at Planck scale initially?
 
 UQFF might predict time variation of a:
 $$
-?a/a ~ 10^(-6) × (t/t_universe)
+?a/a ~ 10^(-6) \times (t/t_universe)
 $$
 
 Current limits: |?a/a| < 10^(-6) (marginal constraint).
@@ -562,7 +562,7 @@ next 5-10 years.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -581,7 +581,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -717,7 +717,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.089 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -728,13 +728,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -753,7 +753,7 @@ bridge.*
 **Validator:** `validate_uqff_calculators.py` — PASSED (8/8)  
 *All 8 UQFF master equations validated including UQFF_Superconductive (H_SCm vacuum modulation),
 UQFF_Buoyant (vacuum buoyancy forces), UQFF_Resonant (vacuum resonance modes), Triadic 26-layer
-scaling; confirms framework foundations for vacuum energy regulation mechanism; κ = 0.0005/day,
+scaling; confirms framework foundations for vacuum energy regulation mechanism; $\kappa$ = 0.0005/day,
 [SSq] = 0.57*
 
 **End of Paper 030** *(formerly incorrectly numbered as Paper 017; PAPER_017 is reserved for

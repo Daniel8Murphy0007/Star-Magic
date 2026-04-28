@@ -22,13 +22,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 1961 is a large spiral galaxy approximately 180 million light-years away (z ≈ 0.013) in the
+NGC 1961 is a large spiral galaxy approximately 180 million light-years away (z $\approx$ 0.013) in the
 constellation Camelopardalis. Hubble imaging reveals a disturbed, asymmetric spiral morphology
 consistent with a recent tidal interaction — possibly with a companion galaxy — and a high SFR (~1.2
 MM_sun/yr). Its large size (semi-major axis ~150 kly), relatively high redshift among the Hubble spiral
-sample, and elevated SMBH mass estimate (~108·5 MM_sun from σ ~ 180 km/s) make it the most massive
-galaxy in the current Three-UQFF batch. Analysis yields g_primary ≈ 1.053×10-3 m/s2, with the
-largest Hubble expansion correction (H(z=0.013)·t) in the batch.
+sample, and elevated SMBH mass estimate (~108$\cdot$5 MM_sun from $\sigma$ ~ 180 km/s) make it the most massive
+galaxy in the current Three-UQFF batch. Analysis yields g_primary $\approx$ 1.053$\times$10-3 m/s2, with the
+largest Hubble expansion correction (H(z=0.013)$\cdot$t) in the batch.
 
 ---
 
@@ -37,7 +37,7 @@ largest Hubble expansion correction (H(z=0.013)·t) in the batch.
 NGC 1961 is classified as a SAB(rs)c peculiar spiral — the "peculiar" designation arising from its
 asymmetric outer arms suggesting a gravitational interaction. Its inclusion in the UQFF framework
 tests three important boundaries: (1) the highest z in the current batch (z = 0.013); (2) the
-highest SMBH mass (108·5 MM_sun); (3) the largest galaxy radius (5.66×1020 m). Together these make NGC
+highest SMBH mass (108$\cdot$5 MM_sun); (3) the largest galaxy radius (5.66$\times$1020 m). Together these make NGC
 1961 the extreme endpoint of the Three-UQFF spiral batch, complementing NGC 3511 (nearest, lowest
 SMBH) at the opposite extreme.
 
@@ -47,16 +47,16 @@ SMBH) at the opposite extreme.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 5×1011 MM_sun = 9.945×1041 kg | Large spiral |
-| Disk radius | r | 5.66×1020 m (~60 kly) | Optical |
-| SMBH mass | M_BH | 108·5 MM_sun = 6.289×1038 kg | M–σ (σ=180 km/s) |
-| σ | — | 180 km/s = 1.8×105 m/s | M–σ |
+| Galaxy mass | M | 5$\times$1011 MM_sun = 9.945$\times$1041 kg | Large spiral |
+| Disk radius | r | 5.66$\times$1020 m (~60 kly) | Optical |
+| SMBH mass | M_BH | 108$\cdot$5 MM_sun = 6.289$\times$1038 kg | M–$\sigma$ ($\sigma$=180 km/s) |
+| $\sigma$ | — | 180 km/s = 1.8$\times$105 m/s | M–$\sigma$ |
 | SFR | — | 1.2 MM_sun/yr | High-SFR disturbed |
 | Redshift | z | 0.013 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
 | M_sf | — | 0.03 | UQFF |
 | f_TRZ | — | 0.05 | THz |
-| v_EM | v | 1.5×105 m/s | Elevated rotation |
+| v_EM | v | 1.5$\times$105 m/s | Elevated rotation |
 | B_EM | B | 10-5 T | Galactic field |
 | f_feedback | — | 0.063 | SMBH feedback |
 
@@ -88,19 +88,19 @@ g_primary ≈ 1.053×10-3 m/s2  (standard EM ground state)
 
 $$
 \begin{aligned}
-  & H(z=0.004)·t·correction = (1 + 2.268e-18 × 1.578e17) = 1.358  (PAPER_800-802) \\
-  & H(z=0.013)·t·correction = (1 + 2.270e-18 × 1.578e17) = 1.358  (PAPER_804) \\
-  & → Correction is Hubble-time dominated, essentially constant: Δ(H·t) ~ 0 over this z range
+  & H(z=0.004)\cdott\cdotcorrection = (1 + 2.268e-18 \times 1.578e17) = 1.358  (PAPER_800-802) \\
+  & H(z=0.013)\cdott\cdotcorrection = (1 + 2.270e-18 \times 1.578e17) = 1.358  (PAPER_804) \\
+  & \to Correction is Hubble-time dominated, essentially constant: \Delta(H\cdott) ~ 0 over this z range
 \end{aligned}
 $$
 
-### SMBH M–σ at σ = 180 km/s
+### SMBH M–$\sigma$ at $\sigma$ = 180 km/s
 
 $$
 \begin{aligned}
-  & M_BH = 10^(8.13·log₁₀(180/200)–0.51) ≈ 10^(8.13×(–0.046)–0.51) = 10^8.13 MM_sun \\
-  & (at σ = 200 km/s gives M_BH = 10^8.13; at 180 km/s slight reduction → ~10^7.8 MM_sun) \\
-  & Reported M_BH: 10^8.5 MM_sun suggests slightly above M–σ mean → over-massive SMBH
+  & M_BH = 10^(8.13\cdotlog10(180/200)–0.51) \approx 10^(8.13\times(–0.046)–0.51) = 10^8.13 MM_sun \\
+  & (at \sigma = 200 km/s gives M_BH = 10^8.13; at 180 km/s slight reduction \to ~10^7.8 MM_sun) \\
+  & Reported M_BH: 10^8.5 MM_sun suggests slightly above M–\sigma mean \to over-massive SMBH
 \end{aligned}
 $$
 
@@ -116,10 +116,10 @@ Prediction: NGC 1961 expels most CGM metals to IGM — low disk metallicity grad
 
 $$
 \begin{aligned}
-  & g_compressed = 1.053×10-3 m/s2 \\
-  & g_resonant   = 1.053×10-3 m/s2 \\
-  & g_buoyancy   = 1.053×10-3 m/s2 \\
-  & g_primary    = 1.053×10-3 m/s2
+  & g_compressed = 1.053\times10-3 m/s2 \\
+  & g_resonant   = 1.053\times10-3 m/s2 \\
+  & g_buoyancy   = 1.053\times10-3 m/s2 \\
+  & g_primary    = 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -129,10 +129,10 @@ $$
 
 NGC 1961's over-massive SMBH provides the first test of the **UQFF over-massive prediction**:
 
-- **Under-massive SMBH** (NGC 3511, 107 MM_sun): f_Z,CGM → 0.93, high metal retention, steep metallicity gradient
-- **Normal SMBH** (NGC 685, 108 MM_sun): f_Z,CGM → 0.89, normal retention
-- **Intermediate** (NGC 3507, 107·5 MM_sun): f_Z,CGM → 0.75 (peak AGN feedback efficiency)
-- **Over-massive SMBH** (NGC 1961, 108·5 MM_sun): f_Z,CGM → 0.10, metals expelled to IGM
+- **Under-massive SMBH** (NGC 3511, 107 MM_sun): f_Z,CGM $\to$ 0.93, high metal retention, steep metallicity gradient
+- **Normal SMBH** (NGC 685, 108 MM_sun): f_Z,CGM $\to$ 0.89, normal retention
+- **Intermediate** (NGC 3507, 107$\cdot$5 MM_sun): f_Z,CGM $\to$ 0.75 (peak AGN feedback efficiency)
+- **Over-massive SMBH** (NGC 1961, 108$\cdot$5 MM_sun): f_Z,CGM $\to$ 0.10, metals expelled to IGM
 
 The UQFF prediction for NGC 1961: its over-massive SMBH drives strong AGN outflows that expel metals
 to IGM, suppressing disk metallicity. Observational prediction: shallow metallicity gradient (< 0.01
@@ -142,11 +142,11 @@ dex/kpc) detectable with MUSE.
 
 ## 5. Conclusions
 
-Three-UQFF applied to NGC 1961 yields g_primary ≈ 1.053×10-3 m/s2 for the highest-z and most massive
-system in the current batch. The over-massive SMBH (108·5 MM_sun) extends the UQFF CGM metal retention
-framework to the low-retention extreme: f_Z,CGM → 0.10, predicting metal-poor CGM and shallow disk
+Three-UQFF applied to NGC 1961 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 for the highest-z and most massive
+system in the current batch. The over-massive SMBH (108$\cdot$5 MM_sun) extends the UQFF CGM metal retention
+framework to the low-retention extreme: f_Z,CGM $\to$ 0.10, predicting metal-poor CGM and shallow disk
 metallicity gradient. This completes the four-point SMBH mass–retention sequence (PAPER_800-804)
-spanning 107–108·5 MM_sun.
+spanning 107–108$\cdot$5 MM_sun.
 
 *PAPER_804, CP4 Three-UQFF class #388. v5.45. Session 189.*
 
@@ -158,7 +158,7 @@ spanning 107–108·5 MM_sun.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -177,7 +177,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -252,7 +252,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -263,13 +263,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

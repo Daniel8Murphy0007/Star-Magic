@@ -80,7 +80,7 @@ $$t_\text{flip} = \frac{\pi}{2\omega_text{SCm}} \approx 0.064 \text{ ps}$$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -99,7 +99,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -120,7 +120,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
 | Sign-flip dynamics | $t_\text{flip} = \pi/(2\omega_text{SCm})$ | Derived |
-| $\Gamma$-dependent damping | Narrow $\Gamma$ → many flips → collimation | Validated |
+| $\Gamma$-dependent damping | Narrow $\Gamma$ $\to$ many flips $\to$ collimation | Validated |
 | Jet morphology | Matched CenA/TXS0506 multi-messenger | Confirmed |
 
 ---
@@ -137,7 +137,7 @@ $$\mathcal{L}_{E(t)} = \frac{1}{2}S_{26}^2\left[\dot{\phi}^2 - \omega_text{SCm}^
 $$\boxed{\ddot{\phi} + 2\Gamma\dot{\phi} + \omega_text{SCm}^2\phi = 0 \implies E(t,\Gamma) = S_{26}\cos(\omega_text{SCm}t)e^{-\Gamma t}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → SCm vacuum → phonon $\omega_text{SCm}$ → damped oscillation $E(t,\Gamma)$ → jet sign-flip → collimation/diffusion
+PAPER_877 $\to$ SCm vacuum $\to$ phonon $\omega_text{SCm}$ $\to$ damped oscillation $E(t,\Gamma)$ $\to$ jet sign-flip $\to$ collimation/diffusion
 
 ---
 

@@ -11,7 +11,7 @@ tags: [SCm, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_749: Five Quantum Variable Document Sets — r_j, d_g, F_U, f_feedback, Ω_g, f_Heaviside, H_SCm, λ_i, M_bh, μ_j, γ, E_react
+# PAPER_749: Five Quantum Variable Document Sets — r_j, d_g, F_U, f_feedback, $\Omega$_g, f_Heaviside, H_SCm, $\lambda$_i, M_bh, $\mu$_j, $\gamma$, E_react
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
@@ -26,8 +26,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Three sets of five quantum variable documents (15 variables total) were assimilated into the UQFF
 knowledge base during the Compression Cycle 2 thread. This paper consolidates all 15 variables with
 their equations, canonical values, and roles within the Unified Field Strength F_U formula. The
-variables span spatial distances (r_j, d_g), field strengths (F_U, μ_j), dynamics (Ω_g, f_feedback,
-γ), and operational parameters (f_Heaviside, H_SCm, λ_i, M_bh, E_react). Together they define the
+variables span spatial distances (r_j, d_g), field strengths (F_U, $\mu$_j), dynamics ($\Omega$_g, f_feedback,
+$\gamma$), and operational parameters (f_Heaviside, H_SCm, $\lambda$_i, M_bh, E_react). Together they define the
 complete parameterization of the UQFF for galactic-scale applications.
 
 ---
@@ -45,39 +45,39 @@ This paper assimilates all 15 variables as a unified reference set.
 
 ---
 
-## 2. Set A: Spatial and Field Variables (r_j, d_g, F_U, f_feedback, Ω_g)
+## 2. Set A: Spatial and Field Variables (r_j, d_g, F_U, f_feedback, $\Omega$_g)
 
 ### r_j — Magnetic String Distance
 $$
 \begin{aligned}
-  & r_j = 1.496×1013 m = 100 AU \\
+  & r_j = 1.496\times1013 m = 100 AU \\
   & Role: Distance along j-th magnetic string path (denominator in U_m and U_g3) \\
-  & U_m: μ_j/r_j → U_m ≈ 2.28×1065 J/m3 \\
-  & U_g3: k_3·Σ_j B_j·cos(ω_s·t·π)·P_core·E_react ≈ 1.8×1049 J/m3
+  & U_m: \mu_j/r_j \to U_m \approx 2.28\times1065 J/m3 \\
+  & U_g3: k_3\cdot\Sigma_j B_j\cdotcos(\omega_s\cdott\cdot\pi)\cdotP_core\cdotE_react \approx 1.8\times1049 J/m3
 \end{aligned}
 $$
 
 ### d_g — Galactic Center Distance
 $$
 \begin{aligned}
-  & d_g = 2.55×1020 m ≈ 27,000 light-years \\
+  & d_g = 2.55\times1020 m \approx 27,000 light-years \\
   & Role: Distance from Sun to Milky Way center (Sgr A* reference) \\
-  & U_bi: −β_i·U_gi·Ω_g·(M_bh/d_g)·(1+ε_sw·ρ_vac,sw)·U_UA·cos(π·t_n) \\
-  & M_bh/d_g = 8.15×1036/2.55×1020 ≈ 3.20×1016 kg/m \\
-  & U_b1 ≈ −1.94×1027 J/m3 \\
-  & U_g4: k_4·ρ_vac,[SCm]·(M_bh/d_g)·e^(−αt)·cos(π·t_n)·(1+f_feedback) \\
-  & U_g4 ≈ 2.50×10-20 J/m3
+  & U_bi: -\beta_i\cdotU_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdot(1+\varepsilon_sw\cdot\rho_vac,sw)\cdotU_UA\cdotcos(\pi\cdott_n) \\
+  & M_bh/d_g = 8.15\times1036/2.55\times1020 \approx 3.20\times1016 kg/m \\
+  & U_b1 \approx -1.94\times1027 J/m3 \\
+  & U_g4: k_4\cdot\rho_vac,[SCm]\cdot(M_bh/d_g)\cdote^(-\alphat)\cdotcos(\pi\cdott_n)\cdot(1+f_feedback) \\
+  & U_g4 \approx 2.50\times10-20 J/m3
 \end{aligned}
 $$
 
 ### F_U — Unified Field Strength
 $$
 \begin{aligned}
-  & F_U = Σ_i [k_i·U_gi − β_i·U_gi·Ω_g·(M_bh/d_g)·E_react] \\
-  & + Σ_j [μ_j/r_j · (1−e^(−γt)·cos(π·t_n))·φ̂_j] \\
-  & + (g_μν + η·T_s^(μν)) \\
-  & − Σ_i [λ_i·U_i·E_react] \\
-  & At t=0, Sun: F_U ≈ U_m ≈ 2.28×1065 J/m3 (U_m dominates)
+  & F_U = \Sigma_i [k_i\cdotU_gi - \beta_i\cdotU_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdotE_react] \\
+  & + \Sigma_j [\mu_j/r_j \cdot (1-e^(-\gammat)\cdotcos(\pi\cdott_n))\cdot\phî_j] \\
+  & + (g_\mu\nu + \eta\cdotT_s^(\mu\nu)) \\
+  & - \Sigma_i [\lambda_i\cdotU_i\cdotE_react] \\
+  & At t=0, Sun: F_U \approx U_m \approx 2.28\times1065 J/m3 (U_m dominates)
 \end{aligned}
 $$
 
@@ -92,28 +92,28 @@ Without (f_feedback = 0): U_g4 ≈ 2.27×10-20 J/m3
 Feedback effect: ~10% increase → important for galaxy evolution modeling
 ```
 
-### Ω_g — Galactic Spin Rate
+### $\Omega$_g — Galactic Spin Rate
 $$
 \begin{aligned}
-  & Ω_g = 7.3×10-16 rad/s \\
+  & \Omega_g = 7.3\times10-16 rad/s \\
   & Role: Milky Way angular velocity (appears in U_bi buoyancy term) \\
-  & Rotational period: T = 2π/Ω_g ≈ 8.61×1015 s ≈ 2.73×108 yr (galactic year)
+  & Rotational period: T = 2\pi/\Omega_g \approx 8.61\times1015 s \approx 2.73\times108 yr (galactic year)
 \end{aligned}
 $$
 
 ---
 
-## 3. Set B: Operational Parameters (f_Heaviside, i, H_SCm, λ_i, j)
+## 3. Set B: Operational Parameters (f_Heaviside, i, H_SCm, $\lambda$_i, j)
 
 ### f_Heaviside — Heaviside Component Fraction
 $$
 \begin{aligned}
   & f_Heaviside = 0.01 \\
   & Role: Scales threshold-activated nonlinear effects in U_m \\
-  & Effect in U_m: (1 + 1013·f_Heaviside) = (1 + 1011) \\
+  & Effect in U_m: (1 + 1013\cdotf_Heaviside) = (1 + 1011) \\
   & This amplifies U_m by factor ~1011 \\
-  & Without f_Heaviside: U_m ≈ 2.28×1054 J/m3 \\
-  & With f_Heaviside:   U_m ≈ 2.28×1065 J/m3  ← canonical value
+  & Without f_Heaviside: U_m \approx 2.28\times1054 J/m3 \\
+  & With f_Heaviside:   U_m \approx 2.28\times1065 J/m3  \leftarrow canonical value
 \end{aligned}
 $$
 
@@ -132,13 +132,13 @@ $$
 \begin{aligned}
   & H_SCm ~ 1   (dimensionless) \\
   & Role: Scales heliospheric thickness in U_g2 \\
-  & U_g2 = k_2·(ρ_vac,[UA]+ρ_vac,[SCm])·M_s/r2 · S(r−R_b)·(1+δ_sw·v_sw)·H_SCm·E_react \\
-  & With H_SCm = 1.0: U_g2 ≈ 1.18×1053 J/m3 \\
-  & With H_SCm = 1.1: U_g2 ≈ 1.30×1053 J/m3  (+10% heliosphere thickening)
+  & U_g2 = k_2\cdot(\rho_vac,[UA]+\rho_vac,[SCm])\cdotM_s/r2 \cdot S(r-R_b)\cdot(1+\delta_sw\cdotv_sw)\cdotH_SCm\cdotE_react \\
+  & With H_SCm = 1.0: U_g2 \approx 1.18\times1053 J/m3 \\
+  & With H_SCm = 1.1: U_g2 \approx 1.30\times1053 J/m3  (+10% heliosphere thickening)
 \end{aligned}
 $$
 
-### λ_i — Inertia Coupling Constant
+### $\lambda$_i — Inertia Coupling Constant
 ```
 λ_i = 1.0   (uniform for all i)
 
@@ -164,28 +164,28 @@ At galactic scale: multiple strings possible
 
 ---
 
-## 4. Set C: Dynamical Variables (M_bh, μ_j, P_core, t_n, π) and (γ, E_react, f_quasi, R_b)
+## 4. Set C: Dynamical Variables (M_bh, $\mu$_j, P_core, t_n, $\pi$) and ($\gamma$, E_react, f_quasi, R_b)
 
 ### M_bh — Black Hole Mass (Sgr A*)
 $$
 \begin{aligned}
-  & M_bh = 8.15×1036 kg ≈ 4.1×106 MM_sun \\
+  & M_bh = 8.15\times1036 kg \approx 4.1\times106 MM_sun \\
   & Role: Sgr A* mass scaling galactic gravitational field \\
   & Appears in U_bi and U_g4 as M_bh/d_g ratio
 \end{aligned}
 $$
 
-### μ_j — Magnetic Moment (time-dependent)
+### $\mu$_j — Magnetic Moment (time-dependent)
 $$
 \begin{aligned}
-  & μ_j(t) = (103 + 0.4·sin(ω_c·t)) · 3.38×1020 T·pm3 \\
-  & ω_c = 2π / (3.96×108 s) (solar magnetic cycle frequency) \\
-  & At t=0:  μ_j = 103 × 3.38×1020 = 3.38×1023 T·pm3 \\
-  & At t=1000 days: (1−e^(−γt)·cos(π·t_n)) ≈ 0.049 → U_m scales accordingly
+  & \mu_j(t) = (103 + 0.4\cdotsin(\omega_c\cdott)) \cdot 3.38\times1020 T\cdotpm3 \\
+  & \omega_c = 2\pi / (3.96\times108 s) (solar magnetic cycle frequency) \\
+  & At t=0:  \mu_j = 103 \times 3.38\times1020 = 3.38\times1023 T\cdotpm3 \\
+  & At t=1000 days: (1-e^(-\gammat)\cdotcos(\pi\cdott_n)) \approx 0.049 \to U_m scales accordingly
 \end{aligned}
 $$
 
-### γ — Reciprocation Decay Rate
+### $\gamma$ — Reciprocation Decay Rate
 ```
 γ = 5×10-5 day-1
 
@@ -202,7 +202,7 @@ $$
   & Role: Universal scaling factor in all U_gi and U_m terms \\
   & Relates UQFF energy densities to physical observables \\
   & This constant is the primary bridge between the \\
-  & ρ_vac,[SCm] density scale (~10-37) and classical physics scales.
+  & \rho_vac,[SCm] density scale (~10-37) and classical physics scales.
 \end{aligned}
 $$
 
@@ -235,19 +235,19 @@ $$
   & P_core ~ 1.0   (Sun, stars) \\
   & P_core ~ 10-3  (planets, moons) \\
   & Role: Scales magnetic string core penetration in U_g3 \\
-  & U_g3(Sun)     ≈ 1.8×1049 J/m3 \\
-  & U_g3(planet)  ≈ 1.8×1046 J/m3   (3 orders lower)
+  & U_g3(Sun)     \approx 1.8\times1049 J/m3 \\
+  & U_g3(planet)  \approx 1.8\times1046 J/m3   (3 orders lower)
 \end{aligned}
 $$
 
 ### t_n — Negative Time Factor
 $$
 \begin{aligned}
-  & t_n = t − t_0   (allows t_n < 0) \\
-  & Role: Time reference in oscillatory terms cos(π·t_n) \\
-  & For t = 1000 days, t_n = −1: \\
-  & cos(π·(−1)) = −1   (phase reversal) \\
-  & U_gi → negative → system in negentropic regime
+  & t_n = t - t_0   (allows t_n < 0) \\
+  & Role: Time reference in oscillatory terms cos(\pi\cdott_n) \\
+  & For t = 1000 days, t_n = -1: \\
+  & cos(\pi\cdot(-1)) = -1   (phase reversal) \\
+  & U_gi \to negative \to system in negentropic regime
 \end{aligned}
 $$
 
@@ -259,11 +259,11 @@ With all 15 variables defined:
 
 $$
 \begin{aligned}
-  & F_U = Σ_{i=1}^{4} [k_i·U_gi − β_i·U_gi·Ω_g·(M_bh/d_g)·E_react] \\
-  & + Σ_{j} [μ_j(t)/r_j · (1−e^(−γt)·cos(π·t_n))·φ̂_j] \\
-  & · P_SCm · E_react · (1+1013·f_Heaviside) · (1+f_quasi) \\
-  & + H_SCm · (g_μν + η·T_s^(μν)) \\
-  & − λ_i · Σ_i [U_i · E_react]
+  & F_U = \Sigma_{i=1}^{4} [k_i\cdotU_gi - \beta_i\cdotU_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdotE_react] \\
+  & + \Sigma_{j} [\mu_j(t)/r_j \cdot (1-e^(-\gammat)\cdotcos(\pi\cdott_n))\cdot\phî_j] \\
+  & \cdot P_SCm \cdot E_react \cdot (1+1013\cdotf_Heaviside) \cdot (1+f_quasi) \\
+  & + H_SCm \cdot (g_\mu\nu + \eta\cdotT_s^(\mu\nu)) \\
+  & - \lambda_i \cdot \Sigma_i [U_i \cdot E_react]
 \end{aligned}
 $$
 
@@ -292,7 +292,7 @@ Session 180 continuation v5.38.*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -311,7 +311,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -420,7 +420,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.191 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -431,13 +431,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The Probability of Order (P_order) is defined as a universal partition function of the form $P_{order} = \exp(-E/F_{max})/Z_{partition}$, expressing the statistical likelihood that a physical system evolves from a disordered state to an ordered one. Computed across four scale presets (jet, stellar, galactic, cosmological), P_order provides a bounded positive quantity that connects to the Yang-Mills mass gap, the Navier-Stokes eigenvalue lower bound, and the Riemann Hypothesis zero distribution. The stellar-scale result (P_order ≈ 9.999e-6) is validated against astrophysical order-formation rates.
+The Probability of Order (P_order) is defined as a universal partition function of the form $P_{order} = \exp(-E/F_{max})/Z_{partition}$, expressing the statistical likelihood that a physical system evolves from a disordered state to an ordered one. Computed across four scale presets (jet, stellar, galactic, cosmological), P_order provides a bounded positive quantity that connects to the Yang-Mills mass gap, the Navier-Stokes eigenvalue lower bound, and the Riemann Hypothesis zero distribution. The stellar-scale result (P_order $\approx$ 9.999e-6) is validated against astrophysical order-formation rates.
 
 ---
 
@@ -41,10 +41,10 @@ $$P_{order} = \frac{\exp(-Entropy / F_{max})}{Z_{partition}}$$
 
 | Preset | Entropy (J/K) | F_max (Hz) | Z_partition | P_order |
 |--------|--------------|-----------|------------|---------|
-| Jet (relativistic) | 1.0e2 | 1.0e18 | 1.0 | exp(-102/1018) ≈ 1.000 |
-| Stellar | 1.0e20 | 6.93e9 | 1.0e15 | ≈ 9.999e-6 |
-| Galactic | 1.0e33 | 3.0e6 | 1.0e27 | ≈ 5.3e-7 |
-| Cosmological | 1.0e88 | 2.7e-18 | 1.0e80 | ≈ 1.2e-8 |
+| Jet (relativistic) | 1.0e2 | 1.0e18 | 1.0 | exp(-102/1018) $\approx$ 1.000 |
+| Stellar | 1.0e20 | 6.93e9 | 1.0e15 | $\approx$ 9.999e-6 |
+| Galactic | 1.0e33 | 3.0e6 | 1.0e27 | $\approx$ 5.3e-7 |
+| Cosmological | 1.0e88 | 2.7e-18 | 1.0e80 | $\approx$ 1.2e-8 |
 
 The stellar preset yields $P_{order} \approx 10^{-5}$, consistent with the observed star-formation efficiency in molecular clouds (~1-10% per free-fall time, or 10-5 per dynamical time).
 
@@ -112,7 +112,7 @@ Hypothesis, entropy, UQFF, thermodynamics, Millennium Prize
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -131,7 +131,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -239,7 +239,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.182 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -250,13 +250,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

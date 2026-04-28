@@ -42,11 +42,11 @@ $$P(f) = \frac{\mu \cdot I^2 \cdot f}{4\pi d^2} \cdot [\text{SCm}]_{\text{emit}}
 | $G\mu/c^2$ | $10^{-8}$ | String tension |
 | $I$ | $10^{10}$ A | Macroscopic supercurrent |
 | $f$ | 1.4 GHz | L-band radio frequency |
-| $d$ | 3.086 × 10²⁵ m | ~1 Gpc |
+| $d$ | 3.086 $\times$ 1025 m | ~1 Gpc |
 
 ### 2.2 Flux Density
 
-The observed flux density in Jansky (1 Jy = $10^{-26}$ W/m²/Hz):
+The observed flux density in Jansky (1 Jy = $10^{-26}$ W/m2/Hz):
 
 $$S = \frac{P(f)}{10^{-26}}$$
 
@@ -99,7 +99,7 @@ Radio constraints on SCS emission are consistent with the UQFF $[\text{SCm}]$ em
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

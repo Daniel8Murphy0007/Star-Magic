@@ -41,7 +41,7 @@ $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} =
 
 where $f_{jet} = v_{SCm}/10 = 10^7$ m/s is the SCm-driven jet force (v_SCm = 10^8 m/s, fTRZ = 0.1). This paper presents the complete derivation of $f_{jet}$, implements the Jos Stam "stable fluids" algorithm for UQFF quasar jet simulation, demonstrates that the SCm term provides the Millennium-relevant existence and smoothness condition, and connects the UQFF model to AGN jet observations (Sgr A*, M87, Centaurus A). The SCm force term regularizes potential blow-up solutions by providing a physically bounded dissipation channel with $|f_{jet}| = v_{SCm}/10 = 10^7$ m/s  a universal upper bound on jet dynamics.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -110,7 +110,7 @@ $$f_{SCm,vol} = \sigma_{SCm} = \rho_{SCm} \cdot v_{SCm} \cdot \frac{v_{SCm}}{\la
 
 $$f_{jet} = \frac{f_{SCm,vol}}{\rho_{jet} \cdot v_{jet}^2 / L_{jet}} \cdot v_{SCm} \cdot f_{TRZ}$$
 
-With $\rho_{jet} = 10^{-3}$ kg/m (AGN jet plasma), $v_{jet} = 0.99c \approx 3×10^8$ m/s, $L_{jet} = 1$ kpc = $3×10^{19}$ m:
+With $\rho_{jet} = 10^{-3}$ kg/m (AGN jet plasma), $v_{jet} = 0.99c \approx 3\times10^8$ m/s, $L_{jet} = 1$ kpc = $3\times10^{19}$ m:
 
 $$f_{jet} = \frac{10^{46}}{10^{-3} \times (3 \times 10^8)^2 / (3 \times 10^{19})} \times 10^8 \times 0.1$$
 
@@ -192,7 +192,7 @@ mechanism that Nature uses to prevent singularities.
 | Jet length | ~5 kpc |
 | Jet velocity | ~0.99c |
 | Knot structure | HST-1 bright knot at 0.86 arcsec |
-| UQFF MUGE at M87* | 1.29×10^20 m/s^2 (from PAPER_067) |
+| UQFF MUGE at M87* | 1.29$\times$10^20 m/s^2 (from PAPER_067) |
 | SCm jet force f_jet | 10^7 m/s (UQFF prediction) |
 | Observed jet velocity oscillation | Yes (quasi-periodic knot ejection ~12 yr) |
 
@@ -210,11 +210,11 @@ $$f_{jet}(t) = \frac{v_{SCm}}{10} \cdot (1 + A \cdot \cos(2\pi f_{TRZ} \kappa t)
 |-----------|-------|
 | Jet length | ~30 kpc (inner jet) |
 | Jet velocity | ~0.5c |
-| UQFF Um (magnetic energy flux) | 9.94×10^45 J/m (PAPER_067) |
+| UQFF Um (magnetic energy flux) | 9.94$\times$10^45 J/m (PAPER_067) |
 | SCm f_jet | 10^7 m/s |
-| Ratio v_jet / f_jet | ~1.5×10^7 |
+| Ratio v_jet / f_jet | ~1.5$\times$10^7 |
 
-The observed CenA jet velocity (~0.5c = 1.5×10^8 m/s) is related to f_jet by:
+The observed CenA jet velocity (~0.5c = 1.5$\times$10^8 m/s) is related to f_jet by:
 
 $$v_{jet,obs} = 15 \cdot f_{jet} = 15 \times 10^7 = 1.5 \times 10^8 \text{ m/s}$$
 
@@ -225,7 +225,7 @@ This factor of 15 represents the cumulative amplification of the SCm force over 
 | Parameter | Value |
 |-----------|-------|
 | System | SGR1745-2900 magnetar |
-| MUGE g | 1.773×10^-9 m/s^2 |
+| MUGE g | 1.773$\times$10^-9 m/s^2 |
 | SCm f_jet at SGR | v_SCm/10  (B_SGR/B_ref) |
 | B_SGR | ~10^11 T |
 | f_jet,SGR | 10^7  (10^11/10^12) = 10^5 m/s |
@@ -282,10 +282,10 @@ the SCm-mediated quasar jet regime, connecting:
 | SCm jet force f_jet | v_SCm/10 = 10^7 | m/s |
 | fTRZ coupling factor | 0.1 = 1/10 | dimensionless |
 | Energy bound (Grnwall) | E(t) < E_0  e^(f_jet  t) | – |
-| SCm viscosity contribution | 3.33×10^-8 | m/s |
-| AGN jet Re (UQFF) | ~8.7×10^33 | dimensionless |
+| SCm viscosity contribution | 3.33$\times$10^-8 | m/s |
+| AGN jet Re (UQFF) | ~8.7$\times$10^33 | dimensionless |
 | M87 jet oscillation period (UQFF) | ~55 years | yr |
-| CenA jet velocity | 15  f_jet = 1.5×10^8 | m/s |
+| CenA jet velocity | 15  f_jet = 1.5$\times$10^8 | m/s |
 | Millennium bridge | SCm bound prevents finite-time blow-up | – |
 
 ---
@@ -312,7 +312,7 @@ exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -331,7 +331,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -405,7 +405,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.087 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -414,13 +414,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 M74 (NGC 628) is the "Phantom Galaxy," a nearly face-on grand-design spiral approximately 32 million
-light-years away (z ≈ 0.0022) in Pisces. Known as one of the most symmetric spirals in the sky, M74
+light-years away (z $\approx$ 0.0022) in Pisces. Known as one of the most symmetric spirals in the sky, M74
 has been extensively studied by Hubble, Spitzer, and most recently JWST (which released stunning
 mid-infrared MIRI images in 2022 showing its spiral arms in extraordinary detail). With a moderate
-SFR ≈ 1–2 MM_sun/yr and total mass ~1011 MM_sun, M74 is a textbook Sbc spiral. Under UQFF, standard disk
-rotation (v = 105 m/s) with typical galactic B-field yield g_M74 ≈ 1.053×10-3 m/s2.
+SFR $\approx$ 1–2 MM_sun/yr and total mass ~1011 MM_sun, M74 is a textbook Sbc spiral. Under UQFF, standard disk
+rotation (v = 105 m/s) with typical galactic B-field yield g_M74 $\approx$ 1.053$\times$10-3 m/s2.
 
 ---
 
@@ -46,17 +46,17 @@ evolution.
 ## 2. Master UQFF Gravity Equation
 
 $$
-g_M74(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) + a_EM
+g_M74(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 + f_TRZ) + a_EM
 $$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Hubble/JWST |
-| Disk radius | r | 5×1020 m (~53 kly) | NED |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Hubble/JWST |
+| Disk radius | r | 5$\times$1020 m (~53 kly) | NED |
 | SFR | — | 1.5 MM_sun/yr | JWST MIRI |
-| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.045 | UQFF SFR integral |
 | Redshift | z | 0.0022 | Spectroscopic |
 | v_EM | v | 105 m/s | Disk rotation |
@@ -69,12 +69,12 @@ $$
 
 ### Step 1: Base Gravitational Term
 $$
-g_grav = 6.6743e-11 × 1.989e41 / (5e20)2 = 5.311e-11 m/s2
+g_grav = 6.6743e-11 \times 1.989e41 / (5e20)2 = 5.311e-11 m/s2
 $$
 
 ### Step 2: Cosmic Expansion Factor
 $$
-H(z) = 2.269e-18 s-1; H(z)×t = 2.269e-18 × 1.578e17 = 0.358; factor = 1.358
+H(z) = 2.269e-18 s-1; H(z)\timest = 2.269e-18 \times 1.578e17 = 0.358; factor = 1.358
 $$
 
 ### Step 3: SFR Mass Fraction
@@ -89,17 +89,17 @@ $$
 
 ### Step 5: Gravitational Total
 $$
-\text{g\_grav\_total} = 5.311e-11 × 1.358 × 1.045 × 1.04 = 7.856e-11 m/s2
+\text{g\_grav\_total} = 5.311e-11 \times 1.358 \times 1.045 \times 1.04 = 7.856e-11 m/s2
 $$
 
 ### Step 6: Aether EM Correction
 $$
-a_EM = (1.602e-19 × 1e5 × 1e-5 / 1.673e-27) × 11 × 1e-12 = 1.053e-3 m/s2
+a_EM = (1.602e-19 \times 1e5 \times 1e-5 / 1.673e-27) \times 11 \times 1e-12 = 1.053e-3 m/s2
 $$
 
 ### Step 7: Final Solution
 $$
-g_M74 = 7.856e-11 + 1.053e-3 ≈ 1.053e-3 m/s2
+g_M74 = 7.856e-11 + 1.053e-3 \approx 1.053e-3 m/s2
 $$
 
 ---
@@ -108,7 +108,7 @@ $$
 
 M74's near-perfect symmetry and moderate SFR place it exactly in the standard UQFF Sbc spiral
 category. JWST MIRI imagery showing crisp HII regions distributed along symmetric arms confirms that
-M74 is in a quiescent, undisturbed star-formation mode. The consistent g_M74 = 1.053×10-3 m/s2
+M74 is in a quiescent, undisturbed star-formation mode. The consistent g_M74 = 1.053$\times$10-3 m/s2
 result joins NGC 2841 (PAPER_775), NGC 6217 (PAPER_777), and NGC 7049 (PAPER_779) in affirming UQFF
 universality across nearby spiral morphologies.
 
@@ -116,7 +116,7 @@ universality across nearby spiral morphologies.
 
 ## 5. Conclusions
 
-UQFF applied to M74 Phantom Galaxy yields g ≈ 1.053×10-3 m/s2. As JWST's 2022 MIRI showcase target,
+UQFF applied to M74 Phantom Galaxy yields g $\approx$ 1.053$\times$10-3 m/s2. As JWST's 2022 MIRI showcase target,
 M74 provides a clean observational anchor for standard UQFF Sbc galaxy calculations at z = 0.0022.
 
 *PAPER_781, CP4 class #365. v5.42.*
@@ -252,7 +252,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -263,13 +263,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

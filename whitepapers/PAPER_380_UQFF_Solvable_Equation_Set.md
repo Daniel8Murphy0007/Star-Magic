@@ -48,12 +48,12 @@ in any of PAPER_368–379.
 |---|----------|--------|:-----------------:|----------------|
 | 1 | Navier-Stokes | Fluid Mechanics | ✅ YES | Resonance fluid terms model turbulence smoothness |
 | 2 | Yang-Mills Mass Gap | QFT / Gauge Theory | ✅ YES | SCm superconductivity induces mass gap in gauge fields |
-| 3 | Riemann Hypothesis | Number Theory | ✅ YES | π cycles in resonances encode zeta zeros |
+| 3 | Riemann Hypothesis | Number Theory | ✅ YES | $\pi$ cycles in resonances encode zeta zeros |
 | 4 | Einstein Field Equations | GR / Cosmology | — | Resonance UQFF approximates GR in low-frequency limit |
 | 5 | Schrödinger Equation | Quantum Mechanics | — | Quantum terms solve wave functions for coherence |
 | 6 | Maxwell's Equations | Electromagnetism | — | Magnetic resonances replace and solve electromagnetic fields |
 | 7 | Hubble's Law | Cosmology | — | Expansion terms $v_{exp}$ solve cosmic dynamics |
-| 8 | Black-Scholes Equation | Finance (analogy) | — | Perturbation terms → stochastic processes in fluctuating fields |
+| 8 | Black-Scholes Equation | Finance (analogy) | — | Perturbation terms $\to$ stochastic processes in fluctuating fields |
 | 9 | Heat Equation | PDE / Diffusion | — | Decay terms $e^{-\kappa t}$ model heat diffusion |
 | 10 | Wave Equation | PDE / Wave Propagation | — | Oscillatory terms $\cos(\pi t_n)$ solve wave propagation |
 
@@ -106,8 +106,8 @@ where $t_n = $ tn (a dimensionless time parameter scaled from the non-trivial ze
 $$a_{aether\_res} = M_{\Delta} \sin(2\pi f_{thz} \cdot t) \cdot \frac{g_{DM}}{c^2}$$
 
 The $\pi$-cyclic structure in resonance frequencies provides an oscillatory encoding of the
-Riemann zeta function's zeros. Grok's analysis: "π cycles in resonances encode zeta zeros" —
-the $\text{Re}(s) = 1/2$ symmetry line is reflected in the ± pairing of $\omega_1 = -\omega_2$
+Riemann zeta function's zeros. Grok's analysis: "$\pi$ cycles in resonances encode zeta zeros" —
+the $\text{Re}(s) = 1/2$ symmetry line is reflected in the $\pm$ pairing of $\omega_1 = -\omega_2$
 in the resonance magnetic dipole term:
 $$a_{DPM} = \frac{\mu_0 \cdot I \cdot A \cdot \omega_1 \omega_2 \cdot 4\pi}{r^3}$$
 
@@ -118,13 +118,13 @@ with $\omega_1 + \omega_2 = 0$ corresponding to the critical line.
 ### 3.4 Einstein Field Equations
 
 **UQFF mechanism:** In the low-frequency / large-$r$ regime of the Resonance MUGE, the dominant
-term is the aDPM magnetic dipole which decays as $r^{-3}$. Added to the DPM-seeded base $μ_s∇(M_s/r)$,
+term is the aDPM magnetic dipole which decays as $r^{-3}$. Added to the DPM-seeded base $\mu_s\nabla(M_s/r)$,
 the combined result approximates GR's $T_{\mu\nu}$ expansion:
 $$g_{EFE} \approx \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} + \frac{\mu_0 I A `omega_1`omega_2 4\pi}{r^3}$$
 
 This matches the post-Newtonian expansion $g_{PN} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + \alpha/r + ...)$. In the
 limit $f_{TRZ} \rightarrow 0$ (SM gravity emergence, per PAPER_378), the UQFF reduces exactly
-to $μ_s∇(M_s/r)$, recovering GR.
+to $\mu_s\nabla(M_s/r)$, recovering GR.
 
 ---
 
@@ -173,9 +173,9 @@ $$\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\p
 $$a_{perturbation} = (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 is structurally analogous to the Black-Scholes stochastic perturbation. Mapping:
-- $M_{DM} \cdot \delta\rho/\rho$ ↔ $\sigma^2 S^2 \partial^2 V/\partial S^2$ (stochastic volatility)
-- $3μ_s∇(M_s/r)/r$ ↔ $rS\partial V/\partial S$ (drift term)
-- Resonance decay $e^{-\alpha t}$ ↔ $e^{-r(T-t)}$ (discount factor)
+- $M_{DM} \cdot \delta\rho/\rho$ $\leftrightarrow$ $\sigma^2 S^2 \partial^2 V/\partial S^2$ (stochastic volatility)
+- $3\mu_s\nabla(M_s/r)/r$ $\leftrightarrow$ $rS\partial V/\partial S$ (drift term)
+- Resonance decay $e^{-\alpha t}$ $\leftrightarrow$ $e^{-r(T-t)}$ (discount factor)
 
 This analogy maps UQFF dark matter density fluctuations onto stochastic processes in
 fluctuating vacuum-energy fields.
@@ -214,7 +214,7 @@ wave propagation in the UQFF vacuum medium.
 |---------|-------|----------------|----------|
 | Navier-Stokes smoothness | $1M USD | Fluid freq. stabilizes turbulence | $a_{fluid\_freq}$ |
 | Yang-Mills mass gap | $1M USD | SCm Meissner exponential | $e^{-B/B_{crit}}$ |
-| Riemann Hypothesis | $1M USD | π-cycles encode zeta zeros | $\cos(\pi t_n)$, $\omega_1=-\omega_2$ |
+| Riemann Hypothesis | $1M USD | \pi-cycles encode zeta zeros | $\cos(\pi t_n)$, $\omega_1=-\omega_2$ |
 
 **Combined:** Three Millennium Prize Problems have structural analogs in the UQFF resonance
 and compressed MUGE framework, emerging naturally from the vacuum energy coupling terms.
@@ -245,7 +245,7 @@ PAPER_371 (Wave Eq.)
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -264,7 +264,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -372,7 +372,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.117 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -383,13 +383,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -133,7 +133,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -180,7 +180,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -251,7 +251,7 @@ $$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i}
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ lattice resonance $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

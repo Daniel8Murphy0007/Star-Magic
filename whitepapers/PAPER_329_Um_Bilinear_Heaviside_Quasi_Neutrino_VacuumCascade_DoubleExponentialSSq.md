@@ -49,9 +49,9 @@ The complete Um magnetism term from the UQFF framework:
 $$
 \begin{aligned}
   & Um = ?_j [ µ_j(t, ?_vac,[SCm]) / r_j \\
-  & · (1 - e^{-?t} cos(pt_n)) \\
-  & · ?^j ] \\
-  & · P_SCm · E_react · (1 + 10^{13} f_Heaviside) · (1 + f_quasi)
+  & \cdot (1 - e^{-?t} cos(pt_n)) \\
+  & \cdot ?^j ] \\
+  & \cdot P_SCm \cdot E_react \cdot (1 + 10^{13} f_Heaviside) \cdot (1 + f_quasi)
 \end{aligned}
 $$
 
@@ -61,8 +61,8 @@ $$
 |--------|-------|-------------|
 | µ_j | dynamic | Magnetic moment per state j (function of t and ?_vac,[SCm]) |
 | r_j | system-dependent | Distance per state j |
-| ? | 5×10-5 day-1 | Temporal decay constant |
-| t_n | t/(p·t_n) | Normalized time coordinate |
+| ? | 5$\times$10-5 day-1 | Temporal decay constant |
+| t_n | t/(p$\cdot$t_n) | Normalized time coordinate |
 | ? | ~0.8 (provisional; ˜sin(pt_n)) | Phase coupling constant; d_n = ?(2pn/6) |
 | P_SCm | [0,1] | Superconductive probability per state |
 | E_react | system | Reactive energy coupling |
@@ -91,9 +91,9 @@ The intermediate vacuum cascade density connecting primed and unprimed vacuum fr
 
 $$
 \begin{aligned}
-  & ?_vac,[UA']:[SCm] = ?_vac,[UA'] · (?_vac,[SCm] / ?_vac,[UA])^n \\
-  & · exp(-[SSq] · n/26) \\
-  & · exp(-(p - t))
+  & ?_vac,[UA']:[SCm] = ?_vac,[UA'] \cdot (?_vac,[SCm] / ?_vac,[UA])^n \\
+  & \cdot exp(-[SSq] \cdot n/26) \\
+  & \cdot exp(-(p - t))
 \end{aligned}
 $$
 
@@ -103,14 +103,14 @@ $$
 
 $$
 \begin{aligned}
-  & E_neutrino ? ?_vac,[UA']:[SCm] · exp( -[SSq] · n/26 · exp(-(p - t)) ) \\
-  & · U_m / ?_vac,[UA]
+  & E_neutrino ? ?_vac,[UA']:[SCm] \cdot exp( -[SSq] \cdot n/26 \cdot exp(-(p - t)) ) \\
+  & \cdot U_m / ?_vac,[UA]
 \end{aligned}
 $$
 
 **Mathematical significance:** This is a double-exponential of the form:
 $$
-exp(-A · exp(-B · t))   where A = [SSq]·n/26 and B = 1 (argument: p - t)
+exp(-A \cdot exp(-B \cdot t))   where A = [SSq]\cdotn/26 and B = 1 (argument: p - t)
 $$
 
 This is mathematically distinct from all prior [SSq] terms which have the form `exp(-[SSq]·n/26)`
@@ -120,24 +120,24 @@ times and slower-than-exponential approach to asymptote at late times.
 ### 3.3 Decay Rate
 
 $$
-Decay Rate ? ?_vac,[SCm] / ?_vac,[UA] · exp( -[SSq] · n/26 · exp(-(p - t)) )
+Decay Rate ? ?_vac,[SCm] / ?_vac,[UA] \cdot exp( -[SSq] \cdot n/26 \cdot exp(-(p - t)) )
 $$
 
 ### 3.4 Numerical Values
 
 | Platform | [SSq] | n | ?_vac,[SCm]/?_vac,[UA] | E_neutrino (relative) |
 |----------|-------|---|------------------------|----------------------|
-| Compact (Vela/Crab) | 0.507 | 1 | 0.001/1e-30 | ~e^{-0.02·e^{-(p-t)}} |
-| Neutron star n=13 | 0.507 | 13 | 0.001/1e-30 | ~e^{-0.25·e^{-(p-t)}} |
-| Level 26 | 0.507 | 26 | 0.001/1e-30 | ~e^{-0.507·e^{-(p-t)}} |
+| Compact (Vela/Crab) | 0.507 | 1 | 0.001/1e-30 | ~e^{-0.02$\cdot$e^{-(p-t)}} |
+| Neutron star n=13 | 0.507 | 13 | 0.001/1e-30 | ~e^{-0.25$\cdot$e^{-(p-t)}} |
+| Level 26 | 0.507 | 26 | 0.001/1e-30 | ~e^{-0.507$\cdot$e^{-(p-t)}} |
 
 ### 3.5 d_n Phase Encoding
 
 The phase parameter ? encodes into individual state indices as:
 $$
-d_n = ? · (2pn / 6)
+d_n = ? \cdot (2pn / 6)
 $$
-For ?~0.8 and n=1: d_1 = 0.8 × (2p/6) ˜ 0.838 rad
+For ?~0.8 and n=1: d_1 = 0.8 $\times$ (2p/6) ˜ 0.838 rad
 
 ---
 
@@ -147,13 +147,13 @@ From the full UQFF variable calibration table (230 unique; 60 partial):
 
 | Variable | Status | Current Value |
 |----------|--------|---------------|
-| ? | Calibrated | 5×10-5 day-1 (magnetar spin-down) |
+| ? | Calibrated | 5$\times$10-5 day-1 (magnetar spin-down) |
 | ? | Provisional | ~0.8 ˜ sin(pt_n) from image analysis |
 | [SSq] | Calibrated | 0.507 (Sep/2025 datasets) |
 | f_Heaviside | Defined | H(s_n - s_crit), s_crit ~1038 kg/m3 |
 | f_quasi | Partial | ~0.1 near T_BEC |
 | P_SCm | Context-dependent | 0.001(compact) ? 1(ideal SC limit) |
-| E_react | Partial | 1e10 Hz × ? scale |
+| E_react | Partial | 1e10 Hz $\times$ ? scale |
 
 ---
 
@@ -161,7 +161,7 @@ From the full UQFF variable calibration table (230 unique; 60 partial):
 
 ### 5.1 Connection to F_U_Bi_i
 The Um term connects directly to the F_U_Bi_i integrand:
-- Term 8 (Zeeman): `2qB0V sin? (gµ_B B0/??0)` — absorbs µ_j when B0 ? µ_j·B0/µ_B
+- Term 8 (Zeeman): `2qB0V sin? (gµ_B B0/??0)` — absorbs µ_j when B0 ? µ_j$\cdot$B0/µ_B
 - Heaviside amplification at Term 12 (F_Kozima) onset — s_n threshold triggers both
 
 ### 5.2 Comagnetometer Link (BSM)
@@ -196,11 +196,11 @@ mathematical form not present in any prior UQFF whitepaper
 
 $$
 \begin{aligned}
-  & Um = ?_j [µ_j/r_j · (1-e^{-?t}cos(pt_n)) · ?^j] · P_SCm · E_react · (1+10^{13}f_H) · (1+f_q) \\
-  & d_n = ? · (2pn/6)  [phase encoding; ?~0.8] \\
-  & ?_vac,[UA']:[SCm] = ?_vac,[UA'] · (?_vac,[SCm]/?_vac,[UA])^n · e^{-[SSq]n/26} · e^{-(p-t)} \\
-  & E_neutrino ? ?_vac,[UA']:[SCm] · exp(-[SSq]·n/26·exp(-(p-t))) · U_m/?_vac,[UA] \\
-  & Decay Rate ? (?_vac,[SCm]/?_vac,[UA]) · exp(-[SSq]·n/26·exp(-(p-t)))
+  & Um = ?_j [µ_j/r_j \cdot (1-e^{-?t}cos(pt_n)) \cdot ?^j] \cdot P_SCm \cdot E_react \cdot (1+10^{13}f_H) \cdot (1+f_q) \\
+  & d_n = ? \cdot (2pn/6)  [phase encoding; ?~0.8] \\
+  & ?_vac,[UA']:[SCm] = ?_vac,[UA'] \cdot (?_vac,[SCm]/?_vac,[UA])^n \cdot e^{-[SSq]n/26} \cdot e^{-(p-t)} \\
+  & E_neutrino ? ?_vac,[UA']:[SCm] \cdot exp(-[SSq]\cdotn/26\cdotexp(-(p-t))) \cdot U_m/?_vac,[UA] \\
+  & Decay Rate ? (?_vac,[SCm]/?_vac,[UA]) \cdot exp(-[SSq]\cdotn/26\cdotexp(-(p-t)))
 \end{aligned}
 $$
 
@@ -229,7 +229,7 @@ observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -248,7 +248,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -271,7 +271,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -358,7 +358,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.153 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -369,13 +369,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

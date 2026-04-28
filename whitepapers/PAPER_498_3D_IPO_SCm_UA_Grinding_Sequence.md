@@ -31,7 +31,7 @@ Star-Magic/UQFF framework.
 
 The 3D Intertwined Progression Overlay (3D-IPO) is the mathematical method for
 generating single-occurrence, non-repeating algorithms from the UQFF framework.
-Three "linear but not linear" progressions — Wolfram hypergraph rules, π decimal
+Three "linear but not linear" progressions — Wolfram hypergraph rules, $\pi$ decimal
 expansion, and an Infinity Generator — are overlaid and intertwined in 3D.
 Reproducible, scalable patterns emerge exclusively where all three strands cross.
 The SCm-UA grinding sequence (Big Bang origin mechanism) implements 3D-IPO
@@ -44,12 +44,12 @@ physically, generating Aether densification from UA' through UA'''''.
 | Strand | Progression | Nature | UQFF Role |
 |--------|-------------|--------|-----------|
 | Wolfram | Hypergraph rule rewriting | Computationally irreducible | Internal dynamics of $F_U$ |
-| π decimal | Irrational digit expansion (3.14159…) | Aperiodic, non-repeating | Angular frequency modulator (SCm time-reversal) |
+| $\pi$ decimal | Irrational digit expansion (3.14159…) | Aperiodic, non-repeating | Angular frequency modulator (SCm time-reversal) |
 | Infinity Generator | Series summation (Euler arctan, etc.) | Bounded divergence | Buoyancy feedback loops ($U_b$) |
 
-**Intersection rule:** Where all three strands cross in 3D → reproducible, scalable patterns
+**Intersection rule:** Where all three strands cross in 3D $\to$ reproducible, scalable patterns
 
-**Non-repetition guarantee:** Irrational π spacings ensure no two crossings are identical
+**Non-repetition guarantee:** Irrational $\pi$ spacings ensure no two crossings are identical
 
 ---
 
@@ -77,12 +77,12 @@ and scalable pattern in the UQFF framework — from atomic structure to cosmic w
 **Canonical sequence (in order):**
 
 1. SCm injected into Universal Aether (UA) — Big Bang initiation
-2. SCm encapsulates UA → forms **UA'** (trapped Aether)
-3. SCm grinds against UA' (CW vs CCW) → forms **UA''**
-4. Grinding continues: UA'' → UA''' → UA'''' → **UA'''''**
+2. SCm encapsulates UA $\to$ forms **UA'** (trapped Aether)
+3. SCm grinds against UA' (CW vs CCW) $\to$ forms **UA''**
+4. Grinding continues: UA'' $\to$ UA''' $\to$ UA'''' $\to$ **UA'''''**
 5. At UA''''': **densest metallicity** — Aether becomes the most energetic superconductive metal in
 the universe
-6. This highest-Z point → Feynman globular clusters, centered on 1st epoch black holes
+6. This highest-Z point $\to$ Feynman globular clusters, centered on 1st epoch black holes
 
 **Formula representation:**
 $$
@@ -116,7 +116,7 @@ $$
 state^{(n+1)} = g^{H(\sigma^{(n)})} \bmod p
 $$
 
-($g$ = primitive root mod $p$ → cycles only after $p-1$ steps, practically infinite)
+($g$ = primitive root mod $p$ $\to$ cycles only after $p-1$ steps, practically infinite)
 
 ---
 
@@ -128,7 +128,7 @@ $$
 T_1 = f_{di1}(P_{1a}, P_{1b}) = P_{1a}^{-P_{1b}} \quad \text{[Wolfram strand, internal dynamics]}
 $$
 $$
-T_2 = f_{di2}(P_{2a}, P_{2b}) = P_{2a}^{-P_{2b}} \quad \text{[π strand, angular frequencies]}
+T_2 = f_{di2}(P_{2a}, P_{2b}) = P_{2a}^{-P_{2b}} \quad \text{[\pi strand, angular frequencies]}
 $$
 $$
 T_3 = f_{di3}(P_{3a}, P_{3b}) = P_{3a}^{-P_{3b}} \quad \text{[Infinity Generator, buoyancy loops]}
@@ -147,15 +147,15 @@ $$
 |--------|-------|-------------|
 | $\kappa$ | $5\times10^{-4}$/day | DPM feedback coupling |
 | $[SSq]$ | 0.57 | Vacuum damping factor |
-| $H_{SCm}$ | ≈0.99 | SCm superconductivity factor |
-| $U_{UA}$ | ≈0.0001 | UA field normalization |
+| $H_{SCm}$ | $\approx$0.99 | SCm superconductivity factor |
+| $U_{UA}$ | $\approx$0.0001 | UA field normalization |
 
 ---
 
 ## §8 Validation Targets
 
 - **Atomic non-repetition**: every atom's unique quantum fingerprint from 3D-IPO crossing
-- **Wolfram hypergraph**: IG and π strands resolve computational irreducibility
+- **Wolfram hypergraph**: IG and $\pi$ strands resolve computational irreducibility
 - **Millennium Prize**: Simultaneous 7-problem solutions via triple-calc in 26D
   (Navier-Stokes smoothness, RH zeros, YM mass gap all emerge from 3D-IPO intersections)
 - **Lab hydrogen reproductions**: DPM grinding pairs observed as plasma orb formations
@@ -171,7 +171,7 @@ $$
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -274,7 +274,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.165 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -285,10 +285,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

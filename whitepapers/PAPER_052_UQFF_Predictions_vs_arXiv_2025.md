@@ -18,15 +18,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 the 10-Domain Synthesis at 92% Mean Alignment
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Validator:** `arxiv_validation_framework.py` Phase 3 × 2025 papers + complete framework  
+**Validator:** `arxiv_validation_framework.py` Phase 3 $\times$ 2025 papers + complete framework  
 **Overall result:** 16 papers, 10/10 categories PASS | Mean 92.02% | Median 96.11%  
 **Source Module:** `arxiv_validation_framework.py`, `arxiv_validation_data.csv`,
 `validate_all_models.py`  
 **Index Slot:** §1.7 arXiv Cross-Validation Framework,  
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 Two major arXiv releases in early 2025 (CMS Higgs boson measurements, arXiv:2501.14849, and the UQFF
@@ -39,7 +39,7 @@ their respective targets. The `validate_all_models.py` suite confirms 44/44 test
 UQFF astrophysical models (NGC2264, UGC10214, NGC4676, Red Spider, NGC3372, AGCarinae, M42,
 Tarantula, NGC2841, Mystic Mountain).
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -55,7 +55,7 @@ present in Standard Model treatments.
 **UQFF prediction:**
 - The Higgs field is identified with UH (Level 18, E18 = 10? J = 0.01 J)
 - Higgs mass in UQFF: M_H^UQFF = 125.09 GeV (calibrated from coupling ratio ?_V/?_f  1.0)
-- Level 18 energy: E18 = 10^(18-20) J = 10? J = 6.24×107 MeV = 62.4 TeV (energy scale where the Higgs acts as the Level-18 condensate; the observed 125 GeV mass is the resonance frequency of the Level-18 oscillator when projected to the observable 3+1 spacetime)
+- Level 18 energy: E18 = 10^(18-20) J = 10? J = 6.24$\times$107 MeV = 62.4 TeV (energy scale where the Higgs acts as the Level-18 condensate; the observed 125 GeV mass is the resonance frequency of the Level-18 oscillator when projected to the observable 3+1 spacetime)
 
 **Alignment:**
 $$\text{alignment} = \left(1 - \frac{|125.09 - 125.35|}{125.35}\right) \times 100 = \left(1 - \frac{0.26}{125.35}\right) \times 100 = \mathbf{99.79\%}$$
@@ -156,22 +156,22 @@ and distant spirals:
 
 | Model | Tests | g_grav (m/s) | Hubble | g_compressed | R_amplitude | Result |
 |-------|-------|--------------|--------|-------------|------------|--------|
-| NGC2264 | 8/8 | 5.9336×10? | 1.0002 | 1.0533×10? | 1.1586×10? | ? |
-| UGC10214 | 4/4 | 7.8551×10? | 1.0002 | 1.0533×10? | 1.1586×10? | ? |
-| NGC4676 | 4/4 | 2.9500×10? | 1.0002 | 1.0533×10? | 1.1586×10? | ? |
-| Red Spider | 4/4 | 1.3275×10? | 1.0000 | 2.1066×10? | 2.3173×10? | ? |
-| NGC3372 (Carina) | 4/4 | 3.3188×10? | 1.0001 | 1.0533×10? | 1.1586×10? | ? |
-| AGCarinae | 4/4 | 2.6550×10? | 1.0003 | 1.0533×10? | 1.1586×10? | ? |
-| M42 Orion | 4/4 | 6.6376×10? | 1.0002 | 1.0533×10? | 1.1586×10? | ? |
-| Tarantula | 4/4 | 3.5099×10? | 1.0002 | 1.0533×10? | 1.1586×10? | ? |
-| NGC2841 | 4/4 | 5.3101×10? | **1.7154** | 1.0534×10? | 1.1587×10? | ? |
-| Mystic Mountain | 4/4 | 1.3275×10? | 1.0001 | 1.0533×10? | 1.1586×10? | ? |
+| NGC2264 | 8/8 | 5.9336$\times$10? | 1.0002 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
+| UGC10214 | 4/4 | 7.8551$\times$10? | 1.0002 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
+| NGC4676 | 4/4 | 2.9500$\times$10? | 1.0002 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
+| Red Spider | 4/4 | 1.3275$\times$10? | 1.0000 | 2.1066$\times$10? | 2.3173$\times$10? | ? |
+| NGC3372 (Carina) | 4/4 | 3.3188$\times$10? | 1.0001 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
+| AGCarinae | 4/4 | 2.6550$\times$10? | 1.0003 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
+| M42 Orion | 4/4 | 6.6376$\times$10? | 1.0002 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
+| Tarantula | 4/4 | 3.5099$\times$10? | 1.0002 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
+| NGC2841 | 4/4 | 5.3101$\times$10? | **1.7154** | 1.0534$\times$10? | 1.1587$\times$10? | ? |
+| Mystic Mountain | 4/4 | 1.3275$\times$10? | 1.0001 | 1.0533$\times$10? | 1.1586$\times$10? | ? |
 
 **Total: 44/44 tests PASS – ALL 10 MODELS COMPLETE**
 
 Notable features:
-- M42 has the highest g_grav (6.6×10?)  consistent with dense HII region
-- Tarantula has the lowest g_grav (3.5×10?)  diffuse LMC super-nebula at 50 kpc
+- M42 has the highest g_grav (6.6$\times$10?)  consistent with dense HII region
+- Tarantula has the lowest g_grav (3.5$\times$10?)  diffuse LMC super-nebula at 50 kpc
 - NGC2841 has Hubble factor 1.7154 (vs. ~1.0002 for local systems)  higher redshift galaxy
 - NGC4676 and Tarantula have 10 larger g_compressed and R_amplitude  both are high-velocity interaction systems
 
@@ -182,8 +182,8 @@ Notable features:
 The Tarantula Nebula (NGC 2070, 30 Doradus) in the Large Magellanic Cloud provides a test of UQFF at
 extragalactic star-formation scales:
 - Distance: 50 kpc (10 farther than any Milky Way nebula in the suite)
-- g_grav = 3.5099×10? m/s (consistent with the 1/d falloff vs. NGC3372 at 2.3 kpc)
-- g_compressed = 1.0533×10? (10 higher than single-star nebulae), reflecting the Tarantula's mass (~106 M?) being driven through the compression term as a high-mass-concentration system
+- g_grav = 3.5099$\times$10? m/s (consistent with the 1/d falloff vs. NGC3372 at 2.3 kpc)
+- g_compressed = 1.0533$\times$10? (10 higher than single-star nebulae), reflecting the Tarantula's mass (~106 M?) being driven through the compression term as a high-mass-concentration system
 
 **Tarantula model: 4/4 PASS**
 
@@ -201,14 +201,14 @@ across 10 categories  all exceeding targets
 indicating that even the most speculative UQFF predictions are validated at the >70% level by
 published literature
 
-*Validator: `a`rxiv_validation_framework`.py` Phase 3 × 16 papers, 10/10 PASS | 44/44 model tests PASS
+*Validator: `a`rxiv_validation_framework`.py` Phase 3 $\times$ 16 papers, 10/10 PASS | 44/44 model tests PASS
 | Mean 92.02% | Median 96.11%*
 
 ---
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -247,14 +247,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -269,10 +269,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -280,9 +280,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -290,8 +290,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -367,7 +367,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

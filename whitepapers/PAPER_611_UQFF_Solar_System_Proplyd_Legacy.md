@@ -22,7 +22,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 The present-day orbital eccentricities of Solar System bodies are explained as inherited signatures
@@ -47,18 +47,18 @@ asteroid belt.
 
 ## 2. Observed vs UQFF-Predicted Eccentricities
 
-| Body | e (observed) | DPM Migration Factor δ | UQFF Predicted e |
+| Body | e (observed) | DPM Migration Factor $\delta$ | UQFF Predicted e |
 |------|-------------|----------------------|-----------------|
-| Mercury | 0.2056 | δ=3.2 (high — innermost, most perturbed) | 0.206 PASS |
-| Venus | 0.0068 | δ=0.08 (nearly circular — DPM equilibrium) | 0.007 PASS |
-| Earth | 0.0167 | δ=0.18 (low — habitable zone stability) | 0.017 PASS |
-| Mars | 0.0935 | δ=1.1 (moderate — border of habitable zone) | 0.093 PASS |
-| Jupiter | 0.0489 | δ=0.55 (giant — own DPM generation) | 0.049 PASS |
-| Saturn | 0.0565 | δ=0.63 (giant — resonant with Jupiter) | 0.056 PASS |
-| Uranus | 0.0463 | δ=0.50 (ice giant — late DPM imprint) | 0.046 PASS |
-| Neptune | 0.0097 | δ=0.10 (outermost — minimal DPM trace) | 0.010 PASS |
+| Mercury | 0.2056 | $\delta$=3.2 (high — innermost, most perturbed) | 0.206 PASS |
+| Venus | 0.0068 | $\delta$=0.08 (nearly circular — DPM equilibrium) | 0.007 PASS |
+| Earth | 0.0167 | $\delta$=0.18 (low — habitable zone stability) | 0.017 PASS |
+| Mars | 0.0935 | $\delta$=1.1 (moderate — border of habitable zone) | 0.093 PASS |
+| Jupiter | 0.0489 | $\delta$=0.55 (giant — own DPM generation) | 0.049 PASS |
+| Saturn | 0.0565 | $\delta$=0.63 (giant — resonant with Jupiter) | 0.056 PASS |
+| Uranus | 0.0463 | $\delta$=0.50 (ice giant — late DPM imprint) | 0.046 PASS |
+| Neptune | 0.0097 | $\delta$=0.10 (outermost — minimal DPM trace) | 0.010 PASS |
 
-The DPM migration factor δ is a dimensionless coefficient capturing the integrated DPM force history
+The DPM migration factor $\delta$ is a dimensionless coefficient capturing the integrated DPM force history
 during the proplyd phase:
 
 $$e_{today} = e_0 + \delta \cdot \left(\frac{DPM_{peak}}{DPM_{ref}}\right) \cdot t_{proplyd}^{1/2}$$
@@ -81,16 +81,16 @@ Material with orbital buoyancy $U_{S,orb} > \eta_{thresh}$ escapes the disk and 
 
 Comets (Halley-type, Oort cloud) are identified as material from the icy outer edge of the proplyd (beyond Neptune's current orbit). Their highly eccentric orbits ($e > 0.97$) result from:
 1. Minimal DPM migration during formation (proplyd outer edge was dynamically cold)
-2. Large δ from stellar flyby perturbations in the birth cluster
+2. Large $\delta$ from stellar flyby perturbations in the birth cluster
 3. BH26 harmonic bin 24–26 resonance trapping long-period orbits
 
-Two-body tests: UQFF DPM analysis of Halley's Comet ($e=0.967$) yields δ=11.3, within 6% of the DPM model prediction of δ=10.7 from the proplyd boundary at 50 AU.
+Two-body tests: UQFF DPM analysis of Halley's Comet ($e=0.967$) yields $\delta$=11.3, within 6% of the DPM model prediction of $\delta$=10.7 from the proplyd boundary at 50 AU.
 
 ---
 
 ## 5. Connection to UQFF Number Systems
 
-**BH26**: 18% proplyd emergence rate = BH26 harmonic bin 5/26 ≈ 0.192 (closest harmonic slot to
+**BH26**: 18% proplyd emergence rate = BH26 harmonic bin 5/26 $\approx$ 0.192 (closest harmonic slot to
 observed 0.18, within 6%).  
 **DVP**: Each planetary orbit is a DVP prime-indexed vortex; Mercury (1st prime = 2), Venus (2nd
 prime = 3), Earth (3rd prime = 5), Mars (4th prime = 7) — prime sequence governs Titius-Bode
@@ -120,7 +120,7 @@ emergence, comets, Oort cloud
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -223,7 +223,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.179 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -234,13 +234,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

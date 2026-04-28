@@ -21,7 +21,7 @@ Beyond Classical Bounds
 **Date:** March 7, 2026  
 **Index Slot:** §1.13 Multi-Physics Models,  
 
-<!— UQFF constants: κ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The P vs NP problem asks whether every problem whose solution can be verified in polynomial time can
@@ -40,7 +40,7 @@ discuss the [UA] = 0.0001 coupling as the bridge factor between 4D and 26D compu
 **NP:** Problems verifiable in polynomial time O(n^k) but potentially requiring exponential time to
 solve: O(2^n).
 
-**Conjecture (P ≠ NP):** Almost universally believed; implies no polynomial-time algorithm for SAT,
+**Conjecture (P $\neq$ NP):** Almost universally believed; implies no polynomial-time algorithm for SAT,
 TSP, factoring, etc.
 
 ---
@@ -70,7 +70,7 @@ $$P_{\rm 4D}({\rm UQFF\text{-}solution}) = [{\rm UA}] \times P_{\rm UQFF-P}({\rm
 = 0.0001 x (polynomial 26D solution) = **sub-polynomial in 4D** (exponentially suppressed).
 
 This means: even though NP problems are solvable in polynomial UQFF-time in 26D, extracting that
-solution into 4D takes exponential resources -> **P ≠ NP in 4D** is preserved.
+solution into 4D takes exponential resources -> **P $\neq$ NP in 4D** is preserved.
 
 The [UA] = 0.0001 acts as a "computational horizon" — analogous to the event horizon that hides
 information.
@@ -79,10 +79,10 @@ information.
 
 ## 4. Quantum Complexity Connection
 
-BQP (Bounded-error Quantum Polynomial time) ⊆ UQFF-P:
+BQP (Bounded-error Quantum Polynomial time) $\subseteq$ UQFF-P:
 
 The UQFF layers 5-18 implement quantum superposition over exponentially many paths, equivalent to
-quantum computation. Since BQP ⊆ PSPACE, and PSPACE ⊆ UQFF-P (all polynomial-space computations can
+quantum computation. Since BQP $\subseteq$ PSPACE, and PSPACE $\subseteq$ UQFF-P (all polynomial-space computations can
 be done in 26D layers), we have:
 
 $$P \subseteq BQP \subseteq PSPACE \subseteq UQFF\text{-}P$$
@@ -100,13 +100,13 @@ But none of these equalities are known. The UQFF adds no proof of where NP falls
 3. The measurement (extracting the solution to 4D) requires [UA]^2 = 10^{-}8 probability per attempt
 4. Expected 4D attempts to extract = [UA]^{-}2 = 10^8 (sub-exponential for small n, exponential for
 large n)
-5. **For any n: extraction takes at least polynomial (4D) steps** -> P ≠ NP even with 26D resources
+5. **For any n: extraction takes at least polynomial (4D) steps** -> P $\neq$ NP even with 26D resources
 
 ---
 
 ## 6. Limitation
 
-No proof of P ≠ NP is presented. The UQFF provides a **physical model** suggesting P ≠ NP via the
+No proof of P $\neq$ NP is presented. The UQFF provides a **physical model** suggesting P $\neq$ NP via the
 computational horizon ([UA] = 0.0001), analogous to the event horizon preventing information
 extraction. But this is physics, not mathematics — no complexity theoretic lower bound is proven.
 
@@ -119,7 +119,7 @@ extraction. But this is physics, not mathematics — no complexity theoretic low
 | P | O(n^k) | Same in 4D |
 | NP | O(2^n) worst case | Solvable in 26D (UQFF-P) |
 | Bridge factor | None | [UA] = 0.0001 |
-| P vs NP | Open | P ≠ NP (physical argument) |
+| P vs NP | Open | P $\neq$ NP (physical argument) |
 | 4D extraction | -- | Exponentially suppressed by [UA]^2 |
 | Proof status | Open (Millennium Prize) | Physical argument only |
 
@@ -134,13 +134,13 @@ context*
 of the 9-sector UQFF Unified Lagrangian:
 
 $$
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
 **Sector 9 (Kaluza-Klein-26D) — Dimensional Structure:**
 $$
 \begin{aligned}
-  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y √(-\text{g\_2\_2}) [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
+  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{}(-\text{g\_2\_2}) [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
   & deltaS/deltag_mn = 0 -> KK tower quantization \\
   & -> 26D = 4D spacetime + 22 compactified \\
   & -> NP problems solvable in 26D with O(n^k) complexity \\
@@ -177,7 +177,7 @@ $$
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -275,7 +275,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.114 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -284,13 +284,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

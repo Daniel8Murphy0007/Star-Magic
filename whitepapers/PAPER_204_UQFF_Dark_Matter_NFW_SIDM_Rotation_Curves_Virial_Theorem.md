@@ -26,7 +26,7 @@ $$
 U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -39,7 +39,7 @@ feedback between vacuum energy and CDM structure formation.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -98,13 +98,13 @@ Calibration: Milky Way NFW:
 $$
 \begin{aligned}
   & Self-interacting DM rate: \\
-  & G = ?·(s/m)·v_rel    (interaction rate) \\
+  & G = ?\cdot(s/m)\cdotv_rel    (interaction rate) \\
   & Core formation timescale: \\
-  & t_core ˜ (?·s/m)?1 ~ 101°·(?/108 M_? kpc?3)?1·(s/m / 1 cm2/g)^{-1} yr \\
+  & t_core ˜ (?\cdots/m)?1 ~ 101°\cdot(?/108 M_? kpc?3)?1\cdot(s/m / 1 cm2/g)^{-1} yr \\
   & Exponential density evolution: \\
-  & ?_core(t) = β_init·e^{-Gt}    (NFW cusp converts to core when Gt ˜ 1) \\
-  & F_UBii,sidm = -F_rel × (G·β_init / E_LEP) × Q_wave × ln(0.02N) \\
-  & Um,sidm(t) = µ(?_vac)·(1-e^{-?t})·[Exponential density flattening] \\
+  & ?_core(t) = \beta_init\cdote^{-Gt}    (NFW cusp converts to core when Gt ˜ 1) \\
+  & F_UBii,sidm = -F_rel \times (G\cdot\beta_init / E_LEP) \times Q_wave \times ln(0.02N) \\
+  & Um,sidm(t) = µ(?_vac)\cdot(1-e^{-?t})\cdot[Exponential density flattening] \\
   & Observational constraint: s/m ˜ 0.1–1 cm2/g (galaxy clusters, Bullet Cluster) \\
   & Planck does not exclude SIDM at this level (CDM and SIDM nearly identical on large scales) \\
   & SIDM predictions: \\
@@ -148,14 +148,14 @@ Numerical calibration: Coma Cluster
 $$
 \begin{aligned}
   & Einstein radius: \\
-  & ?_E = v(4GM(<?)/c2·D_LS/(D_L·D_S)) \\
+  & ?_E = v(4GM(<?)/c2\cdotD_LS/(D_L\cdotD_S)) \\
   & Critical surface density: \\
-  & S_cr = c2D_S/(4pGD_L·D_LS) \\
+  & S_cr = c2D_S/(4pGD_L\cdotD_LS) \\
   & Convergence: ? = S/S_cr \\
   & Shear: ? (traceless tidal field) \\
   & Multiple images: ? = 1 at image positions \\
-  & F_UBii,lens = F_rel × (?_E / E_LEP) × Q_wave × (S_cr·?) \\
-  & Um,lens(?) = µ(?_vac)·(1-e^{-?t})·[?_E = v(a·?) from lensing equation] \\
+  & F_UBii,lens = F_rel \times (?_E / E_LEP) \times Q_wave \times (S_cr\cdot?) \\
+  & Um,lens(?) = µ(?_vac)\cdot(1-e^{-?t})\cdot[?_E = v(a\cdot?) from lensing equation] \\
   & Einstein ring systems: \\
   & SDP.81 (ALMA): z_L=0.3, z_S=3.04 ? ?_E ˜ 1.5" ? M(<?_E) ˜ 1011 M_? \\
   & UQFF: vacuum ? correction to D_LS shifts ?_E by ~0.1%
@@ -191,14 +191,14 @@ Physical context in UQFF:
 $$
 \begin{aligned}
   & Peculiar velocity from linear theory: \\
-  & v_pec(r) = -(fH/3)·?d(r')·r·dr'/r2    (spherical approximation) \\
+  & v_pec(r) = -(fH/3)\cdot?d(r')\cdotr\cdotdr'/r2    (spherical approximation) \\
   & Redshift space distortions (RSD): \\
-  & v_pec,observed = f·H·r + noise    (adds to Hubble flow) \\
+  & v_pec,observed = f\cdotH\cdotr + noise    (adds to Hubble flow) \\
   & f ˜ O_m^{0.55}    (growth rate approximation) \\
   & Cosmic flow from Laniakea to CMB dipole: \\
   & v ˜ 630 km/s toward Perseus-Pisces \\
-  & F_UBii,pec = F_rel × (fH·d(r)/3 / E_LEP) × Q_wave × (dv/dz systematic) \\
-  & Um,pec(r) = µ(?_vac)·(1-e^{-?t})·[Spherical void: integrate Poisson]
+  & F_UBii,pec = F_rel \times (fH\cdotd(r)/3 / E_LEP) \times Q_wave \times (dv/dz systematic) \\
+  & Um,pec(r) = µ(?_vac)\cdot(1-e^{-?t})\cdot[Spherical void: integrate Poisson]
 \end{aligned}
 $$
 
@@ -210,14 +210,14 @@ $$
 \begin{aligned}
   & Shock Mach number from X-ray temperature jump: \\
   & M = [(?+1)(?2/?1) + (?-1)] / (2?)          (from Rankine-Hugoniot) \\
-  & T2/T1 = [2?M2 - (?-1)]·[(?-1)M2 + 2] / [(?+1)M]2  (temperature jump) \\
+  & T2/T1 = [2?M2 - (?-1)]\cdot[(?-1)M2 + 2] / [(?+1)M]2  (temperature jump) \\
   & Coma radio relic: M ˜ 2.5 (from spectral index a = (M2+1)/(M2-1)) \\
   & Merger crossing/dynamical timescale: \\
   & t_merge = r_vir/s_v = v(3r3_vir/(5GM)) \\
-  & F_UBii,mach = F_rel × (M·v_s / E_LEP) × Q_wave × (T2/T1) \\
-  & F_UBii,merg = F_rel × (t_merge / E_LEP) × Q_wave × (r_vir/v_c) \\
-  & Um,mach(?) = µ(?_vac)·(1-e^{-?t})·[Matches Coma radio relic shocks M~2–3] \\
-  & Um,merg(t) = µ(?_vac)·(1-e^{-?t})·[3r_vir/(5GM)]
+  & F_UBii,mach = F_rel \times (M\cdotv_s / E_LEP) \times Q_wave \times (T2/T1) \\
+  & F_UBii,merg = F_rel \times (t_merge / E_LEP) \times Q_wave \times (r_vir/v_c) \\
+  & Um,mach(?) = µ(?_vac)\cdot(1-e^{-?t})\cdot[Matches Coma radio relic shocks M~2–3] \\
+  & Um,merg(t) = µ(?_vac)\cdot(1-e^{-?t})\cdot[3r_vir/(5GM)]
 \end{aligned}
 $$
 
@@ -411,7 +411,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.169 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -422,13 +422,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

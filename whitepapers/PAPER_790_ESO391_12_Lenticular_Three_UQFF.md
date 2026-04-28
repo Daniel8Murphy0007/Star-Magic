@@ -22,12 +22,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-ESO 391-12 is a lenticular galaxy ~100 million light-years distant (z ≈ 0.0067) in the constellation
+ESO 391-12 is a lenticular galaxy ~100 million light-years distant (z $\approx$ 0.0067) in the constellation
 Centaurus, notable for a well-defined outer dust ring structure visible in Hubble imaging. Like NGC
 5866 (PAPER_783) and NGC 7049 (PAPER_779), ESO 391-12 belongs to the class of quiescent early-type
-galaxies with preserved dust features from past gas-rich events. Its larger effective radius (r ≈ 50
-kly = 4.73×1020 m) at the same distance as NGC 7049 suggests a more extended, less concentrated
-stellar body. Three-UQFF analysis yields g_primary ≈ 1.053×10-3 m/s2 across all three modes,
+galaxies with preserved dust features from past gas-rich events. Its larger effective radius (r $\approx$ 50
+kly = 4.73$\times$1020 m) at the same distance as NGC 7049 suggests a more extended, less concentrated
+stellar body. Three-UQFF analysis yields g_primary $\approx$ 1.053$\times$10-3 m/s2 across all three modes,
 consistent with the quiescent lenticular class.
 
 ---
@@ -47,10 +47,10 @@ remains robust at the standard quiescent lenticular value.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Estimate |
-| Effective radius | r | 4.73×1020 m (~50 kly) | HST |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Estimate |
+| Effective radius | r | 4.73$\times$1020 m (~50 kly) | HST |
 | SFR | — | 0.1 MM_sun/yr | Dust ring only |
-| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.008 | UQFF minimal |
 | Redshift | z | 0.0067 | Spectroscopic |
 | v_EM | v | 105 m/s | Disk rotation |
@@ -63,11 +63,11 @@ remains robust at the standard quiescent lenticular value.
 ### Mode 1: Compressed UQFF
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 1.989e41 / (4.73e20)2 \\
+  & g_grav = 6.6743e-11 \times 1.989e41 / (4.73e20)2 \\
   & = 1.328e31 / 2.237e41 = 5.936e-11 m/s2 \\
-  & H(z)×t = 2.34e-18 × 1.578e17 = 0.369; factor = 1.369 \\
+  & H(z)\timest = 2.34e-18 \times 1.578e17 = 0.369; factor = 1.369 \\
   & factor_sf = 1.008; factor_TRZ = 1.02 \\
-  & \text{g\_grav\_total} = 5.936e-11 × 1.369 × 1.008 × 1.02 = 8.360e-11 m/s2 \\
+  & \text{g\_grav\_total} = 5.936e-11 \times 1.369 \times 1.008 \times 1.02 = 8.360e-11 m/s2 \\
   & a_EM = 1.053e-3 m/s2 \\
   & g_comp = 1.053e-3 m/s2
 \end{aligned}
@@ -75,13 +75,13 @@ $$
 
 ### Mode 2: Resonant UQFF
 $$
-g_res = 1.053e-3 × 1.000285 = 1.053e-3 m/s2
+g_res = 1.053e-3 \times 1.000285 = 1.053e-3 m/s2
 $$
 
 ### Mode 3: Buoyancy UQFF
 $$
 \begin{aligned}
-  & V = (4/3)π(4.73e20)3 = 4.44e62 m3; a_Ubi << a_EM \\
+  & V = (4/3)\pi(4.73e20)3 = 4.44e62 m3; a_Ubi << a_EM \\
   & g_buoy = 1.053e-3 m/s2
 \end{aligned}
 $$
@@ -100,8 +100,8 @@ $$
 
 ## 4. Physical Interpretation
 
-ESO 391-12 at r = 4.73×1020 m has a slightly smaller g_grav (5.936×10-11 m/s2) than NGC 7049 at r =
-5×1020 m (5.311×10-11 m/s2) due to the inverse-square law offsetting somewhat different radii and
+ESO 391-12 at r = 4.73$\times$1020 m has a slightly smaller g_grav (5.936$\times$10-11 m/s2) than NGC 7049 at r =
+5$\times$1020 m (5.311$\times$10-11 m/s2) due to the inverse-square law offsetting somewhat different radii and
 mass. Both remain far below the UQFF EM term. The dust ring, while photometrically prominent in HST
 imaging, contributes negligibly to the mass budget (dust is ~1% of the total interstellar medium,
 which itself is ~1% of stellar mass). Three-UQFF mode convergence is confirmed regardless of the
@@ -111,7 +111,7 @@ dust ring extent.
 
 ## 5. Conclusions
 
-Three-UQFF applied to ESO 391-12 yields g_primary ≈ 1.053×10-3 m/s2 across all three modes. Extended
+Three-UQFF applied to ESO 391-12 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 across all three modes. Extended
 dust ring at ~50 kly radius has no net effect on UQFF mode convergence; quiescent lenticular result
 is confirmed.
 
@@ -155,7 +155,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -174,7 +174,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -251,7 +251,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -262,13 +262,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

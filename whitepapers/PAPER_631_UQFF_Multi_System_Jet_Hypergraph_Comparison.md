@@ -45,30 +45,30 @@ in BH mass and 3 orders of magnitude in distance.
 
 ## §2 Five-System Comparison Table
 
-| System | Morphology | ∇UA_peak (m-1) | Freq range (Hz) | Pockets | Match |
+| System | Morphology | $\nabla$UA_peak (m-1) | Freq range (Hz) | Pockets | Match |
 |--------|-----------|---------------|----------------|---------|-------|
 | Centaurus A | Twisting knotty, V-shape (28 nodes) | ~10-19 | 6.14e16–1018 | 7 | Strong |
 | M87 | Smooth elongation + pol. flips (12 nodes) | ~10-18 | 5.71e16–1018 | 4 | Strong |
-| NGC 6278 | Compact core, minimal branching (10 nodes) | ~10-20 | 1016–5×1017 | 1 | Good |
+| NGC 6278 | Compact core, minimal branching (10 nodes) | ~10-20 | 1016–5$\times$1017 | 1 | Good |
 | MS 0735.6+7421 | Extended multi-shell AGN outburst (15+ nodes) | ~10-22 | 1017–1018 | 5 | Good |
 | Perseus | Diffuse merger branches (20+ nodes, turbulent) | ~10-21 | 1016–1018 | 4 | Strong |
 
 ---
 
-## §3 VDS Analysis: ∇UA_peak Ranking
+## §3 VDS Analysis: $\nabla$UA_peak Ranking
 
 Systems ordered by void pocket gradient magnitude (most extreme void first):
 
-1. **M87** — ∇UA ≈ 10-18 m-1 (most compact BH, highest gradient)
-2. **Centaurus A** — ∇UA ≈ 10-19 m-1 (closest AGN, highest resolution)
-3. **NGC 6278** — ∇UA ≈ 10-20 m-1 (dwarf galaxy, BH-free formation)
-4. **Perseus** — ∇UA ≈ 10-21 m-1 (cluster, merger-enhanced)
-5. **MS 0735** — ∇UA ≈ 10-22 m-1 (most extreme void, explosive DVP)
+1. **M87** — $\nabla$UA $\approx$ 10-18 m-1 (most compact BH, highest gradient)
+2. **Centaurus A** — $\nabla$UA $\approx$ 10-19 m-1 (closest AGN, highest resolution)
+3. **NGC 6278** — $\nabla$UA $\approx$ 10-20 m-1 (dwarf galaxy, BH-free formation)
+4. **Perseus** — $\nabla$UA $\approx$ 10-21 m-1 (cluster, merger-enhanced)
+5. **MS 0735** — $\nabla$UA $\approx$ 10-22 m-1 (most extreme void, explosive DVP)
 
-The VDS gradient series spans **4 decades** in ∇UA (10-18 to 10-22) while the
+The VDS gradient series spans **4 decades** in $\nabla$UA (10-18 to 10-22) while the
 observable frequency floors span less than one decade (5.71e16 to 1017 Hz).
 This compression is the **frequency floor universality** — BH26 cubic rebound
-saturates near 1016–1017 Hz regardless of ∇UA value.
+saturates near 1016–1017 Hz regardless of $\nabla$UA value.
 
 ---
 
@@ -77,13 +77,13 @@ saturates near 1016–1017 Hz regardless of ∇UA value.
 | System | Pocket Count | DVP Mechanism |
 |--------|-------------|--------------|
 | CenA | 7 | High arity threshold (8) + merger-induced DVP flux |
-| MS 0735 | 5 | Explosive (∇UA)-26 → multiple shell formation events |
+| MS 0735 | 5 | Explosive ($\nabla$UA)-26 $\to$ multiple shell formation events |
 | M87/Perseus | 4 | Standard 9D Wolfram with DVP flip/alignment |
 | NGC 6278 | 1 | Minimal DVP, single BH-free shell |
 
 DVP vortex-prime pocket count is set by the arity threshold and the gradient
-power law. Higher arity threshold → fewer but larger pockets; explosive DVP
-at low gradient → multiple smaller pockets.
+power law. Higher arity threshold $\to$ fewer but larger pockets; explosive DVP
+at low gradient $\to$ multiple smaller pockets.
 
 ---
 
@@ -92,15 +92,15 @@ at low gradient → multiple smaller pockets.
 The f3 BH26 cubic rebound generates frequency floors:
 
 $$
-f_floor ≈ (∇\text{UA\_node\_1})3 × 1015  Hz
+f_floor \approx (\nabla\text{UA\_node\_1})3 \times 1015  Hz
 $$
 
 For the 5 systems:
-- CenA: (0.85)3 × 1015 ≈ 6.14e16 Hz  PASS (MNRAS VHE knots)
-- M87:  (0.83)3 × 1015 ≈ 5.71e16 Hz  PASS (EHT 2021)
-- NGC 6278: lower ∇UA → lower floor ~1016 Hz (Chandra soft X-ray)
-- MS 0735: explosive mode → floor 1017 Hz (cluster ICM X-ray)
-- Perseus: merger-turbulent → floor 1016 Hz with 4% polarization
+- CenA: (0.85)3 $\times$ 1015 $\approx$ 6.14e16 Hz  PASS (MNRAS VHE knots)
+- M87:  (0.83)3 $\times$ 1015 $\approx$ 5.71e16 Hz  PASS (EHT 2021)
+- NGC 6278: lower $\nabla$UA $\to$ lower floor ~1016 Hz (Chandra soft X-ray)
+- MS 0735: explosive mode $\to$ floor 1017 Hz (cluster ICM X-ray)
+- Perseus: merger-turbulent $\to$ floor 1016 Hz with 4% polarization
 
 ---
 
@@ -117,7 +117,7 @@ ANY astrophysical jet/bubble can be described by:
 ```
 
 There are no free parameters unique to each system — all derive from the same
-UQFF master equation with natural constants κ, g, λ adjusted for system scale.
+UQFF master equation with natural constants $\kappa$, g, $\lambda$ adjusted for system scale.
 
 ---
 
@@ -132,7 +132,7 @@ UQFF master equation with natural constants κ, g, λ adjusted for system scale.
 | BH-free pocket | NGC 6278 | Moderate |
 | Merger morphology | Perseus | Moderate |
 
-Overall observation match score: 14/15 (Strong: 3×3=9, Good: 2×2=4, total=13+1=14)
+Overall observation match score: 14/15 (Strong: 3$\times$3=9, Good: 2$\times$2=4, total=13+1=14)
 
 ---
 
@@ -174,7 +174,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -193,7 +193,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -303,7 +303,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.142 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -314,11 +314,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Frequency floor (multi-system) | `f_floor_UQFF` = κ × c / (4π r_s); CenA: 6.14e16 Hz, M87: 5.71e16 Hz | Rydberg f = 3.29e15 Hz (hydrogen ground state QED) | PDG / NIST | UQFF floor is ~10× Rydberg: consistent hierarchy |
-| Thomson σ_T (QED) — all systems | UQFF Compton/inverse-Compton scattering kernel across all 5 systems | σ_T = 6.6524e-29 m2 | PDG (QED exact) | 100% (universal QED input) |
-| VHE threshold E > 100 GeV | CenA VHE prediction: E_VHE = ℏ × ω_VHE; ω_VHE = DVP arity-8 mode | H.E.S.S. CenA E_threshold: ~100 GeV | H.E.S.S. 2025 | PASS Consistent |
-| Perseus polarization 4% | Cross-system DPM alignment: 4/100 → 4% (PAPER_630 result) | IXPE Perseus 4% confirmed | IXPE 2025 | PASS Consistent |
-| 15/15 parameter set (no free params) | One UQFF master equation (κ=0.0005, [SSq]=0.57, β_i=0.61) for all systems | 5 systems × 3 observables = 15 tests | All above sources | 14/15 = 93.3% hit rate |
+| Frequency floor (multi-system) | `f_floor_UQFF` = $\kappa$ $\times$ c / (4$\pi$ r_s); CenA: 6.14e16 Hz, M87: 5.71e16 Hz | Rydberg f = 3.29e15 Hz (hydrogen ground state QED) | PDG / NIST | UQFF floor is ~10$\times$ Rydberg: consistent hierarchy |
+| Thomson $\sigma$_T (QED) — all systems | UQFF Compton/inverse-Compton scattering kernel across all 5 systems | $\sigma$_T = 6.6524e-29 m2 | PDG (QED exact) | 100% (universal QED input) |
+| VHE threshold E > 100 GeV | CenA VHE prediction: E_VHE = ℏ $\times$ $\omega$_VHE; $\omega$_VHE = DVP arity-8 mode | H.E.S.S. CenA E_threshold: ~100 GeV | H.E.S.S. 2025 | PASS Consistent |
+| Perseus polarization 4% | Cross-system DPM alignment: 4/100 $\to$ 4% (PAPER_630 result) | IXPE Perseus 4% confirmed | IXPE 2025 | PASS Consistent |
+| 15/15 parameter set (no free params) | One UQFF master equation ($\kappa$=0.0005, [SSq]=0.57, $\beta$_i=0.61) for all systems | 5 systems $\times$ 3 observables = 15 tests | All above sources | 14/15 = 93.3% hit rate |
 
 **New physics claim:** A single UQFF master equation set (no per-system free parameters)
 reproduces 14 of 15 independent observational features across 5 astrophysical systems

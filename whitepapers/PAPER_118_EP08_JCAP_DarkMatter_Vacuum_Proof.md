@@ -18,12 +18,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Energy — [SSq] = 0.57 as Cosmological Vacuum-to-DM Ratio Chain Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\beta$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-08, April–Sept 2025)  
 **Validator:** `JCAPDarkMatterVacuumValidator` (CondensedPhysics2.py)  
-**Cross-links:** §1.15 PAPER_113 (EP-05 blazar κ); PAPER_108 (EP-10 neutrino [SSq]); PAPER_110
+**Cross-links:** §1.15 PAPER_113 (EP-05 blazar $\kappa$); PAPER_108 (EP-10 neutrino [SSq]); PAPER_110
 (EP-06 Gaia [SSq])  
 
 ---
@@ -34,12 +34,12 @@ Empirical Proof EP-08 demonstrates that the UQFF calibration constant [SSq] = 0.
 appears naturally as the ratio bridging the cosmological dark energy (vacuum) density
 to the dark matter energy density, as constrained by JCAP 2024 analyses and Planck
 2018 cosmological parameters. The dark energy density measured by Planck 2018 is
-ρ_Λ = 1.11 × 10-9 J/m3. The local dark matter energy density from JCAP 2024
+$\rho$_$\Lambda$ = 1.11 $\times$ 10-9 J/m3. The local dark matter energy density from JCAP 2024
 constraints (Drukier et al. 2024, and independent halo model limits) converges to
-ρ_DM ≈ (3–5) × 10-10 J/m3 = 0.3–0.5 GeV/cm3 in the solar neighborhood. The [SSq]3
-ratio chain: ρ_Λ × [SSq]3 = 1.11 × 10-9 × 0.185 = 2.06 × 10-10 J/m3 falls within
-the observed ρ_DM range. A secondary Planck-based derivation gives [SSq]_Planck =
-(Ω_Λ/Ω_DM)^(−1/2) = (0.685/0.265)^(−1/2) = 0.622, within 9.1% of [SSq] = 0.57.
+$\rho$_DM $\approx$ (3–5) $\times$ 10-10 J/m3 = 0.3–0.5 GeV/cm3 in the solar neighborhood. The [SSq]3
+ratio chain: $\rho$_$\Lambda$ $\times$ [SSq]3 = 1.11 $\times$ 10-9 $\times$ 0.185 = 2.06 $\times$ 10-10 J/m3 falls within
+the observed $\rho$_DM range. A secondary Planck-based derivation gives [SSq]_Planck =
+($\Omega$_$\Lambda$/$\Omega$_DM)^(-1/2) = (0.685/0.265)^(-1/2) = 0.622, within 9.1% of [SSq] = 0.57.
 
 ---
 
@@ -51,38 +51,38 @@ Planck 2018 Results (Aghanim et al. 2020) gives:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Ω_Λ | 0.685 ± 0.007 | Planck 2018 Table 1 |
-| Ω_DM h2 | 0.120 ± 0.001 | Planck 2018 (cold DM) |
-| Ω_DM | 0.265 (derived) | Ω_DM = Ω_dm,0 |
-| H₀ | 67.4 km/s/Mpc | Planck 2018 |
-| ρ_crit | 8.53 × 10-10 J/m3 | ρ_c = 3H₀2/8πG |
+| $\Omega$_$\Lambda$ | 0.685 $\pm$ 0.007 | Planck 2018 Table 1 |
+| $\Omega$_DM h2 | 0.120 $\pm$ 0.001 | Planck 2018 (cold DM) |
+| $\Omega$_DM | 0.265 (derived) | $\Omega$_DM = $\Omega$_dm,0 |
+| H0 | 67.4 km/s/Mpc | Planck 2018 |
+| $\rho$_crit | 8.53 $\times$ 10-10 J/m3 | $\rho$_c = 3H02/8$\pi$G |
 
 Dark energy density:
 
 $$\rho_Lambda = \Omega_Lambda \times \rho_{crit} = 0.685 \times 8.53 \times 10^{-10} = 5.84 \times 10^{-10} \text{ J/m}^3$$
 
 Note: The cosmological constant contributes as dark energy, and the observed
-vacuum energy (via ΛCDM fitting) is also expressed as:
+vacuum energy (via $\Lambda$CDM fitting) is also expressed as:
 
 $$\rho_Lambda = \frac{\Lambda c^2}{8\pi G} = 1.11 \times 10^{-9} \text{ J/m}^3$$
-(using Λ = 1.1 × 10-52 m-2)
+(using $\Lambda$ = 1.1 $\times$ 10-52 m-2)
 
-For EP-08, we use **ρ_vac = 1.11 × 10-9 J/m3** as the vacuum/dark energy density.
+For EP-08, we use **$\rho$_vac = 1.11 $\times$ 10-9 J/m3** as the vacuum/dark energy density.
 
 ### 1.2 Dark Matter Density (JCAP 2024)
 
 JCAP 2024 papers on local DM density (solar neighborhood):
 
-| Measurement | ρ_DM (GeV/cm3) | ρ_DM (J/m3) | Method |
+| Measurement | $\rho$_DM (GeV/cm3) | $\rho$_DM (J/m3) | Method |
 |-----------|---------------|------------|--------|
-| Catena & Ullio (2010) | 0.385 | 6.17 × 10-10 | Mass modeling |
-| Salucci et al. (2010) | 0.430 | 6.89 × 10-10 | Rotation curves |
-| Bovy & Tremaine (2012) | 0.300 | 4.81 × 10-10 | Jeans equation |
-| Read (2014) | 0.400 | 6.41 × 10-10 | NFW + disk |
-| JCAP 2024 Drukier | 0.35 | 5.61 × 10-10 | Direct detection |
-| **Consensus midpoint** | **0.35** | **5.61 × 10-10** | Best estimate |
+| Catena & Ullio (2010) | 0.385 | 6.17 $\times$ 10-10 | Mass modeling |
+| Salucci et al. (2010) | 0.430 | 6.89 $\times$ 10-10 | Rotation curves |
+| Bovy & Tremaine (2012) | 0.300 | 4.81 $\times$ 10-10 | Jeans equation |
+| Read (2014) | 0.400 | 6.41 $\times$ 10-10 | NFW + disk |
+| JCAP 2024 Drukier | 0.35 | 5.61 $\times$ 10-10 | Direct detection |
+| **Consensus midpoint** | **0.35** | **5.61 $\times$ 10-10** | Best estimate |
 
-For EP-08, we use **ρ_DM_target = 3.5 × 10-10 J/m3** (lower bound of range) as
+For EP-08, we use **$\rho$_DM_target = 3.5 $\times$ 10-10 J/m3** (lower bound of range) as
 the conservative validation target.
 
 ---
@@ -100,15 +100,15 @@ Where N = number of vacuum energy descent hops.
 
 Computing the chain:
 
-| N hops | ρ^(N) = 1.11×10-9 × 0.57^N (J/m3) | ρ in GeV/cm3 |
+| N hops | $\rho$^(N) = 1.11$\times$10-9 $\times$ 0.57^N (J/m3) | $\rho$ in GeV/cm3 |
 |--------|--------------------------------------|-------------|
-| 0 | 1.11 × 10-9 | 0.693 |
-| 1 | 6.33 × 10-10 | 0.395 |
-| 2 | 3.61 × 10-10 | 0.225 |
-| 3 | 2.06 × 10-10 | 0.128 |
-| 4 | 1.17 × 10-10 | 0.073 |
+| 0 | 1.11 $\times$ 10-9 | 0.693 |
+| 1 | 6.33 $\times$ 10-10 | 0.395 |
+| 2 | 3.61 $\times$ 10-10 | 0.225 |
+| 3 | 2.06 $\times$ 10-10 | 0.128 |
+| 4 | 1.17 $\times$ 10-10 | 0.073 |
 
-**N=1 result: 0.395 GeV/cm3 = within 2σ of all JCAP measurements ✅**
+**N=1 result: 0.395 GeV/cm3 = within 2$\sigma$ of all JCAP measurements ✅**
 
 ### 2.2 Primary Validation: N=1
 
@@ -116,7 +116,7 @@ The most direct test is N = 1:
 
 $$\rho_Lambda \times [SSq] = 1.11 \times 10^{-9} \times 0.57 = 6.33 \times 10^{-10} \text{ J/m}^3$$
 
-Comparing to JCAP 2024 consensus: ρ_DM ≈ 5.61 × 10-10 J/m3
+Comparing to JCAP 2024 consensus: $\rho$_DM $\approx$ 5.61 $\times$ 10-10 J/m3
 
 $$\text{Error} = \frac{|6.33 - 5.61|}{5.61} \times 100\% = 12.8\%$$
 
@@ -130,7 +130,7 @@ $$[SSq]_{Planck} = \sqrt{\frac{\Omega_{DM}}{\Omega_Lambda}} = \sqrt{\frac{0.265}
 
 $$\text{Error from calibrated value} = \frac{|0.622 - 0.570|}{0.570} \times 100\% = 9.1\%$$
 
-**Within 15% threshold → confirms [SSq] ≈ 0.57 from cosmological structure ✅**
+**Within 15% threshold $\to$ confirms [SSq] $\approx$ 0.57 from cosmological structure ✅**
 
 ### 2.4 Physical Interpretation
 
@@ -138,19 +138,19 @@ The [SSq] ratio chain represents the UQFF vacuum energy cascade:
 
 $$
 \begin{aligned}
-  & ρ_Λ (Cosmological Constant vacuum) = 1.11 × 10-9 J/m3 \\
+  & \rho_\Lambda (Cosmological Constant vacuum) = 1.11 \times 10-9 J/m3 \\
   & │ \\
-  & × [SSq] = 0.57 \\
+  & \times [SSq] = 0.57 \\
   & ▼ \\
-  & ρ_DM (Dark Matter halo density) ≈ 6.3 × 10-10 J/m3 PASS [local measurements] \\
+  & \rho_DM (Dark Matter halo density) \approx 6.3 \times 10-10 J/m3 PASS [local measurements] \\
   & │ \\
-  & × [SSq] = 0.57  [second hop] \\
+  & \times [SSq] = 0.57  [second hop] \\
   & ▼ \\
-  & ρ_baryon (visible baryonic matter) ≈ 3.6 × 10-10 J/m3 [~1/6 total matter] \\
+  & \rho_baryon (visible baryonic matter) \approx 3.6 \times 10-10 J/m3 [~1/6 total matter] \\
   & │ \\
-  & × [SSq] = 0.57  [third hop] \\
+  & \times [SSq] = 0.57  [third hop] \\
   & ▼ \\
-  & ρ_radiation (CMB + neutrinos) ≈ 2.1 × 10-10 J/m3
+  & \rho_radiation (CMB + neutrinos) \approx 2.1 \times 10-10 J/m3
 \end{aligned}
 $$
 
@@ -167,11 +167,11 @@ The [SSq] = 0.57 appears throughout the UQFF framework:
 | Context | Value | Reference |
 |---------|-------|---------|
 | UQFF calibration constant | 0.57 | Core UQFF (PAPER_001) |
-| Blazar E_react decay | κ series convergence | PAPER_113 (EP-05) |
-| Neutrino SED pp fraction | 75.5% = [SSq]×1.32 | PAPER_108 (EP-10) |
-| Gaia Sgr A* Ug4 | 1.8937 × 10-23 | PAPER_110 (EP-06) |
-| Nuclear separation (new) | S_n/E₈ = 2×[SSq] | PAPER_117 (EP-04) |
-| **Cosmological density (here)** | **ρ_DM = ρ_Λ × [SSq]** | **PAPER_118 (EP-08)** |
+| Blazar E_react decay | $\kappa$ series convergence | PAPER_113 (EP-05) |
+| Neutrino SED pp fraction | 75.5% = [SSq]$\times$1.32 | PAPER_108 (EP-10) |
+| Gaia Sgr A* Ug4 | 1.8937 $\times$ 10-23 | PAPER_110 (EP-06) |
+| Nuclear separation (new) | S_n/E8 = 2$\times$[SSq] | PAPER_117 (EP-04) |
+| **Cosmological density (here)** | **$\rho$_DM = $\rho$_$\Lambda$ $\times$ [SSq]** | **PAPER_118 (EP-08)** |
 
 The convergence of [SSq] = 0.57 across scales from nuclear (10-12 J) to cosmic
 (10-9 J/m3 density) spanning 9 orders of magnitude establishes it as a
@@ -216,12 +216,12 @@ EP-08 VALIDATED: ✅
 
 | # | Equation | Value | Physical Meaning |
 |---|----------|-------|-----------------|
-| 1 | $\rho_Lambda = 1.11 \times 10^{-9}$ J/m3 | Planck 2018 Λ | Vacuum energy |
-| 2 | $\rho_{DM} = \rho_Lambda \times [SSq]$ | 6.33 × 10-10 J/m3 | 1-hop prediction |
+| 1 | $\rho_Lambda = 1.11 \times 10^{-9}$ J/m3 | Planck 2018 $\Lambda$ | Vacuum energy |
+| 2 | $\rho_{DM} = \rho_Lambda \times [SSq]$ | 6.33 $\times$ 10-10 J/m3 | 1-hop prediction |
 | 3 | Error (12.8%) | < 15% threshold | PASS |
 | 4 | $[SSq]_{Planck} = \sqrt{\Omega_{DM}/\Omega_Lambda}$ | 0.622 | From ratios |
 | 5 | Error from 0.57 | 9.1% < 15% | Secondary PASS |
-| 6 | $\rho_Lambda \times [SSq]^3$ | 2.06 × 10-10 | Extended chain |
+| 6 | $\rho_Lambda \times [SSq]^3$ | 2.06 $\times$ 10-10 | Extended chain |
 | 7 | Multiple EP [SSq] convergence | 0.57 across 9 decades | Universal coupling |
 
 ---
@@ -230,13 +230,13 @@ EP-08 VALIDATED: ✅
 
 Empirical Proof EP-08 establishes:
 
-1. **[SSq] = 0.57 predicts ρ_DM from ρ_Λ** with a single multiplication:
-   ρ_DM ≈ ρ_Λ × [SSq]1 = 6.33 × 10-10 J/m3 (12.8% error vs JCAP 2024 = 5.61 × 10-10 J/m3)
-2. **Planck 2018 cosmological parameters independently confirm** [SSq] ≈ 0.622
-   via √(Ω_DM/Ω_Λ) — within 9.1% of the UQFF calibrated value 0.57
+1. **[SSq] = 0.57 predicts $\rho$_DM from $\rho$_$\Lambda$** with a single multiplication:
+   $\rho$_DM $\approx$ $\rho$_$\Lambda$ $\times$ [SSq]1 = 6.33 $\times$ 10-10 J/m3 (12.8% error vs JCAP 2024 = 5.61 $\times$ 10-10 J/m3)
+2. **Planck 2018 cosmological parameters independently confirm** [SSq] $\approx$ 0.622
+   via $\sqrt{}$($\Omega$_DM/$\Omega$_$\Lambda$) — within 9.1% of the UQFF calibrated value 0.57
 3. The [SSq] ratio chain provides a **physical cascade model** for cosmic vacuum
-   energy descent from pure Λ through DM to baryonic and photon densities
-4. This joins EP-04 (nuclear S_n ≈ 2×[SSq]×E₈), EP-05 (blazar κ convergence),
+   energy descent from pure $\Lambda$ through DM to baryonic and photon densities
+4. This joins EP-04 (nuclear S_n $\approx$ 2$\times$[SSq]$\times$E8), EP-05 (blazar $\kappa$ convergence),
    EP-06 (Gaia Sgr A*), and EP-10 (IceCube) as independent confirmation of
    [SSq] = 0.57 across physics scales spanning 20+ orders of magnitude
 5. [SSq] = 0.57 is therefore not a fit parameter but a **fundamental constant**
@@ -283,7 +283,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -302,7 +302,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -405,7 +405,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.181 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -414,13 +414,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -437,7 +437,7 @@ parameters*. A&A 641, A6.
 4. Read J.I. (2014). *The local dark matter density*. J. Phys. G 41, 063101.
 5. Bovy J., Tremaine S. (2012). *On the local dark matter density*. ApJ 756, 89.
 6. Murphy D.T. (2026). *EP-05 Fermi-LAT Blazar [SSq] Confirmation*. PAPER_113.
-7. Murphy D.T. (2026). *EP-10 IceCube Neutrino SED β_i=[SSq] Confirmation*. PAPER_108.
+7. Murphy D.T. (2026). *EP-10 IceCube Neutrino SED $\beta$_i=[SSq] Confirmation*. PAPER_108.
 8. `JCAPDarkMatterVacuumValidator` (CondensedPhysics2.py) — Star-Magic codebase.
 .Groups[1].Value  — Empirical Proof EP-08: JCAP Dark Matter Vacuum Density — [SSq] = 0.57 Ratio
 Chain Confirmed

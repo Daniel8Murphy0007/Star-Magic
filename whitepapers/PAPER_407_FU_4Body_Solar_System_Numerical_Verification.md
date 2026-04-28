@@ -36,8 +36,8 @@ PAPER_407 extends this to the **complete 4-body solar system FU numerical verifi
 providing canonical FU values for Sun, Earth, Jupiter, and Neptune simultaneously.
 
 Two universal constants emerge from this verification:
-1. **tr(A_μν) = −2.0 for all bodies** — universal metric trace independent of body mass
-2. **Ug4 = 4.219×10-10 m/s2 for all bodies** — scale-invariant vacuum-BH coupling (PAPER_402)
+1. **tr(A_$\mu$$\nu$) = -2.0 for all bodies** — universal metric trace independent of body mass
+2. **Ug4 = 4.219$\times$10-10 m/s2 for all bodies** — scale-invariant vacuum-BH coupling (PAPER_402)
 
 This is the **FIRST complete 4-body solar system FU numerical verification** in UQFF.
 
@@ -70,7 +70,7 @@ The 7-decade FU span (Sun to Neptune) maps onto body parameters:
 
 | Body Pair | Mass Ratio | FU Exponent Difference |
 |-----------|-----------|----------------------|
-| Sun / Earth | $3.33\times10^5$ | 6 (≈ $\log_{10}(3.33\times10^5) \approx 5.52$) |
+| Sun / Earth | $3.33\times10^5$ | 6 ($\approx$ $\log_{10}(3.33\times10^5) \approx 5.52$) |
 | Sun / Jupiter | $1.048\times10^3$ | 5 |
 | Sun / Neptune | $1.939\times10^4$ | 7 |
 | Jupiter / Earth | $317.8$ | 1 |
@@ -90,15 +90,15 @@ The Ug4 scale invariance at $4.219\times10^{-10}$ m/s2 is comparable to the
 cosmological acceleration $c \cdot H_0 \approx 6.8\times10^{-10}$ m/s2 — suggesting
 potential connection to the MOND-like acceleration scale $a_0 \sim 10^{-10}$ m/s2.
 
-### 4.3 Universal tr(A_μν) = −2.0
+### 4.3 Universal tr(A_$\mu$$\nu$) = -2.0
 
 From PAPER_406, the Aether metric perturbation satisfies:
 
 $$\text{tr}(A_{\mu\nu}) = -2.0 + 4\eta \cdot T_{s00} \cdot \cos(\pi t_n) \approx -2.0$$
 
 The perturbation term ($4\eta T_{s00} \approx 4.44\times10^{-15}$) is negligible, yielding
-**tr = −2.0 to machine precision** for all bodies regardless of mass. This is a
-Minkowski limit consistency check: the full metric traces to −2.0 in flat spacetime.
+**tr = -2.0 to machine precision** for all bodies regardless of mass. This is a
+Minkowski limit consistency check: the full metric traces to -2.0 in flat spacetime.
 
 ---
 
@@ -125,7 +125,7 @@ feeds into $U_{bi,2}$ (PAPER_403) — demonstrating the UQFF amplification casca
 | Systems | Sun only | Sun + Earth + Jupiter + Neptune |
 | FU(Sun) | $-2.064\times10^{59}$ N PASS | $-2.064\times10^{59}$ N PASS |
 | Ug4 scale invariance | Noted | **Numerically demonstrated** |
-| tr(A_μν) universality | Single body | **4-body universal** |
+| tr(A_$\mu$$\nu$) universality | Single body | **4-body universal** |
 
 PAPER_407 is the **4-body confirmation** of PAPER_394's single-body result.
 
@@ -160,7 +160,7 @@ for (auto& body : bodies) {
 |-------|----------|-------|
 | PAPER_394 | FU master formula (Sun only) | Verified $F_U(\text{Sun}) = -2.064\times10^{59}$ |
 | PAPER_402 | Ug4 = $4.219\times10^{-10}$ | Scale invariance derived |
-| PAPER_406 | tr($A_{\mu\nu}$) = −2.0 | Two-component Ts00 |
+| PAPER_406 | tr($A_{\mu\nu}$) = -2.0 | Two-component Ts00 |
 | PAPER_407 | Complete 4-body FU table | **NEW — FIRST 4-body solar FU verification** |
 
 
@@ -175,7 +175,7 @@ for (auto& body : bodies) {
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -278,7 +278,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.131 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -292,18 +292,18 @@ benchmarks:
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |---|---|---|---|---|
-| Gravitational coupling G | κ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N·m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
-| Higgs mass m_H | UQFF K_HIGGS = 47.34 → m_H = 125.09 GeV | m_H = 125.20 ± 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
-| Neutron magnetic moment | SCm coupling → μ_n = −1.913 μ_N | μ_n = −1.9130 ± 0.0001 μ_N (NIST 2022) | NIST 2022 | 99.9% |
-| Proton charge radius | UA topology → r_p = 0.841 fm | r_p = 0.8414 ± 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
-| Electron anomalous g−2 | UQFF SCm loop correction → a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
-| CMB temperature T₀ | UQFF cosmological buoyancy → T₀ = 2.7255 K | T₀ = 2.72548 ± 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
+| Gravitational coupling G | $\kappa$ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N$\cdot$m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
+| Higgs mass m_H | UQFF K_HIGGS = 47.34 $\to$ m_H = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
+| Neutron magnetic moment | SCm coupling $\to$ $\mu$_n = -1.913 $\mu$_N | $\mu$_n = -1.9130 $\pm$ 0.0001 $\mu$_N (NIST 2022) | NIST 2022 | 99.9% |
+| Proton charge radius | UA topology $\to$ r_p = 0.841 fm | r_p = 0.8414 $\pm$ 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
+| Electron anomalous g-2 | UQFF SCm loop correction $\to$ a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
+| CMB temperature T0 | UQFF cosmological buoyancy $\to$ T0 = 2.7255 K | T0 = 2.72548 $\pm$ 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
 
-**New physics claim:** UQFF vacuum topology operates at κ = 5.0e-4 day-1, consistent with
+**New physics claim:** UQFF vacuum topology operates at $\kappa$ = 5.0e-4 day-1, consistent with
 gravitational buoyancy at cosmological scales beyond standard model predictions.
 
-**Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4;
-k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+**Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4;
+k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 *CVW Gate G6 — Session 166 patch (CVW v2.0.0 upgrade)*
 

@@ -10,13 +10,13 @@ tags: [UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_239: UQFF THz Shock Force and H₂O Conduit Force — 26-Layer Star-Formation Coupling
+# PAPER_239: UQFF THz Shock Force and H2O Conduit Force — 26-Layer Star-Formation Coupling
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF v4.9 (Star-Magic)
 **Session:** 59 (grok_share_8d951e12.txt second-pass — Source10)
 **Date:** March 2026
-**Classification:** Novel UQFF — Two Star-Formation Force Terms (THz Frequency-Squared + COx H₂O
+**Classification:** Novel UQFF — Two Star-Formation Force Terms (THz Frequency-Squared + COx H2O
 Conduit)
 **Status:** Proof-Quality Whitepaper
 **CP3 Class:** `UQFFTHzConduitShockCalculator`
@@ -25,7 +25,7 @@ Conduit)
 
 ## Abstract
 
-This paper introduces two coupled star-formation force terms unique to the UQFFSource10 catalogue: the THz shock force $F_{\rm thz\_shock}$ (scaling as the square of the THz-to-reference frequency ratio) and the H₂O conduit force $F_{\rm conduit}$ (activated by liquid/ice water state and proportional to cosmic hydrogen abundance). Both forces couple to the neutron matter fraction $\rho_n/\rho_{\rm ref}$ and to the COx conduit scale $H_{\rm abund}\times w_{\rm state}$, linking dense-matter nuclear physics to water-phase chemistry in the star-formation environment.
+This paper introduces two coupled star-formation force terms unique to the UQFFSource10 catalogue: the THz shock force $F_{\rm thz\_shock}$ (scaling as the square of the THz-to-reference frequency ratio) and the H2O conduit force $F_{\rm conduit}$ (activated by liquid/ice water state and proportional to cosmic hydrogen abundance). Both forces couple to the neutron matter fraction $\rho_n/\rho_{\rm ref}$ and to the COx conduit scale $H_{\rm abund}\times w_{\rm state}$, linking dense-matter nuclear physics to water-phase chemistry in the star-formation environment.
 
 **Example values:** $F_{\rm thz\_shock} \approx 4.56\times10^{78}$ N; $F_{\rm conduit} \approx 3.45\times10^{67}$ N
 
@@ -58,7 +58,7 @@ This quadratic amplification makes $F_{\rm thz\_shock}$ sensitive to the ratio o
 
 ---
 
-## 2. H₂O Conduit Force
+## 2. H2O Conduit Force
 
 ### 2.1 Formula
 
@@ -68,13 +68,13 @@ $$\boxed{F_{\rm conduit} = k_{\rm conduit}\cdot\left(H_{\rm abund}\times w_{\rm 
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| $k_{\rm conduit}$ | $8.99\times10^9$ | N·m2/C2 | Coulomb's constant — COx conduit coupling |
+| $k_{\rm conduit}$ | $8.99\times10^9$ | N$\cdot$m2/C2 | Coulomb's constant — COx conduit coupling |
 | $H_{\rm abund}$ | 0.74 | — | Cosmic hydrogen mass fraction |
 | $w_{\rm state}$ | 0 or 1 | — | Water phase gate |
 
 ### 2.3 Physical Interpretation
 
-The COx (carbon-oxygen-x) conduit represents the molecular pathway through which H₂ + O → H₂O chemistry amplifies accretion channel conductivity in proto-stellar environments. When water is in liquid or ice phase ($w_{\rm state}=1$), the conduit is active and the force couples directly to the cosmic hydrogen fraction (0.74 of total mass). The use of Coulomb's constant as $k_{\rm conduit}$ reflects the electrostatic nature of H–O bond formation (proton affinity coupling).
+The COx (carbon-oxygen-x) conduit represents the molecular pathway through which H2 + O $\to$ H2O chemistry amplifies accretion channel conductivity in proto-stellar environments. When water is in liquid or ice phase ($w_{\rm state}=1$), the conduit is active and the force couples directly to the cosmic hydrogen fraction (0.74 of total mass). The use of Coulomb's constant as $k_{\rm conduit}$ reflects the electrostatic nature of H–O bond formation (proton affinity coupling).
 
 ---
 
@@ -96,8 +96,8 @@ At default values: $\approx \frac{1.38\times10^{-23}}{8.99\times10^9}\times 1440
 ## 4. Phase Gate — Water State Switch
 
 The `water_state` parameter acts as a **binary activation gate**:
-- $w_{\rm state} = 0$: vapour phase — conduit scale = 0 → both $F_{\rm thz}$ and $F_{\rm conduit}$ vanish
-- $w_{\rm state} = 1$: liquid/ice — conduit scale = $H_{\rm abund}$ → forces active
+- $w_{\rm state} = 0$: vapour phase — conduit scale = 0 $\to$ both $F_{\rm thz}$ and $F_{\rm conduit}$ vanish
+- $w_{\rm state} = 1$: liquid/ice — conduit scale = $H_{\rm abund}$ $\to$ forces active
 
 This connects the micro-chemical evolution (water phase transition) to the macro-gravitational
 star-formation forcing — a unique coupling absent from standard MHD/HD star-formation theories.
@@ -141,7 +141,7 @@ result = calc.compute({
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -160,7 +160,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -235,7 +235,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -246,13 +246,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

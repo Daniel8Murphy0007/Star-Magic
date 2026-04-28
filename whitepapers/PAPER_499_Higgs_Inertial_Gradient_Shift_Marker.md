@@ -66,7 +66,7 @@ $$
 
 - **Fundamental**: Yes — VEV of 246 GeV, real mass of 125.09 GeV
 - **Origin-conclusive**: No — collision products are inside-out exotic particles
-- **Nature**: Inertial gradient shift marker where $F_{inert}$ changes during 26D→3D energy fall
+- **Nature**: Inertial gradient shift marker where $F_{inert}$ changes during 26D$\to$3D energy fall
 
 ### Consciousness-Like Traits from CERN
 
@@ -154,7 +154,7 @@ to map the full 26D mathematical picture. Therefore:
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -253,7 +253,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.174 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -264,13 +264,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | `m_H_UQFF` = 125.09 GeV (K_HIGGS=47.34) | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
-| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
-| Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | PASS Target value |
+| Higgs mass m_H | `m_H_UQFF` = 125.09 GeV (K_HIGGS=47.34) | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
+| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
+| Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
 **New physics claim:** UQFF derives Higgs mass m_H from vacuum buoyancy topology rather than
-treating it as a free parameter of nature. A derivation that achieves ≥99.8% agreement
+treating it as a free parameter of nature. A derivation that achieves $\geq$99.8% agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.
 

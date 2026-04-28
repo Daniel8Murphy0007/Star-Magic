@@ -142,7 +142,7 @@ validates the UQFF framework and eliminates $\alpha$ as a free parameter of natu
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -161,12 +161,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -267,7 +267,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.191 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -278,14 +278,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | α_UQFF = e2/(4πε₀ℏc) from DPM flux | α = 1/137.036 = 7.29735e-3 | PDG / NIST | ≥99% |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
-| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
-| Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | PASS Target value |
+| Fine structure constant $\alpha$ | $\alpha$_UQFF = e2/(4$\pi$$\varepsilon$0ℏc) from DPM flux | $\alpha$ = 1/137.036 = 7.29735e-3 | PDG / NIST | $\geq$99% |
+| $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
+| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
+| Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
-**New physics claim:** UQFF derives Fine structure constant α from vacuum buoyancy topology rather
+**New physics claim:** UQFF derives Fine structure constant $\alpha$ from vacuum buoyancy topology rather
 than
-treating it as a free parameter of nature. A derivation that achieves ≥≥99% agreement
+treating it as a free parameter of nature. A derivation that achieves $\geq$$\geq$99% agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.
 

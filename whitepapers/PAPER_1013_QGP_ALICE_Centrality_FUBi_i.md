@@ -56,7 +56,7 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `QGPALICECentralityCurvesCalc`. CP4 c
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -189,7 +189,7 @@ $$\mathcal{L}_{\text{magnetar}} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → magnetar-NS → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ magnetar-NS $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

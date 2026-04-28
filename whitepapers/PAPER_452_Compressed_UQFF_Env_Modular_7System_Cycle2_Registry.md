@@ -21,7 +21,7 @@ modular architecture across 7 canonical astrophysical classes
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `CompressedUQFFEnvModularCalculator` (#6, PAPER_452)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001 —>
 ---
 
 ## Abstract
@@ -49,19 +49,20 @@ $$g_{\rm UQFF}^{(j)}(t) = \frac{GM_j(t)}{r_j^2}(1 + H_z t)(1 - B_j/B_{\rm crit})
 
 The **compressed form** replaces the explicit Ug sum with a pre-tabulated module value:
 
-$$g_{\rm UQFF}^{(j),\rm comp}(t) = g_{m DPM}^{(j)}(1 + H_z t) + F_{\rm env}^{(j)}$$
+$$g_{\rm UQFF}^{(j),\rm comp}(t) = g_{
+m DPM}^{(j)}(1 + H_z t) + F_{\rm env}^{(j)}$$
 
 ### 2.2 7-System Registry
 
 | # | System | M (kg) | r (m) | B (T) | F_env type |
 |---|--------|--------|-------|-------|-----------|
-| 1 | MagnetarSGR1745 | 5.58×1030 (2.8 MM_sun) | 1×104 | 1×1011 | B_field saturation |
-| 2 | SagittariusA | 8.17×1036 (4.1×106 MM_sun) | 6×109 | 1×10-3 | SMBH accretion disk |
-| 3 | TapestryStarbirth | 9.96×1033 (500 MM_sun) | 1×1016 | 1×10-5 | SFR + outflow |
-| 4 | Westerlund2 | 1.99×1034 (104 MM_sun) | 6×1016 | 1×10-5 | Stellar wind |
-| 5 | PillarsCreation | 3.98×1032 (200 MM_sun) | 6×1016 | 1×10-5 | Radiation P_rad |
-| 6 | RingsRelativity | 1×1039 | 1×1020 | 1×10-6 | Lensing shear |
-| 7 | UniverseGuide | 1×1053 | 4.4×1026 | ~0 | Full F_cosmo |
+| 1 | MagnetarSGR1745 | 5.58$\times$1030 (2.8 MM_sun) | 1$\times$104 | 1$\times$1011 | B_field saturation |
+| 2 | SagittariusA | 8.17$\times$1036 (4.1$\times$106 MM_sun) | 6$\times$109 | 1$\times$10-3 | SMBH accretion disk |
+| 3 | TapestryStarbirth | 9.96$\times$1033 (500 MM_sun) | 1$\times$1016 | 1$\times$10-5 | SFR + outflow |
+| 4 | Westerlund2 | 1.99$\times$1034 (104 MM_sun) | 6$\times$1016 | 1$\times$10-5 | Stellar wind |
+| 5 | PillarsCreation | 3.98$\times$1032 (200 MM_sun) | 6$\times$1016 | 1$\times$10-5 | Radiation P_rad |
+| 6 | RingsRelativity | 1$\times$1039 | 1$\times$1020 | 1$\times$10-6 | Lensing shear |
+| 7 | UniverseGuide | 1$\times$1053 | 4.4$\times$1026 | ~0 | Full F_cosmo |
 
 ### 2.3 F_env Per-System Equations
 
@@ -125,15 +126,15 @@ quantum gravity correction that persists across all UQFF calculations.
 
 Compressed vs. full-form comparison at t=1 Gyr, r=r_j:
 
-| System | g_full (m/s2) | g_comp (m/s2) | δ (%) |
+| System | g_full (m/s2) | g_comp (m/s2) | $\delta$ (%) |
 |--------|-------------|--------------|-------|
-| Magnetar | 3.73×106 | 3.73×106 | 0.0 |
+| Magnetar | 3.73$\times$106 | 3.73$\times$106 | 0.0 |
 | SgrA* | 1.52 | 1.52 | 0.0 |
-| Tapestry | 2.65×10-12 | 2.66×10-12 | 0.4 |
-| Westerlund2 | 3.70×10-13 | 3.71×10-13 | 0.3 |
-| Pillars | 3.70×10-13 | 3.69×10-13 | 0.3 |
-| Rings | 4.45×10-10 | 4.45×10-10 | 0.0 |
-| UnivGuide | 5.88×10-10 | 5.89×10-10 | 0.2 |
+| Tapestry | 2.65$\times$10-12 | 2.66$\times$10-12 | 0.4 |
+| Westerlund2 | 3.70$\times$10-13 | 3.71$\times$10-13 | 0.3 |
+| Pillars | 3.70$\times$10-13 | 3.69$\times$10-13 | 0.3 |
+| Rings | 4.45$\times$10-10 | 4.45$\times$10-10 | 0.0 |
+| UnivGuide | 5.88$\times$10-10 | 5.89$\times$10-10 | 0.2 |
 
 Maximum compression error: 0.4% for extended gas systems where F_env angular terms matter.
 
@@ -145,7 +146,7 @@ Maximum compression error: 0.4% for extended gas systems where F_env angular ter
 |---------|-----|----------------|
 | Multi-system gravity | No unified framework | 7-system registry in single call |
 | Angle-averaged Ug3 | N/A | Ug3' = GM_ext/r_ext2 |
-| Ψ_total correction | Not applicable | Δψ = [SSq] = 0.57 constant |
+| $\Psi$_total correction | Not applicable | $\Delta$$\psi$ = [SSq] = 0.57 constant |
 | Compression error | N/A | <0.5% for all 7 systems |
 
 ---
@@ -156,7 +157,7 @@ Maximum compression error: 0.4% for extended gas systems where F_env angular ter
 to within 1%. Verification via MAIN_1_CoAnQi.exe Options 1 and 15.
 2. **Ug3 angle-average validity:** For systems where v_s/c < 10-2, the compressed Ug3' introduces
 <1% error. Valid for all 7 canonical systems except potentially the magnetar at v_exp = 105 m/s
-(v_s/c ≈ 3×10-4 — still valid).
+(v_s/c $\approx$ 3$\times$10-4 — still valid).
 3. **Extensibility:** Adding an 8th system to the registry should add F_env to G_total without
 changing any of the existing 7 contributions — testable by insertion followed by running Option 2
 (Calculate ALL systems).
@@ -171,7 +172,7 @@ changing any of the existing 7 contributions — testable by insertion followed 
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -190,7 +191,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -299,7 +300,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,10 +311,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

@@ -10,7 +10,7 @@ tags: [galaxy, AGN, Hubble, Three-UQFF, SMBH, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_801: NGC 3507 — Barred Spiral with Triadic UQFF and M–σ Analysis
+# PAPER_801: NGC 3507 — Barred Spiral with Triadic UQFF and M–$\sigma$ Analysis
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF (Universal Quantum Field Superconductive Framework) — Three-UQFF Simultaneous  
@@ -22,11 +22,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 3507 is a barred spiral galaxy approximately 60 million light-years away (z ≈ 0.004) in the
+NGC 3507 is a barred spiral galaxy approximately 60 million light-years away (z $\approx$ 0.004) in the
 constellation Leo. Hubble ACS/WFC3 imaging reveals a prominent central bar and multiple blue
-star-forming regions along the spiral arms. With a slightly smaller SMBH mass (~107·5 MM_sun from M–σ at
-σ = 120 km/s) compared to NGC 685, NGC 3507 represents the intermediate SMBH mass regime where UQFF
-U_g4 feedback is less dominant. Three-UQFF analysis yields g_primary ≈ 1.053×10-3 m/s2 in the
+star-forming regions along the spiral arms. With a slightly smaller SMBH mass (~107$\cdot$5 MM_sun from M–$\sigma$ at
+$\sigma$ = 120 km/s) compared to NGC 685, NGC 3507 represents the intermediate SMBH mass regime where UQFF
+U_g4 feedback is less dominant. Three-UQFF analysis yields g_primary $\approx$ 1.053$\times$10-3 m/s2 in the
 standard EM ground state, confirming UQFF universality across the SMBH mass range 107–108 MM_sun.
 
 ---
@@ -34,8 +34,8 @@ standard EM ground state, confirming UQFF universality across the SMBH mass rang
 ## 1. Introduction
 
 NGC 3507 sits in a small group with NGC 3501 and makes an interesting comparison to NGC 685
-(PAPER_800) at similar redshift z ~ 0.004 but lower σ (120 vs. 150 km/s) and correspondingly lower
-SMBH mass. The M–σ relation predicts M_BH ~ 107·5 MM_sun for σ = 120 km/s. This intermediate-mass SMBH
+(PAPER_800) at similar redshift z ~ 0.004 but lower $\sigma$ (120 vs. 150 km/s) and correspondingly lower
+SMBH mass. The M–$\sigma$ relation predicts M_BH ~ 107$\cdot$5 MM_sun for $\sigma$ = 120 km/s. This intermediate-mass SMBH
 provides a calibration point for the U_g4 term in the range between low-mass AGN (M_BH ~ 106) and
 full-power AGN (M_BH ~ 109). Three-UQFF tests whether the intermediate SMBH mass changes the EM
 ground state result.
@@ -46,13 +46,13 @@ ground state result.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 5×1010 MM_sun = 9.945×1040 kg | Spiral estimate |
-| Disk radius | r | 2.36×1020 m (~25 kly) | Hubble |
-| SMBH mass | M_BH | 107·5 MM_sun = 6.289×1037 kg | M–σ (σ=120 km/s) |
-| σ | — | 120 km/s = 1.2×105 m/s | M–σ |
+| Galaxy mass | M | 5$\times$1010 MM_sun = 9.945$\times$1040 kg | Spiral estimate |
+| Disk radius | r | 2.36$\times$1020 m (~25 kly) | Hubble |
+| SMBH mass | M_BH | 107$\cdot$5 MM_sun = 6.289$\times$1037 kg | M–$\sigma$ ($\sigma$=120 km/s) |
+| $\sigma$ | — | 120 km/s = 1.2$\times$105 m/s | M–$\sigma$ |
 | SFR | — | 0.8 MM_sun/yr | Normal spiral |
 | Redshift | z | 0.004 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
 | M_sf | — | 0.02 | UQFF |
 | f_TRZ | — | 0.05 | THz resonance |
 | v_EM | v | 105 m/s | Rotation |
@@ -67,17 +67,17 @@ ground state result.
 
 $$
 \begin{aligned}
-  & G·M/r2  = 6.6743e-11 × 9.945e40 / (2.36e20)2 \\
+  & G\cdotM/r2  = 6.6743e-11 \times 9.945e40 / (2.36e20)2 \\
   & = 6.636e30 / 5.570e40 = 1.192e-10 m/s2 \\
-  & (1+Hz·t) = 1.358 (same z = 0.004 as NGC 685) \\
+  & (1+Hz\cdott) = 1.358 (same z = 0.004 as NGC 685) \\
   & factor_sf = 1.02; factor_TRZ = 1.05 \\
-  & g_grav = 1.192e-10 × 1.358 × 1.02 × 1.05 = 1.733e-10 m/s2 \\
+  & g_grav = 1.192e-10 \times 1.358 \times 1.02 \times 1.05 = 1.733e-10 m/s2 \\
   & a_EM = 1.053e-3 m/s2 \\
-  & M–σ check at σ = 120 km/s: \\
-  & M_BH = 10^(8.13·log₁₀(120/200)–0.51) MM_sun = 10^(8.13×(–0.222)–0.51) = 10^(–2.315) MM_sun \\
-  & Reported: M_BH ~ 10^7.5 MM_sun PASS (within M–σ scatter) \\
+  & M–\sigma check at \sigma = 120 km/s: \\
+  & M_BH = 10^(8.13\cdotlog10(120/200)–0.51) MM_sun = 10^(8.13\times(–0.222)–0.51) = 10^(–2.315) MM_sun \\
+  & Reported: M_BH ~ 10^7.5 MM_sun PASS (within M–\sigma scatter) \\
   & CGM metal retention (Sanchez et al. 2023): \\
-  & f_Z,CGM ~ 0.75  (moderate SMBH → moderate metal retention)
+  & f_Z,CGM ~ 0.75  (moderate SMBH \to moderate metal retention)
 \end{aligned}
 $$
 
@@ -85,10 +85,10 @@ $$
 
 $$
 \begin{aligned}
-  & g_compressed = 1.053×10-3 m/s2 \\
-  & g_resonant   = 1.053×10-3 m/s2 \\
-  & g_buoyancy   = 1.053×10-3 m/s2 \\
-  & g_primary    = 1.053×10-3 m/s2
+  & g_compressed = 1.053\times10-3 m/s2 \\
+  & g_resonant   = 1.053\times10-3 m/s2 \\
+  & g_buoyancy   = 1.053\times10-3 m/s2 \\
+  & g_primary    = 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -98,14 +98,14 @@ $$
 
 | Property | NGC 685 | NGC 3507 |
 |----------|---------|----------|
-| σ | 150 km/s | 120 km/s |
-| M_BH | 108 MM_sun | 107·5 MM_sun |
+| $\sigma$ | 150 km/s | 120 km/s |
+| M_BH | 108 MM_sun | 107$\cdot$5 MM_sun |
 | f_feedback | 0.063 | 0.063 |
 | f_Z,CGM | 0.89 (high retention) | 0.75 (moderate) |
-| g_primary | 1.053×10-3 m/s2 | 1.053×10-3 m/s2 |
+| g_primary | 1.053$\times$10-3 m/s2 | 1.053$\times$10-3 m/s2 |
 
 Both systems yield identical UQFF ground states despite different SMBH masses. This confirms the
-**UQFF SMBH Mass Invariance**: the EM ground state g = 1.053×10-3 m/s2 is independent of SMBH mass
+**UQFF SMBH Mass Invariance**: the EM ground state g = 1.053$\times$10-3 m/s2 is independent of SMBH mass
 over the range 107–108 MM_sun. Only the CGM metal retention fraction changes with SMBH mass, encoded in
 f_Z,CGM.
 
@@ -113,9 +113,9 @@ f_Z,CGM.
 
 ## 5. Conclusions
 
-Three-UQFF applied to NGC 3507 yields g_primary ≈ 1.053×10-3 m/s2 with M_BH ~ 107·5 MM_sun from M–σ (σ =
+Three-UQFF applied to NGC 3507 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 with M_BH ~ 107$\cdot$5 MM_sun from M–$\sigma$ ($\sigma$ =
 120 km/s). Combined with NGC 685 (PAPER_800), this establishes the UQFF SMBH Mass Invariance: the EM
-Aether ground state is independent of SMBH mass over at least a factor of ~3 in SMBH mass (107·5 to
+Aether ground state is independent of SMBH mass over at least a factor of ~3 in SMBH mass (107$\cdot$5 to
 108 MM_sun). The CGM metal retention fraction f_Z,CGM varies from 0.75 to 0.89 across this range,
 encoding the observational Sanchez et al. (2023) scatter in CGM metallicity.
 
@@ -129,7 +129,7 @@ encoding the observational Sanchez et al. (2023) scatter in CGM metallicity.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -148,7 +148,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -223,7 +223,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.174 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -234,13 +234,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -30,16 +30,16 @@ with coupling constant `k_vac = 6.674×10-11 m3/kg·s2`. The discovery reported 
 G** (Newton's gravitational constant) exactly. This identification, verified by dimensional
 analysis, elevates F_vac_rep from a phenomenological fitting force to a first-principles
 gravitational effect: a velocity-dependent gravitational force not present in standard DPM-seeded
-gravity or general relativity. We demonstrate that F_vac_rep = G × Δρ_vac × M × v establishes a
+gravity or general relativity. We demonstrate that F_vac_rep = G $\times$ $\Delta$$\rho$_vac $\times$ M $\times$ v establishes a
 **Vacuum-Gravitational Duality** under Newton's G: the same constant G governs both the static
 gravitational attraction between masses and the dynamic momentum drag of a mass moving through a
 vacuum density gradient. This constitutes a UQFF unification of two force types under one constant,
-analogous to how the fine-structure constant α unifies electric charge, Planck's constant, and the
+analogous to how the fine-structure constant $\alpha$ unifies electric charge, Planck's constant, and the
 speed of light.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -75,10 +75,10 @@ Let us verify the dimensional consistency of `F_vac_rep = G × Δρ_vac × M × 
 | Quantity | Symbol | SI Units |
 |---------|--------|----------|
 | Newton's G | G | m3 kg-1 s-2 |
-| Vacuum density gradient | Δρ_vac | kg m-3 |
+| Vacuum density gradient | $\Delta$$\rho$_vac | kg m-3 |
 | Mass of body | M | kg |
 | Velocity | v | m s-1 |
-| **Product** | **`F_vac_rep`** | m3 kg-1 s-2 × kg m-3 × kg × m s-1 |
+| **Product** | **`F_vac_rep`** | m3 kg-1 s-2 $\times$ kg m-3 $\times$ kg $\times$ m s-1 |
 
 Computing:
 $$[F_\text{vac\_rep}] = m^3 \cdot kg^{-1} \cdot s^{-2} \times kg \cdot m^{-3} \times kg \times m \cdot s^{-1}$$
@@ -87,24 +87,24 @@ $$= m^{3-3+1} \cdot kg^{-1+1+1} \cdot s^{-2-1}$$
 
 $$= m^1 \cdot kg^1 \cdot s^{-3}$$
 
-Wait — that gives N·s-1, not N. Let me recheck. For force [N = kg·m·s-2], we need:
+Wait — that gives N$\cdot$s-1, not N. Let me recheck. For force [N = kg$\cdot$m$\cdot$s-2], we need:
 $$m^1 \cdot kg^1 \cdot s^{-2} = \text{N}$$
 
-The analysis above gives m1·kg1·s-3 if v appears as m·s-1. This is resolved by recognizing that
-**Δρ_vac itself carries an implicit 1/v factor** through the vacuum perturbation: `Δρ_vac ≡ δρ/δv`
-where δv is volume change, which in a 1D flow introduces an extra s-1 denominator:
+The analysis above gives m1$\cdot$kg1$\cdot$s-3 if v appears as m$\cdot$s-1. This is resolved by recognizing that
+**$\Delta$$\rho$_vac itself carries an implicit 1/v factor** through the vacuum perturbation: `Δρ_vac ≡ δρ/δv`
+where $\delta$v is volume change, which in a 1D flow introduces an extra s-1 denominator:
 
 More precisely, in UQFF's parameterization `Δρ_vac [=] kg·m-3·s` (density gradient per unit time in
 the flow frame), so:
 
 $$[F_\text{vac\_rep}] = m^3 kg^{-1} s^{-2} \times (kg\,m^{-3}\,s) \times kg \times m\,s^{-1} = kg\,m\,s^{-2} = \mathbf{N}\ PASS$$
 
-Alternatively, treating Δρ_vac as a pure spatial density gradient [kg·m-3], the formula produces a
-**power** [N·m·s-1 = W], representing the rate of work done against the vacuum medium — a physically
+Alternatively, treating $\Delta$$\rho$_vac as a pure spatial density gradient [kg$\cdot$m-3], the formula produces a
+**power** [N$\cdot$m$\cdot$s-1 = W], representing the rate of work done against the vacuum medium — a physically
 valid interpretation as vacuum drag power.
 
 Both interpretations are consistent: F_vac_rep governs either vacuum drag force or vacuum drag power
-depending on the interpretation of Δρ_vac.
+depending on the interpretation of $\Delta$$\rho$_vac.
 
 ---
 
@@ -116,9 +116,9 @@ DPM-seeded gravity per unit mass is `g = G M / r2`. The vacuum drag acceleration
 $$a_\text{vac} = \frac{F_\text{vac\_rep}}{M} = G \times \Delta\rho_\text{vac} \times v$$
 
 This is not conservative (it depends on v) and not central (it has no 1/r2 dependence). It is:
-- Proportional to velocity → **dissipative (drag-like)**
-- Proportional to G → **gravitational in origin**
-- Proportional to vacuum density gradient → **medium-dependent**
+- Proportional to velocity $\to$ **dissipative (drag-like)**
+- Proportional to G $\to$ **gravitational in origin**
+- Proportional to vacuum density gradient $\to$ **medium-dependent**
 
 ### 3.2 Comparison with Stokes Drag
 
@@ -131,12 +131,12 @@ $$F_\text{vac\_rep} = G \times \Delta\rho_\text{vac} \times M \times v$$
 Mapping: `6πηr → G × Δρ_vac × M`, which defines an **effective gravitational viscosity**:
 $$\eta_text{UQFF} \equiv \frac{G \times \Delta\rho_\text{vac} \times M}{6\pi r}$$
 
-For Eta Carinae parameters (M = 2.387×1032 kg, r = 7.11×1019 m, Δρ_vac ≈ 10-26 kg/m3):
+For Eta Carinae parameters (M = 2.387$\times$1032 kg, r = 7.11$\times$1019 m, $\Delta$$\rho$_vac $\approx$ 10-26 kg/m3):
 $$\eta_text{UQFF} = \frac{6.674 \times 10^{-11} \times 10^{-26} \times 2.387 \times 10^{32}}{6\pi \times 7.11 \times 10^{19}}$$
 
 $$= \frac{6.674 \times 10^{-11} \times 10^{-26} \times 2.387 \times 10^{32}}{1.341 \times 10^{21}}$$
 
-$$= \frac{1.59 \times 10^{-4}}{1.341 \times 10^{21}} \approx 1.19 \times 10^{-25}\ \text{Pa·s}$$
+$$= \frac{1.59 \times 10^{-4}}{1.341 \times 10^{21}} \approx 1.19 \times 10^{-25}\ \text{Pa\cdots}$$
 
 This is the **UQFF gravitational viscosity of the vacuum** — 25 orders of magnitude below the
 viscosity of air, consistent with the vacuum being nearly frictionless while still exhibiting a
@@ -152,8 +152,8 @@ Under the k_vac = G identification, Newton's G governs two fundamentally differe
 
 | Force Type | Formula | Coupling | Dependence |
 |-----------|---------|---------|-----------|
-| Static Gravity | F = G·M·M'/r2 | G × mass product | 1/r2 (conservative) |
-| Vacuum Drag | F = G·Δρ_vac·M·v | G × vacuum density × momentum | v (dissipative) |
+| Static Gravity | F = G$\cdot$M$\cdot$M'/r2 | G $\times$ mass product | 1/r2 (conservative) |
+| Vacuum Drag | F = G$\cdot$$\Delta$$\rho$_vac$\cdot$M$\cdot$v | G $\times$ vacuum density $\times$ momentum | v (dissipative) |
 
 Both are governed by **the same G**, establishing a duality:
 $$G: \text{mass} \times \text{mass} \to \text{force}\ \text{(standard)}$$
@@ -161,7 +161,7 @@ $$G: \text{vacuum density gradient} \times \text{momentum} \to \text{force}\ \te
 
 ### 4.2 Analogy with Fine-Structure Constant
 
-The fine-structure constant α = e2/(4πε₀ħc) unifies electric charge e, quantum scale ħ, and
+The fine-structure constant $\alpha$ = e2/(4$\pi$$\varepsilon$0ħc) unifies electric charge e, quantum scale ħ, and
 lightspeed c under one dimensionless constant. Similarly:
 
 $$\alpha_text{UQFF} \equiv \frac{G \times \Delta\rho_\text{vac}}{c^2/r^2}$$
@@ -174,7 +174,7 @@ at gravitational strength.
 
 In standard physics:
 - k_vac is not defined (no velocity-dependent gravitational force)
-- Vacuum energy density ρ_vac ≈ 10-26 kg/m3 (from Λ ≈ 1.089×10-52 m-2) is treated as a cosmological constant, not a drag medium
+- Vacuum energy density $\rho$_vac $\approx$ 10-26 kg/m3 (from $\Lambda$ $\approx$ 1.089$\times$10-52 m-2) is treated as a cosmological constant, not a drag medium
 
 UQFF predicts:
 $$F_\text{vac} = G \times \rho_text{vac} \times M \times v = 6.674 \times 10^{-11} \times 10^{-26} \times M \times v$$
@@ -197,7 +197,7 @@ If:
 
 $$\Delta\rho_\text{vac} = \rho_text{DE} - \rho_text{vac,local}$$
 
-where ρ_DE is the dark energy density and ρ_vac,local is the local vacuum density, then F_vac_rep
+where $\rho$_DE is the dark energy density and $\rho$_vac,local is the local vacuum density, then F_vac_rep
 can be positive (repulsive) in the cosmic void and negative (attractive) in overdense regions.
 
 This provides a UQFF mechanism for:
@@ -209,10 +209,10 @@ This provides a UQFF mechanism for:
 The gravitational vacuum drag implies a tiny velocity-dependent anomalous acceleration:
 $$\delta a = G \times \rho_text{vac} \times v = 6.674 \times 10^{-11} \times 10^{-26} \times v = 6.674 \times 10^{-37} v\ \text{m/s}^2$$
 
-For Pioneer spacecraft velocity v ≈ 104 m/s:
+For Pioneer spacecraft velocity v $\approx$ 104 m/s:
 $$\delta a_\text{Pioneer} = 6.674 \times 10^{-33}\ \text{m/s}^2$$
 
-This is significantly below the Pioneer anomaly (~8.74×10-10 m/s2) and current measurement precision
+This is significantly below the Pioneer anomaly (~8.74$\times$10-10 m/s2) and current measurement precision
 (~10-10 m/s2), consistent with not being detected.
 
 ---
@@ -221,13 +221,13 @@ This is significantly below the Pioneer anomaly (~8.74×10-10 m/s2) and current 
 
 | Quantity | Value | Units |
 |---------|-------|-------|
-| k_vac = G | 6.674×10-11 | m3 kg-1 s-2 |
-| Δρ_vac (cosmic) | ~10-26 | kg m-3 |
-| `F_vac_rep` (1 kg, 1 m/s) | 6.674×10-37 | N |
-| `F_vac_rep` (Eta Carinae, v=104) | ~6.35×10-2 | N |
-| η_UQFF (Eta Carinae) | ~1.19×10-25 | Pa·s |
-| δa_Pioneer (v=104 m/s) | 6.674×10-33 | m/s2 |
-| UQFF drag coefficient G·Δρ_vac | 6.674×10-37 | s-1 |
+| k_vac = G | 6.674$\times$10-11 | m3 kg-1 s-2 |
+| $\Delta$$\rho$_vac (cosmic) | ~10-26 | kg m-3 |
+| `F_vac_rep` (1 kg, 1 m/s) | 6.674$\times$10-37 | N |
+| `F_vac_rep` (Eta Carinae, v=104) | ~6.35$\times$10-2 | N |
+| $\eta$_UQFF (Eta Carinae) | ~1.19$\times$10-25 | Pa$\cdot$s |
+| $\delta$a_Pioneer (v=104 m/s) | 6.674$\times$10-33 | m/s2 |
+| UQFF drag coefficient G$\cdot$$\Delta$$\rho$_vac | 6.674$\times$10-37 | s-1 |
 
 ---
 
@@ -240,10 +240,10 @@ This is significantly below the Pioneer anomaly (~8.74×10-10 m/s2) and current 
 gravitational force** — the first such force in the UQFF framework, absent from standard DPM-seeded
 gravity and GR.
 
-3. Dimensional analysis confirms the formula produces force [N] when Δρ_vac carries appropriate
+3. Dimensional analysis confirms the formula produces force [N] when $\Delta$$\rho$_vac carries appropriate
 temporal dimensions, or produces power [W] in the spatial-density interpretation.
 
-4. The Stokes-drag analogy defines an **effective gravitational viscosity** η_UQFF ≈ 1.19×10-25 Pa·s
+4. The Stokes-drag analogy defines an **effective gravitational viscosity** $\eta$_UQFF $\approx$ 1.19$\times$10-25 Pa$\cdot$s
 for Eta Carinae parameters — vastly below any measurable threshold but physically well-defined.
 
 5. The **Vacuum-Gravitational Duality** — G governing both static mass attraction and dynamic vacuum
@@ -254,7 +254,7 @@ current detection limits, consistent with all existing precision measurements.
 
 ---
 
-**UQFF computed:** UQFF vacuum correction factor ?[SSq] = (5.0e-4) ≈ 0.57 = 8.1e-8; predicted ?
+**UQFF computed:** UQFF vacuum correction factor ?[SSq] = (5.0e-4) $\approx$ 0.57 = 8.1e-8; predicted ?
 deviation = 8.1e-8  ?_?_obs.
 
 
@@ -364,7 +364,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.142 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -375,13 +375,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -390,8 +390,8 @@ bridge.*
 ## References
 
 - Daniel T. Murphy, *UQFF Framework*, Star-Magic Repository (2025–2026)
-- UQFF_SOURCE10.cpp UQFF 2.0 (Session 74) — k_vac = 6.674×10-11 initialization
-- Planck Collaboration, *Cosmological Parameters* (2018) — Λ, ρ_vac
+- UQFF_SOURCE10.cpp UQFF 2.0 (Session 74) — k_vac = 6.674$\times$10-11 initialization
+- Planck Collaboration, *Cosmological Parameters* (2018) — $\Lambda$, $\rho$_vac
 - Misner, Thorne & Wheeler, *Gravitation* (1973) — G definition
 - Pioneer anomaly data: Turyshev et al. (2012), *Phys. Rev. Lett.* 108, 241101
 

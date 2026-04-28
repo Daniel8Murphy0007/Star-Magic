@@ -37,7 +37,7 @@ PAPER_376 (empirical validation via Ereact window), but never formalized as an i
 **physical principle**.
 
 This paper establishes the **Ug4i Transient Age-Dependent Decay Law** as a standalone UQFF
-theorem: compact objects have Ug4i → 0 as they age, and Ug4i is only non-zero for **young or
+theorem: compact objects have Ug4i $\to$ 0 as they age, and Ug4i is only non-zero for **young or
 actively-bursting** systems.
 
 ---
@@ -52,7 +52,7 @@ Where:
 - $0.0005$ — decay constant $\kappa$ [s-1] (validated against 10–100 day Chandra magnetar observations)
 - $t$ — system age [s]
 
-**Note on units of κ:** In daily parametrization $\kappa_{day} = 0.0005 \ \text{day}^{-1}$ (as
+**Note on units of $\kappa$:** In daily parametrization $\kappa_{day} = 0.0005 \ \text{day}^{-1}$ (as
 in PAPER_376). When t is given in seconds (as in C++ code), $\kappa \approx 0.0005 / (86400) =
 5.787\times10^{-9}$ s-1. The expression above uses t in its parametric form consistent with the
 C++ implementation where the exponent dimensionally balances with the time parameter used.
@@ -70,7 +70,7 @@ When $E_{react} \rightarrow 0$:
 $$\boxed{U_{g4i} \rightarrow 0}$$
 
 This is confirmed by the SGR1745 unit test: at $t = 3.799\times10^{10}$ s, `compute_Ug4i()` 
-returns < numerical precision → 0.0 m/s2.
+returns < numerical precision $\to$ 0.0 m/s2.
 
 ---
 
@@ -86,8 +86,8 @@ For $E_0 = 1046$ J and $\epsilon = 10^{-6}$ J (computational floor):
 $$t_\text{threshold} = \frac{1}{0.0005} \ln(1046 / 10^{-6}) \approx 2000 \times 13.9 = 2.78\times10^4 \ \text{(parametric days)}$$
 
 **Physical interpretation:**
-- **Young systems** (active jets, new magnetars, stellar formation): $E_{react} \sim 10^2$ J → Ug4i active → vacuum field reaction drives transient physics
-- **Ancient systems** (mature magnetars, evolved galaxies): $E_{react} \rightarrow 0$ → Ug4i = 0 → no vacuum reactivity contribution
+- **Young systems** (active jets, new magnetars, stellar formation): $E_{react} \sim 10^2$ J $\to$ Ug4i active $\to$ vacuum field reaction drives transient physics
+- **Ancient systems** (mature magnetars, evolved galaxies): $E_{react} \rightarrow 0$ $\to$ Ug4i = 0 $\to$ no vacuum reactivity contribution
 
 ---
 
@@ -97,13 +97,13 @@ Using the canonical 7-system parameter registry (PAPER_385):
 
 | System | Age t (s) | E_react(t) (J) | Ug4i Status |
 |--------|----------:|:--------------:|:-----------:|
-| SGR1745 Magnetar | 3.799e10 | ≈ 0 | **INACTIVE** |
-| Sagittarius A* | 3.786e14 | ≈ 0 | INACTIVE |
-| Tapestry (Star Formation) | 3.156e13 | ≈ 0 | INACTIVE |
-| Westerlund 2 (Cluster) | 3.156e13 | ≈ 0 | INACTIVE |
-| Pillars of Creation | 3.156e13 | ≈ 0 | INACTIVE |
-| Rings of Relativity | 3.156e14 | ≈ 0 | INACTIVE |
-| Student's Guide (Cosm.) | 4.35e17 | ≈ 0 | INACTIVE |
+| SGR1745 Magnetar | 3.799e10 | $\approx$ 0 | **INACTIVE** |
+| Sagittarius A* | 3.786e14 | $\approx$ 0 | INACTIVE |
+| Tapestry (Star Formation) | 3.156e13 | $\approx$ 0 | INACTIVE |
+| Westerlund 2 (Cluster) | 3.156e13 | $\approx$ 0 | INACTIVE |
+| Pillars of Creation | 3.156e13 | $\approx$ 0 | INACTIVE |
+| Rings of Relativity | 3.156e14 | $\approx$ 0 | INACTIVE |
+| Student's Guide (Cosm.) | 4.35e17 | $\approx$ 0 | INACTIVE |
 
 **Conclusion:** For all 7 canonical systems, $E_{react} \rightarrow 0$. Ug4i is numerically zero
 across the standard UQFF validation suite.
@@ -123,9 +123,9 @@ paper provides the **physical mechanism**:
 | Time since event | E_react(t) | % of initial | Physical state |
 |------------------|:----------:|:------------:|:--------------|
 | t = 0 | 1046 J | 100% | Maximum Ug4i — burst onset |
-| t = 10 days | 1046·e-0·005 ≈ 996 J | 95% | Ug4i still significant |
-| t = 100 days | 1046·e-0·05 ≈ 995 J | 95% | Chandra 100-day cut-off |
-| t → ∞ | 0 | 0% | Ug4i = 0 — system quiescent |
+| t = 10 days | 1046$\cdot$e-0$\cdot$005 $\approx$ 996 J | 95% | Ug4i still significant |
+| t = 100 days | 1046$\cdot$e-0$\cdot$05 $\approx$ 995 J | 95% | Chandra 100-day cut-off |
+| t $\to$ $\infty$ | 0 | 0% | Ug4i = 0 — system quiescent |
 
 The 10–100 day window corresponds to $\kappa_{day} \cdot t \ll 1$, so Chandra observed systems
 with nearly full $E_{react}$, while our validation systems are at $t \gg 1/\kappa$.
@@ -160,7 +160,7 @@ Ug4i represents the only **time-transient mechanism** in the UQFF resonance fram
 carries information about system age and activity history**.
 
 This makes it the UQFF equivalent of:
-- Radioactive decay (exponential → zero)
+- Radioactive decay (exponential $\to$ zero)
 - Magnetic field reconnection energy release
 - Stellar evolutionary stage discriminator
 
@@ -189,7 +189,7 @@ Session 104 | First standalone formalization of Ug4i as UQFF system age discrimi
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -208,7 +208,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -283,7 +283,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.100 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -294,13 +294,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

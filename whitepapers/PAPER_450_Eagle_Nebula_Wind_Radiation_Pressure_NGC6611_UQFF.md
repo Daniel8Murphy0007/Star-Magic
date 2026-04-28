@@ -21,17 +21,17 @@ radiation pressure integration in UQFF; FIRST pillar photoionization pressure ma
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `EagleNebulaWindRadiationCalculator` (#4, PAPER_450)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57 —>
 ---
 
 ## Abstract
 
 The Eagle Nebula (M16, NGC 6611) hosts some of the most dramatic photon-driven evaporation columns
 (the "Pillars of Creation") driven by OB-star radiation from the embedded NGC 6611 cluster (L =
-3.83×1033 W). This paper quantifies the gravitational dynamics of the Eagle Nebula system under
+3.83$\times$1033 W). This paper quantifies the gravitational dynamics of the Eagle Nebula system under
 UQFF-MUGE, combining radiation pressure from NGC 6611, stellar wind ram pressure, and the standard
-UQFF Ug terms. With M=5000 MM_sun at r = 3.31×1017 m (~35 ly), the DPM-seeded base gravity is ~1.2×10-12
-m/s2, while the NGC 6611 radiation pressure term P_rad ≈ 1.5×10-9 m/s2 exceeds it by 1250×,
+UQFF Ug terms. With M=5000 MM_sun at r = 3.31$\times$1017 m (~35 ly), the DPM-seeded base gravity is ~1.2$\times$10-12
+m/s2, while the NGC 6611 radiation pressure term P_rad $\approx$ 1.5$\times$10-9 m/s2 exceeds it by 1250$\times$,
 identifying radiation as the dominant dynamical agent in the Pillars formation process.
 
 ---
@@ -42,14 +42,14 @@ identifying radiation as the dominant dynamical agent in the Pillars formation p
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M | 9.945×1033 kg (5000 MM_sun) | Gas + embedded cluster total |
-| r | 3.31×1017 m (~35 ly) | Eagle Nebula half-radius |
-| v_wind | 1×104 m/s | NGC 6611 OB-star wind velocity |
-| L_NGC6611 | 3.83×1033 W | OB cluster luminosity (~106 LM_sun) |
+| M | 9.945$\times$1033 kg (5000 MM_sun) | Gas + embedded cluster total |
+| r | 3.31$\times$1017 m (~35 ly) | Eagle Nebula half-radius |
+| v_wind | 1$\times$104 m/s | NGC 6611 OB-star wind velocity |
+| L_NGC6611 | 3.83$\times$1033 W | OB cluster luminosity (~106 LM_sun) |
 | z | 0.0018 | Local redshift (Serpens arm) |
-| ρ_fluid | 1×10-20 kg/m3 | Dense pillar gas |
-| B | 1×10-5 T | Magnetised pillar field |
-| v_exp | 1×104 m/s | Pillar evaporation velocity |
+| $\rho$_fluid | 1$\times$10-20 kg/m3 | Dense pillar gas |
+| B | 1$\times$10-5 T | Magnetised pillar field |
+| v_exp | 1$\times$104 m/s | Pillar evaporation velocity |
 
 ### 2.2 Full UQFF Equation
 
@@ -67,11 +67,11 @@ Scaling to m/s2 via dimensional analysis with gas column density:
 
 $$P_{\rm rad} \approx \frac{L_{\rm NGC6611}}{4\pi r^2 c} \approx \frac{3.83 \times 10^{33}}{1.24 \times 10^{36}} \approx 1.52 \times 10^{-9}\ \rm m/s^2\text{ (per unit density)}$$
 
-The factor $\rho/m_H$ converts from photon momentum flux to acceleration. At ρ = 10-20 kg/m3, the effective acceleration is:
+The factor $\rho/m_H$ converts from photon momentum flux to acceleration. At $\rho$ = 10-20 kg/m3, the effective acceleration is:
 
 $$P_{\rm rad,eff} \approx 1.52 \times 10^{-9}\ \rm m/s^2$$
 
-This is **1250× the DPM-seeded base gravity** for this system — radiation completely governs M16
+This is **1250$\times$ the DPM-seeded base gravity** for this system — radiation completely governs M16
 dynamics.
 
 ### 2.4 Stellar Wind Ram Pressure
@@ -112,7 +112,7 @@ For typical pillar dimensions (M_pillar ~ 10 MM_sun, r_pillar ~ 0.5 ly):
 
 $$g_{\rm self} \approx \frac{6.674 \times 10^{-11} \times 2 \times 10^{31}}{(4.73 \times 10^{15})^2} \approx 5.96 \times 10^{-11}\ \rm m/s^2 > P_{\rm rad}$$
 
-Pillars survive because self-gravity exceeds radiation pressure by ~40×. But the NGC 6611 radiation
+Pillars survive because self-gravity exceeds radiation pressure by ~40$\times$. But the NGC 6611 radiation
 continues to sculpt the tips. UQFF thus explains the **characteristic elephant-trunk morphology** as
 a steady-state between self-gravity and radiation pressure, with evaporation revealing embedded
 young stars.
@@ -124,7 +124,7 @@ young stars.
 $$1 - \frac{B}{B_{\rm crit}} = 1 - \frac{10^{-5}}{4.4 \times 10^{13}} \approx 1 - 2.27 \times 10^{-19} \approx 1.0$$
 
 At pillar magnetic field strengths (~10 µG = 10-5 T), the B/B_crit suppression is negligible. At
-magnetar fields (B~1011 T), this becomes ~2.27×10-3 — distinguishing the Eagle Nebula from extreme
+magnetar fields (B~1011 T), this becomes ~2.27$\times$10-3 — distinguishing the Eagle Nebula from extreme
 compact objects.
 
 ---
@@ -133,14 +133,14 @@ compact objects.
 
 | Term | Value (m/s2) | Comment |
 |------|-------------|---------|
-| DPM-seeded g | 6.05×10-12 | Baseline |
-| Hubble correction | ~6.1×10-12 | 1.001× baseline |
-| Radiation pressure P_rad | **1.52×10-9** | **Dominant (250×)** |
-| Wind ram pressure | 1.0×10-12 | ~17% of DPM-seeded |
-| Dark matter (26.8%) | 1.62×10-12 | ~27% addition |
-| Cosmological Λ term | ~3×10-34 | Negligible |
+| DPM-seeded g | 6.05$\times$10-12 | Baseline |
+| Hubble correction | ~6.1$\times$10-12 | 1.001$\times$ baseline |
+| Radiation pressure P_rad | **1.52$\times$10-9** | **Dominant (250$\times$)** |
+| Wind ram pressure | 1.0$\times$10-12 | ~17% of DPM-seeded |
+| Dark matter (26.8%) | 1.62$\times$10-12 | ~27% addition |
+| Cosmological $\Lambda$ term | ~3$\times$10-34 | Negligible |
 | Quantum term | ~10-38 | Negligible |
-| **Total g_UQFF** | **~1.52×10-9** | Radiation-dominated |
+| **Total g_UQFF** | **~1.52$\times$10-9** | Radiation-dominated |
 
 ---
 
@@ -149,7 +149,7 @@ compact objects.
 | Feature | SM | UQFF (PAPER_450) |
 |---------|-----|------------------|
 | Pillar formation | Separate radiation-hydro code | Unified P_rad in g_UQFF |
-| Evaporation velocity | Numerical integration | Analytic v_evap = P_rad/(g·ρ) |
+| Evaporation velocity | Numerical integration | Analytic v_evap = P_rad/(g$\cdot$$\rho$) |
 | Self-gravity vs radiation | Separate stability analysis | Comparison within single g_UQFF |
 | Magnetic suppression | External MHD code | 1 - B/B_crit factor |
 
@@ -157,13 +157,13 @@ compact objects.
 
 ## 7. Testable Predictions
 
-1. **Pillar tip evaporation rate:** UQFF predicts v_evap ≈ 1.27 km/s. HST observations measure ~1–2
+1. **Pillar tip evaporation rate:** UQFF predicts v_evap $\approx$ 1.27 km/s. HST observations measure ~1–2
 km/s at M16 pillar tips — confirming prediction within factor 1.5.
 2. **Pillar survival for M>10 MM_sun:** UQFF self-gravity criterion predicts pillars with M>10 MM_sun at
 r_pillar<1 ly survive indefinitely against NGC 6611 radiation. Consistent with JWST/HST imaging
 showing original pillars still intact after 20+ years.
-3. **Radiation suppression at r>2×r₀:** P_rad falls as 1/r2, so pillars at 70+ ly from NGC 6611
-would not be photoevaporated. Testable against the observed ring of pillars at ~2×radial distance
+3. **Radiation suppression at r>2$\times$r0:** P_rad falls as 1/r2, so pillars at 70+ ly from NGC 6611
+would not be photoevaporated. Testable against the observed ring of pillars at ~2$\times$radial distance
 from the cluster.
 
 ---
@@ -176,7 +176,7 @@ from the cluster.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -195,7 +195,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -303,7 +303,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.146 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -314,10 +314,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Nebular/Star-forming region luminosity H$\alpha$ + X-ray | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Nebular/Star-forming region

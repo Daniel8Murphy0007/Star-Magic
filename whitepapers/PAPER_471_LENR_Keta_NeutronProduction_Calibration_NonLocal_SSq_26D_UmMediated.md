@@ -11,21 +11,21 @@ tags: [LENR, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_471 — LENR K_η Neutron Production Calibration Constant: Um-Mediated Rate η with Non-Local [SSq]^n 2^6 e^(−π−t) Term
+# PAPER_471 — LENR K_$\eta$ Neutron Production Calibration Constant: Um-Mediated Rate $\eta$ with Non-Local [SSq]^n 2^6 e^(-$\pi$-t) Term
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — LENR Calibration Physics
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122
 **Source:** grok_share_dc707f5d3.txt (Doc 75 — LENRCalibUQFFModule, "K_n Neutron Production
 Calibration Constant")
-**Classification:** FIRST UQFF calibration constant K_η for LENR neutron production across three
-scenarios; FIRST non-local [SSq]^n × 2^6 × e^(−π−t) UQFF term in experimental LENR; FIRST 100%
+**Classification:** FIRST UQFF calibration constant K_$\eta$ for LENR neutron production across three
+scenarios; FIRST non-local [SSq]^n $\times$ 2^6 $\times$ e^(-$\pi$-t) UQFF term in experimental LENR; FIRST 100%
 accuracy Um-mediated neutron rate calibration
 **Author:** Daniel T. Murphy
 **CP4 Class:** Pending (dc707f5d3 batch)
 **C++ Module:** `LENRCalibUQFFModule.h` / `LENRCalibUQFFModule.cpp`
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 
 ---
 
@@ -33,10 +33,10 @@ accuracy Um-mediated neutron rate calibration
 
 Low-Energy Nuclear Reactions (LENR) exhibit anomalous neutron production rates that cannot be
 explained by standard weak-interaction physics alone. This paper presents the UQFF calibration of
-the neutron production rate η via the magnetism term U_m and a non-local [SSq]^n correction factor.
-The calibration constant K_η is determined for three distinct LENR scenarios — metallic hydride
+the neutron production rate $\eta$ via the magnetism term U_m and a non-local [SSq]^n correction factor.
+The calibration constant K_$\eta$ is determined for three distinct LENR scenarios — metallic hydride
 cells, exploding wire arrays, and solar corona — yielding 100% accuracy relative to experimental
-benchmarks. The non-local term exp(−[SSq]^n × 2^6 × e^(−π−t)) is the **first UQFF non-local operator
+benchmarks. The non-local term exp(-[SSq]^n $\times$ 2^6 $\times$ e^(-$\pi$-t)) is the **first UQFF non-local operator
 applied to nuclear reaction rate calibration**, with [SSq] = 1 (calibration mode) recovering perfect
 agreement.
 
@@ -46,15 +46,15 @@ agreement.
 
 ### 2.1 Scenario Parameters
 
-| Scenario | K_η Value | E_field | η Target | Dominant Term |
+| Scenario | K_$\eta$ Value | E_field | $\eta$ Target | Dominant Term |
 |----------|-----------|---------|----------|---------------|
-| Metallic Hydride | 1×1013 cm-2/s | 2×1011 V/m | 1×1013 cm-2/s | Um / non-local |
-| Exploding Wires | 1×108 cm-2/s | I_Alfvén = 17 kA | ~1×108 cm-2/s | Um / Alfvén |
-| Solar Corona | 7×10-3 cm-2/s | R ≈ 104 km | ~7×10-3 cm-2/s | Um / plasma freq |
+| Metallic Hydride | 1$\times$1013 cm-2/s | 2$\times$1011 V/m | 1$\times$1013 cm-2/s | Um / non-local |
+| Exploding Wires | 1$\times$108 cm-2/s | I_Alfvén = 17 kA | ~1$\times$108 cm-2/s | Um / Alfvén |
+| Solar Corona | 7$\times$10-3 cm-2/s | R $\approx$ 104 km | ~7$\times$10-3 cm-2/s | Um / plasma freq |
 
 ### 2.2 UQFF Neutron Production Rate
 
-The neutron production rate η is:
+The neutron production rate $\eta$ is:
 
 $$\eta(t, n) = K_\eta \cdot \exp!\left(-[\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi - t}\right) \cdot \frac{U_m(t)}{\rho_{\rm vac}}\ \mathrm{cm}^{-2}\mathrm{s}^{-1}$$
 
@@ -62,11 +62,11 @@ Where:
 - $K_\eta$ = scenario-specific calibration constant (see table above)
 - $[\mathrm{SSq}]^n$ = non-local quantum state operator, [SSq] = 0.57 (physical) or 1.0 (calibration mode)
 - $2^6 = 64$ = 26-dimensional binary coupling (26D UQFF framework)
-- $e^{-\pi-t}$ = transcendental-exponential decay with universal constant π
-- $U_m(t)$ = magnetism term from UQFF (magnetic moment × vacuum field)
+- $e^{-\pi-t}$ = transcendental-exponential decay with universal constant $\pi$
+- $U_m(t)$ = magnetism term from UQFF (magnetic moment $\times$ vacuum field)
 - $\rho_{\rm vac}$ = quantum vacuum energy density
 
-### 2.3 Non-Local [SSq]^n 2^6 e^(−π−t) Operator
+### 2.3 Non-Local [SSq]^n 2^6 e^(-$\pi$-t) Operator
 
 This is a novel UQFF operator that couples:
 
@@ -76,11 +76,11 @@ $$\mathcal{N}(t, n) = [\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi - t}$$
 |--------|-----------------|-----------------|
 | [SSq]1 | 0.57 (physical) | Quantum state squeezing parameter |
 | 26 | 64 | 26D dimensional binary coupling |
-| e^(−π) | e^(−3.14159) ≈ 0.04322 | Universal transcendental decay |
-| e^(−t) | 1.0 at t=0 | Time evolution (t in years) |
-| Product | ≈ 0.0247 (physical) | Non-local suppression factor |
+| e^(-$\pi$) | e^(-3.14159) $\approx$ 0.04322 | Universal transcendental decay |
+| e^(-t) | 1.0 at t=0 | Time evolution (t in years) |
+| Product | $\approx$ 0.0247 (physical) | Non-local suppression factor |
 
-In **calibration mode** ([SSq] = 1): $\mathcal{N} = 1 \cdot 64 \cdot e^{-\pi} = 2.766$ → K_η adjusted to hit 100% accuracy.
+In **calibration mode** ([SSq] = 1): $\mathcal{N} = 1 \cdot 64 \cdot e^{-\pi} = 2.766$ $\to$ K_$\eta$ adjusted to hit 100% accuracy.
 
 ### 2.4 U_m Magnetism Term
 
@@ -88,19 +88,19 @@ $$U_m(t) = \frac{\mu_e^2}{r^3} \cdot \left(1 - \frac{B}{B_{\rm crit}}\right) \cd
 
 The electron magnetic moment $\mu_e = 9.284 \times 10^{-24}$ J/T drives the neutron production via quantum vacuum coupling. The electron acceleration to the 0.78 MeV threshold (Widom-Larsen mechanism) is mediated by the U_m field.
 
-### 2.5 Scenario-Specific K_η Derivation
+### 2.5 Scenario-Specific K_$\eta$ Derivation
 
-**Hydride (K_η = 1013):**
-High electric field (2×1011 V/m) accelerates surface electrons to 0.78 MeV. U_m is amplified by the
-metallic lattice magnetic response, requiring K_η = 1013 to match η = 1×1013 cm-2/s.
+**Hydride (K_$\eta$ = 1013):**
+High electric field (2$\times$1011 V/m) accelerates surface electrons to 0.78 MeV. U_m is amplified by the
+metallic lattice magnetic response, requiring K_$\eta$ = 1013 to match $\eta$ = 1$\times$1013 cm-2/s.
 
-**Exploding Wires (K_η = 108):**
+**Exploding Wires (K_$\eta$ = 108):**
 Alfvén current (I = 17 kA) generates strong B-field. U_m is limited by transient timescale,
-requiring K_η = 108 to match wire discharge neutron rates.
+requiring K_$\eta$ = 108 to match wire discharge neutron rates.
 
-**Solar Corona (K_η = 7×10-3):**
+**Solar Corona (K_$\eta$ = 7$\times$10-3):**
 Long-range plasma frequency dominates over direct field acceleration. U_m is diffuse over R = 104 km
-scale, requiring K_η = 7×10-3 to match observed coronal neutron flux.
+scale, requiring K_$\eta$ = 7$\times$10-3 to match observed coronal neutron flux.
 
 ---
 
@@ -116,19 +116,19 @@ $$K_\eta = \begin{cases} 10^{13}\ \mathrm{cm}^{-2}\mathrm{s}^{-1} & \text{hydrid
 
 ## 4. Physical Interpretation
 
-- **100% accuracy**: By tuning K_η per scenario, the UQFF achieves exact agreement with experimental LENR neutron rate data — demonstrating that the non-local [SSq]^n term captures the essential quantum vacuum coupling physics.
-- **Non-local operator**: The 2^6 = 64 factor represents the 2^26 → 64 binary reduction of the 26-dimensional UQFF framework to 6 effective coupling dimensions at LENR scales.
-- **[SSq] = 1 calibration mode**: Setting [SSq] = 1 (vs. physical value 0.57) provides the calibration anchor for K_η — the physical [SSq] = 0.57 applies when the full quantum vacuum state is active.
-- **Relationship to PAPER_062 (Widom-Larsen)**: PAPER_462 documents the theoretical LENR mechanism; PAPER_471 provides the quantitative K_η calibration that makes UQFF predictions match actual neutron production counts.
+- **100% accuracy**: By tuning K_$\eta$ per scenario, the UQFF achieves exact agreement with experimental LENR neutron rate data — demonstrating that the non-local [SSq]^n term captures the essential quantum vacuum coupling physics.
+- **Non-local operator**: The 2^6 = 64 factor represents the 2^26 $\to$ 64 binary reduction of the 26-dimensional UQFF framework to 6 effective coupling dimensions at LENR scales.
+- **[SSq] = 1 calibration mode**: Setting [SSq] = 1 (vs. physical value 0.57) provides the calibration anchor for K_$\eta$ — the physical [SSq] = 0.57 applies when the full quantum vacuum state is active.
+- **Relationship to PAPER_062 (Widom-Larsen)**: PAPER_462 documents the theoretical LENR mechanism; PAPER_471 provides the quantitative K_$\eta$ calibration that makes UQFF predictions match actual neutron production counts.
 
 ---
 
 ## 5. C++ Module Reference
 
 **Module:** `LENRCalibUQFFModule` (root-level, Session 120 from grok_share_dc707f5d3.txt)
-**Key method:** `computeEta(double t, int n)` — returns η in cm-2/s
-**Key method:** `setScenario(std::string)` — selects hydride/wires/corona K_η
-**Unique feature:** Non-local [SSq]^n × 2^6 × e^(−π−t) exponential; 100% calibration mode
+**Key method:** `computeEta(double t, int n)` — returns $\eta$ in cm-2/s
+**Key method:** `setScenario(std::string)` — selects hydride/wires/corona K_$\eta$
+**Unique feature:** Non-local [SSq]^n $\times$ 2^6 $\times$ e^(-$\pi$-t) exponential; 100% calibration mode
 **Integration point:** MAIN_1_CoAnQi.cpp LENR validation (cross-check PAPER_062)
 
 ---
@@ -141,7 +141,7 @@ $$K_\eta = \begin{cases} 10^{13}\ \mathrm{cm}^{-2}\mathrm{s}^{-1} & \text{hydrid
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -160,7 +160,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -183,7 +183,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -198,7 +198,7 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -301,7 +301,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.125 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -312,10 +312,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -326,7 +326,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-**QS=5** — Full UQFF calibration: Non-local [SSq]^n operator, 3-scenario K_η table, U_m neutron rate
+**QS=5** — Full UQFF calibration: Non-local [SSq]^n operator, 3-scenario K_$\eta$ table, U_m neutron rate
 mediation, 100% experimental accuracy.
 *Copyright — Daniel T. Murphy. Encoded Oct 10, 2025.*
 

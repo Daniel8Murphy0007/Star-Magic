@@ -24,7 +24,7 @@ dust scattering density; FIRST [UA]-[SCm] vacuum energy correction to echo brigh
 **CP4 Class:** Pending (dc707f5d3 batch)
 **C++ Module:** `V838MonUQFFModule.h` / `V838MonUQFFModule.cpp`
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 
 ---
 
@@ -33,9 +33,9 @@ dust scattering density; FIRST [UA]-[SCm] vacuum energy correction to echo brigh
 V838 Monocerotis underwent a dramatic outburst in January 2002, producing a spectacular light echo
 as the outburst light illuminated successive shells of circumstellar dust. This paper presents the
 UQFF model of V838 Mon's light echo intensity evolution, incorporating the outburst luminosity (L =
-2.3×1038 W), dust scattering cross-section (σ_scatter = 1×10-12 m2), gravitational modulation of
+2.3$\times$1038 W), dust scattering cross-section ($\sigma$_scatter = 1$\times$10-12 m2), gravitational modulation of
 dust density via the Ug1 magnetic dipole term, the UQFF time-reversal factor (f_TRZ), and vacuum
-aether corrections [UA′], [SCm]. The key result: I_echo ≈ 1×10-20 W/m2 at t = 3 yr, r = 9×1015 m —
+aether corrections [UA′], [SCm]. The key result: I_echo $\approx$ 1$\times$10-20 W/m2 at t = 3 yr, r = 9$\times$1015 m —
 dust scattering dominant; UA/TRZ corrections advance the quantum-vacuum light propagation framework.
 
 ---
@@ -46,14 +46,14 @@ dust scattering dominant; UA/TRZ corrections advance the quantum-vacuum light pr
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M_s | 8 MM_sun (1.591×1031 kg) | Stellar mass |
-| L_outburst | 2.3×1038 W | Peak outburst luminosity |
-| ρ₀ | 1×10-22 kg/m3 | Initial circumstellar dust density |
-| d | 6.1 kpc (~1.88×1020 m) | Distance to V838 Mon |
-| B | 1×10-5 T | Stellar magnetic field |
-| σ_scatter | 1×10-12 m2 | Dust grain scattering cross-section |
-| α | 0.0005 | Ug1 modulation damping rate |
-| β | 1.0 | Dust density modulation coefficient |
+| M_s | 8 MM_sun (1.591$\times$1031 kg) | Stellar mass |
+| L_outburst | 2.3$\times$1038 W | Peak outburst luminosity |
+| $\rho$0 | 1$\times$10-22 kg/m3 | Initial circumstellar dust density |
+| d | 6.1 kpc (~1.88$\times$1020 m) | Distance to V838 Mon |
+| B | 1$\times$10-5 T | Stellar magnetic field |
+| $\sigma$_scatter | 1$\times$10-12 m2 | Dust grain scattering cross-section |
+| $\alpha$ | 0.0005 | Ug1 modulation damping rate |
+| $\beta$ | 1.0 | Dust density modulation coefficient |
 
 ### 2.2 Light Echo Intensity Equation
 
@@ -94,10 +94,10 @@ brightness**, with [UA′] representing the universal aether quantum state.
 
 | Quantity | Standard Model | UQFF |
 |----------|----------------|------|
-| ρ_dust | Static geometric | Ug1-modulated, exponential decay |
+| $\rho$_dust | Static geometric | Ug1-modulated, exponential decay |
 | Brightness corrections | None | f_TRZ + [UA′]/[SCm] vacuum |
-| Echo profile | 1/(ct)2 purely | 1/(ct)2 × exp(-β·Ug1) |
-| t=3 yr, r=9×1015 m | ~1×10-20 W/m2 | ~1×10-20 W/m2 (validated) |
+| Echo profile | 1/(ct)2 purely | 1/(ct)2 $\times$ exp(-$\beta$$\cdot$Ug1) |
+| t=3 yr, r=9$\times$1015 m | ~1$\times$10-20 W/m2 | ~1$\times$10-20 W/m2 (validated) |
 
 ---
 
@@ -113,7 +113,7 @@ $$\boxed{I_{\rm echo}(r,t) = \frac{L_{\rm outburst}}{4\pi(ct)^2} \cdot \sigma_{\
 
 - **Dust density is not static**: The UQFF Ug1 term physically modifies dust grain trajectories in the gravitational + magnetic field — the echo morphology (as seen in Hubble ACS 2004 images) encodes the three-dimensional dust distribution shaped by the stellar UQFF field.
 - **TRZ factor**: The time-reversal zone correction (f_TRZ) accounts for the non-linear echoing of photons through regions of high Ug1 deflection.
-- **Validation**: I_echo ≈ 1×10-20 W/m2 matches Hubble ACS photometric measurements of V838 Mon at 3 years post-outburst.
+- **Validation**: I_echo $\approx$ 1$\times$10-20 W/m2 matches Hubble ACS photometric measurements of V838 Mon at 3 years post-outburst.
 
 ---
 
@@ -134,7 +134,7 @@ $$\boxed{I_{\rm echo}(r,t) = \frac{L_{\rm outburst}}{4\pi(ct)^2} \cdot \sigma_{\
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -153,7 +153,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -262,7 +262,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -273,10 +273,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

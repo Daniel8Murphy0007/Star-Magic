@@ -34,7 +34,7 @@ dipole, outer field bubble, magnetic strings, star–BH vacuum), each opposed by
 universal buoyancy, unified by magnetism and the Aether metric tensor.  The MUGE
 Compressed gravity framework is a **re-expression of $F_U$** that packages these
 channels into a 9-term multiplicative-additive structure for practical
-multi-system computation.  The classical DPM mass gradient $μ_s∇(M_s/r)$ appears in
+multi-system computation.  The classical DPM mass gradient $\mu_s\nabla(M_s/r)$ appears in
 this compressed form only as the **zero-vacuum, zero-buoyancy limiting case of
 the Ug2 channel** — not as the starting point of the physics.  The
 superconductive factor $(1 - B/B_{\text{crit}})$ predicts measurable
@@ -93,8 +93,8 @@ Um &= N_{\text{str}} \cdot (\mu_j/r_j) \\
 
 $$A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}(\text{UA}, \text{SCm}, \rho_A)$$
 
-**The DPM mass gradient $μ_s∇(M_s/r)$ is the limiting case** of $Ug_2$ when all vacuum couplings,
-charges, SCm density, and reactivity factors → 1 or 0.
+**The DPM mass gradient $\mu_s\nabla(M_s/r)$ is the limiting case** of $Ug_2$ when all vacuum couplings,
+charges, SCm density, and reactivity factors $\to$ 1 or 0.
 
 ## 1b. MUGE Compressed Master Equation
 
@@ -120,36 +120,36 @@ The first four factors form a multiplicative core; the remaining five terms are 
 
 | Term | Role | Physics |
 |------|------|---------|
-| **Mass-distance kernel** | × mult. | $\mu_s\nabla(M_s/r)$ DPM mass gradient base |
-| **Expansion** | × mult. | $(1 + H_0 t)$ Hubble stretching |
-| **Superconductive** | × mult. | $(1 - B/B_{\text{crit}})$ SCm suppression |
-| **Envelope** | × mult. | $F_{\text{env}}(r, \theta, z)$ environment |
+| **Mass-distance kernel** | $\times$ mult. | $\mu_s\nabla(M_s/r)$ DPM mass gradient base |
+| **Expansion** | $\times$ mult. | $(1 + H_0 t)$ Hubble stretching |
+| **Superconductive** | $\times$ mult. | $(1 - B/B_{\text{crit}})$ SCm suppression |
+| **Envelope** | $\times$ mult. | $F_{\text{env}}(r, \theta, z)$ environment |
 | **Ug Sum** | + add. | $\sum_{i=1}^{4} U_{g,i}$ four-force gravity |
 | **Cosmological** | + add. | $\Lambda c^2 / 3$ dark energy |
 | **Quantum** | + add. | Heisenberg uncertainty correction |
 | **Fluid** | + add. | $\rho_f V g_{\text{local}}$ viscous coupling |
 | **Dark Matter** | + add. | Halo mass + density perturbation |
 
-**Key distinction:** The $μ_s∇(M_s/r)$ in this table is not the DPM-seeded gravitational law.  It is the
+**Key distinction:** The $\mu_s\nabla(M_s/r)$ in this table is not the DPM-seeded gravitational law.  It is the
 **classical limit of $Ug_2$** from the unified field $F_U$, compressed for
 computational efficiency.
 
 ---
 
-## 2. Term-by-Term Magnitudes at Sgr A* r_horizon = 1.27 × 10 m
+## 2. Term-by-Term Magnitudes at Sgr A* r_horizon = 1.27 $\times$ 10 m
 
 | Term | Value at r_horizon | Relative to g_DPM |
 |------|------------------|----------------|
-| g_DPM | 2.34 × 10 m/s | 1.000 |
-| d_Expansion | 7.8 × 10?4 m/s | 3.3 × 10?6 |
-| d_Super | -1.2 × 10? m/s | -5.1 × 10?5 |
-| d_Envelope | +8.5 × 10-8 m/s | +3.6 × 10? |
-| `d_Ug_sum` | +1.4 × 10-6 m/s | +6.0 × 10?? |
-| d_Cosm | -6.5 × 10?6 m/s | -2.8 × 10?8 |
-| d_Quantum | +3.2 × 10-47 m/s | +1.4 × 10?4? |
-| d_Fluid | +7.6 × 10?? m/s | +3.2 × 10? |
-| d_Perturbation | +4.7 × 10-4 m/s | +2.0 × 10-6 |
-| **g_total** | **2.340 × 10 m/s** | **1.000002** |
+| g_DPM | 2.34 $\times$ 10 m/s | 1.000 |
+| d_Expansion | 7.8 $\times$ 10?4 m/s | 3.3 $\times$ 10?6 |
+| d_Super | -1.2 $\times$ 10? m/s | -5.1 $\times$ 10?5 |
+| d_Envelope | +8.5 $\times$ 10-8 m/s | +3.6 $\times$ 10? |
+| `d_Ug_sum` | +1.4 $\times$ 10-6 m/s | +6.0 $\times$ 10?? |
+| d_Cosm | -6.5 $\times$ 10?6 m/s | -2.8 $\times$ 10?8 |
+| d_Quantum | +3.2 $\times$ 10-47 m/s | +1.4 $\times$ 10?4? |
+| d_Fluid | +7.6 $\times$ 10?? m/s | +3.2 $\times$ 10? |
+| d_Perturbation | +4.7 $\times$ 10-4 m/s | +2.0 $\times$ 10-6 |
+| **g_total** | **2.340 $\times$ 10 m/s** | **1.000002** |
 
 **No NaN/Inf – PASS.** Total correction relative to Newton: < 5 ppm at r_horizon.
 
@@ -157,7 +157,7 @@ computational efficiency.
 
 ## 3. Dominant Corrections by Scale
 
-### Galactic Scale (r ~ kpc = 3 × 10? m)
+### Galactic Scale (r ~ kpc = 3 $\times$ 10? m)
 
 At galactic radius r = 1 kpc from Sgr A*:
 
@@ -186,11 +186,11 @@ All 5 systems from validator, all 10 MUGE terms verified finite:
 
 | System | M (kg) | r_test (m) | g_MUGE (m/s) | NaN/Inf |
 |--------|--------|-----------|-------------|--------|
-| Sgr A* | 8.0×10-6 | 1.27×10 | 234.3 | None |
-| M87* | 1.26×104 | 1.95×10 | 2.21×10 | None |
-| Sun | 1.99×10 | 6.96×108 | 274.3 | None |
-| NeutronStar | 2.8×10 | 1.2×104 | 1.62×10 | None |
-| Magnetar | 3.0×10 | 1.2×104 | 1.74×10 | None |
+| Sgr A* | 8.0$\times$10-6 | 1.27$\times$10 | 234.3 | None |
+| M87* | 1.26$\times$104 | 1.95$\times$10 | 2.21$\times$10 | None |
+| Sun | 1.99$\times$10 | 6.96$\times$108 | 274.3 | None |
+| NeutronStar | 2.8$\times$10 | 1.2$\times$104 | 1.62$\times$10 | None |
+| Magnetar | 3.0$\times$10 | 1.2$\times$104 | 1.74$\times$10 | None |
 
 ---
 
@@ -231,7 +231,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -258,7 +258,7 @@ P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \cdot \bigl[1 + \beta_i \cdot \Phi
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates
 jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot
 S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
@@ -308,14 +308,14 @@ invoking SIDM cross-sections.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -333,10 +333,10 @@ F_U &= U_{g1} + U_{g2} + U_{g3} \\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -348,9 +348,9 @@ U_m^{\mathrm{full}} &= U_m^{\mathrm{base}}
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -358,8 +358,8 @@ U_m^{\mathrm{full}} &= U_m^{\mathrm{base}}
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -476,7 +476,7 @@ cosmogenesis.
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.167 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -487,13 +487,13 @@ cosmogenesis.
 
 | Observable | UQFF Prediction | SM/Experiment | Alignment |
 |------------|-----------------|---------------|-----------|
-| Fine structure α | Ug1 dipole coupling | 1/137.036 (PDG 2024) | PASS |
-| Cosmological Λ | 1.1×10-52 m-2 | 1.114×10-52 (Planck 2018) | PASS |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr (Super-K) | PASS |
+| Fine structure $\alpha$ | Ug1 dipole coupling | 1/137.036 (PDG 2024) | PASS |
+| Cosmological $\Lambda$ | 1.1$\times$10-52 m-2 | 1.114$\times$10-52 (Planck 2018) | PASS |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr (Super-K) | PASS |
 | Buoyancy signature | F_U_Bi_i gravity correction | Not yet measured | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

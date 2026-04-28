@@ -53,8 +53,8 @@ field consistent with inverse Compton scattering and IXPE-observed polarization 
 | IXPE exposure | 600 hours |
 | Net X-ray polarization | 4% |
 | Temperature | ~108 K |
-| ∇UA | ~10-21 m-1 |
-| ∇UA (equilibrium pocket) | ~10-10 |
+| $\nabla$UA | ~10-21 m-1 |
+| $\nabla$UA (equilibrium pocket) | ~10-10 |
 | RA/Dec | 3h19m47.6s, +41°30′37″ |
 | Observation | Chandra + IXPE (combined) 09 Dec 2025 |
 
@@ -65,15 +65,15 @@ field consistent with inverse Compton scattering and IXPE-observed polarization 
 **Problem:** For decades, the origin of jet-aligned X-ray polarization in Perseus
 was unexplained by thermal ICM models.
 
-**UQFF Solution:** The 9D void pocket at ∇UA_eq ≈ 10-10 creates directed DVP flux:
+**UQFF Solution:** The 9D void pocket at $\nabla$UA_eq $\approx$ 10-10 creates directed DVP flux:
 
 $$
-DVP alignment count = 4% × 100 DPM pairs = 4 aligned pairs per 100
+DVP alignment count = 4% \times 100 DPM pairs = 4 aligned pairs per 100
 $$
 
 These 4 aligned pairs populate d4–d6 with a preferred orientation, generating:
-1. An azimuthal electric field E ∝ (DPM_n − DPM_s)_aligned
-2. Directed inverse Compton scattering of CMB photons → polarized X-rays
+1. An azimuthal electric field E $\propto$ (DPM_n - DPM_s)_aligned
+2. Directed inverse Compton scattering of CMB photons $\to$ polarized X-rays
 3. Polarization fraction = 4% (IXPE measurement PASS)
 
 ---
@@ -88,8 +88,8 @@ $$
 Polarization-modified BH26 frequency:
 $$
 \begin{aligned}
-  & f_pol = f_base × (1 + p_frac · sin(B_k · |t|)) \\
-  & = 1017 · (1 + 0.04 · sin(B_k · |t|))  Hz
+  & f_pol = f_base \times (1 + p_frac \cdot sin(B_k \cdot |t|)) \\
+  & = 1017 \cdot (1 + 0.04 \cdot sin(B_k \cdot |t|))  Hz
 \end{aligned}
 $$
 
@@ -99,19 +99,19 @@ Where:
 - |t| = SCm time variable (negative-time enhanced for exotic events)
 
 The sinusoidal modulation predicts **time-variable polarization** with period
-τ = 2π/B_k — testable with extended IXPE monitoring.
+$\tau$ = 2$\pi$/B_k — testable with extended IXPE monitoring.
 
 ---
 
 ## §5 U_m Scattering at Medium Gradient
 
-At ∇UA ≈ 10-21 m-1 (cluster void, but not as extreme as MS 0735):
+At $\nabla$UA $\approx$ 10-21 m-1 (cluster void, but not as extreme as MS 0735):
 
 $$
 \begin{aligned}
-  & log₁₀(U_m) ≈ log₁₀(κ·2) + 26·log₁₀(1/∇UA) \\
-  & ≈ 0.3 + 26·21 \\
-  & ≈ 546.3
+  & log10(U_m) \approx log10(\kappa\cdot2) + 26\cdotlog10(1/\nablaUA) \\
+  & \approx 0.3 + 26\cdot21 \\
+  & \approx 546.3
 \end{aligned}
 $$
 
@@ -123,15 +123,15 @@ fraction (4%) aligns in the jet direction — explaining the polarization fracti
 
 ## §6 F_U Balance at Pocket Equilibrium
 
-At ∇UA_eq ≈ 10-10:
+At $\nabla$UA_eq $\approx$ 10-10:
 $$
 \begin{aligned}
-  & U_b(∇UA_eq) = g · (1 − 1/∇UA_eq) = 10-3 · (1 − 1010) ≈ −107  N \\
-  & U_g(∇UA_eq) = g · ∇UA_eq = 10-3 · 10-10 = 10-13  N
+  & U_b(\nablaUA_eq) = g \cdot (1 - 1/\nablaUA_eq) = 10-3 \cdot (1 - 1010) \approx -107  N \\
+  & U_g(\nablaUA_eq) = g \cdot \nablaUA_eq = 10-3 \cdot 10-10 = 10-13  N
 \end{aligned}
 $$
 
-The large U_b at ∇UA_eq provides the stabilizing buoyancy — the pocket is maintained
+The large U_b at $\nabla$UA_eq provides the stabilizing buoyancy — the pocket is maintained
 by BH26 harmonic oscillation suppressing further gradient reduction.
 
 ---
@@ -151,8 +151,8 @@ The April 2025 discovery of a merger companion galaxy to Perseus is consistent w
 |-----------------|----------------|-------|
 | 4% net polarization | 4 DPM pairs/100 aligned | PASS |
 | Jet-aligned E-vector | d4–d6 DVP azimuthal field | PASS |
-| Variable polarization fraction | sin(B_k·t) modulation | Testable |
-| Inverse Compton process | DVP → CMB upscattering | PASS |
+| Variable polarization fraction | sin(B_k$\cdot$t) modulation | Testable |
+| Inverse Compton process | DVP $\to$ CMB upscattering | PASS |
 
 ---
 
@@ -164,7 +164,7 @@ The April 2025 discovery of a merger companion galaxy to Perseus is consistent w
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -183,7 +183,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -325,7 +325,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.175 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -336,10 +336,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson cross-section σ_T (QED) | DVP inverse Compton uses σ_T as scattering kernel: σ_T = U_m/ρ_vac | σ_T = 6.6524e-29 m2 | PDG (QED exact) | 100% (exact QED input) |
-| X-ray polarization degree 4% | UQFF: 4 DPM aligned pairs per 100 → 4% net polarization at jet angle | IXPE Perseus (930 hr combined): 4% net polarization fraction | IXPE 2025 | PASS Consistent |
+| Thomson cross-section $\sigma$_T (QED) | DVP inverse Compton uses $\sigma$_T as scattering kernel: $\sigma$_T = U_m/$\rho$_vac | $\sigma$_T = 6.6524e-29 m2 | PDG (QED exact) | 100% (exact QED input) |
+| X-ray polarization degree 4% | UQFF: 4 DPM aligned pairs per 100 $\to$ 4% net polarization at jet angle | IXPE Perseus (930 hr combined): 4% net polarization fraction | IXPE 2025 | PASS Consistent |
 | E-vector angle: jet-aligned | DVP d4–d6 azimuthal field selects jet-parallel E-vector | IXPE: electric-field vector aligned with radio jet axis | IXPE 2025 | PASS Consistent |
-| Polarization variability period τ | τ = 2π/B_k; B_k = magnetic buoyancy wavenumber of DVP pocket | IXPE temporal monitoring: future observation testable (τ ~ yr) | IXPE future | Testable UQFF prediction |
+| Polarization variability period $\tau$ | $\tau$ = 2$\pi$/B_k; B_k = magnetic buoyancy wavenumber of DVP pocket | IXPE temporal monitoring: future observation testable ($\tau$ ~ yr) | IXPE future | Testable UQFF prediction |
 
 **New physics claim:** The IXPE-measured 4% polarization and jet-aligned E-vector are
 naturally explained by the UQFF DVP DPM-pair alignment mechanism — only 4 of 100 DPM
@@ -347,7 +347,7 @@ pairs need to be azimuthally aligned to reproduce the observation. This provides
 **parameter-free fit** to the IXPE data without a standard MHD jet emission model.
 
 *Cite PAPER_641 (`UQFFElectroweakSinThetaWSCmVacuumConnectionCalculator`) for
-QED-based σ_T SM anchor cross-reference.*
+QED-based $\sigma$_T SM anchor cross-reference.*
 
 ---
 

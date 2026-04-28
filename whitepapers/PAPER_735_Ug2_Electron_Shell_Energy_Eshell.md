@@ -10,20 +10,20 @@ tags: [AGN, vacuum, SCm, DPM, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_735 — U_g2 DPM Electron Shell Energy: Eshell = c·νres·h(fSCm)·Ggeo
+# PAPER_735 — U_g2 DPM Electron Shell Energy: Eshell = c$\cdot$$\nu$res$\cdot$h(fSCm)$\cdot$Ggeo
 **Date:** June 5, 2025
 
 **Whitepaper Series:** Star-Magic UQFF Session 179 — Atomic Creation Physics
 **Session:** 179 Part 3
 **Source:** thread_05June2025.txt (June 5, 2025) — Grok 3 analysis of UQFF U_g2 force
 **Classification:** FIRST explicit UQFF U_g2 electron shell energy equation linking SCm resonance
-frequency to orbital geometry; FIRST Eshell = c·νres·h(fSCm)·Ggeo documentation
+frequency to orbital geometry; FIRST Eshell = c$\cdot$$\nu$res$\cdot$h(fSCm)$\cdot$Ggeo documentation
 **Author:** Daniel T. Murphy
 **CP4 Class:** #319 — `Ug2ElectronShellEnergyCalculator`
 **Version:** v5.36
 **CVW:** v2.0.0
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001, k_η = 1e-113, β_i ≈
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001, k_$\eta$ = 1e-113, $\beta$_i $\approx$
 0.603 —>
 
 ---
@@ -49,7 +49,7 @@ The Atomic Creation Process (ACP) proceeds through 26 quantum states:
 
 1. **DPM Initiation**: DPM reactions (UA' + SCm) produce vacuum density, creating U_i (repulsive)
 2. **Proto-Nucleus Formation**: U_i generates U_m strings winding around vacuum density
-3. **Quantum Ripples**: Increasing density → ULF_quantum^{-1,...,-26} ripples → proto-shell crack
+3. **Quantum Ripples**: Increasing density $\to$ ULF_quantum^{-1,...,-26} ripples $\to$ proto-shell crack
 4. **Shell Fragments**: SM_magnetic moments organize fragments; SM_atomic quantum gravity extends to
 U_g2 midpoint
 5. **U_g2 Activation**: Electron placed in 1s orbital — this is the U_g2 mechanism
@@ -103,9 +103,9 @@ $$R_{\mathrm{EB}} = k_R \cdot Z$$
 
 ## 3. Solutions
 
-### 3.1 Proto-Hydrogen (Z=1, θ=π/2)
+### 3.1 Proto-Hydrogen (Z=1, $\theta$=$\pi$/2)
 
-For Z=1, Z_max=1000, νres = 10^12 Hz, θ=π/2:
+For Z=1, Z_max=1000, $\nu$res = 10^12 Hz, $\theta$=$\pi$/2:
 
 $$f_{\mathrm{SCm}} = \frac{1}{1000} = 0.001$$
 
@@ -142,7 +142,7 @@ $$H_{\mathrm{res}} = A_{\mathrm{res}} \cdot \sin(2\pi f_{\mathrm{res}} t) + U_{\
 
 **Eshell from PAPER_735 is a *different*, complementary equation:**
 - HydrogenResonanceShellCalculator: temporal resonance amplitude with magic number shell correction
-- Eshell (PAPER_735): instantaneous shell energy from SCm fraction × resonance frequency × geometry
+- Eshell (PAPER_735): instantaneous shell energy from SCm fraction $\times$ resonance frequency $\times$ geometry
 
 Both describe U_g2 from different perspectives: temporal oscillation vs. energy eigenvalue.
 
@@ -199,7 +199,7 @@ $k_h$ calibration — consistent with UQFF 26-state expansion.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -218,7 +218,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -327,7 +327,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.161 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -338,13 +338,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -356,7 +356,7 @@ bridge.*
 - ACP documentation — UQFF Atomic Creation Process (multiple sessions)
 - PAPER_335 — k^k REB Ramanujan co-sum framework (Session 94)
 - PAPER_429 — Three UQFF Number Systems (Session 168)
-- PAPER_461 — Red Dwarf LENR Pi/Phi (δn expansion, Session 115)
+- PAPER_461 — Red Dwarf LENR Pi/Phi ($\delta$n expansion, Session 115)
 - HydrogenResonanceShellCalculator — CP2, complementary U_g2 form
 - Session 179 Part 3, v5.36
 

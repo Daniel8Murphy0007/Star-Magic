@@ -37,7 +37,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 - [x] Discussion: physical interpretation  
 - [x] Conclusion: implications for broader UQFF framework  
 - [x] References: validation file + C++ source + observational data  
-- [x] Calibration constants explicitly stated: κ=0.0005/day, [SSq]=0.57
+- [x] Calibration constants explicitly stated: $\kappa$=0.0005/day, [SSq]=0.57
 
 ---
 
@@ -46,19 +46,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 The Cabibbo-Kobayashi-Maskawa (CKM) matrix element |V_cb| is a fundamental coupling constant of the
 weak interaction, linking the bottom and charm quarks, and its precise determination tests both the
 unitarity of the CKM matrix and the internal consistency of the Standard Model flavor sector. We
-present a UQFF interpretation of the Belle II measurement |V_cb| = (39.2 ± 0.9) × 10-3 from B → Dℓν
+present a UQFF interpretation of the Belle II measurement |V_cb| = (39.2 $\pm$ 0.9) $\times$ 10-3 from B $\to$ Dℓ$\nu$
 semileptonic decays using 365 fb-1 of SuperKEKB data (arXiv:2506.15256), deriving the observed CKM
 coupling from the UQFF Superconducting Manifold (SCm) flavor-mixing vacuum density [SCm]_flavor =
-|V_cb|2 = 1.537 × 10-3. The `CKMVcbTerm` in the UQFF BSM module reproduces the decay width Γ(B→Dℓν)
-through the unified field relation F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um − Ub_i, with the weak coupling
-entering via η = k_η × G_F2 × q2/π and the Higgs coupling modifier κ_Higgs = 1.0 enforcing the SM
+|V_cb|2 = 1.537 $\times$ 10-3. The `CKMVcbTerm` in the UQFF BSM module reproduces the decay width $\Gamma$(B$\to$Dℓ$\nu$)
+through the unified field relation F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i, with the weak coupling
+entering via $\eta$ = k_$\eta$ $\times$ G_F2 $\times$ q2/$\pi$ and the Higgs coupling modifier $\kappa$_Higgs = 1.0 enforcing the SM
 constraint. This paper establishes a mapping between the CKM flavor sector and the UQFF vacuum
 density hierarchy, providing the [SCm]_flavor calibration constant that anchors the LFV suppression
 mechanism described in Paper #27.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -69,18 +69,18 @@ present in Standard Model treatments.
 ### 1.1 The CKM Matrix and |V_cb| in the Standard Model
 
 The Cabibbo-Kobayashi-Maskawa (CKM) matrix describes the mixing between quark mass eigenstates and
-weak interaction eigenstates in the Standard Model. It is a 3×3 unitary matrix parameterized by
-three mixing angles (θ₁₂, θ₁₃, θ₂₃) and one CP-violating phase δ. The element |V_cb| — connecting
+weak interaction eigenstates in the Standard Model. It is a 3$\times$3 unitary matrix parameterized by
+three mixing angles ($\theta$12, $\theta$13, $\theta$23) and one CP-violating phase $\delta$. The element |V_cb| — connecting
 the b quark to the c quark — is one of the most precisely measured CKM elements and is extracted
 from exclusive and inclusive semileptonic B-meson decays.
 
-In the Standard Model, |V_cb| enters the B → D*ℓν and B → Dℓν decay rates as:
+In the Standard Model, |V_cb| enters the B $\to$ D*ℓ$\nu$ and B $\to$ Dℓ$\nu$ decay rates as:
 
 $$
-Γ(B → Dℓν) ∝ G_F2 |V_cb|2 m_B5 × |F(q2)|2 × phase_space(q2)
+\Gamma(B \to Dℓ\nu) \propto G_F2 |V_cb|2 m_B5 \times |F(q2)|2 \times phase_space(q2)
 $$
 
-where G_F = 1.1663787 × 10-5 GeV-2 is the Fermi constant, F(q2) is the hadronic form factor at
+where G_F = 1.1663787 $\times$ 10-5 GeV-2 is the Fermi constant, F(q2) is the hadronic form factor at
 momentum transfer squared q2, and m_B = 5.27965 GeV is the B0 meson mass. Precise measurement of
 |V_cb| requires careful form factor modeling, particularly using lattice QCD or heavy quark
 effective theory (HQET) parameterizations.
@@ -90,43 +90,43 @@ $$
 |V_cd|2 + |V_cs|2 + |V_cb|2 = 1
 $$
 Tension between inclusive and exclusive determinations of |V_cb| (the "V_cb puzzle") has long been a
-notable discrepancy in flavor physics, potentially hinting at BSM physics in the b → c transition.
+notable discrepancy in flavor physics, potentially hinting at BSM physics in the b $\to$ c transition.
 
 ### 1.2 Belle II Measurement (arXiv:2506.15256)
 
-The Belle II collaboration used 365 fb-1 of data collected at the SuperKEKB e⁺e- collider at √s =
-10.58 GeV (Υ(4S) resonance) to measure |V_cb| from the exclusive decay B → Dℓν. The measurement
+The Belle II collaboration used 365 fb-1 of data collected at the SuperKEKB e+e- collider at $\sqrt{}$s =
+10.58 GeV ($\Upsilon$(4S) resonance) to measure |V_cb| from the exclusive decay B $\to$ Dℓ$\nu$. The measurement
 employed:
 
 - **Tag-side reconstruction:** Hadronic full-reconstruction tagging of one B meson
-- **Signal-side:** B0 → D-ℓ⁺νℓ and B⁺ → D̄0ℓ⁺νℓ signal modes
+- **Signal-side:** B0 $\to$ D-ℓ+$\nu$ℓ and B+ $\to$ D̄0ℓ+$\nu$ℓ signal modes
 - **Form factor parameterization:** Caprini-Lellouch-Neubert (CLN) and Boyd-Grinstein-Lebed (BGL) fits
 - **q2 range:** 0 to 11.6 GeV2 (full kinematic range)
 
 The primary result:
 $$
 \begin{aligned}
-  & |V_cb| = (39.2 ± 0.4(stat) ± 0.6(sys) ± 0.5(th)) × 10-3 \\
-  & = (39.2 ± 0.9) × 10-3   [combined uncertainty]
+  & |V_cb| = (39.2 \pm 0.4(stat) \pm 0.6(sys) \pm 0.5(th)) \times 10-3 \\
+  & = (39.2 \pm 0.9) \times 10-3   [combined uncertainty]
 \end{aligned}
 $$
 Additionally, the branching fractions are measured as:
 $$
 \begin{aligned}
-  & BR(B0 → D-ℓ⁺νℓ) = (2.06 ± 0.08) % \\
-  & BR(B⁺ → D̄0ℓ⁺νℓ) = (2.31 ± 0.09) % \\
-  & LFU ratio R(Deν/Dμν) = 1.020 ± 0.030   [SM = 1.000 ± 0.003]
+  & BR(B0 \to D-ℓ+\nuℓ) = (2.06 \pm 0.08) % \\
+  & BR(B+ \to D̄0ℓ+\nuℓ) = (2.31 \pm 0.09) % \\
+  & LFU ratio R(De\nu/D\mu\nu) = 1.020 \pm 0.030   [SM = 1.000 \pm 0.003]
 \end{aligned}
 $$
-The LFU ratio is consistent with the Standard Model at the 0.7σ level, confirming lepton flavor
-universality in b → c transitions at this precision.
+The LFU ratio is consistent with the Standard Model at the 0.7$\sigma$ level, confirming lepton flavor
+universality in b $\to$ c transitions at this precision.
 
 ### 1.3 The V_cb Puzzle and BSM Implications
 
-The longstanding V_cb puzzle — a ~2σ tension between inclusive determinations (|V_cb|^incl ~ 42 ×
-10-3) and exclusive determinations (|V_cb|^excl ~ 39 × 10-3) — persists at the level of:
+The longstanding V_cb puzzle — a ~2$\sigma$ tension between inclusive determinations (|V_cb|^incl ~ 42 $\times$
+10-3) and exclusive determinations (|V_cb|^excl ~ 39 $\times$ 10-3) — persists at the level of:
 $$
-Δ|V_cb| = |V_cb|^incl − |V_cb|^excl ≈ 3 × 10-3  (~2σ)
+\Delta|V_cb| = |V_cb|^incl - |V_cb|^excl \approx 3 \times 10-3  (~2\sigma)
 $$
 Within the UQFF framework, this tension is interpreted as a physical consequence of the SCm vacuum
 flavor mixing density [SCm]_flavor, which modulates the effective weak coupling at the hadronic
@@ -148,28 +148,28 @@ vacuum density of the Superconducting Manifold. Specifically:
 $$
 \begin{aligned}
   & [SCm]_flavor = |V_cb|2 \\
-  & = (39.2 × 10-3)2 \\
-  & = 1.537 × 10-3
+  & = (39.2 \times 10-3)2 \\
+  & = 1.537 \times 10-3
 \end{aligned}
 $$
-This quantity represents the fraction of the SCm vacuum that supports b → c flavor transitions —
+This quantity represents the fraction of the SCm vacuum that supports b $\to$ c flavor transitions —
 i.e., the probability amplitude for a bottom-quark flavor state to mix with a charm-quark flavor
 state through the SCm condensate.
 
 The physical interpretation is:
-- High [SCm]_flavor → SCm supports flavor transitions freely (no suppression)
-- Low [SCm]_flavor → SCm enforces approximate flavor conservation
-- [SCm]_flavor ~ 1.5 × 10-3 → Cabibbo-suppressed transitions are moderately suppressed by the SCm
+- High [SCm]_flavor $\to$ SCm supports flavor transitions freely (no suppression)
+- Low [SCm]_flavor $\to$ SCm enforces approximate flavor conservation
+- [SCm]_flavor ~ 1.5 $\times$ 10-3 $\to$ Cabibbo-suppressed transitions are moderately suppressed by the SCm
 
-### 2.2 The UQFF Weak Coupling η
+### 2.2 The UQFF Weak Coupling $\eta$
 
-In the UQFF, the LENR neutron rate coupling k_η enters weak decays through the η parameter:
+In the UQFF, the LENR neutron rate coupling k_$\eta$ enters weak decays through the $\eta$ parameter:
 $$
-η_weak = k_η × G_F2 × q2 / π
+\eta_weak = k_\eta \times G_F2 \times q2 / \pi
 $$
 where:
-- k_η = 10-113 is the UQFF LENR neutron rate coefficient (dimensionless, from `BSMPhysicsUQFFModule.cpp`)
-- G_F = 1.1663787 × 10-5 GeV-2 is the Fermi constant
+- k_$\eta$ = 10-113 is the UQFF LENR neutron rate coefficient (dimensionless, from `BSMPhysicsUQFFModule.cpp`)
+- G_F = 1.1663787 $\times$ 10-5 GeV-2 is the Fermi constant
 - q2 is the momentum transfer squared (GeV2)
 
 This coupling is extremely small (O(10-113)), reflecting the deep suppression of weak-scale
@@ -180,31 +180,31 @@ Ub_i) of the unified force equation.
 
 The `CKMVcbTerm` in `Core/Modules/BSMPhysicsUQFFModule.cpp` (§6) implements:
 $$
-F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um − Ub_i
+F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i
 $$
 **Step 1 — Decay Width (Standard physics baseline):**
 $$
 \begin{aligned}
-  & Γ(B→Dℓν) = G_F2 × |V_cb|2 × (m_B × \text{GeV\_to\_J})5 \\
-  & × phase_space(m_D/m_B) \\
-  & × form_factor2(q2) \\
-  & / (192 π3 ℏ) \\
-  & phase_space = √(1 − (m_D/m_B)2) = √(1 − (1.86966/5.27965)2) = 0.9360 \\
-  & form_factor = 1 − q2/m_B2     [simplified CLN at mid-range q2] \\
+  & \Gamma(B\toDℓ\nu) = G_F2 \times |V_cb|2 \times (m_B \times \text{GeV\_to\_J})5 \\
+  & \times phase_space(m_D/m_B) \\
+  & \times form_factor2(q2) \\
+  & / (192 \pi3 ℏ) \\
+  & phase_space = \sqrt{}(1 - (m_D/m_B)2) = \sqrt{}(1 - (1.86966/5.27965)2) = 0.9360 \\
+  & form_factor = 1 - q2/m_B2     [simplified CLN at mid-range q2] \\
   & With q2 = 5.8 GeV2 (midpoint of [0, 11.6]): \\
-  & form_factor = 1 − 5.8/27.87 = 0.7920 \\
-  & Γ ≈ (1.1664×10-5)2 × (39.2×10-3)2 × (5.27965 × 1.602×10-10)5 \\
-  & × 0.9360 × 0.79202 / (192 × π3 × 1.0546×10-34) \\
-  & ≈ 3.14 × 109 s-1   (→ τ_B ~ 1.5 ps, consistent with PDG)
+  & form_factor = 1 - 5.8/27.87 = 0.7920 \\
+  & \Gamma \approx (1.1664\times10-5)2 \times (39.2\times10-3)2 \times (5.27965 \times 1.602\times10-10)5 \\
+  & \times 0.9360 \times 0.79202 / (192 \times \pi3 \times 1.0546\times10-34) \\
+  & \approx 3.14 \times 109 s-1   (\to \tau_B ~ 1.5 ps, consistent with PDG)
 \end{aligned}
 $$
 
 **Step 2 — Ug1 (B meson rest-mass gravity):**
 $$
 \begin{aligned}
-  & Ug1 = m_B × \text{GeV\_to\_J} / (m_p × c2) \\
-  & = 5.27965 × 1.602×10-10 / (1.673×10-27 × 9×1016) \\
-  & = 8.458×10-10 / 1.506×10-10 \\
+  & Ug1 = m_B \times \text{GeV\_to\_J} / (m_p \times c2) \\
+  & = 5.27965 \times 1.602\times10-10 / (1.673\times10-27 \times 9\times1016) \\
+  & = 8.458\times10-10 / 1.506\times10-10 \\
   & = 5.614
 \end{aligned}
 $$
@@ -212,9 +212,9 @@ $$
 **Step 3 — Ug2 (CKM unitarity constraint):**
 $$
 \begin{aligned}
-  & Ug2 = |V_cb|2 × κ_Higgs \\
-  & = (39.2×10-3)2 × 1.0 \\
-  & = 1.537 × 10-3 \\
+  & Ug2 = |V_cb|2 \times \kappa_Higgs \\
+  & = (39.2\times10-3)2 \times 1.0 \\
+  & = 1.537 \times 10-3 \\
   & = [SCm]_flavor
 \end{aligned}
 $$
@@ -223,9 +223,9 @@ This is the key UQFF result: **Ug2 is exactly the SCm flavor-mixing vacuum densi
 **Step 4 — Ug3 (Form factor q2 dependence):**
 $$
 \begin{aligned}
-  & Ug3 = F(q2) × ℏc / (m_B × \text{GeV\_to\_J} × 1 fm) \\
-  & = 0.7920 × (1.0546×10-34 × 2.998×108) / (8.458×10-10 × 10-15) \\
-  & = 0.7920 × 3.162×10-26 / 8.458×10-25 \\
+  & Ug3 = F(q2) \times ℏc / (m_B \times \text{GeV\_to\_J} \times 1 fm) \\
+  & = 0.7920 \times (1.0546\times10-34 \times 2.998\times108) / (8.458\times10-10 \times 10-15) \\
+  & = 0.7920 \times 3.162\times10-26 / 8.458\times10-25 \\
   & = 0.02960
 \end{aligned}
 $$
@@ -233,9 +233,9 @@ $$
 **Step 5 — Ug4 (Weak-scale vacuum ratio):**
 $$
 \begin{aligned}
-  & Ug4 = ρ_UA × (m_W × \text{GeV\_to\_J}) / (ρ_SCm × m_p × c2) \\
-  & = (7.09×10-36 × 80.379 × 1.602×10-10) / (6.38×10-36 × 1.506×10-10) \\
-  & = 9.133×10-44 / 9.608×10-46 \\
+  & Ug4 = \rho_UA \times (m_W \times \text{GeV\_to\_J}) / (\rho_SCm \times m_p \times c2) \\
+  & = (7.09\times10-36 \times 80.379 \times 1.602\times10-10) / (6.38\times10-36 \times 1.506\times10-10) \\
+  & = 9.133\times10-44 / 9.608\times10-46 \\
   & = 95.06
 \end{aligned}
 $$
@@ -243,18 +243,18 @@ $$
 **Step 6 — Um (weak coupling magnetism):**
 $$
 \begin{aligned}
-  & Um = η_weak × μ_B / (m_B × \text{GeV\_to\_J} × c) \\
-  & = (10-113 × G_F2 × q2 / π) × 9.274×10-24 / (8.458×10-10 × 3×108) \\
-  & ≈ 0  [strongly suppressed at O(10-113)]
+  & Um = \eta_weak \times \mu_B / (m_B \times \text{GeV\_to\_J} \times c) \\
+  & = (10-113 \times G_F2 \times q2 / \pi) \times 9.274\times10-24 / (8.458\times10-10 \times 3\times108) \\
+  & \approx 0  [strongly suppressed at O(10-113)]
 \end{aligned}
 $$
 
 **Step 7 — Ub_i (LENR buoyancy):**
 $$
 \begin{aligned}
-  & Ub_i = β_i × Γ / (m_B × \text{GeV\_to\_J} × c2) \\
-  & = 0.603 × 3.14×109 / (8.458×10-10 × 9×1016) \\
-  & = 1.895×109 / 7.612×107 \\
+  & Ub_i = \beta_i \times \Gamma / (m_B \times \text{GeV\_to\_J} \times c2) \\
+  & = 0.603 \times 3.14\times109 / (8.458\times10-10 \times 9\times1016) \\
+  & = 1.895\times109 / 7.612\times107 \\
   & = 24.89
 \end{aligned}
 $$
@@ -262,12 +262,12 @@ $$
 **Step 8 — Total F_U:**
 $$
 \begin{aligned}
-  & F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um − Ub_i \\
-  & = 5.614 + 1.537×10-3 + 0.02960 + 95.06 + ~0 − 24.89 \\
+  & F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i \\
+  & = 5.614 + 1.537\times10-3 + 0.02960 + 95.06 + ~0 - 24.89 \\
   & = 75.81
 \end{aligned}
 $$
-F_U > 0 confirms the B → Dℓν transition is energetically supported by the UQFF vacuum — consistent
+F_U > 0 confirms the B $\to$ Dℓ$\nu$ transition is energetically supported by the UQFF vacuum — consistent
 with the observed 2.06% branching fraction.
 
 ### 2.4 UQFF Derivation of [SCm]_flavor
@@ -275,9 +275,9 @@ with the observed 2.06% branching fraction.
 The core UQFF result for Paper #28 is the mapping of |V_cb| to the SCm vacuum:
 $$
 \begin{aligned}
-  & [SCm]_flavor ≡ Ug2 = |V_cb|2 × κ_Higgs \\
-  & With |V_cb| = 39.2×10-3 and κ_Higgs = 1.0: \\
-  & [SCm]_flavor = (39.2×10-3)2 = 1.5366 × 10-3
+  & [SCm]_flavor \equiv Ug2 = |V_cb|2 \times \kappa_Higgs \\
+  & With |V_cb| = 39.2\times10-3 and \kappa_Higgs = 1.0: \\
+  & [SCm]_flavor = (39.2\times10-3)2 = 1.5366 \times 10-3
 \end{aligned}
 $$
 This value appears in `source4.cpp`:
@@ -380,15 +380,15 @@ double compute(...) const override {
 
 ### 3.4 Consistency Check: LFU Ratio
 
-The LFU ratio R(Deν/Dμν) = 1.020 ± 0.030 compared to the SM prediction 1.000 ± 0.003 is a 0.67σ
-deviation. In UQFF, this ratio enters through the ratio of κ_Higgs factors for electron vs. muon
-final states. Since κ_Higgs = 1.0 for both (SM limit), the UQFF prediction is R = 1.000 exactly. The
+The LFU ratio R(De$\nu$/D$\mu$$\nu$) = 1.020 $\pm$ 0.030 compared to the SM prediction 1.000 $\pm$ 0.003 is a 0.67$\sigma$
+deviation. In UQFF, this ratio enters through the ratio of $\kappa$_Higgs factors for electron vs. muon
+final states. Since $\kappa$_Higgs = 1.0 for both (SM limit), the UQFF prediction is R = 1.000 exactly. The
 observed 2% excess is within measurement uncertainty and does not require a UQFF correction at this
 precision.
 
 ### 3.5 Connection to Paper #27: LFV Suppression Anchor
 
-The [SCm]_flavor = 1.537 × 10-3 value established in this paper directly anchors the LFV suppression
+The [SCm]_flavor = 1.537 $\times$ 10-3 value established in this paper directly anchors the LFV suppression
 derived in Paper #27. Specifically:
 ```
 t_n_LFV threshold (Paper #27) = −ln(BR_LFV) / π = 3.833
@@ -397,7 +397,7 @@ Background flavor mixing (Paper #28) = [SCm]_flavor = |V_cb|2 = 1.537×10-3
 Ratio: BR_LFV / [SCm]_flavor = 5.9×10-6 / 1.537×10-3 = 3.84×10-3
 ```
 This ratio characterizes the fractional LFV amplitude relative to the allowed CKM flavor-mixing
-background — a dimensionless suppression factor unique to the b → τe sector in UQFF.
+background — a dimensionless suppression factor unique to the b $\to$ $\tau$e sector in UQFF.
 
 ---
 
@@ -407,27 +407,27 @@ background — a dimensionless suppression factor unique to the b → τe sector
 
 | Observable | UQFF Prediction | Belle II Measured | Agreement | Tolerance |
 |-----------|-----------------|-------------------|-----------|-----------|
-| |V_cb| | √[SCm]_flavor = 39.2×10-3 | (39.2 ± 0.9)×10-3 | ✅ Exact | within 1σ |
-| [SCm]_flavor | |V_cb|2 = 1.537×10-3 | N/A (UQFF quantity) | ✅ Defined | — |
-| BR(B0→D-ℓ⁺νℓ) | Γ/Γ_total → 2.06% | (2.06 ± 0.08)% | ✅ Exact | within 1σ |
-| BR(B⁺→D̄0ℓ⁺νℓ) | isospin → 2.31% | (2.31 ± 0.09)% | ✅ Exact | within 1σ |
-| LFU R(eν/μν) | 1.000 (κ_Higgs=1.0) | 1.020 ± 0.030 | ✅ Within 1σ | 0.67σ |
-| F_U (B→Dℓν) | 75.81 (positive → allowed) | Signal observed | ✅ Consistent | — |
-| Ug2 = [SCm]_flavor | 1.537×10-3 | — | ✅ Calibrated | — |
-| κ_Higgs | 1.0 (SM limit) | Consistent | ✅ Applied | — |
+| |V_cb| | $\sqrt{}$[SCm]_flavor = 39.2$\times$10-3 | (39.2 $\pm$ 0.9)$\times$10-3 | ✅ Exact | within 1$\sigma$ |
+| [SCm]_flavor | |V_cb|2 = 1.537$\times$10-3 | N/A (UQFF quantity) | ✅ Defined | — |
+| BR(B0$\to$D-ℓ+$\nu$ℓ) | $\Gamma$/$\Gamma$_total $\to$ 2.06% | (2.06 $\pm$ 0.08)% | ✅ Exact | within 1$\sigma$ |
+| BR(B+$\to$D̄0ℓ+$\nu$ℓ) | isospin $\to$ 2.31% | (2.31 $\pm$ 0.09)% | ✅ Exact | within 1$\sigma$ |
+| LFU R(e$\nu$/$\mu$$\nu$) | 1.000 ($\kappa$_Higgs=1.0) | 1.020 $\pm$ 0.030 | ✅ Within 1$\sigma$ | 0.67$\sigma$ |
+| F_U (B$\to$Dℓ$\nu$) | 75.81 (positive $\to$ allowed) | Signal observed | ✅ Consistent | — |
+| Ug2 = [SCm]_flavor | 1.537$\times$10-3 | — | ✅ Calibrated | — |
+| $\kappa$_Higgs | 1.0 (SM limit) | Consistent | ✅ Applied | — |
 
 ### 4.2 UQFF Parameter Summary
 
 | UQFF Parameter | Value | Physical Meaning |
 |----------------|-------|-----------------|
-| [SCm]_flavor | 1.5366 × 10-3 | SCm b→c flavor mixing vacuum density |
-| Ug2 | 1.537 × 10-3 | CKM unitarity contribution to F_U |
+| [SCm]_flavor | 1.5366 $\times$ 10-3 | SCm b$\to$c flavor mixing vacuum density |
+| Ug2 | 1.537 $\times$ 10-3 | CKM unitarity contribution to F_U |
 | Ug4 | 95.06 | Weak-scale W boson vacuum ratio |
 | Ub_i | 24.89 | Buoyancy opposition from decay width |
-| F_U (net) | 75.81 | Positive: B→Dℓν energetically supported |
-| η_weak | k_η × G_F2 × q2/π | UQFF weak coupling (O(10-113)) |
-| κ_Higgs | 1.0 | Higgs coupling modifier (SM limit) |
-| κ = 0.0005/day | Applied | Temporal decay calibration |
+| F_U (net) | 75.81 | Positive: B$\to$Dℓ$\nu$ energetically supported |
+| $\eta$_weak | k_$\eta$ $\times$ G_F2 $\times$ q2/$\pi$ | UQFF weak coupling (O(10-113)) |
+| $\kappa$_Higgs | 1.0 | Higgs coupling modifier (SM limit) |
+| $\kappa$ = 0.0005/day | Applied | Temporal decay calibration |
 | [SSq] = 0.57 | Applied | SCm coherence factor |
 
 ---
@@ -438,7 +438,7 @@ background — a dimensionless suppression factor unique to the b → τe sector
 
 In the UQFF framework, the SCm is a field condensate that permeates the vacuum and mediates
 flavor-changing transitions. The density [SCm]_flavor = |V_cb|2 represents the fraction of SCm
-vacuum that is "coherent" with the b → c flavor sector — i.e., the amplitude squared for a
+vacuum that is "coherent" with the b $\to$ c flavor sector — i.e., the amplitude squared for a
 b-flavored condensate fluctuation to carry charm quantum numbers.
 
 This interpretation makes a direct prediction: the hierarchy of CKM elements reflects the hierarchy
@@ -453,7 +453,7 @@ gradient across flavor sectors, with the lightest generations coupling most stro
 
 ### 5.2 The V_cb Puzzle in UQFF
 
-The inclusive vs. exclusive |V_cb| tension (Δ|V_cb| ~ 3×10-3) maps in UQFF to a tension in
+The inclusive vs. exclusive |V_cb| tension ($\Delta$|V_cb| ~ 3$\times$10-3) maps in UQFF to a tension in
 [SCm]_flavor:
 ```
 Δ[SCm]_flavor = |V_cb|_incl2 − |V_cb|_excl2
@@ -466,16 +466,16 @@ inclusive scale (higher virtuality, O(m_b2)), the SCm density is slightly higher
 exclusive scale (specific q2 range). This would be a new UQFF prediction for the scale-dependence of
 CKM elements — testable with future HL-LHC and Belle II data at higher statistics.
 
-### 5.3 κ_Higgs and Paper #34 Connection
+### 5.3 $\kappa$_Higgs and Paper #34 Connection
 
-The Higgs coupling modifier κ_Higgs = 1.0 applied here will be revisited in Paper #34 (Higgs κ_t
-Coupling: UQFF vs CERN HL-LHC Data). If Paper #34 finds κ_Higgs ≠ 1.0 for the top quark coupling,
+The Higgs coupling modifier $\kappa$_Higgs = 1.0 applied here will be revisited in Paper #34 (Higgs $\kappa$_t
+Coupling: UQFF vs CERN HL-LHC Data). If Paper #34 finds $\kappa$_Higgs $\neq$ 1.0 for the top quark coupling,
 the CKM sector would require a corresponding correction via:
 ```
 |V_cb|_eff = |V_cb|_SM × √(κ_Higgs)
 ```
 This cross-domain consistency constraint is a unique UQFF feature, linking the B-physics sector to
-the Higgs sector through the shared κ_Higgs parameter.
+the Higgs sector through the shared $\kappa$_Higgs parameter.
 
 ---
 
@@ -483,22 +483,22 @@ the Higgs sector through the shared κ_Higgs parameter.
 
 We have presented the UQFF interpretation of the Belle II |V_cb| measurement, demonstrating that:
 
-1. **The CKM element |V_cb|** = (39.2 ± 0.9) × 10-3 maps directly to the UQFF SCm flavor-mixing
-vacuum density: [SCm]_flavor = |V_cb|2 = 1.537 × 10-3, reproduced exactly by the Ug2 term of the
-UQFF force equation with κ_Higgs = 1.0.
+1. **The CKM element |V_cb|** = (39.2 $\pm$ 0.9) $\times$ 10-3 maps directly to the UQFF SCm flavor-mixing
+vacuum density: [SCm]_flavor = |V_cb|2 = 1.537 $\times$ 10-3, reproduced exactly by the Ug2 term of the
+UQFF force equation with $\kappa$_Higgs = 1.0.
 
-2. **The UQFF force** F_U = 75.81 (positive) confirms that the B → Dℓν transition is energetically
+2. **The UQFF force** F_U = 75.81 (positive) confirms that the B $\to$ Dℓ$\nu$ transition is energetically
 supported by the UQFF vacuum, consistent with the observed 2.06% / 2.31% branching fractions.
 
-3. **The LFU ratio** R(Deν/Dμν) = 1.020 ± 0.030 is consistent with the UQFF prediction of 1.000
-(κ_Higgs = 1.0) at the 0.67σ level — no BSM correction required at current precision.
+3. **The LFU ratio** R(De$\nu$/D$\mu$$\nu$) = 1.020 $\pm$ 0.030 is consistent with the UQFF prediction of 1.000
+($\kappa$_Higgs = 1.0) at the 0.67$\sigma$ level — no BSM correction required at current precision.
 
 4. **The [SCm]_flavor parameter** anchors the LFV suppression from Paper #27: the ratio
-BR_LFV/[SCm]_flavor = 3.84 × 10-3 characterizes the fractional LFV amplitude relative to allowed CKM
+BR_LFV/[SCm]_flavor = 3.84 $\times$ 10-3 characterizes the fractional LFV amplitude relative to allowed CKM
 flavor-mixing background.
 
-5. **A V_cb puzzle interpretation** is proposed: the inclusive/exclusive tension Δ[SCm]_flavor =
-2.27 × 10-4 may reflect scale-dependent running of the SCm density, testable with future
+5. **A V_cb puzzle interpretation** is proposed: the inclusive/exclusive tension $\Delta$[SCm]_flavor =
+2.27 $\times$ 10-4 may reflect scale-dependent running of the SCm density, testable with future
 higher-statistics B-physics data.
 
 The validation is implemented in `bsm_physics_validation.py` (Section 2), `source4.cpp` (BSM
@@ -509,8 +509,8 @@ calibration block lines ~326–335), and `Core/Modules/BSMPhysicsUQFFModule.cpp`
 
 ## References
 
-1. Belle II Collaboration, "Determination of |V_cb| from B → Dℓν at Belle II," arXiv:2506.15256
-(2025). 365 fb-1, SuperKEKB. |V_cb| = (39.2 ± 0.9)×10-3.
+1. Belle II Collaboration, "Determination of |V_cb| from B $\to$ Dℓ$\nu$ at Belle II," arXiv:2506.15256
+(2025). 365 fb-1, SuperKEKB. |V_cb| = (39.2 $\pm$ 0.9)$\times$10-3.
 
 2. Murphy, D.T., "UQFF Star-Magic Framework: BSM Physics Validation," `bsm_physics_validation.py`,
 January 26, 2026. Star-Magic repository, Daniel8Murphy0007/Star-Magic.
@@ -605,11 +605,11 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Gate | Requirement | Status |
 |------|-------------|--------|
-| G1 | Primary equation derived from UQFF framework | ✅ F_U = Ug1+Ug2+Ug3+Ug4+Um−Ub_i; Ug2 = |V_cb|2×κ_Higgs |
-| G2 | Numerical result agrees with observational data within stated tolerance | ✅ |V_cb|_UQFF = √(Ug2) = 39.2×10-3 matches Belle II (exact) |
-| G3 | UQFF calibration constants (κ, [SSq]) properly applied | ✅ κ=0.0005/day; [SSq]=0.57; κ_Higgs=1.0; k_η=10-113 |
+| G1 | Primary equation derived from UQFF framework | ✅ F_U = Ug1+Ug2+Ug3+Ug4+Um-Ub_i; Ug2 = |V_cb|2$\times$$\kappa$_Higgs |
+| G2 | Numerical result agrees with observational data within stated tolerance | ✅ |V_cb|_UQFF = $\sqrt{}$(Ug2) = 39.2$\times$10-3 matches Belle II (exact) |
+| G3 | UQFF calibration constants ($\kappa$, [SSq]) properly applied | ✅ $\kappa$=0.0005/day; [SSq]=0.57; $\kappa$_Higgs=1.0; k_$\eta$=10-113 |
 | G4 | Comparison with standard model (GR/SM) explicitly shown | ✅ Table §2.6: SM free parameter vs UQFF [SCm]_flavor derivation |
-| G5 | Physical units verified (dimensional analysis) | ✅ [SCm]_flavor dimensionless; F_U dimensionless; Γ in s-1 |
+| G5 | Physical units verified (dimensional analysis) | ✅ [SCm]_flavor dimensionless; F_U dimensionless; $\Gamma$ in s-1 |
 | G6 | Source validation file referenced and run successfully | ✅ `b`sm_physics_validation`.py` Section 2 |
 | G7 | C++ source file connection documented | ✅ `BSMPhysicsUQFFModule.cpp` CKMVcbTerm §6; `source4.cpp` |
 | G8 | arXiv/LIGO/CERN reference cited | ✅ arXiv:2506.15256 (primary); PDG 2022 |
@@ -620,19 +620,19 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Constant | Symbol | Value | Source |
 |----------|--------|-------|--------|
-| SCm flavor mixing | [SCm]_flavor | 1.5366 × 10-3 | |V_cb|2 = (39.2e-3)2 |
-| Higgs coupling modifier | κ_Higgs | 1.0 | `BSMPhysicsUQFFModule.cpp` |
-| UQFF decay calibration | κ | 0.0005/day | `source4.cpp` |
+| SCm flavor mixing | [SCm]_flavor | 1.5366 $\times$ 10-3 | |V_cb|2 = (39.2e-3)2 |
+| Higgs coupling modifier | $\kappa$_Higgs | 1.0 | `BSMPhysicsUQFFModule.cpp` |
+| UQFF decay calibration | $\kappa$ | 0.0005/day | `source4.cpp` |
 | String sector factor | [SSq] | 0.57 | `BSMPhysicsUQFFModule.cpp` |
-| Buoyancy coupling | β_i | 0.603 | `source4.cpp` |
-| LENR coupling | k_η | 10-113 | `BSMPhysicsUQFFModule.cpp` |
-| UA vacuum density | ρ_UA | 7.09×10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
-| SCm vacuum density | ρ_SCm | 6.38×10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
+| Buoyancy coupling | $\beta$_i | 0.603 | `source4.cpp` |
+| LENR coupling | k_$\eta$ | 10-113 | `BSMPhysicsUQFFModule.cpp` |
+| UA vacuum density | $\rho$_UA | 7.09$\times$10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
+| SCm vacuum density | $\rho$_SCm | 6.38$\times$10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
 | B0 meson mass | m_B | 5.27965 GeV/c2 | PDG 2022 |
-| D⁺ meson mass | m_D | 1.86966 GeV/c2 | PDG 2022 |
+| D+ meson mass | m_D | 1.86966 GeV/c2 | PDG 2022 |
 | W boson mass | m_W | 80.379 GeV/c2 | PDG 2022 |
-| Fermi constant | G_F | 1.1663787×10-5 GeV-2 | PDG 2022 |
-| CKM |V_cb| | V_cb | 39.2×10-3 | arXiv:2506.15256 |
+| Fermi constant | G_F | 1.1663787$\times$10-5 GeV-2 | PDG 2022 |
+| CKM |V_cb| | V_cb | 39.2$\times$10-3 | arXiv:2506.15256 |
 | CKM |V_cd| | V_cd | 0.221 | PDG 2022 |
 | CKM |V_cs| | V_cs | 0.975 | PDG 2022 |
 
@@ -645,9 +645,9 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ---
 
 **Validator:** `bsm_physics_validation.py` — PASSED  
-*CKM: |V_cb| = (39.2 ± 0.9)×10-3 (Belle II exact); [SCm]_flavor = |V_cb|2 = 1.537×10-3; BR(B0→D-ℓ⁺ν)
-= 2.06%, BR(B⁺→D̄0ℓ⁺ν) = 2.31%; LFU R = 1.000 (SM limit, within 1σ of 1.020±0.030); F_U(B→Dℓν) =
-75.81 (positive signal); κ = 0.0005/day, [SSq] = 0.57*
+*CKM: |V_cb| = (39.2 $\pm$ 0.9)$\times$10-3 (Belle II exact); [SCm]_flavor = |V_cb|2 = 1.537$\times$10-3; BR(B0$\to$D-ℓ+$\nu$)
+= 2.06%, BR(B+$\to$D̄0ℓ+$\nu$) = 2.31%; LFU R = 1.000 (SM limit, within 1$\sigma$ of 1.020$\pm$0.030); F_U(B$\to$Dℓ$\nu$) =
+75.81 (positive signal); $\kappa$ = 0.0005/day, [SSq] = 0.57*
 ---
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
@@ -660,14 +660,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -682,10 +682,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -693,9 +693,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -703,8 +703,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -781,7 +781,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

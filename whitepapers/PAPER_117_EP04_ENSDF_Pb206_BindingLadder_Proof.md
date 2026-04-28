@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-04, AprilSept 2025)  
@@ -35,12 +35,12 @@ Center (NNDC) nuclear level listings for 6Pb. Lead-206 is chosen as the test
 nucleus because it is a doubly-magic-adjacent isotope (Z=82 proton magic, N=124)
 with an exceptionally well-measured excitation spectrum. The UQFF ladder level
 n = 8 predicts E8 = 10? J = 6.242 MeV. The Pb-206 10 MeV nuclear level
-(1.602 × 10? J) falls at n = 8.205  within ?n = 0.205 of n = 8 (threshold ?n < 0.5).
-Additionally, the neutron separation energy S_n = 7.367 MeV = 1.180 × 10? J
-satisfies: S_n/(E8) = 1.180 × 2  [SSq] = 2 × 0.57 = 1.14 (within 3.5%), providing
+(1.602 $\times$ 10? J) falls at n = 8.205  within ?n = 0.205 of n = 8 (threshold ?n < 0.5).
+Additionally, the neutron separation energy S_n = 7.367 MeV = 1.180 $\times$ 10? J
+satisfies: S_n/(E8) = 1.180 $\times$ 2  [SSq] = 2 $\times$ 0.57 = 1.14 (within 3.5%), providing
 a second independent confirmation of [SSq] = 0.57 at the nuclear scale.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -65,18 +65,18 @@ Pb-206 has exceptional properties for UQFF testing:
 Pb (Z=82) is the n = 8 ladder test nucleus because:
 1. Z = 82 = 10^1.914 ? related to n  2 sub-ladder (proton number)  
 2. A = 206 corresponds to 10 MeV nuclear scale ? n = 8 energy ladder
-3. The 10 MeV continuum threshold of Pb-206 = 10 × 106 eV  1.602 × 10?? J/eV = 1.602 × 10? J
+3. The 10 MeV continuum threshold of Pb-206 = 10 $\times$ 106 eV  1.602 $\times$ 10?? J/eV = 1.602 $\times$ 10? J
 
 ### 1.2 Key ENSDF Levels Used in EP-04
 
 | Level | E (MeV) | E (J) | UQFF n | Jp |
 |-------|---------|-------|--------|-----|
 | Ground state | 0.000 | 0 | N/A | 0? |
-| 1st excited | 0.803 | 1.286 × 10? | 6.91 | 2? |
-| 2nd excited | 1.162 | 1.861 × 10? | 7.07 | 4? |
-| 10 MeV continuum | 10.000 | 1.602 × 10? | **8.205** | continuum |
-| Neutron separation | 7.367 | 1.180 × 10? | 7.972 | threshold |
-| Total binding E | 1,622.3 | 2.599 × 10? | 10.215 | bound |
+| 1st excited | 0.803 | 1.286 $\times$ 10? | 6.91 | 2? |
+| 2nd excited | 1.162 | 1.861 $\times$ 10? | 7.07 | 4? |
+| 10 MeV continuum | 10.000 | 1.602 $\times$ 10? | **8.205** | continuum |
+| Neutron separation | 7.367 | 1.180 $\times$ 10? | 7.972 | threshold |
+| Total binding E | 1,622.3 | 2.599 $\times$ 10? | 10.215 | bound |
 
 ---
 
@@ -178,7 +178,7 @@ magic_number_Z82_confirmed: True  (?n = 0.205 for 10 MeV level) ?
 |---|----------|-------|-----------------|
 | 1 | $E_8 = 10^{-12}$ J | 6.242 MeV | UQFF nuclear level |
 | 2 | $n_{10MeV} = 8.205$ | ?n = 0.205 | 10 MeV ? n=8 |
-| 3 | $S_n = 7.367$ MeV | 1.180 × 10? J | Pb-206 neutron separation |
+| 3 | $S_n = 7.367$ MeV | 1.180 $\times$ 10? J | Pb-206 neutron separation |
 | 4 | $S_n / E_8 = 1.180$ |  2[SSq] = 1.14 | 3.5% error |
 | 5 | $Z_{Pb} = 82 = 10^{1.914}$ | n=2 sub-ladder | Magic number |
 | 6 | $\text{Binding}_T = 2.599 \times 10^{-10}$ J | n=10.215 | Total BE ? hadronic n=10 |
@@ -211,7 +211,7 @@ Empirical Proof EP-04 confirms:
 2. The neutron separation energy **S_n = 7.367 MeV  2  [SSq]  E8** with
    3.5% precision, providing nuclear-physics confirmation of [SSq] = 0.57
 3. The **Z = 82 Pb magic number** is consistent with the n = 2 sub-ladder
-   proton-counting resonance, where Z_magic(Pb) = 10^1.914 × 10^2
+   proton-counting resonance, where Z_magic(Pb) = 10^1.914 $\times$ 10^2
 4. The total binding energy 1,622.3 MeV ? n = 10.215 confirms continuity
    from the nuclear ladder (n=8) to the hadronic ladder (n=10)
 5. Taken with EP-03 (PAPER_116), EP-04 validates the UQFF ladder across both
@@ -219,7 +219,7 @@ Empirical Proof EP-04 confirms:
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 
@@ -231,7 +231,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LENR-S225 -->
 
@@ -365,7 +365,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.117 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -374,13 +374,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

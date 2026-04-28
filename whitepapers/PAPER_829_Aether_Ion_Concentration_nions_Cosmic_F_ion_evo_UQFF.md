@@ -53,19 +53,19 @@ Substituting (per 1 ft3 = 0.0283 m3):
 
 $$n_{\text{ions}} = \frac{7.09 \times 10^{-36}}{(1.67 \times 10^{-27})(0.0283)} \approx 1.50 \times 10^{-10} \ \text{ions/ft}^3 \ \text{(base estimate)}$$
 
-**UQFF scaled estimate (accounting for [UA] amplification factor H_SCm ≈ 0.99):**
+**UQFF scaled estimate (accounting for [UA] amplification factor H_SCm $\approx$ 0.99):**
 $$n_{\text{ions,UQFF}} \approx 0.01 \text{–} 1 \ \text{ions/ft}^3$$
 
 ### 2.2 Observational Comparison
 
-**NASA ISM data:** $0.1\text{–}1$ cm$^{-3}$ in the warm neutral medium → **3.53–35.31 ions/ft3** in interstellar space
+**NASA ISM data:** $0.1\text{–}1$ cm$^{-3}$ in the warm neutral medium $\to$ **3.53–35.31 ions/ft3** in interstellar space
 
 | Medium | NASA density | UQFF estimate |
 |--------|-------------|--------------|
 | Aether ([UA]) | — | 0.01–1 ions/ft3 |
 | Diffuse ISM | 0.1 cm-3 | 3.53 ions/ft3 |
 | Warm ISM | 1 cm-3 | 35.31 ions/ft3 |
-| Hot Ionized Medium | 3×10-3 cm-3 | 0.11 ions/ft3 |
+| Hot Ionized Medium | 3$\times$10-3 cm-3 | 0.11 ions/ft3 |
 
 UQFF places Aether below diffuse ISM — consistent with its status as a background medium permeating
 all of space, including voids.
@@ -78,7 +78,7 @@ $$\boxed{n_{\text{cosmic}}(t) = \int_0^{t_{\text{universe}}} n_{\text{ions}} \, 
 
 For $t_{\text{universe}} = 13.8 \times 10^9$ yr $= 4.35 \times 10^{17}$ s and $n_{\text{ions}} \approx 0.5$ ions/(ft3):
 
-$$n_{\text{cosmic}} \approx 2.18 \times 10^{17} \ \text{ion·s/ft}^3$$
+$$n_{\text{cosmic}} \approx 2.18 \times 10^{17} \ \text{ion\cdots/ft}^3$$
 
 This represents the **cumulative ionic flux** of Aether on matter — a measure of total charge
 exchange between Aether medium and baryonic matter over cosmological timescales.
@@ -131,7 +131,7 @@ $$n_{\text{ions,TS}} \approx 0.01 \ \text{ions/ft}^3 \ (\text{lower bound})$$
 | Existing Term | Connection to n_ions |
 |--------------|---------------------|
 | $F_{\text{Aether}}$ (PAPER_828) | $F_{\text{Aether}} \propto k_{\text{Aether}} v^2 d_{\text{stop}}$; ions provide stopping medium |
-| $F_{\text{rel}}$ (existing) | $F_{\text{ion,evo}}$ uses same k_rel scale → consistent |
+| $F_{\text{rel}}$ (existing) | $F_{\text{ion,evo}}$ uses same k_rel scale $\to$ consistent |
 | $k_{\text{DE}} L_X$ (dark energy term) | Ion evolution over cosmic time weighted by $L_X$ dark energy epoch |
 | $\rho_{\text{vac}}$ DPM stability | $n_{\text{ions}}$ derived from $\rho_{\text{vac}}$ — same source term |
 
@@ -139,7 +139,7 @@ $$n_{\text{ions,TS}} \approx 0.01 \ \text{ions/ft}^3 \ (\text{lower bound})$$
 
 ## 5. Three Time Epoch Simulation
 
-| Epoch | $t$ (Gyr) | $n_{\text{ions}}$ (ions/ft3) | $n_{\text{cosmic}}$ (ion·s/ft3) | $F_{\text{ion,evo}}$ (N) |
+| Epoch | $t$ (Gyr) | $n_{\text{ions}}$ (ions/ft3) | $n_{\text{cosmic}}$ (ion$\cdot$s/ft3) | $F_{\text{ion,evo}}$ (N) |
 |-------|----------|----------------------------|--------------------------------|------------------------|
 | Early Universe (0.5 Gyr) | 0.5 | 0.01 | $1.58 \times 10^{14}$ | $3.40 \times 10^{32}$ |
 | Current Era (13.8 Gyr) | 13.8 | 0.5 | $2.18 \times 10^{17}$ | $1.70 \times 10^{35}$ |
@@ -149,10 +149,10 @@ $$n_{\text{ions,TS}} \approx 0.01 \ \text{ions/ft}^3 \ (\text{lower bound})$$
 
 ## 6. Validation Targets
 
-1. **Voyager 1/2 ISM data:** n_e ≈ 0.05 cm-3 → convert to 1.77 ions/ft3; compare to UQFF upper bound
-2. **IBEX heliosphere boundary:** Ion flux measurements at termination shock → calibrate $n_{\text{ions,TS}}$
-3. **CERN Z' search (Run 3):** $F_{\text{ion,evo}}$ depends on $E_{\text{cm}}$ → update with Run 3 data (13.6 TeV)
-4. **Planck vacuum energy:** Cross-check $\rho_{\text{vac}}$ vs Planck 2018 $\Lambda$ → adjust $n_{\text{ions}}$ base
+1. **Voyager 1/2 ISM data:** n_e $\approx$ 0.05 cm-3 $\to$ convert to 1.77 ions/ft3; compare to UQFF upper bound
+2. **IBEX heliosphere boundary:** Ion flux measurements at termination shock $\to$ calibrate $n_{\text{ions,TS}}$
+3. **CERN Z' search (Run 3):** $F_{\text{ion,evo}}$ depends on $E_{\text{cm}}$ $\to$ update with Run 3 data (13.6 TeV)
+4. **Planck vacuum energy:** Cross-check $\rho_{\text{vac}}$ vs Planck 2018 $\Lambda$ $\to$ adjust $n_{\text{ions}}$ base
 
 ---
 
@@ -172,7 +172,7 @@ Constants: $\rho_{\text{vac}} = 7.09 \times 10^{-36}$ J/m3, $m_{\text{ion}} = 1.
 
 Aether ion concentration is a predictive UQFF quantity derivable from first principles, yielding 0.01–1 ions/ft3 for the [UA] background medium — below but comparable to the diffuse ISM hot ionized medium. The Cosmic Ion Evolution integral provides a cosmological measure of total Aether–matter charge exchange. Relativistic Ion Dynamics force $F_{\text{ion,evo}}$ connects this microscopic concentration to astrophysical force scales. All three quantities are implemented in CP4 class #413.
 
-**Cross-reference:** PAPER_828 (F_Aether, d_stop), PAPER_830 (D₂O ion production), PAPER_831
+**Cross-reference:** PAPER_828 (F_Aether, d_stop), PAPER_830 (D2O ion production), PAPER_831
 (F_rel,im)
 
 ---
@@ -285,7 +285,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.107 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -296,13 +296,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

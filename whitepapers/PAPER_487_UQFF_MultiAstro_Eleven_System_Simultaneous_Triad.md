@@ -89,7 +89,7 @@ proximity to Saturn's magnetosphere.
 
 ## 4. Hubble and Radiation Corrections
 
-**Hubble correction:** All forces include $(1+z)$ Hubble expansion factor, ensuring consistency with ΛCDM cosmology at low redshift.
+**Hubble correction:** All forces include $(1+z)$ Hubble expansion factor, ensuring consistency with $\Lambda$CDM cosmology at low redshift.
 
 **Radiation correction:** $E_{rad} = 0.8446$ removes the 15.54% of energy carried by radiation (photons, neutrinos) that does not contribute to DPM buoyancy pressure.
 
@@ -98,9 +98,9 @@ proximity to Saturn's magnetosphere.
 ## 5. Cassini Ring UQFF Notes
 
 The three Cassini ring systems have $SFR = 0$ and $z = 0$ (Solar System), so:
-- $F_{comp}$ reduces to pure vacuum pressure at ring radius → gap confinement
-- $F_{res}$ reduces to imaginary-only due to zero B-field-SFR product → pure quantum phase
-- $F_{buoy}$ reduces to real vacuum displacement → shepherd-moon-equivalent force
+- $F_{comp}$ reduces to pure vacuum pressure at ring radius $\to$ gap confinement
+- $F_{res}$ reduces to imaginary-only due to zero B-field-SFR product $\to$ pure quantum phase
+- $F_{buoy}$ reduces to real vacuum displacement $\to$ shepherd-moon-equivalent force
 
 This makes the Cassini systems useful UQFF calibration anchors since many parameters are directly
 measurable by the Cassini spacecraft.
@@ -115,7 +115,7 @@ measurable by the Cassini spacecraft.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -134,7 +134,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -242,7 +242,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.096 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -253,10 +253,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

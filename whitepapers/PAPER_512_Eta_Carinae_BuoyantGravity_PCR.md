@@ -13,13 +13,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_512: Eta Carinae LBV Binary — Buoyant Gravity with PCR Envelope
 ## Star Magic UQFF Framework — Session 138
 **Author:** Daniel T. Murphy | **Date:** March 2026  
-**Module:** source179.cpp | **Target:** η Carinae (LBV binary, 7500 ly)
+**Module:** source179.cpp | **Target:** $\eta$ Carinae (LBV binary, 7500 ly)
 
 ---
 
 ## Abstract
 Eta Carinae is the most luminous binary stellar system in the Milky Way: a Luminous Blue Variable
-(LBV) of ≈90 MM_sun orbited by a hot companion (≈30 MM_sun), with a 5.54-year orbital period and the famous
+(LBV) of $\approx$90 MM_sun orbited by a hot companion ($\approx$30 MM_sun), with a 5.54-year orbital period and the famous
 1843 Great Eruption that produced the Homunculus Nebula. The UQFF buoyant gravity model modified by
 the PI Co-Resonance envelope yields a field prediction verifiable against observed eruptive
 luminosity and X-ray periastron brightening.
@@ -41,13 +41,13 @@ framework (Ug1, Ug2, Ug3).
 
 | Parameter | Value |
 |-----------|-------|
-| Primary mass M₁ | ≈90 MM_sun (LBV) |
-| Companion mass M₂ | ≈30 MM_sun (WR/O star) |
+| Primary mass M1 | $\approx$90 MM_sun (LBV) |
+| Companion mass M2 | $\approx$30 MM_sun (WR/O star) |
 | Orbital period | 2022.7 days (5.54 yr) |
-| Eccentricity | e ≈ 0.9 |
+| Eccentricity | e $\approx$ 0.9 |
 | Periastron separation | ~1–2 AU |
 | Distance | 2.3 kpc |
-| Luminosity | ≈5×106 LM_sun |
+| Luminosity | $\approx$5$\times$106 LM_sun |
 
 ---
 
@@ -74,8 +74,8 @@ calibration uncertainty.
 ---
 
 ## 4. Validation
-- C++ term: `SOURCE179::EtaCarinae_BuoyantPCR_Term` → `EtaCarinae_BuoyantGravityPCR`
-- CP2 class: `EtaCarinaBuoyantPCRCalculator` → g_base, g_eff, k_PCR, PCR
+- C++ term: `SOURCE179::EtaCarinae_BuoyantPCR_Term` $\to$ `EtaCarinae_BuoyantGravityPCR`
+- CP2 class: `EtaCarinaBuoyantPCRCalculator` $\to$ g_base, g_eff, k_PCR, PCR
 
 ---
 
@@ -88,7 +88,7 @@ calibration uncertainty.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LAG-S225 -->
 
@@ -222,7 +222,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.155 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -233,10 +233,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Massive object (Eta Carinae/TON618/NGC1277) luminosity X-ray + optical | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X M_BH ~ 109–1010 `M_M_sun` | Chandra/HST | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra/HST | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Massive object (Eta Carinae/TON618/NGC1277) luminosity X-ray + optical | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X M_BH ~ 109–1010 `M_M_sun` | Chandra/HST | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra/HST | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Massive object (Eta Carinae/TON618/NGC1277)
@@ -250,7 +250,7 @@ future Chandra/HST monitoring observations.
 
 ## References
 - Damineli et al. (2008) *The 5.54-year cycle of eta Carinae*, MNRAS 384, 1649
-- Hamaguchi et al. (2007) *X-ray spectral variation of η Carinae*, ApJ 663, 522
+- Hamaguchi et al. (2007) *X-ray spectral variation of $\eta$ Carinae*, ApJ 663, 522
 - Murphy, D.T. *PAPER_509: PI Co-Resonance Field Equations*
 
 

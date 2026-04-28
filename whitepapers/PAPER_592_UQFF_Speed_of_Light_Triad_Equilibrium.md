@@ -58,7 +58,7 @@ speed.
 
 ---
 
-## §3 Method 2 — F_U_Bi_i Gaussian BH26 Anchor (μ = 92 GHz)
+## §3 Method 2 — F_U_Bi_i Gaussian BH26 Anchor ($\mu$ = 92 GHz)
 
 The F_U_Bi_i Gaussian (PAPER_583 Form 6) is anchored at $\mu = 92\text{ GHz}$ (BH26 bin 1)
 with width $\sigma = 10^{16}$ Hz.
@@ -131,7 +131,7 @@ is prohibited because it would require $\lambda < 0$, violating triad positivity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -150,7 +150,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -225,7 +225,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.071 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -236,13 +236,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Speed of light c | c_UQFF from triad equilibrium ν_SCm × λ_DPM | c = 299792458 m/s (exact) | BIPM / NIST | 100% (redefines meter) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
-| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
-| Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | PASS Target value |
+| Speed of light c | c_UQFF from triad equilibrium $\nu$_SCm $\times$ $\lambda$_DPM | c = 299792458 m/s (exact) | BIPM / NIST | 100% (redefines meter) |
+| $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
+| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
+| Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
 **New physics claim:** UQFF derives Speed of light c from vacuum buoyancy topology rather than
-treating it as a free parameter of nature. A derivation that achieves ≥100% (redefines meter)
+treating it as a free parameter of nature. A derivation that achieves $\geq$100% (redefines meter)
 agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.

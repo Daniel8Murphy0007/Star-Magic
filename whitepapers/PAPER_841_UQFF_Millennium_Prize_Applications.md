@@ -26,10 +26,10 @@ equation-based Millennium Prize Problems (Navier-Stokes, Yang-Mills, Riemann Hyp
 been **CLOSED** via the 9-sector UQFF Unified Lagrangian (Session 202):
 
 $$
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
-All 13 F_U_Bi_i force terms now derive from a single variational principle δS/δφ_I = 0. A standalone
+All 13 F_U_Bi_i force terms now derive from a single variational principle $\delta$S/$\delta$$\phi$_I = 0. A standalone
 Tier 2 calculator (`millennium_prize_uqff_calculator.py`) implements the full 9-sector formalism
 with 4 sub-calculators (NavierStokesUQFFCalculator, YangMillsMassGapUQFFCalculator,
 RiemannSpectralResonanceCalculator, UnifiedLagrangianForceCalculator). While UQFF does not claim
@@ -62,7 +62,7 @@ system:
     F_LENR (reduced) = 1.56*10^36 N -> acts as oscillatory regularization
 
 
-**Hypothesis:** Large-scale F_LENR oscillations at ω_LENR = 2πx1.25x$10^{12}$ s^-1 may act as a turbulence regularization mechanism, analogous to hyperviscosity damping high-frequency modes. If F_LENR creates a spectral gap above ω_LENR, turbulent cascades are cut off, potentially ensuring smoothness.
+**Hypothesis:** Large-scale F_LENR oscillations at $\omega$_LENR = 2$\pi$x1.25x$10^{12}$ s^-1 may act as a turbulence regularization mechanism, analogous to hyperviscosity damping high-frequency modes. If F_LENR creates a spectral gap above $\omega$_LENR, turbulent cascades are cut off, potentially ensuring smoothness.
 
 **Feasibility Assessment:** Speculative. No rigorous proof that UQFF's nonlinear resonance prevents
 blowup. Numerical testing via lattice-Boltzmann with F_LENR body force could establish computational
@@ -82,7 +82,7 @@ excitation has mass > 0).
 
 
 **UQFF Contribution:**
-The F_neutron and ρ_vac,[UA] terms suggest a non-perturbative mass gap mechanism:
+The F_neutron and $\rho$_vac,[UA] terms suggest a non-perturbative mass gap mechanism:
 
     Vacuum energy modification:
     <0|H_YM|0> = Integrald4x [1/4F_{munu}F^{munu} + rho_vac,[UA] + k_LENR(omega_LENR/omega_0)2]
@@ -104,7 +104,7 @@ dynamics (phonon condensate / gluon condensate) create a mass from apparent mass
 **Feasibility Assessment:** The analogy is physically motivated but mathematically speculative.
 Integration of Kozima's model into QFT formalism would require:
 - Formalization of F_neutron as a QFT vertex
-- Connecting σ_n(ω) to gluon condensate ⟨αG2⟩
+- Connecting $\sigma$_n($\omega$) to gluon condensate ⟨$\alpha$G2⟩
 - Proving this mechanism is Lagrangian-derivable
 
 **Prize Potential:** Low-Medium — the mass gap analogy has more rigor than Navier-Stokes turbulence
@@ -114,7 +114,7 @@ connection, but requires QFT formalization.
 
 ### 1.3 Riemann Hypothesis
 
-**Problem:** All non-trivial zeros of ζ(s) = Σ n^-s have Re(s) = 1/2.
+**Problem:** All non-trivial zeros of $\zeta$(s) = $\Sigma$ n^-s have Re(s) = 1/2.
 
 **UQFF Contribution:**
 Physical analogies to quantum chaos and spectral analysis:
@@ -144,14 +144,14 @@ heuristic inspiration only.
 ## 2. UQFF Mathematical Contributions
 
 ### Confirmed Novel Contributions:
-1. **Cross-scale nonlinear resonance:** ω_eff = ω_act + n x ω_LENR bridges 300 Hz to 1.25 THz via harmonic mixing (n ≈ 4.17x$10^{9}$). Frequency ratio 4.17x$10^{9}$ is unprecedented in classical mechanics.
+1. **Cross-scale nonlinear resonance:** $\omega$_eff = $\omega$_act + n x $\omega$_LENR bridges 300 Hz to 1.25 THz via harmonic mixing (n $\approx$ 4.17x$10^{9}$). Frequency ratio 4.17x$10^{9}$ is unprecedented in classical mechanics.
 
-2. **Density-scaled nuclear cross-section:** σ_n(ρ) = σ_0 x (ρ/ρ_0) spanning $10^{-22}$-$10^{17}$ kg/m3 provides a continuous nuclear coupling model across astrophysical environments.
+2. **Density-scaled nuclear cross-section:** $\sigma$_n($\rho$) = $\sigma$_0 x ($\rho$/$\rho$_0) spanning $10^{-22}$-$10^{17}$ kg/m3 provides a continuous nuclear coupling model across astrophysical environments.
 
 3. **Negative buoyancy formalism:** F_U_Bi_i < 0 in SMBH environments defines a repulsive vacuum
 force regime, a new mathematical condition in buoyancy field theory.
 
-4. **Gaussian resonance cross-section:** σ_n(ω) = σ_0x(ω/ω_LENR)2xexp(-(ω-ω_LENR)2/2Δω2) provides frequency-selective nuclear coupling with spectral width Δω = 2πx0.05x$10^{12}$ s^-1.
+4. **Gaussian resonance cross-section:** $\sigma$_n($\omega$) = $\sigma$_0x($\omega$/$\omega$_LENR)2xexp(-($\omega$-$\omega$_LENR)2/2$\Delta$$\omega$2) provides frequency-selective nuclear coupling with spectral width $\Delta$$\omega$ = 2$\pi$x0.05x$10^{12}$ s^-1.
 
 5. **Unified force hierarchy:** 11-term F_U_Bi_i spans 87 orders of magnitude (F_LED=6.72x$10^{-23}$ N to F_LENR=6.16x$10^{39}$ N), the largest force hierarchy in a unified framework.
 
@@ -169,7 +169,7 @@ force regime, a new mathematical condition in buoyancy field theory.
 ### Near-Term Deliverables:
 - LENR energy validation in Pd-D/Ni-H systems (2-5 years, ~$1M)
 - Astrophysical neutron signature detection via ALMA (SNR 1181, Sgr A*)
-- DFT simulation of phonon spectra validating σ_n(ω) Gaussian model
+- DFT simulation of phonon spectra validating $\sigma$_n($\omega$) Gaussian model
 
 ### Long-Term Goal:
 - Unified Field Equation incorporating all 11+ terms
@@ -210,10 +210,10 @@ force regime, a new mathematical condition in buoyancy field theory.
     Goal:    Derive F_U_Bi_i from a single Lagrangian
     Status:  ✅ CLOSED (Session 202) — 9-sector Unified Lagrangian identified
     
-    L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+    L_UQFF = $\sqrt{}$(-g) [ L_EH + L_YM + L_Dirac + L_$\phi$ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
     
-    All 13 force terms derived via δS/δφ_I = 0:
-      Sectors 1-9 -> Ug1-4, Ubi1-4, Um, Tr(A_μν), F_LENR, F_LED, F_neutron
+    All 13 force terms derived via $\delta$S/$\delta$$\phi$_I = 0:
+      Sectors 1-9 -> Ug1-4, Ubi1-4, Um, Tr(A_$\mu$$\nu$), F_LENR, F_LED, F_neutron
     
     Calculator: millennium_prize_uqff_calculator.py -> UnifiedLagrangianForceCalculator
     Reference:  uqff_lagrangian_derivation.py (Session 202, commit 9d26977)
@@ -231,7 +231,7 @@ $$
   & L_EH = c^4R / (16piG) \\
   & Field: g_munu \\
   & EL:    deltaS/deltag^munu = 0 -> G_munu = 8piG T_munu / c^4 \\
-  & Yields: \text{F\_gravity\_baseline} (DPM-seeded μ_s∇(M_s/r) + GR corrections)
+  & Yields: \text{F\_gravity\_baseline} (DPM-seeded \mu_s\nabla(M_s/r) + GR corrections)
 \end{aligned}
 $$
 
@@ -256,7 +256,7 @@ $$
 \end{aligned}
 $$
 
-### Sector 4: Scalar-Higgs-Vacuum (L_φ)
+### Sector 4: Scalar-Higgs-Vacuum (L_$\phi$)
 $$
 \begin{aligned}
 & L_phi = |D_mu phi_H|^2 - lambda(phi_H^2 - v^2/2)^2 + |d_mu phi_4|^2 - V(phi_4) + kappa[SSq]phi_4^2
@@ -312,7 +312,7 @@ $$
 ### Sector 9: Kaluza-Klein-26D (L_KK)
 $$
 \begin{aligned}
-  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y √(-\text{g\_2\_2}) [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
+  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{}(-\text{g\_2\_2}) [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
   & Fields: g_mn^(22D), a_ALP \\
   & EL:    deltaS/deltag_mn = 0 -> KK mode tower quantization \\
   & Yields: F_LED (large extra dimensions), F_ALP (axion-like particles)
@@ -374,10 +374,10 @@ Harmonic ratio   = 4.17e9        (300 Hz -> 1.25 THz bridge)
 
 | Dimension | Status | Evidence |
 |-----------|--------|----------|
-| Navier-Stokes contribution | Heuristic -> Calculator | f_UQFF body force, spectral cutoff at ω_LENR |
+| Navier-Stokes contribution | Heuristic -> Calculator | f_UQFF body force, spectral cutoff at $\omega$_LENR |
 | Yang-Mills contribution | Low-Medium -> Calculator | m_gap = 5969.92 GeV from SCm parameters |
-| Riemann Hypothesis contribution | Heuristic -> Calculator | GUE ↔ UQFF spectral pair correlation |
-| Unified Lagrangian | **✅ CLOSED** | 9-sector L_UQFF -> 13 force terms via δS/δφ=0 |
+| Riemann Hypothesis contribution | Heuristic -> Calculator | GUE $\leftrightarrow$ UQFF spectral pair correlation |
+| Unified Lagrangian | **✅ CLOSED** | 9-sector L_UQFF -> 13 force terms via $\delta$S/$\delta$$\phi$=0 |
 | Mathematical novelty | High | 13 force terms, 87-order hierarchy, negative buoyancy |
 | Experimental validation potential | High | 1.25 THz resonance directly testable in LENR lab |
 | Astrophysical validation | High | Chandra/JWST/ALMA multi-system confirmation |
@@ -395,7 +395,7 @@ of magnitude)
 4. A validated astrophysical force calculator (35+ systems, 4 negative buoyancy cases confirmed)
 5. A clear pathway to clean energy applications via LENR thermal energy production
 6. **NEW (Session 204):** A 9-sector Unified Lagrangian closing the gap in §4.4 — all F_U_Bi_i terms
-now derive from δS/δφ_I = 0
+now derive from $\delta$S/$\delta$$\phi$_I = 0
 7. **NEW (Session 204):** A standalone Tier 2 calculator (`millennium_prize_uqff_calculator.py`)
 with 4 sub-calculators implementing the full formalism
 
@@ -434,7 +434,7 @@ F_U_Bi_i = Sigma(Ug1-4) + Sigma(Ubi1-4) + Um + Tr(A_munu) + F_LENR + F_LED + F_n
 ```
 
 **Critical Values:**
-- m_gap (Yang-Mills) = 5969.92 GeV (σ=0.180 GeV^2, H_SCm=0.99, v_SCm=3.00e4 m/s)
+- m_gap (Yang-Mills) = 5969.92 GeV ($\sigma$=0.180 GeV^2, H_SCm=0.99, v_SCm=3.00e4 m/s)
 - f_LENR = 1.56e+36 N (Navier-Stokes body force at 1.25 THz)
 - F_U_Bi_i (total) = 2.7083e+55 N (all 9 sectors, default parameters)
 - Harmonic ratio = 4.17e9 (300 Hz -> 1.25 THz cross-scale bridge)
@@ -501,7 +501,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -622,7 +622,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.063 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -633,13 +633,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

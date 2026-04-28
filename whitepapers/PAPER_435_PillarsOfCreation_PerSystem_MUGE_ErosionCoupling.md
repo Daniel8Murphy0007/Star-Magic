@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_435
-title: "Pillars of Creation: Per-System MUGE with E(t) Erosion Coupling and M₀=10,100 MM_sun"
+title: "Pillars of Creation: Per-System MUGE with E(t) Erosion Coupling and M0=10,100 MM_sun"
 session: 119
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [cluster, AGN, Hubble, MUGE, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_435 — Pillars of Creation: Per-System MUGE with E(t) Erosion Coupling and M₀=10,100 MM_sun
+# PAPER_435 — Pillars of Creation: Per-System MUGE with E(t) Erosion Coupling and M0=10,100 MM_sun
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -25,7 +25,7 @@ Creation Evolution_03May2025.docx" (lines 2304–2659)
 ## Abstract
 
 This paper presents a UQFF analysis of Pillars of Creation: Per-System MUGE with E(t) Erosion
-Coupling and M₀=10,100 MM_sun, deriving compressed field equations and observational predictions within
+Coupling and M0=10,100 MM_sun, deriving compressed field equations and observational predictions within
 the Star-Magic/UQFF framework.
 
 ## 1. Overview
@@ -79,7 +79,7 @@ $$\approx 5.99 \times 10^{-20} \, \text{m/s}^2 \quad [t=0]$$
 **T2 — UQFF Ug1+Ug4 with f_TRZ:**
 $$T_2 = 2\frac{G M(t)}{r^2}(1 - B/B_\text{crit})(1 + f_\text{TRZ}) \approx 1.32 \times 10^{-19} \, \text{m/s}^2$$
 
-**T3 — Λ:** $\sim 3.3 \times 10^{-36}$ m/s2 (negligible)
+**T3 — $\Lambda$:** $\sim 3.3 \times 10^{-36}$ m/s2 (negligible)
 
 **T4 — Quantum uncertainty:** $\sim 10^{-30}$ m/s2 (negligible)
 
@@ -108,7 +108,7 @@ $$g_\text{PoC} \approx 8.45 \times 10^{-5} \, \text{m/s}^2 \quad [\text{wind-dom
 |------|-------------|---------|
 | $T_{10}$ Wind | $8.45 \times 10^{-5}$ | 99.9998% |
 | $T_2$ UQFF Ug | $1.32 \times 10^{-19}$ | trace |
-| $T_1$ DPM-seeded×(1−E) | $5.99 \times 10^{-20}$ | trace |
+| $T_1$ DPM-seeded$\times$(1-E) | $5.99 \times 10^{-20}$ | trace |
 | Summary | $\mathbf{8.45 \times 10^{-5}}$ | $10^{15} \times g_\text{self}$ |
 
 The $(1-E(t))$ erosion factor **reduces the gravitational confinement at $t=0$ by exactly 10%**, consistent with the visual observation that the Pillars' tips are partially ablated. This 10% suppression is the unique UQFF signature not present in any SM description.
@@ -139,7 +139,7 @@ Standard photo-erosion models (Bertoldi 1989, Johnston et al. 2009): use photoio
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -158,7 +158,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.168 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,10 +310,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Pillars of Creation luminosity IR 3.6–8 μm | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 0.01 `M_M_sun`/yr | JWST / Spitzer | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | JWST / Spitzer | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Pillars of Creation luminosity IR 3.6–8 $\mu$m | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 0.01 `M_M_sun`/yr | JWST / Spitzer | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | JWST / Spitzer | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Pillars of Creation

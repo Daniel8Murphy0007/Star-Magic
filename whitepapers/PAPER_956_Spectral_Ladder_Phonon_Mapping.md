@@ -83,7 +83,7 @@ Each level $n$ from 1 to 26 produces a unique $(E_n, \omega_n, Q_n)$ triplet, fu
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -102,12 +102,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -160,7 +160,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
-**Sector:** Phonon Mapping (Spectral Ladder → Frequency)
+**Sector:** Phonon Mapping (Spectral Ladder $\to$ Frequency)
 
 ### §A.2 Lagrangian Density
 $$\mathcal{L}_\text{map} = \sum_{n=1}^{26}\left[\frac{1}{2}\hbar\omega_n \hat{a}_n^\dagger \hat{a}_n\right]$$
@@ -169,7 +169,7 @@ $$\mathcal{L}_\text{map} = \sum_{n=1}^{26}\left[\frac{1}{2}\hbar\omega_n \hat{a}
 $$\boxed{\omega_n = \frac{E_0}{\hbar}(2\pi)^{n/3} S_{26}, \quad Q_n = \frac{\omega_n}{2\Gamma}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → spectral ladder → $E_n$ → $\omega_n$ phonon frequency → $Q_n$ quality factor → regime classification
+PAPER_877 $\to$ spectral ladder $\to$ $E_n$ $\to$ $\omega_n$ phonon frequency $\to$ $Q_n$ quality factor $\to$ regime classification
 
 ---
 

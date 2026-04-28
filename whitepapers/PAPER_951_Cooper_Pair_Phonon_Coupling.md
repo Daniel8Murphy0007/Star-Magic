@@ -75,7 +75,7 @@ At on-resonance ($\omega = \omega_text{SCm}$), $\Phi = S_{26}$ and coupling is m
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -94,7 +94,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -166,7 +166,7 @@ $$\mathcal{L}_\text{pair} = \bar{\psi}(i\partial!\!/ - m)\psi + V_\text{SCm}(\ba
 $$\boxed{(i\partial!\!/ - m)\psi = -2V_\text{SCm}\Phi \cdot (\bar{\psi}\psi)\psi}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → SCm vacuum → $\Phi_{1.25\text{THz}}$ phonon → Cooper pair binding → BCS condensate
+PAPER_877 $\to$ SCm vacuum $\to$ $\Phi_{1.25\text{THz}}$ phonon $\to$ Cooper pair binding $\to$ BCS condensate
 
 ---
 

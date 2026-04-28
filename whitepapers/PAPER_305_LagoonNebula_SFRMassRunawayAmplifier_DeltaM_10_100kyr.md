@@ -10,7 +10,7 @@ tags: [nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_305 — Lagoon Nebula SFR Mass Runaway Amplifier: ΔM/M0 = 10.0 at 1 Myr, t_consume = 100 kyr
+# PAPER_305 — Lagoon Nebula SFR Mass Runaway Amplifier: $\Delta$M/M0 = 10.0 at 1 Myr, t_consume = 100 kyr
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -20,7 +20,7 @@ The Lagoon Nebula (M8/NGC 6523) Unified Quantum Field Framework (UQFF 2.0) analy
 Mass Runaway Amplifier** regime: the star formation rate is so high relative to cloud mass that the
 accreted stellar mass exceeds the initial cloud mass within 1 Myr. This constitutes the **FIRST UQFF
 SFR runaway discovery** across all 29 C++ UQFF modules, distinguishing M8 from prior star-forming
-regions (e.g., M16 in PAPER_284 where ΔM/M0 << 1 at 5 Myr).
+regions (e.g., M16 in PAPER_284 where $\Delta$M/M0 << 1 at 5 Myr).
 
 ---
 
@@ -31,7 +31,7 @@ regions (e.g., M16 in PAPER_284 where ΔM/M0 << 1 at 5 Myr).
 | System | Lagoon Nebula (M8 / NGC 6523) | H II region at 1.25 kpc |
 | M0 | 1e4 M_sun = 1.989e34 kg | Molecular cloud mass |
 | SFR | 0.1 M_sun/yr | Active star-forming H II region |
-| `SFR_kg_s` | 6.303e21 kg/s | = 0.1 × 1.989e30 / 3.15576e7 |
+| `SFR_kg_s` | 6.303e21 kg/s | = 0.1 $\times$ 1.989e30 / 3.15576e7 |
 | r | 5.2e17 m (~55 ly) | Nebula half-span |
 | z | 0.0013 | ~1.25 kpc distance |
 
@@ -45,11 +45,11 @@ The UQFF 2.0 master equation includes time-dependent mass growth:
 
 $$M(t) = M_0 + \dot{M}_\star \cdot t$$
 
-where $\dot{M}_\star$ = SFR_kg_s = 6.303×1021 kg/s.
+where $\dot{M}_\star$ = SFR_kg_s = 6.303$\times$1021 kg/s.
 
 ### Key Computed Values
 
-**ΔM/M0 at t = 1 Myr:**
+**$\Delta$M/M0 at t = 1 Myr:**
 
 $$\frac{\Delta M}{M_0}\bigg|_{1\,\text{Myr}} = \frac{\text{SFR}_{\odot} \times 10^6\,\text{yr}}{M_{0,\odot}} = \frac{0.1 \times 10^6}{10^4} = \mathbf{10.0}$$
 
@@ -57,7 +57,7 @@ $$\frac{\Delta M}{M_0}\bigg|_{1\,\text{Myr}} = \frac{\text{SFR}_{\odot} \times 1
 
 $$m_\text{factor}(1\,\text{Myr}) = 1 + \frac{\Delta M}{M_0} = \mathbf{11.0}$$
 
-This means g(1 Myr) = 11 × g(0) — gravity amplified 11-fold in 1 Myr.
+This means g(1 Myr) = 11 $\times$ g(0) — gravity amplified 11-fold in 1 Myr.
 
 **Cloud depletion time:**
 
@@ -73,7 +73,7 @@ This places M8 in the **runaway regime** — the cloud refuels or overdepletes w
 
 $$\frac{dg}{dt} = \frac{G \cdot \text{SFR}_\text{kg/s}}{r^2} = \frac{6.6743\times10^{-11} \times 6.303\times10^{21}}{(5.2\times10^{17})^2} = 1.553\times10^{-24}\,\text{m/s}^3$$
 
-Over 1 Myr (t = 3.156×1013 s):
+Over 1 Myr (t = 3.156$\times$1013 s):
 
 $$\Delta g = 1.553\times10^{-24} \times 3.156\times10^{13} = 4.90\times10^{-11}\,\text{m/s}^2 \approx 10 \times g_\text{base}$$
 
@@ -85,14 +85,14 @@ Consistent with m_factor = 11.0.
 
 | Metric | M8 Lagoon | M16 Eagle (PAPER_284) | Ratio |
 |--------|-----------|------------------------|-------|
-| M0 | 1e4 M_sun | ~6e3 M_sun | 1.67× |
-| SFR | 0.1 M_sun/yr | ~5e-3 M_sun/yr | 20× |
-| SFR/M0 | **1e-5 yr-1** | ~8.33e-4 yr-1 | 0.012× |
-| ΔM/M0 at 1 Myr | **10.0** | ~0.83 | 12× |
-| t_consume | **100 kyr** | ~1.2 Myr | 12× |
+| M0 | 1e4 M_sun | ~6e3 M_sun | 1.67$\times$ |
+| SFR | 0.1 M_sun/yr | ~5e-3 M_sun/yr | 20$\times$ |
+| SFR/M0 | **1e-5 yr-1** | ~8.33e-4 yr-1 | 0.012$\times$ |
+| $\Delta$M/M0 at 1 Myr | **10.0** | ~0.83 | 12$\times$ |
+| t_consume | **100 kyr** | ~1.2 Myr | 12$\times$ |
 | Runaway? | **YES** | No | — |
 
-M8 is the FIRST UQFF module to achieve SFR runaway (ΔM > M0 within 1 Myr timescale).
+M8 is the FIRST UQFF module to achieve SFR runaway ($\Delta$M > M0 within 1 Myr timescale).
 
 ---
 
@@ -100,7 +100,7 @@ M8 is the FIRST UQFF module to achieve SFR runaway (ΔM > M0 within 1 Myr timesc
 
 The SFR runaway quantifies why the Lagoon Nebula is a highly dynamic, rapidly-evolving H II region:
 
-1. **Runaway gravity amplification**: g(1 Myr) = 11 × g(0) drives further compression and star
+1. **Runaway gravity amplification**: g(1 Myr) = 11 $\times$ g(0) drives further compression and star
 formation
 2. **100 kyr depletion time**: Cloud replenishment from surrounding molecular gas must exceed 0.1
 M_sun/yr for sustained activity
@@ -120,7 +120,7 @@ Herschel 36) and multiple O-stars confirm enhanced SFR relative to cloud mass
 
 ---
 
-*Computed values: ΔM/M0(1 Myr)=10.0, m_factor=11.0, t_consume=100 kyr, SFR/M0=1e-5 yr-1,
+*Computed values: $\Delta$M/M0(1 Myr)=10.0, m_factor=11.0, t_consume=100 kyr, SFR/M0=1e-5 yr-1,
 dg/dt=1.553e-24 m/s3*
 
 
@@ -235,7 +235,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -246,13 +246,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

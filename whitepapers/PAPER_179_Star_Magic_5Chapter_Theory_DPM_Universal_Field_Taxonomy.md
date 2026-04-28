@@ -26,7 +26,7 @@ the theoretical content and provides a formal treatment of the DPM.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -70,7 +70,7 @@ $$
 
 Ug1 is directly equal to the DPM field strength:
 $$
-Ug1 = k1 × µ_s(DPM) × ?(Ms/r) × exp(-at) × cos(pt?) × (1+d_def)
+Ug1 = k1 \times µ_s(DPM) \times ?(Ms/r) \times exp(-at) \times cos(pt?) \times (1+d_def)
 $$
 
 Where `µ_s` is the DPM moment — the effective "charge" of the
@@ -90,11 +90,11 @@ $$
   & ¦   +— Ug3: String disk (magnetic strings, 90° to DPM) \\
   & ¦   +— Ug4: Star–BH interaction (galactic vacuum) \\
   & +— Ub — Universal Buoyancy (4 ranges, opposing Ug) \\
-  & ¦   +— Ubi = -ß_i × Ug_i × O_g × Mbh/dg × UA \\
+  & ¦   +— Ubi = -ß_i \times Ug_i \times O_g \times Mbh/dg \times UA \\
   & +— Um — Universal Magnetism \\
   & ¦   +— N_strings near-lossless strings (SCm superconductivity) \\
   & +— UA — Universal Cosmic Aether (Tensor A_µ?) \\
-  & +— A_µ? = g_µ? + ? × T_s^µ?
+  & +— A_µ? = g_µ? + ? \times T_s^µ?
 \end{aligned}
 $$
 
@@ -139,7 +139,7 @@ Applying the UQFF framework to the Sun (from Star Magic Chapter 4):
 
 | Process | UQFF Mechanism |
 |---------|---------------|
-| Solar magnetic cycle | ?_c = 2p/11yr drives all cos(?_c×t) terms |
+| Solar magnetic cycle | ?_c = 2p/11yr drives all cos(?_c$\times$t) terms |
 | Heliosphere boundary | Rb = 1.496e13 m (step function threshold) |
 | Solar wind transmutation | Ug2 ? H-complexes bound by SCm |
 | Planetary liquid volumes | Correlate with Ug2 SCm content |
@@ -177,7 +177,7 @@ This framework is speculative and extends beyond standard physics. The constants
 $$
 \begin{aligned}
   & Current calibration sources: \\
-  & κ = 0.0005/day   ? faint young Sun / solar luminosity evolution \\
+  & \kappa = 0.0005/day   ? faint young Sun / solar luminosity evolution \\
   & ß_i=0.6        ? galactic rotation curve correction \\
   & O_g=7.3e-16    ? Milky Way angular velocity (established) \\
   & Mbh=8.15e36    ? Sgr A* mass (GRAVITY Collaboration, 2022) \\
@@ -203,7 +203,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -222,7 +222,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -331,7 +331,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.158 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -342,13 +342,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

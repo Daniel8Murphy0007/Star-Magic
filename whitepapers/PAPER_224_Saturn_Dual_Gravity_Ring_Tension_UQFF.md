@@ -32,7 +32,7 @@ $$
 Saturn presents a unique UQFF configuration with two explicit gravitational sources summed with
 **asymmetric modifiers**: solar heliocentric gravity carries the `(1+H(z)·t)` expansion term, while
 Saturn's self-gravity carries the `(1-B/B_crit)` magnetic suppression — and neither term receives
-the modifier of the other. Additionally, the ring tidal tension T_ring ˜ 2.043×10-7 m/s2 and solar
+the modifier of the other. Additionally, the ring tidal tension T_ring ˜ 2.043$\times$10-7 m/s2 and solar
 wind ram pressure F_wind_solar appear as additive corrections. This is the only UQFF document among
 all 29 that uses two independent gravitational potentials with DIFFERENT UQFF modifiers on each,
 representing a multi-body hierarchical gravity structure. We derive the dual-source formulation,
@@ -41,7 +41,7 @@ value against the CP1 benchmark.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,8 +53,8 @@ From Document 22 of grok_share_7514fe:
 
 $$
 \begin{aligned}
-  & g_Saturn(r, t) = (G·M_Sun)/r_orbit2 · (1+H(z)·t) \\
-  & + (G·M_Saturn)/r2 · (1-B/B_crit) \\
+  & g_Saturn(r, t) = (G\cdotM_Sun)/r_orbit2 \cdot (1+H(z)\cdott) \\
+  & + (G\cdotM_Saturn)/r2 \cdot (1-B/B_crit) \\
   & + T_ring \\
   & + (Ug1 + Ug2 + Ug3 + Ug4) \\
   & + ?c2/3 + QM + fluid + DM \\
@@ -63,8 +63,8 @@ $$
 $$
 
 **Unique features (no other system in 29 documents):**
-1. Two explicit G·M/r2 terms summed
-2. H(z)·t applied ONLY to solar term (not Saturn)
+1. Two explicit G$\cdot$M/r2 terms summed
+2. H(z)$\cdot$t applied ONLY to solar term (not Saturn)
 3. B/B_crit applied ONLY to Saturn term (not solar)
 4. T_ring as tidal ring acceleration additive
 
@@ -72,7 +72,7 @@ $$
 
 ## 2. Physical Justification for Asymmetric Modifiers
 
-### 2.1 Why H(z)·t only on the Solar Term
+### 2.1 Why H(z)$\cdot$t only on the Solar Term
 
 The Hubble expansion factor `(1+H·t)` represents the effect of cosmological spacetime expansion on
 the gravitational potential. At the Saturn-Sun scale (r_orbit ~ 9.5 AU):
@@ -81,7 +81,7 @@ the gravitational potential. At the Saturn-Sun scale (r_orbit ~ 9.5 AU):
 - Saturn's self-gravity: a local planetary gravitational field, screened from cosmological expansion by the Solar System's gravitational binding ? no `H·t` correction
 
 This is the **screening principle**: local bound systems do not participate in Hubble flow. The
-Sun-Saturn orbit is bound; Saturn's self-gravity is hyper-local. Therefore H(z)·t applies only to
+Sun-Saturn orbit is bound; Saturn's self-gravity is hyper-local. Therefore H(z)$\cdot$t applies only to
 the heliocentric (Sun-Saturn orbit) term.
 
 ### 2.2 Why B/B_crit Only on Saturn's Self-Gravity
@@ -107,20 +107,20 @@ T_ring is the differential gravitational acceleration across the width of Saturn
 
 $$
 \begin{aligned}
-  & T_ring = G·M_Saturn / r_ring2 - G·M_Saturn / (r_ring + ?r)2 \\
-  & ˜ 2·G·M_Saturn·?r / r_ring3   [tidal gradient approximation]
+  & T_ring = G\cdotM_Saturn / r_ring2 - G\cdotM_Saturn / (r_ring + ?r)2 \\
+  & ˜ 2\cdotG\cdotM_Saturn\cdot?r / r_ring3   [tidal gradient approximation]
 \end{aligned}
 $$
 
-For the main ring midplane (B-ring, r_ring ˜ 1.8 R_Saturn = 1.08×108 m):
+For the main ring midplane (B-ring, r_ring ˜ 1.8 R_Saturn = 1.08$\times$108 m):
 $$
 \begin{aligned}
-  & T_ring = 2 · G · M_Saturn · ?r / r_ring3 \\
-  & = 2 · 6.674e-11 · 5.683e26 · ?r / (1.08e8)3
+  & T_ring = 2 \cdot G \cdot M_Saturn \cdot ?r / r_ring3 \\
+  & = 2 \cdot 6.674e-11 \cdot 5.683e26 \cdot ?r / (1.08e8)3
 \end{aligned}
 $$
 
-The CP1 benchmark value T_ring = 2.043×10-7 m/s2 corresponds to ?r ˜ 10 km (typical ring particle
+The CP1 benchmark value T_ring = 2.043$\times$10-7 m/s2 corresponds to ?r ˜ 10 km (typical ring particle
 orbital spacing).
 
 ### 3.2 Significance
@@ -129,8 +129,8 @@ T_ring is what keeps ring particles in distinct orbital shells rather than diffu
 When T_ring > self-gravity of ring particles, rings remain thin and flat — consistent with Saturn's
 rings being only ~10 m thick despite extending to 280,000 km radius.
 
-For T_ring = 2.043×10-7 m/s2 and ring particle radius ˜ 1 cm, 1 m:
-- Self-gravity of 1 m particle: g_particle = G·M_particle/r2 ˜ 10?1° m/s2
+For T_ring = 2.043$\times$10-7 m/s2 and ring particle radius ˜ 1 cm, 1 m:
+- Self-gravity of 1 m particle: g_particle = G$\cdot$M_particle/r2 ˜ 10?1° m/s2
 - T_ring/g_particle ˜ 2000:1 ? **tidal force completely dominates particle self-gravity**
 
 This proves Roche criterion is met for the main rings: particles cannot accrete there.
@@ -140,26 +140,26 @@ This proves Roche criterion is met for the main rings: particles cannot accrete 
 ## 4. Numerical Values
 
 Parameters (Saturn, current epoch):
-- M_Sun = 1.989×103° kg
-- r_orbit = 1.426×1012 m (9.54 AU)
-- M_Saturn = 5.683×1026 kg  
-- r = 6.0268×107 m (equatorial radius)
-- B = 20 µT = 2×10-5 T; B_crit = 4.4×1013 T ? B/B_crit = 4.5×10?1? ˜ 0
+- M_Sun = 1.989$\times$103° kg
+- r_orbit = 1.426$\times$1012 m (9.54 AU)
+- M_Saturn = 5.683$\times$1026 kg  
+- r = 6.0268$\times$107 m (equatorial radius)
+- B = 20 µT = 2$\times$10-5 T; B_crit = 4.4$\times$1013 T ? B/B_crit = 4.5$\times$10?1? ˜ 0
 
 $$
 \begin{aligned}
-  & g_sun = G·M_Sun/r_orbit2 · (1+H·t) = 6.674e-11·1.989e30/(1.426e12)2 · 1.000 \\
-  & ˜ 6.53×10?3 m/s2 \\
-  & g_saturn = G·M_Saturn/r2 · (1-B/B_crit) ˜ G·M_Saturn/r2 \\
+  & g_sun = G\cdotM_Sun/r_orbit2 \cdot (1+H\cdott) = 6.674e-11\cdot1.989e30/(1.426e12)2 \cdot 1.000 \\
+  & ˜ 6.53\times10?3 m/s2 \\
+  & g_saturn = G\cdotM_Saturn/r2 \cdot (1-B/B_crit) ˜ G\cdotM_Saturn/r2 \\
   & ˜ 10.44 m/s2   [Saturn surface gravity ~ 10.44 m/s2] \\
-  & T_ring = 2.043×10-7 m/s2   [CP1 benchmark] \\
-  & \text{F\_wind\_solar} = ?_sw · v_sw2 ˜ 5e-26 · (4e5)2 ˜ 8×10?15 m/s2 \\
+  & T_ring = 2.043\times10-7 m/s2   [CP1 benchmark] \\
+  & \text{F\_wind\_solar} = ?_sw \cdot v_sw2 ˜ 5e-26 \cdot (4e5)2 ˜ 8\times10?15 m/s2 \\
   & g_total ˜ 10.44 + 6.53e-3 + 2.04e-7 + small  ˜ 10.446 m/s2
 \end{aligned}
 $$
 
 Saturn surface gravity dominated by planetary self-gravity as expected. The solar term is a 0.06%
-correction; T_ring is a 2×10-6% correction — but they are physically essential for describing ring
+correction; T_ring is a 2$\times$10-6% correction — but they are physically essential for describing ring
 dynamics and orbital stability.
 
 ---
@@ -170,8 +170,8 @@ The dual-source structure `g_A + g_B` with DIFFERENT modifiers on each source is
 
 | System | Gravity Sources | Modifiers | Why Different |
 |--------|-----------------|-----------|---------------|
-| All others (Docs 1-21, 23-29) | Single: G·M/r2 | One set of modifiers | Single dominant body |
-| Saturn (Doc 22) | Dual: G·M_Sun/r_orbit2 + G·M_Saturn/r2 | H·t on solar; B/B_crit on Saturn | Hierarchy: orbit vs surface |
+| All others (Docs 1-21, 23-29) | Single: G$\cdot$M/r2 | One set of modifiers | Single dominant body |
+| Saturn (Doc 22) | Dual: G$\cdot$M_Sun/r_orbit2 + G$\cdot$M_Saturn/r2 | H$\cdot$t on solar; B/B_crit on Saturn | Hierarchy: orbit vs surface |
 
 The closest analogues (Magnetar SGR1745, NGC2525, NGC1275) all have an ADDITIVE BH term
 `(G·M_BH)/r_BH2` with no modifiers — they do not apply different UQFF factors to each gravitational
@@ -182,7 +182,7 @@ source. Saturn is unique in the asymmetric modifier assignment.
 ## 6. Calculator Implementation
 
 `SaturnDualGravityRingTensionCalculator` in CondensedPhysics3.py (Session 56):
-- `g_sun = G*M_Sun/r_orbit**2 * (1 + H0*t)` — H·t on solar only
+- `g_sun = G*M_Sun/r_orbit**2 * (1 + H0*t)` — H$\cdot$t on solar only
 - `g_saturn = G*M_Saturn/r**2 * (1 - B/B_crit)` — B/B_crit on Saturn only
 - `T_ring = 2.043e-7` default (CP1 benchmark)
 - `g_total = g_sun + g_saturn + T_ring + ...`
@@ -198,7 +198,7 @@ source. Saturn is unique in the asymmetric modifier assignment.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -217,7 +217,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -326,7 +326,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.079 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -337,13 +337,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -354,7 +354,7 @@ bridge.*
 1. grok_share_7514fe.txt — Document 22: Saturn g_Saturn equation
 2. Esposito (2002) — "Planetary Rings", ARAA 40 — ring tidal structure
 3. Dougherty et al. (2005) — Cassini magnetometry, Saturn B = 20 µT
-4. CP1 CondensedPhysics.py — Saturn benchmark T_ring = 2.043×10-7 m/s2
+4. CP1 CondensedPhysics.py — Saturn benchmark T_ring = 2.043$\times$10-7 m/s2
 5. CondensedPhysics3.py — `SaturnDualGravityRingTensionCalculator` (Session 56)
 
 ---

@@ -10,11 +10,11 @@ tags: [SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_396 — Higgs as Emergent Level-18 UQFF Stratum: δ_n(n) = φ·(2π)^{n/6}
+# PAPER_396 — Higgs as Emergent Level-18 UQFF Stratum: $\delta$_n(n) = $\phi$$\cdot$(2$\pi$)^{n/6}
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **Source:** grok_share_cfdcad2f5.txt, lines ~1–200 (KB integration section, document headers)  
@@ -27,8 +27,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of Higgs as Emergent Level-18 UQFF Stratum: δ_n(n) =
-φ·(2π)^{n/6}, deriving compressed field equations and observational predictions within the
+This paper presents a UQFF analysis of Higgs as Emergent Level-18 UQFF Stratum: $\delta$_n(n) =
+$\phi$$\cdot$(2$\pi$)^{n/6}, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
 ## 1. Overview
@@ -125,14 +125,14 @@ threshold at each dimensional stratum**:
 
 The factor $\phi = 1.618...$ encodes the **self-similar recursive structure** of the UQFF
 Aether layers. In the golden ratio, each level grows by a factor $\phi^{n/6}\cdot(2\pi)^{n/6}$,
-which is the product of harmonic (2π) and recursive (φ) growth modes.
+which is the product of harmonic (2$\pi$) and recursive ($\phi$) growth modes.
 
 ### 4.3 CERN HiggsML Validation
 
 From the Grok DeepSearch (CERN Open Data Portal, HepData 13,643 publications):
-- The HiggsML dataset validates φ in δ_n(n) = φ·(2π)^{n/6}
-- LHC H→γγ branching ratio corresponds to level-18 UQFF coupling
-- H→ZZ decay width maps to $e^{-[SSq]\cdot18}$ suppression factor $\approx 3.49\times10^{-5}$
+- The HiggsML dataset validates $\phi$ in $\delta$_n(n) = $\phi$$\cdot$(2$\pi$)^{n/6}
+- LHC H$\to$$\gamma$$\gamma$ branching ratio corresponds to level-18 UQFF coupling
+- H$\to$ZZ decay width maps to $e^{-[SSq]\cdot18}$ suppression factor $\approx 3.49\times10^{-5}$
 
 This cross-validation connects UQFF emergent Higgs to observed collider data.
 
@@ -164,9 +164,9 @@ for $n = 18$ and appropriate $\rho$ values.
 | Paper | Content | Distinction |
 |-------|---------|------------|
 | PAPER_302 | PToE U_g4i dominant term | No Higgs emergence |
-| PAPER_342 | 26D quantum sphere framework | Abstract; no δ_n formula |
-| PAPER_388 | Yang-Mills mass gap (dynamic) | Mass gap ≠ Higgs emergence |
-| **PAPER_396** | $\delta_n=\phi(2\pi)^{n/6}$, $n=18$→Higgs | **Emergent Higgs taxonomy** |
+| PAPER_342 | 26D quantum sphere framework | Abstract; no $\delta$_n formula |
+| PAPER_388 | Yang-Mills mass gap (dynamic) | Mass gap $\neq$ Higgs emergence |
+| **PAPER_396** | $\delta_n=\phi(2\pi)^{n/6}$, $n=18$$\to$Higgs | **Emergent Higgs taxonomy** |
 
 ---
 
@@ -193,13 +193,13 @@ $\delta_n(18) = \phi\cdot(2\pi)^3 = 401.3$ and suppressed by $e^{-0.57\times18} 
 The formula $\delta_n(n) = \phi\cdot(2\pi)^{n/6}$ provides a unified taxonomy of field
 emergences across all 26 stratum levels, with the golden ratio encoding recursive self-similar
 growth and $(2\pi)^{n/6}$ encoding UQFF phase scaling. CERN HiggsML dataset validation
-confirms the φ-scaling at the collider energy scale.
+confirms the $\phi$-scaling at the collider energy scale.
 
 ---
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -298,7 +298,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.116 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -309,13 +309,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Domain:** 1.3  Gravitational Waves: Extended Waveform & Multi-Band
 **Status:** Draft
 **Repository:** Daniel8Murphy0007/Star-Magic
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57
 **Primary Validation File:** `validate_string_compact_uqff.py`
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
@@ -35,14 +35,14 @@ Field Framework (UQFF), the string sector damping factor D_String = 0.37 (BNS) a
 derive the full Kaluza-Klein tower contribution to GW strain, calculate the compactification scale
 from UQFF calibration constants, and predict spectral features in the stochastic GW background
 arising from KK mode resonances at f ~ 10-4 Hz (LISA band) and f ~ 10 Hz (LIGO band). The
-compactification radius R_c = 1.7 × 10? m is derived from [SSq] = 0.57, corresponding to a KK mass
+compactification radius R_c = 1.7 $\times$ 10? m is derived from [SSq] = 0.57, corresponding to a KK mass
 scale M_KK = 11.6 TeV  consistent with LHC non-observation of extra dimensions. Cosmic string
 network contributions to the SGWB are also calculated, predicting a distinctive spectral break at f
 ~ 10-8 Hz detectable by PTA+LISA combined observations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -123,8 +123,8 @@ At LIGO frequencies (f ~ 100 Hz):
 
 ### 3.2 SGWB Spectral Shape
 
-**Omega_GW,UQFF(f) = Omega_0 x (f/f_ref)^(2/3) x Dκ_String(f) + Omega_KK,peak x exp[-(log
-f/f_KK,res)/2sigmaκ_KK]**
+**Omega_GW,UQFF(f) = Omega_0 x (f/f_ref)^(2/3) x D$\kappa$_String(f) + Omega_KK,peak x exp[-(log
+f/f_KK,res)/2sigma$\kappa$_KK]**
 
 Parameters:
 - Omega_0 = 10??
@@ -137,7 +137,7 @@ Parameters:
 | Frequency Range | Dominant Source | Spectral Index |
 |----------------|-----------------|----------------|
 | f < 10-8 Hz | PTA SGWB + UQFF amplification | -2/3 |
-| 10-8 × 10-4 Hz | UQFF transition region | -1/2 |
+| 10-8 $\times$ 10-4 Hz | UQFF transition region | -1/2 |
 | f ~ 10-4 Hz | KK resonance peak | +2 (rising) |
 | f > 10-4 Hz | Standard SGWB + KK damping | -2/3 |
 
@@ -256,7 +256,7 @@ Signatures in Gravitational Wave Background
 **Domain:** 1.3  Gravitational Waves: Extended Waveform & Multi-Band
 **Status:** Draft
 **Repository:** Daniel8Murphy0007/Star-Magic
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57
 **Primary Validation File:** `validate_string_compact_uqff.py`
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
@@ -326,7 +326,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -369,14 +369,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -391,10 +391,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -402,9 +402,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -412,8 +412,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -490,7 +490,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.127 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

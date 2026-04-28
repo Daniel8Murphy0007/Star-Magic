@@ -40,7 +40,7 @@ $$
 The Pillars of Creation (Eagle Nebula M16 molecular pillars) and the Rings of Relativity
 (Einstein-ring class gravitational lens) represent two distinct astrophysical environments in which
 the UQFF MUGE cascade sequence reaches lower-energy configurations. Under the MUGE 12-Term Resonance
-framework, the Pillars yield g = 2.001×10^26 m/s^2 and the Rings yield g = 5.005×10^25 m/s^2 — each
+framework, the Pillars yield g = 2.001$\times$10^26 m/s^2 and the Rings yield g = 5.005$\times$10^25 m/s^2 — each
 approximately factor 4 lower than the previous system in the 7-system cascade sequence
 (Tapestry/Westerlund at 1.001e27, Pillars at 2.001e26, Rings at 5.005e25). This factor ~4-5 cascade
 step represents the hierarchical de-amplification of afluid_freq as system B-field and SCm density
@@ -96,9 +96,9 @@ The 5-step system cascade in MUGE Cycle 3:
 |--------|---------------|-----------------|-------------|
 | Sgr A* | 4.105e29 | subdominant (aDPM >> fluid) | — |
 | Tapestry / Westerlund 2 | 1.001e27 | dominant (full SCm saturation) | ~4e-3 drop |
-| Pillars of Creation | 2.001e26 | dominant (partial saturation) | ~5× drop |
-| Rings of Relativity | 5.005e25 | dominant (lensing geometry) | ~4× drop |
-| Student's Guide Universe | 3.958e14 | coupled (Hubble + fluid) | ~1011× drop |
+| Pillars of Creation | 2.001e26 | dominant (partial saturation) | ~5$\times$ drop |
+| Rings of Relativity | 5.005e25 | dominant (lensing geometry) | ~4$\times$ drop |
+| Student's Guide Universe | 3.958e14 | coupled (Hubble + fluid) | ~1011$\times$ drop |
 
 The near-factor-4-5 cascade steps between the middle three systems (SFR ? Pillars ? Rings) reflect
 the progressive reduction in B-field and SCm density:
@@ -264,7 +264,7 @@ SOURCE4::rings_SOURCE4 = {
 ## 7. Conclusion
 
 The Pillars of Creation and Rings of Relativity occupy the middle-lower range of the MUGE Cycle 3
-cascade sequence, with g = 2.001×10^26 and 5.005×10^25 m/s^2 respectively. Both are afluid_freq
+cascade sequence, with g = 2.001$\times$10^26 and 5.005$\times$10^25 m/s^2 respectively. Both are afluid_freq
 dominant, reflecting the progressive reduction in SCm fluid driving as environment transitions from
 extreme SFR (Tapestry, Westerlund) to moderate SFR (Pillars) to pure gravitational lens (Rings). The
 factor ~4-5 cascade step between these systems validates the MUGE SCm saturation model's prediction
@@ -292,7 +292,7 @@ dark matter in standard models.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -311,7 +311,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -419,7 +419,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.168 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

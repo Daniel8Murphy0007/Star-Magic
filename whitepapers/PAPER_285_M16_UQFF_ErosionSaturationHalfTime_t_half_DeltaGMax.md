@@ -10,8 +10,8 @@ tags: [BEC, cluster, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_285: M16 Eagle Nebula UQFF — Erosion Saturation Half-Time and ΔgMax
-## Photoevaporation Asymptotic Saturation: t_half = τ·ln2 = 2.079 Myr
+# PAPER_285: M16 Eagle Nebula UQFF — Erosion Saturation Half-Time and $\Delta$gMax
+## Photoevaporation Asymptotic Saturation: t_half = $\tau$$\cdot$ln2 = 2.079 Myr
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Erosion Dynamics  
 **System:** M16 Eagle Nebula (IC 4703), Eagle Nebula Star-Forming Region  
@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 This paper derives the **Erosion Saturation Half-Time** (t_half) and **Maximum Erosion Gravity
-Amplitude** (ΔgMax) for the M16 Eagle Nebula UQFF photoevaporation term. The photoevaporation rate
-follows an exponential saturation E_rad(t) = E₀×(1−exp(−t/τ)) with e-folding time τ = 3 Myr. The
-half-erosion time t_half = τ·ln2 = **6.561 × 1013 s = 2.079 Myr** — the time at which the erosion
-fraction reaches half its asymptotic maximum E₀. The maximum gravity perturbation is ΔgMax = E₀ ×
-g_base = **4.36 × 10-13 m/s2**. This is the **first UQFF module** to formally catalogue the
+Amplitude** ($\Delta$gMax) for the M16 Eagle Nebula UQFF photoevaporation term. The photoevaporation rate
+follows an exponential saturation E_rad(t) = E0$\times$(1-exp(-t/$\tau$)) with e-folding time $\tau$ = 3 Myr. The
+half-erosion time t_half = $\tau$$\cdot$ln2 = **6.561 $\times$ 1013 s = 2.079 Myr** — the time at which the erosion
+fraction reaches half its asymptotic maximum E0. The maximum gravity perturbation is $\Delta$gMax = E0 $\times$
+g_base = **4.36 $\times$ 10-13 m/s2**. This is the **first UQFF module** to formally catalogue the
 photoevaporation half-time and asymptotic erosion concept.
 
 ---
@@ -41,8 +41,8 @@ embedded in M16) drives photoionisation of surrounding molecular gas — a proce
 $$E_{rad}(t) = E_0 \left(1 - e^{-t/\tau}\right)$$
 
 where:
-- E₀ = 0.3 is the **asymptotic maximum fraction** (30% of mass eventually eroded)
-- τ = 3 Myr is the **e-folding time** (photoevaporation efficiency timescale)
+- E0 = 0.3 is the **asymptotic maximum fraction** (30% of mass eventually eroded)
+- $\tau$ = 3 Myr is the **e-folding time** (photoevaporation efficiency timescale)
 - The saturation arises because dense molecular cores (pillar tips) are progressively shielded by their own column density as surrounding gas is stripped
 
 ---
@@ -51,7 +51,7 @@ where:
 
 ### 3.1 Half-Time
 
-The erosion half-time t_half is defined as the time when E_rad = E₀/2:
+The erosion half-time t_half is defined as the time when E_rad = E0/2:
 
 $$E_0 \left(1 - e^{-t_{half}/\tau}\right) = \frac{E_0}{2}$$
 
@@ -69,7 +69,7 @@ $$t_{half} = \mathbf{2.079 \text{ Myr}}$$
 
 ### 3.2 Maximum Gravity Amplitude
 
-The maximum erosion-induced gravity perturbation (asymptotic limit as t → ∞):
+The maximum erosion-induced gravity perturbation (asymptotic limit as t $\to$ $\infty$):
 
 $$\Delta g_{Max} = E_0 \times g_{base}$$
 
@@ -91,15 +91,15 @@ $$\frac{dg_{erode}}{dt}\bigg|_{t=0} = \frac{E_0}{\tau} \times g_{base} = \frac{0
 
 ## 4. Saturation Profile
 
-| Time | t (s) | E_rad / E₀ | E_rad | g_erode (m/s2) |
+| Time | t (s) | E_rad / E0 | E_rad | g_erode (m/s2) |
 |------|--------|------------|-------|----------------|
 | 0 Myr | 0 | 0% | 0 | 0 |
-| t_half = 2.079 Myr | 6.561×1013 | **50%** | 0.150 | **2.18×10-13** |
-| τ = 3 Myr | 9.468×1013 | 63.2% | 0.190 | 2.76×10-13 |
-| 5 Myr | 1.578×1014 | 81.1% | 0.243 | 3.54×10-13 |
-| ∞ (asymptote) | → ∞ | **100%** | 0.300 | **4.36×10-13** |
+| t_half = 2.079 Myr | 6.561$\times$1013 | **50%** | 0.150 | **2.18$\times$10-13** |
+| $\tau$ = 3 Myr | 9.468$\times$1013 | 63.2% | 0.190 | 2.76$\times$10-13 |
+| 5 Myr | 1.578$\times$1014 | 81.1% | 0.243 | 3.54$\times$10-13 |
+| $\infty$ (asymptote) | $\to$ $\infty$ | **100%** | 0.300 | **4.36$\times$10-13** |
 
-**Key insight:** At τ = 3 Myr (the e-folding time), erosion has consumed only 63.2% of its capacity,
+**Key insight:** At $\tau$ = 3 Myr (the e-folding time), erosion has consumed only 63.2% of its capacity,
 NOT 100%. Half-erosion occurs earlier at 2.079 Myr. The pillar structure of M16 means the ~5700 ly
 "Pillars of Creation" are still observed today because erosion saturates — it cannot fully strip the
 densest pillar cores within observable timescales.
@@ -119,7 +119,7 @@ dominates (since M_sf grows linearly while E_rad asymptotes).
 
 ### Crossover Time
 
-The era when SFR growth exactly compensates erosion (dΦ_dm/dt = 0 — maximum Φ_dm):
+The era when SFR growth exactly compensates erosion (d$\Phi$_dm/dt = 0 — maximum $\Phi$_dm):
 
 $$\frac{d\Phi_{dm}}{dt} = \text{SFR\_rate} \times (1 - E_{rad}) - (1 + M_{sf}) \times \frac{E_0}{\tau} e^{-t/\tau} = 0$$
 
@@ -138,8 +138,8 @@ $$
 
 ## 7. Cross-References
 
-- **PAPER_284:** Dual Mass Co-Action Product (Φ_dm = (1+M_sf)×(1−E_rad))
-- **PAPER_286:** Nebular Friedmann Redshift (κ_neb, z=0.0015)
+- **PAPER_284:** Dual Mass Co-Action Product ($\Phi$_dm = (1+M_sf)$\times$(1-E_rad))
+- **PAPER_286:** Nebular Friedmann Redshift ($\kappa$_neb, z=0.0015)
 - **M16_UQFF_MODULE.cpp:** Full UQFF 2.0 C++ implementation (22nd module)
 - **CondensedPhysics3.py:** `M16ErosionSaturationHalfTimeCalculator`
 
@@ -252,7 +252,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.172 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -263,13 +263,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

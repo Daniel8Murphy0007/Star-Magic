@@ -23,7 +23,7 @@ starburst gravity
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 In NGC 1792, the physical parameters are initialized with `ρ_wind = ρ_fluid = 1×10-21 kg/m3` —
@@ -42,14 +42,14 @@ driven purely by kinematic pressure, creating a fundamentally new gravitational 
 
 ### 1.1 NGC 1792 Starburst Environment
 
-NGC 1792 is a starburst galaxy with extremely high star-formation activity (SFR ≈ 10 MM_sun/yr) and a
+NGC 1792 is a starburst galaxy with extremely high star-formation activity (SFR $\approx$ 10 MM_sun/yr) and a
 correspondingly dense interstellar medium (ISM). In the UQFF Module 19 parameterization:
 
-- **Wind density:** ρ_wind = 1×10-21 kg/m3 (supernova ejecta/galactic wind)
-- **ISM fluid density:** ρ_fluid = 1×10-21 kg/m3 (ambient ISM)
-- **Wind velocity:** v_wind = 2×106 m/s (starburst-driven galactic outflow)
+- **Wind density:** $\rho$_wind = 1$\times$10-21 kg/m3 (supernova ejecta/galactic wind)
+- **ISM fluid density:** $\rho$_fluid = 1$\times$10-21 kg/m3 (ambient ISM)
+- **Wind velocity:** v_wind = 2$\times$106 m/s (starburst-driven galactic outflow)
 
-The equality ρ_wind = ρ_fluid is not a coincidence of parameterization — it reflects a physical
+The equality $\rho$_wind = $\rho$_fluid is not a coincidence of parameterization — it reflects a physical
 regime in starburst galaxies where the ram-pressure-driven winds and the ISM they are pushing
 against have **comparable densities**, characteristic of the transition zone between the supernova
 remnant and the surrounding ISM.
@@ -111,7 +111,7 @@ $$\text{term1} = \frac{G M_0}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \t
 
 $$= \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{40}}{5.729 \times 10^{41}} \approx 7.35 \times 10^{-11}\ \text{m/s}^2$$
 
-where M₀ = 1×1010 MM_sun = 1.989×1040 kg, r = 7.569×1020 m.
+where M0 = 1$\times$1010 MM_sun = 1.989$\times$1040 kg, r = 7.569$\times$1020 m.
 
 ### 3.3 RPDP Dominance Ratio
 
@@ -124,12 +124,12 @@ orders of magnitude**.
 
 | Term | Formula | Value (m/s2) | Order |
 |------|---------|--------------|-------|
-| DPM-seeded base (term1) | GM₀/r2 | 7.35×10-11 | 10-11 |
+| DPM-seeded base (term1) | GM0/r2 | 7.35$\times$10-11 | 10-11 |
 | Hubble expansion (term2) | H2 r / 2 | ~10-37 | 10-37 |
-| Magnetic (term3) | B2/(8π ρ r) | ~10-23 | 10-23 |
-| Cosmological (term4) | Λr/3 | ~10-28 | 10-28 |
-| Oscillatory (term_osc1) | ω_osc × A_osc | ~10-42 | 10-42 |
-| SN feedback (RPDP) | v_wind2 | **4×1012** | **1012** |
+| Magnetic (term3) | B2/(8$\pi$ $\rho$ r) | ~10-23 | 10-23 |
+| Cosmological (term4) | $\Lambda$r/3 | ~10-28 | 10-28 |
+| Oscillatory (term_osc1) | $\omega$_osc $\times$ A_osc | ~10-42 | 10-42 |
+| SN feedback (RPDP) | v_wind2 | **4$\times$1012** | **1012** |
 
 ---
 
@@ -137,7 +137,7 @@ orders of magnitude**.
 
 ### 4.1 Buoyancy Neutrality at the RPDP
 
-At the RPDP (ρ_wind = ρ_fluid), Archimedes' buoyancy principle gives **zero net buoyancy force** on
+At the RPDP ($\rho$_wind = $\rho$_fluid), Archimedes' buoyancy principle gives **zero net buoyancy force** on
 the SN ejecta:
 
 $$F_\text{buoy} = (\rho_text{fluid} - \rho_text{wind}) \cdot V \cdot g = 0$$
@@ -145,7 +145,7 @@ $$F_\text{buoy} = (\rho_text{fluid} - \rho_text{wind}) \cdot V \cdot g = 0$$
 This means:
 - SN ejecta neither floats nor sinks in the ISM
 - The ejecta is **gravitationally neutral** with respect to density-driven buoyancy
-- The only remaining driving force is the **kinematic ram pressure** = ρ_wind × v2_wind / ρ_fluid = v2_wind
+- The only remaining driving force is the **kinematic ram pressure** = $\rho$_wind $\times$ v2_wind / $\rho$_fluid = v2_wind
 
 At the RPDP, the SN ejecta "**floats**" in the ISM — not rising or falling due to density contrast,
 but driven purely by its kinematic energy. This creates a new UQFF gravitational channel: **pure
@@ -167,10 +167,10 @@ This holds regardless of the density value, provided the two densities are equal
 The RPDP condition is most likely to be realized in **starburst galaxies** where:
 1. High SFR drives intense SN events, filling the ISM with SN ejecta
 2. The ISM density is elevated by gas accretion and infall
-3. Conditions exist for ρ_wind ≈ ρ_fluid at specific radii within the disk
+3. Conditions exist for $\rho$_wind $\approx$ $\rho$_fluid at specific radii within the disk
 
 In NGC 1792, the SFR = 10 MM_sun/yr sustains a continuous SN rate creating the high fluid density
-ρ_fluid = 10-21 kg/m3 characteristic of this starburst environment.
+$\rho$_fluid = 10-21 kg/m3 characteristic of this starburst environment.
 
 ---
 
@@ -179,13 +179,13 @@ In NGC 1792, the SFR = 10 MM_sun/yr sustains a continuous SN rate creating the h
 ### 5.1 Three Regimes
 
 The feedback term `term_feedback = ρ_wind × v2 / ρ_fluid` defines three physical regimes based on
-the density ratio η = ρ_wind/ρ_fluid:
+the density ratio $\eta$ = $\rho$_wind/$\rho$_fluid:
 
 | Regime | Condition | Behavior | UQFF Character |
 |--------|-----------|----------|----------------|
-| Underdense wind | η < 1 | g_feedback < v2 | Outflow-quenched; ejecta rises |
-| **RPDP** | **η = 1** | **g_feedback = v2** | **Kinematic invariant; ejecta floats** |
-| Overdense wind | η > 1 | g_feedback > v2 | Ram pressure enhanced; ejecta sinks |
+| Underdense wind | $\eta$ < 1 | g_feedback < v2 | Outflow-quenched; ejecta rises |
+| **RPDP** | **$\eta$ = 1** | **g_feedback = v2** | **Kinematic invariant; ejecta floats** |
+| Overdense wind | $\eta$ > 1 | g_feedback > v2 | Ram pressure enhanced; ejecta sinks |
 
 ### 5.2 RPDP as Critical Point
 
@@ -206,7 +206,7 @@ The RPDP defines a **kinematic critical surface** in UQFF galaxy parameter space
 
 ### 6.1 Gravitational Acceleration Anomaly
 
-At the RPDP, the dominant gravitational term is g_feedback = v2 = 4×1012 m/s2 (for v = 2×106 m/s).
+At the RPDP, the dominant gravitational term is g_feedback = v2 = 4$\times$1012 m/s2 (for v = 2$\times$106 m/s).
 This is:
 - Much larger than the DPM-seeded galactic gravity (~10-11 m/s2)
 - Detectable as anomalous acceleration in SN ejecta kinematics
@@ -218,14 +218,14 @@ The RPDP kinematic invariant provides a UQFF prediction for starburst galaxies: 
 gravitational feedback term is simply v2_wind**. This can be tested via:
 - Measurements of galactic wind terminal velocities
 - SN ejecta deceleration curves in starburst galaxies
-- Comparison of ρ_wind and ρ_fluid estimates from X-ray observations
+- Comparison of $\rho$_wind and $\rho$_fluid estimates from X-ray observations
 
 ### 6.3 NGC 1792 Specific Prediction
 
 For NGC 1792 at the RPDP:
-- Dominant gravity term: g_feedback = 4×1012 m/s2
-- Wind velocity imprint: v_wind = √(g_feedback) = 2×106 m/s
-- Total MUGE gravity is feedback-dominated: g_total ≈ g_feedback (within UQFF)
+- Dominant gravity term: g_feedback = 4$\times$1012 m/s2
+- Wind velocity imprint: v_wind = $\sqrt{}$(g_feedback) = 2$\times$106 m/s
+- Total MUGE gravity is feedback-dominated: g_total $\approx$ g_feedback (within UQFF)
 
 This is a **testable UQFF prediction** distinguishable from standard (feedback-free) galactic
 gravity models.
@@ -236,7 +236,7 @@ gravity models.
 
 The three PAPER_267–269 physics discoveries form a unified UQFF picture of NGC 1792:
 
-- **PAPER_267** (sSFR coupling): The SFR couples buoyancy to all 3 tiers via decay e^{−t/τ_SF}
+- **PAPER_267** (sSFR coupling): The SFR couples buoyancy to all 3 tiers via decay e^{-t/$\tau$_SF}
 - **PAPER_268** (Hubble slow mode): The corrected Hubble oscillation creates a 5.8 ppm GW amplitude modulation
 - **PAPER_269** (RPDP): At density degeneracy, SN feedback becomes the dominant gravitational term via kinematic invariant v2
 
@@ -278,7 +278,7 @@ velocity observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -297,7 +297,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -372,7 +372,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.124 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -383,13 +383,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -401,8 +401,8 @@ bridge.*
 - GALAXY_NGC_1792.cpp UQFF 2.0 (Session 73, Module 19)
 - PAPER_267: SFR Normalization — Starburst-Buoyancy Coherence in NGC 1792
 - PAPER_268: Dual Oscillatory Mode — Hubble Slow Mode Starburst GW Amplitude Modulation
-- NGC 1792 parameters: ρ_wind = ρ_fluid = 10-21 kg/m3, v_wind = 2×106 m/s
-- Hubble constant: H₀ ≈ 67.4 km/s/Mpc; Hubble time: t_Hubble = 13.8 Gyr
+- NGC 1792 parameters: $\rho$_wind = $\rho$_fluid = 10-21 kg/m3, v_wind = 2$\times$106 m/s
+- Hubble constant: H0 $\approx$ 67.4 km/s/Mpc; Hubble time: t_Hubble = 13.8 Gyr
 
 ---
 

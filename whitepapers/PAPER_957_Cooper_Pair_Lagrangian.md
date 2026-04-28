@@ -108,7 +108,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -191,7 +191,7 @@ $$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omeg
 $$\boxed{\frac{\delta S}{\delta\varphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_isum U_{g,i}\frac{\Omega_g M}{d_g[UA]} + F_n \Phi_{1.25\text{THz}}\right) = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → 9-sector Lagrangian → Cooper pair sector → $\delta S/\delta\Delta = 0$ → BCS gap + spectral ladder + LENR
+PAPER_877 $\to$ 9-sector Lagrangian $\to$ Cooper pair sector $\to$ $\delta S/\delta\Delta = 0$ $\to$ BCS gap + spectral ladder + LENR
 
 ---
 

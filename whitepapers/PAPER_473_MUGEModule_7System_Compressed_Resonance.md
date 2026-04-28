@@ -28,7 +28,7 @@ $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ — four
 independent gravitational force channels (internal dipole, outer field bubble,
 magnetic strings, star–BH vacuum), each with buoyancy opposition, unified by
 magnetism and the Aether metric tensor.  The compressed MUGE packages $F_U$ into
-a 9-term multiplicative-additive structure where DPM mass gradient $μ_s∇(M_s/r)$ appears only as the
+a 9-term multiplicative-additive structure where DPM mass gradient $\mu_s\nabla(M_s/r)$ appears only as the
 **zero-vacuum limiting case of the Ug2 channel**.  The resonance MUGE decomposes
 $F_U$ into 13 frequency modes cascading from the aDPM inertia-flux-vacuum
 coupling.  Both are calibrated against observations and cross-validated via the
@@ -76,12 +76,12 @@ The first four factors form a multiplicative core; the remaining five terms are 
 | ID | System | M (MM_sun) | r (m) | Key Feature |
 |----|--------|---------|-------|-------------|
 | 1 | SGR 1745-2900 (Magnetar) | 1.4 | 104 | B = 2.3e12 T near B_crit |
-| 2 | Sagittarius A* (SMBH) | 4×106 | 5.5e10 | Galactic centre SMBH |
-| 3 | Tapestry of Blazing Starbirth | 1×106 | 3.09e19 | Active star formation |
-| 4 | Westerlund 2 | 1×105 | 4.63e19 | Young massive star cluster |
-| 5 | Pillars of Creation | 2×103 | 9.46e19 | Molecular cloud pillars |
-| 6 | Rings of Relativity | 1×1011 | 3.09e22 | Gravitational lens arc |
-| 7 | Student's Guide to the Universe | 1×1023 | 4.41e26 | Cosmological reference volume |
+| 2 | Sagittarius A* (SMBH) | 4$\times$106 | 5.5e10 | Galactic centre SMBH |
+| 3 | Tapestry of Blazing Starbirth | 1$\times$106 | 3.09e19 | Active star formation |
+| 4 | Westerlund 2 | 1$\times$105 | 4.63e19 | Young massive star cluster |
+| 5 | Pillars of Creation | 2$\times$103 | 9.46e19 | Molecular cloud pillars |
+| 6 | Rings of Relativity | 1$\times$1011 | 3.09e22 | Gravitational lens arc |
+| 7 | Student's Guide to the Universe | 1$\times$1023 | 4.41e26 | Cosmological reference volume |
 
 ---
 
@@ -103,10 +103,10 @@ g_{comp}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H(z)t)\lef
 | Term | Symbol | Physical Meaning |
 |------|--------|-----------------|
 | Expansion correction | H(z)t | Hubble term — universe expands during observation |
-| Magnetic suppression | 1 − B/B_crit | Magnetar-class B field reduces effective g |
+| Magnetic suppression | 1 - B/B_crit | Magnetar-class B field reduces effective g |
 | Feedback factor | F_env = f_AGN + f_SN + f_SF | Stellar/AGN/SF feedback modulates gravity |
-| Ug sum | Σ Ug_i | 4 UQFF sub-fields (dipole, charge, string, vacuum) |
-| Cosmological Λ | Λ c2r/3 | Dark energy contribution (positive = anti-gravity) |
+| Ug sum | $\Sigma$ Ug_i | 4 UQFF sub-fields (dipole, charge, string, vacuum) |
+| Cosmological $\Lambda$ | $\Lambda$ c2r/3 | Dark energy contribution (positive = anti-gravity) |
 | Quantum term | $\hbar/(\Delta x \Delta p) \cdot \langle\hat{H}\rangle$ | Heisenberg uncertainty correction |
 | EM term | F_EM | Lorentz force from ICM currents |
 | Fluid term | F_fluid | Navier-Stokes viscous correction |
@@ -144,23 +144,23 @@ g_{res} &= a_{DPM} + a_{THz} + a_{vac,diff} \\
 
 | Term | Formula | Physical Source |
 |------|---------|----------------|
-| a_DPM | κ [SSq] g | DPM-modulated gravity (κ = 0.0005/day) |
-| a_THz | ħ ω_THz / (M r) | THz-range quantum resonance |
-| `a_vac_diff` | c (ρ_UA − ρ_SCm) / M | Vacuum differential buoyancy |
-| a_superFreq | Ug_sum × f_SF | Super-frequency from SF rate |
-| a_aetherRes | η ρ_A c2 r | Aether resonance term |
-| Ug4_i | G ρ_UA V/r2 | Vacuum concentration field |
-| a_quantumFreq | ħ ω_q tanh(ω_q/T) | Bose-Einstein quantum correction |
-| a_aetherFreq | A_μ ∂_μ φ | Background aether wave |
-| a_fluidFreq | ν ∇2v | Fluid viscosity resonance |
-| a_osc | A sin(ω_osc t) | Oscillatory mode |
-| a_expFreq | H(z) × g | Expansion frequency |
-| f_TRZ | f_TRZ × g | Time-reversal zone correction |
+| a_DPM | $\kappa$ [SSq] g | DPM-modulated gravity ($\kappa$ = 0.0005/day) |
+| a_THz | ħ $\omega$_THz / (M r) | THz-range quantum resonance |
+| `a_vac_diff` | c ($\rho$_UA - $\rho$_SCm) / M | Vacuum differential buoyancy |
+| a_superFreq | Ug_sum $\times$ f_SF | Super-frequency from SF rate |
+| a_aetherRes | $\eta$ $\rho$_A c2 r | Aether resonance term |
+| Ug4_i | G $\rho$_UA V/r2 | Vacuum concentration field |
+| a_quantumFreq | ħ $\omega$_q tanh($\omega$_q/T) | Bose-Einstein quantum correction |
+| a_aetherFreq | A_$\mu$ $\partial$_$\mu$ $\phi$ | Background aether wave |
+| a_fluidFreq | $\nu$ $\nabla$2v | Fluid viscosity resonance |
+| a_osc | A sin($\omega$_osc t) | Oscillatory mode |
+| a_expFreq | H(z) $\times$ g | Expansion frequency |
+| f_TRZ | f_TRZ $\times$ g | Time-reversal zone correction |
 | W_metric | Wormhole topology term | Topological correction |
 
 ### 4.3 Selected Results (Resonance)
 
-All 7 systems: g_res ≈ 10-10 m/s2 (near-universal sub-acceleration scale, consistent with MOND
+All 7 systems: g_res $\approx$ 10-10 m/s2 (near-universal sub-acceleration scale, consistent with MOND
 boundary region).
 
 ---
@@ -179,7 +179,7 @@ analysis
 
 ## 6. Connection to Existing Whitepapers
 
-- **§1.1–§1.13 Millennium Series**: Provides cosmological Λ and quantum terms referenced in MUGE
+- **§1.1–§1.13 Millennium Series**: Provides cosmological $\Lambda$ and quantum terms referenced in MUGE
 - **PAPER_474**: 12-system expansion including 5 new resonance systems
 - **SOURCE4 (MAIN_1 lines 25623–26026)**: Core MUGE compressed and resonance functions
 
@@ -190,7 +190,7 @@ analysis
 The `MUGEModule` provides a comprehensive 7-system gravitational framework spanning magnetars to
 cosmological volumes (24 decades in mass). Both compressed and resonance variants produce physically
 consistent results and provide cross-validation anchors for the UQFF unified field integral. The
-near-universal g_res ≈ 10-10 m/s2 resonance floor is a notable prediction — precisely at the MOND
+near-universal g_res $\approx$ 10-10 m/s2 resonance floor is a notable prediction — precisely at the MOND
 acceleration scale.
 
 ---
@@ -203,7 +203,7 @@ acceleration scale.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -230,7 +230,7 @@ P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \cdot \bigl[1 + \beta_i \cdot \Phi
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates
 jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot
 S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
@@ -462,7 +462,7 @@ cosmogenesis.
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.083 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -473,10 +473,10 @@ cosmogenesis.
 
 | Observable | UQFF Prediction | SM/Experiment | Source | Alignment |
 |------------|-----------------|---------------|--------|-----------|
-| Thomson σ_T | σ_T = 6.6524e-29 m2 | 6.6524e-29 m2 (QED exact) | PDG 2024 | 100% |
-| X-ray/Radio luminosity | g_total → L_X via buoyancy flux | L_X ≥ 1037 erg/s | Chandra CXC | PASS |
-| GR Schwarzschild limit | g ≤ c2/(2r_s) at horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 | PASS |
-| κ vacuum rate | κ = 0.0005/day → τ = 2000 d | X-ray variability τ_obs | Chandra CXC | Testable |
+| Thomson $\sigma$_T | $\sigma$_T = 6.6524e-29 m2 | 6.6524e-29 m2 (QED exact) | PDG 2024 | 100% |
+| X-ray/Radio luminosity | g_total $\to$ L_X via buoyancy flux | L_X $\geq$ 1037 erg/s | Chandra CXC | PASS |
+| GR Schwarzschild limit | g $\leq$ c2/(2r_s) at horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 | PASS |
+| $\kappa$ vacuum rate | $\kappa$ = 0.0005/day $\to$ $\tau$ = 2000 d | X-ray variability $\tau$_obs | Chandra CXC | Testable |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system
@@ -488,7 +488,7 @@ future Chandra CXC monitoring observations.
 
 
 
-**UQFF Parameters:** κ = 0.0005/day | [SSq] = 0.57 | B_crit = 4.4e13 T  
+**UQFF Parameters:** $\kappa$ = 0.0005/day | [SSq] = 0.57 | B_crit = 4.4e13 T  
 **Class:** `MUGEModule` | **Source:** `g`rok_share_b0a3dc1d`.txt` L195–735  
 **Tags:** MUGE, compressed-gravity, resonance, 7-system, feedback, dark-matter, magnetar,
 Sagittarius-A  

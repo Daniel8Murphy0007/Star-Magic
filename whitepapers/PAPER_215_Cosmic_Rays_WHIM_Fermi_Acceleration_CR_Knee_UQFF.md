@@ -31,17 +31,17 @@ $$
 ## Abstract
 
 The UQFF treatment of high-energy cosmic ray (CR) physics is presented, encompassing diffusive shock
-acceleration (DSA/Fermi-I), Fermi-II stochastic acceleration, the cosmic ray knee at E ˜ 3×1015 eV,
+acceleration (DSA/Fermi-I), Fermi-II stochastic acceleration, the cosmic ray knee at E ˜ 3$\times$1015 eV,
 turbulent diffusion in the ISM/IGM, and the Warm-Hot Intergalactic Medium (WHIM). The CR power-law
 index dN/dE ? E^{-2} from Fermi-I acceleration, the stochastic energy gain formula (dE/dt =
-(4/3)(v_c2/c2)(E/?)), and the maximum energy formula E_max = Z·e·B·u_s·R ˜ 3×1015Z eV are formally
+(4/3)(v_c2/c2)(E/?)), and the maximum energy formula E_max = Z$\cdot$e$\cdot$B$\cdot$u_s$\cdot$R ˜ 3$\times$1015Z eV are formally
 integrated into UQFF as F_UBii,cr, F_UBii,whim, and the Kazantsev dynamo regime of structure
 formation. Metal enrichment of the WHIM provides observational constraints on UQFF's L_enrichment
 term.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -87,23 +87,23 @@ $$
 \begin{aligned}
   & Fermi-II mechanism: \\
   & Particles gain energy by reflecting off randomly moving magnetic mirrors \\
-  & Each encounter: ?dE/E? = (4/3)·(V/c)2  (quadratic in V/c ? "stochastic") \\
+  & Each encounter: ?dE/E? = (4/3)\cdot(V/c)2  (quadratic in V/c ? "stochastic") \\
   & where V = velocity of scattering cloud/mirror \\
   & Differential energy gain equation: \\
-  & dE/dt = (4/3) · (v_c2/c2) · E · ??1 \\
+  & dE/dt = (4/3) \cdot (v_c2/c2) \cdot E \cdot ??1 \\
   & where: \\
   & v_c = characteristic cloud/Alfvén wave velocity \\
   & ? = mean free path between scatterings \\
   & E = particle energy \\
   & Steady-state Fermi-II spectrum: \\
-  & dn/dE ? E^{-(1 + ?/c·t_esc?1)}  (steeper than Fermi-I) \\
+  & dn/dE ? E^{-(1 + ?/c\cdott_esc?1)}  (steeper than Fermi-I) \\
   & t_esc = escape time from acceleration region \\
   & Fermi-II in UQFF context: \\
   & In cluster ICM and WHIM filaments: v_c = v_A (Alfvén), ? = ?_mfp \\
-  & k_B·T_hot / (m_p · v_A2) ~ 10 (thermal >> Alfvénic) ? Fermi-II secondary \\
+  & k_B\cdotT_hot / (m_p \cdot v_A2) ~ 10 (thermal >> Alfvénic) ? Fermi-II secondary \\
   & But in turbulent shocks (v_A ~ v_thermal): Fermi-II comparable to DSA \\
   & UQFF contribution to F_UBii,cr: \\
-  & Add stochastic term: ?F_UBii,stoch = F_rel × ((4/3)·(v_A/c)2·u_CR·t_acc/E_LEP) × Q_wave \\
+  & Add stochastic term: ?F_UBii,stoch = F_rel \times ((4/3)\cdot(v_A/c)2\cdotu_CR\cdott_acc/E_LEP) \times Q_wave \\
   & where t_acc = acceleration time in WHIM environment
 \end{aligned}
 $$
@@ -115,30 +115,30 @@ $$
 $$
 \begin{aligned}
   & The "knee" in the observed CR energy spectrum: \\
-  & E_knee ˜ 3×1015 eV = 3 PeV \\
+  & E_knee ˜ 3\times1015 eV = 3 PeV \\
   & Origin: maximum energy from SNR shock acceleration \\
   & Hillas criterion (Hillas 1984): \\
-  & E_max = Z · e · B · u_s · R \\
+  & E_max = Z \cdot e \cdot B \cdot u_s \cdot R \\
   & where: \\
   & Z = nuclear charge of CR particle \\
-  & e = 1.6×10?1? C \\
+  & e = 1.6\times10?1? C \\
   & B = magnetic field in acceleration region \\
   & u_s = shock velocity \\
   & R = gyroradius ~ size of acceleration region \\
   & For typical Galactic SNR: \\
-  & B ˜ 3×10?1° T (300 µG shock-compressed B) \\
+  & B ˜ 3\times10?1° T (300 µG shock-compressed B) \\
   & u_s ˜ 104 km/s = 107 m/s \\
-  & R ˜ 10 pc = 3.09×1017 m \\
+  & R ˜ 10 pc = 3.09\times1017 m \\
   & Z = 1 (proton) \\
-  & E_max = 1 × 1.6×10?1? × 3×10?1° × 107 × 3.09×1017 \\
-  & = 1.6×10?1? × 9.27×1014 \\
-  & = 1.48×10-4 J = 1.48×10-4/(1.6×10?1?) eV \\
-  & = 9.25×1014 eV ˜ 1015 eV = 1 PeV \\
-  & For iron (Z=26): E_max,Fe = 26 × 1015 eV = 2.6×1016 eV \\
+  & E_max = 1 \times 1.6\times10?1? \times 3\times10?1° \times 107 \times 3.09\times1017 \\
+  & = 1.6\times10?1? \times 9.27\times1014 \\
+  & = 1.48\times10-4 J = 1.48\times10-4/(1.6\times10?1?) eV \\
+  & = 9.25\times1014 eV ˜ 1015 eV = 1 PeV \\
+  & For iron (Z=26): E_max,Fe = 26 \times 1015 eV = 2.6\times1016 eV \\
   & UQFF knee explanation: \\
-  & E_max(Z) = Z × E_max,proton × (1 + \text{UQFF\_Ug1\_correction}) \\
+  & E_max(Z) = Z \times E_max,proton \times (1 + \text{UQFF\_Ug1\_correction}) \\
   & Ug1 magnetic dipole enhances B at NS/pulsar vicinity: \\
-  & UQFF predicts knee steepening occurs at E_knee = Z × 3×1015 eV × (1 + a_Ug1) \\
+  & UQFF predicts knee steepening occurs at E_knee = Z \times 3\times1015 eV \times (1 + a_Ug1) \\
   & where a_Ug1 ~ 0.03 ? shifts knee by +3% (within observation uncertainty)
 \end{aligned}
 $$
@@ -185,14 +185,14 @@ $$
   & Baryonic fraction: WHIM contains ~40–50% of all baryons at z<2 \\
   & Observable: OVI, OVII, OVIII X-ray absorption lines; SZ signal \\
   & UQFF F_UBii,whim: \\
-  & F_UBii,whim = F_rel × (?_WHIM · V_fil · g_WHIM / E_LEP) × Q_wave \\
-  & g_WHIM = G·M_fil/r_fil2  (gravitational acceleration from filament mass) \\
-  & ?_WHIM·V_fil = mass of WHIM segment at distance r from cluster \\
+  & F_UBii,whim = F_rel \times (?_WHIM \cdot V_fil \cdot g_WHIM / E_LEP) \times Q_wave \\
+  & g_WHIM = G\cdotM_fil/r_fil2  (gravitational acceleration from filament mass) \\
+  & ?_WHIM\cdotV_fil = mass of WHIM segment at distance r from cluster \\
   & Alfvén wave acceleration in WHIM: \\
-  & v_A,WHIM = B_WHIM/v(4p·?_WHIM) \\
+  & v_A,WHIM = B_WHIM/v(4p\cdot?_WHIM) \\
   & B_WHIM ~ 1–100 nG (poorly constrained, model-dependent) \\
   & For B=10 nG, ?_WHIM = 10?27 kg/m3: \\
-  & v_A = 10?17 / v(4p·10?27) ˜ 10?17 / v(1.26×10?26) ˜ 10?17 / 3.55×10?13 ˜ 2.8×10-5 m/s \\
+  & v_A = 10?17 / v(4p\cdot10?27) ˜ 10?17 / v(1.26\times10?26) ˜ 10?17 / 3.55\times10?13 ˜ 2.8\times10-5 m/s \\
   & (far sub-Alfvénic — thermal velocity dominates) \\
   & ? Fermi-II suppressed in WHIM; DSA at WHIM shocks dominates
 \end{aligned}
@@ -206,15 +206,15 @@ $$
 \begin{aligned}
   & Small-scale dynamo (Kazantsev 1968): \\
   & Mechanism: turbulent stretching amplifies seed magnetic field exponentially \\
-  & Growth rate: ?_dynamo = v_turb/l_turb × (M_A?) \\
-  & Growth: B(t) = B_seed × exp(?_dynamo × t) \\
+  & Growth rate: ?_dynamo = v_turb/l_turb \times (M_A?) \\
+  & Growth: B(t) = B_seed \times exp(?_dynamo \times t) \\
   & For WHIM filaments (from \text{grok\_share\_7514fe}.txt lines 6360–6380): \\
   & v_turb ~ 100 km/s (filament turbulence) \\
   & l_turb ~ 100 kpc (driving scale) \\
-  & ?_dynamo ~ 100 km/s / (100 kpc) = 105 / (3.09×1021) ˜ 3.2×10?17 s-1 \\
+  & ?_dynamo ~ 100 km/s / (100 kpc) = 105 / (3.09\times1021) ˜ 3.2\times10?17 s-1 \\
   & Saturation timescale: t_sat ˜ ln(B_sat/B_seed)/? ~ 1 Gyr (produces µG-level B) \\
   & UQFF coupling to Kazantsev dynamo: \\
-  & F_env,whim(t) = F_env,whim,0 × exp(?_dynamo·t) × (1 - exp(-B_sat/B_saturation)) \\
+  & F_env,whim(t) = F_env,whim,0 \times exp(?_dynamo\cdott) \times (1 - exp(-B_sat/B_saturation)) \\
   & ? Exponential amplification phase ? plateau at B_sat = v_A ~ v_turb \\
   & ? Contributes growing B-field to Ug1 and F_UBii,diskmhd as filaments mature
 \end{aligned}
@@ -251,13 +251,13 @@ Observational constraint:
 
 | Particle | Z | E_knee (standard) | E_knee (UQFF) | Detection |
 |---------|---|-------------------|---------------|-----------|
-| Proton | 1 | 3×1015 eV | 3.09×1015 eV | IceTop, KASCADE |
-| Helium | 2 | 6×1015 eV | 6.18×1015 eV | Tibet AS-? |
-| CNO | 7 | 2.1×1016 eV | 2.16×1016 eV | KASCADE-Grande |
-| Silicon | 14 | 4.2×1016 eV | 4.33×1016 eV | Auger low-energy |
-| Iron | 26 | 7.8×1016 eV | 8.04×1016 eV | KASCADE-Grande |
+| Proton | 1 | 3$\times$1015 eV | 3.09$\times$1015 eV | IceTop, KASCADE |
+| Helium | 2 | 6$\times$1015 eV | 6.18$\times$1015 eV | Tibet AS-? |
+| CNO | 7 | 2.1$\times$1016 eV | 2.16$\times$1016 eV | KASCADE-Grande |
+| Silicon | 14 | 4.2$\times$1016 eV | 4.33$\times$1016 eV | Auger low-energy |
+| Iron | 26 | 7.8$\times$1016 eV | 8.04$\times$1016 eV | KASCADE-Grande |
 
-UQFF shift: +3% from Ug1 magnetic enhancement ? consistent with observations (±5%)
+UQFF shift: +3% from Ug1 magnetic enhancement ? consistent with observations ($\pm$5%)
 
 ---
 
@@ -280,9 +280,9 @@ $$
   & CPL Dark Energy (from \text{grok\_share\_7514fe}.txt items 1567–1570): \\
   & w(a) = w0 + w_a(1-a) = -1 + dw   (Chevallier-Polarski-Linder parameterization) \\
   & DESI 2024: w0 ˜ -0.7, w_a ˜ -1.1 (2s tension with ?CDM) \\
-  & UQFF predicts: w(a) = -1 + Ug4(a)/(?_?c2) = -1 + f(k_UA·a^{-3}) \\
+  & UQFF predicts: w(a) = -1 + Ug4(a)/(?_?c2) = -1 + f(k_UA\cdota^{-3}) \\
   & ? Natural CPL-like running without free parameters \\
-  & Calibration: UQFF fits DESI best-fit with k_UA·?_vac,[UA] adjusted by 10%
+  & Calibration: UQFF fits DESI best-fit with k_UA\cdot?_vac,[UA] adjusted by 10%
 \end{aligned}
 $$
 
@@ -403,7 +403,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.198 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -414,13 +414,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -26,17 +26,17 @@ A comprehensive UQFF Master F_U_Bi_i Buoyancy analysis of 35+ astrophysical syst
 
 ### 1.1 UQFF Framework Applied
 
-    F_U_Bi = -F_0 + (m_e c2/r2)*DPM_momentum*costheta + (μ_s∇(M_s/r))*DPM_gravity + F_U_Bi_i
+    F_U_Bi = -F_0 + (m_e c2/r2)*DPM_momentum*costheta + ($\mu$_s$\nabla$(M_s/r))*DPM_gravity + F_U_Bi_i
     
     F_U_Bi_i = Integral0^{x2} [-F_0 + gravity + momentum + rho_vac*DPM_stab
                 + F_LENR + F_act + F_torque + F_DE + F_res] dx
 
 
 ### 1.2 Dominant Constants
-- F_0 = 1.83 × $10^{71}$ N
-- ρ_vac,[UA] = 7.09 × $10^{-36}$ J/m3
-- F_LENR(ω_0=$10^{-12}$): 1.56 × $10^{36}$ N
-- F_LENR(ω_0=$10^{-15}$): 6.16 × $10^{39}$ N
+- F_0 = 1.83 $\times$ $10^{71}$ N
+- $\rho$_vac,[UA] = 7.09 $\times$ $10^{-36}$ J/m3
+- F_LENR($\omega$_0=$10^{-12}$): 1.56 $\times$ $10^{36}$ N
+- F_LENR($\omega$_0=$10^{-15}$): 6.16 $\times$ $10^{39}$ N
 
 ---
 
@@ -45,53 +45,53 @@ A comprehensive UQFF Master F_U_Bi_i Buoyancy analysis of 35+ astrophysical syst
 ### 2.1 Laboratory Device
 | System | M (kg) | r (m) | `F_U_Bi` (N) |
 |--------|--------|-------|-----------|
-| Field Generator (Colman-Gillespie) | 1 | 0.1 | 1.12×$10^{154}$ |
+| Field Generator (Colman-Gillespie) | 1 | 0.1 | 1.12$\times$$10^{154}$ |
 
 ### 2.2 Stellar / SNR Scale (~$10^{208}$ N)
 | System | M (kg) | r (m) | `F_U_Bi` (N) |
 |--------|--------|-------|-----------|
-| Eagle Nebula M16 | 1.989×$10^{31}$ | 3.09×$10^{16}$ | 2.65×$10^{49}$ |
-| HBC 672 | ~$10^{30}$ | ~3×$10^{15}$ | 1.67×$10^{43}$ |
-| Orion Nebula M42 | 1.989×$10^{31}$ | 3.09×$10^{16}$ | 8.83×$10^{48}$ |
-| NGC 6334 | ~$10^{31}$ | ~3×$10^{16}$ | 1.50×$10^{49}$ |
-| Westerlund 1 | ~$10^{31}$ | ~3×$10^{16}$ | 9.38×$10^{48}$ |
-| Exoplanet Survey | - | - | 8.55×$10^{207}$ |
-| Crab Nebula (3C 58 ref) | 1.989×$10^{31}$ | 3.09×$10^{16}$ | 5.30×$10^{208}$ |
-| Cass A + Crab timelapse | 1.989×$10^{31}$ | 3.09×$10^{16}$ | 5.30×$10^{208}$ |
-| Cassiopeia A (+F_neutrino) | 1.989×$10^{31}$ | 6.17×$10^{16}$ | 2.11×$10^{208}$ |
-| Crab Nebula (+F_neutrino) | 1.989×$10^{31}$ | 3.09×$10^{16}$ | 5.30×$10^{208}$ |
-| Vela Pulsar Wide-Field | 1.989×$10^{31}$ | 6.17×$10^{17}$ | 2.11×$10^{210}$ |
-| Tycho's SNR | 1.989×$10^{31}$ | 6.17×$10^{16}$ | 2.11×$10^{208}$ |
-| Helix Nebula / NGC 7293 | 1.989×$10^{30}$ | 7.71×$10^{15}$ | 1.05×$10^{208}$ |
-| SNR 1181 (Pa 30) | 3.978×$10^{30}$ | 3.09×$10^{16}$ | 2.65×$10^{208}$ |
-| NGC 6543 Cat's Eye | 1.989×$10^{30}$ | 3.09×$10^{15}$ | 1.05×$10^{207}$ |
-| IC 443 Jellyfish | 1.989×$10^{31}$ | 6.17×$10^{16}$ | 2.11×$10^{208}$ |
-| MSH 15-52 Hand PWN | 1.989×$10^{31}$ | 3.09×$10^{16}$ | 5.30×$10^{208}$ |
-| Sonification Collection | 1.989×$10^{35}$ | 3.09×$10^{17}$ | 5.30×$10^{208}$ |
+| Eagle Nebula M16 | 1.989$\times$$10^{31}$ | 3.09$\times$$10^{16}$ | 2.65$\times$$10^{49}$ |
+| HBC 672 | ~$10^{30}$ | ~3$\times$$10^{15}$ | 1.67$\times$$10^{43}$ |
+| Orion Nebula M42 | 1.989$\times$$10^{31}$ | 3.09$\times$$10^{16}$ | 8.83$\times$$10^{48}$ |
+| NGC 6334 | ~$10^{31}$ | ~3$\times$$10^{16}$ | 1.50$\times$$10^{49}$ |
+| Westerlund 1 | ~$10^{31}$ | ~3$\times$$10^{16}$ | 9.38$\times$$10^{48}$ |
+| Exoplanet Survey | - | - | 8.55$\times$$10^{207}$ |
+| Crab Nebula (3C 58 ref) | 1.989$\times$$10^{31}$ | 3.09$\times$$10^{16}$ | 5.30$\times$$10^{208}$ |
+| Cass A + Crab timelapse | 1.989$\times$$10^{31}$ | 3.09$\times$$10^{16}$ | 5.30$\times$$10^{208}$ |
+| Cassiopeia A (+F_neutrino) | 1.989$\times$$10^{31}$ | 6.17$\times$$10^{16}$ | 2.11$\times$$10^{208}$ |
+| Crab Nebula (+F_neutrino) | 1.989$\times$$10^{31}$ | 3.09$\times$$10^{16}$ | 5.30$\times$$10^{208}$ |
+| Vela Pulsar Wide-Field | 1.989$\times$$10^{31}$ | 6.17$\times$$10^{17}$ | 2.11$\times$$10^{210}$ |
+| Tycho's SNR | 1.989$\times$$10^{31}$ | 6.17$\times$$10^{16}$ | 2.11$\times$$10^{208}$ |
+| Helix Nebula / NGC 7293 | 1.989$\times$$10^{30}$ | 7.71$\times$$10^{15}$ | 1.05$\times$$10^{208}$ |
+| SNR 1181 (Pa 30) | 3.978$\times$$10^{30}$ | 3.09$\times$$10^{16}$ | 2.65$\times$$10^{208}$ |
+| NGC 6543 Cat's Eye | 1.989$\times$$10^{30}$ | 3.09$\times$$10^{15}$ | 1.05$\times$$10^{207}$ |
+| IC 443 Jellyfish | 1.989$\times$$10^{31}$ | 6.17$\times$$10^{16}$ | 2.11$\times$$10^{208}$ |
+| MSH 15-52 Hand PWN | 1.989$\times$$10^{31}$ | 3.09$\times$$10^{16}$ | 5.30$\times$$10^{208}$ |
+| Sonification Collection | 1.989$\times$$10^{35}$ | 3.09$\times$$10^{17}$ | 5.30$\times$$10^{208}$ |
 
 ### 2.3 Galaxy / Cluster Scale (~$10^{211}$–$10^{212}$ N)
 | System | M (kg) | r (m) | `F_U_Bi` (N) |
 |--------|--------|-------|-----------|
-| NGC 7469 (Seyfert) | ~$10^{40}$ | ~$10^{20}$ | 3.07×$10^{63}$ |
-| Virgo Cluster | ~$10^{44}$ | ~$10^{22}$ | 2.37×$10^{63}$ |
-| NGC 4438/4435 | ~$10^{41}$ | ~$10^{21}$ | 5.35×$10^{211}$ |
-| MACS J0416 | 1.989×$10^{44}$ | 3.09×$10^{22}$ | 1.40×$10^{212}$ |
-| NGC 5044 | ~$10^{43}$ | ~$10^{21}$ | 5.20×$10^{211}$ |
-| Abell 478 | ~$10^{44}$ | ~$10^{22}$ | 1.40×$10^{212}$ |
-| Death Star BHs | ~$10^{39}$ | ~$10^{21}$ | 2.09×$10^{212}$ |
-| SMBH Survey | ~$10^{39}$ | ~$10^{21}$ | 2.09×$10^{212}$ |
-| Chandra 25 Images | ~$10^{44}$ | ~$10^{22}$ | **-2.09×$10^{212}$** |
-| H1821+643 quasar | 1.989×$10^{39}$ | 3.09×$10^{21}$ | 2.09×$10^{212}$ |
-| M74 Phantom Galaxy | 1.989×$10^{40}$ | 9.26×$10^{20}$ | 1.88×$10^{211}$ |
-| SDSS J1531+3414 | 1.989×$10^{44}$ | 3.09×$10^{22}$ | 1.40×$10^{212}$ |
+| NGC 7469 (Seyfert) | ~$10^{40}$ | ~$10^{20}$ | 3.07$\times$$10^{63}$ |
+| Virgo Cluster | ~$10^{44}$ | ~$10^{22}$ | 2.37$\times$$10^{63}$ |
+| NGC 4438/4435 | ~$10^{41}$ | ~$10^{21}$ | 5.35$\times$$10^{211}$ |
+| MACS J0416 | 1.989$\times$$10^{44}$ | 3.09$\times$$10^{22}$ | 1.40$\times$$10^{212}$ |
+| NGC 5044 | ~$10^{43}$ | ~$10^{21}$ | 5.20$\times$$10^{211}$ |
+| Abell 478 | ~$10^{44}$ | ~$10^{22}$ | 1.40$\times$$10^{212}$ |
+| Death Star BHs | ~$10^{39}$ | ~$10^{21}$ | 2.09$\times$$10^{212}$ |
+| SMBH Survey | ~$10^{39}$ | ~$10^{21}$ | 2.09$\times$$10^{212}$ |
+| Chandra 25 Images | ~$10^{44}$ | ~$10^{22}$ | **-2.09$\times$$10^{212}$** |
+| H1821+643 quasar | 1.989$\times$$10^{39}$ | 3.09$\times$$10^{21}$ | 2.09$\times$$10^{212}$ |
+| M74 Phantom Galaxy | 1.989$\times$$10^{40}$ | 9.26$\times$$10^{20}$ | 1.88$\times$$10^{211}$ |
+| SDSS J1531+3414 | 1.989$\times$$10^{44}$ | 3.09$\times$$10^{22}$ | 1.40$\times$$10^{212}$ |
 
 ### 2.4 Galactic Center / SMBH — NEGATIVE BUOYANCY
 | System | M (kg) | r (m) | `F_U_Bi` (N) | Sign |
 |--------|--------|-------|-----------|------|
-| Galactic Center (Sgr A*) | 7.956×$10^{36}$ | 6.17×$10^{18}$ | **-8.31×$10^{211}$** | NEGATIVE |
-| Galactic Center Vent | 7.956×$10^{36}$ | 6.17×$10^{18}$ | **-8.31×$10^{211}$** | NEGATIVE |
-| Chandra 25 Images composite | ~$10^{44}$ | ~$10^{22}$ | **-2.09×$10^{212}$** | NEGATIVE |
-| Sagittarius A* (repeat) | 7.956×$10^{36}$ | 6.17×$10^{18}$ | **-8.31×$10^{211}$** | NEGATIVE |
+| Galactic Center (Sgr A*) | 7.956$\times$$10^{36}$ | 6.17$\times$$10^{18}$ | **-8.31$\times$$10^{211}$** | NEGATIVE |
+| Galactic Center Vent | 7.956$\times$$10^{36}$ | 6.17$\times$$10^{18}$ | **-8.31$\times$$10^{211}$** | NEGATIVE |
+| Chandra 25 Images composite | ~$10^{44}$ | ~$10^{22}$ | **-2.09$\times$$10^{212}$** | NEGATIVE |
+| Sagittarius A* (repeat) | 7.956$\times$$10^{36}$ | 6.17$\times$$10^{18}$ | **-8.31$\times$$10^{211}$** | NEGATIVE |
 
 **4 NEGATIVE BUOYANCY EVENTS CONFIRMED**
 
@@ -112,7 +112,7 @@ All four negative cases share: M_BH ~ $10^{36}$–$10^{44}$ kg, r ~ $10^{18}$–
 ### Mathematical Condition:
 
     F_U_Bi_i < 0 when:
-      μ_s∇(M_s/r) > F_0 scale reversal threshold
+      $\mu$_s$\nabla$(M_s/r) > F_0 scale reversal threshold
       i.e., when the gravitational term dominates over the vacuum energy driving term
       Numerically: M > ~10^36 kg at r > ~10^18 m (SMBH regime)
 
@@ -122,7 +122,7 @@ All four negative cases share: M_BH ~ $10^{36}$–$10^{44}$ kg, r ~ $10^{18}$–
 ## 4. F_LENR Dominance
 Across all 35+ systems, F_LENR at $10^{36}$–$10^{39}$ N dominates by 29+ orders over all secondary terms:
 - F_torque = 40.68 N
-- F_quark = 1.54×$10^{7}$ N (most significant secondary)
+- F_quark = 1.54$\times$$10^{7}$ N (most significant secondary)
 - F_DE: 1 to $10^{9}$ N (varies with L_X)
 - F_act, F_res: < $10^{-6}$ N
 
@@ -133,7 +133,7 @@ scales.**
 
 ## 5. Multi-Wavelength Validation
 - **Chandra X-ray:** 0.5–8 keV data for all systems; X-ray luminosity L_X = $10^{29}$–$10^{39}$ W
-- **JWST infrared:** NIRCam/MIRI 1–28 μm for SNRs and star-forming regions
+- **JWST infrared:** NIRCam/MIRI 1–28 $\mu$m for SNRs and star-forming regions
 - **ALMA:** CO/HCN molecular maps for M74, Sgr A* environment
 - **VLA radio:** H1821+643 quasar jet morphology validation
 
@@ -141,7 +141,7 @@ scales.**
 
 ## 6. Conclusions
 The 35-system UQFF Chandra survey establishes:
-1. F_LENR (1.56–6.16×$10^{36}$–39 N) universally dominates F_U_Bi_i
+1. F_LENR (1.56–6.16$\times$$10^{36}$–39 N) universally dominates F_U_Bi_i
 2. Negative buoyancy (repulsive F_U_Bi_i) is a real UQFF phenomenon in SMBH/high-density regimes
 3. F_U_Bi scales from $10^{207}$ N (NGC 6543) to $10^{212}$ N (galaxy clusters) in agreement with system mass/radius parameters
 4. The framework is validated against multi-wavelength Chandra, JWST, and ALMA observations
@@ -197,7 +197,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -216,7 +216,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -270,7 +270,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -361,7 +361,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.099 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -372,13 +372,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

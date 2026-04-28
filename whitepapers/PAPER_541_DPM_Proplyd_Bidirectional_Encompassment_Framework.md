@@ -35,7 +35,7 @@ Perturbation Mode) nor proplyds causally produce each other; instead, **both eme
 simultaneous explicators inside UQFF**. A split-monopole topology — DPM_n (CW north, SCm
 mediated) and DPM_s (CCW south, UA′ trapped) — resolves the long-standing magnetic braking
 catastrophe in protoplanetary disc formation. One-third of the DPM spectrum drives stable disc
-formation; two-thirds drive jet outflows. The 18.32% Orion emergence rate (≈ 150 proplyds in
+formation; two-thirds drive jet outflows. The 18.32% Orion emergence rate ($\approx$ 150 proplyds in
 Hubble survey fields) is derived analytically from the UQFF eigenvalue structure.
 
 ---
@@ -92,8 +92,8 @@ maps directly onto the observed proplyd morphology statistics:
 
 | Mode | Eigenvalue | Physical outcome | Orion fraction |
 |------|-----------|-----------------|---------------|
-| Stable (×2) | $P/3$ | Disc formation, orbital accretion | ~1/3 of survey objects |
-| Destructive (×1) | $2P/3$ | Bipolar jet, UV photoionization outflow | ~2/3 of survey objects |
+| Stable ($\times$2) | $P/3$ | Disc formation, orbital accretion | ~1/3 of survey objects |
+| Destructive ($\times$1) | $2P/3$ | Bipolar jet, UV photoionization outflow | ~2/3 of survey objects |
 
 The bipolar jet mode matches Orion OB1 UV-driven evaporation timescales of
 $\tau_text{evap} \sim 10^5\,\text{yr}$ (Ricci et al. 2008).
@@ -108,16 +108,16 @@ $B_\text{pol} \sim 0.1\,\text{G}$ in the disc midplane (Hull et al. 2020), consi
 with $\text{DPM}_n - \text{DPM}_s \approx 0.012\,\text{G}$ at $Z_{26} \approx 0.57$.
 
 ### 5.2 Orion Proplyds — VLA Recombination Lines
-Very Large Array (VLA) H41α (92 GHz) and Hα RRL observations of Orion proplyds
+Very Large Array (VLA) H41$\alpha$ (92 GHz) and H$\alpha$ RRL observations of Orion proplyds
 (Churchwell et al. 1987; Zapata et al. 2004) yield flux densities of
 $30 - 800\,\text{mJy}\,\text{km}\,\text{s}^{-1}$, matching:
 
 $$\Phi_text{RRL} \propto (\text{DPM}_n - \text{DPM}_s) \cdot P_\text{order}
   \in [30, 800]\,\text{mJy}\,\text{km}\,\text{s}^{-1}$$
 
-### 5.3 JWST H₂ Emission at 5 μm
+### 5.3 JWST H2 Emission at 5 $\mu$m
 James Webb Space Telescope (JWST) NIRSpec observations of Orion proplyds reveal
-H$_2$ 5.053 μm line at $\sim 2.57 \times 10^{-5}\,\text{erg}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{sr}^{-1}$,
+H$_2$ 5.053 $\mu$m line at $\sim 2.57 \times 10^{-5}\,\text{erg}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{sr}^{-1}$,
 encoding the thermal boundary between stable (disc) and destructive (photoevaporation) regimes.
 
 ---
@@ -132,7 +132,7 @@ priority.
    Ug4, Um, Ub).  
 2. DPM emerges from off-diagonal coupling: $\text{Off\_diag} = \kappa Z_{26} P_\text{order}$.  
 3. Proplyds emerge from $\text{Proplyd\_fit} > \Theta$ (eigenvalue crossing condition).  
-4. Steps 2 and 3 are logically independent within the same UQFF framework → neither
+4. Steps 2 and 3 are logically independent within the same UQFF framework $\to$ neither
    causes the other. ∎
 
 ---
@@ -155,7 +155,7 @@ priority.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -174,7 +174,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -283,7 +283,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -294,10 +294,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Solar System Proplyd luminosity UV/optical (HST) | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X `T_M_sun` = 5778 K | HST | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Solar System Proplyd luminosity UV/optical (HST) | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X `T_M_sun` = 5778 K | HST | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Solar System Proplyd

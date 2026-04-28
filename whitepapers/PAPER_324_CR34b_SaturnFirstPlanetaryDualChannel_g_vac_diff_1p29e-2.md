@@ -19,15 +19,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 ## Abstract
-CR34b introduces Saturn (system 22, V_sys = 9.184×1023 m3) as the first planetary body computed in
+CR34b introduces Saturn (system 22, V_sys = 9.184$\times$1023 m3) as the first planetary body computed in
 the UQFF dual-channel compressed+resonance framework. Saturn fills the critical planetary gap in the
-UQFF volumetric xi_span (V_sys from atomic 4.189×10-31 to nebular 5.913×1050). The dominant
-compressed-channel contributor is the vacuum diffusion term: a_vac_diff = 1.29×10-2 m/s2,
+UQFF volumetric xi_span (V_sys from atomic 4.189$\times$10-31 to nebular 5.913$\times$1050). The dominant
+compressed-channel contributor is the vacuum diffusion term: a_vac_diff = 1.29$\times$10-2 m/s2,
 establishing vacuum diffusion as the primary UQFF driver at planetary scales.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -37,12 +37,12 @@ present in Standard Model treatments.
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| V_sys | 9.184×1023 m3 | Saturn equatorial volume |
-| f_DPM | 1×1012 Hz | Microwave regime (first in CR architecture) |
-| I_curr | 1×1019 A | Magnetospheric current proxy |
-| A_vort | 3.142×1015 m2 | Polar vortex area (π-placeholder) |
-| omega_diff | 2×10-3 rad/s | Default UQFF vacuum differential |
-| v_exp | 5×103 m/s | Saturn wind speed proxy |
+| V_sys | 9.184$\times$1023 m3 | Saturn equatorial volume |
+| f_DPM | 1$\times$1012 Hz | Microwave regime (first in CR architecture) |
+| I_curr | 1$\times$1019 A | Magnetospheric current proxy |
+| A_vort | 3.142$\times$1015 m2 | Polar vortex area ($\pi$-placeholder) |
+| omega_diff | 2$\times$10-3 rad/s | Default UQFF vacuum differential |
+| v_exp | 5$\times$103 m/s | Saturn wind speed proxy |
 
 ---
 
@@ -64,10 +64,10 @@ $$a_{\text{super}} = A_{\text{sc}} \cdot a_{\text{DPM}} \approx 1.13 \times 10^{
 
 | Term | Value [m/s2] | Relative |
 |------|-------------|----------|
-| `a_vac_diff` | 1.29×10-2 | **dominant** 92% of compressed |
-| a_super | 1.13×10-3 | 8% of compressed |
-| a_THz | ~2.7×10-17 | negligible |
-| a_DPM | ~1.62×10-24 | seed term |
+| `a_vac_diff` | 1.29$\times$10-2 | **dominant** 92% of compressed |
+| a_super | 1.13$\times$10-3 | 8% of compressed |
+| a_THz | ~2.7$\times$10-17 | negligible |
+| a_DPM | ~1.62$\times$10-24 | seed term |
 
 **a_vac_diff dominates at planetary scale** — vacuum diffusion is the primary UQFF mechanism for
 planetary bodies.
@@ -76,15 +76,15 @@ planetary bodies.
 
 ## Frequency Regime Classification
 
-Saturn uses f_DPM = 1×1012 Hz (microwave/THz boundary):
+Saturn uses f_DPM = 1$\times$1012 Hz (microwave/THz boundary):
 
 | System | f_DPM | Regime |
 |--------|-------|--------|
-| Universe, Andromeda | 1×109 Hz | Radio/GHz |
-| Sombrero, Spirals | 1×1010 Hz | Microwave |
-| Orion, Eagle, Lagoon | 1×1011 Hz | mm-wave |
-| **Saturn, Crab, NGC6302** | **1×1012 Hz** | **THz boundary (first planetary)** |
-| Hydrogen Atom | 1×1015 Hz | UV/optical |
+| Universe, Andromeda | 1$\times$109 Hz | Radio/GHz |
+| Sombrero, Spirals | 1$\times$1010 Hz | Microwave |
+| Orion, Eagle, Lagoon | 1$\times$1011 Hz | mm-wave |
+| **Saturn, Crab, NGC6302** | **1$\times$1012 Hz** | **THz boundary (first planetary)** |
+| Hydrogen Atom | 1$\times$1015 Hz | UV/optical |
 
 Saturn shares f_DPM with Crab Nebula and NGC6302 — **confirming THz-regime DPM governs both compact
 planetary magnetospheres and high-energy nebulae** in UQFF.
@@ -93,7 +93,7 @@ planetary magnetospheres and high-energy nebulae** in UQFF.
 
 ## xi_span Progression (V_sys ordered)
 
-H-Atom (4.189e-31) → Saturn (9.184e23) → Crab (5.913e50) → Orion (6.887e51) → ...
+H-Atom (4.189e-31) $\to$ Saturn (9.184e23) $\to$ Crab (5.913e50) $\to$ Orion (6.887e51) $\to$ ...
 
 **Saturn gap bridge**: 54 orders of magnitude between atomic and nebular — now filled in CR34b.
 
@@ -113,7 +113,7 @@ H-Atom (4.189e-31) → Saturn (9.184e23) → Crab (5.913e50) → Orion (6.887e51
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -132,7 +132,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -207,7 +207,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.055 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -218,13 +218,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

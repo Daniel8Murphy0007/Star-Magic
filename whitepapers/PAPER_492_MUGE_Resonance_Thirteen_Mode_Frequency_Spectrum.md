@@ -14,10 +14,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 
 > **Key UQFF calibrated constants:**
-> κ = 5.0e-4 day-1; [SSq] = 5.7e-1;
-> H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4;
-> k_η = 1.0e-113; β_i ≈ 6.0e-1;
-> G = 6.674e-11 N·m2/kg2
+> $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1;
+> H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4;
+> k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1;
+> G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **arXiv:** 2503.xxxxx  
@@ -103,11 +103,11 @@ E_{\text{vac,neb}} / E_{\text{vac,ISM}} &= \rho_{\text{UA}} / \rho_{\text{SCm}} 
 | Mode | Symbol | Physics |
 |------|--------|---------|
 | 1 DPM | $a_{\text{DPM}}$ | Inertia-flux-vacuum fundamental |
-| 2 THz | $a_{\text{THz}}$ | 1.25 THz phonon × vacuum ratio |
+| 2 THz | $a_{\text{THz}}$ | 1.25 THz phonon $\times$ vacuum ratio |
 | 3 VacDiff | $a_{\text{vac\_diff}}$ | Vacuum energy differential drive |
 | 4 SuperFreq | $a_{\text{SF}}$ | Superconductive frequency mode |
 | 5 AetherRes | $a_{\text{AR}}$ | Aether resonance + TRZ |
-| 6 Ug4i | $U_{g4,i}$ | Reactor × vacuum concentration |
+| 6 Ug4i | $U_{g4,i}$ | Reactor $\times$ vacuum concentration |
 | 7 QuantumFreq | $a_{\text{QF}}$ | Quantum frequency resonance |
 | 8 AetherFreq | $a_{\text{AF}}$ | Aether frequency mode |
 | 9 FluidFreq | $a_{\text{FF}}$ | Fluid viscosity frequency |
@@ -175,7 +175,7 @@ $$a_{\text{MUGE,res}} = \sum_{n=1}^{13} a_n$$
 
 ---
 
-## §4 Standard Model Comparison — Why MUGE Resonance ≠ Perturbative Oscillations
+## §4 Standard Model Comparison — Why MUGE Resonance $\neq$ Perturbative Oscillations
 
 GR gravity is a quasi-static field; it predicts no oscillatory gravitational acceleration at fixed
 orbital radius.  The MUGE resonance framework differs from GR perturbation theory in three structural ways:
@@ -302,7 +302,7 @@ $$\begin{aligned}
 &\quad \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right) 
 \end{aligned}$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -435,7 +435,7 @@ cosmogenesis.
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.154 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -446,13 +446,13 @@ cosmogenesis.
 
 | Observable | UQFF Prediction | SM/Experiment | Source | Alignment |
 |------------|-----------------|---------------|--------|-----------|
-| Nuclear B(A,Z) | DPM pyramid sum within 5% for Z≤82 | AME2020 mass eval | PDG/NUBASE2020 | <5% Z≤82 |
-| Proton mass m_p | m_p = U_m/(κ c2) R_unit | 938.272 MeV/c2 | PDG 2024 | PASS |
+| Nuclear B(A,Z) | DPM pyramid sum within 5% for Z$\leq$82 | AME2020 mass eval | PDG/NUBASE2020 | <5% Z$\leq$82 |
+| Proton mass m_p | m_p = U_m/($\kappa$ c2) R_unit | 938.272 MeV/c2 | PDG 2024 | PASS |
 | Island of stability | Enhanced binding Z=114,120,126 | Superheavy magic numbers | GSI/RIKEN | PASS |
-| Nuclear α mass | Ug1 dipole → m_α = 4m_p − B_α/c2 | 3727.379 MeV/c2 | PDG 2024 | 100% |
+| Nuclear $\alpha$ mass | Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | 3727.379 MeV/c2 | PDG 2024 | 100% |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

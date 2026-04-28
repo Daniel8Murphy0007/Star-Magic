@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **CP4 Class:** `BSFGBohrSommerfeldAetherQuantizationCalculator` (#157)  
 **Date:** 2026-03-27  
 
-> **Context note:** CP4 #150 (PAPER_555) derived the BSFG geodesic equation $v^2_{\rm orbit} = μ_s∇(M_s/r) + r c^2 \varepsilon'/2$, showing the Aether contributes a velocity correction to circular orbits. This paper applies the Bohr-Sommerfeld quantization condition $J = n\hbar$ to compute the fractional action correction $\delta J/J$, the quantum of Aether action $h_\eta$, and the BSFG crossover radius $r_{\rm cross}$ where Aether and DPM-seeded orbital effects are equal.
+> **Context note:** CP4 #150 (PAPER_555) derived the BSFG geodesic equation $v^2_{\rm orbit} = \mu_s\nabla(M_s/r) + r c^2 \varepsilon'/2$, showing the Aether contributes a velocity correction to circular orbits. This paper applies the Bohr-Sommerfeld quantization condition $J = n\hbar$ to compute the fractional action correction $\delta J/J$, the quantum of Aether action $h_\eta$, and the BSFG crossover radius $r_{\rm cross}$ where Aether and DPM-seeded orbital effects are equal.
 
 ---
 
@@ -77,7 +77,7 @@ $$J = m v_{\rm orbit} r = m\sqrt{GM r + r^2 c^2\varepsilon'/2}\cdot r^{1/2}/\sqr
 
 **Step 2.** The DPM-seeded Bohr-Sommerfeld action $J_0 = m\sqrt{GMr}$; the BSFG correction:
 
-$$\frac{\delta J}{J} \approx \frac{v^2_{\rm aether}}{2v^2_{\rm newton}} = \frac{r c^2\varepsilon'/2}{2(μ_s∇(M_s/r))} = \frac{r^2 c^2\varepsilon'}{4GM}$$
+$$\frac{\delta J}{J} \approx \frac{v^2_{\rm aether}}{2v^2_{\rm newton}} = \frac{r c^2\varepsilon'/2}{2(\mu_s\nabla(M_s/r))} = \frac{r^2 c^2\varepsilon'}{4GM}$$
 
 **Step 3.** Substituting $\varepsilon' = -3\etacos(\pi t_n)C_{\rm num}/r^4$:
 
@@ -114,7 +114,7 @@ and Mercury's perihelion corrections require the full BSFG geodesic numerics.
 
 ## §5 Aether Quantum of Action
 
-**Step 6.** The Planck constant $h$ has units J·s. The Aether coupling $\eta$ has units ${\rm m^3/J}$. Their product:
+**Step 6.** The Planck constant $h$ has units J$\cdot$s. The Aether coupling $\eta$ has units ${\rm m^3/J}$. Their product:
 
 $$h_\eta \equiv \eta \times h_{\rm Planck} = 10^{-22} \times 6.626 \times 10^{-34}\ {\rm m^3\cdot s}$$
 
@@ -248,7 +248,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.125 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -259,13 +259,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2μ_s∇(M_s/r)·r/c²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
-| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
-| Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η2) ≈ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
-| Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
+| GR Schwarzschild metric recovery | BSFG line element $\to$ g_tt = -(1-2$\mu$_s$\nabla$(M_s/r)$\cdot$r/c2) $\equiv$ GR in $\varepsilon$_BSFG$\to$0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
+| Shapiro time delay | BSFG geodesic $\to$ $\Delta$t_BSFG $\approx$ $\Delta$t_GR $\times$ (1 + $\varepsilon$_correction) | Cassini: $\Delta$t/$\Delta$t_GR = 1 $\pm$ 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
+| Gravitational wave speed v_GW | BSFG: v_GW = c $\times$ (1 + k_$\eta$2) $\approx$ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
+| Perihelion precession (Mercury) | BSFG adds buoyancy correction $\delta$$\phi$ = $\kappa$ $\times$ $\phi$_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
 
 **New physics claim:** BSFG (Buoyancy-Stratified Factorial Geometry) reproduces all tested GR
-predictions in the classical limit, while adding a vacuum buoyancy correction Δg ~ 10-6 arcsec/
+predictions in the classical limit, while adding a vacuum buoyancy correction $\Delta$g ~ 10-6 arcsec/
 century to Mercury's perihelion. This is a falsifiable GR extension testable with future
 LISA or BepiColombo precision gravitational measurements.
 
@@ -275,7 +275,7 @@ LISA or BepiColombo precision gravitational measurements.
 
 ## §7 References
 
-- CP4 #150 — `BSFGGeodesicMetricCompatibilityCalculator` — PAPER_555 ($v^2_{\rm orbit} = μ_s∇(M_s/r) + rc^2\varepsilon'/2$)
+- CP4 #150 — `BSFGGeodesicMetricCompatibilityCalculator` — PAPER_555 ($v^2_{\rm orbit} = \mu_s\nabla(M_s/r) + rc^2\varepsilon'/2$)
 - CP4 #43 — Aether coupling $\eta = 10^{-22}$, PAPER_392
 - CP4 #149 — `BSFGRiemannCurvatureAetherMetricCalculator` — PAPER_554 ($\varepsilon'(r)$)
 - CP4 #147 — `Um26DPolyQuantizationDPMConfinementCalculator` — PAPER_550 (proplyd $r_q$ in BSFG strong-field zone)

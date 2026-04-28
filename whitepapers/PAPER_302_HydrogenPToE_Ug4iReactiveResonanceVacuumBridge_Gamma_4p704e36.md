@@ -10,7 +10,7 @@ tags: [DPM, vacuum, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_302 — Hydrogen PToE U_g4i Reactive-Resonance Vacuum Bridge: Γ_u4i = 4.704×1036
+# PAPER_302 — Hydrogen PToE U_g4i Reactive-Resonance Vacuum Bridge: $\Gamma$_u4i = 4.704$\times$1036
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -27,12 +27,12 @@ module)
 ## Abstract
 
 In the UQFF resonance pipeline the U_g4i reactive term amplifies the DPM seed acceleration via the
-vacuum energy—light-speed bridge: a_u4i = f_react × a_DPM / (E_vac × c). At hydrogen PToE scale
-where f_DPM = 1×1015 Hz (Lyman-alpha UV), the DPM seed a_DPM = 6.71×10-4 m/s2 and the amplification
-factor Γ_u4i = f_react/(E_vac × c) = **4.704×1036** yields a_u4i = **3.155×1033 m/s2**. This u4i
+vacuum energy—light-speed bridge: a_u4i = f_react $\times$ a_DPM / (E_vac $\times$ c). At hydrogen PToE scale
+where f_DPM = 1$\times$1015 Hz (Lyman-alpha UV), the DPM seed a_DPM = 6.71$\times$10-4 m/s2 and the amplification
+factor $\Gamma$_u4i = f_react/(E_vac $\times$ c) = **4.704$\times$1036** yields a_u4i = **3.155$\times$1033 m/s2**. This u4i
 term dominates the entire 6-term resonance sum by 22 orders of magnitude over the next largest term
-(a_THz = 4.895×1010 m/s2), establishing the FIRST UQFF instance where U_g4i reactive resonance
-supersedes THz pipeline resonance at atomic PToE scale. Γ_u4i is independent of frequency — it
+(a_THz = 4.895$\times$1010 m/s2), establishing the FIRST UQFF instance where U_g4i reactive resonance
+supersedes THz pipeline resonance at atomic PToE scale. $\Gamma$_u4i is independent of frequency — it
 depends only on fundamental constants E_vac and c — making it a **universal U_g4i vacuum bridge
 constant** for the UQFF resonance channel.
 
@@ -45,10 +45,10 @@ vacuum reactive component, mediated by the plasmotic vacuum energy E_vac:
 
 | Parameter | Value | Units |
 |-----------|-------|-------|
-| f_react (U_g4i reactive frequency) | 1.0×1010 | Hz |
-| E_vac (plasmotic vacuum energy density) | 7.09×10-36 | J/m3 |
-| c (speed of light) | 2.998×108 | m/s |
-| a_DPM (DPM seed) | 6.71×10-4 | m/s2 |
+| f_react (U_g4i reactive frequency) | 1.0$\times$1010 | Hz |
+| E_vac (plasmotic vacuum energy density) | 7.09$\times$10-36 | J/m3 |
+| c (speed of light) | 2.998$\times$108 | m/s |
+| a_DPM (DPM seed) | 6.71$\times$10-4 | m/s2 |
 | f_sc (SC correction) | 1.0 | — |
 
 ---
@@ -61,11 +61,11 @@ $$a_{u4i} = \frac{f_{sc} \times f_{\text{react}} \times a_{\text{DPM}}}{E_{\text
 
 $$a_{u4i} = \frac{1.0 \times 1.0 \times 10^{10} \times 6.71 \times 10^{-4}}{7.09 \times 10^{-36} \times 2.998 \times 10^8} = \frac{6.71 \times 10^6}{2.126 \times 10^{-27}} = \mathbf{3.155 \times 10^{33} \; \text{m/s}^2}$$
 
-### 2.2 U_g4i Amplification Factor Γ_u4i [PAPER_302]
+### 2.2 U_g4i Amplification Factor $\Gamma$_u4i [PAPER_302]
 
 $$\Gamma_{u4i} = \frac{a_{u4i}}{a_{\text{DPM}}} = \frac{f_{\text{react}}}{E_{\text{vac}} \times c} = \frac{10^{10}}{7.09 \times 10^{-36} \times 2.998 \times 10^8} = \frac{10^{10}}{2.126 \times 10^{-27}} = \mathbf{4.704 \times 10^{36}}$$
 
-Γ_u4i depends only on f_react, E_vac, and c — the **universal U_g4i bridge constant** at f_react =
+$\Gamma$_u4i depends only on f_react, E_vac, and c — the **universal U_g4i bridge constant** at f_react =
 1010 Hz.
 
 ### 2.3 U_g4i Dominance Over THz [PAPER_302]
@@ -78,14 +78,14 @@ U_g4i exceeds THz resonance by **22 orders** — FIRST such dominance in the UQF
 
 | Term | Value (m/s2) | Fraction of sum |
 |------|-------------|----------------|
-| a_DPM | 6.71×10-4 | negligible |
-| a_THz | 4.895×1010 | 1.55×10-23 |
-| a_aether | 7.380×107 | 2.34×10-26 |
-| **a_u4i** | **3.155×1033** | **≈ 1.000** |
-| a_qorb | 4.895×1010 | 1.55×10-23 |
-| a_osc | ~2.5×10-10 | negligible |
+| a_DPM | 6.71$\times$10-4 | negligible |
+| a_THz | 4.895$\times$1010 | 1.55$\times$10-23 |
+| a_aether | 7.380$\times$107 | 2.34$\times$10-26 |
+| **a_u4i** | **3.155$\times$1033** | **$\approx$ 1.000** |
+| a_qorb | 4.895$\times$1010 | 1.55$\times$10-23 |
+| a_osc | ~2.5$\times$10-10 | negligible |
 
-The resonance sum is entirely dominated by the u4i term: **g_PToE ≈ 3.155×1033 × 1.1 ≈ 3.47×1033
+The resonance sum is entirely dominated by the u4i term: **g_PToE $\approx$ 3.155$\times$1033 $\times$ 1.1 $\approx$ 3.47$\times$1033
 m/s2**
 
 ---
@@ -94,12 +94,12 @@ m/s2**
 
 | Quantity | Value | Units | Notes |
 |----------|-------|-------|-------|
-| a_DPM (seed) | 6.71×10-4 | m/s2 | Lyman-UV DPM baseline |
-| **a_u4i** | **3.155×1033** | m/s2 | **[PAPER_302] dominant term** |
-| **Γ_u4i** | **4.704×1036** | — | **universal U_g4i bridge constant** |
-| a_u4i / a_THz | 6.446×1022 | — | 22-order dominance |
-| denom = E_vac × c | 2.126×10-27 | J·s/m2 | vacuum-light bridge denominator |
-| g_PToE (total) | ~3.47×1033 | m/s2 | final resonance output |
+| a_DPM (seed) | 6.71$\times$10-4 | m/s2 | Lyman-UV DPM baseline |
+| **a_u4i** | **3.155$\times$1033** | m/s2 | **[PAPER_302] dominant term** |
+| **$\Gamma$_u4i** | **4.704$\times$1036** | — | **universal U_g4i bridge constant** |
+| a_u4i / a_THz | 6.446$\times$1022 | — | 22-order dominance |
+| denom = E_vac $\times$ c | 2.126$\times$10-27 | J$\cdot$s/m2 | vacuum-light bridge denominator |
+| g_PToE (total) | ~3.47$\times$1033 | m/s2 | final resonance output |
 
 ---
 
@@ -107,19 +107,19 @@ m/s2**
 
 ### 4.1 U_g4i as Universal Bridge
 
-The formula Γ_u4i = f_react/(E_vac × c) depends only on:
+The formula $\Gamma$_u4i = f_react/(E_vac $\times$ c) depends only on:
 - **f_react**: the U_g4i reactive frequency (module-specific)
-- **E_vac × c**: the vacuum energy × light-speed bridge (universal UQFF constant)
+- **E_vac $\times$ c**: the vacuum energy $\times$ light-speed bridge (universal UQFF constant)
 
-At f_react = 1010 Hz: Γ_u4i = 4.704×1036 regardless of the DPM seed.
+At f_react = 1010 Hz: $\Gamma$_u4i = 4.704$\times$1036 regardless of the DPM seed.
 
 ### 4.2 Compare with Galactic U_g4i (Ug1_proxy) from Prior Sessions
 
 In prior UQFF gravity modules, the U_g4i term appears as a correction to g_base with Ug1_proxy =
 g_base. At atomic PToE scale:
-- a_u4i(PToE) = 3.155×1033 m/s2 (resonance channel, f_react = 1010 Hz)
-- g_base(Session 85) = 3.986×10-17 m/s2 (gravity channel)
-- Ratio: a_u4i/g_base = **7.92×1049** — resonance channel exceeds pure gravity by 49 orders
+- a_u4i(PToE) = 3.155$\times$1033 m/s2 (resonance channel, f_react = 1010 Hz)
+- g_base(Session 85) = 3.986$\times$10-17 m/s2 (gravity channel)
+- Ratio: a_u4i/g_base = **7.92$\times$1049** — resonance channel exceeds pure gravity by 49 orders
 
 This proves that the **resonance architecture is the correct UQFF framework at atomic PToE scale** —
 the gravitational architecture is irrelevant here (confirming the module header: "no SM gravity
@@ -128,7 +128,7 @@ dominant").
 ### 4.3 Scale Comparison to PAPER_270
 
 PAPER_270 (Source10 UQFF, galactic scale): g_DPM amplifier = 1089 orders (DPM pipeline).  
-PAPER_302 (PToE hydrogen, atomic scale): Γ_u4i = 4.704×1036 (U_g4i pipeline).  
+PAPER_302 (PToE hydrogen, atomic scale): $\Gamma$_u4i = 4.704$\times$1036 (U_g4i pipeline).  
 
 The U_g4i reactor is 53 orders below the galactic DPM amplifier, consistent with the ~1052 geometric
 ratio between atomic and galactic scales.
@@ -152,18 +152,18 @@ WOLFRAM_TERM_PTOE_U_G4I = "a_u4i=3.155e33; Gamma_u4i=4.704e36; u4i/THz=6.44e22 [
 
 1. **FIRST U_g4i Atomic Dominance**: First UQFF module where U_g4i reactive resonance dominates THz
 pipeline by 22 orders
-2. **Universal Γ_u4i**: Amplification factor 4.704×1036 depends only on f_react and fundamental
+2. **Universal $\Gamma$_u4i**: Amplification factor 4.704$\times$1036 depends only on f_react and fundamental
 constants — a new UQFF constant
 3. **Resonance Architecture Validated**: The 6-term resonance co-sum correctly captures atomic PToE
 physics; the gravity-channel architecture (Session 85) is a distinct complementary framework
-4. **Scale Bridge**: Γ_u4i = 4.704×1036 establishes a bridge between atomic reactive resonance and
+4. **Scale Bridge**: $\Gamma$_u4i = 4.704$\times$1036 establishes a bridge between atomic reactive resonance and
 cosmological scales
 
 ---
 
 ## 7. Cross-References
 
-- **PAPER_299** (Session 85): η_EM = 9.65×1029 — EM dominance at Bohr orbit (gravity channel)
+- **PAPER_299** (Session 85): $\eta$_EM = 9.65$\times$1029 — EM dominance at Bohr orbit (gravity channel)
 - **PAPER_303** (Session 86): THz-DPM resonance lock (same module)
 - **PAPER_304** (Session 86): Aether substitution (same module)
 - **PAPER_270** (Session 74): galactic DPM amplifier g_H = 1089 orders
@@ -178,7 +178,7 @@ $$\boxed{\Gamma_{u4i} = \frac{f_{\text{react}}}{E_{\text{vac}} \times c} = \frac
 
 $$\boxed{\frac{a_{u4i}}{a_{\text{THz}}} = 6.446 \times 10^{22} \quad \text{(U\_g4i dominates THz by 22 orders at atomic PToE scale)}}$$
 
-The U_g4i reactive resonance vacuum bridge Γ_u4i = 4.704×1036 is a universal UQFF constant — the
+The U_g4i reactive resonance vacuum bridge $\Gamma$_u4i = 4.704$\times$1036 is a universal UQFF constant — the
 first atomic-scale PToE resonance module establishes that quantum vacuum bridging through the U_g4i
 channel overwhelms all other resonance pathways at the hydrogen orbital scale.
 
@@ -199,7 +199,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -218,7 +218,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -293,7 +293,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.190 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -304,13 +304,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

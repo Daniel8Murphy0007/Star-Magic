@@ -22,9 +22,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 This paper applies the F_U_Bi_i_enhanced integral to Abell 2256, a massive galaxy cluster undergoing
-a major merger event at redshift z ≈ 0.058. With cluster mass M = 1.5 × 1015 MM_sun and virial radius r
-= 1.42 × 1025 m, Abell 2256 represents the most massive system evaluated in the UQFF framework to
-date. The integral produces a net UQFF force F ≈ −1.23 × 10218 N — confirming that UQFF buoyancy
+a major merger event at redshift z $\approx$ 0.058. With cluster mass M = 1.5 $\times$ 1015 MM_sun and virial radius r
+= 1.42 $\times$ 1025 m, Abell 2256 represents the most massive system evaluated in the UQFF framework to
+date. The integral produces a net UQFF force F $\approx$ -1.23 $\times$ 10218 N — confirming that UQFF buoyancy
 fields scale coherently with system mass across 15 orders of magnitude, from individual stars to
 galaxy clusters.
 
@@ -36,10 +36,10 @@ Abell 2256 is a well-studied merging galaxy cluster at z = 0.0581 hosting a diff
 radio halo, and evidence of ongoing intra-cluster medium (ICM) plasma shocks. It provides an ideal
 laboratory for UQFF cluster-scale computation:
 
-- **Cluster mass:** M = 1.5 × 1015 MM_sun = 2.985 × 1045 kg  
-- **Virial radius:** r = 1.42 × 1025 m  
-- **Luminosity distance:** d ≈ 250 Mpc  
-- **Temperature:** T_ICM ≈ 7.5 keV  
+- **Cluster mass:** M = 1.5 $\times$ 1015 MM_sun = 2.985 $\times$ 1045 kg  
+- **Virial radius:** r = 1.42 $\times$ 1025 m  
+- **Luminosity distance:** d $\approx$ 250 Mpc  
+- **Temperature:** T_ICM $\approx$ 7.5 keV  
 - **[SCm] level:** n = 13 (maximum UQFF shell)
 
 ---
@@ -54,18 +54,18 @@ $$F_{U,Bi,i} = \int_{r\_0}^{r_{max}} \left[ -F_0 + F_{DPM,mom} + F_{DPM,grav} + 
 
 | Term | Expression | Physical Role |
 |------|-----------|---------------|
-| F₀ | G M2 / r2 | DPM-seeded gravitational baseline |
-| F_DPM,mom | DPM_mom × Δr | 26-sphere momentum coupling |
+| F0 | G M2 / r2 | DPM-seeded gravitational baseline |
+| F_DPM,mom | DPM_mom $\times$ $\Delta$r | 26-sphere momentum coupling |
 | F_DPM,grav | 2 G M / 5 r2 (3kT/m) | DPM gravitational-thermal |
 | F_DPM,stab | G M2 / 3 r2 | DPM stability term |
-| F_LENR | ω_LENR M c2 | LENR fusion energy release |
+| F_LENR | $\omega$_LENR M c2 | LENR fusion energy release |
 | F_act | k_B T_ICM | Thermal activation energy |
-| F_DE | ρ_Λ c2 r3 | Dark energy volume pressure |
-| F_EM | μ₀ I2/2 | Electromagnetic string force |
+| F_DE | $\rho$_$\Lambda$ c2 r3 | Dark energy volume pressure |
+| F_EM | $\mu$0 I2/2 | Electromagnetic string force |
 | F_neut | m_n n_n c2 | Neutron density energy |
 | F_rel | 0.1 M c2 | Relativistic mass correction (10%) |
-| `F_sweet_vac` | ρ_vac_UA × c2 × r3 | Vacuum-sweetspot energy |
-| F_Kozima | ħ ω_LENR n_level2 | Kozima LENR quantum dominant |
+| `F_sweet_vac` | $\rho$_vac_UA $\times$ c2 $\times$ r3 | Vacuum-sweetspot energy |
+| F_Kozima | ħ $\omega$_LENR n_level2 | Kozima LENR quantum dominant |
 
 ### 2.2 Cluster Parameters
 
@@ -74,10 +74,10 @@ $$
   & M           = 2.985e45 kg      (1.5e15 MM_sun) \\
   & r           = 1.42e25 m        (virial radius) \\
   & T_ICM       = 1.21e8 K         (7.5 keV) \\
-  & ω_LENR      = 7.85e12 Hz       (standard nuclear) \\
+  & \omega_LENR      = 7.85e12 Hz       (standard nuclear) \\
   & n_level     = 13               ([SCm] quantum shell) \\
-  & ρ_Λ         = 7.0e-30 kg/m3    (dark energy density) \\
-  & ρ_vac_UA    = 7.09e-36 J/m3
+  & \rho_\Lambda         = 7.0e-30 kg/m3    (dark energy density) \\
+  & \rho_vac_UA    = 7.09e-36 J/m3
 \end{aligned}
 $$
 
@@ -89,12 +89,12 @@ $$
 
 | Term | Contribution (N) | % of Total |
 |------|----------------|------------|
-| F₀ (DPM-seeded) | −2.95e217 | −24% |
+| F0 (DPM-seeded) | -2.95e217 | -24% |
 | F_LENR | +1.84e212 | ~0% |
 | F_rel | +2.69e255 | dominant+ |
 | F_Kozima | +7.85e30 | negligible |
-| `F_sweet_vac` | +7.09e−39 | negligible |
-| **Net `F_U_Bi_i`** | **−1.23 × 10218 N** | — |
+| `F_sweet_vac` | +7.09e-39 | negligible |
+| **Net `F_U_Bi_i`** | **-1.23 $\times$ 10218 N** | — |
 
 ### 3.2 Key Result
 
@@ -114,12 +114,12 @@ gives:
 
 - **F_net < 0**: Net inward (confining) force at cluster scale
 - **Kozima term negligible**: Nuclear LENR is a stellar-scale effect; at cluster masses it contributes < 10-180 fractionally
-- **Dark energy opposition**: F_DE adds outward pressure proportional to cluster volume but is overwhelmed by F₀
+- **Dark energy opposition**: F_DE adds outward pressure proportional to cluster volume but is overwhelmed by F0
 
 ### 4.2 ICM Plasma Coupling
 
-The EM term F_EM = μ₀ I2/2 models the string-magnetic current through the ICM. With T_ICM = 7.5 keV,
-the thermal velocity v_th ≈ 3.7 × 107 m/s generates significant plasma currents along merger shock
+The EM term F_EM = $\mu$0 I2/2 models the string-magnetic current through the ICM. With T_ICM = 7.5 keV,
+the thermal velocity v_th $\approx$ 3.7 $\times$ 107 m/s generates significant plasma currents along merger shock
 fronts.
 
 ### 4.3 Radio Relic Origin
@@ -136,10 +136,10 @@ This creates a pressure gradient reversal front — the UQFF analog of a merger 
 
 | Object | Mass (MM_sun) | `F_U_Bi_i` (N) | n_level |
 |--------|-----------|-------------|---------|
-| NGC 6302 (Butterfly) | 0.64 | −2.09 × 10212 | 13 |
-| NGC 5128 (Centaurus A) | 5.5 × 109 | −8.32 × 10217 | 13 |
-| **Abell 2256** | **1.5 × 1015** | **−1.23 × 10218** | **13** |
-| Sagittarius A* | 4 × 106 | ~10215 | 13 |
+| NGC 6302 (Butterfly) | 0.64 | -2.09 $\times$ 10212 | 13 |
+| NGC 5128 (Centaurus A) | 5.5 $\times$ 109 | -8.32 $\times$ 10217 | 13 |
+| **Abell 2256** | **1.5 $\times$ 1015** | **-1.23 $\times$ 10218** | **13** |
+| Sagittarius A* | 4 $\times$ 106 | ~10215 | 13 |
 
 The UQFF integral spans 15 orders of magnitude in mass and returns physically meaningful
 (negative/confining) forces at each scale without parameter renormalization — validating universal
@@ -158,7 +158,7 @@ applicability.
 
 ## 7. Conclusion
 
-The F_U_Bi_i_enhanced integral applied to Abell 2256 yields F ≈ −1.23 × 10218 N, demonstrating UQFF
+The F_U_Bi_i_enhanced integral applied to Abell 2256 yields F $\approx$ -1.23 $\times$ 10218 N, demonstrating UQFF
 coherence at galaxy cluster scale. The formalism correctly captures the net confining force during
 active mergers, with the dark energy term providing the only significant outward contribution. The
 Kozima and vacuum-sweetspot terms remain physically consistent but geometrically negligible at
@@ -204,7 +204,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -223,7 +223,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -302,7 +302,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -412,7 +412,7 @@ Since $p_{\rm DVP} = 83$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **chirp time τ_c** (inspiral phase locking):
+The BSH saturation timescale for this sector is **chirp time $\tau$_c** (inspiral phase locking):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
@@ -429,7 +429,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.145 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -440,10 +440,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system
@@ -455,7 +455,7 @@ future Chandra CXC monitoring observations.
 
 
 
-**UQFF Parameters (Abell 2256):** κ = 0.0005/day | [SSq] = 0.57 | H_SCm ≈ 0.99 | k_η = 10-113  
+**UQFF Parameters (Abell 2256):** $\kappa$ = 0.0005/day | [SSq] = 0.57 | H_SCm $\approx$ 0.99 | k_$\eta$ = 10-113  
 **Class:** `Abell2256UQFFModule` | **Source:** `g`rok_share_b0a3dc1d`.txt` L10055–10420  
 **Tags:** galaxy-cluster, UQFF, F_U_Bi_i_enhanced, ICM, radio-relic, merger, buoyancy  
 

@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 R Aquarii is the nearest symbiotic nova system, consisting of a Mira Pulsating Giant and a white
-dwarf companion in a 44-year orbit. UQFF buoyancy-unified force F_U_Bi_i  -2.09×10 N is calculated
+dwarf companion in a 44-year orbit. UQFF buoyancy-unified force F_U_Bi_i  -2.09$\times$10 N is calculated
 at the binary orbital radius derived from Kepler's third law: a_orb = (GMP/4p)^(1/3). HST 2025
 near-UV imaging of the expanding jet system (launched ~10 yr ago) provides the observational anchor.
 The UQFF Kozima LENR coupling is relevant at the mass transfer interface between the giant's wind
@@ -44,7 +44,7 @@ $$F_{U\_Bi\_i} \approx -2.09 \times 10^{212}\ \mathrm{N}$$
 
 $$a_{\rm orb} = \left(\frac{G M_{\rm total} P_{\rm orb}^2}{4\pi^2}\right)^{1/3}$$
 
-with P_orb = 44 yr = 1.388×10? s and M_total – M_Mira + M_WD  2 M?:
+with P_orb = 44 yr = 1.388$\times$10? s and M_total – M_Mira + M_WD  2 M?:
 $$a_{\rm orb} = \left(\frac{6.674\times 10^{-11} \times 4\times 10^{30} \times (1.388\times 10^9)^2}{4\pi^2}\right)^{1/3} \approx 1.0 \times 10^{13}\ \mathrm{m} \approx 70\ \mathrm{AU}$$
 
 ### 2.3 Mass Transfer and LENR Coupling
@@ -72,7 +72,7 @@ $$L_{\rm jet} = v_{\rm jet} \cdot \tau_{\rm jet} \approx 6.3 \times 10^{15}\ \ma
 |----------|---------|-------|
 | P_orb | Spectroscopic | 44 yr |
 | a_orb | Kepler 3rd law | ~70 AU |
-| `F_U_Bi_i` | UQFF | -2.09×10 N |
+| `F_U_Bi_i` | UQFF | -2.09$\times$10 N |
 | M_total | Mira + WD | ~2 M? |
 | v_jet | HST proper motion | ~200 km/s |
 | t_jet | Jet age | ~10 yr |
@@ -104,7 +104,7 @@ detectable in nuclear gamma-ray emission (e.g., INTEGRAL 511 keV line observatio
 **CP Implementation:** `RAquariiSymbioticBinaryFUBiCalculator` (CondensedPhysics3.py, Session 96)
 
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ---
@@ -115,7 +115,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -134,7 +134,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -157,7 +157,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -278,7 +278,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.184 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -289,13 +289,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

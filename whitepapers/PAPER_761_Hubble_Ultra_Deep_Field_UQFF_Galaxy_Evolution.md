@@ -27,7 +27,7 @@ representing a deep cross-section of cosmic evolution from 800 million years pos
 paper derives the Master Universal Gravity UQFF equation governing the gravitational evolution of
 the HUDF galactic field, incorporating cosmic expansion across average z ~ 3, galaxy formation mass
 growth, merger dynamics, electromagnetic Aether effects, and time-reversal correction. The result
-g_HUDF ≈ 1.053×10-3 m/s2 is dominated by the [UA]/[SCm] Aether electromagnetic term.
+g_HUDF $\approx$ 1.053$\times$10-3 m/s2 is dominated by the [UA]/[SCm] Aether electromagnetic term.
 
 ---
 
@@ -46,7 +46,7 @@ incorporating non-standard Aether ([UA]) and superconductive magnetism ([SCm]) t
 $$
 \begin{aligned}
   & g_HUDF(r, t) = (G * M) / r2 * (1 + H(z)*t) * (1 + M_evo(t)) * (1 - M_merge(t)) * (1 + f_TRZ) \\
-  & + q*(v × B) * (1 + ρ_vac,[UA] / ρ_vac,[SCm]) * 10-12
+  & + q*(v \times B) * (1 + \rho_vac,[UA] / \rho_vac,[SCm]) * 10-12
 \end{aligned}
 $$
 
@@ -54,17 +54,17 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Total field mass | M | 1012 MM_sun = 1.989×1042 kg | Hubble HUDF |
-| Field scale radius | r | 1.5×1022 m (~1.5 Mpc at z~6) | Hubble ACS |
+| Total field mass | M | 1012 MM_sun = 1.989$\times$1042 kg | Hubble HUDF |
+| Field scale radius | r | 1.5$\times$1022 m (~1.5 Mpc at z~6) | Hubble ACS |
 | Average redshift | z | 3 (midpoint z~0.1–6) | Hubble/Planck |
-| Age integration | t | 13×109 yr = 4.103×1017 s | Cosmology |
+| Age integration | t | 13$\times$109 yr = 4.103$\times$1017 s | Cosmology |
 | SFR (field total) | SFR | 10,000 MM_sun/yr | High-energy labs |
-| Merger fraction | M₀_merge | 0.2 | Simulation |
-| Merge timescale | τ_merge | 109 yr = 3.156×1016 s | Labs |
+| Merger fraction | M0_merge | 0.2 | Simulation |
+| Merge timescale | $\tau$_merge | 109 yr = 3.156$\times$1016 s | Labs |
 | Intergalactic v | v | 106 m/s | ISM |
 | Intergalactic B | B | 10-6 T | Web ID: 12 |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
-| ρ_vac,[SCm] | — | 7.09×10-37 J/m3 | UQFF |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
+| $\rho$_vac,[SCm] | — | 7.09$\times$10-37 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -74,7 +74,7 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e42) / (1.5e22)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e42) / (1.5e22)2 \\
   & = 1.328e32 / 2.25e44 = 5.902e-13 m/s2
 \end{aligned}
 $$
@@ -82,7 +82,7 @@ $$
 ### Step 2: Galaxy Formation Evolution
 $$
 \begin{aligned}
-  & M_evo(t) = SFR × t / M_0 = 10,000 × 13e9 / 10^12 = 0.13 \\
+  & M_evo(t) = SFR \times t / M_0 = 10,000 \times 13e9 / 10^12 = 0.13 \\
   & 1 + M_evo(t) = 1.13
 \end{aligned}
 $$
@@ -90,8 +90,8 @@ $$
 ### Step 3: Merger Dynamics
 $$
 \begin{aligned}
-  & t/τ_merge = 4.103e17 / 3.156e16 = 13 \\
-  & M_merge(t) = 0.2 × (1 - exp(-13)) ≈ 0.2 \\
+  & t/\tau_merge = 4.103e17 / 3.156e16 = 13 \\
+  & M_merge(t) = 0.2 \times (1 - exp(-13)) \approx 0.2 \\
   & 1 - M_merge(t) = 0.8
 \end{aligned}
 $$
@@ -99,10 +99,10 @@ $$
 ### Step 4: Cosmic Expansion (H(z) at average z=3)
 $$
 \begin{aligned}
-  & H(z) = 70 × sqrt(0.3 × (1+3)3 + 0.7) = 70 × sqrt(19.9) = 70 × 4.46 = 312.2 km/s/Mpc \\
+  & H(z) = 70 \times sqrt(0.3 \times (1+3)3 + 0.7) = 70 \times sqrt(19.9) = 70 \times 4.46 = 312.2 km/s/Mpc \\
   & H(z) = 312.2e3 / 3.086e22 = 1.011e-17 s-1 \\
-  & H(z) × t = 1.011e-17 × 4.103e17 = 4.148 \\
-  & 1 + H(z) × t = 5.148
+  & H(z) \times t = 1.011e-17 \times 4.103e17 = 4.148 \\
+  & 1 + H(z) \times t = 5.148
 \end{aligned}
 $$
 
@@ -114,19 +114,19 @@ $$
 ### Step 6: Electromagnetic [UA] Term
 $$
 \begin{aligned}
-  & q × (v × B) = 1.602e-19 × 1e6 × 1e-6 = 1.602e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e6 \times 1e-6 = 1.602e-19 N \\
   & a = 1.602e-19 / 1.673e-27 = 9.575e7 m/s2 \\
-  & ρ_vac,[UA] / ρ_vac,[SCm] = 10  →  (1 + 10) = 11 \\
-  & Total = 9.575e7 × 11 × 10-12 = 1.053e-3 m/s2
+  & \rho_vac,[UA] / \rho_vac,[SCm] = 10  \to  (1 + 10) = 11 \\
+  & Total = 9.575e7 \times 11 \times 10-12 = 1.053e-3 m/s2
 \end{aligned}
 $$
 
 ### Step 7: Final Solution
 $$
 \begin{aligned}
-  & g_HUDF = (5.902e-13) × (5.148) × (1.13) × (0.8) × (1.1) + 1.053e-3 \\
+  & g_HUDF = (5.902e-13) \times (5.148) \times (1.13) \times (0.8) \times (1.1) + 1.053e-3 \\
   & = 3.015e-12 + 1.053e-3 \\
-  & ≈ 1.053e-3 m/s2
+  & \approx 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -136,7 +136,7 @@ $$
 
 The HUDF represents cosmic evolution across 13 billion years. The dominant term is the
 electromagnetic Aether correction via [UA]/[SCm] coupling, reflecting how non-standard vacuum energy
-drives large-scale structure formation beyond classical DPM-seeded gravity. The significant H(z)·t
+drives large-scale structure formation beyond classical DPM-seeded gravity. The significant H(z)$\cdot$t
 factor (5.148) demonstrates substantial cosmic expansion modulation over the observed redshift range
 z = 0.1–7.
 
@@ -153,7 +153,7 @@ z = 0.1–7.
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for the Hubble Ultra Deep Field yields g_HUDF ≈ 1.053×10-3 m/s2,
+The Master UQFF gravity equation for the Hubble Ultra Deep Field yields g_HUDF $\approx$ 1.053$\times$10-3 m/s2,
 dominated by Aether electromagnetic coupling. This demonstrates UQFF's ability to model large-scale
 cosmic evolution across a 13-billion-year baseline, incorporating non-standard vacuum energy that
 the Standard Model cannot address.
@@ -198,7 +198,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -217,7 +217,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -294,7 +294,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -305,13 +305,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

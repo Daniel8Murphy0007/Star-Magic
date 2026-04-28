@@ -28,7 +28,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper formalizes the quantitative definition of **Aether Resistance** within the Universal
 Quantum Field Framework (UQFF), introducing the Aether resistance coefficient **k_Aether**, the
 **stopping distance d_stop**, and the resultant drag force **F_Aether**. The complete formulation
-extends the UQFF F_U_Bi_i master integral with a −F_Aether drag term, enabling momentum extraction
+extends the UQFF F_U_Bi_i master integral with a -F_Aether drag term, enabling momentum extraction
 modeling for objects traversing the Universal Aether ([UA]) medium. This represents the first
 _quantitative_ formulation of Aether resistance in UQFF, transitioning the concept from a
 qualitative hypothesis to a computable physical quantity.
@@ -54,7 +54,7 @@ and momentum transfer to the vacuum as static charge.
 ## 2. Novel UQFF Terms Introduced
 
 ### 2.1 Aether Resistance Coefficient
-$$k_{\text{Aether}} = 10^{-10} \ \text{N·s}^2/\text{m}^3$$
+$$k_{\text{Aether}} = 10^{-10} \ \text{N\cdots}^2/\text{m}^3$$
 
 Physical meaning: scaling constant linking vacuum energy density to macroscopic drag resistance.
 
@@ -63,7 +63,7 @@ $$\boxed{F_{\text{Aether}} = k_{\text{Aether}} \cdot \rho_{\text{vac},[\text{UA}
 
 | Symbol | Meaning | Value/Unit |
 |--------|---------|-----------|
-| $k_{\text{Aether}}$ | Aether resistance coefficient | $10^{-10}$ N·s2/m3 |
+| $k_{\text{Aether}}$ | Aether resistance coefficient | $10^{-10}$ N$\cdot$s2/m3 |
 | $\rho_{\text{vac},[\text{UA}]}$ | Vacuum energy density | $7.09 \times 10^{-36}$ J/m3 |
 | $v$ | Object velocity | m/s |
 | $d_{\text{stop}}$ | Stopping distance in Aether | m |
@@ -80,9 +80,9 @@ Solving for $d_{\text{stop}}$:
 $$\boxed{d_{\text{stop}} = \frac{\frac{1}{2}mv^2}{F_{\text{object}} - F_{\text{Aether}}}}$$
 
 **Limiting cases:**
-- If $F_{\text{object}} > F_{\text{Aether}}$: finite stopping distance → Aether decelerates object
-- If $F_{\text{object}} = F_{\text{Aether}}$: $d_{\text{stop}} \to \infty$ → steady-state resistance balance
-- If $F_{\text{object}} < F_{\text{Aether}}$: object cannot maintain velocity → immediate halt
+- If $F_{\text{object}} > F_{\text{Aether}}$: finite stopping distance $\to$ Aether decelerates object
+- If $F_{\text{object}} = F_{\text{Aether}}$: $d_{\text{stop}} \to \infty$ $\to$ steady-state resistance balance
+- If $F_{\text{object}} < F_{\text{Aether}}$: object cannot maintain velocity $\to$ immediate halt
 
 ### 2.4 Extended UQFF Integral with Drag Term
 
@@ -113,8 +113,8 @@ The $-F_{\text{Aether}}$ term acts as a dissipative drag, reducing net buoyancy 
 
 ### 3.3 HV Field + Aether (THz context)
 
-- At THz resonance ($\omega = 2\pi \times 1.25 \times 10^{12}$ s-1), 2qB₀V·DPM_resonance enhances charge coupling
-- Townsend Brown experiments (1980s–1990s): HV fields → ion interactions in vacuum → THz-range electrostatic phenomena
+- At THz resonance ($\omega = 2\pi \times 1.25 \times 10^{12}$ s-1), 2qB0V$\cdot$DPM_resonance enhances charge coupling
+- Townsend Brown experiments (1980s–1990s): HV fields $\to$ ion interactions in vacuum $\to$ THz-range electrostatic phenomena
 - UQFF modeling: $F_{\text{HV-THz}} = 2qB_0V\sintheta \cdot \text{DPM}_{\text{resonance}}$ (existing term) coupled to $F_{\text{Aether}}$
 
 ---
@@ -133,7 +133,7 @@ The $-F_{\text{Aether}}$ term acts as a dissipative drag, reducing net buoyancy 
 ## 5. Validation Targets
 
 1. **Spacecraft deceleration:** Measure $d_{\text{stop}}$ for Dawn/New Horizons coasting phase
-2. **EHT M87 Jet:** Identify jet termination radius → derive $k_{\text{Aether}}$
+2. **EHT M87 Jet:** Identify jet termination radius $\to$ derive $k_{\text{Aether}}$
 3. **Juno 2025 auroral data:** Calibrate ion deceleration at Jupiter
 4. **Micro-satellite test:** Aug 2025 target — measure static charge feedback
 
@@ -147,7 +147,7 @@ $$d_{\text{stop}} = \frac{\frac{1}{2}mv^2}{F_{\text{object}} - F_{\text{Aether}}
 
 Extended integral: $F_{U,Bi\_i}[...\text{existing}... - F_{\text{Aether}}]$
 
-Constants: $k_{\text{Aether}} = 10^{-10}$ N·s2/m3, $\rho_{\text{vac}} = 7.09 \times 10^{-36}$ J/m3
+Constants: $k_{\text{Aether}} = 10^{-10}$ N$\cdot$s2/m3, $\rho_{\text{vac}} = 7.09 \times 10^{-36}$ J/m3
 
 ---
 
@@ -171,7 +171,7 @@ PAPER_828 Session 194 Star-Magic UQFF*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -190,7 +190,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

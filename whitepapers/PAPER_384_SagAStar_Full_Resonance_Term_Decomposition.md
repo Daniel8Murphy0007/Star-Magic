@@ -46,15 +46,15 @@ demonstrating a consistent **fluid-dominance law** across both compact object an
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
 | Mass | M | 8.155e36 | kg |
-| Radius | r | 1×1012 | m |
-| Magnetic field | B | 1×10-5 | T |
-| Critical B-field | B_crit | 1×10-4 | T |
+| Radius | r | 1$\times$1012 | m |
+| Magnetic field | B | 1$\times$10-5 | T |
+| Critical B-field | B_crit | 1$\times$10-4 | T |
 | Age | t | 3.786e14 | s |
 | Redshift | z | 0.0009 | — |
 | V_sys | 3.552e45 | m3 |
-| v_exp | 5×106 | m/s |
+| v_exp | 5$\times$106 | m/s |
 | f_fluid | 3.465e-8 | Hz |
-| Current I | 1×1023 | A |
+| Current I | 1$\times$1023 | A |
 | Area A | 2.813e30 | m2 |
 
 ---
@@ -89,17 +89,17 @@ $$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \qua
 
 | Term | Value (m/s2) | Note |
 |------|:------------:|------|
-| avac_diff | ~10-12 | small — low Δ_Evac |
+| avac_diff | ~10-12 | small — low $\Delta$_Evac |
 | asuper_freq | ~10-5 | B-field much weaker than magnetar |
 | aaether_res | ~10-28 | sub-dominant |
-| Ug4i | ≈ 0 | ancient system (t=3.786e14 s) |
+| Ug4i | $\approx$ 0 | ancient system (t=3.786e14 s) |
 | aquantum_freq | ~10-60 | Hubble quantum floor |
 | aAether_freq | ~10-74 | minimum |
 | Osc_term | 0 | steady state |
 | aexp_freq | ~10-47 | cosmological |
 | fTRZ | 0.1 | parametric coupling constant |
 
-**Resonance MUGE total:** ≈ $a_{fluid\_freq} = 4.105\times10^{29}$ m/s2 (fluid-dominated)
+**Resonance MUGE total:** $\approx$ $a_{fluid\_freq} = 4.105\times10^{29}$ m/s2 (fluid-dominated)
 
 ---
 
@@ -123,9 +123,9 @@ $$\boxed{g_\text{fluid}^{\text{SgrA}*} = 3.552\times10^{20} \ \text{m/s}^2}$$
 
 $$g_\text{pert} = (M + M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
-With $3μ_s∇(M_s/r)/r = 3\times6.674\times10^{-11}\times8.155\times10^{36}/(10^{12})^3 = 1.63\times10^{-15}$:
+With $3\mu_s\nabla(M_s/r)/r = 3\times6.674\times10^{-11}\times8.155\times10^{36}/(10^{12})^3 = 1.63\times10^{-15}$:
 
-Note: Sag A* has large $M$ but much larger $r$ compared to magnetar → lower $3μ_s∇(M_s/r)/r$:
+Note: Sag A* has large $M$ but much larger $r$ compared to magnetar $\to$ lower $3\mu_s\nabla(M_s/r)/r$:
 
 $$g_\text{pert}^{\text{SgrA}*} \approx (M + M_{DM}) \times (0.1 + 1.63\times10^{-15}) \approx (M + M_{DM}) \times 0.1$$
 
@@ -143,7 +143,7 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 | aDPM | 1.001e-10 | — |
 | All others | negligible | — |
 
-**Total resonance: ≈ 4.105e29 m/s2**
+**Total resonance: $\approx$ 4.105e29 m/s2**
 
 ### Compressed MUGE
 | Term | Value (m/s2) | Notes |
@@ -152,7 +152,7 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 | Fluid | 3.552e20 | sub-dominant by 14 orders |
 | DPM-seeded SC | 4.899e2 | base |
 
-**Total compressed: ≈ 2.966e34 m/s2**
+**Total compressed: $\approx$ 2.966e34 m/s2**
 
 ---
 
@@ -161,11 +161,11 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 | Property | SGR1745 (Magnetar) | Sag A* (SMBH) |
 |----------|:-----------------:|:-------------:|
 | Resonance dominant term | afluid=1.773e-9 | afluid=4.105e29 |
-| Resonance dominant mechanism | vacuum×volume coupling | vacuum×volume coupling |
+| Resonance dominant mechanism | vacuum$\times$volume coupling | vacuum$\times$volume coupling |
 | Compressed dominant term | perturbation=1.782e39 | perturbation=2.966e34 |
 | Compressed/Resonance ratio | ~1048 | ~105 |
 | Resonance total (m/s2) | 1.773e-9 | 4.105e29 |
-| Fluid term ratio Sag A*/SGR1745 | — | ×2.3e38 |
+| Fluid term ratio Sag A*/SGR1745 | — | $\times$2.3e38 |
 
 **Fluid Universality Principle:** The dominant resonance term in both a compact magnetar ($r=10^4$ m) and a supermassive black hole ($r=10^{12}$ m) is $a_{fluid\_freq}$, but the values differ by **38 orders of magnitude**, scaling with $f_{fluid} \cdot V_{sys}$.
 
@@ -213,7 +213,7 @@ Sagittarius A* under both MUGE models*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -232,7 +232,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -307,7 +307,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -318,13 +318,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -58,20 +58,20 @@ computes `g_Q` using the following canonical parameter set:
 
 | Parameter | Symbol | Default Value | Units | Meaning |
 |-----------|--------|---------------|-------|---------|
-| Reduced Planck constant | h | 1.0546 × 10?34 | J·s | Quantum action scale |
-| Position uncertainty | ?x | 1 × 10?1° | m | Ångström-scale probe |
-| Momentum uncertainty | ?p | h/?x | kg·m/s | Conjugate minimum (Heisenberg) |
-| Wave-function integral | β_integral | 1.0 | dimensionless | Normalised quantum state factor |
-| Hubble time | t_Hubble | 13.8 Gyr × 3.156 × 107 s/yr | s | Cosmological horizon time |
+| Reduced Planck constant | h | 1.0546 $\times$ 10?34 | J$\cdot$s | Quantum action scale |
+| Position uncertainty | ?x | 1 $\times$ 10?1° | m | Ångström-scale probe |
+| Momentum uncertainty | ?p | h/?x | kg$\cdot$m/s | Conjugate minimum (Heisenberg) |
+| Wave-function integral | $\beta$_integral | 1.0 | dimensionless | Normalised quantum state factor |
+| Hubble time | t_Hubble | 13.8 Gyr $\times$ 3.156 $\times$ 107 s/yr | s | Cosmological horizon time |
 
 **Primary equation:**
 $$
-g_Q = (h / v(?x · ?p)) · β_integral · (2p / t_Hubble)
+g_Q = (h / v(?x \cdot ?p)) \cdot \beta_integral \cdot (2p / t_Hubble)
 $$
 
 **Heisenberg minimum:**
 $$
-v(?x · ?p) = v(h / 2)   ?   \text{g\_Q\_min} = v(2h) · β_integral · (2p / t_Hubble)
+v(?x \cdot ?p) = v(h / 2)   ?   \text{g\_Q\_min} = v(2h) \cdot \beta_integral \cdot (2p / t_Hubble)
 $$
 
 ---
@@ -82,20 +82,20 @@ $$
 
 The starting point is dimensional analysis: a gravitational sub-term `g_Q` [m/s2] requires a
 combination of quantum mechanical constants and a time scale. The only Lorentz-invariant quantum
-action is h ˜ 10?34 J·s. Dividing the quantum action by the geometrical mean of the phase-space
+action is h ˜ 10?34 J$\cdot$s. Dividing the quantum action by the geometrical mean of the phase-space
 uncertainty product `v(?x·?p)` (units: `v(J·s)`) yields:
 
 $$
-h / v(?x·?p)  [J·s / v(J·s)] = v(J·s) = v(kg·m2/s)
+h / v(?x\cdot?p)  [J\cdots / v(J\cdots)] = v(J\cdots) = v(kg\cdotm2/s)
 $$
 
 Multiplying by `2p/t_Hubble` (units: 1/s) gives:
 
 $$
-g_Q = h / v(?x·?p) · (2p/t_Hubble)  [v(kg·m2/s) · s-1] = [m/s2]   ?
+g_Q = h / v(?x\cdot?p) \cdot (2p/t_Hubble)  [v(kg\cdotm2/s) \cdot s-1] = [m/s2]   ?
 $$
 
-This dimensional path is the only combination that produces an acceleration from h, ?x·?p, and a
+This dimensional path is the only combination that produces an acceleration from h, ?x$\cdot$?p, and a
 cosmological time scale — establishing the uniqueness of this term within MUGE.
 
 ### 2.2 Heisenberg Saturation and Minimum Value
@@ -105,9 +105,9 @@ the MUGE probe particle is saturated at the quantum limit. This gives:
 
 $$
 \begin{aligned}
-  & v(?x · ?p)_min = (h/2)^(1/4) · (h/2)^(1/4) ... wait — exact minimum: \\
-  & ?x · ?p = h/2  ?  v(?x·?p) = v(h/2) \\
-  & \text{g\_Q\_min} = [h / v(h/2)] · ? · (2p/t_H) = v(2h) · ? · (2p/t_H)
+  & v(?x \cdot ?p)_min = (h/2)^(1/4) \cdot (h/2)^(1/4) ... wait — exact minimum: \\
+  & ?x \cdot ?p = h/2  ?  v(?x\cdot?p) = v(h/2) \\
+  & \text{g\_Q\_min} = [h / v(h/2)] \cdot ? \cdot (2p/t_H) = v(2h) \cdot ? \cdot (2p/t_H)
 \end{aligned}
 $$
 
@@ -283,7 +283,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.127 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -294,13 +294,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

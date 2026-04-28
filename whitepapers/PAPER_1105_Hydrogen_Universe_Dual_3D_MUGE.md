@@ -29,7 +29,8 @@ $$g_{\text{MUGE}}(r) = g_N + g_{\text{exp}} + g_{\text{super}} + g_{\text{env}} 
 
 | \# | Term | Expression | Physics |
 |----|------|------------|---------|
-| 1 | $g_{m DPM}$ | $μ_s∇(M_s/r)$ | DPM-seeded gravity |
+| 1 | $g_{
+m DPM}$ | $\mu_s\nabla(M_s/r)$ | DPM-seeded gravity |
 | 2 | $g_{\text{exp}}$ | $H_0^2\,r$ | Hubble expansion |
 | 3 | $g_{\text{super}}$ | $B^2/(2\mu_0\rho_{\text{avg}}\,r)$ | Magnetic suppression |
 | 4 | $g_{\text{env}}$ | $\kappa\,g_N\exp(-1/100)$ | Envelope dissipation |

@@ -103,7 +103,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -167,7 +167,7 @@ $$\boxed{T_c(\mu_B) = T_{c0} \cdot \left(1 - \left(\frac{\mu_B}{\mu_text{crit}}\
 $$\mathcal{L}_\text{phase} = -\rho_text{QGP}(T,\mu_B) \cdot c^2 - V(\Delta_text{YM}(T,\mu_B))$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → vacuum → QCD phase boundary → confinement/deconfinement → hadron/QGP
+PAPER_877 $\to$ vacuum $\to$ QCD phase boundary $\to$ confinement/deconfinement $\to$ hadron/QGP
 
 ---
 

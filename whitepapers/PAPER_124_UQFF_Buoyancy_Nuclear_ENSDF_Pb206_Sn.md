@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 2[SSq]E8 at Doubly-Magic n=8 Shell Closure with ?n = 0.21 Binding Signature
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -33,14 +33,14 @@ The ENSDF/NNDC 2025 nuclear data for lead-206 (Pb-206, Z=82, N=124) provides the
 verification of UQFF Buoyancy Mode at the nuclear scale. At the n=8 UQFF level (E8 = 10? J, the
 nuclear binding regime), the doubly-magic shell closure in Pb-208 drives an anomalously high neutron
 separation energy S_n. Thread d91b1f6c identifies the UQFF formula: S_n = 2[SSq]E8, yielding S_n = 2
-× 0.57 × 10? = 1.14×10? J = 7.12 MeV. The measured ENSDF value is S_n(Pb-207) = 6.74 MeV, within
+$\times$ 0.57 $\times$ 10? = 1.14$\times$10? J = 7.12 MeV. The measured ENSDF value is S_n(Pb-207) = 6.74 MeV, within
 5.5% of UQFF prediction. The Buoyancy Opposition term Ub_i at the nuclear scale manifests as neutron
 excess buoyancy: neutrons beyond N=126 are "buoyed up" by the [UA] vacuum condensate above the [SCm]
 nuclear floor, experiencing reduced binding (S_n drops sharply past N=126). The fractional level ?n
 = 0.21 encodes the nuclear [SCm] medium enhancement over vacuum, consistent with ATLAS virtual
 quarks' ?n = 0.20.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -72,7 +72,7 @@ $$U_{b,i} = -\beta_i \cdot U_{g,i} \cdot \omega_g \cdot \frac{M_{bh}}{d_g}(1 + \
 
 At nuclear scales, the relevant quantities collapse to:
 - U_{g,i} ? nuclear potential well depth (~40 MeV)
-- κ_i = 0.61 (universal UQFF buoyancy coupling)
+- $\kappa$_i = 0.61 (universal UQFF buoyancy coupling)
 - [UA] ? nuclear [UA] condensate density
 
 The Buoyancy Opposition emerges as the binding reduction beyond magic numbers: neutrons above N=126
@@ -84,7 +84,7 @@ The neutron separation energy at the n=8 level is predicted by:
 
 $$S_n = 2 \cdot [SSq] \cdot E_8 = 2 \times 0.57 \times 10^{-12} \text{ J}$$
 
-Converting: 1.14×10? J = 1.14×10? / (1.602×10? MeV/J) = **7.12 MeV**
+Converting: 1.14$\times$10? J = 1.14$\times$10? / (1.602$\times$10? MeV/J) = **7.12 MeV**
 
 ENSDF measured values:
 - Pb-207 S_n = 6.74 MeV (N=125, approaching magic N=126): **5.5% below UQFF**
@@ -224,7 +224,7 @@ signature (vs ?n = 0.20 for ATLAS virtual quarks, PAPER_123) provides cross-doma
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LENR-S225 -->
 
@@ -356,7 +356,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.190 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -365,13 +365,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

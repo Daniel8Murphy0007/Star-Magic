@@ -10,13 +10,13 @@ tags: [AGN, buoyancy, jet, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_282: Saturn UQFF Atmospheric Wind Kinetic Pressure Term — a_wind, η_wind
+# PAPER_282: Saturn UQFF Atmospheric Wind Kinetic Pressure Term — a_wind, $\eta$_wind
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module)  
-**New Constants:** η_wind (Wind–Light-Speed Ratio), a_wind (UQFF Atmospheric Wind Kinetic Pressure
+**New Constants:** $\eta$_wind (Wind–Light-Speed Ratio), a_wind (UQFF Atmospheric Wind Kinetic Pressure
 Term)  
 **Status:** UNIQUE — first UQFF gas-giant atmospheric physics term; establishes universal gas-giant
 wind formula
@@ -33,7 +33,7 @@ on the planet's effective gravity field. Following the UQFF relativistic-ratio c
 
 $$a_\text{wind} = \eta_text{wind}^2 \cdot g_\text{base} = \left(\frac{v_\text{wind}}{c}\right)^2 \cdot g_\text{base}$$
 
-For Saturn: η_wind = v_wind/c = 1.668×10-6; a_wind = 2.904×10-11 m/s2. A universal formula is
+For Saturn: $\eta$_wind = v_wind/c = 1.668$\times$10-6; a_wind = 2.904$\times$10-11 m/s2. A universal formula is
 established for any gas giant with known atmospheric wind velocity.
 
 ---
@@ -57,7 +57,7 @@ any atmospheric feature on Earth and comparable to the fastest Solar System wind
 
 ## 3. Derivation
 
-### 3.1 Wind–Light-Speed Ratio (η_wind)
+### 3.1 Wind–Light-Speed Ratio ($\eta$_wind)
 
 $$\eta_text{wind} = \frac{v_\text{wind}}{c} = \frac{500 \text{ m/s}}{2.998 \times 10^8 \text{ m/s}} = 1.668 \times 10^{-6}$$
 
@@ -78,28 +78,28 @@ $$\boxed{a_\text{wind} = 2.904 \times 10^{-11} \text{ m/s}^2}$$
 $$[a_\text{wind}] = \left[\frac{v^2}{c^2}\right] \cdot \left[\frac{m}{s^2}\right] = \text{dimensionless} \cdot \frac{m}{s^2} = \frac{m}{s^2} \checkmark$$
 
 The formula is dimensionally consistent. The factor (v/c)2 is the UQFF universal relativistic
-kinetic ratio — the same dimensional structure appears in the quantum term (hbar/Δx) × (1/t_H) and
-Lorentz term q×v×B/M.
+kinetic ratio — the same dimensional structure appears in the quantum term (hbar/$\Delta$x) $\times$ (1/t_H) and
+Lorentz term q$\times$v$\times$B/M.
 
 ---
 
 ## 4. Solar System Gas Giant Comparison
 
-Using the universal formula a_wind = (v_wind/c)2 × g_base:
+Using the universal formula a_wind = (v_wind/c)2 $\times$ g_base:
 
-| Planet | v_wind (m/s) | g_base (m/s2) | η_wind | a_wind (m/s2) |
+| Planet | v_wind (m/s) | g_base (m/s2) | $\eta$_wind | a_wind (m/s2) |
 |---|---|---|---|---|
-| **Saturn** | **500** | **10.44** | **1.668×10-6** | **2.904×10-11** |
-| Jupiter | 150 | 23.12 | 5.003×10-7 | 5.787×10-12 |
-| Uranus | 250 | 8.87 | 8.339×10-7 | 6.170×10-12 |
-| Neptune | 600 | 11.15 | 2.001×10-6 | 4.461×10-11 |
+| **Saturn** | **500** | **10.44** | **1.668$\times$10-6** | **2.904$\times$10-11** |
+| Jupiter | 150 | 23.12 | 5.003$\times$10-7 | 5.787$\times$10-12 |
+| Uranus | 250 | 8.87 | 8.339$\times$10-7 | 6.170$\times$10-12 |
+| Neptune | 600 | 11.15 | 2.001$\times$10-6 | 4.461$\times$10-11 |
 
 *Saturn ranks 2nd after Neptune in a_wind magnitude; it is the fastest Solar System planet with a
 strong gravitational field. Jupiter has the highest g_base (23.12 m/s2) but much slower winds.*
 
 ### 4.1 Wind Escape Fraction (v_wind / v_esc)
 
-Saturn's escape velocity: v_esc = √(2μ_s∇(M_s/r)) = √(2 × 10.44 × 6.0268×107) = √(1.259×109) = 35,485 m/s
+Saturn's escape velocity: v_esc = $\sqrt{}$(2$\mu$_s$\nabla$(M_s/r)) = $\sqrt{}$(2 $\times$ 10.44 $\times$ 6.0268$\times$107) = $\sqrt{}$(1.259$\times$109) = 35,485 m/s
 
 $$\frac{v_\text{wind}}{v_\text{esc}} = \frac{500}{35485} = 1.41 \times 10^{-2}$$
 
@@ -116,16 +116,16 @@ energy:
 
 | UQFF Term | Form | Time dependence |
 |---|---|---|
-| `g_Sun_tidal` (PAPER_280) | G×M_Sun/r_orbit2 | Constant |
-| `F_ring_tidal` (PAPER_281) | g_ring × cos(ω×t) | Oscillatory |
-| **a_wind (PAPER_282)** | **(v_wind/c)2 × g_base** | **Constant** |
+| `g_Sun_tidal` (PAPER_280) | G$\times$M_Sun/r_orbit2 | Constant |
+| `F_ring_tidal` (PAPER_281) | g_ring $\times$ cos($\omega$$\times$t) | Oscillatory |
+| **a_wind (PAPER_282)** | **(v_wind/c)2 $\times$ g_base** | **Constant** |
 
 ---
 
 ## 6. Integration in computeG()
 
 $$
-wind_term = a_wind = eta_wind2 × \text{g\_base\_cache}
+wind_term = a_wind = eta_wind2 \times \text{g\_base\_cache}
 $$
 
 Enters the full UQFF sum:
@@ -133,7 +133,7 @@ Enters the full UQFF sum:
 $$
 \begin{aligned}
   & g_total = [g_grav + Ug_sum + Lambda + quantum + Lorentz + fluid \\
-  & + ring_term + \text{g\_Sun\_tidal} + g_exp + wind_term] × corr_SC
+  & + ring_term + \text{g\_Sun\_tidal} + g_exp + wind_term] \times corr_SC
 \end{aligned}
 $$
 
@@ -154,11 +154,11 @@ $$
 ## 8. Significance
 
 - **First UQFF gas-giant atmospheric wind term** — establishes new physics class for planetary modules
-- **η_wind = 1.668×10-6** is a new UQFF dimensionless constant (wind–light-speed ratio)
-- **Universal formula** a_wind = η_wind2 × g_base applicable to any gas giant or wind-bearing body
-- Physically: a_wind = 2.904×10-11 m/s2 = 2.78×10-12 fraction of g_base (parts-per-trillion, but non-zero and of physical origin)
+- **$\eta$_wind = 1.668$\times$10-6** is a new UQFF dimensionless constant (wind–light-speed ratio)
+- **Universal formula** a_wind = $\eta$_wind2 $\times$ g_base applicable to any gas giant or wind-bearing body
+- Physically: a_wind = 2.904$\times$10-11 m/s2 = 2.78$\times$10-12 fraction of g_base (parts-per-trillion, but non-zero and of physical origin)
 - Saturn's 500 m/s equatorial wind is the 2nd fastest in the Solar System (Neptune: ~600 m/s)
-- The UQFF wind term establishes the kinetic energy of atmospheric bulk flow as a distinct contributor to effective surface gravity, separable from the fluid buoyancy term (which uses density ratio) and the Lorentz term (which uses orbital velocity × B field)
+- The UQFF wind term establishes the kinetic energy of atmospheric bulk flow as a distinct contributor to effective surface gravity, separable from the fluid buoyancy term (which uses density ratio) and the Lorentz term (which uses orbital velocity $\times$ B field)
 
 *Copyright — Daniel T. Murphy, UQFF 2.0, Session 78, March 2026.*
 
@@ -170,7 +170,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -189,7 +189,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -264,7 +264,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -275,13 +275,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

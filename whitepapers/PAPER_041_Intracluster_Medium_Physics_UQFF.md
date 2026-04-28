@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Entropy Floors, and the Missing Baryon Problem
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Grok Thread:** 98b2e77dfbc34d27b09f19fa7c460624  
 **Variants Used:** whim, lobe, upar, sfe, ent (five ICM-critical variants)  
@@ -37,7 +37,7 @@ cluster galaxies (BCGs), where the sfe variant explains e_SFE < 1% despite avail
 filaments. The UQFF framework provides a unified physical mechanism linking all five ICM phenomena
 through buoyancy.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -48,12 +48,12 @@ present in Standard Model treatments.
 ### 1.1 Classical Cooling Flow Problem
 
 Galaxy cluster ICMs have cooling times shorter than the Hubble time in their central regions:
-- Perseus core (r < 60 kpc): t_cool ~ 3×108 yr < t_Hubble  1.4×10 yr
+- Perseus core (r < 60 kpc): t_cool ~ 3$\times$108 yr < t_Hubble  1.4$\times$10 yr
 - Abell 2029 core: t_cool ~ 108 yr
 - 44% of X-ray clusters have t_cool < t_Hubble in their cores (Hudson et al. 2010)
 
-If gas cools freely, it should cool to T < 104 K at rates of 100×1000 M?/yr, accumulating in the
-BCG. **Observed:** Star formation rates are 1×10 M?/yr  100 lower than predicted.
+If gas cools freely, it should cool to T < 104 K at rates of 100$\times$1000 M?/yr, accumulating in the
+BCG. **Observed:** Star formation rates are 1$\times$10 M?/yr  100 lower than predicted.
 
 This is the *cooling flow problem*: something must heat the ICM to prevent catastrophic cooling.
 
@@ -93,10 +93,10 @@ quantities.
 
 | BCG System | Cluster | P_jet (W) | t_bubble (yr) | PV / L_cool |
 |-----------|---------|-----------|--------------|-------------|
-| NGC 1275 / 3C 84 | Perseus | 2×10-5 | 3×107 | ~1 |
-| M87 | Virgo | 5×10-4 | 5×107 | ~0.5 |
-| MS 0735+7421 | A611 | 10-7 | 2×108 | ~2 |
-| Cygnus A | – | 2×10-8 | 107 | ~10 |
+| NGC 1275 / 3C 84 | Perseus | 2$\times$10-5 | 3$\times$107 | ~1 |
+| M87 | Virgo | 5$\times$10-4 | 5$\times$107 | ~0.5 |
+| MS 0735+7421 | A611 | 10-7 | 2$\times$108 | ~2 |
+| Cygnus A | – | 2$\times$10-8 | 107 | ~10 |
 
 ### 2.2 Cavity Rise Velocity from UQFF
 
@@ -133,7 +133,7 @@ $$|F_{\rm ent}^{\rm min}| = F_{\rm rel} \cdot \frac{k_B S_{\rm ent,min}}{E_{\rm 
 Setting F_ent^min = F_lobe (AGN entropy injection balances the floor):
 $$S_{\rm ent,min} = \frac{P_{\rm lobe} V_{\rm lobe} \cdot l_P^2}{k_B \cdot A_{\rm surf}}$$
 
-For A_surf ~ (10 kpc) = (3×10 m) = 9×104 m, l_P = 1.616×10?5 m:
+For A_surf ~ (10 kpc) = (3$\times$10 m) = 9$\times$104 m, l_P = 1.616$\times$10?5 m:
 $$S_{\rm ent,min} = \frac{10^{-13} \cdot 10^{60} \cdot 2.6\times10^{-70}}{1.381\times10^{-23} \cdot 9\times10^{40}} = \frac{2.6\times10^{-23}}{1.24\times10^{18}} = 2.1\times10^{-41}$$
 
 This dimensionless entropy minimum $S_{\rm min} = 2.1\times10^{-41}$ corresponds to a physical ICM entropy $K = k_B T_{\rm ICM} / n^{2/3}$ via the UQFF mapping:
@@ -150,10 +150,10 @@ only a factor of 2-3 above the theoretical cooling prediction.
 
 Brightest Cluster Galaxies (BCGs) in cool-core clusters show:
 - Available cold gas: M_cold ~ 10?10 M? (McNamara et al. 2014)
-- Observed SFR: 1×10 M?/yr (rarely up to 100 M?/yr in extreme cases)
+- Observed SFR: 1$\times$10 M?/yr (rarely up to 100 M?/yr in extreme cases)
 - Implied efficiency: e_SFE ~ 0.11%
 
-This is 10×1000 lower than typical molecular cloud star formation efficiency (e_SFE ~ 1×10%) and 104
+This is 10$\times$1000 lower than typical molecular cloud star formation efficiency (e_SFE ~ 1$\times$10%) and 104
 lower than GMC free-fall efficiency.
 
 ### 4.2 UQFF sfe Suppression Force
@@ -175,7 +175,7 @@ allow it to proceed. This explains the extremely low SFRs in BCGs.
 
 The F ? e^(3/2) scaling arises from dimensional analysis of the star formation threshold  it is the
 same Bekenstein-area scaling found in the Salpeter initial mass function (IMF) cutoff and in
-Kennicutt-Schmidt law exponents (Schmidt index n ~ 1.4 × 3/2).
+Kennicutt-Schmidt law exponents (Schmidt index n ~ 1.4 $\times$ 3/2).
 
 ---
 
@@ -190,13 +190,13 @@ The universe's baryon budget at z=0 shows:
 - **Missing baryons: ~4050% of O_b**
 
 Simulations predict the "missing" baryons reside in the Warm-Hot Intergalactic Medium (WHIM): T =
-105×107 K filaments tracing the cosmic web at densities ?_WHIM ~ 10×100  ?_mean.
+105$\times$107 K filaments tracing the cosmic web at densities ?_WHIM ~ 10$\times$100  ?_mean.
 
 ### 5.2 UQFF whim Force in Cosmic Filaments
 
 $$F_{\rm whim} = F_{\rm rel} \cdot \frac{k_B T_{\rm WHIM}}{E_{\rm LEP}} \cdot n_b \sigma_T r_{\rm fil} \cdot Q_{\rm wave} \cdot \sqrt{\frac{T_{\rm WHIM}}{T_{\rm virial}}}$$
 
-For a typical cosmic web filament (T_WHIM = 106 K, n_b = 10-6 cm? = 10? m?, r_fil = 5 Mpc = 1.54×10
+For a typical cosmic web filament (T_WHIM = 106 K, n_b = 10-6 cm? = 10? m?, r_fil = 5 Mpc = 1.54$\times$10
 m):
 $$F_{\rm whim}^{\rm fil} = 10^{-10} \times \frac{1.381\times10^{-23} \times 10^6}{1.22\times10^{-19}} \times 10^{-12} \times 6.65\times10^{-29} \times 1.54\times10^{23} \times \sqrt{\frac{10^6}{3\times10^6}}$$
 $$= 10^{-10} \times 0.1132 \times 10^{-12} \times 1.024\times10^{-5} \times 0.577 = 6.7\times10^{-29} \text{ N/m}^3$$
@@ -204,7 +204,7 @@ $$= 10^{-10} \times 0.1132 \times 10^{-12} \times 1.024\times10^{-5} \times 0.57
 Per unit volume this is negligible, but integrated over a 10-Mpc  10-Mpc  50-Mpc filament:
 V_fil = (10 kpc)  (50 Mpc) = (30.9 Mpc)  (filament geometry factor)... For a cylindrical filament of
 radius 5 Mpc and length 50 Mpc:
-V = p  (1.54×10)  1.54×10-4 = 1.15×107 m
+V = p  (1.54$\times$10)  1.54$\times$10-4 = 1.15$\times$107 m
 
 $$F_{\rm whim}^{\rm total} \approx 6.7\times10^{-29} \times 1.15\times10^{70} \approx 7.7\times10^{41} \text{ N}$$
 
@@ -217,7 +217,7 @@ The UQFF whim variant scales as:
 $$F_{\rm whim} \propto T_{\rm WHIM}^{3/2} \cdot n_b \cdot r_{\rm fil}$$
 
 This T^(3/2) scaling identifies the WHIM temperature range where UQFF buoyancy creates the strongest
-observational signal: T_WHIM ~ 3×106 K (hot WHIM, just below cluster ICM temperatures). This matches
+observational signal: T_WHIM ~ 3$\times$106 K (hot WHIM, just below cluster ICM temperatures). This matches
 the predicted signal-to-noise maximum for OVII/OVIII absorption line observations of WHIM filaments,
 suggesting the UQFF whim force profile traces the observationally optimal WHIM temperature range.
 
@@ -259,7 +259,7 @@ Together these results demonstrate that UQFF buoyancy is not merely a calculatio
 physically motivated framework for understanding multi-scale ICM processes from Planck-area entropy
 quantization (ent) to 50-Mpc cosmic filaments (whim).
 
-*Validator: `BuoyancyProofVariants.py` ? All 17 F_UBii variants operational ? | κ = 0.0005/day |
+*Validator: `BuoyancyProofVariants.py` ? All 17 F_UBii variants operational ? | $\kappa$ = 0.0005/day |
 [SSq] = 0.57*
 
 ---
@@ -270,7 +270,7 @@ quantization (ent) to 50-Mpc cosmic filaments (whim).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -289,7 +289,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -371,14 +371,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -393,10 +393,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -404,9 +404,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -414,8 +414,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -491,7 +491,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.052 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -500,13 +500,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

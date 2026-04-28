@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 NGC 3511 is a spiral galaxy in the constellation Crater, located approximately 40 million
-light-years away (z ≈ 0.0027). It forms a physical pair with the larger NGC 3513 and displays
+light-years away (z $\approx$ 0.0027). It forms a physical pair with the larger NGC 3513 and displays
 clearly defined spiral arms with moderate star formation. Its SMBH mass is estimated at ~107 MM_sun from
-the M–σ relation with σ ~ 100 km/s. Three-UQFF analysis of NGC 3511 yields g_primary ≈ 1.053×10-3
+the M–$\sigma$ relation with $\sigma$ ~ 100 km/s. Three-UQFF analysis of NGC 3511 yields g_primary $\approx$ 1.053$\times$10-3
 m/s2, continuing the UQFF SMBH Mass Invariance sequence established in PAPER_800/801 and extending
-the M–σ calibration to the low end of the SMBH mass range at 107 MM_sun.
+the M–$\sigma$ calibration to the low end of the SMBH mass range at 107 MM_sun.
 
 ---
 
@@ -36,7 +36,7 @@ the M–σ calibration to the low end of the SMBH mass range at 107 MM_sun.
 The NGC 3511/3513 pair provides a comparison between a disturbed (NGC 3513, more active SFR) and
 moderately undisturbed (NGC 3511) spiral. NGC 3511 serves as the control case — a regular spiral
 galaxy with moderate SFR (~0.6 MM_sun/yr) and low-mass SMBH — where UQFF predictions can be compared
-against the enhanced cases of NGC 685 and NGC 3507. The lower σ = 100 km/s yields M_BH ~ 107 MM_sun,
+against the enhanced cases of NGC 685 and NGC 3507. The lower $\sigma$ = 100 km/s yields M_BH ~ 107 MM_sun,
 extending the Three-UQFF SMBH sequence by another factor of ~3 in mass.
 
 ---
@@ -45,13 +45,13 @@ extending the Three-UQFF SMBH sequence by another factor of ~3 in mass.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 3×1010 MM_sun = 5.967×1040 kg | Spiral estimate |
-| Disk radius | r | 1.89×1020 m (~20 kly) | Optical |
-| SMBH mass | M_BH | 107 MM_sun = 1.989×1037 kg | M–σ (σ=100 km/s) |
-| σ | — | 100 km/s = 1.0×105 m/s | M–σ |
+| Galaxy mass | M | 3$\times$1010 MM_sun = 5.967$\times$1040 kg | Spiral estimate |
+| Disk radius | r | 1.89$\times$1020 m (~20 kly) | Optical |
+| SMBH mass | M_BH | 107 MM_sun = 1.989$\times$1037 kg | M–$\sigma$ ($\sigma$=100 km/s) |
+| $\sigma$ | — | 100 km/s = 1.0$\times$105 m/s | M–$\sigma$ |
 | SFR | — | 0.6 MM_sun/yr | Moderate |
 | Redshift | z | 0.0027 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
 | M_sf | — | 0.015 | UQFF |
 | f_TRZ | — | 0.05 | THz resonance |
 | v_EM | v | 105 m/s | Rotation |
@@ -66,15 +66,15 @@ extending the Three-UQFF SMBH sequence by another factor of ~3 in mass.
 
 $$
 \begin{aligned}
-  & G·M/r2  = 6.6743e-11 × 5.967e40 / (1.89e20)2 \\
+  & G\cdotM/r2  = 6.6743e-11 \times 5.967e40 / (1.89e20)2 \\
   & = 3.982e30 / 3.572e40 = 1.115e-10 m/s2 \\
-  & Hz = H0·√(0.3·(1.0027)3+0.7) = 2.268e-18 \\
-  & (1+Hz·t) = 1 + 2.268e-18 × 1.578e17 = 1.358 \\
+  & Hz = H0\cdot\sqrt{}(0.3\cdot(1.0027)3+0.7) = 2.268e-18 \\
+  & (1+Hz\cdott) = 1 + 2.268e-18 \times 1.578e17 = 1.358 \\
   & factor_sf = 1.015; factor_TRZ = 1.05 \\
-  & g_grav = 1.115e-10 × 1.358 × 1.015 × 1.05 = 1.612e-10 m/s2 \\
+  & g_grav = 1.115e-10 \times 1.358 \times 1.015 \times 1.05 = 1.612e-10 m/s2 \\
   & a_EM = 1.053e-3 m/s2 \\
-  & M–σ check at σ = 100 km/s: \\
-  & M_BH ~ 10^7 MM_sun (standard M–σ at this dispersion)
+  & M–\sigma check at \sigma = 100 km/s: \\
+  & M_BH ~ 10^7 MM_sun (standard M–\sigma at this dispersion)
 \end{aligned}
 $$
 
@@ -82,10 +82,10 @@ $$
 
 $$
 \begin{aligned}
-  & g_compressed = 1.053×10-3 m/s2 \\
-  & g_resonant   = 1.053×10-3 m/s2 \\
-  & g_buoyancy   = 1.053×10-3 m/s2 \\
-  & g_primary    = 1.053×10-3 m/s2
+  & g_compressed = 1.053\times10-3 m/s2 \\
+  & g_resonant   = 1.053\times10-3 m/s2 \\
+  & g_buoyancy   = 1.053\times10-3 m/s2 \\
+  & g_primary    = 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -102,13 +102,13 @@ Most metals remain in disk+CGM → available for ongoing star formation
 
 ## 4. UQFF SMBH Mass Invariance — Three-System Summary
 
-| PAPER | Galaxy | σ | M_BH | f_Z,CGM | g_primary |
+| PAPER | Galaxy | $\sigma$ | M_BH | f_Z,CGM | g_primary |
 |-------|--------|---|------|---------|-----------|
-| PAPER_800 | NGC 685 | 150 km/s | 108 MM_sun | 0.89 | 1.053×10-3 m/s2 |
-| PAPER_801 | NGC 3507 | 120 km/s | 107·5 MM_sun | 0.75 | 1.053×10-3 m/s2 |
-| PAPER_802 | NGC 3511 | 100 km/s | 107 MM_sun | 0.93 | 1.053×10-3 m/s2 |
+| PAPER_800 | NGC 685 | 150 km/s | 108 MM_sun | 0.89 | 1.053$\times$10-3 m/s2 |
+| PAPER_801 | NGC 3507 | 120 km/s | 107$\cdot$5 MM_sun | 0.75 | 1.053$\times$10-3 m/s2 |
+| PAPER_802 | NGC 3511 | 100 km/s | 107 MM_sun | 0.93 | 1.053$\times$10-3 m/s2 |
 
-**UQFF SMBH Mass Invariance Theorem:** The EM Aether ground state g = 1.053×10-3 m/s2 is invariant
+**UQFF SMBH Mass Invariance Theorem:** The EM Aether ground state g = 1.053$\times$10-3 m/s2 is invariant
 across the SMBH mass range 107–108 MM_sun (confirmed across three systems). Only f_Z,CGM varies, and it
 does so non-monotonically: intermediate SMBH mass has lowest retention because feedback drives gas
 out most efficiently at this intermediate power.
@@ -127,7 +127,7 @@ with MaNGA/MUSE IFU spectroscopy.
 
 ## 6. Conclusions
 
-Three-UQFF applied to NGC 3511 yields g_primary ≈ 1.053×10-3 m/s2 with M_BH ~ 107 MM_sun from σ = 100
+Three-UQFF applied to NGC 3511 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 with M_BH ~ 107 MM_sun from $\sigma$ = 100
 km/s. Combined with PAPER_800/801, the three-system UQFF SMBH Mass Invariance Theorem is established
 across a decade of SMBH mass (107–108 MM_sun). The f_Z,CGM non-monotonicity (peak at intermediate SMBH
 mass) is a novel UQFF-CGM prediction for future spectroscopic survey confirmation.
@@ -142,7 +142,7 @@ mass) is a novel UQFF-CGM prediction for future spectroscopic survey confirmatio
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -161,7 +161,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -236,7 +236,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.196 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -247,13 +247,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

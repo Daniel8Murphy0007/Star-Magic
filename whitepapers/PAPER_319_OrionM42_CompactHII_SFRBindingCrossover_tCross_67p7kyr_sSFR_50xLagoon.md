@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_319: Compact HII SFR Gravitational Binding Phase Transition
 **Author:** Daniel T. Murphy
 **Date:** March 2026
-## t_cross = 67,730 yr | sSFR = 5×10-4 yr-1 (50× Lagoon) | m_factor(t_age) = 151
+## t_cross = 67,730 yr | sSFR = 5$\times$10-4 yr-1 (50$\times$ Lagoon) | m_factor(t_age) = 151
 ### FIRST UQFF Compact HII Region SFR Runaway Gravitational Binding Phase Transition
 
 **Session:** 91  
@@ -24,14 +24,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper derives the SFR-driven gravitational binding phase transition for the Orion Nebula. With
 SFR = 1 M_sun/yr acting on an initial mass M = 2000 M_sun, the specific star formation rate **sSFR =
-5×10-4 yr-1 is 50× that of the Lagoon Nebula** (1×10-5 yr-1, PAPER_305). The system is born
+5$\times$10-4 yr-1 is 50$\times$ that of the Lagoon Nebula** (1$\times$10-5 yr-1, PAPER_305). The system is born
 wind-dominated (unbound), but as SFR continuously adds mass, the effective gravitational
-acceleration amplified by the SFR mass factor m_factor(t) = 1 + SFR×t_yr/M_sun_count crosses the
+acceleration amplified by the SFR mass factor m_factor(t) = 1 + SFR$\times$t_yr/M_sun_count crosses the
 growing wind ram pressure at **t_cross = 67,730 yr**, transitioning the nebula from unbound to
 gravitationally bound. By t_age = 300 kyr, binding_ratio = g_SFR/a_wind = 2.654. This is the FIRST
 UQFF compact HII SFR runaway gravitational binding phase transition.
@@ -42,13 +42,13 @@ UQFF compact HII SFR runaway gravitational binding phase transition.
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| M | 2000 M_sun = 3.978×1033 kg | Initial mass |
-| SFR | 1 M_sun/yr = 6.303×1022 kg/s | Star formation rate |
-| sSFR | 5×10-4 yr-1 | Specific SFR = SFR/M |
-| t_age | 3×105 yr | Nebula age |
-| v_wind | 8×103 m/s | HII ionization front |
-| g_base | 1.907×10-11 m/s2 | Base gravity (PAPER_317) |
-| a_wind(t=0) | 5.424×10-10 m/s2 | Initial wind acceleration |
+| M | 2000 M_sun = 3.978$\times$1033 kg | Initial mass |
+| SFR | 1 M_sun/yr = 6.303$\times$1022 kg/s | Star formation rate |
+| sSFR | 5$\times$10-4 yr-1 | Specific SFR = SFR/M |
+| t_age | 3$\times$105 yr | Nebula age |
+| v_wind | 8$\times$103 m/s | HII ionization front |
+| g_base | 1.907$\times$10-11 m/s2 | Base gravity (PAPER_317) |
+| a_wind(t=0) | 5.424$\times$10-10 m/s2 | Initial wind acceleration |
 
 ---
 
@@ -81,11 +81,11 @@ $$t_{\rm consume} = \frac{M_{\rm sun,count}}{\rm SFR_{yr}} = \frac{2000}{1} = 20
 
 | Quantity | Value | Significance |
 |----------|-------|--------------|
-| sSFR | **5×10-4 yr-1** | 50× Lagoon Nebula |
-| t_cross | **67,730 yr** | Unbound → bound transition |
+| sSFR | **5$\times$10-4 yr-1** | 50$\times$ Lagoon Nebula |
+| t_cross | **67,730 yr** | Unbound $\to$ bound transition |
 | m_factor(t_age=300 kyr) | **151** | SFR amplification |
-| g_SFR(t_age) | 2.878×10-9 m/s2 | 151× g_base |
-| a_wind(t_age) | 1.085×10-9 m/s2 | |
+| g_SFR(t_age) | 2.878$\times$10-9 m/s2 | 151$\times$ g_base |
+| a_wind(t_age) | 1.085$\times$10-9 m/s2 | |
 | binding_ratio(t_age) | **2.654** | Gravitationally bound |
 | m_factor(1 Myr) | **501** | |
 | binding_ratio(1 Myr) | **4.069** | Increasingly bound |
@@ -99,9 +99,9 @@ $$
 \begin{aligned}
   & t=0        t_cross=67.7 kyr    t_age=300 kyr     t=1 Myr \\
   & |               |                    |               | \\
-  & UNBOUND         TRANSITION           BOUND 2.65×     BOUND 4.07× \\
+  & UNBOUND         TRANSITION           BOUND 2.65\times     BOUND 4.07\times \\
   & a_wind>g_SFR    a_wind = g_SFR       g_SFR>a_wind    g_SFR>>a_wind \\
-  & η=28.47 wind    ─── crossover ───    η_B=2.654       η_B=4.069
+  & \eta=28.47 wind    ─── crossover ───    \eta_B=2.654       \eta_B=4.069
 \end{aligned}
 $$
 
@@ -111,11 +111,11 @@ $$
 
 | Module | SFR (M_sun/yr) | M (M_sun) | sSFR (yr-1) | PAPER |
 |--------|---------------|-----------|-------------|-------|
-| Lagoon | 0.1 | 10,000 | 1×10-5 | PAPER_305 |
-| **Orion** | **1.0** | **2000** | **5×10-4** | **PAPER_319** |
-| M16 (Eagle) | ~0.01× | 1200 | — | PAPER_284 |
+| Lagoon | 0.1 | 10,000 | 1$\times$10-5 | PAPER_305 |
+| **Orion** | **1.0** | **2000** | **5$\times$10-4** | **PAPER_319** |
+| M16 (Eagle) | ~0.01$\times$ | 1200 | — | PAPER_284 |
 
-Orion sSFR is 50× Lagoon — UQFF identifies this as the "ultra-compact HII" class with rapid
+Orion sSFR is 50$\times$ Lagoon — UQFF identifies this as the "ultra-compact HII" class with rapid
 gravitational binding crossover. Lagoon has t_consume = 100 kyr; Orion has t_consume = **2000 yr**,
 the shortest gas depletion time in the UQFF series, sustained only by continuous OMC-1 giant
 molecular cloud inflow.
@@ -126,7 +126,7 @@ molecular cloud inflow.
 
 The phase transition at t_cross = 67,730 yr is a structural boundary in Orion's evolution:
 
-- **Before t_cross:** The system is wind-dominated (η_wind > 1). UV photoionization and ram pressure drive a champagne flow outward; newly formed stars are subject to wind erosion.
+- **Before t_cross:** The system is wind-dominated ($\eta$_wind > 1). UV photoionization and ram pressure drive a champagne flow outward; newly formed stars are subject to wind erosion.
 - **After t_cross:** SFR has added sufficient mass that g_SFR > a_wind. The system becomes self-gravitating with respect to its own stellar formation. The cluster proceeds to form stars under its own gravity — consistent with the Orion OB1 association framework where the cluster is now 300 kyr old and gravitationally bound.
 
 Within ORION_UQFF_MODULE.cpp, the SFR mass factor m_factor(t) enters the base gravity term via
@@ -146,8 +146,8 @@ Within ORION_UQFF_MODULE.cpp, the SFR mass factor m_factor(t) enters the base gr
 ```
 
 *Series first: FIRST UQFF compact HII SFR runaway gravitational binding phase transition.
-Establishes sSFR as a new UQFF classification axis for HII regions: compact (Orion, sSFR=5×10-4
-yr-1) vs extended (Lagoon, sSFR=1×10-5 yr-1).*
+Establishes sSFR as a new UQFF classification axis for HII regions: compact (Orion, sSFR=5$\times$10-4
+yr-1) vs extended (Lagoon, sSFR=1$\times$10-5 yr-1).*
 
 
 
@@ -158,7 +158,7 @@ yr-1) vs extended (Lagoon, sSFR=1×10-5 yr-1).*
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LENR-S225 -->
 
@@ -293,7 +293,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.157 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -304,13 +304,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

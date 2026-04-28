@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1–43)  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\beta$_i = 0.61)  
 **Source:** source27.cpp (SOURCE27 namespace), MAIN_1_CoAnQi.cpp  
 **Cross-links:** PAPER_002 (GW190425 Mass Gap), PAPER_003 (GW150914 BBH), PAPER_006 (GW170817
 Multi-Messenger)
@@ -32,10 +32,10 @@ amplitude and compare with observed LIGO data. Our analysis reveals a 66.7% stra
 (combined damping factor = 0.333) relative to standard General Relativity (GR) predictions,
 resulting in strong tension between UQFF and GR-fitted waveforms. Despite this reduction, the
 signal-to-noise ratio (SNR) of 10.8 remains above detection threshold, confirming observability. The
-calibration constants κ = 0.0005/day and [SSq] = 0.57 are validated against the multi-messenger
+calibration constants $\kappa$ = 0.0005/day and [SSq] = 0.57 are validated against the multi-messenger
 dataset including GRB 170817A and kilonova AT2017gfo.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0 × 10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0 $\times$ 10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -73,10 +73,10 @@ $D_{\text{total}} = D_{\text{Aether}} \times D_{\text{SCm}} \times D_{\text{TRZ}
 
 $h_{\text{peak,UQFF}} = 0.333 \times 5.4176 \times 10^{-22} = 1.804 \times 10^{-22}\,\text{strain}$
 
-**Key numerical results:** h_GR = 5.4176 × 10-22 strain, D_total = 0.333, h_UQFF = 1.804 × 10-22
+**Key numerical results:** h_GR = 5.4176 $\times$ 10-22 strain, D_total = 0.333, h_UQFF = 1.804 $\times$ 10-22
 strain, SNR_UQFF = 10.8
 
-where D_total = D_Aether × D_SCm × D_TRZ × D_String.
+where D_total = D_Aether $\times$ D_SCm $\times$ D_TRZ $\times$ D_String.
 
 ---
 
@@ -87,7 +87,7 @@ where D_total = D_Aether × D_SCm × D_TRZ × D_String.
 The UQFF framework employs two fundamental calibration constants validated across multiple
 astrophysical systems:
 
-- **κ = 0.0005 day-1** — temporal evolution rate
+- **$\kappa$ = 0.0005 day-1** — temporal evolution rate
 - **[SSq] = 0.57** — string sector coupling strength
 
 These constants are derived from magnetar spin-down rates, supermassive black hole dynamics, and
@@ -107,14 +107,14 @@ This indicates negligible vacuum aether coupling for BNS systems at 40 Mpc dista
 #### 2.2.2 Superconducting Manifold (SCm)
 
 The SCm damping depends on the neutron star magnetic field B_NS relative to the critical field
-B_crit = 4.4 × 1013 T:
+B_crit = 4.4 $\times$ 1013 T:
 
 **D_SCm = f(B_NS / B_crit)**
 
 For GW170817:
 
-- B_NS = 1.0 × 108 G = 1.0 × 104 T
-- B_NS / B_crit = 2.27 × 10-10
+- B_NS = 1.0 $\times$ 108 G = 1.0 $\times$ 104 T
+- B_NS / B_crit = 2.27 $\times$ 10-10
 
 **D_SCm = 1.000** (negligible SCm effect due to B_NS << B_crit)
 
@@ -155,26 +155,26 @@ This results in a **66.7% strain reduction** relative to standard GR predictions
 | Chirp Mass (M) | 1.188 MM_sun | LIGO O2 catalog |
 | Total Mass (M_tot) | 2.73 MM_sun | — |
 | Distance (D_L) | 40 Mpc | NGC 4993 redshift |
-| NS Magnetic Field (B_NS) | 1.0 × 108 G | Typical NS field |
+| NS Magnetic Field (B_NS) | 1.0 $\times$ 108 G | Typical NS field |
 
 ### 3.2 Multi-Messenger Constraints
 
 | Observable | Value | Constraint |
 |------------|-------|------------|
-| GRB 170817A delay | 1.74 s | Δt_GW-GRB |
-| GW speed constraint | \|Δc/c\| < 3 × 10-15 | Speed of gravity |
+| GRB 170817A delay | 1.74 s | $\Delta$t_GW-GRB |
+| GW speed constraint | \|$\Delta$c/c\| < 3 $\times$ 10-15 | Speed of gravity |
 | Kilonova ID | AT2017gfo | Optical/IR follow-up |
 
 ### 3.3 Strain Amplitude Comparison
 
 | Model | Peak Strain (h_peak) | Reduction |
 |-------|----------------------|-----------|
-| Standard GR | 5.4176 × 10-22 | — |
-| UQFF Prediction | 1.8041 × 10-22 | 66.7% |
-| UQFF from Observed | 3.3300 × 10-22 | — |
+| Standard GR | 5.4176 $\times$ 10-22 | — |
+| UQFF Prediction | 1.8041 $\times$ 10-22 | 66.7% |
+| UQFF from Observed | 3.3300 $\times$ 10-22 | — |
 
-**Interpretation:** UQFF predicts a peak strain of 1.80 × 10-22 compared to GR's 5.42 × 10-22. The
-observed LIGO strain, when interpreted through the UQFF framework, yields 3.33 × 10-22.
+**Interpretation:** UQFF predicts a peak strain of 1.80 $\times$ 10-22 compared to GR's 5.42 $\times$ 10-22. The
+observed LIGO strain, when interpreted through the UQFF framework, yields 3.33 $\times$ 10-22.
 
 ### 3.4 Signal-to-Noise Ratio (SNR)
 
@@ -204,7 +204,7 @@ The waveform mismatch metric quantifies the incompatibility between UQFF and GR 
 
 **Mismatch = 0.667**
 
-The mismatch (1 − F_match) ≈ 0.44 between UQFF and best-fit GR template is detectable at O4/O5
+The mismatch (1 - F_match) $\approx$ 0.44 between UQFF and best-fit GR template is detectable at O4/O5
 sensitivity for events this bright. This indicates **strong tension** between UQFF predictions and
 GR-fitted LIGO data. A mismatch > 0.5 suggests that UQFF waveforms would produce significantly
 different parameter estimates if used for matched filtering.
@@ -225,11 +225,11 @@ the theories.
 
 The two UQFF calibration constants were validated across independent observational systems:
 
-| System | κ validation | [SSq] validation |
+| System | $\kappa$ validation | [SSq] validation |
 |--------|-------------|-----------------|
-| Magnetar spin-down (SGR 1806-20) | κ: t_UQFF ~ 103 × t_GR | PASS D_SCm threshold |
-| GW150914 BBH (PAPER_003) | n/a (BBH dominant string term) | PASS 0.37 × 0.90 = 0.333 |
-| GW170817 multi-messenger (PAPER_006) | PASS \|Δc/c\| < 3×10-15 preserved | PASS combined 0.333 |
+| Magnetar spin-down (SGR 1806-20) | $\kappa$: t_UQFF ~ 103 $\times$ t_GR | PASS D_SCm threshold |
+| GW150914 BBH (PAPER_003) | n/a (BBH dominant string term) | PASS 0.37 $\times$ 0.90 = 0.333 |
+| GW170817 multi-messenger (PAPER_006) | PASS \|$\Delta$c/c\| < 3$\times$10-15 preserved | PASS combined 0.333 |
 | LISA SMBH at z=1 (PAPER_017) | PASS SNR ratio 0.62 | PASS A_Um = 0.6907 |
 
 ### 4.4 Physical Interpretation
@@ -239,13 +239,13 @@ amplitude by 63%. This arises from energy dissipation into compactified dimensio
 The TRZ contribution (D_TRZ = 0.90) adds an additional 10% reduction due to quantum vacuum
 topological defects.
 
-The negligible SCm effect (D_SCm ≈ 1) is expected for typical neutron stars with B_NS ~ 108 G, far
-below the critical magnetar field strength B_crit = 4.4 × 1013 T. SCm damping becomes significant
+The negligible SCm effect (D_SCm $\approx$ 1) is expected for typical neutron stars with B_NS ~ 108 G, far
+below the critical magnetar field strength B_crit = 4.4 $\times$ 1013 T. SCm damping becomes significant
 only for magnetars (B > 1014 G), which are not present in GW170817.
 
 ### 4.5 Multi-Messenger Consistency
 
-The GW speed constraint |Δc/c| < 3 × 10-15 from GRB 170817A is satisfied in UQFF because UQFF
+The GW speed constraint |$\Delta$c/c| < 3 $\times$ 10-15 from GRB 170817A is satisfied in UQFF because UQFF
 damping is *amplitude* modulation, not velocity modification. GWs still travel at c; the vacuum
 damping reduces amplitude without causing dispersion.
 
@@ -277,9 +277,9 @@ distinguishable predictions.
 5. **Multi-messenger constraints** (GRB delay, c_GW = c) remain consistent with UQFF.
 
 GW170817 provides the first test of UQFF damping in a BNS regime. The predicted 66.7% amplitude
-suppression (D_total = 0.333) reduces GR peak strain from 5.42 × 10-22 to 1.80 × 10-22, yielding
+suppression (D_total = 0.333) reduces GR peak strain from 5.42 $\times$ 10-22 to 1.80 $\times$ 10-22, yielding
 UQFF SNR = 10.8 — above detection threshold but well below GR's SNR = 32.4. The calibration
-constants κ = 0.0005/day and [SSq] = 0.57 reproduce multi-messenger observables including the GRB
+constants $\kappa$ = 0.0005/day and [SSq] = 0.57 reproduce multi-messenger observables including the GRB
 170817A timing and kilonova AT2017gfo consistency. Future O5 events from BNS at < 40 Mpc will
 definitively discriminate UQFF from GR through template mismatch analysis.
 
@@ -335,7 +335,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -354,7 +354,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -453,7 +453,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -496,7 +496,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Constant | Symbol | Value | Validation Domain |
 |----------|--------|-------|-------------------|
-| UQFF damping rate | κ | 0.0005 day-1 | Magnetar spin-down |
+| UQFF damping rate | $\kappa$ | 0.0005 day-1 | Magnetar spin-down |
 | String sector factor | [SSq] | 0.57 | BH dynamics, nuclear binding |
 
 ---
@@ -511,14 +511,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -533,10 +533,10 @@ $$ = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lam
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -544,9 +544,9 @@ $$^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -554,8 +554,8 @@ $$^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -632,7 +632,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.144 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -724,7 +724,7 @@ SCmActivation[B]
 FNeutronS26[..., nTerms]
 ```
 
-*Source: `kozima_wstp_kernel.py` → `uqff_kozima_kernel.wl`*
+*Source: `kozima_wstp_kernel.py` $\to$ `uqff_kozima_kernel.wl`*
 
 
 

@@ -33,16 +33,16 @@ $$
 We analyze the time-domain gravitational wave chirp signal from 23 Hz onset through 250 Hz, modeling
 1000 time steps at 1.0 ms resolution within the UQFF framework. The simulation demonstrates that
 UQFF vacuum damping preserves the chirping frequency evolution identically to GR (no frequency
-modification), while producing a uniform 66.7% amplitude reduction via the combined TRZ × String
-damping factor D = 0.333. The RMS strain amplitude is reduced from 1.3728 × 10?21 (GR) to 4.5736 ×
-10?22 (UQFF), with peak standard strain 2.7905 × 10?21 and UQFF peak 9.3616 × 10?22. The ßm (mass
-buoyancy oscillation) parameter shows ±0.020 amplitude variations throughout the chirp,
+modification), while producing a uniform 66.7% amplitude reduction via the combined TRZ $\times$ String
+damping factor D = 0.333. The RMS strain amplitude is reduced from 1.3728 $\times$ 10?21 (GR) to 4.5736 $\times$
+10?22 (UQFF), with peak standard strain 2.7905 $\times$ 10?21 and UQFF peak 9.3616 $\times$ 10?22. The ßm (mass
+buoyancy oscillation) parameter shows $\pm$0.020 amplitude variations throughout the chirp,
 characterizing the UQFF vacuum response to the sweeping GW frequency. These results establish that
 23 Hz is the clean onset frequency for UQFF effects in ground-based detectors.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -111,8 +111,8 @@ From the 1000-step simulation:
 
 | Metric | Standard GR | UQFF |
 |--------|-------------|------|
-| Peak strain | 2.7905 × 10?21 | 9.3616 × 10?22 |
-| RMS strain | 1.3728 × 10?21 | 4.5736 × 10?22 |
+| Peak strain | 2.7905 $\times$ 10?21 | 9.3616 $\times$ 10?22 |
+| RMS strain | 1.3728 $\times$ 10?21 | 4.5736 $\times$ 10?22 |
 | Reduction (peak) | — | 66.4% |
 | Reduction (RMS) | — | 66.7% |
 | Amplitude ratio | 3.000 | — |
@@ -138,7 +138,7 @@ variation in the UQFF damping factor driven by the mass buoyancy coupling betwee
 the quantum vacuum. The oscillation is parameterized as:
 
 $$
-D_eff(t) = D_combined × [1 + dß_m × cos(2p f_beat t)]
+D_eff(t) = D_combined \times [1 + dß_m \times cos(2p f_beat t)]
 $$
 
 where dß_m is the fractional amplitude of the oscillation and f_beat is the beat frequency between
@@ -148,11 +148,11 @@ the GW frequency and the vacuum resonance frequency.
 
 | Parameter | Value |
 |-----------|-------|
-| ßm oscillation amplitude | ±0.0200 |
-| Relative to D = 0.333 | ±6.0% fractional |
+| ßm oscillation amplitude | $\pm$0.0200 |
+| Relative to D = 0.333 | $\pm$6.0% fractional |
 | Frequency dependence | Increases with GW frequency |
 
-The ±0.020 ßm oscillation means the effective UQFF damping is not perfectly constant at 0.333 but
+The $\pm$0.020 ßm oscillation means the effective UQFF damping is not perfectly constant at 0.333 but
 fluctuates between 0.313 and 0.353 across the chirp. This introduces a tiny frequency-dependent
 amplitude modulation in the UQFF waveform that is absent in GR.
 
@@ -185,8 +185,8 @@ The characteristic UQFF time-domain waveform for the 23?250 Hz chirp:
 
 $$
 \begin{aligned}
-  & h_UQFF(t) = D_combined × h_GR(t) × [1 + dß_m × cos(2p f_beat t)] \\
-  & ˜ 0.333 × h_GR(t)    [to 6% accuracy]
+  & h_UQFF(t) = D_combined \times h_GR(t) \times [1 + dß_m \times cos(2p f_beat t)] \\
+  & ˜ 0.333 \times h_GR(t)    [to 6% accuracy]
 \end{aligned}
 $$
 
@@ -195,10 +195,10 @@ Key features distinguishing UQFF from GR in time-domain analysis:
 | Feature | GR | UQFF |
 |---------|-----|------|
 | Frequency sweep f(t) | df/dt = fn(M_c, f) | Identical |
-| Peak strain | 2.7905 × 10?21 | 9.3616 × 10?22 |
+| Peak strain | 2.7905 $\times$ 10?21 | 9.3616 $\times$ 10?22 |
 | Amplitude trend | Rising | Rising (same slope) |
 | Phase coherence | Constant f(t) | f(t) + ?f_lag |
-| Amplitude modulation | None | ±2.0% (ßm) |
+| Amplitude modulation | None | $\pm$2.0% (ßm) |
 
 ---
 
@@ -207,11 +207,11 @@ Key features distinguishing UQFF from GR in time-domain analysis:
 1. **Frequency evolution identity:** ?2 test of UQFF vs GR frequency templates should be zero (they
 predict identical f(t)).
 
-2. **Strain ratio:** The ratio h_GR/h_UQFF = 3.000 ± 0.06 (accounting for ±2% ßm oscillation) is
+2. **Strain ratio:** The ratio h_GR/h_UQFF = 3.000 $\pm$ 0.06 (accounting for $\pm$2% ßm oscillation) is
 measurable via independent calibration of the GW detectors.
 
 3. **ßm modulation in long chirps:** Events with f_start < 23 Hz (e.g., neutron star pair, 100 s
-in-band) should show a distinctive amplitude modulation envelope with ±2% fractional depth.
+in-band) should show a distinctive amplitude modulation envelope with $\pm$2% fractional depth.
 
 4. **Einstein Telescope threshold effect:** ET will observe GW signals starting at ~5 Hz; UQFF
 predicts a gradual onset of damping from D ˜ 1.0 at 5 Hz to D = 0.333 at 23 Hz, creating a "damping
@@ -223,8 +223,8 @@ ramp" visible in long inspiral signals.
 
 The time-domain UQFF chirp analysis for the 23 Hz onset confirms that vacuum damping (D = 0.333)
 acts uniformly across the entire inspiral frequency range without modifying the frequency evolution.
-The peak strain is reduced from 2.7905 × 10?21 to 9.3616 × 10?22 (66.7%), and the RMS reduction is
-66.7%. The ßm oscillation parameter of ±0.020 introduces a small but measurable amplitude modulation
+The peak strain is reduced from 2.7905 $\times$ 10?21 to 9.3616 $\times$ 10?22 (66.7%), and the RMS reduction is
+66.7%. The ßm oscillation parameter of $\pm$0.020 introduces a small but measurable amplitude modulation
 signature unique to UQFF. Future Einstein Telescope observations below 20 Hz will test the predicted
 UQFF coupling onset frequency.
 
@@ -369,7 +369,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -380,13 +380,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -405,8 +405,8 @@ Class. Quantum Grav. **27**, 194002 (2010)
 
 **Validator:** `validate_gw_inspiral.py` — **TEST PASSED**  
 *Peak GR = 2.7905e-21, Peak UQFF = 9.3616e-22; RMS GR = 1.3728e-21, RMS UQFF = 4.5736e-22;*  
-*Combined damping = 0.333 (TRZ=0.90 × String=0.37); ßm oscillation = ±0.0200;*  
-*1000 steps, 1.0ms/step, 30?250 Hz; κ = 0.0005/day, [SSq] = 0.57*
+*Combined damping = 0.333 (TRZ=0.90 $\times$ String=0.37); ßm oscillation = $\pm$0.0200;*  
+*1000 steps, 1.0ms/step, 30?250 Hz; $\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 010b**
 
@@ -422,14 +422,14 @@ Class. Quantum Grav. **27**, 194002 (2010)
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -444,10 +444,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -455,9 +455,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -465,8 +465,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*

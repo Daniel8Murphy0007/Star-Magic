@@ -48,75 +48,75 @@ Each module is implemented as a C++ class in `modules/subterms/` with standard i
 
 | # | Module | Key Equation | Key Value |
 |---|--------|-------------|-----------|
-| 1 | `AetherVacuumDensityModule` | ρ_vac_A = E_A/c2 | 7.09×10-36 J/m3 |
-| 2 | `UniversalInertiaVacuumModule` | ρ_vac_UA [energy] | 7.09×10-36 J/m3 |
-| 3 | `ScmVacuumDensityModule` | ρ_vac_SCm = ρ_UA/10 | 7.09×10-37 J/m3 |
-| 4 | `UaVacuumDensityModule` | ρ_UA = E_UA/c2 [mass] | 7.88×10-53 kg/m3 |
-| 5 | `BackgroundAetherModule` | A_μ = (ρ_A/c2)∂_μφ | ρ_A = 7.09×10-36 J/m3 |
+| 1 | `AetherVacuumDensityModule` | $\rho$_vac_A = E_A/c2 | 7.09$\times$10-36 J/m3 |
+| 2 | `UniversalInertiaVacuumModule` | $\rho$_vac_UA [energy] | 7.09$\times$10-36 J/m3 |
+| 3 | `ScmVacuumDensityModule` | $\rho$_vac_SCm = $\rho$_UA/10 | 7.09$\times$10-37 J/m3 |
+| 4 | `UaVacuumDensityModule` | $\rho$_UA = E_UA/c2 [mass] | 7.88$\times$10-53 kg/m3 |
+| 5 | `BackgroundAetherModule` | A_$\mu$ = ($\rho$_A/c2)$\partial$_$\mu$$\phi$ | $\rho$_A = 7.09$\times$10-36 J/m3 |
 
 ### Category B: Coupling Constants
 
 | # | Module | Key Equation | Key Value |
 |---|--------|-------------|-----------|
-| 6 | `AetherCouplingModule` | A_μν = g_μν + η T_s^μν | η ≈ 1/`E_s_total` ≈ 1e-15 |
-| 7 | `UgCouplingModule` | k_i weights Ug_i | k₁=1.5, k₂=1.2, k₃=1.8, k₄=1.0 |
-| 8 | `BuoyancyCouplingModule` | U_bi = -β_i U_gi Ω_g... | β_i = 0.6 uniform |
-| 9 | `InertiaCouplingModule` | I_c = M r2 Ω2/c2 | Sun: ≈7.8×10-10 |
-| 10 | `UgIndexModule` | Ug_{i,n} = G M/r2 Q_i... | 4×26 array |
+| 6 | `AetherCouplingModule` | A_$\mu$$\nu$ = g_$\mu$$\nu$ + $\eta$ T_s^$\mu$$\nu$ | $\eta$ $\approx$ 1/`E_s_total` $\approx$ 1e-15 |
+| 7 | `UgCouplingModule` | k_i weights Ug_i | k1=1.5, k2=1.2, k3=1.8, k4=1.0 |
+| 8 | `BuoyancyCouplingModule` | U_bi = -$\beta$_i U_gi $\Omega$_g... | $\beta$_i = 0.6 uniform |
+| 9 | `InertiaCouplingModule` | I_c = M r2 $\Omega$2/c2 | Sun: $\approx$7.8$\times$10-10 |
+| 10 | `UgIndexModule` | Ug_{i,n} = G M/r2 Q_i... | 4$\times$26 array |
 
 ### Category C: Solar/Stellar Parameters
 
 | # | Module | Key Equation | Key Value |
 |---|--------|-------------|-----------|
-| 11 | `SolarWindBuoyancyModule` | ε_sw = 0.001 × (1 + A sin(ωt)) | ε_sw = 0.001 baseline |
-| 12 | `SolarWindModulationModule` | v_sw(t) = v_0(1+A sin(ωt)) | v_0=400 km/s, A=0.2 |
-| 13 | `SolarWindVelocityModule` | v_sw ∈ [400,800] km/s | v_fast = 750 km/s |
-| 14 | `SolarCycleFrequencyModule` | f_sc = 1/(11 yr) | 2.88×10-9 Hz |
-| 15 | `HeliosphereThicknessModule` | L = r_HP - r_TS | ~30 AU (~4.5×1012 m) |
-| 16 | `StellarMassModule` | M_s(t) = M_0(1-γ_ML t) | γ_ML ≈ 1.4×10-14 s-1 |
-| 17 | `StellarRotationModule` | ω_s = 2π/P_rot | Sun: 2.87×10-6 rad/s |
-| 18 | `SurfaceMagneticFieldModule` | B_s = μ₀ M_mag/4π r3 | Magnetar: 4.4×1013 T |
-| 19 | `SurfaceTemperatureModule` | T_s = (L/4πσr2)^0.25 | Sun: 5778 K |
-| 20 | `MagneticMomentModule` | μ = I A_vort | Solar: ~1×1021 A·m2 |
+| 11 | `SolarWindBuoyancyModule` | $\varepsilon$_sw = 0.001 $\times$ (1 + A sin($\omega$t)) | $\varepsilon$_sw = 0.001 baseline |
+| 12 | `SolarWindModulationModule` | v_sw(t) = v_0(1+A sin($\omega$t)) | v_0=400 km/s, A=0.2 |
+| 13 | `SolarWindVelocityModule` | v_sw $\in$ [400,800] km/s | v_fast = 750 km/s |
+| 14 | `SolarCycleFrequencyModule` | f_sc = 1/(11 yr) | 2.88$\times$10-9 Hz |
+| 15 | `HeliosphereThicknessModule` | L = r_HP - r_TS | ~30 AU (~4.5$\times$1012 m) |
+| 16 | `StellarMassModule` | M_s(t) = M_0(1-$\gamma$_ML t) | $\gamma$_ML $\approx$ 1.4$\times$10-14 s-1 |
+| 17 | `StellarRotationModule` | $\omega$_s = 2$\pi$/P_rot | Sun: 2.87$\times$10-6 rad/s |
+| 18 | `SurfaceMagneticFieldModule` | B_s = $\mu$0 M_mag/4$\pi$ r3 | Magnetar: 4.4$\times$1013 T |
+| 19 | `SurfaceTemperatureModule` | T_s = (L/4$\pi$$\sigma$r2)^0.25 | Sun: 5778 K |
+| 20 | `MagneticMomentModule` | $\mu$ = I A_vort | Solar: ~1$\times$1021 A$\cdot$m2 |
 
 ### Category D: Galactic/Astrophysical Parameters
 
 | # | Module | Key Equation | Key Value |
 |---|--------|-------------|-----------|
-| 21 | `GalacticDistanceModule` | d_g = virial radius | MW: 2.55×1020 m |
-| 22 | `GalacticSpinModule` | Ω_g = 2π/T_gal | MW: 7.3×10-16 rad/s |
-| 23 | `GalacticBlackHoleModule` | M_BH ∝ σ4 (M-σ) | Sag A*: 8×1036 kg |
+| 21 | `GalacticDistanceModule` | d_g = virial radius | MW: 2.55$\times$1020 m |
+| 22 | `GalacticSpinModule` | $\Omega$_g = 2$\pi$/T_gal | MW: 7.3$\times$10-16 rad/s |
+| 23 | `GalacticBlackHoleModule` | M_BH $\propto$ $\sigma$4 (M-$\sigma$) | Sag A*: 8$\times$1036 kg |
 | 24 | `FeedbackFactorModule` | F_env = f_AGN+f_SN+f_SF | f_AGN=0.1, f_SN=0.05 |
-| 25 | `MagneticStringModule` | T_s = (μ₀ I2/4π) ln(L/a) | ~1028 N (cosmic string) |
-| 26 | `Ug3DiskVectorModule` | Ug3_disk = G M_disk/r2(h/r) | MW: h/r ≈ 0.07 |
-| 27 | `Ug1DefectModule` | Ug1_corr = Ug1(1-δ_def) | δ_def ≈ 0.05-0.15 |
+| 25 | `MagneticStringModule` | T_s = ($\mu$0 I2/4$\pi$) ln(L/a) | ~1028 N (cosmic string) |
+| 26 | `Ug3DiskVectorModule` | Ug3_disk = G M_disk/r2(h/r) | MW: h/r $\approx$ 0.07 |
+| 27 | `Ug1DefectModule` | Ug1_corr = Ug1(1-$\delta$_def) | $\delta$_def $\approx$ 0.05-0.15 |
 
 ### Category E: Quantum & Field Calculators
 
 | # | Module | Key Equation | Key Value |
 |---|--------|-------------|-----------|
 | 28 | `DPMModule` | 26-sphere: (x-h)2+...=r2 | SCm E = 1042 J |
-| 29 | `UnifiedFieldModule` | F_U = Σ k_i Ug_i + F_bi... | Orchestrator |
-| 30 | `StressEnergyTensorModule` | T_μν = (ρ+p)u_μu_ν+pg_μν | Trace = -ρ+3p |
-| 31 | `QuasiLongitudinalModule` | E_QL = ε₀ E2/2 | ~1e-12 J/m3 |
-| 32 | `OuterFieldBubbleModule` | r = r₀ exp(H t) | At 10 Gyr: r = 1.28 r₀ |
-| 33 | `ReciprocationDecayModule` | γ = γ₀ exp(-t/τ_rec) | τ_rec ~ 1 Gyr |
-| 34 | `ScmPenetrationModule` | δ_SCm = λ(ρ/ρ_SCm)^0.5 | London-analog depth |
+| 29 | `UnifiedFieldModule` | F_U = $\Sigma$ k_i Ug_i + F_bi... | Orchestrator |
+| 30 | `StressEnergyTensorModule` | T_$\mu$$\nu$ = ($\rho$+p)u_$\mu$u_$\nu$+pg_$\mu$$\nu$ | Trace = -$\rho$+3p |
+| 31 | `QuasiLongitudinalModule` | E_QL = $\varepsilon$0 E2/2 | ~1e-12 J/m3 |
+| 32 | `OuterFieldBubbleModule` | r = r0 exp(H t) | At 10 Gyr: r = 1.28 r0 |
+| 33 | `ReciprocationDecayModule` | $\gamma$ = $\gamma$0 exp(-t/$\tau$_rec) | $\tau$_rec ~ 1 Gyr |
+| 34 | `ScmPenetrationModule` | $\delta$_SCm = $\lambda$($\rho$/$\rho$_SCm)^0.5 | London-analog depth |
 | 35 | `ScmReactivityDecayModule` | d[SCm]/dt = -k_r [SCm] | [SSq]=0.57, k_r~1e-18 s-1 |
-| 36 | `ScmVelocityModule` | v_SCm = c/n_SCm | n_SCm ≈ 1.0000001 |
-| 37 | `PiConstantModule` | π = 4Σ(-1)^k/(2k+1) | Leibniz series |
-| 38 | `CorePenetrationModule` | δ = (ρ_core/ρ_avg)^n r_core | NS core: δ → 0 |
-| 39 | `NegativeTimeModule` | g(t<0) = g₀ cos(ωt) | f_TRZ = 0.1 |
+| 36 | `ScmVelocityModule` | v_SCm = c/n_SCm | n_SCm $\approx$ 1.0000001 |
+| 37 | `PiConstantModule` | $\pi$ = 4$\Sigma$(-1)^k/(2k+1) | Leibniz series |
+| 38 | `CorePenetrationModule` | $\delta$ = ($\rho$_core/$\rho$_avg)^n r_core | NS core: $\delta$ $\to$ 0 |
+| 39 | `NegativeTimeModule` | g(t<0) = g0 cos($\omega$t) | f_TRZ = 0.1 |
 | 40 | `TimeReversalZoneModule` | f_TRZ = r_TRZ/r | Canonical: 0.1 |
-| 41 | `HeavisideFractionModule` | H(f): 0 (f<0), 1 (f≥0) | Threshold: 0 |
-| 42 | `StepFunctionModule` | θ(x): boxcar windows | Regime switching |
+| 41 | `HeavisideFractionModule` | H(f): 0 (f<0), 1 (f$\geq$0) | Threshold: 0 |
+| 42 | `StepFunctionModule` | $\theta$(x): boxcar windows | Regime switching |
 
 ### Category F: Index / Utility Modules
 
 | # | Module | Key Equation | Key Value |
 |---|--------|-------------|-----------|
-| 43 | `GalacticBlackHoleModule` | g_BH = G M_BH/r2 | At r=5.5×1010 m (Sag A*) |
-| 44 | `InertiaCouplingModule` | γ_I = 1 + I_c | Ug3 relativistic boost |
+| 43 | `GalacticBlackHoleModule` | g_BH = G M_BH/r2 | At r=5.5$\times$1010 m (Sag A*) |
+| 44 | `InertiaCouplingModule` | $\gamma$_I = 1 + I_c | Ug3 relativistic boost |
 
 ---
 
@@ -170,13 +170,13 @@ const SUB_TERMS = {
 
 | Constant | Value | Source Module |
 |---------|-------|--------------|
-| κ | 0.0005/day | DPMModule |
+| $\kappa$ | 0.0005/day | DPMModule |
 | [SSq] | 0.57 | ScmReactivityDecayModule |
-| β_i | 0.6 (all i) | BuoyancyCouplingModule |
-| ε_sw | 0.001 | SolarWindBuoyancyModule |
-| η | ~10-15 | AetherCouplingModule |
+| $\beta$_i | 0.6 (all i) | BuoyancyCouplingModule |
+| $\varepsilon$_sw | 0.001 | SolarWindBuoyancyModule |
+| $\eta$ | ~10-15 | AetherCouplingModule |
 | H_SCm | 0.99 | ScmVacuumDensityModule |
-| k₁,k₂,k₃,k₄ | 1.5/1.2/1.8/1.0 | UgCouplingModule |
+| k1,k2,k3,k4 | 1.5/1.2/1.8/1.0 | UgCouplingModule |
 | f_TRZ | 0.1 | TimeReversalZoneModule |
 
 ---
@@ -186,9 +186,9 @@ const SUB_TERMS = {
 The 44 sub-term modules collectively represent a field-theoretic decomposition of gravity that
 accounts for:
 
-- **Vacuum energy hierarchy**: ρ_UA : ρ_SCm : ρ_cosm = 10 : 1 : 0.001
-- **Coupling hierarchy**: k₃ (string/rotation) > k₁ (dipole) > k₂ (charge) > k₄ (vacuum)
-- **Time evolution**: DPM birth model → inflation → SCm decay → solar wind modulation → present
+- **Vacuum energy hierarchy**: $\rho$_UA : $\rho$_SCm : $\rho$_cosm = 10 : 1 : 0.001
+- **Coupling hierarchy**: k3 (string/rotation) > k1 (dipole) > k2 (charge) > k4 (vacuum)
+- **Time evolution**: DPM birth model $\to$ inflation $\to$ SCm decay $\to$ solar wind modulation $\to$ present
 - **Multi-scale validity**: Sub-parsec (heliosphere) to Gpc (galaxy clusters)
 
 ---
@@ -211,7 +211,7 @@ methods in CondensedPhysics.py.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -230,7 +230,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -372,7 +372,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -383,10 +383,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

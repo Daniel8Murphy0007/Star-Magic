@@ -16,7 +16,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Title:** Solid ? Liquid ? Gas ? Plasma: UQFF 26-Level Quantum Phase Transitions at Levels 10-13
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Grok Thread:** b9a29cedc27b45dfa309ea1705721bf0  
 **Validator:** `test_phase2_validation.py` Test Suite 1 (Quantum Level 26 Framework): 10/11 PASS  
@@ -34,7 +34,7 @@ PASS** (91%), with 1 failure being an off-by-one scale lookup indexing issue (no
 failure). This paper derives the phase transition thermodynamics from the UQFF vacuum density
 formula ?_n = ?_SCm  n and validates adjacent (10?11) and distant (10?26) level coupling strengths.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -46,12 +46,12 @@ present in Standard Model treatments.
 
 The UQFF 26-level framework makes the following canonical assignments:
 
-| Level | Phase | ?_n = ?_SCm  n (J/m) | E_n (J) | Scale (m) | β_i |
+| Level | Phase | ?_n = ?_SCm  n (J/m) | E_n (J) | Scale (m) | $\beta$_i |
 |-------|-------|------------------------|---------|-----------|-----|
-| 10 | **SOLID** (protons, rigid lattices) | 1.00×10-6 | 10? | 10?? | 0.75 |
-| 11 | **LIQUID** (electron clouds, flow) | 1.21×10-6 | 10?? | 10-8 | 0.70 |
-| 12 | **GAS** (atomic spacing, kinetic) | 1.44×10-6 | 10-8 | 10-7 | 0.65 |
-| 13 | **PLASMA** (ionized, collective) | 1.69×10-6 | 10-7 | 10-6 | 0.60 |
+| 10 | **SOLID** (protons, rigid lattices) | 1.00$\times$10-6 | 10? | 10?? | 0.75 |
+| 11 | **LIQUID** (electron clouds, flow) | 1.21$\times$10-6 | 10?? | 10-8 | 0.70 |
+| 12 | **GAS** (atomic spacing, kinetic) | 1.44$\times$10-6 | 10-8 | 10-7 | 0.65 |
+| 13 | **PLASMA** (ionized, collective) | 1.69$\times$10-6 | 10-7 | 10-6 | 0.60 |
 
 The energy density difference between adjacent phases gives the UQFF phase transition energy:
 $$\Delta \rho_{n \to n+1} = \rho_{\rm SCm} \times [(n+1)^2 - n^2] = \rho_{\rm SCm} \times (2n+1)$$
@@ -59,13 +59,13 @@ $$\Delta \rho_{n \to n+1} = \rho_{\rm SCm} \times [(n+1)^2 - n^2] = \rho_{\rm SC
 ### 1.2 Phase Transition Energies
 
 For each classical transition:
-- **10?11 (Solid?Liquid / melting):** ?? = 10-8  (2×10+1) = 10-8 × 21 = 2.1×10-7 J/m
-- **11?12 (Liquid?Gas / vaporization):** ?? = 10-8 × 23 = 2.3×10-7 J/m
-- **12?13 (Gas?Plasma / ionization):** ?? = 10-8 × 25 = 2.5×10-7 J/m
+- **10?11 (Solid?Liquid / melting):** ?? = 10-8  (2$\times$10+1) = 10-8 $\times$ 21 = 2.1$\times$10-7 J/m
+- **11?12 (Liquid?Gas / vaporization):** ?? = 10-8 $\times$ 23 = 2.3$\times$10-7 J/m
+- **12?13 (Gas?Plasma / ionization):** ?? = 10-8 $\times$ 25 = 2.5$\times$10-7 J/m
 
 The vaporization transition (11?12) has higher energy density than melting (10?11) by a factor of
 23/21 = 1.095  consistent with the observation that latent heat of vaporization is typically larger
-than latent heat of fusion for most substances (water: L_vap/L_fus = 2260/334 × 6.8, though the UQFF
+than latent heat of fusion for most substances (water: L_vap/L_fus = 2260/334 $\times$ 6.8, though the UQFF
 energy density ratio is a universal scale parameter, not material-specific).
 
 **Validator confirms: Level 10 (Solids) Energy Density ? PASS**
@@ -99,7 +99,7 @@ $$C_{10,26} = 0.75 \times 0.05 \times \sqrt{\frac{1.00\times10^{-6}}{6.76\times1
 The non-zero coupling C10,26 = 0.0144 is the UQFF prediction that **solid-state physics (level 10)
 is quantum-mechanically coupled to the universal field (level 26)**. This coupling, while small
 (1.44%), is physically real in the UQFF framework: crystal lattice phonons (level 10) couple to
-cosmic vacuum fluctuations (level 26) through the shared β_i hierarchy. This is the UQFF basis for:
+cosmic vacuum fluctuations (level 26) through the shared $\beta$_i hierarchy. This is the UQFF basis for:
 1. Long-range quantum correlations in condensed matter systems
 2. The Casimir effect (level 10-11 coupling to the electromagnetic vacuum)
 3. The postulated UQFF connection between crystalline order and cosmic structure
@@ -150,7 +150,7 @@ Phase  SOLID ---? LIQUID --? GAS -----? PLASMA
 β_i     0.75      0.70      0.65      0.60
 ```
 
-The consistent decrease in β_i by 0.05 per level (from 0.75 to 0.60) reflects **decreasing vacuum
+The consistent decrease in $\beta$_i by 0.05 per level (from 0.75 to 0.60) reflects **decreasing vacuum
 coupling** as matter enters higher-entropy states  liquids couple less strongly to the vacuum [SCm]
 manifold than solids, gases less than liquids, and plasmas (being fully ionized) have the weakest
 coupling in the matter-state regime.
@@ -161,9 +161,9 @@ coupling in the matter-state regime.
 
 The assignment of Level 10 to solids at scale 10?? m (nanometer) and energy density 10-6 J/m is
 anchored in proton physics:
-- Proton mass: m_p = 1.6726×10?7 kg
-- Proton rest energy density at nuclear density (?_nuc ~ 2.3×10-7 kg/m):
-  E_nuc = ?_nuc  c = 2.3×10-7 × 9×10-6 = 2.07×10-4 J/m
+- Proton mass: m_p = 1.6726$\times$10?7 kg
+- Proton rest energy density at nuclear density (?_nuc ~ 2.3$\times$10-7 kg/m):
+  E_nuc = ?_nuc  c = 2.3$\times$10-7 $\times$ 9$\times$10-6 = 2.07$\times$10-4 J/m
 - Level 10 UQFF: ?10 = 10-6 J/m (macroscopic solid energy density, not nuclear!)
 
 The level 10 energy density corresponds to macroscopic solid-state physics (~kT at room temperature
@@ -188,19 +188,19 @@ The `get_level_info(10)` call returns complete metadata:
 The UQFF Phase Transition framework (Levels 10-13) provides:
 1. **Energy density ordering**: ?10 < ?11 < ?12 < ?13  each phase has strictly higher energy
 density, consistent with thermodynamics (entropy increases through transitions)
-2. **Phase transition energies**: ?? = ?_SCm  (2n+1), giving 2.1, 2.3, 2.5 × 10-7 J/m for melting,
+2. **Phase transition energies**: ?? = ?_SCm  (2n+1), giving 2.1, 2.3, 2.5 $\times$ 10-7 J/m for melting,
 vaporization, ionization respectively
 3. **Cross-scale coupling**: Adjacent (0.477) to distant (0.0144)  establishing that quantum
 mechanics (Level 10) retains non-trivial coupling to cosmological scales (Level 26)
 4. **One correctable failure**: Scale lookup boundary condition (strict vs non-strict inequality)
 
-*Validator: `t`est_phase2_validation`.py` 10/11 PASS (91%) | κ = 0.0005/day | [SSq] = 0.57*
+*Validator: `t`est_phase2_validation`.py` 10/11 PASS (91%) | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -239,14 +239,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -261,10 +261,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -272,9 +272,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -282,8 +282,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -359,7 +359,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.119 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -368,13 +368,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

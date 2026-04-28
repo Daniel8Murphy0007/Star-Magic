@@ -23,8 +23,8 @@ class yields different THz acceleration from geometry alone
 ## Abstract
 
 Orion Nebula M42 (sys34) and Lagoon Nebula M8 (sys30) share the same DPM class parameters
-(f_DPM=1×1011 Hz, f_THz=1×1011 Hz, v_exp=1×104 m/s), yet differ geometrically (A_vort, V_sys). Their
-Γ_THz factors are identical (3.333×106), but the THz accelerations differ by factor 8.59,
+(f_DPM=1$\times$1011 Hz, f_THz=1$\times$1011 Hz, v_exp=1$\times$104 m/s), yet differ geometrically (A_vort, V_sys). Their
+$\Gamma$_THz factors are identical (3.333$\times$106), but the THz accelerations differ by factor 8.59,
 attributable entirely to geometric DPM density coupling. This is the **first UQFF intra-HII THz
 geometric amplification differential**.
 
@@ -34,12 +34,12 @@ geometric amplification differential**.
 
 | Parameter | Orion (sys34) | Lagoon (sys30) |
 |-----------|--------------|----------------|
-| f_DPM | 1×1011 Hz | 1×1011 Hz |
-| f_THz | 1×1011 Hz | 1×1011 Hz |
-| v_exp | 1×104 m/s | 1×104 m/s |
-| I_curr | 1×1020 A | 1×1020 A |
-| A_vort | **3.142×1034 m2** | 3.142×1035 m2 |
-| V_sys | **6.887×1051 m3** | 5.913×1053 m3 |
+| f_DPM | 1$\times$1011 Hz | 1$\times$1011 Hz |
+| f_THz | 1$\times$1011 Hz | 1$\times$1011 Hz |
+| v_exp | 1$\times$104 m/s | 1$\times$104 m/s |
+| I_curr | 1$\times$1020 A | 1$\times$1020 A |
+| A_vort | **3.142$\times$1034 m2** | 3.142$\times$1035 m2 |
+| V_sys | **6.887$\times$1051 m3** | 5.913$\times$1053 m3 |
 
 ---
 
@@ -65,9 +65,9 @@ $$= \frac{3.142 \times 10^{20} \times 2 \times 10^{-2} \times 7.09 \times 10^{-3
 
 Wait — let me use full precision:
 
-numerator = 1e20 × 3.142e34 × 2e-2 × 1e11 × 7.09e-36 = 4.459e19  
-denominator = 3e8 × 6.887e51 = 2.066e60  
-a_DPM_34 = 4.459e19 / 2.066e60 = **2.156×10-41 m/s2** — *(negligible; the amplified term is
+numerator = 1e20 $\times$ 3.142e34 $\times$ 2e-2 $\times$ 1e11 $\times$ 7.09e-36 = 4.459e19  
+denominator = 3e8 $\times$ 6.887e51 = 2.066e60  
+a_DPM_34 = 4.459e19 / 2.066e60 = **2.156$\times$10-41 m/s2** — *(negligible; the amplified term is
 significant)*
 
 $$a_{\text{THz},34} = 3.333 \times 10^6 \times 2.156 \times 10^{-41} = 7.187 \times 10^{-35} \ \text{m/s}^2$$
@@ -75,9 +75,9 @@ $$a_{\text{THz},34} = 3.333 \times 10^6 \times 2.156 \times 10^{-41} = 7.187 \ti
 ### Lagoon (sys30):
 $$a_{\text{DPM},30} = \frac{10^{20} \times 3.142 \times 10^{35} \times 2 \times 10^{-2} \times 10^{11} \times 7.09 \times 10^{-36}}{3 \times 10^8 \times 5.913 \times 10^{53}}$$
 
-numerator = 1e20 × 3.142e35 × 2e-2 × 1e11 × 7.09e-36 = 4.459e20  
-denominator = 3e8 × 5.913e53 = 1.774e62  
-a_DPM_30 = 4.459e20 / 1.774e62 = **2.513×10-42 m/s2**
+numerator = 1e20 $\times$ 3.142e35 $\times$ 2e-2 $\times$ 1e11 $\times$ 7.09e-36 = 4.459e20  
+denominator = 3e8 $\times$ 5.913e53 = 1.774e62  
+a_DPM_30 = 4.459e20 / 1.774e62 = **2.513$\times$10-42 m/s2**
 
 $$a_{\text{THz},30} = 3.333 \times 10^6 \times 2.513 \times 10^{-42} = 8.375 \times 10^{-36} \ \text{m/s}^2$$
 
@@ -87,7 +87,7 @@ $$a_{\text{THz},30} = 3.333 \times 10^6 \times 2.513 \times 10^{-42} = 8.375 \ti
 
 $$\frac{a_{\text{THz},34}}{a_{\text{THz},30}} = \frac{\Gamma_{\text{THz}} \cdot a_{\text{DPM},34}}{\Gamma_{\text{THz}} \cdot a_{\text{DPM},30}} = \frac{a_{\text{DPM},34}}{a_{\text{DPM},30}}$$
 
-Since Γ_THz cancels:
+Since $\Gamma$_THz cancels:
 
 $$\text{ratio} = \frac{A_{\text{vort},34} / V_{\text{sys},34}}{A_{\text{vort},30} / V_{\text{sys},30}} = \frac{3.142 \times 10^{34} / 6.887 \times 10^{51}}{3.142 \times 10^{35} / 5.913 \times 10^{53}}$$
 
@@ -98,11 +98,11 @@ $$= \frac{4.562 \times 10^{-18}}{5.313 \times 10^{-19}} = \boxed{8.59}$$
 ## Physical Interpretation
 
 Despite sharing the same DPM frequency class (f_DPM = f_THz = 1011 Hz) and expansion velocity, Orion
-produces **8.59× more THz acceleration** than the Lagoon Nebula. The ratio is determined entirely by
+produces **8.59$\times$ more THz acceleration** than the Lagoon Nebula. The ratio is determined entirely by
 the geometric DPM surface-density ratio A_vort/V_sys:
 
 - **Orion** is geometrically **denser** (smaller V, similar A_vort order): higher DPM surface density
-- **Lagoon** has 10× larger A_vort but 100× larger V_sys → lower surface density
+- **Lagoon** has 10$\times$ larger A_vort but 100$\times$ larger V_sys $\to$ lower surface density
 
 This result demonstrates that **DPM geometry (A_vort/V_sys) is the primary modulator** of THz
 acceleration within an HII region DPM class, independent of f_DPM, f_THz, or v_exp.
@@ -242,7 +242,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.155 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -253,13 +253,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

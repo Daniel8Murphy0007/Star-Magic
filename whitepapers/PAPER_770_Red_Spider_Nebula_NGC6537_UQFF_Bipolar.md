@@ -26,8 +26,8 @@ NGC 6537 (Red Spider Nebula) is one of the most energetic bipolar planetary nebu
 ~4,000 ly away in Sagittarius. Its hot central white dwarf drives supersonic winds at ~2,000 km/s —
 among the fastest observed in any planetary nebula — and creates spectacular wave-like structures
 (spidery legs) extending ~1.3 ly. Under UQFF, the radiation pressure term P_rad, Aether
-electromagnetic correction at wind velocity (v_wind = 2×106 m/s), and classical gravity combine to
-yield g_RedSpider ≈ 2.107×10-2 m/s2, dominated by the Aether EM correction driven by the extreme
+electromagnetic correction at wind velocity (v_wind = 2$\times$106 m/s), and classical gravity combine to
+yield g_RedSpider $\approx$ 2.107$\times$10-2 m/s2, dominated by the Aether EM correction driven by the extreme
 wind velocity.
 
 ---
@@ -48,7 +48,7 @@ secondary nuclear contribution.
 
 $$
 \begin{aligned}
-  & g_RedSpider(r, t) = (G × M) / r2 \\
+  & g_RedSpider(r, t) = (G \times M) / r2 \\
   & + \text{P\_rad\_term} \\
   & + a_EM
 \end{aligned}
@@ -62,14 +62,14 @@ Where:
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Central WD + ejecta mass | M | 1 MM_sun = 1.989×1030 kg | Standard |
-| Nebula radius | r | 1×1016 m (~1.06 ly) | Hubble |
-| Stellar wind velocity | v_wind | 2×106 m/s (2,000 km/s) | Observation |
-| WD luminosity | L_wd | 104 LM_sun = 3.826×1030 W | Labs |
-| Nebula gas density | ρ_gas | 10-21 kg/m3 | Labs |
+| Central WD + ejecta mass | M | 1 MM_sun = 1.989$\times$1030 kg | Standard |
+| Nebula radius | r | 1$\times$1016 m (~1.06 ly) | Hubble |
+| Stellar wind velocity | v_wind | 2$\times$106 m/s (2,000 km/s) | Observation |
+| WD luminosity | L_wd | 104 LM_sun = 3.826$\times$1030 W | Labs |
+| Nebula gas density | $\rho$_gas | 10-21 kg/m3 | Labs |
 | B-field at wind front | B | 10-5 T | PN estimate |
 | Redshift | z | 0.0013 | Distance |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -79,7 +79,7 @@ Where:
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e30) / (1e16)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e30) / (1e16)2 \\
   & = 1.328e20 / 1e32 = 1.328e-12 m/s2
 \end{aligned}
 $$
@@ -88,30 +88,30 @@ $$
 $$
 \begin{aligned}
   & Radiation flux at nebula radius r: \\
-  & F_rad = L_wd / (4π × r2) \\
-  & = 3.826e30 / (4 × 3.1416 × (1e16)2) \\
+  & F_rad = L_wd / (4\pi \times r2) \\
+  & = 3.826e30 / (4 \times 3.1416 \times (1e16)2) \\
   & = 3.826e30 / 1.257e33 \\
   & = 3.044e-3 W/m2 \\
   & Radiation pressure: P_rad = F_rad / c = 3.044e-3 / 3e8 = 1.015e-11 N/m2 \\
   & Radiation pressure acceleration on gas: \\
-  & a_P = P_rad / ρ_gas = 1.015e-11 / 1e-21 = 1.015e10 m/s2 \\
-  & \text{P\_rad\_term} = 1.015e10 × 1e-12 × (1/\text{L\_solar\_factor})... \\
-  & UQFF radiation pressure coupling (κ = 0.0005/day normalization): \\
-  & \text{P\_rad\_term} = (F_rad / c) × (1/(ρ_gas × r)) × UQFF_scale \\
-  & = 3.044e-3 / (3e8 × 1e-21 × 1e16) × 1e-12 \\
-  & = 3.044e-3 / 3e3 × 1e-12 \\
-  & = 1.015e-6 × 1e-12 × 1e12 = 6.079e-6 m/s2
+  & a_P = P_rad / \rho_gas = 1.015e-11 / 1e-21 = 1.015e10 m/s2 \\
+  & \text{P\_rad\_term} = 1.015e10 \times 1e-12 \times (1/\text{L\_solar\_factor})... \\
+  & UQFF radiation pressure coupling (\kappa = 0.0005/day normalization): \\
+  & \text{P\_rad\_term} = (F_rad / c) \times (1/(\rho_gas \times r)) \times UQFF_scale \\
+  & = 3.044e-3 / (3e8 \times 1e-21 \times 1e16) \times 1e-12 \\
+  & = 3.044e-3 / 3e3 \times 1e-12 \\
+  & = 1.015e-6 \times 1e-12 \times 1e12 = 6.079e-6 m/s2
 \end{aligned}
 $$
 
 ### Step 3: Aether Electromagnetic Correction (Stellar Wind EM)
 $$
 \begin{aligned}
-  & Stellar wind velocity v_wind = 2×106 m/s (2,000 km/s) \\
+  & Stellar wind velocity v_wind = 2\times106 m/s (2,000 km/s) \\
   & B = 10-5 T (compressed field at wind shock front) \\
-  & q × (v × B) = 1.602e-19 × 2e6 × 1e-5 = 3.204e-18 N \\
+  & q \times (v \times B) = 1.602e-19 \times 2e6 \times 1e-5 = 3.204e-18 N \\
   & a = 3.204e-18 / m_p = 3.204e-18 / 1.673e-27 = 1.915e9 m/s2 \\
-  & a_EM = 1.915e9 × 11 × 1e-12 = 2.107e-2 m/s2
+  & a_EM = 1.915e9 \times 11 \times 1e-12 = 2.107e-2 m/s2
 \end{aligned}
 $$
 
@@ -123,10 +123,10 @@ $$
 ### Step 5: Final Solution
 $$
 \begin{aligned}
-  & g_RedSpider = g_grav × (1 + f_TRZ) + \text{P\_rad\_term} + a_EM \\
-  & = (1.328e-12) × (1.1) + 6.079e-6 + 2.107e-2 \\
+  & g_RedSpider = g_grav \times (1 + f_TRZ) + \text{P\_rad\_term} + a_EM \\
+  & = (1.328e-12) \times (1.1) + 6.079e-6 + 2.107e-2 \\
   & = 1.461e-12 + 6.079e-6 + 2.107e-2 \\
-  & ≈ 2.107e-2 m/s2
+  & \approx 2.107e-2 m/s2
 \end{aligned}
 $$
 
@@ -134,10 +134,10 @@ $$
 
 ## 4. Physical Interpretation
 
-The Red Spider Nebula's result (2.107×10-2 m/s2) is driven entirely by the Aether electromagnetic
-correction at the extraordinary wind velocity of 2,000 km/s. Classical gravity (1.328×10-12 m/s2)
-and radiation pressure (6.079×10-6 m/s2) are negligible scaling. The factor-of-2 increase from
-v_wind compared to standard v = 106 m/s (giving 1.053×10-2 m/s2) directly doubles the EM result —
+The Red Spider Nebula's result (2.107$\times$10-2 m/s2) is driven entirely by the Aether electromagnetic
+correction at the extraordinary wind velocity of 2,000 km/s. Classical gravity (1.328$\times$10-12 m/s2)
+and radiation pressure (6.079$\times$10-6 m/s2) are negligible scaling. The factor-of-2 increase from
+v_wind compared to standard v = 106 m/s (giving 1.053$\times$10-2 m/s2) directly doubles the EM result —
 demonstrating UQFF's exquisite velocity sensitivity. This places NGC 6537 at exactly the same
 scaling as high-velocity systems while remaining in the planetary nebula class.
 
@@ -154,9 +154,9 @@ scaling as high-velocity systems while remaining in the planetary nebula class.
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for the Red Spider Nebula (NGC 6537) yields g_RedSpider ≈
-2.107×10-2 m/s2, dominated by the Aether electromagnetic correction driven by the exceptional
-stellar wind velocity (2,000 km/s). The radiation pressure term (6.079×10-6 m/s2) provides a
+The Master UQFF gravity equation for the Red Spider Nebula (NGC 6537) yields g_RedSpider $\approx$
+2.107$\times$10-2 m/s2, dominated by the Aether electromagnetic correction driven by the exceptional
+stellar wind velocity (2,000 km/s). The radiation pressure term (6.079$\times$10-6 m/s2) provides a
 secondary UQFF contribution unique to hot planetary nebulae. Classical gravity is negligible at this
 scale. This paper completes the Hubble Sources Batch 2 (PAPER_761–770), establishing UQFF solutions
 across HUDF galaxies, starburst spirals, ring galaxies, planetary systems, star-forming nebulae,
@@ -172,7 +172,7 @@ supernova remnants, galaxy mergers, and bipolar planetary nebulae.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -191,7 +191,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -216,7 +216,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -266,7 +266,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -277,13 +277,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

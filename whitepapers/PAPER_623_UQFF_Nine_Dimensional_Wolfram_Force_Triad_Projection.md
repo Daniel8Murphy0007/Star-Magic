@@ -47,14 +47,14 @@ with frequencies matching M87, Centaurus A, and cluster X-ray jet observations.
 | Dimensions | Force Channel | UQFF Term | VDS/DVP/BH26 Link |
 |------------|--------------|-----------|-------------------|
 | d1–d3 | Ug defect (radial, angular, magnetic) | Ug1+Ug2+Ug3+Ug4 | VDS series d=1,2,3 |
-| d4–d6 | Um DPM vortex flux (north/south) | κ·(DPMn−DPMs)/(∇UA)^26 | DVP junction points |
-| d7–d9 | Ub buoyancy gradient (displacement) | g·(1−1/∇UA) | BH26 outflow bias |
+| d4–d6 | Um DPM vortex flux (north/south) | $\kappa$$\cdot$(DPMn-DPMs)/($\nabla$UA)^26 | DVP junction points |
+| d7–d9 | Ub buoyancy gradient (displacement) | g$\cdot$(1-1/$\nabla$UA) | BH26 outflow bias |
 
 ---
 
 ## §3 Hypergraph Rewriting Rule
 
-**Void seed:** 9-arity hyperedge e₀ = {v₁, v₂, ..., v₉}
+**Void seed:** 9-arity hyperedge e0 = {v1, v2, ..., v9}
 
 **Rewriting rule:**
 ```
@@ -63,28 +63,28 @@ R_Wolfram(e) → (e₁ ∪ {v_new},  e₂ ∪ {v_new})
 where:
 - e splits at midpoint; v_new inherits the centroid of e
 - d7–d9 coordinates of v_new receive outflow bias +0.5 (Ub channel enrichment)
-- New node spawned at each iteration for arity ≥ 4
+- New node spawned at each iteration for arity $\geq$ 4
 
 This yields a **branching tree** where d7–d9 coordinates grow monotonically outward —
 simulating jet propagation driven by Ub buoyancy.
 
 ---
 
-## §4 Nine-Dimensional ∇UA Field
+## §4 Nine-Dimensional $\nabla$UA Field
 
 The full 9D Gaussian vacuum density series:
 
 $$
-∇UA = Σ_{d=1}^{9} exp(−(x_d − μ_d)2 / 2σ_d2) · FUB_i
+\nablaUA = \Sigma_{d=1}^{9} exp(-(x_d - \mu_d)2 / 2\sigma_d2) \cdot FUB_i
 $$
 
 Each Gaussian kernel assigns a phase-space density to its dimensional channel. The total
-∇UA is the sum across all 9 channels, weighted by the buoyancy integral FUB_i.
+$\nabla$UA is the sum across all 9 channels, weighted by the buoyancy integral FUB_i.
 
 **Characteristic values:**
-- d1–d3 (Ug): μ ≈ 0.5, σ ≈ 0.15, contribution ≈ Ug1+Ug2+Ug3
-- d4–d6 (DVP): μ ≈ 0.5, σ ≈ 0.12, contribution ≈ κ·(DPMn−DPMs)
-- d7–d9 (BH26): μ ≈ 0.5+bias, σ ≈ 0.18, contribution ≈ Ub outflow
+- d1–d3 (Ug): $\mu$ $\approx$ 0.5, $\sigma$ $\approx$ 0.15, contribution $\approx$ Ug1+Ug2+Ug3
+- d4–d6 (DVP): $\mu$ $\approx$ 0.5, $\sigma$ $\approx$ 0.12, contribution $\approx$ $\kappa$$\cdot$(DPMn-DPMs)
+- d7–d9 (BH26): $\mu$ $\approx$ 0.5+bias, $\sigma$ $\approx$ 0.18, contribution $\approx$ Ub outflow
 
 ---
 
@@ -93,10 +93,10 @@ Each Gaussian kernel assigns a phase-space density to its dimensional channel. T
 From 9D hypergraph coordinates to observable 3D jet coordinates:
 
 $$
-x_proj = P · x_v,   P ∈ ℝ^{3×9}  (QR-orthogonal projector)
+x_proj = P \cdot x_v,   P \in \mathbb{R}^{3\times9}  (QR-orthogonal projector)
 $$
 
-Scale factor for M87: jet_length = 4.6e19 m → multiply projected coordinates.  
+Scale factor for M87: jet_length = 4.6e19 m $\to$ multiply projected coordinates.  
 Scale factor for CenA: jet_length = 7.7e19 m.
 
 ---
@@ -105,12 +105,12 @@ Scale factor for CenA: jet_length = 7.7e19 m.
 
 At each node split, d4–d6 asymmetry signals a DVP junction:
 $$
-f_event = |∇UA|3 × 1015  Hz   (BH26 cubic rebound law)
+f_event = |\nablaUA|3 \times 1015  Hz   (BH26 cubic rebound law)
 $$
 
 Top-5 frequency predictions from 50-iteration run:
-- f₁ ≈ 1.0e18 Hz (hard X-ray)
-- f₂–f₅ scale as cumulative |∇UA|3
+- f1 $\approx$ 1.0e18 Hz (hard X-ray)
+- f2–f5 scale as cumulative |$\nabla$UA|3
 
 ---
 
@@ -120,7 +120,7 @@ Top-5 frequency predictions from 50-iteration run:
 |-----------|-------------------|------|
 | M87 jet polarization flips | DVP junction events in d4–d6 | 3 EHT 2017–2021 flips |
 | CenA VHE knots | High-arity branching in d4–d6 | MNRAS 2025 VHE knots |
-| X-ray frequency floor | f ≈ 5.71e16 Hz (M87) | Chandra/EHT Dec 2025 |
+| X-ray frequency floor | f $\approx$ 5.71e16 Hz (M87) | Chandra/EHT Dec 2025 |
 
 ---
 
@@ -132,7 +132,7 @@ Top-5 frequency predictions from 50-iteration run:
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -151,7 +151,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -259,7 +259,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -270,13 +270,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| W boson mass m_W | Force triads at 9D balance: SU(2) weak force gauge boson; UQFF K_HIGGS = 47.34 → m_W ~ 80 GeV | m_W = 80.377 ± 0.012 GeV | PDG 2024 | Triad structure consistent |
-| Strong/EM/Weak force ratios | d1–d3 EM, d4–d6 Nuclear, d7–d9 Weak: 9 dimensions = 3 force triads | SM α_s : α_EM : α_W ~ 0.12 : 1/137 : 1/30 at M_Z | PDG 2024 | Dimensional mapping aligns force hierarchy |
-| X-ray frequency f (M87 jet) | f_event = \|∇UA\|3 × 1015 Hz ≈ 5.71e16 Hz | Chandra/EHT Dec 2025: X-ray jet ≥ 5×1016 Hz | Chandra Dec 2025 | PASS Consistent |
+| W boson mass m_W | Force triads at 9D balance: SU(2) weak force gauge boson; UQFF K_HIGGS = 47.34 $\to$ m_W ~ 80 GeV | m_W = 80.377 $\pm$ 0.012 GeV | PDG 2024 | Triad structure consistent |
+| Strong/EM/Weak force ratios | d1–d3 EM, d4–d6 Nuclear, d7–d9 Weak: 9 dimensions = 3 force triads | SM $\alpha$_s : $\alpha$_EM : $\alpha$_W ~ 0.12 : 1/137 : 1/30 at M_Z | PDG 2024 | Dimensional mapping aligns force hierarchy |
+| X-ray frequency f (M87 jet) | f_event = \|$\nabla$UA\|3 $\times$ 1015 Hz $\approx$ 5.71e16 Hz | Chandra/EHT Dec 2025: X-ray jet $\geq$ 5$\times$1016 Hz | Chandra Dec 2025 | PASS Consistent |
 | M87 jet polarization flips | DVP junction events at d4–d6 asymmetry: 3 flips predicted | EHT 2017–2021: 3 polarization flip events | EHT arXiv 2021 | PASS Exact count match |
 
 **New physics claim:** The 9D force triad architecture maps exactly onto the 3 SM gauge groups
-(U(1)×SU(2)×SU(3)), with each triple of dimensions encoding one force at a different coupling scale.
+(U(1)$\times$SU(2)$\times$SU(3)), with each triple of dimensions encoding one force at a different coupling scale.
 This is a UQFF derivation of SM gauge group structure from geometry, not input.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

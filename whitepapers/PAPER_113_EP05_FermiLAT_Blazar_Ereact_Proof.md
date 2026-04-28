@@ -11,14 +11,14 @@ tags: [quasar, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_113: Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog – UQFF E_react = 1046 e^(-?t) Decay Function Confirms κ = 0.0005/day
+# PAPER_113: Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog – UQFF E_react = 1046 e^(-?t) Decay Function Confirms $\kappa$ = 0.0005/day
 **Session:** 0
 
 **Title:** Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog – UQFF E_react = 1046 e^(-?t)
-Decay Function Confirms κ = 0.0005/day
+Decay Function Confirms $\kappa$ = 0.0005/day
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-05, AprilSept 2025)  
@@ -32,15 +32,15 @@ Decay Function Confirms κ = 0.0005/day
 Empirical Proof EP-05 validates the UQFF reactive energy decay function
 E_react = 1046  e^(-?t) against the Fermi-LAT Fourth LAC (4LAC-DR3) blazar
 catalog, covering 3,743 blazars ranging 10?1047 W in ?-ray luminosity.
-The UQFF κ = 0.0005/day exponential decay from peak blazar power (t = 0 at
+The UQFF $\kappa$ = 0.0005/day exponential decay from peak blazar power (t = 0 at
 AGN launch epoch) reproduces the observed luminosity function and the redshift
 distribution of blazar luminosities across z = 06. The 4LAC full-catalog
 coverage is reproduced to within 5% in each luminosity bin. This provides an
-independent confirmation of κ = 0.0005/day  the most fundamental UQFF decay
+independent confirmation of $\kappa$ = 0.0005/day  the most fundamental UQFF decay
 constant  derived entirely from blazar statistics rather than gravitational
 wave or nuclear physics data.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -57,7 +57,7 @@ present in Standard Model treatments.
 | Flat Spectrum Radio Quasars (FSRQs) | 775 (20.7%) |
 | Not classified | 1,537 (41.1%) |
 | Redshift range | z = 0.003§6.0 |
-| Luminosity range L_? | 10?1047 W (1046×1054 erg/s) |
+| Luminosity range L_? | 10?1047 W (1046$\times$1054 erg/s) |
 | Energy range | 0.1300 GeV (Fermi-LAT) |
 | Time baseline | 12 years (20082020) |
 
@@ -71,7 +71,7 @@ $$\frac{dn}{d\log L} \propto L^{-1.7} \times (1+z)^{3.5} \quad \text{(FSRQs)}$$
 $$\frac{dn}{d\log L} \propto L^{-2.0} \times (1+z)^{2.0} \quad \text{(BL Lacs)}$$
 
 This evolution  luminosity declining with lookback time  is the observational
-signature that UQFF attributes to κ = 0.0005/day temporal decay.
+signature that UQFF attributes to $\kappa$ = 0.0005/day temporal decay.
 
 ---
 
@@ -83,7 +83,7 @@ $$E_{react}(t) = 10^{46} \times e^{-\kappa t}$$
 
 Where:
 - $10^{46}$ J = peak blazar reactive energy at AGN launch (t = 0)
-- κ = 0.0005/day = the universal UQFF decay constant
+- $\kappa$ = 0.0005/day = the universal UQFF decay constant
 - t = days since AGN launch epoch
 
 In terms of observable blazar luminosity:
@@ -103,9 +103,9 @@ Using H0 = 67.4 km/s/Mpc, O_M = 0.315, O_? = 0.685:
 
 | z | t_lookback (Gyr) | t (days) | e^(-?t) |
 |---|----------|---------|---------|
-| 0.1 | 1.30 | 4.75 × 108 | e^(-237,500)  0 |
+| 0.1 | 1.30 | 4.75 $\times$ 108 | e^(-237,500)  0 |
 
-Wait  at κ = 0.0005/day and t ~ 108 days, e^(-?t) ? 0. This means the UQFF
+Wait  at $\kappa$ = 0.0005/day and t ~ 108 days, e^(-?t) ? 0. This means the UQFF
 E_react decay applies to the **blazar duty cycle phase**, not the full cosmic
 age. Specifically:
 
@@ -129,7 +129,7 @@ $$L_\gamma(t_{active}) / L_0 = e^{-0.0005 \times 2000} = e^{-1.0} = 0.368$$
 This predicts: after one t_n cycle, blazar luminosity drops to 37% of its peak.
 **Observed:** Fermi-LAT monitoring shows individual FSRQs declining by factors
 of 25 over 23 year periods  consistent with e^(-1)  37% per 2,000 days at
-κ = 0.0005/day.
+$\kappa$ = 0.0005/day.
 
 ### 2.4 Population Decay Across 4LAC
 
@@ -143,8 +143,8 @@ cumulative decay matches the observed (1+z)^3.5 FSRQ evolution when:
 
 $$N_{cycles}(z) \times \kappa \times t_{active} \approx 3.5 \times \ln(1+z)$$
 
-At z = 1: 3.5  ln(2) = 2.42; with t_active = 2,000 days and κ = 0.0005:
-N_cycles  2.42 / (0.0005 × 2000) = **2.42 cycles per e-fold** ? reasonable
+At z = 1: 3.5  ln(2) = 2.42; with t_active = 2,000 days and $\kappa$ = 0.0005:
+N_cycles  2.42 / (0.0005 $\times$ 2000) = **2.42 cycles per e-fold** ? reasonable
 for FSRQ AGN activity cycles over 5 Gyr (z=0 to z=1).
 
 ---
@@ -160,16 +160,16 @@ for FSRQ AGN activity cycles over 5 Gyr (z=0 to z=1).
 | 104104 | 687 | 672 | 2.2% |
 | 104104 | 1,018 | 998 | 2.0% |
 | 1041044 | 863 | 845 | 2.1% |
-| 1044×1045 | 489 | 501 | 2.5% |
-| 1045×1046 | 213 | 222 | 4.2% |
-| 1046×1047 | 72 | 75 | 4.2% |
+| 1044$\times$1045 | 489 | 501 | 2.5% |
+| 1045$\times$1046 | 213 | 222 | 4.2% |
+| 1046$\times$1047 | 72 | 75 | 4.2% |
 | **Total** | **3,743** | **3,704** | **1.0%** |
 
 All bins within 5%  **4LAC coverage confirmed across full luminosity range ?**
 
 ### 3.2 ? Calibration from Decay Rate
 
-The κ = 0.0005/day is directly inferred from the Fermi-LAT 12-year monitoring
+The $\kappa$ = 0.0005/day is directly inferred from the Fermi-LAT 12-year monitoring
 of individual bright FSRQs. For CTA 102 (the brightest FSRQ in 4LAC):
 
 | Epoch | L_? (1048 erg/s) | Days since peak |
@@ -182,7 +182,7 @@ of individual bright FSRQs. For CTA 102 (the brightest FSRQ in 4LAC):
 Fitting L(t) = 2.1  e^(-?t):
 $$\kappa = \frac{1}{562} \ln!\left(\frac{2.1}{0.47}\right) = \frac{\ln(4.47)}{562} = \frac{1.497}{562} = 0.000266 \text{ day}^{-1}$$
 
-This is a factor 1.88 below κ = 0.0005/day, but CTA 102 is an extreme flare.
+This is a factor 1.88 below $\kappa$ = 0.0005/day, but CTA 102 is an extreme flare.
 The **mean ?** across the 50 brightest Fermi-LAT monitored AGN:
 
 $$\bar{\kappa}_{AGN} = 0.000497 \text{ day}^{-1} \approx 0.0005 \text{ day}^{-1} \quad \text{?}$$
@@ -209,19 +209,19 @@ $$\bar{\kappa}_{AGN} = 0.000497 \text{ day}^{-1} \approx 0.0005 \text{ day}^{-1}
 Empirical Proof EP-05 demonstrates through the Fermi-LAT 4LAC-DR3 blazar catalog
 (3,743 blazars, z = 06) that:
 
-1. **κ = 0.0005/day** is independently confirmed from blazar population statistics
-   (mean ?κ_AGN = 0.000497 day-1, 5% agreement)
+1. **$\kappa$ = 0.0005/day** is independently confirmed from blazar population statistics
+   (mean ?$\kappa$_AGN = 0.000497 day-1, 5% agreement)
 2. The UQFF E_react = 1046  e^(-?t) decay function reproduces the observed
    blazar luminosity distribution across 8 luminosity decades (1.0% total error)
 3. Individual FSRQ flare decay timescales (CTA 102, 3C 279) are consistent with
-   κ = 0.0005/day  2,000-day active phase (e^(-1)  37%)
+   $\kappa$ = 0.0005/day  2,000-day active phase (e^(-1)  37%)
 4. The 4LAC high-z FSRQ evolution (1+z)^3.5 is reproduced by N_cycles  ?  t_active
 5. This confirms ? independently across three domains: UQFF GW damping (PAPER_094),
    blazar population statistics (EP-05), and MCMC F_U_Bi_i integral (PAPER_063)
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ---
@@ -232,7 +232,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -251,7 +251,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -358,7 +358,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.138 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -367,13 +367,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -391,7 +391,7 @@ Astron. Soc. 485, L98.
 5. Murphy D.T. (2026). *Ug4 AGN Feedback: 8-Parameter UQFF Formula*. PAPER_086.
 6. Murphy D.T. (2026). *Magnetar SGR1745: UQFF Calibration (?, [SSq])*. PAPER_094.
 7. `FermiLATBlazarEreactCalculator`  CondensedPhysics2.py.
-.Groups[1].Value   Empirical Proof EP-05: Fermi-LAT 4LAC Blazar Luminosity  κ = 0.0005/day
+.Groups[1].Value   Empirical Proof EP-05: Fermi-LAT 4LAC Blazar Luminosity  $\kappa$ = 0.0005/day
 Confirmation
 
 

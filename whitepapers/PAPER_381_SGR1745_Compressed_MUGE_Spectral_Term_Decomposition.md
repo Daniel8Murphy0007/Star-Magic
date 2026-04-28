@@ -30,7 +30,7 @@ the Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-PAPER_372 documented the final compressed MUGE result for SGR1745 (g ≈ 1.782e39 m/s2) and
+PAPER_372 documented the final compressed MUGE result for SGR1745 (g $\approx$ 1.782e39 m/s2) and
 established the 8-function modular structure. However, it did NOT record the individual magnitudes
 of all 8 terms side-by-side. This paper fills that gap with the first complete **spectral term
 decomposition** showing the relative magnitude of each compressed MUGE contribution.
@@ -45,14 +45,14 @@ DPM-seeded base, revealing why the compressed model is **unphysical at magnetar 
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
 | Mass | M | 2.984e30 | kg |
-| Radius | r | 1×104 | m |
-| Magnetic field | B | 1×1010 | T |
-| Critical B-field | B_crit | 1×1011 | T |
+| Radius | r | 1$\times$104 | m |
+| Magnetic field | B | 1$\times$1010 | T |
+| Critical B-field | B_crit | 1$\times$1011 | T |
 | Age | t | 3.799e10 | s |
 | Redshift | z | 0.0009 | — |
-| Expansion velocity | v_exp | 1×103 | m/s |
-| Dark matter mass | M_DM | 1×1028 | kg |
-| Density contrast | δρ/ρ | 0.1 | — |
+| Expansion velocity | v_exp | 1$\times$103 | m/s |
+| Dark matter mass | M_DM | 1$\times$1028 | kg |
+| Density contrast | $\delta$$\rho$/$\rho$ | 0.1 | — |
 
 ---
 
@@ -91,7 +91,7 @@ $$\boxed{g_\Lambda = 3.3\times10^{-36} \ \text{m/s}^2 \quad (\text{effectively z
 ### Term 6: Quantum Coherence Term
 $$g_\text{quantum} = \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_\text{Hubble}}$$
 
-With $\Delta x \cdot \Delta p = 10^{-68}$ J2·s2 and coherence integral $= 2.176\times10^{-18}$ J:
+With $\Delta x \cdot \Delta p = 10^{-68}$ J2$\cdot$s2 and coherence integral $= 2.176\times10^{-18}$ J:
 
 $$\boxed{g_\text{quantum} = 3.316\times10^{-35} \ \text{m/s}^2}$$
 
@@ -116,22 +116,22 @@ $$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\text\bf{DOMIN
 
 | Term | Formula | Value (m/s2) | Orders above base |
 |------|---------|:------------:|:-----------------:|
-| Base (DPM-seeded) | μ_s∇(M_s/r) | 1.991e12 | — |
-| SC adj (×0.9) | ×(1−B/B_crit) | 1.792e12 | 0 |
-| Ug3′ (ext. BH) | GM_BH/r_BH2 | 6.746e-5 | −17 |
-| Cosmological floor | Λc2/3 | 3.3e-36 | −48 |
-| Quantum coherence | ℏ⟨Ĥ⟩·2π/t_H | 3.316e-35 | −47 |
-| Fluid coupling | ρ_f·V·g_loc | 4.189e-2 | −14 |
-| **Perturbation (DM)** | **(M+M_DM)(δρ/ρ+3μ_s∇(M_s/r)/r)** | **1.782e39** | **+27** |
+| Base (DPM-seeded) | $\mu$_s$\nabla$(M_s/r) | 1.991e12 | — |
+| SC adj ($\times$0.9) | $\times$(1-B/B_crit) | 1.792e12 | 0 |
+| Ug3′ (ext. BH) | GM_BH/r_BH2 | 6.746e-5 | -17 |
+| Cosmological floor | $\Lambda$c2/3 | 3.3e-36 | -48 |
+| Quantum coherence | ℏ⟨Ĥ⟩$\cdot$2$\pi$/t_H | 3.316e-35 | -47 |
+| Fluid coupling | $\rho$_f$\cdot$V$\cdot$g_loc | 4.189e-2 | -14 |
+| **Perturbation (DM)** | **(M+M_DM)($\delta$$\rho$/$\rho$+3$\mu$_s$\nabla$(M_s/r)/r)** | **1.782e39** | **+27** |
 
 ---
 
 ## 5. Perturbation Dominance Law
 
 **Statement:** For compact objects at $r \sim 10^4$ m (magnetar scale), the dark matter perturbation
-term in the Compressed MUGE dominates by **≥ 27 orders of magnitude** over the DPM-seeded base.
+term in the Compressed MUGE dominates by **$\geq$ 27 orders of magnitude** over the DPM-seeded base.
 
-**Physical origin:** The $3μ_s∇(M_s/r)/r$ factor scales as $r^{-3}$ — making it catastrophically large
+**Physical origin:** The $3\mu_s\nabla(M_s/r)/r$ factor scales as $r^{-3}$ — making it catastrophically large
 at magnetar radii:
 
 $$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=10^4} = 6.0\times10^{10} \gg \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=1 \text{ AU}} \approx 1.7\times10^{-23}$$
@@ -198,7 +198,7 @@ for SGR1745 compressed MUGE*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -217,7 +217,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -319,7 +319,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.052 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -330,13 +330,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

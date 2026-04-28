@@ -27,21 +27,21 @@ $$
 U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
 This paper consolidates the calibration status for all primary UQFF framework variables as extracted
 from the Sept 22, 2025 PDF analysis session. Six variables are explicitly calibrated: the UQFF phase
-? ˜ 0.81 (from SymPy), the SGR A* THz resonance frequency f_TRZ ˜ 5.95×10-4 Hz (28-minute cycle),
+? ˜ 0.81 (from SymPy), the SGR A* THz resonance frequency f_TRZ ˜ 5.95$\times$10-4 Hz (28-minute cycle),
 the vacuum aether density ?_vac,[UA] ˜ 10?15 kg/m3 (astrophysical calibration), the quantum-state
 suppression factor [SSq] = 0.57 (empirical), the quantum wave standard deviation Q_wave =
-6.33–6.35×104 J/m3 (47-system calibration), and a CIA collision-induced absorption cross-section
+6.33–6.35$\times$104 J/m3 (47-system calibration), and a CIA collision-induced absorption cross-section
 refit to H2O-H2 data yielding b = 0.004997 and s(?j=2, E=400 cm?1) = 11.65 Å2.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -83,20 +83,20 @@ Recommended usage: ? = 0.81 ± 0.01 for redshift z ˜ 0–2 calculations
 
 $$
 \begin{aligned}
-  & f_TRZ = 5.95×10-4 Hz   (corresponding to T = 1/f_TRZ ˜ 1680 s ˜ 28 minutes) \\
+  & f_TRZ = 5.95\times10-4 Hz   (corresponding to T = 1/f_TRZ ˜ 1680 s ˜ 28 minutes) \\
   & Physical origin: \\
   & SGR A* near-infrared/X-ray quasi-periodic oscillations (QPOs) \\
   & Observed period of enhanced NIR flare activity: ~28 min (1680 s) \\
   & Source: Gravity collaboration Spitzer/VLT monitoring (2024) \\
   & Related to: innermost stable circular orbit (ISCO) or magnetar resonance \\
   & UQFF application: \\
-  & F_Ug3' = k_3 · sin(2pf_TRZ·t) · ?_vac · f_feedback   (string rotation term) \\
-  & Enters phase ? as: ?(t) = sin(pt_n) + 0.01·cos(2pf_TRZ·t) \\
+  & F_Ug3' = k_3 \cdot sin(2pf_TRZ\cdott) \cdot ?_vac \cdot f_feedback   (string rotation term) \\
+  & Enters phase ? as: ?(t) = sin(pt_n) + 0.01\cdotcos(2pf_TRZ\cdott) \\
   & The 0.01 amplitude factor: small fractional perturbation from quasi-periodic flares \\
   & Calibration constraint: \\
   & If ??_glitch/? = F_UBii,glitch/F_grav ? relates UQFF to timing residuals \\
   & For SGR A* orbit: T_ISCO ˜ 30 min (Kerr metric, a ˜ 0.94) \\
-  & f_TRZ ˜ 1/T_ISCO ˜ 5.6×10-4 Hz (consistent with 5.95×10-4 within 6%)
+  & f_TRZ ˜ 1/T_ISCO ˜ 5.6\times10-4 Hz (consistent with 5.95\times10-4 within 6%)
 \end{aligned}
 $$
 
@@ -166,18 +166,18 @@ $$
 \begin{aligned}
   & Q_wave = quantum wave amplitude (J/m3) — statistical measure \\
   & Calibrated values: \\
-  & Q_wave = 6.33×104 J/m3  (47-system standard deviation, Sept 22, 2025) \\
-  & Q_wave = 6.35×104 J/m3  (re-derived in UQFF Framework Assimilation, same PDF) \\
+  & Q_wave = 6.33\times104 J/m3  (47-system standard deviation, Sept 22, 2025) \\
+  & Q_wave = 6.35\times104 J/m3  (re-derived in UQFF Framework Assimilation, same PDF) \\
   & ? = 0.03%  (excellent consistency between two derivation paths) \\
   & Role in F_UBii: \\
-  & F_UBii,X = F_rel × (F_X / E_LEP) × Q_wave \\
+  & F_UBii,X = F_rel \times (F_X / E_LEP) \times Q_wave \\
   & Q_wave enters multiplicatively ? all F_UBii variants scale proportionally \\
   & System-specific Q_wave: \\
   & If F_X covers a narrow energy range, Q_wave is smaller \\
   & If F_X covers many decades (cosmological), Q_wave is larger \\
-  & Value 6.33×104 J/m3 is the mean over 47 diverse systems \\
+  & Value 6.33\times104 J/m3 is the mean over 47 diverse systems \\
   & Chandra cross-check: \\
-  & Q_wave derived from Chandra X-ray cluster data (Perseus, Coma): ~6.2×104 J/m3 \\
+  & Q_wave derived from Chandra X-ray cluster data (Perseus, Coma): ~6.2\times104 J/m3 \\
   & Within 2% of UQFF derivation ? confirms robustness
 \end{aligned}
 $$
@@ -225,8 +225,8 @@ From UQFF Framework Assimilation (3rd PDF, lines 1640–1715):
 
 | Scale | System | Characteristic Quantity | UQFF Variable |
 |-------|---------|------------------------|--------------|
-| ~10?34 N·m | Molecular rotors (H2) | t_rot ~ 10?34 N·m | k_?, CIA s |
-| ~10?32 N | Magnetar quantum | ?O·I_s/I | F_UBii,glitch |
+| ~10?34 N$\cdot$m | Molecular rotors (H2) | t_rot ~ 10?34 N$\cdot$m | k_?, CIA s |
+| ~10?32 N | Magnetar quantum | ?O$\cdot$I_s/I | F_UBii,glitch |
 | ~10?28 m | Atomic nucleus | r_nuc ~ 10?15 m | H_res, k_nuc |
 | ~10?15 m | Nuclear pinning | a_lattice ~ 10?15 m | [SSq], ?_vac,[UA] |
 | ~103 km | Neutron star | R_NS ~ 10 km | F_UBii,tov |
@@ -244,12 +244,12 @@ From UQFF Framework Assimilation (3rd PDF, lines 1640–1715):
 | Variable | Derived Value | Independent Check | Agreement |
 |----------|-------------|-------------------|-----------|
 | [SSq] | 0.57 | Q_wave std backsolve | Self-consistent |
-| Q_wave | 6.33×104 J/m3 | Chandra X-ray (clusters) | <2% |
-| ? | 0.81 ± 0.01 | SGR A* NIR periodic | ~6% (f_TRZ) |
-| f_TRZ | 5.95×10-4 Hz | GRAVITY/Spitzer 28 min | <6% |
+| Q_wave | 6.33$\times$104 J/m3 | Chandra X-ray (clusters) | <2% |
+| ? | 0.81 $\pm$ 0.01 | SGR A* NIR periodic | ~6% (f_TRZ) |
+| f_TRZ | 5.95$\times$10-4 Hz | GRAVITY/Spitzer 28 min | <6% |
 | ?_vac,[UA] | 10?15 kg/m3 | MW spiral arm calibration | ~10% (indirect) |
-| CIA b | 0.004997 Å2·cm | arXiv:2506.09257 | Direct fit |
-| ?k_? | 7.25×108×k_?,base | CIA s update | Derived |
+| CIA b | 0.004997 Å2$\cdot$cm | arXiv:2506.09257 | Direct fit |
+| ?k_? | 7.25$\times$108$\times$k_?,base | CIA s update | Derived |
 
 ---
 
@@ -269,7 +269,7 @@ From UQFF Framework Assimilation (3rd PDF, lines 1640–1715):
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -288,7 +288,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -363,7 +363,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.104 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

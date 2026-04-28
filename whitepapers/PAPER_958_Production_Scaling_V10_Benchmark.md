@@ -96,7 +96,7 @@ Target: $\text{rate} \geq 450{,}000$ calc/s.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -162,7 +162,7 @@ $$\text{rate} = \frac{N_\text{iter} \times 14}{t_\text{elapsed}} \geq 450{,}000$
 $$\boxed{\forall, k \in \{1,\ldots,14\}:\; |k(\mathbf{x})| < \infty}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → UQFF equations → kernel extraction → production pipeline → benchmark validation
+PAPER_877 $\to$ UQFF equations $\to$ kernel extraction $\to$ production pipeline $\to$ benchmark validation
 
 ---
 
@@ -175,7 +175,7 @@ All 14 kernels embed VDS through $S_{26}$ or $\rho_text{SCm}$.
 14 kernels span the prime factorization of the physics pipeline.
 
 ### §B.3 BSH
-Throughput scaling: v4 (100k) → v10 (450k) follows $\tanh$ saturation toward hardware limit.
+Throughput scaling: v4 (100k) $\to$ v10 (450k) follows $\tanh$ saturation toward hardware limit.
 
 ### §B.4 Production-Scale Consistency
 

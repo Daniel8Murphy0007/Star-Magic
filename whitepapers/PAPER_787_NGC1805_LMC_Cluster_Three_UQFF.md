@@ -24,16 +24,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 NGC 1805 is a young open cluster in the Large Magellanic Cloud (LMC), ~163,000 light-years away.
 Imaged by Hubble with high resolution, NGC 1805 demonstrates the extraordinary density of young blue
-massive stars typical of LMC clusters. With ~104 MM_sun total cluster mass (1.989×1034 kg) and a
-half-light radius of ~3 pc (9.46×1016 m), it represents a compact young cluster system. Using
-Three-UQFF (simultaneous compressed + resonant + buoyancy modes), g_primary ≈ 1.053×10-3 m/s2 across
+massive stars typical of LMC clusters. With ~104 MM_sun total cluster mass (1.989$\times$1034 kg) and a
+half-light radius of ~3 pc (9.46$\times$1016 m), it represents a compact young cluster system. Using
+Three-UQFF (simultaneous compressed + resonant + buoyancy modes), g_primary $\approx$ 1.053$\times$10-3 m/s2 across
 all three modes.
 
 ---
 
 ## 1. Introduction
 
-NGC 1805 sits within the LMC's northern bar region, heavily populated with young clusters (z ≈
+NGC 1805 sits within the LMC's northern bar region, heavily populated with young clusters (z $\approx$
 0.0005). It contains both young blue stars from recent formation and older red giants from earlier
 bursts, making it a mixed-age cluster. Its compact size (half-light radius ~3 pc) places it between
 an open cluster and a young globular cluster in terms of density. Three-UQFF probes how the compact
@@ -46,10 +46,10 @@ these smaller mass/size scales.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Cluster mass | M | 104 MM_sun = 1.989×1034 kg | HST |
-| Half-light radius | r | 9.46×1016 m (~3 pc) | Hubble |
+| Cluster mass | M | 104 MM_sun = 1.989$\times$1034 kg | HST |
+| Half-light radius | r | 9.46$\times$1016 m (~3 pc) | Hubble |
 | SFR | — | 0 (no ongoing SF) | Quiescent now |
-| Age | t | 5×108 yr = 1.578×1016 s | Cluster age |
+| Age | t | 5$\times$108 yr = 1.578$\times$1016 s | Cluster age |
 | M_sf | — | 0.05 | Past formation |
 | Redshift | z | 0.0005 | LMC |
 | v_EM | v | 105 m/s | Cluster dispersion |
@@ -62,10 +62,10 @@ these smaller mass/size scales.
 ### Mode 1: Compressed UQFF
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 1.989e34 / (9.46e16)2 = 1.483e-7 m/s2 \\
-  & H(z)×t = negligible (5e-3) \\
+  & g_grav = 6.6743e-11 \times 1.989e34 / (9.46e16)2 = 1.483e-7 m/s2 \\
+  & H(z)\timest = negligible (5e-3) \\
   & factor_sf = 1.05; factor_TRZ = 1.04 \\
-  & \text{g\_grav\_total} = 1.483e-7 × 1.05 × 1.04 = 1.619e-7 m/s2  (still << a_EM) \\
+  & \text{g\_grav\_total} = 1.483e-7 \times 1.05 \times 1.04 = 1.619e-7 m/s2  (still << a_EM) \\
   & a_EM = 1.053e-3 m/s2 \\
   & g_comp = 1.053e-3 m/s2
 \end{aligned}
@@ -79,7 +79,7 @@ $$
 ### Mode 3: Buoyancy UQFF
 $$
 \begin{aligned}
-  & ρ_UA = 7.09e-36 kg/m3; V = (4/3)π(9.46e16)3 = 3.54e50 m3 \\
+  & \rho_UA = 7.09e-36 kg/m3; V = (4/3)\pi(9.46e16)3 = 3.54e50 m3 \\
   & a_Ubi << a_EM; g_buoy = 1.053e-3 m/s2
 \end{aligned}
 $$
@@ -99,7 +99,7 @@ $$
 ## 4. Physical Interpretation
 
 Despite being 7 orders of magnitude smaller in mass than a galaxy, NGC 1805's compact scale yields a
-higher classical gravitational acceleration (1.483×10-7 m/s2) — still ~10,000× smaller than the UQFF
+higher classical gravitational acceleration (1.483$\times$10-7 m/s2) — still ~10,000$\times$ smaller than the UQFF
 EM term. The Three-UQFF convergence holds even at cluster scales, confirming that the
 electromagnetic Aether coupling dominates across all astrophysical scales from 3 pc clusters to 100
 Mly galaxy groups.
@@ -108,7 +108,7 @@ Mly galaxy groups.
 
 ## 5. Conclusions
 
-Three-UQFF applied to NGC 1805 LMC cluster yields g_primary ≈ 1.053×10-3 m/s2 across all three
+Three-UQFF applied to NGC 1805 LMC cluster yields g_primary $\approx$ 1.053$\times$10-3 m/s2 across all three
 modes. UQFF scale invariance confirmed from 3 pc star clusters to 100 kly galaxy groups.
 
 *PAPER_787, CP4 Three-UQFF class #371. v5.42.*
@@ -218,7 +218,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.133 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -229,13 +229,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

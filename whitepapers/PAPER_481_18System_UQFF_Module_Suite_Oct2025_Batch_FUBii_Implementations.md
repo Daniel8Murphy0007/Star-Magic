@@ -20,7 +20,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 This paper documents the complete C++ module implementation suite for 18 astrophysical systems encoded in the UQFF framework (Unified Quantum Field Framework). Each module encapsulates the full $F_{U\_{Bi\_i}}$ Master Unified Field Equation with system-specific parameters stored in a `std::map<std::string, std::complex<double>>` dictionary, enabling runtime parameter updates, dynamic sub-term computation, and descriptive equation output. This batch extends the existing individual-system module collection (Abell 2256 v1, Centaurus A) to a comprehensive library covering TDEs, compact clusters, pulsars, interacting galaxies, AGN jets, symbiotic binaries, solar-system aurorae, and star-forming regions.
 
-**Source:** `grok_share_bdfb3a05b06.txt` (~11,592 lines), Grok analysis of 18 × `.docx` attachments
+**Source:** `grok_share_bdfb3a05b06.txt` (~11,592 lines), Grok analysis of 18 $\times$ `.docx` attachments
 (Sept–Oct 2025), Session 126 extraction.
 
 ---
@@ -57,7 +57,7 @@ with quadratic root approximation $x_2 \approx -1.35\times10^{172}$ (universal c
 |----------|-------|-------|
 | $G$ | $6.6743 \times 10^{-11}$ | m3 kg-1 s-2 |
 | $c$ | $3 \times 10^8$ | m/s |
-| $\hbar$ | $1.0546 \times 10^{-34}$ | J·s |
+| $\hbar$ | $1.0546 \times 10^{-34}$ | J$\cdot$s |
 | $q$ | $1.6 \times 10^{-19}$ | C |
 | $m_e$ | $9.11 \times 10^{-31}$ | kg |
 | $\mu_B$ | $9.274 \times 10^{-24}$ | J/T |
@@ -155,12 +155,12 @@ This LENR term dominates all other integrand contributions for cluster-scale sys
 ### Phase A: MAIN_1 Integration
 Register all 18 modules in `MAIN_1_CoAnQi.cpp` under `SOURCE_SESSION126_MODULES` namespace. Each
 module contributes to the physics term registry with:
-- `computeF(t)` → `F_U_Bi_i` value
-- `computeCompressedG(t)` → gravitational analog $g(r,t)$
+- `computeF(t)` $\to$ `F_U_Bi_i` value
+- `computeCompressedG(t)` $\to$ gravitational analog $g(r,t)$
 
 ### Phase B: CP2 Calculator
 Add `IndividualSystemUQFF18Calculator` to `CondensedPhysics2.py` wrapping all 18 `computeF()`
-results in a unified dataset response. Target: CP2 class count 602 → 603.
+results in a unified dataset response. Target: CP2 class count 602 $\to$ 603.
 
 ### Phase C: CP4 Registry
 Add `Session126GrokShareBdfb3a05b06HubCalculator` as CP4 entry #105.
@@ -198,7 +198,7 @@ Add `Session126GrokShareBdfb3a05b06HubCalculator` as CP4 entry #105.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -217,7 +217,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -271,7 +271,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -394,7 +394,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.062 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -405,10 +405,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

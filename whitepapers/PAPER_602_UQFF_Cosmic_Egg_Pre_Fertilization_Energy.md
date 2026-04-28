@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 The Unified Quantum Field Framework (UQFF) models the cosmic egg in its pre-fertilization state as
-an entity whose energy is encoded entirely in the transcendental digits of π weighted against the
+an entity whose energy is encoded entirely in the transcendental digits of $\pi$ weighted against the
 Quatronic Vacuum Density perturbation spectrum. This paper derives and validates the
 Pre-Fertilization Energy equation E_pre, demonstrating that the infinite series converges to a
 finite vacuum energy density consistent with the anti-collapse bound established by the 26th-order
@@ -40,9 +40,9 @@ sufficient opposition energy. Unlike fully-formed matter, a cosmic egg in its pr
 state does not yet possess stable shells; its energy distribution is governed purely by quantum
 vacuum density modes modulated by transcendental mathematics.
 
-The π-digit series provides a natural, non-repeating, irrational weighting for vacuum energy modes.
-Since π is transcendental, the series d_n(π)/10^n is guaranteed to be non-periodic, ensuring each
-mode of the ΔQVD perturbation is uniquely weighted. This is the mathematical foundation of the
+The $\pi$-digit series provides a natural, non-repeating, irrational weighting for vacuum energy modes.
+Since $\pi$ is transcendental, the series d_n($\pi$)/10^n is guaranteed to be non-periodic, ensuring each
+mode of the $\Delta$QVD perturbation is uniquely weighted. This is the mathematical foundation of the
 Vacuum Density Series (VDS) as applied to cosmic egg energetics.
 
 ---
@@ -55,13 +55,13 @@ The VDS is a formal expansion of vacuum energy density over hierarchical modes:
 
 $$\text{VDS}(n) = \sum_{n=1}^{\infty} \frac{d_n(\pi)}{10^n}$$
 
-where $d_n(\pi)$ is the nth decimal digit of π (0–9). This series converges since:
+where $d_n(\pi)$ is the nth decimal digit of $\pi$ (0–9). This series converges since:
 
 $$\sum_{n=1}^{\infty} \frac{9}{10^n} = 1 < \infty$$
 
-### 2.2 ΔQVD Perturbation Product
+### 2.2 $\Delta$QVD Perturbation Product
 
-Each mode n carries a Quatronic Vacuum Density perturbation ΔQVD_n. The physical coupling between
+Each mode n carries a Quatronic Vacuum Density perturbation $\Delta$QVD_n. The physical coupling between
 mode n and the egg density uses 7 perturbation functions:
 
 $$\prod_{i=1}^{7} f_i(\Delta QVD_n) = \prod_{i=1}^{7} \left(1 + \Delta QVD_n \cdot \frac{i}{7}\right)$$
@@ -76,19 +76,19 @@ vacuum sector).
 $$E_{pre} = \sum_{n=1}^{N} \frac{d_n(\pi)}{10^n} \cdot \prod_{i=1}^{7} f_i(\Delta QVD_n) \cdot \rho_{egg}$$
 
 **Parameters:**
-- $d_n(\pi)$: nth decimal digit of π (first 26: 3,1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3)
-- $\Delta QVD_n$: vacuum density perturbation at mode n (~1×10-6 dimensionless)
-- $\rho_{egg}$: pre-fertilization egg density (≈ 2.5e-30 kg/m3 — the anti-collapse threshold)
+- $d_n(\pi)$: nth decimal digit of $\pi$ (first 26: 3,1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3)
+- $\Delta QVD_n$: vacuum density perturbation at mode n (~1$\times$10-6 dimensionless)
+- $\rho_{egg}$: pre-fertilization egg density ($\approx$ 2.5e-30 kg/m3 — the anti-collapse threshold)
 - N: number of series terms (26 for first-order convergence)
 
-**Units**: E_pre has units of kg/m3 × dimensionless = kg/m3, interpreted as energy density when
+**Units**: E_pre has units of kg/m3 $\times$ dimensionless = kg/m3, interpreted as energy density when
 multiplied by shell volume.
 
 ---
 
 ## 4. Derivation and Convergence Analysis
 
-Setting ΔQVD_n = 10-6 (baseline), the perturbation product for all n converges to:
+Setting $\Delta$QVD_n = 10-6 (baseline), the perturbation product for all n converges to:
 
 $$\prod_{i=1}^{7} (1 + 10^{-6} \cdot i/7) \approx 1 + 4 \times 10^{-6}$$
 
@@ -100,16 +100,16 @@ Thus $E_{pre} \approx 3.14159 \times 10^0 \times (1 + 4\times10^{-6}) \times 2.5
 $\approx 7.854 \times 10^{-30}$ kg/m3
 
 This places E_pre comfortably above the UQFF anti-collapse threshold (2.5e-30 kg/m3) by a factor of
-π, consistent with an egg that has not yet collapsed but has not yet hatched.
+$\pi$, consistent with an egg that has not yet collapsed but has not yet hatched.
 
 ---
 
 ## 5. Physical Interpretation
 
-The factor π in E_pre is not coincidental: the transcendental nature of π guarantees that:
-1. No two modes have identical weights → each vacuum channel is uniquely occupied
-2. The series never terminates → the egg maintains perpetual pre-fertilization vacuum fluctuations
-3. The product converges → E_pre is finite and bounded
+The factor $\pi$ in E_pre is not coincidental: the transcendental nature of $\pi$ guarantees that:
+1. No two modes have identical weights $\to$ each vacuum channel is uniquely occupied
+2. The series never terminates $\to$ the egg maintains perpetual pre-fertilization vacuum fluctuations
+3. The product converges $\to$ E_pre is finite and bounded
 
 The 7 perturbation functions trace back to the 7 fundamental flavors coupling in the 26D
 Proto-Hydrogen model (see PAPER_604). Each digs into a different vacuum sector of the cosmic egg,
@@ -119,7 +119,7 @@ contributing a small positive modulation to the weight.
 
 ## 6. Connection to UQFF Number Systems
 
-**VDS (Vacuum Density Series)**: E_pre IS the VDS applied to cosmic eggs. The π-digit weighting is
+**VDS (Vacuum Density Series)**: E_pre IS the VDS applied to cosmic eggs. The $\pi$-digit weighting is
 the canonical VDS expansion over egg vacuum modes.
 
 **DVP (Dipole Vortex Primes)**: The 7 perturbation channels correspond to DVP prime-indexed vacuum
@@ -136,21 +136,21 @@ bin (n=1), far below the US_orb = 1.8e31 Hz threshold for formation.
 |-----------|-------|
 | E_pre (26 terms) | ~7.854e-30 kg/m3 |
 | Anti-collapse bound | 2.5e-30 kg/m3 |
-| E_pre / bound | ~3.14 (= π) |
-| Series convergence (term 26) | d₂₆(π)/1026 ≈ 3×10-26 → negligible |
-| ΔQVD_n baseline | 10-6 (dimensionless) |
+| E_pre / bound | ~3.14 (= $\pi$) |
+| Series convergence (term 26) | d26($\pi$)/1026 $\approx$ 3$\times$10-26 $\to$ negligible |
+| $\Delta$QVD_n baseline | 10-6 (dimensionless) |
 
 ---
 
 ## 8. Conclusions
 
 The Pre-Fertilization Energy E_pre demonstrates that cosmic eggs in their quiescent state carry
-energy precisely π times the anti-collapse threshold. The VDS π-digit weighting provides
+energy precisely $\pi$ times the anti-collapse threshold. The VDS $\pi$-digit weighting provides
 mathematical uniqueness (non-repeating modes) and physical convergence (finite bounded energy). This
 represents a novel, self-consistent energy quantization mechanism not found in standard cosmological
 models.
 
-**Keywords**: Cosmic egg, Vacuum Density Series, VDS, π-digits, ΔQVD, pre-fertilization, UQFF,
+**Keywords**: Cosmic egg, Vacuum Density Series, VDS, $\pi$-digits, $\Delta$QVD, pre-fertilization, UQFF,
 anti-collapse
 
 ---
@@ -191,7 +191,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -292,7 +292,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.062 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -303,13 +303,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

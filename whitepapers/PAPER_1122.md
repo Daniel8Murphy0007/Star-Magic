@@ -39,7 +39,7 @@ Endothermic barriers determine which molecules form:
 
 | Molecule | $T_{\text{crit}}$ (K) | Mechanism |
 |----------|----------------------|-----------|
-| OH | 2000 | Gas-phase: O + H$_2$ → OH + H |
+| OH | 2000 | Gas-phase: O + H$_2$ $\to$ OH + H |
 | H$_2$O | 1500 | Grain surface catalysis |
 | SiO | 3500 | Grain core sputtering |
 
@@ -62,7 +62,7 @@ The bow-shock C(t) enrichment pathway supports [SCm]-[UA] prebiotic chemistry at
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

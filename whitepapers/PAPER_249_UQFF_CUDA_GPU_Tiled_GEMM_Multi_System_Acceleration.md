@@ -31,22 +31,22 @@ $$
 ## Abstract
 
 The UQFF 26-layer gravity computation and the F_U_Bi_i batch integral (PAPER_248) represent a
-massively parallel workload: N systems × 26 layers × 4 sub-terms per layer = 104N independent
+massively parallel workload: N systems $\times$ 26 layers $\times$ 4 sub-terms per layer = 104N independent
 floating-point evaluations per batch step. This paper establishes the GPU acceleration pattern for
 UQFF using CUDA, with three complementary optimisation strategies: (1) tiled shared-memory General
-Matrix Multiplication (GEMM) to reduce global memory traffic by 32×, (2) CUDA Graph capture to
+Matrix Multiplication (GEMM) to reduce global memory traffic by 32$\times$, (2) CUDA Graph capture to
 reduce kernel launch overhead by 80%, and (3) NCCL multi-GPU all-reduce for distributed ensemble
 computation across multiple A100/H100 GPUs.
 
 The canonical hardware target is the NVIDIA H100 SXM: 132 streaming multiprocessors, 989 TFLOPS
 FP32, 3.35 TB/s HBM3 bandwidth. The roofline performance boundary for UQFF is compute-bound when
-FLOP-to-byte ratio exceeds 20:1 — achievable with = 32×32 tile sizes. For the canonical benchmark
-(26 layers × 500 systems × 10,000 timesteps = 1.3 × 108 operations), H100 achieves completion in O(1
+FLOP-to-byte ratio exceeds 20:1 — achievable with = 32$\times$32 tile sizes. For the canonical benchmark
+(26 layers $\times$ 500 systems $\times$ 10,000 timesteps = 1.3 $\times$ 108 operations), H100 achieves completion in O(1
 ms) vs O(1 s) for single-threaded CPU.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -56,14 +56,14 @@ present in Standard Model treatments.
 
 | Parameter | Value | Units | Notes |
 |-----------|-------|-------|-------|
-| CUDA tile size | 32 × 32 | elements | GEMM shared-memory tile |
-| Global read reduction | 32× | — | Per tile dimension (v1024) |
+| CUDA tile size | 32 $\times$ 32 | elements | GEMM shared-memory tile |
+| Global read reduction | 32$\times$ | — | Per tile dimension (v1024) |
 | CUDA Graph overhead | 80% | reduction | vs uncaptured kernel launches |
 | H100 SMs | 132 | — | Streaming multiprocessors |
-| H100 FP32 FLOPS | 989 × 1012 | FLOPS | Peak compute |
+| H100 FP32 FLOPS | 989 $\times$ 1012 | FLOPS | Peak compute |
 | H100 HBM3 bandwidth | 3.35 | TB/s | Global memory bandwidth |
 | Machine balance | ~ 20 | FLOP/byte | Roofline threshold |
-| MUGE benchmark | 26 × 500 × 10,000 | ops | = 1.3 × 108 sub-term evaluations |
+| MUGE benchmark | 26 $\times$ 500 $\times$ 10,000 | ops | = 1.3 $\times$ 108 sub-term evaluations |
 
 ---
 
@@ -72,7 +72,7 @@ present in Standard Model treatments.
 ### 2.1 Tiled Shared-Memory GEMM
 
 Standard GEMM on GPU loads matrix elements from global memory for every multiply-accumulate. Tiled
-GEMM loads 32×32 sub-tiles into shared memory (`sA[32][32]`, `sB[32][32]`), amortising global memory
+GEMM loads 32$\times$32 sub-tiles into shared memory (`sA[32][32]`, `sB[32][32]`), amortising global memory
 traffic across all threads in the tile:
 
 ```cuda
@@ -95,10 +95,10 @@ __global__ void uqff_tiledGEMM(float *A, float *B, float *C, int N) {
 
 **Global read reduction:** Each element is loaded once per tile into shared memory and reused by all
 32 threads in the row/column. This reduces global memory reads from O(N3) to O(N3/32) per matrix — a
-32× bandwidth saving.
+32$\times$ bandwidth saving.
 
 **Coalesced access:** `A[by*32+ty][k*32+tx]` — each warp (32 threads with consecutive tx values)
-loads a contiguous 32×4 byte region of A, satisfying the coalescing requirement for HBM3 bandwidth.
+loads a contiguous 32$\times$4 byte region of A, satisfying the coalescing requirement for HBM3 bandwidth.
 
 ### 2.2 UQFF Application of Tiled GEMM
 
@@ -140,7 +140,7 @@ ncclAllReduce(send_buf, recv_buf, count, ncclFloat, ncclSum, comm, stream);
 ```
 
 Each GPU computes g_total for its shard of systems; NCCL sums across GPUs and broadcasts the result.
-For 8× H100 in NVSwitch fabric: 8× linear scaling achievable for N » 10,000.
+For 8$\times$ H100 in NVSwitch fabric: 8$\times$ linear scaling achievable for N » 10,000.
 
 ---
 
@@ -179,7 +179,7 @@ $$
 Speedup ˜ 26 (layers) × 32 (GEMM tile) × 500/132 (occupancy adjustment) ˜ 3,150×
 ```
 Accounting for memory latency, launch overhead, and CUDA occupancy limits, practical speedup on H100
-is ~1,000–2,000× — consistent with observed UQFF GPU benchmark results.
+is ~1,000–2,000$\times$ — consistent with observed UQFF GPU benchmark results.
 
 ---
 
@@ -187,7 +187,7 @@ is ~1,000–2,000× — consistent with observed UQFF GPU benchmark results.
 
 GPU-accelerated UQFF batch computation enables:
 - **Real-time parameter scanning:** 10,000-point sweeps (?0, B0, M, r) completed in seconds, enabling immediate Grok/GUI feedback in source2.cpp Tab 9.
-- **Monte Carlo uncertainty propagation:** 105 parameter draws for observational uncertainty budgets (e.g., Chandra L_X ±30%) computed in < 1 min on A100.
+- **Monte Carlo uncertainty propagation:** 105 parameter draws for observational uncertainty budgets (e.g., Chandra L_X $\pm$30%) computed in < 1 min on A100.
 - **Multi-system equivalence class mapping:** Full 5-system Chandra dataset (PAPER_250–254) run simultaneously to confirm force equivalence class within a single batch call.
 
 ---
@@ -215,7 +215,7 @@ document.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -318,7 +318,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.128 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -329,13 +329,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

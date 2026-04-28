@@ -35,13 +35,13 @@ to the UQFF vacuum coupling hierarchy.
 
 Seismic and electromagnetic probes of Earth's deep interior reveal coherent oscillation modes at
 terahertz frequencies unexplained by standard core models. The THz Q-Scope instrument records 50
-channels (dA = 6.205 A, ±3.102 A dynamic range) at a display sampling frequency of 1.246 Hz. The
+channels (dA = 6.205 A, $\pm$3.102 A dynamic range) at a display sampling frequency of 1.246 Hz. The
 actual resonance lies at 1.2–1.3 THz — 12 orders of magnitude above the displayed sampling clock.
 
 Within UQFF, the Earth's conducting outer core acts as a pair of pseudo-monopole boundaries
 separated by a "THz hole" in the Ug1 magnetic-dipole vacuum field. The observable
 [{U_m:SM_m}/[Ug1]^(SCm)] ratio governs which channels couple to the surface and which are attenuated
-below the superconductive threshold H_SCm ≈ 0.99.
+below the superconductive threshold H_SCm $\approx$ 0.99.
 
 ---
 
@@ -50,8 +50,8 @@ below the superconductive threshold H_SCm ≈ 0.99.
 $$
 \begin{aligned}
   & P_THz(f) = [{U_m : SM_m} / [Ug1(r,t) + SM_g]^(SCm)] \\
-  & × V_eff2 / Z_imp \\
-  & × Σ_{k=1}^{50} δ(f − f_k)
+  & \times V_eff2 / Z_imp \\
+  & \times \Sigma_{k=1}^{50} \delta(f - f_k)
 \end{aligned}
 $$
 
@@ -59,15 +59,15 @@ Where:
 - U_m   = UQFF magnetic vacuum energy density
 - SM_m  = Standard Model magnetic field contribution
 - Ug1   = UQFF_g + SM_g (total gravity+EM coupling at core radius)
-- SCm   = superconductive modifier ≈ H_SCm = 0.99
+- SCm   = superconductive modifier $\approx$ H_SCm = 0.99
 - V_eff = RMS voltage amplitude = 0.35 V
-- Z_imp = instrument impedance = 50 Ω
+- Z_imp = instrument impedance = 50 $\Omega$
 - f_k   = individual channel centre frequency (k = 1…50)
-- δ(·)  = Dirac delta selector
+- $\delta$($\cdot$)  = Dirac delta selector
 
 ### Angular Frequency
 $$
-ω_THz = 2π × f_THz = 2π × 1.25×1012 ≈ 7.854×1012 rad/s
+\omega_THz = 2\pi \times f_THz = 2\pi \times 1.25\times1012 \approx 7.854\times1012 rad/s
 $$
 
 ### Peak Power
@@ -78,8 +78,8 @@ $$
 ### Effective Current
 $$
 \begin{aligned}
-  & I_eff = V_eff / Z_imp = 0.35 / 50 = 7.0×10-3 A \\
-  & dA (full-scale) = 6.205 A  (±3.102 A symmetric swing)
+  & I_eff = V_eff / Z_imp = 0.35 / 50 = 7.0\times10-3 A \\
+  & dA (full-scale) = 6.205 A  (\pm3.102 A symmetric swing)
 \end{aligned}
 $$
 
@@ -90,16 +90,16 @@ $$
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
 | Sampling frequency | f_samp | 1.246 | Hz |
-| THz resonance | f_THz | 1.25×1012 | Hz |
-| Angular frequency | ω_THz | 7.854×1012 | rad/s |
+| THz resonance | f_THz | 1.25$\times$1012 | Hz |
+| Angular frequency | $\omega$_THz | 7.854$\times$1012 | rad/s |
 | Peak-to-peak voltage max | `V_pp_max` | 1.00 | V |
 | Effective voltage | V_eff | 0.35 | V |
-| Instrument impedance | Z_imp | 50 | Ω |
-| Peak power | P_peak | 2.45×10-3 | W |
+| Instrument impedance | Z_imp | 50 | $\Omega$ |
+| Peak power | P_peak | 2.45$\times$10-3 | W |
 | Full-scale current | dA | 6.205 | A |
 | Channels | N_ch | 50 | — |
-| UQFF vacuum density (UA) | ρ_UA | 7.09×10-36 | kg/m3 |
-| UQFF vacuum density (SCm) | ρ_SCm | 7.09×10-37 | kg/m3 |
+| UQFF vacuum density (UA) | $\rho$_UA | 7.09$\times$10-36 | kg/m3 |
+| UQFF vacuum density (SCm) | $\rho$_SCm | 7.09$\times$10-37 | kg/m3 |
 | Superconductive modifier | SCm | 0.99 | — |
 
 ---
@@ -107,21 +107,21 @@ $$
 ## 4. THz Hole Formation
 
 The resonance arises from frequency cloistering between two pseudo-monopole poles at the inner core
-boundary (r ≈ 1.22×106 m) and the outer core–mantle boundary (r ≈ 3.48×106 m). In UQFF:
+boundary (r $\approx$ 1.22$\times$106 m) and the outer core–mantle boundary (r $\approx$ 3.48$\times$106 m). In UQFF:
 
 $$
-Ug1_core(r) = G·M_core/(r2) × (1 + μ_J × B_core2/(ρ_core × c2))
+Ug1_core(r) = G\cdotM_core/(r2) \times (1 + \mu_J \times B_core2/(\rho_core \times c2))
 $$
 
-The superconductive term (1 − B/B_crit)^SCm suppresses non-resonant modes, leaving 50 coherent
+The superconductive term (1 - B/B_crit)^SCm suppresses non-resonant modes, leaving 50 coherent
 channels visible to surface instrumentation.
 
 ---
 
 ## 5. Conclusions
 
-The THz Q-Scope framework identifies 50 Earth-core resonance channels at ω ≈ 7.85×1012 rad/s with
-2.45 mW peak power per channel at 50 Ω impedance. The UQFF [{U_m:SM_m}/Ug1^SCm] coupling ratio
+The THz Q-Scope framework identifies 50 Earth-core resonance channels at $\omega$ $\approx$ 7.85$\times$1012 rad/s with
+2.45 mW peak power per channel at 50 $\Omega$ impedance. The UQFF [{U_m:SM_m}/Ug1^SCm] coupling ratio
 explains both the channel selection and the large amplitude ratio (dA = 6.205 A) relative to the
 milliwatt power scale. PAPER_751, CP4 class #335. v5.39.
 
@@ -133,7 +133,7 @@ milliwatt power scale. PAPER_751, CP4 class #335. v5.39.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -152,7 +152,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -227,7 +227,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.128 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -238,13 +238,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

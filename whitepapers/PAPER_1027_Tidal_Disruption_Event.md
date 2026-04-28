@@ -48,7 +48,7 @@ CondensedPhysics.py, class TidalDisruptionEventCalculator. 8 equations, 4 simula
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 
@@ -85,7 +85,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -201,7 +201,7 @@ curves.
 $$\mathcal{L}_{\text{TDE}} = \frac{1}{2}\rho v^2 - \frac{GM\rho}{r} + \rho_{\text{SCm}} V g \beta_i S_{26}$$
 
 ### A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{d^2 r}{dt^2} = -μ_s∇(M_s/r) + g_{\text{buoy}}(r,t)}$$
+$$\boxed{\frac{d^2 r}{dt^2} = -\mu_s\nabla(M_s/r) + g_{\text{buoy}}(r,t)}$$
 
 ### A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms -> SCm vacuum -> phonon $\omega_{\text{SCm}}$ -> SMBH tidal field -> stellar disruption -> fallback -> buoyancy damping -> $F_{U,Bi\_i}$ unified force -> observational prediction

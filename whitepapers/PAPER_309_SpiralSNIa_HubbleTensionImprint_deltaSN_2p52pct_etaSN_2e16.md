@@ -13,8 +13,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_309  SN Ia Hubble Tension Gravitational Imprint
 **Author:** Daniel T. Murphy
 **Date:** 2025
-<!— UQFF calibration: κ = 5.0e-4 day-1, [SSq] = 0.57, κ_i = 6.1e-1 —>
-## ?SN/SN = 2.52% at z = 0.5 | ?_SN = 2.0 × 10-6 | d_H0 = 8.31%
+<!— UQFF calibration: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $\kappa$_i = 6.1e-1 —>
+## ?SN/SN = 2.52% at z = 0.5 | ?_SN = 2.0 $\times$ 10-6 | d_H0 = 8.31%
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  
 **Module:** SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp  
@@ -32,7 +32,7 @@ Within the UQFF 2.0 spiral galaxy pipeline, SN Ia radiation pressure provides an
 a_SN = L_SN/(4prc?_ISM)  (1 + H(z)t) that carries this tension directly into the gravitational
 field. The UQFF SN Ia imprint metric ?SN/SN = 2.52% at z = 0.5 and t = 5 Gyr quantifies the
 fractional field difference between SH0ES and Planck cosmologies. The dimensionless SN Ia dominance
-ratio ?_SN = a_SN/g_base = 2.0 × 10-6 shows that, locally, SN Ia radiation pressure exceeds galactic
+ratio ?_SN = a_SN/g_base = 2.0 $\times$ 10-6 shows that, locally, SN Ia radiation pressure exceeds galactic
 gravity by 16 orders of magnitude.
 
 ---
@@ -41,9 +41,9 @@ gravity by 16 orders of magnitude.
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| L_SN (peak bolometric) | 1.0 × 10-6 W | SN Ia peak luminosity |
-| r | 9.258 × 10 m | ~30 kpc half-radius |
-| ?_ISM | 1.0 × 10? kg/m | Galactic ISM density |
+| L_SN (peak bolometric) | 1.0 $\times$ 10-6 W | SN Ia peak luminosity |
+| r | 9.258 $\times$ 10 m | ~30 kpc half-radius |
+| ?_ISM | 1.0 $\times$ 10? kg/m | Galactic ISM density |
 | z | 0.5 | Typical SN Ia cosmological redshift |
 | H0_SH0ES | 73.0 km/s/Mpc | Riess et al. 2022 |
 | H0_Planck | 67.4 km/s/Mpc | Planck 2018 6-parameter ?CDM |
@@ -91,12 +91,12 @@ $$H(z=0.5) = H_0 \sqrt{\Omega_m(1+z)^3 + \Omega_Lambda} = H_0 \sqrt{0.3\times(1.
 
 $$\sqrt{0.3\times3.375 + 0.7} = \sqrt{1.0125 + 0.7} = \sqrt{1.7125} \approx 1.3086$$
 
-- H(z=0.5)_SH0ES = 73.0 × 1.3086 = **95.53 km/s/Mpc** = **3.097 × 10?8 s-1**
-- H(z=0.5)_Planck = 67.4 × 1.3086 = **88.20 km/s/Mpc** = **2.859 × 10?8 s-1**
+- H(z=0.5)_SH0ES = 73.0 $\times$ 1.3086 = **95.53 km/s/Mpc** = **3.097 $\times$ 10?8 s-1**
+- H(z=0.5)_Planck = 67.4 $\times$ 1.3086 = **88.20 km/s/Mpc** = **2.859 $\times$ 10?8 s-1**
 
 ### 3.4 Hubble Tension Gravitational Imprint
 
-At t = 5 Gyr (= 1.578 × 10-7 s  mid-cosmic-history evaluation):
+At t = 5 Gyr (= 1.578 $\times$ 10-7 s  mid-cosmic-history evaluation):
 
 $$\text{factor}_{\rm SH0ES} = 1 + H_{\rm SH0ES}(z=0.5)\times t = 1 + 3.097\times10^{-18}\times1.578\times10^{17} = \boxed{1.4887}$$
 
@@ -120,7 +120,7 @@ This 2.52% fractional shift is:
 - **Observable in principle** through galactic rotation velocity dispersion in post-SN spiral arm regions
 - **A novel UQFF diagnostic**: a_SN(z, t) serves as a H0-sensitive field probe independent of light-curve photometry
 
-The ?_SN = 2.0 × 10-6 result confirms SN Ia radiation is not a perturbative add-on but a dominant
+The ?_SN = 2.0 $\times$ 10-6 result confirms SN Ia radiation is not a perturbative add-on but a dominant
 local physics driver in the UQFF 9-term pipeline.
 
 ---
@@ -129,13 +129,13 @@ local physics driver in the UQFF 9-term pipeline.
 
 | Quantity | Value | Physical Meaning |
 |---------|-------|-----------------|
-| flux_SN | 3.096 × 10?6 Pa | SN Ia radiation pressure at 30 kpc |
-| a_SN | **3.096 × 105 m/s** | ISM-coupled SN Ia acceleration |
-| ?_SN | **2.0 × 10-6** | SN rad >> galactic gravity by 16 orders |
+| flux_SN | 3.096 $\times$ 10?6 Pa | SN Ia radiation pressure at 30 kpc |
+| a_SN | **3.096 $\times$ 105 m/s** | ISM-coupled SN Ia acceleration |
+| ?_SN | **2.0 $\times$ 10-6** | SN rad >> galactic gravity by 16 orders |
 | d_H0 | **8.31%** | SH0ES vs Planck (73.0 vs 67.4) |
 | ?SN/SN | **2.52%** | H0-tension imprint at z=0.5, 5 Gyr |
-| H(z=0.5)_SH0ES | 3.097 × 10?8 s-1 | SH0ES Hubble rate at z=0.5 |
-| H(z=0.5)_Planck | 2.859 × 10?8 s-1 | Planck Hubble rate at z=0.5 |
+| H(z=0.5)_SH0ES | 3.097 $\times$ 10?8 s-1 | SH0ES Hubble rate at z=0.5 |
+| H(z=0.5)_Planck | 2.859 $\times$ 10?8 s-1 | Planck Hubble rate at z=0.5 |
 
 ---
 
@@ -144,7 +144,7 @@ local physics driver in the UQFF 9-term pipeline.
 - **FIRST** UQFF SN Ia Hubble tension gravitational imprint derivation
 - **FIRST** UQFF a_SN = flux/?_ISM formulation as 9th pipeline term
 - **FIRST** UQFF H0-discriminating field observable (?SN/SN = 2.52%)
-- **FIRST** UQFF ?_SN = 2.0 × 10-6 SN Ia dominance ratio
+- **FIRST** UQFF ?_SN = 2.0 $\times$ 10-6 SN Ia dominance ratio
 
 ---
 
@@ -157,8 +157,8 @@ future observations.
 
 ## 7. References
 
-- Riess et al. 2022, ApJL 934 L7  H0 = 73.04 × 1.04 km/s/Mpc (SH0ES)
-- Planck Collaboration 2020, A&A 641 A6  H0 = 67.4 × 0.5 km/s/Mpc
+- Riess et al. 2022, ApJL 934 L7  H0 = 73.04 $\times$ 1.04 km/s/Mpc (SH0ES)
+- Planck Collaboration 2020, A&A 641 A6  H0 = 67.4 $\times$ 0.5 km/s/Mpc
 - Perlmutter et al. 1999, ApJ 517 (SN Ia cosmological standard candle foundation)
 - UQFF 2.0 Architecture – ARCHITECTURE_FLOW_DIAGRAM.md v4.4.0 CANONICAL
 - Session 88  SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp WOLFRAM_TERM: SPIRAL_SN_TENSION
@@ -171,7 +171,7 @@ future observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -190,7 +190,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -292,7 +292,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -303,13 +303,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

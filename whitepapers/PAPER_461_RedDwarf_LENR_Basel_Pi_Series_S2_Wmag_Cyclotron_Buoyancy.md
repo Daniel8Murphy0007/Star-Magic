@@ -10,18 +10,18 @@ tags: [AGN, Riemann, buoyancy, LENR, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_461 — Red Dwarf LENR: Basel π-Series S(2)=π2/6 + W_mag Cyclotron + Buoyancy Series
+# PAPER_461 — Red Dwarf LENR: Basel $\pi$-Series S(2)=$\pi$2/6 + W_mag Cyclotron + Buoyancy Series
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 43.c — RedDwarfLENRPiSeriesHiggs)  
-**Classification:** FIRST Basel problem S(2)=π2/6 applied in UQFF; FIRST W_mag cyclotron energy
-formula in UQFF; FIRST convergent buoyancy series Σ 1/3^{(π+1)^n}  
+**Classification:** FIRST Basel problem S(2)=$\pi$2/6 applied in UQFF; FIRST W_mag cyclotron energy
+formula in UQFF; FIRST convergent buoyancy series $\Sigma$ 1/3^{($\pi$+1)^n}  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `RedDwarfLENRPiSeriesHiggsCalculator` (#99, PAPER_461)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, k_η = 2.75×108 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, k_$\eta$ = 2.75$\times$108 —>
 ---
 
 ## Abstract
@@ -59,11 +59,11 @@ well-defined mathematical correction factor with known convergence properties.
 
 | s | S(s) | Physical meaning |
 |---|------|-----------------|
-| 1 | ∞ (harmonic, divergent) | Unbounded energy states |
-| 2 | π2/6 ≈ 1.6449 | Proton degeneracy correction |
-| 3 | ζ(3) ≈ 1.2021 (Apéry) | Cubic density of states |
-| 4 | π4/90 ≈ 1.0823 | Stefan-Boltzmann radiation |
-| ∞ | 1 | Single ground state |
+| 1 | $\infty$ (harmonic, divergent) | Unbounded energy states |
+| 2 | $\pi$2/6 $\approx$ 1.6449 | Proton degeneracy correction |
+| 3 | $\zeta$(3) $\approx$ 1.2021 (Apéry) | Cubic density of states |
+| 4 | $\pi$4/90 $\approx$ 1.0823 | Stefan-Boltzmann radiation |
+| $\infty$ | 1 | Single ground state |
 
 ---
 
@@ -91,13 +91,13 @@ Term 3: $\approx 1.42\times10^{-34}$
 
 $$\mathcal{B}_{\rm UQFF} \approx 0.010571 + 1.42\times10^{-34} + \ldots \approx 0.01057$$
 
-**Note:** The value stated in the source as ≈ −0.8887 uses signed terms or a different series
-convention; the unsigned convergent sum ≈ 0.010571. The negative value arises from alternate-sign
-convention (−1)^n:
+**Note:** The value stated in the source as $\approx$ -0.8887 uses signed terms or a different series
+convention; the unsigned convergent sum $\approx$ 0.010571. The negative value arises from alternate-sign
+convention (-1)^n:
 
 $$\mathcal{B}_{\rm UQFF}^{\rm alt} = \sum_{n=1,3,5...} \frac{(-1)^{(n-1)/2}}{3^{(\pi+1)^n}} \approx -0.010571 + \ldots \approx -0.0106$$
 
-The larger negative value −0.8887 is quoted in the source as the limiting partial sum for a
+The larger negative value -0.8887 is quoted in the source as the limiting partial sum for a
 different buoyancy convergence test — the exact series definition is captured here for reference.
 
 ### 3.3 Physical Meaning in Red Dwarf LENR
@@ -105,7 +105,7 @@ different buoyancy convergence test — the exact series definition is captured 
 The buoyancy series represents the **probability amplitude** of LENR catalysts diffusing outward
 from the stellar core. Each term represents a successive diffusion step — the rapid convergence of
 the series means that LENR catalysts are confined within the first diffusion layer with probability
-~1 − 0.0106 = 98.9%.
+~1 - 0.0106 = 98.9%.
 
 ---
 
@@ -142,15 +142,15 @@ $$= (1.008665 - 1.007276 - 0.000549)\ \text{u} \times 931.494\ \text{MeV/u}$$
 
 $$= (0.000840\ \text{u}) \times 931.494\ \text{MeV/u} = 0.783\ \text{MeV} \approx 0.78\ \text{MeV}$$
 
-This is the **neutron decay Q-value** — the energy available from neutron → proton + electron +
+This is the **neutron decay Q-value** — the energy available from neutron $\to$ proton + electron +
 antineutrino (or equivalently, the energy cost for LENR to capture a proton and produce a neutron in
 a UQFF vacuum field).
 
-### 5.2 k_η Viscosity Coupling
+### 5.2 k_$\eta$ Viscosity Coupling
 
 $$k_\eta = 2.75\times10^8$$
 
-Units: [kg/(m·s)] — dynamic viscosity scaling constant. In UQFF, $k_\eta$ multiplies the fluid viscosity term:
+Units: [kg/(m$\cdot$s)] — dynamic viscosity scaling constant. In UQFF, $k_\eta$ multiplies the fluid viscosity term:
 
 $$g_{\rm fluid}^{\rm LENR} = k_\eta \nu_{\rm eff} \nabla^2 v = 2.75\times10^8 \times \nu_{\rm eff} \nabla^2 v$$
 
@@ -165,19 +165,19 @@ $$g_{\rm fluid}^{\rm LENR} \approx 2.75\times10^8 \times 10^{-6} \times 10^{-10}
 | Feature | SM | UQFF PAPER_461 |
 |---------|-----|----------------|
 | LENR Q-value | Standard nuclear physics: 0.78 MeV | Same (confirmed by UQFF) |
-| Energy correction factor | Fermi-Dirac statistics | Basel S(2) = π2/6 |
-| Cyclotron energy | E = ħω_c = eħB/m | W_mag = 15×109 B_kG R_km (v/c) eV |
-| Buoyancy series | Not defined | Σ1/3^{(π+1)^n} ≈ 0.0106 |
+| Energy correction factor | Fermi-Dirac statistics | Basel S(2) = $\pi$2/6 |
+| Cyclotron energy | E = ħ$\omega$_c = eħB/m | W_mag = 15$\times$109 B_kG R_km (v/c) eV |
+| Buoyancy series | Not defined | $\Sigma$1/3^{($\pi$+1)^n} $\approx$ 0.0106 |
 
 ---
 
 ## 7. Testable Predictions
 
-1. **Basel factor validation:** The S(2) = π2/6 correction to LENR ground-state energy gives E_LENR
-= 44.3 MeV vs bare 26.9 MeV. If LENR heat excess is measured, the ratio 44.3/26.9 ≈ 1.645 should
+1. **Basel factor validation:** The S(2) = $\pi$2/6 correction to LENR ground-state energy gives E_LENR
+= 44.3 MeV vs bare 26.9 MeV. If LENR heat excess is measured, the ratio 44.3/26.9 $\approx$ 1.645 should
 appear in power density measurements.
 2. **W_mag scaling:** $W_{\rm mag} \propto B R (v/c)$ — doubling B doubles W_mag linearly. Testable in tokamak plasma experiments by varying toroidal field.
-3. **k_η = 2.75×108 universality:** This constant should appear in all UQFF fluid LENR calculations. Dimensional analysis: $k_\eta$ has units [Pa·m-1s] = [kg m-2 s-1]. Derivable from $k_\eta = \rho_{\rm vac,[UA]}/(\mu_{\rm fluid})$ for known vacuum density.
+3. **k_$\eta$ = 2.75$\times$108 universality:** This constant should appear in all UQFF fluid LENR calculations. Dimensional analysis: $k_\eta$ has units [Pa$\cdot$m-1s] = [kg m-2 s-1]. Derivable from $k_\eta = \rho_{\rm vac,[UA]}/(\mu_{\rm fluid})$ for known vacuum density.
 
 ---
 
@@ -189,7 +189,7 @@ appear in power density measurements.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -208,7 +208,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -231,7 +231,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -318,7 +318,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -329,10 +329,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

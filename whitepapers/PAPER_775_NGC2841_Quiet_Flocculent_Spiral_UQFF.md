@@ -22,12 +22,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 2841 (~46 Mly, z ≈ 0.0031) is an archetypal flocculent spiral galaxy — one with patchy,
+NGC 2841 (~46 Mly, z $\approx$ 0.0031) is an archetypal flocculent spiral galaxy — one with patchy,
 discontinuous spiral arms driven by density waves rather than self-sustaining two-armed patterns.
 Hubble's imagery reveals dust lanes, blue star clusters, and HII regions scattered throughout its
 ~80 kly disk. With a stellar mass of ~1011 MM_sun and a modest SFR (~0.5 MM_sun/yr), NGC 2841 represents the
 quiescent spiral class. Under UQFF, the standard Aether electromagnetic correction (v = 105 m/s, B =
-10-5 T) yields g_NGC2841 ≈ 1.053×10-3 m/s2, establishing NGC 2841 as the UQFF benchmark for quiet
+10-5 T) yields g_NGC2841 $\approx$ 1.053$\times$10-3 m/s2, establishing NGC 2841 as the UQFF benchmark for quiet
 massive spirals.
 
 ---
@@ -48,7 +48,7 @@ the canonical quiet spiral result.
 
 $$
 \begin{aligned}
-  & g_NGC2841(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) \\
+  & g_NGC2841(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -57,10 +57,10 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Hubble |
-| Galaxy radius | r | 5×1020 m (~52.8 kly) | Hubble |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Hubble |
+| Galaxy radius | r | 5$\times$1020 m (~52.8 kly) | Hubble |
 | SFR | SFR | 0.5 MM_sun/yr | Labs |
-| Age | t | 3×109 yr = 9.468×1016 s | Spiral age |
+| Age | t | 3$\times$109 yr = 9.468$\times$1016 s | Spiral age |
 | M_sf | — | 0.015 | UQFF bound |
 | Redshift | z | 0.0031 | NED |
 | v_EM | v | 105 m/s | Galactic ionized gas |
@@ -74,7 +74,7 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e41) / (5e20)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e41) / (5e20)2 \\
   & = 1.327e31 / 2.5e41 = 5.310e-11 m/s2
 \end{aligned}
 $$
@@ -82,8 +82,8 @@ $$
 ### Step 2: Star-Formation Mass Fraction
 $$
 \begin{aligned}
-  & M_sf = SFR × t / M₀ = 0.5 × 3e9 / 1e11 = 1.5e10/1e11 = 0.015 \\
-  & Wait: SFR in M_sun/yr × t in yr = 0.5 × 3e9 = 1.5e9 M_sun \\
+  & M_sf = SFR \times t / M0 = 0.5 \times 3e9 / 1e11 = 1.5e10/1e11 = 0.015 \\
+  & Wait: SFR in M_sun/yr \times t in yr = 0.5 \times 3e9 = 1.5e9 M_sun \\
   & M_sf = 1.5e9 / 1e11 = 0.015; 1 + M_sf = 1.015
 \end{aligned}
 $$
@@ -91,9 +91,9 @@ $$
 ### Step 3: Cosmic Expansion Factor
 $$
 \begin{aligned}
-  & H(z) = 2.268e-18 × √(0.3×(1.0031)3 + 0.7) = 2.270e-18 s-1 \\
-  & H(z) × t = 2.270e-18 × 9.468e16 = 2.149e-1 \\
-  & 1 + H(z) × t = 1.2149
+  & H(z) = 2.268e-18 \times \sqrt{}(0.3\times(1.0031)3 + 0.7) = 2.270e-18 s-1 \\
+  & H(z) \times t = 2.270e-18 \times 9.468e16 = 2.149e-1 \\
+  & 1 + H(z) \times t = 1.2149
 \end{aligned}
 $$
 
@@ -102,9 +102,9 @@ $$
 \begin{aligned}
   & v = 105 m/s (quiet spiral rotation velocity / ionized gas) \\
   & B = 10-5 T \\
-  & q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e5 \times 1e-5 = 1.602e-19 N \\
   & a = 1.602e-19 / m_p = 9.575e7 m/s2 \\
-  & a_EM = 9.575e7 × 11 × 1e-12 = 1.053e-3 m/s2
+  & a_EM = 9.575e7 \times 11 \times 1e-12 = 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -116,12 +116,12 @@ $$
 ### Step 6: Final Solution
 $$
 \begin{aligned}
-  & g_NGC2841 = (5.310e-11) × (1.2149) × (1.015) × (1.1) + 1.053e-3 \\
-  & = 5.310e-11 × 1.2149 = 6.451e-11 \\
-  & × 1.015 = 6.547e-11 \\
-  & × 1.1 = 7.202e-11 \\
+  & g_NGC2841 = (5.310e-11) \times (1.2149) \times (1.015) \times (1.1) + 1.053e-3 \\
+  & = 5.310e-11 \times 1.2149 = 6.451e-11 \\
+  & \times 1.015 = 6.547e-11 \\
+  & \times 1.1 = 7.202e-11 \\
   & = 7.202e-11 + 1.053e-3 \\
-  & ≈ 1.053e-3 m/s2
+  & \approx 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -129,10 +129,10 @@ $$
 
 ## 4. Physical Interpretation
 
-NGC 2841 yields the UQFF canonical quiet spiral result of 1.053×10-3 m/s2. The modest SFR (M_sf =
-0.015) and low cosmic expansion factor (∼21% Hubble correction over 3 Gyr) together contribute a
+NGC 2841 yields the UQFF canonical quiet spiral result of 1.053$\times$10-3 m/s2. The modest SFR (M_sf =
+0.015) and low cosmic expansion factor ($\sim$21% Hubble correction over 3 Gyr) together contribute a
 ~23% gravitational enhancement from the baseline, still dwarfed by the Aether EM correction
-(~1.05×10-3 vs. 7.2×10-11). The flocculent structure of NGC 2841 is physically consistent with the
+(~1.05$\times$10-3 vs. 7.2$\times$10-11). The flocculent structure of NGC 2841 is physically consistent with the
 standard ionized-gas velocity (100 km/s), confirming that organized starburst activity is needed to
 elevate B fields to the 10-4 T starburst class.
 
@@ -141,14 +141,14 @@ elevate B fields to the 10-4 T starburst class.
 ## 5. UQFF Framework Advancement
 
 - NGC 2841 established as the canonical flocculent spiral UQFF reference
-- Confirms standard quiet spiral result = 1.053×10-3 m/s2 (v=105, B=10-5)
+- Confirms standard quiet spiral result = 1.053$\times$10-3 m/s2 (v=105, B=10-5)
 - Hubble expansion term (1.2149) demonstrates 3 Gyr evolution measurable in UQFF
 
 ---
 
 ## 6. Conclusions
 
-UQFF applied to NGC 2841 yields g_NGC2841 ≈ 1.053×10-3 m/s2, consistent with the standard quiet
+UQFF applied to NGC 2841 yields g_NGC2841 $\approx$ 1.053$\times$10-3 m/s2, consistent with the standard quiet
 spiral class. The quiet nature of NGC 2841 is well-captured by UQFF's standard parameters (v=105
 m/s, B=10-5 T), with no starburst enhancement required. NGC 2841 joins M42, M16, and NGC 2264 as
 UQFF's foundational quiet class references.
@@ -163,7 +163,7 @@ UQFF's foundational quiet class references.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -182,7 +182,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -290,7 +290,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.071 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -301,13 +301,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

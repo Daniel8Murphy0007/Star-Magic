@@ -21,8 +21,8 @@ Mizuno LENR experiments (Pd–D and Ni–H gas-loading) report anomalous excess 
 | $\Phi_{\text{res}}$ | $0.84$ | Resonance coupling |
 | $\beta_i$ | $0.6$ | Buoyancy coefficient |
 | $\kappa$ | $5 \times 10^{-4}\ \text{day}^{-1}$ | SCm decay rate |
-| $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}$ J/m³ | SCm vacuum density |
-| $\rho_{\text{UA}}$ | $7.09 \times 10^{-36}$ J/m³ | UA vacuum density |
+| $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}$ J/m3 | SCm vacuum density |
+| $\rho_{\text{UA}}$ | $7.09 \times 10^{-36}$ J/m3 | UA vacuum density |
 
 ---
 
@@ -59,7 +59,7 @@ Standard electroweak theory cannot explain transmutation at low temperatures wit
 |------------|--------|-------------|----------------|
 | Holmlid | K–Fe catalyst | 630 eV KER | $\mathrm{KER}_{\text{SCm}} = \varepsilon_{\text{cluster}} = 630\ \text{eV}$ |
 | Parkhomov | Ni–H, 1100°C | 150–280 W | $N \sim 2\times10^{18}$, $f_b = 1$ |
-| Pons-Fleischmann | Pd–D | 1–50 W | $V = 10^{-6}$ m³, $f_b = 0.001$ |
+| Pons-Fleischmann | Pd–D | 1–50 W | $V = 10^{-6}$ m3, $f_b = 0.001$ |
 | Mizuno | Ni–D gas | 10–300 W | $N \sim 10^{20}$–$10^{21}$, $f_b$ scaled |
 
 All four experiments are unified under a single equation:
@@ -82,9 +82,9 @@ SCm provides a single first-principles mechanism — phonon resonance amplified 
 
 [3] A. Widom and L. Larsen, "Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces," *Eur. Phys. J. C*, vol. 46, pp. 107–111, 2006. DOI: 10.1140/epjc/s2006-02479-8
 
-[4] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(−1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
+[4] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(-1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
 
-[5] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(−1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
+[5] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(-1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
 
 [6] A.G. Parkhomov, "Research into heat generators similar to high temperature Rossi reactor," *Proc. 10th Int. Seminar on Non-Standard Energy*, Moscow, 2015.
 

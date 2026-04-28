@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Amplification, and Cross-Scale Consistency from Planck to Hubble Volume
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Grok Thread:** e3cc481989964390 (test_grok_thread validator)  
 **Validator:** `test_grok_thread_e3cc481989964390_validation.py`  22/24 PASSED  
@@ -35,7 +35,7 @@ paper presents the Monte Carlo stochastic validation of this framework, using
 `test_grok_thread_e3cc481989964390_validation.py`  a 24-test validation suite that achieves **22/24
 PASSED** (91.7%). The 2 failures are boundary assertion issues (not physics failures): F_spooky's
 floating-point equality boundary and F_thz_shock's incorrect threshold scaling. Validated physics
-includes: 26-layer summation formula, layer scale amplification factor (10), F_rel = 4.30×10 N from
+includes: 26-layer summation formula, layer scale amplification factor (10), F_rel = 4.30$\times$10 N from
 LEP 1998, Monte Carlo ensemble statistics with Gaussian noise, F_conduit magnetic coupling, LENR
 1.2§1.3 THz resonance, 300 Hz Colman-Gillespie activation, and relativistic mechanics for SN 1006,
 Sgr A*, and Vela pulsar. The framework spans 61 orders of magnitude from r = 10?5 m (Planck) to r =
@@ -43,7 +43,7 @@ Sgr A*, and Vela pulsar. The framework spans 61 orders of magnitude from r = 10?
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -76,7 +76,7 @@ $$U_{g1,i} = \frac{E_{{\rm DPM},i}}{r_i^2} \cdot \rho_{{\rm vac,UA}} \cdot f_{{\
 where:
 - E_DPM,i = Dark Photon Mass energy for layer i (J)
 - r_i = characteristic radius of layer i (m)
-- ?_vac,UA = vacuum density ([UA] manifold) = 7.09×10?6 kg/m
+- ?_vac,UA = vacuum density ([UA] manifold) = 7.09$\times$10?6 kg/m
 - f_TRZ,i = TRZ (theta-rho-zeta) resonance factor for layer i
 
 **Validator confirms: Ug1 formula ? PASS**
@@ -91,11 +91,11 @@ compressed gravity framework  each layer corresponds to a different physical sca
 
 | Layer | Scale Range | Physical Regime |
 |-------|------------|----------------|
-| 13 | 10?5×10? m | Planck ? nucleon |
+| 13 | 10?5$\times$10? m | Planck ? nucleon |
 | 47 | 10?10? m | Nuclear ? atomic |
 | 813 | 10?10?5 m | Atomic ? mesoscopic |
-| 1418 | 10?5×107 m | Mesoscopic ? planetary |
-| 1922 | 107×10? m | Planetary ? galactic |
+| 1418 | 10?5$\times$107 m | Mesoscopic ? planetary |
+| 1922 | 107$\times$10? m | Planetary ? galactic |
 | 2326 | 10?10 m | Galactic ? Hubble |
 
 **Validator confirms: Layer scale amplification = 10 ? PASS**
@@ -133,9 +133,9 @@ $$\epsilon_{\rm conv} = \frac{\sigma_{\rm ensemble}}{\bar{U}_{g1}} < 0.01 \quad 
 
 For the Perseus Cluster validation case:
 - N_samples = 1000
-- ?F_UBii? = -2.024×106 N (mean over ensemble)
+- ?F_UBii? = -2.024$\times$106 N (mean over ensemble)
 - s_ensemble / ?F_UBii? = 0.042 (4.2% spread from stochastic input)
-- 95% CI: [-2.109×106, -1.939×106] N
+- 95% CI: [-2.109$\times$106, -1.939$\times$106] N
 - Convergence achieved at N > 300 samples
 
 The 4.2% stochastic uncertainty is dominated by the r_h uncertainty (10%), consistent with the
@@ -143,7 +143,7 @@ observational uncertainty in cluster half-mass radii from X-ray profile fitting.
 
 ---
 
-## 3. F_rel = 4.30×10 N: The LEP 1998 Reference Force
+## 3. F_rel = 4.30$\times$10 N: The LEP 1998 Reference Force
 
 ### 3.1 Derivation
 
@@ -151,18 +151,18 @@ The UQFF relativistic field strength baseline F_rel is derived from the LEP 1998
 electroweak data:
 $$F_{\rm rel} = \frac{\alpha_{EM} \cdot m_Z^2 \cdot c^2}{\hbar \cdot c} = \frac{(1/128) \times (91.2 \times 10^9 \times 1.6\times10^{-19})^2}{1.055\times10^{-34} \times 3\times10^8}$$
 
-Numerator: (1/128)  (1.459×10-8) = 7.813×10?  2.128×10?6 = 1.663×10?8  
-Denominator: 3.165×10?6  
-F_rel = 1.663×10?8 / 3.165×10?6 = 5.25×107 N
+Numerator: (1/128)  (1.459$\times$10-8) = 7.813$\times$10?  2.128$\times$10?6 = 1.663$\times$10?8  
+Denominator: 3.165$\times$10?6  
+F_rel = 1.663$\times$10?8 / 3.165$\times$10?6 = 5.25$\times$107 N
 
-Wait  the UQFF uses F_rel = 4.30×10 N, which is the Planck force scale:
+Wait  the UQFF uses F_rel = 4.30$\times$10 N, which is the Planck force scale:
 $$F_{\rm Planck} = \frac{c^4}{G} = \frac{(3\times10^8)^4}{6.674\times10^{-11}} = \frac{8.1\times10^{33}}{6.674\times10^{-11}} = 1.21\times10^{44} \text{ N}$$
 
-The UQFF F_rel = 4.30×10 N = (m_Z/m_P)  F_Planck where m_Z/m_P = (91.2 GeV)/(1.22×10? GeV) =
-7.48×10?8. This connecting Z-boson mass to Planck force scale is the UQFF electroweak unification
+The UQFF F_rel = 4.30$\times$10 N = (m_Z/m_P)  F_Planck where m_Z/m_P = (91.2 GeV)/(1.22$\times$10? GeV) =
+7.48$\times$10?8. This connecting Z-boson mass to Planck force scale is the UQFF electroweak unification
 ansatz.
 
-**Validator confirms: F_rel = 4.30×10 N (LEP 1998) ? PASS**
+**Validator confirms: F_rel = 4.30$\times$10 N (LEP 1998) ? PASS**
 
 ---
 
@@ -194,7 +194,7 @@ Low Energy Nuclear Reactions (LENR) in condensed matter systems are activated at
 frequencies. The Kozima-Colman-Gillespie frequency range is:
 $$f_{\rm LENR} \in [1.2, 1.3] \text{ THz}$$
 
-This corresponds to a energy: E = hf = 6.626×10?4 × 1.25×10 = 8.28×10? J = 5.2 meV, corresponding to
+This corresponds to a energy: E = hf = 6.626$\times$10?4 $\times$ 1.25$\times$10 = 8.28$\times$10? J = 5.2 meV, corresponding to
 the D-D phonon sublattice vibration frequency in deuterium-loaded palladium lattices.
 
 **Validator confirms: LENR 1.2§1.3 THz resonance ? PASS**
@@ -235,10 +235,10 @@ harmonic steps.
 
 | Parameter | Value | UQFF Layer |
 |-----------|-------|-----------|
-| Mass | 4.3×106 M? | |
-| Schwarzschild radius | 1.27×10 m | Layer 22 |
+| Mass | 4.3$\times$106 M? | |
+| Schwarzschild radius | 1.27$\times$10 m | Layer 22 |
 | Accretion rate | ~10?8 M?/yr | |
-| X-ray flare energy | 10-4×10-5 J | |
+| X-ray flare energy | 10-4$\times$10-5 J | |
 
 **Validator confirms: Sgr A* parameters ? PASS**
 
@@ -247,8 +247,8 @@ harmonic steps.
 | Parameter | Value | UQFF Layer |
 |-----------|-------|-----------|
 | Spin period | 89.28 ms | |
-| ? | 1.25×10? s/s | |
-| B surface | 3.38×108 T | |
+| ? | 1.25$\times$10? s/s | |
+| B surface | 3.38$\times$108 T | |
 | Glitch rate | 12/decade | Layer 17 |
 
 **Validator confirms: Vela pulsar parameters ? PASS**
@@ -272,7 +272,7 @@ harmonic steps.
 ### 8.1 F_spooky Boundary Failure
 
 **Test:** F_spooky > 1e-11 N  
-**Computed:** F_spooky = 1.0×10? N exactly  
+**Computed:** F_spooky = 1.0$\times$10? N exactly  
 **Result:** FAIL (1e-11 NOT > 1e-11)
 
 **Analysis:** This is a floating-point equality failure. The computed value exactly hits the
@@ -283,15 +283,15 @@ boundary. Solution: change assertion to `F_spooky >= 1e-11` or `F_spooky > 9.99e
 ### 8.2 F_thz_shock Threshold Failure
 
 **Test:** F_thz_shock > 1e30 N  
-**Computed:** F_thz_shock = 5.685×10 N  
-**Result:** FAIL (5.685×10 NOT > 10)
+**Computed:** F_thz_shock = 5.685$\times$10 N  
+**Result:** FAIL (5.685$\times$10 NOT > 10)
 
 **Analysis:** The threshold 1e30 N is incorrect for THz-scale shock forces. At 1.25 THz with typical
-ICM shock parameters, the correct THz shock force is ~1010 N (matching the computed 5.685×10 N). The
+ICM shock parameters, the correct THz shock force is ~1010 N (matching the computed 5.685$\times$10 N). The
 1e30 threshold appears to have been set for a different physical regime (e.g., gamma-ray burst
 shock) and incorrectly applied to the LENR THz context.
 
-**Physics status:** The F_thz_shock computed value (5.685×10 N) is physically correct. The assertion
+**Physics status:** The F_thz_shock computed value (5.685$\times$10 N) is physically correct. The assertion
 threshold needs correction from 1e30 to ~1e11.
 
 ---
@@ -369,7 +369,7 @@ The 26-layer framework spans:
 
 | Scale | r (m) | Physical Context | Layer |
 |-------|--------|-----------------|-------|
-| Planck | 1.6×10?5 | Quantum gravity | 1 |
+| Planck | 1.6$\times$10?5 | Quantum gravity | 1 |
 | Nucleon | 10?5 | Nuclear physics | 7 |
 | Atom | 10? | Atomic physics | 9 |
 | LENR lattice | 10? | Pd-D phonon | 9 |
@@ -392,7 +392,7 @@ UQFF 26-layer framework as a cross-scale gravitational theory without dimensiona
 The Monte Carlo stochastic validation of the 26-layer compressed gravity framework achieves:
 
 1. **22/24 tests passed (91.7%)**  100% physics pass rate with 2 boundary assertion issues
-2. **F_rel = 4.30×10 N** from LEP 1998 provides a particle-physics anchor for the gravitation theory
+2. **F_rel = 4.30$\times$10 N** from LEP 1998 provides a particle-physics anchor for the gravitation theory
 3. **Layer amplification = 10** establishes the quantized scale hierarchy with 26 layers spanning 61
 decades
 4. **Ug1 = (E_DPM/r)  ?_vac  f_TRZ**  the fundamental layer formula  is validated independently
@@ -407,7 +407,7 @@ The 2 failures are identified as correctable assertion boundary issues (strict i
 equality, incorrect threshold value), not physics failures. The UQFF 26-layer compressed gravity
 framework is validated as consistent and operational.
 
-*Validator: `t`est_grok_thread_e3cc481989964390_validation`.py` ? 22/24 PASSED | κ = 0.0005/day |
+*Validator: `t`est_grok_thread_e3cc481989964390_validation`.py` ? 22/24 PASSED | $\kappa$ = 0.0005/day |
 [SSq] = 0.57*
 
 
@@ -421,7 +421,7 @@ framework is validated as consistent and operational.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -440,7 +440,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -463,7 +463,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -490,14 +490,14 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -512,10 +512,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -523,9 +523,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -533,8 +533,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -611,7 +611,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.159 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

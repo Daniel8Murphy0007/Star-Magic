@@ -22,10 +22,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 5335 is a spiral galaxy approximately 100 million light-years away (z ≈ 0.0067) in the
+NGC 5335 is a spiral galaxy approximately 100 million light-years away (z $\approx$ 0.0067) in the
 constellation Virgo. Hubble ACS imaging reveals a regular, symmetric spiral morphology with moderate
-star formation (SFR ~ 1.0 MM_sun/yr) and an estimated SMBH mass of ~108 MM_sun from M–σ (σ ~ 150 km/s).
-Three-UQFF analysis yields g_primary ≈ 1.053×10-3 m/s2, completing the five-galaxy UQFF spiral batch
+star formation (SFR ~ 1.0 MM_sun/yr) and an estimated SMBH mass of ~108 MM_sun from M–$\sigma$ ($\sigma$ ~ 150 km/s).
+Three-UQFF analysis yields g_primary $\approx$ 1.053$\times$10-3 m/s2, completing the five-galaxy UQFF spiral batch
 from the June 2025 Grok thread (PAPER_800–805). NGC 5335 serves as the intermediate-z, normal-SMBH
 calibration point between the lowest-z NGC 3511 and highest-z NGC 1961 systems.
 
@@ -34,7 +34,7 @@ calibration point between the lowest-z NGC 3511 and highest-z NGC 1961 systems.
 ## 1. Introduction
 
 NGC 5335 occupies the intermediate position in the five-galaxy batch: z = 0.0067 (between 0.0027 and
-0.013), M_BH ~ 108 MM_sun (between 107 and 108·5), and SFR = 1.0 MM_sun/yr (normal for its mass). This makes
+0.013), M_BH ~ 108 MM_sun (between 107 and 108$\cdot$5), and SFR = 1.0 MM_sun/yr (normal for its mass). This makes
 NGC 5335 the natural calibration point for the UQFF five-galaxy M_BH sequence, particularly for
 verifying that the CGM metal retention formula (Sanchez et al. 2023 coupling) works correctly at the
 "normal" end of the distribution. The f_Z,CGM at M_BH ~ 108 MM_sun represents the transition between
@@ -46,13 +46,13 @@ metal-retaining and metal-expelling regimes.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Spiral estimate |
-| Disk radius | r | 3.78×1020 m (~40 kly) | Optical |
-| SMBH mass | M_BH | 108 MM_sun = 1.989×1038 kg | M–σ (σ=150 km/s) |
-| σ | — | 150 km/s | M–σ |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Spiral estimate |
+| Disk radius | r | 3.78$\times$1020 m (~40 kly) | Optical |
+| SMBH mass | M_BH | 108 MM_sun = 1.989$\times$1038 kg | M–$\sigma$ ($\sigma$=150 km/s) |
+| $\sigma$ | — | 150 km/s | M–$\sigma$ |
 | SFR | — | 1.0 MM_sun/yr | Normal |
 | Redshift | z | 0.0067 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
 | M_sf | — | 0.02 | UQFF |
 | f_TRZ | — | 0.05 | THz |
 | v_EM | v | 105 m/s | Rotation |
@@ -67,12 +67,12 @@ metal-retaining and metal-expelling regimes.
 
 $$
 \begin{aligned}
-  & G·M/r2  = 6.6743e-11 × 1.989e41 / (3.78e20)2 \\
+  & G\cdotM/r2  = 6.6743e-11 \times 1.989e41 / (3.78e20)2 \\
   & = 1.328e31 / 1.429e41 = 9.294e-11 m/s2 \\
-  & Hz(z=0.0067) = H0·√(0.3·(1.0067)3+0.7) = 2.269e-18 \\
-  & (1+Hz·t) = 1.358 (Hubble correction) \\
+  & Hz(z=0.0067) = H0\cdot\sqrt{}(0.3\cdot(1.0067)3+0.7) = 2.269e-18 \\
+  & (1+Hz\cdott) = 1.358 (Hubble correction) \\
   & factor_sf = 1.02; factor_TRZ = 1.05 \\
-  & g_grav = 9.294e-11 × 1.358 × 1.02 × 1.05 = 1.351e-10 m/s2 \\
+  & g_grav = 9.294e-11 \times 1.358 \times 1.02 \times 1.05 = 1.351e-10 m/s2 \\
   & a_EM = 1.053e-3 m/s2 \\
   & g_primary = 1.053e-3 m/s2
 \end{aligned}
@@ -82,10 +82,10 @@ $$
 
 $$
 \begin{aligned}
-  & g_compressed = 1.053×10-3 m/s2 \\
-  & g_resonant   = 1.053×10-3 m/s2 \\
-  & g_buoyancy   = 1.053×10-3 m/s2 \\
-  & g_primary    = 1.053×10-3 m/s2
+  & g_compressed = 1.053\times10-3 m/s2 \\
+  & g_resonant   = 1.053\times10-3 m/s2 \\
+  & g_buoyancy   = 1.053\times10-3 m/s2 \\
+  & g_primary    = 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -102,25 +102,25 @@ $$
 
 ## 4. Five-Galaxy UQFF Spiral Batch — Complete Table
 
-| PAPER | System | z | M_BH | σ | f_Z,CGM | g_primary |
+| PAPER | System | z | M_BH | $\sigma$ | f_Z,CGM | g_primary |
 |-------|--------|---|------|---|---------|-----------|
-| 800 | NGC 685 | 0.004 | 108 MM_sun | 150 km/s | 0.89 | 1.053×10-3 |
-| 801 | NGC 3507 | 0.004 | 107·5 MM_sun | 120 km/s | 0.75 | 1.053×10-3 |
-| 802 | NGC 3511 | 0.0027 | 107 MM_sun | 100 km/s | 0.93 | 1.053×10-3 |
-| 803 | NGC 3596 | 0.0047 | 108 MM_sun | 150 km/s | 0.89 | 1.053×10-3 |
-| 804 | NGC 1961 | 0.013 | 108·5 MM_sun | 180 km/s | 0.10 | 1.053×10-3 |
-| **805** | **NGC 5335** | **0.0067** | **108 MM_sun** | **150 km/s** | **0.89** | **1.053×10-3** |
+| 800 | NGC 685 | 0.004 | 108 MM_sun | 150 km/s | 0.89 | 1.053$\times$10-3 |
+| 801 | NGC 3507 | 0.004 | 107$\cdot$5 MM_sun | 120 km/s | 0.75 | 1.053$\times$10-3 |
+| 802 | NGC 3511 | 0.0027 | 107 MM_sun | 100 km/s | 0.93 | 1.053$\times$10-3 |
+| 803 | NGC 3596 | 0.0047 | 108 MM_sun | 150 km/s | 0.89 | 1.053$\times$10-3 |
+| 804 | NGC 1961 | 0.013 | 108$\cdot$5 MM_sun | 180 km/s | 0.10 | 1.053$\times$10-3 |
+| **805** | **NGC 5335** | **0.0067** | **108 MM_sun** | **150 km/s** | **0.89** | **1.053$\times$10-3** |
 
-**All six systems yield g_primary = 1.053×10-3 m/s2 — UQFF universality confirmed across the
+**All six systems yield g_primary = 1.053$\times$10-3 m/s2 — UQFF universality confirmed across the
 batch.**
 
 ### Key UQFF Invariance Results from Batch:
-1. **EM Ground State Invariance:** g = 1.053×10-3 m/s2 for all six spirals regardless of M_BH, z,
+1. **EM Ground State Invariance:** g = 1.053$\times$10-3 m/s2 for all six spirals regardless of M_BH, z,
 SFR, or morphology (barred vs. unbarred)
-2. **SMBH Mass Invariance:** Confirmed across 107–108·5 MM_sun
+2. **SMBH Mass Invariance:** Confirmed across 107–108$\cdot$5 MM_sun
 3. **Redshift Invariance:** Confirmed for z = 0.0027–0.013 (Hubble-time correction negligible)
 4. **SFR Invariance:** Confirmed from 0.6–1.2 MM_sun/yr
-5. **f_Z,CGM Non-Monotonicity:** Peak metal expulsion at intermediate SMBH mass (~107·5 MM_sun)
+5. **f_Z,CGM Non-Monotonicity:** Peak metal expulsion at intermediate SMBH mass (~107$\cdot$5 MM_sun)
 
 ---
 
@@ -128,10 +128,10 @@ SFR, or morphology (barred vs. unbarred)
 
 $$
 \begin{aligned}
-  & Species Index = log(ρ_SCm/ρ_UA) · n = log(0.1) · n = –1.0 · n \\
+  & Species Index = log(\rho_SCm/\rho_UA) \cdot n = log(0.1) \cdot n = –1.0 \cdot n \\
   & At galactic scale (NGC 5335, n=26): \\
-  & S_index = –26 → spiral disk self-gravity state \\
-  & → NGC 5335's spiral arm density waves are n=26 DVP manifestations of the \\
+  & S_index = –26 \to spiral disk self-gravity state \\
+  & \to NGC 5335's spiral arm density waves are n=26 DVP manifestations of the \\
   & vacuum density species hierarchy
 \end{aligned}
 $$
@@ -141,7 +141,7 @@ $$
 ## 6. Conclusions
 
 Three-UQFF applied to NGC 5335 completes the six-spiral UQFF batch from the June 2025 Grok thread,
-confirming g_primary ≈ 1.053×10-3 m/s2 and establishing five simultaneous UQFF invariance theorems
+confirming g_primary $\approx$ 1.053$\times$10-3 m/s2 and establishing five simultaneous UQFF invariance theorems
 (EM ground state, SMBH mass, redshift, SFR, and morphology invariance). The six-system f_Z,CGM
 sequence fully encodes the Sanchez et al. 2023 SMBH–CGM metal retention coupling within UQFF.
 
@@ -185,7 +185,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -204,7 +204,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -314,7 +314,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.194 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -325,13 +325,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

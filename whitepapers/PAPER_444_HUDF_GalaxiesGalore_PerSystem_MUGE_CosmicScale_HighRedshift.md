@@ -95,7 +95,7 @@ $$T_1 = \frac{GM(t)}{r^2}(1+H(z)t)(1-B/B_\text{crit})(1+I(t))$$
 $$\frac{GM_0}{r^2} = \frac{6.674\times10^{-11}\times1.989\times10^{42}}{(1.230\times10^{27})^2} = \frac{1.327\times10^{32}}{1.513\times10^{54}} \approx 8.77\times10^{-23} \, \text{m/s}^2$$
 $$T_1(t=0) = \frac{GM(0)}{r^2}(1+I_0) = \frac{6.674\times10^{-11}\times3.978\times10^{42}}{1.513\times10^{54}}\times1.05 \approx 1.84\times10^{-22} \times 1.05 \approx 1.93\times10^{-22} \, \text{m/s}^2$$
 
-**T3 — Λ dark energy (large at co-moving scales):**
+**T3 — $\Lambda$ dark energy (large at co-moving scales):**
 $$T_3 = \frac{\Lambda c^2}{3}r = \frac{1.11\times10^{-52}\times 9times10^{16}}{3}\times1.230\times10^{27} \approx 4.11\times10^{-9} \, \text{m/s}^2$$
 
 Note: At cosmic co-moving scale $r = 1.23 \times 10^{27}$ m, the cosmological constant term becomes the **third largest contribution**.
@@ -114,14 +114,14 @@ At $t = 0$ (redshift $z = 3.5$, early universe):
 
 | Term | Value (m/s2) | Fraction |
 |------|-------------|---------|
-| $T_3$ Λ (cosmological) | $4.11 \times 10^{-9}$ | **$\gg$ all other terms** |
-| $T_1$ DPM-seeded×(1+I) | $1.93 \times 10^{-22}$ | negligible |
-| $T_2$ UQFF×(1+I) | $4.24 \times 10^{-22}$ | negligible |
+| $T_3$ $\Lambda$ (cosmological) | $4.11 \times 10^{-9}$ | **$\gg$ all other terms** |
+| $T_1$ DPM-seeded$\times$(1+I) | $1.93 \times 10^{-22}$ | negligible |
+| $T_2$ UQFF$\times$(1+I) | $4.24 \times 10^{-22}$ | negligible |
 | $T_9$ Wind | $8.13 \times 10^{-16}$ | trace |
 
-$$\boxed{g_\text{HUDF}(t=0) \approx 4.11\times10^{-9} \, \text{m/s}^2} \quad [\text{Λ cosmological term dominant at co-moving scale}]$$
+$$\boxed{g_\text{HUDF}(t=0) \approx 4.11\times10^{-9} \, \text{m/s}^2} \quad [\text{\Lambda cosmological term dominant at co-moving scale}]$$
 
-**Remark — Λ dominance at cosmic scale:** This result is the **first occurrence in the 17-paper series** where the dark energy ($T_3$) term dominates over all other gravitational terms. At co-moving $r = 10^{27}$ m, $T_3$ exceeds $T_1$ by 13 orders of magnitude. This reflects the HUDF FoV being a cosmological scale — the MUGE correctly predicts that dark energy governs on scales larger than the matter power spectrum coherence length.
+**Remark — $\Lambda$ dominance at cosmic scale:** This result is the **first occurrence in the 17-paper series** where the dark energy ($T_3$) term dominates over all other gravitational terms. At co-moving $r = 10^{27}$ m, $T_3$ exceeds $T_1$ by 13 orders of magnitude. This reflects the HUDF FoV being a cosmological scale — the MUGE correctly predicts that dark energy governs on scales larger than the matter power spectrum coherence length.
 
 **Interaction boost contribution:** $I_0 = 0.05 \Rightarrow 5\%$ of $T_1$:
 $$\Delta g_I = 0.05 \times 1.84\times10^{-22} \approx 9.2\times10^{-24} \, \text{m/s}^2$$
@@ -134,7 +134,7 @@ $$\Delta g_I = 0.05 \times 1.84\times10^{-22} \approx 9.2\times10^{-24} \, \text
 |-------------|---------|-----------------|
 | PAPER_441 (Antennae) | $I(t)$ boost | $I_0=0.05$ vs 0.1, $\tau=1$ Gyr vs 400 Myr, cosmic avg |
 | All others | Local/cluster | Only paper with $z > 1$ |
-| None | $T_3$ dominance | **First paper where Λ term is THE dominant term** |
+| None | $T_3$ dominance | **First paper where $\Lambda$ term is THE dominant term** |
 | None | $H(z)=1.2\times10^{-17}$ s-1 | **Highest H(z) in per-system series** |
 | None | $B=10^{-10}$ T | **Weakest magnetic field — primordial seed** |
 
@@ -154,7 +154,7 @@ Cosmological N-body simulations (IllustrisTNG, EAGLE) model the UDF statisticall
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -173,7 +173,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -248,7 +248,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.094 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -259,10 +259,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| HUDF Deep Field luminosity UV/optical/IR z>1 | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X n_gal ~ 104 per arcmin2 | HST/JWST | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/JWST | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| HUDF Deep Field luminosity UV/optical/IR z>1 | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X n_gal ~ 104 per arcmin2 | HST/JWST | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST/JWST | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for HUDF
 Deep Field

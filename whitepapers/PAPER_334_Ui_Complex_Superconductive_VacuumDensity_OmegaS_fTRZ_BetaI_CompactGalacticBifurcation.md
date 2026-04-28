@@ -47,17 +47,17 @@ nine-system document assimilation.
 ### 2.1 Master Definition
 
 $$
-U_i = β_i · ( ?_vac,[SCm] / ?_vac,[UA] · ?_s(t) · cos(pt_n) · (1 + f_TRZ) )
+U_i = \beta_i \cdot ( ?_vac,[SCm] / ?_vac,[UA] \cdot ?_s(t) \cdot cos(pt_n) \cdot (1 + f_TRZ) )
 $$
 
 ### 2.2 Parameter Table
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| β_i | 1 (calibrated) | UQFF superconductive coupling length |
-| ?_vac,[SCm] | ~10?3° × f_SCm kg/m3 | Superconductive vacuum density |
+| $\beta$_i | 1 (calibrated) | UQFF superconductive coupling length |
+| ?_vac,[SCm] | ~10?3° $\times$ f_SCm kg/m3 | Superconductive vacuum density |
 | ?_vac,[UA] | ~10?3° kg/m3 | Aether vacuum density |
-| ?_s(t) | 2.5×10-6 rad/s | Superconductive oscillation frequency |
+| ?_s(t) | 2.5$\times$10-6 rad/s | Superconductive oscillation frequency |
 | cos(pt_n) | time-modulation | UQFF temporal coupling factor |
 | f_TRZ | 0.1 | Time-reversal zone coupling factor |
 | ß_i | 0.6 | Imaginary buoyancy coupling coefficient |
@@ -67,11 +67,11 @@ $$
 Including the full complex parameter set from the thread:
 $$
 \begin{aligned}
-  & U_i = β_i · (?_vac,[SCm] / ?_vac,[UA]) · ?_s · cos(pt_n) · (1 + f_TRZ) \\
+  & U_i = \beta_i \cdot (?_vac,[SCm] / ?_vac,[UA]) \cdot ?_s \cdot cos(pt_n) \cdot (1 + f_TRZ) \\
   & with complex parameters: \\
-  & ?_vac,A = (1×10?3° + i·1×10?31) kg/m3     [vacuum density complex] \\
-  & V_infl,[UA] = (1×10-6 + i·1×10-7) m3       [inflation volume complex] \\
-  & a_universal = (1×1012 + i·1×1011) m/s2      [universal acceleration complex]
+  & ?_vac,A = (1\times10?3° + i\cdot1\times10?31) kg/m3     [vacuum density complex] \\
+  & V_infl,[UA] = (1\times10-6 + i\cdot1\times10-7) m3       [inflation volume complex] \\
+  & a_universal = (1\times1012 + i\cdot1\times1011) m/s2      [universal acceleration complex]
 \end{aligned}
 $$
 
@@ -87,44 +87,44 @@ astrophysical scale class.
 Systems: Vela Pulsar (PSR J0835-4510), Crab Nebula M1, Jupiter Aurorae, Lagoon Nebula M8, R Aquarii
 
 $$
-U_i (compact) ˜ (1.38×10-47 + i·7.80×10-51) J/m3
+U_i (compact) ˜ (1.38\times10-47 + i\cdot7.80\times10-51) J/m3
 $$
 
 **Parameters:**
 - r ~ 107 m (Jupiter) to ~6.5 kly (Crab)
-- M ~ 1.9×1027 kg (Jupiter) to ~2.5 M_sun (Crab NS)
+- M ~ 1.9$\times$1027 kg (Jupiter) to ~2.5 M_sun (Crab NS)
 - B0 ~ 4.2 G (Jupiter) to 1–30 G (Crab synchrotron)
-- F_U_Bi_i ˜ -2.09×10212 N
+- F_U_Bi_i ˜ -2.09$\times$10212 N
 
 **Derivation:** At compact scales, ?_vac,[SCm] remains at f_SCm=0.001 (partial SC), so:
 $$
 \begin{aligned}
   & ?_vac,[SCm]/?_vac,[UA] = 0.001 \\
-  & U_i = 1 × 0.001 × 2.5e-6 × cos(pt_n) × 1.1 \\
-  & ˜ 2.75×10?? × cos(pt_n) [real part driver]
+  & U_i = 1 \times 0.001 \times 2.5e-6 \times cos(pt_n) \times 1.1 \\
+  & ˜ 2.75\times10?? \times cos(pt_n) [real part driver]
 \end{aligned}
 $$
-At resolved scale of phase integration ? (1.38×10-47 J/m3) real component.
+At resolved scale of phase integration ? (1.38$\times$10-47 J/m3) real component.
 
 ### 3.2 Galactic Scale Class
 
 Systems: NGC 1365, ESO 137-001, Abell 2256, IC 2163, NGC 2207, Centaurus A, Sgr A*, M87
 
 $$
-U_i (galactic) ˜ (1.45×10-47 + i·8.20×10-51) J/m3
+U_i (galactic) ˜ (1.45\times10-47 + i\cdot8.20\times10-51) J/m3
 $$
 
 **Parameters:**
 - r ~ 60 Mly (NGC 1365) to 1.5 Gly (Abell 2256)
 - M ~ 1011 M_sun (spiral) to 1015 M_sun (cluster)
-- F_U_Bi_i ˜ -8.32×10217 N
+- F_U_Bi_i ˜ -8.32$\times$10217 N
 
 **Derivation:** At galactic scales, accumulated SC states across 26 levels increase the effective
 ?_vac,[SCm] slightly:
 $$
 \begin{aligned}
-  & ?_vac,[SCm,gal]/?_vac,[UA,gal] = 0.001 × enhancement_factor ˜ 0.001 × 1.05 \\
-  & U_i,gal ˜ U_i,compact × 1.05 ? 1.45×10-47 J/m3  [5% enhancement]
+  & ?_vac,[SCm,gal]/?_vac,[UA,gal] = 0.001 \times enhancement_factor ˜ 0.001 \times 1.05 \\
+  & U_i,gal ˜ U_i,compact \times 1.05 ? 1.45\times10-47 J/m3  [5% enhancement]
 \end{aligned}
 $$
 
@@ -146,15 +146,15 @@ scale-dependent enhancement factor of ~5% as systems transition from compact to 
 
 ### 4.1 Source of Imaginary Part
 
-The imaginary parts (7.80×10-51 and 8.20×10-51 J/m3) arise from:
-1. Complex ?_vac,A = (1×10?3° + i·1×10?31) kg/m3 ? Im(?_vac) = 10?31
-2. Complex V_infl,[UA] = (1×10-6 + i·1×10-7) m3 ? Im(V)/Re(V) = 0.1
-3. Combined: Im(U_i) = ß_i × Re(U_i) × Im_factor
+The imaginary parts (7.80$\times$10-51 and 8.20$\times$10-51 J/m3) arise from:
+1. Complex ?_vac,A = (1$\times$10?3° + i$\cdot$1$\times$10?31) kg/m3 ? Im(?_vac) = 10?31
+2. Complex V_infl,[UA] = (1$\times$10-6 + i$\cdot$1$\times$10-7) m3 ? Im(V)/Re(V) = 0.1
+3. Combined: Im(U_i) = ß_i $\times$ Re(U_i) $\times$ Im_factor
 
 $$
 \begin{aligned}
   & ß_i = 0.6 (imaginary buoyancy coupling) \\
-  & Im(U_i) / Re(U_i) = ß_i × [Im(?_vac)/Re(?_vac)] = 0.6 × 0.1 = 0.06... ? residual ~5.65×10-4
+  & Im(U_i) / Re(U_i) = ß_i \times [Im(?_vac)/Re(?_vac)] = 0.6 \times 0.1 = 0.06... ? residual ~5.65\times10-4
 \end{aligned}
 $$
 
@@ -170,7 +170,7 @@ inflation-era volume modulation in V_infl,[UA].
 
 U_i appears in the superconductive mode equation:
 $$
-g_SC = ?_{i=1}^{26} F_i(SC)  where F_i(SC) ? U_i · V_infl,[UA] · ?_vac,A · a_universal
+g_SC = ?_{i=1}^{26} F_i(SC)  where F_i(SC) ? U_i \cdot V_infl,[UA] \cdot ?_vac,A \cdot a_universal
 $$
 
 The U_i complex value at each level feeds into the superconductive buoyancy calculation:
@@ -184,8 +184,8 @@ The U_i complex value at each level feeds into the superconductive buoyancy calc
 The superconductive oscillation `?_s(t) = 2.5×10-6 rad/s` corresponds to:
 $$
 \begin{aligned}
-  & T_s = 2p/?_s = 2.513×106 s ˜ 29.1 days (monthly oscillation) \\
-  & f_s = ?_s/(2p) = 3.98×10-7 Hz
+  & T_s = 2p/?_s = 2.513\times106 s ˜ 29.1 days (monthly oscillation) \\
+  & f_s = ?_s/(2p) = 3.98\times10-7 Hz
 \end{aligned}
 $$
 
@@ -201,7 +201,7 @@ This ~29-day period connects to:
 1. **FIRST explicit U_i complex-valued superconductive vacuum density equation** — full
 `β_i(?_vac,[SCm]/?_vac,[UA]·?_s·cos(pt_n)·(1+f_TRZ))` formulation
 2. **FIRST compact/galactic scale bifurcation** — 1.051 ratio; same for real and imaginary
-3. **FIRST ?_s = 2.5×10-6 rad/s calibration** — ~29-day superconductive oscillation period
+3. **FIRST ?_s = 2.5$\times$10-6 rad/s calibration** — ~29-day superconductive oscillation period
 4. **FIRST f_TRZ = 0.1 explicit calibration** in U_i context
 5. **FIRST complex parameter set** for V_infl,[UA], ?_vac,A, a_universal all complex-valued
 
@@ -211,16 +211,16 @@ This ~29-day period connects to:
 
 $$
 \begin{aligned}
-  & U_i = β_i · (?_vac,[SCm]/?_vac,[UA]) · ?_s(t) · cos(pt_n) · (1+f_TRZ) \\
-  & β_i = 1 (calibrated) \\
-  & ?_s = 2.5×10-6 rad/s  ? T_s ˜ 29 days \\
+  & U_i = \beta_i \cdot (?_vac,[SCm]/?_vac,[UA]) \cdot ?_s(t) \cdot cos(pt_n) \cdot (1+f_TRZ) \\
+  & \beta_i = 1 (calibrated) \\
+  & ?_s = 2.5\times10-6 rad/s  ? T_s ˜ 29 days \\
   & f_TRZ = 0.1 \\
   & ß_i = 0.6  [imaginary buoyancy coupling] \\
-  & ?_vac,A = (1×10?3° + i·1×10?31) kg/m3      [complex vacuum density] \\
-  & V_infl,[UA] = (1×10-6 + i·1×10-7) m3       [complex inflation volume] \\
-  & a_universal = (1×1012 + i·1×1011) m/s2      [complex universal acceleration] \\
-  & U_i (compact)  ˜ (1.38×10-47 + i·7.80×10-51) J/m3 \\
-  & U_i (galactic) ˜ (1.45×10-47 + i·8.20×10-51) J/m3 \\
+  & ?_vac,A = (1\times10?3° + i\cdot1\times10?31) kg/m3      [complex vacuum density] \\
+  & V_infl,[UA] = (1\times10-6 + i\cdot1\times10-7) m3       [complex inflation volume] \\
+  & a_universal = (1\times1012 + i\cdot1\times1011) m/s2      [complex universal acceleration] \\
+  & U_i (compact)  ˜ (1.38\times10-47 + i\cdot7.80\times10-51) J/m3 \\
+  & U_i (galactic) ˜ (1.45\times10-47 + i\cdot8.20\times10-51) J/m3 \\
   & Bifurcation ratio: 1.051 (real and imaginary identical)
 \end{aligned}
 $$
@@ -254,7 +254,7 @@ framework in future observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -273,7 +273,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -381,7 +381,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.116 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -392,13 +392,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

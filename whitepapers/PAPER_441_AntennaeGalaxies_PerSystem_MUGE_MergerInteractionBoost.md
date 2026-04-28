@@ -44,7 +44,7 @@ PAPER_441 delivers the **complete per-system MUGE** for the Antennae Galaxies (N
 | Separation | $r$ | 30,000 ly $= 2.838 \times 10^{20}$ m |
 | Redshift | $z$ | 0.0105 |
 | $H(z)$ | | $\approx 2.19 \times 10^{-18}$ s-1 |
-| SF rate factor | $\text{SFR}_f$ | $20/(2 \times 10^{11})$ (normalized, SFR ≈ 20 $M_\odot$/yr) |
+| SF rate factor | $\text{SFR}_f$ | $20/(2 \times 10^{11})$ (normalized, SFR $\approx$ 20 $M_\odot$/yr) |
 | SF timescale | $\tau_text{SF}$ | 100 Myr $= 3.156 \times 10^{15}$ s |
 | Interaction factor | $I_0$ | 0.1 |
 | Merger timescale | $\tau_text{merger}$ | 400 Myr $= 1.262 \times 10^{16}$ s |
@@ -82,7 +82,7 @@ $$T_1(t=0) \approx 3.30\times10^{-10} \times 1.1 \approx 3.63\times10^{-10} \, \
 **T2 — UQFF Ug with f_TRZ and I(t):**
 $$T_2 = 2 \times \frac{GM_0}{r^2} \times 1.1 \times 1.1 \approx 7.99\times10^{-10} \, \text{m/s}^2$$
 
-**T3-T8:** Λ, quantum, EM, fluid, oscillatory, DM — all sub-dominant at galaxy scale
+**T3-T8:** $\Lambda$, quantum, EM, fluid, oscillatory, DM — all sub-dominant at galaxy scale
 
 **T9 — Merger-driven starburst wind:**
 $$T_9 = \frac{\rho_w v_w^2}{\rho_f} = 4\times10^{12} \, \text{m}^2/\text{s}^2 \Rightarrow a_w = \frac{4\times10^{12}}{r} \approx 1.41\times10^{-8} \, \text{m/s}^2$$
@@ -95,8 +95,8 @@ At $t = 0$ (merger peak):
 
 | Term | Value (m/s2) | Fraction |
 |------|-------------|---------|
-| $T_2$ UQFF Ug×(1+I) | $7.99 \times 10^{-10}$ | 97.2% |
-| $T_1$ DPM-seeded×(1+I) | $3.63 \times 10^{-10}$ | (included in T2 dominance) |
+| $T_2$ UQFF Ug$\times$(1+I) | $7.99 \times 10^{-10}$ | 97.2% |
+| $T_1$ DPM-seeded$\times$(1+I) | $3.63 \times 10^{-10}$ | (included in T2 dominance) |
 | $T_9$ Wind | $1.41 \times 10^{-8}$ | dominates if comparing to T1 alone |
 | $T_8$ DM | $\sim 10^{-10}$ | minor |
 
@@ -162,7 +162,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -181,7 +181,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -258,7 +258,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -269,10 +269,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Antennae Galaxies luminosity X-ray + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 20 `M_M_sun`/yr (merger) | Chandra + Spitzer | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra + Spitzer | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Antennae Galaxies luminosity X-ray + IR | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 20 `M_M_sun`/yr (merger) | Chandra + Spitzer | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra + Spitzer | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Antennae Galaxies

@@ -11,33 +11,33 @@ tags: [galaxy, AGN, SMBH, black-hole, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_470 — SMBH M-sigma UQFF: Bulge Velocity Dispersion, M-σ Relation, and Feedback Calibration via f_feedback = 0.063
+# PAPER_470 — SMBH M-sigma UQFF: Bulge Velocity Dispersion, M-$\sigma$ Relation, and Feedback Calibration via f_feedback = 0.063
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — Supermassive Black Hole–Galaxy Co-Evolution
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122
 **Source:** grok_share_dc707f5d3.txt (Doc 73 — SMBHUQFFModule, "SMBH comparison to UQFF")
-**Classification:** FIRST UQFF derivation of the M-σ relation from frequency/resonance terms; FIRST
+**Classification:** FIRST UQFF derivation of the M-$\sigma$ relation from frequency/resonance terms; FIRST
 f_feedback = 0.063 calibration constant for metal retention in SMBH bulge co-evolution; FIRST UQFF
-galactic scale resonance via ω_s(σ)
+galactic scale resonance via $\omega$_s($\sigma$)
 **Author:** Daniel T. Murphy
 **CP4 Class:** Pending (dc707f5d3 batch)
 **C++ Module:** `SMBHUQFFModule.h` / `SMBHUQFFModule.cpp`
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 
 ---
 
 ## Abstract
 
-The M-σ relation (M_BH ∝ σ4-5) is one of the most important empirical correlations in extragalactic
+The M-$\sigma$ relation (M_BH $\propto$ $\sigma$4-5) is one of the most important empirical correlations in extragalactic
 astronomy, connecting supermassive black hole mass to the velocity dispersion of the host galaxy's
 stellar bulge. Standard models explain this via AGN feedback, but the physical mechanism remains
-debated. This paper presents the UQFF derivation of the M-σ relation from first principles using
-resonance terms U_m(t,r,n), U_g1(t,r,M_s,n), and the galactic angular frequency ω_s(σ). A feedback
+debated. This paper presents the UQFF derivation of the M-$\sigma$ relation from first principles using
+resonance terms U_m(t,r,n), U_g1(t,r,M_s,n), and the galactic angular frequency $\omega$_s($\sigma$). A feedback
 calibration constant f_feedback = 0.063 is identified from UQFF that governs metal retention in the
-bulge during AGN outflow cycles. Result: g_UQFF(t,σ) ≈ 1×10-10 m/s2 (resonance/feedback dominant;
-UQFF advances M-σ relation theory).
+bulge during AGN outflow cycles. Result: g_UQFF(t,$\sigma$) $\approx$ 1$\times$10-10 m/s2 (resonance/feedback dominant;
+UQFF advances M-$\sigma$ relation theory).
 
 ---
 
@@ -48,35 +48,35 @@ UQFF advances M-σ relation theory).
 | Parameter | Value (Range) | Notes |
 |-----------|---------------|-------|
 | M_BH | 1011 – 1014 MM_sun | SMBH mass range |
-| σ | 100 – 1000 km/s | Bulge stellar velocity dispersion |
+| $\sigma$ | 100 – 1000 km/s | Bulge stellar velocity dispersion |
 | R_bulge | 1 kpc | Effective bulge radius |
-| t | 4.543×109 yr (cosmic time) | Local reference time |
+| t | 4.543$\times$109 yr (cosmic time) | Local reference time |
 | z | 0 – 6 | Redshift range modeling |
 | f_feedback | 0.063 | Metal retention calibration constant |
 
-### 2.2 UQFF M-σ Gravitational Equation
+### 2.2 UQFF M-$\sigma$ Gravitational Equation
 
 $$g_{\rm UQFF}(t, \sigma) = U_m(t, r, n) + U_{g1}(t, r, M_s, n) + \omega_s(\sigma) \cdot k_{\rm galactic}$$
 
 Where:
-- $U_m$ = magnetism term (magnetic moment × vacuum field)
+- $U_m$ = magnetism term (magnetic moment $\times$ vacuum field)
 - $U_{g1}$ = magnetic dipole gravity term for SMBH spin state $n$
 - $\omega_s(\sigma)$ = galactic angular frequency derived from velocity dispersion
 - $k_{\rm galactic}$ = galactic-scale coupling constant
 
-### 2.3 Galactic Angular Frequency from σ
+### 2.3 Galactic Angular Frequency from $\sigma$
 
 The velocity dispersion enters via the galactic angular frequency:
 
 $$\omega_s(\sigma) = \frac{\sigma}{R_{\rm bulge}}$$
 
-For σ = 200 km/s, R_bulge = 1 kpc: $\omega_s = 6.5 \times 10^{-15}\ \mathrm{rad/s}$
+For $\sigma$ = 200 km/s, R_bulge = 1 kpc: $\omega_s = 6.5 \times 10^{-15}\ \mathrm{rad/s}$
 
-The UQFF M-σ relation emerges as:
+The UQFF M-$\sigma$ relation emerges as:
 
 $$M_{\rm BH} \propto \frac{U_{g1}(n) + U_m(n)}{\omega_s(\sigma)} \propto \sigma^4$$
 
-This is the **first UQFF derivation of M ∝ σ4** from resonance terms — matching the observed
+This is the **first UQFF derivation of M $\propto$ $\sigma$4** from resonance terms — matching the observed
 relation without invoking AGN feedback as a free parameter.
 
 ### 2.4 Feedback Calibration Constant f_feedback = 0.063
@@ -93,15 +93,15 @@ This constant emerges from:
 
 $$f_{\rm feedback} = \frac{k_4 \cdot U_{g4}(t)}{E_{\rm outflow,\rm AGN}} = 0.063$$
 
-### 2.5 UQFF vs. Standard M-σ
+### 2.5 UQFF vs. Standard M-$\sigma$
 
 | Mechanism | Standard Model | UQFF |
 |-----------|----------------|------|
-| M-σ origin | AGN feedback regulation | ω_s(σ)·k_galactic resonance |
+| M-$\sigma$ origin | AGN feedback regulation | $\omega$_s($\sigma$)$\cdot$k_galactic resonance |
 | Feedback constant | Free parameter | f_feedback = 0.063 (UQFF-derived) |
 | Metal retention | Empirical | U_m + U_g1 quantum state n |
 | Range | Local galaxies | z = 0 to 6 (full cosmic history) |
-| g result | Not defined | 1×10-10 m/s2 (resonance dominant) |
+| g result | Not defined | 1$\times$10-10 m/s2 (resonance dominant) |
 
 ### 2.6 26-State Quantum Model
 
@@ -109,7 +109,7 @@ The SMBH quantum states n = 1 to 26 (26D UQFF framework) contribute:
 
 $$U_{g1}(n) = k_1 \cdot M_s \cdot n \cdot \mathrm{Re}[\psi_n(r)]$$
 
-Each quantum state $n$ represents a distinct excitation level of the vacuum-coupled SMBH gravitational potential, with the sum over n = 1–26 recovering the observed M-σ slope.
+Each quantum state $n$ represents a distinct excitation level of the vacuum-coupled SMBH gravitational potential, with the sum over n = 1–26 recovering the observed M-$\sigma$ slope.
 
 ---
 
@@ -119,23 +119,23 @@ $$\boxed{g_{\rm UQFF}(t, \sigma) = U_m(t, r, n) + U_{g1}(t, r, M_s, n) + \frac{\
 
 $$\boxed{M_{\rm BH} \propto \sigma^4 \quad \Leftarrow \quad \omega_s(\sigma) = \sigma/R_{\rm bulge}, \quad f_{\rm feedback} = 0.063}$$
 
-**Computed Result:** $g_{\rm UQFF} \approx 1 \times 10^{-10}\ \mathrm{m/s}^2$ — resonance and feedback terms dominant; UQFF M-σ derivation from first principles without SM illusions (no AGN feedback free parameter).
+**Computed Result:** $g_{\rm UQFF} \approx 1 \times 10^{-10}\ \mathrm{m/s}^2$ — resonance and feedback terms dominant; UQFF M-$\sigma$ derivation from first principles without SM illusions (no AGN feedback free parameter).
 
 ---
 
 ## 4. Physical Interpretation
 
-- **M-σ from resonance**: The M ∝ σ4 correlation falls out naturally from the ω_s × k_galactic coupling — a fundamentally different mechanism than AGN feedback models, but numerically equivalent for observed M_BH = 1011–1014 MM_sun.
+- **M-$\sigma$ from resonance**: The M $\propto$ $\sigma$4 correlation falls out naturally from the $\omega$_s $\times$ k_galactic coupling — a fundamentally different mechanism than AGN feedback models, but numerically equivalent for observed M_BH = 1011–1014 MM_sun.
 - **f_feedback = 0.063**: This universal calibration constant from UQFF's Ug4 / AGN energy ratio matches observational bulge metallicity data — providing the UQFF prediction for metal retention fraction across galaxy masses.
-- **26-state quantum model**: SMBH gravitational coupling through n = 1–26 quantum states reproduces the observed scatter in the M-σ relation as discrete quantum state excitations.
+- **26-state quantum model**: SMBH gravitational coupling through n = 1–26 quantum states reproduces the observed scatter in the M-$\sigma$ relation as discrete quantum state excitations.
 
 ---
 
 ## 5. C++ Module Reference
 
 **Module:** `SMBHUQFFModule` (root-level, Session 120 from grok_share_dc707f5d3.txt)
-**Key method:** `computeG(double t, double sigma)` — returns g_UQFF for given (t, σ)
-**Unique feature:** M-σ relation derivation via ω_s(σ); 26-state quantum sum; f_feedback = 0.063
+**Key method:** `computeG(double t, double sigma)` — returns g_UQFF for given (t, $\sigma$)
+**Unique feature:** M-$\sigma$ relation derivation via $\omega$_s($\sigma$); 26-state quantum sum; f_feedback = 0.063
 **Integration point:** MAIN_1_CoAnQi.cpp SMBH validation suite (cross-check PAPER_013b LISA)
 
 ---
@@ -148,7 +148,7 @@ $$\boxed{M_{\rm BH} \propto \sigma^4 \quad \Leftarrow \quad \omega_s(\sigma) = \
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -167,7 +167,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -309,7 +309,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.178 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -320,10 +320,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Active Galactic Nucleus / SMBH luminosity X-ray 2–10 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 1043–1046 erg/s | Chandra/XMM | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra/XMM | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Active Galactic Nucleus / SMBH luminosity X-ray 2–10 keV | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L_X ~ 1043–1046 erg/s | Chandra/XMM | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra/XMM | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Active Galactic Nucleus / SMBH
@@ -335,8 +335,8 @@ future Chandra/XMM monitoring observations.
 
 
 
-**QS=5** — Full UQFF integration: M-σ resonance derivation, f_feedback calibration, 26-state quantum
-model, σ = 100–1000 km/s range.
+**QS=5** — Full UQFF integration: M-$\sigma$ resonance derivation, f_feedback calibration, 26-state quantum
+model, $\sigma$ = 100–1000 km/s range.
 *Copyright — Daniel T. Murphy. Encoded Oct 10, 2025.*
 
 

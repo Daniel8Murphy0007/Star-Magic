@@ -22,7 +22,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper derives and proves the **Dual-Dynamic Feedback Equilibrium Timescale** and the **UQFF
@@ -32,7 +32,7 @@ independent time-dependent processes: (1) `M(t) = M₀·(1 + Ṁ_factor·e^{-t/�
 growth driving increasing gravitational confinement, and (2) `P(t) = P₀·e^{-t/τ_exp}` OB-stellar
 cavity pressure expansion driving dispersal. Both operate additively and simultaneously within the
 MUGE — a combination unprecedented among the UQFF C++ module series. A critical result emerges: when
-τ_SF = τ_exp (both equal to the characteristic star-formation timescale ~1 Myr for NGC 3603), the
+$\tau$_SF = $\tau$_exp (both equal to the characteristic star-formation timescale ~1 Myr for NGC 3603), the
 ratio of mechanical feedback to gravitational confinement is **constant throughout the
 star-formation event** — the **Scale-Invariant Feedback Theorem**. This provides a new explanation
 for the observed universal 30–35% star-formation efficiency in massive clusters and is testable with
@@ -47,31 +47,31 @@ P(t) multiplicatively):
 
 $$
 \begin{aligned}
-  & g_NGC3603(r, t) = term1  [G·M(t)/r2 × (1+H₀t) × (1−B/B_crit)]   ← uses M(t) \\
-  & + term_wind [ρ_wind·v_wind2]                           ← OB-star wind \\
-  & + term2    [UQFF Ug1_t + Ug4_t with f_TRZ]            ← uses ug1_t \\
-  & + term3    [Λc2/3] \\
-  & + term4    [q(v×B)/m_p × corr_UA] \\
-  & + term_q   [ℏ/√(Δx·Δp) × ψ × (2π/t_H)] \\
-  & + term_fluid [ρ_fluid·V·ug1_t / M(t)] \\
-  & + term_osc  [2A·cos(kx)·cos(ωt) + …] \\
-  & + term_DM   [(M+M_DM)·(δρ/ρ + 3GM(t)/r3)/M(t)] \\
-  & + term_P    [P(t) / ρ_fluid]                           ← ADDITIVE cavity pressure \\
-  & + term_Ubi  [0.5 × ug1_t]                             ← Tier-1 buoyancy (M(t) variant) \\
-  & + \text{term\_F\_UBii} [−β_i·ug1_t·ω_g·(M(t)/r)·U_UA·cos(π·t)] ← Tier-2 \\
-  & + \text{term\_Ub\_i}   [−β_i·ug1_t·ω_g·(M_GC/r_GC)·U_UA·cos(π·t)] ← Tier-3 Sgr A*
+  & g_NGC3603(r, t) = term1  [G\cdotM(t)/r2 \times (1+H0t) \times (1-B/B_crit)]   \leftarrow uses M(t) \\
+  & + term_wind [\rho_wind\cdotv_wind2]                           \leftarrow OB-star wind \\
+  & + term2    [UQFF Ug1_t + Ug4_t with f_TRZ]            \leftarrow uses ug1_t \\
+  & + term3    [\Lambdac2/3] \\
+  & + term4    [q(v\timesB)/m_p \times corr_UA] \\
+  & + term_q   [ℏ/\sqrt{}(\Deltax\cdot\Deltap) \times \psi \times (2\pi/t_H)] \\
+  & + term_fluid [\rho_fluid\cdotV\cdotug1_t / M(t)] \\
+  & + term_osc  [2A\cdotcos(kx)\cdotcos(\omegat) + …] \\
+  & + term_DM   [(M+M_DM)\cdot(\delta\rho/\rho + 3GM(t)/r3)/M(t)] \\
+  & + term_P    [P(t) / \rho_fluid]                           \leftarrow ADDITIVE cavity pressure \\
+  & + term_Ubi  [0.5 \times ug1_t]                             \leftarrow Tier-1 buoyancy (M(t) variant) \\
+  & + \text{term\_F\_UBii} [-\beta_i\cdotug1_t\cdot\omega_g\cdot(M(t)/r)\cdotU_UA\cdotcos(\pi\cdott)] \leftarrow Tier-2 \\
+  & + \text{term\_Ub\_i}   [-\beta_i\cdotug1_t\cdot\omega_g\cdot(M_GC/r_GC)\cdotU_UA\cdotcos(\pi\cdott)] \leftarrow Tier-3 Sgr A*
 \end{aligned}
 $$
 
 **System Parameters:**
-- M₀ = 400,000 M_sun = 7.956×1035 kg (initial embedded cluster mass)
-- Ṁ_factor = 0.1 (10% mass growth during τ_SF)
-- τ_SF = 1 Myr = 3.156×1013 s (star-formation timescale)
-- r = 9.5 ly = 8.998×1015 m
-- P₀ = 4×10-8 Pa (initial OB-stellar cavity pressure); τ_exp = 1 Myr
-- ρ_wind = 1×10-20 kg/m3; v_wind = 2×106 m/s (OB clump wind)
-- M_GC = 7.956×1036 kg (Sgr A* ~4×106 M_sun); r_GC = 2.16×1020 m (~7 kpc, Carina arm)
-- β_i = 0.61, ω_g = 7.3×10-16, U_UA = 1×10-11 (UQFF canonical)
+- M0 = 400,000 M_sun = 7.956$\times$1035 kg (initial embedded cluster mass)
+- Ṁ_factor = 0.1 (10% mass growth during $\tau$_SF)
+- $\tau$_SF = 1 Myr = 3.156$\times$1013 s (star-formation timescale)
+- r = 9.5 ly = 8.998$\times$1015 m
+- P0 = 4$\times$10-8 Pa (initial OB-stellar cavity pressure); $\tau$_exp = 1 Myr
+- $\rho$_wind = 1$\times$10-20 kg/m3; v_wind = 2$\times$106 m/s (OB clump wind)
+- M_GC = 7.956$\times$1036 kg (Sgr A* ~4$\times$106 M_sun); r_GC = 2.16$\times$1020 m (~7 kpc, Carina arm)
+- $\beta$_i = 0.61, $\omega$_g = 7.3$\times$10-16, U_UA = 1$\times$10-11 (UQFF canonical)
 
 ---
 
@@ -108,7 +108,7 @@ outward).
 M(t) grows the gravitational confinement: `ug1_t(t) = G·M(t)/r2` increases with t  
 P(t) pressure decays: `term_P = P₀·e^{-t/τ_exp}/ρ_fluid` decreases with t
 
-The **mechanical feedback-to-gravity ratio** Φ(t) is:
+The **mechanical feedback-to-gravity ratio** $\Phi$(t) is:
 
 $$\Phi(t) = \frac{\text{term\_P}}{\text{ug1\_t}(t)} = \frac{P_0 e^{-t/\tau_text{exp}} / \rho_text{fluid}}{G M_0 (1 + \dot{M}_\text{factor} e^{-t/\tau_text{SF}}) / r^2}$$
 
@@ -116,11 +116,11 @@ $$= \frac{P_0 r^2}{\rho_text{fluid} G M_0} \cdot \frac{e^{-t/\tau_text{exp}}}{1 
 
 ### 2.3 The Scale-Invariant Feedback Theorem
 
-**When τ_SF = τ_exp = τ** (both timescales equal — the NGC 3603 case where both equal ~1 Myr):
+**When $\tau$_SF = $\tau$_exp = $\tau$** (both timescales equal — the NGC 3603 case where both equal ~1 Myr):
 
 $$\Phi(t) = \frac{P_0 r^2}{\rho_text{fluid} G M_0} \cdot \frac{e^{-t/\tau}}{1 + \dot{M}_\text{factor} e^{-t/\tau}}$$
 
-Let u = e^{-t/τ} (which decreases from 1 → 0 as t: 0 → ∞):
+Let u = e^{-t/$\tau$} (which decreases from 1 $\to$ 0 as t: 0 $\to$ $\infty$):
 
 $$\Phi(u) = \frac{P_0 r^2}{\rho_text{fluid} G M_0} \cdot \frac{u}{1 + \dot{M}_\text{factor} \cdot u}$$
 
@@ -138,20 +138,20 @@ To zeroth order in Ṁ_factor:
 
 $$\boxed{\Phi(t) \approx \frac{P_0 r^2}{\rho_text{fluid} G M_0} \cdot e^{-t/\tau} \approx \text{const} \cdot e^{-t/\tau}}$$
 
-The ratio decays exponentially with timescale τ — it does NOT change sign and does NOT oscillate.
+The ratio decays exponentially with timescale $\tau$ — it does NOT change sign and does NOT oscillate.
 The feedback is always positive (pressure always exceeds gravity during the first ~1 Myr) and decays
-away on τ.
+away on $\tau$.
 
-**The critical result:** For Ṁ_factor = 0, Φ(t) = (const)·e^{-t/τ}. The **fractional change** of Φ
-over any fixed interval Δt is:
+**The critical result:** For Ṁ_factor = 0, $\Phi$(t) = (const)$\cdot$e^{-t/$\tau$}. The **fractional change** of $\Phi$
+over any fixed interval $\Delta$t is:
 
 $$\frac{\Delta \Phi}{\Phi} = 1 - e^{-\Delta t / \tau}$$
 
 This is **independent of the absolute time t** — the system's feedback-to-gravity ratio decreases by
-the same fractional amount over each interval Δt, regardless of when in the cluster's history. This
+the same fractional amount over each interval $\Delta$t, regardless of when in the cluster's history. This
 is the **Scale-Invariant Feedback Theorem**.
 
-**Physical interpretation:** A massive stellar cluster with τ_SF = τ_exp is self-similar in
+**Physical interpretation:** A massive stellar cluster with $\tau$_SF = $\tau$_exp is self-similar in
 feedback: an observer at t = 0.5 Myr and an observer at t = 2 Myr see the same fractional dynamics
 (not the same absolute values, but the same proportional rates of change). This explains why massive
 clusters with M ~ 103–106 M_sun all achieve similar star-formation efficiencies (~30–35%, Lada &
@@ -159,12 +159,12 @@ Lada 2003) regardless of their absolute mass.
 
 ### 2.4 The Equilibrium Crossing Point t*
 
-Even though Φ decays, the **absolute** buoyancy response Σ_buoy grows with ug1_t(t) (because M(t)
-grows). There exists a crossing point t* where term_P = Σ_buoy:
+Even though $\Phi$ decays, the **absolute** buoyancy response $\Sigma$_buoy grows with ug1_t(t) (because M(t)
+grows). There exists a crossing point t* where term_P = $\Sigma$_buoy:
 
 $$\frac{P_0 e^{-t^*/\tau_text{exp}}}{\rho_text{fluid}} = \left|\frac{0.5 G M(t^*)}{r^2} - \beta_i \frac{G M(t^*)}{r^2} \omega_g \frac{M(t^*)}{r} U_{UA} \cos(\pi t^*) - \beta_i \frac{G M(t^*)}{r^2} \omega_g \frac{M_\text{GC}}{r_\text{GC}} U_{UA} \cos(\pi t^*)\right|$$
 
-For τ_SF = τ_exp = τ and Ṁ_factor << 1:
+For $\tau$_SF = $\tau$_exp = $\tau$ and Ṁ_factor << 1:
 
 $$\frac{P_0 e^{-t^*/\tau}}{\rho_text{fluid}} \approx 0.5 \cdot \frac{G M_0}{r^2} \cdot \left(1 + \dot{M}_\text{factor} e^{-t^*/\tau}\right)$$
 
@@ -172,9 +172,9 @@ Solving to first order:
 
 $$e^{-t^*/\tau} \approx \frac{0.5 G M_0 \rho_text{fluid}}{P_0 r^2 - 0.5 G M_0 \rho_text{fluid} \dot{M}_\text{factor}}$$
 
-For NGC 3603 parameters: G·M₀/r2 ≈ 6.60×10-16 m/s2, ug1_base term_Ubi ≈ 3.30×10-16 m/s2, P₀/ρ_fluid
-= 4×10-8/1×10-20 = 4×1012 m2/s2·(1/m) — this is orders of magnitude larger, indicating P(t)
-dominates early (t << τ) and decays below buoyancy response only after several τ.
+For NGC 3603 parameters: G$\cdot$M0/r2 $\approx$ 6.60$\times$10-16 m/s2, ug1_base term_Ubi $\approx$ 3.30$\times$10-16 m/s2, P0/$\rho$_fluid
+= 4$\times$10-8/1$\times$10-20 = 4$\times$1012 m2/s2$\cdot$(1/m) — this is orders of magnitude larger, indicating P(t)
+dominates early (t << $\tau$) and decays below buoyancy response only after several $\tau$.
 
 **The inversion: t* ~ a few Myr** — consistent with the observed timescale for OB-cluster uncovering
 (NGC 3603's embedded phase ended ~1–3 Myr ago, Crowther et al. 2010).
@@ -185,31 +185,31 @@ dominates early (t << τ) and decays below buoyancy response only after several 
 
 $$g_\text{NGC3603}(r,t) = \underbrace{\frac{G M(t)}{r^2}(1+H_0 t)(1-B/B_\text{crit})}_\text{mass-growing confinement} + \underbrace{\frac{P_0 e^{-t/\tau_text{exp}}}{\rho_text{fluid}}}_\text{decaying pressure} + g_\text{const} + g_\text{buoy}^{(3)}[M(t)]$$
 
-**Scale-Invariant Feedback Theorem (τ_SF = τ_exp case):**
+**Scale-Invariant Feedback Theorem ($\tau$_SF = $\tau$_exp case):**
 
 $$\Phi(t) = \frac{P(t)/\rho_text{fluid}}{G M(t)/r^2} = \text{const} \times \frac{e^{-t/\tau}}{1 + \dot{M}_\text{factor} e^{-t/\tau}} \approx \text{const} \times e^{-t/\tau} \quad (\dot{M}_\text{factor} \ll 1)$$
 
-The self-similarity of Φ(t) under time translation by integer multiples of τ is the mathematical
+The self-similarity of $\Phi$(t) under time translation by integer multiples of $\tau$ is the mathematical
 basis for the universal ~30% star-formation efficiency in massive clusters.
 
 ---
 
 ## 4. Observational Predictions
 
-1. **Star-formation efficiency ~30%:** The Scale-Invariant Feedback Theorem predicts ε_SF ≈ 1/(1 +
-Φ(t=0)) for a cluster that completes its formation at t ≈ τ. For NGC 3603 parameters: ε_SF → 30–35%,
+1. **Star-formation efficiency ~30%:** The Scale-Invariant Feedback Theorem predicts $\varepsilon$_SF $\approx$ 1/(1 +
+$\Phi$(t=0)) for a cluster that completes its formation at t $\approx$ $\tau$. For NGC 3603 parameters: $\varepsilon$_SF $\to$ 30–35%,
 consistent with observed NGC 3603 SFE (Harayama et al. 2008).
 
-2. **Cluster uncovering at t* ~ 1–3 τ_SF:** The cavity pressure term_P falls below the buoyancy
-threshold at t* ~ a few τ_SF = 1 Myr → cluster becomes optically visible at ~1–3 Myr age, consistent
+2. **Cluster uncovering at t* ~ 1–3 $\tau$_SF:** The cavity pressure term_P falls below the buoyancy
+threshold at t* ~ a few $\tau$_SF = 1 Myr $\to$ cluster becomes optically visible at ~1–3 Myr age, consistent
 with the NGC 3603 age estimate of ~2–3 Myr (Kudryavtseva et al. 2012).
 
 3. **Scale-invariance test:** VLT proper motion surveys of multiple YMCs (NGC 3603, R136, Westerlund
-1, Arches) should show consistent Φ(t) decay profiles when normalized by their respective τ_SF,
+1, Arches) should show consistent $\Phi$(t) decay profiles when normalized by their respective $\tau$_SF,
 regardless of cluster mass — a testable UQFF prediction.
 
-4. **Wind velocity signature:** term_wind = ρ_wind·v_wind2 contributes ≈ 4×10-32 m/s2 (for
-ρ_wind=10-20, v_wind=2×106) — below detectability but distinguishable in ensemble averaging of
+4. **Wind velocity signature:** term_wind = $\rho$_wind$\cdot$v_wind2 contributes $\approx$ 4$\times$10-32 m/s2 (for
+$\rho$_wind=10-20, v_wind=2$\times$106) — below detectability but distinguishable in ensemble averaging of
 multiple systems.
 
 ---
@@ -217,9 +217,9 @@ multiple systems.
 ## 5. Significance
 
 1. **First UQFF derivation of scale-invariant feedback** — proves the universality of ~30% SFE
-across cluster mass scales from the MUGE dual-dynamic structure when τ_SF = τ_exp.
+across cluster mass scales from the MUGE dual-dynamic structure when $\tau$_SF = $\tau$_exp.
 
-2. **Resolves the PAPER_218 vs. C++ MUGE distinction** — multiplicative P(t) and additive P(t)/ρ are
+2. **Resolves the PAPER_218 vs. C++ MUGE distinction** — multiplicative P(t) and additive P(t)/$\rho$ are
 physically distinct and complementary representations of the same feedback process at different
 levels of description.
 
@@ -237,7 +237,7 @@ module combining two simultaneously active, independently decaying exponential p
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -256,7 +256,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -397,7 +397,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.098 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -408,13 +408,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -425,7 +425,7 @@ bridge.*
 1. NGC3603.cpp (UQFF 2.0 upgrade, Session 72, March 16, 2026)
 2. PAPER_218 — `NGC3603StellarPressureModulationCalculator`: multiplicative `(1−P(t))` form (Session
 55)
-3. Harayama et al. (2008) — NGC 3603 stellar mass function, M_total ~ 1.6×104 M_sun, SFE ~ 30%
+3. Harayama et al. (2008) — NGC 3603 stellar mass function, M_total ~ 1.6$\times$104 M_sun, SFE ~ 30%
 4. Crowther et al. (2010) — R136 / NGC 3603 OB stars: cluster age and wind parameters
 5. Kudryavtseva et al. (2012) — NGC 3603 proper motions and age: ~2–3 Myr
 6. Lada & Lada (2003) — Embedded clusters in molecular clouds: universal ~30% SFE

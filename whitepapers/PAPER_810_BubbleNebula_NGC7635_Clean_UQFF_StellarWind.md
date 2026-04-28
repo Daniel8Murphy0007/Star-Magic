@@ -26,9 +26,9 @@ The Bubble Nebula (NGC 7635) is a 7-light-year-wide emission nebula formed by th
 BD +60°2522, a Wolf-Rayet star 45 times more massive than the Sun, located 7,100 ly away in
 Cassiopeia. This paper presents a clean, streamlined UQFF master gravity equation for NGC 7635's
 evolution, capturing the balance between stellar gravitational attraction, exponential wind pressure
-decay, cosmic expansion, time-reversal correction, and Aether EM coupling. The result, g_NGC7635 ≈
-1.884×10-3 m/s2 at t = 4 Myr, confirms that the Aether EM correction dominates over the classical
-gravitational term by a factor of ~3.3×108. Source: grok_share_afa84da6.txt, lines 1112–1264 (May
+decay, cosmic expansion, time-reversal correction, and Aether EM coupling. The result, g_NGC7635 $\approx$
+1.884$\times$10-3 m/s2 at t = 4 Myr, confirms that the Aether EM correction dominates over the classical
+gravitational term by a factor of ~3.3$\times$108. Source: grok_share_afa84da6.txt, lines 1112–1264 (May
 09, 2025, 12:31 AM EDT).
 
 ---
@@ -37,7 +37,7 @@ gravitational term by a factor of ~3.3×108. Source: grok_share_afa84da6.txt, li
 - **G1 (Status):** UQFF validated — Wolf-Rayet wind pressure + Aether EM dominance confirmed
 - **G2 (Introduction):** NGC 7635 Bubble Nebula, BD +60°2522 Wolf-Rayet, 7,100 ly
 - **G3 (Methods):** Clean UQFF with exponential P(t) decay + f_TRZ + [UA] EM correction
-- **G4 (Results):** g_NGC7635 ≈ 1.884×10-3 m/s2 at t = 4×106 yr
+- **G4 (Results):** g_NGC7635 $\approx$ 1.884$\times$10-3 m/s2 at t = 4$\times$106 yr
 - **G5 (Conclusion):** Aether EM coupling dominates; framework advances nebular modeling
 - **G6 (SM Anchor):** See §8
 
@@ -63,17 +63,17 @@ the bubble's expansion and future supernova evolution.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Central star mass | M_star | 8.951×1031 kg (45 M_sun) | Hubble |
-| Bubble radius | r | 3.311×1016 m (3.5 ly) | Hubble WFC3 |
-| Wind speed | v_wind | 1.789×106 m/s | Hubble |
-| Gas density | ρ_gas | 1×10-21 kg/m3 | Labs |
-| Magnetic field | B | 1×10-6 T | Labs |
-| Star age / decay timescale | τ_exp | 1.262×1014 s (4×106 yr) | Hubble |
-| Feedback amplitude | P₀ | 0.1 | Model |
-| Hubble constant | H₀ | 2.268×10-18 s-1 (70 km/s/Mpc) | Planck |
+| Central star mass | M_star | 8.951$\times$1031 kg (45 M_sun) | Hubble |
+| Bubble radius | r | 3.311$\times$1016 m (3.5 ly) | Hubble WFC3 |
+| Wind speed | v_wind | 1.789$\times$106 m/s | Hubble |
+| Gas density | $\rho$_gas | 1$\times$10-21 kg/m3 | Labs |
+| Magnetic field | B | 1$\times$10-6 T | Labs |
+| Star age / decay timescale | $\tau$_exp | 1.262$\times$1014 s (4$\times$106 yr) | Hubble |
+| Feedback amplitude | P0 | 0.1 | Model |
+| Hubble constant | H0 | 2.268$\times$10-18 s-1 (70 km/s/Mpc) | Planck |
 | Time-reversal factor | f_TRZ | 0.1 | UQFF |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
-| ρ_vac,[SCm] | — | 7.09×10-37 J/m3 | UQFF |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
+| $\rho$_vac,[SCm] | — | 7.09$\times$10-37 J/m3 | UQFF |
 
 ---
 
@@ -81,12 +81,12 @@ the bubble's expansion and future supernova evolution.
 
 $$
 \begin{aligned}
-  & g_NGC7635(r, t) = [G · M_star / r2] × (1 + H₀·t) × (1 − P(t)) × (1 + f_TRZ) \\
-  & + q·(v × B) × (1 + ρ_vac,[UA]/ρ_vac,[SCm]) × 10-12 \\
+  & g_NGC7635(r, t) = [G \cdot M_star / r2] \times (1 + H0\cdott) \times (1 - P(t)) \times (1 + f_TRZ) \\
+  & + q\cdot(v \times B) \times (1 + \rho_vac,[UA]/\rho_vac,[SCm]) \times 10-12 \\
   & where: \\
-  & P(t) = P₀ × exp(−t / τ_exp)       [stellar wind pressure fraction] \\
-  & = 0.1 × exp(−t / 1.262e14 s) \\
-  & 1 + ρ_vac,[UA]/ρ_vac,[SCm] = 11   [Aether EM correction factor]
+  & P(t) = P0 \times exp(-t / \tau_exp)       [stellar wind pressure fraction] \\
+  & = 0.1 \times exp(-t / 1.262e14 s) \\
+  & 1 + \rho_vac,[UA]/\rho_vac,[SCm] = 11   [Aether EM correction factor]
 \end{aligned}
 $$
 
@@ -98,8 +98,8 @@ $$
 
 $$
 \begin{aligned}
-  & g_grav = G · M_star / r2 \\
-  & = (6.6743e-11 × 8.951e31) / (3.311e16)2 \\
+  & g_grav = G \cdot M_star / r2 \\
+  & = (6.6743e-11 \times 8.951e31) / (3.311e16)2 \\
   & = 5.974e21 / 1.096e33 \\
   & = 5.449e-12 m/s2
 \end{aligned}
@@ -110,8 +110,8 @@ $$
 $$
 \begin{aligned}
   & At t = 4e6 yr = 1.262e14 s: \\
-  & H₀ × t = 2.268e-18 × 1.262e14 = 2.863e-4 \\
-  & (1 + H₀·t) = 1.0002863
+  & H0 \times t = 2.268e-18 \times 1.262e14 = 2.863e-4 \\
+  & (1 + H0\cdott) = 1.0002863
 \end{aligned}
 $$
 
@@ -119,14 +119,14 @@ $$
 
 $$
 \begin{aligned}
-  & t / τ_exp = 1.262e14 / 1.262e14 = 1.0 \\
-  & P(t) = 0.1 × exp(−1.0) = 0.1 × 0.3679 = 0.03679 \\
-  & (1 − P(t)) = 0.96321
+  & t / \tau_exp = 1.262e14 / 1.262e14 = 1.0 \\
+  & P(t) = 0.1 \times exp(-1.0) = 0.1 \times 0.3679 = 0.03679 \\
+  & (1 - P(t)) = 0.96321
 \end{aligned}
 $$
 
-P₀ = 0.1 derived from normalized wind pressure:
-ρ_gas × v2_wind = 10-21 × (1.789×106)2 = 3.200×10-9 N/m2
+P0 = 0.1 derived from normalized wind pressure:
+$\rho$_gas $\times$ v2_wind = 10-21 $\times$ (1.789$\times$106)2 = 3.200$\times$10-9 N/m2
 (expressed as fractional reduction in gravitational attraction)
 
 ### 4.4 Time-Reversal Correction
@@ -139,7 +139,7 @@ $$
 
 $$
 \begin{aligned}
-  & \text{g\_grav\_total} = 5.449e-12 × 1.0002863 × 0.96321 × 1.1 \\
+  & \text{g\_grav\_total} = 5.449e-12 \times 1.0002863 \times 0.96321 \times 1.1 \\
   & = 5.781e-12 m/s2
 \end{aligned}
 $$
@@ -148,15 +148,15 @@ $$
 
 $$
 \begin{aligned}
-  & q × (v × B) = 1.602e-19 × 1.789e6 × 10-6 = 2.866e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1.789e6 \times 10-6 = 2.866e-19 N \\
   & a_EM = 2.866e-19 / 1.673e-27 = 1.713e8 m/s2 \\
-  & Aether factor: 1 + ρ_vac,[UA]/ρ_vac,[SCm] = 11 \\
-  & \text{a\_EM\_corr} = 1.713e8 × 11 = 1.884e9 m/s2 \\
-  & Macroscopic scale factor × 10-12 → 1.884e-3 m/s2
+  & Aether factor: 1 + \rho_vac,[UA]/\rho_vac,[SCm] = 11 \\
+  & \text{a\_EM\_corr} = 1.713e8 \times 11 = 1.884e9 m/s2 \\
+  & Macroscopic scale factor \times 10-12 \to 1.884e-3 m/s2
 \end{aligned}
 $$
 
-Note: v = v_wind = 1.789×106 m/s (wind velocity used for EM coupling), B = 10-6 T (nebular field,
+Note: v = v_wind = 1.789$\times$106 m/s (wind velocity used for EM coupling), B = 10-6 T (nebular field,
 weaker than denser regions).
 
 ### 4.7 Final Result
@@ -164,7 +164,7 @@ weaker than denser regions).
 $$
 \begin{aligned}
   & g_NGC7635 = 5.781e-12 + 1.884e-3 \\
-  & ≈ 1.884×10-3 m/s2   [at t = 4×106 yr]
+  & \approx 1.884\times10-3 m/s2   [at t = 4\times106 yr]
 \end{aligned}
 $$
 
@@ -174,12 +174,12 @@ $$
 
 | Contribution | Value (m/s2) | Fraction |
 |-------------|--------------|---------|
-| Classical gravity (with corrections) | 5.781×10-12 | ~0.000% |
-| Aether EM correction | 1.884×10-3 | ~100% |
-| **Total g_NGC7635** | **1.884×10-3** | **100%** |
+| Classical gravity (with corrections) | 5.781$\times$10-12 | ~0.000% |
+| Aether EM correction | 1.884$\times$10-3 | ~100% |
+| **Total g_NGC7635** | **1.884$\times$10-3** | **100%** |
 
 The classical gravitational term is negligible compared to the Aether EM term by a factor of
-~3.3×108, reflecting the extreme low-density nature of the nebular environment.
+~3.3$\times$108, reflecting the extreme low-density nature of the nebular environment.
 
 ---
 
@@ -187,13 +187,13 @@ The classical gravitational term is negligible compared to the Aether EM term by
 
 ### Stellar Wind Dominance
 For a Wolf-Rayet nebula, the central star is far less massive than a galaxy cluster's total mass,
-but the ionized gas (at ρ ~ 10-21 kg/m3) provides a medium for electromagnetic coupling. The UQFF
+but the ionized gas (at $\rho$ ~ 10-21 kg/m3) provides a medium for electromagnetic coupling. The UQFF
 Aether correction amplifies the EM interaction by factor 11, consistent with the vacuum energy
 density ratio.
 
 ### Supernova Prediction
-At t → 10–20 Myr, the star will explode. Using the P(t) decay:
-- At t = 10 Myr: P(t) = 0.1 × exp(−10/4) = 0.1 × 0.0821 = 0.00821 (nearly zero feedback)
+At t $\to$ 10–20 Myr, the star will explode. Using the P(t) decay:
+- At t = 10 Myr: P(t) = 0.1 $\times$ exp(-10/4) = 0.1 $\times$ 0.0821 = 0.00821 (nearly zero feedback)
 - The bubble will be essentially "free" of stellar wind pressure before the supernova
 
 This clean equation thus naturally predicts the transition from wind-dominated to
@@ -218,10 +218,10 @@ This paper satisfies the G6 Standard-Model Anchor Gate (CVW v2.0.0):
 
 | Observable | UQFF Prediction | SM / Observational Value |
 |-----------|-----------------|-------------------------|
-| Bubble radius | 3.311×1016 m | 3.5 ly = 3.31×1016 m (Hubble WFC3) |
-| Wind speed | 1.789×106 m/s | ~4 million mph = 1,789 km/s (Hubble) |
+| Bubble radius | 3.311$\times$1016 m | 3.5 ly = 3.31$\times$1016 m (Hubble WFC3) |
+| Wind speed | 1.789$\times$106 m/s | ~4 million mph = 1,789 km/s (Hubble) |
 | Star mass | 45 M_sun | BD +60°2522, ~45 M_sun (Hubble) |
-| g_NGC7635 | 1.884×10-3 m/s2 | consistent with nebular dynamics |
+| g_NGC7635 | 1.884$\times$10-3 m/s2 | consistent with nebular dynamics |
 | Supernova timeline | ~10–20 Myr | predicted in 10–20 Myr (Hubble) |
 
 Cross-reference: PAPER_221, PAPER_361, PAPER_440, PAPER_695 (prior Bubble Nebula papers), PAPER_642
@@ -240,7 +240,7 @@ Davinci-SuperGrok (xAI)*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -259,7 +259,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -334,7 +334,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.197 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

@@ -28,7 +28,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\ti
 $$
 \Sigma_text{UQFF}(x,[SSq]) = \sum_{n=1}^{26} Q_n(x)\cdot e^{-[SSq]\cdot n/26}, \quad [SSq] = 0.57
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -48,10 +48,10 @@ integral compared to the phenomenological 12-term form of PAPER_332.
 $$
 \begin{aligned}
   & \text{F\_U\_Bi\_i} = ?_{k=1}^{N} [ k^k \\
-  & · (f_UA'1 · f_SCm1 · REB1) · (f_UA'2 · f_SCm2 · REB2) / r2 \\
-  & · G_k(UA, Ub, ?_THz, geometry_k) \\
-  & + k^4 · ?_vac,[SCm] · M_BH / r \\
-  & · e^{-at} cos(pt_n) · (1 + f_feedback) ]
+  & \cdot (f_UA'1 \cdot f_SCm1 \cdot REB1) \cdot (f_UA'2 \cdot f_SCm2 \cdot REB2) / r2 \\
+  & \cdot G_k(UA, Ub, ?_THz, geometry_k) \\
+  & + k^4 \cdot ?_vac,[SCm] \cdot M_BH / r \\
+  & \cdot e^{-at} cos(pt_n) \cdot (1 + f_feedback) ]
 \end{aligned}
 $$
 
@@ -66,9 +66,9 @@ $$
 | REB1, REB2 | Resonant Energy Bridge factors | Resonant coupling amplitudes |
 | G_k | geometry-dependent | Per-state gravity kernel |
 | ?_THz | 1012 Hz | THz vacuum frequency |
-| ?_vac,[SCm] | ~10?3° × f_SCm kg/m3 | Superconductive vacuum density |
+| ?_vac,[SCm] | ~10?3° $\times$ f_SCm kg/m3 | Superconductive vacuum density |
 | M_BH | system black hole mass | Driving BH/NS mass |
-| a | 5×10-5 day-1 = ? | Same decay constant as Um (PAPER_329) |
+| a | 5$\times$10-5 day-1 = ? | Same decay constant as Um (PAPER_329) |
 | f_feedback | 0 (standard) | AGN feedback modifier |
 
 ### 2.3 Ramanujan co-Sum Mathematical Significance
@@ -84,8 +84,8 @@ $$
 In UQFF, the k^k weighting provides exponentially growing contributions at low k, ensuring the early
 states (k=1,2,3) dominate the sum while higher states provide progressively weaker corrections:
 - k=1: weight = 1 (seed)
-- k=2: weight = 4 (4× amplification)
-- k=3: weight = 27 (27× vs k=1)
+- k=2: weight = 4 (4$\times$ amplification)
+- k=3: weight = 27 (27$\times$ vs k=1)
 - k=4: weight = 256
 
 This is consistent with the 26-state TRIADIC architecture where states 1–3 are the primary "triadic"
@@ -95,19 +95,19 @@ contributors.
 
 The product `(f_UA'1 · f_SCm1 · REB1) · (f_UA'2 · f_SCm2 · REB2)` is a **bilinear form** over state
 pairs:
-- Active states: f_UA' × f_SCm (vacuum fraction product)
-- Cross-coupling: REB1 × REB2 (resonant energy bridge pair)
+- Active states: f_UA' $\times$ f_SCm (vacuum fraction product)
+- Cross-coupling: REB1 $\times$ REB2 (resonant energy bridge pair)
 - Division by r2: gravity scaling with distance squared
 
-For calibrated values: f_UA'=0.999, f_SCm=0.001 ? product = 9.99×10-4
-With REB1/REB2 ~ 1 (unit resonant coupling): bilinear = 9.99×10-7 per state pair
+For calibrated values: f_UA'=0.999, f_SCm=0.001 ? product = 9.99$\times$10-4
+With REB1/REB2 ~ 1 (unit resonant coupling): bilinear = 9.99$\times$10-7 per state pair
 
 ### 2.5 Compact/Galactic Results (Vela/Crab vs. NGC 1365)
 
 $$
 \begin{aligned}
-  & [compact, x_2=2.9 kly]:  \text{F\_U\_Bi\_i} ˜ -2.09×10212 N \\
-  & [galactic, x_2=60.7 Mly]: \text{F\_U\_Bi\_i} ˜ -8.32×10217 N
+  & [compact, x_2=2.9 kly]:  \text{F\_U\_Bi\_i} ˜ -2.09\times10212 N \\
+  & [galactic, x_2=60.7 Mly]: \text{F\_U\_Bi\_i} ˜ -8.32\times10217 N
 \end{aligned}
 $$
 
@@ -119,16 +119,16 @@ $$
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi} = ?_{k=1}^{N} [ k_Ub,k · f_UA' · f_SCm · REB / r2 \\
-  & · H_k(?_THz, U_b, geometry_k) \\
-  & · f_Ub ]
+  & \text{F\_U\_Bi} = ?_{k=1}^{N} [ k_Ub,k \cdot f_UA' \cdot f_SCm \cdot REB / r2 \\
+  & \cdot H_k(?_THz, U_b, geometry_k) \\
+  & \cdot f_Ub ]
 \end{aligned}
 $$
 
 ### 3.2 f_Ub Volume Ratio Definition (NEW)
 
 $$
-f_Ub = k_Ub · ?k_? · (?_vac,[UA] / ?_vac,[SCm]) · (V_little / V_big) ~ 0.1
+f_Ub = k_Ub \cdot ?k_? \cdot (?_vac,[UA] / ?_vac,[SCm]) \cdot (V_little / V_big) ~ 0.1
 $$
 
 | Symbol | Value | Description |
@@ -147,7 +147,7 @@ where V_little is the pulsar wind region.
 ### 3.3 H_k Geometry Kernel
 
 $$
-H_k(?_THz, U_b, geometry_k) = H_k,0 · [?_THz/?_ref] · U_b · O_k
+H_k(?_THz, U_b, geometry_k) = H_k,0 \cdot [?_THz/?_ref] \cdot U_b \cdot O_k
 $$
 - ?_THz = 1012 Hz (THz reference frequency)
 - U_b = buoyancy energy per state
@@ -157,7 +157,7 @@ $$
 ### 3.4 Compact Class Result
 
 $$
-\text{F\_U\_Bi} (compact) ˜ 9.79×10?33 N  [Vela/Crab geometry: k_Ub=0.1, f_Ub˜0.1]
+\text{F\_U\_Bi} (compact) ˜ 9.79\times10?33 N  [Vela/Crab geometry: k_Ub=0.1, f_Ub˜0.1]
 $$
 
 This is positive (upward buoyancy) — consistent with PAPER_256 (Positive buoyancy for compact
@@ -187,8 +187,8 @@ $$
 1. **FIRST k^k Ramanujan-inspired integer co-summation** in F_U_Bi_i — `? k^k ·
 (f_UA'1·f_SCm1·REB1)·(f_UA'2·f_SCm2·REB2)/r2`
 2. **FIRST F_U_Bi explicit H_k geometry-kernel function** — H_k(?_THz, U_b, geometry_k)
-3. **FIRST f_Ub volume ratio definition** — k_Ub·?k_?·(?_UA/?_SCm)·(V_little/V_big)~0.1
-4. **FIRST bilinear REB pairing** — f_UA'1·f_SCm1·REB1 × f_UA'2·f_SCm2·REB2
+3. **FIRST f_Ub volume ratio definition** — k_Ub$\cdot$?k_?$\cdot$(?_UA/?_SCm)$\cdot$(V_little/V_big)~0.1
+4. **FIRST bilinear REB pairing** — f_UA'1$\cdot$f_SCm1$\cdot$REB1 $\times$ f_UA'2$\cdot$f_SCm2$\cdot$REB2
 
 ---
 
@@ -196,14 +196,14 @@ $$
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = ?_{k=1}^{N} [k^k · (f_UA'1·f_SCm1·REB1)·(f_UA'2·f_SCm2·REB2)/r2 \\
-  & · G_k(UA,Ub,?_THz,geometry_k) \\
-  & + k^4·?_vac,[SCm]·M_BH/r·e^{-at}cos(pt_n)(1+f_feedback)] \\
-  & \text{F\_U\_Bi} = ?_{k=1}^{N} [k_Ub,k·f_UA'·f_SCm·REB/r2·H_k(?_THz,U_b,geometry_k)·f_Ub] \\
-  & f_Ub = k_Ub·?k_?·(?_vac,[UA]/?_vac,[SCm])·(V_little/V_big) ~ 0.1 \\
-  & f_UA' = 0.999  [calibrated]; f_SCm = 0.001  [calibrated]; a = 5×10-5 day-1 \\
-  & [compact]  \text{F\_U\_Bi\_i} ˜ -2.09×10212 N; \text{F\_U\_Bi} ˜ +9.79×10?33 N \\
-  & [galactic] \text{F\_U\_Bi\_i} ˜ -8.32×10217 N
+  & \text{F\_U\_Bi\_i} = ?_{k=1}^{N} [k^k \cdot (f_UA'1\cdotf_SCm1\cdotREB1)\cdot(f_UA'2\cdotf_SCm2\cdotREB2)/r2 \\
+  & \cdot G_k(UA,Ub,?_THz,geometry_k) \\
+  & + k^4\cdot?_vac,[SCm]\cdotM_BH/r\cdote^{-at}cos(pt_n)(1+f_feedback)] \\
+  & \text{F\_U\_Bi} = ?_{k=1}^{N} [k_Ub,k\cdotf_UA'\cdotf_SCm\cdotREB/r2\cdotH_k(?_THz,U_b,geometry_k)\cdotf_Ub] \\
+  & f_Ub = k_Ub\cdot?k_?\cdot(?_vac,[UA]/?_vac,[SCm])\cdot(V_little/V_big) ~ 0.1 \\
+  & f_UA' = 0.999  [calibrated]; f_SCm = 0.001  [calibrated]; a = 5\times10-5 day-1 \\
+  & [compact]  \text{F\_U\_Bi\_i} ˜ -2.09\times10212 N; \text{F\_U\_Bi} ˜ +9.79\times10?33 N \\
+  & [galactic] \text{F\_U\_Bi\_i} ˜ -8.32\times10217 N
 \end{aligned}
 $$
 
@@ -233,7 +233,7 @@ future observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -252,7 +252,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -320,7 +320,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -425,7 +425,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.138 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -436,13 +436,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

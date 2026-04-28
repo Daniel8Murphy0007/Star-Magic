@@ -11,13 +11,13 @@ tags: [vacuum, SCm, jet, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_122: UQFF Compressed Mode Verification – PDG 2025 241-Particle Nuclear Energy Ladder: E_n = E_0 × 10^n with R = 0.95 and Higgs Mapping at n=12
+# PAPER_122: UQFF Compressed Mode Verification – PDG 2025 241-Particle Nuclear Energy Ladder: E_n = E_0 $\times$ 10^n with R = 0.95 and Higgs Mapping at n=12
 
 **Title:** UQFF Compressed Mode Verification – PDG 2025 241-Particle Nuclear Energy Ladder: E_n =
-E_0 × 10^n with R = 0.95 and Higgs Mapping at n=12
+E_0 $\times$ 10^n with R = 0.95 and Higgs Mapping at n=12
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -31,7 +31,7 @@ E_0 × 10^n with R = 0.95 and Higgs Mapping at n=12
 
 This paper presents the UQFF Compressed Mode verification through PDG 2025 particle physics data
 spanning 241 identified particles across 26 energy levels. The UQFF 26-level polynomial hierarchy
-E_n = E_0 × 10^n (E_0 = 10? J) maps particle energies from sub-quantum quark virtuality (n=4, ~10?6
+E_n = E_0 $\times$ 10^n (E_0 = 10? J) maps particle energies from sub-quantum quark virtuality (n=4, ~10?6
 J) through nuclear bindings (n=8, ~10? J), Higgs boson mass (n=12, ~10?8 J), to galactic jet
 luminosity (n=22, ~10 J). A polynomial fit V(r)  S a_n r^n produces R = 0.95 for low-degree fits to
 the ENSDF/PDG combined dataset, confirming the hierarchical structure. The [SSq] = 0.57
@@ -40,7 +40,7 @@ validated across the full 241-particle spectrum. UQFF Compressed Mode DISCOVERY:
 maps to an integer or near-integer n, with fractional ?n encoding the particle's binding
 configuration within the [SCm]-[UA] vacuum.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -54,13 +54,13 @@ energy benchmarks for the 26-level polynomial:
 | Particle | Rest Energy (J) | PDG Value | UQFF Level n | Error |
 |----------|----------------|-----------|-------------|-------|
 | u quark (virtual) | ~10?6 | m_u  2.2 MeV | n=4 | <5% |
-| Electron | 8.19×10?4 J | m_e c = 0.511 MeV | n=6 | 0.9% |
-| Pion p | 2.41×10? J | m_p c = 135 MeV | n=9 | 1.8% |
-| Proton | 1.50×10? J | m_p c = 938.3 MeV | n=10 | 0.1% |
-| W boson | 1.31×10-8 J | m_W c = 80.4 GeV | n=12 | 2.2% |
-| Higgs boson | 2.01×10-8 J | m_H c = 125.18 GeV | n=12 | 2.4% |
-| Z boson | 1.48×10-8 J | m_Z c = 91.2 GeV | n=12 | 4.5% |
-| Top quark | 2.77×10-8 J | m_t c = 173 GeV | n=12 | 5.9% |
+| Electron | 8.19$\times$10?4 J | m_e c = 0.511 MeV | n=6 | 0.9% |
+| Pion p | 2.41$\times$10? J | m_p c = 135 MeV | n=9 | 1.8% |
+| Proton | 1.50$\times$10? J | m_p c = 938.3 MeV | n=10 | 0.1% |
+| W boson | 1.31$\times$10-8 J | m_W c = 80.4 GeV | n=12 | 2.2% |
+| Higgs boson | 2.01$\times$10-8 J | m_H c = 125.18 GeV | n=12 | 2.4% |
+| Z boson | 1.48$\times$10-8 J | m_Z c = 91.2 GeV | n=12 | 4.5% |
+| Top quark | 2.77$\times$10-8 J | m_t c = 173 GeV | n=12 | 5.9% |
 
 **241-particle fit result:** R = 0.95 for polynomial degree d=4; R = 0.987 for d=8. All 241
 particles fall within 1 polynomial level of predicted E_n value.
@@ -145,7 +145,7 @@ print(f"R = {R2:.4f}")  # Outputs: R ≈ 0.9527
 print(f"n_levels = {np.round(n_predicted, 2)}")
 ```
 
-**Output:** R ≈ 0.95, confirming UQFF level assignment.
+**Output:** R $\approx$ 0.95, confirming UQFF level assignment.
 
 ---
 
@@ -153,7 +153,7 @@ print(f"n_levels = {np.round(n_predicted, 2)}")
 
 ### 4.1 Primary Discovery
 
-**The E_n = E_0 × 10^n hierarchy is UNIVERSALLY valid across all 241 PDG particles.** No standard
+**The E_n = E_0 $\times$ 10^n hierarchy is UNIVERSALLY valid across all 241 PDG particles.** No standard
 physics model predicts this exponential integer scaling; it emerges naturally from the [SCm]-[UA]
 vacuum condensate 26-shell structure.
 
@@ -187,8 +187,8 @@ Using the `PDGEnergyLadderCalculator` in CP2:
 |--------|----------------|-------------|-----------|
 | 241 particle coverage | All within 1 level | PDG 2025 catalog | ? 100% |
 | R (polynomial fit degree 4) | 0.95 | Cross-validated | ? |
-| Higgs at n=12 | 10-8 J | 2.01×10-8 J | ? factor-2 |
-| Proton at n=10 | 10? J | 1.5×10? J | ? 50% |
+| Higgs at n=12 | 10-8 J | 2.01$\times$10-8 J | ? factor-2 |
+| Proton at n=10 | 10? J | 1.5$\times$10? J | ? 50% |
 | Level spacing ratio | [SSq]=0.57 | Inter-level ?n=0.20§0.21 | ? consistent |
 
 ---
@@ -196,12 +196,12 @@ Using the `PDGEnergyLadderCalculator` in CP2:
 ## 6. Results
 
 The UQFF Compressed Mode successfully reproduces the PDG 2025 241-particle energy spectrum with R =
-0.95. The discrete 26-level exponential hierarchy E_n = E_0 × 10^n provides a predictive framework
+0.95. The discrete 26-level exponential hierarchy E_n = E_0 $\times$ 10^n provides a predictive framework
 for particle mass assignments. The [SSq] = 0.57 compression ratio governs sub-level spacing,
 explaining fractional ?n values (0.20 for ATLAS virtual quarks, 0.21 for Pb-206 nuclear levels).
 
 Key result: **The Higgs boson maps to exactly 2E12**  consistent with UQFF's prediction that the
-Higgs marks the boundary between plasma/molecular (n=1115) and atomic/nuclear (n=6×10) regimes via
+Higgs marks the boundary between plasma/molecular (n=1115) and atomic/nuclear (n=6$\times$10) regimes via
 the [UA] condensate at stellar scale.
 
 ---
@@ -216,7 +216,7 @@ why seemingly different particles cluster at the same mass scale (e.g., W, Z, Hi
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ## 8. References
@@ -238,7 +238,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -257,12 +257,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -362,7 +362,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.146 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -371,13 +371,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

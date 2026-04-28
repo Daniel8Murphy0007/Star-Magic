@@ -10,7 +10,7 @@ tags: [AGN, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_306 — Lagoon Nebula Herschel 36 Radiation Erosion: η_rad = 1.53×1018
+# PAPER_306 — Lagoon Nebula Herschel 36 Radiation Erosion: $\eta$_rad = 1.53$\times$1018
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis reveals that the single O7V star Herschel 36
 produces a radiation pressure acceleration that exceeds the nebula's self-gravity by **18 orders of
-magnitude**: η_rad = a_rad/g_base = **1.53×1018**. This is the **FIRST UQFF single-point-source
+magnitude**: $\eta$_rad = a_rad/g_base = **1.53$\times$1018**. This is the **FIRST UQFF single-point-source
 radiation pressure parameter** computed across all 29 C++ UQFF modules, and explains the blister H
 II morphology of the Lagoon Nebula as driven by sustained radiation erosion from one dominant
 ionizing source.
@@ -29,12 +29,12 @@ ionizing source.
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| L_H36 | 7.65×1031 W | Herschel 36 (O7V) bolometric luminosity |
-| r | 5.2×1017 m | Nebula half-span (~55 ly) |
-| ρ_fluid | 1×10-20 kg/m3 | Nebula gas density |
-| c | 2.998×108 m/s | Speed of light |
-| M0 | 1.989×1034 kg | Molecular cloud mass (1e4 M_sun) |
-| g_base | 4.91×10-12 m/s2 | G×M0/r2 |
+| L_H36 | 7.65$\times$1031 W | Herschel 36 (O7V) bolometric luminosity |
+| r | 5.2$\times$1017 m | Nebula half-span (~55 ly) |
+| $\rho$_fluid | 1$\times$10-20 kg/m3 | Nebula gas density |
+| c | 2.998$\times$108 m/s | Speed of light |
+| M0 | 1.989$\times$1034 kg | Molecular cloud mass (1e4 M_sun) |
+| g_base | 4.91$\times$10-12 m/s2 | G$\times$M0/r2 |
 
 ---
 
@@ -69,7 +69,7 @@ magnitude**.
 
 ### Blister H II Morphology
 
-The extreme η_rad = 1.53×1018 explains the Lagoon Nebula's characteristic blister morphology:
+The extreme $\eta$_rad = 1.53$\times$1018 explains the Lagoon Nebula's characteristic blister morphology:
 
 - Herschel 36 drives a supersonic ionization front outward from the molecular cloud face
 - Radiation erosion (a_rad >> g_base) prevents gas from falling back under self-gravity
@@ -81,7 +81,7 @@ Unlike multi-star associations (e.g., M42 Trapezium), the Lagoon Nebula's Hourgl
 dominated by Herschel 36 as a single ionizing source:
 
 - Herschel 36 provides ~80% of ionizing photons (Q_Lyc ~ 1049 s-1)
-- The single-source calculation η_rad = 1.53×1018 captures this dominance
+- The single-source calculation $\eta$_rad = 1.53$\times$1018 captures this dominance
 - **FIRST** such single-source UQFF parameter — contrast with PAPER_306's ensemble approach in M16/M42
 
 ### UQFF Role
@@ -97,13 +97,13 @@ creating the net outward-driving force that sculpts the HII zone.
 
 ## Comparison with Prior Radiation Terms
 
-| Module | System | η_rad | Source | Session |
+| Module | System | $\eta$_rad | Source | Session |
 |--------|--------|-------|--------|---------|
-| LAGOON (PAPER_306) | M8 Lagoon | **1.53×1018** | Single star (Herschel 36 O7V) | 87 |
+| LAGOON (PAPER_306) | M8 Lagoon | **1.53$\times$1018** | Single star (Herschel 36 O7V) | 87 |
 | EAGLE (PAPER_284) | M16 Eagle | ~1016 | OB cluster ensemble | earlier |
 | PILLARS (SOURCE4) | M16 Pillars | ~1015 | Embedded OB flux | SOURCE4 |
 
-**M8 achieves the highest single-source η_rad across all computed systems.**
+**M8 achieves the highest single-source $\eta$_rad across all computed systems.**
 
 ---
 
@@ -118,7 +118,7 @@ creating the net outward-driving force that sculpts the HII zone.
 
 ---
 
-*Computed values: flux=7.511e-14 Pa, a_rad=7.51×106 m/s2, g_base=4.91×10-12 m/s2, η_rad=1.53×1018*
+*Computed values: flux=7.511e-14 Pa, a_rad=7.51$\times$106 m/s2, g_base=4.91$\times$10-12 m/s2, $\eta$_rad=1.53$\times$1018*
 
 
 **Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at
@@ -134,7 +134,7 @@ observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -153,7 +153,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -228,7 +228,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -239,13 +239,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

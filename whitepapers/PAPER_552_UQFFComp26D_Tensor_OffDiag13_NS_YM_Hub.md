@@ -10,9 +10,9 @@ tags: [SCm, buoyancy, 26D, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_552: Full UQFF_comp 26D Tensor — Off-Diagonal ∂^13 Couplings, NS Smoothness, and YM Mass Gap Hub
+# PAPER_552: Full UQFF_comp 26D Tensor — Off-Diagonal $\partial$^13 Couplings, NS Smoothness, and YM Mass Gap Hub
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
@@ -25,7 +25,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of Off-Diagonal ∂^13 Couplings, NS Smoothness, and YM Mass Gap
+This paper presents a UQFF analysis of Off-Diagonal $\partial$^13 Couplings, NS Smoothness, and YM Mass Gap
 Hub, deriving compressed field equations and observational predictions within the Star-Magic/UQFF
 framework.
 
@@ -94,7 +94,7 @@ For $r > 0$: each term is finite ($1/r^{k+26}$ bounded away from origin). The fa
 
 **Existence:** The 3D-IPO helical crossings (per $\pi$ irrationality) guarantee at least one solution at each time step (IVT argument).
 
-**Uniqueness:** $\pi$ irrationality → non-repeating crossings → unique solution fingerprint per DVP prime $p = 113$.
+**Uniqueness:** $\pi$ irrationality $\to$ non-repeating crossings $\to$ unique solution fingerprint per DVP prime $p = 113$.
 
 ---
 
@@ -146,7 +146,7 @@ construction.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -165,7 +165,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -201,7 +201,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -304,7 +304,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.182 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -315,20 +315,20 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Yang-Mills mass gap (Millennium) | UQFF DPM quantisation → minimum energy Δ > 0 via U_m buoyancy floor | Clay Math. YM Problem: mass gap existence unknown | Clay / Jaffe-Witten 2006 | UQFF establishes mass gap via buoyancy |
-| QCD confinement (pion mass) | UQFF: Δ_YM = κ × m_π c2 / β_i ≈ 0.35 GeV | Pion mass m_π = 134.977 MeV; quark confinement Λ_QCD ~ 217 MeV | PDG 2024 | PASS UQFF in QCD confinement range |
-| Asymptotic freedom scale | UQFF k_η = 10-113 → UV completion above M_UQFF ~ 108·3 GeV | QCD Landau pole: g→0 as E→∞ (asymptotic freedom) | PDG 2024 QCD | PASS UQFF UV-complete by k_η suppression |
-| Gluon condensate ⟨G2⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV4 | ⟨αₛG2/π⟩ ~ 0.012 GeV4 (SVZ sum rules) | SVZ 1979; lattice QCD | PASS Consistent |
+| Yang-Mills mass gap (Millennium) | UQFF DPM quantisation $\to$ minimum energy $\Delta$ > 0 via U_m buoyancy floor | Clay Math. YM Problem: mass gap existence unknown | Clay / Jaffe-Witten 2006 | UQFF establishes mass gap via buoyancy |
+| QCD confinement (pion mass) | UQFF: $\Delta$_YM = $\kappa$ $\times$ m_$\pi$ c2 / $\beta$_i $\approx$ 0.35 GeV | Pion mass m_$\pi$ = 134.977 MeV; quark confinement $\Lambda$_QCD ~ 217 MeV | PDG 2024 | PASS UQFF in QCD confinement range |
+| Asymptotic freedom scale | UQFF k_$\eta$ = 10-113 $\to$ UV completion above M_UQFF ~ 108$\cdot$3 GeV | QCD Landau pole: g$\to$0 as E$\to$$\infty$ (asymptotic freedom) | PDG 2024 QCD | PASS UQFF UV-complete by k_$\eta$ suppression |
+| Gluon condensate ⟨G2⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV4 | ⟨$\alpha$ₛG2/$\pi$⟩ ~ 0.012 GeV4 (SVZ sum rules) | SVZ 1979; lattice QCD | PASS Consistent |
 
 **New physics claim:** UQFF DPM quantisation provides a physical mechanism for the Yang-Mills
 mass gap: the minimum vacuum buoyancy excitation energy (U_m floor) prevents massless gauge
-field configurations, establishing Δ > 0 from vacuum topology rather than perturbative QCD alone.
+field configurations, establishing $\Delta$ > 0 from vacuum topology rather than perturbative QCD alone.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
 
-*Star Magic / UQFF Framework · Session 147 · grok_share_b08cc4e3684.txt*
+*Star Magic / UQFF Framework $\cdot$ Session 147 $\cdot$ grok_share_b08cc4e3684.txt*
 
 
 

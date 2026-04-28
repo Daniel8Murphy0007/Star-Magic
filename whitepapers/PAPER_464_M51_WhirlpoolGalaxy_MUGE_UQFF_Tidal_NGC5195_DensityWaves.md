@@ -23,7 +23,7 @@ interaction; FIRST spiral density wave coupling in UQFF gravity
 **CP4 Class:** Pending (dc707f5d3 batch)
 **C++ Module:** `M51UQFFModule.h` / `M51UQFFModule.cpp`
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 
 ---
 
@@ -32,10 +32,10 @@ interaction; FIRST spiral density wave coupling in UQFF gravity
 This paper presents the complete M51 (Whirlpool Galaxy) gravitational evolution model under the
 Master Universal Gravity Equation (MUGE) integrated with the Unified Quantum Field Framework (UQFF).
 The system models M51's gravitational dynamics incorporating tidal interaction with NGC 5195, spiral
-arm density wave pressure, central black hole (M_BH = 1×106 MM_sun) jet/torus contribution, star
-formation rate SFR = 1 MM_sun/yr, and dark matter halo. The total effective gravity g_M51 ≈ 3×1036 m/s2
+arm density wave pressure, central black hole (M_BH = 1$\times$106 MM_sun) jet/torus contribution, star
+formation rate SFR = 1 MM_sun/yr, and dark matter halo. The total effective gravity g_M51 $\approx$ 3$\times$1036 m/s2
 at t = 500 Myr is dominated by dark matter and fluid terms, with tidal F_env providing the dominant
-environmental correction. The competing attractive (g_base, Ug1, Ug3′) and repulsive (Ug2, Λ)
+environmental correction. The competing attractive (g_base, Ug1, Ug3′) and repulsive (Ug2, $\Lambda$)
 components demonstrate the UQFF's capacity to model interacting galaxy dynamics with multi-term
 precision.
 
@@ -47,16 +47,16 @@ precision.
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M (total) | 1.6×1011 MM_sun (~3.18×1041 kg) | Total M51 mass |
-| M_BH | 1×106 MM_sun | Central black hole mass |
-| M_NGC5195 | 1×1010 MM_sun | Companion galaxy mass |
-| r | 23.58 kpc (~7.28×1020 m) | Effective radius |
+| M (total) | 1.6$\times$1011 MM_sun (~3.18$\times$1041 kg) | Total M51 mass |
+| M_BH | 1$\times$106 MM_sun | Central black hole mass |
+| M_NGC5195 | 1$\times$1010 MM_sun | Companion galaxy mass |
+| r | 23.58 kpc (~7.28$\times$1020 m) | Effective radius |
 | SFR | 1 MM_sun/yr | Star formation rate |
 | d_NGC5195 | 50 kpc | Separation from companion |
-| B | 1×10-5 T | M51 magnetic field |
+| B | 1$\times$10-5 T | M51 magnetic field |
 | z | 0.002 | Redshift |
-| ρ_fluid | 1×10-20 kg/m3 | ISM gas density |
-| M_DM | ~0.85 × M_total | Dark matter fraction |
+| $\rho$_fluid | 1$\times$10-20 kg/m3 | ISM gas density |
+| M_DM | ~0.85 $\times$ M_total | Dark matter fraction |
 
 ### 2.2 Master Gravitational Equation
 
@@ -101,14 +101,14 @@ The DM fraction follows $M_{\rm DM} = 0.85 \times M$, $M_{\rm visible} = 0.15 \t
 
 $$\boxed{g_{\rm M51}(r, t) = \frac{G M_{\rm sf}(t)}{r(t)^2}(1+H_z t)(1 - B/B_{\rm crit})(1+F_{\rm tidal}+F_{\rm SF})(1+f_{\rm TRZ}) + \sum U_{gi} + \frac{\Lambda c^2}{3} + U_i + g_{\rm quantum} + g_{\rm fluid} + g_{\rm DM}}$$
 
-**Computed Result:** $g_{\rm M51} \approx 3 \times 10^{36}\ \mathrm{m/s}^2$ at $t = 500$ Myr, $r = 10$ kpc — DM/fluid dominant; repulsive Λ and Ug2 terms advance the UQFF multi-pole framework for interacting galaxy pairs.
+**Computed Result:** $g_{\rm M51} \approx 3 \times 10^{36}\ \mathrm{m/s}^2$ at $t = 500$ Myr, $r = 10$ kpc — DM/fluid dominant; repulsive $\Lambda$ and Ug2 terms advance the UQFF multi-pole framework for interacting galaxy pairs.
 
 ---
 
 ## 4. Physical Interpretation
 
 - **Tidal compression** from NGC 5195 is the primary F_env driver — demonstrating that galaxy interactions can be fully captured in UQFF's modular F_env(t) framework without SM approximations.
-- **Competing attractive/repulsive structure**: Ug1 (dipole), Ug3′ (external) are attractive; Ug2 (superconductor), Λ (cosmological) are repulsive — modeling the real observed spiral arm structure of M51.
+- **Competing attractive/repulsive structure**: Ug1 (dipole), Ug3′ (external) are attractive; Ug2 (superconductor), $\Lambda$ (cosmological) are repulsive — modeling the real observed spiral arm structure of M51.
 - **Spiral density waves**: reflected in SFR and r(t) expansion coupling.
 
 ---
@@ -130,7 +130,7 @@ $$\boxed{g_{\rm M51}(r, t) = \frac{G M_{\rm sf}(t)}{r(t)^2}(1+H_z t)(1 - B/B_{\r
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -149,7 +149,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -285,7 +285,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.124 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -296,10 +296,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Coupling, and the Iron Peak Reference
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Validator:** `t`est_phase2_validation`.py` Suite 2: 12/12 PASS | `Q`Calc_Phase1_Validation`.py` Test
 1: PASS  
@@ -36,7 +36,7 @@ corresponds to the maximum UA-SCm nuclear coupling (g = 1000), not numerical cor
 polynomial check confirms 6.25 MeV per nucleon vs. the expected 8 MeV average (21.97% error, within
 the 50% tolerance). All nuclear binding tests pass.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -67,10 +67,10 @@ Pairing term d(A,Z):
 
 Iron-56: A = 56, Z = 26, N = 30 (even-even ? d = +1)
 
-**Volume term:** 15.75 × 56 = 882.0 MeV  
-**Surface term:** 17.80 × 56^(2/3) = 17.80 × 14.62 = 260.2 MeV  
-**Coulomb term:** 0.711 × 26 / 56^(1/3) = 0.711 × 676 / 3.826 = 125.6 MeV  
-**Asymmetry term:** 23.70  (56-52) / 56 = 23.70 × 16 / 56 = 6.8 MeV  
+**Volume term:** 15.75 $\times$ 56 = 882.0 MeV  
+**Surface term:** 17.80 $\times$ 56^(2/3) = 17.80 $\times$ 14.62 = 260.2 MeV  
+**Coulomb term:** 0.711 $\times$ 26 / 56^(1/3) = 0.711 $\times$ 676 / 3.826 = 125.6 MeV  
+**Asymmetry term:** 23.70  (56-52) / 56 = 23.70 $\times$ 16 / 56 = 6.8 MeV  
 **Pairing term:** 11.18 / v56  (+1) = 11.18 / 7.483 = 1.49 MeV  
 
 **B_SEMF(Fe-56) = 882.0 - 260.2 - 125.6 - 6.8 + 1.49 = 490.9 MeV**  
@@ -87,7 +87,7 @@ The UQFF adds a vacuum-mediated correction:
 
 $$B_{\rm UQFF}(A, Z) = g_{\rm coupling}(A) \times V_{\rm nuc}(A) \times \rho_{\rm SCm} \times k_{\rm conv}$$
 
-where k_conv = 6.242×10 converts J ? MeV.
+where k_conv = 6.242$\times$10 converts J ? MeV.
 
 ### 3.1 Nuclear Volume
 
@@ -95,13 +95,13 @@ The nuclear radius follows the empirical formula r_nuc = r0  A^(1/3), r0 = 1.2 f
 
 $$V_{\rm nuc}(A) = \frac{4}{3}\pi r_0^3 A = \frac{4}{3}\pi (1.2\times10^{-15})^3 A = 7.24\times10^{-45} \times A \text{ m}^3$$
 
-For Fe-56: V_nuc = 7.24×10-45 × 56 = 4.05×10-4 m
+For Fe-56: V_nuc = 7.24$\times$10-45 $\times$ 56 = 4.05$\times$10-4 m
 
 ### 3.2 Coupling Constant
 
 $$g_{\rm coupling}(A) = \frac{\rho_{\rm SCm}}{\rho_{\rm UA}} \times \left(\frac{A}{A_0}\right)^{1/3} = 1000 \times \left(\frac{A}{56}\right)^{1/3}$$
 
-For Fe-56: g = 1000 × 1 = **1000** (maximum coupling at iron peak)
+For Fe-56: g = 1000 $\times$ 1 = **1000** (maximum coupling at iron peak)
 
 ### 3.3 Numerical Result
 
@@ -148,12 +148,12 @@ The 26-level polynomial assigns Level 8 to the nuclear energy scale:
 
 $$E_8 = 10^{8-20} \text{ J} = 10^{-12} \text{ J}$$
 
-Converting to MeV: E8 = 10? J  (1 MeV / 1.602×10? J) = **6.25 MeV**
+Converting to MeV: E8 = 10? J  (1 MeV / 1.602$\times$10? J) = **6.25 MeV**
 
 Comparison to average nuclear binding energy per nucleon:
 - Expected: ~8 MeV/nucleon (the consensus "nuclear binding energy scale")
 - Calculated: 6.25 MeV
-- Error: (8.0 - 6.25)/8.0 × 100% = **21.97%**
+- Error: (8.0 - 6.25)/8.0 $\times$ 100% = **21.97%**
 - Tolerance: 50%
 
 **Result: Level 8 nuclear binding check ? PASS** (21.97% < 50%)
@@ -207,13 +207,13 @@ terminates at Fe-56 not only due to Coulomb repulsion but because further fusion
 beyond the g = 1000 reference coupling, reducing efficiency of the vacuum-nuclear coupling mechanism
 
 *Validator: `t`est_phase2_validation`.py` Suite 2 12/12 PASS | Fe-56 Binding PASS | UA-SCm Coupling
-PASS | κ = 0.0005/day | [SSq] = 0.57*
+PASS | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -252,14 +252,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -274,10 +274,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -285,9 +285,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -295,8 +295,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -372,7 +372,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

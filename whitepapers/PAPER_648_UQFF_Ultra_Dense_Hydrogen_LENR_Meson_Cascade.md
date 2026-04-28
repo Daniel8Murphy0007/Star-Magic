@@ -28,11 +28,11 @@ $$E_{\text{LENR}} = m_e c^2 \cdot e^{-26}; \quad \text{Rate} = f \cdot \exp!\lef
 
 The AVS62 module presents a complete LENR (Low-Energy Nuclear Reactions) framework
 centered on ultra-dense hydrogen D(-1) — Rydberg matter in the deepest excitation state
-with bond distance 2.3±0.1 pm and density ~1029 cm-3 (≈ 140 kg/cm3). The energy
+with bond distance 2.3$\pm$0.1 pm and density ~1029 cm-3 ($\approx$ 140 kg/cm3). The energy
 equation E = mc2e-26 directly connects Rydberg matter LENR to the UQFF 26th-order
 derivative framework, identifying the 26th Rydberg level as the fusion activation threshold.
-The meson decay cascade (proton → D±(0) → K± → π± → µ± → e±) provides the
-prime-energy stepping sequence (938 → 493 → 139 → 105 → 0.511 MeV) that maps to
+The meson decay cascade (proton $\to$ D$\pm$(0) $\to$ K$\pm$ $\to$ $\pi$$\pm$ $\to$ µ$\pm$ $\to$ e$\pm$) provides the
+prime-energy stepping sequence (938 $\to$ 493 $\to$ 139 $\to$ 105 $\to$ 0.511 MeV) that maps to
 the UQFF Dipole Vortex Prime sequence (PAPER_649). Fusion channels include proton-
 proton (0.42 MeV), D+D (3.3/4.0/24 MeV), and p+3He (18.8 MeV), with muon-catalyzed
 fusion yielding KER = 630 eV at laser-induced densities.
@@ -48,11 +48,11 @@ is the lowest (deepest bound) Rydberg state of deuterium/hydrogen clusters:
 
 | Parameter | Value | Note |
 |-----------|-------|------|
-| Bond distance | 2.3 ± 0.1 pm | a₀ = 52.9 pm basis |
+| Bond distance | 2.3 $\pm$ 0.1 pm | a0 = 52.9 pm basis |
 | Density | ~1029 cm-3 | ~140 kg/cm3 (nuclear threshold) |
-| Interatomic distance formula | d = 2.9 n2_b a₀ | Rydberg: nᵦ = bond quantum number |
-| For nᵦ = 1 | d = 2.9 × (1)2 × 52.9 pm ≈ 153 pm | Standard H₂ molecule |
-| For nᵦ → lowest | d = 2.3 pm | Ultra-dense D(-1) state |
+| Interatomic distance formula | d = 2.9 n2_b a0 | Rydberg: nᵦ = bond quantum number |
+| For nᵦ = 1 | d = 2.9 $\times$ (1)2 $\times$ 52.9 pm $\approx$ 153 pm | Standard H2 molecule |
+| For nᵦ $\to$ lowest | d = 2.3 pm | Ultra-dense D(-1) state |
 
 The n(-1) designation follows the Rydberg series extended below n=1 into the classically
 forbidden zone — achievable via laser compression at intensities >1015 W/cm2.
@@ -79,9 +79,9 @@ $$\Gamma = f \cdot \exp!\left[-\frac{\text{barrier\_height} \times d}{\hbar v}\r
 |-----------|-------|
 | Attempt frequency f | 1016/s (nuclear vibration frequency) |
 | Barrier height | ~MeV scale (strong force Coulomb barrier) |
-| Bond distance d | 2.3 pm = 2.3×10-12 m |
-| Reduced Planck constant ℏ | 1.055×10-34 J·s |
-| Relative velocity v | c/137 (α-scaled, Bohr velocity) |
+| Bond distance d | 2.3 pm = 2.3$\times$10-12 m |
+| Reduced Planck constant ℏ | 1.055$\times$10-34 J$\cdot$s |
+| Relative velocity v | c/137 ($\alpha$-scaled, Bohr velocity) |
 
 The exponential suppression in D(-1) Rydberg matter at d=2.3 pm is ~106 times less than
 at standard H-H bond distance (74 pm), enabling measurable fusion rates at laboratory
@@ -100,13 +100,13 @@ confirming that muon-catalyzed fusion operates exactly at the D(-1) equilibrium 
 
 | Reaction | Products | Energy |
 |----------|---------|--------|
-| p + p → D + e⁺ + νe | Deuterium + positron + neutrino | 0.42 MeV |
-| D + D → 3He + n | Helium-3 + neutron | 3.3 MeV |
-| D + D → T + p | Tritium + proton | 4.0 MeV |
-| D + D → 4He + γ | Helium-4 + gamma | 24 MeV |
-| p + 3He → 4He + e⁺ + νe | Helium-4 | 18.8 MeV |
+| p + p $\to$ D + e+ + $\nu$e | Deuterium + positron + neutrino | 0.42 MeV |
+| D + D $\to$ 3He + n | Helium-3 + neutron | 3.3 MeV |
+| D + D $\to$ T + p | Tritium + proton | 4.0 MeV |
+| D + D $\to$ 4He + $\gamma$ | Helium-4 + gamma | 24 MeV |
+| p + 3He $\to$ 4He + e+ + $\nu$e | Helium-4 | 18.8 MeV |
 
-The D+D → 4He channel (24 MeV) is the UQFF "maximum energy" LENR pathway, accessed
+The D+D $\to$ 4He channel (24 MeV) is the UQFF "maximum energy" LENR pathway, accessed
 only at D(-1) densities where the Gamow factor is reduced to measurable levels.
 
 ---
@@ -120,11 +120,11 @@ $$p^+ \rightarrow D^\pm(0) \rightarrow K^\pm \rightarrow \pi^\pm \rightarrow \mu
 | Particle | Rest Energy | Step Ratio |
 |---------|------------|------------|
 | Proton | 938.3 MeV | — |
-| D(0) meson (DN(0)) | ~493 MeV | ×0.526 |
-| Kaon K± | 493.7 MeV | ×1.00 |
-| Pion π± | 139.6 MeV | ×0.283 |
-| Muon µ± | 105.7 MeV | ×0.757 |
-| Electron e± | 0.511 MeV | ×0.00483 |
+| D(0) meson (DN(0)) | ~493 MeV | $\times$0.526 |
+| Kaon K$\pm$ | 493.7 MeV | $\times$1.00 |
+| Pion $\pi$$\pm$ | 139.6 MeV | $\times$0.283 |
+| Muon µ$\pm$ | 105.7 MeV | $\times$0.757 |
+| Electron e$\pm$ | 0.511 MeV | $\times$0.00483 |
 
 This discrete stepping constitutes the **UQFF meson prime-energy ladder** — each step
 ratio corresponds to a suppressed coupling constant in the Standard Model, providing
@@ -136,8 +136,8 @@ the physical scaffold for the Dipole Vortex Prime sequence (PAPER_649).
 
 The AVS62 LENR module integrates with UQFF at three levels:
 
-1. **26D coupling**: E = mc2e-26 → UQFF 26th derivative → Rydberg 26th level
-2. **ρvac,[SCm] anchor**: Ultra-dense D(-1) density creates local [SCm]-like vacuum at 1029 cm-3 →
+1. **26D coupling**: E = mc2e-26 $\to$ UQFF 26th derivative $\to$ Rydberg 26th level
+2. **$\rho$vac,[SCm] anchor**: Ultra-dense D(-1) density creates local [SCm]-like vacuum at 1029 cm-3 $\to$
 matches [SCm] permeability threshold
 3. **Ug1 dipole fusion**: The proton dipole (internal Ug1) concentrates Aether flux below D(-1) bond
 threshold, enabling LENR at stellar interior conditions
@@ -145,7 +145,7 @@ threshold, enabling LENR at stellar interior conditions
 The Gamow tunneling rate in UQFF becomes:
 $$\Gamma_{\text{UQFF}} = f \cdot \exp!\left[-\frac{E_{\text{barrier}}}{k_\eta \cdot \rho_{\text{vac},[SCm]} \cdot c^2}\right]$$
 
-where k_η = 10-113 as the Boltzmann tunneling factor, providing the scale suppression
+where k_$\eta$ = 10-113 as the Boltzmann tunneling factor, providing the scale suppression
 that determines terrestrial vs. stellar LENR activation thresholds.
 
 ---
@@ -203,7 +203,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -218,7 +218,7 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -321,7 +321,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.069 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -332,11 +332,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | SM Value | UQFF D(-1) Prediction | Alignment |
 |------------|----------|----------------------|-----------|
-| Muon rest mass | 105.66 MeV | Meson cascade step µ± = 105.7 MeV | ✅ 99.96% |
-| Pion rest mass | 139.57 MeV | π± = 139.6 MeV in cascade | ✅ 99.98% |
-| Kaon rest mass | 493.68 MeV | K± = 493.7 MeV in cascade | ✅ 99.99% |
+| Muon rest mass | 105.66 MeV | Meson cascade step µ$\pm$ = 105.7 MeV | ✅ 99.96% |
+| Pion rest mass | 139.57 MeV | $\pi$$\pm$ = 139.6 MeV in cascade | ✅ 99.98% |
+| Kaon rest mass | 493.68 MeV | K$\pm$ = 493.7 MeV in cascade | ✅ 99.99% |
 | D+D fusion energy | 3.27 MeV (ENDF) | 3.3 MeV (AVS62 framework) | ✅ 99.1% |
-| Casimir energy (d=2.3pm) | ~630 eV | W = e2/(4πε₀d) = 630 eV | ✅ 100% |
+| Casimir energy (d=2.3pm) | ~630 eV | W = e2/(4$\pi$$\varepsilon$0d) = 630 eV | ✅ 100% |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator.
 > Meson energies confirmed against PDG 2022 values.

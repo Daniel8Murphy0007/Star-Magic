@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 # PAPER_315 — NGC6302 UQFF Resonance VacDiff-THz Crossover Radius: r_cross = 3.280 km (38-Order PN Dominance)
 **Author:** Daniel T. Murphy
-<!— UQFF calibration: κ = 5.0e-4 day-1, [SSq] = 0.57, β_i = 6.1e-1 —>
+<!— UQFF calibration: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $\beta$_i = 6.1e-1 —>
 
 **UQFF Session:** 90 | **Module:** `NGC6302_RESONANCE_UQFF_MODULE`.cpp  
 **WOLFRAM_TERM:** NGC6302_RES_THz_EXPANSION  
@@ -31,15 +31,15 @@ This paper presents UQFF derivations and numerical results for: PAPER_315 — NG
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| f_THz | 1 × 1012 Hz | THz hole resonance |
-| v_exp | 2.68 × 105 m/s | 268 km/s HST bipolar lobe expansion |
+| f_THz | 1 $\times$ 1012 Hz | THz hole resonance |
+| v_exp | 2.68 $\times$ 105 m/s | 268 km/s HST bipolar lobe expansion |
 | `E_vac_neb` / `E_vac_ISM` | 10 | VAC_RATIO |
-| E_0 | 6.381 × 10-36 J/m3 | vacuum differential energy |
-| ħ | 1.0546 × 10-34 J·s | |
+| E_0 | 6.381 $\times$ 10-36 J/m3 | vacuum differential energy |
+| ħ | 1.0546 $\times$ 10-34 J$\cdot$s | |
 
 ---
 
-## Unique Physics 1: Γ_THz and a_THz — THz Bipolar Expansion Resonance
+## Unique Physics 1: $\Gamma$_THz and a_THz — THz Bipolar Expansion Resonance
 
 ### THz Amplification Factor
 
@@ -57,7 +57,7 @@ $$\boxed{a_{\text{THz}} = 2.232 \times 10^{-21}\ \text{m/s}^2}$$
 
 ### v_exp Scaling Law Confirmation
 
-PAPER_315 confirms the **Γ_THz ∝ v_exp scaling law** from Session 82 (Crab Nebula, PAPER_290):
+PAPER_315 confirms the **$\Gamma$_THz $\propto$ v_exp scaling law** from Session 82 (Crab Nebula, PAPER_290):
 
 $$\frac{\Gamma_{\text{THz,NGC6302}}}{\Gamma_{\text{THz,Crab}}} = \frac{8.939 \times 10^9}{5.0 \times 10^{10}} = 0.179$$
 
@@ -100,7 +100,7 @@ m/s2 at compact scale.
 
 ### 38-Order Dominance at PN Scale
 
-At NGC 6302 lobe scale (r = 1.42×1016 m):
+At NGC 6302 lobe scale (r = 1.42$\times$1016 m):
 
 $$\frac{a_{\text{vac\_diff}}}{a_{\text{THz}}} = \frac{E_0 \times V_{\text{sys}}}{\hbar \times \Gamma_{\text{THz}}} = \frac{6.381 \times 10^{-36} \times 1.199 \times 10^{49}}{1.0546 \times 10^{-34} \times 8.939 \times 10^9}$$
 
@@ -116,7 +116,7 @@ bipolar lobe scale.
 ## UQFF First Claims
 
 - **FIRST UQFF bi-modal resonance crossover radius** r_cross = 3.280 km separating compact (THz-dominant) from extended (VacDiff-dominant) resonance regimes
-- **FIRST confirmation** of Γ_THz ∝ v_exp linear scaling law using real HST NGC 6302 expansion velocity
+- **FIRST confirmation** of $\Gamma$_THz $\propto$ v_exp linear scaling law using real HST NGC 6302 expansion velocity
 - **FIRST UQFF** identification of 38-order VacDiff dominance in PN bipolar lobe channel
 
 ---
@@ -223,7 +223,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.102 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -234,13 +234,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

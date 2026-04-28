@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_667: UQFF Black Hole Stability Mathematical Proofs
 **Author:** Daniel T. Murphy
 **Subtitle:** Four-proof mathematical chain demonstrating UQFF extends black hole Hawking
-evaporation timescales by ~30×.
+evaporation timescales by ~30$\times$.
 **Module:** UQFFBlackHoleStabilityProofs  
 **Session:** Session 172  
 **Date:** April 2, 2026  
@@ -33,7 +33,7 @@ $$\tau' = \frac{\tau_{Hawking}}{1 - f_{TRZ}} \approx 1.11\,\tau_{Hawking}$$
 f_TRZ = 0.1 suppresses the rate of pair annihilation at the horizon.
 
 ## Proof 2 — Aether/SCm Gradient Barrier
-Energy barrier: E_barrier = k_B T_H · (ρ_SCm/ρ_UA)
+Energy barrier: E_barrier = k_B T_H $\cdot$ ($\rho$_SCm/$\rho$_UA)
 $$\tau'' = \tau' \cdot \frac{\rho_{UA}}{\rho_{SCm}} \approx 10\,\tau'$$
 
 ## Proof 3 — U_m String Anchoring
@@ -45,10 +45,10 @@ $$\tau_{UQFF} = \tau_{Hawking} \cdot \frac{1}{1-f_{TRZ}} \cdot \frac{\rho_{UA}}{
 $$\text{Factor} = 1.11 \times 10 \times 2.718 \approx \mathbf{30}$$
 
 ## Numerical Verification
-| Mass | τ_Hawking | τ_UQFF | Factor |
+| Mass | $\tau$_Hawking | $\tau$_UQFF | Factor |
 |------|-----------|--------|--------|
-| 1 MM_sun | 2.1×1074 yr | ~6×1075 yr | 30× |
-| Sgr A* | >> t_H | >>>> t_H | 30× |
+| 1 MM_sun | 2.1$\times$1074 yr | ~6$\times$1075 yr | 30$\times$ |
+| Sgr A* | >> t_H | >>>> t_H | 30$\times$ |
 
 ## C++ Module
 `UQFFBlackHoleStabilityProofs.h / .cpp` — Session 172
@@ -66,7 +66,7 @@ CP4 #251 — `UQFFBlackHoleStabilityProofsCalculator`
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -85,7 +85,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -227,7 +227,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.159 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -238,13 +238,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

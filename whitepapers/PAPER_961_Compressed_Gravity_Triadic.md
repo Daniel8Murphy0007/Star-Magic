@@ -67,7 +67,7 @@ $$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \exp!\left(-\frac{(\o
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -86,7 +86,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -157,7 +157,7 @@ $$\mathcal{L}_\text{comp} = \sum_{i=1}^{26}\left[U_{g1,i} + U_{g2,i} + U_{g3,i} 
 $$\boxed{g_\text{comp}(r) = \sum_{i=1}^{26}\left(U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}\right) Q_i [\text{UA}]_i [\text{SCm}]_i}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → 26-layer gravity → compressed summation → MUGE comparison → triadic branch 1/3
+PAPER_877 $\to$ 26-layer gravity $\to$ compressed summation $\to$ MUGE comparison $\to$ triadic branch 1/3
 
 ---
 

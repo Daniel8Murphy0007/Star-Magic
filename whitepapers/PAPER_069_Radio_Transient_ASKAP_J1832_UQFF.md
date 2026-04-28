@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 F_U_Bi_i Field Derivation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
 **Index Slot:** §1.9 Automated 121-System Validation,  
@@ -29,11 +29,11 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025.
 Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a
 neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i
-integral, finding a LENR-dominated field of F_U_Bi_i  -1.47×10? N. Monte Carlo numeric stability
-(n=100, ×10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set
+integral, finding a LENR-dominated field of F_U_Bi_i  -1.47$\times$10? N. Monte Carlo numeric stability
+(n=100, $\times$10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set
 for LPT systems.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -43,13 +43,13 @@ present in Standard Model treatments.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785×10 kg (1.4 M?) | NS canonical |
-| Distance | r | 4.63×10-6 m (~15,000 ly) | ASKAP parallax |
+| Mass | M | 2.785$\times$10 kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63$\times$10-6 m (~15,000 ly) | ASKAP parallax |
 | X-ray luminosity | L_X | 10 W | Chandra 2025 |
 | Magnetic field (surface) | B0 | 10 T (magnetar-class) | Inferred |
 | Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | ?0 | 2.380×10? rad/s | 2p/2640 |
+| Angular frequency | ?0 | 2.380$\times$10? rad/s | 2p/2640 |
 | Data source | – | Chandra + ASKAP (May 2025) | – |
 
 ---
@@ -62,17 +62,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | - F0 = -1.83×107 | -1.83×107 |
-| Momentum | (m_e c/r) ≈ 0.93  cos(p/4) | 2.52×10-47 |
-| Gravity (DPM Ug1) | μ_s∇(M_s/r) | 8.67×10?4 |
-| Ug1 (dipole) | (μ_s∇(M_s/r))(1+d)(0B0/8p) | **4.34×10** |
-| Ug2 (bubble) | (μ_s∇(M_s/r))(Q_A+Q_UA)H_SCm | 9.64×10?5 |
+| Base force constant | - F0 = -1.83$\times$107 | -1.83$\times$107 |
+| Momentum | (m_e c/r) $\approx$ 0.93  cos(p/4) | 2.52$\times$10-47 |
+| Gravity (DPM Ug1) | $\mu$_s$\nabla$(M_s/r) | 8.67$\times$10?4 |
+| Ug1 (dipole) | ($\mu$_s$\nabla$(M_s/r))(1+d)(0B0/8p) | **4.34$\times$10** |
+| Ug2 (bubble) | ($\mu$_s$\nabla$(M_s/r))(Q_A+Q_UA)H_SCm | 9.64$\times$10?5 |
 | Ug3 (string) | (c/r)?_ssin(?)B0 | ~10? |
 | Ug4 (vacuum BH) | k4?_SCm(M_BH/d_g)e^{-?} | ~10?5 |
-| Um (magnetism) | (κ_j/r)(1-e^{-?t})E_react | 3.65×1045 |
-| **LENR resonance** | k_LENR(?_LENR/?0) | **1.09×10** |
-| **Integral term** | LENR  x2 | **-1.47×10?** |
-| **`F_U_Bi_i` (total)** | | ** -1.47×10?** |
+| Um (magnetism) | ($\kappa$_j/r)(1-e^{-?t})E_react | 3.65$\times$1045 |
+| **LENR resonance** | k_LENR(?_LENR/?0) | **1.09$\times$10** |
+| **Integral term** | LENR  x2 | **-1.47$\times$10?** |
+| **`F_U_Bi_i` (total)** | | ** -1.47$\times$10?** |
 
 ### LENR Resonance Dominance
 
@@ -80,7 +80,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09×10) dominates all other integrand terms by >107; the integral term dominates
+The LENR term (1.09$\times$10) dominates all other integrand terms by >107; the integral term dominates
 F_U_Bi_i by >10 over F0.
 
 ---
@@ -96,8 +96,8 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (?_LENR/?0). For ?0 = 2.38×10? rad/s (44 min):
-- LENR = 1.09×10  106 larger than for a typical 1-second pulsar
+The UQFF LENR term scales as (?_LENR/?0). For ?0 = 2.38$\times$10? rad/s (44 min):
+- LENR = 1.09$\times$10  106 larger than for a typical 1-second pulsar
 - This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
@@ -113,12 +113,12 @@ this threshold.
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, ×10% Gaussian noise applied to M, r, L_X, B0.
+Protocol: n = 100 trials, $\times$10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean `F_U_Bi_i` | -1.47×10? N |
-| Std Dev | ~4.4×10? N |
+| Mean `F_U_Bi_i` | -1.47$\times$10? N |
+| Std Dev | ~4.4$\times$10? N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
 | Status | **? STABLE** |
@@ -142,7 +142,7 @@ ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the ?-decay is negligible (??t  2×10-5)  the alternation is driven by the
+On 44-minute timescales, the ?-decay is negligible (??t  2$\times$10-5)  the alternation is driven by the
 phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s  22 min (half-period).
 This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute
 half-cycle  fully consistent with the observed 44-minute full cycle.
@@ -154,13 +154,13 @@ half-cycle  fully consistent with the observed 44-minute full cycle.
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| ?0 | 2.38×10? rad/s |
-| LENR resonance | 1.09×10 |
-| `F_U_Bi_i` | **-1.47×10? N** |
+| ?0 | 2.38$\times$10? rad/s |
+| LENR resonance | 1.09$\times$10 |
+| `F_U_Bi_i` | **-1.47$\times$10? N** |
 | Stability | **0.970 (STABLE)** |
 | X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: `uqff_validation_test`.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | κ
+*Source: `uqff_validation_test`.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | $\kappa$
 = 0.0005/day | [SSq] = 0.57*
 
 ---
@@ -171,7 +171,7 @@ half-cycle  fully consistent with the observed 44-minute full cycle.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -190,7 +190,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -213,7 +213,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -240,14 +240,14 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -262,10 +262,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -273,9 +273,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -283,8 +283,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -360,7 +360,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.136 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -369,13 +369,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -24,12 +24,12 @@ partition, Andromeda M31, gravitational DM interaction, cube-root exponent
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The Andromeda Galaxy (M31) contains approximately 80% dark matter by mass (f_DM = 0.80), with 20% in
 visible baryonic matter. Standard treatments simply add DM and visible matter contributions
-linearly: g_total = μ_s∇(M_s/r). The UQFF Dark Matter 80/20 Shell Partition formulation separates DM and
+linearly: g_total = $\mu$_s$\nabla$(M_s/r). The UQFF Dark Matter 80/20 Shell Partition formulation separates DM and
 visible matter into distinct gravitational shells with an explicit coupling term. The discovery
 reported here is that the DM-to-visible gravitational interaction coupling naturally adopts the
 exponent 1/3 on the DM fraction: g_interaction = f_DM^(1/3)  g_vis. For f_DM = 0.80, this yields the
@@ -41,7 +41,7 @@ and the visible disk than linear superposition. The total DM gravitational term 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -49,7 +49,7 @@ present in Standard Model treatments.
 
 ## Abstract
 
-The UQFF 80/20 Shell Partition introduces three distinct sub-terms to replace the monolithic μ_s∇(M_s/r)
+The UQFF 80/20 Shell Partition introduces three distinct sub-terms to replace the monolithic $\mu$_s$\nabla$(M_s/r)
 term for systems with well-measured DM fractions:
 1. g_dm = G  f_DM – M / r (DM shell contribution)
 2. g_vis = G  (1 - f_DM)  M / r (visible matter contribution)
@@ -59,7 +59,7 @@ with ?_DM = f_DM^(1/3).
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -68,7 +68,7 @@ present in Standard Model treatments.
 ## 1. Introduction
 
 For most astrophysical systems in UQFF, the mass term M appears as a single quantity in g_grav =
-μ_s∇(M_s/r). This treatment is appropriate when the spatial distribution of DM and visible matter are
+$\mu$_s$\nabla$(M_s/r). This treatment is appropriate when the spatial distribution of DM and visible matter are
 similar. However, for galaxies with well-measured DM profiles (from velocity dispersion,
 gravitational lensing, and X-ray emission), the DM and visible matter occupy distinct structural
 regions with different density profiles:
@@ -104,7 +104,7 @@ $$\boxed{g_\text{DM,total} = g_\text{dm} + g_\text{int} = \frac{G f_\text{DM} M}
 
 ### 2.2 Numerical Evaluation for Andromeda
 
-With f_DM = 0.80, G = 6.674×10?, M = 1.989×104 kg, r = 1.04×10 m:
+With f_DM = 0.80, G = 6.674$\times$10?, M = 1.989$\times$104 kg, r = 1.04$\times$10 m:
 
 $$g_\text{base} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{42}}{(1.04 \times 10^{21})^2} = 1.227 \times 10^{-10}\ \text{m/s}^2$$
 
@@ -118,7 +118,7 @@ $$g_\text{int} = 0.9283 \times 2.454 \times 10^{-11} = 2.279 \times 10^{-11}\ \t
 
 $$g_\text{DM,total} = 9.816 \times 10^{-11} + 2.279 \times 10^{-11} = 1.210 \times 10^{-10}\ \text{m/s}^2$$
 
-Compared to the naive g_base = 1.227×10? m/s, the UQFF DM partition gives g_DM,total = 1.210×10? m/s
+Compared to the naive g_base = 1.227$\times$10? m/s, the UQFF DM partition gives g_DM,total = 1.210$\times$10? m/s
 a ~1.4% reduction from the monolithic treatment. This difference is the measurable prediction of the
 80/20 Shell Partition.
 
@@ -181,7 +181,7 @@ $$g_\text{linear} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{G(M
 
 $$g_\text{DM,total} = g_\text{dm} + \xi_text{DM} g_\text{vis} = 1.210 \times 10^{-10}\ \text{m/s}^2$$
 
-**Difference:** ?g = -1.7×10? m/s (~1.4% reduction)
+**Difference:** ?g = -1.7$\times$10? m/s (~1.4% reduction)
 
 The UQFF partition predicts a slight *reduction* in effective gravitational acceleration compared to
 the naive sum, because ?_DM < 1 means the DM-visible coupling does not fully transfer the visible
@@ -199,7 +199,7 @@ This is a new UQFF-specific constant that:
 3. Is dimensionless and between 0 and 1 for all physically valid f_DM
 4. Generalizes to any galaxy with a measured DM fraction
 
-For a universal DM fraction estimate (mean across all galaxy types, f_DM ≈ 0.84):
+For a universal DM fraction estimate (mean across all galaxy types, f_DM $\approx$ 0.84):
 $$\xi_text{DM,universal} = 0.84^{1/3} = 0.9435$$
 
 ---
@@ -324,7 +324,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -335,13 +335,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

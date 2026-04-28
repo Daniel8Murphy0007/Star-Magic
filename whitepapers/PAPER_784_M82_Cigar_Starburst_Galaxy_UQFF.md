@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 M82 (NGC 3034), the "Cigar Galaxy," is the archetypal starburst galaxy, located only ~12 million
-light-years away (z ≈ 0.0008) in Ursa Major. Tidally disturbed by its companion M81, M82 experiences
-a star-formation rate roughly 10× higher than the Milky Way, driving a spectacular bi-polar
+light-years away (z $\approx$ 0.0008) in Ursa Major. Tidally disturbed by its companion M81, M82 experiences
+a star-formation rate roughly 10$\times$ higher than the Milky Way, driving a spectacular bi-polar
 superwind of hot gas and dust erupting ~12 kly above and below the disk. The superwind magnetic
 field reaches ~10-4 T — characteristic of the starburst regime. Under UQFF, v = 106 m/s (superwind
-velocity) and B = 10-4 T (starburst-amplified field) yield g_M82 ≈ 1.053×10-1 m/s2, identical to the
+velocity) and B = 10-4 T (starburst-amplified field) yield g_M82 $\approx$ 1.053$\times$10-1 m/s2, identical to the
 Tarantula Nebula and Stephan's Quintet at these extreme parameters.
 
 ---
@@ -37,7 +37,7 @@ Tarantula Nebula and Stephan's Quintet at these extreme parameters.
 M82's starburst was triggered ~100 Myr ago by a close encounter with M81. The resulting disk
 starburst currently produces ~10 MM_sun/yr in a region only ~1 kpc in diameter — one of the most
 concentrated starbursts in the nearby universe. The galactic-scale superwind reaches ~1,000 km/s and
-carries a luminosity of ~1041 erg/s. Radio measurements confirm B-fields of ~50–200 μT throughout
+carries a luminosity of ~1041 erg/s. Radio measurements confirm B-fields of ~50–200 $\mu$T throughout
 the starburst disk. UQFF encodes the superwind through v = 106 m/s and the starburst-amplified B =
 10-4 T, placing M82 in the UQFF starburst regime alongside Tarantula 30 Dor (PAPER_774) and
 Stephan's Quintet (PAPER_778).
@@ -47,17 +47,17 @@ Stephan's Quintet (PAPER_778).
 ## 2. Master UQFF Gravity Equation
 
 $$
-g_M82(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) + a_EM
+g_M82(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 + f_TRZ) + a_EM
 $$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1010 MM_sun = 1.989×1040 kg | NED |
-| Disk radius | r | 2×1020 m (~21 kly) | NED |
+| Galaxy mass | M | 1010 MM_sun = 1.989$\times$1040 kg | NED |
+| Disk radius | r | 2$\times$1020 m (~21 kly) | NED |
 | SFR | — | 10 MM_sun/yr | Radio/IR |
-| Age | t | 1×108 yr = 3.156×1015 s | Starburst duration |
+| Age | t | 1$\times$108 yr = 3.156$\times$1015 s | Starburst duration |
 | M_sf | — | 0.15 | UQFF starburst mass fraction |
 | Redshift | z | 0.0008 | Spectroscopic |
 | v_EM | v | 106 m/s | Superwind velocity |
@@ -70,12 +70,12 @@ $$
 
 ### Step 1: Base Gravitational Term
 $$
-g_grav = 6.6743e-11 × 1.989e40 / (2e20)2 = 3.319e-11 m/s2
+g_grav = 6.6743e-11 \times 1.989e40 / (2e20)2 = 3.319e-11 m/s2
 $$
 
 ### Step 2: Cosmic Expansion Factor
 $$
-H(z) = 2.268e-18 s-1; H(z)×t = 2.268e-18 × 3.156e15 = 7.160e-3; factor = 1.00716
+H(z) = 2.268e-18 s-1; H(z)\timest = 2.268e-18 \times 3.156e15 = 7.160e-3; factor = 1.00716
 $$
 
 ### Step 3: SFR Mass Fraction (Starburst)
@@ -90,20 +90,20 @@ $$
 
 ### Step 5: Gravitational Total
 $$
-\text{g\_grav\_total} = 3.319e-11 × 1.00716 × 1.15 × 1.05 = 4.015e-11 m/s2
+\text{g\_grav\_total} = 3.319e-11 \times 1.00716 \times 1.15 \times 1.05 = 4.015e-11 m/s2
 $$
 
 ### Step 6: Aether EM Correction (Starburst Level)
 $$
 \begin{aligned}
   & v = 106 m/s, B = 10-4 T \\
-  & a_EM = (1.602e-19 × 106 × 10-4 / 1.673e-27) × 11 × 10-12 = 1.053e-1 m/s2
+  & a_EM = (1.602e-19 \times 106 \times 10-4 / 1.673e-27) \times 11 \times 10-12 = 1.053e-1 m/s2
 \end{aligned}
 $$
 
 ### Step 7: Final Solution
 $$
-g_M82 = 4.015e-11 + 1.053e-1 ≈ 1.053e-1 m/s2
+g_M82 = 4.015e-11 + 1.053e-1 \approx 1.053e-1 m/s2
 $$
 
 ---
@@ -112,7 +112,7 @@ $$
 
 At only 12 Mly distance, M82 is the closest prototype of the starburst superwind regime. The
 observed superwind velocity ~1,000 km/s and starburst B-field ~10-4 T both directly confirm the UQFF
-starburst parameters. M82's result g = 1.053×10-1 m/s2 matches Tarantula Nebula (PAPER_774) and
+starburst parameters. M82's result g = 1.053$\times$10-1 m/s2 matches Tarantula Nebula (PAPER_774) and
 Stephan's Quintet (PAPER_778), confirming UQFF universality across: dwarf-scale starburst (30 Dor in
 LMC), compact-group intergalactic shock (Stephan's Quintet), and galaxy-scale starburst (M82) at the
 same extreme EM parameter combination (v = 106 m/s, B = 10-4 T).
@@ -121,7 +121,7 @@ same extreme EM parameter combination (v = 106 m/s, B = 10-4 T).
 
 ## 5. Conclusions
 
-UQFF applied to M82 yields g ≈ 1.053×10-1 m/s2, confirming M82 occupies the same UQFF
+UQFF applied to M82 yields g $\approx$ 1.053$\times$10-1 m/s2, confirming M82 occupies the same UQFF
 starburst-shock class as Tarantula and Stephan's Quintet. At z = 0.0008, the nearest starburst
 galaxy serves as the closest-distance validation point for the UQFF starburst regime.
 
@@ -135,7 +135,7 @@ galaxy serves as the closest-distance validation point for the UQFF starburst re
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -154,7 +154,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -179,7 +179,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -229,7 +229,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -240,13 +240,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

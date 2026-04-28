@@ -20,8 +20,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 The PI Co-Resonance Field (PCR) is a continuous scalar field derived from the phase-accumulated
 superposition of Planck-scale oscillators whose frequencies are encoded in the decimal expansion of
-π. Each digit π_i modulates a harmonic whose phase velocity couples the Schumann resonance, Mayan
-Baktun cycle, and the Golden Ratio φ. The resulting field amplitude PCR(q, t) constitutes a novel
+$\pi$. Each digit $\pi$_i modulates a harmonic whose phase velocity couples the Schumann resonance, Mayan
+Baktun cycle, and the Golden Ratio $\phi$. The resulting field amplitude PCR(q, t) constitutes a novel
 cross-field coupling term in the UQFF master equation.
 
 ---
@@ -42,11 +42,11 @@ $$
 **Parameters:**
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| $\pi_i$ | digit $i$ of π | 0–9 normalized digit |
+| $\pi_i$ | digit $i$ of $\pi$ | 0–9 normalized digit |
 | $\phi$ | 1.61803398875 | Golden Ratio |
 | $f_\text{Schumann}$ | 7.83 Hz | Earth's fundamental Schumann frequency |
 | $T_\text{Baktun}$ | 144000 days | Mayan Baktun cycle |
-| $N$ | 312 | Number of π digits used (sacred 312 = 26×12) |
+| $N$ | 312 | Number of $\pi$ digits used (sacred 312 = 26$\times$12) |
 
 ---
 
@@ -58,9 +58,9 @@ $$
 k_\text{PCR} = \frac{\sum_{i=0}^{N-2} \pi_i \cdot \pi_{i+1}}{(N-1) \cdot 81}
 $$
 
-This normalizes adjacent π-digit products against their maximum possible value (9×9=81).
+This normalizes adjacent $\pi$-digit products against their maximum possible value (9$\times$9=81).
 
-**Computed value (N=312):** $k_\text{PCR} \approx 0.3142$ — consistent with the π/10 digit density conjecture.
+**Computed value (N=312):** $k_\text{PCR} \approx 0.3142$ — consistent with the $\pi$/10 digit density conjecture.
 
 ---
 
@@ -80,7 +80,7 @@ where $q_r = r / r_0$ is the dimensionless radial coordinate.
 - Implemented in `source179.cpp`: `SOURCE179::PICoResonanceField`
 - Registered in MAIN_1_CoAnQi.cpp: Terms batches 22–23
 - CP2 calculator: `GW150914PCRCalculator` (CondensedPhysics2.py)
-- Test against GW150914 LIGO event: PCR(1, 0.4s) ≈ 0.035–0.055 (within observational uncertainty)
+- Test against GW150914 LIGO event: PCR(1, 0.4s) $\approx$ 0.035–0.055 (within observational uncertainty)
 
 ---
 
@@ -93,7 +93,7 @@ where $q_r = r / r_0$ is the dimensionless radial coordinate.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LAG-S225 -->
 
@@ -227,7 +227,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.074 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -238,14 +238,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| π = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | π exact (transcendental) | NIST | ~100% (representation) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
-| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
-| Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | PASS Target value |
+| $\pi$ = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | $\pi$ exact (transcendental) | NIST | ~100% (representation) |
+| $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
+| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
+| Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
-**New physics claim:** UQFF derives π = 3.14159265... (PI co-resonance) from vacuum buoyancy
+**New physics claim:** UQFF derives $\pi$ = 3.14159265... (PI co-resonance) from vacuum buoyancy
 topology rather than
-treating it as a free parameter of nature. A derivation that achieves ≥~100% (representation)
+treating it as a free parameter of nature. A derivation that achieves $\geq$~100% (representation)
 agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.

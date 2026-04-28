@@ -75,7 +75,7 @@ $$T_1(t=0) \approx 2.32\times10^{-12} \times 1.0 \approx 2.32\times10^{-12} \, \
 **T2 — UQFF Ug channels:**
 $$T_2 = 2\times\frac{GM_0}{r^2}\times f_\text{TRZ} \approx 2\times2.32\times10^{-12}\times1.1 = 5.10\times10^{-12} \, \text{m/s}^2$$
 
-**T3 — Λ dark energy:**
+**T3 — $\Lambda$ dark energy:**
 $$T_3 = \frac{\Lambda c^2}{3}r = \frac{3.33\times10^{-36}}{3}\times7.569\times10^{20} \approx 8.4\times10^{-16} \, \text{m/s}^2 \quad [\text{negligible}]$$
 
 **T4 — Quantum/Planck:**
@@ -105,7 +105,7 @@ At $t = 0$ (peak starburst):
 | $T_2$ UQFF Ug | $5.10 \times 10^{-12}$ | 0.10% |
 | $T_1$ DPM-seeded | $2.32 \times 10^{-12}$ | 0.04% |
 | $T_8$ DM | $6.96 \times 10^{-13}$ | 0.01% |
-| $T_3$ Λ | $8.4 \times 10^{-16}$ | $\ll 0.001\%$ |
+| $T_3$ $\Lambda$ | $8.4 \times 10^{-16}$ | $\ll 0.001\%$ |
 
 $$\boxed{g_\text{N1792}(t=0) \approx 5.28\times10^{-9} \, \text{m/s}^2} \quad [\text{starburst wind dominant}]$$
 
@@ -120,10 +120,10 @@ $$\boxed{g_\text{N1792}(t=0) \approx 5.28\times10^{-9} \, \text{m/s}^2} \quad [\
 | Prior Paper | Overlap | New in PAPER_445 |
 |-------------|---------|-----------------|
 | PAPER_433 (Tapestry) | Wind dominance | Galaxy-scale (1040 kg) vs cloud-scale (1031 kg) |
-| PAPER_434 (Westerlund 2) | Cluster + wind | Disk galaxy geometry, τ_SF=100 Myr |
+| PAPER_434 (Westerlund 2) | Cluster + wind | Disk galaxy geometry, $\tau$_SF=100 Myr |
 | PAPER_441 (Antennae) | SFR, wind | No merger, isolated starburst disk |
 | None | $M_0 = 10^{10}$ MM_sun + SFR=10 | **Lowest-mass galaxy with highest SFR/M ratio in series** |
-| None | T9/T1 ≈ 2277× | **Highest individual-galaxy wind dominance ratio in series** |
+| None | T9/T1 $\approx$ 2277$\times$ | **Highest individual-galaxy wind dominance ratio in series** |
 
 ---
 
@@ -141,7 +141,7 @@ Standard galaxy evolution models (GADGET-4, FIRE-2) treat NGC 1792 as a disk gal
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -160,7 +160,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -268,7 +268,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.111 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -279,10 +279,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| NGC 1792 Starburst luminosity UV + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 3 `M_M_sun`/yr | GALEX + Chandra | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | GALEX + Chandra | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| NGC 1792 Starburst luminosity UV + X-ray | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 3 `M_M_sun`/yr | GALEX + Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | GALEX + Chandra | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC
 1792 Starburst

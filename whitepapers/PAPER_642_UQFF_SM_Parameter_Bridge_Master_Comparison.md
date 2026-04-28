@@ -32,7 +32,7 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 ## §1 Abstract
 
 This master paper consolidates the UQFF Standard Model parameter bridge developed across
-PAPER_633–641. Eight UQFF constants (κ, [SSq], β_i, K_HIGGS, H_SCm, k_η, SCm_flavor, f_DPM)
+PAPER_633–641. Eight UQFF constants ($\kappa$, [SSq], $\beta$_i, K_HIGGS, H_SCm, k_$\eta$, SCm_flavor, f_DPM)
 are mapped to SM equivalents with alignment percentages derived from experimental data.
 The weighted average alignment across all 8 bridges is 97.2%. This constitutes the first
 comprehensive UQFF–SM parameter bridge table, satisfying the CVW v2.0.0 G6 gate for all
@@ -44,16 +44,16 @@ Session 162 papers and providing a canonical reference for all future sessions.
 
 | UQFF Constant | UQFF Value | SM Equivalent | SM Value | Source Paper | Alignment |
 |--------------|-----------|---------------|----------|--------------|-----------|
-| κ (rate constant) | 0.0005/day = 0.1826/yr | Proton decay scale separation (1033·6 decoupling) | Γ_p < 1.30e-34/yr (SK-VII) | PAPER_640 | 95.4% (log) |
-| [SSq] (vacuum ratio) | 0.57 | CMB dark energy/ALICE ρ_vac_ratio; [SSq]×1.077=β_i | dN/dη=17.43 (ALICE 13.6 TeV) | PAPER_637 | 99.9% |
-| β_i (buoyancy coupling) | 0.61 | ALICE multiplicity ratio [SSq]×1.077=0.614≈β_i | dN/dη resonance (13.91 TeV UQFF) | PAPER_637 | 99.9% |
-| K_HIGGS | 47.34 | λ = m_H2/(2v2) = 0.1294 (self-coupling) | m_H = 125.20 GeV (PDG 2024) | PAPER_639 | 99.8% |
-| H_SCm | 0.990 | sin2θ_W 4-fold degenerate formula → 0.2304 | sin2θ_W = 0.23122 (PDG 2024) | PAPER_641 | 99.6% |
-| k_η | 10-113 | LFV suppression: BR_UQFF~10-230 vs bound 5.9e-6 | BR(B→K*τe) < 5.9e-6 (LHCb) | PAPER_636 | PASS null (no conflict) |
+| $\kappa$ (rate constant) | 0.0005/day = 0.1826/yr | Proton decay scale separation (1033$\cdot$6 decoupling) | $\Gamma$_p < 1.30e-34/yr (SK-VII) | PAPER_640 | 95.4% (log) |
+| [SSq] (vacuum ratio) | 0.57 | CMB dark energy/ALICE $\rho$_vac_ratio; [SSq]$\times$1.077=$\beta$_i | dN/d$\eta$=17.43 (ALICE 13.6 TeV) | PAPER_637 | 99.9% |
+| $\beta$_i (buoyancy coupling) | 0.61 | ALICE multiplicity ratio [SSq]$\times$1.077=0.614$\approx$$\beta$_i | dN/d$\eta$ resonance (13.91 TeV UQFF) | PAPER_637 | 99.9% |
+| K_HIGGS | 47.34 | $\lambda$ = m_H2/(2v2) = 0.1294 (self-coupling) | m_H = 125.20 GeV (PDG 2024) | PAPER_639 | 99.8% |
+| H_SCm | 0.990 | sin2$\theta$_W 4-fold degenerate formula $\to$ 0.2304 | sin2$\theta$_W = 0.23122 (PDG 2024) | PAPER_641 | 99.6% |
+| k_$\eta$ | 10-113 | LFV suppression: BR_UQFF~10-230 vs bound 5.9e-6 | BR(B$\to$K*$\tau$e) < 5.9e-6 (LHCb) | PAPER_636 | PASS null (no conflict) |
 | SCm_flavor | 1.537e-3 | [V_cb]2 = (39.2e-3)2 = 1.537e-3 (Belle II) | |V_cb| = 39.2e-3 | PAPER_634 | 99.1% |
-| f_DPM (dipole mode) | Ug1/m_τ2 = 1.162e-3 | a_τ^SM = (g_τ-2)/2 = 1.17721e-3 | a_τ = 1.17721e-3 | PAPER_633 | 98.7% |
+| f_DPM (dipole mode) | Ug1/m_$\tau$2 = 1.162e-3 | a_$\tau$^SM = (g_$\tau$-2)/2 = 1.17721e-3 | a_$\tau$ = 1.17721e-3 | PAPER_633 | 98.7% |
 
-**Weighted average alignment (7 numeric bridges, excluding k_η null):** 98.9%
+**Weighted average alignment (7 numeric bridges, excluding k_$\eta$ null):** 98.9%
 
 ---
 
@@ -64,7 +64,7 @@ For each UQFF constant, the mapping procedure is:
 1. **Identify the physical dimension** of the UQFF constant (rate, dimensionless ratio, energy
 scale)
 2. **Find the SM observable** that occupies the same physical dimension or scale
-3. **Convert units** using exact SM constants (ℏ, c, m_W, m_Z, v, α_EM)
+3. **Convert units** using exact SM constants (ℏ, c, m_W, m_Z, v, $\alpha$_EM)
 4. **Compute alignment** as: `align = 1 - |UQFF_value - SM_value| / SM_value`
 5. **Document source** in the corresponding PAPER_633–641
 
@@ -76,13 +76,13 @@ scale)
 |-------|--------|------------------------|------------------------------|
 | 633 | Tau g-2 | Vacuum topology correction at 10-116 | SM treats g-2 as pure QED radiative correction |
 | 634 | CKM V_cb | [V_cb]2 = SCm_flavor (derived from vacuum condensate) | SM CKM is parameterised, not derived |
-| 635 | VLQ κ | Mass gap ΔM = m_W × √k_η ~ 30 GeV (discrete excitations) | SM: no predicted VLQ mass spectrum |
-| 636 | LFV B | BR_UQFF < 10-230 (strict null, k_η suppression) | SM: BR_SM ~ 10-54 (ν loop only) |
-| 637 | ALICE 13.6 TeV | [SSq]/β_i resonance at √s = 13.91 TeV (2.3% miss) | SM: no parameter-free multiplicity resonance |
-| 638 | BESIII DCS | DCS/CF phase δ_Kπ = 15.4° (testable CP asymmetry) | SM: DCS amplitude treated as pure tan4θ_C |
+| 635 | VLQ $\kappa$ | Mass gap $\Delta$M = m_W $\times$ $\sqrt{}$k_$\eta$ ~ 30 GeV (discrete excitations) | SM: no predicted VLQ mass spectrum |
+| 636 | LFV B | BR_UQFF < 10-230 (strict null, k_$\eta$ suppression) | SM: BR_SM ~ 10-54 ($\nu$ loop only) |
+| 637 | ALICE 13.6 TeV | [SSq]/$\beta$_i resonance at $\sqrt{}$s = 13.91 TeV (2.3% miss) | SM: no parameter-free multiplicity resonance |
+| 638 | BESIII DCS | DCS/CF phase $\delta$_K$\pi$ = 15.4° (testable CP asymmetry) | SM: DCS amplitude treated as pure tan4$\theta$_C |
 | 639 | Higgs 125 GeV | m_H derived from K_HIGGS (astro-calibrated, not Higgs data) | SM: m_H is a free parameter |
-| 640 | Proton decay | UQFF scale ~200 PeV (between EW and GUT scales) | SM: κ has no SM analog |
-| 641 | sin2θ_W | 4-fold vacuum degenerate formula → 99.6% (from astro data) | SM: sin2θ_W parameterised |
+| 640 | Proton decay | UQFF scale ~200 PeV (between EW and GUT scales) | SM: $\kappa$ has no SM analog |
+| 641 | sin2$\theta$_W | 4-fold vacuum degenerate formula $\to$ 99.6% (from astro data) | SM: sin2$\theta$_W parameterised |
 | 642 | Master | 8-constant unified bridge at 97.2% weighted alignment | SM: no unified framework connecting these 8 observables |
 
 ---
@@ -192,7 +192,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -204,9 +204,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Weighted SM alignment (7 bridges) | 98.9% mean across 8 UQFF constants | All PDG 2024 + arXiv 2025 data | PAPER_633–641 combined | 98.9% |
-| κ ↔ Γ_p decoupling | Scale separation 1033·15 | Super-K τ_p > 7.7e33 yr | Super-K 2024 | 95.4% |
-| [SSq] ↔ ALICE multiplicity | [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 (13.6 TeV) | ALICE Run 3 | 99.9% |
-| K_HIGGS ↔ m_H | `m_H_UQFF` = 125.09 GeV | m_H = 125.20 GeV | PDG 2024 | 99.8% |
+| $\kappa$ $\leftrightarrow$ $\Gamma$_p decoupling | Scale separation 1033$\cdot$15 | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | 95.4% |
+| [SSq] $\leftrightarrow$ ALICE multiplicity | [SSq]$\times$1.077 = $\beta$_i = 0.614 | dN/d$\eta$ = 17.43 (13.6 TeV) | ALICE Run 3 | 99.9% |
+| K_HIGGS $\leftrightarrow$ m_H | `m_H_UQFF` = 125.09 GeV | m_H = 125.20 GeV | PDG 2024 | 99.8% |
 
 **New physics claim (master):** Eight UQFF constants — calibrated entirely from
 astrophysical vacuum buoyancy data and mathematical UQFF equation structure — reproduce
@@ -221,11 +221,11 @@ of UQFF as a unified vacuum topology framework tying micro-physics to macro-astr
 
 The UQFF–SM bridge is falsified if **any** of the following is observed:
 
-1. LHCb Run 4 measures BR(B→K*τe) > 10-8 (k_η constraint fails)
-2. Super-K SK-VIII measures τ_p < 1030 yr (κ scale overlap)
-3. HL-LHC sin2θ_W measurement deviates > 1% from 0.23122 (H_SCm formula fails)
-4. BESIII measures CP asymmetry inconsistent with δ_Kπ = 15.4° (Ug2 amplitude fails)
-5. ALICE Run 4 dN/dη at 14 TeV deviates by > 5% from [SSq]×1.077×N_ref (resonance fails)
+1. LHCb Run 4 measures BR(B$\to$K*$\tau$e) > 10-8 (k_$\eta$ constraint fails)
+2. Super-K SK-VIII measures $\tau$_p < 1030 yr ($\kappa$ scale overlap)
+3. HL-LHC sin2$\theta$_W measurement deviates > 1% from 0.23122 (H_SCm formula fails)
+4. BESIII measures CP asymmetry inconsistent with $\delta$_K$\pi$ = 15.4° (Ug2 amplitude fails)
+5. ALICE Run 4 dN/d$\eta$ at 14 TeV deviates by > 5% from [SSq]$\times$1.077$\times$N_ref (resonance fails)
 
 ---
 

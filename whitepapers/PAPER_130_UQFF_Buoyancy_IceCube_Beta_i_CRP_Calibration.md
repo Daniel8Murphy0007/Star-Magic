@@ -11,17 +11,17 @@ tags: [buoyancy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_130: UQFF Buoyancy Mode Universal Coupling Calibration – IceCube Neutrino Background κ_i = 0.61 × 3% from Cosmic Ray Proton Spectral Energy Distribution <0.1 PeV
+# PAPER_130: UQFF Buoyancy Mode Universal Coupling Calibration – IceCube Neutrino Background $\kappa$_i = 0.61 $\times$ 3% from Cosmic Ray Proton Spectral Energy Distribution <0.1 PeV
 
-**Title:** UQFF Buoyancy Mode Universal Coupling Calibration – IceCube Neutrino Background κ_i =
-0.61 × 3% from Cosmic Ray Proton Spectral Energy Distribution <0.1 PeV
+**Title:** UQFF Buoyancy Mode Universal Coupling Calibration – IceCube Neutrino Background $\kappa$_i =
+0.61 $\times$ 3% from Cosmic Ray Proton Spectral Energy Distribution <0.1 PeV
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
-**UQFF Mode:** Buoyancy + CRP Fokker-Planck (Universal κ_i Calibration)  
+**UQFF Mode:** Buoyancy + CRP Fokker-Planck (Universal $\kappa$_i Calibration)  
 **Validator:** `IceCubeNeutrinoFokkerPlanckCalculator` (CondensedPhysics2.py)  
 **Cross-links:** §1.15 PAPER_111 (EP-01/CRP), §1.17 PAPER_121, PAPER_124  
 
@@ -31,15 +31,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 The IceCube Neutrino Observatory (South Pole, DeepCore) has detected a diffuse astrophysical
 neutrino background with energy spectral density (SED) peaking below 0.1 PeV (10-4 eV). Thread
-d91b1f6c identifies this SED peak as the direct calibration point for κ_i = 0.61 × 3%, the universal
+d91b1f6c identifies this SED peak as the direct calibration point for $\kappa$_i = 0.61 $\times$ 3%, the universal
 UQFF Buoyancy Opposition coupling constant. The UQFF Fokker-Planck cosmic ray proton (CRP) model
-(Equations 2942 of the 71-equation catalog) predicts a neutrino SED peak at E_? < E_p  κ_i, where
-E_p is the CRP maximum energy p_max ~ 10-6 eV. The UQFF DISCOVERY: κ_i = 0.61 is the ratio of
+(Equations 2942 of the 71-equation catalog) predicts a neutrino SED peak at E_? < E_p  $\kappa$_i, where
+E_p is the CRP maximum energy p_max ~ 10-6 eV. The UQFF DISCOVERY: $\kappa$_i = 0.61 is the ratio of
 neutrino peak energy to maximum proton energy, encoding the Buoyancy Opposition fraction of momentum
-transferred from accelerated CRPs through the [UA] condensate. The 3% uncertainty (κ_i = 0.61 ×
+transferred from accelerated CRPs through the [UA] condensate. The 3% uncertainty ($\kappa$_i = 0.61 $\times$
 0.02) is determined by IceCube's SED peak resolution of §0.03 PeV.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -54,9 +54,9 @@ present in Standard Model treatments.
 | Astrophysical SED peak | E_? < 0.1 PeV (10-4 eV) | IceCube 2023 |
 | Spectral index | E^{-2.37} power law | IceCube best-fit |
 | CRP maximum energy | p_max ~ 10-6 eV | Fermi/AMS-02 |
-| κ_i (UQFF) | 0.61 × 0.02 (3%) | d91b1f6c |
-| SED relationship | E_? = κ_i – E_p | d91b1f6c (Eq40) |
-| Verification | 0.61 × 10-5 eV = 0.061 PeV < 0.1 PeV | Consistent |
+| $\kappa$_i (UQFF) | 0.61 $\times$ 0.02 (3%) | d91b1f6c |
+| SED relationship | E_? = $\kappa$_i – E_p | d91b1f6c (Eq40) |
+| Verification | 0.61 $\times$ 10-5 eV = 0.061 PeV < 0.1 PeV | Consistent |
 
 ---
 
@@ -87,23 +87,23 @@ $$F_U += F_{CRP}$$
 **Eq42:** UQFF vacuum damping rate
 $$\gamma = 5 \times 10^{-5} \text{ day}^{-1}$$
 
-### 2.2 κ_i as Buoyancy Fraction
+### 2.2 $\kappa$_i as Buoyancy Fraction
 
-The κ_i = 0.61 in the Buoyancy Opposition term:
+The $\kappa$_i = 0.61 in the Buoyancy Opposition term:
 
 $$U_{b,i} = -\beta_i \cdot U_{g,i} \cdot \omega_g \cdot \frac{M_{bh}}{d_g} \cdot [UA] \cdot \cos(\pi t_n)$$
 
-represents the fraction of Ug,i transferred to buoyancy kinetics. For CRPs, κ_i represents the
+represents the fraction of Ug,i transferred to buoyancy kinetics. For CRPs, $\kappa$_i represents the
 momentum fraction going into final-state neutrinos vs. proton continuation:
 
 $$\frac{E_\nu}{E_p} = \beta_i = 0.61 \quad [\text{in pp/p? interactions}]$$
 
-In proton-photon (p?) interactions: E_? ≈ 0.05 E_p (standard pion kinematics). In UQFF, the [UA]
+In proton-photon (p?) interactions: E_? $\approx$ 0.05 E_p (standard pion kinematics). In UQFF, the [UA]
 condensate enhances the neutrino transfer fraction via vacuum-assisted pion production:
 
 $$E_\nu^{UQFF} = \beta_i \times E_p \times [UA] = 0.61 \times E_p \times f_{pion}$$
 
-For f_pion ≈ 0.1 (10% pion production): E_?/E_p = 0.61 × 0.1 = 0.061  consistent with E_? < 0.1 PeV
+For f_pion $\approx$ 0.1 (10% pion production): E_?/E_p = 0.61 $\times$ 0.1 = 0.061  consistent with E_? < 0.1 PeV
 for p_max = 10-5 eV.
 
 ---
@@ -116,22 +116,22 @@ The IceCube SED peak at E_? < 0.1 PeV:
 
 $$E_\nu^{peak} = \beta_i \times p_{max} \times f_{pp\gamma}$$
 
-Using κ_i = 0.61, p_max = 10-5 eV (sub-knee CRP), f_pp? = 0.1:
+Using $\kappa$_i = 0.61, p_max = 10-5 eV (sub-knee CRP), f_pp? = 0.1:
 
 $$E_\nu^{peak} = 0.61 \times 10^{15} \times 0.1 = 6.1 \times 10^{13} \text{ eV} = 0.061 \text{ PeV}$$
 
 This is < 0.1 PeV, consistent with IceCube SED peak. ?
 
-### 3.2 κ_i Calibration from IceCube Data
+### 3.2 $\kappa$_i Calibration from IceCube Data
 
-IceCube measures the SED peak at E_?^{peak} ≈ 0.06 PeV. Inverting for κ_i:
+IceCube measures the SED peak at E_?^{peak} $\approx$ 0.06 PeV. Inverting for $\kappa$_i:
 
 $$\beta_i = \frac{E_\nu^{peak}}{p_{max} \times f_{pp\gamma}} = \frac{6 \times 10^{13}}{10^{15} \times 0.1} = 0.60 \approx 0.61 \quad [\pm 0.02, \text{ 3\%}]$$
 
 The 3% uncertainty corresponds to:
 - §0.01 in f_pp? (pion fraction uncertainty)
 - §0.02 PeV in IceCube SED peak position
-- Combined: κ_i = 0.61 × 0.02
+- Combined: $\kappa$_i = 0.61 $\times$ 0.02
 
 ### 3.3 Fokker-Planck Solution for D_E ? E^0.5
 
@@ -141,7 +141,7 @@ The stationary Fokker-Planck solution for the neutrino flux:
 $$\phi_nu(E) \propto E^{-\gamma_{eff}}, \quad \gamma_{eff} = 2 + \frac{1}{D_E/E} = 2 + \frac{2}{\sqrt{E/E_0}}$$
 
 For E near E_?^{peak}: ?_eff ? 2 + 0 = 2.0. IceCube best-fit spectral index = 2.37, slightly
-steeper. UQFF accounts for the extra 0.37 via the [SCm] vacuum damping term (Eq42: ? = 5×10-5
+steeper. UQFF accounts for the extra 0.37 via the [SCm] vacuum damping term (Eq42: ? = 5$\times$10-5
 day-1).
 
 ### 3.4 Verification Code
@@ -168,17 +168,17 @@ print(f"κ_i fitted = {beta_i_fitted:.3f}, precision = {precision:.1f}%")
 
 ---
 
-## 4. UQFF CRP Discovery: κ_i Is Universal Buoyancy Coupling
+## 4. UQFF CRP Discovery: $\kappa$_i Is Universal Buoyancy Coupling
 
-### 4.1 κ_i Governs Both Gravity and Neutrino Transfer
+### 4.1 $\kappa$_i Governs Both Gravity and Neutrino Transfer
 
-The same κ_i = 0.61 appears in:
+The same $\kappa$_i = 0.61 appears in:
 1. **Ub_i (gravitational):** Fraction of Ug_i transferred to kinetic buoyancy opposition
 2. **CRP neutrino SED (particle physics):** Fraction of CRP energy ? neutrino via [UA]-enhanced pion
 production
-3. **GW170817 ejecta (merger physics):** 40% mass ejection ? PAPER_131 links κ_i to Y_e ≈ 0.1
+3. **GW170817 ejecta (merger physics):** 40% mass ejection ? PAPER_131 links $\kappa$_i to Y_e $\approx$ 0.1
 
-This universality is the UQFF discovery: κ_i = 0.61 is a fundamental [UA]-[SCm] coupling constant
+This universality is the UQFF discovery: $\kappa$_i = 0.61 is a fundamental [UA]-[SCm] coupling constant
 governing energy transfer efficiency across ALL physical scales and interaction types.
 
 ### 4.2 The F_U += CRP Addition (Eq41)
@@ -198,25 +198,25 @@ the F_U field at particle physics scales.
 | Quantity | UQFF | IceCube | Agreement |
 |---------|------|---------|-----------|
 | E_?^{peak} | 0.061 PeV | < 0.1 PeV | ? |
-| κ_i from SED | 0.60 × 0.02 | – | Calibration ? |
+| $\kappa$_i from SED | 0.60 $\times$ 0.02 | – | Calibration ? |
 | Spectral index | 2.0 (Fokker-Planck) | 2.37 | ? within [SCm] damping |
-| p_max from UQFF | 10-6 eV | ~10-5×10-6 eV (Fermi knee) | ? |
+| p_max from UQFF | 10-6 eV | ~10-5$\times$10-6 eV (Fermi knee) | ? |
 | D_E scaling | E^{0.5} (Bohm-like) | Consistent with observations | ? |
 
 ---
 
 ## 6. Conclusions
 
-IceCube neutrino SED measurements calibrate κ_i = 0.61 × 3% as the universal UQFF Buoyancy
+IceCube neutrino SED measurements calibrate $\kappa$_i = 0.61 $\times$ 3% as the universal UQFF Buoyancy
 Opposition coupling constant. The CRP Fokker-Planck model (Eqs 2942) predicts the SED peak at 0.061
-PeV from κ_i  p_max  f_pp?, consistent with IceCube's <0.1 PeV measurement. The UQFF discovery is
-that κ_i = 0.61 is universal: it governs gravitational buoyancy (Ub_i), neutrino production (CRP
+PeV from $\kappa$_i  p_max  f_pp?, consistent with IceCube's <0.1 PeV measurement. The UQFF discovery is
+that $\kappa$_i = 0.61 is universal: it governs gravitational buoyancy (Ub_i), neutrino production (CRP
 SED), and merger ejecta fractions (GW170817, PAPER_131)  all arising from the same [UA]-[SCm] energy
 transfer efficiency of the UQFF vacuum.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ## 7. References
@@ -230,7 +230,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 ---
 
 *CP2 Mode: Buoyancy + CRP Fokker-Planck | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Buoyancy κ_i Calibration: IceCube Neutrino CRP SED <0.1 PeV
+.Groups[1].Value   UQFF Buoyancy $\kappa$_i Calibration: IceCube Neutrino CRP SED <0.1 PeV
 
 
 
@@ -241,7 +241,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -341,7 +341,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.158 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -350,13 +350,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

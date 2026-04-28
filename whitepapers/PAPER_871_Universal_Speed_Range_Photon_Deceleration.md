@@ -10,7 +10,7 @@ tags: [vacuum, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_871: Universal Speed Range c26·i-26 and Cosmic Photon Deceleration
+# PAPER_871: Universal Speed Range c26$\cdot$i-26 and Cosmic Photon Deceleration
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-07
@@ -23,13 +23,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We derive the universal speed range v_range = c^26 · i^{-26} governing all motion in the UQFF
+We derive the universal speed range v_range = c^26 $\cdot$ i^{-26} governing all motion in the UQFF
 framework. The cosmic photon is reinterpreted as a heavy metal ion that decelerates from
-c^26·i^{-26} at the highest quantum state to c2 at visible-light speed in the undifferentiated
-aether (UA) vacuum. The quantity E = c2 ≈ 8.988×1016 m2/s2 is the speed of light in the cosmic UA
+c^26$\cdot$i^{-26} at the highest quantum state to c2 at visible-light speed in the undifferentiated
+aether (UA) vacuum. The quantity E = c2 $\approx$ 8.988$\times$1016 m2/s2 is the speed of light in the cosmic UA
 vacuum (not an energy equation without mass). The 26-dimensional deceleration tower maps each
-quantum state n to a speed layer v(n) = c^{26-n+1}, spanning from v(1) = c^26 ≈ 10^{219.7} through
-v(26) = c = 2.998×108 m/s.
+quantum state n to a speed layer v(n) = c^{26-n+1}, spanning from v(1) = c^26 $\approx$ 10^{219.7} through
+v(26) = c = 2.998$\times$108 m/s.
 
 ---
 
@@ -39,8 +39,8 @@ v(26) = c = 2.998×108 m/s.
 
 $$
 \begin{aligned}
-  & v_range = c^26 · i^{-26}   [universal speed range, dimensionless complex magnitude] \\
-  & |v_range| = c^26 ≈ 10^{219.7} m^26/s^26
+  & v_range = c^26 \cdot i^{-26}   [universal speed range, dimensionless complex magnitude] \\
+  & |v_range| = c^26 \approx 10^{219.7} m^26/s^26
 \end{aligned}
 $$
 
@@ -49,20 +49,20 @@ $$
 $$
 \begin{aligned}
   & v(layer) = c^{26-layer+1}    [speed at each deceleration layer] \\
-  & Layer 1:  v = c^26 ≈ 10^{219.7}    (maximum, proto-photon birth) \\
-  & Layer 2:  v = c^25 ≈ 10^{211.2} \\
+  & Layer 1:  v = c^26 \approx 10^{219.7}    (maximum, proto-photon birth) \\
+  & Layer 2:  v = c^25 \approx 10^{211.2} \\
   & ... \\
-  & Layer 13: v = c^14 ≈ 10^{118.4}    (midpoint) \\
+  & Layer 13: v = c^14 \approx 10^{118.4}    (midpoint) \\
   & ... \\
-  & Layer 25: v = c^2  ≈ 8.988e16      (visible light speed in UA vacuum) \\
-  & Layer 26: v = c    ≈ 2.998e8 m/s   (terminal speed, matter frame)
+  & Layer 25: v = c^2  \approx 8.988e16      (visible light speed in UA vacuum) \\
+  & Layer 26: v = c    \approx 2.998e8 m/s   (terminal speed, matter frame)
 \end{aligned}
 $$
 
 ### 1.3 E = c2 Reinterpretation
 
 $$
-E = c2 = (2.998 × 108)2 ≈ 8.988 × 1016 m2/s2
+E = c2 = (2.998 \times 108)2 \approx 8.988 \times 1016 m2/s2
 $$
 
 In UQFF, this is the **speed of visible light in the UA vacuum** — not Einstein's mass-energy
@@ -72,7 +72,7 @@ quantity representing the photon's terminal deceleration state in the 26-layer t
 ### 1.4 Deceleration Factor
 
 $$
-deceleration = v_light / v_max = c2 / c^26 = c^{-24} ≈ 10^{-203.3}
+deceleration = v_light / v_max = c2 / c^26 = c^{-24} \approx 10^{-203.3}
 $$
 
 The cosmic photon decelerates by a factor of ~10^{203} across the full 26-state tower.
@@ -85,7 +85,7 @@ The cosmic photon decelerates by a factor of ~10^{203} across the full 26-state 
 
 In the UQFF paradigm, the photon is not a massless gauge boson but a **heavy metal ion** (proto-iron
 identity, SM_magnetic) that has decelerated through all 26 quantum states of vacuum density. At
-birth (state 1), it travels at c^26·i^{-26}; by state 26, it has slowed to c and appears as
+birth (state 1), it travels at c^26$\cdot$i^{-26}; by state 26, it has slowed to c and appears as
 observable electromagnetic radiation.
 
 ### 2.2 Connection to 26-State Vacuum Density
@@ -94,12 +94,12 @@ Each speed layer corresponds to a vacuum density state from PAPER_855:
 
 $$
 \begin{aligned}
-  & State n: ρ_vac(n) = ρ_base · (0.1)^n · exp(-[SSq]·n/26) · exp(-(π-t)) \\
+  & State n: \rho_vac(n) = \rho_base \cdot (0.1)^n \cdot exp(-[SSq]\cdotn/26) \cdot exp(-(\pi-t)) \\
   & v(n) = c^{26-n+1}
 \end{aligned}
 $$
 
-Higher vacuum density → faster propagation speed. As vacuum density drops exponentially across
+Higher vacuum density $\to$ faster propagation speed. As vacuum density drops exponentially across
 states, speed drops as a power law in c.
 
 ### 2.3 The 26 Quantum States Before Mass
@@ -112,7 +112,7 @@ quantum states and the observable matter regime.
 
 ## 3. Speed Layer Summary Table
 
-| Layer | Speed | log₁₀(v) | Vacuum State |
+| Layer | Speed | log10(v) | Vacuum State |
 |-------|-------|-----------|--------------|
 | 1 | c26 | 219.7 | Maximum (proto-photon birth) |
 | 5 | c22 | 186.0 | Ultra-relativistic |
@@ -136,7 +136,7 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 ## 5. SCm Superconductivity Axiom (Session 204)
 
-The universal speed range c26·i-26 is a direct prediction of the **SCm Superconductivity Axiom**:
+The universal speed range c26$\cdot$i-26 is a direct prediction of the **SCm Superconductivity Axiom**:
 superconducting vacuum at state n=1 supports propagation at c26, while the fully decohered vacuum at
 n=26 limits propagation to c.
 
@@ -146,7 +146,7 @@ The standalone module `scm_superconductivity_axiom.py` encodes this in:
 
 - **Engine 2 (26-State Progression):** Computes v(n) = c^{26-n+1} at each state, confirming v(26) = c
 - **Engine 3 (Cosmogenesis):** ACP Stage 2 creates U_i at the proto-photon birth speed
-- **Engine 4 (Lagrangian):** Sector 9 (Kaluza-Klein-26D) contains the 26-dimensional tower L_KK = Σᵢ (μ_s∇(M_s/r))·(r/R_compact)^{nᵢ}
+- **Engine 4 (Lagrangian):** Sector 9 (Kaluza-Klein-26D) contains the 26-dimensional tower L_KK = $\Sigma$i ($\mu$_s$\nabla$(M_s/r))$\cdot$(r/R_compact)^{ni}
 
 ### Standalone Calculator
 
@@ -161,7 +161,7 @@ python scm_superconductivity_axiom.py —json  # Machine-readable
 
 - **File:** describe mass without using weight.txt (Session 200C)
 - **Session:** 200C (v5.61)
-- **VDS/DVP/BH:** PRESENT (vacuum density series governs speed layers; speed range → buoyancy)
+- **VDS/DVP/BH:** PRESENT (vacuum density series governs speed layers; speed range $\to$ buoyancy)
 
 ---
 
@@ -174,7 +174,7 @@ python scm_superconductivity_axiom.py —json  # Machine-readable
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -193,12 +193,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.102 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -325,7 +325,7 @@ bridge.*
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Universal Speed Range: v = c^26·i^{-26} (26-dimensional deceleration tower)
+2. Universal Speed Range: v = c^26$\cdot$i^{-26} (26-dimensional deceleration tower)
 3. PAPER_855 -- Pseudo-Monopole 26-State Vacuum Density Progression
 4. PAPER_870 -- DPM Extended Periodic Table Proportion Mapping
 5. PAPER_872 -- Proto-Iron / Proto-Silicon Nuclear Identity Mapping

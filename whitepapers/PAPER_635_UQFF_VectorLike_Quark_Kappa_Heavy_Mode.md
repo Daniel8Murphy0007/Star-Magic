@@ -10,7 +10,7 @@ tags: [vacuum, SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_635: UQFF Vector-Like Quarks and κ Heavy-Mode Excitations
+# PAPER_635: UQFF Vector-Like Quarks and $\kappa$ Heavy-Mode Excitations
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
@@ -23,15 +23,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of Like Quarks and κ Heavy-Mode Excitations, deriving compressed
+This paper presents a UQFF analysis of Like Quarks and $\kappa$ Heavy-Mode Excitations, deriving compressed
 field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-ATLAS Run 3 has constrained the coupling κ of Vector-Like Quarks (VLQ: B, T, X, Y) to the
-SM weak sector at κ ∈ [0.22, 0.52] (140 fb-1). We demonstrate that UQFF κ = 0.0005/day,
-when converted to dimensionless coupling units at the electroweak scale, produces k_η_VLQ =
-κ2_avg × τ_EW = 0.137. This matches the ATLAS branching ratio constraints for VLQ pair
+ATLAS Run 3 has constrained the coupling $\kappa$ of Vector-Like Quarks (VLQ: B, T, X, Y) to the
+SM weak sector at $\kappa$ $\in$ [0.22, 0.52] (140 fb-1). We demonstrate that UQFF $\kappa$ = 0.0005/day,
+when converted to dimensionless coupling units at the electroweak scale, produces k_$\eta$_VLQ =
+$\kappa$2_avg $\times$ $\tau$_EW = 0.137. This matches the ATLAS branching ratio constraints for VLQ pair
 production decay modes with 94.8% fidelity.
 
 ---
@@ -40,25 +40,25 @@ production decay modes with 94.8% fidelity.
 
 Vector-Like Quarks are the simplest BSM extension of the SM quark sector — they transform
 as the same colour representation as SM quarks but with both left- and right-handed
-couplings, avoiding chiral anomalies. ATLAS searches constrain their coupling strength κ
+couplings, avoiding chiral anomalies. ATLAS searches constrain their coupling strength $\kappa$
 to the Higgs, Z, and W bosons.
 
 UQFF claim: VLQ heavy modes are excited states of the Ug4 (vacuum concentration) vacuum
-topology. The UQFF coupling κ maps to the heavy-mode excitation amplitude.
+topology. The UQFF coupling $\kappa$ maps to the heavy-mode excitation amplitude.
 
 ---
 
-## §3 UQFF κ to VLQ Coupling Mapping
+## §3 UQFF $\kappa$ to VLQ Coupling Mapping
 
 $$\kappa_{VLQ} = \sqrt{k_{\eta,VLQ}} = \sqrt{\kappa_{UQFF}^2 \times \tau_{EW}}$$
 
-where τ_EW = electroweak time scale = 1/(m_W/ℏ) = 8.2e-27 s.
+where $\tau$_EW = electroweak time scale = 1/(m_W/ℏ) = 8.2e-27 s.
 
-Converting κ_UQFF = 0.0005/day = 5.79e-9/s:
+Converting $\kappa$_UQFF = 0.0005/day = 5.79e-9/s:
 
 $$\kappa_{VLQ,avg} = \sqrt{(5.79 \times 10^{-9})^2 \times 8.2 \times 10^{-27}} \approx 0.37$$
 
-ATLAS measured κ ∈ [0.22, 0.52], mean = 0.37. **Exact centre of ATLAS constraint window.**
+ATLAS measured $\kappa$ $\in$ [0.22, 0.52], mean = 0.37. **Exact centre of ATLAS constraint window.**
 
 ---
 
@@ -66,9 +66,9 @@ ATLAS measured κ ∈ [0.22, 0.52], mean = 0.37. **Exact centre of ATLAS constra
 
 | VLQ Type | ATLAS BR constraint | UQFF prediction | Match |
 |----------|---------------------|-----------------|-------|
-| B → Wb | BR_Wb > 0.5 | κ2_avg × H_SCm = 0.136 | PASS |
-| T → Zt | BR_Zt ~ 0.25 | κ2_avg × (1-H_SCm) = 0.014 | PASS Smaller |
-| T → Ht | BR_Ht ~ 0.25 | κ2_avg × [SSq] = 0.078 | PASS Within 2σ |
+| B $\to$ Wb | BR_Wb > 0.5 | $\kappa$2_avg $\times$ H_SCm = 0.136 | PASS |
+| T $\to$ Zt | BR_Zt ~ 0.25 | $\kappa$2_avg $\times$ (1-H_SCm) = 0.014 | PASS Smaller |
+| T $\to$ Ht | BR_Ht ~ 0.25 | $\kappa$2_avg $\times$ [SSq] = 0.078 | PASS Within 2$\sigma$ |
 
 ---
 
@@ -219,7 +219,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.074 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -230,17 +230,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| VLQ κ coupling (ATLAS) | κ_VLQ,avg = 0.37 (UQFF κ2 × τ_EW scaling) | κ ∈ [0.22, 0.52]; central 0.37 (ATLAS 140/fb) | arXiv:2506.15515 | 94.8% (within ATLAS window) |
-| m_W = 80.377 GeV | UQFF VLQ scale: m_W × κ_avg = 29.7 GeV (modes) | m_W = 80.377 ± 0.012 GeV | PDG 2024 | 100% (exact input) |
-| VLQ pair-production σ × BR | UQFF k_η_VLQ × σ_QCD = exclusion threshold | ATLAS 140/fb: σ × BR exclusion curves | ATLAS 2025 | PASS Consistent with exclusion |
-| VLQ mass gap ΔM_VLQ | ΔM = m_W × √k_η_VLQ = 29.8 GeV | LHC Run 4 (HL-LHC): spectroscopy testable | HL-LHC 2027+ | Testable UQFF prediction |
+| VLQ $\kappa$ coupling (ATLAS) | $\kappa$_VLQ,avg = 0.37 (UQFF $\kappa$2 $\times$ $\tau$_EW scaling) | $\kappa$ $\in$ [0.22, 0.52]; central 0.37 (ATLAS 140/fb) | arXiv:2506.15515 | 94.8% (within ATLAS window) |
+| m_W = 80.377 GeV | UQFF VLQ scale: m_W $\times$ $\kappa$_avg = 29.7 GeV (modes) | m_W = 80.377 $\pm$ 0.012 GeV | PDG 2024 | 100% (exact input) |
+| VLQ pair-production $\sigma$ $\times$ BR | UQFF k_$\eta$_VLQ $\times$ $\sigma$_QCD = exclusion threshold | ATLAS 140/fb: $\sigma$ $\times$ BR exclusion curves | ATLAS 2025 | PASS Consistent with exclusion |
+| VLQ mass gap $\Delta$M_VLQ | $\Delta$M = m_W $\times$ $\sqrt{}$k_$\eta$_VLQ = 29.8 GeV | LHC Run 4 (HL-LHC): spectroscopy testable | HL-LHC 2027+ | Testable UQFF prediction |
 
-**New physics claim:** UQFF predicts VLQ mass excitations are spaced by ΔM ≈ 30 GeV —
-derivable directly from m_W and the UQFF κ constant without additional free parameters.
+**New physics claim:** UQFF predicts VLQ mass excitations are spaced by $\Delta$M $\approx$ 30 GeV —
+derivable directly from m_W and the UQFF $\kappa$ constant without additional free parameters.
 HL-LHC will be able to test this discrete mass-gap prediction by 2030 with sufficient
 integrated luminosity.
 
-*Cite PAPER_640 (`UQFFProtonDecayKappaRateComparisonCalculator`) for κ SM-scale hierarchy.*
+*Cite PAPER_640 (`UQFFProtonDecayKappaRateComparisonCalculator`) for $\kappa$ SM-scale hierarchy.*
 
 ---
 
@@ -249,7 +249,7 @@ integrated luminosity.
 - arXiv:2506.15515 — ATLAS VLQ search (140 fb-1, Run 3, June 2025)
 - PDG 2024 — Exotic quarks searches, Section 90
 - bsm_physics_validation.py — `BSMPhysicsConstants.atlas_vlq_kappa_min/max`
-- PAPER_640 — UQFF Proton Decay κ Rate Comparison
+- PAPER_640 — UQFF Proton Decay $\kappa$ Rate Comparison
 
 ---
 

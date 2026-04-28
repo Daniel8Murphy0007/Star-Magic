@@ -26,7 +26,7 @@ Classical UQFF hydrogen resonance equations model only the 1s ground state of hy
 This paper generalizes the resonance equation H_res to all chemical elements Z=1 through Z=118,
 introducing five new terms: A_res (mass-scaled amplitude), f_res (binding-energy-scaled frequency),
 U_dp (nuclear dipole-dipole coupling), SC_m (superconductive coupling), and k_nuc (neutron-proton
-coupled nuclear constant). The shell structure correction S_shell and pairing energy δ_pair extend
+coupled nuclear constant). The shell structure correction S_shell and pairing energy $\delta$_pair extend
 the framework to all even-odd, odd-even, and doubly-magic nuclei. This represents the most
 comprehensive UQFF nuclear resonance equation derived to date.
 
@@ -50,7 +50,7 @@ The generalized H_res equation captures all these effects in a single parameteri
 ## 2. Generalized Hydrogen Resonance Equation
 
 $$
-H_res = A_res · sin(2π·f_res·t) + U_dp · SC_m · k_nuc + S_shell
+H_res = A_res \cdot sin(2\pi\cdotf_res\cdott) + U_dp \cdot SC_m \cdot k_nuc + S_shell
 $$
 
 ---
@@ -61,18 +61,18 @@ $$
 
 $$
 \begin{aligned}
-  & A_res = k_A · Z · (A/A_H) · (1 + δ_pair) \\
+  & A_res = k_A \cdot Z \cdot (A/A_H) \cdot (1 + \delta_pair) \\
   & k_A  = amplitude coupling constant = 1.0 (calibrated to hydrogen ground state) \\
   & Z    = atomic number (proton number) \\
   & A    = mass number (protons + neutrons) \\
   & A_H  = hydrogen mass number = 1 \\
-  & δ_pair = pairing energy correction (see below)
+  & \delta_pair = pairing energy correction (see below)
 \end{aligned}
 $$
 
-For hydrogen (Z=1, A=1): A_res = 1.0 · 1 · (1/1) · (1+0) = 1 PASS
+For hydrogen (Z=1, A=1): A_res = 1.0 $\cdot$ 1 $\cdot$ (1/1) $\cdot$ (1+0) = 1 PASS
 
-For carbon-12 (Z=6, A=12): A_res = 1.0 · 6 · (12/1) · (1+δ_pair_C) = 72 · (1 + δ_pair)
+For carbon-12 (Z=6, A=12): A_res = 1.0 $\cdot$ 6 $\cdot$ (12/1) $\cdot$ (1+$\delta$_pair_C) = 72 $\cdot$ (1 + $\delta$_pair)
 
 ---
 
@@ -80,20 +80,20 @@ For carbon-12 (Z=6, A=12): A_res = 1.0 · 6 · (12/1) · (1+δ_pair_C) = 72 · (
 
 $$
 \begin{aligned}
-  & f_res = (E_bind/h) · (A_H/A) · (1 + S_shell) \\
+  & f_res = (E_bind/h) \cdot (A_H/A) \cdot (1 + S_shell) \\
   & E_bind = nuclear binding energy (J)  [from liquid drop model or Weizsäcker formula] \\
-  & h      = 6.626×10-34 J·s \\
+  & h      = 6.626\times10-34 J\cdots \\
   & A_H    = 1 (hydrogen normalization) \\
   & A      = mass number \\
   & S_shell = shell structure correction
 \end{aligned}
 $$
 
-For hydrogen: E_bind = 13.6 eV = 2.18×10-18 J
+For hydrogen: E_bind = 13.6 eV = 2.18$\times$10-18 J
 $$
 \begin{aligned}
-  & f_res(H) = (2.18×10-18 / 6.626×10-34) · (1/1) · (1+\text{S\_shell\_H}) \\
-  & f_res(H) ≈ 3.29×1015 Hz  (Lyman alpha frequency) PASS
+  & f_res(H) = (2.18\times10-18 / 6.626\times10-34) \cdot (1/1) \cdot (1+\text{S\_shell\_H}) \\
+  & f_res(H) \approx 3.29\times1015 Hz  (Lyman alpha frequency) PASS
 \end{aligned}
 $$
 
@@ -103,18 +103,18 @@ $$
 
 $$
 \begin{aligned}
-  & U_dp = k · (A_1 · A_2 / f_dp2) · cos(φ_dp) \\
+  & U_dp = k \cdot (A_1 \cdot A_2 / f_dp2) \cdot cos(\phi_dp) \\
   & k    = dipole coupling constant (calibrated to deuteron binding) \\
   & A_1  = first nucleon mass number \\
   & A_2  = second nucleon mass number \\
   & f_dp = dipole oscillation frequency \\
-  & φ_dp = relative phase angle
+  & \phi_dp = relative phase angle
 \end{aligned}
 $$
 
 For proton-neutron pair (deuteron):
 $$
-U_dp(d) = k · (1 · 1 / f_dp2) · cos(0)
+U_dp(d) = k \cdot (1 \cdot 1 / f_dp2) \cdot cos(0)
 $$
 
 ---
@@ -123,31 +123,31 @@ $$
 
 $$
 \begin{aligned}
-  & S_shell = 0.1 · (Z_magic + N_magic) \\
+  & S_shell = 0.1 \cdot (Z_magic + N_magic) \\
   & Z_magic = fraction of Z filled to magic number (0 to 1 based on nearest magic Z) \\
   & N_magic = fraction of N filled to magic number (0 to 1 based on nearest magic N)
 \end{aligned}
 $$
 
-Magic numbers: Z,N ∈ {2, 8, 20, 28, 50, 82, 126}
+Magic numbers: Z,N $\in$ {2, 8, 20, 28, 50, 82, 126}
 
 For Pb-208 (Z=82, N=126, doubly magic):
 $$
-S_shell = 0.1 · (1.0 + 1.0) = 0.20    (20% shell enhancement)
+S_shell = 0.1 \cdot (1.0 + 1.0) = 0.20    (20% shell enhancement)
 $$
 
 For Fe-56 (Z=26, N=30):
 $$
 \begin{aligned}
-  & Z nearest magic = 28, fraction = 26/28 ≈ 0.93 \\
-  & N nearest magic = 28, fraction = 30/28 → above, use 28/50 = 0.56 \\
-  & S_shell = 0.1 · (0.93 + 0.56) = 0.149
+  & Z nearest magic = 28, fraction = 26/28 \approx 0.93 \\
+  & N nearest magic = 28, fraction = 30/28 \to above, use 28/50 = 0.56 \\
+  & S_shell = 0.1 \cdot (0.93 + 0.56) = 0.149
 \end{aligned}
 $$
 
 ---
 
-### 3.5 Pairing Energy δ_pair
+### 3.5 Pairing Energy $\delta$_pair
 
 ```
 δ_pair = a_pair / (A^(1/2)) · pair_type
@@ -166,16 +166,16 @@ $$
 
 $$
 \begin{aligned}
-  & k_nuc = k_0 · (N/Z) · (1 + δ_pair) \\
+  & k_nuc = k_0 \cdot (N/Z) \cdot (1 + \delta_pair) \\
   & k_0  = base nuclear coupling = 1.0 \\
-  & N    = neutron number = A − Z \\
+  & N    = neutron number = A - Z \\
   & Z    = proton number \\
-  & δ_pair = pairing energy correction (same as above)
+  & \delta_pair = pairing energy correction (same as above)
 \end{aligned}
 $$
 
 For hydrogen: N=0, k_nuc = 0 (no neutron-proton coupling) PASS
-For iron-56: N/Z = 30/26 ≈ 1.15, k_nuc ≈ 1.15·(1+δ_pair_Fe)
+For iron-56: N/Z = 30/26 $\approx$ 1.15, k_nuc $\approx$ 1.15$\cdot$(1+$\delta$_pair_Fe)
 
 ---
 
@@ -193,12 +193,12 @@ In general: SC_m = ρ_vac,[SCm] / ρ_vac,[SCm,ref]
 
 | Element | Z | A | A_res | f_res (Hz) | S_shell | H_res |
 |---------|---|---|-------|------------|---------|-------|
-| H-1 | 1 | 1 | 1.0 | 3.29×1015 | 0.20 | A_res·sin(2π·f_res·t) |
-| He-4 | 2 | 4 | 8.0 | 7.7×1014 | 0.20 | ... |
-| C-12 | 6 | 12 | 72 | 3.9×1014 | 0.15 | ... |
-| Fe-56 | 26 | 56 | 1456 | 1.2×1014 | 0.15 | ... |
-| Pb-208 | 82 | 208 | 17056 | 5.0×1013 | 0.20 | ... |
-| U-238 | 92 | 238 | 21896 | 4.2×1013 | 0.05 | ... |
+| H-1 | 1 | 1 | 1.0 | 3.29$\times$1015 | 0.20 | A_res$\cdot$sin(2$\pi$$\cdot$f_res$\cdot$t) |
+| He-4 | 2 | 4 | 8.0 | 7.7$\times$1014 | 0.20 | ... |
+| C-12 | 6 | 12 | 72 | 3.9$\times$1014 | 0.15 | ... |
+| Fe-56 | 26 | 56 | 1456 | 1.2$\times$1014 | 0.15 | ... |
+| Pb-208 | 82 | 208 | 17056 | 5.0$\times$1013 | 0.20 | ... |
+| U-238 | 92 | 238 | 21896 | 4.2$\times$1013 | 0.05 | ... |
 
 ---
 
@@ -206,10 +206,10 @@ In general: SC_m = ρ_vac,[SCm] / ρ_vac,[SCm,ref]
 
 In Low-Energy Nuclear Reactions:
 $$
-\text{H\_res\_LENR} = A_res · sin(2π·f_res·t) + U_dp·SC_m·k_nuc·(1+\text{F\_env\_LENR})
+\text{H\_res\_LENR} = A_res \cdot sin(2\pi\cdotf_res\cdott) + U_dp\cdotSC_m\cdotk_nuc\cdot(1+\text{F\_env\_LENR})
 $$
 
-Where F_env_LENR = k_η·η accounts for neutron production pathways. When H_res exceeds the Coulomb
+Where F_env_LENR = k_$\eta$$\cdot$$\eta$ accounts for neutron production pathways. When H_res exceeds the Coulomb
 barrier threshold, nuclear reactions proceed.
 
 ---
@@ -248,7 +248,7 @@ Session 180 continuation v5.38.*
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -351,7 +351,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.114 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -362,13 +362,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

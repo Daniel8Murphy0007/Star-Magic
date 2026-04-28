@@ -22,12 +22,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 4676 (the "Mice Galaxies") is a pair of colliding spiral galaxies in Coma (~290 Mly, z ≈ 0.022),
-each ~2×1011 MM_sun, having undergone a close passage ~100 Myr ago. The Hubble ACS imaging (2002)
+NGC 4676 (the "Mice Galaxies") is a pair of colliding spiral galaxies in Coma (~290 Mly, z $\approx$ 0.022),
+each ~2$\times$1011 MM_sun, having undergone a close passage ~100 Myr ago. The Hubble ACS imaging (2002)
 reveals dramatic tidal tails, nuclear star clusters, and enhanced starburst activity triggered by
 the interaction. Under UQFF, the merger mass-loss function M_merge(t), enhanced starburst magnetic
-field (B ~ 10-4 T), interaction velocity (v ~ 106 m/s), and cosmic expansion term yield g_Mice ≈
-1.053×10-1 m/s2. The elevated magnetic field due to starburst induction is the signature UQFF
+field (B ~ 10-4 T), interaction velocity (v ~ 106 m/s), and cosmic expansion term yield g_Mice $\approx$
+1.053$\times$10-1 m/s2. The elevated magnetic field due to starburst induction is the signature UQFF
 distinction for colliding systems.
 
 ---
@@ -48,7 +48,7 @@ system.
 
 $$
 \begin{aligned}
-  & g_Mice(r, t) = (G × M_total) / r2 × (1 + H(z)×t) × (1 - M_merge) × (1 + f_TRZ) \\
+  & g_Mice(r, t) = (G \times M_total) / r2 \times (1 + H(z)\timest) \times (1 - M_merge) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -62,14 +62,14 @@ Where:
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Total galaxy mass | M | 2×2×1011 MM_sun = 3.978×1041 kg | Hubble |
-| Interaction radius | r | 3×1020 m (~31 kly) | Hubble |
+| Total galaxy mass | M | 2$\times$2$\times$1011 MM_sun = 3.978$\times$1041 kg | Hubble |
+| Interaction radius | r | 3$\times$1020 m (~31 kly) | Hubble |
 | Redshift | z | 0.022 | NED |
-| Integration time | t | 3×108 yr = 9.468×1015 s | Post-encounter |
+| Integration time | t | 3$\times$108 yr = 9.468$\times$1015 s | Post-encounter |
 | Merger mass fraction | M_merge | 0.2638 | UQFF merger func |
 | Starburst B-field | B | 10-4 T | Enhanced Starburst |
 | Interaction velocity | v | 106 m/s | UQFF Aether |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -79,7 +79,7 @@ Where:
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 3.978e41) / (3e20)2 \\
+  & g_grav = (6.6743e-11 \times 3.978e41) / (3e20)2 \\
   & = 2.655e31 / 9e40 = 2.950e-10 m/s2
 \end{aligned}
 $$
@@ -88,11 +88,11 @@ $$
 $$
 \begin{aligned}
   & During galactic collision, mass is redistributed as: \\
-  & M_merge(t) = T₀ × (1 - exp(-t/τ_merge)) \\
-  & = 0.5 × (1 - exp(-3e8/4e8)) \\
-  & = 0.5 × (1 - exp(-0.75)) \\
-  & = 0.5 × (1 - 0.4724) \\
-  & = 0.5 × 0.5276 = 0.2638 \\
+  & M_merge(t) = T0 \times (1 - exp(-t/\tau_merge)) \\
+  & = 0.5 \times (1 - exp(-3e8/4e8)) \\
+  & = 0.5 \times (1 - exp(-0.75)) \\
+  & = 0.5 \times (1 - 0.4724) \\
+  & = 0.5 \times 0.5276 = 0.2638 \\
   & 1 - M_merge = 1 - 0.2638 = 0.7362
 \end{aligned}
 $$
@@ -100,13 +100,13 @@ $$
 ### Step 3: Cosmic Expansion Factor
 $$
 \begin{aligned}
-  & H(z) = H₀ × √(Ω_m(1+z)3 + Ω_Λ) \\
-  & = 2.268e-18 × √(0.3 × (1.022)3 + 0.7) \\
-  & = 2.268e-18 × √(0.3 × 1.0677 + 0.7) \\
-  & = 2.268e-18 × √(1.0203) \\
-  & = 2.268e-18 × 1.01010 = 2.291e-18 s-1 \\
-  & H(z) × t = 2.291e-18 × 9.468e15 = 2.169e-2 \\
-  & 1 + H(z) × t = 1.02169
+  & H(z) = H0 \times \sqrt{}(\Omega_m(1+z)3 + \Omega_\Lambda) \\
+  & = 2.268e-18 \times \sqrt{}(0.3 \times (1.022)3 + 0.7) \\
+  & = 2.268e-18 \times \sqrt{}(0.3 \times 1.0677 + 0.7) \\
+  & = 2.268e-18 \times \sqrt{}(1.0203) \\
+  & = 2.268e-18 \times 1.01010 = 2.291e-18 s-1 \\
+  & H(z) \times t = 2.291e-18 \times 9.468e15 = 2.169e-2 \\
+  & 1 + H(z) \times t = 1.02169
 \end{aligned}
 $$
 
@@ -115,9 +115,9 @@ $$
 \begin{aligned}
   & Starburst interaction enhances magnetic field to B = 10-4 T \\
   & Interaction velocity v = 106 m/s \\
-  & q × (v × B) = 1.602e-19 × 1e6 × 1e-4 = 1.602e-17 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e6 \times 1e-4 = 1.602e-17 N \\
   & a = 1.602e-17 / m_p = 1.602e-17 / 1.673e-27 = 9.575e9 m/s2 \\
-  & a_EM = 9.575e9 × 11 × 1e-12 = 1.053e-1 m/s2
+  & a_EM = 9.575e9 \times 11 \times 1e-12 = 1.053e-1 m/s2
 \end{aligned}
 $$
 
@@ -129,12 +129,12 @@ $$
 ### Step 6: Final Solution
 $$
 \begin{aligned}
-  & g_Mice = (2.950e-10) × (1.02169) × (0.7362) × (1.1) + 1.053e-1 \\
-  & = 2.950e-10 × 1.02169 = 3.014e-10 \\
-  & × 0.7362 = 2.219e-10 \\
-  & × 1.1 = 2.441e-10 \\
+  & g_Mice = (2.950e-10) \times (1.02169) \times (0.7362) \times (1.1) + 1.053e-1 \\
+  & = 2.950e-10 \times 1.02169 = 3.014e-10 \\
+  & \times 0.7362 = 2.219e-10 \\
+  & \times 1.1 = 2.441e-10 \\
   & = 2.441e-10 + 1.053e-1 \\
-  & ≈ 1.053e-1 m/s2
+  & \approx 1.053e-1 m/s2
 \end{aligned}
 $$
 
@@ -142,11 +142,11 @@ $$
 
 ## 4. Physical Interpretation
 
-The Mice Galaxies result (1.053×10-1 m/s2) matches the Antennae galaxy result — confirming UQFF's
+The Mice Galaxies result (1.053$\times$10-1 m/s2) matches the Antennae galaxy result — confirming UQFF's
 prediction that starburst-induced magnetic field enhancement is the universal discriminator for
-colliding galaxies. The elevated B = 10-4 T (100× isolated spirals) drives the Aether correction
-from ~10-2 to ~10-1 m/s2. Classical gravity (2.950×10-10 m/s2) is negligible. The merger factor
-M_merge = 0.2638 reflects ~26% mass redistribution in the early post-encounter phase (τ_merge = 400
+colliding galaxies. The elevated B = 10-4 T (100$\times$ isolated spirals) drives the Aether correction
+from ~10-2 to ~10-1 m/s2. Classical gravity (2.950$\times$10-10 m/s2) is negligible. The merger factor
+M_merge = 0.2638 reflects ~26% mass redistribution in the early post-encounter phase ($\tau$_merge = 400
 Myr). The Hubble observation confirms this is an active starburst system, validating the enhanced
 B-field assumption.
 
@@ -154,19 +154,19 @@ B-field assumption.
 
 ## 5. UQFF Framework Advancement
 
-- Dual-galaxy merger formalism established: M_merge(t) with τ_merge = 400 Myr
+- Dual-galaxy merger formalism established: M_merge(t) with $\tau$_merge = 400 Myr
 - Starburst B-field enhancement (10-4 T) is the UQFF signature of merging pairs
-- Confirms UQFF converges to same result for similar merger stages (Mice ≈ Antennae)
-- Merger timescale τ = 400 Myr establishes the UQFF galaxy-collision constant
+- Confirms UQFF converges to same result for similar merger stages (Mice $\approx$ Antennae)
+- Merger timescale $\tau$ = 400 Myr establishes the UQFF galaxy-collision constant
 
 ---
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for NGC 4676 (Mice Galaxies) yields g_Mice ≈ 1.053×10-1 m/s2,
+The Master UQFF gravity equation for NGC 4676 (Mice Galaxies) yields g_Mice $\approx$ 1.053$\times$10-1 m/s2,
 dominated by the starburst-enhanced Aether electromagnetic correction (B = 10-4 T). The merger
 mass-loss term M_merge = 0.2638 reflects early post-encounter dynamics. The result agrees with the
-Antennae system, establishing 1.053×10-1 m/s2 as the universal UQFF scaling for major starburst
+Antennae system, establishing 1.053$\times$10-1 m/s2 as the universal UQFF scaling for major starburst
 mergers. The Mice Galaxies join the Antennae as canonical UQFF merger benchmarks, validating the
 B-field enhancement model for early-stage colliding galaxies.
 
@@ -210,7 +210,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -229,7 +229,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -339,7 +339,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.158 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -350,13 +350,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

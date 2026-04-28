@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Reproduces r-Process Nucleosynthesis Abundances
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-11, AprilSept 2025)  
@@ -31,17 +31,17 @@ Reproduces r-Process Nucleosynthesis Abundances
 
 Empirical Proof EP-11 applies the UQFF Ub_i buoyancy-outflow mechanism to the
 kilonova AT2017gfo produced in GW170817 (NGC 4993, d = 40.7 Mpc). The electron
-fraction threshold Y_e ≈ 0.1 required for r-process production of A > 140 nuclei
+fraction threshold Y_e $\approx$ 0.1 required for r-process production of A > 140 nuclei
 (lanthanides, actinides) is reproduced by the UQFF condition that Ub_i activates
-at M_ej/M_total = [SSq] = 0.57, driving the neutron-rich outflow at v_ej ≈ 0.1c
-(κ_i regime boundary). The observed M_ej  40% of total ejecta at 0.1c maps
-directly to the UQFF κ_i = 0.61 onset threshold. r-Process yields for A > 140
+at M_ej/M_total = [SSq] = 0.57, driving the neutron-rich outflow at v_ej $\approx$ 0.1c
+($\kappa$_i regime boundary). The observed M_ej  40% of total ejecta at 0.1c maps
+directly to the UQFF $\kappa$_i = 0.61 onset threshold. r-Process yields for A > 140
 are confirmed to 95% coverage through the lanthanide-opacity kilonova light curve
 as modeled via validate_gw170817.py (ALL PASS). This proof connects the
 gravitational wave domain (§1.1) to the nuclear physics domain (§1.8) through
 a single UQFF mechanism: Ub_i-driven neutron-rich ejecta.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,9 +53,9 @@ present in Standard Model treatments.
 
 | Quantity | Observed Value | Source |
 |----------|---------------|--------|
-| Distance d | 40.7 × 2.4 Mpc | Hubble flow + Gaia |
+| Distance d | 40.7 $\times$ 2.4 Mpc | Hubble flow + Gaia |
 | Chirp mass M_chirp | 1.188 M? | LIGO/Virgo GW signal |
-| Total NS mass | 2.73 × 0.04 M? | LIGO/Virgo |
+| Total NS mass | 2.73 $\times$ 0.04 M? | LIGO/Virgo |
 | Ejecta mass M_ej | ~0.04§0.06 M? | Kilonova AT2017gfo |
 | Ejecta velocity | ~0.1c (blue) + ~0.3c (red) | Spectroscopy |
 | r-Process fraction | ~95% of A > 140 | Spectral fitting |
@@ -70,7 +70,7 @@ The rapid neutron-capture process (r-process) synthesizes nuclei with A > 140
 $$Y_e = \frac{N_p}{N_p + N_n} \lesssim 0.25$$
 
 For significant lanthanide production (opacity ? > 10 cm/g), Y_e ? 0.15 is
-required. The AT2017gfo spectral fitting implies Y_e ≈ 0.1 as the dominant
+required. The AT2017gfo spectral fitting implies Y_e $\approx$ 0.1 as the dominant
 r-process component.
 
 ---
@@ -89,7 +89,7 @@ Where F_UQFF incorporates the four UQFF fields:
 $$\Phi_{UQFF} = U_{g1} + U_{g2} + U_{g3} + U_{g4}$$
 
 For the GW170817 merger remnant at r = 30 km (disk radius):
-- U_g1 = magnetic dipole term: B  10 T (NS surface) ? Ug1 = 4.34 × 10 J/m
+- U_g1 = magnetic dipole term: B  10 T (NS surface) ? Ug1 = 4.34 $\times$ 10 J/m
 - U_g2 = charge-reactivity: proton fraction from Y_e = 0.1 ? U_g2 small
 - U_g3 = string rotation: tidal heating ? Ug3 oscillatory
 - U_g4 = vacuum concentration: Ug4 stabilizes at r_disk scale
@@ -101,7 +101,7 @@ exceeds the [SSq] suppression threshold:
 
 $$\frac{M_{ej}}{M_{total}} \geq [\text{SSq}] = 0.57$$
 
-For the GW170817 system with M_total = 2.73 M? and M_ej ≈ 0.04§0.06 M?:
+For the GW170817 system with M_total = 2.73 M? and M_ej $\approx$ 0.04§0.06 M?:
 
 $$\frac{M_{ej}}{M_{total}} = \frac{0.05}{2.73} = 0.018 \ll 0.57$$
 
@@ -111,22 +111,22 @@ If M_ej/M_total were > [SSq], Ub_i would push proton-rich winds (high Y_e) that
 quench r-process. The merger's small ejected fraction is the UQFF explanation for
 why r-process proceeds.
 
-### 2.3 Velocity Threshold at κ_i = 0.61
+### 2.3 Velocity Threshold at $\kappa$_i = 0.61
 
 The ejecta velocity at the Ub_i activation threshold is:
 
 $$v_{ej}^{UQFF} = \beta_i \cdot c = 0.61 \times c \approx 1.83 \times 10^8 \text{ m/s}$$
 
 This is the relativistic boundary. The **observed** ejecta components:
-- **Blue component:** v ≈ 0.1c (neutron-rich, Y_e ≈ 0.1) ? BELOW κ_i threshold ? r-process active
-- **Red component:** v ≈ 0.3c (lanthanide-rich) ? BELOW κ_i threshold ? r-process active
+- **Blue component:** v $\approx$ 0.1c (neutron-rich, Y_e $\approx$ 0.1) ? BELOW $\kappa$_i threshold ? r-process active
+- **Red component:** v $\approx$ 0.3c (lanthanide-rich) ? BELOW $\kappa$_i threshold ? r-process active
 
-Both components have v < κ_i  c, confirming Ub_i has not activated the outflow
-suppression. The **ultra-relativistic jets** (v ≈ 0.99c, UQFF analysis in PAPER_066)
-ARE above κ_i and propagate without r-process loading.
+Both components have v < $\kappa$_i  c, confirming Ub_i has not activated the outflow
+suppression. The **ultra-relativistic jets** (v $\approx$ 0.99c, UQFF analysis in PAPER_066)
+ARE above $\kappa$_i and propagate without r-process loading.
 
-This is the EP-11 key finding: **κ_i = 0.61 defines the velocity boundary between
-r-process active (v < κ_i c) and r-process quenched (v > κ_i c) outflow regimes.**
+This is the EP-11 key finding: **$\kappa$_i = 0.61 defines the velocity boundary between
+r-process active (v < $\kappa$_i c) and r-process quenched (v > $\kappa$_i c) outflow regimes.**
 
 ---
 
@@ -138,7 +138,7 @@ The UQFF Ub_i feeding rate for neutron-rich material:
 
 $$\dot{M}_{Ubi} = F_{Ubi} / g_{eff} = 2.3 \times 10^{-3} \, M_\odot \text{ s}^{-1}$$
 
-Integrated over the merger duration t  10×100 ms:
+Integrated over the merger duration t  10$\times$100 ms:
 
 $$M_{r-process} = \dot{M}_{Ubi} \times \tau = 2.3 \times 10^{-3} \times 0.05 = 1.15 \times 10^{-4} \, M_\odot$$
 
@@ -151,8 +151,8 @@ from opacity modeling (?  10 cm/g, Cowperthwaite et al. 2017).
 |--------------|---------|--------------|-------------------|
 | 1st peak (Se,Kr,Rb) | 7090 | 85% (Y_e < 0.25) | ~90% inferred |
 | 2nd peak (Ba,La,Ce) | 130140 | 92% (Y_e < 0.15) | ~90% confirmed |
-| 3rd peak lanthanides | 140175 | **95%** (Y_e ≈ 0.1) | ~95% confirmed |
-| Actinides (Th, U) | 230+ | 78% (Y_e ≈ 0.08) | ~7080% inferred |
+| 3rd peak lanthanides | 140175 | **95%** (Y_e $\approx$ 0.1) | ~95% confirmed |
+| Actinides (Th, U) | 230+ | 78% (Y_e $\approx$ 0.08) | ~7080% inferred |
 
 **Total r-process A > 140 coverage: 95% confirmed** (matching EP-11 target).
 
@@ -165,17 +165,17 @@ the opacity:
 
 $$L_{kilonova}(t) = \frac{F_{Ubi} \cdot c^2}{\kappa_{r-proc}} \cdot e^{-t/t_{diffuse}}$$
 
-Where ?_{r-proc} = 10 cm/g (lanthanide opacity, Y_e ≈ 0.1 confirmed).
+Where ?_{r-proc} = 10 cm/g (lanthanide opacity, Y_e $\approx$ 0.1 confirmed).
 
 | Epoch | L_obs (erg/s) | L_UQFF (erg/s) | Error |
 |-------|--------------|----------------|-------|
-| +0.5d | ~4 × 104 | 3.9 × 104 | 2.5% |
-| +1.0d | ~2 × 104 | 1.95 × 104 | 2.5% |
-| +2.0d | ~8 × 104 | 7.8 × 104 | 2.5% |
-| +5.0d | ~2 × 104 | 1.97 × 104 | 1.5% |
-| +10d | ~4 × 104 | 4.1 × 104 | 2.5% |
+| +0.5d | ~4 $\times$ 104 | 3.9 $\times$ 104 | 2.5% |
+| +1.0d | ~2 $\times$ 104 | 1.95 $\times$ 104 | 2.5% |
+| +2.0d | ~8 $\times$ 104 | 7.8 $\times$ 104 | 2.5% |
+| +5.0d | ~2 $\times$ 104 | 1.97 $\times$ 104 | 1.5% |
+| +10d | ~4 $\times$ 104 | 4.1 $\times$ 104 | 2.5% |
 
-**Validator result:** validate_gw170817.py – ALL PASS (F_kn = 1.305 × 1054 N from PAPER_037
+**Validator result:** validate_gw170817.py – ALL PASS (F_kn = 1.305 $\times$ 1054 N from PAPER_037
 buoyancy)
 
 ---
@@ -184,13 +184,13 @@ buoyancy)
 
 | # | Equation | Value | Physical Meaning |
 |---|----------|-------|-----------------|
-| 1 | $v_{ej}^{UQFF} = \beta_i \cdot c$ | 1.83 × 108 m/s | r-process velocity boundary |
-| 2 | $M_{ej}/M_{total} \geq [\text{SSq}]$ | 0.018 × 0.57 | Ub_i suppression active |
+| 1 | $v_{ej}^{UQFF} = \beta_i \cdot c$ | 1.83 $\times$ 108 m/s | r-process velocity boundary |
+| 2 | $M_{ej}/M_{total} \geq [\text{SSq}]$ | 0.018 $\times$ 0.57 | Ub_i suppression active |
 | 3 | $Y_e \approx 0.1$ from $M_{ej}/M_{total} < [\text{SSq}]$ | 0.1 | Neutron-rich confirmed |
-| 4 | $M_{r-process} = \dot{M}_{Ubi} \times \tau$ | 1.15 × 10-4 M? | Lanthanide mass |
+| 4 | $M_{r-process} = \dot{M}_{Ubi} \times \tau$ | 1.15 $\times$ 10-4 M? | Lanthanide mass |
 | 5 | r-Process A > 140 coverage | 95% | Confirmed vs AT2017gfo |
-| 6 | $L_{kilonova}$ at +1.0d | 1.95 × 104 erg/s | 2.5% match |
-| 7 | $F_{Ubi}$ at r = 30 km | 1.305 × 1054 N | From PAPER_037 cross-val |
+| 6 | $L_{kilonova}$ at +1.0d | 1.95 $\times$ 104 erg/s | 2.5% match |
+| 7 | $F_{Ubi}$ at r = 30 km | 1.305 $\times$ 1054 N | From PAPER_037 cross-val |
 
 ---
 
@@ -198,20 +198,20 @@ buoyancy)
 
 Empirical Proof EP-11 establishes that the UQFF Ub_i buoyancy mechanism:
 
-1. **κ_i = 0.61** defines the r-process velocity boundary: outflows with
-   v < κ_i c are neutron-rich (r-process active), consistent with both the
+1. **$\kappa$_i = 0.61** defines the r-process velocity boundary: outflows with
+   v < $\kappa$_i c are neutron-rich (r-process active), consistent with both the
    0.1c blue and 0.3c red AT2017gfo components
 2. **[SSq] = 0.57** is the Ub_i activation fraction: M_ej/M_total = 0.018 is far
    below [SSq], maintaining the suppressed neutron-rich regime needed for A > 140
-3. **Y_e ≈ 0.1** is reproduced by the UQFF Ub_i suppression condition, without
+3. **Y_e $\approx$ 0.1** is reproduced by the UQFF Ub_i suppression condition, without
    requiring additional neutrino reprocessing corrections
 4. **95% of A > 140 nuclei** (lanthanides) are produced, matching the AT2017gfo
    kilonova spectral analysis
-5. The kilonova light curve is reproduced to §2.5% across 0.5×10 days (validate_gw170817.py ALL
+5. The kilonova light curve is reproduced to §2.5% across 0.5$\times$10 days (validate_gw170817.py ALL
 PASS)
 
 This connects the gravitational wave domain (§1.1) to the nuclear BEC domain
-(§1.8) through κ_i and [SSq], closing the multi-domain calibration loop.
+(§1.8) through $\kappa$_i and [SSq], closing the multi-domain calibration loop.
 
 ---
 
@@ -354,7 +354,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.059 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -363,13 +363,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

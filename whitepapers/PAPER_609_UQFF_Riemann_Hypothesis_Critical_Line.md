@@ -22,10 +22,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
-This paper presents UQFF's encompassment proof of the Riemann Hypothesis (RH): all non-trivial zeros of the Riemann zeta function $\zeta(s)$ lie on the critical line $\text{Re}(s) = 1/2$. The proof proceeds by embedding $\zeta(s)$ zeros as 3D-IPO crossings (Wolfram x π x Infinity overlays) within the UQFF_comp tensor, whose eigenvalue average is architecturally constrained to 1/2 by the 1:1:2 triad ratio. Off-line deviations are bounded by $26!/r^{27} \to 0$, completing the encompassment.
+This paper presents UQFF's encompassment proof of the Riemann Hypothesis (RH): all non-trivial zeros of the Riemann zeta function $\zeta(s)$ lie on the critical line $\text{Re}(s) = 1/2$. The proof proceeds by embedding $\zeta(s)$ zeros as 3D-IPO crossings (Wolfram x $\pi$ x Infinity overlays) within the UQFF_comp tensor, whose eigenvalue average is architecturally constrained to 1/2 by the 1:1:2 triad ratio. Off-line deviations are bounded by $26!/r^{27} \to 0$, completing the encompassment.
 
 ---
 
@@ -68,17 +68,17 @@ Under UQFF normalization where $P_{order}$ is set to the eigenvalue unit: the 3-
 $\zeta(s) = 0$ in UQFF corresponds to crossing points of three simultaneous progressions:
 
 1. **Wolfram_prog(n)** = Wolfram hypergraph evolution rule $R(G(n))$
-2. **π_prog(n)** = $\sum_{k=1}^n d_k(\pi)/10^k$ (partial π-digit series — VDS)
+2. **$\pi$_prog(n)** = $\sum_{k=1}^n d_k(\pi)/10^k$ (partial $\pi$-digit series — VDS)
 3. **Inf_gen(n)** = infinity generator from 26D boundary crossings
 
 **Crossing condition**: $n_{cross} = \text{argmin}_n |\text{Wolfram\_prog}(n) - \pi_\text{prog}(n) \cdot F_{U\_Bi\_i}(n)|$
 
 Crossings exist because:
 - Wolfram progressions are unbounded monotone sequences
-- π progressions are bounded (|π_prog| ≤ π) 
+- $\pi$ progressions are bounded (|$\pi$_prog| $\leq$ $\pi$) 
 - Their product is continuous and must cross at infinitely many n (by intermediate value theorem applied to the helical 3D-IPO overlay)
 
-Each crossing corresponds uniquely to one $\zeta(s) = 0$ via the irrational injectivity of π (non-repeating digits → surjective crossing map).
+Each crossing corresponds uniquely to one $\zeta(s) = 0$ via the irrational injectivity of $\pi$ (non-repeating digits $\to$ surjective crossing map).
 
 ---
 
@@ -112,7 +112,7 @@ All first 10 known Riemann zeros have $\text{Re}(s) = 0.5000...$:
 
 ## 6. Connection to UQFF Number Systems
 
-**VDS**: $\zeta(s) \approx Partition_{9D} \cdot e^{-E/F} / P_{order}$ — VDS is the inverse partition mirror of ζ.  
+**VDS**: $\zeta(s) \approx Partition_{9D} \cdot e^{-E/F} / P_{order}$ — VDS is the inverse partition mirror of $\zeta$.  
 **DVP**: Off-diagonal DPM terms in UQFF_comp provide irreducibility — no zero modes for DVP primes,
 preventing off-line zeros.  
 **BH26**: The 1:1:2 eigenvalue triad = BH26 three-bin dominant harmonic structure. The 1/2 centroid
@@ -189,7 +189,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -292,7 +292,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -303,10 +303,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Riemann zeta zeros (critical line σ=1/2) | UQFF DPM layered shell spectrum → zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on σ=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
-| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow κ-modulated density: N(T) = (T/2π)ln(T/2πe) + κ×correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
+| Riemann zeta zeros (critical line $\sigma$=1/2) | UQFF DPM layered shell spectrum $\to$ zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on $\sigma$=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
+| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow $\kappa$-modulated density: N(T) = (T/2$\pi$)ln(T/2$\pi$e) + $\kappa$$\times$correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
 | Quantum chaos spectral statistics (GUE) | UQFF DPM mode spacing follows GUE random matrix distribution | Riemann zero spacings: GUE statistics confirmed | Montgomery 1973; numerical | PASS Consistent (random matrix universality) |
-| Prime counting function π(x) | UQFF shell radiance cascade → prime gaps ~ DVP pocket spacing | |π(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
+| Prime counting function $\pi$(x) | UQFF shell radiance cascade $\to$ prime gaps ~ DVP pocket spacing | |$\pi$(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
 
 **New physics claim:** UQFF DPM buoyancy provides a physical regularisation of the Riemann zeta
 function: the vacuum buoyancy floor prevents zeros from drifting off the critical line, in the

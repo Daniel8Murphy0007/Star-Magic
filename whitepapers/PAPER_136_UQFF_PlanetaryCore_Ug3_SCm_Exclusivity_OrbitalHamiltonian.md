@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.6)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\beta$_i = 0.6)  
 **Date:** March 2026  
 **Domain:** §2.1 Planetary Physics / Orbital Stability (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -48,7 +48,7 @@ without external detectability.
 | Earth's stable 23.5° axial tilt | Lunar stabilization (Laskar 1993) | Ug3 SCm core torque + P_SCm = 10-3 |
 | Jupiter's Great Red Spot stability | MHD turbulence equilibrium | Ug3 SCm magnetic string sustaining |
 | Saturn ring orbital resonances | Goldreich-Tremaine | Ug3 P_SCm = 10-3 lock-in |
-| Earth's geomagnetic pole wander | Convective dynamo | Ug3 cos(ω_s t π) magnetic string precession |
+| Earth's geomagnetic pole wander | Convective dynamo | Ug3 cos($\omega$_s t $\pi$) magnetic string precession |
 | Long-term orbital resonances (Laplace) | Tidal coupling | Ug3+SCm Hamiltonian quasi-periodic evolution |
 
 ---
@@ -71,13 +71,13 @@ The factor $P_{SCm} = 10^{-3}$ encodes a fundamental SCm property:
 
 - **In stellar cores** (Sun): P_SCm = 1. SCm is fully reactive, generating full Ug3 field.
 - **In planetary cores**: P_SCm = 10-3. SCm interacts ONLY with Ug3 — zero interaction with:
-  - Ug1 (magnetic dipole → no external SCm dipole radiation)
-  - Ug2 (outer bubble → no planetary-scale Ug2)
-  - Ug4 (galactic scale → irrelevant for planets)
-  - UA (external Aether → no coupling to interstellar medium)
+  - Ug1 (magnetic dipole $\to$ no external SCm dipole radiation)
+  - Ug2 (outer bubble $\to$ no planetary-scale Ug2)
+  - Ug4 (galactic scale $\to$ irrelevant for planets)
+  - UA (external Aether $\to$ no coupling to interstellar medium)
 
 Physical basis: The planetary core density is insufficient to sustain the SCm-UA resonance mode that
-activates full reactivity. Only the Ug3 magnetic string frequency (ω_s ~ 10-6 rad/s) falls within
+activates full reactivity. Only the Ug3 magnetic string frequency ($\omega$_s ~ 10-6 rad/s) falls within
 the SCm eigenmode spectrum for planetary densities.
 
 ---
@@ -116,7 +116,7 @@ $$H_{UA}^{Earth} = \frac{\rho_A v_{UA}^2}{2} \cos(\pi t_n) \approx \frac{10^{-23
 
 ### 3.3 Quasi-Periodic Orbital Evolution
 
-The cos(ω_s t π) term in H_Ug3 drives quasi-periodic evolution at the orbital precession timescale:
+The cos($\omega$_s t $\pi$) term in H_Ug3 drives quasi-periodic evolution at the orbital precession timescale:
 
 $$T_{prec} = \frac{2\pi}{\omega_s} \approx \frac{2\pi}{2.5 \times 10^{-6}} \approx 2.5 \times 10^6 \text{ s} \approx 29 \text{ days}$$
 
@@ -124,7 +124,7 @@ For Earth: this matches the lunar orbital period — a direct consequence of Ug3
 
 The effective energy stored in the Hamiltonian quasi-integral:
 
-$$J_{Ug3} = \oint H_{Ug3} \, dt \approx H_{Ug3}^{Earth} \times T_{prec} \approx 448 \times 2.5 \times 10^6 \approx 1.12 \times 10^9 \text{ J·s/m}^3$$
+$$J_{Ug3} = \oint H_{Ug3} \, dt \approx H_{Ug3}^{Earth} \times T_{prec} \approx 448 \times 2.5 \times 10^6 \approx 1.12 \times 10^9 \text{ J\cdots/m}^3$$
 
 This quasi-invariant is preserved over Gyr timescales, explaining long-term orbital stability
 WITHOUT requiring dark matter or exotic non-DPM-seeded fields.
@@ -190,9 +190,9 @@ print(f"Quasi-invariant J_Ug3 = {J_Ug3:.3e} J·s/m^3")
 |-----------|------|---------|-----------|
 | Orbital stability | Ug3 quasi-invariant preserved | Multi-Gyr stability observed | PASS |
 | P_SCm (planets) | 10-3 | No external SCm signal detected | PASS |
-| Earth precession period | ~29 days (ω_s periodicity) | 28.2 days (lunar month) | PASS |
+| Earth precession period | ~29 days ($\omega$_s periodicity) | 28.2 days (lunar month) | PASS |
 | H_Ug3 (Earth core) | ~448 J/m3 | Geomagnetic energy density ~103 J/m3 | PASS order |
-| P_SCm derivation | ρ_planet/ρ_star × modal ratio | Differential rotation data | PASS calibrated |
+| P_SCm derivation | $\rho$_planet/$\rho$_star $\times$ modal ratio | Differential rotation data | PASS calibrated |
 
 ---
 
@@ -200,9 +200,9 @@ print(f"Quasi-invariant J_Ug3 = {J_Ug3:.3e} J·s/m^3")
 
 The P_SCm = 10-3 suppression factor governs a fundamental SCm property: inside planetary cores, SCm
 interacts EXCLUSIVELY with Ug3 magnetic strings. This Ug3 exclusivity drives a quantum Hamiltonian H
-= H_Ug3 + H_SCm + H_UA whose quasi-periodic cos(ω_s t π) evolution stores and releases orbital
+= H_Ug3 + H_SCm + H_UA whose quasi-periodic cos($\omega$_s t $\pi$) evolution stores and releases orbital
 energy without external emission — explaining multi-Gyr orbital stability without invoking dark
-matter or modified gravity. The 29-day precession timescale emerging naturally from ω_s matches
+matter or modified gravity. The 29-day precession timescale emerging naturally from $\omega$_s matches
 Earth's lunar orbital period, providing independent calibration of k_3 = 1.8.
 
 ---
@@ -226,7 +226,7 @@ Earth's lunar orbital period, providing independent calibration of k_3 = 1.8.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -245,7 +245,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -353,7 +353,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -362,13 +362,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

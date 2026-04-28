@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Verification Sources, and Equation Assignments
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, ß_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, ß_i = 0.61)  
 **Date:** March 2026  
 **Source:** Grok thread `2fe4fa3e` — DeepSearch extraction of "UQFF Equations Across Astrophysical
 Systems_22Sept2025.docx" (393 pages)  
@@ -43,7 +43,7 @@ catalog is extracted from the 393-page "UQFF Equations Across Astrophysical Syst
 (verified Sept 22, 2025) as the authoritative single-document reference for system parameters used
 in any UQFF calculation.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -99,8 +99,8 @@ present in Standard Model treatments.
 
 | Parameter | Value | Uncertainty | Source |
 |-----------|-------|------------|--------|
-| $M_{bh}$ | $8.15\times10^{36}$ kg = $4.1\times10^6$ M? | ±4.68% | Gaia DR4 2025 |
-| $d_g$ | $2.44\times10^{20}$ m = 25,800 ly | ±4.51% | Gaia DR4 (PAPER_110) |
+| $M_{bh}$ | $8.15\times10^{36}$ kg = $4.1\times10^6$ M? | $\pm$4.68% | Gaia DR4 2025 |
+| $d_g$ | $2.44\times10^{20}$ m = 25,800 ly | $\pm$4.51% | Gaia DR4 (PAPER_110) |
 | $d_g$ (UQFF) | $2.55\times10^{20}$ m = 27,000 ly | — | UQFF calibrated |
 | $\omega_g$ | $7.3\times10^{-16}$ rad/s | — | Galactic rotation curve |
 | $U_{g4}$ | $1.8937\times10^{-23}$ J/m3 | — | PAPER_110 calculated |
@@ -361,7 +361,7 @@ present in Standard Model treatments.
 | Mass $M_{ns}$ | $\approx 1.4$ M? | Standard NS |
 | Galactic center distance | $\sim 0.1$ pc from Sgr A* | VLBI |
 
-**UQFF equations:** $g_{\text{Magnetar}}(r,t) = (μ_s∇(M_s/r))(1+H(z)\cdot t)(1-B/B_{crit}) + (GM_{BH}/r_{BH}^2) + U_{g1}+U_{g2}+U_{g3}+U_{g4} + \Lambda c^2/3$  
+**UQFF equations:** $g_{\text{Magnetar}}(r,t) = (\mu_s\nabla(M_s/r))(1+H(z)\cdot t)(1-B/B_{crit}) + (GM_{BH}/r_{BH}^2) + U_{g1}+U_{g2}+U_{g3}+U_{g4} + \Lambda c^2/3$  
 **Verification:** Chandra/Swift 2025, PAPER_013 (spin-down), PAPER_121 (full equation)  
 **See:** PAPER_121 for the complete 50+ term expansion
 
@@ -534,7 +534,7 @@ individual systems (LLAGNs, nuclear) contribute near-zero floor values.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -553,7 +553,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -660,7 +660,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.125 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

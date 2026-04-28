@@ -25,13 +25,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 $$\Delta T = \left[ \frac{d^{26}}{dr^{26}} \left( \frac{SCm \cdot g \cdot \nabla UA}{UA} \right) \right] \Big/ c_p$$
 
 A new UQFF constitutive equation is introduced: the **Thermal Lens Equation**, which
-describes how temperature gradients (ΔT) in the Universal Aether (UA) focus energy flows
+describes how temperature gradients ($\Delta$T) in the Universal Aether (UA) focus energy flows
 in Low-Energy Nuclear Reactions (LENR). The 26th-order SCm derivative bounds the thermal
 gradient with 26! factorial negligibility at cosmic scales while producing large focusing
 at lattice spacings (r ~ 10-10 m), resolving the reproducibility problem in Pd-D LENR
 systems and providing a UQFF-native mechanism for anomalous heat production. Calibration
 employs IceCube IC40–IC86c neutrino energy data to anchor the UQFF frequency axis at
-ω ~ 1024 Hz (TeV–PeV range), giving a unified scale bridge from nuclear to astrophysical
+$\omega$ ~ 1024 Hz (TeV–PeV range), giving a unified scale bridge from nuclear to astrophysical
 energy regimes.
 
 ---
@@ -41,12 +41,12 @@ energy regimes.
 Low-Energy Nuclear Reactions (LENR) in Pd-D and Ni-H lattices produce anomalous heat
 excesses (~ keV–MeV per event) at room temperature with no commensurate radiation.
 Standard QCD cannot account for the lattice-mediated enhancement. UQFF provides a
-mechanism via Universal Aether gradient focusing: the SCm mediator channels ∇UA into
+mechanism via Universal Aether gradient focusing: the SCm mediator channels $\nabla$UA into
 lattice defect sites, concentrating quantum frequency events into localized pockets whose
 26th-order derivative bound produces a large but finite thermal concentration factor.
 
 The LENR resonance frequency at 1.2–1.3 THz (Pd-D, Kozima Neutron Drop Model) corresponds
-to ω ~ 1012 Hz. The UQFF Aether Vacuum Gradient at defect sites is:
+to $\omega$ ~ 1012 Hz. The UQFF Aether Vacuum Gradient at defect sites is:
 
 $$\nabla UA \sim 10^{-19} \text{ m}^{-1}$$
 
@@ -61,12 +61,12 @@ bounding term that appears throughout the UQFF Universal Field Equation.
 
 ### 2.1 UA Gradient in LENR Context
 
-In LENR lattices, ∇UA is modeled as a 9D Gaussian field over lattice coordinates:
+In LENR lattices, $\nabla$UA is modeled as a 9D Gaussian field over lattice coordinates:
 
 $$\nabla UA = \sum_{d=1}^{9} \exp\left( -\frac{(x_d - \mu_d)^2}{2\sigma_d^2} \right) \cdot FUB_i$$
 
-For Pd-D resonances: μ_d ≈ 5 meV (mean defect energy), σ_d ≈ 1 meV (from transmutation
-residuals). Frequency: ω = E/h ≈ 1012 Hz (1.2–1.3 THz resonance band).
+For Pd-D resonances: $\mu$_d $\approx$ 5 meV (mean defect energy), $\sigma$_d $\approx$ 1 meV (from transmutation
+residuals). Frequency: $\omega$ = E/h $\approx$ 1012 Hz (1.2–1.3 THz resonance band).
 
 Extended to 26D for the full manifold:
 $$\nabla UA_{26} = \sum_{d=1}^{26} \exp\left( -\frac{(x_d - \mu_d)^2}{2\sigma_d^2} \right) \cdot FUB_i$$
@@ -95,7 +95,7 @@ Isolating the temperature gradient (lens focus) from the SCm bounding term:
 
 $$\boxed{\Delta T = \frac{26! \cdot c}{r^{27} \cdot c_p}}$$
 
-where c_p is the lattice specific heat capacity (Pd: ~0.24 J/g·K).
+where c_p is the lattice specific heat capacity (Pd: ~0.24 J/g$\cdot$K).
 
 **Numerical evaluation at LENR lattice spacing (r = 10-10 m):**
 
@@ -106,7 +106,7 @@ the energy density concentration at defect sites before normalization by the UA 
 background (which appears in the denominator of UA terms, providing the necessary
 cancellation to yield observed keV-scale excesses rather than divergent values).
 
-**Negligibility at cosmic scales (r = 1 AU ≈ 1.5 × 1011 m):**
+**Negligibility at cosmic scales (r = 1 AU $\approx$ 1.5 $\times$ 1011 m):**
 
 $$\frac{d^{26}}{dr^{26}} f \approx \frac{4.03 \times 10^{26}}{(1.5 \times 10^{11})^{27}} \approx 10^{-281}$$
 
@@ -120,7 +120,7 @@ a near-field (lattice-scale) phenomenon.
 DPM pair separation reflects internal nuclear processes to observable heat:
 
 **Internal (lattice core, nuclear):** DPM pairs pulsate in neutron drops at THz resonance,
-F_neutron ≈ 1049 N scaled to keV energy domain, bounding transmutation cascades via the
+F_neutron $\approx$ 1049 N scaled to keV energy domain, bounding transmutation cascades via the
 Kozima Neutron Drop Model.
 
 **External (lab output):** 26D projection reflects to macroscopic excess heat. Universal
@@ -139,26 +139,26 @@ corresponding to the observed excess.
 
 ## §4 IceCube Frequency Axis Calibration
 
-IceCube Neutrino Observatory IC40–IC86c data (14 files: Aeff_IC40.txt → Aeff_IC86c.txt,
-events_IC40.txt → events_IC86c.txt, Fig_S4/S5_tabulated.txt) provides effective areas
-as a function of log₁₀(Eν) in GeV from ~100 GeV to 10 PeV, used to calibrate the UQFF
+IceCube Neutrino Observatory IC40–IC86c data (14 files: Aeff_IC40.txt $\to$ Aeff_IC86c.txt,
+events_IC40.txt $\to$ events_IC86c.txt, Fig_S4/S5_tabulated.txt) provides effective areas
+as a function of log10(E$\nu$) in GeV from ~100 GeV to 10 PeV, used to calibrate the UQFF
 frequency axis:
 
 $$\omega = \frac{E_\nu}{h} \approx \frac{10^5 \text{ GeV}}{6.626 \times 10^{-34} \text{ J s}} \approx 10^{28} \text{ Hz}$$
 
-The effective area peaks at ~103 m2 at log₁₀(E) ~ 7–8 (PeV range) → ω ~ 1024 Hz.
+The effective area peaks at ~103 m2 at log10(E) ~ 7–8 (PeV range) $\to$ $\omega$ ~ 1024 Hz.
 
-**Scale bridge:** LENR (ω ~ 1012 Hz THz lattice) ↔ UQFF nuclear (ω ~ 1028 Hz LHC) ↔
-IceCube PeV neutrinos (ω ~ 1024 Hz) span 16 orders of magnitude, all bounded by the same
+**Scale bridge:** LENR ($\omega$ ~ 1012 Hz THz lattice) $\leftrightarrow$ UQFF nuclear ($\omega$ ~ 1028 Hz LHC) $\leftrightarrow$
+IceCube PeV neutrinos ($\omega$ ~ 1024 Hz) span 16 orders of magnitude, all bounded by the same
 26th-order factorial term. The IceCube calibration confirms the UQFF frequency-to-energy
 mapping is consistent across this full range.
 
 **IceCube flux models (2025):**
-- Astrophysical diffuse: Φ ~ E-2·5, normalized ~10-18 GeV-1 cm-2 s-1 sr-1 at 100 TeV
-- Galactic component: Φ ~ E-2·7-3·0 (4.5σ detection, 2023/2025 updated)
-- Prompt upper limit (Dec 2025 combined analysis): < 1.06× standard model prediction
+- Astrophysical diffuse: $\Phi$ ~ E-2$\cdot$5, normalized ~10-18 GeV-1 cm-2 s-1 sr-1 at 100 TeV
+- Galactic component: $\Phi$ ~ E-2$\cdot$7-3$\cdot$0 (4.5$\sigma$ detection, 2023/2025 updated)
+- Prompt upper limit (Dec 2025 combined analysis): < 1.06$\times$ standard model prediction
 
-These flux models calibrate ∇UA ~ 10-22 m-1 at cosmic void scales and ∇UA ~ 10-19 m-1
+These flux models calibrate $\nabla$UA ~ 10-22 m-1 at cosmic void scales and $\nabla$UA ~ 10-19 m-1
 at LENR lattice scales by matching the observed frequency-of-events per steradian-second
 to the UQFF quantum frequency event rate.
 
@@ -168,11 +168,11 @@ to the UQFF quantum frequency event rate.
 
 | Application | UQFF Mechanism | Status (2025 refs) |
 |------------|---------------|-------------------|
-| Excess heat in Pd-D electrochemical cells | ΔT focusing at 1.2–1.3 THz resonance defects | Confirmed keV-scale excesses (Kozima model) |
-| Thermal-to-electrical conversion | DPM cycle Ub-to-Ug inversion via SCm negative-t reversal | ENG8 ~7 W·h demo (2025) |
+| Excess heat in Pd-D electrochemical cells | $\Delta$T focusing at 1.2–1.3 THz resonance defects | Confirmed keV-scale excesses (Kozima model) |
+| Thermal-to-electrical conversion | DPM cycle Ub-to-Ug inversion via SCm negative-t reversal | ENG8 ~7 W$\cdot$h demo (2025) |
 | Space propulsion (lattice confinement analog) | 26D projection of DPM nuclear cycles to thrust vector | NASA Glenn Center LCF program |
-| Element transmutation / chemical manufacturing | DPM pair branching → transmutation cascade bounded 26! | Documented Pd-D transmutation residues |
-| ALMA Cycle 12 falsifiability test | 230 GHz multi-epoch VLBI: ∇UA gradient spatial variation | Proposed; pending ALMA scheduling |
+| Element transmutation / chemical manufacturing | DPM pair branching $\to$ transmutation cascade bounded 26! | Documented Pd-D transmutation residues |
+| ALMA Cycle 12 falsifiability test | 230 GHz multi-epoch VLBI: $\nabla$UA gradient spatial variation | Proposed; pending ALMA scheduling |
 
 ---
 
@@ -184,7 +184,7 @@ to the UQFF quantum frequency event rate.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -203,7 +203,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -288,7 +288,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -335,7 +335,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -444,7 +444,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.085 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -455,12 +455,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| LENR excess energy scale | ΔT focussing at r~10-10 m → keV-scale heat per event | Kozima Neutron Drop Model: keV–MeV excess (Pd-D) | ISCMNS / Journal of Condensed Matter Nuclear Science | PASS scale match |
-| IceCube astrophysical ν flux | ω ~ 1024 Hz PeV → UQFF ∇UA ~ 10-22 m-1 (cosmic void) | Φ_astro ~ E-2·5 at 100 TeV (IceCube 2025) | IceCube Collaboration arXiv:2025 diffuse ν | PASS frequency-energy consistent |
-| 26! bounding negligibility at cosmological r | ~10-281 → zero thermal lensing in vacuum | GR: no thermal gradient in cosmological vacuum | PDG 2024 / GR textbook | PASS trivially satisfied |
-| THz resonance in Pd-D | 1.2–1.3 THz = 5–5.3 meV → ω = 1012 Hz | Pd-D LENR transmission resonance (Kozima 2021) | PNAS Japan / JCMNS | PASS within σ |
-| No anomalous radiation (LENR) | SCm Ub repulsion closes DPM cycle before γ emission | LENR labs: no excess hard radiation despite excess heat | ARPA-E / Brillouin / ENG8 reports | PASS reproduces no-radiation observation |
-| ∇UA scale hierarchy (LENR vs cosmic) | 3-order shift 10-19 → 10-22 m-1 from lattice to void | Measured density contrast: lattice 1021 kg/m3 vs void 10-28 kg/m3 | NIST crystal data / ESA cosmic void maps | PASS density ratio ~ 1049 (UQFF uses log-scaled ∇UA) |
+| LENR excess energy scale | $\Delta$T focussing at r~10-10 m $\to$ keV-scale heat per event | Kozima Neutron Drop Model: keV–MeV excess (Pd-D) | ISCMNS / Journal of Condensed Matter Nuclear Science | PASS scale match |
+| IceCube astrophysical $\nu$ flux | $\omega$ ~ 1024 Hz PeV $\to$ UQFF $\nabla$UA ~ 10-22 m-1 (cosmic void) | $\Phi$_astro ~ E-2$\cdot$5 at 100 TeV (IceCube 2025) | IceCube Collaboration arXiv:2025 diffuse $\nu$ | PASS frequency-energy consistent |
+| 26! bounding negligibility at cosmological r | ~10-281 $\to$ zero thermal lensing in vacuum | GR: no thermal gradient in cosmological vacuum | PDG 2024 / GR textbook | PASS trivially satisfied |
+| THz resonance in Pd-D | 1.2–1.3 THz = 5–5.3 meV $\to$ $\omega$ = 1012 Hz | Pd-D LENR transmission resonance (Kozima 2021) | PNAS Japan / JCMNS | PASS within $\sigma$ |
+| No anomalous radiation (LENR) | SCm Ub repulsion closes DPM cycle before $\gamma$ emission | LENR labs: no excess hard radiation despite excess heat | ARPA-E / Brillouin / ENG8 reports | PASS reproduces no-radiation observation |
+| $\nabla$UA scale hierarchy (LENR vs cosmic) | 3-order shift 10-19 $\to$ 10-22 m-1 from lattice to void | Measured density contrast: lattice 1021 kg/m3 vs void 10-28 kg/m3 | NIST crystal data / ESA cosmic void maps | PASS density ratio ~ 1049 (UQFF uses log-scaled $\nabla$UA) |
 
 *UQFF SM bridge master: cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`).*
 
@@ -468,16 +468,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 ## §6 Conclusion
 
-The UQFF Thermal Lens Equation ΔT = [d26/dr26(SCm·g·∇UA/UA)] / c_p is a novel
+The UQFF Thermal Lens Equation $\Delta$T = [d26/dr26(SCm$\cdot$g$\cdot$$\nabla$UA/UA)] / c_p is a novel
 constitutive relation that:
 
 1. **Derives naturally** from the same F_U = 0 equilibrium as all other UQFF force terms
 2. **Bridges LENR and cosmological scales** via the 26th-order derivative's scale-dependent
    negligibility threshold (large at r~10-10 m, vanishing at r~1 AU)
-3. **Is calibrated by IceCube IC40–IC86c data** providing the ω ~ 1024 Hz frequency anchor
+3. **Is calibrated by IceCube IC40–IC86c data** providing the $\omega$ ~ 1024 Hz frequency anchor
 4. **Resolves the LENR reproducibility problem** by identifying the resonance condition
-   (1.2–1.3 THz + ∇UA ~ 10-19 m-1) as the necessary focusing threshold
-5. **Predicts no anomalous radiation** via Ub repulsion closing DPM cycles before γ emission
+   (1.2–1.3 THz + $\nabla$UA ~ 10-19 m-1) as the necessary focusing threshold
+5. **Predicts no anomalous radiation** via Ub repulsion closing DPM cycles before $\gamma$ emission
 
 The Thermal Lens Equation is the first UQFF equation derived specifically for condensed
 matter / low-energy applications, extending UQFF's scope from astrophysical to laboratory

@@ -21,14 +21,14 @@ coupling
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
 ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most complete
 multi-wavelength dataset from UV to X-ray to radio. The UQFF buoyancy-unified force is computed for
-the stellar mass black hole remnant (M_BH = 106 M?), yielding F_U_Bi_i  -8.32×10 N  six orders of
+the stellar mass black hole remnant (M_BH = 106 M?), yielding F_U_Bi_i  -8.32$\times$10 N  six orders of
 magnitude smaller than AGN-scale F_U_Bi_i, reflecting the much smaller BH mass. The ultrafast
 outflow at v_out = 0.3c is connected to UQFF via the Kozima LENR force component F_Kozima = 10 N at
 the stellar disruption interface.
@@ -41,7 +41,7 @@ the stellar disruption interface.
 
 $$F_{U\_Bi\_i} \approx -8.32 \times 10^{211}\ \mathrm{N}$$
 
-The six-order-of-magnitude reduction from the AGN scale (-8.32×107 N) reflects M_BH = 106 M? vs. 10?
+The six-order-of-magnitude reduction from the AGN scale (-8.32$\times$107 N) reflects M_BH = 106 M? vs. 10?
 M?.
 
 ### 2.2 Ultrafast Outflow
@@ -149,7 +149,7 @@ where $t_{\rm sat}$ is the BSH saturation timescale. For ASASSN-14li, the BSH ha
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | M_BH | UV-optical fit | 106 M? |
-| `F_U_Bi_i` | UQFF TDE scale | -8.32×10 N |
+| `F_U_Bi_i` | UQFF TDE scale | -8.32$\times$10 N |
 | v_out | Chandra Fe K | 0.3c |
 | F_Kozima | LENR coupling | 10 N |
 | r_tide | R_?(M_BH/M_?)^(1/3) | ~7 R? |
@@ -171,7 +171,7 @@ suggesting LENR effects are perturbative at stellar BH scales.
 ## 5. Deduplication Note
 
 - **vs. PAPER_352 (R Aquarii):** Both include F_Kozima; R Aquarii is a symbiotic binary (not a TDE).
-- **vs. all AGN papers (346350):** TDE F_U_Bi_i  10 N (stellar mass BH) vs. AGN 107×108 N.
+- **vs. all AGN papers (346350):** TDE F_U_Bi_i  10 N (stellar mass BH) vs. AGN 107$\times$108 N.
 
 ---
 
@@ -192,7 +192,7 @@ at 3s by 2027); the UQFF deviation from standard predictions exceeds the measure
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -211,7 +211,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -234,7 +234,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -289,13 +289,13 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -414,4 +414,4 @@ $$\mathcal{L}_{\text{BH}} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} -
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → BH-accretion → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ BH-accretion $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction

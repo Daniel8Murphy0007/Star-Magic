@@ -10,7 +10,7 @@ tags: [galaxy, AGN, Hubble, Three-UQFF, SMBH, black-hole, buoyancy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_800: NGC 685 — Barred Spiral with SMBH M–σ Triadic UQFF
+# PAPER_800: NGC 685 — Barred Spiral with SMBH M–$\sigma$ Triadic UQFF
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF (Universal Quantum Field Superconductive Framework) — Three-UQFF Simultaneous  
@@ -22,11 +22,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 685 is a barred spiral galaxy approximately 60 million light-years distant (z ≈ 0.004) in the
+NGC 685 is a barred spiral galaxy approximately 60 million light-years distant (z $\approx$ 0.004) in the
 constellation Fornax. Hubble ACS imaging reveals a well-defined central bar structure with tightly
-wound spiral arms. Three-UQFF analysis integrates the M–σ black hole mass relation via the U_g4 SMBH
-feedback term, incorporating the velocity dispersion σ ~ 150 km/s from the M–σ scaling. The dominant
-UQFF result yields g_primary ≈ 1.053×10-3 m/s2 in the EM ground state. The Boyle's Law buoyancy
+wound spiral arms. Three-UQFF analysis integrates the M–$\sigma$ black hole mass relation via the U_g4 SMBH
+feedback term, incorporating the velocity dispersion $\sigma$ ~ 150 km/s from the M–$\sigma$ scaling. The dominant
+UQFF result yields g_primary $\approx$ 1.053$\times$10-3 m/s2 in the EM ground state. The Boyle's Law buoyancy
 factor and Dipole Vortex Prime species index are both active at this galactic scale.
 
 ---
@@ -34,9 +34,9 @@ factor and Dipole Vortex Prime species index are both active at this galactic sc
 ## 1. Introduction
 
 NGC 685 exemplifies the broad class of Hubble-observed barred spirals at cosmological distances (z ~
-0.004) where the SMBH mass can be estimated via the M–σ relation from the bulge velocity dispersion.
+0.004) where the SMBH mass can be estimated via the M–$\sigma$ relation from the bulge velocity dispersion.
 The U_g4 SMBH feedback term in UQFF encodes the SMBH's influence on star formation through AGN
-outflows using the M–σ calibration. Three-UQFF provides the first complete simultaneous analysis of
+outflows using the M–$\sigma$ calibration. Three-UQFF provides the first complete simultaneous analysis of
 the Compressed, Resonant, and Buoyancy modes for NGC 685, establishing the Boyle's Law buoyancy
 factor as the primary correction at galactic scales.
 
@@ -46,31 +46,31 @@ factor as the primary correction at galactic scales.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Spiral estimate |
-| Disk radius | r | 2.83×1020 m (~30 kly) | Hubble |
-| SMBH mass | M_BH | 108 MM_sun = 1.989×1038 kg | M–σ |
-| σ (velocity dispersion) | σ | 150 km/s = 1.5×105 m/s | M–σ |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Spiral estimate |
+| Disk radius | r | 2.83$\times$1020 m (~30 kly) | Hubble |
+| SMBH mass | M_BH | 108 MM_sun = 1.989$\times$1038 kg | M–$\sigma$ |
+| $\sigma$ (velocity dispersion) | $\sigma$ | 150 km/s = 1.5$\times$105 m/s | M–$\sigma$ |
 | SFR | — | 1.0 MM_sun/yr | Normal spiral |
 | Redshift | z | 0.004 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
 | M_sf | — | 0.02 | UQFF |
 | f_TRZ | — | 0.05 | THz resonance |
 | v_EM | v | 105 m/s | Rotation |
 | B_EM | B | 10-5 T | Galactic field |
-| k_galactic | — | 2.59×10-9 | U_g4 SMBH coupling |
+| k_galactic | — | 2.59$\times$10-9 | U_g4 SMBH coupling |
 | f_feedback | — | 0.063 | SMBH feedback |
 
 ---
 
 ## 3. Three-UQFF Derivation
 
-### U_g4 SMBH Term (M–σ Integration)
+### U_g4 SMBH Term (M–$\sigma$ Integration)
 
 $$
 \begin{aligned}
-  & U_g4 = k_4 · (ρ_vac,[SCm] · M_BH / d_g) · exp(–α·t) · cos(π·t_n) · (1 + f_feedback) \\
-  & k_galactic = 2.59×10-9 \\
-  & ω_s(t) = σ / R_bulge = 1.5e5 / 3.086e19 = 4.863e-15 rad/s (σ=150km/s, R_bulge=1kpc) \\
+  & U_g4 = k_4 \cdot (\rho_vac,[SCm] \cdot M_BH / d_g) \cdot exp(–\alpha\cdott) \cdot cos(\pi\cdott_n) \cdot (1 + f_feedback) \\
+  & k_galactic = 2.59\times10-9 \\
+  & \omega_s(t) = \sigma / R_bulge = 1.5e5 / 3.086e19 = 4.863e-15 rad/s (\sigma=150km/s, R_bulge=1kpc) \\
   & f_feedback = 0.063
 \end{aligned}
 $$
@@ -79,14 +79,14 @@ $$
 
 $$
 \begin{aligned}
-  & g_grav = G·M/r2 = 6.6743e-11 × 1.989e41 / (2.83e20)2 \\
+  & g_grav = G\cdotM/r2 = 6.6743e-11 \times 1.989e41 / (2.83e20)2 \\
   & = 1.328e31 / 8.009e40 = 1.658e-10 m/s2 \\
-  & Hz = H0·√(0.3·(1.004)3+0.7) = 2.268e-18 \\
-  & (1+Hz·t) = 1 + 2.268e-18 × 1.578e17 = 1.358 \\
+  & Hz = H0\cdot\sqrt{}(0.3\cdot(1.004)3+0.7) = 2.268e-18 \\
+  & (1+Hz\cdott) = 1 + 2.268e-18 \times 1.578e17 = 1.358 \\
   & factor_sf = 1.02; factor_TRZ = 1.05 \\
-  & \text{g\_grav\_total} = 1.658e-10 × 1.358 × 1.02 × 1.05 = 2.412e-10 m/s2 \\
+  & \text{g\_grav\_total} = 1.658e-10 \times 1.358 \times 1.02 \times 1.05 = 2.412e-10 m/s2 \\
   & a_EM = 1.053e-3 m/s2 \\
-  & \text{F\_U\_g1} ≈ 3.47×10-42 N  (per UQFF coupled unit) \\
+  & \text{F\_U\_g1} \approx 3.47\times10-42 N  (per UQFF coupled unit) \\
   & g_compressed = 1.053e-3 m/s2  (EM dominates)
 \end{aligned}
 $$
@@ -94,17 +94,17 @@ $$
 ### Mode 2: Resonant UQFF
 
 $$
-g_resonant = 1.053e-3 × (1 + 0.0005 × 0.57) = 1.053e-3 m/s2
+g_resonant = 1.053e-3 \times (1 + 0.0005 \times 0.57) = 1.053e-3 m/s2
 $$
 
 ### Mode 3: Buoyancy UQFF
 
 $$
 \begin{aligned}
-  & f_Ub = 0.1 × 7.25e8 × 10 × (1/33) = 2.196e7 \\
-  & \text{F\_U\_Bi} = G·M·f_Ub / r2 × (1 + f_feedback) \\
-  & = 1.658e-10 × 2.196e7 × 1.063 = 3.871e-3 m/s2 (boosted by f_feedback) \\
-  & Note: f_Ub at galactic scale amplifies g_grav by ~2×; EM still sets ground state \\
+  & f_Ub = 0.1 \times 7.25e8 \times 10 \times (1/33) = 2.196e7 \\
+  & \text{F\_U\_Bi} = G\cdotM\cdotf_Ub / r2 \times (1 + f_feedback) \\
+  & = 1.658e-10 \times 2.196e7 \times 1.063 = 3.871e-3 m/s2 (boosted by f_feedback) \\
+  & Note: f_Ub at galactic scale amplifies g_grav by ~2\times; EM still sets ground state \\
   & g_buoyancy = 1.053e-3 m/s2  (EM ground state maintained)
 \end{aligned}
 $$
@@ -113,11 +113,11 @@ $$
 
 $$
 \begin{aligned}
-  & g_compressed = 1.053×10-3 m/s2 \\
-  & g_resonant   = 1.053×10-3 m/s2 \\
-  & g_buoyancy   = 1.053×10-3 m/s2 \\
-  & g_primary    = 1.053×10-3 m/s2 \\
-  & M–σ check: M_BH ~ 10^(8.13 × log₁₀(σ/200)–0.51) MM_sun = 1.0×108 MM_sun PASS
+  & g_compressed = 1.053\times10-3 m/s2 \\
+  & g_resonant   = 1.053\times10-3 m/s2 \\
+  & g_buoyancy   = 1.053\times10-3 m/s2 \\
+  & g_primary    = 1.053\times10-3 m/s2 \\
+  & M–\sigma check: M_BH ~ 10^(8.13 \times log10(\sigma/200)–0.51) MM_sun = 1.0\times108 MM_sun PASS
 \end{aligned}
 $$
 
@@ -125,12 +125,12 @@ $$
 
 ## 4. CGM Metal Retention (Sanchez et al. 2023 Coupling)
 
-For NGC 685 with SMBH mass ~108 MM_sun (slightly under-massive for its bulge σ=150 km/s):
+For NGC 685 with SMBH mass ~108 MM_sun (slightly under-massive for its bulge $\sigma$=150 km/s):
 
 $$
 \begin{aligned}
   & f_Z,CGM = U_i / (U_i + U_m) \\
-  & Under-massive SMBH: f_Z,CGM → 0.89 (high metal retention in disk/CGM) \\
+  & Under-massive SMBH: f_Z,CGM \to 0.89 (high metal retention in disk/CGM) \\
   & Metallicity gradient: ~0.04 dex/kpc (steep, consistent with metal-rich spiral arm)
 \end{aligned}
 $$
@@ -142,10 +142,10 @@ with its ongoing normal SFR (metals available for star formation recycling).
 
 ## 5. Conclusions
 
-Three-UQFF analysis of NGC 685 yields g_primary ≈ 1.053×10-3 m/s2 with M–σ SMBH coupling confirming
-M_BH ~ 108 MM_sun from σ = 150 km/s. The Boyle's Law buoyancy factor (f_Ub = 2.196×107) amplifies the
+Three-UQFF analysis of NGC 685 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 with M–$\sigma$ SMBH coupling confirming
+M_BH ~ 108 MM_sun from $\sigma$ = 150 km/s. The Boyle's Law buoyancy factor (f_Ub = 2.196$\times$107) amplifies the
 gravitational term at galactic scale, while the Sanchez et al. 2023 CGM metal retention predicts
-f_Z,CGM ≈ 0.89. NGC 685 is established as a UQFF-normal barred spiral with standard EM ground state.
+f_Z,CGM $\approx$ 0.89. NGC 685 is established as a UQFF-normal barred spiral with standard EM ground state.
 
 *PAPER_800, CP4 Three-UQFF class #384. v5.45. Session 189.*
 
@@ -157,7 +157,7 @@ f_Z,CGM ≈ 0.89. NGC 685 is established as a UQFF-normal barred spiral with sta
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -176,7 +176,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -251,7 +251,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -262,13 +262,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

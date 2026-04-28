@@ -22,7 +22,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper derives and proves the **Universal Erosion-Buoyancy Coupling** within the Unified Quantum
@@ -40,7 +40,7 @@ M(t)-dynamic systems.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -59,24 +59,24 @@ $$
   & + term_q   [quantum uncertainty ?/v(?x?p)  ?  (2p/t_H)] \\
   & + term_fluid [?_fluidVug1_base / M] \\
   & + term_osc  [2Acos(kx)cos(?t) + (2p/\text{t\_H\_gyr})Acos(kx-?t)] \\
-  & + term_DM   [(M + M_DM)(d?/? + 3μ_s∇(M_s/r)/r) / M] \\
+  & + term_DM   [(M + M_DM)(d?/? + 3\mu_s\nabla(M_s/r)/r) / M] \\
   & + term_wind [?_windv_wind] \\
   & + term_tide [2GM_GCr / r_GC] \\
   & + term_Ubi  [0.5  ug1_base]                        ? Tier-1 buoyancy \\
-  & + \text{term\_F\_UBii} [-κ_iug1_base?_g(M/r)U_UAcos(pt)]  ? Tier-2 \\
-  & + \text{term\_Ub\_i}   [-κ_iug1_base?_g(M_GC/r_GC)U_UAcos(pt)] ? Tier-3 Sgr A*
+  & + \text{term\_F\_UBii} [-\kappa_iug1_base?_g(M/r)U_UAcos(pt)]  ? Tier-2 \\
+  & + \text{term\_Ub\_i}   [-\kappa_iug1_base?_g(M_GC/r_GC)U_UAcos(pt)] ? Tier-3 Sgr A*
 \end{aligned}
 $$
 
 **System Parameters:**
-- M = 1,000 M_sun = 1.989×10 kg (dark nebula neutral gas mass; static  no star formation)
-- r = 2.5 ly = 2.3653×10-6 m
+- M = 1,000 M_sun = 1.989$\times$10 kg (dark nebula neutral gas mass; static  no star formation)
+- r = 2.5 ly = 2.3653$\times$10-6 m
 - E0 = 0.1; t_erosion = 5 Myr (E(t) erosion of dark lane by s Orionis UV field)
 - External radiation source: s Orionis OB association (~0.5 projected separation)
-- κ_i = 0.61, ?_g = 7.3×10?6, U_UA = 1×10? (UQFF canonical)
-- M_GC = 7.956×10-6 kg (Sgr A* outer frame, ~4×106 M_sun)
-- r_GC = 2.623×10 m (~8.5 kpc, Horsehead/Orion arm ? Galactic Center)
-- B field of Orion: ~5 G; ?_wind = 5×10? kg/m (IC 434 H II region wind)
+- $\kappa$_i = 0.61, ?_g = 7.3$\times$10?6, U_UA = 1$\times$10? (UQFF canonical)
+- M_GC = 7.956$\times$10-6 kg (Sgr A* outer frame, ~4$\times$106 M_sun)
+- r_GC = 2.623$\times$10 m (~8.5 kpc, Horsehead/Orion arm ? Galactic Center)
+- B field of Orion: ~5 G; ?_wind = 5$\times$10? kg/m (IC 434 H II region wind)
 
 ---
 
@@ -90,7 +90,7 @@ $$
   & E(t) = E0  (1 - e^{-t/t_erosion})   [monotonically increasing: 0?E0] \\
   & E(t) acts on term1 AND simultaneously: \\
   & term_Ubi, \text{term\_F\_UBii}, \text{term\_Ub\_i} are evaluated with ug1_base (static M) \\
-  & Both E(t) and S_buoy share the same kernel ug1_base = μ_s∇(M_s/r)
+  & Both E(t) and S_buoy share the same kernel ug1_base = \mu_s\nabla(M_s/r)
 \end{aligned}
 $$
 
@@ -247,7 +247,7 @@ cavity pressure class).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -266,7 +266,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -408,7 +408,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.172 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -419,13 +419,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -439,7 +439,7 @@ bridge.*
 4. Pound & Bania (1993)  Barnard 33 velocity structure and IC 434 interaction
 5. Bertoldi (1989)  Photoevaporation of interstellar clouds: 1D similarity solution
 6. Lefloch & Lazareff (1994)  Cometary globule evolution in H II regions
-7. Ward-Thompson et al. (2006)  Barnard 33 molecular gas: M ~ 300×1000 M_sun
+7. Ward-Thompson et al. (2006)  Barnard 33 molecular gas: M ~ 300$\times$1000 M_sun
 8. CondensedPhysics3.py  `HorseheadP_radCalculator` (PAPER_222, Session 56)  Stefan-Boltzmann P_rad
 variant
 9. Star-Magic UQFF v4.25  CP3/PAPER_198 3-tier buoyancy canonical framework

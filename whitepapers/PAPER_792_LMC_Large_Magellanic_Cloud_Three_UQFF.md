@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 The Large Magellanic Cloud (LMC) is the largest satellite galaxy of the Milky Way, located ~163,000
-light-years away (z ≈ 0.0005) in the southern constellations Dorado and Mensa. With ~1010 MM_sun total
+light-years away (z $\approx$ 0.0005) in the southern constellations Dorado and Mensa. With ~1010 MM_sun total
 mass and a diameter of ~14,000 ly, the LMC is an irregular (Irr) galaxy showing a disrupted barred
 spiral structure. It hosts the most actively star-forming region in the Local Group — the Tarantula
 Nebula (30 Doradus, PAPER_774). Three-UQFF simultaneous analysis of the LMC as a whole yields
-g_primary ≈ 1.053×10-3 m/s2 at the galaxy-wide scale (v = 105 m/s standard disk rotation).
+g_primary $\approx$ 1.053$\times$10-3 m/s2 at the galaxy-wide scale (v = 105 m/s standard disk rotation).
 
 ---
 
@@ -37,7 +37,7 @@ The LMC's proximity makes it a unique laboratory: individual stars, clusters (NG
 and the Tarantula hyperstar-forming region (PAPER_774) are all resolvable. As a whole, the LMC has a
 rotation velocity of ~50–80 km/s — somewhat slower than standard spirals, reflecting its lower mass.
 However, the Tarantula Nebula starburst region within it operates at the 106 m/s starburst regime.
-The Three-UQFF whole-LMC analysis uses galaxy-scale parameters (M = 1010 MM_sun, r = 6.62×1019 m, v =
+The Three-UQFF whole-LMC analysis uses galaxy-scale parameters (M = 1010 MM_sun, r = 6.62$\times$1019 m, v =
 105 m/s) rather than the starburst sub-region parameters of PAPER_774.
 
 ---
@@ -46,10 +46,10 @@ The Three-UQFF whole-LMC analysis uses galaxy-scale parameters (M = 1010 MM_sun,
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| LMC total mass | M | 1010 MM_sun = 1.989×1040 kg | HI surveys |
-| LMC radius | r | 6.62×1019 m (~7 kly) | Angular size |
+| LMC total mass | M | 1010 MM_sun = 1.989$\times$1040 kg | HI surveys |
+| LMC radius | r | 6.62$\times$1019 m (~7 kly) | Angular size |
 | SFR (LMC-wide) | — | 0.5 MM_sun/yr | Average |
-| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.05 | UQFF LMC SFR |
 | Redshift | z | 0.0005 | Distance |
 | v_EM | v | 105 m/s | LMC rotation |
@@ -62,11 +62,11 @@ The Three-UQFF whole-LMC analysis uses galaxy-scale parameters (M = 1010 MM_sun,
 ### Mode 1: Compressed UQFF
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 1.989e40 / (6.62e19)2 \\
+  & g_grav = 6.6743e-11 \times 1.989e40 / (6.62e19)2 \\
   & = 1.328e30 / 4.382e39 = 3.030e-10 m/s2 \\
-  & H(z)×t = 2.267e-18 × 1.578e17 = 0.358; factor = 1.358 \\
+  & H(z)\timest = 2.267e-18 \times 1.578e17 = 0.358; factor = 1.358 \\
   & factor_sf = 1.05; factor_TRZ = 1.04 \\
-  & \text{g\_grav\_total} = 3.030e-10 × 1.358 × 1.05 × 1.04 = 4.499e-10 m/s2 \\
+  & \text{g\_grav\_total} = 3.030e-10 \times 1.358 \times 1.05 \times 1.04 = 4.499e-10 m/s2 \\
   & a_EM = 1.053e-3 m/s2 \\
   & g_comp = 1.053e-3 m/s2
 \end{aligned}
@@ -74,13 +74,13 @@ $$
 
 ### Mode 2: Resonant UQFF
 $$
-g_res = 1.053e-3 × 1.000285 = 1.053e-3 m/s2
+g_res = 1.053e-3 \times 1.000285 = 1.053e-3 m/s2
 $$
 
 ### Mode 3: Buoyancy UQFF
 $$
 \begin{aligned}
-  & V = (4/3)π(6.62e19)3 = 1.217e60 m3; a_Ubi << a_EM \\
+  & V = (4/3)\pi(6.62e19)3 = 1.217e60 m3; a_Ubi << a_EM \\
   & g_buoy = 1.053e-3 m/s2
 \end{aligned}
 $$
@@ -102,8 +102,8 @@ $$
 
 ## 4. Physical Interpretation
 
-The LMC's galaxy-wide properties at v = 105 m/s yield standard UQFF result g = 1.053×10-3 m/s2. This
-coexists with the Tarantula starburst subregion (PAPER_774, g = 1.053×10-1 m/s2) because UQFF scales
+The LMC's galaxy-wide properties at v = 105 m/s yield standard UQFF result g = 1.053$\times$10-3 m/s2. This
+coexists with the Tarantula starburst subregion (PAPER_774, g = 1.053$\times$10-1 m/s2) because UQFF scales
 with local EM parameters. This demonstrates UQFF multi-scale consistency: the galaxy-wide average
 uses global rotation velocity, while local starburst regions use their own extreme local velocities.
 The LMC's Milky Way tidal interaction, which shapes its irregular morphology, does not alter UQFF's
@@ -113,9 +113,9 @@ electromagnetic Aether coupling at the global galaxy scale.
 
 ## 5. Conclusions
 
-Three-UQFF applied to the LMC yields g_primary ≈ 1.053×10-3 m/s2 galaxy-wide. UQFF multi-scale
+Three-UQFF applied to the LMC yields g_primary $\approx$ 1.053$\times$10-3 m/s2 galaxy-wide. UQFF multi-scale
 consistency confirmed: the LMC whole-galaxy result coexists with the Tarantula starburst result
-(PAPER_774, g = 1.053×10-1 m/s2) by using scale-appropriate v and B parameters.
+(PAPER_774, g = 1.053$\times$10-1 m/s2) by using scale-appropriate v and B parameters.
 
 *PAPER_792, CP4 Three-UQFF class #376. v5.42.*
 
@@ -224,7 +224,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.190 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -235,13 +235,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

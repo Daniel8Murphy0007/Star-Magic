@@ -14,7 +14,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **CP4 Class:** `#169  StringGWPlanarFrequencyReboundDiskFormationCalculator`
@@ -252,7 +252,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -271,12 +271,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -379,7 +379,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.152 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -390,12 +390,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR × (1 + κ/(4π2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
-| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR × H_SCm = 28.3 × 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 ± 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
-| GW frequency f_peak | UQFF: f_peak = c3/(π G ℳ) × (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
-| Gravitational wave speed bound | UQFF k_η deviation: 10-226 m/s above c | GW170817 + γ-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
+| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR $\times$ (1 + $\kappa$/(4$\pi$2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
+| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR $\times$ H_SCm = 28.3 $\times$ 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 $\pm$ 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
+| GW frequency f_peak | UQFF: f_peak = c3/($\pi$ G ℳ) $\times$ (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
+| Gravitational wave speed bound | UQFF k_$\eta$ deviation: 10-226 m/s above c | GW170817 + $\gamma$-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
 
-**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a κ-dependent phase to the
+**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a $\kappa$-dependent phase to the
 GW chirp signal, shifting the merger frequency by ~0.3 Hz at 150 Hz. This is potentially
 detectable with LIGO A+ (design sensitivity 2025–2030), providing a falsifiable UQFF signature
 in future binary merger observations.

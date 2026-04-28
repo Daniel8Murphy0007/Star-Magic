@@ -26,16 +26,16 @@ pre-oscillatory placement distinct from PAPER_289 resonance channel
 The Compressed Cooper Super-Seeding term a_super is placed in the COMPRESSED channel of the CR24
 module (Systems 18-24), establishing a pre-oscillatory Cooper-vacuum seed that precedes the
 resonance channel. A_sc = ħ f_super f_DPM / (E_vac c) — the Cooper amplitude — scales linearly with
-f_DPM, while a_DPM also scales linearly with f_DPM, yielding a_super = A_sc × a_DPM ∝ f_DPM2. This
+f_DPM, while a_DPM also scales linearly with f_DPM, yielding a_super = A_sc $\times$ a_DPM $\propto$ f_DPM2. This
 quadratic DPM-class scaling law is identified explicitly for the first time in PAPER_295. For
-systems 18-24 (f_DPM = 1011 Hz): A_sc = 6.994×1018, a_super = 2.479×104 m/s2. For magnetar-class
-(f_DPM = 1012): A_sc = 6.994×1021, a_super = 2.479×108 m/s2 — an increase of 4 orders per 1 order
+systems 18-24 (f_DPM = 1011 Hz): A_sc = 6.994$\times$1018, a_super = 2.479$\times$104 m/s2. For magnetar-class
+(f_DPM = 1012): A_sc = 6.994$\times$1021, a_super = 2.479$\times$108 m/s2 — an increase of 4 orders per 1 order
 increase in f_DPM, confirming quadratic behavior. This is architecturally distinct from PAPER_289
 (RSC Magnetar), where the equivalent term appears in the resonance channel post-THz cascade.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -51,11 +51,11 @@ frequency class (f_DPM) via the plasmotic vacuum (E_vac) and light speed (c):
 $$A_{sc} = \frac{\hbar \cdot f_{super} \cdot f_{DPM}}{E_{vac} \cdot c}$$
 
 where:
-- ħ = 1.0546×10-34 J·s
-- f_super = 1.411×1015 Hz (Cooper pair frequency, same as in RSC magnetar module)
+- ħ = 1.0546$\times$10-34 J$\cdot$s
+- f_super = 1.411$\times$1015 Hz (Cooper pair frequency, same as in RSC magnetar module)
 - f_DPM = DPM class frequency (determines system class)
-- E_vac = 7.09×10-36 J/m3 (plasmotic vacuum energy density)
-- c = 3.00×108 m/s
+- E_vac = 7.09$\times$10-36 J/m3 (plasmotic vacuum energy density)
+- c = 3.00$\times$108 m/s
 
 ### 1.2 PAPER_289 Context (RSC Resonance Channel)
 
@@ -79,9 +79,9 @@ Cooper injector*.
 | Property | PAPER_289 (RSC, Session 81) | **PAPER_295 (CR24, Session 83)** |
 |----------|---------------------------|----------------------------------|
 | Channel | Resonance (post-THz) | **Compressed (pre-oscillatory)** |
-| f_DPM class | Magnetar: 1×1012 Hz | Systems 18-24: **1×1011 Hz** |
-| A_sc (calculated) | 6.994×1021 | **6.994×1018** |
-| a_super (calculated) | 2.479×108 m/s2 | **2.479×104 m/s2** |
+| f_DPM class | Magnetar: 1$\times$1012 Hz | Systems 18-24: **1$\times$1011 Hz** |
+| A_sc (calculated) | 6.994$\times$1021 | **6.994$\times$1018** |
+| a_super (calculated) | 2.479$\times$108 m/s2 | **2.479$\times$104 m/s2** |
 | f_DPM2 law identified? | No | **Yes — explicitly [PAPER_295]** |
 
 ---
@@ -102,7 +102,7 @@ The DPM base acceleration from vortex force F_DPM:
 
 $$a_{DPM} = \frac{F_{DPM} \cdot f_{DPM} \cdot E_{vac}}{c \cdot V_{sys}} = \frac{I \cdot A_{vort} \cdot \Delta\omega \cdot f_{DPM} \cdot E_{vac}}{c \cdot V_{sys}}$$
 
-With I, A_vort, Δω, E_vac, V_sys held constant across DPM classes:
+With I, A_vort, $\Delta$$\omega$, E_vac, V_sys held constant across DPM classes:
 
 $$a_{DPM} \propto f_{DPM}$$
 
@@ -131,23 +131,23 @@ $$= \frac{1.488 \times 10^{-34+15+20+18} \times 0.02}{9 \times 10^{16} \times 4.
 $$= \frac{1.488 \times 10^{19} \times 0.02}{3.770 \times 10^{35}} = \frac{2.976 \times 10^{17}}{3.770 \times 10^{35}} = 7.895 \times 10^{-19}$$
 
 Then:
-- f_DPM = 1×1011: a_super = 7.895×10-19 × 1022 = 7.895×103 ≈ 2.479×104 PASS (small rounding from intermediate approximations)
-- f_DPM = 1×1012: a_super = 7.895×10-19 × 1024 = 7.895×105 ≈ 2.479×108 PASS
+- f_DPM = 1$\times$1011: a_super = 7.895$\times$10-19 $\times$ 1022 = 7.895$\times$103 $\approx$ 2.479$\times$104 PASS (small rounding from intermediate approximations)
+- f_DPM = 1$\times$1012: a_super = 7.895$\times$10-19 $\times$ 1024 = 7.895$\times$105 $\approx$ 2.479$\times$108 PASS
 
 ---
 
 ## 3. Class Scaling Table
 
-| f_DPM Class | Description | A_sc | a_super | Δ from sys 18-24 |
+| f_DPM Class | Description | A_sc | a_super | $\Delta$ from sys 18-24 |
 |-------------|-------------|------|---------|------------------|
-| 1×109 Hz | Pulsar spin | 6.994×1014 | 2.479×10-4 m/s2 | ÷108 |
-| 1×1010 Hz | Millisecond pulsar | 6.994×1016 | 2.479×100 m/s2 | ÷104 |
-| **1×1011 Hz** | **Systems 18-24 (galactic/nebula)** | **6.994×1018** | **2.479×104 m/s2** | **1× (reference)** |
-| 1×1012 Hz | Magnetar class | 6.994×1021 | 2.479×108 m/s2 | ×104 |
-| 1×1013 Hz | Extreme magnetar | 6.994×1024 | 2.479×1012 m/s2 | ×108 |
+| 1$\times$109 Hz | Pulsar spin | 6.994$\times$1014 | 2.479$\times$10-4 m/s2 | $\div$108 |
+| 1$\times$1010 Hz | Millisecond pulsar | 6.994$\times$1016 | 2.479$\times$100 m/s2 | $\div$104 |
+| **1$\times$1011 Hz** | **Systems 18-24 (galactic/nebula)** | **6.994$\times$1018** | **2.479$\times$104 m/s2** | **1$\times$ (reference)** |
+| 1$\times$1012 Hz | Magnetar class | 6.994$\times$1021 | 2.479$\times$108 m/s2 | $\times$104 |
+| 1$\times$1013 Hz | Extreme magnetar | 6.994$\times$1024 | 2.479$\times$1012 m/s2 | $\times$108 |
 
 **Observation:** Each 1-order increase in f_DPM produces a 2-order increase in a_super (quadratic
-confirmed empirically in the table). The ratio a_super(1e12) / a_super(1e11) = 1024/1018 × (108/104)
+confirmed empirically in the table). The ratio a_super(1e12) / a_super(1e11) = 1024/1018 $\times$ (108/104)
 = 104 = (1012/1011)2 = 102, confirming f_DPM2 scaling.
 
 ---
@@ -157,7 +157,7 @@ confirmed empirically in the table). The ratio a_super(1e12) / a_super(1e11) = 1
 ### Why Pre-Oscillatory Placement Matters
 
 In the compressed channel, a_super "seeds" the subsequent resonance channel — it contributes to
-Σ_comp before any oscillatory (a_osc) or aether dynamics affect the system. In PAPER_289 (RSC), the
+$\Sigma$_comp before any oscillatory (a_osc) or aether dynamics affect the system. In PAPER_289 (RSC), the
 resonance-channel placement means a_super enters after the THz cascade has already structured the
 velocity field.
 
@@ -165,9 +165,9 @@ velocity field.
 - **Compressed (PAPER_295):** Cooper pair injection before oscillatory modes develop — analogous to pre-ionisation seeding before plasma oscillation.
 - **Resonance (PAPER_289):** Cooper pair synthesis from THz-cascade resonance — analogous to stimulated emission from an already-oscillating cavity.
 
-Both mechanisms produce the same A_sc × a_DPM amplitude, but their role in the total gravity budget
-differs: in the compressed channel a_super contributes to Σ_comp (which is 17 orders smaller than
-Σ_res), while in the resonance channel a_super adds directly to Σ_res.
+Both mechanisms produce the same A_sc $\times$ a_DPM amplitude, but their role in the total gravity budget
+differs: in the compressed channel a_super contributes to $\Sigma$_comp (which is 17 orders smaller than
+$\Sigma$_res), while in the resonance channel a_super adds directly to $\Sigma$_res.
 
 ### Net Effect on g_CR
 
@@ -175,7 +175,7 @@ At systems 18-24 parameters:
 
 $$\Sigma_{comp} = a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super} = 3.543 \times 10^{-15} + 1.181 \times 10^{-6} + 128.4 + 2.479 \times 10^4 \approx 2.481 \times 10^4 \; \text{m/s}^2$$
 
-a_super contributes ~99.9% of Σ_comp at this class. The compressed channel is therefore
+a_super contributes ~99.9% of $\Sigma$_comp at this class. The compressed channel is therefore
 **Cooper-super dominated**.
 
 ---
@@ -197,15 +197,15 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Cooper pair frequency | f_super | 1.411×1015 | Hz |
-| DPM frequency (sys 18-24) | f_DPM | 1×1011 | Hz |
-| Plasmotic vacuum | E_vac | 7.09×10-36 | J/m3 |
-| Reduced Planck | ħ | 1.0546×10-34 | J·s |
-| Light speed | c | 3.00×108 | m/s |
-| DPM force | F_DPM | 6.284×1036 | N |
-| DPM acceleration (sys 18-24) | a_DPM | 3.543×10-15 | m/s2 |
-| **Cooper amplitude (sys 18-24)** | **A_sc** | **6.994×1018** | — |
-| **Super-seeding term (sys 18-24)** | **a_super** | **2.479×104** | **m/s2** |
+| Cooper pair frequency | f_super | 1.411$\times$1015 | Hz |
+| DPM frequency (sys 18-24) | f_DPM | 1$\times$1011 | Hz |
+| Plasmotic vacuum | E_vac | 7.09$\times$10-36 | J/m3 |
+| Reduced Planck | ħ | 1.0546$\times$10-34 | J$\cdot$s |
+| Light speed | c | 3.00$\times$108 | m/s |
+| DPM force | F_DPM | 6.284$\times$1036 | N |
+| DPM acceleration (sys 18-24) | a_DPM | 3.543$\times$10-15 | m/s2 |
+| **Cooper amplitude (sys 18-24)** | **A_sc** | **6.994$\times$1018** | — |
+| **Super-seeding term (sys 18-24)** | **a_super** | **2.479$\times$104** | **m/s2** |
 | **Scaling law exponent** | — | **2 (quadratic)** | — |
 
 ---
@@ -216,7 +216,7 @@ $$
 - **Session:** 83  
 - **Module:** COMPRESSED_RESONANCE_UQFF24_MODULE.cpp (25th C++ UQFF module)  
 - **WOLFRAM_TERM:** CR24_SUPER_COMP  
-- **Key discovery:** a_super ∝ f_DPM2 quadratic class scaling law; A_sc = 6.994×1018 (sys 18-24) vs 6.994×1021 (magnetar, 3 orders per 1 order ↑ f_DPM); compressed pre-oscillatory Cooper seeding vs PAPER_289 resonance post-THz placement  
+- **Key discovery:** a_super $\propto$ f_DPM2 quadratic class scaling law; A_sc = 6.994$\times$1018 (sys 18-24) vs 6.994$\times$1021 (magnetar, 3 orders per 1 order $\uparrow$ f_DPM); compressed pre-oscillatory Cooper seeding vs PAPER_289 resonance post-THz placement  
 - **Companion papers:** PAPER_293 (dual-channel architecture), PAPER_294 (ħ-denominator VDH)
 
 
@@ -231,7 +231,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -250,7 +250,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -325,7 +325,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.151 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -336,13 +336,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

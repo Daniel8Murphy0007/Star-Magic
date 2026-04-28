@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Solution, R=130 Flux Ratio, and N=13 Zero-Crossings in cos(pt_n) Oscillation Phase Space
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -27,7 +27,7 @@ Solution, R=130 Flux Ratio, and N=13 Zero-Crossings in cos(pt_n) Oscillation Pha
 
 ---
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The quasar 3C273, the brightest and best-studied quasar (z = 0.158), exhibits highly asymmetric jet
@@ -42,7 +42,7 @@ counter-jet travels through the anti-phase [UA] condensate region and is quenche
 zero-crossings of cos(pt_n) are required to accommodate the observed 23-arcsec jet length,
 establishing 13 as the characteristic UQFF Triadic Mode count for extragalactic jets.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -54,12 +54,12 @@ present in Standard Model treatments.
 |-----------|-------|--------|
 | Object | 3C273 (QSO J1229+0203) | z = 0.158 |
 | Jet angular extent | 23 arcsec | Radio/optical VLBI |
-| Jet physical length | ~65 kpc | Deproject., β_inc  5 |
+| Jet physical length | ~65 kpc | Deproject., $\beta$_inc  5 |
 | Flux ratio R (jet/counter-jet) | **R = 130** | MNRAS multifreq. |
-| Speed (apparent) | κ_app  515c (superluminal) | VLBI monitoring |
+| Speed (apparent) | $\kappa$_app  515c (superluminal) | VLBI monitoring |
 | Counter-jet | Not detected (Flim < Radio beam / 130) | Non-detection |
 | Number of knots in jet | ~13 distinct VLBI knots | d91b1f6c |
-| Polarization | ~5×10% electric vector alignment | VLBI |
+| Polarization | ~5$\times$10% electric vector alignment | VLBI |
 | UQFF t_n | t_n < 0 (counter-jet) | d91b1f6c |
 
 ---
@@ -104,7 +104,7 @@ corresponding to constructive (jet) and t_n ? -t_n anti-phase (counter-jet):
 
 $$R = \left|\frac{1 + \cos(\pi \times 0)}{1 + \cos(\pi \times t_{-})}\right|^2 = \left|\frac{2}{1 + \cos(\pi t_-)}\right|^2 \approx 130$$
 
-Solving: cos(pt_-)  1 - 2/v130 = 1 - 0.1754 = 0.8246 ? pt_- = arccos(0.8246) = 34.5 ? t_- = 0.096 ×
+Solving: cos(pt_-)  1 - 2/v130 = 1 - 0.1754 = 0.8246 ? pt_- = arccos(0.8246) = 34.5 ? t_- = 0.096 $\times$
 0.10
 
 So t_n(counter-jet) = -0.10 (slightly negative), giving R  130. ?
@@ -134,7 +134,7 @@ For  = 0.98 (Lorentz ?  5), ? = 5:
 
 $$\beta_{app} = \frac{0.98 \times 0.087}{1 - 0.98 \times 0.996} = \frac{0.085}{1 - 0.976} = \frac{0.085}{0.024} = 3.5c$$
 
-Observed: κ_app  515c ? Lorentz factor ?  10-20, consistent with UQFF Ug3 driving enhanced
+Observed: $\kappa$_app  515c ? Lorentz factor ?  10-20, consistent with UQFF Ug3 driving enhanced
 acceleration.
 
 ### 3.2 R=130 Derivation with UQFF Triadic + Relativistic Beaming
@@ -143,8 +143,8 @@ Combined UQFF-kinematic expression for R:
 
 $$R = \left(\frac{1 + \betacos\theta}{1 - \betacos\theta}\right)^{3+\alpha} \cdot \frac{F_{U,tri}(+t_n)}{F_{U,tri}(-t_n)}$$
 
-Relativistic beaming alone (κ = 10, ?=5, a=0.7): R_kinematic  45. UQFF Triadic correction factor:
-130/45 × 2.9. This factor arises from F_U_tri(+t_n)/F_U_tri(-t_n)  2.9, consistent with the
+Relativistic beaming alone ($\kappa$ = 10, ?=5, a=0.7): R_kinematic  45. UQFF Triadic correction factor:
+130/45 $\times$ 2.9. This factor arises from F_U_tri(+t_n)/F_U_tri(-t_n)  2.9, consistent with the
 negative-time [UA] condensate suppression.
 
 ### 3.3 Verification Code
@@ -209,7 +209,7 @@ temporal smoothing across 3 UQFF time steps.
 | t_n(counter-jet) | -0.10 | Not directly measured | Inferred ? |
 | N zero-crossings | 13 | ~13 VLBI knots | ? |
 | Jet length (model) | 23 arcsec (13 knots  spacing) | 23 arcsec | ? |
-| Superluminal κ_app | ~515c predicted | 515c observed | ? |
+| Superluminal $\kappa$_app | ~515c predicted | 515c observed | ? |
 
 ---
 
@@ -244,7 +244,7 @@ VLBI surveys.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -263,7 +263,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -371,7 +371,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.143 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

@@ -27,7 +27,7 @@ $$
 \rho_Lambda^\text{UQFF} = \rho_Lambda^\text{obs}\cdotBigl(1 + \kappa^2\cdot[SSq]^2\Bigr) =
 \rho_Lambda^\text{obs}\times1.0000000812
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -42,7 +42,7 @@ Lambda-CDM does not.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,15 +53,15 @@ present in Standard Model treatments.
 $$
 \begin{aligned}
   & Lambda-CDM master equation: \\
-  & β_i = -S_{j?i} G·m_j·(x_i - x_j)/|x_i - x_j|3 + ?c2x_i/3 \\
+  & \beta_i = -S_{j?i} G\cdotm_j\cdot(x_i - x_j)/|x_i - x_j|3 + ?c2x_i/3 \\
   & UQFF master equation (g_UQFF): \\
-  & g(r,t) = G·M(t)/r2 · (1+H(t,z)) · (1-B(t)/B_crit) · (1+F_env(t)) \\
+  & g(r,t) = G\cdotM(t)/r2 \cdot (1+H(t,z)) \cdot (1-B(t)/B_crit) \cdot (1+F_env(t)) \\
   & + (Ug1+Ug2+Ug3'+Ug4) + ?c2/3 \\
-  & + (h/v(?x?p))·??*·H·? dV·(2p/t_Hubble) \\
-  & + ?_fluid·V·g \\
-  & + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r) \\
+  & + (h/v(?x?p))\cdot??*\cdotH\cdot? dV\cdot(2p/t_Hubble) \\
+  & + ?_fluid\cdotV\cdotg \\
+  & + (M_vis+M_DM)\cdot(d?/? + 3\mu_s\nabla(M_s/r)/r) \\
   & Lambda-CDM limit of UQFF: set Ug1=Ug2=Ug3'=Ug4=0, B=0, F_env=0, quantum term=0, fluid=0 \\
-  & ? g_LCDM = G·M/r2 · (1+H(t,z)) + ?c2/3 = DPM-seeded + H(z) + ? ?
+  & ? g_LCDM = G\cdotM/r2 \cdot (1+H(t,z)) + ?c2/3 = DPM-seeded + H(z) + ? ?
 \end{aligned}
 $$
 
@@ -71,15 +71,15 @@ $$
 
 | Term | Lambda-CDM | UQFF | Status |
 |------|----------|------|--------|
-| Gravitational | G·M/r2 | G·M(t)/r2 × H(t,z) modifier | UQFF ? ?CDM |
+| Gravitational | G$\cdot$M/r2 | G$\cdot$M(t)/r2 $\times$ H(t,z) modifier | UQFF ? ?CDM |
 | Dark energy | ?c2/3 (constant) | ?c2/3 + Ug4 (scale-dependent) | UQFF richer |
-| Dark matter | ?_DM in G·M | M_DM in full decomposition | Equivalent at large scales |
+| Dark matter | ?_DM in G$\cdot$M | M_DM in full decomposition | Equivalent at large scales |
 | Magnetic field | None | (1-B/B_crit) suppressor | UQFF new |
 | Environmental | None | (1+F_env) modifier | UQFF new |
-| Quantum gravity | None | h·??*H? term | UQFF new |
-| Buoyancy | None | ?_fluid·V·g | UQFF new |
+| Quantum gravity | None | h$\cdot$??*H? term | UQFF new |
+| Buoyancy | None | ?_fluid$\cdot$V$\cdot$g | UQFF new |
 | Resonance | None | Ug1+Ug2+Ug3'+Ug4 | UQFF new |
-| Perturbations | d only | d?/? + 3μ_s∇(M_s/r)/r | UQFF GR corrected |
+| Perturbations | d only | d?/? + 3$\mu$_s$\nabla$(M_s/r)/r | UQFF GR corrected |
 
 ---
 
@@ -88,9 +88,9 @@ $$
 ### Lambda-CDM: Cosmological Constant
 $$
 \begin{aligned}
-  & ?_? = ?c2/(8pG) = 5.96×10?27 kg/m3   (constant) \\
+  & ?_? = ?c2/(8pG) = 5.96\times10?27 kg/m3   (constant) \\
   & w = -1 (equation of state, constant) \\
-  & P_? = -?_?·c2   (negative pressure) \\
+  & P_? = -?_?\cdotc2   (negative pressure) \\
   & Problem: fine-tuning (? ˜ 10?123 in Planck units) and coincidence problem
 \end{aligned}
 $$
@@ -98,9 +98,9 @@ $$
 ### UQFF: Running Vacuum Concentration
 $$
 \begin{aligned}
-  & Ug4 = k_Ug4 · ?_vac,[UA] · (1 - ?_vac,[SCm]/?_vac,[UA]) · (r/r_crit)2 \\
+  & Ug4 = k_Ug4 \cdot ?_vac,[UA] \cdot (1 - ?_vac,[SCm]/?_vac,[UA]) \cdot (r/r_crit)2 \\
   & This adds a scale-dependent correction to ?: \\
-  & ?(r) = -1 + Ug4(r)/(?_?·c2)   (effective EOS parameter) \\
+  & ?(r) = -1 + Ug4(r)/(?_?\cdotc2)   (effective EOS parameter) \\
   & UQFF prediction: \\
   & At r ~ galactic: ? ˜ -1.001 (slightly stiffer than ?CDM) \\
   & At r ~ cluster: ? ˜ -0.998 (slightly softer than ?CDM) \\
@@ -111,7 +111,7 @@ $$
   & - Weak lensing shear profiles (r ~ 10–100 Mpc) \\
   & - Baryon acoustic oscillations (r ~ 150 Mpc) \\
   & UQFF: ?? ˜ 0.001–0.003  (at Mpc scales) \\
-  & Current precision: s(?) ˜ 0.05 (DESI 2024)  ? need 50× improvement
+  & Current precision: s(?) ˜ 0.05 (DESI 2024)  ? need 50\times improvement
 \end{aligned}
 $$
 
@@ -121,14 +121,14 @@ $$
 
 | Observable | Lambda-CDM | UQFF | Difference |
 |-----------|----------|------|------------|
-| s_8 | 0.811 ± 0.006 | 0.811 (reproduced) | None at z=0 |
-| Growth rate f·s_8 | 0.46 (measured) | 0.46 + UQFF resonance | <0.1% at z<1 |
+| s_8 | 0.811 $\pm$ 0.006 | 0.811 (reproduced) | None at z=0 |
+| Growth rate f$\cdot$s_8 | 0.46 (measured) | 0.46 + UQFF resonance | <0.1% at z<1 |
 | Cluster mass function | Press-Schechter | PS + F_UBii,ps correction | ~2% at M>1015 M_? |
 | Void statistics | Linear theory | F_UBii,voidden enhancement | ~5% void underdensity |
-| Peculiar velocity | fH·d | fH·d + UQFF Q_wave | <0.5% bulk flow |
+| Peculiar velocity | fH$\cdot$d | fH$\cdot$d + UQFF Q_wave | <0.5% bulk flow |
 
 **Key prediction:** UQFF's F_UBii,ps modifies the massive cluster end of the mass function:
-  n_UQFF(>M) = n_PS(>M) × (1 + C_UQFF·(M/1015 M_?)^{0.3})
+  n_UQFF(>M) = n_PS(>M) $\times$ (1 + C_UQFF$\cdot$(M/1015 M_?)^{0.3})
   C_UQFF ˜ 0.02–0.05  (depends on [SSq])
   Test: SPT/ACT cluster counts at z > 0.7
 
@@ -150,7 +150,7 @@ $$
 - "Cold spot" in southern hemisphere
 
 **UQFF explanation:** 26-layer resonance contributing odd-l modes:
-  dC_l/C_l ˜ Q_26(x)·e^{-[SSq]·l/26}/E_LEP  (for l = 2–26)
+  dC_l/C_l ˜ Q_26(x)$\cdot$e^{-[SSq]$\cdot$l/26}/E_LEP  (for l = 2–26)
   For l=2: perturbation ˜ -50% (explains quadrupole suppression)
   For l=6,10,22: small excesses ˜ +1–5% (testable with future CMB data)
 
@@ -161,7 +161,7 @@ $$
 | Aspect | Lambda-CDM (CDM) | UQFF | Distinction |
 |--------|-----------------|------|------------|
 | Core-cusp | CDM: cusp ??r^{-1} | UQFF: adds SIDM-like core via F_UBii,sidm | |
-| Missing satellites | CDM: 103× predicted | UQFF: DPM_stab suppresses small halos | |
+| Missing satellites | CDM: 103$\times$ predicted | UQFF: DPM_stab suppresses small halos | |
 | Too-big-to-fail | CDM: massive subs too dense | UQFF: Ug4 vacuum dilutes high-? centers | |
 | Plane of satellites | CDM: isotropic distribution | UQFF: Ug2 resonance aligns co-rotating planes | |
 
@@ -174,13 +174,13 @@ $$
   & 1. Magnetar polarization: B > B_crit ? g(r,t) changes sign \\
   & ?CDM: no such effect \\
   & Test: gravitational wave anomaly from magnetar binary inspiral \\
-  & 2. 28-minute SGR A* QPO: from f_TRZ = 5.95×10-4 Hz in Ug3' term \\
+  & 2. 28-minute SGR A* QPO: from f_TRZ = 5.95\times10-4 Hz in Ug3' term \\
   & ?CDM: no QPO prediction (geometric effect only) \\
   & Test: GRAVITY NIR monitoring, Spitzer phased analysis \\
   & 3. H_res nuclear resonance modulation of g(r,t) \\
   & ?CDM: no nuclear physics coupling to gravity \\
   & Test: ultra-precise atomic clock comparison at different magnetic field strengths \\
-  & 4. UQFF D_universe = 2D_p·correction factor ˜ 93 Gly (matches ?CDM to <1%) \\
+  & 4. UQFF D_universe = 2D_p\cdotcorrection factor ˜ 93 Gly (matches ?CDM to <1%) \\
   & But: UQFF correction factors ensure 93.1 Gly vs ?CDM 93.0 Gly \\
   & Test: future gravitational wave standard sirens at z > 5
 \end{aligned}
@@ -197,7 +197,7 @@ CMB C_l (l=2–2500)           28.5/29       28.7/29   (+0.7%)
 BAO scale                    29/29          29/29     (equal) 
 SNe Ia distance modulus      28/29          28/29     (equal) 
 Cluster mass function        27/29          28/29     (+3.4%) 
-Structure growth f·s_8       28/29          28/29     (equal) 
+Structure growth f$\cdot$s_8       28/29          28/29     (equal) 
 Magnetar QPO                 0/1            0.8/1     (UQFF predicts f_TRZ) 
 Glitch power-law a           0/1            0.9/1     (UQFF ? SOC) 
 --- 
@@ -224,7 +224,7 @@ Future precision tests (Rubin LSST, CMB-S4, LISA) may discriminate further.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -243,7 +243,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -379,7 +379,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.052 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

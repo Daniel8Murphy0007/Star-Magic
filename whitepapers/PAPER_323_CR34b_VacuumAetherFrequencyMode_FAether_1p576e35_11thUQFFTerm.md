@@ -21,7 +21,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 The CR34b module introduces the 11th UQFF accelerative term `a_aether_freq`, driven by the vacuum
 aether frequency constant `F_AETHER = 1.576e-35 Hz`. This term is the lowest-frequency vacuum
-coupling identified to date in the UQFF expansion, with a coupling coefficient of 5.253×10-43 —
+coupling identified to date in the UQFF expansion, with a coupling coefficient of 5.253$\times$10-43 —
 seven orders smaller than the previous minimum. It represents the cosmological-scale aether
 frequency mode, physically distinct from the existing resonance aether term `a_aether_res`.
 
@@ -35,7 +35,7 @@ $$= \frac{1.576 \times 10^{-35} \cdot 7.09 \times 10^{-36}}{7.09 \times 10^{-37}
 
 $$= \frac{1.576 \times 10^{-35} \times 10}{3.0 \times 10^{8}} \cdot a_{\text{DPM}} = 5.253 \times 10^{-43} \cdot a_{\text{DPM}}$$
 
-**Coupling coefficient: κ_aether_freq = 5.253×10-43** (smallest in UQFF expansion)
+**Coupling coefficient: $\kappa$_aether_freq = 5.253$\times$10-43** (smallest in UQFF expansion)
 
 ---
 
@@ -43,8 +43,8 @@ $$= \frac{1.576 \times 10^{-35} \times 10}{3.0 \times 10^{8}} \cdot a_{\text{DPM
 
 | Term | Formula | Driver | Regime |
 |------|---------|--------|--------|
-| `a_aether_res` | f_aether × 1e-8 × f_DPM × (1+f_TRZ) × a_DPM | f_aether (1–1000 Hz), f_DPM | System-frequency resonance |
-| `a_aether_freq` | F_AETHER × `E_VAC_neb` × a_DPM / (`E_VAC_ISM` × c) | F_AETHER = 1.576e-35 Hz | Cosmological vacuum frequency |
+| `a_aether_res` | f_aether $\times$ 1e-8 $\times$ f_DPM $\times$ (1+f_TRZ) $\times$ a_DPM | f_aether (1–1000 Hz), f_DPM | System-frequency resonance |
+| `a_aether_freq` | F_AETHER $\times$ `E_VAC_neb` $\times$ a_DPM / (`E_VAC_ISM` $\times$ c) | F_AETHER = 1.576e-35 Hz | Cosmological vacuum frequency |
 
 - `a_aether_res`: resonance mode — couples aether to DPM oscillation frequency
 - `a_aether_freq`: frequency mode — couples vacuum aether to energy density ratio
@@ -69,7 +69,7 @@ Together they form the **UQFF Aether Doublet**: resonance + frequency co-sum.
 ---
 
 ## Physical Significance
-- `F_AETHER = 1.576e-35 Hz` → period T = 6.35×1034 seconds ≈ 2.01×1027 years (super-Hubble oscillation)
+- `F_AETHER = 1.576e-35 Hz` $\to$ period T = 6.35$\times$1034 seconds $\approx$ 2.01$\times$1027 years (super-Hubble oscillation)
 - This is the characteristic vacuum aether oscillation at cosmological scales — beyond direct observation but present as a persistent background field in UQFF
 - `LAMBDA = 1.1e-52 m-2` companion constant — cosmological context for aether frequency
 
@@ -78,7 +78,7 @@ Together they form the **UQFF Aether Doublet**: resonance + frequency co-sum.
 ## Classification
 - **FIRST UQFF Vacuum Aether Frequency Mode** — distinct from resonance channel
 - **11th UQFF accelerative term** — completes the UQFF aether doublet (res + freq)
-- **Coupling coefficient 5.253×10-43** — smallest identified UQFF coupling
+- **Coupling coefficient 5.253$\times$10-43** — smallest identified UQFF coupling
 - Copyright — Daniel T. Murphy, Session 93 (March 18, 2026)
 
 
@@ -90,7 +90,7 @@ Together they form the **UQFF Aether Doublet**: resonance + frequency co-sum.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LAG-S225 -->
 
@@ -224,7 +224,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -235,13 +235,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

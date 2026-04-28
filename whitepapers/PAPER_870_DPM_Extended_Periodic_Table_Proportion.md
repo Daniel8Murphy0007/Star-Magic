@@ -26,8 +26,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 We derive the Di-Pseudo-Monopole (DPM) proportion mapping across the full extended periodic table
 from Z=1 to Z_max=10,000. Every nucleus is parameterized by exactly two complementary fractions:
 f_UA' = (Z_max - Z)/Z_max (undifferentiated aether proportion) and f_SCm = Z/Z_max (superconducting
-matter proportion), satisfying f_UA' + f_SCm = 1. The electrostatic barrier reactivity R_EB = k_R·Z
-scales linearly with atomic index, while the radioactive decay rate lambda = k_lambda·f_SCm encodes
+matter proportion), satisfying f_UA' + f_SCm = 1. The electrostatic barrier reactivity R_EB = k_R$\cdot$Z
+scales linearly with atomic index, while the radioactive decay rate lambda = k_lambda$\cdot$f_SCm encodes
 the axiom that all atoms start radioactive and stabilize as f_UA' dominates. The framework extends
 the standard periodic table (Z=1-118) to 10,000 proto-nuclear identities, with SM_magnetic (odd Z)
 and SM_non-magnetic (even Z) classification.
@@ -49,19 +49,19 @@ $$
 ### 1.2 Electrostatic Barrier Reactivity
 
 $$
-R_EB = k_R · Z                        [linear with atomic index]
+R_EB = k_R \cdot Z                        [linear with atomic index]
 $$
 
 ### 1.3 Radioactive Decay (All Atoms Start Radioactive)
 
 $$
-λ = k_λ · f_SCm = k_λ · Z / Z_max   [decay rate, s-1]
+\lambda = k_\lambda \cdot f_SCm = k_\lambda \cdot Z / Z_max   [decay rate, s-1]
 $$
 
 ### 1.4 Quantizer Product
 
 $$
-L_quant ∝ f_UA' · f_SCm · R_EB       [qualitative quantization landscape]
+L_quant \propto f_UA' \cdot f_SCm \cdot R_EB       [qualitative quantization landscape]
 $$
 
 ### 1.5 Log-Scale Representation
@@ -77,7 +77,7 @@ $$
 
 ## 2. Key Results (Sweep: Z = 1 to 10,000)
 
-| Z | f_UA' | f_SCm | R_EB | λ (s-1) | SM Property |
+| Z | f_UA' | f_SCm | R_EB | $\lambda$ (s-1) | SM Property |
 |---|-------|-------|------|----------|-------------|
 | 1 | 0.9999 | 0.0001 | 1.0 | 1.0e-14 | SM_magnetic |
 | 2 | 0.9998 | 0.0002 | 2.0 | 2.0e-14 | SM_non-magnetic |
@@ -91,7 +91,7 @@ $$
 
 At Z = Z_max/2 = 5000: f_UA' = f_SCm = 0.5 — the symmetric crossover point.
 At Z = Z_max: f_SCm = 1 (pure superconducting matter, maximum decay rate).
-At Z = 1: f_UA' ≈ 1 (nearly pure undifferentiated aether, minimal decay).
+At Z = 1: f_UA' $\approx$ 1 (nearly pure undifferentiated aether, minimal decay).
 
 ---
 
@@ -108,13 +108,13 @@ electrostatic barrier R_EB provides the reactivity gradient that governs shell f
 Beyond the standard periodic table, the DPM framework predicts:
 
 - **Z = 119–1000:** Increasingly SCm-dominated nuclei with elevated decay rates
-- **Z = 1000–5000:** Transition regime where f_UA' ≈ f_SCm (50/50 crossover at Z=5000)
+- **Z = 1000–5000:** Transition regime where f_UA' $\approx$ f_SCm (50/50 crossover at Z=5000)
 - **Z = 5000–10000:** SCm-dominated regime; these are proto-nuclear states that exist in extreme astrophysical environments (neutron star interiors, magnetar surfaces, post-merger remnants)
 
 ### 3.3 SM Classification
 
-- **Odd Z → SM_magnetic:** Proto-nuclei with odd atomic index carry magnetic moment (Proto-H ≡ Proto-Fe at Z_id=26)
-- **Even Z → SM_non-magnetic:** Proto-nuclei with even atomic index are non-magnetic (Proto-He ≡ Proto-Si at Z_id=14)
+- **Odd Z $\to$ SM_magnetic:** Proto-nuclei with odd atomic index carry magnetic moment (Proto-H $\equiv$ Proto-Fe at Z_id=26)
+- **Even Z $\to$ SM_non-magnetic:** Proto-nuclei with even atomic index are non-magnetic (Proto-He $\equiv$ Proto-Si at Z_id=14)
 
 ---
 
@@ -154,7 +154,7 @@ python scm_superconductivity_axiom.py —json  # Machine-readable
 
 - **File:** describe mass without using weight.txt (Session 200C)
 - **Session:** 200C (v5.61)
-- **VDS/DVP/BH:** PRESENT (DPM vacuum density series, buoyancy harmonics via f_UA'·f_SCm product)
+- **VDS/DVP/BH:** PRESENT (DPM vacuum density series, buoyancy harmonics via f_UA'$\cdot$f_SCm product)
 
 ---
 
@@ -167,7 +167,7 @@ python scm_superconductivity_axiom.py —json  # Machine-readable
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -186,7 +186,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -261,7 +261,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.095 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -272,13 +272,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

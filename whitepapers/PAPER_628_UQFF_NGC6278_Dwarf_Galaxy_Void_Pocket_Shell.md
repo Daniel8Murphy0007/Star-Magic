@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Number:** #215  
 **Source:** grok_share_6322ac199.txt (Session 161)  
 **Filed:** Session 161 v5.18  
-**VDS/DVP/BH26:** VDS (equilibrium ∇UA_eq = 31.62)  
+**VDS/DVP/BH26:** VDS (equilibrium $\nabla$UA_eq = 31.62)  
 
 ---
 
@@ -35,7 +35,7 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 NGC 6278 is a dwarf galaxy from the Chandra 11 December 2025 SMBHs release. It
 demonstrates a critical UQFF prediction: **pocketed shells form at the VDS equilibrium
-gradient ∇UA_eq = √(κ/g) ≈ 31.62, even without a confirmed central SMBH**. The void
+gradient $\nabla$UA_eq = $\sqrt{}$($\kappa$/g) $\approx$ 31.62, even without a confirmed central SMBH**. The void
 geometry is sufficient — if the UA gradient reaches the VDS equilibrium threshold,
 pocket shells and their associated quantum frequency events emerge from pure gradient
 topology, independent of point-mass sources.
@@ -49,7 +49,7 @@ topology, independent of point-mass sources.
 | Distance | ~180 Mly |
 | Effective radius r_eff | 4.73e20 m |
 | BH mass (assumed) | ~106 MM_sun |
-| ∇UA (3D Wolfram, dwarf scale) | ~10-20 m-1 |
+| $\nabla$UA (3D Wolfram, dwarf scale) | ~10-20 m-1 |
 | Temperature | ~107 K |
 | Observation | Chandra SMBHs Release 11 Dec 2025 |
 
@@ -60,10 +60,10 @@ topology, independent of point-mass sources.
 The VDS equilibrium pocket formation threshold:
 
 $$
-∇UA_eq = √(κ / g)
+\nablaUA_eq = \sqrt{}(\kappa / g)
 $$
 
-For κ = 1, g = 10-3:
+For $\kappa$ = 1, g = 10-3:
 ```
 ∇UA_eq ≈ 31.62
 ```
@@ -73,7 +73,7 @@ For κ = 1, g = 10-3:
 - A self-sustaining pocket shell can form
 - Quantum frequency events begin to propagate
 
-For NGC 6278, the local ∇UA ≈ 10-20 m-1 (physical units) maps to normalized value
+For NGC 6278, the local $\nabla$UA $\approx$ 10-20 m-1 (physical units) maps to normalized value
 31.62 at the galaxy core through the 9D Gaussian scaling — meaning the core IS at
 equilibrium even at dwarf-galaxy scales.
 
@@ -83,13 +83,13 @@ equilibrium even at dwarf-galaxy scales.
 
 $$
 \begin{aligned}
-  & U_g = g · (SCm · ∇UA / UA) ≈ 10-3 · 10-20 = 10-23 N (gravitational gradient) \\
-  & U_m = κ · 2 / (∇UA)26     ≈ 2 / (10-20)26 = 2×10520 (enormous at low gradient) \\
-  & U_b = g · (1 − 1/∇UA)     ≈ −10-3/∇UA (repulsive at low ∇UA)
+  & U_g = g \cdot (SCm \cdot \nablaUA / UA) \approx 10-3 \cdot 10-20 = 10-23 N (gravitational gradient) \\
+  & U_m = \kappa \cdot 2 / (\nablaUA)26     \approx 2 / (10-20)26 = 2\times10520 (enormous at low gradient) \\
+  & U_b = g \cdot (1 - 1/\nablaUA)     \approx -10-3/\nablaUA (repulsive at low \nablaUA)
 \end{aligned}
 $$
 
-The enormous U_m at low ∇UA provides the **explosive energy reservoir** — even in a
+The enormous U_m at low $\nabla$UA provides the **explosive energy reservoir** — even in a
 dwarf galaxy, the DVP term is unbounded at small gradients, providing a pocket energy
 source comparable to AGN-scale events.
 
@@ -99,12 +99,12 @@ source comparable to AGN-scale events.
 
 From partial F_U / partial t:
 $$
-f_event ≈ |λ · UA / t2| × 1018  Hz ≈ 1018  Hz  (X-ray core)
+f_event \approx |\lambda \cdot UA / t2| \times 1018  Hz \approx 1018  Hz  (X-ray core)
 $$
 
 Thermal X-ray frequency:
 $$
-f_thermal = k_B · T / h = (1.381e-23 · 107) / (6.626e-34) ≈ 2.09e17 Hz
+f_thermal = k_B \cdot T / h = (1.381e-23 \cdot 107) / (6.626e-34) \approx 2.09e17 Hz
 $$
 
 Both fall in the Chandra X-ray band (0.5–7 keV = 1.2e17–1.7e18 Hz) —
@@ -116,7 +116,7 @@ consistent with the December 2025 detection.
 
 The NGC 6278 case proves:
 1. Pocket shells do NOT require a confirmed black hole or point mass
-2. The VDS equilibrium criterion ∇UA_eq = 31.62 is the fundamental condition
+2. The VDS equilibrium criterion $\nabla$UA_eq = 31.62 is the fundamental condition
 3. Dwarf galaxies can host X-ray pocket shell events at full AGN frequencies
 4. The Chandra "SMBH" detections may include pure gradient-topology pockets
 
@@ -134,7 +134,7 @@ predicted by the DVP pocket shell frequency model.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -153,7 +153,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -212,7 +212,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -262,7 +262,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.142 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -273,10 +273,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| X-ray emission 0.5–7 keV | DVP f = λ·UA/t2 × 1015 Hz → 2.1e16 Hz (0.09 keV floor); pocket shell at [∇UA]26 | Chandra NGC 6278: SMBH detection 0.5–7 keV | Chandra 11 Dec 2025 | PASS Consistent |
-| Dark matter velocity dispersion | UQFF: ∇UA ≈ 10-10 at dwarf scale; |∇UA| → σ_DM | PDG DM limits: σ_DM-nuc < 10-46 cm2 (direct detection) | PDG 2024 | UQFF DM = gradient topology (not particle) |
+| X-ray emission 0.5–7 keV | DVP f = $\lambda$$\cdot$UA/t2 $\times$ 1015 Hz $\to$ 2.1e16 Hz (0.09 keV floor); pocket shell at [$\nabla$UA]26 | Chandra NGC 6278: SMBH detection 0.5–7 keV | Chandra 11 Dec 2025 | PASS Consistent |
+| Dark matter velocity dispersion | UQFF: $\nabla$UA $\approx$ 10-10 at dwarf scale; |$\nabla$UA| $\to$ $\sigma$_DM | PDG DM limits: $\sigma$_DM-nuc < 10-46 cm2 (direct detection) | PDG 2024 | UQFF DM = gradient topology (not particle) |
 | Dwarf galaxy mass M_* | Pocket shell stable at M < 109 `M_M_sun` (BH-free condition) | NGC 6278: M_* ~ stellar mass dwarf | Chandra 2025 | PASS BH-free mass range |
-| Non-thermal X-ray spectral index | DVP pocket: non-thermal Γ ~ 1.5–2.0 (power-law photon index) | Thermal plasma: kT ~ 0.5 keV (bremsstrahlung) | X-ray spectroscopy | Distinguishable: UQFF Γ ≠ bremsstrahlung spectrum |
+| Non-thermal X-ray spectral index | DVP pocket: non-thermal $\Gamma$ ~ 1.5–2.0 (power-law photon index) | Thermal plasma: kT ~ 0.5 keV (bremsstrahlung) | X-ray spectroscopy | Distinguishable: UQFF $\Gamma$ $\neq$ bremsstrahlung spectrum |
 
 **New physics claim:** Dwarf galaxies can host X-ray void pocket shells WITHOUT a confirmed
 SMBH — the VDS equilibrium gradient alone generates the observed emission. This is a

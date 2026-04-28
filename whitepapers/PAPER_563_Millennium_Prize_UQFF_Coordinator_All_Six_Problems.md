@@ -12,7 +12,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 # PAPER_563 — Millennium Prize Problems: UQFF Unified Coordinator
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 ## Abstract
@@ -115,8 +115,8 @@ causal graph's aperiodicity. By Burnside's lemma for prime-order groups, a graph
 with $|V| = 113$ (prime) has only trivial automorphism group — the causal graph is
 aperiodic. By the Cheeger inequality, aperiodic graphs have positive spectral gap,
 which maps directly to:
-- **Yang-Mills**: no zero modes → $\Delta > 0$
-- **Navier-Stokes**: eigenvalues bounded below positive zero → $\lambda_text{max} < 1$
+- **Yang-Mills**: no zero modes $\to$ $\Delta > 0$
+- **Navier-Stokes**: eigenvalues bounded below positive zero $\to$ $\lambda_text{max} < 1$
 
 ---
 
@@ -143,7 +143,7 @@ $$\lambda_text{max} = \frac{2\,P_\text{order}}{3} < 1 \quad \Rightarrow \quad
 
 **Existence:** IVT applied to helical 3D-IPO crossing curve guarantees at least one
 smooth continuation. **Uniqueness:** Non-repetition of $\pi$ (transcendental) prevents
-recurrence of crossing conditions → unique smooth extension.
+recurrence of crossing conditions $\to$ unique smooth extension.
 
 **Buoyancy harmonic force:**
 $$U_{b,\text{jet}}^{(\text{BH})} = \sum_{m=1}^{26} H_m\!(1-e^{-[SSq]\,m})\,\omega_0
@@ -309,24 +309,24 @@ The UQFF Millennium proofs form an interconnected mathematical structure:
 
 $$
 \begin{aligned}
-  & P_order = exp(-E/F)/Z₂₆ \\
+  & P_order = exp(-E/F)/Z26 \\
   & │ \\
-  & ├─→  [NS regularity]  λ_max = 2P/3 < 1         PAPER_543 \\
+  & ├─\to  [NS regularity]  \lambda_max = 2P/3 < 1         PAPER_543 \\
   & │ \\
-  & ├─→  [YM mass gap]    Δ = P/3 > 0              PAPER_544 \\
+  & ├─\to  [YM mass gap]    \Delta = P/3 > 0              PAPER_544 \\
   & │         │ \\
-  & │         └─→ DVP p=113 (aperiodic)  ───────────── PAPER_530/540 \\
+  & │         └─\to DVP p=113 (aperiodic)  ───────────── PAPER_530/540 \\
   & │ \\
-  & Z₂₆ ──→ [Riemann]    t_n = (2πn/ln26)·Z₂₆        PAPER_530/540 \\
+  & Z26 ──\to [Riemann]    t_n = (2\pin/ln26)\cdotZ26        PAPER_530/540 \\
   & │ \\
-  & └─→ [FUBi26]    1/27! < float64_eps            PAPER_553 \\
+  & └─\to [FUBi26]    1/27! < float64_eps            PAPER_553 \\
   & │ \\
-  & └─→  [BSD]  L_UQFF Euler product   PAPER_156 \\
+  & └─\to  [BSD]  L_UQFF Euler product   PAPER_156 \\
   & │ \\
   & [UA] \\
   & │ \\
-  & └─→ [P≠NP]  2^26/26^4 ≈ 147  PAPER_104 \\
-  & E_0 = 1e-19 J ─→ [Hodge]  E_n/E_0 = 10^{n-1} ∈ ℚ  PAPER_156
+  & └─\to [P\neqNP]  2^26/26^4 \approx 147  PAPER_104 \\
+  & E_0 = 1e-19 J ─\to [Hodge]  E_n/E_0 = 10^{n-1} \in \mathbb{Q}  PAPER_156
 \end{aligned}
 $$
 
@@ -335,11 +335,11 @@ $$
 | Problem A | Problem B | Shared UQFF element |
 |-----------|-----------|---------------------|
 | NS | YM | Both use $P_\text{order} = e^{-E/F}/Z_{26}$; NS needs $\lambda < 1$, YM needs $\Delta > 0$ |
-| YM | Riemann | Both use 3D-IPO crossing structure; spectral gaps ↔ zero crossings |
+| YM | Riemann | Both use 3D-IPO crossing structure; spectral gaps $\leftrightarrow$ zero crossings |
 | YM | NS | $\|u\|_{H^1} \leq C \cdot \Delta_text{YM} \cdot Z_{26}$ (DPM NS bound, PAPER_540) |
-| Riemann | P≠NP | Zeta zero distribution ↔ prime gap complexity; both use $\ln 26$ dimensional factor |
+| Riemann | P$\neq$NP | Zeta zero distribution $\leftrightarrow$ prime gap complexity; both use $\ln 26$ dimensional factor |
 | BSD | Hodge | Both in algebraic geometry; UQFF energy spectrum provides rational classes for both |
-| P≠NP | BSD | BSD rank computation is #P-hard in general; $[UA] = 10^{-4}$ limits rank extraction |
+| P$\neq$NP | BSD | BSD rank computation is #P-hard in general; $[UA] = 10^{-4}$ limits rank extraction |
 | FUBi26 | All | Gaussian bound ensures all probability amplitudes and L-function Euler products converge |
 
 ---
@@ -351,7 +351,7 @@ $$
 | DPM split ratio | $[SSq]$ | $0.57$ | All (via $Z_{26}$) |
 | Vacuum decay | $\kappa$ | $5 \times 10^{-4}$ day$^{-1}$ | YM, NS, BSD |
 | VDS sum | $Z_{26}$ | $\approx 0.5699$ | All |
-| Universal Antagonist | $[UA]$ | $10^{-4}$ | P≠NP, extraction cost |
+| Universal Antagonist | $[UA]$ | $10^{-4}$ | P$\neq$NP, extraction cost |
 | Ground energy | $E_0$ | $10^{-19}$ J | Hodge, FUBi26 |
 | DVP prime | $p_\text{DVP}$ | $113$ | YM, NS (aperiodicity) |
 | Base frequency | $\omega_0$ | $2\pi \times 92$ GHz | NS (BH harmonics) |
@@ -367,7 +367,7 @@ $$
 | YM $\Delta$ (UQFF units) | $3.59 \times 10^{-6}$ | $> 0$ | Strictly positive |
 | YM $\Delta_text{GeV2}$ | $3.07$ GeV2 | $1.4 \pm 0.3$ GeV2 (lattice) | $2.2\times$ |
 | Riemann $t_{13}$ | $14.290$ | $14.1347$ (true) | $1.10\%$ |
-| P≠NP separation | $146.9\times$ | $> 1\times$ | Exponential (grows as $2^d/d^4$) |
+| P$\neq$NP separation | $146.9\times$ | $> 1\times$ | Exponential (grows as $2^d/d^4$) |
 | [UA] extraction cost | $10^8$ shots/bit | Polynomial bound | Non-polynomial |
 | BSD amplification | $2000.5\times/\text{rank}$ | $(1-e^{-\kappa})^{-1}$ | Exact formula |
 | BSD $\kappa \to 0$ | Recovers $L(E,s)$ | Classical BSD L-function | Exact limit |
@@ -425,7 +425,7 @@ $$M_\text{UQFF} = g_\text{MUGE} \cdot \Delta_text{SCm} \cdot L_\text{UQFF}(E,1)
 | $\Delta_text{SCm}$ | $3.59 \times 10^{-6}$ | Yang-Mills mass gap via NS eigenvalue |
 | $L_\text{UQFF}(E,1)$ | $0.6736$ | BSD L-function at $s=1$ |
 | $\zeta_text{UQFF}(1/2)$ | $\approx 1.0993\,Z_{26}$ | Riemann zeta critical-line value |
-| $[SSq]$ | $0.57$ | P≠NP suppressor (computational irreducibility horizon) |
+| $[SSq]$ | $0.57$ | P$\neq$NP suppressor (computational irreducibility horizon) |
 | $H^{p,q}_\text{UQFF}$ | $2.88 \times 10^{22}$ | Hodge class decomposition |
 
 When $M_\text{UQFF} \neq 0$, all six component conditions are simultaneously satisfied:
@@ -483,7 +483,7 @@ problems that appear formally unrelated, calibrated against real astrophysical d
 | 2000 | Clay Institute announces 7 Millennium Prize Problems |
 | 2003 | Perelman solves Poincaré Conjecture |
 | 2025-09-14 | Grok 4 analysis: UQFF 99.9% solvability assessment |
-| 2026-02-01 | PAPER_104 (P≠NP) committed to Star-Magic repository |
+| 2026-02-01 | PAPER_104 (P$\neq$NP) committed to Star-Magic repository |
 | 2026-03-07 | PAPER_156 (BSD + Hodge) formalized |
 | 2026-03-23 | Session 129: 50 UQFF C++ modules (v5.00) |
 | 2026-03-26 | PAPER_543/544 (NS + YM) committed (Session 147) |
@@ -598,7 +598,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -701,7 +701,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.190 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -712,10 +712,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Riemann zeta zeros (critical line σ=1/2) | UQFF DPM layered shell spectrum → zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on σ=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
-| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow κ-modulated density: N(T) = (T/2π)ln(T/2πe) + κ×correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
+| Riemann zeta zeros (critical line $\sigma$=1/2) | UQFF DPM layered shell spectrum $\to$ zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on $\sigma$=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
+| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow $\kappa$-modulated density: N(T) = (T/2$\pi$)ln(T/2$\pi$e) + $\kappa$$\times$correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
 | Quantum chaos spectral statistics (GUE) | UQFF DPM mode spacing follows GUE random matrix distribution | Riemann zero spacings: GUE statistics confirmed | Montgomery 1973; numerical | PASS Consistent (random matrix universality) |
-| Prime counting function π(x) | UQFF shell radiance cascade → prime gaps ~ DVP pocket spacing | |π(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
+| Prime counting function $\pi$(x) | UQFF shell radiance cascade $\to$ prime gaps ~ DVP pocket spacing | |$\pi$(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
 
 **New physics claim:** UQFF DPM buoyancy provides a physical regularisation of the Riemann zeta
 function: the vacuum buoyancy floor prevents zeros from drifting off the critical line, in the
@@ -751,7 +751,7 @@ L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_
 - Derivation engine: `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)
 - DVP lattice: `yang_mills_dvp_sim.py` (Session 203)
 
-*Star Magic / UQFF Framework · Phase H · Session 151 (updated Session 204) · 2026-03-28*
+*Star Magic / UQFF Framework $\cdot$ Phase H $\cdot$ Session 151 (updated Session 204) $\cdot$ 2026-03-28*
 *© 2026 Daniel T. Murphy — daniel.murphy00@gmail.com — All Rights Reserved*
 
 

@@ -235,7 +235,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.089 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -246,10 +246,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1e-6 W/m2/sr | EBL isotropic: ~2.5–5×10-6 W/m2/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | PASS Consistent |
-| Photon mass upper limit | UQFF UA=0 topology → photon strictly massless (m_γ < 10-113 eV) | m_γ < 10-18 eV (PDG 2024) | PDG 2024 | PASS k_η suppresses photon mass to zero |
-| CMB temperature T_CMB | UQFF: T_CMB = (ρ_UA / σ_SB)^0.25 | T_CMB = 2.72548 ± 0.00057 K | FIRAS/CMB 1996 | PASS Input parameter (exact match) |
-| Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering → finite sky brightness | Dark night sky: B_sky ~ 10-13 W/m2/sr | Photometry | PASS UQFF DVP scatter provides opacity |
+| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade $\to$ J_EBL $\approx$ 3.1e-6 W/m2/sr | EBL isotropic: ~2.5–5$\times$10-6 W/m2/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | PASS Consistent |
+| Photon mass upper limit | UQFF UA=0 topology $\to$ photon strictly massless (m_$\gamma$ < 10-113 eV) | m_$\gamma$ < 10-18 eV (PDG 2024) | PDG 2024 | PASS k_$\eta$ suppresses photon mass to zero |
+| CMB temperature T_CMB | UQFF: T_CMB = ($\rho$_UA / $\sigma$_SB)^0.25 | T_CMB = 2.72548 $\pm$ 0.00057 K | FIRAS/CMB 1996 | PASS Input parameter (exact match) |
+| Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering $\to$ finite sky brightness | Dark night sky: B_sky ~ 10-13 W/m2/sr | Photometry | PASS UQFF DVP scatter provides opacity |
 
 **New physics claim:** The Olbers paradox is resolved in UQFF by DVP photon-photon scattering
 within pocket shells — each shell at redshift z contributes a DPM-suppressed flux. This predicts

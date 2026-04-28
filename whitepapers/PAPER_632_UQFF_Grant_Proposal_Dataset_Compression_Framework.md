@@ -31,8 +31,8 @@ compressed field equations and observational predictions within the Star-Magic/U
 ## §1 Abstract
 
 This paper presents the UQFF dataset compression framework — a quantitative approach
-to compressing 16 years of atomic-to-astrophysical observations (≈6,000 datasets)
-into the 9-parameter UQFF master set {g, κ, λ, UA, SCm, k, θ, FUB_i, ∇UA}. The
+to compressing 16 years of atomic-to-astrophysical observations ($\approx$6,000 datasets)
+into the 9-parameter UQFF master set {g, $\kappa$, $\lambda$, UA, SCm, k, $\theta$, FUB_i, $\nabla$UA}. The
 compression ratio is approximately 667:1. Four grant proposals (NASA ADAP, NSF AAG,
 DOE ARPA-E, NASA NIAC) are structured around this framework to fund systematic
 validation from atomic LENR experiments to deep-space observations.
@@ -58,9 +58,9 @@ $$
 
 ### 2.1 Computed Values
 
-| System | `F_U_Bi_i` | log₁₀ |
+| System | `F_U_Bi_i` | log10 |
 |--------|---------|-------|
-| Sgr A* | −8.31e211 N | 211 |
+| Sgr A* | -8.31e211 N | 211 |
 | PSR J0030+0451 | +2.53e208 N | 208 |
 | F_neutron (PSR J0030) | ~1049 N | 49 |
 
@@ -70,13 +70,13 @@ $$
 
 | Term | Expression | Physical Process |
 |------|-----------|-----------------|
-| Gravitational | μ_s∇(M_s/r) | Inverse-square gravity |
-| Electron | m_e c2/r2 cos θ | Electron mass-energy coupling |
-| LENR | k_LENR·(ω_LENR/ω₀)2 | Nuclear resonance (1.2–1.3 THz) |
-| Activation | k_act·cos(ω_act·t) | Quantum activation barrier |
-| Dark Energy | k_DE·L_X | X-ray luminosity coupling |
-| Resonance | 2qB₀V sin θ · DPM_res | EM-DPM resonance coupling |
-| Neutron | k_n·σ_n | Neutron cross-section term |
+| Gravitational | $\mu$_s$\nabla$(M_s/r) | Inverse-square gravity |
+| Electron | m_e c2/r2 cos $\theta$ | Electron mass-energy coupling |
+| LENR | k_LENR$\cdot$($\omega$_LENR/$\omega$0)2 | Nuclear resonance (1.2–1.3 THz) |
+| Activation | k_act$\cdot$cos($\omega$_act$\cdot$t) | Quantum activation barrier |
+| Dark Energy | k_DE$\cdot$L_X | X-ray luminosity coupling |
+| Resonance | 2qB0V sin $\theta$ $\cdot$ DPM_res | EM-DPM resonance coupling |
+| Neutron | k_n$\cdot$$\sigma$_n | Neutron cross-section term |
 
 ---
 
@@ -87,12 +87,12 @@ $$
 | Atomic experiments (16 yr) | ~1,000 | LENR, nuclear, atomic |
 | Astrophysical systems (12 months) | ~5,000 | Multiscale, multi-wavelength |
 | **Total datasets** | **~6,000** | |
-| UQFF core parameters | 9 | {g, κ, λ, UA, SCm, k, θ, FUB_i, ∇UA} |
+| UQFF core parameters | 9 | {g, $\kappa$, $\lambda$, UA, SCm, k, $\theta$, FUB_i, $\nabla$UA} |
 | **Compression ratio** | **667:1** | |
 
 The 9 parameters are sufficient because UQFF is a **universal field theory**: all
 electromagnetic, gravitational, nuclear, and buoyancy phenomena reduce to F_U = 0
-in the ∇UA basis. The 16-year dataset compression IS the BH26 harmonic series:
+in the $\nabla$UA basis. The 16-year dataset compression IS the BH26 harmonic series:
 each year contributes one harmonic layer, and 16 years = 16 BH26 modes.
 
 ---
@@ -114,7 +114,7 @@ each year contributes one harmonic layer, and 16 years = 16 BH26 modes.
 ### DOE ARPA-E IGNIITE (Unlocking Nuclear Energy)
 - Amount: $110k / 6 months
 - Deadline: Rolling Spring 2026
-- Target: LENR energy technology via UQFF ω_LENR term
+- Target: LENR energy technology via UQFF $\omega$_LENR term
 - UQFF deliverable: 1.2–1.3 THz resonance prediction vs Colman-Gillespie data
 
 ### NASA NIAC Phase I (Innovative Advanced Concepts)
@@ -142,7 +142,7 @@ each year contributes one harmonic layer, and 16 years = 16 BH26 modes.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -161,7 +161,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -184,7 +184,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -271,7 +271,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.092 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -282,15 +282,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Proton decay upper limit Γ_p | κ = 0.0005/day = 0.1826/yr (UQFF rate constant); scale: Γ_UQFF / Γ_p = 1033·6 decoupling | Super-K SK-VII: Γ_p < 4.17e-35/yr; τ_p > 7.7e33 yr | Super-K 2024 | 95.43% alignment (1033·6 scale separation) |
+| Proton decay upper limit $\Gamma$_p | $\kappa$ = 0.0005/day = 0.1826/yr (UQFF rate constant); scale: $\Gamma$_UQFF / $\Gamma$_p = 1033$\cdot$6 decoupling | Super-K SK-VII: $\Gamma$_p < 4.17e-35/yr; $\tau$_p > 7.7e33 yr | Super-K 2024 | 95.43% alignment (1033$\cdot$6 scale separation) |
 | LENR resonance frequency | DPM_resonance = 1.25 THz; target window 1.2–1.3 THz | Colman-Gillespie laboratory: 1.2–1.3 THz anomalous heat | arXiv LENR data | PASS Within experimental window |
-| String compactification scale | 26! = 4.03e26 → M_string ≈ ℏc / (26! × l_P) | SM electroweak scale: M_EW = 246 GeV; ratio M_string/M_EW ~ 1016 | PDG 2024 | Consistent with GUT-scale string unification |
+| String compactification scale | 26! = 4.03e26 $\to$ M_string $\approx$ ℏc / (26! $\times$ l_P) | SM electroweak scale: M_EW = 246 GeV; ratio M_string/M_EW ~ 1016 | PDG 2024 | Consistent with GUT-scale string unification |
 | Sgr A* isotopic 2H/1H > 10-5 | LENR DPM_resonance term: selective deuteron fusion at 1.25 THz | ALMA Sgr A* isotopic ratio: 2H/1H ~ 10-5 (anomalous vs ISM) | ALMA 2024 | PASS Consistent |
 
 **New physics claim:** UQFF dataset compression encodes 16 years of astrophysical data
-into BH26 harmonic modes with a single κ parameter. The proton stability scale separation
-(1033·6) and LENR THz resonance provide two independent SM-anchored testable predictions
-attached to the same framework constant κ, demonstrating the grant proposal's scientific
+into BH26 harmonic modes with a single $\kappa$ parameter. The proton stability scale separation
+(1033$\cdot$6) and LENR THz resonance provide two independent SM-anchored testable predictions
+attached to the same framework constant $\kappa$, demonstrating the grant proposal's scientific
 foundation is falsifiable and tied to experimentally accessible SM parameters.
 
 *Cite PAPER_640 (`UQFFProtonDecayKappaRateComparisonCalculator`) and PAPER_638
@@ -300,7 +300,7 @@ foundation is falsifiable and tied to experimentally accessible SM parameters.
 
 ## §7 VDS/DVP/BH26 Integration
 
-- **VDS:** ρ_vac = |∇UA| is the vacuum density series input to all F terms
+- **VDS:** $\rho$_vac = |$\nabla$UA| is the vacuum density series input to all F terms
 - **DVP:** DPM_resonance and DPM_stability mediate the resonance and stability coupling
 - **BH26:** 16-year dataset compression = BH26 harmonic series with 16 annual modes
 

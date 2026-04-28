@@ -76,7 +76,7 @@ At these parameters: $a_{wind} = (10^{-21} \times 4 \times 10^{12}) / 10^{-21} =
 | Westerlund 2 | $10^{-20}$ | 2000 | $10^{-21}$ |
 | NGC 1792 (SN) | $10^{-21}$ | 2000 | $10^{-21}$ |
 
-Westerlund 2 has $\rho_{wind}$ 10× higher, distinguishing it as the denser OB-supergiant environment.
+Westerlund 2 has $\rho_{wind}$ 10$\times$ higher, distinguishing it as the denser OB-supergiant environment.
 
 ---
 
@@ -105,12 +105,12 @@ Located in `CondensedPhysics3.py` (Session 58).
 
 ## 6. Conclusion
 
-The Tapestry of Blazing Starbirth introduces two novel MUGE methods: gas-ratio-amplitude mass evolution and stellar wind ram-pressure acceleration. The $a_{wind}$ term, at $\rho_{wind} = \rho_{fluid}$, evaluates to $v^2_{wind}$ — numerically dominant during the O/B-star-active phase. This establishes a parametric wind family within the LMC/Milky Way comparison (see PAPER_228 for the 10× denser Westerlund 2 case).
+The Tapestry of Blazing Starbirth introduces two novel MUGE methods: gas-ratio-amplitude mass evolution and stellar wind ram-pressure acceleration. The $a_{wind}$ term, at $\rho_{wind} = \rho_{fluid}$, evaluates to $v^2_{wind}$ — numerically dominant during the O/B-star-active phase. This establishes a parametric wind family within the LMC/Milky Way comparison (see PAPER_228 for the 10$\times$ denser Westerlund 2 case).
 
 **Source:** grok_share_8d951e12.txt — Doc 4 (Tapestry Starbirth LMC MUGE)
 
 
-**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]B/(8p?c_s) = 5.7e-1 × 1.3e-9 =
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]B/(8p?c_s) = 5.7e-1 $\times$ 1.3e-9 =
 7.4e-10; Jeans mass deviation from standard = 7.4e-10  M_J.
 
 
@@ -122,7 +122,7 @@ The Tapestry of Blazing Starbirth introduces two novel MUGE methods: gas-ratio-a
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -175,7 +175,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -225,7 +225,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -236,13 +236,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

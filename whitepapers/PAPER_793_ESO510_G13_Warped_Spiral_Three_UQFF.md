@@ -22,13 +22,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-ESO 510-G13 is a highly warped spiral galaxy approximately 150 million light-years distant (z ≈
+ESO 510-G13 is a highly warped spiral galaxy approximately 150 million light-years distant (z $\approx$
 0.010) in the constellation Hydra. Its most remarkable feature, visible in Hubble ACS imaging, is an
 extreme S-shaped warp of the dust disk extending well beyond the central stellar bulge — one of the
 most dramatic disk warps known in the nearby universe. The warp indicates a dynamical disturbance,
 likely a past (still ongoing) gravitational interaction. Despite the dramatic visual appearance, ESO
 510-G13's total mass and rotation velocity are standard for a spiral of its size. Three-UQFF
-analysis yields g_primary ≈ 1.053×10-3 m/s2 — confirming that disk warps, however dramatic, do not
+analysis yields g_primary $\approx$ 1.053$\times$10-3 m/s2 — confirming that disk warps, however dramatic, do not
 alter the UQFF electromagnetic ground state.
 
 ---
@@ -49,10 +49,10 @@ morphological distortion changes the UQFF mode convergence.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Estimate |
-| Disk radius | r | 3.78×1020 m (~40 kly) | HST |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Estimate |
+| Disk radius | r | 3.78$\times$1020 m (~40 kly) | HST |
 | SFR | — | 1.0 MM_sun/yr | Warped disk activity |
-| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.03 | UQFF |
 | Redshift | z | 0.010 | Spectroscopic |
 | v_EM | v | 105 m/s | Disk rotation |
@@ -77,13 +77,13 @@ g_comp = 1.053e-3 m/s2
 
 ### Mode 2: Resonant UQFF
 $$
-g_res = 1.053e-3 × 1.000285 = 1.053e-3 m/s2
+g_res = 1.053e-3 \times 1.000285 = 1.053e-3 m/s2
 $$
 
 ### Mode 3: Buoyancy UQFF (with warp geometry)
 $$
 \begin{aligned}
-  & V_effective = (4/3)π(3.78e20)3 × \text{f\_warp\_vol} \\
+  & V_effective = (4/3)\pi(3.78e20)3 \times \text{f\_warp\_vol} \\
   & (Warp increases effective volume; buoyancy correction still << a_EM) \\
   & g_buoy = 1.053e-3 m/s2
 \end{aligned}
@@ -108,7 +108,7 @@ ESO 510-G13's extreme warp is the most visually dramatic disk distortion in the 
 the Three-UQFF result confirms that disk warps, regardless of their amplitude, do not change the
 Aether EM coupling result. The warp modifies the geometry of gas distribution but not the rotation
 velocity or local B-field that drive the UQFF EM term. This is a profound result: UQFF predicts that
-any edge-on warped spiral with standard rotation velocities will yield the same g = 1.053×10-3 m/s2
+any edge-on warped spiral with standard rotation velocities will yield the same g = 1.053$\times$10-3 m/s2
 as a perfectly symmetric face-on spiral. The electromagnetic ground state is rotationally invariant
 and geometry-invariant at constant v and B.
 
@@ -119,7 +119,7 @@ and geometry-invariant at constant v and B.
 From Batch 4 Three-UQFF analysis, a corollary theorem emerges:
 
 **UQFF Geometry Invariance:** For any galaxy with standard rotation velocity v = 105 m/s and
-standard galactic field B = 10-5 T, the UQFF electromagnetic ground state g = 1.053×10-3 m/s2 is
+standard galactic field B = 10-5 T, the UQFF electromagnetic ground state g = 1.053$\times$10-3 m/s2 is
 independent of:
 - Disk inclination (edge-on vs. face-on: NGC 5866, M74)
 - Disk warp amplitude (ESO 510-G13 90° S-warp vs. symmetric spirals)
@@ -133,7 +133,7 @@ ground state.
 
 ## 6. Conclusions
 
-Three-UQFF applied to ESO 510-G13 yields g_primary ≈ 1.053×10-3 m/s2 despite the galaxy's extreme
+Three-UQFF applied to ESO 510-G13 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 despite the galaxy's extreme
 90° disk warp. Combined with Batch 4 results, this establishes the **UQFF Geometry Invariance
 Theorem**: the electromagnetic Aether ground state is invariant under all geometric transformations
 of galaxy morphology at constant v and B.
@@ -150,7 +150,7 @@ of galaxy morphology at constant v and B.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -169,7 +169,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -286,7 +286,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

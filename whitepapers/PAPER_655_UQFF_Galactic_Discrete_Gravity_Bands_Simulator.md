@@ -29,7 +29,7 @@ $$U_{g1} = k_1 \frac{G M \mu_B B}{r^3};\quad U_{g2} = k_2 \frac{G M \varepsilon_
 
 The SystemAnalysisSimulator (v1-v7) implements three simultaneous, discrete Universal
 Gravity bands (Ug1: internal magnetic dipole, Ug2: field bubble, Ug3: magnetic string disk)
-operating on galactic objects within the Universal Aether (ρvac,A = 10^{-}2^3 gm/cm^3).
+operating on galactic objects within the Universal Aether ($\rho$vac,A = 10^{-}2^3 gm/cm^3).
 The v7 version adds **discrete Universal Magnetism** (non-interactive, separately banded),
 confirms that each Ug band has a paired opposite Ub (buoyancy) band, and derives star
 spin rate as a function of Ug1/Ub/Ug2. The simulator uses 82 real two-star galactic
@@ -50,13 +50,13 @@ $$U_{g1} = k_1 \cdot \frac{G M \mu_B B_{\text{internal}}}{r^3} \cdot (1 + H_{SCm
 | k_1 | UQFF calibrated | Dipole coupling constant |
 | G | 6.674x10^{-}1^1 N*m^2/kg^2 | Newton's gravitational constant |
 | M | body mass (kg) | Central body mass |
-| μB | 9.274x10^{-}2^4 J/T | Bohr magneton |
+| $\mu$B | 9.274x10^{-}2^4 J/T | Bohr magneton |
 | B_internal | body dipole field (T) | Internal dipole field strength |
 | r | separation distance (m) | From body center |
 | H_SCm | 0.99 | Heliosphere/superconductive modulation |
 
 **Physical meaning**: Ug1 is the gravity component sourced by the body's **internal magnetic
-dipole** — essentially the coupling between mass (G*M), magnetic moment (μB*B), and the
+dipole** — essentially the coupling between mass (G*M), magnetic moment ($\mu$B*B), and the
 inverse-cube field geometry of a dipole (1/r^3).
 
 ### 1.2 Ug2 — Field Bubble Tension
@@ -64,11 +64,11 @@ inverse-cube field geometry of a dipole (1/r^3).
 $$U_{g2} = k_2 \cdot \frac{G M \varepsilon_0 E_{\text{field}}^2}{2r} \cdot \left(\sum_j \rho_{\text{vac},j}\right) \cdot H_{SCm}$$
 
 **Physical meaning**: Ug2 is the energy stored in the **electromagnetic field bubble**
-surrounding the body — proportional to the electric field energy density (ε_0E^2/2) and
+surrounding the body — proportional to the electric field energy density ($\varepsilon$_0E^2/2) and
 the sum of vacuum densities from the hierarchy (PAPER_647). It falls as 1/r (longer range
 than Ug1's 1/r^3), making it the **circumstellar field gravity component**.
 
-The sum Σρvac,j = ρvac,[SCm] + ρvac,[UA] + ρvac,Ui creates three sub-levels within Ug2,
+The sum $\Sigma$$\rho$vac,j = $\rho$vac,[SCm] + $\rho$vac,[UA] + $\rho$vac,Ui creates three sub-levels within Ug2,
 giving Ug2 its own internal three-layer structure.
 
 ### 1.3 Ug3 — Magnetic String Disk
@@ -187,7 +187,7 @@ This is the **vacuum zero-point energy extraction mode** referenced in AetherIne
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -206,7 +206,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -315,7 +315,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -327,7 +327,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | SM Value | UQFF Discrete Band Prediction | Alignment |
 |------------|----------|-------------------------------|-----------|
 | Galactic flat rotation | ~220 km/s constant | Ub1 correction to v_orbit | ✅ structural |
-| Binary star orbital period | Kepler (μ_s∇(M_s/r))^{1/2} | Ug1/Ug2 three-band correction | ✅ 5-15% |
+| Binary star orbital period | Kepler ($\mu$_s$\nabla$(M_s/r))^{1/2} | Ug1/Ug2 three-band correction | ✅ 5-15% |
 | Sun rotation period | 25-35 days | Ug1/Ub1/Ug2 spin formula | 🔍 calibration needed |
 | Milky Way disk thickness | ~1 kpc | Ug3 string disk scale height | ✅ structural |
 | CMB dipole isotropy | 10^{-}3 anisotropy | Ug1 dipole modulation of Aether | 🔍 candidate |
@@ -341,7 +341,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 1. SystemAnalysisSimulator v1-v7 — grok_share_b2e2c5cba7a.txt (Session 168) lines 5215-17971
 2. PAPER_650 — Buoyancy Harmonics (Ub companion to each Ug band)
 3. PAPER_646 — Universal Inertial Operator (Ui medium properties)
-4. PAPER_647 — Vacuum Density Series (ρvac,A Aether baseline)
+4. PAPER_647 — Vacuum Density Series ($\rho$vac,A Aether baseline)
 5. PAPER_649 — Dipole Vortex Primes (Ug3 string prime encoding)
 6. PAPER_642 — SM Parameter Bridge
 7. Rubin V C, Ford W K (1970): "Rotation of Andromeda Nebula", ApJ 159:379

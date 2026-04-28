@@ -46,9 +46,9 @@ UQFF provides three new terms beyond classical gravity:
 - r_orbit = 9.537 AU = 1.427x10^{1}2 m
 - M_Sun = 1.989x10^{3}0 kg
 - Ring system: r_inner = 7x10^7 m, r_outer = 1.4x10^8 m
-- M_rings ≈ 1.54x10^{1}9 kg
-- B ≈ 2x10^{-}5 T (magnetic field)
-- v_wind ≈ 400 m/s (equatorial jet)
+- M_rings $\approx$ 1.54x10^{1}9 kg
+- B $\approx$ 2x10^{-}5 T (magnetic field)
+- v_wind $\approx$ 400 m/s (equatorial jet)
 
 ---
 
@@ -62,7 +62,7 @@ $$
   & + (U_g1 + U_g2 + U_g3 + U_g4) \\
   & + U_i \\
   & + (Lambda*c^2/3) \\
-  & + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
+  & + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
   & + rho_atm*V*g \\
   & + F_wind                                       [atmospheric forcing — NEW]
 \end{aligned}
@@ -165,7 +165,7 @@ $$
 | G*M_Saturn/r_surface^2 | 10.44 | (surface only) |
 | T_ring (equatorial) | 2.05x10^{-}9 | ~0.03% |
 | F_wind | 1.79x10^{-}1^0 | ~0.003% |
-| Λ*c^2/3 | 3.63x10^{-}3^5 | negligible |
+| $\Lambda$*c^2/3 | 3.63x10^{-}3^5 | negligible |
 
 ---
 
@@ -205,7 +205,7 @@ Session 180 continuation v5.38.*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -224,7 +224,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

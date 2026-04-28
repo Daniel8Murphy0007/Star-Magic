@@ -39,7 +39,7 @@ in Ha. We derive F_BH from jet mechanical power and prove the feedback balance c
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -51,7 +51,7 @@ From Document 16 of grok_share_7514fe:
 
 $$
 \begin{aligned}
-  & g_NGC1275(r, t) = (G·M)/r2 · (1+H(z)·t) · (1-B/B_crit) \\
+  & g_NGC1275(r, t) = (G\cdotM)/r2 \cdot (1+H(z)\cdott) \cdot (1-B/B_crit) \\
   & + F_BH \\
   & + (Ug1+Ug2+Ug3+Ug4) + ?c2/3 + QM + fluid + DM \\
   & + M_fil
@@ -69,9 +69,9 @@ $$
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| M_BH | ~3×108 M? | Dynamical measurements |
+| M_BH | ~3$\times$108 M? | Dynamical measurements |
 | P_jet | ~1035 W | Chandra X-ray cavities (Fabian 2003) |
-| r_jet | 10 kpc = 3.086×102° m | Inner X-ray cavity radius |
+| r_jet | 10 kpc = 3.086$\times$102° m | Inner X-ray cavity radius |
 
 ### 2.2 Jet Force Derivation
 
@@ -86,12 +86,12 @@ r_jet, creating a pressure difference that propagates as a "force" per unit area
 boundary.
 
 $$
-F_BH = 1e35 / 3.086e20 = 3.24×1014 N/m2 ? normalized to m/s2: F_BH/?_ICM
+F_BH = 1e35 / 3.086e20 = 3.24\times1014 N/m2 ? normalized to m/s2: F_BH/?_ICM
 $$
 
-For ICM density ?_ICM ˜ 3×10?26 kg/m3:
+For ICM density ?_ICM ˜ 3$\times$10?26 kg/m3:
 $$
-\text{F\_BH\_accel} = F_BH / ?_ICM ˜ 3.24e14 / 3e-26 ˜ 1.08×104° m/s2
+\text{F\_BH\_accel} = F_BH / ?_ICM ˜ 3.24e14 / 3e-26 ˜ 1.08\times104° m/s2
 $$
 
 This vastly exceeds local gravity — confirming that AGN feedback DOMINATES over gravity in the
@@ -104,8 +104,8 @@ The heating-cooling balance requires:
 
 $$
 \begin{aligned}
-  & F_BH · V_cavity = L_cooling · t_cool \\
-  & P_jet ˜ \text{L\_X\_cooling} = n2 · ?(T) · V_cavity   [energy balance]
+  & F_BH \cdot V_cavity = L_cooling \cdot t_cool \\
+  & P_jet ˜ \text{L\_X\_cooling} = n2 \cdot ?(T) \cdot V_cavity   [energy balance]
 \end{aligned}
 $$
 
@@ -121,23 +121,23 @@ cooling luminosity.
 
 NGC 1275 hosts ~100 optical Ha filaments discovered by Lynds (1970) and resolved by Hubble (Fabian
 et al. 2008). Properties:
-- Total filament mass: ~108 M? = 2×1038 kg
-- Velocity: ±300 km/s (infalling and outflowing)  
-- Temperature: T_fil ˜ 104–105 K (cool relative to 3×107 K ICM)
+- Total filament mass: ~108 M? = 2$\times$1038 kg
+- Velocity: $\pm$300 km/s (infalling and outflowing)  
+- Temperature: T_fil ˜ 104–105 K (cool relative to 3$\times$107 K ICM)
 - Length: up to 50 kpc
 
 ### 3.2 M_fil Gravitational Contribution
 
 $$
 \begin{aligned}
-  & g_fil = G · M_fil / r2 \\
-  & = 6.674e-11 · 2e38 / (3.086e20)2 \\
+  & g_fil = G \cdot M_fil / r2 \\
+  & = 6.674e-11 \cdot 2e38 / (3.086e20)2 \\
   & = 1.33e28 / 9.52e40 \\
-  & ˜ 1.40×10?13 m/s2
+  & ˜ 1.40\times10?13 m/s2
 \end{aligned}
 $$
 
-This is ~1000× smaller than the base gravity term but represents an important secondary term — the
+This is ~1000$\times$ smaller than the base gravity term but represents an important secondary term — the
 filament mass partially ENHANCES the gravitational binding energy, potentially aiding the
 re-accretion of cooling gas back to the AGN (the feeding-feedback cycle).
 
@@ -172,7 +172,7 @@ cooling slows. This is the classic Perseus feedback cycle encoded in the UQFF eq
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -191,7 +191,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.061 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

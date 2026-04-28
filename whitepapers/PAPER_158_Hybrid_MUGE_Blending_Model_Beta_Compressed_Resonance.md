@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_158
-title: "Hybrid MUGE Blending Model: g_hybrid = β·g_compressed + (1-β)·g_resonance"
+title: "Hybrid MUGE Blending Model: g_hybrid = $\beta$$\cdot$g_compressed + (1-$\beta$)$\cdot$g_resonance"
 session: 47
 date: 2026-01-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [AGN, MUGE, neutron-star, magnetar, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_158 — Hybrid MUGE Blending Model: g_hybrid = β·g_compressed + (1-β)·g_resonance
+# PAPER_158 — Hybrid MUGE Blending Model: g_hybrid = $\beta$$\cdot$g_compressed + (1-$\beta$)$\cdot$g_resonance
 **Author:** Daniel T. Murphy
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
@@ -21,11 +21,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 This paper introduces the **Hybrid MUGE Blending Model**, a continuous interpolation between
 the Compressed MUGE and Resonance MUGE gravity frameworks. The blending parameter
-β = exp(−B/B_crit) transitions smoothly from β → 0 (pure resonance, magnetar regime) to
-β → 1 (pure compressed DPM-seeded+, weak-field regime). This unified hybrid is the **first
+$\beta$ = exp(-B/B_crit) transitions smoothly from $\beta$ $\to$ 0 (pure resonance, magnetar regime) to
+$\beta$ $\to$ 1 (pure compressed DPM-seeded+, weak-field regime). This unified hybrid is the **first
 algebraic bridge** between the DPM-seeded limit and the full resonance superconductive regime
 within the UQFF framework, extending §2.2 PAPER_155 which proved DPM-seeded emergence
-only in the fTRZ→0 limit.
+only in the fTRZ$\to$0 limit.
 
 ---
 
@@ -54,21 +54,21 @@ $$\boxed{\beta = e^{-B/B_{crit}}}$$
 - $g_{comp}$ = compressed MUGE gravity (PAPER_090, 9-term DPM-seeded+corrections)
 - $g_{res}$ = resonance MUGE gravity (PAPER_146/159, 12/13-term superconductive resonance)
 - $B$ = local magnetic field strength [T]
-- $B_{crit}$ = critical quantum field (4.4×1013 T for magnetars)
+- $B_{crit}$ = critical quantum field (4.4$\times$1013 T for magnetars)
 
 ---
 
 ## 3. Limiting Cases
 
-### 3.1 Magnetar Regime (B/B_crit → 1)
+### 3.1 Magnetar Regime (B/B_crit $\to$ 1)
 
 $$\beta = e^{-1} \approx 0.368 \quad \Rightarrow \quad g_{hybrid} \approx 0.37\,g_{comp} + 0.63\,g_{res}$$
 
-For SGR 1745-2900 (B = 3×1011 T, B_crit ≈ 4.4×1013 T):
+For SGR 1745-2900 (B = 3$\times$1011 T, B_crit $\approx$ 4.4$\times$1013 T):
 
 $$\beta_{SGR} = e^{-3\times10^{11}/4.4\times10^{13}} \approx 0.9933 \approx 1$$
 
-→ g_hybrid ≈ g_comp for SGR 1745 (compressed dominant near-critical but below)
+$\to$ g_hybrid $\approx$ g_comp for SGR 1745 (compressed dominant near-critical but below)
 
 ### 3.2 Solar Regime (B << B_crit)
 
@@ -76,13 +76,13 @@ For Sun (B_s = 10-4 T):
 
 $$\beta_{Sun} = e^{-10^{-4}/4.4\times10^{13}} \approx 1.000000$$
 
-→ g_hybrid → g_comp (pure DPM-seeded+ regime)
+$\to$ g_hybrid $\to$ g_comp (pure DPM-seeded+ regime)
 
 ### 3.3 Neutron Star Surface (B ~ 1012 T)
 
 $$\beta_{NS} = e^{-10^{12}/4.4\times10^{13}} \approx 0.977$$
 
-→ g_hybrid ≈ 0.977 g_comp + 0.023 g_res (dominantly compressed; 2.3% resonance correction)
+$\to$ g_hybrid $\approx$ 0.977 g_comp + 0.023 g_res (dominantly compressed; 2.3% resonance correction)
 
 ---
 
@@ -116,18 +116,18 @@ def compute_hybrid_muge(g_compressed: float, g_resonance: float,
 
 ## 5. Validation — 7-System Blending Table
 
-| System              | B [T]      | β             | g_comp [m/s2]  | g_res [m/s2]   | g_hybrid [m/s2] |
+| System              | B [T]      | $\beta$             | g_comp [m/s2]  | g_res [m/s2]   | g_hybrid [m/s2] |
 |---------------------|------------|---------------|-----------------|-----------------|-----------------|
-| SGR 1745-2900       | 3×1011     | 0.9933        | 1.783×1039      | 1.655×1045     | 1.785×10-4+dominated|
-| Sagittarius A*      | 1×10-5     | ~1.0          | 1.816×1034      | 1.256×10100    | ≈ g_comp         |
-| Tapestry            | 1×10-4     | ~1.0          | 2.989×1031      | 1.257×10112    | ≈ g_comp         |
-| Westerlund 2        | 1×10-4     | ~1.0          | 2.989×1031      | 1.257×10112    | ≈ g_comp         |
-| Pillars             | 1×10-4     | ~1.0          | 1.989×1027      | 1.256×10105    | ≈ g_comp         |
-| Rings               | 1×10-5     | ~1.0          | 2.989×1033      | 1.257×10113    | ≈ g_comp         |
-| Student's Guide     | 1×10-10    | ~1.0          | 2.000×1047      | 1.257×10156    | ≈ g_comp         |
+| SGR 1745-2900       | 3$\times$1011     | 0.9933        | 1.783$\times$1039      | 1.655$\times$1045     | 1.785$\times$10-4+dominated|
+| Sagittarius A*      | 1$\times$10-5     | ~1.0          | 1.816$\times$1034      | 1.256$\times$10100    | $\approx$ g_comp         |
+| Tapestry            | 1$\times$10-4     | ~1.0          | 2.989$\times$1031      | 1.257$\times$10112    | $\approx$ g_comp         |
+| Westerlund 2        | 1$\times$10-4     | ~1.0          | 2.989$\times$1031      | 1.257$\times$10112    | $\approx$ g_comp         |
+| Pillars             | 1$\times$10-4     | ~1.0          | 1.989$\times$1027      | 1.256$\times$10105    | $\approx$ g_comp         |
+| Rings               | 1$\times$10-5     | ~1.0          | 2.989$\times$1033      | 1.257$\times$10113    | $\approx$ g_comp         |
+| Student's Guide     | 1$\times$10-10    | ~1.0          | 2.000$\times$1047      | 1.257$\times$10156    | $\approx$ g_comp         |
 
-*Note: For all non-magnetar systems, β ≈ 1 so g_hybrid ≈ g_comp. The blending becomes
-significant only for systems with B/B_crit > 0.01 (i.e., B > 4.4×1011 T).*
+*Note: For all non-magnetar systems, $\beta$ $\approx$ 1 so g_hybrid $\approx$ g_comp. The blending becomes
+significant only for systems with B/B_crit > 0.01 (i.e., B > 4.4$\times$1011 T).*
 
 ---
 
@@ -136,15 +136,15 @@ significant only for systems with B/B_crit > 0.01 (i.e., B > 4.4×1011 T).*
 The hybrid model provides:
 1. **A unified equation** replacing case-by-case selection of compressed vs. resonance
 2. **Continuous parameter space** enabling interpolation between observational regimes
-3. **Automatic mode selection**: β encodes the magnetic suppression factor from PAPER_090
-4. **Extends PAPER_155**: While PAPER_155 proves DPM-seeded emergence at fTRZ→0, this model
-   handles intermediate B fields without requiring fTRZ → 0
+3. **Automatic mode selection**: $\beta$ encodes the magnetic suppression factor from PAPER_090
+4. **Extends PAPER_155**: While PAPER_155 proves DPM-seeded emergence at fTRZ$\to$0, this model
+   handles intermediate B fields without requiring fTRZ $\to$ 0
 
 Connection to 4 UQFF Operational Modes (PAPER_064):
-- Compressed: β = 1
-- Buoyant: β and Ubi terms active
-- Resonant: β = 0
-- Superconductive: β = 0, fTRZ active
+- Compressed: $\beta$ = 1
+- Buoyant: $\beta$ and Ubi terms active
+- Resonant: $\beta$ = 0
+- Superconductive: $\beta$ = 0, fTRZ active
 
 ---
 
@@ -164,7 +164,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -183,7 +183,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -292,7 +292,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.135 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -303,13 +303,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

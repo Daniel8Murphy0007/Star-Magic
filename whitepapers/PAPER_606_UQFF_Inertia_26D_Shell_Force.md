@@ -39,7 +39,7 @@ The DPM-driven shell energy at layer $\ell$:
 $$ShellEnergy_\ell = DPM_{react} \cdot \omega^2 \cdot r^{layer}_\ell \cdot |t_{neg}|$$
 
 where:
-- $DPM_{react}$ ≈ 5×10-4 (dimensionless reaction coefficient)
+- $DPM_{react}$ $\approx$ 5$\times$10-4 (dimensionless reaction coefficient)
 - $\omega$ = angular frequency of shell oscillation (rad/s)
 - $r^{layer}_\ell$ = radius of shell layer ℓ (m)
 - $|t_{neg}|$ = magnitude of the negative time component (s)
@@ -54,7 +54,7 @@ Applying the power rule to the leading velocity dependence:
 
 $$F_{inert} \approx -ShellEnergy \cdot \frac{26}{v^{27}} \cdot t_{neg}$$
 
-This has units: [J] × [s-1/(m/s)^{27}] × [s] = N × ... which normalizes through the 26D shell
+This has units: [J] $\times$ [s-1/(m/s)^{27}] $\times$ [s] = N $\times$ ... which normalizes through the 26D shell
 geometry.
 
 ---
@@ -114,7 +114,7 @@ time, UQFF
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -133,7 +133,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -170,7 +170,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -273,7 +273,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.173 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -284,13 +284,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2μ_s∇(M_s/r)·r/c²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
-| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
-| Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η2) ≈ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
-| Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
+| GR Schwarzschild metric recovery | BSFG line element $\to$ g_tt = -(1-2$\mu$_s$\nabla$(M_s/r)$\cdot$r/c2) $\equiv$ GR in $\varepsilon$_BSFG$\to$0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
+| Shapiro time delay | BSFG geodesic $\to$ $\Delta$t_BSFG $\approx$ $\Delta$t_GR $\times$ (1 + $\varepsilon$_correction) | Cassini: $\Delta$t/$\Delta$t_GR = 1 $\pm$ 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
+| Gravitational wave speed v_GW | BSFG: v_GW = c $\times$ (1 + k_$\eta$2) $\approx$ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
+| Perihelion precession (Mercury) | BSFG adds buoyancy correction $\delta$$\phi$ = $\kappa$ $\times$ $\phi$_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
 
 **New physics claim:** BSFG (Buoyancy-Stratified Factorial Geometry) reproduces all tested GR
-predictions in the classical limit, while adding a vacuum buoyancy correction Δg ~ 10-6 arcsec/
+predictions in the classical limit, while adding a vacuum buoyancy correction $\Delta$g ~ 10-6 arcsec/
 century to Mercury's perihelion. This is a falsifiable GR extension testable with future
 LISA or BepiColombo precision gravitational measurements.
 

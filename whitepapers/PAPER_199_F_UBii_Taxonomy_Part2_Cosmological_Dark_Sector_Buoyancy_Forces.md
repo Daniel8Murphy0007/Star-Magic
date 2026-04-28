@@ -26,7 +26,7 @@ $$
 \rho_Lambda^\text{UQFF} = \rho_Lambda^\text{obs}\cdotBigl(1 + \kappa^2\cdot[SSq]^2\Bigr) =
 \rho_Lambda^\text{obs}\times1.0000000812
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -41,7 +41,7 @@ physical expression F_X.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -52,8 +52,8 @@ present in Standard Model treatments.
 ### 1.1 Dark Energy Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,DE = -F_rel × (?_DE·c2 / E_LEP) × Q_wave(z) × (8pG?_tot/3) × (1+w(z)) \\
-  & ?_DE(a) = ?_DE,0·exp(3?1^a (1+w(a'))/a' da') \\
+  & F_UBii,DE = -F_rel \times (?_DE\cdotc2 / E_LEP) \times Q_wave(z) \times (8pG?_tot/3) \times (1+w(z)) \\
+  & ?_DE(a) = ?_DE,0\cdotexp(3?1^a (1+w(a'))/a' da') \\
   & w(a) = w0 + w_a(1-a)   (Chevallier-Polarski-Linder parametrization) \\
   & Source: \text{BB\_C\_Equations} item 721
 \end{aligned}
@@ -62,10 +62,10 @@ $$
 ### 1.2 Inflation Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,inf = F_rel × (V(?) / E_LEP) × Q_wave × 3H2 × e^N/(1+e) \\
+  & F_UBii,inf = F_rel \times (V(?) / E_LEP) \times Q_wave \times 3H2 \times e^N/(1+e) \\
   & V(?) = inflaton potential \\
   & N = number of e-folds \\
-  & e = slow-roll parameter: e = (??/H·M_pl)2/2 \\
+  & e = slow-roll parameter: e = (??/H\cdotM_pl)2/2 \\
   & Source: \text{BB\_C\_Equations} item 724
 \end{aligned}
 $$
@@ -73,7 +73,7 @@ $$
 ### 1.3 Gravitational Wave Energy Density Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,GW = -F_rel × (?_GW / E_LEP) × Q_wave × (32pG?2/c2) × e^{-t/t} \\
+  & F_UBii,GW = -F_rel \times (?_GW / E_LEP) \times Q_wave \times (32pG?2/c2) \times e^{-t/t} \\
   & ?_GW = gravitational wave energy density \\
   & ? = time derivative of strain \\
   & Source: \text{BB\_C\_Equations} item 727
@@ -83,7 +83,7 @@ $$
 ### 1.4 Anyon System Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,anyons = -F_rel × (E_anyons / E_LEP) × Q_wave × g(r,t) × exp(-d2_c/(2s2)) \\
+  & F_UBii,anyons = -F_rel \times (E_anyons / E_LEP) \times Q_wave \times g(r,t) \times exp(-d2_c/(2s2)) \\
   & E_anyons = anyon system energy (2D topological) \\
   & g(r,t) = UQFF gravitational field at position \\
   & Gaussian factor from density fluctuation s \\
@@ -98,7 +98,7 @@ $$
 ### 2.1 LQC Perturbation Spectrum Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,lqcp = -F_rel × (P(k) ? k^{n_s-1}·(1+k/k_*)^{-a} / E_LEP) × Q_wave \\
+  & F_UBii,lqcp = -F_rel \times (P(k) ? k^{n_s-1}\cdot(1+k/k_*)^{-a} / E_LEP) \times Q_wave \\
   & k_* = bounce scale (LQC pre-bounce phase) \\
   & a = UV suppression exponent \\
   & Modifies primordial power spectrum at Planck-scale modes \\
@@ -109,8 +109,8 @@ $$
 ### 2.2 LQC Effective Friedmann Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,lqcf = F_rel × (H2 = 8pG?/3·(1-?/?_crit) / E_LEP) × Q_wave \\
-  & ?_crit = 0.41·?_Planck ˜ 10?3 g/cm3 \\
+  & F_UBii,lqcf = F_rel \times (H2 = 8pG?/3\cdot(1-?/?_crit) / E_LEP) \times Q_wave \\
+  & ?_crit = 0.41\cdot?_Planck ˜ 10?3 g/cm3 \\
   & Bounce condition: H=0 at ?=?_crit (avoids singularity) \\
   & Source: \text{BB\_C\_Equations} item 1252, 1604
 \end{aligned}
@@ -119,8 +119,8 @@ $$
 ### 2.3 LQC Bounce Timescale Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,bounc = F_rel × (t_b ˜ v(3/(8pG?_crit)) ˜ t_Pl ˜ 10-43 s / E_LEP) \\
-  & × Q_wave × [H˜0 at bounce, duration ˜ 1/?_bounce] \\
+  & F_UBii,bounc = F_rel \times (t_b ˜ v(3/(8pG?_crit)) ˜ t_Pl ˜ 10-43 s / E_LEP) \\
+  & \times Q_wave \times [H˜0 at bounce, duration ˜ 1/?_bounce] \\
   & Source: \text{BB\_C\_Equations} item 1257, post-1608
 \end{aligned}
 $$
@@ -132,7 +132,7 @@ $$
 ### 3.1 Bekenstein-Hawking Entropy Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,bhent = F_rel × (S = k_B·c3·A/(4Gh) = 4p·k_B·GM2/(hc) / E_LEP) × Q_wave \\
+  & F_UBii,bhent = F_rel \times (S = k_B\cdotc3\cdotA/(4Gh) = 4p\cdotk_B\cdotGM2/(hc) / E_LEP) \times Q_wave \\
   & A = 4pr_s2  (Schwarzschild horizon area) \\
   & r_s = 2GM/c2 \\
   & Holographic: S ? A/l_Pl2 (area law) \\
@@ -143,8 +143,8 @@ $$
 ### 3.2 Evaporation Lifetime Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,evapl = -F_rel × (t_evap = 5120pG2M3/(hc4) / E_LEP) \\
-  & × Q_wave × [P = sAT4 ˜ hc2/M2] \\
+  & F_UBii,evapl = -F_rel \times (t_evap = 5120pG2M3/(hc4) / E_LEP) \\
+  & \times Q_wave \times [P = sAT4 ˜ hc2/M2] \\
   & Power dM/dt = -P/c2  (mass loss rate) \\
   & Source: \text{BB\_C\_Equations} item 1601, 1250
 \end{aligned}
@@ -157,8 +157,8 @@ $$
 ### 4.1 Big Bang Nucleosynthesis Deuterium Bottleneck
 $$
 \begin{aligned}
-  & F_UBii,deb = -F_rel × (t_D = v(3/(32pG?_rad)) ˜ 180 s (T~0.1 MeV) / E_LEP) × Q_wave \\
-  & ?_rad = p2kT4/(30h3c5)·g_*   (radiation density) \\
+  & F_UBii,deb = -F_rel \times (t_D = v(3/(32pG?_rad)) ˜ 180 s (T~0.1 MeV) / E_LEP) \times Q_wave \\
+  & ?_rad = p2kT4/(30h3c5)\cdotg_*   (radiation density) \\
   & g_* = effective degrees of freedom (~10 at D formation) \\
   & Weak freeze-out at T~1 MeV; photodissociation until T<0.1 MeV \\
   & Source: \text{BB\_C\_Equations} item 1809, 1536
@@ -168,7 +168,7 @@ $$
 ### 4.2 Baryon-to-Photon Ratio Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,eta = F_rel × (κ = n_b/n_? = 6×10?1° / E_LEP) × Q_wave × [Freeze-out: R...] \\
+  & F_UBii,eta = F_rel \times (\kappa = n_b/n_? = 6\times10?1° / E_LEP) \times Q_wave \times [Freeze-out: R...] \\
   & n_? = 410 cm?3 (CMB photon density today) \\
   & Fit from D, 3He, 4He, 7Li abundances \\
   & Source: \text{BB\_C\_Equations} item 1701, 1534
@@ -178,7 +178,7 @@ $$
 ### 4.3 Reionization Front Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,reion = F_rel × (d?_e/dt = ?_?·e_esc·f_* - a_B·n2_e·C / E_LEP) × Q_wave \\
+  & F_UBii,reion = F_rel \times (d?_e/dt = ?_?\cdote_esc\cdotf_* - a_B\cdotn2_e\cdotC / E_LEP) \times Q_wave \\
   & x_e = ionized fraction, e_esc ˜ 0.1–0.3 (escape fraction) \\
   & C = clumping factor \\
   & Source: \text{BB\_C\_Equations} item 1684
@@ -192,7 +192,7 @@ $$
 ### 5.1 CMB Angular Power Spectrum Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,cmb = F_rel × (C_l = 2/p · ?k2dk·P(k)·|?_l^T(k)|2 / E_LEP) × Q_wave \\
+  & F_UBii,cmb = F_rel \times (C_l = 2/p \cdot ?k2dk\cdotP(k)\cdot|?_l^T(k)|2 / E_LEP) \times Q_wave \\
   & P(k) ? k^{n_s-4} (primordial power, n_s ˜ 0.965) \\
   & Transfer ?_l^T: Sachs-Wolfe (large scales) + acoustic (small scales) \\
   & Source: \text{BB\_C\_Equations} item 1310, 1080
@@ -202,9 +202,9 @@ $$
 ### 5.2 Recombination Optical Depth Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,recomb = -F_rel × (t(z) = ?_z^8 n_e(z')·s_T·c·(dt/dz')dz' / E_LEP) × Q_wave \\
+  & F_UBii,recomb = -F_rel \times (t(z) = ?_z^8 n_e(z')\cdots_T\cdotc\cdot(dt/dz')dz' / E_LEP) \times Q_wave \\
   & z_re ˜ 7.7  (reionization redshift, Planck 2018) \\
-  & s_T = Thomson cross-section (6.65×10?2? m2) \\
+  & s_T = Thomson cross-section (6.65\times10?2? m2) \\
   & Source: \text{BB\_C\_Equations} item 1313
 \end{aligned}
 $$
@@ -216,7 +216,7 @@ $$
 ### 6.1 NFW Density Profile Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,nfw = -F_rel × (?(r) = ?_s/((r/r_s)·(1+r/r_s)2) / E_LEP) × Q_wave \\
+  & F_UBii,nfw = -F_rel \times (?(r) = ?_s/((r/r_s)\cdot(1+r/r_s)2) / E_LEP) \times Q_wave \\
   & ?_s = characteristic density, r_s = scale radius \\
   & Universal CDM halo form \\
   & Source: \text{BB\_C\_Equations} item 1326
@@ -235,9 +235,9 @@ F_UBii,nfwrot = F_rel × (v(r)2 = 4pG?_s·r_s2·[ln(1+x) - x/(1+x)]/r / E_LEP)
 ### 6.3 SIDM Core Formation Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,sidm = -F_rel × (G = ?·s·v/m / E_LEP) × Q_wave × ln(0.02N) \\
-  & t_core ˜ (?·s/m)?1 ˜ 101°·(?/108 M_?/kpc3)?1·(s/m/1 cm2/g)?1 yr \\
-  & Core forms when G·t ˜ 1 \\
+  & F_UBii,sidm = -F_rel \times (G = ?\cdots\cdotv/m / E_LEP) \times Q_wave \times ln(0.02N) \\
+  & t_core ˜ (?\cdots/m)?1 ˜ 101°\cdot(?/108 M_?/kpc3)?1\cdot(s/m/1 cm2/g)?1 yr \\
+  & Core forms when G\cdott ˜ 1 \\
   & Source: \text{BB\_C\_Equations} item 1249, 1264
 \end{aligned}
 $$
@@ -249,7 +249,7 @@ $$
 ### 7.1 Void Density Evolution Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,voidden = -F_rel × (d_v(a) = -3/5·(O_m·a + O_?)^{-3/2}·d_v0 / E_LEP) × Q_wave \\
+  & F_UBii,voidden = -F_rel \times (d_v(a) = -3/5\cdot(O_m\cdota + O_?)^{-3/2}\cdotd_v0 / E_LEP) \times Q_wave \\
   & a = scale factor, d_v0 = initial underdensity \\
   & Integration: d ? a^{-1} in matter domination inside void \\
   & Source: \text{BB\_C\_Equations} item 1940, 1338
@@ -259,7 +259,7 @@ $$
 ### 7.2 Peculiar Velocity Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,pec = F_rel × (v_pec = -(fH/3)·?d(r)·r·dr/r2 / E_LEP) × Q_wave \\
+  & F_UBii,pec = F_rel \times (v_pec = -(fH/3)\cdot?d(r)\cdotr\cdotdr/r2 / E_LEP) \times Q_wave \\
   & f ˜ O_m^{0.55}  (growth rate) \\
   & Spherical void: integrate Poisson equation \\
   & Source: \text{BB\_C\_Equations} item 1341
@@ -273,7 +273,7 @@ $$
 ### 8.1 Convective Turnover Time Buoyancy
 $$
 \begin{aligned}
-& F_UBii,conv = F_rel × (t_conv = H_p/v_conv ; v_conv ˜ (a2gdT·H_p/(4T))^{1/3} / E_LEP) × Q_wave \\
+& F_UBii,conv = F_rel \times (t_conv = H_p/v_conv ; v_conv ˜ (a2gdT\cdotH_p/(4T))^{1/3} / E_LEP) \times Q_wave \\
   & H_p = pressure scale height \\
   & a ˜ 2  (mixing length parameter) \\
   & Source: \text{BB\_C\_Equations} item 1533
@@ -283,7 +283,7 @@ $$
 ### 8.2 Magnetic Field Reversal Buoyancy (Dynamo Parity)
 $$
 \begin{aligned}
-  & F_UBii,rev = F_rel × (l_rev = (a_dynamo·?)^{1/2}·l_force / E_LEP) × Q_wave \\
+  & F_UBii,rev = F_rel \times (l_rev = (a_dynamo\cdot?)^{1/2}\cdotl_force / E_LEP) \times Q_wave \\
   & a_dynamo = dynamo a-coefficient (~v/3) \\
   & ? = magnetic resistivity \\
   & Growth vs diffusion sets reversal scale \\
@@ -307,9 +307,9 @@ F_UBii,dyn = F_rel × (dE_M/dt = (3/2)·E_M/t_eddy·(Re_m^{1/2} - 1) / E_LEP) ×
 ### 9.1 Metal Enrichment Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,metal = F_rel × (Z = Y·SFR/?_gas - Z·?_out/M_gas / E_LEP) × Q_wave × (Z ˜ 0.1) \\
+  & F_UBii,metal = F_rel \times (Z = Y\cdotSFR/?_gas - Z\cdot?_out/M_gas / E_LEP) \times Q_wave \times (Z ˜ 0.1) \\
   & Y ˜ 0.02  (stellar yield) \\
-  & Steady state: Z = Y·SFR/?_out \\
+  & Steady state: Z = Y\cdotSFR/?_out \\
   & Source: \text{BB\_C\_Equations} item 1395, 1571
 \end{aligned}
 $$
@@ -317,7 +317,7 @@ $$
 ### 9.2 Photoevaporation (Exoplanet) Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,photo = F_rel × (?_evap = e·L_X·R_p3/(GM_p2·K(?)) / E_LEP) × Q_wave \\
+  & F_UBii,photo = F_rel \times (?_evap = e\cdotL_X\cdotR_p3/(GM_p2\cdotK(?)) / E_LEP) \times Q_wave \\
   & L_X ˜ 1027?2? erg/s  (host star X-ray luminosity) \\
   & K(?) = penetration correction factor \\
   & Source: \text{BB\_C\_Equations} item 1496, 1490
@@ -463,7 +463,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.127 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -474,13 +474,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

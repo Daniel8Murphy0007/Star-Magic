@@ -48,7 +48,7 @@ PAPER_430 presents the first complete per-system Master Universal Gravity Equati
 | B decay timescale | $\tau_B$ | $4000$ yr $= 1.262 \times 10^{11}$ s | Hubble dataset |
 | Critical B field | $B_\text{crit}$ | $10^{11}$ T | Type-II SC threshold |
 | Initial period | $P_0$ | 5 s | Standard magnetar period |
-| Ω decay timescale | $\tau_Omega$ | $10{,}000$ yr $= 3.156 \times 10^{11}$ s | Fermilab simulation |
+| $\Omega$ decay timescale | $\tau_Omega$ | $10{,}000$ yr $= 3.156 \times 10^{11}$ s | Fermilab simulation |
 | Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s-1 | Planck CMB |
 | Time-reversal factor | $f_\text{TRZ}$ | $0.1$ | UQFF calibration |
 | EM scaling | $s_\text{EM}$ | $10^{-12}$ | Macroscopic approximation |
@@ -65,7 +65,7 @@ $$B(t) = B_0 \, e^{-t/\tau_B} = 10^{10} \, e^{-t/1.262 \times 10^{11}} \quad [\t
 **Rotation rate decay:**
 $$\Omega(t) = \frac{2\pi}{P_0} \, e^{-t/\tau_Omega} \quad [\text{rad/s}]$$
 
-**Ω derivative (spin-down):**
+**$\Omega$ derivative (spin-down):**
 $$\frac{d\Omega}{dt}(t) = -\frac{2\pi}{P_0 \tau_Omega} \, e^{-t/\tau_Omega} \quad [\text{rad/s}^2]$$
 
 At $t = 5{,}000$ yr $= 1.578 \times 10^{11}$ s:
@@ -183,7 +183,7 @@ $$g_\text{SM} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \approx 4.645 \
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -202,7 +202,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -277,7 +277,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.168 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -288,10 +288,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| SGR 0501+4516 Magnetar luminosity X-ray 0.5–8 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 1036 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| SGR 0501+4516 Magnetar luminosity X-ray 0.5–8 keV | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L_X ~ 1036 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for SGR
 0501+4516 Magnetar

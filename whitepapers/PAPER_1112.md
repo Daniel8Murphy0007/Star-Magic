@@ -29,7 +29,7 @@ The Star-Magic UQFF framework requires high-throughput computation to evaluate b
 
 ### 2.1 Five-Stage Pipeline
 
-| Stage | Latency (μs) | Description |
+| Stage | Latency ($\mu$s) | Description |
 |-------|:------------:|-------------|
 | Ingest | 0.50 | Dataset reception from REST endpoint |
 | Validate | 0.20 | Parameter bounds and type checking |
@@ -52,7 +52,7 @@ For a 16-core system: $N_{\text{workers}} = 32$.
 
 JSON serialisation overhead is eliminated by switching to msgpack:
 
-| Format | Avg. Size | Serialise (μs) | Deserialise (μs) |
+| Format | Avg. Size | Serialise ($\mu$s) | Deserialise ($\mu$s) |
 |--------|:---------:|:--------------:|:----------------:|
 | JSON | 512 B | 1.2 | 0.8 |
 | msgpack | 317 B | 0.4 | 0.3 |
@@ -62,9 +62,9 @@ JSON serialisation overhead is eliminated by switching to msgpack:
 
 The compute stage benefits from GPU parallelism:
 
-$$t_{\text{compute}}^{\text{GPU}} = \frac{t_{\text{compute}}}{S_{\text{GPU}}} = \frac{0.60}{3.2} = 0.1875 \text{ μs}$$
+$$t_{\text{compute}}^{\text{GPU}} = \frac{t_{\text{compute}}}{S_{\text{GPU}}} = \frac{0.60}{3.2} = 0.1875 \text{ \mus}$$
 
-With GPU offload, pipeline latency reduces to $1.3375$ μs, yielding $R_{\text{GPU}} \approx 747{,}664$ calc/s per thread.
+With GPU offload, pipeline latency reduces to $1.3375$ $\mu$s, yielding $R_{\text{GPU}} \approx 747{,}664$ calc/s per thread.
 
 ### 3.3 Zero-Copy Memory Mapping
 
@@ -141,7 +141,7 @@ The v26 production pipeline achieves and exceeds the 1M calc/s target through sy
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 
@@ -276,7 +276,7 @@ VDS computation is the dominant pipeline bottleneck; Ramanujan acceleration crit
 DVP prime: 31 (batch-size prime).
 
 ### B.3 Buoyancy Saturation Harmonics (BSH)
-BSH timescale: $\tau_{\text{pipeline}} = 1.75$ μs (single-thread latency).
+BSH timescale: $\tau_{\text{pipeline}} = 1.75$ $\mu$s (single-thread latency).
 
 ### B.4 Production-Scale Consistency
 

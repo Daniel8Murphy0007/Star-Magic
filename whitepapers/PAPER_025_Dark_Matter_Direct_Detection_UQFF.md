@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2026-03-06
 **Domain:** 1.4  Beyond Standard Model (BSM) Physics
 **Status:** Draft
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57
 **Validation File:** validate_dm_direct_uqff.py
 **C++ Sources:** source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp
 
@@ -28,7 +28,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 Direct detection experiments (LUX-ZEPLIN, XENONnT, PandaX-4T) report persistent null results. The
-Unified Quantum Field Framework (UQFF) predicts two DM candidates derived from κ = 0.0005/day and
+Unified Quantum Field Framework (UQFF) predicts two DM candidates derived from $\kappa$ = 0.0005/day and
 [SSq] = 0.57 with zero free parameters: (1) the ultra-light Aether Condensate Particle (ACP) with
 M_ACP = 3.81e-24 eV/c  fuzzy dark matter with de Broglie wavelength ?_dB = 2.3 kpc; and (2) a heavy
 partner ACP2 with M_ACP2 = M_KK  [SSq] = 3.77 TeV. ACP2 scatters off nuclei via KK graviton exchange
@@ -38,7 +38,7 @@ total relic density O_DM h = 0.1200 matching Planck 2020.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -80,7 +80,7 @@ $$M_{ACP} = \kappa \frac{\hbar}{c^2} = \frac{5.787\times10^{-9}\,\text{s}^{-1} \
 
 $$M_{ACP2} = M_{KK} \times [SSq]^2 = 1.16\times10^{4}\,\text{GeV} \times 0.325 = 3.77\times10^{0}\,\text{TeV}$$
 
-M_ACP2 = M_KK  [SSq] = 11,600 GeV ≈ 0.325 = 3,770 GeV = 3.77 TeV
+M_ACP2 = M_KK  [SSq] = 11,600 GeV $\approx$ 0.325 = 3,770 GeV = 3.77 TeV
 
 Above LHC direct production threshold. Accessible at FCC-hh (100 TeV).
 
@@ -113,7 +113,7 @@ s_SI = [SSq]^4  G_N  M_ACP2  m_N / (p  v4)
 - m_N = 0.939 GeV
 - v = 7.33e-4 c (220 km/s)
 
-Result: s_SI = 3.2 × 10?5 cm
+Result: s_SI = 3.2 $\times$ 10?5 cm
 
 ### 4.2 Comparison with Experimental Limits
 
@@ -135,7 +135,7 @@ s_self / M = [SSq] = 0.57 cm/g
 |-------------|-------------------|------|-------------|
 | Bullet Cluster | < 1.25 | 0.57 | Yes ? |
 | Galaxy clusters | < 0.47 | 0.57 | Marginal |
-| Dwarf galaxies | 0.1×10 | 0.57 | Yes ? |
+| Dwarf galaxies | 0.1$\times$10 | 0.57 | Yes ? |
 | Strong lensing | < 1.0 | 0.57 | Yes ? |
 
 ---
@@ -150,7 +150,7 @@ ACP2 produced by gravitational production during inflation (not thermal freeze-o
 | ACP2 (heavy) | 3.77 TeV | 1.2% |
 | Total O_DM h | – | **0.1200** ? |
 
-Matches Planck 2020: O_DM h = 0.1200 × 0.0012.
+Matches Planck 2020: O_DM h = 0.1200 $\times$ 0.0012.
 
 ACP relic abundance from gravitational production during reheating:
 **O_ACP h  (1/?_crit)  (m_ACP – T_RH) / H_inf**
@@ -175,7 +175,7 @@ With T_RH = 10? GeV (typical inflation model), the ratio ?/H_inf naturally yield
 
 ## 8. Conclusion
 
-UQFF predicts two dark matter candidates entirely fixed by the calibration constants κ = 0.0005/day
+UQFF predicts two dark matter candidates entirely fixed by the calibration constants $\kappa$ = 0.0005/day
 and [SSq] = 0.57: (1) Ultra-light ACP (3.81e-24 eV) constituting 98.8% of DM as fuzzy dark matter
 with ?_dB = 2.3 kpc de Broglie wavelength  solving the core-cusp problem and small-scale structure
 anomalies; (2) Heavy ACP2 (3.77 TeV) with KK-graviton-mediated SI cross section s = 3.2e-52 cm 
@@ -188,7 +188,7 @@ and future direct detection experiments below the neutrino floor.
 | ACP2 (heavy) | 3.77 TeV | 1.2% |
 | Total O_DM h | – | 0.1200 ? |
 
-Matches Planck 2020: O_DM h = 0.1200 × 0.0012
+Matches Planck 2020: O_DM h = 0.1200 $\times$ 0.0012
 
 ---
 
@@ -209,7 +209,7 @@ Matches Planck 2020: O_DM h = 0.1200 × 0.0012
 
 | Property | WIMP | UQFF DM |
 |---------|------|---------|
-| Mass | 10×1000 GeV | 3.81e-24 eV + 3.77 TeV |
+| Mass | 10$\times$1000 GeV | 3.81e-24 eV + 3.77 TeV |
 | Interaction | Weak force | KK graviton |
 | Direct detection | Expected | 104 below floor |
 | Self-interaction | Negligible | 0.57 cm/g |
@@ -219,7 +219,7 @@ Matches Planck 2020: O_DM h = 0.1200 × 0.0012
 
 ## 9. Conclusion
 
-UQFF predicts two DM candidates from κ = 0.0005/day and [SSq] = 0.57:
+UQFF predicts two DM candidates from $\kappa$ = 0.0005/day and [SSq] = 0.57:
 
 1. Ultra-light ACP: M = 3.81e-24 eV, ?_dB = 2.3 kpc, 98.8% of DM ?
 2. Heavy ACP2: M = 3.77 TeV, s_SI = 3.2e-52 cm, 1.2% of DM ?
@@ -431,7 +431,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.122 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -442,13 +442,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -480,14 +480,14 @@ bridge.*
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -502,10 +502,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -513,9 +513,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -523,8 +523,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*

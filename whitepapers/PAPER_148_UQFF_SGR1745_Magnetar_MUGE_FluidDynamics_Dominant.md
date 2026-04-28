@@ -38,14 +38,14 @@ $$
 ## Abstract
 
 SGR1745-2900 is the closest known magnetar to the Galactic Center (~0.1 parsec from Sgr A*), with a
-surface magnetic field of B ~ 3×10^11 T — among the strongest known magnetic fields in the universe.
+surface magnetic field of B ~ 3$\times$10^11 T — among the strongest known magnetic fields in the universe.
 Under the UQFF MUGE 12-Term Resonance framework, the dominant gravitational term for SGR1745-2900 is
 afluid_freq (Navier-Stokes SCm fluid coupling), yielding a MUGE gravitational acceleration of g =
-1.773×10^-9 m/s^2 at the magnetar's magnetospheric scale. This result is physically distinct from
-the Newton observational projection (G*M/R^2 ~ 1.4×10^13 m/s^2, Step 10) because MUGE at this scale probes the
+1.773$\times$10^-9 m/s^2 at the magnetar's magnetospheric scale. This result is physically distinct from
+the Newton observational projection (G*M/R^2 ~ 1.4$\times$10^13 m/s^2, Step 10) because MUGE at this scale probes the
 magnetospheric driven SCm fluid dynamics — not the compact object's bulk gravity. The fluid
 dominance at SGR1745 validates the UQFF principle that extreme magnetic fields (B >> B_crit =
-4.4×10^13 T × f_correction) produce extreme SCm fluid accelerations that drive non-Newton-projected
+4.4$\times$10^13 T $\times$ f_correction) produce extreme SCm fluid accelerations that drive non-Newton-projected
 gravitational dynamics observable through X-ray pulse timing and radio emission.
 
 ---
@@ -56,17 +56,17 @@ gravitational dynamics observable through X-ray pulse timing and radio emission.
 |-----------|-------|--------|
 | Type | Soft Gamma Repeater (SGR) / Magnetar | McGill Magnetar Catalog |
 | Location | ~0.1 pc from Sgr A* | Mori et al. 2013 |
-| Mass | ~2.8×10^30 kg (1.4 Msun typical NS) | Standard NS model |
-| Radius | ~1.2×10^4 m (12 km) | Neutron star EOS |
-| Surface B-field | ~3×10^11 T | McGill Catalog |
+| Mass | ~2.8$\times$10^30 kg (1.4 Msun typical NS) | Standard NS model |
+| Radius | ~1.2$\times$10^4 m (12 km) | Neutron star EOS |
+| Surface B-field | ~3$\times$10^11 T | McGill Catalog |
 | Spin period | 3.76 s | Eatough et al. 2013 |
-| Period derivative | dP/dt ~ 6.6×10^-12 s/s | McGill Catalog |
+| Period derivative | dP/dt ~ 6.6$\times$10^-12 s/s | McGill Catalog |
 | Characteristic age | ~9000 years | McGill |
 | Distance | ~8.3 kpc (Galactic Center) | VLBI |
 | Luminosity | ~10^35 erg/s (quiescent) | Chandra |
 
-The extreme surface B = 3×10^11 T is approximately 3 orders of magnitude above the quantum critical
-field B_crit = 4.4×10^13 T for electron pair production — placing SGR1745 firmly in the ultra-strong
+The extreme surface B = 3$\times$10^11 T is approximately 3 orders of magnitude above the quantum critical
+field B_crit = 4.4$\times$10^13 T for electron pair production — placing SGR1745 firmly in the ultra-strong
 magnetar regime where standard quantum electrodynamics requires UQFF corrections.
 
 ---
@@ -90,7 +90,7 @@ Computing each of the 12 MUGE terms using the SGR1745-2900 system parameters:
 | aexp_freq | H_z*aDPM/c | ~1e-21 | negligible |
 | fTRZ | 0.1 (constant contribution) | 0.1 | subdominant |
 
-**Total g_MUGE(SGR1745) = 1.773×10^-9 m/s^2** — dominated by afluid_freq.
+**Total g_MUGE(SGR1745) = 1.773$\times$10^-9 m/s^2** — dominated by afluid_freq.
 
 ---
 
@@ -98,7 +98,7 @@ Computing each of the 12 MUGE terms using the SGR1745-2900 system parameters:
 
 ### 3.1 Extreme SCm Fluid Gradients
 
-At B = 3×10^11 T, the magnetar's SCm fluid is in an ultra-dense vortex state. The kinematic
+At B = 3$\times$10^11 T, the magnetar's SCm fluid is in an ultra-dense vortex state. The kinematic
 viscosity nu of the SCm fluid is set by:
 
 $$
@@ -193,7 +193,7 @@ drag prediction (delta_DM above) can be tested against future VLBI timing campai
 
 ## 6. Conclusion
 
-SGR1745-2900's MUGE gravitational acceleration g = 1.773×10^-9 m/s^2 is dominated by the afluid_freq
+SGR1745-2900's MUGE gravitational acceleration g = 1.773$\times$10^-9 m/s^2 is dominated by the afluid_freq
 term (Navier-Stokes SCm fluid coupling) — a direct consequence of the magnetar's extreme magnetic
 field driving intense SCm vortex gradients. This validates the MUGE Cycle 3 prediction that compact
 objects with extreme B-fields operate in the afluid_freq-dominant regime, where Navier-Stokes
@@ -211,7 +211,7 @@ FDPM for compact object volumes, switching dominance from aDPM to afluid_freq.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -230,7 +230,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -304,7 +304,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.170 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -313,13 +313,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

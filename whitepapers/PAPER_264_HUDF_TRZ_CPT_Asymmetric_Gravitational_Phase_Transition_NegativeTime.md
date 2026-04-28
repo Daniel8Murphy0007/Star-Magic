@@ -15,19 +15,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
-**Source:** HUDFGalaxies.cpp → `HUDFTRZNegativeTimeTerm` (Session 72g, UQFF 2.0 Upgrade)
+**Source:** HUDFGalaxies.cpp $\to$ `HUDFTRZNegativeTimeTerm` (Session 72g, UQFF 2.0 Upgrade)
 **Date:** March 2026
 **Series:** Phase 2 Session 72g — §3.x HUDF Clone Fragment Unique Physics Extraction
 
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The Hubble Ultra Deep Field (HUDF) MUGE equation contains a `f_TRZ` factor embedded in the UQFF term
 as `(1 + f_TRZ)`. In all previous UQFF modules this factor has been treated as a small perturbation
-(f_TRZ ≈ 0.01–0.1). The present paper shows that `f_TRZ` is in fact a **CPT-asymmetry parameter**
+(f_TRZ $\approx$ 0.01–0.1). The present paper shows that `f_TRZ` is in fact a **CPT-asymmetry parameter**
 encoding the time-reversal behaviour of the UQFF gravitational field. It defines a sharp phase
 boundary: at f_TRZ = -1, the UQFF field vanishes entirely ("Time-Reversal Zero Point"); at f_TRZ <
 -1, the UQFF field reverses sign, producing a genuine **negative-time anti-gravity regime**.
@@ -46,14 +46,14 @@ correction.
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
 | Average redshift | z_avg | 3.5 | — | HUDF ACS 2003 |
-| Field mass | M₀ | 1012 M_sun | kg | Representative FOV |
-| Cosmic radius | r | 1.3×1011 ly | m | 1.23×1027 m |
+| Field mass | M0 | 1012 M_sun | kg | Representative FOV |
+| Cosmic radius | r | 1.3$\times$1011 ly | m | 1.23$\times$1027 m |
 | Hubble parameter | H(z=3.5) | ~510 km/s/Mpc | s-1 | Friedmann |
 | B-field (primordial) | B | 10-10 | T | IGM estimate |
 | B_crit | B_crit | 1011 | T | Schwinger-like NS threshold |
 | **TRZ factor** | **f_TRZ** | **0.1** | **—** | **UQFF HUDF nominal** |
 | SFR factor | SFR_factor | 1.0 | — | Early-universe |
-| Galaxy interaction | I₀ | 0.05 | — | HUDF FOV |
+| Galaxy interaction | I0 | 0.05 | — | HUDF FOV |
 
 ---
 
@@ -75,7 +75,7 @@ where $U_{g1} = G M(t) / r^2$ is the base DPM-seeded acceleration and $U_{g4} = 
 |-------------|---------------------|-----------------|
 | f_TRZ > 0 | > 1 | CPT-violating: UQFF enhanced above DPM-seeded |
 | f_TRZ = 0 | = 1 | CPT-symmetric: no TRZ correction |
-| -1 < f_TRZ < 0 | 0 < · < 1 | CPT-suppressed: UQFF reduced |
+| -1 < f_TRZ < 0 | 0 < $\cdot$ < 1 | CPT-suppressed: UQFF reduced |
 | **f_TRZ = -1** | **= 0** | **Time-Reversal Zero Point: UQFF vanishes** |
 | f_TRZ < -1 | < 0 | **Negative-time anti-gravity: UQFF reverses sign** |
 
@@ -143,7 +143,7 @@ backwards in the causal direction, producing net repulsion.
 ## 4. HUDF Observational Context
 
 - **HUDF at z = 3.5 (f_TRZ = 0.1):** Mild positive CPT violation. Lookback time ~12 Gyr. The (1 + 0.1) = 1.1 enhancement of UQFF matches the observed excess of high-z galaxy clustering above pure DPM-seeded predictions.
-- **Near-zero limit (f_TRZ → -1):** Would produce a "quiet gravity" zone — observationally nearly DPM-seeded but with no UQFF signature. Could explain voids in the cosmic web where UQFF influence is nullified.
+- **Near-zero limit (f_TRZ $\to$ -1):** Would produce a "quiet gravity" zone — observationally nearly DPM-seeded but with no UQFF signature. Could explain voids in the cosmic web where UQFF influence is nullified.
 - **Anti-gravity zone (f_TRZ < -1):** Relevant to dark energy domination epochs (high-z supernovae acceleration). If f_TRZ tracks the equation of state w: `f_TRZ ≈ -(1 + w)` for w near -1, the TRZ zero-point corresponds exactly to de Sitter expansion (w = -1).
 
 ---
@@ -170,7 +170,7 @@ HUDFGalaxies.cpp UQFF 2.0 Session 72g.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -273,7 +273,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.179 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -284,13 +284,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

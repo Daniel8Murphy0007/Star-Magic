@@ -21,30 +21,30 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 ## Abstract
-Four new `F_U_Bi_i` terms are derived from arXiv high-energy physics papers and integrated into the UQFF Master Buoyancy Equation. F_quark (1.54×$10^{7}$ N) from Belle II |V_cb| measurements is the largest new term. F_neutrino (1 N) from neutrino polarizability data, F_ALP ($10^{4}$ N) from ALP-hadron covariant frameworks, and F_dark (1 N) from FASER dark photon searches complete the new physics bridge. All four terms are negligible compared to F_LENR ($10^{36}$–$10^{39}$ N) in integrated `F_U_Bi_i` calculations, but they represent critical theoretical bridges between Standard Model particle physics and UQFF's beyond-SM framework.
+Four new `F_U_Bi_i` terms are derived from arXiv high-energy physics papers and integrated into the UQFF Master Buoyancy Equation. F_quark (1.54$\times$$10^{7}$ N) from Belle II |V_cb| measurements is the largest new term. F_neutrino (1 N) from neutrino polarizability data, F_ALP ($10^{4}$ N) from ALP-hadron covariant frameworks, and F_dark (1 N) from FASER dark photon searches complete the new physics bridge. All four terms are negligible compared to F_LENR ($10^{36}$–$10^{39}$ N) in integrated `F_U_Bi_i` calculations, but they represent critical theoretical bridges between Standard Model particle physics and UQFF's beyond-SM framework.
 
 ---
 
 ## 1. New Terms — Origins and Derivations
 
 ### 1.1 F_quark — Quark CKM Matrix Coupling (arXiv:2506.15256)
-**Source:** Belle II experiment at KEK, |V_cb| = (39.2 ± 0.7) × $10^{-3}$  
-**Physics:** CKM matrix element coupling b→c quark transition
+**Source:** Belle II experiment at KEK, |V_cb| = (39.2 $\pm$ 0.7) $\times$ $10^{-3}$  
+**Physics:** CKM matrix element coupling b$\to$c quark transition
 
 
     F_quark = k_quark * |V_cb|2
     k_quark = 10^10 N  (UQFF coupling constant for quark sector)
-    |V_cb|  = 39.2 × 10^-3 = 0.0392
+    |V_cb|  = 39.2 $\times$ 10^-3 = 0.0392
     
     F_quark = 10^10 * (0.0392)2
            = 10^10 * 1.54 * 10^-3
            = 1.54 * 10^7 N
 
 
-**Physical significance:** Represents the CKM-mediated quark flavor coupling to vacuum energy. The b→c transition at 1.54×$10^{7}$ N is the largest arXiv-derived correction term, reflecting heavy-flavor vacuum polarization.
+**Physical significance:** Represents the CKM-mediated quark flavor coupling to vacuum energy. The b$\to$c transition at 1.54$\times$$10^{7}$ N is the largest arXiv-derived correction term, reflecting heavy-flavor vacuum polarization.
 
 ### 1.2 F_neutrino — Neutrino Polarizability Coupling (arXiv:2506.14881)
-**Source:** NOMAD, MiniBooNE, SBND, DUNE experiments; neutrino polarizability α_ν  
+**Source:** NOMAD, MiniBooNE, SBND, DUNE experiments; neutrino polarizability $\alpha$_$\nu$  
 **Physics:** Neutrino electromagnetic polarizability mediating vacuum coupling
 
 
@@ -73,8 +73,8 @@ energy. Value 1 N is consistent with SM neutrino mass scale ~eV.
 **Physical significance:** ALPs as dark matter candidates couple to hadronic vacuum. F_ALP = $10^{4}$ N is 2nd largest new term, suggesting ALP-mediated vacuum force above neutrino-scale contributions.
 
 ### 1.4 F_dark — Dark Photon Kinetic Mixing (arXiv:2402.00249)
-**Source:** FASER experiment at LHC; dark photon search, ε < $10^{-5}$  
-**Physics:** Dark sector U(1)' kinetic mixing with SM photon (mixing parameter ε)
+**Source:** FASER experiment at LHC; dark photon search, $\varepsilon$ < $10^{-5}$  
+**Physics:** Dark sector U(1)' kinetic mixing with SM photon (mixing parameter $\varepsilon$)
 
 
     F_dark = k_dark * epsilon2
@@ -84,7 +84,7 @@ energy. Value 1 N is consistent with SM neutrino mass scale ~eV.
     F_dark = 10^10 * (10^-5)2 = 10^10 * 10^-10 = 1 N
 
 
-**Physical significance:** Dark photon kinetic mixing at ε=$10^{-5}$ contributes 1 N to vacuum force, approximately equal to F_neutrino. Consistent with unification of visible-dark sector interactions.
+**Physical significance:** Dark photon kinetic mixing at $\varepsilon$=$10^{-5}$ contributes 1 N to vacuum force, approximately equal to F_neutrino. Consistent with unification of visible-dark sector interactions.
 
 ---
 
@@ -98,8 +98,8 @@ energy. Value 1 N is consistent with SM neutrino mass scale ~eV.
 
 ### Relative Magnitudes (integrand):
 
-    F_LENR    = 1.56–6.16 * 10^36–10^39 N  ← DOMINANT
-    F_quark   = 1.54 * 10^7 N              ← largest arXiv term
+    F_LENR    = 1.56–6.16 * 10^36–10^39 N  $\leftarrow$ DOMINANT
+    F_quark   = 1.54 * 10^7 N              $\leftarrow$ largest arXiv term
     F_ALP     = 1.00 * 10^4 N
     F_torque  = 40.68 N
     F_DE      = 1–10^9 N (varies)
@@ -121,41 +121,41 @@ After adding F_neutrino, the 5 prior systems retain same F_U_Bi values (F_LENR d
 
 | System | `F_U_Bi` Before | `F_U_Bi` After | Change |
 |--------|--------------|-------------|--------|
-| Crab Nebula | 5.30×$10^{208}$ N | 5.30×$10^{208}$ N | None (F_neutrino negligible) |
-| Galactic Center | -8.31×$10^{211}$ N | -8.31×$10^{211}$ N | None |
-| NGC 5044 | 5.20×$10^{211}$ N | 5.20×$10^{211}$ N | None |
-| MACS J0416 | 1.40×$10^{212}$ N | 1.40×$10^{212}$ N | None |
-| Eagle Nebula | 2.65×$10^{49}$ N | 2.65×$10^{49}$ N | None |
+| Crab Nebula | 5.30$\times$$10^{208}$ N | 5.30$\times$$10^{208}$ N | None (F_neutrino negligible) |
+| Galactic Center | -8.31$\times$$10^{211}$ N | -8.31$\times$$10^{211}$ N | None |
+| NGC 5044 | 5.20$\times$$10^{211}$ N | 5.20$\times$$10^{211}$ N | None |
+| MACS J0416 | 1.40$\times$$10^{212}$ N | 1.40$\times$$10^{212}$ N | None |
+| Eagle Nebula | 2.65$\times$$10^{49}$ N | 2.65$\times$$10^{49}$ N | None |
 
 ---
 
 ## 4. arXiv Papers in This Batch (Complete List)
 
 ### Batch 1 (June 19 08:03 PM, L1250-1400):
-- **2506.15256** (Belle II |V_cb|=39.2×$10^{-3}$) → **F_quark = 1.54×$10^{7}$ N**
-- 2506.15347 (LHCb LFV B→K*τe, no signal — tested, no new term)
+- **2506.15256** (Belle II |V_cb|=39.2$\times$$10^{-3}$) $\to$ **F_quark = 1.54$\times$$10^{7}$ N**
+- 2506.15347 (LHCb LFV B$\to$K*$\tau$e, no signal — tested, no new term)
 - 2506.15390 (ECFA Higgs factory road map — observational only)
-- 2506.15515 (ATLAS VLQ T,Y quarks κ=0.22-0.52 — resonance info)
+- 2506.15515 (ATLAS VLQ T,Y quarks $\kappa$=0.22-0.52 — resonance info)
 - 2506.15533 (assumed HEP collider study)
 
 ### Batch 2 (June 19 09:47 PM, L1600-1760):
-- **2506.14881** (neutrino polarizability NOMAD/MiniBooNE/SBND/DUNE) → **F_neutrino = 1 N**
+- **2506.14881** (neutrino polarizability NOMAD/MiniBooNE/SBND/DUNE) $\to$ **F_neutrino = 1 N**
 - 2506.14989 (ALICE QGP Pb-Pb 5.36 TeV — QCD medium dynamics observed)
 - 2506.15046 (comagnetometer exotic spin-dep couplings — axion-nucleon bounds)
-- 2506.15164 (ATLAS H→bb̄ 139 fb-1 — Higgs coupling)
+- 2506.15164 (ATLAS H$\to$bb̄ 139 fb-1 — Higgs coupling)
 - 2506.15245 (tau lepton large-scale dipole moments photon fusion)
 - 2506.15306 (new physics at neutrino facilities — facility survey)
 
 ### Batch 3 (June 20 07:35 AM, L2380-2480):
-- 2506.15428 (Λ_c(2940) EM probes D*N molecular state radiative decay)
-- 2506.15445 (μLHC antimuon-proton collider 5.3 TeV J-PARC)
-- **2506.15637** (ALP-hadron covariant interaction framework) → **F_ALP = $10^{4}$ N**
+- 2506.15428 ($\Lambda$_c(2940) EM probes D*N molecular state radiative decay)
+- 2506.15445 ($\mu$LHC antimuon-proton collider 5.3 TeV J-PARC)
+- **2506.15637** (ALP-hadron covariant interaction framework) $\to$ **F_ALP = $10^{4}$ N**
 - 2412.04357, 2412.10141, 2503.05679 (not accessible — assumed BSM)
 
 ### Batch 4 (June 20 08:03 AM, L2480-2610):
 - 2506.13588 (W/Z longitudinal polarization EWSB BSM)
-- **2402.00249** (FASER dark photon search ε<$10^{-5}$) → **F_dark = 1 N**
-- 2410.11367 (BaBar/Belle II ALPs in B→K(*)νν g_a<$10^{-3}$)
+- **2402.00249** (FASER dark photon search $\varepsilon$<$10^{-5}$) $\to$ **F_dark = 1 N**
+- 2410.11367 (BaBar/Belle II ALPs in B$\to$K(*)$\nu$$\nu$ g_a<$10^{-3}$)
 - 2412.03677, 2502.19817, 2503.01607 (not accessible)
 - 2506.02450 (ILC exotic W decays dark sector)
 
@@ -163,7 +163,7 @@ After adding F_neutrino, the 5 prior systems retain same F_U_Bi values (F_LENR d
 
 ## 5. Conclusions
 Four new F_U_Bi_i terms bridge UQFF to Standard Model particle physics:
-- **F_quark** (1.54×$10^{7}$ N): Heavy-flavor CKM vacuum coupling, largest SM bridge
+- **F_quark** (1.54$\times$$10^{7}$ N): Heavy-flavor CKM vacuum coupling, largest SM bridge
 - **F_ALP** ($10^{4}$ N): Axion dark matter hadronic coupling
 - **F_neutrino** (1 N): Neutrino electromagnetic polarizability
 - **F_dark** (1 N): Dark photon kinetic mixing
@@ -185,7 +185,7 @@ Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated June 19–20, 20
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -204,7 +204,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -252,7 +252,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -390,7 +390,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.161 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

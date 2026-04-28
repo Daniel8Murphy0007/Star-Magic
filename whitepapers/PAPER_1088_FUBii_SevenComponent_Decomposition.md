@@ -23,7 +23,7 @@ $$F_{U,Bi,i} = F_{\text{phonon}} + F_{\text{inflation}} + F_{\text{BCS}} + F_{\t
 
 Each sector contributes a fractional share to the total buoyancy
 budget measured against the base gravitational acceleration
-$g_{	ext{base}} = μ_s∇(M_s/r)$.
+$g_{	ext{base}} = \mu_s\nabla(M_s/r)$.
 
 ## §1 Base Gravity and Component Definitions
 

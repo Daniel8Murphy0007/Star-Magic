@@ -17,13 +17,13 @@ sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 
 We present the variational derivation of F_U_Bi_i from the UQFF Lagrangian. Starting from L_UQFF = T
 - V_grav + V_buoy + L_phonon, the Euler-Lagrange equation delta_S/delta_phi = 0 yields the master
-buoyancy equation of motion: d^2r/dt^2 = -μ_s∇(M_s/r) + g_buoy(r,t) + g_phonon(r,Gamma). The variational
+buoyancy equation of motion: d^2r/dt^2 = -$\mu$_s$\nabla$(M_s/r) + g_buoy(r,t) + g_phonon(r,Gamma). The variational
 approach confirms self-consistency with the 6-layer master equation (PAPER_979) and provides a
 Hamiltonian formulation H = p^2/(2m) + V_eff(r).
 
 ## 1. Key Equations
 
-- $\frac{\delta S}{\delta \phi} = 0 \implies \ddot{r} = -μ_s∇(M_s/r) + g_{\text{buoy}} + g_{\text{phonon}}$
+- $\frac{\delta S}{\delta \phi} = 0 \implies \ddot{r} = -\mu_s\nabla(M_s/r) + g_{\text{buoy}} + g_{\text{phonon}}$
 - Hamiltonian: $H = p^2/(2m) + V_{\text{eff}}(r)$
 
 ## 2. Results
@@ -47,7 +47,7 @@ CondensedPhysics2.py, class BuoyancyLagrangianEOMCalculator.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LAG-S225 -->
 

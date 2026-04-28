@@ -44,20 +44,20 @@ underpins those proofs.
 The Compressed UQFF Equation sums four gravitational contributions across 26 layers:
 
 $$
-g_compressed = Σ(i=1..26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]
+g_compressed = \Sigma(i=1..26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]
 $$
 
 ### 1.1 Ug1: Magnetic Dipole Coupling
 
 $$
-Ug1_i = (f_UA' · f_SCm · R_EB)2 / r2 · ν_THz
+Ug1_i = (f_UA' \cdot f_SCm \cdot R_EB)2 / r2 \cdot \nu_THz
 $$
 
 **Dimensional verification:**
-- (f_UA' · f_SCm · R_EB)2 → [dimensionless]2 = [dimensionless]
-- 1/r2 → [m-2]
-- ν_THz → [Hz] = [s-1]
-- Combined: [m-2 · s-1] — requires normalization by Evac/c chain → [m/s2] PASS
+- (f_UA' $\cdot$ f_SCm $\cdot$ R_EB)2 $\to$ [dimensionless]2 = [dimensionless]
+- 1/r2 $\to$ [m-2]
+- $\nu$_THz $\to$ [Hz] = [s-1]
+- Combined: [m-2 $\cdot$ s-1] — requires normalization by Evac/c chain $\to$ [m/s2] PASS
 
 Ug1 dominates at small r (near-field magnetic dipole behavior). The THz frequency
 couples the DPM proportion pair to the magnetic field geometry.
@@ -65,29 +65,29 @@ couples the DPM proportion pair to the magnetic field geometry.
 ### 1.2 Ug2: Charge-Reactivity Decay
 
 $$
-Ug2_i = ρ_SCm · M / r · exp(-κt)
+Ug2_i = \rho_SCm \cdot M / r \cdot exp(-\kappat)
 $$
 
 **Dimensional verification:**
-- ρ_SCm → [kg/m3]
-- M/r → [kg/m]
-- exp(-κt) → [dimensionless]
-- Combined: [kg2/(m4)] — requires G/c2 normalization → [m/s2] PASS
+- $\rho$_SCm $\to$ [kg/m3]
+- M/r $\to$ [kg/m]
+- exp(-$\kappa$t) $\to$ [dimensionless]
+- Combined: [kg2/(m4)] — requires G/c2 normalization $\to$ [m/s2] PASS
 
-Ug2 carries the SCm reactivity decay via κ = 0.0005/day, linking gravitational
+Ug2 carries the SCm reactivity decay via $\kappa$ = 0.0005/day, linking gravitational
 coupling to the superconducting condensate lifetime.
 
 ### 1.3 Ug3: String Rotation
 
 $$
-Ug3_i = (θ / 2π) · f_rotor · ω
+Ug3_i = (\theta / 2\pi) \cdot f_rotor \cdot \omega
 $$
 
 **Dimensional verification:**
-- θ/2π → [dimensionless] (angular fraction)
-- f_rotor → [Hz] = [s-1]
-- ω → [rad/s]
-- Combined: [s-2] — requires length normalization → [m/s2] PASS
+- $\theta$/2$\pi$ $\to$ [dimensionless] (angular fraction)
+- f_rotor $\to$ [Hz] = [s-1]
+- $\omega$ $\to$ [rad/s]
+- Combined: [s-2] — requires length normalization $\to$ [m/s2] PASS
 
 Ug3 introduces angular dependence via the rotor frequency, connecting to the
 vortex structure of the vacuum condensate.
@@ -95,13 +95,13 @@ vortex structure of the vacuum condensate.
 ### 1.4 Ug4: Vacuum Concentration
 
 $$
-Ug4_i = ρ_vac · exp(-r / λ_vac)
+Ug4_i = \rho_vac \cdot exp(-r / \lambda_vac)
 $$
 
 **Dimensional verification:**
-- ρ_vac → [kg/m3]
-- exp(-r/λ_vac) → [dimensionless]
-- Combined: [kg/m3] — requires G·L normalization → [m/s2] PASS
+- $\rho$_vac $\to$ [kg/m3]
+- exp(-r/$\lambda$_vac) $\to$ [dimensionless]
+- Combined: [kg/m3] — requires G$\cdot$L normalization $\to$ [m/s2] PASS
 
 Ug4 provides the exponential vacuum concentration profile, dominant at large r
 where the ISM-to-void transition occurs.
@@ -113,32 +113,32 @@ where the ISM-to-void transition occurs.
 The Master UQFF Resonance Equation adds 12 resonance terms to the compressed baseline:
 
 $$
-g_resonance = g_compressed + Σ(k=1..12) a_k
+g_resonance = g_compressed + \Sigma(k=1..12) a_k
 $$
 
 ### 2.1 Term Inventory
 
 | # | Term | Expression | Units |
 |---|------|-----------|-------|
-| 1 | aDPM | f_DPM · Evac_neb / Evac_ISM / c / γ | m/s2 PASS |
-| 2 | aTHz | ν_THz · Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 1 | aDPM | f_DPM $\cdot$ Evac_neb / Evac_ISM / c / $\gamma$ | m/s2 PASS |
+| 2 | aTHz | $\nu$_THz $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 | 3 | avac_diff | (Evac_neb - Evac_ISM) / Evac_ISM / c | m/s2 PASS |
-| 4 | asuper_freq | f_super · Evac_neb / Evac_ISM / c | m/s2 PASS |
-| 5 | aaether_res | f_aether · Evac_neb / Evac_ISM / c | m/s2 PASS |
-| 6 | Ug4i | ρ_vac · exp(-r/λ) · G·L/c2 | m/s2 PASS |
-| 7 | aquantum_freq | f_quantum · Evac_neb · aDPM / Evac_ISM / c | m/s2 PASS |
-| 8 | aAether_freq | `f_aether_2` · Evac_neb / Evac_ISM / c | m/s2 PASS |
-| 9 | afluid_freq | f_fluid · Evac_neb / Evac_ISM / c | m/s2 PASS |
-| 10 | Osc_term | A · sin(ωt + φ) · Evac_neb / c | m/s2 PASS |
-| 11 | aexp_freq | f_exp · Evac_neb / Evac_ISM / c | m/s2 PASS |
-| 12 | fTRZ | `f_TRZ_val` · Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 4 | asuper_freq | f_super $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 5 | aaether_res | f_aether $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 6 | Ug4i | $\rho$_vac $\cdot$ exp(-r/$\lambda$) $\cdot$ G$\cdot$L/c2 | m/s2 PASS |
+| 7 | aquantum_freq | f_quantum $\cdot$ Evac_neb $\cdot$ aDPM / Evac_ISM / c | m/s2 PASS |
+| 8 | aAether_freq | `f_aether_2` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 9 | afluid_freq | f_fluid $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 10 | Osc_term | A $\cdot$ sin($\omega$t + $\phi$) $\cdot$ Evac_neb / c | m/s2 PASS |
+| 11 | aexp_freq | f_exp $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 12 | fTRZ | `f_TRZ_val` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 
 ### 2.2 Normalization Chain
 
 All 12 terms achieve m/s2 through the universal normalization:
 
 $$
-a_k = f_k × (Evac_neb / Evac_ISM) / c
+a_k = f_k \times (Evac_neb / Evac_ISM) / c
 $$
 
 Where:
@@ -152,7 +152,7 @@ Where:
 The 26-term cosine series modulates the baseline:
 
 $$
-R(t) = Σ(i=1..26) cos(ω_res · i/26 · t) · [SSq]^i
+R(t) = \Sigma(i=1..26) cos(\omega_res \cdot i/26 \cdot t) \cdot [SSq]^i
 $$
 
 **Convergence:** The [SSq]^i = 0.57^i weighting ensures:
@@ -171,10 +171,10 @@ model (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq).
 | Proof | PAPER_376 Statement | This Paper's Verification |
 |-------|--------------------|----|
 | 1 (DPM-seeded) | g_N = 5.93e-3 m/s2 at 1 AU | All Ug terms sum to g_N when t=0, B=0 PASS |
-| 2 (Boundaries) | r→∞: Λc2/3; t→0: μ_s∇(M_s/r) | Ug4 → 0 (r→∞), Ug2 → max (t→0) PASS |
-| 3 (Resonance) | ω_res = 1.445e-17 rad/s | R(t) peaks at t_Hubble harmonics PASS |
+| 2 (Boundaries) | r$\to$$\infty$: $\Lambda$c2/3; t$\to$0: $\mu$_s$\nabla$(M_s/r) | Ug4 $\to$ 0 (r$\to$$\infty$), Ug2 $\to$ max (t$\to$0) PASS |
+| 3 (Resonance) | $\omega$_res = 1.445e-17 rad/s | R(t) peaks at t_Hubble harmonics PASS |
 | 4 (Meissner) | (1-B/B_crit) and exp(-B/B_crit) | Both forms verified dimensionless PASS |
-| 5 (Empirical) | Chandra magnetar, EHT Sgr A* | κ decay in Ug2 matches flare window PASS |
+| 5 (Empirical) | Chandra magnetar, EHT Sgr A* | $\kappa$ decay in Ug2 matches flare window PASS |
 
 ---
 
@@ -203,7 +203,7 @@ harmonics of the cosmic resonance are observationally significant.
 This calculator operates as a stateless physics calculator within the CP4 IPC chain.
 All parameters are received via the dataset dictionary from the source2.cpp principal
 GUI pipeline. No astronomical data is hardcoded; all system-specific values come from
-the APIFetch.py → bodies_*.csv data flow.
+the APIFetch.py $\to$ bodies_*.csv data flow.
 
 **Significance:** Extended dimensional analysis for Compressed and Master Resonance
 UQFF equations. Complements PAPER_376 formal proofs. Verifies Ug1–Ug4 dimensional
@@ -292,7 +292,7 @@ $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.10 | PASS Consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in Ug2 exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in Ug2 exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in R(t) convergence | PASS Canonical |
 
 ---
@@ -305,7 +305,7 @@ $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -324,7 +324,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -361,7 +361,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -409,13 +409,13 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

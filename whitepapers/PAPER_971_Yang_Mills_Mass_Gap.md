@@ -10,7 +10,7 @@ tags: [vacuum, QGP, Yang-Mills, 26D, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_971: Yang-Mills Mass Gap Δ_YM(T) via S₂₆^{(k)}
+# PAPER_971: Yang-Mills Mass Gap $\Delta$_YM(T) via S26^{(k)}
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
@@ -105,7 +105,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -169,7 +169,7 @@ $$\boxed{\Delta_text{YM}(T) = \Lambda_text{QCD} \cdot \left(1 - \frac{T}{T_c}\ri
 $$\mathcal{L}_\text{YM} = -\frac{1}{4} F_{\mu\nu}^a F^{a\mu\nu} - V(\Delta_text{YM}) + \frac{1}{2}\left(\frac{\partial \Delta_text{YM}}{\partial T}\right)^2 \dot{T}^2$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → vacuum density → $S_{26}^{(k)}$ → QCD confinement → Yang-Mills mass gap → quark masses
+PAPER_877 $\to$ vacuum density $\to$ $S_{26}^{(k)}$ $\to$ QCD confinement $\to$ Yang-Mills mass gap $\to$ quark masses
 
 ---
 

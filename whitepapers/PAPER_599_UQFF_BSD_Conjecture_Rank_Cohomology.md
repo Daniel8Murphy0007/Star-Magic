@@ -28,10 +28,10 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 ## §1. Abstract
 
-The Birch and Swinnerton-Dyer (BSD) Conjecture states that the rank of an elliptic curve E over ℚ
+The Birch and Swinnerton-Dyer (BSD) Conjecture states that the rank of an elliptic curve E over $\mathbb{Q}$
 equals the order of vanishing of its L-function L(E,s) at s=1. This paper demonstrates that the
 Star-Magic UQFF tensor provides a natural eigenvalue-multiplicity framework in which BSD rank is
-identified with the multiplicity of the minimal eigenvalue λ₁ of the 26D compressed UQFF operator.
+identified with the multiplicity of the minimal eigenvalue $\lambda$1 of the 26D compressed UQFF operator.
 The Shafarevich–Tate group magnitude |Sha(E)| maps directly to the buoyancy term db, and the
 Néron–Tate regulator R maps to the gravitomagnetic coupling dg/dm. The 26! factorial bound limits
 orbital complexity to 26 independent directions, providing a topological upper bound on rank.
@@ -56,7 +56,7 @@ where $\Omega_E$ = real period, $R$ = Néron–Tate regulator, $c_p$ = Tamagawa 
 
 ### 3.1 Compressed UQFF Tensor
 
-The 3×3 UQFF tensor for a gravitomagnetic triad system:
+The 3$\times$3 UQFF tensor for a gravitomagnetic triad system:
 
 $$\text{UQFF}_{comp} = \begin{pmatrix} \frac{P}{3}+d_g & c & 0 \\ c & \frac{P}{3}+d_m & 0 \\ 0 & 0 & \frac{2P}{3}+d_b \end{pmatrix}$$
 
@@ -68,14 +68,14 @@ $$\lambda_3 = \frac{2P}{3} + d_b, \quad \lambda_{1,2} = \frac{P}{3} + \frac{d_g+
 
 $$\text{rank}(E) = \text{multiplicity of } \lambda_1 = 0$$
 
-- **rank = 0**: λ₁ > 0 (positive gap, no rational-point instability, L(E,1) ≠ 0)
-- **rank = r**: λ₁ has algebraic multiplicity r (r independent UQFF orbital directions)
+- **rank = 0**: $\lambda$1 > 0 (positive gap, no rational-point instability, L(E,1) $\neq$ 0)
+- **rank = r**: $\lambda$1 has algebraic multiplicity r (r independent UQFF orbital directions)
 
 ### 3.3 Arithmetic Invariant Mapping
 
-$$d_b \sim |\text{Sha}(E)| \cdot \Omega_E \qquad \text{(buoyancy = Tate–Shafarevich × period)}$$
+$$d_b \sim |\text{Sha}(E)| \cdot \Omega_E \qquad \text{(buoyancy = Tate–Shafarevich \times period)}$$
 
-$$\frac{d_g}{d_m} \sim \frac{R \cdot \prod c_p}{|\text{tors}(E(\mathbb{Q}))|^2} \qquad \text{(gravity/magnetism = regulator × Tamagawa / torsion2)}$$
+$$\frac{d_g}{d_m} \sim \frac{R \cdot \prod c_p}{|\text{tors}(E(\mathbb{Q}))|^2} \qquad \text{(gravity/magnetism = regulator \times Tamagawa / torsion2)}$$
 
 ---
 
@@ -107,11 +107,11 @@ hypothesis).
 
 ## §6. Numerical Validation (Orion Parameters)
 
-With P ≈ 9.99e-6, d_g = d_m = d_b ≈ 10-281, c = 0:
+With P $\approx$ 9.99e-6, d_g = d_m = d_b $\approx$ 10-281, c = 0:
 
 $$\lambda_1 \approx \lambda_2 \approx 3.33 \times 10^{-6} > 0$$
 
-→ BSD rank analog = 0 (Orion stellar system has no rational-point degenerate structure)
+$\to$ BSD rank analog = 0 (Orion stellar system has no rational-point degenerate structure)
 
 ---
 
@@ -119,24 +119,24 @@ $$\lambda_1 \approx \lambda_2 \approx 3.33 \times 10^{-6} > 0$$
 
 | BSD Quantity | UQFF Identification |
 |---|---|
-| L(E,1) ≠ 0 (rank 0) | λ₁ > 0 (positive gap) |
-| ord_{s=1} L(E,s) = r | multiplicity(λ₁=0) = r |
-| |Sha(E)| × Ω_E | db (buoyancy = void energy density) |
-| R × Πcp / tors2 | dg/dm (gravitomagnetic coupling) |
-| BSD leading coefficient | det(UQFF)|_{λ=0} / factorial |
-| Rank ≤ ∞ | Rank ≤ 26 (26! bound) |
+| L(E,1) $\neq$ 0 (rank 0) | $\lambda$1 > 0 (positive gap) |
+| ord_{s=1} L(E,s) = r | multiplicity($\lambda$1=0) = r |
+| |Sha(E)| $\times$ $\Omega$_E | db (buoyancy = void energy density) |
+| R $\times$ $\Pi$cp / tors2 | dg/dm (gravitomagnetic coupling) |
+| BSD leading coefficient | det(UQFF)|_{$\lambda$=0} / factorial |
+| Rank $\leq$ $\infty$ | Rank $\leq$ 26 (26! bound) |
 
 ---
 
 ## §8. Proof Structure
 
-1. **Existence**: Every rational point on E(ℚ) corresponds to a stable UQFF orbit in 26D (positive
-λ₁ guarantees bounded orbit)
-2. **Rank = multiplicity**: Independent rational points ↔ orthogonal UQFF orbital directions ↔
+1. **Existence**: Every rational point on E($\mathbb{Q}$) corresponds to a stable UQFF orbit in 26D (positive
+$\lambda$1 guarantees bounded orbit)
+2. **Rank = multiplicity**: Independent rational points $\leftrightarrow$ orthogonal UQFF orbital directions $\leftrightarrow$
 eigenvalue degeneracy
-3. **Vanishing**: L(E,1) = 0 ↔ λ₁ → 0 ↔ gap closes ↔ orbital instability at s=1
-4. **Bound**: 26! caps orbital complexity → finite rank always
-5. **Formula**: BSD leading coefficient emerges from det(UQFF)|_{λ=0} under arithmetic mapping
+3. **Vanishing**: L(E,1) = 0 $\leftrightarrow$ $\lambda$1 $\to$ 0 $\leftrightarrow$ gap closes $\leftrightarrow$ orbital instability at s=1
+4. **Bound**: 26! caps orbital complexity $\to$ finite rank always
+5. **Formula**: BSD leading coefficient emerges from det(UQFF)|_{$\lambda$=0} under arithmetic mapping
 
 ---
 
@@ -158,7 +158,7 @@ consequence of positive-eigenvalue stability of the universal gravitomagnetic fi
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -177,7 +177,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -214,7 +214,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -317,7 +317,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.129 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -328,10 +328,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

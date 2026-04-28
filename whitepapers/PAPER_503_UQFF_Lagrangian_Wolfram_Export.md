@@ -64,7 +64,7 @@ $MinPrecision = 50;           (* Minimum 50-decimal-place guarantee *)
 The `ComplexityFunction` passed to `FullSimplify` ranks expressions by:
 1. Total symbol count (favors shorter)
 2. Presence of contracted indices (favors tensors over components)
-3. Presence of UQFF calibrated constants κ, [SSq], H_SCm
+3. Presence of UQFF calibrated constants $\kappa$, [SSq], H_SCm
 
 ---
 
@@ -101,7 +101,7 @@ Step 6: Print verdict
 | Outcome | Meaning | Action |
 |---------|---------|--------|
 | Result = 0 | Full cancellation — field theory closes | Publish: UQFF proven |
-| Result = small constant | Near-unification with calibration needed | Adjust κ, [SSq], H_SCm |
+| Result = small constant | Near-unification with calibration needed | Adjust $\kappa$, [SSq], H_SCm |
 | Result = reduced tensor | Partial simplification | Expand remaining source files |
 | Timeout / memory OOM | Expression too large for current terms | Split by sector, simplify each |
 
@@ -158,7 +158,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -259,7 +259,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.072 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -270,14 +270,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| π = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | π exact (transcendental) | NIST | ~100% (representation) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
-| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
-| Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | PASS Target value |
+| $\pi$ = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | $\pi$ exact (transcendental) | NIST | ~100% (representation) |
+| $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
+| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
+| Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
-**New physics claim:** UQFF derives π = 3.14159265... (PI co-resonance) from vacuum buoyancy
+**New physics claim:** UQFF derives $\pi$ = 3.14159265... (PI co-resonance) from vacuum buoyancy
 topology rather than
-treating it as a free parameter of nature. A derivation that achieves ≥~100% (representation)
+treating it as a free parameter of nature. A derivation that achieves $\geq$~100% (representation)
 agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.

@@ -29,7 +29,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper integrates the V838 Monocerotis (V838 Mon) Hubble light echo dataset into the Unified Quantum Field Superconductive Framework (UQFF). A master universal gravity equation is derived that models the light echo's evolving intensity as a function of time, incorporating gravitational perturbation (via $U_{g1}$), time-reversal correction ($f_{TRZ}$), and Universal Aether density ratio ($\rho_{[UA]}/\rho_{[SCm]}$). The UQFF predicts a **12.1× amplification** of classical light echo intensity, providing a testable deviation from the standard astrophysical model.
+This paper integrates the V838 Monocerotis (V838 Mon) Hubble light echo dataset into the Unified Quantum Field Superconductive Framework (UQFF). A master universal gravity equation is derived that models the light echo's evolving intensity as a function of time, incorporating gravitational perturbation (via $U_{g1}$), time-reversal correction ($f_{TRZ}$), and Universal Aether density ratio ($\rho_{[UA]}/\rho_{[SCm]}$). The UQFF predicts a **12.1$\times$ amplification** of classical light echo intensity, providing a testable deviation from the standard astrophysical model.
 
 ---
 
@@ -41,11 +41,11 @@ This paper integrates the V838 Monocerotis (V838 Mon) Hubble light echo dataset 
 |-----------|-------|
 | Star | V838 Monocerotis (V838 Mon) |
 | Constellation | Monoceros |
-| Distance | 20,000 light-years = 1.892×1020 m |
+| Distance | 20,000 light-years = 1.892$\times$1020 m |
 | Outburst year | 2002 |
-| Peak luminosity | 600,000 L_Sun ≈ 2.3×1038 W |
+| Peak luminosity | 600,000 L_Sun $\approx$ 2.3$\times$1038 W |
 | Hubble instrument | Advanced Camera for Surveys (ACS) |
-| Key observation | October 2004 (t ≈ 2.5 years post-outburst) |
+| Key observation | October 2004 (t $\approx$ 2.5 years post-outburst) |
 | Filters | Blue, green, infrared (full-color composite) |
 | Documentation | "Light continues to echo three years after stellar outburst" |
 
@@ -136,7 +136,7 @@ $$U_{g1}(ct,t) = k_1 \cdot \mu_s \cdot \frac{M_s}{(ct)^2} \cdot e^{-\alpha t} \c
 
 $$\text{UQFF amplification} = (1 + f_{TRZ}) \times \left(1 + \frac{\rho_{[UA]}}{\rho_{[SCm]}}\right) = 1.1 \times 11 = \mathbf{12.1\times}$$
 
-This 12.1× amplification over the classical prediction is a **testable UQFF deviation** observable
+This 12.1$\times$ amplification over the classical prediction is a **testable UQFF deviation** observable
 with sufficiently sensitive instruments.
 
 ---
@@ -149,7 +149,7 @@ with sufficiently sensitive instruments.
 |---------|---------------|
 | 3D dust mapping from light echo | Validates $\delta_{\text{def}}$ for cosmic perturbations |
 | Apparent contraction = negentropic reversal | Validates $f_{TRZ} = 0.1$ at cosmic scale |
-| Aether density ratio × 10 amplification | Validates $\rho_{[UA]}/\rho_{[SCm]}$ ratio |
+| Aether density ratio $\times$ 10 amplification | Validates $\rho_{[UA]}/\rho_{[SCm]}$ ratio |
 | Magnetic field alignment of dust (hypothesized) | Opens $U_m$ investigation pathway |
 
 ### 5.2 Advances to the UQFF
@@ -164,7 +164,7 @@ now verified at stellar scale
 
 - Hubble dataset lacks THz or magnetic field measurements — combine with q-scope data to bridge scales
 - Model calibration required: $k_1$, $\beta$, $\sigma_{\text{scatter}}$, $\rho_0$ from observational fitting
-- The 12.1× amplification requires ultra-precise photometry to distinguish from calibration uncertainty
+- The 12.1$\times$ amplification requires ultra-precise photometry to distinguish from calibration uncertainty
 
 ---
 
@@ -233,7 +233,7 @@ parameterized by luminosity, distance, and UQFF field variables.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -252,7 +252,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -376,7 +376,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.088 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

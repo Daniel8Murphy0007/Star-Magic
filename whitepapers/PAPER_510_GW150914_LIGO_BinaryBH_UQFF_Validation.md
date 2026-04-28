@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 The first direct detection of gravitational waves from a binary black hole (BBH) merger (GW150914,
 LIGO) provides a rigorous test of the PI Co-Resonance Field (PCR) framework. The BBH system (36 + 29
@@ -33,13 +33,13 @@ to the gravitational wave strain.
 
 | Parameter | Value |
 |-----------|-------|
-| Component masses | M₁=36 MM_sun, M₂=29 MM_sun |
+| Component masses | M1=36 MM_sun, M2=29 MM_sun |
 | Final BH mass | M_f=62 MM_sun (3 MM_sun radiated) |
 | Chirp mass | ℳ = 28.3 MM_sun |
-| Peak frequency | f_peak ≈ 150 Hz |
-| Event duration | τ ≈ 0.4 s |
+| Peak frequency | f_peak $\approx$ 150 Hz |
+| Event duration | $\tau$ $\approx$ 0.4 s |
 | Luminosity distance | d_L = 410 Mpc |
-| GW strain | h_max ≈ 1×10-21 |
+| GW strain | h_max $\approx$ 1$\times$10-21 |
 
 ---
 
@@ -71,7 +71,7 @@ The 1.1% PCR correction is within current detector systematic uncertainties (LIG
 
 ## 4. Validation
 - C++ term: `SOURCE179::GW150914_PCR_Term` registered as `GW150914_PCRAmplitude`
-- CP2 class: `GW150914PCRCalculator` → returns PCR amplitude, k_PCR, F_U correction
+- CP2 class: `GW150914PCRCalculator` $\to$ returns PCR amplitude, k_PCR, F_U correction
 - LIGO open data: LOSC gravitational wave frame GW150914 — https://losc.ligo.org
 
 ---
@@ -180,7 +180,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.163 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -191,12 +191,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR × (1 + κ/(4π2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
-| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR × H_SCm = 28.3 × 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 ± 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
-| GW frequency f_peak | UQFF: f_peak = c3/(π G ℳ) × (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
-| Gravitational wave speed bound | UQFF k_η deviation: 10-226 m/s above c | GW170817 + γ-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
+| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR $\times$ (1 + $\kappa$/(4$\pi$2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
+| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR $\times$ H_SCm = 28.3 $\times$ 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 $\pm$ 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
+| GW frequency f_peak | UQFF: f_peak = c3/($\pi$ G ℳ) $\times$ (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
+| Gravitational wave speed bound | UQFF k_$\eta$ deviation: 10-226 m/s above c | GW170817 + $\gamma$-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
 
-**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a κ-dependent phase to the
+**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a $\kappa$-dependent phase to the
 GW chirp signal, shifting the merger frequency by ~0.3 Hz at 150 Hz. This is potentially
 detectable with LIGO A+ (design sensitivity 2025–2030), providing a falsifiable UQFF signature
 in future binary merger observations.

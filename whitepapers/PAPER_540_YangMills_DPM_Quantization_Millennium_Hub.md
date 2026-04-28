@@ -12,7 +12,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 # PAPER_540 — Yang-Mills DPM Quantization: Millennium Hub
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **Author:** Daniel T. Murphy
@@ -35,7 +35,7 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 This Hub paper presents the **UQFF approach to the four Millennium Prize problems**
 most naturally connected to the 26D framework: **Yang-Mills mass gap**,
-**Riemann Hypothesis crossings**, **P ≠ NP** exponential separation, and
+**Riemann Hypothesis crossings**, **P $\neq$ NP** exponential separation, and
 **Navier-Stokes regularity** (extended from PAPER_529). It also serves as the
 hub for Session 144 calculators (#131–#134), synthesising their results.
 
@@ -90,7 +90,7 @@ true value $14.135$.
 
 ---
 
-## §4 — P ≠ NP: Exponential Separation
+## §4 — P $\neq$ NP: Exponential Separation
 
 The 26D phase space contains $2^{26} = 67\,108\,864$ vertices.
 Exhaustive NP verification requires visiting all $2^{26}$ vertices.
@@ -101,7 +101,7 @@ $$\frac{2^{26}}{26^4} = \frac{67\,108\,864}{456\,976} \approx 146.9$$
 
 This factor of $\sim 147$ represents the **minimum separation** between the
 NP verification set and the P-reachable set within the 26D UQFF lattice.
-Since the separation is $> 1$ and grows exponentially with dimension, P ≠ NP
+Since the separation is $> 1$ and grows exponentially with dimension, P $\neq$ NP
 within the UQFF lattice model.
 
 ---
@@ -138,7 +138,7 @@ Navier-Stokes result to include the full DPM quantization correction.
 | $\Delta_text{YM} = P/(3Z)$ | Yang-Mills mass gap |
 | $q_e = 2\pi n$ | DPM charge quantization |
 | $\text{Im}(\rho_n) \approx (2\pi n/\ln 26) \cdot Z^n$ | Riemann zero crossings |
-| $2^{26} / 26^4 \approx 147$ | P ≠ NP separation factor |
+| $2^{26} / 26^4 \approx 147$ | P $\neq$ NP separation factor |
 | $\|u\|_{H^1} \leq C \cdot \Delta_text{YM} \cdot Z$ | NS-DPM regularity bound |
 
 ---
@@ -163,14 +163,14 @@ result = calc.compute()
 - Wilson, K.G. (1974): Confinement of quarks, Phys. Rev. D 10, 2445
 - Clay Math Institute: Millennium Prize Problems (2000)
 - PAPER_529: Navier-Stokes UQFF regularity (Session 142)
-- PAPER_535: VDS-DVP-BH Number Systems Hub (Z₂₆ definition)
+- PAPER_535: VDS-DVP-BH Number Systems Hub (Z26 definition)
 - Riemann, B. (1859): Über die Anzahl der Primzahlen unter einer gegebenen Größe
 - Lattice QCD review (FLAG Collaboration 2023): Glueball mass spectrum
 - grok_share_dbd886661cd.txt: Session 144 source document
 
 ---
 
-## ×10  Extended Comparative Analysis
+## $\times$10  Extended Comparative Analysis
 
 ### DPM Hub in Context: Session 144 vs Session 142
 
@@ -256,7 +256,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -357,7 +357,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.111 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -368,14 +368,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Yang-Mills mass gap (Millennium) | UQFF DPM quantisation → minimum energy Δ > 0 via U_m buoyancy floor | Clay Math. YM Problem: mass gap existence unknown | Clay / Jaffe-Witten 2006 | UQFF establishes mass gap via buoyancy |
-| QCD confinement (pion mass) | UQFF: Δ_YM = κ × m_π c2 / β_i ≈ 0.35 GeV | Pion mass m_π = 134.977 MeV; quark confinement Λ_QCD ~ 217 MeV | PDG 2024 | PASS UQFF in QCD confinement range |
-| Asymptotic freedom scale | UQFF k_η = 10-113 → UV completion above M_UQFF ~ 108·3 GeV | QCD Landau pole: g→0 as E→∞ (asymptotic freedom) | PDG 2024 QCD | PASS UQFF UV-complete by k_η suppression |
-| Gluon condensate ⟨G2⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV4 | ⟨αₛG2/π⟩ ~ 0.012 GeV4 (SVZ sum rules) | SVZ 1979; lattice QCD | PASS Consistent |
+| Yang-Mills mass gap (Millennium) | UQFF DPM quantisation $\to$ minimum energy $\Delta$ > 0 via U_m buoyancy floor | Clay Math. YM Problem: mass gap existence unknown | Clay / Jaffe-Witten 2006 | UQFF establishes mass gap via buoyancy |
+| QCD confinement (pion mass) | UQFF: $\Delta$_YM = $\kappa$ $\times$ m_$\pi$ c2 / $\beta$_i $\approx$ 0.35 GeV | Pion mass m_$\pi$ = 134.977 MeV; quark confinement $\Lambda$_QCD ~ 217 MeV | PDG 2024 | PASS UQFF in QCD confinement range |
+| Asymptotic freedom scale | UQFF k_$\eta$ = 10-113 $\to$ UV completion above M_UQFF ~ 108$\cdot$3 GeV | QCD Landau pole: g$\to$0 as E$\to$$\infty$ (asymptotic freedom) | PDG 2024 QCD | PASS UQFF UV-complete by k_$\eta$ suppression |
+| Gluon condensate ⟨G2⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV4 | ⟨$\alpha$ₛG2/$\pi$⟩ ~ 0.012 GeV4 (SVZ sum rules) | SVZ 1979; lattice QCD | PASS Consistent |
 
 **New physics claim:** UQFF DPM quantisation provides a physical mechanism for the Yang-Mills
 mass gap: the minimum vacuum buoyancy excitation energy (U_m floor) prevents massless gauge
-field configurations, establishing Δ > 0 from vacuum topology rather than perturbative QCD alone.
+field configurations, establishing $\Delta$ > 0 from vacuum topology rather than perturbative QCD alone.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 

@@ -55,7 +55,7 @@ $$\delta_{\text{SCS}} = \frac{G\mu \cdot c^2}{k_B \cdot T_S} \cdot \exp\!\left(-
 | $T_S(z=20)$ | 10 K | Spin temperature |
 | $T_{\text{CMB}}(z=20)$ | 57.2 K | CMB temperature |
 | $[\text{SSq}]$ | 0.57 | Squeeze-state parameter |
-| $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}$ J/m³ | SCm vacuum density |
+| $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}$ J/m3 | SCm vacuum density |
 
 ### 2.3 [SCm] Stability at Level 13
 
@@ -92,7 +92,7 @@ The 21-cm Dark Ages signal provides stringent constraints on SCS parameters. The
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

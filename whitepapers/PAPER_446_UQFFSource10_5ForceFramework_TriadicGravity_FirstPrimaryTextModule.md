@@ -89,7 +89,7 @@ $$\boxed{F_\text{vac\_rep} = k_\text{vac} \cdot \Delta\rho_\text{vac} \cdot M \c
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $k_\text{vac}$ | $6.674 \times 10^{-11}$ N·m2/kg2 | Gravitational coupling |
+| $k_\text{vac}$ | $6.674 \times 10^{-11}$ N$\cdot$m2/kg2 | Gravitational coupling |
 | $\Delta\rho_\text{vac}$ | variable | Vacuum density perturbation |
 | $M$ | variable | System mass |
 | $v$ | variable | Velocity |
@@ -124,20 +124,20 @@ $$F_\text{thz\_shock} = 1.38\times10^{-23} \times 1.44 \times 1.0 \times 10^{12}
 
 ---
 
-### Force 3: Hydrogen Conduit (H + H₂O Abundance)
+### Force 3: Hydrogen Conduit (H + H2O Abundance)
 
 $$\boxed{F_\text{conduit} = k_\text{conduit} \cdot (H_\text{abun} \times w_\text{state}) \cdot \eta_n}$$
 
 | Parameter | Symbol | Value |
 |-----------|--------|-------|
-| Coulomb constant | $k_\text{conduit}$ | $8.99 \times 10^9$ N·m2/C2 |
+| Coulomb constant | $k_\text{conduit}$ | $8.99 \times 10^9$ N$\cdot$m2/C2 |
 | H abundance | $H_\text{abun}$ | $0.74$ (cosmological hydrogen fraction) |
 | Water state | $w_\text{state}$ | $1.0$ (incompressible/stable) |
 | Neutron stability | $\eta_n$ | $1.0$ (stable) |
 
 $$F_\text{conduit} = 8.99\times10^9 \times (0.74 \times 1.0) \times 1.0 = 6.65\times10^9 \, \text{N}$$
 
-**Physical meaning:** Hydrogen-water molecular conduit channel — H + H₂O → COx pathway. The hydrogen fraction $H_\text{abun} = 0.74$ (Big Bang nucleosynthesis primordial value) couples to the water incompressibility state $w_\text{state} = 1$ via the electrostatic constant $k_\text{conduit}$. Represents the electromagnetic conduit for proton–neutron field coupling in dense environments (LENR analog). When $w_\text{state} < 1$ (compressible/hot plasma), conduit weakens.
+**Physical meaning:** Hydrogen-water molecular conduit channel — H + H2O $\to$ COx pathway. The hydrogen fraction $H_\text{abun} = 0.74$ (Big Bang nucleosynthesis primordial value) couples to the water incompressibility state $w_\text{state} = 1$ via the electrostatic constant $k_\text{conduit}$. Represents the electromagnetic conduit for proton–neutron field coupling in dense environments (LENR analog). When $w_\text{state} < 1$ (compressible/hot plasma), conduit weakens.
 
 **Catalogue default:** $F_\text{conduit} \approx 3.45 \times 10^{67}$ (extreme astrophysical scale)
 
@@ -171,7 +171,7 @@ $$\boxed{Q_\text{DPM} = \frac{g_H \mu_B B_0}{\hbar \omega_0} \times 2.82\times10
 
 **Step 3:** $g_H \mu_B B_0 = 1.252\times10^{46} \times 9.274\times10^{-28} = 1.161\times10^{19}$ J
 
-**Step 4:** $\hbar \omega_0 = 1.0546\times10^{-34} \times 10^{-12} = 1.0546\times10^{-46}$ J·s2
+**Step 4:** $\hbar \omega_0 = 1.0546\times10^{-34} \times 10^{-12} = 1.0546\times10^{-46}$ J$\cdot$s2
 
 **Step 5:** $\text{base} = \frac{1.161\times10^{19}}{1.0546\times10^{-46}} = 1.101\times10^{65}$
 
@@ -248,13 +248,13 @@ strong) have no "THz conduit" or "spooky action" force. The key SM comparison:
 
 - **SM quantum zeta:** The $F_\text{spooky}$ term ($k_\text{spooky} \approx \hbar$) replicates the quantum zero-point energy coupling but extends it to string-wave frequencies, yielding a mesoscopic force intermediate between QFT vacuum fluctuations and macroscopic electromagnetism.
 
-- **SM LENR:** Conventionally not recognized in the SM as a viable nuclear process. UQFF's $F_\text{conduit}$ with $k_\text{conduit} = k_\text{Coulomb}$ and $H_\text{abun} = 0.74$ proposes an H + H₂O → COx tunnel-assisted pathway governed by the same electrostatic coupling as molecular bond formation — making LENR a specific limit of the conduit force.
+- **SM LENR:** Conventionally not recognized in the SM as a viable nuclear process. UQFF's $F_\text{conduit}$ with $k_\text{conduit} = k_\text{Coulomb}$ and $H_\text{abun} = 0.74$ proposes an H + H2O $\to$ COx tunnel-assisted pathway governed by the same electrostatic coupling as molecular bond formation — making LENR a specific limit of the conduit force.
 
 ---
 
 ## 8. Testable Predictions
 
-**Q5 Prediction 1:** $Q_\text{DPM} = 3.11 \times 10^9$ J/m3 predicts an energy density anomaly at NMR/EPR resonance conditions ($B_0 = 10^{-4}$ T, $\omega_0 = 10^{-12}$ Hz → $\omega_text{NMR} = g_H \mu_B B_0 / \hbar \approx 1.252\times10^{46} \times 9.274\times10^{-28}/1.055\times10^{-34} \approx 1.1\times10^{53}$ rad/s — **this extreme value confirms $g_H$ operates on cosmological scales not accessible to terrestrial NMR**). For a scaled-down terrestrial test: set $g_H = 5.585$ (proton $g$-factor) and $B_0 = 10$ T: $Q_\text{DPM}^\text{lab} = 5.585 \times 9.274\times10^{-24} \times 10 / (1.055\times10^{-34} \times 10^{12}) \times 2.82\times10^{-56} \approx 1.4\times10^{-45}$ J/m3 — the scaling factor $2.82\times10^{-56}$ is the normalization bridge between cosmological and lab $g_H$ values, testable via precision EPR at NIST.
+**Q5 Prediction 1:** $Q_\text{DPM} = 3.11 \times 10^9$ J/m3 predicts an energy density anomaly at NMR/EPR resonance conditions ($B_0 = 10^{-4}$ T, $\omega_0 = 10^{-12}$ Hz $\to$ $\omega_text{NMR} = g_H \mu_B B_0 / \hbar \approx 1.252\times10^{46} \times 9.274\times10^{-28}/1.055\times10^{-34} \approx 1.1\times10^{53}$ rad/s — **this extreme value confirms $g_H$ operates on cosmological scales not accessible to terrestrial NMR**). For a scaled-down terrestrial test: set $g_H = 5.585$ (proton $g$-factor) and $B_0 = 10$ T: $Q_\text{DPM}^\text{lab} = 5.585 \times 9.274\times10^{-24} \times 10 / (1.055\times10^{-34} \times 10^{12}) \times 2.82\times10^{-56} \approx 1.4\times10^{-45}$ J/m3 — the scaling factor $2.82\times10^{-56}$ is the normalization bridge between cosmological and lab $g_H$ values, testable via precision EPR at NIST.
 
 **Q5 Prediction 2:** $F_\text{conduit} \propto H_\text{abun} = 0.74$ predicts that the LENR conduit force scales linearly with hydrogen abundance. In hydrogen-depleted environments ($H_\text{abun} \rightarrow 0$), $F_\text{conduit} \rightarrow 0$, meaning UQFF predicts NO LENR-like processes in helium-dominated white dwarf interiors ($H_\text{abun} \approx 0.03$) — a $\sim 25\times$ suppression. Testable via comparison of anomalous heat signatures in H-rich vs He-rich Inertial Confinement Fusion (ICF) target plasmas at NIF.
 
@@ -270,7 +270,7 @@ strong) have no "THz conduit" or "spooky action" force. The key SM comparison:
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -289,7 +289,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -312,7 +312,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -359,7 +359,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -464,7 +464,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.101 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -475,10 +475,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

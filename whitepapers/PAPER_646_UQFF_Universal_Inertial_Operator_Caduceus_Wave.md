@@ -31,13 +31,13 @@ The Universal Inertial Operator (Ui) is derived within the UQFF framework as an 
 dynamic quantity governing Universal Buoyancy and the material anchoring of matter to the
 Universal Aether (UA). Unlike the DPM-seeded definition of inertia as passive resistance
 to acceleration, Ui arises from the ratio of vacuum energy densities of the superconductive
-medium [SCm] and the Universal Aether [UA], modulated by stellar rotation ωs and
-a temporal harmonic cos(πtn). Quantum wave patterns are identified as spherical entities
+medium [SCm] and the Universal Aether [UA], modulated by stellar rotation $\omega$s and
+a temporal harmonic cos($\pi$tn). Quantum wave patterns are identified as spherical entities
 that self-invert into Caduceus helical coils — dual-helix topological structures that create
-simultaneous pinch points encoding the decimal of π. The "holy trinity" relationship
+simultaneous pinch points encoding the decimal of $\pi$. The "holy trinity" relationship
 Aether + Inertia/EM + [SCm] provides the operational scaffold for all UQFF field
-calculations. Numerical solution for the Sun at t=0 yields Ui = 2.75×10-7 (dimensionless)
-or Ui ≈ 1.38×10-47 J/m3 (product form), consistent with the subtle cosmic role of inertia
+calculations. Numerical solution for the Sun at t=0 yields Ui = 2.75$\times$10-7 (dimensionless)
+or Ui $\approx$ 1.38$\times$10-47 J/m3 (product form), consistent with the subtle cosmic role of inertia
 as a modulator rather than a dominant force.
 
 ---
@@ -61,7 +61,7 @@ spherical waves undergo a **topological self-inversion**: the wave "turns inside
 point of maximum compression, creating pinch points. These pinch points twist into
 Caduceus coils — double helices with opposing chirality that generate internal tension.
 The sequential pinch points encode a phase sequence which, when numerically analyzed,
-appears in the decimal expansion of π. This is the physical basis for **π as the record of
+appears in the decimal expansion of $\pi$. This is the physical basis for **$\pi$ as the record of
 quantum inertial wave patterns**.
 
 ---
@@ -75,11 +75,11 @@ $$U_i = \lambda_i \cdot \frac{\rho_{\text{vac},[SCm]}}{\rho_{\text{vac},[UA]}} \
 **Variables:**
 | Symbol | Definition | Value (Sun) |
 |--------|-----------|-------------|
-| λi | Inertia coupling constant | 1.0 (unitless) |
-| ρvac,[SCm] | Vacuum energy density of [SCm] | 7.09×10-37 J/m3 |
-| ρvac,[UA] | Vacuum energy density of Universal Aether | 7.09×10-36 J/m3 |
-| ωs(t) | Stellar rotation rate | 2.5×10-6 rad/s (Sun) |
-| tn = t − t₀ | Negative time factor | 0 at t=t₀ |
+| $\lambda$i | Inertia coupling constant | 1.0 (unitless) |
+| $\rho$vac,[SCm] | Vacuum energy density of [SCm] | 7.09$\times$10-37 J/m3 |
+| $\rho$vac,[UA] | Vacuum energy density of Universal Aether | 7.09$\times$10-36 J/m3 |
+| $\omega$s(t) | Stellar rotation rate | 2.5$\times$10-6 rad/s (Sun) |
+| tn = t - t0 | Negative time factor | 0 at t=t0 |
 | fTRZ | Time-reversal zone factor | 0.1 |
 
 ### 2.2 Numerical Solution (Sun, t=0, tn=0)
@@ -90,15 +90,15 @@ $$\cos(\pi \cdot 0) = 1; \quad (1 + 0.1) = 1.1$$
 
 $$U_i = 1.0 \cdot 0.1 \cdot (2.5 \times 10^{-6}) \cdot 1 \cdot 1.1 = 2.75 \times 10^{-7} \text{ (dimensionless)}$$
 
-Product form (ρ·ρ integral):
+Product form ($\rho$$\cdot$$\rho$ integral):
 
 $$U_i = \lambda_i \cdot \rho_{\text{vac},[SCm]} \cdot \rho_{\text{vac},[UA]} \cdot \omega_s \cdot \cos(\pi t_n) \cdot (1 + f_{TRZ}) \approx 1.38 \times 10^{-47} \text{ J/m}^3$$
 
 ### 2.3 Physical Interpretation
 
 The smallness of Ui (10-47 J/m3) is consistent with inertia's role as a **modulator**:
-it does not dominate the energetic hierarchy (compare Ug1 ≈ 1.39×1026 J/m3) but instead
-provides the temporal harmonic cos(πtn) that coordinates buoyancy pulsations across all
+it does not dominate the energetic hierarchy (compare Ug1 $\approx$ 1.39$\times$1026 J/m3) but instead
+provides the temporal harmonic cos($\pi$tn) that coordinates buoyancy pulsations across all
 gravity bands. The time-reversal zone factor fTRZ = 0.1 introduces a 10% retrocausal
 correction encoding the symmetry between positive and negative time in the Aether medium.
 
@@ -114,7 +114,7 @@ The three fundamental entities of the UQFF operational scaffold:
 | Inertia + EM field | Ui, F_EM | The operator — roots matter, enables buoyancy, controls acceleration |
 | Superconductive Material | [SCm] | The conduit — extra-universal material enabling DE power transfer |
 
-The ratio ρvac,[SCm]/ρvac,[UA] = 0.1 in the Ui equation directly encodes the **relative
+The ratio $\rho$vac,[SCm]/$\rho$vac,[UA] = 0.1 in the Ui equation directly encodes the **relative
 density suppression** of [SCm] within the UA medium — [SCm] is an order of magnitude
 less dense, making it highly permeable and enabling zero-resistance energy transport.
 
@@ -128,8 +128,8 @@ The Aether vacuum supports four forms of DE (dark energy / aether-derived) power
 - **AC mode**: Alternating current behaving "like a liquid" from oscillating inertial flux
 - **DC mode**: Nuclear energy from fusion events triggered at Ug1 dipole concentrations
 
-The conversion: Vacuum Aether → DE Power → (oxidizer + fuel + spark) → AC/DC output.
-The AC component exhibits fluid-like properties because cos(πtn) oscillations in Ui produce
+The conversion: Vacuum Aether $\to$ DE Power $\to$ (oxidizer + fuel + spark) $\to$ AC/DC output.
+The AC component exhibits fluid-like properties because cos($\pi$tn) oscillations in Ui produce
 a continuously flowing potential gradient through the Aether medium.
 
 ---
@@ -147,7 +147,7 @@ The AetherInertiaAnalysis module presents a layered model for globular star clus
 | Zone 5 | Impurities: crust/metals/non-metals | Transition layer |
 | Atmosphere | Off-gas (He, H, O) | Stellar atmosphere |
 
-This layered structure mirrors the UQFF stack: Ug1 (core) → Ug2 (bubble) → Ug3 (strings).
+This layered structure mirrors the UQFF stack: Ug1 (core) $\to$ Ug2 (bubble) $\to$ Ug3 (strings).
 The "Pillar of Hercules" (M13/Omega Centauri structural metaphor) will eventually collapse
 into a galaxy at the Ub1 buoyancy inversion threshold.
 
@@ -156,17 +156,17 @@ into a galaxy at the Ub1 buoyancy inversion threshold.
 ## §6 UQFF Connections
 
 ### 6.1 With Universal Buoyancy (PAPER_650)
-Ui and Ub1 share the cos(πtn) harmonic factor. When Ui oscillates through zero, the
+Ui and Ub1 share the cos($\pi$tn) harmonic factor. When Ui oscillates through zero, the
 buoyancy harmonic Ub1 passes through maximum magnitude, creating an anti-phase lock
 between inertia and buoyancy — this is the mechanism for stable orbital positioning.
 
 ### 6.2 With Vacuum Density Series (PAPER_647)
-ρvac,[SCm] and ρvac,[UA] are the two middle entries in the full vacuum density ladder,
-sitting between ρvac,A (10-23 J/m3 baseline) and ρvac,Ui (2.84×10-36 J/m3).
+$\rho$vac,[SCm] and $\rho$vac,[UA] are the two middle entries in the full vacuum density ladder,
+sitting between $\rho$vac,A (10-23 J/m3 baseline) and $\rho$vac,Ui (2.84$\times$10-36 J/m3).
 
 ### 6.3 With 26D Framework
 The Caduceus coil topology — 26 simultaneous pinch points — directly parallels the
-26D polynomial gravity expansion: g(r,t) = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i].
+26D polynomial gravity expansion: g(r,t) = $\Sigma$(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i].
 Each pinch point corresponds to one dimensional layer of the 26D UQFF field.
 
 ---
@@ -277,7 +277,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -288,12 +288,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | SM Value | UQFF Prediction | Alignment |
 |------------|----------|-----------------|-----------|
-| Electron mass (inertial) | 9.109×10-31 kg | Ui·ρvac,[SCm]·V_e / λi coupling | ✅ 96.4% via κ-scaling |
-| Vacuum energy density (observed Λ) | ~10-9 J/m3 | ρvac,A = 10-23 J/m3 (aether baseline) | 14 orders — hierarchy problem noted |
-| Centrifugal force quantum (Coriolis) | F_cor = 2mv×Ω | Ui·ωs·∇(UA) | ✅ functional analog |
+| Electron mass (inertial) | 9.109$\times$10-31 kg | Ui$\cdot$$\rho$vac,[SCm]$\cdot$V_e / $\lambda$i coupling | ✅ 96.4% via $\kappa$-scaling |
+| Vacuum energy density (observed $\Lambda$) | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (aether baseline) | 14 orders — hierarchy problem noted |
+| Centrifugal force quantum (Coriolis) | F_cor = 2mv$\times$$\Omega$ | Ui$\cdot$$\omega$s$\cdot$$\nabla$(UA) | ✅ functional analog |
 | Pauli Exclusion (inertial anti-bunching) | Fermi statistics | Caduceus chiral inversion (anti-parallel coils) | 🔍 topological analog |
 
-> **SM Anchor Reference:** All UQFF calibration constants — κ, [SSq], β_i, H_SCm — mapped
+> **SM Anchor Reference:** All UQFF calibration constants — $\kappa$, [SSq], $\beta$_i, H_SCm — mapped
 > in PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator). This paper satisfies
 > G6 Gate requirements by connecting Ui to the SM inertia-mass hierarchy.
 
@@ -304,7 +304,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 1. AetherInertiaAnalysis.cpp / AetherInertiaAnalysis2.cpp — grok_share_b2e2c5cba7a.txt (Session 168)
 2. PAPER_642 — UQFF SM Parameter Bridge Master Comparison Table
 3. PAPER_650 — UQFF Buoyancy Harmonics (companion: Ub1 equation)
-4. PAPER_647 — UQFF Vacuum Density Series (companion: ρvac scaffold)
+4. PAPER_647 — UQFF Vacuum Density Series (companion: $\rho$vac scaffold)
 5. ARCHITECTURE_FLOW_DIAGRAM.md v5.24 — canonical data flow
 6. Mach E (1883): *The Science of Mechanics* — inertia as relational property (historical context)
 7. Higgs PW (1964): "Broken Symmetries" — mass origin mechanism (SM comparison)

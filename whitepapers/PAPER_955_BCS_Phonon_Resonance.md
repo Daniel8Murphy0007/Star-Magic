@@ -10,7 +10,7 @@ tags: [phonon, vacuum, SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_955: BCS Phonon Resonance at ω_SCm
+# PAPER_955: BCS Phonon Resonance at $\omega$_SCm
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
@@ -82,7 +82,7 @@ $$Q_\text{res} = \frac{\omega_text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LAG-S225 -->
 
@@ -178,7 +178,7 @@ $$\mathcal{L}_\text{res} = \mathcal{L}_\text{gap}\big|_{\omega=\omega\_text{SCm}
 $$\boxed{\Delta_text{res} = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta}{2k_BT}\right) S_{26} \frac{F_{UBi}}{F_U}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → SCm vacuum → phonon peak → BCS gap at resonance → maximal Cooper pairing
+PAPER_877 $\to$ SCm vacuum $\to$ phonon peak $\to$ BCS gap at resonance $\to$ maximal Cooper pairing
 
 ---
 

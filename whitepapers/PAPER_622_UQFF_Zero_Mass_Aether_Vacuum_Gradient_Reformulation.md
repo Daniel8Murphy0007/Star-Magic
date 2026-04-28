@@ -35,8 +35,8 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 This paper presents the Zero-Mass Universal Aether Vacuum Gradient Reformulation — the
 fundamental correction to the UQFF mass assumption. The Universal Aether (UA) is a quantum
-fluid with **zero rest mass** (ρ_UA = 0, immutable). All mass-density terms previously
-attributed to UA are replaced by the Aether Vacuum Gradient magnitude |∇UA|, which acts as
+fluid with **zero rest mass** ($\rho$_UA = 0, immutable). All mass-density terms previously
+attributed to UA are replaced by the Aether Vacuum Gradient magnitude |$\nabla$UA|, which acts as
 the effective void-density field. This reframing preserves all prior UQFF results while
 providing a physically motivated, mass-free basis consistent with the Vacuum Density Series
 (VDS) framework.
@@ -52,7 +52,7 @@ providing a physically motivated, mass-free basis consistent with the Vacuum Den
 ρ_vac = |∇UA|  (void geometry, not mass action)
 ```
 
-The gradient magnitude |∇UA| encodes local void topology. Where UA is spatially uniform,
+The gradient magnitude |$\nabla$UA| encodes local void topology. Where UA is spatially uniform,
 the void is featureless; where UA varies sharply, void pockets form and observable physics
 emerges.
 
@@ -61,7 +61,7 @@ emerges.
 The complete Unified Field equation in gradient form:
 
 $$
-F_U = U_g + U_m + U_b + d26/dr26 (SCm · g · ∇UA / UA) = 0
+F_U = U_g + U_m + U_b + d26/dr26 (SCm \cdot g \cdot \nablaUA / UA) = 0
 $$
 
 Individual components:
@@ -69,27 +69,27 @@ Individual components:
 **Gravitational-gradient:**
 $$
 \begin{aligned}
-  & U_g = g · (SCm · ∇UA / UA) · (Ug1 + Ug2 + Ug3 + Ug4) \\
-  & + Σ_{m=0}^{26} a_m · (∇UA)^m
+  & U_g = g \cdot (SCm \cdot \nablaUA / UA) \cdot (Ug1 + Ug2 + Ug3 + Ug4) \\
+  & + \Sigma_{m=0}^{26} a_m \cdot (\nablaUA)^m
 \end{aligned}
 $$
 
 **Magnetic-vortex (DVP form):**
 $$
 \begin{aligned}
-  & U_m = κ · (DPM_n − DPM_s) / (∇UA)^26 \\
-  & + d26/dt26 [Σ_{k=0}^{26} c_k · (∇UA · t)^k]
+  & U_m = \kappa \cdot (DPM_n - DPM_s) / (\nablaUA)^26 \\
+  & + d26/dt26 [\Sigma_{k=0}^{26} c_k \cdot (\nablaUA \cdot t)^k]
 \end{aligned}
 $$
 
 **Buoyancy-gradient (BH26 form):**
 $$
-U_b = g · (1 − 1/∇UA) + d26/d(∇UA)26 (g · ∇UA)
+U_b = g \cdot (1 - 1/\nablaUA) + d26/d(\nablaUA)26 (g \cdot \nablaUA)
 $$
 
 **Superconductive memory:**
 $$
-SCm = λ · UA · (1 − 1/t) + Σ_{m=0}^{26} b_m · (∇UA · t^{−m})
+SCm = \lambda \cdot UA \cdot (1 - 1/t) + \Sigma_{m=0}^{26} b_m \cdot (\nablaUA \cdot t^{-m})
 $$
 
 ### 2.3 Equilibrium Solution
@@ -97,10 +97,10 @@ $$
 Setting F_U = 0 and isolating the buoyancy-gravitational balance:
 
 $$
-∇UA_eq = √(κ / g)
+\nablaUA_eq = \sqrt{}(\kappa / g)
 $$
 
-For κ = 1, g = 10-3: ∇UA_eq ≈ 31.62 m-1 (dimensionless normalization).  
+For $\kappa$ = 1, g = 10-3: $\nabla$UA_eq $\approx$ 31.62 m-1 (dimensionless normalization).  
 This is identical to the **VDS equilibrium convergence value** — confirming that the vacuum
 density series and the zero-mass reformulation share the same fixed point.
 
@@ -109,14 +109,14 @@ density series and the zero-mass reformulation share the same fixed point.
 ## §3 Vacuum Density Series (VDS) Connection
 
 The Zero-Mass reformulation *is* the foundation of VDS:
-- VDS Term d₁–d₃: encode ∇UA in Ug channels (Gaussian weighting d = 1,2,3)
-- VDS Term d₄–d₆: encode DVP vortex flux in Um channels
-- VDS Term d₇–d₉: encode Ub buoyancy displacement in outflow channels
+- VDS Term d1–d3: encode $\nabla$UA in Ug channels (Gaussian weighting d = 1,2,3)
+- VDS Term d4–d6: encode DVP vortex flux in Um channels
+- VDS Term d7–d9: encode Ub buoyancy displacement in outflow channels
 
 Full 9D Gaussian VDS definition:
 
 $$
-∇UA = Σ_{d=1}^{9} exp(−(x_d − μ_d)2 / 2σ_d2) · FUB_i
+\nablaUA = \Sigma_{d=1}^{9} exp(-(x_d - \mu_d)2 / 2\sigma_d2) \cdot FUB_i
 $$
 
 Where FUB_i is the buoyancy integral coefficient at spatial position i.
@@ -125,14 +125,14 @@ Where FUB_i is the buoyancy integral coefficient at spatial position i.
 
 ## §4 26th-Order Derivative Term
 
-The term d26/dr26 (SCm·g·∇UA/UA) is the **signature of the 26-dimensional BH framework**.
-For a power-law field c/(∇UA)^k:
+The term d26/dr26 (SCm$\cdot$g$\cdot$$\nabla$UA/UA) is the **signature of the 26-dimensional BH framework**.
+For a power-law field c/($\nabla$UA)^k:
 
 $$
-d26/d(∇UA)26 [c/(∇UA)^k] = ((k+25)! / (k−1)!) · c / (∇UA)^{k+26}
+d26/d(\nablaUA)26 [c/(\nablaUA)^k] = ((k+25)! / (k-1)!) \cdot c / (\nablaUA)^{k+26}
 $$
 
-This divergence at low ∇UA generates the buoyancy suppression preventing gravitational
+This divergence at low $\nabla$UA generates the buoyancy suppression preventing gravitational
 collapse in void regions (BH26 harmonic mode).
 
 ---
@@ -141,29 +141,29 @@ collapse in void regions (BH26 harmonic mode).
 
 | Quantity | Zero-Mass Form | Physical Meaning |
 |----------|---------------|-----------------|
-| ρ_vac | \|∇UA\| | Void density = gradient magnitude |
-| F_U equilibrium | ∇UA_eq = √(κ/g) | VDS convergence = 31.62 |
-| Quantum frequency | f ∝ λ·UA / t2 | Gradient-driven event emission |
-| Collapse prevention | U_b → +∞ as ∇UA → 0⁺ | BH26 repulsive divergence |
-| Mass-free field | ρ_UA ≡ 0 | UA is pure gradient topology |
+| $\rho$_vac | \|$\nabla$UA\| | Void density = gradient magnitude |
+| F_U equilibrium | $\nabla$UA_eq = $\sqrt{}$($\kappa$/g) | VDS convergence = 31.62 |
+| Quantum frequency | f $\propto$ $\lambda$$\cdot$UA / t2 | Gradient-driven event emission |
+| Collapse prevention | U_b $\to$ +$\infty$ as $\nabla$UA $\to$ 0+ | BH26 repulsive divergence |
+| Mass-free field | $\rho$_UA $\equiv$ 0 | UA is pure gradient topology |
 
 ---
 
 ## §6 Observational Tests
 
-1. **Void region density:** ρ_vac = |∇UA| should match observed X-ray void densities in
-   galaxy cluster outskirts (≈ 10-28 kg/m3).
-2. **Frequency prediction:** f_event ≈ |λ·UA/t2| × 1018 Hz at jet base.
-3. **Equilibrium crossing:** Systems with ∇UA near 31.62 should show phase transitions
+1. **Void region density:** $\rho$_vac = |$\nabla$UA| should match observed X-ray void densities in
+   galaxy cluster outskirts ($\approx$ 10-28 kg/m3).
+2. **Frequency prediction:** f_event $\approx$ |$\lambda$$\cdot$UA/t2| $\times$ 1018 Hz at jet base.
+3. **Equilibrium crossing:** Systems with $\nabla$UA near 31.62 should show phase transitions
    in observational data (pocket shell formation).
 
 ---
 
 ## §7 Connection to UQFF Number Systems
 
-- **VDS:** ρ_vac = |∇UA| IS the vacuum density series value
-- **DVP:** U_m = κ·(DPM_n−DPM_s)/(∇UA)26 — vortex-prime gradient pockets
-- **BH26:** U_b 26th-derivative = g·26!/(∇UA)25 — buoyancy harmonic series
+- **VDS:** $\rho$_vac = |$\nabla$UA| IS the vacuum density series value
+- **DVP:** U_m = $\kappa$$\cdot$(DPM_n-DPM_s)/($\nabla$UA)26 — vortex-prime gradient pockets
+- **BH26:** U_b 26th-derivative = g$\cdot$26!/($\nabla$UA)25 — buoyancy harmonic series
 
 ---
 
@@ -175,7 +175,7 @@ collapse in void regions (BH26 harmonic mode).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -194,7 +194,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -231,7 +231,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -334,7 +334,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.197 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -345,14 +345,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Vacuum energy ρ_Λ | ρ_vac = \|∇UA\|; equilibrium ∇UA_eq = √(κ/g) = 31.62 | ρ_Λ = 5.96e-27 kg/m3 (PDG) | PDG 2024 | Geometric topology match |
-| Higgs mass m_H | K_HIGGS = 47.34 → m_H ≈ 125.09 GeV | 125.20 ± 0.11 GeV | PDG 2024 | 99.89% |
-| Photon (gauge boson) mass | UA zero-mass field: ρ_UA = 0 (immutable) | m_γ < 10-18 eV | PDG 2024 | PASS Consistent |
-| Fine structure α_EM | 1/137.036 in U_m Compton scattering term | 1/137.036 | PDG 2024 | 100% |
+| Vacuum energy $\rho$_$\Lambda$ | $\rho$_vac = \|$\nabla$UA\|; equilibrium $\nabla$UA_eq = $\sqrt{}$($\kappa$/g) = 31.62 | $\rho$_$\Lambda$ = 5.96e-27 kg/m3 (PDG) | PDG 2024 | Geometric topology match |
+| Higgs mass m_H | K_HIGGS = 47.34 $\to$ m_H $\approx$ 125.09 GeV | 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.89% |
+| Photon (gauge boson) mass | UA zero-mass field: $\rho$_UA = 0 (immutable) | m_$\gamma$ < 10-18 eV | PDG 2024 | PASS Consistent |
+| Fine structure $\alpha$_EM | 1/137.036 in U_m Compton scattering term | 1/137.036 | PDG 2024 | 100% |
 
-**New physics claim:** The UQFF zero-mass UA reframing separates ρ_UA = 0 (topology)
-from ρ_vac = |∇UA| (geometry), predicting measurable void-density gradients in
-cluster outskirts ≈ 10-28 kg/m3 — testable with future eROSITA / Chandra surveys.
+**New physics claim:** The UQFF zero-mass UA reframing separates $\rho$_UA = 0 (topology)
+from $\rho$_vac = |$\nabla$UA| (geometry), predicting measurable void-density gradients in
+cluster outskirts $\approx$ 10-28 kg/m3 — testable with future eROSITA / Chandra surveys.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 

@@ -31,17 +31,17 @@ $$
 
 ## Abstract
 
-Sagittarius A* (Sgr A*) is the supermassive black hole at the Galactic Centre, with mass M = 4.1 ×
-106 M_sun = 7.956 × 1036 kg at a distance of ~26,000 light-years. Among all systems studied in the
+Sagittarius A* (Sgr A*) is the supermassive black hole at the Galactic Centre, with mass M = 4.1 $\times$
+106 M_sun = 7.956 $\times$ 1036 kg at a distance of ~26,000 light-years. Among all systems studied in the
 UQFF Chandra dataset, Sgr A* is the **only member that produces negative buoyancy** — a physically
 repulsive stabilising force in the UQFF integral.
 
 The mechanism is a **Negative Buoyancy Inversion**: Sgr A* has a characteristic frequency ?0 = 10?15
 rad/s — three orders of magnitude below the SN 1006/Eta Carinae class (?0 = 10?12). This three-order
-reduction causes F_LENR to jump six orders of magnitude (to ~6.17 × 1045 N). At this amplified LENR
-level, the relativistic coherence term F_rel = 4.30 × 1033 N (calibrated to LEP 1998 at E_cm = 189
+reduction causes F_LENR to jump six orders of magnitude (to ~6.17 $\times$ 1045 N). At this amplified LENR
+level, the relativistic coherence term F_rel = 4.30 $\times$ 1033 N (calibrated to LEP 1998 at E_cm = 189
 GeV) becomes non-negligible, and the combined integrand drives the quadratic root x2 to invert sign,
-yielding F_U_Bi_i ˜ -8.31 × 10211 N.
+yielding F_U_Bi_i ˜ -8.31 $\times$ 10211 N.
 
 This is the **first negative buoyancy result in UQFF** and a uniquely rare mathematical discovery: a
 sign inversion driven not by changing astrophysical parameters (M, r, L_X) but purely by crossing a
@@ -55,8 +55,8 @@ Galactic Centre.
 
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
-| Black hole mass | M_BH | 4.1 × 106 M_sun = 7.956 × 1036 kg | kg | GRAVITY collaboration 2020 |
-| Probe radius | r | 6.17 × 1018 | m (~200 ly) | GC thermal region |
+| Black hole mass | M_BH | 4.1 $\times$ 106 M_sun = 7.956 $\times$ 1036 kg | kg | GRAVITY collaboration 2020 |
+| Probe radius | r | 6.17 $\times$ 1018 | m (~200 ly) | GC thermal region |
 | X-ray luminosity | L_X | 1033 | W | Chandra 2023 |
 | Magnetic field | B0 | 10-5 | T | GC interstellar |
 | **Critical frequency** | **?0** | **10?15 rad/s** | **rad/s** | **3 orders below SNR class** |
@@ -71,12 +71,12 @@ Galactic Centre.
 Comparing SNR class (?0 = 10?12) to Sgr A* (?0 = 10?15):
 $$
 \begin{aligned}
-  & F_LENR (SNR class) = k_LENR × (?_LENR / 10?12)2 ˜ 6.17 × 103? N \\
-  & F_LENR (Sgr A*)    = k_LENR × (?_LENR / 10?15)2 ˜ 6.17 × 1045 N  [6 orders higher]
+  & F_LENR (SNR class) = k_LENR \times (?_LENR / 10?12)2 ˜ 6.17 \times 103? N \\
+  & F_LENR (Sgr A*)    = k_LENR \times (?_LENR / 10?15)2 ˜ 6.17 \times 1045 N  [6 orders higher]
 \end{aligned}
 $$
 
-Simultaneously, DPM_resonance also amplifies 1,000×:
+Simultaneously, DPM_resonance also amplifies 1,000$\times$:
 ```
 DPM_resonance (Sgr A*) = 2·µ_B·B0/(h·?0) ˜ 1.76 × 106   [vs 1.76×103 for SN 1006]
 ```
@@ -85,12 +85,12 @@ DPM_resonance (Sgr A*) = 2·µ_B·B0/(h·?0) ˜ 1.76 × 106   [vs 1.76×103 for 
 
 The relativistic coherence term (LEP 1998 anchor at E_cm = 189 GeV):
 $$
-F_rel = k_rel × (\text{E\_cm\_astro\_eff} / \text{E\_cm\_LEP})2 = 4.30 × 1033 N
+F_rel = k_rel \times (\text{E\_cm\_astro\_eff} / \text{E\_cm\_LEP})2 = 4.30 \times 1033 N
 $$
 
 F_rel is constant across all systems (independent of ?0). At ?0 = 10?12, F_rel/F_LENR ˜ 10-7 —
 negligible. At ?0 = 10?15, F_rel/F_LENR ˜ 10?13 — still formally small, but its absolute magnitude
-(4.30 × 1033 N) becomes significant relative to the vacuum-corrected integrand through the quadratic
+(4.30 $\times$ 1033 N) becomes significant relative to the vacuum-corrected integrand through the quadratic
 root evaluation.
 
 ### 2.3 Critical Frequency Derivation
@@ -98,12 +98,12 @@ root evaluation.
 The Critical frequency ?0_crit is defined as the ?0 at which F_rel = F_LENR:
 $$
 \begin{aligned}
-  & k_LENR × (?_LENR / ?0_crit)2 = F_rel \\
+  & k_LENR \times (?_LENR / ?0_crit)2 = F_rel \\
   & (?_LENR / ?0_crit)2 = F_rel / k_LENR \\
-  & ?0_crit = ?_LENR × v(k_LENR / F_rel) \\
-  & = 7.854×1012 × v(10?1° / 4.30×1033) \\
-  & ˜ 7.854×1012 × 4.82×10?22 \\
-  & ˜ 3.8 × 10?? rad/s   ??? ? but sign inversion occurs near 10?13
+  & ?0_crit = ?_LENR \times v(k_LENR / F_rel) \\
+  & = 7.854\times1012 \times v(10?1° / 4.30\times1033) \\
+  & ˜ 7.854\times1012 \times 4.82\times10?22 \\
+  & ˜ 3.8 \times 10?? rad/s   ??? ? but sign inversion occurs near 10?13
 \end{aligned}
 $$
 
@@ -115,13 +115,13 @@ F_rel = F_LENR equality. Numerically, sign inversion occurs in the range ?0 ? [1
 integrand with the quadratic stability condition `a·x2 + b·x + c = 0` produces a negative root x2.
 The condition is:
 $$
-discriminant(a, b, c) < 0   AND   x2_complex ? integrand × x2_real < 0
+discriminant(a, b, c) < 0   AND   x2_complex ? integrand \times x2_real < 0
 $$
 
 ### 2.4 F_U_Bi Benchmark
 
 $$
-\text{F\_U\_Bi} (Sgr A*) ˜ -8.31 × 10211 N   [NEGATIVE — repulsive stabilisation]
+\text{F\_U\_Bi} (Sgr A*) ˜ -8.31 \times 10211 N   [NEGATIVE — repulsive stabilisation]
 $$
 
 The negative sign indicates an outward (repulsive) direction relative to center — a buoyancy force
@@ -133,10 +133,10 @@ km/s from the Galactic Centre.
 
 Kinetic energy density of the outflow:
 $$
-E_outflow = 0.5 × ?_ISM × v_gas2 = 0.5 × 10?22 × (106)2 = 5 × 10?11 J/m3
+E_outflow = 0.5 \times ?_ISM \times v_gas2 = 0.5 \times 10?22 \times (106)2 = 5 \times 10?11 J/m3
 $$
 
-The UQFF F_U_Bi = -8.31 × 10211 N — an enormous repulsive force that, integrated over the GC volume,
+The UQFF F_U_Bi = -8.31 $\times$ 10211 N — an enormous repulsive force that, integrated over the GC volume,
 can drive gas outflow against the gravitational well of the bulge. The magnitude and sign are
 consistent with a centralised UQFF buoyancy acting as the inflation mechanism for the Fermi Bubbles.
 
@@ -162,7 +162,7 @@ Sgr A* is currently the **sole known member** of the UQFF negative buoyancy clas
 
 ## 4. Observational Predictions / Validation
 
-- **Fermi Bubble morphology:** The UQFF F_U_Bi = -8.31 × 10211 N predicts bubble inflation timescale: t_bubble = 2 × 25 kpc / v_gas = 2 × 7.7 × 102° / 106 ˜ 50 Myr — consistent with the Fermi Bubble age estimate of 6–50 Myr (Zubovas & King 2012).
+- **Fermi Bubble morphology:** The UQFF F_U_Bi = -8.31 $\times$ 10211 N predicts bubble inflation timescale: t_bubble = 2 $\times$ 25 kpc / v_gas = 2 $\times$ 7.7 $\times$ 102° / 106 ˜ 50 Myr — consistent with the Fermi Bubble age estimate of 6–50 Myr (Zubovas & King 2012).
 - **?0_crit mapping:** ALMA kinematic observations of GC molecular emission can constrain the characteristic frequency of the GC medium near the sign-transition boundary ~10?13 rad/s.
 - **Negative buoyancy signature:** eROSITA X-ray bubbles (Predehl et al. 2020) trace the outer boundary of the negative-buoyancy outflow; the UQFF negative buoyancy force predicts the coherent outer shell morphology.
 
@@ -192,7 +192,7 @@ Session 72c.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -211,7 +211,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -234,7 +234,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -321,7 +321,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.187 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -332,13 +332,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

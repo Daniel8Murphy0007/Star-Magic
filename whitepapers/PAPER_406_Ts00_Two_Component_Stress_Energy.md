@@ -33,7 +33,7 @@ compressed field equations and observational predictions within the Star-Magic/U
 PAPER_392 established the Aether metric tensor perturbation:
 $$A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_{s00} \cdot \cos(\pi t_n) \cdot I_4$$
 
-with $T_{s00} = 1.127\times10^7$ kg/(m·s2) cited as the total stress-energy coefficient.
+with $T_{s00} = 1.127\times10^7$ kg/(m$\cdot$s2) cited as the total stress-energy coefficient.
 
 PAPER_406 extracts the **full two-component decomposition of Ts00** from the construction file:
 
@@ -48,17 +48,17 @@ This is the **FIRST Ts00 explicit two-component stress-energy decomposition** in
 
 ### 2.1 Two-Component Ts00
 
-$$\boxed{T_{s00} = T_{\text{solar}} + T_{\text{SCm,UA}} = 1.27\times10^3 + 1.11\times10^7 \approx 1.11127\times10^7\ \text{kg/(m·s}^2\text{)}}$$
+$$\boxed{T_{s00} = T_{\text{solar}} + T_{\text{SCm,UA}} = 1.27\times10^3 + 1.11\times10^7 \approx 1.11127\times10^7\ \text{kg/(m\cdots}^2\text{)}}$$
 
 ### 2.2 Component Definitions
 
 **Solar radiation component:**
-$$T_{\text{solar}} = \frac{L_\odot}{4\pi r^2 c} \approx 1.27\times10^3\ \text{kg/(m·s}^2\text{)}$$
+$$T_{\text{solar}} = \frac{L_\odot}{4\pi r^2 c} \approx 1.27\times10^3\ \text{kg/(m\cdots}^2\text{)}$$
 
 *(Solar radiation pressure at 1 AU distance)*
 
 **SCm-UA stress-energy component:**
-$$T_{\text{SCm,UA}} = \rho_{\text{SCm,Sun}} \cdot v_{\text{SCm}}^2 \approx 1.11\times10^7\ \text{kg/(m·s}^2\text{)}$$
+$$T_{\text{SCm,UA}} = \rho_{\text{SCm,Sun}} \cdot v_{\text{SCm}}^2 \approx 1.11\times10^7\ \text{kg/(m\cdots}^2\text{)}$$
 
 *(SCm field energy density contributing to stress-energy tensor)*
 
@@ -80,7 +80,7 @@ $$T_{\text{solar}} = \frac{L_\odot}{4\pi r_{\text{AU}}^2 c} = \frac{3.846\times1
 
 $$T_{\text{solar}} = \frac{3.846\times10^{26}}{8.453\times10^{31} \times 3\times10^8} = \frac{3.846\times10^{26}}{2.536\times10^{40}}$$
 
-$$T_{\text{solar}} \approx 1.518\times10^{-14}\ \text{kg/(m·s}^2\text{)}$$
+$$T_{\text{solar}} \approx 1.518\times10^{-14}\ \text{kg/(m\cdots}^2\text{)}$$
 
 > Note: The C++ value $1.27\times10^3$ appears to use a different normalization,
 > possibly per unit solid angle or integrated over a disk cross-section. The functional
@@ -113,7 +113,7 @@ perturbation receives **two distinct physical contributions**:
 The SCm-UA component dominates, confirming that the Aether metric tensor perturbation
 is primarily a **SCm phenomenon** with only minor electromagnetic correction.
 
-### 4.2 tr(A_μν) = −2.0 Universal Trace
+### 4.2 tr(A_$\mu$$\nu$) = -2.0 Universal Trace
 
 With $T_{s00} \approx 1.11\times10^7$ and $\eta = 10^{-22}$:
 
@@ -124,14 +124,14 @@ The trace:
 $$\text{tr}(A_{\mu\nu}) = \text{tr}(g_{\mu\nu}) + 4 \cdot \eta \cdot T_{s00}$$
 $$= -2.0 + 4 \times 10^{-22} \times 1.11\times10^7 = -2.0 + 4.44\times10^{-15} \approx -2.0$$
 
-This confirms PAPER_392's verified result: **tr(A_μν) = −2.0** in the Minkowski limit,
+This confirms PAPER_392's verified result: **tr(A_$\mu$$\nu$) = -2.0** in the Minkowski limit,
 independent of the Ts00 decomposition — a non-trivial self-consistency check.
 
 ### 4.3 T_solar as Observational Calibration Anchor
 
-$T_{\text{solar}} = 1.27\times10^3$ kg/(m·s2) is a parameter anchored to the measured solar
+$T_{\text{solar}} = 1.27\times10^3$ kg/(m$\cdot$s2) is a parameter anchored to the measured solar
 luminosity and 1 AU distance. This provides a **hard observational calibration** for the
-entire A_μν framework: any perturbation from $T_{\text{solar}}$ is measurable via precision
+entire A_$\mu$$\nu$ framework: any perturbation from $T_{\text{solar}}$ is measurable via precision
 solar pressure experiments (e.g., solar sail missions).
 
 ---
@@ -142,8 +142,8 @@ solar pressure experiments (e.g., solar sail missions).
 |---------|-----------|-----------|
 | $T_{s00}$ value | $1.127\times10^7$ | $1.27\times10^3 + 1.11\times10^7$ |
 | Component resolution | Single value | Two explicit components |
-| tr($A_{\mu\nu}$) | −2.0 verified | −2.0 re-verified |
-| New insight | A_μν perturbation | T_solar vs T_SCm,UA ratio |
+| tr($A_{\mu\nu}$) | -2.0 verified | -2.0 re-verified |
+| New insight | A_$\mu$$\nu$ perturbation | T_solar vs T_SCm,UA ratio |
 
 ---
 
@@ -185,7 +185,7 @@ double cos_factor = cos(M_PI * t_n);
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -288,7 +288,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.132 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -302,18 +302,18 @@ benchmarks:
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |---|---|---|---|---|
-| Gravitational coupling G | κ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N·m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
-| Higgs mass m_H | UQFF K_HIGGS = 47.34 → m_H = 125.09 GeV | m_H = 125.20 ± 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
-| Neutron magnetic moment | SCm coupling → μ_n = −1.913 μ_N | μ_n = −1.9130 ± 0.0001 μ_N (NIST 2022) | NIST 2022 | 99.9% |
-| Proton charge radius | UA topology → r_p = 0.841 fm | r_p = 0.8414 ± 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
-| Electron anomalous g−2 | UQFF SCm loop correction → a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
-| CMB temperature T₀ | UQFF cosmological buoyancy → T₀ = 2.7255 K | T₀ = 2.72548 ± 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
+| Gravitational coupling G | $\kappa$ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N$\cdot$m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
+| Higgs mass m_H | UQFF K_HIGGS = 47.34 $\to$ m_H = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
+| Neutron magnetic moment | SCm coupling $\to$ $\mu$_n = -1.913 $\mu$_N | $\mu$_n = -1.9130 $\pm$ 0.0001 $\mu$_N (NIST 2022) | NIST 2022 | 99.9% |
+| Proton charge radius | UA topology $\to$ r_p = 0.841 fm | r_p = 0.8414 $\pm$ 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
+| Electron anomalous g-2 | UQFF SCm loop correction $\to$ a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
+| CMB temperature T0 | UQFF cosmological buoyancy $\to$ T0 = 2.7255 K | T0 = 2.72548 $\pm$ 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
 
-**New physics claim:** UQFF vacuum topology operates at κ = 5.0e-4 day-1, consistent with
+**New physics claim:** UQFF vacuum topology operates at $\kappa$ = 5.0e-4 day-1, consistent with
 gravitational buoyancy at cosmological scales beyond standard model predictions.
 
-**Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4;
-k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+**Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4;
+k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 *CVW Gate G6 — Session 166 patch (CVW v2.0.0 upgrade)*
 

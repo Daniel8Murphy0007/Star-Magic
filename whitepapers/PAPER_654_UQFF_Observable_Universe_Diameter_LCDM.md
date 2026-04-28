@@ -10,7 +10,7 @@ tags: [vacuum, SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_654: UQFF Observable Universe Diameter & ΛCDM Friedmann Integration
+# PAPER_654: UQFF Observable Universe Diameter & $\Lambda$CDM Friedmann Integration
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
@@ -26,18 +26,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 $$\chi = \int_0^{t_0} \frac{c\, dt}{a(t)};\quad d_{\text{horizon}} = 46.5\ \text{Gly};\quad d_{\text{diameter}} = 2\,d_{\text{horizon}} = 93\ \text{Gly}$$
 
 The observable universe diameter (93 Giga-light-years) is derived from the Friedmann
-equation under ΛCDM parameters: H₀ = 70 km/s/Mpc, Ωm = 0.3, ΩΛ = 0.7.
-The comoving distance integral χ evaluates to 46.5 Gly (particle horizon), and the
+equation under $\Lambda$CDM parameters: H0 = 70 km/s/Mpc, $\Omega$m = 0.3, $\Omega$$\Lambda$ = 0.7.
+The comoving distance integral $\chi$ evaluates to 46.5 Gly (particle horizon), and the
 space between last-scattering surface (z_CMB = 1100) and today expanded by a factor
-3.4×. This paper presents the full ΛCDM Friedmann integration from the UniverseDiameter
+3.4$\times$. This paper presents the full $\Lambda$CDM Friedmann integration from the UniverseDiameter
 module, connects the Vacuum Density Series (PAPER_647) to the Friedmann energy density
-terms, and derives the UQFF prediction for the observable universe using the ρvac,[SCm]
-→ ρvac,A transition as the crossover between quantum-dominated and dark-energy-dominated
+terms, and derives the UQFF prediction for the observable universe using the $\rho$vac,[SCm]
+$\to$ $\rho$vac,A transition as the crossover between quantum-dominated and dark-energy-dominated
 cosmic epochs.
 
 ---
 
-## §1 ΛCDM Friedmann Equations
+## §1 $\Lambda$CDM Friedmann Equations
 
 ### 1.1 Friedmann Equations
 
@@ -47,14 +47,14 @@ For flat (k=0) universe:
 
 $$H(t) = H_0 \sqrt{\Omega_m(1+z)^3 + \Omega_Lambda}$$
 
-**ΛCDM Parameters (Planck 2018 consensus):**
+**$\Lambda$CDM Parameters (Planck 2018 consensus):**
 
 | Parameter | Value |
 |-----------|-------|
-| H₀ | 70 km/s/Mpc |
-| Ωm | 0.3 |
-| ΩΛ | 0.7 |
-| Ωk | 0.0 (flat) |
+| H0 | 70 km/s/Mpc |
+| $\Omega$m | 0.3 |
+| $\Omega$$\Lambda$ | 0.7 |
+| $\Omega$k | 0.0 (flat) |
 | z_CMB | ~1100 |
 
 ### 1.2 Scale Factor Evolution
@@ -65,10 +65,10 @@ The expansion factor from CMB emission to today:
 
 $$\frac{a_0}{a_{\text{CMB}}} = 1 + z_{\text{CMB}} = 1101 \approx 3.4 \times 10^2 \cdot \ln(1101)/\ln(10)$$
 
-Note: the 3.4× cited in the source refers to the **volume-per-linear-scale** expansion
+Note: the 3.4$\times$ cited in the source refers to the **volume-per-linear-scale** expansion
 in the dark energy dominated era (z < 0.3): from z=0.3 to z=0, comoving scale grew
-×1.3, but physical scale grew ×(1.3/1.3) = ×1.0 — the linear factor 3.4× actually
-refers to the ratio d_physical/d_CMB in proper distance (d ≈ 3.4 × c·t₀/(1+z_cmb)^{1/3}).
+$\times$1.3, but physical scale grew $\times$(1.3/1.3) = $\times$1.0 — the linear factor 3.4$\times$ actually
+refers to the ratio d_physical/d_CMB in proper distance (d $\approx$ 3.4 $\times$ c$\cdot$t0/(1+z_cmb)^{1/3}).
 
 ---
 
@@ -80,7 +80,7 @@ $$\chi = \int_0^{t_0} \frac{c\, dt}{a(t)} = \int_0^\infty \frac{c\, dz}{H(z)} = 
 
 ### 2.2 Numerical Evaluation
 
-With H₀ = 70 km/s/Mpc = 2.268×10-18 s-1 and c = 2.998×105 km/s:
+With H0 = 70 km/s/Mpc = 2.268$\times$10-18 s-1 and c = 2.998$\times$105 km/s:
 
 $$c/H_0 = \frac{2.998\times10^5}{70} \text{ Mpc} = 4283 \text{ Mpc} = 13.97\ \text{Gly} \approx 14.0\ \text{Gly}$$
 
@@ -90,13 +90,13 @@ $$\chi = \frac{c}{H_0}\int_0^{z_{\text{max}}} \frac{dz}{\sqrt{0.3(1+z)^3 + 0.7}}
 
 $$d_{\text{horizon}} = 46.5\ \text{Gly}; \qquad d_{\text{diameter}} = 2 \times 46.5 = 93\ \text{Gly}$$
 
-### 2.3 Matter-Dominated vs Λ-Dominated Epochs
+### 2.3 Matter-Dominated vs $\Lambda$-Dominated Epochs
 
 | Epoch | Dominant term | Scale factor behavior |
 |-------|--------------|----------------------|
-| Radiation (z > 3400) | Ωr(1+z)4 | a(t) ∝ t^{1/2} |
-| Matter (3400 > z > 0.3) | Ωm(1+z)3 | a(t) ∝ t^{2/3} |
-| Λ (z < 0.3) | ΩΛ | a(t) ∝ e^{H_Λt} |
+| Radiation (z > 3400) | $\Omega$r(1+z)4 | a(t) $\propto$ t^{1/2} |
+| Matter (3400 > z > 0.3) | $\Omega$m(1+z)3 | a(t) $\propto$ t^{2/3} |
+| $\Lambda$ (z < 0.3) | $\Omega$$\Lambda$ | a(t) $\propto$ e^{H_$\Lambda$t} |
 
 ---
 
@@ -112,19 +112,19 @@ The UQFF vacuum density transitions:
 
 | Epoch | Dominant vacuum | Value (J/m3) |
 |-------|----------------|--------------|
-| Planck (z > 1032) | ρvac,[SCm] | 7.09×10-37 |
-| Electroweak (z ~ 1015) | ρvac,[UA] | 7.09×10-36 |
-| Big Bang nucleosynthesis (z ~ 108) | ρvac,Ui | 2.84×10-36 |
-| Recombination (z ~ 1100) | ρvac,A → ΛΛ | 10-23 |
-| Today (z = 0) | ρΛ (dark energy) | ~7×10-10 J/m3 |
+| Planck (z > 1032) | $\rho$vac,[SCm] | 7.09$\times$10-37 |
+| Electroweak (z ~ 1015) | $\rho$vac,[UA] | 7.09$\times$10-36 |
+| Big Bang nucleosynthesis (z ~ 108) | $\rho$vac,Ui | 2.84$\times$10-36 |
+| Recombination (z ~ 1100) | $\rho$vac,A $\to$ $\Lambda$$\Lambda$ | 10-23 |
+| Today (z = 0) | $\rho$$\Lambda$ (dark energy) | ~7$\times$10-10 J/m3 |
 
-**UQFF prediction**: the dark energy density today (~ 7×10-10 J/m3) is NOT the
-same as ρvac,A (10-23 gm/cm3 ≈ 9×10-24 J/m3). They are related by:
+**UQFF prediction**: the dark energy density today (~ 7$\times$10-10 J/m3) is NOT the
+same as $\rho$vac,A (10-23 gm/cm3 $\approx$ 9$\times$10-24 J/m3). They are related by:
 
 $$\rho_Lambda^{\text{today}} = \rho_{\text{vac},A} \cdot \frac{a_0^3}{V_{\text{horizon}}} \cdot (1 + E_{\text{react}}/E_0)$$
 
 This is a UQFF prediction for the cosmological constant as an **evolving vacuum density
-compression**, not a fixed constant — contrasting with the standard ΛCDM assumption.
+compression**, not a fixed constant — contrasting with the standard $\Lambda$CDM assumption.
 
 ### 3.2 Cosmic Age from UQFF
 
@@ -134,7 +134,7 @@ The UQFF correction via Ui (inertia delay in expansion):
 
 $$t_{0,\text{UQFF}} = t_0 \cdot (1 + \lambda_i \cdot \phi_{Ui}) \approx 13.8 \times (1 + 10^{-47}) \approx 13.8\ \text{Gyr}$$
 
-The Ui correction is negligible at cosmological scales — UQFF agrees with ΛCDM for
+The Ui correction is negligible at cosmological scales — UQFF agrees with $\Lambda$CDM for
 universe age and observable diameter to better than one part in 1046.
 
 ---
@@ -145,13 +145,13 @@ universe age and observable diameter to better than one part in 1046.
 |---------|--------|-------|
 | Observable diameter | d_obs | 93 Gly |
 | Particle horizon distance | d_horizon | 46.5 Gly |
-| Cosmic age | t₀ | 13.8 Gyr |
-| Hubble radius today | c/H₀ | 14.0 Gly |
+| Cosmic age | t0 | 13.8 Gyr |
+| Hubble radius today | c/H0 | 14.0 Gly |
 | CMB redshift | z_CMB | ~1100 |
-| Expansion factor (CMB→now) | (1+z_CMB) | 1101 |
-| Matter fraction | Ωm | 0.3 |
-| Dark energy fraction | ΩΛ | 0.7 |
-| Spatial curvature | Ωk | 0.0 (flat) |
+| Expansion factor (CMB$\to$now) | (1+z_CMB) | 1101 |
+| Matter fraction | $\Omega$m | 0.3 |
+| Dark energy fraction | $\Omega$$\Lambda$ | 0.7 |
+| Spatial curvature | $\Omega$k | 0.0 (flat) |
 | Total universe mass (est.) | M_total | ~1054 gm |
 
 ---
@@ -255,7 +255,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.102 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -266,12 +266,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | Planck 2018 | UQFF Prediction | Alignment |
 |------------|-------------|-----------------|-----------|
-| H₀ | 67.4–73 km/s/Mpc | 70 km/s/Mpc (input) | ✅ within tension range |
+| H0 | 67.4–73 km/s/Mpc | 70 km/s/Mpc (input) | ✅ within tension range |
 | Observable diameter | 93 Gly | 93 Gly (computed) | ✅ 100% |
 | Cosmic age | 13.787 Gyr | 13.8 Gyr | ✅ 0.1% |
 | CMB redshift | 1089 | 1100 (approx) | ✅ 1% |
-| Ωm | 0.315 ± 0.007 | 0.3 (rounded) | ✅ 5% |
-| ΩΛ | 0.685 ± 0.007 | 0.7 (rounded) | ✅ 2% |
+| $\Omega$m | 0.315 $\pm$ 0.007 | 0.3 (rounded) | ✅ 5% |
+| $\Omega$$\Lambda$ | 0.685 $\pm$ 0.007 | 0.7 (rounded) | ✅ 2% |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
 
@@ -280,8 +280,8 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 ## References
 
 1. UniverseDiameter module — grok_share_b2e2c5cba7a.txt (Session 168) lines 3413–3623
-2. PAPER_647 — Vacuum Density Series (ρvac transitions by epoch)
-3. PAPER_651 — Wheeler-DeWitt UQFF (boundary conditions at a→0)
+2. PAPER_647 — Vacuum Density Series ($\rho$vac transitions by epoch)
+3. PAPER_651 — Wheeler-DeWitt UQFF (boundary conditions at a$\to$0)
 4. PAPER_642 — SM Parameter Bridge
 5. Planck Collaboration (2020): "Planck 2018 Cosmological Parameters", A&A 641:A6
 6. Kolb E W, Turner M S: *The Early Universe* (Addison-Wesley, 1990)

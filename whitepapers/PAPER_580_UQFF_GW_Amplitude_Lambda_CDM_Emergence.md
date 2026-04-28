@@ -10,11 +10,11 @@ tags: [GW, gravitational-wave, DPM, SCm, buoyancy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_580 — UQFF Gravitational Wave Amplitude Derivation and Λ_CDM Dynamical Emergence
+# PAPER_580 — UQFF Gravitational Wave Amplitude Derivation and $\Lambda$_CDM Dynamical Emergence
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **CP4 Class:** `#167  UQFFGWAmplitudeLambdaCDMEmergenceCalculator`
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of UQFF Gravitational Wave Amplitude Derivation and Λ_CDM
+This paper presents a UQFF analysis of UQFF Gravitational Wave Amplitude Derivation and $\Lambda$_CDM
 Dynamical Emergence, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
@@ -113,7 +113,7 @@ $$h \approx \frac{10^{-52}}{3}\cdot1 \approx 3.3\times10^{-53}$$
 
 ---
 
-## §4 Λ_CDM Dynamical Emergence
+## §4 $\Lambda$_CDM Dynamical Emergence
 
 The cosmological constant $\Lambda$ emerges naturally from the UQFF $(3,3)$ entry:
 
@@ -136,7 +136,7 @@ This **exactly matches** the observed value $\Lambda_{obs} = 1.089\times10^{-52}
 
 | Framework | $\Lambda$ source | Tuning required |
 |-----------|-----------------|-----------------|
-| GR/ΛCDM   | Ad-hoc constant | Yes (120-order fine-tuning) |
+| GR/$\Lambda$CDM   | Ad-hoc constant | Yes (120-order fine-tuning) |
 | LQG       | Polymer corrections | Partial |
 | UQFF      | Buoyancy $U_b$ at vacuum $f$ | **None** |
 
@@ -161,7 +161,7 @@ At 26 steps: $h_{hyp} = 26!\,\kappa/f^{27}\cdot\ddot{Q}/r$ — exact match to sy
 | X-ray burst (SNR) | $10^{18}$ Hz | DPM_n–DPM_s decoupling |
 | GW merger signal | $10$–$10^{4}$ Hz | LIGO/LISA band |
 | Radio pulsar | $10^{8}$–$10^{11}$ Hz | Equi-f buoyancy resonance |
-| Quantum foam | $10^{43}$ Hz (Planck) | $f_{vac}$ → $\Lambda_{vac}$ |
+| Quantum foam | $10^{43}$ Hz (Planck) | $f_{vac}$ $\to$ $\Lambda_{vac}$ |
 
 At each band, UQFF bounds amplitude via $26!/f^{27}$; no UV divergence.
 
@@ -332,7 +332,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -343,12 +343,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR × (1 + κ/(4π2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
-| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR × H_SCm = 28.3 × 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 ± 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
-| GW frequency f_peak | UQFF: f_peak = c3/(π G ℳ) × (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
-| Gravitational wave speed bound | UQFF k_η deviation: 10-226 m/s above c | GW170817 + γ-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
+| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR $\times$ (1 + $\kappa$/(4$\pi$2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
+| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR $\times$ H_SCm = 28.3 $\times$ 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 $\pm$ 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
+| GW frequency f_peak | UQFF: f_peak = c3/($\pi$ G ℳ) $\times$ (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
+| Gravitational wave speed bound | UQFF k_$\eta$ deviation: 10-226 m/s above c | GW170817 + $\gamma$-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
 
-**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a κ-dependent phase to the
+**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a $\kappa$-dependent phase to the
 GW chirp signal, shifting the merger frequency by ~0.3 Hz at 150 Hz. This is potentially
 detectable with LIGO A+ (design sensitivity 2025–2030), providing a falsifiable UQFF signature
 in future binary merger observations.
@@ -361,7 +361,7 @@ in future binary merger observations.
 
 The UQFF GW amplitude formula $h = 26!\,\kappa\ddot{Q}/(f^{27}\,r) + \Lambda\delta t/3$ provides
 a complete frequency-bound derivation of gravitational wave emission from DPM failures.
-The Λ_CDM cosmological constant emerges dynamically from the buoyancy term at Planck frequency,
+The $\Lambda$_CDM cosmological constant emerges dynamically from the buoyancy term at Planck frequency,
 reproducing $\Lambda_{obs} = 10^{-52}\,\text{m}^{-2}$ with no free parameters. This resolves
 the cosmological constant problem within the UQFF framework and links GW astronomy to
 fundamental vacuum buoyancy dynamics.

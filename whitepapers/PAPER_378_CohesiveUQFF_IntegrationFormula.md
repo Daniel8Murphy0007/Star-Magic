@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_378
-title: "Cohesive UQFF Integration Formula: Compressed×Resonance Unification with Resonance Damping
+title: "Cohesive UQFF Integration Formula: Compressed$\times$Resonance Unification with Resonance Damping
 and SM Gravity Emergence"
 session: 103
 date: 2025-01-01
@@ -11,7 +11,7 @@ tags: [MUGE, DPM, damping, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_378 — Cohesive UQFF Integration Formula: Compressed×Resonance Unification with Resonance Damping and SM Gravity Emergence
+# PAPER_378 — Cohesive UQFF Integration Formula: Compressed$\times$Resonance Unification with Resonance Damping and SM Gravity Emergence
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of Cohesive UQFF Integration Formula: Compressed×Resonance
+This paper presents a UQFF analysis of Cohesive UQFF Integration Formula: Compressed$\times$Resonance
 Unification with Resonance Damping and SM Gravity Emergence, deriving compressed field equations and
 observational predictions within the Star-Magic/UQFF framework.
 
@@ -48,8 +48,8 @@ e^{-\alpha t}
 $$
 
 **Where:**
-- $g_{\mathrm{compressed}}$ — Full 6-term Compressed MUGE (PAPER_372): DPM-seeded base ×
-  expansion × superconductivity + Ug-sum + cosmological + quantum coherence + fluid + perturbation
+- $g_{\mathrm{compressed}}$ — Full 6-term Compressed MUGE (PAPER_372): DPM-seeded base $\times$
+  expansion $\times$ superconductivity + Ug-sum + cosmological + quantum coherence + fluid + perturbation
 - $\sum_{i} a_{\mathrm{resonance},i}$ — Sum of all 12 Resonance MUGE terms (PAPER_371):
   $a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res} + U_{g4i}
   + a_{quantum\_freq} + a_{Aether\_freq} + a_{fluid\_freq} + Osc_{term} + a_{exp\_freq} + f_{TRZ}$
@@ -66,7 +66,7 @@ $$
 |--------|---------------|-----------------|
 | Low-frequency limit | Compressed UQFF | Weak fields, large r, late cosmic time; resonances time-averaged |
 | High-energy/resonance regime | Resonance UQFF | Near black holes, magnetars, early-epoch; SCm resonances active |
-| Transition | Both contribute | α sets the crossover timescale |
+| Transition | Both contribute | $\alpha$ sets the crossover timescale |
 
 **Key claim:** The Compressed UQFF is the *time-averaged* or *phase-equilibrium* limit of the
 Resonance UQFF — not a separate theory but a special case of it.
@@ -75,7 +75,7 @@ Resonance UQFF — not a separate theory but a special case of it.
 
 ## 4. SM Gravity Emergence Condition
 
-Standard Model gravity $g_{SM} = μ_s∇(M_s/r)$ is **recovered** from the cohesive framework when two
+Standard Model gravity $g_{SM} = \mu_s\nabla(M_s/r)$ is **recovered** from the cohesive framework when two
 conditions are simultaneously satisfied:
 
 1. **Resonance phase equilibrium:** $f_{TRZ} = 0$  
@@ -128,8 +128,8 @@ interpretation. PAPER_378 establishes the physically motivated exponential coupl
 
 | Parameter | Value | Units | Description |
 |-----------|-------|-------|-------------|
-| α | 0.001 | day-1 | Non-linear time decay rate (same as \alpha global in C++ code) |
-| α (resonance damping) | To be calibrated per system | s-1 | System-dependent resonance decay |
+| $\alpha$ | 0.001 | day-1 | Non-linear time decay rate (same as \alpha global in C++ code) |
+| $\alpha$ (resonance damping) | To be calibrated per system | s-1 | System-dependent resonance decay |
 | fTRZ | 0.1 | — | Time-reversal correction (= 0 for SM limit) |
 | tHubble | 4.35e17 | s | Resonance averaging timescale |
 
@@ -141,7 +141,7 @@ Demonstrating the discrepancy and when each model dominates:
 
 | Quantity | Compressed MUGE | Resonance MUGE | Ratio |
 |----------|----------------|----------------|-------|
-| Dominant term | Perturbation $(M·\delta\rho/\rho)$ | Fluid $a_{fluid\_freq}$ | — |
+| Dominant term | Perturbation $(M\cdot\delta\rho/\rho)$ | Fluid $a_{fluid\_freq}$ | — |
 | g value | $1.782 \times 10^{39}$ m/s2 | $1.773 \times 10^{-9}$ m/s2 | 48 orders |
 
 For this system at $t = 3.799 \times 10^{10}$ s, the resonance contribution is entirely
@@ -172,7 +172,7 @@ double t) {
 
 **Class:** `CohesiveUQFFIntegrationCalculator`  
 **Category:** MUGE Unification  
-**Key method:** `compute(dataset)` — takes compressed and resonance inputs + damping factor α  
+**Key method:** `compute(dataset)` — takes compressed and resonance inputs + damping factor $\alpha$  
 **References:** PAPER_371 (resonance), PAPER_372 (compressed), PAPER_376 (proof set)
 
 ---
@@ -188,7 +188,7 @@ double t) {
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -207,7 +207,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -316,7 +316,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.154 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -327,13 +327,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

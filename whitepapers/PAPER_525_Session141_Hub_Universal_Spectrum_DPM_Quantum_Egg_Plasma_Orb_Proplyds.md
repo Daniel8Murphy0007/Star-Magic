@@ -53,7 +53,7 @@ Negative Time, Force Unification).
 | 6 | UQFF tensor | Diagonal components only | Spectral division tensor with off-diagonal couplings |
 | 7 | Quantum egg | Qualitative description | Full numerical $t_\text{neg}$ simulation |
 | 8 | Plasma orb | Not defined | Probabilistic emergence threshold |
-| 9 | Proplyd explanation | Not connected | Bidirectional DPM ↔ Proplyd framework |
+| 9 | Proplyd explanation | Not connected | Bidirectional DPM $\leftrightarrow$ Proplyd framework |
 | 10 | Centrip/Centrif forces | DPM-seeded (Session 140) | += US spectral weights 1/3 attract / 2/3 repel |
 
 ---
@@ -88,7 +88,7 @@ $$US_\text{egg} = \int_{t\_\text{neg,min}}^{0}
 f(t_\text{neg})\, dt_\text{neg} \quad (\text{trapezoidal, 200 pts})$$
 
 Validated: ALMA 225–345 GHz, exoALMA 230 GHz, VLA 92 GHz,
-JWST 0.97–5.27 μm, Hubble/MUSE 250–500 AU.
+JWST 0.97–5.27 $\mu$m, Hubble/MUSE 250–500 AU.
 
 ---
 
@@ -103,7 +103,7 @@ Orion emergence fraction: **18.32%** | Mean size: **375.87 AU**
 
 ---
 
-## §4 — Proplyd ↔ DPM Bidirectional Framework
+## §4 — Proplyd $\leftrightarrow$ DPM Bidirectional Framework
 
 **Proplyds explain DPM:**
 Proplyds (proto-stellar disks undergoing photoevaporation) are physical
@@ -140,7 +140,7 @@ disk/wind coupling.
 |-------|------|--------|
 | PAPER_521 | $US_\text{range} > 0$ | ✅ $7.57 \times 10^{21}$ Hz |
 | PAPER_522 | $DPM_\text{drive} > ReRing_{BB}$ | ✅ $\sim 10^{14}$ Hz |
-| PAPER_523 | Trapezoidal integral converges | ✅ $1.008 \times 10^{23}$ Hz·s |
+| PAPER_523 | Trapezoidal integral converges | ✅ $1.008 \times 10^{23}$ Hz$\cdot$s |
 | PAPER_524 | $f_\text{emerge} \approx 0.1832$ | ✅ 18.32% |
 | PAPER_525 | Hub status COMPLETE | ✅ |
 
@@ -265,7 +265,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -276,10 +276,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Solar System / Proplyd luminosity UV/optical (HST) | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X `T_M_sun` = 5778 K | HST/VLT | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/VLT | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Solar System / Proplyd luminosity UV/optical (HST) | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X `T_M_sun` = 5778 K | HST/VLT | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST/VLT | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Solar System / Proplyd

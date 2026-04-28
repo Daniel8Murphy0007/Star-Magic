@@ -142,8 +142,8 @@ The uniform 75–85% alignment across these radically different domains at the s
 | PAPER | Relation |
 |-------|---------|
 | PAPER_424 | F_UBii catalog — anyon entry is one domain pair |
-| PAPER_425 | DPM_stability = ρ_vac_UA (basis of all four Ug4 terms) |
-| PAPER_427 | 26D layers — UTe2 δ_n series uses the same [SSq]·i/26 decay |
+| PAPER_425 | DPM_stability = $\rho$_vac_UA (basis of all four Ug4 terms) |
+| PAPER_427 | 26D layers — UTe2 $\delta$_n series uses the same [SSq]$\cdot$i/26 decay |
 
 ---
 
@@ -151,11 +151,11 @@ The uniform 75–85% alignment across these radically different domains at the s
 
 **Class:** `UAScmJWSTALMACERNValidationTableCalculator`  
 **Methods:**
-- `compute_shock_metallicity(rho_SCm, rho_UA, v_s)` → alignment % + prediction
-- `compute_Ug4_metallicity(z, SSq, z_ref)` → f_Z_over, f_Z_under
-- `compute_FUBii_anyons(delta_c, sigma)` → F_UBii anyon value
-- `compute_delta_n_UTe2(n, SSq, f_topo, t)` → δ_n for n=1..N
-- `get_validation_table()` → full 4-row alignment table dict
+- `compute_shock_metallicity(rho_SCm, rho_UA, v_s)` $\to$ alignment % + prediction
+- `compute_Ug4_metallicity(z, SSq, z_ref)` $\to$ f_Z_over, f_Z_under
+- `compute_FUBii_anyons(delta_c, sigma)` $\to$ F_UBii anyon value
+- `compute_delta_n_UTe2(n, SSq, f_topo, t)` $\to$ $\delta$_n for n=1..N
+- `get_validation_table()` $\to$ full 4-row alignment table dict
 
 ---
 
@@ -163,7 +163,7 @@ The uniform 75–85% alignment across these radically different domains at the s
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -262,7 +262,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.077 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -273,12 +273,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| sin2θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin2θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
-| ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| sin2$\theta$_W weak mixing | UQFF H_SCm=0.990 $\to$ 4-fold formula $\to$ 0.2304 | sin2$\theta$_W = 0.23122 $\pm$ 0.00003 | PDG 2024 | 99.6% |
+| ALICE dN/d$\eta$ (13.6 TeV) | UQFF [SSq]$\times$1.077 = $\beta$_i = 0.614 | dN/d$\eta$ = 17.43 $\pm$ 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
+| Cross-system $\kappa$ universality | $\kappa$ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay $\Gamma$_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
 
-**New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
+**New physics claim:** The same UQFF parameter set ($\kappa$, [SSq], $\beta$_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)
 across a 29-system cross-validation matrix — without per-system free-parameter adjustment.
 No SM framework derives these three observables from a single connected constant set.

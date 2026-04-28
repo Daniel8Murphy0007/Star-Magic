@@ -71,13 +71,13 @@ $$\boxed{E(t) = 0.1\left(1 - e^{-t/\tau_text{exp}}\right)}$$
 
 $$\boxed{g_\text{Bub}(r,t) = T_1 (1-E(t)) + T_2(1-E(t)) + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-seeded + H₀t + B × (1-E(t)):**
+**T1 — DPM-seeded + H0t + B $\times$ (1-E(t)):**
 $$T_1 = \frac{GM_\star}{r^2}(1+H_0 t)(1-B/B_\text{crit})(1-E(t))$$
 $$\frac{GM_\star}{r^2} = \frac{6.674\times10^{-11}\times9.149\times10^{31}}{(4.731\times10^{16})^2} = \frac{6.104\times10^{21}}{2.238\times10^{33}} \approx 2.73\times10^{-12} \, \text{m/s}^2$$
 
 At $t=\tau_text{exp}=4$ Myr: $T_1 \approx 2.73\times10^{-12} \times 0.937 \approx 2.55\times10^{-12}$ m/s2
 
-**T2 — UQFF Ug × (1-E(t)):** $\approx 2 \times 2.73\times10^{-12} \times 1.1 \times 0.937 \approx 5.62\times10^{-12}$ m/s2  
+**T2 — UQFF Ug $\times$ (1-E(t)):** $\approx 2 \times 2.73\times10^{-12} \times 1.1 \times 0.937 \approx 5.62\times10^{-12}$ m/s2  
 
 **T3-T8:** All negligible or minor
 
@@ -121,7 +121,7 @@ Standard Weaver et al. (1977) stellar wind bubble model: $R \propto (L_w t^3/\rh
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -140,7 +140,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -215,7 +215,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -226,10 +226,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Bubble Nebula NGC 7635 luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X R_bubble ~ 3 pc | HST + Chandra | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST + Chandra | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Bubble Nebula NGC 7635 luminosity H$\alpha$ + X-ray | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X R_bubble ~ 3 pc | HST + Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST + Chandra | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Bubble Nebula NGC 7635
@@ -365,14 +365,14 @@ saturation form of the general E+(t) master equation:
 
 $$
 \begin{aligned}
-  & NGC 7635:  E(t) = E_0·(1-exp(-t/tau))     [bounded growth, tau ~ Myr] \\
+  & NGC 7635:  E(t) = E_0\cdot(1-exp(-t/tau))     [bounded growth, tau ~ Myr] \\
   & CP4 class: PositiveEtBuoyancyExpansionMasterCalc(\text{F\_UBi\_over\_FU}=1.1) \\
-  & → unbounded exponential at early times \\
-  & → NGC 7635's bounded form = physical saturation limit
+  & \to unbounded exponential at early times \\
+  & \to NGC 7635's bounded form = physical saturation limit
 \end{aligned}
 $$
 
-### S209.3 MUGE ↔ UQFF Dual Framework
+### S209.3 MUGE $\leftrightarrow$ UQFF Dual Framework
 
 | CP4 Class | # | PAPER | MUGE Connection |
 |-----------|---|-------|----------------|

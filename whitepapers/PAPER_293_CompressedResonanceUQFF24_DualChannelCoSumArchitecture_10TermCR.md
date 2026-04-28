@@ -29,7 +29,7 @@ prior UQFF resonance modules (RSC Module, Crab PWN Module) employed pure-resonan
 prior UQFF compressed modules (Sombrero, Saturn, M16, Andromeda) employed pure-compressed channels.
 This module is the FIRST to merge both channel architectures into a single co-sum operator,
 establishing the UQFF Dual-Channel Co-Sum (CR) architecture and introducing an analytic
-inter-channel dominance ratio R_CR = Σ_comp / Σ_res for systems-18-24 class parameters.
+inter-channel dominance ratio R_CR = $\Sigma$_comp / $\Sigma$_res for systems-18-24 class parameters.
 
 ---
 
@@ -41,8 +41,8 @@ Previous UQFF modules separated into two families:
 
 | Family | Example Modules | Channel Structure |
 |--------|----------------|-------------------|
-| Compressed | Sombrero, Saturn, M16, Andromeda | DPM + THz + vac_diff + super → SCm → TRZ |
-| Resonance | RSC Magnetar, Crab PWN | aether + U_g4i + osc + quantum + fluid + exp → SCm |
+| Compressed | Sombrero, Saturn, M16, Andromeda | DPM + THz + vac_diff + super $\to$ SCm $\to$ TRZ |
+| Resonance | RSC Magnetar, Crab PWN | aether + U_g4i + osc + quantum + fluid + exp $\to$ SCm |
 
 No UQFF module prior to Session 83 combined both channel families simultaneously in a co-sum
 formulation. The Compressed-MUGE hybrid (SOURCE4, source4.cpp) computed them in sequence but as
@@ -51,7 +51,7 @@ separate results, not a unified co-sum.
 ### 1.2 Systems 18-24 Physical Context
 
 The Systems 18-24 class spans galactic, nebular, and planetary scales at DPM frequency f_DPM =
-1×1011 Hz:
+1$\times$1011 Hz:
 
 | System | Class | Scale |
 |--------|-------|-------|
@@ -63,7 +63,7 @@ The Systems 18-24 class spans galactic, nebular, and planetary scales at DPM fre
 | Hubble Ultra Deep Field (HUDF) | Cosmological volume | Gpc-class |
 | Andromeda (M31 overlap) | Local Group spiral | kpc |
 
-These systems share the 1×1011 Hz DPM frequency class (opposed to magnetar class f_DPM = 1×1012).
+These systems share the 1$\times$1011 Hz DPM frequency class (opposed to magnetar class f_DPM = 1$\times$1012).
 Both Compressed and Resonance channels operate at this scale.
 
 ---
@@ -84,7 +84,7 @@ and the **Resonance channel** (6 terms, one time-dependent) is:
 
 $$\Sigma_{res} = a_{aether} + a_{U\_{g4i}} + a_{osc}(t) + a_{quantum} + a_{fluid} + a_{exp}$$
 
-The Meissner superconducting factor SCm = (1 − B/B_crit) and time-reversal zone factor (1 + f_TRZ)
+The Meissner superconducting factor SCm = (1 - B/B_crit) and time-reversal zone factor (1 + f_TRZ)
 apply jointly to the co-sum.
 
 ### 2.2 Channel Definitions
@@ -93,23 +93,23 @@ apply jointly to the co-sum.
 
 | Term | Formula | Value (sys 18-24) |
 |------|---------|-------------------|
-| a_DPM | F_DPM × f_DPM × E_vac / (c × V_sys) | 3.543×10-15 m/s2 |
-| a_THz | Γ_THz × a_DPM = (10 f_THz v_exp / c) × a_DPM | 1.181×10-6 m/s2 |
-| `a_vac_diff` | (E₀ `f_vac_diff` V_sys a_DPM) / ħ | 128.4 m/s2 [PAPER_294] |
-| a_super | A_sc × a_DPM | 2.479×104 m/s2 [PAPER_295] |
-| **Σ_comp** | sum | **≈ 2.481×104 m/s2** |
+| a_DPM | F_DPM $\times$ f_DPM $\times$ E_vac / (c $\times$ V_sys) | 3.543$\times$10-15 m/s2 |
+| a_THz | $\Gamma$_THz $\times$ a_DPM = (10 f_THz v_exp / c) $\times$ a_DPM | 1.181$\times$10-6 m/s2 |
+| `a_vac_diff` | (E0 `f_vac_diff` V_sys a_DPM) / ħ | 128.4 m/s2 [PAPER_294] |
+| a_super | A_sc $\times$ a_DPM | 2.479$\times$104 m/s2 [PAPER_295] |
+| **$\Sigma$_comp** | sum | **$\approx$ 2.481$\times$104 m/s2** |
 
 **Resonance channel terms:**
 
 | Term | Formula | Value (sys 18-24, t=0) |
 |------|---------|------------------------|
-| a_aether | f_aether × 10-8 × f_DPM × (1+f_TRZ) × a_DPM | 3.897×10-9 m/s2 |
-| `a_U_g4i` | f_sc × f_react × a_DPM / (E_vac × c) | 1.666×1021 m/s2 |
-| a_osc(t) | standing + traveling wave | ~2.455×10-9 m/s2 (t=0) |
-| a_quantum | f_quantum × E_vac × a_DPM / (E_ISM × c) | ~1.7×10-30 m/s2 |
-| a_fluid | f_fluid × E_vac × V_fluid × a_DPM / (E_ISM × c) | ~5.3×10-26 m/s2 |
-| a_exp | f_exp × E_vac × a_DPM / (E_ISM × c) | ~1.6×10-20 m/s2 |
-| **Σ_res** | sum | **≈ 1.666×1021 m/s2** |
+| a_aether | f_aether $\times$ 10-8 $\times$ f_DPM $\times$ (1+f_TRZ) $\times$ a_DPM | 3.897$\times$10-9 m/s2 |
+| `a_U_g4i` | f_sc $\times$ f_react $\times$ a_DPM / (E_vac $\times$ c) | 1.666$\times$1021 m/s2 |
+| a_osc(t) | standing + traveling wave | ~2.455$\times$10-9 m/s2 (t=0) |
+| a_quantum | f_quantum $\times$ E_vac $\times$ a_DPM / (E_ISM $\times$ c) | ~1.7$\times$10-30 m/s2 |
+| a_fluid | f_fluid $\times$ E_vac $\times$ V_fluid $\times$ a_DPM / (E_ISM $\times$ c) | ~5.3$\times$10-26 m/s2 |
+| a_exp | f_exp $\times$ E_vac $\times$ a_DPM / (E_ISM $\times$ c) | ~1.6$\times$10-20 m/s2 |
+| **$\Sigma$_res** | sum | **$\approx$ 1.666$\times$1021 m/s2** |
 
 ---
 
@@ -126,22 +126,22 @@ At systems-18-24 default parameters:
 $$R_{CR} = \frac{2.481 \times 10^4}{1.666 \times 10^{21}} = 1.490 \times 10^{-17}$$
 
 The resonance channel dominates the compressed channel by approximately **17 orders of magnitude**
-at these parameters. The co-sum is therefore resonance-dominated: g_CR ≈ Σ_res × SCm × (1+f_TRZ) to
+at these parameters. The co-sum is therefore resonance-dominated: g_CR $\approx$ $\Sigma$_res $\times$ SCm $\times$ (1+f_TRZ) to
 17-digit precision.
 
 ### 3.2 Physical Interpretation
 
-The extreme R_CR asymmetry arises from the a_U_g4i term, which grows as f_react × a_DPM / (E_vac ×
+The extreme R_CR asymmetry arises from the a_U_g4i term, which grows as f_react $\times$ a_DPM / (E_vac $\times$
 c). For f_react = 109 Hz (systems 18-24 reaction frequency):
 
 $$a_{U\_{g4i}} = \frac{f_{sc} \cdot f_{react} \cdot a_{DPM}}{E_{vac} \cdot c} = \frac{1.0 \times 10^9 \times 3.543 \times 10^{-15}}{7.09 \times 10^{-36} \times 3 \times 10^8} = 1.666 \times 10^{21} \; \text{m/s}^2$$
 
 This corresponds to an extreme near-nuclear regime. The compressed channel, by contrast, reaches
-only ~2.481×104 m/s2 (super-dominant term).
+only ~2.481$\times$104 m/s2 (super-dominant term).
 
 ### 3.3 Tipping-Point Analysis
 
-For R_CR ≥ 1 (compressed channel to dominate), solving Σ_comp = Σ_res:
+For R_CR $\geq$ 1 (compressed channel to dominate), solving $\Sigma$_comp = $\Sigma$_res:
 
 $$a_{super} \approx a_{U\_{g4i}}$$
 $$A_{sc} \cdot a_{DPM} = f_{react} \cdot a_{DPM} / (E_{vac} \cdot c) / f_{sc}$$
@@ -164,8 +164,8 @@ systems.
 | Channel count | 1 | 1 | **2 explicit** |
 | Compressed terms | 4 | 0 | **4** |
 | Resonance terms | 0 | 6 | **6** |
-| Co-sum formula | Σ_comp | Σ_res | **Σ_comp + Σ_res** |
-| R_CR observable | N/A | N/A | **1.490×10-17** |
+| Co-sum formula | $\Sigma$_comp | $\Sigma$_res | **$\Sigma$_comp + $\Sigma$_res** |
+| R_CR observable | N/A | N/A | **1.490$\times$10-17** |
 | Systems | Single class | Single class | Systems 18-24 class |
 
 ---
@@ -191,19 +191,19 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| DPM frequency (sys 18-24) | f_DPM | 1×1011 | Hz |
-| Vortex current | I | 1×1020 | A |
-| Vortex area | A_vort | 3.142×1018 | m2 |
-| Differential ω | ω₁ − ω₂ | 0.02 | rad/s |
-| System volume | V_sys | 4.189×1018 | m3 |
-| Critical field | B_crit | 1×1011 | T |
+| DPM frequency (sys 18-24) | f_DPM | 1$\times$1011 | Hz |
+| Vortex current | I | 1$\times$1020 | A |
+| Vortex area | A_vort | 3.142$\times$1018 | m2 |
+| Differential $\omega$ | $\omega$1 - $\omega$2 | 0.02 | rad/s |
+| System volume | V_sys | 4.189$\times$1018 | m3 |
+| Critical field | B_crit | 1$\times$1011 | T |
 | TRZ factor | f_TRZ | 0.1 | — |
-| Reaction frequency | f_react | 1×109 | Hz |
-| **DPM force** | F_DPM | **6.284×1036** | N |
-| **DPM acceleration** | a_DPM | **3.543×10-15** | m/s2 |
-| **Compressed sum** | Σ_comp | **2.481×104** | m/s2 |
-| **Resonance sum** | Σ_res | **1.666×1021** | m/s2 |
-| **Channel ratio** | R_CR | **1.490×10-17** | — |
+| Reaction frequency | f_react | 1$\times$109 | Hz |
+| **DPM force** | F_DPM | **6.284$\times$1036** | N |
+| **DPM acceleration** | a_DPM | **3.543$\times$10-15** | m/s2 |
+| **Compressed sum** | $\Sigma$_comp | **2.481$\times$104** | m/s2 |
+| **Resonance sum** | $\Sigma$_res | **1.666$\times$1021** | m/s2 |
+| **Channel ratio** | R_CR | **1.490$\times$10-17** | — |
 
 ---
 
@@ -213,7 +213,7 @@ $$
 - **Session:** 83  
 - **Module:** COMPRESSED_RESONANCE_UQFF24_MODULE.cpp (25th C++ UQFF module)  
 - **WOLFRAM_TERM:** CR24_BASE, CR24_DUAL_CHANNEL  
-- **Key discovery:** First UQFF Dual-Channel Co-Sum architecture; R_CR = 1.490×10-17 inter-channel dominance observable  
+- **Key discovery:** First UQFF Dual-Channel Co-Sum architecture; R_CR = 1.490$\times$10-17 inter-channel dominance observable  
 - **Companion papers:** PAPER_294 (vac_diff hbar-denom), PAPER_295 (f_DPM2 scaling)
 
 ---
@@ -224,7 +224,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -243,7 +243,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -352,7 +352,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -363,13 +363,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

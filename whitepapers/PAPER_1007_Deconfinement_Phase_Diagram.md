@@ -16,8 +16,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We construct the T vs μ_B phase diagram for the hadron-QGP transition with an SCm phonon boundary.
-The phase transition at T_c = 1.5×1012 K is modified by the running coupling α_s(T) and the S₂₆⁽3⁾
+We construct the T vs $\mu$_B phase diagram for the hadron-QGP transition with an SCm phonon boundary.
+The phase transition at T_c = 1.5$\times$1012 K is modified by the running coupling $\alpha$_s(T) and the S26(3)
 phonon response.
 
 ## 1. Phase Classification
@@ -25,12 +25,12 @@ phonon response.
 | Temperature | Phase |
 |-------------|-------|
 | T < 0.9 T_c | Hadron (confined) |
-| 0.9 T_c ≤ T ≤ 1.1 T_c | Mixed (crossover) |
+| 0.9 T_c $\leq$ T $\leq$ 1.1 T_c | Mixed (crossover) |
 | T > 1.1 T_c | QGP (deconfined) |
 
 ## 2. SCm Phonon Boundary
 
-The on-resonance phonon factor Φ(Γ₀) = S₂₆⁽3⁾ = 0.095 modulates the crossover width.
+The on-resonance phonon factor $\Phi$($\Gamma$0) = S26(3) = 0.095 modulates the crossover width.
 
 ## 3. Implementation
 
@@ -45,7 +45,7 @@ File: `scm_qgp_dynamics.py`, class `DeconfinementPhaseDiagramCalc`. CP4 class #5
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -179,7 +179,7 @@ $$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i}
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ lattice resonance $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

@@ -13,7 +13,7 @@ arxiv: "2504.13081"
 cp4_entry: 614
 ---
 
-# CMS Differential Higgs Coupling Ratios κ\_V/κ\_f
+# CMS Differential Higgs Coupling Ratios $\kappa$\_V/$\kappa$\_f
 
 ## Abstract
 
@@ -21,7 +21,7 @@ We integrate the CMS differential Higgs boson cross-section measurements at $\sq
 
 $$U_H(t) = \lambda_H \cdot \rho_{\text{vac},[\text{UA}]} \cdot \omega_H(t) \cdot \exp\!\left(-\frac{[\text{SSq}] \cdot n}{26}\right) \cdot (1 + f_{\text{quasi}})$$
 
-with $\lambda_H = 1.79 \times 10^{18}$, $\rho_{\text{vac},[\text{UA}]} = 7.09 \times 10^{-36}$ J/m³, $[\text{SSq}] = 0.57$, and $n = 18$, predicts deviations from the Standard Model via $[\text{SCm}]$ proton stability modulation. The $\kappa_V/\kappa_f$ ratio maps to $U_H / U_{H,\text{SM}}$, yielding 95.24% alignment with CMS observations.
+with $\lambda_H = 1.79 \times 10^{18}$, $\rho_{\text{vac},[\text{UA}]} = 7.09 \times 10^{-36}$ J/m3, $[\text{SSq}] = 0.57$, and $n = 18$, predicts deviations from the Standard Model via $[\text{SCm}]$ proton stability modulation. The $\kappa_V/\kappa_f$ ratio maps to $U_H / U_{H,\text{SM}}$, yielding 95.24% alignment with CMS observations.
 
 ## 1. Introduction
 
@@ -40,7 +40,7 @@ $$U_H = \lambda_H \cdot \rho_{\text{vac},[\text{UA}]} \cdot \exp\!\left(-\frac{[
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | $\lambda_H$ | $1.79 \times 10^{18}$ | Higgs coupling constant |
-| $\rho_{\text{vac},[\text{UA}]}$ | $7.09 \times 10^{-36}$ J/m³ | $[\text{UA}]$ vacuum density |
+| $\rho_{\text{vac},[\text{UA}]}$ | $7.09 \times 10^{-36}$ J/m3 | $[\text{UA}]$ vacuum density |
 | $[\text{SSq}]$ | 0.57 | Squeeze-state parameter |
 | $f_{\text{quasi}}$ | 0.01 | Quasi-longitudinal correction |
 
@@ -85,7 +85,7 @@ The CMS differential Higgs measurements at 13 TeV are consistent with the UQFF l
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

@@ -16,20 +16,20 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF high-z quasar jet (z=6.5) with Lorentz factor k_rel = Γ2 relativistic
+**Classification:** FIRST UQFF high-z quasar jet (z=6.5) with Lorentz factor k_rel = $\Gamma$2 relativistic
 coupling  
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
 J1610+1811 is a blazer-class quasar at z = 6.5 (lookback time ~12.9 Gyr) with a relativistic jet
-Lorentz factor Γ ≈ 4.5. UQFF introduces a relativistic coupling constant k_rel = Γ2 = k_rel_0 ×
+Lorentz factor $\Gamma$ $\approx$ 4.5. UQFF introduces a relativistic coupling constant k_rel = $\Gamma$2 = k_rel_0 $\times$
 20.25 (Lorentz factor squared) to scale the vacuum buoyancy force in the jet frame. The Friedmann
-Hubble parameter H(z = 6.5) is computed from H(z) = H₀√[0.3(1+z)3 + 0.7], and F_U_Bi_i ≈ −8.32×10217
+Hubble parameter H(z = 6.5) is computed from H(z) = H0$\sqrt{}$[0.3(1+z)3 + 0.7], and F_U_Bi_i $\approx$ -8.32$\times$10217
 N is evaluated in the observer frame.
 
 ---
@@ -63,7 +63,7 @@ $$F_{U\_Bi\_i}^{\rm relativistic} = F_{U\_Bi\_i}^{\rm standard} \cdot k_{\rm rel
 $$t_{\rm lookback} \approx 12.9\ \mathrm{Gyr}$$
 
 The Universe was only ~820 Myr old when this jet was active — the UQFF vacuum energy density was
-ρ_vac(z=6.5) = ρ_vac,0·(1+z)^α, higher than today by the UQFF expansion index α.
+$\rho$_vac(z=6.5) = $\rho$_vac,0$\cdot$(1+z)^$\alpha$, higher than today by the UQFF expansion index $\alpha$.
 
 ---
 
@@ -72,18 +72,18 @@ The Universe was only ~820 Myr old when this jet was active — the UQFF vacuum 
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | z | Photometric/spectro | 6.5 |
-| Γ | VLBI jet model | 4.5 |
-| k_rel | Γ2 | 20.25 |
+| $\Gamma$ | VLBI jet model | 4.5 |
+| k_rel | $\Gamma$2 | 20.25 |
 | H(z=6.5) | Friedmann | ~761 km/s/Mpc |
-| `F_U_Bi_i` (obs frame) | Standard | −8.32×10217 N |
-| `F_U_Bi_i` (jet frame) | ×k_rel | −1.69×10219 N |
+| `F_U_Bi_i` (obs frame) | Standard | -8.32$\times$10217 N |
+| `F_U_Bi_i` (jet frame) | $\times$k_rel | -1.69$\times$10219 N |
 
 ---
 
 ## 4. Physical Significance
 
-J1610+1811 at z = 6.5 presents UQFF at the earliest cosmic epoch in the dataset. The k_rel = Γ2
-coupling is the first relativistic enhancement factor in UQFF AGN physics — it predicts that high-Γ
+J1610+1811 at z = 6.5 presents UQFF at the earliest cosmic epoch in the dataset. The k_rel = $\Gamma$2
+coupling is the first relativistic enhancement factor in UQFF AGN physics — it predicts that high-$\Gamma$
 relativistic jets experience systematically larger UQFF vacuum buoyancy forces in their rest frame.
 This has cosmological implications: early universe (z > 5) AGN jets would have experienced larger
 vacuum buoyancy during the epoch of reionization, potentially accelerating the growth of early
@@ -93,14 +93,14 @@ massive black holes — addressing the "first quasar" problem.
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_346–350 (low-z AGN):** All earlier AGN papers in this series have z < 1.5; J1610 at z = 6.5 is 6.5× higher redshift.
-- **vs. PAPER_360 vs. k_rel:** No earlier UQFF paper includes the Lorentz factor Γ2 relativistic boost.
+- **vs. PAPER_346–350 (low-z AGN):** All earlier AGN papers in this series have z < 1.5; J1610 at z = 6.5 is 6.5$\times$ higher redshift.
+- **vs. PAPER_360 vs. k_rel:** No earlier UQFF paper includes the Lorentz factor $\Gamma$2 relativistic boost.
 
 ---
 
 ## 6. Classification
 
-**Physics Territory:** FIRST UQFF high-z quasar jet (z=6.5) with Γ2 relativistic coupling and
+**Physics Territory:** FIRST UQFF high-z quasar jet (z=6.5) with $\Gamma$2 relativistic coupling and
 Friedmann H(z)  
 **Scale:** Cosmological (z = 6.5, lookback ~12.9 Gyr)  
 **CP Implementation:** `J1610HighZQuasarJetFUBiCalculator` (CondensedPhysics4.py, Session 97)
@@ -113,7 +113,7 @@ Friedmann H(z)
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -132,7 +132,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -207,7 +207,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.088 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -218,13 +218,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

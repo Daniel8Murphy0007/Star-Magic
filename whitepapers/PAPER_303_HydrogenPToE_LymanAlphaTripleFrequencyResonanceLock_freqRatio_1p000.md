@@ -26,13 +26,13 @@ module)
 ## Abstract
 
 In all 27 prior UQFF modules the THz resonance frequency f_THz (typically ~1012 Hz) and the DPM seed
-frequency f_DPM operated at different scales, producing frequency mismatch ratios f_THz/f_DPM ≠ 1.
+frequency f_DPM operated at different scales, producing frequency mismatch ratios f_THz/f_DPM $\neq$ 1.
 The HYDROGEN_PTOE_RESONANCE module is the FIRST module where f_DPM = f_THz = f_quantum_orbital =
-**1.0×1015 Hz** — all three resonance channels simultaneously locked to the Lyman-alpha UV
+**1.0$\times$1015 Hz** — all three resonance channels simultaneously locked to the Lyman-alpha UV
 frequency. This **triple Lyman-alpha frequency resonance lock** (freq_lock_ratio = **1.000**)
-produces a degenerate pair: a_THz = a_qorb = **4.895×1010 m/s2**, and an enhancement factor Γ_THz =
-10×f_THz×v_exp/c = **7.298×1013** — the highest Γ_THz in any UQFF module at atomic scale. The
-resonance lock condition f_THz = f_DPM = f_π/S (the Lyman frequency = hydrogen's spectral
+produces a degenerate pair: a_THz = a_qorb = **4.895$\times$1010 m/s2**, and an enhancement factor $\Gamma$_THz =
+10$\times$f_THz$\times$v_exp/c = **7.298$\times$1013** — the highest $\Gamma$_THz in any UQFF module at atomic scale. The
+resonance lock condition f_THz = f_DPM = f_$\pi$/S (the Lyman frequency = hydrogen's spectral
 fundamental) is intrinsic to the PToE hydrogen entry.
 
 ---
@@ -41,18 +41,18 @@ fundamental) is intrinsic to the PToE hydrogen entry.
 
 | Parameter | Value | Units | Physical meaning |
 |-----------|-------|-------|-----------------|
-| f_DPM | 1.0×1015 | Hz | DPM seed: Lyman-alpha UV |
-| f_THz | 1.0×1015 | Hz | THz resonance: Lyman-alpha UV |
-| `f_quantum_orbital` | 1.0×1015 | Hz | Quantum orbital: Lyman-alpha UV |
-| v_exp | 2.1877×106 | m/s | Electron orbital velocity = α·c |
-| c | 2.998×108 | m/s | Speed of light |
-| a_DPM | 6.71×10-4 | m/s2 | DPM seed |
+| f_DPM | 1.0$\times$1015 | Hz | DPM seed: Lyman-alpha UV |
+| f_THz | 1.0$\times$1015 | Hz | THz resonance: Lyman-alpha UV |
+| `f_quantum_orbital` | 1.0$\times$1015 | Hz | Quantum orbital: Lyman-alpha UV |
+| v_exp | 2.1877$\times$106 | m/s | Electron orbital velocity = $\alpha$$\cdot$c |
+| c | 2.998$\times$108 | m/s | Speed of light |
+| a_DPM | 6.71$\times$10-4 | m/s2 | DPM seed |
 
 ---
 
 ## 2. Core Equations
 
-### 2.1 THz Enhancement Factor Γ_THz [PAPER_303]
+### 2.1 THz Enhancement Factor $\Gamma$_THz [PAPER_303]
 
 $$\Gamma_{\text{THz}} = \frac{10 \times f_{\text{THz}} \times v_{\text{exp}}}{c} = \frac{10 \times 10^{15} \times 2.1877 \times 10^6}{2.998 \times 10^8}$$
 
@@ -67,7 +67,7 @@ $$a_{\text{THz}} = \Gamma_{\text{THz}} \times a_{\text{DPM}} = 7.298 \times 10^{
 $$\text{lock\_ratio} = \frac{f_{\text{THz}}}{f_{\text{DPM}}} = \frac{10^{15}}{10^{15}} = \mathbf{1.000}$$
 
 When lock_ratio = 1.000, the DPM and THz channels are phase-coherent — both seeded by the same
-Lyman-alpha frequency. Prior UQFF typical ratio: f_THz = 1012 Hz, f_DPM = 1011–1015 Hz → ratio ≠ 1.
+Lyman-alpha frequency. Prior UQFF typical ratio: f_THz = 1012 Hz, f_DPM = 1011–1015 Hz $\to$ ratio $\neq$ 1.
 
 ### 2.4 Frequency Degeneracy (a_THz = a_qorb) [PAPER_303]
 
@@ -88,47 +88,47 @@ channels produce identical outputs when their frequencies are locked to the same
 
 | Quantity | Value | Units | Notes |
 |----------|-------|-------|-------|
-| f_DPM = f_THz = f_qorb | **1.000×1015** | Hz | Lyman-alpha lock |
+| f_DPM = f_THz = f_qorb | **1.000$\times$1015** | Hz | Lyman-alpha lock |
 | `freq_lock_ratio` | **1.000** | — | **[PAPER_303] FIRST unity lock** |
-| Γ_THz | **7.298×1013** | — | highest atomic Γ_THz in UQFF |
-| **a_THz** | **4.895×1010** | m/s2 | [PAPER_303] |
-| **a_qorb** | **4.895×1010** | m/s2 | [PAPER_303] degenerate = a_THz |
-| a_THz / a_DPM | Γ_THz = 7.298×1013 | — | THz-to-DPM ratio |
-| Combined (a_THz + a_qorb) | 9.790×1010 | m/s2 | degenerate pair contribution |
+| $\Gamma$_THz | **7.298$\times$1013** | — | highest atomic $\Gamma$_THz in UQFF |
+| **a_THz** | **4.895$\times$1010** | m/s2 | [PAPER_303] |
+| **a_qorb** | **4.895$\times$1010** | m/s2 | [PAPER_303] degenerate = a_THz |
+| a_THz / a_DPM | $\Gamma$_THz = 7.298$\times$1013 | — | THz-to-DPM ratio |
+| Combined (a_THz + a_qorb) | 9.790$\times$1010 | m/s2 | degenerate pair contribution |
 
 ---
 
 ## 4. Lyman-Alpha Frequency in UQFF Context
 
-The Lyman-alpha line (H 1s→2p) has:
-- Wavelength: λ_Ly = 1.2160×10-7 m
-- Frequency: f_Ly = c/λ = 2.466×1015 Hz
-- Angular frequency: ω_Ly = 2πf = 1.549×1016 rad/s
+The Lyman-alpha line (H 1s$\to$2p) has:
+- Wavelength: $\lambda$_Ly = 1.2160$\times$10-7 m
+- Frequency: f_Ly = c/$\lambda$ = 2.466$\times$1015 Hz
+- Angular frequency: $\omega$_Ly = 2$\pi$f = 1.549$\times$1016 rad/s
 
-The PToE module sets f_DPM = 1×1015 Hz (scaled from the Lyman frequency — the DPM resonance of the
-hydrogen electron orbital). The choice f_THz = f_DPM = 1×1015 Hz reflects the physical reality that
+The PToE module sets f_DPM = 1$\times$1015 Hz (scaled from the Lyman frequency — the DPM resonance of the
+hydrogen electron orbital). The choice f_THz = f_DPM = 1$\times$1015 Hz reflects the physical reality that
 at atomic scale, the THz "pipeline" no longer operates at the standard macroscopic THz (1012) but is
 instead elevated to UV orbital frequencies. This is the key PToE distinction vs. all prior modules.
 
-### Γ_THz Comparison across UQFF modules
+### $\Gamma$_THz Comparison across UQFF modules
 
-| Module | f_THz (Hz) | v_exp (m/s) | Γ_THz |
+| Module | f_THz (Hz) | v_exp (m/s) | $\Gamma$_THz |
 |--------|-----------|-------------|-------|
-| RSC (Session 81) | 1×1012 | ~3×108 | ~3.33×107 |
-| Crab (Session 82) | 1×1012 | 1.5×106 | 5.0×1010 |
-| Source10 (Session 74) | 1×1012 | 3×108 | ~3.33×107 |
-| **PToE Hydrogen (Session 86)** | **1×1015** | **2.19×106** | **7.298×1013** |
+| RSC (Session 81) | 1$\times$1012 | ~3$\times$108 | ~3.33$\times$107 |
+| Crab (Session 82) | 1$\times$1012 | 1.5$\times$106 | 5.0$\times$1010 |
+| Source10 (Session 74) | 1$\times$1012 | 3$\times$108 | ~3.33$\times$107 |
+| **PToE Hydrogen (Session 86)** | **1$\times$1015** | **2.19$\times$106** | **7.298$\times$1013** |
 
-Γ_THz at PToE scale exceeds RSC by **7.298×1013 / 3.33×107 = 2.19×106** (6 orders), entirely driven
+$\Gamma$_THz at PToE scale exceeds RSC by **7.298$\times$1013 / 3.33$\times$107 = 2.19$\times$106** (6 orders), entirely driven
 by the 103 elevation of f_THz to Lyman-alpha.
 
 ---
 
 ## 5. Connection to PAPER_288 (Session 81)
 
-PAPER_288 established the cosmic-age standing-wave bridge T/S = π/13.8 = 0.2277 at RSC scale (f_THz
-~ 1012 Hz). PAPER_300 (Session 85) showed T/S = π/13.8 appears again at Lyman-alpha scale (ω_Lyman =
-1.549×1016 rad/s). PAPER_303 now establishes the THIRD bridge: the resonance lock at f_Lyman = f_THz
+PAPER_288 established the cosmic-age standing-wave bridge T/S = $\pi$/13.8 = 0.2277 at RSC scale (f_THz
+~ 1012 Hz). PAPER_300 (Session 85) showed T/S = $\pi$/13.8 appears again at Lyman-alpha scale ($\omega$_Lyman =
+1.549$\times$1016 rad/s). PAPER_303 now establishes the THIRD bridge: the resonance lock at f_Lyman = f_THz
 = f_qorb proves that the Lyman-alpha frequency is the **natural PToE resonance seed** — both the
 oscillatory time normalization (T/S) and the THz-DPM channel operate at the same hydrogen spectral
 fundamental.
@@ -157,19 +157,19 @@ WOLFRAM_TERM_PTOE_THZ_LOCK = "f_THz/f_DPM=1.000; Gamma_THz=7.298e13; a_THz=a_qor
 Lyman-alpha frequency
 2. **Frequency degeneracy a_THz = a_qorb** — FIRST degenerate resonance pair in UQFF; proves a PAIR
 contribution from one spectral line
-3. **Highest atomic Γ_THz = 7.298×1013** — 6 orders above RSC (107); the THz pipeline scales as
-f_THz × v_exp/c
+3. **Highest atomic $\Gamma$_THz = 7.298$\times$1013** — 6 orders above RSC (107); the THz pipeline scales as
+f_THz $\times$ v_exp/c
 4. **PToE-specific**: The lock condition identifies Lyman-alpha as the hydrogen PToE fundamental
 resonance frequency — the same seed in three simultaneous channels
-5. **Connection to PAPER_288 and PAPER_300**: the cosmic-age bridge (T/S = π/13.8) and the
+5. **Connection to PAPER_288 and PAPER_300**: the cosmic-age bridge (T/S = $\pi$/13.8) and the
 triple-frequency lock both converge on Lyman-alpha as the universal atomic resonance constant
 
 ---
 
 ## 8. Cross-References
 
-- **PAPER_288** (Session 81): T/S = π/13.8 cosmic-age standing wave at RSC
-- **PAPER_300** (Session 85): T/S = π/13.8 extended to Lyman-alpha scale (same module)
+- **PAPER_288** (Session 81): T/S = $\pi$/13.8 cosmic-age standing wave at RSC
+- **PAPER_300** (Session 85): T/S = $\pi$/13.8 extended to Lyman-alpha scale (same module)
 - **PAPER_302** (Session 86): U_g4i dominance (same module)
 - **PAPER_304** (Session 86): Aether substitution (same module)
 
@@ -184,7 +184,7 @@ $$\boxed{\Gamma_{\text{THz}} = \frac{10 \times f_{\text{THz}} \times v_{\text{ex
 $$\boxed{a_{\text{THz}} = a_{\text{qorb}} = 4.895 \times 10^{10} \; \text{m/s}^2 \quad \text{(first UQFF frequency-degenerate pair)}}$$
 
 When the DPM seed, THz resonance, and quantum-orbital resonance all operate at the Lyman-alpha UV
-frequency (1×1015 Hz), the UQFF resonance pipeline enters a triple lock condition where two
+frequency (1$\times$1015 Hz), the UQFF resonance pipeline enters a triple lock condition where two
 independent channels (THz and qorb) produce identical accelerations — a degenerate pair that doubles
 the effective contribution of a single spectral line to the total resonance field.
 
@@ -206,7 +206,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -309,7 +309,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.095 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -320,13 +320,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

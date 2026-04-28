@@ -110,7 +110,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -175,7 +175,7 @@ $$\text{rate} = \frac{N_\text{iter} \times 16}{t_\text{elapsed}} \geq 500{,}000$
 $$\boxed{\forall, k \in \{1,\ldots,16\}:\; |k(\mathbf{x})| < \infty,\quad k_{15} = S_{26}(z),\; k_{16} = g_\text{tri}(r,t)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → UQFF equations → 16 kernels extracted → production pipeline v11 → 500k benchmark
+PAPER_877 $\to$ UQFF equations $\to$ 16 kernels extracted $\to$ production pipeline v11 $\to$ 500k benchmark
 
 ---
 
@@ -188,7 +188,7 @@ All 16 kernels embed VDS through $S_{26}$ or $\rho_text{SCm}$.
 16 kernels cover the full dipole vortex mode spectrum.
 
 ### §B.3 BSH
-Scaling: v4 (100k) → v10 (450k) → v11 (500k) — approaching $\tanh$ hardware saturation.
+Scaling: v4 (100k) $\to$ v10 (450k) $\to$ v11 (500k) — approaching $\tanh$ hardware saturation.
 
 ### §B.4 Production-Scale Consistency
 

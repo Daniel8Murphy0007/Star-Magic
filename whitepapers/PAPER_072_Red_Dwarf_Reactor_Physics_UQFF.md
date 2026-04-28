@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Coefficient of Performance > 1, and Plasma Temperature Agreement
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `experimental_validation_system.py` Red Dwarf Reactor (Batch #33), TRZ oscilloscope
 test series  
@@ -33,13 +33,13 @@ The Red Dwarf Reactor (RDR) is a UQFF-derived energy conversion system that uses
 coefficient of performance (COP) greater than 1. When the UQFF coherence factor [SSq] = 0.57 is
 active and the R_SCm superconducting mirror Heaviside term provides a 10 enhancement, the system
 extracts additional vacuum energy through the UQFF F-Bi coupling, predicting TRZ factor f_TRZ =
-0.10, COP = 1.15, and plasma temperature T_plasma = 3.0×106 K. Batch #33 of the
+0.10, COP = 1.15, and plasma temperature T_plasma = 3.0$\times$106 K. Batch #33 of the
 experimental_validation_system.py validation suite confirms all four RDR test targets within
 acceptable thresholds (mean deviation 6.7%, all = 20%).
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -70,7 +70,7 @@ The **tolerance** represents acceptable fractional deviation |predicted-measured
 |---------|---------|-----------|---------|-------------------|--------|
 | RDR-001 | TRZ factor f_TRZ | 0.100 | 0.098 | **2.00%** | ? PASS |
 | RDR-002 | Coefficient of Performance | 1.15 | 1.12 | **2.61%** | ? PASS |
-| RDR-003 | Plasma temperature T_plasma | 3.0×106 K | 2.87×106 K | **4.33%** | ? PASS |
+| RDR-003 | Plasma temperature T_plasma | 3.0$\times$106 K | 2.87$\times$106 K | **4.33%** | ? PASS |
 | RDR-004 | Net energy over-unity | 15.0% | 12.3% | **18.0%** | ?? ACCEPTABLE |
 
 **Mean deviation (all 4 tests): 6.7%**  
@@ -149,7 +149,7 @@ $$\eta_{\rm measured} = 0.15 - 0.015 - 0.007 - 0.005 = 0.123 \text{ (12.3\%)}$$
 
 The 18% deviation is the largest in the RDR suite but still within the accepted 20% tolerance for
 this physically complex multi-mode system. Future refinements to the R_SCm coupling constant
-(currently e_SCm ≈ 0.87) targeting e_SCm = 1.0 could push measured ?_net to 14-15%.
+(currently e_SCm $\approx$ 0.87) targeting e_SCm = 1.0 could push measured ?_net to 14-15%.
 
 ---
 
@@ -161,7 +161,7 @@ provides a 10 vacuum energy density spike at the superconducting coherence frequ
 $$R_{\rm SCm}(\omega) = H(\omega - \omega_{\rm SCm}) \times 10^{13}$$
 
 This represents a Heaviside unit step at ?_SCm = 2p  1.25 THz, corresponding to the Q-scope THz
-frequency (validated in QSC-001: f_THz = 1.18 THz ? 98.3% of ?_SCm activation ? 0.983 × 10 effective
+frequency (validated in QSC-001: f_THz = 1.18 THz ? 98.3% of ?_SCm activation ? 0.983 $\times$ 10 effective
 enhancement).
 
 In the energy context:
@@ -179,7 +179,7 @@ continuous runtime without degradation of TRZ coupling efficiency.
 
 **Key stability metrics:**
 - TRZ factor stability over 10 hours: §0.002 (2% variation from mean 0.098)
-- Plasma temperature drift: §0.05×106 K over run duration
+- Plasma temperature drift: §0.05$\times$106 K over run duration
 - COP maintained: 1.11§1.13 (mean 1.12)
 
 The temporal stability demonstrates that the R_SCm Heaviside function is persistent under continuous
@@ -214,7 +214,7 @@ The "Red Dwarf Reactor" designation reflects the UQFF theoretical prediction tha
 
 | Quantity | Lab RDR | Red Dwarf star (M* = 0.2 M?) |
 |---------|---------|--------------------------|
-| T_plasma | 3.0 MK | 5×10 MK (core) |
+| T_plasma | 3.0 MK | 5$\times$10 MK (core) |
 | COP | 1.15 | ~1.10 (estimated e = 0.96 star efficiency) |
 | Duration | > 10 hr (lab) | 1010 yr |
 | TRZ fraction | 9.8% | ~812% (radiative zone) |
@@ -241,7 +241,7 @@ dwarf stars.
 **R_SCm Heaviside 10 enhancement: CONFIRMED**  
 **Sustained over-unity (>10 hr): CONFIRMED**
 
-*Source: `experimental_validation_system`.py Batch #33 | κ = 0.0005/day | [SSq] = 0.57 | [UA] = 10?4*
+*Source: `experimental_validation_system`.py Batch #33 | $\kappa$ = 0.0005/day | [SSq] = 0.57 | [UA] = 10?4*
 
 
 
@@ -252,7 +252,7 @@ dwarf stars.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LENR-S225 -->
 
@@ -327,14 +327,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -349,10 +349,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -360,9 +360,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -370,8 +370,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -448,7 +448,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.164 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

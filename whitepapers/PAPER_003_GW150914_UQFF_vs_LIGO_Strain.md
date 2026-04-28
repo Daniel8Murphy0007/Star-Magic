@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2026-03-07  
 **Domain:** 1.2 — Gravitational Waves — BBH Events  
 **Primary Validation File:** `validate_ligo_comparison.py`  
-**Calibration constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 
 ---
 
@@ -26,15 +26,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 GW150914 is the first directly detected gravitational wave event, a binary black hole merger at D_L
 = 410 Mpc with component masses 36 + 29 MM_sun. We apply the Unified Quantum Field Framework (UQFF) to
-the strain time series and show that UQFF damping reduces the peak strain by 66.7% (from 1.25 ×
-10-21 to 4.16 × 10-22), suppresses SNR from 24 to 8, and introduces a phase lag of 0.126 rad and ±1%
+the strain time series and show that UQFF damping reduces the peak strain by 66.7% (from 1.25 $\times$
+10-21 to 4.16 $\times$ 10-22), suppresses SNR from 24 to 8, and introduces a phase lag of 0.126 rad and $\pm$1%
 interference ripples in the strain envelope. Crucially, the 66.7% reduction produces an apparent
-distance overestimate of 1231 Mpc (vs true 410 Mpc)—a factor of 3× bias that directly impacts Hubble
+distance overestimate of 1231 Mpc (vs true 410 Mpc)—a factor of 3$\times$ bias that directly impacts Hubble
 constant measurements from GW events.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -65,11 +65,11 @@ $$F = A_{aether} \times A_{SCm} \times A_{TRZ} \times A_{string} = 1.0 \times 1.
 **Key numerical results:** F_combined = 3.33e-1, h_GR(peak) ~ 1.0e-21 strain at 150 Hz, h_UQFF =
 3.33e-22 strain, D_L = 4.10e2 Mpc
 
-**h_UQFF(t) = h_GR(t) × F_combined(t)**
+**h_UQFF(t) = h_GR(t) $\times$ F_combined(t)**
 
 where the combined factor:
 
-**F = A_aether × A_SCm × A_TRZ × A_string**
+**F = A_aether $\times$ A_SCm $\times$ A_TRZ $\times$ A_string**
 
 | Damping Channel | Factor | Physical Origin |
 |----------------|--------|----------------|
@@ -90,19 +90,19 @@ magnetic field contribution — it arises entirely from string and TRZ damping.
 
 For GW150914 with M_chirp = 28.3 MM_sun at D_L = 410 Mpc, the GR inspiral-merger strain:
 
-**h_GR(t) = (4G M_chirp)/(c2 D_L) × (πGM_chirp f(t)/c3)^(2/3) × exp[iΦ(t)]**
+**h_GR(t) = (4G M_chirp)/(c2 D_L) $\times$ ($\pi$GM_chirp f(t)/c3)^(2/3) $\times$ exp[i$\Phi$(t)]**
 
-Peak value: **h_GR,peak = 1.2499 × 10-21**
+Peak value: **h_GR,peak = 1.2499 $\times$ 10-21**
 
-UQFF-modified value: **h_UQFF,peak = h_GR,peak × 0.333 = 4.1622 × 10-22**
+UQFF-modified value: **h_UQFF,peak = h_GR,peak $\times$ 0.333 = 4.1622 $\times$ 10-22**
 
 ### 3.2 Results
 
 | Quantity | GR Prediction | UQFF Prediction | Reduction |
 |----------|--------------|----------------|-----------|
-| Peak strain | 1.2499 × 10-21 | 4.1622 × 10-22 | **−66.7%** |
-| SNR | 24 | 8.0 | **−66.7%** |
-| Apparent distance (from h) | 410 Mpc (correct) | 1231 Mpc (overestimate) | +3.0× bias |
+| Peak strain | 1.2499 $\times$ 10-21 | 4.1622 $\times$ 10-22 | **-66.7%** |
+| SNR | 24 | 8.0 | **-66.7%** |
+| Apparent distance (from h) | 410 Mpc (correct) | 1231 Mpc (overestimate) | +3.0$\times$ bias |
 
 ---
 
@@ -110,13 +110,13 @@ UQFF-modified value: **h_UQFF,peak = h_GR,peak × 0.333 = 4.1622 × 10-22**
 
 UQFF introduces a differential phase accumulation during propagation:
 
-**Δφ(D) = κ × D × f_GW × [SSq]**
+**$\Delta$$\phi$(D) = $\kappa$ $\times$ D $\times$ f_GW $\times$ [SSq]**
 
 For D = 410 Mpc, f_GW ~ 150 Hz:
 
-**Δφ = 0.0005 × 410 × 150 × 0.57 ≈ 0.126 rad**
+**$\Delta$$\phi$ = 0.0005 $\times$ 410 $\times$ 150 $\times$ 0.57 $\approx$ 0.126 rad**
 
-This phase lag produces ±1.0% periodic interference ripples in the observed strain envelope,
+This phase lag produces $\pm$1.0% periodic interference ripples in the observed strain envelope,
 observable as:
 - A sinusoidal modulation of the waveform amplitude
 - A slight time shift in the merger peak
@@ -129,16 +129,16 @@ observable as:
 The most significant observational implication: UQFF strain suppression is indistinguishable from
 source distance in standard GR luminosity distance inference.
 
-Standard GR assumes: **h ∝ 1/D_L** → **D_L = h_ref / h_obs**
+Standard GR assumes: **h $\propto$ 1/D_L** $\to$ **D_L = h_ref / h_obs**
 
-If h_obs = h_GR × 0.333, the inferred distance is:
-**D_L,apparent = D_L,true / 0.333 = 410 / 0.333 ≈ 1231 Mpc**
+If h_obs = h_GR $\times$ 0.333, the inferred distance is:
+**D_L,apparent = D_L,true / 0.333 = 410 / 0.333 $\approx$ 1231 Mpc**
 
 | Distance estimate | Value | Method |
 |-----------------|-------|--------|
 | True D_L | 410 Mpc | GR host galaxy prior (NGC 6552-region inference) |
 | UQFF-apparent D_L | **1231 Mpc** | From UQFF-suppressed strain, no damping correction |
-| Distance bias | +3.0× | Multiplicative overestimate |
+| Distance bias | +3.0$\times$ | Multiplicative overestimate |
 
 This bias propagates directly into cosmological constraints — a UQFF-universe would systematically
 overestimate GW luminosity distances by factor ~3, reducing the inferred Hubble constant.
@@ -150,12 +150,12 @@ overestimate GW luminosity distances by factor ~3, reducing the inferred Hubble 
 The identical combined UQFF factor (0.333) for both GW150914 and GW170817 arises because both events
 have:
 - No magnetic suppression (BBH for 150914; B < B_crit for 170817)
-- Same String × TRZ product: 0.37 × 0.90 ≈ 0.333
+- Same String $\times$ TRZ product: 0.37 $\times$ 0.90 $\approx$ 0.333
 
 | Event | Type | UQFF Factor | Strain Reduction | Apparent Distance Bias |
 |-------|------|------------|-----------------|----------------------|
-| GW150914 | BBH | 0.333 | −66.7% | 3.0× overestimate |
-| GW170817 | BNS | 0.333 | −66.7% | 2.5× overestimate (40→100 Mpc) |
+| GW150914 | BBH | 0.333 | -66.7% | 3.0$\times$ overestimate |
+| GW170817 | BNS | 0.333 | -66.7% | 2.5$\times$ overestimate (40$\to$100 Mpc) |
 
 ---
 
@@ -164,8 +164,8 @@ have:
 1. **Cross-checks with EM counterparts:** Events with coincident optical counterparts (host galaxy
 spectra) can independently fix D_L — any systematic offset from GW-inferred distances is a UQFF
 signal
-2. **Statistical bias in H₀:** A population of GW events with GR-only distance inference would
-produce a systematically lower H₀; UQFF correction restores concordance
+2. **Statistical bias in H0:** A population of GW events with GR-only distance inference would
+produce a systematically lower H0; UQFF correction restores concordance
 3. **Phase residuals:** Matched-filter searches using GR templates leave 0.126 rad residuals for
 GW150914-class events — detectable in O4/O5 at current LIGO noise floor
 4. **Frequency dependence of damping:** UQFF predicts higher-frequency components are more
@@ -176,7 +176,7 @@ string-damped; post-Newtonian decomposition of the strain can test this
 ## 8. Conclusion
 
 UQFF predicts a 66.7% amplitude suppression in GW150914 driven by string and TRZ damping (factor
-0.333), introducing a 0.126 rad phase lag and a systematic 3× luminosity distance overestimate.
+0.333), introducing a 0.126 rad phase lag and a systematic 3$\times$ luminosity distance overestimate.
 These effects are detectable as: (1) phase residuals in matched-filter templates, (2) interference
 ripples in the strain envelope, and (3) bias in the GW-inferred Hubble constant. The identical UQFF
 factor for GW150914 and GW170817 establishes the universality of string-dominated vacuum damping for
@@ -261,14 +261,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -283,10 +283,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -294,9 +294,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -304,8 +304,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -382,7 +382,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -393,13 +393,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -490,7 +490,7 @@ SCmActivation[B]
 FNeutronS26[..., nTerms]
 ```
 
-*Source: `kozima_wstp_kernel.py` → `uqff_kozima_kernel.wl`*
+*Source: `kozima_wstp_kernel.py` $\to$ `uqff_kozima_kernel.wl`*
 
 
 

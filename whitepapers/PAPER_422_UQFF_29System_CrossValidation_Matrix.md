@@ -53,7 +53,7 @@ All 29 systems share the same base:
 $$\boxed{g_{\text{UQFF}}(r,t) = \frac{G \cdot M}{r^2} \cdot (1 + H_0 t) \cdot \left(1 + \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot \kappa_eta \cdot r^2\right)}$$
 
 where:
-- $G = 6.674 \times 10^{-11}$ m3/(kg·s2)
+- $G = 6.674 \times 10^{-11}$ m3/(kg$\cdot$s2)
 - $H_0 = 67.4$ km/s/Mpc $= 2.184 \times 10^{-18}$ s-1
 - $\rho_{\text{UA}} = 5.0 \times 10^{-27}$ kg/m3 — aether density
 - $\rho_{\text{SCm}} = 9.47 \times 10^{-27}$ kg/m3 — superconducting medium density
@@ -146,11 +146,11 @@ From CP3 `TriadicMasterFUg1R26StateRamanujanCalculator` (PAPER_313):
 
 | System | FU_g1 (N) | R(t) (N) | FU_Bi (N) |
 |---|---|---|---|
-| Westerlund 2 | 2.43e-40 | −2.29e-41 | 6.14e-32 |
-| Pillars of Creation | 3.95e-41 | −1.12e-42 | 9.79e-33 |
+| Westerlund 2 | 2.43e-40 | -2.29e-41 | 6.14e-32 |
+| Pillars of Creation | 3.95e-41 | -1.12e-42 | 9.79e-33 |
 
 The cross-validation matrix confirms these benchmarks by computing g_X for both systems and
-comparing to the canonical values within tolerance ε = 5%.
+comparing to the canonical values within tolerance $\varepsilon$ = 5%.
 
 ---
 
@@ -161,8 +161,8 @@ For each system X, the **tail fraction** quantifies how much the unique term dev
 $$\text{tail\_fraction}_X = \frac{|\Delta_X|}{|g_{\text{base}}|}$$
 
 - **tail\_fraction < 0.01**: the system is dominated by the compressed UQFF base (cosmological systems)
-- **0.01 ≤ tail\_fraction < 0.1**: moderate environmental perturbation (stellar wind, AGN feedback)
-- **tail\_fraction ≥ 0.1**: strong system-specific physics (Saturn dual gravity, Hydrogen QM integral)
+- **0.01 $\leq$ tail\_fraction < 0.1**: moderate environmental perturbation (stellar wind, AGN feedback)
+- **tail\_fraction $\geq$ 0.1**: strong system-specific physics (Saturn dual gravity, Hydrogen QM integral)
 
 The cross-validation validates that: **for all 29 systems, the compressed form is always
 recoverable** by setting the tail term to zero — i.e., g_UQFF_base forms a universal lower bound for
@@ -209,7 +209,7 @@ on this universal quantum vacuum field structure.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -228,7 +228,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -337,7 +337,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -348,12 +348,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| sin2θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin2θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
-| ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| sin2$\theta$_W weak mixing | UQFF H_SCm=0.990 $\to$ 4-fold formula $\to$ 0.2304 | sin2$\theta$_W = 0.23122 $\pm$ 0.00003 | PDG 2024 | 99.6% |
+| ALICE dN/d$\eta$ (13.6 TeV) | UQFF [SSq]$\times$1.077 = $\beta$_i = 0.614 | dN/d$\eta$ = 17.43 $\pm$ 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
+| Cross-system $\kappa$ universality | $\kappa$ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay $\Gamma$_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
 
-**New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
+**New physics claim:** The same UQFF parameter set ($\kappa$, [SSq], $\beta$_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)
 across a 29-system cross-validation matrix — without per-system free-parameter adjustment.
 No SM framework derives these three observables from a single connected constant set.

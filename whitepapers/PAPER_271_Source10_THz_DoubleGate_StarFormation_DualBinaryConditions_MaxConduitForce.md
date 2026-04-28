@@ -30,7 +30,7 @@ the simultaneous satisfaction of two independent binary gate conditions. The **c
 = 1` (fluid incompressibility, classical mechanics) AND (Gate 2) `neutron_factor = 1` (nuclear
 stability, quantum mechanics). The **THz shock force** `F_thz_shock = k_thz × (ω_thz/ω₀)2 ×
 neutron_factor × conduit_scale` shares Gate 2 and additionally encodes the Colman-Gillespie THz
-resonance via ω_thz/ω₀ = 1.2 (≈ 1.25 THz), whose squared ratio (ω_thz/ω₀)2 = 1.44 provides a
+resonance via $\omega$_thz/$\omega$0 = 1.2 ($\approx$ 1.25 THz), whose squared ratio ($\omega$_thz/$\omega$0)2 = 1.44 provides a
 systematic **resonance enhancement factor**. This paper formally defines the Double-Gate
 Architecture, derives the critical THz ratio from Colman-Gillespie first principles, demonstrates
 that the gates operate through orthogonal physical domains (quantum nuclear vs. classical fluid),
@@ -39,7 +39,7 @@ and identifies the triple coincidence condition (H_abundance > 0, water_state = 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -66,13 +66,13 @@ proceed.
 
 ### 2.1 Gate 1: Water Incompressibility (Classical Fluid Mechanics)
 
-**Gate variable:** `water_state` ∈ [0, 1]
+**Gate variable:** `water_state` $\in$ [0, 1]
 
-- `water_state = 1`: water/fluid in incompressible state → conduit channel fully open
-- `water_state < 1`: partial compressibility → conduit suppressed proportionally
-- `water_state = 0`: fully compressible / gas phase → conduit closed
+- `water_state = 1`: water/fluid in incompressible state $\to$ conduit channel fully open
+- `water_state < 1`: partial compressibility $\to$ conduit suppressed proportionally
+- `water_state = 0`: fully compressible / gas phase $\to$ conduit closed
 
-Physical basis: The H + H₂O → COx pathway (Star Magic conduit mechanism) requires the
+Physical basis: The H + H2O $\to$ COx pathway (Star Magic conduit mechanism) requires the
 hydrogen-bearing fluid medium to be incompressible. When water is in a gaseous or highly
 compressible state, the conduit force coupling fails — pressure waves disperse rather than focus.
 
@@ -81,10 +81,10 @@ $$F_\text{conduit}^\text{max} = k_\text{conduit} \times 0.74 \times 1 \times 1 =
 
 ### 2.2 Gate 2: Neutron Stability (Quantum Nuclear Physics)
 
-**Gate variable:** `neutron_factor` ∈ {0, 1}
+**Gate variable:** `neutron_factor` $\in$ {0, 1}
 
 - `neutron_factor = 1`: nuclear neutron state stable (Kozima drop conditions met)
-- `neutron_factor = 0`: neutron unstable / non-drop phase → both channels closed
+- `neutron_factor = 0`: neutron unstable / non-drop phase $\to$ both channels closed
 
 Physical basis: The Kozima neutron-drop model (LENR) requires quasi-stable neutron states at the
 deuterium lattice sites. When this quantum condition is not met, neither the THz shock nor the
@@ -108,11 +108,11 @@ specific condition that explains why star formation is episodic and spatially co
 
 ### 3.1 The THz Ratio
 
-The THz shock force contains (ω_thz/ω₀)2:
-- ω_thz = 1.2×1012 rad/s (Source10 default)
-- ω₀    = 1.0×1012 rad/s (UQFF base frequency)
-- Ratio: ω_thz/ω₀ = 1.2
-- Squared: (ω_thz/ω₀)2 = **1.44**
+The THz shock force contains ($\omega$_thz/$\omega$0)2:
+- $\omega$_thz = 1.2$\times$1012 rad/s (Source10 default)
+- $\omega$0    = 1.0$\times$1012 rad/s (UQFF base frequency)
+- Ratio: $\omega$_thz/$\omega$0 = 1.2
+- Squared: ($\omega$_thz/$\omega$0)2 = **1.44**
 
 ### 3.2 Connection to Colman-Gillespie
 
@@ -120,7 +120,7 @@ The Colman-Gillespie experiment identifies 1.25 THz as the critical LENR resonan
 Converting:
 $$f_\text{CG} = 1.25\ \text{THz} \implies \omega_text{CG} = 2\pi \times 1.25 \times 10^{12} \approx 7.854 \times 10^{12}\ \text{rad/s}$$
 
-In Source10's parameterization where ω₀ = 1012 rad/s (base rate, not angular):
+In Source10's parameterization where $\omega$0 = 1012 rad/s (base rate, not angular):
 $$\frac{\omega_text{thz}}{\omega_0} = \frac{1.2 \times 10^{12}}{1.0 \times 10^{12}} = 1.2 \approx 1.25$$
 
 The 4% discrepancy (1.2 vs. 1.25) represents the **UQFF THz resonance window** — a tolerance band
@@ -130,8 +130,8 @@ systematically greater than 1, ensuring THz shock enhancement.
 ### 3.3 Why the Squared Term?
 
 The formula `F_thz_shock ∝ (ω_thz/ω₀)2` reflects the physical picture of a resonant cavity:
-- Power delivered to resonance ∝ amplitude2 ∝ (ω/ω₀)2 in the above-resonance regime
-- The squared ratio means small deviations from resonance (ω_thz > ω₀) produce a systematic enhancement:
+- Power delivered to resonance $\propto$ amplitude2 $\propto$ ($\omega$/$\omega$0)2 in the above-resonance regime
+- The squared ratio means small deviations from resonance ($\omega$_thz > $\omega$0) produce a systematic enhancement:
 
 $$\text{THz enhancement} = \left(\frac{\omega_text{thz}}{\omega_0}\right)^2 = 1.44$$
 
@@ -156,8 +156,8 @@ $$= 8.99 \times 10^9 \times 0.74 + 1.38 \times 10^{-23} \times 1.44 \times 10^{1
 
 $$= 6.65 \times 10^9 + 1.99 \times 10^{-11}\ \text{N}$$
 
-The conduit channel (6.65×109 N) completely dominates at macroscopic scales, while the THz channel
-(1.99×10-11 N) operates at quantum/molecular scales — they are **scale-separated channels** that
+The conduit channel (6.65$\times$109 N) completely dominates at macroscopic scales, while the THz channel
+(1.99$\times$10-11 N) operates at quantum/molecular scales — they are **scale-separated channels** that
 together span 20 orders of magnitude in force.
 
 ---
@@ -174,7 +174,7 @@ The two gates operate through completely different physical mechanisms:
 | Scale | Macroscopic (fluid droplets) | Nuclear (~10-15 m) |
 | Theory | Navier-Stokes / thermodynamics | Kozima LENR model |
 | Control | Temperature, pressure | Deuterium lattice state |
-| Effect on F | Multiplicative (0→1) | Multiplicative (0→1) |
+| Effect on F | Multiplicative (0$\to$1) | Multiplicative (0$\to$1) |
 
 Because they operate in orthogonal physical domains, the condition `∂(Gate 1)/∂(Gate 2) = 0` holds
 exactly — the two gates are **physically independent**. One cannot substitute for the other.
@@ -210,14 +210,14 @@ metal-rich galaxies.
 
 ## 7. Observational Predictions
 
-1. **Episodic star formation**: Bursts correspond to periods when neutron_factor → 1
+1. **Episodic star formation**: Bursts correspond to periods when neutron_factor $\to$ 1
 (lattice-stabilized LENR phase)
-2. **Temperature dependence**: water_state → 1 in the ~10-2–101 K molecular cloud range; above and
+2. **Temperature dependence**: water_state $\to$ 1 in the ~10-2–101 K molecular cloud range; above and
 below, star formation suppressed
-3. **THz emission signature**: At peak SF conditions, F_thz_shock predicts THz emission at f ≈
-ω_thz/2π ≈ 1.9×1011 Hz ≈ 190 GHz (near mm-wave band)
+3. **THz emission signature**: At peak SF conditions, F_thz_shock predicts THz emission at f $\approx$
+$\omega$_thz/2$\pi$ $\approx$ 1.9$\times$1011 Hz $\approx$ 190 GHz (near mm-wave band)
 4. **H_abundance correlation**: Reduced star formation efficiency in evolved, metal-rich systems
-(lower H_abundance → lower F_conduit ceiling)
+(lower H_abundance $\to$ lower F_conduit ceiling)
 5. **44% THz enhancement**: Star-forming regions in the Colman-Gillespie window should show 44%
 higher THz luminosity vs. off-resonance regions
 
@@ -232,18 +232,18 @@ Kozima quantum nuclear stability).
 2. Both gates must be simultaneously open for maximum conduit and THz forces — their orthogonal
 physical domains make this a true **two-independent-condition coincidence**.
 
-3. The Colman-Gillespie THz resonance at ω_thz/ω₀ ≈ 1.2 (≈ 1.25 THz) provides a systematic **44% THz
-enhancement factor** via the squared ratio (ω_thz/ω₀)2 = 1.44.
+3. The Colman-Gillespie THz resonance at $\omega$_thz/$\omega$0 $\approx$ 1.2 ($\approx$ 1.25 THz) provides a systematic **44% THz
+enhancement factor** via the squared ratio ($\omega$_thz/$\omega$0)2 = 1.44.
 
 4. The triple-coincidence condition (H_abundance > 0, water_state = 1, neutron_factor = 1) is the
 UQFF mechanism for episodic, spatially localized star formation.
 
-5. The two channels are scale-separated: conduit (6.65×109 N macroscopic) + THz shock (1.99×10-11 N
+5. The two channels are scale-separated: conduit (6.65$\times$109 N macroscopic) + THz shock (1.99$\times$10-11 N
 quantum) span 20 orders of magnitude.
 
 ---
 
-**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]B/(8p?c_s) = 5.7e-1 × 1.3e-9 =
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]B/(8p?c_s) = 5.7e-1 $\times$ 1.3e-9 =
 7.4e-10; Jeans mass deviation from standard = 7.4e-10  M_J.
 
 
@@ -269,7 +269,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -388,7 +388,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -399,13 +399,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -417,7 +417,7 @@ bridge.*
 - UQFF_SOURCE10.cpp UQFF 2.0 (Session 74) — catalyst master module
 - Colman, R. & Gillespie, T., 1.25 THz LENR resonance experiments
 - Kozima, H., *Neutron Drop Model of LENR*, Journal of Condensed Matter Nuclear Science
-- Source10 parameters: k_thz=1.38×10-23, k_conduit=8.99×109, ω_thz=1.2×1012, ω₀=1012
+- Source10 parameters: k_thz=1.38$\times$10-23, k_conduit=8.99$\times$109, $\omega$_thz=1.2$\times$1012, $\omega$0=1012
 
 ---
 

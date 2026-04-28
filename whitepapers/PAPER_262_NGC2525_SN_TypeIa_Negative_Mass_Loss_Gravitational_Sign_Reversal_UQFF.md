@@ -22,18 +22,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper derives and proves the **SN Type Ia Negative-Mass-Loss Gravitational Sign Reversal**
-mechanism within the Unified Quantum Field Framework (UQFF) for NGC 2525 (barred spiral, z ≈ 0.016,
+mechanism within the Unified Quantum Field Framework (UQFF) for NGC 2525 (barred spiral, z $\approx$ 0.016,
 ~70 Mpc), host of the well-observed Type Ia supernova SN 2018gv. The unique physics is a negative
 contribution to the effective MUGE gravitational acceleration from SN ejecta mass permanently
 escaping the galaxy's gravitational potential well. This is expressed as `term_SN = −G·M_SN(t)/r2`
 with `M_SN(t) = M_ej·(1 − e^{-t/τ_SN})` — a growing negative gravitational term as the ejecta
 progressively decouples from the bound galaxy mass. This mechanism is **fundamentally distinct**
 from the only other UQFF gravitational sign reversal: the Sgr A* Negative Buoyancy Inversion
-(PAPER_253), which arises from an ω₀ regime change driving `F_LENR › F_res`. The two mechanisms are
+(PAPER_253), which arises from an $\omega$0 regime change driving `F_LENR › F_res`. The two mechanisms are
 physically separate paths to negative g, mathematically distinguishable, and jointly prove the UQFF
 framework can generate gravitational sign reversal through **two independent channels**: ejecta mass
 loss and field inversion. Both are validated against observations and both are potentially present
@@ -47,31 +47,31 @@ From `GalaxyNGC2525.cpp` (UQFF 2.0, Session 71b upgrade):
 
 $$
 \begin{aligned}
-  & g_NGC2525(r, t) = term1    [G·M/r2 × (1+Hz·t) × (1−B/B_crit)]    ← static M_gal \\
-  & + term_SN   [−G·M_SN(t)/r2]                          ← NEGATIVE: SN mass-loss \\
+  & g_NGC2525(r, t) = term1    [G\cdotM/r2 \times (1+Hz\cdott) \times (1-B/B_crit)]    \leftarrow static M_gal \\
+  & + term_SN   [-G\cdotM_SN(t)/r2]                          \leftarrow NEGATIVE: SN mass-loss \\
   & + term2     [UQFF Ug1_base + Ug4 with f_TRZ] \\
-  & + term3     [Λc2/3] \\
-  & + term4     [q(v×B)/m_p × corr_UA] \\
-  & + term_q    [ℏ/√(Δx·Δp) × ψ × (2π/t_H)] \\
-  & + term_fluid [ρ_fluid·V·ug1_base / M] \\
-  & + term_osc  [2A·cos(kx)·cos(ωt) + …] \\
-  & + term_DM   [(M+M_DM)·(δρ/ρ+3μ_s∇(M_s/r)/r)/M] \\
+  & + term3     [\Lambdac2/3] \\
+  & + term4     [q(v\timesB)/m_p \times corr_UA] \\
+  & + term_q    [ℏ/\sqrt{}(\Deltax\cdot\Deltap) \times \psi \times (2\pi/t_H)] \\
+  & + term_fluid [\rho_fluid\cdotV\cdotug1_base / M] \\
+  & + term_osc  [2A\cdotcos(kx)\cdotcos(\omegat) + …] \\
+  & + term_DM   [(M+M_DM)\cdot(\delta\rho/\rho+3\mu_s\nabla(M_s/r)/r)/M] \\
   & + term_tide  [tidal correction] \\
-  & + term_Ubi  [0.5 × ug1_base]                          ← Tier-1 buoyancy \\
-  & + \text{term\_F\_UBii} [−β_i·ug1_base·ω_g·(M/r)·U_UA·cos(πt)]  ← Tier-2 \\
-  & + \text{term\_Ub\_i}   [−β_i·ug1_base·ω_g·(\text{M\_ext\_ngc}/\text{r\_ext\_ngc})·U_UA·cos(πt)] ← Tier-3 Virgo
+  & + term_Ubi  [0.5 \times ug1_base]                          \leftarrow Tier-1 buoyancy \\
+  & + \text{term\_F\_UBii} [-\beta_i\cdotug1_base\cdot\omega_g\cdot(M/r)\cdotU_UA\cdotcos(\pit)]  \leftarrow Tier-2 \\
+  & + \text{term\_Ub\_i}   [-\beta_i\cdotug1_base\cdot\omega_g\cdot(\text{M\_ext\_ngc}/\text{r\_ext\_ngc})\cdotU_UA\cdotcos(\pit)] \leftarrow Tier-3 Virgo
 \end{aligned}
 $$
 
 **System Parameters:**
-- M = 1010 M_sun + 2.25×107 M_sun (galaxy stellar mass + central BH)
-- r = 2.836×1020 m (barred spiral half-light radius ~30 kpc)
-- z = 0.016; Hz ≈ 2.22×10-18 s-1
+- M = 1010 M_sun + 2.25$\times$107 M_sun (galaxy stellar mass + central BH)
+- r = 2.836$\times$1020 m (barred spiral half-light radius ~30 kpc)
+- z = 0.016; Hz $\approx$ 2.22$\times$10-18 s-1
 - M_SN_ej (SN 2018gv): ~1.0–1.4 M_sun Type Ia ejecta, v_ej ~ 10,000 km/s
-- τ_SN: ejecta-decoupling timescale ~10–100 Myr (ejecta reaches escape velocity)
-- M_ext_ngc = 2.387×1045 kg (Virgo Cluster outer frame)
-- r_ext_ngc = 2.222×1024 m (~72 Mpc NGC 2525 → Virgo Cluster)
-- β_i = 0.61, ω_g = 7.3×10-16, U_UA = 1×10-11 (UQFF canonical)
+- $\tau$_SN: ejecta-decoupling timescale ~10–100 Myr (ejecta reaches escape velocity)
+- M_ext_ngc = 2.387$\times$1045 kg (Virgo Cluster outer frame)
+- r_ext_ngc = 2.222$\times$1024 m (~72 Mpc NGC 2525 $\to$ Virgo Cluster)
+- $\beta$_i = 0.61, $\omega$_g = 7.3$\times$10-16, U_UA = 1$\times$10-11 (UQFF canonical)
 
 ---
 
@@ -95,7 +95,7 @@ where:
 
 A Type Ia supernova releases ~1–1.4 M_sun of ejecta at velocities of ~10,000–30,000 km/s
 (~0.03–0.1c). For a galaxy like NGC 2525 with escape velocity v_esc ~ 300–500 km/s, the SN ejecta
-**completely escapes** the galaxy on a dynamical crossing time t_cross = r/v_ej ~ 2.836×1020 / 107 ≈
+**completely escapes** the galaxy on a dynamical crossing time t_cross = r/v_ej ~ 2.836$\times$1020 / 107 $\approx$
 28 Myr. The escaped ejecta mass is permanently removed from the galaxy's gravitational potential.
 
 The effective galaxy mass available to produce gravitational acceleration therefore decreases:
@@ -112,20 +112,20 @@ confinement is **permanently and irreversibly reduced** by one SN event.
 
 ### 2.3 Contrast with Sgr A* Negative Buoyancy Inversion (PAPER_253)
 
-PAPER_253 identified the **first** UQFF gravitational sign reversal: at Sgr A*, reducing ω₀ from
+PAPER_253 identified the **first** UQFF gravitational sign reversal: at Sgr A*, reducing $\omega$0 from
 10-12 to 10-15 causes F_LENR to grow 6 orders of magnitude, exceeding F_res and producing `F_U_Bi_i
 < 0` (negative buoyancy inversion). This is a **field inversion mechanism** — the sign of the
 buoyancy force flips due to a regime change in the frequency parameter.
 
 | Property | PAPER_253 (Sgr A*) | PAPER_262 (NGC 2525) |
 |----------|--------------------|----------------------|
-| **Mechanism** | ω₀ regime change → F_LENR dominance | SN ejecta mass escape |
+| **Mechanism** | $\omega$0 regime change $\to$ F_LENR dominance | SN ejecta mass escape |
 | **Physical driver** | Black hole proximity + frequency shift | Thermonuclear event |
 | **Mathematical form** | `F_U_Bi_i` sign flip (complex expression) | `−G·M_SN(t)/r2` (simple DPM-seeded) |
 | **Timescale** | Instantaneous (field property) | ~10–100 Myr (ejecta crossing time) |
-| **Reversibility** | Reversible (if ω₀ changes back) | **Irreversible** (mass permanently lost) |
+| **Reversibility** | Reversible (if $\omega$0 changes back) | **Irreversible** (mass permanently lost) |
 | **Magnitude** | ~10208 N (enormous) | ~10-27 m/s2 (tiny) |
-| **Observational signature** | Fermi Bubble structure, γ-ray emission | SN lightcurve decline rate |
+| **Observational signature** | Fermi Bubble structure, $\gamma$-ray emission | SN lightcurve decline rate |
 | **UQFF channel** | Buoyancy tier sign inversion | Gravitational kernel mass reduction |
 
 **Critical distinction:** The NGC 2525 mechanism is the **first UQFF gravitational sign contribution
@@ -176,7 +176,7 @@ The 13-term MUGE for NGC 2525 compresses to:
 
 $$g_\text{NGC2525}(r,t) = g_\text{MUGE}^{(+)}(r,t) - \frac{G M_\text{ej}}{r^2}\left(1-e^{-t/\tau_text{SN}}\right) + g_\text{buoy}^{(3)}(r)$$
 
-where `g_MUGE^{(+)}` contains all positive terms (base, Ug, Λ, EM, quantum, fluid, osc, DM).
+where `g_MUGE^{(+)}` contains all positive terms (base, Ug, $\Lambda$, EM, quantum, fluid, osc, DM).
 
 The **Mass-Loss Suppression Factor**:
 
@@ -186,22 +186,22 @@ The **Dual Sign Channel Condition** (both reversal mechanisms present simultaneo
 
 $$g_\text{total} < 0 \iff g_\text{MUGE}^{(+)} + g_\text{SN}^{(-)} + g_\text{buoy}^{(-)} < 0$$
 
-For NGC 2525, neither term_SN nor Σ_buoy alone reverses the sign — both contribute small negative
+For NGC 2525, neither term_SN nor $\Sigma$_buoy alone reverses the sign — both contribute small negative
 corrections. For a hypothetical M_ej >> present values (e.g., a hypernova with M_ej ~ 10 M_sun in a
 low-mass dwarf galaxy), total sign reversal is possible via the ejecta channel alone (independent of
-ω₀).
+$\omega$0).
 
 ---
 
 ## 4. Observational Predictions
 
-1. **SN 2018gv lightcurve anchor:** The ejecta decoupling timescale τ_SN is measurable from the
+1. **SN 2018gv lightcurve anchor:** The ejecta decoupling timescale $\tau$_SN is measurable from the
 late-time (nebular phase, t > 200 days) photometric decline — v_ej drop-off in velocity wings
 constraints M_SN(t). Li et al. (2019) measured SN 2018gv decay rates confirming M_ej ~ 1.0–1.4 M_sun
 at 54 Mpc.
 
 2. **Secular gravitational weakening:** Precision rotation curve measurements of NGC 2525 at
-intervals of ~10 years should show no measurable change from a single SN event (ε ~ 10-10). But
+intervals of ~10 years should show no measurable change from a single SN event ($\varepsilon$ ~ 10-10). But
 statistical averaging of many barred spirals over cosmological time could reveal the predicted ~ppm
 UQFF suppression.
 
@@ -221,10 +221,10 @@ the richest test environment for the UQFF dual negative-g channel.
 ## 5. Significance
 
 1. **First UQFF derivation of irreversible ejecta-driven gravitational suppression** — distinct from
-and complementary to the ω₀-driven buoyancy inversion (PAPER_253).
+and complementary to the $\omega$0-driven buoyancy inversion (PAPER_253).
 
 2. **Proves two independent UQFF channels for gravitational sign reversal** exist in the framework:
-   - Channel 1: Field inversion via ω₀ regime (PAPER_253, Sgr A*)
+   - Channel 1: Field inversion via $\omega$0 regime (PAPER_253, Sgr A*)
    - Channel 2: Mass removal via ejecta escape (this paper, NGC 2525 / SN 2018gv)
 
 3. **SN 2018gv provides the most precisely anchored UQFF parameter in any C++ module** — ejecta
@@ -276,7 +276,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -295,7 +295,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -349,7 +349,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -474,7 +474,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.168 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -485,13 +485,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -503,7 +503,7 @@ bridge.*
 2. Li et al. (2019) — SN 2018gv: photometric and spectroscopic follow-up, M_ej ~ 1.2 M_sun, v_ej ~
 11,000 km/s
 3. Maoz, Mannucci & Nelemans (2014) — Observational clues to the progenitors of Type Ia supernovae
-4. PAPER_253 — `SgrACenterNegativeBuoyancyCalculator`: ω₀-driven sign reversal via LENR dominance
+4. PAPER_253 — `SgrACenterNegativeBuoyancyCalculator`: $\omega$0-driven sign reversal via LENR dominance
 (Session 72b/72c)
 5. PAPER_235 — `AntennaeDoubleIMergerCalculator`: collision-driven mass disruption (Session 58)
 6. Tully et al. (2016) — NGC 2525 Virgocentric flow; distance 54 Mpc

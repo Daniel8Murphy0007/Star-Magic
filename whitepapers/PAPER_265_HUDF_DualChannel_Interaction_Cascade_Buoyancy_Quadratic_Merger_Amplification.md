@@ -15,17 +15,17 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
-**Source:** HUDFGalaxies.cpp → `HUDFInteractionCascadeTerm` (Session 72g, UQFF 2.0 Upgrade)
+**Source:** HUDFGalaxies.cpp $\to$ `HUDFInteractionCascadeTerm` (Session 72g, UQFF 2.0 Upgrade)
 **Date:** March 2026
 **Series:** Phase 2 Session 72g — §3.x HUDF Clone Fragment Unique Physics Extraction
 
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
-In the HUDFGalaxies MUGE formulation, the galaxy interaction factor I(t) = I₀ · exp(-t/τ_inter) is
+In the HUDFGalaxies MUGE formulation, the galaxy interaction factor I(t) = I0 $\cdot$ exp(-t/$\tau$_inter) is
 applied not to one gravitational channel but to **two simultaneously**: the base MUGE term (term1)
 and the UQFF unification term (term2) both receive the (1 + I(t)) modulation. This creates a
 structural feature that has not appeared in any prior UQFF module: a **dual-channel interaction
@@ -34,8 +34,8 @@ cascade** in which both gravity channels amplify coherently during galaxy merger
 The **uniquely rare discovery** of this paper is that the double application of I(t) produces a
 **quadratic buoyancy amplification** — the combined effect scales as (1 + I(t))2 rather than the
 linear (1 + I(t)) of a single-channel system. This cascading enhancement reaches its maximum exactly
-at t → 0 and z → 3.5, coinciding with the peak observational epoch of the HUDF. The cascade buoyancy
-excess — purely due to the structural coupling — is ΔI_cascade = I₀2 at peak, generating an
+at t $\to$ 0 and z $\to$ 3.5, coinciding with the peak observational epoch of the HUDF. The cascade buoyancy
+excess — purely due to the structural coupling — is $\Delta$I_cascade = I02 at peak, generating an
 anomalous buoyancy flux that is second-order in the galaxy interaction strength.
 
 ---
@@ -44,10 +44,10 @@ anomalous buoyancy flux that is second-order in the galaxy interaction strength.
 
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
-| Peak interaction factor | I₀ | 0.05 | — |
-| Interaction timescale | τ_inter | 1 Gyr | s |
-| Field mass | M₀ | 1012 M_sun | kg |
-| Radius | r | 1.23×1027 | m |
+| Peak interaction factor | I0 | 0.05 | — |
+| Interaction timescale | $\tau$_inter | 1 Gyr | s |
+| Field mass | M0 | 1012 M_sun | kg |
+| Radius | r | 1.23$\times$1027 | m |
 | Average redshift | z_avg | 3.5 | — |
 | f_TRZ | f_TRZ | 0.1 | — |
 | Epoch of peak cascade | t | 0 (present reference) | s |
@@ -81,7 +81,7 @@ $$
 \text{term}_2 = (U_{g1} + U_{g4}) \cdot (1 + f_\text{TRZ}) \cdot \mathbf{(1 + I(t))}
 $$
 
-Combined UQFF component at peak (t → 0):
+Combined UQFF component at peak (t $\to$ 0):
 
 $$
 g_\text{UQFF,dual}\big|_{t=0} \propto (U_{g1} + U_{g4}) \cdot (1 + f_\text{TRZ}) \cdot (1 + I_0)^2
@@ -98,30 +98,30 @@ $$
 For HUDF parameters at t = 0:
 $$
 \begin{aligned}
-  & I₀ = 0.05 \\
-  & U_g1 = G × M₀ / r2 = 6.674×10-11 × 1.989×1042 / (1.23×1027)2 ≈ 8.77×10-23 m/s2 \\
+  & I0 = 0.05 \\
+  & U_g1 = G \times M0 / r2 = 6.674\times10-11 \times 1.989\times1042 / (1.23\times1027)2 \approx 8.77\times10-23 m/s2 \\
   & (1 + f_TRZ) = 1.1 \\
-  & ΔI_cascade = I₀2 × U_g1 × (1 + f_TRZ) = 0.0025 × 8.77×10-23 × 1.1 ≈ 2.41×10-25 m/s2
+  & \DeltaI_cascade = I02 \times U_g1 \times (1 + f_TRZ) = 0.0025 \times 8.77\times10-23 \times 1.1 \approx 2.41\times10-25 m/s2
 \end{aligned}
 $$
 
-The cascade excess is ~(I₀2 / I₀) = I₀ = 5% of the interaction contribution itself — a second-order
+The cascade excess is ~(I02 / I0) = I0 = 5% of the interaction contribution itself — a second-order
 but non-negligible buoyancy enhancement at high merger rates.
 
 ### 2.4 Time Evolution: Cascade Peak Alignment with HUDF Epoch
 
-I(t) = I₀ · exp(-t/τ_inter):
+I(t) = I0 $\cdot$ exp(-t/$\tau$_inter):
 
 $$
 \begin{aligned}
-  & t = 0:           I(0) = 0.050  → cascade ΔI = 2.41×10-25 m/s2 \\
-  & t = 1 Gyr:       I(1G) = 0.0184 → cascade ΔI = 3.26×10-26 m/s2  (87% reduction) \\
-  & t = 2 Gyr:       I(2G) = 0.0068 → cascade ΔI = 4.42×10-27 m/s2  (98% reduction) \\
-  & t = 13.8 Gyr:    I(∞) ≈ 0      → cascade ΔI ≈ 0                  (local universe quiet)
+  & t = 0:           I(0) = 0.050  \to cascade \DeltaI = 2.41\times10-25 m/s2 \\
+  & t = 1 Gyr:       I(1G) = 0.0184 \to cascade \DeltaI = 3.26\times10-26 m/s2  (87% reduction) \\
+  & t = 2 Gyr:       I(2G) = 0.0068 \to cascade \DeltaI = 4.42\times10-27 m/s2  (98% reduction) \\
+  & t = 13.8 Gyr:    I(\infty) \approx 0      \to cascade \DeltaI \approx 0                  (local universe quiet)
 \end{aligned}
 $$
 
-The cascade buoyancy excess is strongly concentrated in the early universe (t < 1 Gyr ≈ z > 3) —
+The cascade buoyancy excess is strongly concentrated in the early universe (t < 1 Gyr $\approx$ z > 3) —
 precisely the HUDF observational window. This temporal coincidence is **not an artifact**: the f_TRZ
 > 0 condition ensures UQFF is enhanced in CPT-violating early-universe environments, and, by the
 cascade mechanism, this enhancement is quadratically sensitive to galaxy merger activity.
@@ -149,15 +149,15 @@ establishing that higher-density cosmic environments (more interacting galaxy po
 activate N > 2 cascade orders.
 
 **Corollary:** A single ALMA observation of inter-galaxy 13CO molecular bridging between two HUDF
-merger pairs could constrain I₀ to within 10%, directly testing the cascade buoyancy prediction
-through the expected isotopic enhancement ΔI_cascade.
+merger pairs could constrain I0 to within 10%, directly testing the cascade buoyancy prediction
+through the expected isotopic enhancement $\Delta$I_cascade.
 
 ---
 
 ## 4. Observational Predictions
 
-- **HST/JWST morphology:** Merger pair fractions at z ≈ 3–4 (HUDF field) should show anomalously enhanced tidal bridge luminosity proportional to I₀2 — cascade-boosted baryonic flow across the gravitational bridge.
-- **ALMA Band 3 (3mm CO):** Molecular gas in HUDF z ≈ 3.5 interacting pairs should show velocity dispersion ∝ (1 + I₀)2 relative to isolated galaxies of same mass.
+- **HST/JWST morphology:** Merger pair fractions at z $\approx$ 3–4 (HUDF field) should show anomalously enhanced tidal bridge luminosity proportional to I02 — cascade-boosted baryonic flow across the gravitational bridge.
+- **ALMA Band 3 (3mm CO):** Molecular gas in HUDF z $\approx$ 3.5 interacting pairs should show velocity dispersion $\propto$ (1 + I0)2 relative to isolated galaxies of same mass.
 - **EHT 345 GHz (future):** Any compact radio core in a HUDF merger would show a DPM resonance fingerprint at the cascade-boosted gravity level.
 
 ---
@@ -296,7 +296,7 @@ Since $p_{\rm DVP} = 101$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **chirp time τ_c** (inspiral phase locking):
+The BSH saturation timescale for this sector is **chirp time $\tau$_c** (inspiral phase locking):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
@@ -313,7 +313,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

@@ -49,7 +49,7 @@ where:
 - $Grind_{opp}$: DPM grinding rate (J/s)
 - $t_{adj}$: adjusted time incorporating dilation: $t_{adj} = t_{obs} / (1 + \Delta_{dil}) + t_{neg}$
 - $Higgs_{shift}$: coupling between Higgs sector and shell energy (dimensionless)
-- $ShellEnergies_f$: shell energy per quark flavor f ∈ {up, down, strange, charm, bottom, top}
+- $ShellEnergies_f$: shell energy per quark flavor f $\in$ {up, down, strange, charm, bottom, top}
 
 ---
 
@@ -68,7 +68,7 @@ its rest mass:
 | top    | 173,100      | 3.1e-25 |
 
 The Higgs shift serves as the coupling between these high-mass contributions and the low-energy
-shells (Higgs_shift ≈ 0.01 for the early universe, scaling the heavy flavors down to accessible
+shells (Higgs_shift $\approx$ 0.01 for the early universe, scaling the heavy flavors down to accessible
 energies).
 
 ---
@@ -81,7 +81,7 @@ $$\phi(t_{adj}) = \frac{Grind_{opp} \cdot t_{adj} + Higgs_{shift} \cdot \Sigma_{
 
 where $E_{shell,0} \approx 1.6\times10^{-19}$ J (1 eV, characteristic vacuum energy per shell).
 
-**Stability threshold**: $\phi \geq 0.85$ → ProtoH is stable.
+**Stability threshold**: $\phi \geq 0.85$ $\to$ ProtoH is stable.
 
 ---
 
@@ -96,7 +96,7 @@ With default parameters ($Grind_{opp} = 10^{-20}$ J/s):
 $$t_{adj}^{H} \approx \frac{0.85 \times 4.16\times10^{-18} - 10^{-28}}{10^{-20}} \approx 3.5\times10^{2}\text{ s}$$
 
 This 350-second timescale aligns well with Big Bang Nucleosynthesis (BBN) which produces the first
-protons within the first ~180 seconds. The ~2× factor is consistent with the UQFF time dilation
+protons within the first ~180 seconds. The ~2$\times$ factor is consistent with the UQFF time dilation
 adjustment.
 
 ---
@@ -111,7 +111,7 @@ The term $t_{neg}$ in $t_{adj}$ encodes the dual-existence of each shell across 
 
 **BH26**: The 26 empty shells ARE the BH26 spectrum. ProtoH formation = first complete BH26 harmonic
 occupation.  
-**VDS**: Shell filling occurs in order of VDS π-digit weightings — shell n fills with weight $d_n(\pi)/10^n$ relative priority.  
+**VDS**: Shell filling occurs in order of VDS $\pi$-digit weightings — shell n fills with weight $d_n(\pi)/10^n$ relative priority.  
 **DVP**: Higgs shift couples via DVP prime flavor structure (up=2, down=3, strange=5, charm=7,
 bottom=11, top=13).
 
@@ -124,7 +124,7 @@ BBN
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -223,7 +223,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.144 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -234,13 +234,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

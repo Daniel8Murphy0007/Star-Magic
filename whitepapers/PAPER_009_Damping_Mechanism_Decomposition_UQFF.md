@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 143)  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_003 (GW150914 BBH), PAPER_013 (Magnetar
 Spin-Down)
@@ -29,11 +29,11 @@ neutron star (BNS) and binary black hole (BBH) systems, analyzing frequency depe
 field activation thresholds, and system-specific behavior. For GW170817, we find D_total = 0.333
 with dominant String damping (D_String = 0.37, 63% reduction) and secondary TRZ effects (D_TRZ =
 0.9, 10% reduction). SCm remains dormant (D_SCm = 1.0) for typical NS B-fields but activates
-dramatically at B > 3 × 10 G, producing 99% suppression. BBH systems (GW150914) show weaker total
+dramatically at B > 3 $\times$ 10 G, producing 99% suppression. BBH systems (GW150914) show weaker total
 damping (D_total = 0.81) due to absence of SCm and reduced String coupling. Frequency-dependent
 analysis reveals TRZ resonances near 100 Hz and String sector dominance above 200 Hz.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -57,7 +57,7 @@ $$D_{total} = D_{Aether} \times D_{SCm} \times D_{TRZ} \times D_{String}$$
 $$D_{Aether} = e^{-\kappa r/c},\quad D_{SCm} = f(B/B_{crit}),\quad D_{TRZ} = 0.900,\quad D_{String} = 0.370$$
 
 **Key numerical results:** D_total(BNS) = 3.33e-1, D_total(BBH) = 8.10e-1, D_SCm(BB_crit) = 1.0e0,
-D_SCm(B>B_crit) = 1.0e-2, κ = 5.0e-4/day, B_crit = 4.4e13 T
+D_SCm(B>B_crit) = 1.0e-2, $\kappa$ = 5.0e-4/day, B_crit = 4.4e13 T
 
 ### 1.2 Observed Damping Across Systems
 
@@ -87,7 +87,7 @@ Vacuum aether (Lorentz-violating background field) couples to gravitational wave
 **D_Aether = exp(-? r / c)**
 
 where:
-- κ = 0.0005 day-1 (UQFF calibration constant)
+- $\kappa$ = 0.0005 day-1 (UQFF calibration constant)
 - r = source distance
 - c = speed of light
 
@@ -97,9 +97,9 @@ For typical GW sources:
 
 | Source | Distance | ?r/c | D_Aether |
 |--------|----------|------|----------|
-| GW170817 | 40 Mpc | 2.3 × 10?? | 1.000000 |
-| GW190425 | 159 Mpc | 9.2 × 10?? | 1.000000 |
-| GW150914 | 410 Mpc | 2.4 × 10-8 | 0.999999 |
+| GW170817 | 40 Mpc | 2.3 $\times$ 10?? | 1.000000 |
+| GW190425 | 159 Mpc | 9.2 $\times$ 10?? | 1.000000 |
+| GW150914 | 410 Mpc | 2.4 $\times$ 10-8 | 0.999999 |
 
 **Conclusion:** Aether damping is **negligible** (D  1) for all observed GW events.
 
@@ -107,7 +107,7 @@ For typical GW sources:
 
 Aether damping becomes significant (D < 0.99) only at:
 
-**r > c / ? = 5.2 × 10? Mpc = 17 Gpc**
+**r > c / ? = 5.2 $\times$ 10? Mpc = 17 Gpc**
 
 This is **beyond the observable universe** (z ~ 10, D_L ~ 30 Gpc for cosmology).
 
@@ -125,21 +125,21 @@ that screens gravitational tidal forces:
 
 **D_SCm(B) = 1 - exp[-(B_crit / B)]**
 
-where B_crit = 4.4 × 10 T.
+where B_crit = 4.4 $\times$ 10 T.
 
 ### 3.2 Activation Threshold
 
 | B-field | Type | B/B_crit | D_SCm | Activation |
 |---------|------|----------|-------|------------|
-| 108 G | Normal pulsar | 2.3 × 10-6 | 1.000000 | ? Dormant |
-| 10 G | Recycled pulsar | 2.3 × 10-4 | 1.000000 | ? Dormant |
+| 108 G | Normal pulsar | 2.3 $\times$ 10-6 | 1.000000 | ? Dormant |
+| 10 G | Recycled pulsar | 2.3 $\times$ 10-4 | 1.000000 | ? Dormant |
 | 10 G | High-B pulsar | 0.023 | 1.000000 | ? Dormant |
 | 10 G | Magnetar | 0.23 | 0.999 | ?? Weak (0.1%) |
-| 3 × 10 G | Strong magnetar | 0.68 | 0.999 | ?? Weak (0.1%) |
+| 3 $\times$ 10 G | Strong magnetar | 0.68 | 0.999 | ?? Weak (0.1%) |
 | 10-4 G | Hyper-magnetar | 2.3 | 0.010 | ? **Strong (99%)** |
 | 10-5 G | Theoretical max | 23 | 0.000 | ? **Full (100%)** |
 
-**Critical Result:** SCm activates sharply at **B ~ 3-5 × 10 G**.
+**Critical Result:** SCm activates sharply at **B ~ 3-5 $\times$ 10 G**.
 
 ### 3.3 Observed Systems
 
@@ -158,7 +158,7 @@ where B_crit = 4.4 × 10 T.
 
 Magnetar-BNS merger (e.g., SGR 1806-20 with B ~ 10-5 G):
 - **Predicted D_SCm ? 0**
-- **Total damping D_total = 0.37 × 0.9 × 0 = 0** (signal invisible!)
+- **Total damping D_total = 0.37 $\times$ 0.9 $\times$ 0 = 0** (signal invisible!)
 - **Detection:** Only via EM counterpart (kilonova, GRB)
 
 ---
@@ -288,7 +288,7 @@ distinction.
 - D_String = 0.370
 
 **Combined:**
-**D_total = 1.0 × 1.0 × 0.9 × 0.37 = 0.333**
+**D_total = 1.0 $\times$ 1.0 $\times$ 0.9 $\times$ 0.37 = 0.333**
 
 **Contributions:**
 - Aether: 0% reduction
@@ -308,7 +308,7 @@ distinction.
 - D_String = 0.620
 
 **Combined:**
-**D_total = 1.0 × 1.0 × 0.9 × 0.62 = 0.558**
+**D_total = 1.0 $\times$ 1.0 $\times$ 0.9 $\times$ 0.62 = 0.558**
 
 **Contributions:**
 - TRZ: 10% reduction
@@ -326,11 +326,11 @@ distinction.
 - D_String = 1.000 (weak for pure BH)
 
 **Combined:**
-**D_total = 1.0 × 0.9 × 1.0 = 0.900**
+**D_total = 1.0 $\times$ 0.9 $\times$ 1.0 = 0.900**
 
 **But observed D_total = 0.810, suggesting additional B_factor = 0.9:**
 
-**D_total = 1.0 × 0.9 × 0.9 = 0.810** ?
+**D_total = 1.0 $\times$ 0.9 $\times$ 0.9 = 0.810** ?
 
 **Contributions:**
 - TRZ: 10% reduction
@@ -407,7 +407,7 @@ distinction.
 
 If magnetar (B > 10-4 G) merges with normal NS:
 - **D_SCm ? 0** (full suppression)
-- **D_total = 0.37 × 0 ≈ 0.9 = 0** (signal invisible)
+- **D_total = 0.37 $\times$ 0 $\approx$ 0.9 = 0** (signal invisible)
 
 **Detection strategy:**
 - No GW detection despite nearby distance
@@ -437,7 +437,7 @@ We have decomposed UQFF damping mechanisms across BNS and BBH systems. Key findi
 
 1. **String sector dominates BNS damping** (63% for GW170817, 38% for GW190425)
 2. **TRZ provides universal 10% damping** with resonance at f ~ 100 Hz
-3. **SCm activates sharply at B > 3 × 10 G**, producing 99% suppression
+3. **SCm activates sharply at B > 3 $\times$ 10 G**, producing 99% suppression
 4. **Aether negligible** for all observed GW sources
 5. **Matter enhances String coupling** by factor ~3 (BNS vs BBH)
 6. **Frequency dependence:** Stronger damping at high-f (String) with mid-f resonance (TRZ)
@@ -490,7 +490,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -509,7 +509,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -546,7 +546,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -650,7 +650,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -659,13 +659,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -718,14 +718,14 @@ channels PASSED.Groups[1].Value : Damping Mechanism Decomposition in UQFF Framew
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -740,10 +740,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -751,9 +751,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -761,8 +761,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -851,7 +851,7 @@ SCmActivation[B]
 FNeutronS26[..., nTerms]
 ```
 
-*Source: `kozima_wstp_kernel.py` → `uqff_kozima_kernel.wl`*
+*Source: `kozima_wstp_kernel.py` $\to$ `uqff_kozima_kernel.wl`*
 
 
 ---

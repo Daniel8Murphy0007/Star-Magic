@@ -10,11 +10,11 @@ tags: [SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_398 — CoAnQi PImath Encryption Key and UQFF π-Cycle Connection
+# PAPER_398 — CoAnQi PImath Encryption Key and UQFF $\pi$-Cycle Connection
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **Source:** grok_share_cfdcad2f5.txt, lines ~6000–7500 (CoAnQiNode.py + Qt C++ GUI snippet)  
@@ -27,7 +27,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of CoAnQi PImath Encryption Key and UQFF π-Cycle Connection,
+This paper presents a UQFF analysis of CoAnQi PImath Encryption Key and UQFF $\pi$-Cycle Connection,
 deriving compressed field equations and observational predictions within the Star-Magic/UQFF
 framework.
 
@@ -35,7 +35,7 @@ framework.
 
 CoAnQi (Cosmic Analysis and Quantum Intelligence) is the software platform built on top of
 the UQFF physics engine. The CoAnQiNode.py module implements **PImath** — a novel encryption
-key algorithm that uses the decimal digits of π as a polynomial seed for SHA-256.
+key algorithm that uses the decimal digits of $\pi$ as a polynomial seed for SHA-256.
 
 The key mathematical connection is: **PImath uses the same $\pi$-cycle formalism as the UQFF
 $\cos(\pi t_n)$ oscillation**, creating a deep structural link between the cryptographic layer
@@ -53,7 +53,7 @@ where $\pi_i$ denotes the $i$-th decimal digit of $\pi$ (starting from 1–4–1
 
 ### 2.2 Algorithm Breakdown
 
-**Step 1:** Extract the first 100 decimal digits of π:
+**Step 1:** Extract the first 100 decimal digits of $\pi$:
 $$\pi = 3.\underbrace{14159265358979323846...}_{\text{100 decimal digits}}$$
 
 **Step 2:** Convert each decimal digit to its ASCII ordinal value:
@@ -101,7 +101,7 @@ The Grok thread states the CoAnQi platform has:
 
 ## 3. Connection to UQFF Physics
 
-### 3.1 π-Cycle Formalism
+### 3.1 $\pi$-Cycle Formalism
 
 The UQFF master equation uses $\cos(\pi t_n)$ as its **phase oscillator** throughout:
 - In $U_{g1}$: $\cdots e^{-\alpha t}\cos(\pi t_n)$
@@ -109,7 +109,7 @@ The UQFF master equation uses $\cos(\pi t_n)$ as its **phase oscillator** throug
 - In $U_m$: $(1 - e^{-\gamma t}\cos(\pi t_n))$
 - In $A_{\mu\nu}$: $g_{\mu\nu} + \eta T_{s00}\cos(\pi t_n)$
 
-PImath exploits the **decimal expansion of π** as a seed — the same constant $\pi$ that drives
+PImath exploits the **decimal expansion of $\pi$** as a seed — the same constant $\pi$ that drives
 all UQFF field oscillations. This creates a **cryptographically unique key derived from the
 physics constant underlying the simulation**.
 
@@ -123,7 +123,7 @@ involves $(2\pi)^{n/6}$ — the same $\pi$ appears in:
 2. PImath key seed $\sum \text{ord}(\pi_i)$
 3. 26D polynomial energy levels $\delta_n = \phi(2\pi)^{n/6}$
 
-This threefold appearance of $\pi$ is the UQFF "pi-cycle principle": π encodes
+This threefold appearance of $\pi$ is the UQFF "pi-cycle principle": $\pi$ encodes
 **oscillation** (1), **information** (2), and **dimensional scaling** (3) simultaneously.
 
 ---
@@ -148,7 +148,7 @@ The PImath encryption key is separate from these service API keys.
 | Layer | Component | Function |
 |-------|-----------|----------|
 | Physics Engine | `MAIN_1_CoAnQi`.cpp | C++ UQFF field calculations |
-| Encryption | PImath key | SHA-256(Σ ord(π_i)) |
+| Encryption | PImath key | SHA-256($\Sigma$ ord($\pi$_i)) |
 | API Layer | APIFetch.py (55 APIs) | Live data from NASA/SIMBAD/MAST/Gaia |
 | Node | CoAnQiNode.py | Python orchestrator |
 | GUI | source2.cpp (Qt6) | 21-tab principal interface |
@@ -186,8 +186,8 @@ dimensional sum as the computational basis for the CoAnQi capacity claim.
 
 PAPER_398 documents the CoAnQi PImath encryption algorithm:
 $K = \text{SHA256}(\sum_{i=0}^{99}\text{ord}(\pi_i))$ — a SHA-256 hash of the sum of ASCII
-ordinals of the first 100 decimal digits of π. The key design links to UQFF physics because
-the same constant π drives UQFF field oscillations $\cos(\pi t_n)$ and 26D dimensional energy
+ordinals of the first 100 decimal digits of $\pi$. The key design links to UQFF physics because
+the same constant $\pi$ drives UQFF field oscillations $\cos(\pi t_n)$ and 26D dimensional energy
 levels $\phi(2\pi)^{n/6}$. The platform's claimed $1.5\times10^{16}$-bit computational capacity
 matches the 26D UQFF polynomial state space sum to within 15%.
 
@@ -200,7 +200,7 @@ matches the 26D UQFF polynomial state space sum to within 15%.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -303,7 +303,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.071 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -314,13 +314,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

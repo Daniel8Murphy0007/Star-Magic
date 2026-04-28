@@ -20,15 +20,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
-SPT-CL J2215-3537 (z = 1.16, M = 7.32×1014 MM_sun, SFR ≈ 700 MM_sun/yr) is the most extreme cool-core
+SPT-CL J2215-3537 (z = 1.16, M = 7.32$\times$1014 MM_sun, SFR $\approx$ 700 MM_sun/yr) is the most extreme cool-core
 cluster in the South Pole Telescope sample and yields the highest UQFF buoyancy-unified force in the
-entire PAPER_346–352 dataset: F_U_Bi_i ≈ −1.40×10218 N. The extreme starburst provides an
-independently measured SFR confirming the UQFF SFR = ρ_gas·v_wind·f_res formula. The x_2 = 8.4 Gly
+entire PAPER_346–352 dataset: F_U_Bi_i $\approx$ -1.40$\times$10218 N. The extreme starburst provides an
+independently measured SFR confirming the UQFF SFR = $\rho$_gas$\cdot$v_wind$\cdot$f_res formula. The x_2 = 8.4 Gly
 distance is the largest in the Session 96 paper series.
 
 ---
@@ -39,7 +39,7 @@ distance is the largest in the Session 96 paper series.
 
 $$F_{U\_Bi\_i} \approx -1.40 \times 10^{218}\ \mathrm{N}$$
 
-This exceeds the baseline AGN F_U_Bi_i = −8.32×10217 N by a factor of 1.68×, reflecting the enhanced
+This exceeds the baseline AGN F_U_Bi_i = -8.32$\times$10217 N by a factor of 1.68$\times$, reflecting the enhanced
 vacuum buoyancy in an extreme cool-core environment.
 
 ### 2.2 Cool Core SFR — UQFF Prediction
@@ -67,20 +67,20 @@ $$M_{\rm cl} = 7.32 \times 10^{14}\ M_\odot = 7.32 \times 10^{14} \times 1.989\t
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | z | Spectroscopic | 1.16 |
-| M_cl | SPT mass | 7.32×1014 MM_sun |
+| M_cl | SPT mass | 7.32$\times$1014 MM_sun |
 | SFR | JCMT/ALMA obs | ~700 MM_sun/yr |
-| `F_U_Bi_i` | UQFF full 5-eq | −1.40×10218 N |
+| `F_U_Bi_i` | UQFF full 5-eq | -1.40$\times$10218 N |
 | x_2 | Comoving distance | 8.4 Gly |
-| `F_U_Bi_i` / baseline | Ratio to PAPER_346 | ×1.68 |
+| `F_U_Bi_i` / baseline | Ratio to PAPER_346 | $\times$1.68 |
 
 ---
 
 ## 4. Physical Significance
 
 SPT-CL J2215 is the landmark test for UQFF at the highest-redshift cool-core + starburst
-intersection. The factor-of-1.68 enhancement in F_U_Bi_i above the baseline (−8.32×10217 N) provides
+intersection. The factor-of-1.68 enhancement in F_U_Bi_i above the baseline (-8.32$\times$10217 N) provides
 the first quantitative UQFF prediction for why extreme cool-core clusters exhibit anomalously high
-SFRs: the elevated vacuum buoyancy (higher ρ_SCm/ρ_UA ratio in dense cool cores) directly amplifies
+SFRs: the elevated vacuum buoyancy (higher $\rho$_SCm/$\rho$_UA ratio in dense cool cores) directly amplifies
 the buoyancy force and hence the gas compression rate.
 
 The z = 1.16 observation epoch corresponds to a lookback time of ~8 Gyr — when the Universe was 46%
@@ -90,7 +90,7 @@ of its current age — confirming UQFF cool-core physics operate at cosmic noon.
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_350 (El Gordo):** El Gordo also yields F_U_Bi_i ≈ −1.40×10218 N but from a different mechanism (high mass + high velocity merger vs. extreme SFR in cool core).  
+- **vs. PAPER_350 (El Gordo):** El Gordo also yields F_U_Bi_i $\approx$ -1.40$\times$10218 N but from a different mechanism (high mass + high velocity merger vs. extreme SFR in cool core).  
 - **vs. all other PAPER_346–352:** SPT-CL J2215 is unique as the only cool-core starburst cluster in the series.
 
 ---
@@ -109,7 +109,7 @@ of its current age — confirming UQFF cool-core physics operate at cosmic noon.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -128,7 +128,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -270,7 +270,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.095 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -281,13 +281,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

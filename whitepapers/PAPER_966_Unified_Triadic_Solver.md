@@ -71,7 +71,7 @@ All three modes yield consistent predictions when evaluated at the SCm phonon re
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -90,7 +90,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -161,7 +161,7 @@ $$\mathcal{L}_\text{tri} = w_c\mathcal{L}_\text{comp} + w_r\mathcal{L}_\text{res
 $$\boxed{g_\text{tri}(r,t) = w_c\, g_\text{comp}(r) + w_r\, g_\text{res}(r,t) + w_b\, g_\text{buoy}(r),\quad w_c + w_r + w_b = 1}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → three gravity branches → weighted combination → unified triadic field → convergence
+PAPER_877 $\to$ three gravity branches $\to$ weighted combination $\to$ unified triadic field $\to$ convergence
 check
 
 ---

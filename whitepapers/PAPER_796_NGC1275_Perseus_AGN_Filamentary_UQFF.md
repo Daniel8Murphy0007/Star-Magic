@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 NGC 1275 (Perseus A, 3C 84) is the brightest cluster galaxy (BCG) of the Perseus galaxy cluster,
-located at redshift z ≈ 0.018 (~250 million light-years). It hosts one of the most powerful known
+located at redshift z $\approx$ 0.018 (~250 million light-years). It hosts one of the most powerful known
 AGN jets, which inflates giant "bubbles" (radio lobes) in the hot X-ray intracluster medium (ICM).
 Most remarkably, Hubble observations reveal an extraordinary network of long, cool, filamentary gas
 threads extending up to 20,000 light-years from the nucleus, stabilized by magnetic fields threading
@@ -49,17 +49,17 @@ establishing a first-principles framework for magnetized filamentary dynamics in
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 3.4×1011 MM_sun = 6.763×1041 kg | Perseus BCG |
-| Disk radius | r | 9.46×1020 m (~100 kly) | Optical |
-| SMBH mass | M_BH | 3.4×108 MM_sun = 6.763×1038 kg | Measured |
-| Filament length | L_fil | 6.17×1020 m (~20 kly) | Hubble |
+| Galaxy mass | M | 3.4$\times$1011 MM_sun = 6.763$\times$1041 kg | Perseus BCG |
+| Disk radius | r | 9.46$\times$1020 m (~100 kly) | Optical |
+| SMBH mass | M_BH | 3.4$\times$108 MM_sun = 6.763$\times$1038 kg | Measured |
+| Filament length | L_fil | 6.17$\times$1020 m (~20 kly) | Hubble |
 | Filament B field | B_fil | 10-8 T | Fabian et al. 2008 |
-| Filament mass | M_fil | 1.989×1036 kg (~103 MM_sun/filament avg) | Estimate |
+| Filament mass | M_fil | 1.989$\times$1036 kg (~103 MM_sun/filament avg) | Estimate |
 | AGN jet power | P_jet | 1046 erg/s | Radio/X-ray |
 | Redshift | z | 0.018 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
-| τ_BH | — | 1×108 yr = 3.156×1015 s | Feedback cycle |
-| v_EM | v | 3×105 m/s | BCG dispersion |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
+| $\tau$_BH | — | 1$\times$108 yr = 3.156$\times$1015 s | Feedback cycle |
+| v_EM | v | 3$\times$105 m/s | BCG dispersion |
 | B_EM | B | 10-5 T | Galactic field |
 
 ---
@@ -70,23 +70,23 @@ establishing a first-principles framework for magnetized filamentary dynamics in
 
 $$
 \begin{aligned}
-  & g_NGC1275(r,t) = (G·M)/r2 · (1 + H(z)·t) · (1 – F_BH(t)) · (1 + f_TRZ) \\
+  & g_NGC1275(r,t) = (G\cdotM)/r2 \cdot (1 + H(z)\cdott) \cdot (1 – F_BH(t)) \cdot (1 + f_TRZ) \\
   & + a_fil \\
-  & + q·(v×B)/m_p · (1 + ρ_vac,[UA]/ρ_vac,[SCm]) · 10-12
+  & + q\cdot(v\timesB)/m_p \cdot (1 + \rho_vac,[UA]/\rho_vac,[SCm]) \cdot 10-12
 \end{aligned}
 $$
 
 where:
-- **F_BH(t) = F₀·(1 – exp(–t/τ_BH))** = AGN jet feedback reduction (**novel UQFF term**)
-- **a_fil = (B2·L_fil) / (μ₀·M_fil)** = filamentary magnetic stabilization (**novel UQFF term**)
+- **F_BH(t) = F0$\cdot$(1 – exp(–t/$\tau$_BH))** = AGN jet feedback reduction (**novel UQFF term**)
+- **a_fil = (B2$\cdot$L_fil) / ($\mu$0$\cdot$M_fil)** = filamentary magnetic stabilization (**novel UQFF term**)
 
 ### AGN Feedback Term
 
 $$
 \begin{aligned}
-  & F_BH(t) = 0.10 × (1 – exp(–1.578e17/3.156e15)) \\
-  & = 0.10 × (1 – exp(–50)) = 0.10 × 1.000 = 0.10 \\
-  & (Fully developed feedback at t = 5 Gyr >> τ_BH = 100 Myr)
+  & F_BH(t) = 0.10 \times (1 – exp(–1.578e17/3.156e15)) \\
+  & = 0.10 \times (1 – exp(–50)) = 0.10 \times 1.000 = 0.10 \\
+  & (Fully developed feedback at t = 5 Gyr >> \tau_BH = 100 Myr)
 \end{aligned}
 $$
 
@@ -94,9 +94,9 @@ $$
 
 $$
 \begin{aligned}
-  & a_fil = B_fil2 × L_fil / (μ₀ × M_fil) \\
-  & = (1e-8)2 × 6.17e20 / (1.257e-6 × 1.989e36) \\
-  & = 1e-16 × 6.17e20 / 2.500e30 \\
+  & a_fil = B_fil2 \times L_fil / (\mu0 \times M_fil) \\
+  & = (1e-8)2 \times 6.17e20 / (1.257e-6 \times 1.989e36) \\
+  & = 1e-16 \times 6.17e20 / 2.500e30 \\
   & = 6.17e4 / 2.500e30 = 2.468e-26 m/s2  (stabilization, not acceleration)
 \end{aligned}
 $$
@@ -105,17 +105,17 @@ $$
 
 $$
 \begin{aligned}
-  & G·M / r2     = 6.6743e-11 × 6.763e41 / (9.46e20)2 \\
+  & G\cdotM / r2     = 6.6743e-11 \times 6.763e41 / (9.46e20)2 \\
   & = 4.513e31 / 8.949e41 = 5.043e-11 m/s2 \\
-  & H(z = 0.018): Hz = H0·√(0.3·(1.018)3 + 0.7) = 2.272e-18 \\
-  & (1 + Hz·t) = 1 + 2.272e-18 × 1.578e17 = 1.359 \\
+  & H(z = 0.018): Hz = H0\cdot\sqrt{}(0.3\cdot(1.018)3 + 0.7) = 2.272e-18 \\
+  & (1 + Hz\cdott) = 1 + 2.272e-18 \times 1.578e17 = 1.359 \\
   & factor_feedback = (1 – 0.10) = 0.90 \\
   & factor_TRZ = 1.05 \\
-  & \text{g\_grav\_total} = 5.043e-11 × 1.359 × 0.90 × 1.05 = 6.462e-11 m/s2 \\
-  & a_EM = (1.602e-19 × 3e5 × 1e-5 / 1.673e-27) × 11e-12 \\
-  & = (4.806e-19 / 1.673e-27) × 11e-12 \\
-  & = 2.873e8 × 11e-12 = 3.160e-3 m/s2 \\
-  & g_primary ≈ 3.160×10-3 m/s2   (EM enhanced by σ = 3×105 m/s)
+  & \text{g\_grav\_total} = 5.043e-11 \times 1.359 \times 0.90 \times 1.05 = 6.462e-11 m/s2 \\
+  & a_EM = (1.602e-19 \times 3e5 \times 1e-5 / 1.673e-27) \times 11e-12 \\
+  & = (4.806e-19 / 1.673e-27) \times 11e-12 \\
+  & = 2.873e8 \times 11e-12 = 3.160e-3 m/s2 \\
+  & g_primary \approx 3.160\times10-3 m/s2   (EM enhanced by \sigma = 3\times105 m/s)
 \end{aligned}
 $$
 
@@ -123,10 +123,10 @@ $$
 
 $$
 \begin{aligned}
-  & g_compressed = 3.160×10-3 m/s2 \\
-  & g_resonant   = 3.160×10-3 m/s2 \\
-  & g_buoyancy   = 3.160×10-3 m/s2 \\
-  & g_primary    = 3.160×10-3 m/s2
+  & g_compressed = 3.160\times10-3 m/s2 \\
+  & g_resonant   = 3.160\times10-3 m/s2 \\
+  & g_buoyancy   = 3.160\times10-3 m/s2 \\
+  & g_primary    = 3.160\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -135,14 +135,14 @@ $$
 ## 4. Novel Physics
 
 ### AGN Feedback Reduction F_BH(t)
-The AGN feedback term exponentially builds to maximum suppression over the feedback timescale τ_BH ~
-100 Myr. At t >> τ_BH the feedback is fully developed (F_BH → F₀). This reproduces the observational
+The AGN feedback term exponentially builds to maximum suppression over the feedback timescale $\tau$_BH ~
+100 Myr. At t >> $\tau$_BH the feedback is fully developed (F_BH $\to$ F0). This reproduces the observational
 finding that NGC 1275's ICM cavities (X-ray ghost bubbles) indicate ~108 yr intermittent AGN
 activity cycles. UQFF encodes this cycle as a time-averaged correction reducing the effective
 gravitational mass available for star formation.
 
 ### Filamentary Magnetic Stabilization a_fil
-The magnetic tension stabilization term from B_fil ≈ 10-8 T threading the cool filaments produces a
+The magnetic tension stabilization term from B_fil $\approx$ 10-8 T threading the cool filaments produces a
 negligible acceleration (a_fil ~ 10-26 m/s2) relative to the EM term but serves as a UQFF
 diagnostic: any filamentary system with B > 10-7 T would produce detectable (~10-5 m/s2) correction
 to the UQFF result.
@@ -151,7 +151,7 @@ to the UQFF result.
 
 ## 5. Conclusions
 
-UQFF applied to NGC 1275 yields g_primary ≈ 3.160×10-3 m/s2 (EM-enhanced by BCG's higher σ = 3×105
+UQFF applied to NGC 1275 yields g_primary $\approx$ 3.160$\times$10-3 m/s2 (EM-enhanced by BCG's higher $\sigma$ = 3$\times$105
 m/s). The novel AGN feedback reduction F_BH(t) and filamentary magnetic stabilization a_fil extend
 UQFF to cluster BCG environments with powerful jets and magnetized cool-gas filaments. These terms
 establish UQFF as applicable to the most dynamically complex environments in cluster astrophysics.
@@ -166,7 +166,7 @@ establish UQFF as applicable to the most dynamically complex environments in clu
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -185,7 +185,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -327,7 +327,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -338,13 +338,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

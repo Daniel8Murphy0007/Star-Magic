@@ -56,7 +56,7 @@ where:
 
 $$f_{\text{res}} = \frac{E_{\text{bind}}}{h} \cdot \frac{A_H}{A} \cdot \left(1 + S_{\text{shell}}\right)$$
 
-where $E_{\text{bind}}$ is the nuclear binding energy per nucleon (MeV → Joules) and $h = 6.626 \times 10^{-34}\ \text{J·s}$.
+where $E_{\text{bind}}$ is the nuclear binding energy per nucleon (MeV $\to$ Joules) and $h = 6.626 \times 10^{-34}\ \text{J\cdots}$.
 
 ### 3.3 Nuclear UQFF Coupling $k_{\text{nuc}}$
 
@@ -141,12 +141,12 @@ buoyancy field.
 
 **Class:** `HResPeriodicTableUniversalNuclearCorrelationCalculator`  
 **Methods:**
-- `compute_A_res(Z, A, delta_pair)` → resonance amplitude
-- `compute_f_res(E_bind_MeV, A, S_shell)` → resonance frequency
-- `compute_S_shell(Z, N)` → shell correction using magic numbers
-- `compute_k_nuc(N, Z, delta_pair)` → nuclear UQFF coupling
-- `compute_H_res(Z, A, t, SC_m, U_dp)` → full H_res value
-- `scan_periodic_table(t, SC_m, U_dp)` → H_res for all Z=1..118
+- `compute_A_res(Z, A, delta_pair)` $\to$ resonance amplitude
+- `compute_f_res(E_bind_MeV, A, S_shell)` $\to$ resonance frequency
+- `compute_S_shell(Z, N)` $\to$ shell correction using magic numbers
+- `compute_k_nuc(N, Z, delta_pair)` $\to$ nuclear UQFF coupling
+- `compute_H_res(Z, A, t, SC_m, U_dp)` $\to$ full H_res value
+- `scan_periodic_table(t, SC_m, U_dp)` $\to$ H_res for all Z=1..118
 
 ---
 
@@ -159,7 +159,7 @@ buoyancy field.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-LENR-S225 -->
 
@@ -294,7 +294,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.163 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -305,12 +305,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| sin2θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin2θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
-| ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| sin2$\theta$_W weak mixing | UQFF H_SCm=0.990 $\to$ 4-fold formula $\to$ 0.2304 | sin2$\theta$_W = 0.23122 $\pm$ 0.00003 | PDG 2024 | 99.6% |
+| ALICE dN/d$\eta$ (13.6 TeV) | UQFF [SSq]$\times$1.077 = $\beta$_i = 0.614 | dN/d$\eta$ = 17.43 $\pm$ 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
+| Cross-system $\kappa$ universality | $\kappa$ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay $\Gamma$_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
 
-**New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
+**New physics claim:** The same UQFF parameter set ($\kappa$, [SSq], $\beta$_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)
 across a 29-system cross-validation matrix — without per-system free-parameter adjustment.
 No SM framework derives these three observables from a single connected constant set.

@@ -25,8 +25,8 @@ Hideo Kozima's 2021 neutron drop model for cold fusion (LENR) in crystalline lat
 into UQFF as a new F_U_Bi_i term F_neutron. Kozima proposes that THz-frequency lattice phonons (1–10
 THz) couple with trapped neutron clusters (neutron drops) in Pd-D and Ni-H systems, enabling
 sub-threshold nuclear reactions. This aligns directly with the user's Colman-Gillespie replication
-at 1.2–1.3 THz. A static F_neutron = k_neutron × σ_n = 10^6 N is derived. A refined
-frequency-dependent model yields σ_n(ω) with Gaussian resonance profile, scaling to F_neutron ≈
+at 1.2–1.3 THz. A static F_neutron = k_neutron $\times$ $\sigma$_n = 10^6 N is derived. A refined
+frequency-dependent model yields $\sigma$_n($\omega$) with Gaussian resonance profile, scaling to F_neutron $\approx$
 10^49 N in neutron star densities. Eight Chandra systems and the PSR J0030+0451 neutron star are
 analyzed.
 
@@ -38,9 +38,9 @@ analyzed.
 $$
 \begin{aligned}
   & System: Pd-D (palladium-deuterium) or Ni-H (nickel-hydrogen) lattice \\
-  & THz phonons: ω_phonon = 1–10 THz  ← directly matches ω_LENR = 1.25 THz \\
+  & THz phonons: \omega_phonon = 1–10 THz  \leftarrow directly matches \omega_LENR = 1.25 THz \\
   & Neutron drops: clusters of n neutrons bound in lattice vacancies \\
-  & Reaction: n + ^A_Z X → ^{A+1}_Z X  (neutron capture)
+  & Reaction: n + ^A_Z X \to ^{A+1}_Z X  (neutron capture)
 \end{aligned}
 $$
 
@@ -53,9 +53,9 @@ The "neutron drop" is a cluster of neutrons in the lattice that is stabilized by
 $$
 \begin{aligned}
   & Colman-Gillespie: Ni-Mo lattice + 300 Hz activation + 1.2–1.3 THz LENR resonance \\
-  & Kozima:           Ni-H lattice  + THz phonon      + neutron drop → nuclear reactions \\
-  & ω_phonon (Kozima) = 1–10 THz contains ω_LENR (Colman-Gillespie) = 1.25 THz \\
-  & → DIRECT VALIDATION of phonon-mediated LENR in both systems
+  & Kozima:           Ni-H lattice  + THz phonon      + neutron drop \to nuclear reactions \\
+  & \omega_phonon (Kozima) = 1–10 THz contains \omega_LENR (Colman-Gillespie) = 1.25 THz \\
+  & \to DIRECT VALIDATION of phonon-mediated LENR in both systems
 \end{aligned}
 $$
 
@@ -76,10 +76,10 @@ F_neutron = 10^10 × 10^-4 = 10^6 N
 ### 2.2 Relative Magnitude
 $$
 \begin{aligned}
-  & F_LENR    = 1.56–6.16 × 10^36–10^39 N  ← 30 orders above \\
-  & F_quark   = 1.54 × 10^7 N \\
-  & F_neutron = 1.00 × 10^6 N              ← 2nd largest lattice/nuclear term \\
-  & F_ALP     = 1.00 × 10^4 N \\
+  & F_LENR    = 1.56–6.16 \times 10^36–10^39 N  \leftarrow 30 orders above \\
+  & F_quark   = 1.54 \times 10^7 N \\
+  & F_neutron = 1.00 \times 10^6 N              \leftarrow 2nd largest lattice/nuclear term \\
+  & F_ALP     = 1.00 \times 10^4 N \\
   & F_DE      = variable (1 N to 10^9 N)
 \end{aligned}
 $$
@@ -91,29 +91,29 @@ $$
 ### 3.1 Gaussian Resonance Cross-Section
 $$
 \begin{aligned}
-  & σ_n(ω) = σ_0 × (ω/ω_LENR)2 × exp[-(ω - ω_LENR)2 / (2Δω2)] \\
-  & σ_0        = 10^-4            (baseline neutron capture cross-section) \\
-  & ω_LENR     = 2π × 1.25×10^12 s^-1   (resonance center) \\
-  & Δω         = 2π × 0.05×10^12 s^-1   (bandwidth ~0.05 THz)
+  & \sigma_n(\omega) = \sigma_0 \times (\omega/\omega_LENR)2 \times exp[-(\omega - \omega_LENR)2 / (2\Delta\omega2)] \\
+  & \sigma_0        = 10^-4            (baseline neutron capture cross-section) \\
+  & \omega_LENR     = 2\pi \times 1.25\times10^12 s^-1   (resonance center) \\
+  & \Delta\omega         = 2\pi \times 0.05\times10^12 s^-1   (bandwidth ~0.05 THz)
 \end{aligned}
 $$
 
-At resonance (ω = ω_LENR):
+At resonance ($\omega$ = $\omega$_LENR):
 $$
 \begin{aligned}
-  & σ_n(ω_LENR) = σ_0 × 1 × exp(0) = σ_0 = 10^-4 \\
-  & F_neutron = 10^10 × 10^-4 = 10^6 N
+  & \sigma_n(\omega_LENR) = \sigma_0 \times 1 \times exp(0) = \sigma_0 = 10^-4 \\
+  & F_neutron = 10^10 \times 10^-4 = 10^6 N
 \end{aligned}
 $$
 
 ### 3.2 Dynamic 300 Hz Coupling
 $$
 \begin{aligned}
-  & F_neutron(t) = k_neutron × σ_n(ω_eff) × (1 + α × cos(ω_act × t)) \\
-  & ω_eff = ω_act + n × ω_LENR  (nonlinear frequency mixing) \\
-  & ω_act = 2π × 300 s^-1 \\
-  & n     ≈ 4.17 × 10^9      (harmonic order bridging 300 Hz → 1.25 THz) \\
-  & α     = 0.1              (300 Hz modulation depth)
+  & F_neutron(t) = k_neutron \times \sigma_n(\omega_eff) \times (1 + \alpha \times cos(\omega_act \times t)) \\
+  & \omega_eff = \omega_act + n \times \omega_LENR  (nonlinear frequency mixing) \\
+  & \omega_act = 2\pi \times 300 s^-1 \\
+  & n     \approx 4.17 \times 10^9      (harmonic order bridging 300 Hz \to 1.25 THz) \\
+  & \alpha     = 0.1              (300 Hz modulation depth)
 \end{aligned}
 $$
 
@@ -123,13 +123,13 @@ lattice neutron drop nucleation with the activation cycle.
 ### 3.3 Density-Scaled Cross-Section
 $$
 \begin{aligned}
-  & σ_n(ρ) = σ_0 × (ρ / ρ_0) \\
-  & ρ_0    = 10^-22 kg/m3  (reference: Sgr A* accretion disk gas density) \\
+  & \sigma_n(\rho) = \sigma_0 \times (\rho / \rho_0) \\
+  & \rho_0    = 10^-22 kg/m3  (reference: Sgr A* accretion disk gas density) \\
   & For different environments: \\
-  & ρ_lab  = 10^4 kg/m3    (Pd-D cathode):      σ_n = 10^-4 × 10^26 = 10^22 \\
-  & ρ_SNR  = 10^-22 kg/m3  (SNR gas):           σ_n = 10^-4 (unchanged) \\
-  & ρ_NS   = 10^17 kg/m3   (neutron star core):  σ_n = 10^-4 × 10^39 = 10^35 \\
-  & → F_neutron(NS) = 10^10 × 10^35 = 10^45 N  (significant!)
+  & \rho_lab  = 10^4 kg/m3    (Pd-D cathode):      \sigma_n = 10^-4 \times 10^26 = 10^22 \\
+  & \rho_SNR  = 10^-22 kg/m3  (SNR gas):           \sigma_n = 10^-4 (unchanged) \\
+  & \rho_NS   = 10^17 kg/m3   (neutron star core):  \sigma_n = 10^-4 \times 10^39 = 10^35 \\
+  & \to F_neutron(NS) = 10^10 \times 10^35 = 10^45 N  (significant!)
 \end{aligned}
 $$
 
@@ -141,14 +141,14 @@ All 8 Chandra systems recalculated with F_neutron = 10^6 N added*:
 
 | System | `F_U_Bi_i` (N) | F_neutron | Analysis Point |
 |--------|-------------|----------|----------------|
-| SNR 1181 (Pa 30) | 2.65×10^208 | 10^6 N | Neutron capture in neon-rich Type Iax remnant validates Kozima |
-| H1821+643 quasar | 2.09×10^212 | 10^6 N | Neutron processes in cluster-embedded SMBH gas |
-| Sonification Collection | 5.30×10^208 | 10^6 N | Neutron coherence unifies multi-wavelength systems |
-| IC 443 Jellyfish | 2.11×10^208 | 10^6 N | Kozima lattice model → shocked gas neutron capture |
-| M74 Phantom Galaxy | 1.88×10^211 | 10^6 N | Neutron-mediated coherence in star-forming spiral |
-| MSH 15-52 Hand PWN | 5.30×10^208 | 10^6 N | Neutron drop model applies to pulsar wind nebula |
-| SDSS J1531+3414 | 1.40×10^212 | 10^6 N | Neutron coherence in dense galaxy merger environment |
-| **Sgr A*** | **-8.31×10^211** | 10^6 N | **Negative buoyancy + neutron drop = astrophysical LENR** |
+| SNR 1181 (Pa 30) | 2.65$\times$10^208 | 10^6 N | Neutron capture in neon-rich Type Iax remnant validates Kozima |
+| H1821+643 quasar | 2.09$\times$10^212 | 10^6 N | Neutron processes in cluster-embedded SMBH gas |
+| Sonification Collection | 5.30$\times$10^208 | 10^6 N | Neutron coherence unifies multi-wavelength systems |
+| IC 443 Jellyfish | 2.11$\times$10^208 | 10^6 N | Kozima lattice model $\to$ shocked gas neutron capture |
+| M74 Phantom Galaxy | 1.88$\times$10^211 | 10^6 N | Neutron-mediated coherence in star-forming spiral |
+| MSH 15-52 Hand PWN | 5.30$\times$10^208 | 10^6 N | Neutron drop model applies to pulsar wind nebula |
+| SDSS J1531+3414 | 1.40$\times$10^212 | 10^6 N | Neutron coherence in dense galaxy merger environment |
+| **Sgr A*** | **-8.31$\times$10^211** | 10^6 N | **Negative buoyancy + neutron drop = astrophysical LENR** |
 
 *F_U_Bi_i values unchanged; F_neutron=10^6 N << F_LENR=10^36–10^39 N*
 
@@ -159,30 +159,30 @@ All 8 Chandra systems recalculated with F_neutron = 10^6 N added*:
 ### Parameters:
 $$
 \begin{aligned}
-  & M     = 2.786 × 10^30 kg  (pulsar mass ~1.4 M_sun) \\
+  & M     = 2.786 \times 10^30 kg  (pulsar mass ~1.4 M_sun) \\
   & r     = 10^4 m            (neutron star radius ~10 km) \\
-  & ρ     ≈ 10^17 kg/m3       (nuclear density) \\
+  & \rho     \approx 10^17 kg/m3       (nuclear density) \\
   & L_X   = 10^29 W           (X-ray luminosity) \\
-  & B_0   = 10^-4 T           (magnetic field at 7.71×10^18 m) \\
-  & ω_0   = 10^-12 s^-1 \\
-  & σ_n   = 10^35             (density-scaled: σ_n = σ_0 × ρ/ρ_0 = 10^-4 × 10^39 = 10^35) \\
-  & F_neutron = 10^10 × 10^35 = 10^45 N!
+  & B_0   = 10^-4 T           (magnetic field at 7.71\times10^18 m) \\
+  & \omega_0   = 10^-12 s^-1 \\
+  & \sigma_n   = 10^35             (density-scaled: \sigma_n = \sigma_0 \times \rho/\rho_0 = 10^-4 \times 10^39 = 10^35) \\
+  & F_neutron = 10^10 \times 10^35 = 10^45 N!
 \end{aligned}
 $$
 
 However, using F_LENR as the dominant integrand term:
 $$
 \begin{aligned}
-  & F_LENR = 1.56 × 10^36 N  (ω_0=10^-12) \\
-  & a = μ_s∇(M_s/r) = 6.6743×10^-11 × 2.786×10^30 / (10^4)2 ≈ 1.86 × 10^15 \\
-  & x_2 ≈ [-b - sqrt(b2 + 4ac)] / 2a \\
-  & b ≈ 4.72×10^-3, c ≈ -3.06×10^175 \\
-  & x_2 ≈ -1.62 × 10^159 m \\
-  & \text{F\_U\_Bi\_i} = 1.56×10^36 × 1.62×10^159 ≈ 2.53 × 10^195 N
+  & F_LENR = 1.56 \times 10^36 N  (\omega_0=10^-12) \\
+  & a = \mu_s\nabla(M_s/r) = 6.6743\times10^-11 \times 2.786\times10^30 / (10^4)2 \approx 1.86 \times 10^15 \\
+  & x_2 \approx [-b - sqrt(b2 + 4ac)] / 2a \\
+  & b \approx 4.72\times10^-3, c \approx -3.06\times10^175 \\
+  & x_2 \approx -1.62 \times 10^159 m \\
+  & \text{F\_U\_Bi\_i} = 1.56\times10^36 \times 1.62\times10^159 \approx 2.53 \times 10^195 N
 \end{aligned}
 $$
 
-Wait — PSR J0030+0451 uses r=10^4 m → very large a → smaller x_2 → F_U_Bi_i ≈ 2.53×10^208 N as per
+Wait — PSR J0030+0451 uses r=10^4 m $\to$ very large a $\to$ smaller x_2 $\to$ F_U_Bi_i $\approx$ 2.53$\times$10^208 N as per
 Grok session (using r=1.1 kly distance for x_2 calculation framework). F_neutron at 10^45 N would
 dramatically change the integrand for extreme r values, but in practice the small physical radius of
 the star (10^4 m) limits the integration domain.
@@ -211,16 +211,16 @@ Expected:      Confirm F_LENR resonance, neutron drop signatures
 
 ### 6.3 DFT Simulation:
 - Density functional theory phonon spectra in Pd-D, Ni-Mo-H
-- Confirm σ_n peak at 1.2–1.3 THz
+- Confirm $\sigma$_n peak at 1.2–1.3 THz
 - Validate Gaussian resonance profile shape
 
 ---
 
 ## 7. Conclusions
 - F_neutron = 10^6 N (static) from Kozima neutron drop model integrates LENR nuclear physics into UQFF
-- Frequency-dependent σ_n(ω) with Gaussian profile formalizes the phonon-mediated resonance
-- 300 Hz → 1.25 THz nonlinear coupling provides a universal energy transfer mechanism
-- Neutron star densities (ρ~10^17 kg/m3) yield F_neutron ≈ 10^45 N — extreme density amplification
+- Frequency-dependent $\sigma$_n($\omega$) with Gaussian profile formalizes the phonon-mediated resonance
+- 300 Hz $\to$ 1.25 THz nonlinear coupling provides a universal energy transfer mechanism
+- Neutron star densities ($\rho$~10^17 kg/m3) yield F_neutron $\approx$ 10^45 N — extreme density amplification
 - Kozima model directly validates Colman-Gillespie replication mechanism
 - F_neutron is 2nd largest lattice/nuclear term after F_LENR; negligible in integrated F_U_Bi_i but theoretically important as the nuclear physics bridge
 
@@ -256,17 +256,17 @@ $$
 - `delta_omega = 2*pi*0.05e12 s^{-1}` (bandwidth ~0.05 THz)
 - `omega_LENR = 2*pi*1.25e12 s^{-1}` (resonance center, 1.25 THz)
 - At resonance: `F_neutron = k_neutron × sigma_0 = 10^6 N`
-- At neutron star density (ρ~10^17): `F_neutron ~ 10^45 N`
+- At neutron star density ($\rho$~10^17): `F_neutron ~ 10^45 N`
 
 **Derivation Chain:**
 1. `S_Dirac = integral d^4x [psi_bar(i*gamma*D - m)psi + y L_bar H_tilde N_R + V_drop |psi|^2]`
-2. `delta S / delta psi_bar = 0` → Dirac equation with lattice trapping potential
+2. `delta S / delta psi_bar = 0` $\to$ Dirac equation with lattice trapping potential
 3. `V_drop(r)` = phonon-coupling confining potential in Pd-D/Ni-H lattice vacancies
-4. Gaussian resonance profile σ_n(ω) peaks at ω_LENR = 1.25 THz
+4. Gaussian resonance profile $\sigma$_n($\omega$) peaks at $\omega$_LENR = 1.25 THz
 5. Neutron-drop nucleation: clusters of n neutrons stabilized by phonon coupling
-6. Bridge: 300 Hz activation → n × ω_LENR harmonic mixing → nuclear reactions
+6. Bridge: 300 Hz activation $\to$ n $\times$ $\omega$_LENR harmonic mixing $\to$ nuclear reactions
 
-**Code Reference:** `uqff_lagrangian_derivation.py` →
+**Code Reference:** `uqff_lagrangian_derivation.py` $\to$
 `EULER_LAGRANGE_NEW_TERM_MAPPINGS["kozima_neutron_drop"]`
 
 ---
@@ -283,7 +283,7 @@ Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -302,7 +302,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -356,7 +356,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -445,7 +445,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.130 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -456,13 +456,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -553,7 +553,7 @@ SCmActivation[B]
 FNeutronS26[..., nTerms]
 ```
 
-*Source: `kozima_wstp_kernel.py` → `uqff_kozima_kernel.wl`*
+*Source: `kozima_wstp_kernel.py` $\to$ `uqff_kozima_kernel.wl`*
 
 
 
@@ -802,7 +802,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | Total papers | 900/1000 (90.0%) |
 | CP4 classes | 484 (461 + 23 Session 209) |
 | Aggregator version | v3.5.0 |
-| This paper line count | 588 → upgraded |
+| This paper line count | 588 $\to$ upgraded |
 | Equations coverage | 900/900 (100%) |
 | §A Cosmogenesis coverage | 874/900 (97.1%) |
 | §SM Anchors coverage | 818/900 (90.9%) |

@@ -21,7 +21,7 @@ bridge; FIRST UQFF ice giant (Neptune frozen planet) module
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
@@ -29,7 +29,7 @@ bridge; FIRST UQFF ice giant (Neptune frozen planet) module
 This paper establishes the UQFF multi-body solar system framework from the Star
 Magic_09Sept2025.docx source document, introducing three new physics results: (1) the Pcore
 planetary scaling law (Pcore=1.0 for stars, Pcore=10-3 for planets), (2) the orbital-cycle UQFF
-frequency bridge (ω_c = 2π/T_orbital for planets vs 2π/T_solar_cycle for the Sun), and (3) the first
+frequency bridge ($\omega$_c = 2$\pi$/T_orbital for planets vs 2$\pi$/T_solar_cycle for the Sun), and (3) the first
 UQFF module for Neptune as a frozen ice giant at T_surf=72K. The four bodies (Sun, Earth, Jupiter,
 Neptune) collectively span 8 orders of mass (1024–1030 kg) and 5 orders of SCm_density (1011–1015
 kg/m3), providing a comprehensive planetary validation dataset for UQFF.
@@ -53,7 +53,7 @@ $$U_{g3} = k_3 \cdot B_j \cdot \cos(\omega_s(t) \cdot t \cdot \pi) \cdot P_{\rm 
 | **Ice giants (Neptune)** | **10-3** | Water-ammonia-methane ice core; same order as gas giants |
 
 **Physical motivation:** The UQFF string rotation coupling depends on the SCm field threading the
-entire body. Dense planetary cores (Earth: ρ_core ~ 12,000 kg/m3; Jupiter: central ρ ~ 25,000 kg/m3)
+entire body. Dense planetary cores (Earth: $\rho$_core ~ 12,000 kg/m3; Jupiter: central $\rho$ ~ 25,000 kg/m3)
 attenuate the SCm string coupling by 3 orders of magnitude compared to a fully interpenetrating
 solar plasma.
 
@@ -63,7 +63,7 @@ For Pcore=10-3:
 
 $$U_{g3}^{\rm planet} = 10^{-3} \times U_{g3}^{\rm Sun\ analogue}$$
 
-This means planetary Ug3 coupling is suppressed by 1000× vs stellar, which correctly predicts that
+This means planetary Ug3 coupling is suppressed by 1000$\times$ vs stellar, which correctly predicts that
 string-rotation-gravity effects are dominated by the Sun in solar system dynamics.
 
 ---
@@ -74,12 +74,12 @@ string-rotation-gravity effects are dominated by the Sun in solar system dynamic
 
 $$\omega_c = \frac{2\pi}{T_{\rm characteristic}}$$
 
-| Body | T_characteristic | ω_c (rad/s) | Physical meaning |
+| Body | T_characteristic | $\omega$_c (rad/s) | Physical meaning |
 |------|-----------------|-------------|-----------------|
-| **Sun** | 11 yr solar cycle | 1.81×10-8 | Solar magnetic polarity period |
-| **Earth** | 1 yr orbital | 1.99×10-7 | Annual orbital resonance |
-| **Jupiter** | 11.86 yr orbital | 1.68×10-8 | ~synchronous with solar cycle |
-| **Neptune** | 164.8 yr orbital | 1.21×10-9 | Ultra-slow frozen-planet coupling |
+| **Sun** | 11 yr solar cycle | 1.81$\times$10-8 | Solar magnetic polarity period |
+| **Earth** | 1 yr orbital | 1.99$\times$10-7 | Annual orbital resonance |
+| **Jupiter** | 11.86 yr orbital | 1.68$\times$10-8 | ~synchronous with solar cycle |
+| **Neptune** | 164.8 yr orbital | 1.21$\times$10-9 | Ultra-slow frozen-planet coupling |
 
 ### 3.2 Jupiter-Sun Frequency Resonance
 
@@ -95,7 +95,7 @@ gravitational perturbation.
 
 ### 3.3 Neptune Ultra-Slow Coupling
 
-Neptune's ω_c = 1.21×10-9 rad/s is the slowest in the solar system, corresponding to:
+Neptune's $\omega$_c = 1.21$\times$10-9 rad/s is the slowest in the solar system, corresponding to:
 
 $$\omega_c t = 1 \text{ radian at } t = 2.62 \text{ Gyr}$$
 
@@ -110,13 +110,13 @@ effectively "frozen" not only thermally (72K) but also in its UQFF coupling dyna
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| Mass M_s | 1.024×1026 kg | 17.15 M_Earth |
-| Radius R_s | 2.4622×107 m | 3.865 R_Earth |
+| Mass M_s | 1.024$\times$1026 kg | 17.15 M_Earth |
+| Radius R_s | 2.4622$\times$107 m | 3.865 R_Earth |
 | T_surf | **72 K** | Lowest of 4 bodies |
 | SCm_density | **1011 kg/m3** | 4 orders below Sun (1015) |
 | QUA | 10-13 C | Lowest quantum aether charge |
 | `B_s_avg` | 10-4 T | Same as Sun (coincidence) |
-| omega_c | 1.21×10-9 rad/s | Slowest in Solar System |
+| omega_c | 1.21$\times$10-9 rad/s | Slowest in Solar System |
 | Pcore | 10-3 | Ice/water-ammonia core blocking |
 
 ### 4.2 Physical Uniqueness
@@ -131,14 +131,14 @@ effectively "frozen" not only thermally (72K) but also in its UQFF coupling dyna
 
 ### 5.1 Eight Orders of Mass Span
 
-| Body | Mass (kg) | log₁₀(M) |
+| Body | Mass (kg) | log10(M) |
 |------|----------|----------|
-| Neptune | 1.024×1026 | 26.0 |
-| Earth | 5.972×1024 | 24.8 |
-| Jupiter | 1.898×1027 | 27.3 |
-| **Sun** | **1.989×1030** | **30.3** |
+| Neptune | 1.024$\times$1026 | 26.0 |
+| Earth | 5.972$\times$1024 | 24.8 |
+| Jupiter | 1.898$\times$1027 | 27.3 |
+| **Sun** | **1.989$\times$1030** | **30.3** |
 
-Mass span: ~10^5.5 (≈ 5.5 orders from Earth to Sun)
+Mass span: ~10^5.5 ($\approx$ 5.5 orders from Earth to Sun)
 
 ### 5.2 Surface Gravity Validation
 
@@ -159,24 +159,24 @@ For each body at r=Rb (interaction boundary radius):
 
 | Body | Ug4 (m/s2) | Ug1 dominant? | FU context |
 |------|-----------|--------------|-----------|
-| Sun | 4.22×10-10 | Yes (large μ_s) | Ug4 is galactic; Ug1 is local |
-| Earth | 4.22×10-10 | No (Ug1~smaller) | Ug4 same for all bodies (global) |
-| Jupiter | 4.22×10-10 | Moderate | Largest Ug3 (B_avg=4×10-4 T) |
-| Neptune | 4.22×10-10 | No | Smallest SCm (1011); Ug4 dominant |
+| Sun | 4.22$\times$10-10 | Yes (large $\mu$_s) | Ug4 is galactic; Ug1 is local |
+| Earth | 4.22$\times$10-10 | No (Ug1~smaller) | Ug4 same for all bodies (global) |
+| Jupiter | 4.22$\times$10-10 | Moderate | Largest Ug3 (B_avg=4$\times$10-4 T) |
+| Neptune | 4.22$\times$10-10 | No | Smallest SCm (1011); Ug4 dominant |
 
 **Key insight:** Ug4 (PAPER_368) is **body-independent** (uses only galactic parameters Mbh, dg,
-ρ_v). All four bodies receive the same Ug4 = 4.22×10-10 m/s2 from galactic vacuum coupling.
+$\rho$_v). All four bodies receive the same Ug4 = 4.22$\times$10-10 m/s2 from galactic vacuum coupling.
 Body-specific gravity comes from Ug1/Ug2/Ug3.
 
 ---
 
-## 6. β_i Discrepancy Note
+## 6. $\beta$_i Discrepancy Note
 
-**Thread source (grok_share_11254865.txt):** β_i = 0.6  
-**UQFF canonical (Session 94+):** β_i = 0.61  
+**Thread source (grok_share_11254865.txt):** $\beta$_i = 0.6  
+**UQFF canonical (Session 94+):** $\beta$_i = 0.61  
 
-The Star Magic_09Sept2025.docx predates the calibration of β_i = 0.61 (established June 2025 via
-LOFAR/Crab/Vela validation in Session 94). This is documented for full traceability but **β_i = 0.61
+The Star Magic_09Sept2025.docx predates the calibration of $\beta$_i = 0.61 (established June 2025 via
+LOFAR/Crab/Vela validation in Session 94). This is documented for full traceability but **$\beta$_i = 0.61
 is used in all pipeline implementations** of PAPER_370.
 
 ---
@@ -185,8 +185,8 @@ is used in all pipeline implementations** of PAPER_370.
 
 **Physics Territory:**  
 1. FIRST UQFF Pcore planetary scaling law (Pcore=1.0 star; Pcore=10-3 planet)  
-2. FIRST UQFF orbital-cycle frequency bridge (ω_c = 2π/T_orbital for planets)  
-3. FIRST UQFF ice giant / frozen planet module (Neptune T=72K, ω_c=1.21×10-9 rad/s)
+2. FIRST UQFF orbital-cycle frequency bridge ($\omega$_c = 2$\pi$/T_orbital for planets)  
+3. FIRST UQFF ice giant / frozen planet module (Neptune T=72K, $\omega$_c=1.21$\times$10-9 rad/s)
 
 **Scale:** Solar System (106–1013 m; 1024–1030 kg)  
 **CP3 Implementation:** `MultiBodySolarPcorePlanetaryScalingCalculator` (CondensedPhysics3.py,
@@ -205,7 +205,7 @@ Session 100)
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -224,7 +224,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 UQFF Energy Ladder Sub-Hadronic Level n=4 Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-03, AprilSept 2025)  
@@ -38,10 +38,10 @@ E_n = E_base  10^n with E_base = 10? J. At n = 4, the ladder predicts
 E4 = 10?6 J  the scale of quark virtual exchange t-channel momentum transfers in
 LHC proton-proton collisions at vs = 13.6 TeV. ATLAS Run 3 compositeness scale
 limits (? > 30 TeV) correspond to virtual quark exchange energies at the t-channel
-scale of ~1.6 × 10?6 J, confirmed within ?n = 0.21 levels of the expected n = 4
+scale of ~1.6 $\times$ 10?6 J, confirmed within ?n = 0.21 levels of the expected n = 4
 ladder rung. This empirically anchors the UQFF ladder at the sub-nuclear QCD boundary.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -70,12 +70,12 @@ The fractional parton momentum at ? = 30 TeV scale:
 $$E_{transfer} = \frac{\hbar c}{r_{\Lambda}} = \frac{\hbar c \cdot \Lambda}{\hbar c} = \Lambda$$
 
 At the ATLAS Resolution limit (per parton in t-channel):
-- Full scale: ?_LL = 30 TeV = 4.8 × 10-6 J ? n = 14.7 on ladder
+- Full scale: ?_LL = 30 TeV = 4.8 $\times$ 10-6 J ? n = 14.7 on ladder
 - t-channel exchange per quark: E_t  ?/(t_int) where t_int is interaction duration
 - At sub-detector resolved scales (not full CM energy): E_t ~ 10?6 J
 
 The virtual quark exchange energy for medium-scale t-channel (resolved at
-inner tracker resolution ~10 m ? t ~ r/c ~ 3 × 10?7 s):
+inner tracker resolution ~10 m ? t ~ r/c ~ 3 $\times$ 10?7 s):
 
 $$E_{virtual} = \frac{\hbar}{\tau_{int}} = \frac{1.055 \times 10^{-34}}{3 \times 10^{-17}} \approx 3.5 \times 10^{-18} \text{ J}$$
 
@@ -87,7 +87,7 @@ The n = 4 level of the UQFF ladder:
 
 $$E_4 = 10^{-20} \times 10^4 = 10^{-16} \text{ J}$$
 
-This corresponds to quark virtual exchange at r_q ~ 2 fm scale (2 × 10?5 m):
+This corresponds to quark virtual exchange at r_q ~ 2 fm scale (2 $\times$ 10?5 m):
 
 $$r_4 = \frac{\hbar c}{E_4} = \frac{3.16 \times 10^{-26}}{10^{-16}} = 3.16 \times 10^{-10} \text{ m} \quad [\text{atomic scale}]$$
 
@@ -95,11 +95,11 @@ Wait  correcting: E_4 = 10?6 J is the energy of a photon with:
 
 $$\lambda_4 = \frac{hc}{E_4} = \frac{6.626 \times 10^{-34} \times 3 \times 10^8}{10^{-16}} = 1.99 \times 10^{-9} \text{ m} = 2 \text{ nm}$$
 
-In eV: E_4 = 10?6 / 1.602 × 10?? = 625 eV (soft X-ray range).
+In eV: E_4 = 10?6 / 1.602 $\times$ 10?? = 625 eV (soft X-ray range).
 
 In QCD context, this corresponds to the **sub-hadronic vacuum fluctuation energy**
 at the quark confinement boundary  where virtual gauge bosons carry energies
-in the 100×1000 eV range before entering the perturbative QCD regime.
+in the 100$\times$1000 eV range before entering the perturbative QCD regime.
 
 ### 1.3 CMS Comparison
 
@@ -119,7 +119,7 @@ $$E_n = E_{base} \times 10^n \quad \text{where } E_{base} = 10^{-20} \text{ J}$$
 
 | n | E_n (J) | E_n (eV) | Physical Scale |
 |---|---------|----------|---------------|
-| 1 | 10?? | 6.2 × 10? | Ultra-low atomic |
+| 1 | 10?? | 6.2 $\times$ 10? | Ultra-low atomic |
 | 4 | 10?6 | 625 | Soft X-ray / sub-hadronic |
 | 8 | 10? | 6.24 MeV | Nuclear MeV scale |
 | 10 | 10? | 624 MeV | Hadronic / n,p mass |
@@ -130,9 +130,9 @@ $$E_n = E_{base} \times 10^n \quad \text{where } E_{base} = 10^{-20} \text{ J}$$
 
 | Experiment | E_transfer (J) | n_computed | n_expected | ?n | Pass? |
 |-----------|----------------|-----------|-----------|-----|-------|
-| ATLAS-CONF-2025-007 | 1.60 × 10?6 | 4.204 | 4 | 0.204 | ? |
-| CMS-EXO-24-006 | 1.49 × 10?6 | 4.173 | 4 | 0.173 | ? |
-| LHC hadronic (1 GeV) | 1.60 × 10? | 10.204 | 10 | 0.204 | ? |
+| ATLAS-CONF-2025-007 | 1.60 $\times$ 10?6 | 4.204 | 4 | 0.204 | ? |
+| CMS-EXO-24-006 | 1.49 $\times$ 10?6 | 4.173 | 4 | 0.173 | ? |
+| LHC hadronic (1 GeV) | 1.60 $\times$ 10? | 10.204 | 10 | 0.204 | ? |
 
 **All ?n < 0.5 threshold – EP-03 VALIDATED ?**
 
@@ -202,8 +202,8 @@ UQFF Quark Coupling (n=4 baseline):
 |---|----------|-------|-----------------|
 | 1 | $E_n = 10^{-20} \times 10^n$ | E4 = 10?6 J | UQFF ladder level |
 | 2 | $n = \log_{10}(E/E_{base})$ | 4.204 (ATLAS) | Ladder position |
-| 3 | $\Lambda_{ATLAS} > 30$ TeV | 4.8 × 10-6 J = n=14.7 | Compositeness limit |
-| 4 | $E_{virtual}$ at t-channel | 1.6 × 10?6 J | Quark exchange n=4 |
+| 3 | $\Lambda_{ATLAS} > 30$ TeV | 4.8 $\times$ 10-6 J = n=14.7 | Compositeness limit |
+| 4 | $E_{virtual}$ at t-channel | 1.6 $\times$ 10?6 J | Quark exchange n=4 |
 | 5 | Coupling4 = [SSq]  1 | 0.57 | Unit coupling at n=4 |
 | 6 | $\Delta n$ (ATLAS) | 0.204 < 0.5 | PASS margin |
 | 7 | $\Delta n$ (CMS) | 0.173 < 0.5 | PASS margin |
@@ -214,7 +214,7 @@ UQFF Quark Coupling (n=4 baseline):
 
 Empirical Proof EP-03 demonstrates that:
 
-1. **ATLAS Run 3 LHC virtual quark t-channel exchange energies** (~1.6 × 10?6 J)
+1. **ATLAS Run 3 LHC virtual quark t-channel exchange energies** (~1.6 $\times$ 10?6 J)
    map to **n = 4.2 on the UQFF energy ladder**  within 0.21 levels of n = 4
    (threshold ?n < 0.5), confirming the sub-hadronic ladder rung
 2. The UQFF n = 4 level (**E4 = 10?6 J = 625 eV**) is the natural sub-hadronic
@@ -265,7 +265,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -284,7 +284,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -393,7 +393,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.075 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -402,13 +402,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

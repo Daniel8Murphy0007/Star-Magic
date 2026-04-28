@@ -21,7 +21,7 @@ supernova/stellar-wind shock front term; FIRST auto-cascade from QG+DM+GW to F_c
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `MUGECompressed38SystemExtendedEnvCalculator` (#95, PAPER_457)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, F_torque = 1×10-11 m/s2, F_shock = 1×10-11 m/s2
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, F_torque = 1$\times$10-11 m/s2, F_shock = 1$\times$10-11 m/s2
 —>
 ---
 
@@ -68,7 +68,7 @@ The torque term represents tidal dissipation rate — the transfer of orbital an
 binary into the envelope's gravitational field. This is a **new gravitational coupling** that does
 not appear in any standard DPM-seeded or GR treatment.
 
-**Physical origin:** In NGC 6302, the white dwarf binary separated at distance d ≈ few AU exerts
+**Physical origin:** In NGC 6302, the white dwarf binary separated at distance d $\approx$ few AU exerts
 differential tidal force on the bipolar lobes. The torque term captures the aspherical
 lobe-injection gravity.
 
@@ -88,7 +88,7 @@ $$F_{\rm shock} = 1\times10^{-11}\ \rm m/s^2 \quad[\text{at }r = r_{\rm shock}]$
 This represents the gravitational acceleration produced by the **shell density enhancement** at the
 shock front — a term that couples the explosive dynamics of supernovae to the gravitational field.
 
-### 2.4 Auto-Cascade: QG + DM + GW → F_cosmo
+### 2.4 Auto-Cascade: QG + DM + GW $\to$ F_cosmo
 
 For systems flagged TYPE_UNIVERSE or TYPE_COSMOLOGICAL, the code auto-assembles F_cosmo:
 
@@ -112,20 +112,20 @@ Full updated F_env component table (15 terms):
 | # | Component | Formula | New in v38? |
 |---|----------|---------|------------|
 | 1–13 | (as PAPER_456) | (as PAPER_456) | No |
-| 14 | **F_torque** | G M₁M₂ r/(r₁₂3) × sin(Δω/ω) | **NEW** |
-| 15 | **F_shock** | ρ_post v_s2 exp(−(r−r_sh)2/2σ2)/r | **NEW** |
+| 14 | **F_torque** | G M1M2 r/(r123) $\times$ sin($\Delta$$\omega$/$\omega$) | **NEW** |
+| 15 | **F_shock** | $\rho$_post v_s2 exp(-(r-r_sh)2/2$\sigma$2)/r | **NEW** |
 
 ### 3.1 Wolf-Rayet Wind at v_wind = 2000 km/s
 
-WR 151 (WN4 star) has documented terminal wind velocity v_wind = 2000 km/s = 2×106 m/s. Wind term:
+WR 151 (WN4 star) has documented terminal wind velocity v_wind = 2000 km/s = 2$\times$106 m/s. Wind term:
 
 $$F_{\rm wind,WR} = \rho_{\rm ISM} v_{\rm wind}^2 = 10^{-21} \times (2\times10^6)^2 = 4\times10^{-9}\ \rm m/s^2$$
 
-This exceeds the DPM-seeded gravity of the WR star at OB-association separation (~1 pc ≈ 3×1016 m):
+This exceeds the DPM-seeded gravity of the WR star at OB-association separation (~1 pc $\approx$ 3$\times$1016 m):
 
 $$g_{\rm WR,Newton} = \frac{GM_{\rm WR}}{r^2} = \frac{6.674\times10^{-11}\times 2times10^{31}}{(3\times10^{16})^2} = 1.48\times10^{-12}\ \rm m/s^2$$
 
-The WR wind term exceeds DPM-seeded gravity by **2700×** — confirming that stellar wind dynamics
+The WR wind term exceeds DPM-seeded gravity by **2700$\times$** — confirming that stellar wind dynamics
 govern WR system gravitational environments.
 
 ---
@@ -134,10 +134,10 @@ govern WR system gravitational environments.
 
 | Parameter | Value |
 |-----------|-------|
-| M (Hourglass+HH36 region) | ~5×1033 kg (~2500 MM_sun total) |
-| r | ~1×1017 m (~10 ly HII core) |
+| M (Hourglass+HH36 region) | ~5$\times$1033 kg (~2500 MM_sun total) |
+| r | ~1$\times$1017 m (~10 ly HII core) |
 | z | 0.0013 (1250 ly) |
-| O-star (9 Sgr) luminosity | ~2×1032 W |
+| O-star (9 Sgr) luminosity | ~2$\times$1032 W |
 | SFR | ~0.05 MM_sun/yr |
 
 $$g_{\rm Lagoon,UQFF} \approx g_{
@@ -158,12 +158,12 @@ m DPM} + P_{\rm rad,Lagoon} = 3.33\times10^{-12} + \frac{2\times10^{32}}{4\pi(10
 
 ## 6. Testable Predictions
 
-1. **NGC 6302 tidal torque:** F_torque ≈ 10-11 m/s2 — should produce a specific bipolar-lobe
+1. **NGC 6302 tidal torque:** F_torque $\approx$ 10-11 m/s2 — should produce a specific bipolar-lobe
 acceleration asymmetry detectable in proper-motion measurements of the nebular lobes.
-2. **WR 151 wind dominance:** F_wind/g_DPM ≈ 2700× — implies the WR bubble expands at ~v_wind
+2. **WR 151 wind dominance:** F_wind/g_DPM $\approx$ 2700$\times$ — implies the WR bubble expands at ~v_wind
 rate, consistent with observed WR bubble diameters of ~10 pc over ~0.1 Myr.
 3. **Auto-cascade for cosmological systems:** Verified by running all 3 TYPE_UNIVERSE systems in the
-registry and confirming QG_term is always <10-120 × g_DPM — negligible but correctly non-zero.
+registry and confirming QG_term is always <10-120 $\times$ g_DPM — negligible but correctly non-zero.
 
 ---
 
@@ -304,7 +304,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.133 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -315,15 +315,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|2 → Λ_UQFF = 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
-| Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
-| CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
-| H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
+| Cosmological constant $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ $\Lambda$_UQFF = 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Dark energy fraction $\Omega$_$\Lambda$ | UQFF [SSq]=0.57; $\Omega$_$\Lambda$ ~ [SSq]$\times$1.20 = 0.684 | $\Omega$_$\Lambda$ = 0.6847 $\pm$ 0.0073 | Planck 2018 | 99.9% |
+| CMB temperature T_CMB | UQFF vacuum condensate $\to$ T_CMB = ($\rho$_UA/$\sigma$_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
+| H0 Hubble constant | UQFF: H0_UQFF = $\kappa$ $\times$ c / r_Hubble = 67.4 km/s/Mpc | H0 = 67.4 $\pm$ 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-Ω_Λ via [SSq]×1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from
-astrophysical magnetar burst profiles, not from CMB data. The coincidence Ω_Λ ≈ [SSq]×1.20
-constitutes a falsifiable prediction: if future DESI data shifts Ω_Λ by >2%, [SSq] must be
+$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit — [SSq] was calibrated from
+astrophysical magnetar burst profiles, not from CMB data. The coincidence $\Omega$_$\Lambda$ $\approx$ [SSq]$\times$1.20
+constitutes a falsifiable prediction: if future DESI data shifts $\Omega$_$\Lambda$ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

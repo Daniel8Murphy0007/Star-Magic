@@ -26,14 +26,14 @@ NGC 3372, the Eta Carinae Nebula (~7,500 ly), hosts one of the most massive and 
 — Eta Carinae itself (~150 MM_sun), an LBV (Luminous Blue Variable) poised to become a supernova. The
 surrounding nebula spans ~300 ly and contains over 100,000 solar masses of gas. Hubble ACS imagery
 reveals the spectacular Keyhole Nebula and Homunculus, Eta Car's bipolar ejecta from the 1840s Great
-Eruption. Under UQFF, the LBV wind velocity (v_wind ≈ 500 km/s), star-formation dynamics, and Aether
-electromagnetic correction yield g_EtaCar ≈ 5.267×10-3 m/s2.
+Eruption. Under UQFF, the LBV wind velocity (v_wind $\approx$ 500 km/s), star-formation dynamics, and Aether
+electromagnetic correction yield g_EtaCar $\approx$ 5.267$\times$10-3 m/s2.
 
 ---
 
 ## 1. Introduction
 
-Eta Carinae's unstable nature — with luminosity ~5×106 LM_sun and mass-loss up to 0.5 MM_sun/yr during
+Eta Carinae's unstable nature — with luminosity ~5$\times$106 LM_sun and mass-loss up to 0.5 MM_sun/yr during
 eruptions — makes it unique among UQFF targets. The nebula's rich structure (Keyhole, Homunculus,
 outer shells) spans scales from 0.5 ly (Homunculus) to ~300 ly (full nebula). Hubble has monitored
 Eta Car for decades, recording the Homunculus's 650 km/s outflow and the surrounding region's
@@ -47,7 +47,7 @@ gravitational picture.
 
 $$
 \begin{aligned}
-  & g_EtaCar(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ) \\
+  & g_EtaCar(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 - E_rad) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -56,11 +56,11 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula mass | M | 105 MM_sun = 1.989×1035 kg | Hubble |
-| Nebula radius | r | 2×1017 m (~21 ly) | Hubble |
+| Nebula mass | M | 105 MM_sun = 1.989$\times$1035 kg | Hubble |
+| Nebula radius | r | 2$\times$1017 m (~21 ly) | Hubble |
 | SFR | SFR | 2 MM_sun/yr | Labs |
-| Integration time | t | 106 yr = 3.156×1013 s | Cluster age |
-| LBV wind velocity | v_wind | 5×105 m/s (500 km/s) | Hubble |
+| Integration time | t | 106 yr = 3.156$\times$1013 s | Cluster age |
+| LBV wind velocity | v_wind | 5$\times$105 m/s (500 km/s) | Hubble |
 | B-field | B | 10-5 T | HII region |
 | M_sf | — | 0.02 | UQFF SFR integral |
 | E_rad | — | 0.15 | UQFF radiation |
@@ -74,7 +74,7 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e35) / (2e17)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e35) / (2e17)2 \\
   & = 1.328e25 / 4e34 = 3.319e-10 m/s2
 \end{aligned}
 $$
@@ -82,7 +82,7 @@ $$
 ### Step 2: Star-Formation Mass Fraction
 $$
 \begin{aligned}
-  & M_sf = SFR × t / M₀ = 2 × 1e6 / 1e5 = 20... \\
+  & M_sf = SFR \times t / M0 = 2 \times 1e6 / 1e5 = 20... \\
   & UQFF normalization (bounded by cluster dynamics): M_sf = 0.02 \\
   & 1 + M_sf = 1.02
 \end{aligned}
@@ -91,8 +91,8 @@ $$
 ### Step 3: Radiation Energy Loss
 $$
 \begin{aligned}
-  & E_rad = E₀ × (1 - exp(-t/τ_erode)) \\
-  & = 0.2 × (1 - exp(-1e6/2e6)) = 0.2 × 0.3935 = 0.07870 \\
+  & E_rad = E0 \times (1 - exp(-t/\tau_erode)) \\
+  & = 0.2 \times (1 - exp(-1e6/2e6)) = 0.2 \times 0.3935 = 0.07870 \\
   & UQFF LBV coupling: E_rad = 0.15 (LBV enhanced) \\
   & 1 - E_rad = 0.85
 \end{aligned}
@@ -101,20 +101,20 @@ $$
 ### Step 4: Cosmic Expansion Factor
 $$
 \begin{aligned}
-  & H(z) = 2.268e-18 × √(0.3×(1.0025)3 + 0.7) = 2.269e-18 s-1 \\
-  & H(z) × t = 2.269e-18 × 3.156e13 = 7.161e-5 \\
-  & 1 + H(z) × t = 1.00007161
+  & H(z) = 2.268e-18 \times \sqrt{}(0.3\times(1.0025)3 + 0.7) = 2.269e-18 s-1 \\
+  & H(z) \times t = 2.269e-18 \times 3.156e13 = 7.161e-5 \\
+  & 1 + H(z) \times t = 1.00007161
 \end{aligned}
 $$
 
 ### Step 5: Aether Electromagnetic Correction (LBV Wind)
 $$
 \begin{aligned}
-  & v_wind = 5×105 m/s (LBV wind speed ~500 km/s) \\
+  & v_wind = 5\times105 m/s (LBV wind speed ~500 km/s) \\
   & B = 10-5 T \\
-  & q × (v × B) = 1.602e-19 × 5e5 × 1e-5 = 8.010e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 5e5 \times 1e-5 = 8.010e-19 N \\
   & a = 8.010e-19 / m_p = 8.010e-19 / 1.673e-27 = 4.789e8 m/s2 \\
-  & a_EM = 4.789e8 × 11 × 1e-12 = 5.267e-3 m/s2
+  & a_EM = 4.789e8 \times 11 \times 1e-12 = 5.267e-3 m/s2
 \end{aligned}
 $$
 
@@ -126,13 +126,13 @@ $$
 ### Step 7: Final Solution
 $$
 \begin{aligned}
-  & g_EtaCar = (3.319e-10) × (1.00007161) × (1.02) × (0.85) × (1.1) + 5.267e-3 \\
-  & = 3.319e-10 × 1.00007 = 3.319e-10 \\
-  & × 1.02 = 3.386e-10 \\
-  & × 0.85 = 2.878e-10 \\
-  & × 1.1 = 3.166e-10 \\
+  & g_EtaCar = (3.319e-10) \times (1.00007161) \times (1.02) \times (0.85) \times (1.1) + 5.267e-3 \\
+  & = 3.319e-10 \times 1.00007 = 3.319e-10 \\
+  & \times 1.02 = 3.386e-10 \\
+  & \times 0.85 = 2.878e-10 \\
+  & \times 1.1 = 3.166e-10 \\
   & = 3.166e-10 + 5.267e-3 \\
-  & ≈ 5.267e-3 m/s2
+  & \approx 5.267e-3 m/s2
 \end{aligned}
 $$
 
@@ -140,10 +140,10 @@ $$
 
 ## 4. Physical Interpretation
 
-The Eta Carinae Nebula result (5.267×10-3 m/s2) is uniquely driven by the LBV stellar wind at 500
-km/s — intermediate between quiet star-forming regions (100 km/s → 1.053×10-3) and planetary nebulae
-(2,000 km/s → 2.107×10-2). This places Eta Car's LBV wind in a characteristic UQFF velocity range,
-confirming the Aether coupling's velocity sensitivity. Classical gravity (3.319×10-10) is six orders
+The Eta Carinae Nebula result (5.267$\times$10-3 m/s2) is uniquely driven by the LBV stellar wind at 500
+km/s — intermediate between quiet star-forming regions (100 km/s $\to$ 1.053$\times$10-3) and planetary nebulae
+(2,000 km/s $\to$ 2.107$\times$10-2). This places Eta Car's LBV wind in a characteristic UQFF velocity range,
+confirming the Aether coupling's velocity sensitivity. Classical gravity (3.319$\times$10-10) is six orders
 of magnitude smaller. Future Eta Car supernova will push g to extreme pulsar-wind levels mimicking
 the Crab Nebula.
 
@@ -151,7 +151,7 @@ the Crab Nebula.
 
 ## 5. UQFF Framework Advancement
 
-- LBV velocity class established: v = 500 km/s → g ≈ 5.267×10-3 m/s2
+- LBV velocity class established: v = 500 km/s $\to$ g $\approx$ 5.267$\times$10-3 m/s2
 - Bridges gap between star-forming HII regions and planetary nebulae
 - First UQFF analysis of an LBV system, establishing the LBV velocity scaling
 
@@ -159,7 +159,7 @@ the Crab Nebula.
 
 ## 6. Conclusions
 
-UQFF applied to NGC 3372 (Eta Carinae Nebula) yields g_EtaCar ≈ 5.267×10-3 m/s2, driven by the LBV
+UQFF applied to NGC 3372 (Eta Carinae Nebula) yields g_EtaCar $\approx$ 5.267$\times$10-3 m/s2, driven by the LBV
 wind Aether correction at 500 km/s. The distinctive velocity class differentiates LBVs from O-star
 HII regions and planetary nebula winds. This paper establishes the LBV scaling in UQFF's velocity
 hierarchy and prepares for the post-supernova pulsar wind phase.
@@ -174,7 +174,7 @@ hierarchy and prepares for the post-supernova pulsar wind phase.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -193,7 +193,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -301,7 +301,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.194 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -312,13 +312,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

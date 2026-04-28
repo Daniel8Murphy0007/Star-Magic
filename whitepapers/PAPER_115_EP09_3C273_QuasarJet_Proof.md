@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Buoyancy-Inversion t_n Reversal Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-09, AprilSept 2025)  
@@ -37,11 +37,11 @@ cos(?t_n) sign reversal, the 3C 273 case requires multiple sequential t_n revers
 accumulating an asymmetry ratio of  100:1 = 2^6.6. The UQFF explains this through
 the cumulative buoyancy-inversion product: each t_n reversal amplifies Ub_i by
 the [SSq] factor, with 1213 cumulative reversals reaching the observed >100:1
-contrast. Cross-validation with relativistic Doppler beaming (G ~ 8×10 from VLBI)
+contrast. Cross-validation with relativistic Doppler beaming (G ~ 8$\times$10 from VLBI)
 confirms the UQFF buoyancy amplification is orthogonal to and consistent with
 relativistic effects.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -57,10 +57,10 @@ present in Standard Model treatments.
 |---------|-------|---------|
 | Redshift z | 0.158339 | Schmidt (1963), MNRAS |
 | Luminosity distance | 749 Mpc | Standard cosmology |
-| Black hole mass | M_BH  69 × 108 M? | GRAVITY (2018) |
-| Bolometric luminosity | ~4.7 × 10-8 W | Courvoisier (1998) |
+| Black hole mass | M_BH  69 $\times$ 108 M? | GRAVITY (2018) |
+| Bolometric luminosity | ~4.7 $\times$ 10-8 W | Courvoisier (1998) |
 | VLBI jet Lorentz factor | G  812 | Jorstad et al. (2017) |
-| Viewing angle ?_jet | 5×10 | MOJAVE VLBI monitoring |
+| Viewing angle ?_jet | 5$\times$10 | MOJAVE VLBI monitoring |
 
 ### 1.2 Jet One-Sidedness
 
@@ -72,9 +72,9 @@ present in Standard Model treatments.
 | Jet/counter-jet ratio | > 1000:1 (optical) | Bahcall et al. (1995, HST) |
 | Jet length (radio) | ~65 kpc | VLA+VLBI maps |
 | Counter-jet detection | Not detected | Upper limit: < 1% of jet |
-| Apparent superluminal motion | κ_app  12c (knots) | Unwin et al. (1985) |
+| Apparent superluminal motion | $\kappa$_app  12c (knots) | Unwin et al. (1985) |
 
-The jet brightness exceeds the counter-jet by 100×1000:1, the extreme end of
+The jet brightness exceeds the counter-jet by 100$\times$1000:1, the extreme end of
 all known FRII quasar jets.
 
 ### 1.3 Benchmark Comparison to EP-01
@@ -111,24 +111,24 @@ $$R_N = \prod_{k=1}^{N} \left(1 + [SSq] \cdot |\cos(\omega t_k)|\right)$$
 
 $$R_N = \prod_{k=1}^{N} (1 + 0.57 \cdot |\cos(\omega t_k)|)$$
 
-For random phase sampling with ?|cos(?t_k)|?  2/p ≈ 0.637:
+For random phase sampling with ?|cos(?t_k)|?  2/p $\approx$ 0.637:
 
 $$R_N = (1 + 0.57 \times 0.637)^{12} = (1.363)^{12} = 95.2 \approx 100 \checkmark$$
 
 ### 2.3 Ub_i Field at 3C 273 Jet Scale
 
-The Ub_i buoyancy force at 65 kpc scale (r = 2.0 × 10 m):
+The Ub_i buoyancy force at 65 kpc scale (r = 2.0 $\times$ 10 m):
 
 $$U_{b,i} = \frac{F_{U} \cdot [SSq]}{r^2} = \frac{F_{rel} \cdot [SSq]}{r^2}$$
 
-Using F_rel = 4.31 × 10 N (UQFF reference force, PAPER_001):
+Using F_rel = 4.31 $\times$ 10 N (UQFF reference force, PAPER_001):
 
 $$U_{b,i} = \frac{4.31 \times 10^{33} \times 0.57}{(2.0 \times 10^{23})^2}$$
 
 $$U_{b,i} = \frac{2.46 \times 10^{33}}{4.0 \times 10^{46}} = 6.14 \times 10^{-14} \text{ N/m}^2$$
 
 This buoyancy pressure operates across the jet propagation zone, accumulating
-through each of the N = 12 reversal events over the ~2 × 108 yr jet lifetime.
+through each of the N = 12 reversal events over the ~2 $\times$ 108 yr jet lifetime.
 
 ### 2.4 Relativistic Orthogonality
 
@@ -198,11 +198,11 @@ The 3C 273 jet proper length is ~65 kpc at z = 0.158. Jet age estimate:
 
 $$t_{jet} = \frac{L_{jet}}{v_{prop}} = \frac{65 \text{ kpc}}{0.7c} \approx 3 \times 10^5 \text{ yr}$$
 
-t_n spacing for 13 reversals over 3 × 105 yr:
+t_n spacing for 13 reversals over 3 $\times$ 105 yr:
 
 $$\Delta t_n = \frac{3 \times 10^5}{13} \approx 2.3 \times 10^4 \text{ yr}$$
 
-At κ = 0.0005/day = 0.1825/yr, the e-fold time is t = 1/?  5.5 yr.
+At $\kappa$ = 0.0005/day = 0.1825/yr, the e-fold time is t = 1/?  5.5 yr.
 
 The t_n reversal period >> t, confirming each reversal represents a fully-evolved
 UQFF phase cycle, appropriate for the large-scale jet morphology.
@@ -215,10 +215,10 @@ UQFF phase cycle, appropriate for the large-scale jet morphology.
 |---|----------|-------|-----------------|
 | 1 | $R_{total} = (1.363)^{13}$ | 129.8 | N=13 reversals |
 | 2 | $(1 + [SSq] \cdot \langle|\cosomega t|\rangle)^N$ | Parameterized | General N formula |
-| 3 | $U_{b,i}(65\text{ kpc})$ | 6.14 × 10?4 N/m | 3C273 jet scale |
-| 4 | $R_{Doppler}$ (G=10, ?=5) | ~2 × 107 | Beaming reference |
-| 5 | UQFF floor R < Doppler | 130 << 2×107 | Physical minimum |
-| 6 | $\Delta t_n$ reversal period | 2.3 × 104 yr | Jet t_n cadence |
+| 3 | $U_{b,i}(65\text{ kpc})$ | 6.14 $\times$ 10?4 N/m | 3C273 jet scale |
+| 4 | $R_{Doppler}$ (G=10, ?=5) | ~2 $\times$ 107 | Beaming reference |
+| 5 | UQFF floor R < Doppler | 130 << 2$\times$107 | Physical minimum |
+| 6 | $\Delta t_n$ reversal period | 2.3 $\times$ 104 yr | Jet t_n cadence |
 | 7 | `validate_uqff_muge` [SSq] | 0.570 confirmed | Core calibration |
 
 ---
@@ -252,7 +252,7 @@ exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -271,7 +271,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -345,7 +345,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.089 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -354,13 +354,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

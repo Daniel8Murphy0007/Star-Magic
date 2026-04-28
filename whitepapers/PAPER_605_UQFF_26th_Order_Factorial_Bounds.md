@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 The 26th-order derivative of inverse-power fields produces a factorial amplification factor
 (k+25)!/(k-1)! that, paradoxically, guarantees negligibility at all physically relevant scales. This
-paper derives the general formula, establishes the anti-collapse density bound ρ_min ≈ 2.5e-30
+paper derives the general formula, establishes the anti-collapse density bound $\rho$_min $\approx$ 2.5e-30
 kg/m3, and shows that all VDS vacuum density series terms are automatically bounded by this
 factorial ceiling when r > 0.
 
@@ -34,7 +34,7 @@ factorial ceiling when r > 0.
 
 The 26-dimensional substrate of UQFF requires that any field equation be projected through 26 layers
 of dimensional integration. The mathematical consequence is the appearance of 26th-order partial
-derivatives. Where classical physics encounters singularities (r → 0), these derivatives introduce
+derivatives. Where classical physics encounters singularities (r $\to$ 0), these derivatives introduce
 factorial growth that counter-intuitively stabilizes the computation.
 
 ---
@@ -57,12 +57,12 @@ Since 26 is even, $(-1)^{26} = +1$, so the correction term is always positive.
 
 | k | Field Type | (k+25)!/(k-1)! | At r=1 AU (1.5e11 m), c=1 |
 |---|-----------|----------------|------------------------------|
-| 1 | Gravitational (1/r) | 26! ≈ 4.03e26 | ~4.03e26 / (1.5e11)27 ≈ 10-282 |
-| 2 | Magnetic (1/r2) | 27!/1! ≈ 1.09e28 | ~1.09e28 / (1.5e11)28 ≈ 10-293 |
-| 3 | String (1/r3) | 28!/2! ≈ 1.52e29 | ~10-305 |
-| 4 | Vacuum (1/r4) | 29!/3! ≈ 2.20e30 | ~10-316 |
+| 1 | Gravitational (1/r) | 26! $\approx$ 4.03e26 | ~4.03e26 / (1.5e11)27 $\approx$ 10-282 |
+| 2 | Magnetic (1/r2) | 27!/1! $\approx$ 1.09e28 | ~1.09e28 / (1.5e11)28 $\approx$ 10-293 |
+| 3 | String (1/r3) | 28!/2! $\approx$ 1.52e29 | ~10-305 |
+| 4 | Vacuum (1/r4) | 29!/3! $\approx$ 2.20e30 | ~10-316 |
 
-All values are negligibly small at r ≥ 1 AU, confirming no singularity contributions at
+All values are negligibly small at r $\geq$ 1 AU, confirming no singularity contributions at
 astrophysical scales.
 
 ---
@@ -78,14 +78,14 @@ With $26! = 4.03\times10^{26}$ and $g = 9.8$ m/s2:
 $$\rho_{anti-collapse} = \frac{1}{4.03\times10^{26} \times 9.8} \approx 2.54\times10^{-28}\ \text{kg/m}^3$$
 
 This represents the minimum physical density at which UQFF fields prevent collapse. Remarkably, this
-is consistent with the observed vacuum energy density of the universe (~5×10-27 kg/m3), within an
+is consistent with the observed vacuum energy density of the universe (~5$\times$10-27 kg/m3), within an
 order of magnitude.
 
 ---
 
 ## 5. Anti-Singularity Mechanism
 
-At $r \to 0$: The term $c/r^{k+26} \to \infty$, but the 26th-order derivative is multiplied by $c = SCm \cdot g / UA$, which goes to zero as density diverges (SCm/UA → 0 in the ultra-dense limit). The product $\lim_{r\to 0} (SCm/UA) \cdot 1/r^{k+26}$ remains finite under UQFF boundary conditions.
+At $r \to 0$: The term $c/r^{k+26} \to \infty$, but the 26th-order derivative is multiplied by $c = SCm \cdot g / UA$, which goes to zero as density diverges (SCm/UA $\to$ 0 in the ultra-dense limit). The product $\lim_{r\to 0} (SCm/UA) \cdot 1/r^{k+26}$ remains finite under UQFF boundary conditions.
 
 This is the UQFF resolution of the classical singularity problem: not renormalization, but
 dimensional saturation at the 26th order.
@@ -96,7 +96,7 @@ dimensional saturation at the 26th order.
 
 **Navier-Stokes**: Viscous dissipation bounded as $\mu \cdot |u|^2 \leq \mu \cdot c / r^{k+26} \cdot (k+25)!/(k-1)!$ which is finite for all $r > 0$. This prevents blow-up in 3D NS.
 
-**Yang-Mills**: The gauge field strength $F_{\mu\nu}$ at 26th order: $|F|^{26} \leq (k+25)!/(k-1)! \cdot c/r^{k+26}$ → positive definite minimum. This provides the mass gap bound $\Delta > 26! \cdot c / r^{26} > 0$.
+**Yang-Mills**: The gauge field strength $F_{\mu\nu}$ at 26th order: $|F|^{26} \leq (k+25)!/(k-1)! \cdot c/r^{k+26}$ $\to$ positive definite minimum. This provides the mass gap bound $\Delta > 26! \cdot c / r^{26} > 0$.
 
 ---
 
@@ -121,7 +121,7 @@ UQFF, VDS, Navier-Stokes, Yang-Mills, mass gap
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -140,12 +140,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -246,7 +246,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.190 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -257,10 +257,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

@@ -42,7 +42,7 @@ C++ source, revealing three new coupling components not present in earlier formu
 3. **Solar wind velocity modulation** $(1 + \delta_{sw} \cdot v_{sw})$  
 4. **E_react multiplicative closure**
 
-This is the **FIRST Ug2 formulation with (QA+QUA) charge coupling + Heaviside S(r−Rb) + E_react
+This is the **FIRST Ug2 formulation with (QA+QUA) charge coupling + Heaviside S(r-Rb) + E_react
 multiplicative**.
 
 ---
@@ -106,7 +106,7 @@ The factor $(1 + \delta_{sw} \cdot v_{sw})$:
 
 $$1 + \delta_{sw} \cdot v_{sw} = 1 + (0.01)(5\times10^5) = 1 + 5000 = 5001$$
 
-This creates a **5001× amplification** of $U_{g2}$ due to solar wind dynamic coupling.
+This creates a **5001$\times$ amplification** of $U_{g2}$ due to solar wind dynamic coupling.
 The solar wind traveling at 0.99c in the SCm medium generates enhanced charge reactivity.
 
 ### 4.4 Combined Numerical Example (Sun, $r = 1.5\times10^{11}$ m)
@@ -125,7 +125,7 @@ $$U_{g2} \approx 9.4\times10^{56}\ \text{m/s}^2$$
 | Paper | Formula Component | Status |
 |-------|------------------|--------|
 | PAPER_394 | FU master (4-Ug + Ubi + Um) | Contains $U_{g2}$ as component |
-| PAPER_393 | $E_{\text{react}}$ κ-decay | Provides E_react closure |
+| PAPER_393 | $E_{\text{react}}$ $\kappa$-decay | Provides E_react closure |
 | PAPER_387 | $v_{\text{SCm}} = 0.99c$ | Sets SCm velocity |
 | PAPER_400 | Complete Ug2 with charge doublet + Heaviside + solar wind | **NEW** |
 
@@ -171,7 +171,7 @@ consistent with the Voyager anomalous acceleration observations.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -274,7 +274,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.182 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -288,18 +288,18 @@ benchmarks:
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |---|---|---|---|---|
-| Gravitational coupling G | κ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N·m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
-| Higgs mass m_H | UQFF K_HIGGS = 47.34 → m_H = 125.09 GeV | m_H = 125.20 ± 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
-| Neutron magnetic moment | SCm coupling → μ_n = −1.913 μ_N | μ_n = −1.9130 ± 0.0001 μ_N (NIST 2022) | NIST 2022 | 99.9% |
-| Proton charge radius | UA topology → r_p = 0.841 fm | r_p = 0.8414 ± 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
-| Electron anomalous g−2 | UQFF SCm loop correction → a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
-| CMB temperature T₀ | UQFF cosmological buoyancy → T₀ = 2.7255 K | T₀ = 2.72548 ± 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
+| Gravitational coupling G | $\kappa$ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N$\cdot$m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
+| Higgs mass m_H | UQFF K_HIGGS = 47.34 $\to$ m_H = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
+| Neutron magnetic moment | SCm coupling $\to$ $\mu$_n = -1.913 $\mu$_N | $\mu$_n = -1.9130 $\pm$ 0.0001 $\mu$_N (NIST 2022) | NIST 2022 | 99.9% |
+| Proton charge radius | UA topology $\to$ r_p = 0.841 fm | r_p = 0.8414 $\pm$ 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
+| Electron anomalous g-2 | UQFF SCm loop correction $\to$ a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
+| CMB temperature T0 | UQFF cosmological buoyancy $\to$ T0 = 2.7255 K | T0 = 2.72548 $\pm$ 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
 
-**New physics claim:** UQFF vacuum topology operates at κ = 5.0e-4 day-1, consistent with
+**New physics claim:** UQFF vacuum topology operates at $\kappa$ = 5.0e-4 day-1, consistent with
 gravitational buoyancy at cosmological scales beyond standard model predictions.
 
-**Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4;
-k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+**Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4;
+k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 *CVW Gate G6 — Session 166 patch (CVW v2.0.0 upgrade)*
 

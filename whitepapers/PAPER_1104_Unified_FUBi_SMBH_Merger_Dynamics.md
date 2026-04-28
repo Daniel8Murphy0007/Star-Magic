@@ -34,9 +34,9 @@ Each layer $i \in [1,26]$ has quantum state factor $Q_i = 1/(1+\kappa i)$:
 
 | Term | Expression | Physics |
 |------|------------|---------|
-| $\text{Ug1}_i$ | $Q_i\cdot μ_s∇(M_s/r)$ | DPM-seeded gravity |
-| $\text{Ug2}_i$ | $(1-[\text{SSq}])Q_i\cdot μ_s∇(M_s/r)\times0.1$ | Charge-reactivity |
-| $\text{Ug3}_i$ | $[\text{SSq}]\,Q_i\cdot μ_s∇(M_s/r)\times0.05\sin i$ | String rotation |
+| $\text{Ug1}_i$ | $Q_i\cdot \mu_s\nabla(M_s/r)$ | DPM-seeded gravity |
+| $\text{Ug2}_i$ | $(1-[\text{SSq}])Q_i\cdot \mu_s\nabla(M_s/r)\times0.1$ | Charge-reactivity |
+| $\text{Ug3}_i$ | $[\text{SSq}]\,Q_i\cdot \mu_s\nabla(M_s/r)\times0.05\sin i$ | String rotation |
 | $\text{Ug4}_i$ | $\kappa\,Q_i\times10^{-15}$ | Vacuum concentration |
 
 ### Chirp Mass Factor

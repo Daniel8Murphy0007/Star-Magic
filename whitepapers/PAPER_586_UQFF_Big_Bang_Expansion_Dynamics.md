@@ -111,9 +111,9 @@ formation (recombination epoch at $t \sim 380{,}000$ yr).
 
 ---
 
-## §8 Comparison to ΛCDM
+## §8 Comparison to $\Lambda$CDM
 
-| Observable | ΛCDM | UQFF BB |
+| Observable | $\Lambda$CDM | UQFF BB |
 |-----------|------|---------|
 | Scale factor $a(t)$ | $t^{2/3}$ (matter) | $t^{-(v_c-v_i)\exp(G)}$ |
 | Dark energy | Free parameter $\Lambda$ | Derived from $U_b$ |
@@ -127,7 +127,7 @@ formation (recombination epoch at $t \sim 380{,}000$ yr).
 
 UQFF derives Big Bang dynamics from first principles: grinding imbalance drives expansion,
 26-shell quantization produces the mass hierarchy, and the $26!$ bound prevents the
-initial singularity. The scale factor reproduces ΛCDM behavior as a limiting case.
+initial singularity. The scale factor reproduces $\Lambda$CDM behavior as a limiting case.
 
 ---
 
@@ -167,7 +167,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -268,7 +268,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.135 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -279,15 +279,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|2 → Λ_UQFF = 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
-| Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
-| CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
-| H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
+| Cosmological constant $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ $\Lambda$_UQFF = 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Dark energy fraction $\Omega$_$\Lambda$ | UQFF [SSq]=0.57; $\Omega$_$\Lambda$ ~ [SSq]$\times$1.20 = 0.684 | $\Omega$_$\Lambda$ = 0.6847 $\pm$ 0.0073 | Planck 2018 | 99.9% |
+| CMB temperature T_CMB | UQFF vacuum condensate $\to$ T_CMB = ($\rho$_UA/$\sigma$_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
+| H0 Hubble constant | UQFF: H0_UQFF = $\kappa$ $\times$ c / r_Hubble = 67.4 km/s/Mpc | H0 = 67.4 $\pm$ 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-Ω_Λ via [SSq]×1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from
-astrophysical magnetar burst profiles, not from CMB data. The coincidence Ω_Λ ≈ [SSq]×1.20
-constitutes a falsifiable prediction: if future DESI data shifts Ω_Λ by >2%, [SSq] must be
+$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit — [SSq] was calibrated from
+astrophysical magnetar burst profiles, not from CMB data. The coincidence $\Omega$_$\Lambda$ $\approx$ [SSq]$\times$1.20
+constitutes a falsifiable prediction: if future DESI data shifts $\Omega$_$\Lambda$ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

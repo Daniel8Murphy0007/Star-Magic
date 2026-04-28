@@ -10,7 +10,7 @@ tags: [SCm, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_405 — SCm Density Planetary Scaling Law: ρ_SCm ∝ M^α
+# PAPER_405 — SCm Density Planetary Scaling Law: $\rho$_SCm $\propto$ M^$\alpha$
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -25,12 +25,12 @@ C++ implementation)
 
 ## Abstract
 
-This paper presents a UQFF analysis of SCm Density Planetary Scaling Law: ρ_SCm ∝ M^α, deriving
+This paper presents a UQFF analysis of SCm Density Planetary Scaling Law: $\rho$_SCm $\propto$ M^$\alpha$, deriving
 compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-PAPER_405 establishes the **first systematic SCm density (ρ_SCm) planetary scaling law**
+PAPER_405 establishes the **first systematic SCm density ($\rho$_SCm) planetary scaling law**
 extracted directly from the construction file C++ body initialization.
 
 Four solar system bodies are assigned explicit SCm densities spanning 4 orders of magnitude,
@@ -42,7 +42,7 @@ dipole moment.
 
 ## 2. SCm Density Canonical Values
 
-| Body | Mass (kg) | $\rho_{\text{SCm}}$ (arb. units) | log₁₀($M$) | log₁₀($\rho_{\text{SCm}}$) |
+| Body | Mass (kg) | $\rho_{\text{SCm}}$ (arb. units) | log10($M$) | log10($\rho_{\text{SCm}}$) |
 |------|-----------|----------------------------------|------------|--------------------------|
 | **Sun** | $1.989\times10^{30}$ | $10^{15}$ | 30.30 | 15.00 |
 | **Jupiter** | $1.898\times10^{27}$ | $10^{13}$ | 27.28 | 13.00 |
@@ -53,7 +53,7 @@ dipole moment.
 
 ## 3. Power Law Derivation
 
-### 3.1 Sun → Jupiter Scaling
+### 3.1 Sun $\to$ Jupiter Scaling
 
 $$\frac{\rho_{\text{SCm,Sun}}}{\rho_{\text{SCm,Jup}}} = \frac{10^{15}}{10^{13}} = 10^2$$
 
@@ -61,7 +61,7 @@ $$\frac{M_{\text{Sun}}}{M_{\text{Jup}}} = \frac{1.989\times10^{30}}{1.898\times1
 
 Power law exponent: $\alpha = \frac{\Deltalog\rho}{\Deltalog M} = \frac{2}{3.02} \approx 0.66$
 
-### 3.2 Jupiter → Earth Scaling
+### 3.2 Jupiter $\to$ Earth Scaling
 
 $$\frac{\rho_{\text{SCm,Jup}}}{\rho_{\text{SCm,Earth}}} = \frac{10^{13}}{10^{12}} = 10$$
 
@@ -96,7 +96,7 @@ Traditional planetary physics describes bodies via $M$, $R$, $T_{\text{eff}}$, $
 PAPER_405 introduces $\rho_{\text{SCm}}$ as a **new intrinsic planetary property** — the
 Superconductive Magnetic density field associated with each body.
 
-### 4.2 Scaling Exponent ≈ [SSq] = 0.57
+### 4.2 Scaling Exponent $\approx$ [SSq] = 0.57
 
 The remarkable alignment of$\alpha \approx [SSq] = 0.57$ suggests:
 
@@ -113,8 +113,8 @@ provides a **compositionally-sensitive UQFF parameter**:
 
 | Planet Type | SCm Coupling | $\rho_{\text{SCm}}$ Behavior |
 |-------------|-------------|------------------------------|
-| Gas giant (≥90% H/He) | Strong | Follows $M^{0.57}$ law |
-| Ice giant (H₂O/CH₄/NH₃ dominant) | Suppressed | Below power law by ~0.5 dex |
+| Gas giant ($\geq$90% H/He) | Strong | Follows $M^{0.57}$ law |
+| Ice giant (H2O/CH4/NH3 dominant) | Suppressed | Below power law by ~0.5 dex |
 | Rocky planet (silicate core) | Intermediate | Approximately on the trend |
 
 ---
@@ -165,7 +165,7 @@ bodies[3].omega_c = 2*M_PI / (164.8 * 365.25 * 86400);  // Neptune: 164.8 yr
 | PAPER_404 | $\mu_s(t)$ SCm dipole contribution | $\rho_{\text{SCm,contrib}}$ from this law |
 | PAPER_387 | $v_{\text{SCm}} = 0.99c$ | Sets velocity in E_react |
 | PAPER_383 | $[SSq] = 0.57$ calibrated | Scaling exponent = [SSq] |
-| PAPER_405 | SCm density planetary scaling | **NEW — FIRST systematic ρ_SCm law** |
+| PAPER_405 | SCm density planetary scaling | **NEW — FIRST systematic $\rho$_SCm law** |
 
 
 ---
@@ -178,7 +178,7 @@ bodies[3].omega_c = 2*M_PI / (164.8 * 365.25 * 86400);  // Neptune: 164.8 yr
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -197,7 +197,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -272,7 +272,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.074 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -286,18 +286,18 @@ benchmarks:
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |---|---|---|---|---|
-| Gravitational coupling G | κ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N·m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
-| Higgs mass m_H | UQFF K_HIGGS = 47.34 → m_H = 125.09 GeV | m_H = 125.20 ± 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
-| Neutron magnetic moment | SCm coupling → μ_n = −1.913 μ_N | μ_n = −1.9130 ± 0.0001 μ_N (NIST 2022) | NIST 2022 | 99.9% |
-| Proton charge radius | UA topology → r_p = 0.841 fm | r_p = 0.8414 ± 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
-| Electron anomalous g−2 | UQFF SCm loop correction → a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
-| CMB temperature T₀ | UQFF cosmological buoyancy → T₀ = 2.7255 K | T₀ = 2.72548 ± 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
+| Gravitational coupling G | $\kappa$ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N$\cdot$m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
+| Higgs mass m_H | UQFF K_HIGGS = 47.34 $\to$ m_H = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
+| Neutron magnetic moment | SCm coupling $\to$ $\mu$_n = -1.913 $\mu$_N | $\mu$_n = -1.9130 $\pm$ 0.0001 $\mu$_N (NIST 2022) | NIST 2022 | 99.9% |
+| Proton charge radius | UA topology $\to$ r_p = 0.841 fm | r_p = 0.8414 $\pm$ 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
+| Electron anomalous g-2 | UQFF SCm loop correction $\to$ a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
+| CMB temperature T0 | UQFF cosmological buoyancy $\to$ T0 = 2.7255 K | T0 = 2.72548 $\pm$ 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
 
-**New physics claim:** UQFF vacuum topology operates at κ = 5.0e-4 day-1, consistent with
+**New physics claim:** UQFF vacuum topology operates at $\kappa$ = 5.0e-4 day-1, consistent with
 gravitational buoyancy at cosmological scales beyond standard model predictions.
 
-**Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4;
-k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+**Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4;
+k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 *CVW Gate G6 — Session 166 patch (CVW v2.0.0 upgrade)*
 

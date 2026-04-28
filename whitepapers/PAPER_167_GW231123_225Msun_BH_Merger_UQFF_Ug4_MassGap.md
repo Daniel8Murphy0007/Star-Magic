@@ -18,14 +18,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper analyzes the GW231123 gravitational wave event — a 225 M_sol binary black hole
 merger detected in LIGO-Virgo-KAGRA O4 run (November 2023) — through the UQFF framework.
 This mass-gap event (above the pair-instability supernova 50–130 M_sol gap) challenges
-standard stellar evolution and is here modeled through enhanced Ug4·(1+f_feedback) coupling
-and the δρ/ρ dark-matter perturbation term. Connections to the Yang-Mills mass gap
+standard stellar evolution and is here modeled through enhanced Ug4$\cdot$(1+f_feedback) coupling
+and the $\delta$$\rho$/$\rho$ dark-matter perturbation term. Connections to the Yang-Mills mass gap
 Millennium Problem are identified, as the non-zero gluon condensate provides a mechanism
 for mass-gap BH formation.
 
@@ -41,7 +41,7 @@ for mass-gap BH formation.
 | Secondary BH mass       | ~95 M_sol              | GW inferred from mass ratio   |
 | Total merger mass       | **225 M_sol**          | PAPER_167 baseline            |
 | Remnant mass            | ~213 M_sol             | After GW energy radiated      |
-| ΔM_GW (energy)         | ~12 M_sol c2           | GW radiated energy            |
+| $\Delta$M_GW (energy)         | ~12 M_sol c2           | GW radiated energy            |
 | Mass gap status         | **BOTH components above** 50 M_sol PISN gap | Anomalous |
 
 ---
@@ -55,22 +55,22 @@ small compared to Ug1 (magnetic dipole) and Ug3 (string rotation). However, for
 225 M_sol, two effects amplify Ug4:
 
 1. **High M_bh/d_g ratio**: If the merger is at cosmological distance, M_bh increases
-   relative to d_g (the galactic center distance scale), amplifying Ug4 ∝ M_bh/d_g
+   relative to d_g (the galactic center distance scale), amplifying Ug4 $\propto$ M_bh/d_g
 
 2. **f_feedback**: AGN feedback factor = 0.1 applies as stellar mass BHs above the PISN
-   gap require AGN environment formation → f_feedback is non-zero
+   gap require AGN environment formation $\to$ f_feedback is non-zero
 
 $$U_{g4}^{(225)} = k_4 \cdot \rho_v \cdot C_{conc} \cdot \frac{225 M_\odot}{d_{source}} \cdot e^{-\alpha t} \cos(\pi t_n) \cdot 1.1$$
 
-### 2.2 δρ/ρ Perturbation Activation
+### 2.2 $\delta$$\rho$/$\rho$ Perturbation Activation
 
 The dark matter perturbation term (PAPER_163.8):
 
 $$g_{pert} = (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 For GW231123, the merger is embedded in a dark matter halo:
-- M_DM/M ≈ 5 (DM-dominated environment estimated)
-- δρ/ρ ~ 0.5 (large density contrast — merger in dense environment)
+- M_DM/M $\approx$ 5 (DM-dominated environment estimated)
+- $\delta$$\rho$/$\rho$ ~ 0.5 (large density contrast — merger in dense environment)
 
 $$g_{pert}^{(225)} = (225 + 1125) M_\odot \cdot \left(0.5 + \frac{3G \cdot 225 M_\odot}{r^3}\right)$$
 
@@ -85,15 +85,15 @@ mass gap?** (No massless bound states despite gauge bosons being formally massle
 
 The Clay Mathematics Institute requires:
 1. A quantum Yang-Mills theory in 4D
-2. Proof that the physical Hilbert space has mass gap Δ > 0
+2. Proof that the physical Hilbert space has mass gap $\Delta$ > 0
 
 ### 3.2 UQFF Connection via Non-Zero Gluon Condensate
 
-The QCD gluon condensate ⟨G2⟩ ≠ 0 provides the mechanism for above-PISN BH formation:
+The QCD gluon condensate ⟨G2⟩ $\neq$ 0 provides the mechanism for above-PISN BH formation:
 
 $$M_{BH}^{gap} \propto \langle G^2 \rangle / \Lambda_{QCD}^4$$
 
-If the mass gap Δ = Λ_QCD (confinement scale), then strong-force confined glueball states
+If the mass gap $\Delta$ = $\Lambda$_QCD (confinement scale), then strong-force confined glueball states
 can accrete at Planck densities to produce mass-gap BHs:
 
 $$M_{gap} = \frac{\Delta^4}{\hbar^3 c^3} \cdot V_{accretion}$$
@@ -106,7 +106,7 @@ To reach 225 M_sol requires $N_{glueball} \sim 10^{71}$ condensed states — equ
 the entire BH being composed of condensed Yang-Mills vacuum.
 
 This is a **new UQFF prediction**: mass-gap BH masses are quantized in units of the
-Yang-Mills mass gap Δ.
+Yang-Mills mass gap $\Delta$.
 
 ---
 
@@ -114,11 +114,11 @@ Yang-Mills mass gap Δ.
 
 | System         | M       | F_U estimate     | Dominant UQFF term         |
 |----------------|---------|-----------------|---------------------------|
-| SGR 1745-2900  | 1.4 M_sol| ~1.7×1045     | Resonance (B≈3×1011 T)    |
-| Sagittarius A* | 4×106 M_sol| ~1.3×10100  | Resonance (stellar tidal) |
-| GW231123 BH1   | ~130 M_sol| ~5×1051       | Ug4·f_feedback + g_pert   |
-| GW231123 BH2   | ~95 M_sol | ~3×1051       | Ug4·f_feedback + g_pert   |
-| Merge remnant  | ~213 M_sol| ~8×1051       | Ug4·f_feedback dominant   |
+| SGR 1745-2900  | 1.4 M_sol| ~1.7$\times$1045     | Resonance (B$\approx$3$\times$1011 T)    |
+| Sagittarius A* | 4$\times$106 M_sol| ~1.3$\times$10100  | Resonance (stellar tidal) |
+| GW231123 BH1   | ~130 M_sol| ~5$\times$1051       | Ug4$\cdot$f_feedback + g_pert   |
+| GW231123 BH2   | ~95 M_sol | ~3$\times$1051       | Ug4$\cdot$f_feedback + g_pert   |
+| Merge remnant  | ~213 M_sol| ~8$\times$1051       | Ug4$\cdot$f_feedback dominant   |
 
 ---
 
@@ -138,8 +138,8 @@ and $\omega_{GW,peak}$ is the peak GW frequency at merger (typically 100-200 Hz 
 **CP3:** Add `GW231123_UQFF_Calculator` with:
 - Ug4 computed at M = 225 M_sol (GW remnant)
 - f_feedback = 0.1 (AGN environment)
-- g_pert with δρ/ρ = 0.5, M_DM/M = 5
-- Osc_term = h_GW × ω_GW2 × r2
+- g_pert with $\delta$$\rho$/$\rho$ = 0.5, M_DM/M = 5
+- Osc_term = h_GW $\times$ $\omega$_GW2 $\times$ r2
 
 ---
 
@@ -185,7 +185,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -204,7 +204,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -374,7 +374,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.069 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -385,13 +385,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

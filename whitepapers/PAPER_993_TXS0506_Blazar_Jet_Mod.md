@@ -26,7 +26,7 @@ with $A_{\text{jet}} = 2.3$ for TXS 0506+056 (higher than CenA due to extreme sp
 
 ## 2. Neutrino Production
 
-The 3.3× jet power enhancement at SCm resonance provides a natural explanation for the IceCube
+The 3.3$\times$ jet power enhancement at SCm resonance provides a natural explanation for the IceCube
 neutrino excess: enhanced proton acceleration in the jet produces pions that decay to neutrinos.
 
 ## 3. F_U_Bi_i at Horizon
@@ -45,7 +45,7 @@ File: `fubi_inside_outside.py`, class `TXS0506FUBiCurves`. CP4 class #577.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -64,7 +64,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -143,7 +143,7 @@ $$\mathcal{L}_{BH\_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → relativistic jet power → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ relativistic jet power $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

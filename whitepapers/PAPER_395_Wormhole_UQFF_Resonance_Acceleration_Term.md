@@ -10,7 +10,7 @@ tags: [vacuum, MUGE, wormhole, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_395 — Wormhole UQFF Acceleration: 13th Resonance Term a_worm = f_worm·E_vac_neb/(b2+r2)
+# PAPER_395 — Wormhole UQFF Acceleration: 13th Resonance Term a_worm = f_worm$\cdot$E_vac_neb/(b2+r2)
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -25,7 +25,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 This paper presents a UQFF analysis of Wormhole UQFF Acceleration: 13th Resonance Term a_worm =
-f_worm·E_vac_neb/(b2+r2), deriving compressed field equations and observational predictions within
+f_worm$\cdot$E_vac_neb/(b2+r2), deriving compressed field equations and observational predictions within
 the Star-Magic/UQFF framework.
 
 ## 1. Overview
@@ -134,7 +134,7 @@ with how all resonance terms are treated as effective acceleration contributions
 | Paper | Formula | Distinction |
 |-------|---------|------------|
 | PAPER_373 | Morris-Thorne geodesics, exotic matter | Topology / null geodesics |
-| PAPER_375 | Wormhole + Meissner relativistic γ | Lorentz + Meissner blend |
+| PAPER_375 | Wormhole + Meissner relativistic $\gamma$ | Lorentz + Meissner blend |
 | PAPER_377 | Wormhole safety check | Stability bounds |
 | **PAPER_395** | $a_{\text{worm}} = f_w E_{\text{vac}}/(b^2+r^2)$ | **13th resonance term acceleration** |
 
@@ -156,7 +156,7 @@ double compute_a_wormhole(double r, double b = 1.0, double f_worm = 1.0,
 
 ## 8. Physical Context
 
-### 8.1 E_vac,neb = 7.09×10-36 J/m3
+### 8.1 E_vac,neb = 7.09$\times$10-36 J/m3
 
 This vacuum energy density value appears consistently throughout the UQFF resonance equations
 (also used in $a_{\text{DPM}}$, $a_{\text{vac,diff}}$, $a_{\text{Ug4i}}$). It represents the
@@ -285,7 +285,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.131 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -296,13 +296,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

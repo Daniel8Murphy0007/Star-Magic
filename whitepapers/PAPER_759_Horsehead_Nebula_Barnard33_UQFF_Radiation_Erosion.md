@@ -22,11 +22,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The Horsehead Nebula (Barnard 33) is a dark molecular cloud at d ≈ 400 pc in Orion, silhouetted
-against IC 434. It is being photo-evaporated by the O9.5 star σ Orionis (L ≈ 105 LM_sun). This paper
-derives the UQFF effective acceleration at the pillar tip (r ≈ 1.254 ly from σ Ori) incorporating
-radiation pressure, an erosion factor E(t), and Aether EM coupling. The result, g_Horsehead ≈
-1.097×10-3 m/s2, is consistent with the observed column-density gradient and JWST molecular emission
+The Horsehead Nebula (Barnard 33) is a dark molecular cloud at d $\approx$ 400 pc in Orion, silhouetted
+against IC 434. It is being photo-evaporated by the O9.5 star $\sigma$ Orionis (L $\approx$ 105 LM_sun). This paper
+derives the UQFF effective acceleration at the pillar tip (r $\approx$ 1.254 ly from $\sigma$ Ori) incorporating
+radiation pressure, an erosion factor E(t), and Aether EM coupling. The result, g_Horsehead $\approx$
+1.097$\times$10-3 m/s2, is consistent with the observed column-density gradient and JWST molecular emission
 maps.
 
 ---
@@ -34,9 +34,9 @@ maps.
 ## 1. Introduction
 
 Barnard 33 is one of the most photographed structures in the night sky. Its head-shaped profile
-arises from the differential photo-evaporation of a dense core shielded by a denser knot. σ Orionis
-drives a radiation pressure of ~4.3×10-5 m/s2 at r = 1.254 ly. UQFF adds a vacuum Aether EM
-correction term (× 11 × 10-12) and an erosion survival factor (1 − E(t)) that together raise the
+arises from the differential photo-evaporation of a dense core shielded by a denser knot. $\sigma$ Orionis
+drives a radiation pressure of ~4.3$\times$10-5 m/s2 at r = 1.254 ly. UQFF adds a vacuum Aether EM
+correction term ($\times$ 11 $\times$ 10-12) and an erosion survival factor (1 - E(t)) that together raise the
 effective acceleration to the observed ~10-3 m/s2 regime.
 
 ---
@@ -45,11 +45,11 @@ effective acceleration to the observed ~10-3 m/s2 regime.
 
 $$
 \begin{aligned}
-  & g_HH(r, t) = [G·M_cloud / r2] × (1 + H₀·t) × (1 − B/B_crit) × (1 − E(t)) \\
+  & g_HH(r, t) = [G\cdotM_cloud / r2] \times (1 + H0\cdott) \times (1 - B/B_crit) \times (1 - E(t)) \\
   & + P_rad(r)                   [radiation pressure acceleration] \\
-  & + q·(v × B) × A_aeth × A_scale × (1 − E(t)) \\
-  & P_rad(r) = (L_star / (4π·r2·c)) × (ρ_ISM / m_H)   [momentum flux / unit mass] \\
-  & E(t) = E_0 × exp(−t / τ_erode)
+  & + q\cdot(v \times B) \times A_aeth \times A_scale \times (1 - E(t)) \\
+  & P_rad(r) = (L_star / (4\pi\cdotr2\cdotc)) \times (\rho_ISM / m_H)   [momentum flux / unit mass] \\
+  & E(t) = E_0 \times exp(-t / \tau_erode)
 \end{aligned}
 $$
 
@@ -59,14 +59,14 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Cloud radius (pillar tip) | r | 1.182×1016 | m (1.254 ly) |
-| Ionising star luminosity | L_star | 3.826×1031 | W (105 LM_sun) |
-| ISM density | ρ_ISM | 1.00×10-21 | kg/m3 |
-| Hydrogen mass | m_H | 1.67×10-27 | kg |
-| Magnetic field | B | 1.00×10-5 | T |
-| Wind velocity | v | 1.00×105 | m/s |
+| Cloud radius (pillar tip) | r | 1.182$\times$1016 | m (1.254 ly) |
+| Ionising star luminosity | L_star | 3.826$\times$1031 | W (105 LM_sun) |
+| ISM density | $\rho$_ISM | 1.00$\times$10-21 | kg/m3 |
+| Hydrogen mass | m_H | 1.67$\times$10-27 | kg |
+| Magnetic field | B | 1.00$\times$10-5 | T |
+| Wind velocity | v | 1.00$\times$105 | m/s |
 | Erosion amplitude | E_0 | 0.10 | — |
-| Erosion timescale | τ_erode | varies | s |
+| Erosion timescale | $\tau$_erode | varies | s |
 | Aether factor | A_aeth | 11 | — |
 | Scale factor | A_scale | 10-12 | — |
 
@@ -76,16 +76,16 @@ $$
 
 $$
 \begin{aligned}
-  & P_rad = (3.826×1031 / (4π × (1.182×1016)2 × 3×108)) \\
-  & × (1×10-21 / 1.67×10-27) \\
-  & = (3.826×1031 / (1.753×1033 × 3×108)) \\
-  & × 5.988×105 \\
-  & = (3.826×1031 / 5.260×1041) × 5.988×105 \\
-  & ≈ 7.275×10-10 × 5.988×105 \\
-  & ≈ 4.347×10-4 m/s2   [radiation pressure — significant] \\
-  & E(t_obs): erosion factor = 0.1 × exp(−...) → (1−E) ≈ 0.96374 \\
-  & g_EM × (1−E) ≈ 1.097×10-3 m/s2  [Aether-corrected dominant term] \\
-  & g_Horsehead ≈ 1.097×10-3 m/s2
+  & P_rad = (3.826\times1031 / (4\pi \times (1.182\times1016)2 \times 3\times108)) \\
+  & \times (1\times10-21 / 1.67\times10-27) \\
+  & = (3.826\times1031 / (1.753\times1033 \times 3\times108)) \\
+  & \times 5.988\times105 \\
+  & = (3.826\times1031 / 5.260\times1041) \times 5.988\times105 \\
+  & \approx 7.275\times10-10 \times 5.988\times105 \\
+  & \approx 4.347\times10-4 m/s2   [radiation pressure — significant] \\
+  & E(t_obs): erosion factor = 0.1 \times exp(-...) \to (1-E) \approx 0.96374 \\
+  & g_EM \times (1-E) \approx 1.097\times10-3 m/s2  [Aether-corrected dominant term] \\
+  & g_Horsehead \approx 1.097\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -94,19 +94,19 @@ $$
 ## 5. Available Equations
 
 - g_HH(r, t) — UQFF horsehead gravity (primary)
-- P_rad(r) = L_star/(4πr2c) × ρ/m_H — radiation pressure
-- E(t) = E_0·exp(−t/τ) — erosion factor
-- Ionisation front advance: v_IF ∝ Q_ion/n_H2
-- Photo-dissociation region depth: l_PDR = A_V/n_H × conversion
-- Barnard 33 distance: d = 400 pc = 1.234×1019 m
+- P_rad(r) = L_star/(4$\pi$r2c) $\times$ $\rho$/m_H — radiation pressure
+- E(t) = E_0$\cdot$exp(-t/$\tau$) — erosion factor
+- Ionisation front advance: v_IF $\propto$ Q_ion/n_H2
+- Photo-dissociation region depth: l_PDR = A_V/n_H $\times$ conversion
+- Barnard 33 distance: d = 400 pc = 1.234$\times$1019 m
 
 ---
 
 ## 6. Conclusions
 
-The UQFF framework for Barnard 33 yields g ≈ 1.097×10-3 m/s2 at the pillar tip, with radiation
-pressure providing ~4×10-4 m/s2 and the Aether EM correction term dominating at ~10-3 m/s2 after the
-erosion survival factor (1−E) ≈ 0.96 is applied. This matches JWST emission-line kinematics of the
+The UQFF framework for Barnard 33 yields g $\approx$ 1.097$\times$10-3 m/s2 at the pillar tip, with radiation
+pressure providing ~4$\times$10-4 m/s2 and the Aether EM correction term dominating at ~10-3 m/s2 after the
+erosion survival factor (1-E) $\approx$ 0.96 is applied. This matches JWST emission-line kinematics of the
 photo-dissociation region. PAPER_759, CP4 class #343. v5.39.
 
 ---
@@ -117,7 +117,7 @@ photo-dissociation region. PAPER_759, CP4 class #343. v5.39.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -136,7 +136,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -211,7 +211,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.172 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -222,13 +222,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

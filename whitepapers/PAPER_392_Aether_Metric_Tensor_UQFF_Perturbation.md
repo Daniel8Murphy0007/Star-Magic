@@ -10,7 +10,7 @@ tags: [UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_392 — Aether Metric Tensor UQFF Perturbation: A_μν = g_μν + η·T_s00·cos(πt_n)
+# PAPER_392 — Aether Metric Tensor UQFF Perturbation: A_$\mu$$\nu$ = g_$\mu$$\nu$ + $\eta$$\cdot$T_s00$\cdot$cos($\pi$t_n)
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -24,18 +24,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of Aether Metric Tensor UQFF Perturbation: A_μν = g_μν +
-η·T_s00·cos(πt_n), deriving compressed field equations and observational predictions within the
+This paper presents a UQFF analysis of Aether Metric Tensor UQFF Perturbation: A_$\mu$$\nu$ = g_$\mu$$\nu$ +
+$\eta$$\cdot$T_s00$\cdot$cos($\pi$t_n), deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
 ## 1. Overview
 
 The UQFF unified field framework treats spacetime geometry as a **perturbed Minkowski metric**
 where the perturbation is driven by the Aether stress-energy tensor component T_s00. This is
-distinct from PAPER_263 (UA co-action coupling) and PAPER_273 (A_μν tensor introduction):
+distinct from PAPER_263 (UA co-action coupling) and PAPER_273 (A_$\mu$$\nu$ tensor introduction):
 PAPER_263 covers the directional co-action product, while PAPER_273 treats the abstract tensor.
-PAPER_392 formalizes the complete **functional form** of A_μν including the T_s00 numerical
-composition, the η coupling constant, and the verified trace output from simulation.
+PAPER_392 formalizes the complete **functional form** of A_$\mu$$\nu$ including the T_s00 numerical
+composition, the $\eta$ coupling constant, and the verified trace output from simulation.
 
 The perturbation formula is:
 
@@ -56,9 +56,9 @@ $$\boxed{A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_{s00} \cdot \cos(\pi t_n)}$$
 
 | Parameter | Value | Physical Meaning |
 |-----------|-------|-----------------|
-| $g_{\mu\nu}$ | diag(1,−1,−1,−1) | Flat Minkowski background metric |
+| $g_{\mu\nu}$ | diag(1,-1,-1,-1) | Flat Minkowski background metric |
 | $\eta$ | $1 \times 10^{-22}$ | Aether-to-metric coupling constant |
-| $T_{s00}$ | $1.27\times10^3 + 1.11\times10^7 \approx 1.127\times10^7$ kg/m3·c2 | Aether stress-energy 00-component (core + envelope sum) |
+| $T_{s00}$ | $1.27\times10^3 + 1.11\times10^7 \approx 1.127\times10^7$ kg/m3$\cdot$c2 | Aether stress-energy 00-component (core + envelope sum) |
 | $t_n$ | normalized phase time $\in [0,1]$ | UQFF normalized cycle position |
 | $\cos(\pi t_n)$ | $= 1$ at $t_n=0$; $= -1$ at $t_n=1$ | UQFF phase oscillation |
 
@@ -67,7 +67,7 @@ $$\boxed{A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_{s00} \cdot \cos(\pi t_n)}$$
 The stress-energy zero-zero component is the sum of two Aether contributions:
 $$T_{s00} = T_{s00}^{\text{core}} + T_{s00}^{\text{envelope}} = 1.27\times10^3 + 1.11\times10^7 \approx 1.127\times10^7 \text{ kg/m}^3 \cdot c^2$$
 
-The dominant term is the Aether envelope component at $1.11\times10^7$ kg/m3·c2.
+The dominant term is the Aether envelope component at $1.11\times10^7$ kg/m3$\cdot$c2.
 
 ---
 
@@ -96,10 +96,10 @@ At $t_n = 0$: $\text{tr}(A) = -2 + 4 \times 1.127\times10^{-15} \approx -1.99999
 The C++ simulation outputs confirm this exactly:
 $$
 \begin{aligned}
-  & \text{A\_mu\_nu} trace (Sun, t=0):     -1.9999999999999955 ≈ -2  PASS \\
-  & \text{A\_mu\_nu} trace (Earth, t=0):   -1.9999999999999955 ≈ -2  PASS \\
-  & \text{A\_mu\_nu} trace (Jupiter, t=0): -1.9999999999999955 ≈ -2  PASS \\
-  & \text{A\_mu\_nu} trace (Neptune, t=0): -1.9999999999999955 ≈ -2  PASS
+  & \text{A\_mu\_nu} trace (Sun, t=0):     -1.9999999999999955 \approx -2  PASS \\
+  & \text{A\_mu\_nu} trace (Earth, t=0):   -1.9999999999999955 \approx -2  PASS \\
+  & \text{A\_mu\_nu} trace (Jupiter, t=0): -1.9999999999999955 \approx -2  PASS \\
+  & \text{A\_mu\_nu} trace (Neptune, t=0): -1.9999999999999955 \approx -2  PASS
 \end{aligned}
 $$
 
@@ -136,7 +136,7 @@ is negligibly small vs the Ug3-dominant terms).
 The $\cos(\pi t_n)$ factor creates a **full oscillation cycle** over normalized time $t_n \in [0,2]$:
 - At $t_n = 0$: max perturbation (+$\eta T_{s00}$) — metric "stretched"
 - At $t_n = 1$: zero perturbation — metric returns to Minkowski
-- At $t_n = 2$: max negative perturbation (−$\eta T_{s00}$) — metric "compressed"
+- At $t_n = 2$: max negative perturbation (-$\eta T_{s00}$) — metric "compressed"
 
 This cycle links to the UQFF concept of Aether breathing modes.
 
@@ -174,9 +174,9 @@ std::vector<std::vector<double>> compute_A_mu_nu(double tn, double eta, double T
 | Constant | Value | Source |
 |----------|-------|--------|
 | $\eta$ | $1\times10^{-22}$ | Aether-metric coupling |
-| $T_{s00}^{\text{core}}$ | $1.27\times10^3$ kg/m3·c2 | Aether core term |
-| $T_{s00}^{\text{envelope}}$ | $1.11\times10^7$ kg/m3·c2 | Aether envelope term |
-| $T_{s00}^{\text{total}}$ | $1.127\times10^7$ kg/m3·c2 | Combined Aether 00-component |
+| $T_{s00}^{\text{core}}$ | $1.27\times10^3$ kg/m3$\cdot$c2 | Aether core term |
+| $T_{s00}^{\text{envelope}}$ | $1.11\times10^7$ kg/m3$\cdot$c2 | Aether envelope term |
+| $T_{s00}^{\text{total}}$ | $1.127\times10^7$ kg/m3$\cdot$c2 | Combined Aether 00-component |
 | $\eta \cdot T_{s00}$ | $1.127\times10^{-15}$ | Perturbation amplitude |
 | Trace at $t_n=0$ | $\approx -2$ | Minkowski-consistent PASS |
 
@@ -186,7 +186,7 @@ std::vector<std::vector<double>> compute_A_mu_nu(double tn, double eta, double T
 
 PAPER_392 formalizes the UQFF Aether metric perturbation as a modified Minkowski metric
 $A_{\mu\nu} = g_{\mu\nu} + \eta T_{s00}\cos(\pi t_n)$ with coupling constant $\eta = 10^{-22}$
-and Aether stress tensor component $T_{s00} = 1.127\times10^7$ kg/m3·c2. The perturbation
+and Aether stress tensor component $T_{s00} = 1.127\times10^7$ kg/m3$\cdot$c2. The perturbation
 magnitude of $1.127\times10^{-15}$ is sub-Planck scale and produces trace $\approx -2$ at $t_n=0$,
 verified across all four test bodies (Sun, Earth, Jupiter, Neptune) in the Grok simulation.
 The formula enters $F_U$ as a third structural arm alongside the $U_{g,i}$ and $U_{bi}$ terms.
@@ -199,7 +199,7 @@ The formula enters $F_U$ as a third structural arm alongside the $U_{g,i}$ and $
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -218,7 +218,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -327,7 +327,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.183 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -338,13 +338,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -147,7 +147,7 @@ centripetal acceleration (Newton) plus the UQFF buoyancy offset (UQFF correction
 
 | Paper | Class (#) | Core result | Hub connection |
 |-------|-----------|------------|----------------|
-| PAPER_541 | #136 | DPM ↔ Proplyd simultaneous; 18.32% emergence | DVP eight-wave mode |
+| PAPER_541 | #136 | DPM $\leftrightarrow$ Proplyd simultaneous; 18.32% emergence | DVP eight-wave mode |
 | PAPER_542 | #137 | 4-tel fit; $U_{S,\text{orb}} = 1.80 \times 10^{31}$ Hz | BH harmonic $U_{S,\text{orb}}$ |
 | PAPER_543 | #138 | NS regularity; bounded $\lambda < 1$; $\pi$ uniqueness | All methods simultaneous |
 | PAPER_544 | #139 | YM mass gap $\Delta = P/3 > 0$; $p = 113$ | VDS in denominator |
@@ -157,7 +157,7 @@ centripetal acceleration (Newton) plus the UQFF buoyancy offset (UQFF correction
 
 ## §8 Observational Predictions
 
-1. **Orion proplyd census:** New JWST Cycle 3 programs should find emergence ≈ 18.3 ± 2%
+1. **Orion proplyd census:** New JWST Cycle 3 programs should find emergence $\approx$ 18.3 $\pm$ 2%
    across all Orion OB1 fields (constraint: $1/3$ stable disc population).
 
 2. **Sgr A* orbit residuals:** E-Holte/GRAVITY monitoring of S2 star should show Ug4
@@ -353,7 +353,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -364,10 +364,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 10–100 `M_M_sun`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 10–100 `M_M_sun`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Galaxy merger system

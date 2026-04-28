@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2026-03-07  
 **Domain:** 1.2 — Gravitational Waves — LISA Future Detector  
 **Primary Validation File:** `validate_lisa_extended.py`  
-**Calibration constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 
 ---
 
@@ -33,7 +33,7 @@ indicating that UQFF damping is primarily distance-independent (aether-dominated
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -41,19 +41,19 @@ present in Standard Model treatments.
 
 ## 1. Background: UQFF Propagation Across Cosmological Distances
 
-In GR, gravitational wave strain scales as h ∝ D_L-1 (luminosity distance). UQFF adds multiplicative
+In GR, gravitational wave strain scales as h $\propto$ D_L-1 (luminosity distance). UQFF adds multiplicative
 damping:
 
-**h_UQFF(D_L, z) = F_combined(D_L, z) × h_GR(D_L)**
+**h_UQFF(D_L, z) = F_combined(D_L, z) $\times$ h_GR(D_L)**
 
 where the combined factor includes:
 
-- **Aether:** F_aether = exp(−D_L / d_aether) ≈ 1.0 for d_aether >> D_L
-- **TRZ:** F_TRZ = 1 − f_TRZ = 0.90
-- **U_m:** F_Um = exp(−σ × U_m) = exp(−1.0) ≈ 0.6907
-- **β_m modulation:** ~5% oscillatory correction over observation window
+- **Aether:** F_aether = exp(-D_L / d_aether) $\approx$ 1.0 for d_aether >> D_L
+- **TRZ:** F_TRZ = 1 - f_TRZ = 0.90
+- **U_m:** F_Um = exp(-$\sigma$ $\times$ U_m) = exp(-1.0) $\approx$ 0.6907
+- **$\beta$_m modulation:** ~5% oscillatory correction over observation window
 
-**F_combined,base = F_TRZ × F_aether × F_Um = 0.90 × 1.0 × 0.6907 = 0.6217**
+**F_combined,base = F_TRZ $\times$ F_aether $\times$ F_Um = 0.90 $\times$ 1.0 $\times$ 0.6907 = 0.6217**
 
 ---
 
@@ -61,13 +61,13 @@ where the combined factor includes:
 
 | Parameter | Value |
 |-----------|-------|
-| Total mass M | 1.00 × 106 MM_sun |
+| Total mass M | 1.00 $\times$ 106 MM_sun |
 | Mass ratio q | 0.50 |
-| Chirp mass M_chirp | 4.06 × 105 MM_sun |
+| Chirp mass M_chirp | 4.06 $\times$ 105 MM_sun |
 | Redshift z | 1.0 |
 | Luminosity distance D_L | 6.42 Gpc |
 | Observation duration | 12 months |
-| Frequency range | 1.0 → 10.0 mHz |
+| Frequency range | 1.0 $\to$ 10.0 mHz |
 | Sample points | 2000 |
 | GW cycles | 212 |
 
@@ -84,7 +84,7 @@ where the combined factor includes:
 
 Modulations over the 12-month observation:
 - U_m oscillations: ~10% amplitude at hourly timescale
-- β_m drift: ~0.1% over full chirp duration
+- $\beta$_m drift: ~0.1% over full chirp duration
 
 ---
 
@@ -92,12 +92,12 @@ Modulations over the 12-month observation:
 
 | Observable | GR | UQFF |
 |------------|----|----|
-| Peak strain h | 2.9275 × 10-19 | 1.7702 × 10-19 |
+| Peak strain h | 2.9275 $\times$ 10-19 | 1.7702 $\times$ 10-19 |
 | Strain reduction | — | **39.5%** |
 | Phase lag at merger | 0 | **0.63 rad = 0.1 cycles** |
 | SNR (approximate) | 205,910 | 128,338 |
 | SNR ratio UQFF/GR | — | 0.62 |
-| Residual RMS | — | 8.6950 × 10-20 |
+| Residual RMS | — | 8.6950 $\times$ 10-20 |
 | 1-year GW cycles | 212 | 212 (same) |
 
 ---
@@ -129,11 +129,11 @@ $$h_{GR,peak} = 2.9275\times10^{-19}\,\mathrm{strain},\quad h_{UQFF,peak} = 1.77
 **Key numerical results:** D_L = 6.42e0 Gpc, F_combined = 6.217e-1, h_GR = 2.9275e-19 strain, h_UQFF
 = 1.7702e-19 strain, phi_lag = 6.3e-1 rad
 
-**φ_lag(t) = 2π × f_TRZ × t / τ_merge**
+**$\phi$_lag(t) = 2$\pi$ $\times$ f_TRZ $\times$ t / $\tau$_merge**
 
-- At t = 0: φ_lag = 0 rad  
-- At t = 6 months: φ_lag = 0.31 rad  
-- At t = 12 months: φ_lag = **0.63 rad = 0.10 cycles**
+- At t = 0: $\phi$_lag = 0 rad  
+- At t = 6 months: $\phi$_lag = 0.31 rad  
+- At t = 12 months: $\phi$_lag = **0.63 rad = 0.10 cycles**
 
 This 0.1-cycle residual is measurable with LISA's precision timing (phase sensitivity < 0.01 cycle
 at SNR > 100,000).
@@ -147,7 +147,7 @@ at SNR > 100,000).
 | SNR_UQFF | 128,338 | > 5 ✅ |
 | Phase lag | 0.63 rad | Detectable at LISA sensitivity ✅ |
 | Amplitude modulation | ~10% (hourly) | Visible in 12-month dataset ✅ |
-| Strain floor comparison | h_UQFF = 1.77×10-19 | Well above LISA noise floor ✅ |
+| Strain floor comparison | h_UQFF = 1.77$\times$10-19 | Well above LISA noise floor ✅ |
 
 ---
 
@@ -168,7 +168,7 @@ from astrophysical effects
 
 UQFF predicts a ~40% strain reduction and 0.1-cycle phase lag for a 106 MM_sun SMBH merger at z = 1
 observed by LISA over 12 months. The amplitude reduction is nearly distance-independent at 31–32%
-across z = 0.5–2.0, dominated by TRZ and U_m coupling. With SNR ≈ 128,000, both the amplitude and
+across z = 0.5–2.0, dominated by TRZ and U_m coupling. With SNR $\approx$ 128,000, both the amplitude and
 phase signatures are robustly detectable by LISA, providing a definitive test of UQFF vs GR in the
 mHz band.
 
@@ -218,7 +218,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -237,7 +237,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -254,14 +254,14 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -276,10 +276,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -287,9 +287,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -297,8 +297,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -375,7 +375,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -386,13 +386,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -17,17 +17,17 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 We compute F_U_Bi for SMBH binary inspiral systems where phonon damping modifies the merger
-waveform. The SCm buoyancy field introduces a frequency-dependent damping envelope via S₂₆⁽3⁾.
+waveform. The SCm buoyancy field introduces a frequency-dependent damping envelope via S26(3).
 
 ## 1. Core Equation
 
-F_{U,Bi}^{binary} = ρ_SCm · V · S₂₆⁽3⁾2 · ratio · (1 + Φ(Γ) · e^{-Γ/Γ₀})
+F_{U,Bi}^{binary} = $\rho$_SCm $\cdot$ V $\cdot$ S26(3)2 $\cdot$ ratio $\cdot$ (1 + $\Phi$($\Gamma$) $\cdot$ e^{-$\Gamma$/$\Gamma$0})
 
 The damping envelope suppresses high-frequency phonon modes during the final inspiral.
 
 ## 2. Results
 
-For a 5.5×107 MM_sun primary: F_U_Bi = 5.47×1035 m/s2 with S₂₆⁽3⁾-calibrated buoyancy correction.
+For a 5.5$\times$107 MM_sun primary: F_U_Bi = 5.47$\times$1035 m/s2 with S26(3)-calibrated buoyancy correction.
 
 ## 3. Implementation
 
@@ -42,7 +42,7 @@ File: `fubi_agn_ns_mergers.py`, class `SMBHBinaryMergerFUBiCalc`. CP4 class #585
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 
@@ -79,7 +79,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -202,7 +202,7 @@ $$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravitational-wave chirp $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

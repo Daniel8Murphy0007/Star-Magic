@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_308 — Spiral Arm Torque Gravitational Amplifier
 **Author:** Daniel T. Murphy
 **Date:** 2025
-## τ_spiral(10 Gyr) = 2.046 | T_pattern = 307 Myr | dτ/dt = 2.741 × H₀_SH0ES
+## $\tau$_spiral(10 Gyr) = 2.046 | T_pattern = 307 Myr | d$\tau$/dt = 2.741 $\times$ H0_SH0ES
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  
 **Module:** SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp  
@@ -26,10 +26,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 Spiral galaxies evolve under pattern-speed-driven star-formation torques whose cumulative
 gravitational amplitudes differ fundamentally from static NFW or Keplerian assumptions. Within the
-UQFF (Unified Quantum Field Framework) 2.0 pipeline, a dimensionless spiral torque factor τ_spiral =
-(M_gas/M) × Ω_p × t accumulates over cosmic time and multiplies the base gravitational term. At 10
-Gyr the amplifier reaches τ = 2.046, boosting effective gravity by a factor of 3.046×. The torque
-rate dτ/dt = 6.483 × 10-18 s-1 exceeds H₀_SH0ES (73.0 km/s/Mpc = 2.366 × 10-18 s-1) by a factor of
+UQFF (Unified Quantum Field Framework) 2.0 pipeline, a dimensionless spiral torque factor $\tau$_spiral =
+(M_gas/M) $\times$ $\Omega$_p $\times$ t accumulates over cosmic time and multiplies the base gravitational term. At 10
+Gyr the amplifier reaches $\tau$ = 2.046, boosting effective gravity by a factor of 3.046$\times$. The torque
+rate d$\tau$/dt = 6.483 $\times$ 10-18 s-1 exceeds H0_SH0ES (73.0 km/s/Mpc = 2.366 $\times$ 10-18 s-1) by a factor of
 2.741, establishing a new UQFF cosmic-rate comparison.
 
 ---
@@ -38,11 +38,11 @@ rate dτ/dt = 6.483 × 10-18 s-1 exceeds H₀_SH0ES (73.0 km/s/Mpc = 2.366 × 10
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M (galaxy) | 1.989 × 1041 kg | 1 × 1011 M_sun (Milky-Way class) |
-| M_gas (arm gas) | 1.989 × 1039 kg | 1 × 109 M_sun |
-| r | 9.258 × 1020 m | ~30 kpc half-radius |
-| Ω_p (pattern speed) | 6.483 × 10-16 rad/s | 20 km/s/kpc |
-| H₀_SH0ES | 73.0 km/s/Mpc | SH0ES, Riess et al. 2022 |
+| M (galaxy) | 1.989 $\times$ 1041 kg | 1 $\times$ 1011 M_sun (Milky-Way class) |
+| M_gas (arm gas) | 1.989 $\times$ 1039 kg | 1 $\times$ 109 M_sun |
+| r | 9.258 $\times$ 1020 m | ~30 kpc half-radius |
+| $\Omega$_p (pattern speed) | 6.483 $\times$ 10-16 rad/s | 20 km/s/kpc |
+| H0_SH0ES | 73.0 km/s/Mpc | SH0ES, Riess et al. 2022 |
 | f_gas = M_gas/M | 0.01 | Gas arm mass fraction |
 
 ---
@@ -56,14 +56,14 @@ pattern momentum:
 $$\tau_{\rm spiral}(t) = \frac{M_{\rm gas}}{M} \cdot \Omega_p \cdot t$$
 
 - f_gas = 109 / 1011 = **0.01**  
-- Ω_p = 20.0 × 103 / 3.086 × 1019 = **6.483 × 10-16 rad/s**
-- t (10 Gyr) = 10 × 109 × 3.15576 × 107 = **3.156 × 1017 s**
+- $\Omega$_p = 20.0 $\times$ 103 / 3.086 $\times$ 1019 = **6.483 $\times$ 10-16 rad/s**
+- t (10 Gyr) = 10 $\times$ 109 $\times$ 3.15576 $\times$ 107 = **3.156 $\times$ 1017 s**
 
 $$\tau_{\rm spiral}(10\,{\rm Gyr}) = 0.01 \times 6.483\times10^{-16} \times 3.156\times10^{17} = \boxed{2.046}$$
 
 ### 3.2 Gravity Amplification
 
-The UQFF 2.0 pipeline applies τ as a multiplicative stage:
+The UQFF 2.0 pipeline applies $\tau$ as a multiplicative stage:
 
 $$g_{\rm pipeline}(t) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot \underbrace{(1 + H_z\,t)}_{\text{Hubble}} \cdot \underbrace{(1 + \tau_{\rm spiral})}_{\text{torque}} \cdot \underbrace{(1 - B/B_{\rm crit})}_{\text{SC}} \cdot \underbrace{(1 + f_{\rm TRZ})}_{\rm TRZ}$$
 
@@ -71,7 +71,7 @@ At t = 10 Gyr, z = 0:
 
 $$g_{\rm amp} = 1 + \tau_{\rm spiral} = 1 + 2.046 = \boxed{3.046}$$
 
-Effective gravity is **3× stronger at 10 Gyr** than at formation, driven entirely by spiral arm
+Effective gravity is **3$\times$ stronger at 10 Gyr** than at formation, driven entirely by spiral arm
 pattern momentum accumulation.
 
 ### 3.3 Pattern Period
@@ -89,7 +89,7 @@ $$H_{0,\rm SH0ES} = \frac{73.0 \times 10^3}{3.086\times10^{22}} = 2.366\times10^
 
 $$\frac{d\tau/dt}{H_0} = \frac{6.483\times10^{-18}}{2.366\times10^{-18}} = \boxed{2.741}$$
 
-**The spiral torque accumulation rate exceeds the Hubble expansion rate by 2.741×.** This means
+**The spiral torque accumulation rate exceeds the Hubble expansion rate by 2.741$\times$.** This means
 spiral arm gravitational evolution is cosmologically faster than universal expansion, a key UQFF
 prediction distinguishing galactic internal dynamics from global metric expansion.
 
@@ -101,9 +101,9 @@ The spiral arm torque factor captures how non-axisymmetric mass flows (gas infal
 sweeping, star formation) cumulatively torque the gravitational potential. In UQFF 2.0, this is
 written as a dimensionless running factor on the total gravity pipeline. The key results:
 
-- **τ_spiral(10 Gyr) = 2.046** — Spiral galaxies experience >3× internal gravity enhancement relative to their formation epoch
+- **$\tau$_spiral(10 Gyr) = 2.046** — Spiral galaxies experience >3$\times$ internal gravity enhancement relative to their formation epoch
 - **T_pattern = 307 Myr** — Sets the natural clock for spiral arm-driven enrichment cycles (OB association lifetimes, molecular cloud compression cycles)
-- **dτ/dt / H₀ = 2.741** — Torque evolution rate 2.7× faster than cosmic expansion: internal galactic structure evolves more rapidly than expanding-universe metrics suggest
+- **d$\tau$/dt / H0 = 2.741** — Torque evolution rate 2.7$\times$ faster than cosmic expansion: internal galactic structure evolves more rapidly than expanding-universe metrics suggest
 
 ---
 
@@ -111,16 +111,16 @@ written as a dimensionless running factor on the total gravity pipeline. The key
 
 | Term | Value | Notes |
 |------|-------|-------|
-| g_base = μ_s∇(M_s/r) | 1.549 × 10-11 m/s2 | Reference gravity at 30 kpc |
-| Hubble factor (1 + Hz·t) | system-z dependent | Expansion correction |
-| Torque factor (1 + τ) | **3.046** | PAPER_308 key result at 10 Gyr |
-| SC factor (1 − B/B_crit) | ≈ 1.0 | Galactic B << B_crit |
+| g_base = $\mu$_s$\nabla$(M_s/r) | 1.549 $\times$ 10-11 m/s2 | Reference gravity at 30 kpc |
+| Hubble factor (1 + Hz$\cdot$t) | system-z dependent | Expansion correction |
+| Torque factor (1 + $\tau$) | **3.046** | PAPER_308 key result at 10 Gyr |
+| SC factor (1 - B/B_crit) | $\approx$ 1.0 | Galactic B << B_crit |
 | TRZ factor (1 + f_TRZ) | 1.10 | Resonance zone correction |
-| Ug_sum | 2 × g_base | Magnetic-dipole + vacuum-SC |
-| Λ term | ~ 0 | Sub-dominant at galactic scales |
-| Quantum term | ℏ/(m_H·Δx2) | HUP contribution |
-| g_DM | 1.316 × 10-11 m/s2 | PAPER_310 dark matter partition |
-| a_SN | 3.096 × 105 m/s2 | PAPER_309 SN Ia radiation pressure |
+| Ug_sum | 2 $\times$ g_base | Magnetic-dipole + vacuum-SC |
+| $\Lambda$ term | ~ 0 | Sub-dominant at galactic scales |
+| Quantum term | ℏ/(m_H$\cdot$$\Delta$x2) | HUP contribution |
+| g_DM | 1.316 $\times$ 10-11 m/s2 | PAPER_310 dark matter partition |
+| a_SN | 3.096 $\times$ 105 m/s2 | PAPER_309 SN Ia radiation pressure |
 
 ---
 
@@ -128,14 +128,14 @@ written as a dimensionless running factor on the total gravity pipeline. The key
 
 - **FIRST** UQFF spiral arm pattern speed gravitational amplifier
 - **FIRST** UQFF dimensionless torque running factor in 9-term pipeline
-- **FIRST** UQFF galactic-scale dτ/dt vs H₀ comparative rate analysis
-- τ = 2.046 exceeds unity: spiral arm evolution **non-perturbatively** amplifies gravity at late cosmic time
+- **FIRST** UQFF galactic-scale d$\tau$/dt vs H0 comparative rate analysis
+- $\tau$ = 2.046 exceeds unity: spiral arm evolution **non-perturbatively** amplifies gravity at late cosmic time
 
 ---
 
 ## 7. References
 
-- Riess et al. 2022, ApJ 934 L7 (SH0ES H₀ = 73.04 km/s/Mpc)
+- Riess et al. 2022, ApJ 934 L7 (SH0ES H0 = 73.04 km/s/Mpc)
 - Binney & Tremaine, *Galactic Dynamics* 2nd ed. (spiral arm pattern speeds)
 - UQFF 2.0 Architecture — ARCHITECTURE_FLOW_DIAGRAM.md v4.4.0 CANONICAL
 - MAIN_1_CoAnQi.cpp SOURCE4 (lines 25623–26026) — UQFF/MUGE framework
@@ -274,7 +274,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.124 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -285,13 +285,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -29,10 +29,10 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 ## §1 Abstract
 
 LHCb has placed the world's best limit on lepton flavor violation (LFV) in B-meson decays:
-BR(B→K*τe) < 5.9e-6 at 90% CL (5.4 fb-1). We show that the UQFF vacuum-topology
-suppression parameter k_η = 10-113 generates an expected LFV rate at UQFF scale that
+BR(B$\to$K*$\tau$e) < 5.9e-6 at 90% CL (5.4 fb-1). We show that the UQFF vacuum-topology
+suppression parameter k_$\eta$ = 10-113 generates an expected LFV rate at UQFF scale that
 is 107 orders below this bound, providing an effective UQFF upper limit on LFV through the
-t_n time-reversal node constraint: BR_UQFF(B→K*τe) < k_η2 × phase_space ~ 10-230.
+t_n time-reversal node constraint: BR_UQFF(B$\to$K*$\tau$e) < k_$\eta$2 $\times$ phase_space ~ 10-230.
 
 ---
 
@@ -42,9 +42,9 @@ Lepton Flavor Violation is forbidden in the SM at tree level and arises only thr
 neutrino-mass loop corrections (BR_SM ≲ 10-54). Any observation of LFV at the LHCb
 sensitivity level would imply new physics coupling lepton generations.
 
-UQFF claim: k_η = 10-113 represents the maximum suppression depth of the UQFF vacuum
+UQFF claim: k_$\eta$ = 10-113 represents the maximum suppression depth of the UQFF vacuum
 string compactification topology. This sets an effective LFV ceiling: phenomena suppressed
-by k_η cannot be confused with SM new-physics signatures.
+by k_$\eta$ cannot be confused with SM new-physics signatures.
 
 ---
 
@@ -139,7 +139,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -242,7 +242,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -253,23 +253,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BR(B→K*τe) upper limit | BR_UQFF < 10-230 (k_η2 suppression) | BR < 5.9e-6 at 90% CL | arXiv:2506.15347 (LHCb 5.4/fb) | PASS UQFF far below bound |
-| SM LFV prediction | BR_SM ~ 10-54 (ν loop) | SM: no tree-level LFV | PDG 2024 | UQFF consistent with SM null |
-| k_η suppression scale | k_η = 10-113 ↔ LFV cutoff energy Λ_LFV = m_W/√k_η ~ 1060 GeV | No collider can reach Λ_LFV | n/a | UQFF LFV unreachable |
-| LHCb Run 4 null prediction | UQFF: BR(B→K*τe) will remain unobserved at any LHCb run | LHCb Run 4: target BR ~ 10-8 | LHCb 2027+ | Testable UQFF null prediction |
+| BR(B$\to$K*$\tau$e) upper limit | BR_UQFF < 10-230 (k_$\eta$2 suppression) | BR < 5.9e-6 at 90% CL | arXiv:2506.15347 (LHCb 5.4/fb) | PASS UQFF far below bound |
+| SM LFV prediction | BR_SM ~ 10-54 ($\nu$ loop) | SM: no tree-level LFV | PDG 2024 | UQFF consistent with SM null |
+| k_$\eta$ suppression scale | k_$\eta$ = 10-113 $\leftrightarrow$ LFV cutoff energy $\Lambda$_LFV = m_W/$\sqrt{}$k_$\eta$ ~ 1060 GeV | No collider can reach $\Lambda$_LFV | n/a | UQFF LFV unreachable |
+| LHCb Run 4 null prediction | UQFF: BR(B$\to$K*$\tau$e) will remain unobserved at any LHCb run | LHCb Run 4: target BR ~ 10-8 | LHCb 2027+ | Testable UQFF null prediction |
 
 **New physics claim:** UQFF predicts LFV in B-decays is **not accessible at any current
-or planned collider** because k_η suppression places the UQFF LFV amplitude at 10-230 —
+or planned collider** because k_$\eta$ suppression places the UQFF LFV amplitude at 10-230 —
 224 orders below LHCb's current best limit. This is a strict, high-confidence falsifiability
 constraint: LHCb Run 4 discovering LFV above 10-8 would require UQFF revision.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for k_η SM mapping.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for k_$\eta$ SM mapping.*
 
 ---
 
 ## §6 References
 
-- arXiv:2506.15347 — LHCb LFV B→K*τe search (5.4 fb-1, June 2025)
+- arXiv:2506.15347 — LHCb LFV B$\to$K*$\tau$e search (5.4 fb-1, June 2025)
 - PDG 2024 — LFV decays, Section 90.4
 - bsm_physics_validation.py — `BSMPhysicsConstants.lhcb_lfv_br_limit`
 - PAPER_642 — UQFF SM Parameter Bridge Master Comparison

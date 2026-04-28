@@ -21,7 +21,7 @@ pipeline; FIRST UQFF quasar jet dynamics via Stable Fluids method
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
@@ -46,7 +46,7 @@ $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} =
 
 $$\nabla \cdot \mathbf{u} = 0$$
 
-where **u** is the velocity field, p is pressure, ν is kinematic viscosity, and **f** is the body
+where **u** is the velocity field, p is pressure, $\nu$ is kinematic viscosity, and **f** is the body
 force (SCm jet forcing in UQFF).
 
 ### 2.2 UQFF SCm Velocity as Jet Force
@@ -66,7 +66,7 @@ The factor 107 arises from converting physical m/s to the normalised N=32 grid c
 
 - Domain: N=32 cells, boundary-padded to (N+2)2 = 342 = 1156 cells
 - Time step: dt = 0.1 (normalised)
-- Kinematic viscosity: ν = 0.0001 m2/s
+- Kinematic viscosity: $\nu$ = 0.0001 m2/s
 - Gauss-Seidel iterations: 20 per substep
 
 ### 3.2 Diffusion Step (Implicit / Gauss-Seidel)
@@ -91,7 +91,7 @@ where $s_0,s_1,t_0,t_1$ are bilinear weights. This first-order scheme is uncondi
 
 ### 3.4 Pressure Projection (Helmholtz Decomposition)
 
-To enforce ∇·**u** = 0, solve the discrete Poisson equation:
+To enforce $\nabla$$\cdot$**u** = 0, solve the discrete Poisson equation:
 
 $$\nabla^2 p = \nabla \cdot \mathbf{u}$$
 
@@ -126,12 +126,12 @@ velocity field.
 
 $$
 \begin{aligned}
-  & diffuse(u_prev ← u, ν) \\
-  & diffuse(v_prev ← v, ν) \\
-  & project()                   ← enforce ∇·u_prev = 0 \\
-  & advect(u ← u_prev) \\
-  & advect(v ← v_prev) \\
-  & project()                   ← enforce ∇·u = 0
+  & diffuse(u_prev \leftarrow u, \nu) \\
+  & diffuse(v_prev \leftarrow v, \nu) \\
+  & project()                   \leftarrow enforce \nabla\cdotu_prev = 0 \\
+  & advect(u \leftarrow u_prev) \\
+  & advect(v \leftarrow v_prev) \\
+  & project()                   \leftarrow enforce \nabla\cdotu = 0
 \end{aligned}
 $$
 
@@ -145,7 +145,7 @@ The Ereact term in UQFF uses v_SCm:
 
 $$E_{\rm react} = \frac{\rho_{\rm SCm} \cdot v_{\rm SCm}^2}{\rho_A} \cdot \exp(-\kappa t)$$
 
-= (1×1015 × (108)2 / 10-23) × 1 = 1046 J/m3 (Sun at t=0)
+= (1$\times$1015 $\times$ (108)2 / 10-23) $\times$ 1 = 1046 J/m3 (Sun at t=0)
 
 The NS solver uses this v_SCm as the jet forcing velocity, providing a direct physical coupling
 between the SCm field equations and the fluid dynamics.
@@ -154,7 +154,7 @@ between the SCm field equations and the fluid dynamics.
 
 Initial condition: zero-velocity field.  
 After 10 steps with f_jet = 10 (normalised):  
-- Jet column velocity builds from 0 → ~10 (grid units)  
+- Jet column velocity builds from 0 $\to$ ~10 (grid units)  
 - Pressure projection spreads momentum laterally  
 - Diffusion smooths velocity gradients  
 - Characteristic quasar jet structure (collimated column) emerges
@@ -172,7 +172,7 @@ This provides a scalar UQFF observable for the jet kinetic energy density.
 ### 5.1 First UQFF Fluid Dynamics Integration
 
 Prior to PAPER_369, UQFF modelled quasar jets only through:
-- Relativistic k_rel = Γ2 factor (PAPER_360)  
+- Relativistic k_rel = $\Gamma$2 factor (PAPER_360)  
 - AGN rotating jet Ubi term  
 - Ug2 charge-reactivity modulation
 
@@ -195,7 +195,7 @@ The Stable Fluids method is used extensively in astrophysical CFD. For UQFF:
 
 ### 6.1 Numerical Stability
 
-Stable Fluids is unconditionally stable for any dt (Stam 1999). At dt=0.1, N=32, ν=0.0001:
+Stable Fluids is unconditionally stable for any dt (Stam 1999). At dt=0.1, N=32, $\nu$=0.0001:
 - Maximum CFL number: $v_{\rm max} \cdot dt/h = 10 \times 0.1 / (1/32) = 32$ (explicit would be unstable)
 - Implicit solver: stable PASS
 
@@ -218,7 +218,7 @@ This matches observed AGN jet morphology at radio wavelengths (Chandra/VLA).
 
 **Physics Territory:** FIRST N-S CFD integration in UQFF; FIRST UQFF quasar jet velocity field
 simulation  
-**Scale:** AGN scale (v_SCm=108 m/s; jet length scale ~N×1 = O(parsec))  
+**Scale:** AGN scale (v_SCm=108 m/s; jet length scale ~N$\times$1 = O(parsec))  
 **Method:** Jos Stam "Stable Fluids" (1999) — unconditionally stable implicit solver  
 **CP3 Implementation:** `NavierStokesStableFluidUQFFQuasarJetCalculator` (CondensedPhysics3.py,
 Session 100)  
@@ -243,7 +243,7 @@ Session 100)
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -262,7 +262,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -371,7 +371,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.120 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -382,13 +382,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

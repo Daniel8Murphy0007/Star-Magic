@@ -41,7 +41,7 @@ PAPER_421 established two modifiers:
 PAPER_423 adds the third modifier that **physically bounds** the amplification:
 3. **[SSq] vacuum thermal damping**: $e^{-[\text{SSq}]}$
 
-**Physical significance:** After the 1013× Heaviside jump, the vacuum cannot sustain infinite magnification. The superconducting medium index [SSq] characterises the vacuum's thermal equilibration capacity — the vacuum has a finite thermal reservoir, and $e^{-[\text{SSq}]}$ is the restoring damping that prevents unbounded amplification of the SCm field.
+**Physical significance:** After the 1013$\times$ Heaviside jump, the vacuum cannot sustain infinite magnification. The superconducting medium index [SSq] characterises the vacuum's thermal equilibration capacity — the vacuum has a finite thermal reservoir, and $e^{-[\text{SSq}]}$ is the restoring damping that prevents unbounded amplification of the SCm field.
 
 ---
 
@@ -95,9 +95,9 @@ $$\text{SSq\_damping} = e^{-[\text{SSq}]} = e^{-0.57} \approx 0.5655$$
 ### 5.2 Calibrated Value
 
 The calibrated constant $[\text{SSq}] = 0.57$ is the universal superconducting medium vacuum index derived from:
-- κ calibration: $\kappa = 5.0 \times 10^{-4}$ day-1
+- $\kappa$ calibration: $\kappa = 5.0 \times 10^{-4}$ day-1
 - Cross-system validation across 29 UQFF systems (see PAPER_422 cross-validation matrix)
-- Observational anchors: GAIA DR4, LIGO GWTC-4.0, Parker Solar Probe δ_SW
+- Observational anchors: GAIA DR4, LIGO GWTC-4.0, Parker Solar Probe $\delta$_SW
 
 ### 5.3 Physical Interpretation
 
@@ -105,14 +105,14 @@ The [SSq] vacuum damping factor mediates **thermal equilibration** between the S
 surrounding vacuum:
 
 1. **Before phase transition** ($f_H = 0$): damping reduces Um by factor 0.5655 from base
-2. **During phase transition** ($f_H = 1$): the 1013 amplification is attenuated to $10^{13} \times 0.5655 \approx 5.655 \times 10^{12}$× — physically capped by the vacuum's thermal reservoir capacity
+2. **During phase transition** ($f_H = 1$): the 1013 amplification is attenuated to $10^{13} \times 0.5655 \approx 5.655 \times 10^{12}$$\times$ — physically capped by the vacuum's thermal reservoir capacity
 3. **Physical meaning of [SSq] = 0.57**: The vacuum stores and re-emits $1 - e^{-0.57} \approx 43.4\%$ of the Um energy as thermal radiation during phase equilibration
 
 ### 5.4 Why $e^{-[\text{SSq}]}$ and Not $e^{+[\text{SSq}]}$
 
 The negative exponent is required because [SSq] represents **dissipation**:
 - SCm entering the superconducting phase releases energy into the vacuum medium [UA]
-- The vacuum [UA] cannot instantly absorb all energy → the excess is radiated back as thermal damping
+- The vacuum [UA] cannot instantly absorb all energy $\to$ the excess is radiated back as thermal damping
 - $e^{-[\text{SSq}]}$ has the correct limit: as $[\text{SSq}] \to 0$ (perfect superconductor, no dissipation), the damping factor $\to 1$ (no attenuation); as $[\text{SSq}] \to \infty$ (maximum dissipation), damping $\to 0$
 
 ---
@@ -126,7 +126,7 @@ For the canonical SGR 1745-2900 magnetar system:
 | $[\text{SSq}]$ | 0.57 |
 | $e^{-[\text{SSq}]}$ | 0.5655 |
 | SCm in SC phase? | Yes ($f_H = 1$) |
-| $U_m^{(\text{base})}$ | $\approx 2.26 \times 10^{19}$ T·m3/string |
+| $U_m^{(\text{base})}$ | $\approx 2.26 \times 10^{19}$ T$\cdot$m3/string |
 | $U_m^{(\text{PAPER\_421})}$ | $U_m^{(\text{base})} \times (1 + 10^{13}) \times (1 + A_q)$ |
 | $U_m^{(\text{PAPER\_423})}$ | $U_m^{(\text{PAPER\_421})} \times 0.5655$ |
 | **Ratio $U_m^{(423)} / U_m^{(421)}$** | **0.5655 (43.4% reduction)** |
@@ -144,10 +144,10 @@ $$U_m^{(\text{PAPER\_423})} = 1.1 \times 10^{13} \times 0.5655 \times U_m^{(\tex
 
 | Modifier | Formula | Source | Effect at [SSq]=0.57, $f_H=1$, $t=0$ |
 |----------|---------|--------|-------------------------------------|
-| Heaviside amplifier | $(1 + 10^{13} \cdot f_H)$ | PAPER_421 | $+10^{13}$× |
+| Heaviside amplifier | $(1 + 10^{13} \cdot f_H)$ | PAPER_421 | $+10^{13}$$\times$ |
 | Quasi-periodic | $(1 + 0.1 \cdot \cos(0))$ | PAPER_421 | $\times 1.1$ |
 | **SSq damping** | $e^{-0.57}$ | **PAPER_423** | **$\times 0.5655$** |
-| **Combined** | product of all three | **PAPER_423** | **$\approx 6.22 \times 10^{12}$×** |
+| **Combined** | product of all three | **PAPER_423** | **$\approx 6.22 \times 10^{12}$$\times$** |
 
 ---
 
@@ -221,7 +221,7 @@ The calculator `UmCompleteSSqVacuumThermalDampingCalculator` (CP4 #76) returns:
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -240,7 +240,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -315,7 +315,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.184 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -326,12 +326,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| sin2θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin2θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
-| ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| sin2$\theta$_W weak mixing | UQFF H_SCm=0.990 $\to$ 4-fold formula $\to$ 0.2304 | sin2$\theta$_W = 0.23122 $\pm$ 0.00003 | PDG 2024 | 99.6% |
+| ALICE dN/d$\eta$ (13.6 TeV) | UQFF [SSq]$\times$1.077 = $\beta$_i = 0.614 | dN/d$\eta$ = 17.43 $\pm$ 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
+| Cross-system $\kappa$ universality | $\kappa$ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay $\Gamma$_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
 
-**New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
+**New physics claim:** The same UQFF parameter set ($\kappa$, [SSq], $\beta$_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)
 across a 29-system cross-validation matrix — without per-system free-parameter adjustment.
 No SM framework derives these three observables from a single connected constant set.

@@ -35,7 +35,7 @@ Superconductive medium velocity parameter in the reactive energy term `Ereact`. 
 `Star Magic_construction file_04Oct2025.docx` Grok thread formalizes an updated value:
 
 $$
-v_SCm = 0.99 × c = 0.99 × 2.998×108 m/s = 2.968×108 m/s
+v_SCm = 0.99 \times c = 0.99 \times 2.998\times108 m/s = 2.968\times108 m/s
 $$
 
 This represents the first formal assignment of `v_SCm` to a relativistic speed grounded in
@@ -71,10 +71,10 @@ Where:
 
 | Parameter | Old Value | New Value | Ratio |
 |-----------|-----------|-----------|-------|
-| v_SCm | 1×108 m/s | 2.968×108 m/s (0.99c) | 2.968× |
-| v_SCm2 | 1×1016 m2/s2 | 8.808×1016 m2/s2 | **8.808×** |
+| v_SCm | 1$\times$108 m/s | 2.968$\times$108 m/s (0.99c) | 2.968$\times$ |
+| v_SCm2 | 1$\times$1016 m2/s2 | 8.808$\times$1016 m2/s2 | **8.808$\times$** |
 
-The velocity-squared amplification factor is **8.808×**, meaning all `Ereact` calculations
+The velocity-squared amplification factor is **8.808$\times$**, meaning all `Ereact` calculations
 using the prior value are underestimated by approximately one order of magnitude.
 
 ---
@@ -112,7 +112,7 @@ E_{\text{react}}^{\text{new}} = \frac{(1\times10^{-23})(8.808\times10^{16})}{1\t
 e^{0} = 8.808\times10^{16} \text{ J/m}^3
 $$
 
-The reactive energy increases by a factor of **8.808×** across all systems.
+The reactive energy increases by a factor of **8.808$\times$** across all systems.
 
 ---
 
@@ -145,10 +145,10 @@ const double num_strings = 1e9;    // String count
 ## 6. Implications for UQFF Pipeline
 
 ### 6.1 Affected Equations
-1. **Ereact term:** All systems using `v_SCm2` scaling see 8.808× amplification
+1. **Ereact term:** All systems using `v_SCm2` scaling see 8.808$\times$ amplification
 2. **Compressed MUGE:** The `v_SCm2/c2` relativistic correction factor changes from
    `0.1111` (old) to `0.9801` (new) — approaching unity
-3. **Lorentz correction:** With v=0.99c, the Lorentz factor γ=7.089 is now accessible
+3. **Lorentz correction:** With v=0.99c, the Lorentz factor $\gamma$=7.089 is now accessible
    for relativistic corrections in jet-class systems
 
 ### 6.2 Calibration Compatibility
@@ -165,15 +165,15 @@ not the SCm velocity channel.
 | Reference | Connection |
 |-----------|------------|
 | PAPER_374 | J1610+1811 jet physics providing the v=0.99c basis |
-| PAPER_375 | UQFF Wormhole/Meissner integration using γ=7.089 |
-| PAPER_341 | κ=0.0005/day calibration (unchanged by this update) |
+| PAPER_375 | UQFF Wormhole/Meissner integration using $\gamma$=7.089 |
+| PAPER_341 | $\kappa$=0.0005/day calibration (unchanged by this update) |
 | PAPER_372 | Compressed MUGE 8-term base (Ereact channel) |
 
 ---
 
 ## 8. Canonical Value (All Future Implementations)
 
-**v_SCm = 0.99c = 2.968×108 m/s** is the canonical Superconductive medium velocity.
+**v_SCm = 0.99c = 2.968$\times$108 m/s** is the canonical Superconductive medium velocity.
 
 All UQFF Python and C++ implementations should use:
 ```python
@@ -190,8 +190,8 @@ double v_SCm = 0.99 * c;  // = 2.968e8 m/s
 
 **Discovery Class:** Parameter Formalization — First explicit canonical assignment of `v_SCm=0.99c` 
 **Distinct from:** PAPER_374 (J1610 jet observational context); PAPER_375 (Meissner/wormhole use of
-γ)  
-**Impact:** 8.808× amplification of all Ereact-channel UQFF calculations
+$\gamma$)  
+**Impact:** 8.808$\times$ amplification of all Ereact-channel UQFF calculations
 
 ---
 
@@ -201,7 +201,7 @@ double v_SCm = 0.99 * c;  // = 2.968e8 m/s
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -220,7 +220,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -295,7 +295,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -306,13 +306,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -33,7 +33,7 @@ $$
 SN 1006 is the remnant of a Type Ia supernova that occurred approximately 1,019 years ago (~1006 CE)
 at a distance of ~7,000 light-years. Among the five Chandra dataset systems studied in Sessions
 72b–72d, SN 1006 serves as the **founding member of the UQFF Force Equivalence Class** — the first
-system to establish the benchmark F_U_Bi ˜ +2.11 × 102°8 N for all ?0 = 10?12 systems.
+system to establish the benchmark F_U_Bi ˜ +2.11 $\times$ 102°8 N for all ?0 = 10?12 systems.
 
 Three physically distinct phenomena are discoverable from this system:
 
@@ -43,7 +43,7 @@ structure of SN 1006. At velocities of ~3,000 km/s, ejecta knot coherence over 1
 a non-zero stabilising force beyond simple DPM-seeded dynamics — F_neutron provides this through
 Kozima neutron capture phonon coupling.
 
-2. **LENR dominance:** F_LENR ˜ 6.17 × 103? N (driven by ?_LENR = 2p × 1.25 THz and ?0 = 10?12
+2. **LENR dominance:** F_LENR ˜ 6.17 $\times$ 103? N (driven by ?_LENR = 2p $\times$ 1.25 THz and ?0 = 10?12
 rad/s) overwhelms all other terms by ~33 orders of magnitude, confirming the LENR term as the
 dominant gravitational force in the ?0 = 10?12 regime.
 
@@ -58,13 +58,13 @@ physics governs.
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
 | Distance | d | ~7,000 | ly | Chandra 2023 |
-| Age | t | 3.213 × 101° | s (~1,019 yr) | Since 1006 CE |
-| Ejecta mass | M | ~1 M_sun = 1.989 × 1031 | kg | Type Ia model |
-| Remnant radius | r | 6.17 × 1016 | m (~20 ly) | Chandra imaging |
+| Age | t | 3.213 $\times$ 101° | s (~1,019 yr) | Since 1006 CE |
+| Ejecta mass | M | ~1 M_sun = 1.989 $\times$ 1031 | kg | Type Ia model |
+| Remnant radius | r | 6.17 $\times$ 1016 | m (~20 ly) | Chandra imaging |
 | X-ray luminosity | L_X | 1032 | W | Chandra 2023 |
 | Magnetic field | B0 | 10-5 | T | Shocked shell |
 | System frequency | ?0 | 10?12 | rad/s | UQFF canonical |
-| Ejecta knot velocity | v_knot | 3,000 km/s = 3 × 106 | m/s | Chandra/JWST 2023 |
+| Ejecta knot velocity | v_knot | 3,000 km/s = 3 $\times$ 106 | m/s | Chandra/JWST 2023 |
 | Gas temperature | T_gas | 106 | K | X-ray spectroscopy |
 
 ---
@@ -75,24 +75,24 @@ physics governs.
 
 $$
 \begin{aligned}
-  & DPM_resonance = 2 · µ_B · B0 / (h · ?0) \\
-  & = 2 × 9.274e-24 × 1e-5 / (1.0546e-34 × 1e-12) \\
-  & ˜ 1.76 × 103
+  & DPM_resonance = 2 \cdot µ_B \cdot B0 / (h \cdot ?0) \\
+  & = 2 \times 9.274e-24 \times 1e-5 / (1.0546e-34 \times 1e-12) \\
+  & ˜ 1.76 \times 103
 \end{aligned}
 $$
 
-This is the canonical SN 1006 DPM value. As PAPER_251 will show, this is 100× smaller than the Eta
+This is the canonical SN 1006 DPM value. As PAPER_251 will show, this is 100$\times$ smaller than the Eta
 Carinae value — yet both produce the same F_U_Bi.
 
 ### 2.2 LENR Dominant Force
 
 $$
 \begin{aligned}
-  & ?_LENR = 2p × 1.25 × 1012 = 7.854 × 1012 rad/s   [1.25 THz phonon] \\
-  & F_LENR = k_LENR × (?_LENR / ?0)2 \\
-  & = 1 × 10?1° × (7.854×1012 / 1×10?12)2 \\
-  & = 1 × 10?1° × 6.17 × 104? \\
-  & ˜ 6.17 × 103? N
+  & ?_LENR = 2p \times 1.25 \times 1012 = 7.854 \times 1012 rad/s   [1.25 THz phonon] \\
+  & F_LENR = k_LENR \times (?_LENR / ?0)2 \\
+  & = 1 \times 10?1° \times (7.854\times1012 / 1\times10?12)2 \\
+  & = 1 \times 10?1° \times 6.17 \times 104? \\
+  & ˜ 6.17 \times 103? N
 \end{aligned}
 $$
 
@@ -104,16 +104,16 @@ the dominant contributor to the F_U_Bi_i integrand.
 The knot velocity of 3,000 km/s implies a kinetic energy density:
 $$
 \begin{aligned}
-  & E_knot = 0.5 × ?_gas × v_knot2 \\
-  & = 0.5 × 10?23 × (3×106)2 \\
-  & = 4.5 × 10?11 J/m3
+  & E_knot = 0.5 \times ?_gas \times v_knot2 \\
+  & = 0.5 \times 10?23 \times (3\times106)2 \\
+  & = 4.5 \times 10?11 J/m3
 \end{aligned}
 $$
 
 For coherent knot structures to persist over 1,019 years against diffusion and ISM ram pressure, the
 UQFF stabilising force must balance the ram pressure `?_ISM × v_knot2`. The neutron drop term:
 $$
-F_neutron = k_neutron × s_n = 101° × 10-4 = 106 N
+F_neutron = k_neutron \times s_n = 101° \times 10-4 = 106 N
 $$
 
 provides this coherence through Kozima-model neutron capture phonon coupling at the knot boundary.
@@ -125,18 +125,18 @@ filamentary structures.
 The quadratic stability condition `a·x2 + b·x + c = 0` yields:
 $$
 \begin{aligned}
-  & a = μ_s∇(M_s/r) ˜ 3.5 × 10?11 m/s2 \\
-  & b = 4.72 × 10?3   [canonical coefficient] \\
-  & c = -F0 + ?_vac · DPM_stab = -1.83×1071 + 7.09×10?38 ˜ -1.83×1071 \\
-  & x2 ˜ (F0 - ?_vac·DPM_stab) / b  ˜ 3.88 × 1073 m
+  & a = \mu_s\nabla(M_s/r) ˜ 3.5 \times 10?11 m/s2 \\
+  & b = 4.72 \times 10?3   [canonical coefficient] \\
+  & c = -F0 + ?_vac \cdot DPM_stab = -1.83\times1071 + 7.09\times10?38 ˜ -1.83\times1071 \\
+  & x2 ˜ (F0 - ?_vac\cdotDPM_stab) / b  ˜ 3.88 \times 1073 m
 \end{aligned}
 $$
 
 The F_U_Bi_i integral:
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = integrand_total × |x2| \\
-  & Paper benchmark: \text{F\_U\_Bi} ˜ +2.11 × 102°8 N   [positive buoyancy]
+  & \text{F\_U\_Bi\_i} = integrand_total \times |x2| \\
+  & Paper benchmark: \text{F\_U\_Bi} ˜ +2.11 \times 102°8 N   [positive buoyancy]
 \end{aligned}
 $$
 
@@ -145,9 +145,9 @@ $$
 ## 3. Force Equivalence Class Theorem (Founding Statement)
 
 **Theorem (UQFF Equivalence Class — SN 1006 Founding Member):** Any astrophysical system
-characterised by ?0 = 10?12 rad/s will produce F_U_Bi ˜ +2.11 × 102°8 N regardless of mass M,
+characterised by ?0 = 10?12 rad/s will produce F_U_Bi ˜ +2.11 $\times$ 102°8 N regardless of mass M,
 luminosity L_X, age t, magnetic field B0, or ejecta density ?. The ?0 parameter gates the buoyancy
-sector through F_LENR = k_LENR·(?_LENR/?0)2, which overwhelms all other terms by = 33 orders.
+sector through F_LENR = k_LENR$\cdot$(?_LENR/?0)2, which overwhelms all other terms by = 33 orders.
 
 SN 1006 is the **founding member** of this equivalence class. PAPER_251 (Eta Carinae), PAPER_252
 (Chandra Archive), and PAPER_254 (Kepler SNR 1604) confirm membership; PAPER_253 (Sgr A*, ?0 =
@@ -158,7 +158,7 @@ SN 1006 is the **founding member** of this equivalence class. PAPER_251 (Eta Car
 ## 4. Observational Predictions / Validation
 
 - **JWST NIRCam/MIRI:** SN 1006 knot morphology at 3.6–24 µm traces the F_neutron coherence scale (~101 m); predicted knot lifetime > 105 yr from UQFF stabilisation.
-- **Chandra ACIS-S:** X-ray spectral hardness ratio at knot positions should reflect the DPM_resonance = 1.76×103 coupling; spatial variation in the Fe Ka line maps to s_n variation.
+- **Chandra ACIS-S:** X-ray spectral hardness ratio at knot positions should reflect the DPM_resonance = 1.76$\times$103 coupling; spatial variation in the Fe Ka line maps to s_n variation.
 - **F_rel threshold:** The ?0 at which F_rel becomes significant is `?0_crit ˜ 10?14 rad/s` — SN 1006 with ?0 = 10?12 is safely sub-critical, confirming the low-energy regime.
 
 ---
@@ -184,7 +184,7 @@ SN 1006 is the **founding member** of this equivalence class. PAPER_251 (Eta Car
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -203,7 +203,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -226,7 +226,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -313,7 +313,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.179 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -324,13 +324,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

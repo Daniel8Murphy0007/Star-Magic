@@ -53,10 +53,10 @@ All MUGE terms are shown to yield units of m/s^2 (acceleration).
 | Step 10 (Newton projection) | G*M/r^2 | m^3/(kg*s^2) x kg / m^2 = m/s^2 PASS |
 | Expansion | (1 + H_0*t) [dimensionless] | multiplier PASS |
 | Super_adj | (1 - B/Bcrit) [dimensionless] | multiplier PASS |
-| Cosm | Λ*c^2/3 | m^{-}2 x (m/s)^2 = s^{-}2*m^{-}1 [contextual] |
-| Quantum | (hbar/ΔxΔp) x integral ψ*Ĥψ dV x (2π/t_Hubble) | J*s / (kg*m^2/s) x J x s^{-}1 [scaled to m/s^2] |
-| Fluid | ρ_fluid*V*g_local | kg/m^3 x m^3 x m/s^2 = kg*m/s^2 [scaled] |
-| Perturbation | (M+M_DM)*(δρ/ρ + 3μ_s∇(M_s/r)/r) | kg x m/s^2 ÷ kg = m/s^2 ÷ kg [contextual] |
+| Cosm | $\Lambda$*c^2/3 | m^{-}2 x (m/s)^2 = s^{-}2*m^{-}1 [contextual] |
+| Quantum | (hbar/$\Delta$x$\Delta$p) x integral $\psi$*Ĥ$\psi$ dV x (2$\pi$/t_Hubble) | J*s / (kg*m^2/s) x J x s^{-}1 [scaled to m/s^2] |
+| Fluid | $\rho$_fluid*V*g_local | kg/m^3 x m^3 x m/s^2 = kg*m/s^2 [scaled] |
+| Perturbation | (M+M_DM)*($\delta$$\rho$/$\rho$ + 3$\mu$_s$\nabla$(M_s/r)/r) | kg x m/s^2 $\div$ kg = m/s^2 $\div$ kg [contextual] |
 
 **Resonance MUGE terms (all scale as m/s^2 through Evac_neb normalization):**
 
@@ -115,13 +115,13 @@ $$
 g_adj = g_base x exp(-B/B_crit)
 $$
 
-Physical basis: London penetration depth λ_L ~  1/√(n_s), where n_s is superfluid
+Physical basis: London penetration depth $\lambda$_L ~  1/$\sqrt{}$(n_s), where n_s is superfluid
 carrier density. The exponential form applies for type-II superconductors where
 the magnetic field partially penetrates (Abrikosov vortex lattice).
 
 At B = Bcrit:
 - Linear form: factor = 0 (exact quench)
-- Exponential form: factor = e^{-}1 ≈ 0.368 (gradual suppression, physically correct)
+- Exponential form: factor = e^{-}1 $\approx$ 0.368 (gradual suppression, physically correct)
 
 ---
 
@@ -131,14 +131,14 @@ At B = Bcrit:
 
 **Observed:** X-ray flare timescales 10-100 days (Chandra, NuSTAR)
 **UQFF Prediction:** Ereact = 1046 x exp(-0.0005 x t)
-  At t=10 days:   Ereact ≈ 1046 x exp(-5x10^{-}3) ≈ 1046 x 0.995 = 1041 J/reaction
-  At t=100 days:  Ereact ≈ 1046 x exp(-0.05) ≈ 1046 x 0.951 = 995 J/reaction
-  Flare active while Ereact > threshold: ≈ 10-100 day window PASS
+  At t=10 days:   Ereact $\approx$ 1046 x exp(-5x10^{-}3) $\approx$ 1046 x 0.995 = 1041 J/reaction
+  At t=100 days:  Ereact $\approx$ 1046 x exp(-0.05) $\approx$ 1046 x 0.951 = 995 J/reaction
+  Flare active while Ereact > threshold: $\approx$ 10-100 day window PASS
 
 ### 6.2 Sagittarius A* (Sgr A*)
 
 **Observed:** Accretion rate ~10^{-}8 MM_sun/yr (Event Horizon Telescope)
-**UQFF Prediction:** resonance_MUGE(Sgr A*) ≈ 4.105e29 m/s^2
+**UQFF Prediction:** resonance_MUGE(Sgr A*) $\approx$ 4.105e29 m/s^2
   This extreme acceleration in the innermost accretion region is consistent with
   the high-luminosity flares observed by EHT in 2022-2025.
 
@@ -161,7 +161,7 @@ $$
 \begin{aligned}
   & g(r,t) = [GM(t)/r^2 * (1+H(t,z)) * exp(-B(t)/Bcrit) * (1+Fenv(t)) \\
   & + SigmaUgi + Lambdac^2/3 + hbar/DeltaxDeltap * integralpsi*Ĥpsi dV * 2pi/tHubble \\
-  & + rhofluid*V*g + (Mvis+MDM)(deltarho/rho + 3μ_s∇(M_s/r)/r)] \\
+  & + rhofluid*V*g + (Mvis+MDM)(deltarho/rho + 3\mu_s\nabla(M_s/r)/r)] \\
   & + [aDPM/gamma + aTHz + avac_diff + asuper_freq + aaether_res \\
   & + Ug4i + aquantum_freq + aAether_freq + afluid_freq \\
   & + Osc_term + aexp_freq + fTRZ] \\
@@ -171,9 +171,9 @@ $$
 $$
 
 Where:
-- γ = 1/√(1-v^2/c^2)  (Lorentz factor for relativistic systems, γ ≈ 7.09 at v=0.99c)
+- $\gamma$ = 1/$\sqrt{}$(1-v^2/c^2)  (Lorentz factor for relativistic systems, $\gamma$ $\approx$ 7.09 at v=0.99c)
 - a_worm = f_worm * Evac_neb / (b^2 + r^2)  (wormhole coupling term, b=1.0 m)
-- δg = √(Σᵢ (δaᵢ)^2)  (total error propagation)
+- $\delta$g = $\sqrt{}$($\Sigma$i ($\delta$ai)^2)  (total error propagation)
 
 ---
 
@@ -182,11 +182,11 @@ Where:
 | Parameter | Value | Proof Context |
 |-----------|-------|--------------|
 | H_0 | 2.269e-18 s^{-}1 | Expansion factor baseline (matches Planck 2018) |
-| Λ | 1.1e-52 m^{-}2 | Cosmological constant (ΛCDM) |
+| $\Lambda$ | 1.1e-52 m^{-}2 | Cosmological constant ($\Lambda$CDM) |
 | hbar | 1.0546e-34 J*s | Quantum coherence integral |
 | tHubble | 4.35e17 s | Resonance amplification timescale |
 | Bcrit | 10^{1}1 T | Magnetar critical field (PAPER_372) |
-| fquantum | 1.445e-17 Hz | = 2π/tHubble (Hubble resonance) |
+| fquantum | 1.445e-17 Hz | = 2$\pi$/tHubble (Hubble resonance) |
 | Ereact(t=0) | 1046 J | Magnetar flare energy seed |
 | kappa | 0.0005 day^{-}1 | SCm reactivity decay, matches 10-100 day flare window |
 
@@ -211,7 +211,7 @@ Where:
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -297,7 +297,7 @@ Since $p_{\rm DVP} = 59$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **Q/ω_0** (quality factor damping):
+The BSH saturation timescale for this sector is **Q/$\omega$_0** (quality factor damping):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
@@ -314,7 +314,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.151 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -325,13 +325,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

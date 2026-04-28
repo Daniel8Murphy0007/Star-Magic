@@ -24,9 +24,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 NGC 1275 (Perseus A) is the central dominant galaxy of the Perseus cluster, hosting a 800 million MM_sun
 SMBH and a network of magnetised cold filaments extending up to 100 kpc. This paper derives the UQFF
-cluster gravity at r ≈ 30 kpc incorporating AGN feedback suppression F_BH(t), magnetic filament
+cluster gravity at r $\approx$ 30 kpc incorporating AGN feedback suppression F_BH(t), magnetic filament
 support acceleration a_fil, Hubble expansion at z = 0.0176, and merger tidal forcing from infalling
-sub-clusters. The result, g_NGC1275 ≈ 3.160×10-5 m/s2, is consistent with Chandra X-ray cavity
+sub-clusters. The result, g_NGC1275 $\approx$ 3.160$\times$10-5 m/s2, is consistent with Chandra X-ray cavity
 kinematics.
 
 ---
@@ -36,8 +36,8 @@ kinematics.
 The Perseus cluster is one of the most X-ray luminous clusters in the sky. NGC 1275 at its centre
 exhibits:
 - Total cluster mass: ~1012 MM_sun (visible + DM)
-- Central SMBH: 8×108 MM_sun
-- ~109 MM_sun in cold Hα filaments at T ≈ 104 K
+- Central SMBH: 8$\times$108 MM_sun
+- ~109 MM_sun in cold H$\alpha$ filaments at T $\approx$ 104 K
 - AGN jet lobes inflating X-ray cavities at ~0.02c
 - Redshift z = 0.0176
 
@@ -50,14 +50,14 @@ T). UQFF models the effective mass-weighted acceleration at r = 30 kpc.
 
 $$
 \begin{aligned}
-  & g_NGC1275(r, t) = [G·M_total(t) / r2] × (1 + H(z)) × (1 − B_fil/B_crit) \\
-  & × (1 − F_BH(t)) \\
+  & g_NGC1275(r, t) = [G\cdotM_total(t) / r2] \times (1 + H(z)) \times (1 - B_fil/B_crit) \\
+  & \times (1 - F_BH(t)) \\
   & + a_fil \\
-  & + q·(v_merger × B_fil) × A_aeth × A_scale \\
-  & M_total(t) = M_cluster + M_SMBH − ΔM_jet × F_BH(t) \\
-  & F_BH(t) = F_0 × (1 − exp(−t / τ_BH))   [AGN feedback suppression] \\
-  & a_fil = (B_fil2 × V_fil) / (2·μ_0 × M_filament × r)   [magnetic support] \\
-  & H(z=0.0176) = 70 × sqrt(0.3×(1.0176)3 + 0.7) ≈ 70.56 km/s/Mpc
+  & + q\cdot(v_merger \times B_fil) \times A_aeth \times A_scale \\
+  & M_total(t) = M_cluster + M_SMBH - \DeltaM_jet \times F_BH(t) \\
+  & F_BH(t) = F_0 \times (1 - exp(-t / \tau_BH))   [AGN feedback suppression] \\
+  & a_fil = (B_fil2 \times V_fil) / (2\cdot\mu_0 \times M_filament \times r)   [magnetic support] \\
+  & H(z=0.0176) = 70 \times sqrt(0.3\times(1.0176)3 + 0.7) \approx 70.56 km/s/Mpc
 \end{aligned}
 $$
 
@@ -67,15 +67,15 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Total cluster mass | M_total | 1.991×1042 | kg (1012+8×108 MM_sun) |
-| Evaluation radius | r | 9.46×1020 | m (~30 kpc) |
-| SMBH mass | M_SMBH | 1.592×1039 | kg (8×108 MM_sun) |
+| Total cluster mass | M_total | 1.991$\times$1042 | kg (1012+8$\times$108 MM_sun) |
+| Evaluation radius | r | 9.46$\times$1020 | m (~30 kpc) |
+| SMBH mass | M_SMBH | 1.592$\times$1039 | kg (8$\times$108 MM_sun) |
 | AGN feedback amplitude | F_0 | 0.10 | — |
-| AGN feedback timescale | τ_BH | 3.156×1015 | s (100 Myr) |
-| Filament B-field | B_fil | 1.00×10-8 | T |
-| Filament volume | V_fil | 1.42×1050 | m3 |
-| Filament mass | M_filament | 1.989×1036 | kg (~106 MM_sun) |
-| Merger velocity | v_merger | 3.00×106 | m/s |
+| AGN feedback timescale | $\tau$_BH | 3.156$\times$1015 | s (100 Myr) |
+| Filament B-field | B_fil | 1.00$\times$10-8 | T |
+| Filament volume | V_fil | 1.42$\times$1050 | m3 |
+| Filament mass | M_filament | 1.989$\times$1036 | kg (~106 MM_sun) |
+| Merger velocity | v_merger | 3.00$\times$106 | m/s |
 | Aether factor | A_aeth | 11 | — |
 | Scale factor | A_scale | 10-12 | — |
 | Evaluation epoch | t | 50 Myr | — |
@@ -87,19 +87,19 @@ $$
 
 $$
 \begin{aligned}
-  & t = 50×106 × 3.156×107 = 1.578×1015 s \\
-  & F_BH(t) = 0.1 × (1 − exp(−1.578×1015/3.156×1015)) \\
-  & = 0.1 × (1 − exp(−0.5)) ≈ 0.1 × 0.3935 = 0.03935 \\
-  & (1 − F_BH) ≈ 0.96065 \\
-  & H(z=0.0176) = 70 × sqrt(0.3 × 1.0539 + 0.7) ≈ 70.56 km/s/Mpc \\
-  & a_fil = B2·V / (2·μ_0·M_fil·r) \\
-  & = (10-8)2 × 1.42×1050 / (2 × 4π×10-7 × 1.989×1036 × 9.46×1020) \\
-  & ≈ 2.840×10-9 m/s2 \\
-  & g_grav = G × 1.991×1042 / (9.46×1020)2 \\
-  & × (1 + H_z) × 0.96065 \\
-  & ≈ 1.484×10-8 × 0.96065 \\
-  & ≈ 1.426×10-8 m/s2   [gravity — minor] \\
-  & g_NGC1275 ≈ 3.160×10-5 m/s2  [EM+filament terms dominant]
+  & t = 50\times106 \times 3.156\times107 = 1.578\times1015 s \\
+  & F_BH(t) = 0.1 \times (1 - exp(-1.578\times1015/3.156\times1015)) \\
+  & = 0.1 \times (1 - exp(-0.5)) \approx 0.1 \times 0.3935 = 0.03935 \\
+  & (1 - F_BH) \approx 0.96065 \\
+  & H(z=0.0176) = 70 \times sqrt(0.3 \times 1.0539 + 0.7) \approx 70.56 km/s/Mpc \\
+  & a_fil = B2\cdotV / (2\cdot\mu_0\cdotM_fil\cdotr) \\
+  & = (10-8)2 \times 1.42\times1050 / (2 \times 4\pi\times10-7 \times 1.989\times1036 \times 9.46\times1020) \\
+  & \approx 2.840\times10-9 m/s2 \\
+  & g_grav = G \times 1.991\times1042 / (9.46\times1020)2 \\
+  & \times (1 + H_z) \times 0.96065 \\
+  & \approx 1.484\times10-8 \times 0.96065 \\
+  & \approx 1.426\times10-8 m/s2   [gravity — minor] \\
+  & g_NGC1275 \approx 3.160\times10-5 m/s2  [EM+filament terms dominant]
 \end{aligned}
 $$
 
@@ -108,21 +108,21 @@ $$
 ## 5. Available Equations
 
 - g_NGC1275(r, t) — cluster gravity (primary)
-- F_BH(t) = F_0·(1−exp(−t/τ_BH)) — AGN suppression
+- F_BH(t) = F_0$\cdot$(1-exp(-t/$\tau$_BH)) — AGN suppression
 - a_fil — filament magnetic support
-- H(z) = H_0·sqrt(Ω_m(1+z)3+Ω_Λ) — Hubble at z
-- X-ray cavity power: P_cav = 4·p_cav·V_cav/t_sound
-- Cooling time: t_cool = (3/2)·n·k_B·T / (n2·Λ(T))
-- Bondi accretion rate: M_dot_B = π·G2·M_BH2·ρ_∞ / c_s3
+- H(z) = H_0$\cdot$sqrt($\Omega$_m(1+z)3+$\Omega$_$\Lambda$) — Hubble at z
+- X-ray cavity power: P_cav = 4$\cdot$p_cav$\cdot$V_cav/t_sound
+- Cooling time: t_cool = (3/2)$\cdot$n$\cdot$k_B$\cdot$T / (n2$\cdot$$\Lambda$(T))
+- Bondi accretion rate: M_dot_B = $\pi$$\cdot$G2$\cdot$M_BH2$\cdot$$\rho$_$\infty$ / c_s3
 
 ---
 
 ## 6. Conclusions
 
-NGC 1275 UQFF gravity at r ≈ 30 kpc yields g ≈ 3.160×10-5 m/s2 at t = 50 Myr with AGN feedback
-reducing the naïve gravitational value by ~4%. The filament magnetic support term a_fil = 2.840×10-9
+NGC 1275 UQFF gravity at r $\approx$ 30 kpc yields g $\approx$ 3.160$\times$10-5 m/s2 at t = 50 Myr with AGN feedback
+reducing the naïve gravitational value by ~4%. The filament magnetic support term a_fil = 2.840$\times$10-9
 m/s2 and Aether EM corrections together dominate over the bare cluster gravity. Hubble expansion at
-z = 0.0176 adds H(z) ≈ 70.56 km/s/Mpc. PAPER_760, CP4 class #344. v5.39.
+z = 0.0176 adds H(z) $\approx$ 70.56 km/s/Mpc. PAPER_760, CP4 class #344. v5.39.
 
 ---
 
@@ -162,7 +162,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -181,7 +181,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -291,7 +291,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.116 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -302,13 +302,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

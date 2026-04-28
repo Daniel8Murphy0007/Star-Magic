@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_297
-title: "UQFF Superluminal Hubble Expansion Ratio η_exp = 3.328 > 1"
+title: "UQFF Superluminal Hubble Expansion Ratio $\eta$_exp = 3.328 > 1"
 session: 84
 date: 2026-03-17
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [Hubble, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_297 — UQFF Superluminal Hubble Expansion Ratio η_exp = 3.328 > 1
+# PAPER_297 — UQFF Superluminal Hubble Expansion Ratio $\eta$_exp = 3.328 > 1
 **Author:** Daniel T. Murphy
 **Date:** March 17, 2026
 ## First UQFF Module Where v_exp/c > 1 at System Boundary
@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Module:** `UNIVERSE_DIAMETER_UQFF_MODULE.cpp` (26th C++ UQFF module — Observable Universe as
 System)  
 **Copyright:** Daniel T. Murphy, March 17, 2026  
-**Classification:** Unique Physics — First UQFF Superluminal Expansion Parameter (η_exp > 1)  
+**Classification:** Unique Physics — First UQFF Superluminal Expansion Parameter ($\eta$_exp > 1)  
 
 ---
 
@@ -38,11 +38,11 @@ encoding the cosmological property that the observable universe spans **3.328 Hu
 ## 1. Physical Setup
 
 **System:** Observable Universe  
-**Observable universe radius:** r_obs = 4.4×1026 m  
-**Hubble constant:** H₀ = 70 km/s/Mpc = 2.269×10-18 s-1  
-**Speed of light:** c = 3.0×108 m/s  
-**Hubble sphere (Hubble radius):** r_H = c/H₀ = 1.322×1026 m = 4.28 Gly  
-**Cosmic age:** t_H = 4.355×1017 s = 13.8 Gyr  
+**Observable universe radius:** r_obs = 4.4$\times$1026 m  
+**Hubble constant:** H0 = 70 km/s/Mpc = 2.269$\times$10-18 s-1  
+**Speed of light:** c = 3.0$\times$108 m/s  
+**Hubble sphere (Hubble radius):** r_H = c/H0 = 1.322$\times$1026 m = 4.28 Gly  
+**Cosmic age:** t_H = 4.355$\times$1017 s = 13.8 Gyr  
 
 ---
 
@@ -67,12 +67,12 @@ sphere where recession velocity equals `c`.
 The base gravity term with Hubble expansion coupling:
 $$a_{base}(t) = g_{base} \times (1 + H(z) \times t) = 3.447 \times 10^{-10} \times (1 + 2.269 \times 10^{-18} \times t)$$
 
-At t = t_H = 4.355×1017 s:
+At t = t_H = 4.355$\times$1017 s:
 $$a_{base}(t_H) = 3.447 \times 10^{-10} \times (1 + 0.988) = 3.447 \times 10^{-10} \times 1.988 = 6.854 \times 10^{-10} \text{ m/s}^2$$
 
 **Hubble expansion factor** `ξ_H = 1 + H₀ × t_H = 1.988`:
 
-This near-doubling factor (≈2) reflects that the UQFF base gravity **almost doubles** over the
+This near-doubling factor ($\approx$2) reflects that the UQFF base gravity **almost doubles** over the
 Hubble time when the Hubble coupling is included — a striking result confirming that the
 Universe-scale Hubble coupling is an O(1) effect (not a small correction).
 
@@ -80,7 +80,7 @@ Universe-scale Hubble coupling is an O(1) effect (not a small correction).
 
 ## 4. Superluminal Expansion in the EM Lorentz Term
 
-The EM Lorentz term explicitly incorporates η_exp:
+The EM Lorentz term explicitly incorporates $\eta$_exp:
 $$a_{EM} = \frac{q \cdot v_{exp} \cdot B_{cosmic}}{m_p} \times (1 + \eta_{exp}) \times \text{scale}_{EM}$$
 
 With `η_exp = 3.328`, the factor `(1 + η_exp) = 4.328` vs. `(1 + 1) = 2` for a subluminal system.
@@ -90,7 +90,7 @@ Numerically:
 $$a_{EM} = \frac{1.602 \times 10^{-19} \times 9.984 \times 10^8 \times 10^{-15}}{1.673 \times 10^{-27}} \times 4.328 \times 10^{-12}$$
 $$= 95.59 \times 4.328 \times 10^{-12} = 4.136 \times 10^{-10} \text{ m/s}^2$$
 
-The EM term (4.136×10-10 m/s2) is **comparable to the DPM-seeded base** (3.447×10-10 m/s2) — another
+The EM term (4.136$\times$10-10 m/s2) is **comparable to the DPM-seeded base** (3.447$\times$10-10 m/s2) — another
 first for UQFF modules.
 
 ---
@@ -100,28 +100,28 @@ first for UQFF modules.
 The superluminal recession velocity `v_exp > c` does NOT violate special relativity. This is a
 **coordinate velocity** (metric expansion), not a proper velocity between local inertial frames. In
 GR, the expansion of the universe allows coordinate distances to grow faster than c, as confirmed by
-the cosmological horizon structure. The Hubble-flow velocity η_exp > 1 is part of the cosmological
+the cosmological horizon structure. The Hubble-flow velocity $\eta$_exp > 1 is part of the cosmological
 metric, not a violation of local Lorentz invariance.
 
 Specifically, this corresponds to objects beyond the **Hubble sphere** (r > r_H) in comoving
-coordinates. For the observable universe at r = 4.4×1026 m with r_H = 1.322×1026 m, we are 3.33
+coordinates. For the observable universe at r = 4.4$\times$1026 m with r_H = 1.322$\times$1026 m, we are 3.33
 Hubble lengths out — solidly in the superluminal expansion regime.
 
 ---
 
-## 6. η_exp Parameter in UQFF Architecture
+## 6. $\eta$_exp Parameter in UQFF Architecture
 
-| Module | Session | r_obs (m) | v_exp/c (η_exp) | η_exp > 1 |
+| Module | Session | r_obs (m) | v_exp/c ($\eta$_exp) | $\eta$_exp > 1 |
 |--------|---------|-----------|-----------------|-----------|
 | SGR1745 | 65 | ~0.01 pc | ~0 (local) | No |
-| Pillars of Creation | 68 | 3.3×1017 | <<1 | No |
-| NGC1792 | 73 | 7.6×1020 | <<1 | No |
-| Andromeda | 75 | 1.04×1021 | <<1 | No |
-| HUDF (z=3.5) | 72g | 1.23×1027 | ~9 (co-moving) | Yes (but not UQFF param) |
-| **Universe Diameter** | **84** | **4.4×1026** | **3.328** | **Yes — FIRST explicit** |
+| Pillars of Creation | 68 | 3.3$\times$1017 | <<1 | No |
+| NGC1792 | 73 | 7.6$\times$1020 | <<1 | No |
+| Andromeda | 75 | 1.04$\times$1021 | <<1 | No |
+| HUDF (z=3.5) | 72g | 1.23$\times$1027 | ~9 (co-moving) | Yes (but not UQFF param) |
+| **Universe Diameter** | **84** | **4.4$\times$1026** | **3.328** | **Yes — FIRST explicit** |
 
 The key distinction: prior modules used H(z) as a correction factor, never explicitly computing or
-naming η_exp as a parameter. PAPER_297 establishes η_exp as a first-class UQFF parameter.
+naming $\eta$_exp as a parameter. PAPER_297 establishes $\eta$_exp as a first-class UQFF parameter.
 
 ---
 
@@ -130,7 +130,7 @@ naming η_exp as a parameter. PAPER_297 establishes η_exp as a first-class UQFF
 Define the **UQFF Hubble Horizon** as the radius where `η_exp = 1`:
 $$r_H = \frac{c}{H_0} = \frac{3 \times 10^8}{2.269 \times 10^{-18}} = 1.322 \times 10^{26} \text{ m} = 4.28 \text{ Gly}$$
 
-Objects beyond r_H recede superluminally. The observable universe (r_obs = 4.4×1026 m) extends to
+Objects beyond r_H recede superluminally. The observable universe (r_obs = 4.4$\times$1026 m) extends to
 3.328 r_H — confirming we can observe objects that are currently receding faster than light (their
 photons from early epochs can still reach us).
 
@@ -160,19 +160,19 @@ $$
 
 | Quantity | Symbol | Value | Unit |
 |----------|--------|-------|------|
-| Hubble recession velocity | v_exp | **9.984×108** | m/s |
-| Superluminal ratio | η_exp | **3.328 > 1** | dimensionless |
-| Hubble radius | r_H | 1.322×1026 | m |
+| Hubble recession velocity | v_exp | **9.984$\times$108** | m/s |
+| Superluminal ratio | $\eta$_exp | **3.328 > 1** | dimensionless |
+| Hubble radius | r_H | 1.322$\times$1026 | m |
 | Observable / Hubble ratio | r_obs/r_H | 3.328 | dimensionless |
-| Hubble expansion factor | ξ_H | **1.988 ≈ 2** | dimensionless |
-| EM term | a_EM | 4.136×10-10 | m/s2 |
+| Hubble expansion factor | $\xi$_H | **1.988 $\approx$ 2** | dimensionless |
+| EM term | a_EM | 4.136$\times$10-10 | m/s2 |
 
 ---
 
 *Copyright Daniel T. Murphy — UQFF Whitepaper PAPER_297 — Session 84, March 17, 2026*
 
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 
@@ -184,7 +184,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -287,7 +287,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.116 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

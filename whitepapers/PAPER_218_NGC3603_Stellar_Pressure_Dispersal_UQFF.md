@@ -46,14 +46,14 @@ From Document 11 of grok_share_7514fe:
 
 $$
 \begin{aligned}
-  & g_NGC3603(r, t) = (G·M(t))/r2 · (1+H_0·t) · (1-B/B_crit) · (1-P(t)) \\
+  & g_NGC3603(r, t) = (G\cdotM(t))/r2 \cdot (1+H_0\cdott) \cdot (1-B/B_crit) \cdot (1-P(t)) \\
   & + (Ug1 + Ug2 + Ug3 + Ug4) \\
   & + ?c2/3 \\
-  & + (?/v(?x·?p))·??*·H·? dV · (2p/t_Hubble) \\
-  & + q(v×B) + ?_fluid·V·g \\
-  & + 2A·cos(kx)·cos(?t) + (2p/13.8)·A·e^{i(kx-?t)} \\
-  & + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r) \\
-  & + ?·v_wind2
+  & + (?/v(?x\cdot?p))\cdot??*\cdotH\cdot? dV \cdot (2p/t_Hubble) \\
+  & + q(v\timesB) + ?_fluid\cdotV\cdotg \\
+  & + 2A\cdotcos(kx)\cdotcos(?t) + (2p/13.8)\cdotA\cdote^{i(kx-?t)} \\
+  & + (M_vis+M_DM)\cdot(d?/? + 3\mu_s\nabla(M_s/r)/r) \\
+  & + ?\cdotv_wind2
 \end{aligned}
 $$
 
@@ -85,9 +85,9 @@ P(t) is derived from the pressure balance at the cloud-cluster interface:
 
 $$
 \begin{aligned}
-  & P_stellar = ?·v_wind2 / r + ?·L_UV/(4pr2c)  [stellar pressure outward] \\
-  & P_gravity  = G·M(t)·?_gas/r2                  [gravitational inward] \\
-  & P(t) = P_stellar / P_gravity = (?·v_wind2·r + ?·L_UV/(4pc)) / (G·M·?_gas)
+  & P_stellar = ?\cdotv_wind2 / r + ?\cdotL_UV/(4pr2c)  [stellar pressure outward] \\
+  & P_gravity  = G\cdotM(t)\cdot?_gas/r2                  [gravitational inward] \\
+  & P(t) = P_stellar / P_gravity = (?\cdotv_wind2\cdotr + ?\cdotL_UV/(4pc)) / (G\cdotM\cdot?_gas)
 \end{aligned}
 $$
 
@@ -115,9 +115,9 @@ Following the 29-document compression framework (Section 6, grok_share_7514fe):
 
 $$
 \begin{aligned}
-  & g_NGC3603 = (G·M(t))/r2 · (1+H(t,z)) · (1-B(t)/B_crit) · (1-P(t)) · (1+F_env(t)) \\
+  & g_NGC3603 = (G\cdotM(t))/r2 \cdot (1+H(t,z)) \cdot (1-B(t)/B_crit) \cdot (1-P(t)) \cdot (1+F_env(t)) \\
   & + (Ug1+Ug2+Ug3') + ?c2/3 + QM_total + fluid \\
-  & + ?·v_wind2
+  & + ?\cdotv_wind2
 \end{aligned}
 $$
 
@@ -128,22 +128,22 @@ Where `H(t,z) = H_0·v(0.3·(1+z)3 + 0.7)` and `F_env(t)` captures stellar evolu
 ## 4. Numerical Validation
 
 **NGC 3603 system parameters:**
-- r = 5.0×1018 m (˜163 pc, cluster core radius from Harayama et al.)
-- M = 3.18×1034 kg (1.6×104 M?, stellar mass)
-- B = 1×10?? T (molecular cloud field)
+- r = 5.0$\times$1018 m (˜163 pc, cluster core radius from Harayama et al.)
+- M = 3.18$\times$1034 kg (1.6$\times$104 M?, stellar mass)
+- B = 1$\times$10?? T (molecular cloud field)
 - P(t) = 0.15 (15% pressure dispersal at age 3 Myr)
-- v_wind = 2×106 m/s (average O-star wind terminal velocity)
+- v_wind = 2$\times$106 m/s (average O-star wind terminal velocity)
 
 **Results:**
 
 $$
 \begin{aligned}
-  & g_base = G·M/r2 · (1+H_0·t) · (1-B/B_crit) · (1-P) \\
-  & = 6.67e-11 · 3.18e34 / (5e18)2 · 1.000067 · 0.9999977 · 0.85 \\
-  & g_base ˜ 8.52×10-52 m/s2  (gravitational acceleration at 163 pc) \\
-  & ?·v_wind2 = 1.67×10?21 · (2×106)2 \\
-  & = 6.68×10?? Pa  (ram pressure) \\
-  & Net g_NGC3603 ˜ g_base + \text{F\_wind\_ram}/r ˜ 8.52×10-52  (gravity dominated at this scale)
+  & g_base = G\cdotM/r2 \cdot (1+H_0\cdott) \cdot (1-B/B_crit) \cdot (1-P) \\
+  & = 6.67e-11 \cdot 3.18e34 / (5e18)2 \cdot 1.000067 \cdot 0.9999977 \cdot 0.85 \\
+  & g_base ˜ 8.52\times10-52 m/s2  (gravitational acceleration at 163 pc) \\
+  & ?\cdotv_wind2 = 1.67\times10?21 \cdot (2\times106)2 \\
+  & = 6.68\times10?? Pa  (ram pressure) \\
+  & Net g_NGC3603 ˜ g_base + \text{F\_wind\_ram}/r ˜ 8.52\times10-52  (gravity dominated at this scale)
 \end{aligned}
 $$
 
@@ -160,7 +160,7 @@ In the compressed 29-document framework, NGC 3603 is the ONLY system where the p
 terms). This creates a unique product form:
 
 $$
-(1+H_0·t) · (1-B/B_crit) · (1-P(t))
+(1+H_0\cdott) \cdot (1-B/B_crit) \cdot (1-P(t))
 $$
 
 This triple product encodes:
@@ -325,7 +325,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.142 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -336,13 +336,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -351,7 +351,7 @@ bridge.*
 ## References
 
 1. grok_share_7514fe.txt — Document 11: NGC 3603 g_NGC3603 equation
-2. Harayama et al. (2008) — NGC 3603 stellar mass function, M_total = 1.6×104 M?
+2. Harayama et al. (2008) — NGC 3603 stellar mass function, M_total = 1.6$\times$104 M?
 3. Portegies Zwart et al. (2010) — Young massive star clusters: pressure-driven dispersal
 4. Crowther et al. (2016) — R136 cluster: winds Q(H°) = 1051 s-1
 5. CondensedPhysics3.py — `NGC3603StellarPressureModulationCalculator` (Session 55)

@@ -23,7 +23,7 @@ This paper establishes the **High-Energy Dataset Validation Framework** for UQFF
 calibration using four major multi-messenger datasets: CERN LHC (ATLAS 13 TeV + CMS 7 TeV),
 GWOSC O4a (including GW231123 225 M_sol merger), EHT Sgr A* 2017, and Chandra CSC 2.1.
 Each dataset constrains a specific UQFF MUGE term. A new observable—LHC collision energy
-E_coll = 13 TeV—enters the quantum uncertainty term as ΔE_vac, and the Osc_term becomes
+E_coll = 13 TeV—enters the quantum uncertainty term as $\Delta$E_vac, and the Osc_term becomes
 a variable parameter driven by GW O4 background amplitude.
 
 ---
@@ -32,18 +32,18 @@ a variable parameter driven by GW O4 background amplitude.
 
 | Dataset                     | Observable              | Target UQFF Term      | Updated Calibration        |
 |-----------------------------|-------------------------|-----------------------|-----------------------------|
-| ATLAS 13 TeV, 65 TB         | E_coll = 13 TeV         | g_quantum (ΔE_vac)    | ΔE_vac = 13 TeV/c2          |
-| CMS 7 TeV                   | Cross-sections          | ΔxΔp quantum bound    | ΔxΔp ≥ ℏ/2 confirmed       |
-| GWOSC O4a + GW231123        | GW background amplitude | Osc_term (variable)   | Osc_term = h_GW·ω_GW2      |
+| ATLAS 13 TeV, 65 TB         | E_coll = 13 TeV         | g_quantum ($\Delta$E_vac)    | $\Delta$E_vac = 13 TeV/c2          |
+| CMS 7 TeV                   | Cross-sections          | $\Delta$x$\Delta$p quantum bound    | $\Delta$x$\Delta$p $\geq$ ℏ/2 confirmed       |
+| GWOSC O4a + GW231123        | GW background amplitude | Osc_term (variable)   | Osc_term = h_GW$\cdot$$\omega$_GW2      |
 | EHT Sgr A* (2017)           | Shadow radius           | `a_aether_res`          | Re-calibrated `a_aether_res`  |
 | Chandra CSC 2.1             | X-ray magnetar spectra  | B/B_crit              | B confirmed for SGR 1745    |
-| arXiv axion/ALP papers      | ALP-photon coupling     | `a_Aether_freq`         | Dark energy coupling g_aγγ  |
+| arXiv axion/ALP papers      | ALP-photon coupling     | `a_Aether_freq`         | Dark energy coupling g_a$\gamma$$\gamma$  |
 
 ---
 
 ## 2. CERN LHC Quantum Uncertainty Calibration
 
-### 2.1 E_coll = 13 TeV → ΔE_vac
+### 2.1 E_coll = 13 TeV $\to$ $\Delta$E_vac
 
 From ATLAS Run 2 (2016–2018), E_coll = 13 TeV center-of-mass energy:
 
@@ -61,7 +61,7 @@ where $\Delta p_{LHC} = E_{coll}/(2c) = 6.5\,\text{TeV}/c$ for one beam.
 
 $$\Delta x \cdot \Delta p = \frac{\hbar}{2}: \quad \Delta p = 6.5\,\text{TeV}/c \implies \Delta x = \frac{\hbar c}{2 \times 6.5\,\text{TeV}} \approx 1.5\times10^{-20}\,\text{m}$$
 
-This is 105 × smaller than the proton radius, confirming deep sub-nuclear UQFF coupling
+This is 105 $\times$ smaller than the proton radius, confirming deep sub-nuclear UQFF coupling
 at collider energies.
 
 ---
@@ -76,7 +76,7 @@ In PAPER_146 §2.2, Osc_term was set to a literal constant.
 
 The O4a detector data (GWOSC, 2023-2024) provides:
 - GW background strain: $h_{GW} \approx 2.5 \times 10^{-24}$ Hz-1/2 (stochastic background)
-- Peak frequency: ω_GW ~ 2π × 100 Hz
+- Peak frequency: $\omega$_GW ~ 2$\pi$ $\times$ 100 Hz
 
 $$\boxed{Osc_{term} = h_{GW} \cdot \omega_{GW}^2 \cdot r^2 \cdot \frac{M}{M_{BH,merger}}}$$
 
@@ -91,7 +91,7 @@ UQFF predictions for future GW events.
 ## 4. EHT Sgr A* — a_aether_res Calibration
 
 The Event Horizon Telescope (2017) resolved the Sgr A* shadow diameter:
-- Observed shadow: 51.8 μas (theoretical for Kerr BH: 52±2 μas)
+- Observed shadow: 51.8 $\mu$as (theoretical for Kerr BH: 52$\pm$2 $\mu$as)
 - Shadow radius: $r_{shadow} = (2.6 \pm 0.1) \times R_{Schwarzschild}$
 
 This constrains the aether resonance term which contributes to the effective gravitational
@@ -106,19 +106,19 @@ where $\epsilon_{shadow} = (r_{obs} - r_{GR})/r_{GR} \approx 0.02$ (2% EHT preci
 ## 5. Chandra CSC — B/B_crit for Magnetars
 
 Chandra soft X-ray spectra for SGR 1745-2900 (2013-2023 campaign):
-- Confirmed B_surface = 2.3×1014 G = 2.3×1010 T
-- B_crit (quantum) = 4.4×1013 T
+- Confirmed B_surface = 2.3$\times$1014 G = 2.3$\times$1010 T
+- B_crit (quantum) = 4.4$\times$1013 T
 
 $$B/B_{crit} = 2.3\times10^{10} / 4.4\times10^{13} = 5.23\times10^{-4}$$
 
-→ MUGE suppression factor: $f_{super} = 1 - 5.23\times10^{-4} \approx 0.9995$
+$\to$ MUGE suppression factor: $f_{super} = 1 - 5.23\times10^{-4} \approx 0.9995$
 
-The magnetar is nearly unsuppressed → resonance MUGE dominates → consistent with
-PAPER_155 DPM-seeded emergence proof (β ≈ 1 for this B/B_crit ratio).
+The magnetar is nearly unsuppressed $\to$ resonance MUGE dominates $\to$ consistent with
+PAPER_155 DPM-seeded emergence proof ($\beta$ $\approx$ 1 for this B/B_crit ratio).
 
 ---
 
-## 6. ALP Dark Energy Coupling → a_Aether_freq
+## 6. ALP Dark Energy Coupling $\to$ a_Aether_freq
 
 Axion-Like Particle (ALP) photon coupling from arXiv papers (2023-2025):
 - CAST/ABRACADABRA constraint: $g_{a\gammagamma} < 6\times10^{-11}$ GeV-1
@@ -134,11 +134,11 @@ where $\omega_{ALP} = m_{ALP}c^2/\hbar \sim 10^{-22}$ to $10^{-12}$ Hz (fuzzy da
 
 | Parameter    | Old Value | New Value          | Calibrating Dataset   |
 |--------------|-----------|--------------------|-----------------------|
-| Osc_term     | const     | h_GW·ω_GW2·r2·M/m | GWOSC O4a             |
-| ΔE_vac       | undefined | 13 TeV / (1 fm)3   | ATLAS 13 TeV          |
-| `a_aether_res` | calibrated| ±2% EHT constraint | EHT Sgr A* 2017       |
+| Osc_term     | const     | h_GW$\cdot$$\omega$_GW2$\cdot$r2$\cdot$M/m | GWOSC O4a             |
+| $\Delta$E_vac       | undefined | 13 TeV / (1 fm)3   | ATLAS 13 TeV          |
+| `a_aether_res` | calibrated| $\pm$2% EHT constraint | EHT Sgr A* 2017       |
 | B/B_crit     | 2.3e10/4.4e13 | same confirmed | Chandra CSC 2.1      |
-| `a_Aether_freq`| constant  | g_aγγ·ρ_DM·c2·ω_ALP| arXiv ALP surveys    |
+| `a_Aether_freq`| constant  | g_a$\gamma$$\gamma$$\cdot$$\rho$_DM$\cdot$c2$\cdot$$\omega$_ALP| arXiv ALP surveys    |
 
 ---
 
@@ -184,7 +184,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -203,7 +203,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -280,7 +280,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.095 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -291,13 +291,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

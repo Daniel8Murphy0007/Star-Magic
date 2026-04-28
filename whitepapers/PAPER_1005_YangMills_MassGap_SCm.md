@@ -16,21 +16,21 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We compute the Yang-Mills mass gap Δ_YM through a BCS-like mechanism where the SCm phonon field
-provides the pairing interaction. The running coupling α_s(T) governs the gap magnitude above
+We compute the Yang-Mills mass gap $\Delta$_YM through a BCS-like mechanism where the SCm phonon field
+provides the pairing interaction. The running coupling $\alpha$_s(T) governs the gap magnitude above
 deconfinement.
 
 ## 1. Mass Gap Equation
 
-Δ_YM = Λ_QCD · exp(−1/(α_s(T) · N_c)) · S₂₆⁽3⁾
+$\Delta$_YM = $\Lambda$_QCD $\cdot$ exp(-1/($\alpha$_s(T) $\cdot$ N_c)) $\cdot$ S26(3)
 
-α_s(T) = α_s,0 / (1 + α_s,0 · b₀ · ln(T/T_c))
+$\alpha$_s(T) = $\alpha$_s,0 / (1 + $\alpha$_s,0 $\cdot$ b0 $\cdot$ ln(T/T_c))
 
-where b₀ = (11N_c − 2N_f)/(12π).
+where b0 = (11N_c - 2N_f)/(12$\pi$).
 
 ## 2. Results
 
-At T = 2×1012 K: Δ_YM = 9.96×10-292 J. The extremely small value reflects deep asymptotic freedom at
+At T = 2$\times$1012 K: $\Delta$_YM = 9.96$\times$10-292 J. The extremely small value reflects deep asymptotic freedom at
 high temperature.
 
 ## 3. Implementation
@@ -46,7 +46,7 @@ File: `scm_qgp_dynamics.py`, class `YangMillsMassGapCalc`. CP4 class #589.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -180,7 +180,7 @@ $$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i}
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ lattice resonance $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

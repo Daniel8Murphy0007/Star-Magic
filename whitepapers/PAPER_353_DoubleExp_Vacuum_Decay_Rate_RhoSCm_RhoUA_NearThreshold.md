@@ -10,27 +10,27 @@ tags: [vacuum, SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_353 — Double-Exponential Vacuum Decay Rate: ρ_SCm/ρ_UA Ratio with Near-Threshold Behavior
+# PAPER_353 — Double-Exponential Vacuum Decay Rate: $\rho$_SCm/$\rho$_UA Ratio with Near-Threshold Behavior
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF double-exponential vacuum decay rate with near-threshold (π − t → 0)
+**Classification:** FIRST UQFF double-exponential vacuum decay rate with near-threshold ($\pi$ - t $\to$ 0)
 behavior  
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
 A novel double-exponential decay rate formula is derived for UQFF vacuum energy channels,
-incorporating a near-threshold correction for the approach of t → π (the natural oscillation phase
-singularity). The rate is: Rate = (ρ_SCm/ρ_UA) · exp(−[SSq]·n/26 · exp(−(π − t))). The rho_ratio =
-ρ_SCm/ρ_UA = 0.1 establishes a 10:1 aether-to-superconductive vacuum density contrast, and the
-double-exponential structure ensures the rate approaches zero continuously as t → π (without a
+incorporating a near-threshold correction for the approach of t $\to$ $\pi$ (the natural oscillation phase
+singularity). The rate is: Rate = ($\rho$_SCm/$\rho$_UA) $\cdot$ exp(-[SSq]$\cdot$n/26 $\cdot$ exp(-($\pi$ - t))). The rho_ratio =
+$\rho$_SCm/$\rho$_UA = 0.1 establishes a 10:1 aether-to-superconductive vacuum density contrast, and the
+double-exponential structure ensures the rate approaches zero continuously as t $\to$ $\pi$ (without a
 singularity).
 
 ---
@@ -39,12 +39,12 @@ singularity).
 
 ### 2.1 Double-Exponential Decay Rate
 
-$$\mathrm{Rate}(n, t) = \frac{\rho_{\rm SCm}}{\rho_{\rm UA}} \cdot \exp!\left(-\frac{[SSq] \cdot n}{26} \cdot \exp(-(π - t))\right)$$
+$$\mathrm{Rate}(n, t) = \frac{\rho_{\rm SCm}}{\rho_{\rm UA}} \cdot \exp!\left(-\frac{[SSq] \cdot n}{26} \cdot \exp(-(\pi - t))\right)$$
 
 ### 2.2 Near-Threshold Behavior
 
-As t → π (oscillation phase approaches singularity):
-$$\exp(-(π - t)) \to \exp(0) = 1$$
+As t $\to$ $\pi$ (oscillation phase approaches singularity):
+$$\exp(-(\pi - t)) \to \exp(0) = 1$$
 
 $$\mathrm{Rate}_{\rm threshold} = \frac{\rho_{\rm SCm}}{\rho_{\rm UA}} \cdot \exp!\left(-\frac{[SSq] \cdot n}{26}\right) = 0.1 \cdot e^{-0.57 n/26}$$
 
@@ -53,8 +53,8 @@ double-exponential reduces to single-[SSq] at threshold.
 
 ### 2.3 Standard (Away From Threshold)
 
-For t « π:
-$$\exp(-(π - t)) \to e^{-π} \approx 0.0432$$
+For t « $\pi$:
+$$\exp(-(\pi - t)) \to e^{-\pi} \approx 0.0432$$
 
 $$\mathrm{Rate}_{\rm standard} = 0.1 \cdot \exp!\left(-\frac{0.57 n}{26} \times 0.0432\right) = 0.1 \cdot \exp!\left(-\frac{0.0247 n}{26}\right)$$
 
@@ -64,8 +64,8 @@ Very slow decay — most channels maintain near-full rate far from threshold.
 
 $$\rho_{\rm ratio} = \frac{\rho_{\rm SCm}}{\rho_{\rm UA}} = 0.1$$
 
-A factor-of-10 suppression: the superconductive vacuum is 10× less dense than the UA aether
-background, calibrated by comparing UQFF predictions to dark energy measurements (ρ_Λ from Planck
+A factor-of-10 suppression: the superconductive vacuum is 10$\times$ less dense than the UA aether
+background, calibrated by comparing UQFF predictions to dark energy measurements ($\rho$_$\Lambda$ from Planck
 2018).
 
 ---
@@ -74,33 +74,33 @@ background, calibrated by comparing UQFF predictions to dark energy measurements
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| ρ_ratio | ρ_SCm/ρ_UA | 0.1 |
+| $\rho$_ratio | $\rho$_SCm/$\rho$_UA | 0.1 |
 | [SSq] | Canonical | 0.57 |
-| Rate (threshold) | ρ_ratio·exp(−[SSq]n/26) | 0.1·e^(−0.022n) |
+| Rate (threshold) | $\rho$_ratio$\cdot$exp(-[SSq]n/26) | 0.1$\cdot$e^(-0.022n) |
 | Rate (max, n=1) | Near-threshold n=1 | ~0.0976 |
 | Rate (far, n=26) | Away from threshold | ~0.0566 |
-| Singularity point | t = π | Phase singularity |
+| Singularity point | t = $\pi$ | Phase singularity |
 
 ---
 
 ## 4. Physical Significance
 
-The double-exponential form avoids a discontinuity at the phase singularity t = π that would appear
+The double-exponential form avoids a discontinuity at the phase singularity t = $\pi$ that would appear
 in a naive single-exponential decay. This is physically important for UQFF oscillation cycles: real
 vacuum oscillations do not diverge as t approaches the half-period. The outer `exp(−(π−t))` factor
-acts as a "near-threshold regulator," ensuring continuous differentiability of Rate(n,t) at all t ∈
-[0, π].
+acts as a "near-threshold regulator," ensuring continuous differentiability of Rate(n,t) at all t $\in$
+[0, $\pi$].
 
 The rho_ratio = 0.1 is a key calibration: it constrains the ratio of superconductive to aether
 vacuum energy density, providing an observational connection to the measured dark energy density
-parameter (Ω_Λ = 0.678 from Planck 2018).
+parameter ($\Omega$_$\Lambda$ = 0.678 from Planck 2018).
 
 ---
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_353 vs. standard [SSq] decay:** Standard single-exponential exp(−[SSq]n/26) appears in dozens of UQFF papers; the double-exponential form with near-threshold behavior is new in PAPER_353.
-- **vs. PAPER_341 (calibration):** PAPER_341 derives κ, H_SCm, U_UA values; PAPER_353 uses the ρ_ratio = 0.1 calibration separately.
+- **vs. PAPER_353 vs. standard [SSq] decay:** Standard single-exponential exp(-[SSq]n/26) appears in dozens of UQFF papers; the double-exponential form with near-threshold behavior is new in PAPER_353.
+- **vs. PAPER_341 (calibration):** PAPER_341 derives $\kappa$, H_SCm, U_UA values; PAPER_353 uses the $\rho$_ratio = 0.1 calibration separately.
 
 ---
 
@@ -120,7 +120,7 @@ parameter (Ω_Λ = 0.678 from Planck 2018).
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -223,7 +223,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.160 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -234,13 +234,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

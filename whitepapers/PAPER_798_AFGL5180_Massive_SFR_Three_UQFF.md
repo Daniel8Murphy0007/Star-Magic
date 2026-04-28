@@ -26,8 +26,8 @@ AFGL 5180 (IRAS 06058+2138) is a massive star-forming region in the constellatio
 approximately 6,500 light-years away and embedded within a dense molecular cloud in the outer Gemini
 OB1 star-forming complex. Hubble ACS/WFC3 imaging reveals spectacular outflow structures,
 Herbig-Haro objects, and protostellar jets emanating from an embedded cluster of high-mass
-protostars. Three-UQFF analysis of AFGL 5180 yields: F_U_g1 ≈ 8.84×10-42 N (Compressed), R(t) ≈
-−4.18×10-43 N (Resonant), F_U_Bi ≈ 9.79×10-33 N (Buoyancy), establishing the Buoyancy UQFF as the
+protostars. Three-UQFF analysis of AFGL 5180 yields: F_U_g1 $\approx$ 8.84$\times$10-42 N (Compressed), R(t) $\approx$
+-4.18$\times$10-43 N (Resonant), F_U_Bi $\approx$ 9.79$\times$10-33 N (Buoyancy), establishing the Buoyancy UQFF as the
 dominant mode at sub-galactic scales with the embedded protostellar dense-core geometry.
 
 ---
@@ -47,18 +47,18 @@ included.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Cluster mass | M | 1.0 MM_sun × 300 = 5.97×1032 kg | Protostellar estimate |
-| Radius | r | 9.46×1016 m (10 ly) | Hubble angular size |
+| Cluster mass | M | 1.0 MM_sun $\times$ 300 = 5.97$\times$1032 kg | Protostellar estimate |
+| Radius | r | 9.46$\times$1016 m (10 ly) | Hubble angular size |
 | Redshift | z | 0.0022 (6500 ly) | Distance-z |
-| Age | t | 3×106 yr = 9.468×1013 s | Protostellar age |
+| Age | t | 3$\times$106 yr = 9.468$\times$1013 s | Protostellar age |
 | SFR | — | 0.5 MM_sun/yr | Embedded SFR |
-| M_sf(t) | — | 1.5 (× initial mass) | Active mass growth |
+| M_sf(t) | — | 1.5 ($\times$ initial mass) | Active mass growth |
 | f_UA' | — | 0.999 | UQFF UA' state |
 | f_SCm | — | 0.001 | UQFF SCm state |
 | v_EM | v | 105 m/s | Cloud dispersion |
 | B_EM | B | 10-5 T | Molecular cloud field |
-| ρ_UA | — | 7.09×10-36 kg/m3 | UQFF constant |
-| ρ_SCm | — | 7.09×10-37 kg/m3 | UQFF constant |
+| $\rho$_UA | — | 7.09$\times$10-36 kg/m3 | UQFF constant |
+| $\rho$_SCm | — | 7.09$\times$10-37 kg/m3 | UQFF constant |
 
 ---
 
@@ -68,16 +68,16 @@ included.
 
 $$
 \begin{aligned}
-  & \text{F\_U\_g1} = Σ[k_k · (f_UA'1·f_SCm1·R_EB1) · (f_UA'2·f_SCm2·R_EB2) / r2 \\
-  & · G_k(UA, U_b, ν_THz, geometry_k)] \\
-  & k_k  = G × M_sf = 6.6743e-11 × 1.5 = 1.001e-10 \\
-  & f_UA'·f_SCm = 0.999 × 0.001 = 9.99e-4 \\
+  & \text{F\_U\_g1} = \Sigma[k_k \cdot (f_UA'1\cdotf_SCm1\cdotR_EB1) \cdot (f_UA'2\cdotf_SCm2\cdotR_EB2) / r2 \\
+  & \cdot G_k(UA, U_b, \nu_THz, geometry_k)] \\
+  & k_k  = G \times M_sf = 6.6743e-11 \times 1.5 = 1.001e-10 \\
+  & f_UA'\cdotf_SCm = 0.999 \times 0.001 = 9.99e-4 \\
   & R_EB1 = R_EB2 = r = 9.46e16 m \\
-  & G_k = M_sf·exp(–t/τ_SF) = 1.5 × exp(–9.468e13/3.156e13) = 1.5 × e-3 = 0.0747 \\
-  & \text{F\_U\_g1} = 1.001e-10 × (9.99e-4)2 × (9.46e16)2 / (9.46e16)2 × 0.0747 \\
-  & = 1.001e-10 × 9.98e-7 × 0.0747 \\
-  & = 7.46e-18 × 1.187e-2  ← [corrected with Σ sum 26 states] \\
-  & \text{F\_U\_g1} ≈ 8.84×10-42 N
+  & G_k = M_sf\cdotexp(–t/\tau_SF) = 1.5 \times exp(–9.468e13/3.156e13) = 1.5 \times e-3 = 0.0747 \\
+  & \text{F\_U\_g1} = 1.001e-10 \times (9.99e-4)2 \times (9.46e16)2 / (9.46e16)2 \times 0.0747 \\
+  & = 1.001e-10 \times 9.98e-7 \times 0.0747 \\
+  & = 7.46e-18 \times 1.187e-2  \leftarrow [corrected with \Sigma sum 26 states] \\
+  & \text{F\_U\_g1} \approx 8.84\times10-42 N
 \end{aligned}
 $$
 
@@ -85,11 +85,11 @@ $$
 
 $$
 \begin{aligned}
-  & R(t) = Σ_{i=1}^{26} (R_Ug1,i·cos(ω_i·t) + R_Ug2,i·cos(ω_i·t) \\
-  & + R_Ug3,i·cos(ω_i·t) + R_Ug4i,i·cos(ω_i·t)) \\
-  & ω_i = 2π/(τ_resonance,i); τ ≈ 3.156e13 s (1 Myr) \\
-  & R_Ug1,i ~ \text{F\_U\_g1}/26 = 3.40e-43 N per state; cos(ω_i·t) averages to sign mix \\
-  & Net R(t) ≈ −4.18×10-43 N (net negative: resonance partially cancels compression)
+  & R(t) = \Sigma_{i=1}^{26} (R_Ug1,i\cdotcos(\omega_i\cdott) + R_Ug2,i\cdotcos(\omega_i\cdott) \\
+  & + R_Ug3,i\cdotcos(\omega_i\cdott) + R_Ug4i,i\cdotcos(\omega_i\cdott)) \\
+  & \omega_i = 2\pi/(\tau_resonance,i); \tau \approx 3.156e13 s (1 Myr) \\
+  & R_Ug1,i ~ \text{F\_U\_g1}/26 = 3.40e-43 N per state; cos(\omega_i\cdott) averages to sign mix \\
+  & Net R(t) \approx -4.18\times10-43 N (net negative: resonance partially cancels compression)
 \end{aligned}
 $$
 
@@ -97,12 +97,12 @@ $$
 
 $$
 \begin{aligned}
-  & f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (V_little/V_big) \\
-  & = 0.1 × 7.25e8 × (7.09e-36/7.09e-37) × (1/33) \\
-  & = 0.1 × 7.25e8 × 10 × 0.0303 = 2.196e7 \\
-  & \text{F\_U\_Bi} = Σ[k_Ub,k · (f_UA'·f_SCm·R_EB) / r2 · H_k(ν_THz,U_b,geometry_k) · f_Ub] \\
-  & k_Ub = G × M × \text{f\_Ub\_calibrated}; H_k = buoyancy geometry factor \\
-  & \text{F\_U\_Bi} ≈ 9.79×10-33 N   ← Buoyancy UQFF dominates at this scale
+  & f_Ub = 0.1 \times \Deltak_\eta \times (\rho_UA/\rho_SCm) \times (V_little/V_big) \\
+  & = 0.1 \times 7.25e8 \times (7.09e-36/7.09e-37) \times (1/33) \\
+  & = 0.1 \times 7.25e8 \times 10 \times 0.0303 = 2.196e7 \\
+  & \text{F\_U\_Bi} = \Sigma[k_Ub,k \cdot (f_UA'\cdotf_SCm\cdotR_EB) / r2 \cdot H_k(\nu_THz,U_b,geometry_k) \cdot f_Ub] \\
+  & k_Ub = G \times M \times \text{f\_Ub\_calibrated}; H_k = buoyancy geometry factor \\
+  & \text{F\_U\_Bi} \approx 9.79\times10-33 N   \leftarrow Buoyancy UQFF dominates at this scale
 \end{aligned}
 $$
 
@@ -110,11 +110,11 @@ $$
 
 $$
 \begin{aligned}
-  & F_Compressed = 8.84×10-42 N \\
-  & R_Resonant   = −4.18×10-43 N \\
-  & F_Buoyancy   = 9.79×10-33 N   ← Dominant mode (9 orders > compressed) \\
+  & F_Compressed = 8.84\times10-42 N \\
+  & R_Resonant   = -4.18\times10-43 N \\
+  & F_Buoyancy   = 9.79\times10-33 N   \leftarrow Dominant mode (9 orders > compressed) \\
   & Buoyancy dominates at sub-galactic scale: the small r and dense protostellar mass \\
-  & create a large (ρ_UA/ρ_SCm) × V_little/V_big buoyancy ratio.
+  & create a large (\rho_UA/\rho_SCm) \times V_little/V_big buoyancy ratio.
 \end{aligned}
 $$
 
@@ -125,7 +125,7 @@ $$
 The three-mode UQFF computation for AFGL 5180 reveals a fundamental inversion compared to
 galactic-scale systems: at sub-kpc scales with dense protostellar cores, the Buoyancy UQFF mode
 dominates over the Compressed and Resonant modes by 9 orders of magnitude. This is because the
-buoyancy term scales with the local density ratio (ρ_UA/ρ_SCm) and the geometric factor
+buoyancy term scales with the local density ratio ($\rho$_UA/$\rho$_SCm) and the geometric factor
 (V_little/V_big = 1/33), both amplified in dense molecular cloud environments.
 
 The Resonant mode is negative at this scale — a destructive interference of the 26-state resonance
@@ -140,25 +140,25 @@ protostellar dynamics driven primarily by Buoyancy UQFF.
 The Vacuum Density Series (VDS) appears in the [SSq] factor within the pseudo-monopole density:
 $$
 \begin{aligned}
-  & ρ_vac,[UA']:SCm = ρ_UA · (ρ_SCm/ρ_UA)^n · exp(–[SSq]·n/26·exp(–(π–t))) \\
-  & ↑ VDS: Li₂₆([SSq]) = 0.570
+  & \rho_vac,[UA']:SCm = \rho_UA \cdot (\rho_SCm/\rho_UA)^n \cdot exp(–[SSq]\cdotn/26\cdotexp(–(\pi–t))) \\
+  & \uparrow VDS: Li26([SSq]) = 0.570
 \end{aligned}
 $$
 
 The Dipole Vortex Prime (DVP) appears in the species index formula used to determine protostellar
 species from vacuum density ratio:
 $$
-S_index = log(ρ_SCm/ρ_UA) · n = log(0.1) · n = –n  (n=1 = atom, n=26 = galaxy)
+S_index = log(\rho_SCm/\rho_UA) \cdot n = log(0.1) \cdot n = –n  (n=1 = atom, n=26 = galaxy)
 $$
 
-The Boyle's Law buoyancy (f_Ub = 0.1·Δk_η·10·1/33) encodes the Buoyancy Harmonic 33 Hz level.
+The Boyle's Law buoyancy (f_Ub = 0.1$\cdot$$\Delta$k_$\eta$$\cdot$10$\cdot$1/33) encodes the Buoyancy Harmonic 33 Hz level.
 
 ---
 
 ## 6. Conclusions
 
-Three-UQFF applied to AFGL 5180 yields F_U_g1 ≈ 8.84×10-42 N, R(t) ≈ −4.18×10-43 N, F_U_Bi ≈
-9.79×10-33 N. The dominant Buoyancy mode at sub-galactic scale establishes an important UQFF
+Three-UQFF applied to AFGL 5180 yields F_U_g1 $\approx$ 8.84$\times$10-42 N, R(t) $\approx$ -4.18$\times$10-43 N, F_U_Bi $\approx$
+9.79$\times$10-33 N. The dominant Buoyancy mode at sub-galactic scale establishes an important UQFF
 scale-dependence rule: Buoyancy UQFF > Compressed UQFF in dense, compact protostellar environments.
 The VDS, DVP, and Buoyancy Harmonics number systems are all active in this system, providing the
 first complete Three-UQFF three-number-system integration at protostellar scale.
@@ -173,7 +173,7 @@ first complete Three-UQFF three-number-system integration at protostellar scale.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -192,7 +192,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -334,7 +334,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -345,13 +345,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

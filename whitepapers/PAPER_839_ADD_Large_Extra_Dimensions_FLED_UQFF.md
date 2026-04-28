@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 ## Abstract
-Arkani-Hamed, Dimopoulos, and Dvali (ADD, 1998) proposed that the hierarchy problem can be resolved by n≥2 large extra spatial dimensions in which gravity propagates. The fundamental Planck scale M_* can be as low as ~1 TeV if extra dimensions have radii R~0.1 mm (n=2). This paper integrates the ADD model into UQFF as a new F_U_Bi_i term F_LED (Large Extra Dimension force), yielding F_LED = k_LED × (M_*/M_Pl)2 = 6.72×$10^{-23}$ N. While numerically tiny, F_LED represents a novel extra-dimensional vacuum modification and is applied to the 8-system Chandra batch (SNR 1181, H1821+643, Sonification Collection, IC 443, M74, MSH 15-52, SDSS J1531+3414, Sagittarius A*). Sgr A*'s negative buoyancy is potentially linked to ADD-predicted graviton leakage into extra dimensions.
+Arkani-Hamed, Dimopoulos, and Dvali (ADD, 1998) proposed that the hierarchy problem can be resolved by n$\geq$2 large extra spatial dimensions in which gravity propagates. The fundamental Planck scale M_* can be as low as ~1 TeV if extra dimensions have radii R~0.1 mm (n=2). This paper integrates the ADD model into UQFF as a new F_U_Bi_i term F_LED (Large Extra Dimension force), yielding F_LED = k_LED $\times$ (M_*/M_Pl)2 = 6.72$\times$$10^{-23}$ N. While numerically tiny, F_LED represents a novel extra-dimensional vacuum modification and is applied to the 8-system Chandra batch (SNR 1181, H1821+643, Sonification Collection, IC 443, M74, MSH 15-52, SDSS J1531+3414, Sagittarius A*). Sgr A*'s negative buoyancy is potentially linked to ADD-predicted graviton leakage into extra dimensions.
 
 ---
 
@@ -34,7 +34,7 @@ Arkani-Hamed, Dimopoulos, and Dvali (ADD, 1998) proposed that the hierarchy prob
     
     For n=2 (two extra dimensions), M_* ~ 1 TeV:
     M_Pl2 = 8pi M_*^4 * R2
-    R = M_Pl / (2√(2pi) * M_*2)
+    R = M_Pl / (2$\sqrt{}$(2pi) * M_*2)
     R = 1.22*10^19 GeV / (2 * 2.51 * (10^3)2)
     R ~= 2.43 mm  (current limits: R < 0.1 mm for n=2)
 
@@ -43,7 +43,7 @@ Arkani-Hamed, Dimopoulos, and Dvali (ADD, 1998) proposed that the hierarchy prob
 - Gravity propagates in all n+4 dimensions; SM fields confined to 3+1 brane
 - Gravitons can leak into extra dimensions, reducing apparent gravitational coupling
 - Inverse-square law modified below R: G_eff(r < R) has different scaling
-- Graviton Kaluza-Klein tower: mass spectrum m_n = n/(R), n ∈ ℕ
+- Graviton Kaluza-Klein tower: mass spectrum m_n = n/(R), n $\in$ $\mathbb{N}$
 
 ---
 
@@ -70,11 +70,11 @@ The ADD model predicts that vacuum energy density is modified by the graviton KK
     rho_vac,ADD ~= rho_vac,SM * (1 + (M_*/M_Pl)2 * N_KK)
 
 
-where N_KK is the number of accessible KK modes. The correction factor (M_*/M_Pl)2 = 6.72×$10^{-33}$ is tiny but non-zero, representing a fundamental vacuum modification at sub-mm scales.
+where N_KK is the number of accessible KK modes. The correction factor (M_*/M_Pl)2 = 6.72$\times$$10^{-33}$ is tiny but non-zero, representing a fundamental vacuum modification at sub-mm scales.
 
 ### 2.3 Relative Magnitude
 
-    F_LED = 6.72 * 10^-23 N  ← SMALLEST term in F_U_Bi_i
+    F_LED = 6.72 * 10^-23 N  $\leftarrow$ SMALLEST term in F_U_Bi_i
     vs F_LENR = 1.56 * 10^36 N  (59 orders of magnitude difference)
 
 
@@ -96,14 +96,14 @@ to extra-dimensional gravity theory.
 
 | System | `F_U_Bi` (N) | F_LED contribution | Analysis Point |
 |--------|-----------|-------------------|----------------|
-| SNR 1181 (Pa 30) | 2.65×$10^{208}$ | +6.72×$10^{-23}$ N | F_LED suggests graviton-mediated energy in neon lattice |
-| H1821+643 quasar | 2.09×$10^{212}$ | +6.72×$10^{-23}$ N | ADD suppressed graviton → weak quasar influence on cluster |
-| Sonification Collection | 5.30×$10^{208}$ | +6.72×$10^{-23}$ N | F_LED unifies multi-wavelength diversity |
-| IC 443 Jellyfish | 2.11×$10^{208}$ | +6.72×$10^{-23}$ N | F_LED stabilizes shocked gas via extra-dim coherence |
-| M74 Phantom Galaxy | 1.88×$10^{211}$ | +6.72×$10^{-23}$ N | F_LED supports star-forming region stability |
-| MSH 15-52 Hand PWN | 5.30×$10^{208}$ | +6.72×$10^{-23}$ N | F_LED enhances pulsar wind coherence |
-| SDSS J1531+3414 | 1.40×$10^{212}$ | +6.72×$10^{-23}$ N | F_LED stabilizes galaxy merger dynamics |
-| **Sagittarius A*** | **-8.31×$10^{211}$** | +6.72×$10^{-23}$ N | **Negative buoyancy + F_LED = graviton leakage hypothesis** |
+| SNR 1181 (Pa 30) | 2.65$\times$$10^{208}$ | +6.72$\times$$10^{-23}$ N | F_LED suggests graviton-mediated energy in neon lattice |
+| H1821+643 quasar | 2.09$\times$$10^{212}$ | +6.72$\times$$10^{-23}$ N | ADD suppressed graviton $\to$ weak quasar influence on cluster |
+| Sonification Collection | 5.30$\times$$10^{208}$ | +6.72$\times$$10^{-23}$ N | F_LED unifies multi-wavelength diversity |
+| IC 443 Jellyfish | 2.11$\times$$10^{208}$ | +6.72$\times$$10^{-23}$ N | F_LED stabilizes shocked gas via extra-dim coherence |
+| M74 Phantom Galaxy | 1.88$\times$$10^{211}$ | +6.72$\times$$10^{-23}$ N | F_LED supports star-forming region stability |
+| MSH 15-52 Hand PWN | 5.30$\times$$10^{208}$ | +6.72$\times$$10^{-23}$ N | F_LED enhances pulsar wind coherence |
+| SDSS J1531+3414 | 1.40$\times$$10^{212}$ | +6.72$\times$$10^{-23}$ N | F_LED stabilizes galaxy merger dynamics |
+| **Sagittarius A*** | **-8.31$\times$$10^{211}$** | +6.72$\times$$10^{-23}$ N | **Negative buoyancy + F_LED = graviton leakage hypothesis** |
 
 All F_U_Bi final values unchanged by F_LED (F_LENR dominates).
 
@@ -111,7 +111,7 @@ All F_U_Bi final values unchanged by F_LED (F_LENR dominates).
 
 ## 4. Sgr A* and ADD Graviton Leakage
 
-The unique feature of Sgr A*'s negative F_U_Bi_i (-8.31×$10^{211}$ N) in the context of ADD:
+The unique feature of Sgr A*'s negative F_U_Bi_i (-8.31$\times$$10^{211}$ N) in the context of ADD:
 - ADD predicts graviton loss to extra dimensions at r < R (< 0.1 mm)
 - Near Sgr A*'s event horizon (~$10^{10}$ m), extreme spacetime curvature may trigger effective extra-dimensional coupling
 - The ADD model naturally explains *why* gravity appears repulsive at extreme SMBH scales if graviton KK modes carry energy into the bulk
@@ -119,11 +119,11 @@ The unique feature of Sgr A*'s negative F_U_Bi_i (-8.31×$10^{211}$ N) in the co
 ### Mathematical Connection:
 
     For Sgr A*, the gravitational term in F_U_Bi_i:
-    (μ_s∇(M_s/r)) * DPM_gravity → sign flip possible when extra-dimensional correction dominates
+    ($\mu$_s$\nabla$(M_s/r)) * DPM_gravity $\to$ sign flip possible when extra-dimensional correction dominates
     
-    Modified: (μ_s∇(M_s/r))_eff = (μ_s∇(M_s/r)) * (1 - (M_*/M_Pl)2 * f(r/R))
+    Modified: ($\mu$_s$\nabla$(M_s/r))_eff = ($\mu$_s$\nabla$(M_s/r)) * (1 - (M_*/M_Pl)2 * f(r/R))
     
-    where f(r/R) → large for r/R < 1 (below ADD extra dimension radius)
+    where f(r/R) $\to$ large for r/R < 1 (below ADD extra dimension radius)
 
 
 ---
@@ -140,7 +140,7 @@ experimentally.
 ---
 
 ## 6. Conclusions
-- F_LED = 6.72×$10^{-23}$ N is derived from ADD model n=2 with M_* = 1 TeV
+- F_LED = 6.72$\times$$10^{-23}$ N is derived from ADD model n=2 with M_* = 1 TeV
 - Numerically negligible but theoretically the most profound new term: links UQFF to extra-dimensional gravity
 - Sgr A*'s negative buoyancy may be linked to ADD graviton leakage into compact extra dimensions
 - Provides a new astrophysical approach to constraining fundamental Planck scale M_*
@@ -161,7 +161,7 @@ Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -180,7 +180,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -234,7 +234,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -249,7 +249,7 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -354,7 +354,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.086 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -365,13 +365,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 for full UQFF-SM bridge.*

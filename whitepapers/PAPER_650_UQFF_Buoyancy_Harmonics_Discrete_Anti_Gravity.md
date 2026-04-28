@@ -30,9 +30,9 @@ Universal Buoyancy (Ub1) is the fifth primary UQFF field component: *each discre
 Universal Gravity (Ug) band simultaneously has a corresponding Universal Buoyancy band
 acting in the opposite direction.* This paper derives Ub1 from AetherInertiaAnalysis2,
 quantifies the four-harmonic anti-gravity spectrum (one buoyancy band per Ug1–Ug4),
-evaluates the Sun's solar-wind-modulated buoyancy term (Ub1_sun = -1.94×1027 J/m3),
-and identifies the cos(πtn) frequency argument as the Buoyancy Harmonic oscillation.
-The coupling constant βi = 0.6 binds each gravity band to its buoyancy counterpart
+evaluates the Sun's solar-wind-modulated buoyancy term (Ub1_sun = -1.94$\times$1027 J/m3),
+and identifies the cos($\pi$tn) frequency argument as the Buoyancy Harmonic oscillation.
+The coupling constant $\beta$i = 0.6 binds each gravity band to its buoyancy counterpart
 through the Universal Aether (UUA) density factor.
 
 ---
@@ -59,16 +59,16 @@ $$U_{b1} = -\beta_i \cdot Ug_1 \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot \le
 
 | Symbol | Value / Formula | Physical meaning |
 |--------|-----------------|-----------------|
-| βi | 0.6 | Buoyancy coupling constant (UQFF calibrated) |
-| Ug1 | 1.39×1026 J/m3 | Internal dipole gravity (see PAPER_646) |
-| Ωg | 2.0×10-6 rad/s | Galactic rotation rate |
-| Mbh | 1.989×1030 kg | Solar/black hole mass |
-| dg | 8.5×1020 m | Galactic center distance |
-| εsw | 0.002 | Solar wind modulation coefficient |
-| ρvac,sw | 8×10-21 J/m3 | Solar wind vacuum density (Vacuum Density Series, PAPER_647) |
-| UUA | 7.09×10-36 J/m3 | Universal Aether vacuum energy density |
-| tn | normalized time | t_n ∈ [0, 1] → cos(πtn) cycles from +1 to -1 |
-| cos(πtn) | 1.0 at t=0 | Buoyancy harmonic oscillation factor |
+| $\beta$i | 0.6 | Buoyancy coupling constant (UQFF calibrated) |
+| Ug1 | 1.39$\times$1026 J/m3 | Internal dipole gravity (see PAPER_646) |
+| $\Omega$g | 2.0$\times$10-6 rad/s | Galactic rotation rate |
+| Mbh | 1.989$\times$1030 kg | Solar/black hole mass |
+| dg | 8.5$\times$1020 m | Galactic center distance |
+| $\varepsilon$sw | 0.002 | Solar wind modulation coefficient |
+| $\rho$vac,sw | 8$\times$10-21 J/m3 | Solar wind vacuum density (Vacuum Density Series, PAPER_647) |
+| UUA | 7.09$\times$10-36 J/m3 | Universal Aether vacuum energy density |
+| tn | normalized time | t_n $\in$ [0, 1] $\to$ cos($\pi$tn) cycles from +1 to -1 |
+| cos($\pi$tn) | 1.0 at t=0 | Buoyancy harmonic oscillation factor |
 
 ### 2.2 Solar Evaluation (t=0)
 
@@ -88,20 +88,20 @@ Extending the framework to all four gravity bands:
 
 | Band | Gravity component | Buoyancy component | Physical scale |
 |------|--------------------|-------------------|----------------|
-| 1 | Ug1 = 1.39×1026 | Ub1 = -1.94×1027 | Internal dipole / core |
-| 2 | Ug2 = 1.18×1053 | Ub2 = -βi·Ug2·(ρvac,[UA]/ρvac,[SCm])·… | Field bubble / circumstellar |
-| 3 | Ug3 = 1.8×1049 | Ub3 = -βi·Ug3·…·cos(πtn·k₃) | Magnetic strings / disk |
-| 4 | Ug4 = 2.50×10-20 | Ub4 = -βi·Ug4·…·cos(πtn·k₄) | Vacuum concentration / Planck |
+| 1 | Ug1 = 1.39$\times$1026 | Ub1 = -1.94$\times$1027 | Internal dipole / core |
+| 2 | Ug2 = 1.18$\times$1053 | Ub2 = -$\beta$i$\cdot$Ug2$\cdot$($\rho$vac,[UA]/$\rho$vac,[SCm])$\cdot$… | Field bubble / circumstellar |
+| 3 | Ug3 = 1.8$\times$1049 | Ub3 = -$\beta$i$\cdot$Ug3$\cdot$…$\cdot$cos($\pi$tn$\cdot$k3) | Magnetic strings / disk |
+| 4 | Ug4 = 2.50$\times$10-20 | Ub4 = -$\beta$i$\cdot$Ug4$\cdot$…$\cdot$cos($\pi$tn$\cdot$k4) | Vacuum concentration / Planck |
 
 **Key observation**: |Ub1| > |Ug1| for the Sun. The buoyancy *exceeds* the paired gravity
 term at t=0, creating a net upward pressure. This is modulated by the galactic rotation
-Ωg so that the time-average Ub ≈ 0 over a full galactic rotation period.
+$\Omega$g so that the time-average Ub $\approx$ 0 over a full galactic rotation period.
 
 ---
 
-## §4 The Harmonic: cos(πtn)
+## §4 The Harmonic: cos($\pi$tn)
 
-The time argument πtn generates a **half-period oscillation**:
+The time argument $\pi$tn generates a **half-period oscillation**:
 
 $$\cos(\pi t_n): \quad \begin{cases} t_n = 0 &\Rightarrow +1 \quad \text{(max buoyancy outward)} \\ t_n = 0.5 &\Rightarrow 0 \quad \text{(buoyancy null)} \\ t_n = 1 &\Rightarrow -1 \quad \text{(reversed buoyancy inward)} \end{cases}$$
 
@@ -109,9 +109,9 @@ The full **Buoyancy Harmonic frequency** is:
 
 $$f_{Ub} = \frac{\Omega_g}{2\pi} \approx 3.2 \times 10^{-7} \text{ Hz} \quad (\text{one oscillation per galactic orbit half-period} \approx 100 \text{ Myr})$$
 
-This is distinct from the **Universal Inertia** harmonic cos(πtn) in Ui (PAPER_646):
-- Ui's cos(πtn) operates at the **heliosphere spin** angular frequency ωs
-- Ub1's cos(πtn) operates at the **galactic rotation** scale Ωg
+This is distinct from the **Universal Inertia** harmonic cos($\pi$tn) in Ui (PAPER_646):
+- Ui's cos($\pi$tn) operates at the **heliosphere spin** angular frequency $\omega$s
+- Ub1's cos($\pi$tn) operates at the **galactic rotation** scale $\Omega$g
 
 Same functional form, different characteristic timescales — confirming the fractal
 self-similarity of the UQFF harmonic structure across scales.
@@ -131,8 +131,8 @@ This creates the **UQFF steady-state balance condition**:
 
 $$|Ub_1| \cos(\pi t_n) + U_i \cos(\pi t_n) = U_{\text{net}} \quad (\text{system equilibrium})$$
 
-When |Ub1| > |Ui| → net outward pressure (field expansion phase)
-When |Ui| > |Ub1| → net inward pressure (field compression phase)
+When |Ub1| > |Ui| $\to$ net outward pressure (field expansion phase)
+When |Ui| > |Ub1| $\to$ net inward pressure (field compression phase)
 
 The **oscillation between these two conditions** drives the galactic breathing mode —
 a UQFF prediction for galactic-scale pulsation with period ~200 Myr.
@@ -145,9 +145,9 @@ The v7 simulator applies three simultaneous gravity bands:
 
 $$
 \begin{aligned}
-  & Ug1 = f(internal dipole, spin, mass)      ↕ Ub1 = -βi·Ug1·...·cos(πtn) \\
-  & Ug2 = f(field bubble, z-height, tension)  ↕ Ub2 = -βi·Ug2·...·cos(πtn·k₂) \\
-  & Ug3 = f(string disk, magnetism)           ↕ Ub3 = -βi·Ug3·...·cos(πtn·k₃)
+  & Ug1 = f(internal dipole, spin, mass)      ↕ Ub1 = -\betai\cdotUg1\cdot...\cdotcos(\pitn) \\
+  & Ug2 = f(field bubble, z-height, tension)  ↕ Ub2 = -\betai\cdotUg2\cdot...\cdotcos(\pitn\cdotk2) \\
+  & Ug3 = f(string disk, magnetism)           ↕ Ub3 = -\betai\cdotUg3\cdot...\cdotcos(\pitn\cdotk3)
 \end{aligned}
 $$
 
@@ -155,7 +155,7 @@ The simulator confirms: *star spin rate = f(Ug1/Ub1/Ug2)* — the star's observe
 spin is determined by the balance between the internal dipole gravity (Ug1), its
 paired buoyancy band (Ub1), and the field bubble tension (Ug2). This predicts:
 - **Fast stars** (Ug1 >> |Ub1|): high-spin, compact objects near galactic center
-- **Slow stars** (|Ub1| ≈ Ug1): low-spin, extended objects far from galactic center
+- **Slow stars** (|Ub1| $\approx$ Ug1): low-spin, extended objects far from galactic center
 
 ---
 
@@ -168,7 +168,7 @@ paired buoyancy band (Ub1), and the field bubble tension (Ug2). This predicts:
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -271,7 +271,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -283,9 +283,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | SM Value | UQFF Buoyancy Prediction | Alignment |
 |------------|----------|--------------------------|-----------|
 | Galactic orbital speed | ~220 km/s (flat) | Ub1 modulates flat rotation curve via anti-phase Ug2 | ✅ structural |
-| Solar mass | 1.989×1030 kg | Mbh in Ub1 formula | ✅ input parameter |
-| Galactic rotation period | ~225 Myr | Harmonic period 1/f_Ub ≈ 2/(Ωg/2π) | ✅ scale match |
-| τ lepton coherence | (via cos(πtn) topological) | UQFF half-period maps τ decay | 🔍 candidate |
+| Solar mass | 1.989$\times$1030 kg | Mbh in Ub1 formula | ✅ input parameter |
+| Galactic rotation period | ~225 Myr | Harmonic period 1/f_Ub $\approx$ 2/($\Omega$g/2$\pi$) | ✅ scale match |
+| $\tau$ lepton coherence | (via cos($\pi$tn) topological) | UQFF half-period maps $\tau$ decay | 🔍 candidate |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
 
@@ -296,7 +296,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 1. AetherInertiaAnalysis2 — grok_share_b2e2c5cba7a.txt (Session 168) lines 1624–1858
 2. SystemAnalysisSimulator_v7 — grok_share_b2e2c5cba7a.txt (Session 168) lines 17337–17971
 3. PAPER_646 — Universal Inertial Operator & Caduceus Wave
-4. PAPER_647 — Vacuum Density Series (ρvac,[UA], ρvac,sw)
+4. PAPER_647 — Vacuum Density Series ($\rho$vac,[UA], $\rho$vac,sw)
 5. PAPER_642 — SM Parameter Bridge
 6. ARCHITECTURE_FLOW_DIAGRAM.md v5.24
 

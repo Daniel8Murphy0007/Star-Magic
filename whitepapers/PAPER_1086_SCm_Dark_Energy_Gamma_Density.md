@@ -23,7 +23,7 @@ This replaces the static $\Lambda$CDM cosmological constant $\rho_\Lambda = 0.69
 with a dynamical dark energy density sourced by the SCm vacuum, modulated
 by phonon resonance at 1.25 THz. The ratio $\rho_{\text{DE}} / \rho_\Lambda$
 quantifies the departure from $\Lambda$CDM. Distinct from PAPER_1076
-(which derives $w(z)$ from linewidth broadening) and PAPER_889 (ΛCDM contrast),
+(which derives $w(z)$ from linewidth broadening) and PAPER_889 ($\Lambda$CDM contrast),
 this paper provides the explicit $\Gamma$-coupled density computation.
 
 ## §1 SCm Vacuum Density Evolution
@@ -39,7 +39,7 @@ $$\rho_{\text{DE}}(t, \Gamma) = \rho_{\text{SCm}}(t) \cdot S_{26} \cdot \Phi(\Ga
 
 where $R = F_{U,Bi}/F_U$ determines the expansion/erosion sign.
 
-## §3 Comparison to ΛCDM
+## §3 Comparison to $\Lambda$CDM
 
 $$\rho_\Lambda = 0.692 \cdot \rho_{\text{crit}} = 0.692 \cdot \frac{3 H_0^2}{8\pi G}$$
 
@@ -48,7 +48,7 @@ $$\frac{\rho_{\text{DE}}}{\rho_\Lambda} = \frac{\rho_{\text{SCm}}(t) \cdot S_{26
 At $t = 0$, $R = 0.8$: $\rho_{\text{DE}} / \rho_\Lambda \sim 10^{22}$
 (phonon amplification dominates at resonance).
 
-## §4 Physical Advantages over ΛCDM
+## §4 Physical Advantages over $\Lambda$CDM
 
 | Aspect | $\Lambda$CDM | SCm Dark Energy |
 |--------|-------------|-----------------|
@@ -72,7 +72,7 @@ off-resonance behavior drives the $\Gamma$-dependence.
 
 ## References
 
-- PAPER_1076: SCm Dark Energy with Phonon Linewidth Γ-Modulation
+- PAPER_1076: SCm Dark Energy with Phonon Linewidth $\Gamma$-Modulation
 - PAPER_889: EtVsLambdaCDMDarkEnergyContrastCalc
 - PAPER_890: SCmVacuumDensityEvolutionCalc
 - PAPER_1087: Dark Energy Equation of State w_DE

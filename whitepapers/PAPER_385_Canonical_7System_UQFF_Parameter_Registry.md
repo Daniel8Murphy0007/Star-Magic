@@ -51,8 +51,8 @@ The `MUGESystem` struct defines 18 fields for each astrophysical system:
 | 1. name | — | System identifier | string |
 | 2. I | I | Electric current | A |
 | 3. A | A | Cross-sectional area | m2 |
-| 4. omega1 | ω₁ | Upper frequency | rad/s |
-| 5. omega2 | ω₂ | Lower frequency | rad/s |
+| 4. omega1 | $\omega$1 | Upper frequency | rad/s |
+| 5. omega2 | $\omega$2 | Lower frequency | rad/s |
 | 6. Vsys | V_sys | System volume | m3 |
 | 7. vexp | v_exp | Expansion velocity | m/s |
 | 8. t | t | System age | s |
@@ -62,10 +62,10 @@ The `MUGESystem` struct defines 18 fields for each astrophysical system:
 | 12. r | r | Characteristic radius | m |
 | 13. B | B | Magnetic field | T |
 | 14. Bcrit | B_crit | Critical magnetic field | T |
-| 15. rho_fluid | ρ_f | Fluid density | kg/m3 |
+| 15. rho_fluid | $\rho$_f | Fluid density | kg/m3 |
 | 16. g_local | g_local | Local gravitational surface acc. | m/s2 |
 | 17. M_DM | M_DM | Dark matter mass | kg |
-| 18. `delta_rho_rho` | δρ/ρ | Fractional density contrast | — |
+| 18. `delta_rho_rho` | $\delta$$\rho$/$\rho$ | Fractional density contrast | — |
 
 ---
 
@@ -75,23 +75,23 @@ The `MUGESystem` struct defines 18 fields for each astrophysical system:
 
 | Field | Value |
 |-------|-------|
-| I | 1×1021 A |
-| A | 3.142×108 m2 |
-| ω₁ | 1×1012 rad/s |
-| ω₂ | 9.99×1011 rad/s |
-| V_sys | 4.189×1012 m3 |
-| v_exp | 1×103 m/s |
-| t | 3.799×1010 s |
+| I | 1$\times$1021 A |
+| A | 3.142$\times$108 m2 |
+| $\omega$1 | 1$\times$1012 rad/s |
+| $\omega$2 | 9.99$\times$1011 rad/s |
+| V_sys | 4.189$\times$1012 m3 |
+| v_exp | 1$\times$103 m/s |
+| t | 3.799$\times$1010 s |
 | z | 0.0009 |
-| f_fluid | 1.269×10-14 Hz |
-| M | 2.984×1030 kg |
-| r | 1×104 m |
-| B | 1×1010 T |
-| B_crit | 1×1011 T |
-| ρ_f | 1×1015 kg/m3 |
-| g_local | 1.991×1012 m/s2 |
-| M_DM | 1×1028 kg |
-| δρ/ρ | 0.1 |
+| f_fluid | 1.269$\times$10-14 Hz |
+| M | 2.984$\times$1030 kg |
+| r | 1$\times$104 m |
+| B | 1$\times$1010 T |
+| B_crit | 1$\times$1011 T |
+| $\rho$_f | 1$\times$1015 kg/m3 |
+| g_local | 1.991$\times$1012 m/s2 |
+| M_DM | 1$\times$1028 kg |
+| $\delta$$\rho$/$\rho$ | 0.1 |
 
 ---
 
@@ -99,23 +99,23 @@ The `MUGESystem` struct defines 18 fields for each astrophysical system:
 
 | Field | Value |
 |-------|-------|
-| I | 1×1023 A |
-| A | 2.813×1030 m2 |
-| ω₁ | 1×1012 rad/s |
-| ω₂ | 9.99×1011 rad/s |
-| V_sys | 3.552×1045 m3 |
-| v_exp | 5×106 m/s |
-| t | 3.786×1014 s |
+| I | 1$\times$1023 A |
+| A | 2.813$\times$1030 m2 |
+| $\omega$1 | 1$\times$1012 rad/s |
+| $\omega$2 | 9.99$\times$1011 rad/s |
+| V_sys | 3.552$\times$1045 m3 |
+| v_exp | 5$\times$106 m/s |
+| t | 3.786$\times$1014 s |
 | z | 0.0009 |
-| f_fluid | 3.465×10-8 Hz |
-| M | 8.155×1036 kg |
-| r | 1×1012 m |
-| B | 1×10-5 T |
-| B_crit | 1×10-4 T |
-| ρ_f | 1×10-19 kg/m3 |
-| g_local | 5.443×102 m/s2 |
-| M_DM | 1×1038 kg |
-| δρ/ρ | 0.01 |
+| f_fluid | 3.465$\times$10-8 Hz |
+| M | 8.155$\times$1036 kg |
+| r | 1$\times$1012 m |
+| B | 1$\times$10-5 T |
+| B_crit | 1$\times$10-4 T |
+| $\rho$_f | 1$\times$10-19 kg/m3 |
+| g_local | 5.443$\times$102 m/s2 |
+| M_DM | 1$\times$1038 kg |
+| $\delta$$\rho$/$\rho$ | 0.01 |
 
 ---
 
@@ -123,23 +123,23 @@ The `MUGESystem` struct defines 18 fields for each astrophysical system:
 
 | Field | Value |
 |-------|-------|
-| I | 1×1022 A |
-| A | 1×1035 m2 |
-| ω₁ | 1×1012 rad/s |
-| ω₂ | 9.99×1011 rad/s |
-| V_sys | 1×1053 m3 |
-| v_exp | 1×104 m/s |
-| t | 3.156×1013 s |
+| I | 1$\times$1022 A |
+| A | 1$\times$1035 m2 |
+| $\omega$1 | 1$\times$1012 rad/s |
+| $\omega$2 | 9.99$\times$1011 rad/s |
+| V_sys | 1$\times$1053 m3 |
+| v_exp | 1$\times$104 m/s |
+| t | 3.156$\times$1013 s |
 | z | 0.0 |
-| f_fluid | 1×10-12 Hz |
-| M | 1.989×1035 kg |
-| r | 3.086×1017 m |
-| B | 1×10-9 T |
-| B_crit | 1×10-8 T |
-| ρ_f | 1×10-21 kg/m3 |
-| g_local | 1.39×10-15 m/s2 |
-| M_DM | 1×1036 kg |
-| δρ/ρ | 0.01 |
+| f_fluid | 1$\times$10-12 Hz |
+| M | 1.989$\times$1035 kg |
+| r | 3.086$\times$1017 m |
+| B | 1$\times$10-9 T |
+| B_crit | 1$\times$10-8 T |
+| $\rho$_f | 1$\times$10-21 kg/m3 |
+| g_local | 1.39$\times$10-15 m/s2 |
+| M_DM | 1$\times$1036 kg |
+| $\delta$$\rho$/$\rho$ | 0.01 |
 
 ---
 
@@ -147,23 +147,23 @@ The `MUGESystem` struct defines 18 fields for each astrophysical system:
 
 | Field | Value |
 |-------|-------|
-| I | 1×1022 A |
-| A | 1×1035 m2 |
-| ω₁ | 1×1012 rad/s |
-| ω₂ | 9.99×1011 rad/s |
-| V_sys | 1×1053 m3 |
-| v_exp | 1×104 m/s |
-| t | 3.156×1013 s |
+| I | 1$\times$1022 A |
+| A | 1$\times$1035 m2 |
+| $\omega$1 | 1$\times$1012 rad/s |
+| $\omega$2 | 9.99$\times$1011 rad/s |
+| V_sys | 1$\times$1053 m3 |
+| v_exp | 1$\times$104 m/s |
+| t | 3.156$\times$1013 s |
 | z | 0.0 |
-| f_fluid | 1×10-12 Hz |
-| M | 1.989×1035 kg |
-| r | 3.086×1017 m |
-| B | 1×10-9 T |
-| B_crit | 1×10-8 T |
-| ρ_f | 1×10-21 kg/m3 |
-| g_local | 1.39×10-15 m/s2 |
-| M_DM | 1×1036 kg |
-| δρ/ρ | 0.01 |
+| f_fluid | 1$\times$10-12 Hz |
+| M | 1.989$\times$1035 kg |
+| r | 3.086$\times$1017 m |
+| B | 1$\times$10-9 T |
+| B_crit | 1$\times$10-8 T |
+| $\rho$_f | 1$\times$10-21 kg/m3 |
+| g_local | 1.39$\times$10-15 m/s2 |
+| M_DM | 1$\times$1036 kg |
+| $\delta$$\rho$/$\rho$ | 0.01 |
 
 **Note:** Tapestry and Westerlund 2 share identical parameters — they represent two systems in
 the same star-forming complex with equivalent physical scale.
@@ -174,23 +174,23 @@ the same star-forming complex with equivalent physical scale.
 
 | Field | Value |
 |-------|-------|
-| I | 1×1021 A |
-| A | 2.813×1032 m2 |
-| ω₁ | 1×1012 rad/s |
-| ω₂ | 9.99×1011 rad/s |
-| V_sys | 3.552×1048 m3 |
-| v_exp | 2×103 m/s |
-| t | 3.156×1013 s |
+| I | 1$\times$1021 A |
+| A | 2.813$\times$1032 m2 |
+| $\omega$1 | 1$\times$1012 rad/s |
+| $\omega$2 | 9.99$\times$1011 rad/s |
+| V_sys | 3.552$\times$1048 m3 |
+| v_exp | 2$\times$103 m/s |
+| t | 3.156$\times$1013 s |
 | z | 0.0 |
-| f_fluid | 8.457×10-14 Hz |
-| M | 1.989×1032 kg |
-| r | 9.46×1015 m |
-| B | 1×10-10 T |
-| B_crit | 1×10-9 T |
-| ρ_f | 1×10-23 kg/m3 |
-| g_local | 2.979×10-10 m/s2 |
-| M_DM | 1×1032 kg |
-| δρ/ρ | 0.05 |
+| f_fluid | 8.457$\times$10-14 Hz |
+| M | 1.989$\times$1032 kg |
+| r | 9.46$\times$1015 m |
+| B | 1$\times$10-10 T |
+| B_crit | 1$\times$10-9 T |
+| $\rho$_f | 1$\times$10-23 kg/m3 |
+| g_local | 2.979$\times$10-10 m/s2 |
+| M_DM | 1$\times$1032 kg |
+| $\delta$$\rho$/$\rho$ | 0.05 |
 
 ---
 
@@ -198,23 +198,23 @@ the same star-forming complex with equivalent physical scale.
 
 | Field | Value |
 |-------|-------|
-| I | 1×1022 A |
-| A | 1×1035 m2 |
-| ω₁ | 1×1012 rad/s |
-| ω₂ | 9.99×1011 rad/s |
-| V_sys | 1×1054 m3 |
-| v_exp | 1×105 m/s |
-| t | 3.156×1014 s |
+| I | 1$\times$1022 A |
+| A | 1$\times$1035 m2 |
+| $\omega$1 | 1$\times$1012 rad/s |
+| $\omega$2 | 9.99$\times$1011 rad/s |
+| V_sys | 1$\times$1054 m3 |
+| v_exp | 1$\times$105 m/s |
+| t | 3.156$\times$1014 s |
 | z | 0.01 |
-| f_fluid | 1×10-9 Hz |
-| M | 1.989×1036 kg |
-| r | 3.086×1017 m |
-| B | 1×10-10 T |
-| B_crit | 1×10-9 T |
-| ρ_f | 1×10-28 kg/m3 |
-| g_local | 1.391×10-14 m/s2 |
-| M_DM | 1×1038 kg |
-| δρ/ρ | 0.02 |
+| f_fluid | 1$\times$10-9 Hz |
+| M | 1.989$\times$1036 kg |
+| r | 3.086$\times$1017 m |
+| B | 1$\times$10-10 T |
+| B_crit | 1$\times$10-9 T |
+| $\rho$_f | 1$\times$10-28 kg/m3 |
+| g_local | 1.391$\times$10-14 m/s2 |
+| M_DM | 1$\times$1038 kg |
+| $\delta$$\rho$/$\rho$ | 0.02 |
 
 ---
 
@@ -222,23 +222,23 @@ the same star-forming complex with equivalent physical scale.
 
 | Field | Value |
 |-------|-------|
-| I | 1×1024 A |
-| A | 1×1052 m2 |
-| ω₁ | 1×1012 rad/s |
-| ω₂ | 9.99×1011 rad/s |
-| V_sys | 1×1080 m3 |
-| v_exp | 3×108 m/s |
-| t | 4.35×1017 s |
+| I | 1$\times$1024 A |
+| A | 1$\times$1052 m2 |
+| $\omega$1 | 1$\times$1012 rad/s |
+| $\omega$2 | 9.99$\times$1011 rad/s |
+| V_sys | 1$\times$1080 m3 |
+| v_exp | 3$\times$108 m/s |
+| t | 4.35$\times$1017 s |
 | z | 0.0 |
-| f_fluid | 1×10-18 Hz |
-| M | 1×1053 kg |
-| r | 1×1026 m |
-| B | 1×10-15 T |
-| B_crit | 1×10-14 T |
-| ρ_f | 1×10-26 kg/m3 |
-| g_local | 6.67×10-33 m/s2 |
-| M_DM | 1×1053 kg |
-| δρ/ρ | 0.001 |
+| f_fluid | 1$\times$10-18 Hz |
+| M | 1$\times$1053 kg |
+| r | 1$\times$1026 m |
+| B | 1$\times$10-15 T |
+| B_crit | 1$\times$10-14 T |
+| $\rho$_f | 1$\times$10-26 kg/m3 |
+| g_local | 6.67$\times$10-33 m/s2 |
+| M_DM | 1$\times$1053 kg |
+| $\delta$$\rho$/$\rho$ | 0.001 |
 
 ---
 
@@ -277,13 +277,13 @@ $$
 
 | System | Class | r (m) | M (kg) | Physics Domain |
 |--------|-------|:------:|:------:|:--------------|
-| SGR1745 | Magnetar | 1×104 | 2.984×1030 | NS surface gravity |
-| Sag A* | SMBH | 1×1012 | 8.155×1036 | Galactic center |
-| Pillars | GMC | 9.46×1015 | 1.989×1032 | Stellar nursery |
-| Tapestry | LMC-scale | 3.086×1017 | 1.989×1035 | Star-forming complex |
-| Westerlund 2 | Cluster | 3.086×1017 | 1.989×1035 | OB star cluster |
-| Rings | Lens | 3.086×1017 | 1.989×1036 | Gravitational lens |
-| Student's Guide | Cosmological | 1×1026 | 1×1053 | Observable universe |
+| SGR1745 | Magnetar | 1$\times$104 | 2.984$\times$1030 | NS surface gravity |
+| Sag A* | SMBH | 1$\times$1012 | 8.155$\times$1036 | Galactic center |
+| Pillars | GMC | 9.46$\times$1015 | 1.989$\times$1032 | Stellar nursery |
+| Tapestry | LMC-scale | 3.086$\times$1017 | 1.989$\times$1035 | Star-forming complex |
+| Westerlund 2 | Cluster | 3.086$\times$1017 | 1.989$\times$1035 | OB star cluster |
+| Rings | Lens | 3.086$\times$1017 | 1.989$\times$1036 | Gravitational lens |
+| Student's Guide | Cosmological | 1$\times$1026 | 1$\times$1053 | Observable universe |
 
 The 7 systems span **22 orders of magnitude** in radius (104 m to 1026 m) and **23 orders in
 mass** (1030 kg to 1053 kg), making this the most comprehensive UQFF multi-scale validation
@@ -297,13 +297,13 @@ For reference — results from PAPER_379 (full comparison) and PAPER_382/384 (pe
 
 | System | Compressed MUGE (m/s2) | Resonance MUGE (m/s2) | Ratio |
 |--------|:---------------------:|:--------------------:|:-----:|
-| SGR1745 | 1.782×1039 | 1.773×10-9 | 1048 |
-| Sag A* | 2.966×1034 | 4.105×1029 | ~105 |
-| Tapestry | ~μ_s∇(M_s/r) | fluid-dominated | converge |
-| Westerlund 2 | ~μ_s∇(M_s/r) | fluid-dominated | converge |
-| Pillars | ~μ_s∇(M_s/r) | fluid-dominated | converge |
-| Rings | ~μ_s∇(M_s/r) | fluid-dominated | converge |
-| Student's Guide | ~μ_s∇(M_s/r) | fluid-dominated | converge |
+| SGR1745 | 1.782$\times$1039 | 1.773$\times$10-9 | 1048 |
+| Sag A* | 2.966$\times$1034 | 4.105$\times$1029 | ~105 |
+| Tapestry | ~$\mu$_s$\nabla$(M_s/r) | fluid-dominated | converge |
+| Westerlund 2 | ~$\mu$_s$\nabla$(M_s/r) | fluid-dominated | converge |
+| Pillars | ~$\mu$_s$\nabla$(M_s/r) | fluid-dominated | converge |
+| Rings | ~$\mu$_s$\nabla$(M_s/r) | fluid-dominated | converge |
+| Student's Guide | ~$\mu$_s$\nabla$(M_s/r) | fluid-dominated | converge |
 
 ---
 
@@ -329,7 +329,7 @@ For reference — results from PAPER_379 (full comparison) and PAPER_382/384 (pe
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -348,7 +348,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -450,7 +450,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.060 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -461,13 +461,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

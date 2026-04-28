@@ -57,7 +57,7 @@ modelling.
 $$U_m = \sum_j \left[ \frac{\mu_j(t, \rho_{\text{vac},[SCm]})}{r_j} \cdot \left(1 - e^{-\gamma t \cdot \cos(\pi t_n)}\right) \cdot \hat{\phi}_j \right] \cdot P_{\text{SCm}} \cdot E_{\text{react}} \cdot (1 + 10^{13} \cdot f_{\text{Heaviside}}) \cdot (1 + f_{\text{quasi}})$$
 
 **Parameters:**
-- $\mu_j = 3.38 \times 10^{23}$ T·m3, $r_j = 1.496 \times 10^{13}$ m, $\gamma = 0.00005$ day-1
+- $\mu_j = 3.38 \times 10^{23}$ T$\cdot$m3, $r_j = 1.496 \times 10^{13}$ m, $\gamma = 0.00005$ day-1
 - $f_{\text{quasi}} = 0.01$, $P_{\text{SCm}} \approx 1$, $E_{\text{react}} = 10^{46}$
 
 **Heaviside amplification:** $(1 + 10^{13} \cdot 0.01) = (1 + 10^{11})$ — models SCm phase-transition jump at quasar jets and nebular boundaries.
@@ -112,14 +112,14 @@ $$U_{g3} = k_3 \cdot \sum_j B_j(r, \theta, t, \rho_{\text{vac},[SCm]}) \cdot \co
 | Variable | Integration Point | Physical Role |
 |---|---|---|
 | $f_{\text{Heaviside}}$ | $F_{\text{env}}$ via $U_m$ | SCm phase-transition jump; amplifies quasar jet & nebular fields |
-| $i$ | $F_{\text{env}}$ + $\psi_{\text{total}}$ via $F_U$ | Multi-scale gravity indexing (stellar → galactic) |
+| $i$ | $F_{\text{env}}$ + $\psi_{\text{total}}$ via $F_U$ | Multi-scale gravity indexing (stellar $\to$ galactic) |
 | $H_{\text{SCm}}$ | $F_{\text{env}}$ via $U_{g2}$ | Heliospheric thickness modulation; Red Dwarf Reactor analogue |
 | $\lambda_i$ | $F_{\text{env}}$ via $U_i$ | Inertial resistance; stabilises molecular clouds & plasmoids |
 | $j$ | $F_{\text{env}}$ via $U_m$ and $U_{g3}$ | Magnetic string summation; disk & nebular AGN dynamics |
 
 ### 3.2 Advancements to UQFF
 
-1. **Enhanced Magnetic Modelling**: $f_{\text{Heaviside}}$ provides a $10^{11}$× amplification for extreme magnetic environments (quasar jets, Drawing 1; nebular dynamics, Drawing 32).
+1. **Enhanced Magnetic Modelling**: $f_{\text{Heaviside}}$ provides a $10^{11}$$\times$ amplification for extreme magnetic environments (quasar jets, Drawing 1; nebular dynamics, Drawing 32).
 2. **Structured Multi-Scale Gravity**: $i$ index enables systematic summation of all four gravity channels (Ug1–Ug4), improving scalability from Solar to galactic regimes.
 3. **Heliospheric Flexibility**: $H_{\text{SCm}} \sim 1$ introduces adjustable outer-field dynamics relevant to both astrophysical models and Red Dwarf Reactor plasma boundary studies.
 4. **Inertial Stability**: Uniform $\lambda_i = 1.0$ provides consistent resistive damping, critical for molecular cloud collapse (Drawing 33) and galactic disk kinematics.
@@ -140,7 +140,7 @@ $$U_{g3} = k_3 \cdot \sum_j B_j(r, \theta, t, \rho_{\text{vac},[SCm]}) \cdot \co
 | $\rho_{\text{vac},[UA]}$ | $7.09 \times 10^{-36}$ | J/m3 |
 | $\rho_{\text{vac},[SCm]}$ | $7.09 \times 10^{-37}$ | J/m3 |
 | $E_{\text{react}}$ | $10^{46}$ | J/m3 |
-| $\mu_j$ | $3.38 \times 10^{23}$ | T·m3 |
+| $\mu_j$ | $3.38 \times 10^{23}$ | T$\cdot$m3 |
 | $r_j = R_b$ | $1.496 \times 10^{13}$ | m |
 | $\gamma$ | $0.00005$ | day-1 |
 | $M_s$ | $1.989 \times 10^{30}$ | kg |
@@ -193,7 +193,7 @@ Knowledge Base 7. Share link: https://grok.com/share/bGVnYWN5_8f3eb0d2-42b7-442d
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -212,7 +212,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -249,7 +249,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -352,7 +352,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.183 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -363,13 +363,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

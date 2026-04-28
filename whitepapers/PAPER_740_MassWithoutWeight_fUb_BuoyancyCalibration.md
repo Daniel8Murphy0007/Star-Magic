@@ -29,8 +29,8 @@ W (Youngstown, OH, USA)
 
 In the UQFF framework, "mass" is not a fundamental property but an emergent ratio: the proportion of
 effective gravity (FU_g1) to superconductive buoyancy (F_U_Bi) at any given scale. This paper
-formalizes the **f_Ub calibration factor** as f_Ub ∝ Δk_η (deviation from nominal calibration
-constant k_η), defines the **quantum-to-mass gradient** at 7–10 U_mag degrees of superconductive
+formalizes the **f_Ub calibration factor** as f_Ub $\propto$ $\Delta$k_$\eta$ (deviation from nominal calibration
+constant k_$\eta$), defines the **quantum-to-mass gradient** at 7–10 U_mag degrees of superconductive
 magnetism, and demonstrates that the same framework applies without modification from atomic
 hydrogen to galactic scales. The paper also demonstrates why the Standard Model's use of "mass" as a
 quantitative absolute is a context-dependent approximation of the universal UQFF buoyancy-gravity
@@ -76,21 +76,21 @@ field. Move to a neutron star and the ratio changes — but the UQFF equations r
 ### 3.1 Definition
 
 The **f_Ub factor** encodes how much the quantum buoyancy component deviates from the nominal
-coupling constant k_η:
+coupling constant k_$\eta$:
 
 $$
 \begin{aligned}
-  & f_Ub = Δk_η / k_η_reference \\
-  & Δk_η = k_η_nominal(scale) - k_η_measured(observation) \\
-  & k_η_reference = reference coupling at chosen scale (e.g., galaxy-scale = 1e9)
+  & f_Ub = \Deltak_\eta / k_\eta_reference \\
+  & \Deltak_\eta = k_\eta_nominal(scale) - k_\eta_measured(observation) \\
+  & k_\eta_reference = reference coupling at chosen scale (e.g., galaxy-scale = 1e9)
 \end{aligned}
 $$
 
 ### 3.2 Physical Meaning
 
 f_Ub is the fractional mismatch between:
-- What UQFF predicts the buoyancy force should be (k_η_nominal)
-- What the actual astronomical observation shows (k_η_measured)
+- What UQFF predicts the buoyancy force should be (k_$\eta$_nominal)
+- What the actual astronomical observation shows (k_$\eta$_measured)
 
 A positive f_Ub means the object is *more buoyant than expected* (mass appears lower than SM
 prediction).  
@@ -102,10 +102,10 @@ the halo.
 
 ### 3.3 f_Ub by Scale
 
-| Object Class | k_η_nominal | k_η_measured | f_Ub | UQFF Effect |
+| Object Class | k_$\eta$_nominal | k_$\eta$_measured | f_Ub | UQFF Effect |
 |---|---|---|---|---|
 | Spiral galaxy (whole) | 1e9 | ~9.5e8 | +0.053 | Slight buoyancy excess |
-| Dwarf galaxy / LMC filaments | 1e8 | ~1.1e8 | -0.091 | Mass excess → "dark matter" in SM |
+| Dwarf galaxy / LMC filaments | 1e8 | ~1.1e8 | -0.091 | Mass excess $\to$ "dark matter" in SM |
 | Star cluster (globular) | 1e7 | ~9.3e6 | +0.075 | Self-consistent |
 | H II region (Tapestry) | 1e7 | ~9.0e6 | +0.100 | Buoyancy supports filaments |
 | Planetary nebula (M57) | 1e5 | ~9.7e4 | +0.030 | Shell expansion driven |
@@ -115,10 +115,10 @@ the halo.
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi}(full) = Σ_{k=1}^{26} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r2 * cos(θ_k) * f(ν_THz) * f_Ub] \\
+  & \text{F\_U\_Bi}(full) = \Sigma_{k=1}^{26} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r2 * cos(\theta_k) * f(\nu_THz) * f_Ub] \\
   & where f_Ub at any scale: \\
-  & f_Ub = (k_η_nominal - k_η_observed) / k_η_reference \\
-  & k_{Ub,k} = k_η * f_Ub  (per-state coupling, includes calibration)
+  & f_Ub = (k_\eta_nominal - k_\eta_observed) / k_\eta_reference \\
+  & k_{Ub,k} = k_\eta * f_Ub  (per-state coupling, includes calibration)
 \end{aligned}
 $$
 
@@ -144,14 +144,14 @@ formation**
 
 $$
 \begin{aligned}
-  & \text{U\_mag\_degree}(i) = arcsin([SCm]_i / B_crit) * 180/π \\
+  & \text{U\_mag\_degree}(i) = arcsin([SCm]_i / B_crit) * 180/\pi \\
   & For state i, [SCm]_i = 1e-5 * i2 T, B_crit = 4.4e13 T: \\
   & [SCm]_i / B_crit = 2.27e-19 * i2 \\
-  & \text{U\_mag\_degree}(i) ≈ 2.27e-19 * i2 * (180/π)  degrees  (small angle) \\
+  & \text{U\_mag\_degree}(i) \approx 2.27e-19 * i2 * (180/\pi)  degrees  (small angle) \\
   & Transition zone (7–10 degrees): \\
-  & i_low = sqrt(7 / (2.27e-19 * 180/π)) ≈ sqrt(2.16e17) ≈ 4.65e8  (sub-Planck i, quantum regime) \\
-  & → At atomic scale, the transition is at i corresponding to the electron binding energy \\
-  & → For hydrogen: binding energy threshold ≈ 13.6 eV
+  & i_low = sqrt(7 / (2.27e-19 * 180/\pi)) \approx sqrt(2.16e17) \approx 4.65e8  (sub-Planck i, quantum regime) \\
+  & \to At atomic scale, the transition is at i corresponding to the electron binding energy \\
+  & \to For hydrogen: binding energy threshold \approx 13.6 eV
 \end{aligned}
 $$
 
@@ -162,14 +162,14 @@ U_mag degree threshold during the DPM/ACP creation stage.
 
 $$
 \begin{aligned}
-  & E_gradient = c * ν_res * h(f_SCm) * G_geo    [PAPER_738 Stage 6 equation] \\
+  & E_gradient = c * \nu_res * h(f_SCm) * G_geo    [PAPER_738 Stage 6 equation] \\
   & For hydrogen ground state: \\
-  & ν_res = 1.3e12 Hz (THz coupling) \\
+  & \nu_res = 1.3e12 Hz (THz coupling) \\
   & h(f_SCm) = f_SCm normalized = 7.09e-37 / (7.09e-37 + 7.09e-36) = 0.0909 \\
-  & G_geo = geometric factor ≈ 1.0 \\
+  & G_geo = geometric factor \approx 1.0 \\
   & E_gradient = (2.998e8) * (1.3e12) * (6.626e-34) * (0.0909) * 1.0 \\
   & = 2.376e-14 J \\
-  & = 148.3 MeV    (≈ proton rest energy 938 MeV / 6.3 — one fragment's contribution)
+  & = 148.3 MeV    (\approx proton rest energy 938 MeV / 6.3 — one fragment's contribution)
 \end{aligned}
 $$
 
@@ -182,11 +182,11 @@ The same buoyancy mechanism applies at every scale without modification:
 ### 5.1 Bi-molecular Scale
 $$
 \begin{aligned}
-  & Two H₂ molecules with hydrogen bond: \\
+  & Two H2 molecules with hydrogen bond: \\
   & \text{F\_U\_Bi} = k_{Ub} * (f_UA' * f_SCm * \text{R\_EB\_vdW})/r_bond2 * f_Ub \\
   & \text{R\_EB\_vdW} = 2.5 Angstrom = 2.5e-10 m \\
   & r_bond = 1.8e-10 m \\
-  & \text{F\_U\_Bi} ≈ 3.2e-12 N  (pN range, comparable to van-der-Waals)
+  & \text{F\_U\_Bi} \approx 3.2e-12 N  (pN range, comparable to van-der-Waals)
 \end{aligned}
 $$
 
@@ -195,8 +195,8 @@ $$
 \begin{aligned}
   & R_EB = lunar orbital radius = 3.84e8 m \\
   & f_Ub = 0.04 (near-Moon calibration) \\
-  & \text{F\_U\_Bi} ≈ 4.2e-3 N/kg  [compared to FU_g1 = 9.8 N/kg at Earth surface] \\
-  & Ratio: \text{F\_U\_Bi}/FU_g1 ≈ 4.3e-4 → subtle buoyancy effect
+  & \text{F\_U\_Bi} \approx 4.2e-3 N/kg  [compared to FU_g1 = 9.8 N/kg at Earth surface] \\
+  & Ratio: \text{F\_U\_Bi}/FU_g1 \approx 4.3e-4 \to subtle buoyancy effect
 \end{aligned}
 $$
 
@@ -205,18 +205,18 @@ $$
 \begin{aligned}
   & R_EB = 8 kpc galactic orbital radius = 2.47e20 m \\
   & f_Ub = 0.053 (MW calibration from rotation curve) \\
-  & \text{F\_U\_Bi} ≈ 1.2e-8 N/kg  [compared to FU_g1 = 2.3e-10 m/s2] \\
-  & Ratio: \text{F\_U\_Bi}/FU_g1 ≈ 51.8 → buoyancy DOMINATES at galactic scale
+  & \text{F\_U\_Bi} \approx 1.2e-8 N/kg  [compared to FU_g1 = 2.3e-10 m/s2] \\
+  & Ratio: \text{F\_U\_Bi}/FU_g1 \approx 51.8 \to buoyancy DOMINATES at galactic scale
 \end{aligned}
 $$
 
 ### 5.4 Universal Scale
 $$
 \begin{aligned}
-  & At Hubble radius r_H ≈ 4.4e26 m: \\
-  & FU_g1 → 0 (gravity dilutes as 1/r2) \\
-  & \text{F\_U\_Bi} → constant (buoyancy is non-local via DPM coherence) \\
-  & → "Accelerated expansion" = buoyancy exceeding gravity at cosmic scale
+  & At Hubble radius r_H \approx 4.4e26 m: \\
+  & FU_g1 \to 0 (gravity dilutes as 1/r2) \\
+  & \text{F\_U\_Bi} \to constant (buoyancy is non-local via DPM coherence) \\
+  & \to "Accelerated expansion" = buoyancy exceeding gravity at cosmic scale
 \end{aligned}
 $$
 
@@ -228,12 +228,12 @@ The cosmological acceleration observed by Perlmutter/Riess (1998) in Type Ia sup
 
 $$
 \begin{aligned}
-  & Standard cosmology: Λ = cosmological constant = "dark energy" \\
-  & UQFF interpretation: Λ_eff = \text{F\_U\_Bi\_cosmic} / (\text{FU\_g1\_cosmic}) \\
+  & Standard cosmology: \Lambda = cosmological constant = "dark energy" \\
+  & UQFF interpretation: \Lambda_eff = \text{F\_U\_Bi\_cosmic} / (\text{FU\_g1\_cosmic}) \\
   & = buoyancy-to-gravity ratio at Hubble scale \\
-  & = f_Ub * (ρ_UA'/ρ_SCm) * c2 \\
+  & = f_Ub * (\rho_UA'/\rho_SCm) * c2 \\
   & = f_Ub * 10 * (3e8)2 J/m3 \\
-  & ≈ 6.7e-10 J/m3  (within ~2× of observed Λ ≈ 6.9e-10 J/m3)
+  & \approx 6.7e-10 J/m3  (within ~2\times of observed \Lambda \approx 6.9e-10 J/m3)
 \end{aligned}
 $$
 
@@ -246,14 +246,14 @@ universe.
 
 $$
 \begin{aligned}
-  & v_flat2 = \text{FU\_g1\_compressed} * r  [DPM-seeded prediction → falls off as r increases] \\
-  & \text{v\_flat2\_observed} = constant at large r   ["missing mass" ≈ dark matter in SM] \\
+  & v_flat2 = \text{FU\_g1\_compressed} * r  [DPM-seeded prediction \to falls off as r increases] \\
+  & \text{v\_flat2\_observed} = constant at large r   ["missing mass" \approx dark matter in SM] \\
   & UQFF correction: \\
   & \text{v\_flat2\_corrected} = (FU_g1 + \text{F\_U\_Bi}) * r \\
-  & = FU_g1 * (1 + f_Ub * [ρ_UA'/ρ_SCm]) * r \\
-  & = FU_g1 * 11 * r  [since ρ_UA'/ρ_SCm = 10, (1+10) = 11] \\
-  & → Flat rotation curves naturally emerge from the factor (1+ρ_UA'/ρ_SCm) = 11 \\
-  & when f_Ub brings the calibration to the proper galactic k_η scale.
+  & = FU_g1 * (1 + f_Ub * [\rho_UA'/\rho_SCm]) * r \\
+  & = FU_g1 * 11 * r  [since \rho_UA'/\rho_SCm = 10, (1+10) = 11] \\
+  & \to Flat rotation curves naturally emerge from the factor (1+\rho_UA'/\rho_SCm) = 11 \\
+  & when f_Ub brings the calibration to the proper galactic k_\eta scale.
 \end{aligned}
 $$
 
@@ -263,12 +263,12 @@ $$
 
 | Concept | Symbol | Value | Notes |
 |---|---|---|---|
-| f_Ub calibration | f_Ub = Δk_η/k_η_ref | 0.03–0.10 (scale-dependent) | Galaxy→cluster→H II |
+| f_Ub calibration | f_Ub = $\Delta$k_$\eta$/k_$\eta$_ref | 0.03–0.10 (scale-dependent) | Galaxy$\to$cluster$\to$H II |
 | Quantum-to-mass threshold | U_mag | 7–10 degrees | SCm field at ACP Stage 6 |
-| THz coupling at gradient | ν_res | ~1.2–1.3 THz | Measured in 2025 THz data |
-| Buoyancy excess factor | `F_U_Bi`/FU_g1 | 1.5–2.0 (cosmic) | Replaces Λ/dark energy |
-| UA'/SCm density ratio | ρ_UA'/ρ_SCm | 10 | → (1+10)=11 factor universal |
-| Flat rotation curve factor | (1+ρ_UA'/ρ_SCm) | 11 | Replaces dark matter at galaxy scale |
+| THz coupling at gradient | $\nu$_res | ~1.2–1.3 THz | Measured in 2025 THz data |
+| Buoyancy excess factor | `F_U_Bi`/FU_g1 | 1.5–2.0 (cosmic) | Replaces $\Lambda$/dark energy |
+| UA'/SCm density ratio | $\rho$_UA'/$\rho$_SCm | 10 | $\to$ (1+10)=11 factor universal |
+| Flat rotation curve factor | (1+$\rho$_UA'/$\rho$_SCm) | 11 | Replaces dark matter at galaxy scale |
 | Gradient energy (H) | E_gradient | ~148 MeV | ~1/6 proton rest energy |
 
 ---
@@ -289,7 +289,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -308,7 +308,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -398,7 +398,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.079 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

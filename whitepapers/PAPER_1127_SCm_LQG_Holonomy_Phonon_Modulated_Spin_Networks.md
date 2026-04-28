@@ -41,7 +41,7 @@ $$\hat{A} = 8\pi \gamma \ell_P^2 \sqrt{j(j+1)}$$
 
 $$\ell_P = \sqrt{\frac{\hbar G}{c^3}}$$
 
-with $\hbar = 1.055 \times 10^{-34}$ J·s, $G = 6.674 \times 10^{-11}$ m$^3$ kg$^{-1}$ s$^{-2}$,
+with $\hbar = 1.055 \times 10^{-34}$ J$\cdot$s, $G = 6.674 \times 10^{-11}$ m$^3$ kg$^{-1}$ s$^{-2}$,
 $c = 2.998 \times 10^8$ m/s.
 
 **Minimum area eigenvalue** (lowest non-trivial spin $j = 1/2$):

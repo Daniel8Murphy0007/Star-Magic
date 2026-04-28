@@ -20,7 +20,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
@@ -28,12 +28,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 The UQFF F_u coupling is refined using SO(10) grand unification predictions for the electron
 electric dipole moment (EDM) d_e ~ 10?5 ecm. A new phase boundary is identified at P_SCm = 1 where
 darkonia (dark-sector charmonium analogs) become stable. The V_cb CKM element coupling k_?G_Fs/p and
-the tau-lepton anomaly deviation t_dev = 5×10-8 s (< 5% error relative to Super Tau-Charm factory
+the tau-lepton anomaly deviation t_dev = 5$\times$10-8 s (< 5% error relative to Super Tau-Charm factory
 limits) are derived.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -48,9 +48,9 @@ The refined F_u positive coupling from SO(10) EDM:
 $$F_u^+ = \frac{d_e \cdot e}{2 m_e c} \cdot e^{-[SSq] \cdot n / 26}$$
 
 where:
-- d_e = 1.6×10-44 Cm  (SI equivalent of ~10?5 ecm SO(10) prediction)
-- e = 1.6×10?? C
-- m_e = 9.11×10? kg
+- d_e = 1.6$\times$10-44 Cm  (SI equivalent of ~10?5 ecm SO(10) prediction)
+- e = 1.6$\times$10?? C
+- m_e = 9.11$\times$10? kg
 - [SSq] = 0.57
 - n = 13 (pseudo-scalar Ramanujan state; half-sum of 26 states)
 
@@ -75,13 +75,13 @@ $$V_{cb}^{\rm UQFF} = k_\eta \cdot G_F^2 \cdot s / \pi$$
 
 where:
 - k_? = 10? (UQFF aether coupling)
-- G_F = 1.1664×10-5 GeV? (Fermi constant)
+- G_F = 1.1664$\times$10-5 GeV? (Fermi constant)
 - s = centre-of-mass energy squared (GeV)
-- V_cb = (40.5 × 1.3)10? (PDG 2024)
+- V_cb = (40.5 $\times$ 1.3)10? (PDG 2024)
 
 ### 2.4 tau_dev from g-2 UQFF Fit
 
-From PAPER_333 BSM fit: a = 4.74×10-5, b = 9.96, ?_Higgs = 47.34 ? t_dev = 5×10-8 s, error < 5%
+From PAPER_333 BSM fit: a = 4.74$\times$10-5, b = 9.96, ?_Higgs = 47.34 ? t_dev = 5$\times$10-8 s, error < 5%
 compared to Super Tau-Charm factory precision target.
 
 ---
@@ -91,10 +91,10 @@ compared to Super Tau-Charm factory precision target.
 | Quantity | Value | Notes |
 |----------|-------|-------|
 | d_e (SO(10)) | ~10?5 ecm | 3 below ACME limit |
-| F_u?(n=13) | 6.5×10-45 N | [SSq] Ramanujan suppression |
+| F_u?(n=13) | 6.5$\times$10-45 N | [SSq] Ramanujan suppression |
 | P_SCm phase boundary | P_SCm = 1 | darkonia stable |
-| V_cb (PDG) | 40.5×10? | CKM reference |
-| t_dev | 5×10-8 s | g-2 fit < 5% error |
+| V_cb (PDG) | 40.5$\times$10? | CKM reference |
+| t_dev | 5$\times$10-8 s | g-2 fit < 5% error |
 | ?_Higgs | 47.34 | Universal UQFF Higgs coupling |
 
 ---
@@ -158,7 +158,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -259,7 +259,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.126 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -270,13 +270,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

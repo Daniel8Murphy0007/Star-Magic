@@ -23,10 +23,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 GAL-CLUS-022058s (the "Molten Ring") is one of the largest Einstein rings discovered by Hubble, with
-a lens cluster at z ≈ 0.5 and source at z ≈ 1.0. This paper derives the UQFF-modified Einstein-ring
+a lens cluster at z $\approx$ 0.5 and source at z $\approx$ 1.0. This paper derives the UQFF-modified Einstein-ring
 gravity incorporating a cluster mass of 1014 MM_sun at the Einstein radius r_E = 100 kpc, Hubble
 expansion H(z=0.5), a lensing efficiency parameter L(t), and the Aether EM correction. The result,
-g_Rings ≈ 1.053×10-2 m/s2, represents the effective infall acceleration at the Einstein radius.
+g_Rings $\approx$ 1.053$\times$10-2 m/s2, represents the effective infall acceleration at the Einstein radius.
 
 ---
 
@@ -37,9 +37,9 @@ within the Einstein radius. For GAL-CLUS-022058s the Einstein radius corresponds
 of ~100 kpc at the lens redshift z = 0.5. UQFF adds three corrections to the standard lensing
 formula:
 
-1. Hubble correction at z = 0.5: H(z) = H₀√(Ω_m(1+z)3 + Ω_Λ)
-2. Lensing efficiency term: L(t) = GM/(c2·r) × D_LS/D_S
-3. EM Aether term: q × (v × B) × 11 × 10-12
+1. Hubble correction at z = 0.5: H(z) = H0$\sqrt{}$($\Omega$_m(1+z)3 + $\Omega$_$\Lambda$)
+2. Lensing efficiency term: L(t) = GM/(c2$\cdot$r) $\times$ D_LS/D_S
+3. EM Aether term: q $\times$ (v $\times$ B) $\times$ 11 $\times$ 10-12
 
 ---
 
@@ -47,15 +47,15 @@ formula:
 
 $$
 \begin{aligned}
-  & g_Rings(r_E, t) = [G·M_cluster / r_E2] × (1 + H(z)) × (1 − B/B_crit) \\
-  & × (1 + L(t)) \\
-  & + q·(v_ICM × B_ICM) × A_aeth × A_scale \\
-  & H(z=0.5) = H_0 × sqrt(Ω_m × (1+z)3 + Ω_Λ) \\
-  & = 70 × sqrt(0.3 × 3.375 + 0.7) \\
-  & = 70 × sqrt(1.7125) ≈ 70 × 1.3086 ≈ 91.63 km/s/Mpc \\
-  & L(t) = [G·M / (c2·r_E)] × (D_LS / D_S) \\
-  & = 6.674×10-11 × 1.989×1044 / (9×1016 × (3.086×1020)2) × 0.5 \\
-  & ≈ 2.388×10-4
+  & g_Rings(r_E, t) = [G\cdotM_cluster / r_E2] \times (1 + H(z)) \times (1 - B/B_crit) \\
+  & \times (1 + L(t)) \\
+  & + q\cdot(v_ICM \times B_ICM) \times A_aeth \times A_scale \\
+  & H(z=0.5) = H_0 \times sqrt(\Omega_m \times (1+z)3 + \Omega_\Lambda) \\
+  & = 70 \times sqrt(0.3 \times 3.375 + 0.7) \\
+  & = 70 \times sqrt(1.7125) \approx 70 \times 1.3086 \approx 91.63 km/s/Mpc \\
+  & L(t) = [G\cdotM / (c2\cdotr_E)] \times (D_LS / D_S) \\
+  & = 6.674\times10-11 \times 1.989\times1044 / (9\times1016 \times (3.086\times1020)2) \times 0.5 \\
+  & \approx 2.388\times10-4
 \end{aligned}
 $$
 
@@ -65,14 +65,14 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Cluster mass | M | 1.989×1044 | kg (1014 MM_sun) |
-| Einstein radius | r_E | 3.086×1020 | m (100 kpc) |
+| Cluster mass | M | 1.989$\times$1044 | kg (1014 MM_sun) |
+| Einstein radius | r_E | 3.086$\times$1020 | m (100 kpc) |
 | Lens redshift | z_lens | 0.5 | — |
 | D_LS/D_S ratio | D_LS/D_S | 0.5 | — |
 | H(z=0.5) | H_z | 91.63 | km/s/Mpc |
-| Lensing efficiency | L(t) | 2.388×10-4 | — |
-| ICM B-field | B_ICM | 1.00×10-5 | T |
-| ICM velocity | v_ICM | 1.00×106 | m/s |
+| Lensing efficiency | L(t) | 2.388$\times$10-4 | — |
+| ICM B-field | B_ICM | 1.00$\times$10-5 | T |
+| ICM velocity | v_ICM | 1.00$\times$106 | m/s |
 | Aether factor | A_aeth | 11 | — |
 | Scale factor | A_scale | 10-12 | — |
 | Evaluation epoch | t | 5 Gyr | — |
@@ -83,12 +83,12 @@ $$
 
 $$
 \begin{aligned}
-  & g_grav = G × 1.989×1044 / (3.086×1020)2 \\
-  & = 6.674×10-11 × 1.989×1044 / 9.523×1040 \\
-  & ≈ 1.394×10-7 m/s2   [bare gravity — small] \\
-  & × (1 + H_z) × (1 + L) ≈ × 1.0003 ≈ same \\
-  & g_EM (dominant) ≈ 1.053×10-2 m/s2 \\
-  & g_Rings ≈ 1.053×10-2 m/s2
+  & g_grav = G \times 1.989\times1044 / (3.086\times1020)2 \\
+  & = 6.674\times10-11 \times 1.989\times1044 / 9.523\times1040 \\
+  & \approx 1.394\times10-7 m/s2   [bare gravity — small] \\
+  & \times (1 + H_z) \times (1 + L) \approx \times 1.0003 \approx same \\
+  & g_EM (dominant) \approx 1.053\times10-2 m/s2 \\
+  & g_Rings \approx 1.053\times10-2 m/s2
 \end{aligned}
 $$
 
@@ -108,9 +108,9 @@ Source arc length: l = 2π × D_L × θ_E
 
 ## 6. Conclusions
 
-The Molten Ring (GAL-CLUS-022058s) UQFF model yields g ≈ 1.053×10-2 m/s2 at the Einstein radius,
+The Molten Ring (GAL-CLUS-022058s) UQFF model yields g $\approx$ 1.053$\times$10-2 m/s2 at the Einstein radius,
 dominated by the Aether EM correction at ICM plasma velocities. The lensing efficiency parameter L =
-2.388×10-4 and Hubble correction H(z=0.5) = 91.63 km/s/Mpc are consistent with HST photometric model
+2.388$\times$10-4 and Hubble correction H(z=0.5) = 91.63 km/s/Mpc are consistent with HST photometric model
 fits. PAPER_758, CP4 class #342. v5.39.
 
 ---
@@ -218,7 +218,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.138 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -229,13 +229,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

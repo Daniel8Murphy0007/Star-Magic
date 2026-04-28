@@ -36,12 +36,12 @@ $$
 Nine astrophysical systems were processed from September 2025 detailed documents during the "Nine
 Sep docs" assimilation in gok_share_31b5c807a4. This paper catalogues the complete parameter set,
 scale class assignment, all 5 UQFF equation outputs, and 2025 observational source for each system.
-Systems span 7 orders of magnitude from Jupiter (107 m) to Abell 2256 (1.5×1025 m). Two canonical
+Systems span 7 orders of magnitude from Jupiter (107 m) to Abell 2256 (1.5$\times$1025 m). Two canonical
 UQFF scale classes are established: Compact (x_2 = 10 kly) and Galactic/Cluster (x_2 = 60 Mly).
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -55,11 +55,11 @@ present in Standard Model treatments.
 $$
 \begin{aligned}
   & x_2 (separation) = 10 kly \\
-  & UQFF \text{F\_U\_Bi\_i} ˜ -2.09×10212 N  (leading-term compact) \\
-  & g_Compressed  ˜  3.95×10-41 N \\
-  & R(t)          ˜ -1.12×10-42 N \\
-  & \text{F\_U\_Bi}        ˜  9.79×10?33 N \\
-  & U_i           ˜  1.38×10-47 + i·7.80×10-51  J/m3
+  & UQFF \text{F\_U\_Bi\_i} ˜ -2.09\times10212 N  (leading-term compact) \\
+  & g_Compressed  ˜  3.95\times10-41 N \\
+  & R(t)          ˜ -1.12\times10-42 N \\
+  & \text{F\_U\_Bi}        ˜  9.79\times10?33 N \\
+  & U_i           ˜  1.38\times10-47 + i\cdot7.80\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -67,15 +67,15 @@ $$
 $$
 \begin{aligned}
   & x_2 (separation) = 60 Mly \\
-  & UQFF \text{F\_U\_Bi\_i} ˜ -8.32×10217 N  (leading-term galactic) \\
-  & g_Compressed  ˜  4.12×10-41 N \\
-  & R(t)          ˜ -2.29×10-41 N \\
-  & \text{F\_U\_Bi}        ˜  1.02×10?32 N \\
-  & U_i           ˜  1.45×10-47 + i·8.20×10-51  J/m3
+  & UQFF \text{F\_U\_Bi\_i} ˜ -8.32\times10217 N  (leading-term galactic) \\
+  & g_Compressed  ˜  4.12\times10-41 N \\
+  & R(t)          ˜ -2.29\times10-41 N \\
+  & \text{F\_U\_Bi}        ˜  1.02\times10?32 N \\
+  & U_i           ˜  1.45\times10-47 + i\cdot8.20\times10-51  J/m3
 \end{aligned}
 $$
 
-Note: Jupiter is at Solar system scale (7.15×107 m radius) ? Compact class applies.
+Note: Jupiter is at Solar system scale (7.15$\times$107 m radius) ? Compact class applies.
 
 ---
 
@@ -90,19 +90,19 @@ Note: Jupiter is at Solar system scale (7.15×107 m radius) ? Compact class appl
 | x_2 (sep) | 2.9 kly | Document |
 | Mass | 1.4 M_? (NS) | — |
 | Period P | 0.08927 s | Chandra 2025 |
-| ? | 1.25×10?13 s/s | Fermi-LAT 2025 |
-| B_surface | 3.38×1012 G | — |
+| ? | 1.25$\times$10?13 s/s | Fermi-LAT 2025 |
+| B_surface | 3.38$\times$1012 G | — |
 | Scale class | **Compact** | x_2 < 10 kly |
 | **2025 Obs. Source** | **Chandra ACIS (2025) + Fermi-LAT PASS 8 (2025)** | — |
 
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -2.09×10212 N   [Compact CC; PAPER_332 12-term] \\
-  & g_Comp   =  3.95×10-41 N   [PAPER_336 6-term all-forces] \\
-  & R(t)     = -1.12×10-42 N   [PAPER_336 26×4 cosine] \\
-  & \text{F\_U\_Bi}   =  9.79×10?33 N   [PAPER_335 buoyancy kernel] \\
-  & U_i      =  1.38×10-47 + i·7.80×10-51  J/m3  [PAPER_334]
+  & \text{F\_U\_Bi\_i} = -2.09\times10212 N   [Compact CC; PAPER_332 12-term] \\
+  & g_Comp   =  3.95\times10-41 N   [PAPER_336 6-term all-forces] \\
+  & R(t)     = -1.12\times10-42 N   [PAPER_336 26\times4 cosine] \\
+  & \text{F\_U\_Bi}   =  9.79\times10?33 N   [PAPER_335 buoyancy kernel] \\
+  & U_i      =  1.38\times10-47 + i\cdot7.80\times10-51  J/m3  [PAPER_334]
 \end{aligned}
 $$
 
@@ -115,7 +115,7 @@ $$
 | Type | Seyfert AGN barred spiral | — |
 | Distance | 60.7 Mly | Hubble/HST |
 | x_2 (sep) | 60.7 Mly | Document |
-| BH Mass | 2×107 M_? | X-ray variability |
+| BH Mass | 2$\times$107 M_? | X-ray variability |
 | SFR | 30 M_?/yr | ALMA |
 | B_AGN | ~104 G (corona) | — |
 | Scale class | **Galactic** | x_2 > 60 Mly |
@@ -124,11 +124,11 @@ $$
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -8.32×10217 N   [Galactic GC] \\
-  & g_Comp   =  4.12×10-41 N \\
-  & R(t)     = -2.29×10-41 N \\
-  & \text{F\_U\_Bi}   =  1.02×10?32 N \\
-  & U_i      =  1.45×10-47 + i·8.20×10-51  J/m3
+  & \text{F\_U\_Bi\_i} = -8.32\times10217 N   [Galactic GC] \\
+  & g_Comp   =  4.12\times10-41 N \\
+  & R(t)     = -2.29\times10-41 N \\
+  & \text{F\_U\_Bi}   =  1.02\times10?32 N \\
+  & U_i      =  1.45\times10-47 + i\cdot8.20\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -149,11 +149,11 @@ $$
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -8.32×10217 N \\
-  & g_Comp   =  4.12×10-41 N \\
-  & R(t)     = -2.29×10-41 N \\
-  & \text{F\_U\_Bi}   =  1.02×10?32 N \\
-  & U_i      =  1.45×10-47 + i·8.20×10-51  J/m3
+  & \text{F\_U\_Bi\_i} = -8.32\times10217 N \\
+  & g_Comp   =  4.12\times10-41 N \\
+  & R(t)     = -2.29\times10-41 N \\
+  & \text{F\_U\_Bi}   =  1.02\times10?32 N \\
+  & U_i      =  1.45\times10-47 + i\cdot8.20\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -166,7 +166,7 @@ $$
 | Type | Merging galaxy cluster, double radio relic | — |
 | Distance | ~470 Mpc (~1.5 Gly equivalent z) | A&A |
 | x_2 (sep) | 1.5 Gly | Document |
-| M_cluster | ~4×1015 M_? | X-ray |
+| M_cluster | ~4$\times$1015 M_? | X-ray |
 | T_ICM | ~7.5 keV | Chandra |
 | Relic length | ~1.7 Mpc | LOFAR |
 | Scale class | **Cluster** | x_2 >> 60 Mly |
@@ -175,11 +175,11 @@ $$
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -8.32×10217 N   [Cluster scale ? same GC class] \\
-  & g_Comp   =  4.12×10-41 N \\
-  & R(t)     = -2.29×10-41 N \\
-  & \text{F\_U\_Bi}   =  1.02×10?32 N \\
-  & U_i      =  1.45×10-47 + i·8.20×10-51  J/m3
+  & \text{F\_U\_Bi\_i} = -8.32\times10217 N   [Cluster scale ? same GC class] \\
+  & g_Comp   =  4.12\times10-41 N \\
+  & R(t)     = -2.29\times10-41 N \\
+  & \text{F\_U\_Bi}   =  1.02\times10?32 N \\
+  & U_i      =  1.45\times10-47 + i\cdot8.20\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -193,19 +193,19 @@ $$
 | Distance | 6.5 kly (2.0 kpc) | Trimble 1968 |
 | x_2 (sep) | 6.5 kly | Document |
 | Period P | 0.03337 s | — |
-| ? | 4.21×10?13 s/s | — |
-| B_surface | 3.8×1012 G | — |
+| ? | 4.21$\times$10?13 s/s | — |
+| B_surface | 3.8$\times$1012 G | — |
 | Scale class | **Compact** | x_2 < 10 kly |
 | **2025 Obs. Source** | **SST-1M Cherenkov Array + LOFAR 2025 (new wisp morphology)** | — |
 
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -2.09×10212 N \\
-  & g_Comp   =  3.95×10-41 N \\
-  & R(t)     = -1.12×10-42 N \\
-  & \text{F\_U\_Bi}   =  9.79×10?33 N \\
-  & U_i      =  1.38×10-47 + i·7.80×10-51  J/m3
+  & \text{F\_U\_Bi\_i} = -2.09\times10212 N \\
+  & g_Comp   =  3.95\times10-41 N \\
+  & R(t)     = -1.12\times10-42 N \\
+  & \text{F\_U\_Bi}   =  9.79\times10?33 N \\
+  & U_i      =  1.38\times10-47 + i\cdot7.80\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -226,11 +226,11 @@ $$
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -8.32×10217 N \\
-  & g_Comp   =  4.12×10-41 N \\
-  & R(t)     = -2.29×10-41 N \\
-  & \text{F\_U\_Bi}   =  1.02×10?32 N \\
-  & U_i      =  1.45×10-47 + i·8.20×10-51  J/m3
+  & \text{F\_U\_Bi\_i} = -8.32\times10217 N \\
+  & g_Comp   =  4.12\times10-41 N \\
+  & R(t)     = -2.29\times10-41 N \\
+  & \text{F\_U\_Bi}   =  1.02\times10?32 N \\
+  & U_i      =  1.45\times10-47 + i\cdot8.20\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -242,11 +242,11 @@ $$
 |-----------|-------|--------|
 | Type | Gas giant planetary auroral system | — |
 | Distance | 5.2 AU (from Sun) | — |
-| x_2 (sep) | r = 7.15×107 m (equatorial radius) | Document |
+| x_2 (sep) | r = 7.15$\times$107 m (equatorial radius) | Document |
 | B_polar | 14 G | — |
 | H3+ emission | UV-optical | Webb UV/IR |
 | Io plasma torus | 6 t/s SO2 injection | Galileo/JUNO |
-| Scale class | **Compact** | r = 7.15×107 m << 10 kly |
+| Scale class | **Compact** | r = 7.15$\times$107 m << 10 kly |
 | **2025 Obs. Source** | **JWST NIRCam + MIRI May 2025 (Jupiter aurora seasonal survey)** | — |
 
 **Five UQFF Equations:**
@@ -276,11 +276,11 @@ U_i      =  1.38×10-47 + i·7.80×10-51  J/m3
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -2.09×10212 N \\
-  & g_Comp   =  3.95×10-41 N \\
-  & R(t)     = -1.12×10-42 N \\
-  & \text{F\_U\_Bi}   =  9.79×10?33 N \\
-  & U_i      =  1.38×10-47 + i·7.80×10-51  J/m3
+  & \text{F\_U\_Bi\_i} = -2.09\times10212 N \\
+  & g_Comp   =  3.95\times10-41 N \\
+  & R(t)     = -1.12\times10-42 N \\
+  & \text{F\_U\_Bi}   =  9.79\times10?33 N \\
+  & U_i      =  1.38\times10-47 + i\cdot7.80\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -293,7 +293,7 @@ $$
 | Type | Disrupted barred spiral (IC 2163 interaction partner) | — |
 | Distance | 114 Mly | SIMBAD |
 | x_2 (sep) | 114 Mly | Document |
-| BH Mass | ~3×107 M_? | X-ray |
+| BH Mass | ~3$\times$107 M_? | X-ray |
 | SFR | 40 M_?/yr (starburst enhanced) | ALMA |
 | Scale class | **Galactic** | x_2 > 60 Mly |
 | **2025 Obs. Source** | **Hubble WFC3 Aug 2025 (NGC 2207 UV starburst morphology, new data)** | — |
@@ -301,11 +301,11 @@ $$
 **Five UQFF Equations:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = -8.32×10217 N \\
-  & g_Comp   =  4.12×10-41 N \\
-  & R(t)     = -2.29×10-41 N \\
-  & \text{F\_U\_Bi}   =  1.02×10?32 N \\
-  & U_i      =  1.45×10-47 + i·8.20×10-51  J/m3
+  & \text{F\_U\_Bi\_i} = -8.32\times10217 N \\
+  & g_Comp   =  4.12\times10-41 N \\
+  & R(t)     = -2.29\times10-41 N \\
+  & \text{F\_U\_Bi}   =  1.02\times10?32 N \\
+  & U_i      =  1.45\times10-47 + i\cdot8.20\times10-51  J/m3
 \end{aligned}
 $$
 
@@ -375,7 +375,7 @@ kly / 60 Mly
 - PAPER_332: F_U_Bi_i 12-term integrand (Session 95)
 - PAPER_334: U_i complex superconductive (Session 95)
 - PAPER_335: F_U_Bi buoyancy kernel k^k (Session 95)
-- PAPER_336: g_Compressed all-forces + R(t) 26×4 (Session 95)
+- PAPER_336: g_Compressed all-forces + R(t) 26$\times$4 (Session 95)
 
 **Copyright:** Daniel T. Murphy — Star-Magic UQFF Whitepaper Series
 
@@ -387,7 +387,7 @@ kly / 60 Mly
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -406,7 +406,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -464,7 +464,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -514,7 +514,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -525,13 +525,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

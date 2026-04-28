@@ -49,7 +49,7 @@ $$r_\text{frost} = \left(\frac{280}{170}\right)^2 \approx 2.72 \text{ AU}$$
 **Protoplanetary disc temperature:**
 $$T(r) = 280 \cdot r_\text{AU}^{-1/2} \quad \text{K}$$
 
-**Frost radius (H₂O condensation at 170 K):**
+**Frost radius (H2O condensation at 170 K):**
 $$r_\text{frost} = \left(\frac{280}{170}\right)^2 = 2.718 \text{ AU}$$
 
 **Kirkwood commensurability index:**
@@ -66,25 +66,25 @@ $$U_b(r) = k_b \cdot T(r) / T_0 \cdot [SSq]^{r_\text{AU}}$$
 |---|---|---|---|---|
 | Mercury | 0.387 | 450 | Rock (>1000 K in proplyd) | — |
 | Venus | 0.723 | 329 | Rock/silicate | — |
-| Earth | 1.000 | 280 | Rock/H₂O ice edge | — |
-| Mars | 1.524 | 227 | Rock/CO₂ cap | — |
+| Earth | 1.000 | 280 | Rock/H2O ice edge | — |
+| Mars | 1.524 | 227 | Rock/CO2 cap | — |
 | Ceres | 2.767 | 168 | **Frost line** (ice-rich) | 3:1 |
 | Jupiter | 5.204 | 123 | Gas/ice | 1 |
-| Saturn | 9.537 | 91 | Gas/ice; Titan CH₄ | 2 |
+| Saturn | 9.537 | 91 | Gas/ice; Titan CH4 | 2 |
 | Uranus | 19.19 | 64 | Ice giant | 5 |
 | Neptune | 30.07 | 51 | Ice giant | 7 |
-| Pluto | 39.48 | 45 | KBO; N₂ ice | 9 |
+| Pluto | 39.48 | 45 | KBO; N2 ice | 9 |
 
 *Frost line at $r_\text{frost} = 2.72$ AU lies between Mars and Ceres. Ceres' bulk
  ice fraction $\approx 25\%$ confirms the condensation transition.*
 
 ---
 
-## §4 — Titan CH₄ Rain Prediction
+## §4 — Titan CH4 Rain Prediction
 
 Saturn's moon Titan with $r_\text{Saturn} = 9.54$ AU, $T \approx 91$ K.
-The CH₄ condensation temperature at Titan's surface pressure ($\approx 1.5$ bar)
-is $\approx 90$–$94$ K. The proplyd legacy model predicts CH₄ as the dominant
+The CH4 condensation temperature at Titan's surface pressure ($\approx 1.5$ bar)
+is $\approx 90$–$94$ K. The proplyd legacy model predicts CH4 as the dominant
 condensate at Saturn's orbital distance within 3 K precision — consistent with
 Cassini/VIMS measurements of Titan methane lakes.
 
@@ -117,7 +117,7 @@ the Ceres and outer belt volatile enhancement.
 | Equation | Description |
 |----------|-------------|
 | $T(r) = 280 \cdot r_\text{AU}^{-0.5}$ K | Disc temperature law |
-| $r_\text{frost} = (280/170)^2$ AU | H₂O frost line |
+| $r_\text{frost} = (280/170)^2$ AU | H2O frost line |
 | $K_i = \text{round}(T_J/T_\text{body})$ | Kirkwood index |
 | $U_b(r) = k_b \cdot (T/T_0) \cdot [SSq]^r$ | UQFF buoyancy disc term |
 
@@ -146,7 +146,7 @@ result = calc.compute()
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -249,7 +249,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.070 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -260,10 +260,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Solar System Proplyd luminosity UV/optical (HST) | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X `T_M_sun` = 5778 K | HST | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Solar System Proplyd luminosity UV/optical (HST) | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X `T_M_sun` = 5778 K | HST | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Solar System Proplyd

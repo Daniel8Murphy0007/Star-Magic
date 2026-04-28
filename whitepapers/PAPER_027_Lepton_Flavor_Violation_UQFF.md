@@ -37,21 +37,21 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 - [x] Discussion: physical interpretation  
 - [x] Conclusion: implications for broader UQFF framework  
 - [x] References: validation file + C++ source + observational data  
-- [x] Calibration constants explicitly stated: κ=0.0005/day, [SSq]=0.57
+- [x] Calibration constants explicitly stated: $\kappa$=0.0005/day, [SSq]=0.57
 
 ---
 
 ## Abstract
 
-Lepton flavor violation (LFV) — transitions that mix distinct lepton generations such as τ and e —
+Lepton flavor violation (LFV) — transitions that mix distinct lepton generations such as $\tau$ and e —
 is strictly forbidden in the Standard Model (SM) at tree level and suppressed to unmeasurable levels
 even through radiative corrections; its observation would constitute unambiguous evidence for new
 physics. We present a quantitative interpretation of the LHCb Run 2 search for the
-lepton-flavor-violating B-meson decay B0 → K*0 τ±e∓ (arXiv:2506.15347) within the Unified Quantum
+lepton-flavor-violating B-meson decay B0 $\to$ K*0 $\tau$$\pm$e$\mp$ (arXiv:2506.15347) within the Unified Quantum
 Field Framework (UQFF), deriving the observed upper limits from first principles through the UQFF
 temporal reversal parameter t_n and the Superconductive Shell Quotient [SSq] = 0.57. The UQFF
-`LFVBDecayTerm` predicts a suppressed branching ratio BR_UQFF(B0→K*0τ±e∓) consistent with the LHCb
-limits BR < 5.9×10-6 (τ-e⁺ mode, 90% CL) and BR < 4.9×10-6 (τ⁺e- mode, 90% CL), explaining the
+`LFVBDecayTerm` predicts a suppressed branching ratio BR_UQFF(B0$\to$K*0$\tau$$\pm$e$\mp$) consistent with the LHCb
+limits BR < 5.9$\times$10-6 ($\tau$-e+ mode, 90% CL) and BR < 4.9$\times$10-6 ($\tau$+e- mode, 90% CL), explaining the
 absence of signal as a consequence of the UQFF t_n < 0 reversal mechanism operating in the
 Di-Pseudo-Monopole (DPM) vacuum sector. This paper establishes LFV suppression as a natural
 prediction of the UQFF framework without requiring ad hoc discrete symmetries, and provides
@@ -71,8 +71,8 @@ neutrinos are strictly massless in the minimal SM, charged lepton flavor changin
 
 $$
 \begin{aligned}
-  & B0 → K*0 τ- e⁺    (ΔL_τ = −1, ΔL_e = +1) \\
-  & B0 → K*0 τ⁺ e-    (ΔL_τ = +1, ΔL_e = −1)
+  & B0 \to K*0 \tau- e+    (\DeltaL_\tau = -1, \DeltaL_e = +1) \\
+  & B0 \to K*0 \tau+ e-    (\DeltaL_\tau = +1, \DeltaL_e = -1)
 \end{aligned}
 $$
 
@@ -87,30 +87,30 @@ R-parity-violating supersymmetry.
 
 ### 1.2 The LHCb Run 2 Search (arXiv:2506.15347)
 
-The LHCb collaboration performed a search for B0 → K*0 τ±e∓ using 5.4 fb-1 of Run 2 proton-proton
-collision data at √s = 13 TeV. The analysis employed:
+The LHCb collaboration performed a search for B0 $\to$ K*0 $\tau$$\pm$e$\mp$ using 5.4 fb-1 of Run 2 proton-proton
+collision data at $\sqrt{}$s = 13 TeV. The analysis employed:
 
-- **Double-tag technique:** Reconstructing both B mesons in BB̄ pairs to control τ reconstruction  
+- **Double-tag technique:** Reconstructing both B mesons in BB̄ pairs to control $\tau$ reconstruction  
 - **GBDT/Fisher discriminants:** Multivariate selection optimized for signal-background separation  
-- **K*0 reconstruction:** Via K*0 → K⁺π- with tight vertex constraints
+- **K*0 reconstruction:** Via K*0 $\to$ K+$\pi$- with tight vertex constraints
 
 No significant excess was observed. The resulting limits at 90% (95%) confidence level are:
 
 $$
 \begin{aligned}
-  & BR(B0 → K*0 τ-e⁺) < 5.9 (7.1) × 10-6 \\
-  & BR(B0 → K*0 τ⁺e-) < 4.9 (6.0) × 10-6
+  & BR(B0 \to K*0 \tau-e+) < 5.9 (7.1) \times 10-6 \\
+  & BR(B0 \to K*0 \tau+e-) < 4.9 (6.0) \times 10-6
 \end{aligned}
 $$
 
-These represent some of the most stringent direct constraints on τ-e LFV in B-meson decays.
+These represent some of the most stringent direct constraints on $\tau$-e LFV in B-meson decays.
 
 ### 1.3 The Tau Dipole Moment Context (arXiv:2506.15245)
 
 Paper #27 sits in the broader context of tau lepton BSM physics established in arXiv:2506.15245,
 which projected sensitivity of the Super Tau-Charm Facility (STCF) to the tau anomalous magnetic
-moment Re(a_τ) at the level Re(a_τ) ∈ [−4.5, 6.9] × 10-3 (2σ), compared to the SM prediction a_τ^SM
-= 1.17721 × 10-3. The same dipole structure that would generate a non-SM a_τ can, under some BSM
+moment Re(a_$\tau$) at the level Re(a_$\tau$) $\in$ [-4.5, 6.9] $\times$ 10-3 (2$\sigma$), compared to the SM prediction a_$\tau$^SM
+= 1.17721 $\times$ 10-3. The same dipole structure that would generate a non-SM a_$\tau$ can, under some BSM
 models, also generate LFV transitions via radiative generation of off-diagonal lepton mass matrices.
 
 The UQFF framework addresses both phenomena simultaneously through its DPM sector, establishing a
@@ -125,7 +125,7 @@ unified connection between tau dipole deviations and LFV suppression.
 The UQFF describes gravitational and quantum field dynamics through a master force equation:
 
 $$
-F_U(r,t) = Ug1 + Ug2 + Ug3 + Ug4 + Um − Ub_i
+F_U(r,t) = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i
 $$
 
 where:
@@ -137,18 +137,18 @@ where:
 | **Ug3** | Topological resonance / t_n oscillation | Quantum sector |
 | **Ug4** | Vacuum density ratio (UA/SCm) | Dark sector |
 | **Um** | Magnetic dipole / spin coupling | EM sector |
-| **Ub_i** | Buoyancy / LENR opposition force | β_i coupling |
+| **Ub_i** | Buoyancy / LENR opposition force | $\beta$_i coupling |
 
 The full system operates across 26 spatial dimensions with the calibration:
 
 $$
 \begin{aligned}
-  & κ = 0.0005 day-1          (temporal decay constant) \\
+  & \kappa = 0.0005 day-1          (temporal decay constant) \\
   & [SSq] = 0.57               (Superconductive Shell Quotient) \\
-  & H_SCm ≈ 0.99               (SCm Heaviside factor, quiet state) \\
-  & U_UA ≈ 0.0001              (Universal Aether contribution) \\
-  & β_i ≈ 0.603                (buoyancy-gravity balance parameter) \\
-  & k_η = 10-113               (LENR neutron coupling)
+  & H_SCm \approx 0.99               (SCm Heaviside factor, quiet state) \\
+  & U_UA \approx 0.0001              (Universal Aether contribution) \\
+  & \beta_i \approx 0.603                (buoyancy-gravity balance parameter) \\
+  & k_\eta = 10-113               (LENR neutron coupling)
 \end{aligned}
 $$
 
@@ -163,8 +163,8 @@ producing constructive interference between lepton flavors:
 
 $$
 \begin{aligned}
-  & Ψ_flavor-conserving ∝ cos(π × t_n)    with t_n > 0 \\
-  & → cos(πt_n) > 0 (constructive)
+  & \Psi_flavor-conserving \propto cos(\pi \times t_n)    with t_n > 0 \\
+  & \to cos(\pit_n) > 0 (constructive)
 \end{aligned}
 $$
 
@@ -174,8 +174,8 @@ without invoking anti-temporal propagation:
 
 $$
 \begin{aligned}
-  & Ψ_LFV ∝ cos(π × t_n)    with t_n = −1.0 \\
-  & → cos(−π) = −1 (destructive suppression)
+  & \Psi_LFV \propto cos(\pi \times t_n)    with t_n = -1.0 \\
+  & \to cos(-\pi) = -1 (destructive suppression)
 \end{aligned}
 $$
 
@@ -194,17 +194,17 @@ $$
 C_LFV = BR_observed / 10-5
 $$
 This maps the phenomenological LFV amplitude to the UQFF DPM coupling strength. At the LHCb limit,
-C_LFV = 5.9×10-6 / 10-5 = 0.59.
+C_LFV = 5.9$\times$10-6 / 10-5 = 0.59.
 
 **Step 2 — Temporal Reversal Parameter:**
 $$
-t_n(LFV) = −1.0
+t_n(LFV) = -1.0
 $$
 LFV requires t_n < 0 by the DPM conservation theorem.
 
 **Step 3 — Exponential Suppression Factor:**
 $$
-S_LFV = exp(−|t_n| × [SSq]) = exp(−1.0 × 0.57) = 0.5655
+S_LFV = exp(-|t_n| \times [SSq]) = exp(-1.0 \times 0.57) = 0.5655
 $$
 The [SSq] = 0.57 calibration modulates the strength of the SCm suppression at t_n reversal
 boundaries.
@@ -212,39 +212,39 @@ boundaries.
 **Step 4 — Ug3 Contribution (t_n reversal term):**
 $$
 \begin{aligned}
-  & Ug3 = cos(π × t_n) × C_LFV × S_LFV \\
-  & = cos(−π) × 0.59 × 0.5655 \\
-  & = (−1) × 0.59 × 0.5655 \\
-  & = −0.3337
+  & Ug3 = cos(\pi \times t_n) \times C_LFV \times S_LFV \\
+  & = cos(-\pi) \times 0.59 \times 0.5655 \\
+  & = (-1) \times 0.59 \times 0.5655 \\
+  & = -0.3337
 \end{aligned}
 $$
 The negative Ug3 drives F_U toward suppression — the unified field actively opposes LFV transitions.
 
-**Step 5 — Full UQFF Force for B0 → K*0 τ-e⁺:**
+**Step 5 — Full UQFF Force for B0 $\to$ K*0 $\tau$-e+:**
 
-Using the BSMPhysics namespace constants (m_B = 5.27965 GeV/c2, m_τ = 1.77686 GeV/c2, m_e = 0.511
+Using the BSMPhysics namespace constants (m_B = 5.27965 GeV/c2, m_$\tau$ = 1.77686 GeV/c2, m_e = 0.511
 MeV/c2):
 
 $$
 \begin{aligned}
-  & Ug1 = m_B × \text{GeV\_to\_J} / (m_p × c2) \\
-  & = 5.27965 × 1.602×10-10 / (1.673×10-27 × (3×108)2) \\
-  & = 8.457×10-10 / 1.504×10-10 \\
+  & Ug1 = m_B \times \text{GeV\_to\_J} / (m_p \times c2) \\
+  & = 5.27965 \times 1.602\times10-10 / (1.673\times10-27 \times (3\times108)2) \\
+  & = 8.457\times10-10 / 1.504\times10-10 \\
   & = 5.622 \\
-  & Ug2 = Δm_lepton × G / (c2 × r_B)     [r_B ~ 1 fm = 10-15 m] \\
-  & = (m_τ − m_e) × 6.674×10-11 / ((3×108)2 × 10-15) \\
-  & = 1.77175 GeV/c2 × (6.674×10-11 / 9×101) \\
-  & ≈ 1.31×10-13   [dimensionless ratio in UQFF units] \\
-  & Ug3 = −0.3337   (from Step 4) \\
-  & Ug4 = ρ_UA × BR_LFV / ρ_SCm \\
-  & = (7.09×10-36 × 5.9×10-6) / 6.38×10-36 \\
-  & = 6.558×10-6 \\
-  & Um  = |t_n| × μ_B × (m_τ − m_e) / (m_B × \text{GeV\_to\_J} × c) \\
-  & ≈ 3.18×10-55   [strongly suppressed] \\
-  & Ub_i = β_i × k_η × G_F2 × m_B2 × BR_LFV / π \\
-  & ≈ 2.1×10-134   [negligible at LFV scale] \\
-  & F_U(B0→K*0τ-e⁺) ≈ 5.622 + 1.31×10-13 − 0.3337 + 6.56×10-6 + 3.18×10-55 − 0 \\
-  & ≈ 5.288   (net positive: LFV transition strongly disfavored)
+  & Ug2 = \Deltam_lepton \times G / (c2 \times r_B)     [r_B ~ 1 fm = 10-15 m] \\
+  & = (m_\tau - m_e) \times 6.674\times10-11 / ((3\times108)2 \times 10-15) \\
+  & = 1.77175 GeV/c2 \times (6.674\times10-11 / 9\times101) \\
+  & \approx 1.31\times10-13   [dimensionless ratio in UQFF units] \\
+  & Ug3 = -0.3337   (from Step 4) \\
+  & Ug4 = \rho_UA \times BR_LFV / \rho_SCm \\
+  & = (7.09\times10-36 \times 5.9\times10-6) / 6.38\times10-36 \\
+  & = 6.558\times10-6 \\
+  & Um  = |t_n| \times \mu_B \times (m_\tau - m_e) / (m_B \times \text{GeV\_to\_J} \times c) \\
+  & \approx 3.18\times10-55   [strongly suppressed] \\
+  & Ub_i = \beta_i \times k_\eta \times G_F2 \times m_B2 \times BR_LFV / \pi \\
+  & \approx 2.1\times10-134   [negligible at LFV scale] \\
+  & F_U(B0\toK*0\tau-e+) \approx 5.622 + 1.31\times10-13 - 0.3337 + 6.56\times10-6 + 3.18\times10-55 - 0 \\
+  & \approx 5.288   (net positive: LFV transition strongly disfavored)
 \end{aligned}
 $$
 
@@ -259,10 +259,10 @@ temporal reversal threshold:
 
 $$
 \begin{aligned}
-  & \text{t\_n\_LFV} = −ln(BR_LFV) / π \\
-  & = −ln(5.9×10-6) / π \\
-  & = −(−12.04) / π \\
-  & = 12.04 / π \\
+  & \text{t\_n\_LFV} = -ln(BR_LFV) / \pi \\
+  & = -ln(5.9\times10-6) / \pi \\
+  & = -(-12.04) / \pi \\
+  & = 12.04 / \pi \\
   & = 3.833
 \end{aligned}
 $$
@@ -275,10 +275,10 @@ The branching ratio derived from this constraint:
 
 $$
 \begin{aligned}
-  & BR_UQFF = exp(−π × \text{t\_n\_LFV}) \\
-  & = exp(−π × 3.833) \\
-  & = exp(−12.04) \\
-  & = 5.9×10-6   ✅
+  & BR_UQFF = exp(-\pi \times \text{t\_n\_LFV}) \\
+  & = exp(-\pi \times 3.833) \\
+  & = exp(-12.04) \\
+  & = 5.9\times10-6   ✅
 \end{aligned}
 $$
 This exactly reproduces the LHCb limit, confirming the UQFF calibration is consistent.
@@ -289,10 +289,10 @@ In the Standard Model, LFV is suppressed by the GIM mechanism. For charged lepto
 mediated by virtual neutrinos:
 
 $$
-A_SM(ℓ → ℓ') ~ (α/4π) × (m_ν_i2 − m_ν_j2) / m_W2
+A_SM(ℓ \to ℓ') ~ (\alpha/4\pi) \times (m_\nu_i2 - m_\nu_j2) / m_W2
 $$
-Since neutrino masses satisfy Δm_ν2 / m_W2 ~ (10-3 eV)2 / (80 GeV)2 ~ 10-40, the SM prediction for
-B0 → K*0 τe is:
+Since neutrino masses satisfy $\Delta$m_$\nu$2 / m_W2 ~ (10-3 eV)2 / (80 GeV)2 ~ 10-40, the SM prediction for
+B0 $\to$ K*0 $\tau$e is:
 
 ```
 BR_SM(B0→K*0τe) ~ 10-54   (completely unobservable)
@@ -303,14 +303,14 @@ BR_SM(B0→K*0τe) ~ 10-54   (completely unobservable)
 | Quantity | Standard Model | UQFF | LHCb Observed |
 |----------|----------------|------|---------------|
 | Suppression mechanism | GIM cancellation | t_n < 0 DPM reversal + [SSq] | — |
-| Predicted BR (τ-e⁺) | ~10-54 | exp(−π×3.833) = 5.9×10-6 | < 5.9×10-6 ✅ |
-| Predicted BR (τ⁺e-) | ~10-54 | exp(−π×3.900) = 4.9×10-6 | < 4.9×10-6 ✅ |
+| Predicted BR ($\tau$-e+) | ~10-54 | exp(-$\pi$$\times$3.833) = 5.9$\times$10-6 | < 5.9$\times$10-6 ✅ |
+| Predicted BR ($\tau$+e-) | ~10-54 | exp(-$\pi$$\times$3.900) = 4.9$\times$10-6 | < 4.9$\times$10-6 ✅ |
 | Physical origin | Neutrino mass degeneracy | DPM temporal reversal | — |
 | [SSq] involvement | None | 0.57 (exponential damping) | — |
-| κ involvement | None | 0.0005/day (temporal decay) | — |
+| $\kappa$ involvement | None | 0.0005/day (temporal decay) | — |
 
 **Important note:** The SM predicts BR ~ 10-54, far below the LHCb sensitivity. UQFF predicts BR at
-the experimental limit (5.9×10-6), which in this context means UQFF characterizes the *vacuum
+the experimental limit (5.9$\times$10-6), which in this context means UQFF characterizes the *vacuum
 structure sensitivity boundary* — the point at which the DPM reversal mechanism reaches its maximum
 coherent amplitude before destructive interference completely eliminates the signal. UQFF thus
 provides a physical basis for *why* LFV searches are conducted at the 10-6 level: the DPM threshold
@@ -385,9 +385,9 @@ The two LFV modes exhibit different upper limits:
 BR(B0→K*0 τ-e⁺) < 5.9×10-6    →  t_n⁽1⁾ = −ln(5.9×10-6)/π = 3.833
 BR(B0→K*0 τ⁺e-) < 4.9×10-6    →  t_n⁽2⁾ = −ln(4.9×10-6)/π = 3.900
 ```
-The difference Δt_n = 0.067 is consistent with a small CP-asymmetric contribution from the UQFF
-magnetic term Um (spin-flip factor), which enters with opposite sign for the τ⁺e- vs τ-e⁺ mode due
-to the lepton charge conjugation transformation t_n → −t_n − Δ.
+The difference $\Delta$t_n = 0.067 is consistent with a small CP-asymmetric contribution from the UQFF
+magnetic term Um (spin-flip factor), which enters with opposite sign for the $\tau$+e- vs $\tau$-e+ mode due
+to the lepton charge conjugation transformation t_n $\to$ -t_n - $\Delta$.
 
 ---
 
@@ -397,26 +397,26 @@ to the lepton charge conjugation transformation t_n → −t_n − Δ.
 
 | Observable | UQFF Prediction | LHCb Limit | Agreement | Tolerance |
 |-----------|-----------------|------------|-----------|-----------|
-| BR(B0→K*0τ-e⁺) | exp(−π×3.833) = 5.9×10-6 | < 5.9×10-6 | ✅ Exact | within 2σ |
-| BR(B0→K*0τ⁺e-) | exp(−π×3.900) = 4.9×10-6 | < 4.9×10-6 | ✅ Exact | within 2σ |
-| t_n(τ-e⁺ mode) | 3.833 | — | — | — |
-| t_n(τ⁺e- mode) | 3.900 | — | — | — |
-| Δt_n (CP asymmetry) | 0.067 | Not measured | ✅ Consistent | — |
-| [SSq] factor | 0.57 | — | ✅ Calibrated | ±0.05 |
-| LFV suppression S | exp(−0.57) = 0.5655 | — | ✅ Applied | — |
-| F_U net (τ-e⁺) | 5.288 (positive → forbidden) | No signal | ✅ Consistent | — |
+| BR(B0$\to$K*0$\tau$-e+) | exp(-$\pi$$\times$3.833) = 5.9$\times$10-6 | < 5.9$\times$10-6 | ✅ Exact | within 2$\sigma$ |
+| BR(B0$\to$K*0$\tau$+e-) | exp(-$\pi$$\times$3.900) = 4.9$\times$10-6 | < 4.9$\times$10-6 | ✅ Exact | within 2$\sigma$ |
+| t_n($\tau$-e+ mode) | 3.833 | — | — | — |
+| t_n($\tau$+e- mode) | 3.900 | — | — | — |
+| $\Delta$t_n (CP asymmetry) | 0.067 | Not measured | ✅ Consistent | — |
+| [SSq] factor | 0.57 | — | ✅ Calibrated | $\pm$0.05 |
+| LFV suppression S | exp(-0.57) = 0.5655 | — | ✅ Applied | — |
+| F_U net ($\tau$-e+) | 5.288 (positive $\to$ forbidden) | No signal | ✅ Consistent | — |
 
 ### 4.2 UQFF DPM Mapping Summary
 
 | UQFF Parameter | Value | Physical Meaning |
 |----------------|-------|-----------------|
-| t_n(LFV) | −1.0 | Anti-temporal flow in DPM vacuum |
+| t_n(LFV) | -1.0 | Anti-temporal flow in DPM vacuum |
 | `t_n_threshold` | 3.833 | Critical reversal depth at 90% CL limit |
-| S_LFV = exp(−|t_n|×[SSq]) | 0.5655 | SCm suppression amplitude |
+| S_LFV = exp(-|t_n|$\times$[SSq]) | 0.5655 | SCm suppression amplitude |
 | C_LFV (Wilson proxy) | 0.59 | LFV coupling strength at limit |
-| Ug3 (dominant term) | −0.3337 | Destructive interference: LFV disfavored |
-| `SCm_flavor_mixing` ≡ |V_cb|2 | 1.537×10-3 | Background flavor mixing |
-| κ = 0.0005/day | Applied | Temporal decay of virtual LFV amplitude |
+| Ug3 (dominant term) | -0.3337 | Destructive interference: LFV disfavored |
+| `SCm_flavor_mixing` $\equiv$ |V_cb|2 | 1.537$\times$10-3 | Background flavor mixing |
+| $\kappa$ = 0.0005/day | Applied | Temporal decay of virtual LFV amplitude |
 
 ---
 
@@ -429,8 +429,8 @@ the DPM sector. Forward-time (t_n > 0) corresponds to normal quantum field evolu
 flavor is preserved by the SCm condensate. Reverse-time (t_n < 0) corresponds to an amplitude that
 flows backward through the SCm, mixing the flavor sector.
 
-The cos(πt_n) factor in Ug3 is the mathematical signature of this reversal: for t_n = −1, cos(−π) =
-−1, producing complete destructive interference at the fundamental DPM oscillation frequency. The
+The cos($\pi$t_n) factor in Ug3 is the mathematical signature of this reversal: for t_n = -1, cos(-$\pi$) =
+-1, producing complete destructive interference at the fundamental DPM oscillation frequency. The
 residual amplitude — the branching ratio limit — comes from the imperfect cancellation modulated by
 [SSq] = 0.57, which characterizes the finite coherence length of the SCm at the weak-scale energy
 (m_B ~ 5.28 GeV).
@@ -442,8 +442,8 @@ neutrino masses.
 
 ### 5.2 Connection to Tau Dipole Moments (arXiv:2506.15245)
 
-The tau anomalous magnetic moment a_τ and the LFV amplitude share the same DPM sector in UQFF. The
-μ_s dipole strength:
+The tau anomalous magnetic moment a_$\tau$ and the LFV amplitude share the same DPM sector in UQFF. The
+$\mu$_s dipole strength:
 
 ```
 μ_s ∝ exp(−α × a_τ_deviation)    where a_τ_deviation = (a_τ_upper − a_τ_SM) / a_τ_SM ≈ 4.917
@@ -454,9 +454,9 @@ relaxing the t_n = −1 constraint:
 $$
 If δa_τ ≠ 0: t_n(LFV) → t_n(LFV) − Δt_n(dipole)
 ```
-This provides a testable cross-prediction: measurement of a_τ at STCF (arXiv:2506.15245) at
-sensitivity Re(a_τ) ∈ [−4.5, 6.9]×10-3 would, if a deviation is found, predict a corresponding shift
-in the B0 → K*0τe branching ratio at the level:
+This provides a testable cross-prediction: measurement of a_$\tau$ at STCF (arXiv:2506.15245) at
+sensitivity Re(a_$\tau$) $\in$ [-4.5, 6.9]$\times$10-3 would, if a deviation is found, predict a corresponding shift
+in the B0 $\to$ K*0$\tau$e branching ratio at the level:
 
 ```
 ΔBR/BR ~ Δt_n / t_n ~ 0.01 − 0.05 (1–5% shift in BR limits)
@@ -469,38 +469,38 @@ distinguishing UQFF from other BSM models.
 Paper #27 is part of the BSM Physics domain spanning papers #23–#35. The full LFV picture in UQFF
 involves:
 
-- **Paper #23** (arXiv:2506.14881): Tau g-2 dipole → establishes DPM baseline  
-- **Paper #24** (arXiv:2506.14989): Tau EDM → CP-phase in DPM  
-- **Paper #26** (arXiv:2506.15164): Vector-like quarks → k_η scaling in Ug2/Ug4  
-- **Paper #27** (this work): LFV B decays → t_n reversal mechanism  
-- **Paper #28** (arXiv:2506.15256): |V_cb| → [SCm]_flavor = |V_cb|2 = 1.537×10-3
+- **Paper #23** (arXiv:2506.14881): Tau g-2 dipole $\to$ establishes DPM baseline  
+- **Paper #24** (arXiv:2506.14989): Tau EDM $\to$ CP-phase in DPM  
+- **Paper #26** (arXiv:2506.15164): Vector-like quarks $\to$ k_$\eta$ scaling in Ug2/Ug4  
+- **Paper #27** (this work): LFV B decays $\to$ t_n reversal mechanism  
+- **Paper #28** (arXiv:2506.15256): |V_cb| $\to$ [SCm]_flavor = |V_cb|2 = 1.537$\times$10-3
 
 The [SCm]_flavor parameter connects directly to the LFV analysis: the vacuum flavor mixing |V_cb|2 =
-1.537×10-3 sets the background flavor violation level of the SCm, below which the LFV signal from
+1.537$\times$10-3 sets the background flavor violation level of the SCm, below which the LFV signal from
 t_n reversal is observable.
 
 ---
 
 ## 6. Conclusion
 
-We have presented the UQFF interpretation of the LHCb search for B0 → K*0 τ±e∓, demonstrating that:
+We have presented the UQFF interpretation of the LHCb search for B0 $\to$ K*0 $\tau$$\pm$e$\mp$, demonstrating that:
 
-1. **The LFV suppression** observed by LHCb (BR < 5.9×10-6 for τ-e⁺, BR < 4.9×10-6 for τ⁺e-) is a
+1. **The LFV suppression** observed by LHCb (BR < 5.9$\times$10-6 for $\tau$-e+, BR < 4.9$\times$10-6 for $\tau$+e-) is a
 natural prediction of the UQFF Di-Pseudo-Monopole temporal reversal mechanism, with the critical
-parameter t_n = −1.0.
+parameter t_n = -1.0.
 
-2. **The UQFF reversal threshold** t_n_LFV = 3.833 — derived from −ln(BR_limit)/π — exactly
+2. **The UQFF reversal threshold** t_n_LFV = 3.833 — derived from -ln(BR_limit)/$\pi$ — exactly
 reproduces the LHCb limits, confirming calibration consistency.
 
 3. **The Superconductive Shell Quotient** [SSq] = 0.57 controls the exponential suppression: S_LFV =
-exp(−[SSq]) = 0.5655, which modulates the LFV amplitude at the weak scale.
+exp(-[SSq]) = 0.5655, which modulates the LFV amplitude at the weak scale.
 
-4. **A cross-domain prediction** is made: measurement of Re(a_τ) at the STCF (arXiv:2506.15245) with
-sensitivity ±5×10-3 would correspond to a 1–5% shift in the B0 → K*0 τe branching ratio, providing a
+4. **A cross-domain prediction** is made: measurement of Re(a_$\tau$) at the STCF (arXiv:2506.15245) with
+sensitivity $\pm$5$\times$10-3 would correspond to a 1–5% shift in the B0 $\to$ K*0 $\tau$e branching ratio, providing a
 falsifiable test of UQFF across two independent experiments.
 
 5. **UQFF does not require** new discrete symmetries (R-parity, B-L, etc.) to suppress LFV. The
-suppression is geometric — it arises from the DPM vacuum structure and the cos(πt_n) oscillation
+suppression is geometric — it arises from the DPM vacuum structure and the cos($\pi$t_n) oscillation
 mechanism — making UQFF more predictive and economical than model-specific BSM proposals.
 
 The validation is implemented in `bsm_physics_validation.py` (Section 3), `source4.cpp` (BSM
@@ -511,11 +511,11 @@ ready for integration into the MAIN_1_CoAnQi.cpp validation pipeline.
 
 ## References
 
-1. LHCb Collaboration, "Search for lepton-flavor-violating B0 → K*0 τ±e∓ decays," arXiv:2506.15347
-(2025). LHCb Run 2, 5.4 fb-1. BR(B0→K*0τ-e⁺) < 5.9×10-6 (90% CL).
+1. LHCb Collaboration, "Search for lepton-flavor-violating B0 $\to$ K*0 $\tau$$\pm$e$\mp$ decays," arXiv:2506.15347
+(2025). LHCb Run 2, 5.4 fb-1. BR(B0$\to$K*0$\tau$-e+) < 5.9$\times$10-6 (90% CL).
 
 2. Super Tau-Charm Facility Collaboration, "Tau lepton dipole moments at STCF," arXiv:2506.15245
-(2025). Re(a_τ) ∈ [−4.5, 6.9]×10-3 at 2σ.
+(2025). Re(a_$\tau$) $\in$ [-4.5, 6.9]$\times$10-3 at 2$\sigma$.
 
 3. Murphy, D.T., "UQFF Star-Magic Framework: BSM Physics Validation," `bsm_physics_validation.py`,
 January 26, 2026. Star-Magic repository, Daniel8Murphy0007/Star-Magic.
@@ -529,7 +529,7 @@ Star-Magic repository.
 6. VALIDATION_MASTER_INDEX.md §1.4, Domain BSM Physics, Paper #27, Star-Magic repository.
 
 7. Particle Data Group, R.L. Workman et al., Prog. Theor. Exp. Phys. 2022, 083C01 (2022). Masses:
-m_B = 5.27965 GeV, m_τ = 1.77686 GeV, G_F = 1.1663787×10-5 GeV-2.
+m_B = 5.27965 GeV, m_$\tau$ = 1.77686 GeV, G_F = 1.1663787$\times$10-5 GeV-2.
 
 ---
 
@@ -571,10 +571,10 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Gate | Requirement | Status |
 |------|-------------|--------|
-| G1 | Primary equation derived from UQFF framework | ✅ F_U = Ug1+Ug2+Ug3+Ug4+Um−Ub_i; t_n = −1.0 |
-| G2 | Numerical result agrees with observational data within stated tolerance | ✅ BR_UQFF = exp(−π×3.833) = 5.9×10-6 matches LHCb (exact) |
-| G3 | UQFF calibration constants (κ, [SSq]) properly applied | ✅ κ=0.0005/day; [SSq]=0.57; β_i=0.603; k_η=10-113 |
-| G4 | Comparison with standard model (GR/SM) explicitly shown | ✅ Table §2.5: SM BR~10-54 vs UQFF BR~5.9×10-6 |
+| G1 | Primary equation derived from UQFF framework | ✅ F_U = Ug1+Ug2+Ug3+Ug4+Um-Ub_i; t_n = -1.0 |
+| G2 | Numerical result agrees with observational data within stated tolerance | ✅ BR_UQFF = exp(-$\pi$$\times$3.833) = 5.9$\times$10-6 matches LHCb (exact) |
+| G3 | UQFF calibration constants ($\kappa$, [SSq]) properly applied | ✅ $\kappa$=0.0005/day; [SSq]=0.57; $\beta$_i=0.603; k_$\eta$=10-113 |
+| G4 | Comparison with standard model (GR/SM) explicitly shown | ✅ Table §2.5: SM BR~10-54 vs UQFF BR~5.9$\times$10-6 |
 | G5 | Physical units verified (dimensional analysis) | ✅ BR dimensionless; t_n dimensionless; S_LFV dimensionless |
 | G6 | Source validation file referenced and run successfully | ✅ `b`sm_physics_validation`.py` Section 3 |
 | G7 | C++ source file connection documented | ✅ `BSMPhysicsUQFFModule.cpp` LFVBDecayTerm; `source4.cpp` |
@@ -586,17 +586,17 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Constant | Symbol | Value | Source |
 |----------|--------|-------|--------|
-| UQFF decay calibration | κ | 0.0005/day | `source4.cpp` |
+| UQFF decay calibration | $\kappa$ | 0.0005/day | `source4.cpp` |
 | String sector factor | [SSq] | 0.57 | `BSMPhysicsUQFFModule.cpp` |
-| Buoyancy coupling | β_i | 0.603 | `source4.cpp` |
-| LENR coupling | k_η | 10-113 | `BSMPhysicsUQFFModule.cpp` |
-| UA vacuum density | ρ_UA | 7.09×10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
-| SCm vacuum density | ρ_SCm | 6.38×10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
+| Buoyancy coupling | $\beta$_i | 0.603 | `source4.cpp` |
+| LENR coupling | k_$\eta$ | 10-113 | `BSMPhysicsUQFFModule.cpp` |
+| UA vacuum density | $\rho$_UA | 7.09$\times$10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
+| SCm vacuum density | $\rho$_SCm | 6.38$\times$10-36 kg/m3 | `BSMPhysicsUQFFModule.cpp` |
 | B0 meson mass | m_B | 5.27965 GeV/c2 | PDG 2022 |
-| Tau mass | m_τ | 1.77686 GeV/c2 | PDG 2022 |
-| Fermi constant | G_F | 1.1663787×10-5 GeV-2 | PDG 2022 |
-| CKM |V_cb| | V_cb | 40.5×10-3 | arXiv:2506.15256 |
-| SCm flavor mixing | [SCm]_flavor | |V_cb|2 = 1.537×10-3 | Paper #28 |
+| Tau mass | m_$\tau$ | 1.77686 GeV/c2 | PDG 2022 |
+| Fermi constant | G_F | 1.1663787$\times$10-5 GeV-2 | PDG 2022 |
+| CKM |V_cb| | V_cb | 40.5$\times$10-3 | arXiv:2506.15256 |
+| SCm flavor mixing | [SCm]_flavor | |V_cb|2 = 1.537$\times$10-3 | Paper #28 |
 
 ---
 
@@ -607,8 +607,8 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ---
 
 **Validator:** `bsm_physics_validation.py` — PASSED  
-*LFV: BR(B0→K*0τ-e⁺) < 5.9×10-6 (LHCb 90% CL exact), BR(B0→K*0τ⁺e-) < 4.9×10-6; UQFF t_n(τ-e⁺) =
-3.833, Δt_n(CP) = 0.067; LFV suppression S = exp(−0.57) = 0.5655; κ = 0.0005/day, [SSq] = 0.57*
+*LFV: BR(B0$\to$K*0$\tau$-e+) < 5.9$\times$10-6 (LHCb 90% CL exact), BR(B0$\to$K*0$\tau$+e-) < 4.9$\times$10-6; UQFF t_n($\tau$-e+) =
+3.833, $\Delta$t_n(CP) = 0.067; LFV suppression S = exp(-0.57) = 0.5655; $\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 
 > See also: PAPER_026 | Part of the Star-Magic UQFF Whitepaper Series.*
@@ -625,14 +625,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -647,10 +647,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -658,9 +658,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -668,8 +668,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -746,7 +746,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.143 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

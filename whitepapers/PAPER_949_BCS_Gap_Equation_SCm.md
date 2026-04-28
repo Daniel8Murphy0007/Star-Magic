@@ -147,7 +147,7 @@ $$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omeg
 $$\boxed{\frac{\delta S}{\delta \Delta} = 0 \implies \Delta = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{U,Bi}}{F_U}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → DPM vacuum → $\rho_text{SCm}$ → $\omega_text{SCm}$ phonon → BCS gap → Cooper pair binding → superconducting condensate
+PAPER_877 axioms $\to$ DPM vacuum $\to$ $\rho_text{SCm}$ $\to$ $\omega_text{SCm}$ phonon $\to$ BCS gap $\to$ Cooper pair binding $\to$ superconducting condensate
 
 ---
 

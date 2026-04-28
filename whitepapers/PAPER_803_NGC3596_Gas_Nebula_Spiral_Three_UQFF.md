@@ -22,13 +22,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 3596 is a spiral galaxy approximately 70 million light-years away (z ≈ 0.0047) in the
+NGC 3596 is a spiral galaxy approximately 70 million light-years away (z $\approx$ 0.0047) in the
 constellation Leo. Hubble ACS imaging reveals extensive warm ionized gas nebulosity embedded within
 its spiral arms, suggesting an active recent episode of star formation and possible gas infall from
 the CGM. It is associated with a "Gas Nebula Observation" document (April 19, 2025) that forms part
 of the UQFF LENR-Boyle's Law synthesis. Three-UQFF analysis formally introduces the complete
 **Boyle's Law buoyancy scaling** in all three UQFF modes, with the 1/33 pressure ratio encoding the
-Buoyancy Harmonics number system. g_primary ≈ 1.053×10-3 m/s2, with Boyle's Law buoyancy as the
+Buoyancy Harmonics number system. g_primary $\approx$ 1.053$\times$10-3 m/s2, with Boyle's Law buoyancy as the
 largest correction term.
 
 ---
@@ -36,7 +36,7 @@ largest correction term.
 ## 1. Introduction
 
 The April 2025 "Gas Nebula Observation" document (11 pages) formally linked the Boyle's Law pressure
-ratio (1 atm : 33 atm underwater ≡ V_little/V_big = 1/33) to the UQFF buoyancy scaling factor f_Ub.
+ratio (1 atm : 33 atm underwater $\equiv$ V_little/V_big = 1/33) to the UQFF buoyancy scaling factor f_Ub.
 NGC 3596, with its prominent gas nebulosity in the spiral arms, provides the astrophysical context
 for this scaling: the extended gas clouds create a macroscopic analog of the Boyle's Law compression
 that UQFF models as the vacuum density buoyancy between UA' and SCm states. The Dipole Vortex Prime
@@ -48,21 +48,21 @@ species index (DVP) is also explicitly computed for NGC 3596's gas content.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Spiral estimate |
-| Disk radius | r | 2.83×1020 m (~30 kly) | Hubble |
-| SMBH mass | M_BH | 108 MM_sun = 1.989×1038 kg | M–σ |
-| σ | — | 150 km/s | M–σ |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Spiral estimate |
+| Disk radius | r | 2.83$\times$1020 m (~30 kly) | Hubble |
+| SMBH mass | M_BH | 108 MM_sun = 1.989$\times$1038 kg | M–$\sigma$ |
+| $\sigma$ | — | 150 km/s | M–$\sigma$ |
 | SFR | — | 0.9 MM_sun/yr | Gas-rich spiral |
 | Redshift | z | 0.0047 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | — |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
 | M_sf | — | 0.02 | UQFF |
 | f_TRZ | — | 0.05 | THz |
 | v_EM | v | 105 m/s | Rotation |
 | B_EM | B | 10-5 T | Galactic field |
-| ρ_UA | — | 7.09×10-36 kg/m3 | UQFF constant |
-| ρ_SCm | — | 7.09×10-37 kg/m3 | UQFF constant |
+| $\rho$_UA | — | 7.09$\times$10-36 kg/m3 | UQFF constant |
+| $\rho$_SCm | — | 7.09$\times$10-37 kg/m3 | UQFF constant |
 | V_little/V_big | — | 1/33 | Boyle's Law |
-| Δk_η | — | 7.25×108 | LENR calibration |
+| $\Delta$k_$\eta$ | — | 7.25$\times$108 | LENR calibration |
 
 ---
 
@@ -72,18 +72,18 @@ species index (DVP) is also explicitly computed for NGC 3596's gas content.
 
 $$
 \begin{aligned}
-  & From Boyle's Law: P₁V₁ = P₂V₂ \\
-  & P₁ = 1 atm (surface: atmospheric pressure) \\
-  & P₂ = 33 atm (equivalent to 10m underwater pressure + 1 atm surface) \\
-  & V₁/V₂ = P₂/P₁ = 33 → V_little/V_big = 1/33 \\
+  & From Boyle's Law: P1V1 = P2V2 \\
+  & P1 = 1 atm (surface: atmospheric pressure) \\
+  & P2 = 33 atm (equivalent to 10m underwater pressure + 1 atm surface) \\
+  & V1/V2 = P2/P1 = 33 \to V_little/V_big = 1/33 \\
   & UQFF vacuum density analog: \\
-  & ρ_vac,[UA] / ρ_vac,[SCm] = 7.09e-36 / 7.09e-37 = 10 \\
-  & (UA' state is 10× higher density than SCm state) \\
+  & \rho_vac,[UA] / \rho_vac,[SCm] = 7.09e-36 / 7.09e-37 = 10 \\
+  & (UA' state is 10\times higher density than SCm state) \\
   & Buoyancy factor: \\
-  & f_Ub = k_Ub · Δk_η · (ρ_UA/ρ_SCm) · (V_little/V_big) \\
-  & = 0.1 × 7.25e8 × 10 × (1/33) \\
-  & = 0.1 × 7.25e8 × 0.3030 \\
-  & = 2.196×107
+  & f_Ub = k_Ub \cdot \Deltak_\eta \cdot (\rho_UA/\rho_SCm) \cdot (V_little/V_big) \\
+  & = 0.1 \times 7.25e8 \times 10 \times (1/33) \\
+  & = 0.1 \times 7.25e8 \times 0.3030 \\
+  & = 2.196\times107
 \end{aligned}
 $$
 
@@ -91,11 +91,11 @@ $$
 
 $$
 \begin{aligned}
-  & G·M/r2  = 6.6743e-11 × 1.989e41 / (2.83e20)2 \\
+  & G\cdotM/r2  = 6.6743e-11 \times 1.989e41 / (2.83e20)2 \\
   & = 1.328e31 / 8.009e40 = 1.658e-10 m/s2 \\
-  & Hz = H0·√(0.3·(1.0047)3+0.7) = 2.269e-18 \\
-  & (1+Hz·t) = 1 + 2.269e-18 × 1.578e17 = 1.358 \\
-  & g_grav = 1.658e-10 × 1.358 × 1.02 × 1.05 = 2.412e-10 m/s2 \\
+  & Hz = H0\cdot\sqrt{}(0.3\cdot(1.0047)3+0.7) = 2.269e-18 \\
+  & (1+Hz\cdott) = 1 + 2.269e-18 \times 1.578e17 = 1.358 \\
+  & g_grav = 1.658e-10 \times 1.358 \times 1.02 \times 1.05 = 2.412e-10 m/s2 \\
   & a_EM = 1.053e-3 m/s2 \\
   & g_compressed = 1.053e-3 m/s2
 \end{aligned}
@@ -104,15 +104,15 @@ $$
 ### Mode 2: Resonant UQFF
 
 $$
-g_resonant = 1.053e-3 × (1 + 0.0005 × 0.57) = 1.053e-3 m/s2
+g_resonant = 1.053e-3 \times (1 + 0.0005 \times 0.57) = 1.053e-3 m/s2
 $$
 
 ### Mode 3: Buoyancy UQFF (Boyle's Law fully integrated)
 
 $$
 \begin{aligned}
-  & a_Ubi = f_Ub · G·M/r2 = 2.196e7 × 1.658e-10 = 3.640e-3 m/s2 \\
-  & (Boyle's Law buoyancy adds 3.46× to gravity term, a_EM still dominant at g = 1.053e-3) \\
+  & a_Ubi = f_Ub \cdot G\cdotM/r2 = 2.196e7 \times 1.658e-10 = 3.640e-3 m/s2 \\
+  & (Boyle's Law buoyancy adds 3.46\times to gravity term, a_EM still dominant at g = 1.053e-3) \\
   & g_buoyancy = 1.053e-3 m/s2  (EM ground state maintained)
 \end{aligned}
 $$
@@ -142,8 +142,8 @@ density transition:
 
 1. **Physical Boyle's Law:** A gas bubble at the bottom of a 33m column of water (1 atm +33 atm = 34
 atm) rises to the surface, expanding by factor 33 (from 1/33 to 1/1 relative volume).
-2. **UQFF Analog:** A quantum packet in the SCm vacuum state (compressed, ρ_SCm = 7.09×10-37)
-expands into the UA' state (ρ_UA = 7.09×10-36, 10× less dense), with the 1/33 factor encoding the
+2. **UQFF Analog:** A quantum packet in the SCm vacuum state (compressed, $\rho$_SCm = 7.09$\times$10-37)
+expands into the UA' state ($\rho$_UA = 7.09$\times$10-36, 10$\times$ less dense), with the 1/33 factor encoding the
 pressure ratio at the point of phase transition.
 3. **Physical prediction:** Gas nebulae in NGC 3596's spiral arms mark the macroscopic locations
 where UA':SCm transitions are occurring — the nebular ionized gas is the observable signature of
@@ -153,8 +153,8 @@ UQFF state transitions.
 
 ## 5. Conclusions
 
-Three-UQFF applied to NGC 3596 yields g_primary ≈ 1.053×10-3 m/s2 with the Boyle's Law buoyancy
-factor (f_Ub = 2.196×107) fully integrated into Mode 3. The DVP Species Index formula is applied to
+Three-UQFF applied to NGC 3596 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 with the Boyle's Law buoyancy
+factor (f_Ub = 2.196$\times$107) fully integrated into Mode 3. The DVP Species Index formula is applied to
 NGC 3596's gas clouds, predicting atomic hydrogen at n=1 through galactic disk self-gravity at n=26.
 NGC 3596 is established as the canonical UQFF reference for the Boyle's Law–vacuum density buoyancy
 analogy, with the gas nebulosity as the observable signature of UA':SCm phase transitions.
@@ -169,7 +169,7 @@ analogy, with the gas nebulosity as the observable signature of UA':SCm phase tr
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -188,7 +188,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -211,7 +211,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -298,7 +298,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.161 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -309,13 +309,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

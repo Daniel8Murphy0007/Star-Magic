@@ -26,7 +26,7 @@ NGC 2264 is a young star-forming region in Monoceros (~2,600 ly distant) contain
 Christmas Tree Cluster and the Cone Nebula visible in Hubble imagery. With ~1,000 solar masses of
 young stars and embedded protostars, active HII region, and a star-formation rate of ~0.5 MM_sun/yr,
 this system is an ideal UQFF testbed for stellar formation dynamics. The derived Master UQFF gravity
-equation yields g_NGC2264 ≈ 1.053×10-2 m/s2, demonstrating the dominance of the Aether
+equation yields g_NGC2264 $\approx$ 1.053$\times$10-2 m/s2, demonstrating the dominance of the Aether
 electromagnetic correction in star-forming HII regions.
 
 ---
@@ -46,7 +46,7 @@ electromagnetic correction addresses the non-classical ionized gas dynamics.
 
 $$
 \begin{aligned}
-  & g_NGC2264(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ) \\
+  & g_NGC2264(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 - E_rad) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -60,16 +60,16 @@ Where:
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Region total mass | M | 1,000 MM_sun = 1.989×1033 kg | Hubble |
-| Region radius | r | 4.73×1016 m (~5 ly) | Hubble |
+| Region total mass | M | 1,000 MM_sun = 1.989$\times$1033 kg | Hubble |
+| Region radius | r | 4.73$\times$1016 m (~5 ly) | Hubble |
 | Star-formation rate | SFR | 0.5 MM_sun/yr | Labs |
-| Integration time | t | 3×106 yr = 9.468×1013 s | Cluster age |
+| Integration time | t | 3$\times$106 yr = 9.468$\times$1013 s | Cluster age |
 | Stellar mass fraction | M_sf | 1.5 | UQFF SFR integral |
 | Radiation energy param | E_rad | 0.1554 | UQFF calc |
 | Redshift | z | 0.0006 | Distance |
 | EM velocity | v | 106 m/s | UQFF Aether |
 | EM B-field | B | 10-5 T | HII region |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -79,19 +79,19 @@ Where:
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e33) / (4.73e16)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e33) / (4.73e16)2 \\
   & = 1.328e23 / 2.237e33 = 5.934e-11 m/s2
 \end{aligned}
 $$
-(≈ 5.927e-11 refined with more precise G)
+($\approx$ 5.927e-11 refined with more precise G)
 
 ### Step 2: Stellar Mass Fraction M_sf(t)
 $$
 \begin{aligned}
   & SFR = 0.5 MM_sun/yr; t = 3e6 yr \\
-  & M_formed = 0.5 × 3e6 = 1.5 × 106 MM_sun \\
+  & M_formed = 0.5 \times 3e6 = 1.5 \times 106 MM_sun \\
   & M_sf = M_formed / M = 1.5e6 / 1000 = 1500... \\
-  & Re-normalized: M_sf = SFR × t / M₀ → but uses ratio form: \\
+  & Re-normalized: M_sf = SFR \times t / M0 \to but uses ratio form: \\
   & M_sf = 1.5  (ratio normalized to initial cluster mass by UQFF convention) \\
   & 1 + M_sf = 2.5
 \end{aligned}
@@ -111,20 +111,20 @@ UQFF normalized form: E_rad = 0.1554 (from UQFF radiation coupling constant for 
 ### Step 4: Cosmic Expansion Factor
 $$
 \begin{aligned}
-  & H(z) = H₀ × √(Ω_m(1+z)3 + Ω_Λ) \\
-  & = 2.268e-18 × √(0.3 × (1.0006)3 + 0.7) \\
-  & = 2.268e-18 × √1.0002 = 2.269e-18 s-1 \\
-  & H(z) × t = 2.269e-18 × 9.468e13 = 2.148e-4 \\
-  & 1 + H(z) × t = 1.0002148
+  & H(z) = H0 \times \sqrt{}(\Omega_m(1+z)3 + \Omega_\Lambda) \\
+  & = 2.268e-18 \times \sqrt{}(0.3 \times (1.0006)3 + 0.7) \\
+  & = 2.268e-18 \times \sqrt{}1.0002 = 2.269e-18 s-1 \\
+  & H(z) \times t = 2.269e-18 \times 9.468e13 = 2.148e-4 \\
+  & 1 + H(z) \times t = 1.0002148
 \end{aligned}
 $$
 
 ### Step 5: Aether Electromagnetic Correction
 $$
 \begin{aligned}
-  & q × (v × B) = 1.602e-19 × 1e6 × 1e-5 = 1.602e-18 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e6 \times 1e-5 = 1.602e-18 N \\
   & a = 1.602e-18 / m_p = 1.602e-18 / 1.673e-27 = 9.575e8 m/s2 \\
-  & a_EM = 9.575e8 × 11 × 1e-12 = 1.053e-2 m/s2
+  & a_EM = 9.575e8 \times 11 \times 1e-12 = 1.053e-2 m/s2
 \end{aligned}
 $$
 
@@ -136,13 +136,13 @@ $$
 ### Step 7: Final Solution
 $$
 \begin{aligned}
-  & g_NGC2264 = (5.927e-11) × (1.0002148) × (2.5) × (0.8446) × (1.1) + 1.053e-2 \\
-  & = 5.927e-11 × 1.0002148 = 5.928e-11 \\
-  & × 2.5 = 1.482e-10 \\
-  & × 0.8446 = 1.251e-10 \\
-  & × 1.1 = 1.376e-10 \\
+  & g_NGC2264 = (5.927e-11) \times (1.0002148) \times (2.5) \times (0.8446) \times (1.1) + 1.053e-2 \\
+  & = 5.927e-11 \times 1.0002148 = 5.928e-11 \\
+  & \times 2.5 = 1.482e-10 \\
+  & \times 0.8446 = 1.251e-10 \\
+  & \times 1.1 = 1.376e-10 \\
   & = 1.376e-10 + 1.053e-2 \\
-  & ≈ 1.053e-2 m/s2
+  & \approx 1.053e-2 m/s2
 \end{aligned}
 $$
 
@@ -151,10 +151,10 @@ $$
 ## 4. Physical Interpretation
 
 As expected for a stellar nursery of modest scale (1,000 MM_sun, 5 ly radius), classical gravity at
-5.927×10-11 m/s2 is negligible compared to the Aether electromagnetic correction (1.053×10-2 m/s2).
+5.927$\times$10-11 m/s2 is negligible compared to the Aether electromagnetic correction (1.053$\times$10-2 m/s2).
 The M_sf factor of 2.5 reflects the rapid mass growth characteristic of the proto-cluster phase.
 E_rad = 0.1554 captures the ~15% radiation loss due to energetic O-star ultraviolet emission. The
-final result, 1.053×10-2 m/s2, is consistent with UQFF predictions for compact star-forming HII
+final result, 1.053$\times$10-2 m/s2, is consistent with UQFF predictions for compact star-forming HII
 regions.
 
 ---
@@ -164,15 +164,15 @@ regions.
 - Validated UQFF for classic HII region star nurseries (1,000–10,000 MM_sun class)
 - M_sf normalization convention confirmed: ratio to initial cluster mass
 - E_rad coupling demonstrates UQFF radiation-gravity link in ionized media
-- NGC 2264 establishes the compact HII region baseline (1.053×10-2 m/s2)
+- NGC 2264 establishes the compact HII region baseline (1.053$\times$10-2 m/s2)
 
 ---
 
 ## 6. Conclusions
 
 The Master UQFF gravity equation applied to the Christmas Tree Cluster/Cone Nebula (NGC 2264) yields
-g_NGC2264 ≈ 1.053×10-2 m/s2. The star-formation mass fraction (M_sf = 1.5 → factor 2.5) and
-radiation energy term (E_rad = 0.1554 → factor 0.8446) together provide a ~10% gravitational
+g_NGC2264 $\approx$ 1.053$\times$10-2 m/s2. The star-formation mass fraction (M_sf = 1.5 $\to$ factor 2.5) and
+radiation energy term (E_rad = 0.1554 $\to$ factor 0.8446) together provide a ~10% gravitational
 enhancement before the electromagnetic Aether term dominates. This places NGC 2264 firmly in the
 classical star-forming HII category alongside NGC 1792 and similar compact starburst regions.
 
@@ -186,7 +186,7 @@ classical star-forming HII category alongside NGC 1792 and similar compact starb
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -205,7 +205,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -313,7 +313,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.179 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -324,13 +324,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

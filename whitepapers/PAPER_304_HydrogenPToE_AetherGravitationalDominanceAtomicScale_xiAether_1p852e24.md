@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_304
-title: "Aether-Gravitational Dominance at Atomic Scale: ξ_aether = 1.852×1024"
+title: "Aether-Gravitational Dominance at Atomic Scale: $\xi$_aether = 1.852$\times$1024"
 session: 86
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [neutron-star, vacuum, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_304 — Aether-Gravitational Dominance at Atomic Scale: ξ_aether = 1.852×1024
+# PAPER_304 — Aether-Gravitational Dominance at Atomic Scale: $\xi$_aether = 1.852$\times$1024
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -26,17 +26,17 @@ module)
 ## Abstract
 
 The UQFF vacuum driver hierarchy—which physical channel dominates the total field at a given
-scale—has been established at two prior scales: Λ (cosmological constant) dominates at Universe
+scale—has been established at two prior scales: $\Lambda$ (cosmological constant) dominates at Universe
 scale (PAPER_296, Session 84) and electromagnetic coupling dominates at the neutron star surface
-(PAPER_299, Session 85). PAPER_304 establishes the THIRD rung: at the Bohr radius r = 5.2918×10-11
-m, the **aether resonance acceleration** a_aether = **7.38×107 m/s2** exceeds the Proton-hydrogen
-DPM-seeded surface gravity g_DPM = **3.986×10-17 m/s2** by a factor
+(PAPER_299, Session 85). PAPER_304 establishes the THIRD rung: at the Bohr radius r = 5.2918$\times$10-11
+m, the **aether resonance acceleration** a_aether = **7.38$\times$107 m/s2** exceeds the Proton-hydrogen
+DPM-seeded surface gravity g_DPM = **3.986$\times$10-17 m/s2** by a factor
 
 $$\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = \mathbf{1.852 \times 10^{24}}$$
 
-The aether channel (seeded by E_vac = 7.09×10-36 J/m3, the UQFF plasmonic vacuum energy density)
-replaces the standard dark-energy cosmological constant Λ as the dominant vacuum driver at atomic
-scale. This completes the three-rung UQFF vacuum dominance hierarchy: cosmos → neutron star → atom.
+The aether channel (seeded by E_vac = 7.09$\times$10-36 J/m3, the UQFF plasmonic vacuum energy density)
+replaces the standard dark-energy cosmological constant $\Lambda$ as the dominant vacuum driver at atomic
+scale. This completes the three-rung UQFF vacuum dominance hierarchy: cosmos $\to$ neutron star $\to$ atom.
 
 ---
 
@@ -44,13 +44,13 @@ scale. This completes the three-rung UQFF vacuum dominance hierarchy: cosmos →
 
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
-| Bohr radius | r_Bohr | 5.2918×10-11 | m |
-| Proton mass | M_p | 1.6726×10-27 | kg |
-| Gravitational constant | G | 6.674×10-11 | m3/kg·s2 |
-| UQFF vacuum energy density | E_vac | 7.09×10-36 | J/m3 |
-| Lyman resonance frequency | f_res | 1.0×1015 | Hz |
-| System volume | V_sys | ≈ 6.207×10-31 | m3 (sphere of r_Bohr) |
-| Reduced Planck constant | ħ | 1.0546×10-34 | J·s |
+| Bohr radius | r_Bohr | 5.2918$\times$10-11 | m |
+| Proton mass | M_p | 1.6726$\times$10-27 | kg |
+| Gravitational constant | G | 6.674$\times$10-11 | m3/kg$\cdot$s2 |
+| UQFF vacuum energy density | E_vac | 7.09$\times$10-36 | J/m3 |
+| Lyman resonance frequency | f_res | 1.0$\times$1015 | Hz |
+| System volume | V_sys | $\approx$ 6.207$\times$10-31 | m3 (sphere of r_Bohr) |
+| Reduced Planck constant | ħ | 1.0546$\times$10-34 | J$\cdot$s |
 
 ---
 
@@ -79,9 +79,9 @@ $$a_{\text{aether}} = \frac{7.09 \times 10^{-36} \times 10^{15} \times 6.207 \ti
 
 $$= \frac{4.401 \times 10^{-51}}{1.0546 \times 10^{-34}} \;\longrightarrow; \approx 7.38 \times 10^{7} \; \text{m/s}^2$$
 
-(Exact value from module: **7.38×107 m/s2**)
+(Exact value from module: **7.38$\times$107 m/s2**)
 
-### 2.3 Aether-to-Newton Ratio ξ_aether [PAPER_304]
+### 2.3 Aether-to-Newton Ratio $\xi$_aether [PAPER_304]
 
 $$\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = \frac{7.38 \times 10^7}{3.986 \times 10^{-17}} = \mathbf{1.852 \times 10^{24}}$$
 
@@ -91,11 +91,11 @@ $$\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = \frac{7.38 \ti
 
 | Quantity | Symbol | Value | Units | Role |
 |----------|--------|-------|-------|------|
-| Proton DPM-seeded gravity at r_Bohr | g_DPM | **3.986×10-17** | m/s2 | Gravity reference |
-| Volume at r_Bohr | V_sys | 6.207×10-31 | m3 | Aether volume |
-| Aether resonance acceleration | a_aether | **7.38×107** | m/s2 | **[PAPER_304]** dominant |
-| Aether/Newton ratio | ξ_aether | **1.852×1024** | — | **[PAPER_304]** key ratio |
-| a_aether / Λ_eff | > 1035 | — | — | vs dark energy Λ |
+| Proton DPM-seeded gravity at r_Bohr | g_DPM | **3.986$\times$10-17** | m/s2 | Gravity reference |
+| Volume at r_Bohr | V_sys | 6.207$\times$10-31 | m3 | Aether volume |
+| Aether resonance acceleration | a_aether | **7.38$\times$107** | m/s2 | **[PAPER_304]** dominant |
+| Aether/Newton ratio | $\xi$_aether | **1.852$\times$1024** | — | **[PAPER_304]** key ratio |
+| a_aether / $\Lambda$_eff | > 1035 | — | — | vs dark energy $\Lambda$ |
 
 ---
 
@@ -105,29 +105,29 @@ This is the third rung establishing the complete UQFF vacuum dominance hierarchy
 
 | Scale | r | Dominant channel | Key ratio | Paper |
 |-------|---|-----------------|-----------|-------|
-| Universe | 4.4×1026 m | Cosmological Λ | ρ_Λ/ρ_crit ~ 0.68 | PAPER_296 |
-| Neutron star surface | ~104 m | EM coupling (α_FS) | a_EM/g_surface ~ 1012 | PAPER_299 |
-| **Bohr radius** | **5.29×10-11 m** | **Aether (E_vac)** | **ξ_aether = 1.852×1024** | **PAPER_304** |
+| Universe | 4.4$\times$1026 m | Cosmological $\Lambda$ | $\rho$_$\Lambda$/$\rho$_crit ~ 0.68 | PAPER_296 |
+| Neutron star surface | ~104 m | EM coupling ($\alpha$_FS) | a_EM/g_surface ~ 1012 | PAPER_299 |
+| **Bohr radius** | **5.29$\times$10-11 m** | **Aether (E_vac)** | **$\xi$_aether = 1.852$\times$1024** | **PAPER_304** |
 
-The aether channel occupies a vacuum-energy niche distinct from both Λ (coarse cosmological
-constant) and EM (field coupling). Its driver is E_vac = 7.09×10-36 J/m3 — the UQFF **plasmonic
+The aether channel occupies a vacuum-energy niche distinct from both $\Lambda$ (coarse cosmological
+constant) and EM (field coupling). Its driver is E_vac = 7.09$\times$10-36 J/m3 — the UQFF **plasmonic
 vacuum energy density** derived from zero-point field modulation, not from the cosmological
-constant. This is why ξ_aether >> the Λ contribution at this scale while Λ dominates at cosmic scale.
+constant. This is why $\xi$_aether >> the $\Lambda$ contribution at this scale while $\Lambda$ dominates at cosmic scale.
 
 ---
 
-## 5. E_vac vs Λ at Bohr Scale
+## 5. E_vac vs $\Lambda$ at Bohr Scale
 
-The dark-energy density from Λ:
+The dark-energy density from $\Lambda$:
 $$\rho_Lambda = \frac{\Lambda c^2}{8\pi G} \approx 6.9 \times 10^{-27} \; \text{kg/m}^3, \quad \rho_Lambda c^2 \approx 6.2 \times 10^{-10} \; \text{J/m}^3$$
 
 The UQFF plasmonic vacuum density:
 $$E_{\text{vac}} = 7.09 \times 10^{-36} \; \text{J/m}^3$$
 
-So E_vac < ρ_Λ c2 by a factor of ~1026 in energy density. Yet ξ_aether = 1.852×1024 — aether
+So E_vac < $\rho$_$\Lambda$ c2 by a factor of ~1026 in energy density. Yet $\xi$_aether = 1.852$\times$1024 — aether
 dominates gravity by 24 orders of magnitude. The resolution: the aether channel amplifies E_vac
-through the resonance frequency f_res/ħ (units: m-3s-1 × J·s = J-1·m-3 × J·s = m-3), producing
-volumetric coupling E_vac × f_res × V_sys / ħ. The cosmological Λ acts on the metric directly, while
+through the resonance frequency f_res/ħ (units: m-3s-1 $\times$ J$\cdot$s = J-1$\cdot$m-3 $\times$ J$\cdot$s = m-3), producing
+volumetric coupling E_vac $\times$ f_res $\times$ V_sys / ħ. The cosmological $\Lambda$ acts on the metric directly, while
 the aether acts on the orbital quantisation volume — two fundamentally different mechanisms
 producing different scale-dependencies.
 
@@ -135,21 +135,21 @@ producing different scale-dependencies.
 
 ## 6. Comparison to U_g4i (PAPER_302)
 
-PAPER_302 found a_u4i = 3.155×1033 m/s2 (dominant, Γ_u4i = 4.704×1036). PAPER_304 finds a_aether =
-7.38×107 m/s2.
+PAPER_302 found a_u4i = 3.155$\times$1033 m/s2 (dominant, $\Gamma$_u4i = 4.704$\times$1036). PAPER_304 finds a_aether =
+7.38$\times$107 m/s2.
 
 Within the 6-term resonance sum of the HYDROGEN_PTOE module:
 
 | Term | Acceleration (m/s2) | Relative rank |
 |------|---------------------|---------------|
-| U_g4i [P302] | 3.155×1033 | **1st (dominant)** |
-| THz / qorb [P303] | 4.895×1010 each | 2nd/3rd |
-| Aether [P304] | 7.38×107 | 4th |
-| DPM | 6.71×10-4 | 5th (seed) |
-| g_DPM | 3.99×10-17 | 6th |
+| U_g4i [P302] | 3.155$\times$1033 | **1st (dominant)** |
+| THz / qorb [P303] | 4.895$\times$1010 each | 2nd/3rd |
+| Aether [P304] | 7.38$\times$107 | 4th |
+| DPM | 6.71$\times$10-4 | 5th (seed) |
+| g_DPM | 3.99$\times$10-17 | 6th |
 
 All five computed UQFF channels exceed DPM-seeded gravity at the Bohr radius. The aether channel
-alone exceeds g_DPM by 1.852×1024 — yet it is the FOURTH-largest of the five UQFF terms. This
+alone exceeds g_DPM by 1.852$\times$1024 — yet it is the FOURTH-largest of the five UQFF terms. This
 demonstrates that DPM-seeded gravity is effectively negligible at atomic UQFF scale.
 
 ---
@@ -171,23 +171,23 @@ WOLFRAM_TERM_PTOE_AETHER = "a_aether = E_vac*f_res*V_sys/hbar = 7.38e7 m/s^2; xi
 
 ## 8. Significance
 
-1. **Completes the 3-rung UQFF vacuum driver hierarchy** (Λ→EM→Aether at cosmos→NS→atom scales)
-2. **ξ_aether = 1.852×1024** — the aether channel exceeds DPM-seeded gravity by 24 orders of
+1. **Completes the 3-rung UQFF vacuum driver hierarchy** ($\Lambda$$\to$EM$\to$Aether at cosmos$\to$NS$\to$atom scales)
+2. **$\xi$_aether = 1.852$\times$1024** — the aether channel exceeds DPM-seeded gravity by 24 orders of
 magnitude at the Bohr radius; all five UQFF terms exceed g_DPM
-3. **E_vac (plasmonic vacuum) ≠ Λ** — proves UQFF vacuum energy density E_vac=7.09e-36 J/m3 is a
+3. **E_vac (plasmonic vacuum) $\neq$ $\Lambda$** — proves UQFF vacuum energy density E_vac=7.09e-36 J/m3 is a
 distinct physical entity from the cosmological constant, with different scale-coupling
 4. **DPM-seeded gravity is negligible** at UQFF atomic scale; the PToE resonance field is entirely
 dominated by quantum-vacuum (aether, U_g4i) and frequency-locked (THz/qorb) channels
-5. **Cross-hierarchy bridge**: The scale-dependence of ξ_aether vs ξ_Λ defines the boundary between
-aether-dominated (atomic) and Λ-dominated (cosmological) vacuum regimes
+5. **Cross-hierarchy bridge**: The scale-dependence of $\xi$_aether vs $\xi$_$\Lambda$ defines the boundary between
+aether-dominated (atomic) and $\Lambda$-dominated (cosmological) vacuum regimes
 
 ---
 
 ## 9. Cross-References
 
-- **PAPER_296** (Session 84): Λ dominance at Universe scale — first rung of hierarchy
+- **PAPER_296** (Session 84): $\Lambda$ dominance at Universe scale — first rung of hierarchy
 - **PAPER_299** (Session 85): EM dominance at neutron star surface — second rung
-- **PAPER_302** (Session 86): U_g4i dominant term (Γ_u4i = 4.704×1036) — same module
+- **PAPER_302** (Session 86): U_g4i dominant term ($\Gamma$_u4i = 4.704$\times$1036) — same module
 - **PAPER_303** (Session 86): Triple Lyman-alpha frequency lock — same module
 
 ---
@@ -200,9 +200,9 @@ $$\boxed{g_{	ext{DPM}} = \frac{G M_p}{r_{\text{Bohr}}^2} = 3.986 \times 10^{-17}
 
 $$\boxed{\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{	ext{DPM}}} = 1.852 \times 10^{24} \quad \text{(aether dominates DPM-seeded gravity at atomic scale)}}$$
 
-The three-rung UQFF vacuum driver hierarchy is complete: at Universe scale, the cosmological Λ
+The three-rung UQFF vacuum driver hierarchy is complete: at Universe scale, the cosmological $\Lambda$
 dominates; at neutron star surfaces, electromagnetic coupling dominates; at the Bohr radius, the
-UQFF plasmonic aether (seeded by E_vac=7.09×10-36 J/m3, amplified by f_res/ħ) dominates — by 24
+UQFF plasmonic aether (seeded by E_vac=7.09$\times$10-36 J/m3, amplified by f_res/ħ) dominates — by 24
 orders of magnitude over classical DPM-seeded gravity.
 
 
@@ -219,7 +219,7 @@ framework in future observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -238,7 +238,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -313,7 +313,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.191 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -324,13 +324,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -66,14 +66,14 @@ $$T_c = \frac{\hbar \omega_D}{k_B} \cdot \exp\!\left(-\frac{1}{N(0) \cdot V_{\te
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $\hbar$ | $1.055 \times 10^{-34}$ J·s | Reduced Planck constant |
+| $\hbar$ | $1.055 \times 10^{-34}$ J$\cdot$s | Reduced Planck constant |
 | $\omega_D$ | $2 \times 10^{13}$ rad/s | Graphene Debye frequency |
 | $k_B$ | $1.381 \times 10^{-23}$ J/K | Boltzmann constant |
 | $N(0) \cdot V_{\text{SCm}}$ | 0.3 | Coupling product |
 
 For $N(0) \cdot V_{\text{SCm}} = 0.3$: $T_c \approx 5.6$ K.
 
-### 3.2 N(0)·V\_SCm Sweep
+### 3.2 N(0)$\cdot$V\_SCm Sweep
 
 | $N(0) \cdot V_{\text{SCm}}$ | $T_c$ (K) | Regime |
 |------------------------------|-----------|--------|
@@ -108,7 +108,7 @@ Rhombohedral graphene chiral superconductivity provides a condensed-matter analo
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

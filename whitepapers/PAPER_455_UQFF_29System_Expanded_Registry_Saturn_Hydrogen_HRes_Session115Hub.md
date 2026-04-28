@@ -23,7 +23,7 @@ term in UQFF; FIRST hydrogen atom UQFF scaling; FIRST H_res resonance term at f_
 **CP4 Class:** `UQFFExpandedSystemRegistryCalculator` (#9) +
 `Session115GrokShare5fa36e4eHubCalculator` (#10) — PAPER_455
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, f_res = 1×1015 Hz —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, f_res = 1$\times$1015 Hz —>
 ---
 
 ## Abstract
@@ -33,8 +33,8 @@ systems to the 19-system base (PAPER_454): SombreroGalaxy, Saturn, EagleNebula (
 CrabNebula, HydrogenAtom, HydrogenResonance, UniverseDiameter, and three intermediate HII/stellar
 systems. The Saturn module introduces the **first ring gravitational environment term** F_ring in
 the UQFF framework, while the HydrogenAtom and HydrogenResonance entries extend UQFF scaling from
-astrophysical to **subatomic scales** (r ~ 5×10-11 m). A new resonance term H_res = A_res
-sin(2πf_res t) + F_env×SC_m operating at f_res=1015 Hz is introduced, unifying optical-frequency
+astrophysical to **subatomic scales** (r ~ 5$\times$10-11 m). A new resonance term H_res = A_res
+sin(2$\pi$f_res t) + F_env$\times$SC_m operating at f_res=1015 Hz is introduced, unifying optical-frequency
 oscillations with gravitational dynamics. The Session 115 Hub class aggregates all CP4 classes from
 this session for registry introspection.
 
@@ -46,20 +46,20 @@ this session for registry introspection.
 
 | # | System | M (kg) | r (m) | Notable F_env term |
 |---|--------|--------|-------|-------------------|
-| 20 | **SombreroGalaxy** | ~8×1041 | ~5×1020 | F_dust (dust lane) |
-| 21 | **Saturn** | 5.683×1026 | 6.03×107 | **F_ring** (ring gravity) |
-| 22 | **EagleNebula2** | 9.945×1033 | 3.31×1017 | P_rad (same as PAPER_450) |
-| 23 | **CrabNebula** | ~5×1030 | ~5×1016 | Pulsar wind + shock |
-| 24 | **HydrogenAtom** | 1.67×10-27 | 5.29×10-11 | Quantum H_res |
-| 25 | **HydrogenResonance** | 1.67×10-27 | 5.29×10-11 | f_res UQFF oscillation |
-| 26 | **UniverseDiameter** | 1×1053 | 8.8×1026 | Full F_cosmo (2×r_obs) |
-| 27 | **NGC604** | ~2×1034 | ~5×1017 | OB radiation M33 region |
-| 28 | **IC1805** | ~1×1034 | ~5×1017 | Heart Nebula OB |
-| 29 | **IC443** | ~2×1031 | ~1×1017 | SNR shock front |
+| 20 | **SombreroGalaxy** | ~8$\times$1041 | ~5$\times$1020 | F_dust (dust lane) |
+| 21 | **Saturn** | 5.683$\times$1026 | 6.03$\times$107 | **F_ring** (ring gravity) |
+| 22 | **EagleNebula2** | 9.945$\times$1033 | 3.31$\times$1017 | P_rad (same as PAPER_450) |
+| 23 | **CrabNebula** | ~5$\times$1030 | ~5$\times$1016 | Pulsar wind + shock |
+| 24 | **HydrogenAtom** | 1.67$\times$10-27 | 5.29$\times$10-11 | Quantum H_res |
+| 25 | **HydrogenResonance** | 1.67$\times$10-27 | 5.29$\times$10-11 | f_res UQFF oscillation |
+| 26 | **UniverseDiameter** | 1$\times$1053 | 8.8$\times$1026 | Full F_cosmo (2$\times$r_obs) |
+| 27 | **NGC604** | ~2$\times$1034 | ~5$\times$1017 | OB radiation M33 region |
+| 28 | **IC1805** | ~1$\times$1034 | ~5$\times$1017 | Heart Nebula OB |
+| 29 | **IC443** | ~2$\times$1031 | ~1$\times$1017 | SNR shock front |
 
 ### 2.2 Saturn Ring Gravitational Term (FIRST in UQFF)
 
-Saturn's ring system (mass ~1.5×1019 kg, located at r_ring ≈ 1.2–2.3 × R_Saturn) exerts a
+Saturn's ring system (mass ~1.5$\times$1019 kg, located at r_ring $\approx$ 1.2–2.3 $\times$ R_Saturn) exerts a
 non-axisymmetric gravitational modifier on the Saturn equatorial plane:
 
 $$F_{\rm ring}(\phi, r) = \frac{G M_{\rm ring}}{r_{\rm ring}^2} \left(1 + \epsilon_{\rm ring}\cos(2\phi)\right)$$
@@ -80,10 +80,10 @@ azimuthal dependency** not present in any other UQFF system.
 
 $$g_{\rm Saturn}(r,\phi,t) = \frac{GM_{\rm Sat}}{r^2}(1 + H_z t)(1 - B/B_{\rm crit}) + F_{\rm ring}(\phi, r) + U_{g1} + U_{g4}$$
 
-At Saturn's surface (r = 6.03×107 m):
+At Saturn's surface (r = 6.03$\times$107 m):
 $$g_{\rm Newton,Sat} = \frac{6.674\times10^{-11}\times5.683\times10^{26}}{(6.03\times10^7)^2} = \frac{3.79\times10^{16}}{3.64\times10^{15}} \approx 10.4\ \rm m/s^2$$
 
-Consistent with measured Saturn surface gravity. F_ring adds ~1.4×10-8 fractional correction.
+Consistent with measured Saturn surface gravity. F_ring adds ~1.4$\times$10-8 fractional correction.
 
 ---
 
@@ -109,10 +109,10 @@ gravitational resonance in UQFF.
 
 | System | g_UQFF (m/s2) | Scale (m) |
 |--------|--------------|-----------|
-| Hydrogen atom | 3.98×10-17 | 5.3×10-11 |
-| Sun surface | 274 | 6.96×108 |
-| Magnetar surface | 3.73×106 | 1×104 |
-| Black hole ISCO | ~1012 | ~3×103 |
+| Hydrogen atom | 3.98$\times$10-17 | 5.3$\times$10-11 |
+| Sun surface | 274 | 6.96$\times$108 |
+| Magnetar surface | 3.73$\times$106 | 1$\times$104 |
+| Black hole ISCO | ~1012 | ~3$\times$103 |
 
 UQFF thus spans **from atoms to universes** — 37 orders of magnitude.
 
@@ -125,7 +125,7 @@ dark-lane gravity:
 
 $$F_{\rm dust}(\theta) = \frac{G M_{\rm dust}}{r_{\rm dust}^2}\cos^2\!\theta$$
 
-Where M_dust ≈ 1038 kg (total dust mass), r_dust ≈ 5×1020 m, θ = angle from equatorial plane.
+Where M_dust $\approx$ 1038 kg (total dust mass), r_dust $\approx$ 5$\times$1020 m, $\theta$ = angle from equatorial plane.
 
 ---
 
@@ -134,7 +134,7 @@ Where M_dust ≈ 1038 kg (total dust mass), r_dust ≈ 5×1020 m, θ = angle fro
 The `Session115GrokShare5fa36e4eHubCalculator` is a **registry introspection class** that:
 1. Instantiates all 10 PAPER_447–455 CP4 calculators
 2. Provides `get_results(query: dict) → dict` returning combined outputs
-3. Validates consistency across Sessions: expected 10 classes, raises if count ≠ 10
+3. Validates consistency across Sessions: expected 10 classes, raises if count $\neq$ 10
 
 This is not a separate physical system; it is the **aggregator** ensuring Session 115 CP4 classes
 are accessible as a unified block.
@@ -146,19 +146,19 @@ are accessible as a unified block.
 | Feature | SM | CC2-29 System |
 |---------|-----|---------------|
 | Atomic scale gravity | Neglected (QM dominant) | H_res + g_DPM at r_Bohr |
-| Ring system gravity | Gravitational perturbation theory | F_ring(φ, r) unified term |
-| UV resonance in gravity | Not coupled | H_res = A sin(2πf_res t) |
+| Ring system gravity | Gravitational perturbation theory | F_ring($\phi$, r) unified term |
+| UV resonance in gravity | Not coupled | H_res = A sin(2$\pi$f_res t) |
 | System registry scale | Object-by-object | Universal 29-system registry |
 
 ---
 
 ## 7. Testable Predictions
 
-1. **Saturn ring mass constraint:** F_ring/g_Saturn ≈ 1.4×10-8. Saturn probe orbital perturbation
+1. **Saturn ring mass constraint:** F_ring/g_Saturn $\approx$ 1.4$\times$10-8. Saturn probe orbital perturbation
 measurements (Cassini Grand Finale) show ring-induced orbital perturbations at ~10-8 level —
 matching UQFF prediction.
 2. **H_res UV coupling:** At f_res = 1015 Hz, H_res oscillates at UV period T = 10-15 s. Average
-over orbital timescale (~10-16 s) gives ⟨H_res⟩ ≈ A_res/2 = 7×1028 m/s2 — equivalent to Lyman-alpha
+over orbital timescale (~10-16 s) gives ⟨H_res⟩ $\approx$ A_res/2 = 7$\times$1028 m/s2 — equivalent to Lyman-alpha
 photon scattering momentum transfer.
 3. **29-system extensibility:** Any additional astrophysical body can be added to the 30th registry
 slot without modifying systems 1–29. No cross-coupling occurs for non-interacting systems.
@@ -174,7 +174,7 @@ slot without modifying systems 1–29. No cross-coupling occurs for non-interact
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -277,7 +277,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -288,10 +288,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

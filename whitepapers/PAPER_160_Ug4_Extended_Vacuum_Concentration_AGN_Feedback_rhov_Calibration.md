@@ -20,7 +20,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 This paper documents three new calibration parameters for the UQFF Ug4 term: vacuum energy
-density ρ_v = 6×10-27 kg/m3, vacuum concentration factor C_concentration = 1.0, and
+density $\rho$_v = 6$\times$10-27 kg/m3, vacuum concentration factor C_concentration = 1.0, and
 AGN/stellar feedback factor f_feedback = 0.1. These extend PAPER_086 (Ug4 AGN Feedback
 8-parameter formula) with physical calibrations confirmed in Grok thread `7f9068` C++ execution.
 
@@ -32,21 +32,21 @@ From §1.11 PAPER_086:
 
 $$U_{g4}(t,t_n) = k_4 \cdot \rho_v \cdot C_{conc} \cdot \frac{M_{bh}}{d_g} \cdot e^{-\alpha t} \cos(\pi t_n) \cdot (1 + f_{feedback})$$
 
-PAPER_086 documented this as an 8-parameter formula but did not calibrate ρ_v, C_concentration,
+PAPER_086 documented this as an 8-parameter formula but did not calibrate $\rho$_v, C_concentration,
 or f_feedback. These three parameters were undefined/defaulted in the §2.2 implementation.
 
 ---
 
 ## 2. New Calibrations (Thread 7f9068)
 
-### 2.1 Vacuum Energy Density: ρ_v = 6×10-27 kg/m3
+### 2.1 Vacuum Energy Density: $\rho$_v = 6$\times$10-27 kg/m3
 
-**Source:** NIST CODATA 2022 + cosmological vacuum energy measurements (Planck 2018 Ω_Λ).
+**Source:** NIST CODATA 2022 + cosmological vacuum energy measurements (Planck 2018 $\Omega$_$\Lambda$).
 
 The observed dark energy density:
 $$\rho_Lambda = \frac{\Lambda c^2}{8\pi G} \approx 5.96 \times 10^{-27}\, \text{kg/m}^3$$
 
-Calibrated to **6×10-27 kg/m3** in the UQFF vacuum concentration term.
+Calibrated to **6$\times$10-27 kg/m3** in the UQFF vacuum concentration term.
 
 ### 2.2 Vacuum Concentration Factor: C_concentration = 1.0
 
@@ -57,8 +57,8 @@ baseline (no enhancement). Expected range: 0.1–100 for AGN environments.
 ### 2.3 AGN/Stellar Feedback Factor: f_feedback = 0.1
 
 Physical interpretation: AGN jets + stellar winds inject energy into the vacuum, increasing
-the effective Ug4 by ~10% (f_feedback = 0.1 → 1 + 0.1 = 1.1 × multiplier). Derived from
-observed AGN feedback efficiency ε_feedback ~ 0.05–0.15 (mean 0.10).
+the effective Ug4 by ~10% (f_feedback = 0.1 $\to$ 1 + 0.1 = 1.1 $\times$ multiplier). Derived from
+observed AGN feedback efficiency $\varepsilon$_feedback ~ 0.05–0.15 (mean 0.10).
 
 ---
 
@@ -74,7 +74,7 @@ $$= 2.0 \times 6\times10^{-27} \times 3.196\times10^{16} \times 1.1$$
 
 $$\approx 4.219 \times 10^{-10}\, \text{m/s}^2$$
 
-This matches the computed Ug4 = 4.219×10-10 for all four Solar System bodies (uniform at t=0
+This matches the computed Ug4 = 4.219$\times$10-10 for all four Solar System bodies (uniform at t=0
 since it depends only on global Mbh/dg, not per-body mass).
 
 ---
@@ -83,23 +83,23 @@ since it depends only on global Mbh/dg, not per-body mass).
 
 | Parameter      | New Value       | Prior Value    | Physical Basis                        |
 |-----------------|-----------------|----------------|---------------------------------------|
-| ρ_v             | 6×10-27 kg/m3  | undefined      | Planck 2018 Ω_Λ dark energy density  |
+| $\rho$_v             | 6$\times$10-27 kg/m3  | undefined      | Planck 2018 $\Omega$_$\Lambda$ dark energy density  |
 | C_concentration | 1.0             | undefined      | Isotropic vacuum baseline             |
-| f_feedback      | 0.1             | undefined      | AGN efficiency ε ~ 0.10 (observed)    |
+| f_feedback      | 0.1             | undefined      | AGN efficiency $\varepsilon$ ~ 0.10 (observed)    |
 | k4              | 2.0             | 2.0 (unchanged)| UQFF canonical                       |
-| M_bh            | 8.15×1036 kg    | same           | SgrA* black hole mass                |
-| d_g             | 2.55×1020 m     | same           | Distance to galactic center           |
+| M_bh            | 8.15$\times$1036 kg    | same           | SgrA* black hole mass                |
+| d_g             | 2.55$\times$1020 m     | same           | Distance to galactic center           |
 
 ---
 
 ## 5. Implications for UQFF Solvability
 
-The calibration ρ_v = Λc2/(8πG) establishes a **direct bridge** between UQFF Ug4 and the
-ΛCDM cosmological constant, completing the dark energy chain:
+The calibration $\rho$_v = $\Lambda$c2/(8$\pi$G) establishes a **direct bridge** between UQFF Ug4 and the
+$\Lambda$CDM cosmological constant, completing the dark energy chain:
 
 $$\Lambda \cdot c^2/3 \quad \xleftrightarrow{\text{PAPER\_160}} \quad k_4 \cdot \rho_v \cdot C_{conc} \cdot M_{bh}/d_g$$
 
-The compressed cosmological term ΛC2/3 in PAPER_090 and the Ug4 vacuum term here are
+The compressed cosmological term $\Lambda$C2/3 in PAPER_090 and the Ug4 vacuum term here are
 **complementary** representations of the same dark energy at different scales (global vs. local).
 
 ---
@@ -129,7 +129,7 @@ exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -148,7 +148,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -256,7 +256,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -267,13 +267,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

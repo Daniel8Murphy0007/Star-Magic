@@ -21,14 +21,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 This paper documents the first full UQFF-MUGE implementation for the four major Solar System
 bodies: Sun, Earth, Jupiter, and Neptune. Using the `CelestialBody` struct with per-body
-orbital/rotation cycle frequency ω_c, we compute the complete unified field strength **F_U**
+orbital/rotation cycle frequency $\omega$_c, we compute the complete unified field strength **F_U**
 for each body and validate against the C++ execution outputs from Grok thread `7f9068`.
-Numerical results: F_U(Sun) = −2.064 × 1059, F_U(Earth) = −2.064 × 1053,
-F_U(Jupiter) = −2.064 × 1054, F_U(Neptune) = −2.064 × 1052. All 27 unit tests PASS.
+Numerical results: F_U(Sun) = -2.064 $\times$ 1059, F_U(Earth) = -2.064 $\times$ 1053,
+F_U(Jupiter) = -2.064 $\times$ 1054, F_U(Neptune) = -2.064 $\times$ 1052. All 27 unit tests PASS.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -55,12 +55,12 @@ struct CelestialBody {
 
 ### Solar System Body Parameters
 
-| Body    | Ms [kg]     | Rs [m]      | Rb [m]      | Bs_avg [T] | SCm_density [kg/m3] | ω_c [rad/s]            |
+| Body    | Ms [kg]     | Rs [m]      | Rb [m]      | Bs_avg [T] | SCm_density [kg/m3] | $\omega$_c [rad/s]            |
 |---------|-------------|-------------|-------------|------------|---------------------|------------------------|
-| Sun     | 1.989×1030  | 6.96×108    | 1.496×1013  | 1×10-4    | 1×1015             | 2π/(11·365.25·86400)   |
-| Earth   | 5.972×1024  | 6.371×106   | 1×107       | 3×10-5    | 1×1012             | 2π/(1·365.25·86400)    |
-| Jupiter | 1.898×1027  | 6.9911×107  | 1×108       | 4×10-4    | 1×1013             | 2π/(11.86·365.25·86400)|
-| Neptune | 1.024×1026  | 2.4622×107  | 5×107       | 1×10-4    | 1×1011             | 2π/(164.8·365.25·86400)|
+| Sun     | 1.989$\times$1030  | 6.96$\times$108    | 1.496$\times$1013  | 1$\times$10-4    | 1$\times$1015             | 2$\pi$/(11$\cdot$365.25$\cdot$86400)   |
+| Earth   | 5.972$\times$1024  | 6.371$\times$106   | 1$\times$107       | 3$\times$10-5    | 1$\times$1012             | 2$\pi$/(1$\cdot$365.25$\cdot$86400)    |
+| Jupiter | 1.898$\times$1027  | 6.9911$\times$107  | 1$\times$108       | 4$\times$10-4    | 1$\times$1013             | 2$\pi$/(11.86$\cdot$365.25$\cdot$86400)|
+| Neptune | 1.024$\times$1026  | 2.4622$\times$107  | 5$\times$107       | 1$\times$10-4    | 1$\times$1011             | 2$\pi$/(164.8$\cdot$365.25$\cdot$86400)|
 
 ---
 
@@ -92,10 +92,10 @@ $$U_{b,i} = -\beta_i \cdot U_{gi} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot 
 
 | Body    | F_U              | Ug1          | Ug2    | Ug3          | Ug4         |
 |---------|------------------|--------------|--------|--------------|-------------|
-| Sun     | −2.064 × 1059   | 1.386×1032   | ~0     | 1.588×1058  | 4.219×10-10|
-| Earth   | −2.064 × 1053   | 3.809×1024   | ~0     | 1.588×1052  | 4.219×10-10|
-| Jupiter | −2.064 × 1054   | 1.328×1028   | ~0     | 1.588×1053  | 4.219×10-10|
-| Neptune | −2.064 × 1052   | 2.524×1026   | ~0     | 1.588×1051  | 4.219×10-10|
+| Sun     | -2.064 $\times$ 1059   | 1.386$\times$1032   | ~0     | 1.588$\times$1058  | 4.219$\times$10-10|
+| Earth   | -2.064 $\times$ 1053   | 3.809$\times$1024   | ~0     | 1.588$\times$1052  | 4.219$\times$10-10|
+| Jupiter | -2.064 $\times$ 1054   | 1.328$\times$1028   | ~0     | 1.588$\times$1053  | 4.219$\times$10-10|
+| Neptune | -2.064 $\times$ 1052   | 2.524$\times$1026   | ~0     | 1.588$\times$1051  | 4.219$\times$10-10|
 
 *Ug4 is uniform across bodies (t=0) because it depends on global Mbh/dg, not per-body mass.*
 
@@ -105,14 +105,14 @@ $$U_{b,i} = -\beta_i \cdot U_{gi} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot 
 
 | Constant       | Value            | Source                     |
 |---------------|------------------|----------------------------|
-| κ             | 0.0005/day       | UQFF canonical             |
-| α             | 0.001/s          | UQFF canonical             |
-| β_i           | 0.6              | UQFF canonical             |
-| Ω_g           | 7.3×10-16 rad/s | SgrA* orbital frequency    |
-| M_bh          | 8.15×1036 kg     | SgrA* mass                 |
-| d_g           | 2.55×1020 m      | Distance to SgrA*          |
+| $\kappa$             | 0.0005/day       | UQFF canonical             |
+| $\alpha$             | 0.001/s          | UQFF canonical             |
+| $\beta$_i           | 0.6              | UQFF canonical             |
+| $\Omega$_g           | 7.3$\times$10-16 rad/s | SgrA* orbital frequency    |
+| M_bh          | 8.15$\times$1036 kg     | SgrA* mass                 |
+| d_g           | 2.55$\times$1020 m      | Distance to SgrA*          |
 | v_SCm         | 0.99c            | Relativistic SCm jet       |
-| ρ_v           | 6×10-27 kg/m3   | Vacuum energy density (NEW)|
+| $\rho$_v           | 6$\times$10-27 kg/m3   | Vacuum energy density (NEW)|
 | C_conc        | 1.0              | NEW calibration            |
 | f_feedback    | 0.1              | AGN feedback factor (NEW)  |
 
@@ -121,7 +121,7 @@ $$U_{b,i} = -\beta_i \cdot U_{gi} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot 
 ## 5. Integration Targets
 
 - **CP1 (`CondensedPhysics.py`):** Add `SolarSystemUQFFCalculator` with `CelestialBody` parameter interface
-- **CP3 (`CondensedPhysics3.py`):** Add `FU_SolarSystem_Sun_Calculator`, `FU_SolarSystem_Earth_Calculator` using per-body ω_c
+- **CP3 (`CondensedPhysics3.py`):** Add `FU_SolarSystem_Sun_Calculator`, `FU_SolarSystem_Earth_Calculator` using per-body $\omega$_c
 - **SOURCE4 (MAIN_1_CoAnQi.cpp):** Solar System bodies can be added as 4 new CelestialBody instances in the menu
 
 ---
@@ -157,7 +157,7 @@ All 27 unit tests PASS (C++ execution, Grok thread 7f9068):
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -176,7 +176,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -285,7 +285,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.153 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -296,13 +296,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

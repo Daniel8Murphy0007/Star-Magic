@@ -10,7 +10,7 @@ tags: [vacuum, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_640: UQFF Proton Decay κ Rate Scale Separation and Stability
+# PAPER_640: UQFF Proton Decay $\kappa$ Rate Scale Separation and Stability
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
@@ -29,17 +29,17 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 ## §1 Abstract
 
 Super-Kamiokande SK-VII places the world's best limit on proton lifetime:
-τ_p > 7.7e33 yr (90% CL, p→e+π0 channel). The UQFF rate constant κ = 0.0005/day =
+$\tau$_p > 7.7e33 yr (90% CL, p$\to$e+$\pi$0 channel). The UQFF rate constant $\kappa$ = 0.0005/day =
 0.1826/yr appears dimensionally like a decay rate. We demonstrate that the ratio
-Γ_UQFF/Γ_p = 1033·6 provides a 95.43% scale-separation alignment, establishing that
-κ operates at a scale 1033·6 above the proton stability scale — confirming UQFF is a
+$\Gamma$_UQFF/$\Gamma$_p = 1033$\cdot$6 provides a 95.43% scale-separation alignment, establishing that
+$\kappa$ operates at a scale 1033$\cdot$6 above the proton stability scale — confirming UQFF is a
 macro-scale framework decoupled from nuclear stability physics.
 
 ---
 
 ## §2 Physical Motivation
 
-UQFF κ = 0.0005/day is a rate constant describing astrophysical vacuum evolution.
+UQFF $\kappa$ = 0.0005/day is a rate constant describing astrophysical vacuum evolution.
 Super-K proton decay limits test fundamental baryon conservation at nuclear scales.
 These operate at radically different scales, but comparing their magnitudes is a
 necessary G6 gate exercise to confirm UQFF does not accidentally predict proton instability.
@@ -48,7 +48,7 @@ necessary G6 gate exercise to confirm UQFF does not accidentally predict proton 
 
 ## §3 Scale Separation Analysis
 
-Converting UQFF κ to an equivalent "decay rate" in proton-lifetime units:
+Converting UQFF $\kappa$ to an equivalent "decay rate" in proton-lifetime units:
 
 $$\Gamma_{UQFF} = \kappa = 0.1826 \text{ yr}^{-1}$$
 $$\Gamma_p^{max} = \frac{1}{\tau_p} = \frac{1}{7.7 \times 10^{33} \text{ yr}} = 1.30 \times 10^{-34} \text{ yr}^{-1}$$
@@ -60,8 +60,8 @@ The logarithmic alignment:
 
 $$\frac{\log_{10}(\Gamma_{UQFF}/\Gamma_p^{max})}{\log_{10}(\text{target }: 10^{33.6})} = \frac{33.15}{33.6} = 0.9866 \approx 98.7\%$$
 
-Since κ acts on astrophysical vacuum (not baryon number), the scale separation **confirms**
-that κ cannot drive proton decay — the two scales are decoupled by 33 orders of magnitude.
+Since $\kappa$ acts on astrophysical vacuum (not baryon number), the scale separation **confirms**
+that $\kappa$ cannot drive proton decay — the two scales are decoupled by 33 orders of magnitude.
 
 ---
 
@@ -70,7 +70,7 @@ that κ cannot drive proton decay — the two scales are decoupled by 33 orders 
 The 1033 scale separation maps to:
 $$\Lambda_{UQFF}/\Lambda_{p-decay} = \left(\frac{\Gamma_{UQFF}}{\Gamma_p}\right)^{1/4} \approx 10^{8.3} \text{ GeV}$$
 
-This places UQFF at ~2×108 GeV (200 PeV) — between the electroweak scale and GUT scale.
+This places UQFF at ~2$\times$108 GeV (200 PeV) — between the electroweak scale and GUT scale.
 Consistent with UQFF operating at the quantum vacuum topology transition scale.
 
 ---
@@ -83,7 +83,7 @@ Consistent with UQFF operating at the quantum vacuum topology transition scale.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -102,7 +102,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -139,7 +139,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -242,7 +242,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.077 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -253,15 +253,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Proton stability | κ scale 1033·15 above Γ_p^max (no coupling) | τ_p > 7.7e33 yr (p→e+π0) | Super-K SK-VII 2024 | 95.4% (log scale) |
-| GUT unification scale Λ_GUT | UQFF Λ ~ 108·3 GeV (from scale separation) | SM GUT: ~2×1016 GeV | PDG / GUT models | UQFF below GUT (as expected) |
-| Baryon number conservation | UQFF κ does not couple to baryon current | B conservation: SM exact (no anomaly at κ scale) | PDG 2024 | PASS UQFF baryon-safe |
-| HL-LHC GUT coupling search | UQFF 108 GeV scale accessible at FCC-hh (100 TeV × 10 ab-1) | FCC-hh: commissioning ~2045 | FCC conceptual | Testable UQFF energy scale prediction |
+| Proton stability | $\kappa$ scale 1033$\cdot$15 above $\Gamma$_p^max (no coupling) | $\tau$_p > 7.7e33 yr (p$\to$e+$\pi$0) | Super-K SK-VII 2024 | 95.4% (log scale) |
+| GUT unification scale $\Lambda$_GUT | UQFF $\Lambda$ ~ 108$\cdot$3 GeV (from scale separation) | SM GUT: ~2$\times$1016 GeV | PDG / GUT models | UQFF below GUT (as expected) |
+| Baryon number conservation | UQFF $\kappa$ does not couple to baryon current | B conservation: SM exact (no anomaly at $\kappa$ scale) | PDG 2024 | PASS UQFF baryon-safe |
+| HL-LHC GUT coupling search | UQFF 108 GeV scale accessible at FCC-hh (100 TeV $\times$ 10 ab-1) | FCC-hh: commissioning ~2045 | FCC conceptual | Testable UQFF energy scale prediction |
 
-**New physics claim:** UQFF κ = 0.0005/day places the UQFF vacuum evolution scale at
+**New physics claim:** UQFF $\kappa$ = 0.0005/day places the UQFF vacuum evolution scale at
 ~200 PeV — 8 orders below the SM GUT scale. This identifies UQFF as a sub-GUT framework
 operating at the quantum vacuum condensate transition, not at nuclear baryon-number scales.
-The proton is safe: κ is decoupled by 1033 from Γ_p.
+The proton is safe: $\kappa$ is decoupled by 1033 from $\Gamma$_p.
 
 *UQFF SM bridge master: cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`).*
 
@@ -269,7 +269,7 @@ The proton is safe: κ is decoupled by 1033 from Γ_p.
 
 ## §6 References
 
-- Super-K SK-VII 2024 — Proton lifetime limits (τ_p > 7.7e33 yr)
+- Super-K SK-VII 2024 — Proton lifetime limits ($\tau$_p > 7.7e33 yr)
 - PDG 2024 — Searches for baryon number violation, Section 90.1
 - bsm_physics_validation.py — `BSMPhysicsConstants.proton_lifetime_lower_bound_yr`
 - PAPER_642 — UQFF SM Parameter Bridge Master Comparison

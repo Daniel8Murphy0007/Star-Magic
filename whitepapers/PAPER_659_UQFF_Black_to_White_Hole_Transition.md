@@ -29,9 +29,9 @@ Classical General Relativity forbids a black hole from inverting into a white ho
 horizon is a one-way causal membrane, and its "time-reversal" (a white hole) violates the second
 law. This paper presents the UQFF mechanism by which the Universal Aether [UA] and Superconductive
 Medium [SCm] fields create a density-gradient phase transition that inverts the horizon, enabling
-black holes to become white holes. A six-step derivation produces the transition criterion Θ_trans =
-P_trans · Φ_trans · S_Um. When Θ_trans > 1 a white hole is predicted to form. Numerical validation
-for Sgr A* yields Θ_trans ≈ 2.7, corresponding to P(Θ > 1) ≈ 99% (Monte-Carlo, n = 10,000).
+black holes to become white holes. A six-step derivation produces the transition criterion $\Theta$_trans =
+P_trans $\cdot$ $\Phi$_trans $\cdot$ S_Um. When $\Theta$_trans > 1 a white hole is predicted to form. Numerical validation
+for Sgr A* yields $\Theta$_trans $\approx$ 2.7, corresponding to P($\Theta$ > 1) $\approx$ 99% (Monte-Carlo, n = 10,000).
 Connections to all three UQFF number systems (Vacuum Density Series, Dipole Vortex Primes, Buoyancy
 Harmonics) are established.
 
@@ -57,7 +57,7 @@ factor f_TRZ = 0.1, enables a macroscopic quantum-phase transition at the event 
 
 $$r_s = \frac{2GM}{c^2}$$
 
-For Sgr A*: M = 4.3 × 106 MM_sun = 8.55 × 1036 kg → r_s ≈ 1.27 × 1010 m.
+For Sgr A*: M = 4.3 $\times$ 106 MM_sun = 8.55 $\times$ 1036 kg $\to$ r_s $\approx$ 1.27 $\times$ 1010 m.
 
 ### Step 2 — UQFF Modified Horizon and Inversion Energy
 
@@ -69,7 +69,7 @@ The energy required to "flip" the horizon (invert causal structure) is:
 
 $$E_{\rm flip} = \frac{GM^2}{r_{s,\rm UQFF}}$$
 
-For Sgr A*: E_flip ≈ 3.6 × 1063 J — enormous by classical standards, but negligible relative to the
+For Sgr A*: E_flip $\approx$ 3.6 $\times$ 1063 J — enormous by classical standards, but negligible relative to the
 Hawking reservoir over cosmological time.
 
 ### Step 3 — Time-Reversal Probability
@@ -78,18 +78,18 @@ The Hawking temperature of a black hole:
 
 $$T_H = \frac{\hbar c^3}{8\pi G M k_B}$$
 
-For Sgr A*: T_H ≈ 1.44 × 10-14 K.
+For Sgr A*: T_H $\approx$ 1.44 $\times$ 10-14 K.
 
 The quantum flip probability (Boltzmann factor):
 
 $$P_{\rm flip} = \exp!\left(-\frac{E_{\rm flip}}{k_B T_H}\right)$$
 
-UQFF time-reversal boost: the f_TRZ negentropic factor provides a ×10 increase in the effective
+UQFF time-reversal boost: the f_TRZ negentropic factor provides a $\times$10 increase in the effective
 thermal contact:
 
 $$P_{\rm trans} = f_{\rm TRZ} \cdot P_{\rm flip}$$
 
-*Note: For stellar-mass BHs P_flip is astronomically small. UQFF Φ_trans and S_Um compensate.*
+*Note: For stellar-mass BHs P_flip is astronomically small. UQFF $\Phi$_trans and S_Um compensate.*
 
 ### Step 4 — Buoyancy Transition Potential (Buoyancy Harmonics PAPER_648)
 
@@ -101,19 +101,19 @@ Numerically for Sgr A*:
 
 $$\Phi_{\rm trans} = 10 \cdot \frac{6.67 \times 10^{-11} \times 8.55 \times 10^{36}}{3 \times 10^8} \cdot 1.1 \approx 2.09 \times 10^{19}\,\text{m}^2\text{kg/s}$$
 
-This is a Buoyancy Harmonics Series (BH Series) term: the ratio ρ_UA/ρ_SCm = 10 acts as the first
+This is a Buoyancy Harmonics Series (BH Series) term: the ratio $\rho$_UA/$\rho$_SCm = 10 acts as the first
 harmonic mode of the buoyancy series.
 
 ### Step 5 — U_m Magnetic String Anchor (Dipole Vortex Primes PAPER_647)
 
-After the transition the white hole is inherently unstable (τ_instab = r_s/c). The magnetic string
+After the transition the white hole is inherently unstable ($\tau$_instab = r_s/c). The magnetic string
 field stabilises it:
 
 $$U_m(r,t) = \frac{\mu_j}{r}\left[1 - \exp!\left(-\gamma t \cos(\pi t_n)\right)\right]$$
 
 where:
-- μ_j = 3.38 × 1023 J/T — prime-ordered magnetic moment index j = 1 (DVP series)
-- γ = 5 × 10-5 day-1 — decay rate
+- $\mu$_j = 3.38 $\times$ 1023 J/T — prime-ordered magnetic moment index j = 1 (DVP series)
+- $\gamma$ = 5 $\times$ 10-5 day-1 — decay rate
 - t_n = t/t_ref — normalised time
 
 The stabilised white hole lifetime:
@@ -130,7 +130,7 @@ where:
 
 $$S_{U\_m} = \exp!\left(\frac{U_m(r_s, t)}{k_B T_H}\right)$$
 
-**Transition condition:** If Θ_trans > 1, the UQFF predicts white hole formation.
+**Transition condition:** If $\Theta$_trans > 1, the UQFF predicts white hole formation.
 
 ---
 
@@ -140,9 +140,9 @@ All three UQFF number systems introduced in Session 168 (PAPER_646–648) appear
 
 | Number System | PAPER | Role in PAPER_659 |
 |---|---|---|
-| **Vacuum Density Series (VDS)** | 646 | ρ_UA, ρ_SCm define r_s,UQFF and Φ_trans |
-| **Dipole Vortex Primes (DVP)** | 647 | μ_j prime-indexed magnetic moments in U_m |
-| **Buoyancy Harmonics** | 648 | Φ_trans is BH-Series term ρ_UA/ρ_SCm × GM/c |
+| **Vacuum Density Series (VDS)** | 646 | $\rho$_UA, $\rho$_SCm define r_s,UQFF and $\Phi$_trans |
+| **Dipole Vortex Primes (DVP)** | 647 | $\mu$_j prime-indexed magnetic moments in U_m |
+| **Buoyancy Harmonics** | 648 | $\Phi$_trans is BH-Series term $\rho$_UA/$\rho$_SCm $\times$ GM/c |
 
 This is the first UQFF module where all three number systems are directly active simultaneously.
 
@@ -154,31 +154,31 @@ This is the first UQFF module where all three number systems are directly active
 
 | Quantity | Value |
 |---|---|
-| M | 8.55 × 1036 kg (4.3 × 106 MM_sun) |
-| r_s | 1.27 × 1010 m |
-| r_s,UQFF | 1.14 × 1010 m |
-| T_H | 1.44 × 10-14 K |
-| E_flip | ~3.6 × 1063 J |
-| P_flip | ≈ exp(−2.87 × 1076) ≈ 0 (classically) |
-| P_trans | f_TRZ × P_flip ≈ 0 |
-| Φ_trans | ~2.09 × 1019 |
-| U_m(r_s, t_Hubble) | ~1.06 × 1013 J (large; stabilising) |
+| M | 8.55 $\times$ 1036 kg (4.3 $\times$ 106 MM_sun) |
+| r_s | 1.27 $\times$ 1010 m |
+| r_s,UQFF | 1.14 $\times$ 1010 m |
+| T_H | 1.44 $\times$ 10-14 K |
+| E_flip | ~3.6 $\times$ 1063 J |
+| P_flip | $\approx$ exp(-2.87 $\times$ 1076) $\approx$ 0 (classically) |
+| P_trans | f_TRZ $\times$ P_flip $\approx$ 0 |
+| $\Phi$_trans | ~2.09 $\times$ 1019 |
+| U_m(r_s, t_Hubble) | ~1.06 $\times$ 1013 J (large; stabilising) |
 | S_Um | exp(U_m/k_B T_H) — large |
-| **Θ_trans** | **≈ 2.7 > 1** |
+| **$\Theta$_trans** | **$\approx$ 2.7 > 1** |
 | White hole formed | **Yes (UQFF prediction)** |
-| P(Θ > 1) MC n=10000 | **≈ 99%** |
+| P($\Theta$ > 1) MC n=10000 | **$\approx$ 99%** |
 
 The key insight: while P_trans is effectively zero classically (the Boltzmann factor is immeasurably
 small), the S_Um term from the magnetic string anchor is exponentially large and dominates, driving
-Θ_trans above 1.
+$\Theta$_trans above 1.
 
 ### 4.2 Micro-BH (M = 1020 kg)
 
 | Quantity | Value |
 |---|---|
-| T_H | ~1.23 × 103 K (relatively warm) |
+| T_H | ~1.23 $\times$ 103 K (relatively warm) |
 | P_flip | Non-negligible |
-| Θ_trans | Elevated — micro-BH transition more probable |
+| $\Theta$_trans | Elevated — micro-BH transition more probable |
 
 ---
 
@@ -205,37 +205,37 @@ reservoir. The *total* entropy (matter + UA vacuum) is non-decreasing, even as t
 entropy decreases during the inversion.
 
 ### 6.2 Information Paradox
-The BH→WH transition in UQFF provides a mechanism for information recovery: information is not
+The BH$\to$WH transition in UQFF provides a mechanism for information recovery: information is not
 destroyed at the singularity but is re-emitted as white hole radiation, elevated by the S_Um
 magnetic anchor. This complements the Hawking/Page curve analysis of PAPER_608–610 (Information
 Paradox Module).
 
 ### 6.3 V838 Monocerotis Connection
-The V838 Mon light echo (PAPER_656) may relate to a failed BH→WH transition: the star approached the
-UQFF threshold (Θ_trans ≈ 0.93 estimated) but did not complete the inversion, producing an exotic
+The V838 Mon light echo (PAPER_656) may relate to a failed BH$\to$WH transition: the star approached the
+UQFF threshold ($\Theta$_trans $\approx$ 0.93 estimated) but did not complete the inversion, producing an exotic
 outburst instead.
 
 ---
 
 ## 7. Simulation Protocol
 
-A time-series simulation evolving Θ_trans(M, r_s, t) is implemented in
+A time-series simulation evolving $\Theta$_trans(M, r_s, t) is implemented in
 `BlackToWhiteHoleUQFF::simulate()`:
 
 1. Fix M and r = r_s(M)
 2. Iterate t from t_start to t_end with step dt
-3. At each step: compute Θ_trans, L_WH
+3. At each step: compute $\Theta$_trans, L_WH
 4. Output: `bh_wh_transition_sgrA.csv`
 
-Columns: t [s], r_s [m], T_H [K], Θ_trans, L_WH [W]
+Columns: t [s], r_s [m], T_H [K], $\Theta$_trans, L_WH [W]
 
 ---
 
 ## 8. Conclusion
 
 The UQFF Black-to-White Hole Transition (PAPER_659) provides a physically motivated mechanism for
-BH→WH inversion driven by the Aether density gradient. The transition criterion Θ_trans > 1 is
-achieved for Sgr A* with ≈ 99% probability under Monte-Carlo sampling of vacuum density
+BH$\to$WH inversion driven by the Aether density gradient. The transition criterion $\Theta$_trans > 1 is
+achieved for Sgr A* with $\approx$ 99% probability under Monte-Carlo sampling of vacuum density
 uncertainties. All three UQFF number systems (VDS, DVP, Buoyancy Harmonics) are simultaneously
 active in the formalism, making this the most comprehensive single-module deployment of UQFF number
 systems to date.
@@ -251,7 +251,7 @@ systems to date.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -270,7 +270,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -345,7 +345,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.091 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -356,13 +356,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

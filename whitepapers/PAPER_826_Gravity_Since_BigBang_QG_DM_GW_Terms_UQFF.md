@@ -57,7 +57,7 @@ at different moments in cosmic history:
 
 ### 2.1 Physical Derivation
 
-At distances r ≤ l_Planck = sqrt(hbar*G/c^3) = 1.616e-35 m, quantum fluctuations of spacetime
+At distances r $\leq$ l_Planck = sqrt(hbar*G/c^3) = 1.616e-35 m, quantum fluctuations of spacetime
 geometry dominate over classical gravity. The effective gravitational coupling acquires a quantum
 loop correction:
 
@@ -96,7 +96,7 @@ $$
 \end{aligned}
 $$
 
-QG_term is phenomenologically relevant only at r << 1 fm. For astrophysical contexts, QG_term → 0.
+QG_term is phenomenologically relevant only at r << 1 fm. For astrophysical contexts, QG_term $\to$ 0.
 However, in the time-averaged Friedmann UQFF equation, it sets the initial boundary condition for
 cosmic gravity.
 
@@ -118,7 +118,7 @@ Where:
 - M_visible = visible baryon mass within r (kg)
 - M_DM = dark matter mass within r (kg) [typically M_DM ~ 5 * M_visible]
 - delta_rho / rho = fractional density contrast (dimensionless)
-- (3*G*M)/r^3 = tidal stretching factor (s^-2 units → must be combined with M to get m/s^2)
+- (3*G*M)/r^3 = tidal stretching factor (s^-2 units $\to$ must be combined with M to get m/s^2)
 
 **Correct dimensional UQFF DM_term:**
 $$
@@ -144,7 +144,7 @@ $$
   & delta_rho/rho = 0.05 (typical outer halo overdensity) \\
   & DM_term = (6.6743e-11 * 2.0e41) / (6.17e20)^2 * 1.05 \\
   & = 1.335e31 / 3.806e41 * 1.05 \\
-  & ≈ 3.68e-11 m/s^2
+  & \approx 3.68e-11 m/s^2
 \end{aligned}
 $$
 
@@ -176,7 +176,7 @@ $$
   & = Omega_GW * c^2
 \end{aligned}
 $$
-Units: [kg/m^3 * m^2/s^2 / (kg/m^3)] = m^2/s^2 → must normalize by length scale L:
+Units: [kg/m^3 * m^2/s^2 / (kg/m^3)] = m^2/s^2 $\to$ must normalize by length scale L:
 $$
 GW_term = Omega_GW * c^2 / L_characteristic
 $$
@@ -246,11 +246,11 @@ The expansion factor in the Gravity-Since-Big-Bang equation uses the full Friedm
 $$
 H(z) = H_0 * sqrt(Omega_r*(1+z)^4 + Omega_m*(1+z)^3 + Omega_k*(1+z)^2 + Omega_Lambda)
 $$
-Where Omega_r (radiation) = 9.4e-5, Omega_k (curvature) ≈ 0, Omega_m = 0.3, Omega_Lambda = 0.7.
+Where Omega_r (radiation) = 9.4e-5, Omega_k (curvature) $\approx$ 0, Omega_m = 0.3, Omega_Lambda = 0.7.
 
-At z >> 1 (radiation dominated): H(z) ∝ (1+z)^2  
-At z ~ 0-2 (matter dominated): H(z) ∝ (1+z)^(3/2)  
-At z = -1 (future): H → H_0*sqrt(Omega_Lambda) = H_0*0.836 (de Sitter limit)
+At z >> 1 (radiation dominated): H(z) $\propto$ (1+z)^2  
+At z ~ 0-2 (matter dominated): H(z) $\propto$ (1+z)^(3/2)  
+At z = -1 (future): H $\to$ H_0*sqrt(Omega_Lambda) = H_0*0.836 (de Sitter limit)
 
 ---
 
@@ -275,13 +275,13 @@ At z = -1 (future): H → H_0*sqrt(Omega_Lambda) = H_0*0.836 (de Sitter limit)
 - Bouncing cosmology models predict avoidance of Big Bang singularity via QG_term repulsion — consistent with Bojowald (2001)
 
 **DM_term validation:**
-- NFW profile (Navarro-Frenk-White) gives M_DM(r) ∝ [ln(1+r/r_s) - r/(r_s+r)] * 4*pi*rho_s*r_s^3
+- NFW profile (Navarro-Frenk-White) gives M_DM(r) $\propto$ [ln(1+r/r_s) - r/(r_s+r)] * 4*pi*rho_s*r_s^3
 - Milky Way rotation curve flattening at R > 10 kpc: DM_term contribution matches v_c ~ 220 km/s constant
-- CMB power spectrum: Omega_DM*h^2 = 0.120 ± 0.001 (Planck 2018) constrains delta_rho/rho normalization
+- CMB power spectrum: Omega_DM*h^2 = 0.120 $\pm$ 0.001 (Planck 2018) constrains delta_rho/rho normalization
 
 **GW_term validation:**
-- NANOGrav 15-year dataset: Omega_GW * h^2 ≈ 2e-9 at f ~ 1e-8 Hz — stochastic GW background detected
-- LIGO O3: binary BH merger GW energy radiated ~5% of total mass → Omega_GW_local ~ 1e-8 per event at 400 Mpc
+- NANOGrav 15-year dataset: Omega_GW * h^2 $\approx$ 2e-9 at f ~ 1e-8 Hz — stochastic GW background detected
+- LIGO O3: binary BH merger GW energy radiated ~5% of total mass $\to$ Omega_GW_local ~ 1e-8 per event at 400 Mpc
 
 ---
 
@@ -341,7 +341,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -360,7 +360,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -498,7 +498,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.100 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -509,13 +509,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

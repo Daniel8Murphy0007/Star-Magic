@@ -39,7 +39,7 @@ compressions, each adding astrophysical systems from quasar jets to hydrogen rea
 Compression Cycle 2 consolidates all 38 successfully modeled systems into a single parameterized
 master equation, with the F_env(t) term serving as the universal environmental modulator.
 
-The primary advance in Cycle 2 is the identification of F_DE (dark energy power) and F_η (LENR
+The primary advance in Cycle 2 is the identification of F_DE (dark energy power) and F_$\eta$ (LENR
 neutron term) as members of the F_env family, alongside traditional astrophysical forcing terms like
 F_wind, F_tidal, and F_SN.
 
@@ -52,7 +52,7 @@ $$
   & g_UQFF(r,t) = (G*M(t))/(r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t)) \\
   & + (U_g1 + U_g2 + U_g3' + U_g4) + U_i \\
   & + (Lambda*c^2/3) \\
-  & + (hbar/√(Deltax*Deltap)) * integral(psi_total * H * psi_total dV) * (2pi/t_Hubble) \\
+  & + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi_total * H * psi_total dV) * (2pi/t_Hubble) \\
   & + rho_fluid*V*g \\
   & + (M_visible + M_DM) * (deltarho/rho + (3*G*M)/r^3)
 \end{aligned}
@@ -62,7 +62,7 @@ $$
 
 $$
 \begin{aligned}
-  & H(t,z) = H_0 * √(0.3*(1+z)^3 + 0.7) \\
+  & H(t,z) = H_0 * \sqrt{}(0.3*(1+z)^3 + 0.7) \\
   & H_0 = 70 km/s/Mpc = 2.268x10^{-}1^8 s^{-}1
 \end{aligned}
 $$
@@ -106,10 +106,10 @@ $$
 $$
 
 Where:
-- k_η = 10^{-}1^{1}3 (LENR coupling constant)
-- η_inertia ≈ 8.8x10^{4}2 (dark energy inertia efficiency)
-- ρ_vac = ρ_vac,[SCm] = 7.09x10^{-}3^7 J/m^3
-- ω_vac = vacuum angular frequency
+- k_$\eta$ = 10^{-}1^{1}3 (LENR coupling constant)
+- $\eta$_inertia $\approx$ 8.8x10^{4}2 (dark energy inertia efficiency)
+- $\rho$_vac = $\rho$_vac,[SCm] = 7.09x10^{-}3^7 J/m^3
+- $\omega$_vac = vacuum angular frequency
 
 ---
 
@@ -195,13 +195,13 @@ The Compression Cycle 2 master equation covers all systems from documents 1-43:
 
 | Parameter | Value | Units |
 |-----------|-------|-------|
-| ρ_vac,[SCm] | 7.09x10^{-}3^7 | J/m^3 |
-| ρ_vac,[UA] | 7.09x10^{-}3^6 | J/m^3 |
+| $\rho$_vac,[SCm] | 7.09x10^{-}3^7 | J/m^3 |
+| $\rho$_vac,[UA] | 7.09x10^{-}3^6 | J/m^3 |
 | P_DE | 7.09x10^{-}5^1 | W |
 | f_1 (golden ratio series) | 281.5 | Hz |
-| μ_dipole | ~10^{-}5^1 | A*m^2 |
-| ω_plasma | 1.005x10^{1}6 | rad/s |
-| ψ_max | ~4.83x10^5 | (normalized) |
+| $\mu$_dipole | ~10^{-}5^1 | A*m^2 |
+| $\omega$_plasma | 1.005x10^{1}6 | rad/s |
+| $\psi$_max | ~4.83x10^5 | (normalized) |
 
 ---
 
@@ -226,7 +226,7 @@ Session 180 continuation v5.38.*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -245,7 +245,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -268,7 +268,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -389,7 +389,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.188 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -400,13 +400,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_500 — Proto-Hydrogen 26-Shell First Atom Structure
 **Author:** Daniel T. Murphy
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 **arXiv:** 2503.xxxxx
 **Session:** 134
@@ -56,7 +56,7 @@ H_{filled} = \text{SCm} \cdot UA_{trapped} \cdot \int Grind_{opp} \, dt
 $$
 
 1. **Shell filling**: SCm grinding (CW vs CCW) pushes trapped UA quanta into 26D shells
-2. **Projection to 3D**: 26D → 9D void synthesis → 3D observable electron shells
+2. **Projection to 3D**: 26D $\to$ 9D void synthesis $\to$ 3D observable electron shells
 3. **Quantum fingerprint**: Each atom's unique fingerprint from individual 26D shell state
 
 ### Observable Electron Shell Emergence
@@ -116,7 +116,7 @@ QFP(atom) = \bigotimes_{k=1}^{26} |shell_k^{UA'\text{-config}}\rangle \ne QFP(at
 \quad \forall \, atom \ne atom'
 $$
 
-**Non-repetition guaranteed** by irrational π spacings in 3D-IPO overlay and
+**Non-repetition guaranteed** by irrational $\pi$ spacings in 3D-IPO overlay and
 computational irreducibility of Wolfram hypergraph strand.
 
 This is distinct from quantum indistinguishability in 3D — atoms are
@@ -143,7 +143,7 @@ $$
 Z_{effective}(UAE_n) = Z_{H} \cdot n^{26} \cdot \kappa^n
 $$
 
-At UA''''', maximum Z reached → heaviest stable metals → Feynman globular clusters
+At UA''''', maximum Z reached $\to$ heaviest stable metals $\to$ Feynman globular clusters
 (see PAPER_501).
 
 ---
@@ -161,7 +161,7 @@ At UA''''', maximum Z reached → heaviest stable metals → Feynman globular cl
 
 ## §8 Validation Targets
 
-- **Hydrogen spectroscopy**: Lyman, Balmer, Paschen series → 26D projection fingerprints
+- **Hydrogen spectroscopy**: Lyman, Balmer, Paschen series $\to$ 26D projection fingerprints
 - **Isotope ratios** (D/H in ALMA observations): Non-unique 26D configurations
 - **Chemical bonding**: Unique fingerprints manifest in molecular orbital variations
 - **Quantum chemistry databases**: Shell structure confirmations vs 26D model
@@ -203,7 +203,7 @@ the phonon transmission efficiency across the ICM.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -304,7 +304,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.092 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -315,13 +315,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

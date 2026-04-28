@@ -31,11 +31,11 @@ $$
 | Term | Expression | Origin |
 |------|-----------|--------|
 | $g_{
-m DPM}$ | $μ_s∇(M_s/r)$ | DPM-seeded |
+m DPM}$ | $\mu_s\nabla(M_s/r)$ | DPM-seeded |
 | $g_{\text{exp}}$ | $-H_0^2 r$ | Hubble expansion |
 | $g_{\text{super}}$ | $-B^2/(2\mu_0\rho r)$ | Magnetic suppression |
 | $g_{\text{env}}$ | $\Omega^2 r$ | Rotation envelope |
-| $g_{U_g}$ | $\sum_{i=1}^{26} (μ_s∇(M_s/r))(\text{SSq}\cdot i/26)\beta_i$ | 26-layer buoyancy |
+| $g_{U_g}$ | $\sum_{i=1}^{26} (\mu_s\nabla(M_s/r))(\text{SSq}\cdot i/26)\beta_i$ | 26-layer buoyancy |
 | $g_{\text{cosm}}$ | $-\Lambda c^2 r/3$ | Cosmological constant |
 | $g_{\text{quant}}$ | $\hbar/(Mr^2)$ | Quantum correction |
 | $g_{\text{fluid}}$ | $-\nu v_b/r^2$ | Navier-Stokes viscous |
@@ -46,7 +46,7 @@ $$
 \rho_{\text{NFW}}(r) = \frac{\rho_s}{(r/r_s)(1 + r/r_s)^2}
 $$
 
-Validated: $\rho(r_s) = \rho_s/4 = 2.50 \times 10^{-22}$ kg/m³
+Validated: $\rho(r_s) = \rho_s/4 = 2.50 \times 10^{-22}$ kg/m3
 
 ## §3 3D Volumetric Meshgrid
 
@@ -76,10 +76,10 @@ without requiring additional dark matter beyond NFW.
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| g_solar (solar surface) | 274.03 m/s² | Validated Test 2 |
-| NFW ρ(r_s) | 2.50×10⁻²² kg/m³ | ρ_s/4 |
+| g_solar (solar surface) | 274.03 m/s2 | Validated Test 2 |
+| NFW $\rho$(r_s) | 2.50$\times$10-22 kg/m3 | $\rho$_s/4 |
 | Flatness ratio | 0.717 | Outer rotation curve |
-| Grid 8³ time | 6.2 ms | 512 points |
+| Grid 83 time | 6.2 ms | 512 points |
 | MUGE components | 8 | Full correction set |
 
 ## §6 Multi-System Support
@@ -97,7 +97,7 @@ Each system receives density/velocity/gravity cubes with summary statistics.
 
 - **G1:** MUGE derived from 26-layer UQFF buoyancy formalism
 - **G2:** 8 additive correction terms, each dimensionally consistent
-- **G3:** Singularity protection at r→0, bounded output cubes
+- **G3:** Singularity protection at r$\to$0, bounded output cubes
 - **G4:** NFW profile validated against N-body simulations
 - **G5:** Rotation curves comparable to observational data
 - **G6:** Deterministic meshgrid generation, reproducible
@@ -117,7 +117,7 @@ Each system receives density/velocity/gravity cubes with summary statistics.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-DM-S225 -->
 

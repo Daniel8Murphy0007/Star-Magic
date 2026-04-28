@@ -86,7 +86,7 @@ Target: $|g_\text{tri} - g_\text{full}| / |g_\text{full}| < 1\%$ for all 99 syst
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -105,7 +105,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -141,7 +141,7 @@ the phonon transmission efficiency across the ICM.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -208,7 +208,7 @@ $$\boxed{F_U^{(99)} = \sum_{i=1}^{99} \left[U_g + U_m + U_A - U_b\right]_i + F_n
 $$\mathcal{L}_{99} = \sum_{i=1}^{99} \left[\frac{1}{2}\dot{m}_i^2 - V(F_{U,i})\right]$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → UQFF framework → 99 parameterized systems → triadic compression → universal gravity
+PAPER_877 $\to$ UQFF framework $\to$ 99 parameterized systems $\to$ triadic compression $\to$ universal gravity
 
 ---
 

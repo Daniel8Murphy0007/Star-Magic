@@ -31,7 +31,7 @@ predictions for next-generation detectors.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,7 +53,7 @@ characteristic frequencies. These post-merger signals encode information about:
 In General Relativity, the dominant post-merger frequency is:
 
 $$
-f_peak ≈ (1 - 2 M/R) × (2-3 kHz)
+f_peak \approx (1 - 2 M/R) \times (2-3 kHz)
 $$
 
 Where M and R are the remnant mass and radius.
@@ -84,34 +84,34 @@ $$f_{UQFF} \approx 0.95\,f_{GR},\quad f_{GR} \approx 2.5\,\mathrm{kHz}\Rightarro
 3.33e-1
 
 $$
-f_UQFF = f_GR × [1 + α_Q(M,ω) - β_damp(ω)]
+f_UQFF = f_GR \times [1 + \alpha_Q(M,\omega) - \beta_damp(\omega)]
 $$
 
 Parameters:
 - `α_Q(M,ω)` = quantum coherence correction (+2% to +5%)
 - `β_damp(ω)` = damping-induced frequency shift (-3% to -8%)
-- Net effect: **f_UQFF ≈ 0.95 × f_GR** (5% downshift)
+- Net effect: **f_UQFF $\approx$ 0.95 $\times$ f_GR** (5% downshift)
 
 For typical BNS merger:
-- f_GR ≈ 2.5 kHz
-- **f_UQFF ≈ 2.375 kHz** (125 Hz shift, detectable)
+- f_GR $\approx$ 2.5 kHz
+- **f_UQFF $\approx$ 2.375 kHz** (125 Hz shift, detectable)
 
 ### 2.2 Damping Time Modification
 
 QNM damping time in UQFF:
 
 $$
-τ_UQFF = τ_GR / [1 + γ_damp(ω_QNM)]
+\tau_UQFF = \tau_GR / [1 + \gamma_damp(\omega_QNM)]
 $$
 
 Where:
 - `γ_damp(ω_QNM)` = frequency-dependent damping enhancement
-- For f ~ 2.5 kHz: γ_damp ≈ 0.4
+- For f ~ 2.5 kHz: $\gamma$_damp $\approx$ 0.4
 
-**τ_UQFF ≈ 0.71 × τ_GR** (29% faster decay)
+**$\tau$_UQFF $\approx$ 0.71 $\times$ $\tau$_GR** (29% faster decay)
 
-Standard: τ_GR ~ 10 ms  
-UQFF: **τ_UQFF ~ 7 ms**
+Standard: $\tau$_GR ~ 10 ms  
+UQFF: **$\tau$_UQFF ~ 7 ms**
 
 ---
 
@@ -122,28 +122,28 @@ UQFF: **τ_UQFF ~ 7 ms**
 Total radiated energy in UQFF:
 
 $$
-E_rad,UQFF = E_rad,GR × [1 + ε_damp(M₁,M₂)]
+E_rad,UQFF = E_rad,GR \times [1 + \varepsilon_damp(M1,M2)]
 $$
 
 Where:
 - `ε_damp` = additional energy dissipated in quantum channels
-- For BNS: ε_damp ≈ 0.15 (15% extra energy loss)
+- For BNS: $\varepsilon$_damp $\approx$ 0.15 (15% extra energy loss)
 
 ### 3.2 Remnant Mass Formula
 
 $$
-M_rem,UQFF = M₁ + M₂ - E_rad,UQFF/c2
+M_rem,UQFF = M1 + M2 - E_rad,UQFF/c2
 $$
 
-Comparison for M₁ = M₂ = 1.4 M_M_sun merger:
+Comparison for M1 = M2 = 1.4 M_M_sun merger:
 
 **General Relativity:**
-- E_rad,GR ≈ 0.05 M_M_sun
-- M_rem,GR ≈ 2.75 M_M_sun
+- E_rad,GR $\approx$ 0.05 M_M_sun
+- M_rem,GR $\approx$ 2.75 M_M_sun
 
 **UQFF:**
-- E_rad,UQFF ≈ 0.0575 M_M_sun
-- **M_rem,UQFF ≈ 2.7425 M_M_sun** (difference: 0.0075 M_M_sun)
+- E_rad,UQFF $\approx$ 0.0575 M_M_sun
+- **M_rem,UQFF $\approx$ 2.7425 M_M_sun** (difference: 0.0075 M_M_sun)
 
 This 0.0075 M_M_sun difference is **potentially measurable** via:
 - Post-merger frequency scaling with mass
@@ -159,25 +159,25 @@ This 0.0075 M_M_sun difference is **potentially measurable** via:
 The main post-merger peak shows:
 
 $$
-h(f) ∝ exp[-(f - f_UQFF)2 / 2σ2_UQFF]
+h(f) \propto exp[-(f - f_UQFF)2 / 2\sigma2_UQFF]
 $$
 
 Where:
-- Width: σ_UQFF = 1.3 × σ_GR (30% broader due to faster damping)
-- Amplitude: A_UQFF = 0.88 × A_GR (12% reduction from damping)
+- Width: $\sigma$_UQFF = 1.3 $\times$ $\sigma$_GR (30% broader due to faster damping)
+- Amplitude: A_UQFF = 0.88 $\times$ A_GR (12% reduction from damping)
 
 ### 4.2 Secondary Peaks
 
 UQFF predicts additional spectral features:
 
 1. **TRZ Resonance Peak**
-   - Location: f_TRZ ≈ 1.15 × f_peak
+   - Location: f_TRZ $\approx$ 1.15 $\times$ f_peak
    - Amplitude: ~15% of primary peak
-   - Width: σ_TRZ ≈ 0.5 × σ_peak
+   - Width: $\sigma$_TRZ $\approx$ 0.5 $\times$ $\sigma$_peak
    - **GR has no such feature** (smoking gun signature)
 
 2. **Quantum Coherence Sideband**
-   - Location: f_Q ≈ 0.92 × f_peak
+   - Location: f_Q $\approx$ 0.92 $\times$ f_peak
    - Amplitude: ~8% of primary peak
    - Present only for M_rem < 3 M_M_sun (quantum coherence threshold)
 
@@ -205,7 +205,7 @@ Differences:
 
 ### 5.2 EoS Discrimination
 
-Standard method uses f_peak vs Λ (tidal deformability):
+Standard method uses f_peak vs $\Lambda$ (tidal deformability):
 
 ```
 f_peak ∝ Λ^(-1/6)
@@ -214,12 +214,12 @@ f_peak ∝ Λ^(-1/6)
 UQFF introduces modified relation:
 
 $$
-f_UQFF ∝ Λ^(-1/6) × [1 - δ_Q(Λ)]
+f_UQFF \propto \Lambda^(-1/6) \times [1 - \delta_Q(\Lambda)]
 $$
 
-Where δ_Q(Λ) = quantum correction term:
-- For stiff EoS (Λ > 800): δ_Q ≈ 0.03
-- For soft EoS (Λ < 400): δ_Q ≈ 0.07
+Where $\delta$_Q($\Lambda$) = quantum correction term:
+- For stiff EoS ($\Lambda$ > 800): $\delta$_Q $\approx$ 0.03
+- For soft EoS ($\Lambda$ < 400): $\delta$_Q $\approx$ 0.07
 
 **Implication:** UQFF shifts inferred EoS softer by ~10% if GR analysis is applied.
 
@@ -234,8 +234,8 @@ Sensitivity at 2-4 kHz:
 - Expected detection rate: 1-3 events/year with clear post-merger signal
 
 UQFF signatures detectable at SNR > 15:
-1. 5% frequency downshift (>3σ with 2 detections)
-2. 30% damping time reduction (>2σ per event)
+1. 5% frequency downshift (>3$\sigma$ with 2 detections)
+2. 30% damping time reduction (>2$\sigma$ per event)
 
 ### 6.2 Einstein Telescope (2035+)
 
@@ -244,9 +244,9 @@ Broadband sensitivity 1-10 kHz:
 - Rate: 50-100 clear post-merger events/year
 
 ET will:
-- Resolve TRZ resonance peak (>5σ significance)
-- Measure quantum sideband (>3σ with 10 events)
-- Constrain remnant mass difference to ±0.002 M_M_sun
+- Resolve TRZ resonance peak (>5$\sigma$ significance)
+- Measure quantum sideband (>3$\sigma$ with 10 events)
+- Constrain remnant mass difference to $\pm$0.002 M_M_sun
 
 ### 6.3 Cosmic Explorer (2035+)
 
@@ -268,8 +268,8 @@ L_kilonova ∝ M_ejecta ∝ (M₁ + M₂ - M_rem)
 ```
 
 UQFF predicts:
-- Smaller M_rem → More ejecta mass
-- **ΔM_ejecta ≈ 0.0075 M_M_sun** (extra ejecta)
+- Smaller M_rem $\to$ More ejecta mass
+- **$\Delta$M_ejecta $\approx$ 0.0075 M_M_sun** (extra ejecta)
 - Kilonova ~8% brighter in UQFF
 
 Observable in James Webb Space Telescope (JWST) near-IR photometry.
@@ -279,11 +279,11 @@ Observable in James Webb Space Telescope (JWST) near-IR photometry.
 Post-merger neutrino luminosity:
 
 $$
-L_ν ∝ M_rem2 × T4
+L_\nu \propto M_rem2 \times T4
 $$
 
 UQFF's smaller remnant mass:
-- L_ν,UQFF ≈ 0.98 × L_ν,GR (2% reduction)
+- L_$\nu$,UQFF $\approx$ 0.98 $\times$ L_$\nu$,GR (2% reduction)
 - Marginal difference, requires IceCube-Gen2 for detection
 
 ### 7.3 Gamma-Ray Burst Connection
@@ -309,8 +309,8 @@ UQFF's extra energy dissipation:
 | Remnant mass (1.4+1.4) | 2.750 `M_M_sun` | 2.7425 `M_M_sun` | -0.0075 `M_M_sun` | ET/CE |
 | TRZ peak | None | 2.73 kHz @ 15% | New feature | ET |
 | Quantum sideband | None | 2.18 kHz @ 8% | New feature | ET |
-| Kilonova luminosity | L₀ | 1.08 × L₀ | +8% | JWST |
-| GRB delay | t₀ | t₀ + 50 ms | +50 ms | Fermi |
+| Kilonova luminosity | L0 | 1.08 $\times$ L0 | +8% | JWST |
+| GRB delay | t0 | t0 + 50 ms | +50 ms | Fermi |
 
 ---
 
@@ -320,26 +320,26 @@ UQFF's extra energy dissipation:
 
 Both GR and UQFF predictions depend on nuclear EoS. Uncertainty budget:
 
-- EoS uncertainty: ±150 Hz in f_peak
+- EoS uncertainty: $\pm$150 Hz in f_peak
 - UQFF frequency shift: -125 Hz
 - **Ratio: 0.83** (UQFF effect is ~80% of EoS uncertainty)
 
 Strategy:
 - Combine multiple events to average out EoS variations
 - Use Bayesian model selection (GR vs UQFF)
-- Require 5+ clear detections for >3σ discrimination
+- Require 5+ clear detections for >3$\sigma$ discrimination
 
 ### 9.2 Mass Measurement Precision
 
-Current: ΔM/M ~ 0.01 (1% precision on component masses)  
-Needed: ΔM/M ~ 0.003 (0.3% precision)  
+Current: $\Delta$M/M ~ 0.01 (1% precision on component masses)  
+Needed: $\Delta$M/M ~ 0.003 (0.3% precision)  
 Achievable with: Einstein Telescope at D < 200 Mpc
 
 ### 9.3 Waveform Modeling
 
 UQFF waveforms require:
-- 2 additional parameters (α_Q, β_damp)
-- Increased computational cost: ~3× vs GR templates
+- 2 additional parameters ($\alpha$_Q, $\beta$_damp)
+- Increased computational cost: ~3$\times$ vs GR templates
 - Systematic error from template mismatch: ~2% in parameter recovery
 
 ---
@@ -349,16 +349,16 @@ UQFF waveforms require:
 ### 10.1 Quantum Gravity Constraints
 
 If UQFF post-merger signatures are confirmed:
-- Quantum coherence length: λ_Q ~ 10 km (NS scale)
-- Quantum damping timescale: τ_Q ~ 1 ms
-- Energy density threshold: ρ_Q ~ 10^15 g/cm3
+- Quantum coherence length: $\lambda$_Q ~ 10 km (NS scale)
+- Quantum damping timescale: $\tau$_Q ~ 1 ms
+- Energy density threshold: $\rho$_Q ~ 10^15 g/cm3
 
 These constrain theories of quantum gravity (loop quantum gravity, string theory).
 
 ### 10.2 Beyond-GR Tests
 
 UQFF serves as specific alternative to GR. Detection of predicted features would:
-- Rule out pure GR at >5σ
+- Rule out pure GR at >5$\sigma$
 - Distinguish UQFF from other modified gravity theories (e.g., scalar-tensor)
 - Provide "smoking gun" via TRZ resonance (unique to UQFF)
 
@@ -373,7 +373,7 @@ required)
 2. **Remnant mass difference of 0.0075 M_M_sun** measurable with Einstein Telescope
 3. **TRZ resonance peak** is a unique UQFF signature (no GR analog)
 4. Multi-messenger correlations (kilonova brightness, GRB delay) provide independent tests
-5. Next-generation detectors (ET/CE) will achieve >5σ discrimination within 5 years of operation
+5. Next-generation detectors (ET/CE) will achieve >5$\sigma$ discrimination within 5 years of operation
 
 The post-merger phase offers one of the most promising avenues for testing UQFF predictions and
 probing quantum corrections to General Relativity in the strong-field regime.
@@ -519,7 +519,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -530,13 +530,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -552,9 +552,9 @@ bridge.*
 ---
 
 **Validator:** `validate_gw_inspiral.py` — PASSED  
-*GW inspiral simulation (1000 steps, 1.0 ms, 30→250 Hz chirp): TRZ damping = 0.90, string binding =
-0.37, combined UQFF factor = 0.333; peak strain standard 2.7905×10-21 → UQFF 9.3616×10-22 (66.7%
-amplitude reduction); κ = 0.0005/day, [SSq] = 0.57*
+*GW inspiral simulation (1000 steps, 1.0 ms, 30$\to$250 Hz chirp): TRZ damping = 0.90, string binding =
+0.37, combined UQFF factor = 0.333; peak strain standard 2.7905$\times$10-21 $\to$ UQFF 9.3616$\times$10-22 (66.7%
+amplitude reduction); $\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 010**
 
@@ -570,14 +570,14 @@ amplitude reduction); κ = 0.0005/day, [SSq] = 0.57*
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -592,10 +592,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -603,9 +603,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -613,8 +613,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*

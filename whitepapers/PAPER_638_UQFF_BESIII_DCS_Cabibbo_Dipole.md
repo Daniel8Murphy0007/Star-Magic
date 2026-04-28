@@ -29,17 +29,17 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 ## §1 Abstract
 
 BESIII has measured the doubly Cabibbo suppressed (DCS) branching fraction
-BR(D+→K+π0) = (1.45 ± 0.21) × 10-4. The expected SM value is tan4θ_C × BR_CF =
-2.84e-3 × BR_CF. We demonstrate that the UQFF electromagnetic reactivity term Ug2
+BR(D+$\to$K+$\pi$0) = (1.45 $\pm$ 0.21) $\times$ 10-4. The expected SM value is tan4$\theta$_C $\times$ BR_CF =
+2.84e-3 $\times$ BR_CF. We demonstrate that the UQFF electromagnetic reactivity term Ug2
 provides a physical interpretation of the Cabibbo suppression as a vacuum dipole
-contribution: E_react_DCS = U_g2 × tan4θ_C captures the UQFF amplitude for the
+contribution: E_react_DCS = U_g2 $\times$ tan4$\theta$_C captures the UQFF amplitude for the
 doubly-suppressed transition with 96.4% alignment to the BESIII measurement.
 
 ---
 
 ## §2 Physical Motivation
 
-Doubly Cabibbo suppressed decays are suppressed by tan4θ_C ≈ tan4(13.04°) = 2.84e-3
+Doubly Cabibbo suppressed decays are suppressed by tan4$\theta$_C $\approx$ tan4(13.04°) = 2.84e-3
 relative to Cabibbo-favored (CF) amplitudes. They are sensitive to CP violation, isospin
 topology changes, and form-factor contributions from both short-range (QCD) and long-range
 (QED) amplitudes.
@@ -54,10 +54,10 @@ that supplements the short-range QCD suppression in DCS decays.
 $$E_{react,DCS} = U_{g2} \times \tan^4\theta_C = \frac{\kappa \alpha_{EM} q_{D+}^2}{r_{D+}^2} \times \tan^4\theta_C$$
 
 where:
-- α_EM = 1/137.036 (fine structure constant)
+- $\alpha$_EM = 1/137.036 (fine structure constant)
 - q_{D+} = +1 (D+ meson charge)
 - r_{D+} = ℏ/(m_D+ c) = 2.65e-16 m (D+ Compton wavelength)
-- tan4θ_C = (0.2254)4 = 2.584e-3
+- tan4$\theta$_C = (0.2254)4 = 2.584e-3
 
 Numerically (at BESIII cm energy W = 3.97 GeV):
 
@@ -73,7 +73,7 @@ The UQFF Ug2 term predicts a DCS/CF amplitude ratio with defined isospin structu
 
 $$\frac{|A_{DCS}|}{|A_{CF}|} = \tan^2\theta_C \times \sqrt{\frac{\kappa \alpha_{EM}}{[SSq]}} = 0.05086 \times 0.914 = 0.04649$$
 
-Squaring: BR_DCS/BR_CF = 2.16e-3 (consistent with observed 2.84e-3 within 2σ).
+Squaring: BR_DCS/BR_CF = 2.16e-3 (consistent with observed 2.84e-3 within 2$\sigma$).
 
 ---
 
@@ -85,7 +85,7 @@ Squaring: BR_DCS/BR_CF = 2.16e-3 (consistent with observed 2.84e-3 within 2σ).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -104,7 +104,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -212,7 +212,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -223,10 +223,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BR(D+→K+π0) DCS | `E_react_DCS` × tan4θ_C = 1.49e-4 | BR = (1.45 ± 0.21)×10-4 | arXiv:2506.15533 (BESIII) | 96.4% |
-| tan4θ_C suppression | UQFF: Cabibbo angle θ_C = arcsin(SCm_flavor^{1/4}) = 13.04° | θ_C = 13.04°, tan4θ_C = 2.84e-3 | PDG 2024 | 100% (CKM input) |
-| α_EM = 1/137.036 | UQFF Ug2 uses α_EM as exact QED input | α_EM = 7.2974e-3 | PDG (QED) | 100% (exact input) |
-| Strong-weak interference (DCS isospin) | UQFF predicts DCS/CF phase δ_Kπ = 15.4° | BESIII future: CP asymmetry A_CP testable | BESIII upcoming | Testable UQFF prediction |
+| BR(D+$\to$K+$\pi$0) DCS | `E_react_DCS` $\times$ tan4$\theta$_C = 1.49e-4 | BR = (1.45 $\pm$ 0.21)$\times$10-4 | arXiv:2506.15533 (BESIII) | 96.4% |
+| tan4$\theta$_C suppression | UQFF: Cabibbo angle $\theta$_C = arcsin(SCm_flavor^{1/4}) = 13.04° | $\theta$_C = 13.04°, tan4$\theta$_C = 2.84e-3 | PDG 2024 | 100% (CKM input) |
+| $\alpha$_EM = 1/137.036 | UQFF Ug2 uses $\alpha$_EM as exact QED input | $\alpha$_EM = 7.2974e-3 | PDG (QED) | 100% (exact input) |
+| Strong-weak interference (DCS isospin) | UQFF predicts DCS/CF phase $\delta$_K$\pi$ = 15.4° | BESIII future: CP asymmetry A_CP testable | BESIII upcoming | Testable UQFF prediction |
 
 **New physics claim:** The UQFF Ug2 electromagnetic reactivity term provides a physical
 mechanism for the long-range QED amplitude in DCS D+ decays, distinct from the SM approach
@@ -240,7 +240,7 @@ asymmetry measurements.
 
 ## §6 References
 
-- arXiv:2506.15533 — BESIII DCS D+→K+π0 measurement (June 2025)
+- arXiv:2506.15533 — BESIII DCS D+$\to$K+$\pi$0 measurement (June 2025)
 - PDG 2024 — D meson properties, CKM Cabibbo angle
 - bsm_physics_validation.py — `BSMPhysicsConstants.besiii_dcs_br`, `cabibbo_angle_deg`
 - PAPER_634 — UQFF CKM |V_cb| Flavor Vacuum Coupling

@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Charge-Reactivity Field Validated as Heliosheath Boundary Term
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-07, AprilSept 2025)  
@@ -31,7 +31,7 @@ Charge-Reactivity Field Validated as Heliosheath Boundary Term
 
 Empirical Proof EP-07 validates the UQFF Ug2 charge-reactivity field using
 in-situ Parker Solar Probe (PSP) measurements from CDAWeb of solar wind plasma
-density (?_sw  8 × 10? kg/m) and velocity (v_sw  500 km/s) at 10-50 solar
+density (?_sw  8 $\times$ 10? kg/m) and velocity (v_sw  500 km/s) at 10-50 solar
 radii. The UQFF heliosheath term d_sw = 0.01 is introduced as a dimensionless
 coupling parameter that modulates Ug2 at the heliospheric boundary. PSP magnetic
 field, density, and velocity profiles through 16 perihelia confirm the d_sw = 0.01
@@ -40,7 +40,7 @@ factor and magnetic field enhancement at the heliopause boundary within systemat
 uncertainties. This establishes the heliosphere as a precision testbed for the
 UQFF Ug2 field at sub-AU scales.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -66,15 +66,15 @@ CDAWeb data products used in EP-07:
 
 | Quantity | Value at 10-50 R? | Reference epoch |
 |---------|-------------------|----------------|
-| ?_sw | 7.8 × 10? kg/m | PSP E17 perihelion |
+| ?_sw | 7.8 $\times$ 10? kg/m | PSP E17 perihelion |
 | v_sw | 495 km/s (slow wind) | PSP average inner heliosphere |
 | B_r at 10 R? | ~7090 nT | PSP E1E22 |
-| T_proton | ~38 × 105 K | PSP SWEAP |
+| T_proton | ~38 $\times$ 105 K | PSP SWEAP |
 | Alfvn critical point | ~10-15 R? | PSP E14 (confirmed) |
 | Turbulence s(v)/v | ~10% | Elssser flux balance |
 
 The EP-07 key parameters are:
-- **?_sw = 8 × 10? kg/m** (rounded PSP mean at 30 R?)
+- **?_sw = 8 $\times$ 10? kg/m** (rounded PSP mean at 30 R?)
 - **v_sw = 500 km/s** (canonical slow-wind reference speed)
 
 ---
@@ -87,12 +87,12 @@ $$U_{g2}(r) = \frac{\alpha_{CR} \cdot q_p^2 \cdot v_{sw}^2}{r^2 \cdot m_p \cdot 
 
 Where:
 - a_CR = charge-reactivity coupling constant (UQFF)
-- q_p = proton charge = 1.602 × 10?? C
+- q_p = proton charge = 1.602 $\times$ 10?? C
 - v_sw = solar wind speed
 - m_p = proton mass
 - r = heliocentric distance
 
-At r = 30 R? = 2.09 × 10 m, v_sw = 500 km/s = 5 × 105 m/s:
+At r = 30 R? = 2.09 $\times$ 10 m, v_sw = 500 km/s = 5 $\times$ 105 m/s:
 
 $$U_{g2} = \frac{\alpha_{CR} \times (1.602 \times 10^{-19})^2 \times (5 \times 10^5)^2}{(2.09 \times 10^{10})^2 \times 1.67 \times 10^{-27} \times (3 \times 10^8)^2}$$
 
@@ -120,7 +120,7 @@ The UQFF Ug2 field predicts a density compression factor at the heliospause:
 
 $$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2}^{helio}}{P_{ram}}$$
 
-Where P_ram = ?_sw v_sw/2 = 8 × 10?  (5 × 105)/2 = 10?? Pa:
+Where P_ram = ?_sw v_sw/2 = 8 $\times$ 10?  (5 $\times$ 105)/2 = 10?? Pa:
 
 $$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2} \times 1.01}{10^{-9}} \approx 1 + \delta_{sw} = 1.01 \quad [\text{1\% dense}]$$
 
@@ -149,10 +149,10 @@ The SolarWindHeliosheathCalculator applies this to PSP orbit epochs:
 
 | PSP Perihelion | r_min (R?) | ?_sw measured | ?_sw UQFF | Error |
 |---------------|-----------|--------------|-----------|-------|
-| E01 (Nov 2018) | 35.7 | 7.1 × 10? | 7.2 × 10? | 1.4% |
-| E06 (Sept 2020) | 20.4 | 9.2 × 10? | 9.0 × 10? | 2.2% |
-| E13 (Sept 2022) | 13.3 | 1.4 × 10? | 1.38 × 10? | 1.4% |
-| E17 (Sept 2023) | 10.2 | 2.8 × 10? | 2.75 × 10? | 1.8% |
+| E01 (Nov 2018) | 35.7 | 7.1 $\times$ 10? | 7.2 $\times$ 10? | 1.4% |
+| E06 (Sept 2020) | 20.4 | 9.2 $\times$ 10? | 9.0 $\times$ 10? | 2.2% |
+| E13 (Sept 2022) | 13.3 | 1.4 $\times$ 10? | 1.38 $\times$ 10? | 1.4% |
+| E17 (Sept 2023) | 10.2 | 2.8 $\times$ 10? | 2.75 $\times$ 10? | 1.8% |
 
 **Mean error: 1.7%  all within 5% threshold ?**
 
@@ -192,7 +192,7 @@ modes beyond the aDPM base. The EP-07 PSP validation confirms:
 Empirical Proof EP-07 demonstrates through 17 Parker Solar Probe perihelia
 (CDAWeb, E01E17) that:
 
-1. **?_sw = 8 × 10? kg/m** and **v_sw = 500 km/s** are the canonical PSP
+1. **?_sw = 8 $\times$ 10? kg/m** and **v_sw = 500 km/s** are the canonical PSP
    in-situ heliospheric parameters confirming the UQFF Ug2 heliosheath testbed
 2. **d_sw = 0.01** = [SSq]/57 is the UQFF heliospheric boundary coupling,
    derived from the 57-decade vacuum energy spectrum
@@ -216,7 +216,7 @@ Empirical Proof EP-07 demonstrates through 17 Parker Solar Probe perihelia
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -235,7 +235,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -309,7 +309,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.058 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -318,13 +318,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

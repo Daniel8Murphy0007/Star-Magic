@@ -43,8 +43,8 @@ This data was NOT captured in PAPER_371 (resonance only) or PAPER_372 (compresse
 
 | System | Compressed MUGE g (m/s2) | Resonance MUGE g (m/s2) | Dominant Term (Compressed) | Dominant Term (Resonance) |
 |--------|------------------------|------------------------|---------------------------|--------------------------|
-| Magnetar SGR 1745-2900 | $1.782 \times 10^{39}$ | $1.773 \times 10^{-9}$ | Perturbation $(M·\delta\rho/\rho)$ | Fluid $a_{fluid\_freq}$ |
-| Sagittarius A* | $3.552 \times 10^{20}$ | $4.105 \times 10^{29}$ | Fluid $\rho_{fl}·V·g$ | Fluid $a_{fluid\_freq}$ |
+| Magnetar SGR 1745-2900 | $1.782 \times 10^{39}$ | $1.773 \times 10^{-9}$ | Perturbation $(M\cdot\delta\rho/\rho)$ | Fluid $a_{fluid\_freq}$ |
+| Sagittarius A* | $3.552 \times 10^{20}$ | $4.105 \times 10^{29}$ | Fluid $\rho_{fl}\cdotV\cdotg$ | Fluid $a_{fluid\_freq}$ |
 | Tapestry of Blazing Starbirth | $1.001 \times 10^{27}$ | $1.001 \times 10^{27}$ | Fluid/Perturbation (tie) | Fluid $a_{fluid\_freq}$ |
 | Westerlund 2 | $1.001 \times 10^{27}$ | $1.001 \times 10^{27}$ | Fluid/Perturbation (tie) | Fluid $a_{fluid\_freq}$ |
 | Pillars of Creation | $2.001 \times 10^{26}$ | $2.001 \times 10^{26}$ | Fluid | Fluid $a_{fluid\_freq}$ |
@@ -61,14 +61,14 @@ The magnetar case shows the **largest discrepancy** between the two models:
 
 $$
 \begin{aligned}
-  & Compressed MUGE: g ≈ 1.782e39 m/s2 (dominated by perturbation term) \\
-  & Perturbation = (M + M_DM) · (δρ/ρ + 3μ_s∇(M_s/r)/r) \\
-  & = (2.984e30 + 0) · (10-5 + 5.973e8) \\
-  & ≈ 1.782e39 m/s2 \\
-  & Resonance MUGE: g ≈ 1.773e-9 m/s2 (dominated by fluid term) \\
-  & \text{a\_fluid\_freq} = f_fluid · E_vac,neb · V_sys / E_vac,ISM / c \\
-  & = 1.269e-14 × 7.09e-36 × 4.189e12 / 7.09e-37 / 3×108 \\
-  & ≈ 1.773e-9 m/s2
+  & Compressed MUGE: g \approx 1.782e39 m/s2 (dominated by perturbation term) \\
+  & Perturbation = (M + M_DM) \cdot (\delta\rho/\rho + 3\mu_s\nabla(M_s/r)/r) \\
+  & = (2.984e30 + 0) \cdot (10-5 + 5.973e8) \\
+  & \approx 1.782e39 m/s2 \\
+  & Resonance MUGE: g \approx 1.773e-9 m/s2 (dominated by fluid term) \\
+  & \text{a\_fluid\_freq} = f_fluid \cdot E_vac,neb \cdot V_sys / E_vac,ISM / c \\
+  & = 1.269e-14 \times 7.09e-36 \times 4.189e12 / 7.09e-37 / 3\times108 \\
+  & \approx 1.773e-9 m/s2
 \end{aligned}
 $$
 
@@ -86,8 +86,8 @@ suited to galactic/cosmological scales.
 
 $$
 \begin{aligned}
-  & Compressed MUGE: g ≈ 3.552e20 m/s2 (dominated by fluid: ρ_fl·V·g_local) \\
-  & Resonance MUGE: g ≈ 4.105e29 m/s2 (dominated by fluid: \text{a\_fluid\_freq})
+  & Compressed MUGE: g \approx 3.552e20 m/s2 (dominated by fluid: \rho_fl\cdotV\cdotg_local) \\
+  & Resonance MUGE: g \approx 4.105e29 m/s2 (dominated by fluid: \text{a\_fluid\_freq})
 \end{aligned}
 $$
 
@@ -112,10 +112,10 @@ in BOTH models and is governed by the same physical inputs.
 $$
 \begin{aligned}
   & M = 2.984e30 kg, r = 104 m, t = 3.799e10 s, z = 0.0009 \\
-  & B = 1010 T, Bcrit = 1011 T (B/Bcrit = 0.1 → 0.9 factor) \\
-  & ρ_fluid = 10-15 kg/m3, V = 4.189e12 m3, g_local = 10 m/s2 \\
-  & M_DM = 0, δρ/ρ = 10-5 \\
-  & Resonance: I=1021 A, A=3.142e8 m2, ω₁=10-3 rad/s, ω₂=-10-3 rad/s \\
+  & B = 1010 T, Bcrit = 1011 T (B/Bcrit = 0.1 \to 0.9 factor) \\
+  & \rho_fluid = 10-15 kg/m3, V = 4.189e12 m3, g_local = 10 m/s2 \\
+  & M_DM = 0, \delta\rho/\rho = 10-5 \\
+  & Resonance: I=1021 A, A=3.142e8 m2, \omega1=10-3 rad/s, \omega2=-10-3 rad/s \\
   & vexp = 103 m/s, ffluid = 1.269e-14 Hz
 \end{aligned}
 $$
@@ -124,11 +124,11 @@ $$
 $$
 \begin{aligned}
   & M = 8.155e36 kg, r = 1012 m, t = 3.786e14 s, z = 0.0009 \\
-  & B = 10-5 T, Bcrit = 10-4 T (B/Bcrit = 0.1 → 0.9 factor) \\
-  & ρ_fluid = 10-20 kg/m3, V = 3.552e45 m3, g_local = 10-5 m/s2 \\
-  & M_DM = 1037 kg, δρ/ρ = 10-3 \\
-  & Resonance: I=1023 A, A=2.813e30 m2, ω₁=10-5, ω₂=-10-5 rad/s \\
-  & vexp = 5×106 m/s, ffluid = 3.465e-8 Hz
+  & B = 10-5 T, Bcrit = 10-4 T (B/Bcrit = 0.1 \to 0.9 factor) \\
+  & \rho_fluid = 10-20 kg/m3, V = 3.552e45 m3, g_local = 10-5 m/s2 \\
+  & M_DM = 1037 kg, \delta\rho/\rho = 10-3 \\
+  & Resonance: I=1023 A, A=2.813e30 m2, \omega1=10-5, \omega2=-10-5 rad/s \\
+  & vexp = 5\times106 m/s, ffluid = 3.465e-8 Hz
 \end{aligned}
 $$
 
@@ -139,7 +139,7 @@ $$
   & Westerlund 2: Same as Tapestry (young cluster, stellar winds) \\
   & Pillars of Creation: M=102 MM_sun, r=1 ly, V=1048 m3, ffluid=10-10 Hz \\
   & Rings of Relativity: M=106 MM_sun, r=10 pc, V=1054 m3, ffluid=10-9 Hz \\
-  & Student's Guide: M≈1053 kg (universe), r=1026 m, V=1080 m3, ffluid=10-18 Hz
+  & Student's Guide: M\approx1053 kg (universe), r=1026 m, V=1080 m3, ffluid=10-18 Hz
 \end{aligned}
 $$
 
@@ -154,8 +154,8 @@ perturbation term wins).
 **Fluid dynamics universality:**
 $$
 \begin{aligned}
-  & For Resonance MUGE:    \text{a\_fluid\_freq} = f_fluid · E_vac,neb · V_sys / E_vac,ISM / c \\
-  & For Compressed MUGE:   fluid_term   = ρ_fluid · V_sys · g_local
+  & For Resonance MUGE:    \text{a\_fluid\_freq} = f_fluid \cdot E_vac,neb \cdot V_sys / E_vac,ISM / c \\
+  & For Compressed MUGE:   fluid_term   = \rho_fluid \cdot V_sys \cdot g_local
 \end{aligned}
 $$
 
@@ -217,7 +217,7 @@ for (const auto& sys : muge_systems) {
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -236,7 +236,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -311,7 +311,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -322,13 +322,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

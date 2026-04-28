@@ -10,7 +10,7 @@ tags: [galaxy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_278 — Sombrero Dust Ring UQFF Gravitational Ring Resonator: ω_ring and r_ring
+# PAPER_278 — Sombrero Dust Ring UQFF Gravitational Ring Resonator: $\omega$_ring and r_ring
 **Date:** March 2026
 
 **Author:** Daniel T. Murphy
@@ -28,16 +28,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 The Sombrero Galaxy (M104) possesses the most visually prominent equatorial dust lane of any nearby
 galaxy, appearing as a sharp dark band bisecting the galaxy's luminous bulge. We model this ring
 within the UQFF framework as a **Gravitational Ring Resonator**: an annular mass concentration at
-radius r_ring = r/3 = 7.867×1019 m whose orbital motion generates a pure oscillatory gravitational
-perturbation F_ring(t) = A_ring·cos(ω_ring·t) at the reference point r. This paper derives the Dust
-Ring UQFF Orbital Resonance Frequency ω_ring = √(μ_s∇(M_s/r)) = 1.650×10-14 rad/s, the ring orbital
-period T_ring = 2π/ω_ring = 12.08 Myr, and the proximity-enhanced ring amplitude A_ring =
-9·f_ring·g_base = 2.14×10-12 m/s2. The 9× proximity enhancement factor arises from the
+radius r_ring = r/3 = 7.867$\times$1019 m whose orbital motion generates a pure oscillatory gravitational
+perturbation F_ring(t) = A_ring$\cdot$cos($\omega$_ring$\cdot$t) at the reference point r. This paper derives the Dust
+Ring UQFF Orbital Resonance Frequency $\omega$_ring = $\sqrt{}$($\mu$_s$\nabla$(M_s/r)) = 1.650$\times$10-14 rad/s, the ring orbital
+period T_ring = 2$\pi$/$\omega$_ring = 12.08 Myr, and the proximity-enhanced ring amplitude A_ring =
+9$\cdot$f_ring$\cdot$g_base = 2.14$\times$10-12 m/s2. The 9$\times$ proximity enhancement factor arises from the
 inverse-square law applied at the ratio r/r_ring = 3.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -61,7 +61,7 @@ concentration imposing a periodic boundary condition on the vacuum field at the 
 
 ### 1.2 Distinction from the Andromeda HI Ring (PAPER_275)
 
-In PAPER_275 (Andromeda), a decaying HI ring was modelled as F_ring = A_ring·exp(−α·t)·cos(ω_ring·t)
+In PAPER_275 (Andromeda), a decaying HI ring was modelled as F_ring = A_ring$\cdot$exp(-$\alpha$$\cdot$t)$\cdot$cos($\omega$_ring$\cdot$t)
 — an exponentially decaying oscillation corresponding to a transient tidal feature. The Sombrero
 dust ring is fundamentally different:
 
@@ -69,9 +69,9 @@ dust ring is fundamentally different:
 |---------|----------------------|---------------------|
 | Ring type | HI neutral gas, tidal | Dust, equatorial, settled |
 | Age | Transient (~10 Gyr decay) | Stable, permanent |
-| Decay | exp(−α·t) present | **No exponential decay** |
-| Form | F = A·exp(−αt)·cos(ωt) | **F = A·cos(ωt)** (pure oscillatory) |
-| α (decay rate) | 1/(10 Gyr) | 0 (stable ring) |
+| Decay | exp(-$\alpha$$\cdot$t) present | **No exponential decay** |
+| Form | F = A$\cdot$exp(-$\alpha$t)$\cdot$cos($\omega$t) | **F = A$\cdot$cos($\omega$t)** (pure oscillatory) |
+| $\alpha$ (decay rate) | 1/(10 Gyr) | 0 (stable ring) |
 
 The absence of exponential decay in Sombrero's ring term reflects the ring's settled,
 gravitationally stable configuration — it has been dynamically relaxed into a long-lived equatorial
@@ -105,12 +105,12 @@ $$\omega_{\text{ring}} = \sqrt{\frac{1.327 \times 10^{31}}{4.871 \times 10^{59}}
 
 $$T_{\text{ring}} = \frac{2\pi}{\omega_{\text{ring}}} = \frac{6.2832}{1.650 \times 10^{-14}} = 3.808 \times 10^{14}\ \text{s} = 12.08\ \text{Myr}$$
 
-This is a physically reasonable orbital period for a ring structure at ~8×1019 m from the galactic
+This is a physically reasonable orbital period for a ring structure at ~8$\times$1019 m from the galactic
 centre.
 
 ### 2.4 Proximity Enhancement Factor
 
-The gravitational influence of the ring mass m_ring at the reference point r (located a distance Δr
+The gravitational influence of the ring mass m_ring at the reference point r (located a distance $\Delta$r
 = r - r_ring = 2r/3 from the ring) scales as:
 
 $$g_{\text{ring at }r} \propto \frac{G m_{\text{ring}}}{\Delta r^2} = \frac{G m_{\text{ring}}}{(2r/3)^2} = \frac{9}{4} \cdot \frac{G m_{\text{ring}}}{r^2}$$
@@ -120,7 +120,7 @@ effective distances:
 
 $$\text{Proximity factor} = \left(\frac{r}{r_{\text{ring}}}\right)^2 = \left(\frac{r}{r/3}\right)^2 = 3^2 = 9$$
 
-This gives a **9× proximity enhancement**: the ring exerts 9 times more gravitational influence per
+This gives a **9$\times$ proximity enhancement**: the ring exerts 9 times more gravitational influence per
 unit mass at the reference point than the galaxy average.
 
 ### 2.5 Ring Gravitational Perturbation Amplitude
@@ -129,7 +129,7 @@ $$A_{\text{ring}} = 9 \cdot f_{\text{ring}} \cdot g_{\text{base}}$$
 
 where:
 - f_ring = 0.001 = dust ring mass fraction (0.1% of total galaxy mass)
-- g_base = G·M/r2 = 2.382×10-10 m/s2
+- g_base = G$\cdot$M/r2 = 2.382$\times$10-10 m/s2
 
 $$A_{\text{ring}} = 9 \times 0.001 \times 2.382 \times 10^{-10} = 2.144 \times 10^{-12}\ \text{m/s}^2$$
 
@@ -190,15 +190,15 @@ double computeResonantTerm(double t) {
 
 | Quantity | Value | Units |
 |----------|-------|-------|
-| r_ring = r/3 | 7.867×1019 | m |
-| ω_ring | 1.650×10-14 | rad/s |
-| T_ring = 2π/ω_ring | 12.08 | Myr |
+| r_ring = r/3 | 7.867$\times$1019 | m |
+| $\omega$_ring | 1.650$\times$10-14 | rad/s |
+| T_ring = 2$\pi$/$\omega$_ring | 12.08 | Myr |
 | f_ring | 0.001 | dimensionless |
 | Proximity factor | 9.0 | dimensionless |
-| A_ring | 2.144×10-12 | m/s2 |
-| g_BH (PAPER_279) for comparison | 2.382×10-12 | m/s2 |
+| A_ring | 2.144$\times$10-12 | m/s2 |
+| g_BH (PAPER_279) for comparison | 2.382$\times$10-12 | m/s2 |
 
-Note: A_ring ≈ g_BH in magnitude — the ring resonance and BH contribution are comparable at leading
+Note: A_ring $\approx$ g_BH in magnitude — the ring resonance and BH contribution are comparable at leading
 order.
 
 ---
@@ -207,11 +207,11 @@ order.
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| ω_ring | 1.650×10-14 | rad/s | Dust Ring UQFF Orbital Resonance Frequency |
-| r_ring | r/3 = 7.867×1019 | m | Dust ring reference radius |
+| $\omega$_ring | 1.650$\times$10-14 | rad/s | Dust Ring UQFF Orbital Resonance Frequency |
+| r_ring | r/3 = 7.867$\times$1019 | m | Dust ring reference radius |
 | T_ring | 12.08 | Myr | Ring orbital period |
 | f_ring | 0.001 | dimensionless | Dust ring mass fraction |
-| A_ring | 2.144×10-12 | m/s2 | Ring resonance amplitude |
+| A_ring | 2.144$\times$10-12 | m/s2 | Ring resonance amplitude |
 | Proximity factor | 9 | dimensionless | (r/r_ring)2 = 32 = 9 |
 
 ---
@@ -223,27 +223,27 @@ exponentially. The Sombrero dust ring is the first pure undamped oscillator, est
 class of UQFF boundary condition.
 
 2. **Observable prediction**: The UQFF ring resonance produces a 12.08 Myr periodic modulation in
-the effective gravitational acceleration at r = 2.36×1020 m with amplitude A_ring = 2.14×10-12 m/s2.
+the effective gravitational acceleration at r = 2.36$\times$1020 m with amplitude A_ring = 2.14$\times$10-12 m/s2.
 While below direct observational reach today, this is a testable UQFF prediction for future stellar
 spectroscopic surveys.
 
-3. **Ring-BH coupling**: Noting that A_ring ≈ g_BH (both ~2.1–2.4×10-12 m/s2), the ring and BH
+3. **Ring-BH coupling**: Noting that A_ring $\approx$ g_BH (both ~2.1–2.4$\times$10-12 m/s2), the ring and BH
 gravitational contributions are comparable at the reference radius — unique among UQFF modules where
 the BH term is typically sub-dominant to the 26-layer Triadic sum.
 
-4. **Scale-free ring resonator formula**: F_ring = (r/r_ring)2 · f_ring · g_base ·
-cos(√(μ_s∇(M_s/r))·t) provides a general template applicable to any galaxy with a measurable
+4. **Scale-free ring resonator formula**: F_ring = (r/r_ring)2 $\cdot$ f_ring $\cdot$ g_base $\cdot$
+cos($\sqrt{}$($\mu$_s$\nabla$(M_s/r))$\cdot$t) provides a general template applicable to any galaxy with a measurable
 equatorial ring structure.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ## 7. References
 
-- PAPER_275: Andromeda HI Ring UQFF Decaying Ring Term A_ring×exp(−αt)×cos(ωt)
-- PAPER_279: Sombrero SMBH Dominance Ratio γ_BH and r_SOI (companion paper)
+- PAPER_275: Andromeda HI Ring UQFF Decaying Ring Term A_ring$\times$exp(-$\alpha$t)$\times$cos($\omega$t)
+- PAPER_279: Sombrero SMBH Dominance Ratio $\gamma$_BH and r_SOI (companion paper)
 - Emsellem, E. et al. (2004). MNRAS, 352, 721. (M104 structure)
 - Jardel, J. R. et al. (2011). ApJ, 739, 21. (Sombrero DM halo and dust ring observations)
 - de Zeeuw, P. T. et al. (1996). MNRAS, 280, 167. (Sombrero galaxy kinematics)
@@ -251,7 +251,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 
 ---
 
-*UQFF 2.0 — F_ring = A_ring·cos(ω_ring·t) is additive to the Triadic MUGE master equation. The
+*UQFF 2.0 — F_ring = A_ring$\cdot$cos($\omega$_ring$\cdot$t) is additive to the Triadic MUGE master equation. The
 stable ring resonator represents a new class of UQFF gravitational boundary condition. — Daniel T.
 Murphy, Session 77, March 2026.*
 
@@ -311,7 +311,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -361,7 +361,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.137 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -372,13 +372,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

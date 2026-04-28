@@ -97,13 +97,13 @@ modulated by $[\text{SSq}]$-suppressed saturation and temporal oscillation.
 
 ### Internal Consistency
 
-1. **VDS ↔ DVP**: DVP samples the VDS polylogarithm at prime arguments.
+1. **VDS $\leftrightarrow$ DVP**: DVP samples the VDS polylogarithm at prime arguments.
    The sum $\sum_p a(p)$ is bounded by $\text{Li}_{26}([\text{SSq}])$.
 
-2. **DVP ↔ BH**: Vortex modes (DVP) seed the harmonic structure of $U_{g2}$ (BH)
+2. **DVP $\leftrightarrow$ BH**: Vortex modes (DVP) seed the harmonic structure of $U_{g2}$ (BH)
    through their topological quantum numbers.
 
-3. **BH ↔ VDS**: The vacuum density (VDS) normalizes the saturation parameter
+3. **BH $\leftrightarrow$ VDS**: The vacuum density (VDS) normalizes the saturation parameter
    in BH, ensuring $[\text{SSq}]$ is self-consistent across all three systems.
 
 ### Ratio Test

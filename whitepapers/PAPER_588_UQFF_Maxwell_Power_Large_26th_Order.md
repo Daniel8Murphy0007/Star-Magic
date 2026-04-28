@@ -14,7 +14,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **CP4 Class:** `#175  UQFFMaxwellPowerLarge26thOrderCalculator`
@@ -147,7 +147,7 @@ DPM coupling — a prediction testable at $r \sim 10^{-20}$ m (nuclear scale).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -166,7 +166,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -203,7 +203,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -306,7 +306,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.052 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -317,10 +317,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Riemann zeta zeros (critical line σ=1/2) | UQFF DPM layered shell spectrum → zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on σ=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
-| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow κ-modulated density: N(T) = (T/2π)ln(T/2πe) + κ×correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
+| Riemann zeta zeros (critical line $\sigma$=1/2) | UQFF DPM layered shell spectrum $\to$ zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on $\sigma$=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
+| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow $\kappa$-modulated density: N(T) = (T/2$\pi$)ln(T/2$\pi$e) + $\kappa$$\times$correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
 | Quantum chaos spectral statistics (GUE) | UQFF DPM mode spacing follows GUE random matrix distribution | Riemann zero spacings: GUE statistics confirmed | Montgomery 1973; numerical | PASS Consistent (random matrix universality) |
-| Prime counting function π(x) | UQFF shell radiance cascade → prime gaps ~ DVP pocket spacing | |π(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
+| Prime counting function $\pi$(x) | UQFF shell radiance cascade $\to$ prime gaps ~ DVP pocket spacing | |$\pi$(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
 
 **New physics claim:** UQFF DPM buoyancy provides a physical regularisation of the Riemann zeta
 function: the vacuum buoyancy floor prevents zeros from drifting off the critical line, in the

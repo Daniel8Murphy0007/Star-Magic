@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2026-03-06  
 **Domain:** 1.4  Beyond Standard Model (BSM) Physics  
 **Status:** Draft  
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 **Primary Validation File:** `validate_sterile_neutrino_uqff.py`  
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
@@ -31,7 +31,7 @@ Sterile neutrinos  gauge-singlet fermions that mix with active neutrinos via a Y
 among the most well-motivated BSM candidates, appearing in Type-I seesaw models, X-ray line searches
 (3.5 keV), and leptogenesis scenarios. The Standard Model leaves the sterile neutrino mass scale M_s
 unconstrained, spanning eV to 10-5 GeV in conventional models. The Unified Quantum Field Framework
-(UQFF) predicts three sterile neutrino masses from κ = 0.0005/day and [SSq] = 0.57 with zero free
+(UQFF) predicts three sterile neutrino masses from $\kappa$ = 0.0005/day and [SSq] = 0.57 with zero free
 parameters:
 
 1. **M_s1 = 7.1 keV**  X-ray dark matter candidate (3.55 keV decay line)  
@@ -44,14 +44,14 @@ yielding three heavy states **M_N = {2.19, 1.25, 0.712}  10? GeV** in geometric 
 ~ y v / M_N, yielding m_?1 = 8.7 meV, m_?2 = 15.2 meV, m_?3 = 50.3 meV  consistent with neutrino
 oscillation data and cosmological bounds. The 7.1 keV state is the leading candidate for the
 unidentified X-ray emission line at 3.55 keV in galaxy clusters (Bulbul et al. 2014, Boyarsky et al.
-2014). Leptogenesis via M_s3 predicts baryon asymmetry ?_B = 7.47 × 10? (within 22% of Planck). The
-lightest GUT-scale state M_N3 drives leptogenesis with ?_B = 6.1 × 10?, matching Planck to 0.3%. CP
+2014). Leptogenesis via M_s3 predicts baryon asymmetry ?_B = 7.47 $\times$ 10? (within 22% of Planck). The
+lightest GUT-scale state M_N3 drives leptogenesis with ?_B = 6.1 $\times$ 10?, matching Planck to 0.3%. CP
 violation is provided by f_CP = [SSq]  p = 1.795 rad (Paper #24). Neutrinoless double beta decay is
 predicted at m_ = 12.3 meV  testable at CUPID-1T (2035). Zero free parameters throughout.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -64,7 +64,7 @@ present in Standard Model treatments.
 Active neutrino oscillations establish nonzero masses, but the Standard Model contains no
 right-handed neutrino. The Type-I seesaw mechanism introduces heavy sterile neutrinos N_R:
 
-**Lagrangian:** L ? y_ij Lκ_i H~ N_Rj + (1/2) M_sij Nκ_Ri^c N_Rj + h.c.
+**Lagrangian:** L ? y_ij L$\kappa$_i H~ N_Rj + (1/2) M_sij N$\kappa$_Ri^c N_Rj + h.c.
 
 After electroweak symmetry breaking, light neutrino masses are:
 **m_nu = -m_D M_s^-1 m_D^T** (seesaw formula)
@@ -88,14 +88,14 @@ Active neutrino masses are confirmed by oscillation experiments:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| ?mκ_21 | 7.42 × 10-5 eV | Solar |
-| ?mκ_31 | 2.51 × 10? eV | Atmospheric |
+| ?m$\kappa$_21 | 7.42 $\times$ 10-5 eV | Solar |
+| ?m$\kappa$_31 | 2.51 $\times$ 10? eV | Atmospheric |
 | ?_12 | 33.44 | Solar |
 | ?_23 | 49.2 | Atmospheric |
 | ?_13 | 8.57 | Reactor |
 | d_CP | 197 | T2K/NOvA |
 
-Implied mass scale: m_nu ~ 10×100 meV. The SM generates no neutrino masses.
+Implied mass scale: m_nu ~ 10$\times$100 meV. The SM generates no neutrino masses.
 
 ### 1.4 UQFF Approach
 
@@ -120,16 +120,16 @@ UQFF derives M_s1 via the aether density RGE fixed point, where the sterile neut
 equals the Hubble expansion rate at T ~ 150 MeV.
 
 UQFF numerical result from `validate_sterile_neutrino_uqff.py` RGE integration:
-**M_s1 = 7.10 × 0.05 keV** ?
+**M_s1 = 7.10 $\times$ 0.05 keV** ?
 
 Decay photon energy: **E_gamma = M_s1 c / 2 = 7.10 / 2 = 3.55 keV** ?
 
 UQFF mixing angle:
 **sin(2?) = [SSq]^6  (m_e / M_s1)  (M_s1 / M_W)**  
 **= 0.0343  (0.511/7100e-6 GeV)  (7.1e-6/80.4)**  
-**= 0.0343 × 5,180 × 7.80e-15**
+**= 0.0343 $\times$ 5,180 $\times$ 7.80e-15**
 
-UQFF numerical result: **sin(2?) = 1.78 × 10?**
+UQFF numerical result: **sin(2?) = 1.78 $\times$ 10?**
 
 Comparison with X-ray observations:
 | Source | Required sin(2?) | UQFF | Status |
@@ -145,13 +145,13 @@ velocity-dependent mixing in UQFF, or (3) systematic uncertainties in background
 
 Dodelson-Widrow mechanism with UQFF string entropy dilution factor D_s = [SSq]? = 1.754:
 
-**O_s1 h = 0.305 / (1.754  v1.754) = 0.305 / 2.32 = 0.131 × 0.12** ?
+**O_s1 h = 0.305 / (1.754  v1.754) = 0.305 / 2.32 = 0.131 $\times$ 0.12** ?
 
 See Paper #22 for D_s derivation from string compactification.
 
 ### 2.3 M_s2 = 45.8 GeV – Electroweak Sterile Neutrino
 
-**M_s2 = [SSq]  M_W = 0.5700 × 80.377 GeV = 45.81 GeV**
+**M_s2 = [SSq]  M_W = 0.5700 $\times$ 80.377 GeV = 45.81 GeV**
 
 - Above LEP1 invisible width constraints: M_s > M_Z/2 = 45.6 GeV ?
 - M_s2 couples predominantly to ?_t with mixing sin(2?2) = [SSq]4 = 0.1056
@@ -172,9 +172,9 @@ neutrino masses via the seesaw mechanism and drives leptogenesis.
 The UQFF aether condensate generates three Majorana masses for right-handed neutrinos in a geometric
 series with ratio [SSq] = 0.57:
 
-**M_N1 = 2.19 × 10? GeV**  
-**M_N2 = M_N1  [SSq] = 1.25 × 10? GeV**  
-**M_N3 = M_N1  [SSq] = 7.12 × 108 GeV**
+**M_N1 = 2.19 $\times$ 10? GeV**  
+**M_N2 = M_N1  [SSq] = 1.25 $\times$ 10? GeV**  
+**M_N3 = M_N1  [SSq] = 7.12 $\times$ 108 GeV**
 
 Derived from: **M_N1 = (? / H_0)^(1/2)  M_GUT  [SSq]** (renormalized by UQFF vacuum suppression
 [SSq]^n to GUT-proximate scale; full numerical result from `validate_sterile_neutrino_uqff.py`).
@@ -184,7 +184,7 @@ The same [SSq] ratio that governs GW damping (Papers #1#18), tau g-2 (Paper #23)
 
 ### 3.2 Yukawa Couplings (GUT-Scale Sector)
 
-UQFF Yukawa matrix structure with y_0 = 1.35 × 10?:
+UQFF Yukawa matrix structure with y_0 = 1.35 $\times$ 10?:
 
 | | N_1 | N_2 | N_3 |
 |-|-----|-----|-----|
@@ -214,9 +214,9 @@ From GUT-scale sector (M_Ni):
 
 | Generation | y_i | M_Ni (GeV) | m_?i (eV) |
 |------------|-----|------------|-----------|
-| 1 (lightest) | 1.35e-3 | 2.19 × 10? | 8.7 × 10? |
-| 2 | 1.35e-3 | 1.25 × 10? | 1.52 × 10? |
-| 3 (heaviest) | 1.35e-3 | 7.12 × 108 | 5.03 × 10? |
+| 1 (lightest) | 1.35e-3 | 2.19 $\times$ 10? | 8.7 $\times$ 10? |
+| 2 | 1.35e-3 | 1.25 $\times$ 10? | 1.52 $\times$ 10? |
+| 3 (heaviest) | 1.35e-3 | 7.12 $\times$ 108 | 5.03 $\times$ 10? |
 
 From low-scale sector (M_s3 = 20.4 TeV), RGE-corrected numerical result:
 
@@ -230,8 +230,8 @@ From low-scale sector (M_s3 = 20.4 TeV), RGE-corrected numerical result:
 
 | Parameter | UQFF | Observed | Status |
 |-----------|------|----------|--------|
-| ?mκ_31 (GUT) | 2.45 × 10? eV | 2.51 × 10? eV | ? |
-| ?mκ_atm (TeV) | 2.496 × 10? eV | 2.453 × 10? eV (1.75s) | ? |
+| ?m$\kappa$_31 (GUT) | 2.45 $\times$ 10? eV | 2.51 $\times$ 10? eV | ? |
+| ?m$\kappa$_atm (TeV) | 2.496 $\times$ 10? eV | 2.453 $\times$ 10? eV (1.75s) | ? |
 | S m_? | 74.2 meV | < 120 meV (Planck) | ? |
 | Hierarchy | Normal | Preferred | ? |
 | m_?3 | 50.3 meV | ~50 meV (atm scale) | ? |
@@ -248,9 +248,9 @@ UQFF CP phase: **f_CP = [SSq]  p = 1.795 rad** (Paper #24)
 
 **e_CP = (3/8p)  (M_N3/M_N1)  y_0  sin(f_CP)**  
 **= (3/8p)  (7.12e8/2.19e9)  (1.35e-3)  sin(1.795)**  
-**= 6.87 × 10?8**
+**= 6.87 $\times$ 10?8**
 
-Full Boltzmann result: **?_B^UQFF = 6.1 × 10?** | **?_B^obs = 6.12 × 10?** (Planck 2020) ? (0.3%
+Full Boltzmann result: **?_B^UQFF = 6.1 $\times$ 10?** | **?_B^obs = 6.12 $\times$ 10?** (Planck 2020) ? (0.3%
 match)
 
 **Low-scale sector (M_s3 = 20.4 TeV):**
@@ -258,9 +258,9 @@ match)
 **e1 = (3/16p)  M_s3 / v  Im[(yy)]11 / (yy)11**
 
 **Im[(yy)]11 = (y_t - y_e)  y_  sin(f_CP)**  
-**= (0.325 - 0.0343) ≈ 0.1056  sin(1.795) = 0.02988**
+**= (0.325 - 0.0343) $\approx$ 0.1056  sin(1.795) = 0.02988**
 
-Full Boltzmann result: **?_B^UQFF = 7.47 × 10?** | **?_B^obs = 6.10 × 10?** (within 22%) ?
+Full Boltzmann result: **?_B^UQFF = 7.47 $\times$ 10?** | **?_B^obs = 6.10 $\times$ 10?** (within 22%) ?
 
 The 22% discrepancy depends on thermal history of the UQFF aether field and will be refined in a
 subsequent paper.
@@ -271,7 +271,7 @@ subsequent paper.
 
 ### 6.1 Effective Majorana Mass Prediction
 
-**m_ = |S Uκ_ei  m_?i| = 12.3 meV**
+**m_ = |S U$\kappa$_ei  m_?i| = 12.3 meV**
 
 Computed using UQFF masses and Majorana phases a = f_CP/2 = 0.898 rad,  = f_CP = 1.795 rad.
 
@@ -292,16 +292,16 @@ Computed using UQFF masses and Majorana phases a = f_CP/2 = 0.898 rad,  = f_CP =
 
 | Observable | UQFF Prediction | Experiment | Timeline |
 |-----------|-----------------|-----------|---------|
-| M_s1 X-ray line energy | 3.550 × 0.005 keV | XRISM Resolve | 20252027 |
+| M_s1 X-ray line energy | 3.550 $\times$ 0.005 keV | XRISM Resolve | 20252027 |
 | Line width (Doppler) | 2.6 eV FWHM | XRISM Resolve | 20252027 |
-| sin(2?) | 1.78 × 10? | Athena | 2037 |
-| ?mκ_atm | 2.496 × 10? eV | JUNO, HK | 2027 |
+| sin(2?) | 1.78 $\times$ 10? | Athena | 2037 |
+| ?m$\kappa$_atm | 2.496 $\times$ 10? eV | JUNO, HK | 2027 |
 | Sm_? | 0.0764 eV | CMB-S4 | 2030 |
 | m_ | 12.3 meV | CUPID-1T | 2035 |
 | M_s2 = 45.8 GeV production | s – BR ~ 0.1 fb | FCC-ee | 2045 |
 | M_s3 = 20.4 TeV production | s ~ 1 ab at 100 TeV | FCC-hh | 2050 |
-| ?_B (TeV leptogenesis) | 7.47 × 10? | CMB B-mode | 2035 |
-| ?_B (GUT leptogenesis) | 6.1 × 10? | CMB B-mode | 2035 |
+| ?_B (TeV leptogenesis) | 7.47 $\times$ 10? | CMB B-mode | 2035 |
+| ?_B (GUT leptogenesis) | 6.1 $\times$ 10? | CMB B-mode | 2035 |
 
 ---
 
@@ -312,7 +312,7 @@ Computed using UQFF masses and Majorana phases a = f_CP/2 = 0.898 rad,  = f_CP =
 | #24 (Tau EDM) | f_CP = 1.795 rad | Same CP phase drives leptogenesis |
 | #25 (DM Detection) | M_ACP = 3.81e-24 eV | M_s1 derivation uses M_ACP |
 | #22 (String GW) | M_KK = 11.6 TeV | M_s3 = M_KK/[SSq] |
-| #19 (PTA) | κ = 0.0005/day | Sets M_s1 via aether production rate |
+| #19 (PTA) | $\kappa$ = 0.0005/day | Sets M_s1 via aether production rate |
 | #23 (Tau g-2) | [SSq] = 0.57 | Universal inter-generation coupling |
 | #1#18 (GW) | [SSq] = 0.57 | GW damping ratio = neutrino mass ratio |
 
@@ -326,16 +326,16 @@ identity.
 
 | Observable | UQFF Prediction | Observed/Bound | Status |
 |------------|-----------------|----------------|--------|
-| M_N1 | 2.19 × 10? GeV | N/A (GUT scale) | Theoretical |
-| M_N2 | 1.25 × 10? GeV | N/A | Theoretical |
-| M_N3 | 7.12 × 108 GeV | N/A | Theoretical |
+| M_N1 | 2.19 $\times$ 10? GeV | N/A (GUT scale) | Theoretical |
+| M_N2 | 1.25 $\times$ 10? GeV | N/A | Theoretical |
+| M_N3 | 7.12 $\times$ 108 GeV | N/A | Theoretical |
 | M_s1 | 7.10 keV | 3.55 keV line hint | ? |
 | M_s2 | 45.8 GeV | > 45.6 GeV (LEP) | ? |
 | M_s3 | 20.4 TeV | > 13.6 TeV (LHC) | ? |
 | m_?1 | 8.7 meV | > 0 | ? |
 | m_?2 | 15.2 meV | > 0 | ? |
 | m_?3 | 50.3 meV | ~50 meV | ? |
-| ?mκ_31 | 2.45e-3 eV | 2.51e-3 eV | ? |
+| ?m$\kappa$_31 | 2.45e-3 eV | 2.51e-3 eV | ? |
 | S m_? | 74.2 meV | < 120 meV | ? |
 | ?_B (GUT) | 6.1e-10 | 6.12e-10 | ? |
 | ?_B (TeV) | 7.47e-10 | 6.10e-10 (22%) | ? |
@@ -367,14 +367,14 @@ This is the same ratio that appears in:
 
 ## 11. Conclusion
 
-UQFF predicts a complete sterile neutrino sector from κ = 0.0005/day and [SSq] = 0.57 with zero free
+UQFF predicts a complete sterile neutrino sector from $\kappa$ = 0.0005/day and [SSq] = 0.57 with zero free
 parameters:
 
 **GUT-scale:** M_N = {2.19, 1.25, 0.712}  10? GeV ? m_? = {8.7, 15.2, 50.3} meV via seesaw ? ?_B =
-6.1 × 10? (0.3% match to Planck) ? m_ = 12.3 meV (CUPID-1T 2035)
+6.1 $\times$ 10? (0.3% match to Planck) ? m_ = 12.3 meV (CUPID-1T 2035)
 
-**Low-scale:** M_s = {7.1 keV, 45.8 GeV, 20.4 TeV} ? 3.55 keV X-ray line (XRISM 2025+) ? ?mκ_atm =
-2.496e-3 eV ? ?_B = 7.47 × 10? ? O_DM = 0.12
+**Low-scale:** M_s = {7.1 keV, 45.8 GeV, 20.4 TeV} ? 3.55 keV X-ray line (XRISM 2025+) ? ?m$\kappa$_atm =
+2.496e-3 eV ? ?_B = 7.47 $\times$ 10? ? O_DM = 0.12
 
 **Zero free parameters. Two calibration constants. Complete sterile neutrino physics across 17
 orders of magnitude in mass.**
@@ -394,15 +394,15 @@ orders of magnitude in mass.**
 9. KamLAND-Zen (2022). PRL 130, 051801.  
 10. T2K Collaboration (2023). PRD 108, 072009.  
 11. UQFF Source Files: source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp
-12. UQFF Calibration: κ = 0.0005/day, [SSq] = 0.57, M_KK = 11.6 TeV
+12. UQFF Calibration: $\kappa$ = 0.0005/day, [SSq] = 0.57, M_KK = 11.6 TeV
 
 ---
 
 **Validator:** `validate_sterile_neutrino_uqff.py`  PASSED (22/22)  
 *Low-scale spectrum: M_s1=7.1 keV, M_s2=45.81 GeV, M_s3=20.35 TeV. GUT-scale: M_N={2.190e9, 1.248e9,
 7.115e8} GeV ([SSq] hierarchy). Seesaw: m_?={8.7, 15.2, 50.3} meV, Sm_?=74.2 meV < 120 meV (Planck).
-Leptogenesis: ?_B^GUT=6.12×10? (0.1% of Planck 6.12×10?). DM: O_s1 h§0.12, sin(2?)=1.78×10? < 3×10?
-(XMM). κ = 0.0005/day, [SSq] = 0.57*
+Leptogenesis: ?_B^GUT=6.12$\times$10? (0.1% of Planck 6.12$\times$10?). DM: O_s1 h§0.12, sin(2?)=1.78$\times$10? < 3$\times$10?
+(XMM). $\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 
 > See also: PAPER_025 | Part of the Star-Magic UQFF Whitepaper Series.*
@@ -545,14 +545,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -567,10 +567,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -578,9 +578,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -588,8 +588,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -666,7 +666,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

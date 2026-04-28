@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 High-Velocity Tidal Bridge and 10 Compression Factor
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Validator:** `validate_all_models.py`  NGC4676Model: **4/4 PASS** ?  
 **Source Module:** `CondensedPhysics.py` (NGC4676Model), `validate_all_models.py`  
@@ -29,10 +29,10 @@ High-Velocity Tidal Bridge and 10 Compression Factor
 NGC 4676 (A and B), "The Mice," are two colliding spiral galaxies at ~87 Mpc undergoing first
 pericenter passage. The UQFF model reveals a 10 enhancement of both g_compressed and R_amplitude
 compared to isolated spirals, directly attributable to the violent compression of the inter-galactic
-[SCm] medium during the collision. The gravitational field g_grav = 2.9500×10? m/s is the highest
+[SCm] medium during the collision. The gravitational field g_grav = 2.9500$\times$10? m/s is the highest
 among the interacting-galaxy subset. All 4 tests pass.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -44,10 +44,10 @@ present in Standard Model treatments.
 |-----------|-------|
 | Names | NGC 4676A + NGC 4676B (Arp 242) |
 | Classification | The Mice (paired spirals, Coma constellation) |
-| Distance | ~87 Mpc (z ≈ 0.0220) |
+| Distance | ~87 Mpc (z $\approx$ 0.0220) |
 | Separation | ~50 kpc (current projected) |
 | Tidal tails | ~160 kpc each (two symmetric tails) |
-| Combined mass | ~2×10 M? |
+| Combined mass | ~2$\times$10 M? |
 | Stage | First pericenter passage (~160 Myr ago) |
 | Merger completion | ~23 Gyr from now |
 
@@ -56,19 +56,19 @@ present in Standard Model treatments.
 ## 2. The 10 Compression Enhancement
 
 The NGC4676 UQFF model produces:
-- g_compressed = **1.0533×10?** (10 larger than the standard 1.0533×10?)
-- R_amplitude = **1.1586×10?** (10 larger than the standard 1.1586×10?)
+- g_compressed = **1.0533$\times$10?** (10 larger than the standard 1.0533$\times$10?)
+- R_amplitude = **1.1586$\times$10?** (10 larger than the standard 1.1586$\times$10?)
 
 This 10 enhancement is the UQFF signature of a **major merger event**. In the 26-layer compressed
 gravity framework:
 $$g_{\rm compressed}^{\rm merger} = g_{\rm compressed}^{\rm isolated} \times \left(1 + \frac{\Delta M_{\rm overlap}}{M_{\rm total}}\right)^n$$
 
 where ? M_overlap is the mass in the overlapping region and n  2.3 for head-on collisions. For The
-Mice, with ~30% mass overlap during pericenter: (1 + 0.3)^2.3 × 1.7. The remaining factor ~6 arises
+Mice, with ~30% mass overlap during pericenter: (1 + 0.3)^2.3 $\times$ 1.7. The remaining factor ~6 arises
 from the [SCm] compression: as the two galactic [SCm] halos merge, the [SCm] density in the
 interaction zone spikes, boosting the buoyancy compression.
 
-Combined: 1.7  ~6 × 10 ? consistent with the observed 10 g_compressed enhancement.
+Combined: 1.7  ~6 $\times$ 10 ? consistent with the observed 10 g_compressed enhancement.
 
 ---
 
@@ -77,25 +77,25 @@ Combined: 1.7  ~6 × 10 ? consistent with the observed 10 g_compressed enhanceme
 ### Test 1: Gravitational Field g_grav
 
 The combined gravitational field of two merging galaxies at their mutual center of mass:
-- g_grav = **2.9500×10?** m/s (2 that of NGC3372 Carina, 37.5 that of UGC10214)
+- g_grav = **2.9500$\times$10?** m/s (2 that of NGC3372 Carina, 37.5 that of UGC10214)
 - Physical basis: Two galaxies at 50 kpc separation and 87 Mpc distance produce a higher effective g_grav than any single system in the suite, except M42 (which is much more concentrated)
 - **PASS**
 
 ### Test 2: Hubble Factor
 
-- Hubble = 1.0002 (z ≈ 0.022, modest cosmological correction)
+- Hubble = 1.0002 (z $\approx$ 0.022, modest cosmological correction)
 - Matches local-universe result expected for ~87 Mpc distance
 - **PASS**
 
 ### Test 3: Compressed Gravity g_compressed
 
-- g_compressed = **1.0533×10?** (10 standard)
+- g_compressed = **1.0533$\times$10?** (10 standard)
 - The compression enhancement signature of the collision
 - **PASS**
 
 ### Test 4: Resonance Amplitude R
 
-- R_amplitude = **1.1586×10?** (10 standard)
+- R_amplitude = **1.1586$\times$10?** (10 standard)
 - Enhanced inter-galaxy MHD and acoustic resonance in the collisional plasma
 - **PASS**
 
@@ -106,9 +106,9 @@ The combined gravitational field of two merging galaxies at their mutual center 
 | Feature | UGC10214 (Tadpole) | NGC4676 (Mice) |
 |---------|-------------------|---------------|
 | Interaction type | Minor merger (small companion) | Major merger (equal-mass) |
-| g_grav | 7.86×10? | **2.95×10?** (37.5 larger) |
-| g_compressed | 1.0533×10? | **1.0533×10?** (10 larger) |
-| R_amplitude | 1.1586×10? | **1.1586×10?** (10 larger) |
+| g_grav | 7.86$\times$10? | **2.95$\times$10?** (37.5 larger) |
+| g_compressed | 1.0533$\times$10? | **1.0533$\times$10?** (10 larger) |
+| R_amplitude | 1.1586$\times$10? | **1.1586$\times$10?** (10 larger) |
 | Tail structure | One-sided 280 kpc tail | Two symmetric 160 kpc tails |
 | UQFF dominance | Ug3 torque | [SCm] compression |
 
@@ -139,10 +139,10 @@ is appropriate.
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | 2.9500×10? m/s | ? |
+| 1 | g_grav | 2.9500$\times$10? m/s | ? |
 | 2 | Hubble factor | 1.0002 | ? |
-| 3 | g_compressed | 1.0533×10? (10) | ? |
-| 4 | R_amplitude | 1.1586×10? (10) | ? |
+| 3 | g_compressed | 1.0533$\times$10? (10) | ? |
+| 4 | R_amplitude | 1.1586$\times$10? (10) | ? |
 
 **4/4 PASS (100%)**
 
@@ -152,14 +152,14 @@ is appropriate.
 
 1. NGC4676 shows a 10 enhancement in UQFF compressed gravity and resonance amplitude, the signature
 of a major galaxy merger
-2. The 2.95×10? m/s gravitational field is the second-highest in the validation suite (after M42)
+2. The 2.95$\times$10? m/s gravitational field is the second-highest in the validation suite (after M42)
 3. The factor-10 compression arises from [SCm] halo overlap during pericenter, boosting the buoyancy
 compression term
 4. UQFF distinguishes minor mergers (Ug3-dominated, one-sided tails) from major mergers
 ([SCm]-dominated, symmetric double tails)  a key prediction testable with IFU spectroscopy of merger
 shock zones
 
-*Validator: `v`alidate_all_models`.py` NGC4676Model 4/4 PASS | κ = 0.0005/day | [SSq] = 0.57*
+*Validator: `v`alidate_all_models`.py` NGC4676Model 4/4 PASS | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -265,14 +265,14 @@ the phonon transmission efficiency across the ICM.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -287,10 +287,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -298,9 +298,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -308,8 +308,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -368,7 +368,7 @@ Since $p_{\rm DVP} = 101$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **chirp time τ_c** (inspiral phase locking):
+The BSH saturation timescale for this sector is **chirp time $\tau$_c** (inspiral phase locking):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
@@ -385,7 +385,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.098 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -394,13 +394,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

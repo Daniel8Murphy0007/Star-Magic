@@ -27,7 +27,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 The Triadic Master UQFF framework formalizes three co-existing force channels computed
 simultaneously for any astrophysical system: the primary quantum geometric force FU_g1, the 26-state
 resonance oscillation term R(t), and the buoyancy force FU_Bi. All three are evaluated as
-Ramanujan-inspired summations over n = 1–26 vacuum states, weighted by ρ_vac,[UA]/ρ_vac,[SCm] ratios
+Ramanujan-inspired summations over n = 1–26 vacuum states, weighted by $\rho$_vac,[UA]/$\rho$_vac,[SCm] ratios
 and [SSq]-decay envelopes. Numerical validation against Westerlund 2 and Pillars of Creation
 confirms internal consistency to < 1% error. This is the **FIRST complete formal statement of the
 UQFF triadic co-sum architecture spanning 72+ astronomical systems**.
@@ -60,9 +60,9 @@ $$F_{U,g1} = \sum_{k=1}^{N} \left[ k^k \cdot \frac{(f_{UA',1} \cdot f_{SCm,1} \c
 **Numerical Results (validated):**
 | System | FU_g1 (N) | r (m) | Source |
 |--------|-----------|-------|--------|
-| Westerlund 2 | 2.43×10-40 | 1.89×1016 | Thread p.2 |
-| Pillars of Creation | 3.95×10-41 | 2.37×1017 | Thread p.2 |
-| PSZ2 G181.06+48.47 | ~4.12×10-41 | ~Mpc scale | Thread p.1 |
+| Westerlund 2 | 2.43$\times$10-40 | 1.89$\times$1016 | Thread p.2 |
+| Pillars of Creation | 3.95$\times$10-41 | 2.37$\times$1017 | Thread p.2 |
+| PSZ2 G181.06+48.47 | ~4.12$\times$10-41 | ~Mpc scale | Thread p.1 |
 
 ### 2.2 Twenty-Six State Resonance Oscillation (R(t))
 
@@ -73,10 +73,10 @@ Each of the 26 states carries its own frequency $\omega_{U\_{gj},i} = 2\pi f_{re
 **Numerical Results:**
 | System | R(t) (N) | f_res (Hz) | Regime |
 |--------|----------|------------|--------|
-| Westerlund 2 | −2.29×10-41 | ~1e-8 | Collapse |
-| Pillars of Creation | −1.12×10-42 | ~1e-9 | Molecular |
-| AT2024tvd TDE | −1.12×10-42 | ~1e-7 | TDE oscillation |
-| G359.13142-0.20005 | −2.29×10-41 | ~1e-8 | Filament erosion |
+| Westerlund 2 | -2.29$\times$10-41 | ~1e-8 | Collapse |
+| Pillars of Creation | -1.12$\times$10-42 | ~1e-9 | Molecular |
+| AT2024tvd TDE | -1.12$\times$10-42 | ~1e-7 | TDE oscillation |
+| G359.13142-0.20005 | -2.29$\times$10-41 | ~1e-8 | Filament erosion |
 
 ### 2.3 Time-Integrated Buoyancy Force (FU_Bi)
 
@@ -91,9 +91,9 @@ with calibrated constant $k_{Ub} = 0.1$.
 **Numerical Results:**
 | System | FU_Bi (N) | Scale | 
 |--------|-----------|-------|
-| Westerlund 2 | 6.14×10-32 | Star cluster |
-| Pillars of Creation | 9.79×10-33 | Star-forming pillar |
-| PSZ2 relic | ~4.12×10-33 | Merger relic |
+| Westerlund 2 | 6.14$\times$10-32 | Star cluster |
+| Pillars of Creation | 9.79$\times$10-33 | Star-forming pillar |
+| PSZ2 relic | ~4.12$\times$10-33 | Merger relic |
 
 ---
 
@@ -167,7 +167,7 @@ triadic architecture** (FU_g1 + R(t) + FU_Bi simultaneously evaluated) with:
 2. Explicit numerical validation across two independent calibration systems (Westerlund 2 and
 Pillars of Creation)
 3. [SSq] = 0.507 suppression envelope connecting all 26 states
-4. Complex-valued U_i completes the real+imaginary buoyancy framework (β_i = 0.6)
+4. Complex-valued U_i completes the real+imaginary buoyancy framework ($\beta$_i = 0.6)
 5. Full coupling to F_U_Bi_i integral (PAPER_250–258) via shared f_UA'/f_SCm/REB parameters
 
 ---
@@ -179,15 +179,15 @@ Pillars of Creation)
 | f_UA' | 0.999 | — | Aether vacuum fraction |
 | f_SCm | 0.001 | — | SC medium fraction |
 | REB | 1.0 | — | Resonance Equilibrium Boundary |
-| α | 5×10-5 | day-1 | FU_g1 decay rate |
+| $\alpha$ | 5$\times$10-5 | day-1 | FU_g1 decay rate |
 | f_feedback | 0 | — | CGM/TDE (uncalibrated) |
 | [SSq] | 0.507 | — | Superconductive Shell Quotient |
 | k_Ub | 0.1 | — | Buoyancy leverage constant |
 | f_Ub | 0.1 | — | Composite buoyancy factor |
-| γ | 5×10-5 | day-1 | Um decay rate |
+| $\gamma$ | 5$\times$10-5 | day-1 | Um decay rate |
 | ϕ | ~0.8 | — | Phase parameter (provisional) |
-| λ_i | 1.0 | — | U_i coupling |
-| ω_s | 2.5×10-6 | rad/s | SC oscillation frequency |
+| $\lambda$_i | 1.0 | — | U_i coupling |
+| $\omega$_s | 2.5$\times$10-6 | rad/s | SC oscillation frequency |
 | f_TRZ | 0.1 | — | Time-reversal zone factor |
 
 ---
@@ -196,7 +196,7 @@ Pillars of Creation)
 gok_share_31b5c807a4.txt thread (Grok 4 analysis, September 14, 2025).
 
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ---
@@ -221,7 +221,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -268,7 +268,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -371,7 +371,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -382,13 +382,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

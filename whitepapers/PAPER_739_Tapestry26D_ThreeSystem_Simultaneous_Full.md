@@ -50,10 +50,10 @@ replaces classical gravitational constants with quantum vacuum density operators
 | OB star mass | M_OB | 20 M_M_sun = 3.978e31 kg | |
 | Total gas mass | M_gas | ~2e5 M_M_sun = 3.978e35 kg | |
 | H II region temp | T | ~10,000 K | |
-| Magnetic field | B | ~15 μG = 1.5e-11 T | |
+| Magnetic field | B | ~15 $\mu$G = 1.5e-11 T | |
 | Star formation rate | SFR | ~0.8 M_M_sun/yr | JWST |
 | Ionization photon rate | N_Ly | ~3.2e50 s-1 | |
-| THz emission peak | ν_THz | ~1.2e12 Hz (1.2 THz) | measured |
+| THz emission peak | $\nu$_THz | ~1.2e12 Hz (1.2 THz) | measured |
 | Nominal radius for calc | r_calc | 4.73e16 m (Tapestry core) | per thread |
 
 ---
@@ -69,7 +69,7 @@ $$
   & r_i = r_calc / i               (shell radius per state) \\
   & Q_i = i                        (quantum state occupation number) \\
   & [SCm]_i = 1e-5 * i2   T       (superconductive field per state) \\
-  & ħ = 1.0546e-34 J·s \\
+  & ħ = 1.0546e-34 J\cdots \\
   & c = 2.998e8 m/s \\
   & r_calc = 4.73e16 m (i=1 base radius)
 \end{aligned}
@@ -84,7 +84,7 @@ $$
 
 Sum across all 26 states:
 $$
-Σ E_DPM,i (i=1..26) = 1.671e-27 m/s2  (dominated by i=26)
+\Sigma E_DPM,i (i=1..26) = 1.671e-27 m/s2  (dominated by i=26)
 $$
 
 ---
@@ -92,7 +92,7 @@ $$
 ## 4. UQFF Compressed Component — FU_g1
 
 $$
-FU_g1 = Σ_{k=1}^{N} [k_k*(f_UA1*f_SCm1*R_EB1)*(f_UA2*f_SCm2*R_EB2)/r2 * G_k]
+FU_g1 = \Sigma_{k=1}^{N} [k_k*(f_UA1*f_SCm1*R_EB1)*(f_UA2*f_SCm2*R_EB2)/r2 * G_k]
 $$
 
 For Tapestry, per the simultaneous framework:
@@ -110,7 +110,7 @@ $$
   & k_k = 1e9 (galaxy-scale coupling) \\
   & N = 26 states \\
   & G_k = E_DPM,k               (kernel = quantum operator per state) \\
-  & FU_g1 ≈ 4.223e-18 m/s2       (net compressed UQFF gravity)
+  & FU_g1 \approx 4.223e-18 m/s2       (net compressed UQFF gravity)
 \end{aligned}
 $$
 
@@ -126,23 +126,23 @@ Breakdown:
 
 $$
 \begin{aligned}
-  & R(t) = Σ_{i=1}^{26} [R_Ug1,i*cos(ω_Ug1,i*t) + R_Ug2,i*cos(ω_Ug2,i*t) \\
-  & + R_Ug3,i*cos(ω_Ug3,i*t) + R_Ug4i,i*cos(ω_Ug4i,i*t)]
+  & R(t) = \Sigma_{i=1}^{26} [R_Ug1,i*cos(\omega_Ug1,i*t) + R_Ug2,i*cos(\omega_Ug2,i*t) \\
+  & + R_Ug3,i*cos(\omega_Ug3,i*t) + R_Ug4i,i*cos(\omega_Ug4i,i*t)]
 \end{aligned}
 $$
 
 With:
 $$
 \begin{aligned}
-  & ω_Ug1,i = 2π * 1.2e12 * i / 26      Hz  (THz fundamental, scaled per state) \\
-  & ω_Ug2,i = 2π * 1.9e10 * i / 26      Hz  (electron shell orbital) \\
-  & ω_Ug3,i = 2π * 4.2e8 * i / 26       Hz  (string rotation) \\
-  & ω_Ug4i,i = 2π * 1.1e12 * i / 26     Hz  (THz hole emission) \\
+  & \omega_Ug1,i = 2\pi * 1.2e12 * i / 26      Hz  (THz fundamental, scaled per state) \\
+  & \omega_Ug2,i = 2\pi * 1.9e10 * i / 26      Hz  (electron shell orbital) \\
+  & \omega_Ug3,i = 2\pi * 4.2e8 * i / 26       Hz  (string rotation) \\
+  & \omega_Ug4i,i = 2\pi * 1.1e12 * i / 26     Hz  (THz hole emission) \\
   & R_Ug1,i = E_DPM,i * (1 + H(z)*t_now) * (1 - \text{E\_rad\_tap}) \\
   & R_Ug2,i = E_DPM,i * (1 - B/B_crit) * (1 + \text{M\_sf\_tap}) * 11  (* see note) \\
-  & R_Ug3,i = E_DPM,i * (q*v_tap×B_tap/m_p) * (1 - \text{T\_lock\_tap}) \\
+  & R_Ug3,i = E_DPM,i * (q*v_tap\timesB_tap/m_p) * (1 - \text{T\_lock\_tap}) \\
   & R_Ug4i,i = (ħ*c/r_THz,i) * (1 + f_Um,i) * 11 \\
-  & Note: (1 + ρ_UA/ρ_SCm) = 11 = constant across all 26 states
+  & Note: (1 + \rho_UA/\rho_SCm) = 11 = constant across all 26 states
 \end{aligned}
 $$
 
@@ -158,14 +158,14 @@ T_lock_tap = 0.25  (partial magnetic lock)
 Sum at t=0:
 $$
 \begin{aligned}
-  & R_Tapestry(t=0) = Σ (R_Ug1,i + R_Ug2,i + R_Ug3,i + R_Ug4i,i) \\
-  & ≈ 5.975e-2 m/s2  (oscillation amplitude across all states)
+  & R_Tapestry(t=0) = \Sigma (R_Ug1,i + R_Ug2,i + R_Ug3,i + R_Ug4i,i) \\
+  & \approx 5.975e-2 m/s2  (oscillation amplitude across all states)
 \end{aligned}
 $$
 
 The resonant component reveals oscillatory structure in the star-forming filaments:
-- H-alpha finger oscillation period: T_Ug1,1 = 1/ν_THz ≈ 8.3e-13 s (THz scale)
-- Filament formation period: T_Ug3,1 ≈ 2.4e-9 s (GHz string rotation)
+- H-alpha finger oscillation period: T_Ug1,1 = 1/$\nu$_THz $\approx$ 8.3e-13 s (THz scale)
+- Filament formation period: T_Ug3,1 $\approx$ 2.4e-9 s (GHz string rotation)
 - Coherence length of resonant pattern: ~180 ly (= R_EB1)
 
 ---
@@ -174,17 +174,17 @@ The resonant component reveals oscillatory structure in the star-forming filamen
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi} = Σ_{k=1}^{N} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r2 * H_k(ν_THz,U_b, geometry_k) * f_Ub] \\
+  & \text{F\_U\_Bi} = \Sigma_{k=1}^{N} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r2 * H_k(\nu_THz,U_b, geometry_k) * f_Ub] \\
   & where: \\
-  & H_k = cos(ϕ_k) * f(ν_THz) \\
-  & ϕ_k = θ_k = 90° - (k-1)*3.346°      (26D angular projection per state) \\
-  & f(ν_THz) = ν_THz / ν_THz_ref         = 1.2e12 / 1.0e12 = 1.2 \\
-  & k_{Ub,k} = k_η * f_Ub                = 1e7 * 0.1 = 1e6 \\
+  & H_k = cos(ϕ_k) * f(\nu_THz) \\
+  & ϕ_k = \theta_k = 90° - (k-1)*3.346°      (26D angular projection per state) \\
+  & f(\nu_THz) = \nu_THz / \nu_THz_ref         = 1.2e12 / 1.0e12 = 1.2 \\
+  & k_{Ub,k} = k_\eta * f_Ub                = 1e7 * 0.1 = 1e6 \\
   & f_UA' = 7.09e-36 J/m3 \\
   & f_SCm = 7.09e-37 J/m3 \\
   & R_EB = 1.70e18 m \\
-  & r = 4.73e16 m   →   r2 = 2.237e33 m2 \\
-  & f_Ub = Δk_η/k_η_ref = 0.1            (star cluster calibration)
+  & r = 4.73e16 m   \to   r2 = 2.237e33 m2 \\
+  & f_Ub = \Deltak_\eta/k_\eta_ref = 0.1            (star cluster calibration)
 \end{aligned}
 $$
 
@@ -197,7 +197,7 @@ $$
 | 26 | 5.1° | 0.996 | 4.73e-19 |
 
 $$
-Σ \text{F\_U\_Bi},k (all 26) = 7.41e-18 m/s2
+\Sigma \text{F\_U\_Bi},k (all 26) = 7.41e-18 m/s2
 $$
 
 The buoyancy component **exceeds** the compressed gravity component:
@@ -215,14 +215,14 @@ NGC 2020's OB stars: the buoyancy force maintains the filament structure.
 Full 26D projection across four Ug components:
 
 $$
-g_Tapestry(r,t) = Σ_{i=1}^{26} (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)
+g_Tapestry(r,t) = \Sigma_{i=1}^{26} (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)
 $$
 
 | Component | Expression | Tapestry Value |
 |---|---|---|
-| Ug1_i | E_DPM,i*(1+H(z)*t)*(1-E_rad)*cos(θ_i)*(1+f_TRZ,i) | 1.612e-18 m/s2 |
-| Ug2_i | E_DPM,i*(1-B/B_crit)*(1+M_sf)*11*Σcos(ωt) | 2.015e-18 m/s2 |
-| Ug3_i | E_DPM,i*(qv×B/m_p)*(1-T_lock)*(1+f_TRZ,i) | 0.324e-18 m/s2 |
+| Ug1_i | E_DPM,i*(1+H(z)*t)*(1-E_rad)*cos($\theta$_i)*(1+f_TRZ,i) | 1.612e-18 m/s2 |
+| Ug2_i | E_DPM,i*(1-B/B_crit)*(1+M_sf)*11*$\Sigma$cos($\omega$t) | 2.015e-18 m/s2 |
+| Ug3_i | E_DPM,i*(qv$\times$B/m_p)*(1-T_lock)*(1+f_TRZ,i) | 0.324e-18 m/s2 |
 | Ug4i_i | (ħ*c/r_THz,i)*(1+f_Um,i)*11 | 0.272e-18 m/s2 |
 | **Total** | | **4.223e-18 m/s2** |
 
@@ -284,7 +284,7 @@ energy" required.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -303,12 +303,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -409,7 +409,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -420,13 +420,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -30,7 +30,7 @@ $$
 L_\text{UQFF} = \frac{4\pi G M c}{\kappa_text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa,\Delta t}\Bigr),
 \quad [SSq] = 0.57
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -41,7 +41,7 @@ TarantulaNebula, NGC2841, MysticMountain). All models are implemented as calcula
 receiving system parameters; no hardcoded data. Combined, these represent the broadest validation
 sweep of UQFF across astrophysical environments.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -56,7 +56,7 @@ Drawing 5: stellar mass BH formation (collapse, Drawings 6–9 show phase transi
 | Phase | Drawing | Physical State | UQFF Signature |
 |-------|---------|--------------|----------------|
 | 1. Formation | 5 | Stellar collapse ? Schwarzschild | Ug4 ramp-up to baseline |
-| 2. Accretion | 6 | Thin disk + corona | [SCm] × ?_acc = 0.099 |
+| 2. Accretion | 6 | Thin disk + corona | [SCm] $\times$ ?_acc = 0.099 |
 | 3. Kerr active | 7 | Spinning BH + jets | Ug3 Lense-Thirring |
 | 4. Quiescent | 8 | Low-accretion radiatively inefficient | A_AGN ? 0 |
 | 5. Late evaporation | 9 | Hawking-dominated | T_UQFF = 0.99 T_H rising |
@@ -114,7 +114,7 @@ UQFF_TriadicCalculator: 120° triadic symmetry test ? 3-body YSO cluster arrange
 **PASS.**
 
 #### UGC 10214 / Tadpole Galaxy
-3×108 ly tail: Ug3 string rotation providing angular momentum of tidal tail ? L_tail = Ug3 × ?r dM.
+3$\times$108 ly tail: Ug3 string rotation providing angular momentum of tidal tail ? L_tail = Ug3 $\times$ ?r dM.
 **PASS (L_tail finite).**
 
 #### NGC 4676 / Mice Galaxies
@@ -159,7 +159,7 @@ ratio 1:1.2:1.4 consistent with HST/Herschel. **PASS.**
 | 10 galaxy/nebula models | 10 | 10/10 |
 | **Total §1.13 Part C** | **15** | **15/15** |
 
-Combined with Papers #96–#104 (FRB, Whittaker, Big Bang, Plasma Shield, THz, Millennium Prizes × 4):
+Combined with Papers #96–#104 (FRB, Whittaker, Big Bang, Plasma Shield, THz, Millennium Prizes $\times$ 4):
 
 **§1.13 total validated: 15 + 5 + 5 + 5 + 5 + 5 = 40 tests across 10 papers ? all PASS or within
 stated uncertainties.**
@@ -175,7 +175,7 @@ Drawings 5–9*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -194,7 +194,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -301,7 +301,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.118 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

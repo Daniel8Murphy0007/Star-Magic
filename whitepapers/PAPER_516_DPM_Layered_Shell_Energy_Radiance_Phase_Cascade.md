@@ -34,7 +34,7 @@ generator of 26D layered encapsulation quantum radiant shell-energies within
 the Star-Magic UQFF framework, correcting the prior interpretation that SCm
 directly encapsulated. The DPM reaction—CW-SCm north grinding against
 CCW-UA′ south—radiates successive quantum shell-energies across five
-observable phase states: quantum-multi-fields → plasma → gas → liquid →
+observable phase states: quantum-multi-fields $\to$ plasma $\to$ gas $\to$ liquid $\to$
 solid. Mass occurrence emerges as an equilibrium across these layered
 radiances rather than as an intrinsic property.
 
@@ -91,7 +91,7 @@ Layer_3 = Grind_{\text{opp}} \cdot Prob_{\text{order}} \cdot t_{\text{neg}}
 \end{cases}$$
 
 - **Layer 1** (CW, $\omega_{CW} = 2\pi f_{SCm}$): seeds quantum-multi-field radiance
-- **Layer 2** (CCW, $\omega_{CCW} = 2\pi f_{UA}$): drives plasma→gas transitions
+- **Layer 2** (CCW, $\omega_{CCW} = 2\pi f_{UA}$): drives plasma$\to$gas transitions
 - **Layer 3** (t_neg coupling): governs ordered structure probability
 
 ---
@@ -135,7 +135,7 @@ replacing the classical postulate of intrinsic particle individuality.
 
 The DPM reaction replaces SCm as the direct encapsulator, forming 26D
 layered quantum radiant shell-energies via CW/CCW triple-calc simultaneous
-processing. The five-phase cascade (quantum-multi-fields → solid) is a
+processing. The five-phase cascade (quantum-multi-fields $\to$ solid) is a
 direct downward projection from 26D chaos. Mass occurrence arises from
 shell radiance equilibrium, not intrinsic properties.
 
@@ -177,7 +177,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -278,7 +278,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.078 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -289,10 +289,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

@@ -24,16 +24,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 The stochastic gravitational wave background (SGWB) from unresolved compact binary mergers provides
-a probe of cosmic merger history. We calculate SGWB energy density Ω_GW(f) in the Unified Quantum
+a probe of cosmic merger history. We calculate SGWB energy density $\Omega$_GW(f) in the Unified Quantum
 Field Framework (UQFF), accounting for frequency-dependent damping (D_total = 0.333 for BNS, 0.81
 for BBH). UQFF predicts a factor 9-11 reduction in SGWB amplitude at f ~ 100 Hz compared to GR, with
 characteristic spectral features at TRZ resonances. For LIGO/Virgo, UQFF delays SGWB detection from
 2028 (GR prediction) to 2032-2035. LISA measurements at mHz frequencies will discriminate UQFF from
-GR via slope differences in Ω_GW(f) power spectrum.
+GR via slope differences in $\Omega$_GW(f) power spectrum.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0x10^-4 day^{-}1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0x10^-4 day^{-}1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -52,14 +52,14 @@ We focus on **astrophysical SGWB** from binaries.
 
 ### 1.2 Energy Density Parameter
 
-**Ω_GW(f) = (1/ρ_c) dρ_GW/d ln f**
+**$\Omega$_GW(f) = (1/$\rho$_c) d$\rho$_GW/d ln f**
 
 where:
-- ρ_c = 3H_0^2c^2 / 8πG (critical density)
-- ρ_GW = energy density in GW
+- $\rho$_c = 3H_0^2c^2 / 8$\pi$G (critical density)
+- $\rho$_GW = energy density in GW
 
 GR prediction:
-**Ω_GW,GR(f) ~ 10^{-}9** at f = 100 Hz
+**$\Omega$_GW,GR(f) ~ 10^{-}9** at f = 100 Hz
 
 ---
 
@@ -81,28 +81,28 @@ Omega_GW(UQFF,BNS) ~ 1.11e-10
 **h_UQFF = D_total x h_GR**
 
 Energy density scales as:
-**ρ_GW ~  h^2**
+**$\rho$_GW ~  h^2**
 
-**Ω_GW,UQFF = D^2_total x Ω_GW,GR**
+**$\Omega$_GW,UQFF = D^2_total x $\Omega$_GW,GR**
 
 ### 2.2 BNS Contribution
 
 For BNS (D_total = 0.333):
-**Ω_BNS,UQFF = 0.111 x Ω_BNS,GR** (89% reduction)
+**$\Omega$_BNS,UQFF = 0.111 x $\Omega$_BNS,GR** (89% reduction)
 
 ### 2.3 BBH Contribution
 
 For BBH (D_total = 0.81):
-**Ω_BBH,UQFF = 0.66 x Ω_BBH,GR** (34% reduction)
+**$\Omega$_BBH,UQFF = 0.66 x $\Omega$_BBH,GR** (34% reduction)
 
 ### 2.4 Total SGWB
 
-**Ω_total = Ω_BNS + Ω_BBH + Ω_NSBH**
+**$\Omega$_total = $\Omega$_BNS + $\Omega$_BBH + $\Omega$_NSBH**
 
 Assuming 50% BNS, 40% BBH, 10% NSBH:
-**Ω_UQFF = 0.5 x 0.111 Ω_BNS + 0.4 x 0.66 Ω_BBH + 0.1 x 0.5 Ω_NSBH**
+**$\Omega$_UQFF = 0.5 x 0.111 $\Omega$_BNS + 0.4 x 0.66 $\Omega$_BBH + 0.1 x 0.5 $\Omega$_NSBH**
 
-**Ω_UQFF ≈ 0.37 x Ω_GR** (63% reduction)
+**$\Omega$_UQFF $\approx$ 0.37 x $\Omega$_GR** (63% reduction)
 
 ---
 
@@ -112,7 +112,7 @@ Assuming 50% BNS, 40% BBH, 10% NSBH:
 
 At f ~ 100 Hz:
 - D_TRZ = 0.81 (enhanced damping)
-- **Ω_GW has spectral dip** (5% deeper than baseline)
+- **$\Omega$_GW has spectral dip** (5% deeper than baseline)
 
 ### 3.2 String Frequency Dependence
 
@@ -122,9 +122,9 @@ D_String(f) decreases with frequency:
 - f = 200 Hz: D_String = 0.61
 
 Implies:
-**Ω_GW(f) ~  f^(α)** with α = 2/3 (UQFF) vs α = 2/3 (GR)
+**$\Omega$_GW(f) ~  f^($\alpha$)** with $\alpha$ = 2/3 (UQFF) vs $\alpha$ = 2/3 (GR)
 
-Slope difference: Δα ≈ 0.1 (detectable with LISA)
+Slope difference: $\Delta$$\alpha$ $\approx$ 0.1 (detectable with LISA)
 
 ---
 
@@ -132,28 +132,28 @@ Slope difference: Δα ≈ 0.1 (detectable with LISA)
 
 ### 4.1 LIGO/Virgo O5 (2027-2029)
 
-Sensitivity: Ω_sens(100 Hz) ~ 10^{-}9
+Sensitivity: $\Omega$_sens(100 Hz) ~ 10^{-}9
 
-**GR prediction:** Ω_GR ~ 1.2 x 10^{-}9 (detection in 2028)
-**UQFF prediction:** Ω_UQFF ~ 0.44 x 10^{-}9 (below threshold)
+**GR prediction:** $\Omega$_GR ~ 1.2 x 10^{-}9 (detection in 2028)
+**UQFF prediction:** $\Omega$_UQFF ~ 0.44 x 10^{-}9 (below threshold)
 
 Conclusion: **UQFF delays SGWB detection to O6 (2032+)**
 
 ### 4.2 Einstein Telescope (2035+)
 
-Sensitivity: Ω_sens ~ 10^{-}1^2 at 10 Hz
+Sensitivity: $\Omega$_sens ~ 10^{-}1^2 at 10 Hz
 
-- UQFF SGWB detectable at >10σ within 1 year
+- UQFF SGWB detectable at >10$\sigma$ within 1 year
 - Frequency spectrum resolved (20 frequency bins)
-- TRZ resonance feature visible at 5σ
+- TRZ resonance feature visible at 5$\sigma$
 
 ### 4.3 LISA (2035+)
 
 Probes mHz frequencies (0.1-100 mHz):
 
 - SGWB from massive black hole binaries (10^4-10^7 M_M_sun)
-- UQFF damping negligible at low f (D ≈ 0.95)
-- **Slope measurement discriminates UQFF** (Δα detection at 3σ)
+- UQFF damping negligible at low f (D $\approx$ 0.95)
+- **Slope measurement discriminates UQFF** ($\Delta$$\alpha$ detection at 3$\sigma$)
 
 ---
 
@@ -161,10 +161,10 @@ Probes mHz frequencies (0.1-100 mHz):
 
 ### 5.1 Cosmological Merger Rate
 
-If SGWB measured at Ω_obs:
+If SGWB measured at $\Omega$_obs:
 
-**GR inference:** R_GR = Ω_obs / Ω_per_merger  
-**UQFF inference:** R_UQFF = Ω_obs / (D^2 Ω_per_merger)
+**GR inference:** R_GR = $\Omega$_obs / $\Omega$_per_merger  
+**UQFF inference:** R_UQFF = $\Omega$_obs / (D^2 $\Omega$_per_merger)
 
 For BNS: **R_UQFF = 9 x R_GR** (factor 9 higher rate inferred)
 
@@ -178,10 +178,10 @@ Consistency check: Compare with individual merger detections.
 
 If primordial black holes (PBHs) contribute to SGWB:
 
-**Ω_PBH ~  f_PBH^2** (fraction of dark matter in PBHs)
+**$\Omega$_PBH ~  f_PBH^2** (fraction of dark matter in PBHs)
 
 UQFF damping:
-**Ω_PBH,UQFF = D^2_BBH x Ω_PBH,GR ≈ 0.66 Ω_PBH,GR**
+**$\Omega$_PBH,UQFF = D^2_BBH x $\Omega$_PBH,GR $\approx$ 0.66 $\Omega$_PBH,GR**
 
 Constraint on f_PBH relaxed by factor 1.23 in UQFF.
 
@@ -203,12 +203,12 @@ Cross-correlation statistic:
 **Y(f) = Re[s̃_H(f) s̃_L^*(f)] / S_H(f) S_L(f)**
 
 Expected signal:
-**⟨Y(f)⟩ = γ(f) Ω_GW(f)**
+**⟨Y(f)⟩ = $\gamma$(f) $\Omega$_GW(f)**
 
-where γ(f) = overlap reduction function.
+where $\gamma$(f) = overlap reduction function.
 
 UQFF prediction:
-**⟨Y_UQFF⟩ = γ(f) D^2(f) Ω_GR(f)**
+**⟨Y_UQFF⟩ = $\gamma$(f) D^2(f) $\Omega$_GR(f)**
 
 At f = 100 Hz: ⟨Y_UQFF⟩ = 0.37 x ⟨Y_GR⟩
 
@@ -222,7 +222,7 @@ For SGWB search:
 - GR: SNR ~ 3 after 2 years (O5)
 - UQFF: SNR ~ 1.8 (below threshold)
 
-Requires 5-6 years for 3σ detection in UQFF.
+Requires 5-6 years for 3$\sigma$ detection in UQFF.
 
 ---
 
@@ -231,10 +231,10 @@ Requires 5-6 years for 3σ detection in UQFF.
 ### 7.1 Power-Law Index
 
 Model SGWB as:
-**Ω_GW(f) = Ω_ref (f/f_ref)^α**
+**$\Omega$_GW(f) = $\Omega$_ref (f/f_ref)^$\alpha$**
 
-GR astrophysical: α = 2/3  
-UQFF: **α_UQFF = 2/3 + Δα(f)** where Δα ~ 0.1
+GR astrophysical: $\alpha$ = 2/3  
+UQFF: **$\alpha$_UQFF = 2/3 + $\Delta$$\alpha$(f)** where $\Delta$$\alpha$ ~ 0.1
 
 Bayesian model selection:
 - Bayes factor B_UQFF/GR > 10 requires SNR > 20
@@ -261,14 +261,14 @@ Contamination from:
 2. **Magnetar flares**: Transient, removed in pipeline
 3. **Glitches**: Mitigation via data quality cuts
 
-Residual uncertainty: ~10% in Ω_GW amplitude
+Residual uncertainty: ~10% in $\Omega$_GW amplitude
 
 ### 8.2 Calibration Errors
 
-Strain calibration uncertainty: Δh/h ~ 5%
+Strain calibration uncertainty: $\Delta$h/h ~ 5%
 
 Propagates to SGWB:
-**ΔΩ/Ω = 2 Δh/h ~ 10%**
+**$\Delta$$\Omega$/$\Omega$ = 2 $\Delta$h/h ~ 10%**
 
 Smaller than UQFF effect (63% reduction), so distinguishable.
 
@@ -276,7 +276,7 @@ Smaller than UQFF effect (63% reduction), so distinguishable.
 
 Population synthesis uncertainties:
 - Merger rate: factor 3 uncertainty
-- Mass distribution: 20% uncertainty in Ω_GW
+- Mass distribution: 20% uncertainty in $\Omega$_GW
 - Redshift evolution: 30% uncertainty
 
 Combined: ~50% systematic in GR baseline
@@ -292,16 +292,16 @@ UQFF discriminable if damping measured independently (from loud events).
 Cross-check UQFF damping:
 - Measure D_total from loud BNS/BBH events
 - Apply to SGWB prediction
-- Self-consistency test: Ω_SGWB vs integral  R_merger(z) D^2(z) dz
+- Self-consistency test: $\Omega$_SGWB vs integral  R_merger(z) D^2(z) dz
 
 ### 9.2 Galaxy Surveys
 
 SGWB traces cosmic star formation rate (SFR):
 
-**Ω_GW ~  integral  dz SFR(z) / (1+z)**
+**$\Omega$_GW ~  integral  dz SFR(z) / (1+z)**
 
 UQFF:
-**Ω_UQFF ~  integral  dz SFR(z) D^2(z) / (1+z)**
+**$\Omega$_UQFF ~  integral  dz SFR(z) D^2(z) / (1+z)**
 
 Combine with optical/IR galaxy surveys (JWST, Euclid) to constrain D(z).
 
@@ -309,7 +309,7 @@ Combine with optical/IR galaxy surveys (JWST, Euclid) to constrain D(z).
 
 PTAs (NANOGrav, EPTA) probe nHz SGWB from supermassive black holes:
 
-- UQFF damping negligible at f ~ 10^{-}9 Hz (D ≈ 0.98)
+- UQFF damping negligible at f ~ 10^{-}9 Hz (D $\approx$ 0.98)
 - Cross-correlation with LIGO SGWB tests frequency dependence of D(f)
 
 ---
@@ -319,14 +319,14 @@ PTAs (NANOGrav, EPTA) probe nHz SGWB from supermassive black holes:
 ### 10.1 Third-Generation Detectors
 
 **Einstein Telescope:**
-- Detect SGWB at Ω ~ 10^{-}1^2 within 1 year
+- Detect SGWB at $\Omega$ ~ 10^{-}1^2 within 1 year
 - Resolve 50 frequency bins (1-1000 Hz)
 - TRZ resonance feature visible
-- Parameter estimation: ΔD/D ~ 0.05
+- Parameter estimation: $\Delta$D/D ~ 0.05
 
 **Cosmic Explorer:**
 - Complement ET with U.S.-based detector
-- Cross-correlation improves SNR by √2
+- Cross-correlation improves SNR by $\sqrt{}$2
 - Anisotropy map with l_max ~ 10
 
 ### 10.2 LISA
@@ -352,12 +352,12 @@ Joint fits with CMB, BAO, SNe constrain extended parameter space.
 
 Stochastic gravitational wave background in UQFF:
 
-1. **63% reduction** in Ω_GW at f ~ 100 Hz (factor 2.7 weaker than GR)
+1. **63% reduction** in $\Omega$_GW at f ~ 100 Hz (factor 2.7 weaker than GR)
 2. **Delayed detection** in LIGO/Virgo O5 (2032 vs 2028 in GR)
 3. **Spectral features** at TRZ resonances (unique UQFF signature)
-4. **Frequency-dependent damping** changes power-law index (Δα ~ 0.1)
-5. **Testable with ET/CE** within 3 years (>10σ detection)
-6. **LISA slope measurement** discriminates UQFF at 3σ
+4. **Frequency-dependent damping** changes power-law index ($\Delta$$\alpha$ ~ 0.1)
+5. **Testable with ET/CE** within 3 years (>10$\sigma$ detection)
+6. **LISA slope measurement** discriminates UQFF at 3$\sigma$
 
 SGWB provides a powerful cosmological test of UQFF, complementary to individual merger observations.
 Combined with multi-messenger data (galaxy surveys, PTAs), we can map the redshift evolution of
@@ -404,7 +404,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -423,7 +423,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -567,7 +567,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.123 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -578,13 +578,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
@@ -603,7 +603,7 @@ bridge.*
 **Validator:** `validate_multiband.py` — ALL TESTS PASSED  
 *Multi-band GW horizons: LIGO (30+30 M_M_sun) 13440->8355 Mpc (38% reduction); LISA (10^6 M_M_sun SMBH)
 140.8->87.5 Gpc (38% reduction); Detection volume reduced to 24% of GR; UQFF_factor = 0.622
-(frequency-independent); κ = 0.0005/day, [SSq] = 0.57*
+(frequency-independent); $\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 011**
 ---
@@ -618,14 +618,14 @@ bridge.*
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60-0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60-0.61 | Buoyancy coupling coefficient |
 | k_1 | 1.5 | Ug1 DPM-dipole coupling |
 | k_2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k_3 | 1.8 | Ug3 string-rotation coupling |
 | k_4 | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10^{-}2^2 | Inertia tensor scale |
+| $\eta$ | 10^{-}2^2 | Inertia tensor scale |
 | E_react(0) | 10^{4}6 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -640,10 +640,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| -Σλᵢ*Uᵢ*E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i*Ui*E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ_1=10^{-}1^0, λ_2=10^{-}1^2, λ_3=10^{-}1^1, λ_4=10^{-}1^3 (free parameters, not yet empirically
+$\lambda$_1=10^{-}1^0, $\lambda$_2=10^{-}1^2, $\lambda$_3=10^{-}1^1, $\lambda$_4=10^{-}1^3 (free parameters, not yet empirically
 calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
@@ -652,9 +652,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
+| $\rho$_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434*365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434*365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -662,7 +662,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i x Ubi | Expanding nebulae, stellar winds |
+| **Buoyant** | $\beta$_i x Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um x (1+10^{1}3*f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and

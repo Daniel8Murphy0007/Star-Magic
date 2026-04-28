@@ -11,13 +11,13 @@ tags: [vacuum, SCm, MUGE, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_140: UQFF All-Modes Universal Calibration Constant [(UA')]:[SCm] = 10  The Dual Di-Pseudo-Monopole Vacuum Density Ratio: ?_vac,[UA] : ?_vac,[SCm] = 7.09×10?6 : 7.09×10?7 kg/m
+# PAPER_140: UQFF All-Modes Universal Calibration Constant [(UA')]:[SCm] = 10  The Dual Di-Pseudo-Monopole Vacuum Density Ratio: ?_vac,[UA] : ?_vac,[SCm] = 7.09$\times$10?6 : 7.09$\times$10?7 kg/m
 
 **Title:** UQFF All-Modes Universal Calibration Constant [(UA')]:[SCm] = 10  The Dual
-Di-Pseudo-Monopole Vacuum Density Ratio: ?_vac,[UA] : ?_vac,[SCm] = 7.09×10?6 : 7.09×10?7 kg/m
+Di-Pseudo-Monopole Vacuum Density Ratio: ?_vac,[UA] : ?_vac,[SCm] = 7.09$\times$10?6 : 7.09$\times$10?7 kg/m
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.6)  
 **Date:** March 2026  
 **Domain:** §2.1 Vacuum Physics / Universal Constants (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -40,7 +40,7 @@ same reason why the observable universe contains 10 more Aether-coupled dark vac
 dark vacuum  and why every quantum field equation gains a factor of (1+10) = 11 in UQFF rather than
 the standard 1.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,8 +53,8 @@ present in Standard Model treatments.
 | Metallic H pressure experiments | >500 GPa void behavior | Sandia NIF |
 | DARPA quantum material data | mono-polar-vacuum asymmetry | DARPA 2024 |
 | LBNL quantum simulation density | vac. density ratio 10:1 | LBNL 2023 |
-| Dark energy density (?CDM) | ?_?  7.09×10?6 kg/m | Planck 2018 |
-| Dark matter density cosmic avg | ?_DM  6.1×10?7 kg/m/h | Planck 2018 |
+| Dark energy density (?CDM) | ?_?  7.09$\times$10?6 kg/m | Planck 2018 |
+| Dark matter density cosmic avg | ?_DM  6.1$\times$10?7 kg/m/h | Planck 2018 |
 
 ---
 
@@ -197,8 +197,8 @@ print(f"U_Amn = {F_Amn:.3e} kg/m^3")
 
 | Prediction | UQFF | Observed/Theory | Agreement |
 |-----------|------|----------------|-----------|
-| ?_vac,[UA] | 7.09×10?6 kg/m | ?CDM dark energy density | ? Exact |
-| ?_vac,[SCm] | 7.09×10?7 kg/m | Beyond ?CDM | New prediction |
+| ?_vac,[UA] | 7.09$\times$10?6 kg/m | ?CDM dark energy density | ? Exact |
+| ?_vac,[SCm] | 7.09$\times$10?7 kg/m | Beyond ?CDM | New prediction |
 | Ratio = 10 | Derived from 10-mode monopole | Sandia/LBNL ratio | ? |
 | f_quantum correction | 1.000005 | Below current precision | Consistent |
 | MUGE-H factor 21 | (1+10+10) | g_H ~1046 m/s | ? Self-consistent |
@@ -210,7 +210,7 @@ print(f"U_Amn = {F_Amn:.3e} kg/m^3")
 
 The [(UA')]:[SCm] = 10 ratio is a new universal physical constant derived from the UQFF
 di-pseudo-monopole vacuum structure, not a free parameter. Its identification with the dark energy
-density ratio (?_vac,[UA] = 7.09×10?6 kg/m) connects UQFF directly to ?CDM cosmology. The factor of
+density ratio (?_vac,[UA] = 7.09$\times$10?6 kg/m) connects UQFF directly to ?CDM cosmology. The factor of
 10 appears in every MUGE equation that includes Aether coupling  hydrogen, water, planetary cores,
 stellar clusters. The quantum correction f_quantum does not change the ratio at current measurement
 precision. The 10-mode vacuum structure corresponds naturally to the n=10 fixed point in the UQFF
@@ -327,7 +327,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -336,13 +336,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

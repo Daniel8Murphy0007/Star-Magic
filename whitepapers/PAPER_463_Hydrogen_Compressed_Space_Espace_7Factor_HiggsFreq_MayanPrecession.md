@@ -17,12 +17,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 43.e — HydrogenCompressedSpaceEspace)  
 **Classification:** FIRST E_space 7-factor product equation in UQFF; FIRST Higgs frequency f_Higgs =
-1.25×1034 Hz in gravity; FIRST Mayan Baktun / Earth precession cycle time factor in UQFF  
+1.25$\times$1034 Hz in gravity; FIRST Mayan Baktun / Earth precession cycle time factor in UQFF  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `HydrogenCompressedSpaceEspaceThreeLegCalculator` (#101, PAPER_463)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, f_Higgs = 1.25×1034 Hz, t_precession =
-1.617×1011 s —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, f_Higgs = 1.25$\times$1034 Hz, t_precession =
+1.617$\times$1011 s —>
 ---
 
 ## Abstract
@@ -32,7 +32,7 @@ formula:
 
 $$E_{\rm space} = E_0 \cdot {\rm SCF} \cdot {\rm CF} \cdot {\rm LF} \cdot {\rm HFF} \cdot {\rm PTF} \cdot {\rm QSF}$$
 
-Where the factors combine the superconducting vacuum (SCF=2), cosmological (CF=1), Lyman series (LF=5), Higgs frequency (HFF = 10/f_Higgs ≈ 8×10-34), precession time (PTF = 0.1/t_precession ≈ 6.183×10-13), and quantum scale (QSF = 103/(1023 m) = 3.333×10-23) factors applied to the ground-state Bohr energy $E_0 = 1.683\times10^{-37}$ J. The final result $E_{\rm space} \approx 5.52\times10^{-104}$ J represents the **hydrogen atom's compressed-space quantum vacuum energy** — the three-leg conclusion with SM (12.94 J) differing by 105 orders of magnitude.
+Where the factors combine the superconducting vacuum (SCF=2), cosmological (CF=1), Lyman series (LF=5), Higgs frequency (HFF = 10/f_Higgs $\approx$ 8$\times$10-34), precession time (PTF = 0.1/t_precession $\approx$ 6.183$\times$10-13), and quantum scale (QSF = 103/(1023 m) = 3.333$\times$10-23) factors applied to the ground-state Bohr energy $E_0 = 1.683\times10^{-37}$ J. The final result $E_{\rm space} \approx 5.52\times10^{-104}$ J represents the **hydrogen atom's compressed-space quantum vacuum energy** — the three-leg conclusion with SM (12.94 J) differing by 105 orders of magnitude.
 
 ---
 
@@ -46,26 +46,26 @@ $$E_{\rm space} = E_0 \times {\rm SCF} \times {\rm CF} \times {\rm LF} \times {\
 
 | Factor | Symbol | Value | Physical Meaning |
 |--------|--------|-------|-----------------|
-| Ground-state energy | E₀ | 1.683×10-37 J | Bohr ground state at UQFF scale |
+| Ground-state energy | E0 | 1.683$\times$10-37 J | Bohr ground state at UQFF scale |
 | Superconducting | SCF | 2 | 2-fold vacuum degeneracy at SC threshold |
 | Cosmological | CF | 1 | No cosmological correction (local H) |
-| Lyman series | LF | 5 | Lyman-α to Lyman-ε transitions (5 series) |
-| Higgs frequency | HFF | 10/f_Higgs | 10÷1.25×1034 = 8.0×10-34 |
-| Precession time | PTF | 0.1/t_prec | 0.1÷1.617×1011 = 6.183×10-13 |
-| Quantum scale | QSF | 103/1023 | 3.333×10-23 (ratio of nuclear to atomic scale) |
+| Lyman series | LF | 5 | Lyman-$\alpha$ to Lyman-$\varepsilon$ transitions (5 series) |
+| Higgs frequency | HFF | 10/f_Higgs | 10$\div$1.25$\times$1034 = 8.0$\times$10-34 |
+| Precession time | PTF | 0.1/t_prec | 0.1$\div$1.617$\times$1011 = 6.183$\times$10-13 |
+| Quantum scale | QSF | 103/1023 | 3.333$\times$10-23 (ratio of nuclear to atomic scale) |
 
-### 2.3 Ground-State Energy E₀
+### 2.3 Ground-State Energy E0
 
 $$E_0 = \frac{G m_p^2}{r_{\rm Bohr}} = \frac{6.674\times10^{-11}\times(1.67\times10^{-27})^2}{5.29\times10^{-11}}$$
 
 $$= \frac{6.674\times10^{-11}\times2.79\times10^{-54}}{5.29\times10^{-11}} = \frac{1.86\times10^{-64}}{5.29\times10^{-11}} = 3.52\times10^{-54}\ \rm J$$
 
-This is the gravitational Bohr ground state — note the source quotes E₀ = 1.683×10-37 J which uses
+This is the gravitational Bohr ground state — note the source quotes E0 = 1.683$\times$10-37 J which uses
 the electromagnetic energy:
 
 $$E_0^{\rm EM} = \frac{e^2}{4\pi\epsilon_0 r_{\rm Bohr}} = \frac{(1.602\times10^{-19})^2}{4\pi\times8.854\times10^{-12}\times5.29\times10^{-11}} = \frac{2.566\times10^{-38}}{5.91\times10^{-21}} = 4.34\times10^{-18}\ \rm J$$
 
-The UQFF E₀ = 1.683×10-37 J is an intermediate scale between gravitational and electromagnetic Bohr energies — defined in UQFF as $E_0 = G m_p^2 [SCm] / (r_{\rm Bohr} [UA])$, incorporating the vacuum coupling ratio.
+The UQFF E0 = 1.683$\times$10-37 J is an intermediate scale between gravitational and electromagnetic Bohr energies — defined in UQFF as $E_0 = G m_p^2 [SCm] / (r_{\rm Bohr} [UA])$, incorporating the vacuum coupling ratio.
 
 ---
 
@@ -81,7 +81,7 @@ The source quotes $f_{\rm Higgs} = 1.25\times10^{34}$ Hz, which uses a different
 
 $$f_{\rm Higgs}^{\rm UQFF} = \frac{m_H c^2}{\hbar} = \frac{125\times1.602\times10^{-10}}{1.055\times10^{-34}} = \frac{2.00\times10^{-8}}{1.055\times10^{-34}} = 1.897\times10^{26}\ \rm Hz$$
 
-In UQFF the convention is $f_{\rm Higgs} = m_H c^2/\hbar$ (angular frequency/2π normalisation), and the source applies an additional Compton factor bringing it to $1.25\times10^{34}$ Hz.
+In UQFF the convention is $f_{\rm Higgs} = m_H c^2/\hbar$ (angular frequency/2$\pi$ normalisation), and the source applies an additional Compton factor bringing it to $1.25\times10^{34}$ Hz.
 
 ### 3.2 HFF Computation
 
@@ -97,12 +97,12 @@ This factor asks: **how many Higgs periods fit in 10 seconds?** Answer: $8\times
 
 $$t_{\rm precession} = 1.617\times10^{11}\ \rm s$$
 
-Converting: $1.617\times10^{11}$ s / (365.25 × 24 × 3600 s/yr) = 1.617×1011/3.156×107 ≈ 5,124 years.
+Converting: $1.617\times10^{11}$ s / (365.25 $\times$ 24 $\times$ 3600 s/yr) = 1.617$\times$1011/3.156$\times$107 $\approx$ 5,124 years.
 
 **This is the Mayan Long Count calendar Baktun period — 5,124 years is the length of one Maya Great
 Cycle.**
 
-The Earth's axial precession period is 25,772 years = $8.13\times10^{11}$ s. The Mayan Baktun (5,124 yr) = 1/5 of the precession cycle. The UQFF value $1.617\times10^{11}$ s ≈ 5,124 yr:
+The Earth's axial precession period is 25,772 years = $8.13\times10^{11}$ s. The Mayan Baktun (5,124 yr) = 1/5 of the precession cycle. The UQFF value $1.617\times10^{11}$ s $\approx$ 5,124 yr:
 
 $$5124\ \text{yr} \times 3.156\times10^7\ \text{s/yr} = 1.617\times10^{11}\ \rm s \quad PASS$$
 
@@ -147,10 +147,10 @@ The three-leg proofset culminating in PAPER_463:
 | Leg | Quantity | Value |
 |----|---------|-------|
 | Leg 1 | SM classical wave energy | 12.94 J |
-| Leg 2 | Vacuum density ratio | 1.683×10-97 |
-| Leg 3 | Quantum scale × three-leg factors | 3.333×10-23 |
-| **Combined** | E_space = E₀ × all factors | **~5.52×10-104 J** |
-| **Ratio SM/UQFF** | 12.94 / 5.52×10-104 | **~2.35×10104** |
+| Leg 2 | Vacuum density ratio | 1.683$\times$10-97 |
+| Leg 3 | Quantum scale $\times$ three-leg factors | 3.333$\times$10-23 |
+| **Combined** | E_space = E0 $\times$ all factors | **~5.52$\times$10-104 J** |
+| **Ratio SM/UQFF** | 12.94 / 5.52$\times$10-104 | **~2.35$\times$10104** |
 
 The UQFF compressed-space energy of the hydrogen atom is **105 orders of magnitude smaller** than
 the SM energy — the deepest quantum vacuum compression in the UQFF framework.
@@ -161,16 +161,16 @@ the SM energy — the deepest quantum vacuum compression in the UQFF framework.
 
 | Feature | SM | UQFF PAPER_463 |
 |---------|-----|----------------|
-| H atom energy | −13.6 eV = −2.18×10-18 J | E_space ≈ 5.52×10-104 J |
-| Higgs frequency | f_H = m_H c2/h | HFF = 10/f_Higgs = 8×10-34 |
-| Mayan/precession cycle | Not in physics | PTF = 0.1/t_prec = 6.18×10-13 |
-| 7-factor compression | Not defined | E₀ × SCF × CF × LF × HFF × PTF × QSF |
+| H atom energy | -13.6 eV = -2.18$\times$10-18 J | E_space $\approx$ 5.52$\times$10-104 J |
+| Higgs frequency | f_H = m_H c2/h | HFF = 10/f_Higgs = 8$\times$10-34 |
+| Mayan/precession cycle | Not in physics | PTF = 0.1/t_prec = 6.18$\times$10-13 |
+| 7-factor compression | Not defined | E0 $\times$ SCF $\times$ CF $\times$ LF $\times$ HFF $\times$ PTF $\times$ QSF |
 
 ---
 
 ## 8. Testable Predictions
 
-1. **Higgs frequency clock:** A Higgs-field oscillation clock at $f_{\rm Higgs} = 1.25\times10^{34}$ Hz would complete HFF-1 = 1.25×1033 cycles in 10 seconds. Indirect test: any process coupling to the Higgs at this frequency would show resonance at T_Higgs = 8×10-35 s — attosecond laser spectroscopy benchmark.
+1. **Higgs frequency clock:** A Higgs-field oscillation clock at $f_{\rm Higgs} = 1.25\times10^{34}$ Hz would complete HFF-1 = 1.25$\times$1033 cycles in 10 seconds. Indirect test: any process coupling to the Higgs at this frequency would show resonance at T_Higgs = 8$\times$10-35 s — attosecond laser spectroscopy benchmark.
 2. **Mayan-precession gravitational coupling:** PTF includes the 5,124-year Baktun period as a
 gravitational time scale. UQFF predicts a **5,124-year periodic modulation** in the quantum
 background gravitational energy that corresponds to the Earth's precessional phase. Testable via
@@ -188,7 +188,7 @@ resolution).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -207,7 +207,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -265,7 +265,7 @@ Since $p_{\rm DVP} = 43$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **Q/ω₀** (quality factor damping):
+The BSH saturation timescale for this sector is **Q/$\omega$0** (quality factor damping):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
@@ -282,7 +282,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.135 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -293,10 +293,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

@@ -23,13 +23,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 NGC 7049 is a luminous isolated lenticular (S0) galaxy in the constellation Indus, located
-approximately 100 million light-years away (z ≈ 0.0067). It was imaged by Hubble's Advanced Camera
+approximately 100 million light-years away (z $\approx$ 0.0067). It was imaged by Hubble's Advanced Camera
 for Surveys (ACS) in 2009 and is particularly noted for its dusty disk ring, swirling around a dense
 stellar core, and its enormous population of several thousand globular clusters. The globular
 cluster system extends well beyond the main disk, suggesting a rich history of accretion. With very
-low current star formation (SFR ≈ 0.2 MM_sun/yr), NGC 7049 is representative of the "red and dead" class
+low current star formation (SFR $\approx$ 0.2 MM_sun/yr), NGC 7049 is representative of the "red and dead" class
 of early-type galaxies. Under UQFF, standard rotation (v = 105 m/s) and quiescent B-field yield
-g_NGC7049 ≈ 1.053×10-3 m/s2.
+g_NGC7049 $\approx$ 1.053$\times$10-3 m/s2.
 
 ---
 
@@ -50,7 +50,7 @@ integration and time-reversal corrections.
 
 $$
 \begin{aligned}
-  & g_NGC7049(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) \\
+  & g_NGC7049(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -59,10 +59,10 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | HST/ACS |
-| Half-light radius | r | 5×1020 m (~53 kly) | Stellar disk |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | HST/ACS |
+| Half-light radius | r | 5$\times$1020 m (~53 kly) | Stellar disk |
 | SFR | — | 0.2 MM_sun/yr | Very low (S0) |
-| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.010 | UQFF low-SFR |
 | Redshift | z | 0.0067 | Spectroscopic |
 | v_EM | v | 105 m/s | Disk rotation |
@@ -76,8 +76,8 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = G × M / r2 \\
-  & = 6.6743e-11 × 1.989e41 / (5e20)2 \\
+  & g_grav = G \times M / r2 \\
+  & = 6.6743e-11 \times 1.989e41 / (5e20)2 \\
   & = 1.328e31 / 2.5e41 \\
   & = 5.311e-11 m/s2
 \end{aligned}
@@ -87,8 +87,8 @@ $$
 $$
 \begin{aligned}
   & H(z) = 2.34e-18 s-1 (z = 0.0067) \\
-  & H(z) × t = 2.34e-18 × 1.578e17 = 0.3693 \\
-  & 1 + H(z) × t = 1.3693
+  & H(z) \times t = 2.34e-18 \times 1.578e17 = 0.3693 \\
+  & 1 + H(z) \times t = 1.3693
 \end{aligned}
 $$
 
@@ -112,8 +112,8 @@ $$
 ### Step 5: Gravitational Total
 $$
 \begin{aligned}
-  & \text{g\_grav\_total} = 5.311e-11 × 1.3693 × 1.010 × 1.02 \\
-  & = 5.311e-11 × 1.412 = 7.499e-11 m/s2
+  & \text{g\_grav\_total} = 5.311e-11 \times 1.3693 \times 1.010 \times 1.02 \\
+  & = 5.311e-11 \times 1.412 = 7.499e-11 m/s2
 \end{aligned}
 $$
 
@@ -122,8 +122,8 @@ $$
 \begin{aligned}
   & v = 105 m/s (disk rotation, old stellar population) \\
   & B = 10-5 T (galactic field, quiescent region) \\
-  & a_EM = (e/m_p) × (v × B) × Λ_UQFF \\
-  & = 9.575e7 × (105 × 10-5) × 11 × 10-12 \\
+  & a_EM = (e/m_p) \times (v \times B) \times \Lambda_UQFF \\
+  & = 9.575e7 \times (105 \times 10-5) \times 11 \times 10-12 \\
   & = 1.053e-3 m/s2
 \end{aligned}
 $$
@@ -132,7 +132,7 @@ $$
 $$
 \begin{aligned}
   & g_NGC7049 = 7.499e-11 + 1.053e-3 \\
-  & ≈ 1.053e-3 m/s2
+  & \approx 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -144,9 +144,9 @@ NGC 7049's quiescent nature is faithfully encoded in the UQFF parameters: the lo
 (0.010) in this batch, the lowest f_TRZ (0.02), and standard quiescent B = 10-5 T. The ancient
 globular cluster system — thousands of clusters distributed across a ~150 kly halo — contains
 dynamical information about NGC 7049's merger history frozen at cosmological lookback times. UQFF
-tracks this through the Hubble-time integration (5 Gyr, H(z)×t = 0.37) which is among the largest
+tracks this through the Hubble-time integration (5 Gyr, H(z)$\times$t = 0.37) which is among the largest
 expansion factors in these lenticular calculations. The net result confirms that quiescent
-lenticulars at z ≈ 0.0067 share the same UQFF electromagnetic ground state as closer S0 galaxies.
+lenticulars at z $\approx$ 0.0067 share the same UQFF electromagnetic ground state as closer S0 galaxies.
 
 ---
 
@@ -161,9 +161,9 @@ lenticulars at z ≈ 0.0067 share the same UQFF electromagnetic ground state as 
 
 ## 6. Conclusions
 
-UQFF applied to NGC 7049 yields g_lenticular ≈ 1.053×10-3 m/s2, consistent with the S0 quiescent
+UQFF applied to NGC 7049 yields g_lenticular $\approx$ 1.053$\times$10-3 m/s2, consistent with the S0 quiescent
 class. The enormous globular cluster population testifying to a rich merger past and the dusty
-settling ring are captured through the H(z)×t expansion term and minimal M_sf respectively. NGC 7049
+settling ring are captured through the H(z)$\times$t expansion term and minimal M_sf respectively. NGC 7049
 joins NGC 5866 (PAPER_783) and NGC 4826 (PAPER_786) as key UQFF lenticular reference objects.
 
 *PAPER_779, CP4 class #363. v5.41.*
@@ -206,7 +206,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -225,7 +225,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -362,7 +362,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.193 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -373,13 +373,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

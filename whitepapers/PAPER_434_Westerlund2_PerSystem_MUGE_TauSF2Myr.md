@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_434
-title: "Westerlund 2: Per-System MUGE with τ=2 Myr Wind Evolution and M₀=30,000 MM_sun"
+title: "Westerlund 2: Per-System MUGE with $\tau$=2 Myr Wind Evolution and M0=30,000 MM_sun"
 session: 119
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [cluster, AGN, MUGE, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_434 — Westerlund 2: Per-System MUGE with τ=2 Myr Wind Evolution and M₀=30,000 MM_sun
+# PAPER_434 — Westerlund 2: Per-System MUGE with $\tau$=2 Myr Wind Evolution and M0=30,000 MM_sun
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -24,8 +24,8 @@ Integration)_Westerlund 2 Evolution_03May2025.docx" (lines 1963–2304)
 
 ## Abstract
 
-This paper presents a UQFF analysis of Westerlund 2: Per-System MUGE with τ=2 Myr Wind Evolution and
-M₀=30,000 MM_sun, deriving compressed field equations and observational predictions within the
+This paper presents a UQFF analysis of Westerlund 2: Per-System MUGE with $\tau$=2 Myr Wind Evolution and
+M0=30,000 MM_sun, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
 ## 1. Overview
@@ -70,10 +70,10 @@ $$\boxed{g_\text{WD2}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9
 **T1 — DPM-seeded + expansion + SC:**
 $$T_1 = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right) \approx \frac{G \times 30000 M_\odot}{r^2} \approx 2.80 \times 10^{-22} \text{ m/s}^2$$
 
-**T2 — UQFF Ug1 + Ug4 × (1 + f_TRZ):**
+**T2 — UQFF Ug1 + Ug4 $\times$ (1 + f_TRZ):**
 $$T_2 = 2 \frac{G M(t)}{r^2} \times 1.1 \times (1 - B/B_\text{crit}) \approx 6.16 \times 10^{-22} \text{ m/s}^2$$
 
-**T3 — Λ:** negligible ($3.3 \times 10^{-36}$ m/s2)
+**T3 — $\Lambda$:** negligible ($3.3 \times 10^{-36}$ m/s2)
 
 **T4 — Quantum:** negligible
 
@@ -86,7 +86,7 @@ $$T_6 = \rho_f V_\text{cluster} g_\text{local}/M(t)$$
 **T7 — Oscillatory OB stellar modes:** $\sim A_\text{osc}\sin(k r)\cos(\omega t)$ (sub-dominant)
 
 **T8 — DM perturbation:**
-$$T_8 = (M + 0.1M)\frac{\delta\rho/\rho + 3μ_s∇(M_s/r)/r}{r^2}$$
+$$T_8 = (M + 0.1M)\frac{\delta\rho/\rho + 3\mu_s\nabla(M_s/r)/r}{r^2}$$
 
 **T9 — Stellar wind ram pressure (dominant):**
 $$\boxed{T_9 = \frac{\rho_w v_w^2}{\rho_f} = \frac{10^{-20} \times (2 \times 10^6)^2}{10^{-20}} = 4 \times 10^{12} \text{ m}^2/\text{s}^2 \Rightarrow a_\text{wind} = \frac{4 \times 10^{12}}{r} \approx 4.23 \times 10^{-5} \text{ m/s}^2}$$
@@ -135,7 +135,7 @@ Standard stellar dynamics: $v_\text{esc} = \sqrt{2\mu_s\nabla(M_s/r)} \approx 2.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -154,7 +154,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -262,7 +262,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.159 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -273,10 +273,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Westerlund 2 Cluster luminosity X-ray 0.5–7 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 1034 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Westerlund 2 Cluster luminosity X-ray 0.5–7 keV | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L_X ~ 1034 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Westerlund 2 Cluster

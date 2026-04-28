@@ -10,7 +10,7 @@ tags: [SMBH, galaxy, black-hole, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_279 — Sombrero SMBH Dominance Ratio γ_BH and UQFF Sphere of Influence r_SOI
+# PAPER_279 — Sombrero SMBH Dominance Ratio $\gamma$_BH and UQFF Sphere of Influence r_SOI
 **Date:** March 2026
 
 **Author:** Daniel T. Murphy
@@ -27,16 +27,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 The Sombrero Galaxy (M104) harbours one of the most massive black holes relative to its host galaxy
 mass of any object in the Local Universe: M_BH = 109 M_sun in a galaxy of total mass M = 1011 M_sun,
-giving a **SMBH Dominance Ratio** γ_BH = M_BH/M = 0.01 (1%). For comparison, the Milky Way's Sgr A*
-has γ_BH ≈ 4×10-5 (~0.004%); Sombrero's SMBH is **250× more dominant relative to its host**. Within
-the UQFF framework, we define the **UQFF Sphere of Influence** r_SOI = r×√(γ_BH), the radius at
+giving a **SMBH Dominance Ratio** $\gamma$_BH = M_BH/M = 0.01 (1%). For comparison, the Milky Way's Sgr A*
+has $\gamma$_BH $\approx$ 4$\times$10-5 (~0.004%); Sombrero's SMBH is **250$\times$ more dominant relative to its host**. Within
+the UQFF framework, we define the **UQFF Sphere of Influence** r_SOI = r$\times$$\sqrt{}$($\gamma$_BH), the radius at
 which the central BH's direct gravitational contribution equals the total galaxy contribution at the
-reference radius. For Sombrero, r_SOI = 2.36×1019 m — a precise UQFF prediction setting the boundary
+reference radius. For Sombrero, r_SOI = 2.36$\times$1019 m — a precise UQFF prediction setting the boundary
 inside which BH gravity exceeds galaxy-mean gravity in the UQFF model.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -48,20 +48,20 @@ present in Standard Model treatments.
 
 The Sombrero Galaxy's central black hole mass has been measured through stellar and gas kinematics:
 
-- Ford et al. (1996): M_BH = (1.0 ± 0.75) × 109 M_sun (gas kinematics, HST)
+- Ford et al. (1996): M_BH = (1.0 $\pm$ 0.75) $\times$ 109 M_sun (gas kinematics, HST)
 - Kormendy et al. (1996): confirmation from stellar dynamics
-- Jardel et al. (2011): M_BH ≈ 6.6×108 M_sun (JAM modelling, consistent with ~109 range)
+- Jardel et al. (2011): M_BH $\approx$ 6.6$\times$108 M_sun (JAM modelling, consistent with ~109 range)
 
-We adopt M_BH = 1.0×109 M_sun = 1.989×1039 kg.
+We adopt M_BH = 1.0$\times$109 M_sun = 1.989$\times$1039 kg.
 
-The total galaxy mass (stars + gas + DM within the reference radius) is M = 1011 M_sun = 1.989×1041
+The total galaxy mass (stars + gas + DM within the reference radius) is M = 1011 M_sun = 1.989$\times$1041
 kg.
 
-### 1.2 Why γ_BH Matters
+### 1.2 Why $\gamma$_BH Matters
 
 In standard astrophysical models, BH sphere-of-influence calculations use the velocity dispersion
-(r_SOI = GM_BH/σ2). The UQFF framework generalises this to a mass-ratio-based definition consistent
-with the 26-layer Triadic gravity structure, yielding a dimensionless parameter γ_BH that naturally
+(r_SOI = GM_BH/$\sigma$2). The UQFF framework generalises this to a mass-ratio-based definition consistent
+with the 26-layer Triadic gravity structure, yielding a dimensionless parameter $\gamma$_BH that naturally
 encodes the BH's dominance within the UQFF vacuum field hierarchy.
 
 ---
@@ -84,7 +84,7 @@ The BH contribution to g_total at the reference radius r:
 
 $$g_{\text{BH}} = \frac{G M_{\text{BH}}}{r^2} = \gamma_{\text{BH}} \cdot \frac{G M}{r^2} = \gamma_{\text{BH}} \cdot g_{\text{base}}$$
 
-Substituting γ_BH = 0.01 and g_base = 2.382×10-10 m/s2:
+Substituting $\gamma$_BH = 0.01 and g_base = 2.382$\times$10-10 m/s2:
 
 $$g_{\text{BH}} = 0.01 \times 2.382 \times 10^{-10} = 2.382 \times 10^{-12}\ \text{m/s}^2$$
 
@@ -107,7 +107,7 @@ For Sombrero:
 
 $$r_{\text{SOI}} = 2.36 \times 10^{20} \cdot \sqrt{0.01} = 2.36 \times 10^{20} \times 0.1 = 2.36 \times 10^{19}\ \text{m}$$
 
-**Physical interpretation**: Within r_SOI = 2.36×1019 m (~2.49 kly), the direct BH gravitational
+**Physical interpretation**: Within r_SOI = 2.36$\times$1019 m (~2.49 kly), the direct BH gravitational
 acceleration exceeds the galaxy-mean g_base. This is the UQFF-predicted boundary of BH gravitational
 dominance.
 
@@ -120,20 +120,20 @@ $$g_{\text{BH}}(r_{\text{SOI}}) = \frac{G M_{\text{BH}}}{r_{\text{SOI}}^2} = \fr
 
 ## 3. Comparative SMBH Dominance Table
 
-| Galaxy | M_BH (M_sun) | M_total (M_sun) | γ_BH | r_SOI / r_ref |
+| Galaxy | M_BH (M_sun) | M_total (M_sun) | $\gamma$_BH | r_SOI / r_ref |
 |--------|-------------|----------------|------|--------------|
-| Milky Way (Sgr A*) | ~4×106 | ~1011 | ~4×10-5 | ~6.3×10-3 |
-| Andromeda (M31) | ~1.4×108 | ~1012 | ~1.4×10-4 | ~1.2×10-2 |
-| M87 | ~6.5×109 | ~6×1012 | ~1.1×10-3 | ~3.3×10-2 |
+| Milky Way (Sgr A*) | ~4$\times$106 | ~1011 | ~4$\times$10-5 | ~6.3$\times$10-3 |
+| Andromeda (M31) | ~1.4$\times$108 | ~1012 | ~1.4$\times$10-4 | ~1.2$\times$10-2 |
+| M87 | ~6.5$\times$109 | ~6$\times$1012 | ~1.1$\times$10-3 | ~3.3$\times$10-2 |
 | **Sombrero (M104)** | **~109** | **~1011** | **0.01** | **0.1** |
 
-**Sombrero's γ_BH = 0.01 is the highest of any nearby well-measured galaxy in the UQFF catalogue,
+**Sombrero's $\gamma$_BH = 0.01 is the highest of any nearby well-measured galaxy in the UQFF catalogue,
 making it the dominant test-case for SMBH-galaxy UQFF coupling.**
 
 Key comparison ratios:
-- Sombrero/Sgr A*: γ_BH ratio = 0.01/4×10-5 = **250×**
-- Sombrero/M87: γ_BH ratio = 0.01/1.1×10-3 ≈ **9×**
-- Sombrero/Andromeda: γ_BH ratio = 0.01/1.4×10-4 ≈ **71×**
+- Sombrero/Sgr A*: $\gamma$_BH ratio = 0.01/4$\times$10-5 = **250$\times$**
+- Sombrero/M87: $\gamma$_BH ratio = 0.01/1.1$\times$10-3 $\approx$ **9$\times$**
+- Sombrero/Andromeda: $\gamma$_BH ratio = 0.01/1.4$\times$10-4 $\approx$ **71$\times$**
 
 ---
 
@@ -150,7 +150,7 @@ $$= \left[\ldots + 2.382 \times 10^{-12}\ \text{m/s}^2 + \ldots \right] \times 0
 $$\frac{g_{\text{BH}}}{g_{\text{total}}} \approx \frac{2.382 \times 10^{-12}}{1.238 \times 10^{-8} + 2.382 \times 10^{-12} + \ldots} \approx \frac{2.382 \times 10^{-12}}{1.24 \times 10^{-8}} \approx 1.9 \times 10^{-4}$$
 
 While the BH's direct gravitational contribution at the reference radius r is a small fraction of
-the 26-layer Triadic sum (~0.019%), the r_SOI formula reveals that inside 2.36×1019 m, BH gravity
+the 26-layer Triadic sum (~0.019%), the r_SOI formula reveals that inside 2.36$\times$1019 m, BH gravity
 dominates the reference-point baseline — a qualitative distinction for UQFF predictions of inner
 galactic structure.
 
@@ -171,11 +171,11 @@ double g_BH = G_grav * M_BH / (r * r);    // = gamma_BH * g_base = 2.382e-12 m/s
 
 | Quantity | Value | Units |
 |----------|-------|-------|
-| M_BH = 109 M_sun | 1.989×1039 | kg |
-| M = 1011 M_sun | 1.989×1041 | kg |
-| γ_BH = M_BH/M | 0.01 | dimensionless |
-| g_BH = G·M_BH/r2 | 2.382×10-12 | m/s2 |
-| r_SOI = r·√(γ_BH) | 2.36×1019 | m |
+| M_BH = 109 M_sun | 1.989$\times$1039 | kg |
+| M = 1011 M_sun | 1.989$\times$1041 | kg |
+| $\gamma$_BH = M_BH/M | 0.01 | dimensionless |
+| g_BH = G$\cdot$M_BH/r2 | 2.382$\times$10-12 | m/s2 |
+| r_SOI = r$\cdot$$\sqrt{}$($\gamma$_BH) | 2.36$\times$1019 | m |
 | r_SOI in kly | ~2.49 | kly |
 
 ---
@@ -184,32 +184,32 @@ double g_BH = G_grav * M_BH / (r * r);    // = gamma_BH * g_base = 2.382e-12 m/s
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| γ_BH | 0.01 | dimensionless | SMBH Dominance Ratio M_BH/M |
-| r_SOI | 2.36×1019 | m | UQFF Sphere of Influence radius |
-| g_BH | 2.382×10-12 | m/s2 | BH direct gravitational contribution at r |
+| $\gamma$_BH | 0.01 | dimensionless | SMBH Dominance Ratio M_BH/M |
+| r_SOI | 2.36$\times$1019 | m | UQFF Sphere of Influence radius |
+| g_BH | 2.382$\times$10-12 | m/s2 | BH direct gravitational contribution at r |
 
 ---
 
 ## 7. Physical Significance
 
-1. **SMBH Dominance Ratio as a universal UQFF parameter**: γ_BH = M_BH/M provides a single
+1. **SMBH Dominance Ratio as a universal UQFF parameter**: $\gamma$_BH = M_BH/M provides a single
 dimensionless number characterising how BH-dominated a galaxy is. It ranges from ~10-5 (Sgr A*) to
 ~0.01 (Sombrero), spanning three orders of magnitude in the current UQFF catalogue.
 
-2. **UQFF Sphere of Influence formula**: r_SOI = r·√(γ_BH) is derived directly from setting g_BH(r')
+2. **UQFF Sphere of Influence formula**: r_SOI = r$\cdot$$\sqrt{}$($\gamma$_BH) is derived directly from setting g_BH(r')
 = g_base(r). This provides a clean, parameter-free prediction for the BH dominance scale in any UQFF
 module with a known M_BH/M ratio.
 
-3. **Sombrero as extreme BH-galaxy system**: With γ_BH 250× larger than the Milky Way's, Sombrero
-tests UQFF behaviour in the BH-dominated regime. The large γ_BH implies that inner BH effects begin
-influencing the 26-layer Triadic structure at radii as large as r_SOI = 2.36×1019 m.
+3. **Sombrero as extreme BH-galaxy system**: With $\gamma$_BH 250$\times$ larger than the Milky Way's, Sombrero
+tests UQFF behaviour in the BH-dominated regime. The large $\gamma$_BH implies that inner BH effects begin
+influencing the 26-layer Triadic structure at radii as large as r_SOI = 2.36$\times$1019 m.
 
 4. **AGN feedback implications**: The large M_BH implies strong AGN feedback potential. UQFF
 predicts that AGN activity modifies the vacuum energy density locally, which would appear in the
 UQFF framework as a time-varying component of Ug1_vec[i] for the innermost layers — a direction for
 future UQFF module development.
 
-5. **Generalisation**: The formula γ_BH = M_BH/M and r_SOI = r√(γ_BH) define a universal UQFF BH
+5. **Generalisation**: The formula $\gamma$_BH = M_BH/M and r_SOI = r$\sqrt{}$($\gamma$_BH) define a universal UQFF BH
 dominance prescription applicable to any galaxy module. Future UQFF modules for BH-dominated systems
 (e.g., NGC 1277, M87) should include this pair of parameters as standard.
 
@@ -220,14 +220,14 @@ dominance prescription applicable to any galaxy module. Future UQFF modules for 
 - Ford, H. C. et al. (1996). ApJ, 458, 132. (Sombrero M_BH from gas kinematics, HST)
 - Kormendy, J. et al. (1996). ApJ, 459, L57. (Sombrero BH mass confirmation)
 - Jardel, J. R. et al. (2011). ApJ, 739, 21. (Sombrero DM halo and BH mass)
-- Gültekin, K. et al. (2009). ApJ, 698, 198. (M_BH–σ correlation)
-- PAPER_277: UQFF Gravitational Recession Damping κ_recession for z = +0.0063
-- PAPER_278: Sombrero Dust Ring UQFF Gravitational Ring Resonator ω_ring
+- Gültekin, K. et al. (2009). ApJ, 698, 198. (M_BH–$\sigma$ correlation)
+- PAPER_277: UQFF Gravitational Recession Damping $\kappa$_recession for z = +0.0063
+- PAPER_278: Sombrero Dust Ring UQFF Gravitational Ring Resonator $\omega$_ring
 - SOMBRERO_UQFF_MODULE.cpp (UQFF 2.0, Session 77)
 
 ---
 
-*UQFF 2.0 — The SMBH Dominance Ratio γ_BH = M_BH/M and UQFF Sphere of Influence r_SOI = r·√(γ_BH)
+*UQFF 2.0 — The SMBH Dominance Ratio $\gamma$_BH = M_BH/M and UQFF Sphere of Influence r_SOI = r$\cdot$$\sqrt{}$($\gamma$_BH)
 are new universal parameters for UQFF galaxy modules, first derived and tested on the Sombrero
 Galaxy. — Daniel T. Murphy, Session 77, March 2026.*
 
@@ -239,7 +239,7 @@ Galaxy. — Daniel T. Murphy, Session 77, March 2026.*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -258,7 +258,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -295,7 +295,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -398,7 +398,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.135 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -409,13 +409,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

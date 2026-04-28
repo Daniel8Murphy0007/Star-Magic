@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We present a 3-dimensional galaxy cluster simulation under the MUGE (Multi-Universal Gravitational Equation) framework with: NFW dark matter halo profiles, ICM β-model gas density, MUGE triadic gravity (Compressed/Resonant/Buoyancy), and leapfrog integration. Default cluster: Virgo-like ($M_{200} = 1.2 \times 10^{14}\,M_\odot$, $c = 6.5$).
+We present a 3-dimensional galaxy cluster simulation under the MUGE (Multi-Universal Gravitational Equation) framework with: NFW dark matter halo profiles, ICM $\beta$-model gas density, MUGE triadic gravity (Compressed/Resonant/Buoyancy), and leapfrog integration. Default cluster: Virgo-like ($M_{200} = 1.2 \times 10^{14}\,M_\odot$, $c = 6.5$).
 
 ---
 
@@ -33,7 +33,7 @@ $$\rho_text{NFW}(r) = \frac{\rho_s}{(r/r_s)(1 + r/r_s)^2}$$
 
 $$M_\text{enc}(r) = 4\pi \rho_s r_s^3 \left[\ln(1 + r/r_s) - \frac{r/r_s}{1 + r/r_s}\right]$$
 
-## 2. ICM β-Model
+## 2. ICM $\beta$-Model
 
 $$\rho_text{ICM}(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 
@@ -50,7 +50,7 @@ All three triadic modes applied at cluster scale with $S_{26}$ modulation.
 $$\mathbf{v}_{i+1/2} = \mathbf{v}_{i-1/2} + \mathbf{a}_i \cdot \Delta t$$
 $$\mathbf{x}_{i+1} = \mathbf{x}_i + \mathbf{v}_{i+1/2} \cdot \Delta t$$
 
-Default: 50 galaxies, 100 steps × 10 Myr = 1 Gyr evolution.
+Default: 50 galaxies, 100 steps $\times$ 10 Myr = 1 Gyr evolution.
 
 ---
 
@@ -59,7 +59,7 @@ Default: 50 galaxies, 100 steps × 10 Myr = 1 Gyr evolution.
 1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_964 — 3D MUGE Magnetar Simulation (predecessor)
 3. Navarro, Frenk, White (1996) — NFW profile
-4. Cavaliere & Fusco-Femiano (1976) — β-model
+4. Cavaliere & Fusco-Femiano (1976) — $\beta$-model
 
 ---
 
@@ -110,7 +110,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -129,7 +129,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -232,7 +232,7 @@ $$\boxed{g_\text{MUGE}(r) = w_C \cdot g_\text{comp}(M_\text{NFW}(r), r) + w_R \c
 $$\mathcal{L}_\text{cluster} = \sum_{i=1}^{N_\text{gal}} \left[\frac{1}{2} m_i \dot{\mathbf{x}}_i^2 - m_i \Phi_text{MUGE}(\mathbf{x}_i)\right]$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → UQFF gravity → NFW halo → ICM gas → galaxy orbits → cluster evolution
+PAPER_877 $\to$ UQFF gravity $\to$ NFW halo $\to$ ICM gas $\to$ galaxy orbits $\to$ cluster evolution
 
 ---
 

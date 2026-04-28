@@ -36,13 +36,13 @@ system is the **first isolated pulsar class** in the CP3 calculator, and it intr
 regime defined by the neutron-star-density cross-section parameter `s_n ˜ 103?`, representing the
 degenerate nuclear density of neutron star matter.
 
-In the ISM systems of PAPER_250–254, s_n ˜ 10-4 yields F_neutron = k_neutron × s_n = 106 N. For PSR
-J0030 at s_n = 103?, F_neutron = 101° × 103? = **104? N** — a difference of 53 orders of magnitude.
+In the ISM systems of PAPER_250–254, s_n ˜ 10-4 yields F_neutron = k_neutron $\times$ s_n = 106 N. For PSR
+J0030 at s_n = 103?, F_neutron = 101° $\times$ 103? = **104? N** — a difference of 53 orders of magnitude.
 This neutron force is the dominant UQFF term by far.
 
 The key **uniquely rare discovery** of this paper is that despite this 53-order amplification of
-F_neutron, and despite the compact scale (r = 104 m vs r = 6.17 × 1016 m for the SNRs), PSR J0030 is
-a **positive buoyancy** system: F_U_Bi ˜ +2.53 × 102°8 N. The compact-scale geometry at ?0 = 10?12
+F_neutron, and despite the compact scale (r = 104 m vs r = 6.17 $\times$ 1016 m for the SNRs), PSR J0030 is
+a **positive buoyancy** system: F_U_Bi ˜ +2.53 $\times$ 102°8 N. The compact-scale geometry at ?0 = 10?12
 preserves the positive sign. The equivalence class extends across 14 orders of magnitude in radius
 and 53 orders in s_n.
 
@@ -53,7 +53,7 @@ and 53 orders in s_n.
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
 | Distance | d | ~1,100 | ly | Chandra/NICER 2019 |
-| Mass | M | 1.4 M_sun = 2.786 × 103° | kg | Neutron star canonical |
+| Mass | M | 1.4 M_sun = 2.786 $\times$ 103° | kg | Neutron star canonical |
 | **Neutron star radius** | **r** | **104** | **m** | **~10 km** |
 | X-ray luminosity | L_X | 1031 | W | NICER 2019 |
 | Surface B field | B0 | 108 | T | Millisecond pulsar typical |
@@ -67,14 +67,14 @@ and 53 orders in s_n.
 ### 2.1 F_neutron — The New Dominant Term
 
 $$
-F_neutron = k_neutron × s_n = 101° × 103? = 104? N
+F_neutron = k_neutron \times s_n = 101° \times 103? = 104? N
 $$
 
 For comparison:
 $$
 \begin{aligned}
-  & F_LENR (?0=10?12) ˜ 6.17 × 103? N \\
-  & F_neutron / F_LENR = 104? / 6.17×103? ˜ 1.6 × 10?
+  & F_LENR (?0=10?12) ˜ 6.17 \times 103? N \\
+  & F_neutron / F_LENR = 104? / 6.17\times103? ˜ 1.6 \times 10?
 \end{aligned}
 $$
 
@@ -85,8 +85,8 @@ $$
 \begin{aligned}
   & Force hierarchy at ?0=10?12, s_n=103?: \\
   & F_neutron ˜ 104? N   [dominant — 9 orders above F_LENR] \\
-  & F_LENR   ˜ 6×103? N   [second] \\
-  & F_Newt   ˜ μ_s∇(M_s/r)·|x2| [negligible] \\
+  & F_LENR   ˜ 6\times103? N   [second] \\
+  & F_Newt   ˜ \mu_s\nabla(M_s/r)\cdot|x2| [negligible] \\
   & F_res    « F_LENR      [DPM invisible — same conclusion as PAPER_251]
 \end{aligned}
 $$
@@ -94,22 +94,22 @@ $$
 ### 2.2 Compact Geometry and P Positive Buoyancy Preservation
 
 Despite the 9-order dominance of F_neutron over F_LENR, the sign of F_U_Bi remains positive. This is
-because the compact geometry (r = 104 m) affects the term_gravity = μ_s∇(M_s/r) and the integration limit
+because the compact geometry (r = 104 m) affects the term_gravity = $\mu$_s$\nabla$(M_s/r) and the integration limit
 x2 in a way that preserves the positive root:
 
 $$
 \begin{aligned}
-  & term_gravity = G·M/r2 = 6.674e-11 × 2.786e30 / (104)2 \\
-  & ˜ 1.86 × 106 m/s2   [huge surface gravity]
+  & term_gravity = G\cdotM/r2 = 6.674e-11 \times 2.786e30 / (104)2 \\
+  & ˜ 1.86 \times 106 m/s2   [huge surface gravity]
 \end{aligned}
 $$
 
 The quadratic discriminant `b2 - 4ac` with `a = 1.86×106`, `b = 4.72×10?3`, `c ˜ -1.83×1071` gives a
-positive x2 root (same sign as ISM systems), because the vacuum energy F0 = 1.83×1071 N overwhelms
+positive x2 root (same sign as ISM systems), because the vacuum energy F0 = 1.83$\times$1071 N overwhelms
 the sign-determining coefficient c regardless of the surface gravity scale.
 
 **Key result:** `x2 > 0` ? `F_`U_Bi_i` = integrand × |x2| > 0` ? **positive buoyancy at `F_U_Bi` ˜ +2.53
-× 102°8 N**.
+$\times$ 102°8 N**.
 
 ### 2.3 53-Order s_n Range: Equivalence Class Breadth
 
@@ -129,9 +129,9 @@ remains the exclusive class determinant.
 
 $$
 \begin{aligned}
-  & DPM_resonance (PSR J0030) = 2·µ_B·B0/(h·?0) \\
-  & = 2 × 9.274e-24 × 108 / (1.0546e-34 × 10?12) \\
-  & ˜ 1.76 × 1031
+  & DPM_resonance (PSR J0030) = 2\cdotµ_B\cdotB0/(h\cdot?0) \\
+  & = 2 \times 9.274e-24 \times 108 / (1.0546e-34 \times 10?12) \\
+  & ˜ 1.76 \times 1031
 \end{aligned}
 $$
 
@@ -145,8 +145,8 @@ regime.
 
 **Theorem (UQFF NS-Density Class Extension):** The positive buoyancy equivalence class at ?0 = 10?12
 rad/s includes compact objects with neutron-star densities (s_n ~ 103?) in addition to diffuse ISM
-systems (s_n ~ 10?4). F_U_Bi ˜ +2 × 102°8 N regardless of s_n spanning 53 orders, confirming that
-s_n is not a class-determinant parameter. The vacuum energy anchor F0 = 1.83 × 1071 N ensures x2 > 0
+systems (s_n ~ 10?4). F_U_Bi ˜ +2 $\times$ 102°8 N regardless of s_n spanning 53 orders, confirming that
+s_n is not a class-determinant parameter. The vacuum energy anchor F0 = 1.83 $\times$ 1071 N ensures x2 > 0
 for all physically observable values of s_n.
 
 ---
@@ -156,7 +156,7 @@ for all physically observable values of s_n.
 PSR J0030+0451 is an ALMA Cycle 12 proposal target. Observable UQFF signatures include:
 
 - **Isotopic anomaly:** LENR neutron-capture at F_neutron = 104? N (53 orders above ISM) predicts elevated 2H/1H > 10-5 and 13C/12C > 0.01 in the pulsar wind nebula — detectable with ALMA Band 6 at 230 GHz.
-- **EHT polarimetry:** The extreme DPM_resonance ˜ 1.76 × 1031 at B0 = 108 T predicts distinctive helical B-field structure in the pulsar wind, detectable with EHT 20 µas resolution at 230 GHz.
+- **EHT polarimetry:** The extreme DPM_resonance ˜ 1.76 $\times$ 1031 at B0 = 108 T predicts distinctive helical B-field structure in the pulsar wind, detectable with EHT 20 µas resolution at 230 GHz.
 - **NICER hotspot:** PSR J0030+0451 hotspot morphology constrains the NS mass-radius relation; UQFF predicts F_U_Bi positive — consistent with a gravitationally stable bound NS (no anomalous mass loss or unbinding).
 
 ---
@@ -183,7 +183,7 @@ Estimation. *ApJ Lett.* 887, L21.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -202,7 +202,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -256,7 +256,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -379,7 +379,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -390,13 +390,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

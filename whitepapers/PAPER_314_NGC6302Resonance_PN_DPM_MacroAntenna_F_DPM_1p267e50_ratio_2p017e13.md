@@ -11,7 +11,7 @@ tags: [vacuum, DPM, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_314  NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267×105 N (13-Order PN-to-Compact Amplification)
+# PAPER_314  NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267$\times$105 N (13-Order PN-to-Compact Amplification)
 **Author:** Daniel T. Murphy
 
 **UQFF Session:** 90 | **Module:** `NGC6302_RESONANCE_UQFF_MODULE`.cpp  
@@ -24,19 +24,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents UQFF derivations and numerical results for: PAPER_314  NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267×105 N (13-Order PN-to-Compact Amplification). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
+This paper presents UQFF derivations and numerical results for: PAPER_314  NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267$\times$105 N (13-Order PN-to-Compact Amplification). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## System: NGC 6302 "Bug Nebula"  Bipolar PN Resonance Channel
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| r (lobe half-span) | 1.42 × 10-6 m | ~1.5 ly |
-| A_area (lobe cross-section) | p r = 6.333 × 10 m | DPM antenna area |
-| I_wind (wind current proxy) | 1 × 10 A | bipolar wind driven |
-| ?1 - ?2 = ?? | 2 × 10? rad/s | DPM frequency spread |
-| f_DPM | 1 × 10 Hz | wind-aligned, 1e12 class |
-| `E_vac_neb` | 7.09 × 10?6 J/m | plasmotic vacuum |
-| V_sys | (4/3)p r = 1.199 × 104? m | lobe sphere |
+| r (lobe half-span) | 1.42 $\times$ 10-6 m | ~1.5 ly |
+| A_area (lobe cross-section) | p r = 6.333 $\times$ 10 m | DPM antenna area |
+| I_wind (wind current proxy) | 1 $\times$ 10 A | bipolar wind driven |
+| ?1 - ?2 = ?? | 2 $\times$ 10? rad/s | DPM frequency spread |
+| f_DPM | 1 $\times$ 10 Hz | wind-aligned, 1e12 class |
+| `E_vac_neb` | 7.09 $\times$ 10?6 J/m | plasmotic vacuum |
+| V_sys | (4/3)p r = 1.199 $\times$ 104? m | lobe sphere |
 
 ---
 
@@ -70,7 +70,7 @@ This 13-order amplification arises directly from the lobe cross-section:
 
 $$A_{\text{area,PN}} = \pi (1.42 \times 10^{16})^2 = 6.333 \times 10^{32}\ \text{m}^2$$
 
-versus compact object area (~p(106)  3.14×10 m): ratio  2×10 in area but partially offset by V_sys
+versus compact object area (~p(106)  3.14$\times$10 m): ratio  2$\times$10 in area but partially offset by V_sys
 (ratio  10) and the velocity spread ??, giving net 13 orders.
 
 ---
@@ -82,7 +82,7 @@ with cross-section 26 orders of magnitude larger than neutron-star-scale compact
 current proxy (1e20 A, driven by the 100 km/s fast wind from the central WD) interacts with this
 area at DPM frequency f_DPM = 1e12 Hz to produce an unprecedented lobe-scale DPM force.
 
-The seed a_DPM = 2.497×10? m/s then cascades through the THz and VacDiff resonance pipelines (see
+The seed a_DPM = 2.497$\times$10? m/s then cascades through the THz and VacDiff resonance pipelines (see
 PAPER_315 and PAPER_316) to produce dominant terms many orders larger.
 
 ---
@@ -99,9 +99,9 @@ PAPER_315 and PAPER_316) to produce dominant terms many orders larger.
 
 | System | r (m) | F_DPM (N) | Source |
 |--------|-------|-----------|--------|
-| Compact (systems 18-24) | ~1×106 | 6.284×10-6 | PAPER_293 |
-| NGC 6302 PN lobe (this) | 1.42×10-6 | **1.267×105** | **PAPER_314** |
-| Ratio (PN/compact) | – | **2.017×10** | – |
+| Compact (systems 18-24) | ~1$\times$106 | 6.284$\times$10-6 | PAPER_293 |
+| NGC 6302 PN lobe (this) | 1.42$\times$10-6 | **1.267$\times$105** | **PAPER_314** |
+| Ratio (PN/compact) | – | **2.017$\times$10** | – |
 
 
 **Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED
@@ -120,7 +120,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -223,7 +223,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.127 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -234,13 +234,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

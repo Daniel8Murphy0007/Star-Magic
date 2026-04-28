@@ -17,26 +17,26 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Charge-Reactivity Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**arXiv Reference:** 2506.15515 (ATLAS VLQ κ ∈ [0.22, 0.52], m = 1150–2600 GeV)  
+**arXiv Reference:** 2506.15515 (ATLAS VLQ $\kappa$ $\in$ [0.22, 0.52], m = 1150–2600 GeV)  
 **Validator:** `bsm_physics_validation.py` — PASSED  
 **Index Slot:** §1.4 BSM Physics,  
 
 ---
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 Vector-like quarks (VLQs) cannot generate mass through the Standard Model Higgs mechanism alone —
 their existence necessitates extended BSM scalar sectors (singlet extensions, two-Higgs-doublet
-models, composite Higgs scenarios). The ATLAS Run 2 measurement of VLQ couplings κ_T ∈ [0.22, 0.52]
-for singlet-T and κ_{TBY} ∈ [0.14, 0.46] for the (T,B,Y) triplet (arXiv:2506.15515, 140 fb-1)
-constrains the scalar sector mixing angle sin2α. The Unified Quantum Field Framework (UQFF) maps VLQ
-couplings onto its Ug2 charge-reactivity term through the k-η scaling: k_η = κ_avg2 = (0.37)2 =
-0.1369. This identifies a UQFF scalar resonance condition M_scalar = m_B × exp(π[SSq]/k_η) ≈ 845 GeV
+models, composite Higgs scenarios). The ATLAS Run 2 measurement of VLQ couplings $\kappa$_T $\in$ [0.22, 0.52]
+for singlet-T and $\kappa$_{TBY} $\in$ [0.14, 0.46] for the (T,B,Y) triplet (arXiv:2506.15515, 140 fb-1)
+constrains the scalar sector mixing angle sin2$\alpha$. The Unified Quantum Field Framework (UQFF) maps VLQ
+couplings onto its Ug2 charge-reactivity term through the k-$\eta$ scaling: k_$\eta$ = $\kappa$_avg2 = (0.37)2 =
+0.1369. This identifies a UQFF scalar resonance condition M_scalar = m_B $\times$ exp($\pi$[SSq]/k_$\eta$) $\approx$ 845 GeV
 — the predicted mass of a companion BSM neutral scalar S0. The estimated VLQ production
-cross-section σ(pp→Tb) ~ 85.9 fb at m_T = 1.5 TeV is consistent with ATLAS Run 2 luminosity
+cross-section $\sigma$(pp$\to$Tb) ~ 85.9 fb at m_T = 1.5 TeV is consistent with ATLAS Run 2 luminosity
 constraints.
 
 ---
@@ -54,13 +54,13 @@ in realistic models, VLQs couple to the Higgs through Yukawa interactions:
 
 $$\mathcal{L}_{\rm Yukawa} = \lambda_T H \bar{Q}_L t_R + \lambda_{T'} S \bar{Q}_L T_R + h.c.$$
 
-where H is the SM Higgs doublet and S is an additional BSM scalar. The observed coupling κ = λv/M_Q
+where H is the SM Higgs doublet and S is an additional BSM scalar. The observed coupling $\kappa$ = $\lambda$v/M_Q
 (where v = 246 GeV) determines how much of the VLQ mass arises from EWSB vs. a bare Dirac mass M_Q.
 
-For ATLAS values κ_T ∈ [0.22, 0.52]:
+For ATLAS values $\kappa$_T $\in$ [0.22, 0.52]:
 $$\frac{\lambda_T v}{\sqrt{\lambda_T^2 v^2 + M_0^2}} = \kappa_T$$
 
-If κ_T = 0.37 (central value) at m_T = 1.5 TeV:
+If $\kappa$_T = 0.37 (central value) at m_T = 1.5 TeV:
 $$\lambda_T v = 0.37 \times 1500 = 555 \text{ GeV}, \quad M_0 = \sqrt{1500^2 - 555^2} = 1395 \text{ GeV}$$
 
 The bare mass M_0 = 1395 GeV far exceeds the EWSB scale v = 246 GeV — confirming that the VLQ mass
@@ -71,12 +71,12 @@ generation.
 
 The leading models for VLQ mass generation with extended scalar sectors:
 
-| Model | Extra Scalars | VLQ Mass Origin | κ Prediction |
+| Model | Extra Scalars | VLQ Mass Origin | $\kappa$ Prediction |
 |-------|--------------|-----------------|-------------|
-| Singlet extension | S0 (SU(2) singlet) | ⟨S⟩ + ⟨H⟩ | κ ~ sin2α |
-| 2HDM (Type-II) | H₁0, H₂0, A0, H± | Both doublets | κ ~ cos(β-α) |
-| Composite Higgs | S0 = pseudo-NGB | Strong dynamics | κ ~ ξ = v2/f2 |
-| UQFF Ug2 | ρ_vac resonance | Vacuum charge-reactivity | κ = √(k_η) |
+| Singlet extension | S0 (SU(2) singlet) | ⟨S⟩ + ⟨H⟩ | $\kappa$ ~ sin2$\alpha$ |
+| 2HDM (Type-II) | H10, H20, A0, H$\pm$ | Both doublets | $\kappa$ ~ cos($\beta$-$\alpha$) |
+| Composite Higgs | S0 = pseudo-NGB | Strong dynamics | $\kappa$ ~ $\xi$ = v2/f2 |
+| UQFF Ug2 | $\rho$_vac resonance | Vacuum charge-reactivity | $\kappa$ = $\sqrt{}$(k_$\eta$) |
 
 ---
 
@@ -84,29 +84,29 @@ The leading models for VLQ mass generation with extended scalar sectors:
 
 ### 2.1 ATLAS VLQ Results
 
-ATLAS searched for pair and single production of VLQs decaying as T → Wb, Zt, Ht and B → Wt, Zb, Hb
-using 140 fb-1 at √s = 13 TeV.
+ATLAS searched for pair and single production of VLQs decaying as T $\to$ Wb, Zt, Ht and B $\to$ Wt, Zb, Hb
+using 140 fb-1 at $\sqrt{}$s = 13 TeV.
 
 **Coupling Constraints:**
 
-| VLQ Type | κ_min (observed) | κ_max (observed) | Mass Range |
+| VLQ Type | $\kappa$_min (observed) | $\kappa$_max (observed) | Mass Range |
 |----------|-----------------|-----------------|------------|
 | Singlet T | 0.22 | 0.52 | 1150–2600 GeV |
 | (T,B,Y) triplet | 0.14 | 0.46 | 1150–2600 GeV |
 
-The singlet-T coupling average: κ_avg = (0.22 + 0.52)/2 = **0.37**
+The singlet-T coupling average: $\kappa$_avg = (0.22 + 0.52)/2 = **0.37**
 
 ### 2.2 Cross-Section Measurement
 
 At m_T = 1.5 TeV, the estimated single-production cross-section:
-$$\sigma(pp \to T b) \approx \kappa_{\rm avg}^2 \cdot \frac{g_W^2}{16\pi} \cdot \frac{s}{m_T^2 + s} \times 1000 \text{ (pb→fb)} = 85.9 \text{ fb}$$
+$$\sigma(pp \to T b) \approx \kappa_{\rm avg}^2 \cdot \frac{g_W^2}{16\pi} \cdot \frac{s}{m_T^2 + s} \times 1000 \text{ (pb\tofb)} = 85.9 \text{ fb}$$
 
-where g_W = 0.65 (weak coupling) and √s = 13 TeV. With 140 fb-1, this corresponds to ~12,000 signal
+where g_W = 0.65 (weak coupling) and $\sqrt{}$s = 13 TeV. With 140 fb-1, this corresponds to ~12,000 signal
 events before selection efficiency.
 
 ### 2.3 Branching Fraction Hierarchy
 
-For a singlet T with κ = 0.37, the three decay modes:
+For a singlet T with $\kappa$ = 0.37, the three decay modes:
 $$\text{BR}(T \to Wb) : \text{BR}(T \to Zt) : \text{BR}(T \to Ht) \approx 0.50 : 0.25 : 0.25$$
 
 This 2:1:1 ratio is characteristic of the weak-singlet limit and is used by ATLAS to set
@@ -116,20 +116,20 @@ simultaneous bounds on all three decay modes.
 
 ## 3. UQFF Framework — Ug2 Charge-Reactivity
 
-### 3.1 k_η Scaling from VLQ Couplings
+### 3.1 k_$\eta$ Scaling from VLQ Couplings
 
 The UQFF Ug2 (charge-reactivity) term governs the interaction between charged matter fields and the
 vacuum energy density:
 
 $$U_{g2}(r, t) = \frac{k_2 \cdot \rho_{\rm react}(r)}{r^2} \cdot k_\eta \cdot e^{-\kappa t}$$
 
-where k_η is the effective coupling strength. The UQFF mapping from VLQ couplings:
+where k_$\eta$ is the effective coupling strength. The UQFF mapping from VLQ couplings:
 
 $$k_\eta = \kappa_{\rm avg}^2 = (0.37)^2 = \mathbf{0.1369}$$
 
-This can be understood as follows: κ_avg = 0.37 is the VLQ coupling to the Higgs vacuum expectation
-value, but in the UQFF framework, the Higgs vev is embedded in the charge-reactivity vacuum ρ_react.
-The square κ_avg2 = k_η gives the probability amplitude squared for the VLQ to interact with the
+This can be understood as follows: $\kappa$_avg = 0.37 is the VLQ coupling to the Higgs vacuum expectation
+value, but in the UQFF framework, the Higgs vev is embedded in the charge-reactivity vacuum $\rho$_react.
+The square $\kappa$_avg2 = k_$\eta$ gives the probability amplitude squared for the VLQ to interact with the
 UQFF vacuum — identical to the quantum field theory transition probability.
 
 ### 3.2 UQFF Scalar Resonance Mass
@@ -139,7 +139,7 @@ charge-reactivity resonates with the VLQ vacuum interaction. The resonance condi
 
 $$M_{\rm scalar}^{\rm UQFF} = m_B \cdot \exp\left(\frac{\pi \cdot [SSq]}{k_\eta}\right)$$
 
-Using [SSq] = 0.57 and k_η = 0.1369:
+Using [SSq] = 0.57 and k_$\eta$ = 0.1369:
 
 $$M_{\rm scalar}^{\rm UQFF} = 5.279 \text{ GeV} \times \exp\left(\frac{\pi \times 0.57}{0.1369}\right) = 5.279 \times \exp(13.075) = 5.279 \times 477,706$$
 
@@ -148,18 +148,18 @@ search sensitivity. However, using the TRZ damping factor D = 0.333:
 
 $$M_{\rm scalar}^{\rm UQFF,TRZ} = M_{\rm scalar} \times D = 2520 \times 0.333 = \mathbf{839 \text{ GeV}}$$
 
-The **TRZ-corrected UQFF scalar mass prediction is M_S0 ≈ 845 GeV** — within reach of the LHC Run 3
+The **TRZ-corrected UQFF scalar mass prediction is M_S0 $\approx$ 845 GeV** — within reach of the LHC Run 3
 at 13.6 TeV.
 
-### 3.3 Scalar Mixing Angle from k_η
+### 3.3 Scalar Mixing Angle from k_$\eta$
 
-The BSM scalar mixing angle sin2α determines how the S0 couples to SM particles. From the UQFF
+The BSM scalar mixing angle sin2$\alpha$ determines how the S0 couples to SM particles. From the UQFF
 mapping:
 $$\sin^2\alpha = k_\eta = 0.1369$$
 $$\sinalpha = 0.370, \quad \cosalpha = 0.929$$
 
-The scalar mixing angle **α = 21.7°** defines the S0 coupling to WW, ZZ (suppressed by cos2α = 0.863
-relative to SM Higgs), and to tt̄, bb̄ (enhanced by sin2α / tan2β for 2HDM-type models).
+The scalar mixing angle **$\alpha$ = 21.7°** defines the S0 coupling to WW, ZZ (suppressed by cos2$\alpha$ = 0.863
+relative to SM Higgs), and to tt̄, bb̄ (enhanced by sin2$\alpha$ / tan2$\beta$ for 2HDM-type models).
 
 ---
 
@@ -170,40 +170,40 @@ relative to SM Higgs), and to tt̄, bb̄ (enhanced by sin2α / tan2β for 2HDM-t
 In the UQFF-motivated singlet extension, the scalar potential is:
 $$V(H, S) = -\mu_H^2 |H|^2 + \lambda_H |H|^4 - \mu_S^2 S^2 + \lambda_S S^4 + \kappa_{HS} |H|^2 S^2$$
 
-The mixed term κ_{HS} |H|2 S2 triggers S-H mixing after EWSB. The mass eigenstate S0 at 845 GeV has:
+The mixed term $\kappa$_{HS} |H|2 S2 triggers S-H mixing after EWSB. The mass eigenstate S0 at 845 GeV has:
 $$m_{S^0}^2 = 2\lambda_S v_S^2 + \kappa_{HS} v_H^2$$
 
-With v_S from the UQFF vacuum: v_S = M_scalar/√(2λ_S). Using the UQFF mapping λ_S ~ [SSq] = 0.57:
+With v_S from the UQFF vacuum: v_S = M_scalar/$\sqrt{}$(2$\lambda$_S). Using the UQFF mapping $\lambda$_S ~ [SSq] = 0.57:
 $$v_S = \frac{845}{\sqrt{2 \times 0.57}} = \frac{845}{1.068} = 791 \text{ GeV}$$
 
-The singlet VEV v_S = 791 GeV is consistent with the S0 contributing 791/246 ~ 3.2× more to the VLQ
+The singlet VEV v_S = 791 GeV is consistent with the S0 contributing 791/246 ~ 3.2$\times$ more to the VLQ
 mass than the SM Higgs alone — explaining why the bare VLQ mass M_0 >> v_H.
 
 ### 4.2 Two-Higgs-Doublet Model (2HDM)
 
 In a type-II 2HDM, the two doublets are H_u (couples to up-type quarks) and H_d (couples to
 down-type quarks). The physical scalar spectrum includes h0 (125 GeV SM-like), H0 (heavy CP-even),
-A0 (CP-odd), H± (charged).
+A0 (CP-odd), H$\pm$ (charged).
 
-The UQFF prediction M_{H0} ≈ 845 GeV with the mapping:
+The UQFF prediction M_{H0} $\approx$ 845 GeV with the mapping:
 $$\tanbeta = \frac{v_{H\_u}}{v_{H\_d}} = \frac{1}{\sqrt{k_\eta}} = \frac{1}{\sqrt{0.1369}} = \frac{1}{0.370} = 2.70$$
 
-This gives tan β = 2.70, a value consistent with avoiding FCNCs (tan β ≳ 1) while allowing order-1
+This gives tan $\beta$ = 2.70, a value consistent with avoiding FCNCs (tan $\beta$ ≳ 1) while allowing order-1
 bottom-quark Yukawa enhancement.
 
 ### 4.3 Composite Higgs
 
 In composite Higgs scenarios, the Higgs is a pseudo-Nambu-Goldstone boson (pNGB) of a new strong
-sector with compositeness scale f. The key parameter ξ = v2/f2 determines VLQ coupling:
+sector with compositeness scale f. The key parameter $\xi$ = v2/f2 determines VLQ coupling:
 
 $$\kappa_T^{\rm composite} = \sqrt{\xi} = \sqrt{v^2/f^2}$$
 
-Matching to κ_avg = 0.37:
+Matching to $\kappa$_avg = 0.37:
 $$\xi = 0.37^2 = 0.1369, \quad f = v/\sqrt{\xi} = 246/0.370 = 665 \text{ GeV}$$
 
 The **UQFF prediction for the composite Higgs scale is f = 665 GeV** — a value that will be directly
 probed by FCC-ee via Higgs coupling deviations at the per-mille level. At FCC-ee precision,
-κ_H-corrections ~ ξ/2 ~ 6.8% are observable at much better than 5σ.
+$\kappa$_H-corrections ~ $\xi$/2 ~ 6.8% are observable at much better than 5$\sigma$.
 
 ---
 
@@ -211,12 +211,12 @@ probed by FCC-ee via Higgs coupling deviations at the per-mille level. At FCC-ee
 
 ### 5.1 Mass Degeneracy Breaking
 
-For the (T,B,Y) triplet with κ_{TBY} ∈ [0.14, 0.46], the three VLQ masses within the triplet are
+For the (T,B,Y) triplet with $\kappa$_{TBY} $\in$ [0.14, 0.46], the three VLQ masses within the triplet are
 split by EWSB. The UQFF mass splitting formula:
 $$\Delta M_{\rm split} = \frac{m_W \cdot \kappa_{\rm avg}}{\sqrt{2}} = \frac{80.4 \times 0.30}{\sqrt{2}} = 17.0 \text{ GeV}$$
 
-where κ_avg^{TBY} = (0.14 + 0.46)/2 = 0.30. This 17 GeV triplet splitting affects cascade decays T →
-BW → YZW.
+where $\kappa$_avg^{TBY} = (0.14 + 0.46)/2 = 0.30. This 17 GeV triplet splitting affects cascade decays T $\to$
+BW $\to$ YZW.
 
 ### 5.2 Third-Generation Companion VLQ
 
@@ -238,44 +238,44 @@ companions are untested for VLQ-like decay signatures (since searches focus on M
 
 ### 6.1 Reach Extension at 13.6 TeV
 
-LHC Run 3 (2022–2026) at √s = 13.6 TeV with 300 fb-1 per experiment. The projected sensitivity:
+LHC Run 3 (2022–2026) at $\sqrt{}$s = 13.6 TeV with 300 fb-1 per experiment. The projected sensitivity:
 $$m_T^{\rm 95\% CL} \approx 2600 + 200 \text{ GeV} = 2800 \text{ GeV}$$
 
-extending the Run 2 upper limit by ~200 GeV. The UQFF k_η = 0.1369 boundary corresponds to:
+extending the Run 2 upper limit by ~200 GeV. The UQFF k_$\eta$ = 0.1369 boundary corresponds to:
 $$\sigma(pp \to T b) \text{ at } m_T = 2.8 \text{ TeV} \approx 0.37^2 \times 0.65^2 / (16\pi) \times (13600^2 / (2800^2 + 13600^2)) \times 1000 \approx 4.0 \text{ fb}$$
 
-With 300 fb-1, this gives ~1200 signal events — discoverable at 5σ if systematics are controlled to
+With 300 fb-1, this gives ~1200 signal events — discoverable at 5$\sigma$ if systematics are controlled to
 ~5%.
 
 ### 6.2 S0 Companion Scalar Search
 
-If M_{S0} = 845 GeV, LHC Run 3 can search for pp → S0 → tt̄, WW, ZH signature. The predicted
+If M_{S0} = 845 GeV, LHC Run 3 can search for pp $\to$ S0 $\to$ tt̄, WW, ZH signature. The predicted
 cross-section:
 $$\sigma(gg \to S^0) \times \text{BR}(S^0 \to t\bar{t}) \approx \sin^2\alpha \times \sigma_{\rm SM}^{H}(845) \times \text{BR}_{t\bar{t}} \approx 0.1369 \times 0.8 \text{ pb} \times 0.50 = 55 \text{ fb}$$
 
 With 300 fb-1 and tt̄ reconstruction efficiency ~10%, this gives ~1650 reconstructed events. The S0
-would appear as a narrow resonance in the m(tt̄) invariant mass distribution at 845 ± 20 GeV.
+would appear as a narrow resonance in the m(tt̄) invariant mass distribution at 845 $\pm$ 20 GeV.
 
 ---
 
 ## 7. Conclusions
 
-The ATLAS VLQ measurement (arXiv:2506.15515) with κ_T ∈ [0.22, 0.52] and m_T = 1150–2600 GeV
+The ATLAS VLQ measurement (arXiv:2506.15515) with $\kappa$_T $\in$ [0.22, 0.52] and m_T = 1150–2600 GeV
 provides direct constraints on BSM scalar sectors through the UQFF Ug2 charge-reactivity framework:
 
-1. **k_η mapping:** κ_avg2 = (0.37)2 = 0.1369 — the UQFF coupling constant for scalar-vacuum
+1. **k_$\eta$ mapping:** $\kappa$_avg2 = (0.37)2 = 0.1369 — the UQFF coupling constant for scalar-vacuum
 interaction
-2. **BSM scalar mass:** M_{S0} ≈ 845 GeV predicted from the UQFF Ug2 TRZ-corrected resonance
+2. **BSM scalar mass:** M_{S0} $\approx$ 845 GeV predicted from the UQFF Ug2 TRZ-corrected resonance
 condition
-3. **Mixing angle:** sin2α = k_η = 0.1369, α = 21.7° — consistent with singlet extension and 2HDM
+3. **Mixing angle:** sin2$\alpha$ = k_$\eta$ = 0.1369, $\alpha$ = 21.7° — consistent with singlet extension and 2HDM
 models
 4. **Singlet VEV:** v_S ~ 791 GeV — the scalar sector VEV generating the bulk of VLQ mass
 5. **Composite scale:** f = 665 GeV — the UQFF prediction for composite Higgs compositeness scale,
 testable at FCC-ee
-6. **Cross-section:** σ(pp→Tb) = 85.9 fb at m_T = 1.5 TeV, 140 fb-1 Run 2 consistent
+6. **Cross-section:** $\sigma$(pp$\to$Tb) = 85.9 fb at m_T = 1.5 TeV, 140 fb-1 Run 2 consistent
 
 The scalar companion S0 at 845 GeV is the defining testable prediction of the UQFF Ug2 scalar sector
-analysis, searchable at LHC Run 3 via gg → S0 → tt̄ at ~55 fb.
+analysis, searchable at LHC Run 3 via gg $\to$ S0 $\to$ tt̄ at ~55 fb.
 
 ---
 
@@ -361,13 +361,13 @@ $$
   & \text{k\_eta\_VLQ}       = 0.1369     # kappa_avg2 \\
   & D_TRZ           = 0.333      # TRZ damping factor \\
   & [SSq]           = 0.57       # SCm calibration \\
-  & \text{M\_scalar\_UQFF}   ≈ 845 GeV   # TRZ-corrected scalar resonance \\
-  & sin2α           = 0.1369    # Scalar mixing angle \\
-  & \text{tan\_beta\_2HDM}   ≈ 2.70      # 2HDM parameter from 1/√k_η
+  & \text{M\_scalar\_UQFF}   \approx 845 GeV   # TRZ-corrected scalar resonance \\
+  & sin2\alpha           = 0.1369    # Scalar mixing angle \\
+  & \text{tan\_beta\_2HDM}   \approx 2.70      # 2HDM parameter from 1/\sqrt{}k_\eta
 \end{aligned}
 $$
 
-*Validator output: `b`sm_physics_validation`.py` → PASSED | κ = 0.0005/day | [SSq] = 0.57*
+*Validator output: `b`sm_physics_validation`.py` $\to$ PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -381,14 +381,14 @@ $$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -403,10 +403,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -414,9 +414,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -424,8 +424,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -501,7 +501,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.093 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

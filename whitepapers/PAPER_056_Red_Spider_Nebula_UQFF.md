@@ -18,24 +18,24 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Compressed Gravity and the [SCm] Channeling Mechanism
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Validator:** `validate_all_models.py`  RedSpiderNebulaModel: **4/4 PASS** ?  
 **Source Module:** `CondensedPhysics.py` (RedSpiderNebulaModel), `validate_all_models.py`  
 **Index Slot:** §1.7 arXiv Cross-Validation Framework,  
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The Red Spider Nebula (NGC 6537) in Sagittarius hosts one of the fastest stellar winds known in any
 planetary nebula, with velocities exceeding 1,600 km/s from its central white dwarf (T_eff ~ 400,000
 K). The UQFF RedSpiderNebulaModel produces a 2 enhancement in both g_compressed and R_amplitude over
 the standard isolated-star values, directly reflecting the supersonically-compressed [SCm] region
-around the ultra-hot central star. All 4 tests pass, with a notably low g_grav (1.3275×10?),
+around the ultra-hot central star. All 4 tests pass, with a notably low g_grav (1.3275$\times$10?),
 consistent with a low total-mass planetary nebula where the dynamical forces are electromagnetic and
 radiation pressure  not gravitational.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -62,8 +62,8 @@ ultra-fast wind compressing and instability-shocking the previously-ejected slow
 ## 2. The 2 Compression Enhancement
 
 Unlike the 10 enhancement in NGC4676 (major merger), the Red Spider shows a **2 enhancement**:
-- g_compressed = **2.1066×10?** (2 standard 1.0533×10?)
-- R_amplitude = **2.3173×10?** (2 standard 1.1586×10?)
+- g_compressed = **2.1066$\times$10?** (2 standard 1.0533$\times$10?)
+- R_amplitude = **2.3173$\times$10?** (2 standard 1.1586$\times$10?)
 
 This 2 factor is the UQFF signature of a **radiation-driven compression event**:
 $$g_{\rm compressed}^{\rm Red Spider} = 2 \times g_{\rm compressed}^{\rm isolated}$$
@@ -73,7 +73,7 @@ radiation field that heats the surrounding [SCm] vacuum medium. The [SCm] therma
 photoionized zone doubles the effective compression:
 $$g_{\rm compressed}^{\rm EUV} = g_{\rm compressed} \times \left(1 + \frac{k_B T_{\rm star}}{m_p c^2}\right)^{1/2} \approx g_{\rm compressed} \times \sqrt{1 + 0.043} \approx g_{\rm compressed} \times 2$$
 
-At T_eff = 400,000 K: k_B T / m_p c = 1.38×10?  4×105 / (1.67×10?7 × 9×10-6)  4.1×10? ≈ 0.04 << 1,
+At T_eff = 400,000 K: k_B T / m_p c = 1.38$\times$10?  4$\times$105 / (1.67$\times$10?7 $\times$ 9$\times$10-6)  4.1$\times$10? $\approx$ 0.04 << 1,
 so the exact formula uses a different coupling. The UQFF identifies this as the [SCm] compression
 factor in the high-radiation environment calibrated to 2.0 at the Red Spider's wind velocity regime.
 
@@ -83,12 +83,12 @@ factor in the high-radiation environment calibrated to 2.0 at the Red Spider's w
 
 ### Test 1: Gravitational Field g_grav
 
-- g_grav = **1.3275×10?** m/s (the lowest non-extragalactic value in the suite)
+- g_grav = **1.3275$\times$10?** m/s (the lowest non-extragalactic value in the suite)
 - Physical basis: A ~0.5 M? planetary nebula core at 1.5 kpc produces a very weak gravitational field; the dynamics are radiation-pressure dominated
 - **PASS**
 
-Comparison: g_grav(Red Spider) = 1.3×10? is 44.8 weaker than g_grav(NGC2264) = 5.9×10? and 222
-weaker than g_grav(M42) = 6.6×10?, reflecting the difference between a ~0.5 M? PN core, a 500 M?
+Comparison: g_grav(Red Spider) = 1.3$\times$10? is 44.8 weaker than g_grav(NGC2264) = 5.9$\times$10? and 222
+weaker than g_grav(M42) = 6.6$\times$10?, reflecting the difference between a ~0.5 M? PN core, a 500 M?
 young cluster, and a 1000 M? HII region.
 
 ### Test 2: Hubble Factor
@@ -99,12 +99,12 @@ young cluster, and a 1000 M? HII region.
 
 ### Test 3: Compressed Gravity g_compressed
 
-- g_compressed = **2.1066×10?** (2 standard)
+- g_compressed = **2.1066$\times$10?** (2 standard)
 - **PASS**
 
 ### Test 4: Resonance Amplitude R
 
-- R_amplitude = **2.3173×10?** (2 standard)
+- R_amplitude = **2.3173$\times$10?** (2 standard)
 - The 2 resonance amplitude captures the increased MHD wave activity in the wind-collision zone (Kelvin-Helmholtz instabilities generating the visible wave structures)
 - **PASS**
 
@@ -125,7 +125,7 @@ structures.
 The 1,600 km/s wind velocity in the UQFF:
 $$v_{\rm wind} = v_{\rm escape} \times \sqrt{1 + Ug2/g_{\rm grav}}$$
 
-At g_grav = 1.3×10? and Ug2 >> g_grav (EM-dominated):
+At g_grav = 1.3$\times$10? and Ug2 >> g_grav (EM-dominated):
 $$v_{\rm wind} \approx v_{\rm escape} \times \sqrt{Ug2/g_{\rm grav}} \approx 100 \text{ km/s} \times \sqrt{256} \approx 1600 \text{ km/s}$$
 
 This provides a qualitative explanation: the radiation-driven [SCm] compression amplifies the escape
@@ -137,10 +137,10 @@ velocity by factor ~16 (Ug2/g_grav  256), giving the observed 1,600 km/s.
 
 | System | g_grav | g_compressed | Factor | Physics |
 |--------|--------|-------------|--------|---------|
-| Red Spider | 1.33×10? | 2.11×10? | **2** | EUV+wind compression |
-| NGC2264 | 5.93×10? | 1.05×10? | 1 | Standard EM-dominated SF |
-| NGC4676 | 2.95×10? | 1.05×10? | **10** | Major merger [SCm] compression |
-| M42 | 6.64×10? | 1.05×10? | 1 | Dense HII (mass-dominated) |
+| Red Spider | 1.33$\times$10? | 2.11$\times$10? | **2** | EUV+wind compression |
+| NGC2264 | 5.93$\times$10? | 1.05$\times$10? | 1 | Standard EM-dominated SF |
+| NGC4676 | 2.95$\times$10? | 1.05$\times$10? | **10** | Major merger [SCm] compression |
+| M42 | 6.64$\times$10? | 1.05$\times$10? | 1 | Dense HII (mass-dominated) |
 
 The Red Spider occupies the intermediate 2 compression class, distinct from the 10 merger class and
 the standard 1 class.
@@ -151,10 +151,10 @@ the standard 1 class.
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | 1.3275×10? m/s | ? |
+| 1 | g_grav | 1.3275$\times$10? m/s | ? |
 | 2 | Hubble factor | 1.0000 | ? |
-| 3 | g_compressed | 2.1066×10? (2) | ? |
-| 4 | R_amplitude | 2.3173×10? (2) | ? |
+| 3 | g_compressed | 2.1066$\times$10? (2) | ? |
+| 4 | R_amplitude | 2.3173$\times$10? (2) | ? |
 
 **4/4 PASS (100%)**
 
@@ -164,14 +164,14 @@ the standard 1 class.
 
 1. The Red Spider Nebula shows 2 UQFF compression  the distinctive signature of an EUV-ionized,
 wind-driven environment
-2. Its g_grav is the lowest in the suite (1.33×10?), confirming radiation-pressure dominance over
+2. Its g_grav is the lowest in the suite (1.33$\times$10?), confirming radiation-pressure dominance over
 gravity
 3. The [SCm]-to-[UA] transition zone in the wind-collision region produces the observed wave-like
 structures (Kelvin-Helmholtz instability in the UQFF vacuum medium)
 4. The UQFF identifies a three-tier compression hierarchy: 1 (standard), 2 (wind/radiation), 10
 (merger), testable by measuring shock velocities in other PN and merger systems
 
-*Validator: `v`alidate_all_models`.py` RedSpiderNebulaModel 4/4 PASS | κ = 0.0005/day | [SSq] =
+*Validator: `v`alidate_all_models`.py` RedSpiderNebulaModel 4/4 PASS | $\kappa$ = 0.0005/day | [SSq] =
 0.57*
 
 ---
@@ -182,7 +182,7 @@ structures (Kelvin-Helmholtz instability in the UQFF vacuum medium)
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -201,7 +201,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -216,14 +216,14 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -238,10 +238,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -249,9 +249,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -259,8 +259,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -336,7 +336,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.157 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -345,13 +345,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

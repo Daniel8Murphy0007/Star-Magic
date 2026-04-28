@@ -12,7 +12,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 # PAPER_312: NGC 6302 Central Star UV Radiation Pressure — UQFF Photoionization Gravitational Signature
 
-**Subtitle:** FIRST UQFF Hot-WD UV Radiation Parameter — η_rad = 1.913×1020; a_rad = 5.672×108 m/s2
+**Subtitle:** FIRST UQFF Hot-WD UV Radiation Parameter — $\eta$_rad = 1.913$\times$1020; a_rad = 5.672$\times$108 m/s2
 
 **Author:** Daniel T. Murphy  
 **Session:** 89 | **Date:** March 17, 2026  
@@ -22,7 +22,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 gravitational signature
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 
@@ -34,11 +34,11 @@ This paper presents UQFF derivations and numerical results for: PAPER_312: NGC 6
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| `T_eff_star` | 2.0×105 K | Central WD effective temperature |
-| L_star | 1.914×1030 W | = 5000 L_sun (Zanstra temperature analysis) |
-| r | 9.46×1015 m | PN half-lobe radius |
-| ρ_fluid | 1.0×10-20 kg/m3 | Ionized lobe gas density |
-| c | 3.0×108 m/s | Speed of light |
+| `T_eff_star` | 2.0$\times$105 K | Central WD effective temperature |
+| L_star | 1.914$\times$1030 W | = 5000 L_sun (Zanstra temperature analysis) |
+| r | 9.46$\times$1015 m | PN half-lobe radius |
+| $\rho$_fluid | 1.0$\times$10-20 kg/m3 | Ionized lobe gas density |
+| c | 3.0$\times$108 m/s | Speed of light |
 
 ---
 
@@ -46,7 +46,7 @@ This paper presents UQFF derivations and numerical results for: PAPER_312: NGC 6
 
 ### 2.1 Central Star Luminosity
 
-NGC 6302's central star is one of the hottest white dwarfs known, with T_eff ≈ 200,000 K (Szyszka et
+NGC 6302's central star is one of the hottest white dwarfs known, with T_eff $\approx$ 200,000 K (Szyszka et
 al. 2009, ApJL). The Zanstra hydrogen luminosity gives:
 
 $$L_{star} = 5000\ L_\odot = 5000 \times 3.828 \times 10^{26}\ \text{W} = 1.914 \times 10^{30}\ \text{W}$$
@@ -69,7 +69,7 @@ $$a_{rad} = \frac{P_{rad}}{\rho_{fluid}} = \frac{5.672 \times 10^{-12}}{1.0 \tim
 
 $$\eta_{rad} \equiv \frac{a_{rad}}{g_{base}} = \frac{5.672 \times 10^8}{2.967 \times 10^{-12}} = \mathbf{1.913 \times 10^{20}}$$
 
-The UV radiation pressure exceeds gravitational force by **1.913×1020** — twenty orders of
+The UV radiation pressure exceeds gravitational force by **1.913$\times$1020** — twenty orders of
 magnitude. This establishes that photoionization-driven radiation pressure is the primary mechanism
 for lobe acceleration in bipolar PNe with ultra-hot central stars.
 
@@ -94,7 +94,7 @@ This term dominates over the wind shock term (PAPER_311: $a_{wind} \sim 10^{-6}$
 
 The UV radiation from NGC 6302's central star (T_eff = 200,000 K) photoionizes the surrounding gas,
 producing the characteristic bipolar emission nebula observed in [O III], H-alpha, and UV by
-HST/WFC3. The radiation pressure parameter η_rad = 1.913×1020 confirms that the nebular gas is
+HST/WFC3. The radiation pressure parameter $\eta$_rad = 1.913$\times$1020 confirms that the nebular gas is
 radiation-pressure dominated at all scales up to the lobe boundary.
 
 The UQFF formulation explicitly identifies this as a distinct gravitational-equivalent acceleration
@@ -107,11 +107,11 @@ three-component force budget for a bipolar PN within the UQFF framework.
 
 | Quantity | Value | Unit |
 |---------|-------|------|
-| L_star (5000 L_sun) | 1.914×1030 | W |
-| P_rad at r=1 ly | 5.672×10-12 | Pa |
-| **a_rad** | **5.672×108** | m/s2 |
-| **η_rad** | **1.913×1020** | dimensionless |
-| a_rad / a_wind | 2.684×1014 | dimensionless |
+| L_star (5000 L_sun) | 1.914$\times$1030 | W |
+| P_rad at r=1 ly | 5.672$\times$10-12 | Pa |
+| **a_rad** | **5.672$\times$108** | m/s2 |
+| **$\eta$_rad** | **1.913$\times$1020** | dimensionless |
+| a_rad / a_wind | 2.684$\times$1014 | dimensionless |
 
 ---
 
@@ -130,7 +130,7 @@ three-component force budget for a bipolar PN within the UQFF framework.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -149,7 +149,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -224,7 +224,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.059 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -235,13 +235,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

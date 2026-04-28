@@ -110,7 +110,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -175,7 +175,7 @@ $$\text{rate} = \frac{N_\text{iter} \times 18}{t_\text{elapsed}} \geq 501{,}000$
 $$\boxed{\forall, k \in \{1,\ldots,18\}:\; |k(\mathbf{x})| < \infty,\quad k_{17} = \rho_text{QGP}(T),\; k_{18} = F_U^{(99)}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → UQFF equations → 18 kernels extracted → production pipeline v12 → 501k benchmark
+PAPER_877 $\to$ UQFF equations $\to$ 18 kernels extracted $\to$ production pipeline v12 $\to$ 501k benchmark
 
 ---
 
@@ -188,7 +188,7 @@ All 18 kernels embed VDS through $S_{26}$ or $\rho_text{SCm}$.
 18 kernels cover the full dipole vortex mode spectrum including QGP and 99-system.
 
 ### §B.3 BSH
-Scaling: v4 (100k) → v11 (500k) → v12 (501k) — near $\tanh$ hardware saturation.
+Scaling: v4 (100k) $\to$ v11 (500k) $\to$ v12 (501k) — near $\tanh$ hardware saturation.
 
 ### §B.4 Production-Scale Consistency
 

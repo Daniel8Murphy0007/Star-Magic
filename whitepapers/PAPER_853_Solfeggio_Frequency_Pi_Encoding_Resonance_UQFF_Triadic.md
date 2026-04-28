@@ -24,12 +24,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 We present a UQFF-integrated framework that encodes the digit sequence of the mathematical constant
-π into the 9 canonical Solfeggio frequencies (174, 285, 396, 417, 528, 639, 741, 852, 963 Hz). A key
+$\pi$ into the 9 canonical Solfeggio frequencies (174, 285, 396, 417, 528, 639, 741, 852, 963 Hz). A key
 discovery is that all 9 Solfeggio frequencies exhibit a perfect triadic digital-root cycle {3, 6,
 9}, which maps directly onto the UQFF triadic structure (Compressed + Resonant + Buoyancy coequal
-systems). Multi-channel simultaneous superposition of π-encoded frequency streams generates
+systems). Multi-channel simultaneous superposition of $\pi$-encoded frequency streams generates
 interference energy patterns analogous to the 26-dimensional layer sum in UQFF compressed gravity. A
-frequency scaling bridge f_UQFF = f_solfeggio × (c / r_system) connects the acoustic Solfeggio
+frequency scaling bridge f_UQFF = f_solfeggio $\times$ (c / r_system) connects the acoustic Solfeggio
 domain to astrophysical resonance regimes.
 
 ---
@@ -62,7 +62,7 @@ calculations.
 
 ### 2.1 Digit-to-Frequency Mapping
 
-Given a string of π digits d₁d₂d₃...dₙ (up to 100 digits), each digit dₖ ∈ {0,1,...,9} maps to a
+Given a string of $\pi$ digits d1d2d3...dₙ (up to 100 digits), each digit dₖ $\in$ {0,1,...,9} maps to a
 Solfeggio frequency via modular arithmetic:
 
 $$f_k = \text{Solfeggio}[d_k \bmod 9]$$
@@ -70,9 +70,9 @@ $$f_k = \text{Solfeggio}[d_k \bmod 9]$$
 This maps digits 0–8 directly to the 9 frequencies and wraps digit 9 back to 174 Hz (index 0),
 maintaining the mod-9 cyclic structure.
 
-### 2.2 Example: First 31 Digits of π
+### 2.2 Example: First 31 Digits of $\pi$
 
-For π = 3.1415926535897932384626433832795..., the fractional digits
+For $\pi$ = 3.1415926535897932384626433832795..., the fractional digits
 "1415926535897932384626433832795" map to:
 
 | Digit | 1 | 4 | 1 | 5 | 9 | 2 | 6 | 5 | 3 | 5 |
@@ -86,7 +86,7 @@ For π = 3.1415926535897932384626433832795..., the fractional digits
 
 ### 3.1 Single-Channel Energy
 
-For a single channel playing N tones of duration τ with amplitude A:
+For a single channel playing N tones of duration $\tau$ with amplitude A:
 
 $$E_{\text{single}} = \frac{A^2}{2} \cdot N \cdot \tau$$
 
@@ -116,20 +116,20 @@ Every Solfeggio frequency reduces to digital root 3, 6, or 9:
 
 ### 4.2 Triadic Balance Metric
 
-For a given π-digit sequence, the triadic balance β measures how evenly the three roots appear:
+For a given $\pi$-digit sequence, the triadic balance $\beta$ measures how evenly the three roots appear:
 
 $$\beta = \frac{\min(n_3, n_6, n_9)}{\max(n_3, n_6, n_9)}$$
 
-where n₃, n₆, n₉ count occurrences of each digital root. For a perfectly balanced triadic sequence,
-β = 1. For π's first 31 fractional digits, the balance approaches 0.7–0.8, reflecting π's
+where n3, n6, n9 count occurrences of each digital root. For a perfectly balanced triadic sequence,
+$\beta$ = 1. For $\pi$'s first 31 fractional digits, the balance approaches 0.7–0.8, reflecting $\pi$'s
 quasi-uniform digit distribution.
 
 ### 4.3 UQFF Triadic Connection
 
 The three digital roots map to the three UQFF coequal systems:
-- **Root 3 → Compressed** (gravitational compression)
-- **Root 6 → Resonant** (frequency resonance)
-- **Root 9 → Buoyancy** (vacuum buoyancy)
+- **Root 3 $\to$ Compressed** (gravitational compression)
+- **Root 6 $\to$ Resonant** (frequency resonance)
+- **Root 9 $\to$ Buoyancy** (vacuum buoyancy)
 
 This provides a number-theoretic bridge between the Solfeggio acoustic domain and the UQFF unified
 field framework.
@@ -142,7 +142,7 @@ field framework.
 
 $$f_{\text{UQFF}}(\text{system}) = f_{\text{solfeggio}} \times \frac{c}{r_{\text{system}}}$$
 
-where c = 2.998 × 108 m/s and r_system is the characteristic radius. This scales the acoustic
+where c = 2.998 $\times$ 108 m/s and r_system is the characteristic radius. This scales the acoustic
 Solfeggio frequencies (174–963 Hz) into the astrophysical resonance domain appropriate for a given
 system.
 
@@ -150,10 +150,10 @@ system.
 
 | System | r_system (m) | f_UQFF range (Hz) |
 |--------|-------------|-------------------|
-| Earth orbit (1 AU) | 1.496 × 1011 | 3.49 × 10-1 to 1.93 |
-| Solar radius | 6.96 × 108 | 7.50 × 101 to 4.15 × 102 |
-| Neutron star (10 km) | 1.0 × 104 | 5.22 × 106 to 2.89 × 107 |
-| Planck length | 1.616 × 10-35 | 3.23 × 1045 to 1.79 × 1046 |
+| Earth orbit (1 AU) | 1.496 $\times$ 1011 | 3.49 $\times$ 10-1 to 1.93 |
+| Solar radius | 6.96 $\times$ 108 | 7.50 $\times$ 101 to 4.15 $\times$ 102 |
+| Neutron star (10 km) | 1.0 $\times$ 104 | 5.22 $\times$ 106 to 2.89 $\times$ 107 |
+| Planck length | 1.616 $\times$ 10-35 | 3.23 $\times$ 1045 to 1.79 $\times$ 1046 |
 
 ---
 
@@ -163,7 +163,7 @@ The Shannon entropy of the digit distribution:
 
 $$H = -\sum_{d=0}^{9} p_d \log_2 p_d$$
 
-For uniformly distributed digits (as π approaches), H → log₂(10) ≈ 3.3219 bits. The ratio H/H_max
+For uniformly distributed digits (as $\pi$ approaches), H $\to$ log2(10) $\approx$ 3.3219 bits. The ratio H/H_max
 quantifies how close the digit distribution is to maximum entropy — a proxy for the "randomness
 quality" of the resonance spectrum.
 
@@ -193,7 +193,7 @@ UQFF's three coequal operational modes.
 fluctuation non-periodicity.
 3. Multi-channel superposition energy scales as n_ch2 at coherent maximum, paralleling the 26D layer
 coherence in UQFF.
-4. The frequency scaling bridge f_UQFF = f_solf × (c/r) connects acoustic Solfeggio domains to
+4. The frequency scaling bridge f_UQFF = f_solf $\times$ (c/r) connects acoustic Solfeggio domains to
 astrophysical resonance regimes across 80+ orders of magnitude.
 
 ---
@@ -203,7 +203,7 @@ astrophysical resonance regimes across 80+ orders of magnitude.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -302,7 +302,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -313,13 +313,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

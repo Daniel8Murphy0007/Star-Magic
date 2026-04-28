@@ -42,7 +42,7 @@ timescale t_merger. Two key characteristic times emerge: `t_half = t_merger · l
 time) and `t_relax = t_merger · ln(I0/0.01)` (the epoch when the modulation drops below 1%).
 
 The base gravity `g_base = (Ug1 + Ug4) · (1 + f_TRZ)` is itself built from the UQFF magnetic dipole
-term (Ug1), the vacuum-field correction (Ug4 = Ug1·(1 - B/B_crit)), and the triadic resonance zone
+term (Ug1), the vacuum-field correction (Ug4 = Ug1$\cdot$(1 - B/B_crit)), and the triadic resonance zone
 factor (f_TRZ). This term appears in the Antennae Galaxies and HUDF (Hubble Ultra-Deep Field) MUGE
 modules, confirming its astrophysical grounding in observed merger systems.
 
@@ -53,28 +53,28 @@ modules, confirming its astrophysical grounding in observed merger systems.
 | Parameter | Symbol | Default Value | Units | Meaning |
 |-----------|--------|---------------|-------|---------|
 | Peak boost amplitude | I0 | 0.1 | dimensionless | 10% gravitational boost at t=0 |
-| Merger decay timescale | t_merger | 400 Myr = 1.262 × 1016 s | s | Exponential decay time |
-| Body mass | M | 2 × 1011 M_sun | kg | Merging galaxy mass |
+| Merger decay timescale | t_merger | 400 Myr = 1.262 $\times$ 1016 s | s | Exponential decay time |
+| Body mass | M | 2 $\times$ 1011 M_sun | kg | Merging galaxy mass |
 | Separation radius | r | 30 kly | m | Tidal interaction scale |
 | TRZ factor | f_TRZ | 0.1 | dimensionless | Triadic resonance zone contribution |
-| Critical B field | B_crit | 4.4 × 1013 | T | Magnetar QED critical field |
+| Critical B field | B_crit | 4.4 $\times$ 1013 | T | Magnetar QED critical field |
 
 **Primary equations:**
 $$
 \begin{aligned}
-  & I(t)    = I0 · exp(-t / t_merger) \\
-  & Ug1     = G · M / r2                          [magnetic dipole gravity] \\
-  & Ug4     = Ug1 · (1 - B / B_crit)              [vacuum-field correction] \\
-  & g_base  = (Ug1 + Ug4) · (1 + f_TRZ) \\
-  & g_merger = g_base · (1 + I(t))               [modulated merger gravity]
+  & I(t)    = I0 \cdot exp(-t / t_merger) \\
+  & Ug1     = G \cdot M / r2                          [magnetic dipole gravity] \\
+  & Ug4     = Ug1 \cdot (1 - B / B_crit)              [vacuum-field correction] \\
+  & g_base  = (Ug1 + Ug4) \cdot (1 + f_TRZ) \\
+  & g_merger = g_base \cdot (1 + I(t))               [modulated merger gravity]
 \end{aligned}
 $$
 
 **Characteristic times:**
 $$
 \begin{aligned}
-  & t_half  = t_merger · ln(2)                ˜ 277 Myr \\
-  & t_relax = t_merger · ln(I0 / 0.01)         ˜ 920 Myr  (I drops below 1%)
+  & t_half  = t_merger \cdot ln(2)                ˜ 277 Myr \\
+  & t_relax = t_merger \cdot ln(I0 / 0.01)         ˜ 920 Myr  (I drops below 1%)
 \end{aligned}
 $$
 
@@ -90,7 +90,7 @@ physically motivated model is exponential decay with a characteristic timescale 
 interaction time, roughly proportional to the orbital period at the merger separation.
 
 $$
-I(t) = I0 · e^{-t/t_merger}
+I(t) = I0 \cdot e^{-t/t_merger}
 $$
 
 At t = 0 (closest approach): `I = I0 = 0.1`, giving a 10% boost.
@@ -119,13 +119,13 @@ The TRZ factor f_TRZ = 0.1 adds a 10% triadic resonance contribution, giving `g_
 **Peak modulated gravity:**
 $$
 \begin{aligned}
-  & g_merger(t=0) = g_base · (1 + I0) \\
-  & = 2.2 · Ug1 · 1.1 \\
-  & ˜ 2.42 · G·M/r2
+  & g_merger(t=0) = g_base \cdot (1 + I0) \\
+  & = 2.2 \cdot Ug1 \cdot 1.1 \\
+  & ˜ 2.42 \cdot G\cdotM/r2
 \end{aligned}
 $$
 
-This ˜ 2.4× DPM-seeded gravity at closest approach — consistent with observed tidal distortion
+This ˜ 2.4$\times$ DPM-seeded gravity at closest approach — consistent with observed tidal distortion
 amplitudes in Antennae-class mergers.
 
 ### 2.3 Temporal Decay Analysis
@@ -148,7 +148,7 @@ gravity boosts across a population of galaxies at z ˜ 1–6. The average boost 
 merger population is:
 
 $$
-?g_merger? = g_base · (1 + I0 · t / T_observe)
+?g_merger? = g_base \cdot (1 + I0 \cdot t / T_observe)
 $$
 
 where T_observe is the observation window. For the HUDF (T ˜ 13 Gyr), the contribution is small but
@@ -163,7 +163,7 @@ the modulated gravity converges to base MUGE gravity exponentially: `g_merger(t)
 8`. The total integrated boost is:
 
 $$
-?0^8 [g_merger(t) - g_base] dt = g_base · I0 · t_merger
+?0^8 [g_merger(t) - g_base] dt = g_base \cdot I0 \cdot t_merger
 $$
 
 For the default Antennae parameters: integrated boost ˜ `g_base × 0.1 × 400 Myr = 40 Myr·g_base`.
@@ -233,7 +233,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -252,7 +252,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -329,7 +329,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -340,13 +340,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

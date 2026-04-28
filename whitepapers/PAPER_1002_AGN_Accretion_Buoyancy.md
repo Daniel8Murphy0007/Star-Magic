@@ -16,15 +16,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The standard Eddington luminosity L_Edd = 4πGMm_p c/σ_T is modified by SCm buoyancy. The correction
-factor (1 + F_{U,Bi}/(μ_s∇(M_s/r))) accounts for vacuum buoyancy opposing gravitational collapse, raising
+The standard Eddington luminosity L_Edd = 4$\pi$GMm_p c/$\sigma$_T is modified by SCm buoyancy. The correction
+factor (1 + F_{U,Bi}/($\mu$_s$\nabla$(M_s/r))) accounts for vacuum buoyancy opposing gravitational collapse, raising
 the effective Eddington limit.
 
 ## 1. Corrected Eddington Luminosity
 
-L_Edd^{UQFF} = L_Edd · (1 + ρ_SCm · V · S₂₆⁽3⁾2 / (μ_s∇(M_s/r)))
+L_Edd^{UQFF} = L_Edd $\cdot$ (1 + $\rho$_SCm $\cdot$ V $\cdot$ S26(3)2 / ($\mu$_s$\nabla$(M_s/r)))
 
-For M = 108 MM_sun: L_Edd = 1.26×1039 W.
+For M = 108 MM_sun: L_Edd = 1.26$\times$1039 W.
 
 ## 2. Implications
 
@@ -44,7 +44,7 @@ File: `fubi_agn_ns_mergers.py`, class `AGNAccretionBuoyancyCalc`. CP4 class #586
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-AGN-S225 -->
 
@@ -52,7 +52,7 @@ File: `fubi_agn_ns_mergers.py`, class `AGNAccretionBuoyancyCalc`. CP4 class #586
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -175,7 +175,7 @@ $$\mathcal{L}_{BH\_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → active galactic nucleus jet → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ active galactic nucleus jet $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

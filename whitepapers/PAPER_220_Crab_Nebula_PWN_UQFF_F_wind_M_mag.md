@@ -41,7 +41,7 @@ and validate against Crab Nebula measurements.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,9 +53,9 @@ From Document 10 of grok_share_7514fe:
 
 $$
 \begin{aligned}
-  & g_Crab(r, t) = (G·M) / (r(t)2) · (1 + H(z)·t) · (1 - B/B_crit) \\
+  & g_Crab(r, t) = (G\cdotM) / (r(t)2) \cdot (1 + H(z)\cdott) \cdot (1 - B/B_crit) \\
   & + (Ug1 + Ug2 + Ug3 + Ug4) \\
-  & + ?c2/3 + QM + q(v×B) + fluid + DM \\
+  & + ?c2/3 + QM + q(v\timesB) + fluid + DM \\
   & + F_wind \\
   & + M_mag
 \end{aligned}
@@ -64,9 +64,9 @@ $$
 with:
 $$
 \begin{aligned}
-  & r(t) = r0 + v_exp · t   (expanding nebula) \\
-  & F_wind = E_sd / (c · 4p · r(t)2) \\
-  & M_mag = µ0 · m / (4p · r(t)3)
+  & r(t) = r0 + v_exp \cdot t   (expanding nebula) \\
+  & F_wind = E_sd / (c \cdot 4p \cdot r(t)2) \\
+  & M_mag = µ0 \cdot m / (4p \cdot r(t)3)
 \end{aligned}
 $$
 
@@ -78,8 +78,8 @@ The Crab is the only UQFF system with analytically expanding r(t). This is deriv
 
 $$
 \begin{aligned}
-  & v_exp ˜ 1500 km/s = 1.5×106 m/s (observed filament velocity) \\
-  & r0 ˜ 5.5 ly = 9.46×1015 · 5.5 ˜ 5.20×1016 m (current half-radius) \\
+  & v_exp ˜ 1500 km/s = 1.5\times106 m/s (observed filament velocity) \\
+  & r0 ˜ 5.5 ly = 9.46\times1015 \cdot 5.5 ˜ 5.20\times1016 m (current half-radius) \\
   & age ˜ 972 years (SN 1054 ? 2026)
 \end{aligned}
 $$
@@ -87,10 +87,10 @@ $$
 At t=0 (initial explosion):
 $$
 \begin{aligned}
-  & r0_initial = r0 - v_exp · t_age \\
-  & = 5.20×1016 - 1.5×106 · (972 · 3.156×107) \\
-  & = 5.20×1016 - 4.59×1016 \\
-  & ˜ 6.1×1015 m   (~0.2 pc initial radius — consistent with SN ejecta)
+  & r0_initial = r0 - v_exp \cdot t_age \\
+  & = 5.20\times1016 - 1.5\times106 \cdot (972 \cdot 3.156\times107) \\
+  & = 5.20\times1016 - 4.59\times1016 \\
+  & ˜ 6.1\times1015 m   (~0.2 pc initial radius — consistent with SN ejecta)
 \end{aligned}
 $$
 
@@ -104,34 +104,34 @@ This confirms r(t) correctly recovers solar-system-scale initial radius at t=0.
 
 The Crab pulsar (PSR J0534+2200) has:
 - Period P = 33.5 ms
-- Period derivative ? = 4.21×10?13 s/s
-- Moment of inertia I ˜ 1045 g·cm2 = 1038 kg·m2
+- Period derivative ? = 4.21$\times$10?13 s/s
+- Moment of inertia I ˜ 1045 g$\cdot$cm2 = 1038 kg$\cdot$m2
 
 Spindown luminosity:
 $$
 \begin{aligned}
-  & E_sd = -4p2 · I · ? / P3 \\
-  & = 4p2 · 1038 · 4.21×10?13 / (33.5×10?3)3 \\
-  & = 4p2 · 1038 · 4.21×10?13 / (3.76×10-5) \\
-  & ˜ 4.6×1031 W
+  & E_sd = -4p2 \cdot I \cdot ? / P3 \\
+  & = 4p2 \cdot 1038 \cdot 4.21\times10?13 / (33.5\times10?3)3 \\
+  & = 4p2 \cdot 1038 \cdot 4.21\times10?13 / (3.76\times10-5) \\
+  & ˜ 4.6\times1031 W
 \end{aligned}
 $$
 
-This matches the canonical value E_sd ˜ 4.6×1031 W (Hester 2008).
+This matches the canonical value E_sd ˜ 4.6$\times$1031 W (Hester 2008).
 
 ### 3.2 Ram Pressure at r(t)
 
 The spindown energy is converted isotropically to ram pressure:
 $$
-F_wind(r) = E_sd / (c · 4p · r2)
+F_wind(r) = E_sd / (c \cdot 4p \cdot r2)
 $$
 
-At current Crab nebula radius r0 = 5.20×1016 m (computational default 9.46×1015 m for inner region):
+At current Crab nebula radius r0 = 5.20$\times$1016 m (computational default 9.46$\times$1015 m for inner region):
 $$
 \begin{aligned}
-  & F_wind = 4.6×1031 / (2.998×108 · 4p · (9.46×1015)2) \\
-  & ˜ 4.6×1031 / (3.37×1041) \\
-  & ˜ 1.36×10?1° N/m2 ? treated as acceleration [m/s2] in UQFF normalization
+  & F_wind = 4.6\times1031 / (2.998\times108 \cdot 4p \cdot (9.46\times1015)2) \\
+  & ˜ 4.6\times1031 / (3.37\times1041) \\
+  & ˜ 1.36\times10?1° N/m2 ? treated as acceleration [m/s2] in UQFF normalization
 \end{aligned}
 $$
 
@@ -140,15 +140,15 @@ $$
 Base gravity at the same radius (M_ejecta ˜ 4.6 M?):
 $$
 \begin{aligned}
-  & g_base = G·M/r2 = 6.674e-11 · 4.6·1.989e30 / (9.46e15)2 \\
-  & ˜ 6.674e-11 · 9.15e30 / 8.95e31 \\
-  & ˜ 6.82×10?12 m/s2
+  & g_base = G\cdotM/r2 = 6.674e-11 \cdot 4.6\cdot1.989e30 / (9.46e15)2 \\
+  & ˜ 6.674e-11 \cdot 9.15e30 / 8.95e31 \\
+  & ˜ 6.82\times10?12 m/s2
 \end{aligned}
 $$
 
 Ratio:
 $$
-F_wind / g_base ˜ 1.36×10?1° / 6.82×10?12 ˜ 20
+F_wind / g_base ˜ 1.36\times10?1° / 6.82\times10?12 ˜ 20
 $$
 
 **F_wind exceeds g_base by a factor of ~20** at the Crab inner radius — confirming the
@@ -160,31 +160,31 @@ wind-dominated morphology of the Crab PWN inner torus and jets.
 
 ### 4.1 Magnetic Moment of Crab Pulsar
 
-The Crab pulsar surface field B_s ˜ 3.8×1012 G = 3.8×108 T.  
+The Crab pulsar surface field B_s ˜ 3.8$\times$1012 G = 3.8$\times$108 T.  
 Pulsar radius R_ns ˜ 10 km = 104 m.
 
 Magnetic dipole moment:
 $$
 \begin{aligned}
-  & m = (4p/µ0) · B_s · R_ns3 \\
-  & = 4p/(4p×10-7) · 3.8×108 · (104)3 \\
-  & = 107 · 3.8×108 · 1012 \\
-  & = 3.8×1027 A·m2
+  & m = (4p/µ0) \cdot B_s \cdot R_ns3 \\
+  & = 4p/(4p\times10-7) \cdot 3.8\times108 \cdot (104)3 \\
+  & = 107 \cdot 3.8\times108 \cdot 1012 \\
+  & = 3.8\times1027 A\cdotm2
 \end{aligned}
 $$
 
 ### 4.2 Dipole Field at r(t)
 
 $$
-M_mag(r) = µ0 · m / (4p · r3)
+M_mag(r) = µ0 \cdot m / (4p \cdot r3)
 $$
 
-At r = 9.46×1015 m:
+At r = 9.46$\times$1015 m:
 $$
 \begin{aligned}
-  & M_mag = 4p×10-7 · 3.8×1027 / (4p · (9.46×1015)3) \\
-  & = 10-7 · 3.8×1027 / (8.47×1047) \\
-  & ˜ 4.49×10?28 T2·m or equivalent normalized acceleration
+  & M_mag = 4p\times10-7 \cdot 3.8\times1027 / (4p \cdot (9.46\times1015)3) \\
+  & = 10-7 \cdot 3.8\times1027 / (8.47\times1047) \\
+  & ˜ 4.49\times10?28 T2\cdotm or equivalent normalized acceleration
 \end{aligned}
 $$
 
@@ -204,9 +204,9 @@ in an entirely different context:
 |---------|----------------------|----------------------|
 | Context | Isolated PWN | Binary magnetar system |
 | M_mag role | Dipole field dilution with r?3 | Dynamic modulation with binary orbit |
-| F_wind source | Pulsar spindown E_sd/(c·4pr2) | Not present |
-| r(t) | Expanding: r0 + v_exp·t | Binary orbital r(t) |
-| B field | Canonical 3.8×1012 G | Extraordinary ~1015 G |
+| F_wind source | Pulsar spindown E_sd/(c$\cdot$4pr2) | Not present |
+| r(t) | Expanding: r0 + v_exp$\cdot$t | Binary orbital r(t) |
+| B field | Canonical 3.8$\times$1012 G | Extraordinary ~1015 G |
 | Main physics | PWN expansion + wind + dipole | Magnetar + companion orbit |
 
 The two classes are mathematically and physically distinct despite sharing M_mag notation.
@@ -218,19 +218,19 @@ The two classes are mathematically and physically distinct despite sharing M_mag
 Define the critical radius r_c where F_wind = g_base:
 $$
 \begin{aligned}
-  & E_sd / (c · 4p · r_c2) = G·M / r_c2 \\
-  & ? r_c = v((E_sd) / (4p·c·G·M/r2)) ... \\
-  & ? This simplifies to: E_sd / (c·4p) = G·M ? r_c is constant (cancels): \\
-  & E_sd/c = 4p·G·M ? M_crit = E_sd/(4p·G·c)
+  & E_sd / (c \cdot 4p \cdot r_c2) = G\cdotM / r_c2 \\
+  & ? r_c = v((E_sd) / (4p\cdotc\cdotG\cdotM/r2)) ... \\
+  & ? This simplifies to: E_sd / (c\cdot4p) = G\cdotM ? r_c is constant (cancels): \\
+  & E_sd/c = 4p\cdotG\cdotM ? M_crit = E_sd/(4p\cdotG\cdotc)
 \end{aligned}
 $$
 
 Critical mass below which wind always exceeds gravity:
 $$
 \begin{aligned}
-  & M_crit = 4.6×1031 / (4p · 6.674×10?11 · 2.998×108) \\
-  & = 4.6×1031 / (2.51×10?1) \\
-  & ˜ 1.83×1032 kg ˜ 92 M?
+  & M_crit = 4.6\times1031 / (4p \cdot 6.674\times10?11 \cdot 2.998\times108) \\
+  & = 4.6\times1031 / (2.51\times10?1) \\
+  & ˜ 1.83\times1032 kg ˜ 92 M?
 \end{aligned}
 $$
 
@@ -258,7 +258,7 @@ pulsar wind permanently inflates the nebula against gravity.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -277,7 +277,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -385,7 +385,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.065 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -396,13 +396,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -413,7 +413,7 @@ bridge.*
 1. grok_share_7514fe.txt — Document 10: Crab Nebula g_Crab equation
 2. Hester (2008) — "The Crab Nebula: An Astrophysical Chimera", ARAA 46
 3. Bühler & Blandford (2014) — "The Surprising Crab Pulsar and its Nebula", RPPH 77
-4. Kaplan et al. (2008) — Crab pulsar ephemeris, ? = 4.21×10?13
+4. Kaplan et al. (2008) — Crab pulsar ephemeris, ? = 4.21$\times$10?13
 5. CondensedPhysics3.py — `CrabPWNUQFFCalculator` (Session 55)
 
 ---

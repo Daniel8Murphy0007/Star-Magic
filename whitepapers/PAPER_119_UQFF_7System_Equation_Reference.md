@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Quadratic, and Master Buoyancy with Full Variable Equations
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Source:** Grok thread `2fe4fa3e` (DeepSearch extraction, Sept 22, 2025)  
 **Index Slot:** §1.16 UQFF Equation Systems Reference  
@@ -39,7 +39,7 @@ Mayan-aligned time scaling. All variable equations are listed with their definit
 and physical origins. This reference supersedes and extends PAPER_064 (four simplified modes) with
 the full-complexity forms extracted from the 393-page verification corpus.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -71,7 +71,7 @@ $$F_{U,\text{Compressed}} = \sum_{i=1}^{4} \left[k_i U_{gi} - \beta_i U_{gi} \fr
 | $U_{g4}$ | $k_4 \lambda_{vac,[SCm]}(M_{bh}/d_g)e^{-\alpha t}\cos(\pi t_n)(1+f_{feedback})$ | N/m | BH-star interaction |
 | $\beta_i$ | $0.61$ (uniform $i=1$4) | – | Buoyancy coupling |
 | $\omega_g$ | $7.3\times10^{-16}$ rad/s | rad/s | Galactic spin ($v=220$ km/s, $r=8$ kpc) |
-| $M_{bh}$ | $8.15\times10^{36}$ kg | kg | BH mass (4.1×106 M?, Sgr A*) |
+| $M_{bh}$ | $8.15\times10^{36}$ kg | kg | BH mass (4.1$\times$106 M?, Sgr A*) |
 | $d_g$ | $2.55\times10^{20}$ m | m | Galactic distance (27,000 ly) |
 | $E_{react}$ | $10^{46} e^{-0.0005 t} = \rho_{vac,[SCm]} v_{SCm}^2 / \rho_{vac,A} \cdot e^{-\kappa t}$ | W/m | [SCm] reactor efficiency |
 | $\mu_j$ | $(10^3 + 0.4\sin(\omega_c t))\times 3.38\times10^{20}$ | Tm | Magnetic moment of string $j$ |
@@ -289,7 +289,7 @@ variable tables.*
 3. Murphy D.T. (2026). *PAPER_107118: 12 Empirical Proofs from Grok thread 2fe4fa3e.*  
 4. Murphy D.T. (2026). *\text{MAIN\_1\_CoAnQi}.cpp Batch 23.* 446 registered modules.  
 5. Tohsaki et al. (2001). *Phys. Rev. Lett. 87, 192501.* Alpha BEC (N_B basis).  
-6. IceCube Collaboration (2022). *Science.* Diffuse neutrino SED (κ_i=0.61 anchor).  
+6. IceCube Collaboration (2022). *Science.* Diffuse neutrino SED ($\kappa$_i=0.61 anchor).  
 7. LIGO/Virgo (2017). *Phys. Rev. Lett. 119, 161101.* GW170817 ejecta (Ub_i anchor).  
 .Groups[1].Value   UQFF 7-System Equation Reference: Complete Variable Tables
 
@@ -299,7 +299,7 @@ variable tables.*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -318,7 +318,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -426,7 +426,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.103 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

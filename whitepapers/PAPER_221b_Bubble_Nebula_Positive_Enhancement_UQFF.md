@@ -39,7 +39,7 @@ consequence of the wind-dominated vs. radiation-dominated regime.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -51,9 +51,9 @@ From Document 12 of grok_share_7514fe:
 
 $$
 \begin{aligned}
-  & g_Bubble(r, t) = (G·M)/r2 · (1+H(z)·t) · (1-B/B_crit) · (1+E(t)) \\
+  & g_Bubble(r, t) = (G\cdotM)/r2 \cdot (1+H(z)\cdott) \cdot (1-B/B_crit) \cdot (1+E(t)) \\
   & + (Ug1+Ug2+Ug3+Ug4) + ?c2/3 + QM + fluid + DM \\
-  & + ?·v_wind2
+  & + ?\cdotv_wind2
 \end{aligned}
 $$
 
@@ -77,20 +77,20 @@ The key feature: `(1+E(t))` as a POSITIVE multiplier with `E(t) > 0`.
 For the Bubble Nebula, E(t) is the **wind pressure to gravity ratio**:
 
 $$
-E(t) = P_wind / P_gravity = (?_wind · v_wind2 · r2) / (G · M · ?_shell)
+E(t) = P_wind / P_gravity = (?_wind \cdot v_wind2 \cdot r2) / (G \cdot M \cdot ?_shell)
 $$
 
 For BD+60°2522 (the O6-type central star):
-- v_wind ˜ 1500 km/s = 1.5×106 m/s
-- Stellar mass-loss rate ? ˜ 4×10-7 M?/yr
+- v_wind ˜ 1500 km/s = 1.5$\times$106 m/s
+- Stellar mass-loss rate ? ˜ 4$\times$10-7 M?/yr
 
 The wind inflates a bubble by pushing material OUTWARD. However, the swept-up shell at radius r
 experiences:
-1. **Inward:** gravity G·M/r2  
+1. **Inward:** gravity G$\cdot$M/r2  
 2. **Inward:** external ISM pressure P_ISM  
 3. **Outward:** stellar wind ram P_wind  
 
-The NET force on the shell: **g_eff = (G·M/r2) · (1 + P_wind/P_ISM)**
+The NET force on the shell: **g_eff = (G$\cdot$M/r2) $\cdot$ (1 + P_wind/P_ISM)**
 
 When P_wind > 0, the shell material is COMPRESSED more than by gravity alone — the wind confinement
 ADDS to the effective gravitational compression. Hence (1+E(t)) with E(t) = P_wind/P_ISM > 0.
@@ -115,20 +115,20 @@ In the Bubble Nebula:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| M (central star) | 1.5×1031 kg (43 M?) | O6If spectral class |
-| r (bubble radius) | 2.84×1016 m (3 ly) | IR imaging |
-| v_wind | 1.5×106 m/s | UV P-Cygni profiles |
+| M (central star) | 1.5$\times$1031 kg (43 M?) | O6If spectral class |
+| r (bubble radius) | 2.84$\times$1016 m (3 ly) | IR imaging |
+| v_wind | 1.5$\times$106 m/s | UV P-Cygni profiles |
 | E(t) | ˜ 0.05 | Stellar wind models |
 
 ### 3.2 Calculation
 
 $$
 \begin{aligned}
-  & g_base = G·M/r2 · (1+H·t) · (1-B/B_crit) · (1+E(t)) \\
-  & = 6.674e-11 · 1.5e31 / (2.84e16)2 · 1.000099 · 0.9999977 · 1.05 \\
-  & ˜ 1.31×10?34 · 1.05 \\
-  & ˜ 1.37×10?34 m/s2 \\
-  & ?·v_wind2 = 1e-23 · (1.5e6)2 = 2.25×10?11 m/s2 >> g_base
+  & g_base = G\cdotM/r2 \cdot (1+H\cdott) \cdot (1-B/B_crit) \cdot (1+E(t)) \\
+  & = 6.674e-11 \cdot 1.5e31 / (2.84e16)2 \cdot 1.000099 \cdot 0.9999977 \cdot 1.05 \\
+  & ˜ 1.31\times10?34 \cdot 1.05 \\
+  & ˜ 1.37\times10?34 m/s2 \\
+  & ?\cdotv_wind2 = 1e-23 \cdot (1.5e6)2 = 2.25\times10?11 m/s2 >> g_base
 \end{aligned}
 $$
 
@@ -163,7 +163,7 @@ Only THREE documents use E(t). Of these, only Doc 12 uses the positive sign.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -296,7 +296,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.157 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -307,13 +307,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -25,7 +25,7 @@ catalogues all 26 tests, their expected values, and validates the aDPM chain.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -59,13 +59,13 @@ void run_all_tests() {
 
 | Test | Function | Key Inputs | Expected Output |
 |------|----------|-----------|----------------|
-| 1 | `compressed_base` | M=1.989e30, r=1.496e11 | G×M/r2 ˜ 0.00593 m/s2 |
+| 1 | `compressed_base` | M=1.989e30, r=1.496e11 | G$\times$M/r2 ˜ 0.00593 m/s2 |
 | 2 | `compressed_expansion` | H0=2.269e-18, vexp=0 | 1.0 (no expansion at t=0) |
 | 3 | `c`ompressed_super_ad`j` | B=1e10, Bcrit=1e11 | 0.9 |
 | 4 | `compressed_env` | — | 1.0 |
 | 5 | `c`ompressed_Ug_su`m` | — | 0.0 |
-| 6 | `compressed_cosm` | ?=1.1e-52 | ?×c2/3 ˜ 3.3e-37 |
-| 7 | `compressed_quantum` | ?=1.0546e-34, ?xp=1e-68, ?=2.176e-18, tH=4.35e17 | (?/?xp)×?×(2p/tH) |
+| 6 | `compressed_cosm` | ?=1.1e-52 | ?$\times$c2/3 ˜ 3.3e-37 |
+| 7 | `compressed_quantum` | ?=1.0546e-34, ?xp=1e-68, ?=2.176e-18, tH=4.35e17 | (?/?xp)$\times$?$\times$(2p/tH) |
 | 8 | `compressed_fluid` | ?=1e-15, V=4.189e12, g=10 | 4.189e-2 |
 | 9 | `compressed_perturbation` | M=2.984e30, d?=0.01, r=1e4 | large value |
 | 10 | `compressed_MUGE` (full) | SGR1745 | ˜ 1.782e39 |
@@ -76,22 +76,22 @@ void run_all_tests() {
 
 | Test | Function | Key Inputs / Derivation | Expected |
 |------|----------|------------------------|----------|
-| 11 | `aDPM` | I=1e21, A=3.142e8, ?1=1e-3 ? FDPM=3.142e26; ×fDPM×Evac_neb×c_res×Vsys | ˜ 3.545e-42 |
-| 12 | `aTHz` | aDPM×fTHz×vexp/c_res; vexp=1e3 | ˜ 1.182e-33 |
-| 13 | `avac_diff` | aDPM×Delta_Evac/Evac_neb ˜ aDPM×0.9 (**) | ˜ 3.545e-53 (×Delta_Evac factor) |
-| 14 | `asuper_freq` | aDPM×Fsuper×omega_i (6.287e-19×1e-8) | ˜ 1.048e-21 (*) |
-| 15 | `aaether_res` | aDPM×freact×UA_SCM×k4_res×fTHz | ˜ 3.900e-38 (*) |
-| 16 | `Ug4i` | aDPM×exp(-kappa×3.799e10) ˜ 0 | ˜ 0.0 |
-| 17 | `aquantum_freq` | aDPM×fquantum (1.445e-17) | ˜ 1.708e-66 (*) |
-| 18 | `aAether_freq` | aDPM×fquantum×fAether (1.576e-35) | ˜ 1.863e-84 (*) |
-| 19 | `afluid_freq` | ffluid×Vsys×fTHz×c_res (1.269e-14×4.189e12×1e12×3e8) | ˜ 1.773e-9 |
+| 11 | `aDPM` | I=1e21, A=3.142e8, ?1=1e-3 ? FDPM=3.142e26; $\times$fDPM$\times$Evac_neb$\times$c_res$\times$Vsys | ˜ 3.545e-42 |
+| 12 | `aTHz` | aDPM$\times$fTHz$\times$vexp/c_res; vexp=1e3 | ˜ 1.182e-33 |
+| 13 | `avac_diff` | aDPM$\times$Delta_Evac/Evac_neb ˜ aDPM$\times$0.9 (**) | ˜ 3.545e-53 ($\times$Delta_Evac factor) |
+| 14 | `asuper_freq` | aDPM$\times$Fsuper$\times$omega_i (6.287e-19$\times$1e-8) | ˜ 1.048e-21 (*) |
+| 15 | `aaether_res` | aDPM$\times$freact$\times$UA_SCM$\times$k4_res$\times$fTHz | ˜ 3.900e-38 (*) |
+| 16 | `Ug4i` | aDPM$\times$exp(-kappa$\times$3.799e10) ˜ 0 | ˜ 0.0 |
+| 17 | `aquantum_freq` | aDPM$\times$fquantum (1.445e-17) | ˜ 1.708e-66 (*) |
+| 18 | `aAether_freq` | aDPM$\times$fquantum$\times$fAether (1.576e-35) | ˜ 1.863e-84 (*) |
+| 19 | `afluid_freq` | ffluid$\times$Vsys$\times$fTHz$\times$c_res (1.269e-14$\times$4.189e12$\times$1e12$\times$3e8) | ˜ 1.773e-9 |
 | 20 | `Osc_term` | — | 0.0 |
-| 21 | `aexp_freq` | aDPM×H_z×t (2.270e-18×3.799e10) | ˜ 1.623e-57 (*) |
+| 21 | `aexp_freq` | aDPM$\times$H_z$\times$t (2.270e-18$\times$3.799e10) | ˜ 1.623e-57 (*) |
 | 22 | `fTRZ` | res.fTRZ | 0.1 |
 | 23 | `resonance_MUGE` (full) | SGR1745 | ˜ 1.773e-9 |
 
 (*) Approximate; exact value from UnitTests.cpp assertion
-(**) avac_diff formula: aDPM × (Delta_Evac/Evac_neb) where ratio = 6.381e-36/7.09e-36 ˜ 0.9
+(**) avac_diff formula: aDPM $\times$ (Delta_Evac/Evac_neb) where ratio = 6.381e-36/7.09e-36 ˜ 0.9
 
 ---
 
@@ -166,7 +166,7 @@ must preserve these 26 expected values within tolerance.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -269,7 +269,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.065 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -280,13 +280,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -10,35 +10,35 @@ tags: [AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_313: NGC 6302 Equatorial Torus Magnetic Confinement — UQFF Plasma β and Alfvén Analysis
+# PAPER_313: NGC 6302 Equatorial Torus Magnetic Confinement — UQFF Plasma $\beta$ and Alfvén Analysis
 
-**Subtitle:** FIRST UQFF Equatorial PN Torus Magnetic Confinement — η_B = 3.979×105; β_plasma =
-2.513×10-6; v_Alfvén = 8.921×107 m/s
+**Subtitle:** FIRST UQFF Equatorial PN Torus Magnetic Confinement — $\eta$_B = 3.979$\times$105; $\beta$_plasma =
+2.513$\times$10-6; v_Alfvén = 8.921$\times$107 m/s
 
 **Author:** Daniel T. Murphy  
 **Session:** 89 | **Date:** March 17, 2026  
 **Module:** `NGC6302_UQFF_MODULE.cpp` (31st C++ UQFF module)  
 **WOLFRAM_TERM:** `NGC6302_TORUS_CONFINEMENT`  
-**UQFF First:** FIRST UQFF explicit equatorial torus magnetic confinement analysis (β_plasma < 10-5,
+**UQFF First:** FIRST UQFF explicit equatorial torus magnetic confinement analysis ($\beta$_plasma < 10-5,
 magnetically dominated regime)
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 
 ## Abstract
 
-This paper presents UQFF derivations and numerical results for: PAPER_313: NGC 6302 Equatorial Torus Magnetic Confinement — UQFF Plasma β and Alfvén Analysis. Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
+This paper presents UQFF derivations and numerical results for: PAPER_313: NGC 6302 Equatorial Torus Magnetic Confinement — UQFF Plasma $\beta$ and Alfvén Analysis. Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## 1. System Parameters
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| B | 1.0×10-5 T | Equatorial torus magnetic field |
-| μ₀ | 1.2566×10-6 H/m | Permeability of free space |
-| v_wind | 1.0×105 m/s | Stellar wind (ram pressure driver) |
-| ρ_fluid | 1.0×10-20 kg/m3 | Ionized torus/lobe gas |
+| B | 1.0$\times$10-5 T | Equatorial torus magnetic field |
+| $\mu$0 | 1.2566$\times$10-6 H/m | Permeability of free space |
+| v_wind | 1.0$\times$105 m/s | Stellar wind (ram pressure driver) |
+| $\rho$_fluid | 1.0$\times$10-20 kg/m3 | Ionized torus/lobe gas |
 
 ---
 
@@ -63,7 +63,7 @@ $$P_{ram} = \rho \cdot v_{wind}^2 = 1.0 \times 10^{-20} \times (10^5)^2 = 1.0 \t
 
 $$\eta_{B\_{conf}} \equiv \frac{P_{mag}}{P_{ram}} = \frac{3.979 \times 10^{-5}}{1.0 \times 10^{-10}} = \mathbf{3.979 \times 10^5}$$
 
-The equatorial torus magnetic pressure exceeds the stellar wind ram pressure by **3.979×105** —
+The equatorial torus magnetic pressure exceeds the stellar wind ram pressure by **3.979$\times$105** —
 providing the confinement force that prevents the torus from being blown away by the wind and
 channels the outflow into two polar lobes.
 
@@ -71,7 +71,7 @@ channels the outflow into two polar lobes.
 
 $$\beta_{plasma} \equiv \frac{P_{ram}}{P_{mag}} = \frac{1.0 \times 10^{-10}}{3.979 \times 10^{-5}} = \mathbf{2.513 \times 10^{-6}}$$
 
-$\beta_{plasma} \ll 1$ confirms the system is in the **magnetically dominated regime** (β << 1). Magnetic forces control the plasma dynamics; thermal and kinetic (ram) pressures are negligible compared to magnetic pressure.
+$\beta_{plasma} \ll 1$ confirms the system is in the **magnetically dominated regime** ($\beta$ << 1). Magnetic forces control the plasma dynamics; thermal and kinetic (ram) pressures are negligible compared to magnetic pressure.
 
 ### 2.5 Alfvén Velocity
 
@@ -88,7 +88,7 @@ $$v_A = \frac{10^{-5}}{1.121 \times 10^{-13}} = \mathbf{8.921 \times 10^7\ \text
 $$\frac{v_A}{v_{wind}} = \frac{8.921 \times 10^7}{1.0 \times 10^5} = \mathbf{892.1}$$
 
 The Alfvén velocity exceeds the stellar wind speed by a factor of **892.1**. This means magnetic
-signals propagate ~892× faster than the wind through the torus medium, enabling rapid magnetic
+signals propagate ~892$\times$ faster than the wind through the torus medium, enabling rapid magnetic
 restructuring and sustaining the stable, long-lived torus morphology observed in NGC 6302 over its
 ~2000 yr lifetime.
 
@@ -101,20 +101,20 @@ picture:
 
 | Condition | Value | Interpretation |
 |-----------|-------|----------------|
-| η_B_conf = P_mag/P_ram >> 1 | 3.979×105 | Magnetic confinement dominates |
-| β_plasma << 1 | 2.513×10-6 | Magnetically dominated plasma |
+| $\eta$_B_conf = P_mag/P_ram >> 1 | 3.979$\times$105 | Magnetic confinement dominates |
+| $\beta$_plasma << 1 | 2.513$\times$10-6 | Magnetically dominated plasma |
 | v_A / v_wind >> 1 | 892.1 | Rapid magnetic signal propagation |
 
 Together these confirm: **the equatorial torus of NGC 6302 is a magnetically confined structure**.
-Magnetic pressure exceeds ram pressure by ~4×105, the plasma β is ~106× below unity, and the Alfvén
-velocity is ~9×107 m/s (~30% of c), all consistent with a stable, magnetically dominated toroidal
+Magnetic pressure exceeds ram pressure by ~4$\times$105, the plasma $\beta$ is ~106$\times$ below unity, and the Alfvén
+velocity is ~9$\times$107 m/s (~30% of c), all consistent with a stable, magnetically dominated toroidal
 barrier that channels bipolar outflow perpendicular to the torus plane.
 
 ---
 
 ## 4. UQFF Context
 
-While P_mag is not directly included as an additive acceleration term in the UQFF pipeline (it acts as a confinement geometry parameter), its ratio η_B_conf modulates the superconductivity-analogue factor $(1 - B/B_{crit})$ and the torus stability that allows the bipolar geometry to exist. The torus acts as the boundary condition that forces all wind and radiation terms (PAPER_311, PAPER_312) to act preferentially along the polar axis.
+While P_mag is not directly included as an additive acceleration term in the UQFF pipeline (it acts as a confinement geometry parameter), its ratio $\eta$_B_conf modulates the superconductivity-analogue factor $(1 - B/B_{crit})$ and the torus stability that allows the bipolar geometry to exist. The torus acts as the boundary condition that forces all wind and radiation terms (PAPER_311, PAPER_312) to act preferentially along the polar axis.
 
 ---
 
@@ -122,11 +122,11 @@ While P_mag is not directly included as an additive acceleration term in the UQF
 
 | Quantity | Value | Unit |
 |---------|-------|------|
-| P_mag = B2/(2μ₀) | 3.979×10-5 | Pa |
-| P_ram = ρ v_wind2 | 1.000×10-10 | Pa |
-| **η_B_conf** | **3.979×105** | dimensionless |
-| **β_plasma** | **2.513×10-6** | dimensionless |
-| **v_Alfvén** | **8.921×107** | m/s |
+| P_mag = B2/(2$\mu$0) | 3.979$\times$10-5 | Pa |
+| P_ram = $\rho$ v_wind2 | 1.000$\times$10-10 | Pa |
+| **$\eta$_B_conf** | **3.979$\times$105** | dimensionless |
+| **$\beta$_plasma** | **2.513$\times$10-6** | dimensionless |
+| **v_Alfvén** | **8.921$\times$107** | m/s |
 | v_A / v_wind | 892.1 | dimensionless |
 | v_A / c | 0.2974 | (29.7% c) |
 
@@ -134,9 +134,9 @@ While P_mag is not directly included as an additive acceleration term in the UQF
 
 ## 6. Classification
 
-- **UQFF First:** FIRST UQFF equatorial PN torus magnetic confinement (β < 10-5, magnetically dominated)
+- **UQFF First:** FIRST UQFF equatorial PN torus magnetic confinement ($\beta$ < 10-5, magnetically dominated)
 - **Scale:** Stellar (PN torus/lobe scale, ~1 ly)
-- **Physics category:** Magnetohydrodynamics / plasma β / Alfvén dynamics / magnetic confinement
+- **Physics category:** Magnetohydrodynamics / plasma $\beta$ / Alfvén dynamics / magnetic confinement
 - **Cross-references:** PAPER_311 (wind shock), PAPER_312 (UV radiation)
 
 ---
@@ -147,7 +147,7 @@ While P_mag is not directly included as an additive acceleration term in the UQF
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -166,7 +166,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -274,7 +274,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -285,13 +285,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

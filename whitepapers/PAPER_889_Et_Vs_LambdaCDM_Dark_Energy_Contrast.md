@@ -10,7 +10,7 @@ tags: [vacuum, SCm, dark-energy, buoyancy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_889: E(t) Vs ΛCDM Dark Energy Contrast
+# PAPER_889: E(t) Vs $\Lambda$CDM Dark Energy Contrast
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-08
@@ -23,9 +23,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-Direct comparison of UQFF E(t) equation of state against ΛCDM w=-1 cosmological constant. Analyzes
-fine-tuning: QFT/observed ΔΛ ~ 10^{120-139}. UQFF resolves this with 2 calibrated parameters (κ,
-[SSq]) vs ΛCDM's static cosmological constant. 5-row contrast table covering equation of state, dark
+Direct comparison of UQFF E(t) equation of state against $\Lambda$CDM w=-1 cosmological constant. Analyzes
+fine-tuning: QFT/observed $\Delta$$\Lambda$ ~ 10^{120-139}. UQFF resolves this with 2 calibrated parameters ($\kappa$,
+[SSq]) vs $\Lambda$CDM's static cosmological constant. 5-row contrast table covering equation of state, dark
 energy density, fine-tuning, physical origin, and time evolution.
 
 ---
@@ -34,9 +34,9 @@ energy density, fine-tuning, physical origin, and time evolution.
 
 $$
 \begin{aligned}
-  & w_ΛCDM = -1 \\
+  & w_\LambdaCDM = -1 \\
   & w_UQFF from E(t) \\
-  & ρ_Λ = 0.692·ρ_crit \\
+  & \rho_\Lambda = 0.692\cdot\rho_crit \\
   & fine-tuning ~ 10^120
 \end{aligned}
 $$
@@ -221,7 +221,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.692 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Super-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -232,13 +232,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

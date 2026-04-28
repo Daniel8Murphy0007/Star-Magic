@@ -27,7 +27,7 @@ pillars 4-5 light-years long where young stars form under intense UV radiation f
 stars. Located ~6,500 light-years away, M16 is a key laboratory for studying simultaneous star
 formation and radiation erosion. This paper derives the Master Universal Gravity UQFF equation
 incorporating gravitational attraction, star formation mass growth, radiation photoevaporation,
-cosmic expansion, and [UA]/[SCm] Aether correction. The result g_M16 ≈ 1.053x10^{-}3 m/s^2 is
+cosmic expansion, and [UA]/[SCm] Aether correction. The result g_M16 $\approx$ 1.053x10^{-}3 m/s^2 is
 dominated by the Aether electromagnetic term.
 
 ---
@@ -63,11 +63,11 @@ $$
 | Star formation rate | SFR | 1 MM_sun/yr | Labs |
 | Initial mass | M_0 | 1,200 MM_sun | -- |
 | Erosion amplitude | E_0 | 0.3 (30% mass loss) | Labs |
-| Erosion timescale | τ_erode | 3x10^6 yr = 9.468x10^{1}3 s | Hubble |
+| Erosion timescale | $\tau$_erode | 3x10^6 yr = 9.468x10^{1}3 s | Hubble |
 | Gas velocity | v | 10^5 m/s | Labs |
 | Nebular B field | B | 10^{-}5 T | Labs |
-| ρ_vac,[UA] | -- | 7.09x10^{-}3^6 J/m^3 | UQFF |
-| ρ_vac,[SCm] | -- | 7.09x10^{-}3^7 J/m^3 | UQFF |
+| $\rho$_vac,[UA] | -- | 7.09x10^{-}3^6 J/m^3 | UQFF |
+| $\rho$_vac,[SCm] | -- | 7.09x10^{-}3^7 J/m^3 | UQFF |
 | f_TRZ | -- | 0.1 | UQFF |
 
 ---
@@ -156,7 +156,7 @@ gravitational term (5.413x10^{-}1^2 m/s^2) is overwhelmed by the Aether [UA] ele
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for M16 yields g_M16 ≈ 1.053x10^{-}3 m/s^2, demonstrating that the
+The Master UQFF gravity equation for M16 yields g_M16 $\approx$ 1.053x10^{-}3 m/s^2, demonstrating that the
 Aether electromagnetic term (1.053x10^{-}3) exceeds the classical+corrections gravitational term
 (5.413x10^{-}1^2) by nine orders of magnitude. The competing star formation growth and radiation
 erosion multipliers provide a rich UQFF representation of the Pillars of Creation's dynamic
@@ -172,7 +172,7 @@ equilibrium.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -191,12 +191,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -297,7 +297,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.158 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -308,13 +308,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

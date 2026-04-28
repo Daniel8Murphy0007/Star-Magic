@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_310 — Dark Matter / Visible Mass Partition Rotation Curve Excess
 **Author:** Daniel T. Murphy
 **Date:** 2025
-## η_DM/vis = 5.667 | v_excess = 67.1% above Keplerian | g_DM = 5.667 × g_vis
+## $\eta$_DM/vis = 5.667 | v_excess = 67.1% above Keplerian | g_DM = 5.667 $\times$ g_vis
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  
 **Module:** SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp  
@@ -28,9 +28,9 @@ In Milky-Way class spiral galaxies, baryonic (visible) matter comprises only ~15
 while dark matter contributes ~85%. The UQFF 2.0 framework explicitly partitions these contributions
 into separate gravitational acceleration terms g_vis and g_DM, enabling direct computation of their
 ratio and the predicted Keplerian rotation velocity deficit relative to the observed flat curve. The
-dark-matter to visible mass ratio η_DM/vis = f_DM/f_vis = 0.85/0.15 = **5.667** determines that g_DM
-= 5.667 × g_vis. The Keplerian circular velocity for total mass at 30 kpc is v_circ = 1.197 × 105
-m/s, while the observed flat rotation curve value v_rot = 2.0 × 105 m/s exceeds this by **67.1%** —
+dark-matter to visible mass ratio $\eta$_DM/vis = f_DM/f_vis = 0.85/0.15 = **5.667** determines that g_DM
+= 5.667 $\times$ g_vis. The Keplerian circular velocity for total mass at 30 kpc is v_circ = 1.197 $\times$ 105
+m/s, while the observed flat rotation curve value v_rot = 2.0 $\times$ 105 m/s exceeds this by **67.1%** —
 the UQFF rotation excess ratio v_excess = 1.671. This establishes the UQFF DM/visible partition as a
 first-principles derivation of the galactic rotation curve problem within the 9-term pipeline.
 
@@ -40,14 +40,14 @@ first-principles derivation of the galactic rotation curve problem within the 9-
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M (total) | 1.989 × 1041 kg | 1 × 1011 M_sun |
+| M (total) | 1.989 $\times$ 1041 kg | 1 $\times$ 1011 M_sun |
 | f_vis | 0.15 | Visible (baryonic) mass fraction |
 | f_DM | 0.85 | Dark matter mass fraction |
-| M_vis = f_vis × M | 2.984 × 1040 kg | 1.5 × 1010 M_sun |
-| M_DM = f_DM × M | 1.690 × 1041 kg | 8.5 × 1010 M_sun |
-| r | 9.258 × 1020 m | ~30 kpc |
-| v_rot | 2.0 × 105 m/s | Observed flat rotation velocity |
-| G_const | 6.6743 × 10-11 m3/(kg·s2) | |
+| M_vis = f_vis $\times$ M | 2.984 $\times$ 1040 kg | 1.5 $\times$ 1010 M_sun |
+| M_DM = f_DM $\times$ M | 1.690 $\times$ 1041 kg | 8.5 $\times$ 1010 M_sun |
+| r | 9.258 $\times$ 1020 m | ~30 kpc |
+| v_rot | 2.0 $\times$ 105 m/s | Observed flat rotation velocity |
+| G_const | 6.6743 $\times$ 10-11 m3/(kg$\cdot$s2) | |
 
 ---
 
@@ -57,7 +57,7 @@ first-principles derivation of the galactic rotation curve problem within the 9-
 
 $$\eta_{\rm DM/vis} = \frac{f_{\rm DM}}{f_{\rm vis}} = \frac{0.85}{0.15} = \boxed{5.667}$$
 
-This means for every unit of visible gravitational pull, dark matter contributes 5.667× more.
+This means for every unit of visible gravitational pull, dark matter contributes 5.667$\times$ more.
 
 ### 3.2 Gravitational Accelerations
 
@@ -71,9 +71,9 @@ $$g_{\rm DM} = \frac{G\,M_{\rm DM}}{r^2} = \frac{6.6743\times10^{-11} \times 1.6
 
 $$= \frac{1.128\times10^{31}}{8.571\times10^{41}} = \boxed{1.316\times10^{-11}\,\text{m/s}^2}$$
 
-**Verification:** g_DM / g_vis = 1.316e-11 / 2.324e-12 = **5.667** PASS (matches η_DM/vis)
+**Verification:** g_DM / g_vis = 1.316e-11 / 2.324e-12 = **5.667** PASS (matches $\eta$_DM/vis)
 
-Total base gravity: g_base = g_vis + g_DM = 2.324e-12 + 1.316e-11 = 1.549 × 10-11 m/s2 PASS
+Total base gravity: g_base = g_vis + g_DM = 2.324e-12 + 1.316e-11 = 1.549 $\times$ 10-11 m/s2 PASS
 
 ### 3.3 Keplerian Circular Velocity
 
@@ -100,10 +100,10 @@ UQFF 2.0 DM/visible partition parameters.
 ## 4. Physical Interpretation
 
 The galactic rotation curve problem — that stellar rotation velocities remain flat beyond the
-visible disk rather than falling off as v ∝ r-1/2 — is classically attributed to an extended dark
+visible disk rather than falling off as v $\propto$ r-1/2 — is classically attributed to an extended dark
 matter halo. The UQFF 2.0 analysis provides a complementary perspective:
 
-1. **Partition clarity:** η_DM/vis = 5.667 explicitly shows DM contributes 5.7× more gravitational
+1. **Partition clarity:** $\eta$_DM/vis = 5.667 explicitly shows DM contributes 5.7$\times$ more gravitational
 pull than visible matter. This is not a halo correction but a first-order partition effect.
 
 2. **Excess origin:** The 67.1% velocity excess above Keplerian arises because real galactic
@@ -111,12 +111,12 @@ dynamics sample an **extended** DM mass distribution (not all mass concentrated 
 v_circ assumes point-mass. The UQFF partition separates this: g_DM enters as an independent additive
 pipeline term, not folded into a Keplerian total.
 
-3. **UQFF prediction:** Within the 9-term pipeline, g_DM = 1.316 × 10-11 m/s2 enters additive
+3. **UQFF prediction:** Within the 9-term pipeline, g_DM = 1.316 $\times$ 10-11 m/s2 enters additive
 alongside the visible g_base. The total effective gravity therefore reflects the 85/15 DM/visible
 partition, naturally producing flat-curve behavior.
 
-4. **Observable:** η_DM/vis = 5.667 can be tested against galactic rotation decomposition studies
-(McGaugh et al. 2016, SPARC database), which typically show dark matter halos contributing 4–8×
+4. **Observable:** $\eta$_DM/vis = 5.667 can be tested against galactic rotation decomposition studies
+(McGaugh et al. 2016, SPARC database), which typically show dark matter halos contributing 4–8$\times$
 visible mass at large radii.
 
 ---
@@ -125,22 +125,22 @@ visible mass at large radii.
 
 | Quantity | Value | Physical Meaning |
 |---------|-------|-----------------|
-| η_DM/vis | **5.667** | DM gravitational pull = 5.667 × visible |
-| g_vis | 2.324 × 10-12 m/s2 | Visible matter gravity at 30 kpc |
-| g_DM | **1.316 × 10-11 m/s2** | Dark matter gravity at 30 kpc |
+| $\eta$_DM/vis | **5.667** | DM gravitational pull = 5.667 $\times$ visible |
+| g_vis | 2.324 $\times$ 10-12 m/s2 | Visible matter gravity at 30 kpc |
+| g_DM | **1.316 $\times$ 10-11 m/s2** | Dark matter gravity at 30 kpc |
 | g_DM / g_vis | 5.667 | Confirms partition ratio PASS |
-| v_circ | **1.197 × 105 m/s** | Keplerian velocity (total M, point) |
-| v_rot | 2.0 × 105 m/s | Observed flat rotation curve |
+| v_circ | **1.197 $\times$ 105 m/s** | Keplerian velocity (total M, point) |
+| v_rot | 2.0 $\times$ 105 m/s | Observed flat rotation curve |
 | v_rot / v_circ | **1.671** | 67.1% excess above Keplerian |
-| M_DM / M_vis | 5.667 | = η_DM/vis PASS |
+| M_DM / M_vis | 5.667 | = $\eta$_DM/vis PASS |
 
 ---
 
 ## 6. Novel Findings (UQFF Firsts)
 
 - **FIRST** UQFF explicit DM/visible mass partition with rotation curve excess analysis
-- **FIRST** UQFF computation of η_DM/vis = 5.667 as a named dimensionless parameter
-- **FIRST** UQFF derivation of v_circ = 1.197 × 105 m/s vs v_rot = 2.0 × 105 m/s in the 9-term pipeline
+- **FIRST** UQFF computation of $\eta$_DM/vis = 5.667 as a named dimensionless parameter
+- **FIRST** UQFF derivation of v_circ = 1.197 $\times$ 105 m/s vs v_rot = 2.0 $\times$ 105 m/s in the 9-term pipeline
 - **FIRST** UQFF rotation excess ratio v_excess = 1.671 (67.1%) from first principles DM partition
 
 ---
@@ -299,7 +299,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.192 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -310,13 +310,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

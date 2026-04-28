@@ -136,7 +136,7 @@ deconfinement phase transition observed at ALICE/LHC.
 $$\boxed{\rho_text{QGP}^\text{triadic} = w_C \cdot \rho_text{comp} + w_R \cdot \rho_text{res} + w_B \cdot \rho_text{buoy}}$$
 
 ### §A.3 Cosmogenesis Linkage Chain
-PAPER_877 → triadic framework → QGP decomposition → stability validation → universal consistency
+PAPER_877 $\to$ triadic framework $\to$ QGP decomposition $\to$ stability validation $\to$ universal consistency
 
 ---
 

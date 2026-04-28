@@ -10,7 +10,7 @@ tags: [galaxy, vacuum, buoyancy, damping, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession for Positive Redshift
+# PAPER_277 — UQFF Gravitational Recession Damping Factor $\kappa$_recession for Positive Redshift
 **Date:** March 2026
 
 **Author:** Daniel T. Murphy
@@ -24,16 +24,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
-We introduce the UQFF Gravitational Recession Damping Factor κ_recession = 1/(1+z) for galaxies
+We introduce the UQFF Gravitational Recession Damping Factor $\kappa$_recession = 1/(1+z) for galaxies
 receding from the observer (positive cosmological redshift z > 0). Applied to the Sombrero Galaxy
-(M104, z = +0.0063), this factor yields κ_recession = 0.99374, attenuating the total UQFF
+(M104, z = +0.0063), this factor yields $\kappa$_recession = 0.99374, attenuating the total UQFF
 gravitational output by 0.63% relative to the rest-frame value. This result is the precise
-complement of PAPER_273's blueshift amplifier (Andromeda, z = −0.001, κ > 1), and together the two
+complement of PAPER_273's blueshift amplifier (Andromeda, z = -0.001, $\kappa$ > 1), and together the two
 whitepapers establish the **Universal UQFF Bidirectional Redshift Law**: the single analytic
-function κ(z) = 1/(1+z) applies for all z, unifying recession and approach within one UQFF
+function $\kappa$(z) = 1/(1+z) applies for all z, unifying recession and approach within one UQFF
 correction framework.
 
 ---
@@ -50,12 +50,12 @@ multiplicative correction to the full UQFF g_total equation.
 The Sombrero Galaxy (M104) is a nearby edge-on Sa-type spiral galaxy at a recession velocity of
 approximately +1890 km/s, corresponding to a spectroscopic heliocentric redshift of z = +0.0063. Its
 recession — the opposite of Andromeda's blueshift approach — provides the ideal test case for the
-positive-z branch of the universal κ(z) function.
+positive-z branch of the universal $\kappa$(z) function.
 
 This paper establishes:
-1. The analytic form of κ_recession for z > 0.
+1. The analytic form of $\kappa$_recession for z > 0.
 2. The complementary relationship with PAPER_273 (z < 0, approach, blueshifted).
-3. The universal UQFF Bidirectional Redshift Law valid for all real z > −1.
+3. The universal UQFF Bidirectional Redshift Law valid for all real z > -1.
 4. Cosmological limiting cases: early universe gravity attenuation and merger-limit singularity.
 
 ---
@@ -64,7 +64,7 @@ This paper establishes:
 
 ### 2.1 UQFF Vacuum Field Energy Under Recession
 
-In UQFF, the gravitational term g_UQFF is proportional to the local vacuum energy density ρ_vac at
+In UQFF, the gravitational term g_UQFF is proportional to the local vacuum energy density $\rho$_vac at
 the point of computation. For a source receding from the observer at cosmological velocity
 corresponding to redshift z, the energy of each mediating vacuum quantum is red-shifted by the
 factor (1+z):
@@ -86,7 +86,7 @@ $$\kappa_{\text{recession}}^{\text{Sombrero}} = \frac{1}{1 + 0.0063} = \frac{1}{
 
 ### 2.2 Position in the computeG() Equation
 
-The κ_recession factor enters the Sombrero UQFF Master Gravity Equation as an outer multiplier:
+The $\kappa$_recession factor enters the Sombrero UQFF Master Gravity Equation as an outer multiplier:
 
 $$g_{\text{total}}(r, t) = \left[\, g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda_{\text{term}} + g_{\text{quantum}} + g_{\text{Lorentz}} + g_{\text{fluid}} + F_{\text{ring}}(t) + g_{\text{BH}} + g_{\text{exp}} + a_{\text{dust}} + g_{\text{DM}} \,\right] \cdot \kappa_{\text{recession}} \cdot \sigma_{\text{SC}}$$
 
@@ -96,7 +96,7 @@ where $\sigma_{\text{SC}} = 1 - B/B_{\text{crit}}$ (superconductivity correction
 
 $$\Delta g_{\text{recession}} = g_{\text{UQFF}} \left(1 - \frac{1}{1.0063}\right) = 0.00626 \cdot g_{\text{UQFF}}$$
 
-With g_base = G·M/r2 = 2.382×10-10 m/s2 and pre_sum_Ug ≈ 52·g_base ≈ 1.238×10-8 m/s2:
+With g_base = G$\cdot$M/r2 = 2.382$\times$10-10 m/s2 and pre_sum_Ug $\approx$ 52$\cdot$g_base $\approx$ 1.238$\times$10-8 m/s2:
 
 $$\Delta g \approx 0.00626 \times 1.238 \times 10^{-8} \approx 7.75 \times 10^{-11}\ \text{m/s}^2$$
 
@@ -104,36 +104,36 @@ $$\Delta g \approx 0.00626 \times 1.238 \times 10^{-8} \approx 7.75 \times 10^{-
 
 ## 3. Universal UQFF Bidirectional Redshift Law
 
-Combining PAPER_273 (z = −0.001, Andromeda) and PAPER_277 (z = +0.0063, Sombrero), we arrive at the
+Combining PAPER_273 (z = -0.001, Andromeda) and PAPER_277 (z = +0.0063, Sombrero), we arrive at the
 general statement:
 
 **Universal UQFF Bidirectional Redshift Law:**
 
 $$\kappa(z) = \frac{1}{1+z}, \quad z \in (-1, +\infty)$$
 
-| Regime | z range | κ(z) | Physical meaning |
+| Regime | z range | $\kappa$(z) | Physical meaning |
 |--------|---------|------|-----------------|
 | Approach/Blueshift | z < 0 | > 1 | UQFF gravity amplified (PAPER_273) |
 | Rest frame | z = 0 | 1.0 | Unmodified UQFF |
 | Recession/Redshift | z > 0 | < 1 | UQFF gravity damped (PAPER_277) |
 
-### 3.1 κ(z) at Representative Redshifts
+### 3.1 $\kappa$(z) at Representative Redshifts
 
-| Redshift z | κ(z) | Astrophysical Context |
+| Redshift z | $\kappa$(z) | Astrophysical Context |
 |-----------|------|----------------------|
-| z = −0.001 | 1.001001 | Andromeda (PAPER_273, approach) |
+| z = -0.001 | 1.001001 | Andromeda (PAPER_273, approach) |
 | z = 0 | 1.000000 | Rest frame / MW local group |
 | z = +0.0063 | 0.99374 | **Sombrero M104 (PAPER_277)** |
 | z = +0.1 | 0.90909 | Virgo Cluster periphery |
 | z = +0.5 | 0.66667 | Intermediate cosmological |
-| z = +1.0 | 0.50000 | Halfway epoch (t ≈ 5.8 Gyr) |
+| z = +1.0 | 0.50000 | Halfway epoch (t $\approx$ 5.8 Gyr) |
 | z = +3.5 | 0.22222 | Epoch of reionisation |
-| z → ∞ | → 0 | Big Bang limit — gravity switchoff |
-| z → −1 | → ∞ | Singularity — merger/coalescence |
+| z $\to$ $\infty$ | $\to$ 0 | Big Bang limit — gravity switchoff |
+| z $\to$ -1 | $\to$ $\infty$ | Singularity — merger/coalescence |
 
 ### 3.2 Cosmological Limiting Cases
 
-**Early Universe (z → ∞):**
+**Early Universe (z $\to$ $\infty$):**
 
 $$\lim_{z \to \infty} \kappa(z) = 0$$
 
@@ -142,11 +142,11 @@ In the UQFF framework this corresponds to **gravitational switchoff** in the ext
 provides a natural UQFF mechanism for the observed suppression of large-scale structure formation at
 very high redshift.
 
-**Merger Singularity (z → −1):**
+**Merger Singularity (z $\to$ -1):**
 
 $$\lim_{z \to -1} \kappa(z) = +\infty$$
 
-For a source approaching the observer at the speed of light (z → −1 in the blueshift convention),
+For a source approaching the observer at the speed of light (z $\to$ -1 in the blueshift convention),
 the UQFF gravity diverges. This represents the merger or coalescence singularity, where the UQFF
 vacuum field collapses to a single point and gravitational focusing becomes unbounded.
 
@@ -166,7 +166,7 @@ double g_total = g_sum * kappa_recession * corr_SC;
 **Computed values for Sombrero M104:**
 - z = +0.0063
 - kappa_recession = 0.99374
-- Gravitational damping: −0.626% of g_UQFF (recession)
+- Gravitational damping: -0.626% of g_UQFF (recession)
 
 ---
 
@@ -174,27 +174,27 @@ double g_total = g_sum * kappa_recession * corr_SC;
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| κ_recession | 0.99374 | dimensionless | UQFF recession damping factor for z=+0.0063 |
+| $\kappa$_recession | 0.99374 | dimensionless | UQFF recession damping factor for z=+0.0063 |
 | z_Sombrero | +0.0063 | dimensionless | Heliocentric spectroscopic recession redshift |
-| Δg_recession | ~7.75×10-11 | m/s2 | Absolute gravitational attenuation |
+| $\Delta$g_recession | ~7.75$\times$10-11 | m/s2 | Absolute gravitational attenuation |
 
 ---
 
 ## 6. Physical Significance
 
-1. **Bidirectional completeness:** PAPER_273 and PAPER_277 together show that the UQFF κ(z)
+1. **Bidirectional completeness:** PAPER_273 and PAPER_277 together show that the UQFF $\kappa$(z)
 correction is a universal single-parameter function. No new free parameters are introduced.
 
 2. **Observable consequence for Sombrero:** The 0.626% attenuation is below current measurement
 precision for M104's rotation curves (~1–5% estimated observational errors), but is computable and
 constitutes a UQFF first-principles prediction.
 
-3. **Cosmological implications:** The κ(z) law predicts that UQFF gravity was weaker in the early
+3. **Cosmological implications:** The $\kappa$(z) law predicts that UQFF gravity was weaker in the early
 universe by the factor 1/(1+z), offering a potential explanation for the delayed gravitational
 collapse epoch without invoking modified gravity theories.
 
 4. **Dual outer multiplier uniqueness:** Sombrero is the first UQFF module to employ *two* outer
-multipliers simultaneously (κ_recession × σ_SC), whose combined effect is:
+multipliers simultaneously ($\kappa$_recession $\times$ $\sigma$_SC), whose combined effect is:
    $$\kappa_{\text{recession}} \times \sigma_{\text{SC}} = 0.99374 \times (1 - 10^{-20}) \approx 0.99374$$
 
 ---
@@ -210,7 +210,7 @@ multipliers simultaneously (κ_recession × σ_SC), whose combined effect is:
 
 ---
 
-*UQFF 2.0 — All physics is additive. The κ_recession factor does not replace any prior term — it is
+*UQFF 2.0 — All physics is additive. The $\kappa$_recession factor does not replace any prior term — it is
 a cosmological outer-multiplier consistent with vacuum field energy propagation theory. — Daniel T.
 Murphy, Session 77, March 2026.*
 
@@ -270,7 +270,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -320,7 +320,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -331,13 +331,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

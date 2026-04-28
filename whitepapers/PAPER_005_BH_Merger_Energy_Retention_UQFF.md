@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2026-03-07  
 **Domain:** 1.1 — Gravitational Waves — Core LIGO/Virgo Events  
 **Primary Validation File:** `validate_merger.py`  
-**Calibration constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 
 ---
 
@@ -26,15 +26,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 We analyze binary black hole (BBH) merger energy dynamics under the Unified Quantum Field Framework
 (UQFF) for the GW150914-like event (36 + 29 MM_sun at 410 Mpc). UQFF reduces gravitational wave power by
-19% relative to GR (P_GW,UQFF = 7.25 × 10-11 W vs P_GW,GR = 8.95 × 10-11 W) and extends the merger
-timescale by 23% (τ_UQFF = 1.17 × 1012 yrs vs τ_GR = 9.44 × 1011 yrs). Crucially, UQFF predicts 99%
+19% relative to GR (P_GW,UQFF = 7.25 $\times$ 10-11 W vs P_GW,GR = 8.95 $\times$ 10-11 W) and extends the merger
+timescale by 23% ($\tau$_UQFF = 1.17 $\times$ 1012 yrs vs $\tau$_GR = 9.44 $\times$ 1011 yrs). Crucially, UQFF predicts 99%
 mass retention—only 0.65 MM_sun (vs 0.80 MM_sun in GR) radiated as gravitational waves—consistent with the
 remnant mass of ~62 MM_sun inferred post-merger. The combined UQFF damping factor is 0.81, indicating
 moderately stabilized merger dynamics.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -45,10 +45,10 @@ present in Standard Model treatments.
 | Parameter | Value |
 |-----------|-------|
 | Event | GW150914-like BBH |
-| Component mass m₁ | 36 MM_sun |
-| Component mass m₂ | 29 MM_sun |
+| Component mass m1 | 36 MM_sun |
+| Component mass m2 | 29 MM_sun |
 | Total mass M_tot | 65 MM_sun |
-| Mass ratio q = m₂/m₁ | 0.8056 |
+| Mass ratio q = m2/m1 | 0.8056 |
 | Luminosity distance | 410 Mpc |
 
 ---
@@ -64,18 +64,18 @@ $$P_{GW,UQFF} = F_{combined}^2 \times P_{GW,GR},\quad F_{combined} = 0.903$$
 **Key numerical results:** P_GW(GR) = 8.9451e-11 W, P_GW(UQFF) = 7.2455e-11 W, \u03c4_merge(GR) =
 9.4417e11 yr, \u03c4_merge(UQFF) = 1.1656e12 yr
 
-**P_GW = (32/5) × (G4/c5) × (m₁ m₂)2 (m₁+m₂) / r5**
+**P_GW = (32/5) $\times$ (G4/c5) $\times$ (m1 m2)2 (m1+m2) / r5**
 
 UQFF modifies this via the combined damping factor (see §3):
 
-**P_GW,UQFF = F_combined2 × P_GW,GR**
+**P_GW,UQFF = F_combined2 $\times$ P_GW,GR**
 
 | Quantity | GR | UQFF |
 |----------|----|----|
-| P_GW | 8.9451 × 10-11 W | 7.2455 × 10-11 W |
+| P_GW | 8.9451 $\times$ 10-11 W | 7.2455 $\times$ 10-11 W |
 | Reduction | — | 19.0% |
-| τ_merge | 9.4417 × 1011 yrs | 1.1656 × 1012 yrs |
-| τ_UQFF / τ_GR | — | **1.23× longer** |
+| $\tau$_merge | 9.4417 $\times$ 1011 yrs | 1.1656 $\times$ 1012 yrs |
+| $\tau$_UQFF / $\tau$_GR | — | **1.23$\times$ longer** |
 | E_GW radiated | 0.8031 MM_sun c2 | 0.6505 MM_sun c2 |
 | Mass retention | 99.00% | 99.00% (higher) |
 
@@ -91,21 +91,21 @@ UQFF modifies this via the combined damping factor (see §3):
 | String binding | 1.0000 | BBH: no NS string coupling; string factor deactivated |
 | **Combined** | **0.8100** | Product of all four |
 
-**Status: MODERATELY STABILIZED** — τ_UQFF > τ_merge, indicating UQFF vacuum damping slows
+**Status: MODERATELY STABILIZED** — $\tau$_UQFF > $\tau$_merge, indicating UQFF vacuum damping slows
 inspirals, reducing the rate of detectable merger events.
 
 ---
 
 ## 4. Energy Budget Analysis
 
-Total energy radiated = ΔM_rad × c2:
+Total energy radiated = $\Delta$M_rad $\times$ c2:
 
-- **GR:** ΔM_rad = 0.8031 MM_sun → remnant = 65 − 0.803 = 64.197 MM_sun  
-- **UQFF:** ΔM_rad = 0.6505 MM_sun → remnant = 65 − 0.651 = 64.350 MM_sun
+- **GR:** $\Delta$M_rad = 0.8031 MM_sun $\to$ remnant = 65 - 0.803 = 64.197 MM_sun  
+- **UQFF:** $\Delta$M_rad = 0.6505 MM_sun $\to$ remnant = 65 - 0.651 = 64.350 MM_sun
 
 The 0.15 MM_sun difference (UQFF retains more mass) is testable in principle via:
-1. **Remnant mass inference** from ringdown frequency: f_ring ∝ M_final-1
-2. **Radiated energy fraction**: ε_UQFF = 1.001% vs ε_GR = 1.235%
+1. **Remnant mass inference** from ringdown frequency: f_ring $\propto$ M_final-1
+2. **Radiated energy fraction**: $\varepsilon$_UQFF = 1.001% vs $\varepsilon$_GR = 1.235%
 3. **Merger duration at 99% coalescence**: longer by 23% for UQFF
 
 ---
@@ -114,7 +114,7 @@ The 0.15 MM_sun difference (UQFF retains more mass) is testable in principle via
 
 The B-factor (0.90) and TRZ factor (0.90) account for:
 - **B-factor:** Background topological manifold suppression for spinning BH systems. Even black holes with negligible classical B-fields exhibit residual 10% SCm coupling through the remnant spin-down channel.
-- **TRZ:** Trans-zero reversal at resonance frequency £f_TRZ ≈ 0.1 × f_ISCO ≈ 43 Hz for the 65 MM_sun system.
+- **TRZ:** Trans-zero reversal at resonance frequency £f_TRZ $\approx$ 0.1 $\times$ f_ISCO $\approx$ 43 Hz for the 65 MM_sun system.
 
 String binding is deactivated (= 1.0) because BBH systems lack the NS quantum topology that drives
 string dissipation in BNS events (see PAPER_004 where string=0.37).
@@ -125,12 +125,12 @@ string dissipation in BNS events (see PAPER_004 where string=0.37).
 
 Extending to the BBH population:
 
-| M_tot (MM_sun) | τ_merge/τ_GR | ΔE_rad (%) | UQFF detectable? |
+| M_tot (MM_sun) | $\tau$_merge/$\tau$_GR | $\Delta$E_rad (%) | UQFF detectable? |
 |------------|-------------|-----------|-----------------|
-| 30 | 1.23× | −19% | Yes (SNR > 8) |
-| 65 (GW150914) | 1.23× | −19% | Yes (SNR > 8) |
-| 150 | 1.20× | −18% | Marginal |
-| 500 | 1.15× | −16% | LISA-band |
+| 30 | 1.23$\times$ | -19% | Yes (SNR > 8) |
+| 65 (GW150914) | 1.23$\times$ | -19% | Yes (SNR > 8) |
+| 150 | 1.20$\times$ | -18% | Marginal |
+| 500 | 1.15$\times$ | -16% | LISA-band |
 
 ---
 
@@ -258,14 +258,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -280,10 +280,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -291,9 +291,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -301,8 +301,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -379,7 +379,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -390,13 +390,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -487,7 +487,7 @@ SCmActivation[B]
 FNeutronS26[..., nTerms]
 ```
 
-*Source: `kozima_wstp_kernel.py` → `uqff_kozima_kernel.wl`*
+*Source: `kozima_wstp_kernel.py` $\to$ `uqff_kozima_kernel.wl`*
 
 
 

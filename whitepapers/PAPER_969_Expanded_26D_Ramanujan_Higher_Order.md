@@ -10,7 +10,7 @@ tags: [QGP, 26D, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_969: Expanded 26D Ramanujan Higher-Order S₂₆^{(k)}
+# PAPER_969: Expanded 26D Ramanujan Higher-Order S26^{(k)}
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
@@ -107,7 +107,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -172,7 +172,7 @@ $$\boxed{S_{26}^{(k)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26,k)}}
 $$\mathcal{L}_{S\_{26}} = -\rho_text{SCm} \cdot S_{26}^{(k)}(z) \cdot c^2$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → UQFF vacuum density → $S_{26}^{(k)}$ acceleration → mock-theta → all downstream calculations
+PAPER_877 $\to$ UQFF vacuum density $\to$ $S_{26}^{(k)}$ acceleration $\to$ mock-theta $\to$ all downstream calculations
 
 ---
 

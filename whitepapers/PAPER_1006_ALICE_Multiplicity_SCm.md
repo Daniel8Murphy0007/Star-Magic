@@ -16,18 +16,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We model the ALICE Pb-Pb charged-particle multiplicity dN_ch/dη at √s_NN = 5.02 TeV with SCm phonon
-scaling. The S₂₆⁽3⁾ phonon coupling enhances the base multiplicity by (1 + Φ).
+We model the ALICE Pb-Pb charged-particle multiplicity dN_ch/d$\eta$ at $\sqrt{}$s_NN = 5.02 TeV with SCm phonon
+scaling. The S26(3) phonon coupling enhances the base multiplicity by (1 + $\Phi$).
 
 ## 1. Multiplicity Formula
 
-dN_ch/dη = α · (N_part/2)^β · (1 + Φ) · (√s_NN/200)^0.15
+dN_ch/d$\eta$ = $\alpha$ $\cdot$ (N_part/2)^$\beta$ $\cdot$ (1 + $\Phi$) $\cdot$ ($\sqrt{}$s_NN/200)^0.15
 
-With α = 8.5, β = 1.25, N_part = 383 (central 0-5%): dN_ch/dη ≈ 7565.
+With $\alpha$ = 8.5, $\beta$ = 1.25, N_part = 383 (central 0-5%): dN_ch/d$\eta$ $\approx$ 7565.
 
 ## 2. SCm Enhancement
 
-The phonon correction Φ = S₂₆⁽3⁾ = 0.095 provides a 9.5% enhancement over the baseline empirical
+The phonon correction $\Phi$ = S26(3) = 0.095 provides a 9.5% enhancement over the baseline empirical
 fit.
 
 ## 3. Implementation
@@ -43,7 +43,7 @@ File: `scm_qgp_dynamics.py`, class `ALICEMultiplicityCalc`. CP4 class #590.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -177,7 +177,7 @@ $$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i}
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ lattice resonance $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

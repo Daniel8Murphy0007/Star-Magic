@@ -40,7 +40,7 @@ and all 7 canonical pre-defined systems are enumerated.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -148,18 +148,18 @@ $$
 $$
 \begin{aligned}
   & Pre-compression (Cycle 2, 38 systems): \\
-  & g_i(r,t) = G·M_i/r2 · H_i(t) + S_j Ug_j,i + ?c2/3 + ?_fluid,i·V·g + ... \\
+  & g_i(r,t) = G\cdotM_i/r2 \cdot H_i(t) + S_j Ug_j,i + ?c2/3 + ?_fluid,i\cdotV\cdotg + ... \\
   & (12–15 unique terms per system, mostly similar) \\
   & Post-compression (Cycle 3, 99 systems): \\
-  & g_UQFF(r,t) = G·M(t)/r2 · [1+H(t,z)] · [1-B(t)/B_crit] · [1+F_env(t)] \\
+  & g_UQFF(r,t) = G\cdotM(t)/r2 \cdot [1+H(t,z)] \cdot [1-B(t)/B_crit] \cdot [1+F_env(t)] \\
   & + (Ug1+Ug2+Ug3'+Ug4) \\
   & + ?c2/3 \\
-  & + (h/v(?x?p)) · ??*H? dV · (2p/t_Hubble) \\
-  & + ?_fluid·V·g \\
-  & + (M_vis+M_DM) · (d?/? + 3μ_s∇(M_s/r)/r) \\
+  & + (h/v(?x?p)) \cdot ??*H? dV \cdot (2p/t_Hubble) \\
+  & + ?_fluid\cdotV\cdotg \\
+  & + (M_vis+M_DM) \cdot (d?/? + 3\mu_s\nabla(M_s/r)/r) \\
   & Compression statistics: \\
-  & Original: 99 equations × mean 13 terms = 1287 unique terms \\
-  & Compressed: 1 equation × 11 terms = 11 backbone + 99 F_env(t) functions \\
+  & Original: 99 equations \times mean 13 terms = 1287 unique terms \\
+  & Compressed: 1 equation \times 11 terms = 11 backbone + 99 F_env(t) functions \\
   & Compression ratio: 11/1287 = 0.86% backbone + F_env overhead \\
   & Claimed "40% reduction": comparing multi-equation approaches \\
   & Backbone unification: 85% of terms absorbed into master equation
@@ -174,25 +174,25 @@ $$
 \begin{aligned}
   & F_env(t) captures system-specific environments: \\
   & Category A: Galaxy clusters (F_env,cluster) \\
-  & F_env,cluster(t) = f_ICM·(1 + ?P_ram/P_th)·(1 + f_AGN·t/t_cool) \\
+  & F_env,cluster(t) = f_ICM\cdot(1 + ?P_ram/P_th)\cdot(1 + f_AGN\cdott/t_cool) \\
   & ? Intra-cluster medium, ram pressure, AGN feedback modulation \\
   & Category B: AGN host galaxies (F_env,agn) \\
-  & F_env,agn(t) = (L_AGN/L_Edd)^{ß} · (1 - f_obscured) · ?_radio \\
+  & F_env,agn(t) = (L_AGN/L_Edd)^{ß} \cdot (1 - f_obscured) \cdot ?_radio \\
   & ? Accretion/luminosity fraction, covering factor, radio-mode efficiency \\
   & Category C: Star-forming regions (F_env,sfr) \\
-  & F_env,sfr(t) = SFR/(M_gas/t_ff) · (1 + f_feedback·t/t_ff) \\
+  & F_env,sfr(t) = SFR/(M_gas/t_ff) \cdot (1 + f_feedback\cdott/t_ff) \\
   & ? Free-fall time ratio, feedback injection fraction \\
   & Category D: Neutron stars / magnetars (F_env,ns) \\
-  & F_env,ns(t) = (B/B_crit)^2 · |1 - cos(2pf_TRZ·t)| · f_quench \\
+  & F_env,ns(t) = (B/B_crit)^2 \cdot |1 - cos(2pf_TRZ\cdott)| \cdot f_quench \\
   & ? Magnetic suppressor, QPO modulation, spin-down quenching \\
   & Category E: Normal spirals (F_env,spiral) \\
-  & F_env,spiral(t) = (1 + f_arm·sin(m·f - O_p·t)) · f_bar \\
+  & F_env,spiral(t) = (1 + f_arm\cdotsin(m\cdotf - O_p\cdott)) \cdot f_bar \\
   & ? Spiral arm pattern, bar fraction modifier \\
   & Category F: Cosmological (F_env,cosm) \\
-  & F_env,cosm(t) = D(a)·P_R(k)·T(k) / (H04·t4) \\
+  & F_env,cosm(t) = D(a)\cdotP_R(k)\cdotT(k) / (H04\cdott4) \\
   & ? Growth factor, primordial power, transfer function \\
   & Category G: X-ray binaries (F_env,xrb) \\
-  & F_env,xrb(t) = ?/?_Edd · cos2(?_jet) · (1 + n_jet·r_jet/r)2 \\
+  & F_env,xrb(t) = ?/?_Edd \cdot cos2(?_jet) \cdot (1 + n_jet\cdotr_jet/r)2 \\
   & ? Accretion rate, jet angle, collimation factor
 \end{aligned}
 $$
@@ -204,12 +204,12 @@ $$
 Backbone terms (present in >85% of all 99 systems): 
 Rank | Term | Systems (%) | Physical meaning 
 -----|------|-------------|---------------- 
-1 | G·M(t)/r2 | 99/99 = 100% | Gravitational acceleration 
+1 | G$\cdot$M(t)/r2 | 99/99 = 100% | Gravitational acceleration 
 2 | H(t,z) modifier | 99/99 = 100% | Hubble flow 
 3 | ?c2/3 | 99/99 = 100% | Cosmological constant 
 4 | Ug1 (magnetic dipole) | 91/99 = 92% | Dipole magnetic term 
 5 | Ug4 (vacuum concentration) | 89/99 = 90% | Vacuum density gradient 
-6 | ?_fluid·V·g | 87/99 = 88% | Fluid/gas pressure 
+6 | ?_fluid$\cdot$V$\cdot$g | 87/99 = 88% | Fluid/gas pressure 
 7 | Ug2 (charge-reactivity) | 86/99 = 87% | Charge coupling 
 8 | B/B_crit suppressor | 85/99 = 86% | Magnetic suppression 
 9 | M_DM perturbation | 84/99 = 85% | Dark matter perturbation 
@@ -242,13 +242,13 @@ $$
   & Calibration against observational systems (47 of 99 explicitly computed): \\
   & Metrics computed: \text{F\_U\_Bi\_i}, g(r,t), Q_wave per system \\
   & Q_wave statistics across 47 systems: \\
-  & Mean: Q_wave ˜ 6.33×104 J/m3 \\
-  & Std:  s_Q ˜ 0.12×104 J/m3  (2% scatter) \\
-  & Minimum: Q_wave ˜ 5.8×104 J/m3 (cosmological voids) \\
-  & Maximum: Q_wave ˜ 6.9×104 J/m3 (dense magnetar environments) \\
+  & Mean: Q_wave ˜ 6.33\times104 J/m3 \\
+  & Std:  s_Q ˜ 0.12\times104 J/m3  (2% scatter) \\
+  & Minimum: Q_wave ˜ 5.8\times104 J/m3 (cosmological voids) \\
+  & Maximum: Q_wave ˜ 6.9\times104 J/m3 (dense magnetar environments) \\
   & [SSq] calibration (as per PAPER_208): \\
   & [SSq]_eff = 0.57 minimizes inter-system Q_wave scatter \\
-  & Applied: S_UQFF = 1-e^{-[SSq]·n/26} factor \\
+  & Applied: S_UQFF = 1-e^{-[SSq]\cdotn/26} factor \\
   & ERROR_METRICS at this compression stage: \\
   & JWST alignment: 99.87% (stated in B_chat PDF) \\
   & Chandra: 99.98% (stated in B_chat PDF) \\
@@ -275,7 +275,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -294,7 +294,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -436,7 +436,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.072 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

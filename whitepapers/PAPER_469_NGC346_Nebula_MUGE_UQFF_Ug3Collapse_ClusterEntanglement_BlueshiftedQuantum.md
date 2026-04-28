@@ -18,13 +18,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122
 **Source:** grok_share_dc707f5d3.txt (Doc 71/76 — NGC346UQFFModule, "MUGE NGC 346 Nebula")
 **Classification:** FIRST MUGE UQFF for NGC 346 SMC star-forming region; FIRST Ug3 gravitational
-collapse protostar term; FIRST UQFF blueshifted quantum wave (v_rad = −10 km/s) in quantum term;
+collapse protostar term; FIRST UQFF blueshifted quantum wave (v_rad = -10 km/s) in quantum term;
 FIRST pseudo-monopole cluster entanglement via Ugi
 **Author:** Daniel T. Murphy
 **CP4 Class:** Pending (dc707f5d3 batch)
 **C++ Module:** `NGC346UQFFModule.h` / `NGC346UQFFModule.cpp`
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 
 ---
 
@@ -33,10 +33,10 @@ FIRST pseudo-monopole cluster entanglement via Ugi
 NGC 346 is the most active star-forming region in the Small Magellanic Cloud (SMC), hosting ~50,000
 young stellar objects within a 5 pc radius. This paper presents the MUGE UQFF gravitational model
 for NGC 346, incorporating protostar formation via the Ug3 gravitational collapse term, cluster
-entanglement via multi-body Ugi forces, blueshifted quantum waves (v_rad = −10 km/s, corresponding
+entanglement via multi-body Ugi forces, blueshifted quantum waves (v_rad = -10 km/s, corresponding
 to infall toward the cluster center), and pseudo-monopole inter-cluster communication. The UQFF
 blueshifted quantum term is a **first application** of radial velocity Doppler coupling into the
-UQFF quantum wavefunction. Result: g_NGC346 ≈ 1×10-10 m/s2 (collapse/wave dominant; Ugi entanglement
+UQFF quantum wavefunction. Result: g_NGC346 $\approx$ 1$\times$10-10 m/s2 (collapse/wave dominant; Ugi entanglement
 advances framework).
 
 ---
@@ -47,14 +47,14 @@ advances framework).
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M (total) | 1000 MM_sun (~1.989×1033 kg) | Cluster mass |
-| r | 5 pc (~1.543×1017 m) | Cluster radius |
+| M (total) | 1000 MM_sun (~1.989$\times$1033 kg) | Cluster mass |
+| r | 5 pc (~1.543$\times$1017 m) | Cluster radius |
 | SFR | 0.1 MM_sun/yr | Active protostar formation rate |
-| ρ_gas | 1×10-20 kg/m3 | Gas density |
-| v_rad | −10 km/s (−104 m/s) | Radial infall velocity (blueshift) |
+| $\rho$_gas | 1$\times$10-20 kg/m3 | Gas density |
+| v_rad | -10 km/s (-104 m/s) | Radial infall velocity (blueshift) |
 | z | 0.0006 | SMC redshift (local) |
-| M_DM | ~0.85 × M | Dark matter fraction |
-| B | 1×10-5 T | Nebular magnetic field |
+| M_DM | ~0.85 $\times$ M | Dark matter fraction |
+| B | 1$\times$10-5 T | Nebular magnetic field |
 
 ### 2.2 Protostar Formation Gravitational Equation
 
@@ -85,7 +85,7 @@ star-forming complex.
 
 ### 2.5 Blueshifted Quantum Wave Term (v_rad < 0)
 
-The blueshift of the infalling gas (v_rad = −10 km/s) modifies the quantum wavefunction frequency:
+The blueshift of the infalling gas (v_rad = -10 km/s) modifies the quantum wavefunction frequency:
 
 $$k_{\rm blueshift} = \frac{2\pi}{\lambda_{\rm dB}} \cdot \left(1 + \frac{|v_{\rm rad}|}{c}\right)$$
 
@@ -116,9 +116,9 @@ $$\boxed{g_{\rm NGC346}(r,t) = \frac{G M_{\rm sf}(t)}{r^2}(1+H_z t)(1-B/B_{\rm c
 
 ## 4. Physical Interpretation
 
-- **Protostar collapse driver**: Ug3 Jeans collapse term is the dominant gravitational term at the protostellar scale (r ~ 0.1 pc), overtaking the global g_base by 10×.
+- **Protostar collapse driver**: Ug3 Jeans collapse term is the dominant gravitational term at the protostellar scale (r ~ 0.1 pc), overtaking the global g_base by 10$\times$.
 - **Cluster entanglement**: The 50,000 YSOs of NGC 346 communicate gravitationally through pseudo-monopole states — the UQFF models this as a collective Ugi network operating simultaneously across the 5 pc cluster volume.
-- **Blueshifted infall**: The v_rad = −10 km/s Doppler blueshift increases quantum coupling during the active star-formation phase, accelerating collapse via enhanced $k_{\rm blueshift}$.
+- **Blueshifted infall**: The v_rad = -10 km/s Doppler blueshift increases quantum coupling during the active star-formation phase, accelerating collapse via enhanced $k_{\rm blueshift}$.
 
 ---
 
@@ -139,7 +139,7 @@ $$\boxed{g_{\rm NGC346}(r,t) = \frac{G M_{\rm sf}(t)}{r^2}(1+H_z t)(1-B/B_{\rm c
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -158,7 +158,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -243,7 +243,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -293,7 +293,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.065 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -304,10 +304,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Nebular/Star-forming region luminosity H$\alpha$ + X-ray | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Nebular/Star-forming region

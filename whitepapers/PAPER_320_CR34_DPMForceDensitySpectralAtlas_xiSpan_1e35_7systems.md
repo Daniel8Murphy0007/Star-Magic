@@ -10,21 +10,21 @@ tags: [DPM, AGN, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_320 — CR34: 7-System DPM Force Density Spectral Atlas (ξ-Span = 1035)
+# PAPER_320 — CR34: 7-System DPM Force Density Spectral Atlas ($\xi$-Span = 1035)
 
 **Module:** COMPRESSED_RESONANCE_UQFF34_MODULE.cpp  
 **Session:** 92 | **Date:** March 18, 2026  
 **Author:** Daniel T. Murphy  
 **Classification:** FIRST UQFF 35-order DPM force density spectral atlas spanning 7 systems (atomic
-→ cosmic)
+$\to$ cosmic)
 
 ---
 
 ## Abstract
 
 A DPM force density spectral atlas is constructed for the 7 systems of the CR34 module (systems
-26–28, 30–32, 34), spanning 35 orders of magnitude from the hydrogen atom (f_density = 1.500×1025
-N/m3) to the Universe diameter (f_density = 1.500×10-10 N/m3). Orion Nebula M42 appears as the
+26–28, 30–32, 34), spanning 35 orders of magnitude from the hydrogen atom (f_density = 1.500$\times$1025
+N/m3) to the Universe diameter (f_density = 1.500$\times$10-10 N/m3). Orion Nebula M42 appears as the
 macroscopic HII balance point at 9.12 N/m3. This is the **first UQFF 35-order DPM force density
 spectral atlas**.
 
@@ -44,15 +44,15 @@ Where:
 
 ## Atlas Table
 
-| Sys | Name | f_DPM | I | A_vort | ω_diff | V_sys | **f_density [N/m3]** |
+| Sys | Name | f_DPM | I | A_vort | $\omega$_diff | V_sys | **f_density [N/m3]** |
 |-----|------|-------|---|--------|--------|-------|----------------------|
-| 27 | H Atom | 1e15 | 1e18 | 3.142e-21 | 2e-3 | 4.189e-31 | **1.500×1025** |
-| 28 | H PToE | 1e15 | 1e18 | 3.142e-21 | 2e-3 | 4.189e-31 | **1.500×1025** |
-| 32 | NGC 6302 Bug Neb. | 1e12 | 1e20 | 3.142e32 | 2e-3 | 1.458e48 | **4.316×106** |
+| 27 | H Atom | 1e15 | 1e18 | 3.142e-21 | 2e-3 | 4.189e-31 | **1.500$\times$1025** |
+| 28 | H PToE | 1e15 | 1e18 | 3.142e-21 | 2e-3 | 4.189e-31 | **1.500$\times$1025** |
+| 32 | NGC 6302 Bug Neb. | 1e12 | 1e20 | 3.142e32 | 2e-3 | 1.458e48 | **4.316$\times$106** |
 | 34 | Orion M42 | 1e11 | 1e20 | 3.142e34 | 2e-2 | 6.887e51 | **9.12** |
-| 30 | Lagoon M8 | 1e11 | 1e20 | 3.142e35 | 2e-2 | 5.913e53 | **1.063×10-2** |
-| 31 | Spirals+SN Ia | 1e10 | 1e22 | 3.142e41 | 2e-1 | 1.543e64 | **4.068×10-5** |
-| 26 | Universe Diam. | 1e9 | 1e24 | 3.142e52 | 2e-6 | 4.189e80 | **1.500×10-10** |
+| 30 | Lagoon M8 | 1e11 | 1e20 | 3.142e35 | 2e-2 | 5.913e53 | **1.063$\times$10-2** |
+| 31 | Spirals+SN Ia | 1e10 | 1e22 | 3.142e41 | 2e-1 | 1.543e64 | **4.068$\times$10-5** |
+| 26 | Universe Diam. | 1e9 | 1e24 | 3.142e52 | 2e-6 | 4.189e80 | **1.500$\times$10-10** |
 
 ---
 
@@ -60,10 +60,10 @@ Where:
 
 $$\xi_{\text{span}} = \frac{f_{\text{max}}}{f_{\text{min}}} = \frac{1.500 \times 10^{25}}{1.500 \times 10^{-10}} = 10^{35}$$
 
-- **H Atom** (sys27): f_density = 1.500×1025 N/m3 — **maximum** (quantum-confined vortex)
-- **Universe** (sys26): f_density = 1.500×10-10 N/m3 — **minimum** (cosmological dilution)
+- **H Atom** (sys27): f_density = 1.500$\times$1025 N/m3 — **maximum** (quantum-confined vortex)
+- **Universe** (sys26): f_density = 1.500$\times$10-10 N/m3 — **minimum** (cosmological dilution)
 - **Orion** (sys34): f_density = 9.12 N/m3 — **HII macroscopic balance point**
-- ξ-span = **1×1035** (35 orders of magnitude)
+- $\xi$-span = **1$\times$1035** (35 orders of magnitude)
 
 ---
 
@@ -71,8 +71,8 @@ $$\xi_{\text{span}} = \frac{f_{\text{max}}}{f_{\text{min}}} = \frac{1.500 \times
 
 The DPM force density drops as system volume increases. Atomic-scale systems (H atom, sys27/28) pack
 maximum DPM force into minimal volume, yielding the highest possible vortex force density within
-UQFF. The Universe's 4.189×1080 m3 volume dilutes the cosmological DPM current to the theoretical
-minimum. The Orion HII region (6.887×1051 m3, PAPER_322 anchor) sits precisely at the human-scale
+UQFF. The Universe's 4.189$\times$1080 m3 volume dilutes the cosmological DPM current to the theoretical
+minimum. The Orion HII region (6.887$\times$1051 m3, PAPER_322 anchor) sits precisely at the human-scale
 boundary (9.12 N/m3).
 
 ---
@@ -109,7 +109,7 @@ current observational uncertainty and predict measurable signatures at future fa
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -128,7 +128,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -164,7 +164,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -267,7 +267,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.084 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -278,13 +278,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

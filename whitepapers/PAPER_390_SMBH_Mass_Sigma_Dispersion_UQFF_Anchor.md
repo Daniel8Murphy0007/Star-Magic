@@ -10,7 +10,7 @@ tags: [SMBH, galaxy, black-hole, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_390 — SMBH Mass–Velocity Dispersion Relation (M-σ) in UQFF Framework
+# PAPER_390 — SMBH Mass–Velocity Dispersion Relation (M-$\sigma$) in UQFF Framework
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -24,29 +24,29 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of SMBH Mass–Velocity Dispersion Relation (M-σ) in UQFF
+This paper presents a UQFF analysis of SMBH Mass–Velocity Dispersion Relation (M-$\sigma$) in UQFF
 Framework, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-The M-σ relation (also written M_BH–σ) is the empirical correlation between supermassive
+The M-$\sigma$ relation (also written M_BH–$\sigma$) is the empirical correlation between supermassive
 black hole mass and the stellar velocity dispersion of their host galaxy's bulge. It is one
 of the most important scaling relations in observational galaxy evolution.
 
 The `SMBH comparison to UQFF_17April2025.docx` document specifies a **particular form** of
-the M-σ relation for use as the observational SMBH mass anchor in UQFF calculations:
+the M-$\sigma$ relation for use as the observational SMBH mass anchor in UQFF calculations:
 
 $$\log_{10}\!\left(\frac{M_{\text{BH}}}{M_\odot}\right) = 0.309 \cdot \log_{10}\!\left(\frac{\sigma}{200 \text{ km/s}}\right) + 4.38$$
 
 This form uses:
-- A normalization of **σ₀ = 200 km/s** (characteristic dispersion of an L* elliptical galaxy)
+- A normalization of **$\sigma$0 = 200 km/s** (characteristic dispersion of an L* elliptical galaxy)
 - A slope coefficient of **0.309** (close to the Tremaine et al. 2002 / Gebhardt et al. 2000 value)
-- A zero-point (intercept) of **4.38** (log M_BH/M_sun at σ=200 km/s → M_BH = 2.4×104 M_sun)
+- A zero-point (intercept) of **4.38** (log M_BH/M_sun at $\sigma$=200 km/s $\to$ M_BH = 2.4$\times$104 M_sun)
 
 ---
 
-## 2. The M-σ Formula
+## 2. The M-$\sigma$ Formula
 
 ### 2.1 Standard Form
 
@@ -71,22 +71,22 @@ $$\boxed{M_{\text{BH}} = 4.771\times10^{34} \text{ kg} \cdot \left(\frac{\sigma}
 ### 3.1 Slope 0.309
 
 The slope 0.309 appears shallow compared to more recent determinations:
-- Tremaine et al. (2002): α = 4.02 (steep)  
-- Gültekin et al. (2009): α = 4.24
-- McConnell & Ma (2013): α = 5.64
+- Tremaine et al. (2002): $\alpha$ = 4.02 (steep)  
+- Gültekin et al. (2009): $\alpha$ = 4.24
+- McConnell & Ma (2013): $\alpha$ = 5.64
 
 The **0.309 form** used in this document is closer to the **original Gebhardt et al. (2000)**
 determination and may represent a specialized SMBH subsample (e.g., AGN-active hosts,
 lower-mass spirals, or a particular fitting methodology).
 
 In UQFF context, the shallow slope (0.309 vs ~4–5) means:
-- Larger variation in SMBH masses maps to smaller variation in σ
-- The formula is **conservative** in its mass prediction vs standard M-σ
+- Larger variation in SMBH masses maps to smaller variation in $\sigma$
+- The formula is **conservative** in its mass prediction vs standard M-$\sigma$
 - This reduces over-prediction of M_BH for massive systems
 
 ### 3.2 Zero-point 4.38
 
-At σ = 200 km/s (normalization):
+At $\sigma$ = 200 km/s (normalization):
 $$\log_{10}(M_{\text{BH}}/M_\odot) = 4.38$$
 $$M_{\text{BH}} = 10^{4.38} M_\odot = 2.399\times10^4 M_\odot = 4.771\times10^{34} \text{ kg}$$
 
@@ -97,16 +97,16 @@ with an AGN-host sample or a particular cosmological redshift range.
 
 ## 4. Calibration Table — Key UQFF Systems
 
-| System | σ (km/s) | log(σ/200) | M_BH/M_sun | M_BH (kg) | UQFF M_param |
+| System | $\sigma$ (km/s) | log($\sigma$/200) | M_BH/M_sun | M_BH (kg) | UQFF M_param |
 |--------|----------|-----------|------------|-----------|--------------|
-| Milky Way (SgrA*) | 100 | -0.301 | 4.287 | 1.934×104 M_sun | 3.845×1034 kg |
-| M87 | 324 | 0.210 | 4.445 | 2.787×104 M_sun | 5.543×1034 kg |
-| NGC 1275 | 260 | 0.114 | 4.415 | 2.600×104 M_sun | 5.171×1034 kg |
-| Normalization | 200 | 0 | 4.380 | 2.399×104 M_sun | 4.771×1034 kg |
-| Massive BCG | 350 | 0.243 | 4.455 | 2.852×104 M_sun | 5.672×1034 kg |
+| Milky Way (SgrA*) | 100 | -0.301 | 4.287 | 1.934$\times$104 M_sun | 3.845$\times$1034 kg |
+| M87 | 324 | 0.210 | 4.445 | 2.787$\times$104 M_sun | 5.543$\times$1034 kg |
+| NGC 1275 | 260 | 0.114 | 4.415 | 2.600$\times$104 M_sun | 5.171$\times$1034 kg |
+| Normalization | 200 | 0 | 4.380 | 2.399$\times$104 M_sun | 4.771$\times$1034 kg |
+| Massive BCG | 350 | 0.243 | 4.455 | 2.852$\times$104 M_sun | 5.672$\times$1034 kg |
 
 **Note:** These M_BH values are substantially lower than the canonical UQFF values
-(e.g., SgrA* standard: M=8.15×1036 kg = ~4×106 M_sun). The `SMBH comparison to
+(e.g., SgrA* standard: M=8.15$\times$1036 kg = ~4$\times$106 M_sun). The `SMBH comparison to
 UQFF_17April2025.docx` likely used a specialized subset or a different normalization
 convention — the formula is preserved as documented for its coefficient values.
 
@@ -167,13 +167,13 @@ muge_system = {
 ### 5.3 Cross-Validation Check
 
 For SgrA* (canonical UQFF):
-- Canonical PAPER_385 mass: M = 8.155×1036 kg = 4.1×106 M_sun
-- PAPER_390 formula prediction: M = 3.845×1034 kg = 1.93×104 M_sun
-- **Ratio:** PAPER_385 / PAPER_390 = 212× (2.3 orders of magnitude higher)
+- Canonical PAPER_385 mass: M = 8.155$\times$1036 kg = 4.1$\times$106 M_sun
+- PAPER_390 formula prediction: M = 3.845$\times$1034 kg = 1.93$\times$104 M_sun
+- **Ratio:** PAPER_385 / PAPER_390 = 212$\times$ (2.3 orders of magnitude higher)
 
 The discrepancy indicates the 0.309/4.38 formula uses a different sample calibration
 than the canonical SgrA* dynamical mass. For production UQFF calculations, the canonical
-dynamical mass (PAPER_385) takes precedence; the M-σ formula serves as a statistical
+dynamical mass (PAPER_385) takes precedence; the M-$\sigma$ formula serves as a statistical
 first-estimate for poorly-characterized systems.
 
 ---
@@ -183,17 +183,17 @@ first-estimate for poorly-characterized systems.
 The source document `SMBH comparison to UQFF_17April2025.docx` (April 17, 2025) was one
 of the 7 attachments analyzed by Grok using DeepSearch. Its purpose was to compare:
 
-1. Standard SMBH mass estimates from the M-σ relation
+1. Standard SMBH mass estimates from the M-$\sigma$ relation
 2. UQFF-derived mass parameters from the compressed and resonance MUGE equations
 
 The comparison validated that UQFF's MUGE framework produces forces consistent with the
-gravitational influence of SMBHs as described by the M-σ anchored masses.
+gravitational influence of SMBHs as described by the M-$\sigma$ anchored masses.
 
 ---
 
 ## 7. Literature Context
 
-The M-σ relation was simultaneously discovered by:
+The M-$\sigma$ relation was simultaneously discovered by:
 - Ferrarese & Merritt (2000): $M_{\text{BH}} \propto \sigma^{4.8}$
 - Gebhardt et al. (2000): $M_{\text{BH}} \propto \sigma^{3.75}$
 
@@ -210,17 +210,17 @@ statistical estimator for UQFF system initialization.
 
 | Reference | Connection |
 |-----------|------------|
-| PAPER_389 | ω_s_galactic calibration (companion formula, same source document) |
+| PAPER_389 | $\omega$_s_galactic calibration (companion formula, same source document) |
 | PAPER_385 | Canonical 7-system UQFF parameter registry (production M values) |
 | PAPER_372 | Compressed MUGE — M parameter feeding into g_base |
-| PAPER_259 | NGC1275 (σ and M_BH cross-checked) |
+| PAPER_259 | NGC1275 ($\sigma$ and M_BH cross-checked) |
 | PAPER_384 | SagA* full resonance decomposition (SgrA* M anchor) |
 
 ---
 
-**Discovery Class:** Observational anchor formula — M-σ (0.309 form) for UQFF SMBH parameterization 
-**Distinct from:** All prior UQFF papers (no M-σ formula in PAPER_001–386)  
-**Key feature:** Specific coefficients 0.309/4.38 with σ₀=200 km/s normalization; statistical
+**Discovery Class:** Observational anchor formula — M-$\sigma$ (0.309 form) for UQFF SMBH parameterization 
+**Distinct from:** All prior UQFF papers (no M-$\sigma$ formula in PAPER_001–386)  
+**Key feature:** Specific coefficients 0.309/4.38 with $\sigma$0=200 km/s normalization; statistical
 first-estimate complement to canonical dynamical masses
 
 ---
@@ -231,7 +231,7 @@ first-estimate complement to canonical dynamical masses
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -250,7 +250,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -325,7 +325,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -336,13 +336,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

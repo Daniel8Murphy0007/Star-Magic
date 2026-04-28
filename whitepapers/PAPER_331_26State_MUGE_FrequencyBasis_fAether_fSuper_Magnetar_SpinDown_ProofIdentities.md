@@ -52,7 +52,7 @@ $$
   & \text{g\_MUGE\_freq}(r,t) = ?_{i=1}^{26} [ a_DPM,i + a_THz,i + a_super,i \\
   & + a_fluid,i + a_aether,i + a_quantum,i \\
   & + a_react,i ] \\
-  & · f_TRZ · (?_vac,[UA] / ?_vac,[SCm]) · exp(-[SSq]·n/26)
+  & \cdot f_TRZ \cdot (?_vac,[UA] / ?_vac,[SCm]) \cdot exp(-[SSq]\cdotn/26)
 \end{aligned}
 $$
 
@@ -62,30 +62,30 @@ Each state i contributes 7 frequency-weighted accelerations:
 
 | Channel | Symbol | Calibrated Value | Unit | Physical Origin |
 |---------|--------|-----------------|------|----------------|
-| DPM | a_DPM,i | f_DPM = 1.863×10-84/2p | m/s2/state | Dark Photon Momentum baseline |
+| DPM | a_DPM,i | f_DPM = 1.863$\times$10-84/2p | m/s2/state | Dark Photon Momentum baseline |
 | THz | a_THz,i | f_THz = 1012 | Hz | Terahertz vacuum resonance |
-| Super | a_super,i | f_super = 1.411×1016 | Hz | Superconductive Cooper pair |
-| Fluid | a_fluid,i | f_fluid = 1.269×10?14 (magnetar) | Hz | Fluid/turbulent gravity |
-|       |          | = 3.465×10-8 (Sgr A*) | Hz | |
-| Aether | a_aether,i | f_aether = 1.576×10?35 | Hz | Aether vacuum (replaces ?) |
-| Quantum | a_quantum,i | f_quantum = 1.445×10?17 | Hz | Quantum gravity oscillation |
+| Super | a_super,i | f_super = 1.411$\times$1016 | Hz | Superconductive Cooper pair |
+| Fluid | a_fluid,i | f_fluid = 1.269$\times$10?14 (magnetar) | Hz | Fluid/turbulent gravity |
+|       |          | = 3.465$\times$10-8 (Sgr A*) | Hz | |
+| Aether | a_aether,i | f_aether = 1.576$\times$10?35 | Hz | Aether vacuum (replaces ?) |
+| Quantum | a_quantum,i | f_quantum = 1.445$\times$10?17 | Hz | Quantum gravity oscillation |
 | React | a_react,i | f_react = 101° | Hz | U_g4i reactive coupling |
 
 **Additionally:** f_TRZ = ~10?6 Hz (SGR outburst time-reversal zone frequency)  
-**Additionally:** f_flare = 5.56×10-4 Hz (Sgr A* mid-IR every ~30 min = 1/1800 s)
+**Additionally:** f_flare = 5.56$\times$10-4 Hz (Sgr A* mid-IR every ~30 min = 1/1800 s)
 
 ### 2.3 Global Modulation
 
 $$
-Modulation = f_TRZ · (?_vac,[UA] / ?_vac,[SCm]) · exp(-[SSq]·n/26)
+Modulation = f_TRZ \cdot (?_vac,[UA] / ?_vac,[SCm]) \cdot exp(-[SSq]\cdotn/26)
 $$
 
 For calibrated values:
 - f_TRZ ˜ 10-6 Hz (outburst scale)
 - ?_vac,[UA] ˜ 10?3° kg/m3 (aether vacuum)
-- ?_vac,[SCm] ˜ 10?3° × f_SCm (fraction)
+- ?_vac,[SCm] ˜ 10?3° $\times$ f_SCm (fraction)
 - ?_ratio = ?_vac,[UA]/?_vac,[SCm] ~ 103 (f_SCm=0.001 ? ratio=1000)
-- exp(-0.507·1) = 0.602 at n=1, [SSq]=0.507
+- exp(-0.507$\cdot$1) = 0.602 at n=1, [SSq]=0.507
 
 ---
 
@@ -98,13 +98,13 @@ been verified by code_execution in the source thread.
 ### 3.1 Magnetar Spin-Down Identity (DIRECT CALIBRATION)
 
 $$
-?? = -f_react / (2p · P)
+?? = -f_react / (2p \cdot P)
 $$
 
 For SGR1745-2900: P = 3.76 s, f_react = 101° Hz:
 $$
 \begin{aligned}
-  & ?? = -101° / (2p × 3.76) ˜ -4.23×108 Hz/s = -4.23×108 s?2 \\
+  & ?? = -101° / (2p \times 3.76) ˜ -4.23\times108 Hz/s = -4.23\times108 s?2 \\
   & ? ??/? = period derivative: ?? ~ 10?11 s/s  ? (matches ATNF pulsar catalogue)
 \end{aligned}
 $$
@@ -113,10 +113,10 @@ $$
 ### 3.2 Orbital Velocity Identity (Sgr A* Accretion)
 
 $$
-v_orb = v(GM / r) · f_res
+v_orb = v(GM / r) \cdot f_res
 $$
 
-For Sgr A*: M = 4×106 M_sun, r_accretion ~ 9.46×1014 m:
+For Sgr A*: M = 4$\times$106 M_sun, r_accretion ~ 9.46$\times$1014 m:
 ```
 v_Kep = v(G?/r) ~ 5.0×106 m/s   [JWST/Chandra observed: ~5e6 m/s ?]
 ? f_res sets the resonant scale for orbital quantization
@@ -125,28 +125,28 @@ v_Kep = v(G?/r) ~ 5.0×106 m/s   [JWST/Chandra observed: ~5e6 m/s ?]
 ### 3.3 Bubble Radius Identity (Multi-System)
 
 $$
-R_bubble = v_wind · t · f_res
+R_bubble = v_wind \cdot t \cdot f_res
 $$
 
 Systems verified:
-- Bubble Nebula: R_bubble matches v_wind=1.5×104 m/s × t_age × f_res
-- Westerlund 2: OB wind bubble, v_wind=2×106 m/s × t_age × f_res
-- Crab Nebula: R_SNR = v_exp=1.5×106 m/s × 971 yr × f_res
+- Bubble Nebula: R_bubble matches v_wind=1.5$\times$104 m/s $\times$ t_age $\times$ f_res
+- Westerlund 2: OB wind bubble, v_wind=2$\times$106 m/s $\times$ t_age $\times$ f_res
+- Crab Nebula: R_SNR = v_exp=1.5$\times$106 m/s $\times$ 971 yr $\times$ f_res
 
 ### 3.4 Star Formation Rate Identity
 
 $$
-SFR = ?_gas · v_wind · f_res
+SFR = ?_gas \cdot v_wind \cdot f_res
 $$
 
 Systems:
-- Lagoon Nebula M8: SFR = 0.1 M_sun/yr; ?_gas=10?2° kg/m3, v_wind=105 m/s × f_res × V_k
+- Lagoon Nebula M8: SFR = 0.1 M_sun/yr; ?_gas=10?2° kg/m3, v_wind=105 m/s $\times$ f_res $\times$ V_k
 - NGC 3603: SFR = 7 M_sun/yr; higher ?_gas, same f_res
 
 ### 3.5 Supernova Light Curve Identity
 
 $$
-L_SN(t) = L_peak · exp(-t / t) · f_res
+L_SN(t) = L_peak \cdot exp(-t / t) \cdot f_res
 $$
 
 For NGC 2525 SN 2018gv Type Ia:
@@ -157,11 +157,11 @@ For NGC 2525 SN 2018gv Type Ia:
 ### 3.6 Pillar Erosion Timescale Identity
 
 $$
-t_erosion = r / v_evap · f_res
+t_erosion = r / v_evap \cdot f_res
 $$
 
 Pillars of Creation:
-- r ~ 4 ly = 3.78×1016 m, v_evap ~ 103 m/s
+- r ~ 4 ly = 3.78$\times$1016 m, v_evap ~ 103 m/s
 - t_erosion ~ t_photo-evap ~ 20 kyr ? f_res ˜ (r/v_evap)/t
 
 ---
@@ -172,14 +172,14 @@ The 7 frequencies span 93 orders of magnitude:
 
 $$
 \begin{aligned}
-  & f_aether  = 1.576×10?35 Hz   [cosmological vacuum: f ˜ H0/6; replaces ?] \\
-  & f_fluid   = 1.269×10?14 Hz   [fluid gravity: f ˜ 1/t_Hubble] \\
-  & f_quantum = 1.445×10?17 Hz   [quantum oscillation: f ˜ E_Planck/h ... scaled] \\
+  & f_aether  = 1.576\times10?35 Hz   [cosmological vacuum: f ˜ H0/6; replaces ?] \\
+  & f_fluid   = 1.269\times10?14 Hz   [fluid gravity: f ˜ 1/t_Hubble] \\
+  & f_quantum = 1.445\times10?17 Hz   [quantum oscillation: f ˜ E_Planck/h ... scaled] \\
   & f_TRZ     = ~10?6 Hz          [time-reversal zone: f ˜ 1/t_outburst] \\
-  & f_DPM     = 1.863×10-84/2p   [dark photon momentum: ultralow seeding frequency] \\
+  & f_DPM     = 1.863\times10-84/2p   [dark photon momentum: ultralow seeding frequency] \\
   & f_react   = 101° Hz            [reactive coupling: magnetar ?? calibration] \\
   & f_THz     = 1012  Hz           [THz vacuum resonance: Cooper gap scale] \\
-  & f_super   = 1.411×1016 Hz     [superconductive: Bloch oscillation scale]
+  & f_super   = 1.411\times1016 Hz     [superconductive: Bloch oscillation scale]
 \end{aligned}
 $$
 
@@ -187,7 +187,7 @@ $$
 
 The aether frequency `f_aether = 1.576×10?35 Hz` satisfies:
 $$
-?_eff = (2p · f_aether)2 · (c2/G) = cosmological constant functional form
+?_eff = (2p \cdot f_aether)2 \cdot (c2/G) = cosmological constant functional form
 $$
 This provides a dynamical replacement for the conventional static ? in the MUGE framework.
 
@@ -243,7 +243,7 @@ t_erosion = r/v_evap · f_res  [pillar erosion proof]
 - gok_share_31b5c807a4.txt (Grok 4, September 14, 2025 — May MUGE + September MUGE documents)
 - PAPER_326: Triadic Master FU_g1/R(t)/FU_Bi 26-State Ramanujan (frequency context)
 - PAPER_287: ResonanceSC DPM-THz Cascade (f_THz precedent)
-- PAPER_289: Cooper-DPM Dual-Frequency (f_super = A_sc×a_DPM; f_super precedent)
+- PAPER_289: Cooper-DPM Dual-Frequency (f_super = A_sc$\times$a_DPM; f_super precedent)
 
 **Copyright:** Daniel T. Murphy — Star-Magic UQFF Whitepaper Series
 
@@ -255,7 +255,7 @@ t_erosion = r/v_evap · f_res  [pillar erosion proof]
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -274,12 +274,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -380,7 +380,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.125 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -391,13 +391,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

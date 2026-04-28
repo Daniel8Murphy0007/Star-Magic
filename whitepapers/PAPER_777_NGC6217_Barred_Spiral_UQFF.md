@@ -25,9 +25,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 NGC 6217 is a barred spiral galaxy ~67 million light-years distant (z = 0.0045) in the constellation
 Ursa Minor. It became notable as one of the first targets imaged by the Hubble Space Telescope's
 repaired Wide Field Camera 3 (WFC3) after the 2009 Servicing Mission 4, demonstrating the camera's
-restored capability. With moderate star formation (SFR ≈ 1 MM_sun/yr) and an extended rotating disk of
+restored capability. With moderate star formation (SFR $\approx$ 1 MM_sun/yr) and an extended rotating disk of
 ~1011 MM_sun, NGC 6217 represents a typical SBbc barred spiral. Under UQFF, standard rotation velocity
-(v = 105 m/s) and typical HII B-field yield g_NGC6217 ≈ 1.053×10-3 m/s2.
+(v = 105 m/s) and typical HII B-field yield g_NGC6217 $\approx$ 1.053$\times$10-3 m/s2.
 
 ---
 
@@ -46,7 +46,7 @@ barred galaxy with SFR coupling through the galactic bar channel.
 
 $$
 \begin{aligned}
-  & g_NGC6217(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) \\
+  & g_NGC6217(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -55,10 +55,10 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Estimate |
-| Disk radius | r | 3×1020 m (~30 kly) | NED |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Estimate |
+| Disk radius | r | 3$\times$1020 m (~30 kly) | NED |
 | SFR | — | 1 MM_sun/yr | Moderate SBbc |
-| Age (evolution time) | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age (evolution time) | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.045 | UQFF SFR integral |
 | Redshift | z | 0.0045 | NED spectroscopic |
 | v_EM | v | 105 m/s | Disk rotation |
@@ -72,8 +72,8 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = G × M / r2 \\
-  & = 6.6743e-11 × 1.989e41 / (3e20)2 \\
+  & g_grav = G \times M / r2 \\
+  & = 6.6743e-11 \times 1.989e41 / (3e20)2 \\
   & = 1.328e31 / 9e40 \\
   & = 1.476e-10 m/s2
 \end{aligned}
@@ -82,9 +82,9 @@ $$
 ### Step 2: Cosmic Expansion Factor
 $$
 \begin{aligned}
-  & H(z) = H₀ × (1 + z)^(3/2) ≈ 2.315e-18 s-1 \\
-  & H(z) × t = 2.315e-18 × 1.578e17 = 0.3653 \\
-  & 1 + H(z) × t = 1.3653
+  & H(z) = H0 \times (1 + z)^(3/2) \approx 2.315e-18 s-1 \\
+  & H(z) \times t = 2.315e-18 \times 1.578e17 = 0.3653 \\
+  & 1 + H(z) \times t = 1.3653
 \end{aligned}
 $$
 
@@ -108,8 +108,8 @@ $$
 ### Step 5: Gravitational Total
 $$
 \begin{aligned}
-  & \text{g\_grav\_total} = 1.476e-10 × 1.3653 × 1.045 × 1.04 \\
-  & = 1.476e-10 × 1.488 = 2.197e-10 m/s2
+  & \text{g\_grav\_total} = 1.476e-10 \times 1.3653 \times 1.045 \times 1.04 \\
+  & = 1.476e-10 \times 1.488 = 2.197e-10 m/s2
 \end{aligned}
 $$
 
@@ -118,9 +118,9 @@ $$
 \begin{aligned}
   & v = 105 m/s (disk rotation velocity) \\
   & B = 10-5 T (galactic B-field) \\
-  & a_EM = (e/m_p) × (v × B) × Λ_UQFF \\
-  & = 9.575e7 × (105 × 10-5) × 11 × 10-12 \\
-  & = 9.575e7 × 1 × 1.1e-11 \\
+  & a_EM = (e/m_p) \times (v \times B) \times \Lambda_UQFF \\
+  & = 9.575e7 \times (105 \times 10-5) \times 11 \times 10-12 \\
+  & = 9.575e7 \times 1 \times 1.1e-11 \\
   & = 1.053e-3 m/s2
 \end{aligned}
 $$
@@ -129,7 +129,7 @@ $$
 $$
 \begin{aligned}
   & g_NGC6217 = 2.197e-10 + 1.053e-3 \\
-  & ≈ 1.053e-3 m/s2
+  & \approx 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -137,8 +137,8 @@ $$
 
 ## 4. Physical Interpretation
 
-The classical gravitational term (2.197×10-10 m/s2) is 7 orders of magnitude smaller than the Aether
-EM result (1.053×10-3 m/s2). The UQFF result thus captures disk rotation dynamics through the
+The classical gravitational term (2.197$\times$10-10 m/s2) is 7 orders of magnitude smaller than the Aether
+EM result (1.053$\times$10-3 m/s2). The UQFF result thus captures disk rotation dynamics through the
 electromagnetic Aether coupling, not DPM-seeded gravity. The bar structure in NGC 6217 channels gas
 inward, sustaining the moderate SFR = 1 MM_sun/yr and bar-enhanced M_sf = 0.045, slightly higher than a
 purely symmetric flocculent spiral of similar mass. As with NGC 2841, the dominant physics is
@@ -157,7 +157,7 @@ electromagnetic at these rotation velocities.
 
 ## 6. Conclusions
 
-UQFF applied to NGC 6217 yields g_bar_spiral ≈ 1.053×10-3 m/s2, confirming standard barred galaxy
+UQFF applied to NGC 6217 yields g_bar_spiral $\approx$ 1.053$\times$10-3 m/s2, confirming standard barred galaxy
 behavior. The Hubble-celebrated target joins the UQFF canon as the SBbc benchmark alongside Milky
 Way analogs. Bar-enhanced gas flow, expressed through M_sf = 0.045 and moderate SFR, demonstrates
 how UQFF differentiates galaxy morphological types within a unified framework.
@@ -172,7 +172,7 @@ how UQFF differentiates galaxy morphological types within a unified framework.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -191,7 +191,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -266,7 +266,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.173 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -277,13 +277,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

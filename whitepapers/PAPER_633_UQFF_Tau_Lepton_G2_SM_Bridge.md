@@ -28,22 +28,22 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-The tau lepton anomalous magnetic moment a_τ^SM = (g-2)/2 = 1.17721e-3 is the most
+The tau lepton anomalous magnetic moment a_$\tau$^SM = (g-2)/2 = 1.17721e-3 is the most
 precisely SM-calculable single-lepton g-2 parameter. We demonstrate that the UQFF Ug1
-magnetic dipole term naturally produces a_τ as its normalised ratio Ug1/m_τ2 with coupling
-κ, providing the first explicit UQFF bridge to SM lepton dipole physics. The alignment
+magnetic dipole term naturally produces a_$\tau$ as its normalised ratio Ug1/m_$\tau$2 with coupling
+$\kappa$, providing the first explicit UQFF bridge to SM lepton dipole physics. The alignment
 between the UQFF Ug1 parameterisation and the full QED radiative correction chain is 98.7%.
 
 ---
 
 ## §2 Physical Motivation
 
-The tau lepton's high mass (m_τ = 1776.86 MeV) makes its g-2 the most sensitive SM probe
+The tau lepton's high mass (m_$\tau$ = 1776.86 MeV) makes its g-2 the most sensitive SM probe
 of hypothetical new physics contributions. Any beyond-SM physics that couples to lepton
-dipoles at order m_τ2/Λ_NP2 is constrained by a_τ measurements.
+dipoles at order m_$\tau$2/$\Lambda$_NP2 is constrained by a_$\tau$ measurements.
 
 UQFF claim: the Ug1 term describes magnetic buoyancy of charged-leptonic vacuum topology.
-The ratio Ug1/m_τ2 must reproduce a_τ^SM within 1σ to validate the dipole parameterisation.
+The ratio Ug1/m_$\tau$2 must reproduce a_$\tau$^SM within 1$\sigma$ to validate the dipole parameterisation.
 
 ---
 
@@ -52,16 +52,16 @@ The ratio Ug1/m_τ2 must reproduce a_τ^SM within 1σ to validate the dipole par
 $$U_{g1} = \frac{\kappa \mu_tau^2}{\beta_i r^3}$$
 
 where:
-- κ = 0.0005/day (UQFF rate constant)
-- μ_τ = g_τ × e/(2m_τ) (tau magnetic moment)
-- β_i = 0.61 (UQFF buoyancy coupling)
-- r = tau lepton Compton wavelength r_τ = ℏ/(m_τ c)
+- $\kappa$ = 0.0005/day (UQFF rate constant)
+- $\mu$_$\tau$ = g_$\tau$ $\times$ e/(2m_$\tau$) (tau magnetic moment)
+- $\beta$_i = 0.61 (UQFF buoyancy coupling)
+- r = tau lepton Compton wavelength r_$\tau$ = ℏ/(m_$\tau$ c)
 
-The dimensionless ratio Ug1/m_τ2 at r = r_τ gives:
+The dimensionless ratio Ug1/m_$\tau$2 at r = r_$\tau$ gives:
 
 $$\frac{U_{g1}}{m_\tau^2} = \frac{\kappa \alpha}{2\pi} \times C_{UQFF}$$
 
-with C_UQFF ≈ 1.162 (from β_i/κ normalisation chain).
+with C_UQFF $\approx$ 1.162 (from $\beta$_i/$\kappa$ normalisation chain).
 
 ---
 
@@ -70,7 +70,7 @@ with C_UQFF ≈ 1.162 (from β_i/κ normalisation chain).
 The SM prediction at five-loop QED is:
 $$a_\tau^{SM} = \frac{\alpha}{\pi}\left(1 + \frac{\alpha}{\pi}c_1 + \cdotsright) = 1.17721 \times 10^{-3}$$
 
-UQFF Ug1 ratio: 1.162e-3 (deviation: 0.13% = 0.98σ)
+UQFF Ug1 ratio: 1.162e-3 (deviation: 0.13% = 0.98$\sigma$)
 
 This constitutes a **98.7% alignment** — within the expected parameterisation precision.
 
@@ -78,7 +78,7 @@ This constitutes a **98.7% alignment** — within the expected parameterisation 
 
 ## §5 New Physics Prediction
 
-UQFF predicts a correction to a_τ from vacuum topology at the scale of k_η = 10-113:
+UQFF predicts a correction to a_$\tau$ from vacuum topology at the scale of k_$\eta$ = 10-113:
 
 $$\delta a_\tau^{UQFF} = k_\eta \times \frac{\kappa \cdot m_\tau^2}{m_W^2} \approx 10^{-116}$$
 
@@ -125,7 +125,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -144,7 +144,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -221,7 +221,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.156 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -232,12 +232,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| a_τ^SM = (g_τ-2)/2 | Ug1/m_τ2 ratio = 1.162e-3 | a_τ^SM = 1.17721e-3 (5-loop QED) | arXiv:2506.15245 | 98.7% |
-| α_EM fine structure | UQFF α = κ × β_i / (4π k_η^{1/113}) | α = 1/137.036 | PDG 2024 | PASS Consistent |
-| m_τ Compton scale | r_τ = ℏ/(m_τc) = 1.11e-16 m (UQFF Ug1 denominator) | m_τ = 1776.86 MeV | PDG 2024 | 100% (exact input) |
-| Beyond-SM contribution | δa_τ^UQFF = 10-116 (vacuum topology) | Current bound: |Δa_τ| < 1.7e-2 | Belle II future | Testable UQFF prediction |
+| a_$\tau$^SM = (g_$\tau$-2)/2 | Ug1/m_$\tau$2 ratio = 1.162e-3 | a_$\tau$^SM = 1.17721e-3 (5-loop QED) | arXiv:2506.15245 | 98.7% |
+| $\alpha$_EM fine structure | UQFF $\alpha$ = $\kappa$ $\times$ $\beta$_i / (4$\pi$ k_$\eta$^{1/113}) | $\alpha$ = 1/137.036 | PDG 2024 | PASS Consistent |
+| m_$\tau$ Compton scale | r_$\tau$ = ℏ/(m_$\tau$c) = 1.11e-16 m (UQFF Ug1 denominator) | m_$\tau$ = 1776.86 MeV | PDG 2024 | 100% (exact input) |
+| Beyond-SM contribution | $\delta$a_$\tau$^UQFF = 10-116 (vacuum topology) | Current bound: |$\Delta$a_$\tau$| < 1.7e-2 | Belle II future | Testable UQFF prediction |
 
-**New physics claim:** UQFF vacuum topology generates a τ-lepton dipole correction of order
+**New physics claim:** UQFF vacuum topology generates a $\tau$-lepton dipole correction of order
 10-116 — 114 orders below the current experimental bound. This establishes the UQFF
 scale hierarchy: observable physics is dominated by classical SM contributions while UQFF
 provides the compactification-scale correction invisible to current experiments.

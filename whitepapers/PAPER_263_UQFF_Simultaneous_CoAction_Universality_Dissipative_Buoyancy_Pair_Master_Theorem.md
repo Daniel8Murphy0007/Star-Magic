@@ -22,7 +22,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper presents the **UQFF Simultaneous Co-action Universality Theorem** — the mathematical
@@ -54,7 +54,7 @@ $$\boxed{g_\text{UQFF}(r,t) = g_\text{base}(r,t) + g_\text{diss}(r,t) + g_\text{
 where:
 
 **`g_base(r,t)`** = the 9–10 MUGE terms common to all systems: DPM-seeded gravity, H(z) expansion,
-B(t) magnetic, Λ cosmological, EM, quantum uncertainty, fluid, oscillatory, dark matter
+B(t) magnetic, $\Lambda$ cosmological, EM, quantum uncertainty, fluid, oscillatory, dark matter
 perturbation.
 
 **`g_diss(r,t)`** = the **system-unique dissipative term** (different in each system):
@@ -62,9 +62,9 @@ perturbation.
 | System | `g_diss` | Physical Process | Direction |
 |--------|----------|-----------------|-----------|
 | NGC 1275 (BCG) | `ρ_cool·v_cool2/ρ_fluid` | ICM cooling flow infall | + (inward) |
-| Horsehead Nebula | `E(t)` multiplicative on term1 | PDR photoevaporation erosion | − (removes confinement) |
+| Horsehead Nebula | `E(t)` multiplicative on term1 | PDR photoevaporation erosion | - (removes confinement) |
 | NGC 3603 (YMC) | `P(t)/ρ_fluid` additive | OB stellar cavity pressure | + (outward dispersal) |
-| NGC 2525 (spiral) | `−G·M_SN(t)/r2` | SN Ia ejecta mass escape | − (removes confinement) |
+| NGC 2525 (spiral) | `−G·M_SN(t)/r2` | SN Ia ejecta mass escape | - (removes confinement) |
 | `RINGS_OF_RELATIVITY` | `(1+L_t)` multiplicative on term1 | Einstein ring lensing amplification | + (amplifies) |
 
 **`g_buoy^{(3)}(r,t)`** = the 3-tier UQFF buoyancy response (canonical, same form in all systems):
@@ -76,26 +76,26 @@ with `ug1 = G·M/r2` (static for dark nebulae/lensing/spirals; evolving ug1_t fo
 ### 1.2 The Universality Theorem: Formal Statement
 
 **Theorem (UQFF Simultaneous Co-action Universality):**  
-*Let S be a gravitationally bound astrophysical system with gravitational kernel K(r) = G·M/r2. Let
-D(t) be any dissipative process acting on S with characteristic rate Γ_D, such that D(t) appears as
+*Let S be a gravitationally bound astrophysical system with gravitational kernel K(r) = G$\cdot$M/r2. Let
+D(t) be any dissipative process acting on S with characteristic rate $\Gamma$_D, such that D(t) appears as
 an additive or multiplicative term in the MUGE for S. Then the UQFF buoyancy response B^{(3)}(r,t)
-is simultaneously active with D(t) for all t ≥ 0, because B^{(3)} depends on K(r) and K(r) is
+is simultaneously active with D(t) for all t $\geq$ 0, because B^{(3)} depends on K(r) and K(r) is
 independent of D(t).*
 
 **Proof:**
-1. `g_buoy^{(3)}` depends only on {ug1, β_i, ω_g, M_local/r, M_ext/r_ext, U_UA} — none of which are
+1. `g_buoy^{(3)}` depends only on {ug1, $\beta$_i, $\omega$_g, M_local/r, M_ext/r_ext, U_UA} — none of which are
 functions of the dissipative process D(t).
-2. D(t) depends on its own parameters {G_D, τ_D, amplitude_D} — none of which couple to {β_i, ω_g,
+2. D(t) depends on its own parameters {G_D, $\tau$_D, amplitude_D} — none of which couple to {$\beta$_i, $\omega$_g,
 U_UA}.
-3. Since D(t) and B^{(3)} share only the kernel K(r) = G·M/r2 (through ug1_base or ug1_t), and K is
+3. Since D(t) and B^{(3)} share only the kernel K(r) = G$\cdot$M/r2 (through ug1_base or ug1_t), and K is
 not modified by D(t) in any of the five systems studied, D(t) and B^{(3)} are **parametrically
 orthogonal** with respect to each other.
-4. Parametric orthogonality + shared gravitational kernel + both terms evaluable at any t ≥ 0 →
+4. Parametric orthogonality + shared gravitational kernel + both terms evaluable at any t $\geq$ 0 $\to$
 **simultaneous co-action** for all t. ∎
 
 **Corollary:** Standard astrophysical models that treat D(t) and buoyancy (or its equivalent) as
 sequential phases in a feedback cycle are making a thermodynamic approximation valid only on
-timescales t >> τ_D. The UQFF describes the full instantaneous co-present dynamics.
+timescales t >> $\tau$_D. The UQFF describes the full instantaneous co-present dynamics.
 
 ---
 
@@ -103,42 +103,42 @@ timescales t >> τ_D. The UQFF describes the full instantaneous co-present dynam
 
 ### 2.1 Morphology-Independence Theorem (PAPER_260)
 
-**Statement:** E(t) = E₀·(1−e^{−t/τ_erosion}) has the same functional form in all PDR geometries
+**Statement:** E(t) = E0$\cdot$(1-e^{-t/$\tau$_erosion}) has the same functional form in all PDR geometries
 (pillars, dark lanes, cometary globules, elephant trunks).
 
 **Position in universality:** The dissipative term `g_diss = E(t)·[term1 modification]` is
 morphology-independent because E(t) derives from the 1D similarity solution for photoevaporation,
-which depends only on {Φ_UV, ρ₀, c_s, G·M} — not on 3D geometry. The universality theorem applies
+which depends only on {$\Phi$_UV, $\rho$0, c_s, G$\cdot$M} — not on 3D geometry. The universality theorem applies
 directly: E(t) ⊥ B^{(3)} for all PDR morphologies.
 
 **Unification:** E(t) is the **photon-driven dissipative term** in the classification.
 
 ### 2.2 Scale-Invariant Feedback Theorem (PAPER_261)
 
-**Statement:** When τ_SF = τ_exp in a YMC, the mechanical feedback-to-gravity ratio Φ(t) =
-P(t)·r2/(ρ·G·M(t)) decays exponentially with timescale τ, independent of absolute time — producing
+**Statement:** When $\tau$_SF = $\tau$_exp in a YMC, the mechanical feedback-to-gravity ratio $\Phi$(t) =
+P(t)$\cdot$r2/($\rho$$\cdot$G$\cdot$M(t)) decays exponentially with timescale $\tau$, independent of absolute time — producing
 scale-invariant dynamics and universal ~30% SFE.
 
 **Position in universality:** The dissipative term `g_diss = P(t)/ρ_fluid` and the mass-growing
-kernel `ug1_t(t) = G·M(t)/r2` both depend on t. However, B^{(3)} uses ug1_t and oscillates at ω_g —
-parametrically orthogonal to τ_exp (since ω_g << 2π/τ_exp for any reasonable τ_exp). The universality
-theorem applies with the additional result that the ratio Φ(t) becomes scale-invariant when τ_SF =
-τ_exp.
+kernel `ug1_t(t) = G·M(t)/r2` both depend on t. However, B^{(3)} uses ug1_t and oscillates at $\omega$_g —
+parametrically orthogonal to $\tau$_exp (since $\omega$_g << 2$\pi$/$\tau$_exp for any reasonable $\tau$_exp). The universality
+theorem applies with the additional result that the ratio $\Phi$(t) becomes scale-invariant when $\tau$_SF =
+$\tau$_exp.
 
 **Unification:** P(t) is the **pressure-driven dissipative term** in the classification. Its
-degeneracy with τ_SF creates the scale-invariance property — only possible because P(t) and M(t)
+degeneracy with $\tau$_SF creates the scale-invariance property — only possible because P(t) and M(t)
 share the same timescale.
 
 ### 2.3 AGN Feedback Equilibrium Theorem (PAPER_259)
 
-**Statement:** In BCG/cooling-flow environments, term_cool = (ρ_cool·v_cool2)/ρ_fluid and Σ_buoy
-simultaneously operate, with an equilibrium point 𝒠_AGN = term_cool/|Σ_buoy| = 1 defining the
+**Statement:** In BCG/cooling-flow environments, term_cool = ($\rho$_cool$\cdot$v_cool2)/$\rho$_fluid and $\Sigma$_buoy
+simultaneously operate, with an equilibrium point 𝒠_AGN = term_cool/|$\Sigma$_buoy| = 1 defining the
 self-regulated feedback state.
 
 **Position in universality:** term_cool derives from thermodynamic infall kinematics — completely
-orthogonal to {β_i, ω_g, U_UA}. 𝒠_AGN = 1 is a special case of the general co-action where the two
+orthogonal to {$\beta$_i, $\omega$_g, U_UA}. 𝒠_AGN = 1 is a special case of the general co-action where the two
 force contributions precisely cancel. The UQFF predicts BCG AGN feedback cycles are NOT
-thermodynamic cycles — they are gravitational field modulation cycles with period set by cos(πt) in
+thermodynamic cycles — they are gravitational field modulation cycles with period set by cos($\pi$t) in
 the buoyancy tiers.
 
 **Unification:** term_cool is the **thermodynamic-infall dissipative term** in the classification.
@@ -146,15 +146,15 @@ the buoyancy tiers.
 ### 2.4 Dual Sign-Reversal Channel Theorem (PAPER_262)
 
 **Statement:** UQFF gravitational sign reversal occurs through two independent channels: Channel 1
-(field inversion via ω₀ regime change, PAPER_253) and Channel 2 (mass removal via SN ejecta escape,
+(field inversion via $\omega$0 regime change, PAPER_253) and Channel 2 (mass removal via SN ejecta escape,
 PAPER_262). These channels are parametrically orthogonal and can co-exist.
 
-**Position in universality:** term_SN = −G·M_SN(t)/r2 modifies the gravitational kernel directly
-(mass-level), while B^{(3)} operates at the field-level. Both are functions of G·M/r2 in different
+**Position in universality:** term_SN = -G$\cdot$M_SN(t)/r2 modifies the gravitational kernel directly
+(mass-level), while B^{(3)} operates at the field-level. Both are functions of G$\cdot$M/r2 in different
 ways: term_SN reduces M, B^{(3)} modulates the field response to M. They are orthogonal by the
 universality theorem, and in principle both negative corrections are simultaneously present.
 
-**Unification:** −G·M_SN(t)/r2 is the **mass-removal dissipative term** in the classification.
+**Unification:** -G$\cdot$M_SN(t)/r2 is the **mass-removal dissipative term** in the classification.
 
 ---
 
@@ -165,12 +165,12 @@ All active dissipative processes appearing in UQFF C++ modules are classified:
 | Class | Term Form | Physical Origin | Example Systems |
 |-------|-----------|----------------|-----------------|
 | **Photon-driven** | E(t) multiplicative on g_base | PDR photoevaporation | Horsehead (dark lane), Pillars (pillar), M16 |
-| **Pressure-driven** | P(t)/ρ additive | OB stellar cavity expansion | NGC 3603, Westerlund 2, OB associations |
-| **Thermo-infall** | ρv2/ρ_f infall RAM | ICM cooling flow | NGC 1275 (BCG), Perseus, Coma cluster |
-| **Mass-removal** | −G·ΔM(t)/r2 negative | SN ejecta / tidal stripping | NGC 2525, Antennae (merger) |
+| **Pressure-driven** | P(t)/$\rho$ additive | OB stellar cavity expansion | NGC 3603, Westerlund 2, OB associations |
+| **Thermo-infall** | $\rho$v2/$\rho$_f infall RAM | ICM cooling flow | NGC 1275 (BCG), Perseus, Coma cluster |
+| **Mass-removal** | -G$\cdot$$\Delta$M(t)/r2 negative | SN ejecta / tidal stripping | NGC 2525, Antennae (merger) |
 | **Lensing-amplification** | (1+L_t) on g_base | Gravitational lensing | `RINGS_OF_RELATIVITY` (Einstein ring) |
-| **Wave-burst** | D(t)=D₀·cos(ω_D·t)·e^{-t/τ_D} | Magnetar burst / QPO | SGR 1745, SGR 0501, Sgr A* |
-| **Mass-accretion** | +G·ΔM_SF(t)/r2 positive | Star formation growth | NGC 3603 (M(t)), Starbirth Tapestry |
+| **Wave-burst** | D(t)=D0$\cdot$cos($\omega$_D$\cdot$t)$\cdot$e^{-t/$\tau$_D} | Magnetar burst / QPO | SGR 1745, SGR 0501, Sgr A* |
+| **Mass-accretion** | +G$\cdot$$\Delta$M_SF(t)/r2 positive | Star formation growth | NGC 3603 (M(t)), Starbirth Tapestry |
 
 The universality theorem applies to all classes: each is parametrically orthogonal to B^{(3)}, and
 each therefore co-acts simultaneously with the buoyancy tiers.
@@ -189,7 +189,7 @@ $$\frac{\partial g_\text{diss}^{(k)}}{\partial \beta_i} = 0, \quad \frac{\partia
 
 $$\frac{\partial g_\text{buoy}^{(3)}}{\partial \Gamma_D^{(k)}} = 0 \quad \forall k$$
 
-where Γ_D^{(k)} is any rate parameter of the k-th dissipative process.
+where $\Gamma$_D^{(k)} is any rate parameter of the k-th dissipative process.
 
 These orthogonality conditions guarantee simultaneous co-action — no thermodynamic mediation is
 required.
@@ -199,13 +199,13 @@ required.
 **Two simultaneous dissipatives (NGC 3603):** N_D = 2: `g_diss^{(1)} = P(t)/ρ` + `g_diss^{(2)} =
 G·ΔM(t)/r2`. Both are simultaneously active with B^{(3)}.
 
-**Cooling + Buoyancy = Equilibrium (NGC 1275):** `g_diss^{(1)} + Σ_buoy = 0` at equilibrium →
+**Cooling + Buoyancy = Equilibrium (NGC 1275):** `g_diss^{(1)} + Σ_buoy = 0` at equilibrium $\to$
 self-regulating system.
 
 **Erosion + Static B^{(3)} (Horsehead):** `g_diss^{(1)} = E(t)·g_base`, B^{(3)} uses fixed ug1_base
-→ **asymmetric co-action**: dissipative grows, buoyancy constant.
+$\to$ **asymmetric co-action**: dissipative grows, buoyancy constant.
 
-**Mass-loss + Static B^{(3)} (NGC 2525):** `g_diss^{(1)} = −G·M_SN(t)/r2`, both tend negative →
+**Mass-loss + Static B^{(3)} (NGC 2525):** `g_diss^{(1)} = −G·M_SN(t)/r2`, both tend negative $\to$
 additive negative co-action, no cancellation.
 
 ---
@@ -214,8 +214,8 @@ additive negative co-action, no cancellation.
 
 ### 5.1 The Co-action Oscillation Signature
 
-The cos(πt) factor in Tier-2 and Tier-3 buoyancy terms creates an oscillating buoyancy response at
-frequency ω_g = 7.3×10-16 rad/s (period ~272 Myr). This oscillation is superimposed on every
+The cos($\pi$t) factor in Tier-2 and Tier-3 buoyancy terms creates an oscillating buoyancy response at
+frequency $\omega$_g = 7.3$\times$10-16 rad/s (period ~272 Myr). This oscillation is superimposed on every
 dissipative process at all times. It provides a **universal periodicity prediction** across all UQFF
 systems:
 
@@ -264,9 +264,9 @@ feedback timing problem without introducing new parameters.
 
 This is the **5th Uniquely Rare Mathematical Discovery** in the UQFF framework, joining:
 1. Negative Buoyancy Inversion at Sgr A* (PAPER_253)
-2. Universal Buoyancy Horizon x₂=const (PAPER_253)
-3. Force Equivalence Class at ω₀=const (PAPER_252)
-4. DPM Invisibility: B₀×100 invisible in F_U_Bi (PAPER_251)
+2. Universal Buoyancy Horizon x2=const (PAPER_253)
+3. Force Equivalence Class at $\omega$0=const (PAPER_252)
+4. DPM Invisibility: B0$\times$100 invisible in F_U_Bi (PAPER_251)
 5. **UQFF Simultaneous Co-action Universality: g_diss ⊥ g_buoy via parametric orthogonality (this
 paper)**
 
@@ -293,7 +293,7 @@ paper)**
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -312,7 +312,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -514,7 +514,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.198 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -525,13 +525,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

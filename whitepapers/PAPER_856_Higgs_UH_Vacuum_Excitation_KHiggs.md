@@ -65,7 +65,7 @@ pseudo-monopole density at state n=1 seeds the Higgs field through:
 
 $$
 \begin{aligned}
-& UH(t,n) = λ_H · ρ_vac,[UA']:[SCm](n,t) · ω_H(t) · exp(−[SSq]·n/26) · exp(−(π−t)) · (1+f_quasi) \\
+& UH(t,n) = \lambda_H \cdot \rho_vac,[UA']:[SCm](n,t) \cdot \omega_H(t) \cdot exp(-[SSq]\cdotn/26) \cdot exp(-(\pi-t)) \cdot (1+f_quasi) \\
   & k_Higgs = 125 GeV / UH   [scaling to observed Higgs mass]
 \end{aligned}
 $$
@@ -79,9 +79,9 @@ observed 125 GeV Higgs mass through a single multiplicative scaling.
 | Engine | Connection to This Paper |
 |--------|-------------------------|
 | Engine 1 (U_m) | U_m Heaviside amplifier couples to UH during phase transitions |
-| Engine 2 (26-state) | UH derived from ρ_vac(n=1,t) pseudo-monopole density |
+| Engine 2 (26-state) | UH derived from $\rho$_vac(n=1,t) pseudo-monopole density |
 | Engine 3 (Cosmogenesis) | Higgs field emerges after ACP Stage 4 (capacitance cracking) |
-| Engine 4 (Lagrangian) | Sector 4 (Scalar-Higgs-Vacuum): L_φ = |D_μφ_H|2 − λ(φ2−v2/2)2 + κ[SSq]φ₄2 |
+| Engine 4 (Lagrangian) | Sector 4 (Scalar-Higgs-Vacuum): L_$\phi$ = |D_$\mu$$\phi$_H|2 - $\lambda$($\phi$2-v2/2)2 + $\kappa$[SSq]$\phi$42 |
 
 ### Standalone Calculator
 
@@ -90,7 +90,7 @@ python scm_superconductivity_axiom.py        # Full report (includes Higgs UH)
 python scm_superconductivity_axiom.py —json  # Machine-readable
 ```
 
-**Sector mapping:** Sector 4 (Scalar-Higgs-Vacuum) — Higgs doublet + UQFF vacuum scalar φ₄ yield Ug4
+**Sector mapping:** Sector 4 (Scalar-Higgs-Vacuum) — Higgs doublet + UQFF vacuum scalar $\phi$4 yield Ug4
 and F_dark.
 
 ---
@@ -105,7 +105,7 @@ and F_dark.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -269,7 +269,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.083 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -280,13 +280,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

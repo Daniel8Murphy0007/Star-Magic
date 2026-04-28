@@ -41,7 +41,7 @@ that persist across spacetime due to the damping mechanism.
 ### 1.1 Standard Quantum Entanglement
 
 Standard quantum mechanics describes entanglement through:
-- Inseparable quantum states: |ψ⟩ ≠ |ψ_A⟩ x |ψ_B⟩
+- Inseparable quantum states: |$\psi$⟩ $\neq$ |$\psi$_A⟩ x |$\psi$_B⟩
 - Violation of Bell inequalities: S > 2
 - No-signaling theorem: no faster-than-light communication
 
@@ -65,11 +65,11 @@ $$|\psi(t)\rangle_{UQFF} = \exp!\left[-i\hat{H}_{eff}\,t - \frac{\gamma_{damp}(E
 
 $$\hat{H}_{eff} = \hat{H}_0 + \hat{H}_{int} + \hat{H}_{UQFF},\quad \hat{H}_{UQFF} = \alpha_Qnabla^2\psi + \beta_{damp}\frac{\partial\psi}{\partial t}$$
 
-**Key numerical results:** gamma_damp ~ kappa × E/E_ref = 5.0e-4 × (E/E_ref), alpha_Q ~ 1.0e-2,
+**Key numerical results:** gamma_damp ~ kappa $\times$ E/E_ref = 5.0e-4 $\times$ (E/E_ref), alpha_Q ~ 1.0e-2,
 D_total = 3.33e-1, entanglement range extended by 1/D_total = 3.0e0
 
 $$
-|ψ(t)⟩_UQFF = exp[-iĤ_eff t - γ_damp(E)t/2] |ψ(0)⟩
+|\psi(t)⟩_UQFF = exp[-iĤ_eff t - \gamma_damp(E)t/2] |\psi(0)⟩
 $$
 
 Where the effective Hamiltonian:
@@ -88,7 +88,7 @@ Components:
 Energy-dependent damping:
 
 $$
-γ_damp(E) = γ_0 × [1 + (E/E_Q)^δ] × exp[-L/L_coh(E)]
+\gamma_damp(E) = \gamma_0 \times [1 + (E/E_Q)^\delta] \times exp[-L/L_coh(E)]
 $$
 
 Parameters:
@@ -105,21 +105,21 @@ Parameters:
 
 $$
 \begin{aligned}
-  & S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| ≤ 2 (classical) \\
-  & S ≤ 2√2 ≈ 2.828 (quantum)
+  & S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| \leq 2 (classical) \\
+  & S \leq 2\sqrt{}2 \approx 2.828 (quantum)
 \end{aligned}
 $$
 
 ### 3.2 UQFF-Modified CHSH Parameter
 
 $$
-S_UQFF = S_QM × [1 - ε_damp(E,L,t)]
+S_UQFF = S_QM \times [1 - \varepsilon_damp(E,L,t)]
 $$
 
 Where the damping suppression:
 
 $$
-ε_damp(E,L,t) = (L/L_coh)^2 × [1 - exp(-γ_damp t)]
+\varepsilon_damp(E,L,t) = (L/L_coh)^2 \times [1 - exp(-\gamma_damp t)]
 $$
 
 ### 3.3 Predicted Violations
@@ -138,13 +138,13 @@ For entangled photon pairs with separation L:
 Standard entanglement entropy:
 
 $$
-S_vN = -Tr(ρ_A log ρ_A)
+S_vN = -Tr(\rho_A log \rho_A)
 $$
 
 ### 4.2 UQFF-Modified Entropy
 
 $$
-S_UQFF(t) = S_vN(0) × exp[-γ_ent(E) t] + S_thermal(t)
+S_UQFF(t) = S_vN(0) \times exp[-\gamma_ent(E) t] + S_thermal(t)
 $$
 
 Where:
@@ -160,13 +160,13 @@ Where:
 Two-point correlation function:
 
 $$
-C(r,t) = ⟨ψ†(x,t) ψ(x+r,t)⟩
+C(r,t) = ⟨\psi†(x,t) \psi(x+r,t)⟩
 $$
 
 ### 5.2 UQFF-Modified Correlation
 
 $$
-C_UQFF(r,t) = C_QM(r,t) × exp[-r/L_coh] × cos(k_Q r + φ_damp)
+C_UQFF(r,t) = C_QM(r,t) \times exp[-r/L_coh] \times cos(k_Q r + \phi_damp)
 $$
 
 Parameters:
@@ -179,7 +179,7 @@ Parameters:
 Effective decoherence length:
 
 $$
-L_dec = L_coh × √[1 + (ω/γ_damp)2]
+L_dec = L_coh \times \sqrt{}[1 + (\omega/\gamma_damp)2]
 $$
 
 For typical photon energies:
@@ -195,7 +195,7 @@ For typical photon energies:
 Gravitational wave passing through entangled system:
 
 $$
-Δφ_GW = (πL f_GW/c) × h_0 × sin(2πf_GW t)
+\Delta\phi_GW = (\piL f_GW/c) \times h_0 \times sin(2\pif_GW t)
 $$
 
 Where:
@@ -208,7 +208,7 @@ Where:
 UQFF modifies the coupling:
 
 $$
-Δφ_UQFF = Δφ_GW × [1 + β_Q(f_GW/f_damp)^ν]
+\Delta\phi_UQFF = \Delta\phi_GW \times [1 + \beta_Q(f_GW/f_damp)^\nu]
 $$
 
 Parameters:
@@ -235,7 +235,7 @@ For LIGO-like GW events (`h_0 ~ 10^(-21)`, `f_GW ~ 100 Hz`):
 
 **Prediction:**
 $$
-S_UQFF = 2.75 ± 0.05 (compared to S_QM = 2.828)
+S_UQFF = 2.75 \pm 0.05 (compared to S_QM = 2.828)
 $$
 
 **Current constraints:** No existing experiments at this energy scale.
@@ -249,7 +249,7 @@ $$
 
 **Prediction:**
 $$
-S_UQFF(t) = 2.828 × exp[-(t/τ_dec)] where τ_dec ~ 50 s
+S_UQFF(t) = 2.828 \times exp[-(t/\tau_dec)] where \tau_dec ~ 50 s
 $$
 
 **Current status:** Micius satellite experiments reach `L ~ 1200 km` but lack time-resolution for
@@ -264,7 +264,7 @@ decay measurement.
 
 **Prediction:**
 $$
-ΔC/C ~ 10^(-6) × (h_0/10^(-21))
+\DeltaC/C ~ 10^(-6) \times (h_0/10^(-21))
 $$
 
 **Feasibility:** Requires next-generation atomic clocks and GW detectors.
@@ -278,18 +278,18 @@ $$
 Standard fidelity:
 
 $$
-F = ⟨ψ|ρ_out|ψ⟩
+F = ⟨\psi|\rho_out|\psi⟩
 $$
 
 UQFF-modified fidelity:
 
 $$
-F_UQFF = F_QM × [1 - ε_damp(E,L,t)]
+F_UQFF = F_QM \times [1 - \varepsilon_damp(E,L,t)]
 $$
 
 For `L = 1000 km`, `t = 1 s`, `E = 1 eV`:
 $$
-F_UQFF ≈ 0.995 (compared to F_QM = 1.000)
+F_UQFF \approx 0.995 (compared to F_QM = 1.000)
 $$
 
 ### 8.2 Quantum Communication Rates
@@ -297,7 +297,7 @@ $$
 Channel capacity modification:
 
 $$
-C_UQFF = C_QM × [1 - log(1 + ε_damp)]
+C_UQFF = C_QM \times [1 - log(1 + \varepsilon_damp)]
 $$
 
 Predicted reduction: ~0.5% for satellite-based quantum networks.
@@ -317,7 +317,7 @@ UQFF damping introduces correlated errors requiring modified error correction co
 Entanglement generated during inflation:
 
 $$
-S_ent,primordial = (k_max/k_min)^3 × exp[-γ_damp t_universe]
+S_ent,primordial = (k_max/k_min)^3 \times exp[-\gamma_damp t_universe]
 $$
 
 For `t_universe = 13.8 Gyr`:
@@ -349,7 +349,7 @@ Standard gravitational decoherence:
 UQFF prediction:
 
 $$
-γ_UQFF ~ γ_grav × [1 + α_Q(E/E_Q)^δ]
+\gamma_UQFF ~ \gamma_grav \times [1 + \alpha_Q(E/E_Q)^\delta]
 $$
 
 Comparison: UQFF includes energy-dependent enhancement absent in standard models.
@@ -367,9 +367,9 @@ UQFF provides specific predictions distinct from:
 
 | Observable | Standard QM | UQFF Prediction | Current Status |
 |------------|-------------|-----------------|----------------|
-| CHSH (E~1 GeV) | 2.828 | 2.75 ± 0.05 | Not tested |
-| Long-distance decay | None | τ_dec ~ 50 s | Hints in Micius data |
-| GW correlation | Zero | ΔC/C ~ 10^(-6) | Not tested |
+| CHSH (E~1 GeV) | 2.828 | 2.75 $\pm$ 0.05 | Not tested |
+| Long-distance decay | None | $\tau$_dec ~ 50 s | Hints in Micius data |
+| GW correlation | Zero | $\Delta$C/C ~ 10^(-6) | Not tested |
 | Teleportation fidelity | 1.000 | 0.995 (1000 km) | Consistent with noise |
 
 ---
@@ -417,9 +417,9 @@ UQFF damping provides natural decoherence mechanism:
 ## 14. Open Questions
 
 1. **Precise E_Q value:** Current estimate `E_Q ~ 1 GeV`, but exact value unknown
-2. **Damping microscopic origin:** What quantum field processes generate γ_damp?
+2. **Damping microscopic origin:** What quantum field processes generate $\gamma$_damp?
 3. **Multipartite entanglement:** How does UQFF modify GHZ and W states?
-4. **Entanglement and dark energy:** Connection between Λ_UQFF and entanglement entropy?
+4. **Entanglement and dark energy:** Connection between $\Lambda$_UQFF and entanglement entropy?
 
 ---
 
@@ -575,7 +575,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.171 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -586,13 +586,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -609,10 +609,10 @@ bridge.*
 ---
 
 **Validator:** `validate_uqff_calculators.py` — PASSED (8/8)  
-*All 8 UQFF master equation calculators validated: Base (F_U = Ug − Ub + Um), Compressed (DPM-seeded
+*All 8 UQFF master equation calculators validated: Base (F_U = Ug - Ub + Um), Compressed (DPM-seeded
 + 9 corrections), Superconductive (H_SCm modulation), Triadic (26-layer gravitational scaling),
 Buoyant (F_U_Bi atomic scale), MasterBuoyant (F_U_Bi_i cosmic scale), Resonant (aDPM + 13 frequency
-modes), Quadratic (dual-solution roots); κ = 0.0005/day, [SSq] = 0.57*
+modes), Quadratic (dual-solution roots); $\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 016**
 
@@ -628,14 +628,14 @@ modes), Quadratic (dual-solution roots); κ = 0.0005/day, [SSq] = 0.57*
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -650,10 +650,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -661,9 +661,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -671,8 +671,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*

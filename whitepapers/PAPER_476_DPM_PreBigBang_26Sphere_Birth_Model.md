@@ -44,7 +44,7 @@ field hierarchy.
 
 ### 2.1 Unit Sphere Equation
 
-Each sphere k ∈ {1, ..., 26} satisfies:
+Each sphere k $\in$ {1, ..., 26} satisfies:
 
 $$(x - h_k)^2 + (y - k_k)^2 + (z - l_k)^2 = r_k^2$$
 
@@ -60,7 +60,7 @@ In the canonical DPM configuration:
 
 $$V_{DPM} = \sum_{k=1}^{26} \frac{4}{3} \pi r_k^3$$
 
-At Big Bang: r_k = r_Planck = 1.616e-35 m -> V_DPM = 26 x (4/3)π r_P^3 ≈ 7.24e-104 m^3
+At Big Bang: r_k = r_Planck = 1.616e-35 m -> V_DPM = 26 x (4/3)$\pi$ r_P^3 $\approx$ 7.24e-104 m^3
 
 ---
 
@@ -85,11 +85,11 @@ During inflation, the [UA] field decays:
 
 $$E_{UA}(t) = E_{UA,0} \times e^{-\gamma t}$$
 
-with γ ≈ 0.001 s^{-}1 (inflationary damping rate) and $E_{UA,0}$ = 10^{4}5 J (initial energy).
+with $\gamma$ $\approx$ 0.001 s^{-}1 (inflationary damping rate) and $E_{UA,0}$ = 10^{4}5 J (initial energy).
 
-At t_inflation ≈ 10^{-}3^2 s: $E_{UA} \approx 10^{45} \times e^{-10^{-35}} \approx 10^{45}$ J (barely decayed)
+At t_inflation $\approx$ 10^{-}3^2 s: $E_{UA} \approx 10^{45} \times e^{-10^{-35}} \approx 10^{45}$ J (barely decayed)
 
-At t = 10 Gyr: $E_{UA} \approx 10^{45} \times e^{-γ \times 3x10^{17}} \approx$ negligible -> present vacuum density ρ_vac_UA = 7.09e-36 J/m^3
+At t = 10 Gyr: $E_{UA} \approx 10^{45} \times e^{-\gamma \times 3x10^{17}} \approx$ negligible -> present vacuum density $\rho$_vac_UA = 7.09e-36 J/m^3
 
 ### 3.3 Resonance Factor
 
@@ -97,7 +97,7 @@ DPM states couple to gravity through:
 
 $$R_{DPM} = \frac{G M}{r^2} \times q_{Higgs} \times H_{support} \approx 10^{-11} \text{ (normalized)}$$
 
-where $q_{Higgs}$ is the Higgs field coupling fraction and $H_{support}$ is the DPM-Higgs resonance support factor. At r = 1 m, M = 1 kg: R = G ≈ 6.67e-11 ≈ 10^{-}1^0.
+where $q_{Higgs}$ is the Higgs field coupling fraction and $H_{support}$ is the DPM-Higgs resonance support factor. At r = 1 m, M = 1 kg: R = G $\approx$ 6.67e-11 $\approx$ 10^{-}1^0.
 
 ---
 
@@ -138,10 +138,10 @@ The DPM initial conditions propagate to present physics as:
 |------------|----------------------|
 | 26 spheres | 26-layer compressed gravity framework (SOURCE115) |
 | SCm binding E = 10^{4}2 J | [SSq] = 0.57 calibration |
-| [UA] decay rate γ | ρ_vac_UA = 7.09e-36 J/m^3 |
+| [UA] decay rate $\gamma$ | $\rho$_vac_UA = 7.09e-36 J/m^3 |
 | +1/2 / -1/2 states | Ug fields vs. buoyancy fields |
-| Resonance factor R | κ = 0.0005/day DPM coupling |
-| Binary encoding | k_η = 10^{-}1^{1}3 suppression |
+| Resonance factor R | $\kappa$ = 0.0005/day DPM coupling |
+| Binary encoding | k_$\eta$ = 10^{-}1^{1}3 suppression |
 
 ---
 
@@ -155,7 +155,7 @@ At t=0 (Big Bang): $g_{DPM} \approx G M q_H H_s / r^2 \approx g_{Newton}$ (DPM r
 
 At t = 13.8 Gyr: $g_{DPM} \approx g_{Newton} \times (0.57)^{26} \times e^{-small} \approx 10^{-7} g_{Newton}$
 
-This 10^{-}7 suppression is the origin of the UQFF quantum correction term a_DPM = κ [SSq] g in the
+This 10^{-}7 suppression is the origin of the UQFF quantum correction term a_DPM = $\kappa$ [SSq] g in the
 resonance MUGE equation.
 
 ### 6.2 DPM Momentum Term
@@ -172,9 +172,9 @@ The DPM makes the following testable predictions:
 
 1. **CMB power spectrum**: 26-sphere geometry -> specific l-multipole oscillations at l = 26, 52, 78
 2. **Gravitational wave background**: 26D collapse -> specific GW frequency spectrum
-3. **Dark matter mass spectrum**: -1/2 states -> SM-neutral particles at E = E_SCm/26 ≈ 3.8e40
+3. **Dark matter mass spectrum**: -1/2 states -> SM-neutral particles at E = E_SCm/26 $\approx$ 3.8e40
 J/particle
-4. **Vacuum energy fine-tuning**: ρ_Λ / ρ_DPM = 10^{-}9^0 naturally from exp(-γ t_age) decay
+4. **Vacuum energy fine-tuning**: $\rho$_$\Lambda$ / $\rho$_DPM = 10^{-}9^0 naturally from exp(-$\gamma$ t_age) decay
 
 ---
 
@@ -196,7 +196,7 @@ predictions for the CMB, dark matter spectrum, and vacuum energy problem.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -215,7 +215,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -252,7 +252,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -355,7 +355,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.075 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -366,22 +366,22 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |nablaUA|^2 -> Λ_UQFF = 1.09e-52 m^{-}2 | Λ = 1.114e-52 m^{-}2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
-| Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]x1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
-| CMB temperature T_CMB | UQFF vacuum condensate -> T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
-| H_0 Hubble constant | UQFF: `H_0_UQFF` = κ x c / r_Hubble = 67.4 km/s/Mpc | H_0 = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
+| Cosmological constant $\Lambda$ | UQFF |nablaUA|^2 -> $\Lambda$_UQFF = 1.09e-52 m^{-}2 | $\Lambda$ = 1.114e-52 m^{-}2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Dark energy fraction $\Omega$_$\Lambda$ | UQFF [SSq]=0.57; $\Omega$_$\Lambda$ ~ [SSq]x1.20 = 0.684 | $\Omega$_$\Lambda$ = 0.6847 $\pm$ 0.0073 | Planck 2018 | 99.9% |
+| CMB temperature T_CMB | UQFF vacuum condensate -> T_CMB = ($\rho$_UA/$\sigma$_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
+| H_0 Hubble constant | UQFF: `H_0_UQFF` = $\kappa$ x c / r_Hubble = 67.4 km/s/Mpc | H_0 = 67.4 $\pm$ 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-Ω_Λ via [SSq]x1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from
-astrophysical magnetar burst profiles, not from CMB data. The coincidence Ω_Λ ≈ [SSq]x1.20
-constitutes a falsifiable prediction: if future DESI data shifts Ω_Λ by >2%, [SSq] must be
+$\Omega$_$\Lambda$ via [SSq]x1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit — [SSq] was calibrated from
+astrophysical magnetar burst profiles, not from CMB data. The coincidence $\Omega$_$\Lambda$ $\approx$ [SSq]x1.20
+constitutes a falsifiable prediction: if future DESI data shifts $\Omega$_$\Lambda$ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 
-**UQFF Parameters:** E_SCm = 10^{4}2 J | [SSq] = 0.57 | γ_UA = 0.001 s^{-}1 | 26 spheres  
+**UQFF Parameters:** E_SCm = 10^{4}2 J | [SSq] = 0.57 | $\gamma$_UA = 0.001 s^{-}1 | 26 spheres  
 **Class:** `DPMModule` | **Source:** `g`rok_share_b0a3dc1d`.txt` L1871-2081  
 **Tags:** DPM, pre-Big-Bang, 26D, birth-model, vacuum-energy, CMB, inflation, [SCm], [UA]  
 

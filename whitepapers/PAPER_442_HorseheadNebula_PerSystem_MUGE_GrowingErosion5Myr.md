@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_442
-title: "Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) τ=5 Myr"
+title: "Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) $\tau$=5 Myr"
 session: 119
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [AGN, MUGE, BEC, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_442 — Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) τ=5 Myr
+# PAPER_442 — Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) $\tau$=5 Myr
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -25,7 +25,7 @@ Nebula Reloaded Evolution_03May2025.docx" (lines 4487–4820)
 ## Abstract
 
 This paper presents a UQFF analysis of Horsehead Nebula (Barnard 33): Per-System MUGE with Growing
-Erosion E(t) τ=5 Myr, deriving compressed field equations and observational predictions within the
+Erosion E(t) $\tau$=5 Myr, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
 ## 1. Overview
@@ -55,7 +55,7 @@ PAPER_442 delivers the **complete per-system MUGE** for the Horsehead Nebula (Ba
 
 ## 3. Time-Dependent Function
 
-**Growing erosion (E = 0 at birth, builds to E₀ as UV field establishes ionization front):**
+**Growing erosion (E = 0 at birth, builds to E0 as UV field establishes ionization front):**
 $$\boxed{E(t) = 0.1\left(1 - e^{-t/\tau_text{erosion}}\right)}$$
 
 At $t = 0$: $E(0) = 0$ — no erosion, cloud just formed  
@@ -73,7 +73,7 @@ At $t \rightarrow \infty$: $E \rightarrow 0.1$
 
 $$\boxed{g_\text{HH}(r,t) = T_1(1+E) + T_2(1+E) + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-seeded + H₀t + B + erosion:**
+**T1 — DPM-seeded + H0t + B + erosion:**
 $$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H_0 t)(1 - B/B_\text{crit})(1+E(t))$$
 $$\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674\times10^{-11}\times1.989\times10^{33}}{(2.365\times10^{16})^2} = \frac{1.327\times10^{23}}{5.593\times10^{32}} \approx 2.37\times10^{-10} \, \text{m/s}^2$$
 $$T_1(t=0) = 2.37\times10^{-10} \times 1.0 \times (1-2.27\times10^{-20}) \times 1.0 \approx 2.37\times10^{-10} \, \text{m/s}^2$$
@@ -82,7 +82,7 @@ $$T_1(t=5\,\text{Myr}) = 2.37\times10^{-10} \times 1.063 \approx 2.52\times10^{-
 **T2 — UQFF Ug channels:**
 $$T_2 = 2\times\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\times f_\text{TRZ}\times(1+E(t)) \approx 2\times2.37\times10^{-10}\times1.1\times1.063 \approx 5.53\times10^{-10} \, \text{m/s}^2 \text{ at }t=5\,\text{Myr}$$
 
-**T3 — Λ dark energy:**
+**T3 — $\Lambda$ dark energy:**
 $$T_3 = \frac{\Lambda c^2}{3} r = \frac{1.11\times10^{-52}\times 9times10^{16}}{3}\times2.365\times10^{16} \approx 7.9\times10^{-17} \, \text{m/s}^2 \quad [\text{negligible}]$$
 
 **T9 — Wind:**
@@ -97,9 +97,9 @@ At $t = 5$ Myr (one erosion timescale):
 | Term | Value (m/s2) | Fraction |
 |------|-------------|---------|
 | $T_9$ Wind/Radiation | $1.69 \times 10^{-4}$ | **99.99%** |
-| $T_2$ UQFF Ug×(1+E) | $5.53 \times 10^{-10}$ | 0.003% |
-| $T_1$ DPM-seeded×(1+E) | $2.52 \times 10^{-10}$ | 0.001% |
-| $T_3$ Λ | $\lesssim 10^{-16}$ | negligible |
+| $T_2$ UQFF Ug$\times$(1+E) | $5.53 \times 10^{-10}$ | 0.003% |
+| $T_1$ DPM-seeded$\times$(1+E) | $2.52 \times 10^{-10}$ | 0.001% |
+| $T_3$ $\Lambda$ | $\lesssim 10^{-16}$ | negligible |
 
 $$\boxed{g_\text{HH}(t=5\,\text{Myr}) \approx 1.69\times10^{-4} \, \text{m/s}^2} \quad [\text{wind/radiation erosion fully dominant}]$$
 
@@ -113,9 +113,9 @@ $$\Delta g_E = 0.063 \times (T_1+T_2) \approx 0.063 \times 7.9\times10^{-10} \ap
 | Prior Paper | Overlap | New in PAPER_442 |
 |-------------|---------|-----------------|
 | PAPER_435 (Pillars) | Same E(t) form | GROWING vs DECAYING — opposite physics |
-| PAPER_440 (Bubble Nebula) | Same GROWING E(t) form | τ=5 Myr vs 4 Myr, B is $10^{-6}$ not $10^{-5}$ |
+| PAPER_440 (Bubble Nebula) | Same GROWING E(t) form | $\tau$=5 Myr vs 4 Myr, B is $10^{-6}$ not $10^{-5}$ |
 | None | Small dark nebula pillar case | **First Barnard 33 complete MUGE** |
-| None | Wind absolute dominance ratio | **T9/T2 ≈ 3×105 — highest ratio in per-system series** |
+| None | Wind absolute dominance ratio | **T9/T2 $\approx$ 3$\times$105 — highest ratio in per-system series** |
 
 ---
 
@@ -133,7 +133,7 @@ Standard photodissociation region (PDR) models (Hollenbach & Tielens 1999) treat
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -152,7 +152,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -227,7 +227,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.059 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -238,10 +238,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Horsehead Nebula luminosity IR + submm | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X n_H ~ 104 cm-3 | JWST / ALMA | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | JWST / ALMA | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Horsehead Nebula luminosity IR + submm | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X n_H ~ 104 cm-3 | JWST / ALMA | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | JWST / ALMA | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Horsehead Nebula

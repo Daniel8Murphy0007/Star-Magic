@@ -16,19 +16,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We apply the 26-state spectral ladder E_n = ℏω_SCm · (2π)^{n/3} · S₂₆⁽3⁾ to merger dynamics. The
+We apply the 26-state spectral ladder E_n = ℏ$\omega$_SCm $\cdot$ (2$\pi$)^{n/3} $\cdot$ S26(3) to merger dynamics. The
 ladder encodes frequency-dependent energy injection into the merger waveform across 26 independent
 dimensional channels.
 
 ## 1. Spectral Energy
 
-E_ladder = Σ_{n=1}^{26} E_n = Σ ℏω_SCm · (2π)^{n/3} · S₂₆⁽3⁾
+E_ladder = $\Sigma$_{n=1}^{26} E_n = $\Sigma$ ℏ$\omega$_SCm $\cdot$ (2$\pi$)^{n/3} $\cdot$ S26(3)
 
-Result: E_ladder = 1.42×10-15 J.
+Result: E_ladder = 1.42$\times$10-15 J.
 
 ## 2. Jet Modulation
 
-M_jet(Γ₀) = 1 + A_jet · exp(0) gives resonance modulation factor of 2.5× at A_jet = 1.5.
+M_jet($\Gamma$0) = 1 + A_jet $\cdot$ exp(0) gives resonance modulation factor of 2.5$\times$ at A_jet = 1.5.
 
 ## 3. Implementation
 
@@ -43,7 +43,7 @@ File: `fubi_agn_ns_mergers.py`, class `SpectralLadderMergerCalc`. CP4 class #587
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 
@@ -176,7 +176,7 @@ $$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravitational-wave chirp $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

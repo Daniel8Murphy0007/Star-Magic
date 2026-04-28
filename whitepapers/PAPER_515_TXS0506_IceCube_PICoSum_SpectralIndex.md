@@ -21,8 +21,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 On 22 September 2017, the IceCube neutrino observatory detected a 290 TeV muon neutrino
 (IceCube-170922A) coincident in direction and time with a gamma-ray flare from the blazar TXS
 0506+056 (z=0.3365). This was the first compelling evidence for a high-energy astrophysical neutrino
-source. The UQFF PI Co-Sum Resonance κ(a,b) provides a cross-field coupling constant derived from
-decimal π digits, which we apply as a correction to the blazar's multi-TeV spectral index.
+source. The UQFF PI Co-Sum Resonance $\kappa$(a,b) provides a cross-field coupling constant derived from
+decimal $\pi$ digits, which we apply as a correction to the blazar's multi-TeV spectral index.
 
 ---
 
@@ -76,7 +76,7 @@ $$
 | Parameter | Value |
 |-----------|-------|
 | Redshift | z = 0.3365 |
-| IceCube event energy | E_ν ≈ 290 TeV |
+| IceCube event energy | E_$\nu$ $\approx$ 290 TeV |
 | Event date | 22 Sep 2017 |
 | Gamma-ray association | Fermi-LAT, MAGIC |
 | BH mass estimate | ~108–109 MM_sun (blazar host) |
@@ -85,8 +85,8 @@ $$
 ---
 
 ## 5. Validation
-- C++ term: `SOURCE179::TXS0506_PICoSum_Term` → `TXS0506_PICoSumResonance`
-- CP2 class: `TXS0506PICoSumCalculator` → κ(a,b), Δα, α_UQFF, Φ_ν
+- C++ term: `SOURCE179::TXS0506_PICoSum_Term` $\to$ `TXS0506_PICoSumResonance`
+- CP2 class: `TXS0506PICoSumCalculator` $\to$ $\kappa$(a,b), $\Delta$$\alpha$, $\alpha$_UQFF, $\Phi$_$\nu$
 
 ---
 
@@ -98,7 +98,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -117,7 +117,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -192,7 +192,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.131 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -203,12 +203,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| IceCube TXS 0506 spectral index | UQFF PI co-sum → Γ_ν = 2.13 (blazar neutrino spectral index) | IceCube TXS0506: E2dΦ/dE at 290 TeV; Γ ~ 2.18 | IceCube 2018 | 97.7% |
-| Neutrino mass bound Σm_ν | UQFF k_η suppression → Σm_ν < 0.12 eV | Planck CMB: Σm_ν < 0.12 eV (95% CL) | Planck 2018 | PASS Consistent |
-| Neutrino vacuum oscillation | UQFF SCm_flavor maps to PMNS mixing: θ_23 ~ arcsin(√[SSq]) = 49° | θ_23 = 48.8° ± 1.0° (NOvA/T2K) | PDG 2024 | 99.6% |
-| σ(νN) cross-section at 290 TeV | UQFF Ug2 charge-reactivity flux → σ_UQFF ~ SM (no new-physics enhancement) | SM prediction at 290 TeV: σ ~ 6.4e-33 cm2 | PDG / SM perturbative | PASS UQFF consistent with SM σ |
+| IceCube TXS 0506 spectral index | UQFF PI co-sum $\to$ $\Gamma$_$\nu$ = 2.13 (blazar neutrino spectral index) | IceCube TXS0506: E2d$\Phi$/dE at 290 TeV; $\Gamma$ ~ 2.18 | IceCube 2018 | 97.7% |
+| Neutrino mass bound $\Sigma$m_$\nu$ | UQFF k_$\eta$ suppression $\to$ $\Sigma$m_$\nu$ < 0.12 eV | Planck CMB: $\Sigma$m_$\nu$ < 0.12 eV (95% CL) | Planck 2018 | PASS Consistent |
+| Neutrino vacuum oscillation | UQFF SCm_flavor maps to PMNS mixing: $\theta$_23 ~ arcsin($\sqrt{}$[SSq]) = 49° | $\theta$_23 = 48.8° $\pm$ 1.0° (NOvA/T2K) | PDG 2024 | 99.6% |
+| $\sigma$($\nu$N) cross-section at 290 TeV | UQFF Ug2 charge-reactivity flux $\to$ $\sigma$_UQFF ~ SM (no new-physics enhancement) | SM prediction at 290 TeV: $\sigma$ ~ 6.4e-33 cm2 | PDG / SM perturbative | PASS UQFF consistent with SM $\sigma$ |
 
-**New physics claim:** UQFF SCm_flavor parameter maps to the atmospheric mixing angle θ_23 = 49°
+**New physics claim:** UQFF SCm_flavor parameter maps to the atmospheric mixing angle $\theta$_23 = 49°
 with 99.6% accuracy — the same constant that governs CKM beauty-charm mixing governs neutrino
 atmospheric mixing. This predicts a common vacuum topology origin for lepton and quark mixing.
 

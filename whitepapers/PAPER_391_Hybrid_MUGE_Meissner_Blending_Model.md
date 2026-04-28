@@ -14,7 +14,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **Source:** grok_share_cfdcad2f5.txt, lines ~1–3200 (MUGE dual-channel analysis section)  
@@ -61,11 +61,11 @@ based on the physical magnetic field state of the system.
 
 $$\boxed{g_{\text{hybrid}} = e^{-B/B_{\text{crit}}} \cdot g_{\text{compressed}} + \left(1 - e^{-B/B_{\text{crit}}}\right) \cdot g_{\text{resonance}}}$$
 
-### 2.2 Blending Factor β
+### 2.2 Blending Factor $\beta$
 
 $$\beta = e^{-B/B_{\text{crit}}}$$
 
-| Regime | B value | β | Dominant channel |
+| Regime | B value | $\beta$ | Dominant channel |
 |--------|---------|---|-----------------|
 | Non-magnetic | $B \to 0$ | $\beta \to 1$ | Pure compressed MUGE |
 | Meissner point | $B = B_{\text{crit}}$ | $\beta = e^{-1} \approx 0.368$ | 36.8% compressed + 63.2% resonance |
@@ -91,11 +91,11 @@ magnetic field **redistributes weight between two channels**.
 The blending formula naturally defines three UQFF operational modes (referenced in the
 Grok thread as the "4 UQFF Operational Modes"):
 
-| Mode | Condition | β range | Physical context |
+| Mode | Condition | $\beta$ range | Physical context |
 |------|-----------|---------|-----------------|
-| **Compressed** | $B \ll B_{\text{crit}}$ | β ≈ 1 | Ambient ISM, weak-field galaxies |
-| **Mixed/Hybrid** | $B \sim B_{\text{crit}}$ | 0.1 < β < 0.9 | Magnetars, AGN jet bases, NS crusts |
-| **Resonance-dominant** | $B \gg B_{\text{crit}}$ | β ≈ 0 | Extreme Meissner quench |
+| **Compressed** | $B \ll B_{\text{crit}}$ | $\beta$ $\approx$ 1 | Ambient ISM, weak-field galaxies |
+| **Mixed/Hybrid** | $B \sim B_{\text{crit}}$ | 0.1 < $\beta$ < 0.9 | Magnetars, AGN jet bases, NS crusts |
+| **Resonance-dominant** | $B \gg B_{\text{crit}}$ | $\beta$ $\approx$ 0 | Extreme Meissner quench |
 
 The two additional modes from the Grok thread ("Buoyant" and "Superconductive") represent
 special cases at $B=0$ and $B=B_{\text{crit}}$ respectively.
@@ -121,7 +121,7 @@ With PAPER_385/381 values:
 $$g_{\text{hybrid}}^{\text{SGR1745}} \approx 0.9048 \times 1.782\times10^{39} + 0.0952 \times 1.773\times10^{-9}$$
 $$\approx 1.612\times10^{39} + 1.688\times10^{-10} \approx 1.612\times10^{39} \text{ m/s}^2$$
 
-The compressed channel dominates at B=0.1×B_crit (β=0.905).
+The compressed channel dominates at B=0.1$\times$B_crit ($\beta$=0.905).
 
 ### 4.2 Hypothetical Full-Meissner Magnetar
 
@@ -170,8 +170,8 @@ and avoids the abrupt cutoff at $B = B_{\text{crit}}$.
 
 | Approach | Form | Behavior at B=B_crit |
 |----------|------|----------------------|
-| PAPER_375 (linear) | $(1 - B/B_c)$ | → 0 (complete suppression) |
-| PAPER_391 (exponential) | $e^{-B/B_c}$ | → $e^{-1}$ = 0.368 (partial, smooth) |
+| PAPER_375 (linear) | $(1 - B/B_c)$ | $\to$ 0 (complete suppression) |
+| PAPER_391 (exponential) | $e^{-B/B_c}$ | $\to$ $e^{-1}$ = 0.368 (partial, smooth) |
 
 ---
 
@@ -259,7 +259,7 @@ HybridMUGEResult compute_g_hybrid(double g_compressed, double g_resonance,
 | PAPER_293 | Dual-Channel Co-Sum Architecture (predecessor; additive, not blended) |
 | PAPER_372 | Compressed MUGE 8-term (provides g_c input) |
 | PAPER_371 | Resonance MUGE 12-term (provides g_r input) |
-| PAPER_375 | Meissner linear suppression (distinct from β exponential) |
+| PAPER_375 | Meissner linear suppression (distinct from $\beta$ exponential) |
 | PAPER_289 | Cooper-DPM frequency synthesis (resonance channel physics) |
 | PAPER_381 | SGR1745 spectral decomposition (canonical test case) |
 
@@ -267,8 +267,8 @@ HybridMUGEResult compute_g_hybrid(double g_compressed, double g_resonance,
 
 **Discovery Class:** First UQFF dynamic channel blending formula  
 **Distinct from:** PAPER_293 (additive dual-channel); PAPER_375 (linear suppression)  
-**Key feature:** β = exp(-B/B_crit) provides continuous smooth mode transition; at B=B_crit the
-resonance channel becomes dominant (63.2% weight); guarantees pure modes at B→0 and B→∞
+**Key feature:** $\beta$ = exp(-B/B_crit) provides continuous smooth mode transition; at B=B_crit the
+resonance channel becomes dominant (63.2% weight); guarantees pure modes at B$\to$0 and B$\to$$\infty$
 
 ---
 
@@ -278,7 +278,7 @@ resonance channel becomes dominant (63.2% weight); guarantees pure modes at B→
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -297,7 +297,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -372,7 +372,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.103 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -383,13 +383,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

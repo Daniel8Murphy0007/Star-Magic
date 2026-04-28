@@ -22,13 +22,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-NGC 2525 is a barred spiral galaxy located approximately 70 million light-years away (z ≈ 0.016) in
+NGC 2525 is a barred spiral galaxy located approximately 70 million light-years away (z $\approx$ 0.016) in
 the constellation Puppis. It gained significant scientific attention as the host of SN 2018gv, a
 pristine Type Ia supernova observed by Hubble through its peak brightness and decline. The
 coincidence of an ongoing Type Ia supernova at the time of Hubble imaging provides unique leverage
-on stellar mass-loss dynamics within the UQFF framework. Analysis yields g_primary ≈ 1.335×105 m/s2,
+on stellar mass-loss dynamics within the UQFF framework. Analysis yields g_primary $\approx$ 1.335$\times$105 m/s2,
 dominated by the SMBH term, with a novel supernova mass-loss correction M_SN(t) =
-1.4·M_M_sun·exp(–t/τ_SN) that quantifies the transient gravitational perturbation during the SN light
+1.4$\cdot$M_M_sun$\cdot$exp(–t/$\tau$_SN) that quantifies the transient gravitational perturbation during the SN light
 curve.
 
 ---
@@ -49,14 +49,14 @@ mass-loss term, revealing a transient perturbation in the local UQFF field durin
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1.993×1040 kg | Spiral estimate |
-| Disk radius | r | 2.836×1020 m (~30 kly) | Hubble imaging |
-| SMBH mass | M_BH | 108 MM_sun = 1.989×1038 kg | M–σ relation |
-| BH radius | r_BH | 1.496×1013 m (Schwarzschild ×10) | Estimate |
+| Galaxy mass | M | 1.993$\times$1040 kg | Spiral estimate |
+| Disk radius | r | 2.836$\times$1020 m (~30 kly) | Hubble imaging |
+| SMBH mass | M_BH | 108 MM_sun = 1.989$\times$1038 kg | M–$\sigma$ relation |
+| BH radius | r_BH | 1.496$\times$1013 m (Schwarzschild $\times$10) | Estimate |
 | SN mass | M_SN | 1.4 MM_sun at t=0 | Type Ia standard |
-| τ_SN | — | 3.156×107 s (1 yr) | SN light curve |
+| $\tau$_SN | — | 3.156$\times$107 s (1 yr) | SN light curve |
 | Redshift | z | 0.016 | Spectroscopic |
-| Age | t | 5×109 yr = 1.578×1017 s | Cosmic time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Cosmic time |
 | M_sf | — | 0.02 | UQFF |
 | v_EM | v | 105 m/s | Rotation |
 | B_EM | B | 10-5 T | Galactic field |
@@ -69,47 +69,47 @@ mass-loss term, revealing a transient perturbation in the local UQFF field durin
 
 $$
 \begin{aligned}
-  & g_NGC2525(r,t) = (G·M(t))/r2 · (1 + H(z)·t) · (1 + M_sf) · (1 + f_TRZ) \\
-  & + (G·M_BH)/r_BH2 \\
-  & + q·(v×B)/m_p · (1 + ρ_vac,[UA]/ρ_vac,[SCm]) · 10-12 \\
-  & − (G·M_SN(t))/r2
+  & g_NGC2525(r,t) = (G\cdotM(t))/r2 \cdot (1 + H(z)\cdott) \cdot (1 + M_sf) \cdot (1 + f_TRZ) \\
+  & + (G\cdotM_BH)/r_BH2 \\
+  & + q\cdot(v\timesB)/m_p \cdot (1 + \rho_vac,[UA]/\rho_vac,[SCm]) \cdot 10-12 \\
+  & - (G\cdotM_SN(t))/r2
 \end{aligned}
 $$
 
-where M_SN(t) = 1.4·M_M_sun·exp(–t/τ_SN) — **novel UQFF supernova mass-loss term**.
+where M_SN(t) = 1.4$\cdot$M_M_sun$\cdot$exp(–t/$\tau$_SN) — **novel UQFF supernova mass-loss term**.
 
 ### Numerical Evaluation
 
 $$
 \begin{aligned}
-  & G·M / r2     = 6.6743e-11 × 1.993e40 / (2.836e20)2 \\
+  & G\cdotM / r2     = 6.6743e-11 \times 1.993e40 / (2.836e20)2 \\
   & = 1.330e30 / 8.043e40 = 1.655e-11 m/s2 \\
-  & H(z)·t factor: H0 = 2.268e-18; Hz = H0·√(0.3·(1.016)3 + 0.7) = 2.271e-18 \\
-  & (1 + Hz·t) = 1 + 2.271e-18 × 1.578e17 = 1.358 \\
+  & H(z)\cdott factor: H0 = 2.268e-18; Hz = H0\cdot\sqrt{}(0.3\cdot(1.016)3 + 0.7) = 2.271e-18 \\
+  & (1 + Hz\cdott) = 1 + 2.271e-18 \times 1.578e17 = 1.358 \\
   & factor_sf = 1.02; factor_TRZ = 1.05 \\
-  & \text{g\_grav\_total} = 1.655e-11 × 1.358 × 1.02 × 1.05 = 2.403e-11 m/s2 \\
-  & G·M_BH / r_BH2 = 6.6743e-11 × 1.989e38 / (1.496e13)2 \\
-  & = 1.327e28 / 2.238e26 = 1.335e5 m/s2   ← BH term dominates \\
-  & a_EM = (q·v·B / m_p) × 11 × 10-12 = 1.053e-3 m/s2 \\
-  & g_SN(t=0) = 6.6743e-11 × 2.785e30 / (2.836e20)2 = 2.303e-21 m/s2 (negligible) \\
-  & g_primary ≈ 1.335×105 m/s2
+  & \text{g\_grav\_total} = 1.655e-11 \times 1.358 \times 1.02 \times 1.05 = 2.403e-11 m/s2 \\
+  & G\cdotM_BH / r_BH2 = 6.6743e-11 \times 1.989e38 / (1.496e13)2 \\
+  & = 1.327e28 / 2.238e26 = 1.335e5 m/s2   \leftarrow BH term dominates \\
+  & a_EM = (q\cdotv\cdotB / m_p) \times 11 \times 10-12 = 1.053e-3 m/s2 \\
+  & g_SN(t=0) = 6.6743e-11 \times 2.785e30 / (2.836e20)2 = 2.303e-21 m/s2 (negligible) \\
+  & g_primary \approx 1.335\times105 m/s2
 \end{aligned}
 $$
 
 ### Resonant UQFF
 
 $$
-g_res = g_comp × (1 + κ·[SSq]) = 1.335e5 × 1.000285 = 1.335e5 m/s2
+g_res = g_comp \times (1 + \kappa\cdot[SSq]) = 1.335e5 \times 1.000285 = 1.335e5 m/s2
 $$
 
 ### Buoyancy UQFF
 
 $$
 \begin{aligned}
-  & f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33) \\
-  & = 0.1 × 7.25e8 × (7.09e-36/7.09e-37) × (1/33) \\
-  & = 0.1 × 7.25e8 × 10 × 0.03030 = 2.196e7 (UQFF scale) \\
-  & g_buoy ≈ 1.335e5 m/s2  (BH dominates at all buoyancy scales)
+  & f_Ub = 0.1 \times \Deltak_\eta \times (\rho_UA/\rho_SCm) \times (1/33) \\
+  & = 0.1 \times 7.25e8 \times (7.09e-36/7.09e-37) \times (1/33) \\
+  & = 0.1 \times 7.25e8 \times 10 \times 0.03030 = 2.196e7 (UQFF scale) \\
+  & g_buoy \approx 1.335e5 m/s2  (BH dominates at all buoyancy scales)
 \end{aligned}
 $$
 
@@ -117,10 +117,10 @@ $$
 
 $$
 \begin{aligned}
-  & g_compressed = 1.335×105 m/s2 \\
-  & g_resonant   = 1.335×105 m/s2 \\
-  & g_buoyancy   = 1.335×105 m/s2 \\
-  & g_primary    = 1.335×105 m/s2
+  & g_compressed = 1.335\times105 m/s2 \\
+  & g_resonant   = 1.335\times105 m/s2 \\
+  & g_buoyancy   = 1.335\times105 m/s2 \\
+  & g_primary    = 1.335\times105 m/s2
 \end{aligned}
 $$
 
@@ -132,9 +132,9 @@ The key contribution of NGC 2525 to UQFF theory is the **transient mass-loss cor
 
 $$
 \begin{aligned}
-  & M_SN(t) = 1.4·\text{M\_M\_sun}·exp(–t/τ_SN) \\
-  & δg_SN(t=0) = G·M_SN / r2 = 2.303×10-21 m/s2 \\
-  & δg_SN(t=1yr) = δg_SN(t=0) × e-1 = 8.47×10-22 m/s2
+  & M_SN(t) = 1.4\cdot\text{M\_M\_sun}\cdotexp(–t/\tau_SN) \\
+  & \deltag_SN(t=0) = G\cdotM_SN / r2 = 2.303\times10-21 m/s2 \\
+  & \deltag_SN(t=1yr) = \deltag_SN(t=0) \times e-1 = 8.47\times10-22 m/s2
 \end{aligned}
 $$
 
@@ -147,7 +147,7 @@ direct link between photometric observations and UQFF field perturbations.
 
 ## 5. Physical Interpretation
 
-NGC 2525's SMBH-dominated result (g ~ 1.335×105 m/s2) confirms that compact SMBH cores produce
+NGC 2525's SMBH-dominated result (g ~ 1.335$\times$105 m/s2) confirms that compact SMBH cores produce
 gravitational accelerations many orders of magnitude above standard galactic rotation curves. The
 Type Ia SN 2018gv provides a rare calibration point where the UQFF field is measurably perturbed by
 a single stellar mass-release event. This positions NGC 2525 as the first UQFF system where a
@@ -157,8 +157,8 @@ transient stellar explosion is incorporated into the master equation.
 
 ## 6. Conclusions
 
-UQFF applied to NGC 2525 yields g_primary ≈ 1.335×105 m/s2 with SMBH dominance. The novel supernova
-mass-loss term M_SN(t) = 1.4·M_M_sun·exp(–t/τ_SN) extends UQFF to cover transient gravitational
+UQFF applied to NGC 2525 yields g_primary $\approx$ 1.335$\times$105 m/s2 with SMBH dominance. The novel supernova
+mass-loss term M_SN(t) = 1.4$\cdot$M_M_sun$\cdot$exp(–t/$\tau$_SN) extends UQFF to cover transient gravitational
 perturbations from Type Ia supernovae, establishing a new class of time-dependent UQFF field
 corrections applicable to any system hosting an active SN or TDE.
 
@@ -172,7 +172,7 @@ corrections applicable to any system hosting an active SN or TDE.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -191,7 +191,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -266,7 +266,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.199 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -277,13 +277,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

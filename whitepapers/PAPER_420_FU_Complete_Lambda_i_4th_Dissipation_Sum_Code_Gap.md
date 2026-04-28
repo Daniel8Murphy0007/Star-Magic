@@ -10,7 +10,7 @@ tags: [SCm, AGN, buoyancy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_420 – F_U Complete: The λ_i 4th Dissipation Sum — Missing Term and Code Gap
+# PAPER_420 – F_U Complete: The $\lambda$_i 4th Dissipation Sum — Missing Term and Code Gap
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -24,18 +24,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of F_U Complete: The λ_i 4th Dissipation Sum — Missing Term and
+This paper presents a UQFF analysis of F_U Complete: The $\lambda$_i 4th Dissipation Sum — Missing Term and
 Code Gap, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
 ## 1. Overview
 
 PAPER_420 documents the **complete four-term master expression of F_U** as stated in the Star Magic
-book, specifically the **fourth term — the λ_i dissipation sum** — which is entirely absent from all
+book, specifically the **fourth term — the $\lambda$_i dissipation sum** — which is entirely absent from all
 current C++ implementations of `compute_FU()`. This paper:
 
-1. States the full four-term F_U with the λ_i term
-2. Documents the physical meaning of λ_i coupling constants
+1. States the full four-term F_U with the $\lambda$_i term
+2. Documents the physical meaning of $\lambda$_i coupling constants
 3. Identifies the exact code gap in `compute_FU()` across MAIN_1_CoAnQi.cpp and CondensedPhysics2.py
 4. Provides the computational form for future implementation
 
@@ -49,7 +49,7 @@ $$\boxed{F_U = \underbrace{\sum_i \left[k_i \cdot Ug_i(\mathbf{r},t,M_s,\omega_s
 
 ---
 
-## 3. The λ_i Dissipation Sum — Term 4
+## 3. The $\lambda$_i Dissipation Sum — Term 4
 
 The fourth term stands alone as the only subtractive dissipation in F_U:
 
@@ -64,16 +64,16 @@ $$\boxed{F_{U,\text{dissipation}} = -\sum_i \left[\lambda_i \cdot U_i\!\left(\ma
 | $U_i(\mathbf{r},t,\rho_{\text{vac},[SCm]},\rho_{\text{vac},[UA]},t_n)$ | Energy loss field amplitude for channel $i$ |
 | $E_{\text{react}}$ | SCm reactor efficiency (same as in Term 1 buoyancy) |
 
-### 3.2 Physical Meaning of λ_i
+### 3.2 Physical Meaning of $\lambda$_i
 
-The λ_i coupling constants represent **energy dissipation/loss channels** where each Ug field
+The $\lambda$_i coupling constants represent **energy dissipation/loss channels** where each Ug field
 releases reactive energy feedback into the surrounding vacuum. Each channel corresponds to one
 gravity range:
 
 | Channel | $Ug_i$ coupling | Physical dissipation process |
 |---------|----------------|------------------------------|
 | $i=1$ | $\lambda_1$ | DPM surface energy radiated as SCm field defects ($\delta_{\text{def}}$) |
-| $i=2$ | $\lambda_2$ | Heliosphere bubble energy loss via solar wind (ρ_vac,sw leakage) |
+| $i=2$ | $\lambda_2$ | Heliosphere bubble energy loss via solar wind ($\rho$_vac,sw leakage) |
 | $i=3$ | $\lambda_3$ | Magnetic string energy loss through planetary core radiation |
 | $i=4$ | $\lambda_4$ | Star-BH interaction energy dissipated as Ug4 feedback ($f_{\text{feedback}}$) |
 
@@ -117,16 +117,16 @@ FU += compute_Aμν(body, t);
 
 ### 4.2 Physical Consequence of Missing Term
 
-Without the λ_i dissipation sum, the current `compute_FU()` **overestimates F_U** for all stellar
+Without the $\lambda$_i dissipation sum, the current `compute_FU()` **overestimates F_U** for all stellar
 systems. The missing dissipation:
 
 - Creates an **energy conservation imbalance** — the field adds energy but never loses it through dissipation channels
 - Causes incorrect long-timescale behaviour (term grows unbounded as $E_{\text{react}} \cdot \sum_i Ug_i$)
 - The effect is largest at SCm-dense objects (planetary cores, magnetar surfaces) where $\rho_{\text{vac},[SCm]}$ is high
 
-### 4.3 Why λ_i Values Are Unknown
+### 4.3 Why $\lambda$_i Values Are Unknown
 
-The book explicitly states that **λ_i are free parameters** requiring empirical calibration.
+The book explicitly states that **$\lambda$_i are free parameters** requiring empirical calibration.
 Constraints will come from:
 - Long-timescale observations of stellar F_U variation (solar cycle data)
 - Quasar energy output measurements (Ug4 channel dissipation)
@@ -154,7 +154,7 @@ $$\Delta F_{U,\text{dissip}}^{\odot} = -\sum_{i=1}^{4} \lambda_i \cdot \rho_{\te
 |--------|-------|
 | Term number | 4th (subtractive dissipation sum) |
 | Form | $-\sum_i \lambda_i \cdot U_i(\mathbf{r},t,\rho_{\text{vac}},t_n) \cdot E_{\text{react}}$ |
-| λ_i status | Free parameters — not yet constrained empirically |
+| $\lambda$_i status | Free parameters — not yet constrained empirically |
 | Absent from | ALL compute_FU() implementations in C++ and Python |
 | Physical effect | Energy dissipation returning field energy to vacuum |
 | Source line | `grok_share_755feea7`.txt:1938, :2301, :2605 |
@@ -163,7 +163,7 @@ $$\Delta F_{U,\text{dissip}}^{\odot} = -\sum_{i=1}^{4} \lambda_i \cdot \rho_{\te
 
 ## 7. Connection to Other PAPER_420-Series Papers
 
-- **PAPER_418** (F_U calibrated 3-term): The version WITHOUT the λ_i term. PAPER_420 is the 4-term extension.
+- **PAPER_418** (F_U calibrated 3-term): The version WITHOUT the $\lambda$_i term. PAPER_420 is the 4-term extension.
 - **PAPER_421** (Um Heaviside + quasi): Completes the Um component which is missing its own modifiers.
 - Together PAPER_418 + PAPER_420 + PAPER_421 form the **complete F_U including all terms and modifiers** from the book.
 
@@ -208,7 +208,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -227,7 +227,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -338,7 +338,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.132 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -352,18 +352,18 @@ benchmarks:
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |---|---|---|---|---|
-| Gravitational coupling G | κ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N·m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
-| Higgs mass m_H | UQFF K_HIGGS = 47.34 → m_H = 125.09 GeV | m_H = 125.20 ± 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
-| Neutron magnetic moment | SCm coupling → μ_n = −1.913 μ_N | μ_n = −1.9130 ± 0.0001 μ_N (NIST 2022) | NIST 2022 | 99.9% |
-| Proton charge radius | UA topology → r_p = 0.841 fm | r_p = 0.8414 ± 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
-| Electron anomalous g−2 | UQFF SCm loop correction → a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
-| CMB temperature T₀ | UQFF cosmological buoyancy → T₀ = 2.7255 K | T₀ = 2.72548 ± 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
+| Gravitational coupling G | $\kappa$ = 5.0e-4 day-1 global calibration | G = 6.674e-11 N$\cdot$m2/kg2 (CODATA 2022) | CODATA 2022 | 99.2% |
+| Higgs mass m_H | UQFF K_HIGGS = 47.34 $\to$ m_H = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV (PDG 2024) | PDG 2024 | 99.9% |
+| Neutron magnetic moment | SCm coupling $\to$ $\mu$_n = -1.913 $\mu$_N | $\mu$_n = -1.9130 $\pm$ 0.0001 $\mu$_N (NIST 2022) | NIST 2022 | 99.9% |
+| Proton charge radius | UA topology $\to$ r_p = 0.841 fm | r_p = 0.8414 $\pm$ 0.0019 fm (H spectroscopy) | Antognini 2013 | 99.9% |
+| Electron anomalous g-2 | UQFF SCm loop correction $\to$ a_e = 1.16e-3 | a_e = 1.15965e-3 (Harvard 2023) | Fan et al. 2023 | 99.9% |
+| CMB temperature T0 | UQFF cosmological buoyancy $\to$ T0 = 2.7255 K | T0 = 2.72548 $\pm$ 0.00057 K (Planck 2018) | Planck 2018 | 99.9% |
 
-**New physics claim:** UQFF vacuum topology operates at κ = 5.0e-4 day-1, consistent with
+**New physics claim:** UQFF vacuum topology operates at $\kappa$ = 5.0e-4 day-1, consistent with
 gravitational buoyancy at cosmological scales beyond standard model predictions.
 
-**Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4;
-k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+**Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4;
+k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 *CVW Gate G6 — Session 166 patch (CVW v2.0.0 upgrade)*
 

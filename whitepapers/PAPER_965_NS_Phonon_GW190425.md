@@ -41,7 +41,7 @@ $$\Lambda_text{UQFF} = \Lambda_text{GR} \cdot (1 + \delta\Lambda_\text{phonon})$
 
 ## 4. Mass-Gap Classification
 
-At $\Gamma = 0.1$ THz: P(NS) ≈ 49%, P(BH) ≈ 51%.
+At $\Gamma = 0.1$ THz: P(NS) $\approx$ 49%, P(BH) $\approx$ 51%.
 
 ---
 
@@ -102,7 +102,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -121,7 +121,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -228,7 +228,7 @@ $$\mathcal{L}_\text{GW} = \frac{c^2}{16\pi G}\left(\partial_mu h_{\alpha\beta}\r
 $$\boxed{h_\text{UQFF} = h_\text{GR}\left(1 - \frac{\Delta}{\hbar\omega_\text{SCm}} \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}\right)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → SCm vacuum → BCS gap → phonon phase $\phi$ → GW strain correction → GW190425 observable
+PAPER_877 $\to$ SCm vacuum $\to$ BCS gap $\to$ phonon phase $\phi$ $\to$ GW strain correction $\to$ GW190425 observable
 
 ---
 

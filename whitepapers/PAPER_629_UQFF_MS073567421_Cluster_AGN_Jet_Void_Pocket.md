@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Number:** #216  
 **Source:** grok_share_6322ac199.txt (Session 161)  
 **Filed:** Session 161 v5.18  
-**VDS/DVP/BH26:** DVP (explosive (∇UA)-26 AGN driver)  
+**VDS/DVP/BH26:** DVP (explosive ($\nabla$UA)-26 AGN driver)  
 
 ---
 
@@ -34,10 +34,10 @@ compressed field equations and observational predictions within the Star-Magic/U
 ## §1 Abstract
 
 MS 0735.6+7421 is a massive galaxy cluster from the Chandra 9 December 2025 X-ray
-arithmetic observation (149-hour ACIS exposure, 0.5–7 keV). At ∇UA ≈ 10-22 m-1
-(extreme cluster void), the DVP term U_m = κ·(DPM_n−DPM_s)/(∇UA)26 diverges to
+arithmetic observation (149-hour ACIS exposure, 0.5–7 keV). At $\nabla$UA $\approx$ 10-22 m-1
+(extreme cluster void), the DVP term U_m = $\kappa$$\cdot$(DPM_n-DPM_s)/($\nabla$UA)26 diverges to
 10572+ — providing an explosive energy reservoir that drives the powerful AGN jet
-outburst. The 9D Wolfram equilibrium pocket forms at ∇UA_eq ≈ 10-11 where U_b
+outburst. The 9D Wolfram equilibrium pocket forms at $\nabla$UA_eq $\approx$ 10-11 where U_b
 rebound stabilizes the explosive DVP energy.
 
 ---
@@ -50,8 +50,8 @@ rebound stabilizes the explosive DVP energy.
 | Effective radius r_eff | 1.32e22 m |
 | Chandra exposure | 149 hours (ACIS) |
 | Temperature | ~108 K |
-| ∇UA (cluster voids) | ~10-22 m-1 |
-| ∇UA (equilibrium pocket) | ~10-11 |
+| $\nabla$UA (cluster voids) | ~10-22 m-1 |
+| $\nabla$UA (equilibrium pocket) | ~10-11 |
 | Energy band | 0.5–7 keV |
 | RA/Dec | 07h41m50.2s, +74°14′51″ |
 | Observation | Chandra X-ray Arithmetic 09 Dec 2025 |
@@ -64,14 +64,14 @@ The U_m component at cluster-void gradient:
 
 $$
 \begin{aligned}
-  & U_m = κ · (DPM_n − DPM_s) / (∇UA)26 \\
-  & = 1 · 2 / (10-22)26 \\
+  & U_m = \kappa \cdot (DPM_n - DPM_s) / (\nablaUA)26 \\
+  & = 1 \cdot 2 / (10-22)26 \\
   & = 2 / 10-572 \\
-  & = 2 × 10572  N  (log₁₀ ≈ 572)
+  & = 2 \times 10572  N  (log10 \approx 572)
 \end{aligned}
 $$
 
-**This is the explosive AGN energy source.** At cluster-void gradients (∇UA ≈ 10-22),
+**This is the explosive AGN energy source.** At cluster-void gradients ($\nabla$UA $\approx$ 10-22),
 the DVP term generates an almost unbounded energy density that must be channeled
 outward — explaining why MS 0735.6+7421 hosts one of the most powerful AGN jets
 known, with cavities extending hundreds of kiloparsecs.
@@ -80,13 +80,13 @@ known, with cavities extending hundreds of kiloparsecs.
 
 ## §4 Equilibrium Pocket Formation
 
-The explosive energy terminates when ∇UA rises to an equilibrium value ∇UA_eq where
+The explosive energy terminates when $\nabla$UA rises to an equilibrium value $\nabla$UA_eq where
 U_b rebound suppresses U_m:
 
 $$
 \begin{aligned}
-  & F_U = 0  at  ∇UA_eq ≈ 10-11 \\
-  & U_b(∇UA_eq) = g · (1 − 1/∇UA_eq) ≈ g · 1 = 10-3  N
+  & F_U = 0  at  \nablaUA_eq \approx 10-11 \\
+  & U_b(\nablaUA_eq) = g \cdot (1 - 1/\nablaUA_eq) \approx g \cdot 1 = 10-3  N
 \end{aligned}
 $$
 
@@ -100,7 +100,7 @@ medium as the X-ray cavity + radio lobe system observed by Chandra.
 The 9D Gaussian sum at cluster scale:
 
 $$
-∇\text{UA\_9D\_cluster} = Σ_{d=1}^{9} exp(−(r/d+1 − r/d+1)2/(2·(σ/d+1)2))
+\nabla\text{UA\_9D\_cluster} = \Sigma_{d=1}^{9} exp(-(r/d+1 - r/d+1)2/(2\cdot(\sigma/d+1)2))
 $$
 
 At r_eff = 1.32e22 m, each Gaussian peaks at the channel centroid. The total
@@ -113,9 +113,9 @@ outskirt filaments.
 
 | Component | Frequency (Hz) | Physical Process |
 |-----------|---------------|-----------------|
-| Thermal (108 K) | k_B·T/h ≈ 2×1018 Hz | ICM thermal bremsstrahlung |
-| Low keV Chandra | 0.5 keV → 1.2e17 Hz | Soft X-ray spectral edge |
-| High keV Chandra | 7 keV → 1.7e18 Hz | Hard X-ray spectral cutoff |
+| Thermal (108 K) | k_B$\cdot$T/h $\approx$ 2$\times$1018 Hz | ICM thermal bremsstrahlung |
+| Low keV Chandra | 0.5 keV $\to$ 1.2e17 Hz | Soft X-ray spectral edge |
+| High keV Chandra | 7 keV $\to$ 1.7e18 Hz | Hard X-ray spectral cutoff |
 | DVP explosive event | ~1016–1018 Hz | Pocket formation burst |
 
 ---
@@ -123,11 +123,11 @@ outskirt filaments.
 ## §7 Physical Significance
 
 MS 0735.6+7421 is UQFF's premier testbed for the DVP explosive mechanism:
-1. The cavity volume (≈ 0.5 Mpc3) stores the deposited DVP energy
+1. The cavity volume ($\approx$ 0.5 Mpc3) stores the deposited DVP energy
 2. The radio lobes mark the outflow paths driven by DVP gradient flux
 3. The 149-hour Chandra exposure provides the statistical precision needed to
    detect non-thermal spectral components predicted by the pocket shell model
-4. The equilibrium at ∇UA_eq ≈ 10-11 predicts a X-ray brightness edge at r ≈ r_eff
+4. The equilibrium at $\nabla$UA_eq $\approx$ 10-11 predicts a X-ray brightness edge at r $\approx$ r_eff
 
 ---
 
@@ -139,7 +139,7 @@ MS 0735.6+7421 is UQFF's premier testbed for the DVP explosive mechanism:
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -158,7 +158,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -194,7 +194,7 @@ the phonon transmission efficiency across the ICM.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -297,7 +297,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.073 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -308,14 +308,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| AGN jet kinetic power P_jet | DVP flux: P_jet ≈ (1/2)ρ_vac × A_jet × v_jet3; for MS 0735: P_jet ~ 1067 W | Chandra MS 0735: P_jet ≈ 1067 W (cavity inflation) | Chandra Dec 2025 | PASS Consistent |
-| Radio lobe cavity energy (QHD) | BH26: E_cavity = P_jet × t_bubble ≈ 6×1063 J | MS 0735 cavities: E ≈ 6×1063 J (Chandra/VLA) | Chandra + VLA | PASS Consistent |
-| Eddington luminosity ceiling | L_Edd = 4πGMm_pc/σ_T; M_BH ~ 3×100`M_M_sun` | MS 0735 BH mass: ~1010`M_M_sun`; L_Edd ~ 106µ W | PDG / Chandra | UQFF jet power within Eddington limit |
-| σ_T Thomson cross-section (QED) | U_m scattering: σ_T = 6.65e-29 m2 | σ_T = 6.6524e-29 m2 | PDG (QED) | 100% (exact QED input) |
+| AGN jet kinetic power P_jet | DVP flux: P_jet $\approx$ (1/2)$\rho$_vac $\times$ A_jet $\times$ v_jet3; for MS 0735: P_jet ~ 1067 W | Chandra MS 0735: P_jet $\approx$ 1067 W (cavity inflation) | Chandra Dec 2025 | PASS Consistent |
+| Radio lobe cavity energy (QHD) | BH26: E_cavity = P_jet $\times$ t_bubble $\approx$ 6$\times$1063 J | MS 0735 cavities: E $\approx$ 6$\times$1063 J (Chandra/VLA) | Chandra + VLA | PASS Consistent |
+| Eddington luminosity ceiling | L_Edd = 4$\pi$GMm_pc/$\sigma$_T; M_BH ~ 3$\times$100`M_M_sun` | MS 0735 BH mass: ~1010`M_M_sun`; L_Edd ~ 106µ W | PDG / Chandra | UQFF jet power within Eddington limit |
+| $\sigma$_T Thomson cross-section (QED) | U_m scattering: $\sigma$_T = 6.65e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG (QED) | 100% (exact QED input) |
 
 **New physics claim:** The DVP explosive mechanism deposits energy into cavities at a rate
 determined by the gradient pocket geometry, NOT by standard MHD jet propagation. The
-predicted X-ray brightness edge at r ≈ r_eff (cavity boundary) is a testable UQFF signature
+predicted X-ray brightness edge at r $\approx$ r_eff (cavity boundary) is a testable UQFF signature
 distinct from the ICM thermal pressure balance model.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
@@ -327,7 +327,7 @@ distinct from the ICM thermal pressure balance model.
 - grok_share_6322ac199.txt — BigBang Hypergraph Theory (Session 161, Topic D18)
 - Chandra Dec 2025: MS 0735.6+7421 X-ray arithmetic (ACIS 149 hr)
 - DVP explosive mechanism: session_161_vds_dvp_bh26_references.md §3
-- Equilibrium derivation: PAPER_622 §4 (∇UA_eq = √(κ/g))
+- Equilibrium derivation: PAPER_622 §4 ($\nabla$UA_eq = $\sqrt{}$($\kappa$/g))
 
 ---
 

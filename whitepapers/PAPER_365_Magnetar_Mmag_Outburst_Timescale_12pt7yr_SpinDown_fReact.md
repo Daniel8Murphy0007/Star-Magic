@@ -10,27 +10,27 @@ tags: [AGN, spin-down, vacuum, magnetar, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_365 — Magnetar Magnetic Energy and Outburst Timescale: M_mag = 2.01×1037 J and τ = 12.7 yr
+# PAPER_365 — Magnetar Magnetic Energy and Outburst Timescale: M_mag = 2.01$\times$1037 J and $\tau$ = 12.7 yr
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF derivation of magnetar outburst timescale τ_outburst from M_mag/L_X
+**Classification:** FIRST UQFF derivation of magnetar outburst timescale $\tau$_outburst from M_mag/L_X
 ratio  
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
-The total magnetic energy reservoir of a canonical magnetar (B = 2×1010 T, SGR class) is computed as
-M_mag = B2V/(2μ₀) = 2.01×1037 J. This reservoir drains at the persistent X-ray luminosity L_X,
-giving an outburst timescale τ_outburst = M_mag/L_X ≈ 12.7 yr. The spin-down rate is ν̇ =
-−f_react/(2πP), connecting observed spin-down to the UQFF vacuum reactance frequency. These three
-values (M_mag, τ_outburst, ν̇) form the canonical magnetar energy budget in UQFF.
+The total magnetic energy reservoir of a canonical magnetar (B = 2$\times$1010 T, SGR class) is computed as
+M_mag = B2V/(2$\mu$0) = 2.01$\times$1037 J. This reservoir drains at the persistent X-ray luminosity L_X,
+giving an outburst timescale $\tau$_outburst = M_mag/L_X $\approx$ 12.7 yr. The spin-down rate is $\nu$̇ =
+-f_react/(2$\pi$P), connecting observed spin-down to the UQFF vacuum reactance frequency. These three
+values (M_mag, $\tau$_outburst, $\nu$̇) form the canonical magnetar energy budget in UQFF.
 
 ---
 
@@ -40,17 +40,17 @@ values (M_mag, τ_outburst, ν̇) form the canonical magnetar energy budget in U
 
 $$M_{\rm mag} = \frac{B^2 V}{2\mu_0}$$
 
-For B = 2×1010 T and magnetospheric volume V ~ μ₀ c3/B2 × (spin-down constraint):
+For B = 2$\times$1010 T and magnetospheric volume V ~ $\mu$0 c3/B2 $\times$ (spin-down constraint):
 $$M_{\rm mag} = 2.01 \times 10^{37}\ \mathrm{J}$$
 
-This is approximately 3 solar masses equivalent in energy (cf. E_sun,rest = 1.8×1047 J — M_mag is
-~10-10 × rest mass energy).
+This is approximately 3 solar masses equivalent in energy (cf. E_sun,rest = 1.8$\times$1047 J — M_mag is
+~10-10 $\times$ rest mass energy).
 
 ### 2.2 Outburst Timescale
 
 $$\tau_{\rm outburst} = \frac{M_{\rm mag}}{L_X}$$
 
-For persistent magnetar L_X ~ 5×1028 W = 5×1035 erg/s:
+For persistent magnetar L_X ~ 5$\times$1028 W = 5$\times$1035 erg/s:
 $$\tau_{\rm outburst} = \frac{2.01\times 10^{37}\ \mathrm{J}}{5\times 10^{28}\ \mathrm{W}} = 4.02\times 10^8\ \mathrm{s} \approx 12.7\ \mathrm{yr}$$
 
 ### 2.3 Spin-Down Rate
@@ -67,10 +67,10 @@ $$\dot{\nu} = -\frac{f_{\rm react}}{2\pi \times 3.76} = -\frac{f_{\rm react}}{23
 
 | Energy Storage | Value |
 |----------------|-------|
-| M_mag (magnetic) | 2.01×1037 J |
-| τ_outburst (drain time) | 12.7 yr |
-| L_X (persistent) | ~5×1028 W |
-| ν̇ (spin-down) | −f_react/(2πP) |
+| M_mag (magnetic) | 2.01$\times$1037 J |
+| $\tau$_outburst (drain time) | 12.7 yr |
+| L_X (persistent) | ~5$\times$1028 W |
+| $\nu$̇ (spin-down) | -f_react/(2$\pi$P) |
 
 ---
 
@@ -78,24 +78,24 @@ $$\dot{\nu} = -\frac{f_{\rm react}}{2\pi \times 3.76} = -\frac{f_{\rm react}}{23
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| B | SGR class | 2×1010 T |
-| M_mag | B2V/(2μ₀) | 2.01×1037 J |
-| L_X | X-ray persistent | ~5×1028 W |
-| τ_outburst | M_mag/L_X | 12.7 yr |
+| B | SGR class | 2$\times$1010 T |
+| M_mag | B2V/(2$\mu$0) | 2.01$\times$1037 J |
+| L_X | X-ray persistent | ~5$\times$1028 W |
+| $\tau$_outburst | M_mag/L_X | 12.7 yr |
 | P | Rotation period | 3.76 s |
-| ν̇ | −f_react/(2πP) | −f_react/23.63 Hz/s |
+| $\nu$̇ | -f_react/(2$\pi$P) | -f_react/23.63 Hz/s |
 
 ---
 
 ## 4. Physical Significance
 
-The τ_outburst = 12.7 yr timescale derived from M_mag/L_X provides a definitive UQFF prediction for
+The $\tau$_outburst = 12.7 yr timescale derived from M_mag/L_X provides a definitive UQFF prediction for
 how long a magnetar can sustain its observed X-ray luminosity from the magnetic energy reservoir
-alone. For SGR 1745-2900 (active since June 2013), the τ_outburst = 12.7 yr predicts the X-ray flux
+alone. For SGR 1745-2900 (active since June 2013), the $\tau$_outburst = 12.7 yr predicts the X-ray flux
 should have declined to ~1/e of its peak by June 2026. This is directly testable with Chandra/NICER
 monitoring campaigns.
 
-This paper also explicitly connects τ_outburst = 12.7 yr to the Centaurus A activation period
+This paper also explicitly connects $\tau$_outburst = 12.7 yr to the Centaurus A activation period
 (PAPER_347, 12.5 yr), suggesting a universal ~12–13 year magnetospheric energy timescale scale
 present in both stellar and AGN compact objects.
 
@@ -103,8 +103,8 @@ present in both stellar and AGN compact objects.
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_342 (Magnetar DPM-THz):** PAPER_342 derives the frequency form; PAPER_365 derives the energy budget and τ_outburst.
-- **vs. PAPER_343 (SGR1745):** PAPER_343 derives L_X = ρ_vac·f_res·V; PAPER_365 uses L_X to derive τ_outburst = M_mag/L_X.
+- **vs. PAPER_342 (Magnetar DPM-THz):** PAPER_342 derives the frequency form; PAPER_365 derives the energy budget and $\tau$_outburst.
+- **vs. PAPER_343 (SGR1745):** PAPER_343 derives L_X = $\rho$_vac$\cdot$f_res$\cdot$V; PAPER_365 uses L_X to derive $\tau$_outburst = M_mag/L_X.
 
 ---
 
@@ -152,7 +152,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -171,7 +171,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -248,7 +248,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.185 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -259,13 +259,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

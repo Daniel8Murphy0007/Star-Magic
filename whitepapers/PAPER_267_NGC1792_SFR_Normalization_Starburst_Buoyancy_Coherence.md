@@ -24,20 +24,20 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-In the UQFF 2.0 upgraded model of NGC 1792 (z = 0.0095, M₀ = 1×1010 MM_sun, r = 7.569×1020 m), the
+In the UQFF 2.0 upgraded model of NGC 1792 (z = 0.0095, M0 = 1$\times$1010 MM_sun, r = 7.569$\times$1020 m), the
 normalized star-formation rate factor `SFR_factor = SFR[MM_sun/yr] / M₀[MM_sun] = 10 / 1×1010 = 10-9 yr-1`
 is identified as the **specific star-formation rate (sSFR)** — a dimensionless coupling constant
 that uniformly scales the time-evolving mass M(t). With the 3-tier buoyancy structure introduced in
 UQFF 2.0 (PAPER_198 standard), all three buoyancy tiers couple to M(t) through the same sSFR
-exponential: Δg_buoy_total = sSFR × (term_Ubi + term_F_UBii + term_Ub_i) × e^{−t/τ_SF}. This
+exponential: $\Delta$g_buoy_total = sSFR $\times$ (term_Ubi + term_F_UBii + term_Ub_i) $\times$ e^{-t/$\tau$_SF}. This
 produces a **starburst-buoyancy coherence** effect: the peak of star formation and the peak of
-gravitational buoyancy occur simultaneously and decay with the same timescale τ_SF = 100 Myr. This
+gravitational buoyancy occur simultaneously and decay with the same timescale $\tau$_SF = 100 Myr. This
 paper derives the coherence formula, calculates numerical predictions for NGC 1792, and proposes
 observational signatures.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -47,8 +47,8 @@ present in Standard Model treatments.
 
 The **specific star formation rate (sSFR)** = SFR / M_stellar is a fundamental dimensionally-reduced
 astrophysical parameter that characterizes the fractional mass growth rate of a galaxy per unit
-time. In the UQFF framework for NGC 1792, the mass evolution function M(t) = M₀ × (1 + SFR_factor ×
-e^{−t/τ_SF}) embeds the sSFR as the amplitude of the exponentially-decaying mass growth term.
+time. In the UQFF framework for NGC 1792, the mass evolution function M(t) = M0 $\times$ (1 + SFR_factor $\times$
+e^{-t/$\tau$_SF}) embeds the sSFR as the amplitude of the exponentially-decaying mass growth term.
 Previous analyses treated this purely as a mass-growth factor for the base gravity term. However, in
 the UQFF 2.0 framework with 3-tier buoyancy (introduced via PAPER_198), the Ug1_t field—derived from
 M(t)—propagates into all three buoyancy tiers simultaneously. This establishes a direct coupling
@@ -82,7 +82,7 @@ and therefore:
 
 $$\text{Ug1\_t} = \frac{G M(t)}{r^2} = \text{ug1\_base} \cdot \left(1 + \text{sSFR} \cdot e^{-t/\tau_text{SF}}\right)$$
 
-where ug1_base = G M₀ / r2 is the static base field.
+where ug1_base = G M0 / r2 is the static base field.
 
 ### 2.2 3-Tier Buoyancy Structure (UQFF 2.0)
 
@@ -97,8 +97,8 @@ $$\text{term\_F_UBii} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{
 **Tier 3 — Outer-frame via Fornax Cluster external body (Ub_i, CP1):**
 $$\text{term\_Ub_i} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA] \cdot \cos(\pi t)$$
 
-where β_i = 0.61, ω_g = 7.3×10-16 rad/s, [UA] = 10-11, M_Fornax = 1.393×1044 kg, r_Fornax =
-6.17×1023 m.
+where $\beta$_i = 0.61, $\omega$_g = 7.3$\times$10-16 rad/s, [UA] = 10-11, M_Fornax = 1.393$\times$1044 kg, r_Fornax =
+6.17$\times$1023 m.
 
 ---
 
@@ -123,12 +123,12 @@ The total coherent buoyancy boost is:
 
 $$\boxed{\Delta g_\text{buoy\_total} = \text{sSFR} \cdot \left(\text{term\_Ubi}^\infty + \text{term\_F_UBii}^\infty + \text{term\_Ub_i}^\infty\right) \cdot e^{-t/\tau_text{SF}}}$$
 
-where the superscript ∞ denotes the static (non-sSFR) component amplitudes.
+where the superscript $\infty$ denotes the static (non-sSFR) component amplitudes.
 
 ### 3.2 Key Prediction
 
-**Starburst-buoyancy coherence:** The peak buoyancy enhancement Δg_buoy_total(t=0) occurs
-simultaneously with peak sSFR. Both decay with the **same timescale τ_SF = 100 Myr** = 3.15576×1015
+**Starburst-buoyancy coherence:** The peak buoyancy enhancement $\Delta$g_buoy_total(t=0) occurs
+simultaneously with peak sSFR. Both decay with the **same timescale $\tau$_SF = 100 Myr** = 3.15576$\times$1015
 s. This is a unique prediction: in standard DPM-seeded gravity, buoyancy has no dependence on star
 formation rate.
 
@@ -137,12 +137,12 @@ formation rate.
 | Parameter | Value |
 |-----------|-------|
 | sSFR | 10-9 yr-1 |
-| ug1_base | G×M₀/r2 ≈ 7.35×10-11 m/s2 |
-| ΔTier 1 at t=0 | 0.5 × 7.35×10-11 × 10-9 ≈ 3.7×10-20 m/s2 |
-| τ_SF | 100 Myr = 3.15576×1015 s |
+| ug1_base | G$\times$M0/r2 $\approx$ 7.35$\times$10-11 m/s2 |
+| $\Delta$Tier 1 at t=0 | 0.5 $\times$ 7.35$\times$10-11 $\times$ 10-9 $\approx$ 3.7$\times$10-20 m/s2 |
+| $\tau$_SF | 100 Myr = 3.15576$\times$1015 s |
 | Coherence decay time | 100 Myr (matches SF episode) |
-| β_i | 0.61 |
-| ω_g | 7.3×10-16 rad/s |
+| $\beta$_i | 0.61 |
+| $\omega$_g | 7.3$\times$10-16 rad/s |
 
 The coherence ratio (buoyancy enhancement / static buoyancy) at t=0:
 
@@ -173,7 +173,7 @@ $$g_\text{buoy\_enhanced}(\text{sSFR}) = g_\text{buoy\_passive} \times (1 + \tex
 
 ### 4.3 Starburst Quenching Imprint
 
-When star formation is quenched (τ_SF → 0), the buoyancy enhancement drops to zero on the SF
+When star formation is quenched ($\tau$_SF $\to$ 0), the buoyancy enhancement drops to zero on the SF
 timescale. This should be observable as correlated suppression of gravitational signatures alongside
 AGN-quenching or SN-driven gas expulsion.
 
@@ -181,12 +181,12 @@ AGN-quenching or SN-driven gas expulsion.
 
 ## 5. Astrophysical Context
 
-NGC 1792 has a well-measured SFR from infrared and Hα studies. The normalized sSFR = 10 MM_sun/yr / 1010
+NGC 1792 has a well-measured SFR from infrared and H$\alpha$ studies. The normalized sSFR = 10 MM_sun/yr / 1010
 MM_sun = 10-9 yr-1 is characteristic of actively star-forming disk galaxies. The coupling of sSFR to the
 UQFF buoyancy field via M(t) is a natural consequence of the PAPER_198 3-tier framework when applied
 to time-evolving mass systems.
 
-The Fornax Cluster (M_Fornax = 7×1013 MM_sun, r_Fornax ≈ 20 Mpc) as the Tier 3 external body introduces
+The Fornax Cluster (M_Fornax = 7$\times$1013 MM_sun, r_Fornax $\approx$ 20 Mpc) as the Tier 3 external body introduces
 the large-scale gravitational environment. The outer-frame coupling term_Ub_i carries information
 about the cluster environment into the local gravitational field of NGC 1792, weighted by sSFR.
 
@@ -200,16 +200,16 @@ yr-1), which acts as a **dimensionless coupling constant** modulating all three 
 2. The resulting **starburst-buoyancy coherence** prediction: all three UQFF buoyancy tiers peak
 simultaneously with star formation and decay with the same 100 Myr timescale.
 
-3. The coherence formula is: Δg_buoy_total = sSFR × (Ubi + F_UBii + Ub_i) × e^{−t/τ_SF}.
+3. The coherence formula is: $\Delta$g_buoy_total = sSFR $\times$ (Ubi + F_UBii + Ub_i) $\times$ e^{-t/$\tau$_SF}.
 
-4. The coherence ratio C = sSFR ≈ 10-9 yr-1 for NGC 1792, providing a direct observational link
+4. The coherence ratio C = sSFR $\approx$ 10-9 yr-1 for NGC 1792, providing a direct observational link
 between the galaxy's star-formation rate and its gravitational buoyancy signature.
 
 5. This predicts a universal sSFR–buoyancy scaling relation testable across the galaxy population.
 
 ---
 
-**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]B/(8p?c_s) = 5.7e-1 × 1.3e-9 =
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]B/(8p?c_s) = 5.7e-1 $\times$ 1.3e-9 =
 7.4e-10; Jeans mass deviation from standard = 7.4e-10  M_J.
 
 
@@ -248,7 +248,7 @@ the phonon transmission efficiency across the ICM.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -349,7 +349,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.146 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -360,13 +360,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -378,7 +378,7 @@ bridge.*
 - PAPER_198: F_UBii Taxonomy Part 1 — Compact Object and Stellar Buoyancy
 - GALAXY_NGC_1792.cpp UQFF 2.0 (Session 73, Module 19)
 - NGC 1792 observational parameters: HYPERLEDA / NED database
-- Fornax Cluster parameters: Drinkwater et al. (2001), M_500 = 7×1013 MM_sun
+- Fornax Cluster parameters: Drinkwater et al. (2001), M_500 = 7$\times$1013 MM_sun
 
 ---
 

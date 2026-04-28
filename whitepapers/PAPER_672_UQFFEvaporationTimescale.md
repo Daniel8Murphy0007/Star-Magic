@@ -23,7 +23,7 @@ crossings, and U_m sensitivity sweep.
 ---
 
 ## Abstract
-We derive the complete UQFF black hole evaporation timescale and calculate the mass at which τ_UQFF
+We derive the complete UQFF black hole evaporation timescale and calculate the mass at which $\tau$_UQFF
 equals the Hubble time, demarcating the boundary between stable and evaporating black holes.
 
 ## 1. Standard Timescale
@@ -32,17 +32,17 @@ $$\tau_{Hawking} = \frac{5120\pi G^2 M^3}{\hbar c^4}$$
 ## 2. UQFF Timescale
 $$\tau_{UQFF} = \frac{\tau_{Hawking}}{1-f_{TRZ}} \cdot \frac{\rho_{UA}}{\rho_{SCm}} \cdot \exp!\left(\frac{U_m}{k_B T_H}\right)$$
 
-Factor ≈ **30×** (1.11 × 10 × 2.718).
+Factor $\approx$ **30$\times$** (1.11 $\times$ 10 $\times$ 2.718).
 
 ## 3. Universe-Age Boundary Masses
 Standard: $M_{cross,std} = \left(\frac{\hbar c^4 t_H}{5120\pi G^2}\right)^{1/3} \approx 5.5\times10^{11}$ kg
 
 UQFF: $M_{cross,UQFF} = M_{cross,std} / (30)^{1/3} \approx 1.8\times10^{11}$ kg
 
-UQFF shifts the evaporation boundary 3.1× lower in mass.
+UQFF shifts the evaporation boundary 3.1$\times$ lower in mass.
 
 ## 4. Sensitivity to U_m
-| U_m/`k_BT_H` | τ factor over τ_std |
+| U_m/`k_BT_H` | $\tau$ factor over $\tau$_std |
 |-------------|---------------------|
 | 0 | 11.1 |
 | 1 | 30.2 |
@@ -51,7 +51,7 @@ UQFF shifts the evaporation boundary 3.1× lower in mass.
 | 5 | 1660 |
 
 ## 5. Physical Implications
-PBHs in the previously evaporating mass range 1.8×1011–5.5×1011 kg become stable under UQFF.
+PBHs in the previously evaporating mass range 1.8$\times$1011–5.5$\times$1011 kg become stable under UQFF.
 
 ## 6. C++ Module
 `UQFFEvaporationTimescale.h / .cpp` — Session 172
@@ -167,7 +167,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.095 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -178,13 +178,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

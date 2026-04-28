@@ -129,7 +129,7 @@ astrophysical measurements.
 ## 9. Confirmation from SOURCE115
 
 The 26-layer framework is independently implemented in `MAIN_1_CoAnQi.cpp` SOURCE115 (source172.cpp)
-as the 19-system polynomial master equation with 26D coupling terms. The [SSq]·i/26 decay parameter
+as the 19-system polynomial master equation with 26D coupling terms. The [SSq]$\cdot$i/26 decay parameter
 is the same in both implementations, confirming cross-file consistency.
 
 ---
@@ -139,7 +139,7 @@ is the same in both implementations, confirming cross-file consistency.
 | PAPER | Relation |
 |-------|---------|
 | PAPER_424 | F_UBii catalog per domain = one layer projection |
-| PAPER_426 | UTe2 δ_n series uses identical [SSq]·n/26 decay form |
+| PAPER_426 | UTe2 $\delta$_n series uses identical [SSq]$\cdot$n/26 decay form |
 | PAPER_429 | Vacuum Density Series exponent 26 = number of layers |
 
 ---
@@ -148,11 +148,11 @@ is the same in both implementations, confirming cross-file consistency.
 
 **Class:** `TwentySixDResonanceLayerAmplitudeFrequencyCalculator`  
 **Methods:**
-- `compute_amplitude(i, F_Ug, SSq, M_sf)` → layer amplitude $R_{U\_g,i}$
-- `compute_frequency(i, T_sf, SSq)` → layer frequency $\omega_{U\_g,i}$
-- `compute_phase(n)` → golden-ratio phase $\delta_n$
-- `compute_rho_transition(i, rho_UA_prime, rho_SCm, rho_UA, SSq, t_n)` → transition density
-- `compute_full_R(t, params)` → full 26-layer resonance sum $R(t)$
+- `compute_amplitude(i, F_Ug, SSq, M_sf)` $\to$ layer amplitude $R_{U\_g,i}$
+- `compute_frequency(i, T_sf, SSq)` $\to$ layer frequency $\omega_{U\_g,i}$
+- `compute_phase(n)` $\to$ golden-ratio phase $\delta_n$
+- `compute_rho_transition(i, rho_UA_prime, rho_SCm, rho_UA, SSq, t_n)` $\to$ transition density
+- `compute_full_R(t, params)` $\to$ full 26-layer resonance sum $R(t)$
 
 ---
 
@@ -192,7 +192,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -293,7 +293,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.136 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -304,12 +304,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| sin2θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin2θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
-| ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| sin2$\theta$_W weak mixing | UQFF H_SCm=0.990 $\to$ 4-fold formula $\to$ 0.2304 | sin2$\theta$_W = 0.23122 $\pm$ 0.00003 | PDG 2024 | 99.6% |
+| ALICE dN/d$\eta$ (13.6 TeV) | UQFF [SSq]$\times$1.077 = $\beta$_i = 0.614 | dN/d$\eta$ = 17.43 $\pm$ 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
+| Cross-system $\kappa$ universality | $\kappa$ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay $\Gamma$_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
 
-**New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
+**New physics claim:** The same UQFF parameter set ($\kappa$, [SSq], $\beta$_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)
 across a 29-system cross-validation matrix — without per-system free-parameter adjustment.
 No SM framework derives these three observables from a single connected constant set.

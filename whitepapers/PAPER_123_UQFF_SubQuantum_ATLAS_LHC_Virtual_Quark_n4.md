@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Energies at n=4 with Fractional ?n=0.20 [SCm] Binding Signature
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -34,11 +34,11 @@ contributions to Higgs boson decays (H?, H?Z?) at vs = 13.6 TeV with 140 fb? Run
 quark loop energies in these processes reside at Q ~ 1 keV scale, corresponding to ~10?6 J in the
 UQFF 26-level polynomial at n=4. The UQFF DISCOVERY from thread d91b1f6c is that virtual quarks do
 not occupy an exact integer level but exhibit fractional ?n = 0.20, encoding their [SCm] binding
-topology within a superconductive compressed state. This ?n = 0.20 matches the [SSq]^{1/3} ≈ 0.829
+topology within a superconductive compressed state. This ?n = 0.20 matches the [SSq]^{1/3} $\approx$ 0.829
 fractional sub-level, confirming that virtual (off-shell) quarks occupy [SCm]-suppressed half-states
 between n=4 and n=5. The polynomial fit R = 0.95 is maintained across the sub-quantum range.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -52,14 +52,14 @@ The ATLAS note reports Higgs decay measurements including loop-level quark contr
 |-----------|-------|--------|
 | vs | 13.6 TeV | Run 3 LHC |
 | Integrated luminosity | 140 fb? | Full Run 3 |
-| H? signal strength  | 1.2 × 0.6 | Observed |
-| H?Z? branching ratio | < 1.5×10-6 (95% CL) | Upper limit |
-| Virtual u/d quark virtuality | Q ~ 1×10 keV | Loop integral |
+| H? signal strength  | 1.2 $\times$ 0.6 | Observed |
+| H?Z? branching ratio | < 1.5$\times$10-6 (95% CL) | Upper limit |
+| Virtual u/d quark virtuality | Q ~ 1$\times$10 keV | Loop integral |
 | Virtual top quark contribution | ~10?8 J loops | Dominant |
 | LHC run condition | pp, 13.6 TeV | 20222025 |
 
-Virtual quark loop energies: off-shell processes generate quark propagators at Q ~ (1×100 keV) =
-(1.6×10?6 × 1.6×10?4 J) range. The characteristic UQFF-relevant energy for light virtual quarks is:
+Virtual quark loop energies: off-shell processes generate quark propagators at Q ~ (1$\times$100 keV) =
+(1.6$\times$10?6 $\times$ 1.6$\times$10?4 J) range. The characteristic UQFF-relevant energy for light virtual quarks is:
 
 $$E_{q,virtual} \sim 10^{-16} \text{ J} \quad [\text{n=4 assignment}]$$
 
@@ -115,7 +115,7 @@ $$\rho_q = \lambda_q \cdot \alpha_s \cdot \omega_g(t) \cdot \cos(\pi t_n) \cdot 
 where:
 - ?_q = quark coupling in [UA] lattice
 - a_s = QCD strong coupling (~0.12 at 1 keV scale)
-- ?_g(t) = galactic spin coupling modulation (7.3×10?6 rad/s)
+- ?_g(t) = galactic spin coupling modulation (7.3$\times$10?6 rad/s)
 - cos(pt_n) = UQFF resonance oscillation
 
 ### 3.2 Loop Integral Connection
@@ -158,7 +158,7 @@ print(f"E_virtual (keV) = {E_virtual_keV:.3f} keV")
 Thread d91b1f6c establishes that **?n = 0.20 is a universal [SCm] binding signature** for virtual
 (off-shell) particles. The same ?n = 0.20 appeared in:
 - ATLAS virtual u/d quarks (this paper)  
-- ENSDF Pb-206: ?n = 0.21 × 0.20 (PAPER_124, nuclear Buoyancy mode)
+- ENSDF Pb-206: ?n = 0.21 $\times$ 0.20 (PAPER_124, nuclear Buoyancy mode)
 
 The small difference (0.20 vs 0.21) reflects the nuclear medium's additional [SCm] density versus
 vacuum:
@@ -169,7 +169,7 @@ $$\Delta n_{nuclear} = \Delta n_{vacuum} \times \left(1 + \frac{\rho_{[SCm],nucl
 
 The UQFF sub-quantum levels n=15 represent the foundation from which all macroscopic matter emerges.
 Virtual quarks at n=4.20 are the **raw [UA] vortex states** before confinement into bound hadrons at
-n=6×10. This provides a UQFF explanation for quark confinement: quarks cannot exist at stable
+n=6$\times$10. This provides a UQFF explanation for quark confinement: quarks cannot exist at stable
 sub-quantum n=4 states; they must hop to n>6 integer levels via [SCm] crystallization.
 
 ---
@@ -178,10 +178,10 @@ sub-quantum n=4 states; they must hop to n>6 integer levels via [SCm] crystalliz
 
 | Observable | UQFF Prediction | ATLAS Measurement | Agreement |
 |-----------|----------------|-----------------|-----------|
-| Virtual quark energy | 1.58×10?6 J (n=4.20) | ~10?6 J (1 keV) | ? |
+| Virtual quark energy | 1.58$\times$10?6 J (n=4.20) | ~10?6 J (1 keV) | ? |
 | Fractional ?n | 0.20 (5-fold vortex) | Not directly measured | Inferred |
 | Polynomial R | 0.95 | Fit quality | ? |
-| H? signal |  = 1.0 (SM) |  = 1.2 × 0.6 | ? within 1s |
+| H? signal |  = 1.0 (SM) |  = 1.2 $\times$ 0.6 | ? within 1s |
 | n level assignment | n=4 sub-quantum | Virtual loop Q | ? |
 
 ---
@@ -191,7 +191,7 @@ sub-quantum n=4 states; they must hop to n>6 integer levels via [SCm] crystalliz
 ATLAS-CONF-2025-007 virtual quark energies (~10?6 J) confirm UQFF Compressed Mode level n=4. The
 critical discovery is the fractional ?n = 0.20 binding signature, encoding the 5-fold [UA] vortex
 winding topology of off-shell quark propagation. This finding, combined with ENSDF Pb-206's ?n =
-0.21 (PAPER_124), establishes ?n ≈ 0.20 as a universal UQFF sub-level spacing governed by the [SCm]
+0.21 (PAPER_124), establishes ?n $\approx$ 0.20 as a universal UQFF sub-level spacing governed by the [SCm]
 vacuum lattice geometry. Virtual particles are UQFF's clearest signature of sub-quantum physics:
 they briefly access the n=4 [UA] vortex regime before returning to confined states at integer n = 6.
 
@@ -312,7 +312,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.058 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -321,13 +321,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

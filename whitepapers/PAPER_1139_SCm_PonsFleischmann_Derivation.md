@@ -16,7 +16,7 @@ We derive the Pons-Fleischmann (Pd–D, 1989) excess heat signature from first p
 
 | Constant | Value | Description |
 |----------|-------|-------------|
-| $h$ | $6.62607015 \times 10^{-34}$ J·s | Planck constant |
+| $h$ | $6.62607015 \times 10^{-34}$ J$\cdot$s | Planck constant |
 | $f_{\text{THz}}$ | $1.25 \times 10^{12}$ Hz | SCm phonon frequency |
 | $E_{\text{phonon}}$ | $8.28 \times 10^{-22}$ J | Phonon energy |
 | $S_{26}^{(3)}$ | $1.4531 \times 10^{26}$ | 26D Ramanujan amplification |
@@ -104,9 +104,9 @@ The SCm Vacuum Manifold provides a first-principles mechanism for Pons-Fleischma
 
 [2] M.C.H. McKubre, S. Crouch-Baker, A.M. Riley, S.I. Smedley, and F.L. Tanzella, "Excess power observations in electrochemical studies of the D/Pd system; the influence of loading," *Proc. 3rd Int. Conf. Cold Fusion (ICCF-3)*, Nagoya, Japan, 1992.
 
-[3] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(−1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
+[3] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(-1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
 
-[4] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(−1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
+[4] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(-1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
 
 [5] A. Widom and L. Larsen, "Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces," *Eur. Phys. J. C*, vol. 46, pp. 107–111, 2006. DOI: 10.1140/epjc/s2006-02479-8
 

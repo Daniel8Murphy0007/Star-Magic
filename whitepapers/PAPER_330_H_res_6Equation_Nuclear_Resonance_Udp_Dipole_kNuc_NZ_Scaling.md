@@ -47,14 +47,14 @@ Hamiltonian.
 ### 2.1 Master Equation
 
 $$
-H_res = A_res · sin(2pf_res · t) + U_dp · SC_m · k_nuc + S_shell
+H_res = A_res \cdot sin(2pf_res \cdot t) + U_dp \cdot SC_m \cdot k_nuc + S_shell
 $$
 
 ### 2.2 Component Equations
 
 **Amplitude Factor A_res:**
 $$
-A_res = k_A · Z · (A/A_H) · (1 + d_pair)
+A_res = k_A \cdot Z \cdot (A/A_H) \cdot (1 + d_pair)
 $$
 
 | Symbol | Value/Range | Description |
@@ -67,21 +67,21 @@ $$
 
 **Resonance Frequency f_res:**
 $$
-f_res = (E_bind / h) · (A_H / A) · (1 + S_shell)
+f_res = (E_bind / h) \cdot (A_H / A) \cdot (1 + S_shell)
 $$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
 | E_bind | nuclear binding energy (J) | Per-nucleon binding |
-| h | 6.626×10?34 J·s | Planck constant |
+| h | 6.626$\times$10?34 J$\cdot$s | Planck constant |
 | A_H/A | hydrogen mass ratio | Inverse mass scaling |
-| S_shell | 0.1·(Z_magic + N_magic) | Shell correction |
+| S_shell | 0.1$\cdot$(Z_magic + N_magic) | Shell correction |
 
-At Z=1, A=1 (hydrogen): f_res = E_bind/h ˜ 2.23 MeV/(h) ˜ 5.40×102° Hz × S_shell_H
+At Z=1, A=1 (hydrogen): f_res = E_bind/h ˜ 2.23 MeV/(h) ˜ 5.40$\times$102° Hz $\times$ S_shell_H
 
 **Dipole-Dipole Coupling U_dp (NEW — not in PAPER_328):**
 $$
-U_dp = k · (A_1 · A_2 / f_dp2) · cos(f_dp)
+U_dp = k \cdot (A_1 \cdot A_2 / f_dp2) \cdot cos(f_dp)
 $$
 
 | Symbol | Value | Description |
@@ -102,14 +102,14 @@ Calibrated: SC_m = 1 in all UQFF nuclear resonance computations (T_BEC = 14.52 M
 
 **k_nuc Nucleon Ratio (NEW — not in PAPER_328):**
 $$
-k_nuc = k_0 · (N/Z) · (1 + d_pair)
+k_nuc = k_0 \cdot (N/Z) \cdot (1 + d_pair)
 $$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
 | k_0 | normalization constant | Reference nucleon coupling |
 | N/Z | neutron-proton ratio | Fundamental nuclear composition |
-| d_pair | ±0.1 | Same pairing correction as A_res |
+| d_pair | $\pm$0.1 | Same pairing correction as A_res |
 
 Physical significance: k_nuc encodes the neutron-proton imbalance effect on nuclear force coupling.
 Heavy neutron-rich nuclei (N > Z) have stronger k_nuc ? stronger H_res coupling. This connects the
@@ -117,11 +117,11 @@ UQFF resonance to nuclear beta-decay stability constraints.
 
 **Shell Correction S_shell:**
 $$
-S_shell = 0.1 · (Z_magic + N_magic)
+S_shell = 0.1 \cdot (Z_magic + N_magic)
 $$
 
 Magic numbers (Z_magic or N_magic): 2, 8, 20, 28, 50, 82, 126
-- Double magic (e.g., 2°8Pb: Z=82, N=126): S_shell = 0.1·(82+126) = 20.8
+- Double magic (e.g., 2°8Pb: Z=82, N=126): S_shell = 0.1$\cdot$(82+126) = 20.8
 - Doubly closed shells provide maximum shell effect
 
 ---
@@ -132,15 +132,15 @@ Magic numbers (Z_magic or N_magic): 2, 8, 20, 28, 50, 82, 126
 
 $$
 \begin{aligned}
-  & H_res = A_res · sin(2pf_res · t)    [oscillatory amplitude term] \\
-  & + U_dp · SC_m · k_nuc          [static dipole-SC-nucleon coupling] \\
+  & H_res = A_res \cdot sin(2pf_res \cdot t)    [oscillatory amplitude term] \\
+  & + U_dp \cdot SC_m \cdot k_nuc          [static dipole-SC-nucleon coupling] \\
   & + S_shell                      [shell structure correction]
 \end{aligned}
 $$
 
 This is the nuclear analog of the MUGE g_MUGE decomposition:
 - Term 1 (oscillatory): time-dependent resonance
-- Term 2 (static): dipole coupling × SC state × nucleon ratio
+- Term 2 (static): dipole coupling $\times$ SC state $\times$ nucleon ratio
 - Term 3 (structural): nuclear shell correction (˜ bound state counter-part to aether vacuum term)
 
 ### 3.2 Example Calculations
@@ -149,11 +149,11 @@ This is the nuclear analog of the MUGE g_MUGE decomposition:
 $$
 \begin{aligned}
   & d_pair = +0.1 (Z=1 odd ? d_pair = -0.1, but by convention: even-even = +0.1) \\
-  & A_res = k_A · 1 · 1 · 0.9 = 0.9·k_A \\
-  & S_shell = 0.1·(2+2) = 0.4  [H at shell closure proximity] \\
-  & k_nuc = k_0 · (0/1) · 0.9 = 0  [no neutrons] \\
+  & A_res = k_A \cdot 1 \cdot 1 \cdot 0.9 = 0.9\cdotk_A \\
+  & S_shell = 0.1\cdot(2+2) = 0.4  [H at shell closure proximity] \\
+  & k_nuc = k_0 \cdot (0/1) \cdot 0.9 = 0  [no neutrons] \\
   & U_dp contribution ? 0 (N=0 ? dipole pair degenerate) \\
-  & H_res = 0.9·k_A·sin(2pf_res·t) + 0 + 0.4
+  & H_res = 0.9\cdotk_A\cdotsin(2pf_res\cdott) + 0 + 0.4
 \end{aligned}
 $$
 
@@ -161,10 +161,10 @@ $$
 $$
 \begin{aligned}
   & d_pair = +0.1 (Z=26 even, N=30 even) \\
-  & A_res = k_A · 26 · 56 · 1.1 = 1601.6·k_A \\
-  & f_res = (\text{E\_bind\_56Fe}/h) · (1/56) · (1 + S_shell)  [E_bind˜8.8 MeV/nucleon] \\
-  & k_nuc = k_0 · (30/26) · 1.1 = 1.269·k_0 \\
-  & S_shell = 0.1 · (28 + 28) = 5.6  [subshell effects at Z=28 nearby]
+  & A_res = k_A \cdot 26 \cdot 56 \cdot 1.1 = 1601.6\cdotk_A \\
+  & f_res = (\text{E\_bind\_56Fe}/h) \cdot (1/56) \cdot (1 + S_shell)  [E_bind˜8.8 MeV/nucleon] \\
+  & k_nuc = k_0 \cdot (30/26) \cdot 1.1 = 1.269\cdotk_0 \\
+  & S_shell = 0.1 \cdot (28 + 28) = 5.6  [subshell effects at Z=28 nearby]
 \end{aligned}
 $$
 
@@ -172,9 +172,9 @@ $$
 $$
 \begin{aligned}
   & d_pair = +0.1 (both even) \\
-  & A_res = k_A · 82 · 208 · 1.1 = 18,726·k_A \\
-  & k_nuc = k_0 · (126/82) · 1.1 = 1.689·k_0 \\
-  & S_shell = 0.1 · (82 + 126) = 20.8  [MAXIMUM] \\
+  & A_res = k_A \cdot 82 \cdot 208 \cdot 1.1 = 18,726\cdotk_A \\
+  & k_nuc = k_0 \cdot (126/82) \cdot 1.1 = 1.689\cdotk_0 \\
+  & S_shell = 0.1 \cdot (82 + 126) = 20.8  [MAXIMUM] \\
   & H_res dominated by S_shell at 20.8 baseline ? strongest shell stabilization
 \end{aligned}
 $$
@@ -188,7 +188,7 @@ factors. Now H_res provides the complete container:
 
 $$
 \begin{aligned}
-  & LENR_rate ? H_res · N_B(T_BEC) · s_CS(E_CS) \\
+  & LENR_rate ? H_res \cdot N_B(T_BEC) \cdot s_CS(E_CS) \\
   & where N_B = 1/(exp(?E/kT_BEC) - 1) = 29.76 at T_BEC=14.52 MeV, ?E=0.48 MeV
 \end{aligned}
 $$
@@ -199,7 +199,7 @@ onset, reducing the effective ?E required for BEC formation.
 **Dipole enhancement estimate:**
 $$
 \begin{aligned}
-  & ?E_eff = ?E - U_dp · SC_m · k_nuc ˜ 0.48 - U_dp·k_nuc MeV \\
+  & ?E_eff = ?E - U_dp \cdot SC_m \cdot k_nuc ˜ 0.48 - U_dp\cdotk_nuc MeV \\
   & \text{N\_B\_enhanced} = 1/(exp(?E_eff/kT_BEC) - 1) > N_B = 29.76
 \end{aligned}
 $$
@@ -212,7 +212,7 @@ $$
 2. **FIRST U_dp dipole-dipole coupling** in UQFF nuclear framework — `k(A1A2/f_dp2)cos(f_dp)`
 3. **FIRST k_nuc N/Z neutron-proton ratio** in UQFF — connects nuclear composition to vacuum
 resonance
-4. **FIRST shell correction** as explicit UQFF term — S_shell = 0.1·(Z_magic + N_magic)
+4. **FIRST shell correction** as explicit UQFF term — S_shell = 0.1$\cdot$(Z_magic + N_magic)
 
 ---
 
@@ -340,7 +340,7 @@ Since $p_{\rm DVP} = 2$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **Q/ω₀** (quality factor damping):
+The BSH saturation timescale for this sector is **Q/$\omega$0** (quality factor damping):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
@@ -357,7 +357,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

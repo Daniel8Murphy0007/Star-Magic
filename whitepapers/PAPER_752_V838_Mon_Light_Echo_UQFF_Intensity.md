@@ -23,21 +23,21 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 V838 Monocerotis produced one of the most spectacular light echoes ever observed. A brief 2002
-outburst (L ≈ 6×105 LM_sun) illuminated a pre-existing circumstellar dust shell, creating an expanding
+outburst (L $\approx$ 6$\times$105 LM_sun) illuminated a pre-existing circumstellar dust shell, creating an expanding
 ring on the sky. This paper derives the UQFF-modified echo intensity profile I_echo(r, t)
 incorporating the Ug1 vacuum field attenuation of dust density, the Transient Resonance Zone factor
-fTRZ, and the vacuum-density ratio correction (ρ_vac,[UA]/ρ_vac,[SCm]), reproducing the observed
+fTRZ, and the vacuum-density ratio correction ($\rho$_vac,[UA]/$\rho$_vac,[SCm]), reproducing the observed
 brightness evolution over 3 years post-outburst.
 
 ---
 
 ## 1. Introduction
 
-Standard models of light echoes describe purely geometric scattering: I ∝ L/(4πr2). UQFF adds two
+Standard models of light echoes describe purely geometric scattering: I $\propto$ L/(4$\pi$r2). UQFF adds two
 corrections: (1) the dust spatial density is modulated by the Ug1 vacuum field through an
 exponential attenuation, and (2) the echo amplitude carries a vacuum-density correction factor that
-shifts the apparent brightness by ~10× relative to purely geometric predictions. Observations
-confirm a brightness ratio consistent with ρ_vac,[UA]/ρ_vac,[SCm] = 10.
+shifts the apparent brightness by ~10$\times$ relative to purely geometric predictions. Observations
+confirm a brightness ratio consistent with $\rho$_vac,[UA]/$\rho$_vac,[SCm] = 10.
 
 ---
 
@@ -45,25 +45,25 @@ confirm a brightness ratio consistent with ρ_vac,[UA]/ρ_vac,[SCm] = 10.
 
 $$
 \begin{aligned}
-  & I_echo(r, t) = [L_outburst / (4π·(c·t)2)] \\
-  & × σ_scatter \\
-  & × ρ_dust(r, t) \\
-  & × (1 + f_TRZ) \\
-  & × (1 + ρ_vac,[UA] / ρ_vac,[SCm])
+  & I_echo(r, t) = [L_outburst / (4\pi\cdot(c\cdott)2)] \\
+  & \times \sigma_scatter \\
+  & \times \rho_dust(r, t) \\
+  & \times (1 + f_TRZ) \\
+  & \times (1 + \rho_vac,[UA] / \rho_vac,[SCm])
 \end{aligned}
 $$
 
 ### Dust density with Ug1 attenuation
 $$
 \begin{aligned}
-  & ρ_dust(r, t) = ρ_0 × exp(−β × Ug1(r, t)) \\
-  & Ug1(r, t) = G·M_star / r2  × (1 + μ_J·B2/(ρ·c2))
+  & \rho_dust(r, t) = \rho_0 \times exp(-\beta \times Ug1(r, t)) \\
+  & Ug1(r, t) = G\cdotM_star / r2  \times (1 + \mu_J\cdotB2/(\rho\cdotc2))
 \end{aligned}
 $$
 
 ### Echo radius (light-travel front)
 $$
-r_echo(t) = c × t
+r_echo(t) = c \times t
 $$
 
 ---
@@ -72,14 +72,14 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Outburst luminosity | L_outburst | 2.30×1038 | W |
-| Reference dust density | ρ_0 | 1.00×10-22 | kg/m3 |
-| Ug1 attenuation factor | β | 1.0 | — |
-| Scatter cross-section | σ_scatter | 1.00×10-27 | m2 |
+| Outburst luminosity | L_outburst | 2.30$\times$1038 | W |
+| Reference dust density | $\rho$_0 | 1.00$\times$10-22 | kg/m3 |
+| Ug1 attenuation factor | $\beta$ | 1.0 | — |
+| Scatter cross-section | $\sigma$_scatter | 1.00$\times$10-27 | m2 |
 | Transient resonance factor | f_TRZ | 0.1 | — |
-| Vacuum density ratio | ρ_UA/ρ_SCm | 10 | — |
+| Vacuum density ratio | $\rho$_UA/$\rho$_SCm | 10 | — |
 | Observation epoch | t_years | 3.0 | yr |
-| c × t (3 yr) | r_echo | 2.838×1016 | m |
+| c $\times$ t (3 yr) | r_echo | 2.838$\times$1016 | m |
 
 ---
 
@@ -87,36 +87,36 @@ $$
 
 $$
 \begin{aligned}
-  & r_echo = c × (3 × 3.156×107) = 2.838×1016 m \\
-  & Ug1(r_echo) ≈ G × M_star / r_echo2 \\
-  & = 6.674×10-11 × 1.989×1030 / (2.838×1016)2 \\
-  & ≈ 1.648×10-13  m/s2 \\
-  & ρ_dust = 1×10-22 × exp(−1.0 × 1.648×10-13) ≈ 1.000×10-22 kg/m3 \\
-  & I_echo = [2.3×1038 / (4π × (2.838×1016)2)] \\
-  & × 1×10-27 × 1×10-22 × 1.1 × 11 \\
-  & ≈ 7.18×10-40  W/m2·(kg/m3)2
+  & r_echo = c \times (3 \times 3.156\times107) = 2.838\times1016 m \\
+  & Ug1(r_echo) \approx G \times M_star / r_echo2 \\
+  & = 6.674\times10-11 \times 1.989\times1030 / (2.838\times1016)2 \\
+  & \approx 1.648\times10-13  m/s2 \\
+  & \rho_dust = 1\times10-22 \times exp(-1.0 \times 1.648\times10-13) \approx 1.000\times10-22 kg/m3 \\
+  & I_echo = [2.3\times1038 / (4\pi \times (2.838\times1016)2)] \\
+  & \times 1\times10-27 \times 1\times10-22 \times 1.1 \times 11 \\
+  & \approx 7.18\times10-40  W/m2\cdot(kg/m3)2
 \end{aligned}
 $$
 
-(Dimensionally consistent with observed surface-brightness gradient ∝ t-2)
+(Dimensionally consistent with observed surface-brightness gradient $\propto$ t-2)
 
 ---
 
 ## 5. Equations Available for This System
 
 - I_echo(r, t) — primary (above)
-- r_echo(t) = c·t — light-travel front
-- ρ_dust(r) = ρ_0·exp(−β·Ug1) — attenuated dust profile
+- r_echo(t) = c$\cdot$t — light-travel front
+- $\rho$_dust(r) = $\rho$_0$\cdot$exp(-$\beta$$\cdot$Ug1) — attenuated dust profile
 - Ug1(r) — magnetic-vacuum dipole field at r
-- Apparent angular radius: θ = r_echo / D_V838 (D ≈ 6.1 kpc)
-- Surface brightness: SB ∝ I_echo × (σ_scatter / 4π)
+- Apparent angular radius: $\theta$ = r_echo / D_V838 (D $\approx$ 6.1 kpc)
+- Surface brightness: SB $\propto$ I_echo $\times$ ($\sigma$_scatter / 4$\pi$)
 
 ---
 
 ## 6. Conclusions
 
 The UQFF light-echo model for V838 Mon adds dust-density attenuation via the Ug1 vacuum field and a
-×11 vacuum-correction factor, reproducing the observed brightness ring over 3 post-outburst years.
+$\times$11 vacuum-correction factor, reproducing the observed brightness ring over 3 post-outburst years.
 PAPER_752, CP4 class #336. v5.39.
 
 ---
@@ -225,7 +225,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.152 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -236,13 +236,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

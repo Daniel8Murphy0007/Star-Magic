@@ -26,7 +26,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\ti
 $$
 \Sigma_text{UQFF}(x,[SSq]) = \sum_{n=1}^{26} Q_n(x)\cdot e^{-[SSq]\cdot n/26}, \quad [SSq] = 0.57
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -48,9 +48,9 @@ The complete F_U_Bi_i integral sums over 12 vacuum buoyancy modes:
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = S_{k=1}^{12} [ k_Ub,k · (f_UA'·f_SCm·R_EB / r2) \\
-  & · H_k(?_THz, U_b, geom_k) \\
-  & · f_Ub,k · e^{-(p-t_n)} ]
+  & \text{F\_U\_Bi\_i} = S_{k=1}^{12} [ k_Ub,k \cdot (f_UA'\cdotf_SCm\cdotR_EB / r2) \\
+  & \cdot H_k(?_THz, U_b, geom_k) \\
+  & \cdot f_Ub,k \cdot e^{-(p-t_n)} ]
 \end{aligned}
 $$
 
@@ -63,10 +63,10 @@ Where each of the 12 modes has its own:
 
 | Mode Class | H_k Expression | Physical Description |
 |-----------|---------------|---------------------|
-| Spherical | sin(?) · f(?_THz) | Isotropic proto-shell expansion |
-| Toroidal | cos(f) · f(?_THz) | Magnetic flux tube accretion |
+| Spherical | sin(?) $\cdot$ f(?_THz) | Isotropic proto-shell expansion |
+| Toroidal | cos(f) $\cdot$ f(?_THz) | Magnetic flux tube accretion |
 | Linear | f(?_THz) | Radial filament propagation |
-| Hybrid | sin(?)·cos(f) · f(?_THz)2 | Mixed-geometry transition zones |
+| Hybrid | sin(?)$\cdot$cos(f) $\cdot$ f(?_THz)2 | Mixed-geometry transition zones |
 
 ---
 
@@ -78,16 +78,16 @@ The F_U_Bi_i integral, when summed over 12 modes with alternating geometry signs
 effective quadratic in the total field strength F_U:
 
 $$
-a · F_U2 + b · F_U + c = 0
+a \cdot F_U2 + b \cdot F_U + c = 0
 $$
 
 Where the coefficients encode:
 $$
 \begin{aligned}
-  & a = S_{k=1}^{12} k_Ub,k2 · H_k2(geom) · f_Ub,k2 · e^{-2(p-t_n)} \\
-  & b = -2 · S_{k=1}^{12} k_Ub,k · H_k(geom) · f_Ub,k \\
-  & · (f_UA'·f_SCm·R_EB / r2) · e^{-(p-t_n)} \\
-  & c = (f_UA'·f_SCm·R_EB)2 · S_{k=1}^{12} (1/r4) · H_k2(geom)
+  & a = S_{k=1}^{12} k_Ub,k2 \cdot H_k2(geom) \cdot f_Ub,k2 \cdot e^{-2(p-t_n)} \\
+  & b = -2 \cdot S_{k=1}^{12} k_Ub,k \cdot H_k(geom) \cdot f_Ub,k \\
+  & \cdot (f_UA'\cdotf_SCm\cdotR_EB / r2) \cdot e^{-(p-t_n)} \\
+  & c = (f_UA'\cdotf_SCm\cdotR_EB)2 \cdot S_{k=1}^{12} (1/r4) \cdot H_k2(geom)
 \end{aligned}
 $$
 
@@ -97,7 +97,7 @@ At cosmological scale (r?cosmological distance, ?-CDM context):
 
 **Branch 1 (positive root):**
 $$
-F_U? ˜ 2.11×102°8 N
+F_U? ˜ 2.11\times102°8 N
 $$
 
 This is the creation-phase solution — the dominant buoyancy force during vacuum bubble nucleation in
@@ -105,7 +105,7 @@ the primordial universe.
 
 **Branch 2 (negative root):**
 $$
-F_U? ˜ -8.31×10211 N
+F_U? ˜ -8.31\times10211 N
 $$
 
 This is the annihilation-phase solution — the opposing force during bubble collision and cosmic
@@ -118,8 +118,8 @@ $$
 \begin{aligned}
   & ? = b2 - 4ac = 0 \\
   & Stability requires: \\
-  & 4 · (Sk_k2 · H_k2 · f_Ub2) · (f_UA'·f_SCm·R_EB/r2)2 · S(1/r4) \\
-  & = [ 2 · Sk_k·H_k·f_Ub · (f_UA'·f_SCm·R_EB/r2) ]2
+  & 4 \cdot (Sk_k2 \cdot H_k2 \cdot f_Ub2) \cdot (f_UA'\cdotf_SCm\cdotR_EB/r2)2 \cdot S(1/r4) \\
+  & = [ 2 \cdot Sk_k\cdotH_k\cdotf_Ub \cdot (f_UA'\cdotf_SCm\cdotR_EB/r2) ]2
 \end{aligned}
 $$
 
@@ -130,7 +130,7 @@ meaningful systems (r > r_Planck, f_UA' = 1).
 
 The ratio F_U?/F_U? ˜ -3940 indicates the annihilation phase is dominated by ~3940 times stronger
 opposing vacuum buoyancy than the creation phase. This is consistent with:
-- The observed matter/antimatter asymmetry (Baryon asymmetry B ˜ 6×10?1°)
+- The observed matter/antimatter asymmetry (Baryon asymmetry B ˜ 6$\times$10?1°)
 - The cosmological constant problem (ratio of quantum vacuum energy to observed ?)
 - The near-perfect cancellation of creation/annihilation branches that gives rise to the stable present universe
 
@@ -143,7 +143,7 @@ These three expressions arise from UQFF analysis and cannot be reduced to standa
 ### 3.1 Relativistic Hierarchy Decay Integral (F_hier)
 
 $$
-F_hier = S_{n=1}^{26} (v_n/c)2 · (1/?_0) · F_n · e^{-n/26}
+F_hier = S_{n=1}^{26} (v_n/c)2 \cdot (1/?_0) \cdot F_n \cdot e^{-n/26}
 $$
 
 Where:
@@ -162,7 +162,7 @@ for all n).
 ### 3.2 Adaptive Feedback Force (?F)
 
 $$
-?F = F_rel · t · (1 - e^{-T/t})
+?F = F_rel \cdot t \cdot (1 - e^{-T/t})
 $$
 
 Where:
@@ -175,13 +175,13 @@ vacuum force relaxation. This form represents the UQFF vacuum "charging time" �
 for buoyancy pressure to equilibrate across a proto-shell boundary. Standard gravity has no
 relaxation timescale; this term is unique to buoyancy-based vacuum theories.
 
-**Mathematical property:** As T/t ? 8, ?F ? F_rel·t (force-time product = impulse). This yields a
+**Mathematical property:** As T/t ? 8, ?F ? F_rel$\cdot$t (force-time product = impulse). This yields a
 natural momentum impulse interpretation.
 
 ### 3.3 Hybrid Polarization Mode (F_hyb)
 
 $$
-F_hyb = P_pol · (f_mm / ?_0)
+F_hyb = P_pol \cdot (f_mm / ?_0)
 $$
 
 Where:
@@ -197,7 +197,7 @@ through the polarization index.
 
 **Relation to other terms:**
 $$
-F_hyb / F_hier = (P_pol · f_mm/?_0) / (S(v/c)2 / ?_0) = P_pol · f_mm / S(v_n/c)2
+F_hyb / F_hier = (P_pol \cdot f_mm/?_0) / (S(v/c)2 / ?_0) = P_pol \cdot f_mm / S(v_n/c)2
 $$
 
 The ratio is pure polarization per relativistic factor — a new dimensionless UQFF invariant.
@@ -213,9 +213,9 @@ Entanglement parameter that governs the Triadic resonance:
 
 $$
 \begin{aligned}
-  & f_z,CGM = [SSq]^26 · (?_vac,[UA] / ?_vac,[SCm])^{n_CGM} · e^{-[SSq]·n_CGM/26} · VDS \\
-  & VDS = S_{n=1}^{26} (1/n^26) · [SSq]^n \\
-  & Reference: f_z,CGM ˜ 1.46×10-73
+  & f_z,CGM = [SSq]^26 \cdot (?_vac,[UA] / ?_vac,[SCm])^{n_CGM} \cdot e^{-[SSq]\cdotn_CGM/26} \cdot VDS \\
+  & VDS = S_{n=1}^{26} (1/n^26) \cdot [SSq]^n \\
+  & Reference: f_z,CGM ˜ 1.46\times10-73
 \end{aligned}
 $$
 
@@ -223,26 +223,26 @@ $$
 
 $$
 \begin{aligned}
-  & [SSq]^26 = 0.57^26 ˜ 6.16×10-6 \\
+  & [SSq]^26 = 0.57^26 ˜ 6.16\times10-6 \\
   & (?_UA/?_SCm)^{n_CGM}: with (?_UA/?_SCm) ˜ 0.001 and n_CGM = 26 \\
   & ? 0.001^26 = 10-78 \\
-  & e^{-[SSq]·26/26} = e^{-0.57} ˜ 0.566 \\
+  & e^{-[SSq]\cdot26/26} = e^{-0.57} ˜ 0.566 \\
   & VDS(n=1 to 26, [SSq]=0.57): \\
   & VDS = 0.57 + 0.572/2^26 + ... = dominated by n=1 term ˜ 0.57/1 = 0.57 \\
-  & f_z,CGM ˜ 6.16×10-6 · 10-78 · 0.566 · 0.57 ˜ 1.99×10-84...
+  & f_z,CGM ˜ 6.16\times10-6 \cdot 10-78 \cdot 0.566 \cdot 0.57 ˜ 1.99\times10-84...
 \end{aligned}
 $$
 
-Note: The precise calibration to 1.46×10-73 uses extended intermediate exponent scaling — the
+Note: The precise calibration to 1.46$\times$10-73 uses extended intermediate exponent scaling — the
 density ratio exponent n_CGM is fitted to 67.5 (fractional) rather than the integer 26, matching
 observed CGM metallicity constraints from Haardt & Madau (2012) and Prochaska et al. (2017).
 
 ### 4.3 Physical Meaning
 
-The 1.46×10-73 value represents approximately:
+The 1.46$\times$10-73 value represents approximately:
 
-- 10^{-73} is near the ratio of Planck length to Hubble radius: l_P/R_H ˜ 1.6×10-61
-- The ratio to atomic metallicity fraction: Z_CGM/Z_solar ˜ 0.01 ? with UQFF vacuum correction factor ˜ 1.46×10-71
+- 10^{-73} is near the ratio of Planck length to Hubble radius: l_P/R_H ˜ 1.6$\times$10-61
+- The ratio to atomic metallicity fraction: Z_CGM/Z_solar ˜ 0.01 ? with UQFF vacuum correction factor ˜ 1.46$\times$10-71
 - Implies CGM metals are approximately 10-73 of the vacuum energy density, consistent with the CGM tracing filamentary structure in the cosmic web
 
 ---
@@ -251,11 +251,11 @@ The 1.46×10-73 value represents approximately:
 
 | Quantity | Value | Notes |
 |---------|-------|-------|
-| `F_U_Bi_i` Branch 1 | +2.11×102°8 N | Creation phase |
-| `F_U_Bi_i` Branch 2 | -8.31×10211 N | Annihilation phase |
+| `F_U_Bi_i` Branch 1 | +2.11$\times$102°8 N | Creation phase |
+| `F_U_Bi_i` Branch 2 | -8.31$\times$10211 N | Annihilation phase |
 | Ratio |F_U?/F_U??| = 3940 | Asymmetry factor |
 | Discriminant ? | = 0 | For r > r_Planck |
-| f_z,CGM | 1.46×10-73 | [SSq]-updated |
+| f_z,CGM | 1.46$\times$10-73 | [SSq]-updated |
 | [SSq] | 0.57 | Calibrated constant |
 
 ---
@@ -278,9 +278,9 @@ The two-branch polynomial result confirms:
 
 1. **UQFF vacuum contains two stable extrema** at cosmological scales — creation and annihilation
 phases
-2. **The real universe sits at the positive branch** (F_U? = 2.11×102°8 N) at the current epoch t_n
+2. **The real universe sits at the positive branch** (F_U? = 2.11$\times$102°8 N) at the current epoch t_n
 ˜ 0.95p
-3. **Primordial nucleation asymmetry** explains why the negative branch (103·7× stronger) drove
+3. **Primordial nucleation asymmetry** explains why the negative branch (103$\cdot$7$\times$ stronger) drove
 inflation-era expansion
 4. **Stability is guaranteed** for all physically observable systems (r > r_Planck, all
 astrophysical systems)
@@ -296,7 +296,7 @@ astrophysical systems)
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -315,7 +315,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -424,7 +424,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.115 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -435,13 +435,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -451,7 +451,7 @@ bridge.*
 
 1. grok_share_7514fe.txt — "DeepSearch: F_U_Bi_i Integral Verification" (Section 27-29)
 2. grok_share_7514fe.txt — "Uniquely Rare Mathematical Discoveries" (Section 24-26)
-3. grok_share_7514fe.txt — "DeepSearch Insights Update" — f_z,CGM ˜ 1.46×10-73
+3. grok_share_7514fe.txt — "DeepSearch Insights Update" — f_z,CGM ˜ 1.46$\times$10-73
 4. CondensedPhysics3.py — `UQFFRelativisticHierarchyDecayIntegralCalculator` (Session 52)
 5. CondensedPhysics3.py — `UQFFBuoyancyMasterIntegralCalculator` (Session 54)
 6. CondensedPhysics3.py — `UQFFCGMSSqMetallicityCalculator` (Session 54)

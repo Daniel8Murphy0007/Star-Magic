@@ -22,11 +22,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-Sagittarius A*, the 4.3×106 MM_sun supermassive black hole at the Galactic Centre, shows secular
+Sagittarius A*, the 4.3$\times$106 MM_sun supermassive black hole at the Galactic Centre, shows secular
 evolution through accretion-driven mass growth, spin-down, and orbital precession. This paper
 derives the UQFF time-dependent surface gravity g_SgrA*(t) at the Schwarzschild radius,
 incorporating exponential accretion decay, Hubble-expansion correction, and a sin(30°) precession
-term. At t = 4.5 Gyr the model yields g_SgrA* ≈ 1.250×107 m/s2, consistent with near-infrared flare
+term. At t = 4.5 Gyr the model yields g_SgrA* $\approx$ 1.250$\times$107 m/s2, consistent with near-infrared flare
 timing.
 
 ---
@@ -35,8 +35,8 @@ timing.
 
 The Galactic Centre SMBH exerts the dominant gravitational influence over the central parsec. UQFF
 models the gravity at the Schwarzschild radius r_s = 2GM/c2 as a function of: accretion-driven mass
-growth M(t), spin evolution Ω(t), Hubble dilution (1 + H₀t), and a nuclear stellar disk precession
-term sin(θ_prec). The 30° precession angle is derived from the observed inner stellar-disk
+growth M(t), spin evolution $\Omega$(t), Hubble dilution (1 + H0t), and a nuclear stellar disk precession
+term sin($\theta$_prec). The 30° precession angle is derived from the observed inner stellar-disk
 inclination to the Galactic plane.
 
 ---
@@ -45,12 +45,12 @@ inclination to the Galactic plane.
 
 $$
 \begin{aligned}
-  & g_SgrA*(r_s, t) = [G·M(t) / r_s2] × (1 + H₀·t) × sin(θ_prec) \\
+  & g_SgrA*(r_s, t) = [G\cdotM(t) / r_s2] \times (1 + H0\cdott) \times sin(\theta_prec) \\
   & + [Ug1(r_s) + Ug2(r_s)] \\
-  & + (Λ·c2/3) \\
-  & M(t)  = M_0 + ΔM × (1 − exp(−t / τ_acc))    [accretion build-up] \\
-  & Ω(t)  = Ω_0 × exp(−t / τ_spin)               [spin-down] \\
-  & M_dot(t) = \text{M\_dot\_0} × exp(−t / τ_acc)          [accretion rate]
+  & + (\Lambda\cdotc2/3) \\
+  & M(t)  = M_0 + \DeltaM \times (1 - exp(-t / \tau_acc))    [accretion build-up] \\
+  & \Omega(t)  = \Omega_0 \times exp(-t / \tau_spin)               [spin-down] \\
+  & M_dot(t) = \text{M\_dot\_0} \times exp(-t / \tau_acc)          [accretion rate]
 \end{aligned}
 $$
 
@@ -60,15 +60,15 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Mass | M | 8.552×1036 | kg (4.3×106 MM_sun) |
-| Schwarzschild radius | r_s | 1.27×1010 | m |
+| Mass | M | 8.552$\times$1036 | kg (4.3$\times$106 MM_sun) |
+| Schwarzschild radius | r_s | 1.27$\times$1010 | m |
 | Initial accretion rate | `M_dot_0` | 0.01 | MM_sun/yr |
-| Accretion timescale | τ_acc | 2.84×1017 | s (9 Gyr) |
-| Initial spin | Ω_0 | 0.3c/r_s | rad/s |
-| Spin timescale | τ_spin | 2.84×1017 | s |
-| Hubble constant | H₀ | 2.184×10-18 | s-1 |
-| Precession angle | θ_prec | 30° | — |
-| Evaluation epoch | t | 1.42×1017 | s (4.5 Gyr) |
+| Accretion timescale | $\tau$_acc | 2.84$\times$1017 | s (9 Gyr) |
+| Initial spin | $\Omega$_0 | 0.3c/r_s | rad/s |
+| Spin timescale | $\tau$_spin | 2.84$\times$1017 | s |
+| Hubble constant | H0 | 2.184$\times$10-18 | s-1 |
+| Precession angle | $\theta$_prec | 30° | — |
+| Evaluation epoch | t | 1.42$\times$1017 | s (4.5 Gyr) |
 
 ---
 
@@ -76,15 +76,15 @@ $$
 
 $$
 \begin{aligned}
-  & t = 4.5×109 × 3.156×107 = 1.420×1017 s \\
-  & M_dot(t) = 0.01 × exp(−1.420×1017 / 2.84×1017) \\
-  & = 0.01 × exp(−0.5) ≈ 6.065×10-3 MM_sun/yr \\
-  & g_grav = G·M/r_s2 × (1 + H₀·t) × sin(30°) \\
-  & = 6.674×10-11 × 8.552×1036 / (1.27×1010)2 \\
-  & × (1 + 2.184×10-18 × 1.420×1017) × 0.5 \\
-  & ≈ 3.536×107 × 1.310 × 0.5 \\
-  & ≈ 2.316×107 m/s2   [before Ug floor] \\
-  & g_SgrA*(t=4.5 Gyr) ≈ 1.250×107 m/s2   [with Ug corrections + precession]
+  & t = 4.5\times109 \times 3.156\times107 = 1.420\times1017 s \\
+  & M_dot(t) = 0.01 \times exp(-1.420\times1017 / 2.84\times1017) \\
+  & = 0.01 \times exp(-0.5) \approx 6.065\times10-3 MM_sun/yr \\
+  & g_grav = G\cdotM/r_s2 \times (1 + H0\cdott) \times sin(30°) \\
+  & = 6.674\times10-11 \times 8.552\times1036 / (1.27\times1010)2 \\
+  & \times (1 + 2.184\times10-18 \times 1.420\times1017) \times 0.5 \\
+  & \approx 3.536\times107 \times 1.310 \times 0.5 \\
+  & \approx 2.316\times107 m/s2   [before Ug floor] \\
+  & g_SgrA*(t=4.5 Gyr) \approx 1.250\times107 m/s2   [with Ug corrections + precession]
 \end{aligned}
 $$
 
@@ -93,18 +93,18 @@ $$
 ## 5. Available Equations for SgrA* Systems
 
 - g_SgrA*(r_s, t) — surface gravity at Schwarzschild radius (primary)
-- M_dot(t) = M_dot_0·exp(−t/τ_acc) — accretion rate decay
-- Ω(t) = Ω_0·exp(−t/τ_spin) — spin evolution
-- r_s = 2GM/c2 — Schwarzschild radius (1.27×1010 m)
-- ISCO: r_ISCO = 3·r_s (Schwarzschild) = 3.81×1010 m
-- L_acc(t) = η·M_dot(t)·c2 — accretion luminosity (η ≈ 0.1)
-- T_flare ∝ (r_ISCO/c) × Ω(t) — characteristic flare period
+- M_dot(t) = M_dot_0$\cdot$exp(-t/$\tau$_acc) — accretion rate decay
+- $\Omega$(t) = $\Omega$_0$\cdot$exp(-t/$\tau$_spin) — spin evolution
+- r_s = 2GM/c2 — Schwarzschild radius (1.27$\times$1010 m)
+- ISCO: r_ISCO = 3$\cdot$r_s (Schwarzschild) = 3.81$\times$1010 m
+- L_acc(t) = $\eta$$\cdot$M_dot(t)$\cdot$c2 — accretion luminosity ($\eta$ $\approx$ 0.1)
+- T_flare $\propto$ (r_ISCO/c) $\times$ $\Omega$(t) — characteristic flare period
 
 ---
 
 ## 6. Conclusions
 
-The UQFF evolution model for Sgr A* yields g ≈ 1.250×107 m/s2 at the Schwarzschild radius at t = 4.5
+The UQFF evolution model for Sgr A* yields g $\approx$ 1.250$\times$107 m/s2 at the Schwarzschild radius at t = 4.5
 Gyr. The combination of accretion-driven growth, Hubble expansion, and 30° precession reproduces the
 observed near-IR flare repetition timescales. PAPER_754, CP4 class #338. v5.39.
 
@@ -116,7 +116,7 @@ observed near-IR flare repetition timescales. PAPER_754, CP4 class #338. v5.39.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -135,7 +135,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -210,7 +210,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -221,13 +221,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

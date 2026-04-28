@@ -22,12 +22,12 @@ magnetar UQFF gravity
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `MagnetarDualModeUQFFCalculator` (#7, PAPER_453)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, B_crit = 4.4×1013 T —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, B_crit = 4.4$\times$1013 T —>
 ---
 
 ## Abstract
 
-SGR 1745-2900 is the magnetar closest to Sagittarius A*, orbiting at ~0.3 pc with a characteristic spin period P = 3.76 s and magnetic field B = 2.2×1014 T. This paper develops a dual-mode UQFF solver for SGR 1745-2900 in which **Mode 1** (Compressed) uses the full MUGE equation with B-field suppression, while **Mode 2** (Frequency) replaces the cosmological constant dark-energy term with five resonance accelerations: a_DPM, a_THz, a_aether, a_vacuum, and a_superfreq. The exponential decay term $D(t) = \exp(-t/\tau_{\rm decay})$ with $\tau_{\rm decay} = 3.156\times10^8$ s (10 yr) models the magnetar's energy dissipation. A key result: aether resonance in frequency mode yields g_freq ≈ 3.76×106 m/s2 at the magnetar surface, within 0.1% of Mode 1's compressed g_comp ≈ 3.73×106 m/s2.
+SGR 1745-2900 is the magnetar closest to Sagittarius A*, orbiting at ~0.3 pc with a characteristic spin period P = 3.76 s and magnetic field B = 2.2$\times$1014 T. This paper develops a dual-mode UQFF solver for SGR 1745-2900 in which **Mode 1** (Compressed) uses the full MUGE equation with B-field suppression, while **Mode 2** (Frequency) replaces the cosmological constant dark-energy term with five resonance accelerations: a_DPM, a_THz, a_aether, a_vacuum, and a_superfreq. The exponential decay term $D(t) = \exp(-t/\tau_{\rm decay})$ with $\tau_{\rm decay} = 3.156\times10^8$ s (10 yr) models the magnetar's energy dissipation. A key result: aether resonance in frequency mode yields g_freq $\approx$ 3.76$\times$106 m/s2 at the magnetar surface, within 0.1% of Mode 1's compressed g_comp $\approx$ 3.73$\times$106 m/s2.
 
 ---
 
@@ -37,14 +37,14 @@ SGR 1745-2900 is the magnetar closest to Sagittarius A*, orbiting at ~0.3 pc wit
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| M | 2.8 MM_sun = 5.574×1030 kg | Typical magnetar mass |
-| r | 1×104 m (10 km) | Neutron star radius |
-| B | 2.2×1014 T (actually 1×1011 T used in MUGE) | Surface dipole field |
-| v_exp | 1×105 m/s | Seismic expansion velocity |
-| F_DPM | 1.702×1056 A·m2 | Dipole magnetic moment |
-| V_sys | 5.913×1053 m3 | System volume |
-| τ_decay | 3.156×108 s (10 yr) | Characteristic spin-down timescale |
-| B/B_crit | 1×1011/4.4×1013 ≈ 2.27×10-3 | Magnetic suppression factor |
+| M | 2.8 MM_sun = 5.574$\times$1030 kg | Typical magnetar mass |
+| r | 1$\times$104 m (10 km) | Neutron star radius |
+| B | 2.2$\times$1014 T (actually 1$\times$1011 T used in MUGE) | Surface dipole field |
+| v_exp | 1$\times$105 m/s | Seismic expansion velocity |
+| F_DPM | 1.702$\times$1056 A$\cdot$m2 | Dipole magnetic moment |
+| V_sys | 5.913$\times$1053 m3 | System volume |
+| $\tau$_decay | 3.156$\times$108 s (10 yr) | Characteristic spin-down timescale |
+| B/B_crit | 1$\times$1011/4.4$\times$1013 $\approx$ 2.27$\times$10-3 | Magnetic suppression factor |
 
 ### 2.2 Surface Gravity (DPM-seeded Base)
 
@@ -72,24 +72,24 @@ The B/B_crit suppression reduces gravity by 0.23% — modest at B = 1011 T.
 
 $$D(t) = \exp!\left(-\frac{t}{\tau_{\rm decay}}\right) = \exp!\left(-\frac{t}{3.156\times10^8}\right)$$
 
-| t (yr) | D(t) | F_env × D(t) |
+| t (yr) | D(t) | F_env $\times$ D(t) |
 |-------|------|--------------|
 | 0 | 1.000 | F_env |
 | 1 | 0.905 | 0.905 F_env |
 | 5 | 0.607 | 0.607 F_env |
 | 10 | 0.368 | 0.368 F_env |
-| 100 | 5.0×10-5 | negligible |
+| 100 | 5.0$\times$10-5 | negligible |
 
-After τ_decay = 10 yr, the environmental factor decays by 1/e, modelling magnetar cooling and
+After $\tau$_decay = 10 yr, the environmental factor decays by 1/e, modelling magnetar cooling and
 spin-down.
 
 ### 3.4 Mode 1 Result at t=0
 
 $$g_{\rm comp}(0) \approx 3.73\times10^6\ \rm m/s^2$$
 
-(The Ug1–Ug4 terms + Λc2/3 + quantum + fluid combine to reduce the raw surface gravity from
-3.72×1012 to 3.73×106 — a reduction of ~6 orders. This is the UQFF "effective surface gravity"
-experienced at distance r≈1 Schwarzschild radius from the magnetar surface.)
+(The Ug1–Ug4 terms + $\Lambda$c2/3 + quantum + fluid combine to reduce the raw surface gravity from
+3.72$\times$1012 to 3.73$\times$106 — a reduction of ~6 orders. This is the UQFF "effective surface gravity"
+experienced at distance r$\approx$1 Schwarzschild radius from the magnetar surface.)
 
 ---
 
@@ -127,7 +127,7 @@ $$a_{\rm aether} \approx 4.7\times10^{-27} \times (1 + 0.57^{25}) \times (5.913\
 Summing over the 5 SuperFreq modes (SGR 1745 characteristic):
 $$a_{\rm superfreq} = \sum_{k=1}^{5} A_k \sin(2\pi f_k t)$$
 
-With f₁=0.266 Hz (spin period), f₂=0.5 kHz (QPO), f₃=2.09 kHz (crust), f₄=25 Hz, f₅=1760 Hz.
+With f1=0.266 Hz (spin period), f2=0.5 kHz (QPO), f3=2.09 kHz (crust), f4=25 Hz, f5=1760 Hz.
 
 ### 4.3 Mode 2 Final Result
 
@@ -148,9 +148,9 @@ to the cosmological constant at the magnetar scale.
 
 | Metric | Mode 1 (Compressed) | Mode 2 (Frequency) |
 |--------|-------------------|-------------------|
-| g at t=0 | 3.73×106 m/s2 | 3.76×106 m/s2 |
-| Dark energy term | Λc2/3 (cosmological) | a_aether (local resonance) |
-| Decay | D(t) = exp(-t/τ) | D(t) = exp(-t/τ) |
+| g at t=0 | 3.73$\times$106 m/s2 | 3.76$\times$106 m/s2 |
+| Dark energy term | $\Lambda$c2/3 (cosmological) | a_aether (local resonance) |
+| Decay | D(t) = exp(-t/$\tau$) | D(t) = exp(-t/$\tau$) |
 | Oscillatory terms | None | 5-frequency superfreq sum |
 | Preferred for | Long-timescale (Gyr) | Oscillatory (year-decade) |
 
@@ -164,8 +164,8 @@ aether resonance is a valid alternative to dark energy description in extreme-de
 | Feature | SM | UQFF Dual-Mode |
 |---------|-----|----------------|
 | Magnetar surface gravity | Pure GR (metric tensor) | Effective MUGE with Ug terms |
-| Dark energy coupling | Cosmological Λ (global) | Aether resonance (local, mode 2) |
-| Temporal evolution | Static or numerical | D(t)×F_env exponential decay |
+| Dark energy coupling | Cosmological $\Lambda$ (global) | Aether resonance (local, mode 2) |
+| Temporal evolution | Static or numerical | D(t)$\times$F_env exponential decay |
 | QPO modelling | Separate astroseismology | a_superfreq in g_UQFF |
 
 ---
@@ -187,7 +187,7 @@ indistinguishable in gravitational effect**.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -206,7 +206,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -281,7 +281,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.123 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -292,10 +292,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Magnetar SGR system luminosity X-ray 2–10 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 1035 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Magnetar SGR system luminosity X-ray 2–10 keV | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L_X ~ 1035 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Magnetar SGR system

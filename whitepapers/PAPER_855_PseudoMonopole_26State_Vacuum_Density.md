@@ -70,29 +70,29 @@ This paper's core equation:
 
 $$
 \begin{aligned}
-  & ρ_vac(n,t) = ρ_base · r^n · exp(−[SSq]·n/26) · exp(−(π−t)) \\
-  & δ_n = (2π)^{n/6}   [pseudo-monopole angular spacing]
+  & \rho_vac(n,t) = \rho_base \cdot r^n \cdot exp(-[SSq]\cdotn/26) \cdot exp(-(\pi-t)) \\
+  & \delta_n = (2\pi)^{n/6}   [pseudo-monopole angular spacing]
 \end{aligned}
 $$
 
 is encoded in **Engine 2** (PseudoMonopole26StateProgression) of the standalone axiom module
 `scm_superconductivity_axiom.py`, which computes all 26 states with DPM identity mapping, Higgs
-excitation (PAPER_856), and universal speed range c26·i-26 (PAPER_871).
+excitation (PAPER_856), and universal speed range c26$\cdot$i-26 (PAPER_871).
 
 ### Key Results (Engine 2)
 
 | Quantity | Value |
 |----------|-------|
-| ρ(1) | 4.228e-26 J/m3 |
-| ρ(26) | 2.444e-51 J/m3 |
-| ρ(1)/ρ(26) suppression | 1.730e+25 |
-| v(n=1) → v(n=26) | c26 → c | (photon deceleration) |
+| $\rho$(1) | 4.228e-26 J/m3 |
+| $\rho$(26) | 2.444e-51 J/m3 |
+| $\rho$(1)/$\rho$(26) suppression | 1.730e+25 |
+| v(n=1) $\to$ v(n=26) | c26 $\to$ c | (photon deceleration) |
 | k_Higgs | 7.069e+26 |
 
 ### Four-Engine Architecture
 
-1. **Engine 1:** U_m fourth master equation (Heaviside 1013× amplifier)
-2. **Engine 2:** 26-state pseudo-monopole progression ← **THIS PAPER**
+1. **Engine 1:** U_m fourth master equation (Heaviside 1013$\times$ amplifier)
+2. **Engine 2:** 26-state pseudo-monopole progression $\leftarrow$ **THIS PAPER**
 3. **Engine 3:** Three-assumption cosmogenesis flowchart
 4. **Engine 4:** 9-sector Lagrangian mapping of SCm responses
 
@@ -117,7 +117,7 @@ vacuum density correspond to the 26-dimensional KK tower in L_UQFF.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -136,7 +136,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -173,7 +173,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -276,7 +276,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -287,13 +287,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

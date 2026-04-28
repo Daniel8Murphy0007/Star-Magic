@@ -10,10 +10,10 @@ tags: [AGN, vacuum, SCm, buoyancy, LHC, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_641: UQFF Electroweak sin2θ_W and SCm Vacuum Connection
+# PAPER_641: UQFF Electroweak sin2$\theta$_W and SCm Vacuum Connection
 **Author:** Daniel T. Murphy
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **Version:** 1.0.0  
@@ -31,11 +31,11 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-The weak mixing angle sin2θ_W = 0.23122 ± 0.00003 (on-shell scheme, PDG 2024) is the
+The weak mixing angle sin2$\theta$_W = 0.23122 $\pm$ 0.00003 (on-shell scheme, PDG 2024) is the
 most precisely measured electroweak parameter. We demonstrate that the UQFF Superconductive
-condensate metric H_SCm = 0.990 produces the relation H_SCm × cos2θ_W = 0.990 × 0.7688
-= 0.7611 ≈ ρ_EW = 1, providing a 97.9% first-pass alignment. The full UQFF EW bridge
-gives sin2θ_W_UQFF = 1 - (H_SCm)2 = 1 - 0.9801 = 0.0199 (deviation flag: requires
+condensate metric H_SCm = 0.990 produces the relation H_SCm $\times$ cos2$\theta$_W = 0.990 $\times$ 0.7688
+= 0.7611 $\approx$ $\rho$_EW = 1, providing a 97.9% first-pass alignment. The full UQFF EW bridge
+gives sin2$\theta$_W_UQFF = 1 - (H_SCm)2 = 1 - 0.9801 = 0.0199 (deviation flag: requires
 SCm_EW subtraction, see §4 for correct formulation yielding 99.6% alignment).
 
 ---
@@ -46,8 +46,8 @@ The weak mixing angle determines the relative strengths of the electromagnetic a
 neutral-current forces. Its precise value is constrained by Z-pole measurements at LEP/SLD
 and NuTeV, Drell-Yan processes at LHC, and atomic parity violation experiments.
 
-UQFF claim: sin2θ_W = 1 - m_W2/m_Z2 is reproduced by the UQFF superconductive condensate
-geometry: the ratio m_W/m_Z reflects the SCm projection of the SU(2)×U(1) gauge structure
+UQFF claim: sin2$\theta$_W = 1 - m_W2/m_Z2 is reproduced by the UQFF superconductive condensate
+geometry: the ratio m_W/m_Z reflects the SCm projection of the SU(2)$\times$U(1) gauge structure
 onto the vacuum condensate buoyancy axes.
 
 ---
@@ -62,7 +62,7 @@ with H_SCm = 0.990:
 
 $$\sin^2\theta_W^{UQFF} = \frac{1 - 0.9801}{1 + 0.0001} = \frac{0.0199}{1.0001} = 0.01990$$
 
-This is not the correct formula (0.01990 ≠ 0.23122). The correct UQFF bridge uses the
+This is not the correct formula (0.01990 $\neq$ 0.23122). The correct UQFF bridge uses the
 4-fold degenerate vacuum condensate:
 
 $$\sin^2\theta_W^{UQFF} = 4 \times \frac{1 - H_{SCm}^2}{H_{SCm}^{-2} + 3} = 4 \times \frac{0.0199}{4.039} \times \frac{1}{[SSq]} = 0.0197 / 0.0855 = 0.2304$$
@@ -119,7 +119,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -138,7 +138,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -249,7 +249,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.123 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -260,13 +260,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| sin2θ_W (on-shell) | 4×(1-H_SCm2)/(H_SCm-2+3)/[SSq] = 0.2304 | sin2θ_W = 0.23122 ± 0.00003 | PDG 2024 (Section 10) | 99.6% |
-| m_W (W boson mass) | m_Z × √(H_SCm2 × [SSq]_EW) = 79.49 GeV | m_W = 80.377 ± 0.012 GeV | PDG 2024 | 98.9% (1.1% deviation) |
-| ρ_EW parameter | H_SCm × cos2θ_W = 0.990 × 0.7688 = 0.7611 | ρ_EW = 1.0000 ± 0.0001 (SM exact) | PDG EW precision | PASS Within 25% (parametrisation limit) |
-| LHC Drell-Yan sin2θ_W | UQFF: sin2θ_eff = 0.23152 (running to LHC scale) | LHC CMS: sin2θ_W eff = 0.23125 | CMS 2025 | 99.9% at LHC scale |
+| sin2$\theta$_W (on-shell) | 4$\times$(1-H_SCm2)/(H_SCm-2+3)/[SSq] = 0.2304 | sin2$\theta$_W = 0.23122 $\pm$ 0.00003 | PDG 2024 (Section 10) | 99.6% |
+| m_W (W boson mass) | m_Z $\times$ $\sqrt{}$(H_SCm2 $\times$ [SSq]_EW) = 79.49 GeV | m_W = 80.377 $\pm$ 0.012 GeV | PDG 2024 | 98.9% (1.1% deviation) |
+| $\rho$_EW parameter | H_SCm $\times$ cos2$\theta$_W = 0.990 $\times$ 0.7688 = 0.7611 | $\rho$_EW = 1.0000 $\pm$ 0.0001 (SM exact) | PDG EW precision | PASS Within 25% (parametrisation limit) |
+| LHC Drell-Yan sin2$\theta$_W | UQFF: sin2$\theta$_eff = 0.23152 (running to LHC scale) | LHC CMS: sin2$\theta$_W eff = 0.23125 | CMS 2025 | 99.9% at LHC scale |
 
 **New physics claim:** The UQFF 4-fold degenerate vacuum condensate formula reproduces
-sin2θ_W to 99.6% accuracy from H_SCm = 0.990 and [SSq] = 0.57 alone — two constants
+sin2$\theta$_W to 99.6% accuracy from H_SCm = 0.990 and [SSq] = 0.57 alone — two constants
 calibrated from astrophysical vacuum buoyancy data, not from electroweak precision data.
 This provides a causal derivation of the weak mixing angle from vacuum topology geometry.
 
@@ -277,9 +277,9 @@ Higgs sector link to this electroweak vacuum.*
 
 ## §6 References
 
-- PDG 2024 — Electroweak Model, Section 10 (sin2θ_W = 0.23122)
+- PDG 2024 — Electroweak Model, Section 10 (sin2$\theta$_W = 0.23122)
 - PDG 2024 — W boson mass, Section 11
-- CMS 2025 — Drell-Yan sin2θ_W measurement at 13.6 TeV
+- CMS 2025 — Drell-Yan sin2$\theta$_W measurement at 13.6 TeV
 - bsm_physics_validation.py — `BSMPhysicsConstants.sin2_theta_w_pdg2024`
 - PAPER_639 — UQFF Higgs Mass K_HIGGS Bridge
 - PAPER_642 — UQFF SM Parameter Bridge Master Comparison

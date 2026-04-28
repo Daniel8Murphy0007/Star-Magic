@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_999
-title: "AGN F_U_Bi Merger with 3rd-Order Ramanujan S₂₆⁽3⁾"
+title: "AGN F_U_Bi Merger with 3rd-Order Ramanujan S26(3)"
 session: 219
 date: 2026-04-13
 author: "Daniel T. Murphy"
@@ -12,26 +12,26 @@ calibration: {S26_3rd: 0.095, M_bh: 5.5e7, a_spin: 0.70}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_999: AGN F_U_Bi Merger with S₂₆⁽3⁾
+# PAPER_999: AGN F_U_Bi Merger with S26(3)
 
 ## Abstract
 
 We derive the buoyancy force F_U_Bi at the SMBH horizon of AGN merger systems using the 3rd-order
-Ramanujan summation S₂₆⁽3⁾ = 0.095. The recursive coefficient R_n^{(d,k)} = Σ_{j=0}^{k-1} (-1)^j
-C(k-1,j)/(n+j)! provides alternating-sign corrections that reduce S₂₆ from 0.57 (1st-order) to 0.095
+Ramanujan summation S26(3) = 0.095. The recursive coefficient R_n^{(d,k)} = $\Sigma$_{j=0}^{k-1} (-1)^j
+C(k-1,j)/(n+j)! provides alternating-sign corrections that reduce S26 from 0.57 (1st-order) to 0.095
 (3rd-order).
 
 ## 1. Core Equation
 
-F_{U,Bi}^{AGN} = ρ_SCm · V · S₂₆⁽3⁾2 · |Ub|/(|Ug| + |Ub|)
+F_{U,Bi}^{AGN} = $\rho$_SCm $\cdot$ V $\cdot$ S26(3)2 $\cdot$ |Ub|/(|Ug| + |Ub|)
 
-For Centaurus A (M_BH = 5.5×107 MM_sun, a = 0.70): F_U_Bi = 5.47×1035 m/s2.
+For Centaurus A (M_BH = 5.5$\times$107 MM_sun, a = 0.70): F_U_Bi = 5.47$\times$1035 m/s2.
 
-## 2. Ramanujan S₂₆⁽3⁾
+## 2. Ramanujan S26(3)
 
-S₂₆⁽3⁾ = Σ_{n=1}^{26} (z^n/n26) · R_n^{(26,3)} = 9.500×10-2
+S26(3) = $\Sigma$_{n=1}^{26} (z^n/n26) $\cdot$ R_n^{(26,3)} = 9.500$\times$10-2
 
-Distinct from S₂₆⁽1⁾ = 0.57 due to higher-order alternating cancellation.
+Distinct from S26(1) = 0.57 due to higher-order alternating cancellation.
 
 ## 3. Implementation
 
@@ -75,7 +75,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -94,7 +94,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -162,7 +162,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -239,7 +239,7 @@ $$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravitational-wave chirp $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

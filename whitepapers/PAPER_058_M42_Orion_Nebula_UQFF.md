@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Proximity-Driven Gravitational Dominance and the Trapezium OB Cluster
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Validator:** `validate_all_models.py`  M42Model: **4/4 PASS** ?  
 **Source Module:** `CondensedPhysics.py` (M42Model), `validate_all_models.py`  
@@ -28,20 +28,20 @@ Proximity-Driven Gravitational Dominance and the Trapezium OB Cluster
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 M42, the Great Orion Nebula, is the closest massive star-forming HII region to Earth at 410 pc
 (~1,344 light-years). The UQFF M42Model produces the **highest g_grav in the entire ten-model
-suite**: g = 6.6376×10? m/s, driven primarily by proximity rather than extraordinary mass. Standard
-g_compressed (1.0533×10?) and R_amplitude (1.1586×10?) confirm M42 is a steady-state, non-compressed
+suite**: g = 6.6376$\times$10? m/s, driven primarily by proximity rather than extraordinary mass. Standard
+g_compressed (1.0533$\times$10?) and R_amplitude (1.1586$\times$10?) confirm M42 is a steady-state, non-compressed
 HII region. All 4 tests pass with g_grav consistent with a ~1,5002,000 M? ionized cloud at 410 pc.
 This paper also examines why M42's peak g_grav exceeds Carina (NGC3372, at 2,300 pc, mass ~105 M?)
 and derived implications for UQFF distance scaling.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -68,7 +68,7 @@ present in Standard Model treatments.
 
 ### Test 1: Gravitational Field g_grav – Suite Maximum
 
-- g_grav = **6.6376×10?** m/s
+- g_grav = **6.6376$\times$10?** m/s
 - This is the **highest g_grav in the entire 10-model suite**  higher than NGC3372 (Carina), M42 beats every galaxy and extragalactic system in the validator
 - **PASS**
 
@@ -80,12 +80,12 @@ present in Standard Model treatments.
 
 ### Test 3: Compressed Gravity g_compressed
 
-- g_compressed = **1.0533×10?** (standard  no enhancement)
+- g_compressed = **1.0533$\times$10?** (standard  no enhancement)
 - **PASS**
 
 ### Test 4: Resonance Amplitude R
 
-- R_amplitude = **1.1586×10?** (standard)
+- R_amplitude = **1.1586$\times$10?** (standard)
 - **PASS**
 
 ---
@@ -100,8 +100,8 @@ M42 vs. NGC3372 (Carina):
 
 | Object | Mass | Distance | g_grav |
 |--------|------|----------|--------|
-| M42 | ~2,000 M? | 410 pc | **6.6376×10?** |
-| NGC3372 | ~105 M? | 2,300 pc | 3.3188×10? |
+| M42 | ~2,000 M? | 410 pc | **6.6376$\times$10?** |
+| NGC3372 | ~105 M? | 2,300 pc | 3.3188$\times$10? |
 
 Naive ratio prediction:
 $$\frac{g_{\rm M42}}{g_{\rm NGC3372}} = \frac{M_{\rm M42}}{M_{\rm Carina}} \times \frac{d_{\rm Carina}^2}{d_{\rm M42}^2} = \frac{2000}{10^5} \times \frac{2300^2}{410^2} = 0.02 \times 31.5 = 0.63$$
@@ -126,10 +126,10 @@ The Trapezium (? Orionis) is a compact multiple-star system with four main compo
 
 | Star | Type | T_eff (K) | L (L?) | UQFF Role |
 |------|------|----------|--------|-----------|
-| ? Ori C | O6 | 39,000 | 2×105 | Primary Ug1 source (magnetic field) |
-| ? Ori D | B0.5 | 31,000 | 1.5×104 | Secondary Ug2 charge-reactivity |
-| ? Ori B | B3 | 25,000 | 2×10 | Tertiary Ug3 string rotation |
-| ? Ori A | O9.5 | 32,000 | 3×104 | Quaternary Ug4 vacuum |
+| ? Ori C | O6 | 39,000 | 2$\times$105 | Primary Ug1 source (magnetic field) |
+| ? Ori D | B0.5 | 31,000 | 1.5$\times$104 | Secondary Ug2 charge-reactivity |
+| ? Ori B | B3 | 25,000 | 2$\times$10 | Tertiary Ug3 string rotation |
+| ? Ori A | O9.5 | 32,000 | 3$\times$104 | Quaternary Ug4 vacuum |
 
 The UQFF assigns the dominant contribution through the F_U hierarchy:
 $$F_U = \sum_i [Ug1_i + Ug2_i + Ug3_i + Ug4_i]$$
@@ -148,30 +148,30 @@ the HII region evenly, maintaining the pre-existing [SCm] state rather than comp
 
 | Rank | Object | g_grav (m/s) | Type | Comment |
 |------|--------|--------------|------|---------|
-| 1 | **M42** | **6.6376×10?** | HII region | Closest HII, 410 pc |
-| 2 | NGC3372 | 3.3188×10? | HII region | Carina full nebula |
-| 3 | NGC4676 | 2.9500×10? | Merging galaxies | 10 g_comp enhancement |
-| 4 | MysticMountain | 1.3275×10? | Pillar | In Carina, 2.3 kpc |
-| 5 | NGC2264 | 5.9336×10? | Star-forming cluster | 760 pc distance |
-| 6 | NGC2841 | 5.3101×10? | Spiral galaxy | High-z, Hubble=1.7154 |
-| 7 | AGCarinae | 2.6550×10? | LBV | 6 kpc, single-star scale |
-| 8 | UGC10214 | 7.8551×10? | Tadpole galaxy | Minor merger |
-| 9 | Red Spider | 1.3275×10? | Planetary nebula | Low mass PN, 1.5 kpc |
-| 10 | TarantulaNebula | 3.5099×10? | LMC nebula | 50 kpc, LMC 10 g_comp |
+| 1 | **M42** | **6.6376$\times$10?** | HII region | Closest HII, 410 pc |
+| 2 | NGC3372 | 3.3188$\times$10? | HII region | Carina full nebula |
+| 3 | NGC4676 | 2.9500$\times$10? | Merging galaxies | 10 g_comp enhancement |
+| 4 | MysticMountain | 1.3275$\times$10? | Pillar | In Carina, 2.3 kpc |
+| 5 | NGC2264 | 5.9336$\times$10? | Star-forming cluster | 760 pc distance |
+| 6 | NGC2841 | 5.3101$\times$10? | Spiral galaxy | High-z, Hubble=1.7154 |
+| 7 | AGCarinae | 2.6550$\times$10? | LBV | 6 kpc, single-star scale |
+| 8 | UGC10214 | 7.8551$\times$10? | Tadpole galaxy | Minor merger |
+| 9 | Red Spider | 1.3275$\times$10? | Planetary nebula | Low mass PN, 1.5 kpc |
+| 10 | TarantulaNebula | 3.5099$\times$10? | LMC nebula | 50 kpc, LMC 10 g_comp |
 
 ### Key Pattern: 4 Orders of Magnitude in g_grav
 
 $$\frac{g_{\rm M42}}{g_{\rm Tarantula}} = \frac{6.64 \times 10^{-10}}{3.51 \times 10^{-13}} = 1890\times \approx 2000\times$$
 
 This 4-order-of-magnitude range across 10 objects (from nearby HII region to distant LMC
-super-nebula) is reproduced by the UQFF framework with zero free parameters (all calibrated by the κ
+super-nebula) is reproduced by the UQFF framework with zero free parameters (all calibrated by the $\kappa$
 = 0.0005/day and [SSq] = 0.57 constants established in earlier validation work).
 
 ---
 
 ## 6. Standard Compression Confirmed
 
-The standard g_compressed = 1.0533×10? for M42 is an important negative result: despite M42 having
+The standard g_compressed = 1.0533$\times$10? for M42 is an important negative result: despite M42 having
 the highest g_grav and being the closest massive star-forming region, it does **not** show
 compression enhancement.
 
@@ -194,7 +194,7 @@ Both papers measure shock properties near or within molecular clouds similar to 
 boundary conditions. The UQFF shock velocity formula:
 $$v_{\rm shock} = v_{\rm Alfvn} \times (1 + Ug1/g_{\rm grav})^{1/2}$$
 
-At g_grav = 6.64×10? (M42 scale), the predicted J-shock velocity for a molecular cloud shock driven
+At g_grav = 6.64$\times$10? (M42 scale), the predicted J-shock velocity for a molecular cloud shock driven
 by the Trapezium would be ~4850 km/s, matching the arXiv values within 3%.
 
 ---
@@ -203,10 +203,10 @@ by the Trapezium would be ~4850 km/s, matching the arXiv values within 3%.
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | **6.6376×10? m/s** (suite maximum) | ? |
+| 1 | g_grav | **6.6376$\times$10? m/s** (suite maximum) | ? |
 | 2 | Hubble factor | 1.0002 | ? |
-| 3 | g_compressed | 1.0533×10? (standard) | ? |
-| 4 | R_amplitude | 1.1586×10? (standard) | ? |
+| 3 | g_compressed | 1.0533$\times$10? (standard) | ? |
+| 4 | R_amplitude | 1.1586$\times$10? (standard) | ? |
 
 **4/4 PASS (100%)**
 
@@ -214,7 +214,7 @@ by the Trapezium would be ~4850 km/s, matching the arXiv values within 3%.
 
 ## 9. Conclusions
 
-1. **Suite maximum g_grav**: M42's peak g_grav = 6.6376×10? is the highest in the 10-model
+1. **Suite maximum g_grav**: M42's peak g_grav = 6.6376$\times$10? is the highest in the 10-model
 validator, driven by proximity (410 pc) rather than exceptional mass (~2,000 M?)
 2. **Proximity effect**: The UQFF reproduces the distance-squared dominance for local Galactic
 systems; M42 beats NGC3372 (50 more massive) because it is 5.6 closer
@@ -226,7 +226,7 @@ in 2024 arXiv papers (96.48§96.91% alignment)
 5. **4-decade g_grav span**: Across the 10-model suite, g_grav spans 4 orders of magnitude (M42 ?
 Tarantula), all reproduced from ? and [SSq] alone
 
-*Validator: `v`alidate_all_models`.py` M42Model  4/4 PASS | κ = 0.0005/day | [SSq] = 0.57*
+*Validator: `v`alidate_all_models`.py` M42Model  4/4 PASS | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 
 > See also: PAPER_057 | Part of the Star-Magic UQFF Whitepaper Series.*
@@ -276,14 +276,14 @@ the phonon transmission efficiency across the ICM.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -298,10 +298,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -309,9 +309,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -319,8 +319,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -397,7 +397,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.071 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

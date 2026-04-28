@@ -30,9 +30,9 @@ The proton occupies a physical volume of ~10-39 cm3, yet the surrounding Aether 
 holds only ~10-23 gm/cm3 of energy density. Removing 10-39% of the total vacuum energy
 content from any region causes gravitational collapse to a black hole — a condition
 satisfied at the proton scale when the Schwarzschild radius equals the proton charge radius.
-This paper derives the Schwarzschild proton mass (1.85×109 kg) from the UQFF vacuum
+This paper derives the Schwarzschild proton mass (1.85$\times$109 kg) from the UQFF vacuum
 concentration framework, connects it to the Wheeler-DeWitt equation with UQFF vacuum
-boundary conditions, evaluates the Casimir force alignment (Δρvac = 6.38×10-36 J/m3),
+boundary conditions, evaluates the Casimir force alignment ($\Delta$$\rho$vac = 6.38$\times$10-36 J/m3),
 and establishes E = mc2e^{-26} as the real-valued Rydberg-26 suppression expression
 (complement to the complex form Eₓ = mc2e^{-i26} in PAPER_649).
 
@@ -58,7 +58,7 @@ Compare with actual proton mass: $m_p = 1.673\times10^{-27}\ \text{kg}$
 
 Ratio: $M_{\text{Sch,proton}}/m_p \approx 10^{36}$ — a 36-order deficit between actual and
 Schwarzschild proton masses. This is precisely the gap bridged by the vacuum density
-ratio in the UQFF (ρvac,[UA]/ρvac,[SCm] = 10, spanning from 10-37 up to cosmological scales).
+ratio in the UQFF ($\rho$vac,[UA]/$\rho$vac,[SCm] = 10, spanning from 10-37 up to cosmological scales).
 
 ### 1.3 The 10-39% Black Hole Threshold
 
@@ -66,7 +66,7 @@ With universe mass ~1054 gm and proton volume ~10-39 cm3:
 
 $$\frac{V_p}{V_{\text{universe}}} \approx \frac{10^{-39}}{10^{87}} = 10^{-126}$$
 
-But the energy fraction removed = vacuum energy density × proton volume / total vacuum:
+But the energy fraction removed = vacuum energy density $\times$ proton volume / total vacuum:
 
 $$\frac{\rho_{\text{vac},A} \cdot V_p}{M_{\text{universe}}c^2} \approx \frac{10^{-23} \cdot 10^{-39}}{10^{54} \cdot (3\times10^{10})^2} \approx 10^{-39}\%$$
 
@@ -97,7 +97,7 @@ The Casimir pressure between parallel plates separated by gap a:
 
 $$P_{\text{Casimir}} = -\frac{\pi^2 \hbar c}{240 a^4}$$
 
-At proton scale (a = 8.775×10-15 m):
+At proton scale (a = 8.775$\times$10-15 m):
 
 $$P_{\text{Casimir}} \approx 7.3\times10^{25}\ \text{Pa} \approx 7.3\times10^{25}\ \text{J/m}^3$$
 
@@ -113,11 +113,11 @@ hierarchy connects Casimir physics to Schwarzschild proton physics in the UQFF f
 
 $$\hat{H}|\Psirangle = 0 \qquad \left[-\frac{\hbar^2}{2}\nabla^2 + V(\phi, a)\right]\Psi(a,\phi) = 0$$
 
-where a is the scale factor and φ the scalar field.
+where a is the scale factor and $\phi$ the scalar field.
 
 ### 3.2 UQFF Modification
 
-The UQFF replaces the conventional vacuum energy V(φ,a) with the layered vacuum density:
+The UQFF replaces the conventional vacuum energy V($\phi$,a) with the layered vacuum density:
 
 $$V_{\text{UQFF}}(a, \rho_{\text{vac}}) = \frac{\Lambda_{\text{UQFF}}}{8\pi G} = \frac{c^2}{a^2}\left(\rho_{\text{vac},[SCm]} + \rho_{\text{vac},[UA]} + \rho_{\text{vac},Ui}\right) \cdot \frac{1}{E_{\text{react}}}$$
 
@@ -125,8 +125,8 @@ The UQFF Wheeler-DeWitt thus becomes:
 
 $$\left[-\frac{\hbar^2}{2}\nabla^2 + \frac{c^2}{a^2}\sum_j \rho_{\text{vac},j}\right]\Psi = 0$$
 
-This reproduces the cosmic initial condition at a → 0 (Planck epoch) when ρvac,j → ρvac,[SCm],
-and transitions to the cosmological constant at large a when ρvac,j → ρvac,A = 10-23 gm/cm3.
+This reproduces the cosmic initial condition at a $\to$ 0 (Planck epoch) when $\rho$vac,j $\to$ $\rho$vac,[SCm],
+and transitions to the cosmological constant at large a when $\rho$vac,j $\to$ $\rho$vac,A = 10-23 gm/cm3.
 
 ### 3.3 Planck Length Connection
 
@@ -147,9 +147,9 @@ vacuum hierarchy — a 19-order step matched by SOURCE115's 19-system 26D framew
 
 | Scale | Radius | Vacuum removal fraction | Collapse type |
 |-------|--------|------------------------|---------------|
-| Planck | 1.616×10-33 cm | ~100% | Spacetime foam |
-| Proton | 8.775×10-14 cm | 10-39% | Schwarzschild proton |
-| Electron | 2.818×10-13 cm | ~10-37% | Electron BH |
+| Planck | 1.616$\times$10-33 cm | ~100% | Spacetime foam |
+| Proton | 8.775$\times$10-14 cm | 10-39% | Schwarzschild proton |
+| Electron | 2.818$\times$10-13 cm | ~10-37% | Electron BH |
 | Neutron star | ~10 km | ~10-53% | Stellar collapse |
 | SMBH (SgrA*) | ~107 km | ~10-50% | SMBH formation |
 
@@ -164,7 +164,7 @@ vacuum hierarchy — a 19-order step matched by SOURCE115's 19-system 26D framew
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-AGN-S225 -->
 
@@ -172,7 +172,7 @@ vacuum hierarchy — a 19-order step matched by SOURCE115's 19-system 26D framew
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -294,7 +294,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.124 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -306,10 +306,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | SM Value | UQFF Schwarzschild Proton | Alignment |
 |------------|----------|---------------------------|-----------|
 | Proton charge radius | 0.8775 fm | r_p input (exact) | ✅ 100% |
-| Planck length | 1.616×10-33 cm | ℓP from G,ℏ,c (exact) | ✅ 100% |
-| Casimir pressure (1 nm gap) | ~1.3×10-3 Pa | Casimir formula (exact) | ✅ |
-| Vacuum energy density | ρvac ≈ 10-9 J/m3 (QFT) | UQFF ρvac,sw = 8×10-21 | 🔍 UQFF vs QFT |
-| Wheeler-DeWitt | H|Ψ⟩=0 (standard) | V_UQFF layered boundary | ✅ structural |
+| Planck length | 1.616$\times$10-33 cm | ℓP from G,ℏ,c (exact) | ✅ 100% |
+| Casimir pressure (1 nm gap) | ~1.3$\times$10-3 Pa | Casimir formula (exact) | ✅ |
+| Vacuum energy density | $\rho$vac $\approx$ 10-9 J/m3 (QFT) | UQFF $\rho$vac,sw = 8$\times$10-21 | 🔍 UQFF vs QFT |
+| Wheeler-DeWitt | H|$\Psi$⟩=0 (standard) | V_UQFF layered boundary | ✅ structural |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
 
@@ -318,7 +318,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 ## References
 
 1. Aether13_16.cpp — grok_share_b2e2c5cba7a.txt (Session 168) lines 1020–1225
-2. PAPER_647 — Vacuum Density Series (ρvac,[SCm] = 7.09×10-37)
+2. PAPER_647 — Vacuum Density Series ($\rho$vac,[SCm] = 7.09$\times$10-37)
 3. PAPER_649 — Dipole Vortex Primes (complex form Eₓ = mc2e^{-i26})
 4. PAPER_648 — D(-1) LENR (KER = 630 eV; meson cascade)
 5. PAPER_646 — Universal Inertial Operator

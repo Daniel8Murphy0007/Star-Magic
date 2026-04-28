@@ -13,7 +13,7 @@ arxiv: "2504.07710"
 cp4_entry: 615
 ---
 
-# ATLAS Off-Shell Higgs Width Bound Γ\_H
+# ATLAS Off-Shell Higgs Width Bound $\Gamma$\_H
 
 ## Abstract
 
@@ -40,8 +40,8 @@ $$R_{[\text{SCm}]} = k_{\text{SCm}} \cdot V_{\text{infl},[\text{SCm}]} \cdot V_{
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | $k_{\text{SCm}}$ | $10^{-40}$ | SCm reaction coupling |
-| $V_{\text{infl},[\text{SCm}]}$ | $7.09 \times 10^{-37}$ J/m³ | SCm inflaton density |
-| $V_{\text{infl},[\text{UA}]}$ | $7.09 \times 10^{-36}$ J/m³ | UA inflaton density |
+| $V_{\text{infl},[\text{SCm}]}$ | $7.09 \times 10^{-37}$ J/m3 | SCm inflaton density |
+| $V_{\text{infl},[\text{UA}]}$ | $7.09 \times 10^{-36}$ J/m3 | UA inflaton density |
 
 ### 2.2 Corrected Width
 
@@ -82,7 +82,7 @@ The ATLAS off-shell Higgs width bound provides evidence for $[\text{SCm}]$ vacuu
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

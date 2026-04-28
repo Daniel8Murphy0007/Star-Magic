@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Number:** #213  
 **Source:** grok_share_6322ac199.txt (Session 161)  
 **Filed:** Session 161 v5.18  
-**VDS/DVP/BH26:** BH26 (f spectrum 5.71×1016–1018 Hz) + DVP (polarization flips)  
+**VDS/DVP/BH26:** BH26 (f spectrum 5.71$\times$1016–1018 Hz) + DVP (polarization flips)  
 
 ---
 
@@ -35,7 +35,7 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 Full 9D Wolfram hypergraph simulation of the M87 AGN jet using 200 iterations
 and arity threshold 4. The simulation produces 12 nodes, 4 pocket hyperedges,
-and a frequency ramp from 5.71×1016 to 1018 Hz consistent with combined
+and a frequency ramp from 5.71$\times$1016 to 1018 Hz consistent with combined
 EHT/Chandra/JWST observations. Three DVP polarization flip events matching
 EHT 2017–2021 measurements are generated spontaneously from d4–d6 asymmetry.
 
@@ -45,12 +45,12 @@ EHT 2017–2021 measurements are generated spontaneously from d4–d6 asymmetry.
 
 | Parameter | Value |
 |-----------|-------|
-| BH mass | 6.5×109 MM_sun = 1.29×1040 kg |
-| Distance | 55 Mly = 5.2×1023 m |
-| Jet length | 5000 ly = 4.6×1019 m |
-| Photon ring | 40 μas = 3×1013 m |
-| ∇UA (jet base) | ~10-18 m-1 |
-| ∇UA (equilibrium) | ~10-9 |
+| BH mass | 6.5$\times$109 MM_sun = 1.29$\times$1040 kg |
+| Distance | 55 Mly = 5.2$\times$1023 m |
+| Jet length | 5000 ly = 4.6$\times$1019 m |
+| Photon ring | 40 $\mu$as = 3$\times$1013 m |
+| $\nabla$UA (jet base) | ~10-18 m-1 |
+| $\nabla$UA (equilibrium) | ~10-9 |
 | Coordinates | RA 12h30m49.19s, Dec +12°22′47.86″ |
 | Observation | EHT 2021 (arXiv Dec 2025) + JWST infrared Oct 2025 + Chandra Dec 2025 |
 
@@ -58,11 +58,11 @@ EHT 2017–2021 measurements are generated spontaneously from d4–d6 asymmetry.
 
 ## §3 Simulation Architecture
 
-**9D Wolfram rules (Sequential, arity ≥ 4):**
+**9D Wolfram rules (Sequential, arity $\geq$ 4):**
 $$
 \begin{aligned}
-  & Seed: 9 nodes, 1 hyperedge e₀ = {v₀,...,v₈} \\
-  & Rule: R(e) → (e₁∪{v_new}, e₂∪{v_new}) \\
+  & Seed: 9 nodes, 1 hyperedge e0 = {v0,...,v8} \\
+  & Rule: R(e) \to (e1\cup{v_new}, e2\cup{v_new}) \\
   & v_new coords: centroid(e) + Ub_bias[d7-d9 += 0.5] \\
   & 200 iterations, stops when no splits occur
 \end{aligned}
@@ -86,7 +86,7 @@ if d4_6_sum > 1.5:  polarization_flip += 1
 | Path length proxy | 12 nodes |
 | `nabla_UA_max` (normalized) | 1.31 |
 | DVP flip events | 3 |
-| Freq min | 5.71×1016 Hz |
+| Freq min | 5.71$\times$1016 Hz |
 | Freq max | 1018 Hz |
 
 **Frequency ramp (11 points, Hz):**
@@ -105,26 +105,26 @@ The 3 DVP flip events (d4–d6 sum > 1.5) correspond to:
 3. **EHT 2021:** Full Stokes imaging — magnetic field reversal
 
 The d4–d6 asymmetry directly encodes the DPM north/south dipole orientation.
-Each flip = one complete DPM→DPM_s reversal in the jet base magnetic geometry.
+Each flip = one complete DPM$\to$DPM_s reversal in the jet base magnetic geometry.
 
 ---
 
 ## §6 Energy Scale Interpretation
 
-The frequency range 5.71×1016 – 1018 Hz corresponds to:
-- 5.71×1016 Hz ≈ 0.24 keV (soft X-ray, jet base)
-- 1018 Hz ≈ 4.1 keV (hard X-ray, terminal pocket)
+The frequency range 5.71$\times$1016 – 1018 Hz corresponds to:
+- 5.71$\times$1016 Hz $\approx$ 0.24 keV (soft X-ray, jet base)
+- 1018 Hz $\approx$ 4.1 keV (hard X-ray, terminal pocket)
 
 Chandra observations show M87 core at 0.5–7 keV — consistent with UQFF range
-5.71×1016 – 1018 Hz.
+5.71$\times$1016 – 1018 Hz.
 
 ---
 
-## §7 3D Projection Coordinates (Sample 5 nodes, ×4.6×1019 m)
+## §7 3D Projection Coordinates (Sample 5 nodes, $\times$4.6$\times$1019 m)
 
 Projected from 9D hypergraph to observable 3D jet coordinates using orthogonal
-projector P ∈ ℝ^{3×9}. Representative node positions are consistent with
-synthetic VLBI image morphology at 230 GHz (1.3 mm wavelength, θ_beam ≈ 20 μas).
+projector P $\in$ $\mathbb{R}$^{3$\times$9}. Representative node positions are consistent with
+synthetic VLBI image morphology at 230 GHz (1.3 mm wavelength, $\theta$_beam $\approx$ 20 $\mu$as).
 
 ---
 
@@ -136,7 +136,7 @@ synthetic VLBI image morphology at 230 GHz (1.3 mm wavelength, θ_beam ≈ 20 μ
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -155,7 +155,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -230,7 +230,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.185 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -241,13 +241,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| M87 X-ray energy range | 5.71×1016–1018 Hz = 0.24–4.1 keV | Chandra M87 core: 0.5–7 keV | Chandra Dec 2025 | PASS Consistent range |
-| Synchrotron frequency floor (QED) | U_m inverse Compton: f_IC = (4/3)γ2f_CMB; γ~106 → f_IC~5×1016 Hz | QED: f_IC = (4/3)(E_e/m_e c2)2 × 160 GHz | QED synchrotron | PASS UQFF floor matches QED IC prediction |
-| VLBI beam resolution θ_beam | 9D projection resolves structures down to VLBI scale ~20 μas | EHT 230 GHz VLBI: θ_beam = 20 μas at M87 | EHT 2021 arXiv | PASS Projection scale consistent |
-| M87 jet polarization (QED) | DVP d4–d6 asymmetry → 3 EHT polarization flips | EVN/EHT: ~3 rotation-measure flips in M87 jet | EHT arXiv 2021 | PASS Count match |
+| M87 X-ray energy range | 5.71$\times$1016–1018 Hz = 0.24–4.1 keV | Chandra M87 core: 0.5–7 keV | Chandra Dec 2025 | PASS Consistent range |
+| Synchrotron frequency floor (QED) | U_m inverse Compton: f_IC = (4/3)$\gamma$2f_CMB; $\gamma$~106 $\to$ f_IC~5$\times$1016 Hz | QED: f_IC = (4/3)(E_e/m_e c2)2 $\times$ 160 GHz | QED synchrotron | PASS UQFF floor matches QED IC prediction |
+| VLBI beam resolution $\theta$_beam | 9D projection resolves structures down to VLBI scale ~20 $\mu$as | EHT 230 GHz VLBI: $\theta$_beam = 20 $\mu$as at M87 | EHT 2021 arXiv | PASS Projection scale consistent |
+| M87 jet polarization (QED) | DVP d4–d6 asymmetry $\to$ 3 EHT polarization flips | EVN/EHT: ~3 rotation-measure flips in M87 jet | EHT arXiv 2021 | PASS Count match |
 
 **New physics claim:** The 9D pocket shell simulation predicts time-averaged polarization
-variability with period τ pocket ≡ 2π·r_jet/(c·N_hyperedges) — not derivable from
+variability with period $\tau$ pocket $\equiv$ 2$\pi$$\cdot$r_jet/(c$\cdot$N_hyperedges) — not derivable from
 standard MHD or QED jet models.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

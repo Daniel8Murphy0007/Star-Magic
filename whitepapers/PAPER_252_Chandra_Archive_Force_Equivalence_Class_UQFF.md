@@ -39,7 +39,7 @@ K), and 3 orders in gas density (? ? [10?23, 10?2°] kg/m3).
 
 The key **uniquely rare discovery** of this paper is the **Force Equivalence Class**: despite the
 extreme diversity of physical parameters across these three systems, all share ?0 ˜ 10?12 rad/s and
-all produce F_U_Bi ˜ +2.11 × 102°8 N. The averaged Chandra composite also reproduces this class
+all produce F_U_Bi ˜ +2.11 $\times$ 102°8 N. The averaged Chandra composite also reproduces this class
 member, demonstrating that the equivalence is robust to dataset averaging across physically
 heterogeneous systems.
 
@@ -60,7 +60,7 @@ its frequency — a new conservation law unique to UQFF physics.
 | **Composite average** | 1033 (geometric mean) | ~105 | ~10?21 | ~3 Myr |
 
 Shared parameter: **?0 = 10?12 rad/s** for all three systems (canonical low-frequency class).
-Composite time baseline: archive span 1999–2023 CE ? t = 3.156 × 1014 s (~10 Myr equivalent).
+Composite time baseline: archive span 1999–2023 CE ? t = 3.156 $\times$ 1014 s (~10 Myr equivalent).
 
 ---
 
@@ -74,16 +74,16 @@ F_LENR = k_LENR × (?_LENR / ?0)2  [independent of L_X, M, T, ?]
        = 6.17 × 103? N   for all three systems
 ```
 
-The corresponding F_DE = k_DE × L_X varies from 10 N (Helix) to 105 N (Eta Car) — a 4-decade range.
-Yet the F_LENR/F_DE ratio ranges from 6×1034 to 6×1038, confirming F_DE is negligible in all cases.
+The corresponding F_DE = k_DE $\times$ L_X varies from 10 N (Helix) to 105 N (Eta Car) — a 4-decade range.
+Yet the F_LENR/F_DE ratio ranges from 6$\times$1034 to 6$\times$1038, confirming F_DE is negligible in all cases.
 
 **Equivalence demonstration:**
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi}(SN 1987A,  L_X=1031) ˜ +2.11×102°8 N \\
-  & \text{F\_U\_Bi}(Eta Car,   L_X=1035) ˜ +2.11×102°8 N \\
-  & \text{F\_U\_Bi}(Helix,     L_X=1031) ˜ +2.11×102°8 N \\
-  & \text{F\_U\_Bi}(composite, L_X=1033) ˜ +2.11×102°8 N   [averaging preserves class]
+  & \text{F\_U\_Bi}(SN 1987A,  L_X=1031) ˜ +2.11\times102°8 N \\
+  & \text{F\_U\_Bi}(Eta Car,   L_X=1035) ˜ +2.11\times102°8 N \\
+  & \text{F\_U\_Bi}(Helix,     L_X=1031) ˜ +2.11\times102°8 N \\
+  & \text{F\_U\_Bi}(composite, L_X=1033) ˜ +2.11\times102°8 N   [averaging preserves class]
 \end{aligned}
 $$
 
@@ -103,13 +103,13 @@ in UQFF.
 
 ### 2.3 Averaging Robustness
 
-The composite calculation uses the geometric mean L_X = (1031 × 1035)^(1/2) = 1033 W:
+The composite calculation uses the geometric mean L_X = (1031 $\times$ 1035)^(1/2) = 1033 W:
 $$
-\text{F\_DE\_composite} = k_DE × 1033 = 103 N
+\text{F\_DE\_composite} = k_DE \times 1033 = 103 N
 $$
 
-This is still negligible compared to F_LENR ˜ 6×103? N. The composite x2 computation uses the same
-a, b, c coefficients (dominated by F0 = 1.83×1071 N), giving the same integration limit and thus the
+This is still negligible compared to F_LENR ˜ 6$\times$103? N. The composite x2 computation uses the same
+a, b, c coefficients (dominated by F0 = 1.83$\times$1071 N), giving the same integration limit and thus the
 same F_U_Bi_i.
 
 ### 2.4 Age Independence
@@ -117,9 +117,9 @@ same F_U_Bi_i.
 SN 1987A (t ˜ 37 yr), Eta Carinae (t ˜ 180 yr), Helix Nebula (t ˜ 6,600 yr), composite t ˜ 10 Myr.
 The F_act oscillatory term:
 $$
-F_act = k_act × cos(?_act × t)
+F_act = k_act \times cos(?_act \times t)
 $$
-oscillates at ?_act = 2p × 300 Hz — sub-microsecond period. For any astrophysical age t, this term
+oscillates at ?_act = 2p $\times$ 300 Hz — sub-microsecond period. For any astrophysical age t, this term
 oscillates billions of times and time-averages to zero. Age has no effect on F_U_Bi.
 
 ---
@@ -128,7 +128,7 @@ oscillates billions of times and time-averages to zero. Age has no effect on F_U
 
 **Theorem (UQFF Force Equivalence Class):** The F_U_Bi buoyancy force functional defines equivalence
 classes on the space of astrophysical systems. Within each class, F_U_Bi is a conserved topological
-invariant determined solely by ?0. The ?0 = 10?12 class has invariant value +2.11 × 102°8 N,
+invariant determined solely by ?0. The ?0 = 10?12 class has invariant value +2.11 $\times$ 102°8 N,
 confirmed by five independent systems across 4 decades in luminosity, 3 decades in density, and 4
 decades in age.
 
@@ -140,7 +140,7 @@ same class.
 
 ## 4. Observational Predictions / Validation
 
-- **Chandra survey prediction:** Any Chandra-detected source with characteristic frequency ?0 ˜ 10?12 rad/s (identifiable from its orbital period, rotation period, or resonance features) should yield F_U_Bi ˜ +2.11 × 102°8 N. This provides a falsifiable prediction testable against the full Chandra Source Catalog (~300,000 sources).
+- **Chandra survey prediction:** Any Chandra-detected source with characteristic frequency ?0 ˜ 10?12 rad/s (identifiable from its orbital period, rotation period, or resonance features) should yield F_U_Bi ˜ +2.11 $\times$ 102°8 N. This provides a falsifiable prediction testable against the full Chandra Source Catalog (~300,000 sources).
 - **L_X sensitivity test:** Vary L_X from 1028 to 1038 W at fixed ?0 = 10?12. UQFF predicts F_U_Bi constant across this 10-decade range — a direct test of LENR dominance.
 - **Temperature/density probe:** UQFF predicts that varying T, ? while holding ?0 fixed produces no change in F_U_Bi. Chandra multi-temperature spectral fits combined with UQFF processing can validate this within a single source's multi-epoch data.
 
@@ -166,7 +166,7 @@ same class.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -185,7 +185,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -208,7 +208,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -329,7 +329,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -340,13 +340,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

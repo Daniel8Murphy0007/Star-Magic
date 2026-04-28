@@ -24,19 +24,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 The Pillars of Creation in M16 (Eagle Nebula) are iconic photo-evaporation columns undergoing active
 erosion by UV radiation from the central OB association. This paper derives the UQFF time-dependent
-gravity for the pillar system incorporating an erosion factor E(t) = E_0·exp(−t/τ_erode),
+gravity for the pillar system incorporating an erosion factor E(t) = E_0$\cdot$exp(-t/$\tau$_erode),
 electromagnetic Aether coupling, and ram-pressure support against Rayleigh-Taylor instability. At t
-= 0.5 Myr the model yields g_Pillars ≈ 1.053×10-4 m/s2, consistent with HST and JWST column density
+= 0.5 Myr the model yields g_Pillars $\approx$ 1.053$\times$10-4 m/s2, consistent with HST and JWST column density
 profiles.
 
 ---
 
 ## 1. Introduction
 
-The Pillars of Creation host 10,100 MM_sun of gas and dust within a projected area of ~2 pc×5 pc.
+The Pillars of Creation host 10,100 MM_sun of gas and dust within a projected area of ~2 pc$\times$5 pc.
 Photo-ionisation fronts driven by Trapezium-class O stars erode the pillar surfaces at ~10-3 MM_sun/yr.
 Rayleigh-Taylor instabilities at the ionisation front produce the characteristic finger morphology.
-UQFF adds an erosion-modified EM correction (1 − E(t)) that produces the observed deceleration
+UQFF adds an erosion-modified EM correction (1 - E(t)) that produces the observed deceleration
 gradient.
 
 ---
@@ -45,10 +45,10 @@ gradient.
 
 $$
 \begin{aligned}
-  & g_Pillars(r, t) = [G·M(t) / r2] × (1 + H(t,z)) × (1 − B/B_crit) × (1 − E(t)) \\
-  & + q·(v_wind × B) × A_aeth × A_scale × (1 − E(t)) \\
-  & + ρ_ISM·v_wind2 / r \\
-  & E(t) = E_0 × exp(−t / τ_erode)   [erosion exponential]
+  & g_Pillars(r, t) = [G\cdotM(t) / r2] \times (1 + H(t,z)) \times (1 - B/B_crit) \times (1 - E(t)) \\
+  & + q\cdot(v_wind \times B) \times A_aeth \times A_scale \times (1 - E(t)) \\
+  & + \rho_ISM\cdotv_wind2 / r \\
+  & E(t) = E_0 \times exp(-t / \tau_erode)   [erosion exponential]
 \end{aligned}
 $$
 
@@ -58,13 +58,13 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Total pillar mass | M | 2.009×1034 | kg (10,100 MM_sun) |
-| Pillar half-length | r | 4.731×1016 | m (5 ly) |
-| ISM density | ρ_ISM | 1.00×10-21 | kg/m3 |
-| Magnetic field | B | 1.00×10-6 | T |
-| Wind velocity | v_wind | 2.00×106 | m/s |
+| Total pillar mass | M | 2.009$\times$1034 | kg (10,100 MM_sun) |
+| Pillar half-length | r | 4.731$\times$1016 | m (5 ly) |
+| ISM density | $\rho$_ISM | 1.00$\times$10-21 | kg/m3 |
+| Magnetic field | B | 1.00$\times$10-6 | T |
+| Wind velocity | v_wind | 2.00$\times$106 | m/s |
 | Erosion amplitude | E_0 | 0.10 | — |
-| Erosion timescale | τ_erode | 3.156×1013 | s (1 Myr) |
+| Erosion timescale | $\tau$_erode | 3.156$\times$1013 | s (1 Myr) |
 | Aether factor | A_aeth | 11 | — |
 | Scale factor | A_scale | 10-12 | — |
 | Evaluation epoch | t | 0.5 Myr | — |
@@ -75,14 +75,14 @@ $$
 
 $$
 \begin{aligned}
-  & t = 0.5×106 × 3.156×107 = 1.578×1013 s \\
-  & E(t) = 0.1 × exp(−1.578×1013 / 3.156×1013) \\
-  & = 0.1 × exp(−0.5) ≈ 0.06065 \\
-  & (1 − E(t)) ≈ 0.93935 \\
-  & g_grav = G × 2.009×1034 / (4.731×1016)2 \\
-  & ≈ 5.99×10-11 m/s2   [gravitational — minor] \\
-  & g_EM × (1 − E) ≈ 1.053×10-4 × 0.93935 ≈ 9.89×10-5 m/s2 \\
-  & g_Pillars(t=0.5 Myr) ≈ 1.053×10-4 m/s2  [EM-dominated]
+  & t = 0.5\times106 \times 3.156\times107 = 1.578\times1013 s \\
+  & E(t) = 0.1 \times exp(-1.578\times1013 / 3.156\times1013) \\
+  & = 0.1 \times exp(-0.5) \approx 0.06065 \\
+  & (1 - E(t)) \approx 0.93935 \\
+  & g_grav = G \times 2.009\times1034 / (4.731\times1016)2 \\
+  & \approx 5.99\times10-11 m/s2   [gravitational — minor] \\
+  & g_EM \times (1 - E) \approx 1.053\times10-4 \times 0.93935 \approx 9.89\times10-5 m/s2 \\
+  & g_Pillars(t=0.5 Myr) \approx 1.053\times10-4 m/s2  [EM-dominated]
 \end{aligned}
 $$
 
@@ -92,8 +92,8 @@ $$
 
 $$
 \begin{aligned}
-  & dM/dt_erode ∝ E(t) × ρ_ISM × v_sound × A_pillar \\
-  & Estimated pillar lifetime: τ_survive ≈ 10 × τ_erode ≈ 10 Myr
+  & dM/dt_erode \propto E(t) \times \rho_ISM \times v_sound \times A_pillar \\
+  & Estimated pillar lifetime: \tau_survive \approx 10 \times \tau_erode \approx 10 Myr
 \end{aligned}
 $$
 
@@ -102,18 +102,18 @@ $$
 ## 6. Available Equations
 
 - g_Pillars(r, t) — photo-erosion UQFF gravity (primary)
-- E(t) = E_0·exp(−t/τ_erode) — erosion evolution
-- (1−E(t)) — survival factor
-- Photo-ionisation front velocity: v_IF = Q_ion / (4πr2·n_H·α_B)
-- Column density: N_H = ρ·L/m_H
-- Strömgren radius: r_S = (3Q_ion/(4π·n2·α_B))^(1/3)
+- E(t) = E_0$\cdot$exp(-t/$\tau$_erode) — erosion evolution
+- (1-E(t)) — survival factor
+- Photo-ionisation front velocity: v_IF = Q_ion / (4$\pi$r2$\cdot$n_H$\cdot$$\alpha$_B)
+- Column density: N_H = $\rho$$\cdot$L/m_H
+- Strömgren radius: r_S = (3Q_ion/(4$\pi$$\cdot$n2$\cdot$$\alpha$_B))^(1/3)
 
 ---
 
 ## 7. Conclusions
 
-The UQFF photo-erosion model for the Pillars of Creation yields g ≈ 1.053×10-4 m/s2 at t = 0.5 Myr,
-with the erosion factor (1−E) ≈ 0.94 reducing the amplitude by ~6% relative to a fresh uneroded
+The UQFF photo-erosion model for the Pillars of Creation yields g $\approx$ 1.053$\times$10-4 m/s2 at t = 0.5 Myr,
+with the erosion factor (1-E) $\approx$ 0.94 reducing the amplitude by ~6% relative to a fresh uneroded
 pillar. EM Aether coupling dominates the measured gravity gradient observed in JWST NIRCam
 column-density maps. PAPER_757, CP4 class #341. v5.39.
 
@@ -125,7 +125,7 @@ column-density maps. PAPER_757, CP4 class #341. v5.39.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -144,7 +144,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -219,7 +219,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.118 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -230,13 +230,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -357,15 +357,15 @@ photo-erosion limit of the general E-(t) master equation:
 
 $$
 \begin{aligned}
-  & Pillars:   E(t) = E_0·exp(-t/tau_erode)    [UV-driven mass loss] \\
+  & Pillars:   E(t) = E_0\cdotexp(-t/tau_erode)    [UV-driven mass loss] \\
   & CP4 class: NegativeEtBuoyancyErosionMasterCalc(\text{F\_UBi\_over\_FU}=0.3) \\
-  & → Erosion dominated when F_{U,Bi}/F_U < 0.5 \\
-  & → NGC 6611 OB stars supply UV erosion energy \\
+  & \to Erosion dominated when F_{U,Bi}/F_U < 0.5 \\
+  & \to NGC 6611 OB stars supply UV erosion energy \\
   & Lagrangian: ErosionLagrangianEulerLagrangeCalc(V_filament=V_pillar)
 \end{aligned}
 $$
 
-### S209.3 Expansion ↔ Erosion Duality
+### S209.3 Expansion $\leftrightarrow$ Erosion Duality
 
 | CP4 Class | # | PAPER | Duality Connection |
 |-----------|---|-------|-------------------|

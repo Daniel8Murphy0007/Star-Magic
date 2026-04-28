@@ -26,8 +26,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 The Q_wave energy density distribution measured across 47 astrophysical scales (ranging from quantum
 vacuum to quasar energetics) is found to be strongly non-Gaussian. A 47-term statistical analysis
-yields mean = 3.97×104 J/m3, standard deviation = 6.33×104 J/m3, Shapiro-Wilk W = 0.644 (p =
-1.21×10-9), and Jarque-Bera JB = 8.78 (p = 0.012), collectively rejecting normality at high
+yields mean = 3.97$\times$104 J/m3, standard deviation = 6.33$\times$104 J/m3, Shapiro-Wilk W = 0.644 (p =
+1.21$\times$10-9), and Jarque-Bera JB = 8.78 (p = 0.012), collectively rejecting normality at high
 significance. The distribution's heavy positive tail is attributable to the [SSq] = 0.507
 suppression cascade, which systematically attenuates vacuum energy density contributions from high-n
 states (n approaching 26). This is the **FIRST systematic non-parametric characterization of the
@@ -41,7 +41,7 @@ The Q_wave energy density is defined as:
 
 $$Q_{wave}(t, \text{system}) = \frac{1}{2} \mu_0 B_0^2 \cdot DPM_{resonance} + \frac{1}{2} \rho_{gas} v^2 \cdot DPM_{phase} \cdot t$$
 
-where $DPM_{resonance}$ and $DPM_{phase}$ are dimensionless coupling coefficients from the Discrete Plasmonic Mode framework. Q_wave was initially catalogued across 47 systems in the September 2025 UQFF thread, spanning atomic hydrogen (Q_wave ~ 8.13×10-10 J/m3) to quasar-class systems (Q_wave ~ 2.11×105 J/m3).
+where $DPM_{resonance}$ and $DPM_{phase}$ are dimensionless coupling coefficients from the Discrete Plasmonic Mode framework. Q_wave was initially catalogued across 47 systems in the September 2025 UQFF thread, spanning atomic hydrogen (Q_wave ~ 8.13$\times$10-10 J/m3) to quasar-class systems (Q_wave ~ 2.11$\times$105 J/m3).
 
 ---
 
@@ -60,18 +60,18 @@ Q_wave_all = [8.13e-10, 1.11e5, 4.65e-5, 1.11e5, 4.65e-5, 1.11e-4, 2.11e5, 2.11e
               8.13e-10, 8.13e-10, 1.11e-4, 1.11e-4, 8.13e-10, 4.65e-5, 1.11e-4]
 ```
 
-**Total values: 47** spanning a dynamic range of ~1015 (from 8.13×10-10 to 2.11×105 J/m3).
+**Total values: 47** spanning a dynamic range of ~1015 (from 8.13$\times$10-10 to 2.11$\times$105 J/m3).
 
 ### 2.2 Descriptive Statistics
 
 | Statistic | Value | Unit |
 |-----------|-------|------|
 | N | 47 | — |
-| Mean | 3.97×104 | J/m3 |
-| Std Dev (σ) | 6.33×104 | J/m3 |
-| Min | 8.13×10-10 | J/m3 |
-| Max | 2.11×105 | J/m3 |
-| σ/μ (CV) | 1.594 | — |
+| Mean | 3.97$\times$104 | J/m3 |
+| Std Dev ($\sigma$) | 6.33$\times$104 | J/m3 |
+| Min | 8.13$\times$10-10 | J/m3 |
+| Max | 2.11$\times$105 | J/m3 |
+| $\sigma$/$\mu$ (CV) | 1.594 | — |
 
 The coefficient of variation CV = 1.594 > 1 immediately signals non-Gaussian (for true normal
 distributions CV > 1 is extremely rare).
@@ -121,7 +121,7 @@ At $n = 26$: suppression factor = $e^{-0.507} = 0.602$
 A system like AT2024tvd TDE (high n, transient) thus has its Q_wave reduced by 40% compared to its
 pure electromagnetic value, while quasar systems near n=1 experience minimal suppression. This
 differential produces:
-- Positive skewness from the quasar tail at 2.11×105 J/m3
+- Positive skewness from the quasar tail at 2.11$\times$105 J/m3
 - Leptokurtosis (+0.037) from the compressed low-energy transient cluster
 
 ### 3.3 Connecting to DPM Resonance
@@ -130,8 +130,8 @@ The DPM resonance factor scales with f_DPM:
 
 $$DPM_{resonance} = \frac{\omega_{DPM}^2}{\omega_0^2} = \left(\frac{f_{DPM}}{f_0}\right)^2$$
 
-For quasar systems (f_DPM ~ 105 Hz → DPM_resonance ~ 1010), Q_wave scales 10 orders above compact
-systems (f_DPM ~ 1012 Hz but small B₀). The resulting bimodal mix directly generates the observed
+For quasar systems (f_DPM ~ 105 Hz $\to$ DPM_resonance ~ 1010), Q_wave scales 10 orders above compact
+systems (f_DPM ~ 1012 Hz but small B0). The resulting bimodal mix directly generates the observed
 non-normality.
 
 ---
@@ -140,20 +140,20 @@ non-normality.
 
 ### 4.1 Tail Risk in System Simulations
 
-The σ = 6.33×104 J/m3 > μ = 3.97×104 J/m3 means that any UQFF simulation drawing from this
+The $\sigma$ = 6.33$\times$104 J/m3 > $\mu$ = 3.97$\times$104 J/m3 means that any UQFF simulation drawing from this
 distribution must use a **non-parametric bootstrapping or heavy-tail (Pareto/log-normal) prior**
 rather than Gaussian noise injection.
 
 Predicted:
 $$\sigma < 7 \times 10^4~\text{J/m}^3~~\text{in 47-system extended simulations}$$
 
-This bound is consistent with the maximum observed at 2.11×105 J/m3 (3.34σ above mean).
+This bound is consistent with the maximum observed at 2.11$\times$105 J/m3 (3.34$\sigma$ above mean).
 
 ### 4.2 System Classification by Q_wave
 
 | Q_wave Range (J/m3) | System Types | [SSq] State |
 |---------------------|-------------|-------------|
-| 10-10 – 10-6 | Atomic/transient | high-n (n≥20) |
+| 10-10 – 10-6 | Atomic/transient | high-n (n$\geq$20) |
 | 10-6 – 10-4 | PWN/compact remnants | n~15–19 |
 | 10-4 – 103 | Nebulae/clusters | n~8–14 |
 | 103 – 105 | Galaxies/quasars | n~1–7 |
@@ -194,7 +194,7 @@ print('Shapiro-Wilk Stat:', sw_stat, 'p-value:', sw_p)
 
 This paper constitutes:
 1. **FIRST formal Q_wave non-Gaussian distribution characterization** across 47 UQFF systems
-2. **FIRST Shapiro-Wilk test applied to UQFF vacuum energy density** (W=0.644, p=1.21×10-9)
+2. **FIRST Shapiro-Wilk test applied to UQFF vacuum energy density** (W=0.644, p=1.21$\times$10-9)
 3. **FIRST explicit connection of [SSq] suppression cascade to Q_wave tail behavior**
 4. **FIRST UQFF scale-classification table** organized by Q_wave energy regime and [SSq] state index
 5. **FIRST UQFF-corrected non-parametric variance estimator** deconvolving [SSq] suppression
@@ -206,13 +206,13 @@ This paper constitutes:
 | Variable | Value | Unit | Notes |
 |----------|-------|------|-------|
 | N_systems | 47 | — | `Q_wave_47` array length |
-| μ_Q | 3.97×104 | J/m3 | Q_wave mean |
-| σ_Q | 6.33×104 | J/m3 | Q_wave std dev |
+| $\mu$_Q | 3.97$\times$104 | J/m3 | Q_wave mean |
+| $\sigma$_Q | 6.33$\times$104 | J/m3 | Q_wave std dev |
 | W_SW | 0.644 | — | Shapiro-Wilk statistic |
-| p_SW | 1.21×10-9 | — | Shapiro-Wilk p-value |
+| p_SW | 1.21$\times$10-9 | — | Shapiro-Wilk p-value |
 | JB | 8.78 | — | Jarque-Bera statistic |
 | p_JB | 0.012 | — | Jarque-Bera p-value |
-| κ_excess | +0.037 | — | Excess kurtosis (leptokurtic) |
+| $\kappa$_excess | +0.037 | — | Excess kurtosis (leptokurtic) |
 | [SSq] | 0.507 | — | Superconductive Shell Quotient |
 | suppression(n=26) | 0.602 | — | e^(-[SSq]) at full Ramanujan depth |
 
@@ -229,7 +229,7 @@ gok_share_31b5c807a4.txt (Grok 4 analysis, September 14, 2025).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -248,7 +248,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -357,7 +357,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -368,13 +368,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

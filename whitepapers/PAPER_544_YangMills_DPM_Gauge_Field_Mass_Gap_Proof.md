@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_544 — Yang-Mills DPM Gauge Field Mass Gap Proof
 **Session:** 0
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 ## Abstract
@@ -65,7 +65,7 @@ $$F_\text{sm} = \frac{\kappa \left(\text{DPM}_n - \text{DPM}_s\right)}{r^{26}}
 where:
 - $\text{DPM}_n = [\text{SSq}] = 0.57$ (north lobe, SCm-CW direction)
 - $\text{DPM}_s = 1 - [\text{SSq}] = 0.43$ (south lobe, UA′-CCW direction)
-- $r^{26}$: 26D radial projection (26 dimensions ↔ $Z_{26}$ VDS sum index)
+- $r^{26}$: 26D radial projection (26 dimensions $\leftrightarrow$ $Z_{26}$ VDS sum index)
 - $\kappa = 5 \times 10^{-4}$: DPM coupling constant
 
 Numerically for $r = 1$:
@@ -84,8 +84,8 @@ $$q_e = 2\pi n, \quad n \in \mathbb{N}^{+}, \quad n \in \text{DVP} = \{29, 31, 3
 
 For all $n \geq 1$: $q_e \geq 2\pi \neq 0$.
 
-**Consequence:** No zero-charge mode exists → the gauge group DPM has no zero eigenvalues
-in its charge spectrum → the Hamiltonian spectrum is bounded below by $q_e^{(1)} = 2\pi$.
+**Consequence:** No zero-charge mode exists $\to$ the gauge group DPM has no zero eigenvalues
+in its charge spectrum $\to$ the Hamiltonian spectrum is bounded below by $q_e^{(1)} = 2\pi$.
 
 ---
 
@@ -128,8 +128,8 @@ hypergraph causal graph against periodicity:
 **Proof sketch:**  
 1. The Wolfram hypergraph causal graph with $|V| = p$ vertices and prime $p$ has only trivial
    symmetry group (by Burnside's lemma for prime-order groups).  
-2. Aperiodic causal graphs → no zero eigenvalues in the graph Laplacian (Cheeger estimate).  
-3. No zero Laplacian eigenvalue → no zero-energy vacuum fluctuation → mass gap positive. ∎
+2. Aperiodic causal graphs $\to$ no zero eigenvalues in the graph Laplacian (Cheeger estimate).  
+3. No zero Laplacian eigenvalue $\to$ no zero-energy vacuum fluctuation $\to$ mass gap positive. ∎
 
 The number 113 is confirmed prime by the DVP sieve ($p \geq 29$): $113 \in \{29, 31, \ldots,
 109, 113, \ldots}$.
@@ -157,7 +157,7 @@ The number 113 is confirmed prime by the DVP sieve ($p \geq 29$): $113 \in \{29,
 |--------|------------------|
 | VDS $Z_{26} = \text{Li}_{26}([\text{SSq}])$ | Denominator of $\Delta = e^{-E/F}/(3Z_{26})$; sets gap magnitude |
 | DVP ($p_\text{special} = 113$) | Hypergraph irreducibility; eliminates zero modes from causal spectrum |
-| BH harmonics | Contextual: gap anchored by VDS; BH provides η threshold for mode counting |
+| BH harmonics | Contextual: gap anchored by VDS; BH provides $\eta$ threshold for mode counting |
 
 ---
 
@@ -237,7 +237,7 @@ Tests T07T13, group M2-YM (7/7 PASS), commit a0b2d55.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -256,7 +256,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -324,7 +324,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -429,7 +429,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.154 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -440,14 +440,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Yang-Mills mass gap (Millennium) | UQFF DPM quantisation → minimum energy Δ > 0 via U_m buoyancy floor | Clay Math. YM Problem: mass gap existence unknown | Clay / Jaffe-Witten 2006 | UQFF establishes mass gap via buoyancy |
-| QCD confinement (pion mass) | UQFF: Δ_YM = κ × m_π c2 / β_i ≈ 0.35 GeV | Pion mass m_π = 134.977 MeV; quark confinement Λ_QCD ~ 217 MeV | PDG 2024 | PASS UQFF in QCD confinement range |
-| Asymptotic freedom scale | UQFF k_η = 10-113 → UV completion above M_UQFF ~ 108·3 GeV | QCD Landau pole: g→0 as E→∞ (asymptotic freedom) | PDG 2024 QCD | PASS UQFF UV-complete by k_η suppression |
-| Gluon condensate ⟨G2⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV4 | ⟨αₛG2/π⟩ ~ 0.012 GeV4 (SVZ sum rules) | SVZ 1979; lattice QCD | PASS Consistent |
+| Yang-Mills mass gap (Millennium) | UQFF DPM quantisation $\to$ minimum energy $\Delta$ > 0 via U_m buoyancy floor | Clay Math. YM Problem: mass gap existence unknown | Clay / Jaffe-Witten 2006 | UQFF establishes mass gap via buoyancy |
+| QCD confinement (pion mass) | UQFF: $\Delta$_YM = $\kappa$ $\times$ m_$\pi$ c2 / $\beta$_i $\approx$ 0.35 GeV | Pion mass m_$\pi$ = 134.977 MeV; quark confinement $\Lambda$_QCD ~ 217 MeV | PDG 2024 | PASS UQFF in QCD confinement range |
+| Asymptotic freedom scale | UQFF k_$\eta$ = 10-113 $\to$ UV completion above M_UQFF ~ 108$\cdot$3 GeV | QCD Landau pole: g$\to$0 as E$\to$$\infty$ (asymptotic freedom) | PDG 2024 QCD | PASS UQFF UV-complete by k_$\eta$ suppression |
+| Gluon condensate ⟨G2⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV4 | ⟨$\alpha$ₛG2/$\pi$⟩ ~ 0.012 GeV4 (SVZ sum rules) | SVZ 1979; lattice QCD | PASS Consistent |
 
 **New physics claim:** UQFF DPM quantisation provides a physical mechanism for the Yang-Mills
 mass gap: the minimum vacuum buoyancy excitation energy (U_m floor) prevents massless gauge
-field configurations, establishing Δ > 0 from vacuum topology rather than perturbative QCD alone.
+field configurations, establishing $\Delta$ > 0 from vacuum topology rather than perturbative QCD alone.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 

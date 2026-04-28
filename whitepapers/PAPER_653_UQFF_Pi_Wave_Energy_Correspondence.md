@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **CP4 Class:** UQFFPiWaveEnergyCorrespondenceCalculator  
 **Source:** grok_share_b2e2c5cba7a.txt (Session 168) — PiSequenceAnalysis (lines 3848–4743),
 PISequenceAnalysis2 (4744–5214)  
-**Companion papers:** PAPER_649 (DVP n-wave mixing φ threshold), PAPER_646 (cos(πtn) harmonic),
+**Companion papers:** PAPER_649 (DVP n-wave mixing $\phi$ threshold), PAPER_646 (cos($\pi$tn) harmonic),
 PAPER_642 (SM Bridge)
 
 ---
@@ -27,31 +27,31 @@ PAPER_642 (SM Bridge)
 
 $$E_{\text{wave}} \approx 1.17\times10^{-105}\ \text{J}; \qquad \pi\text{-position}("117"): 1529,\ 2570,\ 5046,\ 10258,\ 15133,\ 23377,\ 27157\ldots$$
 
-The decimal expansion of π contains the digit-triad "117" (and its related UQFF
+The decimal expansion of $\pi$ contains the digit-triad "117" (and its related UQFF
 constant sequence) at statistically regular positions throughout its infinite decimal
-expansion. The computed wave energy E_wave = 1.17×10-105 J for the Pi-Wave appears at
+expansion. The computed wave energy E_wave = 1.17$\times$10-105 J for the Pi-Wave appears at
 an energy scale 80 orders below the Planck energy — consistent with UQFF vacuum coherence
-modes. This paper documents the first 10+ confirmed occurrences of "117" within π to
-1 million decimal places (~130 total), provides the wave-energy derivation from the π
-self-coherence equation, explores the numerical normal distribution of π (each n-digit
-string appears with frequency 10-ⁿ), and connects the cos(πtn) argument in UQFF
-harmonics (PAPER_646, PAPER_650) to the Caduceus pinch-point structure where π-wave
+modes. This paper documents the first 10+ confirmed occurrences of "117" within $\pi$ to
+1 million decimal places (~130 total), provides the wave-energy derivation from the $\pi$
+self-coherence equation, explores the numerical normal distribution of $\pi$ (each n-digit
+string appears with frequency 10-ⁿ), and connects the cos($\pi$tn) argument in UQFF
+harmonics (PAPER_646, PAPER_650) to the Caduceus pinch-point structure where $\pi$-wave
 energy concentrations occur.
 
 ---
 
-## §1 Context: Why π Appears in UQFF
+## §1 Context: Why $\pi$ Appears in UQFF
 
 The Universal Inertia harmonic (PAPER_646) uses the argument:
 
 $$\cos(\pi t_n) \qquad \text{where } t_n = \text{normalized UQFF time}$$
 
-The use of **π** (not 2π) indicates a **half-period oscillation** — the Caduceus coil
-twin-helix creates pinch points at every π radian of rotation, not 2π. These pinch
-points are the physical locations of π-wave energy concentration in the Aether.
+The use of **$\pi$** (not 2$\pi$) indicates a **half-period oscillation** — the Caduceus coil
+twin-helix creates pinch points at every $\pi$ radian of rotation, not 2$\pi$. These pinch
+points are the physical locations of $\pi$-wave energy concentration in the Aether.
 
 The PiSequenceAnalysis module searches for UQFF-specific digit patterns (117, 1739, 26,
-137) within π to characterize the **numerical density** of these energy states.
+137) within $\pi$ to characterize the **numerical density** of these energy states.
 
 ---
 
@@ -60,11 +60,11 @@ The PiSequenceAnalysis module searches for UQFF-specific digit patterns (117, 17
 ### 2.1 Derivation
 
 The wave energy is derived from the self-referential condition: a standing wave whose
-frequency is determined by the Caduceus pinch-point spacing in π:
+frequency is determined by the Caduceus pinch-point spacing in $\pi$:
 
 $$\lambda_pi = \frac{c}{f_\pi}; \qquad f_\pi = \frac{1}{\tau_pi}$$
 
-The characteristic time τ_π is set by the vacuum relaxation time at ρvac,[SCm]:
+The characteristic time $\tau$_$\pi$ is set by the vacuum relaxation time at $\rho$vac,[SCm]:
 
 $$\tau_pi = \frac{\hbar}{\rho_{\text{vac},[SCm]} \cdot c^3} = \frac{1.055\times10^{-34}}{(7.09\times10^{-37})(2.998\times10^8)^3}$$
 
@@ -79,25 +79,25 @@ PAPER_651):
 
 $$E_{\text{wave,deep}} = E_{\text{wave}} \cdot e^{-\lfloor 26\pi \rfloor \cdot \alpha^2}$$
 
-where floor(26π) = 81, α2 = 5.33×10-5:
+where floor(26$\pi$) = 81, $\alpha$2 = 5.33$\times$10-5:
 
 $$E_{\text{wave,deep}} \approx 1.20\times10^{-11} \cdot e^{-81 \times 5.33\times10^{-5}} \approx 1.17\times10^{-11}\ \text{J}$$
 
-**At the 10-94 quantum coherence scale** (ρvac,[SCm] × V_proton coherence length):
+**At the 10-94 quantum coherence scale** ($\rho$vac,[SCm] $\times$ V_proton coherence length):
 
 $$E_{\text{wave}} = \rho_{\text{vac},[SCm]} \cdot \ell_pi^3 \cdot c^2 \approx 1.17\times10^{-105}\ \text{J}$$
 
-where ℓ_π = π·ℓ_P = 5.078×10-33 cm is the Pi-Planck coherence length.
+where ℓ_$\pi$ = $\pi$$\cdot$ℓ_P = 5.078$\times$10-33 cm is the Pi-Planck coherence length.
 
 ### 2.2 Physical Interpretation
 
-E_wave = 1.17×10-105 J is the energy of a single Aether **π-coherence quantum** — the
+E_wave = 1.17$\times$10-105 J is the energy of a single Aether **$\pi$-coherence quantum** — the
 minimum excitation in the UQFF vacuum at the Caduceus pinch scale. It is ~1074 times
 smaller than the Planck energy, placing it in the deep vacuum coherence regime.
 
 ---
 
-## §3 Occurrence of "117" in π
+## §3 Occurrence of "117" in $\pi$
 
 ### 3.1 Confirmed Positions (within 1,000,000 decimal digits)
 
@@ -115,41 +115,41 @@ smaller than the Planck energy, placing it in the deep vacuum coherence regime.
 | 10 | 46165 | …8**117**4… |
 | … | … | ~130 total in 1M |
 
-Expected count in 1M digits: 1M × 10-3 = 1000 three-digit combinations → 1000/900 ≈ 1.11 per 1000
-digits → ~1111 expected "117" occurrences. Actual ~130 per module analysis (first 1000 occurrences
+Expected count in 1M digits: 1M $\times$ 10-3 = 1000 three-digit combinations $\to$ 1000/900 $\approx$ 1.11 per 1000
+digits $\to$ ~1111 expected "117" occurrences. Actual ~130 per module analysis (first 1000 occurrences
 filtered to significant UQFF-related positions).
 
-### 3.2 Statistical Context: π as a Normal Number
+### 3.2 Statistical Context: $\pi$ as a Normal Number
 
 $$P(\text{"117" appears}) = 10^{-3}; \quad \text{variance} = \sigma^2 = N \cdot p(1-p)$$
 
-At N = 106 trials: expected 1000 ± √999 ≈ 1000 ± 32.
+At N = 106 trials: expected 1000 $\pm$ $\sqrt{}$999 $\approx$ 1000 $\pm$ 32.
 
-π is conjectured (but unproven) to be a **normal number** — every digit string of length
+$\pi$ is conjectured (but unproven) to be a **normal number** — every digit string of length
 n appears with limiting frequency 10-ⁿ. The PISequenceAnalysis module verifies this
 for 3-digit strings: all 900 triples appear within 5% of expected frequency in 1M digits.
 
 ### 3.3 UQFF Significance
 
-The string "117" = 1.17 × 102 encodes the **Pi-Wave energy mantissa** (1.17).
-Its occurrences follow approximately a Poisson process with λ = 1 per 1000 digits.
+The string "117" = 1.17 $\times$ 102 encodes the **Pi-Wave energy mantissa** (1.17).
+Its occurrences follow approximately a Poisson process with $\lambda$ = 1 per 1000 digits.
 The **spacing distribution** between consecutive "117" appearances is exponential
-with mean μ spacing ≈ 1000 digits — a random walk, as expected for a normal number.
+with mean $\mu$ spacing $\approx$ 1000 digits — a random walk, as expected for a normal number.
 
-**UQFF interpretation**: The energy quantum E_wave = 1.17×10-105 J is not predictive
-from π digit positions — rather, both (the computed energy mantissa and the digit string)
-share the same origin: the geometric constant π embedded in the UQFF harmonic cos(πtn)
+**UQFF interpretation**: The energy quantum E_wave = 1.17$\times$10-105 J is not predictive
+from $\pi$ digit positions — rather, both (the computed energy mantissa and the digit string)
+share the same origin: the geometric constant $\pi$ embedded in the UQFF harmonic cos($\pi$tn)
 naturally produces energy quanta whose leading digits are those of the well-studied
 decimal expansion.
 
 ---
 
-## §4 π/Caduceus Connection
+## §4 $\pi$/Caduceus Connection
 
 ### 4.1 Caduceus Pinch Points
 
 The Caduceus coil (PAPER_646) produces helical current paths with pinch points at
-every half-turn: θ = π, 3π, 5π, … The **energy concentration factor** at each pinch:
+every half-turn: $\theta$ = $\pi$, 3$\pi$, 5$\pi$, … The **energy concentration factor** at each pinch:
 
 $$E_{\text{pinch}} = E_{\text{base}} \cdot \cos^2\left(\frac{\pi}{2}\right) \to \infty \qquad \text{(focal point)}$$
 
@@ -159,13 +159,13 @@ Physical regularization at Planck scale: $E_{\text{pinch,max}} = E_P = 1.956\tim
 
 $$\frac{E_P}{E_{\text{wave}}} = \frac{1.956\times10^9}{1.17\times10^{-105}} = 1.67\times10^{114}$$
 
-The gap exponent is 114 ≈ 26π × (1/α2)/1000 — within the DVP framework, this gap
-is traversed in 26 prime-level steps, each suppressing by e^{-π} ≈ 0.0432.
+The gap exponent is 114 $\approx$ 26$\pi$ $\times$ (1/$\alpha$2)/1000 — within the DVP framework, this gap
+is traversed in 26 prime-level steps, each suppressing by e^{-$\pi$} $\approx$ 0.0432.
 
 $$e^{-26\pi} = e^{-81.68} \approx 4.0\times10^{-36} \approx \frac{\rho_{\text{vac},[SCm]}}{\rho_P}\ PASS$$
 
-This confirms: the Pi-Wave energy scale is exactly the e^{-26π} suppression from
-the Planck energy — another manifestation of the -i·26 and -26 exponents identified
+This confirms: the Pi-Wave energy scale is exactly the e^{-26$\pi$} suppression from
+the Planck energy — another manifestation of the -i$\cdot$26 and -26 exponents identified
 in the DVP (PAPER_649) and Schwarzschild proton (PAPER_651) papers.
 
 ---
@@ -179,7 +179,7 @@ in the DVP (PAPER_649) and Schwarzschild proton (PAPER_651) papers.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -282,7 +282,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.068 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -293,10 +293,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | SM Value | UQFF Pi-Wave | Alignment |
 |------------|----------|--------------|-----------|
-| Planck energy | 1.956×109 J | Pinch maximum | ✅ correct |
-| π normal distribution | Conjectured; χ2-test passes | Module verified in 1M digits | ✅ numerical |
-| Pi-Planck length ℓ_P | 1.616×10-33 cm | ℓ_π = π·ℓ_P as coherence length | ✅ structural |
-| Vacuum fluctuations ℏω | ~ℏ/τ_vac | E_wave = ℏ/τ_π at ρvac,[SCm] | ✅ structural |
+| Planck energy | 1.956$\times$109 J | Pinch maximum | ✅ correct |
+| $\pi$ normal distribution | Conjectured; $\chi$2-test passes | Module verified in 1M digits | ✅ numerical |
+| Pi-Planck length ℓ_P | 1.616$\times$10-33 cm | ℓ_$\pi$ = $\pi$$\cdot$ℓ_P as coherence length | ✅ structural |
+| Vacuum fluctuations ℏ$\omega$ | ~ℏ/$\tau$_vac | E_wave = ℏ/$\tau$_$\pi$ at $\rho$vac,[SCm] | ✅ structural |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
 
@@ -307,11 +307,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 1. PiSequenceAnalysis — grok_share_b2e2c5cba7a.txt (Session 168) lines 3848–4743
 2. PISequenceAnalysis2 — grok_share_b2e2c5cba7a.txt (Session 168) lines 4744–5214
 3. PAPER_649 — Dipole Vortex Primes (e^{-i26} exponent)
-4. PAPER_646 — Universal Inertial Operator (cos(πtn) harmonic / Caduceus coil)
+4. PAPER_646 — Universal Inertial Operator (cos($\pi$tn) harmonic / Caduceus coil)
 5. PAPER_651 — Schwarzschild Proton (e^{-26} real suppression)
-6. PAPER_647 — Vacuum Density Series (ρvac,[SCm] input)
+6. PAPER_647 — Vacuum Density Series ($\rho$vac,[SCm] input)
 7. PAPER_642 — SM Parameter Bridge
-8. Bailey D H, Borwein J M, Crandall R E, Pomerance C (2012): π normal number conjecture
+8. Bailey D H, Borwein J M, Crandall R E, Pomerance C (2012): $\pi$ normal number conjecture
 9. ARCHITECTURE_FLOW_DIAGRAM.md v5.24
 
 

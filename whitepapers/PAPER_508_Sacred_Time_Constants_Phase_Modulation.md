@@ -42,8 +42,8 @@ sum exactly orthogonal in a Fourier sense over any sufficiently long integer ran
 
 | Symbol | C++ Name | Value | Physical Meaning |
 |--------|----------|-------|-----------------|
-| Λ_∞ | INFINITY_RATIO | π/7 ≈ 0.4488 | PI divided by 7 sacred harmonics |
-| φ | GOLDEN_CYCLE | 1.6180339887 | Golden ratio — logarithmic spiral |
+| $\Lambda$_$\infty$ | INFINITY_RATIO | $\pi$/7 $\approx$ 0.4488 | PI divided by 7 sacred harmonics |
+| $\phi$ | GOLDEN_CYCLE | 1.6180339887 | Golden ratio — logarithmic spiral |
 | T_B | MAYAN_BAKTUN | 144000.0 days | 394.26 Julian years |
 | T_G | BIBLE_GENERATION | 40.0 years | Biblical generational cycle |
 | T_K | MAYAN_KATUN | 7200.0 days | Mayan sub-baktun period |
@@ -56,19 +56,19 @@ sum exactly orthogonal in a Fourier sense over any sufficiently long integer ran
 
 $$
 \begin{aligned}
-  & R(ℓ) = (1/7) × [ \\
-  & sin(ℓ × T_G)    +    cos(ℓ × T_K)    +    sin(ℓ × T_T) \\
-  & + cos(ℓ × φ)      +    sin(ℓ × f_S)    +    cos(ℓ × f_S) \\
-  & + sin(ℓ × Λ_∞) \\
+  & R(ℓ) = (1/7) \times [ \\
+  & sin(ℓ \times T_G)    +    cos(ℓ \times T_K)    +    sin(ℓ \times T_T) \\
+  & + cos(ℓ \times \phi)      +    sin(ℓ \times f_S)    +    cos(ℓ \times f_S) \\
+  & + sin(ℓ \times \Lambda_\infty) \\
   & ] \\
-  & where ℓ ≡ lineage_level ∈ ℤ⁺  (generation depth, zero-indexed)
+  & where ℓ \equiv lineage_level \in \mathbb{Z}+  (generation depth, zero-indexed)
 \end{aligned}
 $$
 
 Key properties:
-- **Bounded:** |R(ℓ)| ≤ 1 for all ℓ, because each term ∈ [−1, +1] and divided by 7
+- **Bounded:** |R(ℓ)| $\leq$ 1 for all ℓ, because each term $\in$ [-1, +1] and divided by 7
 - **Symmetric:** Schumann resonance f_S appears as both sin and cos (two entries), making it the dominant frequency by weight 2/7
-- **Non-repeating for ℓ ∈ ℕ:** The 7 frequencies are rationally independent → no common period
+- **Non-repeating for ℓ $\in$ $\mathbb{N}$:** The 7 frequencies are rationally independent $\to$ no common period
 
 ---
 
@@ -79,12 +79,12 @@ Ordered by value (largest = fastest oscillation):
 $$
 \begin{aligned}
   & 1st: T_K   = 7200    yr  (slowest, geological) \\
-  & 2nd: T_B   = 144000  days ≈ 394 yr \\
+  & 2nd: T_B   = 144000  days \approx 394 yr \\
   & 3rd: T_G   = 40      yr \\
   & 4th: T_T   = 360     days \\
-  & 5th: φ     = 1.618              (non-dimensional) \\
-  & 6th: f_S   = 7.83   Hz (×2 weight) \\
-  & 7th: Λ_∞   = 0.4488             (non-dimensional)
+  & 5th: \phi     = 1.618              (non-dimensional) \\
+  & 6th: f_S   = 7.83   Hz (\times2 weight) \\
+  & 7th: \Lambda_\infty   = 0.4488             (non-dimensional)
 \end{aligned}
 $$
 
@@ -92,13 +92,13 @@ $$
 
 ## §1.5 13-Baktun Offset in getDPM_Pair
 
-The Mayan Long Count 13-Baktun cycle (13 × 144,000 = 1,872,000 days ≈ 5,125.36 years) is encoded as
+The Mayan Long Count 13-Baktun cycle (13 $\times$ 144,000 = 1,872,000 days $\approx$ 5,125.36 years) is encoded as
 an index offset in the PI Infinity Decoder:
 
 $$
 \begin{aligned}
-  & DPM_pair(state) = A_{state mod 728} + i × A_{(state + 13) mod 728} \\
-  & offset 13 ≡ one 13-baktun cycle at the dimensional index scale
+  & DPM_pair(state) = A_{state mod 728} + i \times A_{(state + 13) mod 728} \\
+  & offset 13 \equiv one 13-baktun cycle at the dimensional index scale
 \end{aligned}
 $$
 
@@ -114,10 +114,10 @@ cavity:
 
 $$
 \begin{aligned}
-  & f_n ≈ (c / 2π R_E) × √(n(n+1))    where R_E = 6371 km, c = 3×108 m/s \\
-  & n=1: f_1 ≈ 7.83 Hz \\
-  & n=2: f_2 ≈ 14.3 Hz \\
-  & n=3: f_3 ≈ 20.8 Hz
+  & f_n \approx (c / 2\pi R_E) \times \sqrt{}(n(n+1))    where R_E = 6371 km, c = 3\times108 m/s \\
+  & n=1: f_1 \approx 7.83 Hz \\
+  & n=2: f_2 \approx 14.3 Hz \\
+  & n=3: f_3 \approx 20.8 Hz
 \end{aligned}
 $$
 
@@ -143,11 +143,11 @@ of {Ug1, Ug2, Ug3, Ug4, Ubi, Um} via its physical or calendar significance.
 
 $$
 \begin{aligned}
-& R(ℓ) = 1/₇ [sin(40ℓ) + cos(7200ℓ) + sin(360ℓ) + cos(φℓ) + sin(7.83ℓ) + cos(7.83ℓ) + sin((π/7)ℓ)]
+& R(ℓ) = 1/7 [sin(40ℓ) + cos(7200ℓ) + sin(360ℓ) + cos(\phiℓ) + sin(7.83ℓ) + cos(7.83ℓ) + sin((\pi/7)ℓ)]
 \\
-  & B(s,t) = A_s × sin(t × 1.618 / 144000) \\
-  & DPM(s) = A_s + i × A_{(s+13) mod 728} \\
-  & Bounded: −1 ≤ R(ℓ) ≤ +1  ∀ ℓ ∈ ℕ
+  & B(s,t) = A_s \times sin(t \times 1.618 / 144000) \\
+  & DPM(s) = A_s + i \times A_{(s+13) mod 728} \\
+  & Bounded: -1 \leq R(ℓ) \leq +1  \forall ℓ \in \mathbb{N}
 \end{aligned}
 $$
 
@@ -161,7 +161,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -180,7 +180,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -255,7 +255,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.073 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -266,14 +266,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| π = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | π exact (transcendental) | NIST | ~100% (representation) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
-| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
-| Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | PASS Target value |
+| $\pi$ = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | $\pi$ exact (transcendental) | NIST | ~100% (representation) |
+| $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
+| [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
+| Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
-**New physics claim:** UQFF derives π = 3.14159265... (PI co-resonance) from vacuum buoyancy
+**New physics claim:** UQFF derives $\pi$ = 3.14159265... (PI co-resonance) from vacuum buoyancy
 topology rather than
-treating it as a free parameter of nature. A derivation that achieves ≥~100% (representation)
+treating it as a free parameter of nature. A derivation that achieves $\geq$~100% (representation)
 agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.

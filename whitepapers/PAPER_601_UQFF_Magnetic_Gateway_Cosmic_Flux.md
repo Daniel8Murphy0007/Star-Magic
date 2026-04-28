@@ -35,7 +35,7 @@ localised field aperture. This paper derives the full Magnetic Gateway Equation,
 the DPM CW/CCW asymmetry drives directional jet formation, derives the relativistic jet velocity
 formula from SCm energy injection, and validates against VLA quasar jet observations (30–90 km/s
 outer region; near-c inner region). The gateway narrows as 1/r26 at the black hole horizon,
-producing ultra-relativistic flow consistent with VLBI Lorentz factors Γ > 10.
+producing ultra-relativistic flow consistent with VLBI Lorentz factors $\Gamma$ > 10.
 
 ---
 
@@ -69,9 +69,9 @@ $$DPM_s > DPM_n: \quad \text{net CCW (UA' south)} \to \text{jet outflow}$$
 
 At a compact object of radius r (e.g., black hole Schwarzschild radius $R_s$):
 
-$$\text{Gateway aperture} \propto \frac{1}{r^{26}} \quad \text{(narrows as r→ 0)}$$
+$$\text{Gateway aperture} \propto \frac{1}{r^{26}} \quad \text{(narrows as r\to 0)}$$
 
-As $r \to R_s$: the gateway aperture $\to 0$, concentrating the flux into an ultra-narrow relativistic beam → **quasar jet formation**.
+As $r \to R_s$: the gateway aperture $\to 0$, concentrating the flux into an ultra-narrow relativistic beam $\to$ **quasar jet formation**.
 
 ---
 
@@ -116,7 +116,7 @@ For AGN jets: $E_{SCm} \sim 10^{50}$ J, $m_{eff} \sim M_\odot = 1.989 \times 10^
 
 $$\Gamma \approx \frac{10^{50}}{1.989 \times 10^{30} \times (3 \times 10^8)^2} \approx 5.6 \times 10^{10}$$
 
-→ $v_{jet} / c \approx 1 - \frac{1}{2\Gamma^2} \approx 0.99999...$ (ultra-relativistic, VLBI consistent)
+$\to$ $v_{jet} / c \approx 1 - \frac{1}{2\Gamma^2} \approx 0.99999...$ (ultra-relativistic, VLBI consistent)
 
 ---
 
@@ -125,9 +125,9 @@ $$\Gamma \approx \frac{10^{50}}{1.989 \times 10^{30} \times (3 \times 10^8)^2} \
 | Parameter | Value | Source |
 |---|---|---|
 | r = R_s (Sgr A*) | 1.27e10 m | GR Schwarzschild radius |
-| κ | 10-5 | UQFF coupling |
+| $\kappa$ | 10-5 | UQFF coupling |
 | DPM_diff | 2 | North-south asymmetry |
-| U_m gateway | ~4×10-306 | Cosmically tiny at R_s scale |
+| U_m gateway | ~4$\times$10-306 | Cosmically tiny at R_s scale |
 | E_SCm (AGN proxy) | 1050 J | Observed AGN jet luminosity |
 | m_eff | `M_M_sun` = 1.989e30 kg | Effective jet mass |
 | v_jet | 0.99999... c | Ultra-relativistic |
@@ -139,7 +139,7 @@ $$\Gamma \approx \frac{10^{50}}{1.989 \times 10^{30} \times (3 \times 10^8)^2} \
 
 $$Grind_{opp} = \omega_{CW} \cdot SCm - \omega_{CCW} \cdot UA' \cdot e^{-Entropy/v_{init}}$$
 
-The CW rotation (SCm north, DPM_n driven) sustains inflow while the CCW exponential decay ensures the gateway does not collapse: at thermodynamic equilibrium (Entropy → ∞), $\omega_{CCW} \cdot UA' \to 0$, leaving pure CW inflow — collapse to a final stable state. The gateway is perpetually active so long as $\omega_{CW} \cdot SCm > \omega_{CCW} \cdot UA' \cdot e^{-Entropy/v_{init}}$.
+The CW rotation (SCm north, DPM_n driven) sustains inflow while the CCW exponential decay ensures the gateway does not collapse: at thermodynamic equilibrium (Entropy $\to$ $\infty$), $\omega_{CCW} \cdot UA' \to 0$, leaving pure CW inflow — collapse to a final stable state. The gateway is perpetually active so long as $\omega_{CW} \cdot SCm > \omega_{CCW} \cdot UA' \cdot e^{-Entropy/v_{init}}$.
 
 ---
 
@@ -148,10 +148,10 @@ The CW rotation (SCm north, DPM_n driven) sustains inflow while the CCW exponent
 | Observable | VLA/VLBI Data | UQFF Prediction |
 |---|---|---|
 | Outer jet velocity | 30–90 km/s | Non-relativistic limit (E_SCm/mc2 ~ few) |
-| Inner jet velocity | β > 0.99c (VLBI Γ > 10) | Ultra-relativistic: E_SCm >> mc2 |
-| Jet collimation | Sub-parsec width | Gateway aperture 1/r26 → ultra-narrow at R_s |
+| Inner jet velocity | $\beta$ > 0.99c (VLBI $\Gamma$ > 10) | Ultra-relativistic: E_SCm >> mc2 |
+| Jet collimation | Sub-parsec width | Gateway aperture 1/r26 $\to$ ultra-narrow at R_s |
 | DPM north-south | Bipolar jet morphology | DPM_n inflow + DPM_s outflow |
-| Flux variability | Flaring episodes | Grind_opp oscillation + T₂ DPM time evolution |
+| Flux variability | Flaring episodes | Grind_opp oscillation + T2 DPM time evolution |
 
 ---
 
@@ -182,7 +182,7 @@ The UQFF Magnetic Gateway Equation (U_m) provides a complete description of cosm
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -201,7 +201,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -310,7 +310,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.107 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -321,10 +321,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

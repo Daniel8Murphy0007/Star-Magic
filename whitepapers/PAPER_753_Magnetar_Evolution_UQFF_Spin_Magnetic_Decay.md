@@ -24,9 +24,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 Magnetars are neutron stars with surface magnetic fields B ~ 1010–1011 T and spin periods of
 seconds. This paper derives the UQFF surface-gravity evolution for a canonical magnetar (M = 1.4 MM_sun,
-r = 20 km) incorporating exponential magnetic-field decay (τ_B = 4000 yr), spin-down via
+r = 20 km) incorporating exponential magnetic-field decay ($\tau$_B = 4000 yr), spin-down via
 gravitational-wave emission, and the Hubble-expansion Ug1 corrections. At t = 5 kyr the model yields
-g_Magnetar ≈ 4.474×1012 m/s2, in excellent agreement with the canonical value derived from X-ray
+g_Magnetar $\approx$ 4.474$\times$1012 m/s2, in excellent agreement with the canonical value derived from X-ray
 pulse timing.
 
 ---
@@ -37,9 +37,9 @@ The surface gravity of a magnetar governs photon redshift, atmospheric scale hei
 energetics. Standard neutron-star models use g = GM/R2. UQFF augments this with three time-dependent
 corrections:
 
-1. **Magnetic suppression**: (1 − B(t)/B_crit) — as B decays, gravity increases
-2. **Hubble term**: (1 + H₀·t) — secular cosmological expansion factor
-3. **GW spin-down**: additional energy-loss term from Ω(t) evolution
+1. **Magnetic suppression**: (1 - B(t)/B_crit) — as B decays, gravity increases
+2. **Hubble term**: (1 + H0$\cdot$t) — secular cosmological expansion factor
+3. **GW spin-down**: additional energy-loss term from $\Omega$(t) evolution
 
 ---
 
@@ -47,12 +47,12 @@ corrections:
 
 $$
 \begin{aligned}
-  & g_Magnetar(t) = [G·M / r2] × (1 + H₀·t) × (1 − B(t)/B_crit) \\
+  & g_Magnetar(t) = [G\cdotM / r2] \times (1 + H0\cdott) \times (1 - B(t)/B_crit) \\
   & + [Ug1 + Ug4] \\
   & + GW_term(t) \\
-  & B(t) = B_0 × exp(−t / τ_B) \\
-  & Ω(t) = Ω_0 × exp(−t / τ_spin) \\
-  & GW_term(t) = (32·G4·M3·r2·Ω4) / (5·c5·r4)  [GR quadrupole]
+  & B(t) = B_0 \times exp(-t / \tau_B) \\
+  & \Omega(t) = \Omega_0 \times exp(-t / \tau_spin) \\
+  & GW_term(t) = (32\cdotG4\cdotM3\cdotr2\cdot\Omega4) / (5\cdotc5\cdotr4)  [GR quadrupole]
 \end{aligned}
 $$
 
@@ -62,14 +62,14 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Mass | M | 2.785×1030 | kg |
-| Radius | r | 2.000×104 | m |
-| Initial B-field | B_0 | 1.00×1010 | T |
-| B-field decay timescale | τ_B | 1.262×1011 | s (4000 yr) |
-| Critical B-field | B_crit | 1.00×1011 | T |
-| Initial spin rate | Ω_0 | 2π/5 ≈ 1.2566 | rad/s |
-| Spin-down timescale | τ_spin | 3.156×1011 | s (10 kyr) |
-| Hubble constant | H₀ | 2.184×10-18 | s-1 |
+| Mass | M | 2.785$\times$1030 | kg |
+| Radius | r | 2.000$\times$104 | m |
+| Initial B-field | B_0 | 1.00$\times$1010 | T |
+| B-field decay timescale | $\tau$_B | 1.262$\times$1011 | s (4000 yr) |
+| Critical B-field | B_crit | 1.00$\times$1011 | T |
+| Initial spin rate | $\Omega$_0 | 2$\pi$/5 $\approx$ 1.2566 | rad/s |
+| Spin-down timescale | $\tau$_spin | 3.156$\times$1011 | s (10 kyr) |
+| Hubble constant | H0 | 2.184$\times$10-18 | s-1 |
 
 ---
 
@@ -77,16 +77,16 @@ $$
 
 $$
 \begin{aligned}
-  & t = 5000 × 3.156×107 = 1.578×1011 s \\
-  & B(t) = 1×1010 × exp(−1.578×1011 / 1.262×1011) \\
-  & = 1×1010 × exp(−1.25) ≈ 2.865×109 T \\
-  & (1 − B/B_crit) = 1 − 2.865×109/1×1011 = 0.97135 \\
-  & Ω(t) = 1.2566 × exp(−1.578×1011 / 3.156×1011) \\
-  & = 1.2566 × exp(−0.5) ≈ 0.7616 rad/s \\
-  & g_Magnetar(t=5kyr) ≈ (G·M/r2) × 0.97135 × (1 + H₀·t) \\
-  & ≈ 4.607×1011 × 0.97135 × (1 + small) \\
-  & + 1.007×1012          [Ug1+Ug4 floor term] \\
-  & ≈ 4.474×1012 m/s2
+  & t = 5000 \times 3.156\times107 = 1.578\times1011 s \\
+  & B(t) = 1\times1010 \times exp(-1.578\times1011 / 1.262\times1011) \\
+  & = 1\times1010 \times exp(-1.25) \approx 2.865\times109 T \\
+  & (1 - B/B_crit) = 1 - 2.865\times109/1\times1011 = 0.97135 \\
+  & \Omega(t) = 1.2566 \times exp(-1.578\times1011 / 3.156\times1011) \\
+  & = 1.2566 \times exp(-0.5) \approx 0.7616 rad/s \\
+  & g_Magnetar(t=5kyr) \approx (G\cdotM/r2) \times 0.97135 \times (1 + H0\cdott) \\
+  & \approx 4.607\times1011 \times 0.97135 \times (1 + small) \\
+  & + 1.007\times1012          [Ug1+Ug4 floor term] \\
+  & \approx 4.474\times1012 m/s2
 \end{aligned}
 $$
 
@@ -95,18 +95,18 @@ $$
 ## 5. Available Equations for Magnetar Systems
 
 - g(t) — surface gravity evolution (primary)
-- B(t) = B_0·exp(−t/τ_B) — magnetic decay
-- Ω(t) = Ω_0·exp(−t/τ_spin) — spin-down
-- P(t) = 2π/Ω(t) — pulse period vs time
-- ΔP/P = τ_GW / τ_spin — characteristic age
-- L_X(t) ∝ B(t)2·Ω(t)4 — X-ray luminosity proxy
-- r_s = 2GM/c2 — Schwarzschild radius (r_s ≈ 4.138 km)
+- B(t) = B_0$\cdot$exp(-t/$\tau$_B) — magnetic decay
+- $\Omega$(t) = $\Omega$_0$\cdot$exp(-t/$\tau$_spin) — spin-down
+- P(t) = 2$\pi$/$\Omega$(t) — pulse period vs time
+- $\Delta$P/P = $\tau$_GW / $\tau$_spin — characteristic age
+- L_X(t) $\propto$ B(t)2$\cdot$$\Omega$(t)4 — X-ray luminosity proxy
+- r_s = 2GM/c2 — Schwarzschild radius (r_s $\approx$ 4.138 km)
 
 ---
 
 ## 6. Conclusions
 
-The UQFF magnetar gravity model reproduces g ≈ 4.474×1012 m/s2 at t = 5 kyr for a canonical 1.4 MM_sun
+The UQFF magnetar gravity model reproduces g $\approx$ 4.474$\times$1012 m/s2 at t = 5 kyr for a canonical 1.4 MM_sun
 magnetar with r = 20 km, consistent with X-ray pulse timing constraints. The magnetic-suppression
 and Hubble-expansion corrections together account for ~3% deviations from the static GR prediction.
 PAPER_753, CP4 class #337. v5.39.
@@ -149,7 +149,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -168,7 +168,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -245,7 +245,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.186 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -256,13 +256,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

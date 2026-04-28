@@ -31,25 +31,25 @@ dark matter candidates.
 ## 1. Standard Hawking Evaporation
 $$\tau_{std} = \frac{5120\pi G^2 M^3}{\hbar c^4}$$
 
-For M = 1012 kg: τ_std ≈ 1010 yr (comparable to Hubble time).
+For M = 1012 kg: $\tau$_std $\approx$ 1010 yr (comparable to Hubble time).
 
 ## 2. UQFF Lifetime Enhancement
 
 ### Step 1 — f_TRZ Negentropic Extension
-τ' = τ_std / (1 − f_TRZ) ≈ 1.11 × τ_std
+$\tau$' = $\tau$_std / (1 - f_TRZ) $\approx$ 1.11 $\times$ $\tau$_std
 
 ### Step 2 — [UA]/[SCm] Aether Suppression
-τ'' = τ' × (ρ_UA/ρ_SCm) ≈ 10 × τ'
+$\tau$'' = $\tau$' $\times$ ($\rho$_UA/$\rho$_SCm) $\approx$ 10 $\times$ $\tau$'
 
 ### Step 3 — U_m String Anchoring
-τ_UQFF = τ'' × exp(U_m / k_B T_H)
+$\tau$_UQFF = $\tau$'' $\times$ exp(U_m / k_B T_H)
 
 $$\tau_{UQFF} = \frac{\tau_{std}}{1-f_{TRZ}} \cdot \frac{\rho_{UA}}{\rho_{SCm}} \cdot \exp!\left(\frac{U_m}{k_B T_H}\right)$$
 
-Total factor: ~30× for typical U_m/k_BT_H ≈ 1.
+Total factor: ~30$\times$ for typical U_m/k_BT_H $\approx$ 1.
 
 ## 3. Dark Matter Window
-| Mass (g) | τ_std | τ_UQFF | DM candidate (UQFF) |
+| Mass (g) | $\tau$_std | $\tau$_UQFF | DM candidate (UQFF) |
 |----------|-------|--------|---------------------|
 | 1010 | < t_H | > 0.1 t_H | marginal |
 | 1012 | ~ t_H | ~30 t_H | stable |
@@ -195,7 +195,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.178 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -206,13 +206,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

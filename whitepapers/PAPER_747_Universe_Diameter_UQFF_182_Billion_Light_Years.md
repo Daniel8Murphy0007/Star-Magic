@@ -39,13 +39,13 @@ $$
 d_p ~= c * integral_0^t_0 dt'/a(t')
 $$
 
-where a(t) is the scale factor. For ΛCDM with H_0 = 70 km/s/Mpc, Ω_m = 0.3, Ω_Λ = 0.7, this gives
-d_p ≈ 46.5 billion ly.
+where a(t) is the scale factor. For $\Lambda$CDM with H_0 = 70 km/s/Mpc, $\Omega$_m = 0.3, $\Omega$_$\Lambda$ = 0.7, this gives
+d_p $\approx$ 46.5 billion ly.
 
 However, the UQFF framework identifies four correction factors that modify this value:
 1. Hubble evolution correction (1 + H(z)*t_0)
-2. Dark energy/cosmological constant correction (1 + Λ*c^2/(3*H_0^2))
-3. Quantum gravity correction via ψ_total
+2. Dark energy/cosmological constant correction (1 + $\Lambda$*c^2/(3*H_0^2))
+3. Quantum gravity correction via $\psi$_total
 4. Spacetime curvature correction (1 + k*r_c^2)
 
 ---
@@ -102,16 +102,16 @@ Therefore: (1 + 0.643) = 1.643
 ## 5. Factor 3: Quantum Gravity Correction
 
 $$
-Quantum factor = (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total)
+Quantum factor = (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total)
 $$
 
-For cosmological scales with M_total ≈ 10^{5}3 kg (observed baryons + DM):
+For cosmological scales with M_total $\approx$ 10^{5}3 kg (observed baryons + DM):
 $$
 \begin{aligned}
-  & hbar/√(Deltax*Deltap) ~= √2 * hbar/(hbar) = √2   [from Heisenberg minimum] \\
+  & hbar/\sqrt{}(Deltax*Deltap) ~= \sqrt{}2 * hbar/(hbar) = \sqrt{}2   [from Heisenberg minimum] \\
   & integral(psi*H*psi dV) ~= E_total = M_total*c^2 \\
-  & Quantum factor = √2 * M_total*c^2 / (G*M_total) \\
-  & = √2 * c^2 / G \\
+  & Quantum factor = \sqrt{}2 * M_total*c^2 / (G*M_total) \\
+  & = \sqrt{}2 * c^2 / G \\
   & = 1.414 * (9x10^{1}6) / (6.674x10^{-}1^1) \\
   & ~= 1.91x10^{2}7
 \end{aligned}
@@ -120,8 +120,8 @@ $$
 However, this must be normalized by the cosmological Planck scale energy:
 $$
 \begin{aligned}
-  & Quantum factor (normalized) ~= √2 * rho_vac,[SCm] / rho_vac,[UA] \\
-  & = √2 * 0.1 = 0.141
+  & Quantum factor (normalized) ~= \sqrt{}2 * rho_vac,[SCm] / rho_vac,[UA] \\
+  & = \sqrt{}2 * 0.1 = 0.141
 \end{aligned}
 $$
 
@@ -131,10 +131,10 @@ Therefore: (1 + 0.141) = 1.141
 
 ## 6. Factor 4: Spacetime Curvature
 
-For k ≈ 0.001 (slightly positive curvature, consistent with Planck CMB data 1-sigma):
+For k $\approx$ 0.001 (slightly positive curvature, consistent with Planck CMB data 1-sigma):
 $$
 \begin{aligned}
-  & r_c = √(3/Lambda) = √(3 / 1.1x10^{-}5^2) = √(2.73x10^{5}1) ~= 5.22x10^{2}5 m \\
+  & r_c = \sqrt{}(3/Lambda) = \sqrt{}(3 / 1.1x10^{-}5^2) = \sqrt{}(2.73x10^{5}1) ~= 5.22x10^{2}5 m \\
   & k*r_c^2 = 0.001 * (5.22x10^{2}5)^2 = 0.001 * 2.72x10^{5}1 ~= 2.72x10^{4}8   [too large]
 \end{aligned}
 $$
@@ -185,7 +185,7 @@ $$
 The UQFF prediction of ~182 billion ly represents the **effective gravitational diameter** rather
 than the standard comoving diameter:
 - Hubble factor (~x2) accounts for expansion of the gravitational potential since CMB emission
-- Λ factor (~x1.6) accounts for accelerating expansion beyond standard radius
+- $\Lambda$ factor (~x1.6) accounts for accelerating expansion beyond standard radius
 - The quantum/curvature combined correction brings the total to ~182 bn ly
 
 This is distinct from (but consistent with) proposals that the universe may be significantly larger
@@ -197,8 +197,8 @@ than the observable horizon, with some estimates in the range 150-500 billion ly
 
 | Standard Value | UQFF Value | Ratio |
 |----------------|------------|-------|
-| D = 93 bn ly (comoving) | D ≈ 182 bn ly | x1.96 |
-| D_p = 46.5 bn ly (radius) | D_UQFF ≈ 91 bn ly (radius) | x1.96 |
+| D = 93 bn ly (comoving) | D $\approx$ 182 bn ly | x1.96 |
+| D_p = 46.5 bn ly (radius) | D_UQFF $\approx$ 91 bn ly (radius) | x1.96 |
 | Observable mass ~10^{5}3 kg | UQFF effective mass ~2x10^{5}3 kg | x2 |
 
 ---
@@ -366,7 +366,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

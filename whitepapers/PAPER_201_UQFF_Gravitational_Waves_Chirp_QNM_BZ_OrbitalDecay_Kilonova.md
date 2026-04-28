@@ -38,7 +38,7 @@ the constants.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -48,10 +48,10 @@ present in Standard Model treatments.
 
 $$
 \begin{aligned}
-  & F_UBii,chirp = F_rel × (?? / E_LEP) × Q_wave × [dE/dt = -(32/5)G4µ2M3/(c5r5)] \\
+  & F_UBii,chirp = F_rel \times (?? / E_LEP) \times Q_wave \times [dE/dt = -(32/5)G4µ2M3/(c5r5)] \\
   & ?? = (m1m2)^{3/5}/(m1+m2)^{1/5}    (chirp mass, solar masses) \\
-  & ?? = (c3/G)·(5/96·p^{-8/3}·f^{-11/3}·?)^{3/5}    (from observed GW frequency drift) \\
-  & Um,chirp(f) = µ(?_vac)·(1-e^{-?t})·(32/5·G4·µ2M3/c5r5) \\
+  & ?? = (c3/G)\cdot(5/96\cdotp^{-8/3}\cdotf^{-11/3}\cdot?)^{3/5}    (from observed GW frequency drift) \\
+  & Um,chirp(f) = µ(?_vac)\cdot(1-e^{-?t})\cdot(32/5\cdotG4\cdotµ2M3/c5r5) \\
   & Calibration: GW150914  ? ?? ˜ 28.3 M_?; GW170817 ? ?? ˜ 1.188 M_?
 \end{aligned}
 $$
@@ -83,18 +83,18 @@ Calibration: GW150914 final BH M_f ˜ 62 M_?, a_f ˜ 0.67 ? f_QNM ˜ 251 Hz
 
 $$
 \begin{aligned}
-  & P_BZ = (1/32)·B2·R_H4·O_H2/c               (BZ original form) \\
+  & P_BZ = (1/32)\cdotB2\cdotR_H4\cdotO_H2/c               (BZ original form) \\
   & Updated EHT form: \\
-  & P_BZ,EHT = (?/16p)·F2_BH·O2_BH/c \\
+  & P_BZ,EHT = (?/16p)\cdotF2_BH\cdotO2_BH/c \\
   & where: \\
   & ? ˜ 0.044  (numerical factor from GRMHD) \\
-  & F_BH = B·p·r_H2  (BH magnetic flux, EHT M87* calibrated) \\
-  & O_BH = a·c2/(2r_H·c)  (angular velocity) \\
+  & F_BH = B\cdotp\cdotr_H2  (BH magnetic flux, EHT M87* calibrated) \\
+  & O_BH = a\cdotc2/(2r_H\cdotc)  (angular velocity) \\
   & For M87*: B ~ 1–30 G ? P_BZ ˜ 1042?43 erg/s \\
-  & F_UBii,bz  = F_rel × ((1/32)·B2·R_H4·O_H2/c / E_LEP) × Q_wave \\
-  & F_UBii,bz2 = F_rel × ((?/16p)·F2_BH·O2_BH/c / E_LEP) × Q_wave \\
-  & Um,bz(a)   = µ(?_vac)·Power ? B2O2_H·R4_H × (1-e^{-?t}) \\
-  & Um,bz2(a)  = µ(?_vac)·(?/16p)F2_BH·O2_BH/c × (1-e^{-?t})
+  & F_UBii,bz  = F_rel \times ((1/32)\cdotB2\cdotR_H4\cdotO_H2/c / E_LEP) \times Q_wave \\
+  & F_UBii,bz2 = F_rel \times ((?/16p)\cdotF2_BH\cdotO2_BH/c / E_LEP) \times Q_wave \\
+  & Um,bz(a)   = µ(?_vac)\cdotPower ? B2O2_H\cdotR4_H \times (1-e^{-?t}) \\
+  & Um,bz2(a)  = µ(?_vac)\cdot(?/16p)F2_BH\cdotO2_BH/c \times (1-e^{-?t})
 \end{aligned}
 $$
 
@@ -105,12 +105,12 @@ $$
 $$
 \begin{aligned}
   & GW orbital decay rate (Peters formula, GR 2.5PN): \\
-  & ?_b = -(192p/5)·(P_b/2p)^{-5/3}·(G??^{5/3}/c3)^{5/3}/(P_b)^{5/3}·f(e) \\
-  & f(e) = [1+(73/24)e2+(37/96)e4]·(1-e2)^{-7/2} \\
-  & F_UBii,orbdec = -F_rel × (?_b/P_b = dE/dt / E_LEP) × Q_wave \\
-  & Um,orbdec(e) = µ(?_vac)·[-dE_GW/dt] × (1-e^{-?t}) \\
+  & ?_b = -(192p/5)\cdot(P_b/2p)^{-5/3}\cdot(G??^{5/3}/c3)^{5/3}/(P_b)^{5/3}\cdotf(e) \\
+  & f(e) = [1+(73/24)e2+(37/96)e4]\cdot(1-e2)^{-7/2} \\
+  & F_UBii,orbdec = -F_rel \times (?_b/P_b = dE/dt / E_LEP) \times Q_wave \\
+  & Um,orbdec(e) = µ(?_vac)\cdot[-dE_GW/dt] \times (1-e^{-?t}) \\
   & Calibration: Hulse-Taylor PSR B1913+16 \\
-  & ?_b,obs ˜ -2.422×10?12 (dimensionless) \\
+  & ?_b,obs ˜ -2.422\times10?12 (dimensionless) \\
   & ?_b,GR prediction fits to <0.1%
 \end{aligned}
 $$
@@ -121,9 +121,9 @@ $$
 
 $$
 \begin{aligned}
-  & ?? = 3·(P_b/2p)^{-5/3}·(G(m1+m2)/c3)^{2/3}/(1-e2) \\
-  & F_UBii,peri = F_rel × (?? / E_LEP) × Q_wave × (G(m1+m2))^{2/3}·(1-e2)^{-1} \\
-  & Um,peri(a) = µ(?_vac)·(Kepler: a3/P2 = GM/(4p2)) × (1-e^{-?t}) \\
+  & ?? = 3\cdot(P_b/2p)^{-5/3}\cdot(G(m1+m2)/c3)^{2/3}/(1-e2) \\
+  & F_UBii,peri = F_rel \times (?? / E_LEP) \times Q_wave \times (G(m1+m2))^{2/3}\cdot(1-e2)^{-1} \\
+  & Um,peri(a) = µ(?_vac)\cdot(Kepler: a3/P2 = GM/(4p2)) \times (1-e^{-?t}) \\
   & Calibration: PSR B1913+16 ? ?? = 4.226°/yr (measured) vs 4.226°/yr (GR)
 \end{aligned}
 $$
@@ -134,13 +134,13 @@ $$
 
 $$
 \begin{aligned}
-  & L_peak ˜ 1041·(M_ej/0.01 M_?)·(v_ej/0.1c)·(?/1 cm2/g)^{-1} erg/s \\
+  & L_peak ˜ 1041\cdot(M_ej/0.01 M_?)\cdot(v_ej/0.1c)\cdot(?/1 cm2/g)^{-1} erg/s \\
   & Peak timescale: t_peak ˜ v(3?M_ej/(4pcv_ej)) \\
-  & F_UBii,kilo = F_rel × (M_ej·v_ej·c/(?·L_peak) / E_LEP) × Q_wave \\
-  & Um,kilo(t) = µ(?_vac)·(Diffusion t_d2 = 3?M/(4pcv2)) × (1-e^{-?t}) \\
+  & F_UBii,kilo = F_rel \times (M_ej\cdotv_ej\cdotc/(?\cdotL_peak) / E_LEP) \times Q_wave \\
+  & Um,kilo(t) = µ(?_vac)\cdot(Diffusion t_d2 = 3?M/(4pcv2)) \times (1-e^{-?t}) \\
   & Calibration: AT2017gfo (GW170817 neutron star merger): \\
   & M_ej ˜ 0.05 M_?, v_ej ˜ 0.15c, ? ˜ 1–5 cm2/g \\
-  & L_peak ˜ few × 1041 erg/s (r-process nucleosynthesis powered)
+  & L_peak ˜ few \times 1041 erg/s (r-process nucleosynthesis powered)
 \end{aligned}
 $$
 
@@ -176,7 +176,7 @@ $$
 | BZ power | 1042?43 erg/s | M87* EHT |
 | ?_b/?_b,GR | <0.1% deviation | PSR B1913+16 |
 | ?? match | 4.226°/yr | PSR B1913+16 |
-| Kilonova L | few×1041 erg/s | AT2017gfo |
+| Kilonova L | few$\times$1041 erg/s | AT2017gfo |
 
 ---
 
@@ -226,7 +226,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -245,7 +245,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -356,7 +356,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.070 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -367,13 +367,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

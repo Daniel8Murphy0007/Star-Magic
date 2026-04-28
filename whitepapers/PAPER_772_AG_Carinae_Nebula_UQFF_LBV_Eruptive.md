@@ -26,7 +26,7 @@ AG Carinae (~6,000 ly) is one of the brightest and most luminous stars in the Mi
 surrounded by an ejected nebular shell spanning ~3 ly. The 2022 Hubble 31st anniversary image
 revealed intricate gaseous structures — clumps, dust lanes, and ionized filaments — driven by AG
 Car's eruptive mass-loss episodes with terminal wind speeds of ~1,000 km/s. Under UQFF, the LBV
-eruptive wind Aether correction (v = 106 m/s) yields g_AGCar ≈ 1.053×10-2 m/s2, placing AG Carinae
+eruptive wind Aether correction (v = 106 m/s) yields g_AGCar $\approx$ 1.053$\times$10-2 m/s2, placing AG Carinae
 in the high-LBV velocity class.
 
 ---
@@ -47,7 +47,7 @@ regime.
 
 $$
 \begin{aligned}
-  & g_AGCar(r, t) = (G × M) / r2 × (1 + f_TRZ) \\
+  & g_AGCar(r, t) = (G \times M) / r2 \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -56,13 +56,13 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula + star mass | M | 20 MM_sun = 3.978×1031 kg | Hubble |
-| Shell radius | r | 1×1016 m (~1.06 ly) | Hubble |
-| LBV wind velocity | v_wind | 1×106 m/s (1,000 km/s) | Observation |
+| Nebula + star mass | M | 20 MM_sun = 3.978$\times$1031 kg | Hubble |
+| Shell radius | r | 1$\times$1016 m (~1.06 ly) | Hubble |
+| LBV wind velocity | v_wind | 1$\times$106 m/s (1,000 km/s) | Observation |
 | B-field | B | 10-5 T | Nebular field |
 | Redshift | z | 0.002 | Distance |
 | f_TRZ | — | 0.1 | UQFF |
-| t | — | 9.468×1010 s (3,000 yr) | Shell age |
+| t | — | 9.468$\times$1010 s (3,000 yr) | Shell age |
 
 ---
 
@@ -71,7 +71,7 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 3.978e31) / (1e16)2 \\
+  & g_grav = (6.6743e-11 \times 3.978e31) / (1e16)2 \\
   & = 2.654e21 / 1e32 = 2.654e-11 m/s2
 \end{aligned}
 $$
@@ -80,19 +80,19 @@ $$
 $$
 \begin{aligned}
   & H(z) = 2.269e-18 s-1; t = 9.468e10 s \\
-  & H(z) × t = 2.148e-7 ≈ 0 \\
-  & 1 + H(z) × t ≈ 1.0000002
+  & H(z) \times t = 2.148e-7 \approx 0 \\
+  & 1 + H(z) \times t \approx 1.0000002
 \end{aligned}
 $$
 
 ### Step 3: Aether Electromagnetic Correction (LBV Eruptive Wind)
 $$
 \begin{aligned}
-  & v_wind = 1×106 m/s (fast wind phase) \\
+  & v_wind = 1\times106 m/s (fast wind phase) \\
   & B = 10-5 T \\
-  & q × (v × B) = 1.602e-19 × 1e6 × 1e-5 = 1.602e-18 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e6 \times 1e-5 = 1.602e-18 N \\
   & a = 1.602e-18 / m_p = 1.602e-18 / 1.673e-27 = 9.575e8 m/s2 \\
-  & a_EM = 9.575e8 × 11 × 1e-12 = 1.053e-2 m/s2
+  & a_EM = 9.575e8 \times 11 \times 1e-12 = 1.053e-2 m/s2
 \end{aligned}
 $$
 
@@ -104,9 +104,9 @@ $$
 ### Step 5: Final Solution
 $$
 \begin{aligned}
-  & g_AGCar = (2.654e-11) × (1.1) + 1.053e-2 \\
+  & g_AGCar = (2.654e-11) \times (1.1) + 1.053e-2 \\
   & = 2.920e-11 + 1.053e-2 \\
-  & ≈ 1.053e-2 m/s2
+  & \approx 1.053e-2 m/s2
 \end{aligned}
 $$
 
@@ -114,9 +114,9 @@ $$
 
 ## 4. Physical Interpretation
 
-AG Carinae's wind at 1,000 km/s — twice Eta Car's 500 km/s — yields g ≈ 1.053×10-2 m/s2, exactly
-double the Eta Car result (5.267×10-3). This confirms UQFF's linear velocity sensitivity in the
-Aether EM term, with g ∝ v. The result places AG Car in the same UQFF class as NGC 1792 (starburst
+AG Carinae's wind at 1,000 km/s — twice Eta Car's 500 km/s — yields g $\approx$ 1.053$\times$10-2 m/s2, exactly
+double the Eta Car result (5.267$\times$10-3). This confirms UQFF's linear velocity sensitivity in the
+Aether EM term, with g $\propto$ v. The result places AG Car in the same UQFF class as NGC 1792 (starburst
 spirals at SFR-driven EM velocities), but with distinct physical interpretation: AG Car's result
 reflects pure stellar wind dynamics rather than collective star-forming activity.
 
@@ -124,17 +124,17 @@ reflects pure stellar wind dynamics rather than collective star-forming activity
 
 ## 5. UQFF Framework Advancement
 
-- Confirmed UQFF linear velocity scaling: v doubles from 500→1,000 km/s doubles g
+- Confirmed UQFF linear velocity scaling: v doubles from 500$\to$1,000 km/s doubles g
 - Single-star LBV eruptive physics integrated as a limiting case
-- AG Car establishes the evolved-star wind reference point at 1.053×10-2 m/s2
+- AG Car establishes the evolved-star wind reference point at 1.053$\times$10-2 m/s2
 
 ---
 
 ## 6. Conclusions
 
-UQFF applied to AG Carinae yields g_AGCar ≈ 1.053×10-2 m/s2, driven by the LBV eruptive wind at
-1,000 km/s. The linear velocity mapping (Eta Car 500 km/s → 5.267×10-3; AG Car 1,000 km/s →
-1.053×10-2) confirms UQFF's internal consistency. AG Car's position in the UQFF hierarchy
+UQFF applied to AG Carinae yields g_AGCar $\approx$ 1.053$\times$10-2 m/s2, driven by the LBV eruptive wind at
+1,000 km/s. The linear velocity mapping (Eta Car 500 km/s $\to$ 5.267$\times$10-3; AG Car 1,000 km/s $\to$
+1.053$\times$10-2) confirms UQFF's internal consistency. AG Car's position in the UQFF hierarchy
 differentiates evolved LBV wind systems from both star-forming regions and planetary nebulae with
 similar mass scales.
 
@@ -149,7 +149,7 @@ similar mass scales.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -252,7 +252,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.126 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -263,13 +263,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

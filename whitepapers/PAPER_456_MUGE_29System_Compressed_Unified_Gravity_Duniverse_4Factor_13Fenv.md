@@ -17,16 +17,16 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 41 — MUGECompressed29System)  
 **Classification:** FIRST 4-factor D_universe equation in UQFF; FIRST 13-component F_env unified for
-8 system types; FIRST Hubble+Λ+quantum gravity+cosmological radius composite  
+8 system types; FIRST Hubble+$\Lambda$+quantum gravity+cosmological radius composite  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `MUGECompressed29SystemUnifiedGravityCalculator` (#94, PAPER_456)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001 —>
 ---
 
 ## Abstract
 
-This paper presents the first UQFF 4-factor universe diameter equation and a 13-component unified F_env term that covers 8 canonical astrophysical system types. The D_universe equation extends the standard Hubble horizon $d = c/H_0$ with quantum-gravity, cosmological constant, and cosmological radius factors — yielding a novel composite observable universe diameter. The unified g_UQFF equation operates across all 8 system types from the compressed 29-system registry. Key values: D_universe ≈ 2.79×1027 m, g_UQFF for each system type is self-consistently derived from the same compressed equation with only F_env changing.
+This paper presents the first UQFF 4-factor universe diameter equation and a 13-component unified F_env term that covers 8 canonical astrophysical system types. The D_universe equation extends the standard Hubble horizon $d = c/H_0$ with quantum-gravity, cosmological constant, and cosmological radius factors — yielding a novel composite observable universe diameter. The unified g_UQFF equation operates across all 8 system types from the compressed 29-system registry. Key values: D_universe $\approx$ 2.79$\times$1027 m, g_UQFF for each system type is self-consistently derived from the same compressed equation with only F_env changing.
 
 ---
 
@@ -45,36 +45,36 @@ Where $D_p = c/H_0 = 1.32\times10^{26}$ m, so $2D_p = 2.64\times10^{26}$ m.
 
 ### 2.2 Factor Evaluations
 
-**Factor I (Hubble expansion at t = t_H = 4.35×1017 s):**
+**Factor I (Hubble expansion at t = t_H = 4.35$\times$1017 s):**
 $$1 + H_z t = 1 + H_0 t_H = 1 + 2.27\times10^{-18}\times4.35\times10^{17} = 1 + 0.988 = 1.988$$
 
-**Factor II (Λ-correction):**
+**Factor II ($\Lambda$-correction):**
 $$1 + \frac{\Lambda c^2}{3H_0^2} = 1 + \frac{1.089\times10^{-52}\times 9times10^{16}}{3\times(2.27\times10^{-18})^2} = 1 + \frac{9.8\times10^{-36}}{1.545\times10^{-35}} = 1 + 0.634 = 1.634$$
 
 **Factor III (Quantum gravity correction):**
 
-With Δx ≈ l_p = 1.616×10-35 m, Δp ≈ ħ/l_p, M = M_universe = 1053 kg:
+With $\Delta$x $\approx$ l_p = 1.616$\times$10-35 m, $\Delta$p $\approx$ ħ/l_p, M = M_universe = 1053 kg:
 
 $$\frac{\hbar}{\sqrt{l_p \cdot \hbar/l_p}\cdot G M} = \frac{\hbar}{\sqrt{\hbar}\cdot GM} = \frac{\sqrt{\hbar}}{GM} = \frac{\sqrt{1.055\times10^{-34}}}{6.674\times10^{-11}\times10^{53}}$$
 
 $$= \frac{3.25\times10^{-18}}{6.674\times10^{42}} = 4.87\times10^{-61} \approx 0$$
 
-Factor III ≈ 1.000 (quantum correction negligible at cosmic scale, but encoded for completeness).
+Factor III $\approx$ 1.000 (quantum correction negligible at cosmic scale, but encoded for completeness).
 
-**Factor IV (Curvature, k=+1, r_c = R_universe = 4.4×1026 m):**
+**Factor IV (Curvature, k=+1, r_c = R_universe = 4.4$\times$1026 m):**
 $$1 + k r_c^2 = 1 + (4.4\times10^{26})^2 = 1 + 1.94\times10^{53}$$
 
 For normalised curvature (k in units of R-2, k = 1/R2_curvature):
 $$k_{\rm norm} = \Omega_k H_0^2/c^2 \approx 0$$
 
-Factor IV ≈ 1.000 for flat universe (Ω_k ≈ 0, Planck 2018).
+Factor IV $\approx$ 1.000 for flat universe ($\Omega$_k $\approx$ 0, Planck 2018).
 
 ### 2.3 D_universe Final Value
 
 $$D_{\rm universe} = 2.64\times10^{26} \times 1.988 \times 1.634 \times 1.000 \times 1.000 \approx 8.58\times10^{26}\ \rm m$$
 
-Compared to standard cosmology: observable universe diameter = 2×13.8 Gly × c/yr ≈ 8.8×1026 m. UQFF
-gives **D_universe ≈ 8.58×1026 m**, within 2.5% of the standard value — validating the 4-factor
+Compared to standard cosmology: observable universe diameter = 2$\times$13.8 Gly $\times$ c/yr $\approx$ 8.8$\times$1026 m. UQFF
+gives **D_universe $\approx$ 8.58$\times$1026 m**, within 2.5% of the standard value — validating the 4-factor
 correction set.
 
 ---
@@ -87,7 +87,7 @@ $$g_{\rm UQFF}(r,t) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H_z t)(
 
 $$H_{\rm res}(t) = A_{\rm res}\sin(2\pi f_{\rm res} t) + U_{\rm dp}[SC_m]k_{\rm nuc} + S_{\rm shell} + F_{\rm env}[SC_m]$$
 
-With f_res = 1015 Hz, A_res = 1×10-10, [SC_m] = 0.99, k_nuc = 1.
+With f_res = 1015 Hz, A_res = 1$\times$10-10, [SC_m] = 0.99, k_nuc = 1.
 
 ---
 
@@ -98,18 +98,18 @@ The 13 F_env components for the 29-system registry:
 | # | Component | Formula | Systems |
 |---|----------|---------|---------|
 | 1 | F_DPM-seeded | GM_ext/r_ext2 | All |
-| 2 | F_Hubble | g_N×H_z×t | All |
-| 3 | F_B | g_N×(1-B/B_crit) | Magnetar, SgrA |
-| 4 | F_wind | ρ_fluid×v_wind2 | OB star systems |
-| 5 | F_rad | L/(4πr2c)×ρ/m_H | HII regions |
-| 6 | F_ring | GM_ring/r_ring2(1+ε cos2φ) | Saturn |
-| 7 | F_dust | GM_dust/r_dust2×cos2θ | Sombrero |
-| 8 | F_lensing | 4GM/c2r×d_S×d_LS/d_L | Rings of Relativity |
-| 9 | F_ICM | kT_ICM/(μm_H r_cool) | Galaxy clusters |
-| 10 | F_outflow | ρ v_out2(1+t/t_evol) | Young stars |
-| 11 | F_tidal | G M₁M₂/d₁₂3×r | Mergers |
+| 2 | F_Hubble | g_N$\times$H_z$\times$t | All |
+| 3 | F_B | g_N$\times$(1-B/B_crit) | Magnetar, SgrA |
+| 4 | F_wind | $\rho$_fluid$\times$v_wind2 | OB star systems |
+| 5 | F_rad | L/(4$\pi$r2c)$\times$$\rho$/m_H | HII regions |
+| 6 | F_ring | GM_ring/r_ring2(1+$\varepsilon$ cos2$\phi$) | Saturn |
+| 7 | F_dust | GM_dust/r_dust2$\times$cos2$\theta$ | Sombrero |
+| 8 | F_lensing | 4GM/c2r$\times$d_S$\times$d_LS/d_L | Rings of Relativity |
+| 9 | F_ICM | kT_ICM/($\mu$m_H r_cool) | Galaxy clusters |
+| 10 | F_outflow | $\rho$ v_out2(1+t/t_evol) | Young stars |
+| 11 | F_tidal | G M1M2/d123$\times$r | Mergers |
 | 12 | F_cosmo | g_QG + g_DM + g_GW | Universe systems |
-| 13 | F_pulsar | L_sd/(4πr2c) | Crab Nebula |
+| 13 | F_pulsar | L_sd/(4$\pi$r2c) | Crab Nebula |
 
 ### 4.1 F_env Selection by System Type
 
@@ -130,18 +130,18 @@ The 13 F_env components for the 29-system registry:
 
 | Feature | SM | UQFF PAPER_456 |
 |---------|-----|----------------|
-| Universe diameter | c/H₀ (one-factor) | D = 2D_p × 4 factors |
+| Universe diameter | c/H0 (one-factor) | D = 2D_p $\times$ 4 factors |
 | F_env in gravity | Not a standard concept | 13-component modular sum |
-| QG correction factor | Conceptual | Encoded as ħ/(√ΔxΔp GM) |
-| Λ-correction factor | Built into ΛCDM metric | Explicit (1+Λc2/3H₀2) term |
+| QG correction factor | Conceptual | Encoded as ħ/($\sqrt{}$$\Delta$x$\Delta$p GM) |
+| $\Lambda$-correction factor | Built into $\Lambda$CDM metric | Explicit (1+$\Lambda$c2/3H02) term |
 
 ---
 
 ## 6. Testable Predictions
 
-1. **D_universe ≈ 8.58×1026 m** — within 2.5% of the standard 8.8×1026 m from ΛCDM. Factor II (Λ
-correction) contributes 1.634×, Factor I (Hubble) contributes 1.988×.
-2. **F_ring azimuthal signature:** Saturn ring term F_ring(φ) = 1.40×10-7(1+0.1 cos 2φ) produces
+1. **D_universe $\approx$ 8.58$\times$1026 m** — within 2.5% of the standard 8.8$\times$1026 m from $\Lambda$CDM. Factor II ($\Lambda$
+correction) contributes 1.634$\times$, Factor I (Hubble) contributes 1.988$\times$.
+2. **F_ring azimuthal signature:** Saturn ring term F_ring($\phi$) = 1.40$\times$10-7(1+0.1 cos 2$\phi$) produces
 <0.001% asymmetry in Saturn orbit — below current measurement precision but potentially detectable
 with LISA gravity gradiometry.
 3. **H_res frequency:** At f_res = 1015 Hz, oscillation has period T = 10-15 s. The time-averaged
@@ -256,7 +256,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.129 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -267,10 +267,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

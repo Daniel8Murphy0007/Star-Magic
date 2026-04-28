@@ -18,14 +18,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Interstellar Shocks, Dark Matter, Nuclear Physics, Cosmic Superconductivity, and Quantum Gravity
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Validator:** `arxiv_validation_framework.py` Phase 3 × 2024 arXiv papers  
+**Validator:** `arxiv_validation_framework.py` Phase 3 $\times$ 2024 arXiv papers  
 **Overall result:** All 2024 categories PASS | Overall alignment 92.02% (§9.27%)  
 **Source Module:** `arxiv_validation_framework.py`, `arxiv_validation_report.md`  
 **Index Slot:** §1.7 arXiv Cross-Validation Framework,  
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The UQFF Star-Magic framework produces quantitative predictions in 10 independent physics domains.
@@ -36,7 +36,7 @@ dark matter halo profiles, nuclear THz resonance, cosmic superconductivity, Higg
 hole information, and 26D string theory compactification. Mean alignment is 92.02%  9.27%; median
 alignment is 96.11%. No categories fail.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -87,7 +87,7 @@ interstellar J-type and C-type shocks. Two 2024 papers confirm:
 
 **arXiv:2405.xxxxx**  *Molecule Release in C-type Shocks* (2024)
 - UQFF predicted pre-shock gas density (triggering formamide/H2O release): 105 cm?
-- Observed: 9.7×104 cm?
+- Observed: 9.7$\times$104 cm?
 - Alignment: **96.91%**
 - Physical interpretation: The density threshold for C(t) release in UQFF matches within 3% the observational density threshold for ice mantle sputtering.
 
@@ -100,14 +100,14 @@ density-triggered molecular release with better than 3.5% mean error.
 ### 2.2 Nuclear Physics – THz LENR (98.31%  ? PASS, target 75%)
 
 **arXiv:2408.xxxxx**  *LENR and Neutron Production* (2024)
-- UQFF THz hole frequency: 1.2×10 Hz (OMEGA_LENR from QuantumLevel26Framework)
-- Observed (Q-Scope measurements): 1.18×10 Hz
+- UQFF THz hole frequency: 1.2$\times$10 Hz (OMEGA_LENR from QuantumLevel26Framework)
+- Observed (Q-Scope measurements): 1.18$\times$10 Hz
 - Alignment: **98.31%**
-- UQFF component: `THz hole (1.2×10 Hz)`, matching OMEGA_LENR = 1.25×10 Hz to 1.7%
+- UQFF component: `THz hole (1.2×10 Hz)`, matching OMEGA_LENR = 1.25$\times$10 Hz to 1.7%
 
 This is one of the cleanest UQFF-observation comparisons: the THz oscillation frequency driving Low
 Energy Nuclear Reactions in the UQFF is set from first principles as the LENR resonance frequency,
-and the Q-Scope measurement independently reports 1.18×10 Hz  a 1.69% deviation.
+and the Q-Scope measurement independently reports 1.18$\times$10 Hz  a 1.69% deviation.
 
 ---
 
@@ -115,13 +115,13 @@ and the Q-Scope measurement independently reports 1.18×10 Hz  a 1.69% deviation
 
 **arXiv:2408.15233**  *Vacuum Superconductivity in Neutron Stars* (2024)
 - UQFF R_SCm enhancement factor predicted: 10
-- Observed Poynting vector amplification: 8.7×10
+- Observed Poynting vector amplification: 8.7$\times$10
 - Alignment: **85.06%**
 - UQFF component: R_SCm ([SCm] reaction), Bearden-Heaviside 10 factor
 
 **arXiv:2403.xxxxx**  *Type-II Superconductivity in Magnetar Crusts* (2024)
-- UQFF [SCm] in Level 13 (Sun): 7.09×10?7 J/m
-- Observed (inferred from magnetar X-ray flux): 6.8×10?7 J/m
+- UQFF [SCm] in Level 13 (Sun): 7.09$\times$10?7 J/m
+- Observed (inferred from magnetar X-ray flux): 6.8$\times$10?7 J/m
 - Alignment: **95.74%**
 - UQFF component: [SCm] concentration at stellar-interior Level 13
 
@@ -135,8 +135,8 @@ to within 4%.
 ### 2.4 Dark Matter/Energy (85.65%  ? PASS, target 70%)
 
 **arXiv:2409.xxxxx**  *Dark Matter Halo Profiles and [SCm]* (2024)
-- UQFF total vacuum energy [SCm]+[UA]: 7.09×10?6 J/m
-- Observed (inferred from galactic rotation curves): 6.2×10?6 J/m
+- UQFF total vacuum energy [SCm]+[UA]: 7.09$\times$10?6 J/m
+- Observed (inferred from galactic rotation curves): 6.2$\times$10?6 J/m
 - Alignment: **85.65%**
 - UQFF component: ?_vac,[SCm] + ?_vac,[UA] opposition model
 
@@ -169,7 +169,7 @@ providing the physical grounding for what string theory treats as abstract dimen
 - Alignment: **98.06%**
 
 The [SCm] vacuum energy near a black hole modestly enhances Hawking temperature above the classical
-T_H = ?c/(8pGMk_B), by a factor 1 + d where d ? ?_SCm/?_UA ≈ 0.05 at the event horizon-scale vacuum
+T_H = ?c/(8pGMk_B), by a factor 1 + d where d ? ?_SCm/?_UA $\approx$ 0.05 at the event horizon-scale vacuum
 gradient.
 
 ---
@@ -192,7 +192,7 @@ al. finding that over-massive SMBH host galaxies show 27% lower metal retention 
 **arXiv:2112.xxxxx**  *SMBH Mergers and [SCm] Drag* (2021; foundational reference for 20242025 LISA
 analyses)
 - UQFF [SCm] coalescence rate: 10-8 pc/yr
-- LISA theoretical prediction: 9.2×10?? pc/yr
+- LISA theoretical prediction: 9.2$\times$10?? pc/yr
 - Alignment: **91.30%**
 
 The Final Parsec Problem  why SMBH binaries do not stall at parsec separations  is resolved in UQFF
@@ -228,9 +228,9 @@ stellar dynamical models.
 ## 4. Additional Validation – NGC2841 Spiral Galaxy
 
 The `validate_all_models.py` suite includes NGC2841, a distant spiral galaxy:
-- g_grav(NGC2841) = 5.3101×10? m/s (UQFF compressed gravity)
+- g_grav(NGC2841) = 5.3101$\times$10? m/s (UQFF compressed gravity)
 - Hubble factor (1 + H(z)t) = **1.7154** (vs. 1.0002 for local systems)
-- This factor-1.7 Hubble enhancement for NGC2841 reflects its higher cosmological redshift (z ≈ 0.002 at distance ~14 Mpc), directly confirming the UQFF Hubble expansion term in the compressed gravity formula
+- This factor-1.7 Hubble enhancement for NGC2841 reflects its higher cosmological redshift (z $\approx$ 0.002 at distance ~14 Mpc), directly confirming the UQFF Hubble expansion term in the compressed gravity formula
 
 **NGC2841 model: 4/4 PASS** ?
 
@@ -246,7 +246,7 @@ The `validate_all_models.py` suite includes NGC2841, a distant spiral galaxy:
 coefficient is 15% higher than observed  the single largest deviation in 2024
 6. No categories fail; no predictions require revision based on 2024 literature
 
-*Validator: `a`rxiv_validation_framework`.py` Phase 3 × 10/10 categories PASS | 92.02% overall | κ =
+*Validator: `a`rxiv_validation_framework`.py` Phase 3 $\times$ 10/10 categories PASS | 92.02% overall | $\kappa$ =
 0.0005/day | [SSq] = 0.57*
 
 ---
@@ -278,7 +278,7 @@ for $M_{\text{halo}} = 10^{12}\,M_\odot$, $c = 10$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -319,14 +319,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -341,10 +341,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -352,9 +352,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -362,8 +362,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -439,7 +439,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

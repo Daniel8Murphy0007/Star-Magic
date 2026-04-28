@@ -1,7 +1,7 @@
 ﻿---
 paper_id: PAPER_152
 title: "UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance
-Baseline: g = 3.958×10^14 m/s^2"
+Baseline: g = 3.958$\times$10^14 m/s^2"
 session: 0
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -11,11 +11,11 @@ tags: [Hubble, cosmology, MUGE, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_152: UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958×10^14 m/s^2
+# PAPER_152: UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958$\times$10^14 m/s^2
 **Session:** 0
 
 **Title:** UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term
-Resonance Baseline: g = 3.958×10^14 m/s^2
+Resonance Baseline: g = 3.958$\times$10^14 m/s^2
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
@@ -32,9 +32,9 @@ Resonance Baseline: g = 3.958×10^14 m/s^2
 
 The "Student's Guide to the Universe" system in the UQFF SOURCE4 namespace represents the
 cosmological-scale baseline calculation  the lowest-g terminus of the 7-system MUGE cascade
-sequence. At this scale, the MUGE 12-Term Resonance equation yields g  3.958×10^14 m/s^2, a value
-~10^11 lower than the Rings of Relativity (5.005×10^25) and ~10^15 lower than Sagittarius A*
-(4.105×10^29). This extreme dynamic range  spanning 15 decades from Sgr A* to cosmological baseline 
+sequence. At this scale, the MUGE 12-Term Resonance equation yields g  3.958$\times$10^14 m/s^2, a value
+~10^11 lower than the Rings of Relativity (5.005$\times$10^25) and ~10^15 lower than Sagittarius A*
+(4.105$\times$10^29). This extreme dynamic range  spanning 15 decades from Sgr A* to cosmological baseline 
 demonstrates the UQFF MUGE framework's validity across all astrophysical environments without
 re-parameterisation. The cosmological baseline is governed by the Hubble-coupled Osc_term and
 aexp_freq, with afluid_freq playing a secondary coupled role. The fTRZ = 0.1 topological resonance
@@ -43,7 +43,7 @@ metric. This paper derives the full MUGE decomposition for the cosmological syst
 dominant cosmological-scale terms, and interprets the result in the context of the
 FriedmannLematreRobertsonWalker (FLRW) cosmology.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -65,9 +65,9 @@ matter density.
 | Age of universe | t_U = 13.8 Gyr | WMAP/Planck |
 | Matter density | Omega_m = 0.315 | Planck 2018 |
 | Dark energy density | Omega_Lambda = 0.685 | Planck 2018 |
-| Vacuum energy density | rho_vac ~ 7.09×10^-37 J/m^3 | UQFF ISM/cosmological baseline |
+| Vacuum energy density | rho_vac ~ 7.09$\times$10^-37 J/m^3 | UQFF ISM/cosmological baseline |
 | Cosmic B-field | B ~ 1 nG (cosmological) | Blasi et al. 1999, 10^-9 T |
-| SCm density | rho_SCm ~ 1×10^15 kg/m^3 (local thread density) | UQFF canonical |
+| SCm density | rho_SCm ~ 1$\times$10^15 kg/m^3 (local thread density) | UQFF canonical |
 | Characteristic radius | r ~ 4.4 Gpc (comoving radius) | Hubble volume |
 | fTRZ | 0.1 | UQFF topological resonance constant |
 
@@ -82,7 +82,7 @@ scales by correctly encoding:
 3. **Cosmological fluid dynamics** via afluid_freq at nG B-field magnitude
 4. **DPM vortex baseline** via aDPM at cosmological omega_i values
 
-The resulting g  3.958×10^14 m/s^2 represents the UQFF "floor" for the 7-system suite  the
+The resulting g  3.958$\times$10^14 m/s^2 represents the UQFF "floor" for the 7-system suite  the
 cosmological effective gravity felt by structure at the Hubble scale through cumulative MUGE
 resonance.
 
@@ -97,13 +97,13 @@ $$g(r,t) = a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res}
 ### 2.2 Term-by-Term Evaluation
 
 **Calibrated Constants (Thread-Confirmed):**
-- κ = 0.0005/day, a = 0.001, ? = 0.00005
-- κ_i = 0.6, k1=1.5, k2=1.2, k3=1.8, k4=2.0
-- ?_SCm = 1×10^15 kg/m, v_SCm = 1×10^8 m/s
-- f_DPM = f_THz = 1×10^12 Hz
-- Evac_neb = 7.09×10^-36 J/m, Evac_ISM = 7.09×10^-37 J/m
-- ?Evac = 6.381×10^-36 J/m, F_super = 6.287×10^-19
-- [(UA')]:[SCm] = 10, β_i = 1×10^-8 rad/s, f_TRZ = 0.1
+- $\kappa$ = 0.0005/day, a = 0.001, ? = 0.00005
+- $\kappa$_i = 0.6, k1=1.5, k2=1.2, k3=1.8, k4=2.0
+- ?_SCm = 1$\times$10^15 kg/m, v_SCm = 1$\times$10^8 m/s
+- f_DPM = f_THz = 1$\times$10^12 Hz
+- Evac_neb = 7.09$\times$10^-36 J/m, Evac_ISM = 7.09$\times$10^-37 J/m
+- ?Evac = 6.381$\times$10^-36 J/m, F_super = 6.287$\times$10^-19
+- [(UA')]:[SCm] = 10, $\beta$_i = 1$\times$10^-8 rad/s, f_TRZ = 0.1
 
 **Term 1: aDPM (DPM Vortical Driver)**
 
@@ -147,7 +147,7 @@ $$a_{aether\_res} = 5 \times 10^{-5} \times 10^{15} \times 10^8 \times 3 \times 
 
 $$U_{g4i} = \kappa \cdot \frac{\rho_{vac} \cdot V_{sys}}{t \cdot r^2}$$
 
-At cosmological scale with t = 13.8 Gyr = 4.35×10^17 s:
+At cosmological scale with t = 13.8 Gyr = 4.35$\times$10^17 s:
 
 $$U_{g4i} \approx 3.0 \times 10^{-4} \text{ m/s}^2$$
 
@@ -169,7 +169,7 @@ $$a_{Aether\_freq} = 1.2 \times 5 \times 10^{-4} \times 3 \times 10^8 \times 10^
 
 $$a_{fluid\_freq} = k_3 \cdot \frac{B^2}{4\pi\rho_{SCm}} \cdot \frac{1}{r}$$
 
-At B = 1 nG = 10^-9 T, r = 4.4 Gpc = 1.36×10^26 m:
+At B = 1 nG = 10^-9 T, r = 4.4 Gpc = 1.36$\times$10^26 m:
 
 $$a_{fluid\_freq} = 1.8 \times \frac{(10^{-9})^2}{4\pi \times 10^{15}} \times \frac{1}{1.36 \times 10^{26}} \approx 1.06 \times 10^{-62} \text{ m/s}^2$$
 
@@ -199,11 +199,11 @@ $$f_{TRZ} = 0.1 \text{ m/s}^2 \text{ (dimensionless coupling constant contribute
 
 | Term | Value (m/s^2) | Dominant? |
 |------|--------------|-----------|
-| aDPM | ~3.2×10^13 | Yes – DPM cosmological driver |
-| asuper_freq | ~6.3×10^24 | Yes – SCm frequency baseline |
-| aaether_res | ~1.5×10^27 | Yes  primary |
-| Osc_term | ~-2.6×10^-37 | No (suppressed) |
-| aexp_freq | ~1.3×10^-9 | No (Hubble scale small) |
+| aDPM | ~3.2$\times$10^13 | Yes – DPM cosmological driver |
+| asuper_freq | ~6.3$\times$10^24 | Yes – SCm frequency baseline |
+| aaether_res | ~1.5$\times$10^27 | Yes  primary |
+| Osc_term | ~-2.6$\times$10^-37 | No (suppressed) |
+| aexp_freq | ~1.3$\times$10^-9 | No (Hubble scale small) |
 | fTRZ | 0.1 | Reference constant |
 | Others | < 10^-2 | Negligible |
 
@@ -221,13 +221,13 @@ driver, modulated by the asuper_freq SCm resonance at the cosmological scale.
 
 | System | g_MUGE (m/s^2) | Dominant Term | Cascade Factor |
 |--------|---------------|---------------|----------------|
-| SGR1745-2900 (magnetar) | 1.773×10^-9 | afluid_freq (B~10^11 T, local) | – |
-| Sagittarius A* (SMBH) | 4.105×10^29 | aDPM (extreme SMBH vortex) | ×10^38 up |
-| Tapestry / Westerlund 2 | 1.001×10^27 | afluid_freq (SFR, B~1 mG) | ~4×10^-3 from Sgr A* |
-| Pillars of Creation | 2.001×10^26 | afluid_freq (partial SCm) | ~5 drop |
-| Rings of Relativity | 5.005×10^25 | afluid_freq (lensing geometry) | ~4 drop |
-| Student's Guide Universe | 3.958×10^14 | aaether_res + aDPM cosm. | ~10^11 drop |
-| SGR1745 (revisited, low-B) | 1.773×10^-9 | afluid_freq (neutron star surf.) | ~10^23 drop |
+| SGR1745-2900 (magnetar) | 1.773$\times$10^-9 | afluid_freq (B~10^11 T, local) | – |
+| Sagittarius A* (SMBH) | 4.105$\times$10^29 | aDPM (extreme SMBH vortex) | $\times$10^38 up |
+| Tapestry / Westerlund 2 | 1.001$\times$10^27 | afluid_freq (SFR, B~1 mG) | ~4$\times$10^-3 from Sgr A* |
+| Pillars of Creation | 2.001$\times$10^26 | afluid_freq (partial SCm) | ~5 drop |
+| Rings of Relativity | 5.005$\times$10^25 | afluid_freq (lensing geometry) | ~4 drop |
+| Student's Guide Universe | 3.958$\times$10^14 | aaether_res + aDPM cosm. | ~10^11 drop |
+| SGR1745 (revisited, low-B) | 1.773$\times$10^-9 | afluid_freq (neutron star surf.) | ~10^23 drop |
 
 The 7-system suite spans **38 decades** of gravitational acceleration  from 10^-9 to 10^29 m/s^2 
 without a single parameter change to the MUGE master equation. This is the fundamental evidence for
@@ -242,7 +242,7 @@ UQFF universality.
 In ?CDM, the effective gravitational acceleration at the Hubble scale is set by:
 $$g_{?CDM} = \frac{GM_{universe}}{R_H^2} \approx \frac{6.67 \times 10^{-11} \times 10^{53}}{(4.4 \times 10^{26})^2} \approx 3.4 \times 10^{-12} \text{ m/s}^2$$
 
-This is the DPM-seeded/GR result at the Hubble radius. The UQFF MUGE result (3.958×10^14) is
+This is the DPM-seeded/GR result at the Hubble radius. The UQFF MUGE result (3.958$\times$10^14) is
 dramatically larger  but this comparison is inappropriate. The UQFF g_MUGE is not a DPM-seeded
 surface gravity; it is the total resonance amplitude of the MUGE field integrated over the vacuum
 energy structure of the cosmos. It encodes:
@@ -250,7 +250,7 @@ energy structure of the cosmos. It encodes:
 2. The DPM vortical driver at cosmological angular frequency
 3. The residual superconductive frequency baseline
 
-The 3.958×10^14 value is thus the UQFF "cosmological resonance floor"  comparable to a
+The 3.958$\times$10^14 value is thus the UQFF "cosmological resonance floor"  comparable to a
 cosmological-scale Ug field integral, not to a point-mass DPM-seeded calculation.
 
 ### 4.2 Connection to CMB and Baryon Acoustic Oscillations
@@ -278,7 +278,7 @@ Hubble expansion contribution to local g. In this sense, f_TRZ is the UQFF analo
 
 ## 5. Comparison: DPM-seeded Gravity as MUGE Limit
 
-The Standard Model relationship $g_{SM} = μ_s∇(M_s/r)$ is recovered from MUGE in the limit where all resonance terms are suppressed except Ug4i (vacuum concentration):
+The Standard Model relationship $g_{SM} = \mu_s\nabla(M_s/r)$ is recovered from MUGE in the limit where all resonance terms are suppressed except Ug4i (vacuum concentration):
 
 $$\lim_{B \to 0, f\_{TRZ} \to 0} g_{MUGE} \approx U_{g4i} = \frac{G M_{sys}}{r^2} \cdot e^{-\kappa t}$$
 
@@ -296,7 +296,7 @@ e^{-?t} for the current cosmic epoch.
 
 The "Student's Guide Universe" system in SOURCE4 was named to represent the reference parameters a
 physics student would use when first computing cosmological gravity: H_0 = 67.4, O_m = 0.315, t_U =
-13.8 Gyr. The UQFF result g = 3.958×10^14 m/s^2 represents what the UQFF field registers at the
+13.8 Gyr. The UQFF result g = 3.958$\times$10^14 m/s^2 represents what the UQFF field registers at the
 Hubble scale  a quantity that has no direct observational counterpart yet but will become testable
 via future 21-cm cosmological surveys that can map the MUGE resonance pattern in the large-scale
 structure distribution.
@@ -307,21 +307,21 @@ structure distribution.
 
 | Quantity | Value | Units |
 |----------|-------|-------|
-| g_MUGE (Student's Guide Universe) | 3.958×10^14 | m/s^2 |
+| g_MUGE (Student's Guide Universe) | 3.958$\times$10^14 | m/s^2 |
 | Dominant terms | aaether_res, aDPM_cosm | – |
 | fTRZ contribution | 0.1 (constant floor) | dimensionless |
 | Osc_term phase | cos(4.335 rad) = -0.368 | – |
-| aexp_freq (Hubble coupling) | 1.308×10^-9 | m/s^2 |
+| aexp_freq (Hubble coupling) | 1.308$\times$10^-9 | m/s^2 |
 | Cascade ratio: Sgr A* / Student | ~10^15 | – |
 | Full suite dynamic range | 38 decades | – |
-| UQFF O_m analogue | e^{-?t} ≈ 0.08 (at t_U) | – |
-| MUGE vs ?CDM DPM-seeded at R_H | 3.958×10^14 vs 3.4×10^-12 | m/s^2 |
+| UQFF O_m analogue | e^{-?t} $\approx$ 0.08 (at t_U) | – |
+| MUGE vs ?CDM DPM-seeded at R_H | 3.958$\times$10^14 vs 3.4$\times$10^-12 | m/s^2 |
 
 ---
 
 ## 8. Conclusions
 
-1. The UQFF MUGE 12-Term Resonance framework produces g = 3.958×10^14 m/s^2 for the
+1. The UQFF MUGE 12-Term Resonance framework produces g = 3.958$\times$10^14 m/s^2 for the
 cosmological-scale "Student's Guide Universe" system  the lowest-g terminus of the 7-system cascade
 suite.
 2. The dominant terms at cosmological scale are the aether resonance (aaether_res) and the DPM
@@ -355,7 +355,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -374,7 +374,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -482,7 +482,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.084 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

@@ -17,12 +17,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 43.d — InertiaUQFFWaveEnergy)  
 **Classification:** FIRST inertial operator Î in UQFF; FIRST three-leg proofset for UQFF wave
-energy; FIRST vacuum density ratio ρ_vac,[SCm]/ρ_vac,[UA] = 1.683×10-97 computation  
+energy; FIRST vacuum density ratio $\rho$_vac,[SCm]/$\rho$_vac,[UA] = 1.683$\times$10-97 computation  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `InertiaUQFFWaveEnergyThreeLegProofsetCalculator` (#100, PAPER_462)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, ρ_vac,[SCm] = 1.60×1019 J/m3, ρ_vac,[UA] =
-1.60×1020 J/m3 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $\rho$_vac,[SCm] = 1.60$\times$1019 J/m3, $\rho$_vac,[UA] =
+1.60$\times$1020 J/m3 —>
 ---
 
 ## Abstract
@@ -83,7 +83,7 @@ Setting $A=1$, $\omega=2\pi\times1$ Hz, $c=3\times10^8$ m/s, $\alpha=1$ m-1:
 
 $$E_{\rm SM} = \frac{(2\pi)^2}{2\times 9times10^{16}\times1} = \frac{39.48}{1.8\times10^{17}} = 2.19\times10^{-16}\ \rm J$$
 
-For $\omega = c \cdot k$ with k=2π/m (1 m wavelength):
+For $\omega = c \cdot k$ with k=2$\pi$/m (1 m wavelength):
 
 $$E_{\rm SM} = \frac{\hbar\omega \cdot N_{\rm photons}}{V} \cdot V = \hbar\omega = 1.055\times10^{-34}`times2\pi\times3`times10^8 = 1.99\times10^{-25}\ \rm J$$
 
@@ -131,7 +131,7 @@ The source value $1.17\times10^{-105}$ J includes additional scale factor $3.333
 
 $$U_i = 1.75\times10^{-96} \times 3.333\times10^{-10} = 5.84\times10^{-106}\ \rm J \approx 10^{-105}\ \rm J$$
 
-**U_i ≈ 10-105 J corresponds to the UQFF quantum wavepacket energy** — 107 orders of magnitude below
+**U_i $\approx$ 10-105 J corresponds to the UQFF quantum wavepacket energy** — 107 orders of magnitude below
 the classical SM value of 12.94 J.
 
 ---
@@ -142,9 +142,9 @@ the classical SM value of 12.94 J.
 |---------|-----|-----------------|
 | Wave energy E_SM | 12.94 J (coherent wave) | 12.94 J (Leg 1 confirmed) |
 | U_i (quantum) | Not defined | ~10-105 J |
-| Vacuum ratio | 1 (classical) | 1.683×10-97 |
-| Quantum scale | Not in gravity | 3.333×10-23 |
-| Difference (SM vs UQFF) | — | 10-105/12.94 ≈ 10-106 |
+| Vacuum ratio | 1 (classical) | 1.683$\times$10-97 |
+| Quantum scale | Not in gravity | 3.333$\times$10-23 |
+| Difference (SM vs UQFF) | — | 10-105/12.94 $\approx$ 10-106 |
 
 The 107-order difference is UQFF's statement of the **cosmological constant problem** — but
 expressed as an energy ratio rather than a density ratio.
@@ -153,7 +153,7 @@ expressed as an energy ratio rather than a density ratio.
 
 ## 6. Testable Predictions
 
-1. **Vacuum ratio detection:** ratio₂ = 1.683×10-97 implies quantum vacuum gravity signals at 10-97
+1. **Vacuum ratio detection:** ratio2 = 1.683$\times$10-97 implies quantum vacuum gravity signals at 10-97
 relative to Planck scale. Future quantum gravity detectors (LISA, PTA) sensitive to 10-97 stochastic
 background have not yet been conceived — this is a 100+ year prediction.
 2. **Inertial operator Î:** $\hat{I}\psi$ includes the $\omega_m \hat{r}\cdot\nabla$ term — which produces a **helical phase shift** proportional to B. In laser-gravity interferometry, this would appear as a birefringence effect. Measurable at B > 106 T using future neutron-star surface probes.
@@ -199,7 +199,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -218,7 +218,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -295,7 +295,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.124 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -306,10 +306,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

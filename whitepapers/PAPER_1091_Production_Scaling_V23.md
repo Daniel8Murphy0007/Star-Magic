@@ -76,7 +76,7 @@ $$\text{total\_rate} = \frac{\sum_k n_{\text{iter}}}{\sum_k t_{\text{elapsed},k}
 
 | Kernel | Operations | Expected Rate (calc/s) | Status |
 |--------|-----------|----------------------|--------|
-| Gravity | $μ_s∇(M_s/r)$ | $> 10^7$ | PASS |
+| Gravity | $\mu_s\nabla(M_s/r)$ | $> 10^7$ | PASS |
 | Phonon | Gaussian + $S_{26}$ | $> 5 \times 10^6$ | PASS |
 | Buoyancy | $\beta_i g M [\text{UA}]$ | $> 5 \times 10^6$ | PASS |
 | 99-System | $\sum_{k=1}^{99} g_k$ | $> 10^5$ | Must verify |

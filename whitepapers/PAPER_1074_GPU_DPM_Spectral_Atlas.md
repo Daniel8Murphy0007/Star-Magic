@@ -10,12 +10,12 @@ gate_compliance: [G1, G2, G3, G4, G5, G6]
 cvw_version: "2.0.0"
 ---
 
-# PAPER_1074: GPU-Vectorized DPM S₂₆⁽³⁾ Spectral Atlas Engine
+# PAPER_1074: GPU-Vectorized DPM S26(3) Spectral Atlas Engine
 
 ## Abstract
 
 We present a GPU-accelerated Dipole Moment (DPM) spectral atlas engine that computes
-the full S₂₆⁽³⁾ spectral profile across all 26 quantum states using batched matrix
+the full S26(3) spectral profile across all 26 quantum states using batched matrix
 multiplication. The engine supports PyTorch (CUDA/CPU), NumPy, and pure-Python
 backends with automatic fallback, achieving sub-3 ms atlas generation on modern
 hardware. ALMA Cycle 12 target profiles for star-forming regions are generated
@@ -23,7 +23,7 @@ natively.
 
 ## §1 DPM Spectral Formulation
 
-The DPM spectral atlas at angular frequency ω is:
+The DPM spectral atlas at angular frequency $\omega$ is:
 
 $$
 \text{DPM}(\omega) = \sum_{i=1}^{26} c_i \cdot \Phi_i(\omega)
@@ -84,10 +84,10 @@ Profiles are gravity-scaled per target: $A_k(\omega) = (g_k/g_\odot) \cdot \text
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| S₂₆⁽³⁾ | 9.50×10⁻² | Ramanujan acceleration |
-| ω_SCm | 7.854×10¹² rad/s | SCm phonon resonance |
-| σ_G | 5.027×10¹¹ rad/s | UQFF linewidth |
-| Peak DPM | 9.498×10⁻² | Sum of c_i at center |
+| S26(3) | 9.50$\times$10-2 | Ramanujan acceleration |
+| $\omega$_SCm | 7.854$\times$1012 rad/s | SCm phonon resonance |
+| $\sigma$_G | 5.027$\times$1011 rad/s | UQFF linewidth |
+| Peak DPM | 9.498$\times$10-2 | Sum of c_i at center |
 | Peak freq | 1.2485 THz | Atlas maximum |
 | N_layers | 26 | Quantum states |
 
@@ -95,11 +95,11 @@ Profiles are gravity-scaled per target: $A_k(\omega) = (g_k/g_\odot) \cdot \text
 
 DPM spectral lines are identified via local maxima detection above a threshold
 fraction of the global peak. At standard parameters, the atlas produces a single
-dominant line at 1.25 THz with FWHM governed by σ_G.
+dominant line at 1.25 THz with FWHM governed by $\sigma$_G.
 
 ## §7 SM Gate Compliance
 
-- **G1 (Theoretical Foundation):** DPM derived from S₂₆⁽³⁾ Ramanujan polylogarithm
+- **G1 (Theoretical Foundation):** DPM derived from S26(3) Ramanujan polylogarithm
 - **G2 (Mathematical Consistency):** Matmul formulation preserves summation accuracy
 - **G3 (Numerical Stability):** Float64 precision, graceful backend fallback
 - **G4 (Physical Motivation):** SCm phonon resonance at 1.25 THz
@@ -121,7 +121,7 @@ dominant line at 1.25 THz with FWHM governed by σ_G.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 

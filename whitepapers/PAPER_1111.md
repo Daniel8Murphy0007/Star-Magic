@@ -79,7 +79,7 @@ $$M_{0^{++}} \approx 4\sqrt{\sigma} = 4\sqrt{0.18} \approx 1.6971 \text{ GeV}$$
 
 This is consistent with lattice determinations $M_{0^{++}} \approx 1.5$–$1.7$ GeV.
 
-## 4. β-Function and Asymptotic Freedom
+## 4. $\beta$-Function and Asymptotic Freedom
 
 The Yang-Mills $\beta$-function:
 
@@ -128,7 +128,7 @@ The Yang-Mills mass gap, derived through UQFF buoyancy confinement, is consisten
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

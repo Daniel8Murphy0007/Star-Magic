@@ -50,16 +50,16 @@ These additions are critical for systems with active outflows (Bubble Nebula), s
 | # | System | M (MM_sun) | r (m) | System Type |
 |---|--------|---------|-------|-------------|
 | 1 | SGR 1745-2900 | 1.4 | 104 | Magnetar |
-| 2 | Sagittarius A* | 4×106 | 5.5e10 | SMBH |
-| 3 | Tapestry Starbirth | 1×106 | 3.09e19 | Star-forming region |
-| 4 | Westerlund 2 | 1×105 | 4.63e19 | Young star cluster |
-| 5 | Pillars of Creation | 2×103 | 9.46e19 | Molecular cloud |
-| 6 | Rings of Relativity | 1×1011 | 3.09e22 | Gravitational lens |
-| 7 | Student Guide Universe | 1×1023 | 4.41e26 | Cosmological |
+| 2 | Sagittarius A* | 4$\times$106 | 5.5e10 | SMBH |
+| 3 | Tapestry Starbirth | 1$\times$106 | 3.09e19 | Star-forming region |
+| 4 | Westerlund 2 | 1$\times$105 | 4.63e19 | Young star cluster |
+| 5 | Pillars of Creation | 2$\times$103 | 9.46e19 | Molecular cloud |
+| 6 | Rings of Relativity | 1$\times$1011 | 3.09e22 | Gravitational lens |
+| 7 | Student Guide Universe | 1$\times$1023 | 4.41e26 | Cosmological |
 | **8** | **NGC 2525** | **1.5e10** | **1.85e21** | **Interacting galaxy** |
-| **9** | **NGC 3603** | **1×106** | **3.09e19** | **Ultra-compact HII** |
+| **9** | **NGC 3603** | **1$\times$106** | **3.09e19** | **Ultra-compact HII** |
 | **10** | **Bubble Nebula NGC 7635** | **100** | **4.73e16** | **Stellar-wind shell** |
-| **11** | **Antennae NGC 4038/39** | **5×1010** | **4.63e21** | **Galaxy merger** |
+| **11** | **Antennae NGC 4038/39** | **5$\times$1010** | **4.63e21** | **Galaxy merger** |
 | **12** | **Horsehead Nebula** | **5** | **9.46e15** | **Dark nebula** |
 
 *Bold = new systems not in PAPER_473.*
@@ -76,13 +76,13 @@ The superconductive factor multiplies the aether resonance term:
 
 $$a_{aetherRes,SC} = \eta \rho_A c^2 r \cdot [SCm]^n \cdot H_{SCm}$$
 
-with H_SCm ≈ 0.99 (calibrated).
+with H_SCm $\approx$ 0.99 (calibrated).
 
 ### 3.2 Wormhole Metric Term
 
 $$W_{metric} = \frac{r_0^2}{r^2} \cdot g_0 \cdot \Theta(r - r_0)$$
 
-where r_0 is the wormhole throat radius. For standard galactic systems, r_0 << r and W_metric → 0.
+where r_0 is the wormhole throat radius. For standard galactic systems, r_0 << r and W_metric $\to$ 0.
 
 ---
 
@@ -94,21 +94,21 @@ NGC 2525 hosts a spiral arm tidal distortion from companion interaction. MUGE pa
 - V_sys = 1.543e64 m3 (virial volume, anomalously large — tidal inflation)
 - f_fluid = 8.457e-4 Hz (tidal oscillation frequency)
 - Dominant term: a_fluidFreq (tidal viscosity drives resonance floor)
-- g_res ≈ 1.2e-10 m/s2 (above MOND threshold)
+- g_res $\approx$ 1.2e-10 m/s2 (above MOND threshold)
 
 ### 4.2 NGC 3603 — Ultra-Compact H II Region
 
 Same bulk params as Tapestry but with ultra-high stellar density driving elevated SFR:
-- f_SF = 50 MM_sun/yr (10× Tapestry rate)
-- a_superFreq elevated 10× → g_res ≈ 3 × 10-10 m/s2
+- f_SF = 50 MM_sun/yr (10$\times$ Tapestry rate)
+- a_superFreq elevated 10$\times$ $\to$ g_res $\approx$ 3 $\times$ 10-10 m/s2
 
 ### 4.3 Bubble Nebula NGC 7635
 
 Stellar wind expanding shell:
 - M = 100 MM_sun (central O-star BD+60°2522)
 - r_shell = 4.73e16 m (~2.5 pc)
-- v_exp = 5 × 104 m/s (wind expansion velocity)
-- Key: a_fluidFreq = ν ∇2v_wind drives oscillatory gravity ring
+- v_exp = 5 $\times$ 104 m/s (wind expansion velocity)
+- Key: a_fluidFreq = $\nu$ $\nabla$2v_wind drives oscillatory gravity ring
 - f_TRZ correction: shell edge shows time-reversal geometry (expanding vs. falling material)
 
 $$g_{Bubble} \approx \frac{GM_{env}}{r^2} + \frac{\nu v_{exp}}{r^2}$$
@@ -116,18 +116,18 @@ $$g_{Bubble} \approx \frac{GM_{env}}{r^2} + \frac{\nu v_{exp}}{r^2}$$
 ### 4.4 Antennae Galaxies NGC 4038/4039
 
 Merging pair with SFR ~ 20 MM_sun/yr each:
-- M = 5 × 1010 MM_sun (combined)
-- r = 4.63e21 m (merger separation → effective radius)
+- M = 5 $\times$ 1010 MM_sun (combined)
+- r = 4.63e21 m (merger separation $\to$ effective radius)
 - Both DPM and fluid terms elevated due to nuclear starburst
-- g_res ≈ 8 × 10-11 m/s2
+- g_res $\approx$ 8 $\times$ 10-11 m/s2
 
 ### 4.5 Horsehead Nebula
 
-Dense molecular cloud pillar illuminated by σ Ori:
+Dense molecular cloud pillar illuminated by $\sigma$ Ori:
 - M = 5 MM_sun, r = 9.46e15 m
-- v_sw = 2 × 103 m/s (UV-driven photoevaporation flow)
+- v_sw = 2 $\times$ 103 m/s (UV-driven photoevaporation flow)
 - [SCm] aether coupling suppresses gravity relative to DPM-seeded: effective g reduced 15%
-- g_res ≈ 2 × 10-12 m/s2
+- g_res $\approx$ 2 $\times$ 10-12 m/s2
 
 ---
 
@@ -155,10 +155,10 @@ Dense molecular cloud pillar illuminated by σ Ori:
 Across all 12 systems, g_res clusters near 10-10 m/s2 with exceptions only in the most diffuse
 objects (Horsehead, Bubble). This is a key UQFF prediction:
 
-> **The UQFF superconductive resonance floor equals the MOND acceleration scale a₀ ≈ 1.2e-10 m/s2.**
+> **The UQFF superconductive resonance floor equals the MOND acceleration scale a0 $\approx$ 1.2e-10 m/s2.**
 
-This is not imposed — it emerges from the [SCm] vacuum density ρ_vac_SCm = 7.09e-37 J/m3 and the
-calibrated η coupling constant.
+This is not imposed — it emerges from the [SCm] vacuum density $\rho$_vac_SCm = 7.09e-37 J/m3 and the
+calibrated $\eta$ coupling constant.
 
 ---
 
@@ -179,7 +179,7 @@ the source of galactic dynamics anomalies traditionally attributed to dark matte
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -198,7 +198,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -340,7 +340,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.136 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -351,10 +351,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system
@@ -366,7 +366,7 @@ future Chandra CXC monitoring observations.
 
 
 
-**UQFF Parameters:** κ = 0.0005/day | [SSq] = 0.57 | H_SCm ≈ 0.99 | f_TRZ = 0.1  
+**UQFF Parameters:** $\kappa$ = 0.0005/day | [SSq] = 0.57 | H_SCm $\approx$ 0.99 | f_TRZ = 0.1  
 **Class:** `MUGEResonanceModule` | **Source:** `g`rok_share_b0a3dc1d`.txt` L736–1285  
 **Tags:** MUGE, resonance, superconductive, 12-system, MOND, Bubble-Nebula, Antennae, NGC2525,
 NGC3603  

@@ -91,7 +91,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -153,7 +153,7 @@ $$\mathcal{L}_\text{VDS} = \text{Li}_{26}(z) \cdot \rho_text{SCm}(r)$$
 $$\boxed{\frac{\partial}{\partial z}\text{Li}_{26}(z) = \frac{\text{Li}_{25}(z)}{z},\quad S_{26}^\text{VDS}(z) = \text{Li}_{26}(z) \cdot S_{26}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → VDS density → polylog representation → $S_{26}$ cross-check → error bound
+PAPER_877 $\to$ VDS density $\to$ polylog representation $\to$ $S_{26}$ cross-check $\to$ error bound
 
 ---
 

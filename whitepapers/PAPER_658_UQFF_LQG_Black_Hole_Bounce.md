@@ -27,9 +27,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 Loop Quantum Gravity (LQG) cosmology replaces the Big Bang singularity with a "bounce" — a
 quantum-gravitational rebound at Planck-scale densities. The standard Loop Quantum Cosmology (LQC)
-Friedmann equation introduces a critical density ρ_c that prevents singularity formation. This paper
+Friedmann equation introduces a critical density $\rho$_c that prevents singularity formation. This paper
 extends LQC with the Unified Quantum Field Framework (UQFF), incorporating the Vacuum Density Series
-constants ρ_UA and ρ_SCm. The UQFF elevates the critical density by a factor of (1 + ρ_UA/ρ_SCm) ≈
+constants $\rho$_UA and $\rho$_SCm. The UQFF elevates the critical density by a factor of (1 + $\rho$_UA/$\rho$_SCm) $\approx$
 11, extending the bounce energy scale and primordial black hole (PBH) lifetime by the same factor. A
 UQFF-modified scale factor, effective equation of state, and simulation protocol are derived and
 validated numerically.
@@ -41,36 +41,36 @@ validated numerically.
 The Big Bang singularity problem is a fundamental tension in cosmology: General Relativity predicts
 the universe emerged from a zero-volume, infinite-density state, which is physically unacceptable.
 LQG resolves this by quantising spacetime geometry; in the LQC reduction, the universe "bounces"
-from a prior contracting phase at the Planck density (~5.16 × 1096 kg/m3).
+from a prior contracting phase at the Planck density (~5.16 $\times$ 1096 kg/m3).
 
 The UQFF (Murphy, 2025–2026) posits that two vacuum density fields permeate spacetime:
-- **Universal Aether [UA]:** ρ_UA = 7.09 × 10-36 J/m3
-- **Superconductive Medium [SCm]:** ρ_SCm = 7.09 × 10-37 J/m3
+- **Universal Aether [UA]:** $\rho$_UA = 7.09 $\times$ 10-36 J/m3
+- **Superconductive Medium [SCm]:** $\rho$_SCm = 7.09 $\times$ 10-37 J/m3
 
-Their ratio (≈ 10:1) and the time-reversal factor f_TRZ = 0.1 appear throughout UQFF as negentropic
+Their ratio ($\approx$ 10:1) and the time-reversal factor f_TRZ = 0.1 appear throughout UQFF as negentropic
 modifiers. This paper introduces those modifiers into LQC.
 
 ---
 
 ## 2. Standard LQC Friedmann Equation
 
-The LQC-modified Friedmann equation replaces the classical H2 = (8πG/3)ρ with:
+The LQC-modified Friedmann equation replaces the classical H2 = (8$\pi$G/3)$\rho$ with:
 
 $$H^2 = \frac{8\pi G}{3}\,\rho!\left(1 - \frac{\rho}{\rho_c}\right) - \frac{k c^2}{a^2}$$
 
 where:
 - H = ȧ/a (Hubble parameter)
-- ρ = matter/energy density
-- ρ_c = critical bounce density ≈ 0.41 ρ_Pl ≈ 5.16 × 1096 kg/m3
+- $\rho$ = matter/energy density
+- $\rho$_c = critical bounce density $\approx$ 0.41 $\rho$_Pl $\approx$ 5.16 $\times$ 1096 kg/m3
 - k = spatial curvature (k = 0 for flat universe)
 - a = scale factor
 
-At ρ → ρ_c, H → 0: the expansion stalls. For ρ > ρ_c the argument goes negative; in the quantum
+At $\rho$ $\to$ $\rho$_c, H $\to$ 0: the expansion stalls. For $\rho$ > $\rho$_c the argument goes negative; in the quantum
 theory this corresponds to the forbidden bounce region. The scale factor near the bounce is:
 
 $$a(t) \approx a_{\min} \cosh!\left(\frac{t}{t_{\rm Pl}}\right)$$
 
-with Planck length a_min = √(ħG/c3) ≈ 1.62 × 10-35 m and Planck time t_Pl = √(ħG/c5) ≈ 5.39 × 10-44
+with Planck length a_min = $\sqrt{}$(ħG/c3) $\approx$ 1.62 $\times$ 10-35 m and Planck time t_Pl = $\sqrt{}$(ħG/c5) $\approx$ 5.39 $\times$ 10-44
 s.
 
 ---
@@ -79,7 +79,7 @@ s.
 
 ### 3.1 Elevated Critical Density
 
-The UQFF vacuum fields add a density-ratio correction to ρ_c:
+The UQFF vacuum fields add a density-ratio correction to $\rho$_c:
 
 $$\rho_{c,\rm UQFF} = \rho_c \cdot \left(1 + \frac{\rho_{\rm UA}}{\rho_{\rm SCm}}\right)$$
 
@@ -93,7 +93,7 @@ regime, with direct implications for PBH formation rates and lifetimes.
 
 ### 3.2 UQFF Scale Factor
 
-Incorporating both the f_TRZ time-reversal factor and the ρ-ratio buoyancy expansion:
+Incorporating both the f_TRZ time-reversal factor and the $\rho$-ratio buoyancy expansion:
 
 $$a_{\rm UQFF}(t) = a_{\min} \cosh!\!\left(\frac{t}{t_{\rm Pl}}\right) \cdot \left(1 + f_{\rm TRZ}\,\frac{\rho_{\rm UA}}{\rho_{\rm SCm}}\right)^{1/3}$$
 
@@ -103,11 +103,11 @@ The cubic-root term reflects isotropic volumetric expansion from the buoyancy fi
 
 $$w_{\rm eff} = -1 + (1 + f_{\rm TRZ})\,\frac{\rho_{\rm UA}}{\rho_{\rm SCm}}\,\kappa,[\text{SSq}]$$
 
-With κ = 0.0005 day-1 and [SSq] = 0.57:
+With $\kappa$ = 0.0005 day-1 and [SSq] = 0.57:
 
 $$w_{\rm eff} = -1 + 1.1 \times 10 \times 0.0005 \times 0.57 \approx -1 + 3.135 \times 10^{-3}$$
 
-This is very close to a cosmological constant (w = −1) with a small positive deviation consistent
+This is very close to a cosmological constant (w = -1) with a small positive deviation consistent
 with slow quintessence.
 
 ### 3.4 Density Rate
@@ -122,8 +122,8 @@ $$\dot{\rho} = -3H(1 + w_{\rm eff})\,\rho$$
 
 | Number System | PAPER | Connection in PAPER_658 |
 |---|---|---|
-| Vacuum Density Series (VDS) | 646 | ρ_UA, ρ_SCm define the elevation factor ×11 |
-| Dipole Vortex Primes (DVP) | 647 | Not directly invoked; implicit via μ_j in companion PAPER_659 |
+| Vacuum Density Series (VDS) | 646 | $\rho$_UA, $\rho$_SCm define the elevation factor $\times$11 |
+| Dipole Vortex Primes (DVP) | 647 | Not directly invoked; implicit via $\mu$_j in companion PAPER_659 |
 | Buoyancy Harmonics (BH Series) | 648 | Buoyancy pressure elevates bounce from PBH interior outward |
 
 ---
@@ -132,16 +132,16 @@ $$\dot{\rho} = -3H(1 + w_{\rm eff})\,\rho$$
 
 | Quantity | Standard LQC | UQFF LQC |
 |---|---|---|
-| ρ_Planck | 5.16 × 1096 kg/m3 | — |
-| ρ_c | 2.12 × 1096 kg/m3 | — |
-| ρ_c,UQFF | — | 2.33 × 1097 kg/m3 |
-| Elevation factor | 1 | ×11 |
-| a_min | 1.62 × 10-35 m | 1.69 × 10-35 m (×1.04) |
-| t_Planck | 5.39 × 10-44 s | — |
-| w_eff | −1 (exact) | −0.9969 |
-| H2 at ρ = 0.9ρ_c,UQFF | 0 | positive (bounce prevented) |
+| $\rho$_Planck | 5.16 $\times$ 1096 kg/m3 | — |
+| $\rho$_c | 2.12 $\times$ 1096 kg/m3 | — |
+| $\rho$_c,UQFF | — | 2.33 $\times$ 1097 kg/m3 |
+| Elevation factor | 1 | $\times$11 |
+| a_min | 1.62 $\times$ 10-35 m | 1.69 $\times$ 10-35 m ($\times$1.04) |
+| t_Planck | 5.39 $\times$ 10-44 s | — |
+| w_eff | -1 (exact) | -0.9969 |
+| H2 at $\rho$ = 0.9$\rho$_c,UQFF | 0 | positive (bounce prevented) |
 
-The UQFF elevation means a black hole must compress matter to 11× the standard LQC critical density
+The UQFF elevation means a black hole must compress matter to 11$\times$ the standard LQC critical density
 before the bounce occurs — equivalently, PBHs with masses near the bounce mass survive longer by a
 factor of ~11.
 
@@ -153,11 +153,11 @@ The three Vacuum Density Series terms identified in PAPER_646:
 
 | n | Term | Value | Physical Role |
 |---|---|---|---|
-| 1 | ρ_UA | 7.09 × 10-36 J/m3 | Universal Aether vacuum energy density |
-| 2 | ρ_SCm | 7.09 × 10-37 J/m3 | Superconductive Medium density |
-| Ratio | ρ_UA/ρ_SCm | 10 | Bounce elevation factor in LQC |
+| 1 | $\rho$_UA | 7.09 $\times$ 10-36 J/m3 | Universal Aether vacuum energy density |
+| 2 | $\rho$_SCm | 7.09 $\times$ 10-37 J/m3 | Superconductive Medium density |
+| Ratio | $\rho$_UA/$\rho$_SCm | 10 | Bounce elevation factor in LQC |
 
-In PAPER_658 these appear as the multiplier on ρ_c and as structural constants in w_eff.
+In PAPER_658 these appear as the multiplier on $\rho$_c and as structural constants in w_eff.
 
 ---
 
@@ -165,19 +165,19 @@ In PAPER_658 these appear as the multiplier on ρ_c and as structural constants 
 
 A simple Euler integrator is implemented in BlackHoleBounceUQFF.cpp:
 
-1. Initialise: a = a_UQFF(0), ρ = ρ_c,UQFF × f_initial, dt = t_Pl
-2. Compute H2 from LQC Friedmann with UQFF ρ_c
-3. Update: ȧ = H·a; Δρ = −3H(1+w_eff)ρ·dt
-4. Output to `lqc_bounce_sim.csv`: t, a, ρ, H2, w_eff
+1. Initialise: a = a_UQFF(0), $\rho$ = $\rho$_c,UQFF $\times$ f_initial, dt = t_Pl
+2. Compute H2 from LQC Friedmann with UQFF $\rho$_c
+3. Update: ȧ = H$\cdot$a; $\Delta$$\rho$ = -3H(1+w_eff)$\rho$$\cdot$dt
+4. Output to `lqc_bounce_sim.csv`: t, a, $\rho$, H2, w_eff
 
 ---
 
 ## 8. Discussion
 
 The UQFF LQC model makes testable predictions:
-- **PBH lifetime extension:** PBHs of mass ~1015 g (currently evaporating) live ×11 longer under UQFF, shifting the peak in the PBH dark matter window.
-- **CMB imprint:** The elevated bounce scale generates primordial gravitational waves at UQFF-shifted frequencies that may differ from standard LQC predictions by up to 11× in peak amplitude.
-- **Cosmological constant:** w_eff ≈ −0.9969 distinguishes UQFF from ΛCDM at the 0.3% level — potentially measurable by Euclid or DESI.
+- **PBH lifetime extension:** PBHs of mass ~1015 g (currently evaporating) live $\times$11 longer under UQFF, shifting the peak in the PBH dark matter window.
+- **CMB imprint:** The elevated bounce scale generates primordial gravitational waves at UQFF-shifted frequencies that may differ from standard LQC predictions by up to 11$\times$ in peak amplitude.
+- **Cosmological constant:** w_eff $\approx$ -0.9969 distinguishes UQFF from $\Lambda$CDM at the 0.3% level — potentially measurable by Euclid or DESI.
 
 ---
 
@@ -185,7 +185,7 @@ The UQFF LQC model makes testable predictions:
 
 The UQFF LQC model provides a physically motivated extension of Loop Quantum Cosmology. By
 incorporating the Vacuum Density Series constants, the critical bounce density is elevated by a
-factor of ≈ 11, with downstream consequences for PBH physics, the equation of state, and primordial
+factor of $\approx$ 11, with downstream consequences for PBH physics, the equation of state, and primordial
 gravitational wave signatures. The complete C++ implementation and Python calculator (CP4 #242)
 enable further numerical exploration.
 
@@ -298,7 +298,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.098 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -309,13 +309,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

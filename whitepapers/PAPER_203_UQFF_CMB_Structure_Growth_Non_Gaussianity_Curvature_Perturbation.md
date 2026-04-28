@@ -26,7 +26,7 @@ $$
 U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM_s}{r^2}, \quad \text{with}\; \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -39,7 +39,7 @@ regimes.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -50,13 +50,13 @@ present in Standard Model treatments.
 $$
 \begin{aligned}
   & Local non-Gaussianity (single-field slow-roll): \\
-  & f_NL = 5/6·(G3 - 3G·G?2 + 2·G?3)/G4 \\
+  & f_NL = 5/6\cdot(G3 - 3G\cdotG?2 + 2\cdotG?3)/G4 \\
   & where: G = field velocity G(?) in Dirac-Born-Infeld models \\
   & Standard single-field: f_NL = (5/12)(ns - 1) ˜ -0.03 (undetectable) \\
   & Multi-field/curvaton: f_NL ~ O(1–100) (potentially observable with CMB-S4) \\
-  & F_UBii,ng = F_rel × (f_NL × d_c3 / E_LEP) × Q_wave × exp(-d2_c/(2s2)) \\
-  & Um,ng(f) = µ(?_vac)·(1-e^{-?t})·[from d? curvature on superhorizon scales] \\
-  & Planck 2018 bound: f_NL,local = -0.9 ± 5.1  (1s, no detection) \\
+  & F_UBii,ng = F_rel \times (f_NL \times d_c3 / E_LEP) \times Q_wave \times exp(-d2_c/(2s2)) \\
+  & Um,ng(f) = µ(?_vac)\cdot(1-e^{-?t})\cdot[from d? curvature on superhorizon scales] \\
+  & Planck 2018 bound: f_NL,local = -0.9 \pm 5.1  (1s, no detection) \\
   & CMB-S4 forecast: s(f_NL) ˜ 1–2  (improved constraint)
 \end{aligned}
 $$
@@ -68,18 +68,18 @@ $$
 $$
 \begin{aligned}
   & Single-field slow-roll inflation: \\
-  & P_R(k) = H2/(8p2e·M2_Pl)  ˜ 2.1×10??   (at k0 = 0.05 Mpc?1) \\
+  & P_R(k) = H2/(8p2e\cdotM2_Pl)  ˜ 2.1\times10??   (at k0 = 0.05 Mpc?1) \\
   & Spectral index and tilt: \\
   & n_s = 1 + d ln P_R/d ln k = 1 - 6e + 2?    (to first order in slow-roll) \\
-  & Planck 2018: n_s = 0.9649 ± 0.0042  (>5s detection of tilt) \\
+  & Planck 2018: n_s = 0.9649 \pm 0.0042  (>5s detection of tilt) \\
   & Running (scale-dependent tilt): \\
   & dn_s/d ln k = -16e? + 24e2 + 2?2    (second slow-roll order) \\
   & Tensor-to-scalar ratio: \\
   & r = 16e    (BICEP/Keck: r < 0.036 at 95% CL, 2021) \\
-  & F_UBii,curv = F_rel × (P_R(k) / E_LEP) × Q_wave × (d_c/s) \\
-  & Um,curv(?) = µ(?_vac)·(1-e^{-?t})·[?? = v(2e)·H·M_Pl] \\
+  & F_UBii,curv = F_rel \times (P_R(k) / E_LEP) \times Q_wave \times (d_c/s) \\
+  & Um,curv(?) = µ(?_vac)\cdot(1-e^{-?t})\cdot[?? = v(2e)\cdotH\cdotM_Pl] \\
   & UQFF connection: vacuum energy ?c2/3 modifies P_R at large scales (low multipoles) \\
-  & P_R,UQFF(k) = P_R(k)·(1 + ?UQFF·c2/(3H2))
+  & P_R,UQFF(k) = P_R(k)\cdot(1 + ?UQFF\cdotc2/(3H2))
 \end{aligned}
 $$
 
@@ -116,17 +116,17 @@ Gravitino constraint: T_reh < 10? GeV (SUSY, avoid gravitino overproduction)
 $$
 \begin{aligned}
   & Linear growth equation: \\
-  & d¨ + 2H(a)·d? = (3/2)·O_m·H2(a)·d/a3 \\
+  & d¨ + 2H(a)\cdotd? = (3/2)\cdotO_m\cdotH2(a)\cdotd/a3 \\
   & Growing mode solution: \\
-  & D(a) = (5O_m/2) · H(a)/H0 · ?0^a da'/[a'H(a')/H0]3 \\
+  & D(a) = (5O_m/2) \cdot H(a)/H0 \cdot ?0^a da'/[a'H(a')/H0]3 \\
   & Growth rate: \\
   & f = d ln D/d ln a ˜ O_m(a)^{0.55}    (Linder 2005 approximation) \\
-  & F_UBii,grow = -F_rel × (D(a)·d0 / E_LEP) × Q_wave × f(O_m) \\
-  & Um,grow(a) = µ(?_vac)·(1-e^{-?t})·[Growing mode D ? a in matter era, suppressed by DE] \\
+  & F_UBii,grow = -F_rel \times (D(a)\cdotd0 / E_LEP) \times Q_wave \times f(O_m) \\
+  & Um,grow(a) = µ(?_vac)\cdot(1-e^{-?t})\cdot[Growing mode D ? a in matter era, suppressed by DE] \\
   & Key values: \\
   & D(z=1)/D(z=0) ˜ 0.76 (matter + ? cosmology) \\
-  & s_8 = 0.811 ± 0.006  (Planck 2018) \\
-  & f·s_8 ˜ 0.46 at z=0   (RSD measurements)
+  & s_8 = 0.811 \pm 0.006  (Planck 2018) \\
+  & f\cdots_8 ˜ 0.46 at z=0   (RSD measurements)
 \end{aligned}
 $$
 
@@ -137,9 +137,9 @@ $$
 $$
 \begin{aligned}
   & Standard primordial power spectrum: \\
-  & P(k) = A_s·(k/k0)^{n_s-1} \\
+  & P(k) = A_s\cdot(k/k0)^{n_s-1} \\
   & LQC pre-bounce modification (Dapor-Liegener approach): \\
-  & P_LQC(k) = P(k) · (1 + k/k_*)^{-a} \\
+  & P_LQC(k) = P(k) \cdot (1 + k/k_*)^{-a} \\
   & where: \\
   & k_* = quantum bounce scale (k_* ˜ k_Pl/?_bounce ~ 10?2 Mpc?1) \\
   & a = UV suppression exponent (a ~ 2–4) \\
@@ -147,8 +147,8 @@ $$
   & - For k << k_*: P_LQC ? P (standard CMB, no modification) \\
   & - For k >> k_*: P_LQC ? k^{n_s-1-a} (suppressed at superhorizon/Planck scales) \\
   & - Provides natural large-scale power suppression (low-l CMB anomaly) \\
-  & F_UBii,lqcp = -F_rel × (P_LQC(k) / E_LEP) × Q_wave × (1 + k/k_*)^{-a} \\
-  & Um,lqcp(k) = µ(?_vac)·(1-e^{-?t})·[Power tilt + UV suppression at Planck modes]
+  & F_UBii,lqcp = -F_rel \times (P_LQC(k) / E_LEP) \times Q_wave \times (1 + k/k_*)^{-a} \\
+  & Um,lqcp(k) = µ(?_vac)\cdot(1-e^{-?t})\cdot[Power tilt + UV suppression at Planck modes]
 \end{aligned}
 $$
 
@@ -164,7 +164,7 @@ $$
   & z_d ˜ 1020  (drag epoch) \\
   & r_s ˜ 147 Mpc  (physical BAO scale today) \\
   & BAO detection: \\
-  & Angular diameter distance D_A(z) = r_s·?_BAO \\
+  & Angular diameter distance D_A(z) = r_s\cdot?_BAO \\
   & Hubble D_H(z) = r_s/?z_BAO \\
   & UQFF BAO connection: \\
   & ?_J in baryon-photon fluid sets r_s ? same Jeans mechanism as F_UBii,jeans \\
@@ -177,15 +177,15 @@ $$
 ## 7. CMB Polarization and Tensor Modes
 
 E-mode polarization from density perturbations: 
-C_l^{EE} = (2/p)?k2dk·P(k)·|?_l^E(k)|2 
+C_l^{EE} = (2/p)?k2dk$\cdot$P(k)$\cdot$|?_l^E(k)|2 
 B-mode from primordial gravitational waves: 
-C_l^{BB} = (r/16)·C_l^{tensor}    (proportional to tensor-to-scalar ratio r) 
+C_l^{BB} = (r/16)$\cdot$C_l^{tensor}    (proportional to tensor-to-scalar ratio r) 
 B-mode from lensing: 
-C_l^{BB,lens} = ?d2l' (l'·e^)2·C_{|l-l'|}^{EE}·C_{l'}^{??} 
+C_l^{BB,lens} = ?d2l' (l'$\cdot$e^)2$\cdot$C_{|l-l'|}^{EE}$\cdot$C_{l'}^{??} 
 UQFF role in polarization: 
 The oscillating FU_Bi_i buoyancy at epoch of last scattering generates 
 a correlation between curvature and polarization through: 
-d_T/T|_Doppler = v_b·n^  (velocity perturbation from baryon motion)
+d_T/T|_Doppler = v_b$\cdot$n^  (velocity perturbation from baryon motion)
 
 ---
 
@@ -210,7 +210,7 @@ $$
 \end{aligned}
 $$
 
-Each stage connects through Q_wave × (F_X/E_LEP) common factor,
+Each stage connects through Q_wave $\times$ (F_X/E_LEP) common factor,
 enforcing 99.9% backbone unification across all 99 UQFF systems.
 
 ---
@@ -219,11 +219,11 @@ enforcing 99.9% backbone unification across all 99 UQFF systems.
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| n_s | 0.9649 ± 0.0042 | Planck 2018 |
-| A_s | 2.1×10?? | Planck 2018 |
+| n_s | 0.9649 $\pm$ 0.0042 | Planck 2018 |
+| A_s | 2.1$\times$10?? | Planck 2018 |
 | r | < 0.036 | BICEP/Keck 2021 |
-| f_NL,local | -0.9 ± 5.1 | Planck 2018 |
-| s_8 | 0.811 ± 0.006 | Planck 2018 |
+| f_NL,local | -0.9 $\pm$ 5.1 | Planck 2018 |
+| s_8 | 0.811 $\pm$ 0.006 | Planck 2018 |
 | r_s,BAO | 147 Mpc | Eisenstein et al. |
 | T_reh (BBN lower bound) | > 4 MeV | Standard BBN |
 
@@ -375,7 +375,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -386,13 +386,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

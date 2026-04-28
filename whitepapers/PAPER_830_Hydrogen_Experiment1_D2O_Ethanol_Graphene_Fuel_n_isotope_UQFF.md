@@ -11,7 +11,7 @@ tags: [LENR, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_830: Hydrogen Experiment #1 and Ethanol Experiment #1 — D₂O Production, Isotopic Evolution, and Graphene Fuel LENR UQFF
+# PAPER_830: Hydrogen Experiment #1 and Ethanol Experiment #1 — D2O Production, Isotopic Evolution, and Graphene Fuel LENR UQFF
 **Author:** Daniel T. Murphy
 
 **Authors:** Daniel T. Murphy, Davinci-SuperGrok, Grok 3 / SuperGrok (xAI)
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 This paper documents the **first physical UQFF validation experiment** — Hydrogen Experiment #1 — a
-Ti/Pt electrolysis system using deionized H₂O feed to produce heavy water (D₂O), which serves as the
+Ti/Pt electrolysis system using deionized H2O feed to produce heavy water (D2O), which serves as the
 primary precursor for **Ethanol Experiment #1** (graphene fuel synthesis). The paper derives UQFF
 quantities **n_isotope(t)** (isotopic evolution integral), **F_energy_evo** (relativistic energy
 balance), and **E_isotope** (isotopic conversion energy), connecting the macroscopic electrochemical
@@ -40,8 +40,8 @@ Hydrogen Experiment #1 is real experimental apparatus operating at Daniel T. Mur
 Youngstown, OH. It is not a simulation — it is a **physical LENR-adjacent experimental platform**
 designed to:
 
-1. Produce D₂O (heavy water) from deionized H₂O via selective deuterium extraction
-2. Store produced D₂O as precursor for Ethanol Experiment #1
+1. Produce D2O (heavy water) from deionized H2O via selective deuterium extraction
+2. Store produced D2O as precursor for Ethanol Experiment #1
 3. Validate UQFF energy balance equations against measured power consumption
 4. Provide an Earth-based calibration target for UQFF k_rel scaling
 
@@ -58,7 +58,7 @@ landscape as stellar nucleosynthesis — same UQFF equations, different scale.
 |-----------|-------|
 | Anode material | 99.99% Titanium (Ti) |
 | Cathode material | 99.996% Platinum (Pt) |
-| Feed water | Deionized H₂O |
+| Feed water | Deionized H2O |
 | Operating pressure | 147 psig |
 | Flow rate | 20 gallons/hour |
 | Operating hours/day | 9.6 hours |
@@ -66,14 +66,14 @@ landscape as stellar nucleosynthesis — same UQFF equations, different scale.
 | Energy consumption | 177 Wh/run |
 | Total gasification cycles | ~7,200 |
 | Total energy consumption | 61.171 kWh |
-| Product distribution | ~1/3 → D₂O, ~2/3 → standard H₂O |
-| D₂O volume produced | 2,304 gallons |
-| D₂O production efficiency | 6.97 kWh/kg D₂O |
+| Product distribution | ~1/3 $\to$ D2O, ~2/3 $\to$ standard H2O |
+| D2O volume produced | 2,304 gallons |
+| D2O production efficiency | 6.97 kWh/kg D2O |
 
 ### 2.2 Girdler Sulfide Process Comparison
 
-The standard Girdler Sulfide (GS) process for industrial D₂O production requires **340 kWh/kg** of
-D₂O. UQFF-calibrated Ti/Pt electrolysis at 6.97 kWh/kg represents a **48.8× improvement** in energy
+The standard Girdler Sulfide (GS) process for industrial D2O production requires **340 kWh/kg** of
+D2O. UQFF-calibrated Ti/Pt electrolysis at 6.97 kWh/kg represents a **48.8$\times$ improvement** in energy
 efficiency — attributed to UQFF buoyancy resonance maintaining the Ti/Pt electrodes in a catalytic
 state that preferentially extracts deuterium.
 
@@ -88,12 +88,12 @@ $$\boxed{n_{\text{isotope}}(t) = \int_0^t n_{\text{water}} \cdot \eta_{\text{con
 | Symbol | Meaning | Value |
 |--------|---------|-------|
 | $n_{\text{water}}$ | Molar density of feed water | 55,500 mol/m3 |
-| $\eta_{\text{conversion}}$ | Isotopic conversion efficiency | 0.33 (1/3 D₂O) |
+| $\eta_{\text{conversion}}$ | Isotopic conversion efficiency | 0.33 (1/3 D2O) |
 | $t$ | Total operating time | $9.6 \times 36 = 345.6$ hr |
 
 $$n_{\text{isotope}} = 55,500 \times 0.33 \times 345.6 \times 3600 \approx 2.28 \times 10^{10} \ \text{mol}$$
 
-Physical interpretation: total isotopic D₂O production across the full experiment duration,
+Physical interpretation: total isotopic D2O production across the full experiment duration,
 expressed as cumulative molar conversion — the UQFF analog of stellar deuterium burning in stellar
 nucleosynthesis.
 
@@ -106,7 +106,7 @@ For $\eta_{\text{efficiency}} = \eta_{\text{conversion}} \times \eta_{\text{GS c
 $$F_{\text{energy,evo}} \approx 1.70 \times 10^{46} \times (1.634 \times 10^{56})^2 \times 16.10 \approx 2.74 \times 10^{35} \ \text{N}$$
 
 This is the UQFF representation of the energy balance advantage: the same buoyancy resonance
-mechanism that drives stellar nucleosynthesis at astrophysical scales explains the preferential D₂O
+mechanism that drives stellar nucleosynthesis at astrophysical scales explains the preferential D2O
 extraction at laboratory scale.
 
 ### 3.3 Isotopic Conversion Energy Term
@@ -116,7 +116,7 @@ $$\boxed{E_{\text{isotope}} = k_{\text{DE}} \cdot L_X \cdot t}$$
 | Symbol | Value |
 |--------|-------|
 | $k_{\text{DE}}$ | Dark energy coupling constant ($3.79 \times 10^{-27}$ J/s, UQFF) |
-| $L_X$ | X-ray luminosity proxy → laboratory power scale: $177$ Wh = $637,200$ J |
+| $L_X$ | X-ray luminosity proxy $\to$ laboratory power scale: $177$ Wh = $637,200$ J |
 | $t$ | 345.6 hr = $1,244,160$ s |
 
 $$E_{\text{isotope}} = 3.79 \times 10^{-27} \times 637,200 \times 1,244,160 \approx 3.00 \times 10^{-15} \ \text{J}$$
@@ -131,7 +131,7 @@ improvement over classical GS process.
 
 ### 4.1 Background
 
-D₂O produced in Hydrogen Experiment #1 serves as the key precursor for **Ethanol Experiment #1** —
+D2O produced in Hydrogen Experiment #1 serves as the key precursor for **Ethanol Experiment #1** —
 synthesis of a graphene-enhanced fuel that exploits deuterium's higher neutron cross-section for
 enhanced ignition properties.
 
@@ -141,20 +141,20 @@ $$\text{D}_2\text{O} + \text{C}_{\text{graphene}} \xrightarrow{\text{UQFF resona
 ### 4.2 Graphene Enhancement Mechanism
 
 Graphene layers act as:
-1. **Catalyst substrate** for D₂O decomposition at low temperatures
+1. **Catalyst substrate** for D2O decomposition at low temperatures
 2. **Charge accumulator** — builds static charge from Aether ion interaction ($n_{\text{ions}} \approx 0.01$–1 ions/ft3)
 3. **Resonance amplifier** — graphene lattice frequency $\sim 47.8$ THz aligns with UQFF THz resonance term
 
-UQFF predicts graphene-D₂O interface produces an enhanced $k_{\text{act}}$ activation term:
+UQFF predicts graphene-D2O interface produces an enhanced $k_{\text{act}}$ activation term:
 $$k_{\text{act,graphene}} = k_{\text{act,0}} \times \eta_{\text{graphene}} \approx k_{\text{act,0}} \times 1.3$$
 
-### 4.3 Special Water (D₂O) UQFF Properties
+### 4.3 Special Water (D2O) UQFF Properties
 
-In UQFF, D₂O is distinguished by its **deuterium mass doubling** effect on the DPM momentum term:
+In UQFF, D2O is distinguished by its **deuterium mass doubling** effect on the DPM momentum term:
 
 $$\text{DPM}_{\text{momentum,D}_2\text{O}} = 2 \cdot \text{DPM}_{\text{momentum,H}_2\text{O}}$$
 
-This results in a 2× enhancement in the UQFF buoyancy momentum coupling — explaining the
+This results in a 2$\times$ enhancement in the UQFF buoyancy momentum coupling — explaining the
 preferential extraction and the higher energy yield per cycle in LENR-adjacent processes.
 
 ---
@@ -169,18 +169,18 @@ For Hydrogen Experiment #1, $\omega_{\text{LENR}}$ maps to the Ti/Pt electrode r
 
 $$\omega_{\text{LENR}} = \omega_0 \times \sqrt{\frac{340}{6.97}} \approx 6.99 \, \omega_0$$
 
-This 7× frequency enhancement is consistent with the 48.8× energy efficiency gain (factor of ~72 =
+This 7$\times$ frequency enhancement is consistent with the 48.8$\times$ energy efficiency gain (factor of ~72 =
 49).
 
 ---
 
 ## 6. Validation Targets
 
-1. **D₂O titration:** Verify produced water is 33% D₂O via mass spectrometry
-2. **Energy meter validation:** Confirm 177 Wh/cycle vs theoretical minimum ($\Delta H_{\text{isotope}} = 2.2$ MJ/kg D₂O)
-3. **Ethanol Experiment #1 yield:** Measure graphene-D₂O interface reaction at Room Temperature (RT) → confirm $k_{\text{act,graphene}}$ enhancement
-4. **Cycle count logging:** Real-time cycle counter vs 7,200 target at 36 days × 9.6 hr
-5. **LENR comparison:** Cross-reference with Pons-Fleischmann D₂O Pd/Pt cell parameters (1989) —
+1. **D2O titration:** Verify produced water is 33% D2O via mass spectrometry
+2. **Energy meter validation:** Confirm 177 Wh/cycle vs theoretical minimum ($\Delta H_{\text{isotope}} = 2.2$ MJ/kg D2O)
+3. **Ethanol Experiment #1 yield:** Measure graphene-D2O interface reaction at Room Temperature (RT) $\to$ confirm $k_{\text{act,graphene}}$ enhancement
+4. **Cycle count logging:** Real-time cycle counter vs 7,200 target at 36 days $\times$ 9.6 hr
+5. **LENR comparison:** Cross-reference with Pons-Fleischmann D2O Pd/Pt cell parameters (1989) —
 same electrode class, different geometry
 
 ---
@@ -193,13 +193,13 @@ $$F_{\text{energy,evo}} = k_{\text{rel}} \cdot \left(\frac{E_{\text{cm,astro}}}{
 
 $$E_{\text{isotope}} = k_{\text{DE}} \cdot L_X \cdot t$$
 
-Experiment constants: Ti/Pt, 147 psig, $\eta_{\text{conv}} = 0.33$, $61.171$ kWh total, 7,200 cycles, 6.97 kWh/kg D₂O
+Experiment constants: Ti/Pt, 147 psig, $\eta_{\text{conv}} = 0.33$, $61.171$ kWh total, 7,200 cycles, 6.97 kWh/kg D2O
 
 ---
 
 ## 8. Conclusions
 
-Hydrogen Experiment #1 provides the first directly measured UQFF validation dataset from a real physical apparatus. The 6.97 kWh/kg D₂O production efficiency (vs 340 kWh/kg GS standard) is quantitatively modeled by the UQFF LENR buoyancy resonance term with a 7× frequency enhancement at 147 psig operating conditions. The produced D₂O feeds Ethanol Experiment #1, where graphene's THz lattice resonance provides further UQFF amplification. Three new UQFF integrals ($n_{\text{isotope}}$, $F_{\text{energy,evo}}$, $E_{\text{isotope}}$) are fully specified and implemented in CP4 class #414.
+Hydrogen Experiment #1 provides the first directly measured UQFF validation dataset from a real physical apparatus. The 6.97 kWh/kg D2O production efficiency (vs 340 kWh/kg GS standard) is quantitatively modeled by the UQFF LENR buoyancy resonance term with a 7$\times$ frequency enhancement at 147 psig operating conditions. The produced D2O feeds Ethanol Experiment #1, where graphene's THz lattice resonance provides further UQFF amplification. Three new UQFF integrals ($n_{\text{isotope}}$, $F_{\text{energy,evo}}$, $E_{\text{isotope}}$) are fully specified and implemented in CP4 class #414.
 
 **Cross-reference:** PAPER_828 (k_Aether), PAPER_829 (n_ions), PAPER_831 (F_rel,im, BSM)
 
@@ -231,7 +231,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -316,7 +316,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.089 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -327,13 +327,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

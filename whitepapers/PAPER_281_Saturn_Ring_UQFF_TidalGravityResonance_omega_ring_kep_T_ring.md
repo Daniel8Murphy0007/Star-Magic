@@ -10,13 +10,13 @@ tags: [dark-matter, galaxy, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_281: Saturn Ring UQFF Tidal Gravity Resonance — ω_ring_kep, T_ring = 11.78 h, g_ring_tidal
+# PAPER_281: Saturn Ring UQFF Tidal Gravity Resonance — $\omega$_ring_kep, T_ring = 11.78 h, g_ring_tidal
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module)  
-**New Constants:** ω_ring_kep (Ring Keplerian Resonance Frequency), g_ring_tidal (Ring UQFF
+**New Constants:** $\omega$_ring_kep (Ring Keplerian Resonance Frequency), g_ring_tidal (Ring UQFF
 First-Order Tidal Gravity), T_ring (Ring Orbital Period), proximity_ratio (r_ring/r_Saturn)  
 **Related Paper:** Distinct from PAPER_278 (Sombrero Dust Ring) — different physical regime,
 different formula regime
@@ -25,14 +25,14 @@ different formula regime
 
 ## Abstract
 
-Saturn's ring system (M_ring = 1.5×1019 kg, mean orbital radius r_ring = 1.2×108 m ≈ 2× Saturn
+Saturn's ring system (M_ring = 1.5$\times$1019 kg, mean orbital radius r_ring = 1.2$\times$108 m $\approx$ 2$\times$ Saturn
 radius) creates a unique tidal perturbation on Saturn's surface gravity field. Unlike the Sombrero
 Galaxy dust ring (PAPER_278), which lies at r_ring < r_Sombrero and uses a galactic-scale proximity
 factor, Saturn's rings lie *outside* the planetary body (r_ring > r_Saturn) and are modelled using
 the classical **first-order tidal formula**. A new UQFF Ring Keplerian Resonance Frequency
-ω_ring_kep = 1.481×10-4 rad/s is derived, corresponding to a ring orbital period of T_ring = **11.78
+$\omega$_ring_kep = 1.481$\times$10-4 rad/s is derived, corresponding to a ring orbital period of T_ring = **11.78
 hours** — consistent with observed Keplerian ring orbital periods. The oscillatory tidal term
-F_ring(t) = g_ring_tidal × cos(ω_ring_kep × t) introduces the first **planetary ring UQFF
+F_ring(t) = g_ring_tidal $\times$ cos($\omega$_ring_kep $\times$ t) introduces the first **planetary ring UQFF
 resonance** in the module catalogue.
 
 ---
@@ -42,9 +42,9 @@ resonance** in the module catalogue.
 | Parameter | Sombrero (PAPER_278) | Saturn (PAPER_281) |
 |---|---|---|
 | Ring location | Inside reference body (r_ring < r_galaxy) | Outside planetary body (r_ring > r_Saturn) |
-| Physical scale | ~1019 m (galactic) | 1.2×108 m (planetary) |
-| Formula | Proximity-enhanced oscillatory: g × (r/r_ring)^n | First-order tidal: G×M_ring×r/r_ring3 |
-| Proximity ratio | r_ring = r_galaxy/3 | r_ring = 2 × r_Saturn |
+| Physical scale | ~1019 m (galactic) | 1.2$\times$108 m (planetary) |
+| Formula | Proximity-enhanced oscillatory: g $\times$ (r/r_ring)^n | First-order tidal: G$\times$M_ring$\times$r/r_ring3 |
+| Proximity ratio | r_ring = r_galaxy/3 | r_ring = 2 $\times$ r_Saturn |
 | f_DM | Non-zero (galactic dark matter) | Zero (planetary body) |
 | Redshift | z > 0 | z = 0 |
 
@@ -57,8 +57,8 @@ of the UQFF ring-tidal framework.
 
 ### 3.1 Ring Parameter Setup
 
-Saturn's ring system occupies the range ~7×106 m to ~4.8×108 m above Saturn's surface, with the main
-rings (A+B) concentrated at ~9.2×107 to 1.37×108 m from Saturn's centre. We use the mean ring
+Saturn's ring system occupies the range ~7$\times$106 m to ~4.8$\times$108 m above Saturn's surface, with the main
+rings (A+B) concentrated at ~9.2$\times$107 to 1.37$\times$108 m from Saturn's centre. We use the mean ring
 radius:
 
 $$r_\text{ring} = 1.2 \times 10^8 \text{ m} \approx 2 \cdot r_\text{Saturn}$$
@@ -67,7 +67,7 @@ Proximity ratio:
 
 $$\frac{r_\text{ring}}{r_\text{Saturn}} = \frac{1.2 \times 10^8}{6.0268 \times 10^7} = \mathbf{1.99 \approx 2.0}$$
 
-### 3.2 Ring Keplerian Frequency (ω_ring_kep)
+### 3.2 Ring Keplerian Frequency ($\omega$_ring_kep)
 
 A particle at r_ring orbits Saturn with Keplerian frequency:
 
@@ -113,7 +113,7 @@ the amplitude is constant.
 ## 4. Physical Interpretation
 
 The UQFF Ring Tidal Gravity Resonance describes how Saturn's ring system creates a periodic
-modulation in the effective surface gravity at frequency ω_ring_kep. This is not a resonance between
+modulation in the effective surface gravity at frequency $\omega$_ring_kep. This is not a resonance between
 the ring and Saturn's rotation (Saturn's rotation period ~10.7 hours vs T_ring = 11.78 hours), but
 rather the **characteristic Keplerian frequency** at which tidal material at r_ring exchanges
 gravitational momentum with the planet.
@@ -124,9 +124,9 @@ gravitational momentum with the planet.
 |---|---|---|
 | g_base (Saturn surface) | 10.44 | 1.000 |
 | `pre_sum_Ug` (26-layer) | 542.9 | 52.0 |
-| `g_Sun_tidal` (PAPER_280) | 6.49×10-5 | 6.22×10-6 |
-| `g_ring_tidal` (PAPER_281) | 3.49×10-8 | 3.34×10-9 |
-| a_wind (PAPER_282) | 2.904×10-11 | 2.78×10-12 |
+| `g_Sun_tidal` (PAPER_280) | 6.49$\times$10-5 | 6.22$\times$10-6 |
+| `g_ring_tidal` (PAPER_281) | 3.49$\times$10-8 | 3.34$\times$10-9 |
+| a_wind (PAPER_282) | 2.904$\times$10-11 | 2.78$\times$10-12 |
 
 The ring tidal term is smaller than the solar tidal term but larger than the wind kinetic term,
 establishing the correct hierarchy within Saturn's UQFF corrections.
@@ -136,7 +136,7 @@ establishing the correct hierarchy within Saturn's UQFF corrections.
 ## 5. Integration in computeG()
 
 $$
-computeRingTidalTerm(t) = \text{g\_ring\_tidal} × cos(\text{omega\_ring\_kep} × t)
+computeRingTidalTerm(t) = \text{g\_ring\_tidal} \times cos(\text{omega\_ring\_kep} \times t)
 $$
 
 Enters the full UQFF sum as `ring_term`:
@@ -144,7 +144,7 @@ Enters the full UQFF sum as `ring_term`:
 $$
 \begin{aligned}
   & g_total = [g_grav + Ug_sum + Lambda + quantum + Lorentz + fluid \\
-  & + ring_term + \text{g\_Sun\_tidal} + g_exp + a_wind] × corr_SC
+  & + ring_term + \text{g\_Sun\_tidal} + g_exp + a_wind] \times corr_SC
 \end{aligned}
 $$
 
@@ -154,7 +154,7 @@ $$
 
 $$
 \begin{aligned}
-  & \text{WOLFRAM\_TERM\_SATURN\_RING}: "SaturnUQFF:\text{omega\_ring\_kep}=Sqrt[μ_s∇(M_s/r)]=1.481e-4 rad/s; \\
+  & \text{WOLFRAM\_TERM\_SATURN\_RING}: "SaturnUQFF:\text{omega\_ring\_kep}=Sqrt[\mu_s\nabla(M_s/r)]=1.481e-4 rad/s; \\
   & g_ring=G*M_ring*r/r_ring^3=3.49e-8 m/s^2 [PAPER_281]"
 \end{aligned}
 $$
@@ -165,9 +165,9 @@ $$
 
 - **First UQFF planetary ring module** (distinct from galactic ring PAPER_278)
 - **T_ring = 11.78 hours** — consistent with observed Saturn ring Keplerian periods
-- **Proximity ratio = 2.0**: ring is at exactly 2× the planetary radius (clean geometric result)
-- **ω_ring_kep** establishes the UQFF Ring Keplerian Resonance Frequency as a new catalogued constant
-- Physically: ring tidal is 3.34×10-9 times g_base — a genuine but small UQFF correction
+- **Proximity ratio = 2.0**: ring is at exactly 2$\times$ the planetary radius (clean geometric result)
+- **$\omega$_ring_kep** establishes the UQFF Ring Keplerian Resonance Frequency as a new catalogued constant
+- Physically: ring tidal is 3.34$\times$10-9 times g_base — a genuine but small UQFF correction
 
 *Copyright — Daniel T. Murphy, UQFF 2.0, Session 78, March 2026.*
 
@@ -270,7 +270,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.182 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -281,13 +281,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

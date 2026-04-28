@@ -32,17 +32,17 @@ $$
 
 We compute UQFF predictions for supermassive black hole (SMBH) merger detection rates with the Laser
 Interferometer Space Antenna (LISA). For a representative SMBH merger at z = 1 (M_total = 106 M?,
-D_L = 6.42 Gpc), UQFF reduces the GW strain by 38.1% (UQFF factor = 0.6194), giving h_GR = 6.9526 ×
-10?1? versus h_UQFF = 4.3067 × 10?1?. Both remain detectable with SNR(GR) = 178,458 and SNR(UQFF) =
+D_L = 6.42 Gpc), UQFF reduces the GW strain by 38.1% (UQFF factor = 0.6194), giving h_GR = 6.9526 $\times$
+10?1? versus h_UQFF = 4.3067 $\times$ 10?1?. Both remain detectable with SNR(GR) = 178,458 and SNR(UQFF) =
 110,544. The UQFF-modified detection volume extends to z_max = 4.3 (vs. GR z_max = 5.3), giving a
 volume ratio of 0.52. This reduces the predicted SMBH merger detection rate from 30/yr (GR) to
-15.6/yr (UQFF), missing ~14 events per year compared to GR predictions. Chirp mass M_c = 4.06 × 105
+15.6/yr (UQFF), missing ~14 events per year compared to GR predictions. Chirp mass M_c = 4.06 $\times$ 105
 M? places the ISCO frequency at 2.198 mHz, within the LISA band for 0.43 years. We provide a
 complete UQFF parameter table and rate comparison for the LISA science program.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -71,8 +71,8 @@ We simulate a representative SMBH merger at z = 1:
 
 | Parameter | Value |
 |-----------|-------|
-| Total mass M_total | 1.00 × 106 M? |
-| Chirp mass M_c | 4.06 × 105 M? |
+| Total mass M_total | 1.00 $\times$ 106 M? |
+| Chirp mass M_c | 4.06 $\times$ 105 M? |
 | Redshift z | 1.00 |
 | Luminosity distance D_L | 6.42 Gpc |
 | Mass ratio q | 0.5 (assumed) |
@@ -95,7 +95,7 @@ This is well within the LISA sensitivity band (0.1–10 mHz).
 | ISCO frequency (observer) | 2.198 mHz |
 | Start of LISA-band signal | ~0.1 mHz |
 | In-band duration | 0.43 yr |
-| GW cycles in observation | 1.45 × 104 |
+| GW cycles in observation | 1.45 $\times$ 104 |
 
 ---
 
@@ -123,9 +123,9 @@ distinctive UQFF signature absent from standard GR modifications.
 
 | Model | Peak Strain h | SNR |
 |-------|---------------|-----|
-| Standard GR | 6.9526 × 10?1? | 178,458 |
-| UQFF (factor = 0.6194) | 4.3067 × 10?1? | 110,544 |
-| Difference | 2.6459 × 10?1? | 67,914 |
+| Standard GR | 6.9526 $\times$ 10?1? | 178,458 |
+| UQFF (factor = 0.6194) | 4.3067 $\times$ 10?1? | 110,544 |
+| Difference | 2.6459 $\times$ 10?1? | 67,914 |
 
 Both GR and UQFF predictions are detectable with extremely high SNR. The factor-of-1.6 SNR
 difference between them is measurable in principle with careful Bayesian model selection.
@@ -139,7 +139,7 @@ difference between them is measurable in principle with careful Bayesian model s
 The maximum redshift for SMBH detection is set by SNR(z_max) = 8 (threshold):
 
 $$
-z_max = z where h(z) × SNR_reference = 8
+z_max = z where h(z) \times SNR_reference = 8
 $$
 
 | Model | z_max |
@@ -156,7 +156,7 @@ The comoving volume ratio scales approximately as:
 
 $$
 \begin{aligned}
-  & V_UQFF / V_GR ˜ (D_L(z_max,UQFF) / D_L(z_max,GR))3 × correction \\
+  & V_UQFF / V_GR ˜ (D_L(z_max,UQFF) / D_L(z_max,GR))3 \times correction \\
   & ˜ 0.52
 \end{aligned}
 $$
@@ -182,12 +182,12 @@ operational: if LISA detects ˜ 15–16 SMBH mergers/yr, it is consistent with U
 
 ## 5. Waveform Phase Analysis
 
-With 1.45 × 104 GW cycles over 0.43 years in the LISA band:
+With 1.45 $\times$ 104 GW cycles over 0.43 years in the LISA band:
 
 $$
 \begin{aligned}
-  & Total phase lag = N_cycles × ?\text{f\_per\_cycle} \\
-  & ˜ 14,500 × 0.319 rad \\
+  & Total phase lag = N_cycles \times ?\text{f\_per\_cycle} \\
+  & ˜ 14,500 \times 0.319 rad \\
   & ˜ 4,600 rad \\
   & ˜ 732 cycles
 \end{aligned}
@@ -219,7 +219,7 @@ feature absent from GR.
 
 | Parameter | GR Prediction | UQFF Prediction | UQFF/GR |
 |-----------|---------------|-----------------|---------|
-| Peak strain (z=1 SMBH) | 6.9526 × 10?1? | 4.3067 × 10?1? | 0.619 |
+| Peak strain (z=1 SMBH) | 6.9526 $\times$ 10?1? | 4.3067 $\times$ 10?1? | 0.619 |
 | SNR (representative SMBH) | 178,458 | 110,544 | 0.619 |
 | z_max | 5.3 | 4.3 | 0.81 |
 | Detection volume | 1.0 (ref) | 0.52 | 0.52 |
@@ -250,7 +250,7 @@ modulation as the TRZ factor sweeps from 0.85 to 0.90 across the ISCO approach.
 UQFF predicts a 38.1% strain reduction (UQFF factor = 0.619) for SMBH mergers at z = 1, reducing the
 SNR from 178,458 to 110,544 and the accessible detection volume to 52% of the GR expectation. The
 predicted LISA SMBH merger detection rate is 15.6/yr compared to 30/yr in GR. The 0.43-year in-band
-observation of the benchmark system generates 1.45 × 104 GW cycles with ~732 cycles of phase lag
+observation of the benchmark system generates 1.45 $\times$ 104 GW cycles with ~732 cycles of phase lag
 relative to GR templates — a decisive discriminant. LISA mission data from the late 2030s will test
 these predictions at high statistical significance.
 
@@ -269,11 +269,11 @@ inspirals*, Phys. Rev. D **95**, 103012 (2017)
 ---
 
 **Validator:** `validate_lisa.py` — **ALL 3 TESTS PASSED**  
-*TEST 1 (SMBH, z=1): M_total=106 M?, M_c=4.06×105 M?, D_L=6.42 Gpc, f_ISCO=2.198 mHz;*  
+*TEST 1 (SMBH, z=1): M_total=106 M?, M_c=4.06$\times$105 M?, D_L=6.42 Gpc, f_ISCO=2.198 mHz;*  
 *h_GR=6.9526e-19, h_UQFF=4.3067e-19, UQFF factor=0.6194, reduction=38.1%;*  
-*SNR(GR)=178,458 ? SNR(UQFF)=110,544; time in band=0.43 yr; GW cycles=1.45×104;*  
+*SNR(GR)=178,458 ? SNR(UQFF)=110,544; time in band=0.43 yr; GW cycles=1.45$\times$104;*  
 *Detection rates: 30?15.6/yr (SMBH), z_max: 5.3?4.3; volume ratio: 0.52;*  
-*κ = 0.0005/day, [SSq] = 0.57*
+*$\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 013b**
 
@@ -315,7 +315,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -334,7 +334,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -351,14 +351,14 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -373,10 +373,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -384,9 +384,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -394,8 +394,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -472,7 +472,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.060 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

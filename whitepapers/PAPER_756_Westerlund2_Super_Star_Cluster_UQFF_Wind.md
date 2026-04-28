@@ -25,17 +25,17 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Westerlund 2 (RCW 49) is one of the most massive young star clusters in the Milky Way, hosting
 ~30,000 MM_sun within a 10 ly radius. This paper derives the UQFF electromagnetic-dominated gravity at r
 = 10 ly, t = 1 Myr, incorporating wind ram pressure, star-formation mass loading, and the Aether EM
-correction. The result, g_Westerlund2 ≈ 1.053×10-3 m/s2, is 10× larger than the NGC 2014 value,
-consistent with the 10× higher ISM density (ρ = 10-20 kg/m3).
+correction. The result, g_Westerlund2 $\approx$ 1.053$\times$10-3 m/s2, is 10$\times$ larger than the NGC 2014 value,
+consistent with the 10$\times$ higher ISM density ($\rho$ = 10-20 kg/m3).
 
 ---
 
 ## 1. Introduction
 
 Westerlund 2 contains more than 150 OB stars within a half-light radius of ~1 pc. The cluster age of
-~2 Myr places it at peak stellar-wind mechanical luminosity. With ISM density ρ ≈ 10-20 kg/m3 — 10×
+~2 Myr places it at peak stellar-wind mechanical luminosity. With ISM density $\rho$ $\approx$ 10-20 kg/m3 — 10$\times$
 denser than the NGC 2014 region — the ram-pressure and EM corrections are proportionally amplified.
-UQFF predicts g ≈ 10-3 m/s2 at the 10 ly evaluation radius.
+UQFF predicts g $\approx$ 10-3 m/s2 at the 10 ly evaluation radius.
 
 ---
 
@@ -43,17 +43,17 @@ UQFF predicts g ≈ 10-3 m/s2 at the 10 ly evaluation radius.
 
 $$
 \begin{aligned}
-  & g_W2(r, t) = [G·M(t) / r2] × (1 + H(t,z)) × (1 − B/B_crit) \\
-  & + q·(v_wind × B_W2) × A_aeth × A_scale \\
-  & + ρ_W2 · v_wind2 / r \\
-  & M(t) = M_initial × (1 + M_SF(t)) \\
-  & M_SF(t) = \text{M\_dot\_0} × t × exp(−t / τ_SF)
+  & g_W2(r, t) = [G\cdotM(t) / r2] \times (1 + H(t,z)) \times (1 - B/B_crit) \\
+  & + q\cdot(v_wind \times B_W2) \times A_aeth \times A_scale \\
+  & + \rho_W2 \cdot v_wind2 / r \\
+  & M(t) = M_initial \times (1 + M_SF(t)) \\
+  & M_SF(t) = \text{M\_dot\_0} \times t \times exp(-t / \tau_SF)
 \end{aligned}
 $$
 
 ### EM Term
 $$
-g_EM = q × (v_wind × B_W2) × 11 × 10-12
+g_EM = q \times (v_wind \times B_W2) \times 11 \times 10-12
 $$
 
 ---
@@ -62,13 +62,13 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Initial cluster mass | M_initial | 5.967×1034 | kg (30,000 MM_sun) |
-| Cluster radius | r | 9.461×1016 | m (10 ly) |
-| Wind velocity | v_wind | 2.00×106 | m/s |
-| ISM density | ρ_W2 | 1.00×10-20 | kg/m3 |
+| Initial cluster mass | M_initial | 5.967$\times$1034 | kg (30,000 MM_sun) |
+| Cluster radius | r | 9.461$\times$1016 | m (10 ly) |
+| Wind velocity | v_wind | 2.00$\times$106 | m/s |
+| ISM density | $\rho$_W2 | 1.00$\times$10-20 | kg/m3 |
 | Mean accretion rate | `M_dot_0` | 3.333 | MM_sun/yr |
-| SF timescale | τ_SF | 6.312×1013 | s (2 Myr) |
-| Magnetic field | B_W2 | 1.00×10-5 | T |
+| SF timescale | $\tau$_SF | 6.312$\times$1013 | s (2 Myr) |
+| Magnetic field | B_W2 | 1.00$\times$10-5 | T |
 | Aether factor | A_aeth | 11 | — |
 | Scale factor | A_scale | 10-12 | — |
 | Evaluation epoch | t | 1.0 Myr | — |
@@ -79,13 +79,13 @@ $$
 
 $$
 \begin{aligned}
-  & t = 1×106 × 3.156×107 = 3.156×1013 s \\
-  & M_SF factor (1 + M_SF) ≈ 3.021  at t = 1 Myr \\
-  & M(t) = 5.967×1034 × 3.021 = 1.803×1035 kg \\
-  & g_grav = G × 1.803×1035 / (9.461×1016)2 \\
-  & ≈ 1.344×10-10 m/s2   [gravitational — small] \\
-  & g_EM (dominant) ≈ 1.053×10-3 m/s2 \\
-  & g_Westerlund2(t=1 Myr) ≈ 1.053×10-3 m/s2
+  & t = 1\times106 \times 3.156\times107 = 3.156\times1013 s \\
+  & M_SF factor (1 + M_SF) \approx 3.021  at t = 1 Myr \\
+  & M(t) = 5.967\times1034 \times 3.021 = 1.803\times1035 kg \\
+  & g_grav = G \times 1.803\times1035 / (9.461\times1016)2 \\
+  & \approx 1.344\times10-10 m/s2   [gravitational — small] \\
+  & g_EM (dominant) \approx 1.053\times10-3 m/s2 \\
+  & g_Westerlund2(t=1 Myr) \approx 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -96,17 +96,17 @@ $$
 | Property | NGC 2014/2020 | Westerlund 2 |
 |----------|---------------|--------------|
 | M_cluster | 240 MM_sun | 30,000 MM_sun |
-| ρ_ISM | 10-21 kg/m3 | 10-20 kg/m3 |
+| $\rho$_ISM | 10-21 kg/m3 | 10-20 kg/m3 |
 | B | 10-6 T | 10-5 T |
-| g_result | 1.053×10-4 m/s2 | 1.053×10-3 m/s2 |
-| Ratio | — | ×10 (as expected) |
+| g_result | 1.053$\times$10-4 m/s2 | 1.053$\times$10-3 m/s2 |
+| Ratio | — | $\times$10 (as expected) |
 
 ---
 
 ## 6. Conclusions
 
-Westerlund 2's denser environment (ρ = 10-20 kg/m3) and stronger field (B = 10-5 T) produce g ≈
-1.053×10-3 m/s2, a factor of 10 above NGC 2014. The EM Aether correction again dominates, confirming
+Westerlund 2's denser environment ($\rho$ = 10-20 kg/m3) and stronger field (B = 10-5 T) produce g $\approx$
+1.053$\times$10-3 m/s2, a factor of 10 above NGC 2014. The EM Aether correction again dominates, confirming
 the vacuum-coupling mechanism is robust across a decade of environment density. PAPER_756, CP4 class
 #340. v5.39.
 
@@ -118,7 +118,7 @@ the vacuum-coupling mechanism is robust across a decade of environment density. 
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -137,7 +137,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -245,7 +245,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.191 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -256,13 +256,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

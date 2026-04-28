@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper documents the integration of a relativistic superconductive medium (SCm) jet term
@@ -29,7 +29,7 @@ derived from the C++ code in Grok thread `7f9068`.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -45,7 +45,7 @@ where:
 - ?_SCm = superconducting medium density [kg/m]
 - v_SCm = SCm velocity [m/s]
 - ?_A = ambient density [kg/m]
-- κ = 0.0005/day = 5.787×10?? s-1 (UQFF canonical)
+- $\kappa$ = 0.0005/day = 5.787$\times$10?? s-1 (UQFF canonical)
 
 ### 1.2 Relativistic SCm Jet (NEW)
 
@@ -71,8 +71,8 @@ $$E_{inject} = (\gamma - 1) \cdot m_{jet} \cdot c^2 = 6.09 \cdot m_{jet} \cdot c
 | Redshift z     | 3.122          | SDSS spectroscopic survey          |
 | Luminosity     | ~1047 erg/s    | Typical quasar AGN luminosity      |
 | Jet velocity   | ~0.99c         | VLBI proper motion + UQFF fit      |
-| ?_SCm          | 1×10-5 kg/m  | AGN accretion disk SCm density     |
-| ?_A            | 1.67×10?7    | H gas ambient density              |
+| ?_SCm          | 1$\times$10-5 kg/m  | AGN accretion disk SCm density     |
+| ?_A            | 1.67$\times$10?7    | H gas ambient density              |
 
 ---
 

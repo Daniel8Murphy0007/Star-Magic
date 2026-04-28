@@ -17,14 +17,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Framework:** UQFF v4.8 (Star-Magic)
 **Session:** 58 (grok_share_8d951e12.txt extraction — Doc 7)
 **Date:** March 2026
-**Classification:** Novel MUGE Term — Decaying Erosion Suppression (1 − E(t)) on Base Gravity
+**Classification:** Novel MUGE Term — Decaying Erosion Suppression (1 - E(t)) on Base Gravity
 **Status:** Proof-Quality Whitepaper
 
 ---
 
 ## Abstract
 
-The Pillars of Creation in the Eagle Nebula (M16, NGC 6611, ~6,500 ly) are modelled with a 9-term MUGE incorporating a uniquely novel term: a decaying photoevaporation erosion factor $E(t) = E_0 e^{-t/\tau_e}$ applied to the base gravity as a multiplicative suppression $(1 - E(t))$. This is physically distinct from the Bubble Nebula (PAPER_221) which uses $(1 + E(t))$ for shell compression enhancement. The sign physically distinguishes systems where EUV radiation removes mass (erosion → less gravity) versus compresses it (shock → more gravity).
+The Pillars of Creation in the Eagle Nebula (M16, NGC 6611, ~6,500 ly) are modelled with a 9-term MUGE incorporating a uniquely novel term: a decaying photoevaporation erosion factor $E(t) = E_0 e^{-t/\tau_e}$ applied to the base gravity as a multiplicative suppression $(1 - E(t))$. This is physically distinct from the Bubble Nebula (PAPER_221) which uses $(1 + E(t))$ for shell compression enhancement. The sign physically distinguishes systems where EUV radiation removes mass (erosion $\to$ less gravity) versus compresses it (shock $\to$ more gravity).
 
 ---
 
@@ -56,8 +56,8 @@ $$E(t) = E_0 e^{-t/\tau_e}$$
 
 $$a_{base} = \frac{GM(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_{crit}}\right)(1 - E(t))$$
 
-At $t = 0$: $E = E_0 = 0.1$ → base gravity suppressed by 10% (maximum erosion).
-At $t \gg \tau_e$: $E \to 0$ → gravity recovers fully as the pillar material disperses or the EUV source weakens.
+At $t = 0$: $E = E_0 = 0.1$ $\to$ base gravity suppressed by 10% (maximum erosion).
+At $t \gg \tau_e$: $E \to 0$ $\to$ gravity recovers fully as the pillar material disperses or the EUV source weakens.
 
 ### 2.3 Physical Interpretation
 
@@ -69,8 +69,8 @@ The factor $(1 - E(t))$ represents the fractional mass remaining in the gravitat
 
 | System | Erosion/Expansion Term | Sign | Physical Process |
 |--------|----------------------|------|-----------------|
-| Pillars of Creation (PAPER_229) | $(1 - E(t))$, $E_0 = 0.1$ | **−** | EUV ablation removes mass → less gravity |
-| Bubble Nebula (PAPER_221) | $(1 + E(t))$, growing | **+** | Shock compression → more gravity |
+| Pillars of Creation (PAPER_229) | $(1 - E(t))$, $E_0 = 0.1$ | **-** | EUV ablation removes mass $\to$ less gravity |
+| Bubble Nebula (PAPER_221) | $(1 + E(t))$, growing | **+** | Shock compression $\to$ more gravity |
 | Orion Nebula (PAPER_xxx) | None | N/A | Young, pre-dispersal |
 
 The sign of the erosion factor is physically determined by whether the process removes or adds mass
@@ -175,7 +175,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -225,7 +225,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.189 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -236,13 +236,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

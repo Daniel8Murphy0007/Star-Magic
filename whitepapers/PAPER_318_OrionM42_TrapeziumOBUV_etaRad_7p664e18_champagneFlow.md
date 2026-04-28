@@ -13,25 +13,25 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_318: Trapezium OB Cluster UV Radiation Dominance — Champagne Flow Condition
 **Author:** Daniel T. Murphy
 **Date:** March 2026
-## η_rad = 7.664×1018 | a_rad = 1.461×108 m/s2 | L_trap = 7.656×1031 W
+## $\eta$_rad = 7.664$\times$1018 | a_rad = 1.461$\times$108 m/s2 | L_trap = 7.656$\times$1031 W
 ### FIRST UQFF Sub-pc Compact HII Region Trapezium OB UV Radiation Dominance
 
 **Session:** 91  
 **Module:** ORION_UQFF_MODULE.cpp (33rd C++ module)  
-**System:** Orion Nebula M42/NGC 1976 — Trapezium θ1 Ori C OB cluster  
+**System:** Orion Nebula M42/NGC 1976 — Trapezium $\theta$1 Ori C OB cluster  
 **Watermark:** Copyright — Daniel T. Murphy, Session 91, March 2026  
 
 ---
 
 ## Abstract
 
-The Trapezium OB cluster (dominated by θ1 Ori C, O6V star) irradiates the Orion Nebula with a
-combined luminosity of L_trap ≈ 2×105 L_sun ≈ 7.656×1031 W. The resulting radiation pressure
-acceleration **a_rad = 1.461×108 m/s2** exceeds the gravitational acceleration by **η_rad =
-7.664×1018** — 18 orders of magnitude. This satisfies the champagne flow condition (η_rad >> 1),
+The Trapezium OB cluster (dominated by $\theta$1 Ori C, O6V star) irradiates the Orion Nebula with a
+combined luminosity of L_trap $\approx$ 2$\times$105 L_sun $\approx$ 7.656$\times$1031 W. The resulting radiation pressure
+acceleration **a_rad = 1.461$\times$108 m/s2** exceeds the gravitational acceleration by **$\eta$_rad =
+7.664$\times$1018** — 18 orders of magnitude. This satisfies the champagne flow condition ($\eta$_rad >> 1),
 confirming that ionized gas escapes the HII region freely. This is the FIRST UQFF radiation
 dominance measurement for a sub-parsec Trapezium OB-cluster-driven compact HII region, and the
-SECOND UQFF OB-cluster radiation parameter after the Lagoon Nebula Herschel 36 (η_rad = 1.53×1018,
+SECOND UQFF OB-cluster radiation parameter after the Lagoon Nebula Herschel 36 ($\eta$_rad = 1.53$\times$1018,
 PAPER_306).
 
 ---
@@ -40,12 +40,12 @@ PAPER_306).
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| L_trap | 7.656×1031 W | Trapezium cluster luminosity (2×105 L_sun) |
-| T_eff | ~39,000–45,000 K | θ1 Ori C effective temperature |
-| r | 1.18×1017 m | HII region half-span |
-| ρ_fluid | 1×10-20 kg/m3 | HII gas density |
-| c | 2.998×108 m/s | Speed of light |
-| g_base | 1.907×10-11 m/s2 | DPM-seeded self-gravity |
+| L_trap | 7.656$\times$1031 W | Trapezium cluster luminosity (2$\times$105 L_sun) |
+| T_eff | ~39,000–45,000 K | $\theta$1 Ori C effective temperature |
+| r | 1.18$\times$1017 m | HII region half-span |
+| $\rho$_fluid | 1$\times$10-20 kg/m3 | HII gas density |
+| c | 2.998$\times$108 m/s | Speed of light |
+| g_base | 1.907$\times$10-11 m/s2 | DPM-seeded self-gravity |
 
 ---
 
@@ -72,25 +72,25 @@ $$\eta_{\rm rad} = 7.664\times10^{18} \gg 1 \implies \text{ionized gas escapes f
 
 | Quantity | Value | Significance |
 |----------|-------|--------------|
-| L_trap | 7.656×1031 W | OB cluster luminosity |
-| P_rad | 1.461×10-12 Pa | Radiation pressure |
-| a_rad | **1.461×108 m/s2** | UV radiation acceleration |
-| g_base | 1.907×10-11 m/s2 | Gravitational reference |
-| η_rad | **7.664×1018** | Radiation >> gravity by 18 orders |
-| Champagne flow | PASS CONFIRMED | η_rad >> 1 → free escape |
+| L_trap | 7.656$\times$1031 W | OB cluster luminosity |
+| P_rad | 1.461$\times$10-12 Pa | Radiation pressure |
+| a_rad | **1.461$\times$108 m/s2** | UV radiation acceleration |
+| g_base | 1.907$\times$10-11 m/s2 | Gravitational reference |
+| $\eta$_rad | **7.664$\times$1018** | Radiation >> gravity by 18 orders |
+| Champagne flow | PASS CONFIRMED | $\eta$_rad >> 1 $\to$ free escape |
 
 ---
 
 ## Comparison: UQFF OB-Cluster Radiation Class
 
-| Module | Source | η_rad | Session |
+| Module | Source | $\eta$_rad | Session |
 |--------|--------|-------|---------|
-| LAGOON (PAPER_306) | Herschel 36, O7V, 1 star | 1.53×1018 | 87 |
-| **ORION (PAPER_318)** | **Trapezium OB cluster, 4+ O-stars** | **7.664×1018** | **91** |
-| NGC6302 (PAPER_312) | Post-AGB WD, T_eff=200 kK | 1.913×1020 | 89 |
+| LAGOON (PAPER_306) | Herschel 36, O7V, 1 star | 1.53$\times$1018 | 87 |
+| **ORION (PAPER_318)** | **Trapezium OB cluster, 4+ O-stars** | **7.664$\times$1018** | **91** |
+| NGC6302 (PAPER_312) | Post-AGB WD, T_eff=200 kK | 1.913$\times$1020 | 89 |
 
-Orion η_rad ≈ 5× Lagoon (higher OB cluster multiplicity, lower mass), confirming UQFF scaling: η_rad
-∝ L/M.
+Orion $\eta$_rad $\approx$ 5$\times$ Lagoon (higher OB cluster multiplicity, lower mass), confirming UQFF scaling: $\eta$_rad
+$\propto$ L/M.
 
 ---
 
@@ -98,10 +98,10 @@ Orion η_rad ≈ 5× Lagoon (higher OB cluster multiplicity, lower mass), confir
 
 The 18-order radiation dominance confirms that the Orion Nebula operates in a
 **radiation-pressure-dominated champagne flow regime** where ionized gas continuously escapes along
-the density gradient toward the observer (the "Orion face-on blister" geometry known from μas-scale
+the density gradient toward the observer (the "Orion face-on blister" geometry known from $\mu$as-scale
 VLBI). The Trapezium UV photons are the dominant driver of HII region dynamics, outpacing both
-self-gravity (by 18 orders) and the stellar wind ram pressure (a_rad/a_wind = 1.461×108/5.424×10-10
-≈ 2.7×1017).
+self-gravity (by 18 orders) and the stellar wind ram pressure (a_rad/a_wind = 1.461$\times$108/5.424$\times$10-10
+$\approx$ 2.7$\times$1017).
 
 The MHD Alfvén term in ORION_UQFF_MODULE.cpp shares the same WOLFRAM_TERM_ORION_TRAPEZIUM_RAD macro
 with the radiation term, reflecting their common OB-cluster UV energy source.
@@ -128,7 +128,7 @@ PAPER_306).*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -147,7 +147,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -255,7 +255,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.116 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -266,13 +266,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

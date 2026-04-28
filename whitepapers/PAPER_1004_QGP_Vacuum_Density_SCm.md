@@ -16,23 +16,23 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We compute the QGP vacuum density ρ_QGP(T) through SCm phonon coupling using S₂₆⁽3⁾. Below T_c =
-1.5×1012 K, confinement suppresses the QGP state; above T_c, the density follows exponential
+We compute the QGP vacuum density $\rho$_QGP(T) through SCm phonon coupling using S26(3). Below T_c =
+1.5$\times$1012 K, confinement suppresses the QGP state; above T_c, the density follows exponential
 activation with Gaussian phonon response.
 
 ## 1. Core Equation
 
-ρ_QGP(T) = ρ_SCm · S₂₆⁽3⁾ · exp(−(T_c−T)/T) · Φ(T)
+$\rho$_QGP(T) = $\rho$_SCm $\cdot$ S26(3) $\cdot$ exp(-(T_c-T)/T) $\cdot$ $\Phi$(T)
 
-where Φ(T) = S₂₆⁽3⁾ · exp(−(T−T_c)2/(2(0.1T_c)2)).
+where $\Phi$(T) = S26(3) $\cdot$ exp(-(T-T_c)2/(2(0.1T_c)2)).
 
 ## 2. Results
 
-| Temperature | ρ_QGP |
+| Temperature | $\rho$_QGP |
 |-------------|-------|
 | T = 106 K | 0 (confined) |
-| T = 2×1012 K | 1.16×10-12 kg/m3 |
-| T = 5×1012 K | ~10-15 kg/m3 |
+| T = 2$\times$1012 K | 1.16$\times$10-12 kg/m3 |
+| T = 5$\times$1012 K | ~10-15 kg/m3 |
 
 ## 3. Implementation
 
@@ -47,7 +47,7 @@ File: `scm_qgp_dynamics.py`, class `QGPVacuumDensityCalc`. CP4 class #588.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-YM-S225 -->
 
@@ -181,7 +181,7 @@ $$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i}
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ lattice resonance $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

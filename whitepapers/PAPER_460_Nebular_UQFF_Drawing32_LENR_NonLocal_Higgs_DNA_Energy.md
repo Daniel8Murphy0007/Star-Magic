@@ -22,7 +22,7 @@ coupling in UQFF
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `NebularUQFFDrawing32LENRHiggsCalculator` (#98, PAPER_460)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, n26 = 26 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, n26 = 26 —>
 ---
 
 ## Abstract
@@ -63,18 +63,18 @@ At t=0 (t_n=0): exponential factor $= e^{-\pi} = e^{-3.14159} = 0.04322$
 
 $$[SSq]^{26} e^{-\pi} = 4.50\times10^{-7} \times 0.04322 = 1.94\times10^{-8}$$
 
-**The LENR non-local correction is 1.94×10-8 at t=0** — extremely small, but it decays exponentially
+**The LENR non-local correction is 1.94$\times$10-8 at t=0** — extremely small, but it decays exponentially
 with time:
 
 At t=10 (10 reference units): $e^{-(\pi + 10)} = e^{-13.14} = 1.96\times10^{-6}$
 $$[SSq]^{26} e^{-13.14} = 4.50\times10^{-7}\times1.96\times10^{-6} = 8.82\times10^{-13}$$
 
-The term rapidly becomes negligible — it represents a **transient non-local LENR spark** at t≈0 that
+The term rapidly becomes negligible — it represents a **transient non-local LENR spark** at t$\approx$0 that
 dies exponentially.
 
 ### 2.3 UQFF Interpretation of LENR
 
-LENR reactions (e.g., Pd+D₂ fusion) are hypothesised to proceed via quantum tunnelling enhanced by lattice phonon modes. UQFF provides a **gravitational coupling mechanism**: the non-local term $[SSq]^{26}\exp(-(\pi+t))$ represents the vacuum quantum correlation length decaying as the reaction proceeds in time. The factor $\pi$ is the initial phase offset — corresponding to the 3.14159... quantum phase of the vacuum field at LENR catalyst initiation.
+LENR reactions (e.g., Pd+D2 fusion) are hypothesised to proceed via quantum tunnelling enhanced by lattice phonon modes. UQFF provides a **gravitational coupling mechanism**: the non-local term $[SSq]^{26}\exp(-(\pi+t))$ represents the vacuum quantum correlation length decaying as the reaction proceeds in time. The factor $\pi$ is the initial phase offset — corresponding to the 3.14159... quantum phase of the vacuum field at LENR catalyst initiation.
 
 This is the **first formal link between LENR catalyst dynamics and UQFF gravity** in the framework.
 
@@ -107,7 +107,7 @@ $$g_{\rm Higgs} = \frac{6.674\times10^{-11}\times 125times10^9\times1.78\times10
 
 $$= \frac{1.48\times10^{-35}}{2.50\times10^{-36}} = 5.94\ \rm m/s^2$$
 
-**Higgs-gravity at Compton scale ≈ 5.94 m/s2** — comparable to Earth's surface gravity. This is the
+**Higgs-gravity at Compton scale $\approx$ 5.94 m/s2** — comparable to Earth's surface gravity. This is the
 **gravitational equivalent of the Higgs scattering amplitude** — a new metric for Higgs-gravity
 unification.
 
@@ -126,7 +126,7 @@ Where:
 At $B_{\rm bio} = 50\ \mu$T (Earth ambient field):
 $$\omega_c = \frac{1.602\times10^{-19}\times 5times10^{-5}}{9.11\times10^{-31}} = \frac{8.01\times10^{-24}}{9.11\times10^{-31}} = 8.79\times10^6\ \rm rad/s$$
 
-Period: $T = 2\pi/\omega_c = 7.15\times10^{-7}$ s ≈ 0.7 µs (nuclear magnetic resonance regime)
+Period: $T = 2\pi/\omega_c = 7.15\times10^{-7}$ s $\approx$ 0.7 µs (nuclear magnetic resonance regime)
 
 ### 4.2 Physical Meaning
 
@@ -142,7 +142,7 @@ $$\frac{V_{\rm little}}{V_{\rm big}} = \frac{1}{33}$$
 
 This buoyancy ratio (1:33) appears in UQFF as the ratio of the LENR catalyst grain volume to the
 surrounding nebular void volume. The factor 33 corresponds to the **number of base pairs** in one
-DNA helical turn (10.4 base pairs/turn × π ≈ 33). This unexpected coincidence suggests a deep
+DNA helical turn (10.4 base pairs/turn $\times$ $\pi$ $\approx$ 33). This unexpected coincidence suggests a deep
 connection between the UQFF nebular buoyancy framework and molecular biology — which PAPER_460
 registers as a **FIRST formal observation** in UQFF.
 
@@ -152,20 +152,20 @@ registers as a **FIRST formal observation** in UQFF.
 
 | Feature | SM | UQFF PAPER_460 |
 |---------|-----|----------------|
-| LENR mechanism | Quantum tunnelling (Gamow) | Non-local [SSq]26 exp(−(π+t)) |
+| LENR mechanism | Quantum tunnelling (Gamow) | Non-local [SSq]26 exp(-($\pi$+t)) |
 | Higgs gravity | Conceptual (no formula) | g_Higgs = Gm_H/r_Compton2 = 5.94 m/s2 |
-| DNA energy | Spin Hamiltonian = −μB | E_DNA = U_m cos(ω_c t) |
+| DNA energy | Spin Hamiltonian = -$\mu$B | E_DNA = U_m cos($\omega$_c t) |
 | Buoyancy coupling | Not applicable | V_little/V_big = 1/33 |
 
 ---
 
 ## 7. Testable Predictions
 
-1. **LENR transient:** The [SSq]26 exp(−(π+t)) non-local term produces ~2×10-8 relative enhancement
+1. **LENR transient:** The [SSq]26 exp(-($\pi$+t)) non-local term produces ~2$\times$10-8 relative enhancement
 at t=0, decaying to <10-12 by t=10 reference units. In a 1 ms LENR event (t_ref = 1 ms), this would
 manifest as a 20 ppb transient gravitational anomaly detectable by atom-interferometry gravimeters.
-2. **Higgs mass measurement:** $g_{\rm Higgs} = 5.94$ m/s2 is the Higgs gravitational equivalent at Compton scale. Any future Higgs-mass precision measurement shifting 125.09 → 125.20 GeV would shift $g_{\rm Higgs}$ by 0.09% — tracking the ratio.
-3. **DNA cyclotron coupling:** E_DNA oscillates at 8.79×106 rad/s in Earth's field. EPR (Electron Paramagnetic Resonance) measurements of DNA base pairs should show a resonance at $\nu = \omega_c/2\pi = 1.4$ MHz — the electron cyclotron frequency in 50 µT. This is a **verifiable laboratory prediction**.
+2. **Higgs mass measurement:** $g_{\rm Higgs} = 5.94$ m/s2 is the Higgs gravitational equivalent at Compton scale. Any future Higgs-mass precision measurement shifting 125.09 $\to$ 125.20 GeV would shift $g_{\rm Higgs}$ by 0.09% — tracking the ratio.
+3. **DNA cyclotron coupling:** E_DNA oscillates at 8.79$\times$106 rad/s in Earth's field. EPR (Electron Paramagnetic Resonance) measurements of DNA base pairs should show a resonance at $\nu = \omega_c/2\pi = 1.4$ MHz — the electron cyclotron frequency in 50 µT. This is a **verifiable laboratory prediction**.
 
 ---
 
@@ -177,7 +177,7 @@ manifest as a 20 ppb transient gravitational anomaly detectable by atom-interfer
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -196,7 +196,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -219,7 +219,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -234,7 +234,7 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -337,7 +337,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.170 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -348,10 +348,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Nebular/Star-forming region luminosity H$\alpha$ + X-ray | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Nebular/Star-forming region

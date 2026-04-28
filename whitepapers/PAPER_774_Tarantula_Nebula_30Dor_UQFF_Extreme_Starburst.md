@@ -26,8 +26,8 @@ The Tarantula Nebula (30 Doradus, NGC 2070) in the Large Magellanic Cloud (~161,
 luminous HII region in the Local Group. Containing ~105 MM_sun of young stars including R136 (the
 densest known star cluster), it drives the most extreme stellar feedback observed in the nearby
 universe. Hubble's mosaic shows spectacular filaments, pillars, and bow shocks spanning ~300 ly.
-Under UQFF, the extreme starburst magnetic field (B ≈ 10-4 T), interaction velocity (v = 106 m/s),
-and star-formation dynamics yield g_Tarantula ≈ 1.053×10-1 m/s2 — the same class as major galaxy
+Under UQFF, the extreme starburst magnetic field (B $\approx$ 10-4 T), interaction velocity (v = 106 m/s),
+and star-formation dynamics yield g_Tarantula $\approx$ 1.053$\times$10-1 m/s2 — the same class as major galaxy
 mergers, demonstrating UQFF's convergence at extreme starburst conditions.
 
 ---
@@ -37,7 +37,7 @@ mergers, demonstrating UQFF's convergence at extreme starburst conditions.
 The Tarantula Nebula spans 1,000 ly in the LMC and would subtend 60° on the sky if placed at Orion's
 distance. R136 alone contains hundreds of massive stars with total luminosity ~107 LM_sun, including
 several stars over 200 MM_sun. The feedback from O-type stars and Wolf-Rayet stars drives strong
-turbulence and amplifies the magnetic field to ~10-4 T — 10× typical HII regions. Under UQFF, this
+turbulence and amplifies the magnetic field to ~10-4 T — 10$\times$ typical HII regions. Under UQFF, this
 B-field enhancement (starburst-induced), combined with the 106 m/s Aether coupling velocity,
 produces the same dominant term as the Antennae and Mice galaxy mergers, confirming that UQFF
 captures extreme starburst physics universally.
@@ -48,7 +48,7 @@ captures extreme starburst physics universally.
 
 $$
 \begin{aligned}
-  & g_Tarantula(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ) \\
+  & g_Tarantula(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 - E_rad) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -57,10 +57,10 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula mass | M | 105 MM_sun = 1.989×1035 kg | Hubble |
-| Nebula radius | r | 3×1017 m (~31.7 ly) | Hubble |
+| Nebula mass | M | 105 MM_sun = 1.989$\times$1035 kg | Hubble |
+| Nebula radius | r | 3$\times$1017 m (~31.7 ly) | Hubble |
 | SFR | SFR | 5 MM_sun/yr | Labs |
-| Integration time | t | 3×106 yr = 9.468×1013 s | Cluster age |
+| Integration time | t | 3$\times$106 yr = 9.468$\times$1013 s | Cluster age |
 | M_sf | — | 0.15 | UQFF bound |
 | E_rad | — | 0.20 | Extreme UV loss |
 | Redshift | z | 0.0005 (LMC) | Distance |
@@ -75,7 +75,7 @@ $$
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e35) / (3e17)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e35) / (3e17)2 \\
   & = 1.328e25 / 9e34 = 1.475e-10 m/s2
 \end{aligned}
 $$
@@ -83,7 +83,7 @@ $$
 ### Step 2: Star-Formation Mass Fraction
 $$
 \begin{aligned}
-  & M_sf = SFR × t / M₀ = 5 × 3e6 / 1e5 = 150 → UQFF bounded: M_sf = 0.15 \\
+  & M_sf = SFR \times t / M0 = 5 \times 3e6 / 1e5 = 150 \to UQFF bounded: M_sf = 0.15 \\
   & 1 + M_sf = 1.15
 \end{aligned}
 $$
@@ -100,20 +100,20 @@ $$
 $$
 \begin{aligned}
   & H(z) with z = 0.0005 (LMC): \\
-  & H(z) = 2.268e-18 × √(0.3×(1.0005)3 + 0.7) ≈ 2.268e-18 s-1 \\
-  & H(z) × t = 2.268e-18 × 9.468e13 = 2.147e-4 \\
-  & 1 + H(z) × t = 1.0002147
+  & H(z) = 2.268e-18 \times \sqrt{}(0.3\times(1.0005)3 + 0.7) \approx 2.268e-18 s-1 \\
+  & H(z) \times t = 2.268e-18 \times 9.468e13 = 2.147e-4 \\
+  & 1 + H(z) \times t = 1.0002147
 \end{aligned}
 $$
 
 ### Step 5: Aether Electromagnetic Correction (Starburst Enhanced)
 $$
 \begin{aligned}
-  & Starburst feedback amplifies B to 10-4 T (10× normal HII) \\
+  & Starburst feedback amplifies B to 10-4 T (10\times normal HII) \\
   & v = 106 m/s (turbulent starburst velocity) \\
-  & q × (v × B) = 1.602e-19 × 1e6 × 1e-4 = 1.602e-17 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1e6 \times 1e-4 = 1.602e-17 N \\
   & a = 1.602e-17 / m_p = 1.602e-17 / 1.673e-27 = 9.575e9 m/s2 \\
-  & a_EM = 9.575e9 × 11 × 1e-12 = 1.053e-1 m/s2
+  & a_EM = 9.575e9 \times 11 \times 1e-12 = 1.053e-1 m/s2
 \end{aligned}
 $$
 
@@ -125,13 +125,13 @@ $$
 ### Step 7: Final Solution
 $$
 \begin{aligned}
-  & g_Tarantula = (1.475e-10) × (1.0002147) × (1.15) × (0.80) × (1.1) + 1.053e-1 \\
-  & = 1.475e-10 × 1.0002 = 1.475e-10 \\
-  & × 1.15 = 1.696e-10 \\
-  & × 0.80 = 1.357e-10 \\
-  & × 1.1 = 1.493e-10 \\
+  & g_Tarantula = (1.475e-10) \times (1.0002147) \times (1.15) \times (0.80) \times (1.1) + 1.053e-1 \\
+  & = 1.475e-10 \times 1.0002 = 1.475e-10 \\
+  & \times 1.15 = 1.696e-10 \\
+  & \times 0.80 = 1.357e-10 \\
+  & \times 1.1 = 1.493e-10 \\
   & = 1.493e-10 + 1.053e-1 \\
-  & ≈ 1.053e-1 m/s2
+  & \approx 1.053e-1 m/s2
 \end{aligned}
 $$
 
@@ -139,11 +139,11 @@ $$
 
 ## 4. Physical Interpretation
 
-The Tarantula Nebula achieves the same UQFF result (1.053×10-1 m/s2) as galaxy-scale starbursts
+The Tarantula Nebula achieves the same UQFF result (1.053$\times$10-1 m/s2) as galaxy-scale starbursts
 (M82, Antennae, Mice). This convergence is not coincidental — UQFF demonstrates that
 starburst-enhanced B-fields (10-4 T) universally produce this scaling regardless of whether the
 starburst is in a 300-ly LMC nebula or a 100-kly galaxy. The classical gravity contribution
-(1.493×10-10 m/s2) is negligible. R136's extreme stellar feedback is the Local Group's best analog
+(1.493$\times$10-10 m/s2) is negligible. R136's extreme stellar feedback is the Local Group's best analog
 for understanding cosmological starburst merger physics.
 
 ---
@@ -152,13 +152,13 @@ for understanding cosmological starburst merger physics.
 
 - Confirms starburst B = 10-4 T as universal starburst threshold across all scales
 - Tarantula = Local Group representative for galaxy-scale merger physics
-- UQFF unifies nebular and galactic starburst at 1.053×10-1 m/s2 universal limit
+- UQFF unifies nebular and galactic starburst at 1.053$\times$10-1 m/s2 universal limit
 
 ---
 
 ## 6. Conclusions
 
-UQFF applied to the Tarantula Nebula (30 Doradus) yields g_Tarantula ≈ 1.053×10-1 m/s2, identical to
+UQFF applied to the Tarantula Nebula (30 Doradus) yields g_Tarantula $\approx$ 1.053$\times$10-1 m/s2, identical to
 galaxy merger starbursts. The starburst-amplified B-field (10-4 T) and turbulent velocity (106 m/s)
 combine to produce the universal extreme-starburst UQFF constant. This paper confirms that UQFF's
 starburst class (B = 10-4 T) applies from ~300-ly nebulae (Tarantula) to ~100-kly colliding galaxies
@@ -204,7 +204,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -223,7 +223,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -333,7 +333,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.088 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -344,13 +344,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

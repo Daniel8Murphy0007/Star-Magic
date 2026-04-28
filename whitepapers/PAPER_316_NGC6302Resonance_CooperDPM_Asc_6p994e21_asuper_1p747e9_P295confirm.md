@@ -10,7 +10,7 @@ tags: [vacuum, DPM, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_316  NGC6302 Cooper-DPM f_DPM=10 Hz Class Confirmation: A_sc=6.994×10, a_super=1.747×10?? m/s
+# PAPER_316  NGC6302 Cooper-DPM f_DPM=10 Hz Class Confirmation: A_sc=6.994$\times$10, a_super=1.747$\times$10?? m/s
 **Author:** Daniel T. Murphy
 
 **UQFF Session:** 90 | **Module:** `NGC6302_RESONANCE_UQFF_MODULE`.cpp  
@@ -23,17 +23,17 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents UQFF derivations and numerical results for: PAPER_316  NGC6302 Cooper-DPM f_DPM=10 Hz Class Confirmation: A_sc=6.994×10, a_super=1.747×10?? m/s. Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
+This paper presents UQFF derivations and numerical results for: PAPER_316  NGC6302 Cooper-DPM f_DPM=10 Hz Class Confirmation: A_sc=6.994$\times$10, a_super=1.747$\times$10?? m/s. Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## System: NGC 6302  Cooper-DPM Superconductive Scaling
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| h | 1.0546 × 10?4 Js | |
-| f_super | 1.411 × 10-6 Hz | Cooper superconductive frequency |
-| f_DPM | 1 × 10 Hz | wind-aligned DPM (1e12 class) |
-| `E_vac_ISM` | 7.09 × 10?7 J/m | ISM vacuum |
-| c | 2.998 × 108 m/s | |
+| h | 1.0546 $\times$ 10?4 Js | |
+| f_super | 1.411 $\times$ 10-6 Hz | Cooper superconductive frequency |
+| f_DPM | 1 $\times$ 10 Hz | wind-aligned DPM (1e12 class) |
+| `E_vac_ISM` | 7.09 $\times$ 10?7 J/m | ISM vacuum |
+| c | 2.998 $\times$ 108 m/s | |
 
 ---
 
@@ -55,7 +55,7 @@ $$\boxed{A_{\text{sc}} = 6.994 \times 10^{21}}$$
 
 PAPER_295 (Session 83, COMPRESSED_RESONANCE_UQFF24_MODULE) predicted:
 
-> *"A_sc(f_DPM=1×10 Hz) = 6.994×10"*
+> *"A_sc(f_DPM=1$\times$10 Hz) = 6.994$\times$10"*
 
 **NGC6302 resonance module independently derives the same value**  the first real astrophysical PN
 system operating in the f_DPM=1e12 Hz class to confirm this result.
@@ -70,14 +70,14 @@ $$\boxed{a_{\text{super}} = 1.747 \times 10^{-9}\ \text{m/s}^2}$$
 
 ## PN-Scale Resonance Hierarchy
 
-The four cascade tiers at PN scale (r = 1.42×10-6 m):
+The four cascade tiers at PN scale (r = 1.42$\times$10-6 m):
 
 | Tier | Term | Value (m/s) | Orders above a_DPM |
 |------|------|--------------|-------------------|
-| 1 (dominant) | `a_vac_diff` | ~1.811×10-7 | +48 |
-| 2 | a_super | 1.747×10?? | +22 |
-| 3 | a_THz | 2.232×10? | +10 |
-| 4 (seed) | a_DPM | 2.497×10? | 0 |
+| 1 (dominant) | `a_vac_diff` | ~1.811$\times$10-7 | +48 |
+| 2 | a_super | 1.747$\times$10?? | +22 |
+| 3 | a_THz | 2.232$\times$10? | +10 |
+| 4 (seed) | a_DPM | 2.497$\times$10? | 0 |
 
 The PN-scale hierarchy is:
 
@@ -103,10 +103,10 @@ For NGC 6302 f_DPM = 1e12 Hz (10 higher than systems-18-24 at 1e11 Hz):
 
 ## UQFF First Claims
 
-- **FIRST astrophysical PN system** confirming PAPER_295 A_sc = 6.994×10 for f_DPM = 1e12 Hz class
+- **FIRST astrophysical PN system** confirming PAPER_295 A_sc = 6.994$\times$10 for f_DPM = 1e12 Hz class
 - **FIRST identification** of a_super as second-dominant term (above THz) in extended PN resonance hierarchy
 - Confirms **f_DPM quadratic scaling law** in real bipolar nebula resonance channel
-- **38-decade resonance span**: a_vac_diff(1.811×10-7) ? a_DPM(2.497×10?)
+- **38-decade resonance span**: a_vac_diff(1.811$\times$10-7) ? a_DPM(2.497$\times$10?)
 
 
 **Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED
@@ -125,7 +125,7 @@ MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -228,7 +228,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.185 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -239,13 +239,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

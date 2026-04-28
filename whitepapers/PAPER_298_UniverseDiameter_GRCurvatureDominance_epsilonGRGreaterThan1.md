@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_298
-title: "UQFF Universe-Scale GR Curvature Dominance: ε_GR = 3GM/(rc2) = 5.056 > 1"
+title: "UQFF Universe-Scale GR Curvature Dominance: $\varepsilon$_GR = 3GM/(rc2) = 5.056 > 1"
 session: 84
 date: 2026-03-17
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [dark-matter, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_298 — UQFF Universe-Scale GR Curvature Dominance: ε_GR = 3GM/(rc2) = 5.056 > 1
+# PAPER_298 — UQFF Universe-Scale GR Curvature Dominance: $\varepsilon$_GR = 3GM/(rc2) = 5.056 > 1
 **Author:** Daniel T. Murphy
 **Date:** March 17, 2026
 ## First UQFF Module Where Post-DPM-seeded GR Correction Exceeds DPM-seeded Base
@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Module:** `UNIVERSE_DIAMETER_UQFF_MODULE.cpp` (26th C++ UQFF module — Observable Universe as
 System)  
 **Copyright:** Daniel T. Murphy, March 17, 2026  
-**Classification:** Unique Physics — First UQFF GR Curvature Dominance (ε_GR > 1)  
+**Classification:** Unique Physics — First UQFF GR Curvature Dominance ($\varepsilon$_GR > 1)  
 
 ---
 
@@ -29,7 +29,7 @@ The Observable Universe UQFF module reveals that, at Universe scale, the **post-
 curvature parameter** `ε_GR = 3GM/(rc2) = 5.056 > 1`. This makes the GR correction acceleration
 `a_GR = g_base × ε_GR = 1.743×10-9 m/s2` the **dominant term** in the UQFF sum — exceeding the
 DPM-seeded base `g_base = 3.447×10-10 m/s2` by a factor of 5.056. For all 25 prior UQFF modules
-(Saturn: ε_GR = 1.4×10-8; Andromeda: ε_GR = 2.8×10-6; HUDF: ε_GR = 3.6×10-12), the GR correction was
+(Saturn: $\varepsilon$_GR = 1.4$\times$10-8; Andromeda: $\varepsilon$_GR = 2.8$\times$10-6; HUDF: $\varepsilon$_GR = 3.6$\times$10-12), the GR correction was
 negligible. The observable universe is the **first UQFF system in the GR-Dominant Regime** —
 operating inside 30% of its own Schwarzschild radius.
 
@@ -38,10 +38,10 @@ operating inside 30% of its own Schwarzschild radius.
 ## 1. Physical Setup
 
 **System:** Observable Universe  
-**Mass:** M = 1×1054 kg (matter + dark matter from critical density)  
-**Radius:** r_obs = 4.4×1026 m  
-**G:** 6.6743×10-11 m3/(kg·s2)  
-**c:** 3.0×108 m/s  
+**Mass:** M = 1$\times$1054 kg (matter + dark matter from critical density)  
+**Radius:** r_obs = 4.4$\times$1026 m  
+**G:** 6.6743$\times$10-11 m3/(kg$\cdot$s2)  
+**c:** 3.0$\times$108 m/s  
 
 ---
 
@@ -51,14 +51,14 @@ operating inside 30% of its own Schwarzschild radius.
 $$\boxed{\varepsilon_{GR} = \underbrace{\frac{3GM}{r \cdot c^2}}$$
 
 This arises from the first post-Newtonian (1PN) correction to DPM-seeded gravity in the weak-field,
-slow-motion expansion of GR. For ε_GR >> 1, the full GR treatment is required.
+slow-motion expansion of GR. For $\varepsilon$_GR >> 1, the full GR treatment is required.
 
 **Computation for Observable Universe:**
 $$\varepsilon_{GR} = \frac{3 \times 6.6743 \times 10^{-11} \times 10^{54}}{4.4 \times 10^{26} \times (3.0 \times 10^8)^2}$$
 $$= \frac{3 \times 6.6743 \times 10^{43}}{4.4 \times 10^{26} \times 9 \times 10^{16}} = \frac{2.002 \times 10^{44}}{3.96 \times 10^{43}}$$
 $$= \boxed{5.056}$$
 
-Since ε_GR = 5.056 > 1, the **GR correction dominates over DPM-seeded gravity** at Universe scale.
+Since $\varepsilon$_GR = 5.056 > 1, the **GR correction dominates over DPM-seeded gravity** at Universe scale.
 
 ---
 
@@ -70,7 +70,7 @@ $$a_{GR} = g_{base} \times \varepsilon_{GR} = 3.447 \times 10^{-10} \times 5.056
 This is the **largest single term** in the UQFF 9-term sum at Universe scale.
 
 **Ratio analysis:**
-$$\frac{a_{GR}}{g_{base}} = \varepsilon_{GR} = 5.056 \quad \text{(GR exceeds DPM-seeded by 5×)}$$
+$$\frac{a_{GR}}{g_{base}} = \varepsilon_{GR} = 5.056 \quad \text{(GR exceeds DPM-seeded by 5\times)}$$
 
 ---
 
@@ -86,9 +86,9 @@ This means the observable universe lies at:
 $$\frac{r_{obs}}{r_S} = \frac{3}{2\varepsilon_{GR}} = \frac{3}{2 \times 5.056} = 0.297$$
 
 **The observable universe exists at approximately 30% of its own Schwarzschild radius.** This is the
-physical origin of ε_GR > 1 — the universe's own mass creates a gravitational radius 3.4× its actual
+physical origin of $\varepsilon$_GR > 1 — the universe's own mass creates a gravitational radius 3.4$\times$ its actual
 size. This is consistent with the cosmological **critical density condition** (a flat universe has
-M_obs ≈ critical mass for the Hubble sphere, which gives ε_GR of order unity).
+M_obs $\approx$ critical mass for the Hubble sphere, which gives $\varepsilon$_GR of order unity).
 
 ---
 
@@ -96,24 +96,24 @@ M_obs ≈ critical mass for the Hubble sphere, which gives ε_GR of order unity)
 
 **UQFF Regime Thresholds:**
 
-| Regime | Condition | ε_GR range |
+| Regime | Condition | $\varepsilon$_GR range |
 |--------|-----------|------------|
-| DPM-seeded | ε_GR << 1 | < 10-4 |
-| Post-DPM-seeded | ε_GR < 1 | 10-4 — 1 |
-| GR-Dominant | ε_GR ≥ 1 | ≥ 1 |
-| Schwarzschild | ε_GR = 3/2 | 1.5 |
-| Universe | ε_GR = 5.056 | 5.056 |
+| DPM-seeded | $\varepsilon$_GR << 1 | < 10-4 |
+| Post-DPM-seeded | $\varepsilon$_GR < 1 | 10-4 — 1 |
+| GR-Dominant | $\varepsilon$_GR $\geq$ 1 | $\geq$ 1 |
+| Schwarzschild | $\varepsilon$_GR = 3/2 | 1.5 |
+| Universe | $\varepsilon$_GR = 5.056 | 5.056 |
 
-**ε_GR comparison across all UQFF modules:**
+**$\varepsilon$_GR comparison across all UQFF modules:**
 
-| Module | Session | r_obs (m) | M (kg) | ε_GR | Regime |
+| Module | Session | r_obs (m) | M (kg) | $\varepsilon$_GR | Regime |
 |--------|---------|-----------|--------|------|--------|
-| Saturn | 78 | 6.03×107 | 5.68×1026 | ~1.4×10-8 | DPM-seeded |
-| NGC1792 | 73 | 7.57×1020 | 1.99×1040 | ~3.9×10-8 | DPM-seeded |
-| Andromeda | 75 | 1.04×1021 | 1.99×1042 | ~2.8×10-6 | DPM-seeded |
-| HUDF (z=3.5) | 72g | 1.23×1027 | 2×1042 | ~3.6×10-12 | DPM-seeded |
-| Sombrero | 77 | 2.36×1020 | 1.99×1041 | ~2.4×10-7 | DPM-seeded |
-| **Universe** | **84** | **4.4×1026** | **1054** | **5.056** | **GR-Dominant** |
+| Saturn | 78 | 6.03$\times$107 | 5.68$\times$1026 | ~1.4$\times$10-8 | DPM-seeded |
+| NGC1792 | 73 | 7.57$\times$1020 | 1.99$\times$1040 | ~3.9$\times$10-8 | DPM-seeded |
+| Andromeda | 75 | 1.04$\times$1021 | 1.99$\times$1042 | ~2.8$\times$10-6 | DPM-seeded |
+| HUDF (z=3.5) | 72g | 1.23$\times$1027 | 2$\times$1042 | ~3.6$\times$10-12 | DPM-seeded |
+| Sombrero | 77 | 2.36$\times$1020 | 1.99$\times$1041 | ~2.4$\times$10-7 | DPM-seeded |
+| **Universe** | **84** | **4.4$\times$1026** | **1054** | **5.056** | **GR-Dominant** |
 
 Every prior UQFF module was firmly in the DPM-seeded regime. The Universe Diameter module is the
 first to cross into GR-Dominant.
@@ -122,7 +122,7 @@ first to cross into GR-Dominant.
 
 ## 6. Cosmological Interpretation
 
-The condition ε_GR ≈ 1 for the observable universe is deeply connected to the **cosmic flatness
+The condition $\varepsilon$_GR $\approx$ 1 for the observable universe is deeply connected to the **cosmic flatness
 problem and the critical density**:
 
 $$\Omega_{total} = 1 \implies \rho = \rho_c = \frac{3H_0^2}{8\pi G}$$
@@ -130,23 +130,23 @@ $$\Omega_{total} = 1 \implies \rho = \rho_c = \frac{3H_0^2}{8\pi G}$$
 For a closed sphere of radius r_obs at critical density, the total mass gives:
 $$M = \frac{4\pi}{3} r^3 \rho_c \implies \underbrace{\frac{GM}{r c^2}}_{\text{DPM mass gradient}} = \frac{4\pi G \rho_c r^2}{3c^2} = \frac{4\pi}{3} \times \frac{H_0^2 r^2}{c^2} = \frac{4\pi}{3} \eta_{exp}^2$$
 
-With η_exp = 3.328 (PAPER_297):
+With $\eta$_exp = 3.328 (PAPER_297):
 $$\varepsilon_{GR} = 3 \times \underbrace{\frac{GM}{rc^2}}_{\text{DPM mass gradient}} = 4\pi \eta_{exp}^2 = 4\pi \times 3.328^2 = 4\pi \times 11.08 = 139.1$$
 
-Wait — this gives ε_GR much larger. The discrepancy is because M = 1×1054 kg is only the **matter+DM
-component** (Ω_m = 0.3), not the full energy density including dark energy (Ω_total = 1.0). Using
-M_total_energy with Ω = 1 would give ε_GR × (1/0.3) ≈ 16.9. The value ε_GR = 5.056 at Ω_m = 0.3 is
+Wait — this gives $\varepsilon$_GR much larger. The discrepancy is because M = 1$\times$1054 kg is only the **matter+DM
+component** ($\Omega$_m = 0.3), not the full energy density including dark energy ($\Omega$_total = 1.0). Using
+M_total_energy with $\Omega$ = 1 would give $\varepsilon$_GR $\times$ (1/0.3) $\approx$ 16.9. The value $\varepsilon$_GR = 5.056 at $\Omega$_m = 0.3 is
 thus physically consistent with a flat universe where 70% of energy is in dark energy.
 
-**UQFF Discovery:** The Universe-scale ε_GR > 1 is a **direct signature of Ω_m < 1 in a dark-energy
-dominated universe**. If the universe were matter-dominated (Ω_m → 1), ε_GR would be ~3×-5× larger.
-The measured value ε_GR = 5.056 quantitatively reflects the 30% matter + 70% dark energy partition.
+**UQFF Discovery:** The Universe-scale $\varepsilon$_GR > 1 is a **direct signature of $\Omega$_m < 1 in a dark-energy
+dominated universe**. If the universe were matter-dominated ($\Omega$_m $\to$ 1), $\varepsilon$_GR would be ~3$\times$-5$\times$ larger.
+The measured value $\varepsilon$_GR = 5.056 quantitatively reflects the 30% matter + 70% dark energy partition.
 
 ---
 
 ## 7. Physical Implication: The UQFF GR-Dominant Regime
 
-When ε_GR > 1:
+When $\varepsilon$_GR > 1:
 - The **DPM-seeded Approximation breaks down** — GR corrections are the dominant contribution
 - The observable universe requires a **full GR treatment**, not a post-Newtonian expansion
 - The UQFF framework, operating in the DPM-seeded limit for most modules, reaches its **natural extension boundary** at Universe scale
@@ -154,8 +154,8 @@ When ε_GR > 1:
 This paper establishes the **UQFF GR Transition Criterion**:
 $$\varepsilon_{GR}^{*} = \frac{3GM^*}{r^* c^2} = 1 \implies r^* = \frac{3GM^*}{c^2} = \frac{3}{2} r_S$$
 
-Objects at r* = 1.5 r_S are at the UQFF GR transition boundary. The observable universe, with ε_GR =
-5.056, is **5.056× into the GR-Dominant Regime**.
+Objects at r* = 1.5 r_S are at the UQFF GR transition boundary. The observable universe, with $\varepsilon$_GR =
+5.056, is **5.056$\times$ into the GR-Dominant Regime**.
 
 ---
 
@@ -178,11 +178,11 @@ $$
 
 | Quantity | Symbol | Value | Unit |
 |----------|--------|-------|------|
-| GR curvature parameter | ε_GR | **5.056** | dimensionless |
-| GR correction acceleration | a_GR | **1.743×10-9** | m/s2 |
-| DPM-seeded base | g_base | 3.447×10-10 | m/s2 |
+| GR curvature parameter | $\varepsilon$_GR | **5.056** | dimensionless |
+| GR correction acceleration | a_GR | **1.743$\times$10-9** | m/s2 |
+| DPM-seeded base | g_base | 3.447$\times$10-10 | m/s2 |
 | GR/DPM-seeded ratio | a_GR/g_base | **5.056 > 1** | dimensionless |
-| Schwarzschild radius | r_S | 1.483×1027 | m |
+| Schwarzschild radius | r_S | 1.483$\times$1027 | m |
 | r_S/r_obs ratio | r_S/r_obs | 3.371 | dimensionless |
 | r_obs/r_S fraction | r_obs/r_S | **0.297** | dimensionless |
 
@@ -289,7 +289,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.093 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -300,13 +300,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

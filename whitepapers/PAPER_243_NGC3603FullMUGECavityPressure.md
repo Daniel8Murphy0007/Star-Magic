@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_243
-title: "NGC 3603 Full MUGE: Time-Varying Mass M(t) and Additive Cavity Pressure P(t)/ρ"
+title: "NGC 3603 Full MUGE: Time-Varying Mass M(t) and Additive Cavity Pressure P(t)/$\rho$"
 session: 60
 date: 2025-10-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [cluster, MUGE, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_243 — NGC 3603 Full MUGE: Time-Varying Mass M(t) and Additive Cavity Pressure P(t)/ρ
+# PAPER_243 — NGC 3603 Full MUGE: Time-Varying Mass M(t) and Additive Cavity Pressure P(t)/$\rho$
 **Date:** October 2025
 ## NGC 3603 Extreme Young Star Cluster — Complete 10-Term Master Universal Gravity Equation
 
@@ -21,7 +21,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Version:** 1.0 | **Session:** 60 | **PAPER Number:** 243
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
@@ -100,8 +100,8 @@ $$g_{\rm NGC3603}(r,t) = T_1 + T_2 + T_3 + T_4 + T_q + T_{\rm fl} + T_{\rm osc} 
 **Term 1 — Base with M(t), Hubble, magnetic:**
 $$T_1 = \frac{GM(t)}{r^2}(1 + H_0\,t)(1 - B/B_{\rm crit})$$
 
-*Note: Unlike class 88 which applies $(1-P)$ here, the full MUGE leaves T₁ unmodified and*
-*adds P explicitly as T₁₀.*
+*Note: Unlike class 88 which applies $(1-P)$ here, the full MUGE leaves T1 unmodified and*
+*adds P explicitly as T10.*
 
 **Term 2 — UQFF unified field:**
 $$T_2 = (U_{g1}(t) + U_{g4}(t))(1 + f_{TRZ}), \quad U_{gk}(t) \propto M(t)/r^2$$
@@ -139,7 +139,7 @@ $$T_{\rm pressure} = \frac{P_0\,e^{-t/\tau_{\rm exp}}}{\rho_{\rm fluid}}$$
 | Mass | Fixed $M$ | $M(t) = M_0(1 + \dot{M}e^{-t/\tau})$ |
 | Pressure form | Multiplicative $(1-P(t))$ modifier | Additive $P(t)/\rho_{\rm fluid}$ term |
 | Physics | UV/wind pressure suppresses gravity | Cavity pressure drives independent acc. |
-| Terms | 4 (base, Ug, Λ, wind) | 10 (all MUGE terms) |
+| Terms | 4 (base, Ug, $\Lambda$, wind) | 10 (all MUGE terms) |
 | Quantum term | Not present | $T_q$ present |
 | Fluid term | Not present | $T_{\rm fl}$ present |
 | 2-mode oscillation | Not present | Standing + traveling wave |
@@ -155,7 +155,7 @@ $$P(t) \approx P_0 \Rightarrow T_{\rm pressure} \approx P_0/\rho_{\rm fl}$$
 For Class 88, the $(1-P)$ effect on $T_1$:
 $$\Delta T_1 = -T_1^{\rm Class88} \cdot P \approx -\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} P$$
 
-The two are **equivalent only in the limit** where $P_0/\rho_{\rm fl} = (μ_s∇(M_s/r)) P$, i.e., when
+The two are **equivalent only in the limit** where $P_0/\rho_{\rm fl} = (\mu_s\nabla(M_s/r)) P$, i.e., when
 $P_0 = GM\rho_{\rm fl}/r^2$. At default values of NGC 3603, this equality does not hold —
 the additive and multiplicative forms predict **different total $g$** and different dispersal
 timescales.
@@ -218,7 +218,7 @@ within $\sim3,\rm Myr$ (Harayama et al. 2008; Pang et al. 2013).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -237,7 +237,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -329,7 +329,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -379,7 +379,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -390,13 +390,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

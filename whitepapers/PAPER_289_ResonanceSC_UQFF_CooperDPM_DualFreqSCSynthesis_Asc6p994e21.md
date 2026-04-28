@@ -1,7 +1,7 @@
 ﻿---
 paper_id: PAPER_289
-title: "Cooper-DPM Dual-Frequency SC Synthesis — ħ×f_super×f_DPM Triple-Mode Quantum Product (A_sc =
-6.994×1021)"
+title: "Cooper-DPM Dual-Frequency SC Synthesis — ħ$\times$f_super$\times$f_DPM Triple-Mode Quantum Product (A_sc =
+6.994$\times$1021)"
 session: 81
 date: 2026-03-17
 author: "Daniel T. Murphy"
@@ -11,7 +11,7 @@ tags: [DPM, vacuum, SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_289: Cooper-DPM Dual-Frequency SC Synthesis — ħ×f_super×f_DPM Triple-Mode Quantum Product (A_sc = 6.994×1021)
+# PAPER_289: Cooper-DPM Dual-Frequency SC Synthesis — ħ$\times$f_super$\times$f_DPM Triple-Mode Quantum Product (A_sc = 6.994$\times$1021)
 
 **Series:** UQFF Resonance-Superconductive Framework  
 **Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module — FIRST universal RSC module)
@@ -25,11 +25,11 @@ SCm=1-B/B_crit->0 at B->B_crit`
 
 ## Abstract
 
-This paper presents UQFF derivations and numerical results for: PAPER_289: Cooper-DPM Dual-Frequency SC Synthesis — ħ×f_super×f_DPM Triple-Mode Quantum Product (A_sc = 6.994×1021). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
+This paper presents UQFF derivations and numerical results for: PAPER_289: Cooper-DPM Dual-Frequency SC Synthesis — ħ$\times$f_super$\times$f_DPM Triple-Mode Quantum Product (A_sc = 6.994$\times$1021). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## 1. Discovery Statement
 
-The UQFF SC-frequency term couples **Cooper pair quantum energy** (ħ × f_super) to DPM resonance
+The UQFF SC-frequency term couples **Cooper pair quantum energy** (ħ $\times$ f_super) to DPM resonance
 through the plasmotic vacuum, creating a **triple-mode quantum product**:
 
 $$a_\text{sc\_freq} = \frac{\hbar \cdot f_\text{super} \cdot f_\text{DPM} \cdot a_\text{DPM}}{E_\text{vac} \cdot c}$$
@@ -42,7 +42,7 @@ The **full UQFF Resonance-SC** corrects all resonance modes by the Meissner fact
 
 $$g_\text{res\_sc}(t, B) = a_\text{res\_total} \cdot \underbrace{\left(1 - \frac{B}{B_\text{crit}}\right)}_\text{SCm} \cdot (1 + f_\text{TRZ})$$
 
-At **B → B_crit**: SCm → 0 — the **UQFF Resonance-Channel Meissner Gravity Quench**.
+At **B $\to$ B_crit**: SCm $\to$ 0 — the **UQFF Resonance-Channel Meissner Gravity Quench**.
 
 This is the **first UQFF module** applying the Meissner quench to a *pure resonance channel*
 (previous PAPER_266 HUDF applied it to the full gravity sum of a galactic module).
@@ -68,9 +68,9 @@ $$A_\text{sc} = \frac{E_\text{Cooper} \cdot f_\text{DPM}}{E_\text{vac} \cdot c}
 $$\boxed{A_\text{sc} = \frac{1.488\times10^{-6}}{2.127\times10^{-28}} = 6.994\times10^{21}}$$
 
 The three coupled modes are:
-1. **Cooper pair** at f_super = 1.411×1016 Hz (UV-energy superconductor frequency)
-2. **DPM resonance** at f_DPM = 1×1012 Hz (THz plasma dipole mode)
-3. **Plasmotic vacuum** E_vac = 7.09×10-36 J/m3 (vacuum energy normalization)
+1. **Cooper pair** at f_super = 1.411$\times$1016 Hz (UV-energy superconductor frequency)
+2. **DPM resonance** at f_DPM = 1$\times$1012 Hz (THz plasma dipole mode)
+3. **Plasmotic vacuum** E_vac = 7.09$\times$10-36 J/m3 (vacuum energy normalization)
 
 ### 2.3 SC Frequency Acceleration
 
@@ -90,16 +90,16 @@ $$\text{SCm} = 1 - \frac{B}{B_\text{crit}}$$
 
 | B (T) | B/B_crit | SCm | `g_res_sc` / a_res |
 |--------|----------|-----|-----------------|
-| 1×10-5 (ISM) | 1×10-16 | ≈1.0 | 1.10 |
-| 1×107 (neutron star crust) | 1×10-4 | 0.9999 | 1.10 |
-| 5×1010 (near magnetar) | 0.5 | 0.5 | 0.55 |
-| 9×1010 | 0.9 | 0.1 | 0.11 |
-| 1×1011 = B_crit | 1.0 | 0.0 | **0** (quench) |
+| 1$\times$10-5 (ISM) | 1$\times$10-16 | $\approx$1.0 | 1.10 |
+| 1$\times$107 (neutron star crust) | 1$\times$10-4 | 0.9999 | 1.10 |
+| 5$\times$1010 (near magnetar) | 0.5 | 0.5 | 0.55 |
+| 9$\times$1010 | 0.9 | 0.1 | 0.11 |
+| 1$\times$1011 = B_crit | 1.0 | 0.0 | **0** (quench) |
 
 ### 3.2 Time-Reversal Amplification
 
 At all fields, the (1 + f_TRZ) = 1.1 factor (f_TRZ = 0.1) adds a 10% time-reversal enhancement.
-At B = 0: g_res_sc = 1.1 × a_res_total (maximum resonance contribution).
+At B = 0: g_res_sc = 1.1 $\times$ a_res_total (maximum resonance contribution).
 
 ### 3.3 Resonance-Channel Meissner Quench
 
@@ -114,20 +114,20 @@ The UQFF Resonance-Channel Meissner Quench differs from PAPER_266 (HUDF galactic
 | Novel aspect | First galactic SC quench | First **resonance-specific** SC quench |
 
 The RSC module demonstrates that the Meissner quench acts *selectively* on resonance channels —
-a clear prediction: in magnetar environments where B ≈ B_crit, the resonance-SC gravity contribution
-is completely suppressed while non-resonant gravitational terms (DPM-seeded, Λ) remain unaffected.
+a clear prediction: in magnetar environments where B $\approx$ B_crit, the resonance-SC gravity contribution
+is completely suppressed while non-resonant gravitational terms (DPM-seeded, $\Lambda$) remain unaffected.
 
 ---
 
 ## 4. Triple-Mode Coupling Interpretation
 
-The product ħ × f_super × f_DPM represents **sum-frequency generation in the quantum vacuum**:
+The product ħ $\times$ f_super $\times$ f_DPM represents **sum-frequency generation in the quantum vacuum**:
 
-- ħ × f_super = Cooper pair energy quantum (UV regime, 9.29 eV)
-- ħ × f_DPM = DPM energy quantum = 1.0546×10-34 × 1012 = 1.055×10-22 J = 6.6×10-4 eV (far-IR)
-- Product: ħ2 × f_super × f_DPM = two-photon energy product (UV × THz)
+- ħ $\times$ f_super = Cooper pair energy quantum (UV regime, 9.29 eV)
+- ħ $\times$ f_DPM = DPM energy quantum = 1.0546$\times$10-34 $\times$ 1012 = 1.055$\times$10-22 J = 6.6$\times$10-4 eV (far-IR)
+- Product: ħ2 $\times$ f_super $\times$ f_DPM = two-photon energy product (UV $\times$ THz)
 
-Normalizing by E_vac × c gives the gravity acceleration coupling rate — the UQFF vacuum acts as
+Normalizing by E_vac $\times$ c gives the gravity acceleration coupling rate — the UQFF vacuum acts as
 the **phase-matching medium** for this UV-THz parametric interaction.
 
 This is analogous to parametric downconversion in nonlinear optics, but in the UQFF gravitational
@@ -140,13 +140,13 @@ to produce a gravitational acceleration signature.
 
 | Quantity | Symbol | Value |
 |----------|--------|-------|
-| Cooper pair energy | E_Cooper = ħ×f_super | 1.488×10-18 J (9.29 eV) |
-| SC amplification | A_sc | 6.994×1021 |
-| SC frequency term | `a_sc_freq` | 2.479×104 m/s2 |
-| DPM seed | a_DPM | 3.545×10-18 m/s2 |
+| Cooper pair energy | E_Cooper = ħ$\times$f_super | 1.488$\times$10-18 J (9.29 eV) |
+| SC amplification | A_sc | 6.994$\times$1021 |
+| SC frequency term | `a_sc_freq` | 2.479$\times$104 m/s2 |
+| DPM seed | a_DPM | 3.545$\times$10-18 m/s2 |
 | Meissner quench field | B_crit | 1011 T |
 | TRZ enhancement | (1+f_TRZ) | 1.1 |
-| Full factor (B≈0) | A_sc×(1+f_TRZ) | 7.693×1021 |
+| Full factor (B$\approx$0) | A_sc$\times$(1+f_TRZ) | 7.693$\times$1021 |
 
 ---
 
@@ -165,7 +165,7 @@ A_sc = 6.994e21, E_Cooper = 1.488e-18 J, parametric vacuum coupling
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -184,7 +184,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -259,7 +259,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.080 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -270,13 +270,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

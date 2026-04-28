@@ -46,9 +46,9 @@ From Document 23 of grok_share_7514fe:
 
 $$
 \begin{aligned}
-  & g_M16(r, t) = (G·M(t))/r2 · (1+H(z)·t) · (1-B/B_crit) · (1+M_sf(t)) \\
+  & g_M16(r, t) = (G\cdotM(t))/r2 \cdot (1+H(z)\cdott) \cdot (1-B/B_crit) \cdot (1+M_sf(t)) \\
   & + (Ug1 + Ug2 + Ug3 + Ug4) \\
-  & + ?c2/3 + QM + q(v×B) + fluid + DM \\
+  & + ?c2/3 + QM + q(v\timesB) + fluid + DM \\
   & - E_rad
 \end{aligned}
 $$
@@ -65,11 +65,11 @@ an ADDITIVE SUBTRACTION from the total sum.
 M_sf(t) is the fractional stellar mass growth rate:
 
 $$
-M_sf(t) = SFR(t) / M_total(t) · t_dyn
+M_sf(t) = SFR(t) / M_total(t) \cdot t_dyn
 $$
 
 where:
-- SFR(t) ˜ 2×10?3 M?/yr (M16 active star formation)
+- SFR(t) ˜ 2$\times$10?3 M?/yr (M16 active star formation)
 - M_total ˜ 2000 M? (NGC 6611 open cluster)
 - t_dyn ˜ 10 Myr (dynamical crossing time)
 
@@ -98,17 +98,17 @@ The distinction is fundamental:
 The radiation energy density at radius r from a UV source of luminosity L_UV:
 
 $$
-E_rad = L_UV / (4p·r2·c)   [J/m3 = Pa]
+E_rad = L_UV / (4p\cdotr2\cdotc)   [J/m3 = Pa]
 $$
 
 This equals the radiation pressure at r. For M16:
-- L_UV ˜ 1.5×1031 W (OB stars in NGC 6611)
-- r ˜ 5.4×1016 m (5.7 light-years, typical EGG pillar depth)
+- L_UV ˜ 1.5$\times$1031 W (OB stars in NGC 6611)
+- r ˜ 5.4$\times$1016 m (5.7 light-years, typical EGG pillar depth)
 
 $$
 \begin{aligned}
-  & E_rad = 1.5×1031 / (4p · (5.4×1016)2 · 2.998×108) \\
-  & ˜ 2.71×10?22 J/m3
+  & E_rad = 1.5\times1031 / (4p \cdot (5.4\times1016)2 \cdot 2.998\times108) \\
+  & ˜ 2.71\times10?22 J/m3
 \end{aligned}
 $$
 
@@ -116,16 +116,16 @@ $$
 
 $$
 \begin{aligned}
-  & g_M16 = g_base · (1+M_sf) - E_rad \\
-  & g_base = G·M/r2 · (1+H(z)·t) · (1-B/B_crit) \\
-  & ˜ 6.67e-11 · 2.19e33 / (5.4e16)2 · 1.000072 · 0.9999977 \\
-  & ˜ 5.00×10-5° m/s2 \\
-  & g_M16 = 5.00×10-5° · 1.08 - 2.71×10?22 \\
-  & ˜ 5.40×10-5° - 2.71×10?22 m/s2
+  & g_M16 = g_base \cdot (1+M_sf) - E_rad \\
+  & g_base = G\cdotM/r2 \cdot (1+H(z)\cdott) \cdot (1-B/B_crit) \\
+  & ˜ 6.67e-11 \cdot 2.19e33 / (5.4e16)2 \cdot 1.000072 \cdot 0.9999977 \\
+  & ˜ 5.00\times10-5° m/s2 \\
+  & g_M16 = 5.00\times10-5° \cdot 1.08 - 2.71\times10?22 \\
+  & ˜ 5.40\times10-5° - 2.71\times10?22 m/s2
 \end{aligned}
 $$
 
-**Note:** At the pillar tip scale (r ˜ 5.4×1016 m), E_rad >> g_base by ~28 orders of magnitude. This
+**Note:** At the pillar tip scale (r ˜ 5.4$\times$1016 m), E_rad >> g_base by ~28 orders of magnitude. This
 means radiation pressure UTTERLY DOMINATES the gravitational term at the pillar tip scale —
 consistent with photoevaporation of the EGGs (Evaporating Gaseous Globules) observed by the Hubble
 Space Telescope.
@@ -144,8 +144,8 @@ $$
 The condition for photoevaporation threshold:
 $$
 \begin{aligned}
-  & E_rad / g_base = L_UV · r2 / (4p·c · G·M·r2/(G·M)) \\
-  & = L_UV / (4p·c·G·M/(r·something))
+  & E_rad / g_base = L_UV \cdot r2 / (4p\cdotc \cdot G\cdotM\cdotr2/(G\cdotM)) \\
+  & = L_UV / (4p\cdotc\cdotG\cdotM/(r\cdotsomething))
 \end{aligned}
 $$
 
@@ -153,8 +153,8 @@ Simplifying: the radius where E_rad = g_base defines the **photoevaporation radi
 
 $$
 \begin{aligned}
-  & r_photev = v(L_UV · r2 / (4p·c·(G·M/r2))) ... \\
-  & ? E_rad = G·M/r2 when r2 ˜ L_UV/(4p·c·G·M/r)
+  & r_photev = v(L_UV \cdot r2 / (4p\cdotc\cdot(G\cdotM/r2))) ... \\
+  & ? E_rad = G\cdotM/r2 when r2 ˜ L_UV/(4p\cdotc\cdotG\cdotM/r)
 \end{aligned}
 $$
 
@@ -170,8 +170,8 @@ Within M16, the Pillars of Creation are a SUB-STRUCTURE. Their UQFF equation (Do
 
 $$
 \begin{aligned}
-  & g_Pillars = (G·M)/r2 · (1+H(z)·t) · (1-B/B_crit) · (1-E(t)) \\
-  & + UQFF terms + ?·v_wind2
+  & g_Pillars = (G\cdotM)/r2 \cdot (1+H(z)\cdott) \cdot (1-B/B_crit) \cdot (1-E(t)) \\
+  & + UQFF terms + ?\cdotv_wind2
 \end{aligned}
 $$
 
@@ -337,7 +337,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.096 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -348,13 +348,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

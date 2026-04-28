@@ -20,7 +20,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Domain:** 1.3 — Gravitational Waves: Extended Waveform & Multi-Band  
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 **Primary Validation File:** validate_pta_uqff.py  
 **C++ Sources:** source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp  
 
@@ -30,18 +30,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 Pulsar Timing Arrays (PTAs) — NANOGrav (15-year dataset), PPTA DR3, EPTA DR2, and CPTA — have
 collectively detected a stochastic gravitational wave background (SGWB) with characteristic strain
-amplitude A ~ 2.4 x 10^{-}1^5 at reference frequency f = 1/yr (31.7 nHz) and spectral index α ≈
+amplitude A ~ 2.4 x 10^{-}1^5 at reference frequency f = 1/yr (31.7 nHz) and spectral index $\alpha$ $\approx$
 -2/3. Standard General Relativity (GR), using realistic supermassive black hole (SMBH) merger rates
 from galaxy merger catalogues, systematically underpredicts this amplitude (A_GR,std ~ 1.5 x
 10^{-}1^5) or requires extreme source population assumptions (e.g., anomalously high SMBH masses or
 eccentricities) to match observations. The Unified Quantum Field Framework (UQFF) provides a natural
 resolution: at nHz frequencies, the Topological Resonance Zone (TRZ) vacuum mechanism undergoes a
 resonance inversion, switching from damping (D_TRZ < 1 in the LIGO Hz band) to amplification (D_TRZ
-> 1 below ~1 µHz (~1000 nHz)). Combined with negligible String sector coupling at nHz (D_String ≈
+> 1 below ~1 µHz (~1000 nHz)). Combined with negligible String sector coupling at nHz (D_String $\approx$
 1.0) and inactive Superconducting Manifold contributions for SMBH systems (D_SCm = 1.0), the total
 UQFF factor at f = 1/yr is D_total = 1.60, yielding **A_UQFF = 2.4 x 10^{-}1^5** from standard SMBH
 merger rates — precisely matching PTA observations without exotic physics. The calibration constants
-κ = 0.0005/day and [SSq] = 0.57 (validated in Papers #1-#18 of this series) uniquely determine this
+$\kappa$ = 0.0005/day and [SSq] = 0.57 (validated in Papers #1-#18 of this series) uniquely determine this
 amplification factor. The Hellings-Downs angular correlation pattern is preserved under UQFF since
 the modification is amplitude-only and polarisation-preserving.
 
@@ -56,20 +56,20 @@ antennas. A low-frequency gravitational wave background imprints a correlated si
 timing residuals of widely separated pulsars, characterized by the Hellings-Downs angular
 correlation curve:
 
-**Γ(ζ) = (3/2) x (ln x - 1/6) + (1/2)**
+**$\Gamma$($\zeta$) = (3/2) x (ln x - 1/6) + (1/2)**
 
-where x = (1 - cos ζ)/2 and ζ is the angular separation between pulsar pairs (Hellings & Downs 1983;
-self-overlap term at ζ = 0 not shown).
+where x = (1 - cos $\zeta$)/2 and $\zeta$ is the angular separation between pulsar pairs (Hellings & Downs 1983;
+self-overlap term at $\zeta$ = 0 not shown).
 
 Four independent PTA collaborations have now reported evidence for this correlated signal:
 
 | Collaboration | Dataset | Year | Significance | A at f_yr |
 |---------------|---------|------|-------------|-----------|
-| NANOGrav | 12.5-year | 2020 | ~3σ (common-spectrum) | ~1.9 x 10^{-}1^5 |
-| NANOGrav | 15-year | 2023 | ~4σ HD correlation | 2.4 x 10^{-}1^5 |
-| PPTA | DR3 | 2023 | ~3σ | 2.2 x 10^{-}1^5 |
-| EPTA | DR2 | 2023 | ~3σ | 2.5 x 10^{-}1^5 |
-| CPTA | First | 2023 | ~4σ | 2.0 x 10^{-}1^5 |
+| NANOGrav | 12.5-year | 2020 | ~3$\sigma$ (common-spectrum) | ~1.9 x 10^{-}1^5 |
+| NANOGrav | 15-year | 2023 | ~4$\sigma$ HD correlation | 2.4 x 10^{-}1^5 |
+| PPTA | DR3 | 2023 | ~3$\sigma$ | 2.2 x 10^{-}1^5 |
+| EPTA | DR2 | 2023 | ~3$\sigma$ | 2.5 x 10^{-}1^5 |
+| CPTA | First | 2023 | ~4$\sigma$ | 2.0 x 10^{-}1^5 |
 
 The remarkable consistency across independent instruments (different pulsar sets, different
 telescope facilities, different analysis pipelines) establishes the SGWB signal robustly. The
@@ -80,12 +80,12 @@ dominant source is almost certainly a population of inspiralling SMBH binaries i
 The SGWB from a population of circular SMBH binaries in GR follows a power-law characteristic strain
 spectrum:
 
-**h_c(f) = A x (f / f_yr)^α**
+**h_c(f) = A x (f / f_yr)^$\alpha$**
 
-with α = -2/3 for circular binaries driven by GW emission (Peters 1964). The amplitude A integrates
+with $\alpha$ = -2/3 for circular binaries driven by GW emission (Peters 1964). The amplitude A integrates
 contributions from all SMBH binaries across cosmic history:
 
-with α = -2/3 for circular binaries driven by GW emission (Peters 1964). The amplitude A integrates
+with $\alpha$ = -2/3 for circular binaries driven by GW emission (Peters 1964). The amplitude A integrates
 contributions from all SMBH binaries across cosmic history:
 
 $$h_c(f) = A\,\left(\frac{f}{f_{yr}}\right)^{-2/3}$$
@@ -112,7 +112,7 @@ one or more of:
 worse)
 4. New physics beyond standard GR
 
-The tension Δ = A_obs / A_GR,std ≈ 1.6 represents a **60% amplitude excess** requiring explanation.
+The tension $\Delta$ = A_obs / A_GR,std $\approx$ 1.6 represents a **60% amplitude excess** requiring explanation.
 
 ### 1.3 UQFF Solution Overview
 
@@ -143,17 +143,17 @@ Each component has distinct frequency dependence:
 
 **Aether Damping:**
 
-**D_Aether(f, r) = exp[-κ_Aether(f) (r / c)]**
+**D_Aether(f, r) = exp[-$\kappa$_Aether(f) (r / c)]**
 
 where r is the propagation distance and (r / c) is the corresponding light-travel time expressed in
-days. κ_Aether(f) is an **effective Aether coupling coefficient** for gravitational waves (distinct
-from the global TRZ calibration κ = 0.0005 day^{-}1 quoted above) and is strongly
+days. $\kappa$_Aether(f) is an **effective Aether coupling coefficient** for gravitational waves (distinct
+from the global TRZ calibration $\kappa$ = 0.0005 day^{-}1 quoted above) and is strongly
 frequency-suppressed in the PTA band.
 
-For cosmological SMBH sources in the PTA band (f ~ 1/yr, r ~ 1-10 Gpc), we have κ_Aether(f_PTA) <<
+For cosmological SMBH sources in the PTA band (f ~ 1/yr, r ~ 1-10 Gpc), we have $\kappa$_Aether(f_PTA) <<
 10^{-}1^5 day^{-}1, so:
 
-**κ_Aether(f_PTA) (r / c) << 1 => D_Aether(f_PTA, r) ≈ 1.0** over these distances
+**$\kappa$_Aether(f_PTA) (r / c) << 1 => D_Aether(f_PTA, r) $\approx$ 1.0** over these distances
 
 Aether damping is therefore negligible for nHz gravitational waves from cosmological sources.
 **Superconducting Manifold (SCm):**
@@ -173,8 +173,8 @@ binaries:
 where [SSq] = 0.57 and p_String ~ 2. At nHz frequencies, (f / 1 kHz) ~ 3 x 10^{-}1^4, making
 D_String indistinguishable from unity:
 
-**D_String(31.7 nHz) ≈ 1.000000** (string coupling negligible at f << Hz). The later BNS damping
-table value **D_String ≈ 0.37 at 100 Hz** is instead taken from the calibrated, matter-enhanced
+**D_String(31.7 nHz) $\approx$ 1.000000** (string coupling negligible at f << Hz). The later BNS damping
+table value **D_String $\approx$ 0.37 at 100 Hz** is instead taken from the calibrated, matter-enhanced
 String damping model developed in PAPER_009 and should not be interpreted as following from the
 simple vacuum scaling above.
 
@@ -186,7 +186,7 @@ This is the dominant frequency-dependent effect in the nHz band. See Section 2.2
 
 In the LIGO band (10-300 Hz), the TRZ mechanism acts as a damper. The quantum vacuum topological
 defects (domain walls, cosmic string networks at Planck scale) dissipate GW energy when the GW
-wavelength matches the TRZ coherence length λ_TRZ ~ c/f_res with f_res ~ 100 Hz.
+wavelength matches the TRZ coherence length $\lambda$_TRZ ~ c/f_res with f_res ~ 100 Hz.
 
 At sub-µHz frequencies, the GW wavelength far exceeds the TRZ coherence scale. In this
 long-wavelength regime, the TRZ coupling inverts: rather than absorbing energy from the GW field,
@@ -194,26 +194,26 @@ the TRZ vacuum acts as a coherent amplifier. This is the **TRZ resonance inversi
 
 The UQFF TRZ factor transitions from damping to amplification according to:
 
-**D_TRZ(f) = 1 + [SSq] x Φ_TRZ(f)**
+**D_TRZ(f) = 1 + [SSq] x $\Phi$_TRZ(f)**
 
-where Φ_TRZ(f) is the UQFF vacuum inversion functional, computed from the SOURCE27 and SOURCE28
-namespaces in `MAIN_1_CoAnQi.cpp`. At LIGO frequencies Φ_TRZ < 0 (damping), at nHz frequencies Φ_TRZ
+where $\Phi$_TRZ(f) is the UQFF vacuum inversion functional, computed from the SOURCE27 and SOURCE28
+namespaces in `MAIN_1_CoAnQi.cpp`. At LIGO frequencies $\Phi$_TRZ < 0 (damping), at nHz frequencies $\Phi$_TRZ
 > 0 (amplification).
 
 The inversion threshold occurs near f_inv ~ 1 µHz. For f < f_inv:
 
-**Φ_TRZ(f) > 0** -> **D_TRZ > 1** (amplification)
+**$\Phi$_TRZ(f) > 0** -> **D_TRZ > 1** (amplification)
 
 The amplification factor grows as frequency decreases below f_inv. At the PTA reference frequency
 f_yr = 31.7 nHz:
 
-**Φ_TRZ(31.7 nHz) = 1.053** (computed from UQFF vacuum structure)
+**$\Phi$_TRZ(31.7 nHz) = 1.053** (computed from UQFF vacuum structure)
 
 **D_TRZ(31.7 nHz) = 1 + 0.57 x 1.053 = 1 + 0.600 = 1.60**
 
 At lower frequencies, the inversion is stronger:
 
-| Frequency | Regime | Φ_TRZ | D_TRZ | Physical effect |
+| Frequency | Regime | $\Phi$_TRZ | D_TRZ | Physical effect |
 |-----------|--------|-------|-------|-----------------|
 | 10 nHz | PTA nHz | 1.404 | 1.80 | Strong amplification |
 | 31.7 nHz (f_yr) | PTA nHz | 1.053 | 1.60 | Moderate amplification |
@@ -248,30 +248,30 @@ Combining all four UQFF contributions at the PTA reference frequency:
 | 100 Hz (BBH) | 1.000 | N/A | 0.900 | 1.000 | 0.900 | -10% amplitude |
 
 **Key result:** UQFF predicts opposite effects at LIGO frequencies (damping, D < 1) and PTA
-frequencies (amplification, D > 1), unified under the same κ and [SSq] calibration constants.
+frequencies (amplification, D > 1), unified under the same $\kappa$ and [SSq] calibration constants.
 
 ---
 
 ## 3. SGWB Spectrum
 
-### 3.1 Power-Law Spectrum: h_c(f) = A (f/f_yr)^α
+### 3.1 Power-Law Spectrum: h_c(f) = A (f/f_yr)^$\alpha$
 
 The characteristic strain spectrum of the SGWB is parameterized as:
 
-**h_c(f) = A x (f / f_yr)^α**
+**h_c(f) = A x (f / f_yr)^$\alpha$**
 
 where:
 - A = amplitude at f_yr = 1/yr = 31.7 nHz
-- α = spectral index
+- $\alpha$ = spectral index
 - f_yr = 3.17 x 10^{-}8 Hz
 
 For circular SMBH binaries driven purely by GW emission:
 
-**α = -2/3** (GR prediction, Peters 1964)
+**$\alpha$ = -2/3** (GR prediction, Peters 1964)
 
 This corresponds to a gravitational wave energy density power spectral density:
 
-**Ω_GW(f) = (2π^2/3H_0^2) f^3 h_c^2(f) ~  f^(2/3)**
+**$\Omega$_GW(f) = (2$\pi$^2/3H_0^2) f^3 h_c^2(f) ~  f^(2/3)**
 
 The power-law shape is well-motivated by the flat merger rate per logarithmic frequency interval for
 GW-driven inspiral.
@@ -295,33 +295,33 @@ Since D_total(f_yr) = 1.60, the SGWB amplitude scales as:
 
 **A_UQFF = 1.60 x 1.5 x 10^{-}1^5 = 2.4 x 10^{-}1^5**
 
-This matches the NANOGrav 15-year measurement (A = 2.4⁺^0*^7₋_0._6 x 10^{-}1^5, Agazie et al. 2023)
+This matches the NANOGrav 15-year measurement (A = 2.4+^0*^7₋_0._6 x 10^{-}1^5, Agazie et al. 2023)
 using entirely standard SMBH merger rates — no extreme source populations required.
 
 ### 3.3 Spectral Index Predictions (UQFF vs GR)
 
 The UQFF spectral index receives a frequency-dependent correction from the TRZ amplification:
 
-**h_c,UQFF(f) = D_TRZ(f) x A_GR,std x (f / f_yr)^α_GR**
+**h_c,UQFF(f) = D_TRZ(f) x A_GR,std x (f / f_yr)^$\alpha$_GR**
 
 Since D_TRZ(f) has non-trivial frequency dependence in the nHz band, the effective measured spectral
 index deviates from the GR value:
 
-**α_eff = α_GR + Δα(f)**
+**$\alpha$_eff = $\alpha$_GR + $\Delta$$\alpha$(f)**
 
-where Δα represents the contribution of d ln D_TRZ / d ln f. Numerically, between 10 nHz and 100
+where $\Delta$$\alpha$ represents the contribution of d ln D_TRZ / d ln f. Numerically, between 10 nHz and 100
 nHz:
 
-**Δα ≈ -0.09** (D_TRZ larger at lower f -> h_c boosted more at low f -> steeper negative slope)
+**$\Delta$$\alpha$ $\approx$ -0.09** (D_TRZ larger at lower f -> h_c boosted more at low f -> steeper negative slope)
 
-| Model | Spectral index α | α_eff at PTA band |
+| Model | Spectral index $\alpha$ | $\alpha$_eff at PTA band |
 |-------|-----------------|-------------------|
 | GR (circular, GW-driven) | -2/3 = -0.667 | -0.667 |
 | GR (with eccentricity corrections) | -0.5 to -0.7 | -0.5 to -0.7 |
 | UQFF | -0.667 (intrinsic) | -0.757 (measured, with TRZ tilt) |
-| PTA observations (NANOGrav 15yr) | -0.5 to -0.7 | -0.6 ± 0.1 |
+| PTA observations (NANOGrav 15yr) | -0.5 to -0.7 | -0.6 $\pm$ 0.1 |
 
-**UQFF prediction:** α_eff ≈ -0.76, steeper than GR, within the broad PTA measurement uncertainties.
+**UQFF prediction:** $\alpha$_eff $\approx$ -0.76, steeper than GR, within the broad PTA measurement uncertainties.
 
 ### 3.4 Hellings-Downs Correlation Preservation
 
@@ -329,7 +329,7 @@ The Hellings-Downs (HD) pattern is the angular correlation of timing residuals b
 It arises from the quadrupolar nature of GW radiation, which is a geometric property of the metric
 perturbation:
 
-**Γ_HD(ζ) = (3/2)x(ln x - 1/6) + (1/2)** where x = (1 - cos ζ)/2
+**$\Gamma$_HD($\zeta$) = (3/2)x(ln x - 1/6) + (1/2)** where x = (1 - cos $\zeta$)/2
 
 UQFF modifies the *amplitude* of each Fourier mode of h(t,f) via D_total(f), but does not alter:
 1. The **polarization content** (still +/x tensor modes only)
@@ -338,7 +338,7 @@ UQFF modifies the *amplitude* of each Fourier mode of h(t,f) via D_total(f), but
 
 Therefore:
 
-**Γ_UQFF(ζ) = Γ_HD(ζ)** (Hellings-Downs pattern unchanged)
+**$\Gamma$_UQFF($\zeta$) = $\Gamma$_HD($\zeta$)** (Hellings-Downs pattern unchanged)
 
 This is a critical consistency check: UQFF does not predict deviations from the HD correlation
 shape. Any future detection of non-HD correlations (e.g., monopolar or dipolar) would be evidence
@@ -358,7 +358,7 @@ UQFF uses the same SMBH binary population as standard GR analyses:
 | Primary mass function dN/d log M | M^(-0.3) (Aller & Richstone 2002) | SDSS/2dF surveys |
 | Galaxy merger rate R(z) | 0.02 Gpc^{-}3 yr^{-}1 (z=0) | IllustrisTNG |
 | Redshift evolution | R(z) ~  (1+z)^2.7 | Conselice et al. 2014 |
-| Mass ratio distribution | Uniform in q ∈ [0.1, 1.0] | -- |
+| Mass ratio distribution | Uniform in q $\in$ [0.1, 1.0] | -- |
 | Coalescence fraction | f_coal = 0.5 (binary stalling) | Begelman et al. 1980 |
 
 Standard GR amplitude from this population: **A_GR,std = 1.5 x 10^{-}1^5** (in agreement with Sesana
@@ -369,7 +369,7 @@ Standard GR amplitude from this population: **A_GR,std = 1.5 x 10^{-}1^5** (in a
 In UQFF, the effective chirp mass entering the GW strain formula receives a correction from the TRZ
 amplification. At nHz frequencies, the UQFF-modified single-binary strain is:
 
-**h_UQFF = D_TRZ x (4/D_L) x (Gℳ/c^2)^(5/3) x (πf)^(2/3) / c**
+**h_UQFF = D_TRZ x (4/D_L) x (Gℳ/c^2)^(5/3) x ($\pi$f)^(2/3) / c**
 
 The chirp mass ℳ itself is unchanged (it is a mass, not a propagation quantity). The **effective**
 chirp mass when fitting GR templates to UQFF data would be:
@@ -390,11 +390,11 @@ With the 1.32x chirp-mass inflation factor, the effective coalescence barrier ma
 the fraction of binaries whose GW emission falls in the NANOGrav band. The UQFF-corrected population
 estimate:
 
-**N_UQFF = N_GR x (M_lim / M_lim,UQFF)^(-1.2) ≈ N_GR / 1.32^1.2 ≈ 0.78 x N_GR**
+**N_UQFF = N_GR x (M_lim / M_lim,UQFF)^(-1.2) $\approx$ N_GR / 1.32^1.2 $\approx$ 0.78 x N_GR**
 
 UQFF predicts **22% fewer** individual SMBHB sources contributing to the PTA band, partially
-counteracted by the D_TRZ = 1.60 amplification per binary. Net effect: amplitude A_UQFF ≈ 1.60 x
-(0.78)^(1/2) x A_GR ≈ 1.41 x A_GR. This matches the NANOGrav 15-year best-fit amplitude A_yr^{-}1 =
+counteracted by the D_TRZ = 1.60 amplification per binary. Net effect: amplitude A_UQFF $\approx$ 1.60 x
+(0.78)^(1/2) x A_GR $\approx$ 1.41 x A_GR. This matches the NANOGrav 15-year best-fit amplitude A_yr^{-}1 =
 2.4 x 10^{-}1^5 (vs A_GR,std = 1.5 x 10^{-}1^5 before UQFF correction).
 
 ---
@@ -402,12 +402,12 @@ counteracted by the D_TRZ = 1.60 amplification per binary. Net effect: amplitude
 ## 5. Conclusion
 
 UQFF predicts TRZ field amplification (D_TRZ > 1) at nHz PTA frequencies due to constructive vacuum
-resonance below the TRZ inversion threshold (~1 μHz). For a 1-yr^{-}1 reference frequency (31.7
+resonance below the TRZ inversion threshold (~1 $\mu$Hz). For a 1-yr^{-}1 reference frequency (31.7
 nHz), D_TRZ = 1.60, yielding a GW background amplitude enhancement factor of 1.60 and an effective
 chirp mass inflation of 1.32x. These corrections naturally explain: (1) the NANOGrav 15-year signal
 amplitude excess over standard GR SMBHB predictions, (2) the apparent SMBH mass overestimate in PTA
-analyses vs stellar kinematics, and (3) the spectral slope α slightly steeper than -2/3. The
-universal calibration constants κ = 0.0005/day and [SSq] = 0.57 fix all predictions without free
+analyses vs stellar kinematics, and (3) the spectral slope $\alpha$ slightly steeper than -2/3. The
+universal calibration constants $\kappa$ = 0.0005/day and [SSq] = 0.57 fix all predictions without free
 parameters — the TRZ inversion scale follows analytically from these two values. SKA-PTA
 observations across 2025-2035 will measure the spectral slope and amplitude with sufficient
 precision to confirm or rule out the TRZ amplification regime.
@@ -446,12 +446,12 @@ resolving the "final parsec problem" tension.
 
 Complete comparison of UQFF predictions against all four PTA datasets:
 
-| Dataset | A_obs (x10^{-}1^5) | A_UQFF (x10^{-}1^5) | α_obs | α_UQFF | HD pattern | Match |
+| Dataset | A_obs (x10^{-}1^5) | A_UQFF (x10^{-}1^5) | $\alpha$_obs | $\alpha$_UQFF | HD pattern | Match |
 |---------|----------------|-----------------|-------|--------|------------|-------|
-| NANOGrav 15yr | 2.4 ± 0.7 | 2.4 | -0.60 ± 0.10 | -0.58 | Confirmed | ✅ |
-| PPTA DR3 | 2.2 ± 0.9 | 2.4 | -0.55 ± 0.15 | -0.58 | Confirmed | ✅ |
-| EPTA DR2 | 2.5 ± 0.7 | 2.4 | -0.65 ± 0.10 | -0.58 | Confirmed | ✅ |
-| CPTA | 2.0 ± 0.9 | 2.4 | -0.50 ± 0.20 | -0.58 | Confirmed | ✅ |
+| NANOGrav 15yr | 2.4 $\pm$ 0.7 | 2.4 | -0.60 $\pm$ 0.10 | -0.58 | Confirmed | ✅ |
+| PPTA DR3 | 2.2 $\pm$ 0.9 | 2.4 | -0.55 $\pm$ 0.15 | -0.58 | Confirmed | ✅ |
+| EPTA DR2 | 2.5 $\pm$ 0.7 | 2.4 | -0.65 $\pm$ 0.10 | -0.58 | Confirmed | ✅ |
+| CPTA | 2.0 $\pm$ 0.9 | 2.4 | -0.50 $\pm$ 0.20 | -0.58 | Confirmed | ✅ |
 | GR (standard SMBH) | -- | 1.5 | -- | -0.667 | -- | ❌ (-38%) |
 | GR (extreme pop.) | -- | 2.4 | -- | -0.667 | -- | ⚠️ (requires M > 10^9 `M_M_sun`) |
 
@@ -464,8 +464,8 @@ Complete comparison of UQFF predictions against all four PTA datasets:
 | EPTA DR2 | 2.5-100 nHz | 8 |
 | CPTA | 3.3-160 nHz | 6 |
 
-UQFF predictions (using D_total(f) from Section 2) agree with all PTA measurements at the 1σ level.
-Standard GR disagrees at ~2σ for NANOGrav 15yr and EPTA DR2.
+UQFF predictions (using D_total(f) from Section 2) agree with all PTA measurements at the 1$\sigma$ level.
+Standard GR disagrees at ~2$\sigma$ for NANOGrav 15yr and EPTA DR2.
 
 ---
 
@@ -476,7 +476,7 @@ Standard GR disagrees at ~2σ for NANOGrav 15yr and EPTA DR2.
 The most massive, nearest SMBH binaries stand above the SGWB as individually resolved continuous GW
 sources (CGWs). The number of resolvable sources scales as:
 
-**N_CGW ~  A^2 / Ω_noise**
+**N_CGW ~  A^2 / $\Omega$_noise**
 
 Since UQFF predicts A = 2.4 x 10^{-}1^5 (same as observed), the resolvability threshold is:
 
@@ -489,7 +489,7 @@ If a CGW is detected, the UQFF signature is:
 **h_UQFF = 1.60 x h_GR (at f_yr)**
 
 GR analysis of a CGW signal will overestimate the chirp mass by factor 1.32 (since ℳ_eff = 1.32 x
-ℳ_true, and noting that 1.32^(5/3) ≈ 1.60 recovers the observed strain excess), providing a direct
+ℳ_true, and noting that 1.32^(5/3) $\approx$ 1.60 recovers the observed strain excess), providing a direct
 test of UQFF via cross-check with host galaxy SMBH mass estimates.
 
 ### 6.2 Anisotropy Predictions
@@ -497,7 +497,7 @@ test of UQFF via cross-check with host galaxy SMBH mass estimates.
 The SGWB has angular anisotropy from large-scale clustering of SMBH hosts. The angular power
 spectrum C_l satisfies:
 
-**C_l = (Ω_GW)^2 x b_GW^2 x P_matter(k_l) / D_A^2**
+**C_l = ($\Omega$_GW)^2 x b_GW^2 x P_matter(k_l) / D_A^2**
 
 where b_GW is the GW source bias factor and D_A is the comoving angular diameter distance.
 
@@ -551,13 +551,13 @@ is a direct, falsifiable UQFF prediction.
 Standard GR treats gravitational waves as propagating freely through vacuum. Any modification of the
 observed amplitude must come from the *source* population. To explain A_obs = 2.4 x 10^{-}1^5 in GR:
 
-- **Option 1 (More mass):** SMBH masses must be ~32% higher than optical estimates -> inconsistent with M-σ relation measurements
+- **Option 1 (More mass):** SMBH masses must be ~32% higher than optical estimates -> inconsistent with M-$\sigma$ relation measurements
 - **Option 2 (More binaries):** Galaxy merger rates must be higher -> inconsistent with direct merger counts from HST/JWST
 - **Option 3 (Eccentricity):** High eccentricity redistributes GW power toward higher frequencies -> actually *reduces* amplitude at f_yr
 - **Option 4 (No stalling):** All SMBH binaries coalesce -> f_coal = 1, inconsistent with observed dual AGN populations at sub-parsec separations
 
 UQFF requires no adjustment to the source population. The TRZ amplification factor D_TRZ = 1.60 at
-f_yr arises from the same vacuum structure calibrated on LIGO data (Papers #1-#18). The *same* κ and
+f_yr arises from the same vacuum structure calibrated on LIGO data (Papers #1-#18). The *same* $\kappa$ and
 [SSq] that predict BNS damping at 100 Hz predict SMBH amplification at 31.7 nHz.
 
 This cross-band consistency is a crucial strength: **UQFF is not a free parameter fit to PTA data**.
@@ -570,7 +570,7 @@ If UQFF is correct, the inference of SMBH population properties from PTA data mu
 
 1. **True SMBH masses are 24% lower** than GR-inferred: ℳ_true = ℳ_eff / 1.32 (since ℳ_eff = 1.32 x
 ℳ_true implies ℳ_true is 24% lower than ℳ_eff)
-2. **Binary number density is 2.56x lower** than GR-inferred: ρ_bin,true = ρ_bin,GR / 2.56
+2. **Binary number density is 2.56x lower** than GR-inferred: $\rho$_bin,true = $\rho$_bin,GR / 2.56
 3. **Merger rates are consistent** with galaxy merger counts at z ~ 0.3-1.0
 
 This removes the tension between electromagnetic SMBH mass estimates and PTA-based inferences, which
@@ -600,7 +600,7 @@ dominated by TRZ amplification, with negligible contributions from Aether, SCm, 
 components at nHz.
 
 3. **A_UQFF = 2.4 x 10^{-}1^5:** Using standard SMBH merger rates and the LIGO-calibrated constants
-κ = 0.0005/day and [SSq] = 0.57, UQFF predicts the observed PTA amplitude as a zero-free-parameter
+$\kappa$ = 0.0005/day and [SSq] = 0.57, UQFF predicts the observed PTA amplitude as a zero-free-parameter
 result.
 
 4. **Hellings-Downs correlation preserved:** UQFF modifies amplitude only; the quadrupolar angular
@@ -692,7 +692,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.058 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -703,13 +703,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
@@ -775,7 +775,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -794,7 +794,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -839,7 +839,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Constant | Symbol | Value | Validation Domain |
 |----------|--------|-------|-------------------|
-| UQFF damping rate | κ | 0.0005 day^{-}1 | Magnetar spin-down, BNS, BBH |
+| UQFF damping rate | $\kappa$ | 0.0005 day^{-}1 | Magnetar spin-down, BNS, BBH |
 | String sector factor | [SSq] | 0.57 | BH dynamics, nuclear binding, nHz TRZ |
 | TRZ inversion threshold | f_inv | ~1 µHz | PTA-LISA transition band |
 | D_total at f_yr | D_total(31.7 nHz) | 1.60 | NANOGrav, PPTA, EPTA, CPTA |
@@ -851,7 +851,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 **Domain:** 1.3 — Gravitational Waves: Extended Waveform & Multi-Band  
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
-**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration Constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 **Primary Validation File:** validate_pta_uqff.py  
 **C++ Sources:** source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp
 
@@ -867,14 +867,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60-0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60-0.61 | Buoyancy coupling coefficient |
 | k_1 | 1.5 | Ug1 DPM-dipole coupling |
 | k_2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k_3 | 1.8 | Ug3 string-rotation coupling |
 | k_4 | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10^{-}2^2 | Inertia tensor scale |
+| $\eta$ | 10^{-}2^2 | Inertia tensor scale |
 | E_react(0) | 10^{4}6 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -889,10 +889,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| -Σλᵢ*Uᵢ*E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i*Ui*E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ_1=10^{-}1^0, λ_2=10^{-}1^2, λ_3=10^{-}1^1, λ_4=10^{-}1^3 (free parameters, not yet empirically
+$\lambda$_1=10^{-}1^0, $\lambda$_2=10^{-}1^2, $\lambda$_3=10^{-}1^1, $\lambda$_4=10^{-}1^3 (free parameters, not yet empirically
 calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
@@ -901,9 +901,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
+| $\rho$_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434*365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434*365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -911,7 +911,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i x Ubi | Expanding nebulae, stellar winds |
+| **Buoyant** | $\beta$_i x Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um x (1+10^{1}3*f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and

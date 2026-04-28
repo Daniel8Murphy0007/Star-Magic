@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 the ECFA Higgs Factory Program
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **arXiv Reference:** 2506.15390 (ECFA Higgs factory study, e?e? colliders)  
 **Supporting Data:** 2506.15256 (Belle II |V_cb|, LFU ratio), 2506.15347 (LFV limits)  
@@ -34,14 +34,14 @@ The ECFA Higgs factory study (arXiv:2506.15390) outlines precision measurements 
 colliders (FCC-ee, CEPC, ILC) that are directly relevant to resolving long-standing B-physics flavor
 anomalies: R(D), R(D*), anomalous magnetic moment deviations, and lepton universality violations.
 The Unified Quantum Field Framework (UQFF) provides a unified resolution mechanism through its SCm
-(superconducting manifold) flavor mixing term [SCm]_flavor = |V_cb| = 1.536×10?, which sources all
-generation-mixing phenomena. Using the Belle II measurement |V_cb| = (39.2 × 0.9)10?
-(arXiv:2506.15256) and the measured LFU ratio R(De?/D?) = 1.020 × 0.03, the UQFF [SCm]_flavor term
+(superconducting manifold) flavor mixing term [SCm]_flavor = |V_cb| = 1.536$\times$10?, which sources all
+generation-mixing phenomena. Using the Belle II measurement |V_cb| = (39.2 $\times$ 0.9)10?
+(arXiv:2506.15256) and the measured LFU ratio R(De?/D?) = 1.020 $\times$ 0.03, the UQFF [SCm]_flavor term
 predicts a 2% universal enhancement of t/ cross-sections at FCC-ee Tera-Z running, resolvable at the
 10s level with 10 Z bosons. The R(D*) anomaly is reduced from its 3.3s tension to 1.2s tension under
 UQFF [SCm] vacuum corrections.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -56,9 +56,9 @@ have persisted at the 24s level across multiple experiments for over a decade:
 
 | Anomaly | Observable | SM Prediction | Measurement | Tension |
 |---------|-----------|---------------|-------------|---------|
-| R(D) | BR(B?Dt?)/BR(B?Dl?) | 0.298 × 0.004 | 0.356 × 0.029 | ~1.9s |
-| R(D*) | BR(B?D*t?)/BR(B?D*l?) | 0.254 × 0.005 | 0.291 × 0.019 | ~3.3s |
-| LFU(V_cb) | BR(B?De?)/BR(B?D?) | 1.000 | 1.020 × 0.030 | ~0.7s |
+| R(D) | BR(B?Dt?)/BR(B?Dl?) | 0.298 $\times$ 0.004 | 0.356 $\times$ 0.029 | ~1.9s |
+| R(D*) | BR(B?D*t?)/BR(B?D*l?) | 0.254 $\times$ 0.005 | 0.291 $\times$ 0.019 | ~3.3s |
+| LFU(V_cb) | BR(B?De?)/BR(B?D?) | 1.000 | 1.020 $\times$ 0.030 | ~0.7s |
 
 These anomalies collectively suggest non-universal couplings to t versus e/  the defining signature
 of models with enhanced third-generation interactions: leptoquarks, W' bosons, 2HDMs with type-X
@@ -75,7 +75,7 @@ operating at multiple center-of-mass energies:
 | 240 GeV | e?e? ? ZH | ~0.2 pb | 106 Higgs events |
 | 365 GeV | e?e? ? tt | ~0.5 pb | 106 tt events |
 
-At Tera-Z, FCC-ee will produce 3×10 Z?bb decays, ~5×10 Z?t+t? decays, providing an unparalleled
+At Tera-Z, FCC-ee will produce 3$\times$10 Z?bb decays, ~5$\times$10 Z?t+t? decays, providing an unparalleled
 dataset for testing lepton universality in Z decays at the 10-5 level.
 
 ---
@@ -93,7 +93,7 @@ This term enters the Ug2 (charge-reactivity) component:
 
 $$U_{g2}(r, t) = \frac{k_2 \cdot \rho_{\rm react}(r)}{r^2} \cdot [SCm]_{\rm flavor} \cdot e^{-\kappa t}$$
 
-where κ = 0.0005/day is the UQFF temporal decay constant. The [SCm]_flavor term acts as a vacuum
+where $\kappa$ = 0.0005/day is the UQFF temporal decay constant. The [SCm]_flavor term acts as a vacuum
 dielectric constant for flavor-changing processes  it quantifies how strongly the vacuum "mixes"
 fermionic generations.
 
@@ -112,7 +112,7 @@ $$R(D)_{\rm UQFF} = 0.298 \times (1 + 1.000 \times 0.940 \times 1.536 \times 10^
 Re-expressing: the [SCm]_flavor  d_{t/} correction is:
 $$\Delta R(D) = R(D)_{\rm SM} \times [SCm]_{\rm flavor} \times \delta_{\tau/\mu} \times \xi$$
 
-where ? = 1/(1.536×10?)  [SCm]_mixing brings the ratio up. More precisely, the UQFF correction
+where ? = 1/(1.536$\times$10?)  [SCm]_mixing brings the ratio up. More precisely, the UQFF correction
 factor to R(D) is:
 
 $$R(D)_{\rm UQFF} = R(D)_{\rm SM} \cdot (1 + [SSq] \cdot \delta_{\tau/\mu}) = 0.298 \times (1 + 0.57 \times 0.940) = 0.298 \times 1.536 = 0.458$$
@@ -125,7 +125,7 @@ where C_{t/} = (m_t/m_b)  (1.777/4.18) = 0.1806 is the kinematic suppression. Th
 
 $$R(D)_{\rm UQFF} = \frac{0.298}{1 - 1.536 \times 10^{-3} \times 0.1806 \times K_{\rm UQFF}}$$
 
-with K_UQFF = [SSq]/[SCm]_flavor = 0.57 / 1.536×10? = 371:
+with K_UQFF = [SSq]/[SCm]_flavor = 0.57 / 1.536$\times$10? = 371:
 
 $$R(D)_{\rm UQFF} = \frac{0.298}{1 - 0.1806 \times 0.57} = \frac{0.298}{1 - 0.1030} = \frac{0.298}{0.897} = 0.332$$
 
@@ -154,21 +154,21 @@ $$R(\tau/\mu)^Z = \frac{\Gamma(Z \to \tau^+\tau^-)}{\Gamma(Z \to \mu^+\mu^-)}$$
 is predicted in the SM to be exactly 1.000 (massless leptons). UQFF predicts a correction:
 $$\Delta R^{\rm UQFF}_{\tau/\mu} = [SCm]_{\rm flavor} \times \frac{m_\tau^2}{m_Z^2} = 1.536 \times 10^{-3} \times \frac{(1.777)^2}{(91.19)^2} = 1.536 \times 10^{-3} \times 3.80 \times 10^{-4} = 5.8 \times 10^{-7}$$
 
-This correction is **below** SM electroweak radiative corrections (~2×10-4), so UQFF adds a tiny but
+This correction is **below** SM electroweak radiative corrections (~2$\times$10-4), so UQFF adds a tiny but
 calculable additional shift. The FCC-ee sensitivity at Tera-Z will reach d(R_t/) ~ 10?5, making this
 a precision test of the UQFF [SCm] framework at the 10-7 level.
 
 ### 3.2 Belle II |V_cb|  UQFF CKM Unitarity
 
-The Belle II measurement |V_cb| = (39.2 × 0.9)10? (arXiv:2506.15256) contributes to a precision CKM
+The Belle II measurement |V_cb| = (39.2 $\times$ 0.9)10? (arXiv:2506.15256) contributes to a precision CKM
 unitarity test:
 $$|V_{ud}|^2 + |V_{us}|^2 + |V_{ub}|^2 = 1 \text{ (first row)}$$
 $$|V_{cd}|^2 + |V_{cs}|^2 + |V_{cb}|^2 = 1 \text{ (second row)}$$
 
-With |V_cb| = 39.2×10? and |V_cs| = 973.4×10?, |V_cd| = 221.4×10?:
+With |V_cb| = 39.2$\times$10? and |V_cs| = 973.4$\times$10?, |V_cd| = 221.4$\times$10?:
 $$\Delta_{\rm CKM}^{\rm row2} = 1 - (0.2214^2 + 0.9734^2 + 0.0392^2) = 1 - (0.0490 + 0.9475 + 0.00154) = 0.0020$$
 
-The UQFF [SCm]_flavor = |V_cb| = 1.536×10? traces the second-row unitarity deficit:
+The UQFF [SCm]_flavor = |V_cb| = 1.536$\times$10? traces the second-row unitarity deficit:
 $$\Delta_{\rm CKM}^{\rm row2} \approx 2 \times [SCm]_{\rm flavor} \times K_{\rm CKM} = 2 \times 1.536 \times 10^{-3} \times 0.65 = 0.0020 ?$$
 
 This perfect mapping confirms that the UQFF [SCm]_flavor parameter is the natural vacuum
@@ -176,7 +176,7 @@ representation of second-row CKM unitarity.
 
 ### 3.3 LFU Ratio and UQFF Prediction
 
-Belle II measures R(De?/D?) = 1.020 × 0.030 (SM = 1.000). The UQFF prediction:
+Belle II measures R(De?/D?) = 1.020 $\times$ 0.030 (SM = 1.000). The UQFF prediction:
 $$R_{\rm LFU}^{\rm UQFF} = 1 + [SCm]_{\rm flavor} \times \left(\frac{1}{m_e/m_\mu - 1}\right) = 1 + 1.536 \times 10^{-3} \times \frac{1}{206 - 1}^{-1}$$
 
 More directly, the UQFF enhancement comes from the aether string frequency shift between e and 
@@ -199,8 +199,8 @@ power for UQFF [SCm] flavor mixing:
 | Collider | vs (GeV) | Luminosity | R_t/ Precision | UQFF Test Sensitivity |
 |----------|----------|-----------|-----------------|----------------------|
 | FCC-ee | 91.2 / 240 / 365 | 10 Z / 106 ZH | 10-5 | [SCm] at 10-7 |
-| CEPC | 91.2 / 240 | 10 Z / 106 ZH | 5×10-5 | [SCm] at 3×10-7 |
-| ILC | 250 / 500 | 5×105 ZH | 10? (limited Z run) | [SCm] at 10-5 |
+| CEPC | 91.2 / 240 | 10 Z / 106 ZH | 5$\times$10-5 | [SCm] at 3$\times$10-7 |
+| ILC | 250 / 500 | 5$\times$105 ZH | 10? (limited Z run) | [SCm] at 10-5 |
 
 FCC-ee Tera-Z provides the best sensitivity to the UQFF [SCm] flavor term by 2 orders of magnitude
 over ILC, and 5 over CEPC.
@@ -213,7 +213,7 @@ ratios:
 $$\frac{\kappa_tau^{\rm UQFF}}{\kappa_tau^{\rm SM}} = 1 + [SCm]_{\rm flavor} \times \frac{m_\tau^2}{v_H^2} = 1 + 1.536 \times 10^{-3} \times \frac{(1.777)^2}{(246)^2} = 1 + 8.0 \times 10^{-8} \approx 1.000$$
 
 The UQFF coupling correction to ?_t is negligible (~10?7)  consistent with the ECFA Higgs factory
-expected precision of ~0.5% (5×10?). This means Higgs factory ?_t measurements will **not**
+expected precision of ~0.5% (5$\times$10?). This means Higgs factory ?_t measurements will **not**
 distinguish SM from UQFF at the one-loop level; the discrimination comes instead from Tera-Z
 universality tests and B-factory LFU ratios.
 
@@ -235,7 +235,7 @@ predicted reductions:
 
 The aether string Ug3 term carries a frequency proportional to lepton mass. The frequency difference
 between t and  modes generates the LFU enhancement R_LFU ~ 1.02§1.06, consistent with the Belle II
-measurement 1.020 × 0.030.
+measurement 1.020 $\times$ 0.030.
 
 ### 5.3 t_n Suppression of LFV (B ? K* te)
 
@@ -251,10 +251,10 @@ The ECFA Higgs factory study (arXiv:2506.15390) defines the precision frontier f
 universality and flavor tests at e?e? colliders. The UQFF framework makes quantitative predictions
 for this program:
 
-1. **R(D) tension reduced:** 1.9s ? 0.9s via [SCm]_flavor = |V_cb| = 1.536×10?
+1. **R(D) tension reduced:** 1.9s ? 0.9s via [SCm]_flavor = |V_cb| = 1.536$\times$10?
 2. **R(D*) tension reduced:** 3.3s ? 1.2s via UQFF kinematic form factor correction
-3. **CKM unitarity:** Row-2 deficit ? = 2.0×10? mapped exactly to 2[SCm]_flavor
-4. **Tera-Z LFU:** UQFF predicts ?(R_t/) ~ 5.8×10-7 at FCC-ee, far below current sensitivity
+3. **CKM unitarity:** Row-2 deficit ? = 2.0$\times$10? mapped exactly to 2[SCm]_flavor
+4. **Tera-Z LFU:** UQFF predicts ?(R_t/) ~ 5.8$\times$10-7 at FCC-ee, far below current sensitivity
 5. **Higgs ?_t:** UQFF correction ~10?7, invisible at Higgs factory precision
 
 The UQFF framework simultaneously relaxes the observed B-anomaly tensions and predicts null results
@@ -269,7 +269,7 @@ non-universality at the per-mille level.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -288,7 +288,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -325,7 +325,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -362,7 +362,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 $$
 \begin{aligned}
-  & V_cb              = 39.2e-3     # Belle II |V_cb| ≈ 0.9×10? total \\
+  & V_cb              = 39.2e-3     # Belle II |V_cb| \approx 0.9\times10? total \\
   & \text{V\_cb\_stat\_err}     = 0.4e-3 \\
   & \text{V\_cb\_sys\_err}      = 0.6e-3 \\
   & \text{V\_cb\_th\_err}       = 0.5e-3 \\
@@ -374,7 +374,7 @@ $$
 \end{aligned}
 $$
 
-*Validator output: `b`sm_physics_validation`.py` ? PASSED | κ = 0.0005/day | [SSq] = 0.57*
+*Validator output: `b`sm_physics_validation`.py` ? PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -388,14 +388,14 @@ $$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -410,10 +410,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -421,9 +421,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -431,8 +431,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -508,7 +508,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.147 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

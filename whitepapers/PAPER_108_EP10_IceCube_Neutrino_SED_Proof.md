@@ -11,14 +11,14 @@ tags: [UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_108: Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV – UQFF κ_i = 0.61 Confirmation via pp and p? Flux Analysis
+# PAPER_108: Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV – UQFF $\kappa$_i = 0.61 Confirmation via pp and p? Flux Analysis
 **Session:** 0
 
 **Title:** Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV – UQFF
-κ_i = 0.61 Confirmation via pp and p? Flux Analysis
+$\kappa$_i = 0.61 Confirmation via pp and p? Flux Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** §1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-10, AprilSept 2025)  
@@ -32,15 +32,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Empirical Proof EP-10 validates the UQFF spectral energy distribution (SED) model
 against IceCube's measured astrophysical neutrino background below 0.1 PeV, where
 both hadronic (pp) and photohadronic (p?) processes contribute. The UQFF SED
-formula F_? = E_?  n(p)  (κ_i - 0) reproduces the IceCube sub-PeV flux
-normalization and spectral slope with κ_i = 0.61, confirming this calibration
+formula F_? = E_?  n(p)  ($\kappa$_i - 0) reproduces the IceCube sub-PeV flux
+normalization and spectral slope with $\kappa$_i = 0.61, confirming this calibration
 constant to 3% against an independent multi-year IceCube dataset. The TRZ
 (Topological Resonance Zone) enhancement of +1.0% in the UQFF SED spectrum
 relative to the standard pion-decay neutrino model is within IceCube's systematic
 uncertainty at sub-PeV energies, and the neutrino_sed_calculator.py module
 achieves 4/4 PASS on all spectral tests.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -55,9 +55,9 @@ astrophysical neutrino background. At sub-PeV energies (E_? < 10-4 eV):
 
 | Observable | IceCube Value | Reference |
 |-----------|--------------|-----------|
-| Spectral index G | 2.37 × 0.09 | IceCube 2022 |
-| Flux normalization F0 at 100 TeV | 1.44 × 10?8 GeV?cm?s-1sr? | IceCube 2022 |
-| Energy range (sub-PeV) | 10 TeV ≈ 0.1 PeV | Shower + track events |
+| Spectral index G | 2.37 $\times$ 0.09 | IceCube 2022 |
+| Flux normalization F0 at 100 TeV | 1.44 $\times$ 10?8 GeV?cm?s-1sr? | IceCube 2022 |
+| Energy range (sub-PeV) | 10 TeV $\approx$ 0.1 PeV | Shower + track events |
 | Best-fit single power law | E?7 | IceCube HESE |
 | pp vs p? fraction | pp dominant at E < 0.1 PeV | Multimessenger inference |
 
@@ -90,9 +90,9 @@ Where:
 - $\beta_i$ = UQFF calibrated coupling constant = **0.61**
 - $\beta_0$ = baseline relativistic velocity threshold (process-dependent)
 
-### 2.2 κ_i Physical Interpretation
+### 2.2 $\kappa$_i Physical Interpretation
 
-In UQFF, κ_i parameterizes the fractional buoyancy-field coupling of the neutrino
+In UQFF, $\kappa$_i parameterizes the fractional buoyancy-field coupling of the neutrino
 production environment:
 
 $$\beta_i = \frac{v_{particle}}{c} \Big|_{F\_{Ubi} \text{ onset}}$$
@@ -102,7 +102,7 @@ the threshold velocity is:
 
 $$\beta_0 = 1 - \frac{m_\pi c^2}{2 E_p} = 1 - \frac{0.135}{2 \times 1.0} \approx 0.9325 \text{ at } E_p = 1 \text{ GeV}$$
 
-The difference (κ_i - 0) represents the squared buoyancy-coupling deviation
+The difference ($\kappa$_i - 0) represents the squared buoyancy-coupling deviation
 from the pion threshold, which enters as a modification to the standard pion-decay
 neutrino spectrum slope.
 
@@ -126,20 +126,20 @@ is the same TRZ factor confirmed in PAPER_088 (Neutrino SED TRZ +1.0%).
 
 Setting $n(p) = 10^{-3}$ cm? (typical AGN corona / star-forming galaxy ISM):
 
-At E_? = 100 TeV = 105 GeV and using κ_i = 0.61:
+At E_? = 100 TeV = 105 GeV and using $\kappa$_i = 0.61:
 
 $$F_\nu = 10^5 \times 10^{-3} \times (0.61 - 0.5)^2 = 10^2 \times 0.0121 = 1.21 \text{ (normalized)}$$
 
-Against IceCube normalization F0 = 1.44 × 10?8, with the overall scale factor
+Against IceCube normalization F0 = 1.44 $\times$ 10?8, with the overall scale factor
 absorbed into n(p)  units conversion, the spectral **shape** (index and curvature)
 is the key validation target.
 
 ### 3.2 Spectral Index Comparison
 
-| Quantity | Standard Model | UQFF (κ_i = 0.61) | IceCube Measured | Match |
+| Quantity | Standard Model | UQFF ($\kappa$_i = 0.61) | IceCube Measured | Match |
 |----------|---------------|-------------------|-----------------|-------|
-| Spectral index G | 2.0 (pp), 2.5 (p?) | 2.37 (combined) | 2.37 × 0.09 | ? |
-| Sub-PeV normalization | F0 = 1.44e-18 | F0 × 1.01 (TRZ) | 1.44e-18 | ? |
+| Spectral index G | 2.0 (pp), 2.5 (p?) | 2.37 (combined) | 2.37 $\times$ 0.09 | ? |
+| Sub-PeV normalization | F0 = 1.44e-18 | F0 $\times$ 1.01 (TRZ) | 1.44e-18 | ? |
 | pp fraction at E < 0.1 PeV | ~7080% | ~75% ([SSq] mixing) | ~7080% | ? |
 | p? fraction at E > 0.1 PeV | ~3040% | ~35% | ~3040% | ? |
 
@@ -153,27 +153,27 @@ Confirmed: 75.5% pp fraction at sub-PeV, matching IceCube inference to within 2s
 
 $$
 \begin{aligned}
-  & Test 1: Spectral index reproduction (κ_i=0.61) .............. PASS \\
+  & Test 1: Spectral index reproduction (\kappa_i=0.61) .............. PASS \\
   & Test 2: TRZ enhancement +1.0% within IceCube syst. error .... PASS \\
   & Test 3: pp/p? mixing fraction [SSq]=0.57 ..................... PASS \\
-  & Test 4: κ_i calibration consistency 3% ..................... PASS \\
+  & Test 4: \kappa_i calibration consistency 3% ..................... PASS \\
   & ALL 4/4 TESTS PASSED
 \end{aligned}
 $$
 
 ---
 
-## 4. κ_i = 0.61: Independent Calibration Chain
+## 4. $\kappa$_i = 0.61: Independent Calibration Chain
 
-The κ_i = 0.61 constant appears independently confirmed in three contexts:
+The $\kappa$_i = 0.61 constant appears independently confirmed in three contexts:
 
-| Dataset | System | κ_i Confirmation |
+| Dataset | System | $\kappa$_i Confirmation |
 |---------|--------|-----------------|
-| IceCube sub-PeV SED (EP-10) | Diffuse neutrino background | κ_i = 0.61 × 0.02 (3% error) |
-| `F_U_Bi_i` Integral (PAPER_063) | 52-system bootstrap | κ_i = 0.61 × 0.005 (MCMC) |
-| GW170817 BNS merger (EP-11) | r-process outflow velocity | κ_i = 0.61 (v_ej ~ 0.1c, relativistic factor) |
+| IceCube sub-PeV SED (EP-10) | Diffuse neutrino background | $\kappa$_i = 0.61 $\times$ 0.02 (3% error) |
+| `F_U_Bi_i` Integral (PAPER_063) | 52-system bootstrap | $\kappa$_i = 0.61 $\times$ 0.005 (MCMC) |
+| GW170817 BNS merger (EP-11) | r-process outflow velocity | $\kappa$_i = 0.61 (v_ej ~ 0.1c, relativistic factor) |
 
-The tri-source confirmation of κ_i = 0.61 constitutes a **cross-validation across
+The tri-source confirmation of $\kappa$_i = 0.61 constitutes a **cross-validation across
 three independent physics domains**: (1) high-energy astrophysical neutrinos,
 (2) multi-system UQFF F-integral statistics, and (3) gravitational wave ejecta.
 
@@ -188,7 +188,7 @@ three independent physics domains**: (1) high-energy astrophysical neutrinos,
 | 3 | $f_{TRZ} = 0.01$ | +1.0% flux enhancement | TRZ sub-PeV correction |
 | 4 | $f_{pp} = 1 - [\text{SSq}] \times f_{p\gamma}$ | 0.755 (75.5% pp) | pp/p? mixing via [SSq] |
 | 5 | $(\beta_i - \beta_0)^2 \big|_{\beta\_i=0.61}$ | 0.0122 at 0=0.5 | Buoyancy coupling squared |
-| 6 | κ_i MCMC posterior | 0.61 × 0.005 (3-sigma) | Cross-validated with PAPER_063 |
+| 6 | $\kappa$_i MCMC posterior | 0.61 $\times$ 0.005 (3-sigma) | Cross-validated with PAPER_063 |
 
 ---
 
@@ -197,15 +197,15 @@ three independent physics domains**: (1) high-energy astrophysical neutrinos,
 Empirical Proof EP-10 demonstrates through IceCube's sub-PeV astrophysical
 neutrino SED that:
 
-1. **κ_i = 0.61** is confirmed to 3% as the UQFF buoyancy coupling constant
+1. **$\kappa$_i = 0.61** is confirmed to 3% as the UQFF buoyancy coupling constant
    for relativistic particle production contexts
 2. **TRZ enhancement = +1.0%** at sub-PeV energies matches within IceCube
    systematic uncertainty, consistent with PAPER_088
 3. **[SSq] = 0.57** correctly predicts the 75.5% pp/p? fraction at sub-PeV
    energies, matching IceCube multi-messenger inference
 4. The UQFF SED formula (neutrino_sed_calculator.py, 4/4 PASS) reproduces both
-   the spectral index G = 2.37 and the normalization F0 = 1.44 × 10?8
-5. κ_i = 0.61 is now triple-confirmed: IceCube SED (EP-10), F_U_Bi_i 52-system
+   the spectral index G = 2.37 and the normalization F0 = 1.44 $\times$ 10?8
+5. $\kappa$_i = 0.61 is now triple-confirmed: IceCube SED (EP-10), F_U_Bi_i 52-system
    MCMC (PAPER_063), and GW170817 r-process ejecta velocity (EP-11)
 
 ---
@@ -313,7 +313,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -322,13 +322,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -348,7 +348,7 @@ pp interactions*. Phys. Rev. D 74, 034018.
 6. Murphy D.T. (2026). *Neutrino SED: UQFF Emission Model*. PAPER_088.
 7. Murphy D.T. (2026). *F_U_Bi_i Integral: Complete Derivation*. PAPER_063.
 8. `neutrino_sed_calculator.py`  Star-Magic codebase, 4/4 PASS.
-.Groups[1].Value   Empirical Proof EP-10: IceCube Sub-PeV Neutrino SED – UQFF κ_i Calibration
+.Groups[1].Value   Empirical Proof EP-10: IceCube Sub-PeV Neutrino SED – UQFF $\kappa$_i Calibration
 
 
 ---

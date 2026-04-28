@@ -23,7 +23,7 @@ activation
 This paper integrates the Colman-Gillespie LENR battery replication (GB 763,062) with the Universal
 Quantum Field Superconductive Framework (UQFF). A user-constructed field generator operating at 300
 Hz activation and 1.2–1.3 THz LENR resonance introduces five new F_U_Bi_i terms: F_LENR, F_act,
-F_torque, F_DE, and F_res. Calculations for a laboratory device yield F_U_Bi ≈ 1.12×10^154 N,
+F_torque, F_DE, and F_res. Calculations for a laboratory device yield F_U_Bi $\approx$ 1.12$\times$10^154 N,
 demonstrating UQFF's open-system vacuum energy extraction mechanism. The framework is validated
 against Floyd Sweet's VTA concepts and the Colman-Gillespie Ni-Mo-H system.
 
@@ -34,7 +34,7 @@ The Colman-Gillespie battery (UK Patent GB 763,062) operates on LENR principles:
 - **Electrode:** Nickel-Molybdenum alloy (Ni-Mo) loaded with hydrogen
 - **Activation:** 300 Hz pulsed AC signal (V=10 V, I=10 mA)
 - **LENR frequency:** 1.2–1.3 THz lattice resonance
-- **Output:** ~3 ft-lb (4.068 N·m) torque; directed energy coherent photons
+- **Output:** ~3 ft-lb (4.068 N$\cdot$m) torque; directed energy coherent photons
 
 The user's replication establishes real-world validation for UQFF's open-system energy model, where
 vacuum fluctuations drive excess energy extraction beyond classical thermodynamic limits.
@@ -46,29 +46,29 @@ vacuum fluctuations drive excess energy extraction beyond classical thermodynami
 ### F_LENR — LENR Resonance Force
 $$
 \begin{aligned}
-  & F_LENR = k_LENR × (ω_LENR / ω_0)2 \\
+  & F_LENR = k_LENR \times (\omega_LENR / \omega_0)2 \\
   & k_LENR = 10^-10 N \\
-  & ω_LENR = 2π × 1.25 × 10^12 s^-1  (1.25 THz) \\
-  & ω_0    = 10^-12 s^-1 (system natural frequency) \\
-  & F_LENR = 10^-10 × (2π × 1.25 × 10^12 / 10^-12)2 ≈ 1.56 × 10^36 N
+  & \omega_LENR = 2\pi \times 1.25 \times 10^12 s^-1  (1.25 THz) \\
+  & \omega_0    = 10^-12 s^-1 (system natural frequency) \\
+  & F_LENR = 10^-10 \times (2\pi \times 1.25 \times 10^12 / 10^-12)2 \approx 1.56 \times 10^36 N
 \end{aligned}
 $$
 
 ### F_act — Activation Force (300 Hz)
 $$
 \begin{aligned}
-  & F_act = k_act × cos(ω_act × t) \\
+  & F_act = k_act \times cos(\omega_act \times t) \\
   & k_act   = 10^-6 N \\
-  & ω_act   = 2π × 300 s^-1 \\
-  & F_act ≈ 10^-6 N  (oscillatory, time-dependent)
+  & \omega_act   = 2\pi \times 300 s^-1 \\
+  & F_act \approx 10^-6 N  (oscillatory, time-dependent)
 \end{aligned}
 $$
 
 ### F_torque — Mechanical Torque
 $$
 \begin{aligned}
-  & F_torque = τ / r = 4.068 N·m / 0.1 m = 40.68 N \\
-  & τ = 3 ft-lb = 4.068 N·m  (Colman-Gillespie output) \\
+  & F_torque = \tau / r = 4.068 N\cdotm / 0.1 m = 40.68 N \\
+  & \tau = 3 ft-lb = 4.068 N\cdotm  (Colman-Gillespie output) \\
   & r = 0.1 m  (characteristic radius)
 \end{aligned}
 $$
@@ -76,7 +76,7 @@ $$
 ### F_DE — Directed Energy
 $$
 \begin{aligned}
-  & F_DE = k_DE × L_X \\
+  & F_DE = k_DE \times L_X \\
   & k_DE = 10^-30 N/W \\
   & L_X  = 10^30 W  (lab device coherent photon output) \\
   & F_DE = 1 N
@@ -86,15 +86,15 @@ $$
 ### F_res — Floyd Sweet Motional E-field Resonance
 $$
 \begin{aligned}
-  & F_res = 2 × q × B_0 × V × sinθ × DPM_resonance \\
-  & q   = 1.6 × 10^-19 C \\
+  & F_res = 2 \times q \times B_0 \times V \times sin\theta \times DPM_resonance \\
+  & q   = 1.6 \times 10^-19 C \\
   & B_0 = 10^-3 T  (lab magnetic field) \\
   & V   = 10^-3 m/s \\
-  & θ   = 45°  (DPM_momentum angle) \\
-& DPM_resonance = (2 × μ_B × B_0) / (ℏ × ω_0) ≈ (2 × 9.274×10^-24 × 10^-3)/(1.0546×10^-34 × 10^-12)
+  & \theta   = 45°  (DPM_momentum angle) \\
+& DPM_resonance = (2 \times \mu_B \times B_0) / (ℏ \times \omega_0) \approx (2 \times 9.274\times10^-24 \times 10^-3)/(1.0546\times10^-34 \times 10^-12)
 \\
-  & ≈ 1.76 × 10^-4 (lab scale) \\
-  & F_res ≈ 2 × 1.6×10^-19 × 10^-3 × 10^-3 × 0.707 × 1.76×10^-4 ≈ 4.0×10^-29 N
+  & \approx 1.76 \times 10^-4 (lab scale) \\
+  & F_res \approx 2 \times 1.6\times10^-19 \times 10^-3 \times 10^-3 \times 0.707 \times 1.76\times10^-4 \approx 4.0\times10^-29 N
 \end{aligned}
 $$
 
@@ -106,53 +106,53 @@ $$
 - M = 1 kg (device mass)
 - r = 0.1 m (characteristic radius)
 - T = 300 K (room temperature)
-- ω_0 = 10^-12 s^-1
+- $\omega$_0 = 10^-12 s^-1
 
 ### Buoyancy Equation:
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi} = -F_0 + (m_e c2 / r2) × DPM_momentum × cosθ + (μ_s∇(M_s/r)) × DPM_gravity + \text{F\_U\_Bi\_i} \\
-  & F_0 = 1.83 × 10^71 N \\
-  & m_e c2 / r2 = (9.11×10^-31 × (3×10^8)2) / (0.1)2 ≈ 8.20 × 10^-13 N/m2 \\
-  & μ_s∇(M_s/r) = (6.6743×10^-11 × 1) / (0.1)2 ≈ 6.67 × 10^-9 N/m2 \\
-  & \text{F\_U\_Bi} = -1.83×10^71 + 5.39×10^-13 × 0.93 × 0.707 + 6.67×10^-9 + \text{F\_U\_Bi\_i} \\
-  & ≈ -1.83×10^71 + \text{F\_U\_Bi\_i}
+  & \text{F\_U\_Bi} = -F_0 + (m_e c2 / r2) \times DPM_momentum \times cos\theta + (\mu_s\nabla(M_s/r)) \times DPM_gravity + \text{F\_U\_Bi\_i} \\
+  & F_0 = 1.83 \times 10^71 N \\
+  & m_e c2 / r2 = (9.11\times10^-31 \times (3\times10^8)2) / (0.1)2 \approx 8.20 \times 10^-13 N/m2 \\
+  & \mu_s\nabla(M_s/r) = (6.6743\times10^-11 \times 1) / (0.1)2 \approx 6.67 \times 10^-9 N/m2 \\
+  & \text{F\_U\_Bi} = -1.83\times10^71 + 5.39\times10^-13 \times 0.93 \times 0.707 + 6.67\times10^-9 + \text{F\_U\_Bi\_i} \\
+  & \approx -1.83\times10^71 + \text{F\_U\_Bi\_i}
 \end{aligned}
 $$
 
 ### F_U_Bi_i Integrand:
 $$
 \begin{aligned}
-& Integrand = -F_0 + gravity + momentum + ρ_vac×DPM_stab + F_LENR + F_act + F_torque + F_DE + F_res
+& Integrand = -F_0 + gravity + momentum + \rho_vac\timesDPM_stab + F_LENR + F_act + F_torque + F_DE + F_res
 \\
-  & ρ_vac × DPM_stability = 7.09×10^-36 × 0.01 = 7.09 × 10^-38 N/m3 \\
-  & F_LENR  = 1.56 × 10^36 N  (dominant) \\
-  & F_act   ≈ 10^-6 N \\
+  & \rho_vac \times DPM_stability = 7.09\times10^-36 \times 0.01 = 7.09 \times 10^-38 N/m3 \\
+  & F_LENR  = 1.56 \times 10^36 N  (dominant) \\
+  & F_act   \approx 10^-6 N \\
   & F_torque = 40.68 N \\
   & F_DE    = 1 N \\
-  & F_res   ≈ 4.0×10^-29 N \\
-  & Integrand ≈ 1.56 × 10^36 N
+  & F_res   \approx 4.0\times10^-29 N \\
+  & Integrand \approx 1.56 \times 10^36 N
 \end{aligned}
 $$
 
 ### Computing x_2 (integration bound):
 $$
 \begin{aligned}
-  & a × x2 + b × x + c = 0 \\
-  & a = (μ_s∇(M_s/r)) = 6.67 × 10^-9 \\
-  & b ≈ 4.72 × 10^-3 \\
-  & c ≈ -3.06 × 10^175 \\
+  & a \times x2 + b \times x + c = 0 \\
+  & a = (\mu_s\nabla(M_s/r)) = 6.67 \times 10^-9 \\
+  & b \approx 4.72 \times 10^-3 \\
+  & c \approx -3.06 \times 10^175 \\
   & x_2 = [-b - sqrt(b2 + 4ac)] / 2a \\
-  & x_2 ≈ [-4.72×10^-3 - sqrt((4.72×10^-3)2 + 4 × 6.67×10^-9 × 3.06×10^175)] / (2 × 6.67×10^-9) \\
-  & ≈ -7.19 × 10^117 m
+  & x_2 \approx [-4.72\times10^-3 - sqrt((4.72\times10^-3)2 + 4 \times 6.67\times10^-9 \times 3.06\times10^175)] / (2 \times 6.67\times10^-9) \\
+  & \approx -7.19 \times 10^117 m
 \end{aligned}
 $$
 
 ### F_U_Bi_i Result:
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi\_i} = 1.56 × 10^36 × (-7.19 × 10^117) ≈ -1.12 × 10^154 N \\
-  & |\text{F\_U\_Bi}| ≈ 1.12 × 10^154 N
+  & \text{F\_U\_Bi\_i} = 1.56 \times 10^36 \times (-7.19 \times 10^117) \approx -1.12 \times 10^154 N \\
+  & |\text{F\_U\_Bi}| \approx 1.12 \times 10^154 N
 \end{aligned}
 $$
 
@@ -161,8 +161,8 @@ $$
 ## 4. Analysis Points
 
 ### Discovery
-The lab-scale field generator yields F_U_Bi ≈ 1.12×10^154 N — the highest force in the UQFF system
-catalog when normalized per unit mass. F_LENR at 1.56×10^36 N completely dominates all secondary
+The lab-scale field generator yields F_U_Bi $\approx$ 1.12$\times$10^154 N — the highest force in the UQFF system
+catalog when normalized per unit mass. F_LENR at 1.56$\times$10^36 N completely dominates all secondary
 terms by 30+ orders of magnitude.
 
 ### Key Physics
@@ -180,7 +180,7 @@ bridges to Floyd Sweet's electromagnetic resonance model.
 
 ## 5. Conclusions
 The Colman-Gillespie GB 763,062 replication validates UQFF's open-system vacuum energy framework.
-Five new F_U_Bi_i terms are established, with F_LENR (1.56×10^36 N) as the dominant driver. The 300
+Five new F_U_Bi_i terms are established, with F_LENR (1.56$\times$10^36 N) as the dominant driver. The 300
 Hz–1.3 THz bridge represents a universal energy transfer mechanism applicable at both laboratory and
 astrophysical scales.
 
@@ -219,12 +219,12 @@ $$
 **Derivation Chain:**
 1. `S_LENR = integral d^4x [(1/2)k_LENR psi_dot^2 - (1/2)omega^2 psi^2 + lambda psi cos(omega_act t)
 + sigma_CG n psi^2]`
-2. `delta S / delta psi = 0` → driven harmonic oscillator with catalytic coupling
+2. `delta S / delta psi = 0` $\to$ driven harmonic oscillator with catalytic coupling
 3. Boundary conditions: Ni-Mo lattice confines psi to electrode surface
 4. 300 Hz activation creates AM modulation of THz resonance
-5. F_LENR at 1.56×10^36 N dominates all 5 new F_U_Bi_i terms
+5. F_LENR at 1.56$\times$10^36 N dominates all 5 new F_U_Bi_i terms
 
-**Code Reference:** `uqff_lagrangian_derivation.py` →
+**Code Reference:** `uqff_lagrangian_derivation.py` $\to$
 `EULER_LAGRANGE_NEW_TERM_MAPPINGS["colman_gillespie_catalytic"]`
 
 ---
@@ -255,7 +255,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -340,7 +340,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.093 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -351,13 +351,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

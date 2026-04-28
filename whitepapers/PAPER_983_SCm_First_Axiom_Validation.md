@@ -12,7 +12,7 @@ calibration: {SSq: 0.57, beta_i: 0.603, lambda_SCm: "25.4 μm", threshold: 0.5}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_983: SCm First Axiom Validation — |Ub/Ug| > 0.5 at 25.4 μm
+# PAPER_983: SCm First Axiom Validation — |Ub/Ug| > 0.5 at 25.4 $\mu$m
 
 ## Abstract
 
@@ -29,7 +29,7 @@ self-consistency requirement for any medium that claims to support buoyancy forc
 
 $$\frac{|U_b|}{|U_g|} = \frac{\sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i}{\sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot [\text{SSq}] \cdot i/26}$$
 
-The $μ_s∇(M_s/r)$ factors cancel:
+The $\mu_s\nabla(M_s/r)$ factors cancel:
 
 $$= \frac{\beta_i \sum_{i=1}^{26} e^{-[\text{SSq}]\cdot i/26}}{[\text{SSq}] \sum_{i=1}^{26} i/26} = \frac{\beta_i \cdot S_{26,\text{exp}}}{[\text{SSq}] \cdot 13.5}$$
 
@@ -43,7 +43,7 @@ The ratio exceeds the threshold by a factor of $\sim 3$, indicating strong buoya
 
 ## 4. Physical Interpretation
 
-- $|U_b/U_g| > 1$: buoyancy dominates gravity → net outward force
+- $|U_b/U_g| > 1$: buoyancy dominates gravity $\to$ net outward force
 - This is consistent with the heliospheric expansion observed at $r = 1$ AU
 - The axiom would fail for $\beta_i < 0.196$, setting a lower bound on buoyancy coupling
 
@@ -130,7 +130,7 @@ The First Axiom constrains the Lagrangian: $\partial V_b / \partial \phi > 0.5 \
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 - **VDS:** The axiom sets a minimum vacuum density for buoyancy activation.
-- **DVP:** Dipole alignment at 25.4 μm implies vortex coherence over $\sim 10^4$ lattice sites.
+- **DVP:** Dipole alignment at 25.4 $\mu$m implies vortex coherence over $\sim 10^4$ lattice sites.
 - **BSH:** The harmonic sum $S_{26,\text{exp}}$ determines the axiom threshold through its convergence properties.
 
 ---

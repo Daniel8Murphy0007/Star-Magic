@@ -19,7 +19,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 J1832-0911
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py`, `observational_systems_config.h`, SOURCE4 (SGR1745),
 `MAIN_1_CoAnQi.cpp`  
@@ -29,7 +29,7 @@ J1832-0911
 
 ## Abstract
 
-Magnetars are neutron stars with surface magnetic fields exceeding 10 T (B_crit,magnetar = 4.4×10
+Magnetars are neutron stars with surface magnetic fields exceeding 10 T (B_crit,magnetar = 4.4$\times$10
 T), classifying them as the most extreme electromagnetic environments in the observable universe.
 The UQFF assigns each magnetar system all four operational modes (Compressed, Resonant, Buoyant,
 Superconductive) plus the Ug1 magnetic dipole enhancement. This paper presents UQFF predictions for
@@ -39,7 +39,7 @@ X-ray timing observations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -49,10 +49,10 @@ present in Standard Model treatments.
 
 | System | M (kg) | r (m) | B0 (T) | ?0 (rad/s) | Period |
 |--------|--------|-------|--------|-----------|--------|
-| SGR1745-2900 | 2.785×10 | 2.62×10 | 2.3×10 | 1.671 | 3.76 s |
-| Crab Pulsar | 1.0×10 | 4.73×10-6 | 5.0×10-8 | 2.0×10? | ~33 ms |
-| Vela Pulsar | 2.8×10 | 1.7×10-7 | 3.0×10-8 | 1.0×10? | ~89 ms |
-| ASKAP J1832 | 2.785×10 | 4.63×10-6 | 1.0×10 | 2.38×10? | 44 min |
+| SGR1745-2900 | 2.785$\times$10 | 2.62$\times$10 | 2.3$\times$10 | 1.671 | 3.76 s |
+| Crab Pulsar | 1.0$\times$10 | 4.73$\times$10-6 | 5.0$\times$10-8 | 2.0$\times$10? | ~33 ms |
+| Vela Pulsar | 2.8$\times$10 | 1.7$\times$10-7 | 3.0$\times$10-8 | 1.0$\times$10? | ~89 ms |
+| ASKAP J1832 | 2.785$\times$10 | 4.63$\times$10-6 | 1.0$\times$10 | 2.38$\times$10? | 44 min |
 
 ---
 
@@ -64,10 +64,10 @@ $$Ug_1 = \underbrace{\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}}_{\mu_s\na
 
 | System | g_DPM (m/s) | 0B0/8p | Ug1 (m/s) | Amplification |
 |--------|-----------------|---------|-----------|--------------|
-| SGR1745-2900 | 2.71×10? | 1.33×10? | 3.60×10? | 0.13 (weak field region) |
-| Crab Pulsar | 2.99×10? | 3.14×10? | 9.37×10? | negligible |
-| Vela Pulsar | 6.45×10? | 1.41×10? | 9.09×10? | negligible |
-| ASKAP J1832 | 8.67×10?4 | 5.00×10-6 | **4.34×10** | **5×10-6** |
+| SGR1745-2900 | 2.71$\times$10? | 1.33$\times$10? | 3.60$\times$10? | 0.13 (weak field region) |
+| Crab Pulsar | 2.99$\times$10? | 3.14$\times$10? | 9.37$\times$10? | negligible |
+| Vela Pulsar | 6.45$\times$10? | 1.41$\times$10? | 9.09$\times$10? | negligible |
+| ASKAP J1832 | 8.67$\times$10?4 | 5.00$\times$10-6 | **4.34$\times$10** | **5$\times$10-6** |
 
 ASKAP J1832-0911 has a magnetar-class surface field of B0 = 10 T in the `uqff_validation_test.py`
 parameters, yielding an enormous Ug1 enhancement. This represents the ultra-compact source (sub-10?6
@@ -85,14 +85,14 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 | System | ?0 (rad/s) | ?_LENR/?0 | LENR term | `F_U_Bi_i` (N) |
 |--------|-----------|---------|---------|------------|
-| Vela | 1.0×10? | 7.85×10-4 | **6.17×10?** | **~-8.3×10?** |
-| Crab | 2.0×10? | 3.93×10 | **1.54×10-5** | **~-2.1×107** |
-| ASKAP J1832 | 2.38×10? | 3.30×10-5 | **1.09×10** | **~-1.5×10?** |
-| SGR1745 | 1.671 | 4.70×10 | **2.21×10-5** | **~-3.0×10-87** |
+| Vela | 1.0$\times$10? | 7.85$\times$10-4 | **6.17$\times$10?** | **~-8.3$\times$10?** |
+| Crab | 2.0$\times$10? | 3.93$\times$10 | **1.54$\times$10-5** | **~-2.1$\times$107** |
+| ASKAP J1832 | 2.38$\times$10? | 3.30$\times$10-5 | **1.09$\times$10** | **~-1.5$\times$10?** |
+| SGR1745 | 1.671 | 4.70$\times$10 | **2.21$\times$10-5** | **~-3.0$\times$10-87** |
 
 ### Physical interpretation
 
-The LENR term captures the resonance between the UQFF THz vacuum field (?_LENR = 7.85×10 rad/s) and
+The LENR term captures the resonance between the UQFF THz vacuum field (?_LENR = 7.85$\times$10 rad/s) and
 the astrophysical system's own oscillation frequency (?0). For slowly rotating or long-period
 systems (Vela, Crab), the ratio is enormous  representing the extreme mismatch between the quantum
 vacuum oscillation timescale (~10? s) and the stellar spin period (~10? s to seconds). This gives
@@ -117,25 +117,25 @@ SGR1745.r = 2.62e20 m      // Distance from SgrA* (~8.5 kpc)
 ```
 
 UQFF prediction for SGR1745:
-- **Ug1**: G-gravity  [0(2.3×10)/8p] = G-gravity  6.64×10 ? dominates over DPM-seeded
-- **Ug4 (vacuum BH coupling)**: linked to SgrA* (M_BH = 4×106 M_sun) at d_g = 2.62×10 m
+- **Ug1**: G-gravity  [0(2.3$\times$10)/8p] = G-gravity  6.64$\times$10 ? dominates over DPM-seeded
+- **Ug4 (vacuum BH coupling)**: linked to SgrA* (M_BH = 4$\times$106 M_sun) at d_g = 2.62$\times$10 m
 - **F_UQFF**: Combined Compressed + Superconductive modes (nearest to BH uses Ug4 strongly)
 
 ---
 
 ## 5. Crab Pulsar Energy Budget
 
-B_crit,magnetar = 4.4×10 T from index.js constants. The Crab surface field (~10? T) is sub-critical:
+B_crit,magnetar = 4.4$\times$10 T from index.js constants. The Crab surface field (~10? T) is sub-critical:
 
 | Quantity | Value |
 |---------|-------|
 | Crab B0 (surface) | ~10? T |
-| B_crit/B_Crab | ~4.4×104 (sub-critical) |
+| B_crit/B_Crab | ~4.4$\times$104 (sub-critical) |
 | L_X (Crab total) | 10 W |
 | ?_0 (33 ms pulsar) | ~190 rad/s |
 | UQFF Mode | Resonant dominant (33 ms pulse ? 190 Hz) |
 
-The Crab's fast spin (33 ms, ?0 ~ 190 rad/s, not the 2×10? rad/s in the config which is the orbital
+The Crab's fast spin (33 ms, ?0 ~ 190 rad/s, not the 2$\times$10? rad/s in the config which is the orbital
 frequency) produces a lower LENR ratio than slower pulsars, meaning the Crab's F_U_Bi_i is smaller
 in magnitude than Vela's  consistent with the Crab being younger and more energetic (higher
 spin-down luminosity from Resonant mode, not static Compressed mode).
@@ -145,7 +145,7 @@ spin-down luminosity from Resonant mode, not static Compressed mode).
 ## 6. Vela Pulsar: UQFF Supernova Kick Prediction
 
 Vela's very small ?0 = 10? rad/s in the config represents the orbital barycenter frequency of the
-PWN system. This produces the largest UQFF F_U_Bi_i in the magnetar set: **-8.3×10? N** (comparable
+PWN system. This produces the largest UQFF F_U_Bi_i in the magnetar set: **-8.3$\times$10? N** (comparable
 to the ensemble mean from Paper #63).
 
 **UQFF kick velocity prediction:**
@@ -162,12 +162,12 @@ $$v_{\rm kick} = \frac{F_{U,Bi,i} \times \Delta t}{M} = \frac{8.3 \times 10^{219
 
 | System | B0 (T) | `F_U_Bi_i` (N) | Dominant Mode | UQFF Status |
 |--------|--------|------------|--------------|-------------|
-| Vela | 3×10-8 | -8.3×10? | Resonant | STABLE ? |
-| Crab | 5×10-8 | -2.1×107 | Resonant | STABLE ? |
-| ASKAP J1832 | 10 | -1.5×10? | Compressed | STABLE ? |
-| SGR1745 | 2.3×10 | -3.0×10-87 | Compressed + Ug4 | SOURCE4 validated ? |
+| Vela | 3$\times$10-8 | -8.3$\times$10? | Resonant | STABLE ? |
+| Crab | 5$\times$10-8 | -2.1$\times$107 | Resonant | STABLE ? |
+| ASKAP J1832 | 10 | -1.5$\times$10? | Compressed | STABLE ? |
+| SGR1745 | 2.3$\times$10 | -3.0$\times$10-87 | Compressed + Ug4 | SOURCE4 validated ? |
 
-*Source: `uqff_validation_test`.py, `observational_systems_config`.h, `MAIN_1_CoAnQi`.cpp SOURCE4 | κ =
+*Source: `uqff_validation_test`.py, `observational_systems_config`.h, `MAIN_1_CoAnQi`.cpp SOURCE4 | $\kappa$ =
 0.0005/day | [SSq] = 0.57*
 
 
@@ -184,7 +184,7 @@ exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -203,7 +203,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -226,7 +226,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -253,14 +253,14 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -275,10 +275,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -286,9 +286,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -296,8 +296,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -374,7 +374,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -385,13 +385,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

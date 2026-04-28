@@ -24,8 +24,8 @@ This paper presents the Unified Quantum Force Field (UQFF) calculations for five
 systems: Messier 82 (Cigar Galaxy), IC418 (Spirograph Nebula), Canis Major R136 (super star
 cluster), NGC6302 (Butterfly Nebula), and NGC7027 (planetary nebula). The framework extends the DPM
 (Dark Photon Medium) theory to include Universal Gravity components U_g1, U_g3, Universal Magnetism
-U_m, Electric Field E, and Neutron Production Rate η. All calculations use the Self-Expanding
-Framework 2.0 and conform to the UQFF canonical data flow through source2.cpp → APIFetch.py →
+U_m, Electric Field E, and Neutron Production Rate $\eta$. All calculations use the Self-Expanding
+Framework 2.0 and conform to the UQFF canonical data flow through source2.cpp $\to$ APIFetch.py $\to$
 CondensedPhysics.py.
 
 ---
@@ -54,7 +54,7 @@ $$E = k_e \cdot \frac{\rho_{vac}}{r^2} \cdot f_{UA}^\prime \cdot N_{quantum}$$
 
 where $N_{quantum} = 26$ (matching the 26-dimensional UQFF polynomial framework).
 
-**Neutron Production Rate η:**
+**Neutron Production Rate $\eta$:**
 $$\eta = K_{\eta,base} \cdot f_{UA}^\prime \cdot f_{SCm} \cdot \sqrt{B / \rho_{vac}}$$
 
 with $K_{\eta,base} = 2.75 \times 10^8$, $\rho_{vac} = 1 \times 10^{-27}$ J/m3.
@@ -77,12 +77,12 @@ with $K_{\eta,base} = 2.75 \times 10^8$, $\rho_{vac} = 1 \times 10^{-27}$ J/m3.
 
 | Constant | Symbol | Value |
 |----------|--------|-------|
-| Neutron production base | $K_{\eta,base}$ | 2.75 × 108 |
-| Vacuum energy density [UA] | $\rho_{vac,UA}$ | 1 × 10-27 J/m3 |
+| Neutron production base | $K_{\eta,base}$ | 2.75 $\times$ 108 |
+| Vacuum energy density [UA] | $\rho_{vac,UA}$ | 1 $\times$ 10-27 J/m3 |
 | Quantum state number | $N_{quantum}$ | 26 |
 | Electrostatic barrier const | $k_R$ | 1.0 |
 | Max atomic number scale | $Z_{max}$ | 1000 |
-| THz normalization frequency | $\nu_0$ | 1 × 1012 Hz |
+| THz normalization frequency | $\nu_0$ | 1 $\times$ 1012 Hz |
 
 ---
 
@@ -101,7 +101,7 @@ where each component is computed simultaneously for all five systems with geomet
 
 ## 5. Results Preview
 
-| System | U_g1 (N) | U_g3 (N) | η (s-1) |
+| System | U_g1 (N) | U_g3 (N) | $\eta$ (s-1) |
 |--------|----------|----------|---------|
 | M82 | ~1.2e-35 | ~3.1e-47 | ~8.7e14 |
 | IC418 | ~1.8e-39 | ~4.6e-51 | ~2.6e10 |
@@ -116,7 +116,7 @@ where each component is computed simultaneously for all five systems with geomet
 The U_g1 force mimics a long-range DPM Coulomb interaction mediated by quantum vacuum polarization
 at THz resonance frequencies. The Heaviside polarity in U_m ensures that Universal Magnetism only
 contributes when the vacuum asymmetry factor is positive (normal phase), switching sign at the
-UA→SCm phase boundary. The 26-quantum-state structure of N_quantum connects this module to the 26D
+UA$\to$SCm phase boundary. The 26-quantum-state structure of N_quantum connects this module to the 26D
 polynomial framework of the Nineteen Astro Systems module (PAPER_489).
 
 ---
@@ -129,7 +129,7 @@ polynomial framework of the Nineteen Astro Systems module (PAPER_489).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -148,7 +148,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -216,7 +216,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -321,7 +321,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.057 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -332,10 +332,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

@@ -16,12 +16,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 43 — UFEOrbPlasmoidDynamics)  
-**Classification:** FIRST t- = −t_n × exp(π − t_n) time transform in UQFF; FIRST UP/FU plasmoid
+**Classification:** FIRST t- = -t_n $\times$ exp($\pi$ - t_n) time transform in UQFF; FIRST UP/FU plasmoid
 dynamics with 26 quantum levels; FIRST 6-BatchType video-frame plasmoid registry  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `UFEOrbPlasmoidDynamicsRedDwarfCalculator` (#97, PAPER_459)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, ρ_vac,[SCm]=1.60×1019 J/m3, ρ_vac,[UA]=1.60×1020
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $\rho$_vac,[SCm]=1.60$\times$1019 J/m3, $\rho$_vac,[UA]=1.60$\times$1020
 J/m3 —>
 ---
 
@@ -58,8 +58,8 @@ t_n close to 1 experience the largest temporal distortion.
 
 In the red dwarf photosphere, plasmoids form, evolve, and dissipate on characteristic timescales.
 The t- transform models the **retarded field effect** — the electromagnetic potential of the
-plasmoid at position r₁ affects particles at r₂ with a light-travel delay. For plasmoids moving at v
-≈ c/100 in the photosphere:
+plasmoid at position r1 affects particles at r2 with a light-travel delay. For plasmoids moving at v
+$\approx$ c/100 in the photosphere:
 
 $$\Delta t_{\rm retard} = \frac{r_{\rm plasmoid}}{c/100} \cdot\frac{v}{c} = \frac{r_p}{100c} \approx \frac{10^4}{3\times10^6} \approx 3.3\times10^{-3}\ \rm s$$
 
@@ -75,7 +75,7 @@ The t- transform compresses this retarded propagation into the single factor $\e
 |-----------|-------|
 | Frame rate | 33.3 fps |
 | Total frames | 496 |
-| Sequence duration | 496/33.3 ≈ 14.9 s |
+| Sequence duration | 496/33.3 $\approx$ 14.9 s |
 | Plasmoids/frame | 40–50 |
 | Total plasmoid events | ~22,000–24,800 |
 
@@ -90,14 +90,14 @@ $$E_{\rm UP} = 1.60\times10^{19} \times 4.19\times10^{-6} = 6.7\times10^{13}\ \r
 **FU (Field-Unified) — dissipation phase:**
 $$E_{\rm FU} = \rho_{\rm vac,[UA]} \cdot V_p = 1.60\times10^{20} \times 4.19\times10^{-6} = 6.7\times10^{14}\ \rm J\ (670\ TJ)$$
 
-The FU energy exceeds UP by exactly 10× — the ratio $\rho_{\rm vac,[UA]}/\rho_{\rm vac,[SCm]} = 10$.
+The FU energy exceeds UP by exactly 10$\times$ — the ratio $\rho_{\rm vac,[UA]}/\rho_{\rm vac,[SCm]} = 10$.
 
 ### 3.3 6-BatchType Classification
 
 | BatchType | Description | Dominant quantum levels |
 |-----------|-------------|------------------------|
 | TYPE_A | Fast-rising (t_n < 0.4) | L = 1–5 |
-| TYPE_B | Peak (t_n ≈ 1) | L = 6–10 |
+| TYPE_B | Peak (t_n $\approx$ 1) | L = 6–10 |
 | TYPE_C | Decay (t_n > 1) | L = 11–15 |
 | TYPE_D | Reflected (t- branch) | L = 16–20 |
 | TYPE_E | Superposed | L = 21–24 |
@@ -114,7 +114,7 @@ $$\Delta E_L = \frac{\rho_{\rm vac,[UA]} - \rho_{\rm vac,[SCm]}}{26} \cdot V_{\r
 
 $$\Delta E_L = \frac{(1.60\times10^{20} - 1.60\times10^{19})}{26} \times V_{\rm ref} = \frac{1.44\times10^{20}}{26} V_{\rm ref} = 5.54\times10^{18} V_{\rm ref}\ \rm J/m^3$$
 
-For V_ref = 4.19×10-6 m3 (1 cm plasmoid):
+For V_ref = 4.19$\times$10-6 m3 (1 cm plasmoid):
 $$\Delta E_L = 5.54\times10^{18} \times 4.19\times10^{-6} = 2.32\times10^{13}\ \rm J$$
 
 Each quantum level requires 23.2 TJ to climb — consistent with chromospheric energy flux
@@ -126,16 +126,16 @@ calculations for Type IV solar radio bursts (a proxy for large plasmoids).
 
 | Parameter | Value |
 |-----------|-------|
-| M_* | ~0.3 MM_sun = 5.97×1029 kg |
-| R_* | ~3×107 m (0.3 RM_sun) |
+| M_* | ~0.3 MM_sun = 5.97$\times$1029 kg |
+| R_* | ~3$\times$107 m (0.3 RM_sun) |
 | T_eff | ~3200 K |
 | g_UQFF surface | ~250 m/s2 |
 | B_photosphere | ~0.2 T (active region) |
 
 $$g_{\rm Newton, RD} = \frac{GM_*}{R_*^2} = \frac{6.674\times10^{-11}\times5.97\times10^{29}}{(3\times10^7)^2} = \frac{3.98\times10^{19}}{9\times10^{14}} \approx 44.2\ \rm m/s^2$$
 
-With UQFF magnetic suppression (B/B_crit = 0.2/4.4×1013 ≈ 4.5×10-15 — negligible) and Ug terms,
-g_UQFF_surface ≈ 250 m/s2 (typical observed effective surface gravity for active M-dwarfs).
+With UQFF magnetic suppression (B/B_crit = 0.2/4.4$\times$1013 $\approx$ 4.5$\times$10-15 — negligible) and Ug terms,
+g_UQFF_surface $\approx$ 250 m/s2 (typical observed effective surface gravity for active M-dwarfs).
 
 ---
 
@@ -145,7 +145,7 @@ The plasmoid equations in backward time:
 
 $$\mathbf{v}_{\rm plasmoid}(t^-) = \mathbf{v}_0 + \frac{\mathbf{F}_{\rm UP}}{m_{\rm plasma}} \cdot t^-$$
 
-At t_n = 1: $t^- = -8.50$ → plasmoid velocity runs backward 8.5 time units, producing an apparent **retrograde motion** of the plasmoid current. This is observed as the reversal of current direction in type-D plasmoid sequences.
+At t_n = 1: $t^- = -8.50$ $\to$ plasmoid velocity runs backward 8.5 time units, producing an apparent **retrograde motion** of the plasmoid current. This is observed as the reversal of current direction in type-D plasmoid sequences.
 
 ---
 
@@ -153,8 +153,8 @@ At t_n = 1: $t^- = -8.50$ → plasmoid velocity runs backward 8.5 time units, pr
 
 | Feature | SM | UQFF PAPER_459 |
 |---------|-----|----------------|
-| Plasmoid energy | Magnetic reconnection B2/2μ₀ | UP/FU vacuum energy densities |
-| Time coordinate | Standard t | Retarded t- = −t_n exp(π−t_n) |
+| Plasmoid energy | Magnetic reconnection B2/2$\mu$0 | UP/FU vacuum energy densities |
+| Time coordinate | Standard t | Retarded t- = -t_n exp($\pi$-t_n) |
 | Quantum levels | Continuum | 26-level discrete |
 | Classification | Flux-based | 6-BatchType by t_n phase |
 
@@ -166,9 +166,9 @@ At t_n = 1: $t^- = -8.50$ → plasmoid velocity runs backward 8.5 time units, pr
 normalised frame — corresponding to t = t_ref in each sequence. Verifiable by cross-correlating
 frame brightness peak with t_ref.
 2. **Retrograde TYPE_D motion:** TYPE_D plasmoids (t- dominant) should show apparent counter-flow.
-Observable in Hα Doppler velocity maps of active M-dwarfs during flare decay.
+Observable in H$\alpha$ Doppler velocity maps of active M-dwarfs during flare decay.
 3. **26 energy levels:** Spectroscopic energy levels of plasmoid-associated emission lines should
-cluster in groups of ΔE_L ≈ 23.2 TJ / plasmoid-volume. For 1 cm3 volumes this is ~23 TJ — measurable
+cluster in groups of $\Delta$E_L $\approx$ 23.2 TJ / plasmoid-volume. For 1 cm3 volumes this is ~23 TJ — measurable
 only for solar-scale plasmoids via X-ray calorimetry.
 
 ---
@@ -181,7 +181,7 @@ only for solar-scale plasmoids via X-ray calorimetry.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -200,7 +200,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -309,7 +309,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.078 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -320,10 +320,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

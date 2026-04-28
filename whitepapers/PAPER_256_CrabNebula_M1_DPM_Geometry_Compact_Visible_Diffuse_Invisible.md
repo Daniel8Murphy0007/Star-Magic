@@ -36,16 +36,16 @@ This system is the **first ALMA Cycle 12 contingency target** in CP3 and demonst
 rare UQFF discoveries simultaneously.
 
 **Discovery 1 — DPM Geometry Dependency:** The Crab Pulsar has B0 = 10-4 T (identical to Eta
-Carinae, PAPER_251). In Eta Carinae, this B0 produces DPM_resonance ˜ 1.76 × 105 — invisible to
-F_U_Bi. In the Crab Pulsar, although the DPM_resonance is 1,000× larger (due to ?0 = 10?15 vs 10?12
+Carinae, PAPER_251). In Eta Carinae, this B0 produces DPM_resonance ˜ 1.76 $\times$ 105 — invisible to
+F_U_Bi. In the Crab Pulsar, although the DPM_resonance is 1,000$\times$ larger (due to ?0 = 10?15 vs 10?12
 for Eta Car), the F_res/F_LENR ratio transitions from sub-threshold to potentially visible depending
 on the compact geometry. This establishes the `dpm_geometry_flag`: `compact_visible` for
 neutron-star-scale objects vs `diffuse_invisible` for extended gas systems.
 
 **Discovery 2 — Radius as Sign Determinant:** The Crab Pulsar shares ?0 = 10?15 rad/s with Sgr A*
-(PAPER_253). Sgr A* produces **negative buoyancy** (F_U_Bi ˜ -8.31 × 10211 N). The Crab Pulsar
-produces **positive buoyancy** (F_U_Bi ˜ +5.30 × 102°8 N). The only difference is the radius: r_SgrA
-= 6.17 × 1018 m vs r_Crab = 104 m — a ratio of ~6 × 1014. This proves that **radius r, not ?0 alone,
+(PAPER_253). Sgr A* produces **negative buoyancy** (F_U_Bi ˜ -8.31 $\times$ 10211 N). The Crab Pulsar
+produces **positive buoyancy** (F_U_Bi ˜ +5.30 $\times$ 102°8 N). The only difference is the radius: r_SgrA
+= 6.17 $\times$ 1018 m vs r_Crab = 104 m — a ratio of ~6 $\times$ 1014. This proves that **radius r, not ?0 alone,
 is the sign-determining variable** for UQFF buoyancy at low frequencies.
 
 ---
@@ -55,13 +55,13 @@ is the sign-determining variable** for UQFF buoyancy at low frequencies.
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
 | Distance | d | ~6,500 | ly | Chandra/HST |
-| Remnant age | t | ~970 yr = 3.06 × 101° | s | Since 1054 CE (age ~1,000 yr corrected to ~970) |
+| Remnant age | t | ~970 yr = 3.06 $\times$ 101° | s | Since 1054 CE (age ~1,000 yr corrected to ~970) |
 | Mass | M | 1.4 M_sun | kg | Standard NS |
 | **Radius** | **r** | **104** | **m** | **Neutron star scale — identical to PSR J0030** |
 | **B field** | **B0** | **10?4 T** | **T** | **Same as Eta Carinae (PAPER_251)** |
 | **?0** | **?0** | **10?15 rad/s** | **rad/s** | **Same as Sgr A* (PAPER_253)** |
 | s_n | s_n | 103? | — | NS density regime |
-| r_SgrA | r_SgrA | 6.17 × 1018 | m | For sign-determination comparison |
+| r_SgrA | r_SgrA | 6.17 $\times$ 1018 | m | For sign-determination comparison |
 
 ---
 
@@ -71,8 +71,8 @@ is the sign-determining variable** for UQFF buoyancy at low frequencies.
 
 $$
 \begin{aligned}
-  & DPM_resonance (Eta Car, B=10?4, ?0=10?12) = 1.76 × 105   [diffuse — invisible] \\
-  & DPM_resonance (Crab,    B=10?4, ?0=10?15) = 1.76 × 108   [compact — geometry probe]
+  & DPM_resonance (Eta Car, B=10?4, ?0=10?12) = 1.76 \times 105   [diffuse — invisible] \\
+  & DPM_resonance (Crab,    B=10?4, ?0=10?15) = 1.76 \times 108   [compact — geometry probe]
 \end{aligned}
 $$
 
@@ -80,7 +80,7 @@ For Crab: `DPM_resonance = 2·µ_B·10?4 / (h·10?15) = 1.76 × 108`
 
 At ?0 = 10?15, F_LENR is 6 orders larger than at 10?12:
 $$
-F_LENR (Crab, ?0=10?15) = k_LENR × (?_LENR/10?15)2 ˜ 6.17 × 1045 N
+F_LENR (Crab, ?0=10?15) = k_LENR \times (?_LENR/10?15)2 ˜ 6.17 \times 1045 N
 $$
 
 DPM visibility ratio:
@@ -97,26 +97,26 @@ compact geometry (r = 104 m), the compact-scale x2 shifts the effective ratio in
 
 ### 2.2 Radius as Sign Determinant
 
-Comparing Crab Pulsar (r = 104 m) and Sgr A* (r = 6.17 × 1018 m) at identical ?0 = 10?15 rad/s:
+Comparing Crab Pulsar (r = 104 m) and Sgr A* (r = 6.17 $\times$ 1018 m) at identical ?0 = 10?15 rad/s:
 
 $$
 \begin{aligned}
-  & term_gravity (Crab)  = G·M_NS/r2 = G × 2.786e30 / (104)2 ˜ 1.86 × 106 m/s2 \\
-  & term_gravity (Sgr A*) = G·M_BH/r2 = G × 7.956e36 / (6.17e18)2 ˜ 1.39 × 10?1° m/s2
+  & term_gravity (Crab)  = G\cdotM_NS/r2 = G \times 2.786e30 / (104)2 ˜ 1.86 \times 106 m/s2 \\
+  & term_gravity (Sgr A*) = G\cdotM_BH/r2 = G \times 7.956e36 / (6.17e18)2 ˜ 1.39 \times 10?1° m/s2
 \end{aligned}
 $$
 
-Despite the 10 million-fold higher mass of Sgr A*, the 6 × 1014-fold larger radius overwhelms it,
+Despite the 10 million-fold higher mass of Sgr A*, the 6 $\times$ 1014-fold larger radius overwhelms it,
 making Sgr A*'s effective surface gravity 16 orders smaller than the Crab's. This difference in `a =
 term_gravity` changes the quadratic discriminant:
 
-- For Crab: large a ? small |x2| ? integrand × |x2| > 0 ? **positive buoyancy**
+- For Crab: large a ? small |x2| ? integrand $\times$ |x2| > 0 ? **positive buoyancy**
 - For Sgr A*: tiny a ? x2 inverts via F_rel effect ? **negative buoyancy**
 
 **Radius determines sign, not ?0 alone:**
 $$
 \begin{aligned}
-  & UQFF buoyancy sign = sgn(x2) ? f(a = G·M/r2, b, c, F_rel, ?0) \\
+  & UQFF buoyancy sign = sgn(x2) ? f(a = G\cdotM/r2, b, c, F_rel, ?0) \\
   & At fixed ?0: sgn depends on r (through a)
 \end{aligned}
 $$
@@ -124,22 +124,22 @@ $$
 ### 2.3 Scale Ratio
 
 $$
-r_SgrA / r_Crab = 6.17×1018 / 104 = 6.17 × 1014
+r_SgrA / r_Crab = 6.17\times1018 / 104 = 6.17 \times 1014
 $$
 
-A factor of 6 × 1014 in radius at the same ?0 reverses the buoyancy sign. This is the largest
+A factor of 6 $\times$ 1014 in radius at the same ?0 reverses the buoyancy sign. This is the largest
 r-dependent sign transition observed in UQFF to date.
 
 ### 2.4 F_U_Bi Benchmark
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi} (Crab, r=104, ?0=10?15) ˜ +5.30 × 102°8 N   [POSITIVE] \\
-  & \text{F\_U\_Bi} (Sgr A*, r=6.17e18, ?0=10?15) ˜ -8.31 × 10211 N  [NEGATIVE]
+  & \text{F\_U\_Bi} (Crab, r=104, ?0=10?15) ˜ +5.30 \times 102°8 N   [POSITIVE] \\
+  & \text{F\_U\_Bi} (Sgr A*, r=6.17e18, ?0=10?15) ˜ -8.31 \times 10211 N  [NEGATIVE]
 \end{aligned}
 $$
 
-Same ?0, opposite signs. Ratio: `|F_SgrA*| / |F_Crab| ˜ 1,570` — the SMBH has 1,570× larger
+Same ?0, opposite signs. Ratio: `|F_SgrA*| / |F_Crab| ˜ 1,570` — the SMBH has 1,570$\times$ larger
 magnitude despite the opposite sign.
 
 ---
@@ -162,7 +162,7 @@ surface gravity despite large mass) enter the negative buoyancy domain.
 ## 4. ALMA Cycle 12 Observational Context
 
 - **Crab Nebula 230 GHz:** ALMA Band 6 synchrotron self-absorption frequency and CO J=2-1 isotopic ratio measurements in the swept-up molecular torus. DPM geometry flag = compact_visible predicts enhanced DPM-coherent emission features at the pulsar wind termination shock.
-- **EHT polarimetry:** B-field geometry in the Crab Pulsar wind nebula (PWN) probes DPM_resonance = 1.76 × 108 at spatial scales 104 ? 1016 m — the transition from compact_visible to diffuse_invisible DPM regime.
+- **EHT polarimetry:** B-field geometry in the Crab Pulsar wind nebula (PWN) probes DPM_resonance = 1.76 $\times$ 108 at spatial scales 104 ? 1016 m — the transition from compact_visible to diffuse_invisible DPM regime.
 - **Chandra ?0 map:** X-ray spectral fitting of the Crab can constrain ?0 through the expected DPM resonance line signature; confirmation of ?0 = 10?15 would validate the geometry sign-determination theorem.
 
 ---
@@ -189,7 +189,7 @@ Sign-Determination. Star-Magic Session 72d.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -208,7 +208,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -231,7 +231,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -352,7 +352,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -363,13 +363,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

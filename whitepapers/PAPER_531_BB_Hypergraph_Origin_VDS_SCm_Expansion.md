@@ -146,7 +146,7 @@ result = calc.compute()
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -245,7 +245,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.087 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -256,10 +256,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Navier-Stokes regularity (Millennium) | UQFF DVP hypergraph flow → bounded vorticity |ω|2 ≤ C via buoyancy | Clay Math. Navier-Stokes Problem: global regularity unknown | Clay / Fefferman 2006 | UQFF establishes bounded criterion |
-| QCD viscosity η/s | UQFF: κ × [SSq] / β_i ≈ 4.7×10-4 (dimensionless) | η/s = 1/(4π) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound PASS |
-| Turbulent dissipation scale (Kolmogorov) | η_K = (ν3/ε)^0.25; UQFF sets ε via DVP pocket scale ~10-13 m | Kolmogorov scale lab: 10-4–10-3 m (turbulent flows) | Fluid dynamics | UQFF sets quantum floor, not macroscopic |
-| Quark-gluon plasma viscosity (ALICE) | UQFF vacuum buoyancy coupling → QGP η/s consistent | ALICE QGP: η/s ~ 0.1–0.2 at √s=2.76 TeV | ALICE 2013 | PASS Consistent with viscous QGP regime |
+| Navier-Stokes regularity (Millennium) | UQFF DVP hypergraph flow $\to$ bounded vorticity |$\omega$|2 $\leq$ C via buoyancy | Clay Math. Navier-Stokes Problem: global regularity unknown | Clay / Fefferman 2006 | UQFF establishes bounded criterion |
+| QCD viscosity $\eta$/s | UQFF: $\kappa$ $\times$ [SSq] / $\beta$_i $\approx$ 4.7$\times$10-4 (dimensionless) | $\eta$/s = 1/(4$\pi$) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound PASS |
+| Turbulent dissipation scale (Kolmogorov) | $\eta$_K = ($\nu$3/$\varepsilon$)^0.25; UQFF sets $\varepsilon$ via DVP pocket scale ~10-13 m | Kolmogorov scale lab: 10-4–10-3 m (turbulent flows) | Fluid dynamics | UQFF sets quantum floor, not macroscopic |
+| Quark-gluon plasma viscosity (ALICE) | UQFF vacuum buoyancy coupling $\to$ QGP $\eta$/s consistent | ALICE QGP: $\eta$/s ~ 0.1–0.2 at $\sqrt{}$s=2.76 TeV | ALICE 2013 | PASS Consistent with viscous QGP regime |
 
 **New physics claim:** UQFF provides a buoyancy-regularisation mechanism for Navier-Stokes
 equations at the quantum vacuum scale — DVP pocket shells set a minimum dissipation scale
@@ -272,7 +272,7 @@ This constitutes a physical (not purely mathematical) approach to the NS Millenn
 
 ## §9 — References
 
-- PAPER_429: Three New UQFF Number Systems (VDS · DVP · BH)
+- PAPER_429: Three New UQFF Number Systems (VDS $\cdot$ DVP $\cdot$ BH)
 - PAPER_528: UQFF_comp Spectral Compression Eigenvalue Stability
 - PAPER_540: Yang-Mills DPM Gauge Quantization (Z denominates gap)
 - grok_share_fd81483544d.txt: BigBangHypergraphTheory source document

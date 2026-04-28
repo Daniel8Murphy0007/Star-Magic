@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_477
-title: "Buoyancy Coupling Constants β_i in the UQFF Framework"
+title: "Buoyancy Coupling Constants $\beta$_i in the UQFF Framework"
 session: 123
 date: 2026-01-01
 author: "Daniel T. Murphy"
@@ -10,7 +10,7 @@ tags: [vacuum, SCm, buoyancy, black-hole, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_477 — Buoyancy Coupling Constants β_i in the UQFF Framework
+# PAPER_477 — Buoyancy Coupling Constants $\beta$_i in the UQFF Framework
 **Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
@@ -21,11 +21,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The UQFF buoyancy coupling constants β_i (i = 1, 2, 3, 4) quantify the fraction of the gravitational
+The UQFF buoyancy coupling constants $\beta$_i (i = 1, 2, 3, 4) quantify the fraction of the gravitational
 sub-field Ug_i that is counteracted by the buoyancy response of the vacuum medium. The canonical
-value β_i = 0.6 (uniform for all i) encodes a 60% gravitational counterforce — meaning the net
+value $\beta$_i = 0.6 (uniform for all i) encodes a 60% gravitational counterforce — meaning the net
 effective gravity is 40% of the raw Ug field. This paper derives the buoyancy energy formula U_bi,
-justifies the β = 0.6 calibration, and shows how solar wind modulation via ε_sw introduces dynamic
+justifies the $\beta$ = 0.6 calibration, and shows how solar wind modulation via $\varepsilon$_sw introduces dynamic
 variation. Results are computed for solar system conditions and compared to published planetary
 orbital data.
 
@@ -39,7 +39,7 @@ fluid, a massive body in the [SCm]+[UA] vacuum medium displaces vacuum energy an
 counterforce.
 
 The key insight is that this counterforce is not 100% — the vacuum medium is compressible and the
-buoyancy efficiency is β_i ≈ 0.6.
+buoyancy efficiency is $\beta$_i $\approx$ 0.6.
 
 ---
 
@@ -53,50 +53,50 @@ $$U_{b,i} = -\beta_i \cdot U_{g,i} \cdot \Omega_g \cdot \frac{M_{BH}}{d_g} \cdot
 
 | Symbol | Definition | Canonical Value |
 |--------|-----------|----------------|
-| β_i | Buoyancy coupling constant | 0.6 (all i) |
+| $\beta$_i | Buoyancy coupling constant | 0.6 (all i) |
 | U_{g,i} | UQFF sub-field i energy density | Computed per system |
-| Ω_g | Galactic spin parameter | 7.3e-16 rad/s (MW) |
-| M_BH | Central black hole mass | 8 × 1036 kg (Sag A*) |
+| $\Omega$_g | Galactic spin parameter | 7.3e-16 rad/s (MW) |
+| M_BH | Central black hole mass | 8 $\times$ 1036 kg (Sag A*) |
 | d_g | Galactic distance (virial) | 2.55e20 m (MW) |
 | E_react | Reactive energy coupling | ~1 J/m3 (calibrated) |
-| ε_sw | Solar wind modulation factor | 0.001 |
-| ρ_vac,sw | Solar wind vacuum density | ~10-23 J/m3 |
+| $\varepsilon$_sw | Solar wind modulation factor | 0.001 |
+| $\rho$_vac,sw | Solar wind vacuum density | ~10-23 J/m3 |
 | U_UA | Universal Aether field energy | 7.09e-36 J/m3 |
 | t_n | Normalized time (0 = now) | 0 |
-| cos(π t_n) | Temporal phase | +1 at t_n = 0 |
+| cos($\pi$ t_n) | Temporal phase | +1 at t_n = 0 |
 
 ### 2.3 Simplification at t_n = 0
 
-At present epoch (t_n = 0): cos(π t_n) = 1, so:
+At present epoch (t_n = 0): cos($\pi$ t_n) = 1, so:
 
 $$U_{b,i}(t_n=0) = -\beta_i \cdot U_{g,i} \cdot \frac{\Omega_g M_{BH}}{d_g} \cdot E_{react} \cdot (1 + \varepsilon_{sw} \rho_{vac,sw}) \cdot U_{UA}$$
 
 ---
 
-## 3. Calibration: β = 0.6
+## 3. Calibration: $\beta$ = 0.6
 
 ### 3.1 Physical Justification
 
-The value β = 0.6 emerges from three independent calibrations:
+The value $\beta$ = 0.6 emerges from three independent calibrations:
 
 **Calibration 1 — Solar system orbital closure:**
-If β were 1.0, the net UQFF gravity would be 0 → no planetary orbits. If β were 0, buoyancy is
-absent → pure DPM-seeded (inconsistent with UQFF). At β = 0.6: net UQFF force = 0.4 × Ug → consistent
+If $\beta$ were 1.0, the net UQFF gravity would be 0 $\to$ no planetary orbits. If $\beta$ were 0, buoyancy is
+absent $\to$ pure DPM-seeded (inconsistent with UQFF). At $\beta$ = 0.6: net UQFF force = 0.4 $\times$ Ug $\to$ consistent
 with planetary orbit corrections at the 10-7 level.
 
 **Calibration 2 — [SSq] = 0.57 consistency:**
-The ratio β / [SSq] = 0.6 / 0.57 ≈ 1.05 ≈ 1 + ε where ε = f_TRZ / 2. This connects the buoyancy
+The ratio $\beta$ / [SSq] = 0.6 / 0.57 $\approx$ 1.05 $\approx$ 1 + $\varepsilon$ where $\varepsilon$ = f_TRZ / 2. This connects the buoyancy
 fraction to the superconducting medium reactivity through the time-reversal zone.
 
 **Calibration 3 — Molecular cloud stability:**
 Molecular clouds (like the Pillars of Creation) remain gravitationally stable despite internal
-turbulence. At β = 0.6, the UQFF buoyancy provides sufficient internal pressure (40% of
+turbulence. At $\beta$ = 0.6, the UQFF buoyancy provides sufficient internal pressure (40% of
 self-gravity) to resist collapse — consistent with observed lifetimes of 107–108 yr without complete
 fragmentation.
 
 ### 3.2 Numerical Check
 
-At solar conditions: U_{g,1} ≈ G M_M_sun / r_M_sun2 = 274 m/s2 (surface gravity).
+At solar conditions: U_{g,1} $\approx$ G M_M_sun / r_M_sun2 = 274 m/s2 (surface gravity).
 
 $$U_{b,1} = -0.6 \times 274 \times \frac{7.3 \times 10^{-16} \times 8 \times 10^{36}}{2.55 \times 10^{20}} \times 1 \times (1+10^{-20}) \times 7.09 \times 10^{-36}$$
 
@@ -111,67 +111,67 @@ significant at galactic scales where Ug fields are weak.
 
 ## 4. Solar Wind Modulation
 
-The ε_sw = 0.001 term introduces a dynamic modulation:
+The $\varepsilon$_sw = 0.001 term introduces a dynamic modulation:
 
 $$\Delta U_{b,i} = \beta_i U_{g,i} \varepsilon_{sw} \rho_{vac,sw} U_{UA}$$
 
-During solar maximum: ε_sw → 0.001 × (1 + A) where A ≈ 0.2 (see SolarWindModulationModule).
+During solar maximum: $\varepsilon$_sw $\to$ 0.001 $\times$ (1 + A) where A $\approx$ 0.2 (see SolarWindModulationModule).
 
 This creates a 20% variation in the buoyancy correction — potentially observable as seasonal
 variations in precision gravitational measurements at Earth's surface.
 
 ---
 
-## 5. Temporal Phase: cos(π t_n)
+## 5. Temporal Phase: cos($\pi$ t_n)
 
-The cos(π t_n) factor introduces oscillatory behavior:
+The cos($\pi$ t_n) factor introduces oscillatory behavior:
 
-| t_n | cos(π t_n) | Physical State |
+| t_n | cos($\pi$ t_n) | Physical State |
 |-----|-----------|----------------|
 | 0 | +1 | Present (buoyancy active, full magnitude) |
 | 0.5 | 0 | Half-period (buoyancy switches off) |
-| 1 | −1 | Full period reversal (negative buoyancy — gravity enhanced) |
+| 1 | -1 | Full period reversal (negative buoyancy — gravity enhanced) |
 | 2 | +1 | Repeat |
 
-The period T_osc corresponds to cosmic timescales related to the [SCm] decay rate. At t_n ≠ 0, the
+The period T_osc corresponds to cosmic timescales related to the [SCm] decay rate. At t_n $\neq$ 0, the
 formula modulates the DPM birth contribution to present-day gravity.
 
 ---
 
 ## 6. Multi-System Buoyancy Table
 
-| System | U_{g,1} | β₁ | U_{b,1} (J/m3) |
+| System | U_{g,1} | $\beta$1 | U_{b,1} (J/m3) |
 |--------|---------|-----|----------------|
-| Sun surface | 274 m/s2 | 0.6 | −2.68e-23 |
-| Sag A* horizon | 5.6e8 m/s2 | 0.6 | −5.5e-17 |
-| Magnetar surface | 1.79e12 m/s2 | 0.6 | −1.75e-13 |
+| Sun surface | 274 m/s2 | 0.6 | -2.68e-23 |
+| Sag A* horizon | 5.6e8 m/s2 | 0.6 | -5.5e-17 |
+| Magnetar surface | 1.79e12 m/s2 | 0.6 | -1.75e-13 |
 | Pillar of Creation | 9.4e-13 m/s2 | 0.6 | +support | 
-| Andromeda disk | ~6 m/s2 | 0.6 | −negligible |
+| Andromeda disk | ~6 m/s2 | 0.6 | -negligible |
 
 ---
 
 ## 7. Physical Implications
 
-The β = 0.6 framework implies:
+The $\beta$ = 0.6 framework implies:
 
 1. **No system has zero net gravity**: Even at maximum buoyancy, 40% of Ug remains
 2. **Galaxy rotation curves**: Buoyancy supplements dark matter in the outer disk where Ug is weak —
 buoyancy cannot fully explain flat rotation curves but reduces the required dark matter fraction by
 ~30%
 3. **Galaxy cluster stability**: At cluster scales, buoyancy provides internal pressure equivalent
-to ~0.6 × ICM thermal pressure — consistent with observed virial theorem ratios
-4. **Molecular cloud lifetimes**: β = 0.6 provides 60% support against self-gravity → τ_cloud ∝ (1 −
-β)-1 τ_ff ≈ 2.5e7 yr (observed: 107–108 yr PASS)
+to ~0.6 $\times$ ICM thermal pressure — consistent with observed virial theorem ratios
+4. **Molecular cloud lifetimes**: $\beta$ = 0.6 provides 60% support against self-gravity $\to$ $\tau$_cloud $\propto$ (1 -
+$\beta$)-1 $\tau$_ff $\approx$ 2.5e7 yr (observed: 107–108 yr PASS)
 
 ---
 
 ## 8. Conclusion
 
-The buoyancy coupling constant β_i = 0.6 (uniform across all UQFF sub-fields) provides a 60%
+The buoyancy coupling constant $\beta$_i = 0.6 (uniform across all UQFF sub-fields) provides a 60%
 gravitational counterforce that stabilizes astrophysical systems at scales from molecular clouds to
 galaxy clusters. The value emerges naturally from the [SSq] = 0.57 calibration, the time-reversal
-zone fraction f_TRZ = 0.1, and the solar wind modulation constant ε_sw = 0.001. Dynamic modulation
-via cos(π t_n) connects present buoyancy to the DPM birth model timeline.
+zone fraction f_TRZ = 0.1, and the solar wind modulation constant $\varepsilon$_sw = 0.001. Dynamic modulation
+via cos($\pi$ t_n) connects present buoyancy to the DPM birth model timeline.
 
 ---
 
@@ -281,7 +281,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.145 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -292,10 +292,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -306,9 +306,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-**UQFF Parameters:** β_i = 0.6 | ε_sw = 0.001 | [SSq] = 0.57 | Ω_g = 7.3e-16 rad/s  
+**UQFF Parameters:** $\beta$_i = 0.6 | $\varepsilon$_sw = 0.001 | [SSq] = 0.57 | $\Omega$_g = 7.3e-16 rad/s  
 **Class:** `BuoyancyCouplingModule` | **Source:** `g`rok_share_b0a3dc1d`.txt` L2082–2276  
-**Tags:** buoyancy, coupling-constants, β_i, vacuum-medium, molecular-clouds, galaxy-clusters,
+**Tags:** buoyancy, coupling-constants, $\beta$_i, vacuum-medium, molecular-clouds, galaxy-clusters,
 solar-wind  
 
 

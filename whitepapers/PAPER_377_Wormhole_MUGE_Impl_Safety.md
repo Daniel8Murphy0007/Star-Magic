@@ -253,13 +253,13 @@ add_executable(star_magic main.cpp celestial.cpp muge.cpp fluidsolver.cpp)
 
 | System | r (m) | a_worm (m/s2) |
 |---|---|---|
-| Magnetar SGR 1745-2900 | 1e4 | 7.09e-36 / 1e8 ≈ 7.09e-44 |
-| Sagittarius A* | 1e12 | 7.09e-36 / 1e24 ≈ 7.09e-60 |
-| Tapestry of Blazing Starbirth | 3.086e17 | 7.09e-36 / 9.52e34 ≈ 7.44e-71 |
+| Magnetar SGR 1745-2900 | 1e4 | 7.09e-36 / 1e8 $\approx$ 7.09e-44 |
+| Sagittarius A* | 1e12 | 7.09e-36 / 1e24 $\approx$ 7.09e-60 |
+| Tapestry of Blazing Starbirth | 3.086e17 | 7.09e-36 / 9.52e34 $\approx$ 7.44e-71 |
 | Westerlund 2 | 3.086e17 | same as Tapestry |
-| Pillars of Creation | 9.46e15 | 7.09e-36 / 8.95e31 ≈ 7.92e-68 |
-| Rings of Relativity | 3.086e17 | 7.09e-36 / 9.52e34 ≈ 7.44e-71 |
-| Student's Guide | 1e26 | 7.09e-36 / 1e52 ≈ 7.09e-88 |
+| Pillars of Creation | 9.46e15 | 7.09e-36 / 8.95e31 $\approx$ 7.92e-68 |
+| Rings of Relativity | 3.086e17 | 7.09e-36 / 9.52e34 $\approx$ 7.44e-71 |
+| Student's Guide | 1e26 | 7.09e-36 / 1e52 $\approx$ 7.09e-88 |
 
 The wormhole term is always subdominant (<< other MUGE terms), confirming it acts
 as a geometrically-grounded perturbation rather than a dominant contribution.
@@ -382,7 +382,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.057 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -393,13 +393,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

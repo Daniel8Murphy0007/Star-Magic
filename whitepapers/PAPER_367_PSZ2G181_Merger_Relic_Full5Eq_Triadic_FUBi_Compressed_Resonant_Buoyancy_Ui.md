@@ -27,9 +27,9 @@ Resonant + FU_Bi + U_i
 PSZ2 G181.06+48.47 is a massive merging galaxy cluster at z = 0.40 (M = 10-4 M?) hosting a prominent
 radio merger relic detected in Planck and confirmed in Chandra 2025 X-ray observations (B_0 = 10? T
 intracluster field). UQFF computes all five canonical force forms simultaneously, establishing the
-complete triadic merger relic proof: (1) FU_Bi_i  -8.32×107 N (buoyancy-unified), (2) Compressed 
-4.12×10-4 N (MUGE Compressed Mode), (3) Resonant  -2.29×10-4 N (MUGE Resonant Mode), (4) Buoyancy 
-1.02×10? N (UQFF net upward force), and (5) U_i  (1.45×10-47 + i§8.20×10-5) J/m (complex vacuum
+complete triadic merger relic proof: (1) FU_Bi_i  -8.32$\times$107 N (buoyancy-unified), (2) Compressed 
+4.12$\times$10-4 N (MUGE Compressed Mode), (3) Resonant  -2.29$\times$10-4 N (MUGE Resonant Mode), (4) Buoyancy 
+1.02$\times$10? N (UQFF net upward force), and (5) U_i  (1.45$\times$10-47 + i§8.20$\times$10-5) J/m (complex vacuum
 energy density).
 
 ---
@@ -99,19 +99,19 @@ quadrature of the quantum vacuum oscillations.
 
 | Equation | Mode | Value | Sign |
 |----------|------|-------|------|
-| `FU_Bi_i` | UQFF Buoyancy-Unified | -8.32×107 N | Negative (inward) |
-| F_compressed | MUGE Compressed | +4.12×10-4 N | Positive (standard gravity) |
-| F_resonant | MUGE Resonant | -2.29×10-4 N | Negative (resonance backscatter) |
-| F_buoyancy | UQFF Buoyancy | +1.02×10? N | Positive (upward buoyant lift) |
-| U_i (real) | Complex vacuum density | 1.45×10-47 J/m | Real energy |
-| U_i (imag) | Phase quadrature | 8.20×10-5 J/m | Imaginary (quantum phase) |
+| `FU_Bi_i` | UQFF Buoyancy-Unified | -8.32$\times$107 N | Negative (inward) |
+| F_compressed | MUGE Compressed | +4.12$\times$10-4 N | Positive (standard gravity) |
+| F_resonant | MUGE Resonant | -2.29$\times$10-4 N | Negative (resonance backscatter) |
+| F_buoyancy | UQFF Buoyancy | +1.02$\times$10? N | Positive (upward buoyant lift) |
+| U_i (real) | Complex vacuum density | 1.45$\times$10-47 J/m | Real energy |
+| U_i (imag) | Phase quadrature | 8.20$\times$10-5 J/m | Imaginary (quantum phase) |
 
 ---
 
 ## 5. Physical Significance
 
 PSZ2 G181.06+48.47 is the first galaxy cluster for which UQFF has computed all four force modes
-simultaneously. The contrast between FU_Bi_i  -8.32×107 N and the MUGE modes (10?4 N) illustrates
+simultaneously. The contrast between FU_Bi_i  -8.32$\times$107 N and the MUGE modes (10?4 N) illustrates
 the extreme dynamic range of UQFF  58 orders of magnitude between the quantum vacuum mode and the
 cosmological buoyancy force. This is the characteristic signature of the UQFF Triadic Architecture:
 three physically distinct force scales (quantum, classical, buoyancy) coexist in any astrophysical
@@ -315,7 +315,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.053 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -326,13 +326,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

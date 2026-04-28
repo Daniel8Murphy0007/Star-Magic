@@ -40,8 +40,8 @@ picture of any astrophysical body or scale.
 
 $$
 \begin{aligned}
-  & FU_g1 = Σ_{k=1}^{N} [ k_k * (f_UA'1 * f_SCm1 * R_EB1) * (f_UA'2 * f_SCm2 * R_EB2) / r2 \\
-  & * G_k(UA, Ub, ν_THz, geometry_k) ]
+  & FU_g1 = \Sigma_{k=1}^{N} [ k_k * (f_UA'1 * f_SCm1 * R_EB1) * (f_UA'2 * f_SCm2 * R_EB2) / r2 \\
+  & * G_k(UA, Ub, \nu_THz, geometry_k) ]
 \end{aligned}
 $$
 
@@ -50,8 +50,8 @@ $$
 - f_SCm = 0.001 (superconductive material)
 - R_EB = k_R * Z (electrostatic barrier * atomic number, k_R=1)
 - r = characteristic system radius (m)
-- ν_THz = 1e12 Hz (THz hole resonance)
-- G_k = sin(θ) for spherical, cos(ϕ) for toroidal, f(ν_THz) for linear geometry
+- $\nu$_THz = 1e12 Hz (THz hole resonance)
+- G_k = sin($\theta$) for spherical, cos(ϕ) for toroidal, f($\nu$_THz) for linear geometry
 
 **Purpose:** Models gravitational buoyancy interactions across 26 quantum states. Replaces Newton's
 G with DPM-mediated E_DPM energy density.
@@ -62,10 +62,10 @@ G with DPM-mediated E_DPM energy density.
 
 $$
 \begin{aligned}
-  & R(t) = Σ_{i=1}^{26} [ R_Ug1,i * cos(ω_Ug1,i * t) \\
-  & + R_Ug2,i * cos(ω_Ug2,i * t) \\
-  & + R_Ug3,i * cos(ω_Ug3,i * t) \\
-  & + R_Ug4i,i * cos(ω_Ug4i,i * t) ]
+  & R(t) = \Sigma_{i=1}^{26} [ R_Ug1,i * cos(\omega_Ug1,i * t) \\
+  & + R_Ug2,i * cos(\omega_Ug2,i * t) \\
+  & + R_Ug3,i * cos(\omega_Ug3,i * t) \\
+  & + R_Ug4i,i * cos(\omega_Ug4i,i * t) ]
 \end{aligned}
 $$
 
@@ -74,10 +74,10 @@ $$
 - R_Ug2,i = Ug2_i * (1 + M_sf(t))
 - R_Ug3,i = Ug3_i * (1 - T_lock(t))
 - R_Ug4i,i = Ug4i_i * (1 + f_Um,i)
-- ω_Ug1,i = 2π / (T_sf / i)  where T_sf is star-formation cycle
-- ω_Ug2,i = 2π / (T_shell / i)
-- ω_Ug3,i = 2π / (T_sweep / i)
-- ω_Ug4i,i = 2π / (T_THz / i) = 2π / (1e-12 / i)
+- $\omega$_Ug1,i = 2$\pi$ / (T_sf / i)  where T_sf is star-formation cycle
+- $\omega$_Ug2,i = 2$\pi$ / (T_shell / i)
+- $\omega$_Ug3,i = 2$\pi$ / (T_sweep / i)
+- $\omega$_Ug4i,i = 2$\pi$ / (T_THz / i) = 2$\pi$ / (1e-12 / i)
 
 **Purpose:** Captures creative/stabilizing resonance across all scales. Resonance is the constructor
 and sustainer of orbital patterns, star formation cycles, and ring dynamics.
@@ -88,20 +88,20 @@ and sustainer of orbital patterns, star formation cycles, and ring dynamics.
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi} = Σ_{k=1}^{N} [ k_{Ub,k} * (f_UA' * f_SCm * R_EB) / r2 \\
-  & * H_k(ν_THz, U_b, geometry_k) * f_Ub ]
+  & \text{F\_U\_Bi} = \Sigma_{k=1}^{N} [ k_{Ub,k} * (f_UA' * f_SCm * R_EB) / r2 \\
+  & * H_k(\nu_THz, U_b, geometry_k) * f_Ub ]
 \end{aligned}
 $$
 
 **Variables:**
 - k_{Ub,k} = 0.1 (buoyancy coupling constant per state k)
-- H_k = cos(ϕ_k) * f(ν_THz)  (superconductivity modulation)
-  - ϕ_k = geometry angle for state k (0 to 2π across 26 states)
-  - f(ν_THz) = 1 (unit THz response, calibration-table dependent)
-- f_Ub ∝ Δk_η  (calibration difference = imaginary/quantum buoyancy deviation)
-  - Galaxy-scale: f_Ub ∝ 10^9
-  - Stellar-scale: f_Ub ∝ 10^7
-  - Planetary/atomic-scale: f_Ub ∝ 10^5 − 10^6
+- H_k = cos(ϕ_k) * f($\nu$_THz)  (superconductivity modulation)
+  - ϕ_k = geometry angle for state k (0 to 2$\pi$ across 26 states)
+  - f($\nu$_THz) = 1 (unit THz response, calibration-table dependent)
+- f_Ub $\propto$ $\Delta$k_$\eta$  (calibration difference = imaginary/quantum buoyancy deviation)
+  - Galaxy-scale: f_Ub $\propto$ 10^9
+  - Stellar-scale: f_Ub $\propto$ 10^7
+  - Planetary/atomic-scale: f_Ub $\propto$ 10^5 - 10^6
 
 **Purpose:** The massless, superconducting quantum counterforce to the gravitational component. U_Bi
 models the universal buoyancy that keeps all bodies afloat in their respective environments, from
@@ -118,7 +118,7 @@ DPM = UA' + SCm
 $$
 
 - **UA'** = Universal Aether component (non-local connectivity)
-- **SCm** = Super Conductive Material (superconductive magnetism, [SCm] ≈ 10^-5 * i2 T at quantum state i)
+- **SCm** = Super Conductive Material (superconductive magnetism, [SCm] $\approx$ 10^-5 * i2 T at quantum state i)
 
 DPM mediates all four forces (U_g1–U_g4i) and is the coherent nuclear cell common to every atom and
 every astrophysical body.
@@ -135,7 +135,7 @@ $$
   & r_i = r/i       (quantum state-scaled radius) \\
   & Q_i = i         (quantum state factor, i = 1..26) \\
   & [SCm]_i = 1e-5 * i2 T \\
-  & ħ = 1.0546e-34 J·s \\
+  & ħ = 1.0546e-34 J\cdots \\
   & c = 3e8 m/s
 \end{aligned}
 $$
@@ -154,10 +154,10 @@ Each quantum state i carries its own vacuum energy density:
 
 $$
 \begin{aligned}
-  & ρ_vac,[UA'],i  = 7.09e-36 * i  J/m3   (Aether vacuum density) \\
-  & ρ_vac,[SCm],i  = 7.09e-37 * i  J/m3   (SCm vacuum density) \\
-  & ratio: ρ_UA/ρ_SCm = 10 (constant across all states) \\
-  & (1 + ρ_UA,i / ρ_SCm,i) = 11 (universal amplification factor)
+  & \rho_vac,[UA'],i  = 7.09e-36 * i  J/m3   (Aether vacuum density) \\
+  & \rho_vac,[SCm],i  = 7.09e-37 * i  J/m3   (SCm vacuum density) \\
+  & ratio: \rho_UA/\rho_SCm = 10 (constant across all states) \\
+  & (1 + \rho_UA,i / \rho_SCm,i) = 11 (universal amplification factor)
 \end{aligned}
 $$
 
@@ -171,9 +171,9 @@ $$
 \begin{aligned}
   & Total UQFF force = FU_g1(r,t) + R(t) + \text{F\_U\_Bi}(r,t) \\
   & Where: \\
-  & FU_g1  = Σ_{i=1}^{26} (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)  [gravitational] \\
-  & R(t)   = Σ_{i=1}^{26} (resonant oscillatory terms)         [resonant] \\
-  & \text{F\_U\_Bi} = Σ_{k=1}^{26} (buoyancy counterforce terms)       [buoyant]
+  & FU_g1  = \Sigma_{i=1}^{26} (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)  [gravitational] \\
+  & R(t)   = \Sigma_{i=1}^{26} (resonant oscillatory terms)         [resonant] \\
+  & \text{F\_U\_Bi} = \Sigma_{k=1}^{26} (buoyancy counterforce terms)       [buoyant]
 \end{aligned}
 $$
 
@@ -237,7 +237,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -338,7 +338,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.193 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -349,13 +349,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

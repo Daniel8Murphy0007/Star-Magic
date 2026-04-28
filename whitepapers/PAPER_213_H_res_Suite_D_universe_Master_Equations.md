@@ -41,7 +41,7 @@ future JWST/Roman observations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -52,8 +52,8 @@ present in Standard Model treatments.
 $$
 \begin{aligned}
   & Full H_res expression: \\
-  & H_res = A_res · sin(?_res·t_n + f_res) \\
-  & + U_dp · [SCm] · k_nuc \\
+  & H_res = A_res \cdot sin(?_res\cdott_n + f_res) \\
+  & + U_dp \cdot [SCm] \cdot k_nuc \\
   & + S_shell \\
   & where the 7 sub-equations are: \\
   & 1. A_res  (resonance amplitude) \\
@@ -121,10 +121,10 @@ For SGR A* f_TRZ = 5.95×10-4 Hz:
 ### Sub-Equation 4: Dipole Potential U_dp
 $$
 \begin{aligned}
-  & U_dp = k_e·p_dipole·cos(?)/r2 \\
+  & U_dp = k_e\cdotp_dipole\cdotcos(?)/r2 \\
   & where: \\
-  & p_dipole = charge separation × distance (nuclear electric dipole) \\
-  & k_e = 8.99×10? N·m2/C2 (Coulomb constant) \\
+  & p_dipole = charge separation \times distance (nuclear electric dipole) \\
+  & k_e = 8.99\times10? N\cdotm2/C2 (Coulomb constant) \\
   & ? = angle between dipole moment and observation direction \\
   & For symmetric nuclei (even-even, J=0): p_dipole = 0 \\
   & For deformed nuclei (odd, prolate): p_dipole ? 0 \\
@@ -136,13 +136,13 @@ $$
 ### Sub-Equation 5: [SCm] Superconductive Manifold Factor
 $$
 \begin{aligned}
-  & [SCm] = tanh(T_cc/T) × (1 - (B/B_c2)2) \\
+  & [SCm] = tanh(T_cc/T) \times (1 - (B/B_c2)2) \\
   & where: \\
   & T_cc = critical condensate temperature \\
   & B_c2 = upper critical magnetic field \\
   & For neutron star crust: \\
   & T_cc ˜ 108–10? K  (neutron Cooper pair critical temperature) \\
-  & B_c2 ˜ B_crit = 4.4×1013 T  (QED critical field) \\
+  & B_c2 ˜ B_crit = 4.4\times1013 T  (QED critical field) \\
   & T_NS ˜ 108 K ? tanh(1) ˜ 0.76 \\
   & B_magnetar ˜ 1015 T >> B_c2 ? (1 - (B/B_c2)2) ? negative ? [SCm] < 0 \\
   & ? Superconduction suppressed above B_c2 ? UQFF predicts reversed buoyancy
@@ -152,18 +152,18 @@ $$
 ### Sub-Equation 6: Nuclear Coupling k_nuc
 $$
 \begin{aligned}
-  & k_nuc = G·m_p·m_n/(r_nuc2) × Z·N/A \\
+  & k_nuc = G\cdotm_p\cdotm_n/(r_nuc2) \times Z\cdotN/A \\
   & Physical meaning: gravitational coupling of nuclear matter scaled by proton-neutron count \\
   & Numerically: \\
-  & G = 6.674×10?11 m3/(kg·s2) \\
-  & m_p = 1.673×10?27 kg \\
-  & m_n = 1.675×10?27 kg \\
-  & r_nuc = 1.2×A^{1/3}×10?15 m  (nuclear radius formula) \\
+  & G = 6.674\times10?11 m3/(kg\cdots2) \\
+  & m_p = 1.673\times10?27 kg \\
+  & m_n = 1.675\times10?27 kg \\
+  & r_nuc = 1.2\timesA^{1/3}\times10?15 m  (nuclear radius formula) \\
   & For 56Fe (Z=26, N=30, A=56): \\
-  & r_nuc = 1.2×56^{1/3}×10?15 = 1.2×3.83×10?15 = 4.6×10?15 m \\
-  & k_nuc = (6.674×10?11 × 1.673×10?27 × 1.675×10?27)/(4.6×10?15)2 × 26×30/56 \\
-  & = 3.13×10-64 / 2.12×10?2? × 13.9 \\
-  & = 2.1×10?36 m/s2 per unit coupling
+  & r_nuc = 1.2\times56^{1/3}\times10?15 = 1.2\times3.83\times10?15 = 4.6\times10?15 m \\
+  & k_nuc = (6.674\times10?11 \times 1.673\times10?27 \times 1.675\times10?27)/(4.6\times10?15)2 \times 26\times30/56 \\
+  & = 3.13\times10-64 / 2.12\times10?2? \times 13.9 \\
+  & = 2.1\times10?36 m/s2 per unit coupling
 \end{aligned}
 $$
 
@@ -192,11 +192,11 @@ near stellar interiors with neutron-rich nuclear composition
 $$
 \begin{aligned}
   & H_res as a 3-component vector: \\
-  & [H_res] = [A_res · sin(?_res·t_n + f_res)]   ? nuclear oscillation \\
-  & + [U_dp · [SCm] · k_nuc           ]   ? dipole-SC coupling \\
+  & [H_res] = [A_res \cdot sin(?_res\cdott_n + f_res)]   ? nuclear oscillation \\
+  & + [U_dp \cdot [SCm] \cdot k_nuc           ]   ? dipole-SC coupling \\
   & + [S_shell                          ]   ? discrete shell correction \\
   & In UQFF g(r,t): \\
-  & g(r,t) +=  H_res / (r2 · M_nuclear / M_total) \\
+  & g(r,t) +=  H_res / (r2 \cdot M_nuclear / M_total) \\
   & Physical meaning: fraction of gravitational field from nuclear resonance \\
   & H_res term is typically 10?1° to 10?15 of total g (very small correction) \\
   & But at nuclear densities (neutron star core): becomes O(1) correction
@@ -210,17 +210,17 @@ $$
 $$
 \begin{aligned}
   & Full UQFF D_universe expression: \\
-  & D_universe = c · ?0^{t0} dt / a(t)  ×  N_correction \\
+  & D_universe = c \cdot ?0^{t0} dt / a(t)  \times  N_correction \\
   & where: \\
   & N_correction = (1 + UQFF_quantum + UQFF_bounced + UQFF_curved) \\
-  & UQFF_quantum  = (h/v(?x?p)) · (2p/t_Hubble) / (c·H0) \\
+  & UQFF_quantum  = (h/v(?x?p)) \cdot (2p/t_Hubble) / (c\cdotH0) \\
   & UQFF_bounced  = ?_LQC/?_crit  (LQC bounce contribution from PAPER_203) \\
   & UQFF_curved   = (k/H02)  (spatial curvature term, O_k ˜ 0 limit) \\
   & Standard comoving distance: \\
-  & D_c = c/H0 · ?0^z dz' / v(O_m(1+z')3 + O_? + O_k(1+z')2) \\
+  & D_c = c/H0 \cdot ?0^z dz' / v(O_m(1+z')3 + O_? + O_k(1+z')2) \\
   & For z ? 1100 (CMB last scattering), D_c ˜ 14.0 Gpc \\
   & Proper diameter of observable universe: \\
-  & D_universe = 2·(1+z_rec)·D_c,rec ˜ 2 × 1101 × 14.0 Gpc ˜ 93 Gly  (standard)
+  & D_universe = 2\cdot(1+z_rec)\cdotD_c,rec ˜ 2 \times 1101 \times 14.0 Gpc ˜ 93 Gly  (standard)
 \end{aligned}
 $$
 
@@ -232,7 +232,7 @@ $$
 $$
 \begin{aligned}
   & H(t,z) in UQFF g(r,t): \\
-  & H(t,z) = H0·v(O_m·(1+z)3 + O_? + O_r·(1+z)4) \\
+  & H(t,z) = H0\cdotv(O_m\cdot(1+z)3 + O_? + O_r\cdot(1+z)4) \\
   & Present values: H0 = 67.4 km/s/Mpc, O_m = 0.315, O_? = 0.685 \\
   & For D_universe computation: \\
   & Integral over H(t,z) from z=0 to z=1100 ? D_c = 14.0 Gpc \\
@@ -244,8 +244,8 @@ $$
 $$
 \begin{aligned}
   & ?_? = ?c2/(8pG)   in standard form \\
-  & UQFF: ?? ? + ??(r) where ??(r) = 3·Ug4(r)/c2 \\
-  & ?? ~ k_UA·?_vac,[UA]·r?2 (scale dependent) \\
+  & UQFF: ?? ? + ??(r) where ??(r) = 3\cdotUg4(r)/c2 \\
+  & ?? ~ k_UA\cdot?_vac,[UA]\cdotr?2 (scale dependent) \\
   & At Hubble scale: ?? ? 0  (recovering ?CDM) \\
   & At galaxy scale: ??/? ~ 0.001 ? detectable via |?-(-1)| test
 \end{aligned}
@@ -255,24 +255,24 @@ $$
 $$
 \begin{aligned}
   & h quantum correction to D_universe: \\
-  & ?D_u/D_u = (h/v(?x?p)) · (2p/t_Hubble) / (c·H0·D_c) \\
-  & h = 1.055×10?34 J·s \\
+  & ?D_u/D_u = (h/v(?x?p)) \cdot (2p/t_Hubble) / (c\cdotH0\cdotD_c) \\
+  & h = 1.055\times10?34 J\cdots \\
   & uncertainty: v(?x?p) ~ h (minimum uncertainty) \\
-  & ? (h/h) × (2p/t_Hubble)/(c·H0) = (2p/t_Hubble2) × small \\
-  & Numerically: 2p/(4.35×1017 s)2 × 1/(c·H0) \\
-  & = 1.44×10?17 / (3×108 × 2.18×10?18) ˜ 1.44×10?17 / 6.54×10?1° ˜ 2.2×10-8 \\
-  & ?D_u = 2.2×10-8 × 93 Gly ˜ 2000 ly correction \\
+  & ? (h/h) \times (2p/t_Hubble)/(c\cdotH0) = (2p/t_Hubble2) \times small \\
+  & Numerically: 2p/(4.35\times1017 s)2 \times 1/(c\cdotH0) \\
+  & = 1.44\times10?17 / (3\times108 \times 2.18\times10?18) ˜ 1.44\times10?17 / 6.54\times10?1° ˜ 2.2\times10-8 \\
+  & ?D_u = 2.2\times10-8 \times 93 Gly ˜ 2000 ly correction \\
   & (comparable to resolution limit of future cosmological surveys)
 \end{aligned}
 $$
 
 ### 5.4 Spatial Curvature Term
 O_k term: 
-D_c(O_k?0) = (c/H0) × (1/v|O_k|) × sin/sinh(v|O_k|·?...) 
+D_c(O_k?0) = (c/H0) $\times$ (1/v|O_k|) $\times$ sin/sinh(v|O_k|$\cdot$?...) 
 Planck 2018 constraint: |O_k| < 0.002 
 UQFF does not predict non-zero O_k independently; 
 however, LQC bounce may generate small O_k: 
-|O_k|_LQC ˜ (H_bounce × ?_LQC)/(H02) ~ 10-6 
+|O_k|_LQC ˜ (H_bounce $\times$ ?_LQC)/(H02) ~ 10-6 
 ? Negligible contribution at present epoch
 
 ---
@@ -312,7 +312,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -331,7 +331,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -433,7 +433,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -444,13 +444,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

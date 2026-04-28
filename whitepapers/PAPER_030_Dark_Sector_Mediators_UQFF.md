@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Field Framework
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **arXiv Reference:** 2506.15347 (LFV B ? K* te, LHCb 5.4 fb?)  
 **Validator:** `bsm_physics_validation.py`  PASSED  
@@ -29,15 +29,15 @@ Field Framework
 
 Lepton flavor-violating (LFV) B-meson decays B ? K* te provide clean null-result searches for dark
 sector mediators – Z' bosons, scalar leptoquarks, and heavy neutral leptons  that couple
-cross-generationally. LHCb measured BR(B ? K* t?e?) < 5.9×10-6 and BR(B ? K* t?e?) < 4.9×10-6 at 90%
+cross-generationally. LHCb measured BR(B ? K* t?e?) < 5.9$\times$10-6 and BR(B ? K* t?e?) < 4.9$\times$10-6 at 90%
 CL using 5.4 fb? of Run 2 data (arXiv:2506.15347). The Unified Quantum Field Framework (UQFF) maps
 these upper limits onto the Ug4 vacuum concentration term through the UQFF temporal-reversal
 parameter t_n, deriving a UQFF constraint t_n_LFV = 3.833. This implies dark mediator masses M_dark
 ? 2.8 TeV for electroweak-strength couplings. The UQFF suppression mechanism  cos(p  t_n) reversal 
-predicts that the true LFV rate is suppressed by a factor F_suppress = 2.7×10? relative to
+predicts that the true LFV rate is suppressed by a factor F_suppress = 2.7$\times$10? relative to
 tree-level estimates, consistent with the null LHCb result.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -77,8 +77,8 @@ using the B ? J/? K* normalization channel.
 
 | Mode | 90% CL Upper Limit | 95% CL Upper Limit |
 |------|--------------------|--------------------|
-| B ? K* t?e? | 5.9 × 10-6 | 7.1 × 10-6 |
-| B ? K* t?e? | 4.9 × 10-6 | 5.9 × 10-6 |
+| B ? K* t?e? | 5.9 $\times$ 10-6 | 7.1 $\times$ 10-6 |
+| B ? K* t?e? | 4.9 $\times$ 10-6 | 5.9 $\times$ 10-6 |
 
 These represent the world-best limits on charged-lepton-flavor-violating B ? K* transitions.
 
@@ -105,7 +105,7 @@ $$\mathcal{M}(B^0 \to K^{*0} \tau e) = \frac{g_{bs} g_{\tau e}}{M_{Z'}^2} \cdot 
 where F(q) is the B?K* transition form factor. The branching fraction scales as:
 $$\text{BR} \propto \left(\frac{g_{\tau e}}{M_{Z'}}\right)^2 \cdot \frac{\tau_B m_B^3}{192\pi^3}$$
 
-From the LHCb limit BR < 5.9×10-6:
+From the LHCb limit BR < 5.9$\times$10-6:
 $$\frac{g_{\tau e}}{M_{Z'}^2} < 1.8 \times 10^{-3} \text{ GeV}^{-2}$$
 
 For electroweak-strength coupling g_{te} ~ 0.3:
@@ -139,7 +139,7 @@ term. The branching fraction generates a UQFF temporal parameter via:
 
 $$t_n^{\rm LFV} = \frac{-\ln(\text{BR}_{\rm LFV}^{\rm limit})}{\pi}$$
 
-Using BR_limit = 5.9×10-6:
+Using BR_limit = 5.9$\times$10-6:
 $$t_n^{\rm LFV} = \frac{-\ln(5.9 \times 10^{-6})}{\pi} = \frac{12.040}{\pi} = 3.833$$
 
 This is the **UQFF LFV reversal parameter**  it defines the temporal phase at which the Ug4 cos(p
@@ -159,11 +159,11 @@ $$F_{\rm suppress} = 0.865^2 = 0.748$$
 
 The UQFF framework predicts that LFV amplitudes are suppressed by ~74.8% relative to a naive
 mediator exchange estimate, leaving only 25.2% of the tree-level rate observable. For a
-mediator-only estimate of BR_tree ~ 2.3×10-5, the UQFF prediction becomes:
+mediator-only estimate of BR_tree ~ 2.3$\times$10-5, the UQFF prediction becomes:
 
 $$\text{BR}_{\rm UQFF} = \text{BR}_{\rm tree} \times (1 - F_{\rm suppress}) = 2.3 \times 10^{-5} \times 0.252 = 5.8 \times 10^{-6}$$
 
-This is consistent with the 90% CL limit of 5.9×10-6  the UQFF prediction saturates the bound rather
+This is consistent with the 90% CL limit of 5.9$\times$10-6  the UQFF prediction saturates the bound rather
 than lying far below it.
 
 ### 4.3 Dark Mediator Mass from UQFF
@@ -174,7 +174,7 @@ $$M_{\rm dark}^{\rm UQFF} = m_B \cdot e^{\pi t_n / 2} = 5.279 \text{ GeV} \times
 
 Rounding to two significant figures: **M_dark  2.2 TeV**. This is remarkably consistent with the
 TeV-scale dark sector mediator masses indicated by flavor-diagonal Z' constraints (M_{Z'} ? 1.53 TeV
-from B_sBκ_s mixing).
+from B_sB$\kappa$_s mixing).
 
 ### 4.4 UQFF Coupling Hierarchy
 
@@ -182,9 +182,9 @@ The UQFF Ug4 contribution to the dark sector mediator provides a natural couplin
 
 | Mediator Type | UQFF Mapping | Implied Coupling |
 |---------------|--------------|-----------------|
-| Z' boson | k4  ?_vac  cos(p t_n) | g_{te}/M  1.8×10? GeV? |
-| Leptoquark S1 | Ug2  [SCm]_flavor | ?_{bt}?_{se} < 3.4×10? (1 TeV) |
-| HNL mixing | Ug4  t_n suppression | |V_{tN}| < 2.1×10-4 at m_N ~ 2 TeV |
+| Z' boson | k4  ?_vac  cos(p t_n) | g_{te}/M  1.8$\times$10? GeV? |
+| Leptoquark S1 | Ug2  [SCm]_flavor | ?_{bt}?_{se} < 3.4$\times$10? (1 TeV) |
+| HNL mixing | Ug4  t_n suppression | |V_{tN}| < 2.1$\times$10-4 at m_N ~ 2 TeV |
 
 The universal t_n suppression from UQFF naturally explains why all three classes of mediator are
 suppressed to below current experimental sensitivity  they share the same vacuum geometry.
@@ -200,22 +200,22 @@ aether string field Ug3 carries angular momentum that can flip lepton flavor at 
 
 $$\Gamma_{\rm LFV} = \frac{g_{\rm string}^2}{\tau_{\rm string}} \cdot |\langle K^{*0} | \bar{s} b | B^0 \rangle|^2$$
 
-where t_string = ?/E_react and E_react = tan4(?_C) = 2.846×10? (from Cabibbo angle ?_C = 0.227 rad).
+where t_string = ?/E_react and E_react = tan4(?_C) = 2.846$\times$10? (from Cabibbo angle ?_C = 0.227 rad).
 This produces a UQFF-estimated rate:
 
-$$\Gamma_{\rm LFV}^{\rm UQFF} \sim \frac{E_{\rm react}}{\hbar} \cdot F_B^2 \approx 2.85 \times 10^{-3} \times 2.15×10^{-2} \approx 6.1 \times 10^{-5} \text{ GeV}$$
+$$\Gamma_{\rm LFV}^{\rm UQFF} \sim \frac{E_{\rm react}}{\hbar} \cdot F_B^2 \approx 2.85 \times 10^{-3} \times 2.15\times10^{-2} \approx 6.1 \times 10^{-5} \text{ GeV}$$
 
 Converting to branching fraction via t_B = 1.519 ps:
 $$\text{BR}^{\rm string} \sim \Gamma \cdot \tau_B \approx 6.1 \times 10^{-5} \times 6.582 \times 10^{-13} \times 10^{24} \sim 10^{-6}$$
 
-This places the UQFF string-mediated LFV rate in the range 10?7×10-6, below current LHCb
+This places the UQFF string-mediated LFV rate in the range 10?7$\times$10-6, below current LHCb
 sensitivity, consistent with the null result.
 
 ### 5.2 Asymmetry Between t?e? and t?e? Final States
 
 The LHCb measurement shows a mild asymmetry:
-- BR(B ? K* t?e?) < 5.9×10-6
-- BR(B ? K* t?e?) < 4.9×10-6
+- BR(B ? K* t?e?) < 5.9$\times$10-6
+- BR(B ? K* t?e?) < 4.9$\times$10-6
 
 The ~17% lower limit on the t?e? mode is consistent with UQFF's prediction of a mild CP-like
 asymmetry from the SCm (superconducting manifold) term:
@@ -234,7 +234,7 @@ Future LHCb Upgrade II (50 fb?) will probe this to the 10-7 level.
 With 300 fb? at HL-LHC (LHCb Upgrade II):
 $$\text{BR}_{\rm reach} \sim 5.9 \times 10^{-6} \times \sqrt{5.4/300} = 7.9 \times 10^{-7}$$
 
-The UQFF prediction of BR ~5.8×10-6 is just at current sensitivity. If the UQFF parameter t_n
+The UQFF prediction of BR ~5.8$\times$10-6 is just at current sensitivity. If the UQFF parameter t_n
 evolves with luminosity (Ug4 ? L^{1/4} in temporal vacuum), the prediction would shift to:
 $$\text{BR}_{\rm UQFF}^{\rm 300 fb^{-1}} \approx 4.2 \times 10^{-6}$$
 
@@ -262,13 +262,13 @@ dark sector mediator mass prediction.
 
 ## 7. Conclusions
 
-The LHCb null result for B ? K* te (BR < 5.9×10-6 at 90% CL, arXiv:2506.15347) directly constrains
+The LHCb null result for B ? K* te (BR < 5.9$\times$10-6 at 90% CL, arXiv:2506.15347) directly constrains
 dark sector mediators in the UQFF framework through:
 
 1. **UQFF LFV parameter:** t_n^LFV = 3.833, derived from the Ug4 temporal reversal mapping of the
 branching fraction limit
 2. **Suppression factor:** F_suppress = 0.748, explaining the null result while predicting BR 
-5.8×10-6 (just below the LHCb limit)
+5.8$\times$10-6 (just below the LHCb limit)
 3. **Dark mediator mass:** M_dark  2.2 TeV from the UQFF vacuum energy scale
 4. **Generation universality:** All three mediator species (Z', leptoquark, HNL) share the same UQFF
 t_n suppression, providing a unified explanation
@@ -359,7 +359,7 @@ $$
 \end{aligned}
 $$
 
-*Validator output: `b`sm_physics_validation`.py` ? PASSED | κ = 0.0005/day | [SSq] = 0.57*
+*Validator output: `b`sm_physics_validation`.py` ? PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -373,14 +373,14 @@ $$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -395,10 +395,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -406,9 +406,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -416,8 +416,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -493,7 +493,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.143 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

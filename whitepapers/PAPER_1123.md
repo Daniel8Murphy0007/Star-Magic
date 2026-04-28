@@ -11,7 +11,7 @@ crosslinks: [PAPER_1121, PAPER_1122]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1123: H₂O Maser Emission from J-Type Shocks — UQFF S(t) Compression Verification
+# PAPER_1123: H2O Maser Emission from J-Type Shocks — UQFF S(t) Compression Verification
 
 ## Abstract
 
@@ -62,7 +62,7 @@ Overall alignment: **80%** — datasets on shock velocities and maser luminositi
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

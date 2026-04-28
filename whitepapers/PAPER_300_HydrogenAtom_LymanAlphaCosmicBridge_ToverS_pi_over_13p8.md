@@ -10,13 +10,13 @@ tags: [Hubble, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_300 — Hydrogen Atom Lyman-Alpha Cosmic Bridge: T/S = π/13.8 = 0.2277 at Atomic Scale
+# PAPER_300 — Hydrogen Atom Lyman-Alpha Cosmic Bridge: T/S = $\pi$/13.8 = 0.2277 at Atomic Scale
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
 **Session:** 85  
 **Module:** HYDROGEN_ATOM_UQFF_MODULE.cpp (27th C++ UQFF module — FIRST atomic-scale module)  
-**System:** Hydrogen ground state, Lyman-α transition (λ = 121.6 nm, ω_L = 1.549×1016 rad/s)  
+**System:** Hydrogen ground state, Lyman-$\alpha$ transition ($\lambda$ = 121.6 nm, $\omega$_L = 1.549$\times$1016 rad/s)  
 **Category:** Universal T/S Ratio — Atomic confirmation of PAPER_288 RSC cosmic-age bridge constant 
 **UQFF Version:** 2.0  
 
@@ -25,17 +25,17 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 The hydrogen atom's Lyman-alpha transition introduces a resonant oscillatory term to the UQFF
-framework characterized by ω_Lyman = 2πc/λ = 1.549×1016 rad/s. When this standing+traveling wave
+framework characterized by $\omega$_Lyman = 2$\pi$c/$\lambda$ = 1.549$\times$1016 rad/s. When this standing+traveling wave
 decomposition is expressed with the cosmic-age normalization established in PAPER_288 (RSC module),
-the traveling/standing amplitude ratio is T/S = (2π/T_U,gyr)/2 = π/T_U,gyr = π/13.8 = **0.2277** —
-identical to the PAPER_288 value. This constitutes the first demonstration that the π/T_U ratio is
-universal across 27 orders of magnitude in oscillation frequency, from the Lyman-α UV line (ω ~ 1016
-rad/s) to cosmic Hubble flow (H₀ ~ 10-18 s-1). The coupling factor χ_bridge = ω_Lyman × t_H =
-6.745×1033 connects atomic UV photon frequencies to Hubble-time scales.
+the traveling/standing amplitude ratio is T/S = (2$\pi$/T_U,gyr)/2 = $\pi$/T_U,gyr = $\pi$/13.8 = **0.2277** —
+identical to the PAPER_288 value. This constitutes the first demonstration that the $\pi$/T_U ratio is
+universal across 27 orders of magnitude in oscillation frequency, from the Lyman-$\alpha$ UV line ($\omega$ ~ 1016
+rad/s) to cosmic Hubble flow (H0 ~ 10-18 s-1). The coupling factor $\chi$_bridge = $\omega$_Lyman $\times$ t_H =
+6.745$\times$1033 connects atomic UV photon frequencies to Hubble-time scales.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -48,11 +48,11 @@ ground-state transition frequency:
 
 | Quantity | Value | Units |
 |----------|-------|-------|
-| Lyman-α wavelength λ_Ly | 1.216×10-7 | m |
-| Angular frequency ω_Lyman = 2πc/λ | **1.549×1016** | rad/s |
-| Wave vector k_Lyman = 2π/λ | 5.166×107 | m-1 |
-| Oscillation amplitude A_osc | 1×10-10 | m/s2 |
-| Hubble time t_H = 13.8 Gyr | 4.355×1017 | s |
+| Lyman-$\alpha$ wavelength $\lambda$_Ly | 1.216$\times$10-7 | m |
+| Angular frequency $\omega$_Lyman = 2$\pi$c/$\lambda$ | **1.549$\times$1016** | rad/s |
+| Wave vector k_Lyman = 2$\pi$/$\lambda$ | 5.166$\times$107 | m-1 |
+| Oscillation amplitude A_osc | 1$\times$10-10 | m/s2 |
+| Hubble time t_H = 13.8 Gyr | 4.355$\times$1017 | s |
 | T_universe | 13.8 | Gyr |
 
 ---
@@ -65,23 +65,23 @@ Following the PAPER_288 UQFF canonical form (RSC module):
 
 $$a_{\text{osc}} = \underbrace{2A \cos(\omega_L t)}_{\text{standing}} + \underbrace{\frac{2\pi}{T_{U,\text{gyr}}} \cdot A \cos(\omega_L t)}_{\text{traveling (cosmic normalized)}}$$
 
-At x = 0 (Bohr center), with ω_L = ω_Lyman:
+At x = 0 (Bohr center), with $\omega$_L = $\omega$_Lyman:
 
-- Standing peak: 2A = 2×10-10 m/s2
-- Traveling peak: (2π/13.8)×A = 4.553×10-11 m/s2
+- Standing peak: 2A = 2$\times$10-10 m/s2
+- Traveling peak: (2$\pi$/13.8)$\times$A = 4.553$\times$10-11 m/s2
 
 ### 2.2 Universal T/S Ratio [PAPER_300]
 
 $$\frac{T}{S} = \frac{(2\pi / T_{U,\text{gyr}}) \cdot A}{2A} = \frac{\pi}{T_{U,\text{gyr}}} = \frac{\pi}{13.8} = \mathbf{0.2277}$$
 
 This is **identical** to the PAPER_288 RSC module value. The ratio is independent of the oscillation
-frequency ω — it depends only on the cosmic age T_U = 13.8 Gyr.
+frequency $\omega$ — it depends only on the cosmic age T_U = 13.8 Gyr.
 
 ### 2.3 Lyman-Universe Coupling Factor [PAPER_300]
 
 $$\chi_{\text{bridge}} = \omega_{\text{Lyman}} \times t_H = 1.549 \times 10^{16} \times 4.355 \times 10^{17} = \mathbf{6.745 \times 10^{33}}$$
 
-This dimensionless coupling factor is the ratio of Lyman-α oscillation cycles completed in the age
+This dimensionless coupling factor is the ratio of Lyman-$\alpha$ oscillation cycles completed in the age
 of the Universe — connecting UV photon physics to cosmic timescales.
 
 ---
@@ -90,30 +90,30 @@ of the Universe — connecting UV photon physics to cosmic timescales.
 
 | Quantity | Value | Notes |
 |----------|-------|-------|
-| ω_Lyman | 1.549×1016 rad/s | UV, Lyman-α |
-| k_Lyman | 5.166×107 m-1 | UV wave vector |
-| a_standing (peak, t=0) | 2.000×10-10 m/s2 | |
-| a_traveling (peak, t=0) | 4.553×10-11 m/s2 | cosmic normalized |
+| $\omega$_Lyman | 1.549$\times$1016 rad/s | UV, Lyman-$\alpha$ |
+| k_Lyman | 5.166$\times$107 m-1 | UV wave vector |
+| a_standing (peak, t=0) | 2.000$\times$10-10 m/s2 | |
+| a_traveling (peak, t=0) | 4.553$\times$10-11 m/s2 | cosmic normalized |
 | T/S ratio | **0.2277** | **[PAPER_300] = PAPER_288** |
-| χ_bridge | **6.745×1033** | **[PAPER_300]** |
-| Frequency span (Lyman/H₀) | 6.82×1033 | 34 orders in frequency |
+| $\chi$_bridge | **6.745$\times$1033** | **[PAPER_300]** |
+| Frequency span (Lyman/H0) | 6.82$\times$1033 | 34 orders in frequency |
 
 ---
 
-## 4. Universality of the T/S = π/T_U Ratio
+## 4. Universality of the T/S = $\pi$/T_U Ratio
 
 The T/S ratio has now appeared in two completely independent UQFF modules at vastly different
 scales:
 
-| Module | System | ω (rad/s) | T/S |
+| Module | System | $\omega$ (rad/s) | T/S |
 |--------|--------|-----------|-----|
-| **PAPER_288** (Session 81) | RSC plasmotic vacuum, magnetar-proxy | ω_osc ~ 1014 | π/13.8 = **0.2277** |
-| **PAPER_300** (Session 85) | Hydrogen atom, Lyman-α UV | ω_Lyman = 1.549×1016 | π/13.8 = **0.2277** |
+| **PAPER_288** (Session 81) | RSC plasmotic vacuum, magnetar-proxy | $\omega$_osc ~ 1014 | $\pi$/13.8 = **0.2277** |
+| **PAPER_300** (Session 85) | Hydrogen atom, Lyman-$\alpha$ UV | $\omega$_Lyman = 1.549$\times$1016 | $\pi$/13.8 = **0.2277** |
 
-**Scale separation**: Δω = ω_Lyman / ω_RSC ~ 102 in this direct comparison, and from Hubble flow H₀
-~ 2.27×10-18 s-1 to Lyman: **34 orders of magnitude**.
+**Scale separation**: $\Delta$$\omega$ = $\omega$_Lyman / $\omega$_RSC ~ 102 in this direct comparison, and from Hubble flow H0
+~ 2.27$\times$10-18 s-1 to Lyman: **34 orders of magnitude**.
 
-The T/S ratio is determined by the cosmic-age normalization factor 2π/T_U,gyr in the traveling wave
+The T/S ratio is determined by the cosmic-age normalization factor 2$\pi$/T_U,gyr in the traveling wave
 — a constant of the Universe, not of the oscillation. This constitutes direct evidence that the UQFF
 traveling-wave normalization is a **universal constant of cosmic structure** applicable from atomic
 UV frequencies to Hubble-scale evolution.
@@ -125,18 +125,18 @@ UV frequencies to Hubble-scale evolution.
 The Lyman-alpha cosmic bridge expresses a deep connection between atomic quantum transitions and
 cosmic evolution:
 
-1. **Lyman-α sets the UV-scale anchor**: ω_L = 1.549×1016 rad/s is the characteristic transition
+1. **Lyman-$\alpha$ sets the UV-scale anchor**: $\omega$_L = 1.549$\times$1016 rad/s is the characteristic transition
 frequency of the simplest atom in the Universe.
 
-2. **T_U normalizes the traveling wave**: The 2π/13.8 factor in the traveling mode amplitude
+2. **T_U normalizes the traveling wave**: The 2$\pi$/13.8 factor in the traveling mode amplitude
 represents the cosmic age "period" modulating the quantum oscillation — encoding universal cosmic
 time into atomic-scale UQFF dynamics.
 
-3. **χ_bridge = 6.745×1033**: This coupling factor tells us that approximately 6.745×1033 Lyman-α
+3. **$\chi$_bridge = 6.745$\times$1033**: This coupling factor tells us that approximately 6.745$\times$1033 Lyman-$\alpha$
 photon oscillations have occurred per unit amplitude since the Big Bang — a direct measure of how
 many UV cycles fit into cosmic time.
 
-4. **Scale independence of T/S**: The ratio π/T_U is the same whether the oscillating system is a
+4. **Scale independence of T/S**: The ratio $\pi$/T_U is the same whether the oscillating system is a
 magnetar plasma (1014 rad/s), a hydrogen atom (1016 rad/s), or a CMB photon — demonstrating
 universal applicability of the UQFF cosmic-age bridge formula.
 
@@ -168,22 +168,22 @@ WOLFRAM_TERM: `HYDROGEN_LYMAN = "T/S=pi/13.8=0.2277; chi_bridge=6.745e33; omega_
 
 ## 7. Significance
 
-1. **FIRST atomic-scale T/S demonstration**: Confirms π/T_U is universal, not module-specific
+1. **FIRST atomic-scale T/S demonstration**: Confirms $\pi$/T_U is universal, not module-specific
 (extends PAPER_288 to 34-order frequency span)
-2. **Frequency spectral anchor**: Defines the UV end of the UQFF oscillation spectrum (ω_Lyman =
-1.549×1016 rad/s)
-3. **Lyman-α universal role**: The simplest atomic transition couples to the age of the Universe via
-χ_bridge — connecting quantum electrodynamics to cosmological UQFF dynamics
-4. **χ_bridge = 6.745×1033**: A new dimensionless UQFF constant measuring UV-cosmic coupling
+2. **Frequency spectral anchor**: Defines the UV end of the UQFF oscillation spectrum ($\omega$_Lyman =
+1.549$\times$1016 rad/s)
+3. **Lyman-$\alpha$ universal role**: The simplest atomic transition couples to the age of the Universe via
+$\chi$_bridge — connecting quantum electrodynamics to cosmological UQFF dynamics
+4. **$\chi$_bridge = 6.745$\times$1033**: A new dimensionless UQFF constant measuring UV-cosmic coupling
 
 ---
 
 ## 8. Cross-References
 
-- **PAPER_288** (Session 81): T/S = π/13.8 = 0.2277 FIRST appearance (RSC magnetar-proxy plasma, ω_osc ~ 1014 rad/s)
-- **PAPER_299** (Session 85): η_EM — same module, EM dominance at atomic scale
-- **PAPER_301** (Session 85): ε_GR spectral minimum — same module
-- **PAPER_297** (Session 84): Superluminal η_exp — another UQFF frequency-scale bridge constant
+- **PAPER_288** (Session 81): T/S = $\pi$/13.8 = 0.2277 FIRST appearance (RSC magnetar-proxy plasma, $\omega$_osc ~ 1014 rad/s)
+- **PAPER_299** (Session 85): $\eta$_EM — same module, EM dominance at atomic scale
+- **PAPER_301** (Session 85): $\varepsilon$_GR spectral minimum — same module
+- **PAPER_297** (Session 84): Superluminal $\eta$_exp — another UQFF frequency-scale bridge constant
 
 ---
 
@@ -193,9 +193,9 @@ $$\boxed{\frac{T}{S} = \frac{\pi}{T_{U,\text{gyr}}} = \frac{\pi}{13.8} = 0.2277 
 
 $$\boxed{\chi_{\text{bridge}} = \omega_{\text{Lyman}} \times t_H = 1.549 \times 10^{16} \times 4.355 \times 10^{17} = 6.745 \times 10^{33}}$$
 
-The Lyman-alpha cosmic bridge confirms that the UQFF traveling-wave normalization T/S = π/T_U is a
+The Lyman-alpha cosmic bridge confirms that the UQFF traveling-wave normalization T/S = $\pi$/T_U is a
 universal ratio independent of oscillation frequency — holding from atomic UV photon transitions at
-1.549×1016 rad/s down to the Hubble constant itself at 2.27×10-18 s-1, spanning 34 orders of
+1.549$\times$1016 rad/s down to the Hubble constant itself at 2.27$\times$10-18 s-1, spanning 34 orders of
 magnitude.
 
 
@@ -204,8 +204,8 @@ interferometers and CODATA 2026 spectroscopy; the UQFF deviation from standard p
 the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity
 framework in future observations.
 
-**UQFF computed:** UQFF energy correction term [SSq]h?_g/(k_BT) = 0.57 × 7.7e-50/(1.38e-23 × 300) =
-1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 × 13.6 eV.
+**UQFF computed:** UQFF energy correction term [SSq]h?_g/(k_BT) = 0.57 $\times$ 7.7e-50/(1.38e-23 $\times$ 300) =
+1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 $\times$ 13.6 eV.
 
 ---
 
@@ -215,7 +215,7 @@ framework in future observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -234,7 +234,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -309,7 +309,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -320,13 +320,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

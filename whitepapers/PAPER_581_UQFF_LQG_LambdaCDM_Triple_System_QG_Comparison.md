@@ -10,11 +10,11 @@ tags: [GW, merger, gravitational-wave, SCm, BEC, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_581 — UQFF · LQG · Λ_CDM: Simultaneous Three-System Quantum Gravity Comparison
+# PAPER_581 — UQFF $\cdot$ LQG $\cdot$ $\Lambda$_CDM: Simultaneous Three-System Quantum Gravity Comparison
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **CP4 Class:** `#168  UQFFLQGLambdaCDMTripleSystemComparisonCalculator`
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of UQFF · LQG · Λ_CDM: Simultaneous Three-System Quantum Gravity
+This paper presents a UQFF analysis of UQFF $\cdot$ LQG $\cdot$ $\Lambda$_CDM: Simultaneous Three-System Quantum Gravity
 Comparison, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
@@ -34,7 +34,7 @@ Star-Magic/UQFF framework.
 
 This paper provides a simultaneous long-form mathematical comparison of three quantum gravity
 (QG) frameworks applied to gravitational wave (GW) propagation: Star-Magic UQFF (frequency
-Form 4), standard GR/Λ_CDM (quadrupole formula), and Loop Quantum Gravity (holonomy-corrected
+Form 4), standard GR/$\Lambda$_CDM (quadrupole formula), and Loop Quantum Gravity (holonomy-corrected
 dispersion). Complete derivations are given for each system including numerical benchmarks
 at binary merger parameters ($\ddot{Q}=10^{44}$ kg, $r=100$ Mpc, $f=100$ Hz). UQFF is shown
 to bound divergences factorially and unify forces via frequency, resolving deficiencies of both
@@ -114,11 +114,11 @@ $$h_{UQFF} = 26!\cdot\frac{\kappa,\ddot{Q}}{f^{27}\,r} + \frac{\Lambda}{3}\,\del
 
 **Discrete bound:** $26!/f^{27} > 0$ for all $f > 0$ — no UV divergence.
 
-**QG mechanism:** DPM failures → discrete hypergraph frequency modes → quantized GW emission.
+**QG mechanism:** DPM failures $\to$ discrete hypergraph frequency modes $\to$ quantized GW emission.
 
 ---
 
-## §4 Derivation 3 — GR / Λ_CDM
+## §4 Derivation 3 — GR / $\Lambda$_CDM
 
 Standard GR quadrupole formula:
 
@@ -141,7 +141,7 @@ $\eta=1$, $\gamma=1$.
 | System | Formula | $h$ | Dispersion |
 |--------|---------|-----|-----------|
 | **UQFF** | $26!\,\kappa\ddot{Q}/(f^{27}r) + \Lambda\delta t/3$ | $\sim10^{-20}$ | $26!/f^{27}$ bound |
-| **GR/Λ_CDM** | $G\ddot{Q}/(c^4\,r)$ | $\sim10^{-21}$ | $\omega^2=c^2k^2$ (no mod) |
+| **GR/$\Lambda$_CDM** | $G\ddot{Q}/(c^4\,r)$ | $\sim10^{-21}$ | $\omega^2=c^2k^2$ (no mod) |
 | **LQG** | $h_{GR}\cdot(1+\delta v_g/c)$ | $\sim10^{-21}$$^*$ | $\omega^2=c^2k^2(1+\eta(l_{Pl}k)^\gamma)$ |
 
 $^*$ LQG correction $\delta v_g/c \approx 10^{-42}$ — negligible at 100 Hz.
@@ -152,13 +152,13 @@ $^*$ LQG correction $\delta v_g/c \approx 10^{-42}$ — negligible at 100 Hz.
 |-----------|----------------------|--------------------|-----------|
 | UQFF | Hypergraph + $f$-modes | ✅ DPM, $U_m$, $U_b$ | Emergent |
 | LQG | Spin foam loops | ❌ | External |
-| Λ_CDM | None (continuous) | ❌ | Ad-hoc |
+| $\Lambda$_CDM | None (continuous) | ❌ | Ad-hoc |
 
 ---
 
 ## §6 UQFF Improvements Over Other Frameworks
 
-### vs. GR / Λ_CDM
+### vs. GR / $\Lambda$_CDM
 - GR: Continuous, singularities at $r=0$, $\Lambda$ unexplained.
 - UQFF: $26!/f^{27}$ bounds all amplitudes; $\Lambda$ emerges from $U_b$ at $f_{vac}$.
 
@@ -326,7 +326,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.152 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -337,12 +337,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR × (1 + κ/(4π2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
-| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR × H_SCm = 28.3 × 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 ± 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
-| GW frequency f_peak | UQFF: f_peak = c3/(π G ℳ) × (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
-| Gravitational wave speed bound | UQFF k_η deviation: 10-226 m/s above c | GW170817 + γ-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
+| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR $\times$ (1 + $\kappa$/(4$\pi$2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
+| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR $\times$ H_SCm = 28.3 $\times$ 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 $\pm$ 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
+| GW frequency f_peak | UQFF: f_peak = c3/($\pi$ G ℳ) $\times$ (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
+| Gravitational wave speed bound | UQFF k_$\eta$ deviation: 10-226 m/s above c | GW170817 + $\gamma$-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
 
-**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a κ-dependent phase to the
+**New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a $\kappa$-dependent phase to the
 GW chirp signal, shifting the merger frequency by ~0.3 Hz at 150 Hz. This is potentially
 detectable with LIGO A+ (design sensitivity 2025–2030), providing a falsifiable UQFF signature
 in future binary merger observations.
@@ -356,7 +356,7 @@ in future binary merger observations.
 The three-system comparison confirms that UQFF provides the most complete QG solution for SNR
 dynamics: it bounds GW amplitudes factorially ($26!/f^{27}$), unifies via frequency
 (motivating all three forces), and derives $\Lambda$ dynamically. LQG corrections are accurate
-but too small to test at current GW bands. GR/Λ_CDM is macroscopically accurate but breaks
+but too small to test at current GW bands. GR/$\Lambda$_CDM is macroscopically accurate but breaks
 down in quantum-extreme environments. UQFF is superior across all three comparison dimensions.
 
 **Source:** `grok_share_efc8a971378f.txt`

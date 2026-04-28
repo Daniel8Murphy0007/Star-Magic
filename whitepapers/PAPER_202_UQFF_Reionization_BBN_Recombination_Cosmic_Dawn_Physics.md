@@ -38,7 +38,7 @@ derived from observational anchor equations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -48,9 +48,9 @@ present in Standard Model treatments.
 
 $$
 \begin{aligned}
-  & ? = n_b/n_? = 6.08×10?1°  (Planck 2018 + BBN fit) \\
-  & F_UBii,eta = F_rel × (κ = n_b/n_? / E_LEP) × Q_wave × [Neff modification] \\
-  & Um,eta(t) = µ(?_vac)·(1-e^{-?t})·? \\
+  & ? = n_b/n_? = 6.08\times10?1°  (Planck 2018 + BBN fit) \\
+  & F_UBii,eta = F_rel \times (\kappa = n_b/n_? / E_LEP) \times Q_wave \times [Neff modification] \\
+  & Um,eta(t) = µ(?_vac)\cdot(1-e^{-?t})\cdot? \\
   & Physical origin: \\
   & n_? = 410 cm?3 (CMB photon number density today) \\
   & Fit anchor: Primordial D, 3He, 4He, 7Li abundances \\
@@ -67,16 +67,16 @@ $$
 \begin{aligned}
   & Deuterium bottleneck timescale: \\
   & t_D ˜ v(3/(32pG?_rad)) ˜ 180 s at T ˜ 0.1 MeV \\
-  & ?_rad = p2kT4/(30h3c5)·g_*    (effective DOF g_* ˜ 10 at D-formation onset) \\
+  & ?_rad = p2kT4/(30h3c5)\cdotg_*    (effective DOF g_* ˜ 10 at D-formation onset) \\
   & Sequence: \\
   & T ~ 1 MeV: neutron freeze-out (n/p ˜ 1/7) \\
   & T ~ 0.1 MeV (t ˜ 180 s): D photodissociation ends ? 4He chains proceed \\
   & Yield: Y_P ˜ 0.247 (mass fraction 4He) \\
-  & F_UBii,deb = -F_rel × (t_D / E_LEP) × Q_wave × [g_*(T) variation] \\
-  & Um,deb(T) = µ(?_vac)·(1-e^{-?t})·[Weak freeze at T~1 MeV; D photodissociation below] \\
+  & F_UBii,deb = -F_rel \times (t_D / E_LEP) \times Q_wave \times [g_*(T) variation] \\
+  & Um,deb(T) = µ(?_vac)\cdot(1-e^{-?t})\cdot[Weak freeze at T~1 MeV; D photodissociation below] \\
   & UQFF calibration: ? calibrated to UQFF k_? parameter through BBN freeze-out \\
   & k_? ˜ 10?113  (small-scale vacuum fluctuation coupling) \\
-  & ?k_?(CIA cross-section refit) ˜ 7.25×108 (fractional shift from H2 CIA data)
+  & ?k_?(CIA cross-section refit) ˜ 7.25\times108 (fractional shift from H2 CIA data)
 \end{aligned}
 $$
 
@@ -86,16 +86,16 @@ $$
 
 $$
 \begin{aligned}
-  & C_l = (2/p) · ?k2dk · P(k) · |?_l^T(k)|2 \\
+  & C_l = (2/p) \cdot ?k2dk \cdot P(k) \cdot |?_l^T(k)|2 \\
   & P(k) ? k^{n_s-4}    (primordial, n_s ˜ 0.965 Planck 2018) \\
   & ?_l^T(k) = transfer function: \\
   & - Large scales (l < 100): Sachs-Wolfe plateau C_l ˜ constant \\
   & - Acoustic peaks (l = 220, 540, 800...): baryon-photon oscillations \\
   & - Damping tail (l > 1000): Silk damping \\
-  & F_UBii,cmb = F_rel × (C_l·l(l+1)/(2p) / E_LEP) × Q_wave \\
-  & Um,cmb(k) = µ(?_vac)·(1-e^{-?t})·Transfer ?_l^T: Sachs-Wolfe + acoustic oscillations \\
+  & F_UBii,cmb = F_rel \times (C_l\cdotl(l+1)/(2p) / E_LEP) \times Q_wave \\
+  & Um,cmb(k) = µ(?_vac)\cdot(1-e^{-?t})\cdotTransfer ?_l^T: Sachs-Wolfe + acoustic oscillations \\
   & Calibration anchor: \\
-  & D_l = l(l+1)C_l/(2p) × T02 ? peak at l ˜ 220 matches O_tot = 1 \\
+  & D_l = l(l+1)C_l/(2p) \times T02 ? peak at l ˜ 220 matches O_tot = 1 \\
   & UQFF role: vacuum energy ?c2/3 term in g_UQFF sets acoustic horizon
 \end{aligned}
 $$
@@ -106,13 +106,13 @@ $$
 
 $$
 \begin{aligned}
-  & t(z) = ?_z^8 n_e(z')·s_T·c·|dt/dz'|dz' \\
-  & s_T = 6.652×10?2? m2  (Thomson cross-section) \\
-  & n_e(z) = x_e(z)·n_H(z) = x_e(z)·n_b,0·(1+z)3 \\
+  & t(z) = ?_z^8 n_e(z')\cdots_T\cdotc\cdot|dt/dz'|dz' \\
+  & s_T = 6.652\times10?2? m2  (Thomson cross-section) \\
+  & n_e(z) = x_e(z)\cdotn_H(z) = x_e(z)\cdotn_b,0\cdot(1+z)3 \\
   & Recombination: z_rec ˜ 1100 ? t(z_rec) ˜ 1 (photon decoupling) \\
   & Reionization: z_re ˜ 7.7 ? optical depth t_re ˜ 0.054 (Planck 2018) \\
-  & F_UBii,recomb = -F_rel × (t(z) / E_LEP) × Q_wave \\
-  & Um,recomb(z) = µ(?_vac)·(1-e^{-?t})·?n_e·s_T·c·dt \\
+  & F_UBii,recomb = -F_rel \times (t(z) / E_LEP) \times Q_wave \\
+  & Um,recomb(z) = µ(?_vac)\cdot(1-e^{-?t})\cdot?n_e\cdots_T\cdotc\cdotdt \\
   & Physical context: \\
   & After z_rec, photons decouple and stream freely (CMB) \\
   & Surface of last scattering has ?T/T ˜ 10-5 (measured by Planck)
@@ -125,15 +125,15 @@ $$
 
 $$
 \begin{aligned}
-  & dx_e/dt = ?_?·e_esc·f_* - a_B·n2_e·C \\
+  & dx_e/dt = ?_?\cdote_esc\cdotf_* - a_B\cdotn2_e\cdotC \\
   & where: \\
-  & ?_? = (1+z)3·n_b·?_?,eff   (ionizing photon rate) \\
+  & ?_? = (1+z)3\cdotn_b\cdot?_?,eff   (ionizing photon rate) \\
   & e_esc ˜ 0.1–0.3             (photon escape fraction from galaxies) \\
   & f_* ˜ 0.05–0.2              (star formation efficiency in halos) \\
-  & a_B = 2.6×10?13 cm3/s     (recombination coefficient, case B, T˜104 K) \\
+  & a_B = 2.6\times10?13 cm3/s     (recombination coefficient, case B, T˜104 K) \\
   & C = ?n2_H?/?n_H?2          (clumping factor, C ˜ 3) \\
-  & F_UBii,ion = F_rel × (?_?·e_esc·f_* / E_LEP) × Q_wave × [recombination subtracted] \\
-  & Um,ion(t) = µ(?_vac)·(1-e^{-?t})·?a_B·n2_e·C dt \\
+  & F_UBii,ion = F_rel \times (?_?\cdote_esc\cdotf_* / E_LEP) \times Q_wave \times [recombination subtracted] \\
+  & Um,ion(t) = µ(?_vac)\cdot(1-e^{-?t})\cdot?a_B\cdotn2_e\cdotC dt \\
   & Reionization history: \\
   & z ˜ 20–30: first stars ionize H around them (PopIII) \\
   & z ˜ 7–9:   bulk reionization, x_e rises from ~0.1 to ~1 \\
@@ -170,14 +170,14 @@ Physical context:
 $$
 \begin{aligned}
   & Jeans length: \\
-  & ?_J = p^{1/2} · c_s / (G·?)^{1/2} \\
+  & ?_J = p^{1/2} \cdot c_s / (G\cdot?)^{1/2} \\
   & Jeans mass: \\
-  & M_J = (p/6) · ? · ?_J3 = (5k_BT/(Gµm_H))^{3/2} · (3/(4p?))^{1/2} \\
+  & M_J = (p/6) \cdot ? \cdot ?_J3 = (5k_BT/(Gµm_H))^{3/2} \cdot (3/(4p?))^{1/2} \\
   & Stability condition: ? > ?_J ? gravitational collapse \\
-  & Dispersion relation: ?2 = c2_s·k2 - 4pG? \\
+  & Dispersion relation: ?2 = c2_s\cdotk2 - 4pG? \\
   & Unstable: ?2 < 0 ? k < k_J = 2p/?_J \\
-  & F_UBii,jeans = -F_rel × (?_J / E_LEP) × Q_wave × (collapse onset time t ˜ 1/v(G?)) \\
-  & Um,jeans(T) = µ(?_vac)·(1-e^{-?t})·[Perturb: ?2 = c2_s·k2 - 4pG?] \\
+  & F_UBii,jeans = -F_rel \times (?_J / E_LEP) \times Q_wave \times (collapse onset time t ˜ 1/v(G?)) \\
+  & Um,jeans(T) = µ(?_vac)\cdot(1-e^{-?t})\cdot[Perturb: ?2 = c2_s\cdotk2 - 4pG?] \\
   & Physical context: \\
   & First (PopIII) stars: T ~ 200 K, cloud M ~ 100–1000 M_? ? M_J \\
   & Present-day GMCs: T ~ 10–30 K ? M_J ~ 1–10 M_? \\
@@ -366,7 +366,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.123 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -377,13 +377,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

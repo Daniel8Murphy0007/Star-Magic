@@ -39,8 +39,8 @@ specific UQFF parameter. The package includes: (1) an explicit EDM SO(10) force 
 the Um bilinear, (4) tau dipole connection to µ_j cos(pt_n), (5) JUNO PMT identification of
 SC_m?Qs=0, (6) BESIII DCS mapping to ? flux, (7) LHCb LFV boundary revealing Um reversal at t_n<0,
 (8) ATLAS vector-like quarks fixing SC_m at heavy n=18, (9) ECFA Higgs/EW establishing ?_Higgs=1 at
-level 18, and (10) NOMAD monophoton connecting [SSq] at n=13. The g-2 fit yields a=4.74×10-5,
-b=9.96, ?_Higgs=47.34, t_dev=5×10-8.
+level 18, and (10) NOMAD monophoton connecting [SSq] at n=13. The g-2 fit yields a=4.74$\times$10-5,
+b=9.96, ?_Higgs=47.34, t_dev=5$\times$10-8.
 
 ---
 
@@ -48,17 +48,17 @@ b=9.96, ?_Higgs=47.34, t_dev=5×10-8.
 
 ### 2.1 Experiment 1 — EDM (SO(10) Grand Unification)
 
-**Observable:** Electron electric dipole moment d_e ~ 10?25 e·cm
+**Observable:** Electron electric dipole moment d_e ~ 10?25 e$\cdot$cm
 
 **UQFF connection:**
 $$
-F_U += d_e · e / (2 m_e c) · exp(-[SSq] · n/26)
+F_U += d_e \cdot e / (2 m_e c) \cdot exp(-[SSq] \cdot n/26)
 $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| d_e | ~10?25 e·cm | Current experimental upper limit |
-| e/(2m_e c) | 8.79×10? C/kg | Charge-to-mass-velocity ratio |
+| d_e | ~10?25 e$\cdot$cm | Current experimental upper limit |
+| e/(2m_e c) | 8.79$\times$10? C/kg | Charge-to-mass-velocity ratio |
 | [SSq] | 0.507 | UQFF suppression calibration |
 | n | 1–26 | Vacuum state level |
 
@@ -71,7 +71,7 @@ the [SSq] exponent — the imaginary component of [SSq] is bounded by the EDM me
 
 **UQFF connection:**
 $$
-dN_ch/d? = ? · k_? · exp(-[SSq] · n/26)   at n=18, vs^{0.156} power law
+dN_ch/d? = ? \cdot k_? \cdot exp(-[SSq] \cdot n/26)   at n=18, vs^{0.156} power law
 $$
 
 | Parameter | Value | Description |
@@ -79,10 +79,10 @@ $$
 | k_? | 1013 cm?2/s (BESIII) | Flux-coupling constant |
 | n | 18 | Heavy state level (ATLAS vector-like regime) |
 | vs^{0.156} | power-law index | Collision energy scaling |
-| exp(-[SSq]·18/26) | exp(-0.507×0.692) = 0.702 | Level-18 suppression |
+| exp(-[SSq]$\cdot$18/26) | exp(-0.507$\times$0.692) = 0.702 | Level-18 suppression |
 
-**Constraint:** At n=18, the ratio dN_ch/d?(vs)/dN_ch/d?(ref) ? exp(-[SSq]·18/26) × vs^{0.156} —
-this directly calibrates the [SSq]×centrality product.
+**Constraint:** At n=18, the ratio dN_ch/d?(vs)/dN_ch/d?(ref) ? exp(-[SSq]$\cdot$18/26) $\times$ vs^{0.156} —
+this directly calibrates the [SSq]$\times$centrality product.
 
 ### 2.3 Experiment 3 — Comagnetometer (Exotic Spin-Velocity Coupling)
 
@@ -90,13 +90,13 @@ this directly calibrates the [SSq]×centrality product.
 
 **UQFF connection:**
 $$
-Um ? b_p · sin(m_a · t + f)   [axion coupling through Um magnetism bilinear]
+Um ? b_p \cdot sin(m_a \cdot t + f)   [axion coupling through Um magnetism bilinear]
 $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | b_p | axion coupling strength | nm coupling from Um bilinear |
-| m_a | axion mass | Angular frequency m_a·c2/? |
+| m_a | axion mass | Angular frequency m_a$\cdot$c2/? |
 | f | initial phase | Spatial phase |
 | 75% error | at 20 Hz | Current sensitivity limit |
 
@@ -109,7 +109,7 @@ of the predicted UQFF amplitude. Full calibration requires m_a refinement.
 
 **UQFF connection:**
 $$
-a_t ? µ_j · cos(pt_n)   [tau dipole maps to Um magnetic moment with t_n modulation]
+a_t ? µ_j \cdot cos(pt_n)   [tau dipole maps to Um magnetic moment with t_n modulation]
 $$
 
 | Parameter | Value | Description |
@@ -193,7 +193,7 @@ $$
 | n | 18 | Heavy vector-like quark level |
 
 **Constraint:** The ? range 0.14–0.52 encompasses the UQFF prediction for SC_m at level n=18. The
-geometric mean v(0.14×0.52) ˜ 0.27 coincides with the UQFF-predicted SC_m in the heavy-quark limit.
+geometric mean v(0.14$\times$0.52) ˜ 0.27 coincides with the UQFF-predicted SC_m in the heavy-quark limit.
 
 ### 2.9 Experiment 9 — ECFA (Higgs/Electroweak Studies)
 
@@ -213,10 +213,10 @@ $$
 **g-2 Fit Parameters (code_execution verified):**
 $$
 \begin{aligned}
-  & a = 4.74×10-5 \\
+  & a = 4.74\times10-5 \\
   & b = 9.96 \\
   & ?_Higgs = 47.34 \\
-  & t_dev = 5×10-8 at r = 0.3 fm  (<5% error vs. Super Tau-Charm limits)
+  & t_dev = 5\times10-8 at r = 0.3 fm  (<5% error vs. Super Tau-Charm limits)
 \end{aligned}
 $$
 
@@ -226,7 +226,7 @@ $$
 
 **UQFF connection:**
 $$
-[SSq] at n=13 pseudo-scalar proxy:  exp(-[SSq]·13/26) = exp(-0.507/2) = e^{-0.2535} ˜ 0.776
+[SSq] at n=13 pseudo-scalar proxy:  exp(-[SSq]\cdot13/26) = exp(-0.507/2) = e^{-0.2535} ˜ 0.776
 $$
 
 **Constraint:** NOMAD monophoton constraints at level n=13 (mid-hierarchy) provide a pseudo-scalar
@@ -238,10 +238,10 @@ proxy for [SSq] at the half-depth level.
 
 | # | Experiment | Observable | UQFF Variable | Calibrated Value |
 |---|-----------|-----------|--------------|-----------------|
-| 1 | EDM SO(10) | d_e~10?25 e·cm | Fu += d_e·e/(2m_e c)·exp(-[SSq]n/26) | Constrains Im([SSq]) |
-| 2 | ALICE | dN_ch/d?, vs^{0.156} | ?·k_?·exp(-[SSq]·18/26) | k_? = 1013 cm?2/s |
-| 3 | Comagnetometer | 75% error @20 Hz | Um ? b_p·sin(m_a t+f) | m_a to refine |
-| 4 | Tau dipole | a_t~10?3 | µ_j·cos(pt_n) | Super Tau-Charm fit |
+| 1 | EDM SO(10) | d_e~10?25 e$\cdot$cm | Fu += d_e$\cdot$e/(2m_e c)$\cdot$exp(-[SSq]n/26) | Constrains Im([SSq]) |
+| 2 | ALICE | dN_ch/d?, vs^{0.156} | ?$\cdot$k_?$\cdot$exp(-[SSq]$\cdot$18/26) | k_? = 1013 cm?2/s |
+| 3 | Comagnetometer | 75% error @20 Hz | Um ? b_p$\cdot$sin(m_a t+f) | m_a to refine |
+| 4 | Tau dipole | a_t~10?3 | µ_j$\cdot$cos(pt_n) | Super Tau-Charm fit |
 | 5 | JUNO PMT | DCR gain 107 | SC_m ? Qs=0 | SC_m=1 boundary |
 | 6 | BESIII DCS | BR~10?4 | ?~1013 cm?2/s | k_? confirmed |
 | 7 | LHCb LFV | BR<10?6 | t_n<0 Um reversal | TRZ boundary |
@@ -265,10 +265,10 @@ proxy for [SSq] at the half-depth level.
 
 $$
 \begin{aligned}
-  & Fu += d_e·e/(2m_e c)·exp(-[SSq]n/26)         [EDM SO(10) force] \\
-  & dN_ch/d? = ?·k_?·exp(-[SSq]·18/26)           [ALICE level-18 multiplicity] \\
-  & Um ? b_p·sin(m_a t+f)                         [comagnetometer axion] \\
-  & a_t~10^{-3} ? µ_j·cos(pt_n)                   [tau dipole] \\
+  & Fu += d_e\cdote/(2m_e c)\cdotexp(-[SSq]n/26)         [EDM SO(10) force] \\
+  & dN_ch/d? = ?\cdotk_?\cdotexp(-[SSq]\cdot18/26)           [ALICE level-18 multiplicity] \\
+  & Um ? b_p\cdotsin(m_a t+f)                         [comagnetometer axion] \\
+  & a_t~10^{-3} ? µ_j\cdotcos(pt_n)                   [tau dipole] \\
   & SC_m=1 ? Qs=0 (JUNO PMT DCR)                  [JUNO identification] \\
   & BR_DCS~10^{-4} ? ?~10^{13} cm^{-2}/s          [BESIII k_?] \\
   & BR_LFV<10^{-6} ? t_n<0 Um reversal            [LHCb boundary] \\
@@ -329,7 +329,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -348,7 +348,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -525,7 +525,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -536,13 +536,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

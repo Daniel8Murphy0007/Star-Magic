@@ -34,7 +34,7 @@ $$\mathcal{L}_{\text{grav}} = -\beta_i \cdot U_g \cdot \Omega_g \cdot \frac{M}{d
 | Parameter | Value | Meaning |
 |-----------|-------|---------|
 | $\beta_i$ | 0.603 | Buoyancy coupling constant |
-| $U_g$ | $μ_s·∇(M_s/r)$ | Gravitational potential energy |
+| $U_g$ | $\mu_s\cdot\nabla(M_s/r)$ | Gravitational potential energy |
 | $\Omega_g$ | System-dependent | Angular frequency |
 | $M/d_g$ | Linear mass density | Mass over distance |
 | $[\text{UA}]$ | $10^{-4}$ | Universal abundance |

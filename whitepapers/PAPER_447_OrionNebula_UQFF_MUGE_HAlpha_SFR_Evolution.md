@@ -21,7 +21,7 @@ in UQFF gravity; FIRST Trapezium radiation pressure integration
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `OrionNebulaHAlphaUQFFCalculator` (#1, PAPER_447)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
@@ -29,9 +29,9 @@ in UQFF gravity; FIRST Trapezium radiation pressure integration
 This paper presents the complete Orion Nebula gravitational evolution model under the Master
 Universal Gravity Equation (MUGE) integrated with the Unified Quantum Field Framework (UQFF). The
 system models M1-67/Orion molecular cloud gravitational dynamics across the star-formation epoch,
-incorporating H-Alpha resonant oscillations (λ=656.3 nm, f=4.57×1014 Hz), Trapezium cluster
-radiation pressure (L=1.53×1032 W), stellar wind coupling (v_wind=8×103 m/s), and SFR-dependent mass
-growth (SFR=0.1 MM_sun/yr). The total effective gravity g_UQFF ≈ 1×10-11 m/s2 at t=1 Myr is dominated by
+incorporating H-Alpha resonant oscillations ($\lambda$=656.3 nm, f=4.57$\times$1014 Hz), Trapezium cluster
+radiation pressure (L=1.53$\times$1032 W), stellar wind coupling (v_wind=8$\times$103 m/s), and SFR-dependent mass
+growth (SFR=0.1 MM_sun/yr). The total effective gravity g_UQFF $\approx$ 1$\times$10-11 m/s2 at t=1 Myr is dominated by
 wind and radiation terms over the DPM-seeded base (~10-12 m/s2), demonstrating that H-Alpha feedback
 is the primary gravitational modifier in this system.
 
@@ -43,16 +43,16 @@ is the primary gravitational modifier in this system.
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M (total) | 3.978×1033 kg (2000 MM_sun) | Orion molecular cloud mass |
-| r | 1.18×1017 m (~12.5 ly) | Half-span radius |
+| M (total) | 3.978$\times$1033 kg (2000 MM_sun) | Orion molecular cloud mass |
+| r | 1.18$\times$1017 m (~12.5 ly) | Half-span radius |
 | SFR | 0.1 MM_sun/yr | Star formation rate |
-| v_wind | 8×103 m/s | Trapezium O-star wind velocity |
-| t_age | 3×105 yr | Nebula age |
+| v_wind | 8$\times$103 m/s | Trapezium O-star wind velocity |
+| t_age | 3$\times$105 yr | Nebula age |
 | z | 0.0004 | Redshift (local) |
-| L_Trapezium | 1.53×1032 W | Trapezium OB cluster luminosity |
-| ρ_fluid | 1×10-20 kg/m3 | Dense nebular gas |
-| B | 1×10-5 T | Nebular magnetic field |
-| v_exp | 2×104 m/s | Expansion velocity |
+| L_Trapezium | 1.53$\times$1032 W | Trapezium OB cluster luminosity |
+| $\rho$_fluid | 1$\times$10-20 kg/m3 | Dense nebular gas |
+| B | 1$\times$10-5 T | Nebular magnetic field |
+| v_exp | 2$\times$104 m/s | Expansion velocity |
 
 ### 2.2 Master Gravitational Equation
 
@@ -68,10 +68,10 @@ The H-Alpha emission line governs nebular gas dynamics through an oscillatory fe
 $$g_{\rm res}(t) = 2A\cos(kx)\cos(\omega t) + \frac{2\pi}{13.8} A \cdot \text{Re}\!\left[e^{i(kx - \omega t)}\right]$$
 
 With:
-- k = 2π/λ = 2π/6.563×10-7 m-1 = 9.576×106 m-1  
-- ω = 2π × 4.57×1014 = 2.871×1015 rad/s  
+- k = 2$\pi$/$\lambda$ = 2$\pi$/6.563$\times$10-7 m-1 = 9.576$\times$106 m-1  
+- $\omega$ = 2$\pi$ $\times$ 4.57$\times$1014 = 2.871$\times$1015 rad/s  
 - A = 10-10 (amplitude)  
-- Factor 2π/13.8 = Hubble time resonance coupling
+- Factor 2$\pi$/13.8 = Hubble time resonance coupling
 
 This is the **first application of H-Alpha resonance** in UQFF gravity — the photon emission
 frequency directly modulates the gravitational field through quantum vacuum coupling.
@@ -103,13 +103,13 @@ Negligible at local redshift; confirms UQFF expansion term is subdominant for Mi
 
 | Term | Value (m/s2) | Dominance |
 |------|-------------|-----------|
-| DPM-seeded base (M_sf) | ~6.4×10-12 | Baseline |
-| Radiation pressure P_rad | ~2.1×10-9 | **Dominant** |
-| Stellar wind W_stellar | ~2.8×108 | Very large |
+| DPM-seeded base (M_sf) | ~6.4$\times$10-12 | Baseline |
+| Radiation pressure P_rad | ~2.1$\times$10-9 | **Dominant** |
+| Stellar wind W_stellar | ~2.8$\times$108 | Very large |
 | H-Alpha resonant g_res | ~10-10 | Oscillatory |
-| Fluid coupling | ~6.4×10-12 | Equal to Newt. |
+| Fluid coupling | ~6.4$\times$10-12 | Equal to Newt. |
 | Quantum term | ~10-34 | Negligible |
-| UQFF total | ~1×10-11 | Net effective |
+| UQFF total | ~1$\times$10-11 | Net effective |
 
 The dominance of radiation + wind over bare DPM-seeded gravity is a fundamental prediction of UQFF
 for HII region nebulae.
@@ -120,13 +120,13 @@ for HII region nebulae.
 
 | Component | SM Prediction | UQFF Prediction | Ratio |
 |-----------|--------------|----------------|-------|
-| g_DPMian | 6.4×10-12 m/s2 | Same base | 1.0 |
+| g_DPMian | 6.4$\times$10-12 m/s2 | Same base | 1.0 |
 | Radiation feedback | Not in gravity | P_rad as g-modifier | — |
-| Resonance coupling | No oscillatory term | 2A cos(k·r)cos(ωt) | New |
+| Resonance coupling | No oscillatory term | 2A cos(k$\cdot$r)cos($\omega$t) | New |
 | Wind-gravity coupling | Separate (hydro) | Unified UQFF term | New |
-| Total effective g | ~10-12 | ~10-11 | **10×** |
+| Total effective g | ~10-12 | ~10-11 | **10$\times$** |
 
-UQFF predicts **10× larger effective gravitational acceleration** in Orion relative to SM, primarily
+UQFF predicts **10$\times$ larger effective gravitational acceleration** in Orion relative to SM, primarily
 through radiation-pressure and wind-feedback integration. This is **testable** via molecular cloud
 dispersal timescales: SM predicts t_dispersal ~ 3 Myr from pure gravity, UQFF predicts ~0.3 Myr from
 radiation-dominated effective g.
@@ -135,10 +135,10 @@ radiation-dominated effective g.
 
 ## 5. Testable Predictions
 
-1. **Dispersal timescale:** UQFF radiation-dominated g predicts Orion molecular cloud dispersal by τ
-~ 0.3 Myr (Trapezium feedback); SM gravity-only predicts τ ~ 3 Myr. Current observational estimate:
-~0.5 Myr (consistent with UQFF within 2×).
-2. **H-Alpha oscillation signature:** g_res modulation at f=4.57×1014 Hz should produce detectable
+1. **Dispersal timescale:** UQFF radiation-dominated g predicts Orion molecular cloud dispersal by $\tau$
+~ 0.3 Myr (Trapezium feedback); SM gravity-only predicts $\tau$ ~ 3 Myr. Current observational estimate:
+~0.5 Myr (consistent with UQFF within 2$\times$).
+2. **H-Alpha oscillation signature:** g_res modulation at f=4.57$\times$1014 Hz should produce detectable
 periodic proper-motion velocity fluctuations at the 10-10 m/s2 level. VLBI observations of maser
 sources in Orion can test this.
 3. **SFR coupling:** M_sf(t) growth at 0.1 MM_sun/yr predicts 10% mass increase per Myr, detectable in
@@ -154,7 +154,7 @@ stellar census.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -173,7 +173,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -315,7 +315,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -326,10 +326,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Nebular/Star-forming region luminosity H$\alpha$ + X-ray | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Nebular/Star-forming region

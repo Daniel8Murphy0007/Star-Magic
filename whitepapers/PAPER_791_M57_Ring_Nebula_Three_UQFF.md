@@ -27,8 +27,8 @@ one of the most-studied objects in astronomy. Located ~2,300 light-years away, i
 oval shell of ionized gas expelled by its central white dwarf. JWST observations in 2023 revealed
 extraordinary detail — a barrel-shaped 3D structure extending beyond the visible ring, multiple
 nested shells, and molecular gas in the outer halo. The central white dwarf drives a fast wind at
-~1,500 km/s. Three-UQFF applied with fast-wind parameters (v = 1.5×106 m/s, B = 10-5 T) yields g_M57
-≈ 1.580×10-2 m/s2 across all three modes, consistent with IC 418 (PAPER_785) and NGC 6307+7027
+~1,500 km/s. Three-UQFF applied with fast-wind parameters (v = 1.5$\times$106 m/s, B = 10-5 T) yields g_M57
+$\approx$ 1.580$\times$10-2 m/s2 across all three modes, consistent with IC 418 (PAPER_785) and NGC 6307+7027
 (PAPER_788).
 
 ---
@@ -49,12 +49,12 @@ computes all three modes simultaneously using M57 as the archetype planetary neb
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula mass (shell) | M | ~0.6 MM_sun = 1.193×1030 kg | Hubble/JWST |
-| Inner ring radius | r | ~0.2 pc = 1.89×1015 m (photometric) | JWST |
-| Age | t | ~4,000 yr = 1.262×1011 s | Expansion velocity |
+| Nebula mass (shell) | M | ~0.6 MM_sun = 1.193$\times$1030 kg | Hubble/JWST |
+| Inner ring radius | r | ~0.2 pc = 1.89$\times$1015 m (photometric) | JWST |
+| Age | t | ~4,000 yr = 1.262$\times$1011 s | Expansion velocity |
 | E_rad | — | 0.18 | EUV photoionization |
 | Redshift | z | 0.0008 | Distance |
-| v_EM | v | 1.5×106 m/s | Fast stellar wind |
+| v_EM | v | 1.5$\times$106 m/s | Fast stellar wind |
 | B_EM | B | 10-5 T | PN B-field |
 | f_TRZ | — | 0.05 | UQFF |
 
@@ -65,24 +65,24 @@ computes all three modes simultaneously using M57 as the archetype planetary neb
 ### Mode 1: Compressed UQFF
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 1.193e30 / (1.89e15)2 \\
+  & g_grav = 6.6743e-11 \times 1.193e30 / (1.89e15)2 \\
   & = 7.962e19 / 3.572e30 = 2.229e-11 m/s2 \\
-  & H(z)×t negligible; E_rad factor = 0.82; TRZ = 1.05 \\
-  & \text{g\_grav\_total} = 2.229e-11 × 0.82 × 1.05 = 1.919e-11 m/s2  (negligible vs a_EM) \\
-  & a_EM = (1.602e-19 × 1.5e6 × 1e-5 / 1.673e-27) × 11 × 1e-12 = 1.580e-2 m/s2 \\
+  & H(z)\timest negligible; E_rad factor = 0.82; TRZ = 1.05 \\
+  & \text{g\_grav\_total} = 2.229e-11 \times 0.82 \times 1.05 = 1.919e-11 m/s2  (negligible vs a_EM) \\
+  & a_EM = (1.602e-19 \times 1.5e6 \times 1e-5 / 1.673e-27) \times 11 \times 1e-12 = 1.580e-2 m/s2 \\
   & g_comp = 1.580e-2 m/s2
 \end{aligned}
 $$
 
 ### Mode 2: Resonant UQFF
 $$
-g_res = 1.580e-2 × (1 + 0.0005 × 0.57) = 1.580e-2 m/s2
+g_res = 1.580e-2 \times (1 + 0.0005 \times 0.57) = 1.580e-2 m/s2
 $$
 
 ### Mode 3: Buoyancy UQFF
 $$
 \begin{aligned}
-  & V = (4/3)π(1.89e15)3 = 2.82e46 m3; a_Ubi << a_EM \\
+  & V = (4/3)\pi(1.89e15)3 = 2.82e46 m3; a_Ubi << a_EM \\
   & g_buoy = 1.580e-2 m/s2
 \end{aligned}
 $$
@@ -107,15 +107,15 @@ M57 is the definitive PN archetype, and Three-UQFF confirms it occupies the cano
 planetary nebula class alongside IC 418 (Spirograph) and NGC 6307+7027. The JWST 2023 discovery of
 the outer barrel caps in M57 is consistent with the UQFF framework: the barrel's polar extensions
 represent lower-density AGB material ejected at higher latitudes with higher velocities,
-contributing additional Aether EM coupling channels. The result g = 1.580×10-2 m/s2 — exactly 15×
-the standard HII result (1.053×10-3) — reflects the linear EM coupling: v = 1.5×106 m/s = 15 × v_HII
-= 15 × 105 m/s.
+contributing additional Aether EM coupling channels. The result g = 1.580$\times$10-2 m/s2 — exactly 15$\times$
+the standard HII result (1.053$\times$10-3) — reflects the linear EM coupling: v = 1.5$\times$106 m/s = 15 $\times$ v_HII
+= 15 $\times$ 105 m/s.
 
 ---
 
 ## 5. Conclusions
 
-Three-UQFF applied to M57 Ring Nebula yields g_primary ≈ 1.580×10-2 m/s2 across all three modes. As
+Three-UQFF applied to M57 Ring Nebula yields g_primary $\approx$ 1.580$\times$10-2 m/s2 across all three modes. As
 the canonical planetary nebula, M57 definitively establishes the PN fast-wind UQFF class. JWST 2023
 3D barrel structure is consistent with UQFF's prediction of enhanced polar EM coupling.
 
@@ -220,7 +220,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -231,13 +231,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

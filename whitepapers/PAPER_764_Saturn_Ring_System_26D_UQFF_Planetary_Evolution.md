@@ -22,12 +22,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-Saturn, the sixth planet from the Sun, is a gas giant with mass 5.683×1026 kg, an iconic ring system
-(mass ~1.5×1019 kg extending to ~140,000 km), and a dynamic atmosphere with winds up to 500 m/s.
+Saturn, the sixth planet from the Sun, is a gas giant with mass 5.683$\times$1026 kg, an iconic ring system
+(mass ~1.5$\times$1019 kg extending to ~140,000 km), and a dynamic atmosphere with winds up to 500 m/s.
 This paper derives the Master Universal Gravity UQFF equation governing Saturn's planetary
 evolution, incorporating solar gravitational influence, Saturn's own surface gravity, ring system
 tidal effects, atmospheric wind feedback, cosmic expansion, and Aether electromagnetic corrections.
-The result g_Saturn ≈ 10.44 m/s2 is dominated by Saturn's own surface gravity.
+The result g_Saturn $\approx$ 10.44 m/s2 is dominated by Saturn's own surface gravity.
 
 ---
 
@@ -36,7 +36,7 @@ The result g_Saturn ≈ 10.44 m/s2 is dominated by Saturn's own surface gravity.
 Hubble's OPAL program (2018–2021) captures Saturn's seasonal storms, banded cloud structures, and
 ring brightness variations. The ring system erodes at ~100 kg/s due to micrometeoroid impacts, with
 a projected disappearance in ~100 million years. Saturn's atmosphere at upper cloud levels has
-density ~2×10-4 kg/m3 and wind speeds averaging 500 m/s. The UQFF framework models planetary-scale
+density ~2$\times$10-4 kg/m3 and wind speeds averaging 500 m/s. The UQFF framework models planetary-scale
 evolution through orbital, surface, ring tidal, and Aether correction terms.
 
 ---
@@ -49,7 +49,7 @@ $$
   & + (G * M_Saturn) / r_Saturn2 \\
   & + T_ring \\
   & + a_wind \\
-  & + q*(v × B) * (1 + ρ_vac,[UA] / ρ_vac,[SCm]) * 10-12
+  & + q*(v \times B) * (1 + \rho_vac,[UA] / \rho_vac,[SCm]) * 10-12
 \end{aligned}
 $$
 
@@ -57,20 +57,20 @@ $$
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Solar mass | M_Sun | 1.989×1030 kg | Standard |
-| Saturn orbital radius | r_orbit | 1.43×1012 m (~9.58 AU) | JPL |
-| Saturn mass | M_Saturn | 5.683×1026 kg | JPL |
-| Saturn equatorial radius | r_Saturn | 6.0268×107 m | JPL |
-| Ring mass | M_ring | 1.5×1019 kg | Hubble |
-| Ring average radius | r_ring | 7×107 m | JPL |
-| Atmosphere density | ρ_atm | 2×10-4 kg/m3 | Labs |
+| Solar mass | M_Sun | 1.989$\times$1030 kg | Standard |
+| Saturn orbital radius | r_orbit | 1.43$\times$1012 m (~9.58 AU) | JPL |
+| Saturn mass | M_Saturn | 5.683$\times$1026 kg | JPL |
+| Saturn equatorial radius | r_Saturn | 6.0268$\times$107 m | JPL |
+| Ring mass | M_ring | 1.5$\times$1019 kg | Hubble |
+| Ring average radius | r_ring | 7$\times$107 m | JPL |
+| Atmosphere density | $\rho$_atm | 2$\times$10-4 kg/m3 | Labs |
 | Wind speed | v_wind | 500 m/s | Hubble OPAL |
-| Solar system age | t | 4.5×109 yr = 1.420×1017 s | Standard |
+| Solar system age | t | 4.5$\times$109 yr = 1.420$\times$1017 s | Standard |
 | Redshift | z | ~0 | Solar system |
 | EM velocity | v | 500 m/s | Atmospheric |
 | Saturn B field | B | 10-7 T | Labs |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
-| ρ_vac,[SCm] | — | 7.09×10-37 J/m3 | UQFF |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
+| $\rho$_vac,[SCm] | — | 7.09$\times$10-37 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -80,7 +80,7 @@ $$
 ### Step 1: Solar Gravitational Term (orbital scale)
 $$
 \begin{aligned}
-  & g_sun = (6.6743e-11 × 1.989e30) / (1.43e12)2 \\
+  & g_sun = (6.6743e-11 \times 1.989e30) / (1.43e12)2 \\
   & = 1.328e20 / 2.045e24 = 6.494e-5 m/s2
 \end{aligned}
 $$
@@ -88,7 +88,7 @@ $$
 ### Step 2: Saturn Surface Gravity
 $$
 \begin{aligned}
-  & g_saturn = (6.6743e-11 × 5.683e26) / (6.0268e7)2 \\
+  & g_saturn = (6.6743e-11 \times 5.683e26) / (6.0268e7)2 \\
   & = 3.793e16 / 3.632e15 = 10.44 m/s2
 \end{aligned}
 $$
@@ -96,7 +96,7 @@ $$
 ### Step 3: Ring System Tidal Influence
 $$
 \begin{aligned}
-  & T_ring = (6.6743e-11 × 1.5e19) / (7e7)2 \\
+  & T_ring = (6.6743e-11 \times 1.5e19) / (7e7)2 \\
   & = 1.001e9 / 4.9e15 = 2.043e-7 m/s2
 \end{aligned}
 $$
@@ -104,18 +104,18 @@ $$
 ### Step 4: Atmospheric Wind Feedback
 $$
 \begin{aligned}
-  & F_wind = ρ_atm × v_wind2 = 2e-4 × (500)2 = 50 N/m2 \\
+  & F_wind = \rho_atm \times v_wind2 = 2e-4 \times (500)2 = 50 N/m2 \\
   & a_wind = 50 / (2e-4) = 2.5e5 m/s2 \\
-  & \text{a\_wind\_macro} = 2.5e5 × 10-12 = 2.5e-7 m/s2
+  & \text{a\_wind\_macro} = 2.5e5 \times 10-12 = 2.5e-7 m/s2
 \end{aligned}
 $$
 
 ### Step 5: Cosmic Expansion (negligible at Solar System scale)
 $$
 \begin{aligned}
-  & H(z) ≈ H_0 = 2.268e-18 s-1  (z ≈ 0) \\
-  & H(z) × t = 2.268e-18 × 1.420e17 = 3.221e-1 \\
-  & 1 + H(z) × t = 1.3221
+  & H(z) \approx H_0 = 2.268e-18 s-1  (z \approx 0) \\
+  & H(z) \times t = 2.268e-18 \times 1.420e17 = 3.221e-1 \\
+  & 1 + H(z) \times t = 1.3221
 \end{aligned}
 $$
 
@@ -127,19 +127,19 @@ $$
 ### Step 7: Electromagnetic [UA] Term
 $$
 \begin{aligned}
-  & q × (v × B) = 1.602e-19 × 500 × 1e-7 = 8.01e-24 N \\
+  & q \times (v \times B) = 1.602e-19 \times 500 \times 1e-7 = 8.01e-24 N \\
   & a = 8.01e-24 / 1.673e-27 = 4.789e3 m/s2  (using proton mass) \\
-  & (1 + ρ_vac,[UA]/ρ_vac,[SCm]) = 11 \\
-  & Total = 4.789e3 × 11 × 10-12 = 5.268e-8 m/s2
+  & (1 + \rho_vac,[UA]/\rho_vac,[SCm]) = 11 \\
+  & Total = 4.789e3 \times 11 \times 10-12 = 5.268e-8 m/s2
 \end{aligned}
 $$
 
 ### Step 8: Final Solution
 $$
 \begin{aligned}
-  & g_Saturn = (6.494e-5) × (1.3221) × (1.1) + 10.44 + 2.043e-7 + 2.5e-7 + 5.268e-8 \\
+  & g_Saturn = (6.494e-5) \times (1.3221) \times (1.1) + 10.44 + 2.043e-7 + 2.5e-7 + 5.268e-8 \\
   & = 9.443e-5 + 10.44 + 4.793e-7 \\
-  & ≈ 10.44 m/s2
+  & \approx 10.44 m/s2
 \end{aligned}
 $$
 
@@ -149,8 +149,8 @@ $$
 
 Saturn's surface gravity (10.44 m/s2) completely dominates all other terms. The orbital solar term,
 ring tidal term, and atmospheric wind term are smaller by factors of 104–108. The UQFF Aether
-correction at Saturn's scale is negligible (5.268×10-8), confirming UQFF's Solar System fidelity.
-The cosmic expansion correction (H(z)·t = 0.322) is modest even over the Solar System's 4.5 Gyr age,
+correction at Saturn's scale is negligible (5.268$\times$10-8), confirming UQFF's Solar System fidelity.
+The cosmic expansion correction (H(z)$\cdot$t = 0.322) is modest even over the Solar System's 4.5 Gyr age,
 demonstrating UQFF correctly handles both planetary and cosmological timescales.
 
 ---
@@ -166,7 +166,7 @@ demonstrating UQFF correctly handles both planetary and cosmological timescales.
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for Saturn yields g_Saturn ≈ 10.44 m/s2, consistent with observed
+The Master UQFF gravity equation for Saturn yields g_Saturn $\approx$ 10.44 m/s2, consistent with observed
 Cassini/Hubble measurements. This confirms UQFF's fidelity at planetary scales while providing a
 richer multi-term framework incorporating ring tidal effects, atmospheric wind feedback, and Aether
 corrections that extend beyond classical models.
@@ -181,7 +181,7 @@ corrections that extend beyond classical models.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -200,7 +200,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -237,7 +237,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -340,7 +340,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.172 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -351,13 +351,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

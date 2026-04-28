@@ -10,7 +10,7 @@ tags: [Riemann, SCm, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_185: UQFF π-Cycle Riemann Zeta Connection
+# PAPER_185: UQFF $\pi$-Cycle Riemann Zeta Connection
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -22,13 +22,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper establishes a formal connection between the UQFF π-cycle oscillation factor `cos(πt_n)`
+This paper establishes a formal connection between the UQFF $\pi$-cycle oscillation factor `cos(πt_n)`
 and the Riemann Hypothesis through the distribution of zeros of the Riemann zeta function. The
 normalized UQFF time index t_n creates a discrete sequence of field values at integer and
 half-integer points that mirrors the prime-counting distribution encoded by non-trivial zeros of
-ζ(s). Specifically, the energy extrema of the UQFF Hamiltonian at t_n ∈ ℤ reproduce the von Mangoldt
-explicit formula correction terms, while the zeros at t_n ∈ ℤ + 1/2 encode the non-trivial zeros ρ =
-1/2 + iγ. This constitutes a novel spectral interpretation of the Riemann Hypothesis in terms of
+$\zeta$(s). Specifically, the energy extrema of the UQFF Hamiltonian at t_n $\in$ $\mathbb{Z}$ reproduce the von Mangoldt
+explicit formula correction terms, while the zeros at t_n $\in$ $\mathbb{Z}$ + 1/2 encode the non-trivial zeros $\rho$ =
+1/2 + i$\gamma$. This constitutes a novel spectral interpretation of the Riemann Hypothesis in terms of
 physical resonance modes.
 
 ---
@@ -44,7 +44,7 @@ The UQFF framework employs the normalized time index $t_n$ (dimensionless) that 
 
 ---
 
-## 2. UQFF π-Cycle Structure
+## 2. UQFF $\pi$-Cycle Structure
 
 ### 2.1 Occurrence in Field Components
 
@@ -57,7 +57,7 @@ The factor $\cos(\pi t_n)$ appears in:
 | Ug3 | $k_3 \cdot (P_{\text{SCm}} / \omega_s) \cdot \cos(\omega_s t \pi)$ |
 | Ug4 | $k_4 \cdot (\rho_v C_c M_{\text{bh}} / d_g) \cdot \cos(\pi t_n)$ |
 | H_UA | $\eta \cdot (\rho_A v_{\text{UA}}^2 / 2) \cdot \cos(\pi t_n)$ |
-| A_μν | $(1 + \eta T_s^{00} \cos(\pi t_n)) \cdot g_{\mu\nu}$ |
+| A_$\mu$$\nu$ | $(1 + \eta T_s^{00} \cos(\pi t_n)) \cdot g_{\mu\nu}$ |
 
 ### 2.2 UQFF Spectral Function
 
@@ -116,12 +116,12 @@ The normalized spacing $\delta_{\text{UQFF}} = f_{\text{SuperFreq}} / f_{\text{Q
 
 ---
 
-## 5. The π-Quantization Rule
+## 5. The $\pi$-Quantization Rule
 
 The UQFF quantum of time is:
 $$\Delta t_n = 1/\pi \cdot (1/\omega_s)$$
 
-This gives the minimal time step for the π-cycle, analogous to Planck's quantum of action:
+This gives the minimal time step for the $\pi$-cycle, analogous to Planck's quantum of action:
 $$\Delta E \cdot \Delta t_n = \hbar_{\text{UQFF}} = F_U(t_n = 0) / \pi \approx \frac{F_U^{(0)}}{\pi}$$
 
 The energy-time uncertainty principle of the UQFF is:
@@ -141,11 +141,11 @@ condition for its energy spectrum.
 
 ## 7. Conclusion
 
-The UQFF π-cycle factor $\cos(\pi t_n)$ encodes the prime distribution through the Möbius alternation $(-1)^n$ and generates a spectral function directly related to the Riemann zeta zeros. The resonance spacings of the 5-frequency UQFF system are consistent with GUE statistics expected from Montgomery's conjecture on Riemann zero correlations. This constitutes a novel physical interpretation of the Riemann Hypothesis as a consistency condition for energy quantization in the UQFF.
+The UQFF $\pi$-cycle factor $\cos(\pi t_n)$ encodes the prime distribution through the Möbius alternation $(-1)^n$ and generates a spectral function directly related to the Riemann zeta zeros. The resonance spacings of the 5-frequency UQFF system are consistent with GUE statistics expected from Montgomery's conjecture on Riemann zero correlations. This constitutes a novel physical interpretation of the Riemann Hypothesis as a consistency condition for energy quantization in the UQFF.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 
@@ -158,7 +158,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -261,7 +261,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.161 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -272,13 +272,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

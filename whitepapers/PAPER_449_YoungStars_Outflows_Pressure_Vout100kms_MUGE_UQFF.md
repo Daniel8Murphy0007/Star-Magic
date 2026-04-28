@@ -21,19 +21,19 @@ km/s encoding in UQFF gravity
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `YoungStarsOutflowsPressureCalculator` (#3, PAPER_449)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57 —>
 ---
 
 ## Abstract
 
 This paper quantifies the gravitational evolution of a young stellar object (YSO) cluster under
 bipolar jet feedback, using the UQFF/MUGE framework with an explicit outflow pressure term. The
-module models a 1000 MM_sun protostellar cluster at r=2.365×1017 m (25 ly) over t_evolve=5×106 yr with
-bipolar jet outflows at v_out=105 m/s (100 km/s). The outflow pressure term P_outflow = ρ v_out2 (1
+module models a 1000 MM_sun protostellar cluster at r=2.365$\times$1017 m (25 ly) over t_evolve=5$\times$106 yr with
+bipolar jet outflows at v_out=105 m/s (100 km/s). The outflow pressure term P_outflow = $\rho$ v_out2 (1
 + t/t_evolve) is the **first such term in the UQFF framework**, establishing that momentum-driven
 jet feedback adds a time-growing gravitational modifier that eventually dominates over the DPM-seeded
-base gravity. At t = t_evolve, P_outflow ≈ 2ρ v_out2 ≈ 2×10-10 m/s2, which exceeds the DPM-seeded g
-by ~20×.
+base gravity. At t = t_evolve, P_outflow $\approx$ 2$\rho$ v_out2 $\approx$ 2$\times$10-10 m/s2, which exceeds the DPM-seeded g
+by ~20$\times$.
 
 ---
 
@@ -43,14 +43,14 @@ by ~20×.
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M | 1.989×1033 kg (1000 MM_sun) | Young protostellar cluster |
-| r | 2.365×1017 m (~25 ly) | Cluster half-span |
-| v_out | 1×105 m/s | Bipolar jet velocity (100 km/s) |
-| t_evolve | 5×106 yr ≈ 1.577×1014 s | Outflow evolution timescale |
+| M | 1.989$\times$1033 kg (1000 MM_sun) | Young protostellar cluster |
+| r | 2.365$\times$1017 m (~25 ly) | Cluster half-span |
+| v_out | 1$\times$105 m/s | Bipolar jet velocity (100 km/s) |
+| t_evolve | 5$\times$106 yr $\approx$ 1.577$\times$1014 s | Outflow evolution timescale |
 | z | 0.05 | Moderate redshift (young cluster era) |
-| ρ_fluid | 1×10-20 kg/m3 | Molecular cloud density |
-| B | 1×10-5 T | Cloud magnetic field |
-| v_exp | 1×104 m/s | General expansion velocity |
+| $\rho$_fluid | 1$\times$10-20 kg/m3 | Molecular cloud density |
+| B | 1$\times$10-5 T | Cloud magnetic field |
+| v_exp | 1$\times$104 m/s | General expansion velocity |
 
 ### 2.2 UQFF Total Gravitational Equation
 
@@ -82,10 +82,10 @@ $$P_{\rm outflow}(t) = 10^{-10}\left(1 + \frac{t}{t_{\rm evolve}}\right)\ \rm m/
 
 | t (Myr) | P_outflow (m/s2) | g_DPM | Ratio P/g_N |
 |---------|-----------------|----------|-------------|
-| 0 | 1.0×10-10 | 2.37×10-12 | 42× |
-| 1 | 1.2×10-10 | 2.37×10-12 | 51× |
-| 2.5 | 1.5×10-10 | 2.37×10-12 | 63× |
-| 5.0 | 2.0×10-10 | 2.37×10-12 | 84× |
+| 0 | 1.0$\times$10-10 | 2.37$\times$10-12 | 42$\times$ |
+| 1 | 1.2$\times$10-10 | 2.37$\times$10-12 | 51$\times$ |
+| 2.5 | 1.5$\times$10-10 | 2.37$\times$10-12 | 63$\times$ |
+| 5.0 | 2.0$\times$10-10 | 2.37$\times$10-12 | 84$\times$ |
 
 At all epochs, outflow pressure **completely dominates** the DPM-seeded base — demonstrating that jet
 feedback in YSO clusters fundamentally alters the gravitational landscape.
@@ -133,9 +133,9 @@ specific system masses, making PAPER_449 foundational for all star-forming regio
 | Mechanism | SM Treatment | UQFF Treatment |
 |-----------|-------------|----------------|
 | Bipolar jet feedback | Separate hydrodynamics | Integrated P_outflow(t) term |
-| Time evolution | Δt numerical integration | Analytic (1 + t/t_evolve) |
-| v_out coupling to gravity | Not coupled | Direct ρ·v2 modifier |
-| DM component | Added separately | Built-in 0.268× factor |
+| Time evolution | $\Delta$t numerical integration | Analytic (1 + t/t_evolve) |
+| v_out coupling to gravity | Not coupled | Direct $\rho$$\cdot$v2 modifier |
+| DM component | Added separately | Built-in 0.268$\times$ factor |
 
 UQFF provides a **15-variable analytic solution** where SM requires full 3D MHD numerical
 simulation.
@@ -146,9 +146,9 @@ simulation.
 
 1. **Momentum budget:** The total outflow momentum after t_evolve is dominated by ram pressure: $J_{\rm tot} = P_{\rm outflow} \times t_{\rm evolve} \times M \approx 10^{-10} \times 1.577\times10^{14} \times 1.989\times10^{33} \approx 3.1\times10^{37}$ kg m/s. Consistent with outflow momentum budgets measured in Class 0 sources.
 2. **Dispersal by jets:** UQFF predicts cloud disruption when $P_{\rm outflow}(t) > g_{
-m DPM} + \text{self-gravity}$; for this system this occurs at t ≈ 0 (immediately). Observer confirmation: ~50% of YSO clusters show disrupted molecular envelopes within 1 Myr of outflow initiation.
-3. **Scalability:** P_outflow ∝ ρ·v2, so denser clouds (ρ→10-18 kg/m3) or faster jets (v→106 m/s)
-increase feedback by 100×, matching observed extreme outflow sources.
+m DPM} + \text{self-gravity}$; for this system this occurs at t $\approx$ 0 (immediately). Observer confirmation: ~50% of YSO clusters show disrupted molecular envelopes within 1 Myr of outflow initiation.
+3. **Scalability:** P_outflow $\propto$ $\rho$$\cdot$v2, so denser clouds ($\rho$$\to$10-18 kg/m3) or faster jets (v$\to$106 m/s)
+increase feedback by 100$\times$, matching observed extreme outflow sources.
 
 ---
 
@@ -160,7 +160,7 @@ increase feedback by 100×, matching observed extreme outflow sources.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -179,7 +179,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -287,7 +287,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -298,10 +298,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Nebular/Star-forming region luminosity H$\alpha$ + X-ray | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Nebular/Star-forming region

@@ -34,13 +34,13 @@ $$
 
 This paper presents two companion equations from the nine-system September 2025 document
 assimilation: (1) g_Compressed in its complete all-forces form including the (M_vis+M_DM)(d?/? +
-3μ_s∇(M_s/r)/r) dark matter perturbation term, the ?_fluid·V·g fluid buoyancy term, and the quantum
+3$\mu$_s$\nabla$(M_s/r)/r) dark matter perturbation term, the ?_fluid$\cdot$V$\cdot$g fluid buoyancy term, and the quantum
 Hamiltonian term; and (2) R(t) in its explicit 4-subterm per state decomposition showing all four
 resonance components: R_U_g1, R_U_g2, R_U_g3, and R_U_g4i per each of the 26 states.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -52,12 +52,12 @@ present in Standard Model treatments.
 
 $$
 \begin{aligned}
-  & g_Compressed(r,t) = (G M(t) / r2) · (1 + H(t,z)) · (1 - B(t)/B_crit) · (1 + F_env(t)) \\
+  & g_Compressed(r,t) = (G M(t) / r2) \cdot (1 + H(t,z)) \cdot (1 - B(t)/B_crit) \cdot (1 + F_env(t)) \\
   & + ? U_g,i' \\
   & + ? c2 / 3 \\
-  & + ? / v(?x·?p) · ? ?_total† H_op ?_total dV · (2p / t_Hubble) \\
-  & + ?_fluid · V · g \\
-  & + (M_vis + M_DM) · (d?/? + 3G M / r3)
+  & + ? / v(?x\cdot?p) \cdot ? ?_total† H_op ?_total dV \cdot (2p / t_Hubble) \\
+  & + ?_fluid \cdot V \cdot g \\
+  & + (M_vis + M_DM) \cdot (d?/? + 3G M / r3)
 \end{aligned}
 $$
 
@@ -65,7 +65,7 @@ $$
 
 **Term 1: Gravitational Base with 3 Multipliers**
 $$
-(G M(t) / r2) · (1 + H(t,z)) · (1 - B(t)/B_crit) · (1 + F_env(t))
+(G M(t) / r2) \cdot (1 + H(t,z)) \cdot (1 - B(t)/B_crit) \cdot (1 + F_env(t))
 $$
 - G M(t)/r2: time-evolving DPM-seeded gravity (M(t) for accreting/star-forming systems)
 - (1+H(t,z)): Hubble expansion correction at redshift z
@@ -80,13 +80,13 @@ Same 26-state structure but with prime notation indicating compression (paramete
 
 **Term 3: Cosmological Constant**
 $$
-? c2 / 3 = (1.1×10-52 m?2) × (3×108 m/s)2 / 3 = 3.30×10?36 m/s2
+? c2 / 3 = (1.1\times10-52 m?2) \times (3\times108 m/s)2 / 3 = 3.30\times10?36 m/s2
 $$
 (Same as PAPER_296 for reference)
 
 **Term 4: Quantum Hamiltonian Term (NEW in completeness)**
 $$
-? / v(?x·?p) · ? ?_total† H_op ?_total dV · (2p / t_Hubble)
+? / v(?x\cdot?p) \cdot ? ?_total† H_op ?_total dV \cdot (2p / t_Hubble)
 $$
 - ?/v(?x?p): Heisenberg uncertainty principle denominator
 - ??†H? dV: quantum expectation value of Hamiltonian
@@ -94,7 +94,7 @@ $$
 
 **Term 5: Fluid Buoyancy (NEW in completeness)**
 $$
-?_fluid · V · g
+?_fluid \cdot V \cdot g
 $$
 - ?_fluid = system-dependent (10?2° to 10?15 kg/m3)
 - V: characteristic system volume
@@ -103,17 +103,17 @@ $$
 
 **Term 6: Dark Matter Perturbation Coupling (NEW — not in any prior g_Compressed form)**
 $$
-(M_vis + M_DM) · (d?/? + 3G M / r3)
+(M_vis + M_DM) \cdot (d?/? + 3G M / r3)
 $$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| M_vis | M × f_vis | Visible mass fraction (f_vis=0.15 spiral; 0.05 cluster) |
-| M_DM | M × f_DM | Dark matter mass fraction (f_DM=0.85 spiral; 0.95 cluster) |
+| M_vis | M $\times$ f_vis | Visible mass fraction (f_vis=0.15 spiral; 0.05 cluster) |
+| M_DM | M $\times$ f_DM | Dark matter mass fraction (f_DM=0.85 spiral; 0.95 cluster) |
 | d?/? | ~10?5 | Density perturbation parameter |
-| 3μ_s∇(M_s/r)/r | tidal gravity | 3× tidal component |
+| 3$\mu$_s$\nabla$(M_s/r)/r | tidal gravity | 3$\times$ tidal component |
 
-**Physical significance:** The (M_vis + M_DM)(d?/? + 3μ_s∇(M_s/r)/r) term couples the total mass (visible +
+**Physical significance:** The (M_vis + M_DM)(d?/? + 3$\mu$_s$\nabla$(M_s/r)/r) term couples the total mass (visible +
 dark) to both the density fluctuation field AND the tidal gravity — simultaneously handling dark
 matter dynamics AND structure formation in one term. This is the UQFF generalization of the Jeans
 instability criterion and the dark matter halo perturbation.
@@ -122,11 +122,11 @@ instability criterion and the dark matter halo perturbation.
 
 | System | g_Compressed (N) | Dominant Terms |
 |--------|-----------------|----------------|
-| Vela (compact) | ~3.95×10-41 | Term 1 × Hubble + Term 4 |
-| Crab (compact) | ~3.95×10-41 | Term 1 + Term 3 |
-| NGC 1365 (galactic) | ~4.12×10-41 | Term 6 (DM) + Term 1 |
-| Abell 2256 (cluster) | ~4.12×10-41 | Term 6 (DM dominant) |
-| Jupiter | ~3.95×10-41 | Term 1 (giant planet regime) |
+| Vela (compact) | ~3.95$\times$10-41 | Term 1 $\times$ Hubble + Term 4 |
+| Crab (compact) | ~3.95$\times$10-41 | Term 1 + Term 3 |
+| NGC 1365 (galactic) | ~4.12$\times$10-41 | Term 6 (DM) + Term 1 |
+| Abell 2256 (cluster) | ~4.12$\times$10-41 | Term 6 (DM dominant) |
+| Jupiter | ~3.95$\times$10-41 | Term 1 (giant planet regime) |
 
 ---
 
@@ -136,10 +136,10 @@ instability criterion and the dark matter halo perturbation.
 
 $$
 \begin{aligned}
-  & R(t) = ?_{i=1}^{26} [ \text{R\_U\_g1},i · cos(?_U_g1,i · t) \\
-  & + \text{R\_U\_g2},i · cos(?_U_g2,i · t) \\
-  & + \text{R\_U\_g3},i · cos(?_U_g3,i · t) \\
-  & + \text{R\_U\_g4i},i · cos(?_U_g4i,i · t) ]
+  & R(t) = ?_{i=1}^{26} [ \text{R\_U\_g1},i \cdot cos(?_U_g1,i \cdot t) \\
+  & + \text{R\_U\_g2},i \cdot cos(?_U_g2,i \cdot t) \\
+  & + \text{R\_U\_g3},i \cdot cos(?_U_g3,i \cdot t) \\
+  & + \text{R\_U\_g4i},i \cdot cos(?_U_g4i,i \cdot t) ]
 \end{aligned}
 $$
 
@@ -149,44 +149,44 @@ Each of the 26 states i contributes 4 cosine resonance components:
 
 | Sub-term | Physical Origin | Frequency Scale |
 |----------|----------------|----------------|
-| `R_U_g1`,i · cos(?_U_g1,i t) | Magnetic dipole resonance | f_super = 1.411×1016 Hz at i=1 |
-| `R_U_g2`,i · cos(?_U_g2,i t) | Charge-reactivity resonance | f_react = 101° Hz at i=1 |
-| `R_U_g3`,i · cos(?_U_g3,i t) | String rotation resonance | f_THz = 1012 Hz at i=1 |
-| `R_U_g4i`,i · cos(?_U_g4i,i t) | Vacuum concentration resonance | f_quantum = 1.445×10?17 Hz at i=1 |
+| `R_U_g1`,i $\cdot$ cos(?_U_g1,i t) | Magnetic dipole resonance | f_super = 1.411$\times$1016 Hz at i=1 |
+| `R_U_g2`,i $\cdot$ cos(?_U_g2,i t) | Charge-reactivity resonance | f_react = 101° Hz at i=1 |
+| `R_U_g3`,i $\cdot$ cos(?_U_g3,i t) | String rotation resonance | f_THz = 1012 Hz at i=1 |
+| `R_U_g4i`,i $\cdot$ cos(?_U_g4i,i t) | Vacuum concentration resonance | f_quantum = 1.445$\times$10?17 Hz at i=1 |
 
 **State-to-state scaling:** ?_U_gX,i decreases with increasing i by the [SSq] exponential factor:
 $$
-?_U_gX,i = ?_U_gX,1 × exp(-[SSq] · i/26)
+?_U_gX,i = ?_U_gX,1 \times exp(-[SSq] \cdot i/26)
 $$
 
 ### 3.3 Total Term Count
 
-- 26 states × 4 sub-terms = 104 individual cosine terms
-- Each term carries amplitude R_U_gX,i ~ f_X × A_X(state)
+- 26 states $\times$ 4 sub-terms = 104 individual cosine terms
+- Each term carries amplitude R_U_gX,i ~ f_X $\times$ A_X(state)
 - TRIADIC master (PAPER_326) showed the 26-state structure; THIS paper shows the 4-subterm internal structure
 
 ### 3.4 Results by Scale Class
 
 | System | R(t) (N) | Dominant Sub-term |
 |--------|----------|------------------|
-| Vela/Crab (compact) | -1.12×10-42 | `R_U_g3` THz (f_THz=1012 blob velocities 0.3-0.7c) |
-| NGC 1365/ESO 137-001 | -2.29×10-41 | `R_U_g1` magnetic dipole (Seyfert AGN) |
-| Jupiter/Lagoon | -1.12×10-42 | `R_U_g2` charge-reactivity (H3+/ionized plasma) |
+| Vela/Crab (compact) | -1.12$\times$10-42 | `R_U_g3` THz (f_THz=1012 blob velocities 0.3-0.7c) |
+| NGC 1365/ESO 137-001 | -2.29$\times$10-41 | `R_U_g1` magnetic dipole (Seyfert AGN) |
+| Jupiter/Lagoon | -1.12$\times$10-42 | `R_U_g2` charge-reactivity (H3+/ionized plasma) |
 
 ### 3.5 Vela Frequency Assignment
 
 For Vela Pulsar THz blobs (0.3–0.7c velocities, f_res~1012 Hz):
 $$
 \begin{aligned}
-  & \text{R\_U\_g3},i = R_0 · (v_blob/c) · (f_THz/f_ref)   [THz component dominant] \\
-  & ?_U_g3,i = 2p × f_THz = 2p × 1012 rad/s
+  & \text{R\_U\_g3},i = R_0 \cdot (v_blob/c) \cdot (f_THz/f_ref)   [THz component dominant] \\
+  & ?_U_g3,i = 2p \times f_THz = 2p \times 1012 rad/s
 \end{aligned}
 $$
 The ~0.3 phase separation characteristic of the Vela multi-peak profile maps to:
 $$
 \begin{aligned}
-  & phase_sep = 0.3 ? cos(p × 0.3/0.3) = cos(p) = -1   [anti-phase sum] \\
-  & R_total ~ 2 × |\text{R\_U\_g3}| × cos(p × phase_sep) at minimum
+  & phase_sep = 0.3 ? cos(p \times 0.3/0.3) = cos(p) = -1   [anti-phase sum] \\
+  & R_total ~ 2 \times |\text{R\_U\_g3}| \times cos(p \times phase_sep) at minimum
 \end{aligned}
 $$
 
@@ -209,9 +209,9 @@ $$
 
 ## 5. FIRST Declarations
 
-1. **FIRST g_Compressed complete all-forces form** — includes Term 6: (M_vis+M_DM)(d?/? + 3μ_s∇(M_s/r)/r)
+1. **FIRST g_Compressed complete all-forces form** — includes Term 6: (M_vis+M_DM)(d?/? + 3$\mu$_s$\nabla$(M_s/r)/r)
 dark matter perturbation
-2. **FIRST fluid buoyancy term** (?_fluid·V·g) in g_Compressed reference
+2. **FIRST fluid buoyancy term** (?_fluid$\cdot$V$\cdot$g) in g_Compressed reference
 3. **FIRST R(t) 4-subterm per state explicit decomposition** — R_Ug1/Ug2/Ug3/Ug4i per each of 26
 states (104 total terms)
 
@@ -223,15 +223,15 @@ $$
 \begin{aligned}
   & g_Compressed = (GM(t)/r2)(1+H(t,z))(1-B/B_crit)(1+F_env) \\
   & + ?U_g,i' + ?c2/3 \\
-  & + ?/v(?x?p)·??†H_op ? dV·(2p/t_Hubble) \\
-  & + ?_fluid·V·g \\
-  & + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r)     [NEW DM perturbation] \\
+  & + ?/v(?x?p)\cdot??†H_op ? dV\cdot(2p/t_Hubble) \\
+  & + ?_fluid\cdotV\cdotg \\
+  & + (M_vis+M_DM)\cdot(d?/? + 3\mu_s\nabla(M_s/r)/r)     [NEW DM perturbation] \\
   & R(t) = ?_{i=1}^{26} [R_Ug1,i cos(?_Ug1,i t)       [magnetic dipole] \\
   & + R_Ug2,i cos(?_Ug2,i t)       [charge-reactivity] \\
   & + R_Ug3,i cos(?_Ug3,i t)       [string rotation ? THz] \\
   & + R_Ug4i,i cos(?_Ug4i,i t)]    [vacuum concentration] \\
-  & [compact]  g_Compressed ˜ 3.95×10-41 N; R(t) ˜ -1.12×10-42 N \\
-  & [galactic] g_Compressed ˜ 4.12×10-41 N; R(t) ˜ -2.29×10-41 N
+  & [compact]  g_Compressed ˜ 3.95\times10-41 N; R(t) ˜ -1.12\times10-42 N \\
+  & [galactic] g_Compressed ˜ 4.12\times10-41 N; R(t) ˜ -2.29\times10-41 N
 \end{aligned}
 $$
 
@@ -256,7 +256,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -275,7 +275,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -377,7 +377,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -388,13 +388,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

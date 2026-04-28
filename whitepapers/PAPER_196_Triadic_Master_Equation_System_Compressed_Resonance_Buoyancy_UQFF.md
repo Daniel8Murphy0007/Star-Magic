@@ -26,7 +26,7 @@ $$
 g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdotBigl(1 - [SSq]\cdot U_{b\_i}\,/\,F_U(r,t)\Bigr), \quad [SSq]
 = 0.57
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
@@ -34,12 +34,12 @@ This paper formalizes the Triadic Master Equation System: three simultaneous UQF
 together fully characterize any astrophysical system across compressed gravitational, resonance, and
 buoyancy dimensions. Derived from the Sept 22, 2025 PDF analyses and applied to Westerlund 2 and
 Pillars of Creation, the triadic form achieves 90.97% unification of 47-system variants. Explicit
-numerical solutions are provided: FU_g1 ˜ 2.43×10-4° N, R(t) ˜ -2.29×10-41 N, FU_Bi ˜ 6.14×10?32 N
+numerical solutions are provided: FU_g1 ˜ 2.43$\times$10-4° N, R(t) ˜ -2.29$\times$10-41 N, FU_Bi ˜ 6.14$\times$10?32 N
 for Westerlund 2.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -77,8 +77,8 @@ where:
   [SSq] = log(?_vac,[SCm]/?_vac,[UA']) · n · e^{-(p-t_n)}
 ```
 
-**Westerlund 2 solution:** FU_g1 ˜ 2.43×10-4° N (drives stellar collapse)  
-**Pillars of Creation solution:** FU_g1 ˜ 3.95×10-41 N
+**Westerlund 2 solution:** FU_g1 ˜ 2.43$\times$10-4° N (drives stellar collapse)  
+**Pillars of Creation solution:** FU_g1 ˜ 3.95$\times$10-41 N
 
 ---
 
@@ -86,20 +86,20 @@ where:
 
 $$
 \begin{aligned}
-  & R(t) = S_{i=1}^{26} [R_{Ug1,i} · cos(?_{Ug1,i} · t) \\
-  & + R_{Ug2,i} · cos(?_{Ug2,i} · t) \\
-  & + R_{Ug3,i} · cos(?_{Ug3,i} · t) \\
-  & + R_{Ug4i,i} · cos(?_{Ug4i,i} · t)] \\
+  & R(t) = S_{i=1}^{26} [R_{Ug1,i} \cdot cos(?_{Ug1,i} \cdot t) \\
+  & + R_{Ug2,i} \cdot cos(?_{Ug2,i} \cdot t) \\
+  & + R_{Ug3,i} \cdot cos(?_{Ug3,i} \cdot t) \\
+  & + R_{Ug4i,i} \cdot cos(?_{Ug4i,i} \cdot t)] \\
   & where: \\
-  & R_{Ug1,i} = F_{Ug1,i} · (1 + M_sf(t)) · e^{-[SSq]·i/26} \\
-  & ?_{Ug1,i} = 2p/(T_sf/i) · (1 + [SSq]) \\
-  & R_{Ug2,i} = F_{Ug2,i} · (1 + ?·v_wind2) · e^{-[SSq]·i/26} \\
-  & ?_{Ug2,i} = 2p/(T_wind/i) · (1 + [SSq])
+  & R_{Ug1,i} = F_{Ug1,i} \cdot (1 + M_sf(t)) \cdot e^{-[SSq]\cdoti/26} \\
+  & ?_{Ug1,i} = 2p/(T_sf/i) \cdot (1 + [SSq]) \\
+  & R_{Ug2,i} = F_{Ug2,i} \cdot (1 + ?\cdotv_wind2) \cdot e^{-[SSq]\cdoti/26} \\
+  & ?_{Ug2,i} = 2p/(T_wind/i) \cdot (1 + [SSq])
 \end{aligned}
 $$
 
-**Westerlund 2 solution:** R(t) ˜ -2.29×10-41 N  
-**Pillars of Creation solution:** R(t) ˜ -1.12×10-42 N
+**Westerlund 2 solution:** R(t) ˜ -2.29$\times$10-41 N  
+**Pillars of Creation solution:** R(t) ˜ -1.12$\times$10-42 N
 
 Negative R(t) terms (cos(?t) < 0) predict anti-glitches via buoyancy countering.
 
@@ -109,18 +109,18 @@ Negative R(t) terms (cos(?t) < 0) predict anti-glitches via buoyancy countering.
 
 $$
 \begin{aligned}
-  & FU_Bi = S_{k=1}^N [k_{Ub,k} · (fUA' · fSCm · REB / r2) \\
-  & · H_k(?THz, Ub, geometry_k) · f_Ub · e^{-(p-t_n)}] \\
+  & FU_Bi = S_{k=1}^N [k_{Ub,k} \cdot (fUA' \cdot fSCm \cdot REB / r2) \\
+  & \cdot H_k(?THz, Ub, geometry_k) \cdot f_Ub \cdot e^{-(p-t_n)}] \\
   & where: \\
-  & H_k = cos(f) · f(?THz) \\
-  & f_Ub = k_Ub · ?k_? · (?_vac,[UA] / ?_vac,[SCm]) · (V_little / V_big) \\
-  & ?k_? = k_?,upper - k_?,lower ˜ 7.25×108 \\
+  & H_k = cos(f) \cdot f(?THz) \\
+  & f_Ub = k_Ub \cdot ?k_? \cdot (?_vac,[UA] / ?_vac,[SCm]) \cdot (V_little / V_big) \\
+  & ?k_? = k_?,upper - k_?,lower ˜ 7.25\times108 \\
   & V_little/V_big = volume ratio (quantum domain / astrophysical domain)
 \end{aligned}
 $$
 
-**Westerlund 2 solution:** FU_Bi ˜ 6.14×10?32 N  
-**Pillars of Creation solution:** FU_Bi ˜ 9.79×10?33 N
+**Westerlund 2 solution:** FU_Bi ˜ 6.14$\times$10?32 N  
+**Pillars of Creation solution:** FU_Bi ˜ 9.79$\times$10?33 N
 
 ---
 
@@ -129,31 +129,31 @@ $$
 ### 5.1 Universal Magnetism Um (Eq 36)
 $$
 \begin{aligned}
-  & Um = S_j [µ_j(t, ?_vac,[SCm]) / r_j · (1 - e^{-?t} · cos(pt_n)) · ?^j] \\
-  & · P_SCm · E_react \\
-  & · (1 + 10^{13} · f_Heaviside) · (1 + f_quasi) · e^{-[SSq]}
+  & Um = S_j [µ_j(t, ?_vac,[SCm]) / r_j \cdot (1 - e^{-?t} \cdot cos(pt_n)) \cdot ?^j] \\
+  & \cdot P_SCm \cdot E_react \\
+  & \cdot (1 + 10^{13} \cdot f_Heaviside) \cdot (1 + f_quasi) \cdot e^{-[SSq]}
 \end{aligned}
 $$
-**Numerical value:** Um ˜ 3.78×10-6 J/m3
+**Numerical value:** Um ˜ 3.78$\times$10-6 J/m3
 
 ### 5.2 Pseudo-Monopole States
 $$
 \begin{aligned}
-  & d_n = ? · (2pn/6) \\
-  & ?_vac,[UA']:[SCm] = ?_vac,[UA'] · (?_vac,[SCm]/?_vac,[UA])^n \\
-  & · e^{-[SSq]·n/26} · e^{-(p-t_n)}
+  & d_n = ? \cdot (2pn/6) \\
+  & ?_vac,[UA']:[SCm] = ?_vac,[UA'] \cdot (?_vac,[SCm]/?_vac,[UA])^n \\
+  & \cdot e^{-[SSq]\cdotn/26} \cdot e^{-(p-t_n)}
 \end{aligned}
 $$
 
 ### 5.3 Neutrino Energy (Eq 38)
 $$
-E_neutrino ? ?_vac,[UA']:[SCm] · e^{-[SSq]·n/26 · e^{-(p-t_n)}} · (Um/?_vac,[UA])
+E_neutrino ? ?_vac,[UA']:[SCm] \cdot e^{-[SSq]\cdotn/26 \cdot e^{-(p-t_n)}} \cdot (Um/?_vac,[UA])
 $$
-**Numerical value:** E_neutrino ˜ 1.05×105 eV
+**Numerical value:** E_neutrino ˜ 1.05$\times$105 eV
 
 ### 5.4 Universal Cycle Decay Rate (Eq 39)
 $$
-Decay Rate ? (?_vac,[SCm]/?_vac,[UA]) · e^{-[SSq]·n/26 · e^{-(p-t_n)}}
+Decay Rate ? (?_vac,[SCm]/?_vac,[UA]) \cdot e^{-[SSq]\cdotn/26 \cdot e^{-(p-t_n)}}
 $$
 **Numerical value:** Decay Rate ˜ 0.0583
 
@@ -163,11 +163,11 @@ $$
 
 $$
 \begin{aligned}
-  & g_UQFF(r,t) = G·M(t)/r2 · (1+H(t,z)) · (1-B(t)/B_crit) · (1+F_env(t)) \\
+  & g_UQFF(r,t) = G\cdotM(t)/r2 \cdot (1+H(t,z)) \cdot (1-B(t)/B_crit) \cdot (1+F_env(t)) \\
   & + (Ug1+Ug2+Ug3'+Ug4) + ?c2/3 \\
-  & + (h/v(?x?p)) · ??_total · H · ?_total dV · (2p/t_Hubble) \\
-  & + ?_fluid·V·g + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r) \\
-  & H(t,z) = H0 · v(0.3(1+z)3 + 0.7) \\
+  & + (h/v(?x?p)) \cdot ??_total \cdot H \cdot ?_total dV \cdot (2p/t_Hubble) \\
+  & + ?_fluid\cdotV\cdotg + (M_vis+M_DM)\cdot(d?/? + 3\mu_s\nabla(M_s/r)/r) \\
+  & H(t,z) = H0 \cdot v(0.3(1+z)3 + 0.7) \\
   & F_sys(t) encapsulates system-specific: ?v2_wind, -M_SN(t), E(t), P_rad, M_coll(t), etc.
 \end{aligned}
 $$
@@ -182,7 +182,7 @@ $$
 | UQFF backbone sharing | 85% across all 29 documented systems |
 | Compression efficiency | ~40% term reduction |
 | Calibration confidence | 99.9% (99 systems, 2025 data) |
-| Q_wave std | 6.33×104 J/m3 (Chandra 2025 cross-check) |
+| Q_wave std | 6.33$\times$104 J/m3 (Chandra 2025 cross-check) |
 | Error metric | 0.012 non-normality; 99.98% JWST/Chandra alignment |
 
 ---
@@ -192,14 +192,14 @@ $$
 | System | F_sys modifier |
 |--------|----------------|
 | Magnetar SGR1745 | +M_mag + D(t) |
-| Sagittarius A* | +(G·M(t)2)/(c4r)·(dO/dt)2 + sin(30) |
-| Westerlund 2 | +?·v2_wind |
-| Pillars of Creation | ×(1-E(t)) + ?·v2_wind |
-| Rings of Relativity | ×(1+L(t)) |
-| NGC 2525 | +(G·M_BH)/r2_BH - M_SN(t) |
-| Bubble Nebula | ×(1+E(t)) + ?·v2_wind |
-| Antennae Galaxies | ×(1-M_coll(t)) + ?·v2_sf |
-| HUDF | ×(1+M_evo(t))×(1-M_merge(t)) |
+| Sagittarius A* | +(G$\cdot$M(t)2)/(c4r)$\cdot$(dO/dt)2 + sin(30) |
+| Westerlund 2 | +?$\cdot$v2_wind |
+| Pillars of Creation | $\times$(1-E(t)) + ?$\cdot$v2_wind |
+| Rings of Relativity | $\times$(1+L(t)) |
+| NGC 2525 | +(G$\cdot$M_BH)/r2_BH - M_SN(t) |
+| Bubble Nebula | $\times$(1+E(t)) + ?$\cdot$v2_wind |
+| Antennae Galaxies | $\times$(1-M_coll(t)) + ?$\cdot$v2_sf |
+| HUDF | $\times$(1+M_evo(t))$\times$(1-M_merge(t)) |
 
 ---
 
@@ -219,7 +219,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -238,7 +238,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -380,7 +380,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.096 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

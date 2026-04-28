@@ -10,7 +10,7 @@ tags: [UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_288: Cosmic-Age Standing-Traveling Wave Bridge — 2π/13.8 Oscillatory Phase Factor (T/S = 0.2277)
+# PAPER_288: Cosmic-Age Standing-Traveling Wave Bridge — 2$\pi$/13.8 Oscillatory Phase Factor (T/S = 0.2277)
 
 **Series:** UQFF Resonance-Superconductive Framework  
 **Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module — FIRST universal RSC module)
@@ -20,13 +20,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 T/S=Pi/13.8=0.2277`
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 
 ## Abstract
 
-This paper presents UQFF derivations and numerical results for: PAPER_288: Cosmic-Age Standing-Traveling Wave Bridge — 2π/13.8 Oscillatory Phase Factor (T/S = 0.2277). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
+This paper presents UQFF derivations and numerical results for: PAPER_288: Cosmic-Age Standing-Traveling Wave Bridge — 2$\pi$/13.8 Oscillatory Phase Factor (T/S = 0.2277). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## 1. Discovery Statement
 
@@ -41,7 +41,7 @@ The ratio of traveling to standing wave amplitude is:
 $$\frac{T}{S} = \frac{\pi}{13.8} \approx 0.2277$$
 
 This is the **first UQFF term** explicitly encoding T_universe = 13.8 Gyr as a quantum oscillation
-normalization constant — the cosmic age bridges quantum-scale oscillation (ω = 1015 rad/s) to
+normalization constant — the cosmic age bridges quantum-scale oscillation ($\omega$ = 1015 rad/s) to
 large-scale structure evolution.
 
 ---
@@ -62,7 +62,7 @@ Peak amplitude = **2A** (constructive interference at t = 0, x = 0).
 $$T(x,t) = \frac{2\pi}{13.8} \cdot A \cdot \text{Re}\!\left[e^{i(kx-\omega t)}\right]
           = \frac{2\pi}{13.8} \cdot A \cdot \cos(kx - \omega t)$$
 
-The factor **2π/13.8** has units of (Gyr)-1 × Gyr = dimensionless (since 13.8 is dimensionless
+The factor **2$\pi$/13.8** has units of (Gyr)-1 $\times$ Gyr = dimensionless (since 13.8 is dimensionless
 in units of Gyr, and the Gyr unit cancels with the implicit t normalization in the UQFF framework).
 
 ### 2.3 Standing-Traveling Amplitude Ratio
@@ -79,9 +79,9 @@ The traveling wave carries **22.77%** of the standing wave amplitude.
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| A | 1×10-10 m | Oscillation amplitude |
-| k | 1×1020 m-1 | Wavenumber |
-| ω | 1×1015 rad/s | Angular frequency |
+| A | 1$\times$10-10 m | Oscillation amplitude |
+| k | 1$\times$1020 m-1 | Wavenumber |
+| $\omega$ | 1$\times$1015 rad/s | Angular frequency |
 | x_pos | 0.0 m | Spatial position |
 | T_cosmic | 13.8 Gyr | Universe age (Planck 2018) |
 
@@ -89,10 +89,10 @@ The traveling wave carries **22.77%** of the standing wave amplitude.
 
 | Component | Formula | Value |
 |-----------|---------|-------|
-| Standing peak | 2A | 2.000×10-10 m |
-| Traveling amplitude | (2π/13.8)×A | 4.553×10-11 m |
-| Combined peak | 2A + (2π/13.8)A | 2.455×10-10 m |
-| T/S ratio | π/13.8 | 0.2277 |
+| Standing peak | 2A | 2.000$\times$10-10 m |
+| Traveling amplitude | (2$\pi$/13.8)$\times$A | 4.553$\times$10-11 m |
+| Combined peak | 2A + (2$\pi$/13.8)A | 2.455$\times$10-10 m |
+| T/S ratio | $\pi$/13.8 | 0.2277 |
 
 ---
 
@@ -106,7 +106,7 @@ the traveling wave amplitude. Physically, this represents:
 **UQFF Interpretation:** The amplitude of vacuum quantum oscillations observable in the current
 epoch is modulated by the ratio of the oscillation phase coherence to the total cosmic evolution
 time.
-The 2π factor represents one complete phase cycle; 13.8 represents the cosmic time in Gyr.
+The 2$\pi$ factor represents one complete phase cycle; 13.8 represents the cosmic time in Gyr.
 
 $$\phi_text{cosmic} = \frac{2\pi}{T_\text{universe}[\text{Gyr}]}$$
 
@@ -114,23 +114,23 @@ is the UQFF frequency of cosmic age feedback on quantum oscillation modes.
 
 ### 4.2 Phase Coherence Window
 
-At ω = 1015 rad/s, the frequency in Hz is:
+At $\omega$ = 1015 rad/s, the frequency in Hz is:
 
 $$f_\text{osc} = \frac{\omega}{2\pi} = \frac{10^{15}}{2\pi} \approx 1.592\times10^{14}\ \text{Hz}$$
 
-The number of oscillation cycles in T_universe = 13.8 Gyr = 4.354×1017 s:
+The number of oscillation cycles in T_universe = 13.8 Gyr = 4.354$\times$1017 s:
 
 $$N_\text{cycles} = f_\text{osc} \times T_\text{univ} \approx 1.592\times10^{14} \times 4.354\times10^{17} \approx 6.93\times10^{31}$$
 
-The UQFF normalization 2π/13.8 represents the inverse of this cycle density per Gyr.
+The UQFF normalization 2$\pi$/13.8 represents the inverse of this cycle density per Gyr.
 
 ### 4.3 Standing vs Traveling Decomposition Table
 
 | Time (Gyr) | Standing S(0,t) | Traveling T(0,t) | Total |
 |------------|-----------------|------------------|-------|
-| 0 (t=0) | +2A | +(2π/13.8)A | +2.455A |
-| t = π/(2ω) | 0 | +(2π/13.8)A×cos(−π/2)=0 | 0 |
-| t = π/ω | −2A | +(2π/13.8)A | −1.545A |
+| 0 (t=0) | +2A | +(2$\pi$/13.8)A | +2.455A |
+| t = $\pi$/(2$\omega$) | 0 | +(2$\pi$/13.8)A$\times$cos(-$\pi$/2)=0 | 0 |
+| t = $\pi$/$\omega$ | -2A | +(2$\pi$/13.8)A | -1.545A |
 | t = 2T (phase=13.8) | varies | varies | envelope modulation |
 
 ---
@@ -140,11 +140,11 @@ The UQFF normalization 2π/13.8 represents the inverse of this cycle density per
 This is the **first UQFF term** where:
 - The cosmic age T_universe = 13.8 Gyr appears explicitly as a normalization constant
 - A quantum oscillation amplitude (A = 10-10 m, k = 1020 m-1) is modulated by the cosmic expansion epoch
-- Standing and traveling wave modes are **simultaneously present** with a fixed T/S ratio of π/13.8
-- The decomposition is not phenomenological — the 2π/13.8 factor arises from the UQFF cosmic age coupling
+- Standing and traveling wave modes are **simultaneously present** with a fixed T/S ratio of $\pi$/13.8
+- The decomposition is not phenomenological — the 2$\pi$/13.8 factor arises from the UQFF cosmic age coupling
 
-**Previous UQFF papers** with cosmic-scale connections: PAPER_268 (Hubble Slow Mode, ε = r/D_H),
-PAPER_286 (κ_neb, z-dependent Hubble). PAPER_288 is the first to use T_universe directly as a
+**Previous UQFF papers** with cosmic-scale connections: PAPER_268 (Hubble Slow Mode, $\varepsilon$ = r/D_H),
+PAPER_286 ($\kappa$_neb, z-dependent Hubble). PAPER_288 is the first to use T_universe directly as a
 *dimensionless amplitude normalization*.
 
 ---
@@ -153,12 +153,12 @@ PAPER_286 (κ_neb, z-dependent Hubble). PAPER_288 is the first to use T_universe
 
 | Quantity | Value |
 |----------|-------|
-| T/S amplitude ratio | π/13.8 = 0.2277 |
-| Standing peak | 2A = 2×10-10 m |
-| Traveling peak | (2π/13.8)×A = 4.553×10-11 m |
-| Combined peak (x=0, t=0) | 2.455×10-10 m |
+| T/S amplitude ratio | $\pi$/13.8 = 0.2277 |
+| Standing peak | 2A = 2$\times$10-10 m |
+| Traveling peak | (2$\pi$/13.8)$\times$A = 4.553$\times$10-11 m |
+| Combined peak (x=0, t=0) | 2.455$\times$10-10 m |
 | Cosmic age normalization | 13.8 Gyr (Planck 2018) |
-| ω_osc | 1015 rad/s |
+| $\omega$_osc | 1015 rad/s |
 | k_wave | 1020 m-1 |
 
 ---
@@ -178,7 +178,7 @@ universe age normalization, quantum oscillation, 2pi/13.8, cosmological normaliz
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -281,7 +281,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.105 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -292,13 +292,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

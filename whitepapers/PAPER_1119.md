@@ -20,7 +20,7 @@ We integrate the Bearden (2000) Lorentz regauging formalism into the UQFF framew
 
 $$S_{\text{total}} = S_{\text{Poynting}} + S_{\text{Heaviside}}$$
 
-where $S_{\text{Heaviside}} = f_H \cdot 10^{13} \cdot S_{\text{Poynting}} \cdot (\rho_{\text{UA}} / \rho_{\text{SCm}})$. Breaking the Lorentz symmetric regauging condition (3-symmetry → 4-symmetry flow) enables extraction of vacuum energy with coefficient of performance $\text{COP} > 1.0$. The extracted power:
+where $S_{\text{Heaviside}} = f_H \cdot 10^{13} \cdot S_{\text{Poynting}} \cdot (\rho_{\text{UA}} / \rho_{\text{SCm}})$. Breaking the Lorentz symmetric regauging condition (3-symmetry $\to$ 4-symmetry flow) enables extraction of vacuum energy with coefficient of performance $\text{COP} > 1.0$. The extracted power:
 
 $$P_{\text{extracted}} = S_{\text{Heaviside}} \cdot A \cdot \eta_{\text{TRZ}}$$
 
@@ -68,7 +68,7 @@ The Triadic Resonant Zone provides the extraction channel:
 
 $$P_{\text{extracted}} = S_{\text{Heaviside}} \cdot A \cdot \eta_{\text{TRZ}}$$
 
-For $A = 10^{-4}$ m² and $\eta_{\text{TRZ}} = 0.1$:
+For $A = 10^{-4}$ m2 and $\eta_{\text{TRZ}} = 0.1$:
 
 $$P_{\text{extracted}} = 7.96 \times 10^{23} \times 10^{-4} \times 0.1 = 7.96 \times 10^{18}\ \text{W}$$
 
@@ -94,8 +94,8 @@ In UQFF, the vacuum is not empty but structured with $[\text{UA}]$ and $[\text{S
 
 | Observable | Value | Description |
 |-----------|-------|-------------|
-| $S_{\text{Poynting}}$ | $7.96 \times 10^{11}$ W/m² | Measurable flow |
-| $S_{\text{Heaviside}}$ | $7.96 \times 10^{23}$ W/m² | Vacuum flow |
+| $S_{\text{Poynting}}$ | $7.96 \times 10^{11}$ W/m2 | Measurable flow |
+| $S_{\text{Heaviside}}$ | $7.96 \times 10^{23}$ W/m2 | Vacuum flow |
 | $\text{COP}$ | $\sim 10^{12}$ | Extraction ratio |
 | $P_{\text{quasi}}$ | computed | Quasi-longitudinal power |
 
@@ -117,7 +117,7 @@ The Lorentz regauging formalism provides a pathway to vacuum energy extraction w
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

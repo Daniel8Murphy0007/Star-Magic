@@ -21,7 +21,7 @@ getSolutions(t) comparison for all 7 canonical SOURCE4 systems
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `MUGEFinal7SystemResonanceAccelerationsCalculator` (#96, PAPER_458)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, [SCm] = 0.99 —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, [SCm] = 0.99 —>
 ---
 
 ## Abstract
@@ -43,16 +43,16 @@ time.
 
 | # | Term | Symbol | Formula |
 |---|------|--------|---------|
-| 1 | THz hole coupling | a_THz | c3/(GMr) × f_THz2 |
-| 2 | Vacuum differential | `a_vac_diff` | ρ_vac,[SCm]×V^(1/3) − ρ_vac,[UA]×V^(1/3) |
-| 3 | Super-frequency | a_SuperFreq | Σ A_k sin(2πf_k t), k=1..5 |
-| 4 | Aether resonance | a_AetherRes | ρ_vac,[SCm](1+[SSq]^(n26−1)) V_sys^(1/3) |
-| 5 | Ug4 vacuum | Ug4_i | U_A ρ_vac (1+[UA][SCm]) |
-| 6 | Quantum frequency | a_QuantumFreq | ħ ω_q / (M c2 r) × c |
-| 7 | Aether frequency | a_AetherFreq | f_aether × r × [SCm] |
-| 8 | Fluid frequency | a_FluidFreq | ν_fluid × f_fluid2 × r |
-| 9 | Oscillation standing wave | **Osc_term** | A_osc cos(k_osc r) sin(ω_osc t) |
-| 10 | Expansion frequency | **a_ExpFreq** | H_0 × c × sin(2πH_0 t) |
+| 1 | THz hole coupling | a_THz | c3/(GMr) $\times$ f_THz2 |
+| 2 | Vacuum differential | `a_vac_diff` | $\rho$_vac,[SCm]$\times$V^(1/3) - $\rho$_vac,[UA]$\times$V^(1/3) |
+| 3 | Super-frequency | a_SuperFreq | $\Sigma$ A_k sin(2$\pi$f_k t), k=1..5 |
+| 4 | Aether resonance | a_AetherRes | $\rho$_vac,[SCm](1+[SSq]^(n26-1)) V_sys^(1/3) |
+| 5 | Ug4 vacuum | Ug4_i | U_A $\rho$_vac (1+[UA][SCm]) |
+| 6 | Quantum frequency | a_QuantumFreq | ħ $\omega$_q / (M c2 r) $\times$ c |
+| 7 | Aether frequency | a_AetherFreq | f_aether $\times$ r $\times$ [SCm] |
+| 8 | Fluid frequency | a_FluidFreq | $\nu$_fluid $\times$ f_fluid2 $\times$ r |
+| 9 | Oscillation standing wave | **Osc_term** | A_osc cos(k_osc r) sin($\omega$_osc t) |
+| 10 | Expansion frequency | **a_ExpFreq** | H_0 $\times$ c $\times$ sin(2$\pi$H_0 t) |
 
 ### 2.2 New Terms: Osc_term and a_ExpFreq
 
@@ -78,52 +78,53 @@ Period: $T_{\rm ExpFreq} = 1/H_0 = 4.41\times10^{17}$ s = 13.97 Gyr (Hubble time
 
 ## 3. Full Resonance Equation
 
-$$g_{\rm res}^{(j)}(r,t) = g_{m DPM}^{(j)}(1 + H_z t)(1 - B/B_{\rm crit}) + \sum_{i=1}^{10} a_i^{(j)}(r,t)$$
+$$g_{\rm res}^{(j)}(r,t) = g_{
+m DPM}^{(j)}(1 + H_z t)(1 - B/B_{\rm crit}) + \sum_{i=1}^{10} a_i^{(j)}(r,t)$$
 
 ---
 
 ## 4. getSolutions(t) Results for 7 Canonical Systems
 
-At t = 1 Gyr = 3.156×1016 s:
+At t = 1 Gyr = 3.156$\times$1016 s:
 
 ### 4.1 SGR 1745-2900 Magnetar
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_DPM | 3.716×1012 |
-| a_THz | ~7.26×1024 |
-| a_AetherRes | ~4.9×106 |
-| Osc_term | ~1×10-3 (oscillatory) |
-| a_ExpFreq | ~−6.81×10-10 sin(14.27) ≈ 4.1×10-10 |
-| **g_res total** | **~3.73×106** (after UQFF coupling factors) |
+| g_DPM | 3.716$\times$1012 |
+| a_THz | ~7.26$\times$1024 |
+| a_AetherRes | ~4.9$\times$106 |
+| Osc_term | ~1$\times$10-3 (oscillatory) |
+| a_ExpFreq | ~-6.81$\times$10-10 sin(14.27) $\approx$ 4.1$\times$10-10 |
+| **g_res total** | **~3.73$\times$106** (after UQFF coupling factors) |
 
 ### 4.2 Sagittarius A*
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_DPM | ~6.25×101 |
-| a_AetherFreq | ~1×10-2 |
+| g_DPM | ~6.25$\times$101 |
+| a_AetherFreq | ~1$\times$10-2 |
 | a_FluidFreq | ~10-15 |
-| a_ExpFreq | ~4.1×10-10 |
+| a_ExpFreq | ~4.1$\times$10-10 |
 | **g_res total** | **~1.52** |
 
 ### 4.3 Tapestry Starbirth
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_DPM | ~2.65×10-12 |
+| g_DPM | ~2.65$\times$10-12 |
 | P_outflow | ~10-10 |
 | Osc_term | ~10-13 |
-| **g_res total** | **~1.02×10-10** |
+| **g_res total** | **~1.02$\times$10-10** |
 
 ### 4.4 Universe Guide
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_DPM | ~5.88×10-10 |
-| g_DM | ~1.58×10-10 |
-| a_ExpFreq | ~4.1×10-10 |
-| **g_res total** | **~1.14×10-9** |
+| g_DPM | ~5.88$\times$10-10 |
+| g_DM | ~1.58$\times$10-10 |
+| a_ExpFreq | ~4.1$\times$10-10 |
+| **g_res total** | **~1.14$\times$10-9** |
 
 ---
 
@@ -147,8 +148,8 @@ non-negligible only for cosmological systems.
 | Feature | SM | UQFF PAPER_458 |
 |---------|-----|----------------|
 | Resonance terms in gravity | None | 10-term acceleration suite |
-| Hubble oscillation | Not in gravity | a_ExpFreq = H₀c sin(2πH₀t) |
-| Standing-wave gravity | Not in gravity | Osc_term = A cos(k r) sin(ωt) |
+| Hubble oscillation | Not in gravity | a_ExpFreq = H0c sin(2$\pi$H0t) |
+| Standing-wave gravity | Not in gravity | Osc_term = A cos(k r) sin($\omega$t) |
 | Multi-system side-by-side | Separate codes | getSolutions(t) for all 7 |
 
 ---
@@ -157,11 +158,11 @@ non-negligible only for cosmological systems.
 
 1. **a_ExpFreq period = Hubble time:** At t=t_H, a_ExpFreq = 0. At t = t_H/4, a_ExpFreq is maximum.
 CMB power spectrum P(k) should show subtle periodic modulation with period corresponding to
-T_ExpFreq = 1/H₀.
+T_ExpFreq = 1/H0.
 2. **Osc_term cavity resonance:** For the magnetar (r = 10 km cavity), Osc_term at f_char = c/(2r) =
-1.5×1010 Hz. Detectable as sub-millisecond periodic gravity wave from neutron star surface modes.
-3. **a_THz universality:** For all compact objects, a_THz ∝ c3/(GMr) × f_THz2 — implies
-a_THz/g_DPM = (c/v_escape)2 × (f_THz r/c)2, a universal ratio testable via GW observations.
+1.5$\times$1010 Hz. Detectable as sub-millisecond periodic gravity wave from neutron star surface modes.
+3. **a_THz universality:** For all compact objects, a_THz $\propto$ c3/(GMr) $\times$ f_THz2 — implies
+a_THz/g_DPM = (c/v_escape)2 $\times$ (f_THz r/c)2, a universal ratio testable via GW observations.
 
 ---
 
@@ -173,7 +174,7 @@ a_THz/g_DPM = (c/v_escape)2 × (f_THz r/c)2, a universal ratio testable via GW o
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -192,7 +193,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -267,7 +268,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.119 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -278,10 +279,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L $\geq$ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system

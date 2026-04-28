@@ -26,8 +26,8 @@ NGC 3603 is the most extreme compact H II region and OB star cluster in the Milk
 approximately 20,000 light-years away in the Carina spiral arm. Its central cluster, containing
 ~400,000 MM_sun of stellar material within a few parsecs, is the densest known star cluster in the
 Galaxy. Hubble ACS imaging reveals multiple Wolf-Rayet stars, O-type hypergiants, and early B
-supergiants concentrated in a core radius of ~0.5 pc. UQFF analysis of NGC 3603 yields g_primary ≈
-1.053×10-3 m/s2, with a novel **stellar wind pressure reduction term** P(t) = P₀·exp(–t/τ_exp) that
+supergiants concentrated in a core radius of ~0.5 pc. UQFF analysis of NGC 3603 yields g_primary $\approx$
+1.053$\times$10-3 m/s2, with a novel **stellar wind pressure reduction term** P(t) = P0$\cdot$exp(–t/$\tau$_exp) that
 depletes the effective mass over time as the massive stars blow away surrounding gas. This places
 NGC 3603 in the UQFF EM-dominated regime despite its extreme stellar density.
 
@@ -49,16 +49,16 @@ reduction term introduced here is directly applicable to all compact starburst s
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Cluster mass | M | 4×105 MM_sun = 7.956×1035 kg | HST photometry |
-| Core radius | r | 8.998×1015 m (~0.3 pc) | HST |
-| Stellar wind pressure | P₀ | 0.10 | Normalized: 10% mass reduction |
-| Pressure decay time | τ_exp | 3.156×1013 s (1 Myr) | Stellar evolution |
+| Cluster mass | M | 4$\times$105 MM_sun = 7.956$\times$1035 kg | HST photometry |
+| Core radius | r | 8.998$\times$1015 m (~0.3 pc) | HST |
+| Stellar wind pressure | P0 | 0.10 | Normalized: 10% mass reduction |
+| Pressure decay time | $\tau$_exp | 3.156$\times$1013 s (1 Myr) | Stellar evolution |
 | SFR | — | ~ 1 MM_sun/yr | Initial burst |
 | Redshift | z | 0 (local) | — |
 | M_sf | — | 0.5 | Mass still forming |
 | v_EM | v | 105 m/s | Cluster dispersion |
 | B_EM | B | 10-5 T | H II region field |
-| Age | t | 1 Myr = 3.156×1013 s | Stellar ages |
+| Age | t | 1 Myr = 3.156$\times$1013 s | Stellar ages |
 
 ---
 
@@ -68,29 +68,29 @@ reduction term introduced here is directly applicable to all compact starburst s
 
 $$
 \begin{aligned}
-  & g_NGC3603(r,t) = (G·M(t))/r2 · (1 + H₀·t) · (1 – P(t)) · (1 + M_sf) · (1 + f_TRZ) \\
-  & + q·(v×B)/m_p · (1 + ρ_vac,[UA]/ρ_vac,[SCm]) · 10-12
+  & g_NGC3603(r,t) = (G\cdotM(t))/r2 \cdot (1 + H0\cdott) \cdot (1 – P(t)) \cdot (1 + M_sf) \cdot (1 + f_TRZ) \\
+  & + q\cdot(v\timesB)/m_p \cdot (1 + \rho_vac,[UA]/\rho_vac,[SCm]) \cdot 10-12
 \end{aligned}
 $$
 
 where:
-- **P(t) = P₀·exp(–t/τ_exp)** = stellar wind pressure reduction (**novel UQFF term**)
-- M_sf(t) = M₀·exp(–t/τ_SF) — residual SFR mass growth
+- **P(t) = P0$\cdot$exp(–t/$\tau$_exp)** = stellar wind pressure reduction (**novel UQFF term**)
+- M_sf(t) = M0$\cdot$exp(–t/$\tau$_SF) — residual SFR mass growth
 
 ### Numerical Evaluation
 
 $$
 \begin{aligned}
-  & G·M / r2  = 6.6743e-11 × 7.956e35 / (8.998e15)2 \\
+  & G\cdotM / r2  = 6.6743e-11 \times 7.956e35 / (8.998e15)2 \\
   & = 5.309e25 / 8.096e31 = 6.558e-7 m/s2 \\
-  & (1 + H₀·t) = 1 + 2.268e-18 × 3.156e13 = 1.0000715 ≈ 1.000 (local system) \\
-  & P(t=1Myr) = 0.10 × e-1 = 0.0368; factor = (1 – 0.037) = 0.963 \\
+  & (1 + H0\cdott) = 1 + 2.268e-18 \times 3.156e13 = 1.0000715 \approx 1.000 (local system) \\
+  & P(t=1Myr) = 0.10 \times e-1 = 0.0368; factor = (1 – 0.037) = 0.963 \\
   & factor_sf = 1.50; factor_TRZ = 1.05 \\
-  & \text{g\_grav\_total} = 6.558e-7 × 1.000 × 0.963 × 1.50 × 1.05 = 9.944e-7 m/s2 \\
-  & a_EM = (1.602e-19 × 1e5 × 1e-5 / 1.673e-27) × 11 × 1e-12 \\
-  & = (9.576e-20 / 1.673e-27) × 11e-12 \\
-  & = 5.724e7 × 11e-12 = 1.053e-3 m/s2  ← EM term dominates \\
-  & g_primary ≈ 1.053×10-3 m/s2
+  & \text{g\_grav\_total} = 6.558e-7 \times 1.000 \times 0.963 \times 1.50 \times 1.05 = 9.944e-7 m/s2 \\
+  & a_EM = (1.602e-19 \times 1e5 \times 1e-5 / 1.673e-27) \times 11 \times 1e-12 \\
+  & = (9.576e-20 / 1.673e-27) \times 11e-12 \\
+  & = 5.724e7 \times 11e-12 = 1.053e-3 m/s2  \leftarrow EM term dominates \\
+  & g_primary \approx 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -98,9 +98,9 @@ $$
 
 $$
 \begin{aligned}
-  & g_resonant = 1.053e-3 × (1 + 0.0005 × 0.57) = 1.053e-3 m/s2 \\
+  & g_resonant = 1.053e-3 \times (1 + 0.0005 \times 0.57) = 1.053e-3 m/s2 \\
   & g_buoyancy = 1.053e-3 m/s2  (gravitational correction << EM) \\
-  & g_primary  = 1.053×10-3 m/s2
+  & g_primary  = 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
@@ -113,10 +113,10 @@ mass loss through radiation pressure and kinetic stellar wind power:
 
 $$
 \begin{aligned}
-  & P(t) = P₀ · exp(–t/τ_exp) \\
-  & At t=0 (birth):  P = P₀ = 0.10 → 10% mass reduction at cluster formation \\
-  & At t=1 Myr:     P = 0.037 → 3.7% mass reduction \\
-  & At t=10 Myr:    P ≈ 0 → cluster dispersed, term negligible
+  & P(t) = P0 \cdot exp(–t/\tau_exp) \\
+  & At t=0 (birth):  P = P0 = 0.10 \to 10% mass reduction at cluster formation \\
+  & At t=1 Myr:     P = 0.037 \to 3.7% mass reduction \\
+  & At t=10 Myr:    P \approx 0 \to cluster dispersed, term negligible
 \end{aligned}
 $$
 
@@ -126,14 +126,14 @@ decreases. UQFF predicts this feedback does NOT suppress the Aether EM term, whi
 and B — both maintained by the stellar cluster internal dispersion velocity.
 
 **Key result:** Even in the most extreme stellar cluster known in the Milky Way, the UQFF EM ground
-state remains constant at g = 1.053×10-3 m/s2.
+state remains constant at g = 1.053$\times$10-3 m/s2.
 
 ---
 
 ## 5. Physical Interpretation
 
 NGC 3603 represents the extreme upper limit of compact star cluster density in the Milky Way. The
-UQFF result g ~ 1.053×10-3 m/s2 places it in the same electromagnetic ground state as all standard
+UQFF result g ~ 1.053$\times$10-3 m/s2 places it in the same electromagnetic ground state as all standard
 spiral galaxies. The stellar wind pressure term demonstrates that even dramatic mass-loss processes
 (10% mass reduction in < 1 Myr) do not disturb the UQFF EM mode. This is consistent with the UQFF
 Geometry Invariance Theorem (PAPER_793) — here extended to **mass-loss invariance**: the Aether EM
@@ -143,8 +143,8 @@ ground state is independent of ongoing mass-loss processes as long as v and B ar
 
 ## 6. Conclusions
 
-UQFF applied to NGC 3603 yields g_primary ≈ 1.053×10-3 m/s2 despite extreme stellar wind feedback.
-The novel stellar wind pressure reduction term P(t) = P₀·exp(–t/τ_exp) is introduced as a general
+UQFF applied to NGC 3603 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 despite extreme stellar wind feedback.
+The novel stellar wind pressure reduction term P(t) = P0$\cdot$exp(–t/$\tau$_exp) is introduced as a general
 UQFF correction applicable to all compact star clusters, H II regions, and starburst systems
 undergoing rapid mass loss. Combined with PAPER_793, this extends the UQFF Mass-Loss Invariance
 Theorem: the EM Aether ground state is invariant under both geometric distortions (warps) and
@@ -257,7 +257,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -268,13 +268,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -63,7 +63,7 @@ With $[\text{SSq}] = 0.57$:
 | 1 | $5.700 \times 10^{-1}$ | 0.570 |
 | 2 | $7.688 \times 10^{-9}$ | 0.570 |
 | 3 | $7.278 \times 10^{-14}$ | ~0.570 |
-| ∞ | — | $\approx 0.5700$ |
+| $\infty$ | — | $\approx 0.5700$ |
 
 The series is dominated by $k=1$; higher terms contribute less than $10^{-8}$ due to the $k^{26}$ denominator.
 
@@ -137,7 +137,7 @@ $$\boxed{[\text{SSq}](n, t) = \log!\left(\frac{\rho_{\text{SCm}}}{\rho_{\text{UA
 
 where $\rho_{\text{UA}}'$ is the reduced UA density after SCm phase transition.
 
-At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (-2.303)(0.0432) \approx -0.0995$ — the dynamic value is approximately 10× smaller than the static calibration, consistent with early-universe conditions.
+At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (-2.303)(0.0432) \approx -0.0995$ — the dynamic value is approximately 10$\times$ smaller than the static calibration, consistent with early-universe conditions.
 
 ---
 
@@ -147,7 +147,7 @@ At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (
 |----------|--------------|---------------|-------------------|
 | Index domain | $k = 1, 2, 3, \ldots$ | primes $p > 26$ | $m = 1, 2, 3, \ldots$ |
 | Convergence | Polylogarithm $\text{Li}_{26}$ | Prime series (conditional) | Modified harmonic |
-| Layer exponent | $k^{26}$ — all 26 dims | $p > 26$ — post-26D primes | [SSq]·m — SCm saturation |
+| Layer exponent | $k^{26}$ — all 26 dims | $p > 26$ — post-26D primes | [SSq]$\cdot$m — SCm saturation |
 | Physical field | U_g1 vacuum energy | U_g3 string rotation | U_g2 charge reactivity |
 
 ---
@@ -158,7 +158,7 @@ At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (
 |-------|---------|
 | PAPER_427 | 26D layer count = exponent in Vacuum Series denominator ($k^{26}$) |
 | PAPER_428 | $p_{\text{special}}=113$ anchors the hydrogen proto-shell |
-| PAPER_426 | Dynamic [SSq] formula replaces static 0.57 in UTe2 δ_n calculation |
+| PAPER_426 | Dynamic [SSq] formula replaces static 0.57 in UTe2 $\delta$_n calculation |
 
 ---
 
@@ -166,12 +166,12 @@ At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (
 
 **Class:** `ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator`  
 **Methods:**
-- `compute_vacuum_density_series(SSq, n_max)` → $V_n$ partial sum up to $n_{\max}$
-- `get_dipole_vortex_primes(n_max)` → first $n_{\max}$ DV primes ($p > 26$)
-- `compute_vortex_energy(p, omega_str, phi)` → $E_{\text{vortex}}(p)$
-- `compute_buoyancy_harmonic(m, f_Ub)` → $H_m$
-- `compute_Ug2(t_n, omega_Ug2, SSq, f_Ub, m_max)` → $U_{g2}(t)$ sum
-- `compute_SSq_dynamic(n, t, rho_SCm, rho_UA_prime)` → $[\text{SSq}](n,t)$
+- `compute_vacuum_density_series(SSq, n_max)` $\to$ $V_n$ partial sum up to $n_{\max}$
+- `get_dipole_vortex_primes(n_max)` $\to$ first $n_{\max}$ DV primes ($p > 26$)
+- `compute_vortex_energy(p, omega_str, phi)` $\to$ $E_{\text{vortex}}(p)$
+- `compute_buoyancy_harmonic(m, f_Ub)` $\to$ $H_m$
+- `compute_Ug2(t_n, omega_Ug2, SSq, f_Ub, m_max)` $\to$ $U_{g2}(t)$ sum
+- `compute_SSq_dynamic(n, t, rho_SCm, rho_UA_prime)` $\to$ $[\text{SSq}](n,t)$
 
 ---
 
@@ -183,7 +183,7 @@ At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -202,12 +202,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -308,7 +308,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -319,12 +319,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| sin2θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin2θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
-| ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| sin2$\theta$_W weak mixing | UQFF H_SCm=0.990 $\to$ 4-fold formula $\to$ 0.2304 | sin2$\theta$_W = 0.23122 $\pm$ 0.00003 | PDG 2024 | 99.6% |
+| ALICE dN/d$\eta$ (13.6 TeV) | UQFF [SSq]$\times$1.077 = $\beta$_i = 0.614 | dN/d$\eta$ = 17.43 $\pm$ 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
+| Cross-system $\kappa$ universality | $\kappa$ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay $\Gamma$_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 1033 scale separation confirmed |
 
-**New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
+**New physics claim:** The same UQFF parameter set ($\kappa$, [SSq], $\beta$_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)
 across a 29-system cross-validation matrix — without per-system free-parameter adjustment.
 No SM framework derives these three observables from a single connected constant set.

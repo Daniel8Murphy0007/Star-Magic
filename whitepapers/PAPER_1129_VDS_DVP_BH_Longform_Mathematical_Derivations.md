@@ -220,7 +220,7 @@ negative-time cycle, providing a bounded oscillating $E_{\rm net}^{\rm BH}$.
 
 ## Part IV: Inter-System Relations
 
-### 4.1 VDS → DVP Connection
+### 4.1 VDS $\to$ DVP Connection
 
 The DVP amplitude is derived from the VDS by restricting the sum to prime indices
 only:
@@ -230,7 +230,7 @@ $$a(p) = \frac{[\text{SSq}]^{\pi(p)}}{p^{26}} = \frac{[\text{SSq}]^{\pi(p)}}{p^{
 This is the prime-restricted projection of the VDS layer structure:
 $\text{VDS}([\text{SSq}])$ uses all $n \in \mathbb{N}$, while DVP uses only prime $p > 26$.
 
-### 4.2 VDS → BH Connection
+### 4.2 VDS $\to$ BH Connection
 
 The BH saturation factor $(1 - e^{-[\text{SSq}] m})$ is the complementary exponential
 to the VDS layer weight $e^{-[\text{SSq}] m}$. Together:

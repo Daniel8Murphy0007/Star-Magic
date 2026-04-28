@@ -10,13 +10,13 @@ tags: [neutron-star, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_280: Saturn UQFF Solar Tidal Perturbation Ratio τ_Sun
+# PAPER_280: Saturn UQFF Solar Tidal Perturbation Ratio $\tau$_Sun
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module — first planetary-scale UQFF module)  
-**New Constants:** τ_Sun (Solar UQFF Tidal Perturbation Ratio), g_Sun_tidal (Solar tidal surface
+**New Constants:** $\tau$_Sun (Solar UQFF Tidal Perturbation Ratio), g_Sun_tidal (Solar tidal surface
 acceleration)  
 **Status:** UNIQUE — establishes the UQFF framework for Solar System planetary bodies
 
@@ -26,11 +26,11 @@ acceleration)
 
 Saturn is the first planetary-scale body in the UQFF module catalogue. All prior 20 C++ modules
 described stellar objects, neutron stars, or galaxies. The transition to a Solar System planet (z=0,
-f_DM=0, r=6.0268×107 m) introduces a class of external gravitational coupling absent from
+f_DM=0, r=6.0268$\times$107 m) introduces a class of external gravitational coupling absent from
 stellar/galactic UQFF modules: the tidal perturbation exerted by the host star (the Sun) on the
 planet's surface gravity field. This paper defines and derives the **Solar UQFF Tidal Perturbation
-Ratio** τ_Sun, a dimensionless constant that quantifies the ratio of the Sun's tidal acceleration at
-Saturn's orbit to Saturn's own surface gravity. The ratio is 6.22×10-6 — small but non-zero, and
+Ratio** $\tau$_Sun, a dimensionless constant that quantifies the ratio of the Sun's tidal acceleration at
+Saturn's orbit to Saturn's own surface gravity. The ratio is 6.22$\times$10-6 — small but non-zero, and
 physically the first UQFF solar coupling constant. A universal formula is derived for any planet.
 
 ---
@@ -62,7 +62,7 @@ $$g_\text{base} = \frac{G M_\text{Saturn}}{r_\text{Saturn}^2} = \frac{6.674 \tim
 $$g_\text{base} = \frac{3.793 \times 10^{16}}{3.632 \times 10^{15}} = \mathbf{10.44 \text{ m/s}^2}$$
 
 *Note: g_base = 10.44 m/s2 is 14 orders of magnitude larger than typical galactic g_base (~10-10
-m/s2). This is the first UQFF module where pre_sum_Ug = 52 × g_base = 542.9 m/s2 > 1 m/s2.*
+m/s2). This is the first UQFF module where pre_sum_Ug = 52 $\times$ g_base = 542.9 m/s2 > 1 m/s2.*
 
 ### 3.2 Solar Tidal Acceleration at Saturn's Orbit
 
@@ -93,15 +93,15 @@ gravity field in the UQFF framework.
 
 ## 4. Results — Solar System Comparison
 
-| Planet | M_planet (kg) | r_planet (m) | r_orbit (m) | τ_Sun |
+| Planet | M_planet (kg) | r_planet (m) | r_orbit (m) | $\tau$_Sun |
 |---|---|---|---|---|
-| Mercury | 3.30×1023 | 2.44×106 | 5.79×1010 | **1.07×10-2** |
-| Earth | 5.97×1024 | 6.37×106 | 1.496×1011 | **6.03×10-4** |
-| Jupiter | 1.898×1027 | 7.15×107 | 7.78×1011 | **8.84×10-6** |
-| **Saturn** | **5.683×1026** | **6.0268×107** | **1.43×1012** | **6.22×10-6** |
+| Mercury | 3.30$\times$1023 | 2.44$\times$106 | 5.79$\times$1010 | **1.07$\times$10-2** |
+| Earth | 5.97$\times$1024 | 6.37$\times$106 | 1.496$\times$1011 | **6.03$\times$10-4** |
+| Jupiter | 1.898$\times$1027 | 7.15$\times$107 | 7.78$\times$1011 | **8.84$\times$10-6** |
+| **Saturn** | **5.683$\times$1026** | **6.0268$\times$107** | **1.43$\times$1012** | **6.22$\times$10-6** |
 
-*Trend: τ decreases with increasing orbital radius and planet mass. Mercury's τ = 0.0107 (solar
-tidal is ~1% of surface gravity). Saturn's τ = 6.22×10-6 (parts-per-million perturbation).*
+*Trend: $\tau$ decreases with increasing orbital radius and planet mass. Mercury's $\tau$ = 0.0107 (solar
+tidal is ~1% of surface gravity). Saturn's $\tau$ = 6.22$\times$10-6 (parts-per-million perturbation).*
 
 ---
 
@@ -112,13 +112,13 @@ In SATURN_UQFF_MODULE.cpp, g_Sun_tidal enters as a constant additive term:
 $$
 \begin{aligned}
   & g_total = [g_grav + Ug_sum + Lambda + quantum + Lorentz + fluid \\
-  & + \text{F\_ring\_tidal}(t) + \text{g\_Sun\_tidal} + g_exp + a_wind] × corr_SC
+  & + \text{F\_ring\_tidal}(t) + \text{g\_Sun\_tidal} + g_exp + a_wind] \times corr_SC
 \end{aligned}
 $$
 
 The `g_Sun_tidal` term is **constant** (not oscillatory) because at Saturn's orbital radius the
 Sun's tidal field is quasi-static over observational timescales. This contrasts with the ring tidal
-term (PAPER_281) which oscillates at ω_ring_kep.
+term (PAPER_281) which oscillates at $\omega$_ring_kep.
 
 ---
 
@@ -138,7 +138,7 @@ $$
 - **First UQFF Solar tidal coupling** — establishes UQFF Solar System framework
 - **First planetary-scale module** — g_base = 10.44 m/s2 (vs ~10-10 for galaxies)
 - **Universal formula** applicable to any planet around any star
-- **τ_Sun = 6.22×10-6** is the characteristic scale of Sun-Saturn tidal interaction in UQFF
+- **$\tau$_Sun = 6.22$\times$10-6** is the characteristic scale of Sun-Saturn tidal interaction in UQFF
 
 *Copyright — Daniel T. Murphy, UQFF 2.0, Session 78, March 2026.*
 
@@ -150,7 +150,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -169,7 +169,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -244,7 +244,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -255,13 +255,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

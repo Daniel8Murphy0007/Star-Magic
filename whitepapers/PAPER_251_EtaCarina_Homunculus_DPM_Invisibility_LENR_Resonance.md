@@ -37,14 +37,14 @@ field of B0 = 10-4 T — one hundred times stronger than the SN 1006 field — a
 characteristic frequency ?0 = 10?12 rad/s, the Eta Carinae system provides a critical test of the
 UQFF force hierarchy.
 
-The key **uniquely rare discovery** of this paper is **DPM Invisibility**: despite B0 being 100×
-stronger than SN 1006 (B0 = 10-5 T), the DPM resonance being 100× larger (1.76 × 105 vs 1.76 × 103),
+The key **uniquely rare discovery** of this paper is **DPM Invisibility**: despite B0 being 100$\times$
+stronger than SN 1006 (B0 = 10-5 T), the DPM resonance being 100$\times$ larger (1.76 $\times$ 105 vs 1.76 $\times$ 103),
 and the resonance force F_res being proportionally amplified, the total UQFF buoyancy force F_U_Bi
-remains **identical** to SN 1006 at +2.11 × 102°8 N. The magnetic field is completely invisible to
+remains **identical** to SN 1006 at +2.11 $\times$ 102°8 N. The magnetic field is completely invisible to
 the final buoyancy result.
 
-This DPM invisibility occurs because F_LENR = k_LENR·(?_LENR/?0)2 is independent of B0. At ?0 =
-10?12, F_LENR ˜ 6.17 × 103? N overwhelms F_res by ~3 orders regardless of B0. The force hierarchy is
+This DPM invisibility occurs because F_LENR = k_LENR$\cdot$(?_LENR/?0)2 is independent of B0. At ?0 =
+10?12, F_LENR ˜ 6.17 $\times$ 103? N overwhelms F_res by ~3 orders regardless of B0. The force hierarchy is
 LENR > neutron > DPM-seeded » DPM_resonance in this frequency regime — a fundamental discovery about
 the structure of UQFF physics.
 
@@ -55,11 +55,11 @@ the structure of UQFF physics.
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
 | Distance | d | ~7,500 | ly | HIPPARCOS/HST |
-| Age (since Great Eruption) | t | 5.681 × 10? | s (~180 yr) | 1843 CE |
-| Stellar mass | M | 120 M_sun = 2.387 × 1032 | kg | Chandra/JWST model |
-| Homunculus radius | r | 6.17 × 1016 | m (~20 ly) | HST spatial |
+| Age (since Great Eruption) | t | 5.681 $\times$ 10? | s (~180 yr) | 1843 CE |
+| Stellar mass | M | 120 M_sun = 2.387 $\times$ 1032 | kg | Chandra/JWST model |
+| Homunculus radius | r | 6.17 $\times$ 1016 | m (~20 ly) | HST spatial |
 | X-ray luminosity | L_X | 1035 | W | Chandra 2023 |
-| **Magnetic field** | **B0** | **10?4 T** | **T** | **100× SN 1006** |
+| **Magnetic field** | **B0** | **10?4 T** | **T** | **100$\times$ SN 1006** |
 | System frequency | ?0 | 10?12 | rad/s | Same as SN 1006 |
 | Eddington factor | M | 1.5 | — | Super-Eddington |
 
@@ -67,27 +67,27 @@ the structure of UQFF physics.
 
 ## 2. Core Physics: DPM Invisibility
 
-### 2.1 DPM Resonance — 100× SN 1006
+### 2.1 DPM Resonance — 100$\times$ SN 1006
 
 $$
 \begin{aligned}
-  & DPM_resonance (Eta Car) = 2·µ_B·B0/(h·?0) \\
-  & = 2 × 9.274e-24 × 1e-4 / (1.0546e-34 × 1e-12) \\
-  & ˜ 1.76 × 105    [100× SN 1006 value 1.76×103]
+  & DPM_resonance (Eta Car) = 2\cdotµ_B\cdotB0/(h\cdot?0) \\
+  & = 2 \times 9.274e-24 \times 1e-4 / (1.0546e-34 \times 1e-12) \\
+  & ˜ 1.76 \times 105    [100\times SN 1006 value 1.76\times103]
 \end{aligned}
 $$
 
 The resonance force `F_res = 2·q·B0·V·sin?·DPM_resonance` is proportional to `B0 × DPM_resonance ?
-B02` — at B0 = 10-4 T, F_res is 10,000× the SN 1006 value.
+B02` — at B0 = 10-4 T, F_res is 10,000$\times$ the SN 1006 value.
 
 ### 2.2 LENR Force — B0-Independent
 
 The LENR force depends only on ?_LENR and ?0:
 $$
 \begin{aligned}
-  & F_LENR = k_LENR × (?_LENR / ?0)2 \\
-  & = k_LENR × (2p × 1.25 × 1012 / 10?12)2 \\
-  & ˜ 6.17 × 103? N
+  & F_LENR = k_LENR \times (?_LENR / ?0)2 \\
+  & = k_LENR \times (2p \times 1.25 \times 1012 / 10?12)2 \\
+  & ˜ 6.17 \times 103? N
 \end{aligned}
 $$
 
@@ -101,7 +101,7 @@ $$
 $$
 
 For SN 1006: `F_res (SN1006) / 6.17×103? « 1` ? DPM invisible.
-For Eta Car: `F_res (EtaCar) / 6.17×103? « 1` ? DPM still invisible, despite 10,000× F_res
+For Eta Car: `F_res (EtaCar) / 6.17×103? « 1` ? DPM still invisible, despite 10,000$\times$ F_res
 amplification.
 
 **The DPM resonance term is submerged under F_LENR by at least 33 orders at ?0 = 10?12 for any
@@ -112,9 +112,9 @@ physically reasonable B0.**
 $$
 \begin{aligned}
   & Force hierarchy at ?0 = 10?12: \\
-  & F_LENR   ˜ 6.17 × 103? N   [dominant — 10^45 × DPM-seeded] \\
+  & F_LENR   ˜ 6.17 \times 103? N   [dominant — 10^45 \times DPM-seeded] \\
   & F_neutron ˜ 106 N           [knot/coherence stabilisation] \\
-  & F_Newt   ˜ μ_s∇(M_s/r)·|x2| ˜ O(few) N \\
+  & F_Newt   ˜ \mu_s\nabla(M_s/r)\cdot|x2| ˜ O(few) N \\
   & F_res    «  F_LENR           [DPM invisible regardless of B0] \\
   & F_rel    «  F_LENR           [relativistic sub-dominant]
 \end{aligned}
@@ -150,7 +150,7 @@ relativistic. Only LENR and neutron physics materially determine F_U_Bi.
 
 ## 4. Observational Predictions / Validation
 
-- **DPM invisibility test:** UQFF predicts F_U_Bi should be identical for SN 1006 and Eta Carinae despite 100× different B0. If future UQFF validation on additional high-B systems confirms this, DPM invisibility is a universal law of the ?0 = 10?12 class.
+- **DPM invisibility test:** UQFF predicts F_U_Bi should be identical for SN 1006 and Eta Carinae despite 100$\times$ different B0. If future UQFF validation on additional high-B systems confirms this, DPM invisibility is a universal law of the ?0 = 10?12 class.
 - **Chandra L_X probe:** L_X = 1035 W (Eta Car) vs 1032 W (SN 1006) — 3-orders L_X difference. Yet F_U_Bi is identical. This confirms F_DE « F_LENR at this ?0, providing a direct test of LENR dominance: if Chandra measures any system with ?0 = 10?12 at any luminosity from 1031–1035 W, UQFF predicts the same F_U_Bi.
 - **JWST Homunculus 3D:** The asymmetric JWST infrared structure of the Homunculus provides f_TRZ (triadic resonance zone factor) constraints through the spatial distribution of emitting gas relative to the bipolar axis.
 
@@ -177,7 +177,7 @@ prep).
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -196,7 +196,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -219,7 +219,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -306,7 +306,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -317,13 +317,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

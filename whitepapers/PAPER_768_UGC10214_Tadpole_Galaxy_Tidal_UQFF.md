@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 UGC 10214, nicknamed the "Tadpole Galaxy," exhibits a 280,000-light-year tidal tail stretching into
-deep space — the longest known galactic tidal tail. Located ~420 million light-years away (z ≈
+deep space — the longest known galactic tidal tail. Located ~420 million light-years away (z $\approx$
 0.028), the tail results from a close encounter with a compact dwarf galaxy (visible in upper-left
 of Hubble's 2002 composite). Under UQFF, the tidal stripping term M_tidal(t), cosmic expansion
-H(z)×t, and the Aether electromagnetic correction from tidal-velocity fields yield g_Tadpole ≈
-3.160×10-3 m/s2. The tidal tail provides a unique velocity coupling (v_tidal ≈ 300 km/s) that
+H(z)$\times$t, and the Aether electromagnetic correction from tidal-velocity fields yield g_Tadpole $\approx$
+3.160$\times$10-3 m/s2. The tidal tail provides a unique velocity coupling (v_tidal $\approx$ 300 km/s) that
 distinguishes this system from more isolated galaxies.
 
 ---
@@ -48,7 +48,7 @@ coupling.
 
 $$
 \begin{aligned}
-  & g_Tadpole(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - M_tidal) × (1 + f_TRZ) \\
+  & g_Tadpole(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 - M_tidal) \times (1 + f_TRZ) \\
   & + a_EM
 \end{aligned}
 $$
@@ -62,17 +62,17 @@ Where:
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy total mass | M | 1011 MM_sun = 1.989×1041 kg | Hubble |
-| Galaxy radius | r | 1.3×1021 m (~133 kly) | Hubble |
+| Galaxy total mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Hubble |
+| Galaxy radius | r | 1.3$\times$1021 m (~133 kly) | Hubble |
 | Tidal tail length | — | 280,000 ly | Hubble |
 | Redshift | z | 0.028 | NED |
 | Star-formation rate | SFR | 5 MM_sun/yr | Labs |
-| Integration time | t | 5×108 yr = 1.578×1016 s | Interaction age |
+| Integration time | t | 5$\times$108 yr = 1.578$\times$1016 s | Interaction age |
 | SFR fraction | M_sf | 0.025 | UQFF integral |
 | Tidal stripping | M_tidal | 0.1181 | UQFF tidal |
-| Tidal tail velocity | v_tidal | 3×105 m/s | Observation |
+| Tidal tail velocity | v_tidal | 3$\times$105 m/s | Observation |
 | EM B-field | B | 10-5 T | Galactic field |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -82,7 +82,7 @@ Where:
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 1.989e41) / (1.3e21)2 \\
+  & g_grav = (6.6743e-11 \times 1.989e41) / (1.3e21)2 \\
   & = 1.327e31 / 1.69e42 = 7.852e-12 m/s2
 \end{aligned}
 $$
@@ -90,9 +90,9 @@ $$
 ### Step 2: Star-Formation Mass Fraction M_sf(t)
 $$
 \begin{aligned}
-  & SFR = 5 MM_sun/yr; t = 5×108 yr; M₀ = 1011 MM_sun \\
-  & M_formed = SFR × t = 5 × 5e8 = 2.5e9 MM_sun \\
-  & M_sf = M_formed / M₀ = 2.5e9 / 1e11 = 0.025 \\
+  & SFR = 5 MM_sun/yr; t = 5\times108 yr; M0 = 1011 MM_sun \\
+  & M_formed = SFR \times t = 5 \times 5e8 = 2.5e9 MM_sun \\
+  & M_sf = M_formed / M0 = 2.5e9 / 1e11 = 0.025 \\
   & 1 + M_sf = 1.025
 \end{aligned}
 $$
@@ -100,12 +100,12 @@ $$
 ### Step 3: Tidal Stripping Term M_tidal(t)
 $$
 \begin{aligned}
-  & Tidal stripping follows exponential mass-loss with scale τ_tidal = 1 Gyr: \\
-  & M_tidal(t) = T₀ × (1 - exp(-t/τ_tidal)) \\
-  & = 0.3 × (1 - exp(-5e8/1e9)) \\
-  & = 0.3 × (1 - exp(-0.5)) \\
-  & = 0.3 × (1 - 0.6065) \\
-  & = 0.3 × 0.3935 = 0.1181 \\
+  & Tidal stripping follows exponential mass-loss with scale \tau_tidal = 1 Gyr: \\
+  & M_tidal(t) = T0 \times (1 - exp(-t/\tau_tidal)) \\
+  & = 0.3 \times (1 - exp(-5e8/1e9)) \\
+  & = 0.3 \times (1 - exp(-0.5)) \\
+  & = 0.3 \times (1 - 0.6065) \\
+  & = 0.3 \times 0.3935 = 0.1181 \\
   & 1 - M_tidal = 1 - 0.1181 = 0.8819
 \end{aligned}
 $$
@@ -113,24 +113,24 @@ $$
 ### Step 4: Cosmic Expansion Factor
 $$
 \begin{aligned}
-  & H(z) = H₀ × √(Ω_m(1+z)3 + Ω_Λ) \\
-  & = 2.268e-18 × √(0.3 × (1.028)3 + 0.7) \\
-  & = 2.268e-18 × √(0.3 × 1.0869 + 0.7) \\
-  & = 2.268e-18 × √(1.0261) \\
-  & = 2.268e-18 × 1.0130 = 2.297e-18 s-1 \\
-  & H(z) × t = 2.297e-18 × 1.578e16 = 3.624e-2 \\
-  & 1 + H(z) × t = 1.03624
+  & H(z) = H0 \times \sqrt{}(\Omega_m(1+z)3 + \Omega_\Lambda) \\
+  & = 2.268e-18 \times \sqrt{}(0.3 \times (1.028)3 + 0.7) \\
+  & = 2.268e-18 \times \sqrt{}(0.3 \times 1.0869 + 0.7) \\
+  & = 2.268e-18 \times \sqrt{}(1.0261) \\
+  & = 2.268e-18 \times 1.0130 = 2.297e-18 s-1 \\
+  & H(z) \times t = 2.297e-18 \times 1.578e16 = 3.624e-2 \\
+  & 1 + H(z) \times t = 1.03624
 \end{aligned}
 $$
 
 ### Step 5: Aether Electromagnetic Correction (Tidal Tail EM)
 $$
 \begin{aligned}
-  & Tidal velocity v_tidal = 3×105 m/s (300 km/s galactic interaction velocity) \\
+  & Tidal velocity v_tidal = 3\times105 m/s (300 km/s galactic interaction velocity) \\
   & B = 10-5 T (galactic magnetic field) \\
-  & q × (v × B) = 1.602e-19 × 3e5 × 1e-5 = 4.806e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 3e5 \times 1e-5 = 4.806e-19 N \\
   & a = 4.806e-19 / m_p = 4.806e-19 / 1.673e-27 = 2.873e8 m/s2 \\
-  & a_EM = 2.873e8 × 11 × 1e-12 = 3.160e-3 m/s2
+  & a_EM = 2.873e8 \times 11 \times 1e-12 = 3.160e-3 m/s2
 \end{aligned}
 $$
 
@@ -142,13 +142,13 @@ $$
 ### Step 7: Final Solution
 $$
 \begin{aligned}
-  & g_Tadpole = (7.852e-12) × (1.03624) × (1.025) × (0.8819) × (1.1) + 3.160e-3 \\
-  & = 7.852e-12 × 1.03624 = 8.137e-12 \\
-  & × 1.025 = 8.340e-12 \\
-  & × 0.8819 = 7.354e-12 \\
-  & × 1.1 = 8.090e-12 \\
+  & g_Tadpole = (7.852e-12) \times (1.03624) \times (1.025) \times (0.8819) \times (1.1) + 3.160e-3 \\
+  & = 7.852e-12 \times 1.03624 = 8.137e-12 \\
+  & \times 1.025 = 8.340e-12 \\
+  & \times 0.8819 = 7.354e-12 \\
+  & \times 1.1 = 8.090e-12 \\
   & = 8.090e-12 + 3.160e-3 \\
-  & ≈ 3.160e-3 m/s2
+  & \approx 3.160e-3 m/s2
 \end{aligned}
 $$
 
@@ -157,11 +157,11 @@ $$
 ## 4. Physical Interpretation
 
 The Tadpole Galaxy demonstrates UQFF sensitivity to tidal interaction history. Classical gravity
-(7.852×10-12 m/s2) is ten orders of magnitude smaller than the Aether electromagnetic correction
-(3.160×10-3 m/s2). The tidal stripping factor (M_tidal = 0.1181 → 0.8819) reflects ~12% mass loss to
+(7.852$\times$10-12 m/s2) is ten orders of magnitude smaller than the Aether electromagnetic correction
+(3.160$\times$10-3 m/s2). The tidal stripping factor (M_tidal = 0.1181 $\to$ 0.8819) reflects ~12% mass loss to
 the tidal tail — consistent with the observed 280,000 ly tail mass estimates. The tidal velocity of
 300 km/s (v_tidal) uniquely defines this system compared to isolated spirals using 100 km/s. The
-result 3.160×10-3 m/s2 is ~3× higher than the HUDF, distinguishing dynamically-perturbed galaxies
+result 3.160$\times$10-3 m/s2 is ~3$\times$ higher than the HUDF, distinguishing dynamically-perturbed galaxies
 from quiescent deep-field systems.
 
 ---
@@ -177,11 +177,11 @@ from quiescent deep-field systems.
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for UGC 10214 (Tadpole Galaxy) yields g_Tadpole ≈ 3.160×10-3 m/s2,
+The Master UQFF gravity equation for UGC 10214 (Tadpole Galaxy) yields g_Tadpole $\approx$ 3.160$\times$10-3 m/s2,
 dominated by the Aether electromagnetic correction via the 300 km/s tidal tail velocity. The tidal
 stripping function M_tidal = 0.1181 provides a 12% gravitational reduction consistent with observed
 morphological mass loss. This paper establishes UQFF's tidal interaction formalism using the Tadpole
-as the canonical tidally-disrupted galaxy benchmark, with M_tidal(t) = T₀ × (1 - exp(-t/τ_tidal)) as
+as the canonical tidally-disrupted galaxy benchmark, with M_tidal(t) = T0 $\times$ (1 - exp(-t/$\tau$_tidal)) as
 the standard UQFF tidal function.
 
 *PAPER_768, CP4 class #352. v5.40.*
@@ -194,7 +194,7 @@ the standard UQFF tidal function.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -213,7 +213,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -288,7 +288,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -299,13 +299,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

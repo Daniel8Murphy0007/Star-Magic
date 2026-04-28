@@ -74,13 +74,13 @@ Identical to: SN 1006, Eta Carinae, Chandra Archive, Kepler SNR â€” all equ
 The quadratic root xâ‚‚ is:
 $$
 \begin{aligned}
-  & a = GÂ·M_NS / rÂ2 = G Ã— 2.786e30 / (10â´)Â2 â‰ˆ 1.86 Ã— 10â¶ m/sÂ2 \\
+  & a = GÂ\cdotM_NS / rÂ2 = G Ã— 2.786e30 / (10â´)Â2 â‰ˆ 1.86 Ã— 10â¶ m/sÂ2 \\
   & b = 4.72 Ã— 10â»Â3   [canonical] \\
-  & c = âˆ’Fâ‚€ + Ï_vac Â· DPM_stab â‰ˆ âˆ’1.83 Ã— 10â·Â1 N
+  & c = âˆ’Fâ‚€ + Ï_vac Â\cdot DPM_stab â‰ˆ âˆ’1.83 Ã— 10â\cdotÂ1 N
 \end{aligned}
 $$
 
-Since Fâ‚€ dominates c, xâ‚‚ â‰ˆ Fâ‚€/b = 1.83Ã—10â·Â1/4.72Ã—10â»Â3 â‰ˆ 3.88 Ã— 10â·Â3 m â€” the
+Since Fâ‚€ dominates c, xâ‚‚ â‰ˆ Fâ‚€/b = 1.83Ã—10â$\cdot$Â1/4.72Ã—10â»Â3 â‰ˆ 3.88 Ã— 10â$\cdot$Â3 m â€” the
 same as all other Ï‰â‚€ = 10â»Â1Â2 systems (xâ‚‚ is determined by Fâ‚€ and b, not by M or r).
 
 ### 2.2 F_neutron Amplified but Non-Determinant
@@ -99,7 +99,7 @@ F_U_Bi. This is because:
 2. F_LENR â‰ˆ 6Ã—10Â3â1 N > F_neutron â‰ˆ 10â´â1 N is false for Cas A â€” F_neutron actually
 exceeds F_LENR by 9 orders.
 3. But with both F_neutron and F_LENR present, the sign of the integrand (and thus F_U_Bi) remains
-positive, and xâ‚‚ is still â‰ˆ 3.88 Ã— 10â·Â3 m.
+positive, and xâ‚‚ is still â‰ˆ 3.88 Ã— 10â$\cdot$Â3 m.
 4. The combination of both large positive forces at the same xâ‚‚ still yields F_U_Bi â‰ˆ +2.11 Ã—
 10Â2â°â¸ N.
 
@@ -117,7 +117,7 @@ $$
 $$
 
 F_U_Bi remains +2.11 Ã— 10Â2â°â¸ N across this 53-order range at Ï‰â‚€ = 10â»Â1Â2. The vacuum
-energy anchor Fâ‚€ = 1.83 Ã— 10â·Â1 N is so far above any physically achievable F_neutron that xâ‚‚
+energy anchor Fâ‚€ = 1.83 Ã— 10â$\cdot$Â1 N is so far above any physically achievable F_neutron that xâ‚‚
 = Fâ‚€/b is mathematically unaffected.
 
 ### 2.4 14-Order r Invariance
@@ -169,7 +169,7 @@ with invariant $\Phi(\mathcal{C}_{10^{-12}}) = +2.11 \times 10^{208}$ N. This cl
 | Ïƒ_n | 10â»â´ â†’ 10Â3â1 | 43 (53 with extended range) |
 | L_X | 10Â3Â1 â†’ 10Â3âµ W | 4 |
 | M | 1.4 â†’ 120 M_sun | ~2 |
-| Age | 180 â†’ 10â· yr | ~5 |
+| Age | 180 â†’ 10â$\cdot$ yr | ~5 |
 
 **All dimensions are irrelevant to F_U_Bi.** Ï‰â‚€ uniquely determines class membership.
 
@@ -210,7 +210,7 @@ Star-Magic Session 72d.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -229,7 +229,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -252,7 +252,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -373,7 +373,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.167 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -384,13 +384,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

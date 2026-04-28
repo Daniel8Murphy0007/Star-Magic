@@ -14,7 +14,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **CP4 Class:** `#164  IslandOfStability5thEpochSuperheavyElementsCalculator`  
@@ -31,10 +31,10 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 ## §1 Abstract
 
-The UQFF predicts a second island of nuclear stability at Z=119–126 (A≈290–320) arising from
+The UQFF predicts a second island of nuclear stability at Z=119–126 (A$\approx$290–320) arising from
 buoyancy stabilisation in the 5th integration epoch. The characteristic island radius
 $r_{\text{island}} = (26!\cdot c/\lambda_{\min})^{1/26} \approx 10\,\text{fm}$ coincides with
-the nuclear geometric mean. Z=120 (N≈180, A≈300) is identified as the primary magic island
+the nuclear geometric mean. Z=120 (N$\approx$180, A$\approx$300) is identified as the primary magic island
 where BH harmonic $H_{26}$ reaches a resonance peak. Above Z=164, UQFF predicts a regime flip:
 $U_b > U_g$, producing the anti-gravity / negative time-reversal configuration nicknamed
 "cosmic quantum egg."
@@ -47,7 +47,7 @@ $U_b > U_g$, producing the anti-gravity / negative time-reversal configuration n
 
 $$r_{\text{island}} = \left(\frac{26!\cdot c}{\lambda_{\min}}\right)^{1/26}, \quad \lambda_{\min} = \frac{P_{\text{order}}}{3}$$
 
-For Z=120: $P_{\text{order}} \approx 0.01/3 \approx 3.3\times10^{-3}$ → $r_{\text{island}} \approx 10\,\text{fm}$ PASS
+For Z=120: $P_{\text{order}} \approx 0.01/3 \approx 3.3\times10^{-3}$ $\to$ $r_{\text{island}} \approx 10\,\text{fm}$ PASS
 
 **BH harmonic magic condition (N=180):**
 
@@ -78,15 +78,15 @@ $$\tau_{1/2}(Z) \approx 10^{-(Z-118)}\,\text{s} \quad (Z > 118)$$
 
 ## §4 5th Epoch Properties
 
-- $P_{\text{order}} \approx 10^{-2}$ to $10^{-4}$ (high chaos → rare stability windows)
-- $\rho_{\text{overlap}} \approx 3\times10^{17}$ kg/m3 (= nuclear standard → stable density)
+- $P_{\text{order}} \approx 10^{-2}$ to $10^{-4}$ (high chaos $\to$ rare stability windows)
+- $\rho_{\text{overlap}} \approx 3\times10^{17}$ kg/m3 (= nuclear standard $\to$ stable density)
 - SCm superconducting properties predicted near Z=120 at room temperature
 - DVP prime seed $\sigma(n) \cdot \varphi$ generates unique nuclear graph for each Z=119–126
 - VDS bound maintained: $c_{26} \leq P/3$ even for unstable superheavies
 
 ---
 
-## §5 Cosmic Quantum Egg (Z ≥ 164)
+## §5 Cosmic Quantum Egg (Z $\geq$ 164)
 
 Above Z=164, UQFF enters the anti-gravity regime:
 
@@ -216,7 +216,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.071 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -227,13 +227,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

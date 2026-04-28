@@ -26,8 +26,8 @@ This paper presents a Three-UQFF simultaneous analysis of two planetary nebulae 
 physical character. **NGC 6307** is a compact, high-excitation planetary nebula with a very hot
 central star driving a fast wind at ~1,500 km/s. **NGC 7027** is one of the brightest planetary
 nebulae in the sky, also with an extremely hot central star (T_eff ~200,000 K) and fast wind,
-located ~3,000 ly away. Both systems have M ≈ 0.6 MM_sun envelope mass with fast-wind EM parameters (v =
-1.5×106 m/s). Three-UQFF simultaneous computation yields g_primary ≈ 1.580×10-2 m/s2 across all
+located ~3,000 ly away. Both systems have M $\approx$ 0.6 MM_sun envelope mass with fast-wind EM parameters (v =
+1.5$\times$106 m/s). Three-UQFF simultaneous computation yields g_primary $\approx$ 1.580$\times$10-2 m/s2 across all
 three modes for both objects.
 
 ---
@@ -35,23 +35,23 @@ three modes for both objects.
 ## 1. System Descriptions
 
 **NGC 6307:**
-- Location: ~10,000 ly (z ≈ 0.0007)
+- Location: ~10,000 ly (z $\approx$ 0.0007)
 - Central star: T_eff ~100,000 K
 - Wind velocity: ~1,500 km/s
-- Envelope mass: ~0.5 MM_sun = 9.94×1029 kg
-- Radius: ~0.03 pc = 9.26×1014 m
+- Envelope mass: ~0.5 MM_sun = 9.94$\times$1029 kg
+- Radius: ~0.03 pc = 9.26$\times$1014 m
 
 **NGC 7027:**
-- Location: ~3,000 ly (z ≈ 0.001)
+- Location: ~3,000 ly (z $\approx$ 0.001)
 - Central star: T_eff ~200,000 K — among the hottest known
 - Wind velocity: ~1,500 km/s
-- Envelope mass: ~0.7 MM_sun = 1.393×1030 kg
-- Radius: ~0.01 pc = 3.09×1014 m
+- Envelope mass: ~0.7 MM_sun = 1.393$\times$1030 kg
+- Radius: ~0.01 pc = 3.09$\times$1014 m
 
 **Combined Three-UQFF analysis uses representative system:**
-- M = 0.6 MM_sun = 1.193×1030 kg
-- r = 9.46×1015 m
-- v = 1.5×106 m/s, B = 10-5 T
+- M = 0.6 MM_sun = 1.193$\times$1030 kg
+- r = 9.46$\times$1015 m
+- v = 1.5$\times$106 m/s, B = 10-5 T
 
 ---
 
@@ -59,11 +59,11 @@ three modes for both objects.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Representative mass | M | 1.193×1030 kg (0.6 MM_sun) | Both PNe |
-| Representative radius | r | 9.46×1015 m | Combined |
-| Age | t | ~3,000 yr = 9.468×1010 s | Expansion |
+| Representative mass | M | 1.193$\times$1030 kg (0.6 MM_sun) | Both PNe |
+| Representative radius | r | 9.46$\times$1015 m | Combined |
+| Age | t | ~3,000 yr = 9.468$\times$1010 s | Expansion |
 | E_rad | — | 0.20 | EUV photoionization |
-| v_EM | v | 1.5×106 m/s | Fast central wind |
+| v_EM | v | 1.5$\times$106 m/s | Fast central wind |
 | B_EM | B | 10-5 T | PN field |
 
 ---
@@ -73,10 +73,10 @@ three modes for both objects.
 ### Mode 1: Compressed UQFF
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 1.193e30 / (9.46e15)2 = 8.887e-13 m/s2 \\
-  & H(z)×t negligible; E_rad factor = 0.80; TRZ = 1.05 \\
-  & \text{g\_grav\_total} = 8.887e-13 × 0.80 × 1.05 = 7.465e-13 m/s2 \\
-  & a_EM = (1.602e-19 × 1.5e6 × 1e-5 / 1.673e-27) × 11 × 1e-12 = 1.580e-2 m/s2 \\
+  & g_grav = 6.6743e-11 \times 1.193e30 / (9.46e15)2 = 8.887e-13 m/s2 \\
+  & H(z)\timest negligible; E_rad factor = 0.80; TRZ = 1.05 \\
+  & \text{g\_grav\_total} = 8.887e-13 \times 0.80 \times 1.05 = 7.465e-13 m/s2 \\
+  & a_EM = (1.602e-19 \times 1.5e6 \times 1e-5 / 1.673e-27) \times 11 \times 1e-12 = 1.580e-2 m/s2 \\
   & g_comp = 1.580e-2 m/s2
 \end{aligned}
 $$
@@ -89,7 +89,7 @@ $$
 ### Mode 3: Buoyancy UQFF
 $$
 \begin{aligned}
-  & V = (4/3)π(9.46e15)3 = 3.54e47 m3; a_Ubi << a_EM \\
+  & V = (4/3)\pi(9.46e15)3 = 3.54e47 m3; a_Ubi << a_EM \\
   & g_buoy = 1.580e-2 m/s2
 \end{aligned}
 $$
@@ -112,17 +112,17 @@ one of the hottest known central stars (200,000 K) versus NGC 6307's more modest
 produce identical fast winds at ~1,500 km/s. This confirms UQFF's velocity-dependence: the result
 discriminates by outflow velocity, not by central star temperature independently. NGC 7027 is
 additionally notable as a reference object for molecular emission persistence at the edge of the
-ionized nebula — where the fast wind impacts the slow AGB envelope, generating H₂ and CO emission.
+ionized nebula — where the fast wind impacts the slow AGB envelope, generating H2 and CO emission.
 This boundary layer is precisely where UQFF predicts maximum Aether electromagnetic coupling.
 
 ---
 
 ## 5. Conclusions
 
-Three-UQFF applied jointly to NGC 6307 and NGC 7027 yields g_primary ≈ 1.580×10-2 m/s2 across all
+Three-UQFF applied jointly to NGC 6307 and NGC 7027 yields g_primary $\approx$ 1.580$\times$10-2 m/s2 across all
 three modes for both PNe. The identical result despite very different central star temperatures
 confirms UQFF captures the fast-wind kinematic signature, not thermal properties. NGC 7027 and IC
-418 (PAPER_785) establish the planetary nebula fast-wind class as g = 1.580×10-2 m/s2.
+418 (PAPER_785) establish the planetary nebula fast-wind class as g = 1.580$\times$10-2 m/s2.
 
 *PAPER_788, CP4 Three-UQFF class #372. v5.42.*
 
@@ -135,7 +135,7 @@ confirms UQFF captures the fast-wind kinematic signature, not thermal properties
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -188,7 +188,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -238,7 +238,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -249,13 +249,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

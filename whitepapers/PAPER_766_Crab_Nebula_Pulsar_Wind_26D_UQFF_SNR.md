@@ -23,10 +23,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 The Crab Nebula (M1, NGC 1952), the remnant of the supernova observed in 1054 AD, is powered by a
-central pulsar (neutron star) spinning at 30.2 Hz with luminosity ~5×1031 W. The nebula expands at
+central pulsar (neutron star) spinning at 30.2 Hz with luminosity ~5$\times$1031 W. The nebula expands at
 ~1,500 km/s across a ~11-light-year diameter. This paper derives the Master Universal Gravity UQFF
 equation incorporating pulsar wind-driven expansion, magnetic field electron dynamics, cosmic
-expansion, and Aether electromagnetic correction. The result g_Crab ≈ 1.481×106 m/s2 is completely
+expansion, and Aether electromagnetic correction. The result g_Crab $\approx$ 1.481$\times$106 m/s2 is completely
 dominated by the relativistic pulsar wind term.
 
 ---
@@ -61,17 +61,17 @@ Where:
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula total mass | M | 4.6 MM_sun = 9.149×1030 kg | Hubble |
-| Nebula radius | r | 5.2×1016 m (~5.5 ly) | Hubble |
-| Pulsar luminosity | P_pulsar | 5×1031 W | Labs |
-| Expansion velocity | v_shock | 1.5×106 m/s | Hubble |
-| Filament density | ρ_fil | 10-21 kg/m3 | Labs |
+| Nebula total mass | M | 4.6 MM_sun = 9.149$\times$1030 kg | Hubble |
+| Nebula radius | r | 5.2$\times$1016 m (~5.5 ly) | Hubble |
+| Pulsar luminosity | P_pulsar | 5$\times$1031 W | Labs |
+| Expansion velocity | v_shock | 1.5$\times$106 m/s | Hubble |
+| Filament density | $\rho$_fil | 10-21 kg/m3 | Labs |
 | Nebula B field | B | 10-8 T (average) | Labs |
-| Electron mass | m_e | 9.11×10-31 kg | Standard |
+| Electron mass | m_e | 9.11$\times$10-31 kg | Standard |
 | Redshift | z | 0.0015 | Distance calc |
-| Time since SN | t | 971 yr = 3.064×1010 s | Historical |
-| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
-| ρ_vac,[SCm] | — | 7.09×10-37 J/m3 | UQFF |
+| Time since SN | t | 971 yr = 3.064$\times$1010 s | Historical |
+| $\rho$_vac,[UA] | — | 7.09$\times$10-36 J/m3 | UQFF |
+| $\rho$_vac,[SCm] | — | 7.09$\times$10-37 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -81,7 +81,7 @@ Where:
 ### Step 1: Base Gravitational Term
 $$
 \begin{aligned}
-  & g_grav = (6.6743e-11 × 9.149e30) / (5.2e16)2 \\
+  & g_grav = (6.6743e-11 \times 9.149e30) / (5.2e16)2 \\
   & = 6.106e20 / 2.704e33 = 2.258e-13 m/s2
 \end{aligned}
 $$
@@ -89,21 +89,21 @@ $$
 ### Step 2: Pulsar Wind Expansion Term
 $$
 \begin{aligned}
-  & F_wind = (P_pulsar / (4π × r2)) × (1 + v_shock/c) \\
-  & = (5e31 / (4 × 3.1416 × (5.2e16)2)) × (1 + 1.5e6/3e8) \\
-  & = (5e31 / 3.393e34) × 1.005 \\
-  & = 1.474e-3 × 1.005 = 1.481e-3 N/m2 \\
-  & a_wind = 1.481e-3 / ρ_fil = 1.481e-3 / 1e-21 = 1.481e18 m/s2 \\
-  & \text{a\_wind\_macro} = 1.481e18 × 10-12 = 1.481e6 m/s2
+  & F_wind = (P_pulsar / (4\pi \times r2)) \times (1 + v_shock/c) \\
+  & = (5e31 / (4 \times 3.1416 \times (5.2e16)2)) \times (1 + 1.5e6/3e8) \\
+  & = (5e31 / 3.393e34) \times 1.005 \\
+  & = 1.474e-3 \times 1.005 = 1.481e-3 N/m2 \\
+  & a_wind = 1.481e-3 / \rho_fil = 1.481e-3 / 1e-21 = 1.481e18 m/s2 \\
+  & \text{a\_wind\_macro} = 1.481e18 \times 10-12 = 1.481e6 m/s2
 \end{aligned}
 $$
 
 ### Step 3: Magnetic Field Electron Dynamics
 $$
 \begin{aligned}
-  & q × (v × B) = 1.602e-19 × 1.5e6 × 1e-8 = 2.403e-21 N \\
+  & q \times (v \times B) = 1.602e-19 \times 1.5e6 \times 1e-8 = 2.403e-21 N \\
   & M_mag = 2.403e-21 / m_e = 2.403e-21 / 9.11e-31 = 2.638e9 m/s2 \\
-  & \text{M\_mag\_macro} = 2.638e9 × 10-12 = 2.638e-3 m/s2
+  & \text{M\_mag\_macro} = 2.638e9 \times 10-12 = 2.638e-3 m/s2
 \end{aligned}
 $$
 
@@ -111,8 +111,8 @@ $$
 $$
 \begin{aligned}
   & H(z) = 2.269e-18 s-1  (z = 0.0015) \\
-  & H(z) × t = 2.269e-18 × 3.064e10 = 6.952e-8 \\
-  & 1 + H(z) × t ≈ 1.00000007
+  & H(z) \times t = 2.269e-18 \times 3.064e10 = 6.952e-8 \\
+  & 1 + H(z) \times t \approx 1.00000007
 \end{aligned}
 $$
 
@@ -124,9 +124,9 @@ $$
 ### Step 6: Final Solution
 $$
 \begin{aligned}
-  & g_Crab = (2.258e-13) × (1.00000007) × (1.1) + 1.481e6 + 2.638e-3 \\
+  & g_Crab = (2.258e-13) \times (1.00000007) \times (1.1) + 1.481e6 + 2.638e-3 \\
   & = 2.484e-13 + 1.481e6 + 2.638e-3 \\
-  & ≈ 1.481e6 m/s2
+  & \approx 1.481e6 m/s2
 \end{aligned}
 $$
 
@@ -134,9 +134,9 @@ $$
 
 ## 4. Physical Interpretation
 
-The Crab Nebula is unique among UQFF systems: the pulsar wind term (1.481×106 m/s2) exceeds all
-other terms by orders of magnitude. Classical gravity (2.258×10-13) is negligible. The magnetic
-field electron dynamics term (2.638×10-3) provides a secondary UQFF correction coupling the electron
+The Crab Nebula is unique among UQFF systems: the pulsar wind term (1.481$\times$106 m/s2) exceeds all
+other terms by orders of magnitude. Classical gravity (2.258$\times$10-13) is negligible. The magnetic
+field electron dynamics term (2.638$\times$10-3) provides a secondary UQFF correction coupling the electron
 population to [SCm]. The cosmic expansion term is effectively zero over the 971-year age of the
 remnant — validating UQFF's correct near-zero cosmological behavior at short timescales.
 
@@ -145,7 +145,7 @@ remnant — validating UQFF's correct near-zero cosmological behavior at short t
 ## 5. UQFF Framework Advancement
 
 - UQFF successfully handles pulsar-dominated supernova remnant physics
-- Pulsar wind term expressed as radiation pressure / filament density × relativistic correction
+- Pulsar wind term expressed as radiation pressure / filament density $\times$ relativistic correction
 - Electron-mass magnetic term (M_mag) demonstrates UQFF mass-scale flexibility
 - Validates UQFF for extreme energy environments (pulsar wind nebulae)
 
@@ -153,7 +153,7 @@ remnant — validating UQFF's correct near-zero cosmological behavior at short t
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for the Crab Nebula yields g_Crab ≈ 1.481×106 m/s2, completely
+The Master UQFF gravity equation for the Crab Nebula yields g_Crab $\approx$ 1.481$\times$106 m/s2, completely
 dominated by the relativistic pulsar wind pressure term. This is the most extreme result in the
 batch, demonstrating UQFF's dynamic range from 10-3 m/s2 (nebulae) to 106 m/s2 (pulsar wind
 nebulae). The result confirms UQFF handles relativistic energy injection accurately while preserving
@@ -169,7 +169,7 @@ all non-standard correction terms.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -188,12 +188,12 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -294,7 +294,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.164 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -305,13 +305,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

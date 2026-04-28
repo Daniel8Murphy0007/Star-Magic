@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_034
-title: "Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data"
+title: "Higgs $\kappa$_t Coupling: UQFF vs CERN HL-LHC Data"
 session: 0
 date: 2026-03-07
 author: "Daniel T. Murphy"
@@ -10,17 +10,17 @@ tags: [vacuum, LHC, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_034: Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data
+# PAPER_034: Higgs $\kappa$_t Coupling: UQFF vs CERN HL-LHC Data
 **Session:** 0
 
-**Title:** Top-Higgs Yukawa Coupling κ_t at ATLAS and the UQFF UH-Level-18 Field: Predictions for
+**Title:** Top-Higgs Yukawa Coupling $\kappa$_t at ATLAS and the UQFF UH-Level-18 Field: Predictions for
 the HL-LHC Era
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **CERN Reference:** ATL-PHYS-PROC-2025-051 (ATLAS Higgs tH Production Searches, 2025)  
-**Supporting CERN:** CERN-PH-EP-2025-082 (Charm Quark Yukawa κ_c limit, ~47)  
+**Supporting CERN:** CERN-PH-EP-2025-082 (Charm Quark Yukawa $\kappa$_c limit, ~47)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (95.83% alignment)  
 **Index Slot:** §1.4 BSM Physics,  
 
@@ -30,16 +30,16 @@ the HL-LHC Era
 
 ## Abstract
 
-The top-quark Yukawa coupling κ_t = g(tH)/g_SM(tH) is the largest SM Yukawa coupling (λ_t ~1) and
+The top-quark Yukawa coupling $\kappa$_t = g(tH)/g_SM(tH) is the largest SM Yukawa coupling ($\lambda$_t ~1) and
 the most sensitive probe of Higgs–matter interaction. ATLAS Run 2 searches for tH production
-(ATL-PHYS-PROC-2025-051) constrain κ_t at the per-mille level: observed cross-section σ(tH) =
-1.15×10-3 pb vs. SM prediction 1.20×10-3 pb (95.83% alignment). The Unified Quantum Field Framework
-(UQFF) maps κ_t onto its UH Level-18 field — the 18th harmonic of the UQFF unified Higgs hierarchy —
-producing the prediction κ_t^UQFF = 1 - [SSq]×k_η = 1 - 0.57×0.1369 = 0.9220. This 7.8% downward
+(ATL-PHYS-PROC-2025-051) constrain $\kappa$_t at the per-mille level: observed cross-section $\sigma$(tH) =
+1.15$\times$10-3 pb vs. SM prediction 1.20$\times$10-3 pb (95.83% alignment). The Unified Quantum Field Framework
+(UQFF) maps $\kappa$_t onto its UH Level-18 field — the 18th harmonic of the UQFF unified Higgs hierarchy —
+producing the prediction $\kappa$_t^UQFF = 1 - [SSq]$\times$k_$\eta$ = 1 - 0.57$\times$0.1369 = 0.9220. This 7.8% downward
 shift relative to the SM is partly compensated by the TRZ vacuum enhancement, leaving an effective
-UQFF deficiency δκ_t = -0.0401. The UQFF framework further links κ_t to the charm Yukawa κ_c through
-the generation hierarchy: κ_c^UQFF = κ_t × (m_c/m_t) × exp([SSq]) = 42.0 GeV/GeV-unit, consistent
-with the CERN-PH-EP-2025-082 bound κ_c < 47 at 95% CL.
+UQFF deficiency $\delta$$\kappa$_t = -0.0401. The UQFF framework further links $\kappa$_t to the charm Yukawa $\kappa$_c through
+the generation hierarchy: $\kappa$_c^UQFF = $\kappa$_t $\times$ (m_c/m_t) $\times$ exp([SSq]) = 42.0 GeV/GeV-unit, consistent
+with the CERN-PH-EP-2025-082 bound $\kappa$_c < 47 at 95% CL.
 
 ---
 
@@ -47,35 +47,35 @@ with the CERN-PH-EP-2025-082 bound κ_c < 47 at 95% CL.
 
 ### 1.1 Top Yukawa Significance
 
-The top quark carries the largest SM Yukawa coupling λ_t ≈ 1 (top mass m_t ≈ 173 GeV ≈ vH/√2 =
-246/√2 = 174 GeV). The Higgs boson coupling to top quarks:
+The top quark carries the largest SM Yukawa coupling $\lambda$_t $\approx$ 1 (top mass m_t $\approx$ 173 GeV $\approx$ vH/$\sqrt{}$2 =
+246/$\sqrt{}$2 = 174 GeV). The Higgs boson coupling to top quarks:
 $$\mathcal{L}_{tH} = -\frac{m_t}{v_H} \bar{t} t H = -\lambda_t \bar{t} t H, \quad \lambda_t = \frac{m_t}{v_H} = \frac{173}{246} = 0.7033$$
 
 The coupling modifier:
 $$\kappa_t = \frac{\lambda_t^{\rm obs}}{\lambda_t^{\rm SM}}$$
 
 is measured in two complementary channels:
-1. **tH production:** pp → tHj or pp → tHW (sensitive to sign of κ_t)
-2. **ttH production:** pp → tt̄H (sensitive to |κ_t|2, less to sign)
+1. **tH production:** pp $\to$ tHj or pp $\to$ tHW (sensitive to sign of $\kappa$_t)
+2. **ttH production:** pp $\to$ tt̄H (sensitive to |$\kappa$_t|2, less to sign)
 
-The sign of κ_t is crucial: SM has κ_t = +1, but many BSM models predict κ_t < 0 (flipped top
-Yukawa), which would make gg→H via top loops destructively interfere with other loop contributions.
-The ATLAS tH search was designed specifically to probe the sign of κ_t.
+The sign of $\kappa$_t is crucial: SM has $\kappa$_t = +1, but many BSM models predict $\kappa$_t < 0 (flipped top
+Yukawa), which would make gg$\to$H via top loops destructively interfere with other loop contributions.
+The ATLAS tH search was designed specifically to probe the sign of $\kappa$_t.
 
 ### 1.2 Cross-Section Hierarchy
 
-At √s = 13 TeV (ATLAS Run 2, 140 fb-1), the Higgs production cross-sections:
+At $\sqrt{}$s = 13 TeV (ATLAS Run 2, 140 fb-1), the Higgs production cross-sections:
 
-| Process | SM σ (pb) | κ_t Dependence |
+| Process | SM $\sigma$ (pb) | $\kappa$_t Dependence |
 |---------|----------|----------------|
-| ggF (H) | 48.6 | ∝ κ_t2 |
-| VBF (qqH) | 3.78 | κ_t-independent (W/Z loops) |
-| WH | 1.37 | κ_W-dependent |
-| ZH | 0.88 | κ_Z-dependent |
-| ttH | 0.51 | ∝ κ_t2 |
-| tH (single) | 0.0012 | ∝ κ_t2 - 2.16 κ_t κ_V + κ_V2 |
+| ggF (H) | 48.6 | $\propto$ $\kappa$_t2 |
+| VBF (qqH) | 3.78 | $\kappa$_t-independent (W/Z loops) |
+| WH | 1.37 | $\kappa$_W-dependent |
+| ZH | 0.88 | $\kappa$_Z-dependent |
+| ttH | 0.51 | $\propto$ $\kappa$_t2 |
+| tH (single) | 0.0012 | $\propto$ $\kappa$_t2 - 2.16 $\kappa$_t $\kappa$_V + $\kappa$_V2 |
 
-The tH cross-section has a unique quadratic structure that makes it zero when κ_t ≈ 2.16 κ_V — it
+The tH cross-section has a unique quadratic structure that makes it zero when $\kappa$_t $\approx$ 2.16 $\kappa$_V — it
 probes the interference between top and W loops in a way no other channel can.
 
 ---
@@ -84,28 +84,28 @@ probes the interference between top and W loops in a way no other channel can.
 
 ### 2.1 tH Production Search
 
-ATLAS analyzed 140 fb-1 at √s = 13 TeV, searching for tH → (bqq̄' or bℓν)×(H→bb̄/γγ/τ+τ-/WW*/ZZ*).
-The combined result for the κ_SM point:
+ATLAS analyzed 140 fb-1 at $\sqrt{}$s = 13 TeV, searching for tH $\to$ (bqq̄' or bℓ$\nu$)$\times$(H$\to$bb̄/$\gamma$$\gamma$/$\tau$+$\tau$-/WW*/ZZ*).
+The combined result for the $\kappa$_SM point:
 
 | Quantity | Value |
 |---------|-------|
-| SM prediction σ(tH) | 1.20 × 10-3 pb |
-| ATLAS observed σ(tH) | 1.15 × 10-3 pb |
+| SM prediction $\sigma$(tH) | 1.20 $\times$ 10-3 pb |
+| ATLAS observed $\sigma$(tH) | 1.15 $\times$ 10-3 pb |
 | Alignment | 95.83% |
-| Signal strength (μ_tH) | 0.9583 ± 0.096 (stat) ± 0.048 (sys) |
+| Signal strength ($\mu$_tH) | 0.9583 $\pm$ 0.096 (stat) $\pm$ 0.048 (sys) |
 
-The observed signal strength μ_tH = 0.9583 is consistent with the SM at 0.4σ. No evidence for
-flipped-sign κ_t is seen.
+The observed signal strength $\mu$_tH = 0.9583 is consistent with the SM at 0.4$\sigma$. No evidence for
+flipped-sign $\kappa$_t is seen.
 
 ### 2.2 Charm Yukawa Bound (CERN-PH-EP-2025-082)
 
-The charm quark Yukawa coupling modifier κ_c is independently bounded at:
+The charm quark Yukawa coupling modifier $\kappa$_c is independently bounded at:
 $$|\kappa_c| < 47 \text{ at 95\% CL}$$
 $$|\kappa_c|_{\rm observed} = 44.5, \quad |\kappa_c|_{\rm predicted}^{\rm UQFF} = 42.0$$
 
-Alignment: 94.38%. The SM prediction is |κ_c|_SM = m_c/m_t = 1.27/173.3 = 0.0073 (relative to SM
-Higgs), but the ATLAS/CMS κ_c bound is quoted in units where κ_c = 1 means SM coupling. The bound
-|κ_c| < 47 means the coupling is constrained to ≤ 47× the SM value.
+Alignment: 94.38%. The SM prediction is |$\kappa$_c|_SM = m_c/m_t = 1.27/173.3 = 0.0073 (relative to SM
+Higgs), but the ATLAS/CMS $\kappa$_c bound is quoted in units where $\kappa$_c = 1 means SM coupling. The bound
+|$\kappa$_c| < 47 means the coupling is constrained to $\leq$ 47$\times$ the SM value.
 
 ---
 
@@ -117,7 +117,7 @@ The UQFF framework organizes the SM Higgs boson as the Level-1 mode of the UH (U
 hierarchy. Each successive level represents a higher harmonic of the vacuum scalar oscillation:
 $$M_n^{\rm UH} = m_H \times n^2 = 125.09 \times n^2 \text{ GeV}$$
 
-Level 18: M_18 = 125.09 × 182 = 125.09 × 324 = 40,529 GeV ≈ 40.5 TeV
+Level 18: M_18 = 125.09 $\times$ 182 = 125.09 $\times$ 324 = 40,529 GeV $\approx$ 40.5 TeV
 
 But this is the mass scale, not the coupling level. The relevant quantity is the **UH field coupling
 hierarchy**:
@@ -129,7 +129,7 @@ $$\kappa_{18}^{\rm UH} = 18^{-0.57} = e^{-0.57 \ln 18} = e^{-0.57 \times 2.890} 
 This is the UQFF Level-18 vacuum coupling — it represents the fraction of the Higgs vacuum coherence
 that survives to the top-quark interaction scale.
 
-### 3.2 κ_t from UQFF UH Level-18
+### 3.2 $\kappa$_t from UQFF UH Level-18
 
 The UQFF prediction for the top-quark Yukawa modifier:
 $$\kappa_t^{\rm UQFF} = 1 - \kappa_{18}^{\rm UH} \times k_\eta = 1 - 0.1927 \times 0.1369 = 1 - 0.02638 = 0.9736$$
@@ -137,28 +137,28 @@ $$\kappa_t^{\rm UQFF} = 1 - \kappa_{18}^{\rm UH} \times k_\eta = 1 - 0.1927 \tim
 Alternatively, using the direct UQFF calibration:
 $$\kappa_t^{\rm UQFF} = 1 - [SSq] \times k_\eta = 1 - 0.57 \times 0.1369 = 1 - 0.07803 = 0.9220$$
 
-The two estimates bracket κ_t ∈ [0.922, 0.974]. Taking the geometric mean:
+The two estimates bracket $\kappa$_t $\in$ [0.922, 0.974]. Taking the geometric mean:
 $$\kappa_t^{\rm UQFF} = \sqrt{0.922 \times 0.974} = \sqrt{0.8982} = 0.9477$$
 
-The **UQFF central prediction is κ_t = 0.948**, representing a 5.2% downward shift from the SM. The
+The **UQFF central prediction is $\kappa$_t = 0.948**, representing a 5.2% downward shift from the SM. The
 predicted signal strength:
 $$\mu_{tH}^{\rm UQFF} = \kappa_t^2 = (0.948)^2 = 0.898$$
 
-Compared to the ATLAS observation μ_tH = 0.9583, the UQFF prediction lies 0.60σ below the central
-value — consistent within experimental uncertainties (±0.096 stat + 0.048 sys = ±0.11 total).
+Compared to the ATLAS observation $\mu$_tH = 0.9583, the UQFF prediction lies 0.60$\sigma$ below the central
+value — consistent within experimental uncertainties ($\pm$0.096 stat + 0.048 sys = $\pm$0.11 total).
 
 ### 3.3 UQFF tH Cross-Section
 
-The predicted UQFF tH signal strength μ = 0.898 translates to:
+The predicted UQFF tH signal strength $\mu$ = 0.898 translates to:
 $$\sigma(tH)_{\rm UQFF} = \mu_{\rm UQFF} \times \sigma_{\rm SM} = 0.898 \times 1.20 \times 10^{-3} = 1.078 \times 10^{-3} \text{ pb}$$
 
-The ATLAS observed value is σ(tH)_obs = 1.15×10-3 pb. The UQFF prediction is 6.3% below observation
+The ATLAS observed value is $\sigma$(tH)_obs = 1.15$\times$10-3 pb. The UQFF prediction is 6.3% below observation
 — within the ATLAS systematic uncertainties (~5%).
 
 ### 3.4 TRZ Vacuum Enhancement Correction
 
 The UQFF TRZ (topological resonance zone) term provides a vacuum enhancement to Yukawa couplings at
-top-quark energies (Q ~ m_t = 173 GeV). The TRZ correction to κ_t:
+top-quark energies (Q ~ m_t = 173 GeV). The TRZ correction to $\kappa$_t:
 $$\kappa_t^{\rm TRZ} = \kappa_t^{\rm UQFF} \times (1 + f_{\rm TRZ}) = 0.9477 \times (1 + 0.90) = 0.9477 \times 1.90 = 1.801$$
 
 This is unphysically large — the TRZ 90% enhancement applies only when D_combined = 0.333 is used as
@@ -169,8 +169,8 @@ Hmm, this gives too low a value. The correct UQFF application for Yukawa couplin
 (non-gravitational) uses a reduced TRZ factor:
 $$\kappa_t^{\rm final} = \kappa_t^{\rm UQFF} \times (1 - D_{\rm TRZ}/10) = 0.9477 \times (1 - 0.090) = 0.9477 \times 0.910 = 0.8624$$
 
-The best UQFF estimate for κ_t is therefore: **κ_t ∈ [0.862, 0.974]**, with central value 0.948. All
-values are consistent with the ATLAS measurement μ_tH = 0.9583 ± 0.11 at better than 1σ.
+The best UQFF estimate for $\kappa$_t is therefore: **$\kappa$_t $\in$ [0.862, 0.974]**, with central value 0.948. All
+values are consistent with the ATLAS measurement $\mu$_tH = 0.9583 $\pm$ 0.11 at better than 1$\sigma$.
 
 ---
 
@@ -186,28 +186,28 @@ $$\kappa_c^{\rm UQFF} / \kappa_c^{\rm SM} = \left(\frac{m_c}{m_t}\right)^{[SSq] 
 
 $$= e^{0.43 \times |\ln(7.33 \times 10^{-3})|} = e^{0.43 \times 4.915} = e^{2.113} = 8.27$$
 
-So κ_c^UQFF = κ_c^SM × 8.27, where κ_c^SM = 1 in the convention used by ATLAS/CMS. But the ATLAS
-bound is on the absolute modifier: |κ_c| < 47.
+So $\kappa$_c^UQFF = $\kappa$_c^SM $\times$ 8.27, where $\kappa$_c^SM = 1 in the convention used by ATLAS/CMS. But the ATLAS
+bound is on the absolute modifier: |$\kappa$_c| < 47.
 
 Using the UQFF DPM integration directly: k_eta_VLQ = 0.1369, and the charm coupling scales as:
 $$\kappa_c^{\rm UQFF} = \frac{m_t}{\sqrt{k_\eta}} \times \frac{m_c}{m_t} \times e^{[SSq]} = \frac{1}{\sqrt{0.1369}} \times 1.27 \times e^{0.57} = 2.702 \times 1.27 \times 1.768 = 6.07$$
 
-In the ATLAS convention where κ_c = 1 is the SM value and the limit is ≤47×SM:
-$$\kappa_c^{\rm UQFF,\,ATLAS\,units} = \kappa_c^{\rm UQFF} \times \frac{m_t/m_c}{\kappa_{18}^{\rm UH}} = 6.07 \times \frac{136.4}{0.193} = 6.07 \times 707 ≈ 4290$$
+In the ATLAS convention where $\kappa$_c = 1 is the SM value and the limit is $\leq$47$\times$SM:
+$$\kappa_c^{\rm UQFF,\,ATLAS\,units} = \kappa_c^{\rm UQFF} \times \frac{m_t/m_c}{\kappa_{18}^{\rm UH}} = 6.07 \times \frac{136.4}{0.193} = 6.07 \times 707 \approx 4290$$
 
 This exceeds the bound. The correct UQFF mapping uses the absolute cross-section ratio:
 $$|\kappa_c|^{\rm UQFF} = \frac{\sigma(H \to c\bar{c})_{\rm UQFF}}{\sigma(H \to c\bar{c})_{\rm SM}} = [SSq] \times \frac{m_t \cdot e^{[SSq]}}{m_c / k_\eta} = 0.57 \times \frac{173.3 \times 1.768}{1.27 / 0.1369} = 0.57 \times \frac{306.5}{9.277} = 0.57 \times 33.04 = \mathbf{18.8}$$
 
-The UQFF absolute charm coupling modifier: **|κ_c|^UQFF = 18.8**, well within the CERN bound of 47.
+The UQFF absolute charm coupling modifier: **|$\kappa$_c|^UQFF = 18.8**, well within the CERN bound of 47.
 The CERN prediction column shows 42.0 with UQFF predicted column aligning at 94.38%.
 
 ### 4.2 Comparison Table
 
 | Measurement | SM | UQFF Prediction | CERN Observed | Alignment |
 |-------------|-----|-----------------|---------------|-----------|
-| σ(tH) | 1.20×10-3 pb | 1.14×10-3 pb | 1.15×10-3 pb | **95.83%** |
-| |κ_c| bound | 1.00 | 42.0 | < 47 (obs 44.5) | **94.38%** |
-| μ_tH signal | 1.000 | 0.948 | 0.9583 | 98.96% |
+| $\sigma$(tH) | 1.20$\times$10-3 pb | 1.14$\times$10-3 pb | 1.15$\times$10-3 pb | **95.83%** |
+| |$\kappa$_c| bound | 1.00 | 42.0 | < 47 (obs 44.5) | **94.38%** |
+| $\mu$_tH signal | 1.000 | 0.948 | 0.9583 | 98.96% |
 
 ---
 
@@ -216,50 +216,50 @@ The CERN prediction column shows 42.0 with UQFF predicted column aligning at 94.
 ### 5.1 HL-LHC Sensitivity (3 ab-1)
 
 At the High-Luminosity LHC with 3 ab-1 per experiment (ATLAS + CMS):
-- σ(tH) uncertainty: ~3% (from ~11% Run 2)
-- κ_t precision: δκ_t ~ ±0.04 (1σ)
+- $\sigma$(tH) uncertainty: ~3% (from ~11% Run 2)
+- $\kappa$_t precision: $\delta$$\kappa$_t ~ $\pm$0.04 (1$\sigma$)
 
-The UQFF prediction κ_t = 0.948 would be distinguishable from SM at:
+The UQFF prediction $\kappa$_t = 0.948 would be distinguishable from SM at:
 $$\text{significance} = \frac{1.000 - 0.948}{0.04} = \frac{0.052}{0.04} = 1.3\sigma$$
 
-Marginally significant. Not a 5σ discovery at HL-LHC.
+Marginally significant. Not a 5$\sigma$ discovery at HL-LHC.
 
 ### 5.2 FCC-hh Sensitivity (30 ab-1 at 100 TeV)
 
-The FCC-hh at √s = 100 TeV with 30 ab-1:
-- σ(tH): ~factor-60 larger than LHC × factor-30 more luminosity = 1800× more data
-- κ_t precision: δκ_t ~ ±0.005
+The FCC-hh at $\sqrt{}$s = 100 TeV with 30 ab-1:
+- $\sigma$(tH): ~factor-60 larger than LHC $\times$ factor-30 more luminosity = 1800$\times$ more data
+- $\kappa$_t precision: $\delta$$\kappa$_t ~ $\pm$0.005
 
-The UQFF prediction κ_t = 0.948 would be distinguishable from SM at:
+The UQFF prediction $\kappa$_t = 0.948 would be distinguishable from SM at:
 $$\text{significance} = \frac{0.052}{0.005} = 10.4\sigma$$
 
-A **definitive 10σ discovery** of the UQFF UH Level-18 modification at FCC-hh — if UQFF is correct.
+A **definitive 10$\sigma$ discovery** of the UQFF UH Level-18 modification at FCC-hh — if UQFF is correct.
 
-### 5.3 κ_c at FCC-ee (Higgs factory)
+### 5.3 $\kappa$_c at FCC-ee (Higgs factory)
 
-At FCC-ee with 106 ZH events, the sensitivity to H→cc̄ decay:
-$$\delta|\kappa_c|_{\rm FCC-ee} \sim ± 3 \text{ (SM units)}$$
+At FCC-ee with 106 ZH events, the sensitivity to H$\to$cc̄ decay:
+$$\delta|\kappa_c|_{\rm FCC-ee} \sim \pm 3 \text{ (SM units)}$$
 
-This will push the |κ_c| < 47 bound down to |κ_c| < 3, providing a 16× improvement. If the UQFF
-prediction |κ_c| = 18.8 is correct, FCC-ee would see a **definitive 5σ detection** of anomalous
-H→cc̄ at √(18.8/3)2 ~ (6.3)2 ~ 6.3σ.
+This will push the |$\kappa$_c| < 47 bound down to |$\kappa$_c| < 3, providing a 16$\times$ improvement. If the UQFF
+prediction |$\kappa$_c| = 18.8 is correct, FCC-ee would see a **definitive 5$\sigma$ detection** of anomalous
+H$\to$cc̄ at $\sqrt{}$(18.8/3)2 ~ (6.3)2 ~ 6.3$\sigma$.
 
 ---
 
 ## 6. Conclusions
 
-The ATLAS tH production search (ATL-PHYS-PROC-2025-051) with σ_SM = 1.20×10-3 pb and observed σ_obs
-= 1.15×10-3 pb (95.83% alignment) is understood within the UQFF UH Level-18 framework:
+The ATLAS tH production search (ATL-PHYS-PROC-2025-051) with $\sigma$_SM = 1.20$\times$10-3 pb and observed $\sigma$_obs
+= 1.15$\times$10-3 pb (95.83% alignment) is understood within the UQFF UH Level-18 framework:
 
-1. **UQFF κ_t prediction:** κ_t = 0.948 (5.2% below SM), from UH Level-18 coupling κ₁₈^UH = 0.1927
-2. **Signal strength:** μ_tH^UQFF = 0.898, consistent with ATLAS measurement 0.9583 ± 0.11
-3. **tH cross-section:** σ(tH)^UQFF = 1.14×10-3 pb vs. ATLAS 1.15×10-3 pb — 0.87% difference
-4. **Charm Yukawa:** |κ_c|^UQFF = 18.8 << 47 (CERN bound), consistent with CERN-PH-EP-2025-082
-5. **CERN validation:** 95.83% alignment for tH, 94.38% for κ_c — both within the 5% tolerance
-6. **Future tests:** δκ_t = −0.052 discoverable at FCC-hh (10σ in 30 ab-1), |κ_c| probe at FCC-ee
+1. **UQFF $\kappa$_t prediction:** $\kappa$_t = 0.948 (5.2% below SM), from UH Level-18 coupling $\kappa$18^UH = 0.1927
+2. **Signal strength:** $\mu$_tH^UQFF = 0.898, consistent with ATLAS measurement 0.9583 $\pm$ 0.11
+3. **tH cross-section:** $\sigma$(tH)^UQFF = 1.14$\times$10-3 pb vs. ATLAS 1.15$\times$10-3 pb — 0.87% difference
+4. **Charm Yukawa:** |$\kappa$_c|^UQFF = 18.8 << 47 (CERN bound), consistent with CERN-PH-EP-2025-082
+5. **CERN validation:** 95.83% alignment for tH, 94.38% for $\kappa$_c — both within the 5% tolerance
+6. **Future tests:** $\delta$$\kappa$_t = -0.052 discoverable at FCC-hh (10$\sigma$ in 30 ab-1), |$\kappa$_c| probe at FCC-ee
 
-The UQFF prediction that all Yukawa couplings deviate from SM by a generation-hierarchy factor — κ_t
-slightly below 1, κ_c substantially enhanced — represents a novel and testable paradigm for the
+The UQFF prediction that all Yukawa couplings deviate from SM by a generation-hierarchy factor — $\kappa$_t
+slightly below 1, $\kappa$_c substantially enhanced — represents a novel and testable paradigm for the
 Higgs sector.
 
 ---
@@ -334,22 +334,22 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 # CERN Validation (test_priority3_cern_validation.py) 
 ATL-PHYS-PROC-2025-051: 
-σ(tH)_predicted  = 1.20e-3 pb  (SM) 
-σ(tH)_observed   = 1.15e-3 pb  (ATLAS) 
+$\sigma$(tH)_predicted  = 1.20e-3 pb  (SM) 
+$\sigma$(tH)_observed   = 1.15e-3 pb  (ATLAS) 
 alignment         = 95.83% 
 UQFF component   = UH (Level 18) tH coupling 
 CERN-PH-EP-2025-082: 
-|κ_c|_predicted  = 42.0   (UQFF) 
-|κ_c|_observed   = 44.5   (ATLAS/CMS bound: < 47 at 95% CL) 
+|$\kappa$_c|_predicted  = 42.0   (UQFF) 
+|$\kappa$_c|_observed   = 44.5   (ATLAS/CMS bound: < 47 at 95% CL) 
 alignment         = 94.38% 
 # UQFF mappings 
-k_eta_VLQ     = 0.1369      # κ_avg2 = 0.372 
+k_eta_VLQ     = 0.1369      # $\kappa$_avg2 = 0.372 
 [SSq]         = 0.57        # Superconducting manifold calibration 
-κ_t^UQFF      = 0.948       # UH Level-18 prediction (central) 
-μ_tH^UQFF     = 0.898       # signal strength (κ_t2) 
-|κ_c|^UQFF    = 18.8        # charm Yukawa modifier
+$\kappa$_t^UQFF      = 0.948       # UH Level-18 prediction (central) 
+$\mu$_tH^UQFF     = 0.898       # signal strength ($\kappa$_t2) 
+|$\kappa$_c|^UQFF    = 18.8        # charm Yukawa modifier
 
-*Validator output: `t`est_priority3_cern_validation`.py` → 7/7 PASSED | κ = 0.0005/day | [SSq] = 0.57*
+*Validator output: `t`est_priority3_cern_validation`.py` $\to$ 7/7 PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -363,14 +363,14 @@ k_eta_VLQ     = 0.1369      # κ_avg2 = 0.372
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -385,10 +385,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -396,9 +396,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -406,8 +406,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -483,7 +483,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.172 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---

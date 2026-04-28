@@ -105,8 +105,8 @@ in strongly magnetized environments.
 
 | Term | Formula | Class | Notes |
 |------|---------|-------|-------|
-| LENR Resonance | $k_{LENR}(\omega_{LENR}/\omega_0)^2$ | AstroModule | Dominant at low ω₀ |
-| Activation | $k_{act}\cos(\omega_{act} t)$ | AstroModule | ω_act = 2π×300 |
+| LENR Resonance | $k_{LENR}(\omega_{LENR}/\omega_0)^2$ | AstroModule | Dominant at low $\omega$0 |
+| Activation | $k_{act}\cos(\omega_{act} t)$ | AstroModule | $\omega$_act = 2$\pi$$\times$300 |
 | Directed Energy | $k_{DE} \cdot L_X$ | AstroModule | Scales with X-ray luminosity |
 | Magnetic Resonance | $2qB_0 V\sintheta \cdot DPM_{res}$ | AstroModule | DPM coupling |
 | Neutron Drop | $k_{neutron} \cdot \sigma_n$ | AstroModule | $k_{neutron}=10^{10}$ |
@@ -127,29 +127,29 @@ CNBModule adds:
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.094 × 1038 kg (~5.5 × 107 MM_sun; central SMBH) |
-| r | 6.17 × 1017 m (~20 pc; radio lobe boundary) |
+| M | 1.094 $\times$ 1038 kg (~5.5 $\times$ 107 MM_sun; central SMBH) |
+| r | 6.17 $\times$ 1017 m (~20 pc; radio lobe boundary) |
 | T | 104 K (jet plasma) |
 | L_X | 1036 W (Chandra X-ray luminosity) |
-| B₀ | 10-4 T (radio lobe field) |
+| B0 | 10-4 T (radio lobe field) |
 | Distance | 3.8 Mpc (~12.4 Mly) — nearest radio galaxy |
 
 **Physics context:** Centaurus A is the closest active galactic nucleus to Earth, featuring giant lobes extending 250,000 light-years from the central SMBH. It was previously analyzed in PAPER_067 (AGN UQFF), PAPER_038/039 (buoyancy variants 7–17 ICM), and PAPER_111/154 (Navier-Stokes jet). The CNBModule adds the CNB neutrino coupling for the CenA radio lobe environment — where the densest CNB overdensities are expected due to gravitational clustering around the massive central object ($M_{SMBH} \approx 5.5 \times 10^7 M_\odot$).
 
 **CNB enhancement:** At Centaurus A, gravitational CNB overdensity:
 $$n_{CNB,CenA} \approx n_{CNB,cosmic} \cdot \left(1 + \delta_{CNB}\right)$$
-where $\delta_{CNB} \sim O(1)$ overdensity near massive objects enhances $F_\nu$ by a factor of ~2× at the radio lobe scale. This is the **first UQFF calculation coupling CNB gravitational clustering to SMBH-scale buoyancy**.
+where $\delta_{CNB} \sim O(1)$ overdensity near massive objects enhances $F_\nu$ by a factor of ~2$\times$ at the radio lobe scale. This is the **first UQFF calculation coupling CNB gravitational clustering to SMBH-scale buoyancy**.
 
 ### 3.2 CNB Module System Summary
 
-| System | M (kg) | r (m) | F_ν enhancement | New in CNBModule |
+| System | M (kg) | r (m) | F_$\nu$ enhancement | New in CNBModule |
 |--------|--------|-------|----------------|-----------------|
-| J1610+1811 | 2.785e30 | 3.09e15 | Standard (z=3.122) | F_ν, F_Sweet, F_Koz added |
-| PLCK_G287.0+32.9 | 1.989e44 | 3.09e22 | Standard | F_ν, F_Sweet, F_Koz added |
-| PSZ2_G181.06+48.47 | 1.989e44 | 3.09e22 | Standard | F_ν, F_Sweet, F_Koz added |
-| ASKAP_J1832-0911 | 2.785e30 | 4.63e16 | Standard | F_ν, F_Sweet, F_Koz added |
-| SonificationCollection | 1.989e31 | 6.17e16 | Standard | F_ν, F_Sweet, F_Koz added |
-| **CentaurusA** | **1.094e38** | **6.17e17** | **~2× gravitational clustering** | **New system** |
+| J1610+1811 | 2.785e30 | 3.09e15 | Standard (z=3.122) | F_$\nu$, F_Sweet, F_Koz added |
+| PLCK_G287.0+32.9 | 1.989e44 | 3.09e22 | Standard | F_$\nu$, F_Sweet, F_Koz added |
+| PSZ2_G181.06+48.47 | 1.989e44 | 3.09e22 | Standard | F_$\nu$, F_Sweet, F_Koz added |
+| ASKAP_J1832-0911 | 2.785e30 | 4.63e16 | Standard | F_$\nu$, F_Sweet, F_Koz added |
+| SonificationCollection | 1.989e31 | 6.17e16 | Standard | F_$\nu$, F_Sweet, F_Koz added |
+| **CentaurusA** | **1.094e38** | **6.17e17** | **~2$\times$ gravitational clustering** | **New system** |
 
 ---
 
@@ -223,9 +223,9 @@ cdouble j1610_cnb = mod.computeFBi("J1610+1811", 3.156e10);
 
 ### 5.1 CNB Physics Validation
 
-The CNB number density $n_{CNB} = 336\ \text{cm}^{-3}$ per flavor (112 per flavor × 3 families) is the standard prediction from:
+The CNB number density $n_{CNB} = 336\ \text{cm}^{-3}$ per flavor (112 per flavor $\times$ 3 families) is the standard prediction from:
 - Kolb & Turner (1990), *The Early Universe*
-- Particle Data Group (2024) — ν_CMB temperature $T_\nu = (4/11)^{1/3} T_\gamma \approx 1.945$ K
+- Particle Data Group (2024) — $\nu$_CMB temperature $T_\nu = (4/11)^{1/3} T_\gamma \approx 1.945$ K
 - PTOLEMY experiment design specifications (Princeton, arXiv:1307.4738)
 
 The $F_\nu$ formula follows from: $\text{Force} = \text{coupling} \times \text{flux} \times \text{area}$, where flux = $n_{CNB} \cdot v_\nu \cdot E_\nu$ and the neutrino-matter cross-section at CNB energies is $\sigma_{CNB} \sim G_F^2 E_\nu^2 / \pi \approx 10^{-60}\ \text{m}^2$.
@@ -270,7 +270,7 @@ The Sweet vacuum coupling $k_{Sweet} = 10^{-25}$ connects to:
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -289,7 +289,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -312,7 +312,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -413,7 +413,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.080 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -424,10 +424,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

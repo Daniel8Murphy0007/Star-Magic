@@ -16,19 +16,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We extend the NS merger F_U_Bi framework (GW190425) with 3rd-order Ramanujan S₂₆⁽3⁾, incorporating
+We extend the NS merger F_U_Bi framework (GW190425) with 3rd-order Ramanujan S26(3), incorporating
 BCS gap coupling and tidal correction. At resonance, 47.0% strain reduction is achieved: h_UQFF =
-h_GR · (1 − 0.47) = 0.53 · h_GR.
+h_GR $\cdot$ (1 - 0.47) = 0.53 $\cdot$ h_GR.
 
 ## 1. Strain Suppression
 
-h_UQFF(Γ) = h_GR · (1 − 0.47 · Φ(Γ)/S₂₆⁽3⁾)
+h_UQFF($\Gamma$) = h_GR $\cdot$ (1 - 0.47 $\cdot$ $\Phi$($\Gamma$)/S26(3))
 
-For GW190425 (M_total = 3.4 MM_sun, d = 159 Mpc): h_GR = 2.52×10-22 → h_UQFF = 1.33×10-22.
+For GW190425 (M_total = 3.4 MM_sun, d = 159 Mpc): h_GR = 2.52$\times$10-22 $\to$ h_UQFF = 1.33$\times$10-22.
 
 ## 2. Mass-Gap Classification
 
-m₁ = 2.52 MM_sun → P(NS) = 49%, P(BH) = 51%. Phonon suppression factor discriminates mass-gap objects.
+m1 = 2.52 MM_sun $\to$ P(NS) = 49%, P(BH) = 51%. Phonon suppression factor discriminates mass-gap objects.
 
 ## 3. Implementation
 
@@ -45,7 +45,7 @@ File: `fubi_agn_ns_mergers.py`, class `NSMergerFUBiCalc`. CP4 class #584.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 
@@ -176,7 +176,7 @@ $$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,
 $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravitational-wave chirp $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
 
 ---
 

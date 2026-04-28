@@ -22,7 +22,7 @@ Mechanism
 **Framework Contact:** UQFF Millennium Prize Analysis  
 **Index Slot:** §1.13 Multi-Physics Models,  
 
-<!— UQFF constants: κ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The Yang-Mills existence and mass gap problem (Millennium Prize Problem) asks whether a pure SU(N)
@@ -32,7 +32,7 @@ the background UQFF field creates a minimum excitation energy ?_UQFF = f_TRZ  ??
 massless gluon states. We present a heuristic UQFF-based argument for the mass gap, connecting f_TRZ
 = 0.01 to the confinement scale.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0x10^-4 day^{-}1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0x10^-4 day^{-}1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -129,7 +129,7 @@ threshold.
 Unified Lagrangian:
 
 $$
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
 **Sector 2 (Yang-Mills):**
@@ -153,9 +153,9 @@ $$
 $$
 
 **Critical Values:**
-- σ (string tension) = 0.180 GeV^2
+- $\sigma$ (string tension) = 0.180 GeV^2
 - H_SCm = 0.99, v_SCm = 3.00e4 m/s
-- m_gap = 5969.92 GeV (ratio to Λ_QCD = 29849.62x)
+- m_gap = 5969.92 GeV (ratio to $\Lambda$_QCD = 29849.62x)
 
 **Standalone Calculator:** `millennium_prize_uqff_calculator.py` -> `YangMillsMassGapUQFFCalculator`
 
@@ -248,7 +248,7 @@ Since $p_{\rm DVP} = 37$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **1/Λ_QCD** (confinement timescale):
+The BSH saturation timescale for this sector is **1/$\Lambda$_QCD** (confinement timescale):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
@@ -265,7 +265,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -274,13 +274,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

@@ -54,9 +54,9 @@ where $t_{adj}$ is the adjusted time-reversal coordinate (negative $t$ for accre
 
 1. **Base:** Dirac pseudo-monopole gives $1/r$ (Dirac quantization $q_e = 2\pi n$)
 2. **Di-pair extension:** $DPM_n - DPM_s \approx 2\,DPM$ (paired opposites, chaos-order duality)
-3. **26D projection:** Each dimension adds one inverse power → $1/r^{26}$
+3. **26D projection:** Each dimension adds one inverse power $\to$ $1/r^{26}$
 4. **Time derivative:** $\partial^{26}/\partial t^{26}$ folds all 26 time-dimensions, introducing a $26!$ factorial bound
-5. **Series expansion:** $DPM_n(SCm) \approx \sum_{k=0}^{26} c_k\,t^k$ (from $\pi$-frequency oscillations) → $\partial^{26}/\partial t^{26} = 26!\,c_{26}$
+5. **Series expansion:** $DPM_n(SCm) \approx \sum_{k=0}^{26} c_k\,t^k$ (from $\pi$-frequency oscillations) $\to$ $\partial^{26}/\partial t^{26} = 26!\,c_{26}$
 
 ---
 
@@ -105,7 +105,7 @@ This explains null results up to 4 TeV: 26D monopoles exist but their 3D cross-s
 | System | Context in §5–§6 |
 |---|---|
 | **VDS** | $P_{\text{order}}/3 = 3.333\times10^{-6}$ bounds all series coefficients — stable eigenvalue ensures $c_k \sim P/3$ |
-| **DVP** | $26!\cdot c_{26}$ is irrational → primitive roots mod $p = 113$ → non-repeating series oscillation |
+| **DVP** | $26!\cdot c_{26}$ is irrational $\to$ primitive roots mod $p = 113$ $\to$ non-repeating series oscillation |
 | **BH26** | The 26D dimension count $= 26$ directly matches BH26 harmonic dimension series |
 
 ---
@@ -124,7 +124,7 @@ The 26th-order form of $U_m$ is not a simplification artifact but the canonical 
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -143,7 +143,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -179,7 +179,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -282,7 +282,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -293,10 +293,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -307,7 +307,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*Star Magic / UQFF Framework · Session 147 · grok_share_b08cc4e3684.txt*
+*Star Magic / UQFF Framework $\cdot$ Session 147 $\cdot$ grok_share_b08cc4e3684.txt*
 
 
 

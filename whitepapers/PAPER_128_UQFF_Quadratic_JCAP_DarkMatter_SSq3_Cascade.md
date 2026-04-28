@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Cascade Hops at 12.8% Residual Error
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -30,17 +30,17 @@ Cascade Hops at 12.8% Residual Error
 ## Abstract
 
 The Journal of Cosmology and Astroparticle Physics (JCAP) 2025 dark matter density measurements from
-satellite galaxy kinematics yield ?_DM ≈ 0.185 GeV/cm in the Milky Way halo. Thread d91b1f6c derives
+satellite galaxy kinematics yield ?_DM $\approx$ 0.185 GeV/cm in the Milky Way halo. Thread d91b1f6c derives
 the UQFF Quadratic Mode formula: ?_DM = ?_?  [SSq], where ?_? is the cosmological constant vacuum
 energy density and N=3 vacuum cascade hops connect the dark energy scale to the dark matter scale.
-The UQFF prediction: ?_DM = (5.96×10?7 kg/m)  (0.57) = 1.10×10?7 kg/m, compared to the JCAP measured
-value ~9.67×10?8 kg/m, yielding a 12.8% residual error. The UQFF discovery is that dark matter is
+The UQFF prediction: ?_DM = (5.96$\times$10?7 kg/m)  (0.57) = 1.10$\times$10?7 kg/m, compared to the JCAP measured
+value ~9.67$\times$10?8 kg/m, yielding a 12.8% residual error. The UQFF discovery is that dark matter is
 not a separate species but the N=3 vacuum cascade product of the cosmological constant: dark energy
 at the scale ?_? undergoes three sequential [SSq] compressions to produce the observed dark matter
 density. This N-hop cascade is the UQFF Quadratic Mode's defining mechanism, applicable to all
 multi-scale vacuum energy transitions.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -50,12 +50,12 @@ present in Standard Model treatments.
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Cosmological constant ?_? | 5.96×10?7 kg/m | Planck 2018 |
+| Cosmological constant ?_? | 5.96$\times$10?7 kg/m | Planck 2018 |
 | Dark matter density ?_DM (local) | 0.185 GeV/cm | JCAP 2025/Read+2014 |
-| ?_DM in SI units | 9.67×10?8 kg/m | Conversion |
+| ?_DM in SI units | 9.67$\times$10?8 kg/m | Conversion |
 | ?_DM / ?_? (empirical ratio) | 0.162 | Computed |
 | [SSq] = (0.57) | 0.185 | UQFF |
-| UQFF predicted ?_DM | ?_? ≈ 0.185 = 1.10×10?7 kg/m | d91b1f6c |
+| UQFF predicted ?_DM | ?_? $\approx$ 0.185 = 1.10$\times$10?7 kg/m | d91b1f6c |
 | Residual error | |1.10 - 0.967| / 0.967 = **12.8%** | d91b1f6c |
 | N hops | N = 3 | [SSq] |
 
@@ -85,17 +85,17 @@ Each vacuum cascade hop represents a [SCm] condensate phase transition:
 
 | Hop | From | To | Scale |
 |-----|------|----|-------|
-| N=0 | ?_? = 5.96×10?7 kg/m | Dark energy / ? | Hubble scale |
-| N=1 | ?_?  [SSq] = 3.40×10?7 | Baryon density | Cluster scale |
-| N=2 | ?_?  [SSq] = 1.94×10?7 | Diffuse gas | Filament scale |
-| N=3 | ?_?  [SSq] = 1.10×10?7 | Dark matter (UQFF) | Halo scale |
+| N=0 | ?_? = 5.96$\times$10?7 kg/m | Dark energy / ? | Hubble scale |
+| N=1 | ?_?  [SSq] = 3.40$\times$10?7 | Baryon density | Cluster scale |
+| N=2 | ?_?  [SSq] = 1.94$\times$10?7 | Diffuse gas | Filament scale |
+| N=3 | ?_?  [SSq] = 1.10$\times$10?7 | Dark matter (UQFF) | Halo scale |
 
 The N=3 hop cascade physically corresponds to dark energy condensing through three [SCm]
 crystallization steps: cosmological ? cluster ? filament ? halo.
 
 ### 2.3 12.8% Residual as [UA] Correction
 
-The 12.8% residual between UQFF (1.10×10?7 kg/m) and JCAP (0.967×10?7 kg/m) arises from the [UA]
+The 12.8% residual between UQFF (1.10$\times$10?7 kg/m) and JCAP (0.967$\times$10?7 kg/m) arises from the [UA]
 buoyancy term that partially opposes the N=3 downward cascade:
 
 $$\rho_{DM,final} = \rho_Lambda \cdot [SSq]^3 \cdot (1 - \epsilon_{UA})$$
@@ -176,7 +176,7 @@ $$\rho_N = 5.96 \times 10^{-27} \times 0.57^N \text{ kg/m}^3$$
 
 This corresponds to:
 - N=0: Dark energy (?, observed)
-- N=1: Baryon acoustic scale (baryonic density, ?_b  4.2×10?8 kg/m, offset by factor ~8)
+- N=1: Baryon acoustic scale (baryonic density, ?_b  4.2$\times$10?8 kg/m, offset by factor ~8)
 - N=3: Dark matter (JCAP, 12.8% error)
 - N=12: Nuclear density (~10? kg/m)
 
@@ -199,10 +199,10 @@ evolution of dark energy ? dark matter across cosmic time.
 | Quantity | UQFF Prediction | JCAP/Planck | Agreement |
 |---------|----------------|------------|-----------|
 | ?_DM formula | ?_?  [SSq] | – | New prediction |
-| ?_DM (UQFF) | 1.10×10?7 kg/m | 9.67×10?8 kg/m | ? 12.8% |
+| ?_DM (UQFF) | 1.10$\times$10?7 kg/m | 9.67$\times$10?8 kg/m | ? 12.8% |
 | N hops | 3 | Not directly measured | Inferred |
 | [UA] correction e | 0.128 | Residual | ? |
-| Dark energy scale ?_? | 5.96×10?7 | Planck 2018 | Input |
+| Dark energy scale ?_? | 5.96$\times$10?7 | Planck 2018 | Input |
 
 ---
 
@@ -326,7 +326,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.196 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -335,13 +335,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

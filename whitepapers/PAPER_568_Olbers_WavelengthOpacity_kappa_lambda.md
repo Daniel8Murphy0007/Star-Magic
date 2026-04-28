@@ -10,7 +10,7 @@ tags: [vacuum, DPM, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_568: Wavelength-Dependent Opacity κ_λ(λ) in the UQFF Olbers Framework
+# PAPER_568: Wavelength-Dependent Opacity $\kappa$_$\lambda$($\lambda$) in the UQFF Olbers Framework
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
 **Session:** 153b  
@@ -24,7 +24,7 @@ Extension 2
 
 ## Abstract
 
-This paper presents a UQFF analysis of Dependent Opacity κ_λ(λ) in the UQFF Olbers Framework,
+This paper presents a UQFF analysis of Dependent Opacity $\kappa$_$\lambda$($\lambda$) in the UQFF Olbers Framework,
 deriving compressed field equations and observational predictions within the Star-Magic/UQFF
 framework.
 
@@ -96,9 +96,9 @@ Integrating over all wavelengths:
 $$B_\text{sky}^\text{total} = \int_0^\infty B_\text{sky}(\lambda) \, d\lambda$$
 
 Key spectral features:
-- **UV ($\lambda < 200$ nm):** Strong opacity + enhanced [SSq] → nearly zero contribution
+- **UV ($\lambda < 200$ nm):** Strong opacity + enhanced [SSq] $\to$ nearly zero contribution
 - **Optical ($\lambda \approx 550$ nm):** Standard [SSq] = 0.507 suppression (PAPER_564)
-- **NIR/FIR ($\lambda > 1$ µm):** Reduced opacity + reduced [SSq] → dominant contributor to EBL
+- **NIR/FIR ($\lambda > 1$ µm):** Reduced opacity + reduced [SSq] $\to$ dominant contributor to EBL
 
 This explains the observational fact (EBL measurements) that the extragalactic background light peaks in the far-IR ($\sim 100$–140 µm) and optical.
 
@@ -136,7 +136,7 @@ The dust opacity is negligible in the intergalactic medium; the dominant suppres
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -235,7 +235,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.127 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -246,10 +246,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1e-6 W/m2/sr | EBL isotropic: ~2.5–5×10-6 W/m2/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | PASS Consistent |
-| Photon mass upper limit | UQFF UA=0 topology → photon strictly massless (m_γ < 10-113 eV) | m_γ < 10-18 eV (PDG 2024) | PDG 2024 | PASS k_η suppresses photon mass to zero |
-| CMB temperature T_CMB | UQFF: T_CMB = (ρ_UA / σ_SB)^0.25 | T_CMB = 2.72548 ± 0.00057 K | FIRAS/CMB 1996 | PASS Input parameter (exact match) |
-| Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering → finite sky brightness | Dark night sky: B_sky ~ 10-13 W/m2/sr | Photometry | PASS UQFF DVP scatter provides opacity |
+| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade $\to$ J_EBL $\approx$ 3.1e-6 W/m2/sr | EBL isotropic: ~2.5–5$\times$10-6 W/m2/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | PASS Consistent |
+| Photon mass upper limit | UQFF UA=0 topology $\to$ photon strictly massless (m_$\gamma$ < 10-113 eV) | m_$\gamma$ < 10-18 eV (PDG 2024) | PDG 2024 | PASS k_$\eta$ suppresses photon mass to zero |
+| CMB temperature T_CMB | UQFF: T_CMB = ($\rho$_UA / $\sigma$_SB)^0.25 | T_CMB = 2.72548 $\pm$ 0.00057 K | FIRAS/CMB 1996 | PASS Input parameter (exact match) |
+| Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering $\to$ finite sky brightness | Dark night sky: B_sky ~ 10-13 W/m2/sr | Photometry | PASS UQFF DVP scatter provides opacity |
 
 **New physics claim:** The Olbers paradox is resolved in UQFF by DVP photon-photon scattering
 within pocket shells — each shell at redshift z contributes a DPM-suppressed flux. This predicts

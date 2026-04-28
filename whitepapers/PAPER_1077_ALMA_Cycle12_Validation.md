@@ -17,34 +17,34 @@ cvw_version: "2.0.0"
 We present a validation framework comparing theoretical UQFF $F_{U,Bi,i}$ spectral
 predictions against ALMA Cycle 12 molecular line profiles. The framework generates
 synthetic LTE reference profiles for 10 molecular transitions (CO, HCN, CS, SiO,
-H₂CO, N₂H⁺, DCN, SO), performs amplitude-scaled χ² residual analysis, and
+H2CO, N2H+, DCN, SO), performs amplitude-scaled $\chi$2 residual analysis, and
 aggregates per-line fit quality across multi-system targets.
 
 ## §1 Theoretical F_{U,Bi,i} Line Profile
 
-At frequency ν near a molecular transition ν₀:
+At frequency $\nu$ near a molecular transition $\nu$0:
 
 $$
 F_{U,Bi}(\nu) = \sum_{i=1}^{26} c_i \cdot \exp\left(-\frac{(\nu - \nu_0)^2}{2\sigma_{\text{th}}^2}\right) \cdot \beta_i \cdot \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}
 $$
 
-where $c_i = [\text{SSq}]^i / i^{26} \cdot R_n(i, 3)$ are the S₂₆⁽³⁾ layer coefficients
+where $c_i = [\text{SSq}]^i / i^{26} \cdot R_n(i, 3)$ are the S26(3) layer coefficients
 and $\sigma_{\text{th}}$ is the combined thermal+turbulent linewidth.
 
 ## §2 ALMA Molecular Line Database
 
-| Key | Molecule | Transition | ν (GHz) | E_upper (K) |
+| Key | Molecule | Transition | $\nu$ (GHz) | E_upper (K) |
 |-----|----------|-----------|---------|-------------|
 | CO_2_1 | CO | J=2-1 | 230.538 | 16.6 |
-| ¹³CO_2_1 | ¹³CO | J=2-1 | 220.399 | 15.9 |
+| 13CO_2_1 | 13CO | J=2-1 | 220.399 | 15.9 |
 | HCN_3_2 | HCN | J=3-2 | 265.886 | 25.5 |
 | CS_5_4 | CS | J=5-4 | 244.936 | 35.3 |
 | SiO_5_4 | SiO | J=5-4 | 217.105 | 31.3 |
-| H₂CO_303 | H₂CO | 3₀₃-2₀₂ | 218.222 | 21.0 |
-| H₂CO_322 | H₂CO | 3₂₂-2₂₁ | 218.476 | 68.1 |
-| N₂H⁺_3_2 | N₂H⁺ | J=3-2 | 279.512 | 26.8 |
+| H2CO_303 | H2CO | 303-202 | 218.222 | 21.0 |
+| H2CO_322 | H2CO | 322-221 | 218.476 | 68.1 |
+| N2H+_3_2 | N2H+ | J=3-2 | 279.512 | 26.8 |
 | DCN_3_2 | DCN | J=3-2 | 217.239 | 20.9 |
-| SO_6_5 | SO | 6₅-5₄ | 219.949 | 35.0 |
+| SO_6_5 | SO | 65-54 | 219.949 | 35.0 |
 
 ## §3 Synthetic Reference Profiles
 
@@ -81,14 +81,14 @@ where $s$ is the optimal amplitude scale factor matching theoretical to observed
 
 3-line validation (Orion M42, M = 2000 M_sun, d = 1.3e16 m):
 
-| Line | χ²_red | Quality | F_{U,Bi} peak |
+| Line | $\chi$2_red | Quality | F_{U,Bi} peak |
 |------|--------|---------|---------------|
-| CO(2-1) | 3.46 | marginal | 8.83×10⁻¹¹ |
+| CO(2-1) | 3.46 | marginal | 8.83$\times$10-11 |
 | HCN(3-2) | varies | — | — |
 | CS(5-4) | varies | — | — |
 | **Aggregate** | **0.109** | **excellent** | — |
 
-The aggregate χ²_red across all 10 lines is excellent, indicating that the
+The aggregate $\chi$2_red across all 10 lines is excellent, indicating that the
 Gaussian shape assumption matches well despite individual line variations from
 noise and optical depth effects.
 
@@ -96,23 +96,23 @@ noise and optical depth effects.
 
 | Target | M (M_sun) | Distance | Application |
 |--------|---------|----------|-------------|
-| Orion M42 | 2,000 | 1.3×10¹⁶ m | Star formation |
-| Lagoon M8 | 5,000 | 4.0×10¹⁹ m | H II region |
-| Eagle M16 | 8,000 | 5.5×10¹⁹ m | Pillars of Creation |
-| Carina | 25,000 | 2.3×10¹⁹ m | Massive star nursery |
-| Trifid M20 | 3,000 | 1.6×10¹⁹ m | Triple nebula |
-| Omega M17 | 7,000 | 5.0×10¹⁹ m | Swan nebula |
-| Rosette NGC 2237 | 10,000 | 4.9×10¹⁹ m | Circular nebula |
-| Flame NGC 2024 | 1,500 | 1.2×10¹⁹ m | Orion complex |
+| Orion M42 | 2,000 | 1.3$\times$1016 m | Star formation |
+| Lagoon M8 | 5,000 | 4.0$\times$1019 m | H II region |
+| Eagle M16 | 8,000 | 5.5$\times$1019 m | Pillars of Creation |
+| Carina | 25,000 | 2.3$\times$1019 m | Massive star nursery |
+| Trifid M20 | 3,000 | 1.6$\times$1019 m | Triple nebula |
+| Omega M17 | 7,000 | 5.0$\times$1019 m | Swan nebula |
+| Rosette NGC 2237 | 10,000 | 4.9$\times$1019 m | Circular nebula |
+| Flame NGC 2024 | 1,500 | 1.2$\times$1019 m | Orion complex |
 
 ## §7 SM Gate Compliance
 
 - **G1:** F_{U,Bi,i} derived from 26-layer buoyancy formalism
-- **G2:** χ² statistic with proper DOF accounting
+- **G2:** $\chi$2 statistic with proper DOF accounting
 - **G3:** Amplitude scaling prevents systematic offset bias
 - **G4:** LTE reference profiles physically motivated
 - **G5:** Direct comparison pathway to real ALMA Cycle 12 data
-- **G6:** Deterministic synthetic noise (golden angle), reproducible χ²
+- **G6:** Deterministic synthetic noise (golden angle), reproducible $\chi$2
 
 ## References
 
@@ -130,7 +130,7 @@ noise and optical depth effects.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 

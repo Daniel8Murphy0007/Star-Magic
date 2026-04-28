@@ -25,11 +25,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper derives the first UQFF pulsar spin-to-vacuum coupling mechanism, based on the
 observation that the Crab pulsar spin frequency of 30.2 Hz, integrated over a standard 60-second
 timing window, produces a resonance frequency f_osc = 1812 Hz that locks fractionally to the
-DPM vacuum hierarchy. The resulting angular frequency ω_pulsar = 11,385 rad/s defines a new
+DPM vacuum hierarchy. The resulting angular frequency $\omega$_pulsar = 11,385 rad/s defines a new
 oscillatory modulation term in the UQFF Crab module, added to the inherited cosmic-age standing/
 traveling oscillatory structure of PAPER_288. The DPM lock ratio pulse_lock = f_osc/f_DPM =
-1.812×10-9
-and the DPM lock amplitude A_pulsar = 1.812×10-19 m are computed.
+1.812$\times$10-9
+and the DPM lock amplitude A_pulsar = 1.812$\times$10-19 m are computed.
 
 ---
 
@@ -40,9 +40,9 @@ The Crab Pulsar (PSR J0534+2200) is one of the most precisely timed astrophysica
 | Parameter | Value | Notes |
 |-----------|-------|-------|
 | Spin frequency | f_pulsar = 30.2 Hz | Period P = 33.1 ms |
-| Period derivative | Ṗ = 4.2×10-13 s/s | Spin-down rate |
-| Characteristic age | τ = P/(2Ṗ) = 1250 yr | Spin-down age |
-| Spin-down luminosity | Ė = 4π2IṖ/P3 ≈ 5×1031 W | Powers the PWN |
+| Period derivative | Ṗ = 4.2$\times$10-13 s/s | Spin-down rate |
+| Characteristic age | $\tau$ = P/(2Ṗ) = 1250 yr | Spin-down age |
+| Spin-down luminosity | Ė = 4$\pi$2IṖ/P3 $\approx$ 5$\times$1031 W | Powers the PWN |
 | Standard timing window | 60 seconds | Dispersion-measure epoch |
 
 ---
@@ -76,7 +76,7 @@ The fractional coupling between the 60s resonance window frequency and the DPM m
 $$\text{pulse\_lock} = \frac{f_{\text{osc}}}{f_{\text{DPM}}} = \frac{1812}{10^{12}} = 1.812\times10^{-9}$$
 
 This dimensionless ratio represents the fractional vacuum-lock — the DPM mode oscillates
-1012/1812 = 5.517×108 times faster than the pulsar resonance window. In spectral terms:
+1012/1812 = 5.517$\times$108 times faster than the pulsar resonance window. In spectral terms:
 
 $$\log_2!\left(\frac{f_{\text{DPM}}}{f_{\text{osc}}}\right) = \log_2(5.517\times10^8) = 29.0\ \text{octaves}$$
 
@@ -104,7 +104,7 @@ pulse_lock ratio times the base oscillation amplitude:
 
 $$A_{\text{pulsar}} = \frac{f_{\text{osc}}}{f_{\text{DPM}}} \times A_{\text{amp}} = 1.812\times10^{-9} \times 10^{-10}\ \text{m} = 1.812\times10^{-19}\ \text{m}$$
 
-This is a sub-nuclear length scale (nuclear radius ~10-15 m → A_pulsar = 10,000× smaller than
+This is a sub-nuclear length scale (nuclear radius ~10-15 m $\to$ A_pulsar = 10,000$\times$ smaller than
 nuclear).
 It represents the fractional UQFF vacuum displacement modulated by the pulsar timing window.
 
@@ -120,29 +120,29 @@ $$a_{\text{osc}}(t) = \underbrace{2A\cos(kx)\cos(\omega_{\text{osc}}t)}_{\text{s
 \omega_{\text{osc}}t)}\right]}_{\text{cosmic-age traveling (PAPER\_288)}}
 + \underbrace{A_{\text{pulsar}}\cos(\omega_{\text{pulsar}} t)}_{\text{pulsar DPM lock (PAPER\_292)}}$$
 
-With A = 10-10 m, ω_osc = 1015 rad/s, T_cosmic = 13.8 Gyr, ω_pulsar = 11,385 rad/s:
+With A = 10-10 m, $\omega$_osc = 1015 rad/s, T_cosmic = 13.8 Gyr, $\omega$_pulsar = 11,385 rad/s:
 
 | Component | Amplitude | Angular Frequency |
 |-----------|-----------|-------------------|
-| Standing (PAPER_288) | 2A = 2×10-10 m | ω_osc = 1015 rad/s |
-| Traveling (PAPER_288) | (2π/13.8)×A = 4.55×10-11 m | ω_osc = 1015 rad/s |
-| Pulsar lock (PAPER_292) | A_pulsar = 1.812×10-19 m | ω_pulsar = 11,385 rad/s |
+| Standing (PAPER_288) | 2A = 2$\times$10-10 m | $\omega$_osc = 1015 rad/s |
+| Traveling (PAPER_288) | (2$\pi$/13.8)$\times$A = 4.55$\times$10-11 m | $\omega$_osc = 1015 rad/s |
+| Pulsar lock (PAPER_292) | A_pulsar = 1.812$\times$10-19 m | $\omega$_pulsar = 11,385 rad/s |
 
-The pulsar contribution amplitude is ~109× smaller than the standing wave — but it operates at
+The pulsar contribution amplitude is ~109$\times$ smaller than the standing wave — but it operates at
 **nine orders of magnitude lower angular frequency**, making it the dominant **long-timescale**
 modulation of the Crab UQFF oscillatory structure.
 
 ---
 
-## 7. The "60× Octave" and Pulsar Rotation
+## 7. The "60$\times$ Octave" and Pulsar Rotation
 
 The factor 60 is not arbitrary in UQFF:
 
-- 60 = 22 × 3 × 5 — the smallest integer encompassing all three fundamental resonance numbers
+- 60 = 22 $\times$ 3 $\times$ 5 — the smallest integer encompassing all three fundamental resonance numbers
   (2: binary systems/standing-wave, 3: 3-body gravity, 5: five-mode oscillatory cascade)
-- log₂(60) = 5.907 octaves — f_osc is ~5.9 octaves above f_pulsar, encoding the transition
+- log2(60) = 5.907 octaves — f_osc is ~5.9 octaves above f_pulsar, encoding the transition
   from pulsar-spin to timing-epoch scale
-- 1812 Hz = f_osc: interestingly, 1812 × 1000 = 1.812 GHz ≈ 21-cm HI line / 1.42 GHz × 1.27
+- 1812 Hz = f_osc: interestingly, 1812 $\times$ 1000 = 1.812 GHz $\approx$ 21-cm HI line / 1.42 GHz $\times$ 1.27
   (connecting pulsar resonance window to galactic spiral arm HI emission — see PAPER_274)
 
 ---
@@ -152,7 +152,7 @@ The factor 60 is not arbitrary in UQFF:
 **UQFF PAPER_292 Prediction:** The DPM vacuum modulation at f_osc = 1812 Hz should produce
 a submillimeter polarization fluctuation in the Crab's PWN with period T_pulsar = 1/f_osc = 0.552
 ms.
-This is 16.7 times the pulse period (33.1 ms / 0.552 ms × ... wait, corrected: T_osc = 1/1812 =
+This is 16.7 times the pulse period (33.1 ms / 0.552 ms $\times$ ... wait, corrected: T_osc = 1/1812 =
 0.552 ms
 which is shorter than the 33.1 ms pulse period). Future VLBI timing observations at sub-millisecond
 resolution may detect this modulation as a periodic oscillation in the DM-corrected pulse profile.
@@ -162,8 +162,8 @@ resolution may detect this modulation as a periodic oscillation in the DM-correc
 ## 9. Comparison with Prior UQFF Pulsar Treatment
 
 Prior UQFF modules referenced the Crab as an external reference object:
-- **PAPER_256 (Session 72d):** CrabNebulaM1FUBiCalculator — used Crab as compact r=104 m, B₀=10-4 T
-  → DPM geometry-dependency discovery (compact vs diffuse)
+- **PAPER_256 (Session 72d):** CrabNebulaM1FUBiCalculator — used Crab as compact r=104 m, B0=10-4 T
+  $\to$ DPM geometry-dependency discovery (compact vs diffuse)
 - **PAPER_292 (This paper):** First UQFF treatment of the Crab **pulsar spin frequency** as a
   resonance driver — distinct from the nebular radius-based computation of PAPER_256
 
@@ -191,7 +191,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -210,7 +210,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -285,7 +285,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.190 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -296,13 +296,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

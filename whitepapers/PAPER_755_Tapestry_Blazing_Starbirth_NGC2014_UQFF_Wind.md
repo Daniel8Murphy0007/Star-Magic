@@ -26,17 +26,17 @@ The Tapestry of Blazing Starbirth (NGC 2014 and NGC 2020, LMC) is one of the mos
 star-formation regions within 50 Mpc. This paper applies the UQFF electromagnetic-dominated gravity
 framework to a 240 MM_sun O/B stellar nursery at r = 10 ly from the cluster centre. The model
 incorporates stellar-wind ram pressure, mass-loading from a star-formation rate M_dot(t), and the
-Aether electromagnetic correction (× 11 × 10-12). The EM term dominates, yielding g_Starbirth ≈
-1.053×10-4 m/s2 at t = 2.5 Myr.
+Aether electromagnetic correction ($\times$ 11 $\times$ 10-12). The EM term dominates, yielding g_Starbirth $\approx$
+1.053$\times$10-4 m/s2 at t = 2.5 Myr.
 
 ---
 
 ## 1. Introduction
 
 The LMC star-forming complexes NGC 2014/2020 contain clusters of O stars with initial masses up to
-240 MM_sun. These stars drive powerful winds (v_wind ≈ 2×106 m/s) into an ISM of density ρ ≈ 10-21
+240 MM_sun. These stars drive powerful winds (v_wind $\approx$ 2$\times$106 m/s) into an ISM of density $\rho$ $\approx$ 10-21
 kg/m3. Standard MHD models cannot reproduce the coherent acceleration seen in nearby gas pillars.
-UQFF adds the Aether electromagnetic coupling (UA × SCm correction) that amplifies the effective
+UQFF adds the Aether electromagnetic coupling (UA $\times$ SCm correction) that amplifies the effective
 acceleration by a factor of 10–12, producing the observed ~10-4 m/s2 gravity gradient.
 
 ---
@@ -45,22 +45,22 @@ acceleration by a factor of 10–12, producing the observed ~10-4 m/s2 gravity g
 
 $$
 \begin{aligned}
-  & g_Starbirth(r, t) = [G·M(t) / r2] × (1 + H(t,z)) × (1 − B/B_crit) \\
-  & + q·(v_wind × B) × A_aeth × A_scale \\
-  & + ρ_ISM·v_wind2 / r   [ram-pressure term] \\
-  & M(t) = M_initial × (1 + M_SF(t)) \\
-  & M_SF(t) = Σ \text{M\_dot\_k} × exp(−t / τ_SF)   [star-formation mass loading]
+  & g_Starbirth(r, t) = [G\cdotM(t) / r2] \times (1 + H(t,z)) \times (1 - B/B_crit) \\
+  & + q\cdot(v_wind \times B) \times A_aeth \times A_scale \\
+  & + \rho_ISM\cdotv_wind2 / r   [ram-pressure term] \\
+  & M(t) = M_initial \times (1 + M_SF(t)) \\
+  & M_SF(t) = \Sigma \text{M\_dot\_k} \times exp(-t / \tau_SF)   [star-formation mass loading]
 \end{aligned}
 $$
 
 ### Electromagnetic Aether Term
 $$
-g_EM = q × (v_wind × B) × 11 × 10-12
+g_EM = q \times (v_wind \times B) \times 11 \times 10-12
 $$
 
-With q = 1 (C/kg normalised), v_wind = 2×106 m/s, B = 10-6 T:
+With q = 1 (C/kg normalised), v_wind = 2$\times$106 m/s, B = 10-6 T:
 $$
-g_EM = 1 × (2×106 × 10-6) × 11 × 10-12 = 2×100 × 11 × 10-12 = 2.2×10-11 → scaled to 1.053×10-4 m/s2
+g_EM = 1 \times (2\times106 \times 10-6) \times 11 \times 10-12 = 2\times100 \times 11 \times 10-12 = 2.2\times10-11 \to scaled to 1.053\times10-4 m/s2
 $$
 (Full Aether factor A_aeth encodes the vacuum coupling enhancement.)
 
@@ -70,13 +70,13 @@ $$
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Initial mass | M_initial | 4.774×1032 | kg (240 MM_sun) |
-| Cluster radius | r | 9.461×1016 | m (10 ly) |
-| Wind velocity | v_wind | 2.00×106 | m/s |
-| ISM density | ρ_ISM | 1.00×10-21 | kg/m3 |
+| Initial mass | M_initial | 4.774$\times$1032 | kg (240 MM_sun) |
+| Cluster radius | r | 9.461$\times$1016 | m (10 ly) |
+| Wind velocity | v_wind | 2.00$\times$106 | m/s |
+| ISM density | $\rho$_ISM | 1.00$\times$10-21 | kg/m3 |
 | Mean accretion rate | `M_dot_0` | 41.67 | MM_sun/yr |
-| SF timescale | τ_SF | 1.578×1014 | s (5 Myr) |
-| Magnetic field | B | 1.00×10-6 | T |
+| SF timescale | $\tau$_SF | 1.578$\times$1014 | s (5 Myr) |
+| Magnetic field | B | 1.00$\times$10-6 | T |
 | Aether factor | A_aeth | 11 | — |
 | Scale factor | A_scale | 10-12 | — |
 | Evaluation epoch | t | 2.5 Myr | — |
@@ -87,14 +87,14 @@ $$
 
 $$
 \begin{aligned}
-  & t = 2.5×106 × 3.156×107 = 7.89×1013 s \\
-  & M_SF factor (1 + M_SF) ≈ 26.27  at t = 2.5 Myr \\
-  & M(t) = 4.774×1032 × 26.27 = 1.254×1034 kg \\
-  & g_grav = G × 1.254×1034 / (9.461×1016)2 \\
-  & = 6.674×10-11 × 1.254×1034 / 8.951×1033 \\
-  & ≈ 9.35×10-11 m/s2   [gravitational — small] \\
-  & g_EM (dominant) ≈ 1.053×10-4 m/s2 \\
-  & g_Starbirth(t=2.5 Myr) ≈ 1.053×10-4 m/s2
+  & t = 2.5\times106 \times 3.156\times107 = 7.89\times1013 s \\
+  & M_SF factor (1 + M_SF) \approx 26.27  at t = 2.5 Myr \\
+  & M(t) = 4.774\times1032 \times 26.27 = 1.254\times1034 kg \\
+  & g_grav = G \times 1.254\times1034 / (9.461\times1016)2 \\
+  & = 6.674\times10-11 \times 1.254\times1034 / 8.951\times1033 \\
+  & \approx 9.35\times10-11 m/s2   [gravitational — small] \\
+  & g_EM (dominant) \approx 1.053\times10-4 m/s2 \\
+  & g_Starbirth(t=2.5 Myr) \approx 1.053\times10-4 m/s2
 \end{aligned}
 $$
 
@@ -103,7 +103,7 @@ $$
 ## 5. Conclusions
 
 In the NGC 2014/2020 Tapestry, electromagnetic Aether coupling dominates over gravitational
-acceleration by 5 orders of magnitude. The EM term g_EM ≈ 1.053×10-4 m/s2 reproduces the pillar
+acceleration by 5 orders of magnitude. The EM term g_EM $\approx$ 1.053$\times$10-4 m/s2 reproduces the pillar
 deceleration rates observed in HST and JWST imagery. PAPER_755, CP4 class #339. v5.39.
 
 ---
@@ -114,7 +114,7 @@ deceleration rates observed in HST and JWST imagery. PAPER_755, CP4 class #339. 
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -133,7 +133,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -241,7 +241,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.084 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -252,13 +252,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

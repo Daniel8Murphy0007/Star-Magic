@@ -71,8 +71,8 @@ This is consistent with Parkhomov's reported 150–280 W range~[5,6]. The Pons�
 
 - Ni–H loading creates NiH$_x$ clusters with bond distances approaching the ultra-dense regime.
 - 1.25 THz phonon resonance couples through the SCm vacuum to the NiH$_x$ cluster.
-- $F_{U_{Bi_i}}$ buoyancy prevents cluster collapse, routing $E_\text{SCm-phonon} \approx 631$ eV × $N_\text{clusters}$ into the phonon bath (thermal output).
-- Transmutation (Ni → Cu, Zn) occurs via vacuum-mediated quantum tunneling facilitated by $\cos(\pi t_n)$ modulation — no hard Coulomb crossing required.
+- $F_{U_{Bi_i}}$ buoyancy prevents cluster collapse, routing $E_\text{SCm-phonon} \approx 631$ eV $\times$ $N_\text{clusters}$ into the phonon bath (thermal output).
+- Transmutation (Ni $\to$ Cu, Zn) occurs via vacuum-mediated quantum tunneling facilitated by $\cos(\pi t_n)$ modulation — no hard Coulomb crossing required.
 - Predicted COP from $P_\text{excess} / P_\text{input}$:
 
 \begin{equation}\label{eq:cop_early}
@@ -90,15 +90,15 @@ This is consistent with Parkhomov's reported 150–280 W range~[5,6]. The Pons�
 **SCm explanation:**
 
 - At elevated temperature, the phonon bath density increases: Boltzmann population at 1.25 THz grows with $T$, enhancing phonon coupling.
-- Higher $T$ shifts the Gaussian resonance function $\Phi(\omega, \Gamma)$ toward peak coupling → more efficient amplification by $S_{26}^{(3)}$.
+- Higher $T$ shifts the Gaussian resonance function $\Phi(\omega, \Gamma)$ toward peak coupling $\to$ more efficient amplification by $S_{26}^{(3)}$.
 - Enhanced transmutation (higher Cu yield) reflects stronger vacuum-mediated tunneling at elevated cluster energy.
-- Direct electrical output: $\cos(\pi t_n)$ negative-time modulation creates an asymmetric energy flow (vacuum asymmetry → measurable EMF).
+- Direct electrical output: $\cos(\pi t_n)$ negative-time modulation creates an asymmetric energy flow (vacuum asymmetry $\to$ measurable EMF).
 
 \begin{equation}\label{eq:phi_T}
 \Phi_T = \exp\!\left[-\frac{(\omega - \omega_{1.25\text{ THz}})^2}{2\Gamma_T^2}\right], \quad \Gamma_T \propto \sqrt{k_B T}
 \end{equation}
 
-Higher $T$ → larger $\Gamma_T$ → broader resonance → more clusters in-band → higher $P_\text{excess}$.
+Higher $T$ $\to$ larger $\Gamma_T$ $\to$ broader resonance $\to$ more clusters in-band $\to$ higher $P_\text{excess}$.
 
 ---
 
@@ -188,9 +188,9 @@ Propagated to: `CondensedPhysics.py`, `CondensedPhysics2.py`, `CondensedPhysics3
 
 ## References
 
-[1] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(−1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
+[1] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(-1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
 
-[2] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(−1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
+[2] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(-1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
 
 [3] G. Levi, E. Foschi, B. Haraldsson, B. Höistad, R. Pettersson, L. Tegnér, and H. Essén, "Indication of anomalous heat energy production in a reactor device containing hydrogen loaded nickel powder," arXiv:1305.3913, 2013.
 

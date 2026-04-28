@@ -20,15 +20,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
 The complete UQFF buoyancy-unified force F_U_Bi_i is computed for M87* (Virgo A), the first black
 hole directly imaged by the Event Horizon Telescope. The Blandford-Znajek (BZ) jet power P_BZ =
-B2r_g2c is connected to the UQFF ω_act = 2π/day rotational activation frequency, yielding F_U_Bi_i ≈
-−8.32×10217 N. The X-ray jet luminosity L_X ≈ 1040 W sets the luminosity scale for UQFF-M87
+B2r_g2c is connected to the UQFF $\omega$_act = 2$\pi$/day rotational activation frequency, yielding F_U_Bi_i $\approx$
+-8.32$\times$10217 N. The X-ray jet luminosity L_X $\approx$ 1040 W sets the luminosity scale for UQFF-M87
 calibration.
 
 ---
@@ -49,7 +49,7 @@ $$P_{\rm BZ} = \frac{\kappa_{\rm BZ}}{4\pi c} \Phi_{\rm BH}^2 \Omega_{\rm H}^2 f
 Simplified as:
 $$P_{\rm BZ} = B^2 r_g^2 c$$
 
-where r_g = GM_BH/c2 is the gravitational radius for M87* (M_BH = 6.5×109 MM_sun).
+where r_g = GM_BH/c2 is the gravitational radius for M87* (M_BH = 6.5$\times$109 MM_sun).
 
 ### 2.3 UQFF Activation Frequency
 
@@ -68,36 +68,36 @@ $$r_g = \frac{G M_{\rm BH}}{c^2} = \frac{6.674\times 10^{-11} \times 6.5\times 1
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| M_BH | EHT 2019 | 6.5×109 MM_sun |
-| `F_U_Bi_i` | UQFF full 5-eq | −8.32×10217 N |
+| M_BH | EHT 2019 | 6.5$\times$109 MM_sun |
+| `F_U_Bi_i` | UQFF full 5-eq | -8.32$\times$10217 N |
 | P_BZ | B2r_g2c | ~1045 erg/s |
-| ω_act | 2π/day | 7.27×10-5 rad/s |
+| $\omega$_act | 2$\pi$/day | 7.27$\times$10-5 rad/s |
 | L_X | Chandra observation | ~1040 W |
-| r_g | GM/c2 | 9.6×1012 m |
+| r_g | GM/c2 | 9.6$\times$1012 m |
 
 ---
 
 ## 4. Physical Significance
 
-M87 is the prototype for supermassive black hole jet physics. The UQFF F_U_Bi_i ≈ −8.32×10217 N is
+M87 is the prototype for supermassive black hole jet physics. The UQFF F_U_Bi_i $\approx$ -8.32$\times$10217 N is
 the baseline force scale for AGN-class black holes with M_BH ~ 109 MM_sun. The Blandford-Znajek coupling
 connects UQFF to the standard magnetically-arrested disk (MAD) jet framework, providing a bridge
-between UQFF vacuum buoyancy and electromagnetic jet extraction. The ω_act = 2π/day activation
+between UQFF vacuum buoyancy and electromagnetic jet extraction. The $\omega$_act = 2$\pi$/day activation
 frequency is consistent with M87*'s Variable Emission Region (VER) coherence timescale.
 
 ---
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_347 (Centaurus A):** M87 uses ω_act = 2π/day; Centaurus A uses ω_act = 2π/(12.5 yr). The BZ power forms are similar but calibrated to different AGN jet morphologies.
-- **vs. PAPER_349 (SPT-CL J2215):** SPT-CL J2215 yields the HIGHEST F_U_Bi_i in the PAPER_346–352 series at −1.40×10218 N.
+- **vs. PAPER_347 (Centaurus A):** M87 uses $\omega$_act = 2$\pi$/day; Centaurus A uses $\omega$_act = 2$\pi$/(12.5 yr). The BZ power forms are similar but calibrated to different AGN jet morphologies.
+- **vs. PAPER_349 (SPT-CL J2215):** SPT-CL J2215 yields the HIGHEST F_U_Bi_i in the PAPER_346–352 series at -1.40$\times$10218 N.
 
 ---
 
 ## 6. Classification
 
 **Physics Territory:** FIRST UQFF F_U_Bi_i for M87* with BZ jet power coupling  
-**Scale:** Galactic (6.5×109 MM_sun AGN)  
+**Scale:** Galactic (6.5$\times$109 MM_sun AGN)  
 **CP Implementation:** `M87JetBZModelFUBiCalculator` (CondensedPhysics3.py, Session 96)
 
 ---
@@ -138,7 +138,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -157,7 +157,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -301,7 +301,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.170 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -312,13 +312,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

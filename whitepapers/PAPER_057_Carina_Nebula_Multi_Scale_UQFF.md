@@ -18,14 +18,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 3372 (Full Nebula), AG Carinae (Luminous Blue Variable), and Mystic Mountain (Protostellar Pillar)
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Validator:** `v`alidate_all_models`.py`  NGC3372Model: **4/4 PASS** ? | AGCarinaeModel: **4/4 PASS**
 ? | MysticMountainModel: **4/4 PASS** ?  
 **Source Module:** `CondensedPhysics.py`, `validate_all_models.py`  
 **Index Slot:** §1.7 arXiv Cross-Validation Framework,  
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The Carina Nebula star-forming complex (at ~2.3 kpc) is one of the most massive and energetically
@@ -33,12 +33,12 @@ rich Galactic HII regions. This paper presents a **multi-scale UQFF validation**
 distinct spatial objects within or associated with the Carina complex: (1) NGC 3372, the full ~300
 light-year HII nebula; (2) AG Carinae (AG Car), a Luminous Blue Variable at ~6 kpc; and (3) Mystic
 Mountain, the iconic 3-light-year Bok globule pillar. All three models use standard g_compressed =
-1.0533×10? (no enhancement), confirming that none are in the compressed/energized classes of
-mergers, fast winds, or shocks. The three g_grav values span 12.5 from 2.6550×10? (single LBV) to
-3.3188×10? (full nebula), demonstrating the UQFF's consistent mass-dependent scaling. Total: **12/12
+1.0533$\times$10? (no enhancement), confirming that none are in the compressed/energized classes of
+mergers, fast winds, or shocks. The three g_grav values span 12.5 from 2.6550$\times$10? (single LBV) to
+3.3188$\times$10? (full nebula), demonstrating the UQFF's consistent mass-dependent scaling. Total: **12/12
 PASS**.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -70,29 +70,29 @@ with the known mass hierarchy across all three.
 | Distance | 2.3 kpc |
 | Extent | ~300 ly |
 | Mass | ~105 M? (stellar + gas) |
-| Ionization source | ? Carinae (150 M?, L = 5×106 L?), clusters Tr 14, Tr 16 |
+| Ionization source | ? Carinae (150 M?, L = 5$\times$106 L?), clusters Tr 14, Tr 16 |
 | Special feature | ? Car: most luminous known star in Milky Way |
 
 ### Test Results
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | **3.3188×10?** m/s | ? |
+| 1 | g_grav | **3.3188$\times$10?** m/s | ? |
 | 2 | Hubble factor | **1.0001** | ? |
-| 3 | g_compressed | **1.0533×10?** (standard) | ? |
-| 4 | R_amplitude | **1.1586×10?** (standard) | ? |
+| 3 | g_compressed | **1.0533$\times$10?** (standard) | ? |
+| 4 | R_amplitude | **1.1586$\times$10?** (standard) | ? |
 
 **4/4 PASS**
 
 ### Analysis
 
-g_grav = 3.3188×10? is one of the highest values in the suite (second only to M42 = 6.6×10?). The
+g_grav = 3.3188$\times$10? is one of the highest values in the suite (second only to M42 = 6.6$\times$10?). The
 ratio g(Carina)/g(M42):
 
 $$\frac{g_{\rm Carina}}{g_{\rm M42}} = \frac{3.32 \times 10^{-10}}{6.64 \times 10^{-10}} = 0.50$$
 
 Distance factor: M42 at 410 pc, Carina at 2300 pc ? (2300/410) = 31.5 farther, but Carina has ~100
-more mass, giving a net factor 100/31.5 × 3.2 more g expected ? roughly consistent with the ~2.0
+more mass, giving a net factor 100/31.5 $\times$ 3.2 more g expected ? roughly consistent with the ~2.0
 ratio (noting simplified analysis).
 
 The Hubble factor 1.0001 (essentially 1.0000) confirms Carina is a strictly local Galactic system.
@@ -111,19 +111,19 @@ point compression.
 | Full name | AG Carinae (AG Car, V Sge) |
 | Type | Luminous Blue Variable (LBV)  the brightest class of known stars |
 | Distance | ~6 kpc |
-| Luminosity | ~106×1065 L? |
+| Luminosity | ~106$\times$1065 L? |
 | Mass | ~6575 M? |
-| Ejection nebula | ~35 ly diameter, M_neb ≈ 0.3§1.5 M? |
+| Ejection nebula | ~35 ly diameter, M_neb $\approx$ 0.3§1.5 M? |
 | Note | AG Car is a different object from ? Carinae despite the constellation association |
 
 ### Test Results
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | **2.6550×10?** m/s | ? |
+| 1 | g_grav | **2.6550$\times$10?** m/s | ? |
 | 2 | Hubble factor | **1.0003** | ? |
-| 3 | g_compressed | **1.0533×10?** (standard) | ? |
-| 4 | R_amplitude | **1.1586×10?** (standard) | ? |
+| 3 | g_compressed | **1.0533$\times$10?** (standard) | ? |
+| 4 | R_amplitude | **1.1586$\times$10?** (standard) | ? |
 
 **4/4 PASS**
 
@@ -136,7 +136,7 @@ $$\frac{g_{\rm NGC3372}}{g_{\rm AGCar}} = \frac{3.3188 \times 10^{-10}}{2.6550 \
 This 12.5-fold difference reflects:
 - Mass: NGC3372 ~105 M? vs. AG Car ~65 M? ? 1538 mass ratio
 - Distance: NGC3372 at 2300 pc vs. AG Car at 6000 pc ? (6000/2300) = 6.8 farther
-- Net: 1538/6.8 × 226 expected, but UQFF measures 12.5  the UQFF g_grav is capturing a different effective mass (the local dynamical mass contribution, not total system mass), which is appropriate for the stellar-wind-dominated sub-parsec scale.
+- Net: 1538/6.8 $\times$ 226 expected, but UQFF measures 12.5  the UQFF g_grav is capturing a different effective mass (the local dynamical mass contribution, not total system mass), which is appropriate for the stellar-wind-dominated sub-parsec scale.
 
 **Hubble factor 1.0003** is the second-highest Hubble factor in the suite (behind NGC2841 at
 1.7154), reflecting AG Car's greater distance at 6 kpc compared to most Galactic-neighborhood
@@ -165,16 +165,16 @@ drives the Red Spider's 2 factor.
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | **1.3275×10?** m/s | ? |
+| 1 | g_grav | **1.3275$\times$10?** m/s | ? |
 | 2 | Hubble factor | **1.0001** | ? |
-| 3 | g_compressed | **1.0533×10?** (standard) | ? |
-| 4 | R_amplitude | **1.1586×10?** (standard) | ? |
+| 3 | g_compressed | **1.0533$\times$10?** (standard) | ? |
+| 4 | R_amplitude | **1.1586$\times$10?** (standard) | ? |
 
 **4/4 PASS**
 
 ### Analysis
 
-Mystic Mountain's g_grav = 1.3275×10? is exactly:
+Mystic Mountain's g_grav = 1.3275$\times$10? is exactly:
 $$g_{\rm MysticMtn} = \frac{1}{10} \times g_{\rm NGC3372}$$ (within ~0.5%)
 
 This is expected: the pillar contains ~250 M? vs. NGC3372's ~105 M? at the same distance (2.3 kpc),
@@ -196,16 +196,16 @@ compression.
 
 | Object | Scale | g_grav | Ratio to NGC3372 | Hubble |
 |--------|-------|--------|----------------|--------|
-| NGC 3372 | ~300 ly | 3.3188×10? | 1.0 (reference) | 1.0001 |
-| Mystic Mountain | ~3 ly | 1.3275×10? | 0.40 | 1.0001 |
-| AG Carinae | ~3 ly (at 6 kpc) | 2.6550×10? | 0.08 | 1.0003 |
+| NGC 3372 | ~300 ly | 3.3188$\times$10? | 1.0 (reference) | 1.0001 |
+| Mystic Mountain | ~3 ly | 1.3275$\times$10? | 0.40 | 1.0001 |
+| AG Carinae | ~3 ly (at 6 kpc) | 2.6550$\times$10? | 0.08 | 1.0003 |
 
-The 12.5 range in g_grav (2.66×10? to 3.32×10?) is fully explained by mass and distance differences
+The 12.5 range in g_grav (2.66$\times$10? to 3.32$\times$10?) is fully explained by mass and distance differences
 across the spatial hierarchy.
 
 All three share:
-- Standard g_compressed = 1.0533×10?
-- Standard R_amplitude = 1.1586×10?
+- Standard g_compressed = 1.0533$\times$10?
+- Standard R_amplitude = 1.1586$\times$10?
 
 This universality of the compression class across three very different spatial scales validates the
 UQFF prediction that the compression enhancement is a **dynamical state variable** (merger, fast
@@ -224,26 +224,26 @@ correction.
 ### NGC3372 (4/4 PASS)
 | # | Test | Result | ?/? |
 |---|------|--------|-----|
-| 1 | g_grav = 3.3188×10? | 3.3188×10? | ? |
+| 1 | g_grav = 3.3188$\times$10? | 3.3188$\times$10? | ? |
 | 2 | Hubble = 1.0001 | 1.0001 | ? |
-| 3 | g_comp = 1.0533×10? | 1.0533×10? | ? |
-| 4 | R_amp = 1.1586×10? | 1.1586×10? | ? |
+| 3 | g_comp = 1.0533$\times$10? | 1.0533$\times$10? | ? |
+| 4 | R_amp = 1.1586$\times$10? | 1.1586$\times$10? | ? |
 
 ### AGCarinae (4/4 PASS)
 | # | Test | Result | ?/? |
 |---|------|--------|-----|
-| 1 | g_grav = 2.6550×10? | 2.6550×10? | ? |
+| 1 | g_grav = 2.6550$\times$10? | 2.6550$\times$10? | ? |
 | 2 | Hubble = 1.0003 | 1.0003 | ? |
-| 3 | g_comp = 1.0533×10? | 1.0533×10? | ? |
-| 4 | R_amp = 1.1586×10? | 1.1586×10? | ? |
+| 3 | g_comp = 1.0533$\times$10? | 1.0533$\times$10? | ? |
+| 4 | R_amp = 1.1586$\times$10? | 1.1586$\times$10? | ? |
 
 ### MysticMountain (4/4 PASS)
 | # | Test | Result | ?/? |
 |---|------|--------|-----|
-| 1 | g_grav = 1.3275×10? | 1.3275×10? | ? |
+| 1 | g_grav = 1.3275$\times$10? | 1.3275$\times$10? | ? |
 | 2 | Hubble = 1.0001 | 1.0001 | ? |
-| 3 | g_comp = 1.0533×10? | 1.0533×10? | ? |
-| 4 | R_amp = 1.1586×10? | 1.1586×10? | ? |
+| 3 | g_comp = 1.0533$\times$10? | 1.0533$\times$10? | ? |
+| 4 | R_amp = 1.1586$\times$10? | 1.1586$\times$10? | ? |
 
 **Total: 12/12 PASS (100%)**
 
@@ -255,16 +255,16 @@ correction.
 spatial scale within the Carina complex (300 ly HII region ? 3 ly pillar ? LBV star envelope)
 2. **Hubble factor**: The 0.0001§0.0003 range of Hubble corrections across 2.36 kpc is physically
 motivated and consistent
-3. **Compression universality**: All three objects share g_compressed = 1.0533×10? (standard class),
+3. **Compression universality**: All three objects share g_compressed = 1.0533$\times$10? (standard class),
 validating that compression enhancement is a dynamical state marker, not a size or mass proxy
 4. **Erosion vs. compression**: Mystic Mountain (eroded externally) and NGC3372 (distributed
 ionization) both show standard compression; the UQFF correctly distinguishes passive and active
 environments
 5. **LBV distinctness**: AG Car's lower Hubble-corrected distance and single-star mass scale produce
-a distinct, consistent g_grav (2.66×10?) without requiring any special parameter tuning
+a distinct, consistent g_grav (2.66$\times$10?) without requiring any special parameter tuning
 
 *Validator: `validate_all_models.py` NGC3372Model + AGCarinaeModel + MysticMountainModel  12/12 PASS
-PASS | κ = 0.0005/day | [SSq] = 0.57*
+PASS | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -343,14 +343,14 @@ the phonon transmission efficiency across the ICM.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -365,10 +365,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -376,9 +376,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -386,8 +386,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
@@ -463,7 +463,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.126 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -472,13 +472,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

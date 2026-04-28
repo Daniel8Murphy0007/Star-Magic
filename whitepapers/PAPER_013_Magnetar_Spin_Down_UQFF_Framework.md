@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 143)  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`,
 `observational_systems_config.h`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_007 (Tidal Deformability), PAPER_009 (Damping
@@ -26,13 +26,13 @@ Decomposition)
 Magnetars are neutron stars with extreme magnetic fields (B ~ 10-4-10-5 G) exhibiting anomalous
 spin-down rates. We analyze magnetar rotational evolution in the Unified Quantum Field Framework
 (UQFF), where Superconducting Manifold (SCm) coupling and vacuum damping modify energy loss
-mechanisms. For SGR 1806-20 (B = 2×10-5 G, P = 7.5 s), UQFF predicts spin-down timescale t_sd = 3
+mechanisms. For SGR 1806-20 (B = 2$\times$10-5 G, P = 7.5 s), UQFF predicts spin-down timescale t_sd = 3
 t_GR due to SCm suppression of magnetic dipole radiation. We derive modified braking indices n_UQFF
 = 1.5-2.0 (vs n_GR = 3) consistent with observed values (n_obs ~ 1-2.5), and calculate age estimates
 for 23 known magnetars. UQFF resolves the magnetar age problem and predicts enhanced survival rates
 at P > 10 s.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -80,24 +80,24 @@ suppression), n_UQFF = 1.5-2.0, t_sd(UQFF)/t_sd(GR) = 3.0e0
 
 ### 2.1 SCm Suppression
 
-At B > B_crit = 4.4 × 10 T, SCm activates:
+At B > B_crit = 4.4 $\times$ 10 T, SCm activates:
 **D_SCm(B) = 1 - exp[-(B_crit / B)]**
 
-For SGR 1806-20 (B = 2 × 10-5 G = 2 × 10 T):
-**D_SCm = 1 - exp[-(4.4×10 / 2×10)] ≈ 0.01**
+For SGR 1806-20 (B = 2 $\times$ 10-5 G = 2 $\times$ 10 T):
+**D_SCm = 1 - exp[-(4.4$\times$10 / 2$\times$10)] $\approx$ 0.01**
 
 **99% suppression of magnetic dipole radiation**
 
 ### 2.2 Modified Spin-Down
 
 UQFF energy loss:
-**E_UQFF = Dκ_SCm – E_GR**
+**E_UQFF = D$\kappa$_SCm – E_GR**
 
 For D_SCm = 0.01:
 **E_UQFF = 0.0001  E_GR** (99.99% reduction)
 
 **Spin-down rate:**
-**O?_UQFF = Dκ_SCm – O?_GR**
+**O?_UQFF = D$\kappa$_SCm – O?_GR**
 
 **?_UQFF = 0.0001  ?_GR** (4 orders of magnitude slower)
 
@@ -105,7 +105,7 @@ For D_SCm = 0.01:
 
 **t_sd = P / (2?)**
 
-**t_UQFF = t_GR / Dκ_SCm = 10,000  t_GR**
+**t_UQFF = t_GR / D$\kappa$_SCm = 10,000  t_GR**
 
 For typical magnetar (t_GR ~ 10 yr):
 **t_UQFF ~ 107 years** (resolves age problem!)
@@ -117,7 +117,7 @@ For typical magnetar (t_GR ~ 10 yr):
 ### 3.1 UQFF Prediction
 
 Braking index:
-**n = O O / O? = 2 - d(ln Dκ_SCm) / d(ln O)**
+**n = O O / O? = 2 - d(ln D$\kappa$_SCm) / d(ln O)**
 
 For the magnetar regime where D_SCm  1 and varies slowly with O:
 **n_UQFF  1.5§2.0**
@@ -140,32 +140,32 @@ Magnetar Catalog:
 
 | Magnetar | B (G) | P (s) | t_GR (yr) | D_SCm | t_UQFF (yr) | n_UQFF |
 |----------|--------|--------|-----------|-------|-------------|--------|
-| SGR 1806-20 | 2.0×10-5 | 7.60 | ~240 | 0.01 | ~2.4×106 | 1.5 |
-| SGR 1900+14 | 7.0×10-4 | 5.20 | ~900 | 0.03 | ~1.0×106 | 1.6 |
-| 1E 2259+586 | 5.9×10 | 6.98 | ~230,000 | 0.55 | ~760,000 | 1.9 |
-| 4U 0142+61 | 1.3×10-4 | 8.69 | ~68,000 | 0.18 | ~2.1×106 | 1.8 |
-| 1RXS J170849 | 4.7×10-4 | 11.0 | ~9,000 | 0.04 | ~5.6×106 | 1.6 |
-| SGR 1627-41 | 2.2×10-4 | 2.59 | ~2,300 | 0.09 | ~284,000 | 1.7 |
-| XTE J1810-197 | 3.1×10-4 | 5.54 | ~11,000 | 0.07 | ~2.2×106 | 1.7 |
-| 1E 1547.0-5408 | 3.2×10-4 | 2.07 | ~680 | 0.07 | ~139,000 | 1.7 |
-| SGR 0526-66 | 5.6×10-4 | 8.05 | ~700 | 0.03 | ~776,000 | 1.6 |
-| 1E 1048.1-5937 | 3.9×10-4 | 6.45 | ~4,500 | 0.06 | ~1.3×106 | 1.7 |
-| CXOU J010043 | 1.8×10-4 | 8.02 | ~6,800 | 0.12 | ~470,000 | 1.8 |
-| SGR 1833-0832 | 7.1×10 | 7.57 | ~33,000 | 0.43 | ~178,000 | 1.9 |
-| Swift J1822 | 1.4×10 | 8.44 | ~550,000 | 0.96 | ~597,000 | 2.0 |
-| 3XMM J1852 | 1.9×10-4 | 11.6 | ~18,000 | 0.11 | ~1.5×106 | 1.8 |
-| SGR 1935+2154 | 2.2×10-4 | 3.24 | ~3,600 | 0.09 | ~444,000 | 1.7 |
-| 1E 1841-045 | 7.1×10-4 | 11.8 | ~4,700 | 0.03 | ~5.2×106 | 1.6 |
-| SGR 0501+4516 | 1.9×10 | 5.76 | ~15,000 | 0.83 | ~21,800 | 2.0 |
-| CXOU J164710 | 8.7×10 | 10.6 | ~480,000 | 0.29 | ~5.7×106 | 1.9 |
-| 1E 1547.0 (2009) | 2.2×10-4 | 2.07 | ~1,400 | 0.09 | ~172,000 | 1.7 |
-| SGR J0755-2933 | 3.5×10-4 | 5.40 | ~4,100 | 0.06 | ~1.1×106 | 1.7 |
-| SGR 1745-2900 | 2.3×10-4 | 3.76 | ~4,200 | 0.08 | ~656,000 | 1.7 |
-| Swift J1834 | 1.4×10-4 | 2.48 | ~5,700 | 0.18 | ~176,000 | 1.8 |
-| AX J1818.8-1559 | 4.5×10 | 2.48 | ~21,000 | 0.59 | ~60,000 | 1.9 |
+| SGR 1806-20 | 2.0$\times$10-5 | 7.60 | ~240 | 0.01 | ~2.4$\times$106 | 1.5 |
+| SGR 1900+14 | 7.0$\times$10-4 | 5.20 | ~900 | 0.03 | ~1.0$\times$106 | 1.6 |
+| 1E 2259+586 | 5.9$\times$10 | 6.98 | ~230,000 | 0.55 | ~760,000 | 1.9 |
+| 4U 0142+61 | 1.3$\times$10-4 | 8.69 | ~68,000 | 0.18 | ~2.1$\times$106 | 1.8 |
+| 1RXS J170849 | 4.7$\times$10-4 | 11.0 | ~9,000 | 0.04 | ~5.6$\times$106 | 1.6 |
+| SGR 1627-41 | 2.2$\times$10-4 | 2.59 | ~2,300 | 0.09 | ~284,000 | 1.7 |
+| XTE J1810-197 | 3.1$\times$10-4 | 5.54 | ~11,000 | 0.07 | ~2.2$\times$106 | 1.7 |
+| 1E 1547.0-5408 | 3.2$\times$10-4 | 2.07 | ~680 | 0.07 | ~139,000 | 1.7 |
+| SGR 0526-66 | 5.6$\times$10-4 | 8.05 | ~700 | 0.03 | ~776,000 | 1.6 |
+| 1E 1048.1-5937 | 3.9$\times$10-4 | 6.45 | ~4,500 | 0.06 | ~1.3$\times$106 | 1.7 |
+| CXOU J010043 | 1.8$\times$10-4 | 8.02 | ~6,800 | 0.12 | ~470,000 | 1.8 |
+| SGR 1833-0832 | 7.1$\times$10 | 7.57 | ~33,000 | 0.43 | ~178,000 | 1.9 |
+| Swift J1822 | 1.4$\times$10 | 8.44 | ~550,000 | 0.96 | ~597,000 | 2.0 |
+| 3XMM J1852 | 1.9$\times$10-4 | 11.6 | ~18,000 | 0.11 | ~1.5$\times$106 | 1.8 |
+| SGR 1935+2154 | 2.2$\times$10-4 | 3.24 | ~3,600 | 0.09 | ~444,000 | 1.7 |
+| 1E 1841-045 | 7.1$\times$10-4 | 11.8 | ~4,700 | 0.03 | ~5.2$\times$106 | 1.6 |
+| SGR 0501+4516 | 1.9$\times$10 | 5.76 | ~15,000 | 0.83 | ~21,800 | 2.0 |
+| CXOU J164710 | 8.7$\times$10 | 10.6 | ~480,000 | 0.29 | ~5.7$\times$106 | 1.9 |
+| 1E 1547.0 (2009) | 2.2$\times$10-4 | 2.07 | ~1,400 | 0.09 | ~172,000 | 1.7 |
+| SGR J0755-2933 | 3.5$\times$10-4 | 5.40 | ~4,100 | 0.06 | ~1.1$\times$106 | 1.7 |
+| SGR 1745-2900 | 2.3$\times$10-4 | 3.76 | ~4,200 | 0.08 | ~656,000 | 1.7 |
+| Swift J1834 | 1.4$\times$10-4 | 2.48 | ~5,700 | 0.18 | ~176,000 | 1.8 |
+| AX J1818.8-1559 | 4.5$\times$10 | 2.48 | ~21,000 | 0.59 | ~60,000 | 1.9 |
 
 **Median t_UQFF  600,000 yr** (vs median t_GR  10,000 yr)  
-UQFF age estimates are consistent with supernova remnant associations (104×107 yr).
+UQFF age estimates are consistent with supernova remnant associations (104$\times$107 yr).
 
 ---
 
@@ -175,10 +175,10 @@ Standard GR characteristic age t_c = P/(2?) systematically underestimates magnet
 
 | Model | Typical magnetar age | SNR association range | Consistent? |
 |-------|--------------------|-----------------------|-------------|
-| GR dipole (t_c) | 10104 yr | 104×105 yr | ? 10 too young |
-| **UQFF corrected** | **105×107 yr** | **104×107 yr** | ? Consistent |
+| GR dipole (t_c) | 10104 yr | 104$\times$105 yr | ? 10 too young |
+| **UQFF corrected** | **105$\times$107 yr** | **104$\times$107 yr** | ? Consistent |
 
-The UQFF correction factor Dκ_SCm bridges the order-of-magnitude discrepancy between characteristic
+The UQFF correction factor D$\kappa$_SCm bridges the order-of-magnitude discrepancy between characteristic
 ages and supernova remnant ages without invoking field decay, magnetic burial, or precession.
 
 ---
@@ -202,7 +202,7 @@ making multiple burst epochs more probable
 
 UQFF resolves the magnetar age problem through SCm-mediated spin-down suppression. For B > B_crit,
 D_SCm ? 0 reduces energy loss by up to 4 orders of magnitude, extending characteristic ages from
-10104 yr (GR) to 105×107 yr (UQFF)consistent with observed SNR associations. The predicted braking
+10104 yr (GR) to 105$\times$107 yr (UQFF)consistent with observed SNR associations. The predicted braking
 index n_UQFF = 1.5§2.0 matches observed values (n_obs ~ 1§2.5) without additional physics.
 Population statistics from NICER timing campaigns and CHIME FRB host associations provide near-term
 testable predictions for the 23-magnetar sample analyzed here.
@@ -211,7 +211,7 @@ testable predictions for the 23-magnetar sample analyzed here.
 base parameters)
 
 For B-field decay B(t) = B0 exp(-t/t_B):
-**d(ln Dκ_SCm) / d(ln O)  (P/t_B)  ?Dκ_SCm/?B  dB/dt**
+**d(ln D$\kappa$_SCm) / d(ln O)  (P/t_B)  ?D$\kappa$_SCm/?B  dB/dt**
 
 For typical t_B ~ 104 yr:
 **n_UQFF  2.0 - 0.5 = 1.5**
@@ -269,7 +269,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -288,7 +288,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -398,7 +398,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.060 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -407,13 +407,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -435,14 +435,14 @@ review.Groups[1].Value : Magnetar Spin-Down in UQFF Framework
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -457,10 +457,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -468,9 +468,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -478,8 +478,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*

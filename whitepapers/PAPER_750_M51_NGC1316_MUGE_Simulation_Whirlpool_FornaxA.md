@@ -25,8 +25,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Two Hubble-studied galaxies — M51 (the Whirlpool Galaxy, interacting with NGC 5195) and NGC 1316
 (Fornax A, a post-merger elliptical) — represent opposite ends of the galaxy evolution spectrum.
 This paper derives tailored Master Universal Gravity Equations (MUGEs) for both systems using Hubble
-ACS datasets, incorporating interaction-specific environmental terms: F_tidal and ψ_spiral for M51,
-and F_tidal + F_cluster + ρ_dust for NGC 1316. Full Python simulation scripts (m51_simulation.py,
+ACS datasets, incorporating interaction-specific environmental terms: F_tidal and $\psi$_spiral for M51,
+and F_tidal + F_cluster + $\rho$_dust for NGC 1316. Full Python simulation scripts (m51_simulation.py,
 ngc1316_simulation.py) are included for radial acceleration profile generation.
 
 ---
@@ -38,18 +38,18 @@ M51 is a grand design spiral at 7.7 Mpc with an active tidal interaction compani
 ACS observations (2005) provide:
 - M_visible = 1.2x10^{1}1 MM_sun
 - M_DM = 4x10^{1}0 MM_sun  
-- SFR ≈ 1 MM_sun/yr
-- M_BH ≈ 10^6 MM_sun
-- Distance = 7.7 Mpc, z ≈ 0.0015
-- B ≈ 5x10^{-}6 T
+- SFR $\approx$ 1 MM_sun/yr
+- M_BH $\approx$ 10^6 MM_sun
+- Distance = 7.7 Mpc, z $\approx$ 0.0015
+- B $\approx$ 5x10^{-}6 T
 
 ### 1.2 NGC 1316 (Fornax A)
 NGC 1316 is a giant elliptical at 75 Mpc with a complex merger history:
-- M_total ≈ 5x10^{1}1 MM_sun (visible + DM)
+- M_total $\approx$ 5x10^{1}1 MM_sun (visible + DM)
 - M_DM = 1.5x10^{1}1 MM_sun
-- M_BH ≈ 10^8 MM_sun
+- M_BH $\approx$ 10^8 MM_sun
 - Merger age: 1-3 Gyr ago (from ripples, dust lanes)
-- ρ_dust ≈ 10^{-}2^1 kg/m^3
+- $\rho$_dust $\approx$ 10^{-}2^1 kg/m^3
 
 ---
 
@@ -60,13 +60,13 @@ $$
   & g_M51(r, t) = (G*M(t)) / (r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t)) \\
   & + (U_g1 + U_g2 + U_g3' + U_g4) + U_i \\
   & + (Lambda*c^2/3) \\
-  & + (hbar/√(Deltax*Deltap)) * integral(psi_total*H*psi_total dV) * (2pi/t_Hubble) \\
+  & + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi_total*H*psi_total dV) * (2pi/t_Hubble) \\
   & + rho_fluid*V*g \\
   & + (M_vis + M_DM) * (deltarho/rho + (3*G*M)/r^3)
 \end{aligned}
 $$
 
-> **Canonical note:** The `(G*M(t))/(r(t)^2)` term is the Step 10 Newton observational projection — per UQFF chain, the foundational gravity seed is DPM/Ug1 (k₁μₛM/r). The Ug_i terms in the equation are the canonical DPM-derived components.
+> **Canonical note:** The `(G*M(t))/(r(t)^2)` term is the Step 10 Newton observational projection — per UQFF chain, the foundational gravity seed is DPM/Ug1 (k1$\mu$ₛM/r). The Ug_i terms in the equation are the canonical DPM-derived components.
 
 ### M51 F_env Terms
 
@@ -88,7 +88,7 @@ $$
 
 $$
 \begin{aligned}
-  & H(t,z) = H_0*√(0.3*(1+0.0015)^3 + 0.7) ~= H_0*√0.7003 ~= H_0 \\
+  & H(t,z) = H_0*\sqrt{}(0.3*(1+0.0015)^3 + 0.7) ~= H_0*\sqrt{}0.7003 ~= H_0 \\
   & z = 0.0015 (negligible correction)
 \end{aligned}
 $$
@@ -308,21 +308,21 @@ print("NGC 1316 simulation complete. Profile saved to ngc1316_gravity_profile.pn
 | Type | Sc spiral | E/S0 elliptical |
 | Distance | 7.7 Mpc | 75 Mpc |
 | Interaction | Active (NGC 5195) | Past mergers (~1-3 Gyr) |
-| Key term | F_tidal (live) | F_cluster + ρ_dust |
-| Star formation | SFR ≈ 1 MM_sun/yr | ~0 (quenched) |
+| Key term | F_tidal (live) | F_cluster + $\rho$_dust |
+| Star formation | SFR $\approx$ 1 MM_sun/yr | ~0 (quenched) |
 | AGN activity | Moderate | Strong (radio lobes) |
-| Key physics | Density waves (ψ_spiral) | Dust lane drag (ρ_dust) |
+| Key physics | Density waves ($\psi$_spiral) | Dust lane drag ($\rho$_dust) |
 
 ---
 
 ## 7. Astrophysical Significance
 
 **M51**: The F_tidal term drives the prominent spiral arms visible in Hubble observations. The
-ψ_spiral density wave modulation affects star formation efficiency across the disk. NGC 5195's tidal
+$\psi$_spiral density wave modulation affects star formation efficiency across the disk. NGC 5195's tidal
 force creates the bridge structure and enhanced SFR in the outer arms.
 
 **NGC 1316**: The F_cluster term explains the deficit of low-mass globular clusters in the inner
-region (disrupted by tidal forces during multiple mergers). The ρ_dust dust lane creates a complex
+region (disrupted by tidal forces during multiple mergers). The $\rho$_dust dust lane creates a complex
 hydrodynamic environment near the AGN.
 
 ---
@@ -477,7 +477,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.127 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -488,13 +488,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

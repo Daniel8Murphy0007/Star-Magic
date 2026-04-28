@@ -11,13 +11,13 @@ tags: [SCm, vacuum, AGN, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_125: UQFF Superconductive Mode E_react Calibration – Fermi LAT 4LAC Blazar Catalog: ? = 0.000497/day ? ?κ = 0.0005/day Over 40 Sources and 7-Year Light Curves
+# PAPER_125: UQFF Superconductive Mode E_react Calibration – Fermi LAT 4LAC Blazar Catalog: ? = 0.000497/day ? ?$\kappa$ = 0.0005/day Over 40 Sources and 7-Year Light Curves
 
 **Title:** UQFF Superconductive Mode E_react Calibration – Fermi LAT 4LAC Blazar Catalog: ? =
-0.000497/day ? ?κ = 0.0005/day Over 40 Sources and 7-Year Light Curves
+0.000497/day ? ?$\kappa$ = 0.0005/day Over 40 Sources and 7-Year Light Curves
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -27,13 +27,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ---
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The Fermi LAT Fourth Catalog of Active Galactic Nuclei (4LAC-DR3), accessed via NASA HEASARC,
 provides the definitive E_react exponential decay calibration dataset for UQFF Superconductive Mode.
 Thread d91b1f6c identifies that 40 blazars from 4LAC show mean flux decay rate ? = 0.000497/day,
-which the framework rounds to κ = 0.0005/day  the canonical UQFF decay constant now embedded in all
+which the framework rounds to $\kappa$ = 0.0005/day  the canonical UQFF decay constant now embedded in all
 framework equations. The E_react expression:
 
 $$E_{react} = 10^{46} \cdot e^{-\kappa t} \quad [\text{J, where } \kappa = 0.0005/\text{day}]$$
@@ -41,11 +41,11 @@ $$E_{react} = 10^{46} \cdot e^{-\kappa t} \quad [\text{J, where } \kappa = 0.000
 describes how the [SCm] Superconductive Reactor maintains stellar/AGN activity over timescales
 governed by vacuum condensate half-life. 40 Fermi blazars over 7-year light curves establish ?
 through power-law to exponential flux fitting, with the luminosity range L ~ 10?1047 W confirming
-that E_react = 1046 J spans the full AGN luminosity function. The UQFF discovery: κ = 0.0005/day is
+that E_react = 1046 J spans the full AGN luminosity function. The UQFF discovery: $\kappa$ = 0.0005/day is
 not a fitted parameter but an emergent property of the [SCm] condensate decay timescale t = 1/? 
 2000 days  5.48 years.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -69,9 +69,9 @@ Selected 40 blazar properties (representative sample):
 | Object | Type | z | L_? (erg/s) | ? (day-1) |
 |--------|------|---|-------------|-----------|
 | 3C273 | FSRQ | 0.158 | 1047 | 0.00049 |
-| PKS 1510-089 | FSRQ | 0.360 | 3×1046 | 0.00051 |
+| PKS 1510-089 | FSRQ | 0.360 | 3$\times$1046 | 0.00051 |
 | Mrk 421 | BL Lac | 0.031 | 1044 | 0.00048 |
-| Mrk 501 | BL Lac | 0.034 | 5×104 | 0.00050 |
+| Mrk 501 | BL Lac | 0.034 | 5$\times$104 | 0.00050 |
 | Mean (40 sources) | Mixed | – | 10?1047 | **0.000497** |
 
 ---
@@ -87,7 +87,7 @@ $$E_{react}(t) = E_{react,0} \cdot e^{-\kappa t}$$
 
 where:
 - E_react,0 = 1046 J (initial reactor energy at formation epoch)
-- κ = 0.0005/day (decay constant)
+- $\kappa$ = 0.0005/day (decay constant)
 - t = time since system formation (days)
 
 This formulation appears in all UQFF components: Ug2, Ug3, Ug4, Um, and F_U master equation
@@ -128,7 +128,7 @@ to exponential form for UQFF:
 
 $$F(t) = F_0 e^{-\kappa t} \approx F_0(1 - \kappa t + \ldots) \approx F_0 t^{-\alpha}$$
 
-For small ?t (justified for 7-year baseline): ?  a/t_mean. With mean variability index a ≈ 0.35 and
+For small ?t (justified for 7-year baseline): ?  a/t_mean. With mean variability index a $\approx$ 0.35 and
 t_mean  700 days:
 
 $$\kappa \approx \frac{0.35}{700} = 0.0005 \text{ day}^{-1}$$
@@ -161,10 +161,10 @@ print(f"? = {kappa_mean:.6f}  {kappa_std:.6f} day-1")
 | AGN Age (days) | E_react(t) | L_? equiv. |
 |---------------|-----------|------------|
 | 0 (formation) | 1046 J | 1047 erg/s |
-| 1386 (t1/2) | 5×1045 J | 5×1046 erg/s |
-| 2000 (t) | 3.7×1045 J | 3.7×1046 erg/s |
-| 5000 | 8.2×1044 J | 8.2×1045 erg/s |
-| 10,000 (~27 yr) | 6.7×104 J | 6.7×1044 erg/s |
+| 1386 (t1/2) | 5$\times$1045 J | 5$\times$1046 erg/s |
+| 2000 (t) | 3.7$\times$1045 J | 3.7$\times$1046 erg/s |
+| 5000 | 8.2$\times$1044 J | 8.2$\times$1045 erg/s |
+| 10,000 (~27 yr) | 6.7$\times$104 J | 6.7$\times$1044 erg/s |
 
 These span the exact 4LAC luminosity range L ~ 10?1047 erg/s.
 
@@ -172,9 +172,9 @@ These span the exact 4LAC luminosity range L ~ 10?1047 erg/s.
 
 ## 4. UQFF Superconductive Discovery: ? as [SCm] Half-Life
 
-### 4.1 κ = 0.0005/day Is Fundamental
+### 4.1 $\kappa$ = 0.0005/day Is Fundamental
 
-The UQFF discovery from d91b1f6c is that κ = 0.0005/day is not an empirically-fitted parameter but
+The UQFF discovery from d91b1f6c is that $\kappa$ = 0.0005/day is not an empirically-fitted parameter but
 the fundamental decay constant of the [SCm] superconductive condensate. It represents the rate at
 which the ordered [SCm] vacuum phase transitions to the disordered [UA] state, releasing stored
 field energy as E_react.
@@ -186,7 +186,7 @@ where E_gap is the [SCm]-[UA] phase transition gap energy and T_SCm is the conde
 
 ### 4.2 Universal Application Across 3,914 AGN
 
-The 4LAC catalog contains 3,914 sources. The 40-blazar calibration subsample yields ? = 0.000497 ×
+The 4LAC catalog contains 3,914 sources. The 40-blazar calibration subsample yields ? = 0.000497 $\times$
 0.0005. The universality of this value across sources spanning 8 orders of magnitude in luminosity
 (10?1047 erg/s) confirms that ? is intrinsic to the [SCm] condensate, independent of AGN mass or
 accretion rate.
@@ -218,10 +218,10 @@ determination.
 
 ## 6. Conclusions
 
-Fermi LAT 4LAC-DR3 provides the canonical calibration for the UQFF E_react decay constant κ =
+Fermi LAT 4LAC-DR3 provides the canonical calibration for the UQFF E_react decay constant $\kappa$ =
 0.0005/day. The 40-blazar sample yields ? = 0.000497/day, rounded to the UQFF canonical value. The
 Superconductive Mode discovery: ? is the physical decay rate of the [SCm] vacuum condensate, with
-half-life t1/2 × 3.8 years matching blazar variability timescales universally. E_react = 1046
+half-life t1/2 $\times$ 3.8 years matching blazar variability timescales universally. E_react = 1046
 e^{-0.0005t} J spans the full 4LAC luminosity function, confirming the [SCm] reactor as the energy
 source for all AGN activity in the UQFF framework.
 
@@ -238,7 +238,7 @@ source for all AGN activity in the UQFF framework.
 ---
 
 *CP2 Mode: Superconductive (E_react Calibration) | Thread: d91b1f6c | Session: 43 | Domain: §1.17*
-.Groups[1].Value   UQFF Superconductive Reactor: Fermi 4LAC κ = 0.0005/day Calibration
+.Groups[1].Value   UQFF Superconductive Reactor: Fermi 4LAC $\kappa$ = 0.0005/day Calibration
 
 <!-- PKG-AGN-S225 -->
 
@@ -246,7 +246,7 @@ source for all AGN activity in the UQFF framework.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -265,7 +265,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -339,7 +339,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.093 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -348,13 +348,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

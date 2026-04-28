@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 
 Based on arXiv:2505.08861 (2025), we implement a UQFF calculator for circumgalactic medium (CGM) metal retention in dwarf galaxies. Dwarf galaxies exhibit a weak $M_*$-$\sigma$ correlation ($\alpha \approx 0.2$) compared to the classical $M_{\text{BH}}$-$\sigma$ relation ($\beta \approx 4.38$). Over-massive SMBHs ($\Delta M_{\text{BH}} > 0$) drive metals out of the CGM ($f_Z \sim 0.89$) via [SCm] expulsion in Ug4, while under-massive SMBHs ($\Delta M_{\text{BH}} < 0$) allow higher metal retention ($f_Z \sim 0.85$) in stars.
 
-## 1. The M*-σ Relation in Dwarfs
+## 1. The M*-$\sigma$ Relation in Dwarfs
 
 For dwarf galaxies with $M_* \lesssim 10^{10} M_\odot$:
 
@@ -35,8 +35,8 @@ where $M_{\text{BH,exp}} = 10^5 (\sigma/30)^{4.38} M_\odot$.
 
 $$f_Z = f_{Z,\text{base}} \pm 0.02 - f_{\text{feedback}} \cdot \Delta M_{\text{BH}}$$
 
-- **Over-massive** ($\Delta M > 0$): AGN drives metals out → lower $f_Z \approx 0.89$
-- **Under-massive** ($\Delta M < 0$): metals retained in ISM/stars → higher $f_Z \approx 0.85$
+- **Over-massive** ($\Delta M > 0$): AGN drives metals out $\to$ lower $f_Z \approx 0.89$
+- **Under-massive** ($\Delta M < 0$): metals retained in ISM/stars $\to$ higher $f_Z \approx 0.85$
 
 ## 4. UQFF Ug4 Interpretation
 
@@ -61,7 +61,7 @@ Overall alignment: **80%**.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-GW-S225 -->
 

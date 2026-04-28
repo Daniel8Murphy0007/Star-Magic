@@ -80,11 +80,11 @@ consistent with observed isotope abundances.
 ## 4. Prime Z-Anchors (DVP Connection)
 
 At epoch transitions, the first new element is always a DVP prime:
-- Epoch 1 → Z=1 (not prime, but protonic)
-- Epoch 2 → Z=2 (He, prime)
-- Epoch 3 → Z=5 (B, prime)  
-- Epoch 4 → Z=31 (Ga, prime)
-- Epoch 5 → Z=?, predicted next prime ≥ 119 = 7×17 → Z=127 (prime, predicted island)
+- Epoch 1 $\to$ Z=1 (not prime, but protonic)
+- Epoch 2 $\to$ Z=2 (He, prime)
+- Epoch 3 $\to$ Z=5 (B, prime)  
+- Epoch 4 $\to$ Z=31 (Ga, prime)
+- Epoch 5 $\to$ Z=?, predicted next prime $\geq$ 119 = 7$\times$17 $\to$ Z=127 (prime, predicted island)
 
 The pattern suggests DVP prime-indexed elements are the most stable at each epoch boundary,
 consistent with nuclear magic numbers and known islands of stability (Z=82,126 are near primes).
@@ -106,7 +106,7 @@ This is experimentally testable at GSI/Darmstadt, RIKEN, and JINR.
 
 The Mayan Long Count calendar's end of the 13th Baktun (Dec 21, 2012) in UQFF corresponds to the
 transition from epoch 4 to epoch 5 — from known elements to the speculative superheavy island. This
-is not mysticism but an encoding of nuclear physics timescales: each Baktun (1,872,000 days ≈ 5,125
+is not mysticism but an encoding of nuclear physics timescales: each Baktun (1,872,000 days $\approx$ 5,125
 years) scales to a cosmological nucleosynthesis phase.
 
 ---
@@ -158,7 +158,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -259,7 +259,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -270,13 +270,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
+| Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
 | Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
+| Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ m_$\alpha$ = 4m_p - B_$\alpha$/c2 | m_$\alpha$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 

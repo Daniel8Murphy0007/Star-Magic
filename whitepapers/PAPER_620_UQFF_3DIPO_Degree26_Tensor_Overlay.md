@@ -21,10 +21,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 The 3D Interference Pattern Overlay (3D-IPO) is generalized to a tensor product of three
-independent degree-26 polynomial overlays: Wolfram ($W$), π-digit ($\Pi$), and integer-
+independent degree-26 polynomial overlays: Wolfram ($W$), $\pi$-digit ($\Pi$), and integer-
 harmonic ($I$). The scalar tensor product $W(n) \otimes \Pi(n) \otimes I(n)$ yields a
 degree-78 crossing function with all roots guaranteed unique via DVP prime structure
-and π-digit irrationality. This provides a universal covering of the UQFF state space.
+and $\pi$-digit irrationality. This provides a universal covering of the UQFF state space.
 
 ---
 
@@ -50,10 +50,10 @@ $$W(n) = \sum_{k=0}^{26} w_k n^k, \quad \Pi(n) = \sum_{k=0}^{26} \pi_k n^k, \qua
 Coefficients $w_k = p_k$ (k-th prime): $w_0=2, w_1=3, w_2=5, w_3=7, \ldots, w_{26}=101$.
 These are the Dimensional Vortex Prime weights encoding Wolfram hypergraph branching uniqueness.
 
-### 2.2 Π(n) — π-Digit Overlay
+### 2.2 $\Pi$(n) — $\pi$-Digit Overlay
 
-$\pi_k$ = k-th decimal digit of π: $\pi_0=3, \pi_1=1, \pi_2=4, \pi_3=1, \pi_4=5, \ldots$
-The irrationality of π guarantees the polynomial $\Pi(n)$ is not a polynomial multiple of $W(n)$.
+$\pi_k$ = k-th decimal digit of $\pi$: $\pi_0=3, \pi_1=1, \pi_2=4, \pi_3=1, \pi_4=5, \ldots$
+The irrationality of $\pi$ guarantees the polynomial $\Pi(n)$ is not a polynomial multiple of $W(n)$.
 
 ### 2.3 I(n) — Integer Harmonic BH26 Overlay
 
@@ -69,7 +69,7 @@ Under the fundamental theorem of algebra it has exactly 78 roots (counted with m
 
 **Uniqueness guarantee**: Since $\gcd(W, \Pi, I) = 1$ by:
 - $W$: coefficients are primes (DVP) — no algebraic factors shared with $\Pi$
-- $\Pi$: coefficients are π-digits — irrational frequency, no repeats
+- $\Pi$: coefficients are $\pi$-digits — irrational frequency, no repeats
 - $I$: $\{1,2,\ldots,27\}$ — integer sequence
 
 All 78 roots are distinct. The total state space covered = $26! \times 3$ unique branches.
@@ -84,7 +84,7 @@ or more of the three overlays vanishes. The crossing pattern encodes:
 | Vanishing | Physical interpretation |
 |-----------|------------------------|
 | $W = 0$ | Wolfram hypergraph state collapse |
-| $\Pi = 0$ | π-series resonance node |
+| $\Pi = 0$ | $\pi$-series resonance node |
 | $I = 0$ | BH26 harmonic null point |
 | All three simultaneously | Full UQFF dimensional convergence |
 
@@ -92,7 +92,7 @@ or more of the three overlays vanishes. The crossing pattern encodes:
 
 ## §5. VDS / DVP / BH26 Connections
 
-- **VDS**: $\pi_k$ coefficients are vacuum density series encoding the π-expansion of the vacuum.
+- **VDS**: $\pi_k$ coefficients are vacuum density series encoding the $\pi$-expansion of the vacuum.
 - **DVP**: $w_k = p_k$ (primes) ensures DVP vortex uniqueness for all Wolfram state overlays.
 - **BH26**: $i_k = k+1$ are BH26 harmonic bin weights for the 26 dimensional integer threads.
 
@@ -102,7 +102,7 @@ or more of the three overlays vanishes. The crossing pattern encodes:
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -201,7 +201,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.055 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -212,10 +212,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -230,7 +230,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 The degree-26 tensor product overlay $W \otimes \Pi \otimes I$ unifies the three UQFF
 overlay systems into a single degree-78 polynomial with 78 distinct roots, fully covering
-the UQFF state space. The combination of prime, π-digit, and integer harmonic coefficients
+the UQFF state space. The combination of prime, $\pi$-digit, and integer harmonic coefficients
 guarantees maximal irreducibility and uniqueness across all 26 dimensions.
 
 **Class**: `UQFF3DIPODegree26TensorOverlayCalculator` (#207, CP4 v5.17)

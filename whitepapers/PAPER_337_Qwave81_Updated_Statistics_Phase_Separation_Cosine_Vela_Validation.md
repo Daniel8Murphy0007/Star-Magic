@@ -33,7 +33,7 @@ $$
 ## Abstract
 
 This paper extends the Q_wave_47 wave-function amplitude statistics (PAPER_327, 47-system ensemble)
-to a new 81-system ensemble: Q_wave_81. It records the updated statistical parameters (mean=3.97×104
+to a new 81-system ensemble: Q_wave_81. It records the updated statistical parameters (mean=3.97$\times$104
 J/m3, std=+0.5% above Q_wave_47 due to PWNe inclusion) and presents the phase separation validation
 model — a cosine-based fitting framework that yields sep˜0.3 when matched to the Vela Pulsar
 multi-peak pulse profile (Chandra/Fermi PASS 8 2025 data). A glitch recovery timescale prediction
@@ -41,7 +41,7 @@ t_glitch ~ 1011 s is derived from the spin-down rate.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -54,8 +54,8 @@ present in Standard Model treatments.
 **Q_wave_47 (PAPER_327, Session 93):**
 $$
 \begin{aligned}
-  & mean = 3.95×104 J/m3 \\
-  & std  = 2.1×103 J/m3 (5.3%) \\
+  & mean = 3.95\times104 J/m3 \\
+  & std  = 2.1\times103 J/m3 (5.3%) \\
   & N    = 47 systems \\
   & Systems: pulsars, magnetars, SNRs, compact galactic
 \end{aligned}
@@ -64,8 +64,8 @@ $$
 **Q_wave_81 (Session 95):**
 $$
 \begin{aligned}
-  & mean = 3.97×104 J/m3     [+0.5% from \text{Q\_wave\_47}] \\
-  & std  = 2.15×103 J/m3      [+0.5% increase driven by PWNe outliers] \\
+  & mean = 3.97\times104 J/m3     [+0.5% from \text{Q\_wave\_47}] \\
+  & std  = 2.15\times103 J/m3      [+0.5% increase driven by PWNe outliers] \\
   & N    = 81 systems \\
   & Systems: expanded to include 34 additional Pulsar Wind Nebulae (PWNe)
 \end{aligned}
@@ -76,23 +76,23 @@ $$
 PWNe have higher Q_wave values than isolated pulsars/SNRs due to the synchrotron nebula environment:
 
 $$
-Q_wave(PWN) ~ ?_nebula × V_synchrotron × B_nebula
+Q_wave(PWN) ~ ?_nebula \times V_synchrotron \times B_nebula
 $$
 
 The Vela SNR wrap (PWN component) and Crab Nebula dominate the upper tail:
-- Crab PWN: Q_wave ~ 4.8×104 J/m3 (LOFAR 2025 radio morphology)
-- Vela PWN: Q_wave ~ 4.2×104 J/m3 (SST-1M/Chandra 2025)
+- Crab PWN: Q_wave ~ 4.8$\times$104 J/m3 (LOFAR 2025 radio morphology)
+- Vela PWN: Q_wave ~ 4.2$\times$104 J/m3 (SST-1M/Chandra 2025)
 
-These pull the mean upward from 3.95 to 3.97×104 J/m3 (+0.5%).
+These pull the mean upward from 3.95 to 3.97$\times$104 J/m3 (+0.5%).
 
 ### 2.3 Calibrated Parameters for Use in Calculations
 
 | Parameter | `Q_wave_47` | `Q_wave_81` | Unit |
 |-----------|-----------|-----------|------|
-| mean | 3.95×104 | 3.97×104 | J/m3 |
-| std | 2.10×103 | 2.15×103 | J/m3 |
-| 95% CI lower | 3.55×104 | 3.55×104 | J/m3 |
-| 95% CI upper | 4.37×104 | 4.42×104 | J/m3 |
+| mean | 3.95$\times$104 | 3.97$\times$104 | J/m3 |
+| std | 2.10$\times$103 | 2.15$\times$103 | J/m3 |
+| 95% CI lower | 3.55$\times$104 | 3.55$\times$104 | J/m3 |
+| 95% CI upper | 4.37$\times$104 | 4.42$\times$104 | J/m3 |
 | Ensemble N | 47 | 81 | — |
 
 ---
@@ -105,7 +105,7 @@ The phase separation model fits the UQFF resonance decomposition to observed mul
 profiles:
 
 $$
-phase_model(phases, sep) = cos(p × phases / sep)
+phase_model(phases, sep) = cos(p \times phases / sep)
 $$
 
 Where:
@@ -117,12 +117,12 @@ Where:
 
 In UQFF, the R(t) resonance spectrum (PAPER_336) predicts adjacent peaks with angular separation:
 $$
-?f = p × sep / phase_range
+?f = p \times sep / phase_range
 $$
 The cosine form arises because:
-1. R(t) = ? R_i cos(β_i t) (PAPER_336)
-2. In phase space: β_i t ? p × phase_i / phase_range
-3. The envelope between two dominant peaks is cos(p × ?phase / sep)
+1. R(t) = ? R_i cos($\beta$_i t) (PAPER_336)
+2. In phase space: $\beta$_i t ? p $\times$ phase_i / phase_range
+3. The envelope between two dominant peaks is cos(p $\times$ ?phase / sep)
 
 ### 3.3 Vela Pulsar Fit
 
@@ -146,13 +146,13 @@ sep = 0.3 ? p × 0.3 = 0.942 rad between dominant peaks
 
 In the Vela multi-peak profile:
 - Peak P1 at phase 0.0
-- Peak P2 at phase ~0.3 × 2p / p = 0.6 ? 2p × 0.3/1.0 ˜ 0.6 rad
-- Anti-phase minimum at cos(p × 0.3/0.3) = cos(p) = -1
+- Peak P2 at phase ~0.3 $\times$ 2p / p = 0.6 ? 2p $\times$ 0.3/1.0 ˜ 0.6 rad
+- Anti-phase minimum at cos(p $\times$ 0.3/0.3) = cos(p) = -1
 
 This matches the Fermi-LAT double peak separation for Vela (P1-P2 separation ˜ 0.09 in normalized
 phase, scaled by 2p ˜ 0.565 rad ˜ 0.3 model units).
 
-**Note:** The convergence to exactly 0.3 (matching [SSq]=0.57 × p/6 ˜ 0.299) is a UQFF calibration
+**Note:** The convergence to exactly 0.3 (matching [SSq]=0.57 $\times$ p/6 ˜ 0.299) is a UQFF calibration
 cross-check — the phase separation encodes [SSq] through p geometry.
 
 ### 3.5 Connection to UQFF Calibrated Constants
@@ -189,12 +189,12 @@ t_glitch ~ P / |??| = P × P2 / ? = P3/?
          ~ 101° s (order of magnitude)
 ```
 
-[Note from gok_share_31b5c807a4: "t ~ P/?? ~ 3.76/(4.23×108) ? ~1011 s" — this appears to use ?? for
+[Note from gok_share_31b5c807a4: "t ~ P/?? ~ 3.76/(4.23$\times$108) ? ~1011 s" — this appears to use ?? for
 a different pulsar parameter set. Both estimates give t in range 10?–1011 s.]
 
 **Physical meaning:** t_glitch represents the vortex unpinning timescale — the time between
 successive glitch events where the neutron star's superfluid inner crust suddenly transfers angular
-momentum to the crust. Observed Vela glitch intervals: ~2–3 years (6×107 – 108 s), suggesting the t
+momentum to the crust. Observed Vela glitch intervals: ~2–3 years (6$\times$107 – 108 s), suggesting the t
 here refers to the FULL recovery (not just the inter-glitch interval).
 
 ### 4.3 UQFF Interpretation
@@ -219,7 +219,7 @@ The fitted sep=0.3 for Vela generalizes to other compact systems:
 | Magnetar | ~0.25 | Stronger B, tighter phase |
 | Galactic AGN | 0.30 (adopted) | [SSq] scaling universal |
 
-The universality of sep˜0.3 ? [SSq]=0.57/p×6 across compact and galactic scales validates the UQFF
+The universality of sep˜0.3 ? [SSq]=0.57/p$\times$6 across compact and galactic scales validates the UQFF
 constant calibration framework (PAPER_331, PAPER_287).
 
 ---
@@ -283,7 +283,7 @@ expansion
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -302,7 +302,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -377,7 +377,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -388,13 +388,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

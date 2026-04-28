@@ -29,12 +29,12 @@ $$E_x = mc^2 \cdot e^{-i \cdot 26}; \qquad \sum_{k=1}^{n} \left(a_k + b_k e^{i\t
 The UQFF Dipole Vortex Prime (DVP) system identifies three interlocking prime-structured
 physical phenomena: (1) The complex energy state Eₓ = mc^2e^{-i26} from n-wave mixing,
 where the coefficient -i*26 encodes the 26-dimensional UQFF field in imaginary-phase space;
-(2) The Heaviside polynomial 7Ω resistance structure arising from 20th-level logarithmic
+(2) The Heaviside polynomial 7$\Omega$ resistance structure arising from 20th-level logarithmic
 scaling of a resistive network; and (3) The discrete meson energy prime cascade
 (938 -> 493 -> 139 -> 105 -> 0.511 MeV) from the AVS62 LENR module (PAPER_648). Together,
 these three subsystems form the DVP scaffold — a set of prime-like discrete energy levels
 that characterize the non-linear excitation spectrum of the Universal Aether dipole field.
-The Aether1_4 torque multipole model T ≈ M_1/rₑ + M_2/rₘ + M_3/rₙ provides the spatial
+The Aether1_4 torque multipole model T $\approx$ M_1/re + M_2/rₘ + M_3/rₙ provides the spatial
 vortex structure that generates primality in the angular momentum of Aether dipoles.
 
 ---
@@ -44,7 +44,7 @@ vortex structure that generates primality in the angular momentum of Aether dipo
 ### 1.1 Derivation from n-Wave Mixing
 
 The general n-wave mixing condition in an Aether field requires the superposition of n
-complex wave modes to exceed the phase threshold φ:
+complex wave modes to exceed the phase threshold $\phi$:
 
 $$\sum_{k=1}^{n} \left(a_k + b_k e^{i\theta_k} + d_k\right) > \varphi$$
 
@@ -64,7 +64,7 @@ $$= mc^2 \left[0.6470 - i(-0.7627)\right] = mc^2 (0.6470 + 0.7627i)$$
 The **real part** (0.647 mc^2) = energy of the n-wave coherent field state.
 The **imaginary part** (0.763 mc^2) = phase-quadrature energy stored in Aether wave tension.
 
-The total amplitude |Eₓ|/mc^2 = √(0.6470^2 + 0.7627^2) = 1.0 — energy is conserved, only
+The total amplitude |Eₓ|/mc^2 = $\sqrt{}$(0.6470^2 + 0.7627^2) = 1.0 — energy is conserved, only
 redistributed between real and imaginary (tension) components.
 
 **UQFF significance**: The 26 in e^{-i26} directly encodes the **26 independent dimensional
@@ -81,7 +81,7 @@ phase-rotated to -i*26 radians in the complex energy plane.
 
 ---
 
-## §2 Heaviside 7Ω Polynomial Current
+## §2 Heaviside 7$\Omega$ Polynomial Current
 
 ### 2.1 Structure
 
@@ -90,7 +90,7 @@ The Heaviside step current model involves a 20th-level nested logarithmic resist
 $$R_{\text{total}} = \frac{100/100 + 100/100 + \ldots + 100/100}{100} = 7\ \Omega \quad (\text{20 levels})$$
 
 Each level reduces the effective resistance by a logarithmic factor. At the 20th level,
-the cumulative value converges to 7Ω — a prime number. This is the Heaviside polynomial
+the cumulative value converges to 7$\Omega$ — a prime number. This is the Heaviside polynomial
 resistance: the resistance converges to a prime value because prime numbers are the
 attractor states of logarithmic recursive sequences.
 
@@ -101,10 +101,10 @@ attractor states of logarithmic recursive sequences.
 | Real power P | 100 kW |
 | Apparent power S | 143 kVA |
 | Reactive power Q | 100 kVAR |
-| Phase angle φ | 45° |
+| Phase angle $\phi$ | 45° |
 | Power factor PF | cos(45°) = 0.707 |
 
-The reactive/active power ratio Q/P = 1.0 (exact at φ=45°) is the **energy balance
+The reactive/active power ratio Q/P = 1.0 (exact at $\phi$=45°) is the **energy balance
 condition** for stable Aether field oscillation — equal amounts of energy in the
 real (active) and imaginary (reactive) modes, matching the Eₓ amplitude balance above.
 
@@ -116,13 +116,13 @@ real (active) and imaginary (reactive) modes, matching the Eₓ amplitude balanc
 
 $$T \approx \frac{M_1}{r_e} + \frac{M_2}{r_m} + \frac{M_3}{r_n}$$
 
-where M_1, M_2, M_3 are the magnetic moments at electron (rₑ), muon (rₘ), and nuclear (rₙ)
+where M_1, M_2, M_3 are the magnetic moments at electron (re), muon (rₘ), and nuclear (rₙ)
 scales. The mid-angle relation:
 
 $$\theta_m = \frac{1}{2}(\theta_l + \theta_o); \qquad v_m = \frac{1}{2}\left(\frac{v_l}{r_e} + \frac{v_o}{r_n}\right)$$
 
 This torque triplet structure mirrors the **prime vortex** in the DVP framework:
-- M_1/rₑ: electron-scale dipole (electromagnetic primality pole 1)
+- M_1/re: electron-scale dipole (electromagnetic primality pole 1)
 - M_2/rₘ: muon-scale dipole (strong force intermediate pole 2)
 - M_3/rₙ: nuclear dipole (Ug1 internal dipole = pole 3)
 
@@ -147,11 +147,11 @@ Combining the three subsystems:
 
 | Level | System | Prime Value | Physical Origin |
 |-------|--------|-------------|-----------------|
-| 1 | Heaviside R_total | 7Ω | Logarithmic polynomial convergence |
+| 1 | Heaviside R_total | 7$\Omega$ | Logarithmic polynomial convergence |
 | 2 | Dipole lattice S_9 | 9 = 3^2 | Aether1_4 geometric diagram |
 | 3 | Aether n-wave | 26 | e^{-i26} complex energy dimension |
-| 4 | Meson cascade | 139 MeV (π±) | Prime-like mass step (see PAPER_648) |
-| 5 | Fine structure | 137 (1/α) | QED prime coupling (see PAPER_652) |
+| 4 | Meson cascade | 139 MeV ($\pi$$\pm$) | Prime-like mass step (see PAPER_648) |
+| 5 | Fine structure | 137 (1/$\alpha$) | QED prime coupling (see PAPER_652) |
 
 The sequence 7, 9, 26, 137, 139 — prime and prime-adjacent integers — is the DVP
 fingerprint of the Universal Aether's discrete excitation spectrum.
@@ -192,7 +192,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -207,7 +207,7 @@ with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -308,7 +308,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.052 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -319,10 +319,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | SM Value | UQFF DVP Prediction | Alignment |
 |------------|----------|---------------------|-----------|
-| Fine structure constant 1/α | 137.036 | DVP prime-level 5 = 137 | ✅ see PAPER_652 |
-| Pion mass | 139.57 MeV | DVP prime-level 4 ≈ 139 MeV | ✅ 99.7% |
-| Electron g-2 | ae = α/2π + ... | DVP e^{-i26} imaginary correction | 🔍 topological |
-| Power factor (QED vacuum) | cos^2θ_W = 0.769 | DVP PF = cos45° = 0.707 | 🔍 related scale |
+| Fine structure constant 1/$\alpha$ | 137.036 | DVP prime-level 5 = 137 | ✅ see PAPER_652 |
+| Pion mass | 139.57 MeV | DVP prime-level 4 $\approx$ 139 MeV | ✅ 99.7% |
+| Electron g-2 | ae = $\alpha$/2$\pi$ + ... | DVP e^{-i26} imaginary correction | 🔍 topological |
+| Power factor (QED vacuum) | cos^2$\theta$_W = 0.769 | DVP PF = cos45° = 0.707 | 🔍 related scale |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator.
 
@@ -333,13 +333,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 for full UQFF-SM bridge.*
@@ -348,7 +348,7 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 
 1. Aether5_8.cpp / Aether1_4.cpp — grok_share_b2e2c5cba7a.txt (Session 168)
 2. PAPER_648 — D(-1) LENR Meson Cascade (meson prime energies)
-3. PAPER_652 — Fine Structure Constant α = 1/137 (DVP prime 5)
+3. PAPER_652 — Fine Structure Constant $\alpha$ = 1/137 (DVP prime 5)
 4. PAPER_650 — Buoyancy Harmonics (Ug3 companion)
 5. PAPER_642 — SM Parameter Bridge
 6. Heaviside O (1893): *Electromagnetic Theory* — step function history

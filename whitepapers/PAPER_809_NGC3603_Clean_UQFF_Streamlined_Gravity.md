@@ -26,7 +26,7 @@ NGC 3603 is one of the most massive young star clusters in the Milky Way (~400,0
 span, ~20,000 ly distant), formed ~1 Myr ago in the Carina spiral arm. This paper presents a
 streamlined, clean UQFF master gravity equation specifically designed to avoid SMBH overhead
 complexity, focused on star formation mass growth, stellar feedback pressure, cosmic expansion,
-time-reversal correction, and Aether EM coupling. The result, g_NGC3603 ≈ 1.053×10-3 m/s2, captures
+time-reversal correction, and Aether EM coupling. The result, g_NGC3603 $\approx$ 1.053$\times$10-3 m/s2, captures
 the effective gravitational acceleration in the cluster's star-forming environment and confirms that
 the Aether EM term dominates over the classical gravitational term in this regime. Source:
 grok_share_afa84da6.txt, lines 935–1101 (May 09, 2025, 12:21 AM EDT).
@@ -36,8 +36,8 @@ grok_share_afa84da6.txt, lines 935–1101 (May 09, 2025, 12:21 AM EDT).
 ## Status
 - **G1 (Status):** UQFF validated — mass growth + feedback pressure + 26D Aether correction
 - **G2 (Introduction):** NGC 3603 rapid starburst, Bok globules, ~1 Myr age
-- **G3 (Methods):** Clean UQFF derivation: M(t), P(t), H₀ expansion, f_TRZ, [UA] EM
-- **G4 (Results):** g_NGC3603 ≈ 1.053×10-3 m/s2 at t = 5×105 yr
+- **G3 (Methods):** Clean UQFF derivation: M(t), P(t), H0 expansion, f_TRZ, [UA] EM
+- **G4 (Results):** g_NGC3603 $\approx$ 1.053$\times$10-3 m/s2 at t = 5$\times$105 yr
 - **G5 (Conclusion):** Framework advances by applying UQFF to extreme starburst environments
 - **G6 (SM Anchor):** See §8
 
@@ -67,19 +67,19 @@ eliminates SMBH-focused complexity while retaining all key UQFF terms.
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Initial cluster mass | M_initial | 7.956×1035 kg (400,000 M_sun) | Hubble WFC3 |
-| Cluster half-span | r | 8.998×1015 m (~9.5 ly) | Hubble WFC3 |
-| Cluster age | t_age | 1×106 yr = 3.156×1013 s | Hubble |
-| Stellar wind speed | v_wind | 2.0×106 m/s | High-energy labs |
-| Gas density | ρ_gas | 1×10-20 kg/m3 | Simulations |
-| Magnetic field | B | 1×10-5 T | Simulations |
-| Star formation rate (Bok globules) | SFR fraction | 10% additional over τ_SF | Hubble |
-| Star formation timescale | τ_SF | 3.156×1013 s (1×106 yr) | Model |
-| Feedback decay timescale | τ_exp | 3.156×1013 s (1×106 yr) | Model |
-| Hubble constant | H₀ | 2.268×10-18 s-1 (70 km/s/Mpc) | Planck |
+| Initial cluster mass | M_initial | 7.956$\times$1035 kg (400,000 M_sun) | Hubble WFC3 |
+| Cluster half-span | r | 8.998$\times$1015 m (~9.5 ly) | Hubble WFC3 |
+| Cluster age | t_age | 1$\times$106 yr = 3.156$\times$1013 s | Hubble |
+| Stellar wind speed | v_wind | 2.0$\times$106 m/s | High-energy labs |
+| Gas density | $\rho$_gas | 1$\times$10-20 kg/m3 | Simulations |
+| Magnetic field | B | 1$\times$10-5 T | Simulations |
+| Star formation rate (Bok globules) | SFR fraction | 10% additional over $\tau$_SF | Hubble |
+| Star formation timescale | $\tau$_SF | 3.156$\times$1013 s (1$\times$106 yr) | Model |
+| Feedback decay timescale | $\tau$_exp | 3.156$\times$1013 s (1$\times$106 yr) | Model |
+| Hubble constant | H0 | 2.268$\times$10-18 s-1 (70 km/s/Mpc) | Planck |
 | Time-reversal factor | f_TRZ | 0.1 | UQFF |
-| Aether vacuum density | ρ_vac,[UA] | 7.09×10-36 J/m3 | UQFF |
-| SCm vacuum density | ρ_vac,[SCm] | 7.09×10-37 J/m3 | UQFF |
+| Aether vacuum density | $\rho$_vac,[UA] | 7.09$\times$10-36 J/m3 | UQFF |
+| SCm vacuum density | $\rho$_vac,[SCm] | 7.09$\times$10-37 J/m3 | UQFF |
 
 ---
 
@@ -87,13 +87,13 @@ eliminates SMBH-focused complexity while retaining all key UQFF terms.
 
 $$
 \begin{aligned}
-  & g_NGC3603(r, t) = [G · M(t) / r2] × (1 + H₀·t) × (1 − P(t)) × (1 + f_TRZ) \\
-  & + q·(v × B) × (1 + ρ_vac,[UA]/ρ_vac,[SCm]) × 10-12 \\
+  & g_NGC3603(r, t) = [G \cdot M(t) / r2] \times (1 + H0\cdott) \times (1 - P(t)) \times (1 + f_TRZ) \\
+  & + q\cdot(v \times B) \times (1 + \rho_vac,[UA]/\rho_vac,[SCm]) \times 10-12 \\
   & where: \\
-  & M(t) = M_initial × (1 + M_dot(t)) \\
-  & M_dot(t) = 0.1 × exp(−t / τ_SF)       [secondary star formation growth] \\
-  & P(t)     = 0.1 × exp(−t / τ_exp)       [stellar feedback pressure factor] \\
-  & 1 + ρ_vac,[UA]/ρ_vac,[SCm] = 11        [Aether EM correction]
+  & M(t) = M_initial \times (1 + M_dot(t)) \\
+  & M_dot(t) = 0.1 \times exp(-t / \tau_SF)       [secondary star formation growth] \\
+  & P(t)     = 0.1 \times exp(-t / \tau_exp)       [stellar feedback pressure factor] \\
+  & 1 + \rho_vac,[UA]/\rho_vac,[SCm] = 11        [Aether EM correction]
 \end{aligned}
 $$
 
@@ -105,8 +105,8 @@ $$
 
 $$
 \begin{aligned}
-  & g_grav = G · M_initial / r2 \\
-  & = (6.6743e-11 × 7.956e35) / (8.998e15)2 \\
+  & g_grav = G \cdot M_initial / r2 \\
+  & = (6.6743e-11 \times 7.956e35) / (8.998e15)2 \\
   & = 5.310e25 / 8.096e31 \\
   & = 6.558e-7 m/s2
 \end{aligned}
@@ -117,10 +117,10 @@ $$
 $$
 \begin{aligned}
   & M_dot(t) at t = 5e5 yr = 1.578e13 s: \\
-  & t/τ_SF = 1.578e13 / 3.156e13 = 0.5 \\
-  & M_dot  = 0.1 × exp(−0.5) = 0.1 × 0.6065 = 0.06065 \\
-  & M(t)   = 7.956e35 × 1.06065 = 8.439e35 kg \\
-  & g_grav(corrected) = 6.6743e-11 × 8.439e35 / (8.998e15)2 \\
+  & t/\tau_SF = 1.578e13 / 3.156e13 = 0.5 \\
+  & M_dot  = 0.1 \times exp(-0.5) = 0.1 \times 0.6065 = 0.06065 \\
+  & M(t)   = 7.956e35 \times 1.06065 = 8.439e35 kg \\
+  & g_grav(corrected) = 6.6743e-11 \times 8.439e35 / (8.998e15)2 \\
   & = 5.632e25 / 8.096e31 \\
   & = 6.956e-7 m/s2
 \end{aligned}
@@ -130,8 +130,8 @@ $$
 
 $$
 \begin{aligned}
-  & H₀ × t = 2.268e-18 × 1.578e13 = 3.579e-5 \\
-  & (1 + H₀·t) = 1.00003579
+  & H0 \times t = 2.268e-18 \times 1.578e13 = 3.579e-5 \\
+  & (1 + H0\cdott) = 1.00003579
 \end{aligned}
 $$
 
@@ -140,13 +140,13 @@ $$
 $$
 \begin{aligned}
   & P(t) at t = 5e5 yr = 1.578e13 s: \\
-  & t/τ_exp = 0.5 \\
-  & P(t)    = 0.1 × exp(−0.5) = 0.06065 \\
-  & (1 − P(t)) = 0.93935
+  & t/\tau_exp = 0.5 \\
+  & P(t)    = 0.1 \times exp(-0.5) = 0.06065 \\
+  & (1 - P(t)) = 0.93935
 \end{aligned}
 $$
 
-Note: P₀ = 0.1 is derived from normalized wind pressure ρ_gas × v2_wind = 10-20 × (2e6)2 = 4×10-8
+Note: P0 = 0.1 is derived from normalized wind pressure $\rho$_gas $\times$ v2_wind = 10-20 $\times$ (2e6)2 = 4$\times$10-8
 N/m2, expressed as fractional reduction in gravitational attraction.
 
 ### 4.5 Time-Reversal Correction
@@ -159,11 +159,11 @@ $$
 
 $$
 \begin{aligned}
-  & q × (v × B) = 1.602e-19 × 105 × 10-5 = 1.602e-19 N \\
+  & q \times (v \times B) = 1.602e-19 \times 105 \times 10-5 = 1.602e-19 N \\
   & a_EM = 1.602e-19 / 1.673e-27 = 9.575e7 m/s2 \\
-  & Aether correction: × (1 + 10) = × 11 \\
-  & \text{a\_EM\_corr} = 9.575e7 × 11 = 1.053e9 m/s2 \\
-  & Macroscopic scale factor: × 10-12 → 1.053e-3 m/s2
+  & Aether correction: \times (1 + 10) = \times 11 \\
+  & \text{a\_EM\_corr} = 9.575e7 \times 11 = 1.053e9 m/s2 \\
+  & Macroscopic scale factor: \times 10-12 \to 1.053e-3 m/s2
 \end{aligned}
 $$
 
@@ -171,14 +171,14 @@ $$
 
 $$
 \begin{aligned}
-  & g_NGC3603 = (6.956e-7) × (1.00003579) × (0.93935) × (1.1) + 1.053e-3 \\
+  & g_NGC3603 = (6.956e-7) \times (1.00003579) \times (0.93935) \times (1.1) + 1.053e-3 \\
   & = 6.535e-7 + 1.053e-3 \\
-  & ≈ 1.053×10-3 m/s2
+  & \approx 1.053\times10-3 m/s2
 \end{aligned}
 $$
 
-The Aether EM term (1.053×10-3) dominates by a factor of ~1,600 over the classical gravitational
-term (6.5×10-7).
+The Aether EM term (1.053$\times$10-3) dominates by a factor of ~1,600 over the classical gravitational
+term (6.5$\times$10-7).
 
 ---
 
@@ -186,12 +186,12 @@ term (6.5×10-7).
 
 | Contribution | Value (m/s2) | Fraction |
 |-------------|--------------|---------|
-| Classical gravity g_grav | 6.535×10-7 | 0.062% |
-| Aether EM correction | 1.053×10-3 | 99.94% |
-| **Total g_NGC3603** | **1.053×10-3** | **100%** |
+| Classical gravity g_grav | 6.535$\times$10-7 | 0.062% |
+| Aether EM correction | 1.053$\times$10-3 | 99.94% |
+| **Total g_NGC3603** | **1.053$\times$10-3** | **100%** |
 
 $$
-At t = 5×105 yr:  g_NGC3603 ≈ 1.053×10-3 m/s2
+At t = 5\times105 yr:  g_NGC3603 \approx 1.053\times10-3 m/s2
 $$
 
 The dominance of the Aether EM correction reflects the importance of non-standard vacuum coupling in
@@ -208,13 +208,13 @@ star-forming regions.
 mass-to-volume ratio), the Aether EM coupling term vastly exceeds classical gravity, consistent with
 UQFF predictions.
 3. **Feedback Modeling:** The exponential decay of both mass growth M_dot(t) and feedback P(t) with
-the same timescale τ = 1 Myr provides a self-consistent picture of cluster evolution.
+the same timescale $\tau$ = 1 Myr provides a self-consistent picture of cluster evolution.
 
 ---
 
 ## 7. Conclusion
 
-The clean UQFF master equation for NGC 3603 gives g ≈ 1.053×10-3 m/s2, dominated by the Aether EM
+The clean UQFF master equation for NGC 3603 gives g $\approx$ 1.053$\times$10-3 m/s2, dominated by the Aether EM
 correction term rather than classical DPM-seeded gravity. This is the streamlined "clean" derivation
 from the May 09, 2025 DeepSearch session, complementing the full first-pass derivation in PAPER_795.
 The result demonstrates UQFF's versatility in modeling extreme star-forming environments with
@@ -228,10 +228,10 @@ This paper satisfies the G6 Standard-Model Anchor Gate (CVW v2.0.0):
 
 | Observable | UQFF Prediction | SM / Observational Value |
 |-----------|-----------------|-------------------------|
-| Cluster half-span | r = 8.998×1015 m | 9.5 ly (Hubble WFC3) |
+| Cluster half-span | r = 8.998$\times$1015 m | 9.5 ly (Hubble WFC3) |
 | Cluster age | 1 Myr | 1 Myr (Hubble) |
 | Stellar wind | 2,000 km/s | ~2,000 km/s (observed) |
-| g_NGC3603 | 1.053×10-3 m/s2 | consistent with stellar dynamics scale |
+| g_NGC3603 | 1.053$\times$10-3 m/s2 | consistent with stellar dynamics scale |
 | Secondary SFR | 10% additional mass | Bok globules observed (Hubble) |
 
 Cross-reference: PAPER_795 (NGC 3603 first pass), PAPER_705, PAPER_706 (Session 175 stellar
@@ -250,7 +250,7 @@ Davinci-SuperGrok (xAI)*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -269,7 +269,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -305,7 +305,7 @@ the phonon transmission efficiency across the ICM.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -408,7 +408,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

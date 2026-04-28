@@ -35,7 +35,7 @@ chaos — downward only — through compactification stages to yield mass. There
 "solid ground" starting point; the solid ground of observable 3D reality is the
 *result* of this fall, not its foundation.
 
-**Critical directional rule:** 26D → 9D → 3D → 2D (downward projection ONLY)
+**Critical directional rule:** 26D $\to$ 9D $\to$ 3D $\to$ 2D (downward projection ONLY)
 
 ---
 
@@ -44,7 +44,7 @@ chaos — downward only — through compactification stages to yield mass. There
 | Dimension | Role | Physical Manifestation |
 |-----------|------|----------------------|
 | 26D | Universal Aether (UA) substrate — pure energy, least negligible | Primordial field, pre-mass |
-| 9D | Sphere voids — 3×3 dimensional groupings for triad forces | Intermediate compactification |
+| 9D | Sphere voids — 3$\times$3 dimensional groupings for triad forces | Intermediate compactification |
 | 3D | Observable mass, cosmic structures, plasma | Stars, galaxies, atoms |
 | 2D | Reference plane only — CERN collision wreckage | Higgs field observations |
 
@@ -70,7 +70,7 @@ Void_{synth} = \det(M_{26\to9}) \cdot \begin{pmatrix} U_g \\ U_m \\ U_b \end{pma
 F_{inert} \cdot E^{26D}
 $$
 
-where $M_{26\to9}$ is the 26→9 compactification matrix encoding SCm-UA trapping geometry.
+where $M_{26\to9}$ is the 26$\to$9 compactification matrix encoding SCm-UA trapping geometry.
 
 ### Full 26D Unified Field Equation
 
@@ -78,7 +78,7 @@ $$
 F_U^{26D} = U_g + U_m + U_b + \frac{\text{SCm}}{UA} + BBDT \cdot Prob_{order}
 $$
 
-Triple simultaneous system (26D → 9D → 3D):
+Triple simultaneous system (26D $\to$ 9D $\to$ 3D):
 $$
 \begin{cases}
 U_g = g \cdot \frac{\text{SCm}}{UA} \cdot (U_{g1} + U_{g2} + U_{g3}) \cdot (v_{init}/v_{current}) \\
@@ -106,7 +106,7 @@ All sub-eggs expand to recapture $v_{init}$, generating:
 
 26D chaos produces unique downward projections via 3D-IPO overlay (see PAPER_498):
 - Wolfram hypergraph rule branching (computational irreducibility)
-- π decimal progression (irrational, aperiodic)
+- $\pi$ decimal progression (irrational, aperiodic)
 - Infinity Generator series (bounded divergence)
 
 $$
@@ -140,7 +140,7 @@ $$
 ## §6 Validation Targets
 
 - **CMB anisotropies**: 26D energy fall artifacts observable as temperature fluctuations
-- **Cosmological constant** $\Lambda$: UA baseline from incomplete 26D→3D projection
+- **Cosmological constant** $\Lambda$: UA baseline from incomplete 26D$\to$3D projection
 - **Quantum vacuum energy density**: $\sim10^{-9}$ J/m3 sets UA negligibility floor
 - **JWST large-scale structure**: Hypergraph of cosmic eggs manifests as observed cosmic web
 
@@ -182,7 +182,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -283,7 +283,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.191 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -294,10 +294,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

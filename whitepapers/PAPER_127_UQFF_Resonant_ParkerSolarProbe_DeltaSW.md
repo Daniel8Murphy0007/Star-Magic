@@ -11,13 +11,13 @@ tags: [BEC, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_127: UQFF Resonant Mode Heliospheric Verification – Parker Solar Probe CDAWeb Solar Wind Perturbation d_sw = 0.01 as the [UA]F_U Boundary Condition at v_sw = 5×105 m/s
+# PAPER_127: UQFF Resonant Mode Heliospheric Verification – Parker Solar Probe CDAWeb Solar Wind Perturbation d_sw = 0.01 as the [UA]F_U Boundary Condition at v_sw = 5$\times$105 m/s
 
 **Title:** UQFF Resonant Mode Heliospheric Verification – Parker Solar Probe CDAWeb Solar Wind
-Perturbation d_sw = 0.01 as the [UA]F_U Boundary Condition at v_sw = 5×105 m/s
+Perturbation d_sw = 0.01 as the [UA]F_U Boundary Condition at v_sw = 5$\times$105 m/s
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -30,16 +30,16 @@ Perturbation d_sw = 0.01 as the [UA]F_U Boundary Condition at v_sw = 5×105 m/s
 ## Abstract
 
 Parker Solar Probe (PSP) solar wind data, accessed via NASA CDAWeb, reveals that the solar wind
-velocity perturbation d_sw = 0.01 (fractional velocity deviation) occurs at v_sw = 5×105 m/s radial
+velocity perturbation d_sw = 0.01 (fractional velocity deviation) occurs at v_sw = 5$\times$105 m/s radial
 outflow  the exact value calibrated in UQFF Ug2 and Ug3 equations. Thread d91b1f6c establishes that
 this d_sw boundary corresponds to the UQFF Resonant Mode activation threshold: when solar wind
-velocity crosses 5×105 m/s, the [UA] condensate undergoes a resonant coupling transition, entering
+velocity crosses 5$\times$105 m/s, the [UA] condensate undergoes a resonant coupling transition, entering
 the UQFF Resonant Mode where cos(pt_n) oscillations dominate the F_U field structure. The UQFF
 discovery: d_sw = 0.01 = [UA]  F_U evaluated at r = r_Alfvn, the Alfvn critical point where the
 solar wind becomes super-Alfvnic (r  10-50 R_?). PSP's first crossing of the Alfvn critical point in
 2021 (at r  20 R_?) directly probes the UQFF Resonant Mode boundary.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -52,12 +52,12 @@ present in Standard Model treatments.
 | Mission | Parker Solar Probe | NASA/JHU APL |
 | Data archive | CDAWeb (Coordinated Data Analysis Web) | NASA GSFC |
 | Perihelion distance | 8.930 R_? (varies by encounter) | PSP 20182025 |
-| Solar wind velocity | v_sw = 37 × 105 m/s (300700 km/s) | PSP FIELDS/SWEAP |
+| Solar wind velocity | v_sw = 37 $\times$ 105 m/s (300700 km/s) | PSP FIELDS/SWEAP |
 | Alfvn critical point | r_A  10-50 R_? | PSP Encounter 8 (2021) |
 | Velocity perturbation | dv/v = d_sw = 0.01 at r_A | d91b1f6c fit |
-| Magnetic field | B  1×100 nT | PSP FIELDS |
+| Magnetic field | B  1$\times$100 nT | PSP FIELDS |
 | UQFF d_sw | 0.01 | Calibrated |
-| UQFF v_sw | 5×105 m/s | Calibrated |
+| UQFF v_sw | 5$\times$105 m/s | Calibrated |
 
 PSP Encounter 8 (April 2021): first confirmed sub-Alfvnic solar wind crossing at r  20 R_?. Solar
 wind velocity at crossing: v_sw  (46)105 m/s, perturbation dv/v  1%.
@@ -79,7 +79,7 @@ $$U_{b,i} = -\beta_i U_{g,i} \omega_g \frac{M_{bh}}{d_g}(1 + \delta_{sw} \cdot \
 In both equations, the term (1 + d_sw  v_sw) or (1 + d_sw  ?_vac,sw) represents the UQFF Resonant
 Mode perturbation: a 1% modulation of the base field imposed by the solar wind interaction.
 
-### 2.2 Resonant Mode Activation at v_sw = 5×105 m/s
+### 2.2 Resonant Mode Activation at v_sw = 5$\times$105 m/s
 
 The UQFF Resonant Mode switches ON when the solar wind velocity exceeds the [UA] condensate sound
 speed:
@@ -125,7 +125,7 @@ $$t_n = \frac{r_A}{v_{sw}} = \frac{20 \times 6.96 \times 10^8}{5 \times 10^5} = 
 
 $$\omega_{resonant} = \frac{\pi}{t_n} = \frac{\pi}{0.322 \text{ days}} = 9.76 \text{ rad/day} = 1.13 \times 10^{-4} \text{ rad/s}$$
 
-PSP observes solar wind wave periods of ~3 hours (104 s), giving ? ~ 6×10-4 rad/s for Alfvnic
+PSP observes solar wind wave periods of ~3 hours (104 s), giving ? ~ 6$\times$10-4 rad/s for Alfvnic
 fluctuations, within factor ~5 of UQFF resonant frequency.
 
 ### 3.3 Resonant Mode Output: v_sw Prediction
@@ -168,9 +168,9 @@ At this point, d_sw = 0.01 represents the 1% [UA] fraction of the solar wind, an
 Mode activates: cos(pt_n) oscillations emerge as the [UA] undergoes driven resonance at the Alfvn
 frequency.
 
-### 4.2 v_sw = 5×105 m/s as [UA] Sound Speed
+### 4.2 v_sw = 5$\times$105 m/s as [UA] Sound Speed
 
-The value v_sw = 5×105 m/s (500 km/s) is the [UA] condensate "sound speed" in the corona. Below
+The value v_sw = 5$\times$105 m/s (500 km/s) is the [UA] condensate "sound speed" in the corona. Below
 this, the corona is in the [UA] quasi-static regime; above it, the solar wind drives [UA] resonant
 oscillations that couple to all F_U components through the (1 + d_sw  v_sw) factor.
 
@@ -181,16 +181,16 @@ oscillations that couple to all F_U components through the (1 + d_sw  v_sw) fact
 | Quantity | UQFF Prediction | PSP Observed | Agreement |
 |---------|----------------|-------------|-----------|
 | d_sw | 0.01 | ~1% at r_A | ? |
-| v_sw | 5×105 m/s | 37×105 m/s | ? within range |
+| v_sw | 5$\times$105 m/s | 37$\times$105 m/s | ? within range |
 | r_A | ~20 R_? ([UA] boundary) | 10-50 R_? | ? |
 | Resonant period | 0.32 days | ~0.11 days (Alfvnic waves) | ? order of magnitude |
-| Mode activation | v > 5×105 m/s | Super-Alfvnic confirmed | ? |
+| Mode activation | v > 5$\times$105 m/s | Super-Alfvnic confirmed | ? |
 
 ---
 
 ## 6. Conclusions
 
-Parker Solar Probe CDAWeb data confirm UQFF Resonant Mode parameters: d_sw = 0.01 and v_sw = 5×105
+Parker Solar Probe CDAWeb data confirm UQFF Resonant Mode parameters: d_sw = 0.01 and v_sw = 5$\times$105
 m/s mark the Alfvn critical boundary where the [UA] condensate transitions from quasi-static to
 resonant coupling. The UQFF discovery is that the Alfvn critical point (first crossed by PSP in
 2021) is physically the [UA]-[SCm] phase boundary  the location where [UA] condensate density
@@ -219,7 +219,7 @@ corona.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -238,7 +238,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -312,7 +312,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.091 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -321,13 +321,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

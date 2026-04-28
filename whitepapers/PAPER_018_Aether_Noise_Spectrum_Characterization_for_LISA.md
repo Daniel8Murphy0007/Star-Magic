@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2026-03-07  
 **Domain:** 1.2 — Gravitational Waves — LISA Future Detector  
 **Primary Validation File:** `validate_lisa_extended.py`  
-**Calibration constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Calibration constants:** $\kappa$ = 0.0005/day, [SSq] = 0.57  
 
 ---
 
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 We characterize the spectral signature of UQFF aether fields in the LISA frequency band (0.1–100
 mHz). UQFF predicts that U_m vacuum field oscillations imprint narrow spectral lines at harmonics of
-f_U ≈ 1 mHz onto the stochastic gravitational wave background (SGWB), with an integrated aether
+f_U $\approx$ 1 mHz onto the stochastic gravitational wave background (SGWB), with an integrated aether
 power fraction of 222.93% relative to the GR SGWB. The peak aether feature at f_peak = 0.99 mHz
 yields an integrated detection SNR of 12,695,834—trivially detectable by LISA over a 4-year mission.
 A broad TRZ suppression dip (~10%) appears near 5 mHz. These spectral features have no astrophysical
@@ -34,7 +34,7 @@ analogue and constitute a smoking-gun test of UQFF vacuum structure.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -44,12 +44,12 @@ present in Standard Model treatments.
 
 UQFF predicts that the vacuum supports actively coupled aether fields characterized by:
 - **U_m:** Magnetic energy parameter (= 1.0 in calibrated UQFF)
-- **β_m:** Modulation parameter (= 0.01)
+- **$\beta$_m:** Modulation parameter (= 0.01)
 - **f_TRZ:** Trans-zero frequency factor (= 0.1)
 
 These fields interact with propagating GWs to create:
 1. Spectral **power excess** at fundamental and harmonic frequencies
-2. **Sideband pairs** from β_m modulation
+2. **Sideband pairs** from $\beta$_m modulation
 3. A broad **suppression dip** from TRZ near 5 mHz
 
 ---
@@ -58,7 +58,7 @@ These fields interact with propagating GWs to create:
 
 The total stochastic power spectral density (PSD) in the LISA band:
 
-**S_UQFF(f) = S_GR(f) × [1 + P_aether(f)] × F_TRZ(f)**
+**S_UQFF(f) = S_GR(f) $\times$ [1 + P_aether(f)] $\times$ F_TRZ(f)**
 
 where the GR background follows $S_{GR}(f) \propto \Omega_{GW}(f) \propto f^{2/3}$ (inspiral-dominated), and:
 
@@ -71,11 +71,11 @@ $$F_{TRZ}(f) = 1 - 0.1\,\exp!\left[-\frac{(f-f_{TRZ})^2}{2\sigma_{TRZ}^2}\right]
 **Key numerical results:** U_m = 1.0e-4, f_U(harmonic 1) = 9.9e-1 mHz = 9.9e-4 Hz, Omega_GW ~
 1.0e-9, F_TRZ peak suppression = 1.0e-1 (10%)
 
-**P_aether(f) = U_m × Σₙ exp(−n/2) × δ(f − n f_U) × W(Δf)**
+**P_aether(f) = U_m $\times$ $\Sigma$ₙ exp(-n/2) $\times$ $\delta$(f - n f_U) $\times$ W($\Delta$f)**
 
-with spectral line width W(Δf) ≈ 10% fractional bandwidth, and:
+with spectral line width W($\Delta$f) $\approx$ 10% fractional bandwidth, and:
 
-**F_TRZ(f) = 1 − 0.1 × exp[−(f − f_TRZ,peak)2 / (2σ_TRZ2)]**
+**F_TRZ(f) = 1 - 0.1 $\times$ exp[-(f - f_TRZ,peak)2 / (2$\sigma$_TRZ2)]**
 
 ---
 
@@ -83,13 +83,13 @@ with spectral line width W(Δf) ≈ 10% fractional bandwidth, and:
 
 | Component | Frequency | Amplitude | Origin |
 |-----------|-----------|-----------|--------|
-| GR SGWB | 0.1–100 mHz | Ω_GW ~ 10-9 | Inspiral population |
-| U_m harmonic n=1 | **0.99 mHz** | U_m × 1.0 | Fundamental aether line |
-| U_m harmonic n=2 | ~2 mHz | U_m × e-1 | 1st harmonic |
-| U_m harmonic n=3 | ~3 mHz | U_m × e-1·5 | 2nd harmonic |
-| U_m harmonics n=4,5 | ~4, 5 mHz | U_m × e-ⁿ/2 | Higher harmonics |
-| β_m sidebands | f_n ± 0.01 mHz | β_m × amplitude | Modulation pairs |
-| TRZ suppression | ~5 mHz | −10% | Trans-zero dip |
+| GR SGWB | 0.1–100 mHz | $\Omega$_GW ~ 10-9 | Inspiral population |
+| U_m harmonic n=1 | **0.99 mHz** | U_m $\times$ 1.0 | Fundamental aether line |
+| U_m harmonic n=2 | ~2 mHz | U_m $\times$ e-1 | 1st harmonic |
+| U_m harmonic n=3 | ~3 mHz | U_m $\times$ e-1$\cdot$5 | 2nd harmonic |
+| U_m harmonics n=4,5 | ~4, 5 mHz | U_m $\times$ e-ⁿ/2 | Higher harmonics |
+| $\beta$_m sidebands | f_n $\pm$ 0.01 mHz | $\beta$_m $\times$ amplitude | Modulation pairs |
+| TRZ suppression | ~5 mHz | -10% | Trans-zero dip |
 
 ---
 
@@ -99,7 +99,7 @@ with spectral line width W(Δf) ≈ 10% fractional bandwidth, and:
 |--------|-------|
 | Frequency range | 0.10 – 100 mHz |
 | Spectral bins | 200 |
-| Spectral resolution Δf | 8 × 10-6 mHz |
+| Spectral resolution $\Delta$f | 8 $\times$ 10-6 mHz |
 | Observation time | 4 years |
 | Aether power fraction P_aether/P_GR | **222.93%** |
 | Peak aether frequency f_peak | **0.99 mHz** |
@@ -115,9 +115,9 @@ the LISA band—an unmistakably strong signature.
 
 | Source | Spectrum Shape | Prediction | UQFF Distinguishable? |
 |--------|---------------|------------|----------------------|
-| GR SGWB (inspiral) | ∝ f^(2/3) | Ω_GW ~ 10-9 | Baseline |
+| GR SGWB (inspiral) | $\propto$ f^(2/3) | $\Omega$_GW ~ 10-9 | Baseline |
 | Galactic WD foreground | Peaked at ~3 mHz | Reduced by UQFF factor | Yes — WD band modified |
-| LISA instrument noise | ∝ f-4 (low f) | Not modified | Yes — different spectral shape |
+| LISA instrument noise | $\propto$ f-4 (low f) | Not modified | Yes — different spectral shape |
 | Cosmological SGWB | Flat (inflation) | Not modified | Yes — UQFF adds lines |
 | **UQFF aether lines** | **Harmonic comb** | **222.93%** | **Unique signature** |
 
@@ -148,7 +148,7 @@ Test status from `compute_aether_noise_spectrum()`:
 
 1. **Targeted narrow-band search at 1, 2, 3 mHz:** Comb filter for U_m harmonic signature with 10%
 bandwidth windows
-2. **Cross-correlation test:** Compare LISA data-stream with predicted sideband pattern at f_n ±
+2. **Cross-correlation test:** Compare LISA data-stream with predicted sideband pattern at f_n $\pm$
 f_mod (f_mod = 0.01 mHz)
 3. **TRZ notch identification:** Low-pass filter around 5 mHz to identify broad suppression against
 WD foreground
@@ -209,7 +209,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -228,7 +228,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -305,7 +305,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -316,13 +316,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -344,14 +344,14 @@ bridge.*
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10-22 | Inertia tensor scale |
+| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k1 | 1.5 | Ug1 DPM-dipole coupling |
+| k2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k3 | 1.8 | Ug3 string-rotation coupling |
+| k4 | 2.0 | Ug4 vacuum-concentration coupling |
+| $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -366,10 +366,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -377,9 +377,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho$_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta$$\omega$ | 2$\pi$/(434$\cdot$365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -387,8 +387,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*

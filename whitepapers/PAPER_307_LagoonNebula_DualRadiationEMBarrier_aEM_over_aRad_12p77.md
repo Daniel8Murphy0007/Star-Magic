@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** 2025
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis discovers a **Dual Radiation-EM Barrier**: both
@@ -32,12 +32,12 @@ gravitational collapse through two independent non-gravitational channels.
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| q | 1.602×10?? C | Proton charge |
-| v_gas | 1×105 m/s | Turbulent gas velocity |
-| B | 1×10-5 T | Nebula magnetic field |
-| m_H | 1.6726×10?7 kg | Hydrogen atom mass |
-| a_rad | 7.51×106 m/s | Radiation pressure acceleration (PAPER_306) |
-| g_base | 4.91×10? m/s | Self-gravity |
+| q | 1.602$\times$10?? C | Proton charge |
+| v_gas | 1$\times$105 m/s | Turbulent gas velocity |
+| B | 1$\times$10-5 T | Nebula magnetic field |
+| m_H | 1.6726$\times$10?7 kg | Hydrogen atom mass |
+| a_rad | 7.51$\times$106 m/s | Radiation pressure acceleration (PAPER_306) |
+| g_base | 4.91$\times$10? m/s | Self-gravity |
 
 ---
 
@@ -71,9 +71,9 @@ The Lagoon Nebula operates with two independent non-gravitational barriers, both
 
 | Barrier | Acceleration | ? (ratio to g_base) | Physical Origin |
 |---------|-------------|---------------------|-----------------|
-| EM turbulence | a_EM = 9.59×107 m/s | ?_EM = 1.96×10? | Lorentz force on turbulent ions |
-| Radiation pressure | a_rad = 7.51×106 m/s | ?_rad = 1.53×10-8 | Herschel 36 O7V photon pressure |
-| **Self-gravity** | g_base = 4.91×10? m/s | 1.0 (reference) | μ_s∇(M_s/r) |
+| EM turbulence | a_EM = 9.59$\times$107 m/s | ?_EM = 1.96$\times$10? | Lorentz force on turbulent ions |
+| Radiation pressure | a_rad = 7.51$\times$106 m/s | ?_rad = 1.53$\times$10-8 | Herschel 36 O7V photon pressure |
+| **Self-gravity** | g_base = 4.91$\times$10? m/s | 1.0 (reference) | $\mu$_s$\nabla$(M_s/r) |
 
 Both barriers independently exceed g_base. EM leads radiation by 12.77.
 
@@ -86,20 +86,20 @@ Both barriers independently exceed g_base. EM leads radiation by 12.77.
 The dual barrier mechanism explains multiple observed features of M8:
 
 1. **Extended ionized zone**: EM acceleration prevents gas compression ? larger Strmgren radius
-2. **Sub-virial turbulence**: v_gas = 1×105 m/s is sub-virial yet produces a_EM >> g_base,
+2. **Sub-virial turbulence**: v_gas = 1$\times$105 m/s is sub-virial yet produces a_EM >> g_base,
 sustaining the nebula against collapse without requiring supersonic turbulence
-3. **Magnetic morphology**: B = 1×10-5 T (typical H II field) contributes via Lorentz force to keep
+3. **Magnetic morphology**: B = 1$\times$10-5 T (typical H II field) contributes via Lorentz force to keep
 the extended zone dynamically supported
 
-### Differentiation from PAPER_299 (Hydrogen PToE ?_EM = 9.65×10?)
+### Differentiation from PAPER_299 (Hydrogen PToE ?_EM = 9.65$\times$10?)
 
-PAPER_299 (Session 86) computed ?_EM = 9.65×10? for an **electron orbital** in a hydrogen atom.
+PAPER_299 (Session 86) computed ?_EM = 9.65$\times$10? for an **electron orbital** in a hydrogen atom.
 PAPER_307 computes **bulk turbulent gas** EM acceleration:
 
 | Regime | System | a_EM | ?_EM | Physical context |
 |--------|--------|------|------|-----------------|
-| PAPER_299 | H atom (PToE) | ~10 m/s | 9.65×10? | Electron orbital Lorentz |
-| PAPER_307 | M8 Lagoon | 9.59×107 m/s | **1.96×10?** | Bulk turbulent gas Lorentz |
+| PAPER_299 | H atom (PToE) | ~10 m/s | 9.65$\times$10? | Electron orbital Lorentz |
+| PAPER_307 | M8 Lagoon | 9.59$\times$107 m/s | **1.96$\times$10?** | Bulk turbulent gas Lorentz |
 
 The physical mechanisms are distinct: orbital (quantum EM) vs. turbulent bulk (MHD EM).
 
@@ -118,7 +118,7 @@ This is the FIRST UQFF module where **both** a_EM AND a_rad independently exceed
 $$g_\text{Lagoon}(t) = \underbrace{\frac{G M(t)}{r^2}}_{\text{base}} \cdot (1+H_z t)(1-B/B_c)(1+f_\text{TRZ})$$
 $$+ U_{g,\text{sum}} + \frac{\Lambda c^2}{3} + \frac{\hbar}{m_H \Delta x^2} + \underbrace{a_\text{EM}}_{\text{P307}} + g_\text{fluid} + g_\text{osc} + g_\text{DM} - \underbrace{a_\text{rad}}_{\text{P306}}$$
 
-The net non-gravitational contribution: a_EM - a_rad = 9.59×107 - 7.51×106 = **8.84×107 m/s** (EM
+The net non-gravitational contribution: a_EM - a_rad = 9.59$\times$107 - 7.51$\times$106 = **8.84$\times$107 m/s** (EM
 dominates, net outward support).
 
 ---
@@ -134,8 +134,8 @@ dominates, net outward support).
 
 ---
 
-*Computed values: a_EM=9.59×107 m/s, ?_EM=1.96×10?, a_rad=7.51×106 m/s, ?_rad=1.53×10-8,
-a_EM/a_rad=12.77, net=(a_EM-a_rad)=8.84×107 m/s*
+*Computed values: a_EM=9.59$\times$107 m/s, ?_EM=1.96$\times$10?, a_rad=7.51$\times$106 m/s, ?_rad=1.53$\times$10-8,
+a_EM/a_rad=12.77, net=(a_EM-a_rad)=8.84$\times$107 m/s*
 
 
 **Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at
@@ -151,7 +151,7 @@ observations.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -170,7 +170,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -245,7 +245,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.088 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -256,13 +256,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

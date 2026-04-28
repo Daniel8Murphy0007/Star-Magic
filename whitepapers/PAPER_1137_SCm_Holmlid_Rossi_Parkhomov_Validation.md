@@ -19,7 +19,7 @@ Holmlid reports ultra-dense deuterium D(–1) clusters with:
 - Bond distance $d = 2.3 \pm 0.1$ pm
 - Density $\rho \approx 10^{29}$ cm$^{-3}$ ($\approx 140$ kg/cm$^3$)
 - Kinetic energy release (KER) = 630 eV per D–D pair
-- Spontaneous meson chain: D(0) → K$^\pm$ → $\pi^\pm$ → $\mu^\pm$ → e$^\pm$ (938 → 493 → 139 → 105 → 0.511 MeV)
+- Spontaneous meson chain: D(0) $\to$ K$^\pm$ $\to$ $\pi^\pm$ $\to$ $\mu^\pm$ $\to$ e$^\pm$ (938 $\to$ 493 $\to$ 139 $\to$ 105 $\to$ 0.511 MeV)
 
 **SCm vacuum manifold explanation:**
 

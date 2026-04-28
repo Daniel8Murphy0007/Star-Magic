@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_299
-title: "Hydrogen Atom UQFF Electrogravitational Dominance Ratio: η_EM = 9.65×1029"
+title: "Hydrogen Atom UQFF Electrogravitational Dominance Ratio: $\eta$_EM = 9.65$\times$1029"
 session: 85
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -10,15 +10,15 @@ tags: [AGN, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_299 — Hydrogen Atom UQFF Electrogravitational Dominance Ratio: η_EM = 9.65×1029
+# PAPER_299 — Hydrogen Atom UQFF Electrogravitational Dominance Ratio: $\eta$_EM = 9.65$\times$1029
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
 **Session:** 85  
 **Module:** HYDROGEN_ATOM_UQFF_MODULE.cpp (27th C++ UQFF module — FIRST atomic-scale module)  
-**System:** Hydrogen ground state — Bohr model, M_p = 1.6726×10-27 kg, r_Bohr = 5.2918×10-11 m, z =
+**System:** Hydrogen ground state — Bohr model, M_p = 1.6726$\times$10-27 kg, r_Bohr = 5.2918$\times$10-11 m, z =
 0  
-**Category:** Electrogravitational Dominance — FIRST UQFF atomic module, FIRST η_EM computation  
+**Category:** Electrogravitational Dominance — FIRST UQFF atomic module, FIRST $\eta$_EM computation  
 **UQFF Version:** 2.0  
 
 ---
@@ -27,10 +27,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 At the atomic scale, the UQFF framework reveals a fundamental asymmetry between gravitational and
 electromagnetic forces. The DPM-seeded gravitational acceleration at the Bohr radius (g_base =
-3.99×10-17 m/s2) is the smallest base-gravity value across all 27 UQFF modules — five orders of
-magnitude below the previous minimum (M16 Eagle Nebula, 1.454×10-12 m/s2). The electron Lorentz
-acceleration in the atomic magnetic field (a_Lorentz = q×v_orb×B/m_e = 3.85×1013 m/s2) completely
-dominates the UQFF total. The ratio η_EM = a_Lorentz/g_base = **9.65×1029** defines the UQFF
+3.99$\times$10-17 m/s2) is the smallest base-gravity value across all 27 UQFF modules — five orders of
+magnitude below the previous minimum (M16 Eagle Nebula, 1.454$\times$10-12 m/s2). The electron Lorentz
+acceleration in the atomic magnetic field (a_Lorentz = q$\times$v_orb$\times$B/m_e = 3.85$\times$1013 m/s2) completely
+dominates the UQFF total. The ratio $\eta$_EM = a_Lorentz/g_base = **9.65$\times$1029** defines the UQFF
 Electrogravitational Dominance Ratio — the largest force asymmetry computed in the UQFF framework.
 
 ---
@@ -42,13 +42,13 @@ framework:
 
 | Parameter | Value | Units |
 |-----------|-------|-------|
-| Proton mass M_p | 1.6726×10-27 | kg |
-| Bohr radius r_Bohr | 5.2918×10-11 | m |
-| Electron mass m_e | 9.1094×10-31 | kg |
-| Electron orbital velocity v_orb = α·c | 2.1877×106 | m/s |
-| Atomic magnetic field B_atom (est.) | 1.0×10-4 | T |
-| Electron charge q | 1.6022×10-19 | C |
-| Fine-structure constant α | 7.2974×10-3 | — |
+| Proton mass M_p | 1.6726$\times$10-27 | kg |
+| Bohr radius r_Bohr | 5.2918$\times$10-11 | m |
+| Electron mass m_e | 9.1094$\times$10-31 | kg |
+| Electron orbital velocity v_orb = $\alpha$$\cdot$c | 2.1877$\times$106 | m/s |
+| Atomic magnetic field B_atom (est.) | 1.0$\times$10-4 | T |
+| Electron charge q | 1.6022$\times$10-19 | C |
+| Fine-structure constant $\alpha$ | 7.2974$\times$10-3 | — |
 
 ---
 
@@ -60,7 +60,7 @@ $$g_{\text{base}} = \frac{G \cdot M_p}{r_{\text{Bohr}}^2} = \frac{6.6743 \times 
 
 $$g_{\text{base}} = \frac{1.116 \times 10^{-37}}{2.800 \times 10^{-21}} = 3.986 \times 10^{-17} \; \text{m/s}^2$$
 
-**Smallest g_base in all UQFF modules.** Prior minimum: M16 Eagle Nebula (1.454×10-12 m/s2).
+**Smallest g_base in all UQFF modules.** Prior minimum: M16 Eagle Nebula (1.454$\times$10-12 m/s2).
 Hydrogen is 5 orders of magnitude smaller.
 
 ### 2.2 Electron Lorentz Acceleration (Dominant Term)
@@ -82,15 +82,15 @@ hydrogen Bohr radius.
 
 | Quantity | Value | Units | Notes |
 |----------|-------|-------|-------|
-| g_base | 3.986×10-17 | m/s2 | DPM-seeded at r_Bohr |
-| a_Lorentz | 3.848×1013 | m/s2 | DOMINANT EM term |
-| η_EM | **9.65×1029** | — | **[PAPER_299]** |
-| a_Ug (Ug1+Ug4) | 7.972×10-17 | m/s2 | 2×g_base |
-| a_quantum (HUP) | ~1.5×10-34 | m/s2 | (ħ/√(Δx·Δp))×2π/t_H |
-| a_osc (Lyman) | ~2×10-10 | m/s2 | [PAPER_300] |
-| `a_GR_min` | ~2.8×10-60 | m/s2 | [PAPER_301] |
-| a_Lambda | 3.30×10-36 | m/s2 | cosmological |
-| Total g_H (t=0) | ~3.85×1013 | m/s2 | EM-dominated |
+| g_base | 3.986$\times$10-17 | m/s2 | DPM-seeded at r_Bohr |
+| a_Lorentz | 3.848$\times$1013 | m/s2 | DOMINANT EM term |
+| $\eta$_EM | **9.65$\times$1029** | — | **[PAPER_299]** |
+| a_Ug (Ug1+Ug4) | 7.972$\times$10-17 | m/s2 | 2$\times$g_base |
+| a_quantum (HUP) | ~1.5$\times$10-34 | m/s2 | (ħ/$\sqrt{}$($\Delta$x$\cdot$$\Delta$p))$\times$2$\pi$/t_H |
+| a_osc (Lyman) | ~2$\times$10-10 | m/s2 | [PAPER_300] |
+| `a_GR_min` | ~2.8$\times$10-60 | m/s2 | [PAPER_301] |
+| a_Lambda | 3.30$\times$10-36 | m/s2 | cosmological |
+| Total g_H (t=0) | ~3.85$\times$1013 | m/s2 | EM-dominated |
 
 ---
 
@@ -101,11 +101,11 @@ modules:
 
 | Module | System | g_base (m/s2) | Session |
 |--------|--------|---------------|---------|
-| **Hydrogen (THIS)** | H atom, r_Bohr | **3.99×10-17** | **85** |
-| M16 Eagle Nebula | nebula ~35 ly | 1.454×10-12 | 80 |
+| **Hydrogen (THIS)** | H atom, r_Bohr | **3.99$\times$10-17** | **85** |
+| M16 Eagle Nebula | nebula ~35 ly | 1.454$\times$10-12 | 80 |
 | M87 (hypothetical) | galaxy | ~10-10 | — |
 | HUDF z=3.5 | deep field galaxy | ~10-10 | 72g |
-| Observable Universe | r=4.4×1026 m | 3.45×10-10 | 84 |
+| Observable Universe | r=4.4$\times$1026 m | 3.45$\times$10-10 | 84 |
 | Saturn | planetary | 10.44 | 78 |
 
 Hydrogen g_base is **5 orders smaller** than the prior minimum (M16) and **27 orders smaller** than
@@ -115,10 +115,10 @@ Saturn.
 
 ## 5. Physical Interpretation
 
-The η_EM ratio of 9.65×1029 quantifies the well-known dominance of electromagnetism over gravity at
+The $\eta$_EM ratio of 9.65$\times$1029 quantifies the well-known dominance of electromagnetism over gravity at
 atomic scales. Within the UQFF framework, this is the first direct computation of this asymmetry as
 a UQFF term ratio. The result is consistent with the known force ratio
-(electromagnetic/gravitational ≈ 1036 for electron-proton, with η_EM here representing the
+(electromagnetic/gravitational $\approx$ 1036 for electron-proton, with $\eta$_EM here representing the
 Lorentz/DPM-seeded ratio specifically at v_orb and B_atom=10-4 T).
 
 The EM term a_Lorentz represents the centripetal Lorentz force maintaining the electron in its Bohr
@@ -144,9 +144,9 @@ WOLFRAM_TERM: `HYDROGEN_LORENTZ = "a_Lorentz = q*v_orb*B/m_e = 3.85e13 m/s^2; et
 ## 7. Significance
 
 1. **First UQFF atomic-scale module**: Establishes the lower bound of the UQFF gravity spectrum
-2. **First η_EM computation**: Defines the electrogravitational dominance ratio as a named UQFF
+2. **First $\eta$_EM computation**: Defines the electrogravitational dominance ratio as a named UQFF
 quantity  
-3. **Minimum g_base**: 3.99×10-17 m/s2 — 5 orders below prior module minimum (M16)
+3. **Minimum g_base**: 3.99$\times$10-17 m/s2 — 5 orders below prior module minimum (M16)
 4. **EM-dominated limit**: All 26 prior modules were gravity-dominated or GR-dominated; hydrogen is
 the first EM-dominated
 5. **Scale anchor**: Provides the atomic-scale end of the UQFF multi-scale framework (companion to
@@ -156,8 +156,8 @@ Universe-scale PAPER_296–298)
 
 ## 8. Cross-References
 
-- **PAPER_298** (Session 84): GR Curvature Dominance ε_GR = 5.056 > 1 at Universe scale — opposite extreme
-- **PAPER_301** (Session 85): Proton ε_GR = 7.04×10-44 — GR spectral minimum (same module)
+- **PAPER_298** (Session 84): GR Curvature Dominance $\varepsilon$_GR = 5.056 > 1 at Universe scale — opposite extreme
+- **PAPER_301** (Session 85): Proton $\varepsilon$_GR = 7.04$\times$10-44 — GR spectral minimum (same module)
 - **PAPER_288** (Session 81): DPM-THz Cascade, RSC module — prior smallest UQFF scale (~10 km plasma)
 - **PAPER_266** (Session 72g): Gravitational Meissner Effect — another EM-gravity interface
 
@@ -173,8 +173,8 @@ Lorentz electromagnetic force exceeds DPM-seeded gravity by 30 orders of magnitu
 and GR-dominated regimes of larger UQFF modules.
 
 
-**UQFF computed:** UQFF energy correction term [SSq]h?_g/(k_BT) = 0.57 × 7.7e-50/(1.38e-23 × 300) =
-1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 × 13.6 eV.
+**UQFF computed:** UQFF energy correction term [SSq]h?_g/(k_BT) = 0.57 $\times$ 7.7e-50/(1.38e-23 $\times$ 300) =
+1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 $\times$ 13.6 eV.
 
 ---
 
@@ -184,7 +184,7 @@ and GR-dominated regimes of larger UQFF modules.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -203,7 +203,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -278,7 +278,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.185 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -289,13 +289,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -10,8 +10,8 @@ tags: [accretion, nebula, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_284: M16 Eagle Nebula UQFF — Dual Mass Co-Action Product (Φ_dm)
-## SFR Growth × Photoevaporation Erosion Multiplicative Coupling
+# PAPER_284: M16 Eagle Nebula UQFF — Dual Mass Co-Action Product ($\Phi$_dm)
+## SFR Growth $\times$ Photoevaporation Erosion Multiplicative Coupling
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Mass Dynamics  
 **System:** M16 Eagle Nebula (IC 4703), Eagle Nebula Star-Forming Region  
@@ -22,11 +22,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper introduces the **Dual Mass Co-Action Product** (Φ_dm) — a UQFF gravity modulation factor
+This paper introduces the **Dual Mass Co-Action Product** ($\Phi$_dm) — a UQFF gravity modulation factor
 that couples star-formation-driven mass accumulation and radiation-driven photoevaporation erosion
 through a **multiplicative** product rather than the previously used additive form. For M16 (Eagle
-Nebula), with star formation rate SFR = 1 MM_sun/yr over initial gas mass M₀ = 1200 MM_sun, and maximum
-photoevaporation fraction E₀ = 0.3 (30%), the multiplicative form produces a 24.3% reduction in Φ_dm
+Nebula), with star formation rate SFR = 1 MM_sun/yr over initial gas mass M0 = 1200 MM_sun, and maximum
+photoevaporation fraction E0 = 0.3 (30%), the multiplicative form produces a 24.3% reduction in $\Phi$_dm
 relative to the additive approximation at t = 5 Myr. This is the **first UQFF module** to
 simultaneously apply an additive-gain and saturation-subtractive product on the same gravity term.
 
@@ -37,7 +37,7 @@ simultaneously apply an additive-gain and saturation-subtractive product on the 
 In active star-forming nebulae, two competing processes drive mass evolution:
 
 1. **Star Formation Accretion** — molecular gas accretes onto protostars, increasing the effective
-gravitational mass fraction by SFR_rate × t.
+gravitational mass fraction by SFR_rate $\times$ t.
 2. **Photoevaporation Erosion** — UV radiation from newly formed massive stars erodes the
 surrounding gas, progressively reducing the effective mass by a saturating fraction E_rad(t).
 
@@ -62,12 +62,12 @@ is physically accurate for pillar-geometry star formation (e.g., M16's "Pillars 
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| M₀ | 2.387 × 1033 kg (1200 MM_sun) | Initial nebula gas mass |
+| M0 | 2.387 $\times$ 1033 kg (1200 MM_sun) | Initial nebula gas mass |
 | SFR | 1 MM_sun/yr | Star formation rate |
-| SFR_rate | 2.639 × 10-11 s-1 | = SFR / (M₀/MM_sun) / (3.156×107 s/yr) |
-| τ_erode | 9.468 × 1013 s (3 Myr) | Photoevaporation e-folding time |
-| E₀ | 0.3 | Maximum photoevaporation fraction |
-| g_base | 1.454 × 10-12 m/s2 | G × M / r2 at r = 3.31 × 1017 m |
+| SFR_rate | 2.639 $\times$ 10-11 s-1 | = SFR / (M0/MM_sun) / (3.156$\times$107 s/yr) |
+| $\tau$_erode | 9.468 $\times$ 1013 s (3 Myr) | Photoevaporation e-folding time |
+| E0 | 0.3 | Maximum photoevaporation fraction |
+| g_base | 1.454 $\times$ 10-12 m/s2 | G $\times$ M / r2 at r = 3.31 $\times$ 1017 m |
 
 ### 3.2 Dual Co-Action Product
 
@@ -93,18 +93,18 @@ additive approximation whenever both SFR accumulation and erosion are simultaneo
 
 ## 4. Numerical Results at t = 5 Myr
 
-t = 5 Myr = 1.578 × 1014 s
+t = 5 Myr = 1.578 $\times$ 1014 s
 
 | Quantity | Value |
 |----------|-------|
-| `M_sf_frac` | SFR_rate × t = 2.639×10-11 × 1.578×1014 = **4164.8** |
-| E_rad | E₀ × (1 − exp(−5/3)) = 0.3 × 0.8110 = **0.2433** |
-| Φ_dm (multiplicative) | (1 + 4164.8) × (1 − 0.2433) = 4165.8 × 0.7567 = **3151.9** |
-| Φ_dm (additive) | (1 + 4164.8) − 0.2433 = **4165.6** |
-| **`gap_mult_add`** | −(4164.8 × 0.2433) = **−1013.3** (24.3% less) |
-| g_dyn(5 Myr) | 1.454×10-12 × 3151.9 = **4.583 × 10-9 m/s2** |
+| `M_sf_frac` | SFR_rate $\times$ t = 2.639$\times$10-11 $\times$ 1.578$\times$1014 = **4164.8** |
+| E_rad | E0 $\times$ (1 - exp(-5/3)) = 0.3 $\times$ 0.8110 = **0.2433** |
+| $\Phi$_dm (multiplicative) | (1 + 4164.8) $\times$ (1 - 0.2433) = 4165.8 $\times$ 0.7567 = **3151.9** |
+| $\Phi$_dm (additive) | (1 + 4164.8) - 0.2433 = **4165.6** |
+| **`gap_mult_add`** | -(4164.8 $\times$ 0.2433) = **-1013.3** (24.3% less) |
+| g_dyn(5 Myr) | 1.454$\times$10-12 $\times$ 3151.9 = **4.583 $\times$ 10-9 m/s2** |
 
-The multiplicative gap of −1013.3 confirms that treating erosion as acting on the growing mass
+The multiplicative gap of -1013.3 confirms that treating erosion as acting on the growing mass
 reservoir (not the static initial mass) produces a **measurable 24.3% reduction** compared to the
 additive approximation.
 
@@ -116,8 +116,8 @@ In the full M16 UQFF 2.0 equation:
 
 $$g_{total}(r, t) = \left[g_{dyn}(t) + U_{g,sum}(26) + \Lambda + Q + L + F + g_{exp}\right] \times \text{corr}_{SC}$$
 
-The Φ_dm product modulates only the dynamic base gravity term g_dyn. The 26-layer Triadic (U_g,sum),
-cosmological Λ, quantum, Lorentz, fluid, and Friedmann expansion terms are all independent of Φ_dm —
+The $\Phi$_dm product modulates only the dynamic base gravity term g_dyn. The 26-layer Triadic (U_g,sum),
+cosmological $\Lambda$, quantum, Lorentz, fluid, and Friedmann expansion terms are all independent of $\Phi$_dm —
 the modulation is cleanly scoped to the time-evolving mass component.
 
 ---
@@ -126,8 +126,8 @@ the modulation is cleanly scoped to the time-evolving mass component.
 
 | Module | SFR Term | Erosion Term | Form |
 |--------|----------|-------------|------|
-| Session 55 CP3 M16EagleNebulaRadiationSFR | g_base×(1+M_sf) | −E_rad | **Additive** |
-| **This paper (PAPER_284)** | (1+M_sf) | ×(1−E_rad) | **Multiplicative** |
+| Session 55 CP3 M16EagleNebulaRadiationSFR | g_base$\times$(1+M_sf) | -E_rad | **Additive** |
+| **This paper (PAPER_284)** | (1+M_sf) | $\times$(1-E_rad) | **Multiplicative** |
 
 This is the **first UQFF module** to use the multiplicative dual co-action form, correctly encoding
 the coupled feedback between star formation accretion and pillar photoevaporation for M16-class
@@ -146,8 +146,8 @@ $$
 
 ## 8. Cross-References
 
-- **PAPER_285:** Erosion Saturation Half-Time (t_half, ΔgMax)
-- **PAPER_286:** Nebular Friedmann Redshift (κ_neb, z=0.0015)
+- **PAPER_285:** Erosion Saturation Half-Time (t_half, $\Delta$gMax)
+- **PAPER_286:** Nebular Friedmann Redshift ($\kappa$_neb, z=0.0015)
 - **M16_UQFF_MODULE.cpp:** Full UQFF 2.0 C++ implementation (22nd module)
 - **CondensedPhysics3.py:** `M16DualMassCoActionProductCalculator`
 
@@ -163,7 +163,7 @@ $$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -182,7 +182,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -291,7 +291,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.126 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -302,13 +302,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

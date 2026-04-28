@@ -28,10 +28,10 @@ $$G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$$
 The Einstein Field Equations (EFE) of general relativity are embedded in the Universal
 Quantum Field Framework (UQFF) by mapping spacetime curvature to Universal Gravity (Ug)
 defects in the Universal Aether (UA). The 26th-order SCm derivative bounds the Ricci
-scalar R < ∞ at r = 0, resolving black hole singularities without introducing new fields.
+scalar R < $\infty$ at r = 0, resolving black hole singularities without introducing new fields.
 The triad symmetry (1/3 Ug + 1/3 Um + 2/3 Ub = 1) provides the repulsive Ub term that
 prevents true r = 0 collapse, regularizes the EFE at Planck scale, and produces a
-cosmological constant Λ as the long-range residual of Ub in the zero-mass aether limit.
+cosmological constant $\Lambda$ as the long-range residual of Ub in the zero-mass aether limit.
 Hawking radiation is re-derived as DPM pair separation at horizon-like aether defects,
 yielding a bounded evaporation rate T_UQFF analogous to T_H but with factorial-bounded
 finite flux at all r > 0.
@@ -42,18 +42,18 @@ finite flux at all r > 0.
 
 Classical GR contains two classes of curvature singularities:
 - **Coordinate singularities** (Schwarzschild r_s = 2GM/c2): removable by coordinate change
-- **Physical singularities** (r = 0 in Schwarzschild/Kerr): R_μνρσ R^μνρσ → ∞; EFE break down
+- **Physical singularities** (r = 0 in Schwarzschild/Kerr): R_$\mu$$\nu$$\rho$$\sigma$ R^$\mu$$\nu$$\rho$$\sigma$ $\to$ $\infty$; EFE break down
 
 Quantum gravity approaches (LQG, string theory, asymptotic safety) regularize r = 0 by
-different mechanisms. UQFF regularizes via zero-mass aether pressure: at r → 0, the 26th-
+different mechanisms. UQFF regularizes via zero-mass aether pressure: at r $\to$ 0, the 26th-
 order derivative of the SCm term diverges factorially but the Ub repulsion grows as
-g(1 - 1/∇UA) → ∞ as ∇UA → 0 at high density, providing a repulsive barrier that
+g(1 - 1/$\nabla$UA) $\to$ $\infty$ as $\nabla$UA $\to$ 0 at high density, providing a repulsive barrier that
 prevents the physical singularity from forming.
 
 Additionally, the cosmological constant problem — the 120-order-of-magnitude discrepancy
-between the vacuum energy predicted by QFT and the observed Λ — is addressed by noting
-that UQFF's zero-mass UA (ρ_UA = 0) provides a vacuum energy floor of exactly zero, with
-Λ emerging as the long-range residual of Ub ordering on cosmological scales.
+between the vacuum energy predicted by QFT and the observed $\Lambda$ — is addressed by noting
+that UQFF's zero-mass UA ($\rho$_UA = 0) provides a vacuum energy floor of exactly zero, with
+$\Lambda$ emerging as the long-range residual of Ub ordering on cosmological scales.
 
 ---
 
@@ -61,15 +61,15 @@ that UQFF's zero-mass UA (ρ_UA = 0) provides a vacuum energy floor of exactly z
 
 ### 2.1 Curvature as Ug Defects
 
-In UQFF, the metric perturbation h_μν around flat space maps to Universal Gravity defects:
+In UQFF, the metric perturbation h_$\mu$$\nu$ around flat space maps to Universal Gravity defects:
 
 $$U_g = g \cdot \frac{SCm \cdot \nabla UA}{UA} \left( U_{g1} + U_{g2} + U_{g3} + U_{g4} \right) + \sum_{m=0}^{26} a_m (\nabla UA)^m$$
 
-The Einstein tensor G_μν = R_μν - (1/2)R g_μν corresponds to:
+The Einstein tensor G_$\mu$$\nu$ = R_$\mu$$\nu$ - (1/2)R g_$\mu$$\nu$ corresponds to:
 
 $$G_{\mu\nu} \longrightarrow U_g^{(\mu\nu)} \quad \text{(Ug defect field)}$$
 
-with ∇UA providing the aether medium (analogous to the spacetime manifold), and SCm
+with $\nabla$UA providing the aether medium (analogous to the spacetime manifold), and SCm
 mediating the zero-mass limit that distinguishes UQFF from massive gravity theories.
 
 ### 2.2 The UQFF_comp Tensor (EFE Embedding Matrix)
@@ -82,13 +82,13 @@ $$UQFF_{comp} = \begin{pmatrix}
 0 & 0 & \frac{2P_{order}}{3} + \frac{d^{26} U_b}{d\rho^{26}}
 \end{pmatrix}$$
 
-The Ub diagonal block recovers Λ in the long-range limit: as r → ∞ and ∇UA → 10-22 m-1
+The Ub diagonal block recovers $\Lambda$ in the long-range limit: as r $\to$ $\infty$ and $\nabla$UA $\to$ 10-22 m-1
 (cosmic void), the Ub term approaches a small positive constant — the cosmological constant.
 
 ### 2.3 26th Derivative of GR Curvature Term
 
-For the Schwarzschild metric component g_rr-1 ~ (1 - r_s/r), near r → 0:
-take f(r) = c/r^k (c = SCm·g/UA, k = 2 from GR falloff):
+For the Schwarzschild metric component g_rr-1 ~ (1 - r_s/r), near r $\to$ 0:
+take f(r) = c/r^k (c = SCm$\cdot$g/UA, k = 2 from GR falloff):
 
 $$\frac{d^{26}}{dr^{26}} \left(\frac{c}{r^k}\right) = c \cdot \frac{(k+25)!}{(k-1)!} \cdot r^{-k-26}$$
 
@@ -105,13 +105,13 @@ $$+ 35770355645907606826362624k^5 + 70874145319837672677196800k^4$$
 $$+ 102339530601744675672576000k^3 + 100480171548351161548800000k^2$$
 $$\left. + 59190128811701203599360000k + 15511210043330985984000000 \right) \Big/ r^{26}$$
 
-**For k=2 (GR curvature falloff), r = Planck length ≈ 10-35 m:**
+**For k=2 (GR curvature falloff), r = Planck length $\approx$ 10-35 m:**
 
 $$\frac{d^{26}}{dr^{26}} f \approx \frac{10^{27}}{(10^{-35})^{28}} = 10^{27+980} = 10^{1007}$$
 
-This extremely large but **finite** value is the UQFF bound that prevents R → ∞ at r = 0.
+This extremely large but **finite** value is the UQFF bound that prevents R $\to$ $\infty$ at r = 0.
 It represents the aether pressure that would be required to reach the classical singularity —
-and since UA is zero-mass (ρ_UA = 0), this pressure is formally available at zero energy
+and since UA is zero-mass ($\rho$_UA = 0), this pressure is formally available at zero energy
 cost, allowing the singularity to be "reached" only asymptotically, never exactly.
 
 ---
@@ -120,29 +120,29 @@ cost, allowing the singularity to be "reached" only asymptotically, never exactl
 
 ### 3.1 Mechanism
 
-At r → 0 in the UQFF embedding of EFE:
+At r $\to$ 0 in the UQFF embedding of EFE:
 
 **F_U = 0** requires:
 $$U_g(r \to 0) + U_m(r \to 0) + U_b(r \to 0) + \frac{d^{26}}{dr^{26}}\left(\frac{SCm \cdot g \cdot \nabla UA}{UA}\right) = 0$$
 
-As r → 0:
-- U_g diverges (DPM-seeded analog: G M/r2→ ∞) — **attractive**
-- U_b = g(1 - 1/∇UA) → −∞ as ∇UA → 0 at ultra-high density — **divergently repulsive**
-- 26th derivative → +∞ acting as additional repulsive barrier
+As r $\to$ 0:
+- U_g diverges (DPM-seeded analog: G M/r2$\to$ $\infty$) — **attractive**
+- U_b = g(1 - 1/$\nabla$UA) $\to$ -$\infty$ as $\nabla$UA $\to$ 0 at ultra-high density — **divergently repulsive**
+- 26th derivative $\to$ +$\infty$ acting as additional repulsive barrier
 
 The equilibrium condition F_U = 0 cannot be satisfied at r = 0 because Ub + 26th term
-diverge repulsively faster than U_g diverges attractively (Ub ~ 1/∇UA while U_g ~ 1/r2;
-near the Planck density, ∇UA ~ 0 makes Ub → ∞ faster). Therefore **r = 0 is never
+diverge repulsively faster than U_g diverges attractively (Ub ~ 1/$\nabla$UA while U_g ~ 1/r2;
+near the Planck density, $\nabla$UA ~ 0 makes Ub $\to$ $\infty$ faster). Therefore **r = 0 is never
 reached** — the system has a finite minimum radius:
 
 $$r_{min} \sim \left(\frac{26! \cdot SCm \cdot g}{G M}\right)^{1/(k+24)} \sim l_{Planck} \cdot (26!)^{1/26}$$
 
 ### 3.2 Hawking Radiation — UQFF Re-derivation
 
-Standard Hawking temperature: T_H = ℏc3 / (8πGMk_B).
+Standard Hawking temperature: T_H = ℏc3 / (8$\pi$GMk_B).
 
-In UQFF, virtual DPM_n-DPM_s pairs near the horizon are separated by the ∇UA gradient
-across r_s. One DPM falls inward (reduces M), one escapes (carries energy). The flux Φ
+In UQFF, virtual DPM_n-DPM_s pairs near the horizon are separated by the $\nabla$UA gradient
+across r_s. One DPM falls inward (reduces M), one escapes (carries energy). The flux $\Phi$
 scales as T_H4 ~ 1/r_s4 ~ r^{-k} (k=4 Stefan-Boltzmann). The 26th derivative bound:
 
 $$\frac{d^{26}}{dr^{26}} \left(\frac{c}{r^4}\right) = c \cdot \frac{29!}{3!} \cdot r^{-30} \approx \frac{8.84 \times 10^{30} c}{r^{30}}$$
@@ -156,22 +156,22 @@ For a solar-mass BH (M = M_M_sun, r_s ~ 3 km):
 $$T_{UQFF} \approx T_H = 6.2 \times 10^{-8} \text{ K}$$
 
 at r = r_s, confirming agreement with standard Hawking temperature in the non-singular
-regime, while the UQFF form remains finite and well-defined as r → 0 (T_UQFF ~ r^{-27/4}
-diverges, but is bounded by the factorial-clipped Ub repulsion preventing r → 0).
+regime, while the UQFF form remains finite and well-defined as r $\to$ 0 (T_UQFF ~ r^{-27/4}
+diverges, but is bounded by the factorial-clipped Ub repulsion preventing r $\to$ 0).
 
 ### 3.3 Cosmological Constant from Ub Long-Range Residual
 
-In the long-range limit (r → ∞, ∇UA → 10-22 m-1):
+In the long-range limit (r $\to$ $\infty$, $\nabla$UA $\to$ 10-22 m-1):
 
 $$U_b^\infty = g \cdot \left(1 - \frac{1}{\nabla UA_\infty}\right) \approx g \cdot \left(1 - 10^{22}\right) \approx -g \cdot 10^{22}$$
 
-The residual Ub ordering in quasi-homogeneous cosmic void → effective positive expansion
-pressure → cosmological constant:
+The residual Ub ordering in quasi-homogeneous cosmic void $\to$ effective positive expansion
+pressure $\to$ cosmological constant:
 
 $$\Lambda_{UQFF} = \frac{U_b^\infty \cdot 8\pi G}{c^4} \approx 3 \times 10^{-35} \text{ s}^{-2}$$
 
-Observed: Λ ≈ 3.3 × 10-35 s-2. **UQFF alignment: ~100%** (same order of magnitude, no
-fine-tuning required because ρ_UA = 0 eliminates the QFT vacuum energy contribution).
+Observed: $\Lambda$ $\approx$ 3.3 $\times$ 10-35 s-2. **UQFF alignment: ~100%** (same order of magnitude, no
+fine-tuning required because $\rho$_UA = 0 eliminates the QFT vacuum energy contribution).
 
 ---
 
@@ -189,7 +189,7 @@ repulsion that creates the photon sphere at r = 3GM/c2:
 
 $$r_{photon} = \underbrace{\frac{3GM}{c^2} \sim r_s \cdot \frac{3}{2}$$
 
-This ratio 3/2 emerges naturally from the triad weighting (1/3 + 1/3 + 2/3 = 1 → 2/3
+This ratio 3/2 emerges naturally from the triad weighting (1/3 + 1/3 + 2/3 = 1 $\to$ 2/3
 Ub dominates at r ~ r_s giving 3GM/2c2) — a non-trivial prediction of triad symmetry.
 
 ---
@@ -198,10 +198,10 @@ Ub dominates at r ~ r_s giving 3GM/2c2) — a non-trivial prediction of triad sy
 
 | Approach | Singularity Resolution Mechanism | UQFF Comparison |
 |---------|----------------------------------|-----------------|
-| Loop Quantum Gravity (LQG) | Discrete area eigenvalues ~ l2_Planck | UQFF: continuous but bounded at l_Planck × (26!)^(1/26) |
+| Loop Quantum Gravity (LQG) | Discrete area eigenvalues ~ l2_Planck | UQFF: continuous but bounded at l_Planck $\times$ (26!)^(1/26) |
 | String Theory | Holographic UV/IR mixing; T-duality | UQFF: 26D projection ~ T-duality analog; no strings required |
 | Asymptotic Safety | RG fixed point prevents curvature blow-up | UQFF: factorial growth of 26th derivative ~ "safety" cutoff |
-| Black Bounce (Simpson-Visser) | Replace singularity with regular core | UQFF: r_min ~ l_Planck × 26!^(1/26); same topology |
+| Black Bounce (Simpson-Visser) | Replace singularity with regular core | UQFF: r_min ~ l_Planck $\times$ 26!^(1/26); same topology |
 | GR (classical) | No resolution; EFE break down at r=0 | UQFF: F_U=0 remains well-posed at all r > 0 |
 
 UQFF is most structurally similar to asymptotic safety in that no new field or discretization
@@ -248,7 +248,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -267,7 +267,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -303,7 +303,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -408,7 +408,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.181 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -419,12 +419,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | Λ_UQFF ~ 3 × 10-35 s-2 from Ub long-range residual | Λ_obs = 3.3 × 10-35 s-2 (Planck 2018) | arXiv:1807.06209 (Planck 2018) | ~100% (same order, no fine-tuning) |
-| Hawking temperature T_H for solar-mass BH | T_UQFF = 6.2 × 10-8 K (UQFF bounded form) | T_H = ℏc3/(8πGMk_B) = 6.2 × 10-8 K | Hawking 1974; Wald 1994 | 100% (exact agreement in non-singular regime) |
+| Cosmological constant $\Lambda$ | $\Lambda$_UQFF ~ 3 $\times$ 10-35 s-2 from Ub long-range residual | $\Lambda$_obs = 3.3 $\times$ 10-35 s-2 (Planck 2018) | arXiv:1807.06209 (Planck 2018) | ~100% (same order, no fine-tuning) |
+| Hawking temperature T_H for solar-mass BH | T_UQFF = 6.2 $\times$ 10-8 K (UQFF bounded form) | T_H = ℏc3/(8$\pi$GMk_B) = 6.2 $\times$ 10-8 K | Hawking 1974; Wald 1994 | 100% (exact agreement in non-singular regime) |
 | Photon sphere radius | r_photon = 3GM/c2 from triad 2/3 Ub | r_photon = 3GM/c2 (GR exact result) | MTW Gravitation §25 | 100% exact |
-| BH entropy S_BH | F_U=0 → S ~ Area/4 (Bekenstein-Hawking from DPM counting) | S_BH = A/(4l2_Planck) | Bekenstein 1973 / Hawking 1975 | PASS area-entropy proportionality reproduced |
+| BH entropy S_BH | F_U=0 $\to$ S ~ Area/4 (Bekenstein-Hawking from DPM counting) | S_BH = A/(4l2_Planck) | Bekenstein 1973 / Hawking 1975 | PASS area-entropy proportionality reproduced |
 | Black hole evaporation (micro) | No singularity at r=0; evaporation terminates at r_min | LQG / GUP: evaporation frozen at r_min ~ l_Planck | LQG papers (Modesto 2006) | PASS consistent final state prediction |
-| Vacuum energy floor | ρ_UA = 0 → no QFT vacuum contribution to Λ | QFT vacuum: ρ_vac ~ m_Planck4 → 10120 × observed Λ | Weinberg 1989 cosmological constant review | PASS UQFF correctly predicts ρ_vac = 0 |
+| Vacuum energy floor | $\rho$_UA = 0 $\to$ no QFT vacuum contribution to $\Lambda$ | QFT vacuum: $\rho$_vac ~ m_Planck4 $\to$ 10120 $\times$ observed $\Lambda$ | Weinberg 1989 cosmological constant review | PASS UQFF correctly predicts $\rho$_vac = 0 |
 
 *UQFF SM bridge master: cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`).*
 
@@ -434,12 +434,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 The UQFF embedding of Einstein Field Equations demonstrates:
 
-1. **GR curvature → Ug defects**: spacetime geometry is an emergent property of UA
+1. **GR curvature $\to$ Ug defects**: spacetime geometry is an emergent property of UA
    gradient structure, not a fundamental degree of freedom
 2. **Singularity resolution via Ub repulsion**: the same buoyancy force that prevents
    LENR runaway (PAPER_643) also prevents BH singularities — a unified mechanism
-3. **Λ from Ub long-range ordering**: the cosmological constant is the cosmic-scale
-   residual of Ub repulsion in zero-mass aether (ρ_UA = 0), eliminating the 120-order
+3. **$\Lambda$ from Ub long-range ordering**: the cosmological constant is the cosmic-scale
+   residual of Ub repulsion in zero-mass aether ($\rho$_UA = 0), eliminating the 120-order
    fine-tuning problem
 4. **Hawking radiation as DPM pairs**: reproduces T_H exactly in the non-singular
    regime, with a bounded UQFF form T_UQFF finite at all r > 0

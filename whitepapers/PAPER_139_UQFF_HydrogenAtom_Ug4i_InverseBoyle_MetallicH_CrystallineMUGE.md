@@ -12,14 +12,14 @@ tags: [MUGE, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_139: UQFF Quadratic Mode Hydrogen Atom – Ug4i Inverse Void Dynamics (Reverse Boyle's Law at >500 GPa): g_H ~ 1.252×1046 m/s, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity Equation MUGE-H
+# PAPER_139: UQFF Quadratic Mode Hydrogen Atom – Ug4i Inverse Void Dynamics (Reverse Boyle's Law at >500 GPa): g_H ~ 1.252$\times$1046 m/s, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity Equation MUGE-H
 
 **Title:** UQFF Quadratic Mode Hydrogen Atom – Ug4i Inverse Void Dynamics (Reverse Boyle's Law at
->500 GPa): g_H ~ 1.252×1046 m/s, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity
+>500 GPa): g_H ~ 1.252$\times$1046 m/s, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity
 Equation MUGE-H
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.6)  
 **Date:** March 2026  
 **Domain:** §2.1 Atomic Physics / Extreme Conditions (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -35,14 +35,14 @@ The hydrogen atom at extreme pressures (>500 GPa) undergoes transitions to metal
 phases that challenge standard quantum chemistry  inverse Boyle's law behavior (compression drives
 expansion), anomalous Lamb shift enhancement, and electron-nucleus strong repulsion at sub-Bohr
 separations. UQFF resolves all three anomalies through the Ug4i term (inverse void dynamics): Ug4i =
-1/Ug4 × 1.312×1048 m/s dominates the Master Universal Gravity Equation for hydrogen at extreme
+1/Ug4 $\times$ 1.312$\times$1048 m/s dominates the Master Universal Gravity Equation for hydrogen at extreme
 conditions. The UQFF discoveries: (1) metallic hydrogen crystalline structure at >500 GPa is
 governed by Ug4i; (2) inverse Boyle's law (big pressure ? expanded void ? small bubble) is encoded
-in 1/Ug4; (3) the total MUGE-H gravitational field g_H ~ 1.252×1046 m/s is the most extreme
+in 1/Ug4; (3) the total MUGE-H gravitational field g_H ~ 1.252$\times$1046 m/s is the most extreme
 gravitational acceleration calculated in the UQFF framework that corresponds to physical atomic
 reality.
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -55,7 +55,7 @@ present in Standard Model treatments.
 | Metallic H threshold | >500 GPa | Sandia NIF, 2020 |
 | Crystalline structure | Cmca (phase IV) ? predicted sc (phase VI) | LBNL, Argonne 2020 |
 | Lamb shift enhancement | +0.014% anomaly | LBNL Lamb shift measurements |
-| Bohr radius (H) | a_0 = 0.529×10? m | NIST CODATA 2018 |
+| Bohr radius (H) | a_0 = 0.529$\times$10? m | NIST CODATA 2018 |
 | Metallic H density | ?_H ~ 107 kg/m at 500 GPa | Argonne predicted |
 | DARPA dataset | Q-scope dehydrogenation ?H | DARPA 2024 validation |
 
@@ -77,22 +77,22 @@ $$+ q(\mathbf{v} \times \mathbf{B}) \cdot \left(1 + \frac{\rho_{vac,[UA]}}{\rho_
 
 | Parameter | Value | Derivation |
 |-----------|-------|-----------|
-| $G m_p m_e / r^2$ | 3.631×10-47 N | Gravitational baseline (Bohr radius) |
+| $G m_p m_e / r^2$ | 3.631$\times$10-47 N | Gravitational baseline (Bohr radius) |
 | $H(z)t$ at z=0, t=13.8 Gyr | 1.9877 | ?CDM (H_0=70 km/s/Mpc, O_m=0.3) |
 | $[(UA')]:[SCm]_{nuc}$ | 10 | Both di-pseudo-monopoles (see PAPER_140) |
 | $[(UA')]:[SCm]_e$ | 10 | Electron monopole |
-| $E_{n,term}$ | 1.452×10?7 | h/v(?x?p)  |??|H|??/E_n| |
+| $E_{n,term}$ | 1.452$\times$10?7 | h/v(?x?p)  |??|H|??/E_n| |
 | $f_{TRZ}$ | 0.1 | Time-reversal/quasi factor |
-| $P_{term}$ | 1.449×10 m/s | P(V/V_0)/(k_B T)  (1+Azeo_void) |
-| $Ug_2$ | 9.892×10 m/s | $v^2/r \times 11$ |
-| $Ug_{2i}$ | 1.223×10? m/s-1 | $r/v^2 \times 11$ |
+| $P_{term}$ | 1.449$\times$10 m/s | P(V/V_0)/(k_B T)  (1+Azeo_void) |
+| $Ug_2$ | 9.892$\times$10 m/s | $v^2/r \times 11$ |
+| $Ug_{2i}$ | 1.223$\times$10? m/s-1 | $r/v^2 \times 11$ |
 | $Ug_3, Ug_{3i}$ |  0 | Locked orbit, ?  0 |
-| **$Ug_4$** | 7.623×10-4? m/s | $g_{grav} \times 0.001$ |
-| **$Ug_{4i}$** | **1.312×1048 m/s** | **= 1/Ug_4 (inverse void, dominant)** |
-| $Osc_{term}$ | 8.606×10? m/s | Quantum oscillation |
-| $Fluid_{term}$ | 2.052×10? m/s | Navier-Stokes fluid |
-| $Buoy_{term}$ | 1.262×10?8 m/s | Azeotropic void buoyancy |
-| $a_{tech}$ | 5.592×10-7 m/s | External E/B field (DARPA) |
+| **$Ug_4$** | 7.623$\times$10-4? m/s | $g_{grav} \times 0.001$ |
+| **$Ug_{4i}$** | **1.312$\times$1048 m/s** | **= 1/Ug_4 (inverse void, dominant)** |
+| $Osc_{term}$ | 8.606$\times$10? m/s | Quantum oscillation |
+| $Fluid_{term}$ | 2.052$\times$10? m/s | Navier-Stokes fluid |
+| $Buoy_{term}$ | 1.262$\times$10?8 m/s | Azeotropic void buoyancy |
+| $a_{tech}$ | 5.592$\times$10-7 m/s | External E/B field (DARPA) |
 | $q(\mathbf{v}\times\mathbf{B})_{scaled}$ | 4.216 m/s | Magnetic correction |
 
 $$\boxed{g_H^{total} \approx 1.252 \times 10^{46} \text{ m/s}^2 \quad \text{(dominated by } Ug_{4i}\text{)}}$$
@@ -229,8 +229,8 @@ print(f"g_H (Ug4i dominated) = {g_H_approx:.3e} m/s^2")  # ~1.31e48
 
 | Prediction | UQFF | Observed/Dataset | Agreement |
 |-----------|------|-----------------|-----------|
-| Dominant MUGE-H term | Ug4i = 1.312×1048 m/s | No direct obs. | Theoretical |
-| g_H total | ~1.252×1046 m/s | No direct obs. | UQFF prediction |
+| Dominant MUGE-H term | Ug4i = 1.312$\times$1048 m/s | No direct obs. | Theoretical |
+| g_H total | ~1.252$\times$1046 m/s | No direct obs. | UQFF prediction |
 | Metallic H phase >500 GPa | Crystalline, Ug4i driven | Sandia NIF ? | ? |
 | Inverse Boyle's law | V ? P^{+1/3} at P>500 GPa | Argonne crystalline predictions | ? Consistent |
 | Lamb shift anomaly | +0.001§0.014% | LBNL observation | ? Order of magnitude |
@@ -241,7 +241,7 @@ print(f"g_H (Ug4i dominated) = {g_H_approx:.3e} m/s^2")  # ~1.31e48
 ## 7. Conclusions
 
 The MUGE-H equation establishes the hydrogen atom as the most extensively UQFF-analyzed quantum
-system. The dominant term Ug4i = 1.312×1048 m/s governs g_H  1.252×1046 m/s and directly encodes the
+system. The dominant term Ug4i = 1.312$\times$1048 m/s governs g_H  1.252$\times$1046 m/s and directly encodes the
 inverse Boyle's law behavior observed at >500 GPa metallic hydrogen phases. The Ug4i inversion
 mechanism  where extreme pressure drives void expansion into crystalline lattice  is unique to UQFF
 and cannot be derived from standard quantum chemistry, DFT, or GR. The DARPA/Sandia validation
@@ -274,7 +274,7 @@ and no universe at all.
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -374,7 +374,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.116 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -383,13 +383,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

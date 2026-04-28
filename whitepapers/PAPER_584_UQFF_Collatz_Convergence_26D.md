@@ -14,7 +14,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
+> **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; k_$\eta$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
 **CP4 Class:** `#171  UQFFCollatzConvergence26DCalculator`
@@ -62,7 +62,7 @@ Map the Collatz orbit to the UQFF tensor:
 | Odd: $3n+1$   | CCW buildup $\omega_{CCW}$ | $dm$ diagonal |
 | Cycle bound   | 26D shell boundary | $db$ diagonal |
 
-The UQFF 3×3 tensor at each Collatz step has eigenvalues:
+The UQFF 3$\times$3 tensor at each Collatz step has eigenvalues:
 
 $$\lambda_{1,2} = \frac{P}{3} + \frac{dg+dm}{2} \mp \frac{1}{2}\sqrt{4c^2+(dg-dm)^2}$$
 
@@ -159,7 +159,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -260,7 +260,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.107 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -271,10 +271,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Riemann zeta zeros (critical line σ=1/2) | UQFF DPM layered shell spectrum → zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on σ=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
-| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow κ-modulated density: N(T) = (T/2π)ln(T/2πe) + κ×correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
+| Riemann zeta zeros (critical line $\sigma$=1/2) | UQFF DPM layered shell spectrum $\to$ zeros lie on Re(s)=1/2 via buoyancy resonance condition | Riemann Hypothesis: all non-trivial zeros on $\sigma$=1/2 | Clay Mathematics 2000 | UQFF provides physical mechanism |
+| First 1013 Riemann zeros (computational) | UQFF predicts zeros follow $\kappa$-modulated density: N(T) = (T/2$\pi$)ln(T/2$\pi$e) + $\kappa$$\times$correction | Verified: first 1013 zeros on critical line (Odlyzko 2001) | Odlyzko 2001 | PASS UQFF consistent with verified range |
 | Quantum chaos spectral statistics (GUE) | UQFF DPM mode spacing follows GUE random matrix distribution | Riemann zero spacings: GUE statistics confirmed | Montgomery 1973; numerical | PASS Consistent (random matrix universality) |
-| Prime counting function π(x) | UQFF shell radiance cascade → prime gaps ~ DVP pocket spacing | |π(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
+| Prime counting function $\pi$(x) | UQFF shell radiance cascade $\to$ prime gaps ~ DVP pocket spacing | |$\pi$(x) - Li(x)| < x^0.5 ln(x) (conditional on RH) | Number theory | UQFF supports RH-consistent bound |
 
 **New physics claim:** UQFF DPM buoyancy provides a physical regularisation of the Riemann zeta
 function: the vacuum buoyancy floor prevents zeros from drifting off the critical line, in the

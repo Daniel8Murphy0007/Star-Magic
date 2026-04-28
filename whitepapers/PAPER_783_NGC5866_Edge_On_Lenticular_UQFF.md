@@ -23,11 +23,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 NGC 5866 (Messier 102 candidate) is a lenticular galaxy seen precisely edge-on, ~44 million
-light-years away (z ≈ 0.0029) in the constellation Draco. Its iconic Hubble ACS image (2006) shows a
+light-years away (z $\approx$ 0.0029) in the constellation Draco. Its iconic Hubble ACS image (2006) shows a
 razor-thin dark dust lane bisecting the galaxy's elliptical stellar body — one of the most dramatic
 edge-on disk configurations in the nearby universe. With very low SFR (~0.1 MM_sun/yr) and total mass
 ~1011 MM_sun, NGC 5866 is the quintessential quiescent lenticular with residual dust. Under UQFF,
-standard rotation (v = 105 m/s), minimal M_sf, and quiescent B-field yield g_NGC5866 ≈ 1.053×10-3
+standard rotation (v = 105 m/s), minimal M_sf, and quiescent B-field yield g_NGC5866 $\approx$ 1.053$\times$10-3
 m/s2.
 
 ---
@@ -46,17 +46,17 @@ preserved gas, not actively forming stars) and retains the standard v = 105 m/s 
 ## 2. Master UQFF Gravity Equation
 
 $$
-g_NGC5866(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) + a_EM
+g_NGC5866(r, t) = (G \times M) / r2 \times (1 + H(z)\timest) \times (1 + M_sf) \times (1 + f_TRZ) + a_EM
 $$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | HST |
-| Disk radius | r | 3×1020 m (~32 kly) | NED |
+| Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | HST |
+| Disk radius | r | 3$\times$1020 m (~32 kly) | NED |
 | SFR | — | 0.1 MM_sun/yr | Very low S0 |
-| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | Hubble time |
 | M_sf | — | 0.008 | UQFF minimal |
 | Redshift | z | 0.0029 | Spectroscopic |
 | v_EM | v | 105 m/s | Disk rotation |
@@ -69,12 +69,12 @@ $$
 
 ### Step 1: Base Gravitational Term
 $$
-g_grav = 6.6743e-11 × 1.989e41 / (3e20)2 = 1.476e-10 m/s2
+g_grav = 6.6743e-11 \times 1.989e41 / (3e20)2 = 1.476e-10 m/s2
 $$
 
 ### Step 2: Cosmic Expansion Factor
 $$
-H(z) = 2.273e-18 s-1; H(z)×t = 0.359; factor = 1.359
+H(z) = 2.273e-18 s-1; H(z)\timest = 0.359; factor = 1.359
 $$
 
 ### Step 3: SFR Mass Fraction (Minimal Dust-Only S0)
@@ -89,7 +89,7 @@ $$
 
 ### Step 5: Gravitational Total
 $$
-\text{g\_grav\_total} = 1.476e-10 × 1.359 × 1.008 × 1.02 = 2.065e-10 m/s2
+\text{g\_grav\_total} = 1.476e-10 \times 1.359 \times 1.008 \times 1.02 = 2.065e-10 m/s2
 $$
 
 ### Step 6: Aether EM Correction
@@ -99,7 +99,7 @@ $$
 
 ### Step 7: Final Solution
 $$
-g_NGC5866 = 2.065e-10 + 1.053e-3 ≈ 1.053e-3 m/s2
+g_NGC5866 = 2.065e-10 + 1.053e-3 \approx 1.053e-3 m/s2
 $$
 
 ---
@@ -116,7 +116,7 @@ geometry does not affect the UQFF result, confirming the framework's rotational 
 
 ## 5. Conclusions
 
-UQFF applied to NGC 5866 yields g ≈ 1.053×10-3 m/s2, consistent with quiescent lenticulars. The M_sf
+UQFF applied to NGC 5866 yields g $\approx$ 1.053$\times$10-3 m/s2, consistent with quiescent lenticulars. The M_sf
 = 0.008 sets a new UQFF lower bound for dust-lane S0 galaxies with zero active star formation.
 
 *PAPER_783, CP4 class #367. v5.42.*
@@ -259,7 +259,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.078 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -270,13 +270,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

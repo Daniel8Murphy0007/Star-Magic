@@ -33,9 +33,9 @@ Kepler's Supernova Remnant is the remnant of SN 1604 CE — the last supernova i
 observed with the naked eye, studied by Johannes Kepler, Galileo Galilei, and contemporaries. At
 approximately 20,000 light-years distance, it is the most distant SNR in the five-system Chandra
 dataset, yet its UQFF buoyancy force is identical to the closest member (SN 1006 at ~7,000 ly):
-F_U_Bi ˜ +2.11 × 102°8 N.
+F_U_Bi ˜ +2.11 $\times$ 102°8 N.
 
-This identity — despite a 3× distance difference, a 2.4× age difference, a 10× lower X-ray
+This identity — despite a 3$\times$ distance difference, a 2.4$\times$ age difference, a 10$\times$ lower X-ray
 luminosity (L_X = 1031 vs 1032 W for SN 1006), and the highest ejecta velocity in the dataset
 (v_shock = 4,000 km/s, the fastest Type Ia ejecta) — constitutes the **historical anchor** of the
 UQFF Force Equivalence Class. Both SN 1006 and Kepler SNR 1604 share ?0 = 10?12, and this single
@@ -49,7 +49,7 @@ becomes **more robust** as physical parameters deviate from the Eta Carinae cali
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -60,10 +60,10 @@ present in Standard Model treatments.
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
 | Distance | d | ~20,000 ly (~6.4 kpc) | ly | Chandra/JWST 2023 |
-| Age | t | 1.325 × 101° s | s (~420 yr since 1604 CE) |
-| Ejecta mass | M | ~1 M_sun = 1.989 × 1031 | kg | Type Ia model |
-| Remnant radius | r | 6.17 × 1016 | m (~20 ly) | Chandra imaging |
-| **X-ray luminosity** | **L_X** | **1031 W** | **W** | **10× fainter than SN 1006** |
+| Age | t | 1.325 $\times$ 101° s | s (~420 yr since 1604 CE) |
+| Ejecta mass | M | ~1 M_sun = 1.989 $\times$ 1031 | kg | Type Ia model |
+| Remnant radius | r | 6.17 $\times$ 1016 | m (~20 ly) | Chandra imaging |
+| **X-ray luminosity** | **L_X** | **1031 W** | **W** | **10$\times$ fainter than SN 1006** |
 | **Shock velocity** | **v_shock** | **4,000 km/s** | **m/s** | **Fastest in 5-system dataset** |
 | System frequency | ?0 | 10?12 | rad/s | Same as SNR equivalence class |
 | Distance (SN 1006) | d_SN1006 | ~2.15 kpc | kpc | For L_X ratio |
@@ -74,7 +74,7 @@ present in Standard Model treatments.
 
 ### 2.1 Distance-Faded Luminosity — Irrelevant to F_U_Bi
 
-The 10× lower L_X of Kepler's SNR compared to SN 1006 is consistent with the inverse-square distance
+The 10$\times$ lower L_X of Kepler's SNR compared to SN 1006 is consistent with the inverse-square distance
 law:
 $$
 L_X(Kepler) / L_X(SN1006) ˜ (d_SN1006 / d_Kepler)2 = (2.15/6.4)2 ˜ 0.11 ˜ 10%
@@ -83,20 +83,20 @@ $$
 The corresponding dark energy coupling terms:
 $$
 \begin{aligned}
-  & F_DE(Kepler) = k_DE × 1031 = 10 N \\
-  & F_DE(SN1006) = k_DE × 1032 = 100 N
+  & F_DE(Kepler) = k_DE \times 1031 = 10 N \\
+  & F_DE(SN1006) = k_DE \times 1032 = 100 N
 \end{aligned}
 $$
 
 **LENR dominance ratio:**
 $$
 \begin{aligned}
-  & F_LENR / F_DE(Kepler) = 6.17×103? / 10 = 6.17 × 1038 \\
-  & F_LENR / F_DE(SN1006) = 6.17×103? / 100 = 6.17 × 1037
+  & F_LENR / F_DE(Kepler) = 6.17\times103? / 10 = 6.17 \times 1038 \\
+  & F_LENR / F_DE(SN1006) = 6.17\times103? / 100 = 6.17 \times 1037
 \end{aligned}
 $$
 
-The more distant (fainter) system has a **10× larger LENR dominance ratio**. UQFF physics is more
+The more distant (fainter) system has a **10$\times$ larger LENR dominance ratio**. UQFF physics is more
 strongly dominated by LENR at greater distances, reinforcing the equivalence class as systems become
 fainter.
 
@@ -106,16 +106,16 @@ Kepler's SNR has the highest shock velocity in the five-system dataset (4,000 km
 SN 1006). The kinetic energy density:
 $$
 \begin{aligned}
-  & E_shock = 0.5 × ?_ISM × v_shock2 \\
-  & = 0.5 × 10?23 × (4×106)2 \\
-  & = 8 × 10?11 J/m3
+  & E_shock = 0.5 \times ?_ISM \times v_shock2 \\
+  & = 0.5 \times 10?23 \times (4\times106)2 \\
+  & = 8 \times 10?11 J/m3
 \end{aligned}
 $$
 
-This is ~1.8× the SN 1006 shock KE density, representing more energetic ejecta expansion. The
+This is ~1.8$\times$ the SN 1006 shock KE density, representing more energetic ejecta expansion. The
 neutron drop term:
 $$
-F_neutron = k_neutron × s_n = 106 N
+F_neutron = k_neutron \times s_n = 106 N
 $$
 provides the coherence maintenance for these faster filamentary knots — the same mechanism as SN
 1006 but applied to a higher-energy shock environment. This underscores F_neutron universality
@@ -138,11 +138,11 @@ The five-system Chandra UQFF dataset (in full):
 
 | System | ?0 (rad/s) | `F_U_Bi` (N) | Class |
 |--------|-----------|------------|-------|
-| SN 1006 (PAPER_250) | 10?12 | +2.11×102°8 | Positive |
-| Eta Carinae (PAPER_251) | 10?12 | +2.11×102°8 | Positive |
-| Chandra Archive (PAPER_252) | 10?12 | +2.11×102°8 | Positive |
-| **Kepler SNR 1604 (PAPER_254)** | **10?12** | **+2.11×102°8** | **Positive** |
-| Sgr A* (PAPER_253) | 10?15 | -8.31×10211 | **NEGATIVE** |
+| SN 1006 (PAPER_250) | 10?12 | +2.11$\times$102°8 | Positive |
+| Eta Carinae (PAPER_251) | 10?12 | +2.11$\times$102°8 | Positive |
+| Chandra Archive (PAPER_252) | 10?12 | +2.11$\times$102°8 | Positive |
+| **Kepler SNR 1604 (PAPER_254)** | **10?12** | **+2.11$\times$102°8** | **Positive** |
+| Sgr A* (PAPER_253) | 10?15 | -8.31$\times$10211 | **NEGATIVE** |
 
 All four ?0 = 10?12 systems share identical F_U_Bi. Sgr A* alone (?0 = 10?15) departs from the
 class.
@@ -210,7 +210,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -295,7 +295,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.194 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -306,13 +306,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

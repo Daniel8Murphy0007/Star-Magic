@@ -21,17 +21,17 @@ composite F_cosmo term; FIRST time-evolving M(t), r(t), z(t) in a single UQFF ca
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `BigBangCosmicQGDMGWCalculator` (#5, PAPER_451)
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, t_Hubble = 4.35×1017 s —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, t_Hubble = 4.35$\times$1017 s —>
 ---
 
 ## Abstract
 
 This paper presents the MUGE framework for modelling the evolution of gravitational strength from
-the Big Bang (t≈0, z=∞) to the present epoch (t=t_H, z=0), incorporating quantum gravity
+the Big Bang (t$\approx$0, z=$\infty$) to the present epoch (t=t_H, z=0), incorporating quantum gravity
 fluctuations (QG_term), dark matter gravitational enhancement (DM_term), and gravitational wave
 background (GW_term) as a composite F_cosmo environmental factor. The universe is parametrised as
-M_total = 1053 kg (observable mass), r_present = 4.4×1026 m, with analytically evolving mass M(t) =
-M_total × (t/t_H), radius r(t) = c×t, and redshift z(t) = t_H/t − 1. The three-component F_cosmo =
+M_total = 1053 kg (observable mass), r_present = 4.4$\times$1026 m, with analytically evolving mass M(t) =
+M_total $\times$ (t/t_H), radius r(t) = c$\times$t, and redshift z(t) = t_H/t - 1. The three-component F_cosmo =
 QG_term + DM_term + GW_term constitutes the **first composite cosmic gravitational modifier** in the
 UQFF series.
 
@@ -43,14 +43,14 @@ UQFF series.
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M_total | 1×1053 kg | Observable universe baryonic mass |
-| r_present | 4.4×1026 m | Observable universe radius |
-| t_H (Hubble time) | 4.35×1017 s (~13.8 Gyr) | Age of universe |
-| Ω_m | 0.3 | Matter fraction |
-| Ω_Λ | 0.7 | Dark energy fraction |
+| M_total | 1$\times$1053 kg | Observable universe baryonic mass |
+| r_present | 4.4$\times$1026 m | Observable universe radius |
+| t_H (Hubble time) | 4.35$\times$1017 s (~13.8 Gyr) | Age of universe |
+| $\Omega$_m | 0.3 | Matter fraction |
+| $\Omega$_$\Lambda$ | 0.7 | Dark energy fraction |
 | DM_fraction | 0.268 | Dark matter fraction (Planck) |
-| h_strain | 1×10-16 | GW background strain |
-| λ_gw | 1×1026 m | GW stochastic background wavelength |
+| h_strain | 1$\times$10-16 | GW background strain |
+| $\lambda$_gw | 1$\times$1026 m | GW stochastic background wavelength |
 
 ### 2.2 Time-Evolving Parameters
 
@@ -81,7 +81,7 @@ m DPM}(t_H) = \frac{6.674\times10^{-11}\times10^{53}}{(3\times10^8)^2\times(4.35
 
 $${\rm QG\_term}(t) = \frac{\hbar c}{l_p^2} \cdot \frac{t}{t_p} \cdot \frac{1}{Mc^2}$$
 
-At early times (t ≈ t_p): QG_term is of order unity
+At early times (t $\approx$ t_p): QG_term is of order unity
 At late times (t = t_H): QG_term = $\frac{1.055\times10^{-34}\times 3times10^8}{(1.616\times10^{-35})^2} \cdot \frac{4.35\times10^{17}}{5.39\times10^{-44}} \cdot \frac{1}{10^{53}\times 9times10^{16}}$
 
 $$= \frac{3.165\times10^{-26}}{2.611\times10^{-70}} \times 8.07\times10^{60} \times 1.11\times10^{-70} \approx 1.21\times10^{44} \times 8.96\times10^{-10} \approx 1.08\times10^{35}\ [\text{dimensionless correction}]$$
@@ -117,7 +117,7 @@ $$g_{\rm GW}(t) = \frac{10^{-16} \times (3\times10^8)^2}{10^{26}} \sin!\left(\fr
 
 $$g_{\rm GW}(t) = \frac{9\times10^{-10}}{10^{26}} \sin!\left(\frac{2\pi ct}{10^{26}}\right) = 9\times10^{-36} \sin!\left(\frac{2\pi ct}{10^{26}}\right)\ \rm m/s^2$$
 
-The GW background oscillation period: $T_{\rm GW} = \lambda_{\rm gw}/c = 10^{26}/3\times10^8 \approx 3.33\times10^{17}$ s ≈ 10.6 Gyr. One full oscillation over the age of the universe means the GW term has rotated from 0 → sin(2π×13.8/10.6) = sin(8.18 rad) = sin(8.18) ≈ 0.92 today.
+The GW background oscillation period: $T_{\rm GW} = \lambda_{\rm gw}/c = 10^{26}/3\times10^8 \approx 3.33\times10^{17}$ s $\approx$ 10.6 Gyr. One full oscillation over the age of the universe means the GW term has rotated from 0 $\to$ sin(2$\pi$$\times$13.8/10.6) = sin(8.18 rad) = sin(8.18) $\approx$ 0.92 today.
 
 ---
 
@@ -127,11 +127,11 @@ $$F_{\rm cosmo}(t_H) = g_{\rm QG}(t_H) + g_{\rm DM}(t_H) + g_{\rm GW}(t_H)$$
 
 | Component | Value at t_H | Relative to g_DPM |
 |-----------|-------------|---------------------|
-| g_DPM | 5.88×10-10 m/s2 | 1.0 (reference) |
+| g_DPM | 5.88$\times$10-10 m/s2 | 1.0 (reference) |
 | g_QG | ~10-132 m/s2 | ~10-122 (negligible) |
-| g_DM | 1.58×10-10 m/s2 | 0.268 |
-| g_GW | 8.3×10-36 × 0.92 m/s2 | ~10-27 (negligible) |
-| **g_total** | **7.46×10-10 m/s2** | **1.268** |
+| g_DM | 1.58$\times$10-10 m/s2 | 0.268 |
+| g_GW | 8.3$\times$10-36 $\times$ 0.92 m/s2 | ~10-27 (negligible) |
+| **g_total** | **7.46$\times$10-10 m/s2** | **1.268** |
 
 **The universe today is 26.8% more gravitationally active than DPM-seeded gravity predicts**, with
 dark matter driving the entire correction. QG and GW terms are negligible at present epoch but are
@@ -141,12 +141,12 @@ encoded for full-timeline simulation.
 
 ## 5. Early-Universe Evolution
 
-At t = 3 minutes (BBN, t_BBN ≈ 1.8×102 s):
+At t = 3 minutes (BBN, t_BBN $\approx$ 1.8$\times$102 s):
 
 $$g_{
 m DPM}(t_{\rm BBN}) = \frac{GM_{\rm total}}{c^2 t_H t_{\rm BBN}} \approx \frac{6.674\times10^{-11}\times10^{53}}{9\times10^{16}\times4.35\times10^{17}\times180} \approx 1.06\times10^{8}\ \rm m/s^2$$
 
-**Gravitational acceleration at BBN was ~108 m/s2** — 1018× the present value, confirming the
+**Gravitational acceleration at BBN was ~108 m/s2** — 1018$\times$ the present value, confirming the
 extreme compression of the early universe.
 
 ---
@@ -155,21 +155,21 @@ extreme compression of the early universe.
 
 | Feature | Standard Cosmology | UQFF (PAPER_451) |
 |---------|-------------------|-----------------|
-| Gravity evolution | Friedmann equations (numerical) | Analytic M(t)=M_total·t/t_H |
-| DM coupling | Separate dark fluid | Built-in 0.268× DM_term |
+| Gravity evolution | Friedmann equations (numerical) | Analytic M(t)=M_total$\cdot$t/t_H |
+| DM coupling | Separate dark fluid | Built-in 0.268$\times$ DM_term |
 | GW background | Stochastic GW field (separate) | g_GW(t) integrated in F_cosmo |
 | QG correction | Conceptual/quantum cosmology | Explicit QG_term in g_UQFF |
-| Timeline coverage | t ≥ 10-32 s (inflation end) | t ≥ t_p = 5.39×10-44 s |
+| Timeline coverage | t $\geq$ 10-32 s (inflation end) | t $\geq$ t_p = 5.39$\times$10-44 s |
 
 ---
 
 ## 7. Testable Predictions
 
-1. **CMB power spectrum:** g_DM/g_DPM = 0.268 should match the Ω_c h2 parameter from Planck 2018
+1. **CMB power spectrum:** g_DM/g_DPM = 0.268 should match the $\Omega$_c h2 parameter from Planck 2018
 to within 1%.
 2. **BBN constraints:** g_DPM at BBN must not exceed values that would disrupt proton:neutron
 ratio; ~108 m/s2 at t=180 s is consistent with standard BBN.
-3. **GW background oscillation period:** T_GW ≈ 10.6 Gyr — testable via pulsar timing arrays
+3. **GW background oscillation period:** T_GW $\approx$ 10.6 Gyr — testable via pulsar timing arrays
 (NANOGrav) looking for ~10 Gyr periodicity in the stochastic GW background.
 
 ---
@@ -305,7 +305,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.179 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -316,15 +316,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|2 → Λ_UQFF = 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
-| Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
-| CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
-| H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
+| Cosmological constant $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ $\Lambda$_UQFF = 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Dark energy fraction $\Omega$_$\Lambda$ | UQFF [SSq]=0.57; $\Omega$_$\Lambda$ ~ [SSq]$\times$1.20 = 0.684 | $\Omega$_$\Lambda$ = 0.6847 $\pm$ 0.0073 | Planck 2018 | 99.9% |
+| CMB temperature T_CMB | UQFF vacuum condensate $\to$ T_CMB = ($\rho$_UA/$\sigma$_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
+| H0 Hubble constant | UQFF: H0_UQFF = $\kappa$ $\times$ c / r_Hubble = 67.4 km/s/Mpc | H0 = 67.4 $\pm$ 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-Ω_Λ via [SSq]×1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from
-astrophysical magnetar burst profiles, not from CMB data. The coincidence Ω_Λ ≈ [SSq]×1.20
-constitutes a falsifiable prediction: if future DESI data shifts Ω_Λ by >2%, [SSq] must be
+$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit — [SSq] was calibrated from
+astrophysical magnetar burst profiles, not from CMB data. The coincidence $\Omega$_$\Lambda$ $\approx$ [SSq]$\times$1.20
+constitutes a falsifiable prediction: if future DESI data shifts $\Omega$_$\Lambda$ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

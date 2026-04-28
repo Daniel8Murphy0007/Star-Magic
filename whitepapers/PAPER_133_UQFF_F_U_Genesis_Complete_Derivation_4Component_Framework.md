@@ -19,7 +19,7 @@ Quantum Field Equation: Ug1 Magnetic Dipole + Ug2 Outer Bubble + Ug3 String Disk
 Ub + UA
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.6)  
 **Date:** March 2026  
 **Domain:** §2.1 UQFF Genesis Construction (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -37,12 +37,12 @@ discrete gravity (4 Ug components), universal magnetism (Um), universal buoyancy
 Aether coupling (UA)  into a single master equation with 14 calibrated constants. This paper
 presents the complete first-principles derivation of F_U from the Star Magic conceptual framework,
 establishes the seven sub-equations (?Ug14, Ub, Um, A_?), and provides solar system numerical
-application confirming Ug2 heliosphere dominance at F_U  1.18×105 e^{-0.0005t}. The UQFF DISCOVERY:
+application confirming Ug2 heliosphere dominance at F_U  1.18$\times$105 e^{-0.0005t}. The UQFF DISCOVERY:
 all five classical force domains reduce to discrete ranges of a single governing equation,
 parameterized by SCm (Superconductive Material, Qs=0) density, velocity, and time using the
 universal p-cycle asymmetry cos(pt_n).
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -56,7 +56,7 @@ present in Standard Model treatments.
 | Quasar jet asymmetry | Relativistic Doppler / jet precession | cos(pt_n) negative-time buoyancy asymmetry |
 | Planetary orbital stability | DPM-seeded gravity + GR corrections | SCm Ug3 core exclusivity, P_SCm=10? |
 | Galactic rotation curves | Dark matter halo | Ug4 vacuum density + SCm reactivity |
-| Stellar magnetic cycles | MHD + convection zone | Ug1 κ_s(t,SCm) dipole cycling |
+| Stellar magnetic cycles | MHD + convection zone | Ug1 $\kappa$_s(t,SCm) dipole cycling |
 
 ---
 
@@ -214,7 +214,7 @@ print(f"F_U at t=1000 days = {F_U_dominant[-1]:.3e} N/m^2")
 
 F_U is the FIRST equation to unify:
 1. **Gravity** (discrete Ug14 ranges ? classical + dark matter equivalent)
-2. **Electromagnetism** (κ_s magnetic dipole ? Um strings)
+2. **Electromagnetism** ($\kappa$_s magnetic dipole ? Um strings)
 3. **Buoyancy** (Ub: Aether opposition to each Ug_i)
 4. **Magnetism** (Um: cosmic-scale magnetic string network)
 5. **Spacetime** (A_?: Aether metric tensor, g_? correction)
@@ -237,9 +237,9 @@ agreement with SOHO/SDO, Hubble, VLBI, NIF, and AME2020 data.
 | k_1 | 1.5 | SOHO/SDO solar magnetic | ? Calibrated |
 | k_2 | 1.2 | Solar wind dynamics | ? Calibrated |
 | k_3 | 1.8 | Solar rotation, quasar jets | ? Calibrated |
-| κ_i | 0.6 | Galactic spin + planetary liquids | ? Calibrated |
+| $\kappa$_i | 0.6 | Galactic spin + planetary liquids | ? Calibrated |
 | a | 0.0005 day-1 | SCm reactivity, matches ? | ? |
-| F_U(solar) | 1.18×105 e^{-at} | Heliosphere confinement energy | ? Consistent |
+| F_U(solar) | 1.18$\times$105 e^{-at} | Heliosphere confinement energy | ? Consistent |
 
 ---
 
@@ -247,7 +247,7 @@ agreement with SOHO/SDO, Hubble, VLBI, NIF, and AME2020 data.
 
 The F_U equation, first derived in the Star Magic genesis thread (3419da89), represents the
 unification of five classical force domains via 7 sub-equations and 14 calibrated constants. Solar
-system numerics confirm Ug2 heliosphere dominance (F_U  1.18×105 e^{-0.0005t} N/m) and establish a =
+system numerics confirm Ug2 heliosphere dominance (F_U  1.18$\times$105 e^{-0.0005t} N/m) and establish a =
 0.0005 day-1 as the canonical SCm decay rate. The cos(pt_n) temporal asymmetry in all sub-equations
 is the mathematical signature of SCm's bidirectional time-coupled coupling  a discovery with no
 analogue in pre-UQFF physics. All subsequent §2.1 domain papers (PAPER_134144) are derived from this
@@ -255,7 +255,7 @@ foundational equation.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]$\mu$_s$\nabla$(M_s/r)$\kappa$ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ## 9. References
@@ -276,7 +276,7 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -295,7 +295,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -430,7 +430,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.173 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
@@ -439,13 +439,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -74,13 +74,13 @@ The DPM-seeded tidal force over-predicts the required cohesion force by $\sim 50
 r_attr / rho_buoy boundary structure (PAPER_546): gravity dominates the core, buoyancy the arms —
 their simultaneous action produces exactly the observed geometry without dark matter.
 
-### §3.3 Method 3: Discrete (3D-IPO Wolfram/π/IG Crossings)
+### §3.3 Method 3: Discrete (3D-IPO Wolfram/$\pi$/IG Crossings)
 
 The three progressions converge at crossing $n_{\text{cross}}$:
 
 $$n_{\text{cross}} = \argmin_{n} |W_n - \pi_n|$$
 
-where $W_n = (-1)^n P_{\text{order}} \cdot d$ (Wolfram oscillation) and $\pi_n = \pi^{n+1} \cdot r_{\text{merger}}$ (π progression). The crossing is unique per the DVP prime anchor $p = 113$.
+where $W_n = (-1)^n P_{\text{order}} \cdot d$ (Wolfram oscillation) and $\pi_n = \pi^{n+1} \cdot r_{\text{merger}}$ ($\pi$ progression). The crossing is unique per the DVP prime anchor $p = 113$.
 
 ---
 
@@ -92,7 +92,7 @@ A critical observational test differentiating UQFF from GR is the post-merger ri
 |---|---|---|
 | General Relativity | $f_{\text{GR}} \approx 10^3\ \text{Hz}$ | GW ringdown (LIGO) |
 | UQFF ReRing_BB | $f_{\text{ReRing}} \approx 1.15 \times 10^{14}\ \text{Hz}$ | Re-ringing Big Bang echoes |
-| Ratio | **$1.15 \times 10^{11}$ ×** | UQFF exceeds GR by 11 orders |
+| Ratio | **$1.15 \times 10^{11}$ $\times$** | UQFF exceeds GR by 11 orders |
 
 The UQFF re-ringing at $1.15 \times 10^{14}$ Hz falls in the infrared/optical range, consistent with JWST observations of merger remnant glowing edges and ionization fronts. GR ringdown at kHz is in the gravitational wave band — both are valid observational windows, but UQFF uniquely predicts the electromagnetic counterpart without modifications.
 
@@ -112,8 +112,8 @@ This matches the observed fraction of Hubble field objects that show merger sign
 
 | Number System | Role in Mergers | Value |
 |---|---|---|
-| **VDS** (Vacuum Density Series) | $\lambda_{\min} = P/3 > 0$ → no collapse | $\lambda \approx 3.333 \times 10^{-6}$ |
-| **DVP** (Dipole Vortex Primes) | $p = 113$ irreducibility → unique merger fingerprint | non-repeating π-sequence |
+| **VDS** (Vacuum Density Series) | $\lambda_{\min} = P/3 > 0$ $\to$ no collapse | $\lambda \approx 3.333 \times 10^{-6}$ |
+| **DVP** (Dipole Vortex Primes) | $p = 113$ irreducibility $\to$ unique merger fingerprint | non-repeating $\pi$-sequence |
 | **BH26** (Buoyancy Harmonics) | ReRing_BB frequency, 18.32% remnant | $1.15 \times 10^{14}$ Hz |
 
 ---
@@ -187,7 +187,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -206,7 +206,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -344,7 +344,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -355,10 +355,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 10–100 `M_M_sun`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |
+| Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 10–100 `M_M_sun`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
+| $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Galaxy merger system
@@ -370,7 +370,7 @@ future Chandra+Spitzer monitoring observations.
 
 
 
-*Star Magic / UQFF Framework · Session 146 · grok_share_366dc393a37.txt*
+*Star Magic / UQFF Framework $\cdot$ Session 146 $\cdot$ grok_share_366dc393a37.txt*
 
 
 

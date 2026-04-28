@@ -37,7 +37,7 @@ momentum coupling, gravitational terms, and resonance dynamics.
 
 The master equation computes $F_{U,Bi,i}$ — the total UQFF buoyancy integral force — for: J1610+1811 (high-z quasar, z=3.122), PLCK G287.0+32.9 (massive gravitational lens cluster, z=0.383), PSZ2 G181.06+48.47 (merging cluster with radio relics, z=0.234), ASKAP J1832-0911 (44-minute long-period radio transient, ~15,000 ly), and the Chandra Sonification Collection (composite astrophysical dataset).
 
-**Key result:** At LENR-dominant conditions (low ω₀ = 10-12 rad/s), the LENR resonance term
+**Key result:** At LENR-dominant conditions (low $\omega$0 = 10-12 rad/s), the LENR resonance term
 overwhelms all others:
 
 $$F_{LENR}(J1610) = k_{LENR} \cdot \left(\frac{\omega_0 (LENR)}{1 \times 10^{-12}}\right)^2 \approx 6.25 \times 10^{36} \text{ N}$$
@@ -55,7 +55,7 @@ $$F_{U,Bi,i}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \costheta + \underbra
 **Constants:**
 - $F_0 = 1.83 \times 10^{71}$ N (base force normalization)
 - $m_e = 9.11 \times 10^{-31}$ kg, $c = 3 \times 10^8$ m/s
-- $G = 6.6743 \times 10^{-11}$ m3/(kg·s2)
+- $G = 6.6743 \times 10^{-11}$ m3/(kg$\cdot$s2)
 - $\theta = \pi/4$ (45° default; system-adjustable)
 
 ### 2.2 Integral Approximation (Quadratic Root)
@@ -74,7 +74,7 @@ $$\text{Integrand}(r, t) = F_{LENR} + F_{act} + F_{DE} + F_{res} + F_{neutron} +
 |------|---------|----------------------|
 | **LENR Resonance** | $k_{LENR} \cdot \left(\frac{\omega_0^{LENR}}{\omega_0}\right)^2$ | Dominant; $\omega_0^{LENR} = 2\pi \times 1.25 \times 10^{12}$ rad/s |
 | **Activation** | $k_{act} \cdot \cos(\omega_{act} t)$, $\omega_{act} = 2\pi \times 300$ | $k_{act} = 10^{-6}$ |
-| **Directed Energy** | $k_{DE} \cdot L_X$ | $k_{DE} = 10^{-30}$; $L_X = 10^{31}$ W → $F_{DE} = 10$ N |
+| **Directed Energy** | $k_{DE} \cdot L_X$ | $k_{DE} = 10^{-30}$; $L_X = 10^{31}$ W $\to$ $F_{DE} = 10$ N |
 | **Magnetic Resonance** | $2qB_0 V \sintheta \cdot DPM_{res}$ | $B_0 = 10^{-4}$ T, $V = 10^{-3}$ m/s |
 | **Neutron Drop** | $k_{neutron} \cdot \sigma_n$ | $k_{neutron} = 10^{10}$ |
 | **Relativistic** | $k_{rel} \cdot (E_{cm,astro}/E_{cm,ref})^2$ | $= 4.30 \times 10^{33}$ N (1998 LEP calibration) |
@@ -100,13 +100,13 @@ All variables stored in `std::map<std::string, std::complex<double>>`. Key desig
 
 | Parameter | Value |
 |-----------|-------|
-| M | 2.785 × 1030 kg (stellar-scale jet base) |
-| r | 3.09 × 1015 m (X-ray jet extent, ~100 AU) |
+| M | 2.785 $\times$ 1030 kg (stellar-scale jet base) |
+| r | 3.09 $\times$ 1015 m (X-ray jet extent, ~100 AU) |
 | T | 104 K |
 | L_X | 1031 W (Chandra 2025 X-ray luminosity) |
-| ω₀ | 10-12 rad/s |
+| $\omega$0 | 10-12 rad/s |
 | Mach | 1.0 |
-| t_obs | 3.156 × 1010 s (~1000 yr) |
+| t_obs | 3.156 $\times$ 1010 s (~1000 yr) |
 
 **Physics context:** High-redshift quasar with resolved X-ray jets detected by Chandra (2025). At z=3.122, the comoving distance is ~11.7 Gly. UQFF buoyancy at this system probes the LENR-dominant regime where $\omega_0 = 10^{-12}$ rad/s gives maximum resonance amplification: $(\omega_{LENR,0}/\omega_0)^2 \approx (7.854 \times 10^{12} / 10^{-12})^2 = 6.17 \times 10^{49}$.
 
@@ -116,30 +116,30 @@ All variables stored in `std::map<std::string, std::complex<double>>`. Key desig
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989 × 1044 kg (~1014 MM_sun, massive cluster) |
-| r | 3.09 × 1022 m (~1 Mpc cluster radius) |
+| M | 1.989 $\times$ 1044 kg (~1014 MM_sun, massive cluster) |
+| r | 3.09 $\times$ 1022 m (~1 Mpc cluster radius) |
 | T | 107 K (intracluster medium) |
 | L_X | 1038 W (cluster X-ray luminosity) |
-| ω₀ | 10-15 rad/s (cluster-scale oscillation) |
+| $\omega$0 | 10-15 rad/s (cluster-scale oscillation) |
 | Mach | 1.5 (merger shock) |
 | C | 1.2 (concentration) |
-| t_obs | 1.42 × 1017 s (~4.5 Gyr = ~age at z=0.383) |
+| t_obs | 1.42 $\times$ 1017 s (~4.5 Gyr = ~age at z=0.383) |
 
-**Physics context:** PLCK G287.0+32.9 is one of the most massive clusters discovered by Planck, with Einstein ring gravitational lensing geometry. The cluster's merger dynamics (Mach 1.5) drive enhanced magnetic resonance ($B_0 = 10^{-4}$ T relic radio field). UQFF buoyancy at cluster scale tests the $μ_s∇(M_s/r)$ gravity term at 1044 kg scale — the ICM DPM gravity coupling: $(6.6743 \times 10^{-11} \times 1.989 \times 10^{44}) / (3.09 \times 10^{22})^2 \approx 1.39 \times 10^{-10}$ m/s2 (cluster acceleration).
+**Physics context:** PLCK G287.0+32.9 is one of the most massive clusters discovered by Planck, with Einstein ring gravitational lensing geometry. The cluster's merger dynamics (Mach 1.5) drive enhanced magnetic resonance ($B_0 = 10^{-4}$ T relic radio field). UQFF buoyancy at cluster scale tests the $\mu_s\nabla(M_s/r)$ gravity term at 1044 kg scale — the ICM DPM gravity coupling: $(6.6743 \times 10^{-11} \times 1.989 \times 10^{44}) / (3.09 \times 10^{22})^2 \approx 1.39 \times 10^{-10}$ m/s2 (cluster acceleration).
 
 ### 3.3 PSZ2 G181.06+48.47 (Merging Cluster with Radio Relics, z = 0.234)
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989 × 1044 kg |
-| r | 3.09 × 1022 m |
+| M | 1.989 $\times$ 1044 kg |
+| r | 3.09 $\times$ 1022 m |
 | T | 107 K |
 | L_X | 1039 W (enhanced; radio relic emission) |
-| ω₀ | 10-15 rad/s |
+| $\omega$0 | 10-15 rad/s |
 | Mach | 1.5 |
-| t_obs | 2.36 × 1017 s (~7.5 Gyr = age at z=0.234) |
+| t_obs | 2.36 $\times$ 1017 s (~7.5 Gyr = age at z=0.234) |
 
-**Physics context:** PSZ2 G181 features double radio relics indicating a major merger event. The enhanced X-ray luminosity ($L_X = 10^{39}$ W, 10× PLCK G287) produces larger directed energy term $F_{DE} = k_{DE} \times L_X = 10^{-30} \times 10^{39} = 10^9$ N. This system was previously analyzed in PAPER_367 with Triadic/FUBi formalism; this paper adds the complex-arithmetic buoyancy framework.
+**Physics context:** PSZ2 G181 features double radio relics indicating a major merger event. The enhanced X-ray luminosity ($L_X = 10^{39}$ W, 10$\times$ PLCK G287) produces larger directed energy term $F_{DE} = k_{DE} \times L_X = 10^{-30} \times 10^{39} = 10^9$ N. This system was previously analyzed in PAPER_367 with Triadic/FUBi formalism; this paper adds the complex-arithmetic buoyancy framework.
 
 **Cross-reference:** PAPER_355 (PLCK G287 merger relics), PAPER_367 (PSZ2 G181 full 5-equation
 Triadic)
@@ -148,12 +148,12 @@ Triadic)
 
 | Parameter | Value |
 |-----------|-------|
-| M | 2.785 × 1030 kg (white dwarf or magnetar candidate) |
-| r | 4.63 × 1016 m (~1.5 pc, emission region) |
+| M | 2.785 $\times$ 1030 kg (white dwarf or magnetar candidate) |
+| r | 4.63 $\times$ 1016 m (~1.5 pc, emission region) |
 | T | 104 K |
 | L_X | 1031 W |
-| ω₀ | 10-12 rad/s (44-minute period proxy) |
-| t_obs | 3.156 × 1010 s |
+| $\omega$0 | 10-12 rad/s (44-minute period proxy) |
+| t_obs | 3.156 $\times$ 1010 s |
 
 **Physics context:** ASKAP J1832-0911 is a long-period (44-minute) radio transient of unknown nature (white dwarf or ultra-long-period magnetar candidate). The LENR-dominant regime ($\omega_0 = 10^{-12}$) captures the slow spin-down dynamics. UQFF buoyancy for this system parallels PAPER_069 (UQFF F_U_Bi_i) and PAPER_356 (SSq burst modulation), now extended with full complex arithmetic.
 
@@ -163,13 +163,13 @@ Triadic)
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989 × 1031 kg (~10 MM_sun composite) |
-| r | 6.17 × 1016 m (~2 pc composite scale) |
+| M | 1.989 $\times$ 1031 kg (~10 MM_sun composite) |
+| r | 6.17 $\times$ 1016 m (~2 pc composite scale) |
 | T | 105 K |
 | L_X | 1033 W |
-| B₀ | 10-5 T |
-| ω₀ | 10-12 rad/s |
-| t_obs | 3.156 × 1014 s (~107 yr) |
+| B0 | 10-5 T |
+| $\omega$0 | 10-12 rad/s |
+| t_obs | 3.156 $\times$ 1014 s (~107 yr) |
 
 **Physics context:** The Chandra Sonification Collection converts X-ray observations of multiple astrophysical objects (Cas A, Crab Nebula, Perseus Cluster, SgrA*, M87) into audio. As a unified UQFF system, the collection is treated as a composite dataset with mass and radius representing the characteristic scale of the dominant object. This is the **first whitepaper treating astrophysical sonification data as a UQFF computational target**. The reduced $B_0 = 10^{-5}$ T (vs. 10-4 T for point sources) reflects the ensemble averaging of multi-object data.
 
@@ -259,7 +259,7 @@ std::cout << mod.getEquationText("ASKAP_J1832-0911") << std::endl;
 1. **First complex-arithmetic UQFF buoyancy module** — cdouble throughout
 2. **Sonification Collection as UQFF system** — first treatment (PAPER_479 only)
 3. **Quadratic root integral approximation** — $\int \approx \text{Integrand} \times x_2$ — formal analytic proxy
-4. **5-system parameter pack** — complete M/r/T/L_X/B₀/ω₀ table for all systems
+4. **5-system parameter pack** — complete M/r/T/L_X/B0/$\omega$0 table for all systems
 
 ---
 
@@ -269,7 +269,7 @@ std::cout << mod.getEquationText("ASKAP_J1832-0911") << std::endl;
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -288,7 +288,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -342,7 +342,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -479,7 +479,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -490,10 +490,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09$\times$10-52 m-2 | $\Lambda$ = 1.114$\times$10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524$\times$10-29 m2 | $\sigma$_T = 6.6524$\times$10-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7$\times$1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

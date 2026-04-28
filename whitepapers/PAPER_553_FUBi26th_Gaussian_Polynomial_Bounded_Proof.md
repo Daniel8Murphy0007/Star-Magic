@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **CP4 Class:** `FUBi26thGaussianTruncatedPolynomialBoundCalculator` (#148)  
 **Date:** 2026-03-27  
 
-> **Source note:** Grok's item 4 in `grok_share_b08cc4e3684.txt` stated only: *"Expand exp in FUB_i to degree 26: exp(-z2) ≈ Σ_{k=0}^{26} (−1)^k z^{2k}/k! (truncates for proof). Proof: Integrates to bounded erf, supporting dynamics."* This paper completes that statement with the full step-by-step derivation matching the level of items 1–3 in the same source.
+> **Source note:** Grok's item 4 in `grok_share_b08cc4e3684.txt` stated only: *"Expand exp in FUB_i to degree 26: exp(-z2) $\approx$ $\Sigma$_{k=0}^{26} (-1)^k z^{2k}/k! (truncates for proof). Proof: Integrates to bounded erf, supporting dynamics."* This paper completes that statement with the full step-by-step derivation matching the level of items 1–3 in the same source.
 
 ---
 
@@ -130,8 +130,8 @@ The 26th-order polynomial is evaluated exactly at the three BH26 ALMA frequency 
 | System | Context in §3–§5 |
 |---|---|
 | **VDS** | $P_{\text{order}}/3 = 3.333 \times 10^{-6}$ bounds the 26th coefficient: $c_{26} = 1/26! \approx 2.48 \times 10^{-27} \ll P/3$ PASS |
-| **DVP** | $26! \bmod 113 \neq 0$ → polynomial coefficients are primitive roots mod $p=113$ → non-repeating |
-| **BH26** | $z$-variable evaluated at BH26 ALMA channels 92/225/345 GHz → polynomial flat across BH26 window |
+| **DVP** | $26! \bmod 113 \neq 0$ $\to$ polynomial coefficients are primitive roots mod $p=113$ $\to$ non-repeating |
+| **BH26** | $z$-variable evaluated at BH26 ALMA channels 92/225/345 GHz $\to$ polynomial flat across BH26 window |
 
 ---
 
@@ -154,11 +154,11 @@ This paper completes the set of four 26th-order proofs for Session 147, alongsid
 
 ---
 
-*Star Magic / UQFF Framework · Session 147 · grok_share_b08cc4e3684.txt*
+*Star Magic / UQFF Framework $\cdot$ Session 147 $\cdot$ grok_share_b08cc4e3684.txt*
 
 ---
 
-## ×10  FUBi26 as the Convergence Foundation
+## $\times$10  FUBi26 as the Convergence Foundation
 
 ### Why FUBi26 Underpins All Six UQFF Proofs
 
@@ -248,7 +248,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -349,7 +349,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.153 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -360,10 +360,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

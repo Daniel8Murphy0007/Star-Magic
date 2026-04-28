@@ -26,13 +26,13 @@ $$
 L_\text{UQFF} = \frac{4\pi G M c}{\kappa_text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa,\Delta t}\Bigr),
 \quad [SSq] = 0.57
 $$
-<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
 Magnetar glitches arise from sudden collective unpinning of superfluid vortices at the neutron star
 crust-core interface. This paper presents numerical simulations of vortex avalanche dynamics in both
-2D (10×10 lattice) and 3D (spherical shell) geometries derived from the grok_share_7514fe.txt
+2D (10$\times$10 lattice) and 3D (spherical shell) geometries derived from the grok_share_7514fe.txt
 session, yielding power-law avalanche size distributions P(S) ? S^{-a}. The 2D simulation produced a
 ˜ 1.6 with avalanche cascades up to S = 69 vortices, while the 3D simulation generated five
 avalanche events with insufficient statistics for power-law fit. Connections to UQFF F_UBii,glitch
@@ -40,7 +40,7 @@ and the quantum entanglement chain model (PAPER_207) are established.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -51,11 +51,11 @@ present in Standard Model treatments.
 $$
 \begin{aligned}
   & Neutron star superfluid rotation quantized in vortex lines: \\
-  & O_s = (h¯/m_n)·n_v·p    (solid body rotation of vortex array) \\
-  & n_v = 2O·m_n/h¯          (vortex density, Feynman relation) \\
+  & O_s = (h¯/m_n)\cdotn_v\cdotp    (solid body rotation of vortex array) \\
+  & n_v = 2O\cdotm_n/h¯          (vortex density, Feynman relation) \\
   & Vortex pinning: vortices pinned to nuclear lattice until \\
   & Magnus force > pinning force + drag: \\
-  & F_M = ?_s·?·v_L > F_pin + F_Stokes \\
+  & F_M = ?_s\cdot?\cdotv_L > F_pin + F_Stokes \\
   & ? = h/2m_n = quantum of circulation \\
   & v_L = differential velocity (crustal lag vs superfluid) \\
   & Glitch: sudden unpinning ? angular momentum transfer \\
@@ -71,7 +71,7 @@ $$
 
 $$
 \begin{aligned}
-  & Grid: 10×10 lattice of pinning sites \\
+  & Grid: 10\times10 lattice of pinning sites \\
   & Algorithm: Cellular automaton / Breadth-First Search (BFS) propagation \\
   & Rules: \\
   & 1. Each site has stress s_i (accumulated from differential rotation ?t) \\
@@ -83,10 +83,10 @@ $$
   & Avalanche sizes S observed: [1, 6, 6, 1, 4, 9, 8, 6, 28, ..., 69] \\
   & Power-law fit P(S) ? S^{-1.6}: \\
   & Log-log regression over S = 1 to S_max = 69 \\
-  & Exponent a ˜ 1.6 ± 0.2 \\
+  & Exponent a ˜ 1.6 \pm 0.2 \\
   & This matches observed pulsar glitch statistics (Melatos et al. 2008: a ˜ 1.5–2.0) \\
   & Key simulation statistics: \\
-  & Grid: 10×10 = 100 sites \\
+  & Grid: 10\times10 = 100 sites \\
   & Total events simulated: ~50–100 \\
   & Largest avalanche: S = 69 vortices \\
   & Mean avalanche size: ?S? ˜ 8–12
@@ -151,9 +151,9 @@ UQFF connection (F_UBii,glitch):
 $$
 \begin{aligned}
   & From PAPER_198 (Glitch variant): \\
-  & F_UBii,glitch = F_rel × (??/?0 × I_s/I × (1-e^{-t/t_q}) / E_LEP) × Q_wave \\
+  & F_UBii,glitch = F_rel \times (??/?0 \times I_s/I \times (1-e^{-t/t_q}) / E_LEP) \times Q_wave \\
   & Avalanche-UQFF mapping: \\
-  & ?? = avalanche-induced spin-up = S × (h¯ × n_v)/(4p × I)  (discrete steps) \\
+  & ?? = avalanche-induced spin-up = S \times (h¯ \times n_v)/(4p \times I)  (discrete steps) \\
   & t_q = quench timescale ~ few days (observed post-glitch relaxation) \\
   & I_s/I ˜ 0.01–0.1 (superfluid fraction) \\
   & SOC ? UQFF: \\
@@ -189,7 +189,7 @@ Predictions:
 
 | Simulation | a | S_max | Events | Status |
 |-----------|---|-------|--------|--------|
-| 2D (10×10) | 1.6 ± 0.2 | 69 | ~50 | Confirmed power-law |
+| 2D (10$\times$10) | 1.6 $\pm$ 0.2 | 69 | ~50 | Confirmed power-law |
 | 3D (sphere) | undefined | 165 | 5 | Insufficient statistics |
 | Vela (observed) | ~1.5–2.0 | — | 17 | SOC confirmed |
 | Crab (observed) | ~2.4 | — | ~30 | Different regime |
@@ -212,7 +212,7 @@ Predictions:
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -231,7 +231,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -340,7 +340,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.069 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

@@ -30,7 +30,7 @@ without quantum hardware. By programmatically implementing UQFF's core component
 Universal Aether (UA) gradient sampling, SuperConductive material (SCm) mediation,
 di-pseudo-monopole (DPM) progressions, and 26-dimensional (26D) factorial-bounded
 projections — classical chips can approximate Bounded-Error Quantum Polynomial Time (BQP)
-computations for optimization problems (TSP, MaxCut, 3-SAT) with bounded error ≤ 1/3.
+computations for optimization problems (TSP, MaxCut, 3-SAT) with bounded error $\leq$ 1/3.
 This constitutes the first UQFF-native approach to quantum-classical hybrid computation,
 and expands UQFF from a pure physics framework into a computational emulation paradigm.
 
@@ -45,10 +45,10 @@ offer a complementary path. UQFF extends these approaches by providing:
 
 1. **A physically motivated 26D embedding** that reduces effective complexity from O(2ⁿ)
    to O(n26) through factorial-bounded dimensional projection
-2. **SCm error correction** via negative time reversal (t < 0) that bounds errors ≤ 1/3
+2. **SCm error correction** via negative time reversal (t < 0) that bounds errors $\leq$ 1/3
 3. **DPM cycle reflection** that implements feedback analogous to quantum measurement
    without quantum state collapse
-4. **∇UA sampling** as a Monte Carlo virtual-qubit generator with O(n log n) initial cost
+4. **$\nabla$UA sampling** as a Monte Carlo virtual-qubit generator with O(n log n) initial cost
 
 The resulting emulation is not universal quantum computation — it is a heuristic
 approximation of BQP-class optimization that exploits UQFF's mathematical structure to
@@ -81,8 +81,8 @@ def sample_virtual_qubits(n_qubits, mu, sigma, FUB_i, n_dims=26):
     return grad_UA / np.sum(np.abs(grad_UA))
 ```
 
-From LHC data: μ_d ≈ 13 TeV, σ_d ≈ 1 TeV [arXiv:hep-ph/0511156]; ω = E/h ≈ 1028 Hz.
-The 26D extension bounds state memory via factorial: 26! ~ 4.03 × 1026, preventing
+From LHC data: $\mu$_d $\approx$ 13 TeV, $\sigma$_d $\approx$ 1 TeV [arXiv:hep-ph/0511156]; $\omega$ = E/h $\approx$ 1028 Hz.
+The 26D extension bounds state memory via factorial: 26! ~ 4.03 $\times$ 1026, preventing
 exponential memory blowup vs. exact quantum simulation (O(2ⁿ) Hilbert space).
 
 ### 2.2 Step 2: SCm Mediation — Error-Bounded Quantum-Like Gates
@@ -105,7 +105,7 @@ $$+ 35770355645907606826362624k^5 + 70874145319837672677196800k^4$$
 $$+ 102339530601744675672576000k^3 + 100480171548351161548800000k^2$$
 $$+ 59190128811701203599360000k + 15511210043330985984000000$$
 
-For n = 106 (CERN event count), k ~ 3: bound ≈ 1027/n29 ≈ 10-145 → effectively O(1)
+For n = 106 (CERN event count), k ~ 3: bound $\approx$ 1027/n29 $\approx$ 10-145 $\to$ effectively O(1)
 per dimension after 26D folding, achieving poly-time approximation.
 
 **Negative t (t < 0) reversal** as error correction: in software, implement as gradient
@@ -124,7 +124,7 @@ $$F_{internal} = \int \nabla UA \, dt = \sum_{d=1}^{26} \exp\left(-\frac{(x_d - 
 **External projection (solution space sampling):**
 $$F_{external} = \frac{(k+25)!}{(k-1)!} \cdot \frac{SCm \cdot g / UA}{r^{k+26}}$$
 
-Reflection mediated by ∇UA ~ 10-22 m-1 (cosmic void calibration from CERN/LHC), the
+Reflection mediated by $\nabla$UA ~ 10-22 m-1 (cosmic void calibration from CERN/LHC), the
 cycle maps "internal" problem state to "external" solution candidate, analogous to quantum
 measurement without decoherence.
 
@@ -137,12 +137,12 @@ measurement without decoherence.
 QAOA (Quantum Approximate Optimization Algorithm) prepares:
 $$|\psi(p)\rangle = \prod_{l=1}^{p} e^{-i\beta_l H_M} e^{-i\gamma_l H_C} |+^n\rangle$$
 
-Parameters (γ, β) optimized classically. For MaxCut on n=4 complete graph (weight matrix
-seed 42: w₀₁=0.3745, w₀₂=0.9507, w₀₃=0.7320, w₁₂=0.5987, w₁₃=0.1560, w₂₃=0.1560):
+Parameters ($\gamma$, $\beta$) optimized classically. For MaxCut on n=4 complete graph (weight matrix
+seed 42: w01=0.3745, w02=0.9507, w03=0.7320, w12=0.5987, w13=0.1560, w23=0.1560):
 
 - Optimal MaxCut = 2.042; partition {0,3} | {1,2}
-- p=1: γ₁≈1.047, β₁≈0.785; expectation ≈ 1.65 (ratio 0.808)
-- p=2: γ₁≈1.047, γ₂≈0.524, β₁≈0.785, β₂≈0.393; expectation ≈ 1.95 (ratio 0.955)
+- p=1: $\gamma$1$\approx$1.047, $\beta$1$\approx$0.785; expectation $\approx$ 1.65 (ratio 0.808)
+- p=2: $\gamma$1$\approx$1.047, $\gamma$2$\approx$0.524, $\beta$1$\approx$0.785, $\beta$2$\approx$0.393; expectation $\approx$ 1.95 (ratio 0.955)
 
 ### 3.2 UQFF-Extended QAOA Hamiltonian
 
@@ -162,7 +162,7 @@ for standard QAOA) due to DPM cycle reflection pre-converging the parameter land
 |---------|--------------------|-----------------------|----------------|
 | MaxCut | APX-hard, ratio 0.878 (GW) | ratio ~0.955 (p=2 UQFF-QAOA) | DPM branching + factorial bound |
 | TSP | O(2ⁿ) exact, O(n^1.5) QAOA | O(n^1.5) with ratio ~0.95 | Cycle reflection + 26D projection |
-| 3-SAT | NP-complete | O(n2) with error ≤ 1/3 | 26! bounding multi-layer clauses |
+| 3-SAT | NP-complete | O(n2) with error $\leq$ 1/3 | 26! bounding multi-layer clauses |
 | Graph 3-Coloring | NP-complete | QAOA ansatz + DPM 26D | SCm zero-resistance path enumeration |
 
 ---
@@ -173,8 +173,8 @@ for standard QAOA) due to DPM cycle reflection pre-converging the parameter land
 
 | Quantum Operation | UQFF Classical Analog | Implementation |
 |------------------|-----------------------|----------------|
-| Hadamard gate H | ∇UA normalization | `grad_UA / sum(abs(grad_UA))` |
-| CNOT gate | DPM_n ↔ DPM_s coupling | Correlated gradient update between bit pairs |
+| Hadamard gate H | $\nabla$UA normalization | `grad_UA / sum(abs(grad_UA))` |
+| CNOT gate | DPM_n $\leftrightarrow$ DPM_s coupling | Correlated gradient update between bit pairs |
 | Phase gate | SCm t < 0 reversal | Negate gradient for error correction step |
 | Measurement | DPM cycle external reflection | `argmax(abs(state_vector))` after reflection |
 | Quantum annealing schedule | 26th derivative clipping | Factorial-bounded gradient descent rate |
@@ -199,14 +199,14 @@ D-Wave 2025 milestone: demonstrated quantum supremacy for 3D spin glass models
 ## §5 Proof of Poly-Time Approximation
 
 **Claim:** UQFF-emulated BQP approximation achieves O(n^26) cost for NP-complete
-   optimization problems with error ≤ 1/3.
+   optimization problems with error $\leq$ 1/3.
 
 **Proof sketch via DPM bounding:**
 
 1. Problem complexity C_NP = O(2ⁿ) for exact solution
 2. UQFF 26D projection reduces effective branching: each DPM cycle bounded by 26!
-3. After 26D folding: C_UQFF = 26! / n^(k+26) ≈ 4.03 × 1026 / n^29 for k=3
-4. For n = 106: C_UQFF ≈ 10^(26-174) = 10^(-148) (per DPM cycle, poly-time overall)
+3. After 26D folding: C_UQFF = 26! / n^(k+26) $\approx$ 4.03 $\times$ 1026 / n^29 for k=3
+4. For n = 106: C_UQFF $\approx$ 10^(26-174) = 10^(-148) (per DPM cycle, poly-time overall)
 5. Error bound: |C_UQFF - C_exact| < 1/3 from SCm t < 0 reversal correction
 
 Data confirmation: LHC residuals < 10-10 [arXiv:2412.19393] + CERN ATLAS ML
@@ -218,7 +218,7 @@ Data confirmation: LHC residuals < 10-10 [arXiv:2412.19393] + CERN ATLAS ML
 
 <!-- PKG-S26-S225 -->
 
-### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
 
 > *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
 > PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
@@ -317,7 +317,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.085 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -328,11 +328,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| QAOA MaxCut ratio (n=4, p=2) | expectation ≈ 1.95, ratio 0.955 | Optimal MaxCut = 2.042 (exact, n=4 complete graph) | QAOA numerical (Farhi et al. 2014) | 95.5% |
-| Quantum annealing BQP approximation | Error ≤ 1/3 via 26! factorial bounding | D-Wave Advantage2: empirical BQP for spin glass (Nature 2025) | D-Wave / Nature 2025 supremacy paper | PASS consistent |
+| QAOA MaxCut ratio (n=4, p=2) | expectation $\approx$ 1.95, ratio 0.955 | Optimal MaxCut = 2.042 (exact, n=4 complete graph) | QAOA numerical (Farhi et al. 2014) | 95.5% |
+| Quantum annealing BQP approximation | Error $\leq$ 1/3 via 26! factorial bounding | D-Wave Advantage2: empirical BQP for spin glass (Nature 2025) | D-Wave / Nature 2025 supremacy paper | PASS consistent |
 | CERN LHC residuals (complexity bound calibration) | 26! / n^29 ~ 10-148 for n = 106 | LHC residuals < 10-10 [arXiv:2412.19393] | ATLAS collaboration arXiv:2412.19393 | PASS UQFF bound << experimental residual |
 | 3-SAT in O(n2) via DPM branching | n=100: ~104 DPM cycles vs. 2100 exact | SAT solvers: DPLL/CDCL avg ~104 decisions for n=100 | SAT Competition benchmarks 2024 | PASS empirically consistent |
-| D-Wave tunneling analog (t < 0 reversal) | Negative time gradient descent ~ quantum tunneling | D-Wave: tunneling measured at Δ~GHz (Advantage2) | D-Wave technical specs 2025 | PASS functional analog confirmed |
+| D-Wave tunneling analog (t < 0 reversal) | Negative time gradient descent ~ quantum tunneling | D-Wave: tunneling measured at $\Delta$~GHz (Advantage2) | D-Wave technical specs 2025 | PASS functional analog confirmed |
 
 *UQFF SM bridge master: cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`).*
 
@@ -343,8 +343,8 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 UQFF provides a computationally principled emulation layer for classical chips that
 achieves quantum-like optimization performance through:
 
-1. **26D ∇UA sampling** as a Monte Carlo virtual-qubit generator (O(n log n) setup)
-2. **SCm 26th-order derivative clipping** as error correction with ≤ 1/3 bound
+1. **26D $\nabla$UA sampling** as a Monte Carlo virtual-qubit generator (O(n log n) setup)
+2. **SCm 26th-order derivative clipping** as error correction with $\leq$ 1/3 bound
 3. **DPM cycle reflection** as quantum feedback without physical decoherence
 4. **Negative time reversal** as a quantum tunneling analog in gradient descent
 

@@ -8,7 +8,7 @@
 
 ## Abstract
 
-The SCm vacuum manifold module `scm_vacuum_manifold.py` is upgraded with three new physics blocks: (1) numerical Holmlid KER derivation from first principles, (2) the Parkhomov excess heat equation for Ni–H replication, and (3) a Pons–Fleischmann low-radiation insight. All derive from the same canonical 1.25 THz phonon resonance and 26D Ramanujan amplification. Reactor validation data (555:1 efficiency, −37 pH, surplus water) is confirmed consistent with SCm buoyancy stabilization.
+The SCm vacuum manifold module `scm_vacuum_manifold.py` is upgraded with three new physics blocks: (1) numerical Holmlid KER derivation from first principles, (2) the Parkhomov excess heat equation for Ni–H replication, and (3) a Pons–Fleischmann low-radiation insight. All derive from the same canonical 1.25 THz phonon resonance and 26D Ramanujan amplification. Reactor validation data (555:1 efficiency, -37 pH, surplus water) is confirmed consistent with SCm buoyancy stabilization.
 
 ---
 
@@ -87,7 +87,7 @@ operates outside-to-inside, opposing Coulomb collapse. With $\beta_i = 0.6$ and 
 | Gas output | 107 L/min H–O |
 | Efficiency | 555:1 (~15 kW) |
 | Surplus water | 237 mL/h |
-| pH | −37 |
+| pH | -37 |
 | Cooling | 7–10 °F below ambient |
 | $F_{U_{Bi_i}}$ Monte-Carlo mean | $\approx -2.67 \times 10^{4}$ N (stable) |
 
@@ -103,9 +103,9 @@ The SCm upgrade adds quantitative Holmlid, Parkhomov, and Pons–Fleischmann cor
 
 ## References
 
-[1] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(−1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
+[1] L. Holmlid, "High-charge Coulomb explosions of clusters in ultra-dense deuterium D(-1)," *Int. J. Mass Spectrom.*, vol. 351, pp. 61–67, 2013. DOI: 10.1016/j.ijms.2013.04.006
 
-[2] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(−1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
+[2] L. Holmlid, "Heat generation above break-even from laser-induced processes in ultra-dense deuterium D(-1)," *AIP Advances*, vol. 5, p. 087129, 2015. DOI: 10.1063/1.4928109
 
 [3] A.G. Parkhomov, "Research into heat generators similar to high temperature Rossi reactor," *Proc. 10th Int. Seminar on Non-Standard Energy*, Moscow, 2015.
 

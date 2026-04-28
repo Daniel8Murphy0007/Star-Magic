@@ -27,7 +27,7 @@ We present the complete three-assumption cosmogenesis model of the Unified Quant
 (UQFF). The three axioms are: (1) three reactive quantum fundamentals — electrostatic barrier,
 undifferentiated aether (UA), and superconducting matter (SCm) — form proto-nuclear shells via DPM;
 (2) proto-shells evolve through 6 Aetheric Capacitance Phenomenon (ACP) stages into proto-atoms,
-with proto-hydrogen ≡ proto-iron (SM_magnetic) and proto-helium ≡ proto-silicon (SM_non-magnetic);
+with proto-hydrogen $\equiv$ proto-iron (SM_magnetic) and proto-helium $\equiv$ proto-silicon (SM_non-magnetic);
 (3) four U_g forces (U_g1 = DPM, U_g2 = electron shells, U_g3 = U_i + U_m tagging, U_g4i = central
 control) govern all interactions. The 26 quantum atomic states exist before mass; the
 quantum-to-mass gradient occurs at 7-10 U_mag degrees.
@@ -43,14 +43,14 @@ $$
   & f_UA' = (Z_max - Z) / Z_max     [undifferentiated aether fraction] \\
   & f_SCm = Z / Z_max                [superconducting matter fraction] \\
   & f_UA' + f_SCm = 1                [completeness axiom] \\
-  & R_EB = k_R · Z                   [electrostatic barrier reactivity]
+  & R_EB = k_R \cdot Z                   [electrostatic barrier reactivity]
 \end{aligned}
 $$
 
 ### 1.2 Vacuum Density
 
 $$
-ρ_vac = ρ_UA + ρ_SCm = 7.09×10-36 + 7.09×10-37 = 7.799×10-36 kg/m3
+\rho_vac = \rho_UA + \rho_SCm = 7.09\times10-36 + 7.09\times10-37 = 7.799\times10-36 kg/m3
 $$
 
 ### 1.3 Proto-Nuclear Shell Formation
@@ -67,8 +67,8 @@ completely: no additional parameters needed.
 
 $$
 \begin{aligned}
-  & V_proto = (4/3)πr3 \\
-  & U_vac = ρ_vac · V_proto
+  & V_proto = (4/3)\pir3 \\
+  & U_vac = \rho_vac \cdot V_proto
 \end{aligned}
 $$
 
@@ -76,33 +76,33 @@ $$
 
 $$
 \begin{aligned}
-  & U_i = k · (ρ_SCm - ρ_UA/10) · ω · cos(πt) \\
-  & ω = 2πν_THz
+  & U_i = k \cdot (\rho_SCm - \rho_UA/10) \cdot \omega \cdot cos(\pit) \\
+  & \omega = 2\pi\nu_THz
 \end{aligned}
 $$
 
-The difference (ρ_SCm - ρ_UA/10) drives the initial repulsive force that prevents immediate
+The difference ($\rho$_SCm - $\rho$_UA/10) drives the initial repulsive force that prevents immediate
 gravitational collapse.
 
 ### Stage 3: U_m String Winding (26 States)
 
 $$
 \begin{aligned}
-  & U_m,i = U_i · μ_d · (1/r_i) · (1 - e^{-γt}) · cos(πt)     [i = 1...26] \\
-  & Ψ_proto = Σ_{i=1}^{26} U_m,i                                 [proto-wavefunction]
+  & U_m,i = U_i \cdot \mu_d \cdot (1/r_i) \cdot (1 - e^{-\gammat}) \cdot cos(\pit)     [i = 1...26] \\
+  & \Psi_proto = \Sigma_{i=1}^{26} U_m,i                                 [proto-wavefunction]
 \end{aligned}
 $$
 
 Each of the 26 quantum states contributes a string-winding term with r_i = r/i (decreasing radius)
-and exponential activation (1 - e^{-γt}).
+and exponential activation (1 - e^{-$\gamma$t}).
 
 ### Stage 4: Capacitance Cracking
 
 $$
 \begin{aligned}
-  & C_vac = ρ_vac · r                [vacuum capacitance] \\
-  & ULF_i = ℏω/i                    [ultra-low frequency ripples at each state] \\
-  & E_crack = Σ_{i=1}^{26} ULF_i · C_vac
+  & C_vac = \rho_vac \cdot r                [vacuum capacitance] \\
+  & ULF_i = ℏ\omega/i                    [ultra-low frequency ripples at each state] \\
+  & E_crack = \Sigma_{i=1}^{26} ULF_i \cdot C_vac
 \end{aligned}
 $$
 
@@ -111,7 +111,7 @@ The ACP capacitance builds until ULF ripples crack the vacuum shell, initiating 
 ### Stage 5: Fragment Stabilization (Buoyancy Seed)
 
 $$
-U_b,seed = 0.1 · (ℏc/r2) · f_SCm
+U_b,seed = 0.1 \cdot (ℏc/r2) \cdot f_SCm
 $$
 
 Buoyancy forces stabilize the cracked fragments into proto-atoms.
@@ -120,8 +120,8 @@ Buoyancy forces stabilize the cracked fragments into proto-atoms.
 
 $$
 \begin{aligned}
-  & U_mag,deg = arcsin(min(f_SCm / 4.4×1013, 1))     [degrees] \\
-  & Mass threshold: 7° ≤ U_mag,deg ≤ 10°
+  & U_mag,deg = arcsin(min(f_SCm / 4.4\times1013, 1))     [degrees] \\
+  & Mass threshold: 7° \leq U_mag,deg \leq 10°
 \end{aligned}
 $$
 
@@ -132,8 +132,8 @@ exist without mass.
 
 $$
 \begin{aligned}
-  & Proto-hydrogen ≡ Proto-iron (Z_id = 26, SM_magnetic) \\
-  & Proto-helium   ≡ Proto-silicon (Z_id = 14, SM_non-magnetic)
+  & Proto-hydrogen \equiv Proto-iron (Z_id = 26, SM_magnetic) \\
+  & Proto-helium   \equiv Proto-silicon (Z_id = 14, SM_non-magnetic)
 \end{aligned}
 $$
 
@@ -141,36 +141,36 @@ $$
 
 $$
 \begin{aligned}
-  & [SCm + UA + R_EB]            ← Three quantum fundamentals \\
+  & [SCm + UA + R_EB]            \leftarrow Three quantum fundamentals \\
   & │ \\
   & ▼ \\
-  & DPM Formation              ← f_UA' + f_SCm = 1 \\
+  & DPM Formation              \leftarrow f_UA' + f_SCm = 1 \\
   & │ \\
   & ▼ \\
-  & Proto-Nuclear Shells         ← 26 quantum states \\
+  & Proto-Nuclear Shells         \leftarrow 26 quantum states \\
   & │ \\
   & ▼ \\
-  & EM Bang (ACP Stage 4)      ← Capacitance cracking \\
+  & EM Bang (ACP Stage 4)      \leftarrow Capacitance cracking \\
   & │ \\
   & ▼ \\
-  & 2 Expansion/Contraction       ← Cosmic oscillation \\
+  & 2 Expansion/Contraction       \leftarrow Cosmic oscillation \\
   & Cycles \\
   & │ \\
   & ▼ \\
-  & Proto-Atoms                 ← Proto-H=Proto-Fe, Proto-He=Proto-Si \\
+  & Proto-Atoms                 \leftarrow Proto-H=Proto-Fe, Proto-He=Proto-Si \\
   & │ \\
   & ▼ \\
-  & Mass Emergence               ← U_mag 7-10° threshold \\
+  & Mass Emergence               \leftarrow U_mag 7-10° threshold \\
   & │ \\
   & ▼ \\
-  & Ug1 + Ug2 + Ug3 + Ug4      ← Four gravity forces \\
-  & + Um (Heaviside 1013×) \\
+  & Ug1 + Ug2 + Ug3 + Ug4      \leftarrow Four gravity forces \\
+  & + Um (Heaviside 1013\times) \\
   & │ \\
   & ▼ \\
-  & Ub1 + Ub2 + Ub3 + Ub4      ← Four buoyancy forces \\
+  & Ub1 + Ub2 + Ub3 + Ub4      \leftarrow Four buoyancy forces \\
   & │ \\
   & ▼ \\
-  & Observable Gravity           ← Central limit of 26-state sum
+  & Observable Gravity           \leftarrow Central limit of 26-state sum
 \end{aligned}
 $$
 
@@ -181,7 +181,7 @@ $$
 ### 3.1 U_g1: DPM Summation
 
 $$
-F_Ug1 = f_UA' · f_SCm · R_EB / r2
+F_Ug1 = f_UA' \cdot f_SCm \cdot R_EB / r2
 $$
 
 DPM-geometry driven gravitational force with inverse-square law.
@@ -189,7 +189,7 @@ DPM-geometry driven gravitational force with inverse-square law.
 ### 3.2 U_g2: Electron Shell Energy
 
 $$
-E_Ug2 = c · ν · ℏ · f_SCm
+E_Ug2 = c \cdot \nu \cdot ℏ \cdot f_SCm
 $$
 
 Quantized electron shell energy proportional to THz frequency and SCm fraction.
@@ -197,7 +197,7 @@ Quantized electron shell energy proportional to THz frequency and SCm fraction.
 ### 3.3 U_g3: Electron Tagging (U_i + U_m)
 
 $$
-F_Ug3 = (U_i + Ψ_proto/26) / r2
+F_Ug3 = (U_i + \Psi_proto/26) / r2
 $$
 
 Combined repulsive (U_i) and magnetic (U_m) forces tagged to electron motion.
@@ -205,7 +205,7 @@ Combined repulsive (U_i) and magnetic (U_m) forces tagged to electron motion.
 ### 3.4 U_g4i: Central Control
 
 $$
-E_Ug4i = f_SCm · ν · ρ_SCm
+E_Ug4i = f_SCm \cdot \nu \cdot \rho_SCm
 $$
 
 SCm-frequency modulated control field governing the vacuum concentration.
@@ -218,17 +218,17 @@ SCm-frequency modulated control field governing the vacuum concentration.
 |----------|-------|-------|
 | f_UA' | 0.9999 | — |
 | f_SCm | 0.0001 | — |
-| ρ_vac | 7.799e-36 | kg/m3 |
+| $\rho$_vac | 7.799e-36 | kg/m3 |
 | U_vac | 3.267e-80 | J |
 | U_i (repulsive) | -4.261e-24 | J |
-| Ψ_proto (26-state sum) | ~1.0e+26 | (aggregate) |
+| $\Psi$_proto (26-state sum) | ~1.0e+26 | (aggregate) |
 | E_crack | ~1.0e-06 | J |
 | U_b,seed | ~1.0e-01 | J |
 | F_Ug1 | ~1.0e+26 | N |
 | E_Ug2 | ~3.79e-18 | J |
 | F_Ug3 | ~6.30e-07 | N |
 | E_Ug4i | ~8.51e-37 | J |
-| Proto-identity | Proto-hydrogen ≡ Proto-iron | SM_magnetic |
+| Proto-identity | Proto-hydrogen $\equiv$ Proto-iron | SM_magnetic |
 
 ---
 
@@ -254,7 +254,7 @@ master equation:
 
 | Engine | Assumption Coverage |
 |--------|-------------------|
-| Engine 1 (U_m Derivation) | U_m fourth master equation with Heaviside 1013× amplifier |
+| Engine 1 (U_m Derivation) | U_m fourth master equation with Heaviside 1013$\times$ amplifier |
 | Engine 2 (26-State Progression) | 26 quantum states of vacuum density + DPM mapping |
 | Engine 3 (Cosmogenesis) | **THIS PAPER** — all 3 assumptions + 6 ACP stages + flowchart |
 | Engine 4 (Lagrangian) | 9-sector L_UQFF mapping of SCm responses to forces |
@@ -285,7 +285,7 @@ python scm_superconductivity_axiom.py —json  # Machine-readable
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -304,7 +304,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -396,12 +396,12 @@ $$\text{Proto-H} = \text{Proto-Fe at } Z_{\rm id} = 26 \text{ (magnetic identity
 
 **Derivation Chain:**
 1. $S_{\rm KK} = \int d^{26}x \sqrt{-g_{26}} \left[\frac{R_{26}}{2\kappa_{26}^2} + \phi_{\rm proto} \text{ terms}\right]$
-2. $\delta S / \delta g_{MN} = 0$ → Einstein field equations emerge at state 26
+2. $\delta S / \delta g_{MN} = 0$ $\to$ Einstein field equations emerge at state 26
 3. $V_{\rm proto}(n) = \frac{\hbar^2 n^2}{2 m_{\rm proto} R_{\rm proto}^2}$ for each quantum state
 4. At n=26: $R_{26}$ stabilizes, $G_{MN} = 8\pi G T_{MN}/c^4$ emerges
 5. **Conclusion: Gravity did not birth the universe — SCm did**
 
-**Code Reference:** `uqff_lagrangian_derivation.py` →
+**Code Reference:** `uqff_lagrangian_derivation.py` $\to$
 `EULER_LAGRANGE_NEW_TERM_MAPPINGS["cosmogenesis_proto_shell"]`
 
 ### §A.5 Cosmogenesis Linkage Chain
@@ -452,7 +452,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.197 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -463,13 +463,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
@@ -482,7 +482,7 @@ bridge.*
 3. PAPER_856 -- Higgs Field UH Vacuum Excitation via UQFF
 4. PAPER_862 -- Universal Magnetism U_m Master Equation
 5. PAPER_870 -- DPM Extended Periodic Table Proportion Mapping
-6. PAPER_871 -- Universal Speed Range c26·i-26 Photon Deceleration
+6. PAPER_871 -- Universal Speed Range c26$\cdot$i-26 Photon Deceleration
 7. PAPER_872 -- Proto-Iron / Proto-Silicon Nuclear Identity Mapping
 8. scm_superconductivity_axiom.py -- SCm Superconductivity Axiom Module (Session 204)
 9. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
@@ -605,7 +605,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | `SCmEtLagrangianVariationCalc` | 478 | PAPER_894 | Lagrangian variation of cosmogenesis E(t) |
 | `EtFullLagrangianUnifiedDerivationCalc` | 472 | PAPER_888 | Full 9-sector Lagrangian unification |
 
-### S209.2 E(t) Engine: Expansion ↔ Erosion Duality
+### S209.2 E(t) Engine: Expansion $\leftrightarrow$ Erosion Duality
 
 The three cosmogenesis axioms (DPM, ACP, four $U_g$ forces) generate both
 expansion (E+) and erosion (E-) regimes. Session 209 CP4 classes formalize:

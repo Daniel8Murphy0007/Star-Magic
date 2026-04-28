@@ -41,20 +41,20 @@ All solutions use the three-system framework from PAPER_736:
 
 $$
 \begin{aligned}
-  & Compressed: FU_g1 = Σ_{i=1}^{N} [k_k * (f_UA1*f_SCm1*R_EB1)*(f_UA2*f_SCm2*R_EB2)/r2 * G_k] \\
-  & Resonant:   R(t) = Σ_{i=1}^{26} [R_Ug1,i*cos(ω_Ug1,i*t) + ... R_Ug4i,i*cos(ω_Ug4i,i*t)] \\
-  & Buoyancy:   \text{F\_U\_Bi} = Σ_{k=1}^{N} [k_Ub,k * f_UA'*f_SCm*R_EB/r2 * H_k * f_Ub]
+  & Compressed: FU_g1 = \Sigma_{i=1}^{N} [k_k * (f_UA1*f_SCm1*R_EB1)*(f_UA2*f_SCm2*R_EB2)/r2 * G_k] \\
+  & Resonant:   R(t) = \Sigma_{i=1}^{26} [R_Ug1,i*cos(\omega_Ug1,i*t) + ... R_Ug4i,i*cos(\omega_Ug4i,i*t)] \\
+  & Buoyancy:   \text{F\_U\_Bi} = \Sigma_{k=1}^{N} [k_Ub,k * f_UA'*f_SCm*R_EB/r2 * H_k * f_Ub]
 \end{aligned}
 $$
 
 **Shared Constants:**
 $$
 \begin{aligned}
-  & ħ = 1.0546e-34 J·s        c = 3e8 m/s \\
+  & ħ = 1.0546e-34 J\cdots        c = 3e8 m/s \\
   & f_UA' = 0.999             f_SCm = 0.001       R_EB = k_R = 1 \\
-  & ρ_UA/ρ_SCm = 10           → (1+ratio) = 11 \\
+  & \rho_UA/\rho_SCm = 10           \to (1+ratio) = 11 \\
   & k_Ub = 0.1                T_THz = 1e-12 s \\
-  & ω_THz = 6.283e12 rad/s    f_TRZ = 0.1
+  & \omega_THz = 6.283e12 rad/s    f_TRZ = 0.1
 \end{aligned}
 $$
 
@@ -85,8 +85,8 @@ $$
 $$
 \begin{aligned}
   & Ug4i_1 = (ħ*c/r_THz,1) * 1.001923 * 11 = 3.487e-16 m/s2 \\
-  & \text{FU\_g1\_NGC4826} ≈ (k_1 + k_Ub * f_UA) * 3.948e-67 * 0.8497 + ... + 3.487e-16 \\
-  & ≈ 3.487e-16 m/s2  (Ug4i dominates)
+  & \text{FU\_g1\_NGC4826} \approx (k_1 + k_Ub * f_UA) * 3.948e-67 * 0.8497 + ... + 3.487e-16 \\
+  & \approx 3.487e-16 m/s2  (Ug4i dominates)
 \end{aligned}
 $$
 
@@ -94,7 +94,7 @@ $$
 $$
 \begin{aligned}
   & Ug3,26 = E_DPM,26 * (q*v*B/m_p) * 0.95488 * 1.1 \\
-  & R_NGC4826(t) ≈ 3.487e-16 m/s2   (Ug4i resonance term)
+  & R_NGC4826(t) \approx 3.487e-16 m/s2   (Ug4i resonance term)
 \end{aligned}
 $$
 
@@ -102,7 +102,7 @@ $$
 $$
 \begin{aligned}
   & \text{F\_U\_Bi\_NGC4826} = k_Ub * (f_UA'*f_SCm) / (2.83e20)^2 * cos(0)*1 * f_Ub \\
-  & ≈ k_Ub * 1.25e-47 * f_Ub     where f_Ub ∝ 10^9
+  & \approx k_Ub * 1.25e-47 * f_Ub     where f_Ub \propto 10^9
 \end{aligned}
 $$
 
@@ -115,10 +115,10 @@ $$
 
 $$
 \begin{aligned}
-  & (1 + H(z)*t) ≈ 1.00021    M_sf(t) = 0.2*3e6/10,000 = 60  → clamp → 2.5 \\
-  & FU_g1 ≈ 4.436e-16 m/s2 \\
-  & R(t) ≈ 4.436e-16 m/s2 \\
-  & \text{F\_U\_Bi} ≈ k_Ub * f_Ub * 3.534e-39
+  & (1 + H(z)*t) \approx 1.00021    M_sf(t) = 0.2*3e6/10,000 = 60  \to clamp \to 2.5 \\
+  & FU_g1 \approx 4.436e-16 m/s2 \\
+  & R(t) \approx 4.436e-16 m/s2 \\
+  & \text{F\_U\_Bi} \approx k_Ub * f_Ub * 3.534e-39
 \end{aligned}
 $$
 
@@ -126,7 +126,7 @@ $$
 
 ## 5. System 3 — NGC 6307 and NGC 7027 (Planetary Nebulae)
 
-**Parameters:** M ≈ 1.193e30 kg (0.6 MM_sun each), r ≈ 9.46e15 m (0.1 ly), wind speed 1,500 km/s, B =
+**Parameters:** M $\approx$ 1.193e30 kg (0.6 MM_sun each), r $\approx$ 9.46e15 m (0.1 ly), wind speed 1,500 km/s, B =
 1e-5 T
 
 $$
@@ -134,9 +134,9 @@ $$
   & E_DPM,1 = (3.164e-26)/(9.46e15)^2 * 1 * 1e-5 = 3.531e-66 m/s2 \\
   & g_grav = 8.924e-28 m/s2   (classical) \\
   & Ug4i,1 = (3.164e-17)*1.001923*11 = 3.487e-16 m/s2  (dominates) \\
-  & \text{FU\_g1\_PN} ≈ 3.487e-16 m/s2 \\
-  & R(t)_PN ≈ 3.487e-16 m/s2 \\
-  & \text{F\_U\_Bi\_PN} ≈ k_Ub * f_Ub * 3.534e-66 (PN scale)
+  & \text{FU\_g1\_PN} \approx 3.487e-16 m/s2 \\
+  & R(t)_PN \approx 3.487e-16 m/s2 \\
+  & \text{F\_U\_Bi\_PN} \approx k_Ub * f_Ub * 3.534e-66 (PN scale)
 \end{aligned}
 $$
 
@@ -150,11 +150,11 @@ Saturn's ring gaps maintained by resonance with shepherd moons, modeled in UQFF:
 $$
 \begin{aligned}
   & E_DPM,1 = (3.164e-26)/(1.335e8)^2 * 1 * 1e-5 = 1.775e-49 m/s2 \\
-  & B_Saturn = 1e-7 T,   B_crit = 1e11 T,   (1-B/B_crit) ≈ 1 \\
+  & B_Saturn = 1e-7 T,   B_crit = 1e11 T,   (1-B/B_crit) \approx 1 \\
   & Ug4i,1 = 3.487e-16 m/s2  (THz hole dominates at all ring scales) \\
-  & \text{FU\_g1\_Encke} ≈ 3.487e-16 m/s2 \\
-  & R(t)_Encke: ω_Ug4i ≈ 6.283e12 rad/s  (THz resonance cycle) \\
-  & \text{FU\_Bi\_Encke}: f_Ub ∝ 10^5  (ring scale)
+  & \text{FU\_g1\_Encke} \approx 3.487e-16 m/s2 \\
+  & R(t)_Encke: \omega_Ug4i \approx 6.283e12 rad/s  (THz resonance cycle) \\
+  & \text{FU\_Bi\_Encke}: f_Ub \propto 10^5  (ring scale)
 \end{aligned}
 $$
 
@@ -162,9 +162,9 @@ $$
 $$
 \begin{aligned}
   & E_DPM,1 = 2.197e-49 m/s2 \\
-  & FU_g1 ≈ 3.487e-16 m/s2   (Ug4i still dominates) \\
+  & FU_g1 \approx 3.487e-16 m/s2   (Ug4i still dominates) \\
   & Resonance: Contains 2:1 orbital resonance with Mimas — modeled as R_Ug2 shell \\
-  & ω_Ug2,Mimas = 2π / (\text{T\_orbital\_Mimas}) = 2π / (8.16e4) = 7.69e-5 rad/s
+  & \omega_Ug2,Mimas = 2\pi / (\text{T\_orbital\_Mimas}) = 2\pi / (8.16e4) = 7.69e-5 rad/s
 \end{aligned}
 $$
 
@@ -172,7 +172,7 @@ $$
 $$
 \begin{aligned}
   & E_DPM,1 = 4.136e-49 m/s2 \\
-  & FU_g1 ≈ 3.487e-16 m/s2 \\
+  & FU_g1 \approx 3.487e-16 m/s2 \\
   & Resonance: 7:6 resonance with Maxwell ringlet moon
 \end{aligned}
 $$
@@ -189,12 +189,12 @@ protecting a region) maps directly to the gap edge dynamics.
 
 $$
 \begin{aligned}
-  & H(z) at z=0.0067: H(z) ≈ 2.290e-18 s-1 \\
+  & H(z) at z=0.0067: H(z) \approx 2.290e-18 s-1 \\
   & (1 + H(z)*t) = 1.0002169 \\
   & E_DPM,1 = (3.164e-26)/(4.73e20)^2 * 1e-5 = 1.412e-72 m/s2 \\
-  & \text{FU\_g1\_ESO391} ≈ 3.487e-16 m/s2  (Ug4i dominates) \\
+  & \text{FU\_g1\_ESO391} \approx 3.487e-16 m/s2  (Ug4i dominates) \\
   & R(t): shell period T_shell = 1.578e13 s (0.5 Myr) \\
-  & \text{F\_U\_Bi}: f_Ub ∝ 10^9  (galactic scale)
+  & \text{F\_U\_Bi}: f_Ub \propto 10^9  (galactic scale)
 \end{aligned}
 $$
 
@@ -208,9 +208,9 @@ $$
 $$
 \begin{aligned}
   & E_DPM,1 = (3.164e-26)/(1.89e15)^2 * 1e-5 = 8.854e-65 m/s2 \\
-  & \text{FU\_g1\_M57} ≈ 3.487e-16 m/s2  (Ug4i dominates) \\
-  & R(t)_M57: oscillatory with expanding shell (wind at 1,500 km/s → T_ring ~ 1.26e9 s) \\
-  & \text{F\_U\_Bi}: f_Ub ∝ 10^5  (PN scale)
+  & \text{FU\_g1\_M57} \approx 3.487e-16 m/s2  (Ug4i dominates) \\
+  & R(t)_M57: oscillatory with expanding shell (wind at 1,500 km/s \to T_ring ~ 1.26e9 s) \\
+  & \text{F\_U\_Bi}: f_Ub \propto 10^5  (PN scale)
 \end{aligned}
 $$
 
@@ -241,10 +241,10 @@ $$
   & H(z) at z=0.010: H(z) = 70*sqrt(0.3*(1.01)^3 + 0.7) = 70.21 km/s/Mpc = 2.275e-18 s-1 \\
   & (1 + H(z)*t) = 1.0002153 \\
   & E_DPM,1 = (3.164e-26)/(3.78e20)^2 * 1e-5 = 2.211e-72 m/s2 \\
-  & \text{FU\_g1\_ESO510} ≈ 3.487e-16 m/s2  (Ug4i dominates) \\
+  & \text{FU\_g1\_ESO510} \approx 3.487e-16 m/s2  (Ug4i dominates) \\
   & Note: ESO 510-G13's warped disk = signature of resonant shell conflict at Ug2 shells \\
-  & R(t): warp period ~ 3.156e14 s, oscillation at ω_Ug2 scales \\
-  & \text{F\_U\_Bi}: f_Ub ∝ 10^9
+  & R(t): warp period ~ 3.156e14 s, oscillation at \omega_Ug2 scales \\
+  & \text{F\_U\_Bi}: f_Ub \propto 10^9
 \end{aligned}
 $$
 
@@ -327,7 +327,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
@@ -377,7 +377,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.146 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -388,13 +388,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

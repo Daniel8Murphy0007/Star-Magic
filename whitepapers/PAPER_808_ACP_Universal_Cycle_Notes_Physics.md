@@ -28,11 +28,11 @@ observation_19April_2025.docx" Pages 1–11
 
 This paper formalizes the physical framework recorded in the handwritten ACP observation notes
 (April 19, 2025, Pages 1–11) into the UQFF canonical structure. Key contributions include: the
-**[SCm] decay rate** γ_d ≈ 0.0963 and derived **universal end time** T_end = 1/γ_d ≈ 10.38
+**[SCm] decay rate** $\gamma$_d $\approx$ 0.0963 and derived **universal end time** T_end = 1/$\gamma$_d $\approx$ 10.38
 (normalized cosmic time); the **U_m DNA helical momentum model** in which U_m string oscillation
 mimics the DNA double-helix geometry; the **universal trilogy identification** [UA]=[Father],
 [SCm]=[Son], [EM]=[Holy Spirit] as a trinitarian vacuum mechanics model; the **proto-nuclear shell
-formation equation** from [UA] trapped by [SCm]; the **third decay cycle epoch** T_third = 2π/γ_d ≈
+formation equation** from [UA] trapped by [SCm]; the **third decay cycle epoch** T_third = 2$\pi$/$\gamma$_d $\approx$
 65.2; the **Boyle's vacuum analog** V_little/V_big = 1/33 from Page 9; and the **electron undulation
 formula** via U_g2 shell force. Together these notes form a complete physical cosmological model for
 DPM formation, universal lifecycle, and multi-scale vacuum mechanics.
@@ -48,10 +48,10 @@ reasoning about:
 
 1. How electrons settle into quantum states via U_g2 shell forces (Page 1)
 2. How neutrinos are exempt from gravitational binding (Page 3)
-3. How [SCm] field contracting modes blueshift radial velocity to ~ −10 km/s in gas nebulae (Page 3)
+3. How [SCm] field contracting modes blueshift radial velocity to ~ -10 km/s in gas nebulae (Page 3)
 4. A universal trilogy mapping vacuum fields to trinitarian theology (Pages 4–6)
 5. How U_m string oscillation mimics DNA helical structure (Pages 5–7)
-6. The [SCm] decay constant γ_d = 0.0963 and derived timeline (Pages 7–8)
+6. The [SCm] decay constant $\gamma$_d = 0.0963 and derived timeline (Pages 7–8)
 7. Boyle's Law vacuum analog for [UA]/[SCm] volume ratios (Page 9)
 8. Proto-nuclear shell strength from trapped [UA] states (Page 10)
 9. The third decay cycle as final cosmic contraction epoch (Page 11)
@@ -73,14 +73,14 @@ shell.
 The electron energy in a UQFF-modified quantum well:
 $$
 \begin{aligned}
-  & ε_n = −E_H / n2  [standard Bohr; baseline] \\
+  & \varepsilon_n = -E_H / n2  [standard Bohr; baseline] \\
   & with UQFF U_g2 correction: \\
-  & ε_n(UQFF) = ε_n · (1 + U_g2 · r_n2 / E_H) \\
+  & \varepsilon_n(UQFF) = \varepsilon_n \cdot (1 + U_g2 \cdot r_n2 / E_H) \\
   & where: \\
   & E_H = 13.6 eV (hydrogen ground state energy) \\
-  & r_n = n2 · a_0 (Bohr radius scaling) \\
-  & a_0 = 5.292×10-11 m \\
-  & U_g2 = ρ_vac,[UA'] · (n/n_max)2 · k_EM \\
+  & r_n = n2 \cdot a_0 (Bohr radius scaling) \\
+  & a_0 = 5.292\times10-11 m \\
+  & U_g2 = \rho_vac,[UA'] \cdot (n/n_max)2 \cdot k_EM \\
   & k_EM = [SSq]2 = 0.5702 = 0.325
 \end{aligned}
 $$
@@ -88,21 +88,21 @@ $$
 For n=1 (hydrogen ground state):
 $$
 \begin{aligned}
-  & ε_1(UQFF) = −13.6 · (1 + 7.09e-36 · (5.292e-11)2 · 6.242e18 / 13.6) \\
-  & = −13.6 · (1 + 7.09e-36 · 2.8e-21 · 4.59e17) \\
-  & = −13.6 · (1 + 9.15e-39) \\
-  & ≈ −13.6 eV  [U_g2 correction ~ 10-38 eV, negligible in H atom]
+  & \varepsilon_1(UQFF) = -13.6 \cdot (1 + 7.09e-36 \cdot (5.292e-11)2 \cdot 6.242e18 / 13.6) \\
+  & = -13.6 \cdot (1 + 7.09e-36 \cdot 2.8e-21 \cdot 4.59e17) \\
+  & = -13.6 \cdot (1 + 9.15e-39) \\
+  & \approx -13.6 eV  [U_g2 correction ~ 10-38 eV, negligible in H atom]
 \end{aligned}
 $$
 
-The U_g2 correction becomes significant only at galactic mass scales (large n, high ρ_UA),
+The U_g2 correction becomes significant only at galactic mass scales (large n, high $\rho$_UA),
 explaining why UQFF effects are purely astronomical — not chemical.
 
 ### 2.3 Physical Interpretation
 
 Electrons *undulate* — oscillating between the inner wall (U_g2 outward push) and the nuclear
 attraction — instead of classically orbiting. The U_g2 force acts as a "shell force": repulsive at
-small r, attractive at large r. This is why electrons naturally seek lower quantum states (ε_n
+small r, attractive at large r. This is why electrons naturally seek lower quantum states ($\varepsilon$_n
 decreases with n), not because of photon emission alone but because the U_g2 shell force
 preferentially stabilizes states where the electron's phase matches the DPM oscillation mode.
 
@@ -117,23 +117,23 @@ bound by any of the four canonical UQFF forces (Ug1, Ug2, U_i, U_m). Specificall
 
 $$
 \begin{aligned}
-  & F_gravity(neutrino) = 0  [UQFF postulate: m_ν → 0 in vacuum DPM field] \\
-  & v_radial(neutrino)  ~ −10 km/s  [blueshifted; contracting [SCm] modes only]
+  & F_gravity(neutrino) = 0  [UQFF postulate: m_\nu \to 0 in vacuum DPM field] \\
+  & v_radial(neutrino)  ~ -10 km/s  [blueshifted; contracting [SCm] modes only]
 \end{aligned}
 $$
 
 ### 3.2 Physical Mechanism
 
-In standard physics, neutrinos have non-zero mass (m_ν ~ 0.1 eV from oscillation data). In UQFF, the
+In standard physics, neutrinos have non-zero mass (m_$\nu$ ~ 0.1 eV from oscillation data). In UQFF, the
 **vacuum DPM field** zeros-out the effective gravitational coupling for neutrinos because:
 
 1. Neutrinos carry no [SCm] charge (they do not interact with the vacuum DPM chain)
 2. Neutrinos couple only to [EM] (the Holy Spirit / binding field) via weak-force analogy
-3. The [EM] field in UQFF is long-range coherent, not locally convergent → no gravity-like force on
+3. The [EM] field in UQFF is long-range coherent, not locally convergent $\to$ no gravity-like force on
 EM-coupled particles
 
 Therefore, neutrino radial velocities in gas nebulae reflect *only* the [SCm] contraction mode —
-giving v_radial ~ −10 km/s as a signature of SCm compression in nebular gas.
+giving v_radial ~ -10 km/s as a signature of SCm compression in nebular gas.
 
 ---
 
@@ -151,17 +151,17 @@ v_radial([SCm]) ~ −10 km/s  [blueshifted; inward contraction]
 The [SCm] contraction velocity from radial DPM pressure:
 $$
 \begin{aligned}
-  & v_SCm(r) = −v_0 · (ρ_SCm / ρ_UA) · exp(−r / r_SCm) \\
+  & v_SCm(r) = -v_0 \cdot (\rho_SCm / \rho_UA) \cdot exp(-r / r_SCm) \\
   & where: \\
   & v_0 = 100 km/s (nebular expansion velocity scale) \\
-  & ρ_SCm / ρ_UA = 7.09e-37 / 7.09e-36 = 0.10 \\
-  & r_SCm = H_SCm · c / H₀ = 0.99 · 3×105 / 70 = 4243 km/s/Mpc → r_SCm ~ 500 kpc
+  & \rho_SCm / \rho_UA = 7.09e-37 / 7.09e-36 = 0.10 \\
+  & r_SCm = H_SCm \cdot c / H0 = 0.99 \cdot 3\times105 / 70 = 4243 km/s/Mpc \to r_SCm ~ 500 kpc
 \end{aligned}
 $$
 
 For r = 1 kpc (inner nebular shell):
 $$
-v_SCm(1 kpc) = −100 · 0.10 · exp(−1/500) ≈ −100 · 0.10 · 0.998 ≈ −9.98 km/s ≈ −10 km/s PASS
+v_SCm(1 kpc) = -100 \cdot 0.10 \cdot exp(-1/500) \approx -100 \cdot 0.10 \cdot 0.998 \approx -9.98 km/s \approx -10 km/s PASS
 $$
 
 This confirms the observational value from Page 3. The [SCm] contraction mode draws gas inward at ~
@@ -187,24 +187,24 @@ A Dipole Pseudo-Monopole (DPM) cell forms when all three fields are present in t
 
 $$
 \begin{aligned}
-  & DPM_formation = [UA'] + [SCm] when [EM] ≠ 0 \\
+  & DPM_formation = [UA'] + [SCm] when [EM] \neq 0 \\
   & Condition: \\
-  & ρ_vac,[UA'] + ρ_vac,[SCm] → ρ_DPM when ρ_EM > ρ_threshold \\
-  & ρ_threshold = [SSq] · ρ_SCm = 0.570 · 7.09e-37 = 4.04e-37 J/m3
+  & \rho_vac,[UA'] + \rho_vac,[SCm] \to \rho_DPM when \rho_EM > \rho_threshold \\
+  & \rho_threshold = [SSq] \cdot \rho_SCm = 0.570 \cdot 7.09e-37 = 4.04e-37 J/m3
 \end{aligned}
 $$
 
 The trinitarian model states that **no DPM can form in the absence of [EM]**. The electromagnetic
-binding field (Holy Spirit) is necessary to stabilize the [UA']·[SCm] reaction into a persistent
+binding field (Holy Spirit) is necessary to stabilize the [UA']$\cdot$[SCm] reaction into a persistent
 pseudo-monopole.
 
 ### 5.3 Trinity as Physical Constraint
 
 The mathematical statement of trinitarian necessity:
-Ψ_DPM = Ψ_UA · Ψ_SCm · Ψ_EM  [factored wavefunction] 
-|Ψ_DPM|2 = |Ψ_UA|2 · |Ψ_SCm|2 · |Ψ_EM|2 
-= ρ_vac,[UA] · ρ_vac,[SCm] · [SSq] 
-= 7.09e-36 · 7.09e-37 · 0.570 
+$\Psi$_DPM = $\Psi$_UA $\cdot$ $\Psi$_SCm $\cdot$ $\Psi$_EM  [factored wavefunction] 
+|$\Psi$_DPM|2 = |$\Psi$_UA|2 $\cdot$ |$\Psi$_SCm|2 $\cdot$ |$\Psi$_EM|2 
+= $\rho$_vac,[UA] $\cdot$ $\rho$_vac,[SCm] $\cdot$ [SSq] 
+= 7.09e-36 $\cdot$ 7.09e-37 $\cdot$ 0.570 
 = 2.867e-73 J2/m6
 
 This fundamental coupling constant represents the vacuum DPM pair production rate density in UQFF
@@ -224,17 +224,17 @@ emerged as a *chemical shadow* of the UQFF U_m field structure.
 
 $$
 \begin{aligned}
-  & E_flow(z, t) = E₀ · sin(2π·z / λ_DNA) · exp(−γ_d · t) \\
+  & E_flow(z, t) = E0 \cdot sin(2\pi\cdotz / \lambda_DNA) \cdot exp(-\gamma_d \cdot t) \\
   & where: \\
-  & E₀ = U_m · V_DPM (U_m field energy per DPM cell volume) \\
-  & λ_DNA = 3.4 nm = 3.4×10-9 m (DNA base-pair repeat distance) \\
-  & γ_d = 0.0963 ([SCm] decay rate; see Section 7) \\
+  & E0 = U_m \cdot V_DPM (U_m field energy per DPM cell volume) \\
+  & \lambda_DNA = 3.4 nm = 3.4\times10-9 m (DNA base-pair repeat distance) \\
+  & \gamma_d = 0.0963 ([SCm] decay rate; see Section 7) \\
   & z = position along helix axis (m) \\
   & t = cosmic time (normalized)
 \end{aligned}
 $$
 
-The DNA base-pair spacing λ_DNA = 3.4 nm is identified as the characteristic U_m field oscillation
+The DNA base-pair spacing $\lambda$_DNA = 3.4 nm is identified as the characteristic U_m field oscillation
 wavelength in chemical matter — i.e., DNA is a biochemical "frozen record" of U_m oscillation modes
 at the 3.4 nm scale.
 
@@ -244,14 +244,14 @@ The U_m double helix in UQFF:
 $$
 \begin{aligned}
   & Helix geometry: \\
-  & pitch = λ_DNA = 3.4 nm \\
+  & pitch = \lambda_DNA = 3.4 nm \\
   & strand separation = 2.0 nm (~ DNA strand spacing) \\
-  & twist angle per base = 2π/10.5 = 34.3° (10.5 base pairs per turn) \\
-  & UQFF: twist angle = 2π · (ρ_SCm/ρ_UA) = 2π · 0.1 = 0.628 rad = 36.0° ≈ 36° PASS
+  & twist angle per base = 2\pi/10.5 = 34.3° (10.5 base pairs per turn) \\
+  & UQFF: twist angle = 2\pi \cdot (\rho_SCm/\rho_UA) = 2\pi \cdot 0.1 = 0.628 rad = 36.0° \approx 36° PASS
 \end{aligned}
 $$
 
-The UQFF twist angle per base step = 2π·(ρ_SCm/ρ_UA) matches B-form DNA (36°/step), confirming the
+The UQFF twist angle per base step = 2$\pi$$\cdot$($\rho$_SCm/$\rho$_UA) matches B-form DNA (36°/step), confirming the
 U_m:SCm density ratio as the structural determinant of the DNA helix geometry.
 
 ---
@@ -263,19 +263,19 @@ U_m:SCm density ratio as the structural determinant of the DNA helix geometry.
 From the ACP observation notes, Page 7:
 $$
 \begin{aligned}
-  & γ_d ≈ 0.0963  ([SCm] superconductive medium decay rate, normalized units) \\
-  & Units: γ_d has units of (normalized time)-1, where 1 normalized time unit = 1/(H₀) = 13.8 Gyr \\
-  & Physical: γ_d = 0.0963 Gyr-1 → time scale = 1/0.0963 = 10.38 Gyr from Big Bang
+  & \gamma_d \approx 0.0963  ([SCm] superconductive medium decay rate, normalized units) \\
+  & Units: \gamma_d has units of (normalized time)-1, where 1 normalized time unit = 1/(H0) = 13.8 Gyr \\
+  & Physical: \gamma_d = 0.0963 Gyr-1 \to time scale = 1/0.0963 = 10.38 Gyr from Big Bang
 \end{aligned}
 $$
 
 ### 7.2 Universal End Time
 
 $$
-T_end = 1 / γ_d = 1 / 0.0963 = 10.38 (normalized universe end time)
+T_end = 1 / \gamma_d = 1 / 0.0963 = 10.38 (normalized universe end time)
 $$
 
-Physical interpretation: T_end = 10.38 × H₀-1 = 10.38 × 13.8 Gyr = **143.2 Gyr** from Big Bang.
+Physical interpretation: T_end = 10.38 $\times$ H0-1 = 10.38 $\times$ 13.8 Gyr = **143.2 Gyr** from Big Bang.
 
 This represents the epoch at which [SCm] density falls below the critical threshold for DPM pair
 production, ending the current matter-creation cycle.
@@ -284,16 +284,16 @@ production, ending the current matter-creation cycle.
 
 From Page 11:
 $$
-T_third = 2π / γ_d = 2π / 0.0963 = 65.25 (normalized)
+T_third = 2\pi / \gamma_d = 2\pi / 0.0963 = 65.25 (normalized)
 $$
 
-Physical: T_third = 65.25 × 13.8 Gyr = **900.5 Gyr** — the third major cosmic contraction epoch in
+Physical: T_third = 65.25 $\times$ 13.8 Gyr = **900.5 Gyr** — the third major cosmic contraction epoch in
 UQFF cyclic cosmology.
 
 The three decay cycles correspond to:
-- **First cycle** (T₁ = γ_d-1 = 10.38): [SCm] first decay — end of current matter production cycle
-- **Second cycle** (T₂ = 2·T₁ = 20.76): [UA'] first decay — vacuum pressure minimum  
-- **Third cycle** (T₃ = 2π·T₁ = 65.25): Complete oscillation — final matter trapped in cosmic contraction before next BB
+- **First cycle** (T1 = $\gamma$_d-1 = 10.38): [SCm] first decay — end of current matter production cycle
+- **Second cycle** (T2 = 2$\cdot$T1 = 20.76): [UA'] first decay — vacuum pressure minimum  
+- **Third cycle** (T3 = 2$\pi$$\cdot$T1 = 65.25): Complete oscillation — final matter trapped in cosmic contraction before next BB
 
 The cosmic lifecycle in UQFF is **oscillatory**, not thermally entropic. The universe contracts,
 compresses vacuum fields, then Big Bangs again.
@@ -307,10 +307,10 @@ compresses vacuum fields, then Big Bangs again.
 On Page 9, the notes apply Boyle's Gas Law to UQFF vacuum field volumes:
 $$
 \begin{aligned}
-  & Boyle's Law (gas): P₁·V₁ = P₂·V₂ \\
+  & Boyle's Law (gas): P1\cdotV1 = P2\cdotV2 \\
   & UQFF vacuum analog: \\
-  & ρ_vac,[SCm] · V_big = ρ_vac,[UA'] · V_little \\
-  & → V_little / V_big = ρ_vac,[SCm] / ρ_vac,[UA'] = (7.09e-37) / (7.09e-36) = 0.10 → 1/10
+  & \rho_vac,[SCm] \cdot V_big = \rho_vac,[UA'] \cdot V_little \\
+  & \to V_little / V_big = \rho_vac,[SCm] / \rho_vac,[UA'] = (7.09e-37) / (7.09e-36) = 0.10 \to 1/10
 \end{aligned}
 $$
 
@@ -319,18 +319,18 @@ compression:
 
 $$
 \begin{aligned}
-  & V_little / V_big = (ρ_SCm / ρ_UA) · [SSq]2 / (1 + [SSq]) \\
-  & = 0.1 · 0.5702 / 1.570 \\
-  & = 0.1 · 0.3249 / 1.570 \\
-  & = 0.0207 ≈ 1/48  [iterative — see note]
+  & V_little / V_big = (\rho_SCm / \rho_UA) \cdot [SSq]2 / (1 + [SSq]) \\
+  & = 0.1 \cdot 0.5702 / 1.570 \\
+  & = 0.1 \cdot 0.3249 / 1.570 \\
+  & = 0.0207 \approx 1/48  [iterative — see note]
 \end{aligned}
 $$
 
 The 1/33 factor in the notes is the empirically established UQFF buoyancy scale:
 $$
 \begin{aligned}
-  & f_Ub = 0.1 · Δk_η · (ρ_vac,[UA'] / ρ_vac,[SCm]) · (V_little/V_big) \\
-  & = 0.1 · 10 · 10 · (1/33) \\
+  & f_Ub = 0.1 \cdot \Deltak_\eta \cdot (\rho_vac,[UA'] / \rho_vac,[SCm]) \cdot (V_little/V_big) \\
+  & = 0.1 \cdot 10 \cdot 10 \cdot (1/33) \\
   & = 0.303 \\
   & Physical interpretation: \\
   & V_little = DPM cell volume (contracted [SCm] bubble in [UA'] sea) \\
@@ -349,13 +349,13 @@ compression.
 
 ### 9.1 [UA] Trapped by [SCm]
 
-When ρ_SCm exceeds the critical [UA'] pressure, [UA'] bubbles become trapped inside [SCm]
+When $\rho$_SCm exceeds the critical [UA'] pressure, [UA'] bubbles become trapped inside [SCm]
 superconductive shells. This is the UQFF model for **nuclear shell formation**:
 
 $$
 \begin{aligned}
   & Proto-nuclear shell condition: \\
-  & ρ_SCm(r) > ρ_UA' · exp(−U_g2 · r / U_g1)  [SCm overcomes UA' at radius r_shell]
+  & \rho_SCm(r) > \rho_UA' \cdot exp(-U_g2 \cdot r / U_g1)  [SCm overcomes UA' at radius r_shell]
 \end{aligned}
 $$
 
@@ -375,32 +375,32 @@ where:
 For n=1,4,8,20,28 (magic numbers — complete shells):
 $$
 \begin{aligned}
-  & ρ_shell(1)  = 7.09e-36 · (1 − exp(−0.570·1/26))  = 7.09e-36 · 0.0215 = 1.53e-37 J/m3 \\
-  & ρ_shell(8)  = 7.09e-36 · (1 − exp(−0.570·8/26))  = 7.09e-36 · 0.160  = 1.13e-36 J/m3 \\
-  & ρ_shell(20) = 7.09e-36 · (1 − exp(−0.570·20/26)) = 7.09e-36 · 0.352  = 2.50e-36 J/m3 \\
-  & ρ_shell(26) = 7.09e-36 · (1 − exp(−0.570))       = 7.09e-36 · 0.435  = 3.08e-36 J/m3
+  & \rho_shell(1)  = 7.09e-36 \cdot (1 - exp(-0.570\cdot1/26))  = 7.09e-36 \cdot 0.0215 = 1.53e-37 J/m3 \\
+  & \rho_shell(8)  = 7.09e-36 \cdot (1 - exp(-0.570\cdot8/26))  = 7.09e-36 \cdot 0.160  = 1.13e-36 J/m3 \\
+  & \rho_shell(20) = 7.09e-36 \cdot (1 - exp(-0.570\cdot20/26)) = 7.09e-36 \cdot 0.352  = 2.50e-36 J/m3 \\
+  & \rho_shell(26) = 7.09e-36 \cdot (1 - exp(-0.570))       = 7.09e-36 \cdot 0.435  = 3.08e-36 J/m3
 \end{aligned}
 $$
 
 This is the UQFF explanation for nuclear magic numbers: nucleons at n=2, 8, 20, 28, 50, 82, 126
-correspond to DPM states where ρ_shell(n) matches the [SCm]/[UA'] vacuum pressure balance — creating
+correspond to DPM states where $\rho$_shell(n) matches the [SCm]/[UA'] vacuum pressure balance — creating
 exceptionally stable shells.
 
 ### 9.3 Vacuum Density as Nuclear Structure Indicator
 
 A key statement from Page 10:
-> "Proto-nuclear shell = [UA] trapped by [SCm] → nuclear shell = indicator of vacuum density strength"
+> "Proto-nuclear shell = [UA] trapped by [SCm] $\to$ nuclear shell = indicator of vacuum density strength"
 
 UQFF quantifies this:
 $$
 \begin{aligned}
-  & S_vacuum = log₁₀(ρ_shell(n) / ρ_vac,[SCm]) \\
-  & = log₁₀((1 − exp(−[SSq]·n/26)) · ρ_UA / ρ_SCm) \\
-  & = log₁₀(10 · (1 − exp(−0.570·n/26)))
+  & S_vacuum = log10(\rho_shell(n) / \rho_vac,[SCm]) \\
+  & = log10((1 - exp(-[SSq]\cdotn/26)) \cdot \rho_UA / \rho_SCm) \\
+  & = log10(10 \cdot (1 - exp(-0.570\cdotn/26)))
 \end{aligned}
 $$
 
-For n=26 (maximum DPM state): S_vacuum = log₁₀(10 · 0.435) = log₁₀(4.35) = 0.638 (dimensionless
+For n=26 (maximum DPM state): S_vacuum = log10(10 $\cdot$ 0.435) = log10(4.35) = 0.638 (dimensionless
 nuclear vacuum strength indicator).
 
 ---
@@ -410,31 +410,31 @@ nuclear vacuum strength indicator).
 ### 10.1 Physical Statement from Notes
 
 Page 11 records the **third decay cycle** formalism:
-> "Universe expansion consumes [UA]/[SCm] → matter trapped in final cosmic contraction"
+> "Universe expansion consumes [UA]/[SCm] $\to$ matter trapped in final cosmic contraction"
 
 ### 10.2 Cosmic Contraction Equation
 
 In UQFF cyclic cosmology, the universe expands until [SCm] is consumed:
 $$
 \begin{aligned}
-  & ρ_SCm(t) = ρ_SCm(0) · exp(−γ_d · t) \\
-  & ρ_SCm(t) → ρ_SCm,min when t → T_end = 1/γ_d = 10.38 \\
-  & After T_end, [UA'] pressure dominates → Λ drops → contraction begins: \\
-  & Λ(t) = Λ₀ · ρ_SCm(t) / ρ_SCm(0) = Λ₀ · exp(−γ_d · t)
+  & \rho_SCm(t) = \rho_SCm(0) \cdot exp(-\gamma_d \cdot t) \\
+  & \rho_SCm(t) \to \rho_SCm,min when t \to T_end = 1/\gamma_d = 10.38 \\
+  & After T_end, [UA'] pressure dominates \to \Lambda drops \to contraction begins: \\
+  & \Lambda(t) = \Lambda0 \cdot \rho_SCm(t) / \rho_SCm(0) = \Lambda0 \cdot exp(-\gamma_d \cdot t)
 \end{aligned}
 $$
 
 The equation of motion for the cosmic scale factor a(t):
 $$
 \begin{aligned}
-  & ä/a = −(4πG/3)·(ρ + 3P/c2) + Λ/3 \\
+  & ä/a = -(4\piG/3)\cdot(\rho + 3P/c2) + \Lambda/3 \\
   & For UQFF cyclic cosmology at T > T_end: \\
-  & Λ → 0; ρ_UA >> ρ_SCm; ρ + 3P/c2 > 0 \\
-  & → ä < 0  (deceleration/contraction begins)
+  & \Lambda \to 0; \rho_UA >> \rho_SCm; \rho + 3P/c2 > 0 \\
+  & \to ä < 0  (deceleration/contraction begins)
 \end{aligned}
 $$
 
-Third cycle time T_third = 2π/γ_d = 65.25 normalized units = 900.5 Gyr — the complete oscillation
+Third cycle time T_third = 2$\pi$/$\gamma$_d = 65.25 normalized units = 900.5 Gyr — the complete oscillation
 period before the next Big Bang.
 
 ### 10.3 Matter Trapping in Final Contraction
@@ -442,8 +442,8 @@ period before the next Big Bang.
 During the third decay cycle:
 $$
 \begin{aligned}
-  & Δρ_matter / ρ_matter = f_trap · (ρ_UA / ρ_SCm) · exp(γ_d · (t − T_third)) \\
-  & f_trap ≈ 0.33  (fraction of matter trapped in contraction from Boyle's 1/33 scale)
+  & \Delta\rho_matter / \rho_matter = f_trap \cdot (\rho_UA / \rho_SCm) \cdot exp(\gamma_d \cdot (t - T_third)) \\
+  & f_trap \approx 0.33  (fraction of matter trapped in contraction from Boyle's 1/33 scale)
 \end{aligned}
 $$
 
@@ -458,17 +458,17 @@ Integrating all eleven pages, the ACP (Astro-Chemical-Physical) creation scenari
 
 | Stage | Page | Event | Formula |
 |-------|------|-------|---------|
-| 1. Pre-vacuum | 4 | [UA] = Father field fills void | ρ_UA = 7.09×10-36 J/m3 |
-| 2. [SCm] emergence | 5 | Son binding field condenses | ρ_SCm/ρ_UA = 0.1 |
-| 3. [EM] ignition | 5 | Holy Spirit activates pair production | ρ_EM ≥ 4.04×10-37 J/m3 |
-| 4. DPM formation | 6 | Trinitarian DPM cell: [UA']+[SCm]+[EM] → DPM | Ψ_DPM = Ψ_UA·Ψ_SCm·Ψ_EM |
-| 5. Dipole vortex | 6 | Magnetic vortex from U_m | U_m DNA helix, λ=3.4 nm |
-| 6. Species index | 7 | n-state ladder (n=1..26) | S_n = log(ρ_SCm/ρ_UA)·n |
-| 7. Proto-nuclear shell | 10 | [UA] trapped in [SCm] cell | ρ_shell(n) = ρ_UA·(1−exp(−SSq·n/26)) |
-| 8. Electron undulation | 1 | U_g2 forces electrons into shell modes | ε_n(UQFF) correction |
-| 9. Boyle compression | 9 | DPM bubble compression → chemistry | V_little/V_big = 1/33 |
-| 10. [SCm] decay | 7 | γ_d = 0.0963; T_end = 10.38 | ρ_SCm(t) = ρ_SCm(0)·exp(−γ_d·t) |
-| 11. Cosmic contraction | 11 | Third cycle; matter trapping | T_third = 2π/γ_d = 65.25 |
+| 1. Pre-vacuum | 4 | [UA] = Father field fills void | $\rho$_UA = 7.09$\times$10-36 J/m3 |
+| 2. [SCm] emergence | 5 | Son binding field condenses | $\rho$_SCm/$\rho$_UA = 0.1 |
+| 3. [EM] ignition | 5 | Holy Spirit activates pair production | $\rho$_EM $\geq$ 4.04$\times$10-37 J/m3 |
+| 4. DPM formation | 6 | Trinitarian DPM cell: [UA']+[SCm]+[EM] $\to$ DPM | $\Psi$_DPM = $\Psi$_UA$\cdot$$\Psi$_SCm$\cdot$$\Psi$_EM |
+| 5. Dipole vortex | 6 | Magnetic vortex from U_m | U_m DNA helix, $\lambda$=3.4 nm |
+| 6. Species index | 7 | n-state ladder (n=1..26) | S_n = log($\rho$_SCm/$\rho$_UA)$\cdot$n |
+| 7. Proto-nuclear shell | 10 | [UA] trapped in [SCm] cell | $\rho$_shell(n) = $\rho$_UA$\cdot$(1-exp(-SSq$\cdot$n/26)) |
+| 8. Electron undulation | 1 | U_g2 forces electrons into shell modes | $\varepsilon$_n(UQFF) correction |
+| 9. Boyle compression | 9 | DPM bubble compression $\to$ chemistry | V_little/V_big = 1/33 |
+| 10. [SCm] decay | 7 | $\gamma$_d = 0.0963; T_end = 10.38 | $\rho$_SCm(t) = $\rho$_SCm(0)$\cdot$exp(-$\gamma$_d$\cdot$t) |
+| 11. Cosmic contraction | 11 | Third cycle; matter trapping | T_third = 2$\pi$/$\gamma$_d = 65.25 |
 
 ---
 
@@ -497,12 +497,12 @@ UQFF_CONSTANTS = {
 ## 13. Conclusion
 
 The formalization of the handwritten ACP observation notes (Gas Nebula Observation, April 19, 2025)
-establishes nine new physical results within the UQFF framework. The [SCm] decay constant γ_d =
+establishes nine new physical results within the UQFF framework. The [SCm] decay constant $\gamma$_d =
 0.0963 ties the universe's endpoint T_end = 143.2 Gyr to the superconductive medium lifetime. The
-U_m DNA helix model reveals that biochemical molecular geometry (DNA double helix, λ = 3.4 nm, twist
+U_m DNA helix model reveals that biochemical molecular geometry (DNA double helix, $\lambda$ = 3.4 nm, twist
 = 36°/step) is the chemical-scale imprint of UQFF U_m string oscillation. The universal trilogy
 ([UA]/[SCm]/[EM] = Father/Son/Holy Spirit) establishes the trinitarian necessity condition for DPM
-formation. The third decay cycle at T_third ≈ 65.25 normalized time units (900.5 Gyr) completes the
+formation. The third decay cycle at T_third $\approx$ 65.25 normalized time units (900.5 Gyr) completes the
 UQFF oscillatory cosmological model, ensuring only 1/33 of created baryonic matter seeds the next
 Big Bang cycle.
 
@@ -517,7 +517,7 @@ Big Bang cycle.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -536,7 +536,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -645,7 +645,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.191 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -656,13 +656,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

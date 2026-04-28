@@ -51,7 +51,7 @@ Session 136 encoded the `BigBangHypergraphTheory_12Dec2025.docx` content
 | # | Item | Prior Form | Session 140 Upgrade |
 |---|------|-----------|---------------------|
 | 1 | DPM encapsulation | "SCm encapsulates" | DPM reaction forms layered shell-energies |
-| 2 | Phase cascade | Unordered | quantum-multi-fields→plasma→gas→liquid→solid |
+| 2 | Phase cascade | Unordered | quantum-multi-fields$\to$plasma$\to$gas$\to$liquid$\to$solid |
 | 3 | $t_{\text{adj}}$ | $t_{\text{obs}}/(1+\Delta_{\text{rel}})$ | $t_{\text{obs}}/(1+\Delta_{\text{dil}}) + t_{\text{neg}}$ |
 | 4 | Spooky distance | Qualitative only | $Distance_{\text{spooky}} = c \cdot |t_{\text{neg}}|$ |
 | 5 | Dual existence | Not defined | $DualExist = \int_{t\_{\text{pos}}}^{t_{\text{neg}}} Existence\, dt$ |
@@ -71,7 +71,7 @@ $$ShellEnergy^{(l)} = \int Radiance_{\text{quant}}\, dt_{\text{neg}}$$
 $$DPM_{\text{react}} = \frac{\kappa(DPM_n - DPM_s)}{r^{26}} + \frac{\partial^{26} Grind_{\text{opp}}}{\partial t^{26}_{\text{adj}}}$$
 
 Triple-calc: Layer 1 (CW), Layer 2 (CCW), Layer 3 ($t_{\text{neg}}$).
-Phase cascade: quantum-multi-fields → plasma → gas → liquid → solid.
+Phase cascade: quantum-multi-fields $\to$ plasma $\to$ gas $\to$ liquid $\to$ solid.
 
 ---
 
@@ -254,7 +254,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.054 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -265,10 +265,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 $\to$ `m_H_UQFF` = 125.09 GeV | m_H = 125.20 $\pm$ 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological $\Lambda$ | UQFF |$\nabla$UA|2 $\to$ 1.09e-52 m-2 | $\Lambda$ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson $\sigma$_T (QED) | UQFF U_m kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| $\kappa$ baryon stability | $\kappa$ = 0.0005/day; scale separation 1033 from proton decay | $\tau$_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

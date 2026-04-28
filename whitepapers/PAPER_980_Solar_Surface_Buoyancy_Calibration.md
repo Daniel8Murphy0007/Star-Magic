@@ -94,7 +94,7 @@ with buoyancy perturbation $\deltamathcal{L}_b = -U_b \cdot m \cdot r$.
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 - **VDS:** Solar vacuum density $\rho_{\text{vac,}\odot} \approx 6 \times 10^{-27}$ kg/m3 at photosphere.
-- **DVP:** Solar DPM moment $\mu_odot \approx 6.6 \times 10^{32}$ A·m2 drives $U_{g1}$ layer.
+- **DVP:** Solar DPM moment $\mu_odot \approx 6.6 \times 10^{32}$ A$\cdot$m2 drives $U_{g1}$ layer.
 - **BSH:** $\beta_i = 0.603$ defines the buoyancy-to-gravity ratio at each layer boundary.
 
 ---

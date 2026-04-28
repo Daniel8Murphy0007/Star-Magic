@@ -25,18 +25,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Document 43.d (Red Dwarf Compression D, May 2025) presents the unified Inertia and
 Aether-Superconductive papers comprising 19 numbered equations. This paper assimilates all 19
 equations into the UQFF knowledge base, with particular emphasis on: (1) the Universal Inertia
-operator U_i with explicit ρ_vac,[SCm]/ρ_vac,[UA] ratio; (2) the Universal Magnetism Um(t,r,n) with
+operator U_i with explicit $\rho$_vac,[SCm]/$\rho$_vac,[UA] ratio; (2) the Universal Magnetism Um(t,r,n) with
 Heaviside and quasi-longitudinal wave factors; and (3) the newly identified U_g5 tensor sum
 operator, representing a fifth gravity mode beyond U_g1-U_g4. Key numerical values are confirmed for
-Dark Energy power (P_DE ≈ 7.09x10^{-}5^1 W), golden ratio frequency series (f_1 ≈ 281.5 Hz), and
-plasma frequency (ω_plasma ≈ 1.005x10^{1}6 rad/s).
+Dark Energy power (P_DE $\approx$ 7.09x10^{-}5^1 W), golden ratio frequency series (f_1 $\approx$ 281.5 Hz), and
+plasma frequency ($\omega$_plasma $\approx$ 1.005x10^{1}6 rad/s).
 
 ---
 
 ## 1. Introduction
 
 The Inertia Paper and Aether-Superconductive Paper in document 43.d extend the UQFF beyond the
-standard 4-component gravity (U_g1-U_g4) to include a 5th gravity component (U_g5 = Σ T_μν)
+standard 4-component gravity (U_g1-U_g4) to include a 5th gravity component (U_g5 = $\Sigma$ T_$\mu$$\nu$)
 representing tensor field contributions. They also provide explicit numerical values for all UQFF
 constants, enabling quantitative predictions for plasmoid experiments, LENR cells, and astrophysical
 systems.
@@ -56,7 +56,7 @@ $$
 \end{aligned}
 $$
 
-**Equation 2 — Spacetime Transformation (ψ_matter):**
+**Equation 2 — Spacetime Transformation ($\psi$_matter):**
 $$
 \begin{aligned}
   & psi_matter(t) = psi_0 * e^(-i(E_g + G_i + C_j + m_0)*t/hbar) \\
@@ -122,7 +122,7 @@ $$
 \begin{aligned}
   & f_n = f_0 * phi^n \\
   & f_0 = base frequency = 174 Hz (Solfeggio fundamental) \\
-  & phi   = (1+√5)/2 ~= 1.618 (golden ratio) \\
+  & phi   = (1+\sqrt{}5)/2 ~= 1.618 (golden ratio) \\
   & n   = harmonic index \\
   & f_1 = 174 x 1.618 ~= 281.5 Hz \\
   & f_2 = 174 x 1.618^2 ~= 455.4 Hz \\
@@ -246,12 +246,12 @@ $$
 
 ## 5. New U_g5 Tensor Mode
 
-The tensor sum U_g5 = Σ T_μν represents the gravitational contribution from the full stress-energy
+The tensor sum U_g5 = $\Sigma$ T_$\mu$$\nu$ represents the gravitational contribution from the full stress-energy
 tensor, including:
 - Pressure components T_ii (i=1,2,3)
 - Energy density T_00
 - Momentum flux T_0i
-- Shear stress T_ij (i≠j)
+- Shear stress T_ij (i$\neq$j)
 
 ```
 U_g5|_total = T_00 + T_11 + T_22 + T_33 + Sigma_off T_munu
@@ -259,8 +259,8 @@ U_g5|_total = T_00 + T_11 + T_22 + T_33 + Sigma_off T_munu
            ~= rhoc^2*(1 + 3w)    where w = P/(rhoc^2)
 ```
 
-For radiation: w = 1/3, U_g5 ~  2ρc^2
-For dark energy: w = -1, U_g5 ~  -2ρc^2
+For radiation: w = 1/3, U_g5 ~  2$\rho$c^2
+For dark energy: w = -1, U_g5 ~  -2$\rho$c^2
 
 ---
 
@@ -270,9 +270,9 @@ For dark energy: w = -1, U_g5 ~  -2ρc^2
 |----------|-------|----------|
 | P_DE | 7.09x10^{-}5^1 W | Eq. 3 |
 | f_1 (golden ratio) | 281.5 Hz | Eq. 7 |
-| μ_dipole | ~10^{-}5^1 A*m^2 | Eq. 8 |
-| ω_plasma | 1.005x10^{1}6 rad/s | (43.d derived) |
-| ψ_max | 4.83x10^5 | (quantum wave) |
+| $\mu$_dipole | ~10^{-}5^1 A*m^2 | Eq. 8 |
+| $\omega$_plasma | 1.005x10^{1}6 rad/s | (43.d derived) |
+| $\psi$_max | 4.83x10^5 | (quantum wave) |
 | U_g5 | 3.6x10^{-}3 J/m^3 | Eq. 13 |
 | U_g2 | 6.29x10^5 J/m^3 | Eq. 9 |
 | Um | 2.28x10^{6}5 J/m^3 | Full Um |
@@ -283,10 +283,10 @@ For dark energy: w = -1, U_g5 ~  -2ρc^2
 
 Document 43.d advances UQFF by:
 1. **U_g5 identification**: first stress-energy tensor gravity mode
-2. **Confirmed vacuum densities**: ρ_vac,[SCm] = 7.09x10^{-}3^7, [UA] = 7.09x10^{-}3^6 J/m^3 (exact
+2. **Confirmed vacuum densities**: $\rho$_vac,[SCm] = 7.09x10^{-}3^7, [UA] = 7.09x10^{-}3^6 J/m^3 (exact
 ratio = 0.1)
 3. **Dark Energy power**: P_DE quantified at 7.09x10^{-}5^1 W
-4. **Plasma frequency**: ω_plasma = 1.005x10^{1}6 rad/s for [SCm]/[UA] interface
+4. **Plasma frequency**: $\omega$_plasma = 1.005x10^{1}6 rad/s for [SCm]/[UA] interface
 
 ---
 
@@ -294,7 +294,7 @@ ratio = 0.1)
 
 Document 43.d provides 19 foundational equations that complete the UQFF inertia and
 aether-superconductive framework. The U_g5 tensor sum represents a new fifth gravitational mode
-operational at cosmological scales. The confirmed vacuum density ratio ρ_vac,[SCm]/ρ_vac,[UA] = 0.1
+operational at cosmological scales. The confirmed vacuum density ratio $\rho$_vac,[SCm]/$\rho$_vac,[UA] = 0.1
 anchors all U_i calculations. These additions advance the UQFF from a 4-component to a 5-component
 gravity model with full tensor support.
 
@@ -311,7 +311,7 @@ Session 180 continuation v5.38.*
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -330,7 +330,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -353,7 +353,7 @@ where:
 **Phonon cross-section (PAPER_1061):**
 $$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
 
-The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470$\times$ amplification via
 the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
 
 **COP parametric engine (PAPER_1081):**
@@ -474,7 +474,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -485,13 +485,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day -> $\Gamma$_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM

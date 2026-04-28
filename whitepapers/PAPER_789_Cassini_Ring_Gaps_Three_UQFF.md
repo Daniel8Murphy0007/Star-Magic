@@ -26,8 +26,8 @@ Saturn's ring system contains several major gaps maintained by gravitational res
 moons: the Encke Gap (cleared by Pan), the Cassini Division (maintained by 2:1 resonance with
 Mimas), and the Maxwell Gap (maintained by resonance with Maxwell Wave). This Three-UQFF paper
 simultaneously analyzes all three gaps, computing UQFF gravitational acceleration g at each gap
-location using Saturn's mass (M_Saturn = 5.683×1026 kg). The primary result uses the Cassini
-Division at r = 1.2×108 m, yielding g_Saturn = 2.635 m/s2. This planetary-scale analysis provides
+location using Saturn's mass (M_Saturn = 5.683$\times$1026 kg). The primary result uses the Cassini
+Division at r = 1.2$\times$108 m, yielding g_Saturn = 2.635 m/s2. This planetary-scale analysis provides
 the highest-g UQFF result in the Batch 4 series, confirming UQFF's applicability from ring dynamics
 to galaxy clusters.
 
@@ -37,14 +37,14 @@ to galaxy clusters.
 
 | Gap | Location r | Resonance | Moon |
 |-----|-----------|-----------|------|
-| Encke Gap | 1.335×108 m | 1:1 resonance | Pan |
-| Cassini Division | 1.170×108 m (inner edge) to 1.220×108 m (outer edge) | 2:1 resonance | Mimas |
-| Maxwell Gap | 8.748×107 m | 17:15 resonance | Maxwell Wave |
+| Encke Gap | 1.335$\times$108 m | 1:1 resonance | Pan |
+| Cassini Division | 1.170$\times$108 m (inner edge) to 1.220$\times$108 m (outer edge) | 2:1 resonance | Mimas |
+| Maxwell Gap | 8.748$\times$107 m | 17:15 resonance | Maxwell Wave |
 
 **Saturn parameters:**
-- M_Saturn = 5.683×1026 kg
-- R_Saturn = 6.0268×107 m  
-- B_Saturn_rings = 1×10-7 T (ring plane, measured by Cassini spacecraft)
+- M_Saturn = 5.683$\times$1026 kg
+- R_Saturn = 6.0268$\times$107 m  
+- B_Saturn_rings = 1$\times$10-7 T (ring plane, measured by Cassini spacecraft)
 
 ---
 
@@ -52,24 +52,24 @@ to galaxy clusters.
 
 For each gap at radius r, the DPM-seeded gravitational acceleration from Saturn is:
 $$
-g_Saturn(r) = G × M_Saturn / r2
+g_Saturn(r) = G \times M_Saturn / r2
 $$
 
 The UQFF correction at ring scales uses orbital velocity (not superwind):
 $$
 \begin{aligned}
-  & v_orbital = sqrt(G × M_Saturn / r) \\
-  & a_EM = (q/m_p) × v_orbital × B_Saturn × 11 × 10-12
+  & v_orbital = sqrt(G \times M_Saturn / r) \\
+  & a_EM = (q/m_p) \times v_orbital \times B_Saturn \times 11 \times 10-12
 \end{aligned}
 $$
 
-Three modes: Compressed (standard), Resonant (×R_freq), Buoyancy (buoyancy correction for ring
-particle density ρ_ring):
+Three modes: Compressed (standard), Resonant ($\times$R_freq), Buoyancy (buoyancy correction for ring
+particle density $\rho$_ring):
 $$
 \begin{aligned}
   & Mode 1 (Compressed): g_comp = g_grav + a_EM \\
-  & Mode 2 (Resonant):   g_res  = g_comp × (1 + κ × [SSq]) \\
-  & Mode 3 (Buoyancy):   g_buoy = g_grav × (1 - ρ_ring/ρ_Saturn) + a_EM
+  & Mode 2 (Resonant):   g_res  = g_comp \times (1 + \kappa \times [SSq]) \\
+  & Mode 3 (Buoyancy):   g_buoy = g_grav \times (1 - \rho_ring/\rho_Saturn) + a_EM
 \end{aligned}
 $$
 
@@ -77,44 +77,44 @@ $$
 
 ## 3. Three-UQFF Long-Form Derivation
 
-### Gap 1: Encke Gap (r = 1.335×108 m)
+### Gap 1: Encke Gap (r = 1.335$\times$108 m)
 
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 5.683e26 / (1.335e8)2 \\
+  & g_grav = 6.6743e-11 \times 5.683e26 / (1.335e8)2 \\
   & = 3.794e16 / 1.782e16 = 2.130 m/s2 \\
-  & v_orbital = sqrt(6.6743e-11 × 5.683e26 / 1.335e8) = sqrt(2.843e7) = 5.332×103 m/s \\
-  & a_EM = (1.602e-19 × 5.332e3 × 1e-7 / 1.673e-27) × 11 × 1e-12 \\
-  & = (1.602e-19 × 5.332e-4 / 1.673e-27) × 11e-12 \\
-  & = (5.11e-5) × 11e-12 = 5.62e-16 m/s2 (negligible) \\
+  & v_orbital = sqrt(6.6743e-11 \times 5.683e26 / 1.335e8) = sqrt(2.843e7) = 5.332\times103 m/s \\
+  & a_EM = (1.602e-19 \times 5.332e3 \times 1e-7 / 1.673e-27) \times 11 \times 1e-12 \\
+  & = (1.602e-19 \times 5.332e-4 / 1.673e-27) \times 11e-12 \\
+  & = (5.11e-5) \times 11e-12 = 5.62e-16 m/s2 (negligible) \\
   & Mode 1: \text{g\_comp\_Encke} = 2.130 m/s2 \\
-  & Mode 2: \text{g\_res\_Encke}  = 2.130 × 1.000285 = 2.131 m/s2 \\
-  & Mode 3: \text{g\_buoy\_Encke} = 2.130 m/s2 (ρ_ring correction negligible)
+  & Mode 2: \text{g\_res\_Encke}  = 2.130 \times 1.000285 = 2.131 m/s2 \\
+  & Mode 3: \text{g\_buoy\_Encke} = 2.130 m/s2 (\rho_ring correction negligible)
 \end{aligned}
 $$
 
-### Gap 2: Cassini Division (r_mid = 1.200×108 m) — PRIMARY
+### Gap 2: Cassini Division (r_mid = 1.200$\times$108 m) — PRIMARY
 
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 5.683e26 / (1.200e8)2 \\
+  & g_grav = 6.6743e-11 \times 5.683e26 / (1.200e8)2 \\
   & = 3.794e16 / 1.440e16 = 2.635 m/s2 \\
-  & v_orbital = sqrt(6.6743e-11 × 5.683e26 / 1.200e8) = sqrt(3.160e7) = 5.621×103 m/s \\
-  & a_EM ≈ negligible (B = 1e-7 T) \\
+  & v_orbital = sqrt(6.6743e-11 \times 5.683e26 / 1.200e8) = sqrt(3.160e7) = 5.621\times103 m/s \\
+  & a_EM \approx negligible (B = 1e-7 T) \\
   & Mode 1: \text{g\_comp\_Cassini} = 2.635 m/s2 \\
-  & Mode 2: \text{g\_res\_Cassini}  = 2.635 × 1.000285 = 2.636 m/s2 \\
+  & Mode 2: \text{g\_res\_Cassini}  = 2.635 \times 1.000285 = 2.636 m/s2 \\
   & Mode 3: \text{g\_buoy\_Cassini} = 2.635 m/s2
 \end{aligned}
 $$
 
-### Gap 3: Maxwell Gap (r = 8.748×107 m)
+### Gap 3: Maxwell Gap (r = 8.748$\times$107 m)
 
 $$
 \begin{aligned}
-  & g_grav = 6.6743e-11 × 5.683e26 / (8.748e7)2 \\
+  & g_grav = 6.6743e-11 \times 5.683e26 / (8.748e7)2 \\
   & = 3.794e16 / 7.653e15 = 4.956 m/s2 \\
   & Mode 1: \text{g\_comp\_Maxwell} = 4.956 m/s2 \\
-  & Mode 2: \text{g\_res\_Maxwell}  = 4.956 × 1.000285 = 4.957 m/s2 \\
+  & Mode 2: \text{g\_res\_Maxwell}  = 4.956 \times 1.000285 = 4.957 m/s2 \\
   & Mode 3: \text{g\_buoy\_Maxwell} = 4.956 m/s2
 \end{aligned}
 $$
@@ -125,9 +125,9 @@ $$
 
 | Gap | r (m) | g Mode 1 | g Mode 2 | g Mode 3 |
 |-----|-------|----------|----------|----------|
-| Encke | 1.335×108 | 2.130 m/s2 | 2.131 m/s2 | 2.130 m/s2 |
-| Cassini Division | 1.200×108 | **2.635 m/s2** | 2.636 m/s2 | 2.635 m/s2 |
-| Maxwell | 8.748×107 | 4.956 m/s2 | 4.957 m/s2 | 4.956 m/s2 |
+| Encke | 1.335$\times$108 | 2.130 m/s2 | 2.131 m/s2 | 2.130 m/s2 |
+| Cassini Division | 1.200$\times$108 | **2.635 m/s2** | 2.636 m/s2 | 2.635 m/s2 |
+| Maxwell | 8.748$\times$107 | 4.956 m/s2 | 4.957 m/s2 | 4.956 m/s2 |
 
 **Primary result: g_Cassini_Division = 2.635 m/s2**
 
@@ -139,7 +139,7 @@ At ring scales (r ~ 108 m, B ~ 10-7 T), the UQFF electromagnetic Aether term is 
 negligible (~10-16 m/s2), and the result is dominated entirely by DPM-seeded gravity. This is
 expected — the UQFF EM term only becomes relevant when v ~ 105 – 106 m/s with B ~ 10-5 – 10-4 T.
 Saturn's ring particles with v_orbital ~ 5 km/s and B ~ 10-7 T are deep in the DPM-seeded regime. The
-Three-UQFF resonant correction (κ × [SSq] = 2.85×10-4) provides a ~0.0285% correction — detectable
+Three-UQFF resonant correction ($\kappa$ $\times$ [SSq] = 2.85$\times$10-4) provides a ~0.0285% correction — detectable
 in principle by Cassini spacecraft ring dynamics measurements. The gap structure, driven by Mimas
 2:1 resonance at the Cassini Division, is captured by the sharp g gradient: g_Encke = 2.130,
 g_Cassini = 2.635 (+24%), g_Maxwell = 4.956 (+87% from Cassini to Maxwell), confirming the
@@ -261,7 +261,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.144 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -272,13 +272,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

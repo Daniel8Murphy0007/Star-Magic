@@ -85,5 +85,5 @@ where $a(t)$ is the scale factor from PAPER_1084.
 
 - PAPER_1088: $F_{U,Bi,i}$ Seven-Component Decomposition
 - PAPER_1089: Inflation Buoyancy Sector Lagrangian
-- PAPER_1086: SCm Dark Energy Density with Γ-Coupling
+- PAPER_1086: SCm Dark Energy Density with $\Gamma$-Coupling
 - PAPER_1087: Dark Energy Equation of State $w_{\text{DE}}$

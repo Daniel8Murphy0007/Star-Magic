@@ -20,14 +20,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 This paper establishes the solar wind modulation factor in the UQFF Ubi buoyancy terms.
-A new coupling parameter ε_sw = 0.001 (buoyancy solar wind factor) scales the solar wind
-density ρ_sw to produce a multiplicative correction wind_mod = 1 + ε_sw·ρ_sw on each
-buoyancy term. This extends the Ug2 δ_sw term (which enters multiplicatively) with a
+A new coupling parameter $\varepsilon$_sw = 0.001 (buoyancy solar wind factor) scales the solar wind
+density $\rho$_sw to produce a multiplicative correction wind_mod = 1 + $\varepsilon$_sw$\cdot$$\rho$_sw on each
+buoyancy term. This extends the Ug2 $\delta$_sw term (which enters multiplicatively) with a
 consistent physical model across all four buoyancy Ubi terms.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -39,8 +39,8 @@ The UQFF buoyancy force (Ubi):
 
 $$U_{b,i} = -\beta_i \cdot U_{gi} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1+\delta_{sw} v_{sw}) \cdot U_{UA} \cdot \cos(\pi t_n)$$
 
-where δ_sw·v_sw is the solar wind velocity modulation in Ug2. This term was previously
-inconsistent with the wind correction in Ug2 which used (1 + δ_sw·v_sw) with dimensional
+where $\delta$_sw$\cdot$v_sw is the solar wind velocity modulation in Ug2. This term was previously
+inconsistent with the wind correction in Ug2 which used (1 + $\delta$_sw$\cdot$v_sw) with dimensional
 mismatch when v_sw was given in m/s vs. the normalized wind density.
 
 ---
@@ -51,15 +51,15 @@ $$\boxed{wind\_mod = 1 + \epsilon_{sw} \cdot \rho_{sw}}$$
 
 | Parameter  | Value    | Units    | Physical Basis                               |
 |------------|----------|----------|----------------------------------------------|
-| ε_sw       | 0.001    | m3/kg    | Buoyancy solar wind coupling factor          |
-| ρ_sw       | ~5×10-21 | kg/m3    | Solar wind density at 1 AU (proton density ~5/cc)|
+| $\varepsilon$_sw       | 0.001    | m3/kg    | Buoyancy solar wind coupling factor          |
+| $\rho$_sw       | ~5$\times$10-21 | kg/m3    | Solar wind density at 1 AU (proton density ~5/cc)|
 
-At 1 AU (ρ_sw = m_p × 5e6 m-3 = 8.35×10-21 kg/m3):
+At 1 AU ($\rho$_sw = m_p $\times$ 5e6 m-3 = 8.35$\times$10-21 kg/m3):
 
 $$wind\_mod = 1 + 0.001 \times 8.35\times10^{-21} = 1.0000000000000000000000084$$
 
-→ The correction is ~10-23 at 1 AU — negligibly small in the Solar System but significant
-at stellar wind compressed regions (r << 1 AU, ρ >> ρ_sw(1 AU)).
+$\to$ The correction is ~10-23 at 1 AU — negligibly small in the Solar System but significant
+at stellar wind compressed regions (r << 1 AU, $\rho$ >> $\rho$_sw(1 AU)).
 
 ---
 
@@ -67,7 +67,7 @@ at stellar wind compressed regions (r << 1 AU, ρ >> ρ_sw(1 AU)).
 
 $$\boxed{U_{b,i}(r,t) = -\beta_i \cdot U_{gi}(r,t) \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot wind\_mod \cdot U_{UA} \cdot \cos(\pi t_n)}$$
 
-where $wind\_mod = 1 + \epsilon_{sw} \cdot \rho_{sw}(r)$ and ρ_sw(r) falls off as:
+where $wind\_mod = 1 + \epsilon_{sw} \cdot \rho_{sw}(r)$ and $\rho$_sw(r) falls off as:
 
 $$\rho_{sw}(r) = \rho_{sw,0} \cdot \left(\frac{r_0}{r}\right)^2$$
 
@@ -77,7 +77,7 @@ at $r_0 = 1$ AU (density decreases as inverse square with distance).
 
 ## 4. Extended Buoyancy — H_SCm Integration
 
-The superconductive medium height $H_{SCm}$ (PAPER_064 canonical H_SCm ≈ 0.99) also
+The superconductive medium height $H_{SCm}$ (PAPER_064 canonical H_SCm $\approx$ 0.99) also
 enters the buoyancy via:
 
 $$U_{b,i} \propto H_{SCm} \cdot wind\_mod$$
@@ -92,44 +92,44 @@ $$U_{b,i}(H_{SCm}) = -\beta_i \cdot U_{gi} \cdot \Omega_g \cdot M_{bh}/d_g \cdot
 
 The solar wind density modulates the buoyancy force through three physical channels:
 
-1. **Plasma density effect:** Higher ρ_sw increases the ambient medium density, which
-   increases the buoyant uplift (Archimedes principle: F_b ∝ ρ_fluid × V × g)
+1. **Plasma density effect:** Higher $\rho$_sw increases the ambient medium density, which
+   increases the buoyant uplift (Archimedes principle: F_b $\propto$ $\rho$_fluid $\times$ V $\times$ g)
 
-2. **Ram pressure effect:** Solar wind ram pressure P_ram = ρ_sw v_sw2/2 compresses
+2. **Ram pressure effect:** Solar wind ram pressure P_ram = $\rho$_sw v_sw2/2 compresses
    the magnetosphere boundary, altering the effective Rb and thus Ug2
 
 3. **Ion-neutral friction:** Wind ions interact with neutral UQFF vacuum, transferring
-   momentum → drift term in Ubi
+   momentum $\to$ drift term in Ubi
 
 ---
 
 ## 6. Solar Wind Density at Different Radii
 
-| Location         | r/AU  | ρ_sw [kg/m3]   | wind_mod           |
+| Location         | r/AU  | $\rho$_sw [kg/m3]   | wind_mod           |
 |-----------------|-------|---------------|--------------------|
-| Solar corona    | 0.01  | 8.35×10-17    | 1 + 8.35×10-20    |
-| Mercury         | 0.39  | 5.48×10-19    | 1 + 5.48×10-22    |
-| Earth (1 AU)    | 1.0   | 8.35×10-21    | 1 + 8.35×10-24    |
-| Jupiter (5 AU)  | 5.2   | 3.09×10-22    | 1 + 3.09×10-25    |
-| Termination     | 100   | 8.35×10-25    | 1 + 8.35×10-28    |
+| Solar corona    | 0.01  | 8.35$\times$10-17    | 1 + 8.35$\times$10-20    |
+| Mercury         | 0.39  | 5.48$\times$10-19    | 1 + 5.48$\times$10-22    |
+| Earth (1 AU)    | 1.0   | 8.35$\times$10-21    | 1 + 8.35$\times$10-24    |
+| Jupiter (5 AU)  | 5.2   | 3.09$\times$10-22    | 1 + 3.09$\times$10-25    |
+| Termination     | 100   | 8.35$\times$10-25    | 1 + 8.35$\times$10-28    |
 
-The wind_mod correction only becomes dynamically significant (>1%) at ρ_sw > 103 kg/m3,
+The wind_mod correction only becomes dynamically significant (>1%) at $\rho$_sw > 103 kg/m3,
 which corresponds to conditions inside accretion disks or dense stellar winds.
 
 ---
 
-## 7. Consistency with Ug2 (δ_sw Parameter)
+## 7. Consistency with Ug2 ($\delta$_sw Parameter)
 
-The Ug2 term used δ_sw·v_sw with δ_sw = 0.001 and v_sw = 400 km/s:
+The Ug2 term used $\delta$_sw$\cdot$v_sw with $\delta$_sw = 0.001 and v_sw = 400 km/s:
 
 $$1 + \delta_{sw} v_{sw} = 1 + 0.001 \times 4\times10^5 = 1.4\quad (40\%\, correction)$$
 
-The new wind_mod is consistent when ρ_sw is calibrated as an **equivalent pressure**:
+The new wind_mod is consistent when $\rho$_sw is calibrated as an **equivalent pressure**:
 $$\epsilon_{sw} \cdot \rho_{sw} \equiv \delta_{sw} \cdot v_{sw}$$
 
-→ ρ_sw = δ_sw·v_sw/ε_sw = 0.001 × 4×105 / 0.001 = 4×105 kg/m3 (accretion disk density)
+$\to$ $\rho$_sw = $\delta$_sw$\cdot$v_sw/$\varepsilon$_sw = 0.001 $\times$ 4$\times$105 / 0.001 = 4$\times$105 kg/m3 (accretion disk density)
 
-This confirms ε_sw = 0.001 as the correct coupling for dense stellar wind environments.
+This confirms $\varepsilon$_sw = 0.001 as the correct coupling for dense stellar wind environments.
 
 ---
 
@@ -141,7 +141,7 @@ This confirms ε_sw = 0.001 as the correct coupling for dense stellar wind envir
 ---
 
 **Status:** ✅ Complete | **CP Stage:** CP2
-**Supersedes:** N/A (clarifies δ_sw vs ε_sw) | **Related:** PAPER_064 (4 operational modes, H_SCm),
+**Supersedes:** N/A (clarifies $\delta$_sw vs $\varepsilon$_sw) | **Related:** PAPER_064 (4 operational modes, H_SCm),
 PAPER_086 (Ubi derivation), PAPER_157 (Solar System Ubi)
 
 
@@ -157,7 +157,7 @@ PAPER_086 (Ubi derivation), PAPER_157 (Solar System Ubi)
 > *The following physics upgrades incorporate equations, mechanisms, and
 > derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
 > These represent body-level integrations of phonon physics, buoyancy
-> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+> formulations, and S26(3) Ramanujan corrections into this paper's domain.*
 
 <!-- PKG-S26-S225 -->
 
@@ -260,7 +260,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.053 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -271,13 +271,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

@@ -72,7 +72,7 @@ $$\Delta(0) = 1.764 \, k_B T_c$$
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -91,7 +91,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -164,7 +164,7 @@ $$\mathcal{L}_{T\_c} = -N(0)|\Delta|^2/V_\text{SCm} + k_BT\ln Z_\text{phonon}(\o
 $$\boxed{\frac{\partial \mathcal{L}}{\partial T}\bigg|_{T=T\_c} = 0 \implies T_c = \frac{1.13\hbar\omega_\text{SCm}}{k_B}\exp!\left(-\frac{1}{N(0)V_\text{SCm}}\right)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_text{SCm}$ → BCS gap → $T_c$ thermal threshold → condensate onset
+PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_text{SCm}$ $\to$ BCS gap $\to$ $T_c$ thermal threshold $\to$ condensate onset
 
 ---
 

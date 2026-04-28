@@ -20,7 +20,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
@@ -65,7 +65,7 @@ $$K_{\rm pol} \leq \frac{10^{-32}}{0.0752} \approx 1.33 \times 10^{-31}\ \mathrm
 ### 2.4 Physical Meaning of K_pol
 
 K_pol is the UQFF vacuum polarization factor  the probability per unit volume that a neutrino
-interacts with a UQFF vacuum quantum. The NOMAD bound K_pol < 1.33×10? cm is extremely small,
+interacts with a UQFF vacuum quantum. The NOMAD bound K_pol < 1.33$\times$10? cm is extremely small,
 consistent with the near-inert nature of neutrinos under standard interactions.
 
 ---
@@ -78,7 +78,7 @@ consistent with the near-inert nature of neutrinos under standard interactions.
 | ?_ratio | ?_SCm/?_UA | 0.1 |
 | E_?,13 | E_basessq(13)?_ratio | 0.0752 E_base |
 | P_?,NOMAD | Upper bound | < 10? cm |
-| K_pol upper limit | From NOMAD | < 1.33×10? cm |
+| K_pol upper limit | From NOMAD | < 1.33$\times$10? cm |
 
 ---
 
@@ -86,7 +86,7 @@ consistent with the near-inert nature of neutrinos under standard interactions.
 
 This paper establishes the first particle physics experimental constraint on UQFF parameters. The
 NOMAD monophoton search is a neutrino counting experiment; if UQFF vacuum coupling were large,
-neutrinos would create detectable photon emission via vacuum polarization. The K_pol < 1.33×10? cm
+neutrinos would create detectable photon emission via vacuum polarization. The K_pol < 1.33$\times$10? cm
 bound confirms that the UQFF neutrino coupling is at or below the weak interaction scale, consistent
 with the framework's self-consistency requirement (UQFF should not predict observables already
 excluded by precision experiments).
@@ -217,7 +217,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.072 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -228,13 +228,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
-produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

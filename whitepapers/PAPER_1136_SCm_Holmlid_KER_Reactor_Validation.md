@@ -44,7 +44,7 @@ This matches Holmlid's observed KER = 630 eV within experimental uncertainty.
 | Surplus water | 237 mL/h |
 | pH | -37 |
 | Cooling | 7-10 °F below ambient |
-| Buoyancy force Monte-Carlo | mean ≈ $-2.67 \times 10^{4}$ N (stable) |
+| Buoyancy force Monte-Carlo | mean $\approx$ $-2.67 \times 10^{4}$ N (stable) |
 
 These values are consistent with SCm phonon-driven buoyancy stabilization of ultra-dense clusters.
 

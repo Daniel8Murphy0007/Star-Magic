@@ -18,7 +18,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 Mathematical Reference with 7 Operational Modes and 12 Empirical Proofs
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57, $\kappa$_i = 0.61)  
 **Date:** March 2026  
 **Domain:** §1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -37,12 +37,12 @@ proofs and 24 astrophysical systems. All 71 equations are grouped by category: G
 (Eqs 1-28), Fokker-Planck/CRP/Neutrino Terms (Eqs 29-42), Compressions and Triadic Masters (Eqs
 43-65), and Periodic Sims and Suggestions (Eqs 66-71). The framework achieved 99.5% empirical
 unification (simulated thread) and advances the Unified Field Equation F_U to its complete form
-including the CRP turbulence term for neutrino SED prediction. Calibrated constants: κ = 0.0005
-day^{-}1, [SSq] = 0.57, κ_i = 0.61, [SCm] = 10^{1}5 kg/m^3, E_react = 10^{4}6 e^{-0.0005t} W/m^3.
+including the CRP turbulence term for neutrino SED prediction. Calibrated constants: $\kappa$ = 0.0005
+day^{-}1, [SSq] = 0.57, $\kappa$_i = 0.61, [SCm] = 10^{1}5 kg/m^3, E_react = 10^{4}6 e^{-0.0005t} W/m^3.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0x10^{-}4 day^{-}1, [SSq]
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0x10^{-}4 day^{-}1, [SSq]
 = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -56,12 +56,12 @@ specific astrophysical phenomena:
 | Mode | Equation Focus | Key Variables | Empirical Proofs |
 |------|---------------|---------------|-----------------|
 | **Compressed** | E_n = E_0 x 10^n hierarchy | E_0=10^{-}2^0 J, n=1-26 | PDG ladder, ATLAS quark |
-| **Resonant** | cos(pt_n) oscillations | ω=π, t_n=t-t0 | Parker PSP heliosheath |
-| **Buoyancy** | Ub_i = -κ_i Ug_i * (ω_g M_bh/d_g) | κ_i=0.61 | ENSDF Pb-206, Fermi, IceCube |
-| **Superconductive** | E_react = 10^{4}6 e^{-κt} | κ=0.0005 day^{-}1 | Chandra jets, GW170817 |
+| **Resonant** | cos(pt_n) oscillations | $\omega$=$\pi$, t_n=t-t0 | Parker PSP heliosheath |
+| **Buoyancy** | Ub_i = -$\kappa$_i Ug_i * ($\omega$_g M_bh/d_g) | $\kappa$_i=0.61 | ENSDF Pb-206, Fermi, IceCube |
+| **Superconductive** | E_react = 10^{4}6 e^{-$\kappa$t} | $\kappa$=0.0005 day^{-}1 | Chandra jets, GW170817 |
 | **Triadic** | `F_U_tri` = (Ug*Ub_i*Um)^{1/3} * e^{-[SSq]n/26} | [SSq]=0.57 | 3C273 reversals |
-| **Quadratic** | V(r) ≈ a0 + a1r + a2r^2; [SSq]^N cascades | R^2=0.95 | JCAP DM, Tohsaki BEC |
-| **Master Buoyancy** | Ub_i + e^{-(p-t)}*Um/ρ_vac,[UA] | d_g=2.55x10^{2}0 m | Gaia Sgr A* |
+| **Quadratic** | V(r) $\approx$ a0 + a1r + a2r^2; [SSq]^N cascades | R^2=0.95 | JCAP DM, Tohsaki BEC |
+| **Master Buoyancy** | Ub_i + e^{-(p-t)}*Um/$\rho$_vac,[UA] | d_g=2.55x10^{2}0 m | Gaia Sgr A* |
 
 ---
 
@@ -95,7 +95,7 @@ $$U_{b,i} = -\beta_i U_{g,i} \frac{\omega_g M_{bh}}{d_g}(1 + \delta_{sw} \rho_{v
 **Um - Lossless Magnetic Strings:**
 $$U_m = \sum_j \left[\frac{\mu_j}{r_j}\left(1 - e^{-\gamma t \cos(\pi t_n)}\right)\hat{\phi}_j\right] P_{SCm} E_{react}(1 + 10^{13} f_{Heaviside})(1 + f_{quasi})$$
 
-**UA_μν — Aether Metric:**
+**UA_$\mu$$\nu$ — Aether Metric:**
 $$UA_{\mu\nu} = g_{\mu\nu} + \eta T_s^{\mu\nu}(\rho_{vac,[UA]}, \rho_{vac,[SCm]}, \rho_{vac,A}, t_n)$$
 
 **Ui - Universal Inertia:**
@@ -112,68 +112,68 @@ $$E_{react} = \frac{\rho_{vac,[SCm]} v_{SCm}^2}{\rho_{vac,A}} e^{-\kappa t} = 10
 
 | Eq# | Equation | System | Role |
 |----|---------|--------|------|
-| 1 | g_Mag = (G*M/r^2)(1+Hz*t)(1-B/B_c) + G*M_BH/r_BH^2 + ΣUg_i + Λc^2/3 | SGR 1745 | Full system MUGE (Newton Step 10 proj. × corrections + canonical Ug_i) |
-| 2 | Ug1 = k1*μ_s(M_s/r)e^{-αt}cos(πt_n)(1+β_def) | All systems | Dipole + defect |
-| 3 | Ug2 = k2(ρ_UA+ρ_SCm)(M_s/r^2)S(r-R_b)(1+δ_sw*v_sw)H_SCm*E_react | All | Heliosphere bubble |
-| 4 | Ug3 = k3Σ_j B_j*cos(ω_s*t)P_core*E_react | All | Magnetic strings disk |
-| 5 | Ug4 = k4ρ_vac,[SCm]*M_bh/d_g*e^{-αt}cos(πt_n)(1+f_feedback) | All | Star-BH interaction |
-| 6 | Ub_i = -κ_i*Ug_i*ω_g*M_bh/d_g*(1+δ_sw*ρ_vac,sw)[UA]cos(πt_n) | All | Buoyancy opposition |
-| 7 | Um = Σ_j[μ_j/r_j(1-e^{-γt*cos(πt_n)})φ_j]P_SCm*E_react*(1+10^{1}3f_H)(1+f_q) | All | Lossless strings |
-| 8 | UA_μν = g_μν + η*T_s^{μν}(ρ_UA, ρ_SCm, ρ_A, t_n) | All | Aether metric |
-| 9 | Ui = λ_i*ρ_vac,[SCm]*ρ_vac,[UA]*ω_s*cos(πt_n)(1+f_TRZ) | All | Universal inertia |
-| 10 | F_U = Σ_i[k_i*Ug_i - κ_i*Ub_i] + Um + UA_μν - Σ_i[δ_i*Ui*E_react] + CRP | All | Master equation |
+| 1 | g_Mag = (G*M/r^2)(1+Hz*t)(1-B/B_c) + G*M_BH/r_BH^2 + $\Sigma$Ug_i + $\Lambda$c^2/3 | SGR 1745 | Full system MUGE (Newton Step 10 proj. $\times$ corrections + canonical Ug_i) |
+| 2 | Ug1 = k1*$\mu$_s(M_s/r)e^{-$\alpha$t}cos($\pi$t_n)(1+$\beta$_def) | All systems | Dipole + defect |
+| 3 | Ug2 = k2($\rho$_UA+$\rho$_SCm)(M_s/r^2)S(r-R_b)(1+$\delta$_sw*v_sw)H_SCm*E_react | All | Heliosphere bubble |
+| 4 | Ug3 = k3$\Sigma$_j B_j*cos($\omega$_s*t)P_core*E_react | All | Magnetic strings disk |
+| 5 | Ug4 = k4$\rho$_vac,[SCm]*M_bh/d_g*e^{-$\alpha$t}cos($\pi$t_n)(1+f_feedback) | All | Star-BH interaction |
+| 6 | Ub_i = -$\kappa$_i*Ug_i*$\omega$_g*M_bh/d_g*(1+$\delta$_sw*$\rho$_vac,sw)[UA]cos($\pi$t_n) | All | Buoyancy opposition |
+| 7 | Um = $\Sigma$_j[$\mu$_j/r_j(1-e^{-$\gamma$t*cos($\pi$t_n)})$\phi$_j]P_SCm*E_react*(1+10^{1}3f_H)(1+f_q) | All | Lossless strings |
+| 8 | UA_$\mu$$\nu$ = g_$\mu$$\nu$ + $\eta$*T_s^{$\mu$$\nu$}($\rho$_UA, $\rho$_SCm, $\rho$_A, t_n) | All | Aether metric |
+| 9 | Ui = $\lambda$_i*$\rho$_vac,[SCm]*$\rho$_vac,[UA]*$\omega$_s*cos($\pi$t_n)(1+f_TRZ) | All | Universal inertia |
+| 10 | F_U = $\Sigma$_i[k_i*Ug_i - $\kappa$_i*Ub_i] + Um + UA_$\mu$$\nu$ - $\Sigma$_i[$\delta$_i*Ui*E_react] + CRP | All | Master equation |
 | 11 | E_react = 10^{4}6*e^{-0.0005t} | All | [SCm]/[UA] reactor |
-| 12 | ρ_vac = Σ(f_i*E_i)/V | All | Vacuum density |
+| 12 | $\rho$_vac = $\Sigma$(f_i*E_i)/V | All | Vacuum density |
 | 13 | [SCm] = 10^{1}5 kg/m^3 | All | SCm density |
 | 14 | [UA] = 10^{-}1^9 C | All | Trapped Aether |
 | 15 | t_n = t - t0 (<0 reversals) | All | Negative time |
-| 16 | ω = π rad/s | All | Cycle constant |
+| 16 | $\omega$ = $\pi$ rad/s | All | Cycle constant |
 | 17 | a = 0.001 day^{-}1 | All | Time decay |
 | 18 | d_sw = 0.01 | All | Wind modulation |
 | 19 | v_sw = 5x105 m/s | All | Wind velocity |
-| 20 | H_SCm ≈ 1 | All | Heliosphere factor |
+| 20 | H_SCm $\approx$ 1 | All | Heliosphere factor |
 | 21 | P_core = 1 (Sun), 10^{-}3 (planets) | All | Core penetration |
 | 22 | P_SCm = 1 (Sun), 10^{-}3 (planets) | All | SCm penetration |
-| 23 | ρ_A = 10^{-}2^6 kg/m^3 | All | Aether density |
+| 23 | $\rho$_A = 10^{-}2^6 kg/m^3 | All | Aether density |
 | 24 | f_feedback = 0.1 | All | BH feedback |
-| 25 | ω_g = 7.3x10^{-}1^6 rad/s | All | Galactic spin |
+| 25 | $\omega$_g = 7.3x10^{-}1^6 rad/s | All | Galactic spin |
 | 26 | M_bh = 8.15x10^{3}6 kg | All | SMBH mass |
 | 27 | d_g = 2.44x10^{2}0 m | All | Galactic distance |
-| 28 | E_react = ρ_vac,[SCm]*v_SCm^2/ρ_vac,A*e^{-κt} | All | Reactivity formula |
+| 28 | E_react = $\rho$_vac,[SCm]*v_SCm^2/$\rho$_vac,A*e^{-$\kappa$t} | All | Reactivity formula |
 
 ### Category II: Fokker-Planck and CRP/Neutrino Terms (Equations 29-42)
 
 | Eq# | Expression | Physical Meaning |
 |----|-----------|-----------------|
-| 29 | p_max ≈ 10^{1}6 eV | Max CRP energy |
+| 29 | p_max $\approx$ 10^{1}6 eV | Max CRP energy |
 | 30 | n(p) ~  p^{-2.2} | CRP spectral index |
 | 31 | pp dominant <0.1 PeV SED | Proton-proton SED dominance |
-| 32 | F_ν ~ IceCube background for LLAGNs | Neutrino flux prediction |
+| 32 | F_$\nu$ ~ IceCube background for LLAGNs | Neutrino flux prediction |
 | 33 | Outflows: 70% neutrinos (30% inflow) | Neutron star merger distribution |
 | 34 | dn/dt = d/dp[(dp/dt)n] + d^2/dp^2[Dn] + Q - n/t_esc | Fokker-Planck CRP |
 | 35 | n(p) ~  p^{-2.2} exp(-p/p_max) | CRP distribution function |
-| 36 | χ^2 ≈ 0.05 (mock fit) | SED fit quality |
-| 37 | SED peak ≈ 10^{1}5 eV | Numeric peak |
-| 38 | η = k_η exp(-[SSq]*n/26)*exp(-(p-t))*Um/ρ_vac,[UA] | Coupling constant η |
+| 36 | $\chi$^2 $\approx$ 0.05 (mock fit) | SED fit quality |
+| 37 | SED peak $\approx$ 10^{1}5 eV | Numeric peak |
+| 38 | $\eta$ = k_$\eta$ exp(-[SSq]*n/26)*exp(-(p-t))*Um/$\rho$_vac,[UA] | Coupling constant $\eta$ |
 | 39 | D_E ~  E^{0.5} | Turbulence diffusion scaling |
-| 40 | κ_i = 0.61 | Buoyancy coupling calibration |
-| 41 | F_U += CRP: ΣD_E*d^2n/dp^2*e^{-γt} | CRP addition to F_U |
-| 42 | γ = 0.00005 day^{-}1 | Decay rate for CRP |
+| 40 | $\kappa$_i = 0.61 | Buoyancy coupling calibration |
+| 41 | F_U += CRP: $\Sigma$D_E*d^2n/dp^2*e^{-$\gamma$t} | CRP addition to F_U |
+| 42 | $\gamma$ = 0.00005 day^{-}1 | Decay rate for CRP |
 
 ### Category III: Compressions and Triadic Masters (Equations 43-65)
 
 | Eq# | Expression | Context |
 |----|-----------|---------|
 | 43 | D_E ~  E^{0.5} | Turbulence for all triadic systems |
-| 44 | F_ν ≈ 2% from ρ_vac ratios ~10^{-}8 | Flux prediction relative gain |
+| 44 | F_$\nu$ $\approx$ 2% from $\rho$_vac ratios ~10^{-}8 | Flux prediction relative gain |
 | 45 | 40% M_ej at 0.1c matches GW170817 | Ejecta velocity fraction |
 | 46 | 95% r-process solar yield | r-process abundance ratio |
 | 47 | ~5% gain toward UFE | Unification progression |
-| 48 | Framework ≈ 99.5% (neutrino empirical) | Completion metric |
-| 49 | χ^2 to solar abundances -> predict A=254 | Nucleosynthesis target |
+| 48 | Framework $\approx$ 99.5% (neutrino empirical) | Completion metric |
+| 49 | $\chi$^2 to solar abundances -> predict A=254 | Nucleosynthesis target |
 | 50 | 3D sims: Ug4/E_react grounded in mergers | Simulation verification |
-| 51 | ~5% UFE via ν-cooled disks as non-local Um | Disk turbulence gain |
-| 52 | Framework ≈ 99.5% (neutrino unification) | Cross-check |
+| 51 | ~5% UFE via $\nu$-cooled disks as non-local Um | Disk turbulence gain |
+| 52 | Framework $\approx$ 99.5% (neutrino unification) | Cross-check |
 | 53 | Thread advances +0.05% -> 99.999999999995% | DPM + Mayan Table |
 | 54 | Enables Periodic sims Z=1-118 | Nuclear scope |
 | 55 | `Q_wave_47` std: np.std(`Q_wave_array`) | Code verification |
@@ -184,20 +184,20 @@ $$E_{react} = \frac{\rho_{vac,[SCm]} v_{SCm}^2}{\rho_{vac,A}} e^{-\kappa t} = 10
 | 60 | Q_wave mean = 3.97x10^4 J/m^2 (47 systems) | Statistical baseline |
 | 61 | Jarque-Bera = 8.78 (p=0.012, non-normal) | Distribution shape |
 | 62 | leptokurtosis = 0.037 | Kurtosis measure |
-| 63 | χ^2 = Σ(P_obs - P_ucf(d_t))^2/σ_P^2 | Shear fit metric |
-| 64 | A_V = 1.086*(M_dust/M_gas)*τ_dust | Dust extinction yield |
-| 65 | y_dust = 0.01*Z*(t/t_SF)^α_fund | Dust production |
+| 63 | $\chi$^2 = $\Sigma$(P_obs - P_ucf(d_t))^2/$\sigma$_P^2 | Shear fit metric |
+| 64 | A_V = 1.086*(M_dust/M_gas)*$\tau$_dust | Dust extinction yield |
+| 65 | y_dust = 0.01*Z*(t/t_SF)^$\alpha$_fund | Dust production |
 
 ### Category IV: Periodic Sims and Suggestions (Equations 66-71)
 
 | Eq# | Expression | Role |
 |----|-----------|------|
 | 66 | H(z) = H0*(1 + a*log(1+z)) | 5D Hubble analog |
-| 67 | w(z) = w_ucf + d_t(1+z)^{-α_fund} | Equation of state |
+| 67 | w(z) = w_ucf + d_t(1+z)^{-$\alpha$_fund} | Equation of state |
 | 68 | F_line(z) = integral SFR(t(z'))*y_line(Z(z'))(1+z)^2/d_L(z)^2dt | Line flux integral |
-| 69 | IMF dN/dM ~  M^{-2.35+α_fund} ≈ M^{-1.732} | Mass function |
-| 70 | F_p = -(e^2/4mω^2)nabla(E^2) | Ponderomotive force |
-| 71 | δt ≱ 0 | Time asymmetry axiom |
+| 69 | IMF dN/dM ~  M^{-2.35+$\alpha$_fund} $\approx$ M^{-1.732} | Mass function |
+| 70 | F_p = -(e^2/4m$\omega$^2)nabla(E^2) | Ponderomotive force |
+| 71 | $\delta$t ≱ 0 | Time asymmetry axiom |
 
 ---
 
@@ -207,16 +207,16 @@ $$E_{react} = \frac{\rho_{vac,[SCm]} v_{SCm}^2}{\rho_{vac,A}} e^{-\kappa t} = 10
 |-------|----------------------|-----------|-------------------|-------|
 | 1 | Chandra RACS J0320-35 jets | Superconductive | SCm jet ignition; Ub_i asymmetry via cos(pt_n) sign flip | PAPER_131 |
 | 2 | PDG 2025 nuclear ladder | Compressed | E_n = E_0x10^n, [SSq]^n ladder; 241 particles R^2=0.95 | PAPER_122 |
-| 3 | ATLAS-CONF-2025-007 LHC | Compressed | Virtual quark n=4, δn=0.20 fractional level | PAPER_123 |
-| 4 | ENSDF Pb-206 NNDC 2025 | Buoyancy | n=8 binding; S_n=2*[SSq]*E8; δn=0.21 | PAPER_124 |
-| 5 | Fermi LAT 4LAC HEASARC | Superconductive | κ_obs=0.000497/day ≈ κ=0.0005/day calibration | PAPER_125 |
+| 3 | ATLAS-CONF-2025-007 LHC | Compressed | Virtual quark n=4, $\delta$n=0.20 fractional level | PAPER_123 |
+| 4 | ENSDF Pb-206 NNDC 2025 | Buoyancy | n=8 binding; S_n=2*[SSq]*E8; $\delta$n=0.21 | PAPER_124 |
+| 5 | Fermi LAT 4LAC HEASARC | Superconductive | $\kappa$_obs=0.000497/day $\approx$ $\kappa$=0.0005/day calibration | PAPER_125 |
 | 6 | Gaia DR3/DR4 Sgr A* | Master Buoyancy | d_g=2.44x10^{2}0 m, M_bh=4.3x10^6 M_Sun, 4.3% error | PAPER_126 |
 | 7 | Parker Solar Probe CDAWeb | Resonant | d_sw=0.01=[UA]*F_U heliosphere boundary | PAPER_127 |
-| 8 | JCAP dark matter density | Quadratic | ρ_DM=ρ_Λ*[SSq]^2; N=3 hop chain; 12.8% error | PAPER_128 |
+| 8 | JCAP dark matter density | Quadratic | $\rho$_DM=$\rho$_$\Lambda$*[SSq]^2; N=3 hop chain; 12.8% error | PAPER_128 |
 | 9 | 3C273 MNRAS asymmetric jet | Triadic | t_n<0; R=130; N=13 reversal crossings | PAPER_129 |
-| 10 | IceCube neutrino background | Buoyancy | κ_i=0.61 ±3%; CRP SED peak <0.1 PeV | PAPER_130 |
-| 11 | GW170817 LIGO kilonova | Superconductive | SCm density wave; Y_e≈0.1; Ub_i feeds outflows | PAPER_131 |
-| 12 | Tohsaki AMD alpha-BEC | Quadratic | χ^2/dof=0.051; N_B=3 Hoyle condensate; T_c shift | PAPER_132 |
+| 10 | IceCube neutrino background | Buoyancy | $\kappa$_i=0.61 $\pm$3%; CRP SED peak <0.1 PeV | PAPER_130 |
+| 11 | GW170817 LIGO kilonova | Superconductive | SCm density wave; Y_e$\approx$0.1; Ub_i feeds outflows | PAPER_131 |
+| 12 | Tohsaki AMD alpha-BEC | Quadratic | $\chi$^2/dof=0.051; N_B=3 Hoyle condensate; T_c shift | PAPER_132 |
 
 ---
 
@@ -257,7 +257,7 @@ unification). The 71-equation catalog provides a self-consistent mathematical ba
 1. **26-level polynomial** unifies nuclear bindings (n=8 for Pb-206) through Higgs (n=12) to
 galactic jets (n=22)
 2. **E_react = 10^{4}6 e^{-0.0005t}** is empirically calibrated by 40 Fermi 4LAC blazar light curves
-3. **κ_i = 0.61** is universally validated across IceCube neutrino coupling (±3%)
+3. **$\kappa$_i = 0.61** is universally validated across IceCube neutrino coupling ($\pm$3%)
 4. **[SSq] = 0.57** drives N-hop energy cascades validated in 3 independent datasets (JCAP DM, ENSDF
 binding ladder, PDG energy ladder)
 5. **t_n < 0** produces observable asymmetries quantified in 3C273 (R=130, N=13 reversals) and RACS
@@ -268,7 +268,7 @@ production across magnetars, quasars, and NS mergers to the universal buoyancy o
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = κ*[SSq]*μ_s∇(M_s/r) =
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = $\kappa$*[SSq]*$\mu$_s$\nabla$(M_s/r) =
 5.0e-4*0.57*6.67e-11*M/r^2; for solar parameters: U_bi,Sun = 5.7e-4*6.67e-11*1.99e30/(6.96e8)^2 =
 1.47e+2 m/s^2.
 
@@ -326,7 +326,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
 > (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
-> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+> modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
@@ -345,7 +345,7 @@ $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Ph
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -456,7 +456,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.055 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
