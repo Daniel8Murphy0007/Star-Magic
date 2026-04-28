@@ -109,4 +109,4 @@ $$E_{\text{KER}} = 630\ \text{eV}, \quad \rho_{\text{vac,SCm}} = 7.09 \times 10^
 
 1. Candelas, P. et al. (1985). Vacuum configurations for superstrings. *Nucl. Phys. B* **258**, 46.
 2. Giddings, S.B., Kachru, S. & Polchinski, J. (2002). Hierarchies from fluxes in string compactifications. arXiv:hep-th/0007018.
-3. Type IIA mirror: PAPER_1145; Heterotic E8: PAPER_1146; M-theory: PAPER_1148; `scm_vacuum_manifold.py`
+3. Type IIA mirror: PAPER_1145; Heterotic E8: PAPER_1146; M-theory: PAPER_1148; `scm_{vacuum\_manifold}.py`

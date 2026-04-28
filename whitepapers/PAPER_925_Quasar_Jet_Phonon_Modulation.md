@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
-**Source:** SCm phonon gap implementation (quasar_jet_phonon.py)
+**Source:** SCm phonon gap implementation (quasar_{jet\_phonon}.py)
 **Calculator:** QuasarJetPhononModulationCalc (CP4 #509)
 **CVW:** v2.0.0 compliant
 
@@ -76,7 +76,7 @@ $$
 | a_spin | 0.9 | Spin parameter |
 | B_field | 50 T | Magnetic field |
 | A_jet | 1.5 | Modulation amplitude |
-| `sigma_Gamma_THz` | 0.08 | Linewidth spread |
+| `sigma_{Gamma\_THz}` | 0.08 | Linewidth spread |
 | Gamma_THz | 1.25 | Phonon linewidth |
 
 ---
@@ -107,7 +107,7 @@ temperature through the phonon frequency relation omega ~ k_B * T / hbar.
 
 - PAPER_922: M87 jet power curve (Session 210c)
 - PAPER_910: Phonon jet launching M87/Sgr A* (Session 210)
-- quasar_jet_phonon.py: 4-class standalone module
+- quasar_{jet\_phonon}.py: 4-class standalone module
 - WSTP expressions #29-30
 
 ---
@@ -117,7 +117,7 @@ temperature through the phonon frequency relation omega ~ k_B * T / hbar.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -167,7 +167,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -224,14 +224,14 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ latti
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
@@ -241,7 +241,7 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ latti
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |

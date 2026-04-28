@@ -103,11 +103,11 @@ DVP prime sieve, BSH harmonic saturation, wormhole phonon damping. Target: 800,0
 
 ## 3. Implementation
 
-- `scm_inflation_calculator.py`: SCmInflationaryHubble, SCmInflationaryScaleFactor, SCmInflationaryEnet, SCmInflationLagrangian, SCmSlowRollParameters, SCmInflationPipeline
-- `uqff_lagrangian_derivation.py` §18: SECTION_18_SCM_INFLATION_BUOYANCY
-- `thorne_morris_exotic_derivation.py`: FlareOutCondition, WormholeEinsteinEquations, NECViolation, SCmPhononEnergyDensity, BuoyancyPressure, ExoticMatterDerivation
-- `vds_dvp_bsh_symbolic_proofs.py`: VDSConvergenceProof, DVPPrimeSieveProof, BSHHarmonicDecayProof
-- `production_scaling_v16.py`: 36 kernels, 800k calc/s target
+- `scm_{inflation\_calculator}.py`: SCmInflationaryHubble, SCmInflationaryScaleFactor, SCmInflationaryEnet, SCmInflationLagrangian, SCmSlowRollParameters, SCmInflationPipeline
+- `uqff_{lagrangian\_derivation}.py` §18: SECTION_{18\_SCM\_INFLATION\_BUOYANCY}
+- `thorne_{morris\_exotic\_derivation}.py`: FlareOutCondition, WormholeEinsteinEquations, NECViolation, SCmPhononEnergyDensity, BuoyancyPressure, ExoticMatterDerivation
+- `vds_{dvp\_bsh\_symbolic\_proofs}.py`: VDSConvergenceProof, DVPPrimeSieveProof, BSHHarmonicDecayProof
+- `production_{scaling\_v16}.py`: 36 kernels, 800k calc/s target
 
 ## References
 
@@ -157,7 +157,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -174,7 +174,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -250,7 +250,7 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}} = 1.25$ THz 
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -262,7 +262,7 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}} = 1.25$ THz 
 | PAPER_1021 | Pulsar Timing Phonon TOA Residual |
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1066 | UQFF Lagrangian First Principles Field Theory |

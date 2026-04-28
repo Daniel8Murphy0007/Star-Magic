@@ -29,14 +29,14 @@ g_calibrated = 439.55 m/s^2 (with buoyancy calibration factor).
 |----------|-------|-----------------|
 | Stellar | 15 | Sun_Surface, Betelgeuse, Sirius_B |
 | Planetary | 12 | Earth_Surface, Jupiter, Mars |
-| Galactic | 10 | `Milky_Way_Center`, NGC1365 |
+| Galactic | 10 | `Milky_{Way\_Center}`, NGC1365 |
 | Exotic | 8 | SGR1745, Crab_Pulsar |
 | Cosmological | 5 | CMB_z1100, Hubble_Horizon |
 | **AGN** | **7** | **3C273, TON618, M87** |
 | **NS Merger** | **4** | **GW170817, GW190425** |
-| **SMBH Merger** | **3** | **`SMBH_Equal_Mass`** |
-| **QGP** | **3** | **`ALICE_0_5pct`** |
-| **DM Halo** | **3** | **`MW_Halo_NFW`** |
+| **SMBH Merger** | **3** | **`SMBH_{Equal\_Mass}`** |
+| **QGP** | **3** | **`ALICE_{0\_5pct}`** |
+| **DM Halo** | **3** | **`MW_{Halo\_NFW}`** |
 | **Total** | **99** | |
 
 ## 2. 8 Gamma Points
@@ -51,7 +51,7 @@ gravity converges to g = 439.55 m/s^2, within the expanded acceptance window [90
 
 ## 4. Implementation
 
-File: `99system_wstp_gamma_upgraded.py`, classes `NinetyNineSystemGammaSweepV1`,
+File: `99system_{wstp\_gamma\_upgraded}.py`, classes `NinetyNineSystemGammaSweepV1`,
 `WSTPGammaSweepRunnerV1`, `SolarCalibrationConvergenceCalc`. CP4 class #601. Tests: 8/8 pass.
 
 ---
@@ -101,7 +101,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -180,7 +180,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -197,7 +197,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -269,28 +269,28 @@ BSH timescale: system-dependent
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
 | PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
 | PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
-| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
+| PAPER_1013 | QGP ALICE Centrality F_{U\_Bi\_i} dN/deta Scaling |
 | PAPER_1059 | Color Glass Condensate BK Saturation SCm |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
-| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
 
 *19 cross-reference(s) identified.*

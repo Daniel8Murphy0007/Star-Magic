@@ -34,7 +34,7 @@ quantum field force, F_Bi is the classical inertial buoyancy, and F_i is the ind
 component correction. The first proof variant (virx) applies this framework to virial X-ray
 clusters, where the hot intracluster medium (ICM) provides the medium through which galaxy cluster
 substructures and AGN bubbles buoyantly rise. For the Perseus Cluster with X-ray velocity dispersion
-$\sigma$_X = 1300 km/s and virial scale radius r_h = 2.5$\times$1022 m, the UQFF predicts F_UBii_virx =
+$\sigma$_X = 1300 km/s and virial scale radius r_h = 2.5$\times$1022 m, the UQFF predicts F_{UBii\_virx} =
 -2.024$\times$1060 N — an inward buoyancy force consistent with virial equilibrium of the ICM. This paper
 establishes the foundational derivation underpinning all 17 F_UBii variants.
 
@@ -46,7 +46,7 @@ establishes the foundational derivation underpinning all 17 F_UBii variants.
 
 For a body of volume V submerged in a fluid of density $\rho$_fluid under gravitational acceleration g:
 
-$$F_{\rm Archimedes} = \rho_{\rm fluid} \cdot V \cdot g$$
+$$F_{\mathrm{Archimedes}} = \rho_{\mathrm{fluid}} \cdot V \cdot g$$
 
 The force is directed upward (opposite to g) and equals the weight of displaced fluid. This holds
 for any fluid in hydrostatic equilibrium.
@@ -73,7 +73,7 @@ assumptions hold. The UQFF generalization accounts for:
 ### 2.1 UQFF Unified Field Force F_U
 
 The complete UQFF unified field equation:
-$$F_U = (Ug_1 + Ug_2 + Ug_3 + Ug_4) - (Ub_1 + Ub_2 + Ub_3 + Ub_4) + U_m + U_A - U_i + U_H + g_{\rm Shock} + R_{\rm SCm}$$
+$$F_U = (Ug_1 + Ug_2 + Ug_3 + Ug_4) - (Ub_1 + Ub_2 + Ub_3 + Ub_4) + U_m + U_A - U_i + U_H + g_{\mathrm{Shock}} + R_{\mathrm{SCm}}$$
 
 where:
 - Ug_k: Gravitational field components (magnetic dipole, charge-reactivity, string rotation, vacuum concentration)
@@ -86,19 +86,19 @@ where:
 ### 2.2 Decomposition into Buoyancy Components
 
 The buoyancy-relevant subset of F_U defines:
-$$F_{\rm Bi} \equiv \rho_{\rm eff} \cdot V_{\rm displaced} \cdot g_{\rm local}$$
+$$F_{\mathrm{Bi}} \equiv \rho_{\mathrm{eff}} \cdot V_{\mathrm{displaced}} \cdot g_{\mathrm{local}}$$
 
 where $\rho$_eff incorporates both the classical ICM density and the UQFF vacuum density:
-$$\rho_{\rm eff} = \rho_{\rm ICM} + \rho_{\rm vac\_UA} \cdot [SCm]$$
+$$\rho_{\mathrm{eff}} = \rho_{\mathrm{ICM}} + \rho_{\mathrm{vac\_UA}} \cdot [SCm]$$
 
 and g_local includes the aether correction:
-$$g_{\rm local} = g_{
+$$g_{\mathrm{local}} = g_{
 m DPM} \cdot (1 + U_A / F_U)$$
 
 ### 2.3 The F_UBii Definition
 
 The Unified Buoyancy Force is defined as the net balance:
-$$F_{\rm UBii} = F_U - F_{\rm Bi} - F_i$$
+$$F_{\mathrm{UBii}} = F_U - F_{\mathrm{Bi}} - F_i$$
 
 This form ensures:
 - When F_U > F_Bi + F_i: net upward buoyancy (rising bubble/structure)
@@ -108,7 +108,7 @@ This form ensures:
 ### 2.4 Scaling with Q_wave
 
 All 17 variants scale with a quantum wave amplitude Q_wave:
-$$F_{\rm UBii} = F_{\rm UBii,\,classical} \times Q_{\rm wave}$$
+$$F_{\mathrm{UBii}} = F_{\mathrm{UBii,\,classical}} \times Q_{\mathrm{wave}}$$
 
 where Q_wave = 1.0 corresponds to the ground state and Q_wave > 1 represents quantum coherence
 enhancement. In turbulent ICM, Q_wave ~ 1.0–1.5.
@@ -128,11 +128,11 @@ dispersion $\sigma$_X traces the depth of the gravitational potential well.
 - Coma Cluster: $\sigma$_X ~ 1000 km/s, r_h ~ 2.2 Mpc, T_ICM ~ 8 keV
 - Virgo Cluster: $\sigma$_X ~ 600 km/s, r_h ~ 1.5 Mpc, T_ICM ~ 2.5 keV
 
-### 3.2 F_UBii_virx Equation
+### 3.2 F_{UBii\_virx} Equation
 
 The UQFF virial X-ray buoyancy force:
 
-$$F_{\rm UBii,\,virx} = -F_{\rm rel} \cdot \frac{3\sigma_X^2 \cdot r_h}{G \cdot E_{\rm LEP}} \cdot Q_{\rm wave} \cdot \sigma_X$$
+$$F_{\mathrm{UBii,\,virx}} = -F_{\mathrm{rel}} \cdot \frac{3\sigma_X^2 \cdot r_h}{G \cdot E_{\mathrm{LEP}}} \cdot Q_{\mathrm{wave}} \cdot \sigma_X$$
 
 where:
 - F_rel = 10-10 N (relativistic field strength baseline)
@@ -143,7 +143,7 @@ where:
 - Q_wave = quantum wave amplitude (dimensionless)
 
 The negative sign indicates an inward (compressive) force — the ICM is held in by its own gravity,
-and F_UBii_virx measures the net inward restoring force maintaining virial equilibrium.
+and F_{UBii\_virx} measures the net inward restoring force maintaining virial equilibrium.
 
 ### 3.3 Perseus Cluster Calculation
 
@@ -152,7 +152,7 @@ For Perseus Cluster:
 - r_h = 2.5$\times$1022 m ($\approx$ 0.81 Mpc)
 - Q_wave = 1.0
 
-$$F_{\rm UBii,\,virx} = -10^{-10} \times \frac{3 \times (1.3\times10^6)^2 \times 2.5\times10^{22}}{6.674\times10^{-11} \times 1.22\times10^{-19}} \times 1.0 \times 1.3\times10^6$$
+$$F_{\mathrm{UBii,\,virx}} = -10^{-10} \times \frac{3 \times (1.3\times10^6)^2 \times 2.5\times10^{22}}{6.674\times10^{-11} \times 1.22\times10^{-19}} \times 1.0 \times 1.3\times10^6$$
 
 Step by step:
 - Numerator inner: 3 $\times$ 1.69$\times$1012 $\times$ 2.5$\times$1022 = 1.2675$\times$1035
@@ -161,23 +161,23 @@ Step by step:
 - $\times$ F_rel = 10-10 $\times$ 1.557$\times$1064 = 1.557$\times$1054
 - $\times$ $\sigma$_X = $\times$ 1.3$\times$106: = 2.024$\times$1060 N
 
-$$\boxed{F_{\rm UBii,\,virx}^{\rm Perseus} = -2.024 \times 10^{60} \text{ N}}$$
+$$\boxed{F_{\mathrm{UBii,\,virx}}^{\mathrm{Perseus}} = -2.024 \times 10^{60} \text{ N}}$$
 
-**Validator confirms: BuoyancyProofVariants.py $\to$ F_UBii_virx = -2.024$\times$1060 N PASS**
+**Validator confirms: BuoyancyProofVariants.py $\to$ F_{UBii\_virx} = -2.024$\times$1060 N PASS**
 
 ### 3.4 Physical Interpretation
 
 The magnitude 2.024$\times$1060 N must be compared to the gravitational weight of the Perseus Cluster ICM:
 
-$$F_{\rm grav}^{\rm Perseus} \approx \frac{G M_{\rm cluster}^2}{r_h^2} \approx \frac{6.674\times10^{-11} \times (10^{15} \times 1.989\times10^{30})^2}{(2.5\times10^{22})^2} \approx 8.5\times10^{53} \text{ N}$$
+$$F_{\mathrm{grav}}^{\mathrm{Perseus}} \approx \frac{G M_{\mathrm{cluster}}^2}{r_h^2} \approx \frac{6.674\times10^{-11} \times (10^{15} \times 1.989\times10^{30})^2}{(2.5\times10^{22})^2} \approx 8.5\times10^{53} \text{ N}$$
 
-The UQFF F_UBii_virx = 2.024$\times$1060 N is ~7$\times$106 times larger than the DPM-seeded gravitational spring
+The UQFF F_{UBii\_virx} = 2.024$\times$1060 N is ~7$\times$106 times larger than the DPM-seeded gravitational spring
 force. This reflects the **$\sigma$_X3** scaling in the virx formula — the UQFF buoyancy is
 velocity-dispersion-cubed dominant, capturing the full phase-space entropy of the ICM rather than
 just the mass.
 
 The ratio:
-$$\frac{|F_{\rm UBii,\,virx}|}{F_{\rm grav}} = \frac{2.024\times10^{60}}{8.5\times10^{53}} = 2.4\times10^6$$
+$$\frac{|F_{\mathrm{UBii,\,virx}}|}{F_{\mathrm{grav}}} = \frac{2.024\times10^{60}}{8.5\times10^{53}} = 2.4\times10^6$$
 
 This enhancement factor reflects the UQFF aether density contribution — the ICM buoyancy is
 amplified by the quantum vacuum substrate through which it propagates.
@@ -187,13 +187,13 @@ amplified by the quantum vacuum substrate through which it propagates.
 ## 4. Virial Theorem Connection
 
 The classical virial theorem for a self-gravitating system:
-$$2K + W = 0 \quad \Rightarrow \quad \sigma_X^2 = \frac{G M_{\rm tot}}{r_h}$$
+$$2K + W = 0 \quad \Rightarrow \quad \sigma_X^2 = \frac{G M_{\mathrm{tot}}}{r_h}$$
 
 In the UQFF extension, the virial theorem becomes:
-$$2K + W + W_{\rm UBii} = 0$$
+$$2K + W + W_{\mathrm{UBii}} = 0$$
 
-where W_UBii = r_h $\times$ F_UBii_virx is the UQFF work term. This modifies the mass estimator:
-$$M_{\rm tot}^{\rm UQFF} = M_{\rm tot}^{\rm classical} \times \left(1 + \frac{r_h F_{\rm UBii,virx}}{G M_{\rm tot}^{\rm classical 2}/r_h}\right)$$
+where W_UBii = r_h $\times$ F_{UBii\_virx} is the UQFF work term. This modifies the mass estimator:
+$$M_{\mathrm{tot}}^{\mathrm{UQFF}} = M_{\mathrm{tot}}^{\mathrm{classical}} \times \left(1 + \frac{r_h F_{\mathrm{UBii,virx}}}{G M_{\mathrm{tot}}^{\mathrm{classical 2}}/r_h}\right)$$
 
 For Perseus: the UQFF correction would imply the dynamical mass is overestimated relative to
 baryonic mass by the factor 2.4$\times$106 — this is not observed, which means Q_wave ~ 10-6 in real
@@ -208,8 +208,8 @@ thermalized ICM**, with Q_wave $\to$ 0 in the classical limit.
 
 1. **F_UBii derived:** F_UBii = F_U - F_Bi - F_i generalizes Archimedes' principle to the UQFF
 unified quantum field framework
-2. **Variant virx:** F_UBii_virx = -F_rel $\times$ (3$\sigma$_X2 $\cdot$ r_h / G$\cdot$E_LEP) $\times$ Q_wave $\times$ $\sigma$_X
-3. **Perseus result:** F_UBii_virx = -2.024$\times$1060 N (validator confirmed)
+2. **Variant virx:** F_{UBii\_virx} = -F_rel $\times$ (3$\sigma$_X2 $\cdot$ r_h / G$\cdot$E_LEP) $\times$ Q_wave $\times$ $\sigma$_X
+3. **Perseus result:** F_{UBii\_virx} = -2.024$\times$1060 N (validator confirmed)
 4. **Physical consistency:** UQFF correction suppressed by Q_wave ~ 10-6 in thermalized ICM $\to$
 classical virial equilibrium recovered
 5. **Foundation:** All 17 F_UBii variants (Papers #36–#39) derive from this same F_UBii = F_U - F_Bi
@@ -222,7 +222,7 @@ classical virial equilibrium recovered
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -359,7 +359,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -398,7 +398,7 @@ $$
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
-> *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references
+> *Added by upgrade_{early\_whitepapers}.py (v4.75). This appendix cross-references
 > the production physics constants and master equations to enable reproducibility
 > against the current codebase state.*
 
@@ -422,13 +422,13 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_{Ug1\_SOURCE}`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_{Ug2\_SOURCE}`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_{Ug3\_SOURCE}`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_{Ug4\_SOURCE}`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_{Ubi\_SOURCE}`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_{Um\_SOURCE}`4` / `compute_Um()` |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
 $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
@@ -452,7 +452,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 | **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
-*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
+*Implementation status: all 4 modes operational in `MAIN_{1\_CoAnQi}.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
 
 ---
@@ -462,26 +462,26 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_lagrangian_derivation.py`).
+`uqff_{lagrangian\_derivation}.py`).
 
 ### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\rm NS}) = \frac{1}{2} m^2 \phi_{\rm NS}^2 + \frac{\lambda}{4!} \phi_{\rm NS}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm NS}$$
+$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -493,38 +493,38 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.054$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.054$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
 The DVP encoding maps the system's characteristic parameter onto the prime lattice:
 
-$$p_{\rm DVP} = 17, \quad n_{\rm channel} = 11/26$$
+$$p_{\mathrm{DVP}} = 17, \quad n_{\mathrm{channel}} = 11/26$$
 
-Since $p_{\rm DVP} = 17$ is **sub-threshold** (threshold at $p > 26$), the system's vacuum topology inherits sub-threshold damping from the DVP lattice, producing smooth rather than resonant UQFF coupling profiles. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
+Since $p_{\mathrm{DVP}} = 17$ is **sub-threshold** (threshold at $p > 26$), the system's vacuum topology inherits sub-threshold damping from the DVP lattice, producing smooth rather than resonant UQFF coupling profiles. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\mathrm{UA}}' + f_{\mathrm{SCm}} = 1)$ constrains which primes are accessible at each atomic number.
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
-connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
+connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.054 | PASS Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
+| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.054 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 17$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
@@ -538,9 +538,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -554,14 +554,14 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
@@ -574,7 +574,7 @@ bridge.*
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1066 | UQFF Lagrangian First Principles Field Theory |
 
@@ -585,16 +585,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
+> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -603,8 +603,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -612,7 +612,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -623,8 +623,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -643,6 +643,6 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
-`uqff_mock_theta_pi_kernel.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
+`uqff_{mock\_theta\_pi\_kernel}.wl`).*
 

@@ -67,5 +67,5 @@ $$F_{U,Bi,i} = \int_0^\infty \left(-F_0 + \frac{GM}{r^2} + \rho_{\text{vac,SCm}}
 
 1. Riemann, B. (1859). Über die Anzahl der Primzahlen. *Monatsberichte der Berliner Akademie*.
 2. Hardy, G.H. & Littlewood, J.E. (1914). New proofs of the prime number theorem. *Acta Math.*
-3. SCm VDS: `scm_vacuum_manifold.py`; PI_MATH_GENESIS.md
+3. SCm VDS: `scm_{vacuum\_manifold}.py`; PI_{MATH\_GENESIS}.md
 4. PAPER_1134: SCm Riemann Hypothesis Closure

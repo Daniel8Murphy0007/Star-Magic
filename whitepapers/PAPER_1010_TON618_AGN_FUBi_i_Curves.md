@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1010
-title: "TON618 AGN F_U_Bi_i Curves — 3.8x Jet Modulation at Gamma = 0.05 THz"
+title: "TON618 AGN F_{U\_Bi\_i} Curves — 3.8x Jet Modulation at Gamma = 0.05 THz"
 session: 220
 date: 2026-04-14
 author: "Daniel T. Murphy"
@@ -12,11 +12,11 @@ calibration: {M_BH: 6.6e10, a_spin: 0.998, B_jet: 8000, A_jet: 2.8, modulation: 
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1010: TON618 AGN F_U_Bi_i Curves — 3.8x Jet Modulation
+# PAPER_1010: TON618 AGN F_{U\_Bi\_i} Curves — 3.8x Jet Modulation
 
 ## Abstract
 
-We extend AGN F_U_Bi_i curve analysis to TON618, the most massive known SMBH (M_BH = 6.6 x 10^10
+We extend AGN F_{U\_Bi\_i} curve analysis to TON618, the most massive known SMBH (M_BH = 6.6 x 10^10
 M_sun, a = 0.998). With a stronger jet amplitude A_jet = 2.8, the peak modulation reaches 3.8x at
 Gamma = 0.05 THz, exceeding 3C273 by 22.6%. This confirms the UQFF prediction that ultramassive BHs
 exhibit stronger buoyancy-jet coupling due to higher spin and magnetic field strength.
@@ -37,19 +37,19 @@ exhibit stronger buoyancy-jet coupling due to higher spin and magnetic field str
 The ratio M_jet(TON618) / M_jet(3C273) = 3.8 / 3.1 = 1.226, consistent with the logarithmic
 mass-modulation scaling:
 
-Delta_M ~ A_jet * log10(M_BH / M_ref)
+Delta_M ~ A_jet * \log_{10}(M_BH / M_ref)
 
 where M_ref = 10^6 M_sun. The near-maximal spin (a = 0.998) enhances frame-dragging contributions to
 Ug3.
 
 ## 3. Results
 
-TON618 F_U_Bi_i exceeds 3C273 at all 8 Gamma points. The modulation ratio is monotonically
+TON618 F_{U\_Bi\_i} exceeds 3C273 at all 8 Gamma points. The modulation ratio is monotonically
 increasing with BH mass, validating the UQFF AGN hierarchy.
 
 ## 4. Implementation
 
-File: `fubi_i_curves_agn_ns_qgp.py`, class `TON618AGNCurvesCalc`. CP4 class #594. Tests: 8/8 pass.
+File: `fubi_{i\_curves\_agn\_ns\_qgp}.py`, class `TON618AGNCurvesCalc`. CP4 class #594. Tests: 8/8 pass.
 
 
 
@@ -67,7 +67,7 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `TON618AGNCurvesCalc`. CP4 class #594
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -116,7 +116,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -133,7 +133,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -221,13 +221,13 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
@@ -235,7 +235,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 
 *12 cross-reference(s) identified.*

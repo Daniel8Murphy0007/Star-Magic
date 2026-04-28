@@ -50,10 +50,10 @@ $$
 |-----------|---------|-------------|
 | M_M87 | 6.5e9 M_sun | M87 BH mass |
 | M_SgrA | 4e6 M_sun | Sgr A* BH mass |
-| `M_dot_M87` | 0.1 M_sun/yr | M87 accretion rate |
-| `M_dot_SgrA` | 1e-8 M_sun/yr | Sgr A* accretion rate |
-| `a_spin_M87` | 0.9 | M87 spin |
-| `a_spin_SgrA` | 0.5 | Sgr A* spin |
+| `M_{dot\_M87}` | 0.1 M_sun/yr | M87 accretion rate |
+| `M_{dot\_SgrA}` | 1e-8 M_sun/yr | Sgr A* accretion rate |
+| `a_{spin\_M87}` | 0.9 | M87 spin |
+| `a_{spin\_SgrA}` | 0.5 | Sgr A* spin |
 
 ---
 
@@ -121,7 +121,7 @@ Gravity is the late-emergent central limit; SCm operates with extra-gravitationa
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -157,7 +157,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -182,24 +182,24 @@ mock-theta framework with the SCm phonon spectrum.
 ### §A.1 Sector Classification
 
 This paper maps to **gravitational-BH sector** of the 9-sector UQFF Lagrangian (see
-`uqff_lagrangian_derivation.py`).
+`uqff_{lagrangian\_derivation}.py`).
 
 ### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2).
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2).
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi} = \nabla^2 \phi - (4\pi G \rho/c^2)\phi + \Omega_{\rm spin} \partial_t \phi = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi} = \nabla^2 \phi - (4\pi G \rho/c^2)\phi + \Omega_{\mathrm{spin}} \partial_t \phi = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
 
 ---
 
@@ -207,28 +207,28 @@ $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.06$.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
-$$p_{\rm DVP} = 127, \quad n_{\rm channel} = 23/26$$
+$$p_{\mathrm{DVP}} = 127, \quad n_{\mathrm{channel}} = 23/26$$
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **10^10 yr (SMBH jet lifetime)**:
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.06 | PASS Consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 127$ | PASS Lattice-consistent |
+| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.06 | PASS Consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 127$ | PASS Lattice-consistent |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
@@ -242,9 +242,9 @@ $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
 produce measurable deviations from GR at scales where vacuum condensate density rho_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -271,21 +271,21 @@ bridge.*
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `s`tellar_wind_nebulae_exploration`.py` | UQFF prediction engine for additional nebulae | 5 systems, 5-11% agreement |
-| `n`ebula_obs_comparison`.py` | Simulation vs JWST/Chandra/Hubble/ALMA | Mean 7.8% agreement |
+| `s`tellar_{wind\_nebulae\_exploration}`.py` | UQFF prediction engine for additional nebulae | 5 systems, 5-11% agreement |
+| `n`ebula_{obs\_comparison}`.py` | Simulation vs JWST/Chandra/Hubble/ALMA | Mean 7.8% agreement |
 
 ### S210.2 Wormhole Geodesic Modules
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `w`ormhole_geodesic_simulator`.py` | BSFG 26D geodesic integrator | Morris-Thorne traversable with phonon stabilization |
+| `w`ormhole_{geodesic\_simulator}`.py` | BSFG 26D geodesic integrator | Morris-Thorne traversable with phonon stabilization |
 | PAPER_901 | Phonon-modified Christoffel symbols | Additive correction to geodesic equation |
 
 ### S210.3 BH Phonon Physics
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `b`h_phonon_interaction`.py` | SCm phonon coupling at horizons/ergospheres | Superradiance bandwidth broadened |
+| `b`h_{phonon\_interaction}`.py` | SCm phonon coupling at horizons/ergospheres | Superradiance bandwidth broadened |
 | PAPER_905-906 | Ergosphere superradiance + QPO coupling | Phonon-amplified jet launching |
 | PAPER_908-909 | Jet power + Hawking T modification | M87/Sgr A* power ratio explained |
 
@@ -306,13 +306,13 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
@@ -320,7 +320,7 @@ bridge.*
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

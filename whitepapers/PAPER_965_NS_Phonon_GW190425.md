@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
-**Source:** et_phonon_resonance.py §8 (NSPhononGW190425)
+**Source:** et_{phonon\_resonance}.py §8 (NSPhononGW190425)
 **Calculator:** NSPhononGW190425Calc (CP4 #549)
 **CVW:** v2.0.0 compliant
 
@@ -101,7 +101,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -256,19 +256,19 @@ $h_\text{UQFF}/h_\text{GR}$ bounded in $[1-\phi_text{max}, 1]$ (BSH envelope).
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
+| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
@@ -282,7 +282,7 @@ $h_\text{UQFF}/h_\text{GR}$ bounded in $[1-\phi_text{max}, 1]$ (BSH envelope).
 | PAPER_1035 | Kilonova Buoyancy Light Curve r-Process |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
-| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *24 cross-reference(s) identified.*

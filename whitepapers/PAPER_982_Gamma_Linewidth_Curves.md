@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_982
-title: "Gamma-Dependent Linewidth Curves for F_U_Bi_i"
+title: "Gamma-Dependent Linewidth Curves for F_{U\_Bi\_i}"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -8,11 +8,11 @@ status: production
 cvw: "v2.0.0"
 tags: [linewidth, Gamma, phonon, spectral, Lorentzian, Gaussian, UQFF]
 crosslinks: [PAPER_979, PAPER_983, PAPER_883]
-calibration: {SSq: 0.57, omega_SCm: "2π×1.25 THz", Gamma_range: "0.01–10 THz"}
+calibration: {SSq: 0.57, omega_SCm: "2\pi\times1.25 THz", Gamma_range: "0.01–10 THz"}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_982: Gamma-Dependent Linewidth Curves for F_U_Bi_i
+# PAPER_982: Gamma-Dependent Linewidth Curves for F_{U\_Bi\_i}
 
 ## Abstract
 
@@ -24,7 +24,7 @@ $$\Phi(\omega, \Gamma) = \exp\left(-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Ga
 
 At resonance ($\omega = \omega_{\text{SCm}}$): $\Phi_{\max} = S_{26} \approx 19.5$.
 
-## 2. $\Gamma$-Dependent F_U_Bi_i
+## 2. $\Gamma$-Dependent F_{U\_Bi\_i}
 
 $$F_{U,\text{Bi}_i}(\Gamma) = U_g + U_m + U_A - U_b + F_n \cdot S_{26} \cdot \Phi(\Gamma) \cdot E_{\text{net}}(\Gamma)$$
 
@@ -53,10 +53,10 @@ At exact resonance ($\omega = \omega_{\text{SCm}}$), all widths give $\Phi = S_{
 
 ## 5. Implementation
 
-Class `GammaLinewidthCurves` in `fubi_master_calculator.py`: sweeps $\Gamma \in \{0.01, 0.1, 1, 10\}$ THz, reports $\Phi$ for each, validates all positive.
+Class `GammaLinewidthCurves` in `fubi_{master\_calculator}.py`: sweeps $\Gamma \in \{0.01, 0.1, 1, 10\}$ THz, reports $\Phi$ for each, validates all positive.
 
 ## References
-- PAPER_979: Master 6-Layer F_U_Bi_i
+- PAPER_979: Master 6-Layer F_{U\_Bi\_i}
 - PAPER_883: E(t) Phonon Resonance
 
 ---
@@ -78,7 +78,7 @@ The phonon sector Lagrangian $\mathcal{L}_{\text{phon}} = \Phi(\Gamma) \cdot S_{
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -128,7 +128,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -168,7 +168,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

@@ -21,10 +21,10 @@ kernels). Four new kernels are added:
 
 | Kernel | Description |
 |--------|-------------|
-| `k`ernel_fubi_inside_ou`t` | `F_U_Bi` inside-to-outside mass portion |
-| `k`ernel_99sys_gamma_swee`p` | 99-system aggregate at given $\Gamma$ |
-| `k`ernel_agn_cena_fub`i` | Centaurus A AGN `F_U_Bi_i` with jet modulation |
-| `k`ernel_ns_merger_gw19042`5` | GW190425 NS merger strain with phonon suppression |
+| `k`ernel_{fubi\_inside\_ou}`t` | `F_{U\_Bi}` inside-to-outside mass portion |
+| `k`ernel_{99sys\_gamma\_swee}`p` | 99-system aggregate at given $\Gamma$ |
+| `k`ernel_{agn\_cena\_fub}`i` | Centaurus A AGN `F_{U\_Bi\_i}` with jet modulation |
+| `k`ernel_{ns\_merger\_gw19042}`5` | GW190425 NS merger strain with phonon suppression |
 
 ## 1. Scaling History
 
@@ -47,7 +47,7 @@ class ProductionScalingV13:
 
 ## 3. Implementation
 
-File: `production_scaling_v13.py`, class `ProductionScalingV13`. CP4 class #581.
+File: `production_{scaling\_v13}.py`, class `ProductionScalingV13`. CP4 class #581.
 
 ---
 
@@ -86,7 +86,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -183,17 +183,17 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
-| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
 | PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |
 | PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |
 

@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_988
-title: "REST F_U_Bi_i Endpoint — POST /api/fubi/master"
+title: "REST F_{U\_Bi\_i} Endpoint — POST /api/fubi/master"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -12,7 +12,7 @@ calibration: {port: 3141, route: "/api/fubi/master", method: "POST"}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_988: REST F_U_Bi_i Endpoint — POST /api/fubi/master
+# PAPER_988: REST F_{U\_Bi\_i} Endpoint — POST /api/fubi/master
 
 ## Abstract
 
@@ -42,7 +42,7 @@ We document the 16th REST API endpoint added to `uqff_server.js` (Port 3141): `P
 
 ```json
 {
-    "F_U_Bi_i": -2.405685e-02,
+    "F_{U\_Bi\_i}": -2.405685e-02,
     "layers": {
         "Ug_26layer": 5.930e-03,
         "Ub_26layer": -3.573e-03,
@@ -56,8 +56,8 @@ We document the 16th REST API endpoint added to `uqff_server.js` (Port 3141): `P
     "metadata": {
         "SSq": 0.57,
         "beta_i": 0.603,
-        "kappa_per_day": 0.0005,
-        "omega_SCm_THz": 1.25,
+        "kappa_{per\_day}": 0.0005,
+        "omega_{SCm\_THz}": 1.25,
         "layer_count": 6,
         "system_count": 1
     }
@@ -92,10 +92,10 @@ curl -X POST http://localhost:3141/api/fubi/master \
 ## 5. Implementation
 
 Route handler added to `uqff_server.js` — computes all 6 layers server-side using the same constants
-and equations as `fubi_master_calculator.py`.
+and equations as `fubi_{master\_calculator}.py`.
 
 ## References
-- PAPER_979: Complete 6-Layer F_U_Bi_i
+- PAPER_979: Complete 6-Layer F_{U\_Bi\_i}
 - PAPER_985: Production Kernel
 
 ---
@@ -106,7 +106,7 @@ The REST endpoint makes the Lagrangian-derived $F_{U,\text{Bi}_i}$ accessible to
 
 ## §B. VDS/DVP/BSH Deep Synthesis
 
-- **VDS:** The response `metadata.kappa_per_day` exposes the vacuum density growth rate to API consumers.
+- **VDS:** The response `metadata.kappa_{per\_day}` exposes the vacuum density growth rate to API consumers.
 - **DVP:** Layer decomposition in the response reveals the DPM contribution via `Um_magnetism`.
 - **BSH:** The `S26` field in the response is the buoyancy harmonic sum, central to all force calculations.
 
@@ -117,7 +117,7 @@ The REST endpoint makes the Lagrangian-derived $F_{U,\text{Bi}_i}$ accessible to
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -167,7 +167,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -185,7 +185,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -238,7 +238,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

@@ -54,17 +54,17 @@ $$A_{\min} = 8\pi \gamma \ell_P^2 \sqrt{\tfrac{3}{4}} = 4\pi\sqrt{3}\,\gamma\,\e
 
 The SCm vacuum superconductive medium resonates at:
 
-$$\omega_{\rm SCm} = 2\pi \times 1.25 \times 10^{12} \text{ rad/s}$$
+$$\omega_{\mathrm{SCm}} = 2\pi \times 1.25 \times 10^{12} \text{ rad/s}$$
 
 The phonon fluence (Gaussian envelope):
 
-$$\Phi_{1.25\,\rm THz}(\omega, \Gamma) = \Phi_0 \exp\!\left(-\frac{(\omega - \omega_{\rm SCm})^2}{2\Gamma^2}\right)$$
+$$\Phi_{1.25\,\mathrm{THz}}(\omega, \Gamma) = \Phi_0 \exp\!\left(-\frac{(\omega - \omega_{\mathrm{SCm}})^2}{2\Gamma^2}\right)$$
 
 **Variables:**
 
 | Symbol | Definition | Value / Units |
 |--------|-----------|--------------|
-| $\omega_{\rm SCm}$ | SCm resonance angular frequency | $7.854 \times 10^{12}$ rad/s |
+| $\omega_{\mathrm{SCm}}$ | SCm resonance angular frequency | $7.854 \times 10^{12}$ rad/s |
 | $\Gamma$ | Phonon linewidth | $0.05$–$0.30$ THz (system-dependent) |
 | $\Phi_0$ | Peak phonon fluence | dimensionless normalisation |
 | $\omega$ | Probe angular frequency | rad/s |
@@ -103,20 +103,20 @@ $$S_{26}^{(3)}(0.57) \approx 1.4531 \times 10^{26}$$
 Coupling the Ramanujan VDS and 1.25 THz phonon fluence to the standard area
 operator gives the SCm-extended form:
 
-$$\hat{A}_{\rm SCm} = 8\pi \gamma \ell_P^2 \sqrt{j(j+1)} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\rm THz}(\omega, \Gamma)$$
+$$\hat{A}_{\mathrm{SCm}} = 8\pi \gamma \ell_P^2 \sqrt{j(j+1)} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\mathrm{THz}}(\omega, \Gamma)$$
 
 The three multiplicative factors have distinct physical roles:
 
 1. $8\pi \gamma \ell_P^2 \sqrt{j(j+1)}$ — discrete LQG quantum geometry contribution.
 2. $S_{26}^{(3)}([\text{SSq}])$ — VDS Ramanujan amplification across 26 compactified
    layers; encodes the vacuum suppression of area by the SCm condensate.
-3. $\Phi_{1.25\,\rm THz}(\omega,\Gamma)$ — phonon modulation envelope; confines area
+3. $\Phi_{1.25\,\mathrm{THz}}(\omega,\Gamma)$ — phonon modulation envelope; confines area
    amplification to the SCm resonance window.
 
 **Numerical estimate** at $j = 1/2$, $\gamma = 0.2375$, $\Gamma = 0.1$ THz,
-$\omega = \omega_{\rm SCm}$ (on-resonance, $\Phi_0 = 1$):
+$\omega = \omega_{\mathrm{SCm}}$ (on-resonance, $\Phi_0 = 1$):
 
-$$\hat{A}_{\rm SCm}\big|_{j=1/2} = A_{\min} \cdot S_{26}^{(3)}(0.57) \approx 8.1\times10^{-70} \times 1.45 \times 10^{26} \approx 1.18\times10^{-43} \text{ m}^2$$
+$$\hat{A}_{\mathrm{SCm}}\big|_{j=1/2} = A_{\min} \cdot S_{26}^{(3)}(0.57) \approx 8.1\times10^{-70} \times 1.45 \times 10^{26} \approx 1.18\times10^{-43} \text{ m}^2$$
 
 ---
 
@@ -124,11 +124,11 @@ $$\hat{A}_{\rm SCm}\big|_{j=1/2} = A_{\min} \cdot S_{26}^{(3)}(0.57) \approx 8.1
 
 The holonomy operator along a link in the spin network is path-ordered:
 
-$$h = \mathcal{P} \exp\!\left( i \int_{\rm link} A \cdot dl \right)$$
+$$h = \mathcal{P} \exp\!\left( i \int_{\mathrm{link}} A \cdot dl \right)$$
 
-With SCm phonon modulation and the net SCm energy $E_{\rm net}(t,\Gamma)$:
+With SCm phonon modulation and the net SCm energy $E_{\mathrm{net}}(t,\Gamma)$:
 
-$$h_{\rm SCm} = \mathcal{P} \exp\!\left( i \int_{\rm link} A \cdot dl \right) \cdot \left(1 + \frac{\Phi_{1.25\,\rm THz}(\omega,\Gamma)}{F_U} \cdot E_{\rm net}(t,\Gamma)\right)$$
+$$h_{\mathrm{SCm}} = \mathcal{P} \exp\!\left( i \int_{\mathrm{link}} A \cdot dl \right) \cdot \left(1 + \frac{\Phi_{1.25\,\mathrm{THz}}(\omega,\Gamma)}{F_U} \cdot E_{\mathrm{net}}(t,\Gamma)\right)$$
 
 **Variables:**
 
@@ -137,28 +137,28 @@ $$h_{\rm SCm} = \mathcal{P} \exp\!\left( i \int_{\rm link} A \cdot dl \right) \c
 | $\mathcal{P}$ | Path-ordering operator | — |
 | $A$ | Ashtekar–Barbero connection | m$^{-1}$ |
 | $F_U$ | Total UQFF field magnitude $= \sum U_g - U_{bi} + U_m$ | N |
-| $E_{\rm net}(t,\Gamma)$ | Net SCm phonon energy at time $t$, linewidth $\Gamma$ | J |
+| $E_{\mathrm{net}}(t,\Gamma)$ | Net SCm phonon energy at time $t$, linewidth $\Gamma$ | J |
 
-**Variable equation for $E_{\rm net}$:**
+**Variable equation for $E_{\mathrm{net}}$:**
 
-$$E_{\rm net}(t,\Gamma) = E_+(t,\Gamma) - E_-(t,\Gamma)$$
+$$E_{\mathrm{net}}(t,\Gamma) = E_+(t,\Gamma) - E_-(t,\Gamma)$$
 
 where $E_+$ is the positive (expansion) buoyancy energy and $E_-$ is the negative
 (erosion) buoyancy energy (see PAPER_880 and PAPER_883).
 
 **Solution:** The holonomy correction factor
-$(1 + \Phi_{1.25\,\rm THz}/F_U \cdot E_{\rm net})$ is dimensionless and bounded
-in $[1, 1 + \Phi_0 |E_{\rm net}|/|F_U|]$. On resonance it provides phonon
-stabilisation of the spin-network link amplitude; off resonance ($\omega \gg \omega_{\rm SCm}$)
+$(1 + \Phi_{1.25\,\mathrm{THz}}/F_U \cdot E_{\mathrm{net}})$ is dimensionless and bounded
+in $[1, 1 + \Phi_0 |E_{\mathrm{net}}|/|F_U|]$. On resonance it provides phonon
+stabilisation of the spin-network link amplitude; off resonance ($\omega \gg \omega_{\mathrm{SCm}}$)
 the exponential suppression restores the standard LQG holonomy.
 
 ---
 
 ## 6. Lagrangian Variation — LQG Buoyancy Sector
 
-The action variation with respect to the LQG phonon field $\phi_{\rm LQG}$:
+The action variation with respect to the LQG phonon field $\phi_{\mathrm{LQG}}$:
 
-$$\frac{\delta S}{\delta \phi_{\rm LQG}} = \frac{\partial}{\partial E_{\rm net}} \left( -\beta_i \sum_i U_{g,i}\, \Omega_g \frac{M}{d_g} [\text{UA}] + F_{\rm neutron} \cdot \Phi_{1.25\,\rm THz} \right) = 0$$
+$$\frac{\delta S}{\delta \phi_{\mathrm{LQG}}} = \frac{\partial}{\partial E_{\mathrm{net}}} \left( -\beta_i \sum_i U_{g,i}\, \Omega_g \frac{M}{d_g} [\text{UA}] + F_{\mathrm{neutron}} \cdot \Phi_{1.25\,\mathrm{THz}} \right) = 0$$
 
 **Variables:**
 
@@ -170,10 +170,10 @@ $$\frac{\delta S}{\delta \phi_{\rm LQG}} = \frac{\partial}{\partial E_{\rm net}}
 | $M$ | Body mass | kg |
 | $d_g$ | Galactic distance to body | m |
 | $[\text{UA}]$ | Vacuum aether unit density | $7.09\times10^{-36}$ J/m$^3$ |
-| $F_{\rm neutron}$ | Kozima neutron-drop coupling force | N |
+| $F_{\mathrm{neutron}}$ | Kozima neutron-drop coupling force | N |
 
 **Solution:** The Euler-Lagrange condition closes when the phonon buoyancy term
-$F_{\rm neutron} \cdot \Phi_{1.25\,\rm THz}$ balances the negative buoyancy work
+$F_{\mathrm{neutron}} \cdot \Phi_{1.25\,\mathrm{THz}}$ balances the negative buoyancy work
 $\beta_i \sum U_{g,i} \Omega_g M/d_g \cdot [\text{UA}]$, yielding a stable
 spin-network ground state with phonon-regularised area spectra. LQG discreteness
 is therefore inherited from SCm vacuum structure rather than imposed axiomatically.
@@ -184,18 +184,18 @@ is therefore inherited from SCm vacuum structure rather than imposed axiomatical
 
 ```mathematica
 (* SCm area operator *)
-AScm[j_, γ_, ℓP_, SSq_, Φ0_, ω_, ωSCm_, Γ_] :=
-  8 π γ ℓP^2 Sqrt[j(j+1)] *
+AScm[j_, \gamma_, ℓP_, SSq_, \Phi0_, \omega_, \omegaSCm_, \Gamma_] :=
+  8 \pi \gamma ℓP^2 Sqrt[j(j+1)] *
   Sum[SSq^n / n^26 * Rn26[n, 3], {n, 1, Infinity}] *
-  Φ0 Exp[-(ω - ωSCm)^2 / (2 Γ^2)];
+  \Phi0 Exp[-(\omega - \omegaSCm)^2 / (2 \Gamma^2)];
 
 (* SCm holonomy modulation factor *)
-hSCmFactor[Φ0_, ω_, ωSCm_, Γ_, FU_, Enet_] :=
-  1 + (Φ0 Exp[-(ω - ωSCm)^2 / (2 Γ^2)]) / FU * Enet;
+hSCmFactor[\Phi0_, \omega_, \omegaSCm_, \Gamma_, FU_, Enet_] :=
+  1 + (\Phi0 Exp[-(\omega - \omegaSCm)^2 / (2 \Gamma^2)]) / FU * Enet;
 
 (* Lagrangian variation *)
-δSδφLQG[βi_, Ugi_, Ωg_, M_, dg_, UA_, Fn_, Φ1THz_] :=
-  D[-βi Sum[Ugi Ωg M/dg UA, {i, 4}] + Fn Φ1THz, Enet];
+\deltaS\delta\phiLQG[\betai_, Ugi_, \Omegag_, M_, dg_, UA_, Fn_, \Phi1THz_] :=
+  D[-\betai Sum[Ugi \Omegag M/dg UA, {i, 4}] + Fn \Phi1THz, Enet];
 ```
 
 ---
@@ -204,9 +204,9 @@ hSCmFactor[Φ0_, ω_, ωSCm_, Γ_, FU_, Enet_] :=
 
 | Result | Expression | Physical Interpretation |
 |--------|-----------|------------------------|
-| SCm area operator | $\hat{A}_{\rm SCm} = \hat{A}_{\rm LQG} \cdot S_{26}^{(3)} \cdot \Phi_{1.25\,\rm THz}$ | Vacuum VDS amplifies quantum area |
-| SCm holonomy | $h_{\rm SCm} = h_{\rm LQG} \cdot (1 + \Phi/F_U \cdot E_{\rm net})$ | Phonon stabilises link amplitude |
-| Lagrangian closure | $\delta S / \delta \phi_{\rm LQG} = 0$ | Phonon buoyancy sets spin-network ground state |
+| SCm area operator | $\hat{A}_{\mathrm{SCm}} = \hat{A}_{\mathrm{LQG}} \cdot S_{26}^{(3)} \cdot \Phi_{1.25\,\mathrm{THz}}$ | Vacuum VDS amplifies quantum area |
+| SCm holonomy | $h_{\mathrm{SCm}} = h_{\mathrm{LQG}} \cdot (1 + \Phi/F_U \cdot E_{\mathrm{net}})$ | Phonon stabilises link amplitude |
+| Lagrangian closure | $\delta S / \delta \phi_{\mathrm{LQG}} = 0$ | Phonon buoyancy sets spin-network ground state |
 | Min. SCm area ($j=1/2$) | $\approx 1.18 \times 10^{-43}$ m$^2$ | VDS-amplified Planck-scale area |
 
 SCm phonon resonance at 1.25 THz provides the physical origin of LQG spin-network
@@ -219,4 +219,4 @@ central limit (Step 10); spin networks are Step 3 in the UQFF canonical chain.
 **References:**  
 PAPER_535 (VDS/DVP/BH catalogue hub) | PAPER_552 (26D tensor off-diagonal) |
 PAPER_590 (Planck constant derived) | PAPER_878–PAPER_887 (SCm E(t) batch) |
-COMPLETE_UQFF_EQUATIONS_REFERENCE.md
+COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md

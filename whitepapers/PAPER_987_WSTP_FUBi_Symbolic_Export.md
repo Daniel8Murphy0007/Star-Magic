@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_987
-title: "WSTP F_U_Bi_i Symbolic Export — Wolfram Language Expression #51"
+title: "WSTP F_{U\_Bi\_i} Symbolic Export — Wolfram Language Expression #51"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -8,15 +8,15 @@ status: production
 cvw: "v2.0.0"
 tags: [WSTP, Wolfram, symbolic, export, Mathematica, UQFF]
 crosslinks: [PAPER_979, PAPER_988, PAPER_985]
-calibration: {SSq: 0.57, beta_i: 0.603, omega_SCm: "2π×1.25 THz", wstp_expr: 51}
+calibration: {SSq: 0.57, beta_i: 0.603, omega_SCm: "2\pi\times1.25 THz", wstp_expr: 51}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_987: WSTP F_U_Bi_i Symbolic Export — Wolfram Language Expression #51
+# PAPER_987: WSTP F_{U\_Bi\_i} Symbolic Export — Wolfram Language Expression #51
 
 ## Abstract
 
-Expression #51 in `wstp_kernel_demo_runner.py` encodes the complete 6-layer $F_{U,\text{Bi}_i}$ master equation in Wolfram Language for symbolic evaluation via the Wolfram Symbolic Transfer Protocol (WSTP). The export enables closed-form simplification, series expansion, and parametric analysis of all six layers simultaneously within the Mathematica kernel.
+Expression #51 in `wstp_{kernel\_demo\_runner}.py` encodes the complete 6-layer $F_{U,\text{Bi}_i}$ master equation in Wolfram Language for symbolic evaluation via the Wolfram Symbolic Transfer Protocol (WSTP). The export enables closed-form simplification, series expansion, and parametric analysis of all six layers simultaneously within the Mathematica kernel.
 
 ## 1. Wolfram Language Definition
 
@@ -60,18 +60,18 @@ Expression #51 joins the existing 50 WSTP expressions. The WSTP kernel demo runn
 via:
 ```python
 link.putFunction("EvaluatePacket", 1)
-link.put(expr_51_code)
+link.put(expr_{51\_code})
 link.endPacket()
 result = link.getResult()
 ```
 
 ## 4. Implementation
 
-Added as expression #51 in `wstp_kernel_demo_runner.py`, function `_build_expressions()`. Total WSTP
+Added as expression #51 in `wstp_{kernel\_demo\_runner}.py`, function `_build_expressions()`. Total WSTP
 expressions: 51.
 
 ## References
-- PAPER_979: Complete 6-Layer F_U_Bi_i
+- PAPER_979: Complete 6-Layer F_{U\_Bi\_i}
 - PAPER_985: Production Kernel
 
 
@@ -90,7 +90,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -153,7 +153,7 @@ The Wolfram export allows symbolic computation of $\delta S / \delta\phi$ direct
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

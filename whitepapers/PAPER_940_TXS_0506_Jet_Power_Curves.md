@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
-**Source:** blazar_jet_power_curves_extended.py (TXS0506JetPowerCurves)
+**Source:** blazar_{jet\_power\_curves\_extended}.py (TXS0506JetPowerCurves)
 **Calculator:** TXS0506JetPowerCurvesCalc (CP4 #524)
 **CVW:** v2.0.0 compliant
 
@@ -60,7 +60,7 @@ The high $A_\text{jet} = 1.20$ coupling strength implies that phonon-jet modulat
 
 ## 4. Source Data
 
-- **File:** blazar_jet_power_curves_extended.py
+- **File:** blazar_{jet\_power\_curves\_extended}.py
 - **Session:** 213
 - **CP4 Class:** TXS0506JetPowerCurvesCalc (#524)
 
@@ -79,7 +79,7 @@ The high $A_\text{jet} = 1.20$ coupling strength implies that phonon-jet modulat
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -174,14 +174,14 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |

@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
-**Source:** spectral_ladder_26state.py (RamanujanAcceleration)
+**Source:** spectral_{ladder\_26state}.py (RamanujanAcceleration)
 **Calculator:** RamanujanAccelerationCalc (CP4 #537)
 **CVW:** v2.0.0 compliant
 
@@ -47,7 +47,7 @@ where $a_k = \exp(-[\text{SSq}] \cdot k/26)$ and $B_2 = 1/6$, $B_4 = -1/30$, $B_
 
 ## 3. Source Data
 
-- **File:** spectral_ladder_26state.py
+- **File:** spectral_{ladder\_26state}.py
 - **Session:** 214
 - **CP4 Class:** RamanujanAccelerationCalc (#537)
 
@@ -88,7 +88,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -166,14 +166,14 @@ Bernoulli coefficients provide the harmonic correction to buoyancy saturation.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |

@@ -157,7 +157,7 @@ contribution to the Navier-Stokes regularity proof (PAPER_543).
 The BH series encodes the harmonic decomposition of the Ug2 charge-reactivity
 buoyancy field:
 
-$$U_{g2}^{\rm BH} = \sum_{m=1}^{\infty} H_m \cdot \left(1 - e^{-[\text{SSq}] \cdot m}\right) \cdot \cos(\omega_{Ug2} \cdot t_n)$$
+$$U_{g2}^{\mathrm{BH}} = \sum_{m=1}^{\infty} H_m \cdot \left(1 - e^{-[\text{SSq}] \cdot m}\right) \cdot \cos(\omega_{Ug2} \cdot t_n)$$
 
 **Variables:**
 
@@ -171,7 +171,7 @@ $$U_{g2}^{\rm BH} = \sum_{m=1}^{\infty} H_m \cdot \left(1 - e^{-[\text{SSq}] \cd
 
 **Variable equations:**
 
-$$H_m = \sum_{k=1}^{m} \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{m} \approx \ln m + \gamma_E$$
+$$H_m = \sum_{k=1}^{m} \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \cdot s + \frac{1}{m} \approx \ln m + \gamma_E$$
 
 where $\gamma_E = 0.5772\ldots$ is the Euler-Mascheroni constant.
 
@@ -194,27 +194,27 @@ the BH series in the physical regime.
 ### 3.3 BH Ug2 Frequency
 
 The Ug2 charge-reactivity frequency is derived from the heliosphere step-function
-and solar wind velocity $v_{\rm sw}$:
+and solar wind velocity $v_{\mathrm{sw}}$:
 
-$$\omega_{Ug2} = \frac{2\pi v_{\rm sw}}{R_{\rm helio}}$$
+$$\omega_{Ug2} = \frac{2\pi v_{\mathrm{sw}}}{R_{\mathrm{helio}}}$$
 
-with $v_{\rm sw} \approx 400$ km/s and $R_{\rm helio} \approx 100$ AU $= 1.496 \times 10^{13}$ m:
+with $v_{\mathrm{sw}} \approx 400$ km/s and $R_{\mathrm{helio}} \approx 100$ AU $= 1.496 \times 10^{13}$ m:
 
 $$\omega_{Ug2} \approx \frac{2\pi \times 4 \times 10^5}{1.496 \times 10^{13}} \approx 1.68 \times 10^{-7} \text{ rad/s}$$
 
 ### 3.4 Physical Solutions
 
-**$E_{\rm net}(t)$ saturation:** The BH series drives charge-reactivity gravity
+**$E_{\mathrm{net}}(t)$ saturation:** The BH series drives charge-reactivity gravity
 saturation in the net energy evolution:
 
-$$E_{\rm net}^{\rm BH}(t_n) = \sum_{m=1}^{\infty} H_m (1 - e^{-0.57m}) \cos(\omega_{Ug2} t_n) \cdot \rho_A V_{\rm body}$$
+$$E_{\mathrm{net}}^{\mathrm{BH}}(t_n) = \sum_{m=1}^{\infty} H_m (1 - e^{-0.57m}) \cos(\omega_{Ug2} t_n) \cdot \rho_A V_{\mathrm{body}}$$
 
 At saturation ($m \to \infty$, partial harmonic sum diverges logarithmically):
 
 $$\lim_{m \to \infty} H_m (1 - e^{-0.57m}) \approx \ln m + \gamma_E$$
 
 The cosine modulation $\cos(\omega_{Ug2} t_n)$ caps the physical energy at each
-negative-time cycle, providing a bounded oscillating $E_{\rm net}^{\rm BH}$.
+negative-time cycle, providing a bounded oscillating $E_{\mathrm{net}}^{\mathrm{BH}}$.
 
 ---
 
@@ -245,7 +245,7 @@ The VDS and BH are complementary partitions of the SCm vacuum density layer budg
 
 $$\underbrace{\text{VDS}}_{\text{all layers}} = \underbrace{\text{DVP}}_{\text{prime layers}} + \underbrace{\text{non-prime remainder}}$$
 
-$$\underbrace{U_{g2}^{\rm BH}}_{\text{buoyancy harmonics}} = \rho_A \cdot V \cdot (1 - \text{VDS layer weight}) \cdot \cos(\omega_{Ug2} t_n)$$
+$$\underbrace{U_{g2}^{\mathrm{BH}}}_{\text{buoyancy harmonics}} = \rho_A \cdot V \cdot (1 - \text{VDS layer weight}) \cdot \cos(\omega_{Ug2} t_n)$$
 
 ---
 
@@ -257,7 +257,7 @@ VDS[SSq_] := PolyLog[26, SSq];
 
 (* VDS Ramanujan accelerated order 3 *)
 S263[SSq_] := Sum[SSq^n / n^26 *
-  (2π)^(n/6) / n! * (1 + Sum[1/n^(26m) *
+  (2\pi)^(n/6) / n! * (1 + Sum[1/n^(26m) *
     Sum[(-1)^(j+1) Binomial[26,j] (26-j)! / n^j, {j,1,26}],
   {m,1,3}]), {n,1,50}];
 
@@ -265,8 +265,8 @@ S263[SSq_] := Sum[SSq^n / n^26 *
 DVP[p_] := SSq^PrimePi[p] / p^26;
 
 (* BH series *)
-BH[ωUg2_, tn_] := Sum[HarmonicNumber[m] * (1 - Exp[-0.57 m]) *
-  Cos[ωUg2 tn], {m, 1, Infinity}];
+BH[\omegaUg2_, tn_] := Sum[HarmonicNumber[m] * (1 - Exp[-0.57 m]) *
+  Cos[\omegaUg2 tn], {m, 1, Infinity}];
 
 (* Numerical check *)
 N[S263[0.57], 30]
@@ -297,4 +297,4 @@ number algebra.
 PAPER_535 (VDS/DVP/BH catalogue hub) | PAPER_543 (Navier-Stokes regularity proof) |
 PAPER_536 (DPM split monopole proplyd topology) | PAPER_652 (fine structure constant) |
 PAPER_1127 (SCm LQG holonomy) | PAPER_1128 (SCm String Theory 26D) |
-COMPLETE_UQFF_EQUATIONS_REFERENCE.md
+COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md

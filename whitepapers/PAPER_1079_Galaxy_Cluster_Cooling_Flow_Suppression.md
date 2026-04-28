@@ -4,7 +4,7 @@
 
 **Author:** Daniel Murphy
 **Date:** 2026
-**Module:** `galaxy_cluster_cooling_flow.py`
+**Module:** `galaxy_{cluster\_cooling\_flow}.py`
 
 ---
 
@@ -78,8 +78,8 @@ The suppression factor varies with phonon linewidth through $\Phi(\Gamma)$ in th
 
 1. Perseus cooling flow: NGC 1275, $M_{\text{cool}} \sim 13 \times 10^9$ M$_\odot$ H$_2$
 2. Sutherland & Dopita (1993): Cooling functions
-3. $F_{U,Bi,i}$ framework: `MAIN_1_CoAnQi.cpp` SOURCE4
-4. ICM physics: `gen_muge_ngc1275.py`
+3. $F_{U,Bi,i}$ framework: `MAIN_{1\_CoAnQi}.cpp` SOURCE4
+4. ICM physics: `gen_{muge\_ngc1275}.py`
 
 
 
@@ -135,7 +135,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -157,7 +157,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

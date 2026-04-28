@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [gravitational-wave, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 â€” G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_016: PAPER_016b: White Dwarf Binary Foreground Reduction via UQFF
@@ -31,19 +31,19 @@ $$
 ## Abstract
 
 The stochastic foreground from millions of unresolved white dwarf (WD) binaries in the Milky Way
-constitutes the dominant confusion noise for LISA in the 0.1–10 mHz band. We compute the UQFF
-prediction for this foreground, finding a 61.4% reduction: P_GR = 4.31 × 10-41 versus P_UQFF = 1.67
-× 10-41 in strain power spectral density. This reduced foreground is counterintuitive but
+constitutes the dominant confusion noise for LISA in the 0.1â€“10 mHz band. We compute the UQFF
+prediction for this foreground, finding a 61.4% reduction: P_GR = 4.31 \times 10-41 versus P_UQFF = 1.67
+\times 10-41 in strain power spectral density. This reduced foreground is counterintuitive but
 beneficial: LISA sensitivity to cosmological sources *improves* in UQFF relative to GR.
 Additionally, UQFF shifts approximately 104 WD binaries above the individually-resolvable threshold
 (GR: 10,000 ? UQFF threshold: 6,216 detected but individually resolved). The net effect is a LISA
 sensitivity improvement to high-redshift sources by factor ~1.6 in SNR, complementing the detection
-horizon reduction described in Papers #13–15.
+horizon reduction described in Papers #13â€“15.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0\times10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis â€” establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -56,12 +56,12 @@ confusion foreground that acts as additional noise.
 
 In standard GR, this foreground is estimated to dominate LISA sensitivity for frequencies below ~3
 mHz, masking extragalactic sources. In UQFF, the vacuum damping factor D < 1 suppresses the
-foreground along with extragalactic signals — but because the foreground originates locally (within
+foreground along with extragalactic signals â€” but because the foreground originates locally (within
 ~few hundred Mpc), while cosmological sources are at Gpc distances, the **relative** suppression
 differs:
 
-- **Local WD foreground:** D_local × GR_foreground (local factor, z << 1)
-- **Cosmological signal:** D_cosmo × GR_signal (cosmological factor, z ~ 1–5)
+- **Local WD foreground:** D_local \times GR_foreground (local factor, z << 1)
+- **Cosmological signal:** D_cosmo \times GR_signal (cosmological factor, z ~ 1â€“5)
 
 Since D_cosmo > D_local (Aether compensation activates at z > 0.3), the foreground is suppressed
 more than the cosmological signals in UQFF. This creates a net sensitivity improvement.
@@ -75,10 +75,10 @@ more than the cosmological signals in UQFF. This creates a net sensitivity impro
 | Parameter | Value |
 |-----------|-------|
 | Total WD binaries (Milky Way) | ~105 (simulation sample) |
-| Frequency range | 0.1 mHz – 30 mHz |
-| Distance range | 1 pc – 30 kpc |
+| Frequency range | 0.1 mHz â€“ 30 mHz |
+| Distance range | 1 pc â€“ 30 kpc |
 | Mean distance | ~8 kpc |
-| GW frequency at ISCO | f_GW = 2 × f_orb |
+| GW frequency at ISCO | f_GW = 2 \times f_orb |
 
 ### 2.2 Foreground Estimation Method
 
@@ -86,7 +86,7 @@ The confusion foreground power spectral density is estimated by summing the GW p
 binaries within the Milky Way:
 
 $$
-P_WD(f) = S_i h_i(f)2 / (4 × ?f)
+P_WD(f) = S_i h_i(f)2 / (4 \times ?f)
 $$
 
 where the sum is over all systems contributing to frequency bin f, and ?f is the frequency
@@ -100,22 +100,22 @@ resolution.
 
 | Model | Strain PSD P(f) at reference frequency | Reduction |
 |-------|----------------------------------------|-----------|
-| Standard GR | P_GR = 4.31 × 10-41 | — |
-| UQFF | P_UQFF = 1.67 × 10-41 | 61.4% |
+| Standard GR | P_GR = 4.31 \times 10-41 | â€” |
+| UQFF | P_UQFF = 1.67 \times 10-41 | 61.4% |
 
 The 61.4% foreground reduction is larger than the simple D2 factor (D2 = 0.3332 = 0.111 would give
-88.9% reduction) because the local WD damping uses D_local ˜ 0.62 (the z ˜ 0 intermediate regime)
+88.9% reduction) because the local WD damping uses D_local \approx 0.62 (the z \approx 0 intermediate regime)
 rather than D = 0.333.
 
 $$
 \begin{aligned}
-  & UQFF_foreground = D_local2 × GR_foreground \\
-  & 1.67e-41 = D_local2 × 4.31e-41 \\
+  & UQFF_foreground = D_local2 \times GR_foreground \\
+  & 1.67e-41 = D_local2 \times 4.31e-41 \\
   & D_local = v(1.67/4.31) = v0.388 = 0.623
 \end{aligned}
 $$
 
-A local damping factor D_local ˜ 0.62 is consistent with the UQFF model at z << 0.3 where partial
+A local damping factor D_local \approx 0.62 is consistent with the UQFF model at z << 0.3 where partial
 Aether compensation is active.
 
 ### 3.2 Individually Resolved Binaries
@@ -140,21 +140,21 @@ The unresolved GR foreground is dominated by ~105 systems below the detection th
 The LISA sensitivity to extragalactic sources (z ~ 1 SMBH mergers) in UQFF is modified by two
 competing effects:
 
-1. **Signal suppression:** h_signal × D_cosmo = h_signal × 0.619 (38% strain reduction)
-2. **Foreground reduction:** P_noise ? P_noise × D_local2 = P_noise × 0.614 (61.4% noise reduction)
+1. **Signal suppression:** h_signal \times D_cosmo = h_signal \times 0.619 (38% strain reduction)
+2. **Foreground reduction:** P_noise ? P_noise \times D_local2 = P_noise \times 0.614 (61.4% noise reduction)
 
 Net SNR change for a source at z = 1:
 $$
 \begin{aligned}
-  & SNR(UQFF) / SNR(GR) = (h_signal × D_cosmo) / v(P_noise × D_local2) \\
+  & SNR(UQFF) / SNR(GR) = (h_signal \times D_cosmo) / v(P_noise \times D_local2) \\
   & = D_cosmo / D_local \\
   & = 0.619 / 0.623 \\
   & = 0.994
 \end{aligned}
 $$
 
-The WD foreground noise and signal are suppressed by nearly the same factor (D_cosmo ˜ D_local for z
-~ 0.5–1), leaving the net LISA sensitivity to cosmological sources almost unchanged from the pure
+The WD foreground noise and signal are suppressed by nearly the same factor (D_cosmo \approx D_local for z
+~ 0.5â€“1), leaving the net LISA sensitivity to cosmological sources almost unchanged from the pure
 signal-suppression case.
 
 ### 4.2 Window to High-Redshift Sources
@@ -209,7 +209,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
-> *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references
+> *Added by upgrade_{early\_whitepapers}.py (v4.75). This appendix cross-references
 > the production physics constants and master equations to enable reproducibility
 > against the current codebase state.*
 
@@ -217,9 +217,9 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ? | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
+| ? | 5.0 \times 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| ß_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| ÃŸ_i | 0.60â€“0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
@@ -227,19 +227,19 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 | ? | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete â€” 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| -S??·U?·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_{Ug1\_SOURCE}`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_{Ug2\_SOURCE}`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_{Ug3\_SOURCE}`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_{Ug4\_SOURCE}`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_{Ubi\_SOURCE}`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_{Um\_SOURCE}`4` / `compute_Um()` |
+| -S??\cdotU?\cdotE_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
 ?1=10-10, ?2=10-12, ?3=10-11, ?4=10-13 (free parameters, not yet empirically calibrated)
@@ -252,47 +252,47 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |--------|-------|-------------|
 | ?_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| ?? | 2p/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| ?? | 2p/(434\cdot365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + DPM-seeded base | Isolated stellar/BH systems |
-| **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | ß_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
+| **Resonant** | 5 resonance frequencies (aDPM, aTHz, \ldots) | Multi-scale field interactions |
+| **Buoyant** | ÃŸ_i \times Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um \times (1+1013\cdotf_H) | Magnetars, SCm critical-density regime |
 
-*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
+*Implementation status: all 4 modes operational in `MAIN_{1\_CoAnQi}.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
 
 ---
 
-## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+## Â§A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
-### §A.1 Sector Classification
+### Â§A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_lagrangian_derivation.py`).
+`uqff_{lagrangian\_derivation}.py`).
 
-### §A.2 Lagrangian Density
+### Â§A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 Â§2) and:
 
-$$V(\phi_{\rm NS}) = \frac{1}{2} m^2 \phi_{\rm NS}^2 + \frac{\lambda}{4!} \phi_{\rm NS}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm NS}$$
+$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
 
-### §A.3 Euler-Lagrange Equation of Motion
+### Â§A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
 
-### §A.4 Cosmogenesis Linkage Chain
+### Â§A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -301,42 +301,42 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
-## §B. VDS/DVP/BSH Deep Synthesis
+## Â§B. VDS/DVP/BSH Deep Synthesis
 
-### §B.1 Vacuum Density Series (VDS)
+### Â§B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.171$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.171$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
-### §B.2 Dipole Vortex Primes (DVP)
+### Â§B.2 Dipole Vortex Primes (DVP)
 
 The DVP encoding maps the system's characteristic parameter onto the prime lattice:
 
-$$p_{\rm DVP} = 59, \quad n_{\rm channel} = 17/26$$
+$$p_{\mathrm{DVP}} = 59, \quad n_{\mathrm{channel}} = 17/26$$
 
-Since $p_{\rm DVP} = 59$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
+Since $p_{\mathrm{DVP}} = 59$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\mathrm{UA}}' + f_{\mathrm{SCm}} = 1)$ constrains which primes are accessible at each atomic number.
 
-### §B.3 Buoyancy Saturation Harmonics (BSH)
+### Â§B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
-connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
+connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
-### §B.4 Production-Scale Consistency
+### Â§B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.171 | PASS Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
+| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.171 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | ? decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
@@ -345,38 +345,38 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## Â§SM Anchors â€” Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant a | UQFF reproduces a via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant ? | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | ? = 0.0005/day ? G_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Cosmological constant ? | 1.1\times10-52 m-2 (UQFF vacuum term) | 1.114\times10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | ? = 0.0005/day ? G_p suppression | < 4.17\times10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
 produce measurable deviations from GR at scales where vacuum condensate density ?_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFFâ€“SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000â€“1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> Sessions 204â€“225 extensions (PAPER_1000â€“1081). Added by
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
+| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1038 | White Dwarf Crystallization Buoyancy |
@@ -389,16 +389,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
+> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -407,8 +407,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -416,7 +416,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -427,8 +427,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -447,6 +447,6 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
-`uqff_mock_theta_pi_kernel.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
+`uqff_{mock\_theta\_pi\_kernel}.wl`).*
 

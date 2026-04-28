@@ -59,7 +59,7 @@ $$E_{\text{KER}} = h \cdot f_{\text{THz}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{r
 
 The 26-level ladder maps to a dimensional reduction cascade:
 
-$$26D \xrightarrow{k=1} 25D \xrightarrow{k=2} 24D \xrightarrow{\cdots} 4D$$
+$$26D \xrightarrow{k=1} 25D \xrightarrow{k=2} 24D \xrightarrow{\cdot s} 4D$$
 
 Each reduction integrates out one compact dimension weighted by $\rho_k$, ultimately yielding the 4D spacetime vacuum energy density consistent with the cosmological constant $\Lambda$.
 
@@ -75,7 +75,7 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \rho_{\text{
 
 ## References
 
-1. SCm vacuum manifold: `scm_vacuum_manifold.py`
-2. VDS proof: `vds_dvp_bsh_symbolic_proofs.py`
+1. SCm vacuum manifold: `scm_{vacuum\_manifold}.py`
+2. VDS proof: `vds_{dvp\_bsh\_symbolic\_proofs}.py`
 3. PAPER_1080: Ramanujan Binomial Expansion Proof
 4. Holmlid KER validation: PAPER_1136, PAPER_1133

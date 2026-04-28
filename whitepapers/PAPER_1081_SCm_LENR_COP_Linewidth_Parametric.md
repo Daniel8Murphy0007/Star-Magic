@@ -4,7 +4,7 @@
 
 **Author:** Daniel Murphy
 **Date:** 2026
-**Module:** `scm_lenr_cop_gamma.py`
+**Module:** `scm_{lenr\_cop\_gamma}.py`
 
 ---
 
@@ -86,7 +86,7 @@ The $\Gamma$-dependent COP reveals:
 
 1. Kozima, H. "The Science of the Cold Fusion Phenomenon" (2006)
 2. Fleischmann, M. & Pons, S. J. Electroanal. Chem. 261 (1989)
-3. SCm phonon framework: `scm_phonon_linewidth.py`
+3. SCm phonon framework: `scm_{phonon\_linewidth}.py`
 4. Widom-Larsen LENR: PAPER_643
 
 
@@ -145,7 +145,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -167,7 +167,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

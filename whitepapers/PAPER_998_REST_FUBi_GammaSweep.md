@@ -1,18 +1,18 @@
 ---
 paper_id: PAPER_998
-title: "REST F_U_Bi Gamma Sweep Endpoints — /api/fubi/inside-outside + /api/fubi/gamma-sweep"
+title: "REST F_{U\_Bi} Gamma Sweep Endpoints — /api/fubi/inside-outside + /api/fubi/gamma-sweep"
 session: 218
 date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [REST, API, endpoint, F_U_Bi, Gamma, sweep, inside-outside]
+tags: [REST, API, endpoint, F_{U\_Bi}, Gamma, sweep, inside-outside]
 crosslinks: [PAPER_988, PAPER_989, PAPER_995]
 calibration: {port: 3141, routes: 18, new_routes: 2}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_998: REST F_U_Bi Gamma Sweep Endpoints
+# PAPER_998: REST F_{U\_Bi} Gamma Sweep Endpoints
 
 ## Abstract
 
@@ -20,7 +20,7 @@ We add two new REST API endpoints to `uqff_server.js` (Port 3141), bringing the 
 
 ## 1. POST /api/fubi/inside-outside
 
-Computes the F_U_Bi inside-to-outside buoyancy mass portion.
+Computes the F_{U\_Bi} inside-to-outside buoyancy mass portion.
 
 ### Request
 
@@ -32,14 +32,14 @@ Computes the F_U_Bi inside-to-outside buoyancy mass portion.
 
 ```json
 {
-    "F_U_Bi": 2.33e40, "ratio": 0.606,
+    "F_{U\_Bi}": 2.33e40, "ratio": 0.606,
     "Ug": 5.93e-03, "Ub": -3.57e-03,
     "rho_SCm": 1.0e-10, "V_region": 1e48, "S26": 19.56
 }
 ## 2. POST /api/fubi/gamma-sweep 
-Computes the aggregate F_U_Bi_i across systems at multiple Γ values. 
+Computes the aggregate F_{U\_Bi\_i} across systems at multiple \Gamma values. 
 ### Requestjson
-{"gamma_THz_list": [0.01, 0.05, 0.1, 0.5, 1.0, 5.0, 10.0]}
+{"gamma_{THz\_list}": [0.01, 0.05, 0.1, 0.5, 1.0, 5.0, 10.0]}
 ```
 
 ### Response
@@ -62,7 +62,7 @@ File: `uqff_server.js`, routes 17–18. CP4 class #582.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -98,7 +98,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -188,14 +188,14 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 
 *5 cross-reference(s) identified.*

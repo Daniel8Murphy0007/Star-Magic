@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
-**Source:** SCm phonon gap implementation (agn_jet_power_curves.py)
+**Source:** SCm phonon gap implementation (agn_{jet\_power\_curves}.py)
 **Calculator:** MultiAGNJetPowerMonteCarloBatchCalc (CP4 #510)
 **CVW:** v2.0.0 compliant
 
@@ -70,13 +70,13 @@ $$
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `M_bh_Msun` | 8.86e8 | BH mass (solar masses) |
+| `M_{bh\_Msun}` | 8.86e8 | BH mass (solar masses) |
 | a_spin | 0.9 | Spin parameter |
 | B_field | 50 T | Magnetic field |
 | A_jet | 1.5 | Modulation amplitude |
-| `sigma_Gamma_THz` | 0.08 | sigma_Gamma |
-| `Gamma_mean_THz` | 1.25 | MC mean Gamma |
-| `Gamma_std_THz` | 0.15 | MC std dev |
+| `sigma_{Gamma\_THz}` | 0.08 | sigma_Gamma |
+| `Gamma_{mean\_THz}` | 1.25 | MC mean Gamma |
+| `Gamma_{std\_THz}` | 0.15 | MC std dev |
 | n_samples | 100000 | MC sample count |
 
 ---
@@ -107,7 +107,7 @@ factor while P_BZ provides the mass-dependent baseline.
 
 - PAPER_920: Monte Carlo jet power sampling (Session 210c)
 - PAPER_925: Quasar jet phonon modulation M_jet(Gamma)
-- agn_jet_power_curves.py: 3-class standalone module
+- agn_{jet\_power\_curves}.py: 3-class standalone module
 
 ---
 
@@ -116,7 +116,7 @@ factor while P_BZ provides the mass-dependent baseline.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -166,7 +166,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -223,14 +223,14 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ latti
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

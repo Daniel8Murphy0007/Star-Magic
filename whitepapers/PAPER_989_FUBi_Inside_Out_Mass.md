@@ -1,18 +1,18 @@
 ---
 paper_id: PAPER_989
-title: "F_U_Bi Inside-to-Outside Buoyancy Mass Portion"
+title: "F_{U\_Bi} Inside-to-Outside Buoyancy Mass Portion"
 session: 218
 date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [F_U_Bi, buoyancy, mass, inside-out, SCm, vacuum, ratio]
+tags: [F_{U\_Bi}, buoyancy, mass, inside-out, SCm, vacuum, ratio]
 crosslinks: [PAPER_979, PAPER_990, PAPER_994]
-calibration: {F_U_Bi_solar: 2.33e40, ratio: 0.606}
+calibration: {F_U_{Bi\_solar}: 2.33e40, ratio: 0.606}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_989: F_U_Bi Inside-to-Outside Buoyancy Mass Portion
+# PAPER_989: F_{U\_Bi} Inside-to-Outside Buoyancy Mass Portion
 
 ## Abstract
 
@@ -51,7 +51,7 @@ $F_{U,\text{Bi}} > 0$ always (mass flows inside $\to$ outside), while $F_{U,\tex
 
 ## 4. Implementation
 
-File: `fubi_inside_outside.py`, class `FUBiInsideOutsideCalc`. CP4 class #573.
+File: `fubi_{inside\_outside}.py`, class `FUBiInsideOutsideCalc`. CP4 class #573.
 
 ---
 
@@ -60,7 +60,7 @@ File: `fubi_inside_outside.py`, class `FUBiInsideOutsideCalc`. CP4 class #573.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -190,7 +190,7 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -201,7 +201,7 @@ BSH timescale: $10^4$ yr
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1029 | Barocentric Earth Orbital Buoyancy |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

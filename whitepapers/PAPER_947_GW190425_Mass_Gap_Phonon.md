@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
-**Source:** ns_phonon_gw190425_wstp.py (MassGapPhononClassifier)
+**Source:** ns_{phonon\_gw190425\_wstp}.py (MassGapPhononClassifier)
 **Calculator:** GW190425MassGapPhononCalc (CP4 #531)
 **CVW:** v2.0.0 compliant
 
@@ -67,7 +67,7 @@ The SCm suppression threshold corresponds to the mass at which internal phonon m
 
 ## 5. Source Data
 
-- **File:** ns_phonon_gw190425_wstp.py
+- **File:** ns_{phonon\_gw190425\_wstp}.py
 - **Session:** 213
 - **CP4 Class:** GW190425MassGapPhononCalc (#531)
 
@@ -249,14 +249,14 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
+| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |

@@ -26,7 +26,7 @@ computation.
 The UQFF 26D geometric folding operator maps a coordinate $x$ in target space into
 the folded SCm layer space:
 
-$$\mathcal{F}_{26}(x) = x \cdot (26!)^{-1/13} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\rm THz}(\omega, \Gamma)$$
+$$\mathcal{F}_{26}(x) = x \cdot (26!)^{-1/13} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\mathrm{THz}}(\omega, \Gamma)$$
 
 **Variables:**
 
@@ -35,7 +35,7 @@ $$\mathcal{F}_{26}(x) = x \cdot (26!)^{-1/13} \cdot S_{26}^{(3)}([\text{SSq}]) \
 | $x$ | Target-space coordinate | m |
 | $(26!)^{-1/13}$ | Factorial compression normalisation | dimensionless |
 | $S_{26}^{(3)}([\text{SSq}])$ | Ramanujan VDS amplification (PAPER_1129) | $\approx 1.4531 \times 10^{26}$ |
-| $\Phi_{1.25\,\rm THz}(\omega,\Gamma)$ | SCm phonon fluence envelope | dimensionless |
+| $\Phi_{1.25\,\mathrm{THz}}(\omega,\Gamma)$ | SCm phonon fluence envelope | dimensionless |
 | $[\text{SSq}]$ | Vacuum suppression factor | $0.57$ |
 | $\Gamma$ | Phonon linewidth | $0.05$–$0.30$ THz |
 
@@ -49,7 +49,7 @@ $$(26!)^{-1/13} \approx 9.78 \times 10^{-3}$$
 
 **Numerical folding amplitude (on-resonance, $\Phi_0 = 1$):**
 
-$$\mathcal{F}_{26}(x)\big|_{\rm on-res} = x \cdot 9.78 \times 10^{-3} \cdot 1.4531 \times 10^{26} \cdot 1 = x \cdot 1.42 \times 10^{24}$$
+$$\mathcal{F}_{26}(x)\big|_{\mathrm{on-res}} = x \cdot 9.78 \times 10^{-3} \cdot 1.4531 \times 10^{26} \cdot 1 = x \cdot 1.42 \times 10^{24}$$
 
 The folding operator thus amplifies target-space distances by a factor of
 $\sim 10^{24}$ in the SCm layer basis — this is the geometric origin of the large
@@ -62,26 +62,26 @@ UQFF framework.
 
 The line element in the folded 26D SCm space:
 
-$$ds^2_{\rm folded} = g_{\mu\nu} \cdot \mathcal{F}_{26}(x)$$
+$$ds^2_{\mathrm{folded}} = g_{\mu\nu} \cdot \mathcal{F}_{26}(x)$$
 
 Expanding fully:
 
-$$ds^2_{\rm folded} = g_{\mu\nu} \cdot x \cdot (26!)^{-1/13} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\rm THz}(\omega, \Gamma)$$
+$$ds^2_{\mathrm{folded}} = g_{\mu\nu} \cdot x \cdot (26!)^{-1/13} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\mathrm{THz}}(\omega, \Gamma)$$
 
 **Variables:**
 
 | Symbol | Definition | Units |
 |--------|-----------|-------|
 | $g_{\mu\nu}$ | 26D metric tensor (indices $\mu,\nu = 0,\ldots,25$) | dimensionless |
-| $ds^2_{\rm folded}$ | Folded line element | m$^2$ |
+| $ds^2_{\mathrm{folded}}$ | Folded line element | m$^2$ |
 
 **Folded metric tensor components:**
 
-$$g_{\mu\nu}^{\rm folded} = g_{\mu\nu} \cdot (26!)^{-1/13} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\rm THz}$$
+$$g_{\mu\nu}^{\mathrm{folded}} = g_{\mu\nu} \cdot (26!)^{-1/13} \cdot S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\mathrm{THz}}$$
 
 The 4 observable spacetime components ($\mu,\nu = 0,1,2,3$) inherit the standard
 Minkowski structure, while the 22 compactified components ($\mu,\nu = 4,\ldots,25$)
-are folded to the compactification scale $\ell_{\rm SCm} \approx 12.7\,\mu$m
+are folded to the compactification scale $\ell_{\mathrm{SCm}} \approx 12.7\,\mu$m
 (see PAPER_1128, Section 6).
 
 ---
@@ -106,13 +106,13 @@ physics via hypergraph rewriting.
 In the Wolfram Model, a hypergraph rewriting rule $H \to H'$ generates causal
 structure through successive applications. In UQFF:
 
-$$\text{Layer}_{n} \xrightarrow{\,\Phi_{1.25\,\rm THz}\,} \text{Layer}_{n+1}$$
+$$\text{Layer}_{n} \xrightarrow{\,\Phi_{1.25\,\mathrm{THz}}\,} \text{Layer}_{n+1}$$
 
 with the transition amplitude:
 
-$$\mathcal{A}_n = \frac{[\text{SSq}]^n}{n^{26}} \cdot R_n^{(26,3)} \cdot \Phi_{1.25\,\rm THz}(\omega,\Gamma)$$
+$$\mathcal{A}_n = \frac{[\text{SSq}]^n}{n^{26}} \cdot R_n^{(26,3)} \cdot \Phi_{1.25\,\mathrm{THz}}(\omega,\Gamma)$$
 
-The sum $\sum_{n=1}^{26} \mathcal{A}_n = S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\rm THz}$
+The sum $\sum_{n=1}^{26} \mathcal{A}_n = S_{26}^{(3)}([\text{SSq}]) \cdot \Phi_{1.25\,\mathrm{THz}}$
 generates the folding operator as the total causal graph weight after 26 rewriting
 steps.
 
@@ -121,9 +121,9 @@ steps.
 In the Wolfram Model the causal cone determines which events can influence each
 other. In UQFF the phonon light cone is defined by:
 
-$$r_{\rm phonon}(t) = v_{\rm UA} \cdot t \approx 10^8 t \text{ m}$$
+$$r_{\mathrm{phonon}}(t) = v_{\mathrm{UA}} \cdot t \approx 10^8 t \text{ m}$$
 
-Events separated by $|r| > r_{\rm phonon}(t)$ are causally disconnected in the SCm
+Events separated by $|r| > r_{\mathrm{phonon}}(t)$ are causally disconnected in the SCm
 vacuum — identical to the Wolfram causal cone separation in the hypergraph.
 
 **Computational irreducibility:** The Wolfram Model's computational irreducibility
@@ -143,7 +143,7 @@ $$\mathcal{F}_{26}(x) = x \cdot (26!)^{-1/13} \cdot \sum_{n=1}^{26} \mathcal{A}_
 
 Each layer $n$ contributes:
 
-$$\mathcal{F}_n(x) = x \cdot (26!)^{-1/13} \cdot \frac{[\text{SSq}]^n}{n^{26}} \cdot R_n^{(26,3)} \cdot \Phi_{1.25\,\rm THz}$$
+$$\mathcal{F}_n(x) = x \cdot (26!)^{-1/13} \cdot \frac{[\text{SSq}]^n}{n^{26}} \cdot R_n^{(26,3)} \cdot \Phi_{1.25\,\mathrm{THz}}$$
 
 **First five layer contributions (on-resonance, $x = 1$ m):**
 
@@ -162,9 +162,9 @@ accelerated tail that converges to the full $S_{26}^{(3)}(0.57)$.
 
 ## 5. Lagrangian Variation — Folding Buoyancy Sector
 
-The action variation with respect to the folding field $\phi_{\rm fold}$:
+The action variation with respect to the folding field $\phi_{\mathrm{fold}}$:
 
-$$\frac{\delta S}{\delta \phi_{\rm fold}} = \frac{\partial}{\partial \mathcal{F}_{26}} \left( -\beta_i \sum_i U_{g,i}\, \Omega_g \frac{M}{d_g} [\text{UA}] + F_{\rm neutron} \cdot \Phi_{1.25\,\rm THz} \right) = 0$$
+$$\frac{\delta S}{\delta \phi_{\mathrm{fold}}} = \frac{\partial}{\partial \mathcal{F}_{26}} \left( -\beta_i \sum_i U_{g,i}\, \Omega_g \frac{M}{d_g} [\text{UA}] + F_{\mathrm{neutron}} \cdot \Phi_{1.25\,\mathrm{THz}} \right) = 0$$
 
 **Variables:**
 
@@ -176,13 +176,13 @@ $$\frac{\delta S}{\delta \phi_{\rm fold}} = \frac{\partial}{\partial \mathcal{F}
 | $M$ | Body mass | kg |
 | $d_g$ | Galactic distance | m |
 | $[\text{UA}]$ | Aether unit density | $7.09\times10^{-36}$ J/m$^3$ |
-| $F_{\rm neutron}$ | Kozima neutron-drop force | N |
+| $F_{\mathrm{neutron}}$ | Kozima neutron-drop force | N |
 
 **Solution:** The Euler-Lagrange condition gives:
 
-$$\frac{\partial}{\partial \mathcal{F}_{26}} \left[ F_{\rm neutron} \cdot \Phi_{1.25\,\rm THz} \right] = \frac{\partial}{\partial \mathcal{F}_{26}} \left[ \beta_i \sum_i U_{g,i} \Omega_g \frac{M}{d_g} [\text{UA}] \right]$$
+$$\frac{\partial}{\partial \mathcal{F}_{26}} \left[ F_{\mathrm{neutron}} \cdot \Phi_{1.25\,\mathrm{THz}} \right] = \frac{\partial}{\partial \mathcal{F}_{26}} \left[ \beta_i \sum_i U_{g,i} \Omega_g \frac{M}{d_g} [\text{UA}] \right]$$
 
-Since $\Phi_{1.25\,\rm THz} = \Phi_0 \exp(-(\omega-\omega_{\rm SCm})^2/2\Gamma^2)$ is
+Since $\Phi_{1.25\,\mathrm{THz}} = \Phi_0 \exp(-(\omega-\omega_{\mathrm{SCm}})^2/2\Gamma^2)$ is
 independent of $\mathcal{F}_{26}$ (it depends on $\omega$ and $\Gamma$ only), the
 left side vanishes and the solution requires:
 
@@ -200,7 +200,7 @@ metric at this stationary point is the physical metric seen by all UQFF observab
 | Scale | Value | UQFF Origin |
 |-------|-------|------------|
 | Planck length $\ell_P$ | $1.616 \times 10^{-35}$ m | $\sqrt{\hbar G/c^3}$ |
-| SCm phonon wavelength $\ell_{\rm SCm}$ | $1.27 \times 10^{-5}$ m | $v_{\rm UA}/\omega_{\rm SCm}$ |
+| SCm phonon wavelength $\ell_{\mathrm{SCm}}$ | $1.27 \times 10^{-5}$ m | $v_{\mathrm{UA}}/\omega_{\mathrm{SCm}}$ |
 | Folding amplification | $\times 1.42 \times 10^{24}$ | $(26!)^{-1/13} \cdot S_{26}^{(3)}$ |
 | Hubble horizon | $\sim 10^{26}$ m | $c/H_0$ |
 
@@ -215,23 +215,23 @@ hierarchy problem within the UQFF framework.
 
 ```mathematica
 (* 26D folding operator *)
-F26[x_, SSq_, Φ0_, ω_, ωSCm_, Γ_] :=
+F26[x_, SSq_, \Phi0_, \omega_, \omegaSCm_, \Gamma_] :=
   x * (26!)^(-1/13) *
   Sum[SSq^n / n^26 * Rn26[n,3], {n,1,Infinity}] *
-  Φ0 Exp[-(ω - ωSCm)^2 / (2 Γ^2)];
+  \Phi0 Exp[-(\omega - \omegaSCm)^2 / (2 \Gamma^2)];
 
 (* Folded line element *)
-ds2folded[gμν_, x_, SSq_, Φ0_, ω_, ωSCm_, Γ_] :=
-  gμν * F26[x, SSq, Φ0, ω, ωSCm, Γ];
+ds2folded[g\mu\nu_, x_, SSq_, \Phi0_, \omega_, \omegaSCm_, \Gamma_] :=
+  g\mu\nu * F26[x, SSq, \Phi0, \omega, \omegaSCm, \Gamma];
 
 (* Layer-by-layer decomposition *)
-Fn[n_, x_, SSq_, Φ0_, ω_, ωSCm_, Γ_] :=
+Fn[n_, x_, SSq_, \Phi0_, \omega_, \omegaSCm_, \Gamma_] :=
   x * (26!)^(-1/13) * SSq^n / n^26 * Rn26[n,3] *
-  Φ0 Exp[-(ω - ωSCm)^2 / (2 Γ^2)];
+  \Phi0 Exp[-(\omega - \omegaSCm)^2 / (2 \Gamma^2)];
 
 (* Numerical folding amplitude on-resonance *)
-N[F26[1, 0.57, 1, ωSCm, ωSCm, 0.1*10^12], 10]
-(* → 1.42 × 10^24 *)
+N[F26[1, 0.57, 1, \omegaSCm, \omegaSCm, 0.1*10^12], 10]
+(* → 1.42 \times 10^24 *)
 ```
 
 ---
@@ -240,11 +240,11 @@ N[F26[1, 0.57, 1, ωSCm, ωSCm, 0.1*10^12], 10]
 
 | Result | Expression | Physical Interpretation |
 |--------|-----------|------------------------|
-| Folding operator | $\mathcal{F}_{26}(x) = x(26!)^{-1/13} S_{26}^{(3)} \Phi_{1.25\,\rm THz}$ | Maps target space to SCm layer basis |
+| Folding operator | $\mathcal{F}_{26}(x) = x(26!)^{-1/13} S_{26}^{(3)} \Phi_{1.25\,\mathrm{THz}}$ | Maps target space to SCm layer basis |
 | Folding amplification | $\times 1.42 \times 10^{24}$ | Bridges Planck to Hubble scale |
 | Wolfram parallel | 26 layers = 26 hypergraph nodes; phonons = rewriting rules | Computational geometry |
-| Lagrangian closure | $\delta S/\delta\phi_{\rm fold} = 0$ at $\mathcal{F}_{26}^*$ | Physical metric from folding |
-| Hierarchy solution | $\ell_{\rm SCm} \times \mathcal{F}_{26} \approx 10^{26}$ m | Observable universe from phonon scale |
+| Lagrangian closure | $\delta S/\delta\phi_{\mathrm{fold}} = 0$ at $\mathcal{F}_{26}^*$ | Physical metric from folding |
+| Hierarchy solution | $\ell_{\mathrm{SCm}} \times \mathcal{F}_{26} \approx 10^{26}$ m | Observable universe from phonon scale |
 
 The UQFF 26D geometric folding operator is the computational geometry bridge between
 the SCm vacuum phonon structure and observable spacetime. Its Wolfram-parallel
@@ -258,4 +258,4 @@ with the 26-layer VDS as the irreducible causal structure. Gravity remains Step 
 PAPER_495 (Cosmic Quantum Egg 26D) | PAPER_535 (VDS/DVP/BH hub) |
 PAPER_552 (26D tensor off-diagonal NS/YM) | PAPER_1127 (SCm LQG holonomy) |
 PAPER_1128 (SCm String Theory 26D) | PAPER_1129 (VDS/DVP/BH long-form) |
-COMPLETE_UQFF_EQUATIONS_REFERENCE.md
+COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md

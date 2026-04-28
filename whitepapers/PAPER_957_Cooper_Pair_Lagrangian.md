@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
-**Source:** uqff_lagrangian_derivation.py §10 (COOPER_PAIR_LAGRANGIAN)
+**Source:** uqff_{lagrangian\_derivation}.py §10 (COOPER_{PAIR\_LAGRANGIAN})
 **Calculator:** CooperPairLagrangianCalc (CP4 #541)
 **CVW:** v2.0.0 compliant
 
@@ -59,7 +59,7 @@ $$\Gamma_text{LENR} \propto \Delta^2 \cdot \exp!\left(-\frac{E_\text{Coulomb}}{\
 
 ## 6. Source Data
 
-- **File:** uqff_lagrangian_derivation.py §10
+- **File:** uqff_{lagrangian\_derivation}.py §10
 - **Session:** 214
 - **CP4 Class:** CooperPairLagrangianCalc (#541)
 
@@ -148,7 +148,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -219,7 +219,7 @@ LENR rate saturation: $\tanh(\Delta/E_0) \cdot S_{26}$.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

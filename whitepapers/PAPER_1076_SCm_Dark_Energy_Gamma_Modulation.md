@@ -1,5 +1,5 @@
 ---
-title: "SCm Dark Energy with Phonon Linewidth Γ-Modulation"
+title: "SCm Dark Energy with Phonon Linewidth \Gamma-Modulation"
 paper_id: PAPER_1076
 session: 224
 author: Daniel Murphy
@@ -57,7 +57,7 @@ $$
 w(z) = -1 + \frac{1}{3}\frac{d\ln\Phi(\Gamma(t(z)))}{d\ln a}
 $$
 
-| Redshift | w_SCm | w_$\Lambda$CDM | $\delta$w |
+| Redshift | w_SCm | $w_{\Lambda}$CDM | $\delta$w |
 |----------|-------|--------|-----|
 | z = 0 | -1.0077 | -1.0 | 0.0077 |
 | z = 1 | -1.0037 | -1.0 | 0.0037 |
@@ -116,9 +116,9 @@ distinguishing SCm from quintessence models ($w > -1$).
 
 ## References
 
-- `scm_dark_energy_enet_gamma.py`: Implementation (10/10 tests pass)
-- `et_full_lagrangian.py`: E_net(t) base (without $\Gamma$ coupling)
-- `production_scaling_v17.py`: Kernels `kernel_enet_gamma_coupled`, `kernel_dark_energy_eos_w0`
+- `scm_{dark\_energy\_enet\_gamma}.py`: Implementation (10/10 tests pass)
+- `et_{full\_lagrangian}.py`: E_net(t) base (without $\Gamma$ coupling)
+- `production_{scaling\_v17}.py`: Kernels `kernel_{enet\_gamma\_coupled}`, `kernel_{dark\_energy\_eos\_w0}`
 - PAPER_877: Three-Assumption UQFF Cosmogenesis
 - PAPER_1073: SCm Inflation Phonon-Driven
 
@@ -170,7 +170,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -192,7 +192,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

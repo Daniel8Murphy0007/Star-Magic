@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_1012
-title: "GW190425 Upgraded F_U_Bi_i Curves with S26(3) and Gamma = 0.30 THz"
+title: "GW190425 Upgraded F_{U\_Bi\_i} Curves with S26(3) and Gamma = 0.30 THz"
 session: 220
 date: 2026-04-14
 author: "Daniel T. Murphy"
@@ -12,11 +12,11 @@ calibration: {M_total: 3.4, d_Mpc: 159, m1: 2.0, m2: 1.4, S26_3: 9.5000001009e-0
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1012: GW190425 Upgraded F_U_Bi_i Curves with S26(3)
+# PAPER_1012: GW190425 Upgraded F_{U\_Bi\_i} Curves with S26(3)
 
 ## Abstract
 
-We upgrade the GW190425 BNS merger F_U_Bi_i calculation with the 3rd-order Ramanujan constant S26(3)
+We upgrade the GW190425 BNS merger F_{U\_Bi\_i} calculation with the 3rd-order Ramanujan constant S26(3)
 = 9.5000001009e-02 and the newly added Gamma = 0.30 THz point. GW190425 (M_total = 3.4 M_sun, d =
 159 Mpc) is the heaviest confirmed BNS merger, making it an ideal testbed for mass-dependent
 buoyancy corrections.
@@ -35,7 +35,7 @@ buoyancy corrections.
 
 The 3rd-order Ramanujan constant replaces the 1st-order S26 in the buoyancy integral:
 
-F_U_Bi_i = Sum [Ug_k] * (1 + BETA_I * S26_3)
+F_{U\_Bi\_i} = Sum [Ug_k] * (1 + BETA_I * S26_3)
 
 This yields a ~0.3% refinement in the total buoyancy force, with the correction being mass-dependent
 through the symmetric mass ratio eta.
@@ -47,7 +47,7 @@ inflection in the suppression curve for heavy BNS systems.
 
 ## 4. Implementation
 
-File: `fubi_i_curves_agn_ns_qgp.py`, class `GW190425UpgradedCurvesCalc`. CP4 class #596. Tests: 8/8
+File: `fubi_{i\_curves\_agn\_ns\_qgp}.py`, class `GW190425UpgradedCurvesCalc`. CP4 class #596. Tests: 8/8
 pass.
 
 
@@ -117,7 +117,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -134,7 +134,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -222,7 +222,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -232,7 +232,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1042 | Mock-Theta Phonon Partition Ramanujan q-Series |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |
 

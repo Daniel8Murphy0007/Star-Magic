@@ -16,7 +16,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — SMC Star-Forming Nebula
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122
-**Source:** grok_share_dc707f5d3.txt (Doc 71/76 — NGC346UQFFModule, "MUGE NGC 346 Nebula")
+**Source:** grok_{share\_dc707f5d3}.txt (Doc 71/76 — NGC346UQFFModule, "MUGE NGC 346 Nebula")
 **Classification:** FIRST MUGE UQFF for NGC 346 SMC star-forming region; FIRST Ug3 gravitational
 collapse protostar term; FIRST UQFF blueshifted quantum wave (v_rad = -10 km/s) in quantum term;
 FIRST pseudo-monopole cluster entanglement via Ugi
@@ -58,26 +58,26 @@ advances framework).
 
 ### 2.2 Protostar Formation Gravitational Equation
 
-$$g_{\rm NGC346}(r, t) = \frac{G M_{\rm sf}(t)}{r^2}\!\left(1 + H_z t\right)\!\left(1 - \frac{B}{B_{\rm crit}}\right)\!\left(1 + F_{\rm env}(t)\right)$$
-$$+ U_{g3,\rm collapse} + \sum_i U_{gi,\rm entangle} + \frac{\Lambda c^2}{3} + U_i + g_{\rm quantum,\rm blueshift} + g_{\rm fluid} + g_{\rm DM}$$
+$$g_{\mathrm{NGC346}}(r, t) = \frac{G M_{\mathrm{sf}}(t)}{r^2}\!\left(1 + H_z t\right)\!\left(1 - \frac{B}{B_{\mathrm{crit}}}\right)\!\left(1 + F_{\mathrm{env}}(t)\right)$$
+$$+ U_{g3,\mathrm{collapse}} + \sum_i U_{gi,\mathrm{entangle}} + \frac{\Lambda c^2}{3} + U_i + g_{\mathrm{quantum,\mathrm{blueshift}}} + g_{\mathrm{fluid}} + g_{\mathrm{DM}}$$
 
 ### 2.3 Ug3 Gravitational Collapse Term (Protostar Formation)
 
 The Ug3 term models the gravitational collapse driver for protostar formation:
 
-$$U_{g3,\rm collapse} = \frac{G M_{\rm proto}}{r_{\rm Jeans}^2}$$
+$$U_{g3,\mathrm{collapse}} = \frac{G M_{\mathrm{proto}}}{r_{\mathrm{Jeans}}^2}$$
 
-Where $r_{\rm Jeans} = \sqrt{15 k_B T / (4\pi G \rho_{\rm gas} m_H)}$ is the Jeans length. This is the **first explicit UQFF protostellar collapse term**, reducing the multibody protocluster to a Jeans-scale gravitational driver.
+Where $r_{\mathrm{Jeans}} = \sqrt{15 k_B T / (4\pi G \rho_{\mathrm{gas}} m_H)}$ is the Jeans length. This is the **first explicit UQFF protostellar collapse term**, reducing the multibody protocluster to a Jeans-scale gravitational driver.
 
 ### 2.4 Ugi Cluster Entanglement
 
 NGC 346's ~50,000 YSOs are modeled as quantum-entangled gravitational sources through the Ugi sum:
 
-$$\sum_i U_{gi} = U_{g1} + U_{g2} + U_{g3,\rm collapse} + U_{g4,\rm react} + U_{\rm pseudo}$$
+$$\sum_i U_{gi} = U_{g1} + U_{g2} + U_{g3,\mathrm{collapse}} + U_{g4,\mathrm{react}} + U_{\mathrm{pseudo}}$$
 
-Where $U_{\rm pseudo}$ = pseudo-monopole entanglement term:
+Where $U_{\mathrm{pseudo}}$ = pseudo-monopole entanglement term:
 
-$$U_{\rm pseudo} = k_{\rm monopole} \cdot \frac{N_{\rm YSO}}{r^2}$$
+$$U_{\mathrm{pseudo}} = k_{\mathrm{monopole}} \cdot \frac{N_{\mathrm{YSO}}}{r^2}$$
 
 This models the collective quantum gravitational communication between the ~50,000 YSOs as a
 pseudo-monopole network — the **first UQFF cluster entanglement term** for a distributed
@@ -87,30 +87,30 @@ star-forming complex.
 
 The blueshift of the infalling gas (v_rad = -10 km/s) modifies the quantum wavefunction frequency:
 
-$$k_{\rm blueshift} = \frac{2\pi}{\lambda_{\rm dB}} \cdot \left(1 + \frac{|v_{\rm rad}|}{c}\right)$$
+$$k_{\mathrm{blueshift}} = \frac{2\pi}{\lambda_{\mathrm{dB}}} \cdot \left(1 + \frac{|v_{\mathrm{rad}}|}{c}\right)$$
 
-$$\psi_{\rm total}(r,t) = A e^{-r^2/(2\sigma^2)} e^{i(k_{\rm blueshift} r - \omega t)}$$
+$$\psi_{\mathrm{total}}(r,t) = A e^{-r^2/(2\sigma^2)} e^{i(k_{\mathrm{blueshift}} r - \omega t)}$$
 
-$$g_{\rm quantum,blueshift} = \frac{\hbar}{\sqrt{\Delta x \cdot \Delta p}} \cdot |\psi|^2 \cdot \frac{2\pi}{t_{\rm Hubble}}$$
+$$g_{\mathrm{quantum,blueshift}} = \frac{\hbar}{\sqrt{\Delta x \cdot \Delta p}} \cdot |\psi|^2 \cdot \frac{2\pi}{t_{\mathrm{Hubble}}}$$
 
 The blueshift factor (1 + |v_rad|/c) amplifies the de Broglie wavenumber, increasing quantum
 gravitational coupling during infall — **first Doppler-corrected UQFF quantum term**.
 
 ### 2.6 F_env: Collapse + Wave Pressure
 
-$$F_{\rm collapse} = \frac{M_{\rm proto} G}{r_{\rm Jeans}^2} \cdot \frac{\mathrm{SFR}}{M_0}$$
+$$F_{\mathrm{collapse}} = \frac{M_{\mathrm{proto}} G}{r_{\mathrm{Jeans}}^2} \cdot \frac{\mathrm{SFR}}{M_0}$$
 
-$$F_{\rm wave} = \rho_{\rm gas} \cdot v_{\rm rad}^2 / r$$
+$$F_{\mathrm{wave}} = \rho_{\mathrm{gas}} \cdot v_{\mathrm{rad}}^2 / r$$
 
-$$F_{\rm env}(t) = F_{\rm collapse} + F_{\rm wave}$$
+$$F_{\mathrm{env}}(t) = F_{\mathrm{collapse}} + F_{\mathrm{wave}}$$
 
 ---
 
 ## 3. Equation Summary
 
-$$\boxed{g_{\rm NGC346}(r,t) = \frac{G M_{\rm sf}(t)}{r^2}(1+H_z t)(1-B/B_{\rm crit})(1+F_{\rm collapse}+F_{\rm wave}) + U_{g3}^{\rm collapse} + \sum_i U_{gi}^{\rm entangle} + \frac{\Lambda c^2}{3} + g_{\rm quantum}^{\rm blueshift} + g_{\rm fluid} + g_{\rm DM}}$$
+$$\boxed{g_{\mathrm{NGC346}}(r,t) = \frac{G M_{\mathrm{sf}}(t)}{r^2}(1+H_z t)(1-B/B_{\mathrm{crit}})(1+F_{\mathrm{collapse}}+F_{\mathrm{wave}}) + U_{g3}^{\mathrm{collapse}} + \sum_i U_{gi}^{\mathrm{entangle}} + \frac{\Lambda c^2}{3} + g_{\mathrm{quantum}}^{\mathrm{blueshift}} + g_{\mathrm{fluid}} + g_{\mathrm{DM}}}$$
 
-**Computed Result:** $g_{\rm NGC346} \approx 1 \times 10^{-10}\ \mathrm{m/s}^2$ — Ug3 collapse and quantum wave dominant; Ugi cluster entanglement framework advances UQFF to distributed protostellar systems.
+**Computed Result:** $g_{\mathrm{NGC346}} \approx 1 \times 10^{-10}\ \mathrm{m/s}^2$ — Ug3 collapse and quantum wave dominant; Ugi cluster entanglement framework advances UQFF to distributed protostellar systems.
 
 ---
 
@@ -118,16 +118,16 @@ $$\boxed{g_{\rm NGC346}(r,t) = \frac{G M_{\rm sf}(t)}{r^2}(1+H_z t)(1-B/B_{\rm c
 
 - **Protostar collapse driver**: Ug3 Jeans collapse term is the dominant gravitational term at the protostellar scale (r ~ 0.1 pc), overtaking the global g_base by 10$\times$.
 - **Cluster entanglement**: The 50,000 YSOs of NGC 346 communicate gravitationally through pseudo-monopole states — the UQFF models this as a collective Ugi network operating simultaneously across the 5 pc cluster volume.
-- **Blueshifted infall**: The v_rad = -10 km/s Doppler blueshift increases quantum coupling during the active star-formation phase, accelerating collapse via enhanced $k_{\rm blueshift}$.
+- **Blueshifted infall**: The v_rad = -10 km/s Doppler blueshift increases quantum coupling during the active star-formation phase, accelerating collapse via enhanced $k_{\mathrm{blueshift}}$.
 
 ---
 
 ## 5. C++ Module Reference
 
-**Module:** `NGC346UQFFModule` (root-level, Session 120 from grok_share_dc707f5d3.txt)
+**Module:** `NGC346UQFFModule` (root-level, Session 120 from grok_{share\_dc707f5d3}.txt)
 **Key method:** `computeG(double t)` — returns total g_NGC346 in m/s2
 **Unique feature:** Blueshifted quantum wavefunction, pseudo-monopole entanglement Ugi
-**Integration point:** MAIN_1_CoAnQi.cpp SMC star formation validation
+**Integration point:** MAIN_{1\_CoAnQi}.cpp SMC star formation validation
 
 ---
 
@@ -138,7 +138,7 @@ $$\boxed{g_{\rm NGC346}(r,t) = \frac{G M_{\rm sf}(t)}{r^2}(1+H_z t)(1-B/B_{\rm c
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -228,26 +228,26 @@ the phonon transmission efficiency across the ICM.
 ### §A.1 Sector Classification
 
 This paper maps to **galaxy-rotation** sector of the 9-sector UQFF Lagrangian (see
-`uqff_lagrangian_derivation.py`).
+`uqff_{lagrangian\_derivation}.py`).
 
 ### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm rot})(\partial^\mu \phi_{\rm rot}) - V(\phi_{\rm rot}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{rot}})(\partial^\mu \phi_{\mathrm{rot}}) - V(\phi_{\mathrm{rot}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi_{\rm rot}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm rot}$$
+$$V(\phi_{\mathrm{rot}}) = \frac{1}{2} m^2 \phi_{\mathrm{rot}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{rot}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{rot}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{rot}}} = v_c^2/r - \mu_s\nabla(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\mathrm{vac,[SCm]}} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm rot} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{rot}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -260,38 +260,38 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.065$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.065$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
 The DVP encoding maps the system's characteristic parameter onto the prime lattice:
 
-$$p_{\rm DVP} = 71, \quad n_{\rm channel} = 2/26$$
+$$p_{\mathrm{DVP}} = 71, \quad n_{\mathrm{channel}} = 2/26$$
 
-Since $p_{\rm DVP} = 71$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
+Since $p_{\mathrm{DVP}} = 71$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\mathrm{UA}}' + f_{\mathrm{SCm}} = 1)$ constrains which primes are accessible at each atomic number.
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **109 yr** (disk settling timescale):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
-connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
+connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.065 | PASS Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
+| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.065 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 71$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
@@ -331,7 +331,7 @@ SMC NGC346 protostar formation.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -344,7 +344,7 @@ SMC NGC346 protostar formation.
 | PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
-| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *11 cross-reference(s) identified.*
@@ -354,16 +354,16 @@ SMC NGC346 protostar formation.
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
+> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -372,8 +372,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -381,7 +381,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -392,8 +392,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -412,6 +412,6 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
-`uqff_mock_theta_pi_kernel.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
+`uqff_{mock\_theta\_pi\_kernel}.wl`).*
 

@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
-**Source:** production_scaling_v9.py (ProductionScalingV9)
+**Source:** production_{scaling\_v9}.py (ProductionScalingV9)
 **Calculator:** ProductionScalingV9BenchmarkCalc (CP4 #532)
 **CVW:** v2.0.0 compliant
 
@@ -35,9 +35,9 @@ computation. Performance is measured in calculations per second with automated p
 
 | Kernel | Operation | Source |
 |--------|-----------|--------|
-| 1--10 | v8 base kernels | `production_scaling_v8`.py |
-| 11 | CenA Jet P_BZ | `blazar_jet_power_curves_extended`.py |
-| 12 | SMBH Merger D_total | `smbh_binary_mergers`.py |
+| 1--10 | v8 base kernels | `production_{scaling\_v8}`.py |
+| 11 | CenA Jet P_BZ | `blazar_{jet\_power\_curves\_extended}`.py |
+| 12 | SMBH Merger D_total | `smbh_{binary\_mergers}`.py |
 
 ### Target
 
@@ -70,7 +70,7 @@ where $K = 12$ is the total kernel count.
 
 ## 4. Source Data
 
-- **File:** production_scaling_v9.py
+- **File:** production_{scaling\_v9}.py
 - **Session:** 213
 - **CP4 Class:** ProductionScalingV9BenchmarkCalc (#532)
 
@@ -118,7 +118,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -215,17 +215,17 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
-| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
-| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
-| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
+| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_{U\_Bi} Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1035 | Kilonova Buoyancy Light Curve r-Process |
 | PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |

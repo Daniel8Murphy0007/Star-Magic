@@ -35,16 +35,16 @@ and $\sigma_{\text{th}}$ is the combined thermal+turbulent linewidth.
 
 | Key | Molecule | Transition | $\nu$ (GHz) | E_upper (K) |
 |-----|----------|-----------|---------|-------------|
-| CO_2_1 | CO | J=2-1 | 230.538 | 16.6 |
-| 13CO_2_1 | 13CO | J=2-1 | 220.399 | 15.9 |
-| HCN_3_2 | HCN | J=3-2 | 265.886 | 25.5 |
-| CS_5_4 | CS | J=5-4 | 244.936 | 35.3 |
-| SiO_5_4 | SiO | J=5-4 | 217.105 | 31.3 |
+| CO_{2\_1} | CO | J=2-1 | 230.538 | 16.6 |
+| 13CO_{2\_1} | 13CO | J=2-1 | 220.399 | 15.9 |
+| HCN_{3\_2} | HCN | J=3-2 | 265.886 | 25.5 |
+| CS_{5\_4} | CS | J=5-4 | 244.936 | 35.3 |
+| SiO_{5\_4} | SiO | J=5-4 | 217.105 | 31.3 |
 | H2CO_303 | H2CO | 303-202 | 218.222 | 21.0 |
 | H2CO_322 | H2CO | 322-221 | 218.476 | 68.1 |
 | N2H+_3_2 | N2H+ | J=3-2 | 279.512 | 26.8 |
-| DCN_3_2 | DCN | J=3-2 | 217.239 | 20.9 |
-| SO_6_5 | SO | 65-54 | 219.949 | 35.0 |
+| DCN_{3\_2} | DCN | J=3-2 | 217.239 | 20.9 |
+| SO_{6\_5} | SO | 65-54 | 219.949 | 35.0 |
 
 ## §3 Synthetic Reference Profiles
 
@@ -116,8 +116,8 @@ noise and optical depth effects.
 
 ## References
 
-- `alma_cycle12_validation.py`: Implementation (10/10 tests pass)
-- `production_scaling_v17.py`: Kernels `kernel_alma_fubi_profile`, `kernel_alma_chi2_co21`
+- `alma_{cycle12\_validation}.py`: Implementation (10/10 tests pass)
+- `production_{scaling\_v17}.py`: Kernels `kernel_{alma\_fubi\_profile}`, `kernel_{alma\_chi2\_co21}`
 - `APIFetch.py`: ALMAFetcher stub (L1119) — future real data integration
 - PAPER_1074: GPU DPM Spectral Atlas
 
@@ -145,7 +145,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -167,11 +167,11 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 
 *2 cross-reference(s) identified.*

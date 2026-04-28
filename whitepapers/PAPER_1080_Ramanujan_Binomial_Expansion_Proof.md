@@ -4,7 +4,7 @@
 
 **Author:** Daniel Murphy
 **Date:** 2026
-**Module:** `vds_dvp_bsh_symbolic_proofs.py` (RamanujanBinomialExpansionProof class)
+**Module:** `vds_{dvp\_bsh\_symbolic\_proofs}.py` (RamanujanBinomialExpansionProof class)
 
 ---
 
@@ -34,7 +34,7 @@ since $\binom{D}{j} \leq 2^D$ and $|(D-j)!| \leq D!$.
 
 **Step 2 (Correction decay).** The correction term satisfies:
 
-$$\left|\frac{1}{n^{Dm}} \sum_{j=1}^{D} \cdots \right| \leq \frac{D^2 \cdot D!}{n \cdot n^{D}} \to 0 \quad \text{as } n \to \infty$$
+$$\left|\frac{1}{n^{Dm}} \sum_{j=1}^{D} \cdot s \right| \leq \frac{D^2 \cdot D!}{n \cdot n^{D}} \to 0 \quad \text{as } n \to \infty$$
 
 For $D = 26$, the decay rate is $O(n^{-27})$, providing hyper-convergence.
 
@@ -85,7 +85,7 @@ The binomial form provides:
 
 1. VDS/DVP/BSH number systems: PAPER_646-655
 2. Ramanujan polylogarithmic identities
-3. 26D string compactification: `MAIN_1_CoAnQi.cpp` SOURCE115-116
+3. 26D string compactification: `MAIN_{1\_CoAnQi}.cpp` SOURCE115-116
 
 
 
@@ -111,7 +111,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -133,7 +133,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

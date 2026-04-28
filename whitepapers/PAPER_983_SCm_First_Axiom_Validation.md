@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_983
-title: "SCm First Axiom Validation — |Ub/Ug| > 0.5 at 25.4 μm"
+title: "SCm First Axiom Validation — |Ub/Ug| > 0.5 at 25.4 \mum"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -8,7 +8,7 @@ status: production
 cvw: "v2.0.0"
 tags: [SCm, axiom, buoyancy, validation, 25.4-micron, UQFF]
 crosslinks: [PAPER_979, PAPER_980, PAPER_984]
-calibration: {SSq: 0.57, beta_i: 0.603, lambda_SCm: "25.4 μm", threshold: 0.5}
+calibration: {SSq: 0.57, beta_i: 0.603, lambda_SCm: "25.4 \mum", threshold: 0.5}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
@@ -49,10 +49,10 @@ The ratio exceeds the threshold by a factor of $\sim 3$, indicating strong buoya
 
 ## 5. Implementation
 
-Class `SCmFirstAxiomValidator` in `f`ubi_master_calculator`.py`: computes $|U_b/U_g|$ at $\lambda = 25.4\;\mu\text{m}$, asserts ratio $> 0.5$.
+Class `SCmFirstAxiomValidator` in `f`ubi_{master\_calculator}`.py`: computes $|U_b/U_g|$ at $\lambda = 25.4\;\mu\text{m}$, asserts ratio $> 0.5$.
 
 ## References
-- PAPER_979: Complete 6-Layer F_U_Bi_i
+- PAPER_979: Complete 6-Layer F_{U\_Bi\_i}
 - PAPER_980: Solar Surface Calibration
 
 ---
@@ -114,7 +114,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -153,7 +153,7 @@ The First Axiom constrains the Lagrangian: $\partial V_b / \partial \phi > 0.5 \
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -163,7 +163,7 @@ The First Axiom constrains the Lagrangian: $\partial V_b / \partial \phi > 0.5 \
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1029 | Barocentric Earth Orbital Buoyancy |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

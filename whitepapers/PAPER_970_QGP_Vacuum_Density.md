@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_970
-title: "QGP Vacuum Density ρ_QGP(T) via S₂₆^{(k)}"
+title: "QGP Vacuum Density \rho_QGP(T) via S₂₆^{(k)}"
 session: 216
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
-**Source:** qgp_ramanujan_application.py (QGPVacuumDensityCalculator)
+**Source:** qgp_{ramanujan\_application}.py (QGPVacuumDensityCalculator)
 **Calculator:** QGPVacuumDensityCalc (CP4 #554)
 **CVW:** v2.0.0 compliant
 
@@ -113,7 +113,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -196,7 +196,7 @@ At $T > T_c$, buoyancy shells transition: $E_\text{net} > 0$ drives QGP expansio
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -205,7 +205,7 @@ At $T > T_c$, buoyancy shells transition: $E_\text{net} > 0$ drives QGP expansio
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
 | PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
 | PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
-| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
+| PAPER_1013 | QGP ALICE Centrality F_{U\_Bi\_i} dN/deta Scaling |
 | PAPER_1059 | Color Glass Condensate BK Saturation SCm |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |

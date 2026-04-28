@@ -81,4 +81,4 @@ $$[SSq] = 0.57, \quad S_{26}^{(3)} = 1.4531 \times 10^{26}, \quad \beta_i = 0.6,
 
 1. CMS Collaboration (2022). A measurement of the Higgs boson mass. arXiv:2207.00043.
 2. LHC Higgs Cross Section Working Group. arXiv:1610.02095.
-3. SCm vacuum: `scm_vacuum_manifold.py`; F_U_Bi_i: `COMPLETE_UQFF_EQUATIONS_REFERENCE.md`
+3. SCm vacuum: `scm_{vacuum\_manifold}.py`; F_{U\_Bi\_i}: `COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md`

@@ -73,4 +73,4 @@ $$[SSq] = 0.57, \quad S_{26}^{(3)} = 1.4531 \times 10^{26}, \quad \beta_i = 0.6,
 
 1. Bowman, J.D. et al. (2018). An absorption profile centred at 78 megahertz. *Nature* **555**, 67. arXiv:1810.09572.
 2. Barkana, R. (2018). Possible interaction between baryons and dark matter. *Nature* **555**, 71.
-3. SCm vacuum: `scm_vacuum_manifold.py`
+3. SCm vacuum: `scm_{vacuum\_manifold}.py`

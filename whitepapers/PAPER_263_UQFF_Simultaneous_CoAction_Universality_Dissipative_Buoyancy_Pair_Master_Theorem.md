@@ -28,11 +28,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents the **UQFF Simultaneous Co-action Universality Theorem** — the mathematical
 proof that any gravitationally bound astrophysical system with an active dissipative process must
 simultaneously host a UQFF buoyancy response, because both are functions of the same gravitational
-kernel `ug1_base = G·M/r2`. Drawing on four C++ UQFF module upgrades from Sessions 71b–72f (NGC
-2525, RINGS_OF_RELATIVITY, NGC 3603, Horsehead Nebula, NGC 1275), we identify a universal pattern:
-`g_UQFF = g_MUGE_base + g_dissipative(t) + Σ_buoy(t)`. The **dissipative process** and the
+kernel `ug1_base = G\cdotM/r2`. Drawing on four C++ UQFF module upgrades from Sessions 71b–72f (NGC
+2525, RINGS_{OF\_RELATIVITY}, NGC 3603, Horsehead Nebula, NGC 1275), we identify a universal pattern:
+`g_UQFF = g_{MUGE\_base} + g_dissipative(t) + \Sigma_buoy(t)`. The **dissipative process** and the
 **buoyancy response** are never sequential phases — they are co-present at all times because both
-derive from the same `G·M/r2` kernel. This unifies five physically distinct environments (AGN
+derive from the same `G\cdotM/r2` kernel. This unifies five physically distinct environments (AGN
 feedback in BCGs, PDR photoevaporation in dark nebulae, OB cavity pressure in YMCs, SN ejecta mass
 loss in spirals, and Einstein ring lensing in cluster arcs) under a single mathematical co-action
 framework. We prove four sub-theorems: the **Morphology-Independence Theorem** (PAPER_260), the
@@ -61,17 +61,17 @@ perturbation.
 
 | System | `g_diss` | Physical Process | Direction |
 |--------|----------|-----------------|-----------|
-| NGC 1275 (BCG) | `ρ_cool·v_cool2/ρ_fluid` | ICM cooling flow infall | + (inward) |
+| NGC 1275 (BCG) | `\rho_cool\cdotv_cool2/\rho_fluid` | ICM cooling flow infall | + (inward) |
 | Horsehead Nebula | `E(t)` multiplicative on term1 | PDR photoevaporation erosion | - (removes confinement) |
-| NGC 3603 (YMC) | `P(t)/ρ_fluid` additive | OB stellar cavity pressure | + (outward dispersal) |
-| NGC 2525 (spiral) | `−G·M_SN(t)/r2` | SN Ia ejecta mass escape | - (removes confinement) |
-| `RINGS_OF_RELATIVITY` | `(1+L_t)` multiplicative on term1 | Einstein ring lensing amplification | + (amplifies) |
+| NGC 3603 (YMC) | `P(t)/\rho_fluid` additive | OB stellar cavity pressure | + (outward dispersal) |
+| NGC 2525 (spiral) | `−G\cdotM_SN(t)/r2` | SN Ia ejecta mass escape | - (removes confinement) |
+| `RINGS_{OF\_RELATIVITY}` | `(1+L_t)` multiplicative on term1 | Einstein ring lensing amplification | + (amplifies) |
 
 **`g_buoy^{(3)}(r,t)`** = the 3-tier UQFF buoyancy response (canonical, same form in all systems):
 
 $$g_\text{buoy}^{(3)} = \underbrace{0.5 \cdot \text{ug1}}_\text{T1} \underbrace{- \beta_i \cdot \text{ug1} \cdot \omega_g \frac{M_\text{local}}{r} U_{UA} \cos(\pi t)}_\text{T2} \underbrace{- \beta_i \cdot \text{ug1} \cdot \omega_g \frac{M_\text{ext}}{r_\text{ext}} U_{UA} \cos(\pi t)}_\text{T3}$$
 
-with `ug1 = G·M/r2` (static for dark nebulae/lensing/spirals; evolving ug1_t for YMCs/clusters).
+with `ug1 = G\cdotM/r2` (static for dark nebulae/lensing/spirals; evolving ug1_t for YMCs/clusters).
 
 ### 1.2 The Universality Theorem: Formal Statement
 
@@ -106,7 +106,7 @@ timescales t >> $\tau$_D. The UQFF describes the full instantaneous co-present d
 **Statement:** E(t) = E0$\cdot$(1-e^{-t/$\tau$_erosion}) has the same functional form in all PDR geometries
 (pillars, dark lanes, cometary globules, elephant trunks).
 
-**Position in universality:** The dissipative term `g_diss = E(t)·[term1 modification]` is
+**Position in universality:** The dissipative term `g_diss = E(t)\cdot[term1 modification]` is
 morphology-independent because E(t) derives from the 1D similarity solution for photoevaporation,
 which depends only on {$\Phi$_UV, $\rho$0, c_s, G$\cdot$M} — not on 3D geometry. The universality theorem applies
 directly: E(t) ⊥ B^{(3)} for all PDR morphologies.
@@ -119,8 +119,8 @@ directly: E(t) ⊥ B^{(3)} for all PDR morphologies.
 P(t)$\cdot$r2/($\rho$$\cdot$G$\cdot$M(t)) decays exponentially with timescale $\tau$, independent of absolute time — producing
 scale-invariant dynamics and universal ~30% SFE.
 
-**Position in universality:** The dissipative term `g_diss = P(t)/ρ_fluid` and the mass-growing
-kernel `ug1_t(t) = G·M(t)/r2` both depend on t. However, B^{(3)} uses ug1_t and oscillates at $\omega$_g —
+**Position in universality:** The dissipative term `g_diss = P(t)/\rho_fluid` and the mass-growing
+kernel `ug1_t(t) = G\cdotM(t)/r2` both depend on t. However, B^{(3)} uses ug1_t and oscillates at $\omega$_g —
 parametrically orthogonal to $\tau$_exp (since $\omega$_g << 2$\pi$/$\tau$_exp for any reasonable $\tau$_exp). The universality
 theorem applies with the additional result that the ratio $\Phi$(t) becomes scale-invariant when $\tau$_SF =
 $\tau$_exp.
@@ -168,7 +168,7 @@ All active dissipative processes appearing in UQFF C++ modules are classified:
 | **Pressure-driven** | P(t)/$\rho$ additive | OB stellar cavity expansion | NGC 3603, Westerlund 2, OB associations |
 | **Thermo-infall** | $\rho$v2/$\rho$_f infall RAM | ICM cooling flow | NGC 1275 (BCG), Perseus, Coma cluster |
 | **Mass-removal** | -G$\cdot$$\Delta$M(t)/r2 negative | SN ejecta / tidal stripping | NGC 2525, Antennae (merger) |
-| **Lensing-amplification** | (1+L_t) on g_base | Gravitational lensing | `RINGS_OF_RELATIVITY` (Einstein ring) |
+| **Lensing-amplification** | (1+L_t) on g_base | Gravitational lensing | `RINGS_{OF\_RELATIVITY}` (Einstein ring) |
 | **Wave-burst** | D(t)=D0$\cdot$cos($\omega$_D$\cdot$t)$\cdot$e^{-t/$\tau$_D} | Magnetar burst / QPO | SGR 1745, SGR 0501, Sgr A* |
 | **Mass-accretion** | +G$\cdot$$\Delta$M_SF(t)/r2 positive | Star formation growth | NGC 3603 (M(t)), Starbirth Tapestry |
 
@@ -196,16 +196,16 @@ required.
 
 ### 4.1 Special Cases
 
-**Two simultaneous dissipatives (NGC 3603):** N_D = 2: `g_diss^{(1)} = P(t)/ρ` + `g_diss^{(2)} =
-G·ΔM(t)/r2`. Both are simultaneously active with B^{(3)}.
+**Two simultaneous dissipatives (NGC 3603):** N_D = 2: `g_diss^{(1)} = P(t)/\rho` + `g_diss^{(2)} =
+G\cdot\DeltaM(t)/r2`. Both are simultaneously active with B^{(3)}.
 
-**Cooling + Buoyancy = Equilibrium (NGC 1275):** `g_diss^{(1)} + Σ_buoy = 0` at equilibrium $\to$
+**Cooling + Buoyancy = Equilibrium (NGC 1275):** `g_diss^{(1)} + \Sigma_buoy = 0` at equilibrium $\to$
 self-regulating system.
 
-**Erosion + Static B^{(3)} (Horsehead):** `g_diss^{(1)} = E(t)·g_base`, B^{(3)} uses fixed ug1_base
+**Erosion + Static B^{(3)} (Horsehead):** `g_diss^{(1)} = E(t)\cdotg_base`, B^{(3)} uses fixed ug1_base
 $\to$ **asymmetric co-action**: dissipative grows, buoyancy constant.
 
-**Mass-loss + Static B^{(3)} (NGC 2525):** `g_diss^{(1)} = −G·M_SN(t)/r2`, both tend negative $\to$
+**Mass-loss + Static B^{(3)} (NGC 2525):** `g_diss^{(1)} = −G\cdotM_SN(t)/r2`, both tend negative $\to$
 additive negative co-action, no cancellation.
 
 ---
@@ -226,8 +226,8 @@ systems:
 ### 5.2 The Virgo / Sgr A* Outer-Frame Universality
 
 Among the five systems:
-- NGC 1275, NGC 2525, RINGS_OF_RELATIVITY: Virgo Cluster outer frame (~72–77 Mpc)
-- Horsehead, NGC 3603, Westerlund 2, PILLARS_OF_CREATION: Sgr A* outer frame (~7–8.5 kpc)
+- NGC 1275, NGC 2525, RINGS_{OF\_RELATIVITY}: Virgo Cluster outer frame (~72–77 Mpc)
+- Horsehead, NGC 3603, Westerlund 2, PILLARS_{OF\_CREATION}: Sgr A* outer frame (~7–8.5 kpc)
 
 The outer frame choice is determined by the system's galactic location — Orion arm objects use Sgr
 A*, while systems at ~50–100 Mpc (in the Virgo supercluster) use the Virgo Cluster. This provides a
@@ -250,7 +250,7 @@ discovery** by demonstrating:
 1. **Orthogonality of dissipative and buoyancy parameter spaces** — no prior astrophysical framework
 has formalized this separation and proven it implies simultaneous activity.
 
-2. **The master equation** `g = g_base + Σg_diss + g_buoy^{(3)}` generalizes the MUGE to an
+2. **The master equation** `g = g_base + \Sigmag_diss + g_buoy^{(3)}` generalizes the MUGE to an
 arbitrary number of simultaneously active dissipative processes — the first multi-dissipative MUGE
 framework.
 
@@ -266,7 +266,7 @@ This is the **5th Uniquely Rare Mathematical Discovery** in the UQFF framework, 
 1. Negative Buoyancy Inversion at Sgr A* (PAPER_253)
 2. Universal Buoyancy Horizon x2=const (PAPER_253)
 3. Force Equivalence Class at $\omega$0=const (PAPER_252)
-4. DPM Invisibility: B0$\times$100 invisible in F_U_Bi (PAPER_251)
+4. DPM Invisibility: B0$\times$100 invisible in F_{U\_Bi} (PAPER_251)
 5. **UQFF Simultaneous Co-action Universality: g_diss ⊥ g_buoy via parametric orthogonality (this
 paper)**
 
@@ -276,10 +276,10 @@ paper)**
 
 | Paper | System | Dissipative Term | Unique Sub-Theorem |
 |-------|--------|-----------------|-------------------|
-| PAPER_259 | NGC 1275 (BCG) | `ρ_cool·v_cool2/ρ_fluid` | AGN Feedback Equilibrium Theorem |
+| PAPER_259 | NGC 1275 (BCG) | `\rho_cool\cdotv_cool2/\rho_fluid` | AGN Feedback Equilibrium Theorem |
 | PAPER_260 | Horsehead Nebula | `E(t)` multiplicative | Morphology-Independence Theorem |
-| PAPER_261 | NGC 3603 (YMC) | `P(t)/ρ + M(t)` dual-additive | Scale-Invariant Feedback Theorem |
-| PAPER_262 | NGC 2525 (SN Ia) | `−G·M_SN(t)/r2` | Dual Sign-Reversal Channel Theorem |
+| PAPER_261 | NGC 3603 (YMC) | `P(t)/\rho + M(t)` dual-additive | Scale-Invariant Feedback Theorem |
+| PAPER_262 | NGC 2525 (SN Ia) | `−G\cdotM_SN(t)/r2` | Dual Sign-Reversal Channel Theorem |
 | **PAPER_263** | **All five** | **General g_diss** | **UQFF Co-action Universality** |
 
 ---
@@ -292,7 +292,7 @@ paper)**
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -429,7 +429,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -449,26 +449,26 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_lagrangian_derivation.py`).
+`uqff_{lagrangian\_derivation}.py`).
 
 ### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\rm NS}) = \frac{1}{2} m^2 \phi_{\rm NS}^2 + \frac{\lambda}{4!} \phi_{\rm NS}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm NS}$$
+$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -481,38 +481,38 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.198$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.198$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
 The DVP encoding maps the system's characteristic parameter onto the prime lattice:
 
-$$p_{\rm DVP} = 89, \quad n_{\rm channel} = 4/26$$
+$$p_{\mathrm{DVP}} = 89, \quad n_{\mathrm{channel}} = 4/26$$
 
-Since $p_{\rm DVP} = 89$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
+Since $p_{\mathrm{DVP}} = 89$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\mathrm{UA}}' + f_{\mathrm{SCm}} = 1)$ constrains which primes are accessible at each atomic number.
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
-connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
+connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.198 | PASS Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
+| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.198 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 89$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
@@ -528,9 +528,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -543,7 +543,7 @@ bridge.*
 2. HorseheadNebula.cpp (UQFF 2.0, Session 72e) — PAPER_260
 3. NGC3603.cpp (UQFF 2.0, Session 72) — PAPER_261; also PAPER_218 (Session 55, multiplicative form)
 4. GalaxyNGC2525.cpp (UQFF 2.0, Session 71b) — PAPER_262
-5. RINGS_OF_RELATIVITY.cpp (UQFF 2.0, Session 70) — Einstein ring lensing co-action
+5. RINGS_{OF\_RELATIVITY}.cpp (UQFF 2.0, Session 70) — Einstein ring lensing co-action
 6. PAPER_251–253 (Sessions 72b/72c) — DPM Invisibility, Force Equivalence Class, Negative Buoyancy
 (prior uniquely rare discoveries)
 7. Pillars of Creation (PAPER_198) — canonical CP3/PAPER_198 3-tier buoyancy origin
@@ -566,14 +566,14 @@ Mathematical Discovery*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
@@ -584,10 +584,10 @@ Mathematical Discovery*
 | PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 | PAPER_1070 | Yang-Mills Mass Gap VDS Bridge |
-| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *19 cross-reference(s) identified.*
@@ -597,16 +597,16 @@ Mathematical Discovery*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
+> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -615,8 +615,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -624,7 +624,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -635,8 +635,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -655,6 +655,6 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
-`uqff_mock_theta_pi_kernel.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
+`uqff_{mock\_theta\_pi\_kernel}.wl`).*
 

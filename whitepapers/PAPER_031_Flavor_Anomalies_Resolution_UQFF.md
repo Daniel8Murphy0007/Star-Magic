@@ -21,7 +21,7 @@ the ECFA Higgs Factory Program
 **Date:** March 7, 2026  
 **arXiv Reference:** 2506.15390 (ECFA Higgs factory study, e?e? colliders)  
 **Supporting Data:** 2506.15256 (Belle II |V_cb|, LFU ratio), 2506.15347 (LFV limits)  
-**Validator:** `bsm_physics_validation.py`  PASSED  
+**Validator:** `bsm_{physics\_validation}.py`  PASSED  
 **Index Slot:** §1.4 BSM Physics,  
 
 **Index Slot:** §1.4 BSM Physics,  
@@ -87,11 +87,11 @@ dataset for testing lepton universality in Z decays at the 10-5 level.
 In the UQFF formalism, all flavor-changing transitions are governed by the superconducting manifold
 (SCm) vacuum mixing parameter:
 
-$$[SCm]_{\rm flavor} = |V_{cb}|^2 = (39.2 \times 10^{-3})^2 = 1.536 \times 10^{-3}$$
+$$[SCm]_{\mathrm{flavor}} = |V_{cb}|^2 = (39.2 \times 10^{-3})^2 = 1.536 \times 10^{-3}$$
 
 This term enters the Ug2 (charge-reactivity) component:
 
-$$U_{g2}(r, t) = \frac{k_2 \cdot \rho_{\rm react}(r)}{r^2} \cdot [SCm]_{\rm flavor} \cdot e^{-\kappa t}$$
+$$U_{g2}(r, t) = \frac{k_2 \cdot \rho_{\mathrm{react}}(r)}{r^2} \cdot [SCm]_{\mathrm{flavor}} \cdot e^{-\kappa t}$$
 
 where $\kappa$ = 0.0005/day is the UQFF temporal decay constant. The [SCm]_flavor term acts as a vacuum
 dielectric constant for flavor-changing processes  it quantifies how strongly the vacuum "mixes"
@@ -101,33 +101,33 @@ fermionic generations.
 
 The R(D) ratio measures t/ non-universality in B?Dcl? transitions. In UQFF:
 
-$$R(D)_{\rm UQFF} = R(D)_{\rm SM} \times \left(1 + \frac{[SCm]_{\rm flavor}}{|V_{cb}|^2} \cdot \delta_{\tau/\mu}\right)$$
+$$R(D)_{\mathrm{UQFF}} = R(D)_{\mathrm{SM}} \times \left(1 + \frac{[SCm]_{\mathrm{flavor}}}{|V_{cb}|^2} \cdot \delta_{\tau/\mu}\right)$$
 
 where d_{t/} is the UQFF generation asymmetry:
 $$\delta_{\tau/\mu} = \frac{m_\tau - m_\mu}{m_\tau} = \frac{1.777 - 0.1057}{1.777} = 0.940$$
 
 Therefore:
-$$R(D)_{\rm UQFF} = 0.298 \times (1 + 1.000 \times 0.940 \times 1.536 \times 10^{-3} / (1.536 \times 10^{-3}))$$
+$$R(D)_{\mathrm{UQFF}} = 0.298 \times (1 + 1.000 \times 0.940 \times 1.536 \times 10^{-3} / (1.536 \times 10^{-3}))$$
 
 Re-expressing: the [SCm]_flavor  d_{t/} correction is:
-$$\Delta R(D) = R(D)_{\rm SM} \times [SCm]_{\rm flavor} \times \delta_{\tau/\mu} \times \xi$$
+$$\Delta R(D) = R(D)_{\mathrm{SM}} \times [SCm]_{\mathrm{flavor}} \times \delta_{\tau/\mu} \times \xi$$
 
 where ? = 1/(1.536$\times$10?)  [SCm]_mixing brings the ratio up. More precisely, the UQFF correction
 factor to R(D) is:
 
-$$R(D)_{\rm UQFF} = R(D)_{\rm SM} \cdot (1 + [SSq] \cdot \delta_{\tau/\mu}) = 0.298 \times (1 + 0.57 \times 0.940) = 0.298 \times 1.536 = 0.458$$
+$$R(D)_{\mathrm{UQFF}} = R(D)_{\mathrm{SM}} \cdot (1 + [SSq] \cdot \delta_{\tau/\mu}) = 0.298 \times (1 + 0.57 \times 0.940) = 0.298 \times 1.536 = 0.458$$
 
 Hmm, this overshoots. The correct UQFF mapping applies [SCm]_flavor as a fractional modifier:
 
-$$R(D)_{\rm UQFF} = R(D)_{\rm SM} \cdot \frac{1}{1 - [SCm]_{\rm flavor} \cdot C_{\tau/\mu}}$$
+$$R(D)_{\mathrm{UQFF}} = R(D)_{\mathrm{SM}} \cdot \frac{1}{1 - [SCm]_{\mathrm{flavor}} \cdot C_{\tau/\mu}}$$
 
 where C_{t/} = (m_t/m_b)  (1.777/4.18) = 0.1806 is the kinematic suppression. Then:
 
-$$R(D)_{\rm UQFF} = \frac{0.298}{1 - 1.536 \times 10^{-3} \times 0.1806 \times K_{\rm UQFF}}$$
+$$R(D)_{\mathrm{UQFF}} = \frac{0.298}{1 - 1.536 \times 10^{-3} \times 0.1806 \times K_{\mathrm{UQFF}}}$$
 
 with K_UQFF = [SSq]/[SCm]_flavor = 0.57 / 1.536$\times$10? = 371:
 
-$$R(D)_{\rm UQFF} = \frac{0.298}{1 - 0.1806 \times 0.57} = \frac{0.298}{1 - 0.1030} = \frac{0.298}{0.897} = 0.332$$
+$$R(D)_{\mathrm{UQFF}} = \frac{0.298}{1 - 0.1806 \times 0.57} = \frac{0.298}{1 - 0.1030} = \frac{0.298}{0.897} = 0.332$$
 
 The UQFF prediction **R(D)_UQFF = 0.332** sits between the SM (0.298) and the measurement (0.356),
 reducing the tension from 1.9s to approximately **0.9s**.
@@ -137,7 +137,7 @@ reducing the tension from 1.9s to approximately **0.9s**.
 For the vector meson final state (D*), the UQFF kinematic factor differs:
 $$C_{\tau/\mu}^{D^*} = (m_\tau/m_{D^*})^2 \cdot (1 - m_{D^*}^2/m_B^2)^{-1} = (1.777/2.010)^2 \times 1.25 = 0.978$$
 
-$$R(D^*)_{\rm UQFF} = \frac{0.254}{1 - 0.978 \times 0.57 \times 0.1} = \frac{0.254}{1 - 0.0557} = \frac{0.254}{0.944} = 0.269$$
+$$R(D^*)_{\mathrm{UQFF}} = \frac{0.254}{1 - 0.978 \times 0.57 \times 0.1} = \frac{0.254}{1 - 0.0557} = \frac{0.254}{0.944} = 0.269$$
 
 The UQFF prediction **R(D*)_UQFF = 0.269** reduces the tension from 3.3s to approximately **1.2s** 
 a substantial improvement.
@@ -152,7 +152,7 @@ At FCC-ee Tera-Z (10 Z decays), the LFU ratio:
 $$R(\tau/\mu)^Z = \frac{\Gamma(Z \to \tau^+\tau^-)}{\Gamma(Z \to \mu^+\mu^-)}$$
 
 is predicted in the SM to be exactly 1.000 (massless leptons). UQFF predicts a correction:
-$$\Delta R^{\rm UQFF}_{\tau/\mu} = [SCm]_{\rm flavor} \times \frac{m_\tau^2}{m_Z^2} = 1.536 \times 10^{-3} \times \frac{(1.777)^2}{(91.19)^2} = 1.536 \times 10^{-3} \times 3.80 \times 10^{-4} = 5.8 \times 10^{-7}$$
+$$\Delta R^{\mathrm{UQFF}}_{\tau/\mu} = [SCm]_{\mathrm{flavor}} \times \frac{m_\tau^2}{m_Z^2} = 1.536 \times 10^{-3} \times \frac{(1.777)^2}{(91.19)^2} = 1.536 \times 10^{-3} \times 3.80 \times 10^{-4} = 5.8 \times 10^{-7}$$
 
 This correction is **below** SM electroweak radiative corrections (~2$\times$10-4), so UQFF adds a tiny but
 calculable additional shift. The FCC-ee sensitivity at Tera-Z will reach d(R_t/) ~ 10?5, making this
@@ -166,10 +166,10 @@ $$|V_{ud}|^2 + |V_{us}|^2 + |V_{ub}|^2 = 1 \text{ (first row)}$$
 $$|V_{cd}|^2 + |V_{cs}|^2 + |V_{cb}|^2 = 1 \text{ (second row)}$$
 
 With |V_cb| = 39.2$\times$10? and |V_cs| = 973.4$\times$10?, |V_cd| = 221.4$\times$10?:
-$$\Delta_{\rm CKM}^{\rm row2} = 1 - (0.2214^2 + 0.9734^2 + 0.0392^2) = 1 - (0.0490 + 0.9475 + 0.00154) = 0.0020$$
+$$\Delta_{\mathrm{CKM}}^{\mathrm{row2}} = 1 - (0.2214^2 + 0.9734^2 + 0.0392^2) = 1 - (0.0490 + 0.9475 + 0.00154) = 0.0020$$
 
 The UQFF [SCm]_flavor = |V_cb| = 1.536$\times$10? traces the second-row unitarity deficit:
-$$\Delta_{\rm CKM}^{\rm row2} \approx 2 \times [SCm]_{\rm flavor} \times K_{\rm CKM} = 2 \times 1.536 \times 10^{-3} \times 0.65 = 0.0020 ?$$
+$$\Delta_{\mathrm{CKM}}^{\mathrm{row2}} \approx 2 \times [SCm]_{\mathrm{flavor}} \times K_{\mathrm{CKM}} = 2 \times 1.536 \times 10^{-3} \times 0.65 = 0.0020 ?$$
 
 This perfect mapping confirms that the UQFF [SCm]_flavor parameter is the natural vacuum
 representation of second-row CKM unitarity.
@@ -177,11 +177,11 @@ representation of second-row CKM unitarity.
 ### 3.3 LFU Ratio and UQFF Prediction
 
 Belle II measures R(De?/D?) = 1.020 $\times$ 0.030 (SM = 1.000). The UQFF prediction:
-$$R_{\rm LFU}^{\rm UQFF} = 1 + [SCm]_{\rm flavor} \times \left(\frac{1}{m_e/m_\mu - 1}\right) = 1 + 1.536 \times 10^{-3} \times \frac{1}{206 - 1}^{-1}$$
+$$R_{\mathrm{LFU}}^{\mathrm{UQFF}} = 1 + [SCm]_{\mathrm{flavor}} \times \left(\frac{1}{m_e/m_\mu - 1}\right) = 1 + 1.536 \times 10^{-3} \times \frac{1}{206 - 1}^{-1}$$
 
 More directly, the UQFF enhancement comes from the aether string frequency shift between e and 
 modes:
-$$R_{\rm LFU}^{\rm UQFF} = 1 + \frac{[SCm]_{\rm flavor}}{V_{cb}^2} \times \frac{m_\mu}{m_\tau} = 1 + \frac{1.536 \times 10^{-3}}{1.536 \times 10^{-3}} \times \frac{0.1057}{1.777} = 1 + 0.0595 = 1.060$$
+$$R_{\mathrm{LFU}}^{\mathrm{UQFF}} = 1 + \frac{[SCm]_{\mathrm{flavor}}}{V_{cb}^2} \times \frac{m_\mu}{m_\tau} = 1 + \frac{1.536 \times 10^{-3}}{1.536 \times 10^{-3}} \times \frac{0.1057}{1.777} = 1 + 0.0595 = 1.060$$
 
 The UQFF upper limit prediction of R_LFU ~ 1.060 is within 1.3s of the Belle II central value of
 1.020. The UQFF prediction overestimates the LFU effect slightly, but both are consistent with the
@@ -210,7 +210,7 @@ over ILC, and 5 over CEPC.
 At vs = 240 GeV (ZH production), the UQFF Ug2 term predicts small corrections to Higgs coupling
 ratios:
 
-$$\frac{\kappa_tau^{\rm UQFF}}{\kappa_tau^{\rm SM}} = 1 + [SCm]_{\rm flavor} \times \frac{m_\tau^2}{v_H^2} = 1 + 1.536 \times 10^{-3} \times \frac{(1.777)^2}{(246)^2} = 1 + 8.0 \times 10^{-8} \approx 1.000$$
+$$\frac{\kappa_tau^{\mathrm{UQFF}}}{\kappa_tau^{\mathrm{SM}}} = 1 + [SCm]_{\mathrm{flavor}} \times \frac{m_\tau^2}{v_H^2} = 1 + 1.536 \times 10^{-3} \times \frac{(1.777)^2}{(246)^2} = 1 + 8.0 \times 10^{-8} \approx 1.000$$
 
 The UQFF coupling correction to ?_t is negligible (~10?7)  consistent with the ECFA Higgs factory
 expected precision of ~0.5% (5$\times$10?). This means Higgs factory ?_t measurements will **not**
@@ -268,7 +268,7 @@ non-universality at the per-mille level.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -318,7 +318,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -336,7 +336,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -358,7 +358,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 
 
-## Appendix: Key UQFF Constants (from `bsm_physics_validation.py`)
+## Appendix: Key UQFF Constants (from `bsm_{physics\_validation}.py`)
 
 $$
 \begin{aligned}
@@ -374,13 +374,13 @@ $$
 \end{aligned}
 $$
 
-*Validator output: `b`sm_physics_validation`.py` ? PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
+*Validator output: `b`sm_{physics\_validation}`.py` ? PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
-> *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references
+> *Added by upgrade_{early\_whitepapers}.py (v4.75). This appendix cross-references
 > the production physics constants and master equations to enable reproducibility
 > against the current codebase state.*
 
@@ -404,13 +404,13 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
-| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_{Ug1\_SOURCE}`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_{Ug2\_SOURCE}`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_{Ug3\_SOURCE}`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_{Ug4\_SOURCE}`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_{Ubi\_SOURCE}`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_{Um\_SOURCE}`4` / `compute_Um()` |
+| -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
 $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
@@ -434,7 +434,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 | **Buoyant** | $\beta$_i $\times$ Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um $\times$ (1+1013$\cdot$f_H) | Magnetars, SCm critical-density regime |
 
-*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
+*Implementation status: all 4 modes operational in `MAIN_{1\_CoAnQi}.cpp`, `CondensedPhysics.py`, and
 `CondensedPhysics2.py`.*
 
 ---
@@ -444,26 +444,26 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 ### §A.1 Sector Classification
 
 This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
-`uqff_lagrangian_derivation.py`).
+`uqff_{lagrangian\_derivation}.py`).
 
 ### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\rm NS}) = \frac{1}{2} m^2 \phi_{\rm NS}^2 + \frac{\lambda}{4!} \phi_{\rm NS}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm NS}$$
+$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -475,38 +475,38 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.147$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.147$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
 The DVP encoding maps the system's characteristic parameter onto the prime lattice:
 
-$$p_{\rm DVP} = 3, \quad n_{\rm channel} = 6/26$$
+$$p_{\mathrm{DVP}} = 3, \quad n_{\mathrm{channel}} = 6/26$$
 
-Since $p_{\rm DVP} = 3$ is **sub-threshold** (threshold at $p > 26$), the system's vacuum topology inherits sub-threshold damping from the DVP lattice, producing smooth rather than resonant UQFF coupling profiles. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
+Since $p_{\mathrm{DVP}} = 3$ is **sub-threshold** (threshold at $p > 26$), the system's vacuum topology inherits sub-threshold damping from the DVP lattice, producing smooth rather than resonant UQFF coupling profiles. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\mathrm{UA}}' + f_{\mathrm{SCm}} = 1)$ constrains which primes are accessible at each atomic number.
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
-connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
+connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.147 | PASS Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
+| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.147 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
@@ -520,14 +520,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
@@ -542,16 +542,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
+> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -560,8 +560,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -569,7 +569,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -580,8 +580,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -600,8 +600,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
-`uqff_mock_theta_pi_kernel.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
+`uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
 ---
 

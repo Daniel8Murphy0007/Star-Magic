@@ -21,10 +21,10 @@ kernels). Four new kernels using S26(3):
 
 | Kernel | Description |
 |--------|-------------|
-| `k`ernel_agn_merger_fub`i` | AGN merger `F_U_Bi` with S26(3) |
-| `k`ernel_qgp_vacuum_densit`y` | QGP vacuum density $\rho$_QGP(T) |
-| `k`ernel_alice_multiplicit`y` | ALICE dN_ch/d$\eta$ SCm scaling |
-| `k`ernel_ym_mass_ga`p` | Yang-Mills $\Delta$_YM via BCS phonon |
+| `k`ernel_{agn\_merger\_fub}`i` | AGN merger `F_{U\_Bi}` with S26(3) |
+| `k`ernel_{qgp\_vacuum\_densit}`y` | QGP vacuum density $\rho$_QGP(T) |
+| `k`ernel_{alice\_multiplicit}`y` | ALICE dN_ch/d$\eta$ SCm scaling |
+| `k`ernel_{ym\_mass\_ga}`p` | Yang-Mills $\Delta$_YM via BCS phonon |
 
 ## 1. Scaling History
 
@@ -37,12 +37,12 @@ kernels). Four new kernels using S26(3):
 ## 2. REST API
 
 20 total routes including new endpoints:
-- `POST /api/fubi/agn-merger` — AGN merger F_U_Bi with S26(3)
+- `POST /api/fubi/agn-merger` — AGN merger F_{U\_Bi} with S26(3)
 - `POST /api/qgp/scm-dynamics` — QGP SCm phonon dynamics
 
 ## 3. Implementation
 
-File: `production_scaling_v14.py`, class `ProductionScalingV14`. CP4 class #592.
+File: `production_{scaling\_v14}.py`, class `ProductionScalingV14`. CP4 class #592.
 
 
 
@@ -112,7 +112,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -129,7 +129,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -217,14 +217,14 @@ BSH timescale: $10^4$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 | PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |

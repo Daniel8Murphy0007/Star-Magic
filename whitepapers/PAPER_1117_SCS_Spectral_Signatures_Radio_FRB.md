@@ -88,4 +88,4 @@ $$[SSq] = 0.57, \quad S_{26}^{(3)} = 1.4531 \times 10^{26}, \quad \Phi_{\text{re
 
 1. CHIME/FRB Collaboration (2021). The first CHIME/FRB Fast Radio Burst catalog. arXiv:2106.04352.
 2. Lorimer, D.R. et al. (2007). A bright millisecond radio transient. *Science* **318**, 777.
-3. SCm vacuum: `scm_vacuum_manifold.py`; GW strain: `scm_gw_metric_perturbation()`
+3. SCm vacuum: `scm_{vacuum\_manifold}.py`; GW strain: `scm_{gw\_metric\_perturbation}()`

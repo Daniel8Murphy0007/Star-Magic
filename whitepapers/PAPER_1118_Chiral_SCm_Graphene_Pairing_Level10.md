@@ -91,4 +91,4 @@ $$\beta_i = 0.6, \quad \Phi_{\text{res}} = 0.84, \quad E_{\text{KER}} = 630\ \te
 
 1. Nandkishore, R. et al. (2012). Chiral superconductivity from repulsive interactions in doped graphene. *Nat. Phys.* **8**, 158.
 2. Cao, Y. et al. (2018). Unconventional superconductivity in magic-angle graphene. *Nature* **556**, 43.
-3. SCm vacuum: `scm_vacuum_manifold.py`; VDS ladder: PAPER_1109
+3. SCm vacuum: `scm_{vacuum\_manifold}.py`; VDS ladder: PAPER_1109

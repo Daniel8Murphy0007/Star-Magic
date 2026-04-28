@@ -89,4 +89,4 @@ $$\kappa = 5.0 \times 10^{-4}\ \text{day}^{-1}, \quad \Phi_{\text{res}} = 0.84, 
 
 1. Ceccarelli, C. et al. (2017). Seeds of life in space (SOLIS). *ApJ Lett.* **850**, L3.
 2. Belloche, A. et al. (2008). Detection of amino acetonitrile in Sgr B2(N). *A&A* **482**, 179.
-3. SCm phonon catalysis: `scm_vacuum_manifold.py`; PAPER_1121 (prestellar collapse)
+3. SCm phonon catalysis: `scm_{vacuum\_manifold}.py`; PAPER_1121 (prestellar collapse)

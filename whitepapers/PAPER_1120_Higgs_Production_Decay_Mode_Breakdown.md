@@ -62,7 +62,7 @@ $$= \frac{\alpha_s}{\pi} \times \frac{7.09 \times 10^{-37} \times 1.45 \times 10
 
 ---
 
-## 4. F_U_Bi_i Effective Higgs Potential
+## 4. F_{U\_Bi\_i} Effective Higgs Potential
 
 The Higgs potential in the SCm vacuum:
 
@@ -88,4 +88,4 @@ $$\kappa = 5.0 \times 10^{-4}\ \text{day}^{-1}, \quad \rho_{\text{vac,SCm}} = 7.
 
 1. LHC Higgs Cross Section Working Group (2016). Handbook of LHC Higgs Cross Sections: 4. arXiv:1610.02095.
 2. ATLAS and CMS (2022). Combined measurements of Higgs boson couplings. arXiv:2207.07579.
-3. SCm vacuum: `scm_vacuum_manifold.py`; PAPER_1113 (CMS $\kappa$ coupling)
+3. SCm vacuum: `scm_{vacuum\_manifold}.py`; PAPER_1113 (CMS $\kappa$ coupling)

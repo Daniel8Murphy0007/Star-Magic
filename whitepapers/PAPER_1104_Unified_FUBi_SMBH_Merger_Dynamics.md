@@ -1,12 +1,12 @@
 ﻿---
 paper_id: "PAPER_1104"
-title: "Unified F_U_Bi for SMBH Binary Merger Dynamics: Inside-to-Outside and Outside-to-Inside"
+title: "Unified F_{U\_Bi} for SMBH Binary Merger Dynamics: Inside-to-Outside and Outside-to-Inside"
 session: 225
 date: 2026-04-15
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [SMBH, binary-merger, F_U_Bi, buoyancy, gravitational-waves, chirp-mass, inspiral, ringdown, 26-layer, UQFF]
+tags: [SMBH, binary-merger, F_{U\_Bi}, buoyancy, gravitational-waves, chirp-mass, inspiral, ringdown, 26-layer, UQFF]
 crosslinks: [PAPER_258, PAPER_649, PAPER_1079]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---

@@ -79,4 +79,4 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \Phi_{\text{
 1. Peccei, R.D. & Quinn, H.R. (1977). CP conservation in the presence of pseudoparticles. *Phys. Rev. Lett.* **38**, 1440.
 2. ADMX Collaboration (2021). Axion dark matter. arXiv:2110.00482.
 3. LIGO/Virgo (2021). Constraints on cosmic strings. arXiv:2101.12248.
-4. SCm vacuum: `scm_vacuum_manifold.py`; VDS: PAPER_1109
+4. SCm vacuum: `scm_{vacuum\_manifold}.py`; VDS: PAPER_1109

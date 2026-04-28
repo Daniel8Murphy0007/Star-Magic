@@ -1,12 +1,12 @@
 ---
 paper_id: "PAPER_1101"
-title: "SCm Qubit T2 Coherence via F_U_Bi / F_U Ratio and Thermal Protection"
+title: "SCm Qubit T2 Coherence via F_{U\_Bi} / F_U Ratio and Thermal Protection"
 session: 225
 date: 2026-04-15
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [quantum-computing, T2-coherence, decoherence, F_U_Bi, phonon, thermal, qubit, SCm, UQFF]
+tags: [quantum-computing, T2-coherence, decoherence, F_{U\_Bi}, phonon, thermal, qubit, SCm, UQFF]
 crosslinks: [PAPER_1052, PAPER_1056, PAPER_1098]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---

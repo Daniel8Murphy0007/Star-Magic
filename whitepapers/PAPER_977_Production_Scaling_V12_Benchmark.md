@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
-**Source:** production_scaling_v12.py (ProductionScalingV12)
+**Source:** production_{scaling\_v12}.py (ProductionScalingV12)
 **Calculator:** ProductionScalingV12BenchmarkCalc (CP4 #561)
 **CVW:** v2.0.0 compliant
 
@@ -45,10 +45,10 @@ total to 18 simultaneously benchmarked kernels.
 
 ## 2. New v12 Kernels
 
-### kernel_qgp_density
+### kernel_{qgp\_density}
 $\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)} \cdot \exp(-(T_c - T)/T)$ — QGP vacuum density at $T = 2 \times 10^{12}$ K.
 
-### kernel_99system_master
+### kernel_{99system\_master}
 $F_U^{(99)} = \sum_{i=1}^{99} [U_g + U_m + U_A - U_b + F_n \cdot S_{26}^2]$ — 99-system aggregate evaluation.
 
 ## 3. Throughput
@@ -121,7 +121,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -204,7 +204,7 @@ Scaling: v4 (100k) $\to$ v11 (500k) $\to$ v12 (501k) — near $\tanh$ hardware s
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -212,14 +212,14 @@ Scaling: v4 (100k) $\to$ v11 (500k) $\to$ v12 (501k) — near $\tanh$ hardware s
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
 | PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
 | PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
-| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
+| PAPER_1013 | QGP ALICE Centrality F_{U\_Bi\_i} dN/deta Scaling |
 | PAPER_1059 | Color Glass Condensate BK Saturation SCm |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
 | PAPER_1078 | QCalcGeom Master Equation Derivation |
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
-| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
 | PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |
 | PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |
 

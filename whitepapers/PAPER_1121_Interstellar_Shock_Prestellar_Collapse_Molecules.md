@@ -89,4 +89,4 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \Phi_{\text{
 
 1. van Dishoeck, E.F. & Blake, G.A. (1998). Chemical evolution of star-forming regions. *ARA&A* **36**, 317.
 2. Caselli, P. & Ceccarelli, C. (2012). Our astrochemical heritage. *A&ARv* **20**, 56.
-3. SCm phonon: `scm_vacuum_manifold.py`; PAPER_1123: H$_2$O Maser J-shock
+3. SCm phonon: `scm_{vacuum\_manifold}.py`; PAPER_1123: H$_2$O Maser J-shock

@@ -108,8 +108,8 @@ dominant line at 1.25 THz with FWHM governed by $\sigma$_G.
 
 ## References
 
-- `source10_gpu_dpm_atlas.py`: Implementation (11/11 tests pass)
-- `production_scaling_v17.py`: Kernels `kernel_gpu_dpm_atlas_peak`, `kernel_dpm_line_fwhm`
+- `source10_{gpu\_dpm\_atlas}.py`: Implementation (11/11 tests pass)
+- `production_{scaling\_v17}.py`: Kernels `kernel_{gpu\_dpm\_atlas\_peak}`, `kernel_{dpm\_line\_fwhm}`
 - PAPER_877: Three-Assumption UQFF Cosmogenesis
 
 
@@ -136,7 +136,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -158,7 +158,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

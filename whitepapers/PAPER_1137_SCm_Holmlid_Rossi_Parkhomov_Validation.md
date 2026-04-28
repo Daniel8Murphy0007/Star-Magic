@@ -85,13 +85,13 @@ All consistent with SCm phonon + buoyancy stabilization. 87% realistic validatio
 
 ## 5. SymPy LaTeX Export (for VS Code)
 
-Add to `scm_vacuum_manifold.py`:
+Add to `scm_{vacuum\_manifold}.py`:
 
 ```python
-def export_holmlid_to_latex():
+def export_{holmlid\_to\_latex}():
     latex_dict = {
-        'E_SCm_phonon': sp.latex(E_SCm_phonon),
-        'F_U_Bi_i': sp.latex(F_U_Bi_i),
+        'E_{SCm\_phonon}': sp.latex(E_{SCm\_phonon}),
+        'F_{U\_Bi\_i}': sp.latex(F_{U\_Bi\_i}),
         'Phi_gaussian': sp.latex(Phi_gaussian)
     }
     return latex_dict
@@ -99,6 +99,6 @@ def export_holmlid_to_latex():
 
 ---
 
-**Source TEX:** `pdf/SCm_Holmlid_Rossi_Parkhomov_Validation.tex`  
-**PDF:** `pdf/PAPER_1137_SCm_Holmlid_Rossi_Parkhomov_Validation.pdf`  
+**Source TEX:** `pdf/SCm_{Holmlid\_Rossi\_Parkhomov\_Validation}.tex`  
+**PDF:** `pdf/PAPER_{1137\_SCm\_Holmlid\_Rossi\_Parkhomov\_Validation}.pdf`  
 **CP4 Class:** `HolmlidRossiParkhomovValidator` (#638)

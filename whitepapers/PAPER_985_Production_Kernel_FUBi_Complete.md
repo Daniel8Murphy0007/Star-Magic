@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_985
-title: "Production Kernel kernel_fu_bi_i_complete — Full 6-Layer Callable"
+title: "Production Kernel kernel_{fu\_bi\_i\_complete} — Full 6-Layer Callable"
 session: 217
 date: 2026-04-12
 author: "Daniel T. Murphy"
@@ -12,18 +12,18 @@ calibration: {SSq: 0.57, beta_i: 0.603, kappa: "0.0005/day", omega_SCm: "2$\pi$$
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_985: Production Kernel kernel_fu_bi_i_complete — Full 6-Layer Callable
+# PAPER_985: Production Kernel kernel_{fu\_bi\_i\_complete} — Full 6-Layer Callable
 
 ## Abstract
 
-We document the standalone production kernel `kernel_fu_bi_i_complete(M_kg, r, t, gamma_THz)` that packages the entire 6-layer $F_{U,\text{Bi}_i}$ computation into a single function call. This kernel replaces the earlier `kernel_fu_bi_i()` in `production_scaling_v12.py` which only computed 2 of 6 layers (Ug + Ub). The complete kernel is the canonical interface for all downstream consumers: REST API, WSTP, CP4 classes, and batch runners.
+We document the standalone production kernel `kernel_{fu\_bi\_i\_complete}(M_kg, r, t, gamma_THz)` that packages the entire 6-layer $F_{U,\text{Bi}_i}$ computation into a single function call. This kernel replaces the earlier `kernel_{fu\_bi\_i}()` in `production_{scaling\_v12}.py` which only computed 2 of 6 layers (Ug + Ub). The complete kernel is the canonical interface for all downstream consumers: REST API, WSTP, CP4 classes, and batch runners.
 
 ## 1. Kernel Signature
 
 ```python
-def kernel_fu_bi_i_complete(M_kg: float, r: float, t: float, gamma_THz: float) -> dict:
+def kernel_{fu\_bi\_i\_complete}(M_kg: float, r: float, t: float, gamma_THz: float) -> dict:
     """
-    Complete 6-layer F_U_Bi_i master buoyancy force.
+    Complete 6-layer F_{U\_Bi\_i} master buoyancy force.
     
     Args:
         M_kg: Mass in kg
@@ -32,13 +32,13 @@ def kernel_fu_bi_i_complete(M_kg: float, r: float, t: float, gamma_THz: float) -
         gamma_THz: Linewidth in THz
     
     Returns:
-        dict with keys: F_U_Bi_i, Ug, Ub, Um, UA, Fn, Phi, E_net, S26
+        dict with keys: F_{U\_Bi\_i}, Ug, Ub, Um, UA, Fn, Phi, E_net, S26
     """
 ```
 
 ## 2. Layer Coverage Comparison
 
-| Layer | Old `k`ernel_fu_bi`_i` | New `k`ernel_fu_bi_i_complet`e` |
+| Layer | Old `k`ernel_{fu\_bi}`_i` | New `k`ernel_{fu\_bi\_i\_complet}`e` |
 |-------|---------------------|-------------------------------|
 | L1: $U_g$ (26-layer gravity) | ✅ | ✅ |
 | L2: $U_m + U_A$ (magnetism + aether) | ❌ | ✅ |
@@ -52,7 +52,7 @@ def kernel_fu_bi_i_complete(M_kg: float, r: float, t: float, gamma_THz: float) -
 The kernel returns a full decomposition dict:
 ```python
 {
-    'F_U_Bi_i': -2.405685e-02,  # Master force (m/s2)
+    'F_{U\_Bi\_i}': -2.405685e-02,  # Master force (m/s2)
     'Ug': 5.930e-03,             # 26-layer gravity
     'Ub': -3.573e-03,            # 26-layer buoyancy
     'Um': 1.234e-10,             # Universal magnetism
@@ -72,11 +72,11 @@ Solar test ($M_\odot$, $r = 1$ AU, $t = 1$ day, $\Gamma = 0.1$ THz):
 
 ## 5. Implementation
 
-Function `kernel_fu_bi_i_complete()` in `fubi_master_calculator.py`, §9 Production Kernel section.
+Function `kernel_{fu\_bi\_i\_complete}()` in `fubi_{master\_calculator}.py`, §9 Production Kernel section.
 
 ## References
-- PAPER_979: Complete 6-Layer F_U_Bi_i
-- PAPER_988: REST F_U_Bi_i Endpoint
+- PAPER_979: Complete 6-Layer F_{U\_Bi\_i}
+- PAPER_988: REST F_{U\_Bi\_i} Endpoint
 
 ---
 
@@ -97,7 +97,7 @@ The kernel is the numerical evaluation of $\delta S[\mathcal{L}_{\text{SCm}}] / 
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -180,7 +180,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -198,7 +198,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -253,7 +253,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

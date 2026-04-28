@@ -93,4 +93,4 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \kappa = 5.0
 
 1. Ferrarese, L. & Merritt, D. (2000). A fundamental relation between supermassive black holes and their host galaxies. *ApJ Lett.* **539**, L9.
 2. Gebhardt, K. et al. (2000). A relationship between nuclear black hole mass and galaxy velocity dispersion. *ApJ Lett.* **539**, L13.
-3. SCm $F_{U,Bi,i}$: `COMPLETE_UQFF_EQUATIONS_REFERENCE.md`; AdS/CFT dual: `ads_cft_scm_dual()` in `scm_vacuum_manifold.py`
+3. SCm $F_{U,Bi,i}$: `COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md`; AdS/CFT dual: `ads_{cft\_scm\_dual}()` in `scm_{vacuum\_manifold}.py`

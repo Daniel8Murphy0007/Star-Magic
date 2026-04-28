@@ -83,4 +83,4 @@ $$[SSq] = 0.57, \quad S_{26}^{(3)} = 1.4531 \times 10^{26}, \quad \beta_i = 0.6,
 
 1. ATLAS Collaboration (2023). Off-shell Higgs boson signal strength. arXiv:2304.01532.
 2. Caola, F. & Melnikov, K. (2013). Constraining the Higgs boson width. *Phys. Rev. D* **88**, 054024.
-3. SCm vacuum: `scm_vacuum_manifold.py`
+3. SCm vacuum: `scm_{vacuum\_manifold}.py`

@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1013
-title: "QGP ALICE Centrality F_U_Bi_i Curves — dN/deta Scaling Across 4 Bins"
+title: "QGP ALICE Centrality F_{U\_Bi\_i} Curves — dN/deta Scaling Across 4 Bins"
 session: 220
 date: 2026-04-14
 author: "Daniel T. Murphy"
@@ -8,12 +8,12 @@ status: production
 cvw: "v2.0.0"
 tags: [QGP, ALICE, centrality, multiplicity, LHC, PbPb, FUBi, dNdeta]
 crosslinks: [PAPER_1009, PAPER_1010, PAPER_1018]
-calibration: {bins: 4, N_part_0_5: 383, N_part_5_10: 330, N_part_10_20: 261, N_part_20_40: 158,
-dNdeta_0_5: 10752.1}
+calibration: {bins: 4, N_{part\_0\_5}: 383, N_{part\_5\_10}: 330, N_{part\_10\_20}: 261, N_{part\_20\_40}: 158,
+dNdeta_{0\_5}: 10752.1}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1013: QGP ALICE Centrality F_U_Bi_i Curves
+# PAPER_1013: QGP ALICE Centrality F_{U\_Bi\_i} Curves
 
 ## Abstract
 
@@ -44,7 +44,7 @@ deconfined phase.
 
 ## 4. Implementation
 
-File: `fubi_i_curves_agn_ns_qgp.py`, class `QGPALICECentralityCurvesCalc`. CP4 class #597. Tests:
+File: `fubi_{i\_curves\_agn\_ns\_qgp}.py`, class `QGPALICECentralityCurvesCalc`. CP4 class #597. Tests:
 8/8 pass.
 
 
@@ -115,7 +115,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component rho (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -132,7 +132,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -219,7 +219,7 @@ BSH timescale: system-dependent
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -232,7 +232,7 @@ BSH timescale: system-dependent
 | PAPER_1059 | Color Glass Condensate BK Saturation SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 

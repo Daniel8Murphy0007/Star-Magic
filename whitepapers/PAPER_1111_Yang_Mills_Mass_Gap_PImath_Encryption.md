@@ -47,7 +47,7 @@ After applying the SCm scaling factor $\kappa = 5.0 \times 10^{-4}\ \text{day}^{
 
 ---
 
-## 4. Confinement via F_U_Bi_i Buoyancy
+## 4. Confinement via F_{U\_Bi\_i} Buoyancy
 
 The $F_{U,Bi,i}$ buoyancy integral provides the confining potential:
 
@@ -69,4 +69,4 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad S_{26}^{(3)}
 
 1. Yang, C.N. & Mills, R.L. (1954). Conservation of isotopic spin and isotopic gauge invariance. *Phys. Rev.* **96**, 191.
 2. Jaffe, A. & Witten, E. (2000). Quantum Yang-Mills Theory. Clay Millennium Prize Problem.
-3. SCm vacuum manifold: `scm_vacuum_manifold.py`; MIT bag model: `mit_bag_scm()` function
+3. SCm vacuum manifold: `scm_{vacuum\_manifold}.py`; MIT bag model: `mit_{bag\_scm}()` function

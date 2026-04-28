@@ -100,4 +100,4 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \kappa = 5.0
 
 1. Gross, D.J. et al. (1985). Heterotic string theory (I). *Nucl. Phys. B* **256**, 253.
 2. Green, M.B. & Schwarz, J.H. (1984). Anomaly cancellations in supersymmetric D=10 gauge theory. *Phys. Lett. B* **149**, 117.
-3. Type IIA SCm: PAPER_1145; Calabi-Yau: PAPER_1147; `scm_vacuum_manifold.py`
+3. Type IIA SCm: PAPER_1145; Calabi-Yau: PAPER_1147; `scm_{vacuum\_manifold}.py`

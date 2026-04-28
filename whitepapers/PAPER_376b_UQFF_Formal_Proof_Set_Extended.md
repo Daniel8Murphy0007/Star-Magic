@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy
 **Date:** May 15, 2025
 
-**Source:** grok_share_11254865.txt, Grok analysis of:
+**Source:** grok_{share\_11254865}.txt, Grok analysis of:
 - "Compressed UQFF Equation_14May2025.docx"
 - "Master UQFF Resonance Equation_14May2025.docx"
 
@@ -27,7 +27,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-$$g_{\rm compressed} = \sum_{i=1}^{26}[U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}]$$
+$$g_{\mathrm{compressed}} = \sum_{i=1}^{26}[U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}]$$
 
 Extended dimensional analysis companion to PAPER_376. This paper focuses on verifying
 dimensional consistency of each individual Ug_k component of the Compressed UQFF Equation
@@ -127,11 +127,11 @@ $$
 | 5 | aaether_res | f_aether $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 | 6 | Ug4i | $\rho$_vac $\cdot$ exp(-r/$\lambda$) $\cdot$ G$\cdot$L/c2 | m/s2 PASS |
 | 7 | aquantum_freq | f_quantum $\cdot$ Evac_neb $\cdot$ aDPM / Evac_ISM / c | m/s2 PASS |
-| 8 | aAether_freq | `f_aether_2` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 8 | aAether_freq | `f_{aether\_2}` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 | 9 | afluid_freq | f_fluid $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 | 10 | Osc_term | A $\cdot$ sin($\omega$t + $\phi$) $\cdot$ Evac_neb / c | m/s2 PASS |
 | 11 | aexp_freq | f_exp $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
-| 12 | fTRZ | `f_TRZ_val` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
+| 12 | fTRZ | `f_{TRZ\_val}` $\cdot$ Evac_neb / Evac_ISM / c | m/s2 PASS |
 
 ### 2.2 Normalization Chain
 
@@ -228,7 +228,7 @@ characterizes the vacuum state at each point in the 26D BSFG metric.
 
 ## 7. Source Data
 
-- **File:** grok_share_11254865.txt (lines 6001-10322)
+- **File:** grok_{share\_11254865}.txt (lines 6001-10322)
 - **Session:** 102
 - **Companion:** PAPER_376 — UQFF Resonance Formal Proof Set
 - **VDS/DVP/BSH:** PRESENT
@@ -240,26 +240,26 @@ characterizes the vacuum state at each point in the 26D BSFG metric.
 ### §A.1 Sector Classification
 
 This paper maps to **formal-proof** sector of the 9-sector UQFF Lagrangian (see
-`uqff_lagrangian_derivation.py`).
+`uqff_{lagrangian\_derivation}.py`).
 
 ### §A.2 Lagrangian Density
 
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm dim})(\partial^\mu \phi_{\rm dim}) - V(\phi_{\rm dim}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{dim}})(\partial^\mu \phi_{\mathrm{dim}}) - V(\phi_{\mathrm{dim}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\rm dim}) = \frac{1}{2} m^2 \phi_{\rm dim}^2 + \frac{\lambda}{4!} \phi_{\rm dim}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm dim}$$
+$$V(\phi_{\mathrm{dim}}) = \frac{1}{2} m^2 \phi_{\mathrm{dim}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{dim}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{dim}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{g_{\rm compressed} = \sum_{i=1}^{26}[U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}]}$$
+$$\boxed{g_{\mathrm{compressed}} = \sum_{i=1}^{26}[U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}]}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm dim} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{dim}} = 0$$
 
 ---
 
@@ -267,30 +267,30 @@ $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.10$ (Evac_neb/Evac_ISM = 10, logarithmic: 0.10).
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
-$$p_{\rm DVP} = 3, \quad n_{\rm channel} = 22/26$$
+$$p_{\mathrm{DVP}} = 3, \quad n_{\mathrm{channel}} = 22/26$$
 
-Since $p_{\rm DVP} = 3$ is **sub-threshold** ($p < 26$), the dimensional analysis operates in the non-resonant regime where all 26 layers contribute through direct summation rather than prime-indexed amplification.
+Since $p_{\mathrm{DVP}} = 3$ is **sub-threshold** ($p < 26$), the dimensional analysis operates in the non-resonant regime where all 26 layers contribute through direct summation rather than prime-indexed amplification.
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **4.35e17 s (Hubble time)**:
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.10 | PASS Consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
+| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.10 | PASS Consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 3$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in Ug2 exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in R(t) convergence | PASS Canonical |
@@ -304,7 +304,7 @@ $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -354,7 +354,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -372,7 +372,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -412,9 +412,9 @@ mock-theta framework with the SCm phonon spectrum.
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -441,13 +441,13 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
-| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
+| PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

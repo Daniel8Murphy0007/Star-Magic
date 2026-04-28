@@ -87,4 +87,4 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \kappa = 5.0
 
 1. Heaviside, O. (1893). Electromagnetic Theory, Vol. I. London: The Electrician.
 2. Bearden, T.E. (2002). Energy from the Vacuum. Cheniere Press.
-3. SCm vacuum: `scm_vacuum_manifold.py`; UQFF COP: COMPLETE_UQFF_EQUATIONS_REFERENCE.md §6
+3. SCm vacuum: `scm_{vacuum\_manifold}.py`; UQFF COP: COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md §6

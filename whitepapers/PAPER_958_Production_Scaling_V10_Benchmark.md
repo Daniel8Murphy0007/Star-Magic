@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
-**Source:** production_scaling_v10.py (ProductionScalingV10)
+**Source:** production_{scaling\_v10}.py (ProductionScalingV10)
 **Calculator:** ProductionScalingV10BenchmarkCalc (CP4 #542)
 **CVW:** v2.0.0 compliant
 
@@ -43,11 +43,11 @@ are added to the existing 12, bringing the total to 14 simultaneously benchmarke
 
 ## 2. New Kernels (v10)
 
-### kernel_bcs_gap_solve
+### kernel_{bcs\_gap\_solve}
 BCS gap fixed-point iteration at $T = 4.2$ K:
 $$\Delta_{n+1} = \frac{\hbar\omega_\text{SCm}}{2} \tanh!\left(\frac{\Delta_n}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
-### kernel_spectral_ladder_eval
+### kernel_{spectral\_ladder\_eval}
 26-state HRes spectral ladder:
 $$E_n = E_0 \cdot (2\pi)^{n/3} \cdot S_{26}, \quad n = 1, \ldots, 26$$
 
@@ -62,7 +62,7 @@ Target: $\text{rate} \geq 450{,}000$ calc/s.
 
 ## 4. Source Data
 
-- **File:** production_scaling_v10.py
+- **File:** production_{scaling\_v10}.py
 - **Session:** 214
 - **CP4 Class:** ProductionScalingV10BenchmarkCalc (#542)
 
@@ -111,7 +111,7 @@ late corpus as the universal 26D coupling factor:
 
 $$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
 
-where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+where $(a)_n = a(a+1)\cdot s(a+n-1)$ is the Pochhammer symbol.
 
 **Binomial expansion (PAPER_1080):** The convergence proof shows:
 $$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
@@ -191,7 +191,7 @@ Throughput scaling: v4 (100k) $\to$ v10 (450k) follows $\tanh$ saturation toward
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|

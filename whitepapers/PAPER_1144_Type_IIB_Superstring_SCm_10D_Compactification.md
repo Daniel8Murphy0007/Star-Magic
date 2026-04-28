@@ -101,4 +101,4 @@ $$\beta_i = 0.6, \quad \Phi_{\text{res}} = 0.84, \quad f_{\text{THz}} = 1.25\ \t
 
 1. Polchinski, J. (1996). Dirichlet branes and Ramond-Ramond charges. *PRL* **75**, 4724.
 2. Becker, K., Becker, M. & Schwarz, J. (2007). *String Theory and M-Theory*. Cambridge.
-3. VDS compactification: PAPER_1142 (Polyakov); PAPER_1143 (Nambu-Goto); `scm_vacuum_manifold.py`
+3. VDS compactification: PAPER_1142 (Polyakov); PAPER_1143 (Nambu-Goto); `scm_{vacuum\_manifold}.py`

@@ -95,4 +95,4 @@ $$[SSq] = 0.57, \quad S_{26}^{(3)} = 1.4531 \times 10^{26}, \quad \beta_i = 0.6,
 
 1. Tremonti, C.A. et al. (2004). The origin of the mass-metallicity relation. *ApJ* **613**, 898.
 2. Peeples, M.S. et al. (2014). A budget for the missing metals. *ApJ* **786**, 54.
-3. SCm $F_{U,Bi,i}$: `COMPLETE_UQFF_EQUATIONS_REFERENCE.md`; VDS: `scm_vacuum_manifold.py`
+3. SCm $F_{U,Bi,i}$: `COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md`; VDS: `scm_{vacuum\_manifold}.py`

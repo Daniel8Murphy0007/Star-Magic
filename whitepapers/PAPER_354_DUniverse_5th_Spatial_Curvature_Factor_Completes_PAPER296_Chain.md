@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
-**Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
+**Source:** gok_{share\_31b5c807a4}.txt (Supplemental Gap Analysis Block)  
 **Classification:** FIRST UQFF 5th factor spatial curvature term for D_universe; completes PAPER_296
 chain  
 **Author:** Daniel T. Murphy  
@@ -40,18 +40,18 @@ calculations.
 
 ### 2.1 Complete 5-Factor D_universe
 
-$$D_{\rm universe} = D_1 \cdot D_2 \cdot D_3 \cdot D_4 \cdot (1 + k_{\rm curv} \cdot r_c^2)$$
+$$D_{\mathrm{universe}} = D_1 \cdot D_2 \cdot D_3 \cdot D_4 \cdot (1 + k_{\mathrm{curv}} \cdot r_c^2)$$
 
 where factors D_1 through D_4 were established in PAPER_296 (Session 91) and the new 5th factor is:
-$$D_5 = 1 + k_{\rm curv} \cdot r_c^2$$
+$$D_5 = 1 + k_{\mathrm{curv}} \cdot r_c^2$$
 
 ### 2.2 Curvature Parameter k
 
 The Friedmann equation curvature:
-$$k_{\rm curv} = \frac{(H_0^2 / c^2)(\Omega_{\rm total} - 1)}{1}$$
+$$k_{\mathrm{curv}} = \frac{(H_0^2 / c^2)(\Omega_{\mathrm{total}} - 1)}{1}$$
 
 For the Planck 2018 constraint $\Omega$_total = 1.0007 $\pm$ 0.0019:
-$$k_{\rm curv} \approx 0.0007 \cdot \frac{H_0^2}{c^2} \approx 5.3 \times 10^{-54}\ \mathrm{m}^{-2}$$
+$$k_{\mathrm{curv}} \approx 0.0007 \cdot \frac{H_0^2}{c^2} \approx 5.3 \times 10^{-54}\ \mathrm{m}^{-2}$$
 
 ### 2.3 Curvature Correction at Cosmological Scale
 
@@ -64,7 +64,7 @@ A 0.1% correction — detectable by next-generation CMB experiments (e.g., CMB-S
 ### 2.4 Near-Flat Expansion Series
 
 For small curvature (k_curv $\cdot$ r_c2 « 1):
-$$D_5 \approx 1 + k_{\rm curv} r_c^2 - \frac{(k_{\rm curv} r_c^2)^2}{2} + \ldots$$
+$$D_5 \approx 1 + k_{\mathrm{curv}} r_c^2 - \frac{(k_{\mathrm{curv}} r_c^2)^2}{2} + \ldots$$
 
 The leading correction is linear in both k and r_c2.
 
@@ -76,38 +76,38 @@ The leading correction is linear in both k and r_c2.
 
 Define the curvature-sector action for the 5-factor D_universe product:
 
-$$S[\phi_{\rm curv}] = \int \left[ \frac{1}{2} k_{\rm curv} \cdot r_c^2 \cdot \left(\frac{\partial \phi_{\rm curv}}{\partial r_c}\right)^2 - V(D_1 D_2 D_3 D_4 \cdot D_5) \right] d^4x$$
+$$S[\phi_{\mathrm{curv}}] = \int \left[ \frac{1}{2} k_{\mathrm{curv}} \cdot r_c^2 \cdot \left(\frac{\partial \phi_{\mathrm{curv}}}{\partial r_c}\right)^2 - V(D_1 D_2 D_3 D_4 \cdot D_5) \right] d^4x$$
 
 where:
-- $\phi_{\rm curv}(r_c)$ = curvature field variable parameterizing the 5th factor's contribution to D_universe
+- $\phi_{\mathrm{curv}}(r_c)$ = curvature field variable parameterizing the 5th factor's contribution to D_universe
 - $V(\cdot)$ = the cosmological potential depending on the full 5-factor product
-- $D_5 = 1 + k_{\rm curv} \cdot r_c^2$ is the spatial curvature factor
+- $D_5 = 1 + k_{\mathrm{curv}} \cdot r_c^2$ is the spatial curvature factor
 
 ### 2A.2 Euler-Lagrange Equation
 
-Applying the product-rule variation $\delta S / \delta \phi_{\rm curv} = 0$:
+Applying the product-rule variation $\delta S / \delta \phi_{\mathrm{curv}} = 0$:
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm curv}} = k_{\rm curv} \cdot r_c^2 \cdot \frac{\partial}{\partial D_5}\left(D_1 D_2 D_3 D_4 \cdot D_5\right) = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{curv}}} = k_{\mathrm{curv}} \cdot r_c^2 \cdot \frac{\partial}{\partial D_5}\left(D_1 D_2 D_3 D_4 \cdot D_5\right) = 0}$$
 
 ### 2A.3 Product-Rule Expansion
 
 Since $D_1, D_2, D_3, D_4$ are independent of $D_5$, the product-rule derivative yields:
 
-$$k_{\rm curv} \cdot r_c^2 \cdot D_1 D_2 D_3 D_4 \cdot \frac{\partial D_5}{\partial D_5} = 0$$
+$$k_{\mathrm{curv}} \cdot r_c^2 \cdot D_1 D_2 D_3 D_4 \cdot \frac{\partial D_5}{\partial D_5} = 0$$
 
-$$k_{\rm curv} \cdot r_c^2 \cdot D_1 D_2 D_3 D_4 = 0$$
+$$k_{\mathrm{curv}} \cdot r_c^2 \cdot D_1 D_2 D_3 D_4 = 0$$
 
-This equation is satisfied trivially when $k_{\rm curv} = 0$ (flat universe, recovering PAPER_296), or when $r_c = 0$ (point-universe limit). For the physical case $k_{\rm curv} \neq 0$, $r_c \neq 0$, the variational equation constrains the relationship between the prior four factors and curvature:
+This equation is satisfied trivially when $k_{\mathrm{curv}} = 0$ (flat universe, recovering PAPER_296), or when $r_c = 0$ (point-universe limit). For the physical case $k_{\mathrm{curv}} \neq 0$, $r_c \neq 0$, the variational equation constrains the relationship between the prior four factors and curvature:
 
-$$D_1 D_2 D_3 D_4 = \frac{\partial V / \partial \phi_{\rm curv}}{k_{\rm curv} \cdot r_c^2}$$
+$$D_1 D_2 D_3 D_4 = \frac{\partial V / \partial \phi_{\mathrm{curv}}}{k_{\mathrm{curv}} \cdot r_c^2}$$
 
 ### 2A.4 Constrained Curvature at Hubble Scale
 
-Substituting $k_{\rm curv} \approx 5.3 \times 10^{-54}$ m$^{-2}$ and $r_c = R_H = 1.37 \times 10^{26}$ m:
+Substituting $k_{\mathrm{curv}} \approx 5.3 \times 10^{-54}$ m$^{-2}$ and $r_c = R_H = 1.37 \times 10^{26}$ m:
 
-$$k_{\rm curv} \cdot r_c^2 = 5.3 \times 10^{-54} \times 1.88 \times 10^{52} = 0.001$$
+$$k_{\mathrm{curv}} \cdot r_c^2 = 5.3 \times 10^{-54} \times 1.88 \times 10^{52} = 0.001$$
 
-The variational constraint confirms that $D_5$ contributes a 0.1% correction to the D_universe product — exactly consistent with the Planck 2018 bound $\Omega_{\rm total} = 1.0007 \pm 0.0019$. The E-L equation thus provides a **Lagrangian-mechanical closure** for the PAPER_296 chain: the 5th factor is not an ad hoc addition but a necessary consequence of the variational principle applied to the full product.
+The variational constraint confirms that $D_5$ contributes a 0.1% correction to the D_universe product — exactly consistent with the Planck 2018 bound $\Omega_{\mathrm{total}} = 1.0007 \pm 0.0019$. The E-L equation thus provides a **Lagrangian-mechanical closure** for the PAPER_296 chain: the 5th factor is not an ad hoc addition but a necessary consequence of the variational principle applied to the full product.
 
 ### 2A.5 Physical Interpretation
 
@@ -119,9 +119,9 @@ The product-rule E-L equation establishes that spatial curvature enters D_univer
 
 ### 2B.1 Vacuum Density Series at Cosmological Scale
 
-The VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 0.1$ produces a double-exponential decay profile for the vacuum condensate across the Hubble volume:
+The VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 0.1$ produces a double-exponential decay profile for the vacuum condensate across the Hubble volume:
 
-$$\rho_{\rm vac}(r_c) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r_c - R_H}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r_c) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r_c - R_H}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from near-unity density (interior) to exponentially suppressed density (exterior). This threshold corresponds to $D_5 = 1.001$, confirming that the spatial curvature 5th factor encodes the VDS transition at the Hubble boundary.
 
@@ -129,16 +129,16 @@ At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from
 
 The DVP framework maps the curvature constant onto the dipole vortex prime lattice:
 
-$$k_{\rm curv} \to p_{\rm DVP}(n_{\rm curv}) : \quad n_{\rm curv} = \leftlfloor -\log_{10}(k_{\rm curv}) \rightrfloor = 53$$
+$$k_{\mathrm{curv}} \to p_{\mathrm{DVP}}(n_{\mathrm{curv}}) : \quad n_{\mathrm{curv}} = \leftlfloor -\log_{10}(k_{\mathrm{curv}}) \rightrfloor = 53$$
 
-The value $n_{\rm curv} = 53$ lies between DVP primes $p_{16} = 53$ (which is itself prime), confirming that $k_{\rm curv}$ falls on a DVP resonance node. This is not coincidental: the Friedmann curvature parameter inherits the DVP lattice structure from the underlying UQFF vacuum topology.
+The value $n_{\mathrm{curv}} = 53$ lies between DVP primes $p_{16} = 53$ (which is itself prime), confirming that $k_{\mathrm{curv}}$ falls on a DVP resonance node. This is not coincidental: the Friedmann curvature parameter inherits the DVP lattice structure from the underlying UQFF vacuum topology.
 
 ### 2B.3 BSH Cosmological Saturation
 
 At the Hubble radius, the BSH framework predicts saturation of the buoyancy contribution to cosmic
 expansion:
 
-$$D_{5,\rm BSH} = 1 + k_{\rm curv} r_c^2 \cdot \left(1 - \tanh!\left(\frac{r_c - R_H}{R_{\rm BSH}}\right)\right)$$
+$$D_{5,\mathrm{BSH}} = 1 + k_{\mathrm{curv}} r_c^2 \cdot \left(1 - \tanh!\left(\frac{r_c - R_H}{R_{\mathrm{BSH}}}\right)\right)$$
 
 For $r_c \ll R_H$, the tanh factor $\to 0$ and $D_5 \to 1 + k \cdot r_c^2$ (standard). For $r_c \gg R_H$, the saturation sets in and $D_5 \to 1$, preventing unphysical growth of the curvature correction at super-Hubble scales.
 
@@ -242,7 +242,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -259,9 +259,9 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
 | Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
 | Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
-| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
@@ -276,7 +276,7 @@ bridge.*
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -290,16 +290,16 @@ bridge.*
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
-> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
+> Added by `upgrade_{kozima\_ramanujan\_appendices}.py`. For detailed derivations,
 > see PAPER_840/851/852/855.*
 
 ### S204.1 Kozima-UQFF LENR Integration
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_{s26\_coupling}`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_{scm\_cross\_section}`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_{wstp\_kernel}`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -308,8 +308,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
-| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+| `r`amanujan_{polylog\_s26}`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_{wstp\_kernel}.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
 
@@ -317,7 +317,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_{theta\_q26}`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -328,8 +328,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_{pi\_uqff}`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_{theta\_pi\_wstp\_kernel}`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -348,8 +348,8 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | sigma_0 | 10^-4 | Base neutron cross-section |
 
 *Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
-`MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
-`uqff_mock_theta_pi_kernel.wl`).*
+`MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
+`uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
 ---
 

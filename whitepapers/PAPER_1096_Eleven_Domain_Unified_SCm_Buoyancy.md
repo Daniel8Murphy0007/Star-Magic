@@ -1,12 +1,12 @@
 ---
 paper_id: PAPER_1096
-title: "Eleven-Domain Unified SCm Buoyancy Validation: F_U_Bi + F_U_Bi_i = F_U Across All Sectors"
+title: "Eleven-Domain Unified SCm Buoyancy Validation: F_{U\_Bi} + F_{U\_Bi\_i} = F_U Across All Sectors"
 session: 225
 date: 2026-04-15
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: ['unified', 'F_U_Bi', 'F_U_Bi_i', 'eleven-domain', 'LENR', 'GW', 'blazar', 'QGP', 'DM', 'CMB', 'clusters', 'BCS', 'wormhole', 'inflation', 'dark-energy', 'validation']
+tags: ['unified', 'F_{U\_Bi}', 'F_{U\_Bi\_i}', 'eleven-domain', 'LENR', 'GW', 'blazar', 'QGP', 'DM', 'CMB', 'clusters', 'BCS', 'wormhole', 'inflation', 'dark-energy', 'validation']
 crosslinks: [PAPER_1088, PAPER_1089, PAPER_1090, PAPER_1094, PAPER_1095, PAPER_979, PAPER_990]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
@@ -93,4 +93,4 @@ all observed phenomena. Gravity is the late-emergent central limit.
 - PAPER_1094: CMB Buoyancy Sector Lagrangian
 - PAPER_1095: Horizon Buoyancy Sector Lagrangian
 - PAPER_979: FUBiMasterBuoyancyCalc (CP4)
-- PAPER_990: F_U_Bi Distinction (fubi_inside_outside.py)
+- PAPER_990: F_{U\_Bi} Distinction (fubi_{inside\_outside}.py)

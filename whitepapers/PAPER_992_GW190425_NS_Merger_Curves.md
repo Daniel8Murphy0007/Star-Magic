@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_992
-title: "GW190425 NS Merger F_U_Bi_i Curves — 47% Peak Strain Suppression"
+title: "GW190425 NS Merger F_{U\_Bi\_i} Curves — 47% Peak Strain Suppression"
 session: 218
 date: 2026-04-13
 author: "Daniel T. Murphy"
@@ -12,7 +12,7 @@ calibration: {M_total: "3.4 Msun", d_Mpc: 159, peak_suppression: "47%"}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_992: GW190425 NS Merger F_U_Bi_i Curves
+# PAPER_992: GW190425 NS Merger F_{U\_Bi\_i} Curves
 
 ## Abstract
 
@@ -30,11 +30,11 @@ At 7 linewidth values, the strain reduction ranges from near-zero (far off-reson
 
 ## 3. Mass-Gap Classification
 
-With $m_1 = 2.52\,M_\odot$, the heavier component sits in the NS/BH mass gap. The phonon-modulated F_U_Bi_i provides additional classification power: $P(\text{NS}) = 49\%$, $P(\text{BH}) = 51\%$.
+With $m_1 = 2.52\,M_\odot$, the heavier component sits in the NS/BH mass gap. The phonon-modulated F_{U\_Bi\_i} provides additional classification power: $P(\text{NS}) = 49\%$, $P(\text{BH}) = 51\%$.
 
 ## 4. Implementation
 
-File: `fubi_inside_outside.py`, class `GW190425FUBiCurves`. CP4 class #576.
+File: `fubi_{inside\_outside}.py`, class `GW190425FUBiCurves`. CP4 class #576.
 
 ---
 
@@ -73,7 +73,7 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -185,7 +185,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
 | 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
-| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
 | 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
 | 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
@@ -270,12 +270,12 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
-| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1000 | NS Merger F_{U\_Bi} Strain Suppression & BCS Gap |
+| PAPER_1011 | GW170817 NS Merger F_{U\_Bi\_i} 66.7% Strain Reduction |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
@@ -284,7 +284,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |

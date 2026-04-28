@@ -1,18 +1,18 @@
 ---
 paper_id: PAPER_990
-title: "F_U_Bi vs F_U_Bi_i Distinction — Direction, Magnitude, Dimensionality"
+title: "F_{U\_Bi} vs F_{U\_Bi\_i} Distinction — Direction, Magnitude, Dimensionality"
 session: 218
 date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [F_U_Bi, F_U_Bi_i, distinction, direction, buoyancy, sign]
+tags: [F_{U\_Bi}, F_{U\_Bi\_i}, distinction, direction, buoyancy, sign]
 crosslinks: [PAPER_989, PAPER_979, PAPER_991]
-calibration: {F_U_Bi: 2.33e40, F_U_Bi_i: -2.41e-02}
+calibration: {F_U_Bi: 2.33e40, F_{U\_Bi\_i}: -2.41e-02}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_990: F_U_Bi vs F_U_Bi_i Distinction
+# PAPER_990: F_{U\_Bi} vs F_{U\_Bi\_i} Distinction
 
 ## Abstract
 
@@ -27,13 +27,13 @@ confused:
 | Magnitude | $\sim 10^{40}$ | $\sim 10^{-2}$ |
 | Physical meaning | Vacuum mass transport | Net gravitational acceleration |
 
-## 1. F_U_Bi (Inside-to-Outside)
+## 1. F_{U\_Bi} (Inside-to-Outside)
 
 $$F_{U,\text{Bi}} = \rho_{\text{SCm}} \cdot V \cdot S_{26}^2 \cdot \frac{|U_b|}{|U_g| + |U_b|}$$
 
 This is the total vacuum energy flowing outward through the 26-layer buoyancy structure. It is always positive and cosmologically large because it includes $V_{\text{region}} \sim 10^{48}\text{ m}^3$.
 
-## 2. F_U_Bi_i (Outside-to-Inside)
+## 2. F_{U\_Bi\_i} (Outside-to-Inside)
 
 $$F_{U,\text{Bi}_i} = U_g + U_m + U_A - U_b + F_n \cdot S_{26} \cdot \Phi \cdot E_{\text{net}}$$
 
@@ -46,7 +46,7 @@ The ratio $|F_{U,\text{Bi}_i}| / F_{U,\text{Bi}}$ gives the fractional accelerat
 
 ## 4. Implementation
 
-File: `fubi_inside_outside.py`, class `FUBiDistinctionCalc`. CP4 class #574.
+File: `fubi_{inside\_outside}.py`, class `FUBiDistinctionCalc`. CP4 class #574.
 
 ---
 
@@ -55,7 +55,7 @@ File: `fubi_inside_outside.py`, class `FUBiDistinctionCalc`. CP4 class #574.
 ### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
 
 > *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
-> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_{U\_Bi\_i} jet
 > modulation curves and PAPER_1048 for phonon-corrected M-$\sigma$ relation.*
 
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
@@ -150,7 +150,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 
 > *Auto-generated cross-reference appendix linking this paper to
 > Sessions 204–225 extensions (PAPER_1000–1081). Added by
-> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+> `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
@@ -161,7 +161,7 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
-| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 

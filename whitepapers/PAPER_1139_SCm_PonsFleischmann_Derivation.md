@@ -73,22 +73,22 @@ The buoyancy force acts outside-to-inside, opposing gravitational collapse and m
 ## 5. Numerical Implementation
 
 ```python
-def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
+def pons_{fleischmann\_excess\_heat}(PdD_loading=0.9, volume=1e-6):
     """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling.
     Uses canonical Pd atomic density + 630 eV/cluster energy.
     Output: ~5 W at default params (range 1-50 W matching observations).
-    Canonical source: pdf/scm_vacuum_manifold.py
+    Canonical source: pdf/scm_{vacuum\_manifold}.py
     """
     rho_Pd = 6.8e28              # Pd atomic density [atoms/m^3]
     active_fraction = 0.01      # 1% of Pd sites active under SCm resonance
-    energy_per_cluster_j = 630 * 1.60217662e-19  # canonical 630 eV/cluster
+    energy_{per\_cluster\_j} = 630 * 1.60217662e-19  # canonical 630 eV/cluster
     Phi_res = 0.84               # on-resonance buoyancy coupling
-    N_per_sec = PdD_loading * volume * rho_Pd * active_fraction / 3600
-    P_excess = N_per_sec * energy_per_cluster_j * Phi_res
+    N_{per\_sec} = PdD_loading * volume * rho_Pd * active_fraction / 3600
+    P_excess = N_{per\_sec} * energy_{per\_cluster\_j} * Phi_res
     return P_excess / 1e3  # kW  (~0.005 kW = 5 W at default params)
 ```
 
-Implemented in: `scm_vacuum_manifold.py` (root and pdf/), `CondensedPhysics3.py`, `CondensedPhysics4.py`, `99system_master_equation.py`, `index.js`.
+Implemented in: `scm_{vacuum\_manifold}.py` (root and pdf/), `CondensedPhysics3.py`, `CondensedPhysics4.py`, `99system_{master\_equation}.py`, `index.js`.
 
 ---
 

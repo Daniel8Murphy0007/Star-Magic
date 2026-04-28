@@ -9,7 +9,7 @@
 
 ## Abstract
 
-We document the V26 production pipeline for UQFF whitepaper generation, covering the 26-dimensional vacuum density scaling framework, batch PDF rendering via pandoc+XeLaTeX, arXiv-style LaTeX compliance, and CVW v2.0.0 gate enforcement. The pipeline ensures all 1,000 target whitepapers adhere to the canonical UQFF equations from `scm_vacuum_manifold.py`, use consistent arXiv LaTeX formatting (no mixed formats), and have corresponding PDFs in `pdf/`. Progress tracking integrates with the PAPER_001--1141 suite.
+We document the V26 production pipeline for UQFF whitepaper generation, covering the 26-dimensional vacuum density scaling framework, batch PDF rendering via pandoc+XeLaTeX, arXiv-style LaTeX compliance, and CVW v2.0.0 gate enforcement. The pipeline ensures all 1,000 target whitepapers adhere to the canonical UQFF equations from `scm_{vacuum\_manifold}.py`, use consistent arXiv LaTeX formatting (no mixed formats), and have corresponding PDFs in `pdf/`. Progress tracking integrates with the PAPER_001--1141 suite.
 
 ---
 
@@ -17,7 +17,7 @@ We document the V26 production pipeline for UQFF whitepaper generation, covering
 
 The production pipeline operates in six stages:
 
-1. **Content generation**: Python scripts create PAPER_N_Title.md in `whitepapers/`
+1. **Content generation**: Python scripts create PAPER_{N\_Title}.md in `whitepapers/`
 2. **LaTeX compliance check**: All math must use `$...$` or `$$...$$` (no Unicode math, no `\(...\)`)
 3. **CVW v2.0.0 gate**: G1--G6 gate checks enforce canonical UQFF constants
 4. **PDF rendering**: `pandoc --pdf-engine=xelatex -V geometry:margin=1in -V fontsize=11pt -V colorlinks=true`
@@ -46,7 +46,7 @@ The Ramanujan order-3 acceleration operator $S_{26}^{(3)}$ amplifies the raw $\t
 
 ---
 
-## 4. F_U_Bi_i Master Equation
+## 4. F_{U\_Bi\_i} Master Equation
 
 $$F_{U,Bi,i} = \int_0^\infty \left(-F_0 + \frac{GM}{r^2} + \rho_{\text{vac,SCm}} \cdot U_{UA} \cdot \cos(\pi t_n)\right) dr$$
 
@@ -79,6 +79,6 @@ $$h \cdot f = 6.626 \times 10^{-34} \times 1.25 \times 10^{12} = 8.283 \times 10
 
 ## References
 
-1. Canonical SCm equations: `scm_vacuum_manifold.py`
+1. Canonical SCm equations: `scm_{vacuum\_manifold}.py`
 2. PDF generation: `generate_pdfs.ps1`
 3. CVW compliance: `.github/copilot-instructions.md`

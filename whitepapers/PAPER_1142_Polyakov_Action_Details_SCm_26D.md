@@ -99,4 +99,4 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \beta_i = 0.
 
 1. Polyakov, A.M. (1981). Quantum geometry of bosonic strings. *Phys. Lett. B* **103**, 207.
 2. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory*, Vol. 1. Cambridge.
-3. VDS 26-ladder: PAPER_1109; SCm vacuum: `scm_vacuum_manifold.py`
+3. VDS 26-ladder: PAPER_1109; SCm vacuum: `scm_{vacuum\_manifold}.py`
