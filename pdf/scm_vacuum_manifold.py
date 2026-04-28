@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # scm_vacuum_manifold.py
 # Generated from clean 27FEB2026_A.docx thread + repo alignment
 # SCm Vacuum Manifold, Buoyancy, Phonon, Negative-Time, Primordial Split
@@ -300,19 +300,6 @@ def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22):
     # Weak-field GW strain: h ~ G * E / (c^4 * r)
     h_scm = (G_N * E_gw * abs(cos_tn)) / (c**4 * r_detector)
     return h_scm  # [dimensionless]
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation,
-#          Ramanujan proof, bosonic string, refined AdS/CFT, QCalcGeom check
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
 
 # ==================== FULL DERIVATIONS BLOCK ====================
 # Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,

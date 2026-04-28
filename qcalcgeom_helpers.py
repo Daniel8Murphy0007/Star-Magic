@@ -81,6 +81,23 @@ try:
         THZ_PHONON   as _SCM_THz,
         compute_F_U_Bi_i_numerical as _scm_F_U_Bi_i_num,
         vds_numerical              as _scm_vds_num,
+        E_phonon                   as _SCM_E_PHONON,
+        S26_3                      as _SCM_S26_3,
+        Phi_resonance              as _SCM_PHI_RES,
+        KER_SCm                    as _SCM_KER_SCm,
+        scaling_factor             as _SCM_SCALING,
+        KAPPA_FLOAT                as _SCM_KAPPA_FLOAT,
+        F_TRZ                      as _SCM_F_TRZ,
+        coleman_guillespie_scm         as _scm_coleman_guillespie,
+        neutrino_oscillation_prob_lenr as _scm_neutrino_osc,
+        quark_production_prob_ui       as _scm_quark_prod,
+        mckubre_lenr                   as _scm_mckubre,
+        s26_3_from_vds                 as _scm_s26_3_from_vds,
+        qgp_energy_density_scm         as _scm_qgp_energy_density,
+        strange_quark_matter_density   as _scm_sqm_density,
+        mit_bag_scm                    as _scm_mit_bag,
+        ads_cft_scm_dual               as _scm_ads_cft_dual,
+        scm_gw_metric_perturbation     as _scm_gw_metric_pert,
     )
     _SCM_LOADED = True
 except ImportError:
@@ -89,8 +106,25 @@ except ImportError:
     _SCM_KAPPA   = 5.0e-4
     _SCM_RHO_VAC = 7.09e-37
     _SCM_THz     = 1.25e12
+    _SCM_E_PHONON = 6.62607015e-34 * 1.25e12
+    _SCM_S26_3   = 1.4531e26
+    _SCM_PHI_RES = 0.84
+    _SCM_KER_SCm = _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES
+    _SCM_SCALING = 630 * 1.60217662e-19 / (_SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES)
+    _SCM_KAPPA_FLOAT = 0.0005
+    _SCM_F_TRZ   = 0.1
     def _scm_F_U_Bi_i_num(**kw): return 0.0
     def _scm_vds_num(terms=1000): return 0.0
+    def _scm_coleman_guillespie(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12): return 0.0
+    def _scm_neutrino_osc(t_n=-100.0): return 0.0
+    def _scm_quark_prod(t_n=-100.0, Gamma=1.0e12): return 0.0
+    def _scm_mckubre(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
+    _scm_s26_3_from_vds = lambda: 1.4531e26
+    def _scm_qgp_energy_density(T_plasma=1.0e11): return 0.0
+    def _scm_sqm_density(): return (1.0e18, 0.0)
+    def _scm_mit_bag(): return 0.0
+    def _scm_ads_cft_dual(): return {}
+    def _scm_gw_metric_pert(f_gw=100.0, r_detector=3.086e22): return 0.0
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

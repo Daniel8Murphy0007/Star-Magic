@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # scm_vacuum_manifold.py
 # Generated from clean 27FEB2026_A.docx thread + repo alignment
 # SCm Vacuum Manifold, Buoyancy, Phonon, Negative-Time, Primordial Split
@@ -105,25 +105,10 @@ def export_all_to_latex():
 # 80-87% : Parkhomov, Pons-Fleischmann, Mizuno, Rossi, reactor validation
 # 87-94% : Ramanujan S_26^(3) proof, VDS convergence, quark production, SQM, QGP in tokamaks
 # 94-97% : Bosonic string action, Type II exploration, refined AdS/CFT, QCalcGeom lattice check
-progress_metric = 94
+progress_metric = 94   # updated: Ramanujan proof, bosonic string, AdS/CFT, QGP, quark production
 
 # ==================== HOLMLID + SCm COMBINED SECTION ====================
-omega, Gamma = sp.symbols('omega Gamma', positive=True)
-Phi_gaussian = sp.exp( - (omega - THZ_PHONON)**2 / (2 * Gamma**2) )
-
-F_U_Bi_i_99 = sp.Sum(-BETA_I * Ug_k * cos_pi_tn * (M / r**2), (k, 1, 99))
-Ui = LAMBDA_I * (RHO_VAC_SCM / RHO_VAC_UA) * OMEGA_S * cos_pi_tn * 1.1
-master_99 = sp.simplify(F_U_Bi_i_99 + Ui)
-
-def monte_carlo_fubi_i(n_samples=10000):
-    results = []
-    for _ in range(n_samples):
-        tn_var = np.random.uniform(-2512, -10)
-        m_var  = np.random.normal(1.989e30, 1e28)
-        r_val  = 1.496e11
-        fubi   = -BETA_I * (m_var / r_val**2) * np.cos(np.pi * tn_var) * (1 + 0.01 * np.sin(0.001 * abs(tn_var)))
-        results.append(fubi)
-    return np.mean(results), np.std(results), np.percentile(results, [5, 95])
+# (omega, Gamma, Phi_gaussian, F_U_Bi_i_99, master_99 already defined above)
 
 # ==================== UPGRADE BLOCK ====================
 # Holmlid KER derivation + Parkhomov heat equation + Pons-Fleischmann insight
@@ -169,7 +154,7 @@ def get_simplified_master():
 F_TRZ = 0.1  # Time-Reversal Zone factor (canonical value from UQFF framework)
 
 def coleman_guillespie_scm(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12):
-    """Coleman/Guillespie: radioactive beta decay -> SCm phonon(1.25 THz) -> coherent current.
+    """Coleman/Guillespie: radioactive beta decay → SCm phonon(1.25 THz) → coherent current.
     decay_rate: beta events/s.
     Returns coherent energy output rate [W] via Phi_gaussian * F_U_Bi_i * cos(pi*t_n).
     """
@@ -193,7 +178,7 @@ def neutrino_oscillation_prob_lenr(t_n=-100.0):
 
 def quark_production_prob_ui(t_n=-100.0, Gamma=1.0e12):
     """Quark production probability via resonant Ui at QCD scale.
-    P_quark proportional to |Phi_gaussian|^2 * |cos(pi*t_n)| * |Ui_resonance|
+    P_quark ∝ |Phi_gaussian|^2 * |cos(pi*t_n)| * |Ui_resonance|
     Amplified phonon energy reaches QCD scale via S26_3 = 1.4531e26.
     Uses Ui with explicit F_TRZ factor: Ui = LAMBDA_I*(RHO_VAC_SCM/RHO_VAC_UA)*OMEGA_S*cos(pi*t_n)*(1+F_TRZ)
     """
@@ -219,9 +204,9 @@ def mckubre_lenr(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0):
     P_excess = N_per_sec * KER_SCm * 0.84 * sub_barrier_factor
     return P_excess / 1000.0  # kW  (5-30 W range for McKubre conditions)
 
-# ==================== QCD / QGP / STRANGE QUARK MATTER FUNCTIONS ====================
-# Derived from Grok session blocks: S_26^(3) VDS, QGP tokamak, SQM, MIT bag
-# All use canonical constants defined above. Importable module-level.
+
+# ==================== QCD / SQM / MIT BAG FUNCTIONS ====================
+# Promoted from commit 5004091d. Importable module-level.
 
 def s26_3_from_vds():
     """S_26^(3): canonical Ramanujan order-3 acceleration factor for VDS.
@@ -248,11 +233,11 @@ def strange_quark_matter_density():
     """Strange quark matter bulk properties via SCm vacuum stabilization.
     Composition: up/down/strange quarks + electrons (charge neutrality).
     Density ~10^18 kg/m^3 (~10^15 g/cm^3), softer EoS than neutron matter.
-    MIT bag constant set by SCm vacuum density (absolutely stable at zero pressure when B_eff in range).
+    MIT bag constant set by SCm vacuum density.
     Supported by Chandra/NICER (RX J1856.5-3754) and GW170817 quark-core EoS constraints.
     Returns (density_kg_m3 [float], B_eff [J/m^3]).
     """
-    density = 1.0e18          # ~10^15 g/cm^3 = 10^18 kg/m^3
+    density = 1.0e18
     B_eff = mit_bag_scm()
     return density, B_eff
 
@@ -260,8 +245,7 @@ def mit_bag_scm():
     """MIT bag effective bag constant from SCm vacuum density.
     B_eff = RHO_VAC_SCM * S26_3 * Phi_resonance * scaling_factor
     F_U_Bi_i buoyancy provides confining bag pressure replacing external color confinement.
-    Negative-time modulation stabilizes quark cluster (no hard radiation).
-    Returns B_eff [J/m^3] (standard MIT bag: 57-90 MeV/fm^3 ~ 9-14e33 J/m^3).
+    Returns B_eff [J/m^3].
     """
     return RHO_VAC_SCM * S26_3 * Phi_resonance * scaling_factor  # [J/m^3]
 
@@ -316,65 +300,6 @@ def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22):
     # Weak-field GW strain: h ~ G * E / (c^4 * r)
     h_scm = (G_N * E_gw * abs(cos_tn)) / (c**4 * r_detector)
     return h_scm  # [dimensionless]
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation,
-#          Ramanujan proof, bosonic string, refined AdS/CFT, QCalcGeom check
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation,
-#          Ramanujan proof, bosonic string, refined AdS/CFT, QCalcGeom check
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation,
-#          Ramanujan proof, bosonic string, refined AdS/CFT, QCalcGeom check
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation,
-#          Ramanujan proof, bosonic string, refined AdS/CFT, QCalcGeom check
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
-
-# ==================== FULL DERIVATIONS BLOCK ====================
-# Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
-#          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
-#          AdS/CFT SCm holographic dual, SCm GW metric perturbation,
-#          Ramanujan proof, bosonic string, refined AdS/CFT, QCalcGeom check
-# Parkhomov: realistic 100-300 W range | Holmlid KER: exact 630 eV
 
 # ==================== FULL DERIVATIONS BLOCK ====================
 # Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
