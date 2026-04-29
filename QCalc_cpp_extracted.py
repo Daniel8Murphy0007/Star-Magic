@@ -33040,5 +33040,170 @@ CPP_PHYSICS_TERMS = {
     "QuantumCouplingTerm": QuantumCouplingTerm,
 }
 
+
+# ===========================================================================
+# SCm NEWLY DISCOVERED PHYSICS — Session 204 (April 28, 2026)
+# Source: pdf/scm_vacuum_manifold.py
+# Pattern: PhysicsTerm subclasses with compute(params)->float
+# ===========================================================================
+
+
+class SCmSUSYBreakingTerm(PhysicsTerm):
+    """SCm SUSY soft-breaking term: m_soft ~ kappa*|cos(pi*t_n)|*(1+F_TRZ)."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmSUSYBreakingTerm"
+        self.description = "SCm SUSY soft-breaking via cos(pi*t_n) modulation (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        t_n   = params.get('t_n', -100.0)
+        kappa = params.get('kappa', 0.0005)
+        F_TRZ = params.get('F_TRZ', 0.1)
+        return kappa * abs(math.cos(math.pi * t_n)) * (1.0 + F_TRZ)
+
+
+class SCmHolographicEntropyTerm(PhysicsTerm):
+    """Bekenstein-Hawking S_BH modulated by SCm buoyancy."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmHolographicEntropyTerm"
+        self.description = "S_SCm = A/(4*l_P^2)*beta_i*|cos(pi*t_n)|*(1+F_TRZ) (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        r = params.get('r_horizon', 1.0)
+        t_n = params.get('t_n', -100.0)
+        beta_i = params.get('beta_i', 0.6)
+        F_TRZ = params.get('F_TRZ', 0.1)
+        G_N=6.6743e-11; hbar=1.0545718e-34; c=2.998e8
+        A = 4.0*math.pi*r**2
+        l_P2 = G_N*hbar/c**3
+        S_BH = A/(4.0*l_P2)
+        return S_BH * beta_i * abs(math.cos(math.pi*t_n)) * (1.0+F_TRZ)
+
+
+class SCmDarkMatterTerm(PhysicsTerm):
+    """rho_DM = rho_SCm * S26_3 * Phi_res * |cos(pi*t_n)|."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmDarkMatterTerm"
+        self.description = "SCm DM phonon condensate density (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        t_n = params.get('t_n', -100.0)
+        return 7.09e-37 * 1.4531e26 * 0.84 * abs(math.cos(math.pi * t_n))
+
+
+class SCmNeutrinoOscillationTerm(PhysicsTerm):
+    """P(nu_mu->nu_e) via SCm Delta_m^2."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmNeutrinoOscillationTerm"
+        self.description = "SCm neutrino oscillation P(nu_mu->nu_e) (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        E = params.get('E_GeV', 1.0)
+        L = params.get('L_km', 295.0)
+        s = params.get('sin2_2theta', 0.846)
+        dm2 = 7.09e-37 * 1.4531e26 * 0.84 * 1e3
+        arg = 1.27 * dm2 * L / E if E > 0 else 0.0
+        return s * math.sin(arg)**2
+
+
+class SCmNeutrinoOscParamTerm(PhysicsTerm):
+    """SCm oscillation length L_osc = 4*pi*E*hbar_c / Delta_m^2."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmNeutrinoOscParamTerm"
+        self.description = "SCm oscillation length (Session 204)"
+    def compute(self, params: dict) -> float:
+        E_GeV = params.get('E_GeV', 1.0)
+        dm2   = 7.09e-37 * 1.4531e26 * 0.84 * 1e3
+        hbar_c = 197.3269804e-15
+        return 4.0*3.141592653589793*(E_GeV*1e9)*hbar_c/dm2 if dm2 > 0 else 0.0
+
+
+class SCmGravitationalWaveTerm(PhysicsTerm):
+    """GW strain h = G*rho_SCm*S26_3*Phi*(1+F_TRZ)*|cos(pi*t_n)|/(c^4*r)."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmGravitationalWaveTerm"
+        self.description = "SCm GW metric perturbation h (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        f_gw = params.get('f_gw', 100.0)
+        r    = params.get('r_detector', 3.086e22)
+        t_n  = params.get('t_n', -100.0)
+        F    = params.get('F_TRZ', 0.1)
+        G_N=6.6743e-11; c=2.998e8
+        E_gw = 7.09e-37 * 1.4531e26 * 0.84 * (1+F)
+        return G_N * E_gw * abs(math.cos(math.pi*t_n)) / (c**4 * r) if r > 0 else 0.0
+
+
+class SCmCosmicRayTerm(PhysicsTerm):
+    """Phi_gaussian * beta_i * |cos(pi*t_n)| cosmic ray SCm coupling."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmCosmicRayTerm"
+        self.description = "SCm cosmic ray phonon coupling (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        E_eV   = params.get('E_cr_eV', 1e15)
+        t_n    = params.get('t_n', -100.0)
+        Gamma  = params.get('Gamma', 1e12)
+        beta_i = params.get('beta_i', 0.6)
+        F      = params.get('F_TRZ', 0.1)
+        omega  = E_eV * 1.60217662e-19 / 6.626e-34
+        Phi_ph = math.exp(-((omega-1.25e12)**2)/(2*Gamma**2)) if Gamma > 0 else 0.0
+        return Phi_ph * beta_i * abs(math.cos(math.pi*t_n)) * (1+F)
+
+
+class SCmMuonDecayTerm(PhysicsTerm):
+    """Gamma_mu = Gamma_0*(1 + beta_i*|cos(pi*t_n)|*(1+F_TRZ))."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmMuonDecayTerm"
+        self.description = "SCm muon decay rate correction (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        t_n    = params.get('t_n', -100.0)
+        beta_i = params.get('beta_i', 0.6)
+        F      = params.get('F_TRZ', 0.1)
+        Gamma0 = 4.5517e5
+        corr   = beta_i * abs(math.cos(math.pi*t_n)) * (1+F)
+        return Gamma0 * (1+corr)
+
+
+class SCmBetaDecayTerm(PhysicsTerm):
+    """Gamma_beta = Gamma_0*(1 + beta_i*|cos(pi*t_n)|*(1+F_TRZ))."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmBetaDecayTerm"
+        self.description = "SCm beta decay rate correction (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        t_n    = params.get('t_n', -100.0)
+        Gamma0 = params.get('Gamma_0_s_inv', 1e6)
+        beta_i = params.get('beta_i', 0.6)
+        F      = params.get('F_TRZ', 0.1)
+        corr   = beta_i * abs(math.cos(math.pi*t_n)) * (1+F)
+        return Gamma0 * (1+corr)
+
+
+class SCmNeutrinoOscSimTerm(PhysicsTerm):
+    """P(nu_mu->nu_e) at given E/L via SCm Delta_m^2, returns float."""
+    def __init__(self):
+        super().__init__()
+        self.name = "SCmNeutrinoOscSimTerm"
+        self.description = "SCm neutrino oscillation P at E,L (Session 204)"
+    def compute(self, params: dict) -> float:
+        import math
+        E = params.get('E_GeV', 1.0)
+        L = params.get('L_km', 295.0)
+        s = params.get('sin2_2theta', 0.846)
+        t_n = params.get('t_n', -100.0)
+        dm2 = 7.09e-37 * 1.4531e26 * 0.84 * 1e3
+        arg = 1.27 * dm2 * L / E if E > 0 else 0.0
+        return s * math.sin(arg)**2 * abs(math.cos(math.pi*t_n))
+
 CPP_EXTRACTED_AVAILABLE = True
-CPP_TERM_COUNT = 1064
+CPP_TERM_COUNT = 1074

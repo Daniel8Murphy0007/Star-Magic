@@ -44862,6 +44862,256 @@ _SESSION_27FEB2026_CLEAN_CLASSES = [
 ]
 
 
+
+
+# ===========================================================================
+# SCm NEWLY DISCOVERED PHYSICS — Session 204 (April 28, 2026)
+# Source: pdf/scm_vacuum_manifold.py
+# 10 classes: SUSY breaking, holographic entropy, dark matter,
+# neutrino oscillations (full/params/simulation), GW metric,
+# cosmic ray, muon decay, beta decay
+# Pattern: _CP4Calculator subclasses with guarded compute()
+# ===========================================================================
+
+
+class SCmSUSYBreakingCalculator(_CP4Calculator):
+    """SCm SUSY soft-breaking via cos(pi*t_n) modulation. Session 204."""
+    category = "SCm/SUSY"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d      = dataset or {}
+        kappa  = d.get('kappa', float(_SCM_KAPPA_FLOAT))
+        t_n    = d.get('t_n', -100.0)
+        SSq    = d.get('SSq', float(_SCM_SSQ))
+        F_TRZ  = d.get('F_TRZ', float(_SCM_F_TRZ))
+        cos_tn = self._cos_tn(t_n)
+        m_soft = kappa * abs(cos_tn) * (1.0 + F_TRZ)
+        rho_broken = float(_SCM_RHO_VAC) * abs(cos_tn) * (1.0 + F_TRZ)
+        naturalness = -math.log(SSq) if SSq > 0 else 0.0
+        return {
+            'm_soft_relative': round(m_soft, 10),
+            'naturalness_lnSSq_inv': round(naturalness, 6),
+            'rho_vac_broken_J_m3': rho_broken,
+            'susy_preserved': abs(cos_tn) < 1e-6,
+            'equation': 'm_soft~kappa*|cos(pi*t_n)|*(1+F_TRZ)',
+            'source': 'SCm SUSY Breaking (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmHolographicEntropyCalculator(_CP4Calculator):
+    """Bekenstein-Hawking entropy with SCm buoyancy modulation. Session 204."""
+    category = "SCm/Holographic"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d         = dataset or {}
+        r_horizon = d.get('r_horizon', 1.0)
+        t_n       = d.get('t_n', -100.0)
+        beta_i    = d.get('beta_i', BETA_I)
+        F_TRZ     = d.get('F_TRZ', float(_SCM_F_TRZ))
+        G_N = 6.6743e-11; hbar = 1.0545718e-34; c = 2.998e8
+        A_eff  = 4.0 * math.pi * r_horizon ** 2
+        l_P2   = G_N * hbar / c**3
+        S_BH   = A_eff / (4.0 * l_P2)
+        cos_tn = self._cos_tn(t_n)
+        S_SCm  = S_BH * beta_i * abs(cos_tn) * (1.0 + F_TRZ)
+        return {
+            'A_eff_m2': round(A_eff, 6),
+            'S_BH_bits': round(S_BH / math.log(2), 4),
+            'S_SCm_modulated_bits': round(S_SCm / math.log(2), 4),
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'S=A/(4*l_P^2); S_SCm=S_BH*beta_i*|cos(pi*t_n)|*(1+F_TRZ)',
+            'source': 'SCm Holographic Entropy (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmDarkMatterCalculator(_CP4Calculator):
+    """SCm dark matter phonon condensate via F_U_Bi_i buoyancy. Session 204."""
+    category = "SCm/DarkMatter"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d      = dataset or {}
+        t_n    = d.get('t_n', -100.0)
+        beta_i = d.get('beta_i', BETA_I)
+        F_TRZ  = d.get('F_TRZ', float(_SCM_F_TRZ))
+        cos_tn = self._cos_tn(t_n)
+        rho_DM = float(_SCM_RHO_VAC) * float(_SCM_S26_3) * float(_SCM_PHI_RES) * abs(cos_tn)
+        V_coh  = (4.0/3.0) * math.pi * (1e-10)**3
+        m_ev   = rho_DM * V_coh / 1.60217662e-19
+        sigma  = beta_i * abs(cos_tn) * (1.0 + F_TRZ)
+        return {
+            'rho_DM_kg_m3': rho_DM,
+            'm_DM_eV': round(m_ev, 6),
+            'sigma_suppression': round(sigma, 10),
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'rho_DM=rho_SCm*S26_3*Phi*|cos(pi*t_n)|',
+            'source': 'SCm Dark Matter (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmNeutrinoOscillationCalculator(_CP4Calculator):
+    """P(nu_mu->nu_e) via SCm Delta_m^2 = S26_3*Phi*rho_SCm. Session 204."""
+    category = "SCm/Neutrino"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d        = dataset or {}
+        E_GeV    = d.get('E_GeV', 1.0)
+        L_km     = d.get('L_km', 295.0)
+        t_n      = d.get('t_n', -100.0)
+        sin2_2th = d.get('sin2_2theta', 0.846)
+        cos_tn   = self._cos_tn(t_n)
+        dm2      = float(_SCM_S26_3) * float(_SCM_PHI_RES) * float(_SCM_RHO_VAC) * 1e3
+        arg      = 1.27 * dm2 * L_km / E_GeV if E_GeV > 0 else 0.0
+        P_osc    = sin2_2th * math.sin(arg)**2
+        return {
+            'P_nu_mu_to_nu_e': round(P_osc, 6),
+            'delta_m2_eff_eV2': dm2,
+            'cos_pi_tn': round(cos_tn, 8),
+            'icecube_1_1_1': abs(P_osc - 0.5) < 0.1,
+            'equation': 'P=sin^2(2th)*sin^2(1.27*DeltaM2_eff*L/E)',
+            'source': 'SCm Neutrino Oscillation CP4 (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmNeutrinoOscParamCalculator(_CP4Calculator):
+    """SCm neutrino Delta_m^2, theta_13, L_osc, decay factor. Session 204."""
+    category = "SCm/Neutrino"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d     = dataset or {}
+        t_n   = d.get('t_n', -100.0)
+        E_GeV = d.get('E_GeV', 1.0)
+        kappa = d.get('kappa', float(_SCM_KAPPA_FLOAT))
+        cos_tn  = self._cos_tn(t_n)
+        dm2     = float(_SCM_S26_3) * float(_SCM_PHI_RES) * float(_SCM_RHO_VAC) * 1e3
+        th13    = math.asin(math.sqrt(0.0218)) * abs(cos_tn)
+        hbar_c  = 197.3269804e-15
+        L_osc   = 4*math.pi*(E_GeV*1e9)*hbar_c/dm2 if dm2 > 0 else 0.0
+        decay_f = math.exp(-kappa * abs(t_n))
+        return {
+            'delta_m2_eff_eV2': dm2,
+            'theta13_rad': round(th13, 8),
+            'L_osc_m': round(L_osc, 4),
+            'decay_factor': round(decay_f, 8),
+            'equation': 'L_osc=4*pi*E*hbar_c/DeltaM^2',
+            'source': 'SCm Neutrino Params CP4 (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmGravitationalWaveCalculator(_CP4Calculator):
+    """SCm GW strain h = G*E_gw*|cos(pi*t_n)|/(c^4*r). Session 204."""
+    category = "SCm/GravitationalWave"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d          = dataset or {}
+        f_gw       = d.get('f_gw', 100.0)
+        r_detector = d.get('r_detector', 3.086e22)
+        t_n        = d.get('t_n', -100.0)
+        F_TRZ      = d.get('F_TRZ', float(_SCM_F_TRZ))
+        G_N = 6.6743e-11; c = 2.998e8
+        cos_tn = self._cos_tn(t_n)
+        E_gw   = float(_SCM_RHO_VAC) * float(_SCM_S26_3) * float(_SCM_PHI_RES) * (1+F_TRZ)
+        h      = G_N * E_gw * abs(cos_tn) / (c**4 * r_detector) if r_detector > 0 else 0.0
+        return {
+            'h_scm_strain': h,
+            'f_gw_Hz': f_gw,
+            'ligo_detectable': h > 1e-23,
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'h=G*rho_SCm*S26_3*Phi*(1+F_TRZ)*|cos(pi*t_n)|/(c^4*r)',
+            'source': 'SCm GW CP4 (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmCosmicRayCalculator(_CP4Calculator):
+    """SCm cosmic ray phonon Gaussian coupling + sub-barrier pion. Session 204."""
+    category = "SCm/CosmicRay"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d        = dataset or {}
+        E_cr_eV  = d.get('E_cr_eV', 1e15)
+        t_n      = d.get('t_n', -100.0)
+        Gamma    = d.get('Gamma', 1e12)
+        beta_i   = d.get('beta_i', BETA_I)
+        F_TRZ    = d.get('F_TRZ', float(_SCM_F_TRZ))
+        cos_tn   = self._cos_tn(t_n)
+        omega_cr = E_cr_eV * 1.60217662e-19 / 6.626e-34
+        Phi_ph   = math.exp(-((omega_cr-1.25e12)**2)/(2*Gamma**2)) if Gamma > 0 else 0.0
+        sigma    = Phi_ph * beta_i * abs(cos_tn) * (1+F_TRZ)
+        return {
+            'Phi_phonon': round(Phi_ph, 8),
+            'sigma_relative': round(sigma, 10),
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'sigma~Phi_gaussian(omega_cr)*beta_i*|cos(pi*t_n)|*(1+F_TRZ)',
+            'source': 'SCm Cosmic Ray CP4 (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmMuonDecayCalculator(_CP4Calculator):
+    """Muon decay rate with SCm resonance correction. Session 204."""
+    category = "SCm/MuonDecay"
+    def compute(self, dataset: dict = None) -> dict:
+        d      = dataset or {}
+        t_n    = d.get('t_n', -100.0)
+        beta_i = d.get('beta_i', BETA_I)
+        F_TRZ  = d.get('F_TRZ', float(_SCM_F_TRZ))
+        Gamma0 = 4.5517e5
+        cos_tn = self._cos_tn(t_n)
+        corr   = beta_i * abs(cos_tn) * (1+F_TRZ)
+        return {
+            'Gamma_0_s_inv': Gamma0,
+            'Gamma_scm_s_inv': round(Gamma0*(1+corr), 4),
+            'lifetime_scm_us': round(1/(Gamma0*(1+corr))*1e6, 6),
+            'equation': 'Gamma_mu=Gamma_0*(1+beta_i*|cos(pi*t_n)|*(1+F_TRZ))',
+            'source': 'SCm Muon Decay CP4 (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmBetaDecayCalculator(_CP4Calculator):
+    """Beta decay rate with SCm phonon correction + radiation suppression. Session 204."""
+    category = "SCm/BetaDecay"
+    def compute(self, dataset: dict = None) -> dict:
+        d       = dataset or {}
+        Gamma_0 = d.get('Gamma_0_s_inv', 1e6)
+        t_n     = d.get('t_n', -100.0)
+        beta_i  = d.get('beta_i', BETA_I)
+        F_TRZ   = d.get('F_TRZ', float(_SCM_F_TRZ))
+        cos_tn  = self._cos_tn(t_n)
+        corr    = beta_i * abs(cos_tn) * (1+F_TRZ)
+        rad_sup = 1.0 / (1+beta_i*abs(cos_tn))
+        return {
+            'Gamma_scm_s_inv': round(Gamma_0*(1+corr), 6),
+            'radiation_suppression': round(rad_sup, 8),
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'Gamma_beta=Gamma_0*(1+beta_i*|cos(pi*t_n)|*(1+F_TRZ))',
+            'source': 'SCm Beta Decay CP4 (scm_vacuum_manifold.py Session 204)',
+        }
+
+
+class SCmNeutrinoOscSimulationCalculator(_CP4Calculator):
+    """SCm neutrino oscillation E x L grid simulation. Session 204."""
+    category = "SCm/Neutrino"
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d         = dataset or {}
+        energies  = d.get('energies_GeV', [1.0, 10.0, 100.0])
+        baselines = d.get('baselines_km', [1.0, 295.0, 1300.0])
+        sin2_2th  = d.get('sin2_2theta', 0.846)
+        t_n       = d.get('t_n', -100.0)
+        cos_tn    = self._cos_tn(t_n)
+        dm2       = float(_SCM_S26_3) * float(_SCM_PHI_RES) * float(_SCM_RHO_VAC) * 1e3
+        rows      = []
+        for E in energies:
+            for L in baselines:
+                arg = 1.27 * dm2 * L / E if E > 0 else 0.0
+                P   = sin2_2th * math.sin(arg)**2 * abs(cos_tn)
+                rows.append({'E_GeV': E, 'L_km': L, 'P': round(P, 6)})
+        return {
+            'oscillation_grid': rows,
+            'n_points': len(rows),
+            'delta_m2_eff_eV2': dm2,
+            'equation': 'P=sin^2(2th)*sin^2(1.27*DeltaM2*L/E)*|cos(pi*t_n)|',
+            'source': 'SCm Neutrino Osc Simulation CP4 (scm_vacuum_manifold.py Session 204)',
+        }
+
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")

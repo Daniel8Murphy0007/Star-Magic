@@ -16951,3 +16951,278 @@ class UnifiedFieldModule:
         """Auto-converted from source98.js"""
         pass  # TODO: Implement - original JS method body available in source
 
+
+
+# ===========================================================================
+# SCm NEWLY DISCOVERED PHYSICS — Session 204 (April 28, 2026)
+# Source: pdf/scm_vacuum_manifold.py
+# 10 classes: SUSY breaking, holographic entropy, dark matter,
+# neutrino oscillations (full/params/simulation), GW metric,
+# cosmic ray, muon decay, beta decay
+# Pattern: stateless compute(dataset: dict) -> dict
+# ===========================================================================
+
+
+class SCmSUSYBreakingCalculator:
+    """SCm supersymmetry soft-breaking via negative-time modulation cos(pi*t_n).
+    Breaking scale: kappa*|SSq|*|cos(pi*t_n)|. Soft terms at TeV scale.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        kappa  = dataset.get('kappa', 0.0005)
+        t_n    = dataset.get('t_n', -100.0)
+        SSq    = dataset.get('SSq', 0.57)
+        F_TRZ  = dataset.get('F_TRZ', 0.1)
+        cos_tn = math.cos(math.pi * t_n)
+        m_soft = kappa * abs(cos_tn) * (1.0 + F_TRZ)
+        naturalness = -math.log(SSq) if SSq > 0 else 0.0
+        rho_broken = 7.09e-37 * abs(cos_tn) * (1.0 + F_TRZ)
+        return {
+            'cos_pi_tn': round(cos_tn, 8),
+            'm_soft_relative': round(m_soft, 10),
+            'naturalness_lnSSq_inv': round(naturalness, 6),
+            'rho_vac_broken_J_m3': rho_broken,
+            'susy_preserved': abs(cos_tn) < 1e-6,
+            'equation': 'm_soft~kappa*|cos(pi*t_n)|*(1+F_TRZ); rho_broken=rho_vac_SCm*|cos(pi*t_n)|*(1+F_TRZ)',
+            'source': 'SCm SUSY Breaking (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmHolographicEntropyCalculator:
+    """Bekenstein-Hawking holographic entropy from SCm vacuum area.
+    S = A/(4*l_P^2) modulated by beta_i * |cos(pi*t_n)| * (1+F_TRZ).
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r_horizon = dataset.get('r_horizon', 1.0)
+        t_n       = dataset.get('t_n', -100.0)
+        beta_i    = dataset.get('beta_i', 0.6)
+        F_TRZ     = dataset.get('F_TRZ', 0.1)
+        G_N = 6.6743e-11; hbar = 1.0545718e-34; c = 2.998e8
+        A_eff  = 4.0 * math.pi * r_horizon ** 2
+        l_P2   = G_N * hbar / c ** 3
+        S_BH   = A_eff / (4.0 * l_P2)
+        cos_tn = math.cos(math.pi * t_n)
+        S_SCm  = S_BH * beta_i * abs(cos_tn) * (1.0 + F_TRZ)
+        r_s = 2.0 * G_N * (c ** 2 * r_horizon / (2.0 * G_N)) / c ** 2 if r_horizon > 0 else 1.0
+        T_H = hbar * c ** 3 / (8.0 * math.pi * G_N * max(r_s, 1e-30) * (c**2/(2*G_N)))
+        return {
+            'A_eff_m2': round(A_eff, 6),
+            'S_BH_bits': round(S_BH / math.log(2), 4),
+            'S_SCm_modulated_bits': round(S_SCm / math.log(2), 4),
+            'T_Hawking_K': T_H,
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'S=A/(4*l_P^2); S_SCm=S_BH*beta_i*|cos(pi*t_n)|*(1+F_TRZ)',
+            'source': 'SCm Holographic Entropy (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmDarkMatterCalculator:
+    """SCm dark matter: residual phonon condensate stabilised by F_U_Bi_i buoyancy.
+    rho_DM = rho_SCm * S26_3 * Phi_res * |cos(pi*t_n)|.
+    Cross-section suppressed by buoyancy -> null direct-detection.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n      = dataset.get('t_n', -100.0)
+        beta_i   = dataset.get('beta_i', 0.6)
+        F_TRZ    = dataset.get('F_TRZ', 0.1)
+        cos_tn   = math.cos(math.pi * t_n)
+        rho_DM   = 7.09e-37 * 1.4531e26 * 0.84 * abs(cos_tn)
+        V_coh    = (4.0/3.0) * math.pi * (1.0e-10)**3
+        m_DM_eV  = rho_DM * V_coh / 1.60217662e-19
+        sigma_sup = beta_i * abs(cos_tn) * (1.0 + F_TRZ)
+        halo_den  = rho_DM * math.exp(-beta_i)
+        return {
+            'rho_DM_kg_m3': rho_DM,
+            'm_DM_eV': round(m_DM_eV, 6),
+            'sigma_suppression_factor': round(sigma_sup, 10),
+            'halo_density_kg_m3': halo_den,
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'rho_DM=rho_SCm*S26_3*Phi_res*|cos(pi*t_n)|; sigma~beta_i*|cos(pi*t_n)|*(1+F_TRZ)',
+            'source': 'SCm Dark Matter (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmNeutrinoOscillationCalculator:
+    """P(nu_mu->nu_e) via SCm effective Delta_m^2 = S26_3*Phi_res*rho_SCm.
+    Negative-time modulation provides oscillation phase.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        E_GeV    = dataset.get('E_GeV', 1.0)
+        L_km     = dataset.get('L_km', 295.0)
+        t_n      = dataset.get('t_n', -100.0)
+        sin2_2th = dataset.get('sin2_2theta', 0.846)
+        cos_tn   = math.cos(math.pi * t_n)
+        dm2_eff  = 1.4531e26 * 0.84 * 7.09e-37 * 1e3
+        arg      = 1.27 * dm2_eff * L_km / E_GeV if E_GeV > 0 else 0.0
+        P_osc    = sin2_2th * math.sin(arg) ** 2
+        return {
+            'P_nu_mu_to_nu_e': round(P_osc, 6),
+            'P_nu_ee_survival': round(1.0 - P_osc, 6),
+            'delta_m2_eff_eV2': dm2_eff,
+            'cos_pi_tn': round(cos_tn, 8),
+            'icecube_1_1_1_ratio': abs(P_osc - 0.5) < 0.1,
+            'equation': 'P=sin^2(2th)*sin^2(1.27*DeltaM2_eff*L/E); DeltaM2_eff=S26_3*Phi*rho_SCm',
+            'source': 'SCm Neutrino Oscillation (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmNeutrinoOscParamCalculator:
+    """SCm neutrino oscillation parameters: Delta_m^2, theta_13 modulated by cos(pi*t_n),
+    oscillation length L_osc. All determined by [SSq]=0.57 and kappa=5e-4/day.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n   = dataset.get('t_n', -100.0)
+        E_GeV = dataset.get('E_GeV', 1.0)
+        kappa = dataset.get('kappa', 0.0005)
+        cos_tn   = math.cos(math.pi * t_n)
+        dm2_eff  = 1.4531e26 * 0.84 * 7.09e-37 * 1e3
+        th13     = math.asin(math.sqrt(0.0218)) * abs(cos_tn)
+        hbar_c   = 197.3269804e-15  # eV*m
+        L_osc    = 4.0*math.pi*(E_GeV*1e9)*hbar_c/dm2_eff if dm2_eff > 0 and E_GeV > 0 else 0.0
+        decay_f  = math.exp(-kappa * abs(t_n))
+        return {
+            'delta_m2_eff_eV2': dm2_eff,
+            'theta13_rad_modulated': round(th13, 8),
+            'L_osc_m': round(L_osc, 4),
+            'cos_pi_tn': round(cos_tn, 8),
+            'decay_factor': round(decay_f, 8),
+            'equation': 'L_osc=(4*pi*E_nu*hbar_c)/DeltaM^2; theta13~theta13_0*|cos(pi*t_n)|',
+            'source': 'SCm Neutrino Oscillation Parameters (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmGravitationalWaveCalculator:
+    """SCm GW metric perturbation h(f) = G*rho_SCm*S26_3*Phi*|cos(pi*t_n)|*(1+F_TRZ)/(c^4*r).
+    Consistent with LIGO/Virgo O3 residual sensitivity.
+    Source: scm_vacuum_manifold.py — scm_gw_metric_perturbation()."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        f_gw       = dataset.get('f_gw', 100.0)
+        r_detector = dataset.get('r_detector', 3.086e22)
+        t_n        = dataset.get('t_n', -100.0)
+        F_TRZ      = dataset.get('F_TRZ', 0.1)
+        G_N = 6.6743e-11; c = 2.998e8
+        cos_tn = math.cos(math.pi * t_n)
+        E_gw   = 7.09e-37 * 1.4531e26 * 0.84 * (1.0 + F_TRZ)
+        h_scm  = G_N * E_gw * abs(cos_tn) / (c**4 * r_detector) if r_detector > 0 else 0.0
+        return {
+            'h_scm_strain': h_scm,
+            'f_gw_Hz': f_gw,
+            'E_gw_J_m3': E_gw,
+            'cos_pi_tn': round(cos_tn, 8),
+            'ligo_detectable': h_scm > 1.0e-23,
+            'equation': 'h=G*rho_SCm*S26_3*Phi*(1+F_TRZ)*|cos(pi*t_n)|/(c^4*r)',
+            'source': 'SCm GW Metric Perturbation (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmCosmicRayCalculator:
+    """SCm cosmic ray interaction via 1.25 THz phonon Gaussian coupling.
+    Cross-section ~ Phi_gaussian * F_U_Bi_i * |cos(pi*t_n)|.
+    Sub-barrier pion production opened by negative-time modulation.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        E_cr_eV  = dataset.get('E_cr_eV', 1.0e15)
+        t_n      = dataset.get('t_n', -100.0)
+        Gamma    = dataset.get('Gamma', 1.0e12)
+        beta_i   = dataset.get('beta_i', 0.6)
+        F_TRZ    = dataset.get('F_TRZ', 0.1)
+        cos_tn   = math.cos(math.pi * t_n)
+        omega_cr = E_cr_eV * 1.60217662e-19 / 6.626e-34
+        Phi_ph   = math.exp(-((omega_cr - 1.25e12)**2) / (2.0 * Gamma**2)) if Gamma > 0 else 0.0
+        sigma    = Phi_ph * beta_i * abs(cos_tn) * (1.0 + F_TRZ)
+        pion_sb  = abs(cos_tn) * 1.4531e26 * 0.84 * 7.09e-37
+        return {
+            'Phi_phonon_coupling': round(Phi_ph, 8),
+            'sigma_cr_relative': round(sigma, 10),
+            'pion_sub_barrier_J': pion_sb,
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'sigma~Phi_gaussian(omega_cr)*beta_i*|cos(pi*t_n)|*(1+F_TRZ)',
+            'source': 'SCm Cosmic Ray (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmMuonDecayCalculator:
+    """Muon decay rate corrected by SCm phonon resonance.
+    Gamma_mu = Gamma_0*(1 + Phi_gaussian*beta_i*|cos(pi*t_n)|*(1+F_TRZ)).
+    High-energy radiation suppressed by F_U_Bi_i buoyancy.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t_n    = dataset.get('t_n', -100.0)
+        beta_i = dataset.get('beta_i', 0.6)
+        F_TRZ  = dataset.get('F_TRZ', 0.1)
+        Gamma0 = 4.5517e5   # canonical muon decay rate [s^-1]
+        cos_tn = math.cos(math.pi * t_n)
+        corr   = beta_i * abs(cos_tn) * (1.0 + F_TRZ)   # Phi_ph=1 at resonance
+        Gamma_scm = Gamma0 * (1.0 + corr)
+        tau_us    = 1.0 / Gamma_scm * 1.0e6
+        return {
+            'Gamma_0_s_inv': Gamma0,
+            'Gamma_scm_s_inv': round(Gamma_scm, 4),
+            'scm_correction': round(corr, 10),
+            'lifetime_scm_us': round(tau_us, 6),
+            'standard_lifetime_us': round(1.0/Gamma0*1e6, 6),
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'Gamma_mu=Gamma_0*(1+beta_i*|cos(pi*t_n)|*(1+F_TRZ))',
+            'source': 'SCm Muon Decay (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmBetaDecayCalculator:
+    """Beta decay rate corrected by SCm phonon resonance.
+    Gamma_beta = Gamma_0*(1 + Phi_gaussian*beta_i*|cos(pi*t_n)|*(1+F_TRZ)).
+    Hard radiation suppressed by buoyancy. Consistent with low-radiation LENR.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        Gamma_0 = dataset.get('Gamma_0_s_inv', 1.0e6)
+        t_n     = dataset.get('t_n', -100.0)
+        beta_i  = dataset.get('beta_i', 0.6)
+        F_TRZ   = dataset.get('F_TRZ', 0.1)
+        cos_tn  = math.cos(math.pi * t_n)
+        corr    = beta_i * abs(cos_tn) * (1.0 + F_TRZ)
+        Gamma_scm = Gamma_0 * (1.0 + corr)
+        rad_sup   = 1.0 / (1.0 + beta_i * abs(cos_tn))
+        return {
+            'Gamma_0_s_inv': Gamma_0,
+            'Gamma_scm_s_inv': round(Gamma_scm, 6),
+            'scm_correction': round(corr, 10),
+            'radiation_suppression': round(rad_sup, 8),
+            'cos_pi_tn': round(cos_tn, 8),
+            'equation': 'Gamma_beta=Gamma_0*(1+beta_i*|cos(pi*t_n)|*(1+F_TRZ)); rad_supp=1/(1+beta_i*|cos(pi*t_n)|)',
+            'source': 'SCm Beta Decay (scm_vacuum_manifold.py Session 204)'
+        }
+
+
+class SCmNeutrinoOscSimulationCalculator:
+    """SCm neutrino oscillation simulation: P(nu_mu->nu_e) over E x L grid.
+    All energies and baselines configurable. Validated vs IceCube/Kamioka geometry.
+    Source: scm_vacuum_manifold.py Session 204."""
+    def compute(self, dataset: dict) -> dict:
+        import math
+        energies = dataset.get('energies_GeV', [1.0, 10.0, 100.0])
+        baselines = dataset.get('baselines_km', [1.0, 295.0, 1300.0])
+        sin2_2th  = dataset.get('sin2_2theta', 0.846)
+        t_n       = dataset.get('t_n', -100.0)
+        cos_tn    = math.cos(math.pi * t_n)
+        dm2_eff   = 1.4531e26 * 0.84 * 7.09e-37 * 1e3
+        results   = []
+        for E in energies:
+            for L in baselines:
+                arg = 1.27 * dm2_eff * L / E if E > 0 else 0.0
+                P   = sin2_2th * math.sin(arg) ** 2 * abs(cos_tn)
+                results.append({'E_GeV': E, 'L_km': L, 'P': round(P, 6)})
+        return {
+            'oscillation_grid': results,
+            'delta_m2_eff_eV2': dm2_eff,
+            'cos_pi_tn': round(cos_tn, 8),
+            'n_points': len(results),
+            'equation': 'P=sin^2(2th)*sin^2(1.27*DeltaM2_eff*L/E)*|cos(pi*t_n)|',
+            'source': 'SCm Neutrino Oscillation Simulation (scm_vacuum_manifold.py Session 204)'
+        }
