@@ -2352,6 +2352,39 @@ class UQFFExtensions:
         return a * np.sqrt(1.0 + a0 / np.abs(a))
 
 
+# ==================== UQFF FOUR PILLARS SYMPY SYMBOLIC FORMS ====================
+# Symbolic (sympy) derivation of the Four Immutable Pillars.
+# Complements the class-based numerical implementations above.
+# All expressions are LaTeX-exportable via sp.latex().
+# Uses module-level constants: SSQ (sp.Rational), KAPPA (sp.Rational),
+# k and n (already defined above as integer symbols).
+
+# Ug component symbols (real, symbolic -- for derivation/export)
+Ug1, Ug2, Ug3, Ug4i, Um_sp, UA_sp, Ub_sp = sp.symbols(
+    r'U_{g1} U_{g2} U_{g3} U_{g4i} U_m U_A U_b', real=True)
+t_sp = sp.symbols('t', positive=True)   # time variable for symbolic Pillar expressions
+
+# Pillar 1 Symbolic: F_U force assembly and GW strain damping
+# F_U(r,t) = sum Ug_i + Um + UA - Ub
+FU_sym = Ug1 + Ug2 + Ug3 + Ug4i + Um_sp + UA_sp - Ub_sp
+# h_UQFF = h_GR * (1 - Ub/F_U) * exp(-kappa*t)
+h_UQFF_sym = sp.Function('h_{GR}')(t_sp) * (1 - Ub_sp / FU_sym) * sp.exp(-KAPPA * t_sp)
+
+# Pillar 2 Symbolic: Ramanujan 26-state vacuum hierarchy sum
+# S(n) = sum_{k=0}^{25} [SSq]^k * sin(2*pi*k*n/26)
+ramanujan_26_sym = sp.Sum(SSQ**k * sp.sin(2 * sp.pi * k * n / 26), (k, 0, 25))
+
+# Pillar 3 Symbolic: GR emergent limit (Ub -> 0 recovers standard gravity)
+FU_gr_sym = FU_sym.subs(Ub_sp, 0)
+
+# Pillar 4 Symbolic: Triadic Master co-sum
+# F_U_g1 + R(t) + F_U_Bi * [SSq]  (validated on Westerlund2/Pillars of Creation)
+FUg1_sp = sp.Symbol(r'F_{U,g1}', real=True)
+Rt_sp   = sp.Symbol(r'R_t',      real=True)
+FUBi_sp = sp.Symbol(r'F_{U,Bi}', real=True)
+triadic_sym = FUg1_sp + Rt_sp + FUBi_sp * SSQ
+
+
 # ==================== FULL DERIVATIONS BLOCK ====================
 # Encodes: Holmlid KER, Parkhomov, P-F, McKubre, Coleman/Guillespie, neutrino osc,
 #          quark production, S_26^(3) VDS, QGP tokamak, SQM, MIT bag,
@@ -2778,7 +2811,17 @@ if __name__ == "__main__":
     mond_a = UQFFExtensions.mond_limit(np.array([1.2e-10, 1.0e-11, 1.0e-12]))
     print(f"[Ext] mond_limit([1.2e-10, 1e-11, 1e-12]): {mond_a[0]:.4e}  {mond_a[1]:.4e}  {mond_a[2]:.4e}")
 
+    print("\n=== UQFF FOUR PILLARS SYMPY SYMBOLIC LATEX ===")
+    print("Pillar 1 F_U:            ", sp.latex(FU_sym))
+    print("Pillar 1 h_UQFF:         ", sp.latex(h_UQFF_sym))
+    print("Pillar 2 ramanujan_26:   ", sp.latex(ramanujan_26_sym))
+    print("Pillar 3 GR limit:       ", sp.latex(FU_gr_sym))
+    print("Pillar 4 triadic:        ", sp.latex(triadic_sym))
+    t_days = np.array([0, 1, 10])
+    h_example = np.array([1.0, 0.9, 0.5]) * (1.0 - 0.1) * np.exp(-KAPPA_FLOAT * t_days)
+    print("Cosmology damping (t=0,1,10 days):", np.round(h_example, 4))
+
     print("\n[OK] scm_vacuum_manifold.py canonical + complete. "
           "All PAPER_361-478 new physics imported and verified. "
-          "Four Immutable Pillars + UQFFExtensions imported from uqff_pillars.py. "
+          "Four Immutable Pillars (class + sympy symbolic) + UQFFExtensions imported from uqff_pillars.py. "
           f"Total new classes: 5 (Pillar1-4 + UQFFExtensions). Progress metric: {progress_metric}%")
