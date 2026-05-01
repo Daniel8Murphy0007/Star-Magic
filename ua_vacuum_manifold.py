@@ -7,8 +7,10 @@ ROLE IN DPM SYSTEM:
   ua_vacuum_manifold.py   — SUPERSTRUCTURE: 4-layer UA vacuum built on SCm
 
 The Di-Pseudo-Monopole (DPM) is the union of both:
-  DPM North Pole : SCm (CW rotation, massless, highest reactivity with trapped Aether)
-  DPM South Pole : UA' (CCW rotation, trapped Aether, grinds through UA' → UA'')
+  DPM = [UA']/[SCm]  (PAPER_411)
+  SCm : CW  rotation component — ω_CW  (clockwise grinding frequency)
+  UA' : CCW rotation component — ω_CCW (counter-clockwise grinding frequency)
+  Grind_opp = ω_CW · SCm − ω_CCW · UA'
 
 UA LAYER HIERARCHY (canonical):
   UA'    = ρ_vac_SCm                                                   (base)
@@ -47,28 +49,23 @@ import numpy as np
 import sympy as sp
 from scipy.integrate import odeint
 
-# ── Imports from the SCm base layer ──────────────────────────────────────────
-from scm_vacuum_manifold import (
-    SSQ,
-    KAPPA,
-    RHO_VAC_SCM,
-    RHO_VAC_UA,
-    THZ_PHONON,
-    BETA_I,
-    LAMBDA_I,
-    OMEGA_S,
-    F_U_Bi_i_99,        # sympy Sum: Σ_{k=1}^{99} (−β_i · Ug_k · cos(π t_n) · M/r²)
-    monte_carlo_fubi_i,
-    KER_SCm,
-    parkhomov_excess_heat,
-    pons_fleischmann_excess_heat,
-)
+# ── Standalone UQFF canonical constants ─────────────────────────────────────
+# ua_vacuum_manifold.py and scm_vacuum_manifold.py are both STANDALONE modules.
+# Neither imports from the other.  Both are imported BY dpm_vacuum_manifold.py
+# which assembles the full DPM, computes Ugi, and scales to the periodic table.
+SSQ:         float = 0.57            # [SSq] calibration constant
+KAPPA:       float = 5.0e-4          # day^{-1}
+KAPPA_FLOAT: float = 5.0e-4          # explicit float alias
+RHO_VAC_SCM: float = 7.09e-37        # kg/m³  SCm vacuum density
+RHO_VAC_UA:  float = 7.09e-36        # kg/m³  UA  vacuum density  (= 10 × SCm)
+THZ_PHONON:  float = 1.25e12         # Hz     SCm phonon frequency
+BETA_I:      float = 0.6             # buoyancy coupling β_i
+LAMBDA_I:    float = 1.0             # manifold coupling λ_i
+OMEGA_S:     float = 2.5e-6          # rad/s  stellar angular frequency ω_s
 
 # ─────────────────────────────────────────────────────────────────────────────
 # §1  MODULE-LEVEL CONSTANTS
 # ─────────────────────────────────────────────────────────────────────────────
-
-KAPPA_FLOAT: float = float(KAPPA)
 
 # Phonon energy at 1.25 THz
 E_PHONON: float = 6.62607015e-34 * THZ_PHONON          # J  (h · ν)
@@ -102,8 +99,11 @@ UA_quad_prime   = RHO_VAC_SCM * (1 + BETA_I * cos_pi_tn + LAMBDA_I * OMEGA_S
 # Sum of all UA layers
 UA_total = UA_prime + UA_double_prime + UA_triple_prime + UA_quad_prime
 
-# Full DPM buoyancy: F_U_Bi_i_99 × total UA density
-F_U_Bi_i_DPM = F_U_Bi_i_99 * UA_total
+# Full DPM buoyancy: F_U_Bi_i_scm (sympy placeholder) × total UA density
+# The actual F_U_Bi_i_99 Sum is defined in scm_vacuum_manifold.py.
+# dpm_vacuum_manifold.py binds this symbol to the real expression.
+_F_Bi_i_scm = sp.Symbol('F_U_Bi_i_scm', real=True)
+F_U_Bi_i_DPM = _F_Bi_i_scm * UA_total
 
 # ── Long-form master integral (formal / regularised in SCm framework) ─────────
 _F0, _G, _M, _r, _rho_scm, _U_UA = sp.symbols(
@@ -117,8 +117,8 @@ F_U_Bi_i_integral = sp.Integral(
 # Ui coupling term (UA ↔ SCm bridge)
 Ui = LAMBDA_I * (RHO_VAC_SCM / RHO_VAC_UA) * OMEGA_S * cos_pi_tn * (1 + DELTA_UA_FOURTH)
 
-# Master buoyancy expression  (sympy)
-master_99 = sp.simplify(F_U_Bi_i_99 + Ui)
+# Master buoyancy expression  (sympy — F_Bi_i_scm placeholder, bound in dpm_vacuum_manifold)
+master_99 = _F_Bi_i_scm + Ui
 
 # ── Phonon linewidth Gaussian resonance (sympy) ───────────────────────────────
 _omega, _Gamma = sp.symbols('omega Gamma', positive=True)
@@ -275,11 +275,12 @@ def ua_lenr_comparison() -> Dict[str, Dict]:
     -------
     dict : keyed by experimenter name
     """
-    # Numerical LENR values from scm_vacuum_manifold
-    # KER_SCm is a float constant (not callable); parkhomov/pons are functions
-    q_park = parkhomov_excess_heat()
-    q_pf   = pons_fleischmann_excess_heat()
-    ker    = KER_SCm   # float constant: E_phonon * S26_3 * Phi_res * scale = 630 eV
+    # SCm numerical values (KER, parkhomov, pons) are computed in dpm_vacuum_manifold.py
+    # which imports both scm_vacuum_manifold and ua_vacuum_manifold.
+    # In standalone mode, these are None.
+    q_park = None   # see dpm_vacuum_manifold: parkhomov_excess_heat()
+    q_pf   = None   # see dpm_vacuum_manifold: pons_fleischmann_excess_heat()
+    ker    = None   # see dpm_vacuum_manifold: KER_SCm = 630 eV
 
     return {
         "Holmlid": {
@@ -512,37 +513,23 @@ def ua_dark_energy_substitute(t_n_val: float = 0.5) -> float:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# §8  DPM DUAL-CALIBRATION PROOF
+# §8  DPM DUAL-CALIBRATION PROOF  →  SEE dpm_vacuum_manifold.py
 # ─────────────────────────────────────────────────────────────────────────────
+# ua_fubi_calibration_proof() requires monte_carlo_fubi_i from scm_vacuum_manifold.
+# It is implemented in dpm_vacuum_manifold.py which imports both layers.
+# Here we expose only the ratio constant.
 
-def ua_fubi_calibration_proof() -> Dict[str, float]:
-    """Prove the F_U_Bi vs F_U_Bi_i calibration via the density ratio.
+def ua_calibration_ratio_proof() -> dict:
+    """Return the DPM density ratio constants (standalone, no scm import).
 
-    F_U_Bi   (inside→outside, cosmological) ∝ ρ_vac_UA
-    F_U_Bi_i (outside→inside, LENR)         ∝ ρ_vac_SCm
-    Ratio = ρ_vac_UA / ρ_vac_SCm = 10
-
-    This bridges the ~1e-37 kg/m³ LENR microscale to the
-    ~1e-36 kg/m³ cosmological macroscale.
-
-    Returns
-    -------
-    dict with keys: ratio, rho_UA, rho_SCm, scale_interpretation
+    Full Monte-Carlo calibration proof (using scm monte_carlo_fubi_i) is
+    in dpm_vacuum_manifold.py::dpm_fubi_calibration_proof().
     """
-    mean_fubi_i, std_fubi_i, rng_fubi_i = monte_carlo_fubi_i()
-    ratio = ua_calibration_ratio()
     return {
-        "rho_vac_SCm"           : RHO_VAC_SCM,
-        "rho_vac_UA"            : RHO_VAC_UA,
-        "ratio_UA_over_SCm"     : ratio,
-        "F_U_Bi_i_MC_mean_N"    : mean_fubi_i,
-        "F_U_Bi_i_MC_std_N"     : std_fubi_i,
-        "F_U_Bi_cosmological"   : mean_fubi_i * ratio,  # ≈ 10× LENR scale
-        "scale_interpretation"  : (
-            "LENR (F_U_Bi_i) operates at ρ_vac_SCm; "
-            "cosmology (F_U_Bi) operates at ρ_vac_UA = 10× SCm. "
-            "The same buoyancy equation spans both scales."
-        ),
+        "rho_vac_SCm"       : RHO_VAC_SCM,
+        "rho_vac_UA"        : RHO_VAC_UA,
+        "ratio_UA_over_SCm" : DPM_DENSITY_RATIO,
+        "note"              : "Full F_U_Bi_i Monte-Carlo in dpm_vacuum_manifold.py",
     }
 
 
@@ -568,7 +555,7 @@ if __name__ == "__main__":
     factor = ua_dpm_buoyancy_factor(t_test)
     print(f"  UA_total (DPM sum)   = {total:.6e} kg/m³")
     print(f"  DPM buoyancy factor  = {factor:.6f}  (relative to UA')")
-    print(f"  Calibration ratio    = {ua_calibration_ratio():.1f}  (ρ_UA / ρ_SCm, exact)")
+    print(f"  Calibration ratio    = {ua_calibration_ratio():.1f}  (rho_UA / rho_SCm, exact)")
 
     # ── 2.2  Sympy Expressions ───────────────────────────────────────────────
     print(f"\n{SEP}")
@@ -578,15 +565,15 @@ if __name__ == "__main__":
     print(f"  Ui coupling term  = {sp.simplify(Ui)}")
     print(f"  master_99         = F_U_Bi_i_99 + Ui  (simplify verified)")
 
-    # ── 2.3  F_U_Bi_i Monte-Carlo + DPM calibration ──────────────────────────
+    # ── 2.3  DPM calibration ratio (standalone) ──────────────────────────────
     print(f"\n{SEP}")
-    print("§3  F_U_Bi_i MONTE-CARLO + DPM CALIBRATION")
+    print("§3  DPM CALIBRATION RATIO  (full Monte-Carlo in dpm_vacuum_manifold.py)")
     print(SEP)
-    proof = ua_fubi_calibration_proof()
-    print(f"  F_U_Bi_i MC mean  = {proof['F_U_Bi_i_MC_mean_N']:.4e} N  (LENR scale)")
-    print(f"  F_U_Bi cosmo      = {proof['F_U_Bi_cosmological']:.4e} N  (cosmo scale)")
-    print(f"  Ratio UA/SCm      = {proof['ratio_UA_over_SCm']:.1f}")
-    print(f"  Interpretation    : {proof['scale_interpretation']}")
+    proof = ua_calibration_ratio_proof()
+    print(f"  rho_vac_SCm       = {proof['rho_vac_SCm']:.2e} kg/m3")
+    print(f"  rho_vac_UA        = {proof['rho_vac_UA']:.2e} kg/m3")
+    print(f"  Ratio UA/SCm      = {proof['ratio_UA_over_SCm']:.1f}  (exact)")
+    print(f"  Note              : {proof['note']}")
 
     # ── 2.4  Phonon Linewidth Dynamics ───────────────────────────────────────
     print(f"\n{SEP}")
