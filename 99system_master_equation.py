@@ -1,20 +1,20 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
-99system_master_equation.py — Full 99-System Compressed Master Equation
+99system_master_equation.py � Full 99-System Compressed Master Equation
 
 Session 216 | Star Magic UQFF Framework
-────────────────────────────────────────────────────────────────────────────────
+--------------------------------------------------------------------------------
 Standalone executable for the 99-system compressed master equation from
 PAPER_454/456/457 (CP3 PAPER_211 ancestry).
 
-F_U^{(99)}(r,t) = Σ_{i=1}^{99} [U_{g,i} + U_m + U_A - U_{b,i}]
-                 + F_neutron · S₂₆^{(3)}([SSq]) · Φ_{1.25THz}(ω,Γ)
+F_U^{(99)}(r,t) = S_{i=1}^{99} [U_{g,i} + U_m + U_A - U_{b,i}]
+                 + F_neutron � S26^{(3)}([SSq]) � F_{1.25THz}(?,G)
 
 All 99 systems parameterized and compressed to triadic form:
-  F_U = w_C·g_comp + w_R·g_res + w_B·g_buoy
+  F_U = w_C�g_comp + w_R�g_res + w_B�g_buoy
 
 Residual target: |R_c| < 1% for all 99 systems.
-────────────────────────────────────────────────────────────────────────────────
+--------------------------------------------------------------------------------
 """
 
 import math
@@ -22,7 +22,7 @@ from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, List, Optional
 
-# ── §0  Constants ──────────────────────────────────────────────────────────
+# -- �0  Constants ----------------------------------------------------------
 
 PI        = math.pi
 G         = 6.674e-11
@@ -33,7 +33,7 @@ M_SUN     = 1.989e30
 OMEGA_SCM = 2 * PI * 1.25e12
 SSQ       = 0.57
 S26       = sum(math.exp(-SSQ * k / 26.0) for k in range(1, 27))
-BETA_I    = 0.6   # canonical: pdf/scm_vacuum_manifold.py
+BETA_I    = 0.6   # canonical: scm_vacuum_manifold.py
 # ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
 import math as _math_99
 E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
@@ -78,7 +78,7 @@ except ImportError:
     def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22): return 0.0
 
 
-# Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
+# Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
     """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling (1-10 W range)"""
     rho_Pd = 6.8e28              # Pd atomic density [atoms/m^3]
@@ -113,7 +113,7 @@ def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
     return P / 1e3  # kW  (~200 W at default params)
 
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
-    """F_U_Bi_i integral numerical [canonical: pdf/scm_vacuum_manifold.py]"""
+    """F_U_Bi_i integral numerical [canonical: scm_vacuum_manifold.py]"""
     import math as _m_fubi
     G_N = 6.6743e-11; rho_ua = 7.09e-36; rho_scm_v = 7.09e-37
     cos_pi_tn = _m_fubi.cos(_m_fubi.pi * -100.0)
@@ -122,7 +122,7 @@ def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     return integrand * float(r) * abs(cos_pi_tn)
 
 def monte_carlo_fubi_i(n_samples=10000):
-    """F_U_Bi_i Monte-Carlo on reactor parameters [canonical: pdf/scm_vacuum_manifold.py]"""
+    """F_U_Bi_i Monte-Carlo on reactor parameters [canonical: scm_vacuum_manifold.py]"""
     import numpy as _np_mc
     results = []
     for _ in range(n_samples):
@@ -137,17 +137,17 @@ def monte_carlo_fubi_i(n_samples=10000):
 try:
     from mpmath import polylog as _polylog_scm_local
     def vds_numerical(terms=1000):
-        """VDS: Li_26([SSq]) — 26D Vacuum Density Series [canonical: pdf/scm_vacuum_manifold.py]"""
+        """VDS: Li_26([SSq]) � 26D Vacuum Density Series [canonical: scm_vacuum_manifold.py]"""
         return float(_polylog_scm_local(26, 0.57))
 except ImportError:
     def vds_numerical(terms=1000):
-        """VDS fallback: partial sum of SSq^n/n^26 [canonical: pdf/scm_vacuum_manifold.py]"""
+        """VDS fallback: partial sum of SSq^n/n^26 [canonical: scm_vacuum_manifold.py]"""
         return sum((0.57**n) / (n**26) for n in range(1, min(terms + 1, 201)))
 
 GAMMA_0   = 2 * PI * 0.1e12
 
 
-# ── §1  99-System Catalogue ──────────────────────────────────────────────
+# -- �1  99-System Catalogue ----------------------------------------------
 
 def _build_99_systems() -> List[Dict]:
     """Generate 99 parameterized astrophysical systems.
@@ -203,15 +203,15 @@ def _build_99_systems() -> List[Dict]:
     return systems
 
 
-# ── §2  Core Physics Functions ───────────────────────────────────────────
+# -- �2  Core Physics Functions -------------------------------------------
 
 def Ug_26layer(M: float, r: float) -> float:
-    """26-layer compressed gravity: g(r) = Σ_{i=1}^{26} G·M/r² · [SSq]·i/26."""
+    """26-layer compressed gravity: g(r) = S_{i=1}^{26} G�M/r� � [SSq]�i/26."""
     return sum(dpm_ug1_seed(M, r) * SSQ * i / 26.0 for i in range(1, 27))
 
 
 def F_UBi(M: float, r: float) -> float:
-    """Buoyancy force: F_{UBi} = Σ β_i · U_{g,i}."""
+    """Buoyancy force: F_{UBi} = S �_i � U_{g,i}."""
     return sum(dpm_ug1_seed(M, r) * math.exp(-SSQ * i / 26.0) * BETA_I for i in range(1, 27))
 
 
@@ -226,7 +226,7 @@ def UA_aether(M: float, r: float) -> float:
 
 
 def Phi_phonon(omega: float = OMEGA_SCM, gamma: float = GAMMA_0) -> float:
-    """Phonon modulation factor Φ_{1.25THz}(ω,Γ)."""
+    """Phonon modulation factor F_{1.25THz}(?,G)."""
     return math.exp(-(omega - OMEGA_SCM)**2 / (2 * gamma**2)) * S26
 
 
@@ -235,13 +235,13 @@ def F_neutron() -> float:
     return 1e-10 * S26
 
 
-# ── §3  Master Equation ─────────────────────────────────────────────────
+# -- �3  Master Equation -------------------------------------------------
 
 def master_equation_99(system: Dict, t: float = 1.0,
                        gamma: float = GAMMA_0) -> Dict:
     """Evaluate F_U^{(99)} for one system at given time and linewidth.
 
-    F_U = Σ [U_g + U_m + U_A - U_b] + F_neutron · S₂₆^{(3)} · Φ_{1.25THz}
+    F_U = S [U_g + U_m + U_A - U_b] + F_neutron � S26^{(3)} � F_{1.25THz}
     """
     M = system["M_kg"]
     r = max(system["r_m"], 1.0)  # Avoid division by zero
@@ -268,10 +268,10 @@ def master_equation_99(system: Dict, t: float = 1.0,
     }
 
 
-# ── §4  Triadic Compression ─────────────────────────────────────────────
+# -- �4  Triadic Compression ---------------------------------------------
 
 def triadic_compress(system: Dict, gamma: float = GAMMA_0) -> Dict:
-    """Compress F_U into triadic form: F = w_C·g_c + w_R·g_r + w_B·g_b."""
+    """Compress F_U into triadic form: F = w_C�g_c + w_R�g_r + w_B�g_b."""
     M = system["M_kg"]
     r = max(system["r_m"], 1.0)
 
@@ -308,7 +308,7 @@ def triadic_compress(system: Dict, gamma: float = GAMMA_0) -> Dict:
     }
 
 
-# ── §5  Full 99-System Evaluation ───────────────────────────────────────
+# -- �5  Full 99-System Evaluation ---------------------------------------
 
 class NinetyNineSystemMasterEquation:
     """Full 99-system compressed master equation evaluation."""
@@ -350,7 +350,7 @@ class NinetyNineSystemMasterEquation:
                 for cat in ["stellar", "galaxy", "nebula", "compact", "cluster", "cosmological"]
             ],
             "primary_equations": [
-                "F_U^{(99)}(r,t) = Σᵢ₌₁⁹⁹ [U_g + U_m + U_A - U_b] + F_n·S₂₆·Φ",
+                "F_U^{(99)}(r,t) = S??1?? [U_g + U_m + U_A - U_b] + F_n�S26�F",
                 f"Total F_U = {total_FU:.6e}",
                 f"Triadic compression: {pass_count}/99 pass <1% residual",
                 f"Average residual: {avg_residual:.6e}",
@@ -369,7 +369,7 @@ class NinetyNineSystemMasterEquation:
         pass
 
 
-# ── §6  Self-Tests ─────────────────────────────────────────────────────────
+# -- �6  Self-Tests ---------------------------------------------------------
 
 def _run_tests() -> bool:
     ok = True
@@ -410,7 +410,7 @@ def _run_tests() -> bool:
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("  99system_master_equation.py — 99-System Compressed Master Equation")
+    print("  99system_master_equation.py � 99-System Compressed Master Equation")
     print("=" * 70)
     passed = _run_tests()
     print("=" * 70)

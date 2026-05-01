@@ -1,4 +1,4 @@
-ï»¿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # scm_vacuum_manifold.py
 # Generated from clean 27FEB2026_A.docx thread + repo alignment
 # SCm Vacuum Manifold, Buoyancy, Phonon, Negative-Time, Primordial Split
@@ -12,14 +12,14 @@ from typing import Dict, List
 
 # ==================== VERBATIM CONSTANTS FROM CLEAN THREAD ====================
 SSQ = sp.Rational(57, 100)          # [SSq] = 0.57
-KAPPA = sp.Rational(5, 10000)       # Îº = 5.0 Ã— 10^{-4} day^{-1}
-KAPPA_FLOAT = float(KAPPA)          # 0.0005 â€” Python float for numpy/math exp() calls
-RHO_VAC_SCM = 7.09e-37              # kg/mÂ³
-RHO_VAC_UA  = 7.09e-36              # kg/mÂ³  (UA vacuum density)
+KAPPA = sp.Rational(5, 10000)       # ? = 5.0 × 10^{-4} day^{-1}
+KAPPA_FLOAT = float(KAPPA)          # 0.0005 — Python float for numpy/math exp() calls
+RHO_VAC_SCM = 7.09e-37              # kg/m³
+RHO_VAC_UA  = 7.09e-36              # kg/m³  (UA vacuum density)
 THZ_PHONON = 1.25e12                # 1.25 THz
-BETA_I      = 0.6                   # buoyancy coupling Î²_i
-LAMBDA_I    = 1.0                   # manifold coupling Î»_i
-OMEGA_S     = 2.5e-6                # stellar angular frequency Ï‰_s
+BETA_I      = 0.6                   # buoyancy coupling ß_i
+LAMBDA_I    = 1.0                   # manifold coupling ?_i
+OMEGA_S     = 2.5e-6                # stellar angular frequency ?_s
 NEG_TIME_RANGE = sp.symbols('t_n', negative=True)  # t_n < 0
 
 # ==================== LONG-FORM DERIVATIONS ====================
@@ -30,11 +30,11 @@ phi = sp.Function('Phi')(sp.symbols('omega'), sp.symbols('Gamma'))  # Gaussian p
 
 # 2. Negative-Time Modulation
 t_n = sp.symbols('t_n', real=True)
-cos_pi_tn = sp.cos(sp.pi * t_n)   # flips sign of A_Î¼Î½ and Ubi
+cos_pi_tn = sp.cos(sp.pi * t_n)   # flips sign of A_µ? and Ubi
 
 # 3. Buoyancy Force F_U_Bi_i (outside-to-inside)
 F_0, G, M, r, Omega_g, d_g, wind_mod, U_UA = sp.symbols('F_0 G M r Omega_g d_g wind_mod U_UA', positive=True)
-beta_i = sp.symbols(r'\beta_i', positive=True)  # â‰ˆ 0.61
+beta_i = sp.symbols(r'\beta_i', positive=True)  # ˜ 0.61
 Ug_k = sp.symbols('Ug_k', real=True)  # 4-component
 
 F_U_Bi_i = sp.Integral(
@@ -57,7 +57,7 @@ omega = sp.symbols('omega', positive=True)
 Gamma = sp.symbols('Gamma', positive=True)
 Phi_gaussian = sp.exp( - (omega - THZ_PHONON)**2 / (2 * Gamma**2) )   # 1.25 THz Gaussian
 
-# 6. Primordial Split: E_net(t, Î“)
+# 6. Primordial Split: E_net(t, G)
 E_net = sp.Function('E_net')(t_n, Gamma)   # positive/negative buoyancy branch
 
 # ==================== NUMERICAL HELPERS (for VS Code testing) ====================
@@ -132,7 +132,7 @@ def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
     P_excess = N_clusters * energy_per_cluster_j * np.exp(-KAPPA_FLOAT * t_hours * 24)
     return P_excess / 1000  # kW  (~200 W at default params)
 
-# Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
+# Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
     """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling (1-10 W range)"""
     rho_Pd = 6.8e28              # Pd atomic density [atoms/m^3]
@@ -157,7 +157,7 @@ def get_simplified_master():
 F_TRZ = 0.1  # Time-Reversal Zone factor (canonical value from UQFF framework)
 
 def coleman_guillespie_scm(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12):
-    """Coleman/Guillespie: radioactive beta decay â†’ SCm phonon(1.25 THz) â†’ coherent current.
+    """Coleman/Guillespie: radioactive beta decay ? SCm phonon(1.25 THz) ? coherent current.
     decay_rate: beta events/s.
     Returns coherent energy output rate [W] via Phi_gaussian * F_U_Bi_i * cos(pi*t_n).
     """
@@ -181,7 +181,7 @@ def neutrino_oscillation_prob_lenr(t_n=-100.0):
 
 def quark_production_prob_ui(t_n=-100.0, Gamma=1.0e12):
     """Quark production probability via resonant Ui at QCD scale.
-    P_quark âˆ |Phi_gaussian|^2 * |cos(pi*t_n)| * |Ui_resonance|
+    P_quark ? |Phi_gaussian|^2 * |cos(pi*t_n)| * |Ui_resonance|
     Amplified phonon energy reaches QCD scale via S26_3 = 1.4531e26.
     Uses Ui with explicit F_TRZ factor: Ui = LAMBDA_I*(RHO_VAC_SCM/RHO_VAC_UA)*OMEGA_S*cos(pi*t_n)*(1+F_TRZ)
     """
@@ -304,9 +304,9 @@ def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22):
     h_scm = (G_N * E_gw * abs(cos_tn)) / (c**4 * r_detector)
     return h_scm  # [dimensionless]
 
-# ==================== NEW PHYSICS BLOCK (PAPER_361â€“478) ====================
+# ==================== NEW PHYSICS BLOCK (PAPER_361–478) ====================
 # Imported from grok_conversation_B_SCm_vacuum_manifold_2040547581009572344.txt
-# Additive only â€” no existing function bodies altered.
+# Additive only — no existing function bodies altered.
 # Groups: Stellar wind bubble / Molecular / Neutrino / Heavy-ion / Magnetar /
 #         MUGE closure / Yang-Mills / Ts00 / Um three-modifier / VDS/DVP/BSH /
 #         LENR non-local / DPM 26-sphere / Planetary Hamiltonian
@@ -315,10 +315,10 @@ def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22):
 def bubble_nebula_positive_et(M_star=34.0 * 1.989e30, r=2.9e16, t=1.0e12,
                                H0=2.26e-18, E0=1.0):
     """Stellar-wind bubble positive expansion energy (PAPER_361).
-    E_t = E_0 * F_TRZ * t * (rho_SCm / rho_UA)  â€” positive, contrasts filament erosion.
-    g_bubble = (GM/rÂ²) * (1 + H_0*t) * SC_m_factor * (1 + E_t)
+    E_t = E_0 * F_TRZ * t * (rho_SCm / rho_UA)  — positive, contrasts filament erosion.
+    g_bubble = (GM/r²) * (1 + H_0*t) * SC_m_factor * (1 + E_t)
     SC_m_factor = 1 + rho_SCm/rho_UA.
-    Returns (g_bubble [m/sÂ²], E_t [dimensionless]).
+    Returns (g_bubble [m/s²], E_t [dimensionless]).
     """
     import math
     G_N = 6.6743e-11
@@ -332,13 +332,13 @@ def bubble_nebula_positive_et(M_star=34.0 * 1.989e30, r=2.9e16, t=1.0e12,
 # ----- PAPER_362: H2O/H2 molecular rotor Phillips cross-section -----
 def phillips_rotor_cross_section(E_cm=300.0):
     """H2O/H2 molecular rotor Phillips cross-section (PAPER_362).
-    sigma(E) = a * (1 - exp(-b * E))  with a=15.28 Ã…Â², b=0.00387 cm.
-    k_rate = 3.78e-16 mÂ³/s (canonical, links to U_UA vacuum buoyancy).
-    E_cm: rotational energy [cmâ»Â¹].
-    Returns (sigma [Ã…Â²], k_rate [mÂ³/s]).
+    sigma(E) = a * (1 - exp(-b * E))  with a=15.28 Å², b=0.00387 cm.
+    k_rate = 3.78e-16 m³/s (canonical, links to U_UA vacuum buoyancy).
+    E_cm: rotational energy [cm?¹].
+    Returns (sigma [Å²], k_rate [m³/s]).
     """
     import math
-    a = 15.28    # Ã…Â²
+    a = 15.28    # Å²
     b = 0.00387  # cm
     sigma = a * (1.0 - math.exp(-b * E_cm))
     return sigma, 3.78e-16
@@ -348,9 +348,9 @@ def phillips_rotor_cross_section(E_cm=300.0):
 def nomad_neutrino_coupling_bound(E_base=1.0e9, n_vds=13):
     """NOMAD monophoton neutrino-vacuum coupling bound (PAPER_363).
     E_nu_n = E_base * SSq^(n/26) * (rho_SCm/rho_UA)
-    In 26D framework: SSq(n) = SSq^(n/26); at n=13 â†’ SSq^0.5 â‰ˆ 0.755.
-    Constrains K_pol â‰¤ 1.33e-31 cmÂ³ from NOMAD P_nu < 1e-32 limit.
-    Returns (E_nu_n [J], SSq_n [dimensionless], K_pol_bound_cm3 [cmÂ³]).
+    In 26D framework: SSq(n) = SSq^(n/26); at n=13 ? SSq^0.5 ˜ 0.755.
+    Constrains K_pol = 1.33e-31 cm³ from NOMAD P_nu < 1e-32 limit.
+    Returns (E_nu_n [J], SSq_n [dimensionless], K_pol_bound_cm3 [cm³]).
     """
     SSq_float = float(SSQ)
     SSq_n = SSq_float ** (n_vds / 26.0)
@@ -363,7 +363,7 @@ def nomad_neutrino_coupling_bound(E_base=1.0e9, n_vds=13):
 def alice_multiplicity_rho_ratio(n_vds=18, sqrt_s_gev=2760.0):
     """ALICE heavy-ion multiplicity via VDS vacuum harmonic (PAPER_364).
     rho_ratio_18 = SSq^(18/26); k_eta_18 vacuum coupling at that stratum.
-    Reproduces dN_ch/dÎ· âˆ sqrt(s)^0.156 with k_eta_18.
+    Reproduces dN_ch/d? ? sqrt(s)^0.156 with k_eta_18.
     Returns (rho_ratio_18, k_eta_18, dN_deta_scaled).
     """
     SSq_float = float(SSQ)
@@ -376,8 +376,8 @@ def alice_multiplicity_rho_ratio(n_vds=18, sqrt_s_gev=2760.0):
 # ----- PAPER_365: Magnetar energy budget and outburst timescale -----
 def magnetar_energy_budget(M_mag_J=2.01e37, L_X=5.0e28, P_spin_s=3.76):
     """Magnetar magnetic energy reservoir and outburst timescale (PAPER_365).
-    M_mag = 2.01e37 J; tau_outburst = M_mag / L_X â‰ˆ 12.7 yr.
-    Spin-down nu_dot = -kappa / (2Ï€ P_spin) links braking to UQFF vacuum reactance.
+    M_mag = 2.01e37 J; tau_outburst = M_mag / L_X ˜ 12.7 yr.
+    Spin-down nu_dot = -kappa / (2p P_spin) links braking to UQFF vacuum reactance.
     Returns (tau_yr [yr], nu_dot [Hz/s]).
     """
     import math
@@ -387,11 +387,11 @@ def magnetar_energy_budget(M_mag_J=2.01e37, L_X=5.0e28, P_spin_s=3.76):
     return tau_yr, nu_dot
 
 
-# ----- PAPER_366: Sgr A* JWST 2025 flare Ï‰_act calibration -----
+# ----- PAPER_366: Sgr A* JWST 2025 flare ?_act calibration -----
 def sgra_flare_omega_act(T_flare_s=1800.0, k_act=0.1):
     """Sgr A* JWST 2025 flare activation frequency (PAPER_366).
     omega_act derived from k_act contrast and Sgr A* ISCO.
-    f_TRZ_flare = 1 / T_flare â‰ˆ 5.56e-4 Hz (vacuum reactance trigger, â‰ˆ30 min).
+    f_TRZ_flare = 1 / T_flare ˜ 5.56e-4 Hz (vacuum reactance trigger, ˜30 min).
     Returns (omega_act [rad/s], f_TRZ_flare [Hz], T_flare_min [min]).
     """
     import math
@@ -420,13 +420,13 @@ def merger_triadic_5eq(M_cluster_kg=1.5e15 * 1.989e30, r_cluster=1.0e23):
             'Buoyancy': F_buoy, 'U_i_magnitude': U_i_mag}
 
 
-# ----- PAPER_368: Ug4 Î›CDM galactic BH coupling -----
+# ----- PAPER_368: Ug4 ?CDM galactic BH coupling -----
 def ug4_lambda_cdm_coupling(M_BH_kg=4.15e6 * 1.989e30, d_gal_m=2.57e20,
                              k4=2.0, rho_v=6.0e-27, t=0.0):
-    """Ug4 coupling of Planck 2018 Î›CDM vacuum density to galactic BH (PAPER_368).
+    """Ug4 coupling of Planck 2018 ?CDM vacuum density to galactic BH (PAPER_368).
     Ug4 = k4 * rho_v * (M_BH/d_gal) * exp(-kappa*t) * |cos(pi*t_n)|
-    rho_v = 6e-27 kg/mÂ³ (Planck 2018 cosmological vacuum density).
-    Returns Ug4 [m/sÂ²] â‰ˆ 4.22e-7 at t=0.
+    rho_v = 6e-27 kg/m³ (Planck 2018 cosmological vacuum density).
+    Returns Ug4 [m/s²] ˜ 4.22e-7 at t=0.
     """
     import math
     cos_tn = math.cos(math.pi * (-100.0))
@@ -437,8 +437,8 @@ def ug4_lambda_cdm_coupling(M_BH_kg=4.15e6 * 1.989e30, d_gal_m=2.57e20,
 def navier_stokes_scm_body_force(v_SCm=1.0e8, t_n=-100.0):
     """Navier-Stokes SCm jet body force density (PAPER_369).
     F_SCm = rho_SCm * v_SCm * |cos(pi * t_n)| / RHO_VAC_UA
-    DVP hypergraph flow bounds vorticity |Ï‰|Â² â‰¤ C (Navier-Stokes regularity bridge).
-    Returns F_scm_body [N/mÂ³] (normalised body force density).
+    DVP hypergraph flow bounds vorticity |?|² = C (Navier-Stokes regularity bridge).
+    Returns F_scm_body [N/m³] (normalised body force density).
     """
     import math
     cos_tn = math.cos(math.pi * t_n)
@@ -449,12 +449,12 @@ def navier_stokes_scm_body_force(v_SCm=1.0e8, t_n=-100.0):
 def pcore_planetary_scaling(M_body_kg=1.989e30, is_stellar=True):
     """Pcore planetary core scaling law (PAPER_370 / PAPER_405).
     Pcore = 1.0 for stellar bodies, 1e-3 for planets.
-    rho_SCm âˆ M^alpha  with alpha â‰ˆ 0.66: Sun~1e15, Jupiter~4e13, Neptune~1e11 kg/mÂ³.
-    Returns (Pcore, rho_SCm_scaled [kg/mÂ³]).
+    rho_SCm ? M^alpha  with alpha ˜ 0.66: Sun~1e15, Jupiter~4e13, Neptune~1e11 kg/m³.
+    Returns (Pcore, rho_SCm_scaled [kg/m³]).
     """
     alpha = 0.66
     Pcore = 1.0 if is_stellar else 1.0e-3
-    rho_SCm_sun = 1.0e15   # canonical stellar SCm core density [kg/mÂ³]
+    rho_SCm_sun = 1.0e15   # canonical stellar SCm core density [kg/m³]
     rho_SCm_scaled = rho_SCm_sun * (M_body_kg / 1.989e30) ** alpha
     return Pcore, rho_SCm_scaled
 
@@ -465,8 +465,8 @@ def muge_12term_resonance(a_DPM, a_THz, a_vac_diff, a_super_freq, a_aether_res,
                           a_osc, a_exp_freq, f_TRZ_term):
     """12-term MUGE superconductive resonance (PAPER_371).
     g(r,t) = sum of 12 frequency-derived acceleration terms.
-    Validated against SGR1745-2900 and Sgr A* JWST 2025. All inputs [m/sÂ²].
-    Returns g_total [m/sÂ²].
+    Validated against SGR1745-2900 and Sgr A* JWST 2025. All inputs [m/s²].
+    Returns g_total [m/s²].
     """
     return (a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + Ug4i +
             a_quantum_freq + a_Aether_freq + a_fluid_freq + a_osc + a_exp_freq + f_TRZ_term)
@@ -476,9 +476,9 @@ def muge_12term_resonance(a_DPM, a_THz, a_vac_diff, a_super_freq, a_aether_res,
 def compressed_uqff_meissner(g_newtonian, B_field, B_crit=4.4e13,
                               H0=2.26e-18, t=0.0, Lambda_cc=1.089e-52):
     """Compressed UQFF with linear Meissner quenching factor (PAPER_372).
-    g_compressed = g_newton * (1 - B/B_crit) * (1 + H0*t) * (1 + Lambda*cÂ²/3)
+    g_compressed = g_newton * (1 - B/B_crit) * (1 + H0*t) * (1 + Lambda*c²/3)
     B_crit=4.4e13 T (canonical neutron star / magnetar critical field).
-    Returns g_compressed [m/sÂ²] (zero when B â‰¥ B_crit = full Meissner expulsion).
+    Returns g_compressed [m/s²] (zero when B = B_crit = full Meissner expulsion).
     """
     meissner = max(0.0, 1.0 - B_field / B_crit)
     hubble_mod = 1.0 + H0 * t
@@ -490,9 +490,9 @@ def compressed_uqff_meissner(g_newtonian, B_field, B_crit=4.4e13,
 # ----- PAPER_373/395: Wormhole 13th/14th MUGE resonance term -----
 def wormhole_resonance_term(r=1.0e3, f_worm=1.0, E_vac_neb=1.0e-15, b_throat=1.0):
     """Wormhole Morris-Thorne MUGE acceleration term (PAPER_373/395).
-    a_worm = f_worm * E_vac_neb / (b_throatÂ² + rÂ²)
+    a_worm = f_worm * E_vac_neb / (b_throat² + r²)
     This is the 13th (or 14th) resonance term in the MUGE sum.
-    Returns a_worm [m/sÂ²].
+    Returns a_worm [m/s²].
     """
     return f_worm * E_vac_neb / (b_throat ** 2 + r ** 2)
 
@@ -500,8 +500,8 @@ def wormhole_resonance_term(r=1.0e3, f_worm=1.0, E_vac_neb=1.0e-15, b_throat=1.0
 # ----- PAPER_378: Cohesive UQFF (Compressed + Resonance unified limit) -----
 def cohesive_uqff(g_compressed, a_resonance_list, t=0.0):
     """Cohesive UQFF: Compressed and Resonance as limits of the same physics (PAPER_378).
-    g_cohesive = g_compressed + Î£ a_resonance_i * exp(-kappa * t)
-    SM gravity emerges in the weak-field limit. Returns g_cohesive [m/sÂ²].
+    g_cohesive = g_compressed + S a_resonance_i * exp(-kappa * t)
+    SM gravity emerges in the weak-field limit. Returns g_cohesive [m/s²].
     """
     import math
     resonance_sum = sum(a_resonance_list) * math.exp(-KAPPA_FLOAT * t)
@@ -512,7 +512,7 @@ def cohesive_uqff(g_compressed, a_resonance_list, t=0.0):
 def yang_mills_mass_gap_dynamical(t_years=1.0, n_vds=18):
     """Yang-Mills mass gap via dynamical SCm/UA vacuum density ratio (PAPER_388).
     Delta_m = sqrt(rho_dot_UA * (rho_SCm/rho_UA)^n) * exp(-exp(-pi - t_years))
-    Distinct from static Meissner form. Returns Delta_m [sqrt(kg/mÂ³/s)].
+    Distinct from static Meissner form. Returns Delta_m [sqrt(kg/m³/s)].
     """
     import math
     rho_dot = RHO_VAC_UA * KAPPA_FLOAT
@@ -521,7 +521,7 @@ def yang_mills_mass_gap_dynamical(t_years=1.0, n_vds=18):
     return math.sqrt(abs(rho_dot * ratio_n)) * envelope
 
 
-# ----- PAPER_389: Galactic Ï‰_s from stellar velocity dispersion -----
+# ----- PAPER_389: Galactic ?_s from stellar velocity dispersion -----
 def galactic_omega_s(sigma_km_s=200.0, R_bulge_pc=1000.0):
     """Galactic angular frequency from M-sigma velocity dispersion (PAPER_389).
     omega_s_galactic = sigma [m/s] / R_bulge [m]
@@ -533,7 +533,7 @@ def galactic_omega_s(sigma_km_s=200.0, R_bulge_pc=1000.0):
 
 # ----- PAPER_390: SMBH M-sigma relation -----
 def smbh_msigma(sigma_km_s=200.0):
-    """UQFF anchoring of M_BHâ€“sigma empirical relation (PAPER_390).
+    """UQFF anchoring of M_BH–sigma empirical relation (PAPER_390).
     log10(M_BH/M_sun) = 0.309 * log10(sigma/200) + 4.38
     Returns M_BH [kg].
     """
@@ -547,7 +547,7 @@ def hybrid_muge_blending(g_compressed, g_resonance, B_field, B_crit=4.4e13):
     """Continuous Meissner-weighted MUGE blending (PAPER_391).
     g_hybrid = exp(-B/B_crit) * g_compressed + (1 - exp(-B/B_crit)) * g_resonance
     Dynamically selects operational mode by physical magnetic field state.
-    Returns g_hybrid [m/sÂ²].
+    Returns g_hybrid [m/s²].
     """
     import math
     w = math.exp(-B_field / B_crit)
@@ -557,9 +557,9 @@ def hybrid_muge_blending(g_compressed, g_resonance, B_field, B_crit=4.4e13):
 # ----- PAPER_392: Aether metric tensor perturbation -----
 def aether_metric_perturbation(g_munu_00=1.0, T_s00=1.127e7,
                                 t_n=-100.0, eta_aether=1.0e-22):
-    """Aether metric tensor perturbation A_Î¼Î½ (PAPER_392).
+    """Aether metric tensor perturbation A_µ? (PAPER_392).
     A_munu = g_munu + eta * T_s00 * cos(pi * t_n)
-    eta=1e-22, T_s00â‰ˆ1.127e7 kgÂ·mâ»Â³Â·cÂ² (stellar core + envelope).
+    eta=1e-22, T_s00˜1.127e7 kg·m?³·c² (stellar core + envelope).
     Returns A_00 component [dimensionless].
     """
     import math
@@ -569,9 +569,9 @@ def aether_metric_perturbation(g_munu_00=1.0, T_s00=1.127e7,
 # ----- PAPER_393/415: E_react SCm reactor efficiency with v_SCm=0.99c -----
 def e_react_scm_efficiency(t=0.0, v_SCm=0.99 * 2.998e8, rho_SCm_val=None):
     """SCm reactor efficiency E_react(t) with v_SCm=0.99c (PAPER_393/415).
-    E_react = (rho_SCm * v_SCmÂ² / rho_UA) * exp(-kappa * t)
-    At t=0: E_react_0 â‰ˆ 8.808e54 J (dominant amplification in Ug2/Ug3/Um/Ug4i).
-    rho_SCm_val: override SCm density [kg/mÂ³] (default RHO_VAC_SCM).
+    E_react = (rho_SCm * v_SCm² / rho_UA) * exp(-kappa * t)
+    At t=0: E_react_0 ˜ 8.808e54 J (dominant amplification in Ug2/Ug3/Um/Ug4i).
+    rho_SCm_val: override SCm density [kg/m³] (default RHO_VAC_SCM).
     Returns E_react [J].
     """
     import math
@@ -581,11 +581,11 @@ def e_react_scm_efficiency(t=0.0, v_SCm=0.99 * 2.998e8, rho_SCm_val=None):
 
 # ----- PAPER_405: SCm density planetary scaling law -----
 def scm_density_scaling_law(M_body_kg=1.989e30):
-    """SCm density planetary scaling law: rho_SCm âˆ M^0.66 (PAPER_405).
-    Canonical values: Sun 1e15, Jupiter ~4e13, Earth ~6e12, Neptune ~1e11 kg/mÂ³.
-    Returns rho_SCm [kg/mÂ³].
+    """SCm density planetary scaling law: rho_SCm ? M^0.66 (PAPER_405).
+    Canonical values: Sun 1e15, Jupiter ~4e13, Earth ~6e12, Neptune ~1e11 kg/m³.
+    Returns rho_SCm [kg/m³].
     """
-    rho_SCm_sun = 1.0e15   # canonical stellar SCm core density [kg/mÂ³]
+    rho_SCm_sun = 1.0e15   # canonical stellar SCm core density [kg/m³]
     return rho_SCm_sun * (M_body_kg / 1.989e30) ** 0.66
 
 
@@ -593,8 +593,8 @@ def scm_density_scaling_law(M_body_kg=1.989e30):
 def ts00_five_component(M_star=1.989e30, V_star=1.41e27,
                          v_sw=4.0e5, v_SCm=0.99 * 2.998e8, v_UA=1.0e8):
     """Ts00 five-component stress-energy tensor (PAPER_416).
-    T_total = T_solar + T_sw + T_SCm_v + T_UA_v  [kg/mÂ³]
-    T_solar = M*cÂ²/V, T_sw = rho_sw*v_swÂ², T_SCm_v = rho_SCm*v_SCmÂ²/cÂ², T_UA_v = rho_UA*v_UAÂ²/cÂ².
+    T_total = T_solar + T_sw + T_SCm_v + T_UA_v  [kg/m³]
+    T_solar = M*c²/V, T_sw = rho_sw*v_sw², T_SCm_v = rho_SCm*v_SCm²/c², T_UA_v = rho_UA*v_UA²/c².
     Returns dict of five components.
     """
     c = 2.998e8
@@ -608,11 +608,11 @@ def ts00_five_component(M_star=1.989e30, V_star=1.41e27,
             'T_UA_v': T_UA_v, 'T_total': T_total}
 
 
-# ----- PAPER_417: Ï€-cycle negative-time reversal -----
+# ----- PAPER_417: p-cycle negative-time reversal -----
 def pi_cycle_negative_time(t_n=-100.0):
     """Pi-cycle negative-time reversal gate (PAPER_417).
-    cos(pi * t_n) for t_n < 0 inverts A_Î¼Î½ sign and Ubi buoyancy direction.
-    Encodes Riemann prime distribution via Ï€-cycle structure.
+    cos(pi * t_n) for t_n < 0 inverts A_µ? sign and Ubi buoyancy direction.
+    Encodes Riemann prime distribution via p-cycle structure.
     Returns (cos_pi_tn, sign_inversion_active [bool]).
     """
     import math
@@ -620,11 +620,11 @@ def pi_cycle_negative_time(t_n=-100.0):
     return cos_val, t_n < 0.0
 
 
-# ----- PAPER_419: Planetary core Hamiltonian â†’ Yang-Mills mass gap -----
+# ----- PAPER_419: Planetary core Hamiltonian ? Yang-Mills mass gap -----
 def planetary_core_hamiltonian(M_core=5.972e24, R_core=3.485e6, omega_core=7.27e-5):
     """Planetary core Hamiltonian linking Ug3/SCm/UA to Yang-Mills mass gap (PAPER_419).
     H = H_Ug3 + H_SCm + H_UA
-    SCm superconductivity creates a bounded quantum system; mass gap â‰ˆ sqrt(H_SCm * H_UA).
+    SCm superconductivity creates a bounded quantum system; mass gap ˜ sqrt(H_SCm * H_UA).
     Returns (H_total [J], mass_gap_proxy [J]).
     """
     import math
@@ -639,11 +639,11 @@ def planetary_core_hamiltonian(M_core=5.972e24, R_core=3.485e6, omega_core=7.27e
     return H_total, mass_gap_proxy
 
 
-# ----- PAPER_420: F_U complete with missing 4th Î»_i dissipation sum -----
+# ----- PAPER_420: F_U complete with missing 4th ?_i dissipation sum -----
 def fu_complete_with_lambda_i(Ug_list, Um_val, U_A_val, Ubi_val,
                                lambda_i_list=None, E_react_val=1.0):
-    """F_U complete master equation including 4th Î»_i dissipation sum (PAPER_420).
-    F_U = (Ug1+Ug2+Ug3+Ug4) + Um + U_A - Ubi - Î£(lambda_i * U_i * E_react)
+    """F_U complete master equation including 4th ?_i dissipation sum (PAPER_420).
+    F_U = (Ug1+Ug2+Ug3+Ug4) + Um + U_A - Ubi - S(lambda_i * U_i * E_react)
     Previously documented as a code gap in compute_FU() / CondensedPhysics2.py.
     lambda_i default: 0.01 for each term.
     Returns (F_U_total, lambda_dissipation_term).
@@ -660,7 +660,7 @@ def fu_complete_with_lambda_i(Ug_list, Um_val, U_A_val, Ubi_val,
 def um_three_modifier(Um_base, f_H=1.0, A_q=0.1, Delta_omega=1.25e12, t=0.0):
     """Um complete with three modifiers (PAPER_421/423).
     Um_full = Um_base * (1 + 1e13*f_H) * (1 + A_q*cos(Delta_omega*t)) * exp(-[SSq])
-    Closes the critical code gap (~10^13Ã— underestimation during SCm phase transitions):
+    Closes the critical code gap (~10^13× underestimation during SCm phase transitions):
       - Heaviside phase-transition amplifier: (1 + 10^13 * f_H)
       - Quasi-periodic beating modifier: (1 + A_q * cos(Delta_omega * t))
       - [SSq] vacuum thermal damping: exp(-[SSq]) bounds amplification
@@ -688,7 +688,7 @@ def twenty_six_quantum_levels(E0=1.0e-20):
 def higgs_emergent_level18(n=18):
     """Higgs as emergent non-fundamental level-18 stratum (PAPER_396).
     delta_n(n) = phi * (2*pi)^(n/6)  where phi = golden ratio.
-    At n=18: delta_n = phi * (2Ï€)^3 â‰ˆ 401.5 (Higgs scale proxy).
+    At n=18: delta_n = phi * (2p)^3 ˜ 401.5 (Higgs scale proxy).
     f_Higgs = 1.25e34 Hz (PAPER_463 canonical).
     Returns delta_n at level n.
     """
@@ -697,7 +697,7 @@ def higgs_emergent_level18(n=18):
     return phi * (2.0 * math.pi) ** (n / 6.0)
 
 
-# ----- PAPER_429: DVP â€” Dipole Vortex Primes -----
+# ----- PAPER_429: DVP — Dipole Vortex Primes -----
 def _factorial_mod(n, m):
     """Compute n! mod m iteratively (helper for Wilson's theorem checks)."""
     result = 1
@@ -708,10 +708,10 @@ def _factorial_mod(n, m):
 
 def dvp_prime_vortex(p_max=200):
     """Dipole Vortex Primes: primes p > 26 encoding Ug3 vortex states (PAPER_429).
-    a(p) âˆ (1/p^26) * [SSq]^Ï€(p)  where Ï€(p) = prime-counting function.
+    a(p) ? (1/p^26) * [SSq]^p(p)  where p(p) = prime-counting function.
     p_special = 113: 26! mod 113 = 12 (Wilson's theorem; canonical pocket scale).
-    Bounds Navier-Stokes vorticity |Ï‰|Â² â‰¤ C via DVP hypergraph flow.
-    Returns list of (p, a_p) pairs for DVP primes 27 â‰¤ p â‰¤ p_max.
+    Bounds Navier-Stokes vorticity |?|² = C via DVP hypergraph flow.
+    Returns list of (p, a_p) pairs for DVP primes 27 = p = p_max.
     """
     SSq_float = float(SSQ)
     # Sieve of Eratosthenes
@@ -724,7 +724,7 @@ def dvp_prime_vortex(p_max=200):
     all_primes = [p for p in range(2, p_max + 1) if sieve[p]]
     dvp_primes = [p for p in all_primes if p > 26]
     results = []
-    pi_count = sum(1 for q in all_primes if q <= 26)  # primes â‰¤ 26
+    pi_count = sum(1 for q in all_primes if q <= 26)  # primes = 26
     for p in dvp_primes:
         pi_count += 1
         a_p = SSq_float ** pi_count / (p ** 26)
@@ -732,10 +732,10 @@ def dvp_prime_vortex(p_max=200):
     return results
 
 
-# ----- PAPER_429: BSH â€” Buoyancy Harmonic Series -----
+# ----- PAPER_429: BSH — Buoyancy Harmonic Series -----
 def bsh_buoyancy_harmonics(omega_Ug2=1.0e12, t_n=-100.0, m_max=26):
     """Buoyancy Harmonic Series for Ug2 charge-reactivity gravity (PAPER_429).
-    BSH = Î£_{m=1}^{m_max} H_m * (1 - exp(-[SSq]*m)) * cos(omega_Ug2 * t_n)
+    BSH = S_{m=1}^{m_max} H_m * (1 - exp(-[SSq]*m)) * cos(omega_Ug2 * t_n)
     H_m = partial harmonic number; partial saturation by [SSq] per layer.
     Returns (bsh_sum [dimensionless], cos_factor).
     """
@@ -750,9 +750,9 @@ def bsh_buoyancy_harmonics(omega_Ug2=1.0e12, t_n=-100.0, m_max=26):
     return bsh_sum * cos_val, cos_val
 
 
-# ----- PAPER_459: UFE orb / plasmoid backward-time tâ» transform -----
+# ----- PAPER_459: UFE orb / plasmoid backward-time t? transform -----
 def t_minus_backward_transform(t_n=-100.0):
-    """UFE orb plasmoid backward-time tâ» transform (PAPER_459).
+    """UFE orb plasmoid backward-time t? transform (PAPER_459).
     t_minus = -t_n * exp(pi - t_n)  for red-dwarf plasmoid dynamics.
     Used in 26 quantum levels + 6-BatchType plasmoid video registry.
     Returns t_minus [dimensionless].
@@ -775,13 +775,13 @@ def lenr_nonlocal_ssq26(t=0.0):
     return F_nonlocal, m_H_coupling
 
 
-# ----- PAPER_461: Red Dwarf LENR with Basel Ï€Â²/6 + cyclotron -----
+# ----- PAPER_461: Red Dwarf LENR with Basel p²/6 + cyclotron -----
 def red_dwarf_lenr_basel(B_mag=0.1, t_n=-100.0):
-    """Red Dwarf LENR with Basel S(2)=Ï€Â²/6, cyclotron energy, buoyancy series (PAPER_461).
-    S(2) = Ï€Â²/6 (Basel problem) â†’ UQFF resonance scale factor.
-    W_mag = BÂ²/(2Î¼â‚€) cyclotron energy density [J/mÂ³].
-    Convergent buoyancy: Î£_{n=odd} 1/3^{(Ï€+1)^n} (converges rapidly).
-    Returns (W_mag [J/mÂ³], S2 [Basel value], buoyancy_convergent_sum).
+    """Red Dwarf LENR with Basel S(2)=p²/6, cyclotron energy, buoyancy series (PAPER_461).
+    S(2) = p²/6 (Basel problem) ? UQFF resonance scale factor.
+    W_mag = B²/(2µ0) cyclotron energy density [J/m³].
+    Convergent buoyancy: S_{n=odd} 1/3^{(p+1)^n} (converges rapidly).
+    Returns (W_mag [J/m³], S2 [Basel value], buoyancy_convergent_sum).
     """
     import math
     S2 = math.pi ** 2 / 6.0
@@ -799,8 +799,8 @@ def red_dwarf_lenr_basel(B_mag=0.1, t_n=-100.0):
 # ----- PAPER_476: DPM Pre-Big Bang 26-sphere birth model -----
 def dpm_26sphere_prebigbang(rho_SCm_binding=1.0e42, t_inflation=1.0e-35):
     """DPM Pre-Big Bang 26-sphere birth model on unit hypersphere (PAPER_476).
-    [SCm] binding energy â‰ˆ 1e42 J; [UA] exponential decay during inflation.
-    Returns (SCm_binding_energy [J], UA_inflation [kg/mÂ³]).
+    [SCm] binding energy ˜ 1e42 J; [UA] exponential decay during inflation.
+    Returns (SCm_binding_energy [J], UA_inflation [kg/m³]).
     """
     import math
     UA_inflation = RHO_VAC_UA * math.exp(-1.0)  # exp(-t/t_inflation) at t=t_inflation
@@ -819,8 +819,8 @@ def scm_hidden_element_zero_qs(rho_SCm_local=1.0e15):
     return 0, Ug_proxy < F_trap_min
 
 
-# ==================== NEW PHYSICS BLOCK B â€” FROM GROK_CONVERSATION_B ====================
-# Additive only â€” none of the 53 existing functions are modified.
+# ==================== NEW PHYSICS BLOCK B — FROM GROK_CONVERSATION_B ====================
+# Additive only — none of the 53 existing functions are modified.
 # Groups: LENR / Time-Lagrangian / Astrophysics / Field Theory / Cosmology /
 #         Quantum-Particle / String Theory / Master Equations
 # All use module-level constants: SSQ, KAPPA_FLOAT, RHO_VAC_SCM, RHO_VAC_UA,
@@ -930,7 +930,7 @@ def expansion_lagrangian(t=0.0, E0=1.0, F_UBi_over_F_U=0.6):
     """Euler-Lagrange derivation of E+(t) expansion trajectory.
     Lagrangian L = T - V = E+(t) - (-E-(t)); Euler-Lagrange: dL/dt - d(dL/dE_dot)/dt = 0
     Solution: E+(t) grows as exp((kappa + [SSq]/26)*t) modulated by buoyancy ratio.
-    Returns (E_plus [J], dE_plus_dt [J/s]) â€” position and velocity on the trajectory.
+    Returns (E_plus [J], dE_plus_dt [J/s]) — position and velocity on the trajectory.
     """
     import math
     SSq_f = float(SSQ)
@@ -943,7 +943,7 @@ def expansion_lagrangian(t=0.0, E0=1.0, F_UBi_over_F_U=0.6):
 def erosion_lagrangian(t=0.0, E0=1.0, F_UBi_over_F_U=0.6):
     """Euler-Lagrange derivation of E-(t) erosion trajectory.
     E-(t) governed by same Lagrangian but negative buoyancy ratio branch.
-    Returns (E_minus [J], dE_minus_dt [J/s]) â€” position and velocity on the erosion branch.
+    Returns (E_minus [J], dE_minus_dt [J/s]) — position and velocity on the erosion branch.
     """
     import math
     SSq_f = float(SSQ)
@@ -2391,8 +2391,8 @@ triadic_sym = FUg1_sp + Rt_sp + FUBi_sp * SSQ
 #          AdS/CFT SCm holographic dual, SCm GW metric perturbation,
 #          Ramanujan proof, bosonic string, refined AdS/CFT, QCalcGeom check,
 #          Polyakov action, M-theory, Type IIB, Type IIA, Heterotic, Nambu-Goto, Calabi-Yau,
-#          NEW PAPER_361â€“478: bubble expansion, Phillips cross-section, NOMAD, ALICE, magnetar,
-#          Sgr A* JWST, Ug4 Î›CDM, NS body force, Pcore scaling, MUGE 12-term, Meissner, wormhole,
+#          NEW PAPER_361–478: bubble expansion, Phillips cross-section, NOMAD, ALICE, magnetar,
+#          Sgr A* JWST, Ug4 ?CDM, NS body force, Pcore scaling, MUGE 12-term, Meissner, wormhole,
 #          cohesive UQFF, Yang-Mills dynamical, M-sigma, hybrid blending, aether metric,
 #          E_react v0.99c, SCm density law, Ts00 5-component, pi-cycle reversal, lambda_i 4th sum,
 #          Um three-modifier (Heaviside+quasi-periodic+SSq damping), 26 quantum levels,

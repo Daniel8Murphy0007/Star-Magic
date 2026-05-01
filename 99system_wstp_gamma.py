@@ -32,7 +32,7 @@ KPC       = 3.086e19
 
 OMEGA_SCM = 2 * PI * 1.25e12
 SSQ       = 0.57
-BETA_I    = 0.6   # canonical: pdf/scm_vacuum_manifold.py
+BETA_I    = 0.6   # canonical: scm_vacuum_manifold.py
 # ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
 import math as _math_99
 E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
@@ -77,7 +77,7 @@ except ImportError:
     def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22): return 0.0
 
 
-# Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: pdf/scm_vacuum_manifold.py]
+# Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
     """Pons-Fleischmann low-radiation excess heat via SCm buoyancy coupling (1-10 W range)"""
     rho_Pd = 6.8e28              # Pd atomic density [atoms/m^3]
@@ -112,7 +112,7 @@ def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
     return P / 1e3  # kW  (~200 W at default params)
 
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
-    """F_U_Bi_i integral numerical [canonical: pdf/scm_vacuum_manifold.py]"""
+    """F_U_Bi_i integral numerical [canonical: scm_vacuum_manifold.py]"""
     import math as _m_fubi
     G_N = 6.6743e-11; rho_ua = 7.09e-36; rho_scm_v = 7.09e-37
     cos_pi_tn = _m_fubi.cos(_m_fubi.pi * -100.0)
@@ -121,7 +121,7 @@ def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     return integrand * float(r) * abs(cos_pi_tn)
 
 def monte_carlo_fubi_i(n_samples=10000):
-    """F_U_Bi_i Monte-Carlo on reactor parameters [canonical: pdf/scm_vacuum_manifold.py]"""
+    """F_U_Bi_i Monte-Carlo on reactor parameters [canonical: scm_vacuum_manifold.py]"""
     import numpy as _np_mc
     results = []
     for _ in range(n_samples):
@@ -136,11 +136,11 @@ def monte_carlo_fubi_i(n_samples=10000):
 try:
     from mpmath import polylog as _polylog_scm_local
     def vds_numerical(terms=1000):
-        """VDS: Li_26([SSq]) — 26D Vacuum Density Series [canonical: pdf/scm_vacuum_manifold.py]"""
+        """VDS: Li_26([SSq]) — 26D Vacuum Density Series [canonical: scm_vacuum_manifold.py]"""
         return float(_polylog_scm_local(26, 0.57))
 except ImportError:
     def vds_numerical(terms=1000):
-        """VDS fallback: partial sum of SSq^n/n^26 [canonical: pdf/scm_vacuum_manifold.py]"""
+        """VDS fallback: partial sum of SSq^n/n^26 [canonical: scm_vacuum_manifold.py]"""
         return sum((0.57**n) / (n**26) for n in range(1, min(terms + 1, 201)))
 
 KAPPA     = 0.0005 / 86400.0
