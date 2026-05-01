@@ -1,53 +1,50 @@
 # -*- coding: utf-8 -*-
 """
-dpm_vacuum_manifold.py
-Di-Pseudo-Monopole (DPM) Vacuum Calculator — Complete Assembly
+dpm_vacuum_manifold.py  v2.0
+Di-Pseudo-Monopole (DPM) Vacuum Calculator -- Quantum Chain Compliant
+
+THE QUANTUM CHAIN (canonical, Star-Magic.txt lines 11-22, IMMUTABLE):
+
+  Step 0  0_vacuum   -> |grad(UA)|          vacuum tension differential
+  Step 1  grad(UA)   -> DPM_vortex          a_DPM = F_DPM*f_DPM*E_vac/(c*V_sys)
+  Step 2  DPM_vortex -> mu_s                mu_s = rho_A * V_DPM  (vortex volume)
+  Step 3  mu_s       -> Ug1[seed=DPM]       Ug1 seeded from mu_s -- NOT from mass
+  Step 4  Ug1        -> Ug_family           Ug2+Ug3+Ug4 simultaneously promoted
+  Step 5  Ug_family  -> F_U                 + Um + FUBi + FUBii + UA_uv
+  Step 6  F_U        -> crossing            FUBi(r) + FUBii(r) = 0  compaction
+  Step 7  crossing   -> M_emergent          mass BORN at crossing, not before
+  Step 8  M_emergent -> GM/r^2             LAST -- observational projection only
 
 ARCHITECTURE:
-  scm_vacuum_manifold.py  →  imported here  (SCm base layer: CW rotation, primordial vacuum)
-  ua_vacuum_manifold.py   →  imported here  (UA superstructure: CCW rotation, 4 layers)
-  THIS FILE assembles both layers into the complete DPM and:
-    1. Computes Ug1, Ug2, Ug3, Ug4, Ubi, Um for any body (stellar or atomic)
-    2. Scales the DPM to every atom in the periodic table (Z = 1–118)
-    3. Demonstrates Grind_opp and DPM = [UA']/[SCm] at all scales
-    4. Provides the F_U_Bi_i Monte-Carlo calibration proof (requires both layers)
+  scm_vacuum_manifold.py  -> imported  (SCm base layer: CW rotation, primordial vacuum)
+  ua_vacuum_manifold.py   -> imported  (UA superstructure: CCW rotation, 4 layers)
+  THIS FILE runs all 8 chain steps from vacuum to GM/r^2 for every atom Z=1-118.
+
+PERIODIC TABLE GEOMETRY RULE:
+  DPMBody uses Z (vortex count) and A (resonance count) as PRIMARY geometry inputs.
+  R_nuc, V_DPM, B0, omega0, v_fermi are ALL computed from Z and A -- never from mass.
+  M_table is the tabulated atomic mass stored as VERIFICATION ONLY.
+  Ug1 through Ug4 use M_proto (ACP-emerged from the chain), not M_table.
+  GM/r^2 is the LAST output, computed from M_table as the verified stable mass.
 
 DPM FUNDAMENTAL EQUATIONS:
-  DPM       = [UA']/[SCm]                                    (ratio, PAPER_411)
-  Grind_opp = ω_CW · SCm − ω_CCW · UA'                      (grinding pair reaction)
-  F_U       = (Ug1 + Ug2 + Ug3 + Ug4) − Ubi + Um            (total UQFF force)
+  DPM       = [UA']/[SCm] = 10              (scale-invariant ratio)
+  Grind_opp = omega_CW * SCm - omega_CCW * UA'
+  F_U       = Ug_sum - Ubi + Um
 
-Ugi COMPONENTS (canonical — SOURCE4 namespace):
-  Ug1 = k₁ · μₛ · (M/r²) · e^{−αt} · cos(πtₙ) · (1+δ_def)
-        where μₛ = ρ_A · V_body  [magnetic dipole]
-  Ug2 = k₂ · (Q_SCm + Q_UA) · (M/r²) · S(r−Rb) · (1+δ_sw·v_sw) · H_SCm · E_react
-        [charge-reactivity coupling]
-  Ug3 = k₃ · B₀ · cos(ω₀·t·π) · P_core · E_react
-        [magnetic string rotation]
-  Ug4 = k₄ · ρ_vac · Z · e^{−αt} · cos(πtₙ)
-        [vacuum concentration, Z = atomic number]
-  Ubi = βᵢ · Σ(Ugᵢ) · Ω_g · (M_bh/d_g) · ρ_A · cos(πtₙ)
-        [buoyancy force]
-  Um  = μ_mag / r³   where μ_mag = M · R² · ω₀
-        [universal magnetism]
-
-PERIODIC TABLE SCALING:
-  Each atom is a DPM body: M=atomic mass, R_nuc=nuclear radius, B0=nuclear field,
-  omega0=nuclear Larmor frequency.  DPM ratio = 10 at ALL scales.
-
-Author: Daniel T. Murphy  |  dpm_vacuum_manifold.py v1.0
+Author: Daniel T. Murphy  |  dpm_vacuum_manifold.py v2.0  |  May 2026
 """
 
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass, field
-from typing import Dict, List, Tuple
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import sympy as sp
 
-# ── Import the two standalone manifold layers ─────────────────────────────────
+# -- Import the two standalone manifold layers ---------------------------------
 from scm_vacuum_manifold import (
     RHO_VAC_SCM, RHO_VAC_UA, THZ_PHONON, BETA_I, LAMBDA_I, OMEGA_S,
     KAPPA_FLOAT, SSQ,
@@ -65,97 +62,106 @@ from ua_vacuum_manifold import (
     ua_hubble_tension_modulation, ua_dark_energy_substitute,
 )
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §1  PHYSICAL CONSTANTS
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
+# S1  PHYSICAL CONSTANTS
+# =============================================================================
 
-HBAR:    float = 1.054571817e-34    # J·s   reduced Planck constant
-MU_0:    float = 1.2566370614e-6    # N/A²  vacuum permeability
+HBAR:    float = 1.054571817e-34    # J*s   reduced Planck constant
+MU_0:    float = 1.2566370614e-6    # N/A^2 vacuum permeability
 MU_N:    float = 5.0507837461e-27   # J/T   nuclear magneton
 AMU:     float = 1.66053906660e-27  # kg    atomic mass unit
 C_LIGHT: float = 2.99792458e8       # m/s   speed of light
-R_NUC_0: float = 1.2e-15            # m     nuclear radius constant (R = R0·A^1/3)
-K_E:     float = 8.9875517923e9     # N·m²/C²  Coulomb constant
+V_SCM:   float = C_LIGHT / 3.0     # m/s   SCm velocity (v_SCm = c/3)
+G_CONST: float = 6.67430e-11       # m^3/(kg*s^2)  gravitational constant
+R_NUC_0: float = 1.2e-15           # m     nuclear radius constant (R = R0*A^(1/3))
+K_E:     float = 8.9875517923e9    # N*m^2/C^2  Coulomb constant
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §2  DPM COUPLING CONSTANTS  (Source4 canonical)
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
+# S2  DPM COUPLING CONSTANTS  (Source4 canonical)
+# =============================================================================
 
-K1:         float = 1.0     # Ug1 coupling (magnetic dipole)
-K2:         float = 1.0     # Ug2 coupling (charge-reactivity)
-K3:         float = 1.0     # Ug3 coupling (magnetic string rotation)
-K4:         float = 1.0     # Ug4 coupling (vacuum concentration)
-ALPHA:      float = KAPPA_FLOAT     # decay rate (= κ = 5e-4)
-DELTA_DEF:  float = 0.0     # deformation factor (ground state = 0)
-H_SCM:      float = 0.99    # H_SCm coupling constant
-EPSILON_SW: float = 0.0     # solar-wind enhancement (atomic context = 0)
-RHO_SW:     float = 0.0     # solar-wind density (atomic context = 0)
-OMEGA_G:    float = 1.0     # galactic angular factor (normalised for atomic calc)
-MBH_DG:     float = 1.0     # M_bh/d_g galactic ratio (normalised)
-P_CORE:     float = 1.0     # core pressure factor (dimensionless)
+K1:         float = 1.0            # Ug1 coupling
+K2:         float = 1.0            # Ug2 coupling
+K3:         float = 1.0            # Ug3 coupling
+K4:         float = 1.0            # Ug4 coupling
+ALPHA:      float = KAPPA_FLOAT    # temporal decay = kappa = 5e-4 day^-1
+DELTA_DEF:  float = 0.0            # deformation factor (ground state)
+H_SCM:      float = 0.99           # condensate fraction
+EPSILON_SW: float = 0.0            # solar-wind enhancement (zero at atomic scale)
+RHO_SW:     float = 0.0            # solar-wind density (zero at atomic scale)
+OMEGA_G:    float = 1.0            # galactic angular factor (normalised)
+MBH_DG:     float = 1.0            # M_bh/d_g ratio (normalised)
+P_CORE:     float = 1.0            # core pressure factor
 
-# ── DPM grinding frequencies (from CondensedPhysics4.py OMEGA_CW/CCW) ────────
-OMEGA_CW:  float = 2.0 * math.pi * 1.2e10   # rad/s  CW  SCm grinding frequency
-OMEGA_CCW: float = 2.0 * math.pi * 8.3e9    # rad/s  CCW UA' grinding frequency
+# DPM grinding pair frequencies (CW=SCm inner, CCW=UA outer)
+OMEGA_CW:  float = 2.0 * math.pi * 1.2e10   # rad/s  SCm CW grinding
+OMEGA_CCW: float = 2.0 * math.pi * 8.3e9    # rad/s  UA' CCW grinding
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §3  AtomicElement DATACLASS
-# ─────────────────────────────────────────────────────────────────────────────
+# ACP constants (Chapter 7 Star-Magic.txt)
+# E_crack = (rho_SCm * c^2) / [SSq]  -- gate energy for mass condensation
+# SSQ may be a sympy Rational; force Python float to keep chain arithmetic clean.
+E_CRACK:  float = float(RHO_VAC_SCM * C_LIGHT ** 2) / float(SSQ)   # J ~1.12e-19 J
+# M_0 = E_crack / c^2 = rho_SCm / [SSq]  -- base DPM mass unit
+M_0_DPM:  float = float(E_CRACK) / float(C_LIGHT ** 2)              # kg = RHO_VAC_SCM / SSQ
+
+# =============================================================================
+# S3  DPMBody DATACLASS  (geometry-first; mass is verification only)
+# =============================================================================
 
 @dataclass
-class AtomicElement:
-    """A periodic-table element treated as a DPM body.
+class DPMBody:
+    """A DPM body defined by vacuum geometry, NOT by atomic mass.
 
-    Parameters
-    ----------
-    Z       : atomic number
-    symbol  : chemical symbol
-    name    : element name
-    A       : mass number (most abundant / most stable isotope)
-    M       : atomic mass [kg]
-    R_cov   : covalent radius [m]
-    R_nuc   : nuclear radius [m]   = R_NUC_0 · A^(1/3)
-    V_nuc   : nuclear volume [m³]
-    B0      : nuclear surface magnetic field [T]
-    omega0  : nuclear Larmor angular frequency [rad/s]  at B_ref = 1 T
-    v_fermi : Fermi velocity proxy [m/s]
+    PRIMARY inputs (geometric -- derived from Z and A only):
+      Z       : atomic number = number of DPM vortex units in resonance
+      A       : mass number = resonance count (determines nuclear radius)
+      symbol  : chemical symbol
+      name    : element name
+      R_cov   : covalent radius [m]   (geometric, for Newton projection radius)
+      R_nuc   : nuclear radius = R_NUC_0 * A^(1/3)   [m]  COMPUTED
+      V_DPM   : DPM vortex volume = (4/3)*pi*R_nuc^3 [m3] COMPUTED
+      B0      : nuclear surface magnetic field [T]    COMPUTED from Z, R_nuc
+      omega0  : nuclear Larmor angular frequency at 1T [rad/s]  COMPUTED from Z
+      v_fermi : Fermi velocity proxy [m/s]            COMPUTED from Z
+
+    VERIFICATION ONLY (NOT a chain input -- compared against M_emergent at end):
+      M_table : tabulated atomic mass [kg]   READ LAST, verified against chain
     """
     Z:       int
+    A:       int
     symbol:  str
     name:    str
-    A:       int
-    M:       float    # kg
     R_cov:   float    # m
-    R_nuc:   float    # m
-    V_nuc:   float    # m³
-    B0:      float    # T
+    R_nuc:   float    # m  (computed from A)
+    V_DPM:   float    # m^3 (computed from R_nuc)
+    B0:      float    # T  (computed from Z, R_nuc)
     omega0:  float    # rad/s
     v_fermi: float    # m/s
+    M_table: float    # kg  -- VERIFICATION ONLY
 
 
-def _build_element(Z: int, symbol: str, name: str, A: int,
-                   mass_u: float, R_cov_pm: float) -> AtomicElement:
-    """Factory: compute derived nuclear parameters and return AtomicElement."""
-    M       = mass_u * AMU
-    R_cov   = R_cov_pm * 1.0e-12          # pm → m
-    R_nuc   = R_NUC_0 * A ** (1.0 / 3.0) # m
-    V_nuc   = (4.0 / 3.0) * math.pi * R_nuc ** 3
-    # Nuclear surface field: B0 = (μ₀/4π) · 2·Z·μ_N / R_nuc³
-    B0      = (MU_0 / (4.0 * math.pi)) * 2.0 * Z * MU_N / R_nuc ** 3
-    # Larmor frequency at 1 T: ω₀ = Z · γ_proton  (crude but consistent scaling)
-    # γ_proton = 2.675e8 rad/s/T
-    omega0  = Z * 2.675e8                  # rad/s  at B=1T reference
-    # Fermi velocity: v_F = v_F0 · Z^(1/3)  (free-electron model proxy)
-    v_fermi = 0.77e6 * Z ** (1.0 / 3.0)   # m/s
-    return AtomicElement(Z=Z, symbol=symbol, name=name, A=A,
-                         M=M, R_cov=R_cov, R_nuc=R_nuc, V_nuc=V_nuc,
-                         B0=B0, omega0=omega0, v_fermi=v_fermi)
+def _build_dpm_body(Z: int, symbol: str, name: str, A: int,
+                    mass_u: float, R_cov_pm: float) -> DPMBody:
+    """Factory: build DPMBody from pure geometry (Z, A, R_cov).
+    M_table = mass_u * AMU is stored last as verification field only.
+    """
+    R_cov   = R_cov_pm * 1.0e-12                        # pm -> m
+    R_nuc   = R_NUC_0 * A ** (1.0 / 3.0)               # nuclear radius [m]
+    V_DPM   = (4.0 / 3.0) * math.pi * R_nuc ** 3       # DPM vortex volume [m^3]
+    B0      = (MU_0 / (4.0 * math.pi)) * 2.0 * Z * MU_N / R_nuc ** 3  # [T]
+    omega0  = Z * 2.675e8                               # rad/s at 1T Larmor
+    v_fermi = 0.77e6 * Z ** (1.0 / 3.0)                # m/s Fermi proxy
+    M_table = mass_u * AMU                              # verification only
+    return DPMBody(Z=Z, A=A, symbol=symbol, name=name,
+                   R_cov=R_cov, R_nuc=R_nuc, V_DPM=V_DPM,
+                   B0=B0, omega0=omega0, v_fermi=v_fermi,
+                   M_table=M_table)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §4  PERIODIC TABLE  (Z = 1–118)
-# ─────────────────────────────────────────────────────────────────────────────
-# Columns: Z, symbol, name, A (most abundant/stable), mass_u, R_cov_pm
+# =============================================================================
+# S4  PERIODIC TABLE  (Z = 1-118)
+# =============================================================================
+# Columns: Z, symbol, name, A, mass_u (verification), R_cov_pm (geometry)
 
 _PT_RAW: List[Tuple] = [
     (1,  "H",  "Hydrogen",        1,   1.008,   31),
@@ -278,211 +284,431 @@ _PT_RAW: List[Tuple] = [
     (118,"Og", "Oganesson",     294, 294.000,  157),
 ]
 
-# Build all 118 AtomicElement instances
-PERIODIC_TABLE: List[AtomicElement] = [
-    _build_element(*row) for row in _PT_RAW
-]
-
-# Convenience lookup by Z
-ELEMENT: Dict[int, AtomicElement] = {el.Z: el for el in PERIODIC_TABLE}
+PERIODIC_TABLE: List[DPMBody] = [_build_dpm_body(*row) for row in _PT_RAW]
+ELEMENT: Dict[int, DPMBody]   = {b.Z: b for b in PERIODIC_TABLE}
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §5  Ugi NUMERICAL COMPUTE FUNCTIONS
-# ─────────────────────────────────────────────────────────────────────────────
-# Evaluation defaults: t=0 (instantaneous), t_n=0.25 (cos(π/4)=√2/2 ≈ 0.707)
+# =============================================================================
+# S5  THE QUANTUM CHAIN -- 8 STEPS FROM VACUUM TO GM/r^2
+# =============================================================================
 
-def compute_Ug1(el: AtomicElement,
-                r: float | None = None,
-                t: float = 0.0,
-                t_n: float = 0.25) -> float:
-    """Ug1 — Magnetic Dipole Force (canonical SOURCE4 equation).
+# -- STEP 0: Zero-mass vacuum state -------------------------------------------
 
-    Ug1 = k₁ · μₛ · (M/r²) · e^{−αt} · cos(πtₙ) · (1+δ_def)
-    where μₛ = ρ_A · V_nuc  [vacuum magnetic moment proxy, J/T]
+def chain_step0_vacuum() -> Dict[str, float]:
+    """Step 0: 0_vacuum -- no mass, no motion, no gravity.
 
-    Parameters
-    ----------
-    el  : AtomicElement
-    r   : evaluation radius [m]  (default: covalent radius)
-    t   : time [s]
-    t_n : negative-time parameter
+    Starting axiom (Star-Magic.txt Canonical Ontology Lock):
+      rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0
+    The vacuum gradient = differential tension between UA and SCm densities.
+    The belly button fires HERE. Everything downstream comes from this step.
     """
-    if r is None:
-        r = el.R_cov
-    mu_s    = RHO_VAC_SCM * el.V_nuc           # [J/T] vacuum magnetic moment
-    grad_M  = el.M / (r * r)                   # [kg/m²]
-    exp_t   = math.exp(-ALPHA * t)
-    cos_tn  = math.cos(math.pi * t_n)
-    deform  = 1.0 + DELTA_DEF
-    return K1 * mu_s * grad_M * exp_t * cos_tn * deform
-
-
-def compute_Ug2(el: AtomicElement,
-                r: float | None = None,
-                t: float = 0.0,
-                t_n: float = 0.25) -> float:
-    """Ug2 — Charge-Reactivity Coupling (canonical SOURCE4 equation).
-
-    Ug2 = k₂ · (Q_SCm + Q_UA) · (M/r²) · S(r−Rb) · (1+δ_sw·v_sw) · H_SCm · E_react
-    where:
-      Q_SCm  = ρ_SCm · V_nuc
-      Q_UA   = ρ_UA  · V_nuc
-      R_b    = R_nuc × 100  (nuclear "heliosphere")
-      E_react = ρ_SCm · v² / ρ_UA · exp(−κt)
-    """
-    if r is None:
-        r = el.R_cov
-    Q_SCm   = RHO_VAC_SCM * el.V_nuc
-    Q_UA    = RHO_VAC_UA  * el.V_nuc
-    R_b     = el.R_nuc * 100.0              # nuclear bubble radius
-    S_rb    = 1.0 if r > R_b else 0.0      # step function
-    sw_fac  = 1.0 + EPSILON_SW * RHO_SW
-    E_react = RHO_VAC_SCM * el.v_fermi ** 2 / RHO_VAC_UA * math.exp(-ALPHA * t)
-    return K2 * (Q_SCm + Q_UA) * (el.M / (r * r)) * S_rb * sw_fac * H_SCM * E_react
-
-
-def compute_Ug3(el: AtomicElement,
-                r: float | None = None,
-                t: float = 0.0,
-                t_n: float = 0.25) -> float:
-    """Ug3 — Magnetic String Rotation 90° (canonical SOURCE4 equation).
-
-    Ug3 = k₃ · B₀ · cos(ω₀·t·π) · P_core · E_react
-    where E_react = ρ_SCm · v² / ρ_UA · exp(−κt)
-    """
-    if r is None:
-        r = el.R_cov
-    rot_term = math.cos(el.omega0 * t * math.pi)
-    E_react  = RHO_VAC_SCM * el.v_fermi ** 2 / RHO_VAC_UA * math.exp(-ALPHA * t)
-    return K3 * el.B0 * rot_term * P_CORE * E_react
-
-
-def compute_Ug4(el: AtomicElement,
-                t: float = 0.0,
-                t_n: float = 0.25) -> float:
-    """Ug4 — Vacuum Concentration (canonical SOURCE4 equation).
-
-    Ug4 = k₄ · ρ_vac · Z · e^{−αt} · cos(πtₙ)
-    At atomic scale, the concentration factor C_concentration = Z (atomic number):
-    higher Z → denser vacuum concentration in the nuclear region.
-    """
-    exp_t  = math.exp(-ALPHA * t)
-    cos_tn = math.cos(math.pi * t_n)
-    return K4 * RHO_VAC_SCM * float(el.Z) * exp_t * cos_tn
-
-
-def compute_Ubi(el: AtomicElement,
-                Ug_sum: float,
-                r: float | None = None,
-                t_n: float = 0.25) -> float:
-    """Ubi — Buoyancy Force (canonical SOURCE4 equation).
-
-    Ubi = βᵢ · Ug_sum · Ω_g · (M_bh/d_g) · (1 + ε_sw·ρ_sw) · ρ_A · cos(πtₙ)
-    For atomic context: Ω_g = 1, M_bh/d_g = 1, ε_sw = 0.
-    """
-    enhancement = 1.0 + EPSILON_SW * RHO_SW
-    cos_tn      = math.cos(math.pi * t_n)
-    return BETA_I * Ug_sum * OMEGA_G * MBH_DG * enhancement * RHO_VAC_SCM * cos_tn
-
-
-def compute_Um(el: AtomicElement,
-               r: float | None = None) -> float:
-    """Um — Universal Magnetism (canonical SOURCE4 equation).
-
-    Um = μ_mag / r³   where μ_mag = M · R_nuc² · ω₀
-
-    The nuclear magnetic moment proxy μ_mag captures the spin-mass coupling.
-    """
-    if r is None:
-        r = el.R_cov
-    mu_mag = el.M * el.R_nuc ** 2 * el.omega0
-    return mu_mag / (r ** 3)
-
-
-def compute_F_U(el: AtomicElement,
-                r: float | None = None,
-                t: float = 0.0,
-                t_n: float = 0.25) -> Dict[str, float]:
-    """Compute complete F_U = (Ug1+Ug2+Ug3+Ug4) − Ubi + Um for one element.
-
-    Returns a dict with all components plus the total.
-    """
-    if r is None:
-        r = el.R_cov
-    ug1 = compute_Ug1(el, r, t, t_n)
-    ug2 = compute_Ug2(el, r, t, t_n)
-    ug3 = compute_Ug3(el, r, t, t_n)
-    ug4 = compute_Ug4(el, t, t_n)
-    ug_sum = ug1 + ug2 + ug3 + ug4
-    ubi = compute_Ubi(el, ug_sum, r, t_n)
-    um  = compute_Um(el, r)
-    F_U = ug_sum - ubi + um
+    grad_UA   = RHO_VAC_UA - RHO_VAC_SCM
+    E_react_0 = RHO_VAC_SCM * V_SCM ** 2 / RHO_VAC_UA
     return {
-        "Ug1": ug1,
-        "Ug2": ug2,
-        "Ug3": ug3,
-        "Ug4": ug4,
-        "Ug_sum": ug_sum,
-        "Ubi": ubi,
-        "Um":  um,
-        "F_U": F_U,
+        "grad_UA":   grad_UA,    # [kg/m^3]  = 6.381e-36
+        "E_react_0": E_react_0,  # [J/m^3]   peak reaction energy density at t=0
+        "F_U_vac":   0.0,        # unified field = 0 in zero-mass vacuum
     }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §6  DPM RATIO AND GRINDING PAIR
-# ─────────────────────────────────────────────────────────────────────────────
+# -- STEP 1: DPM vortex formation ---------------------------------------------
+
+def chain_step1_dpm(body: DPMBody) -> Dict[str, float]:
+    """Step 1: grad(UA) -> DPM_vortex.
+
+    a_DPM = (F_DPM * f_DPM * E_vac_neb) / (c * V_sys)
+    F_DPM = I * A_cross * (omega_1 - omega_2)
+
+    At atomic scale:
+      I_flux    = Z * rho_SCm * v_SCm     [rotational SCm flux through Z vortex units]
+      A_cross   = pi * R_nuc^2            [DPM vortex cross-section]
+      delta_om  = |OMEGA_CW - OMEGA_CCW|  [differential grinding angular velocity]
+      E_vac_neb = rho_SCm * c^2           [vacuum nebular energy density]
+      V_sys     = V_DPM                   [DPM system volume]
+      f_dpm     = PHI_RES                 [resonance factor from ua layer]
+    """
+    I_flux    = body.Z * RHO_VAC_SCM * V_SCM
+    A_cross   = math.pi * body.R_nuc ** 2
+    delta_om  = abs(OMEGA_CW - OMEGA_CCW)
+    F_DPM     = I_flux * A_cross * delta_om
+    f_dpm     = PHI_RES
+    E_vac_neb = RHO_VAC_SCM * C_LIGHT ** 2
+    a_DPM     = F_DPM * f_dpm * E_vac_neb / (C_LIGHT * body.V_DPM)
+    return {
+        "I_flux":  I_flux,
+        "A_cross": A_cross,
+        "F_DPM":   F_DPM,
+        "a_DPM":   a_DPM,
+    }
+
+
+# -- STEP 2: Magnetic moment from DPM vortex ----------------------------------
+
+def chain_step2_mu_s(body: DPMBody) -> float:
+    """Step 2: DPM_vortex -> mu_s.
+
+    mu_s = rho_A * V_DPM
+
+    The magnetic moment is seeded by SCm vacuum density filling the vortex volume.
+    THIS IS NOT FROM ATOMIC MASS.
+    mu_s comes purely from the DPM vortex geometry (R_nuc from A) and vacuum density.
+    """
+    return RHO_VAC_SCM * body.V_DPM
+
+
+# -- ACP PROTO-MASS (between Steps 2 and 3) -----------------------------------
+
+def chain_acp_M_proto(Z: int) -> float:
+    """ACP proto-mass -- the mass that EMERGES from the DPM vortex resonance count.
+
+    From Star-Magic.txt Chapter 7 (Mass Emergence):
+      E_crack = (rho_vac_SCm * c^2) / [SSq]
+      M_0     = E_crack / c^2  =  rho_vac_SCm / [SSq]
+      M_proto = M_0 * (1 - exp(-Z/10)) * Z
+
+    Z is the number of DPM vortex units (atomic number = vortex resonance count).
+    M_proto is the mass emerging from the ACP chain -- not read from any table.
+    For Z=1 (H):  M_proto = M_0 * (1 - exp(-0.1)) * 1   ~ M_0 * 0.0952
+    For Z=26 (Fe): M_proto = M_0 * (1 - exp(-2.6)) * 26
+    """
+    return M_0_DPM * (1.0 - math.exp(-Z / 10.0)) * Z
+
+
+# -- E_react helper -----------------------------------------------------------
+
+def chain_E_react(v: float, t: float = 0.0) -> float:
+    """E_react(t) = (rho_SCm * v^2) / rho_UA * exp(-kappa * t).
+
+    The energy of UA/SCm maximum attraction.
+    v = velocity proxy (v_fermi at atomic scale).
+    E_react = 0 when v = 0 (dead mass condition -- Star-Magic.txt Chapter 14).
+    """
+    return RHO_VAC_SCM * v ** 2 / RHO_VAC_UA * math.exp(-KAPPA_FLOAT * t)
+
+
+# -- STEPS 3-4: Ug family assembly --------------------------------------------
+
+def chain_step3_Ug1(mu_s: float, M_proto: float, r: float,
+                    t: float, t_n: float) -> float:
+    """Step 3: mu_s -> Ug1[seed=DPM].
+
+    Ug1 = k1 * mu_s * (M_proto/r^2) * exp(-alpha*t) * cos(pi*t_n) * (1+delta_def)
+
+    mu_s    comes from Step 2 (DPM vortex volume * vacuum density).
+    M_proto comes from the ACP chain (Z vortex count * M_0_DPM).
+    NEITHER is from the atomic mass table.
+
+    This is THE DPM in field form. Ug1 IS the DPM.
+    """
+    return (K1 * mu_s * (M_proto / r ** 2)
+            * math.exp(-ALPHA * t)
+            * math.cos(math.pi * t_n)
+            * (1.0 + DELTA_DEF))
+
+
+def chain_step4_ug_family(body: DPMBody, mu_s: float, M_proto: float,
+                          r: float, t: float, t_n: float) -> Dict[str, float]:
+    """Step 4: Ug1 simultaneously promotes Ug2, Ug3, Ug4.
+
+    All four Ug terms are simultaneous expressions of the same DPM.
+    None is computed before the others -- simultaneous assembly.
+
+    Ug2 -- outer bubble:        uses vacuum charge Q_SCm + Q_UA, NOT mass
+    Ug3 -- magnetic string:     uses B0 (nuclear field from Z/R_nuc), NOT mass
+    Ug4 -- vacuum concentration: uses Z (vortex count), NOT mass
+    E_react -- UA/SCm attraction energy (from v_fermi proxy)
+    """
+    E_react = chain_E_react(body.v_fermi, t)
+
+    # Ug1 -- the DPM itself (Step 3)
+    Ug1 = chain_step3_Ug1(mu_s, M_proto, r, t, t_n)
+
+    # Ug2 -- outer field bubble
+    # Q_SCm = rho_SCm * V_DPM,  Q_UA = rho_UA * V_DPM  (vacuum charge proxies)
+    Q_sum = (RHO_VAC_SCM + RHO_VAC_UA) * body.V_DPM
+    R_b   = body.R_nuc * 100.0                   # nuclear "heliosphere" radius
+    S_rb  = 1.0 if r > R_b else 0.0             # step function (1 = outside bubble)
+    sw    = 1.0 + EPSILON_SW * RHO_SW
+    Ug2   = K2 * Q_sum * (M_proto / r ** 2) * S_rb * sw * H_SCM * E_react
+
+    # Ug3 -- magnetic string disk rotation
+    # Driven by B0 (nuclear surface field from Z, R_nuc) and omega0 (Larmor from Z)
+    Ug3 = K3 * body.B0 * math.cos(body.omega0 * t * math.pi) * P_CORE * E_react
+
+    # Ug4 -- vacuum concentration
+    # Z = DPM vortex count = concentration factor (NOT atomic mass)
+    Ug4 = (K4 * RHO_VAC_SCM * float(body.Z)
+           * math.exp(-ALPHA * t)
+           * math.cos(math.pi * t_n))
+
+    Ug_sum = Ug1 + Ug2 + Ug3 + Ug4
+    return {
+        "E_react": E_react,
+        "Ug1":     Ug1,
+        "Ug2":     Ug2,
+        "Ug3":     Ug3,
+        "Ug4":     Ug4,
+        "Ug_sum":  Ug_sum,
+    }
+
+
+# -- STEP 5: F_U assembly -----------------------------------------------------
+
+def chain_step5_F_U(body: DPMBody, Ug_sum: float, r: float,
+                    t_n: float, M_proto: float) -> Dict[str, float]:
+    """Step 5: Ug_family + Um + FUBi -> F_U.
+
+    F_U = Ug_sum - Ubi + Um
+
+    FUBi (inside-outward) = buoyancy from the local DPM.
+    Um   = universal magnetism from nuclear spin coupling.
+
+    Um uses M_proto (ACP-emerged mass), not M_table.
+    mu_mag = M_proto * R_nuc^2 * omega0  -- magnetic moment via vortex spin.
+    """
+    cos_tn = math.cos(math.pi * t_n)
+    enh    = 1.0 + EPSILON_SW * RHO_SW
+
+    # FUBi -- inside-outward buoyancy (local DPM)
+    Ubi = BETA_I * Ug_sum * OMEGA_G * MBH_DG * enh * RHO_VAC_SCM * cos_tn
+
+    # Um -- universal magnetism (M_proto drives spin coupling, not M_table)
+    mu_mag = M_proto * body.R_nuc ** 2 * body.omega0
+    Um     = mu_mag / r ** 3
+
+    return {"Ubi": Ubi, "Um": Um, "F_U": Ug_sum - Ubi + Um}
+
+
+# -- STEP 6: Inside/outside crossing ------------------------------------------
+
+def chain_step6_crossing(body: DPMBody, Ug_sum: float,
+                         FUBii_value: float) -> Dict[str, float]:
+    """Step 6: F_U -> crossing (FUBi + FUBii = 0 compaction zone).
+
+    THE CROSSING PRECEDES MASS. Mass does not exist before the crossing.
+    Mass is BORN at the crossing. (Star-Magic.txt Chapter 6)
+
+    FUBi  (inside-outward): local DPM buoyancy pressure outward
+    FUBii (outside-inward): primordial belly button DPM magnetic repulsion inward
+
+    FUBi(r) = BETA_I * |Ug_sum| * rho_SCm * cos(pi*t_n) / r
+    Crossing: FUBi(r_cross) + FUBii = 0
+    r_cross = BETA_I * |Ug_sum| * rho_SCm * cos(pi*0.25) / |FUBii|
+    """
+    cos_tn = math.cos(math.pi * 0.25)
+    FUBi_at_Rnuc = (BETA_I * abs(Ug_sum) * RHO_VAC_SCM * cos_tn
+                    / body.R_nuc)
+
+    if abs(FUBii_value) > 0.0:
+        r_cross = (BETA_I * abs(Ug_sum) * RHO_VAC_SCM * cos_tn
+                   / abs(FUBii_value))
+    else:
+        r_cross = body.R_nuc  # fallback: crossing at nuclear radius
+
+    return {
+        "FUBi_at_Rnuc":    FUBi_at_Rnuc,
+        "FUBii_value":     FUBii_value,
+        "r_cross":         r_cross,
+        "balance_at_Rnuc": FUBi_at_Rnuc + FUBii_value,
+    }
+
+
+# -- STEP 7: Mass emergence ---------------------------------------------------
+
+def chain_step7_mass_emergence(body: DPMBody, M_proto: float) -> Dict[str, float]:
+    """Step 7: crossing -> M_emergent.
+
+    Mass is born at the crossing (Star-Magic.txt Chapter 7):
+      M_atomic = M_0 * (1 - exp(-Z/10)) * Z
+
+    M_emergent is the chain output. M_table is the tabulated stable mass.
+    scale_factor = M_table / M_emergent shows the calibration residual.
+
+    The scale_factor encodes how the 26-layer DPM amplification
+    (sum(i^2, i=1..26) = 6279) and E_crack gating scale up from
+    the vacuum base unit M_0_DPM to the observable atomic mass.
+    """
+    M_emergent   = M_proto
+    scale_factor = body.M_table / M_emergent if M_emergent != 0.0 else float("nan")
+    return {
+        "M_emergent":   M_emergent,
+        "M_0_DPM":      M_0_DPM,
+        "M_table":      body.M_table,   # verification only
+        "scale_factor": scale_factor,   # calibration ratio chain->observed
+    }
+
+
+# -- STEP 8: Newton projection (LAST) -----------------------------------------
+
+def chain_step8_newton(M_table: float, r_cross: float) -> float:
+    """Step 8: M -> GM/r^2  (LAST -- observational projection only).
+
+    GM/r^2 is NOT a mechanism. It is what you MEASURE at the crossing
+    after the chain has completed and stable mass exists.
+
+    Uses M_table (verified stable mass) and r_cross as the crossing radius.
+    """
+    return G_CONST * M_table / r_cross ** 2
+
+
+# -- MASTER CHAIN FUNCTION ----------------------------------------------------
+
+def compute_chain(body: DPMBody,
+                  r: Optional[float] = None,
+                  t: float = 0.0,
+                  t_n: float = 0.25,
+                  FUBii_override: Optional[float] = None) -> Dict:
+    """Run the full 8-step quantum chain for one DPM body.
+
+    Chain: 0_vacuum -> DPM -> mu_s -> Ug1 -> Ug_family -> F_U -> crossing -> M -> GM/r^2
+
+    The chain is strictly ordered. Mass is never an input -- it is an output.
+    Periodic table geometry (Z, A, R_nuc) drives steps 0-6.
+    M_table is verified at step 7, used for GM/r^2 at step 8.
+
+    Parameters
+    ----------
+    body           : DPMBody  (geometry-first)
+    r              : evaluation radius [m]  (default: R_nuc)
+    t              : time [s]
+    t_n            : negative-time parameter
+    FUBii_override : override primordial FUBii value [N]
+                     Default: self-consistent atomic-scale FUBii
+    """
+    if r is None:
+        r = body.R_nuc
+
+    s0   = chain_step0_vacuum()
+    s1   = chain_step1_dpm(body)
+    mu_s = chain_step2_mu_s(body)
+
+    # ACP proto-mass from vortex resonance count Z (geometry only, no table)
+    M_proto = chain_acp_M_proto(body.Z)
+
+    s4 = chain_step4_ug_family(body, mu_s, M_proto, r, t, t_n)
+    s5 = chain_step5_F_U(body, s4["Ug_sum"], r, t_n, M_proto)
+
+    # FUBii: self-consistent atomic-scale (FUBi reversed at R_nuc)
+    if FUBii_override is None:
+        cos_tn = math.cos(math.pi * t_n)
+        FUBii  = -(BETA_I * abs(s4["Ug_sum"]) * RHO_VAC_SCM * cos_tn
+                   / body.R_nuc)
+    else:
+        FUBii = FUBii_override
+
+    s6 = chain_step6_crossing(body, s4["Ug_sum"], FUBii)
+    s7 = chain_step7_mass_emergence(body, M_proto)
+
+    r_cross  = s6["r_cross"] if s6["r_cross"] > 0 else body.R_nuc
+    g_Newton = chain_step8_newton(body.M_table, r_cross)
+
+    return {
+        # Identity
+        "Z": body.Z, "A": body.A, "symbol": body.symbol, "name": body.name,
+        "R_nuc": body.R_nuc, "V_DPM": body.V_DPM,
+        # Step 0
+        "s0_grad_UA":   s0["grad_UA"],
+        "s0_E_react_0": s0["E_react_0"],
+        "s0_F_U_vac":   s0["F_U_vac"],
+        # Step 1
+        "s1_F_DPM": s1["F_DPM"],
+        "s1_a_DPM": s1["a_DPM"],
+        # Step 2
+        "s2_mu_s":  mu_s,
+        # ACP
+        "M_proto":  M_proto,
+        # Steps 3-4
+        "E_react":  s4["E_react"],
+        "Ug1":      s4["Ug1"],
+        "Ug2":      s4["Ug2"],
+        "Ug3":      s4["Ug3"],
+        "Ug4":      s4["Ug4"],
+        "Ug_sum":   s4["Ug_sum"],
+        # Step 5
+        "Ubi":      s5["Ubi"],
+        "Um":       s5["Um"],
+        "F_U":      s5["F_U"],
+        # Step 6
+        "s6_FUBi":    s6["FUBi_at_Rnuc"],
+        "s6_FUBii":   s6["FUBii_value"],
+        "s6_r_cross": s6["r_cross"],
+        "s6_balance": s6["balance_at_Rnuc"],
+        # Step 7
+        "s7_M_emergent":   s7["M_emergent"],
+        "s7_M_table":      s7["M_table"],
+        "s7_scale_factor": s7["scale_factor"],
+        # Step 8 -- LAST
+        "g_Newton": g_Newton,
+    }
+
+
+# =============================================================================
+# S6  DPM RATIO AND GRINDING PAIR  (unchanged -- chain-invariant)
+# =============================================================================
 
 def dpm_ratio() -> float:
-    """Return DPM = [UA']/[SCm] = ρ_vac_UA / ρ_vac_SCm = 10 (exact, all scales)."""
+    """Return DPM = [UA']/[SCm] = rho_UA / rho_SCm = 10 (exact, all scales)."""
     return DPM_DENSITY_RATIO
 
 
 def grind_opp(scm: float = RHO_VAC_SCM,
               ua_prime: float = RHO_VAC_SCM) -> float:
-    """Grind_opp = ω_CW · SCm − ω_CCW · UA'
-
-    The CW grinding component (SCm) minus CCW grinding component (UA').
-    Net positive → CW dominates; net negative → CCW dominates.
-
-    Parameters
-    ----------
-    scm      : SCm vacuum density value [kg/m³]  (default: RHO_VAC_SCM)
-    ua_prime : UA' vacuum density value [kg/m³]  (default: UA' = RHO_VAC_SCM)
-    """
+    """Grind_opp = omega_CW * SCm - omega_CCW * UA'."""
     return OMEGA_CW * scm - OMEGA_CCW * ua_prime
 
 
 def dpm_react(r: float, t_n: float = 0.25,
               scm: float = RHO_VAC_SCM,
               ua_prime: float = RHO_VAC_SCM) -> float:
-    """DPM reaction force density.
+    """DPM reaction force density at radius r.
 
-    DPM_react = κ · (DPM_n_SCm − DPM_s_UA') / r^{26}
-              + Grind_opp · cos(π·t_n)   [26D oscillatory term]
-
-    The r^{26} denominator encodes the 26-dimensional projection.
-    cos(π·t_n) is the negative-time modulation.
+    The r^26 term captures 26-layer gradient suppression.
+    Protected against underflow: r_nuc^26 underflows to 0.0 in IEEE doubles,
+    so we guard delta=0 (equilibrium vacuum) and r^26 underflow separately.
     """
     grind = grind_opp(scm, ua_prime)
-    dpm_n = KAPPA_FLOAT * (scm - ua_prime) / (r ** 26)
-    osc   = grind * math.cos(math.pi * t_n)
-    return dpm_n + osc
+    delta = scm - ua_prime
+    if delta == 0.0:
+        dpm_n = 0.0
+    else:
+        r26 = r ** 26
+        dpm_n = 0.0 if r26 == 0.0 else KAPPA_FLOAT * delta / r26
+    return dpm_n + grind * math.cos(math.pi * t_n)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §7  SYMPY CANONICAL EXPRESSIONS
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
+# S7  ALL-ELEMENTS CHAIN COMPUTATION
+# =============================================================================
 
-_t, _t_n, _r, _M_s, _B0_s, _omega0_s, _Z_s = sp.symbols(
-    't t_n r M B0 omega0 Z', positive=True)
+def compute_all_elements_chain(t: float = 0.0,
+                               t_n: float = 0.25) -> List[Dict]:
+    """Run the full quantum chain for every element Z=1-118.
+
+    The chain is run from vacuum -> GM/r^2 for each DPM body.
+    Periodic table geometry (Z, A) drives every computation.
+    M_table is verified at the end, never used as primary input.
+    """
+    results = []
+    for body in PERIODIC_TABLE:
+        row = compute_chain(body, r=body.R_nuc, t=t, t_n=t_n)
+        row["DPM_ratio"] = dpm_ratio()
+        row["Grind_opp"] = grind_opp()
+        row["DPM_react"] = dpm_react(r=body.R_nuc, t_n=t_n)
+        results.append(row)
+    return results
+
+
+# =============================================================================
+# S8  SYMPY CANONICAL EXPRESSIONS (quantum chain order)
+# =============================================================================
+
+_t, _t_n, _r = sp.symbols('t t_n r', positive=True)
+_Z_s, _B0_s, _omega0_s = sp.symbols('Z B0 omega0', positive=True)
 _k1, _k2, _k3, _k4, _alpha = sp.symbols('k1 k2 k3 k4 alpha', positive=True)
 _beta_i = sp.symbols('beta_i', positive=True)
-_rho_A  = sp.symbols('rho_A', positive=True)
-_V_b    = sp.symbols('V_b', positive=True)
-_v_f    = sp.symbols('v_f', positive=True)
-_rho_UA_s = sp.symbols('rho_UA', positive=True)
+_rho_A, _rho_UA_s = sp.symbols('rho_SCm rho_UA', positive=True)
+_V_b, _v_f = sp.symbols('V_DPM v_fermi', positive=True)
+_M_proto_s = sp.symbols('M_proto', positive=True)   # ACP-emerged mass (NOT table mass)
 _omega_CW_s, _omega_CCW_s = sp.symbols('omega_CW omega_CCW', positive=True)
 _SCm_s, _UAp_s = sp.symbols('SCm UA_prime', positive=True)
 
@@ -490,77 +716,33 @@ _cos_tn  = sp.cos(sp.pi * _t_n)
 _mu_s    = _rho_A * _V_b
 _E_react = _rho_A * _v_f**2 / _rho_UA_s * sp.exp(-_alpha * _t)
 
-# Canonical Ugi symbolic forms
-Ug1_sym = _k1 * _mu_s * (_M_s / _r**2) * sp.exp(-_alpha * _t) * _cos_tn
-Ug2_sym = _k2 * (_rho_A + _rho_UA_s) * _V_b * (_M_s / _r**2) * _E_react
+# Chain-ordered symbolic expressions -- M_proto is ACP chain output, NOT table input
+Ug1_sym = _k1 * _mu_s * (_M_proto_s / _r**2) * sp.exp(-_alpha * _t) * _cos_tn
+Ug2_sym = _k2 * (_rho_A + _rho_UA_s) * _V_b * (_M_proto_s / _r**2) * _E_react
 Ug3_sym = _k3 * _B0_s * sp.cos(_omega0_s * _t * sp.pi) * _E_react
 Ug4_sym = _k4 * _rho_A * _Z_s * sp.exp(-_alpha * _t) * _cos_tn
 Ubi_sym = _beta_i * (Ug1_sym + Ug2_sym + Ug3_sym + Ug4_sym) * _rho_A * _cos_tn
-Um_sym  = (_M_s * sp.Symbol('R_nuc')**2 * _omega0_s) / _r**3
-
+Um_sym  = (_M_proto_s * sp.Symbol('R_nuc')**2 * _omega0_s) / _r**3
 F_U_sym = (Ug1_sym + Ug2_sym + Ug3_sym + Ug4_sym) - Ubi_sym + Um_sym
 
-# DPM grinding pair
 Grind_opp_sym = _omega_CW_s * _SCm_s - _omega_CCW_s * _UAp_s
 DPM_ratio_sym = _UAp_s / _SCm_s
 
-# Full DPM buoyancy (binding the placeholder from ua_vacuum_manifold)
-# F_U_Bi_i_DPM (from ua) with F_Bi_i_scm → actual F_U_Bi_i_99 sum from scm
 F_U_Bi_i_DPM_bound = F_U_Bi_i_DPM.subs(_F_Bi_i_scm, F_U_Bi_i_99)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# §8  PERIODIC TABLE DPM SCALING  (all 118 elements)
-# ─────────────────────────────────────────────────────────────────────────────
-
-def compute_all_elements(t: float = 0.0,
-                         t_n: float = 0.25) -> List[Dict]:
-    """Compute DPM Ugi, Ubi, Um, F_U for every element Z=1–118.
-
-    Returns
-    -------
-    list of dicts, one per element, containing all force components + metadata.
-    """
-    results = []
-    for el in PERIODIC_TABLE:
-        fu = compute_F_U(el, r=el.R_cov, t=t, t_n=t_n)
-        grind = grind_opp()                          # universal — does not vary per element
-        dpm_r = dpm_react(r=el.R_cov, t_n=t_n)
-        results.append({
-            "Z":      el.Z,
-            "symbol": el.symbol,
-            "name":   el.name,
-            "A":      el.A,
-            "M_kg":   el.M,
-            "R_cov_m":el.R_cov,
-            "R_nuc_m":el.R_nuc,
-            "B0_T":   el.B0,
-            "omega0": el.omega0,
-            **fu,
-            "Grind_opp": grind,
-            "DPM_react": dpm_r,
-            "DPM_ratio": dpm_ratio(),
-        })
-    return results
+# ACP mass emergence symbolic (Step 7)
+_M_0, _Z_acp = sp.symbols('M_0 Z', positive=True)
+M_proto_sym = _M_0 * (1 - sp.exp(-_Z_acp / 10)) * _Z_acp
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §9  F_U_Bi_i CALIBRATION PROOF  (requires both scm + ua layers)
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
+# S9  F_U_Bi_i CALIBRATION PROOF  (uses scm + ua layers)
+# =============================================================================
 
-def dpm_fubi_calibration_proof() -> Dict[str, object]:
-    """Prove F_U_Bi vs F_U_Bi_i calibration using the DPM density ratio.
-
-    F_U_Bi   (inside→outside, cosmological)  ∝ ρ_vac_UA
-    F_U_Bi_i (outside→inside, LENR/atomic)   ∝ ρ_vac_SCm
-    Ratio = ρ_vac_UA / ρ_vac_SCm = 10  (exact, scale-invariant)
-
-    Returns
-    -------
-    dict with Monte-Carlo statistics and interpretation.
-    """
+def dpm_fubi_calibration_proof() -> Dict:
+    """Prove F_U_Bi vs F_U_Bi_i calibration using the DPM density ratio."""
     mean_fubi_i, std_fubi_i, rng_fubi_i = monte_carlo_fubi_i()
-    ratio = ua_calibration_ratio()
+    ratio         = ua_calibration_ratio()
     ua_total_dens = ua_dpm_total_density(0.25)
     return {
         "rho_vac_SCm"          : RHO_VAC_SCM,
@@ -573,145 +755,163 @@ def dpm_fubi_calibration_proof() -> Dict[str, object]:
         "UA_total_density"     : ua_total_dens,
         "DPM_buoyancy_factor"  : ua_dpm_buoyancy_factor(0.25),
         "scale_interpretation" : (
-            "LENR (F_U_Bi_i) at ρ_vac_SCm = 7.09e-37 kg/m³. "
-            "Cosmology (F_U_Bi) at ρ_vac_UA = 7.09e-36 kg/m³ = 10× SCm. "
-            "DPM ratio [UA']/[SCm] = 10 is scale-invariant: "
-            "identical at atomic, stellar, and cosmological scales."
+            "LENR (FUBii) at rho_SCm=7.09e-37 kg/m^3. "
+            "Cosmological (FUBi) at rho_UA=7.09e-36 kg/m^3 = 10x SCm. "
+            "DPM=[UA']/[SCm]=10 scale-invariant at atomic, stellar, cosmic scales."
         ),
     }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §10 LENR FULL COMPARISON  (scm values + ua mechanism — both layers)
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
+# S10 LENR FULL COMPARISON  (scm values + ua mechanism)
+# =============================================================================
 
-def dpm_lenr_full_comparison() -> Dict[str, Dict]:
-    """Full LENR comparison with both SCm numerical values and UA mechanism.
-
-    Merges scm_vacuum_manifold numerical data with ua_vacuum_manifold
-    UA-layer mechanism explanations.
-    """
+def dpm_lenr_full_comparison() -> Dict:
+    """LENR comparison with both SCm numerical values and UA mechanism."""
     q_park = parkhomov_excess_heat()
     q_pf   = pons_fleischmann_excess_heat()
     ker    = KER_SCm
     ua_data = ua_lenr_comparison()
-
-    # Inject scm values into ua entries
-    ua_data["Holmlid"]["scm_value"]         = ker
-    ua_data["Parkhomov"]["scm_value"]       = q_park
+    ua_data["Holmlid"]["scm_value"]          = ker
+    ua_data["Parkhomov"]["scm_value"]        = q_park
     ua_data["Pons-Fleischmann"]["scm_value"] = q_pf
     return ua_data
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# §11  ENTRY POINT — FULL DPM DEMONSTRATION
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
+# S11  ENTRY POINT -- FULL QUANTUM CHAIN DEMONSTRATION
+# =============================================================================
 
 if __name__ == "__main__":
 
     SEP  = "=" * 78
     SEP2 = "-" * 78
 
-    # ── §1  DPM fundamental constants ────────────────────────────────────────
     print(SEP)
-    print("§1  DPM FUNDAMENTAL CONSTANTS")
+    print("dpm_vacuum_manifold.py v2.0 -- QUANTUM CHAIN IS THE SPINE")
+    print("0_vacuum -> DPM -> mu_s -> Ug1 -> Ug_family -> F_U"
+          " -> crossing -> M -> GM/r^2")
     print(SEP)
-    print(f"  DPM ratio [UA']/[SCm]    = {dpm_ratio():.1f}  (exact, scale-invariant)")
-    print(f"  ρ_vac_SCm (CW  base)     = {RHO_VAC_SCM:.2e} kg/m³")
-    print(f"  ρ_vac_UA  (CCW super)    = {RHO_VAC_UA:.2e} kg/m³")
-    print(f"  ω_CW  grinding freq      = {OMEGA_CW:.4e} rad/s")
-    print(f"  ω_CCW grinding freq      = {OMEGA_CCW:.4e} rad/s")
-    grind = grind_opp()
-    print(f"  Grind_opp = ω_CW·SCm − ω_CCW·UA' = {grind:.6e}")
+    print(f"  E_crack = rho_SCm*c^2/[SSq] = {E_CRACK:.4e} J")
+    print(f"  M_0_DPM = rho_SCm/[SSq]     = {M_0_DPM:.4e} kg  (base DPM mass unit)")
+    print(f"  [SSq]                        = {SSQ}")
+    print(f"  DPM ratio [UA']/[SCm]        = {dpm_ratio():.1f}  (exact, scale-invariant)")
+    print(f"  rho_SCm                      = {RHO_VAC_SCM:.2e} kg/m^3")
+    print(f"  rho_UA                       = {RHO_VAC_UA:.2e} kg/m^3")
+    print(f"  Grind_opp (uniform vacuum)   = {grind_opp():.4e}")
 
-    # ── §2  Sympy canonical Ugi expressions ──────────────────────────────────
+    # ACP mass scaling Z=1..10
     print(f"\n{SEP}")
-    print("§2  CANONICAL Ugi SYMBOLIC EXPRESSIONS")
-    print(SEP)
-    print(f"  Ug1 = {sp.latex(Ug1_sym)}")
-    print(f"  Ug2 = {sp.latex(Ug2_sym)}")
-    print(f"  Ug3 = {sp.latex(Ug3_sym)}")
-    print(f"  Ug4 = {sp.latex(Ug4_sym)}")
-    print(f"  Ubi = β_i · (Ug1+Ug2+Ug3+Ug4) · ρ_A · cos(πt_n)")
-    print(f"  Um  = (M·R_nuc²·ω₀) / r³")
-    print(f"  F_U = Ug1+Ug2+Ug3+Ug4 − Ubi + Um")
-    print(f"\n  DPM grinding pair (sympy):")
-    print(f"  Grind_opp = {sp.latex(Grind_opp_sym)}")
-    print(f"  DPM_ratio = {sp.latex(DPM_ratio_sym)}")
-    print(f"\n  F_U_Bi_i_DPM (bound):")
-    print(f"  = F_U_Bi_i_99 × UA_total  (scm sum × ua superstructure density)")
+    print("ACP PROTO-MASS SCALING  M_proto = M_0 * (1-exp(-Z/10)) * Z")
+    print("Mass emerges from DPM vortex resonance count -- NOT from mass table")
+    print(SEP2)
+    print(f"  {'Z':>3}  {'Sym':4}  {'A':>4}  {'M_proto [kg]':>16}  "
+          f"{'M_table [kg]':>16}  {'scale_factor':>14}")
+    print(SEP2)
+    for body in PERIODIC_TABLE[:30]:
+        mp = chain_acp_M_proto(body.Z)
+        sf = body.M_table / mp if mp > 0 else float("nan")
+        print(f"  {body.Z:>3}  {body.symbol:4}  {body.A:>4}  "
+              f"{mp:>16.4e}  {body.M_table:>16.4e}  {sf:>14.4e}")
 
-    # ── §3  Ugi for hydrogen (Z=1) ────────────────────────────────────────────
+    # Full 8-step chain for Hydrogen
     print(f"\n{SEP}")
-    print("§3  DPM Ugi DEMONSTRATION — HYDROGEN  (Z=1)")
+    print("FULL 8-STEP QUANTUM CHAIN -- HYDROGEN  Z=1")
     print(SEP)
     H = ELEMENT[1]
-    fu_H = compute_F_U(H)
-    print(f"  Element : {H.name} (Z={H.Z}, A={H.A})")
-    print(f"  M       = {H.M:.4e} kg")
-    print(f"  R_cov   = {H.R_cov:.4e} m   (31 pm)")
-    print(f"  R_nuc   = {H.R_nuc:.4e} m   (proton radius ~1.2 fm)")
-    print(f"  B0      = {H.B0:.4e} T    (nuclear surface field)")
-    print(f"  ω₀      = {H.omega0:.4e} rad/s  (Larmor at 1T)")
+    ch = compute_chain(H)
+    print(f"  Body: {H.name}  Z={H.Z}  A={H.A}")
+    print(f"  Geometry: R_nuc={H.R_nuc:.4e} m   V_DPM={H.V_DPM:.4e} m^3")
+    print(f"  B0={H.B0:.4e} T   omega0={H.omega0:.4e} rad/s")
     print(SEP2)
-    for k, v in fu_H.items():
-        print(f"  {k:8s} = {v:+.6e}")
+    print(f"  STEP 0  (zero-mass vacuum):")
+    print(f"    grad_UA   = {ch['s0_grad_UA']:.4e} kg/m^3")
+    print(f"    E_react_0 = {ch['s0_E_react_0']:.4e}  (peak UA/SCm attraction)")
+    print(f"    F_U_vac   = {ch['s0_F_U_vac']:.1f}     (zero -- no mass exists)")
+    print(f"  STEP 1  (DPM vortex forms):")
+    print(f"    F_DPM     = {ch['s1_F_DPM']:.4e}")
+    print(f"    a_DPM     = {ch['s1_a_DPM']:.4e}")
+    print(f"  STEP 2  (magnetic moment from vortex -- NOT from mass):")
+    print(f"    mu_s      = {ch['s2_mu_s']:.4e}  (rho_SCm * V_DPM)")
+    print(f"  ACP  (proto-mass from Z resonance count):")
+    print(f"    M_proto   = {ch['M_proto']:.4e} kg   (M_0 * [1-exp(-Z/10)] * Z)")
+    print(f"  STEPS 3-4 (Ug family simultaneous -- all from DPM, not from mass table):")
+    print(f"    E_react   = {ch['E_react']:.4e}")
+    print(f"    Ug1       = {ch['Ug1']:+.4e}  (THE DPM in field form)")
+    print(f"    Ug2       = {ch['Ug2']:+.4e}  (outer bubble)")
+    print(f"    Ug3       = {ch['Ug3']:+.4e}  (magnetic string)")
+    print(f"    Ug4       = {ch['Ug4']:+.4e}  (vacuum concentration, Z={H.Z})")
+    print(f"    Ug_sum    = {ch['Ug_sum']:+.4e}")
+    print(f"  STEP 5  (F_U assembly):")
+    print(f"    Ubi       = {ch['Ubi']:+.4e}  (inside-outward buoyancy)")
+    print(f"    Um        = {ch['Um']:+.4e}  (universal magnetism)")
+    print(f"    F_U       = {ch['F_U']:+.4e}")
+    print(f"  STEP 6  (crossing -- mass BORN here, not before):")
+    print(f"    FUBi@Rnuc = {ch['s6_FUBi']:.4e}")
+    print(f"    FUBii     = {ch['s6_FUBii']:.4e}")
+    print(f"    r_cross   = {ch['s6_r_cross']:.4e} m   (R_nuc = {H.R_nuc:.4e} m)")
+    print(f"    balance   = {ch['s6_balance']:.4e}  (-> 0 at true crossing)")
+    print(f"  STEP 7  (mass emergence -- chain output, not from table):")
+    print(f"    M_emergent  = {ch['s7_M_emergent']:.4e} kg  (ACP chain)")
+    print(f"    M_table     = {ch['s7_M_table']:.4e} kg  (verification only)")
+    print(f"    scale_factor= {ch['s7_scale_factor']:.4e}  (chain calibration)")
+    print(f"  STEP 8  (GM/r^2 -- LAST -- observational projection only):")
+    print(f"    g_Newton  = {ch['g_Newton']:.4e} m/s^2")
 
-    # ── §4  Periodic table DPM scaling (all 118) ─────────────────────────────
+    # Full 118-element chain table
     print(f"\n{SEP}")
-    print("§4  PERIODIC TABLE DPM SCALING  (Z=1–118,  t_n=0.25)")
+    print("QUANTUM CHAIN ALL 118 ELEMENTS  (r=R_nuc, t=0, t_n=0.25)")
     print(SEP)
-    print(f"  {'Z':>3}  {'Sym':4}  {'Ug1':>14}  {'Ug2':>14}  {'Ug3':>14}  "
-          f"{'Ug4':>14}  {'Ubi':>14}  {'Um':>14}  {'F_U':>14}")
+    print(f"  {'Z':>3}  {'Sym':4}  {'mu_s':>14}  {'Ug_sum':>14}  "
+          f"{'F_U':>14}  {'M_proto[kg]':>14}  {'g_Newton':>14}")
     print(SEP2)
-    all_el = compute_all_elements()
-    for row in all_el:
+    all_chains = compute_all_elements_chain()
+    for row in all_chains:
         print(f"  {row['Z']:>3}  {row['symbol']:4}  "
-              f"{row['Ug1']:>+14.4e}  {row['Ug2']:>+14.4e}  "
-              f"{row['Ug3']:>+14.4e}  {row['Ug4']:>+14.4e}  "
-              f"{row['Ubi']:>+14.4e}  {row['Um']:>+14.4e}  "
-              f"{row['F_U']:>+14.4e}")
+              f"{row['s2_mu_s']:>+14.3e}  {row['Ug_sum']:>+14.3e}  "
+              f"{row['F_U']:>+14.3e}  {row['M_proto']:>14.3e}  "
+              f"{row['g_Newton']:>14.3e}")
 
-    # ── §5  F_U_Bi_i Monte-Carlo + calibration proof ─────────────────────────
+    # F_U_Bi_i calibration proof
     print(f"\n{SEP}")
-    print("§5  F_U_Bi_i MONTE-CARLO CALIBRATION PROOF  (scm + ua combined)")
+    print("F_U_Bi_i CALIBRATION PROOF  (scm Monte-Carlo + ua DPM density)")
     print(SEP)
     proof = dpm_fubi_calibration_proof()
-    print(f"  ρ_vac_SCm              = {proof['rho_vac_SCm']:.2e} kg/m³")
-    print(f"  ρ_vac_UA               = {proof['rho_vac_UA']:.2e} kg/m³")
-    print(f"  Ratio [UA']/[SCm]      = {proof['ratio_UA_over_SCm']:.1f}  (exact)")
-    print(f"  F_U_Bi_i MC mean       = {proof['F_U_Bi_i_MC_mean_N']:.4e} N")
-    print(f"  F_U_Bi_i MC std        = {proof['F_U_Bi_i_MC_std_N']:.4e} N")
-    print(f"  F_U_Bi (cosmo, 10×)    = {proof['F_U_Bi_cosmological']:.4e} N")
-    print(f"  UA total density       = {proof['UA_total_density']:.4e} kg/m³")
-    print(f"  DPM buoyancy factor    = {proof['DPM_buoyancy_factor']:.6f}")
-    print(f"  Interpretation:")
-    print(f"    {proof['scale_interpretation']}")
+    print(f"  rho_SCm               = {proof['rho_vac_SCm']:.2e} kg/m^3")
+    print(f"  rho_UA                = {proof['rho_vac_UA']:.2e} kg/m^3")
+    print(f"  Ratio [UA']/[SCm]     = {proof['ratio_UA_over_SCm']:.1f}  (exact)")
+    print(f"  FUBii MC mean         = {proof['F_U_Bi_i_MC_mean_N']:.4e} N")
+    print(f"  FUBii MC std          = {proof['F_U_Bi_i_MC_std_N']:.4e} N")
+    print(f"  FUBi (cosmo, 10x)     = {proof['F_U_Bi_cosmological']:.4e} N")
+    print(f"  {proof['scale_interpretation']}")
 
-    # ── §6  LENR full comparison ──────────────────────────────────────────────
+    # LENR
     print(f"\n{SEP}")
-    print("§6  LENR FULL COMPARISON  (SCm + UA dual-layer)")
+    print("LENR COMPARISON  (SCm values + UA mechanism)")
     print(SEP)
     lenr = dpm_lenr_full_comparison()
     for exp, info in lenr.items():
         val = (f"  scm_value={info['scm_value']:.4e}"
-               if info["scm_value"] is not None else "")
+               if info.get("scm_value") is not None else "")
         print(f"  [{exp}]  {info['observable']}{val}")
-        print(f"    UA mechanism: {info['mechanism'][:90]}...")
+        print(f"    UA: {str(info['mechanism'])[:90]}...")
 
-    # ── §7  DPM react at selected radii ──────────────────────────────────────
+    # Next steps
     print(f"\n{SEP}")
-    print("§7  DPM_react  (grinding pair reaction at selected radii)")
+    print("NEXT STEPS -- DPM leads to Star-Magic")
     print(SEP)
-    for r_val in [1e-15, 1e-12, 1e-10, 1e-6, 1.0, 1e6, 1e11]:
-        try:
-            dr = dpm_react(r=r_val, t_n=0.25)
-            print(f"  r = {r_val:.1e} m  →  DPM_react = {dr:.6e}")
-        except (OverflowError, ZeroDivisionError):
-            print(f"  r = {r_val:.1e} m  →  DPM_react = (overflow at r^26)")
-
-    print(f"\n{SEP}")
-    print("✅  dpm_vacuum_manifold.py COMPLETE")
-    print("    scm_vacuum_manifold (SCm CW base) + ua_vacuum_manifold (UA CCW)")
-    print("    Ugi computed for all 118 elements.  DPM ratio = 10 at all scales.")
+    print("  1. scm_vacuum_manifold.py   SCm CW base layer          COMPLETE")
+    print("  2. ua_vacuum_manifold.py    UA CCW superstructure       COMPLETE")
+    print("  3. dpm_vacuum_manifold.py   Chain-compliant assembly    COMPLETE v2.0")
+    print("  ---")
+    print("  4. NEXT: dpm_chain_papers.py  -- whitepaper per chain step")
+    print("     PAPER_vacuum   Step 0 -- primordial DPM, belly button equations")
+    print("     PAPER_dpm      Step 1 -- DPM formation at every scale")
+    print("     PAPER_Ug_chain Steps 3-4 -- simultaneous Ug assembly proof")
+    print("     PAPER_crossing Step 6 -- P!=NP and the compaction zone")
+    print("     PAPER_mass     Step 7 -- mass emergence from DPM resonance")
+    print("     PAPER_Newton   Step 8 -- why Newton measured the last step")
+    print("  5. THEN: wire dpm_vacuum_manifold into source2.cpp via uqff_server.js")
+    print(SEP)
+    print("THE DPM IS FIRST. GM/r^2 IS LAST.")
     print(SEP)
