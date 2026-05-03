@@ -1,5 +1,6 @@
 $pandoc = "$env:LOCALAPPDATA\Pandoc\pandoc.exe"
-$xe    = "C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\xelatex.exe"
+# arXiv approved engine: pdflatex (NOT xelatex)
+$pdflatex = "C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe"
 $srcDir = "whitepapers"
 $outDir = "pdf"
 if (!(Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir | Out-Null }
@@ -32,7 +33,7 @@ foreach ($md in $papers) {
     $src  = Join-Path $srcDir $md
     Write-Host -NoNewline "[$($ok+$fail+1)/17] $md ... "
     $err = & $pandoc $src -o $pdf `
-        "--pdf-engine=$xe" `
+        "--pdf-engine=$pdflatex" `
         -V "geometry:margin=1in" `
         -V "fontsize=11pt" `
         -V "colorlinks=true" `

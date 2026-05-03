@@ -1,7 +1,10 @@
 ﻿#!/usr/bin/env python3
 """
-generate_pdfs.py - Session 164
-Generate PDFs from all whitepapers/PAPER_*.md using pandoc + xelatex.
+generate_pdfs.py
+Generate PDFs from all whitepapers/PAPER_*.md using pandoc + pdflatex (arXiv approved).
+
+NOTE: pdflatex is the ONLY approved engine (matches arXiv submission standard).
+      xelatex is NOT used here. All .md sources use arXiv LaTeX math syntax ($...$).
 
 Preprocessing handles:
   - Non-UTF-8 encoded files (cp1252 fallback)
@@ -25,11 +28,10 @@ TIMEOUT_SEC    = 180
 
 BASE_CMD = [
     "pandoc",
-    "--pdf-engine=xelatex",
+    "--pdf-engine=pdflatex",  # arXiv approved engine
     "-V", "geometry:a4paper,top=0.75in,bottom=0.75in,left=0.75in,right=0.75in",
     "-V", "fontsize=11pt",
     "-V", "documentclass=article",
-    "-H", HEADER_FILE,
     "--pdf-engine-opt=-interaction=nonstopmode",
     "--from=markdown-yaml_metadata_block-raw_tex+smart",
     "--standalone",
@@ -109,26 +111,14 @@ def generate_pdf(md_path):
         cmd = BASE_CMD + [tmp_path, "-o", pdf_path]
         r = subprocess.run(cmd, capture_output=True, timeout=TIMEOUT_SEC)
         if r.returncode == 0 and os.path.exists(pdf_path):
-            return (paper_num(fname), fname, True, f"{os.path.getsize(pdf_path)//1024}KB (xelatex)", None)
-        # Try aggressive preprocessing (strip non-ASCII causing xelatex issues)
+            return (paper_num(fname), fname, True, f"{os.path.getsize(pdf_path)//1024}KB (pdflatex)", None)
+        # Try aggressive preprocessing (strip non-ASCII causing pdflatex issues)
         os.unlink(tmp_path)
         tmp_path = preprocess(md_path, aggressive=True)
         cmd_agg = BASE_CMD + [tmp_path, "-o", pdf_path]
         r_agg = subprocess.run(cmd_agg, capture_output=True, timeout=TIMEOUT_SEC)
         if r_agg.returncode == 0 and os.path.exists(pdf_path):
-            return (paper_num(fname), fname, True, f"{os.path.getsize(pdf_path)//1024}KB (xelatex-agg)", None)
-        # pdflatex fallback
-        cmd2 = ["pandoc", "--pdf-engine=pdflatex",
-                "-V", "geometry:a4paper,top=0.75in,bottom=0.75in,left=0.75in,right=0.75in",
-                "-V", "fontsize=11pt",
-                "-V", "documentclass=article",
-                "--pdf-engine-opt=-interaction=nonstopmode",
-                "--from=markdown-yaml_metadata_block-raw_tex+smart",
-                "--standalone", "--wrap=none",
-                tmp_path, "-o", pdf_path]
-        r2 = subprocess.run(cmd2, capture_output=True, timeout=TIMEOUT_SEC)
-        if r2.returncode == 0 and os.path.exists(pdf_path):
-            return (paper_num(fname), fname, True, f"{os.path.getsize(pdf_path)//1024}KB (pdflatex)", None)
+            return (paper_num(fname), fname, True, f"{os.path.getsize(pdf_path)//1024}KB (pdflatex-agg)", None)
         err = r.stderr.decode("utf-8", errors="replace")[-300:]
         return (paper_num(fname), fname, False, None, err)
     except subprocess.TimeoutExpired:
