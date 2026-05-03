@@ -586,3 +586,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Abbott et al. (LIGO/Virgo Collaborations, 2016). *Properties of the Binary Black Hole Merger GW150914.* Phys. Rev. Lett. **116**, 241102 — arXiv:1602.03840 — doi:10.1103/PhysRevLett.116.241102
+3. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Classical and Quantum Gravity **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+4. `MAIN_1_CoAnQi.cpp` SOURCE27 namespace — 5-frequency SCm resonance damping implementation
+5. `validate_gw150914.py` — UQFF GW150914 strain validation script (Star-Magic repository)

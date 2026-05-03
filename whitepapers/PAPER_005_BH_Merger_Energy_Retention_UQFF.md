@@ -578,3 +578,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger (GW150914).* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *GW151226: Observation of Gravitational Waves from a 22-Solar-Mass Binary Black Hole Coalescence.* Phys. Rev. Lett. **116**, 241103 — arXiv:1606.04855 — doi:10.1103/PhysRevLett.116.241103
+3. Abbott et al. (LIGO/Virgo Collaborations, 2016). *Properties of the Binary Black Hole Merger GW150914.* Phys. Rev. Lett. **116**, 241102 — arXiv:1602.03840
+4. `MAIN_1_CoAnQi.cpp` SOURCE4 — compute_FU_SOURCE4(), compute_compressed_MUGE_SOURCE4() energy retention equations
+5. `validate_uqff_muge.py` — UQFF BH merger energy validation (Star-Magic repository)

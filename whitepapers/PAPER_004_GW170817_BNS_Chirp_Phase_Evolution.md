@@ -591,3 +591,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2017). *GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral.* Phys. Rev. Lett. **119**, 161101 — arXiv:1710.05832 — doi:10.1103/PhysRevLett.119.161101
+2. Abbott et al. (LIGO/Virgo + Partner Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+3. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Classical and Quantum Gravity **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+4. `source27.cpp` SOURCE27 namespace — 5-frequency BNS chirp phase resonance
+5. `validate_gw170817.py` — UQFF BNS chirp phase validation script (Star-Magic repository)

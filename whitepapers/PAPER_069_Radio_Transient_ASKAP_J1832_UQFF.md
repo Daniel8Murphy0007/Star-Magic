@@ -478,3 +478,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Hurley-Walker et al. (2023). *A long-period radio transient associated with a neutron star.* Nature Astronomy — doi:10.1038/s41550-023-02153-z
+2. Caleb, M. et al. (2022). *Discovery of a radio-emitting neutron star with an ultra-long spin period of 76 s.* Nature Astronomy **6**, 828–836 — arXiv:2203.14995 — doi:10.1038/s41550-022-01688-x
+3. Hurley-Walker, N. et al. (2022). *A radio transient with unusually slow periodic emission.* Nature **601**, 526–530 — arXiv:2111.05169 — doi:10.1038/s41586-021-04272-x
+4. `MAIN_1_CoAnQi.cpp` SOURCE27 — SGR1745/ASKAP F_U_Bi_i numeric stability solver
+5. `validate_uqff_muge.py` — UQFF F_U_Bi_i neutron-star stability validation (Star-Magic repository)

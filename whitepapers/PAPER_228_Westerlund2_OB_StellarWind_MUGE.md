@@ -334,3 +334,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Portegies Zwart, S.F. et al. (2010). *Formation and evolution of the Westerlund 2 star cluster.* Nature **464**, 79–82 — doi:10.1038/nature08845
+2. Zeidler, P. et al. (2015). *A Deep Photometric Survey of the Young Cluster Westerlund 2 with the F555W and F814W Filters of the ACS on HST.* AJ **150**, 78 — doi:10.1088/0004-6256/150/3/78
+3. Rauw, G. et al. (2007). *The spectrum of the very massive binary system WR 20a.* A&A **463**, 981–991 — doi:10.1051/0004-6361:20066495
+4. Ascenso, J. et al. (2007). *The core of Westerlund 2 in the near-infrared.* A&A **466**, 137–149 — doi:10.1051/0004-6361:20065674
+5. `CondensedPhysics.py` Westerlund2MUGEStellarWindCalculator — 9-term MUGE, rho_wind=1e-20 kg/m³
+6. Source: grok_share_8d951e12.txt — Doc 6 (Westerlund 2 OB Wind MUGE)

@@ -239,6 +239,9 @@ bridge.*
 - Hawking, S.W. (1974). *Nature* 248, 30–31.
 - UQFF PAPER_658 — BlackHoleBounceUQFF (Session 172)
 - SOURCE4 UQFF calibrated constants (commit 3e66d94)
+- Bekenstein, J.D. (1973). *Black holes and entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333
+- Penrose, R. (1969). *Gravitational collapse: The role of general relativity.* Nuovo Cimento **1** (special number), 252
+- Haggard, H.M. & Rovelli, C. (2015). *Quantum-gravity effects outside the horizon spark black to white hole tunneling.* Phys. Rev. D **92**, 104020 — arXiv:1407.0989 — doi:10.1103/PhysRevD.92.104020
 
 
 ---

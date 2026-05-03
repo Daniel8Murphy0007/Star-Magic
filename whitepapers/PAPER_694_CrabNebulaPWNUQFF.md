@@ -181,6 +181,9 @@ bridge.*
 ## References
 - Hester (2008), ARA&A, 46, 127
 - UQFF Framework, Star-Magic Session 174
+- Weisskopf, M.C. et al. (2000). *Chandra X-Ray Imaging of the Crab Nebula and Its Pulsar.* ApJL **536**, L81 — doi:10.1086/312733
+- Bühler, R. & Blandford, R.D. (2014). *The surprising Crab pulsar and its nebula: A review.* RPPh **77**, 066901 — arXiv:1309.7816 — doi:10.1088/0034-4885/77/6/066901
+- Kennel, C.F. & Coroniti, F.V. (1984). *Magnetohydrodynamic model of Crab Nebula radiation.* ApJ **283**, 710 — doi:10.1086/162356
 
 
 ---

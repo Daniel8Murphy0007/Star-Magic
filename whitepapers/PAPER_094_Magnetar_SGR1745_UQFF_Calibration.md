@@ -420,3 +420,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Eatough, R.P. et al. (2013). *A strong magnetic field around the supermassive black hole at the centre of the Galaxy.* Nature **501**, 391–394 — arXiv:1308.3412 — doi:10.1038/nature12499
+2. Mori, K. et al. (2013). *NuSTAR Discovery of a 3.76 s Transient Magnetar Near Sagittarius A*.* ApJL **770**, L23 — arXiv:1305.5284 — doi:10.1088/2041-8205/770/2/L23
+3. Kennea, J.A. et al. (2013). *Swift Discovery of a New Soft Gamma Repeater, SGR J1745−29, near Sagittarius A*.* ApJL **770**, L24 — arXiv:1305.2128 — doi:10.1088/2041-8205/770/2/L24
+4. Rea, N. et al. (2013). *A Strongly Magnetized Pulsar within the Grasp of the Milky Way's Central Black Hole.* ApJL **775**, L34 — arXiv:1307.6114 — doi:10.1088/2041-8205/775/2/L34
+5. `source4.cpp` sgr1745_SOURCE4 — B_CRIT_MAGNETAR calibration and kappa=0.0005/day derivation
+6. `validate_uqff_muge.py` — UQFF SGR1745 kappa/[SSq] calibration (Star-Magic repository)

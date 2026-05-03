@@ -462,3 +462,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Event Horizon Telescope Collaboration (2022). *First Sagittarius A* Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole in the Center of the Milky Way.* ApJL **930**, L12 — arXiv:2204.01396 — doi:10.3847/2041-8213/ac6674
+2. Event Horizon Telescope Collaboration (2022). *First Sgr A* EHT Results. VI. Testing the Black Hole Metric.* ApJL **930**, L17 — arXiv:2204.01401 — doi:10.3847/2041-8213/ac6756
+3. Ghez, A.M. et al. (2008). *Measuring Distance and Properties of the Milky Way's Central Supermassive Black Hole with Stellar Orbits.* ApJ **689**, 1044 — arXiv:0808.2870 — doi:10.1086/592738
+4. Gillessen, S. et al. (2009). *Monitoring Stellar Orbits Around the Massive Black Hole in the Galactic Center.* ApJ **692**, 1075 — arXiv:0810.4674 — doi:10.1088/0004-637X/692/2/1075
+5. `source4.cpp` sagA_SOURCE4 — Sgr A* 8-term MUGE decomposition + SOURCE27 5-frequency resonance
+6. `validate_uqff_muge.py` — UQFF Sgr A* MUGE validation (Star-Magic repository)
