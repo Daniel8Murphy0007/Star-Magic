@@ -580,10 +580,9 @@ bridge.*
 
 1. `validate_{gw170817\_full}.py`  Full 100s inspiral simulation
 2. `validate_{gw170817\_chirp}.py`  Short 0.2s chirp simulation
-3. Cutler & Flanagan, Gravitational waves from merging compact binaries: How accurately can one
-extract the binary's parameters from the inspiral waveform?, *Phys. Rev. D* **49**, 2658 (1994).
-4. Damour et al., Phasing of gravitational waves from inspiralling eccentric binaries, *Phys. Rev.
-D* **70**, 064028 (2004).
+3. Cutler, C. & Flanagan, E.E. (1994). *Gravitational waves from merging compact binaries: How accurately can one extract the binary's parameters from the inspiral waveform?* Phys. Rev. D **49**, 2658 — arXiv:gr-qc/9402014 — doi:10.1103/PhysRevD.49.2658
+4. Damour, T., Gopakumar, A. & Iyer, B.R. (2004). *Phasing of gravitational waves from inspiralling eccentric binaries.* Phys. Rev. D **70**, 064028 — arXiv:gr-qc/0404094 — doi:10.1103/PhysRevD.70.064028
+5. Blanchet, L. (2014). *Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries.* Living Rev. Relativ. **17**, 2 — arXiv:1310.1528 — doi:10.12942/lrr-2014-2
 
 ---
 

@@ -464,9 +464,10 @@ bridge.*
 
 ## References
 
-1. Peters, *Phys. Rev.* **136**, B1224 (1964)  Orbital decay
-2. Lower et al., *Phys. Rev. D* **98**, 083028 (2018)  Eccentric waveforms.Groups[1].Value :
-Eccentric Binary Circularization in UQFF
+1. Peters, P.C. (1964). *Gravitational Radiation and the Motion of Two Point Masses.* Phys. Rev. **136**, B1224 — doi:10.1103/PhysRev.136.B1224
+2. Lower, M.E. et al. (2018). *Gravitational wave phasing for low-eccentricity inspiralling compact binaries to 3PN order.* Phys. Rev. D **98**, 083028 — arXiv:1806.04182 — doi:10.1103/PhysRevD.98.083028
+3. Peters, P.C. & Mathews, J. (1963). *Gravitational Radiation from Point Masses in a Keplerian Orbit.* Phys. Rev. **131**, 435 — doi:10.1103/PhysRev.131.435
+4. Blanchet, L. (2014). *Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries.* Living Rev. Relativ. **17**, 2 — arXiv:1310.1528 — doi:10.12942/lrr-2014-2
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 

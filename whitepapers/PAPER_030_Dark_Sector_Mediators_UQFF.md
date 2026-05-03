@@ -596,3 +596,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
+
+
+---
+
+## References
+
+1. LHCb Collaboration (2025). *Search for lepton-flavour-violating decays B → K*τe.* arXiv:2506.15347
+2. Langacker, P. (2009). *The Physics of Heavy Z' Gauge Bosons.* Rev. Mod. Phys. **81**, 1199 — arXiv:0801.1345 — doi:10.1103/RevModPhys.81.1199
+3. ATLAS Collaboration (2019). *Search for dark photons in decays of Higgs bosons produced in association with a Z boson.* JHEP **2019**, 010 — arXiv:1903.11847 — doi:10.1007/JHEP03(2019)010
+4. Bauer, M., Rostagni, M. & Spinner, S. (2018). *Dark matter in leptoquark models.* Phys. Rev. D **97**, 015030 — arXiv:1709.07566 — doi:10.1103/PhysRevD.97.015030
+5. Fabbrichesi, M. et al. (2020). *The Dark Photon.* arXiv:2005.01515
+6. `bsm_physics_validation.py` — UQFF dark sector mediator validation (Star-Magic repository)

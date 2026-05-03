@@ -487,3 +487,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+2. Abbott et al. (LIGO/Virgo Collaborations, 2016). *Tests of General Relativity with GW150914.* Phys. Rev. Lett. **116**, 221101 — arXiv:1602.03841 — doi:10.1103/PhysRevLett.116.221101
+3. Belgacem, E. et al. (2018). *Modified gravitational-wave propagation and standard sirens.* Phys. Rev. D **98**, 023510 — arXiv:1712.08108 — doi:10.1103/PhysRevD.98.023510
+4. LISA Consortium (2017). *Laser Interferometer Space Antenna.* arXiv:1702.00786
+5. Hogg, D.W. (1999). *Distance Measures in Cosmology.* arXiv:astro-ph/9905116
+6. `validate_lisa_extended.py` — UQFF LISA cosmological redshift validation (Star-Magic repository)

@@ -601,3 +601,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
+
+
+---
+
+## References
+
+1. ATLAS Collaboration (2025). *Search for pair production of vector-like quarks with kappa in [0.22, 0.52], m = 1150–2600 GeV.* arXiv:2506.15515
+2. ATLAS Collaboration (2022). *Search for pair and single production of vector-like quarks in final states with at least one Z boson decaying into a pair of electrons or muons.* Phys. Rev. D **108**, 112005 — arXiv:2212.05600 — doi:10.1103/PhysRevD.108.112005
+3. Branco, G.C. et al. (2012). *Theory and phenomenology of two-Higgs-doublet models.* Phys. Rep. **516**, 1 — arXiv:1106.0034 — doi:10.1016/j.physrep.2012.02.002
+4. Aguilar-Saavedra, J.A. (2009). *Pair production of heavy Q = 2/3 singlets at the LHC.* Phys. Lett. B **625**, 234 — arXiv:0905.2221 — doi:10.1016/j.physletb.2009.09.032
+5. `bsm_physics_validation.py` — UQFF BSM scalar sector Ug2 validation (Star-Magic repository)

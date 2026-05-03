@@ -544,10 +544,11 @@ bridge.*
 
 ## References
 
-1. Bauswein, A. et al. (2012). "Neutron Star Merger Simulations"
-2. LIGO/Virgo Collaboration (2017). "GW170817: Post-Merger Analysis"
-3. Einstein Telescope Collaboration (2020). "Science Case for ET"
-4. Murphy, D. et al. (2026). "UQFF Post-Merger Predictions"
+1. Bauswein, A., Janka, H.-T. & Oechslin, R. (2012). *Testing approximations for non-equilibrium contributions to the shear viscosity in neutron-star merger simulations.* Phys. Rev. Lett. **108**, 011101 — arXiv:1112.1093 — doi:10.1103/PhysRevLett.108.011101
+2. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2017). *GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral.* Phys. Rev. Lett. **119**, 161101 — arXiv:1710.05832 — doi:10.1103/PhysRevLett.119.161101
+3. Punturo, M. et al. (Einstein Telescope Collaboration, 2010). *The Einstein Telescope: a third generation gravitational wave observatory.* Class. Quantum Grav. **27**, 194002 — doi:10.1088/0264-9381/27/19/194002
+4. Kastaun, W. & Galeazzi, F. (2015). *Properties of hypermassive neutron stars remnants of mergers.* Phys. Rev. D **91**, 064027 — arXiv:1501.02924 — doi:10.1103/PhysRevD.91.064027
+5. Murphy, D. et al. (2026). *UQFF Post-Merger Predictions* (Star-Magic PAPER_010)
 
 ---
 

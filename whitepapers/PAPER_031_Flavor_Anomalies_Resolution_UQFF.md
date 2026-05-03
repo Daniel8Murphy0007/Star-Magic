@@ -616,3 +616,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
+
+
+---
+
+## References
+
+1. ECFA Higgs Factory Study Group (2025). *ECFA Higgs Factory Programme: Physics Studies.* arXiv:2506.15390
+2. Belle II Collaboration (2025). *Measurement of |V_cb| and lepton-flavour universality ratio.* arXiv:2506.15256
+3. LHCb Collaboration (2025). *Search for lepton-flavour-violating decays B → K*τe.* arXiv:2506.15347
+4. LHCb Collaboration (2022). *Measurement of lepton universality in beauty-quark decays.* Nature Physics **18**, 277 — arXiv:2110.09501 — doi:10.1038/s41567-022-01558-x
+5. Cornella, C. et al. (2021). *Reading off the nature of the anomalies in b → c tau nu transitions.* JHEP **2021**, 060 — arXiv:2103.06089 — doi:10.1007/JHEP08(2021)060
+6. `bsm_physics_validation.py` — UQFF flavor anomalies validation (Star-Magic repository)

@@ -551,3 +551,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
+
+
+---
+
+## References
+
+1. BESIII Collaboration (2025). *First observations of doubly Cabibbo-suppressed D+ → K+π0/η/η' decays.* arXiv:2506.15533
+2. Baak, M. et al. (Gfitter Group, 2014). *The global electroweak fit at NNLO and prospects for the LHC and ILC.* Eur. Phys. J. C **74**, 3046 — arXiv:1407.3792 — doi:10.1140/epjc/s10052-014-3046-5
+3. Workman, R.L. et al. (Particle Data Group, 2022). *Review of Particle Physics.* Prog. Theor. Exp. Phys. **2022**, 083C01 — doi:10.1093/ptep/ptac097
+4. de Boer, W. & Sander, C. (2004). *Global electroweak fits and gauge coupling unification.* Phys. Lett. B **585**, 276 — arXiv:hep-ph/0307049 — doi:10.1016/j.physletb.2004.01.083
+5. `bsm_physics_validation.py` — UQFF electroweak precision BESIII validation (Star-Magic repository)

@@ -675,8 +675,9 @@ bridge.*
 
 1. `validate_gw170817.py`, `validate_gw190425.py`, `validate_{ligo\_comparison}.py`  Validation scripts
 2. `source27.cpp`  SOURCE27 namespace (5-frequency resonance + damping implementation)
-3. Bearden, Energy from the Vacuum (2002)  TRZ theoretical foundation
-4. Polchinski, String Theory (1998)  String sector dissipation
+3. Peters, P.C. (1964). *Gravitational Radiation and the Motion of Two Point Masses.* Phys. Rev. **136**, B1224 — doi:10.1103/PhysRev.136.B1224
+4. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+5. Maggiore, M. (2000). *Gravitational wave experiments and early universe cosmology.* Phys. Rep. **331**, 283 — arXiv:gr-qc/9909001 — doi:10.1016/S0370-1573(99)00102-7
 
 ---
 

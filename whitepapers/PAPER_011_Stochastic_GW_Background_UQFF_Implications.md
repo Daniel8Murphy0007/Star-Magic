@@ -592,11 +592,11 @@ bridge.*
 
 ## References
 
-1. LIGO/Virgo Collaboration (2021). "Upper Limits on SGWB from O3"
-2. Regimbau, T. (2011). "Astrophysical SGWB"
-3. Caprini, C. & Figueroa, D. (2018). "Cosmological SGWB"
-4. Einstein Telescope Science Team (2020). "ET SGWB Projections"
-5. Murphy, D. et al. (2026). "UQFF SGWB Predictions"
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2021). *Upper Limits on the Isotropic Gravitational-Wave Background from Advanced LIGO's Third Observing Run.* Phys. Rev. Lett. **126**, 241102 — arXiv:2101.12130 — doi:10.1103/PhysRevLett.126.241102
+2. Regimbau, T. (2011). *The astrophysical gravitational wave stochastic background.* Research in Astronomy and Astrophysics **11**, 369 — arXiv:1101.2762 — doi:10.1088/1674-4527/11/4/001
+3. Caprini, C. & Figueroa, D.G. (2018). *Cosmological Backgrounds of Gravitational Waves.* Class. Quantum Grav. **35**, 163001 — arXiv:1801.04268 — doi:10.1088/1361-6382/aac608
+4. Maggiore, M. et al. (Einstein Telescope Science Team, 2020). *Science Case for the Einstein Telescope.* JCAP **2020**, 050 — arXiv:1912.02622 — doi:10.1088/1475-7516/2020/03/050
+5. Murphy, D. et al. (2026). *UQFF SGWB Predictions* (Star-Magic PAPER_011)
 
 ---
 
