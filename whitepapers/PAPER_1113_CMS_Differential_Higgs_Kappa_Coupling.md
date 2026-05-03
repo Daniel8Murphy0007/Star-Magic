@@ -38,7 +38,7 @@ The Higgs field in UQFF is an $[\text{UA}]$ vacuum eigenmode at level $n = 18$:
 $$U_H = \lambda_H \cdot \rho_{\text{vac},[\text{UA}]} \cdot \exp\!\left(-\frac{[\text{SSq}] \cdot 18}{26}\right) \cdot (1 + f_{\text{quasi}})$$
 
 | Parameter | Value | Description |
-|-----------|-------|-------------|
+| ------------------------------- | --------------------------- | ----------------------------- |
 | $\lambda_H$ | $1.79 \times 10^{18}$ | Higgs coupling constant |
 | $\rho_{\text{vac},[\text{UA}]}$ | $7.09 \times 10^{-36}$ J/m3 | $[\text{UA}]$ vacuum density |
 | $[\text{SSq}]$ | 0.57 | Squeeze-state parameter |
@@ -63,7 +63,7 @@ with $\sigma_{\text{SM}}(gg \to H) = 22.0$ pb at 13 TeV.
 ## 3. Results
 
 | Observable | CMS Value | UQFF Prediction | Alignment |
-|-----------|-----------|-----------------|-----------|
+| ------------------- | --------------- | --------------- | --------------- |
 | $\kappa_V/\kappa_f$ | $1.05 \pm 0.10$ | $1.00$ | 95.24% |
 | $m_H$ | 125.35 GeV | 125.09 GeV | 99.79% |
 | $\mu(gg \to H)$ | $1.02 \pm 0.08$ | 1.00 | 98.04% |
@@ -134,7 +134,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -176,7 +176,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -188,7 +188,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| ----------------------- | ---------------------------------------------------- | --------------- | --------------------------- | --------------- |
 | $\kappa_V/\kappa_f$ | $U_H$ at level 18 predicts $\kappa_V/\kappa_f = 1.0$ | $1.05 \pm 0.10$ | CMS arXiv:2504.13081 (2025) | 95.24% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -227,7 +227,7 @@ BSH timescale: $\tau_H = \hbar/\Gamma_H \approx 1.6 \times 10^{-22}$ s (Higgs li
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
@@ -293,7 +293,7 @@ with $\beta_i = 0.6$ and the buoyancy integral evaluated at transverse momentum 
 
 
 | Observable | CMS (arXiv:2207.00043) | UQFF SCm |
-|-----------|----------------------|--------|
+| --------------- | ----------------------------- | ----------------------------- |
 | $\kappa_V$ | $1.014 \pm 0.023$ | $1.015 \pm 0.02$ |
 | $\kappa_f$ | $0.982 \pm 0.021$ | $0.983 \pm 0.02$ |
 | $m_h$ | $125.09 \pm 0.24\ \text{GeV}$ | $125.09\ \text{GeV}$ (stable) |

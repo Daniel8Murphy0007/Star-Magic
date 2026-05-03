@@ -42,7 +42,7 @@ The chiral gap function in UQFF notation:
 $$\Delta_{\text{chiral}}(\mathbf{k}) = \Delta_0 \cdot |\mathbf{k}|^d \cdot \exp\!\left(-\frac{[\text{SSq}] \cdot n}{26}\right)$$
 
 | Parameter | Value | Description |
-|-----------|-------|-------------|
+| --------------------------------- | --------------- | -------------------------------- |
 | $\Delta_0$ | $10^{-4}$ eV | Bare pairing gap |
 | $d$ | 2 | Chiral winding number ($d$-wave) |
 | $n$ | 10 | UQFF quantum level |
@@ -65,7 +65,7 @@ Each corresponds to a different $[\text{SCm}]$ angular momentum sector in the 26
 $$T_c = \frac{\hbar \omega_D}{k_B} \cdot \exp\!\left(-\frac{1}{N(0) \cdot V_{\text{SCm}}}\right)$$
 
 | Parameter | Value | Description |
-|-----------|-------|-------------|
+| --------------------------- | --------------------------------- | ------------------------ |
 | $\hbar$ | $1.055 \times 10^{-34}$ J$\cdot$s | Reduced Planck constant |
 | $\omega_D$ | $2 \times 10^{13}$ rad/s | Graphene Debye frequency |
 | $k_B$ | $1.381 \times 10^{-23}$ J/K | Boltzmann constant |
@@ -76,7 +76,7 @@ For $N(0) \cdot V_{\text{SCm}} = 0.3$: $T_c \approx 5.6$ K.
 ### 3.2 N(0)$\cdot$V\_SCm Sweep
 
 | $N(0) \cdot V_{\text{SCm}}$ | $T_c$ (K) | Regime |
-|------------------------------|-----------|--------|
+| --------------------------- | -------------------- | --------------- |
 | 0.1 | $6.9 \times 10^{-5}$ | Weak coupling |
 | 0.2 | 0.105 | Intermediate |
 | 0.3 | 5.57 | Moderate |
@@ -157,7 +157,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -199,7 +199,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -211,7 +211,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| ----------------------- | ------------------------------------------ | ------------------------------------------------------ | ----------------------- | --------------------- |
 | Superconducting $T_c$ | BCS gap with [SCm] suppression at level 10 | $T_c \sim 5.6$ K (predicted for rhombohedral graphene) | arXiv:2408.15233 (2024) | 90% (BCS consistency) |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -250,7 +250,7 @@ BSH timescale: $\tau_{\text{BCS}} = \hbar/\Delta_0 \sim 10^{-12}$ s (BCS coheren
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |

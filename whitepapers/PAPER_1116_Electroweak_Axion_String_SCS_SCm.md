@@ -42,7 +42,7 @@ For a string with symmetry breaking scale $\eta$ and length-to-width ratio $L/\d
 $$\mu_{\text{string}} = \eta^2 \cdot \ln\!\left(\frac{L}{\delta}\right)$$
 
 | Parameter | Value | Description |
-|-----------|-------|-------------|
+| --------------- | --------------------------------- | -------------------------- |
 | $\eta$ | 246 GeV = $3.94 \times 10^{-8}$ J | EW scale |
 | $L/\delta$ | $10^{10}$ | Typical cosmological ratio |
 | $\ln(L/\delta)$ | 23.03 | Logarithmic enhancement |
@@ -141,7 +141,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -183,7 +183,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -195,7 +195,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| ----------------------- | -------------------------------------------------------------- | ---------------------------- | ----------------------- | --------------- |
 | Electroweak VEV | [SCm]-stabilised axion string tension $G\mu/c^4 \sim 10^{-36}$ | $\eta = 246$ GeV (Higgs VEV) | arXiv:2010.02834 (2020) | 98.73% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -234,7 +234,7 @@ BSH timescale: $\tau_{\text{EW}} \sim 10^{-12}$ s (electroweak phase transition)
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |

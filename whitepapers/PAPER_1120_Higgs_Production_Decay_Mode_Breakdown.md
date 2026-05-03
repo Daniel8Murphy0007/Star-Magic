@@ -35,7 +35,7 @@ $$\sigma_{\text{ttH}} = 0.011 \times \sigma_{\text{total}} \approx 0.5 \text{ pb
 The SM decay modes at $m_H = 125.09$ GeV:
 
 | Channel | BR (%) |
-|---------|--------|
+| -------------------- | --------------- |
 | $H \to b\bar{b}$ | 58.24 |
 | $H \to WW^*$ | 21.37 |
 | $H \to \tau\tau$ | 6.32 |
@@ -119,7 +119,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -161,7 +161,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -173,7 +173,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| ------------------------------ | -------------------------------------------------------- | ------------------ | -------------------------------------- | --------------- |
 | Higgs production cross-section | $\sigma_{\text{total}} = 48.6$ pb at $\sqrt{s} = 13$ TeV | LHC Run-2 combined | Nicolaidou & Sirois (2015) + LHC Run-2 | 90% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -212,7 +212,7 @@ BSH timescale: $\tau_H = \hbar/\Gamma_H \approx 1.6 \times 10^{-22}$ s.
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
@@ -228,7 +228,7 @@ BSH timescale: $\tau_H = \hbar/\Gamma_H \approx 1.6 \times 10^{-22}$ s.
 The SCm-corrected production cross sections at $\sqrt{s} = 13\ \text{TeV}$:
 
 | Channel | SM $\sigma$ (pb) | SCm correction | UQFF $\sigma$ (pb) |
-|---------|-----------------|---------------|-------------------|
+| --------------- | ---------------- | ------------------------------ | ------------------ |
 | ggF | $48.58$ | $+(0.6 \times F_{TRZ})\ \%$ | $48.87$ |
 | VBF | $3.78$ | $+(0.06 \times \beta_i)\ \%$ | $3.78$ |
 | WH | $1.37$ | $+(0.06 \times \beta_i)\ \%$ | $1.37$ |
@@ -251,7 +251,7 @@ Numerically, the correction factor is $\approx 1 + 10^{-30}$, negligible at curr
 The branching ratio table:
 
 | Decay | SM BR | SCm BR |
-|-------|-------|--------|
+| --------------- | --------------- | ---------------------- |
 | $b\bar{b}$ | $58.2\%$ | $58.2\%$ |
 | $WW^*$ | $21.4\%$ | $21.4\%$ |
 | $\tau\tau$ | $6.27\%$ | $6.27\%$ |

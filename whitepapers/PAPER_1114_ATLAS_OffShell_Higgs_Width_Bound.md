@@ -38,7 +38,7 @@ The $[\text{SCm}]$ correction arises from the vacuum inflaton interaction:
 $$R_{[\text{SCm}]} = k_{\text{SCm}} \cdot V_{\text{infl},[\text{SCm}]} \cdot V_{\text{infl},[\text{UA}]}$$
 
 | Parameter | Value | Description |
-|-----------|-------|-------------|
+| ------------------------------ | --------------------------- | --------------------- |
 | $k_{\text{SCm}}$ | $10^{-40}$ | SCm reaction coupling |
 | $V_{\text{infl},[\text{SCm}]}$ | $7.09 \times 10^{-37}$ J/m3 | SCm inflaton density |
 | $V_{\text{infl},[\text{UA}]}$ | $7.09 \times 10^{-36}$ J/m3 | UA inflaton density |
@@ -60,7 +60,7 @@ This 19% suppression is consistent with the $[\text{SCm}]$ vacuum structure at l
 ## 3. Results
 
 | Observable | ATLAS Bound | SM Prediction | UQFF Interpretation |
-|-----------|-------------|---------------|---------------------|
+| --------------- | --------------- | --------------- | ----------------------------------------- |
 | $\Gamma_H$ | < 3.4 MeV | 4.2 MeV | $[\text{SCm}]$ condensate suppression |
 | Suppression | 0.810 | 1.000 | $\exp(-[\text{SSq}] \cdot 18/26) = 0.672$ |
 | $m_H$ | 125.35 GeV | 125.09 GeV | Level-18 eigenvalue |
@@ -131,7 +131,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -173,7 +173,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -185,7 +185,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| ------------------------ | ------------------------------------------------------------------------- | -------------------- | ----------------------------- | --------------- |
 | $\Gamma_H$ (Higgs width) | $\Gamma_H^{\text{SCm}} = \Gamma_{\text{SM}} \cdot e^{-[SSq] \cdot 18/26}$ | $\Gamma_H < 3.4$ MeV | ATLAS arXiv:2504.07710 (2025) | 80.95% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -224,7 +224,7 @@ BSH timescale: $\tau_{\text{off-shell}} = \hbar/q^2 \sim 10^{-26}$ s (off-shell 
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |

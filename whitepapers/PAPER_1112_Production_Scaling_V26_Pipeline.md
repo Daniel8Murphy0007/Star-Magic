@@ -30,7 +30,7 @@ The Star-Magic UQFF framework requires high-throughput computation to evaluate b
 ### 2.1 Five-Stage Pipeline
 
 | Stage | Latency ($\mu$s) | Description |
-|-------|:------------:|-------------|
+| --------------- | :--------------: | --------------------------------------- |
 | Ingest | 0.50 | Dataset reception from REST endpoint |
 | Validate | 0.20 | Parameter bounds and type checking |
 | Compute | 0.60 | $F_{U,Bi,i}$, compressed\_g, validation |
@@ -53,7 +53,7 @@ For a 16-core system: $N_{\text{workers}} = 32$.
 JSON serialisation overhead is eliminated by switching to msgpack:
 
 | Format | Avg. Size | Serialise ($\mu$s) | Deserialise ($\mu$s) |
-|--------|:---------:|:--------------:|:----------------:|
+| --------------- | :-------------: | :----------------: | :------------------: |
 | JSON | 512 B | 1.2 | 0.8 |
 | msgpack | 317 B | 0.4 | 0.3 |
 | **Reduction** | **38%** | **67%** | **63%** |
@@ -117,7 +117,7 @@ The QCalcGeom module is vectorised using numpy array operations, replacing per-e
 ## 6. Scaling Trajectory
 
 | Version | Throughput | Key Innovation |
-|---------|:----------:|----------------|
+| --------------- | :-------------: | ----------------------------- |
 | v15 | 650,000 | Baseline thread pool |
 | v25 | 950,000 | Numpy vectorisation |
 | **v26** | **1,000,000+** | **Msgpack + GPU + zero-copy** |
@@ -190,7 +190,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -232,7 +232,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -244,7 +244,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| ----------------------- | --------------------------------------------------------------------------------- | ----------------------- | ------------------------ | --------------- |
 | Computation throughput | $T_{v26} = N_{\text{workers}} \cdot R_{\text{batch}} / (1 + L_{\text{overhead}})$ | 1,000,000 calc/s target | Star-Magic v26 benchmark | 124% (exceeded) |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -283,7 +283,7 @@ BSH timescale: $\tau_{\text{pipeline}} = 1.75$ $\mu$s (single-thread latency).
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
@@ -354,7 +354,7 @@ $$h \cdot f = 6.626 \times 10^{-34} \times 1.25 \times 10^{12} = 8.283 \times 10
 
 
 | Gate | Description |
-|------|-------------|
+| --------------- | ---------------------------------------------------------- |
 | G1 | All $\rho_{\text{vac}}$ values use $7.09 \times 10^{-37}$ |
 | G2 | $[SSq] = 0.57$ exactly |
 | G3 | $S_{26}^{(3)} = 1.4531 \times 10^{26}$ |

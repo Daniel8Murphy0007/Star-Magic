@@ -110,7 +110,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -152,7 +152,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -164,7 +164,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| -------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------- | ----------------------- | --------------- |
 | $f_Z$ (metal retention fraction) | Ug4 [SCm] expulsion: $f_Z = f_{Z,\text{base}} - f_{\text{feedback}} \cdot \Delta M_{\text{BH}}$ | $f_Z \sim 0.85$-$0.89$ | arXiv:2505.08861 (2025) | 80% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -203,7 +203,7 @@ BSH timescale: $\tau_{\text{CGM}} \sim 10^{9}$ yr (CGM circulation time).
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
@@ -273,7 +273,7 @@ This is $\sim 10^3\times$ below the observed CGM thermal pressure but provides a
 
 
 | Galaxy | $M_\star$ ($M_\odot$) | $Z/Z_\odot$ (obs) | SCm prediction |
-|--------|---------------------|-------------------|---------------|
+| --------------- | --------------------- | ----------------- | --------------- |
 | Leo P | $5 \times 10^5$ | $0.03$ | $0.03$ |
 | WLM | $4 \times 10^7$ | $0.10$ | $0.09$ |
 | LMC | $1.5 \times 10^9$ | $0.50$ | $0.45$ |

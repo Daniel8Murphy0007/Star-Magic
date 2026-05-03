@@ -38,7 +38,7 @@ A string segment with tension $\mu = G\mu \cdot c^4 / G$ and supercurrent $I$ at
 $$P(f) = \frac{\mu \cdot I^2 \cdot f}{4\pi d^2} \cdot [\text{SCm}]_{\text{emit}}$$
 
 | Parameter | Fiducial Value | Description |
-|-----------|---------------|-------------|
+| --------------- | --------------------- | ------------------------ |
 | $G\mu/c^2$ | $10^{-8}$ | String tension |
 | $I$ | $10^{10}$ A | Macroscopic supercurrent |
 | $f$ | 1.4 GHz | L-band radio frequency |
@@ -61,7 +61,7 @@ $$E_{\text{burst}} = P(f) \cdot \Delta t = P(f) \times 10^{-3}\ \text{J}$$
 The model predicts increasing power with frequency ($P \propto f$), modulated by the $[\text{SCm}]$ emission factor:
 
 | Frequency | $P(f)$ (W/Hz) | $S$ (Jy) | Detectable? |
-|-----------|---------------|-----------|-------------|
+| --------------- | --------------- | --------------- | ---------------- |
 | 400 MHz | computed | computed | String-dependent |
 | 1.0 GHz | computed | computed | String-dependent |
 | 1.4 GHz | computed | computed | String-dependent |
@@ -148,7 +148,7 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
 
 | Sector | Domain | Late-Corpus Result |
-|--------|--------|-------------------|
+| --------------- | ------------------------ | ------------------------------------------------ |
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
@@ -190,7 +190,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## Calibration Constants
 
 | Constant | Symbol | Value | Validation Domain |
-|----------|--------|-------|-------------------|
+| ---------------------- | --------------------- | ------------------------------------- | ------------------- |
 | UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down |
 | String sector coupling | $[\text{SSq}]$ | 0.57 | BH dynamics |
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
@@ -202,7 +202,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
+| ----------------------- | -------------------------------------------------------------------- | ----------------------------- | ----------------------- | --------------- |
 | SCS radio power | $P(f) \propto G\mu \cdot I^2 \cdot f \cdot \exp(-[SSq] \cdot 13/26)$ | Radio surveys (CHIME, Parkes) | arXiv:2305.09816 (2023) | 95.00% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
@@ -241,7 +241,7 @@ BSH timescale: $\tau_{\text{FRB}} \sim 10^{-3}$ s (FRB burst duration).
 ### B.4 Production-Scale Consistency
 
 | Metric | Value | Status |
-|--------|-------|--------|
+| --------------- | ------------------ | --------------- |
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
@@ -313,7 +313,7 @@ This coherence length (11 kpc) is comparable to the FRB source region scale.
 
 
 | Feature | Prediction |
-|---------|-----------|
+| ---------------------------------- | ----------------------------------------------- |
 | Sideband spacing | $833\ \text{GHz} / (1+z)$ (sub-mm) |
 | Pulse duration | $> 0.8\ \text{ps}$ (phonon limit) |
 | Brightness temperature enhancement | $\times S_{26}^{(3)} \approx 10^{26}$ |
