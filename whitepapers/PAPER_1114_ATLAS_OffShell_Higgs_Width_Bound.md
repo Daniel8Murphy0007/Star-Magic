@@ -70,7 +70,6 @@ This 19% suppression is consistent with the $[\text{SCm}]$ vacuum structure at l
 The ATLAS off-shell Higgs width bound provides evidence for $[\text{SCm}]$ vacuum condensate effects at the electroweak scale. The suppressed width is naturally explained by the UQFF level-18 structure. CP4 class `ATLASOffShellHiggsWidthCalculator` (#615) implements the calculation with configurable $k_{\text{SCm}}$ sweep.
 
 
----
 ## References
 
 1. ATLAS Collaboration, arXiv:2504.07710 (2025)
@@ -185,7 +184,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ------------------------ | ------------------------------------------------------------------------- | -------------------- | ----------------------------- | --------------- |
+| ----------------------- | ----------------------------------------------------------------------- | ------------------- | ---------------------------- | -------------------- |
 | $\Gamma_H$ (Higgs width) | $\Gamma_H^{\text{SCm}} = \Gamma_{\text{SM}} \cdot e^{-[SSq] \cdot 18/26}$ | $\Gamma_H < 3.4$ MeV | ATLAS arXiv:2504.07710 (2025) | 80.95% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

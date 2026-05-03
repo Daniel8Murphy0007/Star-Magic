@@ -94,7 +94,6 @@ The Riemann PI-cycle link suggests:
 3. PImath encryption creates a verifiable record of all buoyancy computations anchored to $\pi$
 
 
----
 ## References
 
 - PAPER_971: Yang-Mills Mass Gap UQFF Derivation

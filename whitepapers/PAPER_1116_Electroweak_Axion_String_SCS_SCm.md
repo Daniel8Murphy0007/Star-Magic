@@ -80,7 +80,6 @@ The UQFF framework interprets globular clusters as regions shielded by SCS super
 Electroweak axion strings provide the lightest stable SCS configurations, naturally stabilised by $[\text{SCm}]$ at level 13. The framework connects string theory topology to observable astrophysical phenomena. CP4 class `ElectroweakAxionStringSCSCalculator` (#617) implements $\eta$, $v_{\text{string}}$, and $L/\delta$ sweeps.
 
 
----
 ## References
 
 1. arXiv:2010.02834 (2020, updated 2024)
@@ -195,7 +194,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ----------------------- | -------------------------------------------------------------- | ---------------------------- | ----------------------- | --------------- |
+| ---------------------- | ------------------------------------------------------------ | --------------------------- | ---------------------- | -------------------- |
 | Electroweak VEV | [SCm]-stabilised axion string tension $G\mu/c^4 \sim 10^{-36}$ | $\eta = 246$ GeV (Higgs VEV) | arXiv:2010.02834 (2020) | 98.73% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

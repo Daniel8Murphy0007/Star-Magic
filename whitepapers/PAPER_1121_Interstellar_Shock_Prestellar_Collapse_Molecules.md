@@ -57,7 +57,6 @@ $$M_J = \left(\frac{\pi c_s^2}{G}\right)^{3/2} \rho_{\text{post}}^{-1/2}$$
 Overall alignment: **80%**. The [SCm]-[UA] interaction framework successfully models both shock-induced compression and the prebiotic chemistry pathway critical for origins of life.
 
 
----
 ## References
 
 - Ceccarelli, C. & Codella, C. (2024). Interstellar Shocks and Star Formation Chemistry.
@@ -172,7 +171,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| -------------------------- | --------------------------------------------- | -------------------------------------------------- | --------------------------- | --------------- |
+| ------------------------- | ------------------------------------------- | ------------------------------------------------ | -------------------------- | --------------------- |
 | Prestellar core conditions | $g_{\text{Shock}} = GM/r^2 \cdot S(t) + C(t)$ | $T \sim 10$-$20$ K, $n \sim 10^5$-$10^6$ cm$^{-3}$ | Ceccarelli & Codella (2024) | 80% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

@@ -57,7 +57,6 @@ where $\rho_{\text{vac},[UA]} = 7.09 \times 10^{-37}$ kg/m$^3$, $\omega_H \sim 1
 Overall alignment with LHC data: **90%**. The SM coupling modifiers $\kappa_V / \kappa_f \approx 1$ are matched within 10-20%, with UQFF predicting exotic deviations at level 18 that explain proton stability.
 
 
----
 ## References
 
 - Nicolaidou, R. & Sirois, Y. (2015). The Higgs Boson Discovery and Measurements. *Reviews in Physics*.
@@ -173,7 +172,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ------------------------------ | -------------------------------------------------------- | ------------------ | -------------------------------------- | --------------- |
+| ----------------------------- | ------------------------------------------------------ | ------------------ | ------------------------------------- | ------------------- |
 | Higgs production cross-section | $\sigma_{\text{total}} = 48.6$ pb at $\sqrt{s} = 13$ TeV | LHC Run-2 combined | Nicolaidou & Sirois (2015) + LHC Run-2 | 90% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

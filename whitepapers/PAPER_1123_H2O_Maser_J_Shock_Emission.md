@@ -50,7 +50,6 @@ The J-type shock maps directly to an abrupt Ug1 jump in the UQFF framework:
 Overall alignment: **80%** — datasets on shock velocities and maser luminosities verify the $S(t)$ compression model.
 
 
----
 ## References
 
 - arXiv:1306.5276 — H$_2$O masers from J-type shocks (2013).
@@ -165,7 +164,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ------------------------ | ------------------------------------ | ---------------------------------------- | ---------------------- | --------------- |
+| ----------------------- | ----------------------------------- | --------------------------------------- | --------------------- | ------------------- |
 | 22 GHz H$_2$O maser line | $S(t)$ compression: abrupt Ug1 jump | $\nu = 22.235$ GHz ($6_{16} \to 5_{23}$) | arXiv:1306.5276 (2013) | 80% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

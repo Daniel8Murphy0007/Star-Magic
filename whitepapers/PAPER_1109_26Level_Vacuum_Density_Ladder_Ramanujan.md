@@ -101,7 +101,6 @@ The total dark energy density from all 26 levels provides a prediction that can 
 The 26-level vacuum density ladder provides a structured framework for understanding the cosmological constant hierarchy through dimensional decomposition. The Ramanujan zeta regularisation anchors the scaling, while WKB tunnelling and phonon equilibria connect the vacuum structure to observable phenomena.
 
 
----
 ## References
 
 - PAPER_970: Ramanujan S26 Application in UQFF Inflation
@@ -219,7 +218,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ----------------------- | -------------------------------------------- | ---------------------------------------------------- | --------------- | --------------- |
+| ---------------------- | ------------------------------------------ | -------------------------------------------------- | ----------------- | ------------------ |
 | Dark energy density | 26-level $\rho_{\text{vac}}^{(n)}$ summation | $\rho_\Lambda \approx 5.96 \times 10^{-27}$ kg/m$^3$ | Planck 2018 | 95% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

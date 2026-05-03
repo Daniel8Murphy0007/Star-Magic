@@ -80,7 +80,6 @@ The extremely small $\delta_{\text{SCS}}$ confirms that UQFF cosmic strings with
 The 21-cm Dark Ages signal provides stringent constraints on SCS parameters. The UQFF framework naturally accommodates these bounds through the $[\text{SCm}]$ stability mechanism at level 13. CP4 class `SCSConstraints21cmDarkAgesCalculator` (#616) implements the full $G\mu$ sweep and redshift evolution.
 
 
----
 ## References
 
 1. arXiv:2504.02947 (2024)
@@ -195,7 +194,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| --------------------------------- | -------------------------------------------------- | ----------------------- | ----------------------- | --------------- |
+| -------------------------------- | ------------------------------------------------- | ---------------------- | ---------------------- | ------------------- |
 | $G\mu/c^2$ (string tension bound) | Um cosmic strings with [SCm] stability at level 13 | $G\mu/c^2 \leq 10^{-7}$ | arXiv:2504.02947 (2024) | 91.68% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

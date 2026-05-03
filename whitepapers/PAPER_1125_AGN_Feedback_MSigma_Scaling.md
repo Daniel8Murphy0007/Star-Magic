@@ -49,7 +49,6 @@ The [SCm] expulsion mechanism drives metal ejection proportional to how much the
 Overall alignment: **85%**.
 
 
----
 ## References
 
 - arXiv:2506.09123 — AGN Feedback and M-$\sigma$ Scaling (2025).
@@ -164,7 +163,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| --------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------- | ---------------------------------------------- | --------------- |
+| ------------------------------- | -------------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- |
 | $M_{\text{BH}}$-$\sigma$ relation | Ug4 feedback: $f_{\text{feedback}} = \varepsilon_f \cdot \lambda_{\text{Edd}}$ | $M_{\text{BH}} \propto \sigma^{4.38}$ | arXiv:2506.09123 (2025) + Kormendy & Ho (2013) | 85% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

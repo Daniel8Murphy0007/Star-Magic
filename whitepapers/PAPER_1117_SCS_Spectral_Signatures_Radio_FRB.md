@@ -87,7 +87,6 @@ The UQFF framework predicts that SCS-produced FRBs should exhibit:
 Radio constraints on SCS emission are consistent with the UQFF $[\text{SCm}]$ emission model. The framework provides a natural FRB production mechanism from cosmic string cusps. CP4 class `SCSSpectralSignaturesRadioCalculator` (#618) implements frequency, supercurrent, distance, and $G\mu$ sweeps.
 
 
----
 ## References
 
 1. arXiv:2305.09816 (2023)
@@ -202,7 +201,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ----------------------- | -------------------------------------------------------------------- | ----------------------------- | ----------------------- | --------------- |
+| ---------------------- | ------------------------------------------------------------------ | ---------------------------- | ---------------------- | -------------------- |
 | SCS radio power | $P(f) \propto G\mu \cdot I^2 \cdot f \cdot \exp(-[SSq] \cdot 13/26)$ | Radio surveys (CHIME, Parkes) | arXiv:2305.09816 (2023) | 95.00% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

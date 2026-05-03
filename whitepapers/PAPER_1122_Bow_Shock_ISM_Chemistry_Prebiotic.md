@@ -50,7 +50,6 @@ Activation efficiency: $\eta = \sigma(T_{\text{ps}} - T_{\text{crit}})$ (sigmoid
 The bow-shock C(t) enrichment pathway supports [SCm]-[UA] prebiotic chemistry at **80% alignment** with observational data. Cooling timescales determine the chemical freeze-out composition.
 
 
----
 ## References
 
 - arXiv:1808.01439 — Bow-shock chemistry in the ISM (2018).
@@ -165,7 +164,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| --------------------------- | ------------------------------------------------------------------- | ---------------------------------- | ----------------------- | --------------- |
+| -------------------------- | ----------------------------------------------------------------- | --------------------------------- | ---------------------- | -------------------- |
 | Bow-shock standoff distance | $R_{\text{bs}} = \sqrt{\dot{M} v_w / 4\pi \rho_{\text{ISM}} v_*^2}$ | Observations of stellar bow shocks | arXiv:1808.01439 (2018) | 80% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

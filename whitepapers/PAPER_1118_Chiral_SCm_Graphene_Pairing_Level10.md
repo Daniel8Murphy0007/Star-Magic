@@ -96,7 +96,6 @@ provides the energy scale for the transition from normal to $[\text{SCm}]$-paire
 Rhombohedral graphene chiral superconductivity provides a condensed-matter analogue of cosmic $[\text{SCm}]$ pairing. The level-10 assignment in the UQFF hierarchy connects laboratory observations to the 26D compressed gravity framework. CP4 class `ChiralSCmGraphenePairingCalculator` (#619) implements gap function, $T_c$, and winding number computations.
 
 
----
 ## References
 
 1. arXiv:2408.15233 (2024)

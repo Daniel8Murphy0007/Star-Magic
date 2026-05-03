@@ -73,7 +73,6 @@ with $\sigma_{\text{SM}}(gg \to H) = 22.0$ pb at 13 TeV.
 The CMS differential Higgs measurements at 13 TeV are consistent with the UQFF level-18 $[\text{UA}]$ fluctuation model. The $\kappa_V/\kappa_f$ ratio provides a direct probe of $[\text{SCm}]$ vacuum structure at the electroweak scale. CP4 class `CMSDifferentialHiggsKappaCalculator` (#614) implements the full computation.
 
 
----
 ## References
 
 1. CMS Collaboration, arXiv:2504.13081 (2025)

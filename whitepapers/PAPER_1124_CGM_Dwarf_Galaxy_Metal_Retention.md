@@ -49,7 +49,6 @@ This provides a physical mechanism for the observed scatter in CGM metallicities
 Overall alignment: **80%**.
 
 
----
 ## References
 
 - arXiv:2505.08861 — CGM in Dwarf Galaxies (2025).
@@ -164,7 +163,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| -------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------- | ----------------------- | --------------- |
+| ------------------------------ | ------------------------------------------------------------------------------------------- | ---------------------- | ---------------------- | ---------------------- |
 | $f_Z$ (metal retention fraction) | Ug4 [SCm] expulsion: $f_Z = f_{Z,\text{base}} - f_{\text{feedback}} \cdot \Delta M_{\text{BH}}$ | $f_Z \sim 0.85$-$0.89$ | arXiv:2505.08861 (2025) | 80% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

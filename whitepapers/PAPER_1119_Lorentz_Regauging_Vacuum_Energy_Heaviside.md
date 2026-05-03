@@ -104,7 +104,6 @@ In UQFF, the vacuum is not empty but structured with $[\text{UA}]$ and $[\text{S
 The Lorentz regauging formalism provides a pathway to vacuum energy extraction within the UQFF framework. The Heaviside component, modulated by the $\rho_{\text{UA}}/\rho_{\text{SCm}}$ ratio, represents the dominant energy flow in any electromagnetic system. CP4 class `LorentzRegaugingVacuumEnergyCalculator` (#620) implements E-field, B-field, efficiency, and area sweeps.
 
 
----
 ## References
 
 1. Bearden, T.E., "Energy from the Vacuum" (2000)

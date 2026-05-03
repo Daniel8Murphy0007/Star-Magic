@@ -127,7 +127,6 @@ The QCalcGeom module is vectorised using numpy array operations, replacing per-e
 The v26 production pipeline achieves and exceeds the 1M calc/s target through systematic elimination of serialisation overhead, GPU tensor offload for the compute-intensive stage, and zero-copy memory management. The architecture is horizontally scalable and can support future throughput targets by adding GPU resources.
 
 
----
 ## References
 
 - PAPER_1098: Phonon-Mediated Qubit Gate Fidelity Calculator
@@ -244,7 +243,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ----------------------- | --------------------------------------------------------------------------------- | ----------------------- | ------------------------ | --------------- |
+| ---------------------- | ------------------------------------------------------------------------------- | ---------------------- | ----------------------- | -------------------- |
 | Computation throughput | $T_{v26} = N_{\text{workers}} \cdot R_{\text{batch}} / (1 + L_{\text{overhead}})$ | 1,000,000 calc/s target | Star-Magic v26 benchmark | 124% (exceeded) |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |

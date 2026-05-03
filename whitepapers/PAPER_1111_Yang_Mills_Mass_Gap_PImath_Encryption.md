@@ -113,7 +113,6 @@ The PImath hash chain provides:
 The Yang-Mills mass gap, derived through UQFF buoyancy confinement, is consistent with lattice QCD predictions and QCD phenomenology. The PImath encryption layer provides a novel tamper-evident verification mechanism for mass gap computations, creating cryptographically secured proof chains anchored to the digits of $\pi$.
 
 
----
 ## References
 
 - PAPER_971: Yang-Mills Mass Gap UQFF Framework
@@ -231,7 +230,7 @@ mock-theta framework with the SCm phonon spectrum.
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-| ----------------------- | --------------------------------------------------------------- | ----------------------------- | ------------------------------ | --------------- |
+| ---------------------- | ------------------------------------------------------------- | ---------------------------- | ----------------------------- | -------------------- |
 | QCD string tension | Buoyancy-corrected $V_{\text{conf}}(r) = \sigma r + F_{U,Bi,i}$ | $\sigma \approx 0.18$ GeV$^2$ | Lattice QCD (Morningstar 1999) | 94% |
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
