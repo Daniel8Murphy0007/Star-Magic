@@ -456,13 +456,13 @@ bridge.*
 
 ## References
 
-1. LUX-ZEPLIN (2023). PRL 131, 041002.
-2. XENONnT (2023). PRL 131, 041003.
-3. PandaX-4T (2023). PRL 127, 261802.
-4. Hu, Barkana, Gruzinov (2000). PRL 85, 1158.
-5. Clowe et al. (2006). ApJL 648, L109.
-6. Tulin & Yu (2018). Phys.Rep. 730, 1.
-7. Planck Collaboration (2020). A&A 641, A6.
+1. LUX-ZEPLIN Collaboration (2022). *First Dark Matter Search Results from the LUX-ZEPLIN (LZ) Experiment.* Phys. Rev. Lett. **131**, 041002 — arXiv:2207.03764 — doi:10.1103/PhysRevLett.131.041002
+2. XENON Collaboration (2023). *First Dark Matter Search with XENONnT.* Phys. Rev. Lett. **131**, 041003 — arXiv:2303.14729 — doi:10.1103/PhysRevLett.131.041003
+3. PandaX-4T Collaboration (2021). *Dark Matter Search Results from the PandaX-4T Commissioning Run.* Phys. Rev. Lett. **127**, 261802 — arXiv:2107.13438 — doi:10.1103/PhysRevLett.127.261802
+4. Hu, W., Barkana, R. & Gruzinov, A. (2000). *Fuzzy Cold Dark Matter: The wave properties of ultralight particles.* Phys. Rev. Lett. **85**, 1158 — arXiv:astro-ph/0003365 — doi:10.1103/PhysRevLett.85.1158
+5. Clowe, D. et al. (2006). *A Direct Empirical Proof of the Existence of Dark Matter.* ApJL **648**, L109 — arXiv:astro-ph/0608407 — doi:10.1086/508162
+6. Tulin, S. & Yu, H.-B. (2018). *Dark Matter Self-interactions and Small Scale Structure.* Phys. Rep. **730**, 1 — arXiv:1705.02358 — doi:10.1016/j.physrep.2017.11.004
+7. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
 8. UQFF: kappa=0.0005/day, [SSq]=0.57
 
 

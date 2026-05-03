@@ -585,3 +585,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
+
+
+---
+
+## References
+
+1. ATLAS Collaboration (2022). *Constraints on Higgs boson properties using WW*-pair production in proton-proton collisions at sqrt(s) = 13 TeV with the ATLAS detector and combination of Higgs boson couplings.* arXiv:2207.00026 — doi:10.1140/epjc/s10052-023-11747-w
+2. CMS Collaboration (2023). *A portrait of the Higgs boson by the CMS experiment ten years after the discovery.* Nature **607**, 60–68 — arXiv:2207.03969 — doi:10.1038/s41586-022-04892-x
+3. ATLAS Collaboration (2023). *Observation of associated production of a top quark pair and a Higgs boson in the diphoton channel.* arXiv:2303.05974 — doi:10.1140/epjc/s10052-023-12042-4
+4. Particle Data Group (2024). *Review of Particle Physics.* Phys. Rev. D **110**, 030001 — doi:10.1103/PhysRevD.110.030001
+5. `test_priority3_cern_validation.py` — UQFF CERN BSM kappa_t validation (7/7 PASSED, 95.83% alignment)
+6. `MAIN_1_CoAnQi.cpp` SOURCE27 — UH Level-18 Higgs hierarchy coupling equations

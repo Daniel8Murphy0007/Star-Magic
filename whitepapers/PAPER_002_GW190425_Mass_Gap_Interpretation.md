@@ -616,3 +616,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2020). *GW190425: Observation of a Compact Binary Coalescence with Total Mass ~3.4 M_sun.* ApJL **892**, L3 — arXiv:2001.01761 — doi:10.3847/2041-8213/ab75f5
+2. Abbott et al. (LIGO/Virgo/KAGRA Collaborations, 2021). *GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo During the Second Part of the Third Observing Run.* arXiv:2111.03606 — doi:10.1103/PhysRevX.13.041039
+3. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Classical and Quantum Gravity **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+4. `validate_gw190425.py` — UQFF GW190425 mass-gap UQFF damping validation (Star-Magic repository)
+5. `source27.cpp` SOURCE27 namespace — SCm suppression model at mass-gap boundary

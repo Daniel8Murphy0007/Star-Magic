@@ -628,3 +628,15 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2017). *GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral.* Phys. Rev. Lett. **119**, 161101 — arXiv:1710.05832 — doi:10.1103/PhysRevLett.119.161101
+2. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+3. Goldstein, A. et al. (Fermi GBM, 2017). *An Ordinary Short Gamma-Ray Burst with Extraordinary Implications: Fermi-GBM Detection of GRB 170817A.* ApJL **848**, L14 — arXiv:1710.05446 — doi:10.3847/2041-8213/aa8f41
+4. Villar, V.A. et al. (2017). *The Combined Ultraviolet, Optical, and Near-infrared Light Curves of the Kilonova Associated with the Binary Neutron Star Merger GW170817/AT2017gfo.* ApJL **851**, L21 — arXiv:1710.11576 — doi:10.3847/2041-8213/aa9c84
+5. Abbott et al. (LIGO/Virgo Collaborations, 2017). *Gravitational Waves and Gamma-rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A.* ApJL **848**, L13 — arXiv:1710.05834 — doi:10.3847/2041-8213/aa920c
+6. `validate_gw170817.py` — UQFF multi-messenger full inspiral validation (Star-Magic repository)

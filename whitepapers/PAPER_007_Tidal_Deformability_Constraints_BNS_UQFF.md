@@ -622,10 +622,9 @@ bridge.*
 
 ## References
 
-1. Abbott et al., GW170817: Measurements of neutron star radii and equation of state, *Phys. Rev.
-Lett.* **121**, 161101 (2018).
-2. Abbott et al., GW190425: Observation of a Compact Binary Coalescence, *Astrophys. J. Lett.*
-**892**, L3 (2020).
+1. Abbott et al. (LIGO/Virgo Collaborations, 2018). *GW170817: Measurements of Neutron Star Radii and Equation of State.* Phys. Rev. Lett. **121**, 161101 — arXiv:1805.11579 — doi:10.1103/PhysRevLett.121.161101
+2. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2020). *GW190425: Observation of a Compact Binary Coalescence with Total Mass ~3.4 M_sun.* ApJL **892**, L3 — arXiv:2001.01761 — doi:10.3847/2041-8213/ab75f5
+2a. Hinderer, T. (2008). *Tidal Love Numbers of Neutron Stars.* ApJ **677**, 1216 — arXiv:0711.2420 — doi:10.1086/533487
 3. `validate_gw170817.py`  UQFF validation script
 4. `validate_gw190425.py`  Mass gap analysis script
 

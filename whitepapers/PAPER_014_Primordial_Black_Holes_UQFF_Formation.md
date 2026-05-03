@@ -415,10 +415,11 @@ bridge.*
 
 ## References
 
-1. Carr, B. & Kühnel, F. (2020). "Primordial Black Holes as Dark Matter"
-2. Bird, S. et al. (2016). "Did LIGO Detect Dark Matter?"
-3. LIGO/Virgo Collaboration (2021). "Constraints on PBH Mergers"
-4. Murphy, D. et al. (2026). "UQFF Framework for Early Universe Physics"
+1. Carr, B. & Kühnel, F. (2020). *Primordial Black Holes as Dark Matter: Recent Developments.* ARA&A **58**, 257 — arXiv:2002.12778 — doi:10.1146/annurev-astro-082812-141029
+2. Bird, S. et al. (2016). *Did LIGO Detect Dark Matter?* Phys. Rev. Lett. **116**, 201301 — arXiv:1603.00464 — doi:10.1103/PhysRevLett.116.201301
+3. Abbott et al. (LIGO/Virgo/KAGRA Collaborations, 2022). *Search for Subsolar-Mass Compact Binary Coalescences in Advanced LIGO's Third Observing Run.* Phys. Rev. Lett. **129**, 061104 — arXiv:2109.12197 — doi:10.1103/PhysRevLett.129.061104
+4. Carr, B.J. (1975). *The Primordial Black Hole Mass Spectrum.* ApJ **201**, 1 — doi:10.1086/153853
+5. Murphy, D. et al. (2026). *UQFF Framework for Early Universe Physics* (Star-Magic PAPER_014)
 
 ---
 

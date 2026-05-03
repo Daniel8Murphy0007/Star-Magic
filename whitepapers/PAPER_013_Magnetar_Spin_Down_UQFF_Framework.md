@@ -421,9 +421,9 @@ bridge.*
 
 ## References
 
-1. Thompson & Duncan, *Astrophys. J.* **473**, 322 (1996)  Magnetar model
-2. Kaspi & Beloborodov, *Annu. Rev. Astron. Astrophys.* **55**, 261 (2017)  Magnetar
-review.Groups[1].Value : Magnetar Spin-Down in UQFF Framework
+1. Thompson, C. & Duncan, R.C. (1996). *The Soft Gamma Repeaters as Very Strongly Magnetized Neutron Stars. II. Quiescent Neutrino, X-ray, and Alfven Wave Emission.* ApJ **473**, 322 — doi:10.1086/178147
+2. Kaspi, V.M. & Beloborodov, A.M. (2017). *Magnetars.* ARA&A **55**, 261 — arXiv:1703.00068 — doi:10.1146/annurev-astro-081915-023329
+3. Coti Zelati, F. et al. (2018). *Systematic study of magnetar outbursts.* MNRAS **474**, 961 — arXiv:1710.04671 — doi:10.1093/mnras/stx2679Groups[1].Value : Magnetar Spin-Down in UQFF Framework
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 

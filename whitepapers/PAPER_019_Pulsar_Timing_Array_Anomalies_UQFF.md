@@ -717,12 +717,10 @@ bridge.*
 
 ## References
 
-1. Agazie, G. et al. (NANOGrav Collaboration), "The NANOGrav 15-year Data Set: Evidence for a
-Gravitational-Wave Background," *Astrophys. J. Lett.* **951**, L8 (2023).
-2. Reardon, D. J. et al. (PPTA), "Search for an Isotropic Gravitational-Wave Background with the
-Parkes Pulsar Timing Array," *Astrophys. J. Lett.* **951**, L6 (2023). [PPTA DR3]
-3. Antoniadis, J. et al. (EPTA), "The Second Data Release from the European Pulsar Timing Array,"
-*Astron. Astrophys.* **678**, A50 (2023). [EPTA DR2]
+1. Agazie, G. et al. (NANOGrav Collaboration, 2023). *The NANOGrav 15-year Data Set: Evidence for a Gravitational-Wave Background.* ApJL **951**, L8 — arXiv:2306.16213 — doi:10.3847/2041-8213/acdac6
+2. Reardon, D.J. et al. (PPTA, 2023). *Search for an Isotropic Gravitational-Wave Background with the Parkes Pulsar Timing Array.* ApJL **951**, L6 — arXiv:2306.16215 — doi:10.3847/2041-8213/acdd02
+3. Antoniadis, J. et al. (EPTA, 2023). *The Second Data Release from the European Pulsar Timing Array: III. Search for gravitational wave signals.* A&A **678**, A50 — arXiv:2306.16214 — doi:10.1051/0004-6361/202346844
+3a. Xu, H. et al. (CPTA, 2023). *Searching for the Nano-Hertz Stochastic Gravitational Wave Background with the Chinese Pulsar Timing Array.* Research in Astronomy and Astrophysics **23**, 075024 — arXiv:2306.16216 — doi:10.1088/1674-4527/acdfa5
 4. Xu, H. et al. (CPTA), "Searching for the Nano-Hertz Stochastic Gravitational Wave Background with
 the Chinese Pulsar Timing Array," *Research in Astronomy and Astrophysics* **23**, 075024 (2023).
 5. Sesana, A., "Gravitational Wave Science with Pulsar Timing Arrays," *Class. Quantum Grav.*

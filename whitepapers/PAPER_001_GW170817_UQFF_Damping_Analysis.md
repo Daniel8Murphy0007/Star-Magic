@@ -289,10 +289,9 @@ definitively discriminate UQFF from GR through template mismatch analysis.
 
 ## References
 
-1. LIGO/Virgo Collaboration, GW170817: Observation of Gravitational Waves from a Binary Neutron Star
-Inspiral, *Phys. Rev. Lett.* **119**, 161101 (2017).
-2. Abbott et al., Multi-messenger Observations of a Binary Neutron Star Merger, *Astrophys. J.
-Lett.* **848**, L12 (2017).
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2017). *GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral.* Phys. Rev. Lett. **119**, 161101 — arXiv:1710.05832 — doi:10.1103/PhysRevLett.119.161101
+2. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+2a. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Classical and Quantum Gravity **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
 3. validate_gw170817.py\ — UQFF validation script (Star-Magic repository)
 4. `source27.cpp` — SOURCE27 namespace: 5-frequency resonance implementation
 5. `MAIN_{1\_CoAnQi}.cpp` — UQFF master executable (446 modules, 6,688+ terms)
