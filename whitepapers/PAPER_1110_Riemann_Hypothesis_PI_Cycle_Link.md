@@ -95,65 +95,6 @@ The Riemann PI-cycle link suggests:
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. Riemann Zeta and VDS
-
-
-The Riemann zeta function:
-
-$$\zeta(s) = \sum_{n=1}^{\infty} n^{-s}, \quad \text{Re}(s) > 1$$
-
-The VDS at critical argument:
-
-$$\text{VDS}([SSq]) = \sum_{n=1}^{\infty} \frac{[SSq]^n}{n^{26}} = \text{Li}_{26}([SSq])$$
-
-For $[SSq] = e^{-2\pi}$, $\text{Li}_{26}([SSq])$ generates the zeta special values $\zeta(26)$. The SCm critical value $[SSq] = 0.57$ lies near the reciprocal of $e$ ($\approx 0.368$) and the golden ratio ($\approx 0.618$), suggesting a deep arithmetic origin.
-
----
-
-## 2. PI Cycle Zeros
-
-
-The $\pi$-cycle term $\cos(\pi t_n)$ in $F_{U,Bi,i}$ is zero at:
-
-$$\pi t_n = \frac{\pi}{2} + k\pi, \quad k \in \mathbb{Z} \implies t_n = \frac{1}{2} + k$$
-
-This mirrors the Riemann critical line $\text{Re}(s) = 1/2$. The zeros of $F_{U,Bi,i}$ in the negative-time domain ($t_n < 0$) form a discrete set analogous to the non-trivial zeros of $\zeta(s)$.
-
----
-
-## 3. VDS Resonance at $\sigma = 1/2$
-
-
-The VDS evaluated at the polylogarithm argument $z = e^{2\pi i(\sigma + it)/26}$ for $\sigma = 1/2$:
-
-$$\text{Li}_{26}\!\left(e^{2\pi i(1/2 + it)/26}\right)$$
-
-The modulus of this function along $\sigma = 1/2$ is related to the Hardy $Z$-function:
-
-$$Z(t) = e^{i\theta(t)} \zeta\!\left(\tfrac{1}{2} + it\right), \quad \theta(t) = \arg\Gamma\!\left(\tfrac{1}{4} + \tfrac{it}{2}\right) - \tfrac{t}{2}\ln\pi$$
-
----
-
-## 4. Buoyancy Zeros and Critical Line
-
-
-The zeros of $\cos(\pi t_n)$ on the negative-time axis define the "buoyancy zeros," which are conjectured to be in one-to-one correspondence with the non-trivial zeros of $\zeta(s)$ via the map $t_n \mapsto \frac{1}{2} + i\gamma$ (where $\gamma$ is the imaginary part of the Riemann zero).
-
----
-
-## 5. UQFF Constants
-
-
-$$\kappa = 5.0 \times 10^{-4}\ \text{day}^{-1}, \quad [SSq] = 0.57, \quad S_{26}^{(3)} = 1.4531 \times 10^{26}$$
-
-$$F_{U,Bi,i} = \int_0^\infty \left(-F_0 + \frac{GM}{r^2} + \rho_{\text{vac,SCm}} U_{UA} \cos(\pi t_n)\right) dr$$
-
----
 ## References
 
 - PAPER_971: Yang-Mills Mass Gap UQFF Derivation
@@ -315,6 +256,66 @@ BSH timescale: $T_\pi(t_1) = 0.4446$ s (fundamental buoyancy period).
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. Riemann Zeta and VDS
+
+
+The Riemann zeta function:
+
+$$\zeta(s) = \sum_{n=1}^{\infty} n^{-s}, \quad \text{Re}(s) > 1$$
+
+The VDS at critical argument:
+
+$$\text{VDS}([SSq]) = \sum_{n=1}^{\infty} \frac{[SSq]^n}{n^{26}} = \text{Li}_{26}([SSq])$$
+
+For $[SSq] = e^{-2\pi}$, $\text{Li}_{26}([SSq])$ generates the zeta special values $\zeta(26)$. The SCm critical value $[SSq] = 0.57$ lies near the reciprocal of $e$ ($\approx 0.368$) and the golden ratio ($\approx 0.618$), suggesting a deep arithmetic origin.
+
+---
+
+## 2. PI Cycle Zeros
+
+
+The $\pi$-cycle term $\cos(\pi t_n)$ in $F_{U,Bi,i}$ is zero at:
+
+$$\pi t_n = \frac{\pi}{2} + k\pi, \quad k \in \mathbb{Z} \implies t_n = \frac{1}{2} + k$$
+
+This mirrors the Riemann critical line $\text{Re}(s) = 1/2$. The zeros of $F_{U,Bi,i}$ in the negative-time domain ($t_n < 0$) form a discrete set analogous to the non-trivial zeros of $\zeta(s)$.
+
+---
+
+## 3. VDS Resonance at $\sigma = 1/2$
+
+
+The VDS evaluated at the polylogarithm argument $z = e^{2\pi i(\sigma + it)/26}$ for $\sigma = 1/2$:
+
+$$\text{Li}_{26}\!\left(e^{2\pi i(1/2 + it)/26}\right)$$
+
+The modulus of this function along $\sigma = 1/2$ is related to the Hardy $Z$-function:
+
+$$Z(t) = e^{i\theta(t)} \zeta\!\left(\tfrac{1}{2} + it\right), \quad \theta(t) = \arg\Gamma\!\left(\tfrac{1}{4} + \tfrac{it}{2}\right) - \tfrac{t}{2}\ln\pi$$
+
+---
+
+## 4. Buoyancy Zeros and Critical Line
+
+
+The zeros of $\cos(\pi t_n)$ on the negative-time axis define the "buoyancy zeros," which are conjectured to be in one-to-one correspondence with the non-trivial zeros of $\zeta(s)$ via the map $t_n \mapsto \frac{1}{2} + i\gamma$ (where $\gamma$ is the imaginary part of the Riemann zero).
+
+---
+
+## 5. UQFF Constants
+
+
+$$\kappa = 5.0 \times 10^{-4}\ \text{day}^{-1}, \quad [SSq] = 0.57, \quad S_{26}^{(3)} = 1.4531 \times 10^{26}$$
+
+$$F_{U,Bi,i} = \int_0^\infty \left(-F_0 + \frac{GM}{r^2} + \rho_{\text{vac,SCm}} U_{UA} \cos(\pi t_n)\right) dr$$
+
 
 
 ### Key References with arXiv/DOI Identifiers

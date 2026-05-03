@@ -71,75 +71,6 @@ The ATLAS off-shell Higgs width bound provides evidence for $[\text{SCm}]$ vacuu
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. Off-Shell Higgs Width
-
-
-The off-shell Higgs width at invariant mass $M^2$ in the SM:
-
-$$\Gamma_h^{\text{off-shell}}(M) = \Gamma_h^{\text{SM}} \left(\frac{M}{m_h}\right)^n \cdot \left|D_h(M^2)\right|^2$$
-
-where $D_h(M^2) = [M^2 - m_h^2 + i m_h \Gamma_h]^{-1}$ is the Higgs propagator.
-
----
-
-## 2. SCm Off-Shell Suppression
-
-
-The SCm vacuum density provides an additional off-shell width suppression:
-
-$$\Gamma_h^{\text{SCm}}(M) = \Gamma_h^{\text{off-shell}}(M) \cdot \cos^2(\pi t_n) \cdot (1 - \beta_i \cdot F_{TRZ})$$
-
-At $t_n = -100$: $\cos^2(\pi \times (-100)) = 1.0$, so the suppression factor is $1 - 0.6 \times 0.1 = 0.94$.
-
-This shifts the predicted off-shell cross section by $\sim 6\%$ relative to the SM at $M = 2 m_Z$, within the ATLAS systematic uncertainty.
-
----
-
-## 3. SCm Phonon Resonance in Off-Shell Region
-
-
-The SCm phonon energy at 1.25 THz corresponds to:
-
-$$E_{\text{phonon}} = h \cdot f_{\text{THz}} = 6.626 \times 10^{-34} \times 1.25 \times 10^{12} = 8.28 \times 10^{-22}\ \text{J} \approx 5.2 \times 10^{-3}\ \text{eV}$$
-
-Amplified by $S_{26}^{(3)} \cdot \Phi_{\text{res}}$:
-
-$$E_{\text{KER}} = E_{\text{phonon}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} = 630\ \text{eV}$$
-
-This is negligible compared to $m_h c^2 = 125.09\ \text{GeV}$, confirming no phonon contribution to the Higgs width itself. The SCm effect enters only through the vacuum floor correction $\propto \rho_{\text{vac,SCm}} / m_h^2$.
-
----
-
-## 4. Off-Shell Rate Ratio
-
-
-The ATLAS measurement constrains the off-shell/on-shell ratio:
-
-$$R^{\text{off/on}} = \frac{\sigma_{\text{off-shell}}(gg \to H^* \to ZZ)}{\sigma_{\text{on-shell}}} \leq 0.0015 \quad (95\%\ \text{CL})$$
-
-The SCm prediction:
-
-$$R^{\text{off/on}}_{\text{SCm}} = R^{\text{off/on}}_{\text{SM}} \times (1 - \beta_i F_{TRZ}) = R^{\text{SM}} \times 0.94$$
-
-Within the ATLAS bound.
-
----
-
-## 5. VDS Contribution to Higgs Width
-
-
-The VDS contribution to the total Higgs width:
-
-$$\delta \Gamma_h^{\text{VDS}} = \Gamma_h^{\text{SM}} \cdot \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{\rho_{\text{EW}}} \approx 10^{-20}\ \text{MeV}$$
-
-This is many orders of magnitude below the ATLAS sensitivity, confirming VDS does not affect the Higgs width measurement.
-
----
 ## References
 
 1. ATLAS Collaboration, arXiv:2504.07710 (2025)
@@ -297,3 +228,72 @@ BSH timescale: $\tau_{\text{off-shell}} = \hbar/q^2 \sim 10^{-26}$ s (off-shell 
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. Off-Shell Higgs Width
+
+
+The off-shell Higgs width at invariant mass $M^2$ in the SM:
+
+$$\Gamma_h^{\text{off-shell}}(M) = \Gamma_h^{\text{SM}} \left(\frac{M}{m_h}\right)^n \cdot \left|D_h(M^2)\right|^2$$
+
+where $D_h(M^2) = [M^2 - m_h^2 + i m_h \Gamma_h]^{-1}$ is the Higgs propagator.
+
+---
+
+## 2. SCm Off-Shell Suppression
+
+
+The SCm vacuum density provides an additional off-shell width suppression:
+
+$$\Gamma_h^{\text{SCm}}(M) = \Gamma_h^{\text{off-shell}}(M) \cdot \cos^2(\pi t_n) \cdot (1 - \beta_i \cdot F_{TRZ})$$
+
+At $t_n = -100$: $\cos^2(\pi \times (-100)) = 1.0$, so the suppression factor is $1 - 0.6 \times 0.1 = 0.94$.
+
+This shifts the predicted off-shell cross section by $\sim 6\%$ relative to the SM at $M = 2 m_Z$, within the ATLAS systematic uncertainty.
+
+---
+
+## 3. SCm Phonon Resonance in Off-Shell Region
+
+
+The SCm phonon energy at 1.25 THz corresponds to:
+
+$$E_{\text{phonon}} = h \cdot f_{\text{THz}} = 6.626 \times 10^{-34} \times 1.25 \times 10^{12} = 8.28 \times 10^{-22}\ \text{J} \approx 5.2 \times 10^{-3}\ \text{eV}$$
+
+Amplified by $S_{26}^{(3)} \cdot \Phi_{\text{res}}$:
+
+$$E_{\text{KER}} = E_{\text{phonon}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} = 630\ \text{eV}$$
+
+This is negligible compared to $m_h c^2 = 125.09\ \text{GeV}$, confirming no phonon contribution to the Higgs width itself. The SCm effect enters only through the vacuum floor correction $\propto \rho_{\text{vac,SCm}} / m_h^2$.
+
+---
+
+## 4. Off-Shell Rate Ratio
+
+
+The ATLAS measurement constrains the off-shell/on-shell ratio:
+
+$$R^{\text{off/on}} = \frac{\sigma_{\text{off-shell}}(gg \to H^* \to ZZ)}{\sigma_{\text{on-shell}}} \leq 0.0015 \quad (95\%\ \text{CL})$$
+
+The SCm prediction:
+
+$$R^{\text{off/on}}_{\text{SCm}} = R^{\text{off/on}}_{\text{SM}} \times (1 - \beta_i F_{TRZ}) = R^{\text{SM}} \times 0.94$$
+
+Within the ATLAS bound.
+
+---
+
+## 5. VDS Contribution to Higgs Width
+
+
+The VDS contribution to the total Higgs width:
+
+$$\delta \Gamma_h^{\text{VDS}} = \Gamma_h^{\text{SM}} \cdot \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{\rho_{\text{EW}}} \approx 10^{-20}\ \text{MeV}$$
+
+This is many orders of magnitude below the ATLAS sensitivity, confirming VDS does not affect the Higgs width measurement.
+

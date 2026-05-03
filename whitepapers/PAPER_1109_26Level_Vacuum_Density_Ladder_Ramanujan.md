@@ -102,66 +102,6 @@ The 26-level vacuum density ladder provides a structured framework for understan
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. VDS Ladder Definition
-
-
-The $k$-th rung of the vacuum density ladder:
-
-$$\rho_k = \rho_{\text{vac,SCm}} \cdot \frac{[SSq]^k}{k^{26}}, \quad k = 1, 2, \ldots, 26$$
-
-where $[SSq] = 0.57$ and $\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3$.
-
-The full VDS sum:
-
-$$\text{VDS}([SSq]) = \sum_{n=1}^{\infty} \frac{[SSq]^n}{n^{26}} = \text{Li}_{26}(0.57)$$
-
-converges absolutely by the ratio test since $|[SSq]| < 1$.
-
----
-
-## 2. First 26 Rungs
-
-
-| Level $k$ | $[SSq]^k / k^{26}$ | $\rho_k$ (J/m$^3$) |
-|-----------|-------------------|------------------|
-| 1 | $5.70 \times 10^{-1}$ | $4.04 \times 10^{-37}$ |
-| 2 | $4.73 \times 10^{-9}$ | $3.35 \times 10^{-46}$ |
-| 3 | $8.56 \times 10^{-15}$ | $6.07 \times 10^{-52}$ |
-| $\vdots$ | $\vdots$ | $\vdots$ |
-| 26 | $\sim 10^{-60}$ | $\sim 10^{-97}$ |
-
-The series is dominated by the $k=1$ term; higher rungs provide exponentially suppressed corrections.
-
----
-
-## 3. Ramanujan Acceleration Operator
-
-
-The Ramanujan order-3 acceleration transforms the partial VDS sum:
-
-$$S_{26}^{(3)}([SSq]) = 1.4531 \times 10^{26}$$
-
-This dimensionless factor amplifies the 1.25 THz SCm phonon energy to the 630 eV Holmlid KER:
-
-$$E_{\text{KER}} = h \cdot f_{\text{THz}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} = 6.626 \times 10^{-34} \times 1.25 \times 10^{12} \times 1.4531 \times 10^{26} \times 0.84 = 630\ \text{eV}$$
-
----
-
-## 4. Dimensional Reduction Cascade
-
-
-The 26-level ladder maps to a dimensional reduction cascade:
-
-$$26D \xrightarrow{k=1} 25D \xrightarrow{k=2} 24D \xrightarrow{\cdot s} 4D$$
-
-Each reduction integrates out one compact dimension weighted by $\rho_k$, ultimately yielding the 4D spacetime vacuum energy density consistent with the cosmological constant $\Lambda$.
-
----
 ## References
 
 - PAPER_970: Ramanujan S26 Application in UQFF Inflation
@@ -322,6 +262,67 @@ BSH timescale: $\tau_{\text{vac}} \sim 10^{-44}$ s (Planck tunnelling timescale)
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. VDS Ladder Definition
+
+
+The $k$-th rung of the vacuum density ladder:
+
+$$\rho_k = \rho_{\text{vac,SCm}} \cdot \frac{[SSq]^k}{k^{26}}, \quad k = 1, 2, \ldots, 26$$
+
+where $[SSq] = 0.57$ and $\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3$.
+
+The full VDS sum:
+
+$$\text{VDS}([SSq]) = \sum_{n=1}^{\infty} \frac{[SSq]^n}{n^{26}} = \text{Li}_{26}(0.57)$$
+
+converges absolutely by the ratio test since $|[SSq]| < 1$.
+
+---
+
+## 2. First 26 Rungs
+
+
+| Level $k$ | $[SSq]^k / k^{26}$ | $\rho_k$ (J/m$^3$) |
+|-----------|-------------------|------------------|
+| 1 | $5.70 \times 10^{-1}$ | $4.04 \times 10^{-37}$ |
+| 2 | $4.73 \times 10^{-9}$ | $3.35 \times 10^{-46}$ |
+| 3 | $8.56 \times 10^{-15}$ | $6.07 \times 10^{-52}$ |
+| $\vdots$ | $\vdots$ | $\vdots$ |
+| 26 | $\sim 10^{-60}$ | $\sim 10^{-97}$ |
+
+The series is dominated by the $k=1$ term; higher rungs provide exponentially suppressed corrections.
+
+---
+
+## 3. Ramanujan Acceleration Operator
+
+
+The Ramanujan order-3 acceleration transforms the partial VDS sum:
+
+$$S_{26}^{(3)}([SSq]) = 1.4531 \times 10^{26}$$
+
+This dimensionless factor amplifies the 1.25 THz SCm phonon energy to the 630 eV Holmlid KER:
+
+$$E_{\text{KER}} = h \cdot f_{\text{THz}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} = 6.626 \times 10^{-34} \times 1.25 \times 10^{12} \times 1.4531 \times 10^{26} \times 0.84 = 630\ \text{eV}$$
+
+---
+
+## 4. Dimensional Reduction Cascade
+
+
+The 26-level ladder maps to a dimensional reduction cascade:
+
+$$26D \xrightarrow{k=1} 25D \xrightarrow{k=2} 24D \xrightarrow{\cdot s} 4D$$
+
+Each reduction integrates out one compact dimension weighted by $\rho_k$, ultimately yielding the 4D spacetime vacuum energy density consistent with the cosmological constant $\Lambda$.
+
 
 
 ### Key References with arXiv/DOI Identifiers

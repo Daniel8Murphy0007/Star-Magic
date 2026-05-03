@@ -50,83 +50,6 @@ Overall alignment: **85%**.
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. SMBH-Bulge Co-evolution via $F_{U,Bi,i}$
-
-
-The buoyancy force per unit volume at the SMBH influence radius $r_h = G M_{\text{BH}} / \sigma^2$:
-
-$$F_{U,Bi,i}(r_h) = \int_0^{r_h} \left(\frac{G M_{\text{BH}}}{r^2} + \rho_{\text{vac,SCm}} U_{UA} \cos(\pi t_n)\right) dr$$
-
-$$= -\frac{G M_{\text{BH}}}{r_h} + \rho_{\text{vac,SCm}} U_{UA} \cos(\pi t_n) \cdot r_h$$
-
-At equilibrium $F_{U,Bi,i} = 0$:
-
-$$\frac{G M_{\text{BH}}}{r_h} = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot |\cos(\pi t_n)| \cdot r_h$$
-
----
-
-## 2. Derivation of $M_{\text{BH}}-\sigma$ Relation
-
-
-Substituting $r_h = G M_{\text{BH}} / \sigma^2$:
-
-$$\frac{G M_{\text{BH}} \sigma^2}{G M_{\text{BH}}} = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot \frac{G M_{\text{BH}}}{\sigma^2}$$
-
-$$\sigma^2 = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot \frac{G M_{\text{BH}}}{\sigma^2}$$
-
-$$M_{\text{BH}} = \frac{\sigma^4}{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot G}$$
-
-Numerically:
-
-$$M_{\text{BH}} = \frac{\sigma^4}{7.09 \times 10^{-37} \times 1.45 \times 10^{26} \times 0.84 \times 6.674 \times 10^{-11}}$$
-
-$$= \frac{\sigma^4}{5.78 \times 10^{-21}}\ \text{kg}$$
-
-For $\sigma = 200\ \text{km/s} = 2 \times 10^5\ \text{m/s}$:
-
-$$M_{\text{BH}} = \frac{(2 \times 10^5)^4}{5.78 \times 10^{-21}} = \frac{1.6 \times 10^{21}}{5.78 \times 10^{-21}} = 2.77 \times 10^{41}\ \text{kg} \approx 1.4 \times 10^8 M_\odot$$
-
-Consistent with the observed $M_{\text{BH}} \approx 10^8 M_\odot$ at $\sigma = 200\ \text{km/s}$.
-
----
-
-## 3. AGN Jet Power from SCm Phonon
-
-
-The AGN jet power in the SCm framework:
-
-$$P_{\text{jet}}^{\text{SCm}} = P_{\text{jet}}^{\text{Blandford-Znajek}} \cdot \left(1 + \beta_i \cdot \frac{E_{\text{KER}}}{k_B T_{\text{BH}}}\right) \cdot |\cos(\pi t_n)|$$
-
-where $T_{\text{BH}} = \hbar c^3 / (8\pi G M_{\text{BH}} k_B)$ is the Hawking temperature.
-
----
-
-## 4. Feedback Self-Regulation
-
-
-The SCm feedback criterion:
-
-$$P_{\text{SCm}} > L_{\text{Eddington}} \cdot f_{\text{couple}}$$
-
-where $f_{\text{couple}} = \beta_i \cdot \Phi_{\text{res}} = 0.504$ and $L_{\text{Edd}} = 4\pi G M_{\text{BH}} m_p c / \sigma_T$.
-
----
-
-## 5. M-sigma Observational Comparison
-
-
-| Galaxy | $\sigma$ (km/s) | $M_{\text{BH}} / M_\odot$ (obs) | SCm prediction |
-|--------|----------------|--------------------------------|---------------|
-| Milky Way | 105 | $4 \times 10^6$ | $3.6 \times 10^6$ |
-| NGC 4258 | 115 | $3.9 \times 10^7$ | $5.3 \times 10^7$ |
-| M87 | 324 | $6.5 \times 10^9$ | $5.8 \times 10^9$ |
-
----
 ## References
 
 - arXiv:2506.09123 — AGN Feedback and M-$\sigma$ Scaling (2025).
@@ -284,3 +207,80 @@ BSH timescale: $\tau_{\text{AGN}} \sim 10^{7}$ yr (AGN duty cycle).
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. SMBH-Bulge Co-evolution via $F_{U,Bi,i}$
+
+
+The buoyancy force per unit volume at the SMBH influence radius $r_h = G M_{\text{BH}} / \sigma^2$:
+
+$$F_{U,Bi,i}(r_h) = \int_0^{r_h} \left(\frac{G M_{\text{BH}}}{r^2} + \rho_{\text{vac,SCm}} U_{UA} \cos(\pi t_n)\right) dr$$
+
+$$= -\frac{G M_{\text{BH}}}{r_h} + \rho_{\text{vac,SCm}} U_{UA} \cos(\pi t_n) \cdot r_h$$
+
+At equilibrium $F_{U,Bi,i} = 0$:
+
+$$\frac{G M_{\text{BH}}}{r_h} = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot |\cos(\pi t_n)| \cdot r_h$$
+
+---
+
+## 2. Derivation of $M_{\text{BH}}-\sigma$ Relation
+
+
+Substituting $r_h = G M_{\text{BH}} / \sigma^2$:
+
+$$\frac{G M_{\text{BH}} \sigma^2}{G M_{\text{BH}}} = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot \frac{G M_{\text{BH}}}{\sigma^2}$$
+
+$$\sigma^2 = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot \frac{G M_{\text{BH}}}{\sigma^2}$$
+
+$$M_{\text{BH}} = \frac{\sigma^4}{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot G}$$
+
+Numerically:
+
+$$M_{\text{BH}} = \frac{\sigma^4}{7.09 \times 10^{-37} \times 1.45 \times 10^{26} \times 0.84 \times 6.674 \times 10^{-11}}$$
+
+$$= \frac{\sigma^4}{5.78 \times 10^{-21}}\ \text{kg}$$
+
+For $\sigma = 200\ \text{km/s} = 2 \times 10^5\ \text{m/s}$:
+
+$$M_{\text{BH}} = \frac{(2 \times 10^5)^4}{5.78 \times 10^{-21}} = \frac{1.6 \times 10^{21}}{5.78 \times 10^{-21}} = 2.77 \times 10^{41}\ \text{kg} \approx 1.4 \times 10^8 M_\odot$$
+
+Consistent with the observed $M_{\text{BH}} \approx 10^8 M_\odot$ at $\sigma = 200\ \text{km/s}$.
+
+---
+
+## 3. AGN Jet Power from SCm Phonon
+
+
+The AGN jet power in the SCm framework:
+
+$$P_{\text{jet}}^{\text{SCm}} = P_{\text{jet}}^{\text{Blandford-Znajek}} \cdot \left(1 + \beta_i \cdot \frac{E_{\text{KER}}}{k_B T_{\text{BH}}}\right) \cdot |\cos(\pi t_n)|$$
+
+where $T_{\text{BH}} = \hbar c^3 / (8\pi G M_{\text{BH}} k_B)$ is the Hawking temperature.
+
+---
+
+## 4. Feedback Self-Regulation
+
+
+The SCm feedback criterion:
+
+$$P_{\text{SCm}} > L_{\text{Eddington}} \cdot f_{\text{couple}}$$
+
+where $f_{\text{couple}} = \beta_i \cdot \Phi_{\text{res}} = 0.504$ and $L_{\text{Edd}} = 4\pi G M_{\text{BH}} m_p c / \sigma_T$.
+
+---
+
+## 5. M-sigma Observational Comparison
+
+
+| Galaxy | $\sigma$ (km/s) | $M_{\text{BH}} / M_\odot$ (obs) | SCm prediction |
+|--------|----------------|--------------------------------|---------------|
+| Milky Way | 105 | $4 \times 10^6$ | $3.6 \times 10^6$ |
+| NGC 4258 | 115 | $3.9 \times 10^7$ | $5.3 \times 10^7$ |
+| M87 | 324 | $6.5 \times 10^9$ | $5.8 \times 10^9$ |
+

@@ -74,73 +74,6 @@ The CMS differential Higgs measurements at 13 TeV are consistent with the UQFF l
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. Higgs Kappa Framework
-
-
-The CMS $\kappa$-framework parametrizes deviations from the SM Higgs couplings:
-
-$$\mathcal{L}_{\kappa} = \kappa_V g_{hVV} h V^2 + \kappa_f g_{hff} h \bar{f} f$$
-
-where $g_{hVV}$ and $g_{hff}$ are the SM coupling strengths. In the UQFF framework:
-
-$$\kappa_V^{\text{SCm}} = \kappa_V^{\text{SM}} \left(1 + \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}}{\rho_{\text{EW}}} \cdot |\cos(\pi t_n)|\right)$$
-
-where $\rho_{\text{EW}} = v^4 / (4\lambda) \approx (246\ \text{GeV})^4 / 4\lambda$ is the electroweak vacuum energy density and $v = 246\ \text{GeV}$ is the Higgs VEV.
-
----
-
-## 2. SCm Correction to $\kappa_V$
-
-
-The SCm vacuum density ratio:
-
-$$\frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{v^4} = \frac{7.09 \times 10^{-37} \times 1.4531 \times 10^{26}}{(246 \times 10^9 \times 1.6 \times 10^{-19})^4}$$
-
-$$\approx \frac{1.03 \times 10^{-10}}{(3.94 \times 10^{-8})^4} \approx \frac{1.03 \times 10^{-10}}{2.41 \times 10^{-30}} \approx 4.3 \times 10^{19}\ \text{(dimensionless ratio)}$$
-
-Multiplied by $\Phi_{\text{res}} = 0.84$ and the negative-time gate $|\cos(\pi t_n)|$, this provides a sub-percent correction at the operating point $t_n = -100$:
-
-$$|\cos(\pi \times (-100))| = |\cos(-100\pi)| = 1.0$$
-
----
-
-## 3. VDS Phonon Contribution to Higgs Mass
-
-
-The Higgs mass $m_h = 125.09\ \text{GeV}$ receives a SCm phonon correction:
-
-$$\delta m_h = \frac{E_{\text{KER}}}{c^2} \cdot N_{\text{phonon}} = \frac{630\ \text{eV} \times 1.6 \times 10^{-19}}{(3 \times 10^8)^2} \times \frac{m_h c^2}{E_{\text{KER}}}$$
-
-The fractional shift $\delta m_h / m_h \approx [SSq]^{26} / 26^{26} \approx 10^{-60}$ is negligibly small, confirming the Higgs sector stability in the SCm framework.
-
----
-
-## 4. Differential Cross-Section Enhancement
-
-
-The differential Higgs production cross section in the SCm vacuum:
-
-$$\frac{d\sigma_h^{\text{SCm}}}{d p_T^2} = \frac{d\sigma_h^{\text{SM}}}{d p_T^2} \left(1 + \beta_i \cdot \frac{F_{U,Bi,i}(p_T)}{m_h^2 c^4}\right)$$
-
-with $\beta_i = 0.6$ and the buoyancy integral evaluated at transverse momentum $p_T$.
-
----
-
-## 5. CMS Run 2 Comparison
-
-
-| Observable | CMS (arXiv:2207.00043) | UQFF SCm |
-|-----------|----------------------|--------|
-| $\kappa_V$ | $1.014 \pm 0.023$ | $1.015 \pm 0.02$ |
-| $\kappa_f$ | $0.982 \pm 0.021$ | $0.983 \pm 0.02$ |
-| $m_h$ | $125.09 \pm 0.24\ \text{GeV}$ | $125.09\ \text{GeV}$ (stable) |
-
----
 ## References
 
 1. CMS Collaboration, arXiv:2504.13081 (2025)
@@ -298,3 +231,70 @@ BSH timescale: $\tau_H = \hbar/\Gamma_H \approx 1.6 \times 10^{-22}$ s (Higgs li
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. Higgs Kappa Framework
+
+
+The CMS $\kappa$-framework parametrizes deviations from the SM Higgs couplings:
+
+$$\mathcal{L}_{\kappa} = \kappa_V g_{hVV} h V^2 + \kappa_f g_{hff} h \bar{f} f$$
+
+where $g_{hVV}$ and $g_{hff}$ are the SM coupling strengths. In the UQFF framework:
+
+$$\kappa_V^{\text{SCm}} = \kappa_V^{\text{SM}} \left(1 + \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}}{\rho_{\text{EW}}} \cdot |\cos(\pi t_n)|\right)$$
+
+where $\rho_{\text{EW}} = v^4 / (4\lambda) \approx (246\ \text{GeV})^4 / 4\lambda$ is the electroweak vacuum energy density and $v = 246\ \text{GeV}$ is the Higgs VEV.
+
+---
+
+## 2. SCm Correction to $\kappa_V$
+
+
+The SCm vacuum density ratio:
+
+$$\frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{v^4} = \frac{7.09 \times 10^{-37} \times 1.4531 \times 10^{26}}{(246 \times 10^9 \times 1.6 \times 10^{-19})^4}$$
+
+$$\approx \frac{1.03 \times 10^{-10}}{(3.94 \times 10^{-8})^4} \approx \frac{1.03 \times 10^{-10}}{2.41 \times 10^{-30}} \approx 4.3 \times 10^{19}\ \text{(dimensionless ratio)}$$
+
+Multiplied by $\Phi_{\text{res}} = 0.84$ and the negative-time gate $|\cos(\pi t_n)|$, this provides a sub-percent correction at the operating point $t_n = -100$:
+
+$$|\cos(\pi \times (-100))| = |\cos(-100\pi)| = 1.0$$
+
+---
+
+## 3. VDS Phonon Contribution to Higgs Mass
+
+
+The Higgs mass $m_h = 125.09\ \text{GeV}$ receives a SCm phonon correction:
+
+$$\delta m_h = \frac{E_{\text{KER}}}{c^2} \cdot N_{\text{phonon}} = \frac{630\ \text{eV} \times 1.6 \times 10^{-19}}{(3 \times 10^8)^2} \times \frac{m_h c^2}{E_{\text{KER}}}$$
+
+The fractional shift $\delta m_h / m_h \approx [SSq]^{26} / 26^{26} \approx 10^{-60}$ is negligibly small, confirming the Higgs sector stability in the SCm framework.
+
+---
+
+## 4. Differential Cross-Section Enhancement
+
+
+The differential Higgs production cross section in the SCm vacuum:
+
+$$\frac{d\sigma_h^{\text{SCm}}}{d p_T^2} = \frac{d\sigma_h^{\text{SM}}}{d p_T^2} \left(1 + \beta_i \cdot \frac{F_{U,Bi,i}(p_T)}{m_h^2 c^4}\right)$$
+
+with $\beta_i = 0.6$ and the buoyancy integral evaluated at transverse momentum $p_T$.
+
+---
+
+## 5. CMS Run 2 Comparison
+
+
+| Observable | CMS (arXiv:2207.00043) | UQFF SCm |
+|-----------|----------------------|--------|
+| $\kappa_V$ | $1.014 \pm 0.023$ | $1.015 \pm 0.02$ |
+| $\kappa_f$ | $0.982 \pm 0.021$ | $0.983 \pm 0.02$ |
+| $m_h$ | $125.09 \pm 0.24\ \text{GeV}$ | $125.09\ \text{GeV}$ (stable) |
+

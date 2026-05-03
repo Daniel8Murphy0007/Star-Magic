@@ -81,65 +81,6 @@ The 21-cm Dark Ages signal provides stringent constraints on SCS parameters. The
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. 21-cm Differential Brightness Temperature
-
-
-The 21-cm differential brightness temperature:
-
-$$\delta T_{21} = 27 \, x_{\text{HI}} (1+\delta) \left(1 - \frac{T_{\text{CMB}}}{T_s}\right) \sqrt{\frac{1+z}{10} \cdot \frac{0.15}{\Omega_m h^2}} \cdot \frac{\Omega_b h^2}{0.023}\ \text{mK}$$
-
----
-
-## 2. SCS-SCm Energy Injection Rate
-
-
-The SCS field coupled to the SCm vacuum injects energy into the baryon gas at rate:
-
-$$\dot{Q}_{\text{SCS-SCm}} = g_{\text{SCS}}^2 \cdot \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot |\cos(\pi t_n)| \cdot n_b c^2$$
-
-where $n_b$ is the baryon number density and $t_n < 0$ is the negative-time gate.
-
-Numerically at $z = 17$:
-
-$$\dot{Q}_{\text{SCS-SCm}} = g_{\text{SCS}}^2 \times 7.09 \times 10^{-37} \times 1.4531 \times 10^{26} \times 0.84 \times 1.0 \times n_b c^2$$
-
----
-
-## 3. Modified Gas Temperature Evolution
-
-
-The baryon gas temperature evolves as:
-
-$$\frac{dT_K}{dz} = \frac{T_K}{1+z} \left(2 + \frac{t_{\text{comp}}}{t_H}\right)^{-1} - \frac{2\dot{Q}_{\text{SCS-SCm}}}{3 k_B H(z)(1+z) n_b}$$
-
-where $t_{\text{comp}}$ is the Compton cooling time and $H(z)$ is the Hubble rate.
-
----
-
-## 4. VDS Phonon Contribution to Spin Temperature
-
-
-The SCm phonon resonance modifies the Ly-$\alpha$ coupling:
-
-$$x_\alpha^{\text{SCm}} = x_\alpha^{\text{SM}} \left(1 + \frac{E_{\text{KER}}}{E_{\text{Ly}\alpha}} \cdot \frac{\rho_{\text{vac,SCm}}}{\rho_\gamma}\right)$$
-
-where $E_{\text{Ly}\alpha} = 10.2\ \text{eV}$ and $E_{\text{KER}} = 630\ \text{eV}$. The phonon contribution is $\sim 62 \times$ per photon but suppressed by the $\rho_{\text{vac,SCm}} / \rho_\gamma$ density ratio.
-
----
-
-## 5. EDGES Constraint on $g_{\text{SCS}}$
-
-
-The EDGES anomaly ($\delta T_{21} \approx -500\ \text{mK}$) requires $T_K / T_{\text{CMB}} < 1$ at $z \approx 17$. The SCS-SCm injection must not overheat the gas:
-
-$$g_{\text{SCS}} \lesssim \left(\frac{\delta T_{21}^{\text{max}} \cdot 3 k_B H \cdot n_b}{2 \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot n_b c^2}\right)^{1/2} \approx 10^{-28}$$
-
----
 ## References
 
 1. arXiv:2504.02947 (2024)
@@ -297,3 +238,62 @@ BSH timescale: $\tau_{\text{21cm}} \sim 10^{14}$ s (Dark Ages epoch).
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. 21-cm Differential Brightness Temperature
+
+
+The 21-cm differential brightness temperature:
+
+$$\delta T_{21} = 27 \, x_{\text{HI}} (1+\delta) \left(1 - \frac{T_{\text{CMB}}}{T_s}\right) \sqrt{\frac{1+z}{10} \cdot \frac{0.15}{\Omega_m h^2}} \cdot \frac{\Omega_b h^2}{0.023}\ \text{mK}$$
+
+---
+
+## 2. SCS-SCm Energy Injection Rate
+
+
+The SCS field coupled to the SCm vacuum injects energy into the baryon gas at rate:
+
+$$\dot{Q}_{\text{SCS-SCm}} = g_{\text{SCS}}^2 \cdot \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot |\cos(\pi t_n)| \cdot n_b c^2$$
+
+where $n_b$ is the baryon number density and $t_n < 0$ is the negative-time gate.
+
+Numerically at $z = 17$:
+
+$$\dot{Q}_{\text{SCS-SCm}} = g_{\text{SCS}}^2 \times 7.09 \times 10^{-37} \times 1.4531 \times 10^{26} \times 0.84 \times 1.0 \times n_b c^2$$
+
+---
+
+## 3. Modified Gas Temperature Evolution
+
+
+The baryon gas temperature evolves as:
+
+$$\frac{dT_K}{dz} = \frac{T_K}{1+z} \left(2 + \frac{t_{\text{comp}}}{t_H}\right)^{-1} - \frac{2\dot{Q}_{\text{SCS-SCm}}}{3 k_B H(z)(1+z) n_b}$$
+
+where $t_{\text{comp}}$ is the Compton cooling time and $H(z)$ is the Hubble rate.
+
+---
+
+## 4. VDS Phonon Contribution to Spin Temperature
+
+
+The SCm phonon resonance modifies the Ly-$\alpha$ coupling:
+
+$$x_\alpha^{\text{SCm}} = x_\alpha^{\text{SM}} \left(1 + \frac{E_{\text{KER}}}{E_{\text{Ly}\alpha}} \cdot \frac{\rho_{\text{vac,SCm}}}{\rho_\gamma}\right)$$
+
+where $E_{\text{Ly}\alpha} = 10.2\ \text{eV}$ and $E_{\text{KER}} = 630\ \text{eV}$. The phonon contribution is $\sim 62 \times$ per photon but suppressed by the $\rho_{\text{vac,SCm}} / \rho_\gamma$ density ratio.
+
+---
+
+## 5. EDGES Constraint on $g_{\text{SCS}}$
+
+
+The EDGES anomaly ($\delta T_{21} \approx -500\ \text{mK}$) requires $T_K / T_{\text{CMB}} < 1$ at $z \approx 17$. The SCS-SCm injection must not overheat the gas:
+
+$$g_{\text{SCS}} \lesssim \left(\frac{\delta T_{21}^{\text{max}} \cdot 3 k_B H \cdot n_b}{2 \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot n_b c^2}\right)^{1/2} \approx 10^{-28}$$
+

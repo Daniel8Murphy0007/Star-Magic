@@ -88,80 +88,6 @@ Radio constraints on SCS emission are consistent with the UQFF $[\text{SCm}]$ em
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. FRB Coherent Emission via SCm Buoyancy
-
-
-The coherent emission brightness temperature in the SCm framework:
-
-$$T_b^{\text{SCm}} = \frac{c^2 S_\nu}{2 k_B \nu^2 \Omega} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot |\cos(\pi t_n)|$$
-
-where $S_\nu$ is the observed flux density and $\Omega$ is the solid angle. The $S_{26}^{(3)} \cdot \Phi_{\text{res}} \approx 1.22 \times 10^{26}$ amplification factor naturally explains brightness temperatures $\sim 10^{35}\ \text{K}$ without requiring exotic plasma physics.
-
----
-
-## 2. SCS-Phonon Sideband Prediction
-
-
-The SCS field modulates the FRB emission frequency through the SCm phonon:
-
-$$f_n^{\text{SCS}} = f_{\text{FRB}} \pm n \cdot \frac{f_{\text{THz}}}{1+z}, \quad n = 1, 2, 3, \ldots$$
-
-For a fiducial FRB at $z = 0.5$ and $f_{\text{FRB}} = 1.4\ \text{GHz}$:
-
-$$f_1^{\text{SCS}} = 1.4\ \text{GHz} \pm \frac{1.25 \times 10^{12}}{1.5}\ \text{Hz} = 1.4\ \text{GHz} \pm 833\ \text{GHz}$$
-
-The primary sideband at 833 GHz (sub-mm) is outside the radio band but the $n=0$ beat frequency modulates the radio emission on timescales:
-
-$$\tau_{\text{beat}} = 1/f_{\text{THz}} = 8 \times 10^{-13}\ \text{s} \approx 0.8\ \text{ps}$$
-
----
-
-## 3. Dispersion Measure SCm Correction
-
-
-The SCm vacuum contributes to the dispersion measure:
-
-$$\text{DM}_{\text{SCm}} = \int_0^D \left(n_e + \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{m_e c^2}\right) dl$$
-
-The SCm contribution:
-
-$$\Delta\text{DM}_{\text{SCm}} = \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot D}{m_e c^2} = \frac{7.09 \times 10^{-37} \times 1.45 \times 10^{26} \times D}{9.1 \times 10^{-31} \times 9 \times 10^{16}}$$
-
-For $D = 1\ \text{Gpc} = 3.086 \times 10^{25}\ \text{m}$:
-
-$$\Delta\text{DM}_{\text{SCm}} \approx 3.9 \times 10^{-3}\ \text{pc/cm}^3$$
-
-Small but potentially detectable with next-generation radio telescopes (SKA).
-
----
-
-## 4. VDS-Enhanced Coherence Length
-
-
-The SCm vacuum phonon sets the coherence length of FRB emission:
-
-$$L_{\text{coh}}^{\text{SCm}} = \frac{c}{f_{\text{THz}}} \cdot S_{26}^{(3)} \cdot |\cos(\pi t_n)| = \frac{3 \times 10^8}{1.25 \times 10^{12}} \times 1.45 \times 10^{26}\ \text{m} \approx 3.5 \times 10^{22}\ \text{m}$$
-
-This coherence length (11 kpc) is comparable to the FRB source region scale.
-
----
-
-## 5. Predicted FRB-SCS Signatures
-
-
-| Feature | Prediction |
-|---------|-----------|
-| Sideband spacing | $833\ \text{GHz} / (1+z)$ (sub-mm) |
-| Pulse duration | $> 0.8\ \text{ps}$ (phonon limit) |
-| Brightness temperature enhancement | $\times S_{26}^{(3)} \approx 10^{26}$ |
-| DM correction | $\sim 4 \times 10^{-3}\ \text{pc/cm}^3$ per Gpc |
-
----
 ## References
 
 1. arXiv:2305.09816 (2023)
@@ -319,3 +245,77 @@ BSH timescale: $\tau_{\text{FRB}} \sim 10^{-3}$ s (FRB burst duration).
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. FRB Coherent Emission via SCm Buoyancy
+
+
+The coherent emission brightness temperature in the SCm framework:
+
+$$T_b^{\text{SCm}} = \frac{c^2 S_\nu}{2 k_B \nu^2 \Omega} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}} \cdot |\cos(\pi t_n)|$$
+
+where $S_\nu$ is the observed flux density and $\Omega$ is the solid angle. The $S_{26}^{(3)} \cdot \Phi_{\text{res}} \approx 1.22 \times 10^{26}$ amplification factor naturally explains brightness temperatures $\sim 10^{35}\ \text{K}$ without requiring exotic plasma physics.
+
+---
+
+## 2. SCS-Phonon Sideband Prediction
+
+
+The SCS field modulates the FRB emission frequency through the SCm phonon:
+
+$$f_n^{\text{SCS}} = f_{\text{FRB}} \pm n \cdot \frac{f_{\text{THz}}}{1+z}, \quad n = 1, 2, 3, \ldots$$
+
+For a fiducial FRB at $z = 0.5$ and $f_{\text{FRB}} = 1.4\ \text{GHz}$:
+
+$$f_1^{\text{SCS}} = 1.4\ \text{GHz} \pm \frac{1.25 \times 10^{12}}{1.5}\ \text{Hz} = 1.4\ \text{GHz} \pm 833\ \text{GHz}$$
+
+The primary sideband at 833 GHz (sub-mm) is outside the radio band but the $n=0$ beat frequency modulates the radio emission on timescales:
+
+$$\tau_{\text{beat}} = 1/f_{\text{THz}} = 8 \times 10^{-13}\ \text{s} \approx 0.8\ \text{ps}$$
+
+---
+
+## 3. Dispersion Measure SCm Correction
+
+
+The SCm vacuum contributes to the dispersion measure:
+
+$$\text{DM}_{\text{SCm}} = \int_0^D \left(n_e + \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{m_e c^2}\right) dl$$
+
+The SCm contribution:
+
+$$\Delta\text{DM}_{\text{SCm}} = \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot D}{m_e c^2} = \frac{7.09 \times 10^{-37} \times 1.45 \times 10^{26} \times D}{9.1 \times 10^{-31} \times 9 \times 10^{16}}$$
+
+For $D = 1\ \text{Gpc} = 3.086 \times 10^{25}\ \text{m}$:
+
+$$\Delta\text{DM}_{\text{SCm}} \approx 3.9 \times 10^{-3}\ \text{pc/cm}^3$$
+
+Small but potentially detectable with next-generation radio telescopes (SKA).
+
+---
+
+## 4. VDS-Enhanced Coherence Length
+
+
+The SCm vacuum phonon sets the coherence length of FRB emission:
+
+$$L_{\text{coh}}^{\text{SCm}} = \frac{c}{f_{\text{THz}}} \cdot S_{26}^{(3)} \cdot |\cos(\pi t_n)| = \frac{3 \times 10^8}{1.25 \times 10^{12}} \times 1.45 \times 10^{26}\ \text{m} \approx 3.5 \times 10^{22}\ \text{m}$$
+
+This coherence length (11 kpc) is comparable to the FRB source region scale.
+
+---
+
+## 5. Predicted FRB-SCS Signatures
+
+
+| Feature | Prediction |
+|---------|-----------|
+| Sideband spacing | $833\ \text{GHz} / (1+z)$ (sub-mm) |
+| Pulse duration | $> 0.8\ \text{ps}$ (phonon limit) |
+| Brightness temperature enhancement | $\times S_{26}^{(3)} \approx 10^{26}$ |
+| DM correction | $\sim 4 \times 10^{-3}\ \text{pc/cm}^3$ per Gpc |
+

@@ -58,77 +58,6 @@ Overall alignment with LHC data: **90%**. The SM coupling modifiers $\kappa_V / 
 
 
 ---
-
-## Supplementary Derivations (Polylogarithmic / VDS)
-
-*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
-
-## 1. Production Cross Sections with SCm Correction
-
-
-The SCm-corrected production cross sections at $\sqrt{s} = 13\ \text{TeV}$:
-
-| Channel | SM $\sigma$ (pb) | SCm correction | UQFF $\sigma$ (pb) |
-|---------|-----------------|---------------|-------------------|
-| ggF | $48.58$ | $+(0.6 \times F_{TRZ})\ \%$ | $48.87$ |
-| VBF | $3.78$ | $+(0.06 \times \beta_i)\ \%$ | $3.78$ |
-| WH | $1.37$ | $+(0.06 \times \beta_i)\ \%$ | $1.37$ |
-| ZH | $0.88$ | $+(0.06 \times \beta_i)\ \%$ | $0.88$ |
-| $t\bar{t}H$ | $0.51$ | $+(S_{26}^{(3)} \epsilon)\ \%$ | $0.51$ |
-
-The SCm correction to ggF is: $\Delta\sigma / \sigma = \beta_i \cdot F_{TRZ} \cdot |\cos(\pi t_n)| = 0.6 \times 0.1 \times 1 = 6\%$ at $t_n = -100$.
-
----
-
-## 2. Decay Branching Ratios
-
-
-The $H \to \gamma\gamma$ partial width receives a SCm one-loop correction:
-
-$$\Gamma(H \to \gamma\gamma)^{\text{SCm}} = \Gamma(H \to \gamma\gamma)^{\text{SM}} \left(1 + \frac{\alpha \cdot \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{\pi m_h^2 c^2}\right)$$
-
-Numerically, the correction factor is $\approx 1 + 10^{-30}$, negligible at current sensitivity.
-
-The branching ratio table:
-
-| Decay | SM BR | SCm BR |
-|-------|-------|--------|
-| $b\bar{b}$ | $58.2\%$ | $58.2\%$ |
-| $WW^*$ | $21.4\%$ | $21.4\%$ |
-| $\tau\tau$ | $6.27\%$ | $6.27\%$ |
-| $ZZ^*$ | $2.62\%$ | $2.62\%$ |
-| $\gamma\gamma$ | $0.228\%$ | $0.228\%\ (+10^{-30})$ |
-| $Z\gamma$ | $0.154\%$ | $0.154\%$ |
-
----
-
-## 3. SCm Phonon Contribution to ggF
-
-
-The ggF loop integral receives a SCm vacuum contribution through the virtual top quark loop:
-
-$$\mathcal{M}_{ggF}^{\text{SCm}} = \mathcal{M}_{ggF}^{\text{SM}} + \delta\mathcal{M}_{\text{SCm}}$$
-
-$$\delta\mathcal{M}_{\text{SCm}} = \frac{\alpha_s}{\pi} \cdot \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}}{m_t^2 c^4} \cdot |\cos(\pi t_n)|$$
-
-$$= \frac{\alpha_s}{\pi} \times \frac{7.09 \times 10^{-37} \times 1.45 \times 10^{26} \times 0.84}{(173\ \text{GeV})^2 \times (1.6 \times 10^{-10})^2} \approx 10^{-32}$$
-
----
-
-## 4. F_{U\_Bi\_i} Effective Higgs Potential
-
-
-The Higgs potential in the SCm vacuum:
-
-$$V_h(\phi) = -\mu_h^2 \phi^2 + \lambda_h \phi^4 + \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \cos(\pi t_n) \cdot \phi^2$$
-
-The SCm term shifts the Higgs VEV by:
-
-$$\delta v = \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot |\cos(\pi t_n)|}{2 \lambda_h v} \approx 10^{-26}\ \text{GeV}$$
-
-Negligible at current experimental precision.
-
----
 ## References
 
 - Nicolaidou, R. & Sirois, Y. (2015). The Higgs Boson Discovery and Measurements. *Reviews in Physics*.
@@ -287,3 +216,74 @@ BSH timescale: $\tau_H = \hbar/\Gamma_H \approx 1.6 \times 10^{-22}$ s.
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[\text{SSq}]$ | 0.57 | Confirmed |
+---
+
+## Supplementary Derivations (Polylogarithmic / VDS)
+
+*Merged from companion derivation file. Canonical UQFF constants: kappa=5.0e-4/day, [SSq]=0.57, beta\_i=0.603, rho\_SCm=7.09e-37 J/m3.*
+
+## 1. Production Cross Sections with SCm Correction
+
+
+The SCm-corrected production cross sections at $\sqrt{s} = 13\ \text{TeV}$:
+
+| Channel | SM $\sigma$ (pb) | SCm correction | UQFF $\sigma$ (pb) |
+|---------|-----------------|---------------|-------------------|
+| ggF | $48.58$ | $+(0.6 \times F_{TRZ})\ \%$ | $48.87$ |
+| VBF | $3.78$ | $+(0.06 \times \beta_i)\ \%$ | $3.78$ |
+| WH | $1.37$ | $+(0.06 \times \beta_i)\ \%$ | $1.37$ |
+| ZH | $0.88$ | $+(0.06 \times \beta_i)\ \%$ | $0.88$ |
+| $t\bar{t}H$ | $0.51$ | $+(S_{26}^{(3)} \epsilon)\ \%$ | $0.51$ |
+
+The SCm correction to ggF is: $\Delta\sigma / \sigma = \beta_i \cdot F_{TRZ} \cdot |\cos(\pi t_n)| = 0.6 \times 0.1 \times 1 = 6\%$ at $t_n = -100$.
+
+---
+
+## 2. Decay Branching Ratios
+
+
+The $H \to \gamma\gamma$ partial width receives a SCm one-loop correction:
+
+$$\Gamma(H \to \gamma\gamma)^{\text{SCm}} = \Gamma(H \to \gamma\gamma)^{\text{SM}} \left(1 + \frac{\alpha \cdot \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{\pi m_h^2 c^2}\right)$$
+
+Numerically, the correction factor is $\approx 1 + 10^{-30}$, negligible at current sensitivity.
+
+The branching ratio table:
+
+| Decay | SM BR | SCm BR |
+|-------|-------|--------|
+| $b\bar{b}$ | $58.2\%$ | $58.2\%$ |
+| $WW^*$ | $21.4\%$ | $21.4\%$ |
+| $\tau\tau$ | $6.27\%$ | $6.27\%$ |
+| $ZZ^*$ | $2.62\%$ | $2.62\%$ |
+| $\gamma\gamma$ | $0.228\%$ | $0.228\%\ (+10^{-30})$ |
+| $Z\gamma$ | $0.154\%$ | $0.154\%$ |
+
+---
+
+## 3. SCm Phonon Contribution to ggF
+
+
+The ggF loop integral receives a SCm vacuum contribution through the virtual top quark loop:
+
+$$\mathcal{M}_{ggF}^{\text{SCm}} = \mathcal{M}_{ggF}^{\text{SM}} + \delta\mathcal{M}_{\text{SCm}}$$
+
+$$\delta\mathcal{M}_{\text{SCm}} = \frac{\alpha_s}{\pi} \cdot \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}}{m_t^2 c^4} \cdot |\cos(\pi t_n)|$$
+
+$$= \frac{\alpha_s}{\pi} \times \frac{7.09 \times 10^{-37} \times 1.45 \times 10^{26} \times 0.84}{(173\ \text{GeV})^2 \times (1.6 \times 10^{-10})^2} \approx 10^{-32}$$
+
+---
+
+## 4. F_{U\_Bi\_i} Effective Higgs Potential
+
+
+The Higgs potential in the SCm vacuum:
+
+$$V_h(\phi) = -\mu_h^2 \phi^2 + \lambda_h \phi^4 + \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \cos(\pi t_n) \cdot \phi^2$$
+
+The SCm term shifts the Higgs VEV by:
+
+$$\delta v = \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot |\cos(\pi t_n)|}{2 \lambda_h v} \approx 10^{-26}\ \text{GeV}$$
+
+Negligible at current experimental precision.
+
