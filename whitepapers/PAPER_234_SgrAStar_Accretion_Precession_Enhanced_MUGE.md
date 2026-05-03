@@ -386,3 +386,24 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Shakura, N.I. & Sunyaev, R.A. (1973). *Black holes in binary systems: observational appearance.* A&A **24**, 337
+4. Balbus, S.A. & Hawley, J.F. (1991). *A powerful local shear instability in weakly magnetized disks.* ApJ **376**, 214 — doi:10.1086/170270
+5. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+6. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+8. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+9. Clowe, D. et al. (2006). *A Direct Empirical Proof of the Existence of Dark Matter.* ApJL **648**, L109 — arXiv:astro-ph/0608407 — doi:10.1086/508162
+10. Murphy, D. (2026). *Master Universal Gravity Equation (MUGE): DPM-Driven Gravity Framework.* Star-Magic Whitepaper Series — github.com/Daniel8Murphy0007/Star-Magic
+11. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+12. GRAVITY Collaboration (2022). *Mass distribution in the Galactic Center based on interferometric astrometry of multiple stellar orbits.* A&A **657**, A82 — arXiv:2112.07478 — doi:10.1051/0004-6361/202142465
+13. Ghez, A.M. et al. (2008). *Measuring Distance and Properties of the Milky Way's Central Supermassive Black Hole with Stellar Orbits.* ApJ **689**, 1044 — arXiv:0808.2870 — doi:10.1086/592738
+14. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+15. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333

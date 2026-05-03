@@ -458,3 +458,19 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+4. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+5. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+6. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+7. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+8. GRAVITY Collaboration (2022). *Mass distribution in the Galactic Center based on interferometric astrometry of multiple stellar orbits.* A&A **657**, A82 — arXiv:2112.07478 — doi:10.1051/0004-6361/202142465
+9. Ghez, A.M. et al. (2008). *Measuring Distance and Properties of the Milky Way's Central Supermassive Black Hole with Stellar Orbits.* ApJ **689**, 1044 — arXiv:0808.2870 — doi:10.1086/592738
+10. Blanchet, L. (2014). *Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries.* Living Rev. Relativ. **17**, 2 — arXiv:1310.1528 — doi:10.12942/lrr-2014-2

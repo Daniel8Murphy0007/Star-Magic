@@ -404,3 +404,23 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Shakura, N.I. & Sunyaev, R.A. (1973). *Black holes in binary systems: observational appearance.* A&A **24**, 337
+4. Balbus, S.A. & Hawley, J.F. (1991). *A powerful local shear instability in weakly magnetized disks.* ApJ **376**, 214 — doi:10.1086/170270
+5. de Vaucouleurs, G. (1948). *Recherches sur les Nebuleuses Extragalactiques.* Ann. Astrophys. **11**, 247
+6. Kennicutt, R.C. & Evans, N.J. (2012). *Star Formation in the Milky Way and Nearby Galaxies.* ARA&A **50**, 531 — arXiv:1204.3552 — doi:10.1146/annurev-astro-081811-125610
+7. Sofue, Y. & Rubin, V. (2001). *Rotation Curves of Spiral Galaxies.* ARA&A **39**, 137 — arXiv:astro-ph/0010594 — doi:10.1146/annurev.astro.39.1.137
+8. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+9. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+10. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+11. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+12. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333
+13. Hester, J.J. (2008). *The Crab Nebula: An Astrophysical Chimera.* ARA&A **46**, 127 — arXiv:0812.1502 — doi:10.1146/annurev.astro.45.051806.110608
+14. O'Dell, C.R. et al. (2001). *Hubble Space Telescope Observations of the Helix Nebula.* AJ **122**, 3293 — doi:10.1086/324272

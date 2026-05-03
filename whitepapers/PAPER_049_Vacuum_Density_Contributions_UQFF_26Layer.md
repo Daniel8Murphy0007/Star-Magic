@@ -564,3 +564,24 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+4. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+5. Riess, A.G. et al. (1998). *Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.* AJ **116**, 1009 — arXiv:astro-ph/9805200 — doi:10.1086/300499
+6. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
+7. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+8. Dirac, P.A.M. (1931). *Quantised Singularities in the Electromagnetic Field.* Proc. R. Soc. Lond. A **133**, 60 — doi:10.1098/rspa.1931.0130
+9. Castelnovo, C., Moessner, R. & Sondhi, S.L. (2008). *Magnetic monopoles in spin ice.* Nature **451**, 42 — arXiv:0710.5515 — doi:10.1038/nature06433
+10. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+11. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+12. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press
+13. Gardner, J.P. et al. (2006). *The James Webb Space Telescope.* Space Sci. Rev. **123**, 485 — arXiv:astro-ph/0606175 — doi:10.1007/s11214-006-8315-7
+14. Finkelstein, S.L. et al. (2022). *A Long Time Ago in a Galaxy Far, Far Away: A Candidate z ≈ 12 Galaxy in Early JWST CEERS Imaging.* ApJL **940**, L55 — arXiv:2207.12474 — doi:10.3847/2041-8213/ac966e
+15. Labbe, I. et al. (2023). *A population of red candidate massive galaxies ~600 Myr after the Big Bang.* Nature **616**, 266 — arXiv:2207.09436 — doi:10.1038/s41586-023-05786-2

@@ -342,3 +342,20 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. de Vaucouleurs, G. (1948). *Recherches sur les Nebuleuses Extragalactiques.* Ann. Astrophys. **11**, 247
+4. Kennicutt, R.C. & Evans, N.J. (2012). *Star Formation in the Milky Way and Nearby Galaxies.* ARA&A **50**, 531 — arXiv:1204.3552 — doi:10.1146/annurev-astro-081811-125610
+5. Sofue, Y. & Rubin, V. (2001). *Rotation Curves of Spiral Galaxies.* ARA&A **39**, 137 — arXiv:astro-ph/0010594 — doi:10.1146/annurev.astro.39.1.137
+6. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+7. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+8. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+9. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+10. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+11. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333
+12. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory.* Cambridge University Press — doi:10.1017/CBO9781139248563
+13. Polchinski, J. (1998). *String Theory Vol. 1.* Cambridge University Press

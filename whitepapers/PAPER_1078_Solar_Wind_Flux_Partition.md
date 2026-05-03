@@ -95,3 +95,9 @@ processes described in PAPER_412.
 - PAPER_412: HeliosphereHydrogenComplexSCmStellarAgeCalculator
 - PAPER_413: Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator
 - Star-Magic.txt: §3 Solar Wind and Heliospheric Flux Balance
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

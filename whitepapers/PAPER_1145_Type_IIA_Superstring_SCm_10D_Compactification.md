@@ -97,3 +97,9 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \beta_i = 0.
 1. Polchinski, J. (1995). *String Theory*, Vol. 2. Cambridge.
 2. Witten, E. (1995). String theory dynamics in various dimensions. *Nucl. Phys. B* **443**, 85.
 3. Type IIB in SCm: PAPER_1144; M-theory: PAPER_1148; `scm_{vacuum\_manifold}.py`
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

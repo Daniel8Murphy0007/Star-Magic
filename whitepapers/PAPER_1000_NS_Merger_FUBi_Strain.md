@@ -225,3 +225,16 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 
 *13 cross-reference(s) identified.*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+4. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+5. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+6. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+7. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press

@@ -184,3 +184,13 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 
 *10 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+4. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+5. Blandford, R.D. & Znajek, R.L. (1977). *Electromagnetic extraction of energy from Kerr black holes.* MNRAS **179**, 433 — doi:10.1093/mnras/179.3.433
+6. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883

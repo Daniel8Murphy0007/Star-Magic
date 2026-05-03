@@ -76,3 +76,18 @@ off-resonance behavior drives the $\Gamma$-dependence.
 - PAPER_889: EtVsLambdaCDMDarkEnergyContrastCalc
 - PAPER_890: SCmVacuumDensityEvolutionCalc
 - PAPER_1087: Dark Energy Equation of State w_DE
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Riess, A.G. et al. (1998). *Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.* AJ **116**, 1009 — arXiv:astro-ph/9805200 — doi:10.1086/300499
+4. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
+5. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+6. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+7. Goldstein, A. et al. (Fermi GBM, 2017). *An Ordinary Short GRB with Extraordinary Implications: Fermi-GBM Detection of GRB 170817A.* ApJL **848**, L14 — arXiv:1710.05446 — doi:10.3847/2041-8213/aa8f41
+8. Kouveliotou, C. et al. (1993). *Identification of two classes of gamma-ray bursts.* ApJL **413**, L101 — doi:10.1086/186969
+9. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+10. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+11. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

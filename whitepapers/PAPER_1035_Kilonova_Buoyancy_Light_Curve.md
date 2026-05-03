@@ -223,3 +223,16 @@ BSH timescale: $\tau_{\text{KN}} \sim 1$--$10$ days.
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 
 *12 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Villar, V.A. et al. (2017). *The Combined UV, Optical, and Near-IR Light Curves of the Kilonova Associated with GW170817/AT2017gfo.* ApJL **851**, L21 — arXiv:1710.11576 — doi:10.3847/2041-8213/aa9c84
+4. Tanvir, N.R. et al. (2017). *Emergence of a Stellar-mass Black Hole from the Death of a Star.* ApJL **848**, L27 — arXiv:1710.05455 — doi:10.3847/2041-8213/aa90b6
+5. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+6. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+7. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+8. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+9. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1

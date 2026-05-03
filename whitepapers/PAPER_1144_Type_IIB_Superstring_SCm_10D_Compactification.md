@@ -102,3 +102,9 @@ $$\beta_i = 0.6, \quad \Phi_{\text{res}} = 0.84, \quad f_{\text{THz}} = 1.25\ \t
 1. Polchinski, J. (1996). Dirichlet branes and Ramond-Ramond charges. *PRL* **75**, 4724.
 2. Becker, K., Becker, M. & Schwarz, J. (2007). *String Theory and M-Theory*. Cambridge.
 3. VDS compactification: PAPER_1142 (Polyakov); PAPER_1143 (Nambu-Goto); `scm_{vacuum\_manifold}.py`
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

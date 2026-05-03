@@ -315,3 +315,22 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rees, M.J. (1988). *Tidal disruption of stars by black holes of 10^6–10^8 solar masses in nearby galaxies.* Nature **333**, 523 — doi:10.1038/333523a0
+4. van Velzen, S. et al. (2021). *Seventeen Tidal Disruption Events from the First Half of ZTF Survey Observations.* ApJ **908**, 4 — arXiv:2001.01409 — doi:10.3847/1538-4357/abc258
+5. de Vaucouleurs, G. (1948). *Recherches sur les Nebuleuses Extragalactiques.* Ann. Astrophys. **11**, 247
+6. Kennicutt, R.C. & Evans, N.J. (2012). *Star Formation in the Milky Way and Nearby Galaxies.* ARA&A **50**, 531 — arXiv:1204.3552 — doi:10.1146/annurev-astro-081811-125610
+7. Sofue, Y. & Rubin, V. (2001). *Rotation Curves of Spiral Galaxies.* ARA&A **39**, 137 — arXiv:astro-ph/0010594 — doi:10.1146/annurev.astro.39.1.137
+8. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+9. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+10. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+11. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+12. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+13. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333

@@ -59,3 +59,11 @@ The SCm 1.25 THz phonon + 26D amplification directly reproduces Holmlid's 630 eV
 **Source TEX:** `pdf/SCm_{Holmlid\_KER\_Validation}.tex`  
 **PDF:** `pdf/PAPER_{1136\_SCm\_Holmlid\_KER\_Reactor\_Validation}.pdf`  
 **CP4 Class:** `HolmlidKERReactorValidator` (#637)
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

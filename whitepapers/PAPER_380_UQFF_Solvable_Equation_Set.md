@@ -490,3 +490,29 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+4. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+5. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+6. Riemann, B. (1859). *Über die Anzahl der Primzahlen unter einer gegebenen Grösse.* Monatsber. Akad. Berlin **671**, 671
+7. Bombieri, E. (2000). *The Riemann Hypothesis.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/riemann-hypothesis
+8. Conrey, J.B. (2003). *The Riemann Hypothesis.* Notices AMS **50**, 341 — www.ams.org/notices/200303/fea-conrey-web.pdf
+9. Riess, A.G. et al. (1998). *Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.* AJ **116**, 1009 — arXiv:astro-ph/9805200 — doi:10.1086/300499
+10. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
+11. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+12. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+13. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+14. Murphy, D. (2026). *Master Universal Gravity Equation (MUGE): DPM-Driven Gravity Framework.* Star-Magic Whitepaper Series — github.com/Daniel8Murphy0007/Star-Magic
+15. Yang, C.N. & Mills, R.L. (1954). *Conservation of Isotopic Spin and Isotopic Gauge Invariance.* Phys. Rev. **96**, 191 — doi:10.1103/PhysRev.96.191
+16. Jaffe, A. & Witten, E. (2006). *Quantum Yang-Mills Theory.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/yang-mills
+17. Creutz, M. (1980). *Monte Carlo study of quantized SU(2) gauge theory.* Phys. Rev. D **21**, 2308 — doi:10.1103/PhysRevD.21.2308
+18. Leray, J. (1934). *Sur le mouvement d'un liquide visqueux emplissant l'espace.* Acta Math. **63**, 193 — doi:10.1007/BF02547354
+19. Fefferman, C.L. (2000). *Existence and Smoothness of the Navier–Stokes Equation.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/navier-stokes-equation
+20. Constantin, P. & Foias, C. (1988). *Navier-Stokes Equations.* Chicago Lectures in Mathematics

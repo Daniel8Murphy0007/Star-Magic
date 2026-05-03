@@ -368,3 +368,21 @@ bridge.*
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 
 *17 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+4. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+5. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+6. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+7. Blandford, R.D. & Znajek, R.L. (1977). *Electromagnetic extraction of energy from Kerr black holes.* MNRAS **179**, 433 — doi:10.1093/mnras/179.3.433
+8. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883
+9. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory.* Cambridge University Press — doi:10.1017/CBO9781139248563
+10. Polchinski, J. (1998). *String Theory Vol. 1.* Cambridge University Press
+11. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+12. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+13. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+14. Blanchet, L. (2014). *Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries.* Living Rev. Relativ. **17**, 2 — arXiv:1310.1528 — doi:10.12942/lrr-2014-2

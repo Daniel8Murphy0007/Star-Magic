@@ -220,3 +220,17 @@ BSH timescale: $\tau_{\text{spin}} \sim P_{\text{spin}} / \dot{P} \sim 10^9$ yr.
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 
 *10 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Lorimer, D.R. & Kramer, M. (2004). *Handbook of Pulsar Astronomy.* Cambridge University Press
+4. Hewish, A. et al. (1968). *Observation of a Rapidly Pulsating Radio Source.* Nature **217**, 709 — doi:10.1038/217709a0
+5. Manchester, R.N. et al. (2005). *The Australia Telescope National Facility Pulsar Catalogue.* AJ **129**, 1993 — arXiv:astro-ph/0412641 — doi:10.1086/428488
+6. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+7. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+8. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+9. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+10. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1

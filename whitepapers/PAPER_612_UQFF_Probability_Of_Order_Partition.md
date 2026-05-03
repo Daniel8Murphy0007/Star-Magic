@@ -354,3 +354,22 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Riemann, B. (1859). *Über die Anzahl der Primzahlen unter einer gegebenen Grösse.* Monatsber. Akad. Berlin **671**, 671
+4. Bombieri, E. (2000). *The Riemann Hypothesis.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/riemann-hypothesis
+5. Conrey, J.B. (2003). *The Riemann Hypothesis.* Notices AMS **50**, 341 — www.ams.org/notices/200303/fea-conrey-web.pdf
+6. Blandford, R.D. & Znajek, R.L. (1977). *Electromagnetic extraction of energy from Kerr black holes.* MNRAS **179**, 433 — doi:10.1093/mnras/179.3.433
+7. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883
+8. Yang, C.N. & Mills, R.L. (1954). *Conservation of Isotopic Spin and Isotopic Gauge Invariance.* Phys. Rev. **96**, 191 — doi:10.1103/PhysRev.96.191
+9. Jaffe, A. & Witten, E. (2006). *Quantum Yang-Mills Theory.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/yang-mills
+10. Creutz, M. (1980). *Monte Carlo study of quantized SU(2) gauge theory.* Phys. Rev. D **21**, 2308 — doi:10.1103/PhysRevD.21.2308
+11. Leray, J. (1934). *Sur le mouvement d'un liquide visqueux emplissant l'espace.* Acta Math. **63**, 193 — doi:10.1007/BF02547354
+12. Fefferman, C.L. (2000). *Existence and Smoothness of the Navier–Stokes Equation.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/navier-stokes-equation
+13. Constantin, P. & Foias, C. (1988). *Navier-Stokes Equations.* Chicago Lectures in Mathematics

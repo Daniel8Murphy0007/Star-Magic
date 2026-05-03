@@ -307,3 +307,22 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Lorimer, D.R. & Kramer, M. (2004). *Handbook of Pulsar Astronomy.* Cambridge University Press
+4. Hewish, A. et al. (1968). *Observation of a Rapidly Pulsating Radio Source.* Nature **217**, 709 — doi:10.1038/217709a0
+5. Manchester, R.N. et al. (2005). *The Australia Telescope National Facility Pulsar Catalogue.* AJ **129**, 1993 — arXiv:astro-ph/0412641 — doi:10.1086/428488
+6. Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces.* Eur. Phys. J. C **46**, 107 — arXiv:cond-mat/0509269 — doi:10.1140/epjc/s2006-02479-8
+7. Pons, M. & Fleischmann, S. (1989). *Electrochemically induced nuclear fusion of deuterium.* J. Electroanal. Chem. **261**, 301 — doi:10.1016/0022-0728(89)80006-3
+8. Storms, E. (2007). *The Science of Low Energy Nuclear Reaction.* World Scientific
+9. Hester, J.J. (2008). *The Crab Nebula: An Astrophysical Chimera.* ARA&A **46**, 127 — arXiv:0812.1502 — doi:10.1146/annurev.astro.45.051806.110608
+10. O'Dell, C.R. et al. (2001). *Hubble Space Telescope Observations of the Helix Nebula.* AJ **122**, 3293 — doi:10.1086/324272
+11. Riess, A.G. et al. (1998). *Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.* AJ **116**, 1009 — arXiv:astro-ph/9805200 — doi:10.1086/300499
+12. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
+13. Janka, H.-T. (2012). *Explosion Mechanisms of Core-Collapse Supernovae.* ARA&A **50**, 531 — arXiv:1206.2503 — doi:10.1146/annurev-astro-081811-125815

@@ -90,3 +90,9 @@ $$\kappa = 5.0 \times 10^{-4}\ \text{day}^{-1}, \quad \Phi_{\text{res}} = 0.84, 
 1. Ceccarelli, C. et al. (2017). Seeds of life in space (SOLIS). *ApJ Lett.* **850**, L3.
 2. Belloche, A. et al. (2008). Detection of amino acetonitrile in Sgr B2(N). *A&A* **482**, 179.
 3. SCm phonon catalysis: `scm_{vacuum\_manifold}.py`; PAPER_1121 (prestellar collapse)
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

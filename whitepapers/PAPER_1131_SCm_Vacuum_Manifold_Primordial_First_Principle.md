@@ -209,3 +209,11 @@ $$\boxed{F_{U,Bi,i} = \Bigl[-F_0 + \tfrac{GM}{r^2}\cos(\pi t_n) + \rho_{\mathrm{
 The SCm vacuum manifold is the primordial first principle. Gravity emerges last.
 The 1.25 THz phonon activation and negative-time $\cos(\pi t_n)$ modulation are
 intrinsic properties of the vacuum substrate, not free parameters.
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

@@ -415,3 +415,28 @@ $$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ BH-accretion $\to$ $F_{U,Bi\_i}$ unified force $\to$ observational prediction
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rees, M.J. (1988). *Tidal disruption of stars by black holes of 10^6–10^8 solar masses in nearby galaxies.* Nature **333**, 523 — doi:10.1038/333523a0
+4. van Velzen, S. et al. (2021). *Seventeen Tidal Disruption Events from the First Half of ZTF Survey Observations.* ApJ **908**, 4 — arXiv:2001.01409 — doi:10.3847/1538-4357/abc258
+5. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+6. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+8. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+9. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+10. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+11. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+12. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+13. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+14. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+15. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333
+16. Weisskopf, M.C. et al. (2002). *Chandra X-Ray Observatory (CXO): Overview.* PASP **114**, 1 — arXiv:astro-ph/0110087 — doi:10.1086/338381
+17. Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces.* Eur. Phys. J. C **46**, 107 — arXiv:cond-mat/0509269 — doi:10.1140/epjc/s2006-02479-8
+18. Pons, M. & Fleischmann, S. (1989). *Electrochemically induced nuclear fusion of deuterium.* J. Electroanal. Chem. **261**, 301 — doi:10.1016/0022-0728(89)80006-3
+19. Storms, E. (2007). *The Science of Low Energy Nuclear Reaction.* World Scientific

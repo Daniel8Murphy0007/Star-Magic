@@ -479,3 +479,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+4. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+5. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press
+6. ATLAS Collaboration (2012). *Observation of a new boson at a mass of 125 GeV with the ATLAS detector at the LHC.* Phys. Lett. B **716**, 1 — arXiv:1207.7214 — doi:10.1016/j.physletb.2012.08.020
+7. CMS Collaboration (2012). *Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC.* Phys. Lett. B **716**, 30 — arXiv:1207.7235 — doi:10.1016/j.physletb.2012.08.021

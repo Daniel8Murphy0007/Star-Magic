@@ -247,3 +247,23 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ latti
 | PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
 
 *17 cross-reference(s) identified.*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Schmidt, M. (1963). *3C 273: A star-like object with large red-shift.* Nature **197**, 1040 — doi:10.1038/1971040a0
+4. Richards, G.T. et al. (2006). *The Sloan Digital Sky Survey Quasar Survey.* AJS **166**, 470 — arXiv:astro-ph/0601434 — doi:10.1086/506525
+5. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+6. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+8. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+9. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+10. Blandford, R.D. & Znajek, R.L. (1977). *Electromagnetic extraction of energy from Kerr black holes.* MNRAS **179**, 433 — doi:10.1093/mnras/179.3.433
+11. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883
+12. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+13. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+14. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

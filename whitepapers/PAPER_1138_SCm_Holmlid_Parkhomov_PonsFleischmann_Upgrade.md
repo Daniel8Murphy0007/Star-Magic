@@ -125,3 +125,9 @@ The SCm upgrade adds quantitative Holmlid, Parkhomov, and Pons–Fleischmann cor
 **PDF:** `pdf/PAPER_{1138\_SCm\_Holmlid\_Parkhomov\_PonsFleischmann\_Upgrade}.pdf`  
 **Module:** `pdf/scm_{vacuum\_manifold}.py` (upgrade block integrated)  
 **CP4 Class:** `HolmlidParkhomovPonsFleischmannUpgrade` (#639)
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

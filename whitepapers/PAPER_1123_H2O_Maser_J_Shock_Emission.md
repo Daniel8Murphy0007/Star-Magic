@@ -100,3 +100,9 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \kappa = 5.0
 1. Elitzur, M. (1992). Astronomical masers. *ARA&A* **30**, 75.
 2. Moran, J.M. et al. (1995). The NGC 4258 maser. *Proc. Natl. Acad. Sci.* **92**, 11427.
 3. SCm vacuum: `scm_{vacuum\_manifold}.py`; PAPER_1121 (ISM shocks); PAPER_1122 (bow shocks)
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

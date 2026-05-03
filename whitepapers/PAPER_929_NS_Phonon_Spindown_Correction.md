@@ -316,3 +316,26 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ gravi
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
 
 *24 cross-reference(s) identified.*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+4. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+5. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+6. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+7. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+8. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+9. Lorimer, D.R. & Kramer, M. (2004). *Handbook of Pulsar Astronomy.* Cambridge University Press
+10. Hewish, A. et al. (1968). *Observation of a Rapidly Pulsating Radio Source.* Nature **217**, 709 — doi:10.1038/217709a0
+11. Manchester, R.N. et al. (2005). *The Australia Telescope National Facility Pulsar Catalogue.* AJ **129**, 1993 — arXiv:astro-ph/0412641 — doi:10.1086/428488
+12. Lattimer, J.M. & Prakash, M. (2007). *Neutron Star Observations: Prognosis for Equation of State Constraints.* Phys. Rep. **442**, 109 — arXiv:astro-ph/0612440 — doi:10.1016/j.physrep.2007.02.003
+13. Demorest, P.B. et al. (2010). *A two-solar-mass neutron star measured using Shapiro delay.* Nature **467**, 1081 — arXiv:1010.5788 — doi:10.1038/nature09466
+14. Cromartie, H.T. et al. (2020). *Relativistic Shapiro delay measurements of an extremely massive millisecond pulsar.* Nature Astron. **4**, 72 — arXiv:1904.06759 — doi:10.1038/s41550-019-0880-2
+15. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+16. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+17. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

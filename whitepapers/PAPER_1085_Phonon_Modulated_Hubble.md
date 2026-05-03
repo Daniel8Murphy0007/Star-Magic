@@ -75,3 +75,18 @@ The formula $H(t, \Gamma) = H_0(1 + \Phi/F_U \cdot E_{\text{net}})$ encodes:
 - PAPER_1084: SCm Phonon-Coupled Inflationary Scale Factor
 - PAPER_1073: SCm Phonon-Driven Inflation
 - PAPER_897: PhononModulatedEnergyEnetPhononCalc
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Riess, A.G. et al. (2022). *A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km/s/Mpc Uncertainty from the Hubble Space Telescope.* ApJL **934**, L7 — arXiv:2112.04510 — doi:10.3847/2041-8213/ac5c5b
+4. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+5. Verde, L., Treu, T. & Riess, A.G. (2019). *Tensions between the Early and Late Universe.* Nature Astron. **3**, 891 — arXiv:1907.10625 — doi:10.1038/s41550-019-0902-0
+6. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+7. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+8. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+9. Riess, A.G. et al. (1998). *Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.* AJ **116**, 1009 — arXiv:astro-ph/9805200 — doi:10.1086/300499
+10. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
+11. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1

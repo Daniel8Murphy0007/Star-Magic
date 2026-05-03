@@ -390,3 +390,23 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Schmidt, M. (1963). *3C 273: A star-like object with large red-shift.* Nature **197**, 1040 — doi:10.1038/1971040a0
+4. Richards, G.T. et al. (2006). *The Sloan Digital Sky Survey Quasar Survey.* AJS **166**, 470 — arXiv:astro-ph/0601434 — doi:10.1086/506525
+5. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+6. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+7. Blandford, R.D. & Znajek, R.L. (1977). *Electromagnetic extraction of energy from Kerr black holes.* MNRAS **179**, 433 — doi:10.1093/mnras/179.3.433
+8. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883
+9. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+10. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+11. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press
+12. Leray, J. (1934). *Sur le mouvement d'un liquide visqueux emplissant l'espace.* Acta Math. **63**, 193 — doi:10.1007/BF02547354
+13. Fefferman, C.L. (2000). *Existence and Smoothness of the Navier–Stokes Equation.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/navier-stokes-equation
+14. Constantin, P. & Foias, C. (1988). *Navier-Stokes Equations.* Chicago Lectures in Mathematics

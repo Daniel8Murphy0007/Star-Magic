@@ -208,3 +208,12 @@ mock-theta framework with the SCm phonon spectrum.
 | PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
 
 *7 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+4. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+5. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press

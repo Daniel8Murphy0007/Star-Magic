@@ -270,3 +270,23 @@ PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_{\text{SCm}}$ $\to$ latti
 | PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
 
 *10 cross-reference(s) identified.*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Shakura, N.I. & Sunyaev, R.A. (1973). *Black holes in binary systems: observational appearance.* A&A **24**, 337
+4. Balbus, S.A. & Hawley, J.F. (1991). *A powerful local shear instability in weakly magnetized disks.* ApJ **376**, 214 — doi:10.1086/170270
+5. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+6. Hawking, S.W. (1975). *Particle Creation by Black Holes.* Commun. Math. Phys. **43**, 199 — doi:10.1007/BF02345020
+7. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333
+8. Unruh, W.G. (1976). *Notes on Black-Hole Evaporation.* Phys. Rev. D **14**, 870 — doi:10.1103/PhysRevD.14.870
+9. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+10. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+11. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+12. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+13. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+14. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

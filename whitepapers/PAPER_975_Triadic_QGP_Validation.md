@@ -193,3 +193,19 @@ Buoyancy mode residual < 5% confirms BSH consistency in QGP regime.
 | PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |
 
 *22 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. ALICE Collaboration (2010). *Elliptic flow of charged particles in Pb-Pb collisions at sqrt(sNN) = 2.76 TeV.* Phys. Rev. Lett. **105**, 252302 — arXiv:1011.3914 — doi:10.1103/PhysRevLett.105.252302
+4. Muller, B., Schukraft, J. & Wyslouch, B. (2012). *New results from Pb+Pb collisions at the LHC.* Annu. Rev. Nucl. Part. Sci. **62**, 361 — arXiv:1202.3233 — doi:10.1146/annurev-nucl-102711-094910
+5. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+6. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+7. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+8. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+9. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+10. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+11. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+12. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

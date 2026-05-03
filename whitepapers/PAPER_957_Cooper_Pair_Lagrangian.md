@@ -237,3 +237,17 @@ LENR rate saturation: $\tanh(\Delta/E_0) \cdot S_{26}$.
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
 
 *12 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces.* Eur. Phys. J. C **46**, 107 — arXiv:cond-mat/0509269 — doi:10.1140/epjc/s2006-02479-8
+4. Pons, M. & Fleischmann, S. (1989). *Electrochemically induced nuclear fusion of deuterium.* J. Electroanal. Chem. **261**, 301 — doi:10.1016/0022-0728(89)80006-3
+5. Storms, E. (2007). *The Science of Low Energy Nuclear Reaction.* World Scientific
+6. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+7. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+8. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+9. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+10. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1

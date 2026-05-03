@@ -237,3 +237,15 @@ BSH timescale: system-dependent
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 
 *12 cross-reference(s) identified.*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. ALICE Collaboration (2010). *Elliptic flow of charged particles in Pb-Pb collisions at sqrt(sNN) = 2.76 TeV.* Phys. Rev. Lett. **105**, 252302 — arXiv:1011.3914 — doi:10.1103/PhysRevLett.105.252302
+4. Muller, B., Schukraft, J. & Wyslouch, B. (2012). *New results from Pb+Pb collisions at the LHC.* Annu. Rev. Nucl. Part. Sci. **62**, 361 — arXiv:1202.3233 — doi:10.1146/annurev-nucl-102711-094910
+5. ATLAS Collaboration (2012). *Observation of a new boson at a mass of 125 GeV with the ATLAS detector at the LHC.* Phys. Lett. B **716**, 1 — arXiv:1207.7214 — doi:10.1016/j.physletb.2012.08.020
+6. CMS Collaboration (2012). *Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC.* Phys. Lett. B **716**, 30 — arXiv:1207.7235 — doi:10.1016/j.physletb.2012.08.021

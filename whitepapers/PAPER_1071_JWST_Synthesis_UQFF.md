@@ -187,3 +187,12 @@ BSH timescale: sector-dependent.
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 
 *6 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Gardner, J.P. et al. (2006). *The James Webb Space Telescope.* Space Sci. Rev. **123**, 485 — arXiv:astro-ph/0606175 — doi:10.1007/s11214-006-8315-7
+4. Finkelstein, S.L. et al. (2022). *A Long Time Ago in a Galaxy Far, Far Away: A Candidate z ≈ 12 Galaxy in Early JWST CEERS Imaging.* ApJL **940**, L55 — arXiv:2207.12474 — doi:10.3847/2041-8213/ac966e
+5. Labbe, I. et al. (2023). *A population of red candidate massive galaxies ~600 Myr after the Big Bang.* Nature **616**, 266 — arXiv:2207.09436 — doi:10.1038/s41586-023-05786-2

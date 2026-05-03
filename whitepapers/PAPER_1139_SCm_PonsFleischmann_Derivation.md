@@ -113,3 +113,9 @@ The SCm Vacuum Manifold provides a first-principles mechanism for Pons-Fleischma
 [6] E. Storms, "The science of low energy nuclear reaction," *J. Condensed Matter Nucl. Sci.*, vol. 4, pp. 1–58, 2010.
 
 [7] P.L. Hagelstein, M.C.H. McKubre, D.J. Nagel, T.A. Chubb, and R.J. Hekman, "New physical effects in metal deuterides," *Proc. 11th Int. Conf. Cold Fusion (ICCF-11)*, Marseille, France, 2004.
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

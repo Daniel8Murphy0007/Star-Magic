@@ -287,3 +287,24 @@ NFW concentration $c = 6.5$ maps to BSH shell structure of dark matter halo.
 | PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
 
 *20 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. de Vaucouleurs, G. (1948). *Recherches sur les Nebuleuses Extragalactiques.* Ann. Astrophys. **11**, 247
+4. Kennicutt, R.C. & Evans, N.J. (2012). *Star Formation in the Milky Way and Nearby Galaxies.* ARA&A **50**, 531 — arXiv:1204.3552 — doi:10.1146/annurev-astro-081811-125610
+5. Sofue, Y. & Rubin, V. (2001). *Rotation Curves of Spiral Galaxies.* ARA&A **39**, 137 — arXiv:astro-ph/0010594 — doi:10.1146/annurev.astro.39.1.137
+6. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+7. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+8. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+9. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+10. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+11. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+12. Clowe, D. et al. (2006). *A Direct Empirical Proof of the Existence of Dark Matter.* ApJL **648**, L109 — arXiv:astro-ph/0608407 — doi:10.1086/508162
+13. Murphy, D. (2026). *Master Universal Gravity Equation (MUGE): DPM-Driven Gravity Framework.* Star-Magic Whitepaper Series — github.com/Daniel8Murphy0007/Star-Magic
+14. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+15. Kaspi, V.M. & Beloborodov, A.M. (2017). *Magnetars.* ARA&A **55**, 261 — arXiv:1703.00068 — doi:10.1146/annurev-astro-081915-023329
+16. Olausen, S.A. & Kaspi, V.M. (2014). *The McGill Magnetar Catalog.* ApJS **212**, 6 — arXiv:1309.4167 — doi:10.1088/0067-0049/212/1/6
+17. Thompson, C. & Duncan, R.C. (1993). *Magnetar formation through a convective dynamo in protoneutron stars.* ApJ **408**, 194 — doi:10.1086/172580

@@ -483,3 +483,19 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+4. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+5. Lattimer, J.M. & Prakash, M. (2007). *Neutron Star Observations: Prognosis for Equation of State Constraints.* Phys. Rep. **442**, 109 — arXiv:astro-ph/0612440 — doi:10.1016/j.physrep.2007.02.003
+6. Demorest, P.B. et al. (2010). *A two-solar-mass neutron star measured using Shapiro delay.* Nature **467**, 1081 — arXiv:1010.5788 — doi:10.1038/nature09466
+7. Cromartie, H.T. et al. (2020). *Relativistic Shapiro delay measurements of an extremely massive millisecond pulsar.* Nature Astron. **4**, 72 — arXiv:1904.06759 — doi:10.1038/s41550-019-0880-2
+8. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+9. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+10. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+11. Villar, V.A. et al. (2017). *The Combined UV, Optical, and Near-IR Light Curves of the Kilonova Associated with GW170817/AT2017gfo.* ApJL **851**, L21 — arXiv:1710.11576 — doi:10.3847/2041-8213/aa9c84
+12. Tanvir, N.R. et al. (2017). *Emergence of a Stellar-mass Black Hole from the Death of a Star.* ApJL **848**, L27 — arXiv:1710.05455 — doi:10.3847/2041-8213/aa90b6

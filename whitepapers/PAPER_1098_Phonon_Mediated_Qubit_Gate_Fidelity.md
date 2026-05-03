@@ -121,3 +121,14 @@ UQFF prediction for quantum computing hardware.
 - PAPER\_560: LQG $\Lambda$CDM Triple System Comparison
 - Arute, F. et al. (2019). *Quantum supremacy using a programmable superconducting processor*. Nature 574, 505--510.
 - Koch, J. et al. (2007). *Charge-insensitive qubit design derived from the Cooper pair box*. Phys. Rev. A 76, 042319.
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+4. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+5. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+6. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+7. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

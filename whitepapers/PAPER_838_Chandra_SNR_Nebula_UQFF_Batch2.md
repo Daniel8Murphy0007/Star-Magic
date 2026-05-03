@@ -451,3 +451,25 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | CP4 classes mapped | 15 |
 
 *Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Dirac, P.A.M. (1931). *Quantised Singularities in the Electromagnetic Field.* Proc. R. Soc. Lond. A **133**, 60 — doi:10.1098/rspa.1931.0130
+4. Castelnovo, C., Moessner, R. & Sondhi, S.L. (2008). *Magnetic monopoles in spin ice.* Nature **451**, 42 — arXiv:0710.5515 — doi:10.1038/nature06433
+5. Lorimer, D.R. & Kramer, M. (2004). *Handbook of Pulsar Astronomy.* Cambridge University Press
+6. Hewish, A. et al. (1968). *Observation of a Rapidly Pulsating Radio Source.* Nature **217**, 709 — doi:10.1038/217709a0
+7. Manchester, R.N. et al. (2005). *The Australia Telescope National Facility Pulsar Catalogue.* AJ **129**, 1993 — arXiv:astro-ph/0412641 — doi:10.1086/428488
+8. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+9. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+10. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+11. Weisskopf, M.C. et al. (2002). *Chandra X-Ray Observatory (CXO): Overview.* PASP **114**, 1 — arXiv:astro-ph/0110087 — doi:10.1086/338381
+12. Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces.* Eur. Phys. J. C **46**, 107 — arXiv:cond-mat/0509269 — doi:10.1140/epjc/s2006-02479-8
+13. Pons, M. & Fleischmann, S. (1989). *Electrochemically induced nuclear fusion of deuterium.* J. Electroanal. Chem. **261**, 301 — doi:10.1016/0022-0728(89)80006-3
+14. Storms, E. (2007). *The Science of Low Energy Nuclear Reaction.* World Scientific
+15. Hester, J.J. (2008). *The Crab Nebula: An Astrophysical Chimera.* ARA&A **46**, 127 — arXiv:0812.1502 — doi:10.1146/annurev.astro.45.051806.110608
+16. O'Dell, C.R. et al. (2001). *Hubble Space Telescope Observations of the Helix Nebula.* AJ **122**, 3293 — doi:10.1086/324272

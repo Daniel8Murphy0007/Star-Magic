@@ -423,3 +423,28 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Shakura, N.I. & Sunyaev, R.A. (1973). *Black holes in binary systems: observational appearance.* A&A **24**, 337
+4. Balbus, S.A. & Hawley, J.F. (1991). *A powerful local shear instability in weakly magnetized disks.* ApJ **376**, 214 — doi:10.1086/170270
+5. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+6. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+8. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+9. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+10. Blandford, R.D. & Znajek, R.L. (1977). *Electromagnetic extraction of energy from Kerr black holes.* MNRAS **179**, 433 — doi:10.1093/mnras/179.3.433
+11. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883
+12. Lattimer, J.M. & Prakash, M. (2007). *Neutron Star Observations: Prognosis for Equation of State Constraints.* Phys. Rep. **442**, 109 — arXiv:astro-ph/0612440 — doi:10.1016/j.physrep.2007.02.003
+13. Demorest, P.B. et al. (2010). *A two-solar-mass neutron star measured using Shapiro delay.* Nature **467**, 1081 — arXiv:1010.5788 — doi:10.1038/nature09466
+14. Cromartie, H.T. et al. (2020). *Relativistic Shapiro delay measurements of an extremely massive millisecond pulsar.* Nature Astron. **4**, 72 — arXiv:1904.06759 — doi:10.1038/s41550-019-0880-2
+15. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+16. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
+17. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333
+18. Villar, V.A. et al. (2017). *The Combined UV, Optical, and Near-IR Light Curves of the Kilonova Associated with GW170817/AT2017gfo.* ApJL **851**, L21 — arXiv:1710.11576 — doi:10.3847/2041-8213/aa9c84
+19. Tanvir, N.R. et al. (2017). *Emergence of a Stellar-mass Black Hole from the Death of a Star.* ApJL **848**, L27 — arXiv:1710.05455 — doi:10.3847/2041-8213/aa90b6

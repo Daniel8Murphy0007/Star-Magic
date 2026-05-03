@@ -599,3 +599,20 @@ result = calc.compute({"rho": 1e17})  # neutron star density
 | This paper's CP4 linkages | 10 direct + indirect |
 
 *Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces.* Eur. Phys. J. C **46**, 107 — arXiv:cond-mat/0509269 — doi:10.1140/epjc/s2006-02479-8
+4. Pons, M. & Fleischmann, S. (1989). *Electrochemically induced nuclear fusion of deuterium.* J. Electroanal. Chem. **261**, 301 — doi:10.1016/0022-0728(89)80006-3
+5. Storms, E. (2007). *The Science of Low Energy Nuclear Reaction.* World Scientific
+6. Lattimer, J.M. & Prakash, M. (2007). *Neutron Star Observations: Prognosis for Equation of State Constraints.* Phys. Rep. **442**, 109 — arXiv:astro-ph/0612440 — doi:10.1016/j.physrep.2007.02.003
+7. Demorest, P.B. et al. (2010). *A two-solar-mass neutron star measured using Shapiro delay.* Nature **467**, 1081 — arXiv:1010.5788 — doi:10.1038/nature09466
+8. Cromartie, H.T. et al. (2020). *Relativistic Shapiro delay measurements of an extremely massive millisecond pulsar.* Nature Astron. **4**, 72 — arXiv:1904.06759 — doi:10.1038/s41550-019-0880-2
+9. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+10. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+11. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

@@ -198,3 +198,11 @@ $$\boxed{F_{U,Bi,i} \approx 1.906 \times 10^{11}\ \mathrm{N} \qquad \mathrm{VDS}
 Five independent physics domains — vacuum primordial, 26D ladder, Holmlid LENR,
 Riemann mathematics, and prototype reactor — converge to the same four SCm
 constants. No free parameters. No external tuning.
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

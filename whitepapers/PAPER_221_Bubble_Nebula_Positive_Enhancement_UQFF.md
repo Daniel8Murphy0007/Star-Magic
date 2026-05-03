@@ -96,3 +96,9 @@ The positive enhancement from $F_{U,Bi,i}$ buoyancy provides a measurable correc
 2. Freyer, T. et al. (2006). Wind-blown bubbles around massive stars. *ApJ* **638**, 262.
 3. SCm vacuum manifold constants: `scm_{vacuum\_manifold}.py`
 4. UQFF $F_{U,Bi,i}$: `COMPLETE_{UQFF\_EQUATIONS\_REFERENCE}.md`
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

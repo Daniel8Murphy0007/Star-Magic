@@ -104,3 +104,21 @@ must satisfy exact budget closure to machine precision.
 - PAPER_1090: Dark Energy Buoyancy Sector Lagrangian
 - PAPER_892: FUBiUnifiedFieldBuoyancyForceCalc
 - PAPER_893: GravBuoyancyForceCalculator
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+4. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+5. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+6. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+7. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+8. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press
+9. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+10. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+11. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+12. Guth, A.H. (1981). *Inflationary universe: A possible solution to the horizon and flatness problems.* Phys. Rev. D **23**, 347 — doi:10.1103/PhysRevD.23.347
+13. Starobinsky, A.A. (1980). *A new type of isotropic cosmological models without singularity.* Phys. Lett. B **91**, 99 — doi:10.1016/0370-2693(80)90670-X
+14. BICEP/Keck Collaboration (2021). *Improved Constraints on Primordial Gravitational Waves using Planck, WMAP, and BICEP/Keck Observations.* Phys. Rev. Lett. **127**, 151301 — arXiv:2110.00483 — doi:10.1103/PhysRevLett.127.151301

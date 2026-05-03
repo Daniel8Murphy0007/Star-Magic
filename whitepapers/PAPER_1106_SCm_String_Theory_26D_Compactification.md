@@ -95,3 +95,20 @@ Calculator: `SCmStringTheory26DActionCalculator` in CondensedPhysics.py
 - Polchinski, J. (1998). *String Theory*. Cambridge University Press.
 - Murphy, D.T. (2025). UQFF: Star Cradle Mechanics framework. Star-Magic repository.
 - PAPER\_1053: Swampland Conjecture and SCm.
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory.* Cambridge University Press — doi:10.1017/CBO9781139248563
+4. Polchinski, J. (1998). *String Theory Vol. 1.* Cambridge University Press
+5. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+6. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+7. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+8. Yang, C.N. & Mills, R.L. (1954). *Conservation of Isotopic Spin and Isotopic Gauge Invariance.* Phys. Rev. **96**, 191 — doi:10.1103/PhysRev.96.191
+9. Jaffe, A. & Witten, E. (2006). *Quantum Yang-Mills Theory.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/yang-mills
+10. Creutz, M. (1980). *Monte Carlo study of quantized SU(2) gauge theory.* Phys. Rev. D **21**, 2308 — doi:10.1103/PhysRevD.21.2308
+11. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+12. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+13. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x

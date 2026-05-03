@@ -96,3 +96,15 @@ restoring term acts as a regulator preventing runaway inflation.
 - PAPER_1090: Dark Energy Buoyancy Sector Lagrangian
 - PAPER_1084: SCm Phonon Inflationary Scale Factor
 - PAPER_892: FUBiUnifiedFieldBuoyancyForceCalc
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Guth, A.H. (1981). *Inflationary universe: A possible solution to the horizon and flatness problems.* Phys. Rev. D **23**, 347 — doi:10.1103/PhysRevD.23.347
+4. Starobinsky, A.A. (1980). *A new type of isotropic cosmological models without singularity.* Phys. Lett. B **91**, 99 — doi:10.1016/0370-2693(80)90670-X
+5. BICEP/Keck Collaboration (2021). *Improved Constraints on Primordial Gravitational Waves using Planck, WMAP, and BICEP/Keck Observations.* Phys. Rev. Lett. **127**, 151301 — arXiv:2110.00483 — doi:10.1103/PhysRevLett.127.151301
+6. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+7. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+8. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x

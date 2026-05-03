@@ -94,3 +94,29 @@ all observed phenomena. Gravity is the late-emergent central limit.
 - PAPER_1095: Horizon Buoyancy Sector Lagrangian
 - PAPER_979: FUBiMasterBuoyancyCalc (CP4)
 - PAPER_990: F_{U\_Bi} Distinction (fubi_{inside\_outside}.py)
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+4. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+5. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+6. Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions on metallic hydride surfaces.* Eur. Phys. J. C **46**, 107 — arXiv:cond-mat/0509269 — doi:10.1140/epjc/s2006-02479-8
+7. Pons, M. & Fleischmann, S. (1989). *Electrochemically induced nuclear fusion of deuterium.* J. Electroanal. Chem. **261**, 301 — doi:10.1016/0022-0728(89)80006-3
+8. Storms, E. (2007). *The Science of Low Energy Nuclear Reaction.* World Scientific
+9. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+10. ALICE Collaboration (2010). *Elliptic flow of charged particles in Pb-Pb collisions at sqrt(sNN) = 2.76 TeV.* Phys. Rev. Lett. **105**, 252302 — arXiv:1011.3914 — doi:10.1103/PhysRevLett.105.252302
+11. Muller, B., Schukraft, J. & Wyslouch, B. (2012). *New results from Pb+Pb collisions at the LHC.* Annu. Rev. Nucl. Part. Sci. **62**, 361 — arXiv:1202.3233 — doi:10.1146/annurev-nucl-102711-094910
+12. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+13. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+14. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press
+15. Morris, M.S. & Thorne, K.S. (1988). *Wormholes in spacetime and their use for interstellar travel.* Am. J. Phys. **56**, 395 — doi:10.1119/1.15620
+16. Maldacena, J. & Susskind, L. (2013). *Cool horizons for entangled black holes.* Fortschr. Phys. **61**, 781 — arXiv:1306.0533 — doi:10.1002/prop.201300020
+17. Guth, A.H. (1981). *Inflationary universe: A possible solution to the horizon and flatness problems.* Phys. Rev. D **23**, 347 — doi:10.1103/PhysRevD.23.347
+18. Starobinsky, A.A. (1980). *A new type of isotropic cosmological models without singularity.* Phys. Lett. B **91**, 99 — doi:10.1016/0370-2693(80)90670-X
+19. BICEP/Keck Collaboration (2021). *Improved Constraints on Primordial Gravitational Waves using Planck, WMAP, and BICEP/Keck Observations.* Phys. Rev. Lett. **127**, 151301 — arXiv:2110.00483 — doi:10.1103/PhysRevLett.127.151301
+20. Riess, A.G. et al. (1998). *Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.* AJ **116**, 1009 — arXiv:astro-ph/9805200 — doi:10.1086/300499
+21. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
+22. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1

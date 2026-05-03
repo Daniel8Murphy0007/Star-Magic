@@ -224,3 +224,15 @@ Scaling: v4 (100k) $\to$ v11 (500k) $\to$ v12 (501k) — near $\tanh$ hardware s
 | PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |
 
 *14 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+4. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+5. ALICE Collaboration (2010). *Elliptic flow of charged particles in Pb-Pb collisions at sqrt(sNN) = 2.76 TeV.* Phys. Rev. Lett. **105**, 252302 — arXiv:1011.3914 — doi:10.1103/PhysRevLett.105.252302
+6. Muller, B., Schukraft, J. & Wyslouch, B. (2012). *New results from Pb+Pb collisions at the LHC.* Annu. Rev. Nucl. Part. Sci. **62**, 361 — arXiv:1202.3233 — doi:10.1146/annurev-nucl-102711-094910
+7. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory.* Cambridge University Press — doi:10.1017/CBO9781139248563
+8. Polchinski, J. (1998). *String Theory Vol. 1.* Cambridge University Press

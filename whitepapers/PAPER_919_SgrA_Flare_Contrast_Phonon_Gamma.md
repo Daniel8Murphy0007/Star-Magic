@@ -401,3 +401,27 @@ bridge.*
 | PAPER_1071 | JWST Synthesis Multi-Instrument UQFF |
 
 *19 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rees, M.J. (1988). *Tidal disruption of stars by black holes of 10^6–10^8 solar masses in nearby galaxies.* Nature **333**, 523 — doi:10.1038/333523a0
+4. van Velzen, S. et al. (2021). *Seventeen Tidal Disruption Events from the First Half of ZTF Survey Observations.* ApJ **908**, 4 — arXiv:2001.01409 — doi:10.3847/1538-4357/abc258
+5. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+6. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+8. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+9. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+10. Blandford, R.D. & Znajek, R.L. (1977). *Electromagnetic extraction of energy from Kerr black holes.* MNRAS **179**, 433 — doi:10.1093/mnras/179.3.433
+11. Blandford, R.D. & Payne, D.G. (1982). *Hydromagnetic flows from accretion discs and the production of radio jets.* MNRAS **199**, 883 — doi:10.1093/mnras/199.4.883
+12. Gardner, J.P. et al. (2006). *The James Webb Space Telescope.* Space Sci. Rev. **123**, 485 — arXiv:astro-ph/0606175 — doi:10.1007/s11214-006-8315-7
+13. Finkelstein, S.L. et al. (2022). *A Long Time Ago in a Galaxy Far, Far Away: A Candidate z ≈ 12 Galaxy in Early JWST CEERS Imaging.* ApJL **940**, L55 — arXiv:2207.12474 — doi:10.3847/2041-8213/ac966e
+14. Labbe, I. et al. (2023). *A population of red candidate massive galaxies ~600 Myr after the Big Bang.* Nature **616**, 266 — arXiv:2207.09436 — doi:10.1038/s41586-023-05786-2
+15. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+16. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+17. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+18. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+19. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+20. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

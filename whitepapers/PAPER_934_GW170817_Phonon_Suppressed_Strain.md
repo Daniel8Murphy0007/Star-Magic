@@ -251,3 +251,18 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
 
 *13 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Aasi et al. (LIGO Scientific Collaboration, 2015). *Advanced LIGO.* Class. Quantum Grav. **32**, 074001 — arXiv:1411.4547 — doi:10.1088/0264-9381/32/7/074001
+4. Abbott et al. (LIGO/Virgo + 70 Observatories, 2017). *Multi-messenger Observations of a Binary Neutron Star Merger.* ApJL **848**, L12 — arXiv:1710.05833 — doi:10.3847/2041-8213/aa91c9
+5. Lattimer, J.M. & Prakash, M. (2007). *Neutron Star Observations: Prognosis for Equation of State Constraints.* Phys. Rep. **442**, 109 — arXiv:astro-ph/0612440 — doi:10.1016/j.physrep.2007.02.003
+6. Demorest, P.B. et al. (2010). *A two-solar-mass neutron star measured using Shapiro delay.* Nature **467**, 1081 — arXiv:1010.5788 — doi:10.1038/nature09466
+7. Cromartie, H.T. et al. (2020). *Relativistic Shapiro delay measurements of an extremely massive millisecond pulsar.* Nature Astron. **4**, 72 — arXiv:1904.06759 — doi:10.1038/s41550-019-0880-2
+8. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+9. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+10. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+11. Blanchet, L. (2014). *Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries.* Living Rev. Relativ. **17**, 2 — arXiv:1310.1528 — doi:10.12942/lrr-2014-2

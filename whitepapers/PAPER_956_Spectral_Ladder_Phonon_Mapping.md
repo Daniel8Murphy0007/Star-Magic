@@ -219,3 +219,18 @@ $Q_n$ saturation profile: $\text{BSH}(n) = Q_n / Q_\text{max}$.
 | PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
 
 *16 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+4. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+5. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+6. Kaspi, V.M. & Beloborodov, A.M. (2017). *Magnetars.* ARA&A **55**, 261 — arXiv:1703.00068 — doi:10.1146/annurev-astro-081915-023329
+7. Olausen, S.A. & Kaspi, V.M. (2014). *The McGill Magnetar Catalog.* ApJS **212**, 6 — arXiv:1309.4167 — doi:10.1088/0067-0049/212/1/6
+8. Thompson, C. & Duncan, R.C. (1993). *Magnetar formation through a convective dynamo in protoneutron stars.* ApJ **408**, 194 — doi:10.1086/172580
+9. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
+10. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
+11. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722

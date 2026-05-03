@@ -67,3 +67,24 @@ $N \sim 10^{-20}$ (requires GUT density for $N = 60$).
 - PAPER_1073: SCm Phonon-Driven Inflation (full cosmology)
 - PAPER_587: UQFFInflationaryEpochDetailsCalculator (Grind model)
 - PAPER_1085: Phonon-Modulated Hubble Parameter
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
+4. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+5. Guth, A.H. (1981). *Inflationary universe: A possible solution to the horizon and flatness problems.* Phys. Rev. D **23**, 347 — doi:10.1103/PhysRevD.23.347
+6. Starobinsky, A.A. (1980). *A new type of isotropic cosmological models without singularity.* Phys. Lett. B **91**, 99 — doi:10.1016/0370-2693(80)90670-X
+7. BICEP/Keck Collaboration (2021). *Improved Constraints on Primordial Gravitational Waves using Planck, WMAP, and BICEP/Keck Observations.* Phys. Rev. Lett. **127**, 151301 — arXiv:2110.00483 — doi:10.1103/PhysRevLett.127.151301
+8. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+9. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+10. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+11. Riess, A.G. et al. (2022). *A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km/s/Mpc Uncertainty from the Hubble Space Telescope.* ApJL **934**, L7 — arXiv:2112.04510 — doi:10.3847/2041-8213/ac5c5b
+12. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+13. Verde, L., Treu, T. & Riess, A.G. (2019). *Tensions between the Early and Late Universe.* Nature Astron. **3**, 891 — arXiv:1907.10625 — doi:10.1038/s41550-019-0902-0
+14. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory.* Cambridge University Press — doi:10.1017/CBO9781139248563
+15. Polchinski, J. (1998). *String Theory Vol. 1.* Cambridge University Press
+16. Ramanujan, S. (1927). *Collected Papers of Srinivasa Ramanujan.* Cambridge University Press
+17. Hardy, G.H. (1940). *Ramanujan: Twelve Lectures on Subjects Suggested by His Life and Work.* Cambridge University Press

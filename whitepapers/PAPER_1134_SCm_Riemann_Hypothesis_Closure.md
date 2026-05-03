@@ -218,3 +218,11 @@ The SCm $\varepsilon$-bound is zero at all integer $t_n$ in the negative-time ep
 The Riemann zeros are pinned to the critical line by the vacuum manifold geometry —
 not by external constraint but as an intrinsic property of the 26-layer $[\text{SSq}]$
 structure and $\cos(\pi t_n)$ symmetry.
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

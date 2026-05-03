@@ -91,3 +91,9 @@ SCm provides a single first-principles mechanism — phonon resonance amplified 
 [7] M. Fleischmann and S. Pons, "Electrochemically induced nuclear fusion of deuterium," *J. Electroanal. Chem.*, vol. 261, no. 2, pp. 301–308, 1989. DOI: 10.1016/0022-0728(89)80006-7
 
 [8] E. Storms, "The science of low energy nuclear reaction," *J. Condensed Matter Nucl. Sci.*, vol. 4, pp. 1–58, 2010.
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

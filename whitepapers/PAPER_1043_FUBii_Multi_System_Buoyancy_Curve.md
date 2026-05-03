@@ -191,3 +191,14 @@ BSH timescale: system-dependent ($10^{-4}$--$10^{10}$ s).
 | PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
 
 *8 cross-reference(s) identified.*
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
+4. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
+5. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+6. Goldstein, A. et al. (Fermi GBM, 2017). *An Ordinary Short GRB with Extraordinary Implications: Fermi-GBM Detection of GRB 170817A.* ApJL **848**, L14 — arXiv:1710.05446 — doi:10.3847/2041-8213/aa8f41
+7. Kouveliotou, C. et al. (1993). *Identification of two classes of gamma-ray bursts.* ApJL **413**, L101 — doi:10.1086/186969

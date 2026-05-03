@@ -231,3 +231,20 @@ BSH timescale: $10^4$ yr
 | PAPER_1070 | Yang-Mills Mass Gap VDS Bridge |
 
 *15 cross-reference(s) identified.*
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Yang, C.N. & Mills, R.L. (1954). *Conservation of Isotopic Spin and Isotopic Gauge Invariance.* Phys. Rev. **96**, 191 — doi:10.1103/PhysRev.96.191
+4. Jaffe, A. & Witten, E. (2006). *Quantum Yang-Mills Theory.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/yang-mills
+5. Creutz, M. (1980). *Monte Carlo study of quantized SU(2) gauge theory.* Phys. Rev. D **21**, 2308 — doi:10.1103/PhysRevD.21.2308
+6. Anderson, M.H. et al. (1995). *Observation of Bose-Einstein Condensation in a Dilute Atomic Vapor.* Science **269**, 198 — doi:10.1126/science.269.5221.198
+7. Dalfovo, F. et al. (1999). *Theory of Bose-Einstein condensation in trapped gases.* Rev. Mod. Phys. **71**, 463 — arXiv:cond-mat/9806038 — doi:10.1103/RevModPhys.71.463
+8. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press
+9. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
+10. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
+11. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179

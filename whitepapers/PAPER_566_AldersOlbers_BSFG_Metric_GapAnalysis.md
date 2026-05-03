@@ -374,3 +374,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_{1\_CoAnQi}.cpp`, and Wolfram kernels (`uqff_{kozima\_kernel}.wl`, `uqff_{s26\_kernel}.wl`,
 `uqff_{mock\_theta\_pi\_kernel}.wl`).*
 
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Riemann, B. (1859). *Über die Anzahl der Primzahlen unter einer gegebenen Grösse.* Monatsber. Akad. Berlin **671**, 671
+4. Bombieri, E. (2000). *The Riemann Hypothesis.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/riemann-hypothesis
+5. Conrey, J.B. (2003). *The Riemann Hypothesis.* Notices AMS **50**, 341 — www.ams.org/notices/200303/fea-conrey-web.pdf

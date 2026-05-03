@@ -101,3 +101,9 @@ $$\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3, \quad \kappa = 5.0
 1. Gross, D.J. et al. (1985). Heterotic string theory (I). *Nucl. Phys. B* **256**, 253.
 2. Green, M.B. & Schwarz, J.H. (1984). Anomaly cancellations in supersymmetric D=10 gauge theory. *Phys. Lett. B* **149**, 117.
 3. Type IIA SCm: PAPER_1145; Calabi-Yau: PAPER_1147; `scm_{vacuum\_manifold}.py`
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

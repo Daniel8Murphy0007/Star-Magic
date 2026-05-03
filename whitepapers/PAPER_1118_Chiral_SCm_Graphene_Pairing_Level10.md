@@ -92,3 +92,9 @@ $$\beta_i = 0.6, \quad \Phi_{\text{res}} = 0.84, \quad E_{\text{KER}} = 630\ \te
 1. Nandkishore, R. et al. (2012). Chiral superconductivity from repulsive interactions in doped graphene. *Nat. Phys.* **8**, 158.
 2. Cao, Y. et al. (2018). Unconventional superconductivity in magic-angle graphene. *Nature* **556**, 43.
 3. SCm vacuum: `scm_{vacuum\_manifold}.py`; VDS ladder: PAPER_1109
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic

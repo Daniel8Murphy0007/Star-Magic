@@ -126,3 +126,11 @@ Calculator: `VDSDVPBHUnifiedNumberSystemCalculator` in CondensedPhysics.py
 - Ramanujan, S. (1918). On certain trigonometrical sums. *Trans. Camb. Phil. Soc.* 22, 259.
 - Murphy, D.T. (2025). UQFF: Star Cradle Mechanics framework. Star-Magic repository.
 - PAPER\_491: MUGE Compressed Nine-Term Gravity Framework (VDS/DVP/BH canonical definitions).
+
+
+### Key References with arXiv/DOI Identifiers
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+3. Ramanujan, S. (1927). *Collected Papers of Srinivasa Ramanujan.* Cambridge University Press
+4. Hardy, G.H. (1940). *Ramanujan: Twelve Lectures on Subjects Suggested by His Life and Work.* Cambridge University Press

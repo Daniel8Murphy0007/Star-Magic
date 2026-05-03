@@ -211,3 +211,11 @@ The Holmlid D($-1$) cluster is the macroscopic laboratory signature of the SCm v
 manifold. The 1.25 THz phonon, $\rho_{\mathrm{vac,SCm}}$, and $F_{U,Bi,i}$ provide
 the complete first-principle explanation: no free parameters, no external fields beyond
 the vacuum manifold itself.
+
+
+---
+
+## References
+
+1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
+2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
