@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_265
-title: "HUDF Dual-Channel Interaction Cascade Buoyancy — Quadratic I(t) Amplification at Cosmic
+title: "HUDF Dual-Channel Interaction Cascade Buoyancy --- Quadratic I(t) Amplification at Cosmic
 Merger Peak"
 session: 0
 date: 2026-03-01
@@ -8,21 +8,21 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, merger, MUGE, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_265: HUDF Dual-Channel Interaction Cascade Buoyancy — Quadratic I(t) Amplification at Cosmic Merger Peak
+# PAPER_265: HUDF Dual-Channel Interaction Cascade Buoyancy --- Quadratic I(t) Amplification at Cosmic Merger Peak
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
-**Framework:** UQFF v4.27 — Star-Magic Physics
+**Framework:** UQFF v4.27 --- Star-Magic Physics
 **Source:** HUDFGalaxies.cpp $\to$ `HUDFInteractionCascadeTerm` (Session 72g, UQFF 2.0 Upgrade)
 **Date:** March 2026
-**Series:** Phase 2 Session 72g — §3.x HUDF Clone Fragment Unique Physics Extraction
+**Series:** Phase 2 Session 72g --- §3.x HUDF Clone Fragment Unique Physics Extraction
 
 ---
 
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV --->
 ## Abstract
 
 In the HUDFGalaxies MUGE formulation, the galaxy interaction factor I(t) = I0 $\cdot$ exp(-t/$\tau$_inter) is
@@ -32,10 +32,10 @@ structural feature that has not appeared in any prior UQFF module: a **dual-chan
 cascade** in which both gravity channels amplify coherently during galaxy merger events.
 
 The **uniquely rare discovery** of this paper is that the double application of I(t) produces a
-**quadratic buoyancy amplification** — the combined effect scales as (1 + I(t))2 rather than the
+**quadratic buoyancy amplification** --- the combined effect scales as (1 + I(t))2 rather than the
 linear (1 + I(t)) of a single-channel system. This cascading enhancement reaches its maximum exactly
 at t $\to$ 0 and z $\to$ 3.5, coinciding with the peak observational epoch of the HUDF. The cascade buoyancy
-excess — purely due to the structural coupling — is $\Delta$I_cascade = I02 at peak, generating an
+excess --- purely due to the structural coupling --- is $\Delta$I_cascade = I02 at peak, generating an
 anomalous buoyancy flux that is second-order in the galaxy interaction strength.
 
 ---
@@ -44,12 +44,12 @@ anomalous buoyancy flux that is second-order in the galaxy interaction strength.
 
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
-| Peak interaction factor | I0 | 0.05 | — |
+| Peak interaction factor | I0 | 0.05 | --- |
 | Interaction timescale | $\tau$_inter | 1 Gyr | s |
 | Field mass | M0 | 1012 M_sun | kg |
 | Radius | r | 1.23$\times$1027 | m |
-| Average redshift | z_avg | 3.5 | — |
-| f_TRZ | f_TRZ | 0.1 | — |
+| Average redshift | z_avg | 3.5 | --- |
+| f_TRZ | f_TRZ | 0.1 | --- |
 | Epoch of peak cascade | t | 0 (present reference) | s |
 
 ---
@@ -105,7 +105,7 @@ $$
 \end{aligned}
 $$
 
-The cascade excess is ~(I02 / I0) = I0 = 5% of the interaction contribution itself — a second-order
+The cascade excess is ~(I02 / I0) = I0 = 5% of the interaction contribution itself --- a second-order
 but non-negligible buoyancy enhancement at high merger rates.
 
 ### 2.4 Time Evolution: Cascade Peak Alignment with HUDF Epoch
@@ -121,7 +121,7 @@ $$
 \end{aligned}
 $$
 
-The cascade buoyancy excess is strongly concentrated in the early universe (t < 1 Gyr $\approx$ z > 3) —
+The cascade buoyancy excess is strongly concentrated in the early universe (t < 1 Gyr $\approx$ z > 3) ---
 precisely the HUDF observational window. This temporal coincidence is **not an artifact**: the f_TRZ
 > 0 condition ensures UQFF is enhanced in CPT-violating early-universe environments, and, by the
 cascade mechanism, this enhancement is quadratically sensitive to galaxy merger activity.
@@ -140,7 +140,7 @@ $$
 
 The excess buoyancy over single-channel is:
 $$
-\Deltamathcal{B} = (1 + I)^N - (1 + I) = (1 + I)\left[(1 + I)^{N-1} - 1\right]
+\Delta\mathcal{B} = (1 + I)^N - (1 + I) = (1 + I)\left[(1 + I)^{N-1} - 1\right]
 $$
 
 For N = 2 (HUDF dual-channel), the quadratic interaction enhancement is the minimum non-trivial
@@ -156,7 +156,7 @@ through the expected isotopic enhancement $\Delta$I_cascade.
 
 ## 4. Observational Predictions
 
-- **HST/JWST morphology:** Merger pair fractions at z $\approx$ 3–4 (HUDF field) should show anomalously enhanced tidal bridge luminosity proportional to I02 — cascade-boosted baryonic flow across the gravitational bridge.
+- **HST/JWST morphology:** Merger pair fractions at z $\approx$ 3--4 (HUDF field) should show anomalously enhanced tidal bridge luminosity proportional to I02 --- cascade-boosted baryonic flow across the gravitational bridge.
 - **ALMA Band 3 (3mm CO):** Molecular gas in HUDF z $\approx$ 3.5 interacting pairs should show velocity dispersion $\propto$ (1 + I0)2 relative to isolated galaxies of same mass.
 - **EHT 345 GHz (future):** Any compact radio core in a HUDF merger would show a DPM resonance fingerprint at the cascade-boosted gravity level.
 
@@ -167,13 +167,13 @@ through the expected isotopic enhancement $\Delta$I_cascade.
 1. Lotz, J.M. et al. (2011). The Major and Minor Galaxy Merger Rates at z < 1.5. *ApJ* 742, 103.
 2. Conselice, C.J. et al. (2009). Galaxy Merger Rates at z > 3 from the HUDF. *MNRAS* 398, 103.
 3. Sanders, D.B. & Mirabel, I.F. (1996). Luminous Infrared Galaxies. *ARA&A* 34, 749.
-4. Murphy, D.T. (2026). `HUDFInteractionCascadeTerm` — Quadratic I(t) Buoyancy Cascade in
+4. Murphy, D.T. (2026). `HUDFInteractionCascadeTerm` --- Quadratic I(t) Buoyancy Cascade in
 Dual-Channel MUGE. HUDFGalaxies.cpp UQFF 2.0 Session 72g.
 
 ---
 
 *PAPER_265 \| UQFF v4.27 \| Star-Magic \| Session 72g \| March 2026*
-*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF--SM bridge).*
 
 ---
 
@@ -282,7 +282,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.076$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -302,7 +302,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -324,10 +324,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -338,7 +338,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1035 | Kilonova Buoyancy Light Curve r-Process |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
@@ -416,7 +416,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

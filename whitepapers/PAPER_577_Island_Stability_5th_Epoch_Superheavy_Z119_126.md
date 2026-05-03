@@ -1,16 +1,16 @@
 ---
 paper_id: PAPER_577
-title: "Island of Stability 5th Epoch: Superheavy Z=119–126"
+title: "Island of Stability 5th Epoch: Superheavy Z=119--126"
 session: 154
 date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, buoyancy, FUBi, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_577 — Island of Stability 5th Epoch: Superheavy Z=119–126
+# PAPER_577 --- Island of Stability 5th Epoch: Superheavy Z=119--126
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -26,12 +26,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of Island of Stability 5th Epoch: Superheavy Z=119–126, deriving
+This paper presents a UQFF analysis of Island of Stability 5th Epoch: Superheavy Z=119--126, deriving
 compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-The UQFF predicts a second island of nuclear stability at Z=119–126 (A$\approx$290–320) arising from
+The UQFF predicts a second island of nuclear stability at Z=119--126 (A$\approx$290--320) arising from
 buoyancy stabilisation in the 5th integration epoch. The characteristic island radius
 $r_{\text{island}} = (26!\cdot c/\lambda_{\min})^{1/26} \approx 10\,\text{fm}$ coincides with
 the nuclear geometric mean. Z=120 (N$\approx$180, A$\approx$300) is identified as the primary magic island
@@ -72,7 +72,7 @@ $$\tau_{1/2}(Z) \approx 10^{-(Z-118)}\,\text{s} \quad (Z > 118)$$
 | 121 | 303 | 7.00 | $\sim10^{-4}$ s | Transitional |
 | 122 | 306 | 6.95 | $\sim10^{-5}$ s | Declining stability |
 | 126 | 318 | 6.80 | $\sim10^{-6}$ s | Island outer edge |
-| 164+ | — | — | — | $U_b > U_g$ anti-gravity regime |
+| 164+ | --- | --- | --- | $U_b > U_g$ anti-gravity regime |
 
 ---
 
@@ -81,7 +81,7 @@ $$\tau_{1/2}(Z) \approx 10^{-(Z-118)}\,\text{s} \quad (Z > 118)$$
 - $P_{\text{order}} \approx 10^{-2}$ to $10^{-4}$ (high chaos $\to$ rare stability windows)
 - $\rho_{\text{overlap}} \approx 3\times10^{17}$ kg/m3 (= nuclear standard $\to$ stable density)
 - SCm superconducting properties predicted near Z=120 at room temperature
-- DVP prime seed $\sigma(n) \cdot \varphi$ generates unique nuclear graph for each Z=119–126
+- DVP prime seed $\sigma(n) \cdot \varphi$ generates unique nuclear graph for each Z=119--126
 - VDS bound maintained: $c_{26} \leq P/3$ even for unstable superheavies
 
 ---
@@ -90,7 +90,7 @@ $$\tau_{1/2}(Z) \approx 10^{-(Z-118)}\,\text{s} \quad (Z > 118)$$
 
 Above Z=164, UQFF enters the anti-gravity regime:
 
-$$U_b(Z,r) > U_g(Z,r) \implies F_{\text{net}} < 0 \quadtext{(repulsive)}$$
+$$U_b(Z,r) > U_g(Z,r) \implies F_{\text{net}} < 0 \quad\text{(repulsive)}$$
 
 This configuration:
 - Cannot exist as a stable terrestrial nucleus
@@ -104,7 +104,7 @@ This configuration:
 
 Post-convergence datasets needed:
 - ELT, JWST follow-on r-process spectroscopy for trans-Z=118 signatures
-- FAIR/GSI 2026+ experiments targeting Z=119–122 synthesis
+- FAIR/GSI 2026+ experiments targeting Z=119--122 synthesis
 - UQFF predicts SCm-stabilised isotopes will show anomalous magnetic moments
   at $\mu \approx f_{U\_b}/Z \cdot \varphi$ (measurable via nuclear magnetic resonance)
 
@@ -185,7 +185,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.071$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -205,7 +205,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -223,41 +223,41 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
 | Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
-| Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
+| Island of stability (Z=114--126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
 | Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ $m_{\alpha}$ = 4m_p - $B_{\alpha}$/c2 | $m_{\alpha}$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i --- without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Source:* `grok_{share\_efc8a971378f}.txt` — Session 154  
+*Source:* `grok_{share\_efc8a971378f}.txt` --- Session 154  
 > See also:* PAPER_573 (hub), PAPER_548 (FUBi collapse prevention), PAPER_578 (eigenvalue proof)
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |

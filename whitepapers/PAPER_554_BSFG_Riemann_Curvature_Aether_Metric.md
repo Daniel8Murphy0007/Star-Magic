@@ -1,30 +1,30 @@
 ---
 paper_id: PAPER_554
-title: "Buoyancy-Stratified Factorial Geometry — Riemann Curvature of the Aether Metric"
+title: "Buoyancy-Stratified Factorial Geometry --- Riemann Curvature of the Aether Metric"
 session: 148
 date: 2026-03-27
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Riemann, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_554: Buoyancy-Stratified Factorial Geometry — Riemann Curvature of the Aether Metric
+# PAPER_554: Buoyancy-Stratified Factorial Geometry --- Riemann Curvature of the Aether Metric
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
-**Session:** 148 | **Source:** Composed from CP4 #43, #66, #67 (Sessions 107–110)  
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework  
+**Session:** 148 | **Source:** Composed from CP4 #43, #66, #67 (Sessions 107--110)  
 **CP4 Class:** `BSFGRiemannCurvatureAetherMetricCalculator` (#149)  
 **Date:** 2026-03-27  
 
-> **Context note:** The Aether metric $A_{\mu\nu}$ was introduced in PAPER_392 (CP4 #43) with coupling $\eta = 10^{-22}$ and scalar amplitude $T_{s00}$. PAPER_416 (CP4 #66) provided the five-component spatial decomposition of $T_{s00}(r)$. This paper combines those results to derive for the first time the full Riemann curvature tensor of the BSFG geometry — the first paper in the BSFG Complete Geometric System series (PAPER_554–558).
+> **Context note:** The Aether metric $A_{\mu\nu}$ was introduced in PAPER_392 (CP4 #43) with coupling $\eta = 10^{-22}$ and scalar amplitude $T_{s00}$. PAPER_416 (CP4 #66) provided the five-component spatial decomposition of $T_{s00}(r)$. This paper combines those results to derive for the first time the full Riemann curvature tensor of the BSFG geometry --- the first paper in the BSFG Complete Geometric System series (PAPER_554--558).
 
 ---
 
 
 ## Abstract
 
-This paper presents a UQFF analysis of Stratified Factorial Geometry — Riemann Curvature of the
+This paper presents a UQFF analysis of Stratified Factorial Geometry --- Riemann Curvature of the
 Aether Metric, deriving compressed field equations and observational predictions within the
 Star-Magic/UQFF framework.
 
@@ -34,11 +34,11 @@ The Buoyancy-Stratified Factorial Geometry (BSFG) is defined on a 26-dimensional
 
 $$R^r{}_{0r0} \approx \frac{\varepsilon''}{2} = \frac{6\eta\cos(\pi t_n)\,C_{\mathrm{num}}}{r^5}$$
 
-with $C_{\mathrm{num}} = (M_s c^2 + L_s/c^2)/(4\pi/3)$. At the solar surface $r = R_\odot$: $R^r{}_{0r0} \approx 1.56 \times 10^{-19}\ {\mathrm{m}}^{-2}$, which is $\approx 4 \times 10^{-26}$ times the Schwarzschild curvature — confirming the Aether contribution is a genuine but ultra-weak geometric perturbation.
+with $C_{\mathrm{num}} = (M_s c^2 + L_s/c^2)/(4\pi/3)$. At the solar surface $r = R_\odot$: $R^r{}_{0r0} \approx 1.56 \times 10^{-19}\ {\mathrm{m}}^{-2}$, which is $\approx 4 \times 10^{-26}$ times the Schwarzschild curvature --- confirming the Aether contribution is a genuine but ultra-weak geometric perturbation.
 
 ---
 
-## §2 The Aether Metric — Previous Results
+## §2 The Aether Metric --- Previous Results
 
 From PAPER_392 (CP4 #43), the BSFG metric is:
 
@@ -102,7 +102,7 @@ The higher-order $(\varepsilon')^2$ correction is of order $\eta^2\,T_{s00}^2 \s
 
 ## §5 Ricci Tensor and Ricci Scalar
 
-**Ricci tensor** — applying $R_{\mu\nu} = R^\rho{}_{\mu\rho\nu}$ with $SO(3)$ spherical symmetry ($x^2 = y$, $x^3 = z$ contribute equally to $x^1 = r$):
+**Ricci tensor** --- applying $R_{\mu\nu} = R^\rho{}_{\mu\rho\nu}$ with $SO(3)$ spherical symmetry ($x^2 = y$, $x^3 = z$ contribute equally to $x^1 = r$):
 
 $$R_{00} = R^r{}_{0r0} + R^\theta{}_{0\theta 0} + R^\phi{}_{0\phi 0} = 3\,R^r{}_{0r0}$$
 
@@ -124,7 +124,7 @@ At $r = R_\odot = 6.96 \times 10^8\ {\mathrm{m}}$, $t_n = 0$ (maximum coupling),
 
 | Quantity | Value | Notes |
 |----------|-------|-------|
-| $\varepsilon(R_\odot)$ | $1.27 \times 10^{-2}$ | Not small — linearization is qualitative at surface |
+| $\varepsilon(R_\odot)$ | $1.27 \times 10^{-2}$ | Not small --- linearization is qualitative at surface |
 | $\varepsilon'(R_\odot)$ | $-5.47 \times 10^{-11}\ {\mathrm{m}}^{-1}$ | Aether gradient |
 | $\varepsilon''(R_\odot)$ | $+3.13 \times 10^{-19}\ {\mathrm{m}}^{-2}$ | Curvature driver |
 | $R^r{}_{0r0}$ | $+1.56 \times 10^{-19}\ {\mathrm{m}}^{-2}$ | BSFG tidal curvature |
@@ -245,7 +245,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.184$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -265,7 +265,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -283,7 +283,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -297,13 +297,13 @@ predictions in the classical limit, while adding a vacuum buoyancy correction $\
 century to Mercury's perihelion. This is a falsifiable GR extension testable with future
 LISA or BepiColombo precision gravitational measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
 ## §7 Connection to UQFF Framework
 
-The Riemann tensor $R^r{}_{0r0}$ of the BSFG geometry provides the **geometric encoding of tidal UQFF forces**. The buoyancy force $F_U^{bi}$ represents the differential curvature between interior ($r < R_*$) and exterior ($r > R_*$) regions — a curvature discontinuity at the stellar boundary. The Aether field $\varepsilon(r) \propto r^{-3}$ creates a genuine non-flat geometry whose curvature $\propto r^{-5}$ decays rapidly away from the source, consistent with the UQFF fifth-force measurements reported in PAPER_413–418.
+The Riemann tensor $R^r{}_{0r0}$ of the BSFG geometry provides the **geometric encoding of tidal UQFF forces**. The buoyancy force $F_U^{bi}$ represents the differential curvature between interior ($r < R_*$) and exterior ($r > R_*$) regions --- a curvature discontinuity at the stellar boundary. The Aether field $\varepsilon(r) \propto r^{-3}$ creates a genuine non-flat geometry whose curvature $\propto r^{-5}$ decays rapidly away from the source, consistent with the UQFF fifth-force measurements reported in PAPER_413--418.
 
 **Hub:** PAPER_554 (#149) is the first paper in the BSFG series. See PAPER_558 (#153) for the
 complete geometric system definition and PAPER_555 (#150) for metric compatibility and geodesic
@@ -313,16 +313,16 @@ equation.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

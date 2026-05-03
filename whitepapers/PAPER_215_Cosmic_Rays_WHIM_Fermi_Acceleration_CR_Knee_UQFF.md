@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_215: Cosmic Rays, WHIM, Fermi Acceleration, and CR Knee in UQFF
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 50 — grok_{share\_7514fe}.txt Full Audit  
+**Session:** 50 --- grok_{share\_7514fe}.txt Full Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_{share\_7514fe}.txt lines 6300–6400 (PDF 7: BB_{C\_Equations\_04Sept2025}.pdf items
-1562–1570)
+**Source:** grok_{share\_7514fe}.txt lines 6300--6400 (PDF 7: BB_{C\_Equations\_04Sept2025}.pdf items
+1562--1570)
 
 ---
 
@@ -42,7 +42,7 @@ term.
 
 
 **UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -70,7 +70,7 @@ UQFF F_UBii,cr:
 
 Numerical:
   u_CR = 1 eV/cm3 = 1.6\times10?1? J / 10-6 m3 = 1.6\times10?13 J/m3
-  F_rel = 1  (placeholder — set by system)
+  F_rel = 1  (placeholder --- set by system)
   E_LEP = 511 keV = 8.19\times10?14 J  (electron rest mass)
   Q_wave = 6.33\times104 J/m3
 
@@ -126,7 +126,7 @@ $$
   & u_s = shock velocity \\
   & R = gyroradius ~ size of acceleration region \\
   & For typical Galactic SNR: \\
-  & B ˜ 3\times10?1° T (300 \muG shock-compressed B) \\
+  & B ˜ 3\times10?1° T (300 \mu\mathrm{G} shock-compressed B) \\
   & u_s ˜ 104 km/s = 107 m/s \\
   & R ˜ 10 pc = 3.09\times1017 m \\
   & Z = 1 (proton) \\
@@ -153,7 +153,7 @@ Cosmic ray diffusion coefficient:
 
 Measured values:
   D0 = 1028 cm2/s  (at E0 = 10 GeV)
-  ß = 0.3–0.6  (Kolmogorov ß=1/3 vs Kraichnan ß=1/2 depending on turbulence)
+  ß = 0.3--0.6  (Kolmogorov ß=1/3 vs Kraichnan ß=1/2 depending on turbulence)
 
   D(E) = 1028 \times (E/10 GeV)^{0.3 to 0.6} cm2/s
 
@@ -179,10 +179,10 @@ UQFF enhancement of diffusion (Ug2 charge-reactivity):
 $$
 \begin{aligned}
   & WHIM properties: \\
-  & Temperature: T ~ 105–107 K (warm-hot phase) \\
-  & Density: n_b ~ 10?6–10?5 cm?3  (low density filaments) \\
+  & Temperature: T ~ 105--107 K (warm-hot phase) \\
+  & Density: n_b ~ 10?6--10?5 cm?3  (low density filaments) \\
   & Location: cosmic web filaments between galaxy clusters \\
-  & Baryonic fraction: WHIM contains ~40–50% of all baryons at z<2 \\
+  & Baryonic fraction: WHIM contains ~40--50% of all baryons at z<2 \\
   & Observable: OVI, OVII, OVIII X-ray absorption lines; SZ signal \\
   & UQFF F_UBii,whim: \\
   & F_UBii,whim = F_rel \times (?_WHIM \cdot V_fil \cdot g_WHIM / E_LEP) \times Q_wave \\
@@ -190,10 +190,10 @@ $$
   & ?_WHIM\cdot V_fil = mass of WHIM segment at distance r from cluster \\
   & Alfvén wave acceleration in WHIM: \\
   & v_A,WHIM = B_WHIM/v(4p\cdot?_WHIM) \\
-  & B_WHIM ~ 1–100 nG (poorly constrained, model-dependent) \\
+  & B_WHIM ~ 1--100 nG (poorly constrained, model-dependent) \\
   & For B=10 nG, ?_WHIM = 10?27 kg/m3: \\
   & v_A = 10?17 / v(4p\cdot10?27) ˜ 10?17 / v(1.26\times10?26) ˜ 10?17 / 3.55\times10?13 ˜ 2.8\times10-5 m/s \\
-  & (far sub-Alfvénic — thermal velocity dominates) \\
+  & (far sub-Alfvénic --- thermal velocity dominates) \\
   & ? Fermi-II suppressed in WHIM; DSA at WHIM shocks dominates
 \end{aligned}
 $$
@@ -208,11 +208,11 @@ $$
   & Mechanism: turbulent stretching amplifies seed magnetic field exponentially \\
   & Growth rate: ?_dynamo = v_turb/l_turb \times (M_A?) \\
   & Growth: B(t) = B_seed \times exp(?_dynamo \times t) \\
-  & For WHIM filaments (from \text{grok\_share\_7514fe}.txt lines 6360–6380): \\
+  & For WHIM filaments (from \text{grok\_share\_7514fe}.txt lines 6360--6380): \\
   & v_turb ~ 100 km/s (filament turbulence) \\
   & l_turb ~ 100 kpc (driving scale) \\
   & ?_dynamo ~ 100 km/s / (100 kpc) = 105 / (3.09\times1021) ˜ 3.2\times10?17 s-1 \\
-  & Saturation timescale: t_sat ˜ ln(B_sat/B_seed)/? ~ 1 Gyr (produces \muG-level B) \\
+  & Saturation timescale: t_sat ˜ ln(B_sat/B_seed)/? ~ 1 Gyr (produces \mu\mathrm{G}-level B) \\
   & UQFF coupling to Kazantsev dynamo: \\
   & F_env,whim(t) = F_env,whim,0 \times exp(?_dynamo\cdot t) \times (1 - exp(-B_sat/B_saturation)) \\
   & ? Exponential amplification phase ? plateau at B_sat = v_A ~ v_turb \\
@@ -226,7 +226,7 @@ $$
 
 ```
 Metal enrichment from galactic winds and cluster outflows:
-  Z_WHIM ~ 0.01–0.3 Z_?  (typical range, SZ+X-ray observations)
+  Z_WHIM ~ 0.01--0.3 Z_?  (typical range, SZ+X-ray observations)
 
 UQFF L_enrichment term (from F_env,sfr):
   L_enrichment = SFR \times yield_metal \times f_escape / M_WHIM
@@ -265,7 +265,7 @@ UQFF shift: +3% from Ug1 magnetic enhancement ? consistent with observations ($\
 
 $$
 \begin{aligned}
-  & From \text{grok\_share\_7514fe}.txt lines 6380–6400: \\
+  & From \text{grok\_share\_7514fe}.txt lines 6380--6400: \\
   & Alfvénic Mach number (M_A = v/v_A): \\
   & M_A < 1: sub-Alfvénic turbulence (ordered B-field) \\
   & M_A > 1: super-Alfvénic turbulence (tangled B-field) \\
@@ -277,7 +277,7 @@ $$
   & Ug2 ? charge distribution ? sign of Ug2 flips at charge density nodes \\
   & These nodes correspond to spiral arm boundaries ? predicts same reversal pattern \\
   & 3 reversals in MW ? consistent with UQFF Ug2 structure \\
-  & CPL Dark Energy (from \text{grok\_share\_7514fe}.txt items 1567–1570): \\
+  & CPL Dark Energy (from \text{grok\_share\_7514fe}.txt items 1567--1570): \\
   & w(a) = w0 + w_a(1-a) = -1 + dw   (Chevallier-Polarski-Linder parameterization) \\
   & DESI 2024: w0 ˜ -0.7, w_a ˜ -1.1 (2s tension with ?CDM) \\
   & UQFF predicts: w(a) = -1 + Ug4(a)/(?_?c2) = -1 + f(k_UA\cdot a^{-3}) \\
@@ -290,7 +290,7 @@ $$
 
 ## 10. References
 
-- `grok_{share\_7514fe}.txt` lines 6300–6400 (BB_{C\_Equations}.pdf items 1562–1570)
+- `grok_{share\_7514fe}.txt` lines 6300--6400 (BB_{C\_Equations}.pdf items 1562--1570)
 - PAPER_199: F_UBii,cr, F_UBii,whim variants
 - PAPER_209: UQFF vs ?CDM (CPL dark energy comparison)
 - Hillas 1984: E_max and cosmic ray sources
@@ -372,7 +372,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.198$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -392,7 +392,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -410,7 +410,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -423,17 +423,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

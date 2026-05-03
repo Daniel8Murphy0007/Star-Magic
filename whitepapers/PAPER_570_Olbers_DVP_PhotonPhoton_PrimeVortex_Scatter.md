@@ -7,14 +7,14 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_570: DVP Prime Vortex Photon-Photon Scattering in Olbers Framework
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework  
 **Session:** 153b  
-**Gap-Fill For:** AldersOlbersBSFGMetricGapAnalysisCalculator (#160, PAPER_566) — Completed
+**Gap-Fill For:** AldersOlbersBSFGMetricGapAnalysisCalculator (#160, PAPER_566) --- Completed
 Extension 4  
 **Date:** 2026-03-29  
 **QS:** 5/5  
@@ -29,7 +29,7 @@ field equations and observational predictions within the Star-Magic/UQFF framewo
 
 ## §1 Abstract
 
-Beyond dust opacity, photons are attenuated by **photon-photon scattering** — the Breit-Wheeler process $\gammagamma \to e^+e^-$ — particularly for TeV photons from distant blazars. In the UQFF framework, this process is modulated by **Dipole Vortex Prime (DVP) vortex encompassments** at primes $p > 26$: each prime lattice point acts as a scattering centre with amplitude $A(p) \propto [\text{SSq}]^{\pi(p)} / p^{26}$. This paper derives the DVP-modulated mean free path $\ell_gamma\gamma$ and its contribution to Olbers suppression.
+Beyond dust opacity, photons are attenuated by **photon-photon scattering** --- the Breit-Wheeler process $\gammagamma \to e^+e^-$ --- particularly for TeV photons from distant blazars. In the UQFF framework, this process is modulated by **Dipole Vortex Prime (DVP) vortex encompassments** at primes $p > 26$: each prime lattice point acts as a scattering centre with amplitude $A(p) \propto [\text{SSq}]^{\pi(p)} / p^{26}$. This paper derives the DVP-modulated mean free path $\ell_gamma\gamma$ and its contribution to Olbers suppression.
 
 $$\ell_{\gammagamma}^\text{DVP}(p_\text{anchor}) = \frac{r_H}{\pi_text{count}} \cdot p_\text{anchor}^{26} \cdot [\text{SSq}]^{-\pi(p_\text{anchor})}$$
 
@@ -71,7 +71,7 @@ $$A(113) = \frac{(0.507)^{30}}{113^{26}} \approx \frac{9.1 \times 10^{-10}}{8.5 
 
 $$\ell_text{DVP}(113) = \frac{4.4 \times 10^{26}}{149} \cdot \frac{113^{26}}{0.507^{30}} \approx 2.6 \times 10^{78} \, \text{m}$$
 
-The DVP mean free path vastly exceeds the horizon — it is an extremely weak scattering process at the $p = 113$ anchor.
+The DVP mean free path vastly exceeds the horizon --- it is an extremely weak scattering process at the $p = 113$ anchor.
 
 ---
 
@@ -83,7 +83,7 @@ $$\tau_text{DVP}(n) = A_\text{DVP,total} \times n \times \frac{\Delta r}{\ell_te
 
 where $A_\text{DVP,total} = \sum_{p > 26} A(p) \approx 10^{-63}$ (computed from PAPER_565).
 
-For optical photons, $\tau_text{DVP} \ll 1$ across all 26 shells — negligible compared to [SSq] suppression.
+For optical photons, $\tau_text{DVP} \ll 1$ across all 26 shells --- negligible compared to [SSq] suppression.
 For TSP (trans-spectral prime) resonance photons at $\lambda_{113} = hc / (A(113) \cdot E_\text{pl})$, the absorption is maximal.
 
 ---
@@ -104,7 +104,7 @@ $$e^{-\tau_text{DVP}} \approx e^{-n \Delta r / \ell_{\gammagamma}} \approx e^{-n
 
 $$= e^{-n/26 \times 4.4 \times 10^{26} / 1.4 \times 10^{20}} \approx e^{-n \times 1.2 \times 10^5}$$
 
-TeV photons are completely absorbed after a single DVP lattice spacing — this is fully consistent with the observed cosmic horizon for TeV gamma-ray sources ($< 1$ Gpc for $> 10$ TeV).
+TeV photons are completely absorbed after a single DVP lattice spacing --- this is fully consistent with the observed cosmic horizon for TeV gamma-ray sources ($< 1$ Gpc for $> 10$ TeV).
 
 ---
 
@@ -123,10 +123,10 @@ TeV photons are completely absorbed after a single DVP lattice spacing — this 
 
 ## §7 Testable Predictions
 
-1. **TeV absorption horizon:** UQFF predicts horizon at $\ell_{\gammagamma} \approx 1.4 \times 10^{20}$ m for TeV photons — consistent with CTA/H.E.S.S. AGN attenuation measurements.
-2. **DVP resonance wavelength:** Anomalous absorption at $\lambda_{113}$ — a unique prediction for future EBL spectrometers.
-3. **Optical regime:** DVP is negligible ($10^{-60}$) for optical photons — UQFF predicts no DVP signature for SDSS EBL measurements.
-4. **Prime lattice spacing:** $\ell_text{DVP} = r_H / 149 \approx 2.95 \times 10^{24}$ m — encoded in the prime counting function.
+1. **TeV absorption horizon:** UQFF predicts horizon at $\ell_{\gammagamma} \approx 1.4 \times 10^{20}$ m for TeV photons --- consistent with CTA/H.E.S.S. AGN attenuation measurements.
+2. **DVP resonance wavelength:** Anomalous absorption at $\lambda_{113}$ --- a unique prediction for future EBL spectrometers.
+3. **Optical regime:** DVP is negligible ($10^{-60}$) for optical photons --- UQFF predicts no DVP signature for SDSS EBL measurements.
+4. **Prime lattice spacing:** $\ell_text{DVP} = r_H / 149 \approx 2.95 \times 10^{24}$ m --- encoded in the prime counting function.
 
 ---
 
@@ -136,7 +136,7 @@ TeV photons are completely absorbed after a single DVP lattice spacing — this 
 |-------|------|
 | PAPER_429 | DVP definition: $A(p) \propto [\text{SSq}]^{\pi(p)}/p^{26}$ |
 | PAPER_565 | VDS; $\ell_text{DVP}$ mean free path |
-| PAPER_566 | Gap analysis — this is Missing Extension 4 |
+| PAPER_566 | Gap analysis --- this is Missing Extension 4 |
 
 ---
 
@@ -162,12 +162,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -211,7 +211,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.057$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -231,7 +231,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -249,34 +249,34 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade $\to$ J_EBL $\approx$ 3.1e-6 W/m2/sr | EBL isotropic: ~2.5–5$\times$10-6 W/m2/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | PASS Consistent |
+| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade $\to$ J_EBL $\approx$ 3.1e-6 W/m2/sr | EBL isotropic: ~2.5--5$\times$10-6 W/m2/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | PASS Consistent |
 | Photon mass upper limit | UQFF UA=0 topology $\to$ photon strictly massless ($m_{\gamma}$ < 10-113 eV) | $m_{\gamma}$ < 10-18 eV (PDG 2024) | PDG 2024 | PASS $k_{\eta}$ suppresses photon mass to zero |
 | CMB temperature T_CMB | UQFF: T_CMB = ($\rho$_UA / $\sigma$_SB)^0.25 | T_CMB = 2.72548 $\pm$ 0.00057 K | FIRAS/CMB 1996 | PASS Input parameter (exact match) |
 | Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering $\to$ finite sky brightness | Dark night sky: B_sky ~ 10-13 W/m2/sr | Photometry | PASS UQFF DVP scatter provides opacity |
 
 **New physics claim:** The Olbers paradox is resolved in UQFF by DVP photon-photon scattering
-within pocket shells — each shell at redshift z contributes a DPM-suppressed flux. This predicts
+within pocket shells --- each shell at redshift z contributes a DPM-suppressed flux. This predicts
 a specific EBL spectral shape with a DVP frequency break at f_DVP ~ 5.7e16 Hz (FUV), testable
 with JWST ultra-deep field photometry.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*PAPER_570 — Star Magic UQFF Framework — QS 5/5*
+*PAPER_570 --- Star Magic UQFF Framework --- QS 5/5*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

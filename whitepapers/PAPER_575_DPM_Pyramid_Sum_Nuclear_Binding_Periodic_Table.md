@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [DPM, SCm, F_{U\_Bi\_i}, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_575 — DPM Pyramid Sum Nuclear Binding & Periodic Table
+# PAPER_575 --- DPM Pyramid Sum Nuclear Binding & Periodic Table
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -56,7 +56,7 @@ $$r(A) = 1.2 \times 10^{-15} \cdot A^{1/3}\;\text{m}$$
 
 **Iron peak verification:**
 
-Fe-56 ($Z=26$, $A=56$): $E_{\text{bind}}/A \approx 8.79$ MeV — global maximum  
+Fe-56 ($Z=26$, $A=56$): $E_{\text{bind}}/A \approx 8.79$ MeV --- global maximum  
 Confirmed via F_{U\_Bi\_i} fit giving total binding $\approx 492$ MeV.
 
 **VDS epoch bound:**
@@ -65,7 +65,7 @@ $$c_{26}^{(i)} = \frac{1}{26!} \leq \lambda_{\min}^{(i)} = \frac{P_{\text{order}
 
 **BH harmonic periodic group assignment:**
 
-$$\text{Group}(Z) = \minbigl\{n : BH_{\text{cumulative}}(n) \geq Z\bigr}, \quad BH_{\text{cum}}(n) = \sum_{k=1}^{n} 2(2k-1)$$
+$$\text{Group}(Z) = \min\bigl\{n : BH_{\text{cumulative}}(n) \geq Z\bigr}, \quad BH_{\text{cum}}(n) = \sum_{k=1}^{n} 2(2k-1)$$
 
 ---
 
@@ -85,16 +85,16 @@ $$\text{Group}(Z) = \minbigl\{n : BH_{\text{cumulative}}(n) \geq Z\bigr}, \quad 
 
 ## §4 Periodic Table Epoch Assignment
 
-**Epoch 1 (Z=1–3):** $T_j$ small; simple $H_m$ pair structure; single DPM crossings.
+**Epoch 1 (Z=1--3):** $T_j$ small; simple $H_m$ pair structure; single DPM crossings.
 
 **Iron-peak region (Epoch 2 peak, Z=26):** $T_j$ maximises $dT_j/dZ$ curvature at Fe;
 DPM nuclear equilibrium at $\text{DPM}_n = \text{DPM}_s$ $\to$ maximum binding.
 
-**Actinides (Epoch 4: Z=89–103):** Full 26-degree $T_j$ required; DVP prime seed critical;
-$P_{\text{order}} \approx 10^{-3}$ — stability marginal, maintained by $U_b$.
+**Actinides (Epoch 4: Z=89--103):** Full 26-degree $T_j$ required; DVP prime seed critical;
+$P_{\text{order}} \approx 10^{-3}$ --- stability marginal, maintained by $U_b$.
 
 **Epoch boundary transitions:** DVP $\sigma(n)$ prime modulation ensures no two elements
-share the same discrete hypergraph nuclear state — producing chemical uniqueness.
+share the same discrete hypergraph nuclear state --- producing chemical uniqueness.
 
 ---
 
@@ -221,7 +221,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.119$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -241,7 +241,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -259,35 +259,35 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
 | Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
-| Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
+| Island of stability (Z=114--126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
 | Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ $m_{\alpha}$ = 4m_p - $B_{\alpha}$/c2 | $m_{\alpha}$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i --- without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Source:* `grok_{share\_efc8a971378f}.txt` — Session 154  
+*Source:* `grok_{share\_efc8a971378f}.txt` --- Session 154  
 > See also:* PAPER_573 (3D-IPO hub), PAPER_550 (DPM quantisation), PAPER_577 (island of stability)
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

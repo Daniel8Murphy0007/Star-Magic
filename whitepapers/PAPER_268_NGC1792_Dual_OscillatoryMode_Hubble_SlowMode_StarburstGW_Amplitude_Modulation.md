@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_268
-title: "Dual Oscillatory Mode Superposition — Hubble Slow Mode Starburst GW Amplitude Modulation in
+title: "Dual Oscillatory Mode Superposition --- Hubble Slow Mode Starburst GW Amplitude Modulation in
 NGC 1792"
 session: 73
 date: 2026-03-01
@@ -8,16 +8,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, GW, Hubble, gravitational-wave, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_268: Dual Oscillatory Mode Superposition — Hubble Slow Mode Starburst GW Amplitude Modulation in NGC 1792
+# PAPER_268: Dual Oscillatory Mode Superposition --- Hubble Slow Mode Starburst GW Amplitude Modulation in NGC 1792
 **Author:** Daniel T. Murphy
 
 **Authors:** Daniel T. Murphy  
 **Date:** March 2026  
 **UQFF Module:** GALAXY_{NGC\_1792}.cpp (Module 19, "The Stellar Forge")  
-**Session:** 73 — UQFF 2.0 Upgrade — Dimensional Bug Fix and Discovery  
+**Session:** 73 --- UQFF 2.0 Upgrade --- Dimensional Bug Fix and Discovery  
 **Keywords:** NGC 1792, oscillatory gravity, Hubble slow mode, gravitational waves, amplitude
 modulation, dimensional analysis
 
@@ -26,7 +26,7 @@ modulation, dimensional analysis
 ## Abstract
 
 In the pre-UQFF-2.0 NGC 1792 module, the second oscillatory gravity term `term_osc2` was computed as
-`(2\pi / t_{Hubble\_gyr}) \times A_osc \times cos(k\cdotx − \omega\cdott)` where `t_{Hubble\_gyr} = 13.8` is a **dimensionless Gyr
+`(2\pi / t_{Hubble\_gyr}) \times A_osc \times cos(k\cdotx - \omega\cdott)` where `t_{Hubble\_gyr} = 13.8` is a **dimensionless Gyr
 number**, creating a dimensional inconsistency. The canonical fix replaces this with `(2\pi /
 t_Hubble)` where `t_Hubble = 13.8 \times 109 \times 3.15576\times107 s = 4.352\times1017 s`. After correction, the two
 oscillatory terms produce **modes at distinct frequency scales**: a fast standing wave at $\omega$_osc =
@@ -91,7 +91,7 @@ double term_osc2 = (2 * M_PI / t_Hubble) * A_osc * cos(arg);
 producing angular frequency:
 $$\omega_H = \frac{2\pi}{t_\text{Hubble}} = \frac{2\pi}{4.352 \times 10^{17}\ \text{s}} \approx 1.44 \times 10^{-17}\ \text{rad/s}$$
 
-This is the **Hubble angular frequency** — an ultra-low-frequency gravitational mode.
+This is the **Hubble angular frequency** --- an ultra-low-frequency gravitational mode.
 
 ---
 
@@ -155,7 +155,7 @@ frequency to galactic oscillation frequency:
 
 $$\boxed{\varepsilon_text{mod} = \frac{\omega_H}{\omega_text{osc}} = \frac{1.44 \times 10^{-17}}{2.49 \times 10^{-12}} \approx 5.8 \times 10^{-6}}$$
 
-This is the **modulation depth** — approximately 5.8 parts per million at the Hubble frequency.
+This is the **modulation depth** --- approximately 5.8 parts per million at the Hubble frequency.
 
 ### 3.2 Beat Period
 
@@ -209,7 +209,7 @@ combining the starburst enhancement of PAPER_267 with the Hubble slow mode disco
 |------|-----------|--------|----------------|
 | Fast standing wave (term_osc1) | $\omega$_osc = 2.49$\times$10-12 rad/s | 80,200 yr | NGC 1792 light-crossing |
 | Hubble slow mode (term_osc2 corrected) | $\omega$_H = 1.44$\times$10-17 rad/s | 13.8 Gyr | Hubble time |
-| Modulation envelope | $\varepsilon$_mod $\approx$ 5.8$\times$10-6 | — | 5.8 ppm depth |
+| Modulation envelope | $\varepsilon$_mod $\approx$ 5.8$\times$10-6 | --- | 5.8 ppm depth |
 
 ---
 
@@ -234,7 +234,7 @@ $$\varepsilon_text{NGC1792} = \frac{\omega_H}{\omega_text{osc}} = \frac{2\pi/t_\
 This can also be written as:
 $$\varepsilon = \frac{r}{D_H}$$
 
-where $D_H = c \times t_\text{Hubble}$ is the Hubble distance (~14 Gly). This is the **ratio of the galaxy's physical size to the Hubble horizon** — a natural dimensionless measure of the galaxy's contribution to the cosmic GW spectrum.
+where $D_H = c \times t_\text{Hubble}$ is the Hubble distance (~14 Gly). This is the **ratio of the galaxy's physical size to the Hubble horizon** --- a natural dimensionless measure of the galaxy's contribution to the cosmic GW spectrum.
 
 ### 5.3 Starburst Galaxy GW Spectral Imprint
 
@@ -265,12 +265,12 @@ dominant terms, consistent with a Hubble-scale perturbation on galactic gravity.
 1. The pre-UQFF-2.0 `GALAXY_{NGC\_1792}.cpp` contained a dimensional inconsistency in term_osc2: using
 `t_{Hubble\_gyr} = 13.8` (dimensionless) instead of `t_Hubble` (seconds).
 
-2. After canonical fix: $\omega$_H = 2$\pi$/t_Hubble $\approx$ 1.44$\times$10-17 rad/s — the **Hubble angular frequency**.
+2. After canonical fix: $\omega$_H = 2$\pi$/t_Hubble $\approx$ 1.44$\times$10-17 rad/s --- the **Hubble angular frequency**.
 
 3. The two oscillatory modes (fast standing wave at $\omega$_osc $\approx$ 2.49$\times$10-12 rad/s, Hubble slow mode at
 $\omega$_H $\approx$ 1.44$\times$10-17 rad/s) create a **Hubble-timescale amplitude modulation** of starburst GWs.
 
-4. Modulation depth $\varepsilon$ = $\omega$_H/$\omega$_osc = r/(c $\times$ t_Hubble) $\approx$ 5.8$\times$10-6 (5.8 ppm) — a universal UQFF
+4. Modulation depth $\varepsilon$ = $\omega$_H/$\omega$_osc = r/(c $\times$ t_Hubble) $\approx$ 5.8$\times$10-6 (5.8 ppm) --- a universal UQFF
 prediction.
 
 5. The physical ratio $\varepsilon$ = r/D_H provides a new **UQFF observable**: the starburst galaxy's
@@ -358,7 +358,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.166$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -378,7 +378,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -396,7 +396,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -409,29 +409,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
-- Daniel T. Murphy, *UQFF Framework*, Star-Magic Repository (2025–2026)
-- GALAXY_{NGC\_1792}.cpp UQFF 2.0 (Session 73, Module 19) — dimensional bug fix commit
-- PAPER_267: SFR Normalization — Starburst-Buoyancy Coherence in NGC 1792
+- Daniel T. Murphy, *UQFF Framework*, Star-Magic Repository (2025--2026)
+- GALAXY_{NGC\_1792}.cpp UQFF 2.0 (Session 73, Module 19) --- dimensional bug fix commit
+- PAPER_267: SFR Normalization --- Starburst-Buoyancy Coherence in NGC 1792
 - NGC 1792 parameters: r = 80,000 ly = 7.569$\times$1020 m, z = 0.0095
 - Hubble time: t_Hubble = 13.8 Gyr = 4.352$\times$1017 s
 
 ---
 
-*© 2026 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved*
+*© 2026 Daniel T. Murphy, daniel.murphy00@gmail.com --- All Rights Reserved*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

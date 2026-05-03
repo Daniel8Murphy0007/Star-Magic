@@ -7,15 +7,15 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [cluster, AGN, Hubble, MUGE, nebula, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_435 — Pillars of Creation: Per-System MUGE with E(t) Erosion Coupling and M0=10,100 MM_sun
+# PAPER_435 --- Pillars of Creation: Per-System MUGE with E(t) Erosion Coupling and M0=10,100 MM_sun
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_{share\_68eb34022}.txt — Document 7: "Master Universal Gravity Equation_Pillars of
-Creation Evolution_03May2025.docx" (lines 2304–2659)
+**Source:** grok_{share\_68eb34022}.txt --- Document 7: "Master Universal Gravity Equation_Pillars of
+Creation Evolution_03May2025.docx" (lines 2304--2659)
 **Session:** 119
 **CP4 Class:** `PillarsOfCreationPerSystemMUGE_{ErosionCoupling\_Calculator}` (#90)
 
@@ -30,7 +30,7 @@ the Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-PAPER_435 delivers the **complete per-system MUGE** for the Pillars of Creation (Eagle Nebula, M16, NGC 6611) — the iconic Hubble image showing pillar-like molecular cloud columns undergoing photo-erosion from the nearby young star cluster NGC 6611. The system parameters are: $M_0 = 10{,}100 \, M_\odot$, $r = 5$ ly $= 4.731 \times 10^{16}$ m, $\tau_text{SF} = \tau_text{erosion} = 1$ Myr.
+PAPER_435 delivers the **complete per-system MUGE** for the Pillars of Creation (Eagle Nebula, M16, NGC 6611) --- the iconic Hubble image showing pillar-like molecular cloud columns undergoing photo-erosion from the nearby young star cluster NGC 6611. The system parameters are: $M_0 = 10{,}100 \, M_\odot$, $r = 5$ ly $= 4.731 \times 10^{16}$ m, $\tau_text{SF} = \tau_text{erosion} = 1$ Myr.
 
 **Novel claim (Q1):** First UQFF MUGE incorporating a time-decaying **erosion function** $E(t) = E_0 e^{-t/\tau_text{erosion}}$ that couples directly to the base gravity term as a suppression factor $(1 - E(t))$, quantifying how photo-erosion of pillar material reduces the effective column mass and thus the gravitational confinement, while stellar wind still exceeds gravity by ~15 orders of magnitude.
 
@@ -61,9 +61,9 @@ $$M(t) = 10{,}100 \, M_\odot \left(1 + 0.9901 \, e^{-t/\tau_text{SF}}\right)$$
 **Erosion factor:**
 $$E(t) = 0.1 \, e^{-t/\tau_text{erosion}}$$
 
-At $t=0$: $E(0) = 0.1$ — 10% of base gravity suppressed by cloud erosion  
-At $t=\tau=1$ Myr: $E(\tau) = 0.037$ — erosion subsides as gas disperses  
-At $t\ggtau$: $E \rightarrow 0$ — fully dispersed, no gravitational confinement
+At $t=0$: $E(0) = 0.1$ --- 10% of base gravity suppressed by cloud erosion  
+At $t=\tau=1$ Myr: $E(\tau) = 0.037$ --- erosion subsides as gas disperses  
+At $t\gg\tau$: $E \rightarrow 0$ --- fully dispersed, no gravitational confinement
 
 ---
 
@@ -71,29 +71,29 @@ At $t\ggtau$: $E \rightarrow 0$ — fully dispersed, no gravitational confinemen
 
 $$\boxed{g_\text{PoC}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-seeded + expansion + B + erosion suppression (novel term):**
+**T1 --- DPM-seeded + expansion + B + erosion suppression (novel term):**
 $$T_1 = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)(1 - E(t))$$
 $$= \frac{6.674 \times 10^{-11} \times 2.009 \times 10^{34}}{(4.731 \times 10^{16})^2} \times 1 \times (1 - 10^{-17}) \times 0.9$$
 $$\approx 5.99 \times 10^{-20} \, \text{m/s}^2 \quad [t=0]$$
 
-**T2 — UQFF Ug1+Ug4 with f_TRZ:**
+**T2 --- UQFF Ug1+Ug4 with f_TRZ:**
 $$T_2 = 2\frac{G M(t)}{r^2}(1 - B/B_\text{crit})(1 + f_\text{TRZ}) \approx 1.32 \times 10^{-19} \, \text{m/s}^2$$
 
-**T3 — $\Lambda$:** $\sim 3.3 \times 10^{-36}$ m/s2 (negligible)
+**T3 --- $\Lambda$:** $\sim 3.3 \times 10^{-36}$ m/s2 (negligible)
 
-**T4 — Quantum uncertainty:** $\sim 10^{-30}$ m/s2 (negligible)
+**T4 --- Quantum uncertainty:** $\sim 10^{-30}$ m/s2 (negligible)
 
-**T5 — Scaled EM with [UA]:** $\sim 10^{-24}$ m/s2 (negligible at B=1e-6 T)
+**T5 --- Scaled EM with [UA]:** $\sim 10^{-24}$ m/s2 (negligible at B=1e-6 T)
 
-**T6 — Fluid dynamics:** $\rho_f V g / M$
+**T6 --- Fluid dynamics:** $\rho_f V g / M$
 
-**T7 — Oscillatory stellar modes:** $A_\text{osc}\cos(kr)\cos(\omega t)$
+**T7 --- Oscillatory stellar modes:** $A_\text{osc}\cos(kr)\cos(\omega t)$
 
-**T8 — DM perturbation:** $\sim (1+M_\text{DM}/M) \times \delta\rho/\rho$
+**T8 --- DM perturbation:** $\sim (1+M_\text{DM}/M) \times \delta\rho/\rho$
 
-**T9 — Supernova/wind mass-loss feedback:** combined with wind
+**T9 --- Supernova/wind mass-loss feedback:** combined with wind
 
-**T10 — Stellar wind ram pressure (dominant):**
+**T10 --- Stellar wind ram pressure (dominant):**
 $$T_{10} = \frac{\rho_w v_w^2}{\rho_f} = \frac{10^{-21} \times 4 \times 10^{12}}{10^{-21}} = 4 \times 10^{12} \, \text{m}^2/\text{s}^2 \Rightarrow a_w = \frac{4 \times 10^{12}}{r} \approx 8.45 \times 10^{-5} \, \text{m/s}^2$$
 
 ---
@@ -127,7 +127,7 @@ The $(1-E(t))$ erosion factor **reduces the gravitational confinement at $t=0$ b
 
 ## 7. Comparison to Standard Model
 
-Standard photo-erosion models (Bertoldi 1989, Johnston et al. 2009): use photoionization rate $\dot{M}_\text{evap} \sim 10^{-7} M_\odot$/yr — purely mass-loss. The UQFF adds: erosion couples to $g_\text{eff}$ via $(1-E(t))$ meaning the **gravitational confinement** declines proportionally to erosion, not just mass — a fundamentally different prediction testable by pillar column density maps.
+Standard photo-erosion models (Bertoldi 1989, Johnston et al. 2009): use photoionization rate $\dot{M}_\text{evap} \sim 10^{-7} M_\odot$/yr --- purely mass-loss. The UQFF adds: erosion couples to $g_\text{eff}$ via $(1-E(t))$ meaning the **gravitational confinement** declines proportionally to erosion, not just mass --- a fundamentally different prediction testable by pillar column density maps.
 
 ---
 
@@ -153,12 +153,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -181,8 +181,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -268,7 +268,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.168$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -288,7 +288,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -306,41 +306,41 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Pillars of Creation luminosity IR 3.6–8 $\mu$m | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 0.01 `M_{M\_sun}`/yr | JWST / Spitzer | PASS Consistent order of magnitude |
+| Pillars of Creation luminosity IR 3.6--8 $\mu$m | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 0.01 `M_{M\_sun}`/yr | JWST / Spitzer | PASS Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | JWST / Spitzer | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Pillars of Creation
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future JWST / Spitzer monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
 ## 8. Testable Predictions
 
-**Q5 Prediction 1:** $E_0 = 0.1$ predicts that the photoionization front has suppressed exactly 10% of the self-gravity at the pillar tips ($t\approx 0$). UQFF predicts pillar survival time $\tau_text{survival} = \tau_text{erosion} = 1$ Myr before complete dispersal — consistent with Herschel/Hubble ESA observations showing Pillars will be destroyed in ~$1-2$ Myr.
+**Q5 Prediction 1:** $E_0 = 0.1$ predicts that the photoionization front has suppressed exactly 10% of the self-gravity at the pillar tips ($t\approx 0$). UQFF predicts pillar survival time $\tau_text{survival} = \tau_text{erosion} = 1$ Myr before complete dispersal --- consistent with Herschel/Hubble ESA observations showing Pillars will be destroyed in ~$1-2$ Myr.
 
-**Q5 Prediction 2:** At $t = 2\tau = 2$ Myr, $E(t) = 0.1 e^{-2} \approx 0.0135$ — UQFF predicts residual gas density at pillar base will be ~86.5% of original, testable by JWST mid-IR dust emission maps (JWST 2022 Eagle Nebula images already showing tip erosion quantifiable at this level).
+**Q5 Prediction 2:** At $t = 2\tau = 2$ Myr, $E(t) = 0.1 e^{-2} \approx 0.0135$ --- UQFF predicts residual gas density at pillar base will be ~86.5% of original, testable by JWST mid-IR dust emission maps (JWST 2022 Eagle Nebula images already showing tip erosion quantifiable at this level).
 
-**Q5 Prediction 3:** The Ug overlap term $T_2 = 2 G M(t)/r^2 \times 1.1$ predicts a UQFF-specific gravitational mode at $f_\text{UQFF} \approx v_s/(2r) \approx 10$ Hz (acoustic pillar resonance) that would manifest as sub-parsec density fluctuations — potentially distinguishable in high-resolution ALMA molecular line maps.
+**Q5 Prediction 3:** The Ug overlap term $T_2 = 2 G M(t)/r^2 \times 1.1$ predicts a UQFF-specific gravitational mode at $f_\text{UQFF} \approx v_s/(2r) \approx 10$ Hz (acoustic pillar resonance) that would manifest as sub-parsec density fluctuations --- potentially distinguishable in high-resolution ALMA molecular line maps.
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -349,7 +349,7 @@ future JWST / Spitzer monitoring observations.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |

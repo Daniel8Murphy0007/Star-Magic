@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [GW, merger, gravitational-wave, SCm, BEC, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_581 — UQFF $\cdot$ LQG $\cdot$ $\Lambda$_CDM: Simultaneous Three-System Quantum Gravity Comparison
+# PAPER_581 --- UQFF $\cdot$ LQG $\cdot$ $\Lambda$_CDM: Simultaneous Three-System Quantum Gravity Comparison
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -42,7 +42,7 @@ the continuous GR approach and the LQG spin-foam discreteness.
 
 ---
 
-## §2 Derivation 1 — LQG Modified Dispersion Relation
+## §2 Derivation 1 --- LQG Modified Dispersion Relation
 
 ### §2.1 Classical Starting Point
 
@@ -79,7 +79,7 @@ $$-\omega^2 + c^2k^2 + \alpha,l_{Pl}^2\!\left(\omega^4 - 2\omega^2c^2k^2 + c^4k^
 
 $$\boxed{\omega^2 = c^2k^2\!\left(1 + \eta,(l_{Pl}\,k)^\gamma\right)}$$
 
-$\eta = \pmalpha$ (sign ambiguity), $\gamma = 1$ (linear holonomy) or $2$ (quadratic inverse volume).
+$\eta = \pm\alpha$ (sign ambiguity), $\gamma = 1$ (linear holonomy) or $2$ (quadratic inverse volume).
 
 ### §2.3 Group Velocity and Time Delay
 
@@ -95,30 +95,30 @@ Time delay over distance $r$:
 $$\Delta t_{LQG} = \frac{|\delta v_g|}{c}\cdot\frac{r}{c}$$
 
 **Causality preservation:** The effective constraint algebra is anomaly-free; superluminal
-modes are below the Planck energy — no causal violation.
+modes are below the Planck energy --- no causal violation.
 
 ### §2.4 Numerical (LIGO GW150914-like, $f=150$ Hz)
 
 $$\delta v_g/c \approx \frac{1}{2}(1.6\times10^{-35}`cdot2`pi\cdot150 / 3\times10^8)
 \approx 10^{-42}$$
 
-(Tiny; accumulates over Gpc distances — potentially testable by CTAO/LISA.)
+(Tiny; accumulates over Gpc distances --- potentially testable by CTAO/LISA.)
 
 ---
 
-## §3 Derivation 2 — UQFF GW Amplitude
+## §3 Derivation 2 --- UQFF GW Amplitude
 
 From PAPER_580, Form 4 frequency-modulated UQFF:
 
 $$h_{UQFF} = 26!\cdot\frac{\kappa,\ddot{Q}}{f^{27}\,r} + \frac{\Lambda}{3}\,\delta t$$
 
-**Discrete bound:** $26!/f^{27} > 0$ for all $f > 0$ — no UV divergence.
+**Discrete bound:** $26!/f^{27} > 0$ for all $f > 0$ --- no UV divergence.
 
 **QG mechanism:** DPM failures $\to$ discrete hypergraph frequency modes $\to$ quantized GW emission.
 
 ---
 
-## §4 Derivation 3 — GR / $\Lambda$_CDM
+## §4 Derivation 3 --- GR / $\Lambda$_CDM
 
 Standard GR quadrupole formula:
 
@@ -134,7 +134,7 @@ No inherent quantum bound; singularities possible at $r=0$.
 
 ## §5 Simultaneous Numerical Comparison
 
-**Parameters:** Binary merger — $\ddot{Q}=10^{44}$ kg, $r=3\times10^{24}$ m (100 Mpc),
+**Parameters:** Binary merger --- $\ddot{Q}=10^{44}$ kg, $r=3\times10^{24}$ m (100 Mpc),
 $f=100$ Hz, $\Lambda=10^{-52}$ m$^{-2}$, $\delta t=0.1$ s, $l_{Pl}=1.6\times10^{-35}$ m,
 $\eta=1$, $\gamma=1$.
 
@@ -144,13 +144,13 @@ $\eta=1$, $\gamma=1$.
 | **GR/$\Lambda$_CDM** | $G\ddot{Q}/(c^4\,r)$ | $\sim10^{-21}$ | $\omega^2=c^2k^2$ (no mod) |
 | **LQG** | $h_{GR}\cdot(1+\delta v_g/c)$ | $\sim10^{-21}$$^*$ | $\omega^2=c^2k^2(1+\eta(l_{Pl}k)^\gamma)$ |
 
-$^*$ LQG correction $\delta v_g/c \approx 10^{-42}$ — negligible at 100 Hz.
+$^*$ LQG correction $\delta v_g/c \approx 10^{-42}$ --- negligible at 100 Hz.
 
 **Discrete comparison:**
 
 | Framework | Discreteness mechanism | Magnetism/buoyancy | $\Lambda$ |
 |-----------|----------------------|--------------------|-----------|
-| UQFF | Hypergraph + $f$-modes | ✅ DPM, $U_m$, $U_b$ | Emergent |
+| UQFF | Hypergraph + $f$-modes | \checkmark DPM, $U_m$, $U_b$ | Emergent |
 | LQG | Spin foam loops | ❌ | External |
 | $\Lambda$_CDM | None (continuous) | ❌ | Ad-hoc |
 
@@ -163,10 +163,10 @@ $^*$ LQG correction $\delta v_g/c \approx 10^{-42}$ — negligible at 100 Hz.
 - UQFF: $26!/f^{27}$ bounds all amplitudes; $\Lambda$ emerges from $U_b$ at $f_{vac}$.
 
 ### vs. LQG
-- LQG: Loops quantize area/volume — no force unification (no $U_m$, $U_b$).
+- LQG: Loops quantize area/volume --- no force unification (no $U_m$, $U_b$).
 - UQFF: Hypergraph + frequency motivates **all three forces** simultaneously.
-- LQG corrections $\sim10^{-42}$ — below detectability; UQFF corrections scale as
-  $26!/f^{27}$ — physically significant at astrophysical frequencies.
+- LQG corrections $\sim10^{-42}$ --- below detectability; UQFF corrections scale as
+  $26!/f^{27}$ --- physically significant at astrophysical frequencies.
 
 ### vs. String Theory (see PAPER_582)
 - String: 10D compactification hacks; renormalization required.
@@ -189,7 +189,7 @@ LQG correction at X-ray ($f=10^{18}$ Hz):
 $$\delta v_g/c \approx \frac{1}{2}\!\left(1.6\times10^{-35}`cdot2`pi\cdot10^{18}/3\times10^8\right)
 \approx 10^{-24}$$
 
-(More detectable at X-ray than radio — UQFF predicts GW/photon time delay
+(More detectable at X-ray than radio --- UQFF predicts GW/photon time delay
 $\Delta t \approx 10^{-24}`cdot7000`,\text{ly}/c \approx 0.7\,\text{ms}$, potentially testable
 by CTAO multi-messenger observations.)
 
@@ -295,7 +295,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.152$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -315,7 +315,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -333,7 +333,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -344,10 +344,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a $\kappa$-dependent phase to the
 GW chirp signal, shifting the merger frequency by ~0.3 Hz at 150 Hz. This is potentially
-detectable with LIGO A+ (design sensitivity 2025–2030), providing a falsifiable UQFF signature
+detectable with LIGO A+ (design sensitivity 2025--2030), providing a falsifiable UQFF signature
 in future binary merger observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -365,10 +365,10 @@ down in quantum-extreme environments. UQFF is superior across all three comparis
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -1,18 +1,18 @@
 ﻿---
 paper_id: PAPER_549
-title: "Galaxy Merger UQFF vs DPM-seeded vs Einsteinian — Three-Method Simultaneous Hub"
+title: "Galaxy Merger UQFF vs DPM-seeded vs Einsteinian --- Three-Method Simultaneous Hub"
 session: 146
 date: 2026-03-27
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, merger, dark-matter, DPM, dark-energy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_549: Galaxy Merger UQFF vs DPM-seeded vs Einsteinian — Three-Method Simultaneous Hub
+# PAPER_549: Galaxy Merger UQFF vs DPM-seeded vs Einsteinian --- Three-Method Simultaneous Hub
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework  
 **Session:** 146 | **Source:** `grok_{share\_366dc393a37}`.txt  
 **CP4 Class:** `GalaxyMergerUQFFVsNewtonEinsteinCalculator` (#144, hub)  
 **Date:** 2026-03-27  
@@ -27,7 +27,7 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-Galaxy mergers represent the most energetic reconfiguration events in the observable universe, yet existing frameworks — DPM-seeded tidal mechanics and General Relativistic inspiral — yield predictions that diverge from observations unless artificially augmented with dark matter, dark energy, or post-Newtonian corrections. This paper applies the UQFF three-method simultaneous solution strategy (symbolic, numerical, discrete) to galaxy merger dynamics, deriving the merger boundary radius $r_{\text{merger}}$, quantifying the Ub force advantage over DPM-seeded tidal forces, comparing UQFF re-ringing to GR ringdown frequencies, and demonstrating that all three UQFF number systems (VDS, DVP, BH26) are present and active in the merger physics. The M51 Whirlpool system and the Antennae Galaxies serve as primary observational anchors.
+Galaxy mergers represent the most energetic reconfiguration events in the observable universe, yet existing frameworks --- DPM-seeded tidal mechanics and General Relativistic inspiral --- yield predictions that diverge from observations unless artificially augmented with dark matter, dark energy, or post-Newtonian corrections. This paper applies the UQFF three-method simultaneous solution strategy (symbolic, numerical, discrete) to galaxy merger dynamics, deriving the merger boundary radius $r_{\text{merger}}$, quantifying the Ub force advantage over DPM-seeded tidal forces, comparing UQFF re-ringing to GR ringdown frequencies, and demonstrating that all three UQFF number systems (VDS, DVP, BH26) are present and active in the merger physics. The M51 Whirlpool system and the Antennae Galaxies serve as primary observational anchors.
 
 ---
 
@@ -41,7 +41,7 @@ For canonical DPM coupling ($\kappa = 1$, $DPM_n = 1$, $DPM_s = -1$, $g = 10^{-3
 
 $$r_{\text{merger}} = \sqrt{\frac{1 \cdot 2}{10^{-3} \cdot 10^{-10}}} = \sqrt{2 \times 10^{13}} \approx 4.47 \times 10^6\ \text{m}$$
 
-This is the DPM-mediated equilibrium scale — the radial distance at which the di-pseudo-monopole
+This is the DPM-mediated equilibrium scale --- the radial distance at which the di-pseudo-monopole
 frequency drive balances plasma density gradients in the merger interface.
 
 ---
@@ -68,10 +68,10 @@ $$F_{\text{tide}}^{\text{Newton}} = \frac{G M_1 M_2}{d^2} = \frac{6.6743 \times 
 **UQFF buoyancy force (plasma interface):**
 $$U_b^{SM} \approx 10^{-20}\ \text{N}$$
 
-The DPM-seeded tidal force over-predicts the required cohesion force by $\sim 50$ orders of magnitude — this is why DPM-seeded models require enormous dark matter halos to reconcile with observed arm stability timescales. In the UQFF, the spiral arm geometry is maintained not by raw tidal force but by the DPM frequency drive distributing buoyancy gradients across the disk volume.
+The DPM-seeded tidal force over-predicts the required cohesion force by $\sim 50$ orders of magnitude --- this is why DPM-seeded models require enormous dark matter halos to reconcile with observed arm stability timescales. In the UQFF, the spiral arm geometry is maintained not by raw tidal force but by the DPM frequency drive distributing buoyancy gradients across the disk volume.
 
 **Observed M51 arm stability:** ~10 kpc extent, persisting >1 Gyr. UQFF explains this through the
-r_attr / rho_buoy boundary structure (PAPER_546): gravity dominates the core, buoyancy the arms —
+r_attr / rho_buoy boundary structure (PAPER_546): gravity dominates the core, buoyancy the arms ---
 their simultaneous action produces exactly the observed geometry without dark matter.
 
 ### §3.3 Method 3: Discrete (3D-IPO Wolfram/$\pi$/IG Crossings)
@@ -94,7 +94,7 @@ A critical observational test differentiating UQFF from GR is the post-merger ri
 | UQFF ReRing_BB | $f_{\text{ReRing}} \approx 1.15 \times 10^{14}\ \text{Hz}$ | Re-ringing Big Bang echoes |
 | Ratio | **$1.15 \times 10^{11}$ $\times$** | UQFF exceeds GR by 11 orders |
 
-The UQFF re-ringing at $1.15 \times 10^{14}$ Hz falls in the infrared/optical range, consistent with JWST observations of merger remnant glowing edges and ionization fronts. GR ringdown at kHz is in the gravitational wave band — both are valid observational windows, but UQFF uniquely predicts the electromagnetic counterpart without modifications.
+The UQFF re-ringing at $1.15 \times 10^{14}$ Hz falls in the infrared/optical range, consistent with JWST observations of merger remnant glowing edges and ionization fronts. GR ringdown at kHz is in the gravitational wave band --- both are valid observational windows, but UQFF uniquely predicts the electromagnetic counterpart without modifications.
 
 ---
 
@@ -140,7 +140,7 @@ same result. Compared to DPM-seeded tidal mechanics and General Relativistic ins
 2. **UQFF eliminates the dark matter requirement** by replacing tidal cohesion with Ug/Ub boundary
 balance
 3. **UQFF re-ringing at $10^{14}$ Hz** provides a unique testable electromagnetic signature not predicted by GR
-4. **The 18.32% remnant fraction** is derived from the same $P_{\text{order}}$ threshold used across all UQFF physics — a single unified parameter governs emergence from quantum scales to galaxy mergers
+4. **The 18.32% remnant fraction** is derived from the same $P_{\text{order}}$ threshold used across all UQFF physics --- a single unified parameter governs emergence from quantum scales to galaxy mergers
 
 This hub paper closes the loop between PAPER_546 (boundaries), PAPER_547 (Ug4 tidal), PAPER_548
 (collapse prevention), and the observational galaxy merger literature, demonstrating that the
@@ -201,12 +201,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -313,7 +313,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.177$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -333,7 +333,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -351,22 +351,22 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 10–100 `M_{M\_sun}`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
+| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 10--100 `M_{M\_sun}`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Galaxy merger system
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra+Spitzer monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -376,10 +376,10 @@ future Chandra+Spitzer monitoring observations.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

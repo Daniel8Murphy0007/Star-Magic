@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [accretion, AGN, cluster, jet, pulsar, JWST, Chandra, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_214: MHD Clusters, Jets, and Accretion in the UQFF Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 50 — grok_{share\_7514fe}.txt Full Audit  
+**Session:** 50 --- grok_{share\_7514fe}.txt Full Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_{share\_7514fe}.txt lines 2037–2430 (PDF 6: B_{chat\_29Aug2025}.pdf — UQFF Compression
+**Source:** grok_{share\_7514fe}.txt lines 2037--2430 (PDF 6: B_{chat\_29Aug2025}.pdf --- UQFF Compression
 Cycle 2/3)
 
 ---
@@ -36,12 +36,12 @@ UQFF master as F_env,cluster contributions: jet termination shock, angular momen
 MHD with Alfvén velocity, Rankine-Hugoniot jump conditions, Press-Schechter mass function
 modification, and star formation rate coupling. These MHD terms drive Compression Cycle 2 (38
 systems ? compressed master with F_env(t)) and feed into Cycle 3 (99 systems), achieving
-99.87–99.98% alignment with JWST/Chandra observational data.
+99.87--99.98% alignment with JWST/Chandra observational data.
 
 
 
 **UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -65,7 +65,7 @@ $$
   & T_2 = 3\cdot m_p\cdot v_12/(16\cdot k_B)  (post-shock temperature) \\
   & UQFF F_env,jet term: \\
   & F_env,jet(t) = (L_jet/L_Edd)^a \times (?_2/?_1) \times cos2(?_jet) \\
-  & a ˜ 0.5–0.7 (radio mode: a~0.7, quasar mode: a~0.5) \\
+  & a ˜ 0.5--0.7 (radio mode: a~0.7, quasar mode: a~0.5) \\
   & ?_jet = half-opening angle of jet
 \end{aligned}
 $$
@@ -102,7 +102,7 @@ $$
   & Alfvénic Mach number: \\
   & M_A = v_flow / v_A    (plasma beta parameter ß ~ 1 when M_A ~ 1) \\
   & For Perseus cluster (Perseus cooling core): \\
-  & B_Perseus ˜ 5–30 \muG (Chandra X-ray inferences) \\
+  & B_Perseus ˜ 5--30 \mu\mathrm{G} (Chandra X-ray inferences) \\
   & ?_ICM ˜ 10?26 kg/m3  (central ICM density) \\
   & v_A = 30\times10?1° / v(4p\times10-7 \times 10?26) \\
   & = 3\times10?? / 3.54\times10?17 ˜ 8.5\times107 m/s = 85 km/s \\
@@ -223,12 +223,12 @@ and all PWN in UQFF to be modeled with single F_env,pwn
 
 | System | B-field | v_A (km/s) | SFR (M_?/yr) | F_env value |
 |--------|---------|-----------|------------|------------|
-| Perseus Cluster | 25 \muG | 85 | 0 (cooling flow halted) | 0.85 |
+| Perseus Cluster | 25 \mu\mathrm{G} | 85 | 0 (cooling flow halted) | 0.85 |
 | Westerlund 2 | ~1 mG (OB winds) | ~300 | 2000 | 0.80 |
-| M87 (Virgo A) | ~20 \muG | 70 | 0.001 | 0.95 |
-| SGR A* vicinity | ~150 \muG | 500 | 0.04 (CMZ) | 0.72 |
+| M87 (Virgo A) | ~20 \mu\mathrm{G} | 70 | 0.001 | 0.95 |
+| SGR A* vicinity | ~150 \mu\mathrm{G} | 500 | 0.04 (CMZ) | 0.72 |
 | Cassiopeia A | ~0.3 mG (SNR) | 900 | 0 (post-SN) | 0.91 |
-| ESO 137-001 | ~5 \muG | 20 | 5 (pre-strip) | 0.68 |
+| ESO 137-001 | ~5 \mu\mathrm{G} | 20 | 5 (pre-strip) | 0.68 |
 
 ---
 
@@ -237,7 +237,7 @@ and all PWN in UQFF to be modeled with single F_env,pwn
 $$
 \begin{aligned}
   & 99.87% JWST alignment (from \text{grok\_share\_7514fe}.txt): \\
-  & JWST observations: galaxy morphologies, SFR at z=2–10 \\
+  & JWST observations: galaxy morphologies, SFR at z=2--10 \\
   & UQFF SFR track: F_env,sfr matches observed SFR evolution \\
   & 2\times106 observation point dataset (JWST public + Chandra archived data) \\
   & Where UQFF differs from standard MHD models: \\
@@ -253,7 +253,7 @@ $$
 
 ## 6. References
 
-- `grok_{share\_7514fe}.txt` lines 2037–2430 (B_chat PDF, MHD cluster analysis)
+- `grok_{share\_7514fe}.txt` lines 2037--2430 (B_chat PDF, MHD cluster analysis)
 - PAPER_196: Triadic Master Equation System (F_env in master equation)
 - PAPER_211: 99-System Framework (Compression Cycle 3 context)
 - PAPER_198: F_UBii Taxonomy Part 1 (jet shock, angular momentum F_UBii variants)
@@ -284,12 +284,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -312,8 +312,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -366,7 +366,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.093$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -386,7 +386,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -408,10 +408,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -420,7 +420,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
@@ -503,7 +503,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [DPM, SCm, Yang-Mills, Navier-Stokes, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_578 — UQFF_comp Eigenvalue Mass Gap & Quantum Gravity Linkage
+# PAPER_578 --- UQFF_comp Eigenvalue Mass Gap & Quantum Gravity Linkage
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -73,7 +73,7 @@ At $r=1\,\text{AU}$: $\Delta_{YM} \approx 2.7\times10^{15}$ (confirming gap enor
 
 **Navier-Stokes bound:**
 
-$$\omega_{\max}(t) = \lambda_3 = \frac{2P}{3} + \frac{26!\,g}{\rho^{27}} < \infty \quadRightarrow\text{ no blow-up}$$
+$$\omega_{\max}(t) = \lambda_3 = \frac{2P}{3} + \frac{26!\,g}{\rho^{27}} < \infty \quad\Rightarrow\text{ no blow-up}$$
 
 ---
 
@@ -104,7 +104,7 @@ All eigenvalues positive for ALL $r > 0$ due to $26!$ factorial preventing zero 
 
 **Universal statement:** The UQFF_comp matrix is positive-definite for all physical configurations,
 proving that the mass gap and Navier-Stokes smoothness are structural properties of the
-26th-dimensional quantum field framework — not tuned parameters.
+26th-dimensional quantum field framework --- not tuned parameters.
 
 ---
 
@@ -194,7 +194,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.166$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -214,7 +214,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -232,7 +232,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -246,21 +246,21 @@ below the GUT scale and 33 orders above nuclear baryon-number scales. This inter
 framework predicts observable deviations from SM in the X-ray/radio astrophysical sector
 while remaining consistent with all collider and nuclear precision measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Source:* `grok_{share\_efc8a971378f}.txt` — Session 154  
+*Source:* `grok_{share\_efc8a971378f}.txt` --- Session 154  
 > See also:* PAPER_544 (Yang-Mills), PAPER_543 (Navier-Stokes), PAPER_552 (UQFF_comp hub)
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

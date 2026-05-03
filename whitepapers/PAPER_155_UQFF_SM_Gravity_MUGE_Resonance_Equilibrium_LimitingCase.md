@@ -8,7 +8,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, SCm, MUGE, Navier-Stokes, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_155: UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] = $\mu$_s$\nabla$(M_s/r) and the Emergence of DPM-seeded Gravity
@@ -31,7 +31,7 @@ roadmap)
 
 ## Abstract
 
-The Standard Model of gravity – DPM-seeded $g = \mu_s \cdot \nabla(M_s/r)$ at leading order, with General Relativistic corrections at higher order  must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f\_{TRZ} \to 0} g_{MUGE} = \mu_s\nabla(M_s/r)$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the DPM-seeded gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
+The Standard Model of gravity -- DPM-seeded $g = \mu_s \cdot \nabla(M_s/r)$ at leading order, with General Relativistic corrections at higher order  must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f\_{TRZ} \to 0} g_{MUGE} = \mu_s\nabla(M_s/r)$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the DPM-seeded gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
 
 ---
 
@@ -123,7 +123,7 @@ m/s^2 level. ? (consistent with observation)
 
 For the SM limit proof, we take B ? 0 strictly: $a_{aether\_res} \to 0$. ?
 
-**Term 6: Ug4i – THE SURVIVING TERM**
+**Term 6: Ug4i -- THE SURVIVING TERM**
 
 $$U_{g4i} = \kappa \cdot \frac{G \cdot M_{sys}}{r^2} \cdot \frac{1}{\kappa t} \cdot (1 - e^{-\kappa t})$$
 
@@ -167,7 +167,7 @@ The dominant correction terms with numerical values at Earth's surface:
 
 | Correction | Formula | Value at Earth | Status |
 |------------|---------|----------------|--------|
-| Vacuum decay | - ?t – $\mu$_s$\nabla$(M_s/r) | -0.5  ?t  9.8 m/s | Sub-ppb (?t_Earth = 0.001 for 6 yr lifetime test) |
+| Vacuum decay | - ?t -- $\mu$_s$\nabla$(M_s/r) | -0.5  ?t  9.8 m/s | Sub-ppb (?t_Earth = 0.001 for 6 yr lifetime test) |
 | Residual aether | aaether_res (B ~ 5$\times$10^-5 T) | ~10^-6 m/s^2 | Below precision |
 | Hubble coupling | k4 H0 c | 1.3$\times$10^-9 m/s^2 | Pioneer-anomaly scale |
 | Topology constant | fTRZ = 0.1 | 0.1 m/s^2 (global) | Normalisation scale |
@@ -292,7 +292,7 @@ not yet tested to the required precision (AGN, star formation, cosmological LSS)
 | Mercury precession correction | 5$\times$10^-8 fractional | Below all tests ? |
 | GW speed | c (exact) | fTRZ self-cancels |
 | UQFF valid for NSs? | No (SM fails, MUGE active) | B~10^8 T |
-| UQFF valid for AGN? | Yes (MUGE dominant) | – |
+| UQFF valid for AGN? | Yes (MUGE dominant) | -- |
 
 ---
 
@@ -335,12 +335,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -383,7 +383,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.195$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -403,7 +403,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -419,7 +419,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -432,13 +432,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
 - Einstein A. (1915), Preuss. Akad. Wiss.  General Relativity field equations
-- Newton I. (1687), Principia Mathematica – Universal Gravitation
+- Newton I. (1687), Principia Mathematica -- Universal Gravitation
 - LIGO/Virgo/Fermi (2017), ApJL 848 L12  v_GW = c constraint (GW170817)
 - Anderson J.D. et al. (2002), Phys. Rev. D 65, 082004  Pioneer anomaly measurement
 - Murphy D.T. (2026), PAPER_145  MUGE Cycle 3 master equation
@@ -450,10 +450,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -462,7 +462,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

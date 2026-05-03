@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, SCm, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_028: BSM Coupling Constants from UQFF Framework
@@ -18,11 +18,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Date:** March 6, 2026  
 **Version:** 1.0  
 **arXiv Reference:** 2506.15256 (Belle II |V_cb| determination, primary)  
-**Validation File:** `bsm_{physics\_validation}.py` — Section 2  
-**C++ Source:** `Core/Modules/BSMPhysicsUQFFModule.cpp` — `CKMVcbTerm` (§6)  
-**C++ Config:** `source4.cpp` — BSM calibration block (lines ~326–335)  
-**UQFF Domain:** 1.4 — Beyond Standard Model (BSM) Physics  
-**Status:** ✅ Complete
+**Validation File:** `bsm_{physics\_validation}.py` --- Section 2  
+**C++ Source:** `Core/Modules/BSMPhysicsUQFFModule.cpp` --- `CKMVcbTerm` (§6)  
+**C++ Config:** `source4.cpp` --- BSM calibration block (lines ~326--335)  
+**UQFF Domain:** 1.4 --- Beyond Standard Model (BSM) Physics  
+**Status:** \checkmark Complete
 
 ---
 
@@ -70,8 +70,8 @@ present in Standard Model treatments.
 
 The Cabibbo-Kobayashi-Maskawa (CKM) matrix describes the mixing between quark mass eigenstates and
 weak interaction eigenstates in the Standard Model. It is a 3$\times$3 unitary matrix parameterized by
-three mixing angles ($\theta$12, $\theta$13, $\theta$23) and one CP-violating phase $\delta$. The element |V_cb| — connecting
-the b quark to the c quark — is one of the most precisely measured CKM elements and is extracted
+three mixing angles ($\theta$12, $\theta$13, $\theta$23) and one CP-violating phase $\delta$. The element |V_cb| --- connecting
+the b quark to the c quark --- is one of the most precisely measured CKM elements and is extracted
 from exclusive and inclusive semileptonic B-meson decays.
 
 In the Standard Model, |V_cb| enters the B $\to$ D*ℓ$\nu$ and B $\to$ Dℓ$\nu$ decay rates as:
@@ -123,8 +123,8 @@ universality in b $\to$ c transitions at this precision.
 
 ### 1.3 The V_cb Puzzle and BSM Implications
 
-The longstanding V_cb puzzle — a ~2$\sigma$ tension between inclusive determinations (|V_cb|^incl ~ 42 $\times$
-10-3) and exclusive determinations (|V_cb|^excl ~ 39 $\times$ 10-3) — persists at the level of:
+The longstanding V_cb puzzle --- a ~2$\sigma$ tension between inclusive determinations (|V_cb|^incl ~ 42 $\times$
+10-3) and exclusive determinations (|V_cb|^excl ~ 39 $\times$ 10-3) --- persists at the level of:
 $$
 \Delta|V_cb| = |V_cb|^incl - |V_cb|^excl \approx 3 \times 10-3  (~2\sigma)
 $$
@@ -152,7 +152,7 @@ $$
   & = 1.537 \times 10-3
 \end{aligned}
 $$
-This quantity represents the fraction of the SCm vacuum that supports b $\to$ c flavor transitions —
+This quantity represents the fraction of the SCm vacuum that supports b $\to$ c flavor transitions ---
 i.e., the probability amplitude for a bottom-quark flavor state to mix with a charm-quark flavor
 state through the SCm condensate.
 
@@ -182,7 +182,7 @@ The `CKMVcbTerm` in `Core/Modules/BSMPhysicsUQFFModule.cpp` (§6) implements:
 $$
 F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i
 $$
-**Step 1 — Decay Width (Standard physics baseline):**
+**Step 1 --- Decay Width (Standard physics baseline):**
 $$
 \begin{aligned}
   & \Gamma(B\toDℓ\nu) = G_F2 \times |V_cb|2 \times (m_B \times \text{GeV\_to\_J})5 \\
@@ -199,7 +199,7 @@ $$
 \end{aligned}
 $$
 
-**Step 2 — Ug1 (B meson rest-mass gravity):**
+**Step 2 --- Ug1 (B meson rest-mass gravity):**
 $$
 \begin{aligned}
   & Ug1 = m_B \times \text{GeV\_to\_J} / (m_p \times c2) \\
@@ -209,7 +209,7 @@ $$
 \end{aligned}
 $$
 
-**Step 3 — Ug2 (CKM unitarity constraint):**
+**Step 3 --- Ug2 (CKM unitarity constraint):**
 $$
 \begin{aligned}
   & Ug2 = |V_cb|2 \times \kappa_Higgs \\
@@ -220,7 +220,7 @@ $$
 $$
 This is the key UQFF result: **Ug2 is exactly the SCm flavor-mixing vacuum density**.
 
-**Step 4 — Ug3 (Form factor q2 dependence):**
+**Step 4 --- Ug3 (Form factor q2 dependence):**
 $$
 \begin{aligned}
   & Ug3 = F(q2) \times ℏc / (m_B \times \text{GeV\_to\_J} \times 1 fm) \\
@@ -230,7 +230,7 @@ $$
 \end{aligned}
 $$
 
-**Step 5 — Ug4 (Weak-scale vacuum ratio):**
+**Step 5 --- Ug4 (Weak-scale vacuum ratio):**
 $$
 \begin{aligned}
   & Ug4 = \rho_UA \times (m_W \times \text{GeV\_to\_J}) / (\rho_SCm \times m_p \times c2) \\
@@ -240,7 +240,7 @@ $$
 \end{aligned}
 $$
 
-**Step 6 — Um (weak coupling magnetism):**
+**Step 6 --- Um (weak coupling magnetism):**
 $$
 \begin{aligned}
   & Um = \eta_weak \times \mu_B / (m_B \times \text{GeV\_to\_J} \times c) \\
@@ -249,7 +249,7 @@ $$
 \end{aligned}
 $$
 
-**Step 7 — Ub_i (LENR buoyancy):**
+**Step 7 --- Ub_i (LENR buoyancy):**
 $$
 \begin{aligned}
   & Ub_i = \beta_i \times \Gamma / (m_B \times \text{GeV\_to\_J} \times c2) \\
@@ -259,7 +259,7 @@ $$
 \end{aligned}
 $$
 
-**Step 8 — Total F_U:**
+**Step 8 --- Total F_U:**
 $$
 \begin{aligned}
   & F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i \\
@@ -267,7 +267,7 @@ $$
   & = 75.81
 \end{aligned}
 $$
-F_U > 0 confirms the B $\to$ Dℓ$\nu$ transition is energetically supported by the UQFF vacuum — consistent
+F_U > 0 confirms the B $\to$ Dℓ$\nu$ transition is energetically supported by the UQFF vacuum --- consistent
 with the observed 2.06% branching fraction.
 
 ### 2.4 UQFF Derivation of [SCm]_flavor
@@ -282,11 +282,11 @@ $$
 $$
 This value appears in `source4.cpp`:
 ```cpp
-double `SCm_{flavor\_mixing}` = 1.5366e-3;   // |V_cb|2 — vacuum flavor suppression
+double `SCm_{flavor\_mixing}` = 1.5366e-3;   // |V_cb|2 --- vacuum flavor suppression
 ```
 The Cabibbo angle provides an independent check:
 ```
-\theta_C = 0.227 rad  →  sin2(\theta_C) = 0.0507  →  |V_us|2 \approx 0.0507
+\theta_C = 0.227 rad  \rightarrow  sin2(\theta_C) = 0.0507  \rightarrow  |V_us|2 \approx 0.0507
 Ratio: [SCm]_flavor / |V_us|2 = 1.5366\times10-3 / 0.0507 = 0.0303 \approx (m_s/m_b)^(1/2)
 This confirms the [SCm]_flavor hierarchy follows the approximate quark mass ladder within UQFF. 
 ### 2.5 The \kappa_Higgs = 1.0 Constraint 
@@ -295,27 +295,27 @@ requirement that Higgs-mediated corrections to |V_cb| are at the SM level. In th
 \kappa_Higgs modulates the Ug2 term:
 Ug2 = |V_cb|2 \times \kappa_Higgs
 For \kappa_Higgs = 1.0 (SM limit): Ug2 = [SCm]_flavor exactly as measured. 
-For \kappa_Higgs \neq 1.0 (BSM): Ug2 shifts, implying a deviation in B → Dℓ\nu form factors that would be
+For \kappa_Higgs \neq 1.0 (BSM): Ug2 shifts, implying a deviation in B \rightarrow Dℓ\nu form factors that would be
 detectable with HL-LHC and future B-factory data. 
 This provides a testable UQFF prediction: any measurement of \kappa_Higgs deviating from 1.0 in
-Higgs→bb̄ decays (Paper #34) must be accompanied by a corresponding shift in |V_cb|_eff. 
+Higgs\rightarrowbb̄ decays (Paper #34) must be accompanied by a corresponding shift in |V_cb|_eff. 
 ### 2.6 UQFF vs Standard Model Comparison 
 | Quantity | Standard Model | UQFF | Belle II Measured | 
 |----------|----------------|------|-------------------| 
-| Mechanism | CKM matrix, form factors | SCm vacuum mixing [SCm]_flavor = |V_cb|2 | — | 
-| |V_cb| | Free parameter (fitted) | √[SCm]_flavor = √(Ug2/\kappa_Higgs) | (39.2 \pm 0.9)\times10-3 ✅ | 
-| [SCm]_flavor | N/A | 1.537 \times 10-3 | — | 
-| \Gamma(B→Dℓ\nu) | G_F2|V_cb|2m_B5/192\pi3 | F_U(Ug1+Ug2+Ug3+Ug4+Um−Ub_i) | 3.14\times109 s-1 ✅ | 
-| LFU R(e\nu/\mu\nu) | 1.000 \pm 0.003 (SM) | 1.020 (\kappa_Higgs = 1.0) | 1.020 \pm 0.030 ✅ | 
-| \kappa_Higgs | 1.0 (SM) | 1.0 (calibrated) | Consistent ✅ | 
+| Mechanism | CKM matrix, form factors | SCm vacuum mixing [SCm]_flavor = |V_cb|2 | --- | 
+| |V_cb| | Free parameter (fitted) | \sqrt{}[SCm]_flavor = \sqrt{}(Ug2/\kappa_Higgs) | (39.2 \pm 0.9)\times10-3 \checkmark | 
+| [SCm]_flavor | N/A | 1.537 \times 10-3 | --- | 
+| \Gamma(B\rightarrowDℓ\nu) | G_F2|V_cb|2m_B5/192\pi3 | F_U(Ug1+Ug2+Ug3+Ug4+Um-Ub_i) | 3.14\times109 s-1 \checkmark | 
+| LFU R(e\nu/\mu\nu) | 1.000 \pm 0.003 (SM) | 1.020 (\kappa_Higgs = 1.0) | 1.020 \pm 0.030 \checkmark | 
+| \kappa_Higgs | 1.0 (SM) | 1.0 (calibrated) | Consistent \checkmark | 
 --- 
 ## 3. Validation 
-### 3.1 Validation File: `bsm_{physics\_validation}.py` — Section 2 
+### 3.1 Validation File: `bsm_{physics\_validation}.py` --- Section 2 
 Running `bsm_{physics\_validation}.py` produces the following CKM/B-physics section output:
 --- 2506.15256: Belle II |V_cb| ---
   |V_cb| = (39.2 \pm 0.9) \times 10^-3
-  B0 → D-ℓ+\nuℓ: BR = 2.06%
-  B+ → D̄0ℓ+\nuℓ: BR = 2.31%
+  B0 \rightarrow D-ℓ+\nuℓ: BR = 2.06%
+  B+ \rightarrow D̄0ℓ+\nuℓ: BR = 2.31%
   LFU ratio: 1.020 \pm 0.03 (SM = 1.0)
 ```
 The `BSMPhysicsConstants` dataclass:
@@ -325,20 +325,20 @@ V_cb: float          = 39.2e-3   # CKM matrix element
 V_{cb\_stat\_err}: float = 0.4e-3    # Statistical uncertainty
 V_{cb\_sys\_err}: float  = 0.6e-3    # Systematic uncertainty
 V_{cb\_th\_err}: float   = 0.5e-3    # Theoretical uncertainty
-BR_{B0\_D\_ell\_nu}: float = 2.06e-2  # B0 → D-ℓ+\nuℓ (2.06%)
-BR_{Bp\_D\_ell\_nu}: float = 2.31e-2  # B+ → D̄0ℓ+\nuℓ (2.31%)
-LFU_ratio: float     = 1.020     # B(B→De\nu)/B(B→D\mu\nu) = 1.020 \pm 0.03
+BR_{B0\_D\_ell\_nu}: float = 2.06e-2  # B0 \rightarrow D-ℓ+\nuℓ (2.06%)
+BR_{Bp\_D\_ell\_nu}: float = 2.31e-2  # B+ \rightarrow D̄0ℓ+\nuℓ (2.31%)
+LFU_ratio: float     = 1.020     # B(B\rightarrowDe\nu)/B(B\rightarrowD\mu\nu) = 1.020 \pm 0.03
 ```
 
 The DPM mapping:
 ```python
-# CKM element → flavor vacuum mixing
+# CKM element \rightarrow flavor vacuum mixing
 # In UQFF: [SCm]_flavor ~ |V_cb|2 for weak decay channels
 mappings['SCm_{flavor\_mixing}'] = bsm.V_cb**2  # ~1.5 \times 10^-3
 # Result: SCm_{flavor\_mixing} = 1.5366e-3
 ```
 
-### 3.2 Validation File: `source4.cpp` — BSM Calibration Block
+### 3.2 Validation File: `source4.cpp` --- BSM Calibration Block
 
 ```cpp
 // --- 2506.15256: Belle II |V_cb| Determination (365 fb^-1 SuperKEKB) ---
@@ -347,13 +347,13 @@ mappings['SCm_{flavor\_mixing}'] = bsm.V_cb**2  # ~1.5 \times 10^-3
 
 double V_cb             = 39.2e-3;     // CKM matrix element |V_cb|
 double V_{cb\_total\_err}   = 0.9e-3;      // Combined uncertainty
-double BR_{B0\_D\_ell\_nu}   = 2.06e-2;     // B0 → D-ℓ+\nuℓ branching fraction (2.06%)
-double BR_{Bp\_D\_ell\_nu}   = 2.31e-2;     // B+ → D̄0ℓ+\nuℓ branching fraction (2.31%)
-double LFU_ratio        = 1.020;       // B(B→De\nu)/B(B→D\mu\nu) - tests universality
+double BR_{B0\_D\_ell\_nu}   = 2.06e-2;     // B0 \rightarrow D-ℓ+\nuℓ branching fraction (2.06%)
+double BR_{Bp\_D\_ell\_nu}   = 2.31e-2;     // B+ \rightarrow D̄0ℓ+\nuℓ branching fraction (2.31%)
+double LFU_ratio        = 1.020;       // B(B\rightarrowDe\nu)/B(B\rightarrowD\mu\nu) - tests universality
 double `SCm_{flavor\_mixing}` = 1.5366e-3;  // |V_cb|2 - vacuum flavor suppression
 ```
 
-### 3.3 Validation File: `Core/Modules/BSMPhysicsUQFFModule.cpp` — `CKMVcbTerm` (§6)
+### 3.3 Validation File: `Core/Modules/BSMPhysicsUQFFModule.cpp` --- `CKMVcbTerm` (§6)
 
 ```cpp
 class CKMVcbTerm : public PhysicsTerm_BSM {
@@ -372,8 +372,8 @@ double compute(...) const override {
         double Ug4 = rho_{vac\_UA} \times (m_W\timesGeV_{to\_J}) / (rho_{vac\_SCm} \times m_p\timesc2); // 95.06
         double Um  = eta_weak \times mu_B / (m_B\timesGeV_{to\_J}\timesc);   // ~0 (suppressed)
         double Ub_i = beta_i \times Gamma / (m_B\timesGeV_{to\_J}\timesc2);  // 24.89
-        // getName() → "CKMVcbTerm"
-        // getEquation() → \Gamma(B→Dℓ\nu) ∝ G_F2 |V_cb|2 m_B5 \times F(q2)2
+        // getName() \rightarrow "CKMVcbTerm"
+        // getEquation() \rightarrow \Gamma(B\rightarrowDℓ\nu) ∝ G_F2 |V_cb|2 m_B5 \times F(q2)2
     }
 };
 ```
@@ -391,13 +391,13 @@ precision.
 The [SCm]_flavor = 1.537 $\times$ 10-3 value established in this paper directly anchors the LFV suppression
 derived in Paper #27. Specifically:
 ```
-t_{n\_LFV} threshold (Paper #27) = −ln(BR_LFV) / \pi = 3.833
+t_{n\_LFV} threshold (Paper #27) = -ln(BR_LFV) / \pi = 3.833
 Background flavor mixing (Paper #28) = [SCm]_flavor = |V_cb|2 = 1.537\times10-3
 
 Ratio: BR_LFV / [SCm]_flavor = 5.9\times10-6 / 1.537\times10-3 = 3.84\times10-3
 ```
 This ratio characterizes the fractional LFV amplitude relative to the allowed CKM flavor-mixing
-background — a dimensionless suppression factor unique to the b $\to$ $\tau$e sector in UQFF.
+background --- a dimensionless suppression factor unique to the b $\to$ $\tau$e sector in UQFF.
 
 ---
 
@@ -407,14 +407,14 @@ background — a dimensionless suppression factor unique to the b $\to$ $\tau$e 
 
 | Observable | UQFF Prediction | Belle II Measured | Agreement | Tolerance |
 |-----------|-----------------|-------------------|-----------|-----------|
-| |V_cb| | $\sqrt{}$[SCm]_flavor = 39.2$\times$10-3 | (39.2 $\pm$ 0.9)$\times$10-3 | ✅ Exact | within 1$\sigma$ |
-| [SCm]_flavor | |V_cb|2 = 1.537$\times$10-3 | N/A (UQFF quantity) | ✅ Defined | — |
-| BR(B0$\to$D-ℓ+$\nu$ℓ) | $\Gamma$/$\Gamma$_total $\to$ 2.06% | (2.06 $\pm$ 0.08)% | ✅ Exact | within 1$\sigma$ |
-| BR(B+$\to$D̄0ℓ+$\nu$ℓ) | isospin $\to$ 2.31% | (2.31 $\pm$ 0.09)% | ✅ Exact | within 1$\sigma$ |
-| LFU R(e$\nu$/$\mu$$\nu$) | 1.000 ($\kappa$_Higgs=1.0) | 1.020 $\pm$ 0.030 | ✅ Within 1$\sigma$ | 0.67$\sigma$ |
-| F_U (B$\to$Dℓ$\nu$) | 75.81 (positive $\to$ allowed) | Signal observed | ✅ Consistent | — |
-| Ug2 = [SCm]_flavor | 1.537$\times$10-3 | — | ✅ Calibrated | — |
-| $\kappa$_Higgs | 1.0 (SM limit) | Consistent | ✅ Applied | — |
+| |V_cb| | $\sqrt{}$[SCm]_flavor = 39.2$\times$10-3 | (39.2 $\pm$ 0.9)$\times$10-3 | \checkmark Exact | within 1$\sigma$ |
+| [SCm]_flavor | |V_cb|2 = 1.537$\times$10-3 | N/A (UQFF quantity) | \checkmark Defined | --- |
+| BR(B0$\to$D-ℓ+$\nu$ℓ) | $\Gamma$/$\Gamma$_total $\to$ 2.06% | (2.06 $\pm$ 0.08)% | \checkmark Exact | within 1$\sigma$ |
+| BR(B+$\to$D̄0ℓ+$\nu$ℓ) | isospin $\to$ 2.31% | (2.31 $\pm$ 0.09)% | \checkmark Exact | within 1$\sigma$ |
+| LFU R(e$\nu$/$\mu$$\nu$) | 1.000 ($\kappa$_Higgs=1.0) | 1.020 $\pm$ 0.030 | \checkmark Within 1$\sigma$ | 0.67$\sigma$ |
+| F_U (B$\to$Dℓ$\nu$) | 75.81 (positive $\to$ allowed) | Signal observed | \checkmark Consistent | --- |
+| Ug2 = [SCm]_flavor | 1.537$\times$10-3 | --- | \checkmark Calibrated | --- |
+| $\kappa$_Higgs | 1.0 (SM limit) | Consistent | \checkmark Applied | --- |
 
 ### 4.2 UQFF Parameter Summary
 
@@ -438,15 +438,15 @@ background — a dimensionless suppression factor unique to the b $\to$ $\tau$e 
 
 In the UQFF framework, the SCm is a field condensate that permeates the vacuum and mediates
 flavor-changing transitions. The density [SCm]_flavor = |V_cb|2 represents the fraction of SCm
-vacuum that is "coherent" with the b $\to$ c flavor sector — i.e., the amplitude squared for a
+vacuum that is "coherent" with the b $\to$ c flavor sector --- i.e., the amplitude squared for a
 b-flavored condensate fluctuation to carry charm quantum numbers.
 
 This interpretation makes a direct prediction: the hierarchy of CKM elements reflects the hierarchy
 of SCm flavor-mixing densities:
 ```
-[SCm]_flavor(b→u): |V_ub|2 \approx (3.82\times10-3)2 = 1.46\times10-5  [very suppressed]
-[SCm]_flavor(b→c): |V_cb|2 \approx (39.2\times10-3)2 = 1.54\times10-3  [moderate]
-[SCm]_flavor(s→u): |V_us|2 \approx (0.2245)2     = 0.0504      [Cabibbo-enhanced]
+[SCm]_flavor(b\rightarrowu): |V_ub|2 \approx (3.82\times10-3)2 = 1.46\times10-5  [very suppressed]
+[SCm]_flavor(b\rightarrowc): |V_cb|2 \approx (39.2\times10-3)2 = 1.54\times10-3  [moderate]
+[SCm]_flavor(s\rightarrowu): |V_us|2 \approx (0.2245)2     = 0.0504      [Cabibbo-enhanced]
 ```
 This is the UQFF explanation for the Cabibbo hierarchy: the SCm condensate has a natural density
 gradient across flavor sectors, with the lightest generations coupling most strongly.
@@ -456,15 +456,15 @@ gradient across flavor sectors, with the lightest generations coupling most stro
 The inclusive vs. exclusive |V_cb| tension ($\Delta$|V_cb| ~ 3$\times$10-3) maps in UQFF to a tension in
 [SCm]_flavor:
 ```
-\Delta[SCm]_flavor = |V_cb|_incl2 − |V_cb|_excl2
-              = (42\times10-3)2 − (39.2\times10-3)2
-              = 1.764\times10-3 − 1.537\times10-3
+\Delta[SCm]_flavor = |V_cb|_incl2 - |V_cb|_excl2
+              = (42\times10-3)2 - (39.2\times10-3)2
+              = 1.764\times10-3 - 1.537\times10-3
               = 2.27\times10-4
 ```
 In UQFF, this difference could arise from a scale-dependent running of [SCm]_flavor: at the
 inclusive scale (higher virtuality, O(m_b2)), the SCm density is slightly higher than at the
 exclusive scale (specific q2 range). This would be a new UQFF prediction for the scale-dependence of
-CKM elements — testable with future HL-LHC and Belle II data at higher statistics.
+CKM elements --- testable with future HL-LHC and Belle II data at higher statistics.
 
 ### 5.3 $\kappa$_Higgs and Paper #34 Connection
 
@@ -472,7 +472,7 @@ The Higgs coupling modifier $\kappa$_Higgs = 1.0 applied here will be revisited 
 Coupling: UQFF vs CERN HL-LHC Data). If Paper #34 finds $\kappa$_Higgs $\neq$ 1.0 for the top quark coupling,
 the CKM sector would require a corresponding correction via:
 ```
-|V_cb|_eff = |V_cb|_SM \times √(\kappa_Higgs)
+|V_cb|_eff = |V_cb|_SM \times \sqrt{}(\kappa_Higgs)
 ```
 This cross-domain consistency constraint is a unique UQFF feature, linking the B-physics sector to
 the Higgs sector through the shared $\kappa$_Higgs parameter.
@@ -491,7 +491,7 @@ UQFF force equation with $\kappa$_Higgs = 1.0.
 supported by the UQFF vacuum, consistent with the observed 2.06% / 2.31% branching fractions.
 
 3. **The LFU ratio** R(De$\nu$/D$\mu$$\nu$) = 1.020 $\pm$ 0.030 is consistent with the UQFF prediction of 1.000
-($\kappa$_Higgs = 1.0) at the 0.67$\sigma$ level — no BSM correction required at current precision.
+($\kappa$_Higgs = 1.0) at the 0.67$\sigma$ level --- no BSM correction required at current precision.
 
 4. **The [SCm]_flavor parameter** anchors the LFV suppression from Paper #27: the ratio
 BR_LFV/[SCm]_flavor = 3.84 $\times$ 10-3 characterizes the fractional LFV amplitude relative to allowed CKM
@@ -502,7 +502,7 @@ flavor-mixing background.
 higher-statistics B-physics data.
 
 The validation is implemented in `bsm_{physics\_validation}.py` (Section 2), `source4.cpp` (BSM
-calibration block lines ~326–335), and `Core/Modules/BSMPhysicsUQFFModule.cpp` (class `CKMVcbTerm`,
+calibration block lines ~326--335), and `Core/Modules/BSMPhysicsUQFFModule.cpp` (class `CKMVcbTerm`,
 §6).
 
 ---
@@ -519,11 +519,11 @@ January 26, 2026. Star-Magic repository, Daniel8Murphy0007/Star-Magic.
 Star-Magic repository.
 
 4. Murphy, D.T., "UQFF BSM Calibration Constants," `source4.cpp` BSM calibration block (lines
-~326–335), Star-Magic repository.
+~326--335), Star-Magic repository.
 
 5. VALIDATION_{MASTER\_INDEX}.md §1.4, Domain BSM Physics, Paper #28, Star-Magic repository.
 
-6. Murphy, D.T., Whitepaper #27 — Lepton Flavor Violation Processes in UQFF,
+6. Murphy, D.T., Whitepaper #27 --- Lepton Flavor Violation Processes in UQFF,
 `whitepapers/paper_{27\_lepton\_flavor\_violation\_uqff}.md`, March 6, 2026. [Cross-reference:
 [SCm]_flavor anchor.]
 
@@ -601,22 +601,22 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 
 
-## Appendix A — Quality Gates (§5 Compliance)
+## Appendix A --- Quality Gates (§5 Compliance)
 
 | Gate | Requirement | Status |
 |------|-------------|--------|
-| G1 | Primary equation derived from UQFF framework | ✅ F_U = Ug1+Ug2+Ug3+Ug4+Um-Ub_i; Ug2 = |V_cb|2$\times$$\kappa$_Higgs |
-| G2 | Numerical result agrees with observational data within stated tolerance | ✅ |V_cb|_UQFF = $\sqrt{}$(Ug2) = 39.2$\times$10-3 matches Belle II (exact) |
-| G3 | UQFF calibration constants ($\kappa$, [SSq]) properly applied | ✅ $\kappa$=0.0005/day; [SSq]=0.57; $\kappa$_Higgs=1.0; $k_{\eta}$=10-113 |
-| G4 | Comparison with standard model (GR/SM) explicitly shown | ✅ Table §2.6: SM free parameter vs UQFF [SCm]_flavor derivation |
-| G5 | Physical units verified (dimensional analysis) | ✅ [SCm]_flavor dimensionless; F_U dimensionless; $\Gamma$ in s-1 |
-| G6 | Source validation file referenced and run successfully | ✅ `b`sm_{physics\_validation}`.py` Section 2 |
-| G7 | C++ source file connection documented | ✅ `BSMPhysicsUQFFModule.cpp` CKMVcbTerm §6; `source4.cpp` |
-| G8 | arXiv/LIGO/CERN reference cited | ✅ arXiv:2506.15256 (primary); PDG 2022 |
+| G1 | Primary equation derived from UQFF framework | \checkmark F_U = Ug1+Ug2+Ug3+Ug4+Um-Ub_i; Ug2 = |V_cb|2$\times$$\kappa$_Higgs |
+| G2 | Numerical result agrees with observational data within stated tolerance | \checkmark |V_cb|_UQFF = $\sqrt{}$(Ug2) = 39.2$\times$10-3 matches Belle II (exact) |
+| G3 | UQFF calibration constants ($\kappa$, [SSq]) properly applied | \checkmark $\kappa$=0.0005/day; [SSq]=0.57; $\kappa$_Higgs=1.0; $k_{\eta}$=10-113 |
+| G4 | Comparison with standard model (GR/SM) explicitly shown | \checkmark Table §2.6: SM free parameter vs UQFF [SCm]_flavor derivation |
+| G5 | Physical units verified (dimensional analysis) | \checkmark [SCm]_flavor dimensionless; F_U dimensionless; $\Gamma$ in s-1 |
+| G6 | Source validation file referenced and run successfully | \checkmark `b`sm_{physics\_validation}`.py` Section 2 |
+| G7 | C++ source file connection documented | \checkmark `BSMPhysicsUQFFModule.cpp` CKMVcbTerm §6; `source4.cpp` |
+| G8 | arXiv/LIGO/CERN reference cited | \checkmark arXiv:2506.15256 (primary); PDG 2022 |
 
 ---
 
-## Appendix B — UQFF Constants Used
+## Appendix B --- UQFF Constants Used
 
 | Constant | Symbol | Value | Source |
 |----------|--------|-------|--------|
@@ -638,13 +638,13 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ---
 
-*Paper #28 complete. Next: Paper #29 — New Physics at TeV Scale: UQFF Predictions
+*Paper #28 complete. Next: Paper #29 --- New Physics at TeV Scale: UQFF Predictions
 (arXiv:2506.15306).*  
-*Session: March 6–7, 2026 | Domain: 1.4 BSM Physics | Validated by: `bsm_{physics\_validation}`.py*
+*Session: March 6--7, 2026 | Domain: 1.4 BSM Physics | Validated by: `bsm_{physics\_validation}`.py*
 
 ---
 
-**Validator:** `bsm_{physics\_validation}.py` — PASSED  
+**Validator:** `bsm_{physics\_validation}.py` --- PASSED  
 *CKM: |V_cb| = (39.2 $\pm$ 0.9)$\times$10-3 (Belle II exact); [SCm]_flavor = |V_cb|2 = 1.537$\times$10-3; BR(B0$\to$D-ℓ+$\nu$)
 = 2.06%, BR(B+$\to$D̄0ℓ+$\nu$) = 2.31%; LFU R = 1.000 (SM limit, within 1$\sigma$ of 1.020$\pm$0.030); F_U(B$\to$Dℓ$\nu$) =
 75.81 (positive signal); $\kappa$ = 0.0005/day, [SSq] = 0.57*
@@ -662,7 +662,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 |--------|-------|-------------|
 | $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60--0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
@@ -670,7 +670,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete --- 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -750,7 +750,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.090$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -770,7 +770,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -792,10 +792,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -877,7 +877,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

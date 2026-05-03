@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [DPM, SCm, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_574 — Mayan 5-Cycle Cosmic Architecture & UQFF
+# PAPER_574 --- Mayan 5-Cycle Cosmic Architecture & UQFF
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -46,11 +46,11 @@ $$\text{Epoch}_i \equiv \text{UQFF formation regime } i, \quad i = 1\ldots 5$$
 
 | Calendar epoch | Year range | UQFF regime | Element range | Dominant force |
 |----------------|-----------|-------------|---------------|----------------|
-| 1 — Creation | ~3114 BCE | $P > 0.999$ | H, He, Li | $U_m$ DPM pairs |
-| 2 — Growth | classical | $P > 0.1$ | Be–Fe | $T_j$ pyramid |
-| 3 — Conflict | dark ages | $P > 0.01$ | Co–Xe | advanced coupling |
-| 4 — Transform | modern | $P > 0.001$ | Cs–U | actinide resonance |
-| 5 — Integration | 2012+ | $P > 0.0001$ | Np–Og+ | $U_b$ stabilisation |
+| 1 --- Creation | ~3114 BCE | $P > 0.999$ | H, He, Li | $U_m$ DPM pairs |
+| 2 --- Growth | classical | $P > 0.1$ | Be--Fe | $T_j$ pyramid |
+| 3 --- Conflict | dark ages | $P > 0.01$ | Co--Xe | advanced coupling |
+| 4 --- Transform | modern | $P > 0.001$ | Cs--U | actinide resonance |
+| 5 --- Integration | 2012+ | $P > 0.0001$ | Np--Og+ | $U_b$ stabilisation |
 
 ---
 
@@ -67,10 +67,10 @@ Epoch 5 anchors: $Z_{\text{mid}}=105$ (Db) $\to$ $P \approx 2.7\times10^{-4}$
 
 The 5 epochs emerge from the 26D manifold's outer symmetry structure:
 
-$$26 = 5\times5 + 1 \quadtext{(5 epochs of 5 shells + 1 integration threshold)}$$
+$$26 = 5\times5 + 1 \quad\text{(5 epochs of 5 shells + 1 integration threshold)}$$
 
 Each shell group of 5 dimensions corresponds to one epoch. The 26th dimension is the
-integration singularity — the threshold of the 5th epoch (2012 in calendar terms).
+integration singularity --- the threshold of the 5th epoch (2012 in calendar terms).
 
 ---
 
@@ -88,7 +88,7 @@ $$n_{\text{cross}}^{(i)} \propto \frac{\ln Z_{\text{mid},i}}{P_{\text{order}}^{(
 | 4 | 72 | 21 | Very high |
 | 5 | 105 | 26 | Maximum |
 
-At Epoch 5, $n_{\text{cross}} = 26$ — the full 26-step hypergraph synthesis is required.
+At Epoch 5, $n_{\text{cross}} = 26$ --- the full 26-step hypergraph synthesis is required.
 
 ---
 
@@ -100,7 +100,7 @@ The 2012 Long Count Calendar end-date coincides with the UQFF Epoch 5 activation
 - DPM antisymmetric pairs enable negative-mass nuclear corridors
 - P_order drops below 0.18 for Z > 118 $\to$ instability unless buoyancy compensates
 
-UQFF predicts that the Island of Stability at Z=119–126 (PAPER_577) is a direct consequence
+UQFF predicts that the Island of Stability at Z=119--126 (PAPER_577) is a direct consequence
 of buoyancy stabilisation active in Epoch 5, which the Mayan calendar predicted as
 the "Integration of polarities" final age.
 
@@ -178,7 +178,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.123$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -198,7 +198,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -216,41 +216,41 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
 | Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
-| Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
+| Island of stability (Z=114--126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
 | Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ $m_{\alpha}$ = 4m_p - $B_{\alpha}$/c2 | $m_{\alpha}$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i --- without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Source:* `grok_{share\_efc8a971378f}.txt` — Session 154  
+*Source:* `grok_{share\_efc8a971378f}.txt` --- Session 154  
 > See also:* PAPER_573 (3D-IPO hub), PAPER_577 (island stability), source116.cpp (Wolfram hypergraph)
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |

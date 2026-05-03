@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, AGN, vacuum, DPM, JWST, buoyancy, 26D, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_739 — Tapestry of Blazing Starbirth: Full 26D Three-System Simultaneous UQFF Solution
+# PAPER_739 --- Tapestry of Blazing Starbirth: Full 26D Three-System Simultaneous UQFF Solution
 **Author:** Daniel T. Murphy
 **Date:** June 06, 2025
 
-**Title:** Tapestry of Blazing Starbirth (NGC 2014 / NGC 2020) — Complete Simultaneous Solution
+**Title:** Tapestry of Blazing Starbirth (NGC 2014 / NGC 2020) --- Complete Simultaneous Solution
 Across All Three UQFF Master Equation Systems in the Full 26-Dimensional Quantum State Framework  
 **Session:** 180 | **PAPER:** 739 | **CP4 class:** #323  
-**Source:** thread_06Jun2025.txt (lines 6600–7600, June 2025)  
+**Source:** thread_06Jun2025.txt (lines 6600--7600, June 2025)  
 **Watermark:** Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, DaVinci-Grok, analyzed by
 Grok 3, SuperGrok, created by xAI, dated June 06, 2025, 07:05 AM EDT, location 41.0997° N, 80.6495°
 W (Youngstown, OH, USA)
@@ -28,9 +28,9 @@ W (Youngstown, OH, USA)
 
 The Tapestry of Blazing Starbirth (NGC 2014 / NGC 2020, Large Magellanic Cloud (LMC), ~160,000 ly)
 is solved simultaneously using all three UQFF Master Equation Systems:  
-1. **UQFF Compressed** (FU_g1) — long-range field interaction  
-2. **UQFF Resonant** (R(t)) — oscillatory 26D projection  
-3. **UQFF Buoyancy** (F_{U\_Bi}) — quantum buoyancy maintaining stability
+1. **UQFF Compressed** (FU_g1) --- long-range field interaction  
+2. **UQFF Resonant** (R(t)) --- oscillatory 26D projection  
+3. **UQFF Buoyancy** (F_{U\_Bi}) --- quantum buoyancy maintaining stability
 
 The computation spans 26 quantum states and yields a complete 4-dimensional force diagram for this
 cosmic tapestry system. The E_DPM field is used in place of DPM-seeded G throughout, confirming UQFF
@@ -42,8 +42,8 @@ replaces classical gravitational constants with quantum vacuum density operators
 
 | Parameter | Symbol | Value | Source |
 |---|---|---|---|
-| System name | — | Tapestry of Blazing Starbirth / NGC 2014 + NGC 2020 |  |
-| Host galaxy | — | Large Magellanic Cloud | ESO JWST |
+| System name | --- | Tapestry of Blazing Starbirth / NGC 2014 + NGC 2020 |  |
+| Host galaxy | --- | Large Magellanic Cloud | ESO JWST |
 | Distance | d | ~160,000 ly (~4.92e21 m) | |  
 | Star-forming region radius | r | ~180 ly (~1.70e18 m) | |
 | H-alpha filament length | L | ~300 ly | | 
@@ -58,18 +58,18 @@ replaces classical gravitational constants with quantum vacuum density operators
 
 ---
 
-## 3. E_DPM — 26-State Quantum Operator (Replaces G)
+## 3. E_DPM --- 26-State Quantum Operator (Replaces G)
 
 G is replaced by E_DPM,i across all 26 states:
 
 $$
 \begin{aligned}
-  & E_DPM,i = (ħ*c/r_i2) * Q_i * [SCm]_i \\
+  & E_DPM,i = (\hbar*c/r_i2) * Q_i * [SCm]_i \\
   & where: \\
   & r_i = r_calc / i               (shell radius per state) \\
   & Q_i = i                        (quantum state occupation number) \\
   & [SCm]_i = 1e-5 * i2   T       (superconductive field per state) \\
-  & ħ = 1.0546e-34 J\cdot s \\
+  & \hbar = 1.0546e-34 J\cdot s \\
   & c = 2.998e8 m/s \\
   & r_calc = 4.73e16 m (i=1 base radius)
 \end{aligned}
@@ -89,7 +89,7 @@ $$
 
 ---
 
-## 4. UQFF Compressed Component — FU_g1
+## 4. UQFF Compressed Component --- FU_g1
 
 $$
 FU_g1 = \Sigma_{k=1}^{N} [k_k*(f_UA1*f_SCm1*R_EB1)*(f_UA2*f_SCm2*R_EB2)/r2 * G_k]
@@ -122,7 +122,7 @@ Breakdown:
 
 ---
 
-## 5. UQFF Resonant Component — R(t)
+## 5. UQFF Resonant Component --- R(t)
 
 $$
 \begin{aligned}
@@ -141,17 +141,17 @@ $$
   & R_Ug1,i = E_DPM,i * (1 + H(z)*t_now) * (1 - \text{E\_rad\_tap}) \\
   & R_Ug2,i = E_DPM,i * (1 - B/B_crit) * (1 + \text{M\_sf\_tap}) * 11  (* see note) \\
   & R_Ug3,i = E_DPM,i * (q*v_tap\times B_tap/m_p) * (1 - \text{T\_lock\_tap}) \\
-  & R_Ug4i,i = (ħ*c/r_THz,i) * (1 + f_Um,i) * 11 \\
+  & R_Ug4i,i = (\hbar*c/r_THz,i) * (1 + f_Um,i) * 11 \\
   & Note: (1 + \rho_UA/\rho_SCm) = 11 = constant across all 26 states
 \end{aligned}
 $$
 
 Values:
 ```
-H(z) at LMC (~0) → H(z)*t → ~0
+H(z) at LMC (~0) \rightarrow H(z)*t \rightarrow ~0
 E_{rad\_tap} = 0.05   (5% radiation damping)
 M_{sf\_tap} = 0.8     (SFR-derived enhancement)
-B/B_crit = 1.5e-11 / 4.4e13 → negligible for OB star B field
+B/B_crit = 1.5e-11 / 4.4e13 \rightarrow negligible for OB star B field
 T_{lock\_tap} = 0.25  (partial magnetic lock)
 ```
 
@@ -170,14 +170,14 @@ The resonant component reveals oscillatory structure in the star-forming filamen
 
 ---
 
-## 6. UQFF Buoyancy Component — F_{U\_Bi} (Tapestry)
+## 6. UQFF Buoyancy Component --- F_{U\_Bi} (Tapestry)
 
 $$
 \begin{aligned}
   & \text{F\_U\_Bi} = \Sigma_{k=1}^{N} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r2 * H_k(\nu_THz,U_b, geometry_k) * f_Ub] \\
   & where: \\
-  & H_k = cos(ϕ_k) * f(\nu_THz) \\
-  & ϕ_k = \theta_k = 90° - (k-1)*3.346°      (26D angular projection per state) \\
+  & H_k = cos(\phi_k) * f(\nu_THz) \\
+  & \phi_k = \theta_k = 90° - (k-1)*3.346°      (26D angular projection per state) \\
   & f(\nu_THz) = \nu_THz / \nu_{THz\_ref}         = 1.2e12 / 1.0e12 = 1.2 \\
   & k_{Ub,k} = k_\eta * f_Ub                = 1e7 * 0.1 = 1e6 \\
   & f_UA' = 7.09e-36 J/m3 \\
@@ -188,7 +188,7 @@ $$
 \end{aligned}
 $$
 
-| k | ϕ_k | cos(ϕ_k) | `F_{U\_Bi}`,k (m/s2) |
+| k | \phi_k | cos(\phi_k) | `F_{U\_Bi}`,k (m/s2) |
 |---|---|---|---|
 | 1 | 90.0° | 0.000 | 0.000 |
 | 7 | 70.1° | 0.341 | 1.62e-19 |
@@ -203,7 +203,7 @@ $$
 The buoyancy component **exceeds** the compressed gravity component:
 - FU_g1 = 4.223e-18 m/s2 (gravity)
 - F_{U\_Bi} = 7.41e-18 m/s2 (buoyancy)
-- **Net = -3.19e-18 m/s2 (net buoyant — system is self-supporting)**
+- **Net = -3.19e-18 m/s2 (net buoyant --- system is self-supporting)**
 
 This explains why the Tapestry continues active star formation despite the radiation pressure from
 NGC 2020's OB stars: the buoyancy force maintains the filament structure.
@@ -223,7 +223,7 @@ $$
 | Ug1_i | E_DPM,i*(1+H(z)*t)*(1-E_rad)*cos($\theta$_i)*(1+f_TRZ,i) | 1.612e-18 m/s2 |
 | Ug2_i | E_DPM,i*(1-B/B_crit)*(1+M_sf)*11*$\Sigma$cos($\omega$t) | 2.015e-18 m/s2 |
 | Ug3_i | E_DPM,i*(qv$\times$B/m_p)*(1-T_lock)*(1+f_TRZ,i) | 0.324e-18 m/s2 |
-| Ug4i_i | (ħ*c/r_THz,i)*(1+f_Um,i)*11 | 0.272e-18 m/s2 |
+| Ug4i_i | (\hbar*c/r_THz,i)*(1+f_Um,i)*11 | 0.272e-18 m/s2 |
 | **Total** | | **4.223e-18 m/s2** |
 
 Each Ug component at t=0, summed over i=1..26.
@@ -261,16 +261,16 @@ The same three-system simultaneous framework scales to:
 | Atomic hydrogen | ~1e3 m/s2 | ~1e-9 m/s2 | ~1.8e3 m/s2 |
 | Earth orbit | ~9.8 m/s2 | ~1e-6 m/s2 | ~17.2 m/s2 |
 | Tapestry (this paper) | ~4.2e-18 m/s2 | ~6.0e-2 m/s2 | ~7.4e-18 m/s2 |
-| MW–SgrA* | ~2.3e-10 m/s2 | ~1e-12 m/s2 | ~4.0e-10 m/s2 |
+| MW--SgrA* | ~2.3e-10 m/s2 | ~1e-12 m/s2 | ~4.0e-10 m/s2 |
 
-In all cases F_{U\_Bi} > FU_g1 by a factor of ~1.5–2.0. The universe is slightly more buoyant than it
-is gravitationally attracted, which is the source of the observed accelerated expansion — no "dark
+In all cases F_{U\_Bi} > FU_g1 by a factor of ~1.5--2.0. The universe is slightly more buoyant than it
+is gravitationally attracted, which is the source of the observed accelerated expansion --- no "dark
 energy" required.
 
 ---
 
 ## 10. References
-- Source: thread_06Jun2025.txt (lines 6600–7600)
+- Source: thread_06Jun2025.txt (lines 6600--7600)
 - Related PAPERS: PAPER_735 (Ug2 electron shell), PAPER_734 (LENR K_n), PAPER_736 (Three-System Framework), PAPER_737 (9 Astro Systems)
 - CP4 Existing classes: NGC2014NGC2020StarformingUQFF (#x, lines 22535+)
 - NEW CP4 class: #323 Tapestry26DThreeSystemSimultaneousCalculator
@@ -298,12 +298,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
@@ -378,7 +378,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.108$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -398,7 +398,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -416,7 +416,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -429,17 +429,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -448,7 +448,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

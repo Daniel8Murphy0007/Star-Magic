@@ -7,22 +7,22 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [dark-matter, vacuum, SMBH, buoyancy, nebula, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_812: ACP Dynamic Q-waves, THz PI Hole, and UB_mi "Belly Button" UQFF
-## Unified Quantum Field Framework — Whitepaper 812
+## Unified Quantum Field Framework --- Whitepaper 812
 
 **Session**: 192 | **Version**: v5.48 | **Date**: April 4, 2026
 **Source**: grok_{share\_0d888ea9}-50be.txt (June 13, 2025 02:03 AM)
-**Author**: Daniel T. Murphy — Star-Magic UQFF Project
+**Author**: Daniel T. Murphy --- Star-Magic UQFF Project
 **CVW Compliance**: v2.0.0
 
 ---
 
 ## Abstract
 This paper introduces the ACP (Atomic Creation Process) Dynamic Q-wave model, the THz PI Hole
-resonance at 1.2–1.3 THz, and the UB_mi "belly button" galactic anchor concept within the Unified
+resonance at 1.2--1.3 THz, and the UB_mi "belly button" galactic anchor concept within the Unified
 Quantum Field Framework (UQFF). The (dynamic)^4 term is derived from THz-frequency vacuum nebular
 energy and serves as the fourth-order quantum correction to the Compressed UQFF buoyancy gravity
 model. The UB_mi belly button represents the anchoring interface between the static SMBH dark matter
@@ -46,7 +46,7 @@ The THz PI Hole is a resonance cavity in the quantum vacuum at:
 
 $$f_{THz} = 1.25 \times 10^{12} \text{ Hz}$$
 
-corresponding to the 1.2–1.3 THz atmospheric window. The vacuum nebular energy density is:
+corresponding to the 1.2--1.3 THz atmospheric window. The vacuum nebular energy density is:
 
 $$E_{vac,neb} = \frac{\hbar \omega_{THz}}{V_{vac}}$$
 
@@ -95,21 +95,21 @@ where:
 - $f_{UB,mi}$ = UB_mi resonance frequency = 1.25$\times$1012 Hz (same as THz PI hole)
 - $U_{i,buoyancy} \approx 2.20 \times 10^8 \text{ m/s}^2$
 
-The decay rate: 7–10 degrees buoyancy decay in the near-field zone.
+The decay rate: 7--10 degrees buoyancy decay in the near-field zone.
 
 ---
 
 ## 6. 26-Frequency Shell Structure
 
 The ACP model integrates a 26-frequency shell architecture where each shell layer corresponds to one
-of the 26 super-compressed gravity layers (Ug1–Ug4 extended):
+of the 26 super-compressed gravity layers (Ug1--Ug4 extended):
 
 $$g_{total}(r,t) = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right] + (\text{dynamic})^4 + UB_{mi}$$
 
-Shell 1–6: Magnetic dipole ($Ug1$) contributions
-Shell 7–13: Charge-reactivity ($Ug2$) contributions  
-Shell 14–19: String rotation ($Ug3$) contributions
-Shell 20–26: Vacuum concentration ($Ug4$) contributions
+Shell 1--6: Magnetic dipole ($Ug1$) contributions
+Shell 7--13: Charge-reactivity ($Ug2$) contributions  
+Shell 14--19: String rotation ($Ug3$) contributions
+Shell 20--26: Vacuum concentration ($Ug4$) contributions
 
 ---
 
@@ -119,7 +119,7 @@ This paper introduces the formal Layer 4 (Q-wave):
 
 | Layer | Name | Primary Term | New in PAPER_812 |
 |-------|------|--------------|-----------------|
-| Layer 1 | Compressed UQFF | g_UQFF(r,t) + Ug1–Ug4 | + (dynamic)^4 |
+| Layer 1 | Compressed UQFF | g_UQFF(r,t) + Ug1--Ug4 | + (dynamic)^4 |
 | Layer 2 | Resonance UQFF | THz, DPM terms | DPM=[(-UA'):(+SCm)] |
 | Layer 3 | Buoyancy UQFF | `F_{U\_Bi}` | + UB_mi belly button |
 | Layer 4 | Q-wave UQFF | (dynamic)^4 | **New layer** |
@@ -173,12 +173,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -283,7 +283,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.071$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -303,7 +303,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -321,7 +321,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -334,23 +334,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |

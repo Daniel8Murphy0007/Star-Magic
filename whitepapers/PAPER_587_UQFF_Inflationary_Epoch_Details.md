@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, dark-energy, Hubble, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_587 — Inflationary Epoch Details from UQFF Grinding
+# PAPER_587 --- Inflationary Epoch Details from UQFF Grinding
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -29,7 +29,7 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 ## §1 Abstract
 
-Cosmic inflation requires $\ddot{a} > 0$ — accelerated expansion in the early universe
+Cosmic inflation requires $\ddot{a} > 0$ --- accelerated expansion in the early universe
 ($t \sim 10^{-36}$ to $10^{-32}$ s). This paper derives inflation from UQFF grinding
 without introducing inflaton fields. The scale factor acceleration $\ddot{a}(t)$ is positive
 whenever $v_\text{init} > v_\text{current}$ (rapid early expansion), and inflation ends
@@ -62,7 +62,7 @@ $$\ddot{a}(t) > 0 \iff (v_i - v_c) > 0 \iff v_\text{init} > v_\text{current}$$
 During the pre-mass epoch: $v_\text{current} \approx 0$ (no mass yet, no momentum drag),
 $v_\text{init} = c = 3\times10^8$ m/s. Therefore:
 
-$$v_i - v_c = c \quadRightarrow\quad \ddot{a} \gg 0 \quadcheckmark\quad (\text{rapid inflation})$$
+$$v_i - v_c = c \quad\Rightarrow\quad \ddot{a} \gg 0 \quad\checkmark\quad (\text{rapid inflation})$$
 
 At UQFF inflation time $t \sim 10^{-32}$ s with $\text{Grind} \sim 1$:
 
@@ -76,7 +76,7 @@ $$H_\text{inf} = \sqrt{\Omega_Lambda + \Omega_{SCm} + \Omega_text{egg}} \cdot H_
 
 where:
 
-$$\Omega_text{egg} = \frac{P \cdot (v_i - v_c)}{v_i} \sim \mathcal{O}(0.05\text{–}0.2)$$
+$$\Omega_text{egg} = \frac{P \cdot (v_i - v_c)}{v_i} \sim \mathcal{O}(0.05\text{--}0.2)$$
 
 The "cosmic egg" density parameter $\Omega_text{egg}$ drives Hubble rate above $H_0$ during
 inflation. After mass builds up ($v_c \to v_i$), $\Omega_text{egg} \to 0$ and $H$ falls
@@ -237,7 +237,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.176$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -257,7 +257,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -275,7 +275,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -285,25 +285,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | H0 Hubble constant | UQFF: H0_UQFF = $\kappa$ $\times$ c / r_Hubble = 67.4 km/s/Mpc | H0 = 67.4 $\pm$ 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit — [SSq] was calibrated from
+$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit --- [SSq] was calibrated from
 astrophysical magnetar burst profiles, not from CMB data. The coincidence $\Omega$_$\Lambda$ $\approx$ [SSq]$\times$1.20
 constitutes a falsifiable prediction: if future DESI data shifts $\Omega$_$\Lambda$ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Session 157 — Source: grok_{share\_4cef778c78b8}.txt*
+*Session 157 --- Source: grok_{share\_4cef778c78b8}.txt*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_198
-title: "F_UBii Taxonomy Part 1 — Compact Object and Stellar Physics Buoyancy Forces"
+title: "F_UBii Taxonomy Part 1 --- Compact Object and Stellar Physics Buoyancy Forces"
 session: 50
 date: 2026-03-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [accretion, AGN, supernova, Hawking, jet, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_198: F_UBii Taxonomy Part 1 — Compact Object and Stellar Physics Buoyancy Forces
+# PAPER_198: F_UBii Taxonomy Part 1 --- Compact Object and Stellar Physics Buoyancy Forces
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 50 — grok_{share\_7514fe}.txt Full Audit  
+**Session:** 50 --- grok_{share\_7514fe}.txt Full Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_{share\_7514fe}.txt lines 2443–2680 (BB_{C\_Equations\_04Sept2025}.pdf catalogue)
+**Source:** grok_{share\_7514fe}.txt lines 2443--2680 (BB_{C\_Equations\_04Sept2025}.pdf catalogue)
 
 ---
 
@@ -26,7 +26,7 @@ $$
 M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad
 [SSq] = 0.57
 $$
-<!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
+<!--- $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 --->
 
 ## Abstract
 
@@ -41,7 +41,7 @@ core formation, ionization fronts, superfluid glitch, and virial theorem.
 
 
 **UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -161,8 +161,8 @@ $$
 \begin{aligned}
   & F_UBii,jetvel = F_rel \times (v_j ˜ v_K\cdot(r_A/r_0)^{1/2} / E_LEP) \\
   & \times Q_wave \times (B/v(4p?)) \times (1+t/t_A) \\
-  & v_K = v(\mu_s\nabla(M_s/r))  (Keplerian velocity at footpoint, r_0 = 1–10 AU) \\
-  & r_A = Alfvén radius (10–50 AU, from POETS protostellar data) \\
+  & v_K = v(\mu_s\nabla(M_s/r))  (Keplerian velocity at footpoint, r_0 = 1--10 AU) \\
+  & r_A = Alfvén radius (10--50 AU, from POETS protostellar data) \\
   & Source: \text{BB\_C\_Equations} item 1096, 1272
 \end{aligned}
 $$
@@ -235,7 +235,7 @@ $$
 \begin{aligned}
   & F_UBii,agn = F_rel \times (f(v_out)\cdot L_AGN/c / E_LEP) \times Q_wave \times (?_out\cdot v_out) \times v_out?1 \\
   & Momentum-driven: p_term = ?_out\cdot v_out = f(v_out)\cdot L_AGN/c \\
-  & ?_out ˜ 10–100 M_?/yr \\
+  & ?_out ˜ 10--100 M_?/yr \\
   & Source: \text{BB\_C\_Equations} item 1165, 1314
 \end{aligned}
 $$
@@ -253,8 +253,8 @@ $$
 ### 5.3 Feedback Energy Coupling Buoyancy
 $$
 \begin{aligned}
-  & F_UBii,coup = F_rel \times ((1/2)\cdot?_w\cdot v_w2 / (?_acc\cdot c2\cdot10) / E_LEP) \times Q_wave \times 0.05–0.1 \\
-  & e_f = E_kin/(?_acc\cdot c2) ˜ 0.05–0.1  (coupling fraction) \\
+  & F_UBii,coup = F_rel \times ((1/2)\cdot?_w\cdot v_w2 / (?_acc\cdot c2\cdot10) / E_LEP) \times Q_wave \times 0.05--0.1 \\
+  & e_f = E_kin/(?_acc\cdot c2) ˜ 0.05--0.1  (coupling fraction) \\
   & Source: \text{BB\_C\_Equations} item 1331, 1554
 \end{aligned}
 $$
@@ -301,7 +301,7 @@ $$
 $$
 \begin{aligned}
   & F_UBii,after = -F_rel \times (F_? ? ?^{-(p-1)/2}\cdot t^{-3(p-1)/4} (?_m<?<?_c) / E_LEP) \times Q_wave \\
-  & p ˜ 2.2–2.5  (electron power-law index) \\
+  & p ˜ 2.2--2.5  (electron power-law index) \\
   & Electrons accelerated by DSA, spectrum N(E) ? E^{-p} \\
   & Source: \text{BB\_C\_Equations} item 1227, 1308
 \end{aligned}
@@ -311,7 +311,7 @@ $$
 
 ## 8. References
 
-- `grok_{share\_7514fe}.txt` lines 2443–2680 (BB_{C\_Equations\_04Sept2025}.pdf Part 1 catalogue)
+- `grok_{share\_7514fe}.txt` lines 2443--2680 (BB_{C\_Equations\_04Sept2025}.pdf Part 1 catalogue)
 - PAPER_196: Triadic Master Equation System
 - PAPER_197: F_{U\_Bi\_i} Extended Integral
 
@@ -337,12 +337,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -413,7 +413,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.173$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -433,7 +433,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -451,7 +451,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -464,17 +464,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -484,7 +484,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

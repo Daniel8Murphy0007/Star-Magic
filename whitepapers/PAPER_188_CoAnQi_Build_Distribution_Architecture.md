@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_188
-title: "CoAnQi Build Distribution Architecture — NSIS and Debian Packaging"
+title: "CoAnQi Build Distribution Architecture --- NSIS and Debian Packaging"
 session: 49
 date: 2026-03-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_188: CoAnQi Build Distribution Architecture — NSIS and Debian Packaging
+# PAPER_188: CoAnQi Build Distribution Architecture --- NSIS and Debian Packaging
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 49 — §2.5 Grok Thread 381a8fe7 Extended Audit  
+**Session:** 49 --- §2.5 Grok Thread 381a8fe7 Extended Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_{share\_381a8f}.txt lines 5500–6000
+**Source:** grok_{share\_381a8f}.txt lines 5500--6000
 
 ---
 
@@ -32,7 +32,7 @@ NSIS), and standard Debian DEBIAN/control metadata. This architecture enables on
 on both primary target platforms while preserving the CoAnQi computational environment and library
 dependencies.
 
-**UQFF First:** First distribution framework purpose-built for a UQFF physics engine, packaging 107,019-line C++ source (446 modules, 6,688+ physics terms) into a $1.43\times10^6$-byte UPX-compressed binary at 15.51% compression ratio — achieving scientific-computing density of $\approx 4.68\,\text{physics terms per kilobyte}$, compared to $\sim 0.1\,\text{terms/kB}$ for typical physics simulation codes (e.g., Gadget-4, AREPO). The NSIS installer embeds all UQFF runtime dependencies including Wolfram WSTP and the CoAnQi Qt6 GUI, meeting standard CERN software distribution practices.
+**UQFF First:** First distribution framework purpose-built for a UQFF physics engine, packaging 107,019-line C++ source (446 modules, 6,688+ physics terms) into a $1.43\times10^6$-byte UPX-compressed binary at 15.51% compression ratio --- achieving scientific-computing density of $\approx 4.68\,\text{physics terms per kilobyte}$, compared to $\sim 0.1\,\text{terms/kB}$ for typical physics simulation codes (e.g., Gadget-4, AREPO). The NSIS installer embeds all UQFF runtime dependencies including Wolfram WSTP and the CoAnQi Qt6 GUI, meeting standard CERN software distribution practices.
 
 ---
 
@@ -40,19 +40,19 @@ dependencies.
 
 ```
 CoAnQi Build Distribution
-├── Windows (NSIS)
-│   ├── installer.nsi          ← NSIS script
-│   ├── CoAnQi.exe             ← compiled binary (MSVC Release)
-│   ├── Qt5Core.dll + Qt5Gui.dll + Qt5Widgets.dll
-│   ├── MSVCP140.dll + VCRUNTIME140.dll
-│   └── Output: CoAnQi_Setup.exe
-└── Linux (Debian)
-    ├── deb_package.sh         ← packaging script
-    ├── deb_build/
-    │   ├── DEBIAN/control     ← package metadata
-    │   ├── usr/bin/coanqi     ← installed binary
-    │   └── usr/share/applications/coanqi.desktop
-    └── Output: coanqi_1.0_amd64.deb
+|---- Windows (NSIS)
+|   |---- installer.nsi          \leftarrow NSIS script
+|   |---- CoAnQi.exe             \leftarrow compiled binary (MSVC Release)
+|   |---- Qt5Core.dll + Qt5Gui.dll + Qt5Widgets.dll
+|   |---- MSVCP140.dll + VCRUNTIME140.dll
+|   └---- Output: CoAnQi_Setup.exe
+└---- Linux (Debian)
+    |---- deb_package.sh         \leftarrow packaging script
+    |---- deb_build/
+    |   |---- DEBIAN/control     \leftarrow package metadata
+    |   |---- usr/bin/coanqi     \leftarrow installed binary
+    |   └---- usr/share/applications/coanqi.desktop
+    └---- Output: coanqi_1.0_amd64.deb
 ```
 
 ---
@@ -385,7 +385,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.149$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -405,7 +405,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -423,7 +423,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -436,14 +436,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
-- Source: grok_{share\_381a8f}.txt lines 5500–6000
+- Source: grok_{share\_381a8f}.txt lines 5500--6000
 - Related: BUILD_{INSTRUCTIONS\_PERMANENT}.md, CMakeLists.txt, PAPER_193 (Modular C++ Architecture)
-- Springel et al. (2021) — Gadget-4 (comparison packaging reference)
+- Springel et al. (2021) --- Gadget-4 (comparison packaging reference)
 - CERN ROOT distribution documentation (packaging benchmark)
 - CP1 Class: `CoAnQiBuildDistributionCalculator`
 

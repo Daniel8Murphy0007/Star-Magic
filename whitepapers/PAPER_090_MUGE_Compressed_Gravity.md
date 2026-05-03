@@ -8,7 +8,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, AGN, Hubble, dark-matter, dark-energy, MUGE, magnetar, Navier-Stokes]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 **Session:** 0
@@ -29,16 +29,16 @@ compute_{compressed\_MUGE\_SOURCE4}
 ## Abstract
 
 The UQFF unified field is $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um +
-\text{Tr}(A_{\mu\nu})$ — four independent gravitational force channels (internal
-dipole, outer field bubble, magnetic strings, star–BH vacuum), each opposed by
+\text{Tr}(A_{\mu\nu})$ --- four independent gravitational force channels (internal
+dipole, outer field bubble, magnetic strings, star--BH vacuum), each opposed by
 universal buoyancy, unified by magnetism and the Aether metric tensor.  The MUGE
 Compressed gravity framework is a **re-expression of $F_U$** that packages these
 channels into a 9-term multiplicative-additive structure for practical
 multi-system computation.  The classical DPM mass gradient $\mu_s\nabla(M_s/r)$ appears in
 this compressed form only as the **zero-vacuum, zero-buoyancy limiting case of
-the Ug2 channel** — not as the starting point of the physics.  The
+the Ug2 channel** --- not as the starting point of the physics.  The
 superconductive factor $(1 - B/B_{\text{crit}})$ predicts measurable
-gravitational suppression near magnetar-strength fields — a prediction that
+gravitational suppression near magnetar-strength fields --- a prediction that
 originates from the $F_U$ unified field and has no DPM-seeded or GR analogue. 
 `validate_{uqff\_muge}.py` validates the framework across 5 astrophysical systems
 (Sgr A*, M87, Sun, NeutronStar, Magnetar).
@@ -56,7 +56,7 @@ $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu}
 | Internal Dipole | $Ug_1$ | Dipole coupling with time decay |
 | Outer Field Bubble | $Ug_2$ | Charge-reactivity field |
 | Magnetic Strings | $Ug_3$ | Core pressure with string rotation |
-| Star–BH Vacuum | $Ug_4$ | Vacuum concentration with feedback |
+| Star--BH Vacuum | $Ug_4$ | Vacuum concentration with feedback |
 | Buoyancy | $Ub_i$ | Opposition to each Ug channel |
 | Magnetism | $Um$ | Heaviside-amplified string field |
 | Aether Tensor | $A_{\mu\nu}$ | Metric + inertia tensor |
@@ -151,7 +151,7 @@ computational efficiency.
 | d_Perturbation | +4.7 $\times$ 10-4 m/s | +2.0 $\times$ 10-6 |
 | **g_total** | **2.340 $\times$ 10 m/s** | **1.000002** |
 
-**No NaN/Inf – PASS.** Total correction relative to Newton: < 5 ppm at r_horizon.
+**No NaN/Inf -- PASS.** Total correction relative to Newton: < 5 ppm at r_horizon.
 
 ---
 
@@ -209,7 +209,7 @@ Where d_Ug includes all 4 Ugk terms evaluated in the UQFF framework (not just th
 
 | Scale | Dominant correction(s) | MUGE expansion |
 |-------|----------------------|---------------|
-| Near-horizon | `d_{Ug\_sum}` + d_Perturbation | UQFF – GR |
+| Near-horizon | `d_{Ug\_sum}` + d_Perturbation | UQFF -- GR |
 | Galactic (kpc) | d_DM (§0.1 g_N) | Dark matter-driven |
 | Cosmological (Gpc) | d_Expansion + d_Cosm | ?CDM-concordant |
 | All scales | No NaN/Inf (5 systems) | Numerically stable |
@@ -249,7 +249,7 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$\begin{aligned}
 P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \cdot \bigl[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \\
 &\quad \cdot (B / B_{\text{crit}})^2\bigr]
@@ -258,7 +258,7 @@ P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \cdot \bigl[1 + \beta_i \cdot \Phi
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates
 jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot
 S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
@@ -310,7 +310,7 @@ invoking SIDM cross-sections.
 |--------|-------|-------------|
 | $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60--0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
@@ -318,7 +318,7 @@ invoking SIDM cross-sections.
 | $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete --- 4 terms)
 
 $$\begin{aligned}
 F_U &= U_{g1} + U_{g2} + U_{g3} \\
@@ -427,7 +427,7 @@ the double-exponential vacuum condensate profile:
 
 $$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}}
   \cdot \exp\!\left(-\exp\!\left(
-  -\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+  -\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.167$ (near-threshold regime),
 placing it in the $t \to \pi$ collapse zone where the double-exponential
@@ -462,7 +462,7 @@ The $\tanh$ saturation envelope prevents unphysical divergence:
 $$\begin{aligned}
 \mathcal{F}_{\mathrm{BSH,sat}} &= \mathcal{F}_{\mathrm{BSH}}
   \cdot \left(1 - \tanh\!\left(
-  \frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)
+  \frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)
 \end{aligned}$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot
@@ -483,7 +483,7 @@ cosmogenesis.
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM/Experiment | Alignment |
 |------------|-----------------|---------------|-----------|
@@ -496,17 +496,17 @@ cosmogenesis.
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -514,7 +514,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

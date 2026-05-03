@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_202: UQFF Reionization, BBN, Recombination, and Cosmic Dawn Physics
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 50 — grok_{share\_7514fe}.txt Full Audit  
+**Session:** 50 --- grok_{share\_7514fe}.txt Full Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_{share\_7514fe}.txt lines 6070–6090 (BB_{C\_Equations\_04Sept2025}.pdf items 1310–1350)
+**Source:** grok_{share\_7514fe}.txt lines 6070--6090 (BB_{C\_Equations\_04Sept2025}.pdf items 1310--1350)
 
 ---
 
@@ -39,7 +39,7 @@ derived from observational anchor equations.
 
 
 **UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -128,16 +128,16 @@ $$
   & dx_e/dt = ?_?\cdot e_esc\cdot f_* - a_B\cdot n2_e\cdot C \\
   & where: \\
   & ?_? = (1+z)3\cdot n_b\cdot?_?,eff   (ionizing photon rate) \\
-  & e_esc ˜ 0.1–0.3             (photon escape fraction from galaxies) \\
-  & f_* ˜ 0.05–0.2              (star formation efficiency in halos) \\
+  & e_esc ˜ 0.1--0.3             (photon escape fraction from galaxies) \\
+  & f_* ˜ 0.05--0.2              (star formation efficiency in halos) \\
   & a_B = 2.6\times10?13 cm3/s     (recombination coefficient, case B, T˜104 K) \\
   & C = ?n2_H?/?n_H?2          (clumping factor, C ˜ 3) \\
   & F_UBii,ion = F_rel \times (?_?\cdot e_esc\cdot f_* / E_LEP) \times Q_wave \times [recombination subtracted] \\
   & Um,ion(t) = \mu(?_vac)\cdot(1-e^{-?t})\cdot?a_B\cdot n2_e\cdot C dt \\
   & Reionization history: \\
-  & z ˜ 20–30: first stars ionize H around them (PopIII) \\
-  & z ˜ 7–9:   bulk reionization, x_e rises from ~0.1 to ~1 \\
-  & z ˜ 5–6:   completion (Gunn-Peterson trough in quasar spectra)
+  & z ˜ 20--30: first stars ionize H around them (PopIII) \\
+  & z ˜ 7--9:   bulk reionization, x_e rises from ~0.1 to ~1 \\
+  & z ˜ 5--6:   completion (Gunn-Peterson trough in quasar spectra)
 \end{aligned}
 $$
 
@@ -179,8 +179,8 @@ $$
   & F_UBii,jeans = -F_rel \times (?_J / E_LEP) \times Q_wave \times (collapse onset time t ˜ 1/v(G?)) \\
   & Um,jeans(T) = \mu(?_vac)\cdot(1-e^{-?t})\cdot[Perturb: ?2 = c2_s\cdot k2 - 4pG?] \\
   & Physical context: \\
-  & First (PopIII) stars: T ~ 200 K, cloud M ~ 100–1000 M_? ? M_J \\
-  & Present-day GMCs: T ~ 10–30 K ? M_J ~ 1–10 M_? \\
+  & First (PopIII) stars: T ~ 200 K, cloud M ~ 100--1000 M_? ? M_J \\
+  & Present-day GMCs: T ~ 10--30 K ? M_J ~ 1--10 M_? \\
   & UQFF buoyancy at Jeans scale: F_UBii,jeans acts as tidal disruption force
 \end{aligned}
 $$
@@ -223,13 +223,13 @@ where:
   log U ˜ -2 to -3 for NLR, -1 to 0 for BLR
 
 AGN feedback coupling efficiency:
-  e_f = E_kin/(?_acc\cdotc2) ˜ 0.05–0.1
+  e_f = E_kin/(?_acc\cdotc2) ˜ 0.05--0.1
 
   E_kin = (1/2)?_out\cdotv2_out
-  Only e_f \times 10^{-5} per M_? needed to match M_BH–s
+  Only e_f \times 10^{-5} per M_? needed to match M_BH--s
 
 F_UBii,upar = F_rel \times (U\cdotn_H\cdotc / E_LEP) \times Q_wave \times (Q_H/r2)
-F_UBii,coup = F_rel \times (e_f\cdot?_acc\cdotc2 / E_LEP) \times Q_wave \times [0.05–0.1]
+F_UBii,coup = F_rel \times (e_f\cdot?_acc\cdotc2 / E_LEP) \times Q_wave \times [0.05--0.1]
 
 Um,upar(r)  = \mu(?_vac)\cdot(1-e^{-?t})\cdot(Q_H/(4pr2n_Hc))
 Um,coup(?) = \mu(?_vac)\cdot(1-e^{-?t})\cdote_f (couple fraction to kinetic energy)
@@ -246,16 +246,16 @@ Um,coup(?) = \mu(?_vac)\cdot(1-e^{-?t})\cdote_f (couple fraction to kinetic ener
 | Neutron freeze-out | z ~101° (T~1 MeV) | Weak interactions | F_UBii,eta |
 | BBN | z ~10? (t~180 s) | D bottleneck | F_UBii,deb |
 | Recombination | z ~1100 | Photon decoupling | F_UBii,recomb |
-| Cosmic dawn | z ~20–30 | First stars, first HII | F_UBii,ion |
-| Reionization | z ~6–9 | HII bubble percolation | F_UBii,bub |
+| Cosmic dawn | z ~20--30 | First stars, first HII | F_UBii,ion |
+| Reionization | z ~6--9 | HII bubble percolation | F_UBii,bub |
 | Present | z ~0 | Structure + feedback | All F_UBii |
 
 ---
 
 ## 11. References
 
-- `grok_{share\_7514fe}.txt` lines 6070–6090 (BB_{C\_Equations} items 1310–1350)
-- `grok_{share\_7514fe}.txt` lines 6300–6500 (full reionization/BBN/CMB catalogue)
+- `grok_{share\_7514fe}.txt` lines 6070--6090 (BB_{C\_Equations} items 1310--1350)
+- `grok_{share\_7514fe}.txt` lines 6300--6500 (full reionization/BBN/CMB catalogue)
 - PAPER_199: F_UBii Taxonomy Part 2 (Cosmological)
 - PAPER_200: Um Universal Magnetism Catalogue
 - Planck 2018 Collaboration: CMB and reionization parameters
@@ -335,7 +335,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.123$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -355,7 +355,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -373,7 +373,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -386,23 +386,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |

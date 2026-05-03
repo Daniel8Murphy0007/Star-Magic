@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_033: Electroweak Precision Observables: UQFF Corrections
@@ -20,7 +20,7 @@ BESIII Doubly Cabibbo-Suppressed D-Meson Decays
 **Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **arXiv Reference:** 2506.15533 (BESIII D+ $\to$ K+$\pi$0/$\eta$/$\eta$', BR ~ 10-4)  
-**Validator:** `bsm_{physics\_validation}.py` — PASSED  
+**Validator:** `bsm_{physics\_validation}.py` --- PASSED  
 **Index Slot:** §1.4 BSM Physics,  
 
 ---
@@ -30,8 +30,8 @@ BESIII Doubly Cabibbo-Suppressed D-Meson Decays
 The BESIII $\psi$(3770) dataset (20.3 fb-1 at $\sqrt{s}$ = 3.773 GeV) enables first‑observation measurements of
 doubly Cabibbo-suppressed (DCS) D-meson decays: BR(D+$\to$K+$\pi$0) = (1.45$\pm$0.08)$\times$10-4, BR(D+$\to$K+$\eta$) =
 (1.17$\pm$0.10)$\times$10-4, and BR(D+$\to$K+$\eta$') = (1.88$\pm$0.15)$\times$10-4, all with >10$\sigma$ significance (arXiv:2506.15533).
-The Unified Quantum Field Framework (UQFF) maps the DCS suppression ratio — governed by the Cabibbo
-angle $\theta$_C = 0.227 rad — onto its E_react electroweak vacuum reactivity parameter: E_react =
+The Unified Quantum Field Framework (UQFF) maps the DCS suppression ratio --- governed by the Cabibbo
+angle $\theta$_C = 0.227 rad --- onto its E_react electroweak vacuum reactivity parameter: E_react =
 tan4($\theta$_C) = 2.846$\times$10-3. This E_react parameter directly encodes the oblique electroweak precision
 corrections S, T, U through the UQFF charge-reactivity vacuum density $\rho$_react. The UQFF T-parameter
 correction is $\delta$T_UQFF = E_react $\times$ [SSq] = 1.622$\times$10-3, corresponding to a shift $\delta$$\rho$_EW = E_react =
@@ -45,7 +45,7 @@ constitutes a novel non-decoupling vacuum contribution at the 0.28% level.
 ### 1.1 Doubly Cabibbo-Suppressed Decays
 
 D-meson DCS decays proceed through the Cabibbo-favored weak quark process c $\to$ d + (W+) but with a K+
-in the final state — achieved only by the doubly-suppressed amplitude where both
+in the final state --- achieved only by the doubly-suppressed amplitude where both
 virtual-W-propagator insertions carry opposite Cabibbo rotation:
 $$\mathcal{M}_{\mathrm{DCS}} \sim G_F V_{cd}^* V_{us} \sim G_F \sin^2\theta_C$$
 
@@ -57,7 +57,7 @@ BESIII observes DCS rates at exactly this level, confirming the CKM suppression 
 ### 1.2 Connection to Electroweak Precision
 
 DCS decays probe the same Cabibbo rotation that appears in CKM unitarity tests. The oblique EW
-corrections — parametrized by Peskin-Takeuchi S, T, U — arise from vacuum polarization diagrams
+corrections --- parametrized by Peskin-Takeuchi S, T, U --- arise from vacuum polarization diagrams
 involving the Higgs, top quark, and any BSM particles coupling to W/Z bosons. The crucial
 connection: **the same Cabibbo angle tan($\theta$_C) that suppresses DCS decays enters the SM electroweak
 corrections through isospin-breaking (T parameter)**.
@@ -99,11 +99,11 @@ $$\langle R_{\mathrm{DCS}} \rangle = (5.23 \times 4.22 \times 6.79)^{1/3} \times
 
 Compared to the theoretical prediction tan4$\theta$_C = tan4(0.227) = 2.846$\times$10-3, the measured ratio is
 ~1.87$\times$ larger. This enhancement is attributed to hadronic form factor effects (SU(3) breaking,
-final-state interactions) and — in the UQFF framework — to the vacuum E_react enhancement.
+final-state interactions) and --- in the UQFF framework --- to the vacuum E_react enhancement.
 
 ---
 
-## 3. UQFF Framework — E_react and EW Precision
+## 3. UQFF Framework --- E_react and EW Precision
 
 ### 3.1 E_react Definition
 
@@ -202,7 +202,7 @@ Both are within the current 1$\sigma$ experimental uncertainties.
 The T parameter contributes to the W-boson mass via:
 $$\Delta m_W^T = \frac{\alpha_{\mathrm{EM}} m_W}{2(m_W^2/m_Z^2 - 1)} \cdot \delta T_{\mathrm{UQFF}} = \frac{7.30 \times 10^{-3} \times 80.4}{2 \times 0.222} \times 0.222 = \frac{0.587}{2} = 0.294 \text{ GeV}$$
 
-Wait — let me recalculate:
+Wait --- let me recalculate:
 $$\Delta m_W = m_W \cdot \frac{\cos^2\theta_W}{\cos^2\theta_W - \sin^2\theta_W} \cdot \frac{\alpha_{\mathrm{EM}}}{2} \cdot \delta T_{\mathrm{UQFF}}$$
 $$= 80.4 \times \frac{0.769}{0.769 - 0.231} \times \frac{7.30 \times 10^{-3}}{2} \times 0.222 = 80.4 \times 1.432 \times 8.1 \times 10^{-4} = 0.093 \text{ GeV} = 93 \text{ MeV}$$
 
@@ -229,7 +229,7 @@ $$\frac{\text{BR}(K^+\pi^0)}{\text{BR}(K^+\eta)} = \frac{1.45}{1.17} = 1.239$$
 The UQFF prediction using $\eta$-$\eta$' mixing angle $\phi$ = -11.3°:
 $$\frac{\text{BR}(K^+\pi^0)}{\text{BR}(K^+\eta)} = \frac{|\langle K^+\pi^0 | H_W | D^+ \rangle|^2}{|\langle K^+\eta | H_W | D^+ \rangle|^2} \approx \frac{3}{2\cos^2\phi} = \frac{3}{2 \times 0.961} = 1.560$$
 
-The UQFF ratio prediction of 1.56 vs measured 1.24 — a ~20% discrepancy attributed to FSI
+The UQFF ratio prediction of 1.56 vs measured 1.24 --- a ~20% discrepancy attributed to FSI
 (final-state interactions) corrections to the UQFF vacuum prediction.
 
 ### 5.2 $\eta$' Enhancement
@@ -251,7 +251,7 @@ connect it to electroweak precision observables:
 2. **EW T-parameter:** $\delta$T_UQFF = +0.222 from E_react $\times$ [SSq]/$\alpha$_EM, within current LEP 1$\sigma$
 3. **$\rho$-parameter shift:** $\delta$$\rho$_UQFF = 2.846$\times$10-3, within LEP $\rho$0 = 1.0004+0$\cdot$0022
 4. **W-mass prediction:** UQFF T-correction $\to$ $\Delta$m_W = +93 MeV, consistent with CDF anomaly direction
-5. **S parameter:** Suppressed to ~0 by UQFF exponential temporal decay — EW-safe
+5. **S parameter:** Suppressed to ~0 by UQFF exponential temporal decay --- EW-safe
 6. **$\eta$' enhancement:** Not explained by UQFF vacuum (hadronic dynamics dominate)
 
 The UQFF framework successfully maps the DCS suppression ratio onto electroweak precision
@@ -329,7 +329,7 @@ $$
 |--------|-------|-------------|
 | $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60--0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
@@ -337,7 +337,7 @@ $$
 | $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete --- 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -416,7 +416,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.099$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -436,7 +436,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -455,10 +455,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -540,7 +540,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

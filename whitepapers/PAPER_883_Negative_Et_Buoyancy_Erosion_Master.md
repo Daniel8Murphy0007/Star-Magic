@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [GW, buoyancy, nebula, damping, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_883: Negative E(t) Buoyancy Erosion Master
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-08
 **Session:** 209
 **Source:** Sessions 204-208 standalone module integration
@@ -33,7 +33,7 @@ Applies to filament erosion, photoevaporation in M16, and GW damping scenarios.
 
 $$
 \begin{aligned}
-  & E-(t) = -E0\cdot\exp(\kappat + [SSq]\cdot t/26)\cdot S26\cdot(1 - R) \\
+  & E-(t) = -E0\cdot\exp(\kappa t + [SSq]\cdot t/26)\cdot S26\cdot(1 - R) \\
   & net_factor = 2R - 1
 \end{aligned}
 $$
@@ -61,8 +61,8 @@ $$
 | 0.2 | -0.6 | -0.6 E_0 exp(...) | Moderate erosion |
 | 0.3 | -0.4 | -0.4 E_0 exp(...) | Default erosion |
 | 0.5 | 0.0 | 0 | Balance point |
-| 0.7 | +0.4 | — | Expansion regime |
-| 0.9 | +0.8 | — | Strong expansion |
+| 0.7 | +0.4 | --- | Expansion regime |
+| 0.9 | +0.8 | --- | Strong expansion |
 
 ---
 
@@ -82,7 +82,7 @@ source2.cpp principal GUI pipeline. No astronomical data is hardcoded; all syste
 values come from the APIFetch.py -> bodies_*.csv data flow.
 
 **Significance:** The negative E(t) branch completes the UQFF energy engine. While E+(t) drives
-expansion, E-(t) drives erosion — the removal of material or energy when gravitational binding
+expansion, E-(t) drives erosion --- the removal of material or energy when gravitational binding
 exceeds buoyancy support. Together E+(t) + E-(t) = E_net provides the complete energy budget.
 
 ---
@@ -105,7 +105,7 @@ The standalone module `negative_{et\_erosion}.py` implements this in:
 
 ```bash
 python negative_{et\_erosion}.py        # Full report
-python negative_{et\_erosion}.py —json  # Machine-readable
+python negative_{et\_erosion}.py ---json  # Machine-readable
 ```
 
 ---
@@ -192,7 +192,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.087$ (deep sub-threshold regime), placing it in the zone where exponential damping dominates. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -212,7 +212,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -230,7 +230,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -243,7 +243,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
@@ -259,10 +259,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -273,7 +273,7 @@ bridge.*
 | PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

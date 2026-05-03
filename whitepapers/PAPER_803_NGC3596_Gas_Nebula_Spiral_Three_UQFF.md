@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_803
-title: "NGC 3596 — Gas Nebula Spiral with Boyle's Law Buoyancy Triadic UQFF"
+title: "NGC 3596 --- Gas Nebula Spiral with Boyle's Law Buoyancy Triadic UQFF"
 session: 189
 date: 2026-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, Hubble, Three-UQFF, vacuum, SCm, SMBH, buoyancy, LENR]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_803: NGC 3596 — Gas Nebula Spiral with Boyle's Law Buoyancy Triadic UQFF
+# PAPER_803: NGC 3596 --- Gas Nebula Spiral with Boyle's Law Buoyancy Triadic UQFF
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF (Universal Quantum Field Superconductive Framework) — Three-UQFF Simultaneous  
+**Framework:** UQFF (Universal Quantum Field Superconductive Framework) --- Three-UQFF Simultaneous  
 **Session:** 189 | v5.45  
 **Date:** 2026  
-**CP4 Class:** #387 — NGC3596GasSpiralThreeUQFFCalculator  
+**CP4 Class:** #387 --- NGC3596GasSpiralThreeUQFFCalculator  
 
 ---
 
@@ -50,25 +50,25 @@ species index (DVP) is also explicitly computed for NGC 3596's gas content.
 |-----------|--------|-------|--------|
 | Galaxy mass | M | 1011 MM_sun = 1.989$\times$1041 kg | Spiral estimate |
 | Disk radius | r | 2.83$\times$1020 m (~30 kly) | Hubble |
-| SMBH mass | M_BH | 108 MM_sun = 1.989$\times$1038 kg | M–$\sigma$ |
-| $\sigma$ | — | 150 km/s | M–$\sigma$ |
-| SFR | — | 0.9 MM_sun/yr | Gas-rich spiral |
+| SMBH mass | M_BH | 108 MM_sun = 1.989$\times$1038 kg | M--$\sigma$ |
+| $\sigma$ | --- | 150 km/s | M--$\sigma$ |
+| SFR | --- | 0.9 MM_sun/yr | Gas-rich spiral |
 | Redshift | z | 0.0047 | Spectroscopic |
-| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | — |
-| M_sf | — | 0.02 | UQFF |
-| f_TRZ | — | 0.05 | THz |
+| Age | t | 5$\times$109 yr = 1.578$\times$1017 s | --- |
+| M_sf | --- | 0.02 | UQFF |
+| f_TRZ | --- | 0.05 | THz |
 | v_EM | v | 105 m/s | Rotation |
 | B_EM | B | 10-5 T | Galactic field |
-| $\rho$_UA | — | 7.09$\times$10-36 kg/m3 | UQFF constant |
-| $\rho$_SCm | — | 7.09$\times$10-37 kg/m3 | UQFF constant |
-| V_little/V_big | — | 1/33 | Boyle's Law |
-| $\Delta$$k_{\eta}$ | — | 7.25$\times$108 | LENR calibration |
+| $\rho$_UA | --- | 7.09$\times$10-36 kg/m3 | UQFF constant |
+| $\rho$_SCm | --- | 7.09$\times$10-37 kg/m3 | UQFF constant |
+| V_little/V_big | --- | 1/33 | Boyle's Law |
+| $\Delta$$k_{\eta}$ | --- | 7.25$\times$108 | LENR calibration |
 
 ---
 
 ## 3. Three-UQFF Derivation
 
-### Boyle's Law Buoyancy Factor (Novel — Full Derivation)
+### Boyle's Law Buoyancy Factor (Novel --- Full Derivation)
 
 $$
 \begin{aligned}
@@ -126,16 +126,16 @@ g_buoyancy   = 1.053\times10-3 m/s2
 g_primary    = 1.053\times10-3 m/s2
 
 DVP Species Index for NGC 3596 gas clouds:
-  Species Index = log(\rho_SCm/\rho_UA) \cdot n = log(0.1) \cdot n = –1.0 \cdot n
-  n=1: Index = –1   (atomic hydrogen production)
-  n=6: Index = –6   (molecular cloud formation)
-  n=13: Index = –13 (protostellar core)
-  n=26: Index = –26 (galactic disk self-gravity scale)
+  Species Index = log(\rho_SCm/\rho_UA) \cdot n = log(0.1) \cdot n = --1.0 \cdot n
+  n=1: Index = --1   (atomic hydrogen production)
+  n=6: Index = --6   (molecular cloud formation)
+  n=13: Index = --13 (protostellar core)
+  n=26: Index = --26 (galactic disk self-gravity scale)
 ```
 
 ---
 
-## 4. Boyle's Law–UQFF Physical Analogy
+## 4. Boyle's Law--UQFF Physical Analogy
 
 The Boyle's Law buoyancy factor f_Ub provides a macroscopic physical analogy for the UQFF vacuum
 density transition:
@@ -146,7 +146,7 @@ atm) rises to the surface, expanding by factor 33 (from 1/33 to 1/1 relative vol
 expands into the UA' state ($\rho$_UA = 7.09$\times$10-36, 10$\times$ less dense), with the 1/33 factor encoding the
 pressure ratio at the point of phase transition.
 3. **Physical prediction:** Gas nebulae in NGC 3596's spiral arms mark the macroscopic locations
-where UA':SCm transitions are occurring — the nebular ionized gas is the observable signature of
+where UA':SCm transitions are occurring --- the nebular ionized gas is the observable signature of
 UQFF state transitions.
 
 ---
@@ -156,7 +156,7 @@ UQFF state transitions.
 Three-UQFF applied to NGC 3596 yields g_primary $\approx$ 1.053$\times$10-3 m/s2 with the Boyle's Law buoyancy
 factor (f_Ub = 2.196$\times$107) fully integrated into Mode 3. The DVP Species Index formula is applied to
 NGC 3596's gas clouds, predicting atomic hydrogen at n=1 through galactic disk self-gravity at n=26.
-NGC 3596 is established as the canonical UQFF reference for the Boyle's Law–vacuum density buoyancy
+NGC 3596 is established as the canonical UQFF reference for the Boyle's Law--vacuum density buoyancy
 analogy, with the gas nebulosity as the observable signature of UA':SCm phase transitions.
 
 *PAPER_803, CP4 Three-UQFF class #387. v5.45. Session 189.*
@@ -183,12 +183,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -267,7 +267,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.161$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -287,7 +287,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -305,7 +305,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -318,23 +318,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |

@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, black-hole, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_651: UQFF Schwarzschild Proton & Vacuum Energy Concentration
@@ -16,7 +16,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFSchwarzschildProtonVacuumCalculator  
-**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) — Aether13_16, Aether5_8  
+**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) --- Aether13_16, Aether5_8  
 **Companion papers:** PAPER_647 (Vacuum Density Series), PAPER_646 (Ui Operator), PAPER_642 (SM
 Bridge)
 
@@ -28,7 +28,7 @@ $$E_{\text{BH}} = mc^2 \cdot e^{-26}; \qquad r_s = \frac{2GM}{c^2} = 2.9 \times 
 
 The proton occupies a physical volume of ~10-39 cm3, yet the surrounding Aether vacuum
 holds only ~10-23 gm/cm3 of energy density. Removing 10-39% of the total vacuum energy
-content from any region causes gravitational collapse to a black hole — a condition
+content from any region causes gravitational collapse to a black hole --- a condition
 satisfied at the proton scale when the Schwarzschild radius equals the proton charge radius.
 This paper derives the Schwarzschild proton mass (1.85$\times$109 kg) from the UQFF vacuum
 concentration framework, connects it to the Wheeler-DeWitt equation with UQFF vacuum
@@ -56,7 +56,7 @@ $$M_{\text{Sch,proton}} = \frac{(8.775\times10^{-14})(2.998\times10^{10})^2}{2(6
 
 Compare with actual proton mass: $m_p = 1.673\times10^{-27}\ \text{kg}$
 
-Ratio: $M_{\text{Sch,proton}}/m_p \approx 10^{36}$ — a 36-order deficit between actual and
+Ratio: $M_{\text{Sch,proton}}/m_p \approx 10^{36}$ --- a 36-order deficit between actual and
 Schwarzschild proton masses. This is precisely the gap bridged by the vacuum density
 ratio in the UQFF ($\rho$vac,[UA]/$\rho$vac,[SCm] = 10, spanning from 10-37 up to cosmological scales).
 
@@ -101,7 +101,7 @@ At proton scale (a = 8.775$\times$10-15 m):
 
 $$P_{\text{Casimir}} \approx 7.3\times10^{25}\ \text{Pa} \approx 7.3\times10^{25}\ \text{J/m}^3$$
 
-The **ratio** $P_{\text{Casimir}} / \Delta\rho_{\text{vac}} \approx 10^{61}$ — consistent with
+The **ratio** $P_{\text{Casimir}} / \Delta\rho_{\text{vac}} \approx 10^{61}$ --- consistent with
 the 1036 mass ratio above (squared: 1072/structure factor), confirming the vacuum
 hierarchy connects Casimir physics to Schwarzschild proton physics in the UQFF framework.
 
@@ -139,7 +139,7 @@ $$\frac{r_s(m_p)}{r_s(M_{\text{Sch,proton}})} = \frac{m_p}{M_{\text{Sch,proton}}
 $$r_s(m_p) = \frac{2Gm_p}{c^2} \approx 2.48\times10^{-52}\ \text{cm} = 1.54\times10^{-19}\ \ell_P$$
 
 This 10-19 ratio encodes the **quantum-Planck-to-proton bridge** in the UQFF
-vacuum hierarchy — a 19-order step matched by SOURCE115's 19-system 26D framework.
+vacuum hierarchy --- a 19-order step matched by SOURCE115's 19-system 26D framework.
 
 ---
 
@@ -263,7 +263,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.124$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -283,7 +283,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -301,28 +301,28 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — G6 Gate (CVW v2.0.0)
+## §SM Anchors --- G6 Gate (CVW v2.0.0)
 
 | Observable | SM Value | UQFF Schwarzschild Proton | Alignment |
 |------------|----------|---------------------------|-----------|
-| Proton charge radius | 0.8775 fm | r_p input (exact) | ✅ 100% |
-| Planck length | 1.616$\times$10-33 cm | ℓP from G,ℏ,c (exact) | ✅ 100% |
-| Casimir pressure (1 nm gap) | ~1.3$\times$10-3 Pa | Casimir formula (exact) | ✅ |
+| Proton charge radius | 0.8775 fm | r_p input (exact) | \checkmark 100% |
+| Planck length | 1.616$\times$10-33 cm | ℓP from G,ℏ,c (exact) | \checkmark 100% |
+| Casimir pressure (1 nm gap) | ~1.3$\times$10-3 Pa | Casimir formula (exact) | \checkmark |
 | Vacuum energy density | $\rho$vac $\approx$ 10-9 J/m3 (QFT) | UQFF $\rho$vac,sw = 8$\times$10-21 | 🔍 UQFF vs QFT |
-| Wheeler-DeWitt | H|$\Psi$⟩=0 (standard) | V_UQFF layered boundary | ✅ structural |
+| Wheeler-DeWitt | H|$\Psi$⟩=0 (standard) | V_UQFF layered boundary | \checkmark structural |
 
-> **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
+> **SM Anchor Reference:** PAPER_642 --- UQFFSMParameterBridgeMasterComparisonCalculator
 
 ---
 
 ## References
 
-1. Aether13_16.cpp — grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 1020–1225
-2. PAPER_647 — Vacuum Density Series ($\rho$vac,[SCm] = 7.09$\times$10-37)
-3. PAPER_649 — Dipole Vortex Primes (complex form Eₓ = mc2e^{-i26})
-4. PAPER_648 — D(-1) LENR (KER = 630 eV; meson cascade)
-5. PAPER_646 — Universal Inertial Operator
-6. PAPER_642 — SM Parameter Bridge
+1. Aether13_16.cpp --- grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 1020--1225
+2. PAPER_647 --- Vacuum Density Series ($\rho$vac,[SCm] = 7.09$\times$10-37)
+3. PAPER_649 --- Dipole Vortex Primes (complex form Eₓ = mc2e^{-i26})
+4. PAPER_648 --- D(-1) LENR (KER = 630 eV; meson cascade)
+5. PAPER_646 --- Universal Inertial Operator
+6. PAPER_642 --- SM Parameter Bridge
 7. DeWitt B S (1967): "Quantum Theory of Gravity", Phys Rev 160:1113
 8. Lamb W E (1947): "Fine Structure of Hydrogen", Phys Rev 72:241
 9. ARCHITECTURE_{FLOW\_DIAGRAM}.md v5.24
@@ -331,10 +331,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

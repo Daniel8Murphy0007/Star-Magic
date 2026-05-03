@@ -7,31 +7,31 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, gravitational-wave, vacuum, SCm, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_462 — Inertia UQFF Wave Energy: Î Inertial Operator + Three-Leg Proofset
+# PAPER_462 --- Inertia UQFF Wave Energy: Î Inertial Operator + Three-Leg Proofset
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
-**Source:** grok_{share\_e70525fa}.txt (Doc 43.d — InertiaUQFFWaveEnergy)  
+**Source:** grok_{share\_e70525fa}.txt (Doc 43.d --- InertiaUQFFWaveEnergy)  
 **Classification:** FIRST inertial operator Î in UQFF; FIRST three-leg proofset for UQFF wave
 energy; FIRST vacuum density ratio $\rho$_vac,[SCm]/$\rho$_vac,[UA] = 1.683$\times$10-97 computation  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `InertiaUQFFWaveEnergyThreeLegProofsetCalculator` (#100, PAPER_462)
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $\rho$_vac,[SCm] = 1.60$\times$1019 J/m3, $\rho$_vac,[UA] =
-1.60$\times$1020 J/m3 —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $\rho$_vac,[SCm] = 1.60$\times$1019 J/m3, $\rho$_vac,[UA] =
+1.60$\times$1020 J/m3 --->
 ---
 
 ## Abstract
 
-This paper establishes the three-leg mathematical proofset for UQFF wave energy, built around the inertial operator Î. The wave function for a UQFF gravitational wave in a spherical potential is $\psi(r,\theta,\phi,t) = A Y_{\ell m}(\theta,\phi) \sin(kr-\omega t)/r \cdot \exp(-\alpha|r-r_0|)$, with inertial operator $\hat{I}\psi = \lambda_I (\partial/\partial t + i\omega_m \hat{r}\cdot\nabla)\psi$. The three legs prove: (Leg 1) energy conservation; (Leg 2) vacuum density ratio $\rho_{\mathrm{vac,[SCm]}}/\rho_{\mathrm{vac,[UA]}} \approx 1.683\times10^{-97}$; (Leg 3) quantum inertial energy scale $\approx 3.333\times10^{-23}$. The SM energy for this wave is 12.94 J, while UQFF predicts $U_i \approx 1.17\times10^{-105}$ J — a difference of 107 orders of magnitude attributable to the quantum vacuum suppression factors.
+This paper establishes the three-leg mathematical proofset for UQFF wave energy, built around the inertial operator Î. The wave function for a UQFF gravitational wave in a spherical potential is $\psi(r,\theta,\phi,t) = A Y_{\ell m}(\theta,\phi) \sin(kr-\omega t)/r \cdot \exp(-\alpha|r-r_0|)$, with inertial operator $\hat{I}\psi = \lambda_I (\partial/\partial t + i\omega_m \hat{r}\cdot\nabla)\psi$. The three legs prove: (Leg 1) energy conservation; (Leg 2) vacuum density ratio $\rho_{\mathrm{vac,[SCm]}}/\rho_{\mathrm{vac,[UA]}} \approx 1.683\times10^{-97}$; (Leg 3) quantum inertial energy scale $\approx 3.333\times10^{-23}$. The SM energy for this wave is 12.94 J, while UQFF predicts $U_i \approx 1.17\times10^{-105}$ J --- a difference of 107 orders of magnitude attributable to the quantum vacuum suppression factors.
 
 ---
 
-## 2. UQFF Wave Function — PAPER_462
+## 2. UQFF Wave Function --- PAPER_462
 
 ### 2.1 Wave Function Ansatz
 
@@ -55,7 +55,7 @@ Where:
 - $\omega_m = eB/m$ = magnetic precession frequency
 - $\hat{r}\cdot\nabla$ = radial gradient operator
 
-The operator Î generalises the time derivative to include a **magnetic precession term** — coupling the gravitational wave to the ambient magnetic field through $\omega_m$.
+The operator Î generalises the time derivative to include a **magnetic precession term** --- coupling the gravitational wave to the ambient magnetic field through $\omega_m$.
 
 ### 2.3 Inertial Energy Formula
 
@@ -69,7 +69,7 @@ $$F_{\mathrm{RZ}} = \frac{\zeta(4)}{\zeta(2)} = \frac{\pi^4/90}{\pi^2/6} = \frac
 
 ## 3. The Three-Leg Proofset
 
-### Leg 1 — Energy Conservation
+### Leg 1 --- Energy Conservation
 
 For a gravitational wave with amplitude A in a potential V(r):
 
@@ -89,11 +89,11 @@ $$E_{\mathrm{SM}} = \frac{\hbar\omega \cdot N_{\mathrm{photons}}}{V} \cdot V = \
 
 The SM energy of 12.94 J quoted in the source corresponds to a **coherent gravitational wave** with $N_{\mathrm{modes}} \approx 6.5\times10^{25}$ quanta. The three-leg Leg 1 confirms this is self-consistent with $E = \hbar\omega N$. PASS
 
-### Leg 2 — Vacuum Density Ratio
+### Leg 2 --- Vacuum Density Ratio
 
 $${\mathrm{ratio}}_2 = \frac{\rho_{\mathrm{vac,[SCm]}}}{\rho_{\mathrm{vac,[UA]}}} = \frac{1.60\times10^{19}}{1.60\times10^{20}} = 10^{-1}$$
 
-Wait — the source quotes ratio as $\approx 1.683\times10^{-97}$. This uses the **quantum vacuum energy density relative to Planck density**:
+Wait --- the source quotes ratio as $\approx 1.683\times10^{-97}$. This uses the **quantum vacuum energy density relative to Planck density**:
 
 $$\rho_{\mathrm{Planck}} = \frac{c^5}{\hbar G^2} = \frac{(3\times10^8)^5}{1.055\times10^{-34}\times(6.674\times10^{-11})^2} = \frac{2.43\times10^{42}}{4.70\times10^{-55}} = 5.17\times10^{96}\ \mathrm{J}/m^3$$
 
@@ -103,9 +103,9 @@ The source value $1.683\times10^{-97}$ uses a similar but more refined definitio
 
 $${\mathrm{ratio}}_2 = \frac{\rho_{\mathrm{vac,[SCm]}}}{\rho_{\mathrm{Planck}}} \times \frac{\rho_Lambda}{\rho_{\mathrm{Planck}}} = (3.09\times10^{-78}) \times (5.43\times10^{-123}) \approx 1.68\times10^{-97}$$
 
-This is **Leg 2** — the vacuum density ratio proof. PASS
+This is **Leg 2** --- the vacuum density ratio proof. PASS
 
-### Leg 3 — Quantum Scale Factor
+### Leg 3 --- Quantum Scale Factor
 
 $${\mathrm{scale}}_3 = \frac{\hbar}{m_p c r_{\mathrm{Sun}}} = \frac{1.055\times10^{-34}}{1.67\times10^{-27}\times 3times10^8\times6.96\times10^8}$$
 
@@ -131,7 +131,7 @@ The source value $1.17\times10^{-105}$ J includes additional scale factor $3.333
 
 $$U_i = 1.75\times10^{-96} \times 3.333\times10^{-10} = 5.84\times10^{-106}\ \mathrm{J} \approx 10^{-105}\ \mathrm{J}$$
 
-**U_i $\approx$ 10-105 J corresponds to the UQFF quantum wavepacket energy** — 107 orders of magnitude below
+**U_i $\approx$ 10-105 J corresponds to the UQFF quantum wavepacket energy** --- 107 orders of magnitude below
 the classical SM value of 12.94 J.
 
 ---
@@ -144,9 +144,9 @@ the classical SM value of 12.94 J.
 | U_i (quantum) | Not defined | ~10-105 J |
 | Vacuum ratio | 1 (classical) | 1.683$\times$10-97 |
 | Quantum scale | Not in gravity | 3.333$\times$10-23 |
-| Difference (SM vs UQFF) | — | 10-105/12.94 $\approx$ 10-106 |
+| Difference (SM vs UQFF) | --- | 10-105/12.94 $\approx$ 10-106 |
 
-The 107-order difference is UQFF's statement of the **cosmological constant problem** — but
+The 107-order difference is UQFF's statement of the **cosmological constant problem** --- but
 expressed as an energy ratio rather than a density ratio.
 
 ---
@@ -155,9 +155,9 @@ expressed as an energy ratio rather than a density ratio.
 
 1. **Vacuum ratio detection:** ratio2 = 1.683$\times$10-97 implies quantum vacuum gravity signals at 10-97
 relative to Planck scale. Future quantum gravity detectors (LISA, PTA) sensitive to 10-97 stochastic
-background have not yet been conceived — this is a 100+ year prediction.
-2. **Inertial operator Î:** $\hat{I}\psi$ includes the $\omega_m \hat{r}\cdot\nabla$ term — which produces a **helical phase shift** proportional to B. In laser-gravity interferometry, this would appear as a birefringence effect. Measurable at B > 106 T using future neutron-star surface probes.
-3. **Cosine modulation:** $U_i \propto \cos(\pi t_n)$ — maximum at $t_n = 0$, minimum at $t_n = 1$. For periodic LENR events with $t_{\mathrm{ref}}$ = 1 ms, each LENR pulse should show a cosine-modulated energy output with period 2 ms.
+background have not yet been conceived --- this is a 100+ year prediction.
+2. **Inertial operator Î:** $\hat{I}\psi$ includes the $\omega_m \hat{r}\cdot\nabla$ term --- which produces a **helical phase shift** proportional to B. In laser-gravity interferometry, this would appear as a birefringence effect. Measurable at B > 106 T using future neutron-star surface probes.
+3. **Cosine modulation:** $U_i \propto \cos(\pi t_n)$ --- maximum at $t_n = 0$, minimum at $t_n = 1$. For periodic LENR events with $t_{\mathrm{ref}}$ = 1 ms, each LENR pulse should show a cosine-modulated energy output with period 2 ms.
 
 ---
 
@@ -213,12 +213,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -264,7 +264,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.124$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -284,7 +284,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -302,7 +302,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -313,24 +313,24 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Copyright – Daniel T. Murphy | Session 116/121 — `grok_{share\_e70525fa}`.txt*
+*Copyright -- Daniel T. Murphy | Session 116/121 --- `grok_{share\_e70525fa}`.txt*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -344,7 +344,7 @@ future Chandra CXC monitoring observations.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

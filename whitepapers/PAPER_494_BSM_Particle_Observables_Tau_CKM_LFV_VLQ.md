@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, SCm, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_494 — BSM Particle Physics Observables: Tau Anomalous Dipole, CKM Vcb, LFV, VLQ
+# PAPER_494 --- BSM Particle Physics Observables: Tau Anomalous Dipole, CKM Vcb, LFV, VLQ
 **Author:** Daniel T. Murphy
 
 **arXiv:** 2503.xxxxx  
@@ -31,7 +31,7 @@ Star-Magic/UQFF framework.
 
 ## §1 Novel Claim
 
-UQFF provides a gravitational-field analog for four key Beyond-Standard-Model (BSM) observables: the tau-lepton anomalous magnetic moment $\Delta a_\tau$, the CKM matrix element $|V_{cb}|$, the lepton-flavour-violating (LFV) branching ratio $\text{BR}(\tauto\mu\gamma)$, and a vector-like quark (VLQ) gravitational coupling term $g_{\text{VLQ}}$. These observables arise from the same vacuum-energy structure as UQFF buoyancy, connecting collider-scale BSM physics to the astrophysical UQFF framework through the [SCm]–[UA] interaction tensor.
+UQFF provides a gravitational-field analog for four key Beyond-Standard-Model (BSM) observables: the tau-lepton anomalous magnetic moment $\Delta a_\tau$, the CKM matrix element $|V_{cb}|$, the lepton-flavour-violating (LFV) branching ratio $\text{BR}(\tauto\mu\gamma)$, and a vector-like quark (VLQ) gravitational coupling term $g_{\text{VLQ}}$. These observables arise from the same vacuum-energy structure as UQFF buoyancy, connecting collider-scale BSM physics to the astrophysical UQFF framework through the [SCm]--[UA] interaction tensor.
 
 ---
 
@@ -66,10 +66,10 @@ with $M_{\text{VLQ}} = 3.56\times10^{-25}$ kg ($\approx 120$ TeV), $g_c = 0.1$ (
 
 | Observable | UQFF Value | Experimental Reference | Agreement |
 |-----------|-----------|----------------------|-----------|
-| $\Delta a_\tau$ | $2.33\times10^{-5}$ | Belle II precision target $\sim 10^{-5}$–$10^{-4}$ | Compatible ✅ |
-| $\|V_{cb}\|$ | 0.0405 (PDG anchor) | $0.0405\pm0.0009$ (PDG 2024) | 100% ✅ |
-| $\text{BR}(\tauto\mu\gamma)/\text{BR}_{\text{limit}}$ | $2.38\times10^{-2}$ | $< 1$ (experimental constraint) | Satisfies ✅ |
-| $g_{\text{VLQ}}$ (solar $r$) | $4.12\times10^{-63}$ m/s2 | Sub-Planck — indirect constraint | — |
+| $\Delta a_\tau$ | $2.33\times10^{-5}$ | Belle II precision target $\sim 10^{-5}$--$10^{-4}$ | Compatible \checkmark |
+| $\|V_{cb}\|$ | 0.0405 (PDG anchor) | $0.0405\pm0.0009$ (PDG 2024) | 100% \checkmark |
+| $\text{BR}(\tauto\mu\gamma)/\text{BR}_{\text{limit}}$ | $2.38\times10^{-2}$ | $< 1$ (experimental constraint) | Satisfies \checkmark |
+| $g_{\text{VLQ}}$ (solar $r$) | $4.12\times10^{-63}$ m/s2 | Sub-Planck --- indirect constraint | --- |
 
 ---
 
@@ -78,7 +78,7 @@ with $M_{\text{VLQ}} = 3.56\times10^{-25}$ kg ($\approx 120$ TeV), $g_c = 0.1$ (
 | Observable | SM Prediction | UQFF Correction |
 |-----------|--------------|-----------------|
 | $a_\tau^{\text{SM}}$ | $1.17721\times10^{-3}$ | $+\Delta a_\tau^{\text{UQFF}} \approx 10^{-5}$ |
-| $|V_{cb}|$ | $0.0405$ (fit) | Anchored — UQFF sets vacuum-density derivation |
+| $|V_{cb}|$ | $0.0405$ (fit) | Anchored --- UQFF sets vacuum-density derivation |
 | $\text{BR}(\tauto\mu\gamma)$ | $<4.2\times10^{-13}$ | SSq damping $e^{-0.57 t}$ suppresses below limit |
 | VLQ gravity | Not in SM | Emerges from $F_U$ at high-$M$ limit |
 
@@ -88,9 +88,9 @@ The [SCm] factor provides a natural BSM-to-UQFF bridge: in the Standard Model, $
 
 ## §5 Testable Prediction
 
-1. **Belle II tau-anomalous moment**: If $\Delta a_\tau \sim 10^{-5}$–$10^{-4}$, UQFF vacuum contribution is $\lesssim 2\%$ of total — currently below Belle II sensitivity of $\delta a_\tau \approx 10^{-3}$, but testable by FCC-ee with $10^{10}$ tau pairs
-2. **Next-generation LFV searches**: MEG-II (2026) will probe $\text{BR}(\muto e\gamma) < 10^{-14}$; the UQFF [SSq] suppression framework predicts $\text{BR}(\tauto\mu\gamma) < 10^{-14}$ — below current PDG limit by a factor $10\times$, resolving the MEG-II non-observation as consistency with UQFF
-3. **FCC-hh VLQ direct production**: If $M_{\text{VLQ}} \approx 120$ TeV, VLQ pair-production cross-section $\sigma \sim g_c^2 \cdot s/M_{\text{VLQ}}^4 \approx 10^{-4}$ fb at $\sqrt{s} = 100$ TeV (FCC-hh) — detectable in $10^6$ fb$^{-1}$ run
+1. **Belle II tau-anomalous moment**: If $\Delta a_\tau \sim 10^{-5}$--$10^{-4}$, UQFF vacuum contribution is $\lesssim 2\%$ of total --- currently below Belle II sensitivity of $\delta a_\tau \approx 10^{-3}$, but testable by FCC-ee with $10^{10}$ tau pairs
+2. **Next-generation LFV searches**: MEG-II (2026) will probe $\text{BR}(\muto e\gamma) < 10^{-14}$; the UQFF [SSq] suppression framework predicts $\text{BR}(\tauto\mu\gamma) < 10^{-14}$ --- below current PDG limit by a factor $10\times$, resolving the MEG-II non-observation as consistency with UQFF
+3. **FCC-hh VLQ direct production**: If $M_{\text{VLQ}} \approx 120$ TeV, VLQ pair-production cross-section $\sigma \sim g_c^2 \cdot s/M_{\text{VLQ}}^4 \approx 10^{-4}$ fb at $\sqrt{s} = 100$ TeV (FCC-hh) --- detectable in $10^6$ fb$^{-1}$ run
 
 ---
 
@@ -146,12 +146,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -197,7 +197,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.094$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -217,7 +217,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -235,7 +235,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -246,10 +246,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** The same UQFF parameter set ($\kappa$, [SSq], $\beta$_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)
-across a 29-system cross-validation matrix — without per-system free-parameter adjustment.
+across a 29-system cross-validation matrix --- without per-system free-parameter adjustment.
 No SM framework derives these three observables from a single connected constant set.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -261,10 +261,10 @@ No SM framework derives these three observables from a single connected constant
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -273,7 +273,7 @@ No SM framework derives these three observables from a single connected constant
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

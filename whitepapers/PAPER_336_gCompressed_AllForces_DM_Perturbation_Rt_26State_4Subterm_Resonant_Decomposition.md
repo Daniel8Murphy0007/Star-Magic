@@ -8,10 +8,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Hubble, dark-matter, MUGE, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_336 — g_Compressed Complete All-Forces Equation and R(t) 26-Component 4-Subterm Resonant Decomposition
+# PAPER_336 --- g_Compressed Complete All-Forces Equation and R(t) 26-Component 4-Subterm Resonant Decomposition
 **Date:** September 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
@@ -41,7 +41,7 @@ resonance components: R_{U\_g1}, R_{U\_g2}, R_{U\_g3}, and R_{U\_g4i} per each o
 
 
 **UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -101,7 +101,7 @@ $$
 - g: local gravity acceleration (self-consistent ? iterative)
 - Classical Archimedes buoyancy at vacuum fluid density
 
-**Term 6: Dark Matter Perturbation Coupling (NEW — not in any prior g_Compressed form)**
+**Term 6: Dark Matter Perturbation Coupling (NEW --- not in any prior g_Compressed form)**
 $$
 (M_vis + M_DM) \cdot (d?/? + 3G M / r3)
 $$
@@ -114,7 +114,7 @@ $$
 | 3$\mu$_s$\nabla$(M_s/r)/r | tidal gravity | 3$\times$ tidal component |
 
 **Physical significance:** The (M_vis + M_DM)(d?/? + 3$\mu$_s$\nabla$(M_s/r)/r) term couples the total mass (visible +
-dark) to both the density fluctuation field AND the tidal gravity — simultaneously handling dark
+dark) to both the density fluctuation field AND the tidal gravity --- simultaneously handling dark
 matter dynamics AND structure formation in one term. This is the UQFF generalization of the Jeans
 instability criterion and the dark matter halo perturbation.
 
@@ -175,7 +175,7 @@ $$
 
 ### 3.5 Vela Frequency Assignment
 
-For Vela Pulsar THz blobs (0.3–0.7c velocities, f_res~1012 Hz):
+For Vela Pulsar THz blobs (0.3--0.7c velocities, f_res~1012 Hz):
 $$
 \begin{aligned}
   & \text{R\_U\_g3},i = R_0 \cdot (v_blob/c) \cdot (f_THz/f_ref)   [THz component dominant] \\
@@ -195,10 +195,10 @@ $$
 ## 4. Integration Context
 
 g_Compressed and R(t) are two of the four UQFF modes:
-1. **g_Compressed** — this paper (Term 6 DM perturbation NEW)
-2. **R(t)** — this paper (4-subterm per state NEW)
-3. **F_{U\_Bi}** — PAPER_335 (buoyancy kernel)
-4. **U_i** — PAPER_334 (superconductive vacuum density)
+1. **g_Compressed** --- this paper (Term 6 DM perturbation NEW)
+2. **R(t)** --- this paper (4-subterm per state NEW)
+3. **F_{U\_Bi}** --- PAPER_335 (buoyancy kernel)
+4. **U_i** --- PAPER_334 (superconductive vacuum density)
 
 Together they form the complete MUGE-to-FLENR decomposition:
 $$
@@ -209,10 +209,10 @@ $$
 
 ## 5. FIRST Declarations
 
-1. **FIRST g_Compressed complete all-forces form** — includes Term 6: (M_vis+M_DM)(d?/? + 3$\mu$_s$\nabla$(M_s/r)/r)
+1. **FIRST g_Compressed complete all-forces form** --- includes Term 6: (M_vis+M_DM)(d?/? + 3$\mu$_s$\nabla$(M_s/r)/r)
 dark matter perturbation
 2. **FIRST fluid buoyancy term** (?_fluid$\cdot$V$\cdot$g) in g_Compressed reference
-3. **FIRST R(t) 4-subterm per state explicit decomposition** — R_Ug1/Ug2/Ug3/Ug4i per each of 26
+3. **FIRST R(t) 4-subterm per state explicit decomposition** --- R_Ug1/Ug2/Ug3/Ug4i per each of 26
 states (104 total terms)
 
 ---
@@ -239,14 +239,14 @@ $$
 
 ## 7. References
 
-- gok_{share\_31b5c807a4}.txt (September 14, 2025 — 9-document assimilation)
-- Vela Pulsar (PSR J0835-4510 in Vela Remnant)_12Sept2025.docx — Compressed + Resonant eqs 1-5
-- NGC 1365 (Great Barred Spiral Galaxy)_12Sept2025.docx — eqs 6-10
-- Abell 2256 (Galaxy Cluster)_11Sept2025.docx — eqs 16-20
+- gok_{share\_31b5c807a4}.txt (September 14, 2025 --- 9-document assimilation)
+- Vela Pulsar (PSR J0835-4510 in Vela Remnant)_12Sept2025.docx --- Compressed + Resonant eqs 1-5
+- NGC 1365 (Great Barred Spiral Galaxy)_12Sept2025.docx --- eqs 6-10
+- Abell 2256 (Galaxy Cluster)_11Sept2025.docx --- eqs 16-20
 - PAPER_326: Triadic Master (R(t) 26-state structure; structural predecessor)
 - PAPER_288: Cosmic-Age Standing-Traveling Wave Bridge (quantum Hamiltonian term context)
 
-**Copyright:** Daniel T. Murphy — Star-Magic UQFF Whitepaper Series
+**Copyright:** Daniel T. Murphy --- Star-Magic UQFF Whitepaper Series
 
 ---
 
@@ -270,12 +270,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -346,7 +346,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.076$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -366,7 +366,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -384,7 +384,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -397,22 +397,22 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
 | PAPER_1019 | Dark Matter Phonon Buoyancy NFW Coupling |

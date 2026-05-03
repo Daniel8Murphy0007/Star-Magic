@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_267
-title: "SFR Normalization as Dimensionless Coupling Constant — Starburst-Buoyancy Coherence in NGC
+title: "SFR Normalization as Dimensionless Coupling Constant --- Starburst-Buoyancy Coherence in NGC
 1792"
 session: 73
 date: 2026-03-01
@@ -8,16 +8,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_267: SFR Normalization as Dimensionless Coupling Constant — Starburst-Buoyancy Coherence in NGC 1792
+# PAPER_267: SFR Normalization as Dimensionless Coupling Constant --- Starburst-Buoyancy Coherence in NGC 1792
 **Author:** Daniel T. Murphy
 
 **Authors:** Daniel T. Murphy  
 **Date:** March 2026  
 **UQFF Module:** GALAXY_{NGC\_1792}.cpp (Module 19, "The Stellar Forge")  
-**Session:** 73 — UQFF 2.0 Upgrade Unique Physics Extraction  
+**Session:** 73 --- UQFF 2.0 Upgrade Unique Physics Extraction  
 **Keywords:** NGC 1792, specific star-formation rate, UQFF buoyancy, coherence, starburst gravity
 
 ---
@@ -25,8 +25,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 In the UQFF 2.0 upgraded model of NGC 1792 (z = 0.0095, M0 = 1$\times$1010 MM_sun, r = 7.569$\times$1020 m), the
-normalized star-formation rate factor `SFR_factor = SFR[MM_sun/yr] / M₀[MM_sun] = 10 / 1\times1010 = 10-9 yr-1`
-is identified as the **specific star-formation rate (sSFR)** — a dimensionless coupling constant
+normalized star-formation rate factor `SFR_factor = SFR[MM_sun/yr] / M$_0$[MM_sun] = 10 / 1\times1010 = 10-9 yr-1`
+is identified as the **specific star-formation rate (sSFR)** --- a dimensionless coupling constant
 that uniformly scales the time-evolving mass M(t). With the 3-tier buoyancy structure introduced in
 UQFF 2.0 (PAPER_198 standard), all three buoyancy tiers couple to M(t) through the same sSFR
 exponential: $\Delta$g_{buoy\_total} = sSFR $\times$ (term_Ubi + term_{F\_UBii} + term_{Ub\_i}) $\times$ e^{-t/$\tau$_SF}. This
@@ -50,8 +50,8 @@ astrophysical parameter that characterizes the fractional mass growth rate of a 
 time. In the UQFF framework for NGC 1792, the mass evolution function M(t) = M0 $\times$ (1 + SFR_factor $\times$
 e^{-t/$\tau$_SF}) embeds the sSFR as the amplitude of the exponentially-decaying mass growth term.
 Previous analyses treated this purely as a mass-growth factor for the base gravity term. However, in
-the UQFF 2.0 framework with 3-tier buoyancy (introduced via PAPER_198), the Ug1_t field—derived from
-M(t)—propagates into all three buoyancy tiers simultaneously. This establishes a direct coupling
+the UQFF 2.0 framework with 3-tier buoyancy (introduced via PAPER_198), the Ug1_t field---derived from
+M(t)---propagates into all three buoyancy tiers simultaneously. This establishes a direct coupling
 between sSFR and the complete buoyancy structure of the gravitational field.
 
 NGC 1792 is a canonical starburst system with active star formation, making it an ideal test case.
@@ -88,13 +88,13 @@ where ug1_base = G M0 / r2 is the static base field.
 
 The UQFF 2.0 upgrade introduces three buoyancy tiers, all derived from Ug1_t:
 
-**Tier 1 — Static half-gravity (Ubi):**
+**Tier 1 --- Static half-gravity (Ubi):**
 $$\text{term\_Ubi} = 0.5 \cdot \text{Ug1\_t}$$
 
-**Tier 2 — Dynamic compact cos modulation (F_UBii, PAPER_198):**
+**Tier 2 --- Dynamic compact cos modulation (F_UBii, PAPER_198):**
 $$\text{term\_F_UBii} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{M(t)}{r} \cdot [UA] \cdot \cos(\pi t)$$
 
-**Tier 3 — Outer-frame via Fornax Cluster external body (Ub_i, CP1):**
+**Tier 3 --- Outer-frame via Fornax Cluster external body (Ub_i, CP1):**
 $$\text{term\_Ub_i} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA] \cdot \cos(\pi t)$$
 
 where $\beta$_i = 0.61, $\omega$_g = 7.3$\times$10-16 rad/s, [UA] = 10-11, M_Fornax = 1.393$\times$1044 kg, r_Fornax =
@@ -161,7 +161,7 @@ Galaxies with high sSFR (sSFR > 10-9 yr-1, characteristic of starburst galaxies)
 measurably enhanced gravitational buoyancy across all 3 UQFF tiers simultaneously. The coherence
 ratio C scales linearly with sSFR.
 
-### 4.2 sSFR–Buoyancy Correlation
+### 4.2 sSFR--Buoyancy Correlation
 
 The UQFF prediction is: galaxies with high sSFR should exhibit:
 - Enhanced Tier 1 (static half-gravity) during starburst
@@ -205,7 +205,7 @@ simultaneously with star formation and decay with the same 100 Myr timescale.
 4. The coherence ratio C = sSFR $\approx$ 10-9 yr-1 for NGC 1792, providing a direct observational link
 between the galaxy's star-formation rate and its gravitational buoyancy signature.
 
-5. This predicts a universal sSFR–buoyancy scaling relation testable across the galaxy population.
+5. This predicts a universal sSFR--buoyancy scaling relation testable across the galaxy population.
 
 ---
 
@@ -235,8 +235,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -318,7 +318,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.146$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -338,7 +338,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -356,7 +356,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -369,35 +369,35 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
 - Daniel T. Murphy, *UQFF Framework*, Star-Magic Repository (2025)
-- PAPER_198: F_UBii Taxonomy Part 1 — Compact Object and Stellar Buoyancy
+- PAPER_198: F_UBii Taxonomy Part 1 --- Compact Object and Stellar Buoyancy
 - GALAXY_{NGC\_1792}.cpp UQFF 2.0 (Session 73, Module 19)
 - NGC 1792 observational parameters: HYPERLEDA / NED database
 - Fornax Cluster parameters: Drinkwater et al. (2001), M_500 = 7$\times$1013 MM_sun
 
 ---
 
-*© 2026 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved*
+*© 2026 Daniel T. Murphy, daniel.murphy00@gmail.com --- All Rights Reserved*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |

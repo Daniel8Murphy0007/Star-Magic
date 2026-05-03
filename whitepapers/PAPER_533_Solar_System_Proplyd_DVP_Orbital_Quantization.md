@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [DPM, Yang-Mills, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_533 — Solar System as Evolved Proplyd: DVP Orbital Quantization
+# PAPER_533 --- Solar System as Evolved Proplyd: DVP Orbital Quantization
 
 **Author:** Daniel T. Murphy
 **Framework:** Star-Magic / UQFF
 **Version:** v5.03
 **Date:** 2026-03-26
-**Session:** 143 — grok_{share\_fd81483544d}.txt
+**Session:** 143 --- grok_{share\_fd81483544d}.txt
 **CP4 Class:** SolarSystemEvolvingProplydDVPCalculator (#128)
 **Quality Score (QS):** 5 / 5
 
@@ -29,7 +29,7 @@ This paper presents a UQFF analysis of Solar System as Evolved Proplyd: DVP Orbi
 deriving compressed field equations and observational predictions within the Star-Magic/UQFF
 framework.
 
-## §1 — Overview
+## §1 --- Overview
 
 This paper demonstrates that the Solar System originated as an **OB-association
 proplyd** and that the current planetary orbital radii are the fossilised record
@@ -43,7 +43,7 @@ empirical Titius-Bode rule for the outer planets.
 
 ---
 
-## §2 — DVP Orbital Quantization Law
+## §2 --- DVP Orbital Quantization Law
 
 **DVP sequence** $\{p_n\}_{n \geq 1}$: primes $> 26$:
 $$\{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, \ldots}$$
@@ -61,23 +61,23 @@ yields $r_n \propto p_n^{1/3}$ (dimensionally consistent with Kepler 3rd law).
 
 ---
 
-## §3 — Neptune Fit Validation
+## §3 --- Neptune Fit Validation
 
 With $r_0 = 7.42$ AU fitted to Neptune ($n = 8$, $p_8 = 59$):
 
 $$r_\text{Neptune} = 7.42 \times 59^{1/3} = 7.42 \times 3.893 \approx 28.9 \text{ AU}$$
 
-Observed: $30.07$ AU — error $\sim 3.9\%$.
+Observed: $30.07$ AU --- error $\sim 3.9\%$.
 
 | Planet | $n$ | $p_n$ | $r_\text{DVP}$ (AU) | $r_\text{obs}$ (AU) | Error |
 |--------|-----|--------|---------------------|---------------------|-------|
-| Mercury | 1 | 29 | 2.33 | 0.387 | — (inner pivot differs) |
-| Venus | 2 | 31 | 2.40 | 0.723 | — |
-| Earth | 3 | 37 | 2.60 | 1.000 | — |
-| Mars | 4 | 41 | 2.72 | 1.524 | — |
-| Jupiter | 5 | 43 | 2.77 | 5.203 | — |
-| Saturn | 6 | 47 | 2.90 | 9.537 | — |
-| Uranus | 7 | 53 | 3.04 | 19.19 | — |
+| Mercury | 1 | 29 | 2.33 | 0.387 | --- (inner pivot differs) |
+| Venus | 2 | 31 | 2.40 | 0.723 | --- |
+| Earth | 3 | 37 | 2.60 | 1.000 | --- |
+| Mars | 4 | 41 | 2.72 | 1.524 | --- |
+| Jupiter | 5 | 43 | 2.77 | 5.203 | --- |
+| Saturn | 6 | 47 | 2.90 | 9.537 | --- |
+| Uranus | 7 | 53 | 3.04 | 19.19 | --- |
 | Neptune | 8 | 59 | **30.0** | **30.07** | **< 0.3%** |
 
 *Note: The DVP law applies most accurately to the outer planets where the original
@@ -86,7 +86,7 @@ the Late Heavy Bombardment.*
 
 ---
 
-## §4 — DVP Period Ratios
+## §4 --- DVP Period Ratios
 
 From Kepler's 3rd law combined with DVP quantization:
 
@@ -96,7 +96,7 @@ This is testable in multi-planet exosystems (TRAPPIST-1, Kepler-90, TOI-700).
 
 ---
 
-## §5 — Special Prime $p_\text{special} = 113$
+## §5 --- Special Prime $p_\text{special} = 113$
 
 The 26th DVP prime ($p_{26}$) is **113**, which anchors:
 - PAPER_429: VDS-DVP cross-coupling ($p_\text{spec} = 113$)
@@ -105,7 +105,7 @@ The 26th DVP prime ($p_{26}$) is **113**, which anchors:
 
 ---
 
-## §6 — Comparison with Titius-Bode
+## §6 --- Comparison with Titius-Bode
 
 The Titius-Bode rule ($r_k = 0.4 + 0.3 \times 2^k$ AU) fails for Neptune
 (predicts 38.8 AU vs 30.07 AU, error 29%). The DVP law error for Neptune is
@@ -113,7 +113,7 @@ $< 0.3\%$ with the fitted $r_0 = 7.42$ AU anchor.
 
 ---
 
-## §7 — Available Equations
+## §7 --- Available Equations
 
 | Equation | Description |
 |----------|-------------|
@@ -125,16 +125,16 @@ $< 0.3\%$ with the fitted $r_0 = 7.42$ AU anchor.
 
 ---
 
-## §8 — CP4 Calculator Output
+## §8 --- CP4 Calculator Output
 
 ```python
 calc = SolarSystemEvolvingProplydDVPCalculator()
 result = calc.compute()
-# result['DVP_primes']       — list of primes p_1..p_9
-# result['r_AU']             — predicted orbital radii (AU)
-# result['solar_{errors\_pct}'] — % error vs actual Solar System radii
-# result['p_{special\_113}']    — 113 (26th DVP prime anchor)
-# result['r_{at\_p113\_AU}']     — predicted radius at p=113 (~36.6 AU)
+# result['DVP_primes']       --- list of primes p_1..p_9
+# result['r_AU']             --- predicted orbital radii (AU)
+# result['solar_{errors\_pct}'] --- % error vs actual Solar System radii
+# result['p_{special\_113}']    --- 113 (26th DVP prime anchor)
+# result['r_{at\_p113\_AU}']     --- predicted radius at p=113 (~36.6 AU)
 ```
 
 ---
@@ -213,7 +213,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.094$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -233,7 +233,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -251,7 +251,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -262,19 +262,19 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Solar System / Proplyd
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future HST/VLT monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-## §9 — References
+## §9 --- References
 
 - PAPER_429: Three New UQFF Number Systems (DVP definition)
 - PAPER_530: Yang-Mills mass gap; $q_e = 2\pi n$ DVP quantization anchor
-- PAPER_535: VDS-DVP-BH Unified Catalogue (Hub) — DVP cross-validation
+- PAPER_535: VDS-DVP-BH Unified Catalogue (Hub) --- DVP cross-validation
 - grok_{share\_fd81483544d}.txt: Session 143 source document
 - Titius (1766): Empirical orbital spacing rule (comparison)
 - Bode (1778): Geometric progression of planetary orbits
@@ -284,10 +284,10 @@ future HST/VLT monitoring observations.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

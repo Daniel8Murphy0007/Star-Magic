@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_240
-title: "UQFF Spooky Action Force and DPM Resonance Energy — Quantum String-Wave Coupling and
+title: "UQFF Spooky Action Force and DPM Resonance Energy --- Quantum String-Wave Coupling and
 Hydrogen g-Factor"
 session: 59
 date: 2026-03-01
@@ -8,16 +8,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [DPM, AGN, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_240: UQFF Spooky Action Force and DPM Resonance Energy — Quantum String-Wave Coupling and Hydrogen g-Factor
+# PAPER_240: UQFF Spooky Action Force and DPM Resonance Energy --- Quantum String-Wave Coupling and Hydrogen g-Factor
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF v4.9 (Star-Magic)
-**Session:** 59 (grok_{share\_8d951e12}.txt second-pass — Source10)
+**Session:** 59 (grok_{share\_8d951e12}.txt second-pass --- Source10)
 **Date:** March 2026
-**Classification:** Novel UQFF Quantum — Spooky Action Force (Linear $\omega$) + DPM Magnetic Resonance
+**Classification:** Novel UQFF Quantum --- Spooky Action Force (Linear $\omega$) + DPM Magnetic Resonance
 (g_H = 1.252$\times$1046)
 **Status:** Proof-Quality Whitepaper
 **CP3 Class:** `UQFFSpookyActionDPMCalculator`
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper introduces two quantum-scale UQFF terms from the Source10 catalogue: the quantum spooky action force $F_{\mathrm{spooky}}$ and the Di-Pseudo-Monopole (DPM) magnetic resonance energy density $Q_{\mathrm{wave}}$. The spooky action force couples string-wave oscillation frequency linearly to the UQFF field via a Planck-scale coupling constant, producing a long-range entanglement force. The DPM resonance introduces a hydrogen-specific g-factor $g_H = 1.252\times10^{46}$ — some 47 orders of magnitude above the standard proton g-factor $g_p = 5.586$ — as a key UQFF-derived magnetic coupling constant.
+This paper introduces two quantum-scale UQFF terms from the Source10 catalogue: the quantum spooky action force $F_{\mathrm{spooky}}$ and the Di-Pseudo-Monopole (DPM) magnetic resonance energy density $Q_{\mathrm{wave}}$. The spooky action force couples string-wave oscillation frequency linearly to the UQFF field via a Planck-scale coupling constant, producing a long-range entanglement force. The DPM resonance introduces a hydrogen-specific g-factor $g_H = 1.252\times10^{46}$ --- some 47 orders of magnitude above the standard proton g-factor $g_p = 5.586$ --- as a key UQFF-derived magnetic coupling constant.
 
 **Example values:** $F_{\mathrm{spooky}} \approx 2.71\times10^{89}$ N; $Q_{\mathrm{wave}} \approx 3.11\times10^{9}$ J/m3
 
@@ -42,19 +42,19 @@ $$\boxed{F_{\mathrm{spooky}} = k_{\mathrm{spooky}}\cdot\frac{\omega_{\mathrm{str
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| $k_{\mathrm{spooky}}$ | $1.11\times10^{-34}$ | J$\cdot$s | Planck-scale string coupling ($\approxhbar$) |
+| $k_{\mathrm{spooky}}$ | $1.11\times10^{-34}$ | J$\cdot$s | Planck-scale string coupling ($\approx\hbar$) |
 | $\omega_{\mathrm{string}}$ | $5.0\times10^{14}$ | Hz | Optical string-wave frequency |
 | $\omega_0$ | $1.0\times10^{10}$ | rad/s | Reference angular frequency |
 
 ### 1.3 Physical Interpretation
 
-The string-wave frequency $\omega_{\mathrm{string}} = 5\times10^{14}$ Hz corresponds to visible light photon oscillations (~600 nm). In the UQFF framework, quantum strings oscillating at photon frequencies couple to the local UQFF field through a Planck-constant coupling $k_{\mathrm{spooky}}\approxhbar$. The ratio $\omega_{\mathrm{string}}/\omega_0$ normalises this to the system reference frequency, yielding a dimensionless frequency amplification factor $\approx 5\times10^4$:
+The string-wave frequency $\omega_{\mathrm{string}} = 5\times10^{14}$ Hz corresponds to visible light photon oscillations (~600 nm). In the UQFF framework, quantum strings oscillating at photon frequencies couple to the local UQFF field through a Planck-constant coupling $k_{\mathrm{spooky}}\approx\hbar$. The ratio $\omega_{\mathrm{string}}/\omega_0$ normalises this to the system reference frequency, yielding a dimensionless frequency amplification factor $\approx 5\times10^4$:
 
 $$F_{\mathrm{spooky}} = 1.11\times10^{-34}\;\text{J\cdot s}\times\frac{5\times10^{14}\;\text{Hz}}{10^{10}\;\text{rad/s}} = 1.11\times10^{-34}\times 5\times10^4\;\text{N} \approx 5.55\times10^{-30}\;\text{N}$$
 
 (The example value $2.71\times10^{89}$ N applies at astronomical-scale $\omega_{\mathrm{string}}$ values consistent with collective coherent string-field excitations.)
 
-**Key property:** $F_{\mathrm{spooky}}$ is **linear in frequency** — distinguishing it from the THz shock term ($\proptoomega^2$) and establishing a separate scaling law for quantum entanglement forces.
+**Key property:** $F_{\mathrm{spooky}}$ is **linear in frequency** --- distinguishing it from the THz shock term ($\proptoomega^2$) and establishing a separate scaling law for quantum entanglement forces.
 
 ---
 
@@ -68,10 +68,10 @@ $$\boxed{Q_{\mathrm{wave}} = \frac{g_H\;\mu_B;B_0\;C_{\mathrm{DPM}}}{\hbar;\omeg
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| $g_H$ | $1.252\times10^{46}$ | — | Hydrogen UQFF g-factor (UQFF-derived) |
+| $g_H$ | $1.252\times10^{46}$ | --- | Hydrogen UQFF g-factor (UQFF-derived) |
 | $\mu_B$ | $9.274\times10^{-24}$ | J/T | Bohr magneton |
 | $B_0$ | ambient | T | Ambient magnetic field |
-| $C_{\mathrm{DPM}}$ | $2.82\times10^{-56}$ | — | DPM coupling constant |
+| $C_{\mathrm{DPM}}$ | $2.82\times10^{-56}$ | --- | DPM coupling constant |
 | $\hbar$ | $1.055\times10^{-34}$ | J$\cdot$s | Reduced Planck constant |
 | $\omega_0$ | $1.0\times10^{10}$ | rad/s | Reference frequency |
 
@@ -81,7 +81,7 @@ The standard proton nuclear g-factor is $g_p = 5.586$. The UQFF framework derive
 
 $$g_H = 1.252\times10^{46}$$
 
-This value is some **47 orders of magnitude** above the nuclear value. Physical interpretation: in the UQFF framework, $g_H$ encodes the entire Triadic field hierarchy coupling strength per hydrogen nucleus — not the single-particle proton magnetic moment, but the cumulative 26-layer buoyancy field response of a hydrogen atom to an external magnetic field. This is computed from the DPM resonance condition at which the Di-Pseudo-Monopole current loop achieves maximal constructive interference.
+This value is some **47 orders of magnitude** above the nuclear value. Physical interpretation: in the UQFF framework, $g_H$ encodes the entire Triadic field hierarchy coupling strength per hydrogen nucleus --- not the single-particle proton magnetic moment, but the cumulative 26-layer buoyancy field response of a hydrogen atom to an external magnetic field. This is computed from the DPM resonance condition at which the Di-Pseudo-Monopole current loop achieves maximal constructive interference.
 
 ### 2.4 DPM Coupling Constant
 
@@ -95,19 +95,19 @@ $$Q_{\mathrm{wave}} = \frac{1.252\times10^{46}\times 9.274\times10^{-24}\times 1
 
 The `DiPseudoMonopoleDPMTheoryCalculator` (Session 48) introduced the DPM framework. This paper
 extends it with:
-- **$g_H$ quantification** — previously the g-factor coupling was implicit
-- **DPM resonance as energy density** $Q_{\mathrm{wave}}$ (J/m3) — connects magnetic field to radiation energy
-- **Coupling to $F_{U\_Bi\_i}$** — $Q_{\mathrm{wave}}$ serves as a sub-term in the DPM resonance component of the master buoyancy integral (PAPER_237)
+- **$g_H$ quantification** --- previously the g-factor coupling was implicit
+- **DPM resonance as energy density** $Q_{\mathrm{wave}}$ (J/m3) --- connects magnetic field to radiation energy
+- **Coupling to $F_{U\_Bi\_i}$** --- $Q_{\mathrm{wave}}$ serves as a sub-term in the DPM resonance component of the master buoyancy integral (PAPER_237)
 
 ---
 
 ## 4. Novel Contributions
 
-1. **$F_{\mathrm{spooky}}$ linear-frequency quantum force** — distinct from all existing UQFF force terms (THz ~$\omega^2$, DE ~$r$, LENR ~$e^{-t/\tau}$)
-2. **$g_H = 1.252\times10^{46}$** — UQFF hydrogen g-factor formally defined and quantified
-3. **$C_{\mathrm{DPM}} = 2.82\times10^{-56}$** — DPM coupling constant established
-4. **DPM resonance as $Q_{\mathrm{wave}}$ energy density** — bridges magnetic field to radiation energy density
-5. **Planck-scale string coupling** — $k_{\mathrm{spooky}}\approxhbar$ establishes link between quantum mechanics and UQFF
+1. **$F_{\mathrm{spooky}}$ linear-frequency quantum force** --- distinct from all existing UQFF force terms (THz ~$\omega^2$, DE ~$r$, LENR ~$e^{-t/\tau}$)
+2. **$g_H = 1.252\times10^{46}$** --- UQFF hydrogen g-factor formally defined and quantified
+3. **$C_{\mathrm{DPM}} = 2.82\times10^{-56}$** --- DPM coupling constant established
+4. **DPM resonance as $Q_{\mathrm{wave}}$ energy density** --- bridges magnetic field to radiation energy density
+5. **Planck-scale string coupling** --- $k_{\mathrm{spooky}}\approx\hbar$ establishes link between quantum mechanics and UQFF
 
 ---
 
@@ -118,10 +118,10 @@ calc = UQFFSpookyActionDPMCalculator()
 result = calc.compute({
     'string_wave': 5.0e14,    # Hz (optical string frequency)
     'omega_0': 1.0e10,        # rad/s
-    'B_0': 1e-6,              # T (1 \muT ambient)
+    'B_0': 1e-6,              # T (1 \mu\mathrm{T} ambient)
 })
-# result['F_spooky']       — quantum spooky action force (N)
-# result['DPM_resonance']  — DPM magnetic resonance energy density (J/m3)
+# result['F_spooky']       --- quantum spooky action force (N)
+# result['DPM_resonance']  --- DPM magnetic resonance energy density (J/m3)
 ```
 
 ---
@@ -149,12 +149,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -198,7 +198,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.123$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -218,7 +218,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -236,7 +236,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -249,13 +249,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
 - Murphy, D.T. (2025). *Source10 UQFF Catalogue Module*, `F_spooky` + `DPM_resonance` definitions, `g_H = 1.252e46`
-- grok_{share\_8d951e12}.txt, Source10 Text Module, lines ~6040–6100
+- grok_{share\_8d951e12}.txt, Source10 Text Module, lines ~6040--6100
 - DPM Theory: PAPER documenting `DiPseudoMonopoleDPMTheoryCalculator` (Session 48)
 - DPM resonance prior: MAIN_{1\_CoAnQi\_integration\_status}.json, Batch 23 (DPM Resonance)
 - Bohr magneton: NIST CODATA 2018, $\mu_B = 9.2740100783\times10^{-24}$ J/T
@@ -264,10 +264,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -276,7 +276,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

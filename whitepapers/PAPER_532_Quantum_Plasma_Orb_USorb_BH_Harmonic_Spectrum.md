@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_532 — Quantum Plasma Orb US_orb Buoyancy Harmonic Spectrum
+# PAPER_532 --- Quantum Plasma Orb US_orb Buoyancy Harmonic Spectrum
 
 **Author:** Daniel T. Murphy
 **Framework:** Star-Magic / UQFF
 **Version:** v5.03
 **Date:** 2026-03-26
-**Session:** 143 — grok_{share\_fd81483544d}.txt
+**Session:** 143 --- grok_{share\_fd81483544d}.txt
 **CP4 Class:** QuantumPlasmaOrbUSorbCalculator (#127)
 **Quality Score (QS):** 5 / 5
 
@@ -29,7 +29,7 @@ This paper presents a UQFF analysis of Quantum Plasma Orb US_orb Buoyancy Harmon
 deriving compressed field equations and observational predictions within the Star-Magic/UQFF
 framework.
 
-## §1 — Overview
+## §1 --- Overview
 
 This paper presents the **Buoyancy Harmonic (BH) decomposition** of the proplyd
 plasma oscillation frequency $U_{S,\text{orb}}$. The plasma orb oscillation is not
@@ -40,7 +40,7 @@ $$U_{S,\text{orb}} = \sum_{m=1}^{26} [\text{SSq}]^m \left(1 - e^{-[\text{SSq}]\,
 
 ---
 
-## §2 — BH Mode Ladder
+## §2 --- BH Mode Ladder
 
 The ground-state plasma oscillation frequency $\omega_0 \sim 10^{18}$ Hz (proplyd
 disk material frequency). Mode ladder spacing $\delta = 0.1$ (calibrated from ALMA
@@ -48,7 +48,7 @@ Orion Band 6 line spacing).
 
 **Amplitude weights** from the Buoyancy Harmonics number system (PAPER_429):
 
-$$H_m = [\text{SSq}]^m \quadRightarrow\quad H_1 = 0.57,\; H_2 = 0.325,\; H_3 = 0.185, \ldots$$
+$$H_m = [\text{SSq}]^m \quad\Rightarrow\quad H_1 = 0.57,\; H_2 = 0.325,\; H_3 = 0.185, \ldots$$
 
 **Mode contributions:**
 
@@ -60,18 +60,18 @@ $$c_m = H_m \left(1 - e^{-[\text{SSq}]\,m}\right) \omega_0 (1 + m\,\delta)$$
 | 2 | 0.325 | $1.20 \times 10^{18}$ | significant |
 | 3 | 0.185 | $1.30 \times 10^{18}$ | significant |
 | 4 | 0.105 | $1.40 \times 10^{18}$ | at emergence threshold |
-| 5–26 | $< 0.06$ | $\geq 1.50 \times 10^{18}$ | sub-threshold |
+| 5--26 | $< 0.06$ | $\geq 1.50 \times 10^{18}$ | sub-threshold |
 
 ---
 
-## §3 — Emergence Threshold
+## §3 --- Emergence Threshold
 
 Modes with $c_m > 0.18 \cdot \bar{c}$ are said to **emerge** above the proplyd
-photosphere — their oscillation amplitude exceeds the 18% threshold of the
+photosphere --- their oscillation amplitude exceeds the 18% threshold of the
 mean contribution $\bar{c} = U_{S,\text{orb}}/N$.
 
 For $\omega_0 = 10^{18}$ Hz, $\delta = 0.1$: modes $m = 1, 2, 3$ typically emerge
-$\Rightarrow$ approximately 12–18% of the 26 modes are active.
+$\Rightarrow$ approximately 12--18% of the 26 modes are active.
 
 This 18% emergence fraction is observationally consistent with VLA 5 GHz mapping
 of the Orion Nebula Cluster showing $\sim 90$ active proplyds out of $\sim 500$
@@ -79,7 +79,7 @@ total (18%).
 
 ---
 
-## §4 — VDS–BH Limiting Identity
+## §4 --- VDS--BH Limiting Identity
 
 In the weak-field limit $[\text{SSq}] \to 0$, the BH energy sum approaches the
 VDS partition function:
@@ -87,11 +87,11 @@ VDS partition function:
 $$E_\text{BH} = \sum_{m=1}^{26} [\text{SSq}]^m \left(1 - e^{-[\text{SSq}]\,m}\right)
 \;\xrightarrow{[\text{SSq}]\to 0}\; \sum_{m=1}^{26} \frac{[\text{SSq}]^{2m}}{m} \sim \frac{Z}{[\text{SSq}]}$$
 
-This **VDS–BH unification** is demonstrated numerically in PAPER_535 (Hub).
+This **VDS--BH unification** is demonstrated numerically in PAPER_535 (Hub).
 
 ---
 
-## §5 — Observational Anchors
+## §5 --- Observational Anchors
 
 | Telescope | Observable | UQFF Connection |
 |-----------|-----------|-----------------|
@@ -101,7 +101,7 @@ This **VDS–BH unification** is demonstrated numerically in PAPER_535 (Hub).
 
 ---
 
-## §6 — Physical Interpretation
+## §6 --- Physical Interpretation
 
 The quantum plasma orb is the UQFF description of a proplyd as a **quantised
 plasma resonator**. Each BH harmonic mode corresponds to a standing oscillation
@@ -111,28 +111,28 @@ of the DPM magnetic structure threading the disk. The 26-mode limit reflects the
 
 ---
 
-## §7 — Available Equations
+## §7 --- Available Equations
 
 | Equation | Description |
 |----------|-------------|
 | $U_{S,\text{orb}} = \sum_{m=1}^{26} H_m(1-e^{-[\text{SSq}]m})\omega_0(1+m\delta)$ | Full BH spectrum |
 | $H_m = [\text{SSq}]^m$ | BH amplitude weight |
 | $E_\text{BH} = \sum H_m(1-e^{-[\text{SSq}]m})$ | BH energy sum |
-| $E_\text{BH} \to Z/[\text{SSq}]$ as $[\text{SSq}]\to 0$ | VDS–BH identity |
+| $E_\text{BH} \to Z/[\text{SSq}]$ as $[\text{SSq}]\to 0$ | VDS--BH identity |
 | $\Delta\nu_m = `omega_0`,\delta/(2\pi)$ | ALMA testable line spacing |
 
 ---
 
-## §8 — CP4 Calculator Output
+## §8 --- CP4 Calculator Output
 
 ```python
 calc = QuantumPlasmaOrbUSorbCalculator()
 result = calc.compute()
-# result['US_{orb\_Hz}']      — total plasma oscillation frequency
-# result['emerged_modes']  — list of modes above emergence threshold
-# result['emergence_pct']  — fraction of active modes
-# result['E_BH']           — BH energy sum
-# result['VDS_{Z\_ratio}']    — E_BH / Z (→ 1/[SSq] as limiting check)
+# result['US_{orb\_Hz}']      --- total plasma oscillation frequency
+# result['emerged_modes']  --- list of modes above emergence threshold
+# result['emergence_pct']  --- fraction of active modes
+# result['E_BH']           --- BH energy sum
+# result['VDS_{Z\_ratio}']    --- E_BH / Z (\rightarrow 1/[SSq] as limiting check)
 ```
 
 ---
@@ -159,8 +159,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -211,7 +211,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.196$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -231,7 +231,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -249,7 +249,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -263,11 +263,11 @@ below the GUT scale and 33 orders above nuclear baryon-number scales. This inter
 framework predicts observable deviations from SM in the X-ray/radio astrophysical sector
 while remaining consistent with all collider and nuclear precision measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-## §9 — References
+## §9 --- References
 
 - PAPER_429: Three New UQFF Number Systems (BH definition)
 - PAPER_521: Universal Spectrum Spectral Divisions
@@ -281,16 +281,16 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |

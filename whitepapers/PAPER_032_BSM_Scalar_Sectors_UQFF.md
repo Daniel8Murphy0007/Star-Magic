@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_032: BSM Scalar Sectors in UQFF
@@ -19,23 +19,23 @@ Charge-Reactivity Analysis
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**arXiv Reference:** 2506.15515 (ATLAS VLQ $\kappa$ $\in$ [0.22, 0.52], m = 1150–2600 GeV)  
-**Validator:** `bsm_{physics\_validation}.py` — PASSED  
+**arXiv Reference:** 2506.15515 (ATLAS VLQ $\kappa$ $\in$ [0.22, 0.52], m = 1150--2600 GeV)  
+**Validator:** `bsm_{physics\_validation}.py` --- PASSED  
 **Index Slot:** §1.4 BSM Physics,  
 
 ---
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV --->
 ## Abstract
 
-Vector-like quarks (VLQs) cannot generate mass through the Standard Model Higgs mechanism alone —
+Vector-like quarks (VLQs) cannot generate mass through the Standard Model Higgs mechanism alone ---
 their existence necessitates extended BSM scalar sectors (singlet extensions, two-Higgs-doublet
 models, composite Higgs scenarios). The ATLAS Run 2 measurement of VLQ couplings $\kappa$_T $\in$ [0.22, 0.52]
 for singlet-T and $\kappa$_{TBY} $\in$ [0.14, 0.46] for the (T,B,Y) triplet (arXiv:2506.15515, 140 fb-1)
 constrains the scalar sector mixing angle sin2$\alpha$. The Unified Quantum Field Framework (UQFF) maps VLQ
 couplings onto its Ug2 charge-reactivity term through the k-$\eta$ scaling: $k_{\eta}$ = $\kappa$_avg2 = (0.37)2 =
 0.1369. This identifies a UQFF scalar resonance condition M_scalar = m_B $\times$ exp($\pi$[SSq]/$k_{\eta}$) $\approx$ 845 GeV
-— the predicted mass of a companion BSM neutral scalar S0. The estimated VLQ production
+--- the predicted mass of a companion BSM neutral scalar S0. The estimated VLQ production
 cross-section $\sigma$(pp$\to$Tb) ~ 85.9 fb at m_T = 1.5 TeV is consistent with ATLAS Run 2 luminosity
 constraints.
 
@@ -49,7 +49,7 @@ Vector-like quarks are color-triplet fermions whose left- and right-handed compo
 identically under SU(2)_L. Their mass term:
 $$M_Q \bar{Q}_L Q_R + h.c.$$
 
-is gauge-invariant without electroweak symmetry breaking (EWSB) — unlike chiral SM quarks. However,
+is gauge-invariant without electroweak symmetry breaking (EWSB) --- unlike chiral SM quarks. However,
 in realistic models, VLQs couple to the Higgs through Yukawa interactions:
 
 $$\mathcal{L}_{\mathrm{Yukawa}} = \lambda_T H \bar{Q}_L t_R + \lambda_{T'} S \bar{Q}_L T_R + h.c.$$
@@ -63,7 +63,7 @@ $$\frac{\lambda_T v}{\sqrt{\lambda_T^2 v^2 + M_0^2}} = \kappa_T$$
 If $\kappa$_T = 0.37 (central value) at m_T = 1.5 TeV:
 $$\lambda_T v = 0.37 \times 1500 = 555 \text{ GeV}, \quad M_0 = \sqrt{1500^2 - 555^2} = 1395 \text{ GeV}$$
 
-The bare mass M_0 = 1395 GeV far exceeds the EWSB scale v = 246 GeV — confirming that the VLQ mass
+The bare mass M_0 = 1395 GeV far exceeds the EWSB scale v = 246 GeV --- confirming that the VLQ mass
 is predominantly non-Higgs in origin. A BSM scalar S0 must exist to mediate the remaining mass
 generation.
 
@@ -91,8 +91,8 @@ using 140 fb-1 at $\sqrt{s}$ = 13 TeV.
 
 | VLQ Type | $\kappa$_min (observed) | $\kappa$_max (observed) | Mass Range |
 |----------|-----------------|-----------------|------------|
-| Singlet T | 0.22 | 0.52 | 1150–2600 GeV |
-| (T,B,Y) triplet | 0.14 | 0.46 | 1150–2600 GeV |
+| Singlet T | 0.22 | 0.52 | 1150--2600 GeV |
+| (T,B,Y) triplet | 0.14 | 0.46 | 1150--2600 GeV |
 
 The singlet-T coupling average: $\kappa$_avg = (0.22 + 0.52)/2 = **0.37**
 
@@ -114,7 +114,7 @@ simultaneous bounds on all three decay modes.
 
 ---
 
-## 3. UQFF Framework — Ug2 Charge-Reactivity
+## 3. UQFF Framework --- Ug2 Charge-Reactivity
 
 ### 3.1 $k_{\eta}$ Scaling from VLQ Couplings
 
@@ -130,7 +130,7 @@ $$k_\eta = \kappa_{\mathrm{avg}}^2 = (0.37)^2 = \mathbf{0.1369}$$
 This can be understood as follows: $\kappa$_avg = 0.37 is the VLQ coupling to the Higgs vacuum expectation
 value, but in the UQFF framework, the Higgs vev is embedded in the charge-reactivity vacuum $\rho$_react.
 The square $\kappa$_avg2 = $k_{\eta}$ gives the probability amplitude squared for the VLQ to interact with the
-UQFF vacuum — identical to the quantum field theory transition probability.
+UQFF vacuum --- identical to the quantum field theory transition probability.
 
 ### 3.2 UQFF Scalar Resonance Mass
 
@@ -143,12 +143,12 @@ Using [SSq] = 0.57 and $k_{\eta}$ = 0.1369:
 
 $$M_{\mathrm{scalar}}^{\mathrm{UQFF}} = 5.279 \text{ GeV} \times \exp\left(\frac{\pi \times 0.57}{0.1369}\right) = 5.279 \times \exp(13.075) = 5.279 \times 477,706$$
 
-This gives M_scalar ~ 2.52 TeV — in the same range as the VLQ mass bounds but above the current
+This gives M_scalar ~ 2.52 TeV --- in the same range as the VLQ mass bounds but above the current
 search sensitivity. However, using the TRZ damping factor D = 0.333:
 
 $$M_{\mathrm{scalar}}^{\mathrm{UQFF,TRZ}} = M_{\mathrm{scalar}} \times D = 2520 \times 0.333 = \mathbf{839 \text{ GeV}}$$
 
-The **TRZ-corrected UQFF scalar mass prediction is M_S0 $\approx$ 845 GeV** — within reach of the LHC Run 3
+The **TRZ-corrected UQFF scalar mass prediction is M_S0 $\approx$ 845 GeV** --- within reach of the LHC Run 3
 at 13.6 TeV.
 
 ### 3.3 Scalar Mixing Angle from $k_{\eta}$
@@ -177,7 +177,7 @@ With v_S from the UQFF vacuum: v_S = M_scalar/$\sqrt{}$(2$\lambda$_S). Using the
 $$v_S = \frac{845}{\sqrt{2 \times 0.57}} = \frac{845}{1.068} = 791 \text{ GeV}$$
 
 The singlet VEV v_S = 791 GeV is consistent with the S0 contributing 791/246 ~ 3.2$\times$ more to the VLQ
-mass than the SM Higgs alone — explaining why the bare VLQ mass M_0 >> v_H.
+mass than the SM Higgs alone --- explaining why the bare VLQ mass M_0 >> v_H.
 
 ### 4.2 Two-Higgs-Doublet Model (2HDM)
 
@@ -201,7 +201,7 @@ $$\kappa_T^{\mathrm{composite}} = \sqrt{\xi} = \sqrt{v^2/f^2}$$
 Matching to $\kappa$_avg = 0.37:
 $$\xi = 0.37^2 = 0.1369, \quad f = v/\sqrt{\xi} = 246/0.370 = 665 \text{ GeV}$$
 
-The **UQFF prediction for the composite Higgs scale is f = 665 GeV** — a value that will be directly
+The **UQFF prediction for the composite Higgs scale is f = 665 GeV** --- a value that will be directly
 probed by FCC-ee via Higgs coupling deviations at the per-mille level. At FCC-ee precision,
 $\kappa$_H-corrections ~ $\xi$/2 ~ 6.8% are observable at much better than 5$\sigma$.
 
@@ -238,13 +238,13 @@ companions are untested for VLQ-like decay signatures (since searches focus on M
 
 ### 6.1 Reach Extension at 13.6 TeV
 
-LHC Run 3 (2022–2026) at $\sqrt{s}$ = 13.6 TeV with 300 fb-1 per experiment. The projected sensitivity:
+LHC Run 3 (2022--2026) at $\sqrt{s}$ = 13.6 TeV with 300 fb-1 per experiment. The projected sensitivity:
 $$m_T^{\mathrm{95\% CL}} \approx 2600 + 200 \text{ GeV} = 2800 \text{ GeV}$$
 
 extending the Run 2 upper limit by ~200 GeV. The UQFF $k_{\eta}$ = 0.1369 boundary corresponds to:
 $$\sigma(pp \to T b) \text{ at } m_T = 2.8 \text{ TeV} \approx 0.37^2 \times 0.65^2 / (16\pi) \times (13600^2 / (2800^2 + 13600^2)) \times 1000 \approx 4.0 \text{ fb}$$
 
-With 300 fb-1, this gives ~1200 signal events — discoverable at 5$\sigma$ if systematics are controlled to
+With 300 fb-1, this gives ~1200 signal events --- discoverable at 5$\sigma$ if systematics are controlled to
 ~5%.
 
 ### 6.2 S0 Companion Scalar Search
@@ -260,17 +260,17 @@ would appear as a narrow resonance in the m(tt̄) invariant mass distribution at
 
 ## 7. Conclusions
 
-The ATLAS VLQ measurement (arXiv:2506.15515) with $\kappa$_T $\in$ [0.22, 0.52] and m_T = 1150–2600 GeV
+The ATLAS VLQ measurement (arXiv:2506.15515) with $\kappa$_T $\in$ [0.22, 0.52] and m_T = 1150--2600 GeV
 provides direct constraints on BSM scalar sectors through the UQFF Ug2 charge-reactivity framework:
 
-1. **$k_{\eta}$ mapping:** $\kappa$_avg2 = (0.37)2 = 0.1369 — the UQFF coupling constant for scalar-vacuum
+1. **$k_{\eta}$ mapping:** $\kappa$_avg2 = (0.37)2 = 0.1369 --- the UQFF coupling constant for scalar-vacuum
 interaction
 2. **BSM scalar mass:** M_{S0} $\approx$ 845 GeV predicted from the UQFF Ug2 TRZ-corrected resonance
 condition
-3. **Mixing angle:** sin2$\alpha$ = $k_{\eta}$ = 0.1369, $\alpha$ = 21.7° — consistent with singlet extension and 2HDM
+3. **Mixing angle:** sin2$\alpha$ = $k_{\eta}$ = 0.1369, $\alpha$ = 21.7° --- consistent with singlet extension and 2HDM
 models
-4. **Singlet VEV:** v_S ~ 791 GeV — the scalar sector VEV generating the bulk of VLQ mass
-5. **Composite scale:** f = 665 GeV — the UQFF prediction for composite Higgs compositeness scale,
+4. **Singlet VEV:** v_S ~ 791 GeV --- the scalar sector VEV generating the bulk of VLQ mass
+5. **Composite scale:** f = 665 GeV --- the UQFF prediction for composite Higgs compositeness scale,
 testable at FCC-ee
 6. **Cross-section:** $\sigma$(pp$\to$Tb) = 85.9 fb at m_T = 1.5 TeV, 140 fb-1 Run 2 consistent
 
@@ -383,7 +383,7 @@ $$
 |--------|-------|-------------|
 | $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60--0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
@@ -391,7 +391,7 @@ $$
 | $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete --- 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -470,7 +470,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.093$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -490,7 +490,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -509,10 +509,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -590,7 +590,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

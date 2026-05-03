@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, SCm, DPM, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_877: Three-Assumption UQFF Cosmogenesis Master Equation
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-07
 **Session:** 204
 **Source:** describe mass without using weight.txt (Session 200C)
@@ -24,8 +24,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 We present the complete three-assumption cosmogenesis model of the Unified Quantum Field Framework
-(UQFF). The three axioms are: (1) three reactive quantum fundamentals — electrostatic barrier,
-undifferentiated aether (UA), and superconducting matter (SCm) — form proto-nuclear shells via DPM;
+(UQFF). The three axioms are: (1) three reactive quantum fundamentals --- electrostatic barrier,
+undifferentiated aether (UA), and superconducting matter (SCm) --- form proto-nuclear shells via DPM;
 (2) proto-shells evolve through 6 Aetheric Capacitance Phenomenon (ACP) stages into proto-atoms,
 with proto-hydrogen $\equiv$ proto-iron (SM_magnetic) and proto-helium $\equiv$ proto-silicon (SM_non-magnetic);
 (3) four U_g forces (U_g1 = DPM, U_g2 = electron shells, U_g3 = U_i + U_m tagging, U_g4i = central
@@ -55,8 +55,8 @@ $$
 
 ### 1.3 Proto-Nuclear Shell Formation
 
-The three fundamentals — R_EB (electrostatic barrier), f_UA' (aether fraction), and f_SCm
-(superconducting fraction) — combine to form proto-nuclear shells. The DPM defines each nucleus
+The three fundamentals --- R_EB (electrostatic barrier), f_UA' (aether fraction), and f_SCm
+(superconducting fraction) --- combine to form proto-nuclear shells. The DPM defines each nucleus
 completely: no additional parameters needed.
 
 ---
@@ -142,33 +142,33 @@ $$
 $$
 \begin{aligned}
   & [SCm + UA + R_EB]            \leftarrow Three quantum fundamentals \\
-  & │ \\
+  & | \\
   & ▼ \\
   & DPM Formation              \leftarrow f_UA' + f_SCm = 1 \\
-  & │ \\
+  & | \\
   & ▼ \\
   & Proto-Nuclear Shells         \leftarrow 26 quantum states \\
-  & │ \\
+  & | \\
   & ▼ \\
   & EM Bang (ACP Stage 4)      \leftarrow Capacitance cracking \\
-  & │ \\
+  & | \\
   & ▼ \\
   & 2 Expansion/Contraction       \leftarrow Cosmic oscillation \\
   & Cycles \\
-  & │ \\
+  & | \\
   & ▼ \\
   & Proto-Atoms                 \leftarrow Proto-H=Proto-Fe, Proto-He=Proto-Si \\
-  & │ \\
+  & | \\
   & ▼ \\
   & Mass Emergence               \leftarrow U_mag 7-10° threshold \\
-  & │ \\
+  & | \\
   & ▼ \\
   & Ug1 + Ug2 + Ug3 + Ug4      \leftarrow Four gravity forces \\
   & + Um (Heaviside 1013\times) \\
-  & │ \\
+  & | \\
   & ▼ \\
   & Ub1 + Ub2 + Ub3 + Ub4      \leftarrow Four buoyancy forces \\
-  & │ \\
+  & | \\
   & ▼ \\
   & Observable Gravity           \leftarrow Central limit of 26-state sum
 \end{aligned}
@@ -216,8 +216,8 @@ SCm-frequency modulated control field governing the vacuum concentration.
 
 | Quantity | Value | Units |
 |----------|-------|-------|
-| f_UA' | 0.9999 | — |
-| f_SCm | 0.0001 | — |
+| f_UA' | 0.9999 | --- |
+| f_SCm | 0.0001 | --- |
 | $\rho$_vac | 7.799e-36 | kg/m3 |
 | U_vac | 3.267e-80 | J |
 | U_i (repulsive) | -4.261e-24 | J |
@@ -243,7 +243,7 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 ## 6. SCm Superconductivity Axiom (Session 204)
 
-This paper IS the **SCm Superconductivity Axiom** in its most complete form — the three-assumption
+This paper IS the **SCm Superconductivity Axiom** in its most complete form --- the three-assumption
 cosmogenesis model derived from the foundational principle that superconductivity precedes and
 governs all matter and gravity.
 
@@ -256,14 +256,14 @@ master equation:
 |--------|-------------------|
 | Engine 1 (U_m Derivation) | U_m fourth master equation with Heaviside 1013$\times$ amplifier |
 | Engine 2 (26-State Progression) | 26 quantum states of vacuum density + DPM mapping |
-| Engine 3 (Cosmogenesis) | **THIS PAPER** — all 3 assumptions + 6 ACP stages + flowchart |
+| Engine 3 (Cosmogenesis) | **THIS PAPER** --- all 3 assumptions + 6 ACP stages + flowchart |
 | Engine 4 (Lagrangian) | 9-sector L_UQFF mapping of SCm responses to forces |
 
 ### Standalone Calculator
 
 ```bash
 python scm_{superconductivity\_axiom}.py        # Full report (Engine 3 = this paper)
-python scm_{superconductivity\_axiom}.py —json  # Machine-readable
+python scm_{superconductivity\_axiom}.py ---json  # Machine-readable
 ```
 
 ---
@@ -299,12 +299,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -399,7 +399,7 @@ $$\text{Proto-H} = \text{Proto-Fe at } Z_{\mathrm{id}} = 26 \text{ (magnetic ide
 2. $\delta S / \delta g_{MN} = 0$ $\to$ Einstein field equations emerge at state 26
 3. $V_{\mathrm{proto}}(n) = \frac{\hbar^2 n^2}{2 m_{\mathrm{proto}} R_{\mathrm{proto}}^2}$ for each quantum state
 4. At n=26: $R_{26}$ stabilizes, $G_{MN} = 8\pi G T_{MN}/c^4$ emerges
-5. **Conclusion: Gravity did not birth the universe — SCm did**
+5. **Conclusion: Gravity did not birth the universe --- SCm did**
 
 **Code Reference:** `uqff_{lagrangian\_derivation}.py` $\to$
 `EULER_{LAGRANGE\_NEW\_TERM\_MAPPINGS}["cosmogenesis_{proto\_shell}"]`
@@ -421,7 +421,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.197$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -441,7 +441,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -459,7 +459,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -472,7 +472,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
@@ -491,10 +491,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -503,7 +503,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
@@ -685,4 +685,4 @@ All 23 new CP4 classes (#462-#484) from Session 209:
 | Papers referencing PAPER_877 | 874 (via §A.4 linkage chain) |
 | Session 209 CP4 classes | 23 (#462-#484) |
 
-*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*
+*Session 209 v5.62 --- integrated by GitHub Copilot (Claude Opus 4.6)*

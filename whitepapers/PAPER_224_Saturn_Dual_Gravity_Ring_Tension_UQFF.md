@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_224
-title: "Saturn UQFF — Dual-Source Gravity and Ring Tidal Tension T_ring"
+title: "Saturn UQFF --- Dual-Source Gravity and Ring Tidal Tension T_ring"
 session: 0
 date: 2026-03-14
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_224: Saturn UQFF — Dual-Source Gravity and Ring Tidal Tension T_ring
+# PAPER_224: Saturn UQFF --- Dual-Source Gravity and Ring Tidal Tension T_ring
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
-**Framework:** UQFF v4.3 — Star-Magic Physics  
-**Source:** grok_{share\_7514fe}.txt — Document 22: Saturn  
+**Framework:** UQFF v4.3 --- Star-Magic Physics  
+**Source:** grok_{share\_7514fe}.txt --- Document 22: Saturn  
 **Date:** March 14, 2026  
-**Series:** Phase 2 Session 56 — §2.14 Fifth-Pass System Extraction
+**Series:** Phase 2 Session 56 --- §2.14 Fifth-Pass System Extraction
 
 ---
 
@@ -31,7 +31,7 @@ $$
 
 Saturn presents a unique UQFF configuration with two explicit gravitational sources summed with
 **asymmetric modifiers**: solar heliocentric gravity carries the `(1+H(z)\cdott)` expansion term, while
-Saturn's self-gravity carries the `(1-B/B_crit)` magnetic suppression — and neither term receives
+Saturn's self-gravity carries the `(1-B/B_crit)` magnetic suppression --- and neither term receives
 the modifier of the other. Additionally, the ring tidal tension T_ring ˜ 2.043$\times$10-7 m/s2 and solar
 wind ram pressure F_{wind\_solar} appear as additive corrections. This is the only UQFF document among
 all 29 that uses two independent gravitational potentials with DIFFERENT UQFF modifiers on each,
@@ -42,7 +42,7 @@ value against the CP1 benchmark.
 
 
 **UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
-0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
 ---
@@ -86,11 +86,11 @@ the heliocentric (Sun-Saturn orbit) term.
 
 ### 2.2 Why B/B_crit Only on Saturn's Self-Gravity
 
-Saturn's magnetic field B ˜ 20 \muT is a planetary-scale field centered on Saturn. It suppresses
+Saturn's magnetic field B ˜ 20 \mu\mathrm{T} is a planetary-scale field centered on Saturn. It suppresses
 Saturn's OWN internal gravitational dynamics (via magnetohydrodynamic magnetic pressure resisting
 gravitational compression).
 
-The Sun's gravity on Saturn (the heliocentric term) is an external tidal force — it is unaffected by
+The Sun's gravity on Saturn (the heliocentric term) is an external tidal force --- it is unaffected by
 Saturn's magnetic field. The solar term describes orbital dynamics, not Saturn's internal
 magnetohydrodynamics.
 
@@ -126,7 +126,7 @@ orbital spacing).
 ### 3.2 Significance
 
 T_ring is what keeps ring particles in distinct orbital shells rather than diffusing vertically.
-When T_ring > self-gravity of ring particles, rings remain thin and flat — consistent with Saturn's
+When T_ring > self-gravity of ring particles, rings remain thin and flat --- consistent with Saturn's
 rings being only ~10 m thick despite extending to 280,000 km radius.
 
 For T_ring = 2.043$\times$10-7 m/s2 and ring particle radius ˜ 1 cm, 1 m:
@@ -144,7 +144,7 @@ Parameters (Saturn, current epoch):
 - r_orbit = 1.426$\times$1012 m (9.54 AU)
 - M_Saturn = 5.683$\times$1026 kg  
 - r = 6.0268$\times$107 m (equatorial radius)
-- B = 20 \muT = 2$\times$10-5 T; B_crit = 4.4$\times$1013 T ? B/B_crit = 4.5$\times$10?1? ˜ 0
+- B = 20 \mu\mathrm{T} = 2$\times$10-5 T; B_crit = 4.4$\times$1013 T ? B/B_crit = 4.5$\times$10?1? ˜ 0
 
 $$
 \begin{aligned}
@@ -159,7 +159,7 @@ $$
 $$
 
 Saturn surface gravity dominated by planetary self-gravity as expected. The solar term is a 0.06%
-correction; T_ring is a 2$\times$10-6% correction — but they are physically essential for describing ring
+correction; T_ring is a 2$\times$10-6% correction --- but they are physically essential for describing ring
 dynamics and orbital stability.
 
 ---
@@ -174,7 +174,7 @@ The dual-source structure `g_A + g_B` with DIFFERENT modifiers on each source is
 | Saturn (Doc 22) | Dual: G$\cdot$M_Sun/r_orbit2 + G$\cdot$M_Saturn/r2 | H$\cdot$t on solar; B/B_crit on Saturn | Hierarchy: orbit vs surface |
 
 The closest analogues (Magnetar SGR1745, NGC2525, NGC1275) all have an ADDITIVE BH term
-`(G\cdotM_BH)/r_BH2` with no modifiers — they do not apply different UQFF factors to each gravitational
+`(G\cdotM_BH)/r_BH2` with no modifiers --- they do not apply different UQFF factors to each gravitational
 source. Saturn is unique in the asymmetric modifier assignment.
 
 ---
@@ -182,8 +182,8 @@ source. Saturn is unique in the asymmetric modifier assignment.
 ## 6. Calculator Implementation
 
 `SaturnDualGravityRingTensionCalculator` in CondensedPhysics3.py (Session 56):
-- `g_sun = G*M_Sun/r_orbit**2 * (1 + H0*t)` — H$\cdot$t on solar only
-- `g_saturn = G*M_Saturn/r**2 * (1 - B/B_crit)` — B/B_crit on Saturn only
+- `g_sun = G*M_Sun/r_orbit**2 * (1 + H0*t)` --- H$\cdot$t on solar only
+- `g_saturn = G*M_Saturn/r**2 * (1 - B/B_crit)` --- B/B_crit on Saturn only
 - `T_ring = 2.043e-7` default (CP1 benchmark)
 - `g_total = g_sun + g_saturn + T_ring + ...`
 
@@ -212,12 +212,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -295,7 +295,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.079$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -315,7 +315,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -333,7 +333,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -346,30 +346,30 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
-1. grok_{share\_7514fe}.txt — Document 22: Saturn g_Saturn equation
-2. Esposito (2002) — "Planetary Rings", ARAA 40 — ring tidal structure
-3. Dougherty et al. (2005) — Cassini magnetometry, Saturn B = 20 \muT
-4. CP1 CondensedPhysics.py — Saturn benchmark T_ring = 2.043$\times$10-7 m/s2
-5. CondensedPhysics3.py — `SaturnDualGravityRingTensionCalculator` (Session 56)
+1. grok_{share\_7514fe}.txt --- Document 22: Saturn g_Saturn equation
+2. Esposito (2002) --- "Planetary Rings", ARAA 40 --- ring tidal structure
+3. Dougherty et al. (2005) --- Cassini magnetometry, Saturn B = 20 \mu\mathrm{T}
+4. CP1 CondensedPhysics.py --- Saturn benchmark T_ring = 2.043$\times$10-7 m/s2
+5. CondensedPhysics3.py --- `SaturnDualGravityRingTensionCalculator` (Session 56)
 
 ---
 
-*© 2026 Daniel T. Murphy — Star-Magic UQFF Framework — All Rights Reserved*  
-*Paper 224 of 1,000 — Session 56 — Phase 2 §2.14 Fifth-Pass Extraction*
+*© 2026 Daniel T. Murphy --- Star-Magic UQFF Framework --- All Rights Reserved*  
+*Paper 224 of 1,000 --- Session 56 --- Phase 2 §2.14 Fifth-Pass Extraction*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -378,7 +378,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

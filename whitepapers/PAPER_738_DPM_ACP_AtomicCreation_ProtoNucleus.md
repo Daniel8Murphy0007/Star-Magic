@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, SCm, DPM, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_738 — DPM Atomic Creation Process (ACP): Proto-Nucleus Formation
+# PAPER_738 --- DPM Atomic Creation Process (ACP): Proto-Nucleus Formation
 **Author:** Daniel T. Murphy
 **Date:** June 06, 2025
 
 **Title:** Di-Pseudo-Monopole (DPM) Creation Scenario and the Atomic Creation Process (ACP): From
 DPM Initiation to Proto-Nucleus Assembly  
 **Session:** 180 | **PAPER:** 738 | **CP4 class:** #322  
-**Source:** thread_06Jun2025.txt (lines 8100–8387, June 06, 2025, "describe mass without using
+**Source:** thread_06Jun2025.txt (lines 8100--8387, June 06, 2025, "describe mass without using
 weight.docx" + "05June2025.docx")  
 **Watermark:** Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, DaVinci-Grok, analyzed by
 Grok 3, SuperGrok, created by xAI, dated June 06, 2025, 07:05 AM EDT, location 41.0997° N, 80.6495°
@@ -32,7 +32,7 @@ Di-Pseudo-Monopole (DPM) mediated reactions, replacing the Standard Model's mass
 with a buoyancy-based framework. The ACP is a six-stage process beginning with DPM formation and
 culminating in proto-nucleus assembly with 26 quantum states, mediated by Universal Aether (UA') and
 Super Conductive Material (SCm). Atomic mass does not emerge until the quantum-to-mass gradient at
-7–10 U_mag degrees.
+7--10 U_mag degrees.
 
 ---
 
@@ -40,11 +40,11 @@ Super Conductive Material (SCm). Atomic mass does not emerge until the quantum-t
 
 The entire universe is built from three elemental interactions:
 
-1. **Electrostatic Barrier (REB)** — The boundary condition that prevents collapse, defining system
+1. **Electrostatic Barrier (REB)** --- The boundary condition that prevents collapse, defining system
 shells
-2. **Universal Aether (UA')** — Non-local connectivity medium, vacuum energy carrier, $\rho$_UA' =
+2. **Universal Aether (UA')** --- Non-local connectivity medium, vacuum energy carrier, $\rho$_UA' =
 7.09e-36 J/m3
-3. **Super Conductive Material (SCm)** — Superconductive magnetism mediator, $\rho$_SCm = 7.09e-37 J/m3
+3. **Super Conductive Material (SCm)** --- Superconductive magnetism mediator, $\rho$_SCm = 7.09e-37 J/m3
 
 $$
 DPM = UA' + SCm
@@ -71,7 +71,7 @@ $$
 
 ### Stage 2: U_i Creation (Intelligent Operator)
 ```
-DPM → U_i  (repulsive + intelligent quantum operator)
+DPM \rightarrow U_i  (repulsive + intelligent quantum operator)
 ```
 - U_i is the first active particle: repulsive (buoyant), self-directing
 - U_i orchestrates all subsequent proto-nuclear assembly
@@ -88,19 +88,19 @@ $$
 
 ### Stage 4: Proto-Shell Formation and Cracking
 ```
-Vacuum density grows → vacuum energy density (capacitance threshold)
-→ quantum ripples:  ULF_quantum^{-1,...,-26}
-→ proto-shell cracks into fragments
+Vacuum density grows \rightarrow vacuum energy density (capacitance threshold)
+\rightarrow quantum ripples:  ULF_quantum^{-1,...,-26}
+\rightarrow proto-shell cracks into fragments
 ```
 - When vacuum energy density reaches critical capacitance:
   - Quantum ripples: ULF_quantum^{-1} through ULF_quantum^{-26}
   - Proto-shell fractures into 26 distinct fragment types
   - Fragments: proto-quarks, proto-bosons, proto-leptons
-- This is not "particle creation from nothing" — it is structured fracturing of a pre-existing quantum state container
+- This is not "particle creation from nothing" --- it is structured fracturing of a pre-existing quantum state container
 
 ### Stage 5: Fragment Stabilization
 ```
-SM_magnetic moments (SM_mag) → arrange fragments on durable nucleus
+SM_magnetic moments (SM_mag) \rightarrow arrange fragments on durable nucleus
 U_b (buoyancy) maintains stability against SM_gravity
 ```
 - SM_magnetic moments act as "sorting fingers" that arrange proto-fragments
@@ -112,17 +112,17 @@ U_b (buoyancy) maintains stability against SM_gravity
 $$
 \begin{aligned}
   & U_g2 governs electron shell placement via U_m \\
-  & Mass emerges at quantum-to-mass gradient: 7–10 U_mag degrees \\
+  & Mass emerges at quantum-to-mass gradient: 7--10 U_mag degrees \\
   & H(1) = first hydrogen atom formed
 \end{aligned}
 $$
 - U_g2 uses U_m string frequency to place electrons into shells
 - Atomic mass is NOT weight; it is the ratio of effective gravity to superconductive buoyancy in Earth's field
-- Mass emerges when the quantum state gradient crosses 7–10 U_mag degrees of superconductive magnetism
+- Mass emerges when the quantum state gradient crosses 7--10 U_mag degrees of superconductive magnetism
 
 ---
 
-## 4. Mass Without Weight — Formal Definition
+## 4. Mass Without Weight --- Formal Definition
 
 $$
 \begin{aligned}
@@ -170,13 +170,13 @@ $$
 | PN / planetary | ~10^5 |
 | Atomic | ~10^3 |
 
-The imaginary/quantum portion of gravity (U_b) is never zero — it is this hidden buoyancy that
+The imaginary/quantum portion of gravity (U_b) is never zero --- it is this hidden buoyancy that
 modern physics has failed to account for, leading to the need for "dark matter" and "dark energy" as
 placeholder terms. UQFF resolves both as manifestations of f_Ub at different scales.
 
 ---
 
-## 6. 26 Quantum States — Pre-Mass Configuration
+## 6. 26 Quantum States --- Pre-Mass Configuration
 
 The 26 quantum states are NOT the electron orbitals of quantum mechanics. They are:
 
@@ -197,7 +197,7 @@ magnetic, widest angular coverage initially); State 1 is the innermost quantum s
 
 ---
 
-## 7. DPM Coherence — The Source of Predictability
+## 7. DPM Coherence --- The Source of Predictability
 
 $$
 \begin{aligned}
@@ -260,12 +260,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -309,7 +309,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.156$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -330,7 +330,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -348,7 +348,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -361,17 +361,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -380,7 +380,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

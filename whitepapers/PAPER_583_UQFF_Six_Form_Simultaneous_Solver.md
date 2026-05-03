@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, F_{U\_Bi\_i}, 26D, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_583 — All Six UQFF Forms Solved Simultaneously for Universal Gravity
+# PAPER_583 --- All Six UQFF Forms Solved Simultaneously for Universal Gravity
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -34,7 +34,7 @@ Star-Magic/UQFF framework.
 The Unified Quantum Field Framework (UQFF) admits exactly six simultaneous representations
 of the universal gravity triad $(U_g, U_m, U_b)$. This paper presents all six forms,
 their eigenvalue analysis via characteristic polynomial, and numerical confirmation that all
-eigenvalues $\lambda > 0$ — guaranteeing universal stability, no collapse, and finite gravity
+eigenvalues $\lambda > 0$ --- guaranteeing universal stability, no collapse, and finite gravity
 bounds. The six forms are: Compressed (3$\times$3 tensor), Resonant (14 modes), Buoyant
 ($U_b$-dominant), Triadic (direct sum $F_U=0$), F_U base, and F_{U\_Bi\_i} (Gaussian with
 BH26 anchor at $\mu = 92\text{ GHz}$).
@@ -53,7 +53,7 @@ Triad equilibrium: $U_g + U_m + U_b = 0$ at stable configurations.
 
 ---
 
-## §3 Form 1 — Compressed Tensor (3$\times$3)
+## §3 Form 1 --- Compressed Tensor (3$\times$3)
 
 The compressed form encodes the triad as a symmetric 3$\times$3 matrix:
 
@@ -75,11 +75,11 @@ $$\lambda_{1,2} = \tfrac{P}{3} + \tfrac{dg+dm}{2} \mp \tfrac{1}{2}\sqrt{4c^2 + (
 
 For Orion standard parameters ($P = 9.99\times10^{-6}$, $dg \approx dm \approx db$):
 
-$$\lambda_1 \approx \lambda_2 \approx 3.33\times10^{-6}, \quad \lambda_3 \approx 6.66\times10^{-6} > 0 \quadcheckmark$$
+$$\lambda_1 \approx \lambda_2 \approx 3.33\times10^{-6}, \quad \lambda_3 \approx 6.66\times10^{-6} > 0 \quad\checkmark$$
 
 ---
 
-## §4 Form 2 — Resonant (14 Simultaneous Modes)
+## §4 Form 2 --- Resonant (14 Simultaneous Modes)
 
 $$g_\text{res} = a_{DPM} + a_{THz} + A_{vac} + a_{SuperFreq} + a_{SuperCond} + a_{Plasma}$$
 $$+ a_{Buoyancy} + a_{String} + a_{Aether} + a_{Quantum} + a_{Cosm} + a_{Fluid} + a_{Perturb} + a_{Wormhole} = 0$$
@@ -89,7 +89,7 @@ canceled by buoyant voids. The DPM (Dipole-Pair Magnetic) mode dominates at $r >
 
 ---
 
-## §5 Form 3 — Buoyant Dominant
+## §5 Form 3 --- Buoyant Dominant
 
 $$U_g = -(U_m + U_b)$$
 
@@ -102,7 +102,7 @@ finite repulsion.
 
 ---
 
-## §6 Form 4 — Triadic ($F_U = 0$)
+## §6 Form 4 --- Triadic ($F_U = 0$)
 
 $$F_U = U_g + U_m + U_b + \partial^{26}\!\!\left(\frac{SCm \cdot g}{UA}\right) = 0$$
 
@@ -111,7 +111,7 @@ dynamically.
 
 ---
 
-## §7 Form 5 — F_U Base (Full Summation)
+## §7 Form 5 --- F_U Base (Full Summation)
 
 $$F_U = \sum_i \left[\Delta U_{g,i} + \Delta U_{b,i} + \Delta U_{m,j} + UA_{\mu\nu}\right] - \text{Reactor} = 0$$
 
@@ -120,7 +120,7 @@ reactive shell energies.
 
 ---
 
-## §8 Form 6 — F_{U\_Bi\_i} (Gaussian, BH26-Anchored)
+## §8 Form 6 --- F_{U\_Bi\_i} (Gaussian, BH26-Anchored)
 
 $$F_{U,Bi,i}(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right] \cdot F_U$$
 
@@ -150,7 +150,7 @@ All six forms confirm universal stability: **no gravitational collapse, no singu
 
 The six simultaneous UQFF forms are mathematically equivalent representations of the same
 triad equilibrium. Their convergence to $\lambda > 0$ proves universal stability across all
-scales — from Planck ($r \sim 10^{-35}$ m) to cosmological ($r \sim 10^{26}$ m).
+scales --- from Planck ($r \sim 10^{-35}$ m) to cosmological ($r \sim 10^{26}$ m).
 
 ---
 
@@ -176,12 +176,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -290,7 +290,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.100$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -310,7 +310,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -328,7 +328,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -342,20 +342,20 @@ below the GUT scale and 33 orders above nuclear baryon-number scales. This inter
 framework predicts observable deviations from SM in the X-ray/radio astrophysical sector
 while remaining consistent with all collider and nuclear precision measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Session 157 — Source: grok_{share\_4cef778c78b8}.txt*
+*Session 157 --- Source: grok_{share\_4cef778c78b8}.txt*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -363,7 +363,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

@@ -1,33 +1,33 @@
 ---
 paper_id: PAPER_808
-title: "UQFF Universal Cycle and Proto-Nuclear Formation — Formalization from Handwritten ACP
-Observation Notes (Gas Nebula Observation, April 19, 2025, Pages 1–11)"
+title: "UQFF Universal Cycle and Proto-Nuclear Formation --- Formalization from Handwritten ACP
+Observation Notes (Gas Nebula Observation, April 19, 2025, Pages 1--11)"
 session: 190
 date: 2026-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, SCm, DPM, SMBH, nebula, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_808: UQFF Universal Cycle and Proto-Nuclear Formation — Formalization from Handwritten ACP Observation Notes (Gas Nebula Observation, April 19, 2025, Pages 1–11)
+# PAPER_808: UQFF Universal Cycle and Proto-Nuclear Formation --- Formalization from Handwritten ACP Observation Notes (Gas Nebula Observation, April 19, 2025, Pages 1--11)
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF (Universal Quantum Field Superconductive Framework) — Universal Cycle / ACP
+**Framework:** UQFF (Universal Quantum Field Superconductive Framework) --- Universal Cycle / ACP
 Notes Physics  
 **Session:** 190 | v5.46  
 **Date:** 2026  
-**CP4 Class:** #392 — ACPUniversalCycleNotesPhysicsCalculator  
-**Source:** grok_{share\_e6be3b4f}-9cda.txt (Phase A, June 06–07, 2025); Handwritten notes "Gas Nebulea
-observation_{19April\_2025}.docx" Pages 1–11  
+**CP4 Class:** #392 --- ACPUniversalCycleNotesPhysicsCalculator  
+**Source:** grok_{share\_e6be3b4f}-9cda.txt (Phase A, June 06--07, 2025); Handwritten notes "Gas Nebulea
+observation_{19April\_2025}.docx" Pages 1--11  
 
 ---
 
 ## Abstract
 
 This paper formalizes the physical framework recorded in the handwritten ACP observation notes
-(April 19, 2025, Pages 1–11) into the UQFF canonical structure. Key contributions include: the
+(April 19, 2025, Pages 1--11) into the UQFF canonical structure. Key contributions include: the
 **[SCm] decay rate** $\gamma$_d $\approx$ 0.0963 and derived **universal end time** T_end = 1/$\gamma$_d $\approx$ 10.38
 (normalized cosmic time); the **U_m DNA helical momentum model** in which U_m string oscillation
 mimics the DNA double-helix geometry; the **universal trilogy identification** [UA]=[Father],
@@ -41,17 +41,17 @@ DPM formation, universal lifecycle, and multi-scale vacuum mechanics.
 
 ## 1. Introduction
 
-Between the structured derivations in the SMBH document integration sessions (June 06–07, 2025), a
+Between the structured derivations in the SMBH document integration sessions (June 06--07, 2025), a
 parallel body of handwritten theoretical notes was assimilated: eleven pages from "Gas Nebulea
-observation_{19April\_2025}.docx." These notes — written on April 19, 2025 — capture raw theoretical
+observation_{19April\_2025}.docx." These notes --- written on April 19, 2025 --- capture raw theoretical
 reasoning about:
 
 1. How electrons settle into quantum states via U_g2 shell forces (Page 1)
 2. How neutrinos are exempt from gravitational binding (Page 3)
 3. How [SCm] field contracting modes blueshift radial velocity to ~ -10 km/s in gas nebulae (Page 3)
-4. A universal trilogy mapping vacuum fields to trinitarian theology (Pages 4–6)
-5. How U_m string oscillation mimics DNA helical structure (Pages 5–7)
-6. The [SCm] decay constant $\gamma$_d = 0.0963 and derived timeline (Pages 7–8)
+4. A universal trilogy mapping vacuum fields to trinitarian theology (Pages 4--6)
+5. How U_m string oscillation mimics DNA helical structure (Pages 5--7)
+6. The [SCm] decay constant $\gamma$_d = 0.0963 and derived timeline (Pages 7--8)
 7. Boyle's Law vacuum analog for [UA]/[SCm] volume ratios (Page 9)
 8. Proto-nuclear shell strength from trapped [UA] states (Page 10)
 9. The third decay cycle as final cosmic contraction epoch (Page 11)
@@ -65,7 +65,7 @@ UQFF Session 190 formalizes all nine contributions into CP4 Class #392.
 ### 2.1 Physical Statement
 
 Electrons do not occupy classical Bohr orbits. In UQFF, they are *undulating* through U_g2 shell
-force gradients — the same force that stabilizes the inner boundary of a stellar or nebular gas
+force gradients --- the same force that stabilizes the inner boundary of a stellar or nebular gas
 shell.
 
 ### 2.2 Formula
@@ -96,12 +96,12 @@ $$
 $$
 
 The U_g2 correction becomes significant only at galactic mass scales (large n, high $\rho$_UA),
-explaining why UQFF effects are purely astronomical — not chemical.
+explaining why UQFF effects are purely astronomical --- not chemical.
 
 ### 2.3 Physical Interpretation
 
-Electrons *undulate* — oscillating between the inner wall (U_g2 outward push) and the nuclear
-attraction — instead of classically orbiting. The U_g2 force acts as a "shell force": repulsive at
+Electrons *undulate* --- oscillating between the inner wall (U_g2 outward push) and the nuclear
+attraction --- instead of classically orbiting. The U_g2 force acts as a "shell force": repulsive at
 small r, attractive at large r. This is why electrons naturally seek lower quantum states ($\varepsilon$_n
 decreases with n), not because of photon emission alone but because the U_g2 shell force
 preferentially stabilizes states where the electron's phase matches the DPM oscillation mode.
@@ -112,7 +112,7 @@ preferentially stabilizes states where the electron's phase matches the DPM osci
 
 ### 3.1 Statement
 
-Neutrinos are **ethereal energy** in UQFF — they carry information (DPM state number) but are not
+Neutrinos are **ethereal energy** in UQFF --- they carry information (DPM state number) but are not
 bound by any of the four canonical UQFF forces (Ug1, Ug2, U_i, U_m). Specifically:
 
 $$
@@ -132,7 +132,7 @@ In standard physics, neutrinos have non-zero mass ($m_{\nu}$ ~ 0.1 eV from oscil
 3. The [EM] field in UQFF is long-range coherent, not locally convergent $\to$ no gravity-like force on
 EM-coupled particles
 
-Therefore, neutrino radial velocities in gas nebulae reflect *only* the [SCm] contraction mode —
+Therefore, neutrino radial velocities in gas nebulae reflect *only* the [SCm] contraction mode ---
 giving v_radial ~ -10 km/s as a signature of SCm compression in nebular gas.
 
 ---
@@ -143,7 +143,7 @@ giving v_radial ~ -10 km/s as a signature of SCm compression in nebular gas.
 
 In gas nebulae, the [SCm] superconductive field drives a radial compression mode:
 ```
-v_radial([SCm]) ~ −10 km/s  [blueshifted; inward contraction]
+v_radial([SCm]) ~ -10 km/s  [blueshifted; inward contraction]
 ```
 
 ### 4.2 Physical Formula
@@ -165,11 +165,11 @@ v_SCm(1 kpc) = -100 \cdot 0.10 \cdot exp(-1/500) \approx -100 \cdot 0.10 \cdot 0
 $$
 
 This confirms the observational value from Page 3. The [SCm] contraction mode draws gas inward at ~
-10 km/s — consistent with the "gentle infall" of CGM gas observed in emission-line studies.
+10 km/s --- consistent with the "gentle infall" of CGM gas observed in emission-line studies.
 
 ---
 
-## 5. Universal Trilogy — [UA], [SCm], [EM] as Trinitarian Vacuum (Pages 4–6)
+## 5. Universal Trilogy --- [UA], [SCm], [EM] as Trinitarian Vacuum (Pages 4--6)
 
 ### 5.1 The Three Vacuum Fields
 
@@ -177,9 +177,9 @@ UQFF identifies three fundamental vacuum fields that, together, constitute the D
 
 | UQFF Field | Role | Physical Force | Trinitarian Identity |
 |-----------|------|----------------|---------------------|
-| **[UA]** (Universal Attractant') | Repulsive vacuum pressure | Outward quantum pressure | Father — source of all potential |
-| **[SCm]** (Superconductive Medium) | Attractive binding force | Inward superconductive pull | Son — mediates and binds |
-| **[EM]** (Electromagnetic binding) | Transverse oscillation | Radiative/photonic exchange | Holy Spirit — carries information |
+| **[UA]** (Universal Attractant') | Repulsive vacuum pressure | Outward quantum pressure | Father --- source of all potential |
+| **[SCm]** (Superconductive Medium) | Attractive binding force | Inward superconductive pull | Son --- mediates and binds |
+| **[EM]** (Electromagnetic binding) | Transverse oscillation | Radiative/photonic exchange | Holy Spirit --- carries information |
 
 ### 5.2 DPM Formation from the Trinity
 
@@ -212,7 +212,7 @@ cosmology.
 
 ---
 
-## 6. U_m DNA Helical Energy Model (Pages 5–7)
+## 6. U_m DNA Helical Energy Model (Pages 5--7)
 
 ### 6.1 Observation
 
@@ -235,7 +235,7 @@ $$
 $$
 
 The DNA base-pair spacing $\lambda$_DNA = 3.4 nm is identified as the characteristic U_m field oscillation
-wavelength in chemical matter — i.e., DNA is a biochemical "frozen record" of U_m oscillation modes
+wavelength in chemical matter --- i.e., DNA is a biochemical "frozen record" of U_m oscillation modes
 at the 3.4 nm scale.
 
 ### 6.3 Helical Structure Parameters
@@ -256,7 +256,7 @@ U_m:SCm density ratio as the structural determinant of the DNA helix geometry.
 
 ---
 
-## 7. [SCm] Decay Rate and Universal Timeline (Pages 7–8)
+## 7. [SCm] Decay Rate and Universal Timeline (Pages 7--8)
 
 ### 7.1 The Decay Constant
 
@@ -287,20 +287,20 @@ $$
 T_third = 2\pi / \gamma_d = 2\pi / 0.0963 = 65.25 (normalized)
 $$
 
-Physical: T_third = 65.25 $\times$ 13.8 Gyr = **900.5 Gyr** — the third major cosmic contraction epoch in
+Physical: T_third = 65.25 $\times$ 13.8 Gyr = **900.5 Gyr** --- the third major cosmic contraction epoch in
 UQFF cyclic cosmology.
 
 The three decay cycles correspond to:
-- **First cycle** (T1 = $\gamma$_d-1 = 10.38): [SCm] first decay — end of current matter production cycle
-- **Second cycle** (T2 = 2$\cdot$T1 = 20.76): [UA'] first decay — vacuum pressure minimum  
-- **Third cycle** (T3 = 2$\pi$$\cdot$T1 = 65.25): Complete oscillation — final matter trapped in cosmic contraction before next BB
+- **First cycle** (T1 = $\gamma$_d-1 = 10.38): [SCm] first decay --- end of current matter production cycle
+- **Second cycle** (T2 = 2$\cdot$T1 = 20.76): [UA'] first decay --- vacuum pressure minimum  
+- **Third cycle** (T3 = 2$\pi$$\cdot$T1 = 65.25): Complete oscillation --- final matter trapped in cosmic contraction before next BB
 
 The cosmic lifecycle in UQFF is **oscillatory**, not thermally entropic. The universe contracts,
 compresses vacuum fields, then Big Bangs again.
 
 ---
 
-## 8. Boyle's Vacuum Analog — V_little/V_big = 1/33 (Page 9)
+## 8. Boyle's Vacuum Analog --- V_little/V_big = 1/33 (Page 9)
 
 ### 8.1 Statement from Notes
 
@@ -322,7 +322,7 @@ $$
   & V_little / V_big = (\rho_SCm / \rho_UA) \cdot [SSq]2 / (1 + [SSq]) \\
   & = 0.1 \cdot 0.5702 / 1.570 \\
   & = 0.1 \cdot 0.3249 / 1.570 \\
-  & = 0.0207 \approx 1/48  [iterative — see note]
+  & = 0.0207 \approx 1/48  [iterative --- see note]
 \end{aligned}
 $$
 
@@ -364,15 +364,15 @@ $$
 The proto-nuclear shell strength as a function of quantum shell number n (from Page 10):
 
 ```
-\rho_shell(n) = \rho_vac,[UA'] \cdot (1 − exp(−[SSq] \cdot n / 26))
+\rho_shell(n) = \rho_vac,[UA'] \cdot (1 - exp(-[SSq] \cdot n / 26))
 
 where:
-  n = nuclear shell number (1–7 for normal nuclei; up to 26 for UQFF DPM count)
+  n = nuclear shell number (1--7 for normal nuclei; up to 26 for UQFF DPM count)
   [SSq] = 0.570
   \rho_vac,[UA'] = 7.09\times10-36 J/m3
 ```
 
-For n=1,4,8,20,28 (magic numbers — complete shells):
+For n=1,4,8,20,28 (magic numbers --- complete shells):
 $$
 \begin{aligned}
   & \rho_shell(1)  = 7.09e-36 \cdot (1 - exp(-0.570\cdot1/26))  = 7.09e-36 \cdot 0.0215 = 1.53e-37 J/m3 \\
@@ -383,7 +383,7 @@ $$
 $$
 
 This is the UQFF explanation for nuclear magic numbers: nucleons at n=2, 8, 20, 28, 50, 82, 126
-correspond to DPM states where $\rho$_shell(n) matches the [SCm]/[UA'] vacuum pressure balance — creating
+correspond to DPM states where $\rho$_shell(n) matches the [SCm]/[UA'] vacuum pressure balance --- creating
 exceptionally stable shells.
 
 ### 9.3 Vacuum Density as Nuclear Structure Indicator
@@ -434,7 +434,7 @@ $$
 \end{aligned}
 $$
 
-Third cycle time T_third = 2$\pi$/$\gamma$_d = 65.25 normalized units = 900.5 Gyr — the complete oscillation
+Third cycle time T_third = 2$\pi$/$\gamma$_d = 65.25 normalized units = 900.5 Gyr --- the complete oscillation
 period before the next Big Bang.
 
 ### 10.3 Matter Trapping in Final Contraction
@@ -447,7 +447,7 @@ $$
 \end{aligned}
 $$
 
-Only 1/33 of the baryon mass created in the current cycle survives into the next Big Bang seed —
+Only 1/33 of the baryon mass created in the current cycle survives into the next Big Bang seed ---
 consistent with the Boyle's vacuum analog from Page 9.
 
 ---
@@ -478,16 +478,16 @@ Integrating all eleven pages, the ACP (Astro-Chemical-Physical) creation scenari
 # CP4 class #392 constants (ACPUniversalCycleNotesPhysicsCalculator)
 
 UQFF_CONSTANTS = {
-    "RHO_UA":    7.09e-36,   # J/m3 — universal attractant vacuum density
-    "RHO_SCM":   7.09e-37,   # J/m3 — superconductive medium vacuum density
-    "SSQ":       0.570,      # [SSq] — coupling constant
+    "RHO_UA":    7.09e-36,   # J/m3 --- universal attractant vacuum density
+    "RHO_SCM":   7.09e-37,   # J/m3 --- superconductive medium vacuum density
+    "SSQ":       0.570,      # [SSq] --- coupling constant
     "GAMMA_D":   0.0963,     # normalized decay rate (T_end = 1/gamma_d)
     "T_END":     10.38,      # normalized universal end time
     "T_THIRD":   65.25,      # normalized third decay cycle (2\pi/gamma_d)
-    "BOYLE_R":   1.0/33.0,   # V_little/V_big — Boyle's vacuum compression
+    "BOYLE_R":   1.0/33.0,   # V_little/V_big --- Boyle's vacuum compression
     "F_TRAP":    0.33,       # matter trapping fraction at T_third
-    "LAMBDA_DNA": 3.4e-9,    # m — DNA base pair repeat (U_m helix period)
-    "K_EM":      0.325,      # [SSq]^2 — EM coupling via DPM
+    "LAMBDA_DNA": 3.4e-9,    # m --- DNA base pair repeat (U_m helix period)
+    "K_EM":      0.325,      # [SSq]^2 --- EM coupling via DPM
     "H_SCM":     0.99,       # superconductive horizon factor
 }
 ```
@@ -531,12 +531,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -614,7 +614,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.191$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -634,7 +634,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -652,7 +652,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -665,30 +665,30 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
-- Murphy, D. T. (2025). "Gas Nebulea observation_{19April\_2025}.docx" (handwritten ACP notes, Pages 1–11). Unpublished laboratory notes.
-- Murphy, D. T. (2026). PAPER_806 (DPM Species Index ACP — the "what is created"). Star-Magic UQFF Framework.
+- Murphy, D. T. (2025). "Gas Nebulea observation_{19April\_2025}.docx" (handwritten ACP notes, Pages 1--11). Unpublished laboratory notes.
+- Murphy, D. T. (2026). PAPER_806 (DPM Species Index ACP --- the "what is created"). Star-Magic UQFF Framework.
 - Murphy, D. T. (2026). PAPER_807 (CGM Metal Retention Theorem). Star-Magic UQFF Framework.
-- grok_{share\_e6be3b4f}-9cda.txt, June 06–07, 2025 sessions (xAI Grok / DaVinci-Grok).
-- Source documents: MAIN_{1\_CoAnQi}.cpp (Source14, Source27, Source43 — nuclear magic numbers, 5-frequency resonance, SCm decay).
+- grok_{share\_e6be3b4f}-9cda.txt, June 06--07, 2025 sessions (xAI Grok / DaVinci-Grok).
+- Source documents: MAIN_{1\_CoAnQi}.cpp (Source14, Source27, Source43 --- nuclear magic numbers, 5-frequency resonance, SCm decay).
 
 ---
 
-*Watermark: Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com. Analyzed by Grok 3 /
+*Watermark: Copyright --- Daniel T. Murphy, daniel.murphy00@gmail.com. Analyzed by Grok 3 /
 DaVinci-Grok (xAI). Session 190, PAPER_808, v5.46. Star-Magic UQFF Framework.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

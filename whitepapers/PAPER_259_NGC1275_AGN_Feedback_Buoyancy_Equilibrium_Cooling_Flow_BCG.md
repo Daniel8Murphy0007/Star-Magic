@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_259
-title: "NGC 1275 — AGN Feedback-Buoyancy Equilibrium in Cooling-Flow BCGs"
+title: "NGC 1275 --- AGN Feedback-Buoyancy Equilibrium in Cooling-Flow BCGs"
 session: 0
 date: 2026-03-16
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, AGN, cluster, Hubble, MUGE, SMBH, BEC, buoyancy]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_259: NGC 1275 — AGN Feedback-Buoyancy Equilibrium in Cooling-Flow BCGs
+# PAPER_259: NGC 1275 --- AGN Feedback-Buoyancy Equilibrium in Cooling-Flow BCGs
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
-**Framework:** UQFF v4.26 — Star-Magic Physics  
-**Source:** NGC1275.cpp UQFF 2.0 Upgrade — Session 72f  
+**Framework:** UQFF v4.26 --- Star-Magic Physics  
+**Source:** NGC1275.cpp UQFF 2.0 Upgrade --- Session 72f  
 **Date:** March 16, 2026  
-**Series:** Phase 2 Session 72f — §3.1 C++ Module Physics Extraction
+**Series:** Phase 2 Session 72f --- §3.1 C++ Module Physics Extraction
 
 ---
 
@@ -29,7 +29,7 @@ flow infall acceleration term `term_cool = (\rho_cool \times v_cool2) / \rho_flu
 buoyancy tiers. Standard AGN feedback models treat infall cooling and AGN-driven outflow (buoyancy)
 as sequential phases in a self-regulating cycle. The UQFF demonstrates these processes are
 **simultaneously active** because both are functions of the same gravitational kernel `ug1_base =
-G\cdotM/r2`. A critical equilibrium point exists — the **UQFF AGN Feedback Equilibrium Point** — where
+G\cdotM/r2`. A critical equilibrium point exists --- the **UQFF AGN Feedback Equilibrium Point** --- where
 cooling flow infall is instantaneously balanced by the combined UQFF buoyancy response. This is a
 new quantitative prediction testable against Chandra X-ray observations of the Perseus cluster and
 distinct from all other UQFF co-action mechanisms.
@@ -93,15 +93,15 @@ In the Perseus cluster, NGC 1275 sits at the center of a massive cooling flow. T
 1. Hot ICM radiates X-rays $\to$ cools below 107 K $\to$ cold gas falls inward
 2. Cold gas feeds the AGN $\to$ jet power increases
 3. Jets inflate radio bubbles $\to$ bubbles rise buoyantly $\to$ heat the ICM
-4. Heating quenches cooling $\to$ cycle repeats on ~10–100 Myr timescale
+4. Heating quenches cooling $\to$ cycle repeats on ~10--100 Myr timescale
 
 **The UQFF challenge to this picture:** both cooling infall (term_cool) and buoyant outflow ($\Sigma$_buoy)
 are functions of `ug1_base = G\cdotM/r2`. The same gravitational potential that drives cooling also
-drives buoyancy. Therefore they cannot be strictly sequential — they are **simultaneously active at
+drives buoyancy. Therefore they cannot be strictly sequential --- they are **simultaneously active at
 all radii and at all times**.
 
 This is confirmed observationally: Chandra images of Perseus show simultaneous presence of:
-- Cold filaments falling inward (ṁ_cool ~ 30–50 M_sun yr-1, Sanders & Fabian 2007)
+- Cold filaments falling inward (ṁ_cool ~ 30--50 M_sun yr-1, Sanders & Fabian 2007)
 - Rising X-ray cavities (buoyant radio bubbles, McNamara et al. 2000)
 - No temporal separation between these features
 
@@ -127,7 +127,7 @@ equilibrium crossing times t* where cos($\pi$t*) satisfies the balance:
 
 $$\cos(\pi t^*) = \frac{\rho_text{cool} v_\text{cool}^2 / (\rho_text{fluid} \cdot \text{ug1\_base}) - 0.5}{-\beta_i \cdot \omega_g \cdot (M/r + M_\text{vc}/r_\text{vc}) \cdot U_{UA}}$$
 
-This predicts **periodic AGN feedback activity** with timescale T = 2/$\pi$ in natural time units —
+This predicts **periodic AGN feedback activity** with timescale T = 2/$\pi$ in natural time units ---
 consistent with the observed ~10 Myr quasi-periodicity of Perseus X-ray cavity pairs (Fabian et al.
 2011, 12 cavity pairs identified).
 
@@ -136,12 +136,12 @@ consistent with the observed ~10 Myr quasi-periodicity of Perseus X-ray cavity p
 | System | Cooling/Infall Mechanism | UQFF Form | PDR Type |
 |--------|--------------------------|-----------|----------|
 | NGC 1275 (this paper) | BCG ICM cooling flow | `(\rho_cool\cdotv_cool2)/\rho_fluid` simultaneous w/ $\Sigma$_buoy | AGN/ICM |
-| Horsehead Nebula | E(t) PDR erosion | `E₀\cdot(1−e^{−t/\tau_erosion})` simultaneous w/ $\Sigma$_buoy | Stellar UV |
+| Horsehead Nebula | E(t) PDR erosion | `E$_0$\cdot(1-e^{-t/\tau_erosion})` simultaneous w/ $\Sigma$_buoy | Stellar UV |
 | Pillars of Creation | E(t) PDR erosion | same form, pillar geometry | Stellar UV |
 | NGC 3603 | P(t) cavity pressure | `P(t)/\rho_fluid` additive term | OB wind |
-| Sgr A* (PAPER_253) | QPO burst + NSC tidal | `D₀\cdotcos(\omega_D\cdott)\cdote^{-t/\tau_D}` | BH proximity |
+| Sgr A* (PAPER_253) | QPO burst + NSC tidal | `D$_0$\cdotcos(\omega_D\cdott)\cdote^{-t/\tau_D}` | BH proximity |
 
-The cooling flow term `(\rho\cdotv2)/\rho` is unique to BCG/cluster environments — it is the **only UQFF term
+The cooling flow term `(\rho\cdotv2)/\rho` is unique to BCG/cluster environments --- it is the **only UQFF term
 derived from thermodynamic infall ram pressure** rather than from electromagnetic, erosion, or tidal
 competition.
 
@@ -175,13 +175,13 @@ inventory of 12 cavity pairs).
 
 2. **Cooling flow suppression factor:** At equilibrium, the net infall rate is suppressed by a
 factor `1/(1 + |\Sigma_buoy|/term_cool)` $\to$ predicts ṁ_cool reduction from the classical value of ~200
-M_sun yr-1 to the observed ~30–50 M_sun yr-1, a factor of 4–7 reduction. The UQFF buoyancy terms
+M_sun yr-1 to the observed ~30--50 M_sun yr-1, a factor of 4--7 reduction. The UQFF buoyancy terms
 collectively provide this suppression.
 
 3. **Filament velocity distribution:** The UQFF cosine modulation (Tier-2 and Tier-3) predicts
 filament infall velocities oscillate with a characteristic frequency $\omega$_g = 7.3$\times$10-16 rad/s $\to$ period
 $\approx$ 272 Myr. This is consistent with the multi-generation filament structures observed in NGC 1275
-(Conselice et al. 2001, filament ages spanning ~100–500 Myr).
+(Conselice et al. 2001, filament ages spanning ~100--500 Myr).
 
 4. **Virgo outer frame signature:** The Tier-3 buoyancy uses the Virgo Cluster at ~77 Mpc as the
 outer gravitational frame. This predicts a **tidal contribution** to the ICM pressure profile at the
@@ -194,14 +194,14 @@ cluster outskirts, potentially detectable as a departure from standard $\beta$-m
 This is the **first UQFF whitepaper** to derive an equilibrium condition between a thermodynamic
 infall process (cooling flow) and the UQFF buoyancy tiers. It demonstrates:
 
-1. The UQFF buoyancy framework is not merely additive — it creates a **dynamically self-regulating
+1. The UQFF buoyancy framework is not merely additive --- it creates a **dynamically self-regulating
 pair** with any infall/dissipative term that shares the same `ug1_base` kernel.
 
-2. The AGN feedback cycle in BCGs is not fundamentally a thermodynamic cycle — it is a
+2. The AGN feedback cycle in BCGs is not fundamentally a thermodynamic cycle --- it is a
 **gravitational field modulation cycle** governed by the UQFF buoyancy response to `G\cdotM/r2`.
 
 3. The Virgo Cluster outer frame (independent of Perseus at 77 Mpc) introduces a **super-cluster
-gravitational environment** into the local feedback physics — a prediction unique to UQFF
+gravitational environment** into the local feedback physics --- a prediction unique to UQFF
 multi-scale architecture.
 
 ---
@@ -262,12 +262,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -290,8 +290,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -380,7 +380,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.139$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -400,7 +400,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -418,7 +418,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -431,35 +431,35 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
-1. NGC1275.cpp (UQFF 2.0 upgrade, Session 72f, March 16, 2026) — `term_cool = rho_cool * v_cool^2 /
+1. NGC1275.cpp (UQFF 2.0 upgrade, Session 72f, March 16, 2026) --- `term_cool = rho_cool * v_cool^2 /
 rho_fluid`
-2. Fabian et al. (2011) — Perseus cluster: 12 X-ray cavity pairs, quasi-periodic AGN feedback
-3. McNamara & Nulsen (2007) — Heating of hot atmospheres with AGN jets
-4. Sanders & Fabian (2007) — Perseus cooling flow rate ṁ_cool ~ 30–50 M_sun yr-1
-5. Taylor et al. (2006) — Perseus cluster ICM magnetic field B ~ 5 $\mu$G
-6. Peterson & Fabian (2006) — X-ray spectroscopy of cooling clusters: cooling flow problem
-7. Conselice et al. (2001) — NGC 1275 filamentary nebula structure and ages
-8. CondensedPhysics3.py — `NGC1275FBHFilamentCalculator` (PAPER_223, Session 56)
-9. Star-Magic UQFF v4.26 — CP3/PAPER_198 3-tier buoyancy canonical framework
+2. Fabian et al. (2011) --- Perseus cluster: 12 X-ray cavity pairs, quasi-periodic AGN feedback
+3. McNamara & Nulsen (2007) --- Heating of hot atmospheres with AGN jets
+4. Sanders & Fabian (2007) --- Perseus cooling flow rate ṁ_cool ~ 30--50 M_sun yr-1
+5. Taylor et al. (2006) --- Perseus cluster ICM magnetic field B ~ 5 $\mu$G
+6. Peterson & Fabian (2006) --- X-ray spectroscopy of cooling clusters: cooling flow problem
+7. Conselice et al. (2001) --- NGC 1275 filamentary nebula structure and ages
+8. CondensedPhysics3.py --- `NGC1275FBHFilamentCalculator` (PAPER_223, Session 56)
+9. Star-Magic UQFF v4.26 --- CP3/PAPER_198 3-tier buoyancy canonical framework
 
 ---
 
-*© 2026 Daniel T. Murphy — Star-Magic UQFF Framework — All Rights Reserved*  
-*Paper 259 of 1,000 — Session 72f — Phase 2 §3.1 C++ Module Physics Extraction*
+*© 2026 Daniel T. Murphy --- Star-Magic UQFF Framework --- All Rights Reserved*  
+*Paper 259 of 1,000 --- Session 72f --- Phase 2 §3.1 C++ Module Physics Extraction*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -468,7 +468,7 @@ rho_fluid`
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |

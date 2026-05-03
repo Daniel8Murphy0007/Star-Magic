@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_653: UQFF Pi-Wave Energy Correspondence
@@ -16,8 +16,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFPiWaveEnergyCorrespondenceCalculator  
-**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) — PiSequenceAnalysis (lines 3848–4743),
-PISequenceAnalysis2 (4744–5214)  
+**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) --- PiSequenceAnalysis (lines 3848--4743),
+PISequenceAnalysis2 (4744--5214)  
 **Companion papers:** PAPER_649 (DVP n-wave mixing $\phi$ threshold), PAPER_646 (cos($\pi$tn) harmonic),
 PAPER_642 (SM Bridge)
 
@@ -30,7 +30,7 @@ $$E_{\text{wave}} \approx 1.17\times10^{-105}\ \text{J}; \qquad \pi\text{-positi
 The decimal expansion of $\pi$ contains the digit-triad "117" (and its related UQFF
 constant sequence) at statistically regular positions throughout its infinite decimal
 expansion. The computed wave energy E_wave = 1.17$\times$10-105 J for the Pi-Wave appears at
-an energy scale 80 orders below the Planck energy — consistent with UQFF vacuum coherence
+an energy scale 80 orders below the Planck energy --- consistent with UQFF vacuum coherence
 modes. This paper documents the first 10+ confirmed occurrences of "117" within $\pi$ to
 1 million decimal places (~130 total), provides the wave-energy derivation from the $\pi$
 self-coherence equation, explores the numerical normal distribution of $\pi$ (each n-digit
@@ -46,7 +46,7 @@ The Universal Inertia harmonic (PAPER_646) uses the argument:
 
 $$\cos(\pi t_n) \qquad \text{where } t_n = \text{normalized UQFF time}$$
 
-The use of **$\pi$** (not 2$\pi$) indicates a **half-period oscillation** — the Caduceus coil
+The use of **$\pi$** (not 2$\pi$) indicates a **half-period oscillation** --- the Caduceus coil
 twin-helix creates pinch points at every $\pi$ radian of rotation, not 2$\pi$. These pinch
 points are the physical locations of $\pi$-wave energy concentration in the Aether.
 
@@ -91,7 +91,7 @@ where ℓ_$\pi$ = $\pi$$\cdot$ℓ_P = 5.078$\times$10-33 cm is the Pi-Planck coh
 
 ### 2.2 Physical Interpretation
 
-E_wave = 1.17$\times$10-105 J is the energy of a single Aether **$\pi$-coherence quantum** — the
+E_wave = 1.17$\times$10-105 J is the energy of a single Aether **$\pi$-coherence quantum** --- the
 minimum excitation in the UQFF vacuum at the Caduceus pinch scale. It is ~1074 times
 smaller than the Planck energy, placing it in the deep vacuum coherence regime.
 
@@ -125,7 +125,7 @@ $$P(\text{"117" appears}) = 10^{-3}; \quad \text{variance} = \sigma^2 = N \cdot 
 
 At N = 106 trials: expected 1000 $\pm$ $\sqrt{9}$99 $\approx$ 1000 $\pm$ 32.
 
-$\pi$ is conjectured (but unproven) to be a **normal number** — every digit string of length
+$\pi$ is conjectured (but unproven) to be a **normal number** --- every digit string of length
 n appears with limiting frequency 10-ⁿ. The PISequenceAnalysis module verifies this
 for 3-digit strings: all 900 triples appear within 5% of expected frequency in 1M digits.
 
@@ -134,10 +134,10 @@ for 3-digit strings: all 900 triples appear within 5% of expected frequency in 1
 The string "117" = 1.17 $\times$ 102 encodes the **Pi-Wave energy mantissa** (1.17).
 Its occurrences follow approximately a Poisson process with $\lambda$ = 1 per 1000 digits.
 The **spacing distribution** between consecutive "117" appearances is exponential
-with mean $\mu$ spacing $\approx$ 1000 digits — a random walk, as expected for a normal number.
+with mean $\mu$ spacing $\approx$ 1000 digits --- a random walk, as expected for a normal number.
 
 **UQFF interpretation**: The energy quantum E_wave = 1.17$\times$10-105 J is not predictive
-from $\pi$ digit positions — rather, both (the computed energy mantissa and the digit string)
+from $\pi$ digit positions --- rather, both (the computed energy mantissa and the digit string)
 share the same origin: the geometric constant $\pi$ embedded in the UQFF harmonic cos($\pi$tn)
 naturally produces energy quanta whose leading digits are those of the well-studied
 decimal expansion.
@@ -159,13 +159,13 @@ Physical regularization at Planck scale: $E_{\text{pinch,max}} = E_P = 1.956\tim
 
 $$\frac{E_P}{E_{\text{wave}}} = \frac{1.956\times10^9}{1.17\times10^{-105}} = 1.67\times10^{114}$$
 
-The gap exponent is 114 $\approx$ 26$\pi$ $\times$ (1/$\alpha$2)/1000 — within the DVP framework, this gap
+The gap exponent is 114 $\approx$ 26$\pi$ $\times$ (1/$\alpha$2)/1000 --- within the DVP framework, this gap
 is traversed in 26 prime-level steps, each suppressing by e^{-$\pi$} $\approx$ 0.0432.
 
 $$e^{-26\pi} = e^{-81.68} \approx 4.0\times10^{-36} \approx \frac{\rho_{\text{vac},[SCm]}}{\rho_P}\ PASS$$
 
 This confirms: the Pi-Wave energy scale is exactly the e^{-26$\pi$} suppression from
-the Planck energy — another manifestation of the -i$\cdot$26 and -26 exponents identified
+the Planck energy --- another manifestation of the -i$\cdot$26 and -26 exponents identified
 in the DVP (PAPER_649) and Schwarzschild proton (PAPER_651) papers.
 
 ---
@@ -251,7 +251,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.068$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -271,7 +271,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -289,28 +289,28 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — G6 Gate (CVW v2.0.0)
+## §SM Anchors --- G6 Gate (CVW v2.0.0)
 
 | Observable | SM Value | UQFF Pi-Wave | Alignment |
 |------------|----------|--------------|-----------|
-| Planck energy | 1.956$\times$109 J | Pinch maximum | ✅ correct |
-| $\pi$ normal distribution | Conjectured; $\chi$2-test passes | Module verified in 1M digits | ✅ numerical |
-| Pi-Planck length ℓ_P | 1.616$\times$10-33 cm | ℓ_$\pi$ = $\pi$$\cdot$ℓ_P as coherence length | ✅ structural |
-| Vacuum fluctuations ℏ$\omega$ | ~ℏ/$\tau$_vac | E_wave = ℏ/$\tau$_$\pi$ at $\rho$vac,[SCm] | ✅ structural |
+| Planck energy | 1.956$\times$109 J | Pinch maximum | \checkmark correct |
+| $\pi$ normal distribution | Conjectured; $\chi$2-test passes | Module verified in 1M digits | \checkmark numerical |
+| Pi-Planck length ℓ_P | 1.616$\times$10-33 cm | ℓ_$\pi$ = $\pi$$\cdot$ℓ_P as coherence length | \checkmark structural |
+| Vacuum fluctuations ℏ$\omega$ | ~ℏ/$\tau$_vac | E_wave = ℏ/$\tau$_$\pi$ at $\rho$vac,[SCm] | \checkmark structural |
 
-> **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
+> **SM Anchor Reference:** PAPER_642 --- UQFFSMParameterBridgeMasterComparisonCalculator
 
 ---
 
 ## References
 
-1. PiSequenceAnalysis — grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 3848–4743
-2. PISequenceAnalysis2 — grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 4744–5214
-3. PAPER_649 — Dipole Vortex Primes (e^{-i26} exponent)
-4. PAPER_646 — Universal Inertial Operator (cos($\pi$tn) harmonic / Caduceus coil)
-5. PAPER_651 — Schwarzschild Proton (e^{-26} real suppression)
-6. PAPER_647 — Vacuum Density Series ($\rho$vac,[SCm] input)
-7. PAPER_642 — SM Parameter Bridge
+1. PiSequenceAnalysis --- grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 3848--4743
+2. PISequenceAnalysis2 --- grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 4744--5214
+3. PAPER_649 --- Dipole Vortex Primes (e^{-i26} exponent)
+4. PAPER_646 --- Universal Inertial Operator (cos($\pi$tn) harmonic / Caduceus coil)
+5. PAPER_651 --- Schwarzschild Proton (e^{-26} real suppression)
+6. PAPER_647 --- Vacuum Density Series ($\rho$vac,[SCm] input)
+7. PAPER_642 --- SM Parameter Bridge
 8. Bailey D H, Borwein J M, Crandall R E, Pomerance C (2012): $\pi$ normal number conjecture
 9. ARCHITECTURE_{FLOW\_DIAGRAM}.md v5.24
 
@@ -318,10 +318,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

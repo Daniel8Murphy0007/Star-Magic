@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, GW, merger, dark-energy, MUGE, BEC, LHC, Chandra]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_164 — High-Energy Dataset UQFF Validation Framework: CERN, GWOSC, EHT, Chandra
+# PAPER_164 --- High-Energy Dataset UQFF Validation Framework: CERN, GWOSC, EHT, Chandra
 **Author:** Daniel T. Murphy
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
@@ -22,8 +22,8 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper establishes the **High-Energy Dataset Validation Framework** for UQFF parameter
 calibration using four major multi-messenger datasets: CERN LHC (ATLAS 13 TeV + CMS 7 TeV),
 GWOSC O4a (including GW231123 225 M_sol merger), EHT Sgr A* 2017, and Chandra CSC 2.1.
-Each dataset constrains a specific UQFF MUGE term. A new observable—LHC collision energy
-E_coll = 13 TeV—enters the quantum uncertainty term as $\Delta$E_vac, and the Osc_term becomes
+Each dataset constrains a specific UQFF MUGE term. A new observable---LHC collision energy
+E_coll = 13 TeV---enters the quantum uncertainty term as $\Delta$E_vac, and the Osc_term becomes
 a variable parameter driven by GW O4 background amplitude.
 
 ---
@@ -45,7 +45,7 @@ a variable parameter driven by GW O4 background amplitude.
 
 ### 2.1 E_coll = 13 TeV $\to$ $\Delta$E_vac
 
-From ATLAS Run 2 (2016–2018), E_coll = 13 TeV center-of-mass energy:
+From ATLAS Run 2 (2016--2018), E_coll = 13 TeV center-of-mass energy:
 
 $$\Delta E_{vac} = \frac{E_{coll}}{V_{interaction}} = \frac{13\,\text{TeV}}{(1\,\text{fm})^3}$$
 
@@ -66,7 +66,7 @@ at collider energies.
 
 ---
 
-## 3. GWOSC O4a — Variable Osc_term
+## 3. GWOSC O4a --- Variable Osc_term
 
 ### 3.1 Previous Implementation
 
@@ -88,7 +88,7 @@ UQFF predictions for future GW events.
 
 ---
 
-## 4. EHT Sgr A* — a_{aether\_res} Calibration
+## 4. EHT Sgr A* --- a_{aether\_res} Calibration
 
 The Event Horizon Telescope (2017) resolved the Sgr A* shadow diameter:
 - Observed shadow: 51.8 $\mu$as (theoretical for Kerr BH: 52$\pm$2 $\mu$as)
@@ -103,7 +103,7 @@ where $\epsilon_{shadow} = (r_{obs} - r_{GR})/r_{GR} \approx 0.02$ (2% EHT preci
 
 ---
 
-## 5. Chandra CSC — B/B_crit for Magnetars
+## 5. Chandra CSC --- B/B_crit for Magnetars
 
 Chandra soft X-ray spectra for SGR 1745-2900 (2013-2023 campaign):
 - Confirmed B_surface = 2.3$\times$1014 G = 2.3$\times$1010 T
@@ -142,7 +142,7 @@ where $\omega_{ALP} = m_{ALP}c^2/\hbar \sim 10^{-22}$ to $10^{-12}$ Hz (fuzzy da
 
 ---
 
-**Status:** ✅ Complete | **CP Stage:** CP2/CP3
+**Status:** \checkmark Complete | **CP Stage:** CP2/CP3
 **Supersedes:** N/A (extends calibration) | **Related:** PAPER_064 (calibrated constants), PAPER_146
 (Osc_term in 12-term), PAPER_167 (GW231123 event)
 
@@ -198,12 +198,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -249,7 +249,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.095$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -269,7 +269,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -287,7 +287,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -300,17 +300,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -324,7 +324,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

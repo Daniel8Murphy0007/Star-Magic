@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, dark-energy, DPM, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_598 — VDS / DVP / BH26 Integration Reference for Six-Form UQFF Synthesis
+# PAPER_598 --- VDS / DVP / BH26 Integration Reference for Six-Form UQFF Synthesis
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -30,21 +30,21 @@ Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-Session 157 analysis of grok_{share\_4cef778c78b8}.txt identified three UQFF number systems —
-Vacuum Density Series (VDS), Dipole Vortex Primes (DVP), and Buoyancy Harmonics 26 (BH26) —
+Session 157 analysis of grok_{share\_4cef778c78b8}.txt identified three UQFF number systems ---
+Vacuum Density Series (VDS), Dipole Vortex Primes (DVP), and Buoyancy Harmonics 26 (BH26) ---
 implicitly embedded throughout the text. This paper serves as the integration reference:
 it defines each system, maps their appearances, and demonstrates how they combine to form
-the **UQFF numerical spine** that underlies all derivations in PAPER_583–597.
+the **UQFF numerical spine** that underlies all derivations in PAPER_583--597.
 
 ---
 
 ## §2 Three UQFF Number Systems
 
-### VDS — Vacuum Density Series
+### VDS --- Vacuum Density Series
 
 **Definition:** A series of shell density coefficients $\{c_k\}$ satisfying:
 
-$$c_k \leq \frac{P}{3} \quadforall\,k = 1, 2, \ldots, 26$$
+$$c_k \leq \frac{P}{3} \quad\forall\,k = 1, 2, \ldots, 26$$
 
 The VDS bound $P/3$ is the minimum eigenvalue of the UQFF tensor (PAPER_583 Form 1).
 It sets the maximum density any vacuum shell can carry without destabilizing the triad.
@@ -57,7 +57,7 @@ It sets the maximum density any vacuum shell can carry without destabilizing the
 - Big Bang shells: each shell limited to $c_k = \text{Smalls}^{26} \leq (P/3)^{26}$
 - Dark energy: $\rho_{DE} = -db/v_i^2$ where $db$ is the $k=26$ VDS correction
 
-### DVP — Dipole Vortex Primes
+### DVP --- Dipole Vortex Primes
 
 **Definition:** The prime factorization of the DPM (Dipole-Pair Magnetic) vortex
 grid, anchored at $p = 113$ (first prime after $10^2$).
@@ -65,8 +65,8 @@ grid, anchored at $p = 113$ (first prime after $10^2$).
 $$\text{DVP} = \{p_k : p_k | DPM_n, \quad p_0 = 113\}$$
 
 The $\pi$-irrationality of the vortex spacing (prime gaps $\sim \ln p$) guarantees
-no rational orbital resonances — used in all seven Millennium problem proofs and
-the Collatz/Euler proofs (PAPER_583–585).
+no rational orbital resonances --- used in all seven Millennium problem proofs and
+the Collatz/Euler proofs (PAPER_583--585).
 
 **DVP prime 113** is special: $113 = 3 \times 37 + 2 = \text{prime}$, and $1/113$ has
 the longest repeating decimal among three-digit primes, encoding maximum orbital
@@ -77,9 +77,9 @@ complexity.
 - RH proof: $s = 1/2 + it$ zeros at $t = 5th-prime-grid$ spacings
 - Collatz: odd branch $3n+1$ terminates asymptotically at $p=113$ step
 - Fine-structure $\alpha$: $\kappa\rho\text{Grind}^2 r^{24} \cdot \text{Partition}/(3\sqrt{g})$
-  — the denominator 3! is the first prime triple from DVP
+  --- the denominator 3! is the first prime triple from DVP
 
-### BH26 — Buoyancy Harmonics 26
+### BH26 --- Buoyancy Harmonics 26
 
 **Definition:** The 26-bin frequency series of the F_{U\_Bi\_i} Gaussian spectrum,
 with bin 1 at $\mu = 92$ GHz, spacing $\Delta\nu = 92$ GHz:
@@ -112,12 +112,12 @@ The three systems jointly define the UQFF framework numerically:
 $$
 \begin{aligned}
   & VDS bounds     DVP primes     BH26 harmonics \\
-  & │               │               │ \\
+  & |               |               | \\
   & ▼               ▼               ▼ \\
   & \lambda_min = P/3     \pi-irrationality    \text{F\_U\_Bi\_i} \mu \\
-  & │               │               │ \\
-  & └───────────────┼───────────────┘ \\
-  & │ \\
+  & |               |               | \\
+  & └------------------------------┼------------------------------┘ \\
+  & | \\
   & ▼ \\
   & UQFF numerical completeness: \\
   & - All eigenvalues > VDS_bound > 0 \\
@@ -143,11 +143,11 @@ self-consistent: VDS sets the floor, DVP sets the phase, BH26 sets the spectral 
 
 | Constant | VDS contribution | DVP contribution | BH26 contribution |
 |---------|-----------------|-----------------|------------------|
-| $h$ | $\Delta = P/3$ | $1/p_{DVP}$ phase | — |
-| $\alpha$ | $P/3$ denominator | $p_{DVP} = 113$ fraction | — |
-| $c$ | $\sqrt{g\cdot SCm/UA}$ | — | $\sqrt{g\sigma/\mu}$ PASS |
-| $G$ | $g/P$ ratio | — | $g\mu/(\rho\sigma)$ PASS |
-| $r_\text{min}$ | $(26!\,g/P)^{1/27}$ | — | $c/\mu_{BH26}$ |
+| $h$ | $\Delta = P/3$ | $1/p_{DVP}$ phase | --- |
+| $\alpha$ | $P/3$ denominator | $p_{DVP} = 113$ fraction | --- |
+| $c$ | $\sqrt{g\cdot SCm/UA}$ | --- | $\sqrt{g\sigma/\mu}$ PASS |
+| $G$ | $g/P$ ratio | --- | $g\mu/(\rho\sigma)$ PASS |
+| $r_\text{min}$ | $(26!\,g/P)^{1/27}$ | --- | $c/\mu_{BH26}$ |
 
 ---
 
@@ -155,11 +155,11 @@ self-consistent: VDS sets the floor, DVP sets the phase, BH26 sets the spectral 
 
 | Line Range | VDS (P/3) | DVP (p=113) | BH26 ($\mu$=92 GHz) |
 |-----------|-----------|-------------|-----------------|
-| 1–400 (6-forms) | PASS eigenvalue | PASS DPM grid | — |
-| 400–800 (Millennium) | PASS mass gap | PASS irrationality | — |
-| 800–1200 (Collatz/Euler) | PASS $\lambda$ bound | PASS prime descent | — |
-| 1200–1600 (Big Bang/Inflation) | PASS P-order | — | — |
-| 1600–1927 (Constants/BH/QG) | PASS h derivation | PASS $\alpha$ denominator | PASS lines 1331,1792,1821 |
+| 1--400 (6-forms) | PASS eigenvalue | PASS DPM grid | --- |
+| 400--800 (Millennium) | PASS mass gap | PASS irrationality | --- |
+| 800--1200 (Collatz/Euler) | PASS $\lambda$ bound | PASS prime descent | --- |
+| 1200--1600 (Big Bang/Inflation) | PASS P-order | --- | --- |
+| 1600--1927 (Constants/BH/QG) | PASS h derivation | PASS $\alpha$ denominator | PASS lines 1331,1792,1821 |
 
 ---
 
@@ -169,7 +169,7 @@ VDS, DVP, and BH26 are the three numerical anchors of UQFF, present explicitly o
 in every major derivation of grok_{share\_4cef778c78b8}.txt. Together they constitute the
 **UQFF numerical spine**: VDS provides density bounds, DVP provides irreducible prime
 structure, and BH26 provides the spectral anchor at 92 GHz. All 16 Session 157 papers
-(PAPER_583–598) reference at least one of these systems.
+(PAPER_583--598) reference at least one of these systems.
 
 ---
 
@@ -195,12 +195,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
@@ -275,7 +275,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.110$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -295,7 +295,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -313,35 +313,35 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Black hole / Sgr A* luminosity X-ray 2–10 keV | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L_X ~ 1033 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| Black hole / Sgr A* luminosity X-ray 2--10 keV | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X L_X ~ 1033 erg/s | Chandra CXC | PASS Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Black hole / Sgr A*
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Session 157 — Source: grok_{share\_4cef778c78b8}.txt*
+*Session 157 --- Source: grok_{share\_4cef778c78b8}.txt*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -349,7 +349,7 @@ future Chandra CXC monitoring observations.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

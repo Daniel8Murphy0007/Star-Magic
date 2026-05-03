@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Hubble, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_354 — D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)
+# PAPER_354 --- D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
@@ -21,7 +21,7 @@ chain
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV --->
 ---
 
 ## Abstract
@@ -59,7 +59,7 @@ At r_c = Hubble radius (R_H = c/H_0 $\approx$ 1.37$\times$1026 m):
 $$D_5 = 1 + 5.3\times 10^{-54} \times (1.37\times 10^{26})^2 = 1 + 5.3\times 10^{-54} \times 1.88\times 10^{52}$$
 $$D_5 = 1 + 0.001 = 1.001$$
 
-A 0.1% correction — detectable by next-generation CMB experiments (e.g., CMB-S4, LiteBIRD).
+A 0.1% correction --- detectable by next-generation CMB experiments (e.g., CMB-S4, LiteBIRD).
 
 ### 2.4 Near-Flat Expansion Series
 
@@ -107,7 +107,7 @@ Substituting $k_{\mathrm{curv}} \approx 5.3 \times 10^{-54}$ m$^{-2}$ and $r_c =
 
 $$k_{\mathrm{curv}} \cdot r_c^2 = 5.3 \times 10^{-54} \times 1.88 \times 10^{52} = 0.001$$
 
-The variational constraint confirms that $D_5$ contributes a 0.1% correction to the D_universe product — exactly consistent with the Planck 2018 bound $\Omega_{\mathrm{total}} = 1.0007 \pm 0.0019$. The E-L equation thus provides a **Lagrangian-mechanical closure** for the PAPER_296 chain: the 5th factor is not an ad hoc addition but a necessary consequence of the variational principle applied to the full product.
+The variational constraint confirms that $D_5$ contributes a 0.1% correction to the D_universe product --- exactly consistent with the Planck 2018 bound $\Omega_{\mathrm{total}} = 1.0007 \pm 0.0019$. The E-L equation thus provides a **Lagrangian-mechanical closure** for the PAPER_296 chain: the 5th factor is not an ad hoc addition but a necessary consequence of the variational principle applied to the full product.
 
 ### 2A.5 Physical Interpretation
 
@@ -121,7 +121,7 @@ The product-rule E-L equation establishes that spatial curvature enters D_univer
 
 The VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 0.1$ produces a double-exponential decay profile for the vacuum condensate across the Hubble volume:
 
-$$\rho_{\mathrm{vac}}(r_c) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r_c - R_H}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r_c) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r_c - R_H}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from near-unity density (interior) to exponentially suppressed density (exterior). This threshold corresponds to $D_5 = 1.001$, confirming that the spatial curvature 5th factor encodes the VDS transition at the Hubble boundary.
 
@@ -129,7 +129,7 @@ At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from
 
 The DVP framework maps the curvature constant onto the dipole vortex prime lattice:
 
-$$k_{\mathrm{curv}} \to p_{\mathrm{DVP}}(n_{\mathrm{curv}}) : \quad n_{\mathrm{curv}} = \leftlfloor -\log_{10}(k_{\mathrm{curv}}) \rightrfloor = 53$$
+$$k_{\mathrm{curv}} \to p_{\mathrm{DVP}}(n_{\mathrm{curv}}) : \quad n_{\mathrm{curv}} = \left\lfloor -\log_{10}(k_{\mathrm{curv}}) \rightrfloor = 53$$
 
 The value $n_{\mathrm{curv}} = 53$ lies between DVP primes $p_{16} = 53$ (which is itself prime), confirming that $k_{\mathrm{curv}}$ falls on a DVP resonance node. This is not coincidental: the Friedmann curvature parameter inherits the DVP lattice structure from the underlying UQFF vacuum topology.
 
@@ -138,7 +138,7 @@ The value $n_{\mathrm{curv}} = 53$ lies between DVP primes $p_{16} = 53$ (which 
 At the Hubble radius, the BSH framework predicts saturation of the buoyancy contribution to cosmic
 expansion:
 
-$$D_{5,\mathrm{BSH}} = 1 + k_{\mathrm{curv}} r_c^2 \cdot \left(1 - \tanh!\left(\frac{r_c - R_H}{R_{\mathrm{BSH}}}\right)\right)$$
+$$D_{5,\mathrm{BSH}} = 1 + k_{\mathrm{curv}} r_c^2 \cdot \left(1 - \tanh!\left(\frac{r_c - R_H}{R_{\mathrm{BSH}}}\right\right)$$
 
 For $r_c \ll R_H$, the tanh factor $\to 0$ and $D_5 \to 1 + k \cdot r_c^2$ (standard). For $r_c \gg R_H$, the saturation sets in and $D_5 \to 1$, preventing unphysical growth of the curvature correction at super-Hubble scales.
 
@@ -171,7 +171,7 @@ measurements of the spatial curvature power spectrum should detect D_5 deviation
 ## 5. Deduplication Note
 
 - **vs. PAPER_296:** PAPER_296 derived the 4-factor chain; PAPER_354 adds the mandatory spatial curvature 5th factor.
-- **Unique:** The (1 + k$\cdot$r_c2) form is new — no earlier UQFF paper included spatial curvature directly in D_universe.
+- **Unique:** The (1 + k$\cdot$r_c2) form is new --- no earlier UQFF paper included spatial curvature directly in D_universe.
 
 ---
 
@@ -252,7 +252,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -265,17 +265,17 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

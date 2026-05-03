@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, F_{U\_Bi\_i}, BEC, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_526 — 3D-IPO Non-Linear Three-Helix Progression Overlay
+# PAPER_526 --- 3D-IPO Non-Linear Three-Helix Progression Overlay
 
 **Author:** Daniel T. Murphy  
 **Framework:** Star-Magic / UQFF  
 **Version:** v5.02  
 **Date:** 2026-03-25  
-**Session:** 142 — grok_{share\_2515709ed}.txt  
+**Session:** 142 --- grok_{share\_2515709ed}.txt  
 **CP4 Class:** ThreeDIPONonLinearProgressionCalculator (#121)  
 **Quality Score (QS):** 5 / 5
 
@@ -28,7 +28,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents a UQFF analysis of 3D-IPO Non-Linear Three-Helix Progression Overlay, deriving
 compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
-## §1 — Overview
+## §1 --- Overview
 
 The **3D-IPO** (Three-Dimensional Irrational-Progress Overlay) framework models the
 simultaneous progression of three distinct physical axes as interlocking helices in
@@ -40,12 +40,12 @@ a 26-dimensional UQFF braid space:
 | H2 | $\pi$ progression | Irrational decimal expansion trajectory |
 | H3 | `F_{U\_Bi\_i}` axis | Buoyancy-force magnitude sequence |
 
-Because $\pi$ is irrational, the crossing pattern of H1 and H2 never repeats —
+Because $\pi$ is irrational, the crossing pattern of H1 and H2 never repeats ---
 generating a **topologically unique braid fingerprint** for every physical system.
 
 ---
 
-## §2 — Core Equation
+## §2 --- Core Equation
 
 $$n_\text{cross} = \argmin_{n} \bigl| W_\text{prog}(n) - \Pi_text{prog}(n) \cdot F_{U\_Bi}(x) \bigr|$$
 
@@ -54,13 +54,13 @@ where:
 | Symbol | Definition |
 |--------|-----------|
 | $W_\text{prog}(n)$ | Wolfram computation depth at step $n$ |
-| $\Pi_text{prog}(n)$ | $\lfloor 10^n \pi \rfloor \bmod 10$ — $n$-th $\pi$ digit |
+| $\Pi_text{prog}(n)$ | $\lfloor 10^n \pi \rfloor \bmod 10$ --- $n$-th $\pi$ digit |
 | $F_{U\_Bi}(x)$ | UQFF buoyancy force at parameter $x$ |
 | $n_\text{cross}$ | First crossing index (braid primary node) |
 
 ---
 
-## §3 — UQFF Number Systems Integration (PAPER_429)
+## §3 --- UQFF Number Systems Integration (PAPER_429)
 
 ### Vacuum Density Series (VDS)
 $$A_\text{helix} = \mathrm{Li}_{26}([SSq]) = \sum_{k=1}^{26} \frac{[SSq]^k}{k^{26}} \approx 0.570$$
@@ -78,13 +78,13 @@ non-reducible interval between physically distinct crossing events.
 
 ---
 
-## §4 — Braid Topology Proof
+## §4 --- Braid Topology Proof
 
 **Proposition:** The 3D-IPO braid has no repeating sub-word.
 
 *Proof sketch:*  
 1. H2 is driven by $\pi$ digit sequence, which is conjectured (and computationally
-   verified to 100 trillion digits) to be **normal** — every finite digit string
+   verified to 100 trillion digits) to be **normal** --- every finite digit string
    appears with equal frequency but never periodically.  
 2. H1 follows Wolfram computation depth, which by the **Principle of
    Computational Irreducibility** cannot be compressed to a shorter rule.  
@@ -96,7 +96,7 @@ $$\boxed{P(\text{braid repeats}) = 0}$$
 
 ---
 
-## §5 — Available Equations
+## §5 --- Available Equations
 
 | Equation | Description |
 |----------|-------------|
@@ -107,7 +107,7 @@ $$\boxed{P(\text{braid repeats}) = 0}$$
 
 ---
 
-## §6 — Observational Implications
+## §6 --- Observational Implications
 
 - **Galaxy rotation curves:** Each galaxy leaves a unique 3D-IPO fingerprint in
   its UQFF buoyancy field, distinguishing it from all other systems.
@@ -118,14 +118,14 @@ $$\boxed{P(\text{braid repeats}) = 0}$$
 
 ---
 
-## §7 — CP4 Calculator Output
+## §7 --- CP4 Calculator Output
 
 ```python
 calc = ThreeDIPONonLinearProgressionCalculator()
 result = calc.compute(dataset={'SSq': 0.57}, n_steps=1000)
-# result['n_cross']       — first crossing index
-# result['crossing_count'] — total crossings in n_steps
-# result['braid_topology'] — 'NON_REPEATING (irrational \pi)'
+# result['n_cross']       --- first crossing index
+# result['crossing_count'] --- total crossings in n_steps
+# result['braid_topology'] --- 'NON_REPEATING (irrational \pi)'
 ```
 
 ---
@@ -152,12 +152,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
@@ -232,7 +232,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.121$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -252,7 +252,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -270,7 +270,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -284,11 +284,11 @@ below the GUT scale and 33 orders above nuclear baryon-number scales. This inter
 framework predicts observable deviations from SM in the X-ray/radio astrophysical sector
 while remaining consistent with all collider and nuclear precision measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-## §8 — References
+## §8 --- References
 
 - PAPER_429: Three New UQFF Number Systems (VDS / DVP / BH)
 - SOURCE116: Wolfram Hypergraph Emergent Spacetime
@@ -299,10 +299,10 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -311,7 +311,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

@@ -8,22 +8,22 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, dark-matter, jet, MUGE, black-hole, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_464 — M51 Whirlpool Galaxy: MUGE UQFF Integration with NGC 5195 Tidal Interaction, Spiral Density Waves, and BH Jets
+# PAPER_464 --- M51 Whirlpool Galaxy: MUGE UQFF Integration with NGC 5195 Tidal Interaction, Spiral Density Waves, and BH Jets
 **Date:** 2025
 
-**Whitepaper Series:** Star-Magic UQFF Phase 2 — Spiral Galaxy Dynamics
+**Whitepaper Series:** Star-Magic UQFF Phase 2 --- Spiral Galaxy Dynamics
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122
-**Source:** grok_{share\_dc707f5d3}.txt (Doc 46 — M51UQFFModule, "MUGE Whirlpool Galaxy M51")
+**Source:** grok_{share\_dc707f5d3}.txt (Doc 46 --- M51UQFFModule, "MUGE Whirlpool Galaxy M51")
 **Classification:** FIRST MUGE UQFF for Whirlpool Galaxy; FIRST tidal compression term for NGC 5195
 interaction; FIRST spiral density wave coupling in UQFF gravity
 **Author:** Daniel T. Murphy
 **CP4 Class:** Pending (dc707f5d3 batch)
 **C++ Module:** `M51UQFFModule.h` / `M51UQFFModule.cpp`
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV --->
 
 ---
 
@@ -41,7 +41,7 @@ precision.
 
 ---
 
-## 2. Core Physics — PAPER_464
+## 2. Core Physics --- PAPER_464
 
 ### 2.1 System Parameters
 
@@ -60,14 +60,14 @@ precision.
 
 ### 2.2 Master Gravitational Equation
 
-$$g_{\mathrm{M51}}(r, t) = \frac{G M_{\mathrm{sf}}(t)}{r(t)^2}\left(1 + H_z t\right)\!\left(1 - \frac{B}{B_{\mathrm{crit}}}\right)\!\left(1 + F_{\mathrm{env}}(t)\right)\!\left(1 + f_{\mathrm{TRZ}}\right)$$
+$$g_{\mathrm{M51}}(r, t) = \frac{G M_{\mathrm{sf}}(t)}{r(t)^2}\left(1 + H_z t\right)\!\left(1 - \frac{B}{B_{\mathrm{crit}}}\right)\!\left(1 + F_{\mathrm{env}}(t\right)\!\left(1 + f_{\mathrm{TRZ}}\right)$$
 $$+ \sum U_{gi} + \frac{\Lambda c^2}{3} + U_i + g_{\mathrm{quantum}} + g_{\mathrm{fluid}} + g_{\mathrm{DM}}$$
 
 Where:
 $$M_{\mathrm{sf}}(t) = M_0\!\left(1 + \frac{\mathrm{SFR} \cdot t}{M_0}\right), \quad r(t) = r_0 + v_r t$$
 $$H(t,z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_Lambda}$$
 
-### 2.3 Environmental Force F_env(t) — Tidal + Star Formation
+### 2.3 Environmental Force F_env(t) --- Tidal + Star Formation
 
 The tidal interaction with NGC 5195 is modeled as:
 
@@ -101,14 +101,14 @@ The DM fraction follows $M_{\mathrm{DM}} = 0.85 \times M$, $M_{\mathrm{visible}}
 
 $$\boxed{g_{\mathrm{M51}}(r, t) = \frac{G M_{\mathrm{sf}}(t)}{r(t)^2}(1+H_z t)(1 - B/B_{\mathrm{crit}})(1+F_{\mathrm{tidal}}+F_{\mathrm{SF}})(1+f_{\mathrm{TRZ}}) + \sum U_{gi} + \frac{\Lambda c^2}{3} + U_i + g_{\mathrm{quantum}} + g_{\mathrm{fluid}} + g_{\mathrm{DM}}}$$
 
-**Computed Result:** $g_{\mathrm{M51}} \approx 3 \times 10^{36}\ \mathrm{m/s}^2$ at $t = 500$ Myr, $r = 10$ kpc — DM/fluid dominant; repulsive $\Lambda$ and Ug2 terms advance the UQFF multi-pole framework for interacting galaxy pairs.
+**Computed Result:** $g_{\mathrm{M51}} \approx 3 \times 10^{36}\ \mathrm{m/s}^2$ at $t = 500$ Myr, $r = 10$ kpc --- DM/fluid dominant; repulsive $\Lambda$ and Ug2 terms advance the UQFF multi-pole framework for interacting galaxy pairs.
 
 ---
 
 ## 4. Physical Interpretation
 
-- **Tidal compression** from NGC 5195 is the primary F_env driver — demonstrating that galaxy interactions can be fully captured in UQFF's modular F_env(t) framework without SM approximations.
-- **Competing attractive/repulsive structure**: Ug1 (dipole), Ug3′ (external) are attractive; Ug2 (superconductor), $\Lambda$ (cosmological) are repulsive — modeling the real observed spiral arm structure of M51.
+- **Tidal compression** from NGC 5195 is the primary F_env driver --- demonstrating that galaxy interactions can be fully captured in UQFF's modular F_env(t) framework without SM approximations.
+- **Competing attractive/repulsive structure**: Ug1 (dipole), Ug3′ (external) are attractive; Ug2 (superconductor), $\Lambda$ (cosmological) are repulsive --- modeling the real observed spiral arm structure of M51.
 - **Spiral density waves**: reflected in SFR and r(t) expansion coupling.
 
 ---
@@ -116,7 +116,7 @@ $$\boxed{g_{\mathrm{M51}}(r, t) = \frac{G M_{\mathrm{sf}}(t)}{r(t)^2}(1+H_z t)(1
 ## 5. C++ Module Reference
 
 **Module:** `M51UQFFModule` (root-level, Session 120 from grok_{share\_dc707f5d3}.txt)
-**Key method:** `computeG(double t, double r)` — returns total g_M51 in m/s2
+**Key method:** `computeG(double t, double r)` --- returns total g_M51 in m/s2
 **System preset:** `M51` loaded via constructor defaults
 **Integration point:** MAIN_{1\_CoAnQi}.cpp SOURCE4 validation suite
 
@@ -144,12 +144,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -254,7 +254,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.124$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -274,7 +274,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -292,7 +292,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -303,25 +303,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-**QS=5** — Full UQFF integration: tidal F_env, Ug1-Ug4, DM/fluid terms, spiral galaxy parameters.
-*Copyright — Daniel T. Murphy. Encoded Oct 10, 2025.*
+**QS=5** --- Full UQFF integration: tidal F_env, Ug1-Ug4, DM/fluid terms, spiral galaxy parameters.
+*Copyright --- Daniel T. Murphy. Encoded Oct 10, 2025.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -329,7 +329,7 @@ future Chandra CXC monitoring observations.
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
 | PAPER_1019 | Dark Matter Phonon Buoyancy NFW Coupling |
 | PAPER_1050 | MUGE F_{U\_Bi\_i} Unified 9-System Synthesis |

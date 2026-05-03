@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, DPM, MUGE, SMBH, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_384 — Sagittarius A* Full Resonance + Compressed Term Decomposition
+# PAPER_384 --- Sagittarius A* Full Resonance + Compressed Term Decomposition
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_{share\_11254865}.txt, lines ~2960–2990  
+**Source:** grok_{share\_11254865}.txt, lines ~2960--2990  
 **Section:** Sagittarius A* resonance and compressed MUGE computation with per-term values  
-**Session:** 104 (Complete Re-Analysis — full per-term decomposition for Sag A* undiscovered)  
+**Session:** 104 (Complete Re-Analysis --- full per-term decomposition for Sag A* undiscovered)  
 **CP4 Class:** `SagAStarFullResonanceTermDecompositionCalculator` (CP4 #35)
 
 ---
@@ -50,7 +50,7 @@ demonstrating a consistent **fluid-dominance law** across both compact object an
 | Magnetic field | B | 1$\times$10-5 | T |
 | Critical B-field | B_crit | 1$\times$10-4 | T |
 | Age | t | 3.786e14 | s |
-| Redshift | z | 0.0009 | — |
+| Redshift | z | 0.0009 | --- |
 | V_sys | 3.552e45 | m3 |
 | v_exp | 5$\times$106 | m/s |
 | f_fluid | 3.465e-8 | Hz |
@@ -59,7 +59,7 @@ demonstrating a consistent **fluid-dominance law** across both compact object an
 
 ---
 
-## 3. Resonance MUGE — Per-Term Decomposition
+## 3. Resonance MUGE --- Per-Term Decomposition
 
 ### Term 1: aDPM
 
@@ -77,7 +77,7 @@ With $v_{exp} = 5\times10^6$ m/s for Sag A*:
 
 $$\boxed{a_{THz}^{\text{SgrA}*} = 1.001\times10^{-2} \ \text{m/s}^2}$$
 
-### Term 3: Fluid Frequency Coupling (afluid_freq) — DOMINANT
+### Term 3: Fluid Frequency Coupling (afluid_freq) --- DOMINANT
 
 $$a_{fluid\_freq} = f_{fluid} \cdot \frac{E_{vac,neb} \cdot V_{sys}}{E_{vac,ISM} \cdot c}$$
 
@@ -89,7 +89,7 @@ $$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \qua
 
 | Term | Value (m/s2) | Note |
 |------|:------------:|------|
-| avac_diff | ~10-12 | small — low $\Delta$_Evac |
+| avac_diff | ~10-12 | small --- low $\Delta$_Evac |
 | asuper_freq | ~10-5 | B-field much weaker than magnetar |
 | aaether_res | ~10-28 | sub-dominant |
 | Ug4i | $\approx$ 0 | ancient system (t=3.786e14 s) |
@@ -103,7 +103,7 @@ $$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \qua
 
 ---
 
-## 4. Compressed MUGE — Per-Term Decomposition
+## 4. Compressed MUGE --- Per-Term Decomposition
 
 ### Term 1+2: DPM-seeded + SC adjustment
 
@@ -140,8 +140,8 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 |------|:------------:|:-----------------:|
 | **afluid_freq** | **4.105e29** | +39 |
 | aTHz | 1.001e-2 | +32 |
-| aDPM | 1.001e-10 | — |
-| All others | negligible | — |
+| aDPM | 1.001e-10 | --- |
+| All others | negligible | --- |
 
 **Total resonance: $\approx$ 4.105e29 m/s2**
 
@@ -165,7 +165,7 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 | Compressed dominant term | perturbation=1.782e39 | perturbation=2.966e34 |
 | Compressed/Resonance ratio | ~1048 | ~105 |
 | Resonance total (m/s2) | 1.773e-9 | 4.105e29 |
-| Fluid term ratio Sag A*/SGR1745 | — | $\times$2.3e38 |
+| Fluid term ratio Sag A*/SGR1745 | --- | $\times$2.3e38 |
 
 **Fluid Universality Principle:** The dominant resonance term in both a compact magnetar ($r=10^4$ m) and a supermassive black hole ($r=10^{12}$ m) is $a_{fluid\_freq}$, but the values differ by **38 orders of magnitude**, scaling with $f_{fluid} \cdot V_{sys}$.
 
@@ -184,7 +184,7 @@ The product $f_{fluid} \cdot V_{sys} = 3.465\times10^{-8} \times 3.552\times10^{
 
 Versus SGR1745: $f_{fluid} \cdot V_{sys} = 1.269\times10^{-14} \times 4.189\times10^{12} = 5.315\times10^{-2}$ m3/s
 
-**Ratio: $1.231\times10^{38} / 5.315\times10^{-2} \approx 2.3\times10^{39}$** — explaining the 39-order dominance difference between the two fluid terms.
+**Ratio: $1.231\times10^{38} / 5.315\times10^{-2} \approx 2.3\times10^{39}$** --- explaining the 39-order dominance difference between the two fluid terms.
 
 The SMBH has an astronomically larger vacuum energy coupling volume, making its resonance fluid
 term the largest of any system in the canonical 7-system registry.
@@ -193,16 +193,16 @@ term the largest of any system in the canonical 7-system registry.
 
 ## 8. References Within Codebase
 
-- PAPER_371: MUGE 12-Term Resonance — Sag A* final result (fluid dominant)
-- PAPER_372: Compressed UQFF — Sag A* compressed result
-- PAPER_379: Dual-Model Comparison — totals side-by-side (SGR1745 vs others)
-- PAPER_381: SGR1745 compressed decomposition — comparison baseline
-- PAPER_382: SGR1745 resonance decomposition — comparison baseline
+- PAPER_371: MUGE 12-Term Resonance --- Sag A* final result (fluid dominant)
+- PAPER_372: Compressed UQFF --- Sag A* compressed result
+- PAPER_379: Dual-Model Comparison --- totals side-by-side (SGR1745 vs others)
+- PAPER_381: SGR1745 compressed decomposition --- comparison baseline
+- PAPER_382: SGR1745 resonance decomposition --- comparison baseline
 - `MUGESuperconductive12TermResonanceCalculator` (CP4 #14): Sag A* via `sagA_dataset`
 
 ---
 
-*Source: `grok_{share\_11254865}`.txt lines ~2960–2990 | Session 104 | First per-term decomposition for
+*Source: `grok_{share\_11254865}`.txt lines ~2960--2990 | Session 104 | First per-term decomposition for
 Sagittarius A* under both MUGE models*
 
 ---
@@ -227,12 +227,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -276,7 +276,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.176$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -296,7 +296,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -314,7 +314,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -327,17 +327,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -345,7 +345,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

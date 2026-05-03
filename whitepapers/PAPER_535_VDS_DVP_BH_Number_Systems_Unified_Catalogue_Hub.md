@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [cluster, SCm, exoplanet, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_535 — VDS-DVP-BH Number Systems Unified Catalogue Hub
+# PAPER_535 --- VDS-DVP-BH Number Systems Unified Catalogue Hub
 
 **Author:** Daniel T. Murphy
 **Framework:** Star-Magic / UQFF
 **Version:** v5.03
 **Date:** 2026-03-26
-**Session:** 143 — grok_{share\_fd81483544d}.txt
+**Session:** 143 --- grok_{share\_fd81483544d}.txt
 **CP4 Class:** VDSDVPBHNumberSystemsCatalogueCalculator (#130, Hub)
 **Quality Score (QS):** 5 / 5
 
@@ -28,26 +28,26 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents a UQFF analysis of VDS-DVP-BH Number Systems Unified Catalogue Hub, deriving
 compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
-## §1 — Overview
+## §1 --- Overview
 
 This Hub paper unifies the four Session 143 calculators into a single
-**VDS–DVP–BH Number-Systems Catalogue**. The common thread is the
+**VDS--DVP--BH Number-Systems Catalogue**. The common thread is the
 26-dimensional summation constant:
 
 $$Z = \text{Li}_{26}([SSq]) = \sum_{k=1}^{26} \frac{[SSq]^k}{k^{26}} \approx 0.5699$$
 
 Three independent observational channels confirm $|[SSq] - 0.57| < 0.01$:
 
-1. **CMB** — $C_\ell$ power-spectrum ratio $C_{26}/C_{22} \approx 0.57$
-2. **Exoplanet statistics** — Kepler orbital period-ratio clustering at $p_n/p_{n-1} \approx 0.57$
-3. **ALMA protoplanetary discs** — Sub-mm ring spacing ratios $\Delta r_n / r_n \approx 0.57$
+1. **CMB** --- $C_\ell$ power-spectrum ratio $C_{26}/C_{22} \approx 0.57$
+2. **Exoplanet statistics** --- Kepler orbital period-ratio clustering at $p_n/p_{n-1} \approx 0.57$
+3. **ALMA protoplanetary discs** --- Sub-mm ring spacing ratios $\Delta r_n / r_n \approx 0.57$
 
 This triple convergence makes $[SSq] = 0.57$ a **structural constant of orbital
 quantization** independent of any single data set.
 
 ---
 
-## §2 — Key Catalogue Equations
+## §2 --- Key Catalogue Equations
 
 **BB Hypergraph (PAPER_531):**
 $$SCm(t) = \lambda_{ua} \cdot UA \cdot \left(1 - \frac{1}{t}\right), \quad Z = \sum_{k=1}^{26}\frac{0.57^k}{k^{26}}$$
@@ -63,9 +63,9 @@ $$\Delta_text{res} = \frac{mv^2}{r}\!\left(\lambda_3 - \frac{2P}{3}\right) = 0$$
 
 ---
 
-## §3 — Number Systems in UQFF
+## §3 --- Number Systems in UQFF
 
-The DVP (Discrete-Vision-Prime) sieve $\mathcal{P}_{>28}$ is not arbitrary —
+The DVP (Discrete-Vision-Prime) sieve $\mathcal{P}_{>28}$ is not arbitrary ---
 it is the **support measure** of the UQFF lattice. Primes below 29 are consumed by
 the 26-layer compressed gravity tensor basis ($p_{1\ldots9} = 2,3,5,7,11,13,17,19,23$);
 primes $\geq 29$ carry the orbital-quantization residual.
@@ -79,10 +79,10 @@ primes $\geq 29$ carry the orbital-quantization residual.
 
 ---
 
-## §4 — BH Mode Convergence
+## §4 --- BH Mode Convergence
 
 As the BH mass $M \to \infty$, the discrete mode ladder collapses to the continuum:
-$$\lim_{M\toinfty} US_\text{orb} = \int_0^\infty H(\omega)\!\left(1-e^{-0.57}\right)\omega, d\omega$$
+$$\lim_{M\to\infty} US_\text{orb} = \int_0^\infty H(\omega)\!\left(1-e^{-0.57}\right)\omega, d\omega$$
 
 The emergence threshold $\eta_{18\%} = 1 - e^{-0.57} \approx 0.4337$ (43.37%),
 but the *detectable-excess* criterion for VLBI ring imaging is $> 18\%$ above
@@ -90,7 +90,7 @@ background, placing the threshold at $m_\text{detect} = \lceil 0.18 / \delta \rc
 
 ---
 
-## §5 — Z Convergence Properties
+## §5 --- Z Convergence Properties
 
 $Z = \text{Li}_{26}(0.57)$; the polylogarithm at 26D satisfies:
 
@@ -103,7 +103,7 @@ $f(x) = \sum_{k=1}^{26} x^k / k^{26}$.
 
 ---
 
-## §6 — Cross-Calculator Consistency Table
+## §6 --- Cross-Calculator Consistency Table
 
 | Calculator | CP4 # | Key observable | Value |
 |---|---|---|---|
@@ -115,7 +115,7 @@ $f(x) = \sum_{k=1}^{26} x^k / k^{26}$.
 
 ---
 
-## §7 — Available Equations
+## §7 --- Available Equations
 
 | Equation | Description |
 |----------|-------------|
@@ -127,17 +127,17 @@ $f(x) = \sum_{k=1}^{26} x^k / k^{26}$.
 
 ---
 
-## §8 — CP4 Calculator Output
+## §8 --- CP4 Calculator Output
 
 ```python
 calc = VDSDVPBHNumberSystemsCatalogueCalculator()
 result = calc.compute()
-# result['Z_26D']                 — 0.5699...
-# result['SSq_CMB']               — CMB C26/C22 ratio
-# result['SSq_exoplanet']         — Kepler period-ratio cluster
-# result['SSq_ALMA']              — ALMA ring-spacing ratio
-# result['catalogue_summary']     — dict keyed #126–#130 with key values
-# result['consensus_SSq']         — weighted mean of 3 channels
+# result['Z_26D']                 --- 0.5699...
+# result['SSq_CMB']               --- CMB C26/C22 ratio
+# result['SSq_exoplanet']         --- Kepler period-ratio cluster
+# result['SSq_ALMA']              --- ALMA ring-spacing ratio
+# result['catalogue_summary']     --- dict keyed #126--#130 with key values
+# result['consensus_SSq']         --- weighted mean of 3 channels
 ```
 
 ---
@@ -164,8 +164,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -281,7 +281,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.183$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -301,7 +301,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -319,7 +319,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -333,11 +333,11 @@ below the GUT scale and 33 orders above nuclear baryon-number scales. This inter
 framework predicts observable deviations from SM in the X-ray/radio astrophysical sector
 while remaining consistent with all collider and nuclear precision measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-## §9 — References
+## §9 --- References
 
 - PAPER_531: BB Hypergraph Origin (Session 143)
 - PAPER_532: Quantum Plasma Orb US_orb (Session 143)
@@ -352,10 +352,10 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

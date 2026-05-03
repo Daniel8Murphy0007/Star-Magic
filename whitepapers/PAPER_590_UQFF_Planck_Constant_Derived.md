@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [TDE, DPM, SCm, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_590 — Planck Constant $h$ Derived from UQFF Energy Gap
+# PAPER_590 --- Planck Constant $h$ Derived from UQFF Energy Gap
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -44,7 +44,7 @@ $$\Delta = \lambda_1 = \frac{P}{3} + \frac{dg+dm}{2} - \frac{1}{2}\sqrt{4c^2+(dg
 
 For the isotropic case ($dg = dm$, $c = 0$): $\Delta = P/3$.
 
-This is the minimum energy quantum of the UQFF system — analogous to the zero-point
+This is the minimum energy quantum of the UQFF system --- analogous to the zero-point
 energy of a quantum harmonic oscillator. Planck's constant quantizes this gap:
 
 ---
@@ -76,7 +76,7 @@ $$\text{Grind}_\text{opp} \approx \omega_{CW} \cdot SCm \approx 10^{14}$$
 $$h_\text{derived} = \frac{2\pi \times 3.33\times10^{-6} \times (10^{-10})^2}{10^{-5}}
   \times 10^{-10} \times \frac{10^{14}}{\exp(-10^{10}/(3\times10^8))}$$
 
-$$\approx 6.6\times10^{-34}\ \text{J\cdot s} \quadcheckmark$$
+$$\approx 6.6\times10^{-34}\ \text{J\cdot s} \quad\checkmark$$
 
 Observed: $h = 6.62607015\times10^{-34}$ J$\cdot$s.
 
@@ -108,7 +108,7 @@ $$\alpha = e^2/(4\pi\varepsilon_0\hbar c) = \frac{2\kappa\rho\,\text{Grind}^2 r^
 
 ## §7 Conclusions
 
-The Planck constant $h$ is not a fundamental constant of nature in UQFF — it is an emergent
+The Planck constant $h$ is not a fundamental constant of nature in UQFF --- it is an emergent
 consequence of the triad energy gap, DPM angular momentum quantization, and void density.
 The numerical derivation matches the observed value, providing strong validation of the
 UQFF framework.
@@ -196,7 +196,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.154$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -216,7 +216,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -234,7 +234,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -248,20 +248,20 @@ treating it as a free parameter of nature. A derivation that achieves $\geq$$\ge
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Session 157 — Source: grok_{share\_4cef778c78b8}.txt*
+*Session 157 --- Source: grok_{share\_4cef778c78b8}.txt*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

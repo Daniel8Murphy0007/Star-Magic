@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [TDE, AGN, vacuum, F_{U\_Bi\_i}, buoyancy, black-hole, Chandra, LENR]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_351  ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_{U\_Bi\_i} and Kozima LENR Force
@@ -21,7 +21,7 @@ coupling
 **Author:** Daniel T. Murphy  
 
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV --->
 ---
 
 ## Abstract
@@ -108,7 +108,7 @@ The solution confirms $v_{\mathrm{out}} = 0.3c$ as a stable point of the variati
 
 ### 2A.4 Physical Interpretation
 
-The E-L equation closes the TDE outflow problem variationally: the Kozima LENR force ($10^{30}$ N) acts as the dominant kinetic driver at the tidal radius, while the SCm vacuum condensate density provides the restoring potential. The variational equilibrium at $v_{\mathrm{out}} = 0.3c$ is a **stationary point** of the action, not merely an observed velocity — giving the ultrafast outflow a Lagrangian-mechanical foundation within UQFF.
+The E-L equation closes the TDE outflow problem variationally: the Kozima LENR force ($10^{30}$ N) acts as the dominant kinetic driver at the tidal radius, while the SCm vacuum condensate density provides the restoring potential. The variational equilibrium at $v_{\mathrm{out}} = 0.3c$ is a **stationary point** of the action, not merely an observed velocity --- giving the ultrafast outflow a Lagrangian-mechanical foundation within UQFF.
 
 ---
 
@@ -122,7 +122,7 @@ $$\frac{\rho_{\mathrm{vac,[SCm]}}}{\rho_{\mathrm{UA}}} = 0.1$$
 
 drives a double-exponential decay of the vacuum condensate across the disruption zone:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_{\mathrm{tide}}}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_{\mathrm{tide}}}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 At the tidal radius $r = r_{\mathrm{tide}}$, the VDS is at near-threshold ($t \to \pi$ collapse), producing the sharp vacuum gradient that powers the Kozima LENR lattice coupling. This threshold behavior explains why TDE outflows are ultrafast: the VDS double-exponential creates a vacuum "cliff" at $r_{\mathrm{tide}}$ where nuclear-scale forces activate discontinuously.
 
@@ -130,7 +130,7 @@ At the tidal radius $r = r_{\mathrm{tide}}$, the VDS is at near-threshold ($t \t
 
 DVP primes $> 26$ encode the neutron-drop stability at the stellar disruption interface. For ASASSN-14li, the Kozima force maps onto the DVP lattice threshold:
 
-$$F_{\mathrm{Kozima}} \to p_{\mathrm{DVP}}(Z_{\mathrm{eff}}) : \quad Z_{\mathrm{eff}} = \leftlfloor \frac{F_{\mathrm{Kozima}}}{F_{\mathrm{nuclear}}} \rightrfloor \bmod p_k$$
+$$F_{\mathrm{Kozima}} \to p_{\mathrm{DVP}}(Z_{\mathrm{eff}}) : \quad Z_{\mathrm{eff}} = \left\lfloor \frac{F_{\mathrm{Kozima}}}{F_{\mathrm{nuclear}}} \rightrfloor \bmod p_k$$
 
 where $p_k$ is the $k$-th dipole vortex prime and $F_{\mathrm{nuclear}} \approx 10^4$ N is the strong nuclear force scale. The DVP encoding predicts that LENR coupling is strongest when $Z_{\mathrm{eff}}$ falls on a DVP prime, i.e., at specific tidal radii where compressed stellar nuclei achieve resonant lattice configurations.
 
@@ -138,7 +138,7 @@ where $p_k$ is the $k$-th dipole vortex prime and $F_{\mathrm{nuclear}} \approx 
 
 The BSH framework explains the negative energy erosion $E(t) < 0$ observed in late-time TDE light curves:
 
-$$E_{\mathrm{BSH}}(t) = E_0 \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{t_{\mathrm{BSH}}}\right)\right)$$
+$$E_{\mathrm{BSH}}(t) = E_0 \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{t_{\mathrm{BSH}}}\right\right)$$
 
 where $t_{\mathrm{sat}}$ is the BSH saturation timescale. For ASASSN-14li, the BSH harmonics predict that the buoyancy force transitions from accelerating the outflow to decelerating it after $t_{\mathrm{sat}} \approx 100$ days, consistent with the observed plateau in the X-ray light curve.
 
@@ -178,7 +178,7 @@ suggesting LENR effects are perturbative at stellar BH scales.
 ## 6. Classification
 
 **Physics Territory:** FIRST UQFF TDE with ultrafast outflow (0.3c) and Kozima LENR coupling  
-**Scale:** Stellar (106 M? BH – TDE disruption radius)  
+**Scale:** Stellar (106 M? BH -- TDE disruption radius)  
 **CP Implementation:** `ASASSN14liTDEOutflowFUBiCalculator` (CondensedPhysics3.py, Session 96)
 
 
@@ -206,12 +206,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -285,7 +285,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -298,17 +298,17 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -317,7 +317,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [accretion, GW, gravitational-wave, SCm, 26D, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_582 — String GW Planar Model: Universal Frequency Rebound and Disk Formation
+# PAPER_582 --- String GW Planar Model: Universal Frequency Rebound and Disk Formation
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -34,7 +34,7 @@ Star-Magic/UQFF framework.
 
 This paper expands string theory gravitational wave (GW) propagation from standard 10D
 superstring backgrounds to an adjusted planar model incorporating the holographic principle
-and Universal Frequency Rebound — a Star-Magic mechanism in which string modes scatter off
+and Universal Frequency Rebound --- a Star-Magic mechanism in which string modes scatter off
 holographic boundary screens, producing rebound torques that stabilize planar (disk-like)
 structures. The model explains the angular differential between all astronomical disk systems
 (galactic disks, planetary rings, protoplanetary disks, accretion disks) as a universal
@@ -58,9 +58,9 @@ $$\partial_tau^2 X^\mu - \partial_sigma^2 X^\mu + \Gamma^\mu_{\nu\lambda}\,
 
 Transverse modes $X^i$ freely propagate as harmonic oscillators:
 
-$$\ddot{X}^i + \omega^2 X^i = 0, \quad \omega^2 = c^2 k^2 \quadtext{(relativistic, massless)}$$
+$$\ddot{X}^i + \omega^2 X^i = 0, \quad \omega^2 = c^2 k^2 \quad\text{(relativistic, massless)}$$
 
-Strings propagate freely along the $x_i$ plane — this is the starting pp-wave background.
+Strings propagate freely along the $x_i$ plane --- this is the starting pp-wave background.
 
 ---
 
@@ -77,7 +77,7 @@ $$h_{holo} = \int_{\partial M} T_{\mu\nu}\,d\Sigma \approx h_{base}\,e^{-|\delta
 where $T_{\mu\nu}$ is the boundary stress-energy tensor.
 
 The Gaussian factor $e^{-|\delta\theta|^2/2}$ attenuates the amplitude by the squared
-rebound angle — encoding GW information on the holographic screen.
+rebound angle --- encoding GW information on the holographic screen.
 
 ---
 
@@ -87,7 +87,7 @@ rebound angle — encoding GW information on the holographic screen.
 
 $$\boxed{\delta\theta = \alpha,(l_s\,k), \quad \alpha \approx l_s^2 \approx l_{Pl}^2 \approx 2.6\times10^{-70}\,\text{m}^2}$$
 
-**Rebound transformation:** $f' = f\,(1 + \delta\theta)$ — frequency of rebound mode.
+**Rebound transformation:** $f' = f\,(1 + \delta\theta)$ --- frequency of rebound mode.
 
 **Rebound frequency scale (scales as $f^3$):**
 
@@ -110,7 +110,7 @@ Standard string dispersion: $\omega^2 = c^2k^2$ (massless, no modification).
 
 $$\boxed{\omega^2_{planar} = c^2k^2 + \alpha,(f_{rebound}\,k)^2}$$
 
-$f_{rebound} \sim f^3/c^2$ — at high $f$, planar correction dominates, enforcing flat-disk
+$f_{rebound} \sim f^3/c^2$ --- at high $f$, planar correction dominates, enforcing flat-disk
 alignment.
 
 ---
@@ -135,7 +135,7 @@ Over cosmic time $\tau$:
 
 $$\Theta_{cumulative} = |\delta\theta|\cdot f\cdot\tau$$
 
-This accumulates to a disk perpendicular to the propagation direction — explaining
+This accumulates to a disk perpendicular to the propagation direction --- explaining
 why **all** rotating astronomical systems form disks.
 
 ---
@@ -158,7 +158,7 @@ $$\Theta_{10Gyr} \approx 2.6\times10^{-76}\cdot3.16\times10^{17} \approx 8\times
 ### Protoplanetary Disk
 
 $f = 10^{-7}$ Hz (protosolar orbital), same $k$:
-$\delta\theta \approx 2.6\times10^{-84}$ rad/orbit — planar alignment in $\sim10^6$ yr.
+$\delta\theta \approx 2.6\times10^{-84}$ rad/orbit --- planar alignment in $\sim10^6$ yr.
 
 ### Saturn's Rings
 
@@ -182,7 +182,7 @@ Photon/GW time delay:
 $$\Delta t_{CTAO} = \frac{|\delta\theta_{SNR}|\cdot L_{shell}}{c}
 \approx \frac{3\times10^{-104}\cdot5.4\times10^{16}}{3\times10^8} \approx 5\times10^{-96}\,\text{s}$$
 
-(Below current CTAO sensitivity — but at radio frequencies $f=10^{9}$ Hz:
+(Below current CTAO sensitivity --- but at radio frequencies $f=10^{9}$ Hz:
 $\delta\theta_{radio} \approx 3\times10^{-79}$ rad, $\Delta t \approx 5\times10^{-71}$ s.
 Future precision timing may reach this regime.)
 
@@ -209,7 +209,7 @@ Future precision timing may reach this regime.)
 | Saturn rings | $10^{-4}$ | $10^{-18}$ | $2.6\times10^{-88}$ | Quantized harmonics |
 | Accretion disk | $10^{-3}$ | $10^{-15}$ | $2.6\times10^{-88}$ | Planar within orbits |
 
-All systems converge to disk perpendicular to original $f$-propagation direction —
+All systems converge to disk perpendicular to original $f$-propagation direction ---
 the universal consequence of frequency rebound quantization.
 
 ---
@@ -266,12 +266,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
@@ -348,7 +348,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.152$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -368,7 +368,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -386,7 +386,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -397,10 +397,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a $\kappa$-dependent phase to the
 GW chirp signal, shifting the merger frequency by ~0.3 Hz at 150 Hz. This is potentially
-detectable with LIGO A+ (design sensitivity 2025–2030), providing a falsifiable UQFF signature
+detectable with LIGO A+ (design sensitivity 2025--2030), providing a falsifiable UQFF signature
 in future binary merger observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -411,7 +411,7 @@ with holographic boundary projection. The rebound angular differential $\delta\t
 quantizes worldsheet modes ($n = fL/c$), generating a rebound torque that aligns all rotating
 astronomical systems into disk configurations. This explains without additional assumptions
 why galaxies, protoplanetary systems, ring systems, and accretion disks universally adopt
-planar geometry — a prediction of 26D frequency-modulated string dynamics absent from standard
+planar geometry --- a prediction of 26D frequency-modulated string dynamics absent from standard
 GR or LQG.
 
 **Source:** `grok_{share\_efc8a971378f}.txt`
@@ -420,10 +420,10 @@ GR or LQG.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

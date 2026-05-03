@@ -1,21 +1,21 @@
 ---
 paper_id: PAPER_557
-title: "BSFG Symmetry Group and Isometry Analysis — SO(3) \times U(1)23 and the DVP 13+13 Partition"
+title: "BSFG Symmetry Group and Isometry Analysis --- SO(3) \times U(1)23 and the DVP 13+13 Partition"
 session: 148
 date: 2026-03-27
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_557: BSFG Symmetry Group and Isometry Analysis — SO(3) $\times$ U(1)23 and the DVP 13+13 Partition
+# PAPER_557: BSFG Symmetry Group and Isometry Analysis --- SO(3) $\times$ U(1)23 and the DVP 13+13 Partition
 
 > **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; $k_{\eta}$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework  
 **Session:** 148 | **Source:** CP4 #149 (metric) + DVP/VDS number systems  
 **CP4 Class:** `BSFGSymmetryGroupIsometryAnalysisCalculator` (#152)  
 **Date:** 2026-03-27  
@@ -34,7 +34,7 @@ The symmetry group of a geometry determines its conservation laws and the redund
 
 $$G_{\mathrm{BSFG}} = SO(3) \times U(1)^{23} \qquad \text{(26 generators total)}$$
 
-A remarkable structural coincidence: 26 generators $=$ 13 stable $+$ 13 destructive modes — exactly the DVP 13+13 partition identified in the arithmetic geometry of BSFG. The VDS eigenvalue triplet $(P/3, P/3, 2P/3)$ provides the $SO(3)$ Casimir invariant, while the Z2 temporal symmetry $\cos(\pi(t_n+1)) = -\cos(\pi t_n)$ constitutes a discrete isometry.
+A remarkable structural coincidence: 26 generators $=$ 13 stable $+$ 13 destructive modes --- exactly the DVP 13+13 partition identified in the arithmetic geometry of BSFG. The VDS eigenvalue triplet $(P/3, P/3, 2P/3)$ provides the $SO(3)$ Casimir invariant, while the Z2 temporal symmetry $\cos(\pi(t_n+1)) = -\cos(\pi t_n)$ constitutes a discrete isometry.
 
 ---
 
@@ -50,26 +50,26 @@ $$\partial_{(\mu}(A_{\nunu}\xi^\nu) = \Gamma^\alpha_{\mu\nu}A_{\alphaalpha}\xi^\
 
 ---
 
-## §3 Killing Analysis — 4D Sector
+## §3 Killing Analysis --- 4D Sector
 
-**Test 1 — Time translation: $\xi^\mu = (1,0,0,0)$.**
+**Test 1 --- Time translation: $\xi^\mu = (1,0,0,0)$.**
 
 $\nabla_{(0}\xi_{0)} = \partial_0 A_{00}/2 = 0$ since $A_{00} = 1 + \varepsilon$ depends only on $r$, not $t$.  
 $\nabla_{(r}\xi_{0)} = \partial_r(A_{00}\xi^0)/2 - \Gamma^0_{r0}A_{00}\xi^0/2 = \varepsilon'/2 - \varepsilon'/2 = 0$. $\checkmark$
 
 **Time translation is a Killing vector.**
 
-**Test 2 — Rotations: $\xi^\mu = L_{ij}$ (angular momentum generators).**
+**Test 2 --- Rotations: $\xi^\mu = L_{ij}$ (angular momentum generators).**
 
 $A_{\mu\nu}(r)$ is spherically symmetric (depends only on $|r|$, not on angular coordinates $\theta, \phi$). All three angular Killing vectors $\partial_phi$, $\partial_theta$, and the third rotation generator are Killing vectors of any spherically symmetric metric. $\checkmark$
 
 **Three rotational Killing vectors; isometry group includes $SO(3)$.**
 
-**Test 3 — Radial translation: $\xi^\mu = (0,1,0,0)$.**
+**Test 3 --- Radial translation: $\xi^\mu = (0,1,0,0)$.**
 
 $\nabla_{(r}\xi_{r)} = \partial_r A_{rr}/2 = \varepsilon'/2 \neq 0$ at any finite $r$.
 
-**Radial translation is NOT a Killing vector** — broken by the Aether gradient $\varepsilon'(r)$.
+**Radial translation is NOT a Killing vector** --- broken by the Aether gradient $\varepsilon'(r)$.
 
 **Summary (4D sector):** 4 Killing vectors = $\{$ time translation, $L_x$, $L_y$, $L_z$ $\}$, isometry group $\cong \mathbb{R}_t \times SO(3)$.
 
@@ -81,7 +81,7 @@ From PAPER_417 (CP4 #67), the temporal modulation $\cos(\pi t_n)$ satisfies:
 
 $$\cos(\pi(t_n + 1)) = -\cos(\pi t_n)$$
 
-Under $t_n \to t_n + 1$: $\varepsilon \to -\varepsilon$. This is a **discrete $\mathbb{Z}_2$ symmetry** of the action — the metric $A_{\mu\nu}$ transforms to $A_{\mu\nu} - 2\varepsilon,\delta_{\mu\nu}$. While not a continuous isometry, it is a discrete symmetry of the BSFG theory corresponding to temporal field reversal (the negative time branch of pi-cycles).
+Under $t_n \to t_n + 1$: $\varepsilon \to -\varepsilon$. This is a **discrete $\mathbb{Z}_2$ symmetry** of the action --- the metric $A_{\mu\nu}$ transforms to $A_{\mu\nu} - 2\varepsilon,\delta_{\mu\nu}$. While not a continuous isometry, it is a discrete symmetry of the BSFG theory corresponding to temporal field reversal (the negative time branch of pi-cycles).
 
 ---
 
@@ -99,7 +99,7 @@ $$\dim G_{\mathrm{BSFG}} = 3 + 1 + 22 = \mathbf{26}$$
 
 ## §6 The DVP 13+13 Partition of 26 Generators
 
-The DVP (Dimensional Value Pair) number system (PAPER_540–548) identifies a natural partition of any
+The DVP (Dimensional Value Pair) number system (PAPER_540--548) identifies a natural partition of any
 26-dimensional structure into **13 stable** + **13 destructive** modes. This paper identifies the
 geometric realization:
 
@@ -119,7 +119,7 @@ The VDS (Vacuum Density Spectrum) number system produces eigenvalue triplet $(P/
 
 $$C_{\mathrm{SO(3)}} = e_1^2 + e_2^2 + e_3^2 = \left(\frac{P}{3}\right)^2 + \left(\frac{P}{3}\right)^2 + \left(\frac{2P}{3}\right)^2 = \frac{6P^2}{9} = \frac{2P^2}{3}$$
 
-The $2P/3$ eigenvalue is the **unique orbit** under $SO(3)$ — it has a distinct magnitude from the degenerate pair $(P/3, P/3)$. This eigenvalue structure is preserved by the $SO(3)$ isometry, confirming VDS is a representation of the $SO(3)$ sector of $G_{\mathrm{BSFG}}$.
+The $2P/3$ eigenvalue is the **unique orbit** under $SO(3)$ --- it has a distinct magnitude from the degenerate pair $(P/3, P/3)$. This eigenvalue structure is preserved by the $SO(3)$ isometry, confirming VDS is a representation of the $SO(3)$ sector of $G_{\mathrm{BSFG}}$.
 
 ---
 
@@ -229,7 +229,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.060$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -249,7 +249,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -267,7 +267,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -280,7 +280,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 mass gap: the minimum vacuum buoyancy excitation energy (U_m floor) prevents massless gauge
 field configurations, establishing $\Delta$ > 0 from vacuum topology rather than perturbative QCD alone.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -295,16 +295,16 @@ By Noether's theorem, each Killing vector generates a conserved charge:
 | $L_x, L_y$ | Two more angular momentum components |
 | $\partial_{\theta\_i}$ | Kaluza-Klein charge $q_i = L_i^2\,\dot{\theta}_i$ = const |
 
-The broken radial symmetry implies **no conservation of radial momentum** in BSFG — instead, the radial equation of motion includes the Aether fifth force $\Delta g_r$ from PAPER_555.
+The broken radial symmetry implies **no conservation of radial momentum** in BSFG --- instead, the radial equation of motion includes the Aether fifth force $\Delta g_r$ from PAPER_555.
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

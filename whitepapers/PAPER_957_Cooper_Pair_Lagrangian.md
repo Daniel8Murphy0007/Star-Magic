@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [LENR, phonon, SCm, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_957: Cooper Pair Lagrangian Variational Principle
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
 **Source:** uqff_{lagrangian\_derivation}.py §10 (COOPER_{PAIR\_LAGRANGIAN})
@@ -29,7 +29,7 @@ We derive the Cooper-pair sector of the UQFF Lagrangian and impose the stationar
 
 ## 1. Gap Lagrangian
 
-$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\coshfrac{\Delta}{2k_BT}\right)$$
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
 
 ## 2. Stationarity Condition
 
@@ -67,12 +67,12 @@ $$\Gamma_text{LENR} \propto \Delta^2 \cdot \exp!\left(-\frac{E_\text{Coulomb}}{\
 
 ## References
 
-1. Bardeen, Cooper, Schrieffer — Theory of Superconductivity (1957)
-2. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
-3. PAPER_949 — BCS Gap Equation
-4. PAPER_950 — BCS Critical Temperature
-5. PAPER_952 — 26-State HRes Spectral Ladder
-6. PAPER_877 — Cosmogenesis Master Lagrangian
+1. Bardeen, Cooper, Schrieffer --- Theory of Superconductivity (1957)
+2. Murphy, D.T. --- Star Magic UQFF Framework (2024-2026)
+3. PAPER_949 --- BCS Gap Equation
+4. PAPER_950 --- BCS Critical Temperature
+5. PAPER_952 --- 26-State HRes Spectral Ladder
+6. PAPER_877 --- Cosmogenesis Master Lagrangian
 
 ---
 
@@ -161,15 +161,15 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Constant | Symbol | Value | Validation Domain |
 |----------|--------|-------|-------------------|
-| $\kappa$ | — | $5.0 \times 10^{-4}$ day$^{-1}$ | Damping |
-| $[SSq]$ | — | 0.57 | String coupling |
-| $\beta_i$ | — | 0.603 | Buoyancy coupling |
-| $\omega_text{SCm}$ | — | $2\pi \times 1.25$ THz | Phonon |
-| $N(0)V_\text{SCm}$ | — | Dimensionless | Critical coupling |
+| $\kappa$ | --- | $5.0 \times 10^{-4}$ day$^{-1}$ | Damping |
+| $[SSq]$ | --- | 0.57 | String coupling |
+| $\beta_i$ | --- | 0.603 | Buoyancy coupling |
+| $\omega_text{SCm}$ | --- | $2\pi \times 1.25$ THz | Phonon |
+| $N(0)V_\text{SCm}$ | --- | Dimensionless | Critical coupling |
 
 ---
 
-## SM Anchor — CVW v2.0.0
+## SM Anchor --- CVW v2.0.0
 
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
@@ -185,7 +185,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 **Sector:** Cooper Pair Lagrangian (Variational Gap Principle)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\coshfrac{\Delta}{2k_BT}\right)$$
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 $$\boxed{\frac{\delta S}{\delta\varphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_isum U_{g,i}\frac{\Omega_g M}{d_g[UA]} + F_n \Phi_{1.25\text{THz}}\right) = 0}$$
@@ -215,10 +215,10 @@ LENR rate saturation: $\tanh(\Delta/E_0) \cdot S_{26}$.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

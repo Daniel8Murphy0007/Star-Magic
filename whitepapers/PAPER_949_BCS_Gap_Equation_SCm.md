@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, SCm, buoyancy, phonon, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_949: BCS Gap Equation in SCm Vacuum
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
 **Source:** bcs_{superconductivity\_uqff}.py (BCSGapEquation)
@@ -56,13 +56,13 @@ Self-consistent solution via iterative fixed-point method converges in $<50$ ite
 
 ## References
 
-1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
-2. Bardeen, J., Cooper, L.N. & Schrieffer, J.R. (1957) — Phys. Rev. 108, 1175
-3. PAPER_950 — BCS Critical Temperature
-4. PAPER_951 — Cooper Pair Phonon Coupling
-5. PAPER_955 — BCS Phonon Resonance
-6. PAPER_957 — Cooper Pair Lagrangian Variation
-7. PAPER_877 — Cosmogenesis Master Lagrangian
+1. Murphy, D.T. --- Star Magic UQFF Framework (2024-2026)
+2. Bardeen, J., Cooper, L.N. & Schrieffer, J.R. (1957) --- Phys. Rev. 108, 1175
+3. PAPER_950 --- BCS Critical Temperature
+4. PAPER_951 --- Cooper Pair Phonon Coupling
+5. PAPER_955 --- BCS Phonon Resonance
+6. PAPER_957 --- Cooper Pair Lagrangian Variation
+7. PAPER_877 --- Cosmogenesis Master Lagrangian
 
 ---
 
@@ -125,7 +125,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ---
 
-## SM Anchor — CVW v2.0.0
+## SM Anchor --- CVW v2.0.0
 
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
@@ -141,7 +141,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 **Sector:** Superconducting Gap (BCS-SCm)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\coshfrac{\Delta}{2k_BT}\right)$$
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 $$\boxed{\frac{\delta S}{\delta \Delta} = 0 \implies \Delta = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{U,Bi}}{F_U}}$$
@@ -174,16 +174,16 @@ $$\text{BSH}(n) = \tanh(\beta_i \cdot n / 26) \cdot S_{26}$$
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |

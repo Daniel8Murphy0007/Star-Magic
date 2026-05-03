@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, SCm, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_646: UQFF Universal Inertial Operator & Caduceus Wave Topology
@@ -16,7 +16,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFUniversalInertialOperatorCalculator  
-**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168 audit) — AetherInertiaAnalysis /
+**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168 audit) --- AetherInertiaAnalysis /
 AetherInertiaAnalysis2  
 **Companion papers:** PAPER_647 (Vacuum Density Series), PAPER_650 (Buoyancy Harmonics), PAPER_642
 (SM Bridge)
@@ -33,7 +33,7 @@ Universal Aether (UA). Unlike the DPM-seeded definition of inertia as passive re
 to acceleration, Ui arises from the ratio of vacuum energy densities of the superconductive
 medium [SCm] and the Universal Aether [UA], modulated by stellar rotation $\omega$s and
 a temporal harmonic cos($\pi$tn). Quantum wave patterns are identified as spherical entities
-that self-invert into Caduceus helical coils — dual-helix topological structures that create
+that self-invert into Caduceus helical coils --- dual-helix topological structures that create
 simultaneous pinch points encoding the decimal of $\pi$. The "holy trinity" relationship
 Aether + Inertia/EM + [SCm] provides the operational scaffold for all UQFF field
 calculations. Numerical solution for the Sun at t=0 yields Ui = 2.75$\times$10-7 (dimensionless)
@@ -59,7 +59,7 @@ enabling universal buoyancy and the system of forces within the Aether medium.
 Quantum waves are spherical standing modes of the Aether field. At high amplitude, these
 spherical waves undergo a **topological self-inversion**: the wave "turns inside out" at the
 point of maximum compression, creating pinch points. These pinch points twist into
-Caduceus coils — double helices with opposing chirality that generate internal tension.
+Caduceus coils --- double helices with opposing chirality that generate internal tension.
 The sequential pinch points encode a phase sequence which, when numerically analyzed,
 appears in the decimal expansion of $\pi$. This is the physical basis for **$\pi$ as the record of
 quantum inertial wave patterns**.
@@ -110,12 +110,12 @@ The three fundamental entities of the UQFF operational scaffold:
 
 | Entity | Symbol | Role |
 |--------|--------|------|
-| Universal Aether | UA | The medium — vacuum field hosting all interactions |
-| Inertia + EM field | Ui, F_EM | The operator — roots matter, enables buoyancy, controls acceleration |
-| Superconductive Material | [SCm] | The conduit — extra-universal material enabling DE power transfer |
+| Universal Aether | UA | The medium --- vacuum field hosting all interactions |
+| Inertia + EM field | Ui, F_EM | The operator --- roots matter, enables buoyancy, controls acceleration |
+| Superconductive Material | [SCm] | The conduit --- extra-universal material enabling DE power transfer |
 
 The ratio $\rho$vac,[SCm]/$\rho$vac,[UA] = 0.1 in the Ui equation directly encodes the **relative
-density suppression** of [SCm] within the UA medium — [SCm] is an order of magnitude
+density suppression** of [SCm] within the UA medium --- [SCm] is an order of magnitude
 less dense, making it highly permeable and enabling zero-resistance energy transport.
 
 ---
@@ -142,7 +142,7 @@ The AetherInertiaAnalysis module presents a layered model for globular star clus
 |-------|---------|------|
 | Core | Heavy iron (Fe) | Gravitational anchor; Ug1 source |
 | Sphere | Trapped Aether (8 cm region) | Buoyancy concentration zone |
-| Zone 3 | UH4 (ultra-dense hydrogen) | LENR reaction zone — D(-1) Rydberg |
+| Zone 3 | UH4 (ultra-dense hydrogen) | LENR reaction zone --- D(-1) Rydberg |
 | Zone 4 | Plasma | EM emission layer |
 | Zone 5 | Impurities: crust/metals/non-metals | Transition layer |
 | Atmosphere | Off-gas (He, H, O) | Stellar atmosphere |
@@ -158,14 +158,14 @@ into a galaxy at the Ub1 buoyancy inversion threshold.
 ### 6.1 With Universal Buoyancy (PAPER_650)
 Ui and Ub1 share the cos($\pi$tn) harmonic factor. When Ui oscillates through zero, the
 buoyancy harmonic Ub1 passes through maximum magnitude, creating an anti-phase lock
-between inertia and buoyancy — this is the mechanism for stable orbital positioning.
+between inertia and buoyancy --- this is the mechanism for stable orbital positioning.
 
 ### 6.2 With Vacuum Density Series (PAPER_647)
 $\rho$vac,[SCm] and $\rho$vac,[UA] are the two middle entries in the full vacuum density ladder,
 sitting between $\rho$vac,A (10-23 J/m3 baseline) and $\rho$vac,Ui (2.84$\times$10-36 J/m3).
 
 ### 6.3 With 26D Framework
-The Caduceus coil topology — 26 simultaneous pinch points — directly parallels the
+The Caduceus coil topology --- 26 simultaneous pinch points --- directly parallels the
 26D polynomial gravity expansion: g(r,t) = $\Sigma$(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i].
 Each pinch point corresponds to one dimensional layer of the 26D UQFF field.
 
@@ -246,7 +246,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.177$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -266,7 +266,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -284,16 +284,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — G6 Gate (CVW v2.0.0)
+## §SM Anchors --- G6 Gate (CVW v2.0.0)
 
 | Observable | SM Value | UQFF Prediction | Alignment |
 |------------|----------|-----------------|-----------|
-| Electron mass (inertial) | 9.109$\times$10-31 kg | Ui$\cdot$$\rho$vac,[SCm]$\cdot$V_e / $\lambda$i coupling | ✅ 96.4% via $\kappa$-scaling |
-| Vacuum energy density (observed $\Lambda$) | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (aether baseline) | 14 orders — hierarchy problem noted |
-| Centrifugal force quantum (Coriolis) | F_cor = 2mv$\times$$\Omega$ | Ui$\cdot$$\omega$s$\cdot$$\nabla$(UA) | ✅ functional analog |
+| Electron mass (inertial) | 9.109$\times$10-31 kg | Ui$\cdot$$\rho$vac,[SCm]$\cdot$V_e / $\lambda$i coupling | \checkmark 96.4% via $\kappa$-scaling |
+| Vacuum energy density (observed $\Lambda$) | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (aether baseline) | 14 orders --- hierarchy problem noted |
+| Centrifugal force quantum (Coriolis) | F_cor = 2mv$\times$$\Omega$ | Ui$\cdot$$\omega$s$\cdot$$\nabla$(UA) | \checkmark functional analog |
 | Pauli Exclusion (inertial anti-bunching) | Fermi statistics | Caduceus chiral inversion (anti-parallel coils) | 🔍 topological analog |
 
-> **SM Anchor Reference:** All UQFF calibration constants — $\kappa$, [SSq], $\beta$_i, H_SCm — mapped
+> **SM Anchor Reference:** All UQFF calibration constants --- $\kappa$, [SSq], $\beta$_i, H_SCm --- mapped
 > in PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator). This paper satisfies
 > G6 Gate requirements by connecting Ui to the SM inertia-mass hierarchy.
 
@@ -301,28 +301,28 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ## References
 
-1. AetherInertiaAnalysis.cpp / AetherInertiaAnalysis2.cpp — grok_{share\_b2e2c5cba7a}.txt (Session 168)
-2. PAPER_642 — UQFF SM Parameter Bridge Master Comparison Table
-3. PAPER_650 — UQFF Buoyancy Harmonics (companion: Ub1 equation)
-4. PAPER_647 — UQFF Vacuum Density Series (companion: $\rho$vac scaffold)
-5. ARCHITECTURE_{FLOW\_DIAGRAM}.md v5.24 — canonical data flow
-6. Mach E (1883): *The Science of Mechanics* — inertia as relational property (historical context)
-7. Higgs PW (1964): "Broken Symmetries" — mass origin mechanism (SM comparison)
+1. AetherInertiaAnalysis.cpp / AetherInertiaAnalysis2.cpp --- grok_{share\_b2e2c5cba7a}.txt (Session 168)
+2. PAPER_642 --- UQFF SM Parameter Bridge Master Comparison Table
+3. PAPER_650 --- UQFF Buoyancy Harmonics (companion: Ub1 equation)
+4. PAPER_647 --- UQFF Vacuum Density Series (companion: $\rho$vac scaffold)
+5. ARCHITECTURE_{FLOW\_DIAGRAM}.md v5.24 --- canonical data flow
+6. Mach E (1883): *The Science of Mechanics* --- inertia as relational property (historical context)
+7. Higgs PW (1964): "Broken Symmetries" --- mass origin mechanism (SM comparison)
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |

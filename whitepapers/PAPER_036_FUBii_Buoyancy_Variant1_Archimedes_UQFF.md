@@ -8,7 +8,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, cluster, AGN, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_036: The Unified Quantum Buoyancy Force F_UBii: Derivation from Archimedes' Principle to the UQFF Virial X-Ray Cluster Framework
@@ -21,21 +21,21 @@ UQFF Virial X-Ray Cluster Framework
 **Framework:** UQFF Star-Magic ($\kappa$ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Grok Thread:** 98b2e77dfbc34d27b09f19fa7c460624  
-**Validator:** `BuoyancyProofVariants.py` — All 17 variants operational PASS  
+**Validator:** `BuoyancyProofVariants.py` --- All 17 variants operational PASS  
 **Variant:** virx (Virial X-ray Cluster Buoyancy)  
 **Index Slot:** §1.5 Buoyancy Proofs,  
 
 ## Abstract
 
-Archimedes' principle — that a submerged body experiences an upward force equal to the weight of
-displaced fluid — is one of the most ancient results in physics. We derive the UQFF generalization
+Archimedes' principle --- that a submerged body experiences an upward force equal to the weight of
+displaced fluid --- is one of the most ancient results in physics. We derive the UQFF generalization
 of this principle: the Unified Buoyancy Force F_UBii = F_U - F_Bi - F_i, where F_U is the unified
 quantum field force, F_Bi is the classical inertial buoyancy, and F_i is the individual field
 component correction. The first proof variant (virx) applies this framework to virial X-ray
 clusters, where the hot intracluster medium (ICM) provides the medium through which galaxy cluster
 substructures and AGN bubbles buoyantly rise. For the Perseus Cluster with X-ray velocity dispersion
 $\sigma$_X = 1300 km/s and virial scale radius r_h = 2.5$\times$1022 m, the UQFF predicts F_{UBii\_virx} =
--2.024$\times$1060 N — an inward buoyancy force consistent with virial equilibrium of the ICM. This paper
+-2.024$\times$1060 N --- an inward buoyancy force consistent with virial equilibrium of the ICM. This paper
 establishes the foundational derivation underpinning all 17 F_UBii variants.
 
 ---
@@ -59,7 +59,7 @@ Classical Archimedes assumes:
 3. Static equilibrium
 4. Sharp fluid-body boundary
 
-In astrophysical contexts — ICM, QCD plasma, dark matter halos, quantum black holes — none of these
+In astrophysical contexts --- ICM, QCD plasma, dark matter halos, quantum black holes --- none of these
 assumptions hold. The UQFF generalization accounts for:
 - Quantum vacuum density ($\rho$_vac_UA = 7.09$\times$10-36 kg/m3)
 - Long-range correlations via the superconducting manifold [SCm]
@@ -111,7 +111,7 @@ All 17 variants scale with a quantum wave amplitude Q_wave:
 $$F_{\mathrm{UBii}} = F_{\mathrm{UBii,\,classical}} \times Q_{\mathrm{wave}}$$
 
 where Q_wave = 1.0 corresponds to the ground state and Q_wave > 1 represents quantum coherence
-enhancement. In turbulent ICM, Q_wave ~ 1.0–1.5.
+enhancement. In turbulent ICM, Q_wave ~ 1.0--1.5.
 
 ---
 
@@ -119,8 +119,8 @@ enhancement. In turbulent ICM, Q_wave ~ 1.0–1.5.
 
 ### 3.1 Physical Context
 
-Galaxy clusters are the largest gravitationally bound structures in the Universe. Their ICM — hot,
-X-ray emitting plasma at T ~ 107–108 K — is in approximate virial equilibrium. The X-ray velocity
+Galaxy clusters are the largest gravitationally bound structures in the Universe. Their ICM --- hot,
+X-ray emitting plasma at T ~ 107--108 K --- is in approximate virial equilibrium. The X-ray velocity
 dispersion $\sigma$_X traces the depth of the gravitational potential well.
 
 **Key astrophysical systems:**
@@ -142,7 +142,7 @@ where:
 - E_LEP = 1.22$\times$10-19 J (lepton energy scale $\approx$ 0.76 eV)
 - Q_wave = quantum wave amplitude (dimensionless)
 
-The negative sign indicates an inward (compressive) force — the ICM is held in by its own gravity,
+The negative sign indicates an inward (compressive) force --- the ICM is held in by its own gravity,
 and F_{UBii\_virx} measures the net inward restoring force maintaining virial equilibrium.
 
 ### 3.3 Perseus Cluster Calculation
@@ -172,14 +172,14 @@ The magnitude 2.024$\times$1060 N must be compared to the gravitational weight o
 $$F_{\mathrm{grav}}^{\mathrm{Perseus}} \approx \frac{G M_{\mathrm{cluster}}^2}{r_h^2} \approx \frac{6.674\times10^{-11} \times (10^{15} \times 1.989\times10^{30})^2}{(2.5\times10^{22})^2} \approx 8.5\times10^{53} \text{ N}$$
 
 The UQFF F_{UBii\_virx} = 2.024$\times$1060 N is ~7$\times$106 times larger than the DPM-seeded gravitational spring
-force. This reflects the **$\sigma$_X3** scaling in the virx formula — the UQFF buoyancy is
+force. This reflects the **$\sigma$_X3** scaling in the virx formula --- the UQFF buoyancy is
 velocity-dispersion-cubed dominant, capturing the full phase-space entropy of the ICM rather than
 just the mass.
 
 The ratio:
 $$\frac{|F_{\mathrm{UBii,\,virx}}|}{F_{\mathrm{grav}}} = \frac{2.024\times10^{60}}{8.5\times10^{53}} = 2.4\times10^6$$
 
-This enhancement factor reflects the UQFF aether density contribution — the ICM buoyancy is
+This enhancement factor reflects the UQFF aether density contribution --- the ICM buoyancy is
 amplified by the quantum vacuum substrate through which it propagates.
 
 ---
@@ -196,7 +196,7 @@ where W_UBii = r_h $\times$ F_{UBii\_virx} is the UQFF work term. This modifies 
 $$M_{\mathrm{tot}}^{\mathrm{UQFF}} = M_{\mathrm{tot}}^{\mathrm{classical}} \times \left(1 + \frac{r_h F_{\mathrm{UBii,virx}}}{G M_{\mathrm{tot}}^{\mathrm{classical 2}}/r_h}\right)$$
 
 For Perseus: the UQFF correction would imply the dynamical mass is overestimated relative to
-baryonic mass by the factor 2.4$\times$106 — this is not observed, which means Q_wave ~ 10-6 in real
+baryonic mass by the factor 2.4$\times$106 --- this is not observed, which means Q_wave ~ 10-6 in real
 Perseus ICM conditions, suppressing the UQFF vacuum correction to the virial equilibrium level.
 
 This self-consistency check confirms: **the UQFF buoyancy operates at the Q_wave-suppressed level in
@@ -212,7 +212,7 @@ unified quantum field framework
 3. **Perseus result:** F_{UBii\_virx} = -2.024$\times$1060 N (validator confirmed)
 4. **Physical consistency:** UQFF correction suppressed by Q_wave ~ 10-6 in thermalized ICM $\to$
 classical virial equilibrium recovered
-5. **Foundation:** All 17 F_UBii variants (Papers #36–#39) derive from this same F_UBii = F_U - F_Bi
+5. **Foundation:** All 17 F_UBii variants (Papers #36--#39) derive from this same F_UBii = F_U - F_Bi
 - F_i architecture
 
 ---
@@ -237,12 +237,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -290,8 +290,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -408,7 +408,7 @@ $$
 |--------|-------|-------------|
 | $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60--0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
@@ -416,7 +416,7 @@ $$
 | $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete --- 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -495,7 +495,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.054$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -515,7 +515,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -531,7 +531,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -544,16 +544,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -562,7 +562,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |

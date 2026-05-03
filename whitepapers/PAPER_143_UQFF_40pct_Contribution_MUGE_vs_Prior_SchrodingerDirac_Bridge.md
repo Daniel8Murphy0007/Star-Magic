@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_143
-title: "UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schrdinger/Dirac Split in
+title: "UQFF Compressed Mode Quantum-Gravity Bridge -- The 40% UQFF vs 60% Schrdinger/Dirac Split in
 the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)"
 session: 0
 date: 2026-03-01
@@ -8,12 +8,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, AGN, MUGE, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_143: UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schrdinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
+# PAPER_143: UQFF Compressed Mode Quantum-Gravity Bridge -- The 40% UQFF vs 60% Schrdinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
 
-**Title:** UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schrdinger/Dirac Split
+**Title:** UQFF Compressed Mode Quantum-Gravity Bridge -- The 40% UQFF vs 60% Schrdinger/Dirac Split
 in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
 
 **Author:** Daniel T. Murphy  
@@ -57,7 +57,7 @@ plus UQFF extension terms: $Ug_1 + Ug_2 + Ug_3 + Ug_4 + Ug_{4i} + Ub + Um + U_{A
 
 The Schrdinger kinetic energy and Coulomb potential together:
 
-$$E_{QM} = \leftlangle -\frac{\hbar^2}{2m}\nabla^2 \rightrangle + \leftlangle -\frac{Ze^2}{4\pi\epsilon_0 r} \rightrangle = -\frac{m_e e^4 Z^2}{2\hbar^2 (4\pi\epsilon_0)^2 n^2}$$
+$$E_{QM} = \left\langle -\frac{\hbar^2}{2m}\nabla^2 \rightrangle + \left\langle -\frac{Ze^2}{4\pi\epsilon_0 r} \rightrangle = -\frac{m_e e^4 Z^2}{2\hbar^2 (4\pi\epsilon_0)^2 n^2}$$
 
 For H (Z=1, n=1): $E_{QM} = -13.6$ eV
 
@@ -204,7 +204,7 @@ print(f"M_H(now) = {M_H_now:.5e} kg  (m_p = {m_p:.5e} kg)")
 
 | Quantity | UQFF | Standard | Agreement |
 |---------|------|---------|-----------|
-| 40/60 split | Derived | – | Theoretical prediction |
+| 40/60 split | Derived | -- | Theoretical prediction |
 | Proton radius discrepancy | Ug3 offset 0.036 fm | 0.036 fm measured | ? |
 | Muonic Lamb shift gap | Ug4 +68 meV | +67.85 meV obs | ? |
 | Neutron lifetime window | Ub 8.4 s | 8.4 s gap | ? |
@@ -253,12 +253,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -335,7 +335,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.198$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -355,7 +355,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -371,7 +371,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -384,16 +384,16 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -402,7 +402,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

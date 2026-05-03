@@ -11,7 +11,7 @@ crosslinks: [PAPER_1039, PAPER_350]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1040: SCm Cluster Merger Shock Dissipation — Mach Number Phonon Damping
+# PAPER_1040: SCm Cluster Merger Shock Dissipation --- Mach Number Phonon Damping
 
 ## Abstract
 
@@ -24,7 +24,7 @@ the electron acceleration efficiency.
 ## 1. Key Equations
 
 - $\mathcal{M}_{\text{UQFF}} = \mathcal{M} \cdot (1 - \beta_i S_{26} \Phi \eta_{\text{phonon}} / (\rho v_s L))$
-- $\deltamathcal{M} / \mathcal{M} \approx 2.8\%$ for $\mathcal{M} = 3$ merger
+- $\delta\mathcal{M} / \mathcal{M} \approx 2.8\%$ for $\mathcal{M} = 3$ merger
 - Post-shock heating reduction: $4.1\%$
 
 ## 2. Results
@@ -124,7 +124,7 @@ mock-theta framework with the SCm phonon spectrum.
 | SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental |
 
 
-## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -174,10 +174,10 @@ BSH timescale: $\tau_{\text{shock}} \sim 10^8$ yr (shock crossing time).
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

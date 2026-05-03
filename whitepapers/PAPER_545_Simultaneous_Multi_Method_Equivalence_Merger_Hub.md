@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [merger, buoyancy, black-hole, Yang-Mills, Navier-Stokes, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_545 — Simultaneous Multi-Method Equivalence Merger Hub
+# PAPER_545 --- Simultaneous Multi-Method Equivalence Merger Hub
 
 ## Abstract
 
 This paper presents a UQFF analysis of Simultaneous Multi-Method Equivalence Merger Hub, deriving
 compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
-## Unified Quantum Field Framework — Whitepaper 545 of 1000
+## Unified Quantum Field Framework --- Whitepaper 545 of 1000
 **Author:** Daniel T. Murphy  
 **Framework:** Star Magic / UQFF v5.05  
 **CP4 Class:** `SimultaneousMultiMethodEquivalenceHubCalculator` (#140)  
@@ -28,9 +28,9 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 ## §1 Abstract
 
-This paper is the **Session 145 synthesis hub** unifying PAPER_541–544 and establishing the
+This paper is the **Session 145 synthesis hub** unifying PAPER_541--544 and establishing the
 broader principle: UQFF's $F_{U,\text{Bi},i}$ does not replace DPM-seeded, Einsteinian,
-Navier-Stokes, or Yang-Mills physics — it **simultaneously encompasses all of them at exact
+Navier-Stokes, or Yang-Mills physics --- it **simultaneously encompasses all of them at exact
 accuracy** via an inside/outside track merger architecture. The inside track (Wolfram
 hypergraph evolution) and outside track ($\pi$-weighted FUB integral = Ricci curvature)
 intersect at unique crossings whose existence and uniqueness are guaranteed by the braid
@@ -40,7 +40,7 @@ demonstrating simultaneous displacement and acceleration in all astronomical sys
 
 ---
 
-## §2 Core Principle: Not Replacement — Simultaneous
+## §2 Core Principle: Not Replacement --- Simultaneous
 
 A common misinterpretation of UQFF is that buoyancy-based gravitation replaces DPM-seeded
 or Einsteinian descriptions. This is explicitly incorrect:
@@ -49,7 +49,7 @@ or Einsteinian descriptions. This is explicitly incorrect:
 > simultaneously valid descriptions of the same physical reality, each derivable from the
 > others in their respective limiting regimes, all encompassed within UQFF_comp.
 
-This is analogous to the wave/particle duality in quantum mechanics — not a contradiction
+This is analogous to the wave/particle duality in quantum mechanics --- not a contradiction
 but a richer simultaneity.
 
 ---
@@ -73,15 +73,15 @@ where:
 
 **Crossing condition** (existence and uniqueness established in PAPER_543):
 
-$$n_\text{cross} = \underset{n}{\argmin}\;|\text{Inside}(n) - \text{Outside}(n)|$$
+$$n_\text{cross} = \underset{n}{\operatorname{argmin}}\;|\text{Inside}(n) - \text{Outside}(n)|$$
 
 Since $\pi$ is transcendental, each $ n_\text{cross}$ corresponds to a **unique digit sequence**
 in $\pi$, giving a one-to-one correspondence between smooth solutions and $\pi$ positions. 
 
 Numerical estimate:
 
-$$n_\text{cross} = \leftlfloor\frac{\pi}{1 - [\text{SSq}]}\rightrfloor
-  = \leftlfloor\frac{3.14159}{0.43}\rightrfloor = 7$$
+$$n_\text{cross} = \left\lfloor\frac{\pi}{1 - [\text{SSq}]}\rightrfloor
+  = \left\lfloor\frac{3.14159}{0.43}\rightrfloor = 7$$
 
 ---
 
@@ -138,12 +138,12 @@ $$r_\text{overlap} \approx 8.9 \times 10^{28}\,\text{m} \quad
   (\approx 9.4 \times 10^5\,\text{ly})$$
 
 This colossal scale means that at orbital scales ($r \ll r_\text{overlap}$),
-**both gravity and buoyancy act simultaneously** — producing what observers measure as
+**both gravity and buoyancy act simultaneously** --- producing what observers measure as
 centripetal acceleration (Newton) plus the UQFF buoyancy offset (UQFF correction).
 
 ---
 
-## §7 Hub Synthesis — CP4 #136–#140
+## §7 Hub Synthesis --- CP4 #136--#140
 
 | Paper | Class (#) | Core result | Hub connection |
 |-------|-----------|------------|----------------|
@@ -151,7 +151,7 @@ centripetal acceleration (Newton) plus the UQFF buoyancy offset (UQFF correction
 | PAPER_542 | #137 | 4-tel fit; $U_{S,\text{orb}} = 1.80 \times 10^{31}$ Hz | BH harmonic $U_{S,\text{orb}}$ |
 | PAPER_543 | #138 | NS regularity; bounded $\lambda < 1$; $\pi$ uniqueness | All methods simultaneous |
 | PAPER_544 | #139 | YM mass gap $\Delta = P/3 > 0$; $p = 113$ | VDS in denominator |
-| PAPER_545 | #140 (this) | Simultaneous merger hub | Unifies #136–#139 |
+| PAPER_545 | #140 (this) | Simultaneous merger hub | Unifies #136--#139 |
 
 ---
 
@@ -165,10 +165,10 @@ centripetal acceleration (Newton) plus the UQFF buoyancy offset (UQFF correction
 
 3. **LHC/FCC mass gap energy scale:** YM mass gap $\Delta \approx 3.3 \times 10^{-6}$
    (dimensionless) corresponds to $\Delta_text{energy} \approx 3.3 \times 10^{-6}
-   \cdot E_\text{Planck}$ — testable in future high-energy experiments.
+   \cdot E_\text{Planck}$ --- testable in future high-energy experiments.
 
 4. **NS blow-up absence:** MHD simulations of Orion quasar jets at $u = 10\,\text{km/s}$
-   bounded by vis-viva ($29.8\,\text{km/s}$) — consistent with no NS singularity formation.
+   bounded by vis-viva ($29.8\,\text{km/s}$) --- consistent with no NS singularity formation.
 
 ---
 
@@ -322,7 +322,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.108$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -342,7 +342,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -360,22 +360,22 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Thomson $\sigma$_T (QED synchrotron) | UQFF U_m scattering kernel: $\sigma$_T = 6.6524e-29 m2 | $\sigma$_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 10–100 `M_{M\_sun}`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
+| Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total $\to$ L_X via Stefan-Boltzmann + buoyancy flux: L_X $\approx$ g_total $\times$ M_env | L_X SFR ~ 10--100 `M_{M\_sun}`/yr | Chandra+Spitzer | PASS Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g $\leq$ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | $\kappa$ vacuum rate vs X-ray variability | UQFF $\kappa$ = 0.0005/day $\to$ timescale $\tau$_UQFF = 2000 days | Observed X-ray variability $\tau$_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Galaxy merger system
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra+Spitzer monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -386,17 +386,17 @@ future Chandra+Spitzer monitoring observations.
 - Clay Math. Inst. (2000). *Millennium Prize Problems*.  
 - GRAVITY Collaboration (2019). *A&A*, 625, L10.  
 - Wolfram, S. (2002). *A New Kind of Science*.  
-- Murphy, D. T. (2026). *PAPER_541–544*, Star Magic Repository.  
-- Murphy, D. T. (2026). *PAPER_429 — Three UQFF Number Systems*, Star Magic Repository.  
+- Murphy, D. T. (2026). *PAPER_541--544*, Star Magic Repository.  
+- Murphy, D. T. (2026). *PAPER_429 --- Three UQFF Number Systems*, Star Magic Repository.  
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -407,7 +407,7 @@ future Chandra+Spitzer monitoring observations.
 | PAPER_1012 | GW190425 Upgraded F_{U\_Bi\_i} with S26(3) |
 | PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |

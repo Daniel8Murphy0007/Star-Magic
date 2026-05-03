@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, buoyancy, nebula, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_880: Positive E(t) Buoyancy Expansion Master
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-08
 **Session:** 209
 **Source:** Sessions 204-208 standalone module integration
@@ -34,7 +34,7 @@ regions, and cosmogenesis expansion regimes.
 
 $$
 \begin{aligned}
-  & E+(t) = E0\cdot\exp(\kappat + [SSq]\cdot t/26)\cdot S26\cdot(F_{U,Bi}/F_U) \\
+  & E+(t) = E0\cdot\exp(\kappa t + [SSq]\cdot t/26)\cdot S26\cdot(F_{U,Bi}/F_U) \\
   & S26 = \Sigma\exp(-[SSq]\cdot n/26)
 \end{aligned}
 $$
@@ -84,7 +84,7 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 **Significance:** E+(t) is the positive branch of the UQFF energy engine. When buoyancy exceeds
 gravity (F_{U,Bi}/F_U > 0.5), the system expands with Ramanujan-accelerated exponential growth. This
-is the UQFF alternative to dark energy — the expansion is driven by SCm vacuum buoyancy, not a
+is the UQFF alternative to dark energy --- the expansion is driven by SCm vacuum buoyancy, not a
 cosmological constant.
 
 ---
@@ -107,7 +107,7 @@ The standalone module `positive_{et\_expansion}.py` implements this in:
 
 ```bash
 python positive_{et\_expansion}.py        # Full report
-python positive_{et\_expansion}.py —json  # Machine-readable
+python positive_{et\_expansion}.py ---json  # Machine-readable
 ```
 
 ---
@@ -193,7 +193,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.203$ (transition regime), placing it in the zone where VDS condensate profile shows moderate gradient. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -213,7 +213,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -231,7 +231,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -244,7 +244,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
@@ -259,15 +259,15 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1029 | Barocentric Earth Orbital Buoyancy |

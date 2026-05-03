@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_882: Expansion Lagrangian Euler-Lagrange
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-08
 **Session:** 209
 **Source:** Sessions 204-208 standalone module integration
@@ -34,7 +34,7 @@ expansion potential. Links the expansion Lagrangian to the buoyancy ratio and fi
 $$
 \begin{aligned}
   & L_expansion = E+(t)\cdot V\cdot S26 \\
-  & \delta S/\delta\phi = \partialL/\partial\phi - d/dt(\partialL/\partial\phi̇) = 0
+  & \delta S/\delta\phi = \partial L/\partial\phi - d/dt(\partial L/\partial\phi̇) = 0
 \end{aligned}
 $$
 
@@ -59,9 +59,9 @@ $$
 | Quantity | Value | Units | Role |
 |---|---|---|---|
 | L_expansion | E+(t) V S_26 | J m^3 | Action density |
-| delta S/delta phi | 0 | — | Field equation |
+| delta S/delta phi | 0 | --- | Field equation |
 | V_filament | ~10^48 | m^3 | Cancels in EOM |
-| S_26([SSq]) | 24.3 | — | Quantum acceleration |
+| S_26([SSq]) | 24.3 | --- | Quantum acceleration |
 
 ---
 
@@ -70,7 +70,7 @@ $$
 The expansion Lagrangian L_expansion = E+(t) V S_26 provides the variational principle for
 buoyancy-driven expansion. The Euler-Lagrange equation delta S/delta phi = 0 yields the expansion
 field equation. The filament volume V cancels in the equation of motion, confirming that expansion
-dynamics are scale-independent — a hallmark of UQFF universality.
+dynamics are scale-independent --- a hallmark of UQFF universality.
 
 ---
 
@@ -83,7 +83,7 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 **Significance:** Variational formulation of the expansion engine. The Lagrangian approach provides
 not just equations of motion but also conserved quantities (Noether currents), stability analysis
-(second variation), and natural coupling to other fields — essential for the complete UQFF field
+(second variation), and natural coupling to other fields --- essential for the complete UQFF field
 theory.
 
 ---
@@ -106,7 +106,7 @@ The standalone module `positive_{et\_expansion}.py` implements this in:
 
 ```bash
 python positive_{et\_expansion}.py        # Full report
-python positive_{et\_expansion}.py —json  # Machine-readable
+python positive_{et\_expansion}.py ---json  # Machine-readable
 ```
 
 ---
@@ -226,7 +226,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.197$ (near-threshold regime), placing it in the zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -246,7 +246,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -264,7 +264,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -277,7 +277,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
@@ -292,15 +292,15 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |

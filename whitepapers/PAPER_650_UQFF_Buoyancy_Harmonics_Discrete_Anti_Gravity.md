@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_650
-title: "UQFF Buoyancy Harmonics — Discrete Anti-Gravity Resonance Bands"
+title: "UQFF Buoyancy Harmonics --- Discrete Anti-Gravity Resonance Bands"
 session: 168
 date: 2026-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_650: UQFF Buoyancy Harmonics — Discrete Anti-Gravity Resonance Bands
+# PAPER_650: UQFF Buoyancy Harmonics --- Discrete Anti-Gravity Resonance Bands
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFBuoyancyHarmonicsCalculator  
-**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) — AetherInertiaAnalysis2,
+**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) --- AetherInertiaAnalysis2,
 SystemAnalysisSimulator_v7  
 **Companion papers:** PAPER_646 (Ui Operator), PAPER_647 (Vacuum Density), PAPER_642 (SM Bridge)
 
@@ -29,7 +29,7 @@ $$U_{b1} = -\beta_i \cdot Ug_1 \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot \le
 Universal Buoyancy (Ub1) is the fifth primary UQFF field component: *each discrete
 Universal Gravity (Ug) band simultaneously has a corresponding Universal Buoyancy band
 acting in the opposite direction.* This paper derives Ub1 from AetherInertiaAnalysis2,
-quantifies the four-harmonic anti-gravity spectrum (one buoyancy band per Ug1–Ug4),
+quantifies the four-harmonic anti-gravity spectrum (one buoyancy band per Ug1--Ug4),
 evaluates the Sun's solar-wind-modulated buoyancy term (Ub1_sun = -1.94$\times$1027 J/m3),
 and identifies the cos($\pi$tn) frequency argument as the Buoyancy Harmonic oscillation.
 The coupling constant $\beta$i = 0.6 binds each gravity band to its buoyancy counterpart
@@ -43,9 +43,9 @@ through the Universal Aether (UUA) density factor.
 > opposite of each other discrete Universal Gravity range within the Universal Aether."*
 
 This defines the two key principles:
-1. **Discreteness** — Ug1, Ug2, Ug3, Ug4 each have their own Ub counterpart; no continuous
+1. **Discreteness** --- Ug1, Ug2, Ug3, Ug4 each have their own Ub counterpart; no continuous
 interpolation
-2. **Anti-phase** — Every Ub band acts in the **opposite direction** of its paired Ug band
+2. **Anti-phase** --- Every Ub band acts in the **opposite direction** of its paired Ug band
 
 ---
 
@@ -113,7 +113,7 @@ This is distinct from the **Universal Inertia** harmonic cos($\pi$tn) in Ui (PAP
 - Ui's cos($\pi$tn) operates at the **heliosphere spin** angular frequency $\omega$s
 - Ub1's cos($\pi$tn) operates at the **galactic rotation** scale $\Omega$g
 
-Same functional form, different characteristic timescales — confirming the fractal
+Same functional form, different characteristic timescales --- confirming the fractal
 self-similarity of the UQFF harmonic structure across scales.
 
 ---
@@ -134,7 +134,7 @@ $$|Ub_1| \cos(\pi t_n) + U_i \cos(\pi t_n) = U_{\text{net}} \quad (\text{system 
 When |Ub1| > |Ui| $\to$ net outward pressure (field expansion phase)
 When |Ui| > |Ub1| $\to$ net inward pressure (field compression phase)
 
-The **oscillation between these two conditions** drives the galactic breathing mode —
+The **oscillation between these two conditions** drives the galactic breathing mode ---
 a UQFF prediction for galactic-scale pulsation with period ~200 Myr.
 
 ---
@@ -151,7 +151,7 @@ $$
 \end{aligned}
 $$
 
-The simulator confirms: *star spin rate = f(Ug1/Ub1/Ug2)* — the star's observed
+The simulator confirms: *star spin rate = f(Ug1/Ub1/Ug2)* --- the star's observed
 spin is determined by the balance between the internal dipole gravity (Ug1), its
 paired buoyancy band (Ub1), and the field bubble tension (Ug2). This predicts:
 - **Fast stars** (Ug1 >> |Ub1|): high-spin, compact objects near galactic center
@@ -240,7 +240,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -260,7 +260,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -278,42 +278,42 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — G6 Gate (CVW v2.0.0)
+## §SM Anchors --- G6 Gate (CVW v2.0.0)
 
 | Observable | SM Value | UQFF Buoyancy Prediction | Alignment |
 |------------|----------|--------------------------|-----------|
-| Galactic orbital speed | ~220 km/s (flat) | Ub1 modulates flat rotation curve via anti-phase Ug2 | ✅ structural |
-| Solar mass | 1.989$\times$1030 kg | Mbh in Ub1 formula | ✅ input parameter |
-| Galactic rotation period | ~225 Myr | Harmonic period 1/f_Ub $\approx$ 2/($\Omega$g/2$\pi$) | ✅ scale match |
+| Galactic orbital speed | ~220 km/s (flat) | Ub1 modulates flat rotation curve via anti-phase Ug2 | \checkmark structural |
+| Solar mass | 1.989$\times$1030 kg | Mbh in Ub1 formula | \checkmark input parameter |
+| Galactic rotation period | ~225 Myr | Harmonic period 1/f_Ub $\approx$ 2/($\Omega$g/2$\pi$) | \checkmark scale match |
 | $\tau$ lepton coherence | (via cos($\pi$tn) topological) | UQFF half-period maps $\tau$ decay | 🔍 candidate |
 
-> **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
+> **SM Anchor Reference:** PAPER_642 --- UQFFSMParameterBridgeMasterComparisonCalculator
 
 ---
 
 ## References
 
-1. AetherInertiaAnalysis2 — grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 1624–1858
-2. SystemAnalysisSimulator_v7 — grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 17337–17971
-3. PAPER_646 — Universal Inertial Operator & Caduceus Wave
-4. PAPER_647 — Vacuum Density Series ($\rho$vac,[UA], $\rho$vac,sw)
-5. PAPER_642 — SM Parameter Bridge
+1. AetherInertiaAnalysis2 --- grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 1624--1858
+2. SystemAnalysisSimulator_v7 --- grok_{share\_b2e2c5cba7a}.txt (Session 168) lines 17337--17971
+3. PAPER_646 --- Universal Inertial Operator & Caduceus Wave
+4. PAPER_647 --- Vacuum Density Series ($\rho$vac,[UA], $\rho$vac,sw)
+5. PAPER_642 --- SM Parameter Bridge
 6. ARCHITECTURE_{FLOW\_DIAGRAM}.md v5.24
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |

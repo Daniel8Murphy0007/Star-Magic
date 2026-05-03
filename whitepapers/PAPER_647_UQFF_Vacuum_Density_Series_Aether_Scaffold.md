@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_647
-title: "UQFF Vacuum Density Series — Multi-Scale Aether Scaffold"
+title: "UQFF Vacuum Density Series --- Multi-Scale Aether Scaffold"
 session: 168
 date: 2026-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, SCm, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_647: UQFF Vacuum Density Series — Multi-Scale Aether Scaffold
+# PAPER_647: UQFF Vacuum Density Series --- Multi-Scale Aether Scaffold
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFVacuumDensitySeriesCalculator  
-**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) — Aether13_16, AetherInertiaAnalysis2,
+**Source:** grok_{share\_b2e2c5cba7a}.txt (Session 168) --- Aether13_16, AetherInertiaAnalysis2,
 UniversalInertialOperator  
 **Companion papers:** PAPER_646 (Ui), PAPER_650 (Buoyancy), PAPER_642 (SM Bridge)
 
@@ -34,7 +34,7 @@ Aether baseline at 10-23 J/m3 (= 10-20 kg/m3). An extended series from Aether13_
 spans 77 orders from proton volume (10-39 cm3) through the universe mass (1054 gm),
 providing the density anchor chain for all UQFF gravity, buoyancy, and inertia equations.
 Each density level supports a distinct gravitational and electromagnetic mode, enabling
-the discrete banding of Universal Gravity ranges Ug1–Ug4.
+the discrete banding of Universal Gravity ranges Ug1--Ug4.
 
 ---
 
@@ -75,7 +75,7 @@ where $\kappa$ = 0.0005 day-1 is the [SCm] reactivity decay rate.
 $$\frac{\rho_{\text{vac},[SCm]}}{\rho_{\text{vac},[UA]}} = 0.1 \quad \Rightarrow \quad \frac{\rho_{\text{vac},[UA]}}{\rho_{\text{vac},A}} = \frac{7.09 \times 10^{-36}}{10^{-23}} = 7.09 \times 10^{-13}$$
 
 This 13-order-of-magnitude gap between the UA field and the baseline Aether is the source
-of the Casimir effect — the residual pressure between two conducting plates measuring the
+of the Casimir effect --- the residual pressure between two conducting plates measuring the
 differential vacuum density between $\rho$vac,A and $\rho$vac,[SCm].
 
 ---
@@ -91,7 +91,7 @@ $$U_{g2} = 1.2 \cdot \frac{(7.09 \times 10^{-36} + 7.09 \times 10^{-37}) \cdot 1
 
 The sum $\rho$vac,[UA] + $\rho$vac,[SCm] = 7.80$\times$10-36 J/m3 drives the outer field bubble energy density.
 
-### 2.2 Ug4 (Star–Black Hole Interaction)
+### 2.2 Ug4 (Star--Black Hole Interaction)
 
 $$U_{g4} = k_4 \cdot \frac{\rho_{\text{vac},[SCm]} \cdot M_{bh}}{d_g} \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + f_{\text{feedback}})$$
 
@@ -105,7 +105,7 @@ black hole (Mbh = 8.15$\times$1036 kg) to the individual star across dg = 2.55$\
 $$U_{b1} = -\beta_i \cdot U_{g1} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1 + \epsilon_{sw} \cdot \rho_{\text{vac},sw}) \cdot U_{UA} \cdot \cos(\pi t_n)$$
 
 The solar wind vacuum density $\rho$vac,sw = 8$\times$10-21 J/m3 modulates buoyancy via the factor
-(1 + ϵsw$\cdot$$\rho$vac,sw) = 1 + 0.001$\cdot$8$\times$10-21 $\approx$ 1 (negligible 10-24 correction at t=0,
+(1 + \epsilonsw$\cdot$$\rho$vac,sw) = 1 + 0.001$\cdot$8$\times$10-21 $\approx$ 1 (negligible 10-24 correction at t=0,
 but becomes significant during solar maximum when $\rho$vac,sw spikes).
 
 ---
@@ -117,7 +117,7 @@ From Aether13_16:
 $$\rho_{\text{proton-BH}} = \frac{M_p}{V_p} = \frac{1.67 \times 10^{-27}\ \text{kg}}{10^{-45}\ \text{m}^3} \approx 1.67 \times 10^{18}\ \text{kg/m}^3$$
 
 At the Schwarzschild proton threshold, removing 10-39% of a proton's energy creates a
-black hole — confirming that the proton vacuum density 10-39 cm3 is the lower anchor
+black hole --- confirming that the proton vacuum density 10-39 cm3 is the lower anchor
 of the density series.
 
 The Wheeler-DeWitt equation in UQFF:
@@ -163,12 +163,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -212,7 +212,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -232,7 +232,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -250,37 +250,37 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — G6 Gate (CVW v2.0.0)
+## §SM Anchors --- G6 Gate (CVW v2.0.0)
 
 | Observable | SM Value | UQFF VDS Prediction | Alignment |
 |------------|----------|---------------------|-----------|
-| Cosmological constant $\Lambda$ | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (14-order gap) | Hierarchy problem — documented |
-| Casimir force | F/A $\propto$ ℏc/d4 | $\Delta$$\rho$vac$\cdot$d2 $\propto$ 6.38$\times$10-36 J/m3$\cdot$d2 | ✅ 97.1% functional analog |
+| Cosmological constant $\Lambda$ | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (14-order gap) | Hierarchy problem --- documented |
+| Casimir force | F/A $\propto$ ℏc/d4 | $\Delta$$\rho$vac$\cdot$d2 $\propto$ 6.38$\times$10-36 J/m3$\cdot$d2 | \checkmark 97.1% functional analog |
 | Solar wind pressure | ~3$\times$10-10 Pa | $\rho$vac,sw$\cdot$c2 ~ 7.2$\times$10-4 J/m3 | 🔍 Ub1 correction factor |
-| Vacuum permittivity ($\varepsilon$0) | 8.85$\times$10-12 F/m | $\rho$vac,A / (c2$\cdot$$\rho$matter) | ✅ dimensional bridge |
+| Vacuum permittivity ($\varepsilon$0) | 8.85$\times$10-12 F/m | $\rho$vac,A / (c2$\cdot$$\rho$matter) | \checkmark dimensional bridge |
 
-> **SM Anchor Reference:** PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator) —
+> **SM Anchor Reference:** PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator) ---
 > canonical SM alignment table for all UQFF calibration constants.
 
 ---
 
 ## References
 
-1. Aether13_16.cpp + AetherInertiaAnalysis2.cpp — grok_{share\_b2e2c5cba7a}.txt (Session 168)
-2. PAPER_642 — SM Parameter Bridge Master Comparison
-3. PAPER_646 — Universal Inertial Operator (Ui uses $\rho$vac,[SCm]/$\rho$vac,[UA])
-4. Casimir HBG (1948): *Proc. Koninkl. Ned. Akad. Wetenschap* 51, 793 — Casimir effect
-5. Wheeler JA (1968): "Superspace and the nature of quantum geometrodynamics" — Wheeler-DeWitt
-6. ARCHITECTURE_{FLOW\_DIAGRAM}.md v5.24 — UQFF canonical constants table
+1. Aether13_16.cpp + AetherInertiaAnalysis2.cpp --- grok_{share\_b2e2c5cba7a}.txt (Session 168)
+2. PAPER_642 --- SM Parameter Bridge Master Comparison
+3. PAPER_646 --- Universal Inertial Operator (Ui uses $\rho$vac,[SCm]/$\rho$vac,[UA])
+4. Casimir HBG (1948): *Proc. Koninkl. Ned. Akad. Wetenschap* 51, 793 --- Casimir effect
+5. Wheeler JA (1968): "Superspace and the nature of quantum geometrodynamics" --- Wheeler-DeWitt
+6. ARCHITECTURE_{FLOW\_DIAGRAM}.md v5.24 --- UQFF canonical constants table
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -289,7 +289,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

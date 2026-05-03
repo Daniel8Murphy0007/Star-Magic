@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_181: Graph Theory H-Magic Labelings and Star Magic Combinatorics
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 49 — §2.5 Grok Thread 381a8fe7 Extended Audit  
+**Session:** 49 --- §2.5 Grok Thread 381a8fe7 Extended Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_{share\_381a8f}.txt lines 1784–1900
+**Source:** grok_{share\_381a8f}.txt lines 1784--1900
 
 ---
 
@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 This paper documents the graph-theoretic combinatorial structures identified within the Star Magic
 codebase audit. The results encompass H-Magic Labelings, Tree Decompositions, Sumset Partitions, and
-Ascending Subgraph Decompositions — a collection of 30+ theorems and lemmas from a PhD-thesis-level
+Ascending Subgraph Decompositions --- a collection of 30+ theorems and lemmas from a PhD-thesis-level
 treatment of graph coloring and magic labeling theory. These structures are orthogonal to the UQFF
 physics framework but appear in the Grok thread as a conceptual co-development, demonstrating the
 mathematical breadth of the Star Magic system. Key results include conditions for H-magic labeling
@@ -47,7 +47,7 @@ $$\sum_{v \in V(H')} f(v) + \sum_{e \in E(H')} f(e) = k$$
 
 for some fixed constant $k$ called the **magic constant**.
 
-The Star Magic connection: the term "Star Magic" itself references the star graph $K_{1,n}$ — a central vertex connected to $n$ leaf vertices — which serves as the canonical example in H-magic labeling theory for $H = K_{1,n}$.
+The Star Magic connection: the term "Star Magic" itself references the star graph $K_{1,n}$ --- a central vertex connected to $n$ leaf vertices --- which serves as the canonical example in H-magic labeling theory for $H = K_{1,n}$.
 
 ---
 
@@ -74,7 +74,7 @@ where $\text{tw}$ is treewidth and $\text{pw}$ is pathwidth.
 **Statement:** For the complete graph $K_n$, there exists an ascending subgraph decomposition into graphs $G_1, G_2, \ldots, G_t$ where $|E(G_i)| = i$ and each $G_i$ is a subgraph of $G_{i+1}$.
 
 The maximum number of parts satisfies:
-$$t_{\max} = \leftlfloor \frac{\sqrt{1 + 4\binom{n}{2}} - 1}{2} \rightrfloor$$
+$$t_{\max} = \left\lfloor \frac{\sqrt{1 + 4\binom{n}{2}} - 1}{2} \rightrfloor$$
 
 ### Theorem 5: Sumset Partition Conditions
 A set $S \subseteq \mathbb{Z}_n$ admits a **sumset partition** into $k$ parts $\{A_1, \ldots, A_k\}$ if:
@@ -233,7 +233,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.162$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -253,7 +253,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -271,7 +271,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -284,12 +284,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
-- Source: grok_{share\_381a8f}.txt §PhD thesis section, lines 1784–1900
+- Source: grok_{share\_381a8f}.txt §PhD thesis section, lines 1784--1900
 - Related: PAPER_179 (Star Magic 5-Chapter DPM Theory), PAPER_172 (F_U Complete Unified Field Assembly)
 - CP1 Class: `GraphTheoryHMagicLabelingCalculator`
 
@@ -297,10 +297,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

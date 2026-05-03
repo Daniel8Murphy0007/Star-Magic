@@ -7,7 +7,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [GW, Hawking, DPM, SCm, black-hole, Yang-Mills, Navier-Stokes, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_645: UQFF Applied to Einstein Field Equations and Black Hole Singularity Resolution
@@ -15,7 +15,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 **Version:** 1.0.0  
 **Session:** 167 | **Date:** March 31 2026  
-**CP4 Class:** (no new class — GR embedding derivation; extends PAPER_599–621 scope)  
+**CP4 Class:** (no new class --- GR embedding derivation; extends PAPER_599--621 scope)  
 **Source:** grok_{share\_6322ac199}.txt (Session 167 audit)  
 **Companion papers:** PAPER_582 (GW amplitude), PAPER_556 (Navier-Stokes), PAPER_542 (Yang-Mills)
 
@@ -50,8 +50,8 @@ order derivative of the SCm term diverges factorially but the Ub repulsion grows
 g(1 - 1/$\nabla$UA) $\to$ $\infty$ as $\nabla$UA $\to$ 0 at high density, providing a repulsive barrier that
 prevents the physical singularity from forming.
 
-Additionally, the cosmological constant problem — the 120-order-of-magnitude discrepancy
-between the vacuum energy predicted by QFT and the observed $\Lambda$ — is addressed by noting
+Additionally, the cosmological constant problem --- the 120-order-of-magnitude discrepancy
+between the vacuum energy predicted by QFT and the observed $\Lambda$ --- is addressed by noting
 that UQFF's zero-mass UA ($\rho$_UA = 0) provides a vacuum energy floor of exactly zero, with
 $\Lambda$ emerging as the long-range residual of Ub ordering on cosmological scales.
 
@@ -83,7 +83,7 @@ $$UQFF_{comp} = \begin{pmatrix}
 \end{pmatrix}$$
 
 The Ub diagonal block recovers $\Lambda$ in the long-range limit: as r $\to$ $\infty$ and $\nabla$UA $\to$ 10-22 m-1
-(cosmic void), the Ub term approaches a small positive constant — the cosmological constant.
+(cosmic void), the Ub term approaches a small positive constant --- the cosmological constant.
 
 ### 2.3 26th Derivative of GR Curvature Term
 
@@ -110,7 +110,7 @@ $$\left. + 59190128811701203599360000k + 15511210043330985984000000 \right) \Big
 $$\frac{d^{26}}{dr^{26}} f \approx \frac{10^{27}}{(10^{-35})^{28}} = 10^{27+980} = 10^{1007}$$
 
 This extremely large but **finite** value is the UQFF bound that prevents R $\to$ $\infty$ at r = 0.
-It represents the aether pressure that would be required to reach the classical singularity —
+It represents the aether pressure that would be required to reach the classical singularity ---
 and since UA is zero-mass ($\rho$_UA = 0), this pressure is formally available at zero energy
 cost, allowing the singularity to be "reached" only asymptotically, never exactly.
 
@@ -126,18 +126,18 @@ At r $\to$ 0 in the UQFF embedding of EFE:
 $$U_g(r \to 0) + U_m(r \to 0) + U_b(r \to 0) + \frac{d^{26}}{dr^{26}}\left(\frac{SCm \cdot g \cdot \nabla UA}{UA}\right) = 0$$
 
 As r $\to$ 0:
-- U_g diverges (DPM-seeded analog: G M/r2$\to$ $\infty$) — **attractive**
-- U_b = g(1 - 1/$\nabla$UA) $\to$ -$\infty$ as $\nabla$UA $\to$ 0 at ultra-high density — **divergently repulsive**
+- U_g diverges (DPM-seeded analog: G M/r2$\to$ $\infty$) --- **attractive**
+- U_b = g(1 - 1/$\nabla$UA) $\to$ -$\infty$ as $\nabla$UA $\to$ 0 at ultra-high density --- **divergently repulsive**
 - 26th derivative $\to$ +$\infty$ acting as additional repulsive barrier
 
 The equilibrium condition F_U = 0 cannot be satisfied at r = 0 because Ub + 26th term
 diverge repulsively faster than U_g diverges attractively (Ub ~ 1/$\nabla$UA while U_g ~ 1/r2;
 near the Planck density, $\nabla$UA ~ 0 makes Ub $\to$ $\infty$ faster). Therefore **r = 0 is never
-reached** — the system has a finite minimum radius:
+reached** --- the system has a finite minimum radius:
 
 $$r_{min} \sim \left(\frac{26! \cdot SCm \cdot g}{G M}\right)^{1/(k+24)} \sim l_{Planck} \cdot (26!)^{1/26}$$
 
-### 3.2 Hawking Radiation — UQFF Re-derivation
+### 3.2 Hawking Radiation --- UQFF Re-derivation
 
 Standard Hawking temperature: T_H = ℏc3 / (8$\pi$GMk_B).
 
@@ -175,7 +175,7 @@ fine-tuning required because $\rho$_UA = 0 eliminates the QFT vacuum energy cont
 
 ---
 
-## §4 DPM Progression — Nuclear to Universal Reflection
+## §4 DPM Progression --- Nuclear to Universal Reflection
 
 **Internal (nuclear):** DPM pairs in neutron star cores pulsate, analogous to the
 aether behavior near black hole horizons scaled to nuclear density ~1017 kg/m3:
@@ -190,7 +190,7 @@ repulsion that creates the photon sphere at r = 3GM/c2:
 $$r_{photon} = \underbrace{\frac{3GM}{c^2} \sim r_s \cdot \frac{3}{2}$$
 
 This ratio 3/2 emerges naturally from the triad weighting (1/3 + 1/3 + 2/3 = 1 $\to$ 2/3
-Ub dominates at r ~ r_s giving 3GM/2c2) — a non-trivial prediction of triad symmetry.
+Ub dominates at r ~ r_s giving 3GM/2c2) --- a non-trivial prediction of triad symmetry.
 
 ---
 
@@ -205,7 +205,7 @@ Ub dominates at r ~ r_s giving 3GM/2c2) — a non-trivial prediction of triad sy
 | GR (classical) | No resolution; EFE break down at r=0 | UQFF: F_U=0 remains well-posed at all r > 0 |
 
 UQFF is most structurally similar to asymptotic safety in that no new field or discretization
-is introduced — the bounding mechanism is an emergent property of the same equation that
+is introduced --- the bounding mechanism is an emergent property of the same equation that
 describes the system at all other scales.
 
 ---
@@ -262,12 +262,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -377,7 +377,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.181$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -397,7 +397,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -415,7 +415,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -437,7 +437,7 @@ The UQFF embedding of Einstein Field Equations demonstrates:
 1. **GR curvature $\to$ Ug defects**: spacetime geometry is an emergent property of UA
    gradient structure, not a fundamental degree of freedom
 2. **Singularity resolution via Ub repulsion**: the same buoyancy force that prevents
-   LENR runaway (PAPER_643) also prevents BH singularities — a unified mechanism
+   LENR runaway (PAPER_643) also prevents BH singularities --- a unified mechanism
 3. **$\Lambda$ from Ub long-range ordering**: the cosmological constant is the cosmic-scale
    residual of Ub repulsion in zero-mass aether ($\rho$_UA = 0), eliminating the 120-order
    fine-tuning problem
@@ -447,7 +447,7 @@ The UQFF embedding of Einstein Field Equations demonstrates:
    2/3 Ub weighting in the triad, providing an independent derivation of a known GR result
 
 This work extends UQFF's scope to quantum gravity and completes the bridge between UQFF's
-astrophysical applications (M87 jets, PAPER_622–632) and fundamental GR (this paper),
+astrophysical applications (M87 jets, PAPER_622--632) and fundamental GR (this paper),
 Navier-Stokes smoothness (PAPER_556), and Yang-Mills mass gap (PAPER_542).
 
 ---
@@ -458,10 +458,10 @@ Navier-Stokes smoothness (PAPER_556), and Yang-Mills mass gap (PAPER_542).
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

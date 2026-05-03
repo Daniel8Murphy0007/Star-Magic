@@ -9,7 +9,7 @@ cvw: "v2.0.0"
 tags: [solar, calibration, buoyancy, g_N, surface-gravity, UQFF]
 crosslinks: [PAPER_979, PAPER_981, PAPER_883]
 calibration: {SSq: 0.57, beta_i: 0.603, kappa: "0.0005/day", g_sun: "274.03 m/s2"}
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_980: Solar Surface Buoyancy Calibration
@@ -89,7 +89,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 At the solar surface, the Lagrangian reduces to the DPM-seeded limit:
 $$\mathcal{L} \to \frac{1}{2}m\dot{r}^2 + \frac{GMm}{r}$$
-with buoyancy perturbation $\deltamathcal{L}_b = -U_b \cdot m \cdot r$.
+with buoyancy perturbation $\delta\mathcal{L}_b = -U_b \cdot m \cdot r$.
 
 ## §B. VDS/DVP/BSH Deep Synthesis
 
@@ -99,7 +99,7 @@ with buoyancy perturbation $\deltamathcal{L}_b = -U_b \cdot m \cdot r$.
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -113,17 +113,17 @@ with buoyancy perturbation $\deltamathcal{L}_b = -U_b \cdot m \cdot r$.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |

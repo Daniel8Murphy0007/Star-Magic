@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_865: Field Generator Spooky Non-Local Effect with Temperature Drop
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework\
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework\
 **Date:** 2026-04-05\
 **Session:** 200\
 **Source:** advanced_{system\_analysis\_simulator\_quantum\_calculator}.txt (3745 lines)\
@@ -62,7 +62,7 @@ stateless physics calculator within CondensedPhysics4.py.
 ## 4. SCm Superconductivity Axiom (Session 204)
 
 The spooky non-local effect (power absorption without direct contact + temperature drop at range) is
-a direct experimental signature of **SCm extra-gravitational responses** operating before gravity —
+a direct experimental signature of **SCm extra-gravitational responses** operating before gravity ---
 specifically the **Aether resistance drag** response.
 
 ### Axiom Mapping
@@ -74,9 +74,9 @@ In the SCm Superconductivity Axiom module (`scm_{superconductivity\_axiom}.py`),
 
 $$\mathcal{L}_{\mathrm{aether}} = \tfrac{1}{2}\eta,\rho_A,v_{\mathrm{UA}}^2\,\cos(\pi t_n)\,g^{\mu\nu}g_{\mu\nu}$$
 
-$$\frac{\deltamathcal{L}}{\delta v_{\mathrm{UA}}} = 0 \;\Rightarrow; F_{\mathrm{aether}} = \eta,\rho_A,v_{\mathrm{UA}}^2\,\cos(\pi t_n)\,\mathrm{Tr}(g)$$
+$$\frac{\delta\mathcal{L}}{\delta v_{\mathrm{UA}}} = 0 \;\Rightarrow; F_{\mathrm{aether}} = \eta,\rho_A,v_{\mathrm{UA}}^2\,\cos(\pi t_n)\,\mathrm{Tr}(g)$$
 
-- **Force term:** $F_{\mathrm{aether\_trace}}$ — conformal deformation of the metric through aether flow energy density with $\pi$-cycle modulation.
+- **Force term:** $F_{\mathrm{aether\_trace}}$ --- conformal deformation of the metric through aether flow energy density with $\pi$-cycle modulation.
 
 ### Why This Is NOT Post-Hoc
 
@@ -88,7 +88,7 @@ is an **SCm response operating over relative time cycles before gravity condense
 
 ```bash
 python scm_{superconductivity\_axiom}.py       # Full report
-python scm_{superconductivity\_axiom}.py —json # Machine-readable
+python scm_{superconductivity\_axiom}.py ---json # Machine-readable
 ```
 
 **Cross-references:** PAPER_876 (DPM coherent consciousness) uses the same Sector 7 + Sector 5
@@ -170,7 +170,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.076$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -190,7 +190,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -206,7 +206,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -219,7 +219,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
@@ -234,16 +234,16 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |

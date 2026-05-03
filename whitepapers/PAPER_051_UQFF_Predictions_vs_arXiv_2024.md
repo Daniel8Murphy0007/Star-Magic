@@ -8,7 +8,7 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [dark-matter, black-hole, 26D, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_051: Systematic Cross-Validation of UQFF Predictions Against 2024 ArXiv Publications: Interstellar Shocks, Dark Matter, Nuclear Physics, Cosmic Superconductivity, and Quantum Gravity
@@ -25,7 +25,7 @@ Interstellar Shocks, Dark Matter, Nuclear Physics, Cosmic Superconductivity, and
 **Source Module:** `arxiv_{validation\_framework}.py`, `arxiv_{validation\_report}.md`  
 **Index Slot:** §1.7 arXiv Cross-Validation Framework,  
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV --->
 ## Abstract
 
 The UQFF Star-Magic framework produces quantitative predictions in 10 independent physics domains.
@@ -47,7 +47,7 @@ present in Standard Model treatments.
 ### 1.1 Alignment Definition
 
 For each comparison pair (predicted, observed):
-$$\text{alignment\%} = \max!\left(0,\; \min!\left(100,\; \left(1 - \frac{|\hat{y} - y|}{|y|}\right)\times 100right)\right)$$
+$$\text{alignment\%} = \max!\left(0,\; \min!\left(100,\; \left(1 - \frac{|\hat{y} - y|}{|y|}\right)\times 100right\right)$$
 
 Category status thresholds:
 - ? PASS: alignment = target
@@ -97,7 +97,7 @@ density-triggered molecular release with better than 3.5% mean error.
 
 ---
 
-### 2.2 Nuclear Physics – THz LENR (98.31%  ? PASS, target 75%)
+### 2.2 Nuclear Physics -- THz LENR (98.31%  ? PASS, target 75%)
 
 **arXiv:2408.xxxxx**  *LENR and Neutron Production* (2024)
 - UQFF THz hole frequency: 1.2$\times$10 Hz (OMEGA_LENR from QuantumLevel26Framework)
@@ -225,7 +225,7 @@ stellar dynamical models.
 
 ---
 
-## 4. Additional Validation – NGC2841 Spiral Galaxy
+## 4. Additional Validation -- NGC2841 Spiral Galaxy
 
 The `validate_{all\_models}.py` suite includes NGC2841, a distant spiral galaxy:
 - g_grav(NGC2841) = 5.3101$\times$10? m/s (UQFF compressed gravity)
@@ -321,7 +321,7 @@ mock-theta framework with the SCm phonon spectrum.
 |--------|-------|-------------|
 | $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| $\beta$_i | 0.60--0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
@@ -329,7 +329,7 @@ mock-theta framework with the SCm phonon spectrum.
 | $\eta$ | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete --- 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -408,7 +408,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.139$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -428,7 +428,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -447,10 +447,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -533,7 +533,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Hubble, vacuum, cosmology, dark-energy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_747: Universe Diameter Equation — UQFF Observable Universe Scale
+# PAPER_747: Universe Diameter Equation --- UQFF Observable Universe Scale
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #331 — UniverseDiameterUQFFCalculator  
+**CP4 Class:** #331 --- UniverseDiameterUQFFCalculator  
 
 ---
 
@@ -54,12 +54,12 @@ However, the UQFF framework identifies four correction factors that modify this 
 
 ```
 D_universe = 2*D_p * (1+H(z)*t_0) * (1+Lambda*c^2/(3*H_0^2))
-           * (1 + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total))
+           * (1 + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total))
            * (1 + k*r_c^2)
 
   D_p  = particle horizon distance = 46.5 billion ly = 4.40x10^{2}6 m
   t_0  = age of universe = 13.8 Gyr = 4.35x10^{1}7 s
-  H(z) = H_0 * √(0.3*(1+z)^3 + 0.7)  [at z->0: H_0 = 2.268x10^{-}1^8 s^{-}1]
+  H(z) = H_0 * \sqrt{}(0.3*(1+z)^3 + 0.7)  [at z->0: H_0 = 2.268x10^{-}1^8 s^{-}1]
   Lambda    = 1.1x10^{-}5^2 m^{-}2
   c    = 3x10^8 m/s
   H_0  = 2.268x10^{-}1^8 s^{-}1
@@ -281,7 +281,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -335,7 +335,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -355,7 +355,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -377,10 +377,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

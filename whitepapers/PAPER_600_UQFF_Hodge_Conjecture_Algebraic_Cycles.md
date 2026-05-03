@@ -8,14 +8,14 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_600: UQFF Resolution of the Hodge Conjecture via $\pi$-Confinement and Algebraic Cycle Identification
 
 **Author:** Daniel Murphy  
 **Framework:** Star-Magic UQFF (Unified Quantum Field Framework)  
-**Session:** 158 | **Class:** #187 — `UQFFHodgeConjectureAlgebraicCyclesCalculator`  
+**Session:** 158 | **Class:** #187 --- `UQFFHodgeConjectureAlgebraicCyclesCalculator`  
 **Source:** grok_{share\_4cef778c78b8}.txt  
 **Date:** March 2026
 
@@ -31,8 +31,8 @@ compressed field equations and observational predictions within the Star-Magic/U
 
 The Hodge Conjecture (Millennium Prize Problem #5) asserts that every Hodge class on a smooth
 complex projective variety X is a rational linear combination of cohomology classes of algebraic
-cycles. This paper demonstrates that UQFF $\pi$-confinement — the 3D-IPO mechanism of unique
-non-repeating crossing nodes defined by $\pi$-irrationality — provides a complete identification of
+cycles. This paper demonstrates that UQFF $\pi$-confinement --- the 3D-IPO mechanism of unique
+non-repeating crossing nodes defined by $\pi$-irrationality --- provides a complete identification of
 Hodge classes with algebraic cycles. Each $\pi$-crossing node in the UQFF framework corresponds to an
 algebraic cycle representative, the Hodge decomposition maps to UQFF tensor diagonalization, and the
 26! factorial bound guarantees finite Betti numbers. All eigenvalues $\lambda$ > 0 implies every Hodge
@@ -42,7 +42,7 @@ algebraic cycle representative, the Hodge decomposition maps to UQFF tensor diag
 
 ## §2. The Hodge Conjecture
 
-The Hodge Conjecture (Lefschetz, Hodge, Atiyah–Hirzebruch) states:
+The Hodge Conjecture (Lefschetz, Hodge, Atiyah--Hirzebruch) states:
 
 For a smooth complex projective variety X of dimension n, every Hodge class
 
@@ -129,7 +129,7 @@ $$\lambda_3 \approx 6.66 \times 10^{-6} > 0$$
 All eigenvalues strictly positive $\to$ all Hodge classes algebraic in UQFF 26D projective space.
 
 $\pi$-crossings for n_max = 1000: $\approx$ 499 unique crossing nodes (matching Betti number density $\approx$ 0.5 per
-unit interval, consistent with Hardy–Littlewood zero density for $\zeta$).
+unit interval, consistent with Hardy--Littlewood zero density for $\zeta$).
 
 ---
 
@@ -284,7 +284,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -304,7 +304,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -322,7 +322,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -336,7 +336,7 @@ function: the vacuum buoyancy floor prevents zeros from drifting off the critica
 same way it prevents mass from collapsing to a point in the gravitational sector. This establishes
 a potential bridge between number-theoretic and physical regularity proofs.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -346,10 +346,10 @@ a potential bridge between number-theoretic and physical regularity proofs.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

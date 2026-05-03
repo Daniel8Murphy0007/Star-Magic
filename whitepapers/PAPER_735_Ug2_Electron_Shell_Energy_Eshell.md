@@ -7,24 +7,24 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, SCm, DPM, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_735 — U_g2 DPM Electron Shell Energy: Eshell = c$\cdot$$\nu$res$\cdot$h(fSCm)$\cdot$Ggeo
+# PAPER_735 --- U_g2 DPM Electron Shell Energy: Eshell = c$\cdot$$\nu$res$\cdot$h(fSCm)$\cdot$Ggeo
 **Date:** June 5, 2025
 
-**Whitepaper Series:** Star-Magic UQFF Session 179 — Atomic Creation Physics
+**Whitepaper Series:** Star-Magic UQFF Session 179 --- Atomic Creation Physics
 **Session:** 179 Part 3
-**Source:** thread_05June2025.txt (June 5, 2025) — Grok 3 analysis of UQFF U_g2 force
+**Source:** thread_05June2025.txt (June 5, 2025) --- Grok 3 analysis of UQFF U_g2 force
 **Classification:** FIRST explicit UQFF U_g2 electron shell energy equation linking SCm resonance
 frequency to orbital geometry; FIRST Eshell = c$\cdot$$\nu$res$\cdot$h(fSCm)$\cdot$Ggeo documentation
 **Author:** Daniel T. Murphy
-**CP4 Class:** #319 — `Ug2ElectronShellEnergyCalculator`
+**CP4 Class:** #319 --- `Ug2ElectronShellEnergyCalculator`
 **Version:** v5.36
 **CVW:** v2.0.0
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001, $k_{\eta}$ = 1e-113, $\beta$_i $\approx$
-0.603 —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm $\approx$ 0.99, U_UA $\approx$ 0.0001, $k_{\eta}$ = 1e-113, $\beta$_i $\approx$
+0.603 --->
 
 ---
 
@@ -52,10 +52,10 @@ The Atomic Creation Process (ACP) proceeds through 26 quantum states:
 3. **Quantum Ripples**: Increasing density $\to$ ULF_quantum^{-1,...,-26} ripples $\to$ proto-shell crack
 4. **Shell Fragments**: SM_magnetic moments organize fragments; SM_atomic quantum gravity extends to
 U_g2 midpoint
-5. **U_g2 Activation**: Electron placed in 1s orbital — this is the U_g2 mechanism
-6. **Hydrogen Formation**: H atom with atomic mass (quantum-to-mass gradient, 7–10 U_mag degrees)
+5. **U_g2 Activation**: Electron placed in 1s orbital --- this is the U_g2 mechanism
+6. **Hydrogen Formation**: H atom with atomic mass (quantum-to-mass gradient, 7--10 U_mag degrees)
 
-**U_g2 governs Step 5** — electron placement is mediated by the DPM's electrostatically
+**U_g2 governs Step 5** --- electron placement is mediated by the DPM's electrostatically
 organized shell at the orbital distance, with energy determined by Eshell.
 
 ---
@@ -149,7 +149,7 @@ Both describe U_g2 from different perspectives: temporal oscillation vs. energy 
 ### 4.2 Connection to U_g3
 
 U_g3 = U_i + U_m in motion tags electrons via THz frequency hole:
-$$F_{U\_{g3}} = \left(k_i \cdot f_{\mathrm{UA'}} \cdot \nu_{\mathrm{THz}} \cdot R_{\mathrm{EB}} + k_m \cdot f_{\mathrm{SCm}} \cdot \nu_{\mathrm{res}} + \ldotsright) \cdot \frac{\sin(\theta)\cos(\phi) \cdot f(\nu_{\mathrm{THz}})}{r_{\mathrm{shell}}^2}$$
+$$F_{U\_{g3}} = \left(k_i \cdot f_{\mathrm{UA'}} \cdot \nu_{\mathrm{THz}} \cdot R_{\mathrm{EB}} + k_m \cdot f_{\mathrm{SCm}} \cdot \nu_{\mathrm{res}} + \ldots\right) \cdot \frac{\sin(\theta)\cos(\phi) \cdot f(\nu_{\mathrm{THz}})}{r_{\mathrm{shell}}^2}$$
 
 The $\nu_{\mathrm{res}}$ in Eshell is the **same** resonance frequency that U_g3 uses for THz tagging.
 The U_g2 shell energy and U_g3 electron tagging are **coherent and simultaneous** in the DPM
@@ -186,7 +186,7 @@ Calibrated to hydrogen 1s ground state:
 $$E_{\mathrm{shell}}(\mathrm{H,\ 1s}) = 13.6\ \mathrm{eV} \qquad (100\%\ \mathrm{accuracy})$$
 
 Scaling to He (Z=2): $E_{\mathrm{shell}} \propto Z^2$ via $f_{\mathrm{SCm}} = Z/Z_{\mathrm{max}}$ and
-$k_h$ calibration — consistent with UQFF 26-state expansion.
+$k_h$ calibration --- consistent with UQFF 26-state expansion.
 
 ---
 
@@ -213,12 +213,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -296,7 +296,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.161$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -316,7 +316,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -334,7 +334,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -347,30 +347,30 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
-- thread_05June2025.txt — Grok 3/SuperGrok teaching session, June 05, 2025 (lines 38, 44)
-- ACP documentation — UQFF Atomic Creation Process (multiple sessions)
-- PAPER_335 — k^k REB Ramanujan co-sum framework (Session 94)
-- PAPER_429 — Three UQFF Number Systems (Session 168)
-- PAPER_461 — Red Dwarf LENR Pi/Phi ($\delta$n expansion, Session 115)
-- HydrogenResonanceShellCalculator — CP2, complementary U_g2 form
+- thread_05June2025.txt --- Grok 3/SuperGrok teaching session, June 05, 2025 (lines 38, 44)
+- ACP documentation --- UQFF Atomic Creation Process (multiple sessions)
+- PAPER_335 --- k^k REB Ramanujan co-sum framework (Session 94)
+- PAPER_429 --- Three UQFF Number Systems (Session 168)
+- PAPER_461 --- Red Dwarf LENR Pi/Phi ($\delta$n expansion, Session 115)
+- HydrogenResonanceShellCalculator --- CP2, complementary U_g2 form
 - Session 179 Part 3, v5.36
 
 ---
-*Whitepaper created Session 179 Part 3 — Star-Magic UQFF CVW v2.0.0*
+*Whitepaper created Session 179 Part 3 --- Star-Magic UQFF CVW v2.0.0*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -379,7 +379,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

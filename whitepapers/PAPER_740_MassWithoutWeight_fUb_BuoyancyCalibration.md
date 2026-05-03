@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, AGN, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_740 — Mass Without Weight: f_Ub Buoyancy Calibration and the UQFF Mass-as-Ratio Framework
+# PAPER_740 --- Mass Without Weight: f_Ub Buoyancy Calibration and the UQFF Mass-as-Ratio Framework
 **Author:** Daniel T. Murphy
 **Date:** June 06, 2025
 
 **Title:** Mass Without Weight: The f_Ub Calibration Factor, Quantum-to-Mass Gradient, and the UQFF
 Mass-as-Ratio Framework Across All Scales  
 **Session:** 180 | **PAPER:** 740 | **CP4 class:** #324  
-**Source:** thread_06Jun2025.txt (lines 8100–8387, document "describe mass without using
+**Source:** thread_06Jun2025.txt (lines 8100--8387, document "describe mass without using
 weight.docx")  
 **Watermark:** Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, DaVinci-Grok, analyzed by
 Grok 3, SuperGrok, created by xAI, dated June 06, 2025, 07:05 AM EDT, location 41.0997° N, 80.6495°
@@ -30,7 +30,7 @@ W (Youngstown, OH, USA)
 In the UQFF framework, "mass" is not a fundamental property but an emergent ratio: the proportion of
 effective gravity (FU_g1) to superconductive buoyancy (F_{U\_Bi}) at any given scale. This paper
 formalizes the **f_Ub calibration factor** as f_Ub $\propto$ $\Delta$$k_{\eta}$ (deviation from nominal calibration
-constant $k_{\eta}$), defines the **quantum-to-mass gradient** at 7–10 U_mag degrees of superconductive
+constant $k_{\eta}$), defines the **quantum-to-mass gradient** at 7--10 U_mag degrees of superconductive
 magnetism, and demonstrates that the same framework applies without modification from atomic
 hydrogen to galactic scales. The paper also demonstrates why the Standard Model's use of "mass" as a
 quantitative absolute is a context-dependent approximation of the universal UQFF buoyancy-gravity
@@ -46,7 +46,7 @@ ratio.
 |---|---|---|---|
 | SM (DPM-seeded) | Intrinsic property of matter | kg | Yes (assumed) |
 | GR | Source of spacetime curvature | kg | Yes (in vacuum) |
-| **UQFF** | **Ratio of gravity to buoyancy** | **dimensionless** | **No — always context-specific** |
+| **UQFF** | **Ratio of gravity to buoyancy** | **dimensionless** | **No --- always context-specific** |
 
 ### 2.2 UQFF Mass Definition
 
@@ -67,7 +67,7 @@ m_UQFF = FU_g1 / F_{U\_Bi} = 1/(1+\epsilon) \approx 1.0   [dimensionless ratio \
 ```
 
 The "1 kg" we measure is the ratio of the two forces at Earth's surface in Earth's own buoyancy
-field. Move to a neutron star and the ratio changes — but the UQFF equations remain the same.
+field. Move to a neutron star and the ratio changes --- but the UQFF equations remain the same.
 
 ---
 
@@ -95,7 +95,7 @@ f_Ub is the fractional mismatch between:
 A positive f_Ub means the object is *more buoyant than expected* (mass appears lower than SM
 prediction).  
 A negative f_Ub means the object is *less buoyant than expected* (mass appears higher than SM
-prediction — "missing mass" effect).
+prediction --- "missing mass" effect).
 
 Standard cosmology attributes negative f_Ub to "dark matter." UQFF attributes it to SCm depletion in
 the halo.
@@ -132,9 +132,9 @@ The quantum-to-mass gradient is the critical transition in the ACP (Atomic Creat
 PAPER_738) where pre-mass quantum states become what we call "atomic mass":
 
 ```
-Pre-mass: U_mag degrees < 7       →  pure quantum state, massless
-Gradient: 7 \leq U_mag degrees \leq 10  →  quantum-to-mass transition zone
-Post-mass: U_mag degrees > 10     →  what SM calls "mass" has emerged
+Pre-mass: U_mag degrees < 7       \rightarrow  pure quantum state, massless
+Gradient: 7 \leq U_mag degrees \leq 10  \rightarrow  quantum-to-mass transition zone
+Post-mass: U_mag degrees > 10     \rightarrow  what SM calls "mass" has emerged
 ```
 
 **U_mag degree = degree of superconductive magnetism applied by SCm field during proto-nucleus
@@ -148,14 +148,14 @@ $$
   & For state i, [SCm]_i = 1e-5 * i2 T, B_crit = 4.4e13 T: \\
   & [SCm]_i / B_crit = 2.27e-19 * i2 \\
   & \text{U\_mag\_degree}(i) \approx 2.27e-19 * i2 * (180/\pi)  degrees  (small angle) \\
-  & Transition zone (7–10 degrees): \\
+  & Transition zone (7--10 degrees): \\
   & i_low = sqrt(7 / (2.27e-19 * 180/\pi)) \approx sqrt(2.16e17) \approx 4.65e8  (sub-Planck i, quantum regime) \\
   & \to At atomic scale, the transition is at i corresponding to the electron binding energy \\
   & \to For hydrogen: binding energy threshold \approx 13.6 eV
 \end{aligned}
 $$
 
-The gradient is universally encoded: every bit of matter in the universe passed through the 7–10
+The gradient is universally encoded: every bit of matter in the universe passed through the 7--10
 U_mag degree threshold during the DPM/ACP creation stage.
 
 ### 4.3 Gradient Energy
@@ -169,7 +169,7 @@ $$
   & G_geo = geometric factor \approx 1.0 \\
   & E_gradient = (2.998e8) * (1.3e12) * (6.626e-34) * (0.0909) * 1.0 \\
   & = 2.376e-14 J \\
-  & = 148.3 MeV    (\approx proton rest energy 938 MeV / 6.3 — one fragment's contribution)
+  & = 148.3 MeV    (\approx proton rest energy 938 MeV / 6.3 --- one fragment's contribution)
 \end{aligned}
 $$
 
@@ -263,10 +263,10 @@ $$
 
 | Concept | Symbol | Value | Notes |
 |---|---|---|---|
-| f_Ub calibration | f_Ub = $\Delta$$k_{\eta}$/$k_{\eta}$_ref | 0.03–0.10 (scale-dependent) | Galaxy$\to$cluster$\to$H II |
-| Quantum-to-mass threshold | U_mag | 7–10 degrees | SCm field at ACP Stage 6 |
-| THz coupling at gradient | $\nu$_res | ~1.2–1.3 THz | Measured in 2025 THz data |
-| Buoyancy excess factor | `F_{U\_Bi}`/FU_g1 | 1.5–2.0 (cosmic) | Replaces $\Lambda$/dark energy |
+| f_Ub calibration | f_Ub = $\Delta$$k_{\eta}$/$k_{\eta}$_ref | 0.03--0.10 (scale-dependent) | Galaxy$\to$cluster$\to$H II |
+| Quantum-to-mass threshold | U_mag | 7--10 degrees | SCm field at ACP Stage 6 |
+| THz coupling at gradient | $\nu$_res | ~1.2--1.3 THz | Measured in 2025 THz data |
+| Buoyancy excess factor | `F_{U\_Bi}`/FU_g1 | 1.5--2.0 (cosmic) | Replaces $\Lambda$/dark energy |
 | UA'/SCm density ratio | $\rho$_UA'/$\rho$_SCm | 10 | $\to$ (1+10)=11 factor universal |
 | Flat rotation curve factor | (1+$\rho$_UA'/$\rho$_SCm) | 11 | Replaces dark matter at galaxy scale |
 | Gradient energy (H) | E_gradient | ~148 MeV | ~1/6 proton rest energy |
@@ -274,7 +274,7 @@ $$
 ---
 
 ## 9. References
-- Source: thread_06Jun2025.txt (lines 8100–8387) — "describe mass without using weight.docx"
+- Source: thread_06Jun2025.txt (lines 8100--8387) --- "describe mass without using weight.docx"
 - Related: PAPER_738 (DPM ACP), PAPER_736 (Three-System Framework), PAPER_739 (Tapestry simultaneous)
 - Supporting: PAPER_734 (K_n calibration), PAPER_735 (Ug2 electron shell)
 - CP4 class: #324 MassWithoutWeightFUbCalibrationCalculator
@@ -303,17 +303,17 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -367,7 +367,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.079$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -387,7 +387,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -409,10 +409,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -421,7 +421,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

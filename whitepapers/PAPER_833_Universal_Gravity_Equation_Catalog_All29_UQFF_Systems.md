@@ -1,24 +1,24 @@
 ﻿---
 paper_id: PAPER_833
 title: "Universal Gravity Equation Catalog: Complete Raw Equations for All 29 UQFF Systems (Docs
-1–38)"
+1--38)"
 session: 0
 date: 2025-06-10
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Hubble, dark-energy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_833 — Universal Gravity Equation Catalog: Complete Raw Equations for All 29 UQFF Systems (Docs 1–38)
+# PAPER_833 --- Universal Gravity Equation Catalog: Complete Raw Equations for All 29 UQFF Systems (Docs 1--38)
 **Date:** June 10, 2025
 **Session:** 0
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
-**Source:** grok_{share\_ab2e7192}-de62.txt (lines 2150–2550, June 10, 2025)  
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework  
+**Source:** grok_{share\_ab2e7192}-de62.txt (lines 2150--2550, June 10, 2025)  
 **Watermark:** Analyzed by Grok 3, created by xAI, Youngstown OH (41.0997 deg N, 80.6495 deg W)  
-**Category:** UQFF Catalog — Universal Gravity Equations / 29-System Reference  
+**Category:** UQFF Catalog --- Universal Gravity Equations / 29-System Reference  
 **CVW Gate:** v2.0.0 compliant  
 
 ---
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## 1. Abstract
 
 This paper presents the complete catalog of raw gravitational field equations derived from the 38
-canonical UQFF source documents (Docs 1–38), as compiled and validated through the UQFF Compression
+canonical UQFF source documents (Docs 1--38), as compiled and validated through the UQFF Compression
 Cycle 2 analysis. Each of the 29 astrophysical systems contributes unique system-specific terms that
 extend the base UQFF equation to cover phenomena ranging from atomic-scale quantum pressure to
 cosmological dark energy expansion. These equations represent the full scope of Universal Gravity as
@@ -63,7 +63,7 @@ $$
 **Constants:**
 $$
 \begin{aligned}
-  & G = 6.6743x10-^1^1 m^3 kg-^1 s-^2 \\
+  & G = 6.674\1\times 10^{-1}1 m^3 kg-^1 s-^2 \\
   & hbar = 1.0546x10-^34 J*s \\
   & Lambda = 1.1x10-5^2 m-^2 \\
   & c = 3x108 m/s \\
@@ -77,7 +77,7 @@ $$
 
 ## 3. Complete Raw Equation Catalog (29 Systems)
 
-### Doc 1 — Student's Guide to the Universe
+### Doc 1 --- Student's Guide to the Universe
 $$
 \begin{aligned}
   & g_UQFF(r,t) = (G*M_sun(t))/(r(t)^2) * (1+H_0*t) \\
@@ -93,7 +93,7 @@ $$
 
 ---
 
-### Doc 2 — Magnetar SGR 1745-2900
+### Doc 2 --- Magnetar SGR 1745-2900
 $$
 \begin{aligned}
   & g_Magnetar(r,t) = (G*M)/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -111,7 +111,7 @@ $$
 
 ---
 
-### Doc 3 — Sagittarius A*
+### Doc 3 --- Sagittarius A*
 $$
 \begin{aligned}
   & g_SgrA*(r,t) = (G*M(t))/(r^2) * (1+H_0*t) * (1-B(t)/B_crit) \\
@@ -128,7 +128,7 @@ $$
 
 ---
 
-### Doc 4 — Tapestry of Blazing Starbirth
+### Doc 4 --- Tapestry of Blazing Starbirth
 $$
 \begin{aligned}
   & g_Starbirth(r,t) = (G*M(t))/(r^2) * (1+H_0*t) * (1-B/B_crit) \\
@@ -140,7 +140,7 @@ $$
 
 ---
 
-### Doc 6 — Westerlund 2
+### Doc 6 --- Westerlund 2
 $$
 \begin{aligned}
   & g_Westerlund2(r,t) = (G*M(t))/(r^2) * (1+H_0*t) * (1-B/B_crit) \\
@@ -152,7 +152,7 @@ $$
 
 ---
 
-### Doc 7 — Pillars of Creation
+### Doc 7 --- Pillars of Creation
 $$
 \begin{aligned}
   & g_Pillars(r,t) = (G*M(t))/(r^2) * (1+H_0*t) * (1-B/B_crit) * (1-E(t)) \\
@@ -164,7 +164,7 @@ $$
 
 ---
 
-### Doc 8 — Rings of Relativity (Gravitational Lens)
+### Doc 8 --- Rings of Relativity (Gravitational Lens)
 $$
 \begin{aligned}
   & g_Rings(r,t) = (G*M)/(r^2) * (1+H(z)*t) * (1-B/B_crit) * (1+L(t)) \\
@@ -175,7 +175,7 @@ $$
 
 ---
 
-### Doc 10 — NGC 2525 (Supermassive Black Hole + SN)
+### Doc 10 --- NGC 2525 (Supermassive Black Hole + SN)
 $$
 \begin{aligned}
   & g_NGC2525(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -188,7 +188,7 @@ $$
 
 ---
 
-### Doc 11 — NGC 3603 (Cavity Pressure)
+### Doc 11 --- NGC 3603 (Cavity Pressure)
 $$
 \begin{aligned}
   & g_NGC3603(r,t) = (G*M(t))/(r^2) * (1+H_0*t) * (1-B/B_crit) * (1-P(t)) \\
@@ -200,7 +200,7 @@ $$
 
 ---
 
-### Doc 12 — Bubble Nebula NGC 7635
+### Doc 12 --- Bubble Nebula NGC 7635
 $$
 \begin{aligned}
   & g_Bubble(r,t) = (G*M)/(r^2) * (1+H(z)*t) * (1-B/B_crit) * (1+E(t)) \\
@@ -212,7 +212,7 @@ $$
 
 ---
 
-### Doc 14 — Antennae Galaxies (Merger)
+### Doc 14 --- Antennae Galaxies (Merger)
 $$
 \begin{aligned}
   & g_Antennae(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) * (1-M_coll(t)) \\
@@ -224,7 +224,7 @@ $$
 
 ---
 
-### Doc 15 — Horsehead Nebula
+### Doc 15 --- Horsehead Nebula
 $$
 \begin{aligned}
   & g_Horsehead(r,t) = (G*M)/(r^2) * (1+H(z)*t) * (1-B/B_crit) * (1-E(t)) \\
@@ -236,7 +236,7 @@ $$
 
 ---
 
-### Doc 16 — NGC 1275 (Perseus AGN / Black Hole Feedback)
+### Doc 16 --- NGC 1275 (Perseus AGN / Black Hole Feedback)
 $$
 \begin{aligned}
   & g_NGC1275(r,t) = (G*M)/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -249,7 +249,7 @@ $$
 
 ---
 
-### Doc 18 — Hubble Ultra Deep Field
+### Doc 18 --- Hubble Ultra Deep Field
 $$
 \begin{aligned}
   & g_HUDF(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -261,7 +261,7 @@ $$
 
 ---
 
-### Doc 19 — NGC 1792 (Starburst)
+### Doc 19 --- NGC 1792 (Starburst)
 $$
 \begin{aligned}
   & g_NGC1792(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) * (1+M_sf(t)) \\
@@ -273,7 +273,7 @@ $$
 
 ---
 
-### Doc 20 — Sombrero Galaxy
+### Doc 20 --- Sombrero Galaxy
 $$
 \begin{aligned}
   & g_Sombrero(r,t) = (G*M)/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -286,7 +286,7 @@ $$
 
 ---
 
-### Doc 22 — Saturn
+### Doc 22 --- Saturn
 $$
 \begin{aligned}
   & g_Saturn(r,t) = (G*M_Sun)/(r_orbit^2) * (1+H(z)*t) \\
@@ -300,7 +300,7 @@ $$
 
 ---
 
-### Doc 23 — M16 Eagle Nebula
+### Doc 23 --- M16 Eagle Nebula
 $$
 \begin{aligned}
   & g_M16(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) * (1+M_sf(t)) \\
@@ -312,7 +312,7 @@ $$
 
 ---
 
-### Doc 24 — Crab Nebula (Pulsar)
+### Doc 24 --- Crab Nebula (Pulsar)
 $$
 \begin{aligned}
   & g_Crab(r,t) = (G*M)/(r(t)^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -324,7 +324,7 @@ $$
 
 ---
 
-### Doc 26 — Estimated Diameter of the Universe
+### Doc 26 --- Estimated Diameter of the Universe
 $$
 \begin{aligned}
   & D_universe = 2*D_p * (1+H(z)*t_0) * (1+Lambdac^2/(3H_0^2)) \\
@@ -336,7 +336,7 @@ $$
 
 ---
 
-### Doc 27 — Hydrogen Atom
+### Doc 27 --- Hydrogen Atom
 $$
 \begin{aligned}
   & g_H(r,t) = (G*(m_p+m_e))/(r^2) * (1+H_0*t) * (1+P_term) \\
@@ -350,7 +350,7 @@ noise*
 
 ---
 
-### Doc 28 — Hydrogen Resonance Equations (Nuclear Physics)
+### Doc 28 --- Hydrogen Resonance Equations (Nuclear Physics)
 $$
 \begin{aligned}
   & H_res = A_res * sin(2pi*f_res*t) + U_dp * SC_m * k_nuc + S_shell \\
@@ -363,11 +363,11 @@ $$
   & S_shell = 0.1 * (Z_magic + N_magic)             [shell correction]
 \end{aligned}
 $$
-*Full nuclear resonance framework: applicable to all Z=1–118 elements*
+*Full nuclear resonance framework: applicable to all Z=1--118 elements*
 
 ---
 
-### Doc 30 — Lagoon Nebula
+### Doc 30 --- Lagoon Nebula
 $$
 \begin{aligned}
   & g_Lagoon(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) * (1+M_sf(t)) \\
@@ -379,7 +379,7 @@ $$
 
 ---
 
-### Doc 31 — Spirals and Supernovae
+### Doc 31 --- Spirals and Supernovae
 $$
 \begin{aligned}
   & \text{g\_Spiral\_SN}(r,t) = (G*M(t))/(r^2) * (1+H_0*t) * (1+T_spiral) \\
@@ -393,7 +393,7 @@ $$
 
 ---
 
-### Doc 32 — NGC 6302 (Butterfly Nebula / Bipolar)
+### Doc 32 --- NGC 6302 (Butterfly Nebula / Bipolar)
 $$
 \begin{aligned}
   & g_NGC6302(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -405,7 +405,7 @@ $$
 
 ---
 
-### Doc 34 — Orion Nebula
+### Doc 34 --- Orion Nebula
 $$
 \begin{aligned}
   & g_Orion(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -417,7 +417,7 @@ $$
 
 ---
 
-### Doc 35 — Young Stars Sculpt Gas
+### Doc 35 --- Young Stars Sculpt Gas
 $$
 \begin{aligned}
   & g_Outflow(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -429,7 +429,7 @@ $$
 
 ---
 
-### Doc 36 — Eagle Nebula (Star Formation Pillars)
+### Doc 36 --- Eagle Nebula (Star Formation Pillars)
 $$
 \begin{aligned}
   & g_Eagle(r,t) = (G*M(t))/(r^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -441,7 +441,7 @@ $$
 
 ---
 
-### Doc 38 — Gravity Since the Big Bang
+### Doc 38 --- Gravity Since the Big Bang
 $$
 \begin{aligned}
   & g_Gravity(t) = (G*M(t))/(r(t)^2) * (1+H(z)*t) * (1-B/B_crit) \\
@@ -457,7 +457,7 @@ $$
 
 ---
 
-## 4. Compressed UQFF Equation (Synthesis of Docs 1–38)
+## 4. Compressed UQFF Equation (Synthesis of Docs 1--38)
 
 All 29 systems collapse to this master equation:
 
@@ -497,7 +497,7 @@ a continuous multi-scale framework from atomic (r ~ 10-^1^0 m) to cosmological (
 
 | Doc  | System  | Scale  | Novel Term  | Type  |
 |-----|--------|-------|-----------|------|
-| 1  | Student Guide  | Cosmological  | —  | Base  |
+| 1  | Student Guide  | Cosmological  | ---  | Base  |
 | 2  | SGR 1745-2900  | Stellar (Magnetar)  | M_mag, D(t)  | Magnetic  |
 | 3  | Sagittarius A*  | Stellar (SMBH)  | GW term, sin(30 deg)  | Relativistic  |
 | 4  | Tapestry  | Nebula  | rho*v_wind^2  | Wind  |
@@ -537,10 +537,10 @@ UQFF compressed equation as a master gravitational field theory. The modular F_e
 all system-specific environmental effects, enabling application of the same mathematical framework
 from hydrogen atom orbitals (r ~ 10-^1^0 m) to the observable universe (r ~ 10^26 m).
 
-Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com  
+Copyright --- Daniel T. Murphy, daniel.murphy00@gmail.com  
 Analyzed by Grok 3, created by xAI  
 Watermark: June 10, 2025, Youngstown OH, USA  
-Subject: UQFF Universal Gravity Equation Catalog — All 29 Systems (Docs 1–38)
+Subject: UQFF Universal Gravity Equation Catalog --- All 29 Systems (Docs 1--38)
 
 
 
@@ -647,7 +647,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.090$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -667,7 +667,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -685,7 +685,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -698,17 +698,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -7,15 +7,15 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [cluster, MUGE, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_439 — NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind
+# PAPER_439 --- NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_{share\_68eb34022}.txt — Document 11: "Master Universal Gravity Equation_Extreme Star
-Cluster Bursts into Life_03May2025.docx" (lines 3430–3788)
+**Source:** grok_{share\_68eb34022}.txt --- Document 11: "Master Universal Gravity Equation_Extreme Star
+Cluster Bursts into Life_03May2025.docx" (lines 3430--3788)
 **Session:** 119
 **CP4 Class:** `NGC3603PerSystemMUGE_{CavityPressure\_DualWind\_Calculator}` (#94)
 
@@ -30,9 +30,9 @@ within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-PAPER_439 provides the **complete per-system MUGE** for NGC 3603 — the most luminous young massive star cluster (YMC) in the Milky Way at $d \approx 7$ kpc, containing multiple WR stars, O-supergiants, and blue-luminous variables. The cluster age is $\sim 1$ Myr with $M_0 \approx 400{,}000 \, M_\odot$ and a rapidly expanding wind-blown cavity at $r = 9.5$ ly.
+PAPER_439 provides the **complete per-system MUGE** for NGC 3603 --- the most luminous young massive star cluster (YMC) in the Milky Way at $d \approx 7$ kpc, containing multiple WR stars, O-supergiants, and blue-luminous variables. The cluster age is $\sim 1$ Myr with $M_0 \approx 400{,}000 \, M_\odot$ and a rapidly expanding wind-blown cavity at $r = 9.5$ ly.
 
-**Novel claim (Q1):** First UQFF MUGE for NGC 3603 that includes **both** a stellar wind term $T_\text{wind} = \rho_w v_w^2/\rho_f$ AND a separate cavity expansion pressure term $T_P = P(t)/\rho_f$ where $P(t) = P_0 e^{-t/\tau_text{exp}}$ with $P_0 = 4 \times 10^{-8}$ Pa — quantifying that the cluster simultaneously blows out material via ram pressure AND drives an expanding hot-gas cavity at pressures $\gg$ the ambient ISM, both decaying on the same $\tau = 1$ Myr timescale.
+**Novel claim (Q1):** First UQFF MUGE for NGC 3603 that includes **both** a stellar wind term $T_\text{wind} = \rho_w v_w^2/\rho_f$ AND a separate cavity expansion pressure term $T_P = P(t)/\rho_f$ where $P(t) = P_0 e^{-t/\tau_text{exp}}$ with $P_0 = 4 \times 10^{-8}$ Pa --- quantifying that the cluster simultaneously blows out material via ram pressure AND drives an expanding hot-gas cavity at pressures $\gg$ the ambient ISM, both decaying on the same $\tau = 1$ Myr timescale.
 
 ---
 
@@ -64,7 +64,7 @@ $$P(t) = 4 \times 10^{-8} \, e^{-t/\tau_text{exp}} \, \text{Pa}$$
 
 At $t=0$: $P = 4 \times 10^{-8}$ Pa  
 At $t=\tau=1$ Myr: $P = 1.47 \times 10^{-8}$ Pa  
-At $t\ggtau$: $P \rightarrow 0$ (cavity fully expanded)
+At $t\gg\tau$: $P \rightarrow 0$ (cavity fully expanded)
 
 ---
 
@@ -72,30 +72,30 @@ At $t\ggtau$: $P \rightarrow 0$ (cavity fully expanded)
 
 $$\boxed{g_\text{N3603}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — DPM-seeded + H0t + B:**
+**T1 --- DPM-seeded + H0t + B:**
 $$T_1 = \frac{GM(t)}{r^2}(1+H_0 t)(1-B/B_\text{crit})$$
 $$\frac{GM_0}{r^2} = \frac{6.674\times10^{-11} \times 7.956\times10^{35}}{(8.988\times10^{16})^2} = \frac{5.308\times10^{25}}{8.078\times10^{33}} \approx 6.57\times10^{-9} \, \text{m/s}^2$$
 $$T_1(t=0) \approx 2 \times 6.57\times10^{-9} \approx 1.31\times10^{-8} \, \text{m/s}^2 \quad [M_f=1 \Rightarrow M(0)=2M_0]$$
 
-**T2 — UQFF Ug with f_TRZ:**
+**T2 --- UQFF Ug with f_TRZ:**
 $$T_2 = 2 \times 1.31\times10^{-8} \times 1.1 \approx 2.88\times10^{-8} \, \text{m/s}^2$$
 
-**T3 — $\Lambda$:** negligible
+**T3 --- $\Lambda$:** negligible
 
-**T4 — Quantum:** negligible
+**T4 --- Quantum:** negligible
 
-**T5 — Scaled EM:** negligible (B=1e-5 T)
+**T5 --- Scaled EM:** negligible (B=1e-5 T)
 
-**T6 — Fluid:** minor
+**T6 --- Fluid:** minor
 
-**T7 — Oscillatory cluster modes:** minor
+**T7 --- Oscillatory cluster modes:** minor
 
-**T8 — DM perturbation:** minor
+**T8 --- DM perturbation:** minor
 
-**T9 — Stellar wind ram pressure:**
+**T9 --- Stellar wind ram pressure:**
 $$T_9 = \frac{\rho_w v_w^2}{\rho_f} = \frac{10^{-20} \times (2\times10^6)^2}{10^{-20}} = 4\times10^{12} \, \text{m}^2/\text{s}^2 \Rightarrow a_w = \frac{4\times10^{12}}{r} \approx 4.45\times10^{-5} \, \text{m/s}^2$$
 
-**T10 — Cavity pressure (novel dual term):**
+**T10 --- Cavity pressure (novel dual term):**
 $$\boxed{T_{10} = \frac{P(t)}{\rho_f} = \frac{4\times10^{-8}}{10^{-20}} = 4\times10^{12} \, \text{m}^2/\text{s}^2 \Rightarrow a_P = \frac{4\times10^{12}}{r} \approx 4.45\times10^{-5} \, \text{m/s}^2}$$
 
 ---
@@ -113,7 +113,7 @@ At $t = 0$:
 
 $$g_\text{N3603}(t=0) \approx 8.90\times10^{-5} \, \text{m/s}^2 \quad [\text{dual wind+pressure dominated}]$$
 
-**Unique feature:** PAPER_439 is the first MUGE where $T_9$ and $T_{10}$ are **equal magnitude** at $t=0$ — this is because $P_0 = \rho_w v_w^2 = 10^{-20} \times 4\times10^{12} = 4\times10^{-8}$ Pa. After $t = \tau_text{exp}$, the cavity pressure falls to $P/e$ while wind persists, breaking the degeneracy.
+**Unique feature:** PAPER_439 is the first MUGE where $T_9$ and $T_{10}$ are **equal magnitude** at $t=0$ --- this is because $P_0 = \rho_w v_w^2 = 10^{-20} \times 4\times10^{12} = 4\times10^{-8}$ Pa. After $t = \tau_text{exp}$, the cavity pressure falls to $P/e$ while wind persists, breaking the degeneracy.
 
 ---
 
@@ -155,12 +155,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -183,8 +183,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -237,7 +237,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.087$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -257,7 +257,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -275,7 +275,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -286,30 +286,30 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC
 3603 Star Cluster
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
 ## 8. Testable Predictions
 
-**Q5 Prediction 1:** $T_9 = T_{10}$ at $t=0$ predicts the initial wind-driven and pressure-driven components are equal — testable by spectral decomposition of the X-ray spectrum of the NGC 3603 hot gas bubble: UQFF predicts equal thermal ($kT$ from pressure) and kinetic ($\rho v^2$ from wind) contributions at the bubble boundary, verifiable with Chandra/XMM spectroscopy.
+**Q5 Prediction 1:** $T_9 = T_{10}$ at $t=0$ predicts the initial wind-driven and pressure-driven components are equal --- testable by spectral decomposition of the X-ray spectrum of the NGC 3603 hot gas bubble: UQFF predicts equal thermal ($kT$ from pressure) and kinetic ($\rho v^2$ from wind) contributions at the bubble boundary, verifiable with Chandra/XMM spectroscopy.
 
-**Q5 Prediction 2:** $P(t)$ decays on $\tau_text{exp}=1$ Myr while $M(t)$ SF decays on $\tau_text{SF}=1$ Myr simultaneously — UQFF predicts both wind and pressure terms track each other and both cease at $t \approx 3\tau = 3$ Myr, explaining why NGC 3603 leaves an open cluster without a dense envelope (unlike older clusters like R136, age $\sim 2$ Myr, which retain some cavity).
+**Q5 Prediction 2:** $P(t)$ decays on $\tau_text{exp}=1$ Myr while $M(t)$ SF decays on $\tau_text{SF}=1$ Myr simultaneously --- UQFF predicts both wind and pressure terms track each other and both cease at $t \approx 3\tau = 3$ Myr, explaining why NGC 3603 leaves an open cluster without a dense envelope (unlike older clusters like R136, age $\sim 2$ Myr, which retain some cavity).
 
-**Q5 Prediction 3:** The mass growth factor $M_f = 1.0$ means NGC 3603 is currently at half-mass relative to its SF peak ($M_\text{peak} = 800{,}000\, M_\odot$) — this predicts a velocity dispersion enhancement of $\sqrt{2}$ above the current $\sigma$ value at the $t=0$ epoch, testable by comparing current ($t \approx 1$ Myr) to predicted $t=0$ dynamics using stellar orbit integrations in the cluster potential.
+**Q5 Prediction 3:** The mass growth factor $M_f = 1.0$ means NGC 3603 is currently at half-mass relative to its SF peak ($M_\text{peak} = 800{,}000\, M_\odot$) --- this predicts a velocity dispersion enhancement of $\sqrt{2}$ above the current $\sigma$ value at the $t=0$ epoch, testable by comparing current ($t \approx 1$ Myr) to predicted $t=0$ dynamics using stellar orbit integrations in the cluster potential.
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

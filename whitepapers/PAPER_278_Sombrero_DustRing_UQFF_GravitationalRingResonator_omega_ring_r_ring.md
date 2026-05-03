@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_278 — Sombrero Dust Ring UQFF Gravitational Ring Resonator: $\omega$_ring and r_ring
+# PAPER_278 --- Sombrero Dust Ring UQFF Gravitational Ring Resonator: $\omega$_ring and r_ring
 **Date:** March 2026
 
 **Author:** Daniel T. Murphy
 **Module:** SOMBRERO_{UQFF\_MODULE}.cpp (UQFF 2.0)
-**Session:** 77 — March 2026
+**Session:** 77 --- March 2026
 **Framework:** Unified Quantum Field Framework (UQFF 2.0)
-**Status:** Complete — embedded in SOMBRERO_{UQFF\_MODULE}.cpp
+**Status:** Complete --- embedded in SOMBRERO_{UQFF\_MODULE}.cpp
 **Whitepaper Series:** 278/1000
 **DOI (Provisional):** UQFF-2026-278-RING
 
@@ -53,8 +53,8 @@ galaxy's extended bulge. This dust structure:
 
 - Lies at approximately 1/3 to 1/4 of the half-light radius from the galactic centre
 - Contains a substantial fraction of M104's cold ISM dust mass
-- The total molecular gas and dust mass is estimated at ~108–109 M_sun
-- Is dynamically stable — no evidence of radial inflow or rapid dispersal
+- The total molecular gas and dust mass is estimated at ~108--109 M_sun
+- Is dynamically stable --- no evidence of radial inflow or rapid dispersal
 
 As a stable ring at r_ring = r/3, it can be modelled within UQFF as a coherent oscillating mass
 concentration imposing a periodic boundary condition on the vacuum field at the reference point r.
@@ -62,7 +62,7 @@ concentration imposing a periodic boundary condition on the vacuum field at the 
 ### 1.2 Distinction from the Andromeda HI Ring (PAPER_275)
 
 In PAPER_275 (Andromeda), a decaying HI ring was modelled as F_ring = A_ring$\cdot$exp(-$\alpha$$\cdot$t)$\cdot$cos($\omega$_ring$\cdot$t)
-— an exponentially decaying oscillation corresponding to a transient tidal feature. The Sombrero
+--- an exponentially decaying oscillation corresponding to a transient tidal feature. The Sombrero
 dust ring is fundamentally different:
 
 | Feature | Andromeda (PAPER_275) | Sombrero (PAPER_278) |
@@ -74,7 +74,7 @@ dust ring is fundamentally different:
 | $\alpha$ (decay rate) | 1/(10 Gyr) | 0 (stable ring) |
 
 The absence of exponential decay in Sombrero's ring term reflects the ring's settled,
-gravitationally stable configuration — it has been dynamically relaxed into a long-lived equatorial
+gravitationally stable configuration --- it has been dynamically relaxed into a long-lived equatorial
 structure.
 
 ---
@@ -137,7 +137,7 @@ $$A_{\text{ring}} = 9 \times 0.001 \times 2.382 \times 10^{-10} = 2.144 \times 1
 
 $$\boxed{F_{\text{ring}}(t) = A_{\text{ring}} \cdot \cos(\omega_{\text{ring}} \cdot t)}$$
 
-This is a **pure oscillatory term** — no exponential decay, consistent with the ring's stable
+This is a **pure oscillatory term** --- no exponential decay, consistent with the ring's stable
 configuration. As the ring orbits, it imposes a periodic modulation on the vacuum field energy
 density at the reference point r with period T_ring = 12.08 Myr.
 
@@ -153,7 +153,7 @@ perturbation in the local UQFF field:
 
 $$\delta \rho_{\text{vac}}(t) = \delta \rho_{\text{vac},0} \cdot \cos!\left(\omega_{\text{ring}} t + `phi_0\right)$$
 
-This is equivalent to a **tuned resonator** in the vacuum field — a structure that cycles energy at
+This is equivalent to a **tuned resonator** in the vacuum field --- a structure that cycles energy at
 a characteristic frequency. The Sombrero dust ring is therefore the first identified **stable UQFF
 Gravitational Ring Resonator** in the catalogue.
 
@@ -166,7 +166,7 @@ Gravitational Ring Resonator** in the catalogue.
 | **Sombrero dust ring** | **12.08 Myr** |
 | Andromeda outer HI ring | ~90 Myr (PAPER_275 reference) |
 
-The Sombrero ring's 12.08 Myr period places it in the intermediate-mass galaxy inner disc regime —
+The Sombrero ring's 12.08 Myr period places it in the intermediate-mass galaxy inner disc regime ---
 rapid enough to generate significant temporal modulation of the UQFF field over cosmological
 baseline observations.
 
@@ -175,14 +175,14 @@ baseline observations.
 ## 4. Module Implementation
 
 ```cpp
-// PAPER_278 — SOMBRERO_{UQFF\_MODULE}.cpp, updateCache()
+// PAPER_278 --- SOMBRERO_{UQFF\_MODULE}.cpp, updateCache()
 r_ring    = r / 3.0;                                           // 7.867e19 m
 omega_ring = std::sqrt(G_grav * M / (r_ring * r_ring * r_ring)); // 1.650e-14 rad/s
 A_ring    = 9.0 * f_ring * g_{base\_cache};                       // 2.144e-12 m/s2
 
 // Applied in computeResonantTerm():
 double computeResonantTerm(double t) {
-    return A_ring * std::cos(omega_ring * t);   // pure oscillatory — no decay
+    return A_ring * std::cos(omega_ring * t);   // pure oscillatory --- no decay
 }
 ```
 
@@ -198,7 +198,7 @@ double computeResonantTerm(double t) {
 | A_ring | 2.144$\times$10-12 | m/s2 |
 | g_BH (PAPER_279) for comparison | 2.382$\times$10-12 | m/s2 |
 
-Note: A_ring $\approx$ g_BH in magnitude — the ring resonance and BH contribution are comparable at leading
+Note: A_ring $\approx$ g_BH in magnitude --- the ring resonance and BH contribution are comparable at leading
 order.
 
 ---
@@ -227,8 +227,8 @@ the effective gravitational acceleration at r = 2.36$\times$1020 m with amplitud
 While below direct observational reach today, this is a testable UQFF prediction for future stellar
 spectroscopic surveys.
 
-3. **Ring-BH coupling**: Noting that A_ring $\approx$ g_BH (both ~2.1–2.4$\times$10-12 m/s2), the ring and BH
-gravitational contributions are comparable at the reference radius — unique among UQFF modules where
+3. **Ring-BH coupling**: Noting that A_ring $\approx$ g_BH (both ~2.1--2.4$\times$10-12 m/s2), the ring and BH
+gravitational contributions are comparable at the reference radius --- unique among UQFF modules where
 the BH term is typically sub-dominant to the 26-layer Triadic sum.
 
 4. **Scale-free ring resonator formula**: F_ring = (r/r_ring)2 $\cdot$ f_ring $\cdot$ g_base $\cdot$
@@ -251,8 +251,8 @@ for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/
 
 ---
 
-*UQFF 2.0 — F_ring = A_ring$\cdot$cos($\omega$_ring$\cdot$t) is additive to the Triadic MUGE master equation. The
-stable ring resonator represents a new class of UQFF gravitational boundary condition. — Daniel T.
+*UQFF 2.0 --- F_ring = A_ring$\cdot$cos($\omega$_ring$\cdot$t) is additive to the Triadic MUGE master equation. The
+stable ring resonator represents a new class of UQFF gravitational boundary condition. --- Daniel T.
 Murphy, Session 77, March 2026.*
 
 ---
@@ -330,7 +330,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.137$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -350,7 +350,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -368,7 +368,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -381,17 +381,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -7,13 +7,13 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [wormhole, SCm, MUGE, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_373 — Morris-Thorne Wormhole Null Geodesics
+# PAPER_373 --- Morris-Thorne Wormhole Null Geodesics
 **Date:** 2025
 ## Star Magic UQFF Whitepaper Series
-### Author: Daniel T. Murphy | Session 101 | Source: `grok_{share\_11254865}`.txt (lines 2700–2800)
+### Author: Daniel T. Murphy | Session 101 | Source: `grok_{share\_11254865}`.txt (lines 2700--2800)
 ### Significance: FIRST wormhole physics integration in the Star Magic / UQFF CP pipeline.
 
 ---
@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents the implementation of Morris-Thorne traversable wormhole null geodesics
 within the Star Magic UQFF framework. The wormhole metric, geodesic equations, traversal and
 reflection conditions, and embedding functions are fully specified. This constitutes the
-first wormhole physics to appear in the Condensed Physics calculator pipeline (CP1–CP4).
+first wormhole physics to appear in the Condensed Physics calculator pipeline (CP1--CP4).
 The wormhole coupling to MUGE resonance gravity via the a_worm term is derived in PAPER_375.
 
 ---
@@ -49,7 +49,7 @@ For null geodesics ($ds^2 = 0$) with conserved energy $E = dt/d\lambda$ and angu
 $L = (b^2 + r^2) d\varphi/d\lambda$:
 
 $$
-\frac{dr}{d\lambda} = \pmsqrt{E^2 - \frac{L^2}{b^2 + r^2}}
+\frac{dr}{d\lambda} = \pm\sqrt{E^2 - \frac{L^2}{b^2 + r^2}}
 $$
 
 $$
@@ -104,7 +104,7 @@ These define the "funnel" shape visible in wormhole visualisations.
 The C++ propagator uses a first-order Euler method for simplicity (upgradeable to RK4):
 ```
 for step = 0..n_steps:
-    dr = (\pm√(E2-L2/(b2+r2))) \times dlambda
+    dr = (\pm\sqrt{}(E2-L2/(b2+r2))) \times dlambda
     d\phi = (L/(b2+r2)) \times dlambda
     dt = E \times dlambda
     r += dr, \phi += d\phi, t += dt
@@ -251,7 +251,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.169$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -271,7 +271,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -289,7 +289,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -302,13 +302,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
 - Morris, M.S. & Thorne, K.S. (1988). "Wormholes in spacetime and their use for interstellar
-  travel: A tool for teaching general relativity." *Am. J. Phys.* 56(5): 395–412.
+  travel: A tool for teaching general relativity." *Am. J. Phys.* 56(5): 395--412.
 - Visser, M. (1995). *Lorentzian Wormholes*. Springer-Verlag.
 
 ---
@@ -320,10 +320,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

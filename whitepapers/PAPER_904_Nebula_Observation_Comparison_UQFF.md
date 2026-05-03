@@ -1,18 +1,18 @@
 ---
 paper_id: PAPER_904
-title: "Nebula Observation Comparison — UQFF vs JWST/Chandra/Hubble/ALMA"
+title: "Nebula Observation Comparison --- UQFF vs JWST/Chandra/Hubble/ALMA"
 session: 210
 date: 2026-04-10
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Hubble, SCm, JWST, Chandra, wormhole, phonon, nebula, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_904: Nebula Observation Comparison — UQFF vs JWST/Chandra/Hubble/ALMA
+# PAPER_904: Nebula Observation Comparison --- UQFF vs JWST/Chandra/Hubble/ALMA
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-10
 **Session:** 210
 **Source:** Stellar-wind nebulae exploration + wormhole geodesic simulations + BH phonon physics
@@ -136,12 +136,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
@@ -209,7 +209,7 @@ $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = 
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.11$.
 
@@ -235,7 +235,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -253,12 +253,12 @@ bridge.*
 
 ## References
 
-1. PAPER_901 — Phonon-Modified Christoffel Geodesic
-2. PAPER_902 — Master Stellar Wind Phonon+E(t) Equation
-3. PAPER_903 — Rosette Nebula NGC2237
-4. PAPER_877 — Three-Assumption Cosmogenesis (SCm axiom)
+1. PAPER_901 --- Phonon-Modified Christoffel Geodesic
+2. PAPER_902 --- Master Stellar Wind Phonon+E(t) Equation
+3. PAPER_903 --- Rosette Nebula NGC2237
+4. PAPER_877 --- Three-Assumption Cosmogenesis (SCm axiom)
 5. Richer, J.S. et al. (2000) MNRAS 312, 327 (Eagle Nebula dynamics)
-6. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+6. Murphy, D.T. --- Star Magic UQFF Framework (2024-2026)
 
 ---
 
@@ -302,10 +302,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

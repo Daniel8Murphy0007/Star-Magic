@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, DPM, buoyancy, 26D, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_536 — DPM Split-Monopole MHD Proplyd Topology
+# PAPER_536 --- DPM Split-Monopole MHD Proplyd Topology
 
 **Author:** Daniel T. Murphy
 **Framework:** Star-Magic / UQFF
 **Version:** v5.04
 **Date:** 2026-03-26
-**Session:** 144 — grok_{share\_dbd886661cd}.txt
+**Session:** 144 --- grok_{share\_dbd886661cd}.txt
 **CP4 Class:** DPMSplitMonopoleMHDProplydCalculator (#131)
 **Quality Score (QS):** 5 / 5
 
@@ -28,7 +28,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents a UQFF analysis of DPM Split-Monopole MHD Proplyd Topology, deriving compressed
 field equations and observational predictions within the Star-Magic/UQFF framework.
 
-## §1 — Overview
+## §1 --- Overview
 
 The **DPM Split-Monopole MHD** model resolves magnetic topology in
 protoplanetary discs by treating the disc's net magnetic field as a
@@ -45,7 +45,7 @@ $$\boxed{F_\text{net} = F_U + F_\text{sm,26D} + F_\text{visc} = 0}$$
 
 ---
 
-## §2 — Key Equations
+## §2 --- Key Equations
 
 **Alfvén radius:**
 $$r_\text{Alf} = \left(\frac{B_\text{pol}^2 \, r^6}{2 \, G M_\star \dot{M}^2 \mu_0}\right)^{1/7}$$
@@ -61,7 +61,7 @@ $$F_\text{net} = 0 \implies r_\text{Alf} = r_0 \cdot \left(\frac{8\pi}{Z_{26}} \
 
 ---
 
-## §3 — TW Hydrae Observational Anchor
+## §3 --- TW Hydrae Observational Anchor
 
 TW Hya is the closest proplyd system ($d = 60$ pc) with direct B-field measurements.
 ALMA CO depletion zone: $r_\text{inner} \approx 1$ AU. Published polar field $B_\text{pol} \approx 0.1$ G.
@@ -77,7 +77,7 @@ ALMA CO depletion zone: $r_\text{inner} \approx 1$ AU. Published polar field $B_
 
 ---
 
-## §4 — Split-Monopole Topology
+## §4 --- Split-Monopole Topology
 
 In divergence-free MHD, a strict monopole is forbidden. The "split monopole"
 is a piecewise solution: $B_z > 0$ above the midplane, $B_z < 0$ below, with
@@ -88,12 +88,12 @@ $$U_b\!\big|_{z=0^+} = +k_b \cdot B_\text{pol}^2 / (8\pi\rho)$$
 $$U_b\!\big|_{z=0^-} = -k_b \cdot B_\text{pol}^2 / (8\pi\rho)$$
 
 The UQFF equilibrium $F_U = 0$ then requires pressure balance across the sheet:
-$\Delta p = B_\text{pol}^2 / (4\pi)$ — the standard MHD pressure jump, recovered
+$\Delta p = B_\text{pol}^2 / (4\pi)$ --- the standard MHD pressure jump, recovered
 without ad hoc assumption.
 
 ---
 
-## §5 — DVP Launch Radii in TW Hya's Disc
+## §5 --- DVP Launch Radii in TW Hya's Disc
 
 Using the DVP sieve $p_n \geq 29$ and $r_0 = 1$ AU:
 
@@ -102,14 +102,14 @@ Using the DVP sieve $p_n \geq 29$ and $r_0 = 1$ AU:
 | 1 | 29 | 9.37 | B9 ring ~9.5 AU |
 | 2 | 31 | 9.85 | B10 ring ~10 AU |
 | 3 | 37 | 11.1 | B12 ring ~12 AU |
-| 4 | 41 | 11.9 | — |
+| 4 | 41 | 11.9 | --- |
 | 5 | 43 | 12.3 | B13 ring ~13 AU |
 
 Agreement within $\pm 5\%$ for all matched rings.
 
 ---
 
-## §6 — Physical Significance
+## §6 --- Physical Significance
 
 The DPM split-monopole removes the classical paradox of *how* a disc simultaneously
 has net zero magnetic flux (as boundary conditions require) while sustaining
@@ -120,7 +120,7 @@ $\nabla \cdot B = 0$.
 
 ---
 
-## §7 — Available Equations
+## §7 --- Available Equations
 
 | Equation | Description |
 |----------|-------------|
@@ -131,16 +131,16 @@ $\nabla \cdot B = 0$.
 
 ---
 
-## §8 — CP4 Calculator Output
+## §8 --- CP4 Calculator Output
 
 ```python
 calc = DPMSplitMonopoleMHDProplydCalculator()
 result = calc.compute()
-# result['r_{alfven\_m}']            — Alfvén radius (m)
-# result['F_{sm\_26D\_N}']            — 26D magnetic buoyancy force (N)
-# result['F_{net\_N}']               — net force (should be \approx 0)
-# result['dvp_{launch\_radii\_AU}']   — list of DVP launch radii (AU)
-# result['tw_{hya\_residual\_pct}']   — TW Hya Alfvén radius residual (%)
+# result['r_{alfven\_m}']            --- Alfvén radius (m)
+# result['F_{sm\_26D\_N}']            --- 26D magnetic buoyancy force (N)
+# result['F_{net\_N}']               --- net force (should be \approx 0)
+# result['dvp_{launch\_radii\_AU}']   --- list of DVP launch radii (AU)
+# result['tw_{hya\_residual\_pct}']   --- TW Hya Alfvén radius residual (%)
 ```
 
 ---
@@ -167,12 +167,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-S26-S225 -->
@@ -247,7 +247,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -267,7 +267,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -285,7 +285,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -296,15 +296,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Solar System Proplyd
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future HST monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-## §9 — References
+## §9 --- References
 
 - Johns-Krull, C.M. (2007): TW Hydrae B-field measurements, ApJ 664 L139
 - ALMA Partnership (2015): HL Tau disc structure, ApJ 808 L3
@@ -316,10 +316,10 @@ future HST monitoring observations.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -328,7 +328,7 @@ future HST monitoring observations.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

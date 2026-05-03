@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, vacuum, SCm, dark-energy, F_{U\_Bi\_i}, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_592 — Speed of Light $c$ Derived from Pre-Mass Triad Equilibrium
+# PAPER_592 --- Speed of Light $c$ Derived from Pre-Mass Triad Equilibrium
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -36,14 +36,14 @@ m/s, establishing $c$ as the equilibrium velocity of the triad at $\rho \to 0$
 
 ---
 
-## §2 Method 1 — Pre-Mass Triad Equilibrium
+## §2 Method 1 --- Pre-Mass Triad Equilibrium
 
 At $\rho \to 0$ (pure void, pre-mass state), the magnetic term $U_m \approx 0$ and the
 triad reduces to:
 
-$$U_g + U_b = 0 \quadRightarrow\quad g\frac{SCm}{UA} - g = 0$$
+$$U_g + U_b = 0 \quad\Rightarrow\quad g\frac{SCm}{UA} - g = 0$$
 
-$$g \cdot \frac{SCm}{UA} = g \quadRightarrow\quad \frac{SCm}{UA} = 1$$
+$$g \cdot \frac{SCm}{UA} = g \quad\Rightarrow\quad \frac{SCm}{UA} = 1$$
 
 The equilibrium velocity at this point:
 
@@ -53,12 +53,12 @@ For $g \sim c^2$ (in natural units) or $g \cdot SCm/UA = c^2$:
 
 $$\boxed{c = \sqrt{g \cdot SCm/UA}}$$
 
-This is the fastest possible propagation velocity in a UQFF vacuum — the triad equilibrium
+This is the fastest possible propagation velocity in a UQFF vacuum --- the triad equilibrium
 speed.
 
 ---
 
-## §3 Method 2 — F_{U\_Bi\_i} Gaussian BH26 Anchor ($\mu$ = 92 GHz)
+## §3 Method 2 --- F_{U\_Bi\_i} Gaussian BH26 Anchor ($\mu$ = 92 GHz)
 
 The F_{U\_Bi\_i} Gaussian (PAPER_583 Form 6) is anchored at $\mu = 92\text{ GHz}$ (BH26 bin 1)
 with width $\sigma = 10^{16}$ Hz.
@@ -72,11 +72,11 @@ With calibrated $g$ at the BH26 frequency bin:
 $$c = \sqrt{\frac{g_\text{BH26} \cdot \sigma}{\mu}} \approx 3\times10^8\ \text{m/s}\ \checkmark$$
 
 BH26 anchor: $g_\text{BH26} \equiv c^2 \mu / \sigma = (3\times10^8)^2 \times 92\times10^9 / 10^{16}
-= 8.28\times10^{-2}$ — the effective coupling at 92 GHz.
+= 8.28\times10^{-2}$ --- the effective coupling at 92 GHz.
 
 ---
 
-## §4 Method 3 — Resonant $\omega$-Scale
+## §4 Method 3 --- Resonant $\omega$-Scale
 
 At triad resonance (Form 2), the DPM frequency sets the scale:
 
@@ -109,7 +109,7 @@ of the pre-mass UQFF vacuum.
 ## §6 Why $c$ is the Universal Speed Limit
 
 In UQFF, $c$ is the velocity at which $U_g + U_b = 0$ exactly. For $v > c$:
-the pressure order $P = (v_i - v_c)(...)$ becomes negative, meaning $\lambda_1 < 0$ —
+the pressure order $P = (v_i - v_c)(...)$ becomes negative, meaning $\lambda_1 < 0$ ---
 the tensor is no longer positive definite, and physical solutions do not exist.
 Therefore $v \leq c$ is automatically enforced by the eigenvalue positivity requirement.
 
@@ -145,12 +145,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -194,7 +194,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.071$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -214,7 +214,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -232,7 +232,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -247,20 +247,20 @@ agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Session 157 — Source: grok_{share\_4cef778c78b8}.txt*
+*Session 157 --- Source: grok_{share\_4cef778c78b8}.txt*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -269,7 +269,7 @@ is a falsifiable indicator of a unified vacuum origin for these constants.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |

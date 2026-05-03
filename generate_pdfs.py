@@ -33,6 +33,8 @@ BASE_CMD = [
     "-V", "fontsize=11pt",
     "-V", "documentclass=article",
     "--pdf-engine-opt=-interaction=nonstopmode",
+    "--pdf-engine-opt=-pool-size=10000000",   # fix: tiletter memory overflow
+    "--pdf-engine-opt=-extra-mem-top=10000000",
     "--from=markdown-yaml_metadata_block-raw_tex+smart",
     "--standalone",
     "--wrap=none",

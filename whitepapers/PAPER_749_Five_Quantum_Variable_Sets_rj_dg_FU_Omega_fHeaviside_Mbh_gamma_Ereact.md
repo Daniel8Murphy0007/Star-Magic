@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_749
-title: "Five Quantum Variable Document Sets — r_j, d_g, F_U, f_feedback, \Omega_g, f_Heaviside, H_SCm,
+title: "Five Quantum Variable Document Sets --- r_j, d_g, F_U, f_feedback, \Omega_g, f_Heaviside, H_SCm,
 \lambda_i, M_bh, \mu_j, \gamma, E_react"
 session: 180
 date: 2025-01-01
@@ -8,16 +8,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, AGN, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_749: Five Quantum Variable Document Sets — r_j, d_g, F_U, f_feedback, $\Omega$_g, f_Heaviside, H_SCm, $\lambda$_i, M_bh, $\mu$_j, $\gamma$, E_react
+# PAPER_749: Five Quantum Variable Document Sets --- r_j, d_g, F_U, f_feedback, $\Omega$_g, f_Heaviside, H_SCm, $\lambda$_i, M_bh, $\mu$_j, $\gamma$, E_react
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #333 — FiveQuantumVariableSetsUQFFCalculator  
+**CP4 Class:** #333 --- FiveQuantumVariableSetsUQFFCalculator  
 
 ---
 
@@ -47,7 +47,7 @@ This paper assimilates all 15 variables as a unified reference set.
 
 ## 2. Set A: Spatial and Field Variables (r_j, d_g, F_U, f_feedback, $\Omega$_g)
 
-### r_j — Magnetic String Distance
+### r_j --- Magnetic String Distance
 $$
 \begin{aligned}
   & r_j = 1.496\times1013 m = 100 AU \\
@@ -57,7 +57,7 @@ $$
 \end{aligned}
 $$
 
-### d_g — Galactic Center Distance
+### d_g --- Galactic Center Distance
 $$
 \begin{aligned}
   & d_g = 2.55\times1020 m \approx 27,000 light-years \\
@@ -65,12 +65,12 @@ $$
   & U_bi: -\beta_i\cdot U_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdot(1+\varepsilon_sw\cdot\rho_vac,sw)\cdot U_UA\cdot\cos(\pi\cdot t_n) \\
   & M_bh/d_g = 8.15\times1036/2.55\times1020 \approx 3.20\times1016 kg/m \\
   & U_b1 \approx -1.94\times1027 J/m3 \\
-  & U_g4: k_4\cdot\rho_vac,[SCm]\cdot(M_bh/d_g)\cdot e^(-\alphat)\cdot\cos(\pi\cdot t_n)\cdot(1+f_feedback) \\
+  & U_g4: k_4\cdot\rho_vac,[SCm]\cdot(M_bh/d_g)\cdot e^(-\alpha t)\cdot\cos(\pi\cdot t_n)\cdot(1+f_feedback) \\
   & U_g4 \approx 2.50\times10-20 J/m3
 \end{aligned}
 $$
 
-### F_U — Unified Field Strength
+### F_U --- Unified Field Strength
 $$
 \begin{aligned}
   & F_U = \Sigma_i [k_i\cdot U_gi - \beta_i\cdot U_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdot E_react] \\
@@ -81,7 +81,7 @@ $$
 \end{aligned}
 $$
 
-### f_feedback — AGN Feedback Factor
+### f_feedback --- AGN Feedback Factor
 ```
 f_feedback = 0.1   (for \DeltaMBH = 1 dex AGN feedback)
 
@@ -89,10 +89,10 @@ Role: Scales AGN feedback in U_g4
 
 With f_feedback = 0.1: U_g4 \approx 2.50\times10-20 J/m3
 Without (f_feedback = 0): U_g4 \approx 2.27\times10-20 J/m3
-Feedback effect: ~10% increase → important for galaxy evolution modeling
+Feedback effect: ~10% increase \rightarrow important for galaxy evolution modeling
 ```
 
-### $\Omega$_g — Galactic Spin Rate
+### $\Omega$_g --- Galactic Spin Rate
 $$
 \begin{aligned}
   & \Omega_g = 7.3\times10-16 rad/s \\
@@ -105,7 +105,7 @@ $$
 
 ## 3. Set B: Operational Parameters (f_Heaviside, i, H_SCm, $\lambda$_i, j)
 
-### f_Heaviside — Heaviside Component Fraction
+### f_Heaviside --- Heaviside Component Fraction
 $$
 \begin{aligned}
   & f_Heaviside = 0.01 \\
@@ -117,7 +117,7 @@ $$
 \end{aligned}
 $$
 
-### i — Gravity Index
+### i --- Gravity Index
 ```
 i ∈ {1,2,3,4}   (integer index for U_g1, U_g2, U_g3, U_g4)
 
@@ -127,7 +127,7 @@ Role: Indexes the 4 universal gravity components in F_U summation
 At t=0, Sun: \approx 1.42\times1053 J/m3 (U_g2 dominant)
 ```
 
-### H_SCm — Heliosphere Thickness Factor
+### H_SCm --- Heliosphere Thickness Factor
 $$
 \begin{aligned}
   & H_SCm ~ 1   (dimensionless) \\
@@ -138,7 +138,7 @@ $$
 \end{aligned}
 $$
 
-### $\lambda$_i — Inertia Coupling Constant
+### $\lambda$_i --- Inertia Coupling Constant
 ```
 \lambda_i = 1.0   (uniform for all i)
 
@@ -148,10 +148,10 @@ U_i = \lambda_i \cdot \rho_vac,[SCm] \cdot \rho_vac,[UA] \cdot \omega_s(t) \cdot
     = 1.0 \times 7.09\times10-37 \times 7.09\times10-36 \times 2.5\times10-6 \times 1 \times 1.1
     \approx 1.38\times10-47 J/m3
 
-Net contribution: −\lambda_i\cdotU_i\cdotE_react \approx −0.138 J/m3
+Net contribution: -\lambda_i\cdotU_i\cdotE_react \approx -0.138 J/m3
 ```
 
-### j — Magnetic String Index
+### j --- Magnetic String Index
 ```
 j = integer index for magnetic strings in U_m and U_g3
 
@@ -166,7 +166,7 @@ At galactic scale: multiple strings possible
 
 ## 4. Set C: Dynamical Variables (M_bh, $\mu$_j, P_core, t_n, $\pi$) and ($\gamma$, E_react, f_quasi, R_b)
 
-### M_bh — Black Hole Mass (Sgr A*)
+### M_bh --- Black Hole Mass (Sgr A*)
 $$
 \begin{aligned}
   & M_bh = 8.15\times1036 kg \approx 4.1\times106 MM_sun \\
@@ -175,7 +175,7 @@ $$
 \end{aligned}
 $$
 
-### $\mu$_j — Magnetic Moment (time-dependent)
+### $\mu$_j --- Magnetic Moment (time-dependent)
 $$
 \begin{aligned}
   & \mu_j(t) = (103 + 0.4\cdot\sin(\omega_c\cdot t)) \cdot 3.38\times1020 T\cdot pm3 \\
@@ -185,17 +185,17 @@ $$
 \end{aligned}
 $$
 
-### $\gamma$ — Reciprocation Decay Rate
+### $\gamma$ --- Reciprocation Decay Rate
 ```
 \gamma = 5\times10-5 day-1
 
 Role: Controls temporal decay of magnetic string effects in U_m
 
-1−e^(−\gammat) → small for t << 1/\gamma \approx 20,000 days
-At t=1000 days: 1−e^(−0.05) \approx 0.049  (still growing)
+1-e^(-\gammat) \rightarrow small for t << 1/\gamma \approx 20,000 days
+At t=1000 days: 1-e^(-0.05) \approx 0.049  (still growing)
 ```
 
-### E_react — Reactor Efficiency Factor
+### E_react --- Reactor Efficiency Factor
 $$
 \begin{aligned}
   & E_react = 1046 \\
@@ -206,7 +206,7 @@ $$
 \end{aligned}
 $$
 
-### f_quasi — Quasi-Longitudinal Wave Factor
+### f_quasi --- Quasi-Longitudinal Wave Factor
 $$
 \begin{aligned}
   & f_quasi = 0.01 \\
@@ -217,19 +217,19 @@ $$
 \end{aligned}
 $$
 
-### R_b — Radius of Outer Field Bubble
+### R_b --- Radius of Outer Field Bubble
 ```
 R_b = 1.496\times1013 m = 100 AU   (heliospheric termination shock)
 
 Role: Step function boundary in U_g2
 
-S(r − R_b) = 1   for r \geq R_b  (heliosphere active)
+S(r - R_b) = 1   for r \geq R_b  (heliosphere active)
            = 0   for r < R_b   (interior region, different physics)
 
 This defines the aether-superconductive boundary layer.
 ```
 
-### P_core — Planetary Core Penetration Factor
+### P_core --- Planetary Core Penetration Factor
 $$
 \begin{aligned}
   & P_core ~ 1.0   (Sun, stars) \\
@@ -240,7 +240,7 @@ $$
 \end{aligned}
 $$
 
-### t_n — Negative Time Factor
+### t_n --- Negative Time Factor
 $$
 \begin{aligned}
   & t_n = t - t_0   (allows t_n < 0) \\
@@ -253,7 +253,7 @@ $$
 
 ---
 
-## 5. Unified Field Strength — Complete Parameterized Equation
+## 5. Unified Field Strength --- Complete Parameterized Equation
 
 With all 15 variables defined:
 
@@ -306,12 +306,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LAG-S225 -->
@@ -389,7 +389,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.191$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -409,7 +409,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -427,7 +427,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -440,17 +440,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -459,7 +459,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

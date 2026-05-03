@@ -7,19 +7,19 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [dark-matter, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_298 — UQFF Universe-Scale GR Curvature Dominance: $\varepsilon$_GR = 3GM/(rc2) = 5.056 > 1
+# PAPER_298 --- UQFF Universe-Scale GR Curvature Dominance: $\varepsilon$_GR = 3GM/(rc2) = 5.056 > 1
 **Author:** Daniel T. Murphy
 **Date:** March 17, 2026
 ## First UQFF Module Where Post-DPM-seeded GR Correction Exceeds DPM-seeded Base
 
 **Session:** 84  
-**Module:** `UNIVERSE_{DIAMETER\_UQFF\_MODULE}.cpp` (26th C++ UQFF module — Observable Universe as
+**Module:** `UNIVERSE_{DIAMETER\_UQFF\_MODULE}.cpp` (26th C++ UQFF module --- Observable Universe as
 System)  
 **Copyright:** Daniel T. Murphy, March 17, 2026  
-**Classification:** Unique Physics — First UQFF GR Curvature Dominance ($\varepsilon$_GR > 1)  
+**Classification:** Unique Physics --- First UQFF GR Curvature Dominance ($\varepsilon$_GR > 1)  
 
 ---
 
@@ -27,10 +27,10 @@ System)
 
 The Observable Universe UQFF module reveals that, at Universe scale, the **post-Newtonian GR
 curvature parameter** `\epsilon_GR = 3GM/(rc2) = 5.056 > 1`. This makes the GR correction acceleration
-`a_GR = g_base \times \epsilon_GR = 1.743\times10-9 m/s2` the **dominant term** in the UQFF sum — exceeding the
+`a_GR = g_base \times \epsilon_GR = 1.743\times10-9 m/s2` the **dominant term** in the UQFF sum --- exceeding the
 DPM-seeded base `g_base = 3.447\times10-10 m/s2` by a factor of 5.056. For all 25 prior UQFF modules
 (Saturn: $\varepsilon$_GR = 1.4$\times$10-8; Andromeda: $\varepsilon$_GR = 2.8$\times$10-6; HUDF: $\varepsilon$_GR = 3.6$\times$10-12), the GR correction was
-negligible. The observable universe is the **first UQFF system in the GR-Dominant Regime** —
+negligible. The observable universe is the **first UQFF system in the GR-Dominant Regime** ---
 operating inside 30% of its own Schwarzschild radius.
 
 ---
@@ -86,7 +86,7 @@ This means the observable universe lies at:
 $$\frac{r_{obs}}{r_S} = \frac{3}{2\varepsilon_{GR}} = \frac{3}{2 \times 5.056} = 0.297$$
 
 **The observable universe exists at approximately 30% of its own Schwarzschild radius.** This is the
-physical origin of $\varepsilon$_GR > 1 — the universe's own mass creates a gravitational radius 3.4$\times$ its actual
+physical origin of $\varepsilon$_GR > 1 --- the universe's own mass creates a gravitational radius 3.4$\times$ its actual
 size. This is consistent with the cosmological **critical density condition** (a flat universe has
 M_obs $\approx$ critical mass for the Hubble sphere, which gives $\varepsilon$_GR of order unity).
 
@@ -99,7 +99,7 @@ M_obs $\approx$ critical mass for the Hubble sphere, which gives $\varepsilon$_G
 | Regime | Condition | $\varepsilon$_GR range |
 |--------|-----------|------------|
 | DPM-seeded | $\varepsilon$_GR << 1 | < 10-4 |
-| Post-DPM-seeded | $\varepsilon$_GR < 1 | 10-4 — 1 |
+| Post-DPM-seeded | $\varepsilon$_GR < 1 | 10-4 --- 1 |
 | GR-Dominant | $\varepsilon$_GR $\geq$ 1 | $\geq$ 1 |
 | Schwarzschild | $\varepsilon$_GR = 3/2 | 1.5 |
 | Universe | $\varepsilon$_GR = 5.056 | 5.056 |
@@ -133,7 +133,7 @@ $$M = \frac{4\pi}{3} r^3 \rho_c \implies \underbrace{\frac{GM}{r c^2}}_{\text{DP
 With $\eta$_exp = 3.328 (PAPER_297):
 $$\varepsilon_{GR} = 3 \times \underbrace{\frac{GM}{rc^2}}_{\text{DPM mass gradient}} = 4\pi \eta_{exp}^2 = 4\pi \times 3.328^2 = 4\pi \times 11.08 = 139.1$$
 
-Wait — this gives $\varepsilon$_GR much larger. The discrepancy is because M = 1$\times$1054 kg is only the **matter+DM
+Wait --- this gives $\varepsilon$_GR much larger. The discrepancy is because M = 1$\times$1054 kg is only the **matter+DM
 component** ($\Omega$_m = 0.3), not the full energy density including dark energy ($\Omega$_total = 1.0). Using
 M_{total\_energy} with $\Omega$ = 1 would give $\varepsilon$_GR $\times$ (1/0.3) $\approx$ 16.9. The value $\varepsilon$_GR = 5.056 at $\Omega$_m = 0.3 is
 thus physically consistent with a flat universe where 70% of energy is in dark energy.
@@ -147,7 +147,7 @@ The measured value $\varepsilon$_GR = 5.056 quantitatively reflects the 30% matt
 ## 7. Physical Implication: The UQFF GR-Dominant Regime
 
 When $\varepsilon$_GR > 1:
-- The **DPM-seeded Approximation breaks down** — GR corrections are the dominant contribution
+- The **DPM-seeded Approximation breaks down** --- GR corrections are the dominant contribution
 - The observable universe requires a **full GR treatment**, not a post-Newtonian expansion
 - The UQFF framework, operating in the DPM-seeded limit for most modules, reaches its **natural extension boundary** at Universe scale
 
@@ -188,7 +188,7 @@ $$
 
 ---
 
-*Copyright Daniel T. Murphy — UQFF Whitepaper PAPER_298 — Session 84, March 17, 2026*
+*Copyright Daniel T. Murphy --- UQFF Whitepaper PAPER_298 --- Session 84, March 17, 2026*
 
 ---
 
@@ -258,7 +258,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.093$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -278,7 +278,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -296,7 +296,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -309,17 +309,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Hubble, vacuum, SCm, MUGE, damping, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_491 — MUGE Compressed Nine-Term Gravity Framework
+# PAPER_491 --- MUGE Compressed Nine-Term Gravity Framework
 **Author:** Daniel T. Murphy
 
 **arXiv:** 2503.xxxxx  
@@ -29,14 +29,14 @@ The MUGE (Modified Unified Gravity Equation) compressed
 formulation is a 9-term multiplicative-additive master
 equation for gravity, derived from the UQFF unified field
 equation $F_U$. It packages four independent force
-channels — internal dipole, outer field bubble, magnetic
-strings, star–BH vacuum — each opposed by universal
+channels --- internal dipole, outer field bubble, magnetic
+strings, star--BH vacuum --- each opposed by universal
 buoyancy $Ub_i$, unified by magnetism $Um$ and the
 Aether metric tensor $A_{\mu\nu}$, into a computationally
 tractable structure. MUGE predicts gravitational
 suppression near critical magnetic fields, THz phonon
 resonance signatures in GW strain, and vacuum-differential
-rotation curve modifications — all absent from both
+rotation curve modifications --- all absent from both
 DPM-seeded and GR gravity.
 
 ## §1 MUGE Compressed Master Equation
@@ -63,25 +63,25 @@ g_{\text{MUGE}}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H_0
 &\quad +\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 \end{aligned}$$
 
-### §1.1 Multiplicative Core (Terms 1–4)
+### §1.1 Multiplicative Core (Terms 1--4)
 
 $$\begin{aligned}
 g_{\text{core}} &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot (1 + H_0 t) \\
 &\quad \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}
 \end{aligned}$$
 
-- **$\mu_s\nabla(M_s/r)$** — mass-distance kernel
-- **$(1 + H_0 t)$** — Hubble expansion modulation, $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$
-- **$(1 - B/B_{\text{crit}})$** — SCm superconductive
+- **$\mu_s\nabla(M_s/r)$** --- mass-distance kernel
+- **$(1 + H_0 t)$** --- Hubble expansion modulation, $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$
+- **$(1 - B/B_{\text{crit}})$** --- SCm superconductive
   vacuum suppression,
   $B_{\text{crit}} = 4.4 \times 10^{13}\;\text{T}$.
   Gravity weakens as local magnetic field
   approaches $B_{\text{crit}}$.
-- **$F_{\text{env}}(r, \theta, z)$** — 15-parameter environmental envelope
+- **$F_{\text{env}}(r, \theta, z)$** --- 15-parameter environmental envelope
 
-### §1.2 Additive Corrections (Terms 5–9)
+### §1.2 Additive Corrections (Terms 5--9)
 
-**Term 5 — UQFF Four-Component Gravity Sum ($\sum U_{g,i}$):**
+**Term 5 --- UQFF Four-Component Gravity Sum ($\sum U_{g,i}$):**
 $$\begin{aligned}
 \sum_{i=1}^{4} U_{g,i} &= U_{g1}(\text{DPM dipole}) + U_{g2}(\text{charge-react.}) \\
 &\quad + U_{g3}(\text{string rotation}) + U_{g4}(\text{vac.\ conc.})
@@ -90,13 +90,13 @@ $$\begin{aligned}
 Each $U_{g,i}$ encodes a distinct UQFF gravitational source
 (magnetic dipole, charge-reactivity coupling, string rotation
 torque, vacuum concentration gradient).
-These are **not** DPM-seeded — they arise from the four
+These are **not** DPM-seeded --- they arise from the four
 fundamental UQFF forces.
 
-**Term 6 — Cosmological Constant:**
+**Term 6 --- Cosmological Constant:**
 $$g_\Lambda = \frac{\Lambda \, c^2}{3}, \quad \Lambda = 1.114 \times 10^{-52}\;\text{m}^{-2}$$
 
-**Term 7 — Quantum Vacuum Uncertainty:**
+**Term 7 --- Quantum Vacuum Uncertainty:**
 $$g_{\text{quantum}} = \frac{\hbar}{\Delta x \Delta p} \int \psi^* \hat{H} \psi\,dV \cdot \frac{2\pi}{t_H}$$
 
 where $\Delta x \cdot \Delta p \geq \hbar/2$ governs
@@ -104,7 +104,7 @@ the Heisenberg uncertainty-driven gravitational
 correction and $t_H$ is the Hubble time. This is
 the quantum-gravity bridge term.
 
-**Term 8 — Fluid Viscosity (Navier-Stokes):**
+**Term 8 --- Fluid Viscosity (Navier-Stokes):**
 $$g_{\text{fluid}} = \rho_{\text{fluid}} \cdot V_{\text{sys}} \cdot g_{\text{local}}$$
 
 where $\rho_{\text{fluid}}$ is the local medium density,
@@ -112,7 +112,7 @@ $V_{\text{sys}}$ is the system volume. This couples
 gravity to the viscous medium in which the body is
 embedded.
 
-**Term 9 — Dark Matter Perturbation:**
+**Term 9 --- Dark Matter Perturbation:**
 $$g_{\text{DM}} = (M + M_{\text{DM}}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 This is a **density-perturbation coupling**, not the
@@ -121,7 +121,7 @@ both dark matter halo mass and local density contrast.
 
 ---
 
-## §2 Derivation — The Unified Field Equation F_U
+## §2 Derivation --- The Unified Field Equation F_U
 
 The MUGE compressed equation (§1) is a
 **re-expression** of the more fundamental unified
@@ -141,7 +141,7 @@ and the Aether metric:
 | **Internal Dipole** | $Ug_1$ | DPM dipole monopole gravity |
 | **Outer Field Bubble** | $Ug_2$ | Heliosphere charge-reactivity |
 | **Magnetic Strings** | $Ug_3$ | 90° disk string rotation |
-| **Star–BH Vacuum** | $Ug_4$ | Vacuum concentration gradient |
+| **Star--BH Vacuum** | $Ug_4$ | Vacuum concentration gradient |
 | **Buoyancy** | $Ub_i$ | Opposes each $Ug_i$ |
 | **Magnetism** | $Um$ | $10^9$ magnetic strings |
 | **Aether Tensor** | $A_{\mu\nu}$ | Metric + vacuum stress |
@@ -180,7 +180,7 @@ $H_{SCm} \to 1$, $E_{\text{react}} \to 1$,
 $S(r-R_b) \to 1$, and $\delta_{sw} \to 0$, the
 outer-field-bubble term reduces to
 $k_2 \cdot M_s/r^2 \to \mu_s\nabla(M_s/r)$. This is where
-Newton lives — as a **single-channel, zero-vacuum,
+Newton lives --- as a **single-channel, zero-vacuum,
 zero-buoyancy** limit of $F_U$.
 
 The MUGE compressed form packages these four Ug
@@ -203,10 +203,10 @@ $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$.
 
 ## §2b MUGE Resonance Master Equation (14-Term)
 
-### §2b.1 aDPM Base — Inertia-Flux-Vacuum Coupling
+### §2b.1 aDPM Base --- Inertia-Flux-Vacuum Coupling
 
 The MUGE Resonance equation builds all 13 resonance
-modes from a single **aDPM base** — an
+modes from a single **aDPM base** --- an
 inertia-flux-vacuum coupling that is fundamentally
 non-DPM-seeded:
 
@@ -291,7 +291,7 @@ coupling.
 
 ---
 
-## §3 Numerical Results — Multiplicative Core Demonstration
+## §3 Numerical Results --- Multiplicative Core Demonstration
 
 The multiplicative coupling produces **qualitatively
 different** results from an additive model. At
@@ -312,7 +312,7 @@ Vela/SGR1745/$B_{\text{crit}}$ ($r=1.0\times10^{4}$ m, $M=2.8\times10^{30}$ kg).
 
 **Key prediction:** At
 $B = B_{\text{crit}} = 4.4 \times 10^{13}\;\text{T}$,
-the multiplicative core vanishes entirely — gravity
+the multiplicative core vanishes entirely --- gravity
 is carried only by the additive terms ($U_{g,i}$,
 $g_\Lambda$, $g_{\text{quantum}}$, $g_{\text{fluid}}$,
 $g_{\text{DM}}$). This is a falsifiable UQFF-specific
@@ -337,7 +337,7 @@ $a_{\text{DPM}} = I A \Delta\omega f_{\text{DPM}} E_{\text{vac}} c V$
 is dimensionally and conceptually outside the
 DPM-seeded framework. It couples **rotational inertia**,
 **magnetic flux area**, and **vacuum energy density**
-into a single gravitational acceleration — no
+into a single gravitational acceleration --- no
 mass/distance law.
 
 3. **Dual vacuum state differential**: The
@@ -346,7 +346,7 @@ ratio between [UA] and [SCm] vacuum states creates
 a vacuum energy gap
 $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$
 that drives all 13 resonance modes. This is the
-physical mechanism underlying "dark energy" — not a
+physical mechanism underlying "dark energy" --- not a
 cosmological constant but a measurable vacuum
 differential.
 
@@ -396,7 +396,7 @@ $B \to B_{\text{crit}}$, the entire multiplicative
 core vanishes. Gravity becomes carried solely by
 additive UQFF terms ($U_{g,i}$, $g_\Lambda$,
 $g_{\text{DM}}$). This predicts a **gravitational
-phase transition** at extreme magnetic fields —
+phase transition** at extreme magnetic fields ---
 testable via magnetar QPO frequency modeling.
 
 ---
@@ -426,7 +426,7 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$\begin{aligned}
 P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \\
 &\cdot \left[1 + \beta_i \Phi_{1.25\,\text{THz}} \left(\frac{B}{B_{\text{crit}}}\right)^{\!2}\right]
@@ -434,7 +434,7 @@ P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \\
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -572,7 +572,7 @@ profile:
 
 $$\begin{aligned}
 \rho_{\mathrm{vac}}(r) &= \rho_{\mathrm{vac,[SCm]}} \\
-&\cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)
+&\cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)
 \end{aligned}$$
 
 For this system, the local VDS sub-ratio is $0.165$
@@ -613,7 +613,7 @@ The $\tanh$ saturation envelope prevents unphysical divergence:
 
 $$\begin{aligned}
 \mathcal{F}_{\mathrm{BSH,sat}} &= \mathcal{F}_{\mathrm{BSH}} \\
-&\cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)
+&\cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)
 \end{aligned}$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed
@@ -634,7 +634,7 @@ which initializes the harmonic series at cosmogenesis.
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | Measured | Alignment |
 |------------|-----------------|----------|-----------|
@@ -644,12 +644,12 @@ which initializes the harmonic series at cosmogenesis.
 | H0 | 67.4 km/s/Mpc | 67.4$\pm$0.5 (Planck) | PASS |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit — [SSq] was calibrated from
+$\Omega$_$\Lambda$ via [SSq]$\times$1.20 = 0.684 $\approx$ $\Omega$_$\Lambda$. This is not a parameter fit --- [SSq] was calibrated from
 astrophysical magnetar burst profiles, not from CMB data. The coincidence $\Omega$_$\Lambda$ $\approx$ [SSq]$\times$1.20
 constitutes a falsifiable prediction: if future DESI data shifts $\Omega$_$\Lambda$ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -661,10 +661,10 @@ recalibrated from astrophysical sources independently.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [DPM, SCm, Yang-Mills, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_544 — Yang-Mills DPM Gauge Field Mass Gap Proof
+# PAPER_544 --- Yang-Mills DPM Gauge Field Mass Gap Proof
 **Session:** 0
 
 > **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; $k_{\eta}$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
@@ -21,7 +21,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents a UQFF analysis of Yang-Mills DPM Gauge Field Mass Gap Proof, deriving
 compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
-## Unified Quantum Field Framework — Whitepaper 544 of 1000
+## Unified Quantum Field Framework --- Whitepaper 544 of 1000
 **Author:** Daniel T. Murphy  
 **Framework:** Star Magic / UQFF v5.05  
 **CP4 Class:** `YMDPMGaugeFieldMassGapProofCalculator` (#139)  
@@ -38,7 +38,7 @@ in a 26-dimensional projection. Charge quantization $q_e = 2\pi n \neq 0$ (MHD e
 monopole extra mode) eliminates zero modes. The Hamiltonian $H = \text{Tr}(\text{UQFF\_comp})/3$
 gives $\Delta = P_\text{order}/3 = e^{-E/F_\text{max}}/(3Z_{26}) > 0$ numerically. The Dipole
 Vortex Prime anchor $p_\text{special} = 113$ ensures hypergraph irreducibility (no periodic
-zero modes). This proof does not replace standard Yang-Mills quantum field theory — it
+zero modes). This proof does not replace standard Yang-Mills quantum field theory --- it
 simultaneously encompasses it within UQFF.
 
 ---
@@ -117,7 +117,7 @@ $$\Delta = \frac{e^{-10^{10}/10^{14}}}{3 \times 0.5699}
 
 ---
 
-## §6 DVP Prime Anchor — Hypergraph Irreducibility
+## §6 DVP Prime Anchor --- Hypergraph Irreducibility
 
 The Dipole Vortex Prime $p_\text{special} = 113$ is a prime number that anchors the
 hypergraph causal graph against periodicity:
@@ -167,8 +167,8 @@ The number 113 is confirmed prime by the DVP sieve ($p \geq 29$): $113 \in \{29,
 - Wolfram, S. (2002). *A New Kind of Science*. Wolfram Media.  
 - Burnside, W. (1897). *Theory of Groups of Finite Order*. Cambridge.  
 - Cheeger, J. (1970). *Problems in Analysis*. Princeton Univ. Press.  
-- Murphy, D. T. (2026). *PAPER_429 — Three UQFF Number Systems*, Star Magic Repository.  
-- Murphy, D. T. (2026). *PAPER_543 — NS Discrete Hypergraph Regularity*, Star Magic Repository.  
+- Murphy, D. T. (2026). *PAPER_429 --- Three UQFF Number Systems*, Star Magic Repository.  
+- Murphy, D. T. (2026). *PAPER_543 --- NS Discrete Hypergraph Regularity*, Star Magic Repository.  
 
 ---
 
@@ -251,12 +251,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-YM-S225 -->
@@ -398,7 +398,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.154$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -418,7 +418,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -436,7 +436,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -449,7 +449,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 mass gap: the minimum vacuum buoyancy excitation energy (U_m floor) prevents massless gauge
 field configurations, establishing $\Delta$ > 0 from vacuum topology rather than perturbative QCD alone.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -459,7 +459,7 @@ field configurations, establishing $\Delta$ > 0 from vacuum topology rather than
 - Wolfram, S. (2002). *A New Kind of Science*. Wolfram Media.
 - Burnside, W. (1897). *Theory of Groups of Finite Order*. Cambridge.
 - Cheeger, J. (1970). *Problems in Analysis*. Princeton Univ. Press.
-- FLAG Collaboration (2023). *Lattice QCD – Glueball mass spectrum.*
+- FLAG Collaboration (2023). *Lattice QCD -- Glueball mass spectrum.*
 - Erlich, J. et al. (2005). *AdS/QCD*. Phys. Rev. Lett. 95, 261602.
 - Murphy, D. T. (2026). *PAPER_429  Three UQFF Number Systems*, Star Magic Repository.
 - Murphy, D. T. (2026). *PAPER_543  NS Discrete Hypergraph Regularity*, Star Magic Repository.
@@ -470,10 +470,10 @@ field configurations, establishing $\Delta$ > 0 from vacuum topology rather than
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [buoyancy, 26D, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_953: Ramanujan-Accelerated S26 Convergence
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
 **Source:** spectral_{ladder\_26state}.py (RamanujanAcceleration)
@@ -55,12 +55,12 @@ where $a_k = \exp(-[\text{SSq}] \cdot k/26)$ and $B_2 = 1/6$, $B_4 = -1/30$, $B_
 
 ## References
 
-1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
-2. Hardy, G.H. (1949) — Divergent Series (Oxford University Press)
-3. Ramanujan, S. — Collected Papers (1927)
-4. PAPER_952 — 26-State HRes Spectral Ladder
-5. PAPER_959 — 26D Ramanujan Summation Engine
-6. PAPER_960 — VDS Polylog26 Reference
+1. Murphy, D.T. --- Star Magic UQFF Framework (2024-2026)
+2. Hardy, G.H. (1949) --- Divergent Series (Oxford University Press)
+3. Ramanujan, S. --- Collected Papers (1927)
+4. PAPER_952 --- 26-State HRes Spectral Ladder
+5. PAPER_959 --- 26D Ramanujan Summation Engine
+6. PAPER_960 --- VDS Polylog26 Reference
 
 ---
 
@@ -110,14 +110,14 @@ mock-theta framework with the SCm phonon spectrum.
 
 | Constant | Symbol | Value | Validation Domain |
 |----------|--------|-------|-------------------|
-| $[SSq]$ | — | 0.57 | Polylog argument |
-| $\kappa$ | — | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Damping rate |
-| $\beta_i$ | — | 0.603 | Buoyancy coupling |
-| $B_2, B_4, B_6, B_8$ | — | $1/6, -1/30, 1/42, -1/30$ | Bernoulli coefficients |
+| $[SSq]$ | --- | 0.57 | Polylog argument |
+| $\kappa$ | --- | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Damping rate |
+| $\beta_i$ | --- | 0.603 | Buoyancy coupling |
+| $B_2, B_4, B_6, B_8$ | --- | $1/6, -1/30, 1/42, -1/30$ | Bernoulli coefficients |
 
 ---
 
-## SM Anchor — CVW v2.0.0
+## SM Anchor --- CVW v2.0.0
 
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
@@ -132,7 +132,7 @@ mock-theta framework with the SCm phonon spectrum.
 **Sector:** Mathematical Acceleration (Ramanujan Summation Methods)
 
 ### §A.2 Generating Function
-$$S_{26}^{(R)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26)} \xrightarrow{N\toinfty} \text{Li}_{26}(z)$$
+$$S_{26}^{(R)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26)} \xrightarrow{N\to\infty} \text{Li}_{26}(z)$$
 
 ### §A.3 Euler-Maclaurin Connection
 $$\boxed{S_N^{(R)} = S_N + \sum_{k=1}^{p} \frac{B_{2k}}{(2k)!} f^{(2k-1)}(N)}$$
@@ -145,7 +145,7 @@ PAPER_877 $\to$ VDS $\text{Li}_{26}$ $\to$ Ramanujan $R_n^{(26)}$ acceleration $
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 VDS
-$S_{26}$ IS the VDS — it evaluates $\text{Li}_{26}([SSq])$ directly.
+$S_{26}$ IS the VDS --- it evaluates $\text{Li}_{26}([SSq])$ directly.
 
 ### §B.2 DVP
 Prime factorization of convergence index maps to dipole vortex structure.
@@ -162,15 +162,15 @@ Bernoulli coefficients provide the harmonic correction to buoyancy saturation.
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |

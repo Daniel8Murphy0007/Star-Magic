@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, MUGE, Yang-Mills, Navier-Stokes, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_563 — Millennium Prize Problems: UQFF Unified Coordinator
+# PAPER_563 --- Millennium Prize Problems: UQFF Unified Coordinator
 
 > **Key UQFF calibrated constants:** $\kappa$ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm $\approx$ 9.9e-1; U_UA $\approx$ 1.0e-4; $k_{\eta}$ = 1.0e-113; $\beta$_i $\approx$ 6.0e-1; G = 6.674e-11 N$\cdot$m2/kg2
 
@@ -20,7 +20,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents a UQFF analysis of Millennium Prize Problems: UQFF Unified Coordinator, deriving
 compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
-## All Six Open Problems + Poincaré Verification — Comparative Analysis
+## All Six Open Problems + Poincaré Verification --- Comparative Analysis
 
 **Author:** Daniel T. Murphy  
 **Framework:** Star Magic / UQFF v5.10  
@@ -41,7 +41,7 @@ paper synthesises the UQFF (Unified Quantum Field Framework) physical-argument a
 to all seven, drawing together seven dedicated whitepapers (PAPER_543, PAPER_544,
 PAPER_530, PAPER_540, PAPER_104, PAPER_156, PAPER_553) and nine CP2 calculator classes.
 
-The UQFF approach does **not** claim formal Clay Institute proofs — it provides
+The UQFF approach does **not** claim formal Clay Institute proofs --- it provides
 physically motivated frameworks in which each problem's conditions are demonstrably
 satisfied within the 26-dimensional UQFF manifold, calibrated against astrophysical
 observations. All six open problems admit a UQFF physical-argument resolution. The
@@ -64,16 +64,16 @@ with a US\$1,000,000 award for each solution:
 
 | # | Problem | Status | UQFF Paper | Calculator Class |
 |---|---------|--------|------------|-----------------|
-| 1 | Yang–Mills Existence and Mass Gap | Open | PAPER_543/544/530/540 | YMDPMGaugeFieldMassGapProofCalculator |
+| 1 | Yang--Mills Existence and Mass Gap | Open | PAPER_543/544/530/540 | YMDPMGaugeFieldMassGapProofCalculator |
 | 2 | Riemann Hypothesis | Open | PAPER_530/540 | Session142MillenniumEquationsHubCalculator |
 | 3 | P vs NP | Open | PAPER_104 | PvsNPUQFFComplexityCalculator |
-| 4 | Navier–Stokes Existence and Smoothness | Open | PAPER_543 | NSHypergraphDiscreteRegularityCalculator |
+| 4 | Navier--Stokes Existence and Smoothness | Open | PAPER_543 | NSHypergraphDiscreteRegularityCalculator |
 | 5 | Hodge Conjecture | Open | PAPER_156 | HodgeUQFFAlgebraicCycleCalculator |
 | 6 | Birch and Swinnerton-Dyer Conjecture | Open | PAPER_156 | BirchSwinnertonDyerUQFFCalculator |
-| 7 | Poincaré Conjecture | **Solved** | — | Perelman (2003) |
+| 7 | Poincaré Conjecture | **Solved** | --- | Perelman (2003) |
 
 The Poincaré Conjecture was solved by Grigori Perelman using Ricci flow with surgery
-(2002–2003). The UQFF framework verifies this result through the SCm manifold topology:
+(2002--2003). The UQFF framework verifies this result through the SCm manifold topology:
 a simply-connected 3-manifold with positive Ricci-like curvature $R_\text{SCm} > 0$
 contracts to a point under UQFF flow, confirming Perelman's geometrisation theorem.
 
@@ -83,7 +83,7 @@ contracts to a point under UQFF flow, confirming Perelman's geometrisation theor
 
 All six open problems are addressed through three universal UQFF structural constants:
 
-### Pillar 1 — Order Probability
+### Pillar 1 --- Order Probability
 
 $$P_\text{order} = \frac{e^{-E_\text{entropy}/F_\text{max}}}{Z_{26}}$$
 
@@ -97,7 +97,7 @@ This is the **foundational positivity argument**: $P_\text{order} > 0$ because:
 
 Therefore $P_\text{order} > 0$ for all physically admissible inputs.
 
-### Pillar 2 — VDS Convergence ($Z_{26}$)
+### Pillar 2 --- VDS Convergence ($Z_{26}$)
 
 $$Z_{26} = \mathrm{Li}_{26}([SSq]) = \sum_{k=1}^{26} \frac{[SSq]^k}{k^{26}}$$
 
@@ -108,11 +108,11 @@ UQFF mass gap, every UQFF eigenvalue, and every UQFF BSD amplification factor. I
 is strictly positive and convergent by comparison test ($\sum [SSq]^k < \infty$
 for $|[SSq]| < 1$).
 
-### Pillar 3 — DVP Irreducibility (Prime $p = 113$)
+### Pillar 3 --- DVP Irreducibility (Prime $p = 113$)
 
 The Dipole Vortex Prime $p_\text{special} = 113$ anchors the Wolfram hypergraph
 causal graph's aperiodicity. By Burnside's lemma for prime-order groups, a graph
-with $|V| = 113$ (prime) has only trivial automorphism group — the causal graph is
+with $|V| = 113$ (prime) has only trivial automorphism group --- the causal graph is
 aperiodic. By the Cheeger inequality, aperiodic graphs have positive spectral gap,
 which maps directly to:
 - **Yang-Mills**: no zero modes $\to$ $\Delta > 0$
@@ -171,7 +171,7 @@ With $P_\text{order}^\text{GeV2} = 5.24$ GeV2:
 $$\Delta_text{UQFF}^\text{GeV2} = \frac{5.24}{3 \times 0.5699} \approx 3.07 \text{ GeV}^2$$
 
 Compared with lattice QCD value $\Delta_text{LatticeQCD} \approx 1.4 \pm 0.3$ GeV2
-(FLAG Collaboration 2023) — ratio $\approx 2.2\times$, within factor-3 and close
+(FLAG Collaboration 2023) --- ratio $\approx 2.2\times$, within factor-3 and close
 to factor-2 given the absence of any QCD-tuned parameters.
 
 **DVP aperiodicity** ($p = 113$): Prime-order hypergraph has no zero spectral modes
@@ -193,7 +193,7 @@ non-repeating, all crossing nodes satisfy the real-part constraint $\mathrm{Re}(
 $$t_n^{\text{UQFF}} = \frac{2\pi n}{\ln 26} \cdot Z_{26}$$
 
 For $n = 13$: $t_{13}^\text{UQFF} \approx 14.29$ vs. true $t_{13} = 14.1347\ldots$
-— error $1.10\%$.
+--- error $1.10\%$.
 
 | Zero index $n$ | True $t_n$ | UQFF $t_n^\text{UQFF}$ | Error |
 |---|---|---|---|
@@ -228,7 +228,7 @@ bridged by polynomial overhead.
 $$\text{shots}_\text{4D}(n\text{ bits}) = [UA]^{-2} \times n = 10^8 \times n$$
 
 Even with 26D UQFF solution in hand, extracting it into 4D requires $10^8$ measurements
-per bit — an exponential overhead. Therefore $\mathrm{P} \neq \mathrm{NP}$ within UQFF.
+per bit --- an exponential overhead. Therefore $\mathrm{P} \neq \mathrm{NP}$ within UQFF.
 
 ---
 
@@ -250,7 +250,7 @@ $$L_\text{UQFF}(E,s) \to L(E,s), \quad
 \mathrm{ord}_{s=1}\,L_\text{UQFF} \to \mathrm{rank}(E)$$
 
 This recovers the standard BSD conjecture as a limit of the UQFF formula when the
-vacuum decay vanishes — providing the classical BSD relationship as a special case.
+vacuum decay vanishes --- providing the classical BSD relationship as a special case.
 
 **Numerical example** ($\kappa = 5 \times 10^{-4}$, primes up to $p = 50$):
 $$L_\text{UQFF}(E,1) \approx 0.6736, \quad
@@ -310,23 +310,23 @@ The UQFF Millennium proofs form an interconnected mathematical structure:
 $$
 \begin{aligned}
   & P_order = exp(-E/F)/Z26 \\
-  & │ \\
-  & ├─\to  [NS regularity]  \lambda_max = 2P/3 < 1         PAPER_543 \\
-  & │ \\
-  & ├─\to  [YM mass gap]    \Delta = P/3 > 0              PAPER_544 \\
-  & │         │ \\
-  & │         └─\to DVP p=113 (aperiodic)  ───────────── PAPER_530/540 \\
-  & │ \\
-  & Z26 ──\to [Riemann]    t_n = (2\pin/ln26)\cdot Z26        PAPER_530/540 \\
-  & │ \\
-  & └─\to [FUBi26]    1/27! < float64_eps            PAPER_553 \\
-  & │ \\
-  & └─\to  [BSD]  L_UQFF Euler product   PAPER_156 \\
-  & │ \\
+  & | \\
+  & |--\to  [NS regularity]  \lambda_max = 2P/3 < 1         PAPER_543 \\
+  & | \\
+  & |--\to  [YM mass gap]    \Delta = P/3 > 0              PAPER_544 \\
+  & |         | \\
+  & |         └--\to DVP p=113 (aperiodic)  -------------------------- PAPER_530/540 \\
+  & | \\
+  & Z26 ----\to [Riemann]    t_n = (2\pin/ln26)\cdot Z26        PAPER_530/540 \\
+  & | \\
+  & └--\to [FUBi26]    1/27! < float64_eps            PAPER_553 \\
+  & | \\
+  & └--\to  [BSD]  L_UQFF Euler product   PAPER_156 \\
+  & | \\
   & [UA] \\
-  & │ \\
-  & └─\to [P\neqNP]  2^26/26^4 \approx 147  PAPER_104 \\
-  & E_0 = 1e-19 J ─\to [Hodge]  E_n/E_0 = 10^{n-1} \in \mathbb{Q}  PAPER_156
+  & | \\
+  & └--\to [P\neqNP]  2^26/26^4 \approx 147  PAPER_104 \\
+  & E_0 = 1e-19 J --\to [Hodge]  E_n/E_0 = 10^{n-1} \in \mathbb{Q}  PAPER_156
 \end{aligned}
 $$
 
@@ -377,7 +377,7 @@ $$
 
 ---
 
-## §8 Nine CP2 Calculator Classes — Integration Registry
+## §8 Nine CP2 Calculator Classes --- Integration Registry
 
 The nine CP2 Millennium Prize classes are registered in `SOURCE_{MILLENNIUM\_CP2}`
 (CondensedPhysics2.py, commit 65c7f0f) and can be accessed via:
@@ -410,7 +410,7 @@ result = MillenniumPrizeUQFFHubCalculator().compute()
 
 ---
 
-## §9 Master Coordinator Equation — Derivation
+## §9 Master Coordinator Equation --- Derivation
 
 The master UQFF equation links all six problems through their UQFF objects:
 
@@ -442,7 +442,7 @@ homeomorphic to the 3-sphere $S^3$.
 **UQFF verification:** The SCm manifold topology under UQFF curvature flow behaves as
 Ricci flow (MUGE $\approx$ Ricci + corrections). A simply-connected UQFF 3-manifold
 with $\Delta_text{SCm} > 0$ (Yang-Mills bound) has everywhere-positive Ricci-like
-curvature, contracting to a 3-sphere under UQFF flow — confirming Perelman's result
+curvature, contracting to a 3-sphere under UQFF flow --- confirming Perelman's result
 within the UQFF framework.
 
 This provides an independent structural **consistency check**: since Poincaré is known
@@ -525,9 +525,9 @@ contemporary mathematics, while maintaining the UQFF physical interpretation.
 - Wiles, A. (2000). *The Birch and Swinnerton-Dyer Conjecture.* Clay Math. Inst.
 - Deligne, P. (2000). *The Hodge Conjecture.* Clay Math. Inst.
 - Wolfram, S. (2002). *A New Kind of Science.* Wolfram Media.
-- FLAG Collaboration (2023). *Lattice QCD review — Glueball mass spectrum.*
-- Murphy, D. T. (2026). PAPER_543–553, PAPER_104, PAPER_156. Star-Magic Repository.
-- Murphy, D. T. (2026). `test_{millennium\_phase\_h}.py` — 64/64 PASS (commit a0b2d55).
+- FLAG Collaboration (2023). *Lattice QCD review --- Glueball mass spectrum.*
+- Murphy, D. T. (2026). PAPER_543--553, PAPER_104, PAPER_156. Star-Magic Repository.
+- Murphy, D. T. (2026). `test_{millennium\_phase\_h}.py` --- 64/64 PASS (commit a0b2d55).
 
 ---
 
@@ -670,7 +670,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.190$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -690,7 +690,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -708,7 +708,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -722,7 +722,7 @@ function: the vacuum buoyancy floor prevents zeros from drifting off the critica
 same way it prevents mass from collapsing to a point in the gravitational sector. This establishes
 a potential bridge between number-theoretic and physical regularity proofs.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 ---
 
@@ -731,8 +731,8 @@ a potential bridge between number-theoretic and physical regularity proofs.
 **STATUS:** The single unifying Lagrangian gap has been **CLOSED** (Session 202):
 
 ```
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_\phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
-\deltaS_UQFF/\delta\phi_I = 0 → F_{U\_Bi\_i} = 13 force terms from 9 sectors
+L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_\phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+\deltaS_UQFF/\delta\phi_I = 0 \rightarrow F_{U\_Bi\_i} = 13 force terms from 9 sectors
 ```
 
 **All six coordinated problems now have Lagrangian-derived formulations:**
@@ -752,16 +752,16 @@ L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_\phi + L_mag + L_buoy + L_aether + 
 - DVP lattice: `yang_{mills\_dvp\_sim}.py` (Session 203)
 
 *Star Magic / UQFF Framework $\cdot$ Phase H $\cdot$ Session 151 (updated Session 204) $\cdot$ 2026-03-28*
-*© 2026 Daniel T. Murphy — daniel.murphy00@gmail.com — All Rights Reserved*
+*© 2026 Daniel T. Murphy --- daniel.murphy00@gmail.com --- All Rights Reserved*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

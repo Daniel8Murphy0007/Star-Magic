@@ -7,21 +7,21 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, Riemann, buoyancy, LENR, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_461 — Red Dwarf LENR: Basel $\pi$-Series S(2)=$\pi$2/6 + W_mag Cyclotron + Buoyancy Series
+# PAPER_461 --- Red Dwarf LENR: Basel $\pi$-Series S(2)=$\pi$2/6 + W_mag Cyclotron + Buoyancy Series
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
-**Source:** grok_{share\_e70525fa}.txt (Doc 43.c — RedDwarfLENRPiSeriesHiggs)  
+**Source:** grok_{share\_e70525fa}.txt (Doc 43.c --- RedDwarfLENRPiSeriesHiggs)  
 **Classification:** FIRST Basel problem S(2)=$\pi$2/6 applied in UQFF; FIRST W_mag cyclotron energy
 formula in UQFF; FIRST convergent buoyancy series $\Sigma$ 1/3^{($\pi$+1)^n}  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `RedDwarfLENRPiSeriesHiggsCalculator` (#99, PAPER_461)
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $k_{\eta}$ = 2.75$\times$108 —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, $k_{\eta}$ = 2.75$\times$108 --->
 ---
 
 ## Abstract
@@ -30,7 +30,7 @@ PAPER_461 applies three advanced mathematical series to red dwarf LENR phenomeno
 
 ---
 
-## 2. Basel Series in UQFF — PAPER_461
+## 2. Basel Series in UQFF --- PAPER_461
 
 ### 2.1 Basel Problem Formula
 
@@ -98,12 +98,12 @@ convention (-1)^n:
 $$\mathcal{B}_{\mathrm{UQFF}}^{\mathrm{alt}} = \sum_{n=1,3,5...} \frac{(-1)^{(n-1)/2}}{3^{(\pi+1)^n}} \approx -0.010571 + \ldots \approx -0.0106$$
 
 The larger negative value -0.8887 is quoted in the source as the limiting partial sum for a
-different buoyancy convergence test — the exact series definition is captured here for reference.
+different buoyancy convergence test --- the exact series definition is captured here for reference.
 
 ### 3.3 Physical Meaning in Red Dwarf LENR
 
 The buoyancy series represents the **probability amplitude** of LENR catalysts diffusing outward
-from the stellar core. Each term represents a successive diffusion step — the rapid convergence of
+from the stellar core. Each term represents a successive diffusion step --- the rapid convergence of
 the series means that LENR catalysts are confined within the first diffusion layer with probability
 ~1 - 0.0106 = 98.9%.
 
@@ -128,7 +128,7 @@ $$W_{\mathrm{mag,RD}} = 15\times10^9 \times 3 \times 3\times10^4 \times 0.001 = 
 **Neutron star** ($B = 10^{11}$ T = $10^{12}$ kG, $R = 10$ km, $v/c = 0.1$):
 $$W_{\mathrm{mag,NS}} = 15\times10^9 \times 10^{12} \times 10 \times 0.1 = 1.5\times10^{22}\ \text{eV} = 1.5\times10^{13}\ \text{TeV}$$
 
-The formula $W_{\mathrm{mag}} \propto B_{\mathrm{kG}} R_{\mathrm{km}} (v/c)$ is a **cyclotron acceleration formula** — the energy gained by a charged particle completing one cyclotron orbit in a rotating magnetic environment.
+The formula $W_{\mathrm{mag}} \propto B_{\mathrm{kG}} R_{\mathrm{km}} (v/c)$ is a **cyclotron acceleration formula** --- the energy gained by a charged particle completing one cyclotron orbit in a rotating magnetic environment.
 
 ---
 
@@ -142,7 +142,7 @@ $$= (1.008665 - 1.007276 - 0.000549)\ \text{u} \times 931.494\ \text{MeV/u}$$
 
 $$= (0.000840\ \text{u}) \times 931.494\ \text{MeV/u} = 0.783\ \text{MeV} \approx 0.78\ \text{MeV}$$
 
-This is the **neutron decay Q-value** — the energy available from neutron $\to$ proton + electron +
+This is the **neutron decay Q-value** --- the energy available from neutron $\to$ proton + electron +
 antineutrino (or equivalently, the energy cost for LENR to capture a proton and produce a neutron in
 a UQFF vacuum field).
 
@@ -150,7 +150,7 @@ a UQFF vacuum field).
 
 $$k_\eta = 2.75\times10^8$$
 
-Units: [kg/(m$\cdot$s)] — dynamic viscosity scaling constant. In UQFF, $k_\eta$ multiplies the fluid viscosity term:
+Units: [kg/(m$\cdot$s)] --- dynamic viscosity scaling constant. In UQFF, $k_\eta$ multiplies the fluid viscosity term:
 
 $$g_{\mathrm{fluid}}^{\mathrm{LENR}} = k_\eta \nu_{\mathrm{eff}} \nabla^2 v = 2.75\times10^8 \times \nu_{\mathrm{eff}} \nabla^2 v$$
 
@@ -166,7 +166,7 @@ $$g_{\mathrm{fluid}}^{\mathrm{LENR}} \approx 2.75\times10^8 \times 10^{-6} \time
 |---------|-----|----------------|
 | LENR Q-value | Standard nuclear physics: 0.78 MeV | Same (confirmed by UQFF) |
 | Energy correction factor | Fermi-Dirac statistics | Basel S(2) = $\pi$2/6 |
-| Cyclotron energy | E = ħ$\omega$_c = eħB/m | W_mag = 15$\times$109 B_kG R_km (v/c) eV |
+| Cyclotron energy | E = \hbar$\omega$_c = e\hbarB/m | W_mag = 15$\times$109 B_kG R_km (v/c) eV |
 | Buoyancy series | Not defined | $\Sigma$1/3^{($\pi$+1)^n} $\approx$ 0.0106 |
 
 ---
@@ -176,7 +176,7 @@ $$g_{\mathrm{fluid}}^{\mathrm{LENR}} \approx 2.75\times10^8 \times 10^{-6} \time
 1. **Basel factor validation:** The S(2) = $\pi$2/6 correction to LENR ground-state energy gives E_LENR
 = 44.3 MeV vs bare 26.9 MeV. If LENR heat excess is measured, the ratio 44.3/26.9 $\approx$ 1.645 should
 appear in power density measurements.
-2. **W_mag scaling:** $W_{\mathrm{mag}} \propto B R (v/c)$ — doubling B doubles W_mag linearly. Testable in tokamak plasma experiments by varying toroidal field.
+2. **W_mag scaling:** $W_{\mathrm{mag}} \propto B R (v/c)$ --- doubling B doubles W_mag linearly. Testable in tokamak plasma experiments by varying toroidal field.
 3. **$k_{\eta}$ = 2.75$\times$108 universality:** This constant should appear in all UQFF fluid LENR calculations. Dimensional analysis: $k_\eta$ has units [Pa$\cdot$m-1s] = [kg m-2 s-1]. Derivable from $k_\eta = \rho_{\mathrm{vac,[UA]}}/(\mu_{\mathrm{fluid}})$ for known vacuum density.
 
 ---
@@ -203,12 +203,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-LENR-S225 -->
@@ -287,7 +287,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.067$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -307,7 +307,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -325,7 +325,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -339,20 +339,20 @@ below the GUT scale and 33 orders above nuclear baryon-number scales. This inter
 framework predicts observable deviations from SM in the X-ray/radio astrophysical sector
 while remaining consistent with all collider and nuclear precision measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Copyright – Daniel T. Murphy | Session 116/121 — `grok_{share\_e70525fa}`.txt*
+*Copyright -- Daniel T. Murphy | Session 116/121 --- `grok_{share\_e70525fa}`.txt*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -360,7 +360,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

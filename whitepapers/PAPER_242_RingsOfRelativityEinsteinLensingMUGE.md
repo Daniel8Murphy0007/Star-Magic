@@ -7,12 +7,12 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, cluster, AGN, MUGE, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_242 — Rings of Relativity: Einstein Ring Lensing Amplification in the Full MUGE
+# PAPER_242 --- Rings of Relativity: Einstein Ring Lensing Amplification in the Full MUGE
 **Date:** October 2025
-## GAL-CLUS-022058s — Static Einstein-Ring Lensing Factor in the Master Universal Gravity Equation
+## GAL-CLUS-022058s --- Static Einstein-Ring Lensing Factor in the Master Universal Gravity Equation
 
 **Author:** Daniel T. Murphy  
 **Framework:** Unified Quantum Field Framework (UQFF) v4.10  
@@ -21,7 +21,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Version:** 1.0 | **Session:** 60 | **PAPER Number:** 242
 
 
-<!— UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
+<!--- UQFF constants: $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV --->
 ---
 
 ## Abstract
@@ -82,37 +82,37 @@ This mid-redshift Friedmann correction is distinct from $z=0$ (local), $z=3.5$ (
 
 $$g_{\mathrm{Rings}}(r,t) = \underbrace{T_1}_{\mathrm{base+H+B+L}} + \underbrace{T_2}_{\mathrm{UQFF}} + \underbrace{T_3}_{\Lambda} + \underbrace{T_4}_{\mathrm{EM}} + \underbrace{T_q}_{\mathrm{QM}} + \underbrace{T_{\mathrm{fl}}}_{\mathrm{fluid}} + \underbrace{T_{\mathrm{osc}}}_{\mathrm{2\text{-}}mode} + \underbrace{T_{\mathrm{DM}}}_{\mathrm{DM+pert2}} + \underbrace{T_{\mathrm{wind}}}_{\mathrm{stellar\,wind}}$$
 
-**Term 1 — Base gravity with H(z), magnetic, Einstein lensing:**
+**Term 1 --- Base gravity with H(z), magnetic, Einstein lensing:**
 $$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H(z)\,t)(1 - B/B_{\mathrm{crit}})(1 + L_t)$$
 
-**Term 2 — UQFF unified field with time-reversal:**
+**Term 2 --- UQFF unified field with time-reversal:**
 $$T_2 = (U_{g1} + U_{g4})(1 + f_{TRZ})$$
 
-**Term 3 — Cosmological constant:**
+**Term 3 --- Cosmological constant:**
 $$T_3 = \frac{\Lambda c^2}{3}$$
 
-**Term 4 — Electromagnetic with vacuum density ratio:**
+**Term 4 --- Electromagnetic with vacuum density ratio:**
 $$T_4 = \frac{qv_{\mathrm{gas}}B}{m_p}\left(1 + \frac{\rho_{\mathrm{UA}}}{\rho_{\mathrm{SCm}}}\right)\cdot s_{\mathrm{EM}}, \quad \frac{\rho_{\mathrm{UA}}}{\rho_{\mathrm{SCm}}} = \frac{7.09\times10^{-36}}{7.09\times10^{-37}} = 10$$
 
-**Term 5 — Quantum uncertainty:**
+**Term 5 --- Quantum uncertainty:**
 $$T_q = \frac{\hbar}{\sqrt{\Delta x\,\Delta p}}\,\psi,\frac{2\pi}{t_H}$$
 
-**Term 6 — Fluid (buoyancy-acceleration):**
+**Term 6 --- Fluid (buoyancy-acceleration):**
 $$T_{\mathrm{fl}} = \frac{\rho_{\mathrm{fluid}}\,V\,g_{\mathrm{base}}}{M}$$
 
-**Term 7 — Two-mode oscillation (standing wave + traveling wave):**
+**Term 7 --- Two-mode oscillation (standing wave + traveling wave):**
 $$T_{\mathrm{osc}} = 2A\cos(kx)\cos(\omega t) + \frac{2\pi}{t_{\mathrm{Gyr}}}A\cos(kx - \omega t)$$
 
-The first mode is a **standing wave decomposition** ($2\coscos$); the second mode is a
+The first mode is a **standing wave decomposition** ($2\cos$); the second mode is a
 **Gyr-scaled traveling wave**. Together they form a beating-mode pair unique to this system.
 
-**Term 8 — Dark matter with $\delta_2 = 3\mu_s\nabla(M_s/r)/r$ perturbation:**
+**Term 8 --- Dark matter with $\delta_2 = 3\mu_s\nabla(M_s/r)/r$ perturbation:**
 $$T_{\mathrm{DM}} = \frac{(M + M_{\mathrm{DM}})(\delta\rho/\rho + 3\mu_s\nabla(M_s/r)/r)}{M}$$
 
 The second-order perturbation $3\mu_s\nabla(M_s/r)/r$ is a tidal-force density correction distinct from
 density-contrast $\delta\rho/\rho$.
 
-**Term 9 — Stellar wind feedback:**
+**Term 9 --- Stellar wind feedback:**
 $$T_{\mathrm{wind}} = \frac{\rho_{\mathrm{wind}}\,v_{\mathrm{wind}}^2}{\rho_{\mathrm{fluid}}}$$
 
 ---
@@ -149,11 +149,11 @@ geometry of GAL-CLUS-022058s ($\theta_E \approx 10''$, confirmed by HST imaging)
 ## 7. Integration Into UQFF Pipeline
 
 - **CP3 class:** `RingsOfRelativityEinsteinLensingMUGECalculator` (112th calculator, Session 60)
-- **Aggregator:** v2.4.0 — registered in `CP3_CALCULATORS`
+- **Aggregator:** v2.4.0 --- registered in `CP3_CALCULATORS`
 - **Source:** Doc 8 C++ class `RingsOfRelativity` (Grok/xAI, October 2025)
 - **Complementary classes:**
-  - Class 81 `UQFFLensingModulationRingsCalculator` — dynamic lens transit
-  - Class 111 `NGC3603FullMUGECavityPressureCalculator` — companion new class (PAPER_243)
+  - Class 81 `UQFFLensingModulationRingsCalculator` --- dynamic lens transit
+  - Class 111 `NGC3603FullMUGECavityPressureCalculator` --- companion new class (PAPER_243)
 
 ---
 
@@ -162,7 +162,7 @@ geometry of GAL-CLUS-022058s ($\theta_E \approx 10''$, confirmed by HST imaging)
 - Hubble Space Telescope imaging of GAL-CLUS-022058s (Infante et al. 2022)
 - Einstein (1936): Lens-star problem, Science 84, 506
 - Schneider, Ehlers & Falco (1992): Gravitational Lenses, Springer
-- Murphy, D.T. (2025): UQFF Manuscript — Doc 8 (Rings of Relativity MUGE, October 2025)
+- Murphy, D.T. (2025): UQFF Manuscript --- Doc 8 (Rings of Relativity MUGE, October 2025)
 - Grok (xAI): C++ class `RingsOfRelativity`, encoded October 2025
 
 ---
@@ -192,12 +192,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -220,8 +220,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -308,7 +308,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -328,7 +328,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -350,10 +350,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -362,7 +362,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
@@ -444,7 +444,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

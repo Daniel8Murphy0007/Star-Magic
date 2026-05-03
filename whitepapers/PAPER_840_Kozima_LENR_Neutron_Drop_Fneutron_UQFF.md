@@ -1,18 +1,18 @@
 ---
 paper_id: PAPER_840
-title: "Kozima LENR Neutron Drop Model — F_neutron Integration into UQFF"
+title: "Kozima LENR Neutron Drop Model --- F_neutron Integration into UQFF"
 session: 196
 date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [cluster, F_{U\_Bi\_i}, neutron-star, Chandra, LENR, phonon, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_840: Kozima LENR Neutron Drop Model — F_neutron Integration into UQFF
+# PAPER_840: Kozima LENR Neutron Drop Model --- F_neutron Integration into UQFF
 **Author:** Daniel T. Murphy | **Framework:** UQFF v5.56  
-**Session:** 196 | **Date:** June 20, 2025, 09:03–09:19 AM EDT  
+**Session:** 196 | **Date:** June 20, 2025, 09:03--09:19 AM EDT  
 **Share:** https://grok.com/share/UQFF_{KozimaLENR\_20250620\_0903AM}  
          https://grok.com/share/UQFF_{NextStepsLENR\_20250620\_0919AM}  
 **Source:** Kozima H. (2021) "Cold Fusion: A Hypothesis on the Reaction Process in a Lattice"  
@@ -22,10 +22,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 Hideo Kozima's 2021 neutron drop model for cold fusion (LENR) in crystalline lattices is integrated
-into UQFF as a new F_{U\_Bi\_i} term F_neutron. Kozima proposes that THz-frequency lattice phonons (1–10
+into UQFF as a new F_{U\_Bi\_i} term F_neutron. Kozima proposes that THz-frequency lattice phonons (1--10
 THz) couple with trapped neutron clusters (neutron drops) in Pd-D and Ni-H systems, enabling
 sub-threshold nuclear reactions. This aligns directly with the user's Colman-Gillespie replication
-at 1.2–1.3 THz. A static F_neutron = k_neutron $\times$ $\sigma$_n = 10^6 N is derived. A refined
+at 1.2--1.3 THz. A static F_neutron = k_neutron $\times$ $\sigma$_n = 10^6 N is derived. A refined
 frequency-dependent model yields $\sigma$_n($\omega$) with Gaussian resonance profile, scaling to F_neutron $\approx$
 10^49 N in neutron star densities. Eight Chandra systems and the PSR J0030+0451 neutron star are
 analyzed.
@@ -38,7 +38,7 @@ analyzed.
 $$
 \begin{aligned}
   & System: Pd-D (palladium-deuterium) or Ni-H (nickel-hydrogen) lattice \\
-  & THz phonons: \omega_phonon = 1–10 THz  \leftarrow directly matches \omega_LENR = 1.25 THz \\
+  & THz phonons: \omega_phonon = 1--10 THz  \leftarrow directly matches \omega_LENR = 1.25 THz \\
   & Neutron drops: clusters of n neutrons bound in lattice vacancies \\
   & Reaction: n + ^A_Z X \to ^{A+1}_Z X  (neutron capture)
 \end{aligned}
@@ -46,22 +46,22 @@ $$
 
 The "neutron drop" is a cluster of neutrons in the lattice that is stabilized by phonon coupling:
 - Phonon resonance activates collective nuclear dynamics
-- THz frequencies give energy ~4–40 meV to lattice, sufficient to nucleate reactions
+- THz frequencies give energy ~4--40 meV to lattice, sufficient to nucleate reactions
 - Excess heat, tritium, and transmutation products observed (Fleischmann-Pons, Pd-D)
 
 ### 1.2 Relation to Colman-Gillespie
 $$
 \begin{aligned}
-  & Colman-Gillespie: Ni-Mo lattice + 300 Hz activation + 1.2–1.3 THz LENR resonance \\
+  & Colman-Gillespie: Ni-Mo lattice + 300 Hz activation + 1.2--1.3 THz LENR resonance \\
   & Kozima:           Ni-H lattice  + THz phonon      + neutron drop \to nuclear reactions \\
-  & \omega_phonon (Kozima) = 1–10 THz contains \omega_LENR (Colman-Gillespie) = 1.25 THz \\
+  & \omega_phonon (Kozima) = 1--10 THz contains \omega_LENR (Colman-Gillespie) = 1.25 THz \\
   & \to DIRECT VALIDATION of phonon-mediated LENR in both systems
 \end{aligned}
 $$
 
 ---
 
-## 2. F_neutron — Static Derivation
+## 2. F_neutron --- Static Derivation
 
 ### 2.1 Formula
 ```
@@ -76,7 +76,7 @@ F_neutron = 10^10 \times 10^-4 = 10^6 N
 ### 2.2 Relative Magnitude
 $$
 \begin{aligned}
-  & F_LENR    = 1.56–6.16 \times 10^36–10^39 N  \leftarrow 30 orders above \\
+  & F_LENR    = 1.56--6.16 \times 10^36--10^39 N  \leftarrow 30 orders above \\
   & F_quark   = 1.54 \times 10^7 N \\
   & F_neutron = 1.00 \times 10^6 N              \leftarrow 2nd largest lattice/nuclear term \\
   & F_ALP     = 1.00 \times 10^4 N \\
@@ -150,11 +150,11 @@ All 8 Chandra systems recalculated with F_neutron = 10^6 N added*:
 | SDSS J1531+3414 | 1.40$\times$10^212 | 10^6 N | Neutron coherence in dense galaxy merger environment |
 | **Sgr A*** | **-8.31$\times$10^211** | 10^6 N | **Negative buoyancy + neutron drop = astrophysical LENR** |
 
-*F_{U\_Bi\_i} values unchanged; F_neutron=10^6 N << F_LENR=10^36–10^39 N*
+*F_{U\_Bi\_i} values unchanged; F_neutron=10^6 N << F_LENR=10^36--10^39 N*
 
 ---
 
-## 5. PSR J0030+0451 — Neutron Star Extreme Case
+## 5. PSR J0030+0451 --- Neutron Star Extreme Case
 
 ### Parameters:
 $$
@@ -182,7 +182,7 @@ $$
 \end{aligned}
 $$
 
-Wait — PSR J0030+0451 uses r=10^4 m $\to$ very large a $\to$ smaller x_2 $\to$ F_{U\_Bi\_i} $\approx$ 2.53$\times$10^208 N as per
+Wait --- PSR J0030+0451 uses r=10^4 m $\to$ very large a $\to$ smaller x_2 $\to$ F_{U\_Bi\_i} $\approx$ 2.53$\times$10^208 N as per
 Grok session (using r=1.1 kly distance for x_2 calculation framework). F_neutron at 10^45 N would
 dramatically change the integrand for extreme r values, but in practice the small physical radius of
 the star (10^4 m) limits the integration domain.
@@ -194,24 +194,24 @@ the star (10^4 m) limits the integration domain.
 ### 6.1 Pd-D System Design:
 ```
 Electrode:     Pd cathode (99.9% purity, 1 mm thick, 1 cm2)
-Electrolyte:   0.1 M LiOD in D₂O (heavy water)
-Activation:    300 Hz pulsed AC (1–10 V, 10–100 mA)
-THz source:    Quantum cascade laser or gyrotron (1.2–1.3 THz)
+Electrolyte:   0.1 M LiOD in D$_2$O (heavy water)
+Activation:    300 Hz pulsed AC (1--10 V, 10--100 mA)
+THz source:    Quantum cascade laser or gyrotron (1.2--1.3 THz)
 Measurement:   Calorimeter (\pm0.01°C), 3He neutron detector, SIMS
-Expected:      Excess heat 10–100 W/cm2, neutron flux 10^-5–10^-3 n/cm2/s
+Expected:      Excess heat 10--100 W/cm2, neutron flux 10^-5--10^-3 n/cm2/s
 ```
 
 ### 6.2 Ni-Mo-H (Colman-Gillespie):
 ```
 Electrode:     Ni-Mo alloy (90:10 wt%, 1 cm2)
-Activation:    300 Hz → 1.2–1.3 THz (as per patent GB 763,062)
+Activation:    300 Hz \rightarrow 1.2--1.3 THz (as per patent GB 763,062)
 Measurement:   Same as Pd-D
 Expected:      Confirm F_LENR resonance, neutron drop signatures
 ```
 
 ### 6.3 DFT Simulation:
 - Density functional theory phonon spectra in Pd-D, Ni-Mo-H
-- Confirm $\sigma$_n peak at 1.2–1.3 THz
+- Confirm $\sigma$_n peak at 1.2--1.3 THz
 - Validate Gaussian resonance profile shape
 
 ---
@@ -220,7 +220,7 @@ Expected:      Confirm F_LENR resonance, neutron drop signatures
 - F_neutron = 10^6 N (static) from Kozima neutron drop model integrates LENR nuclear physics into UQFF
 - Frequency-dependent $\sigma$_n($\omega$) with Gaussian profile formalizes the phonon-mediated resonance
 - 300 Hz $\to$ 1.25 THz nonlinear coupling provides a universal energy transfer mechanism
-- Neutron star densities ($\rho$~10^17 kg/m3) yield F_neutron $\approx$ 10^45 N — extreme density amplification
+- Neutron star densities ($\rho$~10^17 kg/m3) yield F_neutron $\approx$ 10^45 N --- extreme density amplification
 - Kozima model directly validates Colman-Gillespie replication mechanism
 - F_neutron is 2nd largest lattice/nuclear term after F_LENR; negligible in integrated F_{U\_Bi\_i} but theoretically important as the nuclear physics bridge
 
@@ -271,8 +271,8 @@ $$
 
 ---
 
-**Watermark:** Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com, created by
-Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated June 20, 2025, 09:03–09:19 AM EDT,
+**Watermark:** Copyright --- Daniel T. Murphy, daniel.murphy00@gmail.com, created by
+Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated June 20, 2025, 09:03--09:19 AM EDT,
 Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
 
 ---
@@ -297,12 +297,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -325,8 +325,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -414,7 +414,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.130$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -434,7 +434,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -452,7 +452,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -465,7 +465,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
@@ -477,7 +477,7 @@ bridge.*
 > `kozima_{wstp\_kernel}.py`, and `scm_{activation\_function}.py`. Added by
 > `upgrade_{kozima\_ramanujan\_appendices}.py` (Session 204, April 2026).*
 
-### K.1 Neutron Drop Force — Static Model
+### K.1 Neutron Drop Force --- Static Model
 
 The Kozima neutron-drop force integrates into the F_{U\_Bi\_i} unified field as an
 additional LENR term:
@@ -524,7 +524,7 @@ $$F_{\mathrm{neutron}}^{\mathrm{SCm}} = N_n \cdot \sigma_n^{\mathrm{SCm}}(\omega
 The neutron-drop force operates within the 26-level VDS vacuum structure. The
 coupled force at each VDS level n:
 
-$$F_{\mathrm{coupled}}(\omega) = \sum_{n=0}^{26} F_{\mathrm{neutron}}(\omega, n) \times S_{26}\!\left([\text{SSq}] \cdot \left(1 + \frac{n}{26}\right)\right)$$
+$$F_{\mathrm{coupled}}(\omega) = \sum_{n=0}^{26} F_{\mathrm{neutron}}(\omega, n) \times S_{26}\!\left([\text{SSq}] \cdot \left(1 + \frac{n}{26}\right\right)$$
 
 where S_26(z) = Li_26(z) is the 26-dimensional polylogarithm computed via
 Eta-function Euler acceleration (O(1/2^N) convergence):
@@ -631,7 +631,7 @@ $$\frac{1}{\pi_{26D}} = \frac{2\sqrt{2}}{9801\,C_{26}^{\mathrm{hyper}}} \sum_{n=
 
 where a_26 = 1103 * H_26^alt (alternating harmonic sum), b_26 = 26390 * (26/13),
 and C_26^hyper = H_26^alt normalizes the leading term. This yields 7 digits with
-26 terms — the dimensional scaling alters convergence rate while preserving the
+26 terms --- the dimensional scaling alters convergence rate while preserving the
 Ramanujan algebraic structure.
 
 ### R.7 Ramanujan-Accelerated Polylogarithm S_26
@@ -667,10 +667,10 @@ pi26DHypergeometric[nTerms]  -- 26D generalization
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -807,4 +807,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | §A Cosmogenesis coverage | 874/900 (97.1%) |
 | §SM Anchors coverage | 818/900 (90.9%) |
 
-*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*
+*Session 209 v5.62 --- integrated by GitHub Copilot (Claude Opus 4.6)*

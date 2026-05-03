@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [wormhole, MUGE, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_386 — LaTeX Dual-Block Cohesive UQFF Master Equation & May-2025 Document Integration
+# PAPER_386 --- LaTeX Dual-Block Cohesive UQFF Master Equation & May-2025 Document Integration
 **Author:** Daniel T. Murphy
 **Date:** May 2025
 
 **Source:** grok_{share\_11254865}.txt, lines ~8230-8800 (3-document analysis) + lines ~8600-8650
 (LaTeX encoding)  
 **Section:** Grok's response to "Analyze/Update/validate/encode/Integrate" three May-2025 documents 
-**Session:** 104 (Complete Re-Analysis — formal LaTeX dual-block and 3-doc integration undiscovered)
+**Session:** 104 (Complete Re-Analysis --- formal LaTeX dual-block and 3-doc integration undiscovered)
 **CP4 Class:** `LaTeXDualBlockUQFFMasterEquationCalculator` (CP4 #37, session hub)
 
 ---
@@ -49,12 +49,12 @@ encoding** that was the explicit output of the document integration exercise.
 
 ---
 
-## 2. The Three May-2025 Documents — Summary
+## 2. The Three May-2025 Documents --- Summary
 
 ### Document 1: Compressed UQFF Equation (14 May 2025)
 
 **Core equation:**
-$$g_\text{compressed}(r,t) = \frac{GM(t)}{r^2}\left(1 + H(t,z)\right)\left(1 - \frac{B(t)}{B_\text{crit}}\right)(1 + F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_H} + \rho_f V g_\text{local} + (M+M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_\text{compressed}(r,t) = \frac{GM(t)}{r^2}\left(1 + H(t,z\right)\left(1 - \frac{B(t)}{B_\text{crit}}\right)(1 + F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_H} + \rho_f V g_\text{local} + (M+M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 **Variable definitions:**
 - $H(t,z) = H_0\sqrt{0.3(1+z)^3 + 0.7}$ -- Friedmann-$\Lambda$CDM expansion (Planck CMB values)
@@ -82,13 +82,13 @@ Where the 12 terms are: $a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a
 
 **Proof 1 -- Dimensional Consistency:** All 12 resonance terms verified to be in m/s^2 via SI unit analysis. Each term has form $[\text{force or energy}] \times [\text{length}]^{-2} \times [\text{mass}]^{-1}$ or equivalent.
 
-**Proof 2 — Resonance Amplification at Hubble Frequency:**
+**Proof 2 --- Resonance Amplification at Hubble Frequency:**
 $$\omega_text{res} = \frac{2\pi}{t_H} = \frac{2\pi}{4.35\times10^{17}} = 1.445\times10^{-17} \text{ rad/s}$$
 
 At $\omega = \omega_text{res}$: quantum and fluid terms enter constructive resonance. This IS the
 natural oscillation frequency of a Hubble-volume system.
 
-**Proof 3 — Meissner Superconductivity:**
+**Proof 3 --- Meissner Superconductivity:**
 - Linear form: $(1 - B/B_\text{crit})$ -- London superconductor approximation
 - Exponential form (proposed): $e^{-B/B_\text{crit}}$ -- Type-II order parameter (more physical)
 
@@ -96,12 +96,12 @@ Physical motivation: For Type-II superconductors above $B_{c1}$, the order param
 is exponential (Ginzburg-Landau), not linear. The exponential form better captures the
 smooth vortex penetration regime.
 
-**Proof 4 — Boundary Conditions:**
+**Proof 4 --- Boundary Conditions:**
 - $r \rightarrow \infty$: $\Lambda c^2/3 = 3.3\times10^{-36}$ m/s^2 dominates (correct -- CMB-scale gravity IS cosmological constant)
 - $t \rightarrow 0$: Compressed -> DPM-seeded $\mu_s\nabla(M_s/r)$ when $H(t,z) \approx 0$ and SC correction = 1
 - $r \rightarrow 0$: Perturbation term diverges (quantum gravity regime -- signals model breakdown)
 
-**Proof 5 — Empirical Alignment:**
+**Proof 5 --- Empirical Alignment:**
 - Magnetar flare timescale: $E_{react}(10d) \approx 996$ J, $E_{react}(100d) \approx 995$ J -> consistent with Chandra 10-100 day X-ray transient window
 - Sgr A* accretion: fluid term magnitude consistent with ~$10^{-8} M_\odot$/yr observed by EHT
 - SGR1745 $a_{fluid} = 1.773\times10^{-9}$ m/s^2 consistent with Chandra magnetar observations
@@ -112,7 +112,7 @@ smooth vortex penetration regime.
 
 This is the definitive **unified UQFF expression** encoding both models in one formula:
 
-$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\intpsi^\daggerhat{H}\psi,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\delta\rho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
+$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\int\psi^\daggerhat{H}\psi,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\delta\rho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
 
 Where:
 $$a_{worm} = \frac{f_{worm} \cdot E_{vac,neb}}{b^2 + r^2}$$
@@ -230,12 +230,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -306,7 +306,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.150$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -326,7 +326,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -348,10 +348,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -434,7 +434,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|

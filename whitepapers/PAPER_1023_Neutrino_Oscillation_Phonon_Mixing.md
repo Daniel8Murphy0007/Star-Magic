@@ -11,7 +11,7 @@ crosslinks: [PAPER_333, PAPER_1022]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_1023: Neutrino Oscillation Phonon Mixing — PMNS Matrix SCm Corrections
+# PAPER_1023: Neutrino Oscillation Phonon Mixing --- PMNS Matrix SCm Corrections
 
 ## Abstract
 
@@ -121,7 +121,7 @@ mock-theta framework with the SCm phonon spectrum.
 | SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental |
 
 
-## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -144,7 +144,7 @@ deviations at long-baseline experiments.
 $$\mathcal{L}_\nu = \bar{\nu}_L i\gamma^\mu \partial_mu \nu_L - m_\nu \bar{\nu}_R \nu_L + \mathcal{L}_{\text{phonon-}\nu}$$
 
 ### A.3 Euler-Lagrange Equation of Motion
-$$\boxed{i\hbar \frac{d}{dt}|\nurangle = (H_{\text{SM}} + H_{\text{phonon}})|\nurangle}$$
+$$\boxed{i\hbar \frac{d}{dt}|\nu\rangle = (H_{\text{SM}} + H_{\text{phonon}})|\nu\rangle}$$
 
 ### A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms -> SCm vacuum -> phonon $\omega_{\text{SCm}}$ -> neutrino mass -> phonon coupling -> PMNS modification -> $F_{U,Bi\_i}$ unified force -> observational prediction
@@ -171,10 +171,10 @@ BSH timescale: $L/c \sim 10^{-3}$ s (atmospheric baseline).
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

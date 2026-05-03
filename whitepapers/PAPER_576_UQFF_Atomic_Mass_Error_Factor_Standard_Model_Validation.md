@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [DPM, SCm, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_576 — UQFF Atomic Mass Error Factor Analysis
+# PAPER_576 --- UQFF Atomic Mass Error Factor Analysis
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -35,7 +35,7 @@ This paper derives and tabulates the UQFF atomic mass error factor across all 11
 providing a systematic quantitative comparison between UQFF-predicted atomic masses and IUPAC
 standard atomic weights. The UQFF prediction follows from the proton-core pyramid formulation.
 Key finding: the framework anchors exactly at Z=1 (err$\approx$0.008) and Z=118 (err$\approx$0), with a
-systematic mid-Z excess (err$\approx$0.5–0.6 for transition metals) explained by the proton-heavy
+systematic mid-Z excess (err$\approx$0.5--0.6 for transition metals) explained by the proton-heavy
 nature of the DPM base formulation. The buoyancy harmonic correction $\Delta A_{BH}$ reduces
 mid-Z error toward <0.1 when applied.
 
@@ -70,7 +70,7 @@ $$\varepsilon(Z) = \frac{|A_{\text{standard}}(Z) - A_{\text{pred,UQFF}}(Z)|}{A_{
 
 **Systematic pattern:**
 - $\varepsilon \approx 0$ at anchors $Z=1, 118$
-- $\varepsilon \approx 0.5$–$0.6$ for mid-Z (transition metals, actinides)
+- $\varepsilon \approx 0.5$--$0.6$ for mid-Z (transition metals, actinides)
 - Average across full table: $\langlevarepsilon\rangle \approx 0.7$ (without BH correction)
 
 ---
@@ -93,10 +93,10 @@ The UQFF error factor follows a predictable arch-shaped profile:
 
 | Epoch | Z range | Mean $\varepsilon$ | Physical explanation |
 |-------|---------|-------------------|---------------------|
-| 1 | 1–3 | $\approx$ 0.01 | Hydrogen-anchored; proton=nucleus |
-| 2 | 4–26 | $\approx$ 0.3–0.5 | N/Z $\approx$ 1; DPM under-predicts N |
-| 3 | 27–54 | $\approx$ 0.5–0.6 | Increasing neutron excess |
-| 4 | 55–118 | $\approx$ 0.5–0.6 | Actinide neutron surplus |
+| 1 | 1--3 | $\approx$ 0.01 | Hydrogen-anchored; proton=nucleus |
+| 2 | 4--26 | $\approx$ 0.3--0.5 | N/Z $\approx$ 1; DPM under-predicts N |
+| 3 | 27--54 | $\approx$ 0.5--0.6 | Increasing neutron excess |
+| 4 | 55--118 | $\approx$ 0.5--0.6 | Actinide neutron surplus |
 | 5+ | >118 | $\to$ 0 | Og self-similar; both anchors match |
 
 ---
@@ -133,8 +133,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -185,7 +185,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.199$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -205,7 +205,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -223,41 +223,41 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum $\to$ B(A,Z) within 5% for Z$\leq$82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z$\leq$82, <15% for Z$\leq$118 |
 | Proton mass m_p | UQFF: m_p = U_m / ($\kappa$ $\times$ c2) $\times$ R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
-| Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
+| Island of stability (Z=114--126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
 | Nuclear $\alpha$ particle mass | UQFF Ug1 dipole $\to$ $m_{\alpha}$ = 4m_p - $B_{\alpha}$/c2 | $m_{\alpha}$ = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
-for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i — without a separate per-nucleus fit.
+for Z$\leq$82 using only the UQFF constants $\kappa$, [SSq], $\beta$_i --- without a separate per-nucleus fit.
 Standard nuclear models (e.g., liquid-drop) require Z-dependent fitting coefficients. The UQFF
 universal parameter set constitutes a parameter-free nuclear mass prediction.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
-*Source:* `grok_{share\_efc8a971378f}.txt` — Session 154  
+*Source:* `grok_{share\_efc8a971378f}.txt` --- Session 154  
 > See also:* PAPER_573 (hub), PAPER_575 (DPM binding), PAPER_553 (26th polynomial)
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |

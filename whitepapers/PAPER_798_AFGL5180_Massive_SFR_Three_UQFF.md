@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_798
-title: "AFGL 5180 — Massive Star Formation Region with Triadic UQFF"
+title: "AFGL 5180 --- Massive Star Formation Region with Triadic UQFF"
 session: 189
 date: 2026-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [cluster, Hubble, Three-UQFF, vacuum, jet, BEC, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_798: AFGL 5180 — Massive Star Formation Region with Triadic UQFF
+# PAPER_798: AFGL 5180 --- Massive Star Formation Region with Triadic UQFF
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF (Universal Quantum Field Superconductive Framework) — Three-UQFF Simultaneous  
+**Framework:** UQFF (Universal Quantum Field Superconductive Framework) --- Three-UQFF Simultaneous  
 **Session:** 189 | v5.45  
 **Date:** 2026  
-**CP4 Class:** #382 — AFGL5180MassiveSFRThreeUQFFCalculator  
+**CP4 Class:** #382 --- AFGL5180MassiveSFRThreeUQFFCalculator  
 
 ---
 
@@ -35,7 +35,7 @@ dominant mode at sub-galactic scales with the embedded protostellar dense-core g
 ## 1. Introduction
 
 AFGL 5180 represents a class of systems where massive star formation is actively ongoing within a
-dense molecular cloud. Its embedded geometry — protostars still accreting within dusty cocoons —
+dense molecular cloud. Its embedded geometry --- protostars still accreting within dusty cocoons ---
 makes it an ideal test of UQFF at sub-kpc scales where buoyancy UQFF effects from vacuum density
 gradients become proportionally larger. The three Triadic UQFF modes are computed simultaneously for
 the first time for an embedded massive SFR, with the Boyle's Law buoyancy scaling explicitly
@@ -51,14 +51,14 @@ included.
 | Radius | r | 9.46$\times$1016 m (10 ly) | Hubble angular size |
 | Redshift | z | 0.0022 (6500 ly) | Distance-z |
 | Age | t | 3$\times$106 yr = 9.468$\times$1013 s | Protostellar age |
-| SFR | — | 0.5 MM_sun/yr | Embedded SFR |
-| M_sf(t) | — | 1.5 ($\times$ initial mass) | Active mass growth |
-| f_UA' | — | 0.999 | UQFF UA' state |
-| f_SCm | — | 0.001 | UQFF SCm state |
+| SFR | --- | 0.5 MM_sun/yr | Embedded SFR |
+| M_sf(t) | --- | 1.5 ($\times$ initial mass) | Active mass growth |
+| f_UA' | --- | 0.999 | UQFF UA' state |
+| f_SCm | --- | 0.001 | UQFF SCm state |
 | v_EM | v | 105 m/s | Cloud dispersion |
 | B_EM | B | 10-5 T | Molecular cloud field |
-| $\rho$_UA | — | 7.09$\times$10-36 kg/m3 | UQFF constant |
-| $\rho$_SCm | — | 7.09$\times$10-37 kg/m3 | UQFF constant |
+| $\rho$_UA | --- | 7.09$\times$10-36 kg/m3 | UQFF constant |
+| $\rho$_SCm | --- | 7.09$\times$10-37 kg/m3 | UQFF constant |
 
 ---
 
@@ -73,7 +73,7 @@ $$
   & k_k  = G \times M_sf = 6.6743e-11 \times 1.5 = 1.001e-10 \\
   & f_UA'\cdot f_SCm = 0.999 \times 0.001 = 9.99e-4 \\
   & R_EB1 = R_EB2 = r = 9.46e16 m \\
-  & G_k = M_sf\cdot\exp(–t/\tau_SF) = 1.5 \times exp(–9.468e13/3.156e13) = 1.5 \times e-3 = 0.0747 \\
+  & G_k = M_sf\cdot\exp(--t/\tau_SF) = 1.5 \times exp(--9.468e13/3.156e13) = 1.5 \times e-3 = 0.0747 \\
   & \text{F\_U\_g1} = 1.001e-10 \times (9.99e-4)2 \times (9.46e16)2 / (9.46e16)2 \times 0.0747 \\
   & = 1.001e-10 \times 9.98e-7 \times 0.0747 \\
   & = 7.46e-18 \times 1.187e-2  \leftarrow [corrected with \Sigma sum 26 states] \\
@@ -128,7 +128,7 @@ dominates over the Compressed and Resonant modes by 9 orders of magnitude. This 
 buoyancy term scales with the local density ratio ($\rho$_UA/$\rho$_SCm) and the geometric factor
 (V_little/V_big = 1/33), both amplified in dense molecular cloud environments.
 
-The Resonant mode is negative at this scale — a destructive interference of the 26-state resonance
+The Resonant mode is negative at this scale --- a destructive interference of the 26-state resonance
 sum that partially cancels the Compressed contribution. This is a new UQFF prediction: **in dense
 protostellar environments, the Resonant mode acts as a partial quenching field**, with the net
 protostellar dynamics driven primarily by Buoyancy UQFF.
@@ -140,7 +140,7 @@ protostellar dynamics driven primarily by Buoyancy UQFF.
 The Vacuum Density Series (VDS) appears in the [SSq] factor within the pseudo-monopole density:
 $$
 \begin{aligned}
-  & \rho_vac,[UA']:SCm = \rho_UA \cdot (\rho_SCm/\rho_UA)^n \cdot exp(–[SSq]\cdot n/26\cdot\exp(–(\pi–t))) \\
+  & \rho_vac,[UA']:SCm = \rho_UA \cdot (\rho_SCm/\rho_UA)^n \cdot exp(--[SSq]\cdot n/26\cdot\exp(--(\pi--t))) \\
   & \uparrow VDS: Li26([SSq]) = 0.570
 \end{aligned}
 $$
@@ -148,7 +148,7 @@ $$
 The Dipole Vortex Prime (DVP) appears in the species index formula used to determine protostellar
 species from vacuum density ratio:
 $$
-S_index = log(\rho_SCm/\rho_UA) \cdot n = log(0.1) \cdot n = –n  (n=1 = atom, n=26 = galaxy)
+S_index = log(\rho_SCm/\rho_UA) \cdot n = log(0.1) \cdot n = --n  (n=1 = atom, n=26 = galaxy)
 $$
 
 The Boyle's Law buoyancy (f_Ub = 0.1$\cdot$$\Delta$$k_{\eta}$$\cdot$10$\cdot$1/33) encodes the Buoyancy Harmonic 33 Hz level.
@@ -187,12 +187,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-CLU-S225 -->
@@ -215,8 +215,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -303,7 +303,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.139$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -323,7 +323,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -341,7 +341,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -354,17 +354,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -372,7 +372,7 @@ bridge.*
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |

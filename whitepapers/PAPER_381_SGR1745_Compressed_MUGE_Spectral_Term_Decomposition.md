@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, Hubble, dark-matter, MUGE, magnetar, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_381 — SGR1745 Compressed MUGE Spectral Term Decomposition & Perturbation Dominance Law
+# PAPER_381 --- SGR1745 Compressed MUGE Spectral Term Decomposition & Perturbation Dominance Law
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_{share\_11254865}.txt, lines ~2900–2904  
-**Section:** SGR1745 compressed MUGE computation — full 8-term breakdown  
-**Session:** 104 (Complete Re-Analysis — individual term values undiscovered in PAPER_372)  
+**Source:** grok_{share\_11254865}.txt, lines ~2900--2904  
+**Section:** SGR1745 compressed MUGE computation --- full 8-term breakdown  
+**Session:** 104 (Complete Re-Analysis --- individual term values undiscovered in PAPER_372)  
 **CP4 Class:** `SGR1745CompressedMUGESpectralTermDecompositionCalculator` (CP4 #32)
 
 ---
@@ -49,10 +49,10 @@ DPM-seeded base, revealing why the compressed model is **unphysical at magnetar 
 | Magnetic field | B | 1$\times$1010 | T |
 | Critical B-field | B_crit | 1$\times$1011 | T |
 | Age | t | 3.799e10 | s |
-| Redshift | z | 0.0009 | — |
+| Redshift | z | 0.0009 | --- |
 | Expansion velocity | v_exp | 1$\times$103 | m/s |
 | Dark matter mass | M_DM | 1$\times$1028 | kg |
-| Density contrast | $\delta$$\rho$/$\rho$ | 0.1 | — |
+| Density contrast | $\delta$$\rho$/$\rho$ | 0.1 | --- |
 
 ---
 
@@ -108,7 +108,7 @@ $$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} = \frac{3
 
 $$(M + M_\text{DM}) \approx (2.984\times10^{30} + 10^{28}) \approx 3.0\times10^{30} \ \text{kg}$$
 
-$$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\text\bf{DOMINANT — 27 orders above base})}$$
+$$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\text\bf{DOMINANT --- 27 orders above base})}$$
 
 ---
 
@@ -116,7 +116,7 @@ $$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\text\bf{DOMIN
 
 | Term | Formula | Value (m/s2) | Orders above base |
 |------|---------|:------------:|:-----------------:|
-| Base (DPM-seeded) | $\mu$_s$\nabla$(M_s/r) | 1.991e12 | — |
+| Base (DPM-seeded) | $\mu$_s$\nabla$(M_s/r) | 1.991e12 | --- |
 | SC adj ($\times$0.9) | $\times$(1-B/B_crit) | 1.792e12 | 0 |
 | Ug3′ (ext. BH) | GM_BH/r_BH2 | 6.746e-5 | -17 |
 | Cosmological floor | $\Lambda$c2/3 | 3.3e-36 | -48 |
@@ -131,7 +131,7 @@ $$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\text\bf{DOMIN
 **Statement:** For compact objects at $r \sim 10^4$ m (magnetar scale), the dark matter perturbation
 term in the Compressed MUGE dominates by **$\geq$ 27 orders of magnitude** over the DPM-seeded base.
 
-**Physical origin:** The $3\mu_s\nabla(M_s/r)/r$ factor scales as $r^{-3}$ — making it catastrophically large
+**Physical origin:** The $3\mu_s\nabla(M_s/r)/r$ factor scales as $r^{-3}$ --- making it catastrophically large
 at magnetar radii:
 
 $$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=10^4} = 6.0\times10^{10} \gg \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=1 \text{ AU}} \approx 1.7\times10^{-23}$$
@@ -147,7 +147,7 @@ $$\text{Compressed MUGE valid when: } \underbrace{\underbrace{\frac{3GM}{r^3}}_{
 For SGR1745 with $\delta\rho/\rho = 0.1$:
 $$r_\text{min\_compressed} = \left(\frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{0.1}\right)^{1/3} \approx 1.3\times10^7 \ \text{m}$$
 
-The magnetar radius $r = 10^4$ m violates this by 3 orders — confirming Compressed MUGE is invalid.
+The magnetar radius $r = 10^4$ m violates this by 3 orders --- confirming Compressed MUGE is invalid.
 
 ---
 
@@ -174,20 +174,20 @@ $$\approx 1.782\times10^{39} \ \text{m/s}^2 \quad \text{(perturbation-dominated)
 **Resonance MUGE** (physically correct for this system):
 $$g_\text{resonance}^\text{SGR1745} \approx a_{fluid\_freq} = 1.773\times10^{-9} \ \text{m/s}^2$$
 
-**Full divergence:** $1.782\times10^{39} / 1.773\times10^{-9} \approx 10^{48}$ — 48 orders of magnitude.
+**Full divergence:** $1.782\times10^{39} / 1.773\times10^{-9} \approx 10^{48}$ --- 48 orders of magnitude.
 
 ---
 
 ## 8. References Within Codebase
 
-- PAPER_372: Compressed UQFF B/Bcrit Superconductivity — framework and final value
-- PAPER_371: MUGE 12-Term Resonance — correct model for SGR1745
-- PAPER_379: Dual-model 7-system comparison — the 48-order divergence
+- PAPER_372: Compressed UQFF B/Bcrit Superconductivity --- framework and final value
+- PAPER_371: MUGE 12-Term Resonance --- correct model for SGR1745
+- PAPER_379: Dual-model 7-system comparison --- the 48-order divergence
 - `CompressedUQFFBcritSuperconductivityCalculator` (CP4 #15): Full 8-function implementation
 
 ---
 
-*Source: `grok_{share\_11254865}`.txt lines ~2900–2904 | Session 104 | First individual-term tabulation
+*Source: `grok_{share\_11254865}`.txt lines ~2900--2904 | Session 104 | First individual-term tabulation
 for SGR1745 compressed MUGE*
 
 ---
@@ -212,12 +212,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
@@ -288,7 +288,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.052$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -308,7 +308,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -326,7 +326,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -339,17 +339,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -358,7 +358,7 @@ bridge.*
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |

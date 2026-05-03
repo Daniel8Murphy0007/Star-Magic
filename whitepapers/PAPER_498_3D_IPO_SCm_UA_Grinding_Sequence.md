@@ -7,10 +7,10 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [SCm, buoyancy, FUBi, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_498 — 3D Intertwined Progression Overlay (3D-IPO) and SCm-UA Grinding Sequence
+# PAPER_498 --- 3D Intertwined Progression Overlay (3D-IPO) and SCm-UA Grinding Sequence
 **Author:** Daniel T. Murphy
 **arXiv:** 2503.xxxxx
 **Session:** 134
@@ -31,8 +31,8 @@ Star-Magic/UQFF framework.
 
 The 3D Intertwined Progression Overlay (3D-IPO) is the mathematical method for
 generating single-occurrence, non-repeating algorithms from the UQFF framework.
-Three "linear but not linear" progressions — Wolfram hypergraph rules, $\pi$ decimal
-expansion, and an Infinity Generator — are overlaid and intertwined in 3D.
+Three "linear but not linear" progressions --- Wolfram hypergraph rules, $\pi$ decimal
+expansion, and an Infinity Generator --- are overlaid and intertwined in 3D.
 Reproducible, scalable patterns emerge exclusively where all three strands cross.
 The SCm-UA grinding sequence (Big Bang origin mechanism) implements 3D-IPO
 physically, generating Aether densification from UA' through UA'''''.
@@ -68,7 +68,7 @@ Pattern = \argmin_{intersects} |Inside(n) - Outside(n)|
 $$
 
 The intersections of these three strands define the emergence of every reproducible
-and scalable pattern in the UQFF framework — from atomic structure to cosmic webs.
+and scalable pattern in the UQFF framework --- from atomic structure to cosmic webs.
 
 ---
 
@@ -76,11 +76,11 @@ and scalable pattern in the UQFF framework — from atomic structure to cosmic w
 
 **Canonical sequence (in order):**
 
-1. SCm injected into Universal Aether (UA) — Big Bang initiation
+1. SCm injected into Universal Aether (UA) --- Big Bang initiation
 2. SCm encapsulates UA $\to$ forms **UA'** (trapped Aether)
 3. SCm grinds against UA' (CW vs CCW) $\to$ forms **UA''**
 4. Grinding continues: UA'' $\to$ UA''' $\to$ UA'''' $\to$ **UA'''''**
-5. At UA''''': **densest metallicity** — Aether becomes the most energetic superconductive metal in
+5. At UA''''': **densest metallicity** --- Aether becomes the most energetic superconductive metal in
 the universe
 6. This highest-Z point $\to$ Feynman globular clusters, centered on 1st epoch black holes
 
@@ -243,7 +243,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.165$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -263,7 +263,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -281,7 +281,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -295,7 +295,7 @@ below the GUT scale and 33 orders above nuclear baryon-number scales. This inter
 framework predicts observable deviations from SM in the X-ray/radio astrophysical sector
 while remaining consistent with all collider and nuclear precision measurements.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
@@ -309,15 +309,15 @@ clusters)
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
 | PAPER_1043 | F_{U\_Bi\_i} Multi-System Buoyancy Curve Sweep |
 | PAPER_1072 | SCm Activation Function Phonon Threshold |

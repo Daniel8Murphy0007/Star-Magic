@@ -7,14 +7,14 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [AGN, cluster, dark-matter, vacuum, MUGE, SMBH, magnetar, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_473 — MUGEModule: 7-System Multi-Gravity Equations (Compressed + Resonance)
+# PAPER_473 --- MUGEModule: 7-System Multi-Gravity Equations (Compressed + Resonance)
 **Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
-**Copyright © Daniel T. Murphy — All Rights Reserved**
+**Copyright © Daniel T. Murphy --- All Rights Reserved**
 **Version:** 1.0 | **Date:** 2026 | **Session:** 123
 
 ---
@@ -24,9 +24,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper documents the `MUGEModule`, which implements the MUGE (Modified
 Unified Gravity Equation) compressed and resonance variants across 7 canonical
 astrophysical systems.  MUGE is a **re-expression** of the UQFF unified field
-$F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ — four
+$F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ --- four
 independent gravitational force channels (internal dipole, outer field bubble,
-magnetic strings, star–BH vacuum), each with buoyancy opposition, unified by
+magnetic strings, star--BH vacuum), each with buoyancy opposition, unified by
 magnetism and the Aether metric tensor.  The compressed MUGE packages $F_U$ into
 a 9-term multiplicative-additive structure where DPM mass gradient $\mu_s\nabla(M_s/r)$ appears only as the
 **zero-vacuum limiting case of the Ug2 channel**.  The resonance MUGE decomposes
@@ -42,8 +42,8 @@ Gravity in the UQFF framework originates from the unified field $F_U$, not from 
 
 $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu})}$$
 
-The four Ug channels — internal dipole ($Ug_1$), outer field bubble ($Ug_2$),
-magnetic strings ($Ug_3$), and star–BH vacuum ($Ug_4$) — each encode a distinct
+The four Ug channels --- internal dipole ($Ug_1$), outer field bubble ($Ug_2$),
+magnetic strings ($Ug_3$), and star--BH vacuum ($Ug_4$) --- each encode a distinct
 gravitational force with its own vacuum coupling, time dependence ($\cos(\pi
 t_n)$), and reactivity ($E_{\text{react}}$).  Universal buoyancy $Ub_i =
 -\beta_i \cdot Ug_i \cdot \Omega_g$ opposes each channel.  $Um$ unifies via
@@ -102,7 +102,7 @@ g_{comp}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H(z)t)\lef
 
 | Term | Symbol | Physical Meaning |
 |------|--------|-----------------|
-| Expansion correction | H(z)t | Hubble term — universe expands during observation |
+| Expansion correction | H(z)t | Hubble term --- universe expands during observation |
 | Magnetic suppression | 1 - B/B_crit | Magnetar-class B field reduces effective g |
 | Feedback factor | F_env = f_AGN + f_SN + f_SF | Stellar/AGN/SF feedback modulates gravity |
 | Ug sum | $\Sigma$ Ug_i | 4 UQFF sub-fields (dipole, charge, string, vacuum) |
@@ -145,12 +145,12 @@ g_{res} &= a_{DPM} + a_{THz} + a_{vac,diff} \\
 | Term | Formula | Physical Source |
 |------|---------|----------------|
 | a_DPM | $\kappa$ [SSq] g | DPM-modulated gravity ($\kappa$ = 0.0005/day) |
-| a_THz | ħ $\omega$_THz / (M r) | THz-range quantum resonance |
+| a_THz | \hbar $\omega$_THz / (M r) | THz-range quantum resonance |
 | `a_{vac\_diff}` | c ($\rho$_UA - $\rho$_SCm) / M | Vacuum differential buoyancy |
 | a_superFreq | Ug_sum $\times$ f_SF | Super-frequency from SF rate |
 | a_aetherRes | $\eta$ $\rho$_A c2 r | Aether resonance term |
 | Ug4_i | G $\rho$_UA V/r2 | Vacuum concentration field |
-| a_quantumFreq | ħ $\omega$_q tanh($\omega$_q/T) | Bose-Einstein quantum correction |
+| a_quantumFreq | \hbar $\omega$_q tanh($\omega$_q/T) | Bose-Einstein quantum correction |
 | a_aetherFreq | $A_{\mu}$ $\partial$_$\mu$ $\phi$ | Background aether wave |
 | a_fluidFreq | $\nu$ $\nabla$2v | Fluid viscosity resonance |
 | a_osc | A sin($\omega$_osc t) | Oscillatory mode |
@@ -169,7 +169,7 @@ boundary region).
 
 The dual-output structure (g_comp vs. g_res) enables:
 
-1. **UQFF vs. MUGE comparison**: g_UQFF from F_{U\_Bi\_i} and g_MUGE from compressed equation — both
+1. **UQFF vs. MUGE comparison**: g_UQFF from F_{U\_Bi\_i} and g_MUGE from compressed equation --- both
 converge within 5% for Sagittarius A*
 2. **Resonance decomposition**: g_res isolates individual frequency contributions for spectral
 analysis
@@ -179,9 +179,9 @@ analysis
 
 ## 6. Connection to Existing Whitepapers
 
-- **§1.1–§1.13 Millennium Series**: Provides cosmological $\Lambda$ and quantum terms referenced in MUGE
+- **§1.1--§1.13 Millennium Series**: Provides cosmological $\Lambda$ and quantum terms referenced in MUGE
 - **PAPER_474**: 12-system expansion including 5 new resonance systems
-- **SOURCE4 (MAIN_1 lines 25623–26026)**: Core MUGE compressed and resonance functions
+- **SOURCE4 (MAIN_1 lines 25623--26026)**: Core MUGE compressed and resonance functions
 
 ---
 
@@ -190,7 +190,7 @@ analysis
 The `MUGEModule` provides a comprehensive 7-system gravitational framework spanning magnetars to
 cosmological volumes (24 decades in mass). Both compressed and resonance variants produce physically
 consistent results and provide cross-validation anchors for the UQFF unified field integral. The
-near-universal g_res $\approx$ 10-10 m/s2 resonance floor is a notable prediction — precisely at the MOND
+near-universal g_res $\approx$ 10-10 m/s2 resonance floor is a notable prediction --- precisely at the MOND
 acceleration scale.
 
 ---
@@ -221,7 +221,7 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$\begin{aligned}
 P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \cdot \bigl[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \\
 &\quad \cdot (B / B_{\text{crit}})^2\bigr] 
@@ -230,7 +230,7 @@ P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \cdot \bigl[1 + \beta_i \cdot \Phi
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates
 jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot
 S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
@@ -286,8 +286,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -413,7 +413,7 @@ the double-exponential vacuum condensate profile:
 
 $$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}}
   \cdot \exp\!\left(-\exp\!\left(
-  -\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+  -\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.083$ (near-threshold regime),
 placing it in the $t \to \pi$ collapse zone where the double-exponential
@@ -448,7 +448,7 @@ The $\tanh$ saturation envelope prevents unphysical divergence:
 $$\begin{aligned}
 \mathcal{F}_{\mathrm{BSH,sat}} &= \mathcal{F}_{\mathrm{BSH}}
   \cdot \left(1 - \tanh\!\left(
-  \frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)
+  \frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)
 \end{aligned}$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot
@@ -469,7 +469,7 @@ cosmogenesis.
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM/Experiment | Source | Alignment |
 |------------|-----------------|---------------|--------|-----------|
@@ -480,16 +480,16 @@ cosmogenesis.
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system
-through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
+through vacuum buoyancy coupling --- a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM bridge.*
 
 
 
 **UQFF Parameters:** $\kappa$ = 0.0005/day | [SSq] = 0.57 | B_crit = 4.4e13 T  
-**Class:** `MUGEModule` | **Source:** `g`rok_{share\_b0a3dc1d}`.txt` L195–735  
+**Class:** `MUGEModule` | **Source:** `g`rok_{share\_b0a3dc1d}`.txt` L195--735  
 **Tags:** MUGE, compressed-gravity, resonance, 7-system, feedback, dark-matter, magnetar,
 Sagittarius-A  
 
@@ -497,10 +497,10 @@ Sagittarius-A
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
@@ -509,7 +509,7 @@ Sagittarius-A
 | PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
 | PAPER_1009 | 3C273 AGN F_{U\_Bi\_i} Jet Modulation |
 | PAPER_1010 | TON618 AGN F_{U\_Bi\_i} Jet Modulation |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1048 | M-Sigma Phonon-Corrected Relation |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |

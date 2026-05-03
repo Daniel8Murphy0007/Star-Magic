@@ -7,14 +7,14 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [vacuum, SCm, MUGE, DPM, wormhole, nebula, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_375 — UQFF Advanced Integration
+# PAPER_375 --- UQFF Advanced Integration
 **Date:** 2025
 ## Wormhole-MUGE Term | Meissner Exponential | Relativistic $\gamma$ | Error Propagation
 ### Star Magic UQFF Whitepaper Series
-### Author: Daniel T. Murphy | Session 101 | Source: `grok_{share\_11254865}`.txt (lines 7500–8800)
+### Author: Daniel T. Murphy | Session 101 | Source: `grok_{share\_11254865}`.txt (lines 7500--8800)
 ### Source Documents: "Compressed UQFF Equation_14May2025.docx",
 ###                   "Master UQFF Resonance Equation_14May2025.docx",
 ###                   "UQFF_Resonance Superconductive Universal Gravity Equation system proof set._15May2025.docx"
@@ -137,12 +137,12 @@ observational error bars.
 
 ## 5. Unified UQFF Master Equation (Complete Form)
 
-Combining all prior papers (PAPER_371–375):
+Combining all prior papers (PAPER_371--375):
 
 $$
 g(r,t) = \underbrace{\left[\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H_0 t)\, e^{-B/B_{\mathrm{crit}}}(1+F_{\mathrm{env}})
 + \sum U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta
-p}\intpsi^*\hat{H}\psi,dV\cdot\frac{2\pi}{t_H}
+p}\int\psi^*\hat{H}\psi,dV\cdot\frac{2\pi}{t_H}
 + \rho_f V g +
 (M_{\mathrm{vis}}+M_{\mathrm{DM}})\left(\frac{\delta\rho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed
 UQFF (PAPER 372, Meissner exp)}}
@@ -173,13 +173,13 @@ $$
 ## 7. Implementation
 
 **C++:** `STAR_{MAGIC\_09SEPT\_UQFF\_MODULE}.cpp`, namespace `UQFFAdvanced`
-- `compute_{a\_wormhole}(Evac_neb, b, r)` — wormhole MUGE term
-- `meissner_exp(B, Bcrit)` — exponential Meissner factor
-- `lorentz_gamma(v)` — relativistic Lorentz factor
-- `apply_lorentz(aDPM, v)` — Lorentz-corrected DPM
-- `error_propagation(delta_terms)` — quadrature error propagation
-- `compute_{unified\_UQFF}(sys, res, t, v_jet, b_worm, r_worm)` — master unified function
-- `compute_{total\_uncertainty}(sys, p, frac_error)` — uncertainty budget
+- `compute_{a\_wormhole}(Evac_neb, b, r)` --- wormhole MUGE term
+- `meissner_exp(B, Bcrit)` --- exponential Meissner factor
+- `lorentz_gamma(v)` --- relativistic Lorentz factor
+- `apply_lorentz(aDPM, v)` --- Lorentz-corrected DPM
+- `error_propagation(delta_terms)` --- quadrature error propagation
+- `compute_{unified\_UQFF}(sys, res, t, v_jet, b_worm, r_worm)` --- master unified function
+- `compute_{total\_uncertainty}(sys, p, frac_error)` --- uncertainty budget
 
 **Python:** `CondensedPhysics4.py`, class `UQFFWormholeMeissnerRelativisticGammaCalculator` (CP4
 #23)
@@ -265,7 +265,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.096$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -285,7 +285,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -303,7 +303,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -316,17 +316,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

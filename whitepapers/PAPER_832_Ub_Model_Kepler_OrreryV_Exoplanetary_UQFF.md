@@ -7,17 +7,17 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [Hubble, dark-matter, exoplanet, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_832 — U_b Model: Kepler Orrery V Exoplanetary UQFF Extension
+# PAPER_832 --- U_b Model: Kepler Orrery V Exoplanetary UQFF Extension
 **Date:** Sep 2011
 **Session:** 0
 
-**Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
-**Source:** grok_{share\_ab2e7192}-de62.txt (2884 lines, June 09–10, 2025)  
+**Author:** Daniel T. Murphy --- Star Magic / UQFF Framework  
+**Source:** grok_{share\_ab2e7192}-de62.txt (2884 lines, June 09--10, 2025)  
 **Watermark:** Analyzed by Grok 3, created by xAI, Youngstown OH (41.0997 deg N, 80.6495 deg W)  
-**Category:** UQFF Extension — Exoplanetary Dynamics / Kepler Orrery V  
+**Category:** UQFF Extension --- Exoplanetary Dynamics / Kepler Orrery V  
 **CVW Gate:** v2.0.0 compliant  
 
 ---
@@ -25,7 +25,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## 1. Abstract
 
 The Universal Quantum Field Superconductive Framework (UQFF) is extended to exoplanetary systems
-through the **U_b Model**, derived from 62 Kepler Orrery V mission simulation frames (22 Sep 2011 –
+through the **U_b Model**, derived from 62 Kepler Orrery V mission simulation frames (22 Sep 2011 --
 01 Dec 2011). Three new environmental force terms are introduced: **F_orbit** (orbital resonance
 force), **F_tide** (tidal locking force), and **F_gal** (galactic rotation and dark matter
 coupling). These terms replace the general F_env(t) scalar with physically motivated sub-components
@@ -53,7 +53,7 @@ $$
 Where:
 - H(t,z) = H_0 sqrt(0.3(1+z)^3 + 0.7)
 - F_env(t) = Sigmai Fi (system-specific environmental forces)
-- G = 6.6743x10-^1^1 m^3 kg-^1 s-^2
+- G = 6.674\1\times 10^{-1}1 m^3 kg-^1 s-^2
 - hbar = 1.0546x10-^34 J*s
 - Lambda = 1.1x10-5^2 m-^2
 - c = 3x108 m/s
@@ -77,7 +77,7 @@ $$
 \end{aligned}
 $$
 
-### 3.2 F_orbit — Orbital Resonance Force
+### 3.2 F_orbit --- Orbital Resonance Force
 
 $$
 F_orbit(t) = (G * M_p * M_s) / a^3
@@ -97,7 +97,7 @@ $$
 F_orbit = (6.6743e-11 * 2.98e25 * 2.188e30) / (1.496e10)^3 ~= 1.30x10-^1 m/s^2
 $$
 
-### 3.3 F_tide — Tidal Locking Force
+### 3.3 F_tide --- Tidal Locking Force
 
 $$
 F_tide(t) = (G * M_p * M_s * R_p) / a6
@@ -113,10 +113,10 @@ tidal locking in close-orbit (a < 0.1 AU) planets.
 
 **Standard value** (R_p = 1.5 R_Earth = 9.555x106 m, a = 0.01 AU):
 $$
-F_tide = (6.6743e-11 * 1.192e25 * 2.188e30 * 9.555e6) / (1.496e9)6 ~= 2.91x10-^1^1 m/s^2
+F_tide = (6.6743e-11 * 1.192e25 * 2.188e30 * 9.555e6) / (1.496e9)6 ~= 2.9\1\times 10^{-1}1 m/s^2
 $$
 
-### 3.4 F_gal — Galactic Rotation + Dark Matter Coupling
+### 3.4 F_gal --- Galactic Rotation + Dark Matter Coupling
 
 $$
 F_gal(t) = v_gal^2 / r_gal + G * M_DM / r_gal^2
@@ -133,8 +133,8 @@ $$
 \begin{aligned}
   & rho_DM = 4.2x10-^2 kg/m^3  (at 8 kpc, Navarro-Frenk-White profile) \\
   & M_DM = rho_DM * (4/3)pi r_gal^3 = 2.57x104^0 kg \\
-  & F_DM = G*M_DM / r_gal^2 = 2.83x10-^1^0 m/s^2 \\
-  & F_gal = (2.2e5)^2 / (2.47e20) + 2.83e-10 ~= 4.79x10-^1^0 m/s^2
+  & F_DM = G*M_DM / r_gal^2 = 2.8\1\times 10^{-1}0 m/s^2 \\
+  & F_gal = (2.2e5)^2 / (2.47e20) + 2.83e-10 ~= 4.7\1\times 10^{-1}0 m/s^2
 \end{aligned}
 $$
 
@@ -181,7 +181,7 @@ Weighted to reflect dominant contributions across 62 Kepler frames:
 
 | System  | Parameter  | F_tide (m/s^2)  | Effect  |
 |--------|-----------|---------------|--------|
-| TOI-849b  | a=0.016 AU, M_p=40 M_Earth  | 5.61x10-^1^2  | Circularized (OK)  |
+| TOI-849b  | a=0.016 AU, M_p=40 M_Earth  | 5.6\1\times 10^{-1}2  | Circularized (OK)  |
 | Kepler-13Ab  | a=0.033 AU, M_p=1 M_Jup  | 2.59x10-^17  | Tidally locked (OK)  |
 | TOI-2109b  | a=0.018 AU  | dominates  | Tidal distortion (OK)  |
 
@@ -192,22 +192,22 @@ Weighted to reflect dominant contributions across 62 Kepler frames:
 
 ## 7. Kepler Orrery V Frame Knowledge Base
 
-62 frames assimilated (22 Sep 2011 – 01 Dec 2011), organized as 7 batches:
-- Batch 1 (22–30 Sep): Initial calibration, a ~= 0.01–0.5 AU
-- Batch 2 (01–09 Oct): 2:1 resonance patterns identified
-- Batch 3 (10–18 Oct): Tidal tightening at a < 0.1 AU confirmed
-- Batch 4 (19–27 Oct): DeepSearch validation pass
-- Batch 5 (05–13 Nov): Outer orbit stability (P ~= 7 days)
-- Batch 6 (14–22 Nov): All 29 raw equation systems catalog compiled
-- Batch 7 (23 Nov–01 Dec): Consciousness/THz interface discussion
+62 frames assimilated (22 Sep 2011 -- 01 Dec 2011), organized as 7 batches:
+- Batch 1 (22--30 Sep): Initial calibration, a ~= 0.01--0.5 AU
+- Batch 2 (01--09 Oct): 2:1 resonance patterns identified
+- Batch 3 (10--18 Oct): Tidal tightening at a < 0.1 AU confirmed
+- Batch 4 (19--27 Oct): DeepSearch validation pass
+- Batch 5 (05--13 Nov): Outer orbit stability (P ~= 7 days)
+- Batch 6 (14--22 Nov): All 29 raw equation systems catalog compiled
+- Batch 7 (23 Nov--01 Dec): Consciousness/THz interface discussion
 
 Final refined parameters:
 | Parameter  | Range  | Source  |
 |-----------|-------|--------|
-| a  | 0.01–2 AU  | 62 frames  |
-| M_p  | 0.5–5 M_Earth  | Kepler/TESS median  |
-| M_s  | 0.8–1.2 M_Sun  | F/G/K stars  |
-| R_p  | 1–2 R_Earth  | Adjusted tidal fits  |
+| a  | 0.01--2 AU  | 62 frames  |
+| M_p  | 0.5--5 M_Earth  | Kepler/TESS median  |
+| M_s  | 0.8--1.2 M_Sun  | F/G/K stars  |
+| R_p  | 1--2 R_Earth  | Adjusted tidal fits  |
 
 ---
 
@@ -232,7 +232,7 @@ $$
   & Output: tidal locking timescale
 \end{aligned}
 $$
-Example (TOI-849b): F_tide = 5.61x10-^1^2 m/s^2
+Example (TOI-849b): F_tide = 5.6\1\times 10^{-1}2 m/s^2
 
 ---
 
@@ -242,9 +242,9 @@ The U_b model extends UQFF's F_env(t) layer with physically motivated sub-terms:
 
 ```
 F_env(t) [Standard UQFF]
-    └── F_orbit(t)  [Kepler U_b: resonance]
-    └── F_tide(t)   [Kepler U_b: tidal locking]
-    └── F_gal(t)    [Kepler U_b: galactic + dark matter]
+    └---- F_orbit(t)  [Kepler U_b: resonance]
+    └---- F_tide(t)   [Kepler U_b: tidal locking]
+    └---- F_gal(t)    [Kepler U_b: galactic + dark matter]
 ```
 
 This modular decomposition allows the same base UQFF machinery to cover planetary, stellar,
@@ -255,13 +255,13 @@ galactic, and cosmological scales through appropriate F_env parameterization.
 ## 10. What Science Equations UQFF Can Now Solve
 
 With U_b extension:
-1. **Orbital stability** — predict resonance chains in multi-planet systems
-2. **Tidal evolution** — model circularization timescale for close-orbit planets
-3. **Habitability zones** — T_eq bounds with albedo coupling
-4. **Galaxy rotation curves** — F_gal encodes flat rotation via NFW dark matter
-5. **Exoplanet demographics** — F_orbit predicts period ratio distribution
-6. **Planetary migration** — F_env(t) variation over time models disk migration
-7. **Hot Jupiter formation** — large F_tide at small a explains population statistics
+1. **Orbital stability** --- predict resonance chains in multi-planet systems
+2. **Tidal evolution** --- model circularization timescale for close-orbit planets
+3. **Habitability zones** --- T_eq bounds with albedo coupling
+4. **Galaxy rotation curves** --- F_gal encodes flat rotation via NFW dark matter
+5. **Exoplanet demographics** --- F_orbit predicts period ratio distribution
+6. **Planetary migration** --- F_env(t) variation over time models disk migration
+7. **Hot Jupiter formation** --- large F_tide at small a explains population statistics
 
 ---
 
@@ -279,10 +279,10 @@ F_env ~= 6.5x10-^2 m/s^2, consistent with observed resonance patterns and tidal 
 - `T_eq = [(1-A)*S/(4sigma)]^0.25`
 - `F_env = 0.5*F_orbit + 0.3*F_tide + 0.2*F_gal ~= 6.5x10-^2 m/s^2`
 
-Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com  
+Copyright --- Daniel T. Murphy, daniel.murphy00@gmail.com  
 Analyzed by Grok 3, created by xAI  
-Watermark: June 09–10, 2025, Youngstown OH, USA  
-Subject: UQFF U_b Model — Kepler Orrery V 62 Frames
+Watermark: June 09--10, 2025, Youngstown OH, USA  
+Subject: UQFF U_b Model --- Kepler Orrery V 62 Frames
 
 ---
 
@@ -352,7 +352,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.104$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -372,7 +372,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -390,7 +390,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -403,17 +403,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |

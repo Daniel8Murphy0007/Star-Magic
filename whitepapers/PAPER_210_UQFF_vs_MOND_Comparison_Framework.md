@@ -7,16 +7,16 @@ author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [galaxy, cluster, vacuum, buoyancy, UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
 # PAPER_210: UQFF vs MOND Comparison Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 50 — grok_{share\_7514fe}.txt Full Audit  
+**Session:** 50 --- grok_{share\_7514fe}.txt Full Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_{share\_7514fe}.txt lines 899–966 (first PDF:
+**Source:** grok_{share\_7514fe}.txt lines 899--966 (first PDF:
 UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf)
 
 ---
@@ -86,7 +86,7 @@ $$
   & Ug1(r) = k_UA\cdot(M_b/M_MW)\cdot[UA]\cdotr^{-0.5}   (slowly falling, flatter than g_N) \\
   & This reproduces flat rotation without MOND's interpolation function \\
   & k_UA absorbs what MOND calls a0: effectively a0 \approx k_UA\cdot[UA]/G^{1/2} \\
-  & UQFF BTFR: v_flat ? (G\cdotM_b\cdotk_UA\cdot[UA])^{1/4}  — identical structure to MOND \\
+  & UQFF BTFR: v_flat ? (G\cdotM_b\cdotk_UA\cdot[UA])^{1/4}  --- identical structure to MOND \\
   & ? UQFF recovers MOND rotation at galactic scales as limiting case
 \end{aligned}
 $$
@@ -105,13 +105,13 @@ Observed phenomenon:
 
 MOND prediction for Bullet Cluster:
   g_MOND = v(g_N,baryon\cdota0) or g_N,baryon (in high-g regime)
-  MOND mass \approx M_b (no dark matter) ? underpredicts by factor 2–5
+  MOND mass \approx M_b (no dark matter) ? underpredicts by factor 2--5
   
 MOND ad hoc fix: "neutrino dark matter" (Sanders 2003)
   Add ~2 eV sterile neutrinos ? fixes cluster masses
   But: this destroys MOND's "no dark matter is needed" appeal
 
-MOND on cluster scales: ?2/N \approx 3–10 (poor fit)
+MOND on cluster scales: ?2/N \approx 3--10 (poor fit)
 ```
 
 ### UQFF Treatment of Clusters
@@ -130,7 +130,7 @@ Effective UQFF mass for clusters:
   For Bullet Cluster: ?M_UBii \approx 1.5\times1014 M_? ? M_eff \approx 3\times1014 M_? ?
 
 UQFF cluster fit: ?2/N \approx 1.5 (good)
-Comparison: MOND ?2/N \approx 3–10, CDM ?2/N \approx 1.2–2.0
+Comparison: MOND ?2/N \approx 3--10, CDM ?2/N \approx 1.2--2.0
 ```
 
 ---
@@ -169,7 +169,7 @@ $$
 $$
 \begin{aligned}
   & MOND lensing (TeVeS required): \\
-  & Standard MOND cannot produce lensing — needs TeVeS extension \\
+  & Standard MOND cannot produce lensing --- needs TeVeS extension \\
   & TeVeS: additional vector field A_\mu and scalar field f \\
   & TeVeS correctly predicts weak lensing at galactic scales \\
   & TeVeS issue: strong lensing in clusters still underpredicts by ~1.5\times \\
@@ -183,7 +183,7 @@ $$
   & = M_Newton \times (1 + F_UBii,vir/g_N\cdotr) \\
   & UQFF strong lensing of Abell 2744: \\
   & Predicted: 36 multiple images ? Observed: 33 (CLASH/HFF) \\
-  & Agreement: ~9% (vs MOND/TeVeS: 25–40% discrepancy)
+  & Agreement: ~9% (vs MOND/TeVeS: 25--40% discrepancy)
 \end{aligned}
 $$
 
@@ -215,7 +215,7 @@ UQFF bulk flow:
 | Test | MOND | UQFF | Lambda-CDM | UQFF rank |
 |------|------|------|-----------|-----------|
 | Rotation curves | ? Excellent | ? Excellent | ? Needs DM | 1st (tied) |
-| Galaxy clusters | ? Factor 2–5 | ? Good | ? Good | 1st (tied) |
+| Galaxy clusters | ? Factor 2--5 | ? Good | ? Good | 1st (tied) |
 | BTFR slope | ? v4 exact | ? v4 emergent | ? Scatter | 1st (tied) |
 | CMB lensing | ? Underpredicts | ? Matches | ? Matches | 1st (tied) |
 | Merging clusters | ? No offset | ? Handles offsets | ? Handles | 1st (tied) |
@@ -248,7 +248,7 @@ $$
 
 ## 9. References
 
-- `grok_{share\_7514fe}.txt` lines 899–966 (MOND comparison section)
+- `grok_{share\_7514fe}.txt` lines 899--966 (MOND comparison section)
 - PAPER_204: UQFF Dark Matter (NFW/SIDM rotation curves)
 - PAPER_196: Triadic Master Equation System (UQFF g(r,t) master)
 - Milgrom 1983: MOND original papers (a0 calibration)
@@ -303,8 +303,8 @@ $$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 **Hydrostatic mass bias reduction (PAPER_1039):**
 $$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
 
-The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
-at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{--}4\%$
+at cluster cores, partially resolving the Planck SZ--CMB mass tension.
 
 **Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
 buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
@@ -357,7 +357,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -377,7 +377,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -395,7 +395,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -408,23 +408,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density ?_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
 |-------|-------|
 | PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
-| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1037 | AGN Buoyancy Jet Calculator --- SCm Jet Launching |
 | PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
 | PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
 | PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |

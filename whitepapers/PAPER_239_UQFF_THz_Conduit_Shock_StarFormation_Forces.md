@@ -1,22 +1,22 @@
 ---
 paper_id: PAPER_239
-title: "UQFF THz Shock Force and H₂O Conduit Force — 26-Layer Star-Formation Coupling"
+title: "UQFF THz Shock Force and H$_2$O Conduit Force --- 26-Layer Star-Formation Coupling"
 session: 59
 date: 2026-03-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
 tags: [UQFF]
-sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
-# PAPER_239: UQFF THz Shock Force and H2O Conduit Force — 26-Layer Star-Formation Coupling
+# PAPER_239: UQFF THz Shock Force and H2O Conduit Force --- 26-Layer Star-Formation Coupling
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF v4.9 (Star-Magic)
-**Session:** 59 (grok_{share\_8d951e12}.txt second-pass — Source10)
+**Session:** 59 (grok_{share\_8d951e12}.txt second-pass --- Source10)
 **Date:** March 2026
-**Classification:** Novel UQFF — Two Star-Formation Force Terms (THz Frequency-Squared + COx H2O
+**Classification:** Novel UQFF --- Two Star-Formation Force Terms (THz Frequency-Squared + COx H2O
 Conduit)
 **Status:** Proof-Quality Whitepaper
 **CP3 Class:** `UQFFTHzConduitShockCalculator`
@@ -41,12 +41,12 @@ $$\boxed{F_{\mathrm{thz\_shock}} = k_{\mathrm{thz}}\left(\frac{\omega_{\mathrm{t
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| $k_{\mathrm{thz}}$ | $1.38\times10^{-23}$ | J/K | Boltzmann constant — THz amplitude coupling |
+| $k_{\mathrm{thz}}$ | $1.38\times10^{-23}$ | J/K | Boltzmann constant --- THz amplitude coupling |
 | $\omega_{\mathrm{thz}}$ | $1.2\times10^{12}$ | rad/s | THz star-formation resonance frequency |
 | $\omega_0$ | $1.0\times10^{10}$ | rad/s | Reference angular frequency |
-| $\rho_n/\rho_{\mathrm{ref}}$ | variable | — | Neutron matter fraction |
-| $H_{\mathrm{abund}}$ | 0.74 | — | Cosmic hydrogen mass fraction |
-| $w_{\mathrm{state}}$ | 0 or 1 | — | Water phase: 0 = vapour, 1 = liquid/ice |
+| $\rho_n/\rho_{\mathrm{ref}}$ | variable | --- | Neutron matter fraction |
+| $H_{\mathrm{abund}}$ | 0.74 | --- | Cosmic hydrogen mass fraction |
+| $w_{\mathrm{state}}$ | 0 or 1 | --- | Water phase: 0 = vapour, 1 = liquid/ice |
 
 ### 1.3 Physical Interpretation
 
@@ -68,13 +68,13 @@ $$\boxed{F_{\mathrm{conduit}} = k_{\mathrm{conduit}}\cdot\left(H_{\mathrm{abund}
 
 | Symbol | Value | Units | Description |
 |--------|-------|-------|-------------|
-| $k_{\mathrm{conduit}}$ | $8.99\times10^9$ | N$\cdot$m2/C2 | Coulomb's constant — COx conduit coupling |
-| $H_{\mathrm{abund}}$ | 0.74 | — | Cosmic hydrogen mass fraction |
-| $w_{\mathrm{state}}$ | 0 or 1 | — | Water phase gate |
+| $k_{\mathrm{conduit}}$ | $8.99\times10^9$ | N$\cdot$m2/C2 | Coulomb's constant --- COx conduit coupling |
+| $H_{\mathrm{abund}}$ | 0.74 | --- | Cosmic hydrogen mass fraction |
+| $w_{\mathrm{state}}$ | 0 or 1 | --- | Water phase gate |
 
 ### 2.3 Physical Interpretation
 
-The COx (carbon-oxygen-x) conduit represents the molecular pathway through which H2 + O $\to$ H2O chemistry amplifies accretion channel conductivity in proto-stellar environments. When water is in liquid or ice phase ($w_{\mathrm{state}}=1$), the conduit is active and the force couples directly to the cosmic hydrogen fraction (0.74 of total mass). The use of Coulomb's constant as $k_{\mathrm{conduit}}$ reflects the electrostatic nature of H–O bond formation (proton affinity coupling).
+The COx (carbon-oxygen-x) conduit represents the molecular pathway through which H2 + O $\to$ H2O chemistry amplifies accretion channel conductivity in proto-stellar environments. When water is in liquid or ice phase ($w_{\mathrm{state}}=1$), the conduit is active and the force couples directly to the cosmic hydrogen fraction (0.74 of total mass). The use of Coulomb's constant as $k_{\mathrm{conduit}}$ reflects the electrostatic nature of H--O bond formation (proton affinity coupling).
 
 ---
 
@@ -93,24 +93,24 @@ At default values: $\approx \frac{1.38\times10^{-23}}{8.99\times10^9}\times 1440
 
 ---
 
-## 4. Phase Gate — Water State Switch
+## 4. Phase Gate --- Water State Switch
 
 The `water_state` parameter acts as a **binary activation gate**:
-- $w_{\mathrm{state}} = 0$: vapour phase — conduit scale = 0 $\to$ both $F_{\mathrm{thz}}$ and $F_{\mathrm{conduit}}$ vanish
-- $w_{\mathrm{state}} = 1$: liquid/ice — conduit scale = $H_{\mathrm{abund}}$ $\to$ forces active
+- $w_{\mathrm{state}} = 0$: vapour phase --- conduit scale = 0 $\to$ both $F_{\mathrm{thz}}$ and $F_{\mathrm{conduit}}$ vanish
+- $w_{\mathrm{state}} = 1$: liquid/ice --- conduit scale = $H_{\mathrm{abund}}$ $\to$ forces active
 
 This connects the micro-chemical evolution (water phase transition) to the macro-gravitational
-star-formation forcing — a unique coupling absent from standard MHD/HD star-formation theories.
+star-formation forcing --- a unique coupling absent from standard MHD/HD star-formation theories.
 
 ---
 
 ## 5. Novel Contributions
 
-1. **THz frequency-squared force** — star-formation molecular line coupling via $(\omega_{\mathrm{thz}}/\omega_0)^2$
-2. **Water phase gate** — $w_{\mathrm{state}}\in{0,1\}$ activates/deactivates COx conduit channel
-3. **Hydrogen abundance coupling** — $H_{\mathrm{abund}}=0.74$ connects cosmic composition to local SF force
-4. **Dual neutron-factor coupling** — both forces scale with $\rho_n/\rho_{\mathrm{ref}}$ (dense-matter bridge)
-5. **$F_{\mathrm{thz}}$ vs $F_{\mathrm{conduit}}$ orthogonality** — THz scales with $\omega^2$, conduit scales with chemistry
+1. **THz frequency-squared force** --- star-formation molecular line coupling via $(\omega_{\mathrm{thz}}/\omega_0)^2$
+2. **Water phase gate** --- $w_{\mathrm{state}}\in{0,1\}$ activates/deactivates COx conduit channel
+3. **Hydrogen abundance coupling** --- $H_{\mathrm{abund}}=0.74$ connects cosmic composition to local SF force
+4. **Dual neutron-factor coupling** --- both forces scale with $\rho_n/\rho_{\mathrm{ref}}$ (dense-matter bridge)
+5. **$F_{\mathrm{thz}}$ vs $F_{\mathrm{conduit}}$ orthogonality** --- THz scales with $\omega^2$, conduit scales with chemistry
 
 ---
 
@@ -155,12 +155,12 @@ where:
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
 
-**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+**Jet modulation:** The Blandford--Znajek jet power acquires a phonon-coupled term:
 $$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
 
 where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
 
-**M–$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
+**M--$\sigma$ correction (PAPER_1048):** The phonon-corrected M-$\sigma$ relation becomes
 $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 
@@ -204,7 +204,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
 
 For this system, the local VDS sub-ratio is $0.112$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -224,7 +224,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -242,7 +242,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors --- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
@@ -255,14 +255,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 produce measurable deviations from GR at scales where vacuum condensate density $\rho$_SCm becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF--SM
 bridge.*
 
 ## References
 
 - Murphy, D.T. (2025). *Source10 UQFF Catalogue Module*, `F_{thz\_shock}` + `F_conduit` definitions
-- grok_{share\_8d951e12}.txt, Source10 Text Module, lines ~5980–6050
-- THz star-formation: van Dishoeck et al. (2021), A&A 648, A24 — water in protostellar environments
+- grok_{share\_8d951e12}.txt, Source10 Text Module, lines ~5980--6050
+- THz star-formation: van Dishoeck et al. (2021), A&A 648, A24 --- water in protostellar environments
 - COx chemistry: Herbst & van Dishoeck (2009), ARA&A 47, 427
 - UQFF neutron factor: PAPER_237 ($\rho_n/\rho_{\mathrm{ref}}$ in $F_{U\_Bi\_i}$)
 
@@ -270,10 +270,10 @@ bridge.*
 
 ---
 
-## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+## Appendix: Session 225 Cross-References (PAPER_1000--1081)
 
 > *Auto-generated cross-reference appendix linking this paper to
-> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> Sessions 204--225 extensions (PAPER_1000--1081). Added by
 > `update_{corpus\_crossrefs}.py` (Session 225, April 2026).*
 
 | Paper | Title |
