@@ -158,7 +158,7 @@ mock-theta framework with the SCm phonon spectrum.
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
 | SCm completeness | $H_{\text{SCm}}$ | $\approx 0.99$ | Heaviside threshold |
 | SCm phonon frequency | $\omega_{\text{SCm}}$ | $2\pi \times 1.25\,\text{THz}$ | Phonon resonance |
-| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental |
+| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{J/m}^3$ | Fundamental |
 
 
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
@@ -228,7 +228,7 @@ where $P_{\text{SCm}} = \rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\te
 
 Numerically: $P_{\text{SCm}} = 7.09 \times 10^{-37} \times 1.45 \times 10^{26} \times 0.84 \approx 8.66 \times 10^{-11}\ \text{Pa}$.
 
-For $v_s = 40\ \text{km/s}$, $\rho_1 = 10^{-19}\ \text{kg/m}^3$: $\rho_1 v_s^2 = 1.6 \times 10^{-10}\ \text{Pa}$.
+For $v_s = 40\ \text{km/s}$, $\rho_1 = 10^{-19}\ \text{J/m}^3$: $\rho_1 v_s^2 = 1.6 \times 10^{-10}\ \text{Pa}$.
 
 The SCm correction is $\sim 54\%$ of the shock ram pressure.
 

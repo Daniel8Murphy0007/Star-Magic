@@ -28,7 +28,7 @@ framework.
 
 ## §1 Abstract
 
-The gravitational field term $U_g$ in UQFF is standardly written in first-order form for validation against observational datasets. The full 26th-order form, derived from 26D dimensional reduction, yields $U_{g1}^{(26)} = 26!\,a_0$ as a constant term (stable core) from the highest-degree polynomial, and $U_{g4}^{\text{split}} = (13!)^2 \cdot r \cdot t$ from the dual 13+13 splitting of $\partial^{26}(r\cdot t)$. The latter provides the BH–star duality in the UQFF: two BH26 13-mode sub-series correspond to the split. The factorial bound $26!$ establishes a vacuum-energy-level anti-collapse density threshold of $\rho_{\min} \approx 2.48 \times 10^{-30}\ \text{kg/m}^3$, below which no physical system can exist and singularities are mathematically impossible.
+The gravitational field term $U_g$ in UQFF is standardly written in first-order form for validation against observational datasets. The full 26th-order form, derived from 26D dimensional reduction, yields $U_{g1}^{(26)} = 26!\,a_0$ as a constant term (stable core) from the highest-degree polynomial, and $U_{g4}^{\text{split}} = (13!)^2 \cdot r \cdot t$ from the dual 13+13 splitting of $\partial^{26}(r\cdot t)$. The latter provides the BH–star duality in the UQFF: two BH26 13-mode sub-series correspond to the split. The factorial bound $26!$ establishes a vacuum-energy-level anti-collapse density threshold of $\rho_{\min} \approx 2.48 \times 10^{-30}\ \text{J/m}^3$, below which no physical system can exist and singularities are mathematically impossible.
 
 ---
 
@@ -88,9 +88,9 @@ $$\rho_{\min} > \frac{g \cdot SCm}{26! \cdot UA}$$
 
 **Numerically** ($g = 10^{-3}$, $SCm = UA = 1$):
 
-$$\rho_{\min} = \frac{10^{-3}}{4.033 \times 10^{26}} \approx 2.48 \times 10^{-30}\ \text{kg/m}^3$$
+$$\rho_{\min} = \frac{10^{-3}}{4.033 \times 10^{26}} \approx 2.48 \times 10^{-30}\ \text{J/m}^3$$
 
-This is the vacuum energy density threshold — far below the observed density of any physical system (even the intergalactic medium at $\sim 10^{-27}\ \text{kg/m}^3$). Therefore:
+This is the vacuum energy density threshold — far below the observed density of any physical system (even the intergalactic medium at $\sim 10^{-27}\ \text{J/m}^3$). Therefore:
 
 $$\rho_{\text{system}} > \rho_{\min} \quad \Rightarrow \quad F_U \neq 0 \text{ at any } r > 0 \quad \Rightarrow \quad \text{No singularity}$$
 
@@ -111,7 +111,7 @@ $$\rho_{\text{system}} > \rho_{\min} \quad \Rightarrow \quad F_U \neq 0 \text{ a
 The 26th-order $U_g$ framework:
 1. **Isolates the stable constant core** $26!\,a_0$ — confirming irreducible gravity at 26th level
 2. **Splits $U_{g4}$ into BH–star duality** $(13!)^2\,r\,t$ — physically captures the temporal-spatial asymmetry of BH accretion
-3. **Establishes a vacuum-level anti-collapse threshold** $\rho_{\min} = 2.48\times10^{-30}\ \text{kg/m}^3$ — every physical system density exceeds this; singularities are prohibited by the factorial factorial bound $26!$
+3. **Establishes a vacuum-level anti-collapse threshold** $\rho_{\min} = 2.48\times10^{-30}\ \text{J/m}^3$ — every physical system density exceeds this; singularities are prohibited by the factorial factorial bound $26!$
 
 ---
 

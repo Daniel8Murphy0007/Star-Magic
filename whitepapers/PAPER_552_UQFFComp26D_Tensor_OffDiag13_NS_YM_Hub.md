@@ -55,7 +55,7 @@ $$\frac{\partial^{13} U_g}{\partial U_m^{13}} = 13! \cdot \left(\frac{SCm}{UA}\r
 
 $$\frac{\partial^{26} U_b}{\partial \rho^{26}} \approx \frac{26!}{\rho^{26}} \quad \text{(leading term at small } \rho\text{)}$$
 
-At $\rho = 1\ \text{kg/m}^3$: $\partial^{26}U_b/\partial\rho^{26} = 4.033 \times 10^{26}$ — a large but finite positive correction to the $2P/3$ baseline, ensuring the $(3,3)$ element dominates all coupling at high buoyancy.
+At $\rho = 1\ \text{J/m}^3$: $\partial^{26}U_b/\partial\rho^{26} = 4.033 \times 10^{26}$ — a large but finite positive correction to the $2P/3$ baseline, ensuring the $(3,3)$ element dominates all coupling at high buoyancy.
 
 ---
 
@@ -155,7 +155,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

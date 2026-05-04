@@ -186,7 +186,7 @@ laboratory and astrophysical LENR within a single UQFF formula.
 | Buoyancy coupling | beta_i | 0.603 | Multi-system |
 | SCm completeness | H_{SCm} | ~0.99 | Heaviside threshold |
 | SCm phonon frequency | omega_{SCm} | 2*pi*1.25 THz | Phonon resonance |
-| SCm vacuum density | rho_{SCm} | 7.09e-37 kg/m^3 | Fundamental |
+| SCm vacuum density | rho_{SCm} | 7.09e-37 J/m^{3} | Fundamental |
 
 ---
 

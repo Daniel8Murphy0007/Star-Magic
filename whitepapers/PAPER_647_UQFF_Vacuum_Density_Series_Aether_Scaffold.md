@@ -114,7 +114,7 @@ but becomes significant during solar maximum when $\rho$vac,sw spikes).
 
 From Aether13_16:
 
-$$\rho_{\text{proton-BH}} = \frac{M_p}{V_p} = \frac{1.67 \times 10^{-27}\ \text{kg}}{10^{-45}\ \text{m}^3} \approx 1.67 \times 10^{18}\ \text{kg/m}^3$$
+$$\rho_{\text{proton-BH}} = \frac{M_p}{V_p} = \frac{1.67 \times 10^{-27}\ \text{kg}}{10^{-45}\ \text{m}^3} \approx 1.67 \times 10^{18}\ \text{J/m}^3$$
 
 At the Schwarzschild proton threshold, removing 10-39% of a proton's energy creates a
 black hole --- confirming that the proton vacuum density 10-39 cm3 is the lower anchor
@@ -158,7 +158,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

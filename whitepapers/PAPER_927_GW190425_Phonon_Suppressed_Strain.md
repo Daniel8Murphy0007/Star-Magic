@@ -249,7 +249,7 @@ mock-theta framework with the SCm phonon spectrum.
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
 | SCm completeness | $H_{SCm}$ | $\approx 0.99$ | Heaviside threshold |
 | SCm phonon frequency | $\omega_{\text{SCm}}$ | $2\pi \times 1.25$ THz | Phonon resonance |
-| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental |
+| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{J/m}^3$ | Fundamental |
 
 ---
 

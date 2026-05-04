@@ -125,7 +125,7 @@ $$\Lambda_{UQFF} = \frac{26!\,g}{(\rho_{crit}\cdot f_{vac})^{27}}$$
 
 **Numerical validation:**
 
-$$\rho_{crit} = 8.7\times10^{-27}\,\text{kg/m}^3, \quad f_{vac} = 10^{43}\,\text{Hz (Planck)},
+$$\rho_{crit} = 8.7\times10^{-27}\,\text{J/m}^3, \quad f_{vac} = 10^{43}\,\text{Hz (Planck)},
 \quad g = 10^{-3}$$
 
 $$\Lambda_{pred} = \frac{4.03\times10^{26}\cdot10^{-3}}{(8.7\times10^{-27}\cdot10^{43})^{27}}

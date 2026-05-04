@@ -58,9 +58,9 @@ $$Q_s(\text{SCm}) = 0$$
 
 where $Q_s$ is the quantum signature observable. The mechanism:
 
-$$\rho_{\text{SCm}} \sim 10^{15} \, \text{kg/m}^3 \quad \text{(stellar core)}$$
+$$\rho_{\text{SCm}} \sim 10^{15} \, \text{J/m}^3 \quad \text{(stellar core)}$$
 
-$$\rho_{\text{SCm,planet}} \sim 10^{11}–10^{13} \, \text{kg/m}^3 \quad \text{(planetary core)}$$
+$$\rho_{\text{SCm,planet}} \sim 10^{11}–10^{13} \, \text{J/m}^3 \quad \text{(planetary core)}$$
 
 The extreme density causes all quantum field interactions to be self-screened — effectively making
 SCm **dark** to quantum detectors while remaining physically active.
@@ -109,7 +109,7 @@ The SCm expulsion force as it exits the stellar confinement zone:
 $$F_{\text{SCm}} = \frac{\rho_{\text{SCm}} \cdot v_{\text{SCm}}^2}{r} \cdot e^{-\kappa t}$$
 
 where:
-- $\rho_{\text{SCm}} = 10^{15} \, \text{kg/m}^3$ — SCm density
+- $\rho_{\text{SCm}} = 10^{15} \, \text{J/m}^3$ — SCm density
 - $v_{\text{SCm}} = 10^8 \, \text{m/s}$ — SCm velocity under trapped conditions (fastest-moving substance)
 - $r$ — radial distance from the stellar core
 - $\kappa = 0.0005 \, \text{day}^{-1}$ — SCm reactivity decay rate
@@ -123,7 +123,7 @@ When expelled SCm contacts unbound Universal Aether:
 
 $$E_{\text{react}} = \frac{\rho_{\text{SCm}} \cdot v_{\text{SCm}}^2}{\rho_A} \cdot e^{-\kappa t} \approx 10^{46} \cdot e^{-0.0005t} \, \text{[normalized]}$$
 
-where $\rho_A = 10^{-23} \, \text{kg/m}^3$ is the Universal Aether density.
+where $\rho_A = 10^{-23} \, \text{J/m}^3$ is the Universal Aether density.
 
 ### 3.4 Quasar Jet Asymmetry
 
@@ -147,7 +147,7 @@ The quasar jet fluid dynamics (Millennium Problem connection):
 $$\rho_A \left(\frac{\partial \mathbf{v}}{\partial t} + \mathbf{v} \cdot \nabla \mathbf{v}\right) = -\nabla p + \mu \nabla^2 \mathbf{v} + F_{\text{SCm}}$$
 
 where:
-- $\rho_A = 10^{-23} \, \text{kg/m}^3$ — Aether density (fluid medium)
+- $\rho_A = 10^{-23} \, \text{J/m}^3$ — Aether density (fluid medium)
 - $\mathbf{v} \approx v_{\text{SCm}} \cdot (1 - e^{-\gamma t}) \hat{e}_v$ — jet velocity field
 - $\mu$ — Aether viscosity (speculative, near-zero)
 - $F_{\text{SCm}} = \rho_{\text{SCm}} v_{\text{SCm}}^2 / r \cdot e^{-\kappa t}$ — SCm body force
@@ -245,7 +245,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

@@ -232,7 +232,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius
@@ -380,8 +380,8 @@ $$
 \begin{aligned}
   & F_rel   = 1.0e-10 N    # Relativistic field strength baseline \\
   & E_LEP   = 1.22e-19 J   # Lepton energy scale (~0.76 eV) \\
-  & \text{RHO\_VAC\_UA}  = 7.09e-36 kg/m3  # Universal Aether vacuum density \\
-  & \text{RHO\_VAC\_SCM} = 7.09e-37 kg/m3  # SCm vacuum density \\
+  & \text{RHO\_VAC\_UA}  = 7.09e-36 J/m^{3}  # Universal Aether vacuum density \\
+  & \text{RHO\_VAC\_SCM} = 7.09e-37 J/m^{3}  # SCm vacuum density \\
   & \kappa       = 0.0005/day   # UQFF temporal decay constant \\
   & [SSq]   = 0.57         # Superconducting manifold calibration \\
   & # Perseus Cluster \\

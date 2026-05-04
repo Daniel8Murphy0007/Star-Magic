@@ -119,7 +119,7 @@ constant. This is why $\xi$_aether >> the $\Lambda$ contribution at this scale w
 ## 5. E_vac vs $\Lambda$ at Bohr Scale
 
 The dark-energy density from $\Lambda$:
-$$\rho_Lambda = \frac{\Lambda c^2}{8\pi G} \approx 6.9 \times 10^{-27} \; \text{kg/m}^3, \quad \rho_Lambda c^2 \approx 6.2 \times 10^{-10} \; \text{J/m}^3$$
+$$\rho_Lambda = \frac{\Lambda c^2}{8\pi G} \approx 6.9 \times 10^{-27} \; \text{J/m}^3, \quad \rho_Lambda c^2 \approx 6.2 \times 10^{-10} \; \text{J/m}^3$$
 
 The UQFF plasmonic vacuum density:
 $$E_{\text{vac}} = 7.09 \times 10^{-36} \; \text{J/m}^3$$
@@ -228,7 +228,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

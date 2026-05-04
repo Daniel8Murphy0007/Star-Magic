@@ -189,7 +189,7 @@ $$\boxed{r_{eq} \approx \sqrt{\frac{\kappa\cdot\text{DPM}}{g\,\rho}}}$$
 
 **Numerical validation — Helium-4:**
 
-$$r_{eq}(\text{He-4})\big|_{\rho=2.3\times10^{17}\,\text{kg/m}^3,\,\kappa=1,\,g=10^{-3}}
+$$r_{eq}(\text{He-4})\big|_{\rho=2.3\times10^{17}\,\text{J/m}^3,\,\kappa=1,\,g=10^{-3}}
 = \sqrt{\frac{1\cdot2}{10^{-3}\cdot2.3\times10^{17}}} \approx 2.9\,\text{fm} \approx r_{He-4}\;\checkmark$$
 
 **Discrete simulation (27 steps):**
@@ -265,7 +265,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

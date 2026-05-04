@@ -44,7 +44,7 @@ or f_feedback. These three parameters were undefined/defaulted in the §2.2 impl
 **Source:** NIST CODATA 2022 + cosmological vacuum energy measurements (Planck 2018 $\Omega$_$\Lambda$).
 
 The observed dark energy density:
-$$\rho_Lambda = \frac{\Lambda c^2}{8\pi G} \approx 5.96 \times 10^{-27}\, \text{kg/m}^3$$
+$$\rho_Lambda = \frac{\Lambda c^2}{8\pi G} \approx 5.96 \times 10^{-27}\, \text{J/m}^3$$
 
 Calibrated to **6$\times$10-27 kg/m3** in the UQFF vacuum concentration term.
 
@@ -138,7 +138,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

@@ -75,7 +75,7 @@ $$\rho_{anti-collapse} = \frac{1}{26! \cdot g}$$
 
 With $26! = 4.03\times10^{26}$ and $g = 9.8$ m/s2:
 
-$$\rho_{anti-collapse} = \frac{1}{4.03\times10^{26} \times 9.8} \approx 2.54\times10^{-28}\ \text{kg/m}^3$$
+$$\rho_{anti-collapse} = \frac{1}{4.03\times10^{26} \times 9.8} \approx 2.54\times10^{-28}\ \text{J/m}^3$$
 
 This represents the minimum physical density at which UQFF fields prevent collapse. Remarkably, this
 is consistent with the observed vacuum energy density of the universe (~5$\times$10-27 kg/m3), within an
@@ -130,7 +130,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

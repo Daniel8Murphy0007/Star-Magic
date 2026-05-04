@@ -9,7 +9,7 @@
 
 ## Abstract
 
-We derive sterile neutrino mass bounds within the Unified Quantum Field Framework (UQFF) using the 26-dimensional vacuum density series (VDS), the $F_{U,Bi,i}$ buoyancy integral, and negative-time modulation $\cos(\pi t_n)$. The SCm vacuum density $\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{kg/m}^3$ provides the effective mass-generation potential for sterile neutrino mixing, yielding mass estimates in the keV range consistent with dark matter candidates. Oscillation probabilities are computed via the SCm phonon resonance at 1.25 THz.
+We derive sterile neutrino mass bounds within the Unified Quantum Field Framework (UQFF) using the 26-dimensional vacuum density series (VDS), the $F_{U,Bi,i}$ buoyancy integral, and negative-time modulation $\cos(\pi t_n)$. The SCm vacuum density $\rho_{\text{vac,SCm}} = 7.09 \times 10^{-37}\ \text{J/m}^3$ provides the effective mass-generation potential for sterile neutrino mixing, yielding mass estimates in the keV range consistent with dark matter candidates. Oscillation probabilities are computed via the SCm phonon resonance at 1.25 THz.
 
 ---
 
@@ -55,7 +55,7 @@ The sterile neutrino dark matter production rate via the Dodelson-Widrow mechani
 
 $$\Gamma_{\text{DW-SCm}} = \frac{G_F^2 T^5}{\pi} \cdot \sin^2(2\theta)_{\text{eff}} \cdot \frac{S_{26}^{(3)} \cdot \Phi_{\text{res}}}{\rho_{\text{vac,UA}}/\rho_{\text{vac,SCm}}}$$
 
-where $\rho_{\text{vac,UA}} = 7.09 \times 10^{-36}\ \text{kg/m}^3$ provides the UA vacuum density ratio, $G_F = 1.166 \times 10^{-5}\ \text{GeV}^{-2}$ is the Fermi constant, and $T$ is the plasma temperature.
+where $\rho_{\text{vac,UA}} = 7.09 \times 10^{-36}\ \text{J/m}^3$ provides the UA vacuum density ratio, $G_F = 1.166 \times 10^{-5}\ \text{GeV}^{-2}$ is the Fermi constant, and $T$ is the plasma temperature.
 
 ---
 

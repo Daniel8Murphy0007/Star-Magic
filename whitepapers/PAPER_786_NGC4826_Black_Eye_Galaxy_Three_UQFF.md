@@ -108,7 +108,7 @@ $$
 ### Mode 3: Buoyancy UQFF
 $$
 \begin{aligned}
-  & \rho_UA = 7.09e-36 kg/m3; V = (4/3)\pi(2.83e20)3 = 9.51e61 m3 \\
+  & \rho_UA = 7.09e-36 J/m^{3}; V = (4/3)\pi(2.83e20)3 = 9.51e61 m3 \\
   & a_Ubi = \rho_UA \times V \times g_comp / m_p \approx 1.053e-3 m/s2 (dominant EM; buoyancy correction ~1e-20) \\
   & g_buoy \approx 1.053e-3 m/s2
 \end{aligned}

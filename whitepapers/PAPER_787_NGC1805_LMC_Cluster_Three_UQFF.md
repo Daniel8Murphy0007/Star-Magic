@@ -79,7 +79,7 @@ $$
 ### Mode 3: Buoyancy UQFF
 $$
 \begin{aligned}
-  & \rho_UA = 7.09e-36 kg/m3; V = (4/3)\pi(9.46e16)3 = 3.54e50 m3 \\
+  & \rho_UA = 7.09e-36 J/m^{3}; V = (4/3)\pi(9.46e16)3 = 3.54e50 m3 \\
   & a_Ubi << a_EM; g_buoy = 1.053e-3 m/s2
 \end{aligned}
 $$

@@ -121,7 +121,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system calibration |
 | SCm phonon frequency | $\omega_text{SCm}$ | $2\pi \times 1.25$ THz | Phonon resonance |
 | SCm completeness | $H_\text{SCm}$ | 0.99 | Vacuum structure |
-| SCm vacuum density | $\rho_text{SCm}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental constant |
+| SCm vacuum density | $\rho_text{SCm}$ | $7.09 \times 10^{-37}\,\text{J/m}^3$ | Fundamental constant |
 
 ---
 

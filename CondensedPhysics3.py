@@ -1,4 +1,18 @@
 """
+# ── Quantum Chain Derived Constants (UQFF_THEORY.md) ──────────────────────────
+# Vacuum density is emergent energy density J/m³, NOT kg/m³.
+# SCm and UA are MASSLESS geometric substrates derived from 26-level H-atom geometry.
+# All functions that use _RHO_VAC_SCM / _RHO_VAC_UA are automatically correct.
+try:
+    from scm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
+    _RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
+    _RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
+except ImportError:
+    # Fallback: canonical numeric values if scm_vacuum_manifold not on path
+    _RHO_VAC_SCM = 6.333333e+05   # J/m³ — SCm vacuum energy density (Quantum Chain)
+    _RHO_VAC_UA  = 6.333333e+06   # J/m³ — UA  vacuum energy density (Quantum Chain)
+# ─────────────────────────────────────────────────────────────────────────────
+
 CondensedPhysics3.py — UQFF Phase 3 Physics Calculator
 =======================================================
 IPC Chain Position: 3 of 4
@@ -47,8 +61,8 @@ Physics Constants (canonical UQFF values):
   SSq        = 0.57               (self-similar quotient)
   beta_i     = 0.61               (buoyancy coupling)
   E_react_0  = 1e46    W/m^3     (base reactor efficiency)
-  rho_vac_SCm = 7.09e-37 J/m^3   (SCm vacuum density)
-  rho_vac_UA  = 7.09e-36 J/m^3   (UA vacuum density)
+  rho_vac_SCm = _RHO_VAC_SCM J/m^3   (SCm vacuum density)
+  rho_vac_UA  = _RHO_VAC_UA J/m^3   (UA vacuum density)
   rho_vac_A   = 1e-23  J/m^3     (Aether vacuum density)
   v_SCm      = 1e8     m/s        (SCm velocity = c/3)
   omega_g    = 7.3e-16 rad/s     (galactic spin rate)
@@ -156,7 +170,7 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     """F_U_Bi_i integral numerical [canonical: scm_vacuum_manifold.py]"""
     import math as _m_fubi
-    G_N = 6.6743e-11; rho_ua = 7.09e-36; rho_scm_v = 7.09e-37
+    G_N = 6.6743e-11; rho_ua = _RHO_VAC_UA; rho_scm_v = _RHO_VAC_SCM
     cos_pi_tn = _m_fubi.cos(_m_fubi.pi * -100.0)
     grav_proj = G_N * float(M_bh) / (float(r)**2) if float(r) > 0 else 0.0
     integrand = -1.0e-10 + grav_proj * cos_pi_tn + rho_ua * cos_pi_tn + rho_scm_v
@@ -178,7 +192,7 @@ def monte_carlo_fubi_i(n_samples=10000):
 try:
     from mpmath import polylog as _polylog_scm_local
     def vds_numerical(terms=1000):
-        """VDS: Li_26([SSq]) � 26D Vacuum Density Series [canonical: scm_vacuum_manifold.py]"""
+        """VDS: Li_26([SSq]) � 26D Vacuum Density Series [canonical: scm_vacuum_manifold.py]"""
         return float(_polylog_scm_local(26, 0.57))
 except ImportError:
     def vds_numerical(terms=1000):
@@ -193,8 +207,8 @@ def parkhomov_excess_heat_cp3(N_clusters=2.0e18, t_hours=1):
 
 # Phase-3 physics constants (UQFF canonical)
 E_REACT_BASE = 1e46      # W/m^3  — reactor efficiency base
-RHO_VAC_SCM  = 7.09e-37  # J/m^3  — SCm vacuum density
-RHO_VAC_UA   = 7.09e-36  # J/m^3  — UA vacuum density
+RHO_VAC_SCM  = _RHO_VAC_SCM  # J/m^3  — SCm vacuum density
+RHO_VAC_UA   = _RHO_VAC_UA  # J/m^3  — UA vacuum density
 RHO_VAC_A    = 1.0e-23   # J/m^3  — Aether vacuum density
 RHO_VAC_UI   = 2.84e-36  # J/m^3  — inertia vacuum density
 V_SCM        = 1.0e8     # m/s    — SCm velocity (c/3)
@@ -212,10 +226,10 @@ GAMMA_DECAY  = 0.00005   # day^{-1} (string / CRP)
 # Ug1 = mu_s * grad(M_s/r), where mu_s = B * R^3 and grad(M_s/r) = M/R.
 # Canonical: Ug1 = B * R^2 * M. G does NOT appear in the seed equation.
 
-G_CONST = 6.67430e-11  # gravitational constant [m^3/kg/s^2] � downstream use only
+G_CONST = 6.67430e-11  # gravitational constant [m^3/kg/s^2] � downstream use only
 
 def dpm_ug1_seed(M: float, R: float, B: float = 1e-4) -> float:
-    """DPM seed Ug1: mu_s * grad(M_s/r). NO G � G is a downstream projection."""
+    """DPM seed Ug1: mu_s * grad(M_s/r). NO G � G is a downstream projection."""
     if R <= 0:
         return 0.0
     mu_s = B * R ** 3
@@ -1857,7 +1871,7 @@ class VacuumEnergyComponentRatioCalculator(_CP3Calculator):
 
     Physics: ρ_vac ratios ~10^{-38} for [SCm]/λ_vac
     JCAP DM: λ_vac cosmological ~10^{-9} J/m^3
-    ρ_vac,[SCm] = 7.09e-37, ratio = 7.09e-28 (log-scale ~10^{-28})
+    ρ_vac,[SCm] = _RHO_VAC_SCM, ratio = 7.09e-28 (log-scale ~10^{-28})
     Note: document states ~10^{-38} for [SCm]/[A] specifically
     """
     category = "Miscellaneous"
@@ -1989,14 +2003,14 @@ class WormholeMUGE13thTermCalculator(_CP3Calculator):
     """PAPER_159: 13th Resonance Term — Morris-Thorne Wormhole in MUGE.
 
     a_worm = f_worm * E_vac_neb / (b^2 + r^2)
-    f_worm=1.0, b=1.0 m (throat), E_vac_neb=7.09e-36 J/m³
+    f_worm=1.0, b=1.0 m (throat), E_vac_neb=_RHO_VAC_UA J/m³
     Extends MUGE resonance sum from 12→13 terms.
     """
     category = "Black Hole"
 
     def compute(self, dataset: dict) -> dict:
         f_worm    = dataset.get('f_worm', 1.0)
-        E_vac_neb = dataset.get('E_vac_neb', 7.09e-36)
+        E_vac_neb = dataset.get('E_vac_neb', _RHO_VAC_UA)
         b         = dataset.get('b', 1.0)
         r         = dataset.get('r', 1.0)
         a_sum_12  = dataset.get('a_sum_12', 0.0)
@@ -2012,10 +2026,10 @@ class WormholeMUGE13thTermCalculator(_CP3Calculator):
             'available_equations': [
                 'a_worm = f_worm * E_vac_neb / (b^2 + r^2)',
                 '13-term MUGE = a_sum_12 (§2.2 PAPER_146) + a_worm',
-                'E_vac_neb=7.09e-36 J/m³; b=1.0m Planck-scale throat',
+                'E_vac_neb=_RHO_VAC_UA J/m³; b=1.0m Planck-scale throat',
             ],
             'simulation_set': {
-                'Pillars_of_Creation': {'E_vac_neb': 7.09e-36, 'b': 1.0, 'r': 1.0},
+                'Pillars_of_Creation': {'E_vac_neb': _RHO_VAC_UA, 'b': 1.0, 'r': 1.0},
                 'SGR1745_wormhole':    {'E_vac_neb': 2.5e-34,  'b': 1.0, 'r': 10.0},
             },
         }
@@ -2311,7 +2325,7 @@ class CoAnQiModularCompressedMUGECalculator(_CP3Calculator):
 
         # Resonance constants (PAPER_371 section 3)
         fDPM    = 1e12;  fTHz    = 1e12
-        Evac_nb = 7.09e-36;  Evac_ISM = 7.09e-37;  Delta_E = 6.381e-36
+        Evac_nb = _RHO_VAC_UA;  Evac_ISM = _RHO_VAC_SCM;  Delta_E = 6.381e-36
         Fsuper  = 6.287e-19; UA_SCM  = 10.0
         omega_i = 1e-8;  k4r     = 1.0;  freact  = 1e10
         fq      = 1.445e-17;  fAe     = 1.576e-35
@@ -4305,7 +4319,7 @@ class FUBiiFullDPMPolynomialIntegralCalculator(_CP3Calculator):
         DPM_gravity = dataset.get('DPM_gravity', 1.0)
         DPM_stability = dataset.get('DPM_stability', 1.0)
         DPM_resonance = dataset.get('DPM_resonance', 1.67e3)   # calibrated ≈1.67e3
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
         M = dataset.get('M', 8.155e36)
         k_LENR = dataset.get('k_LENR', 1e-10)
         omega_LENR = dataset.get('omega_LENR', 2 * math.pi * 1.25e12 / 1e-12)
@@ -5452,8 +5466,8 @@ class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
         P = dataset.get('P', 5.0)
         tau_Omega = dataset.get('tau_Omega_yr', 10000) * 3.15576e7
         f_TRZ = dataset.get('f_TRZ', 0.1)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         L0_W = dataset.get('L0_W', 1e28)
         tau_decay = dataset.get('tau_decay_yr', 3.5) * 3.15576e7
@@ -5585,8 +5599,8 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
         rho_fluid = dataset.get('rho_fluid', 1e-20)
         rho_wind = dataset.get('rho_wind', 1e-21)
         v_wind = dataset.get('v_wind', 2e6)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         t = dataset.get('t_years', 1e6) * 3.15576e7
 
@@ -5688,8 +5702,8 @@ class Westerlund2MUGEStellarWindCalculator(_CP3Calculator):
         rho_fluid = dataset.get('rho_fluid', 1e-19)
         rho_wind = dataset.get('rho_wind', 1e-20)
         v_wind = dataset.get('v_wind', 2e6)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         t = dataset.get('t_years', 1e6) * 3.15576e7
 
@@ -5784,8 +5798,8 @@ class PillarsOfCreationErosionMUGECalculator(_CP3Calculator):
         rho_fluid = dataset.get('rho_fluid', 1e-20)
         rho_wind = dataset.get('rho_wind', 1e-21)
         v_wind = dataset.get('v_wind', 2e6)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         t = dataset.get('t_years', 5e5) * 3.15576e7
 
@@ -5886,8 +5900,8 @@ class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
         M_SN0 = dataset.get('M_SN0_Msun', 1.4) * M_sun
         tau_SN = dataset.get('tau_SN_yr', 1.0) * 3.15576e7
         rho_fluid = dataset.get('rho_fluid', 1e-25)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         t = dataset.get('t_years', 7.0) * 3.15576e7   # 7 yr post-SN default
 
@@ -5989,8 +6003,8 @@ class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
         rho_fluid = dataset.get('rho_fluid', 1e-28)
         rho_wind = dataset.get('rho_wind', 1e-22)
         v_wind = dataset.get('v_wind', 1e6)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         t = dataset.get('t_years', 5e9) * 3.15576e7
 
@@ -6092,8 +6106,8 @@ class GalaxyNGC1792StarburstForgeCalculator(_CP3Calculator):
         rho_fluid = dataset.get('rho_fluid', 1e-25)
         rho_wind = dataset.get('rho_wind', 1e-21)
         v_wind = dataset.get('v_wind', 2e6)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         t = dataset.get('t_years', 5e7) * 3.15576e7
 
@@ -6193,8 +6207,8 @@ class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
         L0_W = dataset.get('L0_W', 5e28)
         tau_decay = dataset.get('tau_decay_yr', 3.5) * 3.15576e7
         f_TRZ = dataset.get('f_TRZ', 0.1)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         rho_fluid = dataset.get('rho_fluid', 1e-9)
         t = dataset.get('t_years', 5000) * 3.15576e7
@@ -6305,8 +6319,8 @@ class SgrAStarAccretionPrecessionCalculator(_CP3Calculator):
         precession_angle_deg = dataset.get('precession_angle_deg', 30.0)
         spin_factor = dataset.get('spin_factor', 0.3)
         f_TRZ = dataset.get('f_TRZ', 0.1)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         rho_fluid = dataset.get('rho_fluid', 1e-15)
         t = dataset.get('t_years', 1e9) * 3.15576e7
@@ -6421,8 +6435,8 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
         I0 = dataset.get('I0', 0.1)
         tau_merger = dataset.get('tau_merger_yr', 4e8) * 3.15576e7
         rho_fluid = dataset.get('rho_fluid', 1e-25)
-        rho_UA = dataset.get('rho_UA', 7.09e-36)
-        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        rho_UA = dataset.get('rho_UA', _RHO_VAC_UA)
+        rho_SCm = dataset.get('rho_SCm', _RHO_VAC_SCM)
         scale_EM = dataset.get('scale_EM', 1e-12)
         t = dataset.get('t_years', 3e8) * 3.15576e7  # 300 Myr default
 
@@ -7019,8 +7033,8 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
         rho_fluid  = dataset.get('rho_fluid',  1e-26)       # kg/m³
         rho_wind   = dataset.get('rho_wind',   1e-26)       # kg/m³
         v_wind     = dataset.get('v_wind',     1e5)         # m/s
-        rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
-        rho_vac_SCm = dataset.get('rho_vac_SCm', 7.09e-37)
+        rho_vac_UA  = dataset.get('rho_vac_UA',  _RHO_VAC_UA)
+        rho_vac_SCm = dataset.get('rho_vac_SCm', _RHO_VAC_SCM)
         q  = dataset.get('q',  1.602e-19)
         v_gas = dataset.get('v_gas', 1e5)
         m_p = dataset.get('m_p', 1.673e-27)
@@ -7165,8 +7179,8 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
         rho_fluid    = dataset.get('rho_fluid',    1e-20)
         rho_wind     = dataset.get('rho_wind',     1e-20)
         v_wind       = dataset.get('v_wind',       2e6)
-        rho_vac_UA   = dataset.get('rho_vac_UA',   7.09e-36)
-        rho_vac_SCm  = dataset.get('rho_vac_SCm',  7.09e-37)
+        rho_vac_UA   = dataset.get('rho_vac_UA',   _RHO_VAC_UA)
+        rho_vac_SCm  = dataset.get('rho_vac_SCm',  _RHO_VAC_SCM)
         q            = dataset.get('q',            1.602e-19)
         v_gas        = dataset.get('v_gas',        1e5)
         m_p          = dataset.get('m_p',          1.673e-27)
@@ -7782,7 +7796,7 @@ class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
 
         # UQFF canonical constants
         F_0         = dataset.get('F_0',         1.83e71)
-        rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
+        rho_vac_UA  = dataset.get('rho_vac_UA',  _RHO_VAC_UA)
         DPM_stability  = 0.01
         DPM_momentum   = 0.93
         DPM_gravity    = 1.0
@@ -7929,7 +7943,7 @@ class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
         Mach     = dataset.get('Mach',     1.5)            # super-Eddington ℳ
 
         F_0         = dataset.get('F_0',         1.83e71)
-        rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
+        rho_vac_UA  = dataset.get('rho_vac_UA',  _RHO_VAC_UA)
         DPM_stability = 0.01
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
@@ -8073,7 +8087,7 @@ class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
         n_systems = dataset.get('n_systems', 3)        # SN1987A, Eta Car, Helix
 
         F_0         = dataset.get('F_0',         1.83e71)
-        rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
+        rho_vac_UA  = dataset.get('rho_vac_UA',  _RHO_VAC_UA)
         DPM_stability = 0.01
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
@@ -8216,7 +8230,7 @@ class SgrACenterNegativeBuoyancyCalculator(_CP3Calculator):
         v_gas    = dataset.get('v_gas',    1e6)          # 1,000 km/s outflow (m/s)
 
         F_0         = dataset.get('F_0',         1.83e71)
-        rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
+        rho_vac_UA  = dataset.get('rho_vac_UA',  _RHO_VAC_UA)
         DPM_stability = 0.01
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
@@ -8372,7 +8386,7 @@ class KeplerSNR1604FUBiCalculator(_CP3Calculator):
         d_kpc    = dataset.get('d_kpc',   6.4)        # ~20,000 ly ≈ 6.4 kpc (kpc)
 
         F_0         = dataset.get('F_0',         1.83e71)
-        rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
+        rho_vac_UA  = dataset.get('rho_vac_UA',  _RHO_VAC_UA)
         DPM_stability = 0.01
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
@@ -8526,7 +8540,7 @@ class PSRJ0030NeutronStarFUBiCalculator(_CP3Calculator):
         # Neutron-star density σ_n — key parameter distinguishing this regime
         sigma_n   = dataset.get('sigma_n', 1e39)         # neutron cross-section density
 
-        rho_vac_UA = 7.09e-36
+        rho_vac_UA = _RHO_VAC_UA
         F_0        = 1.83e71
 
         DPM_momentum  = 1.0
@@ -8677,7 +8691,7 @@ class CrabNebulaM1FUBiCalculator(_CP3Calculator):
         t       = dataset.get('t',       3.156e10)       # ~1,000 yr (Crab SNR age)
         sigma_n = dataset.get('sigma_n', 1e39)           # NS density regime
 
-        rho_vac_UA = 7.09e-36
+        rho_vac_UA = _RHO_VAC_UA
         F_0        = 1.83e71
 
         DPM_momentum  = 1.0
@@ -8832,7 +8846,7 @@ class CassiopeiaASNRFUBiCalculator(_CP3Calculator):
         t       = dataset.get('t',       1.041e10)       # ~330 yr (Cas A age ~1680 CE)
         sigma_n = dataset.get('sigma_n', 1e39)           # NS density
 
-        rho_vac_UA = 7.09e-36
+        rho_vac_UA = _RHO_VAC_UA
         F_0        = 1.83e71
 
         DPM_momentum  = 1.0
@@ -10874,7 +10888,7 @@ class ResonanceSCDPMTHzCascadeCalculator:
         import math
 
         c_light  = dataset.get('c_light',  3.0e8)
-        E_vac    = dataset.get('E_vac',    7.09e-36)    # J/m^3 plasmotic vacuum
+        E_vac    = dataset.get('E_vac',    _RHO_VAC_UA)    # J/m^3 plasmotic vacuum
         f_DPM    = dataset.get('f_DPM',    1.0e12)      # Hz DPM intrinsic
         f_THz    = dataset.get('f_THz',    1.0e12)      # Hz THz pipeline
         I_curr   = dataset.get('I_curr',   1.0e21)      # A magnetar current proxy
@@ -10967,7 +10981,7 @@ class ResonanceSCCooperDPMFreqSynthesisCalculator:
         hbar     = dataset.get('hbar',    1.0546e-34)   # J*s
         f_super  = dataset.get('f_super', 1.411e16)     # Hz Cooper pair frequency
         f_DPM    = dataset.get('f_DPM',   1.0e12)       # Hz DPM mode
-        E_vac    = dataset.get('E_vac',   7.09e-36)     # J/m^3 plasmotic vacuum
+        E_vac    = dataset.get('E_vac',   _RHO_VAC_UA)     # J/m^3 plasmotic vacuum
         c_light  = dataset.get('c_light', 3.0e8)        # m/s
         a_DPM    = dataset.get('a_DPM',   3.545e-18)    # m/s^2 DPM base (PAPER_287)
         B_field  = dataset.get('B_field', 1.0e-5)       # T operating field
@@ -11026,7 +11040,7 @@ class CrabSNRDPMDilutionCalculator:
 
         f_DPM   = dataset.get('f_DPM',    1.0e12)       # Hz DPM mode
         f_THz   = dataset.get('f_THz',    1.0e12)       # Hz THz mode
-        E_vac   = dataset.get('E_vac',    7.09e-36)     # J/m^3 plasmotic vacuum
+        E_vac   = dataset.get('E_vac',    _RHO_VAC_UA)     # J/m^3 plasmotic vacuum
         c_light = dataset.get('c_light',  3.0e8)        # m/s
         I_curr  = dataset.get('I_curr',   1.0e21)       # A Crab wind proxy
         A_vort  = dataset.get('A_vort',   3.142e8)      # m^2
@@ -11071,7 +11085,7 @@ class CrabFilamentSpectralTriadCalculator:
     def compute(self, dataset: dict) -> dict:
 
         c_light  = dataset.get('c_light',   3.0e8)       # m/s
-        E_vac    = dataset.get('E_vac',     7.09e-36)    # J/m^3
+        E_vac    = dataset.get('E_vac',     _RHO_VAC_UA)    # J/m^3
         a_DPM    = dataset.get('a_DPM',     3.772e-57)   # m/s^2 default at 971 yr
         f_quantum= dataset.get('f_quantum', 1.445e-17)   # Hz quantum de Broglie mode
         f_fluid  = dataset.get('f_fluid',   1.269e-14)   # Hz KH turbulence
@@ -11177,7 +11191,7 @@ class CR24DualChannelArchitectureCalculator:
     # Physical constants
     _C     = 3.0e8
     _HBAR  = 1.0546e-34
-    _E_VAC = 7.09e-36
+    _E_VAC = _RHO_VAC_UA
     _PI    = 3.141592653589793
 
     def compute(self, dataset: dict) -> dict:
@@ -11274,7 +11288,7 @@ class CR24VacuumDifferentialHarmonicCalculator:
 
     _C     = 3.0e8
     _HBAR  = 1.0546e-34
-    _E_VAC = 7.09e-36
+    _E_VAC = _RHO_VAC_UA
 
     def compute(self, dataset: dict) -> dict:
         f_DPM      = dataset.get('f_DPM',      1.0e11)
@@ -11330,7 +11344,7 @@ class CR24CompressedCooperSuperSeedingCalculator:
 
     _C     = 3.0e8
     _HBAR  = 1.0546e-34
-    _E_VAC = 7.09e-36
+    _E_VAC = _RHO_VAC_UA
 
     def compute(self, dataset: dict) -> dict:
         f_DPM   = dataset.get('f_DPM',   1.0e11)
@@ -11630,7 +11644,7 @@ class HydrogenPToEUg4iResonanceBridgeCalculator:
         F_LENR   = dataset.get('F_LENR',    1.0e-10)
         rho_U    = dataset.get('rho_U',     1.0e3)        # kg/m^3
         V_sys    = (4.0/3.0) * math.pi * r_Bohr**3       # 6.207e-31 m^3
-        E_vac    = dataset.get('E_vac',     7.09e-36)     # J/m^3
+        E_vac    = dataset.get('E_vac',     _RHO_VAC_UA)     # J/m^3
         f_res    = dataset.get('f_res',     1.0e15)       # Hz
         C_LIGHT  = dataset.get('C_LIGHT',   2.998e8)
 
@@ -11664,7 +11678,7 @@ class HydrogenPToETHzQuantumDegeneracyCalculator:
         M_proton = dataset.get('M_proton',  1.6726e-27)
         G        = dataset.get('G',         6.6743e-11)
         HBAR     = dataset.get('HBAR',      1.0546e-34)
-        E_vac    = dataset.get('E_vac',     7.09e-36)
+        E_vac    = dataset.get('E_vac',     _RHO_VAC_UA)
         f_DPM    = dataset.get('f_DPM',     1.0e15)       # Hz — Lyman-alpha
         f_THz    = dataset.get('f_THz',     1.0e15)       # Hz — Lyman-alpha (locked)
         f_qorb   = dataset.get('f_qorb',    1.0e15)       # Hz — Lyman-alpha (locked)
@@ -11706,7 +11720,7 @@ class HydrogenPToEAetherGravitationalDominanceCalculator:
         M_proton = dataset.get('M_proton',  1.6726e-27)
         G        = dataset.get('G',         6.6743e-11)
         HBAR     = dataset.get('HBAR',      1.0546e-34)
-        E_vac    = dataset.get('E_vac',     7.09e-36)
+        E_vac    = dataset.get('E_vac',     _RHO_VAC_UA)
         f_res    = dataset.get('f_res',     1.0e15)
 
         V_sys      = (4.0/3.0) * math.pi * r_Bohr**3   # 6.207e-31 m^3
@@ -12193,7 +12207,7 @@ class BipolarPNLobeResonanceDPMMacroAntennaCalculator:
         G = 6.6743e-11
         c = 2.998e8
         PI = math.pi
-        E_VAC_NEB  = dataset.get('E_vac_neb',  7.09e-36)
+        E_VAC_NEB  = dataset.get('E_vac_neb',  _RHO_VAC_UA)
         r          = dataset.get('r',           1.42e16)
         I_wind     = dataset.get('I_wind',      1e20)
         omega_1    = dataset.get('omega_1',     1e-3)
@@ -12248,8 +12262,8 @@ class ResonanceVacDiffTHzCrossoverRadiusCalculator:
         c     = 2.998e8
         HBAR  = 1.0546e-34
         E_0   = dataset.get('E_0',      6.381e-36)
-        E_VAC_NEB = dataset.get('E_vac_neb', 7.09e-36)
-        E_VAC_ISM = dataset.get('E_vac_ISM', 7.09e-37)
+        E_VAC_NEB = dataset.get('E_vac_neb', _RHO_VAC_UA)
+        E_VAC_ISM = dataset.get('E_vac_ISM', _RHO_VAC_SCM)
         f_THz = dataset.get('f_THz',   1e12)
         v_exp = dataset.get('v_exp',   2.68e5)
         r     = dataset.get('r',       1.42e16)
@@ -12306,7 +12320,7 @@ class CooperDPMf1THz_AscConfirmationCalculator:
         PI    = math.pi
         c     = 2.998e8
         HBAR  = 1.0546e-34
-        E_VAC_ISM = dataset.get('E_vac_ISM', 7.09e-37)
+        E_VAC_ISM = dataset.get('E_vac_ISM', _RHO_VAC_SCM)
         f_super   = dataset.get('f_super',   1.411e16)
         f_DPM     = dataset.get('f_DPM',     1e12)
         a_DPM     = dataset.get('a_DPM',     2.497e-31)
@@ -12320,7 +12334,7 @@ class CooperDPMf1THz_AscConfirmationCalculator:
         E_0       = dataset.get('E_0', 6.381e-36)
         V_sys     = (4.0/3.0) * PI * r**3
         a_vac_diff = (E_0 * V_sys / HBAR) * a_DPM
-        E_VAC_NEB  = dataset.get('E_vac_neb', 7.09e-36)
+        E_VAC_NEB  = dataset.get('E_vac_neb', _RHO_VAC_UA)
         v_exp      = dataset.get('v_exp', 2.68e5)
         Gamma_THz  = (E_VAC_NEB/E_VAC_ISM) * 1e12 * v_exp / c
         a_THz      = Gamma_THz * a_DPM
@@ -12621,7 +12635,7 @@ class CR34CrossChannelDominanceCrossoverCalculator:
     HBAR       = 1.0546e-34
     E_0        = 6.381e-36
     F_VAC_DIFF = 0.143
-    E_VAC      = 7.09e-36
+    E_VAC      = _RHO_VAC_UA
     C_LIGHT    = 3.0e8
 
     SYSTEMS = {
@@ -12665,7 +12679,7 @@ class CR34HiIRegionTHzGeometricDifferentialCalculator:
     Gamma_THz identical for both; ratio purely from DPM geometric surface density.
     FIRST UQFF intra-HII THz geometric amplification differential."""
 
-    E_VAC   = 7.09e-36
+    E_VAC   = _RHO_VAC_UA
     C_LIGHT = 3.0e8
 
     def compute(self, dataset: dict = None) -> dict:
@@ -12713,8 +12727,8 @@ class CR34bVacuumAetherFrequencyModeCalculator:
     FIRST vacuum aether frequency mode in UQFF dual-channel framework."""
 
     F_AETHER    = 1.576e-35
-    E_VAC_NEB   = 7.09e-36
-    E_VAC_ISM   = 7.09e-37
+    E_VAC_NEB   = _RHO_VAC_UA
+    E_VAC_ISM   = _RHO_VAC_SCM
     C_LIGHT     = 3.0e8
 
     # CR34b 6-system a_DPM seeds (computed from SYSTEMS table)
@@ -12751,7 +12765,7 @@ class CR34bSaturnFirstPlanetaryDualChannelCalculator:
     f_DPM=1e12 Hz: microwave THz-boundary regime — first planetary in CR series.
     FIRST planetary-scale dual-channel UQFF computation."""
 
-    E_VAC   = 7.09e-36
+    E_VAC   = _RHO_VAC_UA
     E_0     = 6.381e-36
     HBAR    = 1.0546e-34
     C_LIGHT = 3.0e8
@@ -12798,8 +12812,8 @@ class CR34bRhoISMFluidDensityCouplingCalculator:
     CR34b extends CR34 fluid term: CR34b(rho=1) = CR34 fluid term exactly.
     FIRST UQFF mass-density-weighted fluid accelerative term."""
 
-    E_VAC_NEB = 7.09e-36
-    E_VAC_ISM = 7.09e-37
+    E_VAC_NEB = _RHO_VAC_UA
+    E_VAC_ISM = _RHO_VAC_SCM
     C_LIGHT   = 3.0e8
     F_FLUID   = 1.269e-14
     RHO_ISM   = 1e-21      # kg/m^3 standard ISM
@@ -13626,8 +13640,8 @@ class MagnetarDPMTHzFrequencyFormCalculator:
     F_QUANTUM = 1.445e-17
     F_REACT   = 1e10
     F_TRZ     = 0.1
-    RHO_UA    = 7.09e-37
-    RHO_SCM   = 7.09e-36
+    RHO_UA    = _RHO_VAC_SCM
+    RHO_SCM   = _RHO_VAC_UA
     SSQ       = 0.57
     P_MAG_S   = 3.76
     B_MAG     = 2e10
@@ -13690,7 +13704,7 @@ class SGR17452900SCmLxFreqFormCalculator:
     B_CRIT      = 4.4e13
     R_BH        = 2.83e16
     T_SURF      = 1.16e7
-    RHO_VAC     = 7.09e-36
+    RHO_VAC     = _RHO_VAC_UA
     H_PLANCK    = 6.626e-34
     F_REACT     = 2e10        # doubled June 2013
     PULSED_FRAC = 0.55
@@ -13816,8 +13830,8 @@ class TapestryStarbirthDPMTHzFreqCalculator:
     F_AETHER  = 1.576e-35
     F_FLUID   = 1e-8
     F_TRZ     = 0.1
-    RHO_UA    = 7.09e-37
-    RHO_SCM   = 7.09e-36
+    RHO_UA    = _RHO_VAC_SCM
+    RHO_SCM   = _RHO_VAC_UA
     SSQ       = 0.57
     V_WIND    = 1e3
     RHO_GAS   = 1e-20
@@ -14324,11 +14338,11 @@ class DecayRateVacuumRhoRatioDoubleExpCalculator:
     """Session 96 — PAPER_353: Decay rate vacuum rho-ratio double-exponential formula.
     Rate proportional to (rho_SCm/rho_UA)*exp(-[SSq]*n/26*exp(-(pi-t))).
     DISTINCT from PAPER_329 E_neutrino (outer base is rho_SCm/rho_UA here).
-    rho_SCm=7.09e-37, rho_UA=7.09e-36, ratio=0.1; [SSq]=0.507, n=26.
+    rho_SCm=_RHO_VAC_SCM, rho_UA=_RHO_VAC_UA, ratio=0.1; [SSq]=0.507, n=26.
     Near-threshold: inner exp -> 1 as t -> pi (maximum decay at t=pi).
     FIRST standalone decay rate rho_SCm/rho_UA double-exponential [SSq] formula."""
-    RHO_SCM  = 7.09e-37
-    RHO_UA   = 7.09e-36
+    RHO_SCM  = _RHO_VAC_SCM
+    RHO_UA   = _RHO_VAC_UA
     SSQ      = 0.507
     N_STATES = 26
 
@@ -14748,7 +14762,7 @@ __all__ = [
 
 
 # ===========================================================================
-# SCm NEWLY DISCOVERED PHYSICS � Session 204 (April 28, 2026)
+# SCm NEWLY DISCOVERED PHYSICS � Session 204 (April 28, 2026)
 # Source: pdf/scm_vacuum_manifold.py
 # 10 classes: SUSY breaking, holographic entropy, dark matter,
 # neutrino oscillations (full/params/simulation), GW metric,
@@ -14770,7 +14784,7 @@ class SCmSUSYBreakingCalculator:
         cos_tn = math.cos(math.pi * t_n)
         m_soft = kappa * abs(cos_tn) * (1.0 + F_TRZ)
         naturalness = -math.log(SSq) if SSq > 0 else 0.0
-        rho_broken = 7.09e-37 * abs(cos_tn) * (1.0 + F_TRZ)
+        rho_broken = _RHO_VAC_SCM * abs(cos_tn) * (1.0 + F_TRZ)
         return {
             'cos_pi_tn': round(cos_tn, 8),
             'm_soft_relative': round(m_soft, 10),
@@ -14822,7 +14836,7 @@ class SCmDarkMatterCalculator:
         beta_i   = dataset.get('beta_i', 0.6)
         F_TRZ    = dataset.get('F_TRZ', 0.1)
         cos_tn   = math.cos(math.pi * t_n)
-        rho_DM   = 7.09e-37 * 1.4531e26 * 0.84 * abs(cos_tn)
+        rho_DM   = _RHO_VAC_SCM * 1.4531e26 * 0.84 * abs(cos_tn)
         V_coh    = (4.0/3.0) * math.pi * (1.0e-10)**3
         m_DM_eV  = rho_DM * V_coh / 1.60217662e-19
         sigma_sup = beta_i * abs(cos_tn) * (1.0 + F_TRZ)
@@ -14849,7 +14863,7 @@ class SCmNeutrinoOscillationCalculator:
         t_n      = dataset.get('t_n', -100.0)
         sin2_2th = dataset.get('sin2_2theta', 0.846)
         cos_tn   = math.cos(math.pi * t_n)
-        dm2_eff  = 1.4531e26 * 0.84 * 7.09e-37 * 1e3
+        dm2_eff  = 1.4531e26 * 0.84 * _RHO_VAC_SCM * 1e3
         arg      = 1.27 * dm2_eff * L_km / E_GeV if E_GeV > 0 else 0.0
         P_osc    = sin2_2th * math.sin(arg) ** 2
         return {
@@ -14873,7 +14887,7 @@ class SCmNeutrinoOscParamCalculator:
         E_GeV = dataset.get('E_GeV', 1.0)
         kappa = dataset.get('kappa', 0.0005)
         cos_tn   = math.cos(math.pi * t_n)
-        dm2_eff  = 1.4531e26 * 0.84 * 7.09e-37 * 1e3
+        dm2_eff  = 1.4531e26 * 0.84 * _RHO_VAC_SCM * 1e3
         th13     = math.asin(math.sqrt(0.0218)) * abs(cos_tn)
         hbar_c   = 197.3269804e-15  # eV*m
         L_osc    = 4.0*math.pi*(E_GeV*1e9)*hbar_c/dm2_eff if dm2_eff > 0 and E_GeV > 0 else 0.0
@@ -14892,7 +14906,7 @@ class SCmNeutrinoOscParamCalculator:
 class SCmGravitationalWaveCalculator:
     """SCm GW metric perturbation h(f) = G*rho_SCm*S26_3*Phi*|cos(pi*t_n)|*(1+F_TRZ)/(c^4*r).
     Consistent with LIGO/Virgo O3 residual sensitivity.
-    Source: scm_vacuum_manifold.py � scm_gw_metric_perturbation()."""
+    Source: scm_vacuum_manifold.py � scm_gw_metric_perturbation()."""
     def compute(self, dataset: dict) -> dict:
         import math
         f_gw       = dataset.get('f_gw', 100.0)
@@ -14901,7 +14915,7 @@ class SCmGravitationalWaveCalculator:
         F_TRZ      = dataset.get('F_TRZ', 0.1)
         G_N = 6.6743e-11; c = 2.998e8
         cos_tn = math.cos(math.pi * t_n)
-        E_gw   = 7.09e-37 * 1.4531e26 * 0.84 * (1.0 + F_TRZ)
+        E_gw   = _RHO_VAC_SCM * 1.4531e26 * 0.84 * (1.0 + F_TRZ)
         h_scm  = G_N * E_gw * abs(cos_tn) / (c**4 * r_detector) if r_detector > 0 else 0.0
         return {
             'h_scm_strain': h_scm,
@@ -14930,7 +14944,7 @@ class SCmCosmicRayCalculator:
         omega_cr = E_cr_eV * 1.60217662e-19 / 6.626e-34
         Phi_ph   = math.exp(-((omega_cr - 1.25e12)**2) / (2.0 * Gamma**2)) if Gamma > 0 else 0.0
         sigma    = Phi_ph * beta_i * abs(cos_tn) * (1.0 + F_TRZ)
-        pion_sb  = abs(cos_tn) * 1.4531e26 * 0.84 * 7.09e-37
+        pion_sb  = abs(cos_tn) * 1.4531e26 * 0.84 * _RHO_VAC_SCM
         return {
             'Phi_phonon_coupling': round(Phi_ph, 8),
             'sigma_cr_relative': round(sigma, 10),
@@ -15005,7 +15019,7 @@ class SCmNeutrinoOscSimulationCalculator:
         sin2_2th  = dataset.get('sin2_2theta', 0.846)
         t_n       = dataset.get('t_n', -100.0)
         cos_tn    = math.cos(math.pi * t_n)
-        dm2_eff   = 1.4531e26 * 0.84 * 7.09e-37 * 1e3
+        dm2_eff   = 1.4531e26 * 0.84 * _RHO_VAC_SCM * 1e3
         results   = []
         for E in energies:
             for L in baselines:

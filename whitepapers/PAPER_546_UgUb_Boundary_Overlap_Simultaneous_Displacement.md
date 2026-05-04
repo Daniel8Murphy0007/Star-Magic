@@ -59,7 +59,7 @@ The attraction boundary is located where Ug = Ub:
 
 $$r_{\text{attr}} = \frac{(SCm/UA) \cdot \sum U_{gi}}{\rho - 1}$$
 
-At $r < r_{\text{attr}}$, gravity dominates — this is the stellar-core regime where proplyd flattening and disk-locking occur. For plasma parameters ($\rho = 10^{-10}\ \text{kg/m}^3$, sumUgi = 1, SCm = UA = 1), $r_{\text{attr}}$ crosses negative near unity, indicating the boundary is at sub-plasma densities (well inside the ionization front).
+At $r < r_{\text{attr}}$, gravity dominates — this is the stellar-core regime where proplyd flattening and disk-locking occur. For plasma parameters ($\rho = 10^{-10}\ \text{J/m}^3$, sumUgi = 1, SCm = UA = 1), $r_{\text{attr}}$ crosses negative near unity, indicating the boundary is at sub-plasma densities (well inside the ionization front).
 
 ### §3.2 Buoyancy-Dominated Density ($\rho$_buoy)
 
@@ -96,7 +96,7 @@ With negative $t$ (time-reversal in SCm), $A > 0$: an outward acceleration that 
 
 ### §4.2 Numerical Method (Orion Nebula Parameters)
 
-Using ALMA-validated parameters ($\rho = 10^{-10}\ \text{kg/m}^3$, $g = 10^{-3}$, $\kappa = 1$, $DPM_n = 1$, $DPM_s = -1$, $t = -1$):
+Using ALMA-validated parameters ($\rho = 10^{-10}\ \text{J/m}^3$, $g = 10^{-3}$, $\kappa = 1$, $DPM_n = 1$, $DPM_s = -1$, $t = -1$):
 
 | Quantity | Value |
 |---|---|
@@ -187,7 +187,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

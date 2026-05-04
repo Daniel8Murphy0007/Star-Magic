@@ -131,7 +131,7 @@ $$F_\text{grav} = F_\text{buoy}$$
 $$\frac{G M m}{r^2} = \rho g V$$
 $$r_\text{overlap} = \sqrt{\frac{GMm}{\rho g V}}$$
 
-For Solar System parameters ($M = M_\odot$, $m = m_\oplus$, $\rho = 10^{-10}\,\text{kg/m}^3$,
+For Solar System parameters ($M = M_\odot$, $m = m_\oplus$, $\rho = 10^{-10}\,\text{J/m}^3$,
 $g = 10^{-3}\,\text{m/s}^2$, $V = 1\,\text{m}^3$):
 
 $$r_\text{overlap} \approx 8.9 \times 10^{28}\,\text{m} \quad

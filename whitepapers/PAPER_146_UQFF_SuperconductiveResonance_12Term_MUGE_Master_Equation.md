@@ -185,7 +185,7 @@ $$
 Ug4i = \text{rho\_vac\_SCm} * (M_bh/d_g) * exp(-alpha*t) * cos(pi*t_n)
 $$
 
-where rho_{vac\_SCm} = 7.09e-37 kg/m^3, alpha=0.0005/day (=kappa), M_bh/d_g is the host SMBH
+where rho_{vac\_SCm} = 7.09e-37 J/m^{3}, alpha=0.0005/day (=kappa), M_bh/d_g is the host SMBH
 mass-distance ratio, and cos(pi*t_n) introduces the pi-cycle asymmetry that generates quasar jet
 time-reversal (PAPER_135, PAPER_149).
 
@@ -340,7 +340,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

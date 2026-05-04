@@ -158,7 +158,7 @@ mock-theta framework with the SCm phonon spectrum.
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
 | SCm completeness | $H_{\text{SCm}}$ | $\approx 0.99$ | Heaviside threshold |
 | SCm phonon frequency | $\omega_{\text{SCm}}$ | $2\pi \times 1.25\,\text{THz}$ | Phonon resonance |
-| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental |
+| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{J/m}^3$ | Fundamental |
 
 
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
@@ -224,7 +224,7 @@ Modified by the SCm buoyancy:
 
 $$R_{\text{bow}}^{\text{SCm}} = R_{\text{bow}} \cdot \left(1 + \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}}{\rho_{\text{ISM}} \cdot v_\star^2}\right)^{1/2}$$
 
-For $\rho_{\text{ISM}} = 1.7 \times 10^{-21}\ \text{kg/m}^3$ and $v_\star = 50\ \text{km/s}$:
+For $\rho_{\text{ISM}} = 1.7 \times 10^{-21}\ \text{J/m}^3$ and $v_\star = 50\ \text{km/s}$:
 
 $$\frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)}}{\rho_{\text{ISM}} v_\star^2} = \frac{1.03 \times 10^{-10}}{1.7 \times 10^{-21} \times 2.5 \times 10^9} \approx 2.4 \times 10^2$$
 

@@ -165,7 +165,7 @@ mock-theta framework with the SCm phonon spectrum.
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
 | SCm completeness | $H_{\text{SCm}}$ | $\approx 0.99$ | Heaviside threshold |
 | SCm phonon frequency | $\omega_{\text{SCm}}$ | $2\pi \times 1.25\,\text{THz}$ | Phonon resonance |
-| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental |
+| SCm vacuum density | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{J/m}^3$ | Fundamental |
 
 
 ## SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
@@ -229,7 +229,7 @@ The Jeans mass with SCm vacuum correction:
 
 $$M_J^{\text{SCm}} = M_J^{\text{SM}} \cdot \left(1 + \frac{\rho_{\text{vac,SCm}} \cdot S_{26}^{(3)} \cdot \Phi_{\text{res}}}{\rho_{\text{core}} \cdot c_s^2}\right)^{3/2}$$
 
-where $c_s$ is the sound speed in the core and $\rho_{\text{core}} \sim 10^{-16}\ \text{kg/m}^3$ is the prestellar core density.
+where $c_s$ is the sound speed in the core and $\rho_{\text{core}} \sim 10^{-16}\ \text{J/m}^3$ is the prestellar core density.
 
 The SCm correction factor:
 

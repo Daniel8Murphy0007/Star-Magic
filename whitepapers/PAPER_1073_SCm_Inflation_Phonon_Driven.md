@@ -199,9 +199,9 @@ mock-theta framework with the SCm phonon spectrum.
 | Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system |
 | SCm completeness | $H_{\text{SCm}}$ | $\approx 0.99$ | Heaviside threshold |
 | SCm phonon frequency | $\omega_{\text{SCm}}$ | $2\pi \times 1.25\,\text{THz}$ | Phonon resonance |
-| SCm vacuum density (present) | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental |
-| SCm vacuum density (GUT) | $\rho_{\text{SCm}}^{\text{GUT}}$ | $\sim 10^{76}\,\text{kg/m}^3$ | Inflation |
-| Exotic matter density | $(\rho+P)_{\text{exotic}}$ | $-1.75 \times 10^5\,\text{kg/m}^3$ | Wormhole throat |
+| SCm vacuum density (present) | $\rho_{\text{SCm}}$ | $7.09 \times 10^{-37}\,\text{J/m}^3$ | Fundamental |
+| SCm vacuum density (GUT) | $\rho_{\text{SCm}}^{\text{GUT}}$ | $\sim 10^{76}\,\text{J/m}^3$ | Inflation |
+| Exotic matter density | $(\rho+P)_{\text{exotic}}$ | $-1.75 \times 10^5\,\text{J/m}^3$ | Wormhole throat |
 | Phonon linewidth center | $\Gamma_0$ | $2\pi \times 0.1\,\text{THz}$ | Resonance |
 | Phonon linewidth sigma | $\sigma_\Gamma$ | $0.08 \times 2\pi \times 1\,\text{THz}$ | Resonance |
 | Neutron coupling | $F_n$ | $10^{-10}\,\text{N}$ | Nuclear |

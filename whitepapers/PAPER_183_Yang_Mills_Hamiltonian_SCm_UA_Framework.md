@@ -102,7 +102,7 @@ This identification implies the UQFF string nodes $j$ are the discrete gauge con
 ### 3.2 Mass Gap from SCm Condensate
 
 The SCm Hamiltonian $H_{\text{SCm}}$ provides a Higgs-like mass term. In the effective 4D field theory:
-$$m_{\text{gap}}^2 = 2\gamma \cdot \frac{H_{\text{SCm}}(0)}{v_{\text{SCm}}^2} = 2 \times 5 \times 10^{-5} \times \frac{4.37 \times 10^{30}}{(0.99c)^2} \approx 4.87 \times 10^{13}\ \text{kg/m}^3$$
+$$m_{\text{gap}}^2 = 2\gamma \cdot \frac{H_{\text{SCm}}(0)}{v_{\text{SCm}}^2} = 2 \times 5 \times 10^{-5} \times \frac{4.37 \times 10^{30}}{(0.99c)^2} \approx 4.87 \times 10^{13}\ \text{J/m}^3$$
 
 This positive definite mass gap satisfies the Yang-Mills existence and mass gap requirement at the
 classical level.
@@ -176,7 +176,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

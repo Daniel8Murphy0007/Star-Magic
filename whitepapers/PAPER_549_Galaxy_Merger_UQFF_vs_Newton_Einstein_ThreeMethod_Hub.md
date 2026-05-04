@@ -37,7 +37,7 @@ From the equilibrium condition $F_U = 0$ with DPM frequency drives resolved at t
 
 $$r_{\text{merger}} = \sqrt{\frac{\kappa \cdot |DPM_n - DPM_s|}{g \cdot \rho}}$$
 
-For canonical DPM coupling ($\kappa = 1$, $DPM_n = 1$, $DPM_s = -1$, $g = 10^{-3}$, $\rho = 10^{-10}\ \text{kg/m}^3$):
+For canonical DPM coupling ($\kappa = 1$, $DPM_n = 1$, $DPM_s = -1$, $g = 10^{-3}$, $\rho = 10^{-10}\ \text{J/m}^3$):
 
 $$r_{\text{merger}} = \sqrt{\frac{1 \cdot 2}{10^{-3} \cdot 10^{-10}}} = \sqrt{2 \times 10^{13}} \approx 4.47 \times 10^6\ \text{m}$$
 
@@ -196,7 +196,7 @@ $$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\tex
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
-- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{J/m}^3$ is the SCm vacuum density
 - $V$ is the effective buoyancy volume (accretion sphere)
 - $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
 - $r_H$ is the horizon radius

@@ -68,7 +68,7 @@ where $\text{Grind}_\text{opp} = \omega_{CW} SCm - \omega_{CCW} UA' e^{-\mathcal
 
 Parameters at atomic scale ($r = 1\times10^{-10}$ m, Bohr-like):
 
-$$\kappa = 10^{-5}, \quad \rho = 10^{-10}\ \text{kg/m}^3, \quad \omega \sim 10^{14}\ \text{rad/s}$$
+$$\kappa = 10^{-5}, \quad \rho = 10^{-10}\ \text{J/m}^3, \quad \omega \sim 10^{14}\ \text{rad/s}$$
 $$\mathcal{H} = 10^{10}, \quad v_\text{init} = 3\times10^8\ \text{m/s}, \quad \Delta = P/3 \approx 3.33\times10^{-6}$$
 
 $$\text{Grind}_\text{opp} \approx \omega_{CW} \cdot SCm \approx 10^{14}$$
