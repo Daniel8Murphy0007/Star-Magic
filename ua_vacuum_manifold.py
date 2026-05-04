@@ -3,7 +3,7 @@ ua_vacuum_manifold.py
 UA Vacuum Manifold — Layered DPM Superstructure
 
 ROLE IN DPM SYSTEM:
-  scm_vacuum_manifold.py  — BASE layer: primordial SCm vacuum (ρ_vac_SCm = 7.09e-37 kg/m³)
+  scm_vacuum_manifold.py  — BASE layer: primordial SCm vacuum (ρ_vac_SCm derived from Quantum Chain)
   ua_vacuum_manifold.py   — SUPERSTRUCTURE: 4-layer UA vacuum built on SCm
 
 The Di-Pseudo-Monopole (DPM) is the union of both:
@@ -13,7 +13,7 @@ The Di-Pseudo-Monopole (DPM) is the union of both:
   Grind_opp = ω_CW · SCm − ω_CCW · UA'
 
 UA LAYER HIERARCHY (canonical):
-  UA'    = ρ_vac_SCm                                                   (base)
+  UA'    = ρ_vac_SCm  [Quantum Chain: Σ(0.57·E_n), n=1..26]              (base)
   UA''   = ρ_vac_SCm · (1 + β_i · cos(π t_n))                        (first excited)
   UA'''  = ρ_vac_SCm · (1 + β_i · cos(π t_n) + λ_i · ω_s)           (second excited)
   UA'''' = ρ_vac_SCm · (1 + β_i · cos(π t_n) + λ_i · ω_s + Δ_UA4)  (third excited)
@@ -40,8 +40,6 @@ Compute functions unique to this module (not in scm_vacuum_manifold.py):
 Author: Daniel T. Murphy  |  Progress metric (validated core): 100%
 """
 
-from __future__ import annotations
-
 import math
 from typing import Dict, List, Optional, Tuple
 
@@ -49,19 +47,25 @@ import numpy as np
 import sympy as sp
 from scipy.integrate import odeint
 
-# ── Standalone UQFF canonical constants ─────────────────────────────────────
-# ua_vacuum_manifold.py and scm_vacuum_manifold.py are both STANDALONE modules.
-# Neither imports from the other.  Both are imported BY dpm_vacuum_manifold.py
-# which assembles the full DPM, computes Ugi, and scales to the periodic table.
-SSQ:         float = 0.57            # [SSq] calibration constant
-KAPPA:       float = 5.0e-4          # day^{-1}
-KAPPA_FLOAT: float = 5.0e-4          # explicit float alias
-RHO_VAC_SCM: float = 7.09e-37        # kg/m³  SCm vacuum density
-RHO_VAC_UA:  float = 7.09e-36        # kg/m³  UA  vacuum density  (= 10 × SCm)
-THZ_PHONON:  float = 1.25e12         # Hz     SCm phonon frequency
-BETA_I:      float = 0.6             # buoyancy coupling β_i
-LAMBDA_I:    float = 1.0             # manifold coupling λ_i
-OMEGA_S:     float = 2.5e-6          # rad/s  stellar angular frequency ω_s
+# ── Quantum Chain imports — SINGLE SOURCE OF TRUTH ───────────────────────────
+# ua_vacuum_manifold.py imports derive_from_quantum_chain() from scm_vacuum_manifold.
+# No vacuum density constants are defined here — all are derived from the
+# Quantum Chain summation: E_n = E0·10^n, ρ = Σ(f·E_n)/V  (UQFF_THEORY.md)
+from scm_vacuum_manifold import (
+    derive_from_quantum_chain,
+    THZ_PHONON,
+    BETA_I,
+    LAMBDA_I,
+    OMEGA_S,
+    KAPPA_FLOAT,
+    SSQ,
+)
+
+# ── Quantum Chain derived module-level constants ──────────────────────────────
+# Traceability: UQFF_THEORY.md ρ_vac equation — E_n = E0·10^n summation
+RHO_VAC_SCM: float = derive_from_quantum_chain()[0]            # J/m³  SCm vacuum energy density
+RHO_VAC_UA:  float = derive_from_quantum_chain(f_SCm=5.7)[0]  # J/m³  UA  vacuum energy density
+KAPPA:       float = KAPPA_FLOAT                               # day^{-1} alias
 
 # ─────────────────────────────────────────────────────────────────────────────
 # §1  MODULE-LEVEL CONSTANTS
