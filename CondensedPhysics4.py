@@ -232,6 +232,65 @@ except ImportError:
     def _scm_ads_cft_dual(): return {}
     def _scm_gw_metric_pert(f_gw=100.0, r_detector=3.086e22): return 0.0
 
+# ==================== UA VACUUM MANIFOLD IMPORTS [ua_vacuum_manifold.py] ====================
+try:
+    from ua_vacuum_manifold import (
+        ua_layer_density             as _ua_layer_density,
+        ua_dpm_total_density         as _ua_dpm_total_density,
+        ua_dpm_buoyancy_factor       as _ua_dpm_buoyancy_factor,
+        ua_calibration_ratio         as _ua_calibration_ratio,
+        DPM_DENSITY_RATIO            as _UA_DPM_DENSITY_RATIO,
+        E_PHONON                     as _UA_E_PHONON,
+        S26_3                        as _UA_S26_3,
+        PHI_RES                      as _UA_PHI_RES,
+        DELTA_UA_FOURTH              as _UA_DELTA_UA_FOURTH,
+        F_U_Bi_i_DPM                 as _ua_F_U_Bi_i_DPM,
+        ua_lenr_comparison           as _ua_lenr_comparison,
+        ua_casimir_comparison        as _ua_casimir_comparison,
+        ua_cosmological_acceleration as _ua_cosmo_accel,
+        ua_rotation_curve_flat       as _ua_rotation_curve,
+        ua_hubble_tension_modulation as _ua_hubble_tension,
+        ua_dark_energy_substitute    as _ua_dark_energy,
+    )
+    _UA_MANIFOLD_LOADED = True
+except ImportError:
+    _UA_MANIFOLD_LOADED = False
+    def _ua_layer_density(layer=1, t_n_val=0.0): return _RHO_VAC_SCM
+    def _ua_dpm_total_density(t_n_val=0.0): return 4 * _RHO_VAC_SCM
+    def _ua_dpm_buoyancy_factor(t_n_val=0.0): return 4.0
+    def _ua_calibration_ratio(): return 10.0
+    _UA_E_PHONON = 6.62607015e-34 * 1.25e12
+    _UA_S26_3 = 1.4531e26
+    _UA_PHI_RES = 0.84
+    _UA_DELTA_UA_FOURTH = 0.0
+    _UA_DPM_DENSITY_RATIO = 10.0
+    def _ua_F_U_Bi_i_DPM(t_n_val=0.0, **kw): return 0.0
+    def _ua_lenr_comparison(): return {}
+    def _ua_casimir_comparison(): return {}
+    def _ua_cosmo_accel(z=0.0): return 0.0
+    def _ua_rotation_curve(r=1e20, v0=220e3): return v0
+    def _ua_hubble_tension(t=0.0): return 0.0
+    def _ua_dark_energy(t_n_val=0.5): return 0.0
+# ==================== DPM VACUUM MANIFOLD IMPORTS [dpm_vacuum_manifold.py] ====================
+try:
+    from dpm_vacuum_manifold import (
+        PERIODIC_TABLE    as _DPM_PERIODIC_TABLE,
+        ELEMENT           as _DPM_ELEMENT,
+        E_CRACK           as _DPM_E_CRACK,
+        M_0_DPM           as _DPM_M0,
+        DPMBody           as _DPMBody,
+        DPM_DENSITY_RATIO as _DPM_DENSITY_RATIO,
+    )
+    _DPM_MANIFOLD_LOADED = True
+except ImportError:
+    _DPM_MANIFOLD_LOADED = False
+    _DPM_PERIODIC_TABLE = []
+    _DPM_ELEMENT = {}
+    _DPM_E_CRACK = float(_RHO_VAC_SCM * (2.99792458e8) ** 2) / 0.57
+    _DPM_M0 = _DPM_E_CRACK / (2.99792458e8) ** 2
+    _DPMBody = None
+    _DPM_DENSITY_RATIO = 10.0
+
 # ---------------------------------------------------------------------------
 # UQFF PHASE-4 CONSTANTS (canonical, matching CP3)
 # ---------------------------------------------------------------------------
@@ -10581,7 +10640,7 @@ class SimultaneousMultiMethodEquivalenceHubCalculator(_CP4Calculator):
         P      = _s145_p_order()
         lam12  = P / 3.0
         lam3   = 2.0 * P / 3.0
-        ?      = lam12
+        lam      = lam12
 
         Ug4_BH = _S145_G_S145 * M_BH * self.SCm_INF / (r**2 * self.UA_VAL)
 
@@ -10595,7 +10654,7 @@ class SimultaneousMultiMethodEquivalenceHubCalculator(_CP4Calculator):
             "#136_DPM_Proplyd":  "Encompassment; emergence=18.32%; split-monopole",
             "#137_UQFF_OffDiag": f"4-tel pass; US_orb~1.80e31 Hz; size=375.87 AU",
             "#138_NS_Hyp":       f"?12={lam12:.2e}; no blow-up; u_bound={v_orb:.0f} m/s",
-            "#139_YM_DPM":       f"?={?:.2e}>0; p_special=113; VDS_Z26={_S145_Z26_S145:.4f}",
+            "#139_YM_DPM":       f"?={lam:.2e}>0; p_special=113; VDS_Z26={_S145_Z26_S145:.4f}",
             "#140_Hub":          f"Newton_merge={newton_ok}; Ug4_BH={Ug4_BH:.3e}",
         }
 
@@ -10606,7 +10665,7 @@ class SimultaneousMultiMethodEquivalenceHubCalculator(_CP4Calculator):
                 f"Ug4_BH = GM_BH�SCm/(r��UA) = {Ug4_BH:.3e}",
                 f"n_cross = ?p/(1-[SSq])? = {n_cross}  (3D-IPO crossings)",
                 f"r_overlap = v(GMm/Ub) = {r_over:.3e} m  (attraction=buoyancy)",
-                f"YM ? = P/3 = {?:.3e} > 0  (mass gap positive)",
+                f"YM ? = P/3 = {lam:.3e} > 0  (mass gap positive)",
             ],
             "available_equations": [
                 "Inside/Outside tracks: Wolfram_prog(n) vs p�FUB_i(x) = Ricci(G)",
@@ -10625,7 +10684,7 @@ class SimultaneousMultiMethodEquivalenceHubCalculator(_CP4Calculator):
             "F_centrip_N":    F_centrip,
             "newton_merge":   newton_ok,
             "Ug4_BH":         Ug4_BH,
-            "YM_gap":         ?,
+            "YM_gap":         lam,
             "n_cross":        n_cross,
             "r_overlap_m":    r_over,
             "lambda12":       lam12,
@@ -11108,7 +11167,7 @@ class BSFGRiemannCurvatureAetherMetricCalculator(_CP4Calculator):
                 'metric':       'A_�? = diag(1+e, -1+e, -1+e, -1+e)',
                 'eps_field':    'e(r) = ?�Ts00(r)�cos(pt_n)',
                 'Ts00_radial':  'Ts00(r) = (Ms�c�+Ls/c�)/(4p�r�/3) + const',
-                'Christoffels': 'G?_{��} = -e'/(2A_rr),  G?_{ar} = e'/(2A_aa)',
+                'Christoffels': "G?_{��} = -e'/(2A_rr),  G?_{ar} = e'/(2A_aa)",
                 'Riemann':      'R^r_{0r0} � e?/2 = 6?�cos(pt_n)�C_num/r5',
                 'Ricci_scalar': 'R = R_00/A_00 + R_rr/A_rr',
             },
@@ -11195,8 +11254,10 @@ class BSFGGeodesicMetricCompatibilityCalculator(_CP4Calculator):
                 'torsion_free':  'T^?_{�?} = G^?_{�?} - G^?_{?�} = 0',
                 'compat':        '?_? A_{�?} = 0  ?  ?_r e = 2�G�_{0r}�A_{00}',
                 'geodesic_r':    'd�r/d?� + G?_{00}(dt/d?)� + G?_{rr}(dr/d?)� = 0',
-                'fifth_force':   '?g_r = e'(r)/2 = -3?�cos(pt_n)�C_num/(2r4)',
-                'v_orb_corr':    'v�_orbit = GM/r + r�c��e'/2',
+                'fifth_force':   "?g_r = e'(r)/2 = -3?�cos(pt_n)�C_num/(2r4)",
+
+                'v_orb_corr':    "v�_orbit = GM/r + r�c��e'/2",
+
             },
             'session': self.SESSION, 'papers': [self.PAPER],
         }
@@ -11367,7 +11428,7 @@ class BSFGSymmetryGroupIsometryAnalysisCalculator(_CP4Calculator):
                 'killing_eq':    '?_(� ?_?) = 0  ?  ?_(� ?_?) - G^a_{�?} ?_a = 0',
                 'time_killing':  '?^�=(1,0,0,0): ?_t A_{�?}=0 ? (Killing)',
                 'SO3_killing':   '3 angular Killings from A(r) spherical symmetry ?',
-                'broken_r':      '?^�=(0,1,0,0): ?_r A_{rr} = e' ? 0  (not Killing)',
+                'broken_r':      "?^�=(0,1,0,0): ?_r A_{rr} = e' ? 0  (not Killing)",
                 'full_group_26D': 'G = SO(3) � U(1)^{23}  ?  SO(3) � U(1)^{23}',
                 'dvp_link':      '26 generators = 13_{stable} + 13_{destructive}',
             },
@@ -11840,8 +11901,8 @@ class BSFGBohrSommerfeldAetherQuantizationCalculator(_CP4Calculator):
             'delta_n_BSFG':        delta_n,
             'equations': {
                 'potential':  'U_BSFG=-GM/r+?�c��C_num�cos(pt_n)/(2r�)',
-                'v_orbit':    'v�_orbit=GM/r+r�c��e'/2  (CP4 #150)',
-                'BS_ratio':   'dJ/J�r�c��e'/(2GM)=v�_aether/(2v�_newton)',
+                'v_orbit':    "v�_orbit=GM/r+r�c��e'/2  (CP4 #150)",
+                'BS_ratio':   "dJ/J�r�c��e'/(2GM)=v�_aether/(2v�_newton)",
                 'crossover':  'r_cross=(?�c�|cos|C_num/GM)^{1/2}',
                 'h_eta':      'h_?=?�h_Planck  (Aether-action quantum)',
                 'quantum_n':  'dn=(dJ/J)�n_Kepler',

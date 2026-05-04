@@ -137,6 +137,65 @@ except ImportError:
     ads_cft_scm_dual = lambda: {}
     def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22): return 0.0
 
+# ==================== UA VACUUM MANIFOLD IMPORTS [ua_vacuum_manifold.py] ====================
+try:
+    from ua_vacuum_manifold import (
+        ua_layer_density             as _ua_layer_density,
+        ua_dpm_total_density         as _ua_dpm_total_density,
+        ua_dpm_buoyancy_factor       as _ua_dpm_buoyancy_factor,
+        ua_calibration_ratio         as _ua_calibration_ratio,
+        DPM_DENSITY_RATIO            as _UA_DPM_DENSITY_RATIO,
+        E_PHONON                     as _UA_E_PHONON,
+        S26_3                        as _UA_S26_3,
+        PHI_RES                      as _UA_PHI_RES,
+        DELTA_UA_FOURTH              as _UA_DELTA_UA_FOURTH,
+        F_U_Bi_i_DPM                 as _ua_F_U_Bi_i_DPM,
+        ua_lenr_comparison           as _ua_lenr_comparison,
+        ua_casimir_comparison        as _ua_casimir_comparison,
+        ua_cosmological_acceleration as _ua_cosmo_accel,
+        ua_rotation_curve_flat       as _ua_rotation_curve,
+        ua_hubble_tension_modulation as _ua_hubble_tension,
+        ua_dark_energy_substitute    as _ua_dark_energy,
+    )
+    _UA_MANIFOLD_LOADED = True
+except ImportError:
+    _UA_MANIFOLD_LOADED = False
+    def _ua_layer_density(layer=1, t_n_val=0.0): return _RHO_VAC_SCM
+    def _ua_dpm_total_density(t_n_val=0.0): return 4 * _RHO_VAC_SCM
+    def _ua_dpm_buoyancy_factor(t_n_val=0.0): return 4.0
+    def _ua_calibration_ratio(): return 10.0
+    _UA_E_PHONON = 6.62607015e-34 * 1.25e12
+    _UA_S26_3 = 1.4531e26
+    _UA_PHI_RES = 0.84
+    _UA_DELTA_UA_FOURTH = 0.0
+    _UA_DPM_DENSITY_RATIO = 10.0
+    def _ua_F_U_Bi_i_DPM(t_n_val=0.0, **kw): return 0.0
+    def _ua_lenr_comparison(): return {}
+    def _ua_casimir_comparison(): return {}
+    def _ua_cosmo_accel(z=0.0): return 0.0
+    def _ua_rotation_curve(r=1e20, v0=220e3): return v0
+    def _ua_hubble_tension(t=0.0): return 0.0
+    def _ua_dark_energy(t_n_val=0.5): return 0.0
+# ==================== DPM VACUUM MANIFOLD IMPORTS [dpm_vacuum_manifold.py] ====================
+try:
+    from dpm_vacuum_manifold import (
+        PERIODIC_TABLE    as _DPM_PERIODIC_TABLE,
+        ELEMENT           as _DPM_ELEMENT,
+        E_CRACK           as _DPM_E_CRACK,
+        M_0_DPM           as _DPM_M0,
+        DPMBody           as _DPMBody,
+        DPM_DENSITY_RATIO as _DPM_DENSITY_RATIO,
+    )
+    _DPM_MANIFOLD_LOADED = True
+except ImportError:
+    _DPM_MANIFOLD_LOADED = False
+    _DPM_PERIODIC_TABLE = []
+    _DPM_ELEMENT = {}
+    _DPM_E_CRACK = float(_RHO_VAC_SCM * (2.99792458e8) ** 2) / 0.57
+    _DPM_M0 = _DPM_E_CRACK / (2.99792458e8) ** 2
+    _DPMBody = None
+    _DPM_DENSITY_RATIO = 10.0
+
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]
 def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
