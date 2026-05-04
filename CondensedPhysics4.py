@@ -3,14 +3,9 @@
 # Vacuum density is emergent energy density J/m³, NOT kg/m³.
 # SCm and UA are MASSLESS geometric substrates derived from 26-level H-atom geometry.
 # All functions that use _RHO_VAC_SCM / _RHO_VAC_UA are automatically correct.
-try:
-    from scm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
-    _RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
-    _RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
-except ImportError:
-    # Fallback: canonical numeric values if scm_vacuum_manifold not on path
-    _RHO_VAC_SCM = 6.333333e+05   # J/m³ — SCm vacuum energy density (Quantum Chain)
-    _RHO_VAC_UA  = 6.333333e+06   # J/m³ — UA  vacuum energy density (Quantum Chain)
+from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
+_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
+_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
 # ─────────────────────────────────────────────────────────────────────────────
 
 CondensedPhysics4.py � UQFF Phase 4 Physics Calculator
@@ -163,133 +158,69 @@ except ImportError:
     _CP3_LOADED = False
 
 # ---------------------------------------------------------------------------
-# SCm VACUUM MANIFOLD MODULE (scm_vacuum_manifold.py � clean 27FEB2026_A.docx thread)
-# Provides: SSQ, KAPPA, RHO_VAC_SCM, THZ_PHONON, NEG_TIME_RANGE,
-#           compute_F_U_Bi_i_numerical(), vds_numerical(), export_all_to_latex()
+# SCm VACUUM MANIFOLD IMPORTS (from dpm_vacuum_manifold, consolidated)
 # ---------------------------------------------------------------------------
-try:
-    from scm_vacuum_manifold import (
-        SSQ          as _SCM_SSQ,           # [SSq] = 0.57
-        KAPPA        as _SCM_KAPPA,         # ? = 5.0 � 10^{-4} day^{-1}
-        RHO_VAC_SCM  as _SCM_RHO_VAC,      # _RHO_VAC_SCM kg/m� vacuum manifold baseline
-        THZ_PHONON   as _SCM_THz,          # 1.25 THz Gaussian phonon activation
-        E_phonon     as _SCM_E_PHONON,     # h * f_THz [J]  � new module-level const
-        S26_3        as _SCM_S26_3,        # 1.4531e26 Ramanujan amplification
-        Phi_resonance as _SCM_PHI_RES,     # 0.84 on-resonance Gaussian factor
-        KER_SCm      as _SCM_KER_SCm,      # E_phonon * S26_3 * Phi_resonance [J]
-        scaling_factor as _SCM_SCALING,     # exact 630 eV normalizer
-        KAPPA_FLOAT  as _SCM_KAPPA_FLOAT,   # float(KAPPA) = 0.0005
-        compute_F_U_Bi_i_numerical as _scm_F_U_Bi_i_num,
-        monte_carlo_fubi_i         as _scm_monte_carlo_fubi_i,
-        vds_numerical              as _scm_vds_num,
-        export_all_to_latex        as _scm_export_latex,
-        parkhomov_excess_heat       as _scm_parkhomov,      # Ni-H excess heat [kW]
-        pons_fleischmann_excess_heat as _scm_pons_fleischmann, # Pd-D excess heat [kW]
-        F_TRZ                       as _SCM_F_TRZ,
-        coleman_guillespie_scm      as _scm_coleman_guillespie,
-        neutrino_oscillation_prob_lenr as _scm_neutrino_osc,
-        quark_production_prob_ui    as _scm_quark_prod,
-        mckubre_lenr                as _scm_mckubre,
-        s26_3_from_vds              as _scm_s26_3_from_vds,
-        qgp_energy_density_scm      as _scm_qgp_energy_density,
-        strange_quark_matter_density as _scm_sqm_density,
-        mit_bag_scm                 as _scm_mit_bag,
-        ads_cft_scm_dual            as _scm_ads_cft_dual,
-        scm_gw_metric_perturbation  as _scm_gw_metric_pert,
-    )
-    _SCM_MANIFOLD_LOADED = True
-except ImportError:
-    _SCM_MANIFOLD_LOADED = False
-    _SCM_SSQ      = 0.57
-    _SCM_KAPPA    = 5.0e-4
-    _SCM_RHO_VAC  = _RHO_VAC_SCM
-    _SCM_THz      = 1.25e12
-    _SCM_E_PHONON = 6.62607015e-34 * 1.25e12
-    _SCM_S26_3    = 1.4531e26
-    _SCM_PHI_RES  = 0.84
-    _SCM_KER_SCm  = _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES
-    _SCM_SCALING  = 630 * 1.60217662e-19 / (_SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES)  # exact 630 eV normalizer
-    _SCM_KAPPA_FLOAT = 0.0005  # float(KAPPA)
-    def _scm_F_U_Bi_i_num(**kw): return 0.0
-    def _scm_monte_carlo_fubi_i(n_samples=10000): return 0.0, 0.0, [0.0, 0.0]
-    def _scm_vds_num(terms=1000): return 0.0
-    def _scm_export_latex(): return {}
-    def _scm_parkhomov(N_clusters=2.0e18, t_hours=1.0):
-        import math as _m_pk
-        _energy_per_cluster_j = 630 * 1.60217662e-19
-        return N_clusters * _energy_per_cluster_j * _m_pk.exp(-5e-4 * t_hours * 24) / 1e3
-    def _scm_pons_fleischmann(PdD_loading=0.9, volume=1e-6):
-        return PdD_loading * volume * _SCM_E_PHONON * _SCM_S26_3 * _SCM_PHI_RES * 0.001 * 1e6 / 1e3
-    _SCM_F_TRZ = 0.1
-    def _scm_coleman_guillespie(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12): return 0.0
-    def _scm_neutrino_osc(t_n=-100.0): return 0.0
-    def _scm_quark_prod(t_n=-100.0, Gamma=1.0e12): return 0.0
-    def _scm_mckubre(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
-    _scm_s26_3_from_vds = lambda: 1.4531e26
-    def _scm_qgp_energy_density(T_plasma=1.0e11): return 0.0
-    def _scm_sqm_density(): return (1.0e18, 0.0)
-    def _scm_mit_bag(): return 0.0
-    def _scm_ads_cft_dual(): return {}
-    def _scm_gw_metric_pert(f_gw=100.0, r_detector=3.086e22): return 0.0
+from dpm_vacuum_manifold import (
+    SSQ          as _SCM_SSQ,
+    KAPPA        as _SCM_KAPPA,
+    RHO_VAC_SCM  as _SCM_RHO_VAC,
+    THZ_PHONON   as _SCM_THz,
+    E_phonon     as _SCM_E_PHONON,
+    S26_3        as _SCM_S26_3,
+    Phi_resonance as _SCM_PHI_RES,
+    KER_SCm      as _SCM_KER_SCm,
+    scaling_factor as _SCM_SCALING,
+    KAPPA_FLOAT  as _SCM_KAPPA_FLOAT,
+    compute_F_U_Bi_i_numerical as _scm_F_U_Bi_i_num,
+    monte_carlo_fubi_i         as _scm_monte_carlo_fubi_i,
+    vds_numerical              as _scm_vds_num,
+    export_all_to_latex        as _scm_export_latex,
+    parkhomov_excess_heat       as _scm_parkhomov,
+    pons_fleischmann_excess_heat as _scm_pons_fleischmann,
+    F_TRZ                       as _SCM_F_TRZ,
+    coleman_guillespie_scm      as _scm_coleman_guillespie,
+    neutrino_oscillation_prob_lenr as _scm_neutrino_osc,
+    quark_production_prob_ui    as _scm_quark_prod,
+    mckubre_lenr                as _scm_mckubre,
+    s26_3_from_vds              as _scm_s26_3_from_vds,
+    qgp_energy_density_scm      as _scm_qgp_energy_density,
+    strange_quark_matter_density as _scm_sqm_density,
+    mit_bag_scm                 as _scm_mit_bag,
+    ads_cft_scm_dual            as _scm_ads_cft_dual,
+    scm_gw_metric_perturbation  as _scm_gw_metric_pert,
+)
+_SCM_MANIFOLD_LOADED = True
 
-# ==================== UA VACUUM MANIFOLD IMPORTS [ua_vacuum_manifold.py] ====================
-try:
-    from ua_vacuum_manifold import (
-        ua_layer_density             as _ua_layer_density,
-        ua_dpm_total_density         as _ua_dpm_total_density,
-        ua_dpm_buoyancy_factor       as _ua_dpm_buoyancy_factor,
-        ua_calibration_ratio         as _ua_calibration_ratio,
-        DPM_DENSITY_RATIO            as _UA_DPM_DENSITY_RATIO,
-        E_PHONON                     as _UA_E_PHONON,
-        S26_3                        as _UA_S26_3,
-        PHI_RES                      as _UA_PHI_RES,
-        DELTA_UA_FOURTH              as _UA_DELTA_UA_FOURTH,
-        F_U_Bi_i_DPM                 as _ua_F_U_Bi_i_DPM,
-        ua_lenr_comparison           as _ua_lenr_comparison,
-        ua_casimir_comparison        as _ua_casimir_comparison,
-        ua_cosmological_acceleration as _ua_cosmo_accel,
-        ua_rotation_curve_flat       as _ua_rotation_curve,
-        ua_hubble_tension_modulation as _ua_hubble_tension,
-        ua_dark_energy_substitute    as _ua_dark_energy,
-    )
-    _UA_MANIFOLD_LOADED = True
-except ImportError:
-    _UA_MANIFOLD_LOADED = False
-    def _ua_layer_density(layer=1, t_n_val=0.0): return _RHO_VAC_SCM
-    def _ua_dpm_total_density(t_n_val=0.0): return 4 * _RHO_VAC_SCM
-    def _ua_dpm_buoyancy_factor(t_n_val=0.0): return 4.0
-    def _ua_calibration_ratio(): return 10.0
-    _UA_E_PHONON = 6.62607015e-34 * 1.25e12
-    _UA_S26_3 = 1.4531e26
-    _UA_PHI_RES = 0.84
-    _UA_DELTA_UA_FOURTH = 0.0
-    _UA_DPM_DENSITY_RATIO = 10.0
-    def _ua_F_U_Bi_i_DPM(t_n_val=0.0, **kw): return 0.0
-    def _ua_lenr_comparison(): return {}
-    def _ua_casimir_comparison(): return {}
-    def _ua_cosmo_accel(z=0.0): return 0.0
-    def _ua_rotation_curve(r=1e20, v0=220e3): return v0
-    def _ua_hubble_tension(t=0.0): return 0.0
-    def _ua_dark_energy(t_n_val=0.5): return 0.0
-# ==================== DPM VACUUM MANIFOLD IMPORTS [dpm_vacuum_manifold.py] ====================
-try:
-    from dpm_vacuum_manifold import (
-        PERIODIC_TABLE    as _DPM_PERIODIC_TABLE,
-        ELEMENT           as _DPM_ELEMENT,
-        E_CRACK           as _DPM_E_CRACK,
-        M_0_DPM           as _DPM_M0,
-        DPMBody           as _DPMBody,
-        DPM_DENSITY_RATIO as _DPM_DENSITY_RATIO,
-    )
-    _DPM_MANIFOLD_LOADED = True
-except ImportError:
-    _DPM_MANIFOLD_LOADED = False
-    _DPM_PERIODIC_TABLE = []
-    _DPM_ELEMENT = {}
-    _DPM_E_CRACK = float(_RHO_VAC_SCM * (2.99792458e8) ** 2) / 0.57
-    _DPM_M0 = _DPM_E_CRACK / (2.99792458e8) ** 2
-    _DPMBody = None
-    _DPM_DENSITY_RATIO = 10.0
+# ==================== UA VACUUM MANIFOLD IMPORTS (from dpm_vacuum_manifold) ====================
+from dpm_vacuum_manifold import (
+    ua_layer_density             as _ua_layer_density,
+    ua_dpm_total_density         as _ua_dpm_total_density,
+    ua_dpm_buoyancy_factor       as _ua_dpm_buoyancy_factor,
+    ua_calibration_ratio         as _ua_calibration_ratio,
+    DPM_DENSITY_RATIO            as _UA_DPM_DENSITY_RATIO,
+    E_PHONON                     as _UA_E_PHONON,
+    S26_3                        as _UA_S26_3,
+    PHI_RES                      as _UA_PHI_RES,
+    DELTA_UA_FOURTH              as _UA_DELTA_UA_FOURTH,
+    F_U_Bi_i_DPM                 as _ua_F_U_Bi_i_DPM,
+    ua_lenr_comparison           as _ua_lenr_comparison,
+    ua_casimir_comparison        as _ua_casimir_comparison,
+    ua_cosmological_acceleration as _ua_cosmo_accel,
+    ua_rotation_curve_flat       as _ua_rotation_curve,
+    ua_hubble_tension_modulation as _ua_hubble_tension,
+    ua_dark_energy_substitute    as _ua_dark_energy,
+)
+_UA_MANIFOLD_LOADED = True
+# ==================== DPM VACUUM MANIFOLD IMPORTS ====================
+from dpm_vacuum_manifold import (
+    PERIODIC_TABLE    as _DPM_PERIODIC_TABLE,
+    ELEMENT           as _DPM_ELEMENT,
+    E_CRACK           as _DPM_E_CRACK,
+    M_0_DPM           as _DPM_M0,
+    DPMBody           as _DPMBody,
+    DPM_DENSITY_RATIO as _DPM_DENSITY_RATIO,
+)
+_DPM_MANIFOLD_LOADED = True
 
 # ---------------------------------------------------------------------------
 # UQFF PHASE-4 CONSTANTS (canonical, matching CP3)
