@@ -37,7 +37,7 @@ T/2, T/4, etc., testable with ASKAP/MeerKAT long-dwell monitoring.
 
 ### 2.1 [SSq]-Modulated Burst Intensity
 
-$$I_{\mathrm{burst}}(n, t) = I_0 \cdot \exp!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos!\left(\frac{2\pi t}{T}\right)$$
+$$I_{\mathrm{burst}}(n, t) = I_0 \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos!\left(\frac{2\pi t}{T}\right)$$
 
 where:
 - n = harmonic channel index (1 to 26)
@@ -53,7 +53,7 @@ $$F_{U\_Bi\_i} \approx -2.09 \times 10^{212}\ \mathrm{N}$$
 ### 2.3 Harmonic Overtone Prediction
 
 The cosine burst form implies discrete harmonics:
-$$I_k = I_0 \cdot \exp!\left(-\frac{[SSq] k}{26}\right) \cdot \cos!\left(\frac{2\pi k t}{T}\right), \quad k = 1, 2, 3, \ldots$$
+$$I_k = I_0 \cdot \exp\!\left(-\frac{[SSq] k}{26}\right) \cdot \cos!\left(\frac{2\pi k t}{T}\right), \quad k = 1, 2, 3, \ldots$$
 
 The $k$-th harmonic is suppressed by exp(-0.57k/26) relative to the fundamental.
 
@@ -73,7 +73,7 @@ periods.
 
 Define the ULPT resonance-sector action:
 
-$$S[\phi_{\mathrm{burst}}] = \int_0^T \sum_{n=1}^{26} \left[ I_0 \cdot \exp!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos!\left(\frac{2\pi t}{T}\right) \cdot \phi_{\mathrm{burst}}(n, t) \right] dn\, dt$$
+$$S[\phi_{\mathrm{burst}}] = \int_0^T \sum_{n=1}^{26} \left[ I_0 \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos!\left(\frac{2\pi t}{T}\right) \cdot \phi_{\mathrm{burst}}(n, t) \right] dn\, dt$$
 
 where:
 - $\phi_{\mathrm{burst}}(n, t)$ = burst resonance field variable coupling the [SSq] superposition factor to the 26-channel harmonic structure
@@ -85,21 +85,21 @@ where:
 
 Applying the variational principle $\delta S / \delta \phi_{\mathrm{burst}} = 0$:
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{burst}}} = [SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) + \frac{\partial}{\partial n}\left(\exp!\left(-\frac{[SSq] \cdot n}{26}\right)\right) = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{burst}}} = [SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) + \frac{\partial}{\partial n}\left(\exp\!\left(-\frac{[SSq] \cdot n}{26}\right)\right) = 0}$$
 
 ### 2A.3 Derivation Chain
 
 Evaluating the $n$-derivative of the exponential suppression:
 
-$$\frac{\partial}{\partial n}\left(\exp!\left(-\frac{[SSq] \cdot n}{26}\right)\right) = -\frac{[SSq]}{26} \cdot \exp!\left(-\frac{[SSq] \cdot n}{26}\right)$$
+$$\frac{\partial}{\partial n}\left(\exp\!\left(-\frac{[SSq] \cdot n}{26}\right)\right) = -\frac{[SSq]}{26} \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right)$$
 
 Substituting into the E-L equation:
 
-$$[SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) - \frac{[SSq]}{26} \cdot \exp!\left(-\frac{[SSq] \cdot n}{26}\right) = 0$$
+$$[SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) - \frac{[SSq]}{26} \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) = 0$$
 
 Dividing by $[SSq]/26$:
 
-$$n \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) = \exp!\left(-\frac{0.57 \cdot n}{26}\right)$$
+$$n \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) = \exp\!\left(-\frac{0.57 \cdot n}{26}\right)$$
 
 ### 2A.4 Harmonic Overtone Solutions
 
@@ -121,7 +121,7 @@ The E-L equation establishes that the [SSq]-modulated burst form is not merely a
 
 The VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 0.1$ at the ULPT compact object surface produces a near-threshold regime where $t \to \pi$ collapse governs the burst onset:
 
-$$I_{\mathrm{VDS}}(t) = I_0 \cdot \exp!\left(-\exp!\left(-\frac{t - t_{\pi}}{\tau_{\mathrm{VDS}}}\right)\right)$$
+$$I_{\mathrm{VDS}}(t) = I_0 \cdot \exp\!\left(-\exp\!\left(-\frac{t - t_{\pi}}{\tau_{\mathrm{VDS}}}\right)\right)$$
 
 The double-exponential VDS profile creates a sharp transition at $t = t_\pi$ (the $\pi$-collapse time), producing the characteristic rapid turn-on of ULPT bursts followed by gradual exponential decay. The VDS threshold explains why ULPT bursts are "on-off" rather than sinusoidal: the vacuum density undergoes a phase transition at each period.
 

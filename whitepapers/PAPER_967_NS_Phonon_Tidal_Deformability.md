@@ -35,7 +35,7 @@ $$\delta\Lambda_\text{phonon} = \frac{F_{UBi}}{F_U} \cdot \Phi_{1.25\text{THz}}(
 
 ## 2. Phonon Occupation
 
-$$\Phi_{1.25\text{THz}}(\omega, \Gamma) = \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
+$$\Phi_{1.25\text{THz}}(\omega, \Gamma) = \exp\!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
 
 ---
 

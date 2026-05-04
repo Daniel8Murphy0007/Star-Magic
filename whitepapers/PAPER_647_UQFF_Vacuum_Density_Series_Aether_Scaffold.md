@@ -105,7 +105,7 @@ black hole (Mbh = 8.15$\times$1036 kg) to the individual star across dg = 2.55$\
 $$U_{b1} = -\beta_i \cdot U_{g1} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1 + \epsilon_{sw} \cdot \rho_{\text{vac},sw}) \cdot U_{UA} \cdot \cos(\pi t_n)$$
 
 The solar wind vacuum density $\rho$vac,sw = 8$\times$10-21 J/m3 modulates buoyancy via the factor
-(1 + \epsilonsw$\cdot$$\rho$vac,sw) = 1 + 0.001$\cdot$8$\times$10-21 $\approx$ 1 (negligible 10-24 correction at t=0,
+(1 + \epsilon_{\rm sw}$\cdot$$\rho$vac,sw) = 1 + 0.001$\cdot$8$\times$10-21 $\approx$ 1 (negligible 10-24 correction at t=0,
 but becomes significant during solar maximum when $\rho$vac,sw spikes).
 
 ---
@@ -212,7 +212,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

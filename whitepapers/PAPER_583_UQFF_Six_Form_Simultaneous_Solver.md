@@ -122,7 +122,7 @@ reactive shell energies.
 
 ## §8 Form 6 --- F_{U\_Bi\_i} (Gaussian, BH26-Anchored)
 
-$$F_{U,Bi,i}(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right] \cdot F_U$$
+$$F_{U,Bi,i}(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right] \cdot F_U$$
 
 BH26 parameters: $\mu = 92\text{ GHz}$ (bin 1 buoyancy harmonic), $\sigma = 10^{16}\text{ Hz}$
 (26-shell spectral width). At the centroid $x = \mu$: $F_{U,Bi,i} = F_U / \sqrt{2\pi\sigma^2}$.
@@ -290,7 +290,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.100$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

@@ -351,7 +351,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.166$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -432,7 +432,7 @@ $$F_{\mathrm{neutron}} = k_{\mathrm{neutron}} \times \sigma_n = 10^{10} \times 1
 The SCm superconductive manifold modulates the cross-section via VDS 26-level
 enhancement:
 
-$$\sigma_n^{\mathrm{SCm}}(\omega, n) = \sigma_0 \cdot \exp!\left[-\frac{(\omega - \omega_{\mathrm{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + \frac{[\text{SSq}] \cdot n}{26}\right)$$
+$$\sigma_n^{\mathrm{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\mathrm{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + \frac{[\text{SSq}] \cdot n}{26}\right)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
@@ -473,7 +473,7 @@ spectrum, producing ~470x amplification relative to decoupled models.
 
 ### K.5 SCm Activation Function
 
-$$A_{\mathrm{SCm}}(B) = \exp!\left[-\frac{B^2}{B_{\mathrm{crit}}^2}\right], \quad B_{\mathrm{crit}} = 4.4 \times 10^{13} \;\text{T}$$
+$$A_{\mathrm{SCm}}(B) = \exp\!\left[-\frac{B^2}{B_{\mathrm{crit}}^2}\right], \quad B_{\mathrm{crit}} = 4.4 \times 10^{13} \;\text{T}$$
 
 The Gaussian activation (from `scm_{activation\_function}.py`) governs the transition
 probability for the neutron-drop mechanism as a function of ambient magnetic field.

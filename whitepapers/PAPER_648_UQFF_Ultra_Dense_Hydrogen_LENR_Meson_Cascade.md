@@ -24,7 +24,7 @@ Bridge)
 
 ## Abstract
 
-$$E_{\text{LENR}} = m_e c^2 \cdot e^{-26}; \quad \text{Rate} = f \cdot \exp!\left[-\frac{\text{barrier} \cdot d}{\hbar v}\right]$$
+$$E_{\text{LENR}} = m_e c^2 \cdot e^{-26}; \quad \text{Rate} = f \cdot \exp\!\left[-\frac{\text{barrier} \cdot d}{\hbar v}\right]$$
 
 The AVS62 module presents a complete LENR (Low-Energy Nuclear Reactions) framework
 centered on ultra-dense hydrogen D(-1) — Rydberg matter in the deepest excitation state
@@ -72,7 +72,7 @@ and Rydberg D(-1) accesses the 26th energy minimum of the vacuum density well.
 
 ### 2.1 Equation
 
-$$\Gamma = f \cdot \exp!\left[-\frac{\text{barrier\_height} \times d}{\hbar v}\right]$$
+$$\Gamma = f \cdot \exp\!\left[-\frac{\text{barrier\_height} \times d}{\hbar v}\right]$$
 
 **Parameters (D(-1) conditions):**
 | Parameter | Value |
@@ -143,7 +143,7 @@ matches [SCm] permeability threshold
 threshold, enabling LENR at stellar interior conditions
 
 The Gamow tunneling rate in UQFF becomes:
-$$\Gamma_{\text{UQFF}} = f \cdot \exp!\left[-\frac{E_{\text{barrier}}}{k_\eta \cdot \rho_{\text{vac},[SCm]} \cdot c^2}\right]$$
+$$\Gamma_{\text{UQFF}} = f \cdot \exp\!\left[-\frac{E_{\text{barrier}}}{k_\eta \cdot \rho_{\text{vac},[SCm]} \cdot c^2}\right]$$
 
 where $k_{\eta}$ = 10-113 as the Boltzmann tunneling factor, providing the scale suppression
 that determines terrestrial vs. stellar LENR activation thresholds.
@@ -290,7 +290,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.069$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

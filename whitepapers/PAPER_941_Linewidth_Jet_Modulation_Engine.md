@@ -29,7 +29,7 @@ We present a systematic linewidth-to-jet modulation mapping engine that sweeps $
 
 ## 1. Core Equations
 
-$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot \left(\frac{2F_{U\text{Bi}}}{F_U} - 1\right)$$
+$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp\!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot \left(\frac{2F_{U\text{Bi}}}{F_U} - 1\right)$$
 
 $$Q = \frac{\omega_text{SCm}}{2\Gamma}$$
 

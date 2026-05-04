@@ -80,7 +80,7 @@ requiring an external inflaton field.
 
 ### 3.1 Cosmic Egg Density Parameter ($\rho$_egg)
 
-$$\boxed{\rho_{egg} = \nu_{flux} \cdot \exp!\left(\frac{\Delta_{QVD}}{E_{SCm}}\right)}$$
+$$\boxed{\rho_{egg} = \nu_{flux} \cdot \exp\!\left(\frac{\Delta_{QVD}}{E_{SCm}}\right)}$$
 
 | Symbol | Meaning | Default Value | Units |
 |--------|---------|---------------|-------|
@@ -121,7 +121,7 @@ static constexpr double RHO_CRIT = 9.47e-27; // kg/m3
 double omega = rho_egg / RHO_CRIT;
 return std::min(omega, 0.2); // theoretical cap
 ### 3.3 Wolfram Folding Factor (F_Wolfram) 
-$$F_{Wolfram}(R_n) = \sum_{k=1}^{n_{eff}} \exp!\left(\frac{-E_{UQFF,k}}{kT}\right)$$ 
+$$F_{Wolfram}(R_n) = \sum_{k=1}^{n_{eff}} \exp\!\left(\frac{-E_{UQFF,k}}{kT}\right)$$ 
 Wolfram folds according to UQFF — **sequentially, not in parallel**. UQFF forces ($U_{g1}$–$U_{g4}$, $U_m$, $U_b$) act as **meta-rules** constraining which Wolfram rules are energetically accessible. SCm provides the "glue" that maintains stable folding paths. Branches $B_n$ are constrained: $B_n \leq B_{max}$ where $B_{max} \propto 1/U_b$. 
 | Symbol | Meaning | Default Value | Units | 
 |--------|---------|---------------|-------| 
@@ -197,7 +197,7 @@ $$v_{SCm} = \frac{\Delta_{QVD}}{\eta_{SCm}} \cdot \frac{\partial\rho_{vac}}{\par
 double base = (dQVD / eta_SCm) * grad_rho * g_Um;
 return base * (1.0 + B_Wolfram * rho_egg / D_26);
 ### 3.7 Modified Particle Horizon 
-$$\chi(t) = \int_0^t \frac{c}{a(t')} \exp!\left[-\frac{E_{pre} + E_{SCm} + E_{fold} + E_{egg}}{kT(t')}\right] dt'$$ 
+$$\chi(t) = \int_0^t \frac{c}{a(t')} \exp\!\left[-\frac{E_{pre} + E_{SCm} + E_{fold} + E_{egg}}{kT(t')}\right] dt'$$ 
 where the egg energy term integrates over the occupied hypervolume: 
 $$E_{egg} = \int_{vac} \rho_{egg} \cdot g_{UQFF}\, dV_{hyper}$$ 
 The exponential suppression means the particle horizon is **smaller** in the pre-fertilization
@@ -532,7 +532,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.145$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

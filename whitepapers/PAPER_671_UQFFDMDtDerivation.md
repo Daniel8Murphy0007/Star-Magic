@@ -38,10 +38,10 @@ Physical basis: negentropic restoring force suppresses pair production at horizo
 $$\left.\frac{dM}{dt}\right.'' = \left.\frac{dM}{dt}\right.' \cdot \frac{\rho_{SCm}}{\rho_{UA}}$$
 
 ## 4. UQFF Step 3 — U_m Anchor
-$$\frac{dM}{dt}\bigg|_{UQFF} = \left.\frac{dM}{dt}\right.'' \cdot \exp!\left(-\frac{U_m}{k_B T_H}\right)$$
+$$\frac{dM}{dt}\bigg|_{UQFF} = \left.\frac{dM}{dt}\right.'' \cdot \exp\!\left(-\frac{U_m}{k_B T_H}\right)$$
 
 ## 5. Combined Formula
-$$\frac{dM}{dt}\bigg|_{UQFF} = \frac{dM}{dt}\bigg|_{std} \cdot (1-f_{TRZ}) \cdot \frac{\rho_{SCm}}{\rho_{UA}} \cdot \exp!\left(-\frac{U_m}{k_B T_H}\right)$$
+$$\frac{dM}{dt}\bigg|_{UQFF} = \frac{dM}{dt}\bigg|_{std} \cdot (1-f_{TRZ}) \cdot \frac{\rho_{SCm}}{\rho_{UA}} \cdot \exp\!\left(-\frac{U_m}{k_B T_H}\right)$$
 
 Suppression factor: 0.9 $\times$ 0.1 $\times$ e-1 $\approx$ **0.033**  (evaporation ~30$\times$ slower).
 
@@ -133,7 +133,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.132$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

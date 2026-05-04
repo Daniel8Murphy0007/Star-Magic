@@ -30,7 +30,7 @@ framework.
 
 The BSFG geometry lives on a 26-dimensional manifold, but only 4 dimensions are directly accessible at macroscopic scales ($r \gg r_P$). This paper derives the full 26-dimensional line element of BSFG, introduces **factorial compactification** as the mechanism that makes 22 extra dimensions unobservable, and constructs the explicit 26$\to$3 projection operator $\Pi$. The compactification radius of the $i$-th extra dimension is:
 
-$$L_i(r) = r_P \cdot \exp!\left(-\frac{r^i}{i!\cdot r_P^{i-1}}\right)$$
+$$L_i(r) = r_P \cdot \exp\!\left(-\frac{r^i}{i!\cdot r_P^{i-1}}\right)$$
 
 At macroscopic $r \gg r_P$ and $i \geq 5$, all $L_i \to 0$ (complete compactification by the $i!$ factorial suppression). The factorial structure $i!$ is the same combinatorial structure that appears in the 26th-degree polynomial proof (PAPER_553), the buoyancy eigenvalue $1/26!$ (PAPER_551), and the number system DVP base $26!$ (PAPER_548), confirming BSFG as a coherent geometric architecture.
 
@@ -52,7 +52,7 @@ where $A_{\mu\nu}(r) = \mathrm{diag}(1+\varepsilon,\,-1+\varepsilon,\,-1+\vareps
 
 **Physical motivation:** The 26-layer framework computes the gravitational field as a 26th-order polynomial in $r$-derivatives (PAPER_551, PAPER_553), with each successive layer introducing one additional factorial factor $i!$ from the Taylor expansion of $e^{-z^2}$. Consistency requires that the geometric size of the $i$-th dimension scale as the inverse of the same factorial:
 
-$$L_i(r) = r_P \cdot \exp!\left(-\frac{r^i}{i!\cdot r_P^{i-1}}\right)$$
+$$L_i(r) = r_P \cdot \exp\!\left(-\frac{r^i}{i!\cdot r_P^{i-1}}\right)$$
 
 **Properties:**
 
@@ -247,7 +247,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.074$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

@@ -53,7 +53,7 @@ This represents the **second distinct UQFF approach** to the Yang-Mills mass gap
 
 ### 2.1 Master Formula
 
-$$\Delta m = \sqrt{\dot{\rho}_{\text{vac,UA}} \cdot \left(\frac{\rho_{\text{vac,SCm}}}{\rho_{\text{vac,UA}}}\right)^n \cdot \exp!\left(-\exp!\left(-\pi - \frac{t}{\text{year}}\right)\right)}$$
+$$\Delta m = \sqrt{\dot{\rho}_{\text{vac,UA}} \cdot \left(\frac{\rho_{\text{vac,SCm}}}{\rho_{\text{vac,UA}}}\right)^n \cdot \exp\!\left(-\exp\!\left(-\pi - \frac{t}{\text{year}}\right)\right)}$$
 
 Where:
 - $\Delta m$ = Yang-Mills mass gap (kg$\cdot$m-3)^{1/2} or normalized mass unit
@@ -71,10 +71,10 @@ Where:
 $$\dot{\rho}_{\text{vac,UA}} = \frac{d\rho_{\text{vac,UA}}}{dt}$$
 
 Using the calibrated UQFF decay law (PAPER_353):
-$$\rho_{\text{vac,UA}}(t) = \rho_{\text{vac,UA}}^{(0)} \cdot \exp!\left(-\exp!\left(-\kappa t\right)\right)$$
+$$\rho_{\text{vac,UA}}(t) = \rho_{\text{vac,UA}}^{(0)} \cdot \exp\!\left(-\exp\!\left(-\kappa t\right)\right)$$
 
 Taking the derivative:
-$$\dot{\rho}_{\text{vac,UA}} = \rho_{\text{vac,UA}}^{(0)} \cdot \kappa \cdot \exp!\left(-\kappa t\right) \cdot \exp!\left(-\exp!\left(-\kappa t\right)\right)$$
+$$\dot{\rho}_{\text{vac,UA}} = \rho_{\text{vac,UA}}^{(0)} \cdot \kappa \cdot \exp\!\left(-\kappa t\right) \cdot \exp\!\left(-\exp\!\left(-\kappa t\right)\right)$$
 
 #### Component 2: SCm/UA Density Ratio Power Law
 
@@ -93,7 +93,7 @@ consistent with Regge-trajectory-like mass gap scaling.
 
 #### Component 3: Double-Exponential Gumbel Suppression
 
-$$G(t) = \exp!\left(-\exp!\left(-\pi - \frac{t}{\text{year}}\right)\right)$$
+$$G(t) = \exp\!\left(-\exp\!\left(-\pi - \frac{t}{\text{year}}\right)\right)$$
 
 This is a **Gumbel/Gompertz** suppression function. Analysis:
 
@@ -307,7 +307,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.149$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

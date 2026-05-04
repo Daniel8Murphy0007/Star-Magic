@@ -39,14 +39,14 @@ singularity).
 
 ### 2.1 Double-Exponential Decay Rate
 
-$$\mathrm{Rate}(n, t) = \frac{\rho_{\mathrm{SCm}}}{\rho_{\mathrm{UA}}} \cdot \exp!\left(-\frac{[SSq] \cdot n}{26} \cdot \exp(-(\pi - t))\right)$$
+$$\mathrm{Rate}(n, t) = \frac{\rho_{\mathrm{SCm}}}{\rho_{\mathrm{UA}}} \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26} \cdot \exp(-(\pi - t))\right)$$
 
 ### 2.2 Near-Threshold Behavior
 
 As t $\to$ $\pi$ (oscillation phase approaches singularity):
 $$\exp(-(\pi - t)) \to \exp(0) = 1$$
 
-$$\mathrm{Rate}_{\mathrm{threshold}} = \frac{\rho_{\mathrm{SCm}}}{\rho_{\mathrm{UA}}} \cdot \exp!\left(-\frac{[SSq] \cdot n}{26}\right) = 0.1 \cdot e^{-0.57 n/26}$$
+$$\mathrm{Rate}_{\mathrm{threshold}} = \frac{\rho_{\mathrm{SCm}}}{\rho_{\mathrm{UA}}} \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) = 0.1 \cdot e^{-0.57 n/26}$$
 
 This is the standard [SSq]-compressed decay without the t-modulation — confirming the
 double-exponential reduces to single-[SSq] at threshold.
@@ -56,7 +56,7 @@ double-exponential reduces to single-[SSq] at threshold.
 For t « $\pi$:
 $$\exp(-(\pi - t)) \to e^{-\pi} \approx 0.0432$$
 
-$$\mathrm{Rate}_{\mathrm{standard}} = 0.1 \cdot \exp!\left(-\frac{0.57 n}{26} \times 0.0432\right) = 0.1 \cdot \exp!\left(-\frac{0.0247 n}{26}\right)$$
+$$\mathrm{Rate}_{\mathrm{standard}} = 0.1 \cdot \exp\!\left(-\frac{0.57 n}{26} \times 0.0432\right) = 0.1 \cdot \exp\!\left(-\frac{0.0247 n}{26}\right)$$
 
 Very slow decay — most channels maintain near-full rate far from threshold.
 
@@ -192,7 +192,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.160$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

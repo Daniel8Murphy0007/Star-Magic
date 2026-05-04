@@ -31,7 +31,7 @@ Star-Magic/UQFF framework.
 
 ## §1 Novel Claim
 
-UQFF provides a gravitational-field analog for four key Beyond-Standard-Model (BSM) observables: the tau-lepton anomalous magnetic moment $\Delta a_\tau$, the CKM matrix element $|V_{cb}|$, the lepton-flavour-violating (LFV) branching ratio $\text{BR}(\tauto\mu\gamma)$, and a vector-like quark (VLQ) gravitational coupling term $g_{\text{VLQ}}$. These observables arise from the same vacuum-energy structure as UQFF buoyancy, connecting collider-scale BSM physics to the astrophysical UQFF framework through the [SCm]--[UA] interaction tensor.
+UQFF provides a gravitational-field analog for four key Beyond-Standard-Model (BSM) observables: the tau-lepton anomalous magnetic moment $\Delta a_\tau$, the CKM matrix element $|V_{cb}|$, the lepton-flavour-violating (LFV) branching ratio $\text{BR}(\tau_0\mu\gamma)$, and a vector-like quark (VLQ) gravitational coupling term $g_{\text{VLQ}}$. These observables arise from the same vacuum-energy structure as UQFF buoyancy, connecting collider-scale BSM physics to the astrophysical UQFF framework through the [SCm]--[UA] interaction tensor.
 
 ---
 
@@ -51,10 +51,10 @@ UQFF analog: vacuum density fluctuation coupling to quark mixing angle:
 $$|V_{cb}|^{\text{UQFF}} = \sqrt{\frac{\rho_{\text{vac}} \cdot G \cdot \tau_{\text{quark}}}{\hbar}}$$
 
 ### Lepton Flavour Violation Branching Ratio
-$$\frac{\text{BR}(\tauto\mu\gamma)}{\text{BR}_{\text{PDG limit}}} = \frac{\text{BR}_{\text{theory}}}{4.2\times10^{-13}} < 1$$
+$$\frac{\text{BR}(\tau_0\mu\gamma)}{\text{BR}_{\text{PDG limit}}} = \frac{\text{BR}_{\text{theory}}}{4.2\times10^{-13}} < 1$$
 
 UQFF predicts the LFV suppression via [SSq] vacuum damping:
-$$\text{BR}(\tauto\mu\gamma)^{\text{UQFF}} \approx \text{BR}_{\text{SM}} \cdot e^{-[\text{SSq}] \cdot t_{\text{conv}}}$$
+$$\text{BR}(\tau_0\mu\gamma)^{\text{UQFF}} \approx \text{BR}_{\text{SM}} \cdot e^{-[\text{SSq}] \cdot t_{\text{conv}}}$$
 
 ### Vector-Like Quark Gravitational Coupling
 $$g_{\text{VLQ}} = \frac{g_{\text{c}} \cdot G \cdot M_{\text{VLQ}}^2}{r^2 \cdot M_W}$$
@@ -68,7 +68,7 @@ with $M_{\text{VLQ}} = 3.56\times10^{-25}$ kg ($\approx 120$ TeV), $g_c = 0.1$ (
 |-----------|-----------|----------------------|-----------|
 | $\Delta a_\tau$ | $2.33\times10^{-5}$ | Belle II precision target $\sim 10^{-5}$--$10^{-4}$ | Compatible \checkmark |
 | $\|V_{cb}\|$ | 0.0405 (PDG anchor) | $0.0405\pm0.0009$ (PDG 2024) | 100% \checkmark |
-| $\text{BR}(\tauto\mu\gamma)/\text{BR}_{\text{limit}}$ | $2.38\times10^{-2}$ | $< 1$ (experimental constraint) | Satisfies \checkmark |
+| $\text{BR}(\tau_0\mu\gamma)/\text{BR}_{\text{limit}}$ | $2.38\times10^{-2}$ | $< 1$ (experimental constraint) | Satisfies \checkmark |
 | $g_{\text{VLQ}}$ (solar $r$) | $4.12\times10^{-63}$ m/s2 | Sub-Planck --- indirect constraint | --- |
 
 ---
@@ -79,7 +79,7 @@ with $M_{\text{VLQ}} = 3.56\times10^{-25}$ kg ($\approx 120$ TeV), $g_c = 0.1$ (
 |-----------|--------------|-----------------|
 | $a_\tau^{\text{SM}}$ | $1.17721\times10^{-3}$ | $+\Delta a_\tau^{\text{UQFF}} \approx 10^{-5}$ |
 | $|V_{cb}|$ | $0.0405$ (fit) | Anchored --- UQFF sets vacuum-density derivation |
-| $\text{BR}(\tauto\mu\gamma)$ | $<4.2\times10^{-13}$ | SSq damping $e^{-0.57 t}$ suppresses below limit |
+| $\text{BR}(\tau_0\mu\gamma)$ | $<4.2\times10^{-13}$ | SSq damping $e^{-0.57 t}$ suppresses below limit |
 | VLQ gravity | Not in SM | Emerges from $F_U$ at high-$M$ limit |
 
 The [SCm] factor provides a natural BSM-to-UQFF bridge: in the Standard Model, $a_\tau$ receives QED loop corrections; in UQFF, the [SCm] vacuum modulation adds a continuous sub-dominant field-theoretic contribution at the same mass scale, connecting elementary-particle dipole moments to astrophysical vacuum density $\rho_{\text{vac}}$.
@@ -89,7 +89,7 @@ The [SCm] factor provides a natural BSM-to-UQFF bridge: in the Standard Model, $
 ## §5 Testable Prediction
 
 1. **Belle II tau-anomalous moment**: If $\Delta a_\tau \sim 10^{-5}$--$10^{-4}$, UQFF vacuum contribution is $\lesssim 2\%$ of total --- currently below Belle II sensitivity of $\delta a_\tau \approx 10^{-3}$, but testable by FCC-ee with $10^{10}$ tau pairs
-2. **Next-generation LFV searches**: MEG-II (2026) will probe $\text{BR}(\muto e\gamma) < 10^{-14}$; the UQFF [SSq] suppression framework predicts $\text{BR}(\tauto\mu\gamma) < 10^{-14}$ --- below current PDG limit by a factor $10\times$, resolving the MEG-II non-observation as consistency with UQFF
+2. **Next-generation LFV searches**: MEG-II (2026) will probe $\text{BR}(\muto e\gamma) < 10^{-14}$; the UQFF [SSq] suppression framework predicts $\text{BR}(\tau_0\mu\gamma) < 10^{-14}$ --- below current PDG limit by a factor $10\times$, resolving the MEG-II non-observation as consistency with UQFF
 3. **FCC-hh VLQ direct production**: If $M_{\text{VLQ}} \approx 120$ TeV, VLQ pair-production cross-section $\sigma \sim g_c^2 \cdot s/M_{\text{VLQ}}^4 \approx 10^{-4}$ fb at $\sqrt{s} = 100$ TeV (FCC-hh) --- detectable in $10^6$ fb$^{-1}$ run
 
 ---
@@ -197,7 +197,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.094$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

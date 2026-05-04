@@ -66,7 +66,7 @@ $$S_{UQFF}(f) = S_{GR}(f)\,[1 + P_{aether}(f)]\,F_{TRZ}(f)$$
 
 $$P_{aether}(f) = U_m \sum_n e^{-n/2}\,\delta(f - n f_U)\,W(\Delta f)$$
 
-$$F_{TRZ}(f) = 1 - 0.1\,\exp!\left[-\frac{(f-f_{TRZ})^2}{2\sigma_{TRZ}^2}\right]$$
+$$F_{TRZ}(f) = 1 - 0.1\,\exp\!\left[-\frac{(f-f_{TRZ})^2}{2\sigma_{TRZ}^2}\right]$$
 
 **Key numerical results:** U_m = 1.0e-4, f_U(harmonic 1) = 9.9e-1 mHz = 9.9e-4 Hz, Omega_GW ~
 1.0e-9, F_TRZ peak suppression = 1.0e-1 (10%)
@@ -274,7 +274,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.112$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

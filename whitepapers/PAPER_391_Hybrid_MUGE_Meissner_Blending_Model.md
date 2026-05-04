@@ -48,7 +48,7 @@ using the magnetic field strength as the blending parameter:
 
 $$g_{\text{hybrid}} = \beta \cdot g_{\text{compressed}} + (1-\beta) \cdot g_{\text{resonance}}$$
 
-$$\beta = \exp!\left(-\frac{B}{B_{\text{crit}}}\right)$$
+$$\beta = \exp\!\left(-\frac{B}{B_{\text{crit}}}\right)$$
 
 This is the first UQFF formula that **dynamically selects between operational modes**
 based on the physical magnetic field state of the system.
@@ -341,7 +341,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.103$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

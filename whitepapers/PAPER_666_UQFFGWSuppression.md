@@ -36,13 +36,13 @@ $$P_{GW} = \frac{32}{5}\frac{G^4}{c^5}\frac{m_1^2 m_2^2(m_1+m_2)}{r^5}$$
 $$S_{UA} = 1 - \frac{\rho_{UA}}{\rho_{crit}}$$
 
 ### S_SCm — Superconductive Damping
-$$S_{SCm} = \exp!\left(-\frac{\rho_{SCm}\, r_s}{k_B T_H}\right)$$
+$$S_{SCm} = \exp\!\left(-\frac{\rho_{SCm}\, r_s}{k_B T_H}\right)$$
 
 ### S_TRZ — Negentropic
 $$S_{TRZ} = 1 - f_{TRZ} = 0.9$$
 
 ### S_Um — String Impedance
-$$S_{U\_m} = \exp!\left(-\frac{U_m}{\omega_{GW}\, c}\right), \quad \omega_{GW} = c/r_s$$
+$$S_{U\_m} = \exp\!\left(-\frac{U_m}{\omega_{GW}\, c}\right), \quad \omega_{GW} = c/r_s$$
 
 ## 3. Modified GW Power
 $$P_{GW,UQFF} = P_{GW} \cdot S_{UA} \cdot S_{SCm} \cdot S_{TRZ} \cdot S_{U\_m}$$
@@ -201,7 +201,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.084$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

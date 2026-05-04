@@ -80,7 +80,7 @@ $$F_{\mathrm{shock}} = \frac{\rho_{\mathrm{post}} v_s^2}{r_{\mathrm{shock}}} \cd
 
 Smoothed continuous form (avoiding delta function in numerical code):
 
-$$F_{\mathrm{shock}} = \frac{\rho_{\mathrm{post}} v_s^2}{r} \cdot \exp!\left(-\frac{(r - r_{\mathrm{shock}})^2}{2\sigma_{\mathrm{shock}}^2}\right)$$
+$$F_{\mathrm{shock}} = \frac{\rho_{\mathrm{post}} v_s^2}{r} \cdot \exp\!\left(-\frac{(r - r_{\mathrm{shock}})^2}{2\sigma_{\mathrm{shock}}^2}\right)$$
 
 Registry canonical value:
 $$F_{\mathrm{shock}} = 1\times10^{-11}\ \mathrm{m}/s^2 \quad[\text{at }r = r_{\mathrm{shock}}]$$
@@ -273,7 +273,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.133$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

@@ -60,12 +60,12 @@ dust scattering dominant; UA/TRZ corrections advance the quantum-vacuum light pr
 The UQFF light echo model replaces the standard geometric echo formula with a Ug1-gravity-modulated
 dust density:
 
-$$I_{\mathrm{echo}}(r, t) = \frac{L_{\mathrm{outburst}}}{4\pi (c t)^2} \cdot \sigma_{\mathrm{scatter}} \cdot \rho_0 \cdot \exp!\left(-\beta \left[\mu_s(t,\rho_{\mathrm{vac}},[\mathrm{SCm}]) \cdot \nabla!\left(\frac{M_s}{ct}\right) e^{-\alpha t} \cos(\pi t_n)(1+\delta_{\mathrm{def}})\right]\right)$$
+$$I_{\mathrm{echo}}(r, t) = \frac{L_{\mathrm{outburst}}}{4\pi (c t)^2} \cdot \sigma_{\mathrm{scatter}} \cdot \rho_0 \cdot \exp\!\left(-\beta \left[\mu_s(t,\rho_{\mathrm{vac}},[\mathrm{SCm}]) \cdot \nabla!\left(\frac{M_s}{ct}\right) e^{-\alpha t} \cos(\pi t_n)(1+\delta_{\mathrm{def}})\right]\right)$$
 $$\times \left(1 + f_{\mathrm{TRZ}}\right) \times \left(1 + \rho_{\mathrm{vac}},[\mathrm{UA}'],[\mathrm{SCm}]\right)$$
 
 Where the Ug1 term modulates the dust density:
 
-$$\rho_{\mathrm{dust}}(r, t) = \rho_0 \cdot \exp!\left(-\beta \cdot U_{g1}(t,r)\right)$$
+$$\rho_{\mathrm{dust}}(r, t) = \rho_0 \cdot \exp\!\left(-\beta \cdot U_{g1}(t,r)\right)$$
 
 ### 2.3 Ug1 Gravitational Modulation of Dust
 
@@ -231,7 +231,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

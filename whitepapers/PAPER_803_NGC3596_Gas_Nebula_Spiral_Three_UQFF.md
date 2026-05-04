@@ -80,7 +80,7 @@ $$
   & \rho_vac,[UA] / \rho_vac,[SCm] = 7.09e-36 / 7.09e-37 = 10 \\
   & (UA' state is 10\times higher density than SCm state) \\
   & Buoyancy factor: \\
-  & f_Ub = k_Ub \cdot \Deltak_\eta \cdot (\rho_UA/\rho_SCm) \cdot (V_little/V_big) \\
+  & f_Ub = k_Ub \cdot \Delta k_\eta \cdot (\rho_UA/\rho_SCm) \cdot (V_little/V_big) \\
   & = 0.1 \times 7.25e8 \times 10 \times (1/33) \\
   & = 0.1 \times 7.25e8 \times 0.3030 \\
   & = 2.196\times107
@@ -267,7 +267,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.161$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

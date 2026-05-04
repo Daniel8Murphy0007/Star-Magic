@@ -41,7 +41,7 @@ heavy-ion collision multiplicities to vacuum-field harmonic structure.
 $$\frac{dN_{\mathrm{ch}}}{d\eta} = k_{\eta,18} \cdot \left(\frac{\sqrt{s}}{\mathrm{GeV}}\right)^{0.156} \cdot \rho_{\mathrm{ratio,18}}$$
 
 where:
-$$\rho_{\mathrm{ratio,18}} = \frac{\rho_{\mathrm{SCm}}}{\rho_{\mathrm{UA}}} \cdot \exp!\left(-\frac{[SSq] \times 18}{26}\right)$$
+$$\rho_{\mathrm{ratio,18}} = \frac{\rho_{\mathrm{SCm}}}{\rho_{\mathrm{UA}}} \cdot \exp\!\left(-\frac{[SSq] \times 18}{26}\right)$$
 
 ### 2.2 Vacuum Density Ratio at n=18
 
@@ -179,7 +179,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.127$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

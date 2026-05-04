@@ -33,7 +33,7 @@ $$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \Phi(\omega,\Gamma) \
 
 ## 2. Resonant Mode
 
-$$\Phi(\omega,\Gamma) = \Phi_0 \cdot \exp!\left(-\frac{(\omega-\omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
+$$\Phi(\omega,\Gamma) = \Phi_0 \cdot \exp\!\left(-\frac{(\omega-\omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
 
 ## 3. Buoyancy Mode
 

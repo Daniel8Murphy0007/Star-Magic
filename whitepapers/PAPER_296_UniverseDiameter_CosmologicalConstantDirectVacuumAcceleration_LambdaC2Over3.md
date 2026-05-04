@@ -26,7 +26,7 @@ System)
 ## Abstract
 
 The UQFF Observable Universe Diameter Module introduces, for the **first time** in the UQFF
-framework, an explicit cosmological constant term `a_\Lambda = \Lambdac2/3` as an independent gravitational
+framework, an explicit cosmological constant term `a_\Lambda = \Lambda_c2/3` as an independent gravitational
 acceleration contribution. In all 25 prior UQFF C++ modules, the cosmological constant $\Lambda$ appeared
 only implicitly through the Friedmann equation `H(z) = H₀√(\Omega_m(1+z)3 + \Omega_\Lambda)`. At the Observable
 Universe scale (r = 4.4$\times$1026 m), the direct dark-energy vacuum acceleration is `a_\Lambda = 3.30\times10-36
@@ -87,7 +87,7 @@ In all prior 25 UQFF modules, the cosmological constant appeared only through:
 $$H(z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_Lambda}$$
 where `\Omega_\Lambda = 0.7` absorbs $\Lambda$. This makes $\Lambda$ **degenerate** with $\Omega$_$\Lambda$ inside the square root.
 
-The explicit separation `a_\Lambda = \Lambdac2/3` is the **dark energy contribution to gravitational
+The explicit separation `a_\Lambda = \Lambda_c2/3` is the **dark energy contribution to gravitational
 acceleration** from the cosmological constant as an independent source term in Einstein's field
 equations:
 $$G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$$
@@ -95,8 +95,8 @@ $$G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$$
 The `\Lambdag_{\mu\nu}` term contributes directly to acceleration, which in the DPM-seeded limit gives:
 $$\ddot{r} = -\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} + \frac{\Lambda c^2}{3} r$$
 
-At the Universe boundary (r = r_obs), the dark energy repulsion is: `\Lambdac2r_obs/3 = 3.30\times10-36 \times
-4.4\times1026 = 1.45\times10-9 m/s2`. Wait — but we use the **spatially-averaged** value `\Lambdac2/3` for the
+At the Universe boundary (r = r_obs), the dark energy repulsion is: `\Lambda_c2r_obs/3 = 3.30\times10-36 \times
+4.4\times1026 = 1.45\times10-9 m/s2`. Wait — but we use the **spatially-averaged** value `\Lambda_c2/3` for the
 point-acceleration, not the radius-dependent form. This is the correct form at the cosmic scale for
 a uniformly distributed dark-energy background.
 
@@ -236,7 +236,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.090$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

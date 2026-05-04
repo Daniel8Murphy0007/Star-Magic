@@ -427,7 +427,7 @@ the double-exponential vacuum condensate profile:
 
 $$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}}
   \cdot \exp\!\left(-\exp\!\left(
-  -\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+  -\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.167$ (near-threshold regime),
 placing it in the $t \to \pi$ collapse zone where the double-exponential

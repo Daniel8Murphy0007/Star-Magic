@@ -245,7 +245,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.150$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
@@ -369,7 +369,7 @@ $$\frac{1}{\pi_{\mathrm{UQFF}}} = \frac{2\sqrt{2}}{9801} \cdot \frac{1}{C_{26}} 
 
 where the 26-state weight factor:
 
-$$W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}] \cdot \exp!\left(-\frac{\kappa, i\, n}{26}\right)\right]$$
+$$W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}] \cdot \exp\!\left(-\frac{\kappa, i\, n}{26}\right)\right]$$
 
 and C_26 = (1 + [SSq])^26 normalizes to recover classical Ramanujan at kappa = 0.
 

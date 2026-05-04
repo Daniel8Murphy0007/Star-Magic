@@ -122,7 +122,7 @@ $$\frac{\rho_{\mathrm{vac,[SCm]}}}{\rho_{\mathrm{UA}}} = 0.1$$
 
 drives a double-exponential decay of the vacuum condensate across the disruption zone:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_{\mathrm{tide}}}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_{\mathrm{tide}}}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 At the tidal radius $r = r_{\mathrm{tide}}$, the VDS is at near-threshold ($t \to \pi$ collapse), producing the sharp vacuum gradient that powers the Kozima LENR lattice coupling. This threshold behavior explains why TDE outflows are ultrafast: the VDS double-exponential creates a vacuum "cliff" at $r_{\mathrm{tide}}$ where nuclear-scale forces activate discontinuously.
 

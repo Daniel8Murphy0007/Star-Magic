@@ -36,10 +36,10 @@ $$g_{26} = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdo
 $$F_{UBi} = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot e^{-[SSq] \cdot i/26} \cdot \beta_i$$
 
 ### 1.3 Phonon Resonance
-$$\Phi = \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
+$$\Phi = \exp\!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
 
 ### 1.4 Jet Modulation
-$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \cdot \exp!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_Gamma^2}\right)$$
+$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \cdot \exp\!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_Gamma^2}\right)$$
 
 ## 2. Vectorized Total
 

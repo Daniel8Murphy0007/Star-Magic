@@ -117,7 +117,7 @@ $$F_{\text{UBii,LQC}} = F_{\text{rel}} \cdot \frac{E_{\text{Pl}}}{E_{\text{LEP}}
 
 ### 4.8 Big Bang Nucleosynthesis (BBN)
 
-$$F_{\text{UBii,BBN}} = F_{\text{rel}} \cdot \frac{E_{\text{nuc}}}{E_{\text{LEP}}} \cdot Q \cdot \exp!\left(-\frac{E_G}{k_B T_{\text{BBN}}}\right)$$
+$$F_{\text{UBii,BBN}} = F_{\text{rel}} \cdot \frac{E_{\text{nuc}}}{E_{\text{LEP}}} \cdot Q \cdot \exp\!\left(-\frac{E_G}{k_B T_{\text{BBN}}}\right)$$
 
 ### 4.9 Interstellar Medium (ISM)
 
@@ -273,7 +273,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.068$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

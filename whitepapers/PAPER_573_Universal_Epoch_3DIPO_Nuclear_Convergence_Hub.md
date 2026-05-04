@@ -45,13 +45,13 @@ formation regimes distinguished by n_cross complexity and P_order thresholds.
 
 **P_order nuclear stability threshold:**
 
-$$P_{\text{order}}(Z,A) = \frac{\exp!\left(-S/\nu_{\max}\right)}{Z}, \quad S = k_B Z, \quad \nu_{\max} = 10^{21}\,\text{Hz}$$
+$$P_{\text{order}}(Z,A) = \frac{\exp\!\left(-S/\nu_{\max}\right)}{Z}, \quad S = k_B Z, \quad \nu_{\max} = 10^{21}\,\text{Hz}$$
 
 $$\text{Stable nucleus} \iff P_{\text{order}} > 0.18$$
 
 **Convergence crossing (3D-IPO):**
 
-$$n_{\text{cross}} = \argmin_n \bigl| \underbrace{R(F_U(n)) + IG(n)}_{\text{Inside}} - \underbrace{\pi[n]\cdot F_{U,Bi\_i}}_{\text{Outside}} \bigr|$$
+$$n_{\text{cross}} = \operatorname{argmin}_n \bigl| \underbrace{R(F_U(n)) + IG(n)}_{\text{Inside}} - \underbrace{\pi[n]\cdot F_{U,Bi\_i}}_{\text{Outside}} \bigr|$$
 
 **Symbolic pyramid sum (degree-26 DPM):**
 
@@ -180,7 +180,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.110$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

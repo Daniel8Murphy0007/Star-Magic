@@ -214,7 +214,7 @@ $$g_{\mathrm{CP}}^{\mathrm{UQFF}} = \frac{\alpha_{\mathrm{EM}}}{4\pi} \times D_{
 
 This tiny effective H-$\gamma$-$\gamma$ CP coupling would manifest as an electric dipole moment of the
 Higgs-photon vertex, generating a forward-backward asymmetry in H$\to$$\gamma$$\gamma$ production:
-$$A_{\mathrm{CP}}^{H\gammagamma} = 2 \text{Re}(g_{\mathrm{CP}}^{\mathrm{UQFF}} / g_{\mathrm{SM}}^{H\gammagamma}) = 2 \times \frac{2.41 \times 10^{-5}}{6.49 \times 10^{-3}} = 7.4 \times 10^{-3}$$
+$$A_{\mathrm{CP}}^{H\gamma\gamma} = 2 \text{Re}(g_{\mathrm{CP}}^{\mathrm{UQFF}} / g_{\mathrm{SM}}^{H\gamma\gamma}) = 2 \times \frac{2.41 \times 10^{-5}}{6.49 \times 10^{-3}} = 7.4 \times 10^{-3}$$
 
 This 0.74% asymmetry in H$\to$$\gamma$$\gamma$ is below current ATLAS/CMS sensitivity (~5%) but reachable at HL-LHC
 with 3 ab-1.
@@ -482,7 +482,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

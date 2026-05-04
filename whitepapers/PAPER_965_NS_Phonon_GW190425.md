@@ -29,7 +29,7 @@ We derive neutron star phonon effects for GW190425 (mass-gap BNS merger). The UQ
 
 ## 1. Phonon-Corrected Strain
 
-$$h_\text{UQFF}(t) = h_\text{GR}(t) \cdot 0.5297 \cdot \exp!\left(\frac{[SSq] \cdot t}{26}\right)$$
+$$h_\text{UQFF}(t) = h_\text{GR}(t) \cdot 0.5297 \cdot \exp\!\left(\frac{[SSq] \cdot t}{26}\right)$$
 
 ## 2. Wavelength Correction
 

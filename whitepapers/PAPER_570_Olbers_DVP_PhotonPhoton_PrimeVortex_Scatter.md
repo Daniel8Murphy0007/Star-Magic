@@ -29,9 +29,9 @@ field equations and observational predictions within the Star-Magic/UQFF framewo
 
 ## §1 Abstract
 
-Beyond dust opacity, photons are attenuated by **photon-photon scattering** --- the Breit-Wheeler process $\gammagamma \to e^+e^-$ --- particularly for TeV photons from distant blazars. In the UQFF framework, this process is modulated by **Dipole Vortex Prime (DVP) vortex encompassments** at primes $p > 26$: each prime lattice point acts as a scattering centre with amplitude $A(p) \propto [\text{SSq}]^{\pi(p)} / p^{26}$. This paper derives the DVP-modulated mean free path $\ell_gamma\gamma$ and its contribution to Olbers suppression.
+Beyond dust opacity, photons are attenuated by **photon-photon scattering** --- the Breit-Wheeler process $\gamma\gamma \to e^+e^-$ --- particularly for TeV photons from distant blazars. In the UQFF framework, this process is modulated by **Dipole Vortex Prime (DVP) vortex encompassments** at primes $p > 26$: each prime lattice point acts as a scattering centre with amplitude $A(p) \propto [\text{SSq}]^{\pi(p)} / p^{26}$. This paper derives the DVP-modulated mean free path $\ell_gamma\gamma$ and its contribution to Olbers suppression.
 
-$$\ell_{\gammagamma}^\text{DVP}(p_\text{anchor}) = \frac{r_H}{\pi_text{count}} \cdot p_\text{anchor}^{26} \cdot [\text{SSq}]^{-\pi(p_\text{anchor})}$$
+$$\ell_{\gamma\gamma}^\text{DVP}(p_\text{anchor}) = \frac{r_H}{\pi_text{count}} \cdot p_\text{anchor}^{26} \cdot [\text{SSq}]^{-\pi(p_\text{anchor})}$$
 
 where $p_\text{anchor} = 113$ (H proto-shell prime).
 
@@ -39,7 +39,7 @@ where $p_\text{anchor} = 113$ (H proto-shell prime).
 
 ## §2 Breit-Wheeler Process
 
-The standard Breit-Wheeler $\gammagamma \to e^+e^-$ cross section:
+The standard Breit-Wheeler $\gamma\gamma \to e^+e^-$ cross section:
 
 $$\sigma_text{BW} = \pi r_e^2 (1-\beta^2) \left[ 2\beta(\beta^2-2) + (3-\beta^4)\ln\frac{1+\beta}{1-\beta} \right]$$
 
@@ -49,7 +49,7 @@ Near threshold ($E_\text{cm} \approx 2 m_e c^2$), $\sigma_text{BW} \approx 1.7 \
 
 TeV photon mean free path through CMB photons:
 
-$$\ell_{\gammagamma} = \frac{1}{n_\gamma \sigma_text{BW}} \approx \frac{1}{(4.1 \times 10^8)(1.7 \times 10^{-29})} \approx 1.4 \times 10^{20} \, \text{m} \approx 4.5 \, \text{Mpc}$$
+$$\ell_{\gamma\gamma} = \frac{1}{n_\gamma \sigma_text{BW}} \approx \frac{1}{(4.1 \times 10^8)(1.7 \times 10^{-29})} \approx 1.4 \times 10^{20} \, \text{m} \approx 4.5 \, \text{Mpc}$$
 
 ---
 
@@ -100,7 +100,7 @@ $$e^{-\tau_text{DVP}} \approx 1 - 10^{-60} \approx 1 \quad \text{(negligible)}$$
 
 For TeV gamma-rays ($E > 100$ GeV):
 
-$$e^{-\tau_text{DVP}} \approx e^{-n \Delta r / \ell_{\gammagamma}} \approx e^{-n/26 \times r_H / \ell_{\gammagamma}}$$
+$$e^{-\tau_text{DVP}} \approx e^{-n \Delta r / \ell_{\gamma\gamma}} \approx e^{-n/26 \times r_H / \ell_{\gamma\gamma}}$$
 
 $$= e^{-n/26 \times 4.4 \times 10^{26} / 1.4 \times 10^{20}} \approx e^{-n \times 1.2 \times 10^5}$$
 
@@ -123,7 +123,7 @@ TeV photons are completely absorbed after a single DVP lattice spacing --- this 
 
 ## §7 Testable Predictions
 
-1. **TeV absorption horizon:** UQFF predicts horizon at $\ell_{\gammagamma} \approx 1.4 \times 10^{20}$ m for TeV photons --- consistent with CTA/H.E.S.S. AGN attenuation measurements.
+1. **TeV absorption horizon:** UQFF predicts horizon at $\ell_{\gamma\gamma} \approx 1.4 \times 10^{20}$ m for TeV photons --- consistent with CTA/H.E.S.S. AGN attenuation measurements.
 2. **DVP resonance wavelength:** Anomalous absorption at $\lambda_{113}$ --- a unique prediction for future EBL spectrometers.
 3. **Optical regime:** DVP is negligible ($10^{-60}$) for optical photons --- UQFF predicts no DVP signature for SDSS EBL measurements.
 4. **Prime lattice spacing:** $\ell_text{DVP} = r_H / 149 \approx 2.95 \times 10^{24}$ m --- encoded in the prime counting function.
@@ -211,7 +211,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.057$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

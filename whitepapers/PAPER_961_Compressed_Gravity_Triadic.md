@@ -29,7 +29,7 @@ The Compressed Gravity Triadic mode modulates the buoyancy-to-gravity ratio $F_{
 
 ## 1. Compressed Gravity
 
-$$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot A_\text{jet}$$
+$$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \exp\!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot A_\text{jet}$$
 
 ## 2. Regime Map
 

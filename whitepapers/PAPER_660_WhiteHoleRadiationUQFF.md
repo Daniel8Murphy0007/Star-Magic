@@ -56,7 +56,7 @@ L_WH'' = L_WH' $\cdot$ ($\rho$_UA/$\rho$_SCm) $\approx$ L_WH' $\times$ 10
 L_WH,UQFF = L_WH'' $\cdot$ exp(U_m / k_B T_H)
 
 ### Step 6 — Full Formula
-$$L_{WH,UQFF} = \frac{\hbar c^6}{15360\pi G^2 M^2} \cdot (1 + f_{TRZ}) \cdot \frac{\rho_{UA}}{\rho_{SCm}} \cdot \exp!\left(\frac{U_m}{k_B T_H}\right)$$
+$$L_{WH,UQFF} = \frac{\hbar c^6}{15360\pi G^2 M^2} \cdot (1 + f_{TRZ}) \cdot \frac{\rho_{UA}}{\rho_{SCm}} \cdot \exp\!\left(\frac{U_m}{k_B T_H}\right)$$
 
 ## 3. Numerical Example
 For Sgr A* (M = 8.55$\times$1036 kg):
@@ -181,7 +181,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

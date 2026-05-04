@@ -82,7 +82,7 @@ For Sgr A*: T_H $\approx$ 1.44 $\times$ 10-14 K.
 
 The quantum flip probability (Boltzmann factor):
 
-$$P_{\mathrm{flip}} = \exp!\left(-\frac{E_{\mathrm{flip}}}{k_B T_H}\right)$$
+$$P_{\mathrm{flip}} = \exp\!\left(-\frac{E_{\mathrm{flip}}}{k_B T_H}\right)$$
 
 UQFF time-reversal boost: the f_TRZ negentropic factor provides a $\times$10 increase in the effective
 thermal contact:
@@ -109,7 +109,7 @@ harmonic mode of the buoyancy series.
 After the transition the white hole is inherently unstable ($\tau$_instab = r_s/c). The magnetic string
 field stabilises it:
 
-$$U_m(r,t) = \frac{\mu_j}{r}\left[1 - \exp!\left(-\gamma t \cos(\pi t_n)\right)\right]$$
+$$U_m(r,t) = \frac{\mu_j}{r}\left[1 - \exp\!\left(-\gamma t \cos(\pi t_n)\right)\right]$$
 
 where:
 - $\mu$_j = 3.38 $\times$ 1023 J/T — prime-ordered magnetic moment index j = 1 (DVP series)
@@ -118,7 +118,7 @@ where:
 
 The stabilised white hole lifetime:
 
-$$\tau_{\mathrm{WH}} = \tau_{\mathrm{instab}} \cdot \exp!\left(\frac{U_m}{k_B |T_{\mathrm{WH}}|}\right)$$
+$$\tau_{\mathrm{WH}} = \tau_{\mathrm{instab}} \cdot \exp\!\left(\frac{U_m}{k_B |T_{\mathrm{WH}}|}\right)$$
 
 where |T_WH| = T_H (Hawking temperature magnitude).
 
@@ -128,7 +128,7 @@ $$\boxed{\Theta_{\mathrm{trans}} = P_{\mathrm{trans}} \cdot \Phi_{\mathrm{trans}
 
 where:
 
-$$S_{U\_m} = \exp!\left(\frac{U_m(r_s, t)}{k_B T_H}\right)$$
+$$S_{U\_m} = \exp\!\left(\frac{U_m(r_s, t)}{k_B T_H}\right)$$
 
 **Transition condition:** If $\Theta$_trans > 1, the UQFF predicts white hole formation.
 
@@ -314,7 +314,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.091$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

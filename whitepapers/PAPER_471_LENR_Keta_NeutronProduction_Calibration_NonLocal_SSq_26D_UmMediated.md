@@ -56,7 +56,7 @@ agreement.
 
 The neutron production rate $\eta$ is:
 
-$$\eta(t, n) = K_\eta \cdot \exp!\left(-[\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi - t}\right) \cdot \frac{U_m(t)}{\rho_{\mathrm{vac}}}\ \mathrm{cm}^{-2}\mathrm{s}^{-1}$$
+$$\eta(t, n) = K_\eta \cdot \exp\!\left(-[\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi - t}\right) \cdot \frac{U_m(t)}{\rho_{\mathrm{vac}}}\ \mathrm{cm}^{-2}\mathrm{s}^{-1}$$
 
 Where:
 - $K_\eta$ = scenario-specific calibration constant (see table above)
@@ -106,7 +106,7 @@ scale, requiring $K_{\eta}$ = 7$\times$10-3 to match observed coronal neutron fl
 
 ## 3. Equation Summary
 
-$$\boxed{\eta(t, n) = K_\eta \cdot \exp!\left(-[\mathrm{SSq}]^n \cdot 64 \cdot e^{-\pi - t}\right) \cdot \frac{U_m(t)}{\rho_{\mathrm{vac}}}}$$
+$$\boxed{\eta(t, n) = K_\eta \cdot \exp\!\left(-[\mathrm{SSq}]^n \cdot 64 \cdot e^{-\pi - t}\right) \cdot \frac{U_m(t)}{\rho_{\mathrm{vac}}}}$$
 
 $$K_\eta = \begin{cases} 10^{13}\ \mathrm{cm}^{-2}\mathrm{s}^{-1} & \text{hydride} \\ 10^8\ \mathrm{cm}^{-2}\mathrm{s}^{-1} & \text{wires} \\ 7 \times 10^{-3}\ \mathrm{cm}^{-2}\mathrm{s}^{-1} & \text{corona} \end{cases}$$
 
@@ -270,7 +270,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.125$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

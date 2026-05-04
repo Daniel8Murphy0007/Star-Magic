@@ -70,7 +70,7 @@ The B/B_crit suppression reduces gravity by 0.23% — modest at B = 1011 T.
 
 ### 3.3 Exponential Decay Envelope
 
-$$D(t) = \exp!\left(-\frac{t}{\tau_{\mathrm{decay}}}\right) = \exp!\left(-\frac{t}{3.156\times10^8}\right)$$
+$$D(t) = \exp\!\left(-\frac{t}{\tau_{\mathrm{decay}}}\right) = \exp\!\left(-\frac{t}{3.156\times10^8}\right)$$
 
 | t (yr) | D(t) | F_env $\times$ D(t) |
 |-------|------|--------------|
@@ -250,7 +250,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.123$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

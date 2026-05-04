@@ -105,7 +105,7 @@ Full assembled system: ProtoH, $U_b$, BigBang trigger, $Prob_{\text{order}}$
 with $(1+\Delta_{\text{dil}} \cdot t_{\text{neg}})$ factor. Master form:
 
 $$\Psi_{26D}(t_{\text{adj}}) = ProtoH + U_b \cdot Prob_{\text{order}}
-+ BigBang \cdot \exp!\left(-\frac{|t_{\text{neg}}|}{t_{\text{adj}}}\right)$$
++ BigBang \cdot \exp\!\left(-\frac{|t_{\text{neg}}|}{t_{\text{adj}}}\right)$$
 
 ---
 
@@ -223,7 +223,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.054$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

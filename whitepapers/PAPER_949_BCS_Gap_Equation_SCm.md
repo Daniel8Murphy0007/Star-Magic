@@ -154,7 +154,7 @@ PAPER_877 axioms $\to$ DPM vacuum $\to$ $\rho_text{SCm}$ $\to$ $\omega_text{SCm}
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
-$$\text{VDS}(r) = \rho_text{SCm} \cdot \exp!\left(-\frac{r}{\lambda_text{SCm}}\right) \cdot S_{26}([SSq])$$
+$$\text{VDS}(r) = \rho_text{SCm} \cdot \exp\!\left(-\frac{r}{\lambda_text{SCm}}\right) \cdot S_{26}([SSq])$$
 
 ### §B.2 Dipole Vortex Primes (DVP)
 Prime lattice encoding: $p_n \in \{2, 3, 5, 7, 11, 13\}$ maps to magnetic/non-magnetic shell hierarchy.

@@ -67,7 +67,7 @@ $$n = \frac{\Omega \ddot{\Omega}}{\dot{\Omega}^2} = 3 \quad \text{(pure magnetic
 
 $$\dot{E}_{rot} = -I \Omega \dot{\Omega} = \frac{B^2 R^6 \Omega^4}{6c^3}$$
 
-$$D_{SCm}(B) = 1 - \exp!\left[-\left(\frac{B_{crit}}{B}\right)^2\right]$$
+$$D_{SCm}(B) = 1 - \exp\!\left[-\left(\frac{B_{crit}}{B}\right)^2\right]$$
 
 **Key numerical results:** B_SGR1806 = 2.0e15 G = 2.0e11 T, B_crit = 4.4e13 T, D_SCm = 1.0e-2 (99%
 suppression), n_UQFF = 1.5-2.0, t_sd(UQFF)/t_sd(GR) = 3.0e0
@@ -367,7 +367,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.060$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

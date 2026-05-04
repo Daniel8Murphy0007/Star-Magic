@@ -572,7 +572,7 @@ profile:
 
 $$\begin{aligned}
 \rho_{\mathrm{vac}}(r) &= \rho_{\mathrm{vac,[SCm]}} \\
-&\cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)
+&\cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)
 \end{aligned}$$
 
 For this system, the local VDS sub-ratio is $0.165$

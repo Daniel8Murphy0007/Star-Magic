@@ -62,9 +62,9 @@ The radially-dependent numerator is $C_{\mathrm{num}} = (M_s c^2 + L_s/c^2)/(4\p
 
 $$\varepsilon'(r) = \frac{d\varepsilon}{dr} = -\frac{3\eta\cos(\pi t_n)\,C_{\mathrm{num}}}{r^4}, \qquad \varepsilon''(r) = +\frac{12\eta\cos(\pi t_n)\,C_{\mathrm{num}}}{r^5}$$
 
-**Step 2.** For a diagonal metric $A_{\mumu}(r)$ depending only on $r = x^1$, the non-zero Christoffel symbols of the Levi-Civita connection are:
+**Step 2.** For a diagonal metric $A_{\mu\mu}(r)$ depending only on $r = x^1$, the non-zero Christoffel symbols of the Levi-Civita connection are:
 
-$$\Gamma^r_{\mumu} = -\frac{\partial_r A_{\mumu}}{2\,A_{rr}} = -\frac{\varepsilon'}{2(-1+\varepsilon)} \qquad \text{(no sum on }\mu\text{)}$$
+$$\Gamma^r_{\mu\mu} = -\frac{\partial_r A_{\mu\mu}}{2\,A_{rr}} = -\frac{\varepsilon'}{2(-1+\varepsilon)} \qquad \text{(no sum on }\mu\text{)}$$
 
 $$\Gamma^\alpha_{\alpha r} = \Gamma^\alpha_{r\alpha} = \frac{\partial_r A_{\alphaalpha}}{2\,A_{\alphaalpha}} \qquad \text{(no sum on }\alpha\text{)}$$
 
@@ -245,7 +245,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.184$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

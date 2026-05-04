@@ -43,7 +43,7 @@ $$1 = \frac{V_\text{SCm}}{2} \cdot \frac{\tanh(\Delta/2k_BT)}{\Delta} \cdot S_{2
 $$\Delta = \frac{\hbar\omega_\text{SCm}}{2} \cdot \tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
 Critical temperature:
-$$T_c = \frac{1.13\,\hbar\omega_\text{SCm}}{k_B} \cdot \exp!\left(-\frac{1}{N(0)V_\text{SCm}}\right)$$
+$$T_c = \frac{1.13\,\hbar\omega_\text{SCm}}{k_B} \cdot \exp\!\left(-\frac{1}{N(0)V_\text{SCm}}\right)$$
 
 ## 4. Spectral Ladder Link
 
@@ -53,7 +53,7 @@ The gap $\Delta$ couples to each spectral ladder level, with the phonon frequenc
 
 ## 5. LENR Connection
 
-$$\Gamma_text{LENR} \propto \Delta^2 \cdot \exp!\left(-\frac{E_\text{Coulomb}}{\text{k\_BT\_c}}\right) \cdot \Phi_{1.25\text{THz}}$$
+$$\Gamma_text{LENR} \propto \Delta^2 \cdot \exp\!\left(-\frac{E_\text{Coulomb}}{\text{k\_BT\_c}}\right) \cdot \Phi_{1.25\text{THz}}$$
 
 ---
 

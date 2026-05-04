@@ -121,10 +121,10 @@ PAPER_155 DPM-seeded emergence proof ($\beta$ $\approx$ 1 for this B/B_crit rati
 ## 6. ALP Dark Energy Coupling $\to$ a_{Aether\_freq}
 
 Axion-Like Particle (ALP) photon coupling from arXiv papers (2023-2025):
-- CAST/ABRACADABRA constraint: $g_{a\gammagamma} < 6\times10^{-11}$ GeV-1
+- CAST/ABRACADABRA constraint: $g_{a\gamma\gamma} < 6\times10^{-11}$ GeV-1
 - UQFF connection: a_{Aether\_freq} represents the dark energy field resonance
 
-$$a_{Aether,freq} = g_{a\gammagamma} \cdot \rho_{DM,local} \cdot c^2 \cdot \omega_{ALP}$$
+$$a_{Aether,freq} = g_{a\gamma\gamma} \cdot \rho_{DM,local} \cdot c^2 \cdot \omega_{ALP}$$
 
 where $\omega_{ALP} = m_{ALP}c^2/\hbar \sim 10^{-22}$ to $10^{-12}$ Hz (fuzzy dark matter range).
 
@@ -249,7 +249,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.095$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

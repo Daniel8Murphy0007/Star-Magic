@@ -29,7 +29,7 @@ We derive the effective Cooper-pair coupling strength via SCm phonon exchange at
 
 ## 1. Coupling Strength
 
-$$V_\text{eff}(\omega, \Gamma) = V_\text{SCm} \cdot \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
+$$V_\text{eff}(\omega, \Gamma) = V_\text{SCm} \cdot \exp\!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
 
 ## 2. Pair Binding Energy
 

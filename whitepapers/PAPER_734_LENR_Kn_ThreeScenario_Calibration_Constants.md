@@ -37,7 +37,7 @@ across three distinct physical regimes: metallic hydride cells, exploding wire a
 solar corona flares. The K_n Neutron Production Calibration Constant document (19 April 2025)
 introduces a specific UQFF equation form:
 
-$$\eta(t, n) = k_\eta \cdot \exp!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp!\left(-(\pi - t) \cdot \frac{U_m}{\rho_{\mathrm{vac},[\mathrm{UA}]}}\right) \qquad \mathrm{cm}^{-2}\mathrm{s}^{-1}$$
+$$\eta(t, n) = k_\eta \cdot \exp\!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp\!\left(-(\pi - t) \cdot \frac{U_m}{\rho_{\mathrm{vac},[\mathrm{UA}]}}\right) \qquad \mathrm{cm}^{-2}\mathrm{s}^{-1}$$
 
 where $k_\eta$ is a **multiplicative calibration constant** distinct from the target $\eta$ values in
 PAPER_471. This paper documents the three-scenario $k_\eta$ table and introduces $k_{\mathrm{trans}} \approx 5.26 \times 10^{44}$ for solar corona transmutation.
@@ -49,7 +49,7 @@ PAPER_471. This paper documents the three-scenario $k_\eta$ table and introduces
 PAPER_471 (LENR $K_{\eta}$ Calibration, Session 122) established the first UQFF neutron production
 calibration using the form:
 
-$$\eta_{\mathrm{PAPER471}} = K_\eta \cdot \exp!\left(-[\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi-t}\right) \cdot \frac{U_m}{\rho_{\mathrm{vac}}}$$
+$$\eta_{\mathrm{PAPER471}} = K_\eta \cdot \exp\!\left(-[\mathrm{SSq}]^n \cdot 2^6 \cdot e^{-\pi-t}\right) \cdot \frac{U_m}{\rho_{\mathrm{vac}}}$$
 
 where $K_\eta$ equals the target $\eta$ value for each scenario. The K_n document introduces a
 **different functional form** with separable exponentials and $k_\eta$ as a pure multiplicative
@@ -62,7 +62,7 @@ the target flux.
 
 ### 2.1 Neutron Production Rate
 
-$$\boxed{\eta(t, n) = k_\eta \cdot \exp!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp!\left(-(\pi - t) \cdot \frac{U_m(t)}{\rho_{\mathrm{vac},[\mathrm{UA}]}}\right)}$$
+$$\boxed{\eta(t, n) = k_\eta \cdot \exp\!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp\!\left(-(\pi - t) \cdot \frac{U_m(t)}{\rho_{\mathrm{vac},[\mathrm{UA}]}}\right)}$$
 
 **Variables:**
 | Symbol | Value / Equation | Description |
@@ -114,7 +114,7 @@ The pseudo-monopole states modulate all k$\eta$ corrections:
 
 $$\delta_n = \left(2\pi\right)^{n/6}$$
 
-$$\rho_{\mathrm{vac,[\mathrm{UA'}:SCm]}}(n,t) = 10^{-23} \cdot (0.1)^n \cdot \exp!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp(-(\pi-t))$$
+$$\rho_{\mathrm{vac,[\mathrm{UA'}:SCm]}}(n,t) = 10^{-23} \cdot (0.1)^n \cdot \exp\!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp(-(\pi-t))$$
 
 **Solutions for n=1, t=0:**
 $$\delta_1 \approx 1.047\ \mathrm{rad}, \qquad \rho_{\mathrm{vac,[\mathrm{UA'}:SCm]}} \approx 9.63 \times 10^{-25}\ \mathrm{J/m^3}$$
@@ -280,7 +280,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.169$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

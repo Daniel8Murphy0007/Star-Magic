@@ -29,7 +29,7 @@ We apply UQFF SCm suppression threshold classification to the heavier component 
 
 ## 1. Classification Formula
 
-$$P(\text{BH}) = \frac{1}{1 + \exp!\left(-\frac{m_1 - M_\text{boundary}}{\sigma}\right)}$$
+$$P(\text{BH}) = \frac{1}{1 + \exp\!\left(-\frac{m_1 - M_\text{boundary}}{\sigma}\right)}$$
 
 $$P(\text{NS}) = 1 - P(\text{BH})$$
 

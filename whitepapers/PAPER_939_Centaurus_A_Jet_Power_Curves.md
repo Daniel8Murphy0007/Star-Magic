@@ -49,7 +49,7 @@ where $r_H = \frac{r_S}{2}(1 + \sqrt{1 - a^2})$ and $r_S = 2GM/c^2$.
 
 ## 3. UQFF Jet Modulation
 
-$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_Gamma^2}\right)$$
+$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp\!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_Gamma^2}\right)$$
 
 $$P_\text{jet}(\Gamma) = P_\text{BZ} \cdot (1 + M_\text{jet}(\Gamma))$$
 

@@ -121,7 +121,7 @@ The product-rule E-L equation establishes that spatial curvature enters D_univer
 
 The VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 0.1$ produces a double-exponential decay profile for the vacuum condensate across the Hubble volume:
 
-$$\rho_{\mathrm{vac}}(r_c) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r_c - R_H}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r_c) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r_c - R_H}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from near-unity density (interior) to exponentially suppressed density (exterior). This threshold corresponds to $D_5 = 1.001$, confirming that the spatial curvature 5th factor encodes the VDS transition at the Hubble boundary.
 

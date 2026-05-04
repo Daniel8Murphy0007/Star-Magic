@@ -50,7 +50,7 @@ $$
   & g_NGC2525(r, t) = term1    [G\cdot M/r2 \times (1+Hz\cdot t) \times (1-B/B_crit)]    \leftarrow static M_gal \\
   & + term_SN   [-G\cdot M_SN(t)/r2]                          \leftarrow NEGATIVE: SN mass-loss \\
   & + term2     [UQFF Ug1_base + Ug4 with f_TRZ] \\
-  & + term3     [\Lambdac2/3] \\
+  & + term3     [\Lambda_c2/3] \\
   & + term4     [q(v\times B)/m_p \times corr_UA] \\
   & + term_q    [ℏ/\sqrt{}(\Deltax\cdot\Deltap) \times \psi \times (2\pi/t_H)] \\
   & + term_fluid [\rho_fluid\cdot V\cdot ug1_base / M] \\
@@ -443,7 +443,7 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right\right)$$
+$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.168$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 

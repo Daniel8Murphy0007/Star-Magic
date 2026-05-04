@@ -29,7 +29,7 @@ We derive the quark-gluon plasma vacuum density $\rho_text{QGP}(T)$ using the ex
 
 ## 1. QGP Vacuum Density
 
-$$\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)}([SSq]) \cdot \exp!\left(-\frac{T_c - T}{T}\right)$$
+$$\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)}([SSq]) \cdot \exp\!\left(-\frac{T_c - T}{T}\right)$$
 
 where $\rho_text{SCm} = 10^{-10}$ kg/m3 is the SCm vacuum baseline density.
 
@@ -160,7 +160,7 @@ mock-theta framework with the SCm phonon spectrum.
 **Sector:** QGP Deconfinement (Vacuum Density)
 
 ### §A.2 Core Equation
-$$\boxed{\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)} \cdot \exp!\left(-\frac{T_c - T}{T}\right)}$$
+$$\boxed{\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)} \cdot \exp\!\left(-\frac{T_c - T}{T}\right)}$$
 
 ### §A.3 Lagrangian Contribution
 $$\mathcal{L}_\text{QGP} = -\rho_text{QGP}(T) \cdot c^2 + \frac{1}{2}\left(\frac{\partial \rho_text{QGP}}{\partial T}\right)^2 \dot{T}^2$$

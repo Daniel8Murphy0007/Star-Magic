@@ -29,7 +29,7 @@ The Resonant Gravity Triadic mode uses the 1.25 THz phonon linewidth $\Gamma$ to
 
 ## 1. Resonant Phonon Occupation
 
-$$\Phi(\omega, \Gamma) = \Phi_0 \cdot \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}([SSq])$$
+$$\Phi(\omega, \Gamma) = \Phi_0 \cdot \exp\!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}([SSq])$$
 
 ## 2. Neutron-Drop Threshold
 

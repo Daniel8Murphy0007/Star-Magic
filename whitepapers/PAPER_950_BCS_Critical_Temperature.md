@@ -29,7 +29,7 @@ We compute the BCS critical temperature $T_c$ in the SCm vacuum phonon framework
 
 ## 1. Critical Temperature
 
-$$T_c = \frac{1.13 \hbar \omega_text{SCm}}{k_B} \exp!\left(-\frac{1}{N(0) V_\text{SCm}}\right)$$
+$$T_c = \frac{1.13 \hbar \omega_text{SCm}}{k_B} \exp\!\left(-\frac{1}{N(0) V_\text{SCm}}\right)$$
 
 ## 2. BCS Gap Relation
 
@@ -161,7 +161,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 $$\mathcal{L}_{T\_c} = -N(0)|\Delta|^2/V_\text{SCm} + k_BT\ln Z_\text{phonon}(\omega_text{SCm})$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial T}\bigg|_{T=T\_c} = 0 \implies T_c = \frac{1.13\hbar\omega_\text{SCm}}{k_B}\exp!\left(-\frac{1}{N(0)V_\text{SCm}}\right)}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial T}\bigg|_{T=T\_c} = 0 \implies T_c = \frac{1.13\hbar\omega_\text{SCm}}{k_B}\exp\!\left(-\frac{1}{N(0)V_\text{SCm}}\right)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms $\to$ SCm vacuum $\to$ phonon $\omega_text{SCm}$ $\to$ BCS gap $\to$ $T_c$ thermal threshold $\to$ condensate onset
