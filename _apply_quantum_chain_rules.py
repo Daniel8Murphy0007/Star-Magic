@@ -23,16 +23,11 @@ PREAMBLE_PY = '''\
 # Vacuum density is emergent energy density J/m³, NOT kg/m³.
 # SCm and UA are MASSLESS geometric substrates derived from 26-level H-atom geometry.
 # All functions that use _RHO_VAC_SCM / _RHO_VAC_UA are automatically correct.
-try:
-    from scm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
-    _RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
-    _RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
-except ImportError:
-    # Fallback: canonical numeric values if scm_vacuum_manifold not on path
-    _RHO_VAC_SCM = {:.6e}   # J/m³ — SCm vacuum energy density (Quantum Chain)
-    _RHO_VAC_UA  = {:.6e}   # J/m³ — UA  vacuum energy density (Quantum Chain)
+from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
+_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
+_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
 # ─────────────────────────────────────────────────────────────────────────────
-'''.format(RHO_VAC_SCM_QC, RHO_VAC_UA_QC)
+'''.format()
 
 
 def patch_python_file(path: Path) -> int:

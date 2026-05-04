@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-99system_master_equation.py — Full 99-System Compressed Master Equation
+99system_master_equation.py ï¿½ Full 99-System Compressed Master Equation
 
 Session 216 | Star Magic UQFF Framework
 --------------------------------------------------------------------------------
@@ -8,10 +8,10 @@ Standalone executable for the 99-system compressed master equation from
 PAPER_454/456/457 (CP3 PAPER_211 ancestry).
 
 F_U^{(99)}(r,t) = S_{i=1}^{99} [U_{g,i} + U_m + U_A - U_{b,i}]
-                 + F_neutron · S26^{(3)}([SSq]) · F_{1.25THz}(?,G)
+                 + F_neutron ï¿½ S26^{(3)}([SSq]) ï¿½ F_{1.25THz}(?,G)
 
 All 99 systems parameterized and compressed to triadic form:
-  F_U = w_C·g_comp + w_R·g_res + w_B·g_buoy
+  F_U = w_Cï¿½g_comp + w_Rï¿½g_res + w_Bï¿½g_buoy
 
 Residual target: |R_c| < 1% for all 99 systems.
 --------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, List, Optional
 
-# -- §0  Constants ----------------------------------------------------------
+# -- ï¿½0  Constants ----------------------------------------------------------
 
 PI        = math.pi
 G         = 6.674e-11
@@ -42,40 +42,26 @@ PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
 KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
 SCALING_SCM   = 630 * 1.60217662e-19 / (E_PHONON_SCM * S26_3 * PHI_RESONANCE)  # exact 630 eV normalizer
 KAPPA_FLOAT   = 0.0005  # float(KAPPA)
-# --- import from canonical source when available [pdf/scm_vacuum_manifold.py] ---
-try:
-    from scm_vacuum_manifold import (
-        E_phonon       as E_PHONON_SCM,
-        S26_3          as S26_3,
-        Phi_resonance  as PHI_RESONANCE,
-        KER_SCm        as KER_SCM,
-        scaling_factor as SCALING_SCM,    # exact 630 eV normalizer
-        KAPPA_FLOAT    as KAPPA_FLOAT,    # float(KAPPA) = 0.0005
-        F_TRZ                       as F_TRZ,
-        coleman_guillespie_scm      as coleman_guillespie_scm,
-        neutrino_oscillation_prob_lenr as neutrino_oscillation_prob_lenr,
-        quark_production_prob_ui    as quark_production_prob_ui,
-        mckubre_lenr                as mckubre_lenr,
-        s26_3_from_vds              as s26_3_from_vds,
-        qgp_energy_density_scm      as qgp_energy_density_scm,
-        strange_quark_matter_density as strange_quark_matter_density,
-        mit_bag_scm                 as mit_bag_scm,
-        ads_cft_scm_dual            as ads_cft_scm_dual,
-        scm_gw_metric_perturbation  as scm_gw_metric_perturbation,
-    )
-except ImportError:
-    pass  # fallback values already set above
-    F_TRZ = 0.1
-    def coleman_guillespie_scm(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12): return 0.0
-    def neutrino_oscillation_prob_lenr(t_n=-100.0): return 0.0
-    def quark_production_prob_ui(t_n=-100.0, Gamma=1.0e12): return 0.0
-    def mckubre_lenr(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
-    s26_3_from_vds = lambda: 1.4531e26
-    def qgp_energy_density_scm(T_plasma=1.0e11): return 0.0
-    def strange_quark_matter_density(): return (1.0e18, 0.0)
-    def mit_bag_scm(): return 0.0
-    ads_cft_scm_dual = lambda: {}
-    def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22): return 0.0
+# --- SCm constants from dpm_vacuum_manifold (consolidated) ---
+from dpm_vacuum_manifold import (
+    E_phonon       as E_PHONON_SCM,
+    S26_3          as S26_3,
+    Phi_resonance  as PHI_RESONANCE,
+    KER_SCm        as KER_SCM,
+    scaling_factor as SCALING_SCM,
+    KAPPA_FLOAT    as KAPPA_FLOAT,
+    F_TRZ          as F_TRZ,
+    coleman_guillespie_scm         as coleman_guillespie_scm,
+    neutrino_oscillation_prob_lenr as neutrino_oscillation_prob_lenr,
+    quark_production_prob_ui       as quark_production_prob_ui,
+    mckubre_lenr                   as mckubre_lenr,
+    s26_3_from_vds                 as s26_3_from_vds,
+    qgp_energy_density_scm         as qgp_energy_density_scm,
+    strange_quark_matter_density   as strange_quark_matter_density,
+    mit_bag_scm                    as mit_bag_scm,
+    ads_cft_scm_dual               as ads_cft_scm_dual,
+    scm_gw_metric_perturbation     as scm_gw_metric_perturbation,
+)
 
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]
@@ -137,7 +123,7 @@ def monte_carlo_fubi_i(n_samples=10000):
 try:
     from mpmath import polylog as _polylog_scm_local
     def vds_numerical(terms=1000):
-        """VDS: Li_26([SSq]) — 26D Vacuum Density Series [canonical: scm_vacuum_manifold.py]"""
+        """VDS: Li_26([SSq]) ï¿½ 26D Vacuum Density Series [canonical: scm_vacuum_manifold.py]"""
         return float(_polylog_scm_local(26, 0.57))
 except ImportError:
     def vds_numerical(terms=1000):
@@ -147,7 +133,7 @@ except ImportError:
 GAMMA_0   = 2 * PI * 0.1e12
 
 
-# -- §1  99-System Catalogue ----------------------------------------------
+# -- ï¿½1  99-System Catalogue ----------------------------------------------
 
 def _build_99_systems() -> List[Dict]:
     """Generate 99 parameterized astrophysical systems.
@@ -203,15 +189,15 @@ def _build_99_systems() -> List[Dict]:
     return systems
 
 
-# -- §2  Core Physics Functions -------------------------------------------
+# -- ï¿½2  Core Physics Functions -------------------------------------------
 
 def Ug_26layer(M: float, r: float) -> float:
-    """26-layer compressed gravity: g(r) = S_{i=1}^{26} G·M/r² · [SSq]·i/26."""
+    """26-layer compressed gravity: g(r) = S_{i=1}^{26} Gï¿½M/rï¿½ ï¿½ [SSq]ï¿½i/26."""
     return sum(dpm_ug1_seed(M, r) * SSQ * i / 26.0 for i in range(1, 27))
 
 
 def F_UBi(M: float, r: float) -> float:
-    """Buoyancy force: F_{UBi} = S ß_i · U_{g,i}."""
+    """Buoyancy force: F_{UBi} = S ï¿½_i ï¿½ U_{g,i}."""
     return sum(dpm_ug1_seed(M, r) * math.exp(-SSQ * i / 26.0) * BETA_I for i in range(1, 27))
 
 
@@ -235,13 +221,13 @@ def F_neutron() -> float:
     return 1e-10 * S26
 
 
-# -- §3  Master Equation -------------------------------------------------
+# -- ï¿½3  Master Equation -------------------------------------------------
 
 def master_equation_99(system: Dict, t: float = 1.0,
                        gamma: float = GAMMA_0) -> Dict:
     """Evaluate F_U^{(99)} for one system at given time and linewidth.
 
-    F_U = S [U_g + U_m + U_A - U_b] + F_neutron · S26^{(3)} · F_{1.25THz}
+    F_U = S [U_g + U_m + U_A - U_b] + F_neutron ï¿½ S26^{(3)} ï¿½ F_{1.25THz}
     """
     M = system["M_kg"]
     r = max(system["r_m"], 1.0)  # Avoid division by zero
@@ -268,10 +254,10 @@ def master_equation_99(system: Dict, t: float = 1.0,
     }
 
 
-# -- §4  Triadic Compression ---------------------------------------------
+# -- ï¿½4  Triadic Compression ---------------------------------------------
 
 def triadic_compress(system: Dict, gamma: float = GAMMA_0) -> Dict:
-    """Compress F_U into triadic form: F = w_C·g_c + w_R·g_r + w_B·g_b."""
+    """Compress F_U into triadic form: F = w_Cï¿½g_c + w_Rï¿½g_r + w_Bï¿½g_b."""
     M = system["M_kg"]
     r = max(system["r_m"], 1.0)
 
@@ -308,7 +294,7 @@ def triadic_compress(system: Dict, gamma: float = GAMMA_0) -> Dict:
     }
 
 
-# -- §5  Full 99-System Evaluation ---------------------------------------
+# -- ï¿½5  Full 99-System Evaluation ---------------------------------------
 
 class NinetyNineSystemMasterEquation:
     """Full 99-system compressed master equation evaluation."""
@@ -350,7 +336,7 @@ class NinetyNineSystemMasterEquation:
                 for cat in ["stellar", "galaxy", "nebula", "compact", "cluster", "cosmological"]
             ],
             "primary_equations": [
-                "F_U^{(99)}(r,t) = S??1?? [U_g + U_m + U_A - U_b] + F_n·S26·F",
+                "F_U^{(99)}(r,t) = S??1?? [U_g + U_m + U_A - U_b] + F_nï¿½S26ï¿½F",
                 f"Total F_U = {total_FU:.6e}",
                 f"Triadic compression: {pass_count}/99 pass <1% residual",
                 f"Average residual: {avg_residual:.6e}",
@@ -369,7 +355,7 @@ class NinetyNineSystemMasterEquation:
         pass
 
 
-# -- §6  Self-Tests ---------------------------------------------------------
+# -- ï¿½6  Self-Tests ---------------------------------------------------------
 
 def _run_tests() -> bool:
     ok = True
@@ -410,7 +396,7 @@ def _run_tests() -> bool:
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("  99system_master_equation.py — 99-System Compressed Master Equation")
+    print("  99system_master_equation.py ï¿½ 99-System Compressed Master Equation")
     print("=" * 70)
     passed = _run_tests()
     print("=" * 70)

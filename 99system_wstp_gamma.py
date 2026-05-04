@@ -41,40 +41,26 @@ PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
 KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
 SCALING_SCM   = 630 * 1.60217662e-19 / (E_PHONON_SCM * S26_3 * PHI_RESONANCE)  # exact 630 eV normalizer
 KAPPA_FLOAT   = 0.0005  # float(KAPPA)
-# --- import from canonical source when available [pdf/scm_vacuum_manifold.py] ---
-try:
-    from scm_vacuum_manifold import (
-        E_phonon       as E_PHONON_SCM,
-        S26_3          as S26_3,
-        Phi_resonance  as PHI_RESONANCE,
-        KER_SCm        as KER_SCM,
-        scaling_factor as SCALING_SCM,    # exact 630 eV normalizer
-        KAPPA_FLOAT    as KAPPA_FLOAT,    # float(KAPPA) = 0.0005
-        F_TRZ                       as F_TRZ,
-        coleman_guillespie_scm      as coleman_guillespie_scm,
-        neutrino_oscillation_prob_lenr as neutrino_oscillation_prob_lenr,
-        quark_production_prob_ui    as quark_production_prob_ui,
-        mckubre_lenr                as mckubre_lenr,
-        s26_3_from_vds              as s26_3_from_vds,
-        qgp_energy_density_scm      as qgp_energy_density_scm,
-        strange_quark_matter_density as strange_quark_matter_density,
-        mit_bag_scm                 as mit_bag_scm,
-        ads_cft_scm_dual            as ads_cft_scm_dual,
-        scm_gw_metric_perturbation  as scm_gw_metric_perturbation,
-    )
-except ImportError:
-    pass  # fallback values already set above
-    F_TRZ = 0.1
-    def coleman_guillespie_scm(decay_rate=1.0e6, t_n=-100.0, Gamma=1.0e12): return 0.0
-    def neutrino_oscillation_prob_lenr(t_n=-100.0): return 0.0
-    def quark_production_prob_ui(t_n=-100.0, Gamma=1.0e12): return 0.0
-    def mckubre_lenr(PdD_loading=0.9, volume=1.0e-6, t_n=-100.0): return 0.0
-    s26_3_from_vds = lambda: 1.4531e26
-    def qgp_energy_density_scm(T_plasma=1.0e11): return 0.0
-    def strange_quark_matter_density(): return (1.0e18, 0.0)
-    def mit_bag_scm(): return 0.0
-    ads_cft_scm_dual = lambda: {}
-    def scm_gw_metric_perturbation(f_gw=100.0, r_detector=3.086e22): return 0.0
+# --- SCm constants from dpm_vacuum_manifold (consolidated) ---
+from dpm_vacuum_manifold import (
+    E_phonon       as E_PHONON_SCM,
+    S26_3          as S26_3,
+    Phi_resonance  as PHI_RESONANCE,
+    KER_SCm        as KER_SCM,
+    scaling_factor as SCALING_SCM,
+    KAPPA_FLOAT    as KAPPA_FLOAT,
+    F_TRZ          as F_TRZ,
+    coleman_guillespie_scm         as coleman_guillespie_scm,
+    neutrino_oscillation_prob_lenr as neutrino_oscillation_prob_lenr,
+    quark_production_prob_ui       as quark_production_prob_ui,
+    mckubre_lenr                   as mckubre_lenr,
+    s26_3_from_vds                 as s26_3_from_vds,
+    qgp_energy_density_scm         as qgp_energy_density_scm,
+    strange_quark_matter_density   as strange_quark_matter_density,
+    mit_bag_scm                    as mit_bag_scm,
+    ads_cft_scm_dual               as ads_cft_scm_dual,
+    scm_gw_metric_perturbation     as scm_gw_metric_perturbation,
+)
 
 
 # Pons-Fleischmann Heat Equation (Pd-D excess heat) [canonical: scm_vacuum_manifold.py]

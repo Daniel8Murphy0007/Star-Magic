@@ -1,12 +1,4 @@
 """
-# ── Quantum Chain Derived Constants (UQFF_THEORY.md) ──────────────────────────
-# Vacuum density is emergent energy density J/m³, NOT kg/m³.
-# SCm and UA are MASSLESS geometric substrates derived from 26-level H-atom geometry.
-# All functions that use _RHO_VAC_SCM / _RHO_VAC_UA are automatically correct.
-from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
-_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
-_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
-# ─────────────────────────────────────────────────────────────────────────────
 
 CondensedPhysics4.py � UQFF Phase 4 Physics Calculator
 =======================================================
@@ -132,6 +124,11 @@ Deduplication guarantee (verified against CP1/CP2/CP3):
       PAPER_369: NS Stable Fluids (Jos Stam 1999) quasar jet � FIRST CFD in pipeline
       PAPER_370: Pcore=1.0 star / 1e-3 planet + omega_c orbital bridge + Neptune 72K
 """
+
+from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
+_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
+_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
+
 
 import math
 from typing import Any

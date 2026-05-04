@@ -25,7 +25,7 @@ from dpm_vacuum_manifold import (
     RHO_VAC_SCM, AMU,
     OMEGA_CW, OMEGA_CCW,
 )
-from scm_vacuum_manifold import SSQ
+from dpm_vacuum_manifold import SSQ
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SECTION 0: constants reminder

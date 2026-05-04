@@ -1,12 +1,4 @@
 """
-# ── Quantum Chain Derived Constants (UQFF_THEORY.md) ──────────────────────────
-# Vacuum density is emergent energy density J/m³, NOT kg/m³.
-# SCm and UA are MASSLESS geometric substrates derived from 26-level H-atom geometry.
-# All functions that use _RHO_VAC_SCM / _RHO_VAC_UA are automatically correct.
-from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
-_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
-_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
-# ─────────────────────────────────────────────────────────────────────────────
 
 CondensedPhysics3.py — UQFF Phase 3 Physics Calculator
 =======================================================
@@ -64,6 +56,11 @@ Physics Constants (canonical UQFF values):
   M_bh_sgr   = 8.15e36 kg        (Sgr A* canonical mass)
   d_g_sgr    = 2.55e20 m         (galactic distance canonical)
 """
+
+from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
+_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
+_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
+
 
 import math
 from typing import Any
