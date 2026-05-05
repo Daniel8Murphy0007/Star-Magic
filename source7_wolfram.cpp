@@ -1,15 +1,15 @@
 // Wolfram-Enhanced Physics Terms from source7.cpp - MAIN FILE
-// Generated: November 30, 2025
+// Generated: November 30, 2025 | Updated: Session 202 Phase H202 (May 2026)
 // Modularization: PHASE 2 - Main file (source4/5 pattern)
-// Total Classes: 2 Infrastructure terms (Compressed and Resonance in separate files)
+// Session 202: Added BSFG/QCalcGeom bridge — VDS/DVP/BH26 variant branches + triple-point resolution
 //
 // FILE ORGANIZATION (4-file pattern):
-// - source7_wolfram.cpp (THIS FILE): Infrastructure (2 classes) + Structures + Registry
+// - source7_wolfram.cpp (THIS FILE): Infrastructure (2 classes) + BSFG Bridge (3 classes) + Structures + Registry
 // - source7_wolfram_compressed.cpp: Compressed MUGE (9 classes)
 // - source7_wolfram_resonance.cpp: Resonance MUGE (13 classes)
-// - source7_simulation_harness.cpp: Interactive testing engine
+// - source7_simulation_harness.cpp: Interactive testing engine + Triple Point Resolution
 //
-// TOTAL: 24 PhysicsTerm classes across 4 files
+// TOTAL: 27 PhysicsTerm classes across 4 files (was 24; +3 BSFG bridge terms)
 //
 // INFRASTRUCTURE TERMS (2 classes, THIS FILE):
 // - YAMLConfigLoaderTerm: Loads YAML configuration files (complexity = keys × nested_levels)
@@ -101,6 +101,17 @@ const double Lambda = 1.1e-52;   // Cosmological constant (m⁻²)
 const double hbar = 1.0546e-34;  // Reduced Planck constant (J·s)
 
 // ============================================================================
+// BSFG / QCalcGeom Bridge Constants (Session 202 Phase H202)
+// ============================================================================
+
+constexpr double SSQ_BSFG          = 0.57;       // Triple-convergence calibration [SSq]
+constexpr double RERING_BB_HZ      = 1.15e14;    // BH26 ring resonance frequency [Hz]
+constexpr double RHO_VAC_SCM_BSFG  = 7.09e-37;  // SCm vacuum density [J/m³] (BSFG local)
+constexpr double VDS_PRIME_REF_S7  = 1.0;        // Li_25(0.57)/0.57 ≈ 1.0
+constexpr int    BH26_SPECTRAL_N10_S7 = 1760;   // Σ_{k=1}^{10} k(k+25)
+constexpr double TRIPLE_PT_TOL     = 0.01;       // 1% relative tolerance for triple point
+
+// ============================================================================
 // BASE PHYSICS TERM CLASS
 // ============================================================================
 
@@ -116,6 +127,41 @@ public:
     virtual std::string getName() const = 0;
     virtual std::string getDescription() const { return description; }
     virtual bool validate() const { return true; }
+};
+
+// ============================================================================
+// BSFG / QCalcGeom Bridge Result Structs (Session 202)
+// ============================================================================
+
+struct BridgeBSFGResult {
+    double li25            = 0.0;  // Li_25(SSq) polylogarithm
+    double li26            = 0.0;  // Li_26(SSq) polylogarithm
+    double vds_prime       = 0.0;  // Li_25(SSq)/SSq — calibration sensitivity ≈ 1.0
+    double vds_k_weighted  = 0.0;  // Li_25 + 25*Li_26 — shift-weighted series sum
+    double dvp_zeta_sum    = 0.0;  // Σ SSq^{pi(p)}/p^{26} for primes p > 26
+    double dvp_a29         = 0.0;  // Dominant DVP term: SSq^{10}/29^{26}
+    double bh26_spectral   = 0.0;  // Σ_{k=1}^{N} k(k+25) = 1760 for N=10
+    double bh26_casimir    = 0.0;  // ħ × RERING × 0.5 × Σ(1/λ_k) [J]
+    int    bh26_deg_k1     = 26;   // C(26,25) = 26 (S^{25} degeneracy)
+    double w_vds           = 0.0;  // VDS normalized weight (li26/li25)
+    double w_dvp           = 0.0;  // DVP normalized weight (dvp_sum/a29)
+    double joint_coeff     = 0.0;  // sqrt(w_vds × w_dvp) — geometric-mean coupling
+    double variant_branch  = 0.0;  // |w_vds - w_dvp| — differential calibration
+    double g_bsfg          = 0.0;  // BSFG gravitational acceleration
+};
+
+struct TriplePointResult {
+    std::string system_name;
+    double g_compressed    = 0.0;  // Compressed MUGE gravity
+    double g_resonance     = 0.0;  // Resonance MUGE gravity
+    double g_bsfg          = 0.0;  // BSFG/QCalcGeom bridge gravity
+    double err_cr          = 0.0;  // |g_c - g_r| / max(|g_c|,|g_r|)
+    double err_rq          = 0.0;  // |g_r - g_q| / max(|g_r|,|g_q|)
+    double err_cq          = 0.0;  // |g_c - g_q| / max(|g_c|,|g_q|)
+    double joint_coeff     = 0.0;  // VDS×DVP joint coupling
+    double variant_branch  = 0.0;  // Differential calibration |w_VDS - w_DVP|
+    double convergence_scale = 0.0;// |g_c × g_r × g_q|^{1/3}
+    bool   at_triple_point = false;// All errors < TRIPLE_PT_TOL
 };
 
 // ============================================================================
@@ -186,6 +232,99 @@ public:
 };
 
 // ============================================================================
+// BSFG / QCalcGeom Bridge Physics Terms (3 classes — Session 202 Phase H202)
+// ============================================================================
+
+class VDSBranchTerm : public PhysicsTerm
+{
+private:
+    double SSq;
+    int n_terms;
+
+public:
+    VDSBranchTerm(double ssq = SSQ_BSFG, int nt = 200) : SSq(ssq), n_terms(nt)
+    {
+        description = "VDS: Li_26([SSq]) vacuum density series — d/dz Li_26(z)|_{SSq} = Li_25/SSq ~ 1.0";
+        parameters["SSq"]    = ssq;
+        parameters["n_terms"] = nt;
+    }
+
+    double compute() const override
+    {
+        double li25 = 0.0, li26 = 0.0, ps = SSq;
+        for (int n = 1; n <= n_terms; ++n) {
+            li25 += ps / std::pow(static_cast<double>(n), 25.0);
+            li26 += ps / std::pow(static_cast<double>(n), 26.0);
+            ps *= SSq;
+            if (std::abs(ps) < 1e-300) break;
+        }
+        // Returns Li_25 + 25*Li_26 (shift-weighted sum = vds_k_weighted)
+        return li25 + 25.0 * li26;
+    }
+
+    std::string getName() const override { return "VDSBranch"; }
+};
+
+class DVPBranchTerm : public PhysicsTerm
+{
+private:
+    double SSq;
+    int p_max;
+
+public:
+    DVPBranchTerm(double ssq = SSQ_BSFG, int pm = 200) : SSq(ssq), p_max(pm)
+    {
+        description = "DVP: prime-vortex spectral sum Σ SSq^{pi(p)}/p^{26} for primes p>26";
+        parameters["SSq"]  = ssq;
+        parameters["p_max"] = pm;
+    }
+
+    double compute() const override
+    {
+        std::vector<bool> sieve(p_max + 1, true);
+        sieve[0] = sieve[1] = false;
+        for (int i = 2; i * i <= p_max; ++i)
+            if (sieve[i]) for (int j = i * i; j <= p_max; j += i) sieve[j] = false;
+        int pi_count = 0;
+        double dvp_sum = 0.0;
+        for (int p = 2; p <= p_max; ++p) {
+            if (!sieve[p]) continue;
+            ++pi_count;
+            if (p <= 26) continue;
+            dvp_sum += std::pow(SSq, static_cast<double>(pi_count)) /
+                       std::pow(static_cast<double>(p), 26.0);
+        }
+        return dvp_sum;
+    }
+
+    std::string getName() const override { return "DVPBranch"; }
+};
+
+class BH26TripleTerm : public PhysicsTerm
+{
+private:
+    int N;
+
+public:
+    explicit BH26TripleTerm(int n = 10) : N(n)
+    {
+        description = "BH26: spectral ladder Σ_{k=1}^{N} k(k+25) on S^{25}; Casimir energy ħ*f_ring*0.5*Σ(1/λ_k)";
+        parameters["N"] = n;
+    }
+
+    double compute() const override
+    {
+        // Returns spectral_sum normalized to N=10 reference
+        double sl = 0.0;
+        for (int k = 1; k <= N; ++k)
+            sl += static_cast<double>(k * (k + 25));
+        return sl / static_cast<double>(BH26_SPECTRAL_N10_S7);  // ≈ 1.0 for N=10
+    }
+
+    std::string getName() const override { return "BH26Triple"; }
+};
+
+// ============================================================================
 // PHYSICS TERM REGISTRY (for main calculator integration)
 // ============================================================================
 
@@ -241,6 +380,14 @@ public:
                 std::cout << "  - " << name << ": " << it->second->getDescription() << std::endl;
         }
 
+        std::cout << "\nBSFG/QCalcGeom Bridge (3 terms - source7_wolfram.cpp, Session 202):" << std::endl;
+        for (const auto& name : {"VDSBranch", "DVPBranch", "BH26Triple"})
+        {
+            auto it = terms.find(name);
+            if (it != terms.end())
+                std::cout << "  - " << name << ": " << it->second->getDescription() << std::endl;
+        }
+
         std::cout << "\nInfrastructure (2 terms - source7_wolfram.cpp):" << std::endl;
         for (const auto& name : {"YAMLConfigLoader", "ArchiveMediaManager"})
         {
@@ -281,6 +428,11 @@ class ResonanceOscTerm;
 class ResonanceAExpFreqTerm;
 class ResonanceFTRZTerm;
 class ResonanceWormholeTerm;
+
+// BSFG/QCalcGeom bridge functions (implemented in source7_simulation_harness.cpp)
+BridgeBSFGResult  compute_bsfg_bridge(const MUGESystem&, const ResonanceParams&,
+                                       double SSq = SSQ_BSFG, int n_terms = 200, int p_max = 200);
+TriplePointResult compute_triple_point_resolution(const MUGESystem&, const ResonanceParams&);
 
 // ============================================================================
 // REGISTRATION FUNCTION (NOTE: Requires linking compressed + resonance files)

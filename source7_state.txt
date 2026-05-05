@@ -5,6 +5,9 @@ learning_rate=0.01
 update_counter=22
 # Dynamic Parameters
 # Metadata
-meta:features=FluidSolver,MUGE,CelestialBody
+meta:features=FluidSolver,MUGE,CelestialBody,BSFGBridge
 meta:framework=Self-Expanding UQFF
 meta:module=source7
+meta:QCalcGeom_integration=v1.3.0-S202
+meta:triple_point_resolution=Session202
+meta:session=202
