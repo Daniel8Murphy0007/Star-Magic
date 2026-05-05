@@ -27,6 +27,11 @@ REFERENCES:
   - PAPER_554-558: BSFG 5-calculator cascade
 
 SESSION: 203 | April 7, 2026
+UPDATED: Session 230 | May 2026 — QCalcGeomIPCClient is now platform-adaptive:
+  Windows  → Win32 named pipe (ctypes.windll)
+  Linux    → AF_UNIX socket at /tmp/StarMagic_UQFF.sock
+  macOS    → AF_UNIX socket at /tmp/StarMagic_UQFF.sock
+  Other    → HTTP REST fallback to localhost:3141/qcalcgeom
 """
 
 import math
@@ -136,7 +141,17 @@ class MessageHeader:
 
 class QCalcGeomIPCClient:
     """
-    Named pipe client for QCalcGeom C++ engine.
+    Named pipe / Unix socket client for QCalcGeom C++ engine.
+
+    Platform-adaptive:
+      Windows  — uses Win32 CreateFile / WriteFile / ReadFile via ctypes.windll
+      Linux    — uses AF_UNIX domain socket at /tmp/StarMagic_UQFF.sock
+      macOS    — uses AF_UNIX domain socket at /tmp/StarMagic_UQFF.sock
+      Other    — falls back to HTTP REST on localhost:3141/qcalcgeom
+
+    The Windows named pipe (\\\\.\\pipe\\StarMagic_UQFF) and the POSIX socket
+    path (/tmp/StarMagic_UQFF.sock) both implement the same 32-byte
+    MessageHeader framing defined in ipc/uqff_ipc.h.
 
     Usage:
         client = QCalcGeomIPCClient()
@@ -145,21 +160,34 @@ class QCalcGeomIPCClient:
             client.disconnect()
     """
 
+    # POSIX socket path mirrors the Windows pipe name (without UNC prefix)
+    POSIX_SOCKET_PATH = "/tmp/StarMagic_UQFF.sock"
+    REST_FALLBACK_URL = "http://127.0.0.1:3141/qcalcgeom"
+
     def __init__(self, pipe_name: str = PIPE_NAME):
         self.pipe_name = pipe_name
-        self._handle = None
-        self._seq = 0
+        self._handle   = None   # Win32 handle (int) or socket.socket
+        self._platform = sys.platform   # 'win32', 'linux', 'darwin', ...
+        self._seq      = 0
 
     def connect(self) -> bool:
-        """Connect to the StarMagic_UQFF named pipe."""
+        """Connect to the StarMagic_UQFF IPC endpoint."""
+        if self._platform == "win32":
+            return self._connect_win32()
+        elif self._platform in ("linux", "darwin"):
+            return self._connect_posix()
+        else:
+            # Unknown platform — REST fallback needs no persistent connection
+            return True  # lazy connect on first request
+
+    # ── Windows Win32 named pipe ────────────────────────────────────────────
+    def _connect_win32(self) -> bool:
         try:
             import ctypes
             import ctypes.wintypes
-
             GENERIC_READ  = 0x80000000
             GENERIC_WRITE = 0x40000000
             OPEN_EXISTING = 3
-
             handle = ctypes.windll.kernel32.CreateFileW(
                 self.pipe_name,
                 GENERIC_READ | GENERIC_WRITE,
@@ -174,8 +202,33 @@ class QCalcGeomIPCClient:
         except (ImportError, OSError):
             return False
 
-    def disconnect(self):
-        """Close the named pipe handle."""
+    def _send_receive_win32(self, msg_type: int, payload: bytes) -> Optional[bytes]:
+        if self._handle is None:
+            return None
+        try:
+            import ctypes
+            import ctypes.wintypes
+            self._seq += 1
+            header  = MessageHeader(msg_type=msg_type, payload_size=len(payload),
+                                    sequence=self._seq)
+            message = header.pack() + payload
+            bw = ctypes.wintypes.DWORD()
+            ok = ctypes.windll.kernel32.WriteFile(
+                self._handle, message, len(message), ctypes.byref(bw), None)
+            if not ok:
+                return None
+            buf  = ctypes.create_string_buffer(4096)
+            br   = ctypes.wintypes.DWORD()
+            ok   = ctypes.windll.kernel32.ReadFile(
+                self._handle, buf, 4096, ctypes.byref(br), None)
+            if not ok or br.value < HEADER_SIZE:
+                return None
+            rh = MessageHeader.unpack(buf.raw[:HEADER_SIZE])
+            return buf.raw[HEADER_SIZE:HEADER_SIZE + rh.payload_size]
+        except (ImportError, OSError):
+            return None
+
+    def _disconnect_win32(self):
         if self._handle is not None:
             try:
                 import ctypes
@@ -184,52 +237,95 @@ class QCalcGeomIPCClient:
                 pass
             self._handle = None
 
-    def _send_receive(self, msg_type: int, payload: bytes) -> Optional[bytes]:
-        """Send a message and receive response."""
-        if self._handle is None:
-            return None
-
+    # ── POSIX Unix domain socket (Linux / macOS) ────────────────────────────
+    def _connect_posix(self) -> bool:
         try:
-            import ctypes
-            import ctypes.wintypes
+            import socket
+            sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            sock.settimeout(5.0)
+            sock.connect(self.POSIX_SOCKET_PATH)
+            self._handle = sock
+            return True
+        except OSError:
+            return False
 
-            self._seq += 1
-            header = MessageHeader(
-                msg_type=msg_type,
-                payload_size=len(payload),
-                sequence=self._seq,
-            )
-            message = header.pack() + payload
-
-            bytes_written = ctypes.wintypes.DWORD()
-            ok = ctypes.windll.kernel32.WriteFile(
-                self._handle, message, len(message),
-                ctypes.byref(bytes_written), None
-            )
-            if not ok:
-                return None
-
-            # Read response header
-            resp_buf = ctypes.create_string_buffer(4096)
-            bytes_read = ctypes.wintypes.DWORD()
-            ok = ctypes.windll.kernel32.ReadFile(
-                self._handle, resp_buf, 4096,
-                ctypes.byref(bytes_read), None
-            )
-            if not ok or bytes_read.value < HEADER_SIZE:
-                return None
-
-            resp_header = MessageHeader.unpack(resp_buf.raw[:HEADER_SIZE])
-            return resp_buf.raw[HEADER_SIZE:HEADER_SIZE + resp_header.payload_size]
-        except (ImportError, OSError):
+    def _send_receive_posix(self, msg_type: int, payload: bytes) -> Optional[bytes]:
+        sock = self._handle
+        if sock is None:
             return None
+        try:
+            self._seq += 1
+            header  = MessageHeader(msg_type=msg_type, payload_size=len(payload),
+                                    sequence=self._seq)
+            message = header.pack() + payload
+            sock.sendall(message)
+            # Read fixed-size response header first
+            raw_hdr = b""
+            while len(raw_hdr) < HEADER_SIZE:
+                chunk = sock.recv(HEADER_SIZE - len(raw_hdr))
+                if not chunk:
+                    return None
+                raw_hdr += chunk
+            rh  = MessageHeader.unpack(raw_hdr)
+            raw = b""
+            while len(raw) < rh.payload_size:
+                chunk = sock.recv(rh.payload_size - len(raw))
+                if not chunk:
+                    break
+                raw += chunk
+            return raw
+        except OSError:
+            return None
+
+    def _disconnect_posix(self):
+        if self._handle is not None:
+            try:
+                self._handle.close()
+            except OSError:
+                pass
+            self._handle = None
+
+    # ── REST fallback (other / Emscripten / CI) ─────────────────────────────
+    def _send_receive_rest(self, msg_type: int, payload: bytes) -> Optional[bytes]:
+        """HTTP POST to uqff_server.js /qcalcgeom as last-resort fallback."""
+        try:
+            import urllib.request
+            import urllib.error
+            # Decode payload as JSON, add function field from msg_type
+            body = json.loads(payload.decode("utf-8"))
+            req  = urllib.request.Request(
+                self.REST_FALLBACK_URL,
+                data=json.dumps(body).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                return resp.read()
+        except Exception:
+            return None
+
+    # ── Unified public interface ─────────────────────────────────────────────
+    def disconnect(self):
+        """Close the IPC connection."""
+        if self._platform == "win32":
+            self._disconnect_win32()
+        elif self._platform in ("linux", "darwin"):
+            self._disconnect_posix()
+
+    def _send_receive(self, msg_type: int, payload: bytes) -> Optional[bytes]:
+        if self._platform == "win32":
+            return self._send_receive_win32(msg_type, payload)
+        elif self._platform in ("linux", "darwin"):
+            return self._send_receive_posix(msg_type, payload)
+        else:
+            return self._send_receive_rest(msg_type, payload)
 
     def compute(self, payload: bytes) -> Optional[bytes]:
         """Send QCALCGEOM_COMPUTE and get result."""
         return self._send_receive(QCALCGEOM_COMPUTE, payload)
 
     def run_tests(self) -> Optional[bytes]:
-        """Trigger QCALCGEOM test suite (40 tests)."""
+        """Trigger QCALCGEOM test suite."""
         return self._send_receive(QCALCGEOM_TEST_RUN, b"")
 
 

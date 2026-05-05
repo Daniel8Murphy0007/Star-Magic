@@ -43,10 +43,57 @@
  *   v1.1.0 — Session 150  : Original 40 BSFG/VDS/DVP/BSH/BH26 tests
  *   v1.2.0 — Session 151  : +neg-buoy +poly26 +UQFF-comp (60 C++ tests)
  *   v1.3.0 — Session 202  : +VDS/DVP/DH26 variant branches + coupling (70 C++ tests)
+ *   v1.4.0 — Session 230  : QCALCGEOM_API macro + platform guards + extern "C" JSON C-ABI
  */
 
 #ifndef QCALCGEOM_H
 #define QCALCGEOM_H
+
+// ============================================================================
+// SECTION 0 — CROSS-PLATFORM DLL EXPORT / IMPORT MACRO
+// Enables QCalcGeom to be built as a shared library (.dll / .so / .dylib)
+// callable from any language via ctypes / FFI / N-API / WASM.
+//
+// Build modes:
+//   QCALCGEOM_BUILD_DLL  — defined when compiling the shared library itself
+//   QCALCGEOM_USE_DLL    — defined by consumers that link against the shared lib
+//   (neither)            — static link, no decoration required
+//
+// Platform coverage:
+//   Windows (MSVC / Clang-cl / MinGW)  : __declspec(dllexport/dllimport)
+//   Linux / macOS (GCC / Clang)        : __attribute__((visibility("default")))
+//   Emscripten / WASM                  : EMSCRIPTEN_KEEPALIVE via emscripten.h
+//   Other (MSVC fallback, unknown)     : no-op
+// ============================================================================
+
+#if defined(__EMSCRIPTEN__)
+  // WebAssembly / Emscripten — keep symbols alive after dead-code elimination
+#  include <emscripten.h>
+#  define QCALCGEOM_API  EMSCRIPTEN_KEEPALIVE
+#elif defined(_WIN32) || defined(_WIN64)
+#  if defined(QCALCGEOM_BUILD_DLL)
+#    define QCALCGEOM_API  __declspec(dllexport)
+#  elif defined(QCALCGEOM_USE_DLL)
+#    define QCALCGEOM_API  __declspec(dllimport)
+#  else
+#    define QCALCGEOM_API  /* static link — no decoration */
+#  endif
+#elif defined(__GNUC__) || defined(__clang__)
+#  define QCALCGEOM_API  __attribute__((visibility("default")))
+#else
+#  define QCALCGEOM_API  /* unknown toolchain — no-op */
+#endif
+
+// ─── Platform detection tags (informational, used by adaptive logic below) ──
+#if defined(_WIN32) || defined(_WIN64)
+#  define QCALCGEOM_PLATFORM_WINDOWS 1
+#elif defined(__APPLE__)
+#  define QCALCGEOM_PLATFORM_MACOS   1
+#elif defined(__linux__)
+#  define QCALCGEOM_PLATFORM_LINUX   1
+#elif defined(__EMSCRIPTEN__)
+#  define QCALCGEOM_PLATFORM_WASM    1
+#endif
 
 #include <cstdint>
 #include <cmath>
@@ -63,9 +110,9 @@ namespace QCALCGEOM {
 // ============================================================================
 
 constexpr int    QCALCGEOM_VERSION_MAJOR = 1;
-constexpr int    QCALCGEOM_VERSION_MINOR = 3;
+constexpr int    QCALCGEOM_VERSION_MINOR = 4;
 constexpr int    QCALCGEOM_VERSION_PATCH = 0;
-constexpr const char* QCALCGEOM_VERSION_STR = "1.3.0-S202";
+constexpr const char* QCALCGEOM_VERSION_STR = "1.4.0-S230";
 
 // C++ standard gate — matches CMakeLists.txt /std:c++20 project setting
 // MSVC reports correct value only with /Zc:__cplusplus; fall back to _MSVC_LANG
@@ -851,5 +898,73 @@ std::string poly26_symbolic(int k, const std::string& c_wl);
 #endif // USE_EMBEDDED_WOLFRAM
 
 } // namespace QCALCGEOM
+
+// ============================================================================
+// SECTION 6 — CROSS-LANGUAGE C-ABI ADAPTER (extern "C")
+//
+// These three entry points expose the full QCALCGEOM engine to any language
+// that can call a C ABI (Python ctypes/CFFI, Ruby FFI, Node.js N-API,
+// Emscripten JS, Rust FFI, Swift, etc.).
+//
+// Usage pattern (Python ctypes example):
+//   import ctypes, json
+//   lib = ctypes.CDLL("QCalcGeom.dll")  # or .so / .dylib
+//   lib.qcalcgeom_compute_json.restype  = ctypes.c_char_p
+//   lib.qcalcgeom_compute_json.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
+//   raw = lib.qcalcgeom_compute_json(b"bsfg_metric",
+//             json.dumps({"r": 6.96e8, "t_n": 0.0}).encode())
+//   result = json.loads(raw)
+//   lib.qcalcgeom_free_string(raw)   # optional — managed internally, safe to skip
+//
+// Supported function names (case-sensitive):
+//   bsfg_metric          bsfg_horizon          bsfg_field_equations
+//   bsfg_geodesic        bsfg_holonomy         vds_series
+//   dvp_arithmetic       bsh_harmonic          bh26_eigenvalue
+//   bsfg_buoyancy        poly26_derivative     uqff_comp_matrix
+//   vds_branches         dvp_branches          bh26_branches
+//   vds_dvp_coupled      bh26_bsh_resonance
+//
+// JSON parameter keys are the same as the C++ function parameter names.
+// Unknown keys are ignored; missing keys fall back to canonical defaults.
+// Returns a heap-allocated JSON string; valid until the next call on the
+// same thread. Caller MAY call qcalcgeom_free_string() to release early.
+//
+// Thread safety: each call uses its own internal buffer — safe to call from
+// multiple threads simultaneously.
+//
+// Error handling: on invalid function name or JSON parse failure the returned
+// JSON is {"error": "<message>"} and qcalcgeom_run_tests returns -1.
+// ============================================================================
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * @brief Compute any QCalcGeom function; parameters and result as JSON.
+ * @param function_name  C-string name of the QCALCGEOM function to invoke.
+ * @param params_json    UTF-8 JSON object with parameter key/value pairs.
+ * @return  Pointer to a null-terminated UTF-8 JSON result string.
+ *          The string is valid until the next call on the same thread.
+ *          Never NULL.
+ */
+QCALCGEOM_API const char* qcalcgeom_compute_json(const char* function_name,
+                                                  const char* params_json);
+
+/**
+ * @brief Return the QCalcGeom version string (e.g. "1.4.0-S230").
+ * @return  Pointer to a static null-terminated string. Do NOT free.
+ */
+QCALCGEOM_API const char* qcalcgeom_version(void);
+
+/**
+ * @brief Run the full 70-test validation suite.
+ * @return  Number of tests passed (0–70), or -1 on internal error.
+ */
+QCALCGEOM_API int qcalcgeom_run_tests(void);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif // QCALCGEOM_H
