@@ -41,6 +41,8 @@ Each "numeric string" is a 1-D parameter vector with 21 components:
     18   omega_i     resonance angular frequency (rad/s)
     19   k4_res      Ug4 resonance coupling constant
     20   ffluid      fluid frequency (Hz)
+    21   epoch       cosmic epoch (1..5, PTF assignment)
+    22   direction   +1 = forward time / -1 = backward (CPT mirror)
 
 PIPELINE STAGES (simultaneous per batch tick)
 ---------------------------------------------
@@ -69,7 +71,7 @@ the triple-point convergence can be judged against an external oracle.
 
 Author  : Daniel T. Murphy
 Engine  : GitHub Copilot / Claude Sonnet 4.6 (Session 203)
-Version : 1.0.0
+Version : 1.1.0
 """
 
 from __future__ import annotations
@@ -128,6 +130,71 @@ TARGET_EPS  = 1_000_000       # evaluations / second
 
 # Triple-point tolerance
 TRIPLE_TOL  = 0.01            # 1% relative
+
+# =============================================================================
+# SECTION 1B — PRIMORDIAL TIMING CONSTANTS  (Session 203 Phase H203-PTF)
+# =============================================================================
+#
+# Primordial Timing Function (PTF): 3 steps forward, 2 steps back, × 3 reps.
+# Phase A: D_A = n×(f−b) = 3×1 = +3.  Turn 180°.  Phase B: D_B = −3.
+# Total net displacement = D_A + D_B = 0.  Return to zero is exact.
+# Identical to: ∫₀¹ cos(π·t_n) dt_n = [sin(πt_n)/π]₀¹ = 0
+#
+# References:
+#   CPT theorem:    Lüders (1954) Ann.Phys. 2:1
+#   Hartle-Hawking: Phys.Rev.D 28:2960 (1983)
+#   LQC bounce:     Ashtekar & Singh, CQG 28:213001 (2011)
+#   Pisano period:  Wall (1960) Am.Math.Monthly 67:525  [Fibonacci F4=3, F3=2]
+
+# PI digits (first 15, decimal omitted):  π = 3.14159265358979...
+# Partitioned 3 per epoch:
+#   Epoch 1 [3,1,4]  Fissile/Nuclei     radiation-dominated
+#   Epoch 2 [1,5,9]  Star/Planetary     matter-dominated
+#   Epoch 3 [2,6,5]  Galaxies/Quasar    structure formation
+#   Epoch 4 [3,5,8]  Magnetar/SMBH      present era
+#   Epoch 5 [9,7,9]  Globular Clusters  NOT YET PREDICTED — reverse boundary
+PRIMORDIAL_PI_DIGITS: List[int] = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]
+
+# Epoch t_n clock: t_n^(e,k) = π_digit(3(e−1)+k) / 9  for step k=0,1,2
+EPOCH_PI_T_N: Dict[int, List[float]] = {
+    e: [PRIMORDIAL_PI_DIGITS[3*(e-1) + k] / 9.0 for k in range(3)]
+    for e in range(1, 6)
+}
+
+# PTF parameters
+PTF_FORWARD   = 3    # f: steps forward per sub-cycle  (= F₄ Fibonacci)
+PTF_BACKWARD  = 2    # b: steps back   per sub-cycle  (= F₃ Fibonacci)
+PTF_REPEATS   = 3    # n: repetitions  per leg         (= floor(π))
+PTF_NET_STEP  = PTF_FORWARD - PTF_BACKWARD    # = 1  (unit net step)
+PTF_LEG_DISP  = PTF_REPEATS * PTF_NET_STEP   # = 3 ≈ floor(π)
+
+# Universal habitable zone reference radii (3 cosmic scales)
+R_HZ_PLANETARY = 1.496e11    # m  (1 AU — planetary/stellar)
+R_HZ_GALACTIC  = 2.461e20    # m  (26 kly from galactic centre)
+R_HZ_UNIVERSAL = 2.662e25    # m  (2.8 Gly — universal horizon/√3)
+
+# Cosmic times per epoch (seconds since Big Bang)
+EPOCH_T_SEC: Dict[int, Optional[float]] = {
+    1: 1.49e12,    # ~47,000 yr  radiation-matter equality
+    2: 3.08e17,    # ~9.8 Gyr   stellar epoch midpoint
+    3: 4.00e17,    # ~12.7 Gyr  galactic structure era
+    4: 4.35e17,    # ~13.8 Gyr  present — Magnetar/SMBH
+    5: None,       # NOT PREDICTED — from backward epoch 4 boundary
+}
+
+# System-to-epoch assignment (7 canonical source7 systems):
+# SGR1745→4, SgrA*→4, Pillars→3, Westerlund→2, Tapestry→2, Rings→3, Student→1
+SYSTEM_EPOCH: List[int] = [4, 4, 3, 2, 2, 3, 1]
+
+# Batch column index names (N_BATCH_COLS = 23)
+BCOL_R, BCOL_T, BCOL_TN, BCOL_M, BCOL_VSYS          = 0, 1, 2, 3, 4
+BCOL_I, BCOL_A, BCOL_OM1, BCOL_OM2, BCOL_FDPM        = 5, 6, 7, 8, 9
+BCOL_EVAC, BCOL_EISM, BCOL_B, BCOL_BCRIT             = 10, 11, 12, 13
+BCOL_VEXP, BCOL_SSQ, BCOL_FSUPER, BCOL_FTRZ          = 14, 15, 16, 17
+BCOL_OMGI, BCOL_K4, BCOL_FFLUID                      = 18, 19, 20
+BCOL_EPOCH     = 21   # integer epoch 1..5
+BCOL_DIRECTION = 22   # +1 forward / -1 backward (CPT)
+N_BATCH_COLS   = 23
 
 # Wolfram polynomial order
 WOLFRAM_POLY_ORDER = 8
@@ -427,6 +494,146 @@ def _wolfram_predict(batch: np.ndarray) -> np.ndarray:
 
 
 # =============================================================================
+# SECTION 3B — PRIMORDIAL TIMING FUNCTION PHYSICS  (Session 203 Phase H203-PTF)
+# =============================================================================
+
+def validate_primordial_timing_function() -> Dict:
+    """
+    Analytically verify the primordial timing pattern and return a proof dict.
+
+      Phase A : 3 forward, 2 back, × 3  →  D_A = +3
+      180° turn (sign flip)
+      Phase B : same cycle, reversed   →  D_B = −3
+      Net: D_A + D_B = 0  ■
+
+    cos(π·t_n) closure:
+      ∫₀¹ cos(π·t_n) dt_n = [sin(πt_n)/π]₀¹ = 0  ■
+
+    Fibonacci structure:
+      f = 3 = F₄,  b = 2 = F₃  →  f − b = 1 = F₂  (unit net step)
+
+    PI relationship:
+      n = f = 3 = floor(π)  →  fractional 0.14159... = π phase correction
+    """
+    f, b, n = PTF_FORWARD, PTF_BACKWARD, PTF_REPEATS
+    D_A = n * (f - b)
+    D_B = n * (b - f)
+    cos_integral = (math.sin(math.pi * 1.0) - math.sin(math.pi * 0.0)) / math.pi
+
+    def _fib(k: int) -> int:
+        a_, b_ = 0, 1
+        for _ in range(k - 1):
+            a_, b_ = b_, a_ + b_
+        return b_
+
+    return {
+        "ptf_forward"           : f,
+        "ptf_backward"          : b,
+        "ptf_repeats"           : n,
+        "forward_displacement"  : D_A,
+        "backward_displacement" : D_B,
+        "net_displacement"      : D_A + D_B,
+        "returns_to_zero"       : (D_A + D_B == 0),
+        "unit_net_step"         : f - b,
+        "n_equals_pi_floor"     : (n == math.floor(math.pi)),
+        "cos_pi_tn_integral"    : cos_integral,       # = 0.0  (closed loop)
+        "fibonacci_f4_f3"       : (f == _fib(4) and b == _fib(3)),
+        "epoch1_pi_t_n"         : EPOCH_PI_T_N[1],
+        "epoch5_pi_t_n"         : EPOCH_PI_T_N[5],
+    }
+
+
+def _compute_additive_field(g_c: np.ndarray,
+                             g_r: np.ndarray,
+                             g_bsfg: np.ndarray) -> np.ndarray:
+    """
+    Additive triple-path field:  g_add = g_c + g_r + g_bsfg
+
+    The three derivation paths are simultaneous additive overlays, not
+    exclusive alternatives.  They converge at the universal habitable zone
+    radius r_hz.  At r_hz, forward and backward contributions cancel:
+
+        g_add_forward(r_hz) + g_add_backward(r_hz) → 0
+
+    This is the field-theoretic statement of the primordial return-to-zero
+    condition.  Each SCm^n epoch layer contributes its occupancy pattern;
+    at the habitable zone they sum to zero net force.
+    """
+    return g_c + g_r + g_bsfg
+
+
+def _epoch_hz_analysis(batch: np.ndarray, g_add: np.ndarray) -> Dict:
+    """
+    Per-epoch habitable zone (HZ) analysis.
+
+    For each epoch e ∈ {1..5}:
+      forward_mean  — mean additive field over forward-direction strings
+      backward_mean — mean additive field over backward-direction strings
+      net           — forward_mean + backward_mean  (→ 0 at habitable zone)
+
+    ptf_net_displacement: Σ net across all epochs.
+      Should approach 0 as the simulation converges toward the universal HZ.
+      Non-zero value indicates calibration offset from universal equilibrium.
+    """
+    epochs     = batch[:, BCOL_EPOCH].astype(int)
+    directions = batch[:, BCOL_DIRECTION]
+    result: Dict = {}
+
+    for e in range(1, 6):
+        fwd_mask = (epochs == e) & (directions > 0)
+        bwd_mask = (epochs == e) & (directions < 0)
+        fwd_g    = g_add[fwd_mask]
+        bwd_g    = g_add[bwd_mask]
+        fwd_mean = float(np.mean(fwd_g)) if len(fwd_g) > 0 else 0.0
+        bwd_mean = float(np.mean(bwd_g)) if len(bwd_g) > 0 else 0.0
+        result[e] = {
+            "forward_mean"  : fwd_mean,
+            "backward_mean" : bwd_mean,
+            "net"           : fwd_mean + bwd_mean,
+            "n_fwd"         : int(np.sum(fwd_mask)),
+            "n_bwd"         : int(np.sum(bwd_mask)),
+            "t_n_fwd"       : EPOCH_PI_T_N[e][0],
+            "t_n_bwd"       : 1.0 - EPOCH_PI_T_N[e][0],
+            "pi_digits_3"   : PRIMORDIAL_PI_DIGITS[3*(e-1):3*e],
+        }
+
+    result["ptf_net_displacement"] = sum(result[e]["net"] for e in range(1, 6))
+    return result
+
+
+def _find_epoch5_boundary(batch: np.ndarray,
+                          g_bsfg: np.ndarray) -> Tuple[np.ndarray, float]:
+    """
+    Epoch 5 boundary condition — the not-yet-predicted epoch.
+
+    Under time reversal (CPT), backward-time epoch 4 strings evolve toward
+    the epoch 5 initial condition.  Where |g_bsfg| → 0 in the backward
+    epoch 4 subset, the BSFG field vanishes.  Those radii define the
+    boundary between epoch 4 (Magnetar/SMBH, present) and epoch 5
+    (Globular Clusters, future — SCm''''').
+
+    Returns
+    -------
+    boundary_r   : ndarray of r values (m) where |g_bsfg| < 1% epoch4 mean
+    threshold    : the 1% threshold value used
+    """
+    epochs     = batch[:, BCOL_EPOCH].astype(int)
+    directions = batch[:, BCOL_DIRECTION]
+    r_vals     = batch[:, BCOL_R]
+
+    mask  = (epochs == 4) & (directions < 0)
+    g_e4  = g_bsfg[mask]
+    r_e4  = r_vals[mask]
+
+    if len(g_e4) == 0:
+        return np.array([]), 0.0
+
+    threshold     = 0.01 * float(np.mean(np.abs(g_e4)))
+    boundary_mask = np.abs(g_e4) < threshold
+    return r_e4[boundary_mask], threshold
+
+
+# =============================================================================
 # SECTION 4 — SELF-UPDATE LOOP  (calibration gradient descent)
 # =============================================================================
 
@@ -492,18 +699,28 @@ class _RingBuffer:
 def make_default_batch(n: int = N_STR, rng: Optional[np.random.Generator] = None,
                        ssq_override: Optional[float] = None) -> np.ndarray:
     """
-    Generate N numeric strings spanning a physically meaningful parameter space
-    across the 7 canonical MUGE systems (source7.cpp getDefaultSystems()).
+    Generate N epoch-paired numeric strings (N_BATCH_COLS = 23 columns).
 
-    The 21,000 strings are distributed as:
-      3,000 strings × 7 systems = 21,000  (each system gets equal coverage)
-    Within each system the parameters are log-uniformly sampled in [0.1×, 10×]
-    of the canonical value to explore the local physics neighbourhood.
+    Epoch pairing — primordial timing function (PTF):
+      Each system's allocation is split 50/50 forward/backward:
+        Forward  (direction=+1): t > 0,  t_n = EPOCH_PI_T_N[epoch][0]
+        Backward (direction=-1): t < 0,  t_n = 1 - t_n_fwd,  fTRZ negated
+      Forward + backward strings form CPT-symmetric pairs.  At the universal
+      habitable zone radius, their additive field sum (g_c + g_r + g_bsfg)
+      tends toward zero — the primordial return-to-zero (PTF) condition.
+
+    Column layout:
+        0–20  physics parameters (identical to v1.0.0)
+        21    epoch      (1..5, from SYSTEM_EPOCH)
+        22    direction  (+1 forward / -1 backward)
+
+    System-to-epoch: SGR1745→4, SgrA*→4, Pillars→3,
+                     Westerlund→2, Tapestry→2, Rings→3, Student→1
     """
     if rng is None:
         rng = np.random.default_rng(42)
 
-    # --- Canonical system anchors (source7 getDefaultSystems)
+    # Canonical system anchors — 21 physics columns (cols 0–20)
     anchors = np.array([
         # r,    t,   t_n, M,       Vsys,     I,    A,     om1,   om2,   fDPM, Evac_neb, Evac_ISM, B, Bcrit, vexp, SSq, Fsuper, fTRZ, omega_i, k4_res, ffluid
         [1e4,   3.8e10, 0.5, 2.98e30,  4.19e12,  1e21, 3.14e8, 1e-3,  -1e-3,  1e12, 7.09e-36, 7.09e-37, 1e10, 1e11, 1e3,  0.57, 6.29e-19, 0.1, 1e-8, 1.0, 1.27e-14],  # SGR 1745
@@ -515,26 +732,61 @@ def make_default_batch(n: int = N_STR, rng: Optional[np.random.Generator] = None
         [3e26,  4.3e17, 0.5, 1.5e53,   1e79,     1e30, 1e50,    1e-18,-1e-18,1e12, 7.09e-36, 7.09e-37, 1e-12,1e-10,7e4,  0.57, 6.29e-19, 0.1, 1e-8, 1.0, 1e-20],    # Student
     ], dtype=np.float64)
 
-    n_systems = len(anchors)          # 7
-    n_per_sys = n // n_systems        # 3000
-    remainder = n % n_systems         # 0
+    n_systems  = len(anchors)                                         # 7
+    n_per_sys  = n // n_systems                                       # 3000
+    remainder  = n % n_systems                                        # 0
+    cnt_total  = [n_per_sys + (1 if i < remainder else 0)
+                  for i in range(n_systems)]
+    cnt_fwd    = [c // 2 for c in cnt_total]                         # 1500 each
+    cnt_bwd    = [c - f  for c, f in zip(cnt_total, cnt_fwd)]        # 1500 each
 
-    rows = []
+    rows_fwd: List[np.ndarray] = []
+    rows_bwd: List[np.ndarray] = []
+
     for i, anchor in enumerate(anchors):
-        cnt = n_per_sys + (1 if i < remainder else 0)
-        # Log-uniform perturbations in [0.5×, 2×] around each anchor
-        scale = np.exp(rng.uniform(-0.7, 0.7, size=(cnt, 21)))
-        rows.append(anchor * scale)
+        epoch  = SYSTEM_EPOCH[i]
+        tn_fwd = EPOCH_PI_T_N[epoch][0]          # first π-digit phase
+        tn_bwd = 1.0 - tn_fwd                    # CPT mirror
+        cf, cb = cnt_fwd[i], cnt_bwd[i]
 
-    batch = np.vstack(rows)           # (N, 21)
+        sf = np.exp(rng.uniform(-0.7, 0.7, size=(cf, 21)))
+        sb = np.exp(rng.uniform(-0.7, 0.7, size=(cb, 21)))
+
+        fwd = anchor * sf
+        bwd = anchor * sb
+
+        # Apply epoch π-digit clock to t_n column
+        fwd[:, BCOL_TN]   = tn_fwd
+        bwd[:, BCOL_TN]   = tn_bwd
+
+        # Backward: negate t (time reversal) and fTRZ (CPT flip)
+        bwd[:, BCOL_T]    = -np.abs(bwd[:, BCOL_T])
+        bwd[:, BCOL_FTRZ] = -np.abs(bwd[:, BCOL_FTRZ])
+
+        rows_fwd.append(fwd)
+        rows_bwd.append(bwd)
+
+    all_fwd = np.vstack(rows_fwd)     # (sum(cnt_fwd), 21)
+    all_bwd = np.vstack(rows_bwd)     # (sum(cnt_bwd), 21)
+
+    # Build epoch and direction columns (float64 for numpy column_stack)
+    ep_fwd = np.repeat(np.array(SYSTEM_EPOCH, dtype=np.float64), cnt_fwd)
+    ep_bwd = np.repeat(np.array(SYSTEM_EPOCH, dtype=np.float64), cnt_bwd)
+    di_fwd = np.ones(len(all_fwd),  dtype=np.float64)
+    di_bwd = np.full(len(all_bwd), -1.0, dtype=np.float64)
+
+    batch = np.vstack([
+        np.column_stack([all_fwd, ep_fwd, di_fwd]),   # (N/2, 23)
+        np.column_stack([all_bwd, ep_bwd, di_bwd]),   # (N/2, 23)
+    ])   # (N, 23)
 
     # SSq column: clamp to [0.50, 0.64] and override if requested
-    batch[:, 15] = np.clip(batch[:, 15], 0.50, 0.64)
+    batch[:, BCOL_SSQ] = np.clip(batch[:, BCOL_SSQ], 0.50, 0.64)
     if ssq_override is not None:
-        batch[:, 15] = ssq_override
+        batch[:, BCOL_SSQ] = ssq_override
 
-    # Enforce sign: r, M, Vsys, fDPM, Evac must be positive
-    for col in [0, 3, 4, 9, 10, 11]:
+    # Enforce positive: r, M, Vsys, fDPM, Evac_neb, Evac_ISM
+    for col in [BCOL_R, BCOL_M, BCOL_VSYS, BCOL_FDPM, BCOL_EVAC, BCOL_EISM]:
         batch[:, col] = np.abs(batch[:, col]) + 1e-300
 
     return batch
@@ -564,6 +816,10 @@ class BatchResult:
     at_triple_pt  : np.ndarray     # bool mask
     ssq_calibrated: float
     n_converged   : int
+    g_additive    : np.ndarray     # g_c + g_r + g_bsfg (additive overlay)
+    epoch_hz      : Dict           # per-epoch HZ analysis (1..5 + ptf_net_displacement)
+    epoch5_boundary: np.ndarray   # r values where epoch4 backward g_bsfg → 0
+    ptf_net_disp  : float          # Σ epoch nets (PTF return-to-zero metric)
 
 
 class SimEngine:
@@ -650,6 +906,15 @@ class SimEngine:
         # aTHz = aDPM * 1e12 * vexp/c dominates resonance; at vexp < 4.7e6 m/s: OOM < 10.
         at_tp  = (err_rq < 10.0)
 
+        # Stage 13 — Additive triple-path field
+        g_add = _compute_additive_field(g_c, g_r, g_q)
+
+        # Stage 14 — Epoch habitable zone analysis
+        epoch_hz = _epoch_hz_analysis(batch, g_add)
+
+        # Stage 15 — Epoch 5 boundary condition
+        e5_boundary, _e5_thresh = _find_epoch5_boundary(batch, g_q)
+
         # Stage 11 — Self-update calibration
         self.calib.update(err_cr, err_rq, err_cq)
 
@@ -678,6 +943,10 @@ class SimEngine:
             at_triple_pt   = at_tp,
             ssq_calibrated = ssq_now,
             n_converged    = int(np.sum(at_tp)),
+            g_additive     = g_add,
+            epoch_hz       = epoch_hz,
+            epoch5_boundary= e5_boundary,
+            ptf_net_disp   = float(epoch_hz["ptf_net_displacement"]),
         )
 
         # Stage 12 — Ring-buffer export
@@ -690,6 +959,8 @@ class SimEngine:
             "mean_err_rq"  : float(np.mean(err_rq)),
             "mean_err_cq"  : float(np.mean(err_cq)),
             "mean_err_wf"  : float(np.mean(err_wf)),
+            "ptf_net_disp" : result.ptf_net_disp,
+            "n_epoch5_bnd" : int(len(e5_boundary)),
         })
 
         if self.verbose:
@@ -755,6 +1026,15 @@ class SimEngine:
               f"  CQ={np.mean(r.err_cq):.2f}OOM  Wolfram={np.mean(r.err_wolfram)*100:.3f}%")
         print(f"  joint_coeff  mean={np.mean(r.joint_coeff):.6e}")
         print(f"  variant_branch mean={np.mean(r.variant_branch):.6e}")
+        print(f"  PTF net disp = {r.ptf_net_disp:+.4e}  "
+              f"epoch5 boundary strings = {len(r.epoch5_boundary)}")
+        for e in range(1, 6):
+            eh = r.epoch_hz[e]
+            print(f"    Epoch {e} ({SYSTEM_EPOCH.count(e)} sys): "
+                  f"fwd={eh['forward_mean']:+.3e}  "
+                  f"bwd={eh['backward_mean']:+.3e}  "
+                  f"net={eh['net']:+.3e}  "
+                  f"t_nπ={eh['t_n_fwd']:.4f}")
 
 
 # =============================================================================
@@ -1021,7 +1301,7 @@ def run_sim_engine_tests(verbose: bool = True) -> int:
 
     # T_SE_09: make_default_batch shape
     batch = make_default_batch(n=210, rng=np.random.default_rng(7))
-    check("T_SE_09 batch shape", batch.shape == (210, 21),
+    check("T_SE_09 batch shape", batch.shape == (210, N_BATCH_COLS),
           f"got {batch.shape}")
 
     # T_SE_10: SSq column within bounds after make_default_batch
@@ -1066,6 +1346,64 @@ def run_sim_engine_tests(verbose: bool = True) -> int:
     bm = engine.benchmark(warmup=1, measure=3)
     check("T_SE_20 benchmark keys", "target_met" in bm and "mean_eps" in bm)
 
+    # ----------------------------------------------------------------
+    # --- PTF / Epoch tests  (T_SE_21 .. T_SE_30) --------------------
+    ptf = validate_primordial_timing_function()
+
+    # T_SE_21: PTF net displacement = 0
+    check("T_SE_21 PTF net=0", ptf["net_displacement"] == 0,
+          f"got {ptf['net_displacement']}")
+
+    # T_SE_22: PTF leg displacement (Phase A) = +3
+    check("T_SE_22 PTF D_A=+3", ptf["forward_displacement"] == 3,
+          f"got {ptf['forward_displacement']}")
+
+    # T_SE_23: cos(π·t_n) integral ≈ 0 (closed-loop condition)
+    check("T_SE_23 cos(π·tn) integral=0",
+          abs(ptf["cos_pi_tn_integral"]) < 1e-14,
+          f"got {ptf['cos_pi_tn_integral']:.2e}")
+
+    # T_SE_24: epoch 1 π-t_n = [3/9, 1/9, 4/9]
+    expected_e1 = [3/9, 1/9, 4/9]
+    check("T_SE_24 epoch1 pi-tn",
+          all(abs(a - b) < 1e-12 for a, b in zip(ptf["epoch1_pi_t_n"], expected_e1)),
+          f"got {ptf['epoch1_pi_t_n']}")
+
+    # T_SE_25: batch has N_BATCH_COLS = 23 columns
+    batch23 = make_default_batch(n=210, rng=np.random.default_rng(7))
+    check("T_SE_25 batch 23 cols", batch23.shape == (210, N_BATCH_COLS),
+          f"got {batch23.shape}")
+
+    # T_SE_26: epoch column contains only values in {1,2,3,4,5}
+    ep_vals = set(batch23[:, BCOL_EPOCH].astype(int).tolist())
+    check("T_SE_26 epoch vals ⊆ {1..5}", ep_vals.issubset({1, 2, 3, 4, 5}),
+          f"got {ep_vals}")
+
+    # T_SE_27: direction column contains only {-1, +1}
+    dir_vals = set(batch23[:, BCOL_DIRECTION].astype(int).tolist())
+    check("T_SE_27 direction ∈ {-1,+1}", dir_vals == {-1, 1},
+          f"got {dir_vals}")
+
+    # T_SE_28: forward count == backward count  (symmetric pairing)
+    n_fwd28 = int(np.sum(batch23[:, BCOL_DIRECTION] > 0))
+    n_bwd28 = int(np.sum(batch23[:, BCOL_DIRECTION] < 0))
+    check("T_SE_28 fwd==bwd count", n_fwd28 == n_bwd28,
+          f"fwd={n_fwd28}  bwd={n_bwd28}")
+
+    # T_SE_29: g_additive finite for full batch
+    adpm29      = _compute_adpm(batch23)
+    gc29        = _compute_muge_compressed(batch23)
+    gr29        = _compute_muge_resonance(batch23, adpm29)
+    gq29, _, _  = _compute_bsfg(batch23, adpm29)
+    g_add29     = _compute_additive_field(gc29, gr29, gq29)
+    check("T_SE_29 g_additive finite", bool(np.all(np.isfinite(g_add29))))
+
+    # T_SE_30: epoch HZ analysis returns 5 epoch keys + ptf_net_displacement
+    eh29 = _epoch_hz_analysis(batch23, g_add29)
+    check("T_SE_30 epoch_hz keys",
+          all(e in eh29 for e in range(1, 6)) and "ptf_net_displacement" in eh29,
+          f"keys: {list(eh29.keys())}")
+
     print(f"\n  {'=' * 40}")
     print(f"  SimEngine Tests: {passed} PASS / {failed} FAIL  (total {passed+failed})")
     return passed
@@ -1079,7 +1417,8 @@ if __name__ == "__main__":
     import sys
 
     print("=" * 72)
-    print("  QCalcGeom Simulation Engine  v1.0.0  —  Session 203, May 5 2026")
+    print("  QCalcGeom Simulation Engine  v1.1.0  —  Session 203, May 5 2026")
+    print("  Primordial Timing Function (PTF): 3 fwd, 2 bk, ×3 reps | net=0 | 5 epochs")
     print("=" * 72)
     print(f"  LUT precomputed: VDS({len(_LUT.vds_li25)} knots) | "
           f"DVP({len(_LUT.primes_gt26)} primes>26) | BH26(N_max={_Precompute.BH26_NMAX})")
@@ -1087,9 +1426,22 @@ if __name__ == "__main__":
 
     # Run tests
     passed = run_sim_engine_tests(verbose=True)
-    if passed < 20:
+    if passed < 30:
         print("\n  WARNING: Some tests failed — check physics constants and LUT build.")
 
+    print()
+
+    # PTF validation
+    print("  Primordial Timing Function validation ...")
+    ptf_v = validate_primordial_timing_function()
+    print(f"  PTF: D_A={ptf_v['forward_displacement']:+d}  "
+          f"D_B={ptf_v['backward_displacement']:+d}  "
+          f"net={ptf_v['net_displacement']:+d}  "
+          f"returns_to_zero={ptf_v['returns_to_zero']}")
+    print(f"  cos(π·t_n) integral = {ptf_v['cos_pi_tn_integral']:.2e}  (closed loop)")
+    print(f"  Epoch 1 π-t_n: {[f'{v:.4f}' for v in ptf_v['epoch1_pi_t_n']]}")
+    print(f"  Epoch 5 π-t_n: {[f'{v:.4f}' for v in ptf_v['epoch5_pi_t_n']]}  "
+          "(boundary predicted by backward epoch 4)")
     print()
 
     # Full benchmark
@@ -1103,10 +1455,16 @@ if __name__ == "__main__":
     print(f"  [SSq] drift     : {bm['ssq_drift']:+.6f}")
     print()
 
+    # One verbose tick to show epoch structure
+    print("  Epoch structure tick (verbose) ...")
+    engine_v = SimEngine(n_strings=N_STR, verbose=True)
+    r_v = engine_v.tick()
+    print()
+
     # UQFF vs Wolfram comparison
     print("  Running UQFF vs Wolfram comparison (5 ticks) ...")
     engine2 = SimEngine(n_strings=N_STR, verbose=False)
     cmp = uqff_vs_wolfram_comparison(engine2, n_ticks=5)
     print_comparison_report(cmp)
 
-    sys.exit(0 if passed == 20 else 1)
+    sys.exit(0 if passed == 30 else 1)
