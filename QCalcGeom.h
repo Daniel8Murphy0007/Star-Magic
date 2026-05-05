@@ -37,7 +37,12 @@
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
- * Version  : 1.1.0
+ * Version  : 1.3.0
+ *
+ * Revision history:
+ *   v1.1.0 — Session 150  : Original 40 BSFG/VDS/DVP/BSH/BH26 tests
+ *   v1.2.0 — Session 151  : +neg-buoy +poly26 +UQFF-comp (60 C++ tests)
+ *   v1.3.0 — Session 202  : +VDS/DVP/DH26 variant branches + coupling (70 C++ tests)
  */
 
 #ifndef QCALCGEOM_H
@@ -58,9 +63,9 @@ namespace QCALCGEOM {
 // ============================================================================
 
 constexpr int    QCALCGEOM_VERSION_MAJOR = 1;
-constexpr int    QCALCGEOM_VERSION_MINOR = 2;
+constexpr int    QCALCGEOM_VERSION_MINOR = 3;
 constexpr int    QCALCGEOM_VERSION_PATCH = 0;
-constexpr const char* QCALCGEOM_VERSION_STR = "1.2.0-S151G";
+constexpr const char* QCALCGEOM_VERSION_STR = "1.3.0-S202";
 
 // C++ standard gate — matches CMakeLists.txt /std:c++20 project setting
 // MSVC reports correct value only with /Zc:__cplusplus; fall back to _MSVC_LANG
@@ -160,6 +165,18 @@ constexpr double U_UA_BSFG      = 1.0;                // U_UA — Aether buoyanc
 /// Reference Ubi at r=R_SUN, t_n=0 (canonical BSFG, SOURCE4 parameters)
 /// = −β_i · (G·M_⊙²/R_⊙²) · (Ω_g·M_bh/d_g) · wind_mod · U_UA · 1.0 ≈ −7.63e33
 constexpr double UBI_BSFG_REF   = -7.63e33;
+
+// ─── Session 202: VDS/DVP/DH26 variant-branch reference values ──────────────
+
+/// VDS_prime = ∂/∂z Li_{26}(z)|_{z=0.57} = Li_{25}(0.57)/0.57 ≈ 1.0
+/// Sensitivity of the Vacuum Density Series to the [SSq] calibration constant.
+constexpr double VDS_PRIME_REF    = 1.0;       // dimensionless
+
+/// BH26 spectral ladder sum Σ_{k=1}^{10} k(k+25) = 1760  (closed form: N(N+1)(2N+1)/6 + 25N(N+1)/2)
+constexpr double BH26_SPECTRAL_N10 = 1760.0;  // dimensionless eigenvalue sum
+
+/// Multiplicity of degree-1 spherical harmonics on S^{25}: C(26,25) = 26
+constexpr int    BH26_DEG_K1       = 26;       // integer
 
 // ============================================================================
 // SECTION 3 — RESULT STRUCTS
@@ -392,6 +409,97 @@ struct UQFFCompResult {
 };
 
 // ============================================================================
+// SECTION 3b — SESSION 202 VARIANT-BRANCH RESULT STRUCTS
+// Returned by the five new branch-derivation functions added in v1.3.0.
+// Mirror the Python dataclasses in QCalcGeom.py (VDSBranchResult, etc.).
+// ============================================================================
+
+/**
+ * @brief VDS variant-branch derivations: sensitivity, energy density, BH26-coupled.
+ *
+ * vds_prime      = ∂/∂z Li_{26}(z)|_{z=SSq} = Li_{25}(SSq)/SSq  (calibration sensitivity)
+ * vds_density    = Li_{26}(SSq) × RHO_VAC_SCM_BSFG  [J/m³]  (energy-density form)
+ * vds_k_weighted = Li_{25}(SSq) + 25·Li_{26}(SSq)            (VDS × BH26-ladder coupling)
+ *
+ * Tests: T61 (vds_prime ≈ 1.0), T62 (vds_density > 0)
+ */
+struct VDSBranchResult {
+    double vds_li25;       ///< Li_{25}([SSq])  — polylogarithm one degree below VDS
+    double vds_prime;      ///< d/dz Li_{26}(z)|_{z=SSq} = Li_{25}/SSq  ≈ 1.0
+    double vds_density;    ///< Li_{26}(SSq) × 7.09e-37  [J/m³]
+    double vds_k_weighted; ///< Li_{25}(SSq) + 25·Li_{26}(SSq)  — VDS×BH26 coupled amplitude
+};
+
+/**
+ * @brief DVP variant-branch derivations: spectral sum, pair product, vorticity floor.
+ *
+ * zeta_sum       = Σ_{p>26, p≤p_max} a(p) where a(p) = SSq^{π(p)} / p^{26}
+ * pair_product   = a(29) × a(31)  (double-vortex state coupling)
+ * spectral_floor = a(p_max)       (Navier-Stokes vorticity lower bound)
+ *
+ * Tests: T63 (zeta_sum > 0), T64 (pair_product < a_29²)
+ */
+struct DVPBranchResult {
+    double zeta_sum;        ///< Full DVP prime-vortex spectral sum
+    int    n_primes_dvp;    ///< Count of DVP primes in (26, p_max]
+    double pair_product;    ///< a(29) × a(31)  — double-vortex amplitude
+    double spectral_floor;  ///< a(p_max)  — lowest DVP vortex amplitude
+    double a_29;            ///< a(29) — first DVP term (dominant component)
+};
+
+/**
+ * @brief BH26/DH26 variant-branch derivations: spectral ladder, Casimir, degeneracy, VDS bridge.
+ *
+ * spectral_sum   = Σ_{k=1}^{N} k(k+25)  [eigenvalue ladder sum; = 1760 for N=10]
+ * casimir_energy = ℏ·f_{RR}/2 × Σ 1/λ_k  [J]  (quantum vacuum energy)
+ * degeneracy_k1  = 26  (C(26,25): multiplicity of degree-1 on S^{25})
+ * vds_coupling   = Σ_{k=1}^{N} λ_k^{-26}  (topology-to-VDS bridge: each eigenvalue raised to VDS power)
+ *
+ * Tests: T65 (spectral_sum==1760), T66 (casimir_energy>0), T67 (degeneracy_k1==26), T68 (vds_coupling>0)
+ */
+struct BH26BranchResult {
+    double spectral_sum;    ///< Σ_{k=1}^{N} k(k+25)  — eigenvalue ladder sum
+    double casimir_energy;  ///< ℏ·RERING_BB_HZ/2 × Σ 1/λ_k  [J]
+    int    degeneracy_k1;   ///< 26 = C(26,25)  — multiplicity of degree-1 harmonic on S^{25}
+    double vds_coupling;    ///< Σ_{k=1}^{N} λ_k^{-26}  — BH26→VDS topological bridge
+    int    N;               ///< Number of eigenvalue levels summed
+};
+
+/**
+ * @brief VDS×DVP coupled field coefficient and variant (calibration) branch.
+ *
+ * w_vds          = Li_{26}(SSq) / VDS_max  — normalised VDS weight in [0,1]
+ * w_dvp          = zeta_sum / a(29)         — normalised DVP weight
+ * joint_coeff    = sqrt(w_vds × w_dvp)      — geometric-mean field coupling
+ * variant_branch = |w_vds − w_dvp|          — differential calibration magnitude
+ *
+ * Test: T69 (joint_coeff ≥ 0)
+ */
+struct VDSDVPCoupledResult {
+    double w_vds;           ///< Normalised VDS weight
+    double w_dvp;           ///< Normalised DVP weight
+    double joint_coeff;     ///< sqrt(w_vds · w_dvp)  — coupled field amplitude
+    double variant_branch;  ///< |w_vds − w_dvp|  — differential calibration gap
+};
+
+/**
+ * @brief BH26×BSH resonance: BSH evaluated at a BH26 spectral frequency bin.
+ *
+ * freq_k         = RERING_BB_HZ / λ_k   [Hz]  — BH26 frequency bin
+ * bsh_at_k       = BSH U_g2 at omega = 2π·freq_k  (phase-coherent buoyancy)
+ * resonance      = bsh_at_k · cos(π·t_n)          (cross-resonance amplitude)
+ * energy_density = resonance × RHO_VAC_SCM_BSFG    [J/m³]
+ *
+ * Test: T70 (energy_density > 0 at t_n=0)
+ */
+struct BH26BSHResonanceResult {
+    double freq_k;          ///< f_k = RERING_BB_HZ / (k(k+25))  [Hz]
+    double bsh_at_k;        ///< BSH U_g2 amplitude at BH26 frequency bin
+    double resonance;       ///< bsh_at_k · cos(π·t_n)  — cross-resonance
+    double energy_density;  ///< resonance × 7.09e-37  [J/m³]
+};
+
+// ============================================================================
 // SECTION 4 — PUBLIC API DECLARATIONS
 // Implemented in QCalcGeom.cpp (Phase B).
 // Default parameters use canonical constants from Section 2.
@@ -591,13 +699,87 @@ Poly26Result poly26_derivative(int k, double c, double r);
 UQFFCompResult uqff_comp_matrix(double r, double rho);
 
 /**
- * @brief Run all 60 QCalcGeom requirements-boundary tests and print results.
+ * @brief Compute VDS variant branches (sensitivity, energy density, BH26-coupled amplitude).
+ *
+ * @param SSq     Convergence parameter (default SSQ_DEFAULT = 0.57)
+ * @param n_terms Polylogarithm truncation (default 200)
+ * @return VDSBranchResult with vds_li25, vds_prime, vds_density, vds_k_weighted
+ *
+ * Tests: T61, T62.  Reference: CP4 #83 VDS + Session 202 derivations.
+ */
+VDSBranchResult vds_branches(double SSq = SSQ_DEFAULT, int n_terms = 200);
+
+/**
+ * @brief Compute DVP spectral sum, pair-product, and vorticity floor.
+ *
+ * Enumerates primes p > 26 up to p_max; for each prime p at prime-counting
+ * position π(p): a(p) = [SSq]^{π(p)} / p^{26}.
+ *
+ * @param p_max  Upper limit of prime sieve (default 200)
+ * @return DVPBranchResult with zeta_sum, n_primes_dvp, pair_product, spectral_floor, a_29
+ *
+ * Tests: T63, T64.  Reference: CP4 #83 DVP + Navier-Stokes vorticity bound.
+ */
+DVPBranchResult dvp_branches(int p_max = 200);
+
+/**
+ * @brief Compute BH26/DH26 spectral ladder: sum, Casimir energy, degeneracy, VDS bridge.
+ *
+ * λ_k = k(k+25) for the Laplacian on S^{25}.  Summed from k=1 to N.
+ *
+ * @param N  Number of eigenvalue levels to sum (default 10)
+ * @return BH26BranchResult with spectral_sum, casimir_energy, degeneracy_k1, vds_coupling, N
+ *
+ * Tests: T65, T66, T67, T68.  Reference: CP4 #149 BH26 + Session 202.
+ */
+BH26BranchResult bh26_branches(int N = 10);
+
+/**
+ * @brief Compute VDS×DVP coupled field coefficient and calibration variant branch.
+ *
+ * Normalises both series against their respective maxima, then forms the
+ * geometric-mean joint coefficient and the differential calibration gap.
+ *
+ * @param SSq     VDS convergence parameter (default SSQ_DEFAULT)
+ * @param p_max   DVP sieve limit (default 200)
+ * @param n_terms VDS truncation (default 200)
+ * @return VDSDVPCoupledResult with w_vds, w_dvp, joint_coeff, variant_branch
+ *
+ * Test: T69.  Encodes "many ways to get from one place to the other".
+ */
+VDSDVPCoupledResult vds_dvp_coupled(double SSq    = SSQ_DEFAULT,
+                                     int    p_max   = 200,
+                                     int    n_terms = 200);
+
+/**
+ * @brief Evaluate BSH harmonics at a BH26 spectral frequency bin.
+ *
+ * For BH26 mode k: freq_k = RERING_BB_HZ / (k(k+25)) [Hz].
+ * The BSH is evaluated with omega = 2π·freq_k at the given phase t_n.
+ * Cross-resonance = bsh_at_k × cos(π·t_n).
+ *
+ * @param f_Ub  Base buoyancy frequency [Hz] (controls BSH H_m amplitude)
+ * @param SSq   [SSq] convergence parameter (default SSQ_DEFAULT)
+ * @param t_n   Phase parameter (default 0.0)
+ * @param k     BH26 mode index k ≥ 1 (default 1)
+ * @return BH26BSHResonanceResult with freq_k, bsh_at_k, resonance, energy_density
+ *
+ * Test: T70.  Reference: BH26 × BSH cross-resonance, Session 202.
+ */
+BH26BSHResonanceResult bh26_bsh_resonance(double f_Ub = 3.3e7,
+                                            double SSq  = SSQ_DEFAULT,
+                                            double t_n  = 0.0,
+                                            int    k    = 1);
+
+/**
+ * @brief Run all 70 QCalcGeom requirements-boundary tests and print results.
  *
  * Phases A-E: 40 original BSFG/VDS/DVP/BSH/BH26/COSMO/CHALLENGE tests (T01-T40)
  * Phase E:    10 Session-151 negative-time + negative-buoyancy tests (T41-T50).
  * Phase G:    10 Session-151 26th-order expansion tests (T51-T60).
+ * Phase H202: 10 Session-202 VDS/DVP/DH26 variant-branch + coupling tests (T61-T70).
  *
- * Expected result post Phase G: 60/60 PASS.
+ * Expected result post Phase H202: 70/70 PASS.
  */
 void runQCalcGeomTests();
 

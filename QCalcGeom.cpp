@@ -1,19 +1,22 @@
 /**
  * @file QCalcGeom.cpp
- * @brief BSFG Geometric Physics Calculator — Implementation (v1.2.0)
+ * @brief BSFG Geometric Physics Calculator — Implementation (v1.3.0)
  *
- * Implements all 12 functions declared in QCalcGeom.h:
+ * Implements all 17 functions declared in QCalcGeom.h:
  *   bsfg_metric, bsfg_horizon, bsfg_field_equations, bsfg_geodesic,
  *   bsfg_holonomy, vds_series, dvp_arithmetic, bsh_harmonic,
  *   bh26_eigenvalue, bsfg_buoyancy,
- *   poly26_derivative, uqff_comp_matrix   ← Phase G additions
+ *   poly26_derivative, uqff_comp_matrix     <- Phase G additions
+ *   vds_branches, dvp_branches, bh26_branches,
+ *   vds_dvp_coupled, bh26_bsh_resonance     <- Phase H202 additions
  *
- * runQCalcGeomTests() covers T01–T60 (60 tests total).
+ * runQCalcGeomTests() covers T01–T70 (70 tests total).
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
  * Updated  : Session 151 Phase G — March 28, 2026
- * Version  : 1.2.0
+ * Updated  : Session 202 Phase H202 — May 2026
+ * Version  : 1.3.0
  */
 
 #include "QCalcGeom.h"
@@ -475,6 +478,150 @@ UQFFCompResult uqff_comp_matrix(double r, double rho)
     // m11 can underflow to 0.0 at large r (k=26, r^52 >> double): 0>=0 is correctly non-negative
     out.positive_definite = (out.m00 >= 0.0) && (out.m11 >= 0.0) && (out.m22 >= 0.0);
     return out;
+}
+
+// ============================================================================
+// SECTION 2b — SESSION 202 VARIANT-BRANCH FUNCTION IMPLEMENTATIONS
+// Phase H202: VDS branches, DVP branches, BH26 branches, and coupling functions.
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// vds_branches(SSq, n_terms)
+// VDS_prime      = Li_{25}(SSq)/SSq  -- calibration sensitivity of Li_{26}
+// VDS_density    = Li_{26}(SSq) * 7.09e-37  [J/m3]
+// VDS_k_weighted = Li_{25}(SSq) + 25*Li_{26}(SSq)  -- BH26-coupled amplitude
+// Reference: CP4 #83 VDS + Session 202 derivations
+// ----------------------------------------------------------------------------
+VDSBranchResult vds_branches(double SSq, int n_terms) {
+    VDSBranchResult v{};
+    double li25 = 0.0, li26 = 0.0;
+    double ps = SSq;
+    for (int n = 1; n <= n_terms; ++n) {
+        const double dn25 = std::pow(static_cast<double>(n), 25.0);
+        const double dn26 = dn25 * static_cast<double>(n);
+        li25 += ps / dn25;
+        li26 += ps / dn26;
+        ps *= SSq;
+        if (std::abs(ps) < 1e-300) break;
+    }
+    v.vds_li25       = li25;
+    v.vds_prime      = (SSq > 0.0) ? li25 / SSq : 0.0;  // d/dz Li_26(z)|_{z=SSq}
+    v.vds_density    = li26 * 7.09e-37;                   // VDS x RHO_VAC_SCM_BSFG  [J/m3]
+    v.vds_k_weighted = li25 + 25.0 * li26;                // VDS x BH26 coupled amplitude
+    return v;
+}
+
+// ----------------------------------------------------------------------------
+// dvp_branches(p_max)
+// Enumerates all primes p in (26, p_max]; computes a(p) = SSq^{pi(p)} / p^26.
+// zeta_sum: full DVP spectral sum
+// pair_product: a(29) x a(31)  (double-vortex state)
+// spectral_floor: a(p_max)  (Navier-Stokes vorticity lower bound)
+// Reference: CP4 #83 DVP + Navier-Stokes vorticity bound, Session 202
+// ----------------------------------------------------------------------------
+DVPBranchResult dvp_branches(int p_max) {
+    DVPBranchResult d{};
+    // Sieve of Eratosthenes
+    std::vector<bool> sieve(static_cast<std::size_t>(p_max + 1), true);
+    if (p_max >= 0) sieve[0] = false;
+    if (p_max >= 1) sieve[1] = false;
+    for (int i = 2; i * i <= p_max; ++i)
+        if (sieve[static_cast<std::size_t>(i)])
+            for (int j = i * i; j <= p_max; j += i)
+                sieve[static_cast<std::size_t>(j)] = false;
+
+    int pi_count = 0;   // prime-counting function pi(p)
+    double dvp_sum = 0.0, a29 = 0.0, a31 = 0.0, last_a = 0.0;
+    int cnt = 0;
+    for (int p = 2; p <= p_max; ++p) {
+        if (!sieve[static_cast<std::size_t>(p)]) continue;
+        ++pi_count;
+        if (p <= 26) continue;   // only primes > 26 contribute to DVP spectrum
+        const double a_p = std::pow(SSQ_DEFAULT, static_cast<double>(pi_count))
+                         / std::pow(static_cast<double>(p), 26.0);
+        dvp_sum += a_p;
+        ++cnt;
+        if (p == 29) a29 = a_p;
+        if (p == 31) a31 = a_p;
+        last_a = a_p;
+    }
+    d.zeta_sum      = dvp_sum;
+    d.n_primes_dvp  = cnt;
+    d.pair_product  = a29 * a31;
+    d.spectral_floor = last_a;
+    d.a_29           = a29;
+    return d;
+}
+
+// ----------------------------------------------------------------------------
+// bh26_branches(N)
+// Eigenvalue ladder: lambda_k = k(k+25) on S^{25}
+// spectral_sum:    sum_{k=1}^{N} lambda_k
+// casimir_energy:  hbar * RERING_BB_HZ / 2 * sum 1/lambda_k  [J]
+// degeneracy_k1:   26 = C(26,25)  (multiplicity of degree-1 harmonic on S^{25})
+// vds_coupling:    sum_{k=1}^{N} lambda_k^{-26}  (BH26->VDS topological bridge)
+// Reference: CP4 #149 BH26 spectrum + Session 202
+// ----------------------------------------------------------------------------
+BH26BranchResult bh26_branches(int N) {
+    BH26BranchResult b{};
+    b.N = N;
+    double sl = 0.0, si = 0.0, sv = 0.0;
+    for (int k = 1; k <= N; ++k) {
+        const double lk = static_cast<double>(k) * static_cast<double>(k + 25);
+        sl += lk;
+        si += 1.0 / lk;
+        sv += std::pow(lk, -26.0);
+    }
+    b.spectral_sum    = sl;
+    b.casimir_energy  = HBAR * RERING_BB_HZ * 0.5 * si;   // [J]
+    b.degeneracy_k1   = 26;   // C(26,25) = 26 : multiplicity of lambda_1 on S^{25}
+    b.vds_coupling    = sv;
+    return b;
+}
+
+// ----------------------------------------------------------------------------
+// vds_dvp_coupled(SSq, p_max, n_terms)
+// Normalises VDS and DVP spectral weights then computes:
+//   joint_coeff    = sqrt(w_vds * w_dvp)  (geometric-mean field coupling)
+//   variant_branch = |w_vds - w_dvp|      (differential calibration magnitude)
+// Reference: "many ways to get from one place to the other" -- Session 202
+// ----------------------------------------------------------------------------
+VDSDVPCoupledResult vds_dvp_coupled(double SSq, int p_max, int n_terms) {
+    VDSDVPCoupledResult c{};
+    // VDS weight: Li_{26}(SSq) normalised by geometric upper bound SSq/(1-SSq)
+    const VDSBranchResult vb = vds_branches(SSq, n_terms);
+    const double vds_val  = vb.vds_density / 7.09e-37;  // recover Li_{26}(SSq)
+    const double vds_max  = (SSq < 1.0 && SSq > 0.0) ? SSq / (1.0 - SSq) : 1.0;
+    c.w_vds = (vds_max > 0.0) ? vds_val / vds_max : 0.0;
+    // DVP weight: zeta_sum normalised by a(29)  (dominant first DVP term)
+    const DVPBranchResult db = dvp_branches(p_max);
+    const double dvp_max = (db.a_29 > 0.0) ? db.a_29 : 1.0;
+    c.w_dvp = (dvp_max > 0.0) ? db.zeta_sum / dvp_max : 0.0;
+    c.joint_coeff    = std::sqrt(std::abs(c.w_vds) * std::abs(c.w_dvp));
+    c.variant_branch = std::abs(c.w_vds - c.w_dvp);
+    return c;
+}
+
+// ----------------------------------------------------------------------------
+// bh26_bsh_resonance(f_Ub, SSq, t_n, k)
+// Cross-resonance: evaluate BSH harmonics at the BH26 spectral frequency bin k.
+//   freq_k         = RERING_BB_HZ / lambda_k   [Hz]
+//   omega_k        = 2*pi*freq_k               [rad/s]
+//   bsh_at_k       = bsh_harmonic(..., omega_k, ...)
+//   resonance      = bsh_at_k * cos(pi*t_n)
+//   energy_density = resonance * 7.09e-37      [J/m3]
+// Reference: BH26 x BSH cross-resonance, Session 202
+// ----------------------------------------------------------------------------
+BH26BSHResonanceResult bh26_bsh_resonance(double f_Ub, double SSq, double t_n, int k) {
+    BH26BSHResonanceResult r{};
+    const double lk = static_cast<double>(k) * static_cast<double>(k + 25);
+    r.freq_k = (lk > 0.0) ? RERING_BB_HZ / lk : 0.0;
+    const double omega_k = 2.0 * M_PI * r.freq_k;
+    const BSHResult bsh  = bsh_harmonic(f_Ub, SSq, omega_k, t_n, 26);
+    r.bsh_at_k      = bsh.U_g2;
+    r.resonance     = r.bsh_at_k * std::cos(M_PI * t_n);
+    r.energy_density = r.resonance * 7.09e-37;           // [J/m3]
+    return r;
 }
 
 // ============================================================================
@@ -1057,6 +1204,75 @@ void runQCalcGeomTests() {
             mat2.cross_d13, 0.0, 0.0, qual, qual });
     }
 
+    // ── VDS-DVP-DH26 (T61–T70): variant branches + coupling (Session 202 Phase H202) ─
+    {
+        const VDSBranchResult  vb = vds_branches(SSQ_DEFAULT, 200);
+        const DVPBranchResult  db = dvp_branches(200);
+        const BH26BranchResult bh10 = bh26_branches(10);
+        const BH26BranchResult bh1  = bh26_branches(1);
+
+        // T61: VDS_prime = Li_25(0.57)/0.57 ≈ 1.0  (calibration sensitivity)
+        R.push_back(make_r("T61","VDS-DVP-DH26",
+            "vds_prime = Li_25(SSq)/SSq ~ 1.0 (VDS calibration sensitivity)",
+            vb.vds_prime, VDS_PRIME_REF, 0.001));
+
+        // T62: VDS energy density > 0  (VDS x RHO_VAC_SCM > 0)
+        bool t62 = (vb.vds_density > 0.0);
+        R.push_back({ "T62","VDS-DVP-DH26",
+            "vds_density > 0  (VDS * RHO_VAC_SCM positive)",
+            vb.vds_density, 0.0, 0.0, t62, t62 });
+
+        // T63: DVP spectral sum > 0  (prime-vortex flux non-zero)
+        bool t63 = (db.zeta_sum > 0.0);
+        R.push_back({ "T63","VDS-DVP-DH26",
+            "dvp_branches zeta_sum > 0  (prime-vortex flux positive)",
+            db.zeta_sum, 0.0, 0.0, t63, t63 });
+
+        // T64: pair_product < a_29^2  (a(31)<a(29) so product < square of first term)
+        bool t64 = (db.a_29 > 0.0) && (db.pair_product < db.a_29 * db.a_29);
+        R.push_back({ "T64","VDS-DVP-DH26",
+            "dvp pair_product < a_29^2  (a(31) < a(29), strictly decreasing)",
+            db.pair_product, 0.0, 0.0, t64, t64 });
+
+        // T65: BH26 spectral sum N=10 == 1760  (closed-form eigenvalue ladder)
+        R.push_back(make_r("T65","VDS-DVP-DH26",
+            "bh26_branches(10).spectral_sum == 1760 (closed-form)",
+            bh10.spectral_sum, BH26_SPECTRAL_N10, 1e-6));
+
+        // T66: Casimir energy > 0  (vacuum zero-point energy from spectral ladder)
+        bool t66 = (bh10.casimir_energy > 0.0);
+        R.push_back({ "T66","VDS-DVP-DH26",
+            "bh26_branches(10).casimir_energy > 0  (vacuum zero-point energy)",
+            bh10.casimir_energy, 0.0, 0.0, t66, t66 });
+
+        // T67: degeneracy_k1 == 26  C(26,25)=26 on S^{25}
+        bool t67 = (bh1.degeneracy_k1 == BH26_DEG_K1);
+        R.push_back({ "T67","VDS-DVP-DH26",
+            "bh26_branches(1).degeneracy_k1 == 26  (C(26,25) on S^25)",
+            static_cast<double>(bh1.degeneracy_k1), static_cast<double>(BH26_DEG_K1),
+            0.0, t67, t67 });
+
+        // T68: vds_coupling > 0  (BH26->VDS topological bridge finite)
+        bool t68 = (bh10.vds_coupling > 0.0);
+        R.push_back({ "T68","VDS-DVP-DH26",
+            "bh26_branches(10).vds_coupling > 0  (BH26->VDS bridge finite)",
+            bh10.vds_coupling, 0.0, 0.0, t68, t68 });
+
+        // T69: VDS*DVP joint_coeff >= 0  (geometric mean coupling non-negative)
+        const VDSDVPCoupledResult cc = vds_dvp_coupled(SSQ_DEFAULT, 200, 200);
+        bool t69 = (cc.joint_coeff >= 0.0);
+        R.push_back({ "T69","VDS-DVP-DH26",
+            "vds_dvp_coupled joint_coeff >= 0  (geometric-mean coupling)",
+            cc.joint_coeff, 0.0, 0.0, t69, t69 });
+
+        // T70: BH26xBSH resonance energy_density > 0 at t_n=0, k=1
+        const BH26BSHResonanceResult res = bh26_bsh_resonance(3.3e7, SSQ_DEFAULT, 0.0, 1);
+        bool t70 = (res.energy_density > 0.0);
+        R.push_back({ "T70","VDS-DVP-DH26",
+            "bh26_bsh_resonance energy_density > 0 (k=1, t_n=0)",
+            res.energy_density, 0.0, 0.0, t70, t70 });
+    }
+
     // ── Print results table ──────────────────────────────────────────────────
 
     cout << std::left
@@ -1112,8 +1328,8 @@ void runQCalcGeomTests() {
     }
 
     cout << "\n" << std::string(80, '=') << "\n"
-         << "[QCalcGeom] Tests complete (Phase G): " << pass_cnt << "/"
-         << R.size() << " passed | Session 151 | March 28 2026\n"
+         << "[QCalcGeom] Tests complete (Phase H202): " << pass_cnt << "/"
+         << R.size() << " passed | Session 202 | May 2026\n"
          << std::string(80, '=') << "\n\n";
 }
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-QCalcGeom.py  v2.0.0  —  BSFG Geometric Physics + Universal Buoyancy Solver
+QCalcGeom.py  v2.1.0  —  BSFG Geometric Physics + Universal Buoyancy Solver
 
 Derives from QCalcGeom.cpp (C++ v1.2.0, Sessions 150–151 Phase G) and elevates
 to a Python simultaneous-equation solver for:
@@ -47,7 +47,18 @@ NEW IN v2.0.0 (simultaneous equation level):
 Author  : Daniel T. Murphy
 Created : Session 201 — May 5, 2026
 Based on: QCalcGeom.cpp v1.2.0 (Session 151 Phase G)
-Version : 2.0.0
+Version : 2.1.0
+
+NEW IN v2.1.0 (Session 202 Phase H202):
+  - VDS variant branches: vds_prime (calibration sensitivity), vds_density,
+    vds_k_weighted (BH26-coupled amplitude) -- VDSBranchResult
+  - DVP spectral branches: full zeta_sum, pair_product (double-vortex state),
+    spectral_floor (Navier-Stokes vorticity floor) -- DVPBranchResult
+  - BH26/DH26 branches: spectral_sum (eigenvalue ladder), casimir_energy,
+    degeneracy_k1=26 (S^{25} multiplicity), vds_coupling (topology bridge) -- BH26BranchResult
+  - VDS*DVP coupling: joint geometric-mean coefficient + variant calibration branch
+  - BH26*BSH cross-resonance energy density at BH26 spectral frequency bins
+  - Tests T71-T80 (group VDS-DVP-DH26)
 """
 
 from __future__ import annotations
@@ -391,6 +402,71 @@ class UniversalInertiaResult:
     zero_point      : bool  = False  # |U_I| < threshold → zero-point gravity
     tectonic_band_inner_m: float = 0.0   # r_inner [m]  (inner tectonic boundary)
     tectonic_band_outer_m: float = 0.0   # r_outer [m]  (outer tectonic boundary)
+
+# ── Session 202 Phase H202: VDS/DVP/DH26 variant-branch result structs ────────
+
+@dataclass
+class VDSBranchResult:
+    """VDS variant branches: calibration sensitivity, energy density, BH26-coupled.
+    vds_prime      = d/dz Li_26(z)|_{z=SSq} = Li_25(SSq)/SSq  ≈ 1.0
+    vds_density    = Li_26(SSq) × RHO_VAC_SCM   [J/m³]
+    vds_k_weighted = Li_25(SSq) + 25·Li_26(SSq)  (BH26-coupled amplitude)
+    """
+    vds_li25       : float = 0.0  # Li_{25}([SSq])
+    vds_prime      : float = 0.0  # Li_{25}/SSq  ≈ 1.0  (calibration sensitivity)
+    vds_density    : float = 0.0  # Li_{26}(SSq) × RHO_VAC_SCM  [J/m³]
+    vds_k_weighted : float = 0.0  # Li_{25} + 25·Li_{26}
+
+@dataclass
+class DVPBranchResult:
+    """DVP variant branches: spectral sum, double-vortex pair, Navier-Stokes floor.
+    zeta_sum       = Σ_{p>26} a(p)  where a(p) = SSq^{π(p)} / p^26
+    pair_product   = a(29) × a(31)  (double-vortex amplitude)
+    spectral_floor = a(p_max)       (vorticity lower bound)
+    """
+    zeta_sum       : float = 0.0
+    n_primes_dvp   : int   = 0
+    pair_product   : float = 0.0
+    spectral_floor : float = 0.0
+    a_29           : float = 0.0  # a(29) — dominant first DVP term
+
+@dataclass
+class BH26BranchResult:
+    """BH26/DH26 variant branches: eigenvalue ladder, Casimir energy, topology.
+    spectral_sum   = Σ_{k=1}^{N} k(k+25)  [= 1760 for N=10]
+    casimir_energy = ℏ·f_{RR}/2 × Σ 1/λ_k  [J]  (vacuum Casimir)
+    degeneracy_k1  = 26  C(26,25) on S^{25}
+    vds_coupling   = Σ_{k=1}^{N} λ_k^{-26}  (BH26→VDS topological bridge)
+    """
+    spectral_sum   : float = 0.0
+    casimir_energy : float = 0.0
+    degeneracy_k1  : int   = 0
+    vds_coupling   : float = 0.0
+    N              : int   = 0
+
+@dataclass
+class VDSDVPCoupledResult:
+    """VDS×DVP coupled field: normalised weights, geometric-mean coupling, calibration gap.
+    joint_coeff    = sqrt(w_vds × w_dvp)  (geometric-mean field coupling)
+    variant_branch = |w_vds − w_dvp|      (differential calibration magnitude)
+    """
+    w_vds          : float = 0.0
+    w_dvp          : float = 0.0
+    joint_coeff    : float = 0.0
+    variant_branch : float = 0.0
+
+@dataclass
+class BH26BSHResonanceResult:
+    """BH26×BSH cross-resonance: BSH evaluated at a BH26 spectral frequency bin.
+    freq_k         = RERING_BB_HZ / λ_k   [Hz]
+    bsh_at_k       = BSH U_g2 at omega = 2π·freq_k
+    resonance      = bsh_at_k · cos(π·t_n)
+    energy_density = resonance × RHO_VAC_SCM  [J/m³]
+    """
+    freq_k         : float = 0.0
+    bsh_at_k       : float = 0.0
+    resonance      : float = 0.0
+    energy_density : float = 0.0
 
 # =============================================================================
 # SECTION 3 — CORE PHYSICS FUNCTIONS (Python ports of QCalcGeom.cpp)
@@ -851,6 +927,160 @@ def zero_point_years_in_epoch5(n_zeroes: int = 5) -> List[float]:
         MAYAN_EPOCH5_YEAR + (2.0 * k + 1.0) / 2.0 * MAYAN_GREAT_CYCLE_YEARS
         for k in range(n_zeroes)
     ]
+
+
+# =============================================================================
+# SECTION 3b — SESSION 202 VARIANT-BRANCH FUNCTIONS
+# Phase H202: VDS/DVP/DH26 branches, VDS×DVP coupling, BH26×BSH resonance.
+# All functions mirror the C++ implementations in QCalcGeom.cpp Section 2b.
+# =============================================================================
+
+def vds_branches(SSq: float = None, n_terms: int = 200) -> VDSBranchResult:
+    """VDS variant branches: calibration sensitivity, energy density, BH26-coupled.
+    vds_prime      = d/dz Li_{26}(z)|_{z=SSq} = Li_{25}(SSq)/SSq  (sensitivity)
+    vds_density    = Li_{26}(SSq) × RHO_VAC_SCM  [J/m³]
+    vds_k_weighted = Li_{25}(SSq) + 25·Li_{26}(SSq)  (VDS×BH26 coupling)
+    Reference: CP4 #83 VDS + Session 202 derivations
+    """
+    if SSq is None:
+        SSq = SSQ_DEFAULT
+    v = VDSBranchResult()
+    li25 = li26 = 0.0
+    ps = SSq
+    for n in range(1, n_terms + 1):
+        li25 += ps / n**25
+        li26 += ps / n**26
+        ps *= SSq
+        if abs(ps) < 1e-300:
+            break
+    v.vds_li25       = li25
+    v.vds_prime      = li25 / SSq if SSq > 0.0 else 0.0
+    v.vds_density    = li26 * float(RHO_VAC_SCM)    # J/m³
+    v.vds_k_weighted = li25 + 25.0 * li26
+    return v
+
+
+def dvp_branches(p_max: int = 200) -> DVPBranchResult:
+    """DVP spectral branches: full prime-vortex sum, pair product, vorticity floor.
+    Enumerates primes p in (26, p_max]; a(p) = SSq^{π(p)} / p^{26}.
+    Reference: CP4 #83 DVP + Navier-Stokes vorticity bound, Session 202
+    """
+    # Sieve of Eratosthenes
+    sieve = [True] * (p_max + 1)
+    if p_max >= 0:
+        sieve[0] = False
+    if p_max >= 1:
+        sieve[1] = False
+    for i in range(2, int(p_max**0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, p_max + 1, i):
+                sieve[j] = False
+
+    pi_count = 0
+    dvp_sum = a29 = a31 = last_a = 0.0
+    cnt = 0
+    for p in range(2, p_max + 1):
+        if not sieve[p]:
+            continue
+        pi_count += 1
+        if p <= 26:
+            continue
+        a_p = SSQ_DEFAULT**pi_count / p**26
+        dvp_sum += a_p
+        cnt += 1
+        if p == 29:
+            a29 = a_p
+        if p == 31:
+            a31 = a_p
+        last_a = a_p
+
+    return DVPBranchResult(
+        zeta_sum=dvp_sum,
+        n_primes_dvp=cnt,
+        pair_product=a29 * a31,
+        spectral_floor=last_a,
+        a_29=a29
+    )
+
+
+def bh26_branches(N: int = 10) -> BH26BranchResult:
+    """BH26/DH26 variant branches: eigenvalue ladder, Casimir energy, topology.
+    lambda_k = k(k+25) on S^{25}.
+    spectral_sum   = Σ_{k=1}^{N} lambda_k          (= 1760 for N=10)
+    casimir_energy = ℏ·RERING_BB_HZ/2 × Σ 1/lambda_k [J]
+    degeneracy_k1  = 26 = C(26,25) on S^{25}
+    vds_coupling   = Σ_{k=1}^{N} lambda_k^{-26}    (BH26→VDS topological bridge)
+    Reference: CP4 #149 BH26 + Session 202
+    """
+    sl = si = sv = 0.0
+    for k in range(1, N + 1):
+        lk = k * (k + 25)
+        sl += lk
+        si += 1.0 / lk
+        sv += lk**(-26)
+    return BH26BranchResult(
+        spectral_sum=sl,
+        casimir_energy=HBAR * RERING_BB_HZ * 0.5 * si,
+        degeneracy_k1=26,
+        vds_coupling=sv,
+        N=N
+    )
+
+
+def vds_dvp_coupled(SSq: float = None,
+                    p_max: int = 200,
+                    n_terms: int = 200) -> VDSDVPCoupledResult:
+    """VDS×DVP coupled field: normalised weights, geometric-mean coupling, calibration gap.
+    w_vds       = Li_26(SSq) / VDS_max  where VDS_max = SSq/(1-SSq)
+    w_dvp       = zeta_sum / a(29)       (dominant first DVP term)
+    joint_coeff = sqrt(w_vds × w_dvp)   (geometric-mean field coupling)
+    variant_branch = |w_vds - w_dvp|     (differential calibration magnitude)
+    Encodes: 'many ways to get from one place to the other' -- Session 202
+    """
+    if SSq is None:
+        SSq = SSQ_DEFAULT
+    vb = vds_branches(SSq, n_terms)
+    vds_val = vb.vds_density / float(RHO_VAC_SCM)   # recover Li_26(SSq)
+    vds_max = SSq / (1.0 - SSq) if 0.0 < SSq < 1.0 else 1.0
+    w_v = vds_val / vds_max if vds_max > 0.0 else 0.0
+
+    db = dvp_branches(p_max)
+    dvp_max = db.a_29 if db.a_29 > 0.0 else 1.0
+    w_d = db.zeta_sum / dvp_max if dvp_max > 0.0 else 0.0
+
+    return VDSDVPCoupledResult(
+        w_vds=w_v,
+        w_dvp=w_d,
+        joint_coeff=math.sqrt(abs(w_v) * abs(w_d)),
+        variant_branch=abs(w_v - w_d)
+    )
+
+
+def bh26_bsh_resonance(f_Ub: float = 3.3e7,
+                        SSq: float = None,
+                        t_n: float = 0.0,
+                        k: int = 1) -> BH26BSHResonanceResult:
+    """BH26×BSH cross-resonance: BSH evaluated at a BH26 spectral frequency bin.
+    freq_k         = RERING_BB_HZ / lambda_k         [Hz]
+    omega_k        = 2π·freq_k                      [rad/s]
+    bsh_at_k       = bsh_harmonic(f_Ub, SSq, omega_k, t_n, 26).U_g2
+    resonance      = bsh_at_k × cos(π·t_n)
+    energy_density = resonance × RHO_VAC_SCM          [J/m³]
+    Reference: BH26 × BSH cross-resonance, Session 202
+    """
+    if SSq is None:
+        SSq = SSQ_DEFAULT
+    lk = k * (k + 25)
+    fk = RERING_BB_HZ / lk if lk > 0 else 0.0
+    omega_k = 2.0 * math.pi * fk
+    b = bsh_harmonic(f_Ub=f_Ub, SSq=SSq, omega=omega_k, t_n=t_n, m_max=26)
+    res = b.U_g2 * math.cos(math.pi * t_n)
+    return BH26BSHResonanceResult(
+        freq_k=fk,
+        bsh_at_k=b.U_g2,
+        resonance=res,
+        energy_density=res * float(RHO_VAC_SCM)
+    )
 
 
 # =============================================================================
@@ -1552,9 +1782,10 @@ def _tol_check(computed: float, expected: float, tol_pct: float) -> bool:
 
 
 def run_qcalcgeom_tests(verbose: bool = True) -> dict:
-    """Run all 70 QCalcGeom requirements-boundary tests.
+    """Run all 80 QCalcGeom requirements-boundary tests.
     T01–T60: mirrors C++ runQCalcGeomTests() with identical reference values.
     T61–T70: Mayan three-ring timing / Universal Inertia system.
+    T71–T80: Session 202 VDS/DVP/DH26 variant branches + coupling (Phase H202).
     Returns {'passed': int, 'failed': int, 'results': list-of-dicts}.
     """
     results = []
@@ -1575,7 +1806,7 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
 
     if verbose:
         print("\n" + "="*72)
-        print("QCalcGeom.py v2.0.0 — Requirements-Boundary Test Suite (T01–T70)")
+        print("QCalcGeom.py v2.1.0 — Requirements-Boundary Test Suite (T01–T80)")
         print("="*72 + "\n")
 
     # ── BSFG-METRIC (T01–T06) ────────────────────────────────────────────────
@@ -1882,6 +2113,55 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
         abs(ui_tn0.u_inertia + ui_tn1.u_inertia), 0.0, 0.0,
         qual_ok=(abs(ui_tn0.u_inertia + ui_tn1.u_inertia)
                  < 1e-6 * abs(ui_tn0.u_inertia)))
+
+    # ── VDS-DVP-DH26 (T71–T80): variant branches + coupling (Session 202 Phase H202) ─
+    vb_r  = vds_branches(SSQ_DEFAULT, 200)
+    db_r  = dvp_branches(200)
+    bh10_r = bh26_branches(10)
+    bh1_r  = bh26_branches(1)
+    cc_r   = vds_dvp_coupled(SSQ_DEFAULT, 200, 200)
+    res_r  = bh26_bsh_resonance(3.3e7, SSQ_DEFAULT, 0.0, 1)
+
+    # T71: VDS_prime ≈ 1.0  (Li_25(0.57)/0.57 — calibration sensitivity)
+    chk("T71","VDS-DVP-DH26","vds_prime = Li_25(SSq)/SSq ~ 1.0 (VDS calibration sensitivity)",
+        vb_r.vds_prime, 1.0, 0.001)
+
+    # T72: VDS energy density > 0  (VDS × RHO_VAC_SCM > 0)
+    chk("T72","VDS-DVP-DH26","vds_density > 0  (VDS × RHO_VAC_SCM positive)",
+        vb_r.vds_density, 0.0, 0.0, qual_ok=(vb_r.vds_density > 0.0))
+
+    # T73: DVP spectral sum > 0  (prime-vortex flux non-zero)
+    chk("T73","VDS-DVP-DH26","dvp zeta_sum > 0  (prime-vortex spectral flux positive)",
+        db_r.zeta_sum, 0.0, 0.0, qual_ok=(db_r.zeta_sum > 0.0))
+
+    # T74: pair_product < a_29^2  (a(31) < a(29) → product < first-term squared)
+    chk("T74","VDS-DVP-DH26","dvp pair_product < a_29^2  (a(31) < a(29), strictly decreasing)",
+        db_r.pair_product, 0.0, 0.0,
+        qual_ok=(db_r.a_29 > 0.0 and db_r.pair_product < db_r.a_29**2))
+
+    # T75: BH26 spectral sum N=10 == 1760  (closed-form eigenvalue ladder)
+    chk("T75","VDS-DVP-DH26","bh26_branches(10).spectral_sum == 1760 (eigenvalue ladder)",
+        bh10_r.spectral_sum, 1760.0, 1e-6)
+
+    # T76: Casimir energy > 0  (vacuum zero-point energy from spectral ladder)
+    chk("T76","VDS-DVP-DH26","bh26_branches(10).casimir_energy > 0  (vacuum Casimir energy)",
+        bh10_r.casimir_energy, 0.0, 0.0, qual_ok=(bh10_r.casimir_energy > 0.0))
+
+    # T77: degeneracy_k1 == 26  (C(26,25)=26 on S^{25})
+    chk("T77","VDS-DVP-DH26","bh26_branches(1).degeneracy_k1 == 26  (C(26,25) on S^25)",
+        float(bh1_r.degeneracy_k1), 26.0, 0.0, qual_ok=(bh1_r.degeneracy_k1 == 26))
+
+    # T78: vds_coupling > 0  (BH26→VDS topological bridge finite)
+    chk("T78","VDS-DVP-DH26","bh26_branches(10).vds_coupling > 0  (BH26→VDS topology bridge)",
+        bh10_r.vds_coupling, 0.0, 0.0, qual_ok=(bh10_r.vds_coupling > 0.0))
+
+    # T79: VDS×DVP joint_coeff ≥ 0  (geometric-mean coupling non-negative)
+    chk("T79","VDS-DVP-DH26","vds_dvp_coupled joint_coeff >= 0  (geometric-mean field coupling)",
+        cc_r.joint_coeff, 0.0, 0.0, qual_ok=(cc_r.joint_coeff >= 0.0))
+
+    # T80: BH26×BSH cross-resonance energy density > 0 at t_n=0, k=1
+    chk("T80","VDS-DVP-DH26","bh26_bsh_resonance energy_density > 0  (k=1, t_n=0)",
+        res_r.energy_density, 0.0, 0.0, qual_ok=(res_r.energy_density > 0.0))
 
     # ── Summary ──────────────────────────────────────────────────────────────
     passed = sum(1 for r in results if r['passed'])

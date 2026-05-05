@@ -6219,6 +6219,102 @@ def dpm_lenr_full_comparison() -> Dict:
 
 
 # =============================================================================
+# S12  SESSION 202 -- VDS/DVP/DH26 VARIANT BRANCH EXPORTS
+# =============================================================================
+
+def vds_prime(SSq=None, n_terms=200):
+    """VDS calibration sensitivity: d/dz Li_{26}(z)|_{z=SSq} = Li_{25}(SSq)/SSq.
+
+    Session 202 Phase H202 export for QCalcGeom coupling.
+    Returns dict with vds_li25, vds_prime (~1.0), vds_density [J/m³],
+    vds_k_weighted = Li_25 + 25*Li_26 (shift-weighted series sum).
+    """
+    SSq = float(SSQ) if SSq is None else SSq
+    li25 = li26 = 0.0
+    ps = SSq
+    for n in range(1, n_terms + 1):
+        li25 += ps / n ** 25
+        li26 += ps / n ** 26
+        ps *= SSq
+        if abs(ps) < 1e-300:
+            break
+    return {
+        'vds_li25':      li25,
+        'vds_prime':     li25 / SSq if SSq > 0 else 0.0,
+        'vds_density':   li26 * float(RHO_VAC_SCM),
+        'vds_k_weighted': li25 + 25.0 * li26,
+    }
+
+
+def dvp_zeta_sum(p_max=200):
+    """DVP prime-vortex spectral sum for primes p in (26, p_max].
+
+    a(p) = SSQ^{pi(p)} / p^26  where pi(p) = prime-counting function.
+    Session 202 Phase H202 export for QCalcGeom coupling.
+    Returns dict: zeta_sum, n_primes_dvp, pair_product (a29*a31),
+    spectral_floor (a of last prime), a_29.
+    """
+    SSq_float = float(SSQ)
+    sieve = [True] * (p_max + 1)
+    sieve[0] = sieve[1] = False
+    for i in range(2, int(p_max ** 0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, p_max + 1, i):
+                sieve[j] = False
+    pi_count = 0
+    dvp_sum = 0.0
+    a29 = 0.0
+    a31 = 0.0
+    last_a = 0.0
+    cnt = 0
+    for p in range(2, p_max + 1):
+        if not sieve[p]:
+            continue
+        pi_count += 1
+        if p <= 26:
+            continue
+        a_p = SSq_float ** pi_count / p ** 26
+        dvp_sum += a_p
+        cnt += 1
+        if p == 29:
+            a29 = a_p
+        if p == 31:
+            a31 = a_p
+        last_a = a_p
+    return {
+        'zeta_sum':       dvp_sum,
+        'n_primes_dvp':   cnt,
+        'pair_product':   a29 * a31,
+        'spectral_floor': last_a,
+        'a_29':           a29,
+    }
+
+
+def bh26_spectral_branches(N=10):
+    """BH26/DH26 spectral ladder: lambda_k = k(k+25) on S^{25}.
+
+    Session 202 Phase H202 export for QCalcGeom coupling.
+    Returns dict: spectral_sum (=1760 for N=10), casimir_energy [J],
+    degeneracy_k1 (=26), vds_coupling (Σ lambda_k^{-26}), N.
+    """
+    HBAR_VAL = 1.055e-34
+    RERING = 1.15e14  # BH26 resonance frequency [Hz]
+    sl = si = sv = 0.0
+    for k in range(1, N + 1):
+        lk = k * (k + 25)
+        sl += lk
+        si += 1.0 / lk
+        sv += lk ** (-26)
+    return {
+        'spectral_sum':    sl,
+        'casimir_energy':  HBAR_VAL * RERING * 0.5 * si,
+        'degeneracy_k1':   26,
+        'vds_coupling':    sv,
+        'N':               N,
+    }
+
+
+# =============================================================================
 # S11  ENTRY POINT -- FULL QUANTUM CHAIN DEMONSTRATION
 # =============================================================================
 
