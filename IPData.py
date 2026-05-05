@@ -452,3 +452,123 @@ def get_latest_input(name: str) -> Optional[InputParameters]:
 def list_inputs() -> List[Dict[str, str]]:
     """List all stored input queries."""
     return INPUT_STORE.list_queries()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CSV BRIDGE - APIFetch bodies_*.csv → InputParameters / ComputeParams
+# Session 230 (May 2026): Gap #1 pipeline wiring
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Canonical mapping from APIFetch CSV column names → InputParameters field names
+_CSV_FIELD_MAP: Dict[str, str] = {
+    # Mass
+    'mass':                 'M',
+    'mass_kg':              'M',
+    'companion_mass':       'M_companion',
+    'bh_mass':              'M_bh',
+    'black_hole_mass':      'M_bh',
+    'halo_mass':            'M_halo',
+    # Distance / radius
+    'distance':             'd',
+    'distance_m':           'd',
+    'radius':               'R',
+    'orbital_radius':       'r',
+    'semi_major_axis':      'a',
+    # Temperature
+    'temperature':          'T',
+    'effective_temperature':'T_eff',
+    # Luminosity
+    'luminosity':           'L',
+    'bolometric_luminosity':'L_bol',
+    'x_ray_luminosity':     'L_X',
+    # Magnetic
+    'magnetic_field':       'B',
+    'magnetic_moment':      'mu',
+    # Kinematics
+    'radial_velocity':      'v_rad',
+    'velocity_dispersion':  'v_disp',
+    'angular_velocity':     'omega',
+    'rotation_rate':        'omega',
+    # Astrophysical
+    'redshift':             'z',
+    'star_formation_rate':  'SFR',
+    'sfr':                  'SFR',
+    'sigma':                'sigma',
+    'age_s':                'age',
+    # Observational
+    'spectral_type':        'spectral_type',
+    'metallicity':          'metallicity',
+    'parallax':             'parallax',
+    'visual_magnitude':     'mag_V',
+    'mag_v':                'mag_V',
+    'color_bv':             'color_BV',
+}
+
+
+def from_csv(csv_path: str) -> List[InputParameters]:
+    """
+    Read a bodies_*.csv file produced by APIFetch.py and convert each row to
+    an InputParameters object.  Stores every row in INPUT_STORE.
+
+    Args:
+        csv_path: Absolute or relative path to a bodies_YYYYMMDD_HHMMSS.csv file.
+
+    Returns:
+        List of InputParameters (one per CSV row).
+    """
+    import csv as _csv
+
+    records: List[InputParameters] = []
+    with open(csv_path, 'r', newline='', encoding='utf-8') as fh:
+        reader = _csv.DictReader(fh)
+        for row in reader:
+            kwargs: Dict[str, Any] = {}
+            for csv_col, field_name in _CSV_FIELD_MAP.items():
+                raw = row.get(csv_col)
+                if raw is None or raw == '':
+                    continue
+                try:
+                    kwargs[field_name] = float(raw)
+                except ValueError:
+                    kwargs[field_name] = raw  # keep strings (spectral_type etc.)
+
+            # Prefer the 'name' column as query_name
+            name = row.get('name', row.get('object_name', ''))
+            sources_raw = row.get('sources', '')
+            sources = [s.strip() for s in sources_raw.split(',')] if sources_raw else ['csv']
+
+            params = InputParameters(
+                query_name=name,
+                sources=sources,
+                **kwargs,
+            )
+            INPUT_STORE.store(params)
+            records.append(params)
+
+    return records
+
+
+def from_csv_to_compute_params(csv_path: str):
+    """
+    Convenience wrapper: read bodies_*.csv → InputParameters → ComputeParams.
+
+    Requires QCalc.ComputeParams.  Returns a list of (InputParameters,
+    ComputeParams) tuples ready for QCalc.UnifiedFieldSolver.solve().
+
+    Args:
+        csv_path: Path to bodies_*.csv.
+
+    Returns:
+        List of (InputParameters, ComputeParams) tuples.
+    """
+    from QCalc import ComputeParams  # imported here to avoid circular dep
+
+    results = []
+    for ip in from_csv(csv_path):
+        d = ip.to_dict()
+        # ComputeParams accepts the same field names as InputParameters
+        cp_kwargs = {k: v for k, v in d.items()
+                     if v is not None and k in ComputeParams.__dataclass_fields__}
+        cp = ComputeParams(**cp_kwargs)
+        results.append((ip, cp))
+    return results

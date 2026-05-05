@@ -1024,6 +1024,59 @@ function handleRequest(req, res) {
         return;
     }
 
+    // ─── QCalcGeom route (Session 230 - Gap #2/6 pipeline wiring) ───────────
+    // Calls Python QCalcGeom.py via child_process and returns JSON results.
+    // source2.cpp → POST /qcalcgeom → Python QCalcGeom.py → JSON response
+    if (pathname === '/qcalcgeom' && method === 'POST') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const { calculator, dataset } = JSON.parse(body);
+                const validCalcs = [
+                    'BSFGMetricCalculator', 'UniversalBuoyancyCalculator',
+                    'HabitableZoneCalculator', 'UniversalGravityCalculator',
+                    'MayanTimingCalculator'
+                ];
+                if (!validCalcs.includes(calculator)) {
+                    res.writeHead(400, CORS_HEADERS);
+                    res.end(JSON.stringify({ error: `Unknown calculator: ${calculator}`, valid: validCalcs }));
+                    return;
+                }
+                const { spawn } = require('child_process');
+                const script = [
+                    'import json, sys',
+                    `from QCalcGeom import ${calculator} as _Calc`,
+                    `result = _Calc().compute(${JSON.stringify(dataset || {})})`,
+                    'print(json.dumps({k: (float(v) if hasattr(v,"__float__") else str(v)) for k,v in result.items() if not isinstance(v, (list, dict))}))'
+                ].join('\n');
+                const py = spawn('python', ['-c', script], { cwd: __dirname });
+                let out = '', err = '';
+                py.stdout.on('data', d => { out += d; });
+                py.stderr.on('data', d => { err += d; });
+                py.on('close', code => {
+                    if (code !== 0) {
+                        res.writeHead(500, CORS_HEADERS);
+                        res.end(JSON.stringify({ error: 'QCalcGeom failed', stderr: err }));
+                    } else {
+                        try {
+                            const result = JSON.parse(out.trim());
+                            res.writeHead(200, CORS_HEADERS);
+                            res.end(JSON.stringify({ status: 'ok', calculator, result }));
+                        } catch (e) {
+                            res.writeHead(500, CORS_HEADERS);
+                            res.end(JSON.stringify({ error: 'JSON parse error', raw: out }));
+                        }
+                    }
+                });
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -1051,7 +1104,8 @@ function handleRequest(req, res) {
             'POST /api/fubi/agn-merger',
             'POST /api/qgp/scm-dynamics',
             'POST /api/fubi/smbh-merger',
-            'POST /api/dm/halo-nfw'
+            'POST /api/dm/halo-nfw',
+            'POST /qcalcgeom'
         ]
     }));
 }
