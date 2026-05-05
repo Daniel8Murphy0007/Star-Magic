@@ -193,6 +193,7 @@ SOURCE4::student_guide_SOURCE4    // Student Guide Universe (cosmological)
 - `source2(HEAD PROGRAM).cpp` - VR/VM backend (2,625 lines, GPU heavy) — **NOT A GUI**
 - `physics_backend.cpp` - CPU-bound headless physics server (~12,000 lines)
 - `QCalc.py` - Python unified field solver (9,100+ lines, 8 master equations)
+- `QCalcGeom.py` - Universal Buoyancy simultaneous equation solver (v2.0.0, Session 201) — BSFG geometric physics + FUBi/FUBii crossing + habitable zone solver; 60/60 tests pass
 - `CondensedPhysics.py` - Primary integration target (81,626 lines, 176 calculator classes) — **ADD NEW CALCULATORS HERE**
 - `CondensedPhysics2.py` - UQFF extensions (50,855 lines, 680 calculator classes)
 - `index.js` - JavaScript LIBRARY (23,790 lines, 106 systems) — `uqff_server.js` is the REST server
