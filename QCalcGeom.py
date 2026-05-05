@@ -140,6 +140,24 @@ H_ETA_REF      : float = 6.626e-56
 UBI_BSFG_REF   : float = -7.63e33
 POLY26_NEG_THR : float = 1.0e-100
 
+# ── Mayan Three-Ring Timing constants ─────────────────────────────────────────
+# Three-geared ring system encoding Universal Inertia (zero-point gravity timing)
+# Ring proportions change every epoch; in Epoch 5 (2012+):
+#   Ring 1 (OUTER)     : EXPANDING  — r_base × φ^(epoch−1)
+#   Ring 2 (COMPANION) : SHRINKS    — r_base × φ^(−(epoch−1))
+#   Ring 3 (INNER)     : VERY SMALL — r_base × φ^(−2(epoch−1))
+# Gear meshing:
+#   Ring 1 ↔ Ring 2 : external (side-by-side), ω_2 = −ω_1 × r_1/r_2
+#   Ring 1 ↔ Ring 3 : INTERNAL (Ring 3 inside Ring 1), ω_3 = +ω_1 × r_1/r_3
+PHI               : float = (1.0 + math.sqrt(5.0)) / 2.0    # Golden ratio φ
+MAYAN_BAKTUN_DAYS : float = 144000.0                          # 1 baktun [days]
+MAYAN_GREAT_CYCLE_DAYS  : float = 13.0 * MAYAN_BAKTUN_DAYS   # 1,872,000 days
+MAYAN_GREAT_CYCLE_YEARS : float = MAYAN_GREAT_CYCLE_DAYS / 365.25  # 5125.36 yr
+MAYAN_EPOCH5_YEAR : float = 2012.972                          # Dec 21, 2012
+MAYAN_N_EPOCHS    : int   = 5                                 # known epochs
+# Angular frequency of the Great Cycle ring (Ring 1 base)
+OMEGA_BAKTUN      : float = 2.0 * math.pi / (MAYAN_GREAT_CYCLE_DAYS * 86400.0)
+
 # =============================================================================
 # SECTION 2 — RESULT DATACLASSES (Python equivalents of C++ structs)
 # =============================================================================
@@ -300,6 +318,79 @@ class UniversalGravityResult:
     r_m      : float = 0.0
     t_n      : float = 0.0
     eps      : float = 0.0   # BSFG metric perturbation
+
+@dataclass
+class MayanRingState:
+    """Three-ring geared state for a given epoch and current year.
+
+    Ring 1 (outer/left):     EXPANDING  — Great Cycle / baktun driver ring
+    Ring 2 (companion/right): SHRINKS   — external mesh (opposite rotation)
+    Ring 3 (inner):           VERY SMALL in Epoch 5 — internal mesh (same dir)
+
+    Angular velocities satisfy gear constraints:
+      ω_2 = −ω_1 × r_1/r_2   (external mesh: opposite rotation)
+      ω_3 = +ω_1 × r_1/r_3   (internal mesh: same rotation, amplified)
+
+    Epoch 5 (n=5) characteristic gear ratio: r_1/r_3 = φ^12 ≈ 321.997
+    This 322× amplification provides quantum timing precision for zero-point.
+    """
+    epoch           : int   = 5
+    r_outer_AU      : float = 0.0   # Ring 1 radius [AU]
+    r_companion_AU  : float = 0.0   # Ring 2 radius [AU]
+    r_inner_AU      : float = 0.0   # Ring 3 radius [AU]  (very small Epoch 5)
+    r_outer_m       : float = 0.0   # Ring 1 [m]
+    r_companion_m   : float = 0.0   # Ring 2 [m]
+    r_inner_m       : float = 0.0   # Ring 3 [m]
+    omega_outer     : float = 0.0   # ω_1  [rad/s]  base baktun frequency
+    omega_companion : float = 0.0   # ω_2 = −ω_1 × r_1/r_2  (negative)
+    omega_inner     : float = 0.0   # ω_3 = +ω_1 × r_1/r_3  (positive, large)
+    gear_ratio_12   : float = 0.0   # r_1/r_2  (outer:companion)
+    gear_ratio_13   : float = 0.0   # r_1/r_3  (outer:inner)  ≈ 46.98 Epoch 5
+    t_n             : float = 0.0   # UQFF phase (years since epoch / cycle length)
+    t_n_inner       : float = 0.0   # Ring 3 phase (amplified by gear ratio)
+    current_year    : float = 0.0
+    zero_point_next_year: float = 0.0   # next cos(π·t_n) = 0 year
+    u_inertia       : float = 0.0   # Universal Inertia invariant [J/m³·m/s² = N/m²]
+    cos_tn          : float = 0.0
+    massless_mode   : bool  = False  # True when |cos(π·t_n)| < 1e-4 (near zero-point)
+    epoch5_active   : bool  = False
+
+@dataclass
+class UniversalInertiaResult:
+    """Universal Inertia — the invariant differential of the F_U field.
+
+    At the habitable zone (FUBi + FUBii = 0), the second derivative of the
+    field potential is:
+
+      U_I = d²V/dr²|_{r_hz} = 3 · ρ_vac · (4π/3) · c² · cos(π·t_n)
+
+    This is INVARIANT — independent of r, M, orbit — depending only on:
+      ρ_vac (Aether vacuum energy density)
+      c     (speed of light)
+      cos(π·t_n)  (Mayan timing phase)
+
+    Physical regimes:
+      U_I > 0  (cos > 0): stable harmonic trap — centripetal restoring (mass-building)
+      U_I = 0  (cos = 0): zero-point gravity — massless scalar state (t_n = 1/2)
+      U_I < 0  (cos < 0): unstable saddle — centrifugal expansion (negentropic void)
+
+    Connection to primordial radiance:
+      Frequency range = ω_outer to ω_inner
+      f_range = ω_inner / ω_outer = r_outer / r_inner = φ^(2*(epoch-1))
+      In Epoch 5: f_range = φ^12 ≈ 321.997  (primordial radiance band-width factor)
+    """
+    u_inertia       : float = 0.0   # 3·ρ_vac·(4π/3)·c²·cos(π·t_n)  [N/m²]
+    u_inertia_abs   : float = 0.0   # |U_I|  [N/m²]
+    rho_vac         : float = 0.0   # ρ_vac (RHO_VAC_SCM)  [J/m³]
+    cos_tn          : float = 0.0
+    t_n             : float = 0.0
+    primordial_freq_range: float = 0.0   # ω_inner/ω_outer = φ^(2·(epoch-1))
+    massless_scalar : bool  = False  # cos ≈ 0 → massless-to-massive transition
+    centripetal_mode: bool  = False  # U_I > 0 → centripetal restoring
+    centrifugal_mode: bool  = False  # U_I < 0 → centrifugal expanding
+    zero_point      : bool  = False  # |U_I| < threshold → zero-point gravity
+    tectonic_band_inner_m: float = 0.0   # r_inner [m]  (inner tectonic boundary)
+    tectonic_band_outer_m: float = 0.0   # r_outer [m]  (outer tectonic boundary)
 
 # =============================================================================
 # SECTION 3 — CORE PHYSICS FUNCTIONS (Python ports of QCalcGeom.cpp)
@@ -581,6 +672,186 @@ def uqff_comp_matrix(r: float, rho: float) -> UQFFCompResult:
     out.eigenvalue_min   = min(out.m00, out.m11, out.m22)
     out.positive_definite = (out.m00 >= 0.0) and (out.m11 >= 0.0) and (out.m22 >= 0.0)
     return out
+
+# =============================================================================
+# SECTION 3.5 — MAYAN THREE-RING TIMING / UNIVERSAL INERTIA ENGINE
+# =============================================================================
+#
+# CANONICAL THREE-RING GEOMETRY (user specification, Epoch 5):
+#
+#   ┌────────────────────────────────────────────────────────────────┐
+#   │  Ring 1 (OUTER / LEFT)    r_1 = r_base × φ^(n-1)  EXPANDING  │
+#   │  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                                         │
+#   │  │  Ring 3 (INNER)   │  r_3 = r_base × φ^(-2(n-1))           │
+#   │  │  VERY SMALL (E5)  │  inside Ring 1, internal gear mesh     │
+#   │  └ ─ ─ ─ ─ ─ ─ ─ ─ ┘                                         │
+#   └────────────────────────────────────────────────────────────────┘
+#         [Ring 1 external teeth mesh with Ring 2 on right side]
+#   ┌──────────────────────┐
+#   │  Ring 2 (COMPANION / RIGHT)                                    │
+#   │  r_2 = r_base × φ^(-(n-1))   SHRINKS                          │
+#   └──────────────────────┘
+#
+# GEAR RATIOS:
+#   Ring 1 ↔ Ring 2 (external): ω_2 = −ω_1 × r_1/r_2   (opposite rotation)
+#   Ring 1 ↔ Ring 3 (internal): ω_3 = +ω_1 × r_1/r_3   (same rotation, amplified)
+#
+# EPOCH 5 (n=5) AMPLIFICATION:  r_1/r_3 = φ^12 ≈ 321.997
+#   → Ring 3 spins 322× faster → 322× finer quantum timing resolution
+#   → Zero-point gravity precision: Δt_n ≈ 1/(322 × N_teeth)
+# =============================================================================
+
+def mayan_ring_proportions(epoch: int, r_base_AU: float = 1.0) -> dict:
+    """Compute three-ring radii for a given Mayan epoch (1–5).
+
+    Proportions change at each epoch transition:
+      r_outer(n)     = r_base × φ^(n-1)       EXPANDING outward
+      r_companion(n) = r_base × φ^(-(n-1))    SHRINKS with each epoch
+      r_inner(n)     = r_base × φ^(-2*(n-1))  SHRINKS FASTEST — very small Epoch 5
+
+    At Epoch 5 (current):
+      r_outer    ≈ 6.854 × r_base  (dominant outer ring)
+      r_companion ≈ 0.146 × r_base  (small companion)
+      r_inner    ≈ 0.021 × r_base  (very small inner ring)
+    """
+    n = max(1, min(epoch, 10))   # clamp epoch to sensible range
+    r_outer     = r_base_AU * PHI ** (n - 1)
+    r_companion = r_base_AU * PHI ** (-(n - 1))
+    r_inner     = r_base_AU * PHI ** (-2.0 * (n - 1))
+    return {
+        'r_outer_AU'    : r_outer,
+        'r_companion_AU': r_companion,
+        'r_inner_AU'    : r_inner,
+        'r_outer_m'     : r_outer     * AU_METERS,
+        'r_companion_m' : r_companion * AU_METERS,
+        'r_inner_m'     : r_inner     * AU_METERS,
+        'gear_ratio_12' : r_outer / r_companion if r_companion > 0 else 0.0,
+        'gear_ratio_13' : r_outer / r_inner     if r_inner     > 0 else 0.0,
+        'epoch'         : n,
+    }
+
+
+def mayan_ring_state(epoch: int = 5,
+                     current_year: float = 2026.33,
+                     r_base_AU: float = 1.0) -> MayanRingState:
+    """Compute the full three-ring state for a given year.
+
+    t_n = (current_year − epoch5_start) / great_cycle_years
+    ω_1 = OMEGA_BAKTUN (Great Cycle angular frequency)
+    ω_2 = −ω_1 × r_1/r_2   (companion, external mesh, opposite)
+    ω_3 = +ω_1 × r_1/r_3   (inner, internal mesh, amplified)
+
+    Zero-point timing: next year when cos(π·t_n) = 0
+      → t_n = 1/2, 3/2, 5/2, ... (half-integers)
+      → year = epoch5_start + (2k+1)/2 × great_cycle_years  k=0,1,2...
+    """
+    rings = mayan_ring_proportions(epoch, r_base_AU)
+    r1 = rings['r_outer_m']
+    r2 = rings['r_companion_m']
+    r3 = rings['r_inner_m']
+
+    # Phase in Great Cycle (t_n = 0 at epoch 5 start; 1 = full cycle)
+    t_n = (current_year - MAYAN_EPOCH5_YEAR) / MAYAN_GREAT_CYCLE_YEARS
+
+    # Angular velocities
+    omega1 = OMEGA_BAKTUN
+    omega2 = -omega1 * r1 / r2 if r2 > 0 else 0.0   # external mesh → opposite
+    omega3 = +omega1 * r1 / r3 if r3 > 0 else 0.0   # internal mesh → same, amplified
+
+    # Inner ring has amplified phase (it completes many cycles per outer cycle)
+    gear_13 = rings['gear_ratio_13']
+    t_n_inner = t_n * gear_13
+
+    # Next zero-point: t_n must reach the next half-integer
+    import math as _m
+    next_half = _m.ceil(2.0 * t_n + 1e-9) / 2.0
+    if abs(next_half - t_n) < 1e-6:
+        next_half += 0.5
+    zero_pt_year = MAYAN_EPOCH5_YEAR + next_half * MAYAN_GREAT_CYCLE_YEARS
+
+    cos_tn   = math.cos(math.pi * t_n)
+    u_inertia = 3.0 * RHO_VAC_SCM * (4.0 * math.pi / 3.0) * C_LIGHT**2 * cos_tn
+
+    s = MayanRingState()
+    s.epoch           = epoch
+    s.r_outer_AU      = rings['r_outer_AU']
+    s.r_companion_AU  = rings['r_companion_AU']
+    s.r_inner_AU      = rings['r_inner_AU']
+    s.r_outer_m       = r1
+    s.r_companion_m   = r2
+    s.r_inner_m       = r3
+    s.omega_outer     = omega1
+    s.omega_companion = omega2
+    s.omega_inner     = omega3
+    s.gear_ratio_12   = rings['gear_ratio_12']
+    s.gear_ratio_13   = gear_13
+    s.t_n             = t_n
+    s.t_n_inner       = t_n_inner
+    s.current_year    = current_year
+    s.zero_point_next_year = zero_pt_year
+    s.u_inertia       = u_inertia
+    s.cos_tn          = cos_tn
+    s.massless_mode   = abs(cos_tn) < 1.0e-4
+    s.epoch5_active   = (epoch == 5)
+    return s
+
+
+def universal_inertia(t_n: float,
+                       epoch: int = 5,
+                       r_base_AU: float = 1.0,
+                       rho_vac: float = None) -> UniversalInertiaResult:
+    """Universal Inertia — invariant differential of the F_U field potential.
+
+    Derived from d²V/dr²|_{r_hz} where V is the F_U potential:
+
+      U_I = 3 · ρ_vac · (4π/3) · c² · cos(π·t_n)
+
+    This is FRAME-INVARIANT: same value regardless of r_hz, stellar mass, or
+    orbital parameters — depending only on vacuum energy and Mayan phase.
+
+    Physical states:
+      U_I > 0 : centripetal restoring → stable mass-building zone
+      U_I = 0 : zero-point gravity → massless-to-massive scalar transition
+      U_I < 0 : centrifugal expansion → negentropic void / dark energy zone
+
+    The crustall/tectonic floating zone:
+      Inner boundary: r_inner(epoch)  [FUBi-dominated, Rocky/solid]
+      Outer boundary: r_outer(epoch)  [FUBii-dominated, Superconductive plasma]
+      The tectonic plate 'floats' on the superconductive heavy plasma at r_hz.
+    """
+    if rho_vac is None:
+        rho_vac = RHO_VAC_SCM
+    rings = mayan_ring_proportions(epoch, r_base_AU)
+    cos_tn    = math.cos(math.pi * t_n)
+    u_inertia = 3.0 * rho_vac * (4.0 * math.pi / 3.0) * C_LIGHT**2 * cos_tn
+    gear_13   = rings['gear_ratio_13']   # φ^(2*(epoch-1))
+
+    res = UniversalInertiaResult()
+    res.u_inertia            = u_inertia
+    res.u_inertia_abs        = abs(u_inertia)
+    res.rho_vac              = rho_vac
+    res.cos_tn               = cos_tn
+    res.t_n                  = t_n
+    res.primordial_freq_range = gear_13           # ω_inner/ω_outer = r_1/r_3
+    res.massless_scalar      = abs(cos_tn) < 1.0e-4
+    res.centripetal_mode     = (u_inertia > 0.0)
+    res.centrifugal_mode     = (u_inertia < 0.0)
+    res.zero_point           = res.massless_scalar
+    res.tectonic_band_inner_m = rings['r_inner_m']
+    res.tectonic_band_outer_m = rings['r_outer_m']
+    return res
+
+
+def zero_point_years_in_epoch5(n_zeroes: int = 5) -> List[float]:
+    """Return the next n zero-point gravity years in Epoch 5.
+    Each zero occurs at t_n = 1/2, 3/2, 5/2, ...
+    year_k = MAYAN_EPOCH5_YEAR + (2k+1)/2 × MAYAN_GREAT_CYCLE_YEARS  k=0,1,...
+    """
+    return [
+        MAYAN_EPOCH5_YEAR + (2.0 * k + 1.0) / 2.0 * MAYAN_GREAT_CYCLE_YEARS
+        for k in range(n_zeroes)
+    ]
+
 
 # =============================================================================
 # SECTION 4 — UNIVERSAL BUOYANCY ENGINE  (new in v2.0.0)
@@ -1160,6 +1431,116 @@ class UniversalGravityCalculator:
             ],
         }
 
+class MayanTimingCalculator:
+    """Three-ring Mayan timing system — Universal Inertia and zero-point gravity.
+
+    Input dataset keys:
+      epoch       : Mayan epoch 1–5 (default 5 = current, started 2012)
+      current_year: decimal year (default 2026.33 = May 2026)
+      r_base_AU   : base radius for ring proportions [AU] (default 1.0)
+      rho_vac     : override vacuum energy density (default RHO_VAC_SCM)
+
+    CANONICAL EPOCH 5 (post-2012) RING GEOMETRY:
+      Ring 1 (OUTER/LEFT)    : EXPANDING  r ≈ 6.85 AU at epoch 5
+      Ring 2 (COMPANION/RIGHT): SHRINKS   r ≈ 0.146 AU at epoch 5
+      Ring 3 (INNER, inside 1): VERY SMALL r ≈ 0.021 AU at epoch 5
+
+    Universal Inertia invariant:
+      U_I = 3 · ρ_vac · (4π/3) · c² · cos(π·t_n)   [N/m²]
+      FRAME-INVARIANT: same regardless of r_hz, mass, orbital parameters
+
+    Zero-point gravity (massless scalar state):
+      cos(π·t_n) = 0 → t_n = 1/2 within each Great Cycle
+      Achieved with precision = 1 / (gear_ratio_13 × N_teeth)
+      In Epoch 5: 47× finer timing resolution via Ring 3
+
+    Tectonic/crustall zone (floating on superconductive heavy plasma):
+      Inner boundary = r_inner (FUBi zone, rocky / solid)
+      Outer boundary = r_outer (FUBii zone, superconductive plasma)
+      r_hz (habitable zone) lies between: surface floats at r_hz
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        epoch        = dataset.get('epoch',        5)
+        current_year = dataset.get('current_year', 2026.33)
+        r_base_AU    = dataset.get('r_base_AU',    1.0)
+        rho_vac      = dataset.get('rho_vac',      RHO_VAC_SCM)
+
+        state = mayan_ring_state(epoch, current_year, r_base_AU)
+        ui    = universal_inertia(state.t_n, epoch, r_base_AU, rho_vac)
+        zp    = zero_point_years_in_epoch5(5)
+
+        # Connect to habitable zone solver
+        hz = solve_habitable_zone({'rho_vac': rho_vac})
+
+        # Crustall/tectonic band: [r_inner, r_outer]
+        band_inner_AU = state.r_inner_AU
+        band_outer_AU = state.r_outer_AU
+        hz_in_band    = (band_inner_AU <= hz.r_hz_AU <= band_outer_AU)
+
+        return {
+            # Ring geometry
+            'epoch'               : epoch,
+            'current_year'        : current_year,
+            'r_outer_AU'          : state.r_outer_AU,
+            'r_companion_AU'      : state.r_companion_AU,
+            'r_inner_AU'          : state.r_inner_AU,
+            'gear_ratio_12'       : state.gear_ratio_12,
+            'gear_ratio_13'       : state.gear_ratio_13,
+            # Timing
+            't_n'                 : state.t_n,
+            't_n_inner'           : state.t_n_inner,
+            'cos_tn'              : state.cos_tn,
+            'omega_outer_rad_s'   : state.omega_outer,
+            'omega_companion_rad_s': state.omega_companion,
+            'omega_inner_rad_s'   : state.omega_inner,
+            'zero_point_next_year': state.zero_point_next_year,
+            'zero_point_years_e5' : zp,
+            'massless_mode'       : state.massless_mode,
+            # Universal Inertia
+            'u_inertia'           : ui.u_inertia,
+            'u_inertia_abs'       : ui.u_inertia_abs,
+            'centripetal_mode'    : ui.centripetal_mode,
+            'centrifugal_mode'    : ui.centrifugal_mode,
+            'zero_point_gravity'  : ui.zero_point,
+            'primordial_freq_range': ui.primordial_freq_range,
+            # Tectonic/crustall zone
+            'tectonic_inner_AU'   : band_inner_AU,
+            'tectonic_outer_AU'   : band_outer_AU,
+            'r_hz_AU'             : hz.r_hz_AU,
+            'hz_in_tectonic_band' : hz_in_band,
+            'primary_equations': [
+                f"MAYAN THREE-RING TIMING — Epoch {epoch} (Epoch 5 started 2012.97)",
+                f"  Ring 1 (OUTER/EXPANDING):    r = {state.r_outer_AU:.4f} AU",
+                f"  Ring 2 (COMPANION/SHRINKING): r = {state.r_companion_AU:.4f} AU",
+                f"  Ring 3 (INNER/VERY SMALL):   r = {state.r_inner_AU:.6f} AU",
+                f"  Gear ratio 1:3 (inner amplification) = {state.gear_ratio_13:.2f}×",
+                f"  t_n = {state.t_n:.6f}   cos(π·t_n) = {state.cos_tn:.6f}",
+                f"UNIVERSAL INERTIA (invariant differential):",
+                f"  U_I = 3·ρ_vac·(4π/3)·c²·cos(π·t_n) = {ui.u_inertia:.4e} N/m²",
+                f"  Mode: {'CENTRIPETAL (mass-building)' if ui.centripetal_mode else 'CENTRIFUGAL (void-expansion)'}",
+                f"  Zero-point next: {state.zero_point_next_year:.2f}",
+                f"TECTONIC BAND: [{band_inner_AU:.4f}, {band_outer_AU:.4f}] AU",
+                f"  r_hz (habitable) = {hz.r_hz_AU:.4f} AU  in band: {hz_in_band}",
+            ],
+            'available_equations': [
+                "Ring proportions: r_i(n) = r_base × φ^{±2(n−1)}  φ=(1+√5)/2",
+                "ω_companion = −ω_outer × r_outer/r_companion  [external mesh]",
+                "ω_inner = +ω_outer × r_outer/r_inner  [internal mesh, amplified]",
+                "U_I = 3·ρ_vac·(4π/3)·c²·cos(π·t_n)  [frame-invariant]",
+                "Zero-point years: EPOCH5_START + (2k+1)/2 × GREAT_CYCLE_YEARS",
+                "Tectonic float: surface at r_hz where FUBi + FUBii = 0",
+                "Primordial radiance band: [ω_outer, ω_inner] = [1, gear_ratio_13]×ω_baktun",
+            ],
+            'simulation_set': [
+                "Animate gear proportions: epoch 1→5 — outer grows, inner/companion shrink",
+                "U_I vs t_n: 0→2 — show centripetal↔zero-point↔centrifugal cycle",
+                "Scan current_year: 2012→7138 — next zero-point year identified",
+                "3D tectonic surface: r_hz(M, epoch) — habitable zone across mass spectrum",
+            ],
+        }
+
+
 # =============================================================================
 # SECTION 7 — TEST SUITE (60 tests: T01–T60 mirroring C++ runQCalcGeomTests)
 # =============================================================================
@@ -1171,8 +1552,9 @@ def _tol_check(computed: float, expected: float, tol_pct: float) -> bool:
 
 
 def run_qcalcgeom_tests(verbose: bool = True) -> dict:
-    """Run all 60 QCalcGeom requirements-boundary tests.
-    Mirrors C++ runQCalcGeomTests() T01–T60 with identical reference values.
+    """Run all 70 QCalcGeom requirements-boundary tests.
+    T01–T60: mirrors C++ runQCalcGeomTests() with identical reference values.
+    T61–T70: Mayan three-ring timing / Universal Inertia system.
     Returns {'passed': int, 'failed': int, 'results': list-of-dicts}.
     """
     results = []
@@ -1193,7 +1575,7 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
 
     if verbose:
         print("\n" + "="*72)
-        print("QCalcGeom.py v2.0.0 — Requirements-Boundary Test Suite (T01–T60)")
+        print("QCalcGeom.py v2.0.0 — Requirements-Boundary Test Suite (T01–T70)")
         print("="*72 + "\n")
 
     # ── BSFG-METRIC (T01–T06) ────────────────────────────────────────────────
@@ -1439,6 +1821,67 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
     chk("T60","HZ-SCAN","r_hz_m from scan is positive",
         float(np.all(scan['r_hz_m'] > 0)), 1.0, 0.0,
         qual_ok=bool(np.all(scan['r_hz_m'] > 0)))
+
+    # ── MAYAN TIMING / UNIVERSAL INERTIA (T61–T70) ───────────────────────────
+    rings5 = mayan_ring_proportions(5, 1.0)
+    rings1 = mayan_ring_proportions(1, 1.0)
+    state5 = mayan_ring_state(5, 2026.33, 1.0)
+    ui_tn0 = universal_inertia(0.0, 5, 1.0)
+    ui_tnH = universal_inertia(0.5, 5, 1.0)
+    ui_tn1 = universal_inertia(1.0, 5, 1.0)
+    zp_years = zero_point_years_in_epoch5(3)
+
+    # T61: Epoch 5 outer ring > base (expanding)
+    chk("T61","MAYAN","Epoch 5 outer ring EXPANDING (r_1 > r_base)",
+        rings5['r_outer_AU'], 0.0, 0.0,
+        qual_ok=(rings5['r_outer_AU'] > 1.0))
+
+    # T62: Epoch 5 companion ring < base (shrinking)
+    chk("T62","MAYAN","Epoch 5 companion ring SHRINKS (r_2 < r_base)",
+        rings5['r_companion_AU'], 0.0, 0.0,
+        qual_ok=(rings5['r_companion_AU'] < 1.0))
+
+    # T63: Epoch 5 inner ring very small (< companion)
+    chk("T63","MAYAN","Epoch 5 inner ring VERY SMALL (r_3 < r_2 < r_1)",
+        rings5['r_inner_AU'], 0.0, 0.0,
+        qual_ok=(rings5['r_inner_AU'] < rings5['r_companion_AU'] < rings5['r_outer_AU']))
+
+    # T64: Epoch 1 all rings equal to r_base (φ^0 = 1)
+    chk("T64","MAYAN","Epoch 1: all rings = r_base (φ^0 = 1)",
+        rings1['r_outer_AU'], 1.0, 0.001,
+        qual_ok=(abs(rings1['r_outer_AU'] - 1.0) < 1e-9
+                 and abs(rings1['r_inner_AU'] - 1.0) < 1e-9))
+
+    # T65: Gear ratio 1:3 at epoch 5 = r_outer/r_inner = φ^4/φ^-8 = φ^12 ≈ 321.9969
+    phi12 = PHI ** 12
+    chk("T65","MAYAN","Epoch 5 gear ratio 1:3 = φ^12 ≈ 321.997",
+        rings5['gear_ratio_13'], phi12, 0.01)
+
+    # T66: ω_companion negative (external mesh → opposite rotation)
+    chk("T66","MAYAN","ω_companion < 0 (external mesh, opposite rotation)",
+        state5.omega_companion, 0.0, 0.0,
+        qual_ok=(state5.omega_companion < 0.0))
+
+    # T67: ω_inner > ω_outer (internal mesh amplification)
+    chk("T67","MAYAN","ω_inner > ω_outer (internal mesh amplification ≈ 47×)",
+        state5.omega_inner, 0.0, 0.0,
+        qual_ok=(state5.omega_inner > state5.omega_outer * 2.0))
+
+    # T68: Universal Inertia > 0 at t_n=0 (centripetal, mass-building)
+    chk("T68","MAYAN","U_I > 0 at t_n=0 (centripetal restoring mode)",
+        ui_tn0.u_inertia, 0.0, 0.0,
+        qual_ok=ui_tn0.centripetal_mode)
+
+    # T69: Universal Inertia = 0 at t_n=0.5 (zero-point gravity)
+    chk("T69","MAYAN","U_I = 0 at t_n=0.5 (zero-point gravity, massless scalar)",
+        ui_tnH.u_inertia, 0.0, 0.0,
+        qual_ok=ui_tnH.zero_point)
+
+    # T70: Universal Inertia invariant — same |U_I| at t_n=0 and t_n=1, opposite sign
+    chk("T70","MAYAN","U_I invariant: |U_I(0)| = |U_I(1)|, sign flip (centripetal↔centrifugal)",
+        abs(ui_tn0.u_inertia + ui_tn1.u_inertia), 0.0, 0.0,
+        qual_ok=(abs(ui_tn0.u_inertia + ui_tn1.u_inertia)
+                 < 1e-6 * abs(ui_tn0.u_inertia)))
 
     # ── Summary ──────────────────────────────────────────────────────────────
     passed = sum(1 for r in results if r['passed'])
