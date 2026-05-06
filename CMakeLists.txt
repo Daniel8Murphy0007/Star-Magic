@@ -10,8 +10,11 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND EXISTS "C:/vcpkg/scripts/buildsystems/vc
 endif()
 
 # Project name and programming language
-# Build Status: February 21, 2026 - v4.2.1 Poseidon TaskBot Integration
-# Session: Added Poseidon offline physics maintenance bot to VR/VM Backend
+# Build Status: May 6, 2026 - v5.78 (Session 234) — Sessions 129-234 fully integrated
+# CMakeLists.txt updated: source168-173, source177_wolfram, source163_main1_integration,
+#   UQFFComparedToGW170817, qcalcgeom_tests, QCalcGeom.cpp; Python post-build: CP2/3/4,
+#   QCalcGeom.py, dpm_vacuum_manifold.py, IPData.py, OPData.py; install(TARGETS) updated.
+# Physics Terms: 7,385+ | CP2: 680 classes | CP4: 600 classes | Whitepapers: 1,155
 # IPC Layer: Cross-platform (Windows + Linux/macOS) with NamedPipeChannel + SharedMemoryChannel + gRPC
 # v4.2 Features:
 #   Poseidon TaskBot: Offline physics maintenance (read/write/compare/validate/update)
@@ -687,6 +690,43 @@ if(Qt6_FOUND)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${CMAKE_SOURCE_DIR}/CondensedPhysics_Validation.py"
                 "$<TARGET_FILE_DIR:Source2>/CondensedPhysics_Validation.py"
+            # Copy CondensedPhysics2/3/4 extensions (UQFF calculator tiers)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CondensedPhysics2.py"
+                "$<TARGET_FILE_DIR:Source2>/CondensedPhysics2.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CondensedPhysics3.py"
+                "$<TARGET_FILE_DIR:Source2>/CondensedPhysics3.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/CondensedPhysics4.py"
+                "$<TARGET_FILE_DIR:Source2>/CondensedPhysics4.py"
+            # Copy QCalcGeom.py and helpers (Session 201-203: Universal Buoyancy solver v2.1.0)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/QCalcGeom.py"
+                "$<TARGET_FILE_DIR:Source2>/QCalcGeom.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/qcalcgeom_core_derivation.py"
+                "$<TARGET_FILE_DIR:Source2>/qcalcgeom_core_derivation.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/qcalcgeom_helpers.py"
+                "$<TARGET_FILE_DIR:Source2>/qcalcgeom_helpers.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/qcalcgeom_sim_engine.py"
+                "$<TARGET_FILE_DIR:Source2>/qcalcgeom_sim_engine.py"
+            # Copy vacuum manifold modules (dpm_vacuum_manifold — sole vacuum source, Quantum Chain v2.1)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/dpm_vacuum_manifold.py"
+                "$<TARGET_FILE_DIR:Source2>/dpm_vacuum_manifold.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/et_scm_vacuum.py"
+                "$<TARGET_FILE_DIR:Source2>/et_scm_vacuum.py"
+            # Copy IPData.py and OPData.py (CSV bridge + output data layer)
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/IPData.py"
+                "$<TARGET_FILE_DIR:Source2>/IPData.py"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/OPData.py"
+                "$<TARGET_FILE_DIR:Source2>/OPData.py"
             # Copy OpenSSL DLLs (required for MAIN_1_CoAnQi.exe Grok integration)
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll"
@@ -1260,6 +1300,34 @@ add_executable(Source165 Source165.cpp)
 add_executable(Source166 Source166.cpp)
 add_executable(Source167 Source167.cpp)
 
+# ========== SOURCE168-173: UQFF Grok Thread Integration Modules (Session 129, Mar 2026) ==========
+add_executable(source168 source168.cpp)  # UQFF Buoyancy Module (UQFFBuoyancySNRModule)
+add_executable(source169 source169.cpp)  # UQFF Cassini Buoyancy Module (UQFFCassiniBuoyancyModule)
+add_executable(source170 source170.cpp)  # UQFF Multi Astro Systems (UQFFMultiAstroSystemsModule)
+add_executable(source171 source171.cpp)  # UQFF Eight Astro Systems (UQFFEightAstroSystemsModule)
+add_executable(source172 source172.cpp)  # UQFF Nineteen Astro Systems (UQFFNineteenAstroSystemsModule)
+add_executable(source173 source173.cpp)  # Wolfram Field Unity Node (WolframFieldUnityModule, source173)
+# source174: Asymmetrical Capacitor Open-Energy Calculator — NO main(), included via source176 + MAIN_1_CoAnQi
+# source175: UQFF Grok Thread 98b2e77d Physics — NO main(), included in MAIN_1_CoAnQi
+# source176_auto_full_uqff: Auto UQFF scanner — NO main(), requires USE_EMBEDDED_WOLFRAM, included in MAIN_1_CoAnQi
+# source178_grok_api: Grok API — NO main(), included directly in MAIN_1_CoAnQi.cpp (line 206)
+# source179: PI Co-Resonance Field Module — NO main(), included in MAIN_1_CoAnQi (WSTP optional)
+
+# ========== SOURCE163 MAIN1 INTEGRATION TEST ==========
+# Session 233: Integration test for MAIN_1_CoAnQi canonical progress (Sessions 202-232)
+add_executable(source163_main1_integration source163_main1_integration.cpp)
+set_target_properties(source163_main1_integration PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
+
+# ========== UQFF vs GW170817 GRAVITATIONAL WAVE COMPARISON ==========
+add_executable(UQFFComparedToGW170817 UQFFComparedToGW170817.cpp)
+set_target_properties(UQFFComparedToGW170817 PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
+
+# ========== QCALCGEOM TEST SUITE ==========
+# Session 201: QCalcGeom v2.0.0 Universal Buoyancy simultaneous equation solver — 60/60 tests pass
+add_executable(qcalcgeom_tests qcalcgeom_tests.cpp QCalcGeom.cpp)
+set_target_properties(qcalcgeom_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
+add_test(NAME QCalcGeom_Tests COMMAND qcalcgeom_tests)
+
 # ========== SOURCE200 COSMIC QUANTUM EGG (WSTP Required) ==========
 # Added: January 22, 2026
 # Purpose: 26D Chaotic Dimensional Structure - Integrates into MAIN_1_CoAnQi.cpp
@@ -1276,6 +1344,20 @@ if(USE_EMBEDDED_WOLFRAM AND EXISTS "${WSTP_DIR}")
     message(STATUS "source200 (Cosmic Quantum Egg) enabled with WSTP integration")
 else()
     message(STATUS "source200 (Cosmic Quantum Egg) SKIPPED - requires USE_EMBEDDED_WOLFRAM=ON")
+endif()
+
+# ========== SOURCE177: WOLFRAM FIELD UNITY (WSTP Optional) ==========
+# THE FINAL NODE — Full Wolfram Physics Project Integration + Field Unity Completion
+# Contains: SacredTime, PI_Infinity_Decoder, WolframFieldUnityEngine, 8 astrophysical systems
+# Can build standalone without WSTP (pure C++ field unity calculations)
+add_executable(source177_wolfram_field_unity source177_wolfram_field_unity.cpp)
+set_target_properties(source177_wolfram_field_unity PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
+if(USE_EMBEDDED_WOLFRAM AND EXISTS "${WSTP_DIR}")
+    target_compile_definitions(source177_wolfram_field_unity PRIVATE USE_EMBEDDED_WOLFRAM)
+    target_link_libraries(source177_wolfram_field_unity PRIVATE wstp64i4 kernel32 user32 advapi32)
+    message(STATUS "source177_wolfram_field_unity: Built WITH Wolfram WSTP integration")
+else()
+    message(STATUS "source177_wolfram_field_unity: Built WITHOUT Wolfram WSTP (pure C++ mode)")
 endif()
 
 # ========== UQFF CORE LIBRARY ==========
@@ -1395,6 +1477,16 @@ if(MSVC)
     target_compile_options(Source165 PRIVATE /Zi)
     target_compile_options(Source166 PRIVATE /Zi)
     target_compile_options(Source167 PRIVATE /Zi)
+    target_compile_options(source168 PRIVATE /Zi)
+    target_compile_options(source169 PRIVATE /Zi)
+    target_compile_options(source170 PRIVATE /Zi)
+    target_compile_options(source171 PRIVATE /Zi)
+    target_compile_options(source172 PRIVATE /Zi)
+    target_compile_options(source173 PRIVATE /Zi)
+    target_compile_options(source163_main1_integration PRIVATE /Zi)
+    target_compile_options(UQFFComparedToGW170817 PRIVATE /Zi)
+    target_compile_options(qcalcgeom_tests PRIVATE /Zi)
+    target_compile_options(source177_wolfram_field_unity PRIVATE /Zi)
 else()
     target_compile_options(Source134 PRIVATE -g)
     target_compile_options(MAIN_1 PRIVATE -g -O0)
@@ -1404,6 +1496,16 @@ else()
     target_compile_options(Source165 PRIVATE -g -O0)
     target_compile_options(Source166 PRIVATE -g -O0)
     target_compile_options(Source167 PRIVATE -g -O0)
+    target_compile_options(source168 PRIVATE -g -O0)
+    target_compile_options(source169 PRIVATE -g -O0)
+    target_compile_options(source170 PRIVATE -g -O0)
+    target_compile_options(source171 PRIVATE -g -O0)
+    target_compile_options(source172 PRIVATE -g -O0)
+    target_compile_options(source173 PRIVATE -g -O0)
+    target_compile_options(source163_main1_integration PRIVATE -g -O0)
+    target_compile_options(UQFFComparedToGW170817 PRIVATE -g -O0)
+    target_compile_options(qcalcgeom_tests PRIVATE -g -O0)
+    target_compile_options(source177_wolfram_field_unity PRIVATE -g -O0)
 endif()
 
 # ========== OPTIONAL: Add include directories ==========
@@ -1416,6 +1518,9 @@ endif()
 
 # ========== INSTALL TARGETS ==========
 install(TARGETS Source134 MAIN_1 MAIN_1_CoAnQi Source163 Source164 Source165 Source166 Source167
+    source168 source169 source170 source171 source172 source173
+    source163_main1_integration UQFFComparedToGW170817 qcalcgeom_tests
+    source177_wolfram_field_unity
     RUNTIME DESTINATION bin
 )
 
