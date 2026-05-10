@@ -190,30 +190,67 @@ coupling.
 - **Predicted mechanism:** [99system_master_equation.py](99system_master_equation.py#L55)
   `neutrino_oscillation_prob_lenr` already encodes the coupling.
 
-### Theorem 6 — Planck Constant Derivation from UQFF (VERIFIED)
-**Statement:** Planck's constant $h$ is not fundamental; it emerges from the
-DPM angular momentum quantization with minimum energy gap $\Delta = P/3$,
-vacuum density $\rho$, grinding opposition $\text{Grind}_\text{opp}$, and
-entropy damping at the speed of light:
+### Theorem 6 — Fundamental Constants from UQFF (CONJECTURED — STRUCTURAL ONLY)
+**Statement:** The fundamental constants $h$, $\alpha$, $c$, $G$ are not
+independent inputs to physics; they emerge as composite ratios of UQFF
+quantities (DPM angular momentum, void coupling, Grind opposition, vacuum
+density, triad equilibrium). Symbolically:
 
-$$h = \frac{2\pi \Delta r^2}{\kappa} \cdot \rho \cdot |\text{Grind}_\text{opp}| \cdot \exp(-\mathcal{H}/c)$$
+$$h \sim \frac{\Delta r^2}{\kappa}\rho\,\text{Grind} \cdot e^{-\mathcal{H}/c}, \quad
+\alpha \sim \frac{\kappa\rho\,\text{Grind}^2 r^{n}\text{Partition}}{\sqrt{g\,SCm/UA}}, \quad
+c \sim \sqrt{g\,SCm/UA}, \quad
+G \sim \frac{g\,e^{-\text{Grind}}}{4\pi\rho_\text{void}}$$
 
 - **Implementation:** [CondensedPhysics4.py](CondensedPhysics4.py#L13820)
-  `UQFFPlanckConstantDerivedCalculator`
-- **Whitepaper:** [PAPER_590_UQFF_Planck_Constant_Derived.md](whitepapers/PAPER_590_UQFF_Planck_Constant_Derived.md)
-- **Numerical result (verified May 10, 2026):**
-  - $h_\text{derived} = 6.585 \times 10^{-34}$ J·s
-  - $h_\text{observed} = 6.626 \times 10^{-34}$ J·s
-  - **Relative error: 0.62%**
-- **Status:** VERIFIED. Predates Standard Model collider input. Recovers the
-  original 5-variable Planck (1900) formulation conceptually: $\Delta$, $r$,
-  $\kappa$, $\rho$, $\text{Grind}_\text{opp}$, with $\exp(-\mathcal{H}/c)$
-  as the damping/entropy term Planck's original derivation referenced as
-  oscillator entropy.
-- **Session 237 note:** original formula had a sign-transposition error
-  (exp in denominator vs numerator) inherited from pre-markdown Grok export.
-  Corrected May 10, 2026 with entropy recalibrated from $1.0\times 10^{10}$
-  to $1.209\times 10^{10}$ (within calibration tolerance).
+  `UQFFPlanckConstantDerivedCalculator` (#177),
+  `UQFFFineStructureConstantDerivedCalculator` (#178),
+  `UQFFSpeedOfLightTriadEquilibriumCalculator` (#179),
+  `UQFFGravitationalConstantVoidCouplingCalculator` (#180)
+- **Whitepapers:** PAPER_590, PAPER_591, PAPER_592, PAPER_593
+
+**Status (Session 237 audit, May 10 2026): STRUCTURAL — quantitative match
+NOT established.** The Grok source file `grok_share_4cef778c78b8.txt` claims
+"matches observed" annotations for all four constants, but direct execution
+of the stated formulas at the stated parameters reproduces none of them
+within order-of-magnitude:
+
+| Constant | Source claim | Direct execution | Off by |
+|---|---|---|---|
+| $h$ | $\sim 6.6\times 10^{-34}$ | $\sim 6\times 10^{19}$ (simplified) / $6.27\times 10^{-2}$ (full) | $10^{32}$+ |
+| $\alpha$ | $\sim 7.30\times 10^{-3}$ | $\sim 5\times 10^{-36}$ (r²) / $\sim 5\times 10^{-262}$ (r²⁴) | $10^{33}$+ |
+| $c$ | $3\times 10^{8}$ m/s | $0.032$–$10.4$ m/s | $10^{7}$+ |
+| $G$ | $\sim 6.67\times 10^{-11}$ | $10^{-3}$ to $10^{22}$ depending on method | $10^{7}$+ |
+
+A May 10 2026 first-pass attempt to fix Planck via sign-flip + 20.9% entropy
+recalibration produced a 0.62% match, but this is curve-fitting (one knob
+turned to make one number land), not derivation. Applying the same pattern
+to $\alpha$/$c$/$G$ does not work — they are off by 7–262 orders of magnitude
+and cannot be rescued by transposition + small calibration.
+
+**Why the source claims don't work:**
+1. Grok's verification annotations are confabulated — no arithmetic in the
+   source file produces the claimed numbers.
+2. $c$ is an *axiom* of UQFF (`v_init = c`, `v_SCm = c/3`) — it cannot be
+   derived from a framework that assumes it. Same circularity for $h$ and
+   $G$: the canonical UQFF constants ($\rho_\text{vac}$, $\kappa$, $[SSq]$,
+   $\beta_i$, $S_{26}$) were themselves calibrated against observations
+   that already used $h$, $c$, $G$.
+3. The papers invoke "after UQFF unit normalization" without defining the
+   UQFF→SI unit map.
+
+**What is real:** the *structural* claim — that $h$, $\alpha$, $c$, $G$ are
+composite ratios of more primitive UQFF quantities, not independent inputs.
+This structural form is preserved in the calculator code and whitepapers,
+labeled `STRUCTURAL`.
+
+**Path to real verification (open work):**
+1. Define a non-circular UQFF→SI unit map (`derivations/uqff_to_si.md`).
+2. Calibrate $\rho_\text{vac}$, $\kappa$, $g$ from observations independent
+   of $h$, $c$, $G$ (e.g. cosmic void density, Birkeland reactor outputs).
+3. Re-run the four calculators; if the derived values land within
+   reasonable tolerance, promote to VERIFIED. If not, accept that UQFF
+   constrains relationships *between* fundamental constants but does not
+   derive their absolute values.
 
 ### Theorem 7 — 1000-System Cross-Validation Goodness-of-Fit
 **Statement (to be computed):** UQFF achieves median fractional residual

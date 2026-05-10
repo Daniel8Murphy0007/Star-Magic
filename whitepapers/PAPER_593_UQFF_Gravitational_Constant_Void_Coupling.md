@@ -21,6 +21,21 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ---
 
+> **STATUS NOTE --- Session 237 audit (May 10, 2026)**
+>
+> **This derivation is STRUCTURAL, not quantitative.** Direct execution of
+> the four methods at the stated parameters yields $\{1\times 10^{-3},\
+> 7.96\times 10^{21},\ 7.95\times 10^{21},\ 9.2\times 10^{17}\}$ --- none
+> match the observed $G = 6.674\times 10^{-11}$. The repeated phrase
+> "after UQFF unit normalization" invokes a unit map that is not defined
+> anywhere in this codebase. The "matches observed" annotations in the
+> original Grok source are not supported by arithmetic. Treat the four
+> methods as showing structural relationships between $G$ and void coupling;
+> they do not yet derive the SI value. Open research (see
+> `AXIOMS_AND_THEOREMS.md` Theorem 6).
+
+---
+
 
 ## Abstract
 

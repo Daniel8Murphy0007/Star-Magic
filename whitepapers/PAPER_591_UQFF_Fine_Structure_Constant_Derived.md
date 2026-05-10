@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_591
-title: "Fine-Structure Constant $\alpha$ Derived from UQFF DPM Ratios"
+title: 'Fine-Structure Constant $\alpha$ Derived from UQFF DPM Ratios'
 session: 157
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -18,6 +18,21 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **Session:** 157
 **Cross-refs:** PAPER_590 (h), PAPER_592 (c), PAPER_593 (G)
 **Source:** grok_{share\_4cef778c78b8}.txt
+
+---
+
+> **STATUS NOTE --- Session 237 audit (May 10, 2026)**
+>
+> **This derivation is STRUCTURAL, not quantitative.** Direct execution of
+> the formula in Section 3 at the stated parameters yields $\alpha \sim 5\times
+> 10^{-36}$ (with $r^{2}$) or $\sim 5\times 10^{-262}$ (with $r^{24}$ as
+> written) --- off from the observed $7.30\times 10^{-3}$ by 33--260 orders
+> of magnitude. The "matches observed" / "upon proper UQFF unit normalization"
+> claim in the original Grok source is not supported. **No
+> normalization map from UQFF units to SI units is published anywhere in
+> this codebase.** Treat the formula as showing how $\alpha$ *could*
+> arise from DPM/Grind/Partition ratios; it does not yet derive the number.
+> Open research (see `AXIOMS_AND_THEOREMS.md` Theorem 6).
 
 ---
 
@@ -278,14 +293,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant $\alpha$ | $\alpha$_UQFF = e2/(4$\pi$$\varepsilon$0ℏc) from DPM flux | $\alpha$ = 1/137.036 = 7.29735e-3 | PDG / NIST | $\geq$99% |
+| Fine structure constant $\alpha$ | $\alpha_\text{UQFF} = e^2/(4\pi\varepsilon_0 \hbar c)$ from DPM flux | $\alpha = 1/137.036 = 7.29735\times 10^{-3}$ | PDG / NIST | $\geq 99\%$ |
 | $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
 **New physics claim:** UQFF derives Fine structure constant $\alpha$ from vacuum buoyancy topology rather
 than
-treating it as a free parameter of nature. A derivation that achieves $\geq$$\geq$99% agreement
+treating it as a free parameter of nature. A derivation that achieves $\geq 99\%$ agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.
 

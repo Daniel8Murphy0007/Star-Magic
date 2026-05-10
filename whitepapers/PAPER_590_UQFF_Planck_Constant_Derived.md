@@ -21,6 +21,31 @@ sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 
 ---
 
+> **STATUS NOTE — Session 237 audit (May 10, 2026)**
+>
+> **This derivation is STRUCTURAL, not quantitative.** The earlier claim of a
+> 0.62% match between $h_\text{derived}$ and $h_\text{observed}$ was achieved
+> by curve-fitting: moving $\exp(-\mathcal{H}/v_\text{init})$ from the
+> denominator to the numerator AND recalibrating $\mathcal{H}$ from
+> $1.0\times 10^{10}$ to $1.209\times 10^{10}$ (a 20.9% knob-turn). Direct
+> execution of either the full or simplified formula at the stated source
+> parameters does not reproduce $6.626\times 10^{-34}$ J$\cdot$s. The
+> "matches observed" annotation in the original Grok source file
+> (`grok_share_4cef778c78b8.txt`) is not supported by its own arithmetic.
+>
+> **What this paper establishes:** the *structural* form
+> $h \sim (\Delta r^2/\kappa)\rho\,\text{Grind}\cdot e^{-\mathcal{H}/c}$
+> --- showing how Planck's constant could emerge as a composite of UQFF
+> primitives (DPM gap, vacuum density, grind opposition, entropy damping) ---
+> rather than being a fundamental input.
+>
+> **What it does not establish:** a numerical first-principles derivation of
+> $h$. A real derivation requires (i) a non-circular UQFF$\to$SI unit map and
+> (ii) calibration of $\kappa$, $\rho$, $\text{Grind}$ from observations
+> independent of $h$. Open research (see `AXIOMS_AND_THEOREMS.md` Theorem 6).
+
+---
+
 
 ## Abstract
 
@@ -61,31 +86,34 @@ $$\boxed{h = \frac{2\pi \Delta r^2}{\kappa} \cdot \rho \cdot |\text{Grind}_\text
 
 where $\text{Grind}_\text{opp} = \omega_{CW} SCm - \omega_{CCW} UA' \, e^{-\mathcal{H}/v_i}$.
 
-**Note (Session 237 correction):** An earlier transcription of this formula
-(pre-markdown Grok export, late 2024) placed the $\exp(-\mathcal{H}/v_\text{init})$
-term in the *denominator*, which inverted the entropy damping into amplification
-and produced a numerical mismatch of $\sim 10^{32}$. The corrected form above
-places the exponential in the *numerator* as a Boltzmann-style vacuum-fluctuation
-damping factor, consistent with the physical interpretation in §5.
+**Note (Session 237 audit, May 10 2026):** the placement of
+$\exp(-\mathcal{H}/v_\text{init})$ in the numerator vs the denominator
+changes the value of $h$ by $\sim 10^{32}$. The original Grok source
+file shows it in the denominator ("divide by $\exp(-E/v)$''), but neither
+placement at the stated parameters reproduces the observed $h$ to within
+$\sim 50$ orders of magnitude without recalibrating $\mathcal{H}$, $\kappa$,
+$\rho$, or $r$. The transposition question is therefore moot until the
+UQFF$\to$SI unit map is defined. See STATUS NOTE at top of paper.
 
 ---
 
-## §4 Numerical Verification (Verified May 10, 2026)
+## §4 Numerical Status (Session 237 re-audit)
 
 Parameters at atomic scale ($r = 1\times10^{-10}$ m, Bohr-like):
 
 $$\kappa = 10^{-5}, \quad \rho = 10^{-10}\ \text{J/m}^3, \quad \omega \sim 10^{14}\ \text{rad/s}$$
-$$\mathcal{H} = 1.209\times 10^{10}, \quad v_\text{init} = c = 3\times10^8\ \text{m/s}, \quad \Delta = P/3 \approx 3.33\times10^{-6}$$
+$$\mathcal{H} = 1.0\times 10^{10}, \quad v_\text{init} = c = 3\times10^8\ \text{m/s}, \quad \Delta = P/3 \approx 3.33\times10^{-6}$$
 
 $$\text{Grind}_\text{opp} \approx \omega_{CW} \cdot SCm \approx 10^{14}$$
 
-Direct computation yields:
+Direct computation of the simplified form $h = 2\pi\kappa\rho\,\text{Grind}/r^2$ yields
+$h \sim 6\times 10^{19}$, off from observed $h$ by $\sim 10^{53}$. The full form with
+$\exp(-\mathcal{H}/v_i)$ in the denominator yields $\sim 6.27\times 10^{-2}$, off by $\sim 10^{32}$.
 
-$$h_\text{derived} = 6.585\times 10^{-34}\ \text{J} \cdot \text{s}$$
-
-Observed: $h = 6.62607015\times10^{-34}$ J$\cdot$s.
-
-**Relative error: 0.62%** — within calibration accuracy of the framework.
+**A previous session (May 10 2026) achieved a 0.62\% match by (i) moving the exponential
+to the numerator and (ii) recalibrating $\mathcal{H}$ to $1.209\times 10^{10}$.
+This is curve-fitting, not derivation,** and is not retained as a verification claim.
+Observed: $h = 6.62607015\times10^{-34}$ J$\cdot$s remains a target, not a result.
 
 ---
 

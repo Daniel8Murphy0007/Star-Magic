@@ -13821,26 +13821,31 @@ class UQFFPlanckConstantDerivedCalculator:
     """
     #177 � Planck Constant h Derived from UQFF Energy Gap
     -------------------------------------------------------
-    From grok_share_4cef778c78b8.txt � h as emergent from DPM quantization.
+    From grok_share_4cef778c78b8.txt (line 1670+) - h as emergent from DPM
+    quantization. Source contains TWO algebraic forms; canonical per SymPy
+    simplification:
 
-    ? = min ? = P/3 + dg/2 + dm/2 - v(4c�+(dg-dm)�)/2 � P/3 (small corrections)
+      Full (Grok's stated working form):
+        h = 2p(D r^2 / k) * rho * Grind_opp / exp(-Entropy/v_init)
+      Simplified (SymPy-reduced, source-canonical):
+        h = 2p * k * rho * (SCm*omega_CW - UA'*omega_CCW * exp(-E/v_init)) / r^2
 
-    Planck constant:
-      h = 2p?r�/? � ? � Grind_opp / exp(-Entropy/v_init)
+    Note: The Grok source's claim "h ~= 6.6e-34" with parameters
+    (kappa=1e-5, rho=1e-10, omega=1e14, r=1e-10, Entropy=1e10, v_init=3e8)
+    is dimensionally consistent but does NOT numerically reproduce 6.626e-34.
+    With those parameters the simplified form yields ~6e19. The derivation
+    is treated here as STRUCTURAL (showing h emerges from DPM/Grind, not
+    fundamental), not as a quantitative match. A numerical match would
+    require recalibrating kappa, rho, or r against UQFF's microscopic
+    Planck-scale lattice (open work item).
 
-    Simplified: h = 2p(P/3)r�/? � ? � Grind / exp(-E/v_init)
-
-    Numerical: ?=1e-5, ?=1e-10, ?~1e14, r=1e-10 m, Entropy=1e10, v_init=3e8
-      ? h � 6.6e-34 J�s  ? (matches observed Planck constant)
-
-    Source: grok_share_4cef778c78b8.txt   PAPER_590
+    Source: grok_share_4cef778c78b8.txt line 1670-1695   PAPER_590
     """
 
-    H_OBSERVED = 6.62607015e-34   # [J�s]
+    H_OBSERVED = 6.62607015e-34   # [J*s]
 
     def compute(self, dataset=None):
         d        = dataset or {}
-        P        = float(d.get('P_order',  9.99e-6))
         kappa    = float(d.get('kappa',    1.0e-5))
         rho      = float(d.get('rho',      1.0e-10))
         r        = float(d.get('r',        1.0e-10))   # Bohr-like [m]
@@ -13848,28 +13853,27 @@ class UQFFPlanckConstantDerivedCalculator:
         scm      = float(d.get('scm',      1.0))
         omega_cc = float(d.get('omega_cc', 1.0e14))
         ua_prime = float(d.get('ua_prime', 1.0))
-        entropy  = float(d.get('entropy',  1.209e10))   # CORRECTED: was 1.00e10 (calibration)
+        entropy  = float(d.get('entropy',  1.0e10))     # source value
         v_init   = float(d.get('v_init',   3.0e8))
 
+        # Grind_opp per source (line 1685): exp damping on UA' branch only
         grind = omega_cw * scm - omega_cc * ua_prime * math.exp(-entropy / max(v_init, 1e-300))
-        Delta = P / 3.0   # dominant term
 
-        # CORRECTED May 10, 2026: exp(-Entropy/v_init) is in NUMERATOR (damping),
-        # not denominator. Original transcription error from pre-markdown Grok export.
-        h_derived = ((2.0 * math.pi * Delta * r**2 / max(kappa, 1e-300))
-                     * rho * abs(grind) * math.exp(-entropy / max(v_init, 1e-300)))
+        # SOURCE-CANONICAL simplified form (line 1693 of grok_share_4cef778c78b8.txt):
+        # h = 2*pi * kappa * rho * grind / r^2
+        h_simplified = 2.0 * math.pi * kappa * rho * grind / max(r * r, 1e-300)
 
         return {
-            'paper':          'PAPER_590',
-            'session':        'Session 157',
-            'class':          '#177  UQFFPlanckConstantDerivedCalculator',
-            'h_derived':      h_derived,
-            'h_observed':     self.H_OBSERVED,
-            'Delta_gap':      Delta,
-            'Grind_opp':      grind,
-            'rel_error_pct':  abs(h_derived - self.H_OBSERVED) / self.H_OBSERVED * 100.0,
-            'match_within_1pct':  bool(abs(h_derived - self.H_OBSERVED) / self.H_OBSERVED < 0.01),
-            'match_within_50pct': bool(abs(h_derived - self.H_OBSERVED) / self.H_OBSERVED < 0.5),
+            'paper':           'PAPER_590',
+            'session':         'Session 157 / re-audited Session 237',
+            'class':           '#177  UQFFPlanckConstantDerivedCalculator',
+            'h_derived':       h_simplified,
+            'h_observed':      self.H_OBSERVED,
+            'Grind_opp':       grind,
+            'formula':         'h = 2*pi*kappa*rho*Grind_opp / r^2  (source line 1693)',
+            'status':          'STRUCTURAL: shows h emerges from DPM/Grind; '
+                               'numerical match requires Planck-scale parameter calibration (open)',
+            'numerical_ratio': h_simplified / self.H_OBSERVED,
         }
 
 
@@ -13892,8 +13896,14 @@ class UQFFFineStructureConstantDerivedCalculator:
       a = e�/(4pe0?c)
         = 2??Grind�r�4Partition9D / (3v(g�SCm/UA))
 
-    Numerical: r=5.29e-11 m (Bohr), ?=1e-5, ?=1e-10, Grind~1e-3, Partition=1e5
-      ? a � 1/137.036  ?
+    Note: The Grok source claim a ~= 1/137.036 with parameters
+      (r=5.29e-11 Bohr, kappa=1e-5, rho=1e-10, Grind=1e-3, Partition=1e5)
+      is NOT numerically reproduced. The r^24 factor produces ~5e-36 at
+      Bohr scale, off from observed alpha by ~33 orders of magnitude.
+      The derivation is treated here as STRUCTURAL (showing alpha as a
+      composite of DPM/Grind/Partition ratios), not as a quantitative match.
+      A real derivation requires non-circular calibration of (kappa, rho,
+      Grind) from observations independent of alpha. Open work item.
 
     Source: grok_share_4cef778c78b8.txt   PAPER_591
     """
@@ -13916,11 +13926,16 @@ class UQFFFineStructureConstantDerivedCalculator:
 
         return {
             'paper':            'PAPER_591',
-            'session':          'Session 157',
+            'session':          'Session 157 / re-audited Session 237',
             'class':            '#178  UQFFFineStructureConstantDerivedCalculator',
             'alpha_derived':    alpha_derived,
             'alpha_observed':   self.ALPHA_OBS,
             'one_over_alpha':   1.0 / max(alpha_derived, 1e-300),
+            'formula':          'alpha = 2*kappa*rho*Grind^2 * r^24 * Partition / (3*sqrt(g*SCm/UA))',
+            'status':           'STRUCTURAL: alpha as composite of DPM ratios; '
+                                'numerical match NOT reproduced (~33 orders off at Bohr scale). '
+                                'Real derivation requires independent calibration of kappa/rho/Grind. Open.',
+            'numerical_ratio':  alpha_derived / self.ALPHA_OBS,
         }
 
 
@@ -13936,10 +13951,15 @@ class UQFFSpeedOfLightTriadEquilibriumCalculator:
     Pre-mass equilibrium (??0, Um�0): Ug + Ub = 0
       Ug = g(SCm/UA),  Ub � -g  ? v_init = v(g�SCm/UA)
 
-    F_U_Bi_i Gaussian method (BH26 centroid �=92 GHz):
-      v_init � v(g�s/�) = v(1e-3�1e16/92e9) � 3e8 m/s  ?
+    F_U_Bi_i Gaussian method (BH26 centroid mu=92 GHz):
+      v_init ~ sqrt(g*sigma/mu) = sqrt(1e-3*1e16/92e9) ~ 10.4 m/s
 
-    Tensor convergence: P_order iterate to v_init = 3e8 m/s.
+    Note: c is an INPUT to UQFF (v_init = c, v_SCm = c/3 are axiomatic),
+    not an output. The expressions above show how c COULD emerge from
+    triad equilibrium IF the coupling g were independently calibrated to
+    g ~ c^2 in SI units --- but that calibration uses c, making this
+    formally circular. Treated here as STRUCTURAL only. A non-circular
+    derivation of c from UQFF is an open research problem.
 
     Source: grok_share_4cef778c78b8.txt   PAPER_592
     """
@@ -13967,13 +13987,16 @@ class UQFFSpeedOfLightTriadEquilibriumCalculator:
 
         return {
             'paper':            'PAPER_592',
-            'session':          'Session 157',
+            'session':          'Session 157 / re-audited Session 237',
             'class':            '#179  UQFFSpeedOfLightTriadEquilibriumCalculator',
             'c_triad_m_s':      c_triad,
             'c_gaussian_m_s':   c_gaussian,
             'c_resonant_m_s':   c_resonant,
             'c_observed':       self.C_OBSERVED,
             'BH26_mu_GHz':      mu_hz / 1e9,
+            'status':           'STRUCTURAL: c is an UQFF input (v_init=c axiomatic), '
+                                'not an output. Expressions show form, not numerical derivation. '
+                                'Non-circular derivation is an open research problem.',
         }
 
 
@@ -13987,15 +14010,23 @@ class UQFFGravitationalConstantVoidCouplingCalculator:
     From grok_share_4cef778c78b8.txt � G as emergent defect coupling.
 
     Triadic: G = g(SCm/UA)
-    Buoyant void: G = g/(4p?)
-    Full: G = g�exp(-Grind)/(4p?) with Gaussian anchor at �=92 GHz
+    Buoyant void: G = g/(4*pi*rho)
+    Full: G = g*exp(-Grind)/(4*pi*rho) with Gaussian anchor at mu=92 GHz
 
-    Numerical: g=1e-3, ?=1e-26, �=92 GHz ? G � 6.67e-11  ?
+    Note: The Grok source claim G ~ 6.67e-11 with parameters
+      (g=1e-3, rho=1e-26, mu=92 GHz) is NOT numerically reproduced.
+      The four methods yield 1e-3, 7.96e+21, 7.95e+21, 9.2e+17 --- all
+      off from observed G by 7-32 orders of magnitude. The papers'
+      'after UQFF unit normalization' claim is undefined: no normalization
+      map from UQFF units to SI is published. Treated as STRUCTURAL only.
+      A real derivation requires either (a) defining the UQFF->SI unit map
+      from first principles, or (b) calibrating g/rho_void from observations
+      that do not already use G. Open work item.
 
     Source: grok_share_4cef778c78b8.txt   PAPER_593
     """
 
-    G_OBSERVED = 6.6743e-11   # [m� kg?� s?�]
+    G_OBSERVED = 6.6743e-11   # [m^3 kg^-1 s^-2]
     BH26_MU    = 92.0e9
     BH26_SIG   = 1.0e16
 
@@ -14015,13 +14046,16 @@ class UQFFGravitationalConstantVoidCouplingCalculator:
 
         return {
             'paper':          'PAPER_593',
-            'session':        'Session 157',
+            'session':        'Session 157 / re-audited Session 237',
             'class':          '#180  UQFFGravitationalConstantVoidCouplingCalculator',
             'G_triad':        G_triad,
             'G_buoyant':      G_buoyant,
             'G_full':         G_full,
             'G_gaussian':     G_gauss,
             'G_observed':     self.G_OBSERVED,
+            'status':         'STRUCTURAL: four candidate forms of G as void coupling. '
+                              'Numerical match NOT reproduced (off 7-32 orders of magnitude). '
+                              'UQFF->SI unit normalization is undefined. Open work item.',
         }
 
 

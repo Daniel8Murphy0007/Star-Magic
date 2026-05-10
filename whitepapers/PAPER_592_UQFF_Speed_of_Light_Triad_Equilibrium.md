@@ -6,7 +6,7 @@ date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [AGN, vacuum, SCm, dark-energy, F_{U\_Bi\_i}, UQFF]
+tags: [AGN, vacuum, SCm, dark-energy, FUBii, UQFF]
 sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 
@@ -18,6 +18,20 @@ sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 **Session:** 157
 **Cross-refs:** PAPER_589 (Dark Energy), PAPER_590 (h), PAPER_593 (G), PAPER_535 (BH26)
 **Source:** grok_{share\_4cef778c78b8}.txt
+
+---
+
+> **STATUS NOTE --- Session 237 audit (May 10, 2026)**
+>
+> **This derivation is STRUCTURAL, not quantitative.** The three methods
+> presented here yield $0.032$--$10.4$ m/s at the stated parameters --- not
+> $3\times 10^{8}$ m/s. **$c$ is an axiom of UQFF, not an output:**
+> the canonical relations $v_\text{init}=c$ and $v_\text{SCm}=c/3$ are
+> assumed throughout the framework, so any expression that "derives" $c$
+> by setting $g\sim c^2$ is formally circular. The formulas show how the
+> triad equilibrium structurally relates to $c$; they do not derive $c$
+> from independent UQFF primitives. Open research (see
+> `AXIOMS_AND_THEOREMS.md` Theorem 6).
 
 ---
 
@@ -214,7 +228,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -242,7 +256,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
 **New physics claim:** UQFF derives Speed of light c from vacuum buoyancy topology rather than
-treating it as a free parameter of nature. A derivation that achieves $\geq$100% (redefines meter)
+treating it as a free parameter of nature. A derivation that achieves $\geq 100\%$ (redefines meter)
 agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.
