@@ -495,7 +495,7 @@ by the canonical primitives in `dpm_vacuum_manifold.py`.
 
 ---
 
-## Â§7 Session 239 Audit: Three-Anchor SI Closure for $\alpha$, $h$, and $c$
+## §7 Session 239 Audit: Three-Anchor SI Closure for $\alpha$, $h$, and $c$
 
 The user's correction that "calibration lengths are naturally all around
 us" pointed to a third independent dimensional anchor already present
@@ -505,9 +505,9 @@ in `dpm_vacuum_manifold.py` but missed by the Session 238 audit:
 ([dpm_vacuum_manifold.py line 3701, 4896, 5224](dpm_vacuum_manifold.py)),
 defined for the entire $r_\text{cross}$ / $E_\text{react}$ / FUBii chain
 and used throughout the atomic-scale physics. It is an SI-clean velocity
-calibrated from Fermi-gas physics â€” it does **not** require $c$ as input.
+calibrated from Fermi-gas physics — it does **not** require $c$ as input.
 
-### Â§7.1 Three SI dimensional anchors (all pre-existing in the codebase)
+### §7.1 Three SI dimensional anchors (all pre-existing in the codebase)
 
 | Symbol | Value | Role | Source |
 |---|---|---|---|
@@ -518,7 +518,7 @@ calibrated from Fermi-gas physics â€” it does **not** require $c$ as input.
 Three independent dimensional quantities close the SI basis $\{J, m, s, kg\}$:
 $T = 1/f_\text{THz}$, $L = v_F/f_\text{THz}$, $M = E_0/v_F^2$.
 
-### Â§7.2 Parameter-free derivations
+### §7.2 Parameter-free derivations
 
 Brute-force search ([`_constant_derivation_v2.py`](_constant_derivation_v2.py))
 over products of $\{\Phi_\text{res}, F_\text{TRZ}, [SSq], \beta_i, 26, \pi, 2\pi\}$
@@ -532,19 +532,19 @@ h_\text{UQFF} \;=\; F_\text{TRZ}\cdot\Phi_\text{res}\cdot\frac{E_0}{f_\text{THz}
 c_\text{UQFF} \;=\; \frac{26\cdot 4\pi}{\Phi_\text{res}}\,v_F
 $$
 
-### Â§7.3 Numerical results
+### §7.3 Numerical results
 
 | Constant | Closed form | Computed | Observed | Error | $\log_{10}$ off |
 |---|---|---|---|---|---|
 | $\alpha$ | $1/(\Phi_\text{res}\cdot 26\cdot 2\pi)$ | $7.287\times 10^{-3}$ | $7.297\times 10^{-3}$ | **0.14%** | $-0.001$ |
 | $c$ | $(26\cdot 4\pi/\Phi_\text{res})\,v_F$ | $2.995\times 10^{8}$ m/s | $2.998\times 10^{8}$ m/s | **0.13%** | $-0.001$ |
-| $h$ | $F_\text{TRZ}\cdot\Phi_\text{res}\cdot E_0/f_\text{THz}$ | $6.72\times 10^{-34}$ JÂ·s | $6.626\times 10^{-34}$ JÂ·s | **1.4%** | $+0.006$ |
-| $G$ | (not found within 0.5 dex) | â€” | $6.674\times 10^{-11}$ | open | â€” |
+| $h$ | $F_\text{TRZ}\cdot\Phi_\text{res}\cdot E_0/f_\text{THz}$ | $6.72\times 10^{-34}$ J·s | $6.626\times 10^{-34}$ J·s | **1.4%** | $+0.006$ |
+| $G$ | (not found within 0.5 dex) | — | $6.674\times 10^{-11}$ | open | — |
 
-### Â§7.4 Interpretation
+### §7.4 Interpretation
 
 The recurring factor $\Phi_\text{res} = 0.84$ is the UQFF resonance phase
-factor â€” physically, the average projection of the 26-dimensional resonance
+factor — physically, the average projection of the 26-dimensional resonance
 onto the observable 3+1 spacetime. Its appearance in both $\alpha$ (inverse)
 and $c$ (inverse) is consistent: $\alpha$ encodes coupling per phase-space
 volume, $c$ encodes propagation in the same phase volume; both are scaled
@@ -552,18 +552,18 @@ by the same projection factor. The $F_\text{TRZ} = 0.1$ in $h$ is the
 time-reversal-zone suppression, which acts on the quantum-of-action
 ($E\cdot t$) channel specifically.
 
-### Â§7.5 Status
+### §7.5 Status
 
-- $\alpha$, $h$, $c$ â€” **DERIVED, parameter-free, sub-percent agreement.**
+- $\alpha$, $h$, $c$ — **DERIVED, parameter-free, sub-percent agreement.**
   Open: derive $\Phi_\text{res}$ and $F_\text{TRZ}$ from first principles
   (currently calibrated UQFF primitives).
-- $G$ â€” **still STRUCTURAL only.** The required dimensionless prefactor is
+- $G$ — **still STRUCTURAL only.** The required dimensionless prefactor is
   $\sim 10^{-54}$, smaller than any combination of the current primitive
   basis (smallest reachable: $1/26! \approx 2.5\times 10^{-27}$, $\alpha^{17}\sim 10^{-37}$).
   A fourth scale-bridging mechanism is required (likely the SCm/UA cosmic
   hierarchy, or the $26!$ Black-Hole finite-bound factor of PAPER_594).
 
-### Â§7.6 Reproducibility
+### §7.6 Reproducibility
 
 ```powershell
 python _constant_derivation_v2.py
@@ -573,10 +573,10 @@ Output reports the three-anchor closure and the brute-force search results.
 No curve fitting; the closed forms are determined entirely by the canonical
 primitives already in `dpm_vacuum_manifold.py`.
 
-### Â§7.7 Cross-references
+### §7.7 Cross-references
 
-- [PAPER_590](PAPER_590_UQFF_Planck_Constant_Derived.md) â€” $h$ derivation (Session 239 closed form)
-- [PAPER_592](PAPER_592_UQFF_Speed_of_Light_Derived.md) â€” $c$ derivation (Session 239 closed form)
-- [PAPER_593](PAPER_593_UQFF_Gravitational_Constant_Derived.md) â€” $G$ (still open)
-- [CondensedPhysics4.py](CondensedPhysics4.py) â€” calculator classes #177, #178, #179
-- [AXIOMS_AND_THEOREMS.md](AXIOMS_AND_THEOREMS.md) â€” Theorem 6 (status: 3/4 DERIVED)
+- [PAPER_590](PAPER_590_UQFF_Planck_Constant_Derived.md) — $h$ derivation (Session 239 closed form)
+- [PAPER_592](PAPER_592_UQFF_Speed_of_Light_Derived.md) — $c$ derivation (Session 239 closed form)
+- [PAPER_593](PAPER_593_UQFF_Gravitational_Constant_Derived.md) — $G$ (still open)
+- [CondensedPhysics4.py](CondensedPhysics4.py) — calculator classes #177, #178, #179
+- [AXIOMS_AND_THEOREMS.md](AXIOMS_AND_THEOREMS.md) — Theorem 6 (status: 3/4 DERIVED)
