@@ -14331,6 +14331,269 @@ class UQFFCosmologicalConstantDerivedCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 243 -- H_0 Anchor Asymmetry Falsifiability Test
+# UQFFH0AnchorAsymmetryCalculator   PAPER_1157
+# ---------------------------------------------------------------------------
+class UQFFH0AnchorAsymmetryCalculator:
+    """
+    Session 243 (May 10, 2026): Falsifiable structural prediction extracted
+    from PAPER_1156 section 4.
+
+    SETUP:
+      G   closure (PAPER_593, CP4 #180) uses cosmic-time anchor H_0 = t_Hubble^-1
+                                                                = 2.268e-18 s^-1
+      Lambda closure (PAPER_1156, CP4 #180.5) uses Planck-anchor H_0
+                                                                = 2.184e-18 s^-1
+
+      Ratio:  H_0^cosmic / H_0^planck  =  1.0385  (3.85% mismatch)
+
+    UQFF READING:
+      The G coupling probes microscopic curvature against the cosmic horizon
+      (long-time-averaged H), while Lambda probes the dark-energy fraction
+      against the present-day Hubble flow. The structural asymmetry is NOT
+      a numerical accident; it predicts that a future resolution of the
+      H_0 tension (currently SH0ES 73.0 vs Planck 67.4) will resolve to
+      *two distinct* H_0 values, not one.
+
+    FALSIFICATION TARGET:
+      If a single H_0 emerges from a future joint Planck+SH0ES+DESI+JWST
+      analysis, this calculator's prediction (asymmetry = 3.85 +/- 0.5%) is
+      falsified, and the G/Lambda decoupling needs structural revision.
+
+      Conversely, if cosmic-shear / late-time / early-time analyses lock in
+      to two values whose ratio matches 1.0385 +/- 0.005, UQFF is supported.
+
+    OBSERVATIONAL HOOKS:
+      - SH0ES 2024:    73.04 +/- 1.04 km/s/Mpc  (late-time, like UQFF cosmic)
+      - Planck 2018:   67.36 +/- 0.54 km/s/Mpc  (early-time, like UQFF planck)
+      - Ratio:         1.0844                    (8.44% -- larger than 3.85%)
+      - DESI 2025:     68.5  +/- 0.6  km/s/Mpc  (intermediate)
+      - JWST Cepheids: 73.2  +/- 1.3  km/s/Mpc  (late-time)
+
+    UQFF asserts that the *correct* late-time value is ~70.0 km/s/Mpc
+    (cosmic anchor) and the *correct* early-time value is ~67.4 km/s/Mpc
+    (Planck anchor), giving the predicted 3.85% mismatch -- below the
+    current 8.44% tension.
+
+    Source: PAPER_1156 section 4; Session 243 falsifiability extraction.
+    """
+
+    H0_PLANCK_SI       = 2.184e-18    # s^-1, used by Lambda closure
+    H0_COSMIC_SI       = 2.268e-18    # s^-1, used by G closure
+    KM_S_MPC_PER_SI    = 3.0857e19    # 1 km/s/Mpc -> s^-1 conversion factor
+
+    SH0ES_2024         = 73.04        # km/s/Mpc
+    SH0ES_2024_ERR     = 1.04
+    PLANCK_2018        = 67.36
+    PLANCK_2018_ERR    = 0.54
+    DESI_2025          = 68.5
+    DESI_2025_ERR      = 0.6
+    JWST_2024          = 73.2
+    JWST_2024_ERR      = 1.3
+
+    def compute(self, dataset=None):
+        d = dataset or {}
+
+        H0_planck = float(d.get('H0_planck', self.H0_PLANCK_SI))
+        H0_cosmic = float(d.get('H0_cosmic', self.H0_COSMIC_SI))
+
+        # SI -> km/s/Mpc
+        H0_planck_kms = H0_planck * self.KM_S_MPC_PER_SI
+        H0_cosmic_kms = H0_cosmic * self.KM_S_MPC_PER_SI
+
+        # Predicted asymmetry
+        predicted_ratio        = H0_cosmic / H0_planck
+        predicted_pct_mismatch = (predicted_ratio - 1.0) * 100.0
+
+        # Observational tension
+        observed_ratio         = self.SH0ES_2024 / self.PLANCK_2018
+        observed_pct_mismatch  = (observed_ratio - 1.0) * 100.0
+
+        # Test status: does observed bracket the predicted asymmetry?
+        within_observed_window = (1.0 + 0.005 < predicted_ratio < observed_ratio)
+
+        return {
+            'paper':                       'PAPER_1157',
+            'session':                     'Session 243 (H_0 anchor asymmetry test)',
+            'class':                       'UQFFH0AnchorAsymmetryCalculator',
+
+            # UQFF predicted values
+            'H0_planck_kms_per_Mpc':       H0_planck_kms,
+            'H0_cosmic_kms_per_Mpc':       H0_cosmic_kms,
+            'predicted_ratio':             predicted_ratio,
+            'predicted_pct_mismatch':      predicted_pct_mismatch,
+
+            # Observational anchors
+            'sh0es_2024':                  self.SH0ES_2024,
+            'planck_2018':                 self.PLANCK_2018,
+            'desi_2025':                   self.DESI_2025,
+            'jwst_2024':                   self.JWST_2024,
+            'observed_sh0es_planck_ratio': observed_ratio,
+            'observed_pct_mismatch':       observed_pct_mismatch,
+
+            # Falsification logic
+            'prediction_within_window':    within_observed_window,
+            'falsification_criterion':     'If a future joint analysis converges to a single H_0 '
+                                           '(predicted_ratio ~ 1.000 +/- 0.005), this calculator is '
+                                           'falsified and the G/Lambda coupling decoupling needs '
+                                           'structural revision.',
+            'support_criterion':           'If late-time vs early-time anchors lock in to a ratio of '
+                                           '1.0385 +/- 0.005 in a future settlement, UQFF is supported.',
+            'next_data_release':           'Roman Space Telescope (2027) Hubble flow survey will '
+                                           'distinguish single-H_0 vs two-H_0 hypotheses at >5sigma.',
+
+            'formula':                     'predicted_ratio = H_0^cosmic / H_0^planck '
+                                           '= (1/t_Hubble) / (Planck H_0)',
+            'status':                      'FALSIFIABLE PREDICTION (Session 243, derived from PAPER_1156 sec 4)',
+            'note':                        'This is a structural prediction, not a fit. The 3.85% '
+                                           'mismatch is FIXED by which UQFF primitive (cosmic vs Planck) '
+                                           'enters each closure -- changing it would break either G '
+                                           '(PAPER_593) or Lambda (PAPER_1156).',
+        }
+
+
+# ---------------------------------------------------------------------------
+# Session 244 -- Overdetermination Epistemology Tracker
+# UQFFOverdeterminationEpistemologyCalculator   PAPER_1158
+# ---------------------------------------------------------------------------
+class UQFFOverdeterminationEpistemologyCalculator:
+    """
+    Session 244 (May 10, 2026): Formalizes PAPER_1156 section 6 as a
+    standalone epistemology calculator.
+
+    DEFINITION (Overdetermination):
+      A physical constant is OVERDETERMINED in UQFF when N >= 2 independent
+      derivation chains in the codebase converge to the same numerical value
+      to within the closure tolerance.
+
+      Overdetermination is NECESSARY for first-principles status.
+      Overdetermination is NOT SUFFICIENT (see _lagrangian_rederivation_outline.py).
+
+    CURRENT STATE (as of Session 244):
+
+      Lambda:  N = 4   (Friedmann form, Lambda_eff = kappa_E*eta*T_s00/2,
+                        Lambda ~ U_b(1-v/v0)^2, Lambda ~ |grad UA|^2)
+                        all converge at 10^-52 m^-2
+
+      G:       N = 2   (PAPER_593 closed form, BSFG geometric form)
+      h:       N = 2   (canonical commutator, F_TRZ*Phi_res*E_0/f_THz)
+      c:       N = 2   (kinetic-term ratio, BSFG light-cone normalization)
+      alpha:   N = 2   (1/(Phi_res*26*2pi), fine-structure splitting)
+      m_p/m_e: N = 1   (26^2 * e_euler ONLY -- WEAKEST, not overdetermined)
+
+    EPISTEMIC STATUS PER CONSTANT:
+      Lambda:  STRONGLY OVERDETERMINED (N=4)
+      G,h,c,alpha:  OVERDETERMINED (N=2)
+      m_p/m_e: SINGLY DETERMINED (N=1) -- needs second derivation chain
+
+    NEXT WORK ITEM (Session 245+):
+      Find/build a second derivation for m_p/m_e to lift it to N>=2.
+      Candidate: 26^2 from KK winding count, e_euler from path-integral
+      saddle. This is also gap G_extra in the Lagrangian outline.
+
+    Source: PAPER_1156 section 6, Session 244 formalization.
+    """
+
+    # N-counts per constant (citation map)
+    OVERDETERMINATION_MAP = {
+        'Lambda':  {
+            'N': 4,
+            'chains': [
+                'Friedmann: Lambda = (18/5)*[SSq]*H_0^2/c^2  (PAPER_1156)',
+                'Geometric: Lambda_eff = kappa_E*eta*T_s00/2  (QCalcGeom.cpp L186)',
+                'Buoyancy: Lambda ~ U_b*(1-v_current/v_init)^2  (26D_DOWNWARD_PROJECTION.md L245)',
+                'Aether grad: Lambda ~ |grad UA|^2  (batch_sm_anchors.py L245)',
+            ],
+            'closure_tol_pct': 0.002,
+            'status': 'STRONGLY OVERDETERMINED',
+        },
+        'G': {
+            'N': 2,
+            'chains': [
+                'Closed form: G = (2pi*26^3*Phi_res)/([SSq]^3*(26!)^2) * v_F^5/(E_0*f_THz)  (PAPER_593)',
+                'BSFG geometric form (cosmic-aware alternative)  (PAPER_593 sec 7)',
+            ],
+            'closure_tol_pct': 0.075,
+            'status': 'OVERDETERMINED',
+        },
+        'h': {
+            'N': 2,
+            'chains': [
+                'Closed form: h = F_TRZ*Phi_res*E_0/f_THz*(1-2*alpha)  (PAPER_587)',
+                'Canonical commutator from DPM SO(2)  (source4.cpp)',
+            ],
+            'closure_tol_pct': 0.060,
+            'status': 'OVERDETERMINED',
+        },
+        'c': {
+            'N': 2,
+            'chains': [
+                'Closed form: c = (26*4pi/Phi_res) * v_F  (PAPER_592)',
+                'BSFG light-cone normalization (QCalcGeom.cpp)',
+            ],
+            'closure_tol_pct': 0.101,
+            'status': 'OVERDETERMINED',
+        },
+        'alpha': {
+            'N': 2,
+            'chains': [
+                'Closed form: alpha = 1/(Phi_res*26*2pi)  (PAPER_585)',
+                'Fine-structure splitting from DPM oscillator',
+            ],
+            'closure_tol_pct': 0.138,
+            'status': 'OVERDETERMINED',
+        },
+        'm_p/m_e': {
+            'N': 1,
+            'chains': [
+                'Closed form: 26^2 * e_euler  (PAPER_591)',
+            ],
+            'closure_tol_pct': 0.077,
+            'status': 'SINGLY DETERMINED -- NEEDS SECOND CHAIN',
+        },
+    }
+
+    def compute(self, dataset=None):
+        d = dataset or {}
+        target = d.get('constant', 'all')
+
+        if target != 'all' and target in self.OVERDETERMINATION_MAP:
+            entry = self.OVERDETERMINATION_MAP[target]
+            return {
+                'paper':    'PAPER_1158',
+                'class':    'UQFFOverdeterminationEpistemologyCalculator',
+                'constant': target,
+                **entry,
+            }
+
+        # Summary across all six constants
+        total_N = sum(e['N'] for e in self.OVERDETERMINATION_MAP.values())
+        weakest = min(self.OVERDETERMINATION_MAP.items(), key=lambda kv: kv[1]['N'])
+
+        return {
+            'paper':                  'PAPER_1158',
+            'session':                'Session 244 (overdetermination epistemology)',
+            'class':                  'UQFFOverdeterminationEpistemologyCalculator',
+            'constants_tracked':      list(self.OVERDETERMINATION_MAP.keys()),
+            'total_derivation_chains':total_N,
+            'mean_N':                 total_N / len(self.OVERDETERMINATION_MAP),
+            'weakest_constant':       weakest[0],
+            'weakest_N':              weakest[1]['N'],
+            'next_work_item':         f'Build second derivation chain for {weakest[0]} '
+                                      f'(currently N={weakest[1]["N"]}); raise to N>=2 to lift '
+                                      f'epistemic status from SINGLY DETERMINED to OVERDETERMINED.',
+            'definition':             'Overdetermination = N>=2 independent derivation chains in '
+                                      'codebase converging to same value within closure tolerance.',
+            'sufficiency_caveat':     'Overdetermination is NECESSARY but NOT SUFFICIENT for '
+                                      'first-principles status. Sufficiency requires the Lagrangian '
+                                      're-derivation in _lagrangian_rederivation_outline.py.',
+            'full_map':               self.OVERDETERMINATION_MAP,
+            'source':                 'PAPER_1156 section 6; PAPER_1158 formalization',
+            'status':                 'EPISTEMOLOGY TRACKER (active, will grow as new chains added)',
+        }
+
+
+# ---------------------------------------------------------------------------
 # #181  UQFFBlackHoleFiniteBoundCalculator   PAPER_594
 # ---------------------------------------------------------------------------
 class UQFFBlackHoleFiniteBoundCalculator:
@@ -18376,6 +18639,8 @@ __all__ = [
     "UQFFSpeedOfLightTriadEquilibriumCalculator",            # PAPER_592 (#179)
     "UQFFGravitationalConstantVoidCouplingCalculator",       # PAPER_593 (#180)
     "UQFFCosmologicalConstantDerivedCalculator",             # PAPER_1156 (Session 242 - Lambda closure)
+    "UQFFH0AnchorAsymmetryCalculator",                       # PAPER_1157 (Session 243 - falsifiable H_0 asymmetry)
+    "UQFFOverdeterminationEpistemologyCalculator",           # PAPER_1158 (Session 244 - epistemology tracker)
     "UQFFBlackHoleFiniteBoundCalculator",                    # PAPER_594 (#181)
     "UQFFSgrAStarBoundApplicationCalculator",                # PAPER_595 (#182)
     "UQFFQuantumGravityUnificationCalculator",               # PAPER_596 (#183)
