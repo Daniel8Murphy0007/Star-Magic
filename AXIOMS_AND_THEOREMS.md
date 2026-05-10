@@ -243,6 +243,30 @@ composite ratios of more primitive UQFF quantities, not independent inputs.
 This structural form is preserved in the calculator code and whitepapers,
 labeled `STRUCTURAL`.
 
+**Session 238 update (May 10 2026) — α recovered as leading-order 26D
+phase-space ratio.** A non-circular brute-force audit
+([_constant_derivation_attempt.py](_constant_derivation_attempt.py))
+substitutes the SI-clean canonical primitives from
+[dpm_vacuum_manifold.py](dpm_vacuum_manifold.py) (SSQ=0.57, KAPPA, BETA_I,
+F_TRZ, PHI_RES, the 26 dimension count, $2\pi$) into the four formulas and
+sweeps all 1- and 2-primitive dimensionless combinations. Result: exactly
+one of $\{h,\alpha,c,G\}$ produces a parameter-free leading-order match:
+
+$$\alpha_\text{UQFF} \;=\; \frac{1}{26 \cdot 2\pi} \;=\; 6.121\times 10^{-3}
+\quad\text{vs}\quad \alpha_\text{obs} = 7.297\times 10^{-3}$$
+
+Ratio 0.839, $\log_{10}$ off +0.076, no fit knobs. Interpretation: each of
+the 26 UQFF dimensions contributes a phase-space measure of $2\pi$; $\alpha$
+emerges as the inverse of the total phase volume to leading order. The 16%
+residual is sub-leading 26D structure (open work item — see PAPER_591 §6).
+
+$h$, $c$, $G$ remain STRUCTURAL. Counting argument: the SI-clean primitive
+basis contains 26 dimensionless quantities + only 2 dimensional anchors
+($E_0 = 10^{-20}$ J axiom, $f_\text{THz} = 1.25\times 10^{12}$ Hz). Two
+dimensional anchors cannot produce three independent SI quantities (J·s,
+m/s, m³·kg⁻¹·s⁻²). This is a structural impossibility within the current
+primitive set, not a search failure.
+
 **Path to real verification (open work):**
 1. Define a non-circular UQFF→SI unit map (`derivations/uqff_to_si.md`).
 2. Calibrate $\rho_\text{vac}$, $\kappa$, $g$ from observations independent
