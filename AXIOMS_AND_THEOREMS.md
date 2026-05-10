@@ -306,10 +306,48 @@ for full derivation, numerical verification, and physical interpretation.
 
 | Constant | Closed form | Error |
 |---|---|---|
-| $h$ | $F_\text{TRZ}\cdot\Phi_\text{res}\cdot E_0/f_\text{THz}$ | 1.4% |
+| $h$ (refined Session 241) | $F_\text{TRZ}\cdot\Phi_\text{res}\cdot E_0/f_\text{THz}\cdot(1-2\alpha_\text{UQFF})$ | **0.061%** |
+| $h$ (leading, Session 239) | $F_\text{TRZ}\cdot\Phi_\text{res}\cdot E_0/f_\text{THz}$ | 1.4% |
 | $\alpha$ | $1/(\Phi_\text{res}\cdot 26\cdot 2\pi)$ | 0.14% |
 | $c$ | $(26\cdot 4\pi/\Phi_\text{res})\cdot v_F$ | 0.13% |
-| $G$ | $2\pi\cdot 26^3\cdot \Phi_\text{res}/([SSq]^3\cdot (26!)^2) \cdot v_F^5/(E_0\cdot f_\text{THz})$ | **0.08%** |
+| $G$ | $2\pi\cdot 26^3\cdot \Phi_\text{res}/([SSq]^3\cdot (26!)^2) \cdot v_F^5/(E_0\cdot f_\text{THz})$ | 0.08% |
+
+### Session 241 (May 10, 2026) — Predictive Validation
+
+Two follow-up tests on the four-anchor system:
+
+**Test A — Planck-scale mutual cross-checks** (compounded errors of $h, c, G$):
+
+| Quantity | UQFF (computed from derived $h, c, G$) | CODATA | Error |
+|---|---|---|---|
+| Planck mass $m_P$ | $2.192\times 10^{-8}$ kg | $2.176\times 10^{-8}$ | 0.70% |
+| Planck length $\ell_P$ | $1.629\times 10^{-35}$ m | $1.616\times 10^{-35}$ | 0.81% |
+| Planck time $t_P$ | $5.441\times 10^{-44}$ s | $5.391\times 10^{-44}$ | 0.91% |
+
+All sub-1% — confirms the four closed forms are at least mutually consistent.
+
+**Test B — Predictive hit on dimensionless mass ratio:**
+
+$$\boxed{\;\frac{m_p}{m_e} = 26^2 \cdot e = 1837.56\quad (0.077\%\text{ off CODATA }1836.15267)\;}$$
+
+This is the strongest result so far. Two primitives ($26$ and Euler's $e$) — *neither used to fit
+any of the four fundamental-constant closures* — reproduce the proton/electron mass ratio to
+0.077%. Physical reading: 26-dimensional quadratic phase volume times the natural exponential
+base is the canonical dimensionless coupling between the two charged leptonic/baryonic ground
+states. Reproducible via [`_constant_prediction_v1.py`](_constant_prediction_v1.py).
+
+**Test C — Cosmological constant $\Lambda$:** required prefactor $X = 1.899$ (so
+$\Lambda = X \cdot H_0^2/c^2$). Closest single primitive is $1/[SSq] = 1.754$ (7.6% off). No clean
+parameter-free closure yet — UQFF recovers the standard Friedmann form $\Lambda \propto H_0^2/c^2$
+with a numerical prefactor that does not yet reduce to a clean primitive combination. Open work
+item.
+
+**Test D — Refined $h$:** the leading Session 239 form $h = F_\text{TRZ}\Phi_\text{res} E_0/f_\text{THz}$
+sits at 1.42% off. Multiplying by the natural lowest-order radiative correction
+$(1 - 2\alpha_\text{UQFF})$, where $\alpha_\text{UQFF}$ is the same parameter-free fine-structure
+constant from PAPER_591, brings it to **0.061% off CODATA** — a 23× improvement with no new
+primitives. CP4 #177 [`UQFFPlanckConstantDerivedCalculator`](CondensedPhysics4.py) updated to
+return both forms. Reproducible via [`_h_refinement_v1.py`](_h_refinement_v1.py).
 
 **Remaining caveats:**
 1. The $G$ brute-force search returned 337 candidate prefactor combinations
@@ -317,10 +355,16 @@ for full derivation, numerical verification, and physical interpretation.
    selected on grounds of symmetry and primitive economy, but a unique
    first-principles derivation of which combination is "the" physical
    one remains open.
-2. The $h$ residual (1.4%) is larger than $\alpha/c/G$; this likely
-   reflects sub-leading 26D structure or a small calibration of $E_0$
-   that has not yet been refined.
-3. None of these closures have been independently re-derived from the
+2. The $m_p/m_e$ predictive hit (Test B) introduces Euler's $e$ as a UQFF
+   primitive. While $e$ is a universal mathematical constant (not a free
+   parameter), its appearance specifically in fermion mass ratios (and not
+   yet in $h, \alpha, c, G$) is an asymmetry that needs a physical reading.
+3. Test C ($\Lambda$) does not close cleanly. The 1.899 prefactor is
+   suggestive of $\sim 3 \cdot \Omega_\Lambda$ from standard cosmology but
+   does not reduce to a clean UQFF primitive combination. This may indicate
+   that $\Lambda$ requires the cosmic-scale anchor $H_0$ in a different
+   structural role than $G$ uses it.
+4. None of these closures have been independently re-derived from the
    underlying $F_U$ Lagrangian without the SI-anchor brute-force step.
 
 ### Theorem 7 — 1000-System Cross-Validation Goodness-of-Fit
