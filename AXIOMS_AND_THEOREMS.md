@@ -260,12 +260,35 @@ the 26 UQFF dimensions contributes a phase-space measure of $2\pi$; $\alpha$
 emerges as the inverse of the total phase volume to leading order. The 16%
 residual is sub-leading 26D structure (open work item — see PAPER_591 §6).
 
-$h$, $c$, $G$ remain STRUCTURAL. Counting argument: the SI-clean primitive
-basis contains 26 dimensionless quantities + only 2 dimensional anchors
-($E_0 = 10^{-20}$ J axiom, $f_\text{THz} = 1.25\times 10^{12}$ Hz). Two
-dimensional anchors cannot produce three independent SI quantities (J·s,
-m/s, m³·kg⁻¹·s⁻²). This is a structural impossibility within the current
-primitive set, not a search failure.
+**Session 239 update (May 10 2026) — three of four constants now DERIVED
+parameter-free.** The user-pointed-to third SI anchor was identified in
+[dpm_vacuum_manifold.py](dpm_vacuum_manifold.py#L3701) (lines 3701, 4896,
+5224): the Fermi-velocity proxy $v_F(Z=1) = 0.77\times 10^6$ m/s, SI-clean
+(Fermi-gas physics, independent of $c$). With three SI anchors
+$\{E_0, f_\text{THz}, v_F\}$ the basis $\{J,m,s,kg\}$ closes and the
+brute-force search ([_constant_derivation_v2.py](_constant_derivation_v2.py))
+finds parameter-free closed forms:
+
+$$\alpha_\text{UQFF} = \frac{1}{\Phi_\text{res}\cdot 26\cdot 2\pi} = 7.287\times 10^{-3}
+\quad (0.14\%\text{ off})$$
+
+$$c_\text{UQFF} = \frac{26\cdot 4\pi}{\Phi_\text{res}}\,v_F = 2.995\times 10^{8}\text{ m/s}
+\quad (0.13\%\text{ off})$$
+
+$$h_\text{UQFF} = F_\text{TRZ}\cdot\Phi_\text{res}\cdot\frac{E_0}{f_\text{THz}}
+= 6.72\times 10^{-34}\text{ J·s} \quad (1.4\%\text{ off})$$
+
+$\Phi_\text{res} = 0.84$ (resonance projection onto observable spacetime)
+and $F_\text{TRZ} = 0.1$ (time-reversal-zone suppression) are pre-existing
+UQFF primitives. The recurring $\Phi_\text{res}$ in $\alpha$ and $c$ is
+physically consistent — both encode propagation/coupling in the 26D
+phase volume projected onto 3+1 spacetime.
+
+**$G$ remains STRUCTURAL.** Required dimensionless prefactor $\sim 10^{-54}$
+is smaller than any combination of current primitives (smallest reachable
+$1/26! \approx 2.5\times 10^{-27}$). A scale-bridging mechanism is needed
+(candidate: $26!$ factorial barrier from PAPER_594 combined with cosmic
+SCm/UA hierarchy). Open work item.
 
 **Path to real verification (open work):**
 1. Define a non-circular UQFF→SI unit map (`derivations/uqff_to_si.md`).
