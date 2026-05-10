@@ -38,7 +38,7 @@ property of the triad equilibrium.
 
 ## §2 Energy Gap from Characteristic Polynomial
 
-The UQFF 3$\times$3 tensor has minimum eigenvalue:
+The UQFF $3 \times 3$ tensor has minimum eigenvalue:
 
 $$\Delta = \lambda_1 = \frac{P}{3} + \frac{dg+dm}{2} - \frac{1}{2}\sqrt{4c^2+(dg-dm)^2}$$
 
@@ -81,7 +81,7 @@ $$\text{Grind}_\text{opp} \approx \omega_{CW} \cdot SCm \approx 10^{14}$$
 
 Direct computation yields:
 
-$$h_\text{derived} = 6.585\times 10^{-34}\ \text{J\cdot s}$$
+$$h_\text{derived} = 6.585\times 10^{-34}\ \text{J} \cdot \text{s}$$
 
 Observed: $h = 6.62607015\times10^{-34}$ J$\cdot$s.
 
@@ -107,7 +107,7 @@ $\Delta x \cdot \Delta p \geq h/4\pi$ becomes $\Delta r^2 \cdot \rho \cdot \text
 
 With $h$ derived, all other quantum constants follow:
 
-$$\hbar = h/2\pi \approx 1.055\times10^{-34}\ \text{J\cdot s}$$
+$$\hbar = h/2\pi \approx 1.055\times10^{-34}\ \text{J} \cdot \text{s}$$
 $$\alpha = e^2/(4\pi\varepsilon_0\hbar c) = \frac{2\kappa\rho\,\text{Grind}^2 r^{24}\text{Partition}}{3\sqrt{g\cdot SCm/UA}}$$
   (see PAPER_591)
 
@@ -223,7 +223,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -245,13 +245,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Planck constant ℏ | ℏ_UQFF from DPM action quantum | ℏ = 1.054571817e-34 J$\cdot$s | PDG / NIST CODATA 2018 | $\geq$99% |
+| Planck constant $\hbar$ | $\hbar$_UQFF from DPM action quantum | $\hbar$ = 1.054571817e-34 J$\cdot$s | PDG / NIST CODATA 2018 | $\geq 99\%$ |
 | $\kappa$ consistency check | $\kappa$ = 0.0005/day; ratio to proton decay rate: 1033 decoupling | Super-K $\tau$_p > 7.7e33 yr | Super-K 2024 | PASS UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB $\Omega$_$\Lambda$ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure $\alpha$ derivation | $\alpha$_UQFF from DPM flux/void ratio | $\alpha$ = 1/137.036 | PDG 2024 / NIST | PASS Target value |
 
-**New physics claim:** UQFF derives Planck constant ℏ from vacuum buoyancy topology rather than
-treating it as a free parameter of nature. A derivation that achieves $\geq$$\geq$99% agreement
+**New physics claim:** UQFF derives Planck constant $\hbar$ from vacuum buoyancy topology rather than
+treating it as a free parameter of nature. A derivation that achieves $\geq 99\%$ agreement
 from a single framework connecting astrophysical calibration data to fundamental SM constants
 is a falsifiable indicator of a unified vacuum origin for these constants.
 
