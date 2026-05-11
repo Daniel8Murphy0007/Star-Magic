@@ -41,7 +41,7 @@ coupling to the Milky Way SMBH gravitational system.
 
 ## 2. Magnetic String U_m
 
-$$U_m = \sum_jleft[\frac{\mu_j}{r_j}\left(1-e^{-\gamma t\cos(\pi t_n)}\right)\hat{\phi}_j\right] \cdot P_{SCm} \cdot E_{react} \cdot (1+10^{13}f_H) \cdot (1+f_{quasi})$$
+$$U_m = \sum_j\left[\frac{\mu_j}{r_j}\left(1-e^{-\gamma t\cos(\pi t_n)}\right)\hat{\phi}_j\right] \cdot P_{SCm} \cdot E_{react} \cdot (1+10^{13}f_H) \cdot (1+f_{quasi})$$
 
 ## 3. Buoyancy-Gravity Coupling
 

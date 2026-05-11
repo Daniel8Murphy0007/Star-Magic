@@ -154,11 +154,11 @@ During ACP, U_b is tracked through calibration differences:
 
 $$
 \begin{aligned}
-  & f_Ub \propto \Delta k_\eta  (deviation from expected calibration constant k_\eta) \\
-  & k_\eta_expected \approx 10^9 (galaxy-scale) \\
-  & k_\eta_actual = measured value from observation \\
-  & \Delta k_\eta = k_\eta_expected - k_\eta_actual \\
-  & f_Ub = \Delta k_\eta / k_\eta_reference
+  & f_{Ub} \propto \Delta k_\eta \quad (\text{deviation from expected calibration constant } k_\eta) \\
+  & k_{\eta,\text{expected}} \approx 10^9 \quad (\text{galaxy-scale}) \\
+  & k_{\eta,\text{actual}} = \text{measured value from observation} \\
+  & \Delta k_\eta = k_{\eta,\text{expected}} - k_{\eta,\text{actual}} \\
+  & f_{Ub} = \Delta k_\eta / k_{\eta,\text{reference}}
 \end{aligned}
 $$
 

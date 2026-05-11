@@ -31,7 +31,7 @@ formation $M_{evo}(t)$, radiative/merger erosion $E_{rad}(t)$, the UQFF time-rev
 factor $f_{TRZ}$, and an electromagnetic--aether term $F_{em}$. A complementary resonance
 equation $R(t)$ captures gravitational and magnetic oscillatory modes for each system. Solved
 values at $t=10$ Myr confirm electromagnetic dominance for young nebulae (NGC 2264:
-$g\approx1.05\times10^{-2}$ m/s2) and classical gravity dominance for evolved spirals
+$g\approx 1.05\times10^{-2}$ m/s2) and classical gravity dominance for evolved spirals
 (NGC 2841: $g`approx5`times10^{-11}$ m/s2).
 
 

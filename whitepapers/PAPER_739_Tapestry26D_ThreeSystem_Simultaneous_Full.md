@@ -184,7 +184,7 @@ $$
   & f_SCm = 7.09e-37 J/m3 \\
   & R_EB = 1.70e18 m \\
   & r = 4.73e16 m   \to   r2 = 2.237e33 m2 \\
-  & f_Ub = \Delta k_\eta/k_\eta_ref = 0.1            (star cluster calibration)
+  & f_{Ub} = \Delta k_\eta/k_{\eta,\text{ref}} = 0.1 \quad (\text{star cluster calibration})
 \end{aligned}
 $$
 

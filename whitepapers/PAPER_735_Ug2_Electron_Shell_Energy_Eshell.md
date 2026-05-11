@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_735
-title: "U_g2 DPM Electron Shell Energy: Eshell = c\cdot\nures\cdoth(fSCm)\cdotGgeo"
+title: "U_g2 DPM Electron Shell Energy: Eshell = c\cdot\nures\cdot h(fSCm)\cdot Ggeo"
 session: 179
 date: 2025-06-05
 author: "Daniel T. Murphy"
