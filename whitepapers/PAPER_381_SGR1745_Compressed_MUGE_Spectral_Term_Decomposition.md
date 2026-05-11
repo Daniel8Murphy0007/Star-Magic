@@ -101,10 +101,10 @@ $$g_\text{fluid} = \rho_text{fluid} \cdot V_\text{sys} \cdot g_\text{local}$$
 $$\boxed{g_\text{fluid} = 4.189\times10^{-2} \ \text{m/s}^2}$$
 
 ### Term 8: Dark Matter Perturbation (DOMINANT TERM)
-$$g_\text{pert} = (M + M_\text{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_\text{pert} = (M + M_\text{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 At $r = 10^4$ m:
-$$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} = \frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{(10^4)^3} = 6.0\times10^{10}$$
+$$\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} = \frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{(10^4)^3} = 6.0\times10^{10}$$
 
 $$(M + M_\text{DM}) \approx (2.984\times10^{30} + 10^{28}) \approx 3.0\times10^{30} \ \text{kg}$$
 
@@ -134,15 +134,15 @@ term in the Compressed MUGE dominates by **$\geq$ 27 orders of magnitude** over 
 **Physical origin:** The $3\mu_s\nabla(M_s/r)/r$ factor scales as $r^{-3}$ --- making it catastrophically large
 at magnetar radii:
 
-$$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=10^4} = 6.0\times10^{10} \gg \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=1 \text{ AU}} \approx 1.7\times10^{-23}$$
+$$\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=10^4} = 6.0\times10^{10} \gg \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=1 \text{ AU}} \approx 1.7\times10^{-23}$$
 
 **Implication:** The Compressed MUGE formulation is **unphysical** for compact objects. At
-magnetar scale, $r = 10^4$ m violates the assumption that $(M+M_{DM})\cdot\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}$
+magnetar scale, $r = 10^4$ m violates the assumption that $(M+M_{DM})\cdot\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}$
 remains a small correction. The **Resonance MUGE model** (PAPER_371) with fluid-dominant term
 $a_{fluid\_freq} = 1.773\times10^{-9}$ m/s2 is the physically appropriate description.
 
 **Validity domain criterion:**
-$$\text{Compressed MUGE valid when: } \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} \ll \frac{\delta\rho}{\rho} \quad \Rightarrow \quad r \gg \left(\underbrace{\frac{3GM}{\delta\rho/\rho}\right)^{1/3}$$
+$$\text{Compressed MUGE valid when: } \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} \ll \frac{\delta\rho}{\rho} \quad \Rightarrow \quad r \gg \left(\underbrace{\frac{3GM}{\delta\rho/\rho}\right)^{1/3}$$
 
 For SGR1745 with $\delta\rho/\rho = 0.1$:
 $$r_\text{min\_compressed} = \left(\frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{0.1}\right)^{1/3} \approx 1.3\times10^7 \ \text{m}$$

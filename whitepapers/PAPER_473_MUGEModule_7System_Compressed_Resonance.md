@@ -64,7 +64,7 @@ g_{\text{MUGE}}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H_0
   \cdot\frac{2\pi}{t_H} \\
 &\quad + \rho_f V_{\text{sys}} g_{\text{local}}
   + (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho}
-  + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
+  + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 \end{aligned}}$$
 
 The first four factors form a multiplicative core; the remaining five terms are additive.

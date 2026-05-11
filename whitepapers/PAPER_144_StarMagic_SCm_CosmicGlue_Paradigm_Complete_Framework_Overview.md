@@ -90,7 +90,7 @@ $$U_{A\_{\mu\nu}} = \eta \, \partial_mu \Phi_{UA} \cdot \partial^\nu \Phi_{UA} \
 
 $$\boxed{F_U = \sum_{i=1}^{4} k_i \phi_i(r,t) e^{-\alpha_i t} f_i(\theta, t_n) + \Delta Ub + \Delta Um + U_{A\_{\mu\nu}}}$$
 
-where $\phi_i$ encodes the SCm density and SMBH tidal field, $f_i$ encodes the phase factor (cos or sin), and $\alpha_i \in \{\alpha, \gamma}$ sets the decay rate.
+where $\phi_i$ encodes the SCm density and SMBH tidal field, $f_i$ encodes the phase factor (cos or sin), and $\alpha_i \in \{\alpha, \gamma\}$ sets the decay rate.
 
 ---
 

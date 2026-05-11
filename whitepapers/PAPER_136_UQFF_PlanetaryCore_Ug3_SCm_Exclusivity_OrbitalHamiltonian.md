@@ -124,7 +124,7 @@ For Earth: this matches the lunar orbital period — a direct consequence of Ug3
 
 The effective energy stored in the Hamiltonian quasi-integral:
 
-$$J_{Ug3} = \oint H_{Ug3} \, dt \approx H_{Ug3}^{Earth} \times T_{prec} \approx 448 \times 2.5 \times 10^6 \approx 1.12 \times 10^9 \text{ J\cdot s/m}^3$$
+$$J_{Ug3} = \oint H_{Ug3} \, dt \approx H_{Ug3}^{Earth} \times T_{prec} \approx 448 \times 2.5 \times 10^6 \approx 1.12 \times 10^9 \text{ J}\cdot\text{s/m}^3$$
 
 This quasi-invariant is preserved over Gyr timescales, explaining long-term orbital stability
 WITHOUT requiring dark matter or exotic non-DPM-seeded fields.

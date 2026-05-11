@@ -60,7 +60,7 @@ g_{\text{MUGE}}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H_0
 &\quad +\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \\
 &\quad +\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \\
 &\quad +\; \rho_f V_{\text{sys}} g_{\text{local}} \\
-&\quad +\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
+&\quad +\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 \end{aligned}$$
 
 ### §1.1 Multiplicative Core (Terms 1--4)
@@ -113,7 +113,7 @@ gravity to the viscous medium in which the body is
 embedded.
 
 **Term 9 --- Dark Matter Perturbation:**
-$$g_{\text{DM}} = (M + M_{\text{DM}}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_{\text{DM}} = (M + M_{\text{DM}}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 This is a **density-perturbation coupling**, not the
 trivial $\Omega_{\text{CDM}} \cdot \mu_s\nabla(M_s/r)$. It includes

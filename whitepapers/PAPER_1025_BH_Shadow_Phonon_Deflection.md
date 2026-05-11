@@ -23,7 +23,7 @@ next-generation VLBI.
 
 ## 1. Key Equations
 
-- $r_{\text{ph,UQFF}} = \underbrace{\frac{3GM}{c^2} \cdot (1 + \beta_i \cdot S_{26} \cdot [\text{SSq}] \cdot \Phi)$
+- $r_{\text{ph,UQFF}} = \frac{3GM}{c^2} \cdot (1 + \beta_i \cdot S_{26} \cdot [\text{SSq}] \cdot \Phi)$
 - $\delta\theta / \theta \approx \beta_i \cdot S_{26} \cdot [\text{SSq}] \approx 0.03\%$ for M87*
 - $\theta_{\text{shadow,UQFF}} = \theta_{\text{GR}} + \delta\theta_{\text{phonon}}$
 

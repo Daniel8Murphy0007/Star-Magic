@@ -44,7 +44,7 @@ $$
 $$
 $$
 +\; \rho_{\mathrm{fluid}} V g
-\;+\; (M_{\mathrm{vis}} + M_{\mathrm{DM}}) \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
+\;+\; (M_{\mathrm{vis}} + M_{\mathrm{DM}}) \left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 $$
 
 where $H(t,z) = H_0 t$ (DPM-seeded cosmological expansion approximation), $H_0 = 2.269 \times 10^{-18}$ s-1.

@@ -38,7 +38,7 @@ present in Standard Model treatments.
 
 $$g_{comp}(r,t) = g_0 \cdot (1 + H_0 t) \cdot (1 - B/B_{crit}) \cdot f_{env}(r)$$
 $$+ \Lambda c^2/3 + \frac{\hbar}{\Delta x \Delta p} \cdot \int\psi \cdot \frac{2\pi}{t_H}$$
-$$+ \rho_{fluid} V g_{loc} + (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$+ \rho_{fluid} V g_{loc} + (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 ---
 
@@ -93,7 +93,7 @@ double compute_{compressed\_fluid}(const MUGESystem& sys) {
     return sys.rho_fluid * sys.V_body * sys.g_local;
 }
 ### Function 8: Dark Matter Perturbation 
-$$g_{pert} = (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$cpp
+$$g_{pert} = (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$cpp
 double compute_{compressed\_perturbation}(const MUGESystem& sys) {
     double tidal = 3.0 * G * sys.M / (sys.r * sys.r * sys.r);
     return (sys.M + sys.M_DM) * (sys.delta_{rho\_over\_rho} + tidal);

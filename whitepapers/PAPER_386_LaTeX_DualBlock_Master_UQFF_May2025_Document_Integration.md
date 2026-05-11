@@ -54,7 +54,7 @@ encoding** that was the explicit output of the document integration exercise.
 ### Document 1: Compressed UQFF Equation (14 May 2025)
 
 **Core equation:**
-$$g_\text{compressed}(r,t) = \frac{GM(t)}{r^2}\left(1 + H(t,z\right)\left(1 - \frac{B(t)}{B_\text{crit}}\right)(1 + F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_H} + \rho_f V g_\text{local} + (M+M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_\text{compressed}(r,t) = \frac{GM(t)}{r^2}\left(1 + H(t,z\right)\left(1 - \frac{B(t)}{B_\text{crit}}\right)(1 + F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \psi \, dV \cdot \frac{2\pi}{t_H} + \rho_f V g_\text{local} + (M+M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 **Variable definitions:**
 - $H(t,z) = H_0\sqrt{0.3(1+z)^3 + 0.7}$ -- Friedmann-$\Lambda$CDM expansion (Planck CMB values)
@@ -112,7 +112,7 @@ smooth vortex penetration regime.
 
 This is the definitive **unified UQFF expression** encoding both models in one formula:
 
-$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\int\psi^\daggerhat{H}\psi,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\delta\rho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
+$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\int\psi^\daggerhat{H}\psi,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\delta\rho}{\rho}+\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
 
 Where:
 $$a_{worm} = \frac{f_{worm} \cdot E_{vac,neb}}{b^2 + r^2}$$

@@ -129,7 +129,7 @@ $$+ (Ug_1 + Ug_2 + Ug_3 + Ug_4) + \frac{\Lambda c^2}{3}$$
 
 $$+ \frac{\hbar}{\sqrt{\Delta x \Delta p}} \int \psi^* H \psi \, dV \times \frac{2\pi}{t_{Hubble}}$$
 
-$$+ \rho_{fluid} V g_{eff} + (M_{vis} + M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right) + \rho v_{wind}^2$$
+$$+ \rho_{fluid} V g_{eff} + (M_{vis} + M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right) + \rho v_{wind}^2$$
 
 Parameter values:
 - $H_0 = 70 \text{ km/s/Mpc} = 2.27 \times 10^{-18}$ s-1

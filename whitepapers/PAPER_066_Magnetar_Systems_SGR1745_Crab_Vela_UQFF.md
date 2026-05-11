@@ -60,7 +60,7 @@ present in Standard Model treatments.
 
 For each magnetar, the Ug1 term amplifies standard gravity:
 
-$$Ug_1 = \underbrace{\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}}_{\mu_s\nabla(M_s/r)} \cdot (1 + \delta_t) \cdot \frac{\mu_0 B_0^2}{8\pi}$$
+$$Ug_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}}_{\mu_s\nabla(M_s/r)} \cdot (1 + \delta_t) \cdot \frac{\mu_0 B_0^2}{8\pi}$$
 
 | System | g_DPM (m/s) | 0B0/8p | Ug1 (m/s) | Amplification |
 |--------|-----------------|---------|-----------|--------------|

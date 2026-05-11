@@ -121,7 +121,7 @@ $$\boxed{g_\text{fluid}^{\text{SgrA}*} = 3.552\times10^{20} \ \text{m/s}^2}$$
 
 ### Term 4: Dark Matter Perturbation (DOMINANT in compressed model)
 
-$$g_\text{pert} = (M + M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_\text{pert} = (M + M_{DM})\left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 With $3\mu_s\nabla(M_s/r)/r = 3\times6.674\times10^{-11}\times8.155\times10^{36}/(10^{12})^3 = 1.63\times10^{-15}$:
 

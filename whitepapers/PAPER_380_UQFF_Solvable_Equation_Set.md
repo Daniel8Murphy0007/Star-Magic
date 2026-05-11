@@ -170,7 +170,7 @@ acceleration $\dot{v} = H_0 \cdot v_{exp}$. Applied to cosmological-scale system
 $$\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0$$
 
 **UQFF mechanism:** The dark matter perturbation term in the Compressed MUGE:
-$$a_{perturbation} = (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$a_{perturbation} = (M + M_{DM}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 is structurally analogous to the Black-Scholes stochastic perturbation. Mapping:
 - $M_{DM} \cdot \delta\rho/\rho$ $\leftrightarrow$ $\sigma^2 S^2 \partial^2 V/\partial S^2$ (stochastic volatility)

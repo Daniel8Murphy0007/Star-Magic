@@ -90,7 +90,7 @@ redistribution along spiral arms.
 
 ### 2.5 Dark Matter and Fluid Terms
 
-$$g_{\mathrm{DM}} = (M_{\mathrm{visible}} + M_{\mathrm{DM}})\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
+$$g_{\mathrm{DM}} = (M_{\mathrm{visible}} + M_{\mathrm{DM}})\left(\frac{\delta\rho}{\rho} + \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 $$g_{\mathrm{fluid}} = \rho_{\mathrm{fluid}} \cdot V \cdot g_{\mathrm{base}}$$
 
 The DM fraction follows $M_{\mathrm{DM}} = 0.85 \times M$, $M_{\mathrm{visible}} = 0.15 \times M$.

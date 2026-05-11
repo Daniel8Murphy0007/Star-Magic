@@ -193,7 +193,7 @@ where $\epsilon_{SCm} = \rho_{SCm,outer solar} / \rho_{SCm,canonical} \approx 0.
 
 The Schwarzschild metric correction to DPM-seeded gravity:
 
-$$g_{GR}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \underbrace{\frac{3GM}{rc^2} + ...\right)$$
+$$g_{GR}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \frac{3GM}{rc^2} + \ldots\right)$$
 
 The UQFF Ug4i with ?t correction:
 
@@ -201,7 +201,7 @@ $$g_{UQFF}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{
 
 At GR-relevant scales ($r \sim r_s = 2GM/c^2$):
 
-$$\underbrace{\frac{3GM}{r_s c^2} = \frac{3GM c^2}{2GM c^2} = \frac{3}{2} = 1.5 \text{ (GR post-Newtonian)}$$
+$$\frac{3GM}{r_s c^2} = \frac{3GM c^2}{2GM c^2} = \frac{3}{2} = 1.5 \text{ (GR post-Newtonian)}$$
 
 The UQFF correction at $r = r_s$:
 
