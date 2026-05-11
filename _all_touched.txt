@@ -1,0 +1,301 @@
+﻿
+9e75b783|Session 238: Fix 6 standalone module stubs (94->96 Build+Run OK)
+ANDROMEDA_UQFF_MODULE.cpp
+AntennaeGalaxies.cpp
+COMPRESSED_RESONANCE_UQFF24_MODULE.cpp
+COMPRESSED_RESONANCE_UQFF34_MODULE.cpp
+COMPRESSED_RESONANCE_UQFF34b_MODULE.cpp
+CRAB_RESONANCE_UQFF_MODULE.cpp
+GALAXY_NGC_1792.cpp
+GalaxyNGC2525.cpp
+HUDFGalaxies.cpp
+HYDROGEN_ATOM_UQFF_MODULE.cpp
+HYDROGEN_PTOE_RESONANCE_UQFF_MODULE.cpp
+HorseheadNebula.cpp
+LAGOON_UQFF_MODULE.cpp
+M16_UQFF_MODULE.cpp
+MAGNETAR_SGR0501_4516.cpp
+MAGNETAR_SGR1745_2900.cpp
+NGC1275.cpp
+NGC3603.cpp
+NGC6302_RESONANCE_UQFF_MODULE.cpp
+NGC6302_UQFF_MODULE.cpp
+ORION_UQFF_MODULE.cpp
+PILLARS_OF_CREATION.cpp
+PhysicsTerm.h
+RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp
+RINGS_OF_RELATIVITY.cpp
+SATURN_UQFF_MODULE.cpp
+SMBH_SGR_A_STAR.cpp
+SOMBRERO_UQFF_MODULE.cpp
+SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp
+STARBIRTH_TAPESTRY.cpp
+STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
+UNIVERSE_DIAMETER_UQFF_MODULE.cpp
+UQFFLearningAssessment001.cpp
+UQFFLearningAssessment_001.cpp
+UQFFLearningAssessment_002.cpp
+UQFF_SOURCE10.cpp
+WESTERLUND_2.cpp
+extract_all_physics_terms.cpp
+net_new_physics_integration.cpp
+source12.cpp
+source13_wolfram.cpp
+source14_wolfram.cpp
+source15_wolfram.cpp
+source16_wolfram.cpp
+source174.cpp
+source175.cpp
+source179.cpp
+source17_wolfram.cpp
+source18_wolfram.cpp
+source19_wolfram.cpp
+source200_wolfram.cpp
+source20_wolfram.cpp
+source21_wolfram.cpp
+source22_wolfram.cpp
+source23_wolfram.cpp
+source24_wolfram.cpp
+source25_wolfram.cpp
+source26_wolfram.cpp
+source27_wolfram.cpp
+source28_wolfram.cpp
+source29_wolfram.cpp
+source30_wolfram.cpp
+source31_wolfram.cpp
+source32_wolfram.cpp
+source33_wolfram.cpp
+source34_wolfram.cpp
+source35_wolfram.cpp
+source36_wolfram.cpp
+source37_wolfram.cpp
+source38_wolfram.cpp
+source39_wolfram.cpp
+source40_wolfram.cpp
+source41_wolfram.cpp
+source42_wolfram.cpp
+source43_wolfram.cpp
+source44_wolfram.cpp
+source45_wolfram.cpp
+source46_wolfram.cpp
+source47_wolfram.cpp
+source48-5_wolfram.cpp
+source48_wolfram.cpp
+source49_wolfram.cpp
+source50_wolfram.cpp
+source52_wolfram.cpp
+source54_wolfram.cpp
+source56_wolfram.cpp
+source57_wolfram.cpp
+source60_wolfram.cpp
+source64_wolfram.cpp
+source65_wolfram.cpp
+source66_wolfram.cpp
+source67_wolfram.cpp
+source68_wolfram.cpp
+source69_wolfram.cpp
+source70_wolfram.cpp
+source71_wolfram.cpp
+source72_wolfram.cpp
+source73_wolfram.cpp
+source74_wolfram.cpp
+source76_wolfram.cpp
+source77_wolfram.cpp
+source78_wolfram.cpp
+source79_wolfram.cpp
+source80_wolfram.cpp
+source81_wolfram.cpp
+source82_wolfram.cpp
+source83_wolfram.cpp
+source84_wolfram.cpp
+source85_wolfram.cpp
+wolfram_sources_bridge.cpp
+6e0a89ed|Session 236: Add STAR_MAGIC_STANDALONE_MODULE main() stubs to all 147 
+source+astronomical modules; add 154 add_executable targets to CMakeLists.txt; 
+create PhysicsTerm.h/PhysicsTermRegistry.h standalone stubs
+ANDROMEDA_UQFF_MODULE.cpp
+AntennaeGalaxies.cpp
+COMPRESSED_RESONANCE_UQFF24_MODULE.cpp
+COMPRESSED_RESONANCE_UQFF34_MODULE.cpp
+COMPRESSED_RESONANCE_UQFF34b_MODULE.cpp
+CRAB_RESONANCE_UQFF_MODULE.cpp
+GALAXY_NGC_1792.cpp
+GalaxyNGC2525.cpp
+HUDFGalaxies.cpp
+HYDROGEN_ATOM_UQFF_MODULE.cpp
+HYDROGEN_PTOE_RESONANCE_UQFF_MODULE.cpp
+HorseheadNebula.cpp
+LAGOON_UQFF_MODULE.cpp
+LENRCalibUQFFModule.cpp
+LENRUQFFModule.cpp
+M16_UQFF_MODULE.cpp
+M51UQFFModule.cpp
+MAGNETAR_SGR0501_4516.cpp
+MAGNETAR_SGR1745_2900.cpp
+NGC1275.cpp
+NGC1300UQFFModule.cpp
+NGC1316UQFFModule.cpp
+NGC2264UQFFModule.cpp
+NGC346UQFFModule.cpp
+NGC3603.cpp
+NGC4676UQFFModule.cpp
+NGC6302_RESONANCE_UQFF_MODULE.cpp
+NGC6302_UQFF_MODULE.cpp
+ORION_UQFF_MODULE.cpp
+PILLARS_OF_CREATION.cpp
+RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp
+RINGS_OF_RELATIVITY.cpp
+RedSpiderUQFFModule.cpp
+SATURN_UQFF_MODULE.cpp
+SMBHBinaryUQFFModule.cpp
+SMBHUQFFModule.cpp
+SMBH_SGR_A_STAR.cpp
+SOMBRERO_UQFF_MODULE.cpp
+SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp
+STARBIRTH_TAPESTRY.cpp
+STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
+UGC10214UQFFModule.cpp
+UNIVERSE_DIAMETER_UQFF_MODULE.cpp
+UQFF8AstroTriadicModule.cpp
+UQFFBuoyancyAstroModule.cpp
+UQFFBuoyancyCNBModule.cpp
+UQFFBuoyancyModule.cpp
+UQFFCompressedResonanceModule.cpp
+UQFFCompressionModule.cpp
+UQFFLearningAssessment001.cpp
+UQFFLearningAssessment_001.cpp
+UQFFLearningAssessment_002.cpp
+UQFF_SOURCE10.cpp
+UQFF_THEORY_DISPLAY.cpp
+V838MonUQFFModule.cpp
+WESTERLUND_2.cpp
+complete_physics_integration.cpp
+extract_all_physics_terms.cpp
+extracted_modules.cpp
+functional_physics_terms.cpp
+generated_physics_terms.cpp
+net_new_physics_integration.cpp
+register_all_extracted_classes.cpp
+source11_wolfram.cpp
+source12.cpp
+source12_wolfram.cpp
+source13_wolfram.cpp
+source14_wolfram.cpp
+source15_wolfram.cpp
+source16_wolfram.cpp
+source174.cpp
+source175.cpp
+source175_uqff_wolfram_export.cpp
+source176_auto_full_uqff.cpp
+source179.cpp
+source17_wolfram.cpp
+source18_wolfram.cpp
+source19_wolfram.cpp
+source200_wolfram.cpp
+source20_wolfram.cpp
+source21_wolfram.cpp
+source22_wolfram.cpp
+source23_wolfram.cpp
+source24_wolfram.cpp
+source25_wolfram.cpp
+source26_wolfram.cpp
+source27_wolfram.cpp
+source28_wolfram.cpp
+source29_wolfram.cpp
+source30_wolfram.cpp
+source31_wolfram.cpp
+source32_wolfram.cpp
+source33_wolfram.cpp
+source34_wolfram.cpp
+source35_wolfram.cpp
+source36_wolfram.cpp
+source37_wolfram.cpp
+source38_wolfram.cpp
+source39_wolfram.cpp
+source40_wolfram.cpp
+source41_wolfram.cpp
+source42_wolfram.cpp
+source43_wolfram.cpp
+source44_wolfram.cpp
+source45_wolfram.cpp
+source46_wolfram.cpp
+source47_wolfram.cpp
+source48-5_wolfram.cpp
+source48_wolfram.cpp
+source49_wolfram.cpp
+source50_wolfram.cpp
+source52_wolfram.cpp
+source54_wolfram.cpp
+source56_wolfram.cpp
+source57_wolfram.cpp
+source60_wolfram.cpp
+source64_wolfram.cpp
+source65_wolfram.cpp
+source66_wolfram.cpp
+source67_wolfram.cpp
+source68_wolfram.cpp
+source69_wolfram.cpp
+source70_wolfram.cpp
+source71_wolfram.cpp
+source72_wolfram.cpp
+source73_wolfram.cpp
+source74_wolfram.cpp
+source76_wolfram.cpp
+source77_wolfram.cpp
+source78_wolfram.cpp
+source79_wolfram.cpp
+source80_wolfram.cpp
+source81_wolfram.cpp
+source82_wolfram.cpp
+source83_wolfram.cpp
+source84_wolfram.cpp
+source85_wolfram.cpp
+source8_wolfram.cpp
+source9_wolfram.cpp
+wolfram_registry_analysis.cpp
+wolfram_sources_bridge.cpp
+47b7f0fc|Add 129 standalone UQFF executables to CMakeLists.txt (Session 235)
+53ac4dd0|Update CMakeLists.txt: add source168-173, source177, QCalcGeom tests, 
+new Python post-build copies (Sessions 129-234)
+6b8d39d5|Fix Source2 build: v145ΓåÆv143 toolset, QFormLayout include, 
+python312_dΓåÆrelease lib for Debug
+source2.cpp
+d8a9d52e|Session 234: PAPER_1151-1155 + CP4 #588-#600 (13 _S234 classes, total 
+600) + arch v5.78 + integration status update
+dc616f2a|Session 233: MAIN_1_CoAnQi.cpp ΓÇö bring current with Sessions 
+202-232 canonical progress
+MAIN_1_CoAnQi.cpp
+ce34369e|Session 232: source2.cpp ΓÇö wire sendQCalcGeomRequest to GUI (3 
+access points)
+source2.cpp
+82ef6ff9|Session 231: QCalcGeom cross-platform adapters v1.4.0
+QCalcGeom.cpp
+QCalcGeom.h
+ed7d1790|Session 230: Pipeline wiring - CSV bridge + QCalcGeom registration + 
+F_U_Bi_i audit + arch update
+source2.cpp
+bc131545|PAPER_1150 June20_2025 10-system Chandra FUBii RareMathOcc + CP4#643
+85501a18|PAPER_1149 PSZ2G181 Stroe2025 Xray Mach UQFF + CP4#642 + 5b41d132 
+audit + PDF rename + Rare_Mathematical_Occurence txt
+2637b384|Session 203 v1.1.0: 5-epoch pi-timing + fwd/rev pairs + additive 
+triple-path + epoch5 boundary
+553caec8|Session 203: source7 QCalcGeom bridge + triple point resolution 
+(Compressed/Resonance/BSFG convergence)
+source7.cpp
+source7_simulation_harness.cpp
+source7_wolfram.cpp
+source7_wolfram_compressed.cpp
+source7_wolfram_resonance.cpp
+7f32e389|Fix CP2 stale duplicates: rename 10 SCm classes with UQFF suffix (SCmS
+USYBreaking/HolographicEntropy/DarkMatter/NeutrinoOsc/NeutrinoOscParam/Gravitat
+ionalWave/CosmicRay/MuonDecay/BetaDecay/NeutrinoOscSimulation -> 
+*UQFFCalculator)
+6e69e2f5|Session 202: VDS/DVP/DH26 further derivations -- variant branches, 
+calibration coupling, T61-T70 (C++) / T71-T80 (Py) -- 80/80 tests pass
+QCalcGeom.cpp
+QCalcGeom.h
+dad3ae0d|QCalcGeom.py v2.1.0: Mayan Three-Ring Timing + Universal Inertia 
+(T61-T70)
+c400fdcf|Update copilot-instructions.md: register QCalcGeom.py v2.0.0
+
+

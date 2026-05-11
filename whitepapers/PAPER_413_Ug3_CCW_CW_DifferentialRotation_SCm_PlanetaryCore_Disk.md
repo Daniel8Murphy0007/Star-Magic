@@ -71,7 +71,7 @@ This tilt determines the spatial extent of Ug3's penetration reach in the planet
 
 ## 3. Ug3 Equation — Full Derivation
 
-$$Ug_3 = k_3 \cdot \sum_j B_j(r, \theta, t, [\text{SCm}]) \cdot \cos!\left(\omega_s(t) \cdot t \cdot \pi\right) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
+$$Ug_3 = k_3 \cdot \sum_j B_j(r, \theta, t, [\text{SCm}]) \cdot \cos\!\left(\omega_s(t) \cdot t \cdot \pi\right) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
 
 Component breakdown:
 
@@ -91,7 +91,7 @@ $$Ug_3(t=0) \approx 1.8 \cdot 10^3 \cdot 1 \cdot 10^{-3} \cdot 10^{46} \approx 1
 
 With solar cycle variation:
 
-$$Ug_3(t) \approx \left[10^3 + 0.4 \cdot \sin(\omega_c t)\right] \cdot \cos!\left(\omega_s(t) \cdot t \cdot \pi\right) \cdot e^{-0.0005t}$$
+$$Ug_3(t) \approx \left[10^3 + 0.4 \cdot \sin(\omega_c t)\right] \cdot \cos\!\left(\omega_s(t) \cdot t \cdot \pi\right) \cdot e^{-0.0005t}$$
 
 ---
 
@@ -267,11 +267,11 @@ Since $p_{\mathrm{DVP}} = 89$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

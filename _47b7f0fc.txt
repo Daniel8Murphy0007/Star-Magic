@@ -1,0 +1,27 @@
+﻿commit 47b7f0fc0d56ca78a277e72dddb3f933de24d485
+Author: Daniel T Murphy <daniel.murphy00@gmail.com>
+Date:   Wed May 6 18:24:55 2026 -0400
+
+    Add 129 standalone UQFF executables to CMakeLists.txt (Session 235)
+    
+    Actions taken (May 6, 2026):
+    - GW/LIGO comparison suite: UQFFComparedToGW150914, GW190425, LIGOData, LISAVsLIGOComparisons
+    - 3D N-Body simulation: source201_3D_N_Body (SOURCE201 block)
+    - 80 astrophysical system modules: Andromeda, CrabNebulaPWN, SgrAStar, V838Mon, etc.
+    - 20 UQFF Knowledge Base executables: KnowledgeBaseKB1-KB19 + RedDwarf + KB7
+    - 18 UQFF theoretical derivations: uqff_ads_cft_duality, uqff_framework, uqff_wormhole_*
+    - 6 test executables with CTest integration
+    - Wolfram standalone tools guarded by USE_EMBEDDED_WOLFRAM flag
+    - UQFF_MODULE_TARGETS + UQFF_TEST_TARGETS CMake lists for batch options + install
+    - install(TARGETS) updated to include all new targets via list variables
+    - Naming convention resolved: ALL_CAPS=library-only; CamelCase=canonical standalone
+    - CMake configure verified: 0 errors, v5.79 (Session 235)
+
+ CMakeLists.txt               | 233 ++++++++++++++++++++++++++++++++++++++++++-
+ _audit_cpp_categories.ps1    |  90 +++++++++++++++++
+ _audit_cpp_env.ps1           | 157 +++++++++++++++++++++++++++++
+ _find_missing_mains.ps1      |  14 +++
+ _peek_new_files.ps1          |  11 ++
+ _scan_cmake_candidates.ps1   |  82 +++++++++++++++
+ _simple_cmake_candidates.csv | 143 ++++++++++++++++++++++++++
+ 7 files changed, 728 insertions(+), 2 deletions(-)

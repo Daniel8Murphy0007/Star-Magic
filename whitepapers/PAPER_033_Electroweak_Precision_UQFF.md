@@ -236,7 +236,7 @@ The UQFF ratio prediction of 1.56 vs measured 1.24 --- a ~20% discrepancy attrib
 
 The measured BR(K+$\eta$') = 1.88$\times$10-4 > BR(K+$\pi$0, $\eta$) is a known puzzle: naive SU(3) predicts $\eta$' should be
 suppressed relative to $\eta$. The UQFF explanation involves [SCm]_flavor mixing between $\eta$ and $\eta$' states:
-$$\Delta\text{BR}(K^+\eta') = [SCm]_{\mathrm{flavor}} \times \sin^2\phi_{\etaeta'} \times \text{BR}(K^+\pi^0) = 1.536 \times 10^{-3} \times 0.038 \times 1.45 \times 10^{-4} \approx 8.5 \times 10^{-9}$$
+$$\Delta\text{BR}(K^+\eta') = [SCm]_{\mathrm{flavor}} \times \sin^2\phi_{\eta\eta'} \times \text{BR}(K^+\pi^0) = 1.536 \times 10^{-3} \times 0.038 \times 1.45 \times 10^{-4} \approx 8.5 \times 10^{-9}$$
 
 This UQFF correction is far too small to explain the $\eta$' enhancement; the enhancement is hadronic.
 
@@ -296,22 +296,20 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ## Appendix: Key UQFF Constants (from `bsm_{physics\_validation}.py`)
 
-$$
-\begin{aligned}
-  & \text{BR\_D\_Kpi0}        = 1.45e-4      # D+ \to K+\pi0 (BESIII, >10\sigma) \\
-  & \text{BR\_D\_Keta}        = 1.17e-4      # D+ \to K+\eta (BESIII, >10\sigma) \\
-  & \text{BR\_D\_Ketap}       = 1.88e-4      # D+ \to K+\eta' (BESIII, >10\sigma) \\
-  & BESIII_luminosity = 20.3 fb-1   # at \psi(3770) peak \\
-  & # UQFF mappings \\
-  & \text{E\_react\_DCS}      = 2.846465e-03  # tan4(\theta_C), Cabibbo suppression \\
-  & theta_C          = 0.227 rad     # Cabibbo angle \\
-  & \text{SCm\_flavor\_mixing} = 1.536640e-03 # |V_cb|2 UQFF flavor mixing \\
-  & [SSq]            = 0.57          # Superconducting manifold calibration \\
-  & \delta T_UQFF          = +0.222        # EW T-parameter contribution \\
-  & \delta\rho_UQFF          = 2.846e-3      # \rho-parameter shift \\
-  & \DeltamW_UQFF         = +93 MeV      # W-boson mass prediction
-\end{aligned}
-$$
+```
+BR_D_Kpi0         = 1.45e-4    # D+ -> K+ pi0 (BESIII, >10 sigma)
+BR_D_Keta         = 1.17e-4    # D+ -> K+ eta (BESIII, >10 sigma)
+BR_D_Ketap        = 1.88e-4    # D+ -> K+ eta' (BESIII, >10 sigma)
+BESIII_luminosity = 20.3 fb-1  # at psi(3770) peak
+# UQFF mappings
+E_react_DCS       = 2.846465e-03  # tan^4(theta_C), Cabibbo suppression
+theta_C           = 0.227 rad     # Cabibbo angle
+SCm_flavor_mixing = 1.536640e-03  # |V_cb|^2 UQFF flavor mixing
+[SSq]             = 0.57          # Superconducting manifold calibration
+delta_T_UQFF      = +0.222        # EW T-parameter contribution
+delta_rho_UQFF    = 2.846e-3      # rho-parameter shift
+delta_mW_UQFF     = +93 MeV       # W-boson mass prediction
+```
 
 *Validator output: `b`sm_{physics\_validation}`.py` $\to$ PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
@@ -432,11 +430,11 @@ Since $p_{\mathrm{DVP}} = 7$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

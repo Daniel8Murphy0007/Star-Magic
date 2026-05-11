@@ -99,7 +99,7 @@ The singlet-T coupling average: $\kappa$_avg = (0.22 + 0.52)/2 = **0.37**
 ### 2.2 Cross-Section Measurement
 
 At m_T = 1.5 TeV, the estimated single-production cross-section:
-$$\sigma(pp \to T b) \approx \kappa_{\mathrm{avg}}^2 \cdot \frac{g_W^2}{16\pi} \cdot \frac{s}{m_T^2 + s} \times 1000 \text{ (pb\to\,\text{fb})} = 85.9 \text{ fb}$$
+$$\sigma(pp \to T b) \approx \kappa_{\mathrm{avg}}^2 \cdot \frac{g_W^2}{16\pi} \cdot \frac{s}{m_T^2 + s} \times 1000 \text{ (pb}\to\text{fb)} = 85.9 \text{ fb}$$
 
 where g_W = 0.65 (weak coupling) and $\sqrt{s}$ = 13 TeV. With 140 fb-1, this corresponds to ~12,000 signal
 events before selection efficiency.
@@ -159,7 +159,7 @@ $$\sin^2\alpha = k_\eta = 0.1369$$
 $$\sin\alpha = 0.370, \quad \cos\alpha = 0.929$$
 
 The scalar mixing angle **$\alpha$ = 21.7°** defines the S0 coupling to WW, ZZ (suppressed by cos2$\alpha$ = 0.863
-relative to SM Higgs), and to tt̄, bb̄ (enhanced by sin2$\alpha$ / tan2$\beta$ for 2HDM-type models).
+relative to SM Higgs), and to t${\bar {t}}$, b${\bar {b}}$ (enhanced by sin2$\alpha$ / tan2$\beta$ for 2HDM-type models).
 
 ---
 
@@ -249,12 +249,12 @@ With 300 fb-1, this gives ~1200 signal events --- discoverable at 5$\sigma$ if s
 
 ### 6.2 S0 Companion Scalar Search
 
-If M_{S0} = 845 GeV, LHC Run 3 can search for pp $\to$ S0 $\to$ tt̄, WW, ZH signature. The predicted
+If M_{S0} = 845 GeV, LHC Run 3 can search for pp $\to$ S0 $\to$ t${\bar {t}}$, WW, ZH signature. The predicted
 cross-section:
 $$\sigma(gg \to S^0) \times \text{BR}(S^0 \to t\bar{t}) \approx \sin^2\alpha \times \sigma_{\mathrm{SM}}^{H}(845) \times \text{BR}_{t\bar{t}} \approx 0.1369 \times 0.8 \text{ pb} \times 0.50 = 55 \text{ fb}$$
 
-With 300 fb-1 and tt̄ reconstruction efficiency ~10%, this gives ~1650 reconstructed events. The S0
-would appear as a narrow resonance in the m(tt̄) invariant mass distribution at 845 $\pm$ 20 GeV.
+With 300 fb-1 and t${\bar {t}}$ reconstruction efficiency ~10%, this gives ~1650 reconstructed events. The S0
+would appear as a narrow resonance in the m(t${\bar {t}}$) invariant mass distribution at 845 $\pm$ 20 GeV.
 
 ---
 
@@ -275,7 +275,7 @@ testable at FCC-ee
 6. **Cross-section:** $\sigma$(pp$\to$Tb) = 85.9 fb at m_T = 1.5 TeV, 140 fb-1 Run 2 consistent
 
 The scalar companion S0 at 845 GeV is the defining testable prediction of the UQFF Ug2 scalar sector
-analysis, searchable at LHC Run 3 via gg $\to$ S0 $\to$ tt̄ at ~55 fb.
+analysis, searchable at LHC Run 3 via gg $\to$ S0 $\to$ t${\bar {t}}$ at ~55 fb.
 
 ---
 
@@ -347,25 +347,23 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ## Appendix: Key UQFF Constants (from `bsm_{physics\_validation}.py`)
 
-$$
-\begin{aligned}
-  & \text{kappa\_T\_min}     = 0.22      # Singlet T coupling lower bound (ATLAS) \\
-  & \text{kappa\_T\_max}     = 0.52      # Singlet T coupling upper bound (ATLAS) \\
-  & \text{kappa\_TBY\_min}   = 0.14      # (T,B,Y) triplet coupling lower \\
-  & \text{kappa\_TBY\_max}   = 0.46      # (T,B,Y) triplet coupling upper \\
-  & \text{m\_VLQ\_min}       = 1150 GeV  # VLQ mass lower bound \\
-  & \text{m\_VLQ\_max}       = 2600 GeV  # VLQ mass upper bound \\
-  & ATLAS_luminosity = 140 fb-1 \\
-  & # UQFF mappings \\
-  & kappa_avg       = 0.37       # (0.22+0.52)/2 \\
-  & \text{k\_eta\_VLQ}       = 0.1369     # kappa_avg2 \\
-  & D_TRZ           = 0.333      # TRZ damping factor \\
-  & [SSq]           = 0.57       # SCm calibration \\
-  & \text{M\_scalar\_UQFF}   \approx 845 GeV   # TRZ-corrected scalar resonance \\
-  & sin2\alpha           = 0.1369    # Scalar mixing angle \\
-  & \text{tan\_beta\_2HDM}   \approx 2.70      # 2HDM parameter from 1/\sqrt{}k_\eta
-\end{aligned}
-$$
+```
+kappa_T_min       = 0.22      # Singlet T coupling lower bound (ATLAS)
+kappa_T_max       = 0.52      # Singlet T coupling upper bound (ATLAS)
+kappa_TBY_min     = 0.14      # (T,B,Y) triplet coupling lower
+kappa_TBY_max     = 0.46      # (T,B,Y) triplet coupling upper
+m_VLQ_min         = 1150 GeV  # VLQ mass lower bound
+m_VLQ_max         = 2600 GeV  # VLQ mass upper bound
+ATLAS_luminosity  = 140 fb-1
+# UQFF mappings
+kappa_avg         = 0.37       # (0.22+0.52)/2
+k_eta_VLQ         = 0.1369     # kappa_avg^2
+D_TRZ             = 0.333      # TRZ damping factor
+[SSq]             = 0.57       # SCm calibration
+M_scalar_UQFF     ~= 845 GeV   # TRZ-corrected scalar resonance
+sin2_alpha        = 0.1369     # Scalar mixing angle
+tan_beta_2HDM     ~= 2.70      # 2HDM parameter from 1/sqrt(k_eta)
+```
 
 *Validator output: `b`sm_{physics\_validation}`.py` $\to$ PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
@@ -486,11 +484,11 @@ Since $p_{\mathrm{DVP}} = 5$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

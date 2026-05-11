@@ -155,7 +155,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 $$\mathcal{L}_\text{mag} = \mathcal{L}_\text{SCm}(\Delta(r)) + \mathcal{L}_\text{Abrikosov}(\Phi_0, r) + \sum_{n=1}^{26}\mathcal{L}_\text{phonon}(\omega_n, R_n)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\Delta(r) = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta_0}{2k_BT(r)}\right) S_{26} \frac{F_{UBi}}{F_U},\quad R_n = R_\text{NS}(1 + 0.05n)}$$
+$$\boxed{\Delta(r) = \frac{\hbar\omega_\text{SCm}}{2}\tanh\!\left(\frac{\Delta_0}{2k_BT(r)}\right) S_{26} \frac{F_{UBi}}{F_U},\quad R_n = R_\text{NS}(1 + 0.05n)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 $\to$ SCm vacuum $\to$ BCS gap $\Delta(r)$ $\to$ Abrikosov vortex lattice $\to$ 26 phonon shells $\to$ 3D magnetar

@@ -99,7 +99,7 @@ This prime marks the **hydrogen proto-shell anchor**: the period-4 shell ($Z=1$ 
 
 The magnetic string rotation term $U_{g3}$ depends on the Dipole Vortex Prime spectrum:
 
-$$U_{g3}(t) = \sum_{n: p\_n > 26} \frac{A_{\text{str}}}{p_n} \cdot \cos!\left(\omega_{\text{str}} p_n \cdot t + \varphi_{p\_n}\right)$$
+$$U_{g3}(t) = \sum_{n: p\_n > 26} \frac{A_{\text{str}}}{p_n} \cdot \cos\!\left(\omega_{\text{str}} p_n \cdot t + \varphi_{p\_n}\right)$$
 
 ---
 
@@ -115,7 +115,7 @@ $$H_m = \sum_{k=1}^{m} \frac{f_{\text{Ub}}}{k}, \qquad f_{\text{Ub}} = k_{\text{
 
 The total Ug2 buoyancy field is the sum over all harmonics:
 
-$$\boxed{U_{g2}(t) = \sum_{m=1}^{\infty} H_m \cdot \left(1 - e^{-[\text{SSq}]\, m}\right) \cdot \cos!\left(\omega_{U\_{g2}} \cdot t_n\right)}$$
+$$\boxed{U_{g2}(t) = \sum_{m=1}^{\infty} H_m \cdot \left(1 - e^{-[\text{SSq}]\, m}\right) \cdot \cos\!\left(\omega_{U\_{g2}} \cdot t_n\right)}$$
 
 ### 4.3 Convergence
 
@@ -133,7 +133,7 @@ Unlike the classical harmonic series $\sum 1/k$ (which diverges), the Buoyancy H
 
 PAPER_429 also identifies the **dynamic [SSq] formula** --- replacing the static calibration constant $[\text{SSq}] = 0.57$ with a time- and mode-dependent expression:
 
-$$\boxed{[\text{SSq}](n, t) = \log!\left(\frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}'}\right) \cdot n \cdot e^{-(\pi - t)}}$$
+$$\boxed{[\text{SSq}](n, t) = \log\!\left(\frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}'}\right) \cdot n \cdot e^{-(\pi - t)}}$$
 
 where $\rho_{\text{UA}}'$ is the reduced UA density after SCm phase transition.
 
@@ -293,11 +293,11 @@ Since $p_{\mathrm{DVP}} = 29$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

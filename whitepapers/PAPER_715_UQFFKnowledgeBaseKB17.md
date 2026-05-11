@@ -56,7 +56,7 @@ Total thread strength across Set 40:
 $$\mathcal{T}_{Ug1} = \sum_{i=1}^{10} U_{g1,i} = \mu_J,\omega_{THz}\sum_i V_i^2$$
 
 ## 4. U_bi Buoyancy Adjustment
-$$U_{bi,i}(t) = \rho_{UA}\,\omega_{THz}\,V_{ch1,i}\,\cos!\left(\frac{2\pi t}{\tau_{flow}}\right)$$
+$$U_{bi,i}(t) = \rho_{UA}\,\omega_{THz}\,V_{ch1,i}\,\cos\!\left(\frac{2\pi t}{\tau_{flow}}\right)$$
 The buoyancy adjustment modulates as the Earth's core ACE/DCE pressure cycle
 causes flow reversals in the q-scope magnetic coupling.
 
@@ -185,11 +185,11 @@ Since $p_{\mathrm{DVP}} = 101$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **Q/$\omega$0** (quality factor damping):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

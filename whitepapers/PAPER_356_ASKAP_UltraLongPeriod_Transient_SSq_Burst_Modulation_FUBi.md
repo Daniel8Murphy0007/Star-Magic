@@ -37,7 +37,7 @@ T/2, T/4, etc., testable with ASKAP/MeerKAT long-dwell monitoring.
 
 ### 2.1 [SSq]-Modulated Burst Intensity
 
-$$I_{\mathrm{burst}}(n, t) = I_0 \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos!\left(\frac{2\pi t}{T}\right)$$
+$$I_{\mathrm{burst}}(n, t) = I_0 \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos\!\left(\frac{2\pi t}{T}\right)$$
 
 where:
 - n = harmonic channel index (1 to 26)
@@ -53,7 +53,7 @@ $$F_{U\_Bi\_i} \approx -2.09 \times 10^{212}\ \mathrm{N}$$
 ### 2.3 Harmonic Overtone Prediction
 
 The cosine burst form implies discrete harmonics:
-$$I_k = I_0 \cdot \exp\!\left(-\frac{[SSq] k}{26}\right) \cdot \cos!\left(\frac{2\pi k t}{T}\right), \quad k = 1, 2, 3, \ldots$$
+$$I_k = I_0 \cdot \exp\!\left(-\frac{[SSq] k}{26}\right) \cdot \cos\!\left(\frac{2\pi k t}{T}\right), \quad k = 1, 2, 3, \ldots$$
 
 The $k$-th harmonic is suppressed by exp(-0.57k/26) relative to the fundamental.
 
@@ -73,7 +73,7 @@ periods.
 
 Define the ULPT resonance-sector action:
 
-$$S[\phi_{\mathrm{burst}}] = \int_0^T \sum_{n=1}^{26} \left[ I_0 \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos!\left(\frac{2\pi t}{T}\right) \cdot \phi_{\mathrm{burst}}(n, t) \right] dn\, dt$$
+$$S[\phi_{\mathrm{burst}}] = \int_0^T \sum_{n=1}^{26} \left[ I_0 \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) \cdot \cos\!\left(\frac{2\pi t}{T}\right) \cdot \phi_{\mathrm{burst}}(n, t) \right] dn\, dt$$
 
 where:
 - $\phi_{\mathrm{burst}}(n, t)$ = burst resonance field variable coupling the [SSq] superposition factor to the 26-channel harmonic structure
@@ -85,7 +85,7 @@ where:
 
 Applying the variational principle $\delta S / \delta \phi_{\mathrm{burst}} = 0$:
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{burst}}} = [SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) + \frac{\partial}{\partial n}\left(\exp\!\left(-\frac{[SSq] \cdot n}{26}\right)\right) = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{burst}}} = [SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos\!\left(\frac{2\pi t}{T}\right) + \frac{\partial}{\partial n}\left(\exp\!\left(-\frac{[SSq] \cdot n}{26}\right)\right) = 0}$$
 
 ### 2A.3 Derivation Chain
 
@@ -95,17 +95,17 @@ $$\frac{\partial}{\partial n}\left(\exp\!\left(-\frac{[SSq] \cdot n}{26}\right)\
 
 Substituting into the E-L equation:
 
-$$[SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) - \frac{[SSq]}{26} \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) = 0$$
+$$[SSq] \cdot \frac{n}{26} \cdot I_0 \cdot \cos\!\left(\frac{2\pi t}{T}\right) - \frac{[SSq]}{26} \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) = 0$$
 
 Dividing by $[SSq]/26$:
 
-$$n \cdot I_0 \cdot \cos!\left(\frac{2\pi t}{T}\right) = \exp\!\left(-\frac{0.57 \cdot n}{26}\right)$$
+$$n \cdot I_0 \cdot \cos\!\left(\frac{2\pi t}{T}\right) = \exp\!\left(-\frac{0.57 \cdot n}{26}\right)$$
 
 ### 2A.4 Harmonic Overtone Solutions
 
 The E-L equation produces exact harmonic overtones at $t = T/2, T/4, T/6, \ldots$ where the cosine factor takes values $\cos(\pi) = -1$, $\cos(\pi/2) = 0$, etc. At each overtone $t = T/(2k)$:
 
-$$n_k^* = -\frac{26}{0.57} \ln!\left(n_k^* \cdot I_0 \cdot \cos!\left(\frac{\pi}{k}\right)\right)$$
+$$n_k^* = -\frac{26}{0.57} \ln\!\left(n_k^* \cdot I_0 \cdot \cos\!\left(\frac{\pi}{k}\right)\right)$$
 
 This transcendental equation has discrete solutions $n_k^*$ for each harmonic order $k$, predicting the specific channels that activate at each overtone. The exponential suppression $\exp(-0.57n/26)$ ensures that higher harmonics ($k > 4$) are suppressed by factors $> 10^2$, consistent with the observed absence of high-order harmonic structure in ASKAP data.
 
@@ -137,7 +137,7 @@ For ASKAP J1832-0911, the DVP prediction is that channels $n = 2, 3, 5, 7, 11, 1
 
 The BSH framework explains how the ultra-long period $T \approx 2000$ s remains stable over thousands of cycles:
 
-$$T_{\mathrm{BSH}}(N) = T_0 \cdot \left(1 + \epsilon_{\mathrm{BSH}} \cdot \tanh!\left(\frac{N}{N_{\mathrm{sat}}}\right)\right)$$
+$$T_{\mathrm{BSH}}(N) = T_0 \cdot \left(1 + \epsilon_{\mathrm{BSH}} \cdot \tanh\!\left(\frac{N}{N_{\mathrm{sat}}}\right)\right)$$
 
 where $N$ is the cycle number and $\epsilon_{\mathrm{BSH}} \ll 1$ is the BSH saturation correction. The tanh saturation ensures that $T$ converges to a fixed value $T_0(1 + \epsilon_{\mathrm{BSH}})$ after $N_{\mathrm{sat}}$ cycles, preventing secular drift. This is consistent with the observed period stability of ASKAP ULPTs: the BSH mechanism locks the buoyancy-magnetic equilibrium at a fixed point.
 

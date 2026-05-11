@@ -45,7 +45,7 @@ are added to the existing 12, bringing the total to 14 simultaneously benchmarke
 
 ### kernel_{bcs\_gap\_solve}
 BCS gap fixed-point iteration at $T = 4.2$ K:
-$$\Delta_{n+1} = \frac{\hbar\omega_\text{SCm}}{2} \tanh!\left(\frac{\Delta_n}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
+$$\Delta_{n+1} = \frac{\hbar\omega_\text{SCm}}{2} \tanh\!\left(\frac{\Delta_n}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
 ### kernel_{spectral\_ladder\_eval}
 26-state HRes spectral ladder:

@@ -38,7 +38,7 @@ $$\boxed{E_{space} \approx 5.52\times10^{-104}\,\text{J}}$$
 ## 2. Earth-Moon Tidal Analogy
 
 Di-pseudo-monopole (SCm:UA') field analogy to Earth-Moon tidal system:
-$$E(t) = E_{aether} \cdot V \cdot \frac{B_{pseudo}^2}{2\mu_0 E_{aether}} \cdot \sin!\left(\frac{2\pi t}{T}\right) \cdot f_{spatial}$$
+$$E(t) = E_{aether} \cdot V \cdot \frac{B_{pseudo}^2}{2\mu_0 E_{aether}} \cdot \sin\!\left(\frac{2\pi t}{T}\right) \cdot f_{spatial}$$
 
 with $B_{pseudo}=1$ T, $T=2.36\times10^6$ s (orbital period), $f_{spatial}=2$:
 $$E(T/4) \approx 7.96\times10^{-22}\,\text{J}\quad\text{(UQFF)}$$
@@ -53,11 +53,11 @@ Energies at quarter-period for principal quantum states:
 | $n=1, l=0$ (1s) | $3.98\times10^{-22}$ J |
 | $n=3, l=2$ (3d) | $1.99\times10^{-22}$ J |
 
-$$E_{nlm}(t) = E_{aether} \cdot V \cdot \frac{B_{pseudo}^2}{2\mu_0 E_{aether}} \cdot |\psi_{nlm}|^2 r^2_{max} \cdot \sin!\left(\frac{2\pi t}{T}\right)$$
+$$E_{nlm}(t) = E_{aether} \cdot V \cdot \frac{B_{pseudo}^2}{2\mu_0 E_{aether}} \cdot |\psi_{nlm}|^2 r^2_{max} \cdot \sin\!\left(\frac{2\pi t}{T}\right)$$
 
 ## 4. 26-Level Quantum Wave
 
-$$E_k(t) = E_{aether} \cdot V \cdot \frac{B_{pseudo}^2}{2\mu_0 E_{aether}} \cdot |Y_{lm}|^2 \cdot \sin!\left(\frac{2\pi t}{T_k}\right)$$
+$$E_k(t) = E_{aether} \cdot V \cdot \frac{B_{pseudo}^2}{2\mu_0 E_{aether}} \cdot |Y_{lm}|^2 \cdot \sin\!\left(\frac{2\pi t}{T_k}\right)$$
 
 where $T_k = \frac{k}{26} \cdot T_{Earth-Moon}$ links atomic timescales to galactic rotation.
 
@@ -160,11 +160,11 @@ Since $p_{\mathrm{DVP}} = 107$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **ℏ/E** (vacuum fluctuation lifetime):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

@@ -177,7 +177,7 @@ $$\text{VDS}(T) = \rho_text{SCm} \cdot \left(1 - (T/T_c)^4\right) \cdot S_{26}$$
 The $T_c$ threshold maps to prime $p = 2$ (Cooper pair symmetry).
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
-$$\text{BSH}(T) = \tanh!\left(\frac{T_c - T}{T_c}\right) \cdot S_{26}$$
+$$\text{BSH}(T) = \tanh\!\left(\frac{T_c - T}{T_c}\right) \cdot S_{26}$$
 
 ### §B.4 Production-Scale Consistency
 

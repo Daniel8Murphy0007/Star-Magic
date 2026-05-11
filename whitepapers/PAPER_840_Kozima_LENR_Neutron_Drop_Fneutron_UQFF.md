@@ -430,11 +430,11 @@ Since $p_{\mathrm{DVP}} = 2$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -524,7 +524,7 @@ $$F_{\mathrm{neutron}}^{\mathrm{SCm}} = N_n \cdot \sigma_n^{\mathrm{SCm}}(\omega
 The neutron-drop force operates within the 26-level VDS vacuum structure. The
 coupled force at each VDS level n:
 
-$$F_{\mathrm{coupled}}(\omega) = \sum_{n=0}^{26} F_{\mathrm{neutron}}(\omega, n) \times S_{26}\!\left([\text{SSq}] \cdot \left(1 + \frac{n}{26}\right\right)$$
+$$F_{\mathrm{coupled}}(\omega) = \sum_{n=0}^{26} F_{\mathrm{neutron}}(\omega, n) \times S_{26}\!\left([\text{SSq}] \cdot \left(1 + \frac{n}{26}\right)\right)$$
 
 where S_26(z) = Li_26(z) is the 26-dimensional polylogarithm computed via
 Eta-function Euler acceleration (O(1/2^N) convergence):

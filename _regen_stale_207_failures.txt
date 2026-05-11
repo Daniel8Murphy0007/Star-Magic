@@ -1,0 +1,177 @@
+PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations	! Please use \mathaccent for accents in math mode.
+PAPER_027_Lepton_Flavor_Violation_UQFF	! LaTeX Error: Unicode character ̄ (U+0304)
+PAPER_028_BSM_Coupling_Constants_UQFF	! LaTeX Error: Unicode character ̄ (U+0304)
+PAPER_030_Dark_Sector_Mediators_UQFF	! You can't use `macro parameter character #' in math mode.
+PAPER_031_Flavor_Anomalies_Resolution_UQFF	! You can't use `macro parameter character #' in math mode.
+PAPER_032_BSM_Scalar_Sectors_UQFF	! Missing $ inserted.
+PAPER_033_Electroweak_Precision_UQFF	! Undefined control sequence.
+PAPER_035_Higgs_CP_Violation_UQFF	! You can't use `macro parameter character #' in math mode.
+PAPER_036_FUBii_Buoyancy_Variant1_Archimedes_UQFF	! You can't use `macro parameter character #' in math mode.
+PAPER_051_UQFF_Predictions_vs_arXiv_2024	! Missing \right. inserted.
+PAPER_063_F_U_Bi_i_Integral_UQFF	
+PAPER_090_MUGE_Compressed_Gravity	! File ended while scanning use of \boxed .
+PAPER_094_Magnetar_SGR1745_UQFF_Calibration	! LaTeX Error: Unicode character − (U+2212)
+PAPER_1025_BH_Shadow_Phonon_Deflection	! File ended while scanning use of \underbrace .
+PAPER_106_UQFF_Vacuum_Energy_Dark_Energy_Connection	! Double subscript.
+PAPER_121_UQFF_71Equation_Catalog_Complete_Framework	! LaTeX Error: Unicode character ≱ (U+2271)
+PAPER_136_UQFF_PlanetaryCore_Ug3_SCm_Exclusivity_OrbitalHamiltonian	! Missing $ inserted.
+PAPER_138_UQFF_NGC3603_ClusterBurst_MassEvolution_SCm_PFeedback	! File ended while scanning use of \underbrace .
+PAPER_143_UQFF_40pct_Contribution_MUGE_vs_Prior_SchrodingerDirac_Bridge	! Undefined control sequence.
+PAPER_144_StarMagic_SCm_CosmicGlue_Paradigm_Complete_Framework_Overview	! Extra }, or forgotten $.
+PAPER_155_UQFF_SM_Gravity_MUGE_Resonance_Equilibrium_LimitingCase	! File ended while scanning use of \underbrace .
+PAPER_160_Ug4_Extended_Vacuum_Concentration_AGN_Feedback_rhov_Calibration	! Undefined control sequence.
+PAPER_163_UQFF_Modular_Compressed_MUGE_Decomposed_Functions	! File ended while scanning use of \underbrace .
+PAPER_164_HighEnergy_Dataset_UQFF_Validation_CERN_GWOSC_EHT_Chandra	! Missing delimiter (. inserted).
+PAPER_167_GW231123_225Msun_BH_Merger_UQFF_Ug4_MassGap	! File ended while scanning use of \underbrace .
+PAPER_172_FU_Complete_Unified_Field_Assembly	! LaTeX Error: Unicode character  (U+0081)
+PAPER_181_Graph_Theory_H_Magic_Labelings_Star_Magic_Combinatorics	! Undefined control sequence.
+PAPER_184_Quasar_Navier_Stokes_SCm_Forcing_Negative_Time_Asymmetry	! Missing delimiter (. inserted).
+PAPER_188_CoAnQi_Build_Distribution_Architecture	! LaTeX Error: Unicode character └ (U+2514)
+PAPER_198_F_UBii_Taxonomy_Part1_Compact_Object_Stellar_Buoyancy_Forces	! Undefined control sequence.
+PAPER_200_Um_Universal_Magnetism_Taxonomy_Complete_Variant_Catalogue	! Missing $ inserted.
+PAPER_202_UQFF_Reionization_BBN_Recombination_Cosmic_Dawn_Physics	! Undefined control sequence.
+PAPER_205_Ramanujan_Polynomials_Q26_UQFF_26State_Summations	! LaTeX Error: Unicode character ⌊ (U+230A)
+PAPER_210_UQFF_vs_MOND_Comparison_Framework	! Missing $ inserted.
+PAPER_212_UQFF_48Scale_Molecular_Rotor_CIA_CrossSection_Framework	! Undefined control sequence.
+PAPER_214_MHD_Clusters_Jets_Accretion_UQFF_Framework	! Missing $ inserted.
+PAPER_215_Cosmic_Rays_WHIM_Fermi_Acceleration_CR_Knee_UQFF	! Missing delimiter (. inserted).
+PAPER_224_Saturn_Dual_Gravity_Ring_Tension_UQFF	! Missing $ inserted.
+PAPER_239_UQFF_THz_Conduit_Shock_StarFormation_Forces	! Missing } inserted.
+PAPER_240_UQFF_Spooky_Action_DPM_Resonance_gH_Hydrogen	! Missing $ inserted.
+PAPER_242_RingsOfRelativityEinsteinLensingMUGE	! Missing delimiter (. inserted).
+PAPER_258_MultiMessenger_UQFF_Validator_ALMA_EHT_Chandra_Observational	
+PAPER_259_NGC1275_AGN_Feedback_Buoyancy_Equilibrium_Cooling_Flow_BCG	! Undefined control sequence.
+PAPER_261_NGC3603_Dual_Dynamic_Feedback_Equilibrium_Timescale_Scale_Invariant_Theorem_YMC	! LaTeX Error: Unicode character Ṁ (U+1E40)
+PAPER_262_NGC2525_SN_TypeIa_Negative_Mass_Loss_Gravitational_Sign_Reversal_UQFF	! Undefined control sequence.
+PAPER_263_UQFF_Simultaneous_CoAction_Universality_Dissipative_Buoyancy_Pair_Master_Theorem	! LaTeX Error: Unicode character − (U+2212)
+PAPER_265_HUDF_DualChannel_Interaction_Cascade_Buoyancy_Quadratic_Merger_Amplification	! Missing delimiter (. inserted).
+PAPER_266_HUDF_Primordial_IGM_Superconducting_Gravitational_Meissner_Effect_Bcrit	! LaTeX Error: Unicode character − (U+2212)
+PAPER_267_NGC1792_SFR_Normalization_Starburst_Buoyancy_Coherence	! Missing $ inserted.
+PAPER_268_NGC1792_Dual_OscillatoryMode_Hubble_SlowMode_StarburstGW_Amplitude_Modulation	! Extra }, or forgotten \right.
+PAPER_272_Source10_GravitationalVacuumDrag_kVac_equals_G_VacuumGravitationalDuality	! Missing $ inserted.
+PAPER_278_Sombrero_DustRing_UQFF_GravitationalRingResonator_omega_ring_r_ring	
+PAPER_283_Saturn_UQFF_SolarTidalHubbleExpansionCoupling_g_ST_HE_hubble_tidal_factor	! LaTeX Error: Unicode character ₘ (U+2098)
+PAPER_298_UniverseDiameter_GRCurvatureDominance_epsilonGRGreaterThan1	! File ended while scanning use of \boxed .
+PAPER_313_NGC6302_EquatorialTorus_MagneticConfinement_etaB_3p979e5_vAlfven_8p921e7	! LaTeX Error: Unicode character ^^H (U+0008)
+PAPER_336_gCompressed_AllForces_DM_Perturbation_Rt_26State_4Subterm_Resonant_Decomposition	! Double subscript.
+PAPER_351_ASASSN14li_TDE_Outflow_FUBi_0p3c_Kozima_LENR	
+PAPER_353_DoubleExp_Vacuum_Decay_Rate_RhoSCm_RhoUA_NearThreshold	! LaTeX Error: Unicode character − (U+2212)
+PAPER_354_DUniverse_5th_Spatial_Curvature_Factor_Completes_PAPER296_Chain	! Undefined control sequence.
+PAPER_366_SgrA_JWST2025_Flare_OmegaAct_kact_Contrast_fTRZ_Calibration	
+PAPER_372_Compressed_UQFF_Bcrit	! File ended while scanning use of \underbrace .
+PAPER_373_MorrisThorne_Wormhole_Null_Geodesics	! Missing delimiter (. inserted).
+PAPER_374_J1610_Relativistic_Quasar_Jet	! LaTeX Error: Unicode character ᵢ (U+1D62)
+PAPER_375_UQFF_Advanced_Integration	! File ended while scanning use of \underbrace .
+PAPER_376b_UQFF_Formal_Proof_Set_Extended	! Undefined control sequence.
+PAPER_380_UQFF_Solvable_Equation_Set	! File ended while scanning use of \underbrace .
+PAPER_381_SGR1745_Compressed_MUGE_Spectral_Term_Decomposition	! File ended while scanning use of \underbrace .
+PAPER_384_SagAStar_Full_Resonance_Term_Decomposition	! File ended while scanning use of \underbrace .
+PAPER_386_LaTeX_DualBlock_Master_UQFF_May2025_Document_Integration	! File ended while scanning use of \underbrace .
+PAPER_388_YangMills_MassGap_VacuumDensity_Evolution	! Missing $ inserted.
+PAPER_389_Galactic_OmegaS_VelocityDispersion_Calibration	
+PAPER_393_SCm_Reactor_Efficiency_Kappa_Decay	
+PAPER_404_MusSCm_Augmented_Magnetic_Dipole	
+PAPER_405_SCmDensity_Planetary_Scaling_Law	! LaTeX Error: Unicode character ^^G (U+0007)
+PAPER_406_Ts00_Two_Component_Stress_Energy	! Missing $ inserted.
+PAPER_411_Ug1_DPM_DiPseudoMonopole_Internal_Dipole_Solar_Calibration	! Missing $ inserted.
+PAPER_415_Ereact_SCm_Reactivity_Aether_Density_ReactorEfficiency_Factor	! Missing $ inserted.
+PAPER_417_PiCycles_NegativeTime_TemporalReversal_CosPiTn_UQFF_Framework	
+PAPER_420_FU_Complete_Lambda_i_4th_Dissipation_Sum_Code_Gap	
+PAPER_424_FUBii_Um_Universal_Companion_Catalog	! Missing $ inserted.
+PAPER_428_HRes_Periodic_Table_Universal_Nuclear	! Missing $ inserted.
+PAPER_429_Three_New_Number_Systems_Vacuum_Dipole_Buoyancy	! Extra }, or forgotten $.
+PAPER_435_PillarsOfCreation_PerSystem_MUGE_ErosionCoupling	! Missing delimiter (. inserted).
+PAPER_439_NGC3603_PerSystem_MUGE_CavityPressure_DualWind	! Missing delimiter (. inserted).
+PAPER_444_HUDF_GalaxiesGalore_PerSystem_MUGE_CosmicScale_HighRedshift	! Missing $ inserted.
+PAPER_461_RedDwarf_LENR_Basel_Pi_Series_S2_Wmag_Cyclotron_Buoyancy	
+PAPER_462_Inertia_UQFF_Wave_Energy_Inertial_Operator_ThreeLeg_Proofset	! Extra \right.
+PAPER_464_M51_WhirlpoolGalaxy_MUGE_UQFF_Tidal_NGC5195_DensityWaves	! File ended while scanning use of \underbrace .
+PAPER_471_LENR_Keta_NeutronProduction_Calibration_NonLocal_SSq_26D_UmMediated	
+PAPER_473_MUGEModule_7System_Compressed_Resonance	! File ended while scanning use of \boxed .
+PAPER_491_MUGE_Compressed_Nine_Term_Gravity_Framework	! File ended while scanning use of \underbrace .
+PAPER_494_BSM_Particle_Observables_Tau_CKM_LFV_VLQ	! Undefined control sequence.
+PAPER_498_3D_IPO_SCm_UA_Grinding_Sequence	! Missing $ inserted.
+PAPER_505_MSVC_Release_MaxCompress_Build_Profile	! LaTeX Error: Unicode character − (U+2212)
+PAPER_507_Wolfram_Field_Unity_Engine_Hypergraph	! LaTeX Error: Unicode character − (U+2212)
+PAPER_513_NGC1277_Hypergraph_SpacetimeDimension	! Missing delimiter (. inserted).
+PAPER_514_TON618_SacredTimePhase_Integral	! Missing delimiter (. inserted).
+PAPER_526_3D_IPO_Non_Linear_Three_Helix_Progression_Overlay	
+PAPER_532_Quantum_Plasma_Orb_USorb_BH_Harmonic_Spectrum	! Missing delimiter (. inserted).
+PAPER_533_Solar_System_Proplyd_DVP_Orbital_Quantization	! Extra }, or forgotten $.
+PAPER_535_VDS_DVP_BH_Number_Systems_Unified_Catalogue_Hub	! Extra }, or forgotten $.
+PAPER_536_DPM_Split_Monopole_MHD_Proplyd_Topology	! Extra }, or forgotten $.
+PAPER_538_UQFF_Orion_Triple_Telescope_Encompassment_Fit	! Undefined control sequence.
+PAPER_541_DPM_Proplyd_Bidirectional_Encompassment_Framework	! LaTeX Error: Unicode character ∎ (U+220E)
+PAPER_543_Navier_Stokes_Discrete_Hypergraph_Regularity_Proof	! LaTeX Error: Unicode character ∎ (U+220E)
+PAPER_544_YangMills_DPM_Gauge_Field_Mass_Gap_Proof	! Extra }, or forgotten $.
+PAPER_545_Simultaneous_Multi_Method_Equivalence_Merger_Hub	! Undefined control sequence.
+PAPER_549_Galaxy_Merger_UQFF_vs_Newton_Einstein_ThreeMethod_Hub	! Missing delimiter (. inserted).
+PAPER_554_BSFG_Riemann_Curvature_Aether_Metric	! Undefined control sequence.
+PAPER_557_BSFG_Symmetry_Group_Isometry_Analysis	! Undefined control sequence.
+PAPER_563_Millennium_Prize_UQFF_Coordinator_All_Six_Problems	! LaTeX Error: Unicode character └ (U+2514)
+PAPER_570_Olbers_DVP_PhotonPhoton_PrimeVortex_Scatter	! Missing $ inserted.
+PAPER_573_Universal_Epoch_3DIPO_Nuclear_Convergence_Hub	! Missing delimiter (. inserted).
+PAPER_574_Mayan_5Cycle_Cosmic_Architecture_Universal_Epoch_UQFF	! Missing delimiter (. inserted).
+PAPER_575_DPM_Pyramid_Sum_Nuclear_Binding_Periodic_Table	
+PAPER_576_UQFF_Atomic_Mass_Error_Factor_Standard_Model_Validation	! Missing delimiter (. inserted).
+PAPER_577_Island_Stability_5th_Epoch_Superheavy_Z119_126	! Missing delimiter (. inserted).
+PAPER_578_UQFFComp_Eigenvalue_Mass_Gap_Quantum_Gravity_Linkage	! Missing delimiter (. inserted).
+PAPER_581_UQFF_LQG_LambdaCDM_Triple_System_QG_Comparison	
+PAPER_582_String_GW_Planar_Frequency_Rebound_Disk_Formation	! Missing delimiter (. inserted).
+PAPER_583_UQFF_Six_Form_Simultaneous_Solver	
+PAPER_585_UQFF_Euler_Equations_Inviscid_Proof	! Missing delimiter (. inserted).
+PAPER_587_UQFF_Inflationary_Epoch_Details	! Missing delimiter (. inserted).
+PAPER_598_VDS_DVP_BH26_Integration_Reference	! LaTeX Error: Unicode character ▼ (U+25BC)
+PAPER_599_UQFF_BSD_Conjecture_Rank_Cohomology	! Missing $ inserted.
+PAPER_600_UQFF_Hodge_Conjecture_Algebraic_Cycles	
+PAPER_601_UQFF_Magnetic_Gateway_Cosmic_Flux	! Missing $ inserted.
+PAPER_633_UQFF_Tau_Lepton_G2_SM_Bridge	! Missing $ inserted.
+PAPER_636_UQFF_LFV_BDecay_TimeReversal_Constraint	! Missing $ inserted.
+PAPER_645_UQFF_Einstein_Field_Equations_Black_Hole_Singularity_Resolution	! File ended while scanning use of \underbrace .
+PAPER_646_UQFF_Universal_Inertial_Operator_Caduceus_Wave	! Missing delimiter (. inserted).
+PAPER_647_UQFF_Vacuum_Density_Series_Aether_Scaffold	! Missing $ inserted.
+PAPER_650_UQFF_Buoyancy_Harmonics_Discrete_Anti_Gravity	! LaTeX Error: Unicode character ↕ (U+2195)
+PAPER_651_UQFF_Schwarzschild_Proton_Vacuum_Concentration	! LaTeX Error: Unicode character ₓ (U+2093)
+PAPER_653_UQFF_Pi_Wave_Energy_Correspondence	! LaTeX Error: Unicode character ⁿ (U+207F)
+PAPER_688_NGC1316MUGECalculation	
+PAPER_692_M51WhirlpoolTidalInteraction	
+PAPER_701_UQFFKnowledgeBaseRedDwarf	
+PAPER_716_UQFFKnowledgeBaseKB1	
+PAPER_717_UQFFKnowledgeBaseKB2	
+PAPER_718_UQFFKnowledgeBaseKB3	
+PAPER_721_UQFFKnowledgeBaseKB6	
+PAPER_722_UQFFKnowledgeBaseKB8	
+PAPER_731_NGC1316MergerEvolution	
+PAPER_732_TenAstroSystemsMUGE	
+PAPER_733_EighteenAstroSystemsMUGE	
+PAPER_735_Ug2_Electron_Shell_Energy_Eshell	
+PAPER_736_UQFF_ThreeSystem_Simultaneous_Framework	! LaTeX Error: Unicode character ħ (U+0127)
+PAPER_737_Nine_AstroSystems_NGC4826_CassiniGaps_LMC	! LaTeX Error: Unicode character ħ (U+0127)
+PAPER_738_DPM_ACP_AtomicCreation_ProtoNucleus	! Double subscript.
+PAPER_739_Tapestry26D_ThreeSystem_Simultaneous_Full	! Double subscript.
+PAPER_740_MassWithoutWeight_fUb_BuoyancyCalibration	! Double subscript.
+PAPER_747_Universe_Diameter_UQFF_182_Billion_Light_Years	! Double subscript.
+PAPER_749_Five_Quantum_Variable_Sets_rj_dg_FU_Omega_fHeaviside_Mbh_gamma_Ereact	
+PAPER_750_M51_NGC1316_MUGE_Simulation_Whirlpool_FornaxA	! LaTeX Error: Unicode character ₛ (U+209B)
+PAPER_794_NGC2525_SN2018gv_Barred_Spiral_UQFF	! Undefined control sequence.
+PAPER_798_AFGL5180_Massive_SFR_Three_UQFF	! Missing delimiter (. inserted).
+PAPER_803_NGC3596_Gas_Nebula_Spiral_Three_UQFF	! Missing delimiter (. inserted).
+PAPER_807_CGM_Metal_Retention_UQFF_Theorem	! Missing delimiter (. inserted).
+PAPER_808_ACP_Universal_Cycle_Notes_Physics	! Missing $ inserted.
+PAPER_812_ACP_Dynamic_Qwave_THz_Hole_UBmi_Belly_Button_UQFF	! Missing $ inserted.
+PAPER_828_Aether_Resistance_Full_UQFF_FAether_kAether_dstop	
+PAPER_829_Aether_Ion_Concentration_nions_Cosmic_F_ion_evo_UQFF	! Missing $ inserted.
+PAPER_831_New10Systems_F_rel_im_BSM_Imaginary_UQFF	! Missing $ inserted.
+PAPER_832_Ub_Model_Kepler_OrreryV_Exoplanetary_UQFF	! Missing $ inserted.
+PAPER_833_Universal_Gravity_Equation_Catalog_All29_UQFF_Systems	! Undefined control sequence.
+PAPER_836_Chandra_35System_UQFF_Survey_NegativeBuoyancy	
+PAPER_840_Kozima_LENR_Neutron_Drop_Fneutron_UQFF	
+PAPER_841_UQFF_Millennium_Prize_Applications	
+PAPER_865_FieldGenerator_Spooky_NonLocal_TempDrop	! Missing delimiter (. inserted).
+PAPER_877_Three_Assumption_UQFF_Cosmogenesis	! Undefined control sequence.
+PAPER_880_Positive_Et_Buoyancy_Expansion_Master	! Missing delimiter (. inserted).
+PAPER_882_Expansion_Lagrangian_Euler_Lagrange	! LaTeX Error: Unicode character ̇ (U+0307)
+PAPER_883_Negative_Et_Buoyancy_Erosion_Master	! Missing delimiter (. inserted).
+PAPER_888_Et_Full_Lagrangian_Unified_Derivation	! Missing delimiter (. inserted).
+PAPER_890_SCm_Vacuum_Density_Evolution	! Missing delimiter (. inserted).
+PAPER_904_Nebula_Observation_Comparison_UQFF	! Missing { inserted.

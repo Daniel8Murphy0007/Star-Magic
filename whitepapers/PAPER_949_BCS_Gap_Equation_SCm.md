@@ -29,7 +29,7 @@ We derive the BCS energy gap equation in the SCm vacuum phonon framework. The ga
 
 ## 1. Gap Equation
 
-$$\Delta = \frac{\hbar \omega_text{SCm}}{2} \tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26}([\text{SSq}]) \cdot \frac{F_{U,\text{Bi}}}{F_U}$$
+$$\Delta = \frac{\hbar \omega_text{SCm}}{2} \tanh\!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26}([\text{SSq}]) \cdot \frac{F_{U,\text{Bi}}}{F_U}$$
 
 Self-consistent solution via iterative fixed-point method converges in $<50$ iterations at all temperatures.
 
@@ -141,10 +141,10 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 **Sector:** Superconducting Gap (BCS-SCm)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln\!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\delta S}{\delta \Delta} = 0 \implies \Delta = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{U,Bi}}{F_U}}$$
+$$\boxed{\frac{\delta S}{\delta \Delta} = 0 \implies \Delta = \frac{\hbar\omega_\text{SCm}}{2}\tanh\!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{U,Bi}}{F_U}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms $\to$ DPM vacuum $\to$ $\rho_text{SCm}$ $\to$ $\omega_text{SCm}$ phonon $\to$ BCS gap $\to$ Cooper pair binding $\to$ superconducting condensate

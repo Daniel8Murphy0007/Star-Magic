@@ -138,7 +138,7 @@ The value $n_{\mathrm{curv}} = 53$ lies between DVP primes $p_{16} = 53$ (which 
 At the Hubble radius, the BSH framework predicts saturation of the buoyancy contribution to cosmic
 expansion:
 
-$$D_{5,\mathrm{BSH}} = 1 + k_{\mathrm{curv}} r_c^2 \cdot \left(1 - \tanh!\left(\frac{r_c - R_H}{R_{\mathrm{BSH}}}\right\right)$$
+$$D_{5,\mathrm{BSH}} = 1 + k_{\mathrm{curv}} r_c^2 \cdot \left(1 - \tanh\!\left(\frac{r_c - R_H}{R_{\mathrm{BSH}}}\right)\right)$$
 
 For $r_c \ll R_H$, the tanh factor $\to 0$ and $D_5 \to 1 + k \cdot r_c^2$ (standard). For $r_c \gg R_H$, the saturation sets in and $D_5 \to 1$, preventing unphysical growth of the curvature correction at super-Hubble scales.
 

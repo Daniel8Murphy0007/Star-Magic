@@ -47,7 +47,7 @@ to the gravitational wave strain.
 
 $$
 \text{PCR}(q{=}1,\, t{=}4.6\times10^{-6}\,\text{days}) = \frac{1}{312}\sum_{i=0}^{311} \pi_i \cdot
-\sin!\left(2\pi, \frac{(i+1)\phi, f_S\, t}{T_B}\right)
+\sin\!\left(2\pi, \frac{(i+1)\phi, f_S\, t}{T_B}\right)
 $$
 
 For $t = 0.4\,\text{s} = 4.63\times10^{-6}$ days, the phase terms $\varphi_i$ are extremely small, giving:
@@ -165,11 +165,11 @@ Since $p_{\mathrm{DVP}} = 2$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **106 M_BH/M_{M\_sun} yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

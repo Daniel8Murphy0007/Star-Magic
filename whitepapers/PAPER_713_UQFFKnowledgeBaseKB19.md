@@ -42,7 +42,7 @@ predicted vacuum frequency $\omega_{THz} = 7.854\times10^{12}$ rad/s.
 $$I_{THz} = \sum_{j=1}^{50}\left[\mu_J,\omega_{THz}\left(1-e^{-\kappa t_j \cos(\pi t_n)}\right)P_{SCm}\right]\phi_{inv}(j)$$
 
 ### 2.1 Phase Inversion Function (ACE/DCE Flow Reversal)
-$$\phi_{inv}(t) = \cos!\left(\frac{2\pi t}{\tau_{flow}}\right)$$
+$$\phi_{inv}(t) = \cos\!\left(\frac{2\pi t}{\tau_{flow}}\right)$$
 The ACE (Ambient Charge Energy) and DCE (Dark Charge Energy) phases alternate with period
 52 s, creating the observable flow inversion in THz signal pairs.
 
@@ -175,11 +175,11 @@ Since $p_{\mathrm{DVP}} = 89$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **107 yr** (duty cycle period):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

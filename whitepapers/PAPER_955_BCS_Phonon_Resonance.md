@@ -29,7 +29,7 @@ We analyze the BCS superconducting gap at the SCm phonon resonance frequency $\o
 
 ## 1. BCS Gap at Phonon Resonance
 
-$$\Delta_text{res} = \frac{\hbar\omega_\text{SCm}}{2} \cdot \tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
+$$\Delta_text{res} = \frac{\hbar\omega_\text{SCm}}{2} \cdot \tanh\!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
 ## 2. Iterative Solution
 
@@ -175,7 +175,7 @@ mock-theta framework with the SCm phonon spectrum.
 $$\mathcal{L}_\text{res} = \mathcal{L}_\text{gap}\big|_{\omega=\omega\_text{SCm}} + \frac{1}{2}\hbar\omega_\text{SCm}\coth!\left(\frac{\hbar\omega_\text{SCm}}{2k_BT}\right)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\Delta_text{res} = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta}{2k_BT}\right) S_{26} \frac{F_{UBi}}{F_U}}$$
+$$\boxed{\Delta_text{res} = \frac{\hbar\omega_\text{SCm}}{2}\tanh\!\left(\frac{\Delta}{2k_BT}\right) S_{26} \frac{F_{UBi}}{F_U}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 $\to$ SCm vacuum $\to$ phonon peak $\to$ BCS gap at resonance $\to$ maximal Cooper pairing

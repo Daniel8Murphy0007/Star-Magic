@@ -116,7 +116,7 @@ $$k_2 = 1.2, \quad R_b = 1.496 \times 10^{13} \text{ m}, \quad \varepsilon_{sw} 
 
 ### 3.5 Sub-Equation 3  ?Ug3: Magnetic String Disk
 
-$$\Delta Ug_3 = k_3 \sum_j B_j(r, \theta, t, SCm) \cos!\left(\omega_s(t)\, t\, \pi\right) P_{core} \, E_{react}$$
+$$\Delta Ug_3 = k_3 \sum_j B_j(r, \theta, t, SCm) \cos\!\left(\omega_s(t)\, t\, \pi\right) P_{core} \, E_{react}$$
 
 $$k_3 = 1.8, \quad B_j(t, SCm) = 10^3 + 0.4 \sin(\omega_c t) \text{ T}, \quad P_{core} = 1 \text{ (Sun)}, \; 10^{-3} \text{ (planets)}$$
 
@@ -415,11 +415,11 @@ Since $p_{\mathrm{DVP}} = 43$ is **resonant** (threshold at $p > 26$), the syste
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

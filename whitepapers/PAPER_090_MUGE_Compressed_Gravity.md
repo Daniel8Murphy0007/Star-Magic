@@ -462,7 +462,7 @@ The $\tanh$ saturation envelope prevents unphysical divergence:
 $$\begin{aligned}
 \mathcal{F}_{\mathrm{BSH,sat}} &= \mathcal{F}_{\mathrm{BSH}}
   \cdot \left(1 - \tanh\!\left(
-  \frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)
+  \frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)
 \end{aligned}$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot

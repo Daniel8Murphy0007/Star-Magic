@@ -111,11 +111,11 @@ symmetrically.
 
 ### 3.3 Gravitational Wave Background Term
 
-$${\mathrm{GW\_term}} = \frac{h_{\mathrm{strain}} c^2}{\lambda_{\mathrm{gw}}} \sin!\left(\frac{2\pi r(t)}{\lambda_{\mathrm{gw}}}\right)$$
+$${\mathrm{GW\_term}} = \frac{h_{\mathrm{strain}} c^2}{\lambda_{\mathrm{gw}}} \sin\!\left(\frac{2\pi r(t)}{\lambda_{\mathrm{gw}}}\right)$$
 
-$$g_{\mathrm{GW}}(t) = \frac{10^{-16} \times (3\times10^8)^2}{10^{26}} \sin!\left(\frac{2\pi ct}{10^{26}}\right)$$
+$$g_{\mathrm{GW}}(t) = \frac{10^{-16} \times (3\times10^8)^2}{10^{26}} \sin\!\left(\frac{2\pi ct}{10^{26}}\right)$$
 
-$$g_{\mathrm{GW}}(t) = \frac{9\times10^{-10}}{10^{26}} \sin!\left(\frac{2\pi ct}{10^{26}}\right) = 9\times10^{-36} \sin!\left(\frac{2\pi ct}{10^{26}}\right)\ \mathrm{m}/s^2$$
+$$g_{\mathrm{GW}}(t) = \frac{9\times10^{-10}}{10^{26}} \sin\!\left(\frac{2\pi ct}{10^{26}}\right) = 9\times10^{-36} \sin\!\left(\frac{2\pi ct}{10^{26}}\right)\ \mathrm{m}/s^2$$
 
 The GW background oscillation period: $T_{\mathrm{GW}} = \lambda_{\mathrm{gw}}/c = 10^{26}/3\times10^8 \approx 3.33\times10^{17}$ s $\approx$ 10.6 Gyr. One full oscillation over the age of the universe means the GW term has rotated from 0 $\to$ sin(2$\pi$$\times$13.8/10.6) = sin(8.18 rad) = sin(8.18) $\approx$ 0.92 today.
 
@@ -290,11 +290,11 @@ Since $p_{\mathrm{DVP}} = 3$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

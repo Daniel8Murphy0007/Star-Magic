@@ -1,0 +1,185 @@
+﻿commit 6e0a89edfe861d9a6084d1a182daf1be75bc4511
+Author: Daniel T Murphy <daniel.murphy00@gmail.com>
+Date:   Thu May 7 01:14:39 2026 -0400
+
+    Session 236: Add STAR_MAGIC_STANDALONE_MODULE main() stubs to all 147 source+astronomical modules; add 154 add_executable targets to CMakeLists.txt; create PhysicsTerm.h/PhysicsTermRegistry.h standalone stubs
+    
+    - 147 source*.cpp and astronomical*.cpp files received guarded main() stubs
+      using #ifdef STAR_MAGIC_STANDALONE_MODULE (C++20, target_compile_definitions)
+    - 7 files already had main() ΓÇö added only CMakeLists add_executable entries
+    - 154 total new add_executable targets in CMakeLists.txt (source modules,
+      astronomical modules, wolfram variants, misc physics files)
+    - All targets use: CXX_STANDARD 20, STAR_MAGIC_STANDALONE_MODULE=1,
+      include_directories(CMAKE_SOURCE_DIR Core/)
+    - Wolfram WSTP file (source175_uqff_wolfram_export) gated under USE_EMBEDDED_WOLFRAM
+    - PhysicsTerm.h / PhysicsTermRegistry.h minimal standalone stubs created for
+      source20-30_wolfram.cpp header-dependent wolfram files
+    - Self-simulation pattern: 10-epoch annual loop, computeG(t)/compute_g_*(t),
+      exportState(), setEnableLogging(true), chrono timing
+    - CMakeLists.txt now at v5.80 (Session 236)
+
+ ANDROMEDA_UQFF_MODULE.cpp                          |   53 +-
+ AntennaeGalaxies.cpp                               |   59 +
+ CMakeLists.txt                                     |  786 ++++++++
+ COMPRESSED_RESONANCE_UQFF24_MODULE.cpp             |   53 +-
+ COMPRESSED_RESONANCE_UQFF34_MODULE.cpp             |   52 +
+ COMPRESSED_RESONANCE_UQFF34b_MODULE.cpp            |   52 +
+ CRAB_RESONANCE_UQFF_MODULE.cpp                     |   52 +
+ GALAXY_NGC_1792.cpp                                |   59 +
+ GalaxyNGC2525.cpp                                  |   60 +-
+ HUDFGalaxies.cpp                                   |   59 +
+ HYDROGEN_ATOM_UQFF_MODULE.cpp                      |   52 +
+ HYDROGEN_PTOE_RESONANCE_UQFF_MODULE.cpp            |   52 +
+ HorseheadNebula.cpp                                |   60 +-
+ LAGOON_UQFF_MODULE.cpp                             |   52 +
+ LENRCalibUQFFModule.cpp                            |   15 +
+ LENRUQFFModule.cpp                                 |   15 +
+ M16_UQFF_MODULE.cpp                                |   53 +-
+ M51UQFFModule.cpp                                  |   15 +
+ MAGNETAR_SGR0501_4516.cpp                          |   60 +-
+ MAGNETAR_SGR1745_2900.cpp                          |   60 +-
+ NGC1275.cpp                                        |   60 +-
+ NGC1300UQFFModule.cpp                              |   15 +
+ NGC1316UQFFModule.cpp                              |   15 +
+ NGC2264UQFFModule.cpp                              |   15 +
+ NGC346UQFFModule.cpp                               |   15 +
+ NGC3603.cpp                                        |   60 +-
+ NGC4676UQFFModule.cpp                              |   15 +
+ NGC6302_RESONANCE_UQFF_MODULE.cpp                  |   53 +-
+ NGC6302_UQFF_MODULE.cpp                            |   52 +
+ ORION_UQFF_MODULE.cpp                              |   52 +
+ PILLARS_OF_CREATION.cpp                            |   60 +-
+ PhysicsTerm.h                                      |   30 +
+ PhysicsTermRegistry.h                              |   45 +
+ RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp          |   52 +
+ RINGS_OF_RELATIVITY.cpp                            |   60 +-
+ RedSpiderUQFFModule.cpp                            |   15 +
+ SATURN_UQFF_MODULE.cpp                             |   53 +-
+ SMBHBinaryUQFFModule.cpp                           |   15 +
+ SMBHUQFFModule.cpp                                 |   15 +
+ SMBH_SGR_A_STAR.cpp                                |   60 +-
+ SOMBRERO_UQFF_MODULE.cpp                           |   53 +-
+ SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp                  |   52 +
+ STARBIRTH_TAPESTRY.cpp                             |   60 +-
+ STAR_MAGIC_09SEPT_UQFF_MODULE.cpp                  |   59 +
+ Source2_autogen/include_Debug/source2.moc          |   57 +
+ Source2_autogen/include_Debug/source2.moc.d        |    3 +
+ .../EWIEGA46WW/moc_UQFFResultsWidget.cpp           |  114 ++
+ .../EWIEGA46WW/moc_UQFFResultsWidget.cpp.d         |  338 ++++
+ .../EWIEGA46WW/moc_equation_renderer.cpp           |  169 ++
+ .../EWIEGA46WW/moc_equation_renderer.cpp.d         |  247 +++
+ .../EWIEGA46WW/moc_source2_mainwindow.cpp          |  137 ++
+ .../EWIEGA46WW/moc_source2_mainwindow.cpp.d        |  370 ++++
+ .../include_Release/moc_source2_event_bus.cpp      |  256 +++
+ .../include_Release/moc_source2_event_bus.cpp.d    |  143 ++
+ .../moc_source2_widgets_enhanced.cpp               |  583 ++++++
+ .../moc_source2_widgets_enhanced.cpp.d             |  290 +++
+ Source2_autogen/include_Release/source2.moc        | 2078 ++++++++++++++++++++
+ Source2_autogen/include_Release/source2.moc.d      |  690 +++++++
+ Source2_autogen/mocs_compilation_Release.cpp       |    4 +
+ UGC10214UQFFModule.cpp                             |   15 +
+ UNIVERSE_DIAMETER_UQFF_MODULE.cpp                  |   52 +
+ UQFF8AstroTriadicModule.cpp                        |   15 +
+ UQFFBuoyancyAstroModule.cpp                        |   15 +
+ UQFFBuoyancyCNBModule.cpp                          |   15 +
+ UQFFBuoyancyModule.cpp                             |   15 +
+ UQFFCompressedResonanceModule.cpp                  |   15 +
+ UQFFCompressionModule.cpp                          |   15 +
+ UQFFLearningAssessment001.cpp                      |   40 +-
+ UQFFLearningAssessment_001.cpp                     |   60 +-
+ UQFFLearningAssessment_002.cpp                     |   59 +
+ UQFF_SOURCE10.cpp                                  |   60 +-
+ UQFF_THEORY_DISPLAY.cpp                            |   15 +
+ V838MonUQFFModule.cpp                              |   15 +
+ WESTERLUND_2.cpp                                   |   60 +-
+ _add_standalone_mains.py                           |  359 ++++
+ _fix_fallback_stubs.py                             |   99 +
+ _scan_wolfram.py                                   |   23 +
+ _session236_cmake_block.txt                        |  785 ++++++++
+ complete_physics_integration.cpp                   |   52 +
+ extract_all_physics_terms.cpp                      |   39 +
+ extracted_modules.cpp                              |   15 +
+ functional_physics_terms.cpp                       |   52 +
+ generated_physics_terms.cpp                        |   52 +
+ missing_from_cmake.txt                             |  778 ++++++++
+ net_new_physics_integration.cpp                    |   39 +
+ register_all_extracted_classes.cpp                 |   15 +
+ source11_wolfram.cpp                               |   15 +
+ source12.cpp                                       |   39 +
+ source12_wolfram.cpp                               |   15 +
+ source13_wolfram.cpp                               |   52 +
+ source14_wolfram.cpp                               |   52 +
+ source15_wolfram.cpp                               |   52 +
+ source16_wolfram.cpp                               |   52 +
+ source174.cpp                                      |   59 +
+ source175.cpp                                      |   52 +
+ source175_uqff_wolfram_export.cpp                  |   16 +-
+ source176_auto_full_uqff.cpp                       |   15 +
+ source179.cpp                                      |   52 +
+ source17_wolfram.cpp                               |   52 +
+ source18_wolfram.cpp                               |   52 +
+ source19_wolfram.cpp                               |   52 +
+ source200_wolfram.cpp                              |   52 +
+ source20_wolfram.cpp                               |   52 +
+ source21_wolfram.cpp                               |   52 +
+ source22_wolfram.cpp                               |   52 +
+ source23_wolfram.cpp                               |   52 +
+ source24_wolfram.cpp                               |   52 +
+ source25_wolfram.cpp                               |   52 +
+ source26_wolfram.cpp                               |   52 +
+ source27_wolfram.cpp                               |   52 +
+ source28_wolfram.cpp                               |   52 +
+ source29_wolfram.cpp                               |   52 +
+ source30_wolfram.cpp                               |   52 +
+ source31_wolfram.cpp                               |   52 +
+ source32_wolfram.cpp                               |   52 +
+ source33_wolfram.cpp                               |   52 +
+ source34_wolfram.cpp                               |   52 +
+ source35_wolfram.cpp                               |   52 +
+ source36_wolfram.cpp                               |   52 +
+ source37_wolfram.cpp                               |   52 +
+ source38_wolfram.cpp                               |   52 +
+ source39_wolfram.cpp                               |   52 +
+ source40_wolfram.cpp                               |   52 +
+ source41_wolfram.cpp                               |   52 +
+ source42_wolfram.cpp                               |   52 +
+ source43_wolfram.cpp                               |   52 +
+ source44_wolfram.cpp                               |   52 +
+ source45_wolfram.cpp                               |   52 +
+ source46_wolfram.cpp                               |   52 +
+ source47_wolfram.cpp                               |   52 +
+ source48-5_wolfram.cpp                             |   52 +
+ source48_wolfram.cpp                               |   52 +
+ source49_wolfram.cpp                               |   52 +
+ source50_wolfram.cpp                               |   52 +
+ source52_wolfram.cpp                               |   52 +
+ source54_wolfram.cpp                               |   52 +
+ source56_wolfram.cpp                               |   52 +
+ source57_wolfram.cpp                               |   52 +
+ source60_wolfram.cpp                               |   52 +
+ source64_wolfram.cpp                               |   52 +
+ source65_wolfram.cpp                               |   52 +
+ source66_wolfram.cpp                               |   52 +
+ source67_wolfram.cpp                               |   52 +
+ source68_wolfram.cpp                               |   52 +
+ source69_wolfram.cpp                               |   52 +
+ source70_wolfram.cpp                               |   52 +
+ source71_wolfram.cpp                               |   52 +
+ source72_wolfram.cpp                               |   52 +
+ source73_wolfram.cpp                               |   52 +
+ source74_wolfram.cpp                               |   52 +
+ source76_wolfram.cpp                               |   52 +
+ source77_wolfram.cpp                               |   52 +
+ source78_wolfram.cpp                               |   52 +
+ source79_wolfram.cpp                               |   52 +
+ source80_wolfram.cpp                               |   52 +
+ source81_wolfram.cpp                               |   52 +
+ source82_wolfram.cpp                               |   52 +
+ source83_wolfram.cpp                               |   52 +
+ source84_wolfram.cpp                               |   52 +
+ source85_wolfram.cpp                               |   52 +
+ source8_wolfram.cpp                                |   52 +
+ source9_wolfram.cpp                                |   15 +
+ wolfram_registry_analysis.cpp                      |   15 +
+ wolfram_sources_bridge.cpp                         |   52 +
+ 164 files changed, 14761 insertions(+), 21 deletions(-)

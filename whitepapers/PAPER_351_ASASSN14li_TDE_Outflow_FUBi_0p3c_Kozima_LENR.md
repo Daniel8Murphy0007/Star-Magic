@@ -138,7 +138,7 @@ where $p_k$ is the $k$-th dipole vortex prime and $F_{\mathrm{nuclear}} \approx 
 
 The BSH framework explains the negative energy erosion $E(t) < 0$ observed in late-time TDE light curves:
 
-$$E_{\mathrm{BSH}}(t) = E_0 \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{t_{\mathrm{BSH}}}\right\right)$$
+$$E_{\mathrm{BSH}}(t) = E_0 \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{t_{\mathrm{BSH}}}\right)\right)$$
 
 where $t_{\mathrm{sat}}$ is the BSH saturation timescale. For ASASSN-14li, the BSH harmonics predict that the buoyancy force transitions from accelerating the outflow to decelerating it after $t_{\mathrm{sat}} \approx 100$ days, consistent with the observed plateau in the X-ray light curve.
 

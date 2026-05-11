@@ -1,0 +1,80 @@
+﻿commit d8a9d52e5f4cbb213026f62c866354b37e36479a
+Author: Daniel T Murphy <daniel.murphy00@gmail.com>
+Date:   Wed May 6 01:02:24 2026 -0400
+
+    Session 234: PAPER_1151-1155 + CP4 #588-#600 (13 _S234 classes, total 600) + arch v5.78 + integration status update
+
+ 99system_master_equation.py.bak                    |    464 +
+ 99system_wstp_gamma.py.bak                         |    648 +
+ ARCHITECTURE_FLOW_DIAGRAM.md                       |      2 +
+ CondensedPhysics.py.bak                            | 206005 ++++++++++++++++++
+ CondensedPhysics.py.bak2                           | 205958 +++++++++++++++++
+ CondensedPhysics2.py.bak                           |  55701 +++++
+ CondensedPhysics2.py.bak2                          |  55654 +++++
+ CondensedPhysics3.py.bak                           |  15141 ++
+ CondensedPhysics3.py.bak2                          |  15094 ++
+ CondensedPhysics4.py                               |    560 +
+ CondensedPhysics4.py.bak                           |  45238 ++++
+ CondensedPhysics4.py.bak2                          |  45169 ++++
+ MAIN_1_CoAnQi_integration_status.json              |   1226 +-
+ QCalc.py.bak                                       |  10747 +
+ _audit_10_refs.py                                  |     31 +
+ _audit_commits.py                                  |     26 +
+ _audit_stale_pdfs.py                               |     44 +
+ _chain_trace_C.py                                  |    262 +
+ _chain_trace_C_particles.py                        |    551 +
+ _chain_trace_SSq.py.bak                            |    231 +
+ _check_refs.py                                     |     21 +
+ _combine_pairs_1109_1125.py                        |    212 +
+ _debug_latex.txt                                   |    482 +
+ _find_cp4_syntax.py                                |     17 +
+ _fix_all_citations.py                              |    506 +
+ _fix_and_regen_1109_1125.py                        |     60 +
+ _fix_cp4_all_apostrophes.py                        |     72 +
+ _fix_cp4_apostrophes.py                            |     62 +
+ _fix_cp4_lam.py                                    |     43 +
+ _fix_cp4_lam2.py                                   |     37 +
+ _fix_cp4_line11170.py                              |     41 +
+ _fix_cp4_scm.py                                    |     63 +
+ _fix_latex_errors.py                               |    181 +
+ _fix_refs_and_cols.py                              |    145 +
+ _fix_stale_latex_errors.py                         |    327 +
+ _fix_thin_cols_1109_1125.py                        |    112 +
+ _inspect_pairs.py                                  |     14 +
+ _merge_manifolds.py                                |    262 +
+ _paper1150_debug.tex                               |    562 +
+ _peek_papers.py                                    |     11 +
+ _read_cp4_lines.py                                 |      5 +
+ _regen_140_failed.py                               |     75 +
+ _regen_all_pdfs.py                                 |     41 +
+ _regen_stale_240.py                                |    136 +
+ _relocate_supplement_1109_1125.py                  |     76 +
+ _revert_cp4_ternary.py                             |     35 +
+ _run_qcalc_test.py                                 |     41 +
+ _sample_topics.py                                  |     21 +
+ _scan_formatting.py                                |     59 +
+ _scan_hardcoded_densities.py                       |     86 +
+ _scan_real_errors.py                               |     87 +
+ _show_cp4_bad.py                                   |      4 +
+ _show_cp4_line.py                                  |      4 +
+ _show_equations.py                                 |    146 +
+ _update_cp_imports.py                              |    428 +
+ _verify_full_state.py                              |     49 +
+ _verify_manifolds.py                               |     28 +
+ _verify_quest.py                                   |     30 +
+ _verify_statement.py                               |     92 +
+ _write_cp4_643.py                                  |    122 +
+ _write_paper1150.py                                |    269 +
+ ...VDS_DVP_BH26_Variant_Branches_Coupled_Field.pdf |    Bin 0 -> 302776 bytes
+ ...52_QCalcGeom_SimEngine_12Stage_CPT_Pipeline.pdf |    Bin 0 -> 303392 bytes
+ ...ial_Timing_Function_Net_Zero_Pi_Epoch_Clock.pdf |    Bin 0 -> 299922 bytes
+ ..._First_Principles_DPM_Relativistic_Geometry.pdf |    Bin 0 -> 282375 bytes
+ ...5_DPM_26Layer_Amplification_Particle_Masses.pdf |    Bin 0 -> 265560 bytes
+ pdf/globular_cluster_2.pdf                         |    Bin 0 -> 14675581 bytes
+ qcalcgeom_helpers.py.bak                           |    903 +
+ ..._VDS_DVP_BH26_Variant_Branches_Coupled_Field.md |    242 +
+ ...152_QCalcGeom_SimEngine_12Stage_CPT_Pipeline.md |    207 +
+ ...dial_Timing_Function_Net_Zero_Pi_Epoch_Clock.md |    184 +
+ ...7_First_Principles_DPM_Relativistic_Geometry.md |    197 +
+ ...55_DPM_26Layer_Amplification_Particle_Masses.md |    187 +
+ 73 files changed, 665171 insertions(+), 565 deletions(-)

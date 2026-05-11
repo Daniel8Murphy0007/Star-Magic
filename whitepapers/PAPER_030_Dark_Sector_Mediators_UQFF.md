@@ -60,7 +60,7 @@ Dark sector mediators capable of generating B ? K* te include:
 The UQFF framework provides a unified vacuum field description in which all such mediators are
 encoded in the Ug4 vacuum concentration term:
 
-$$U_{g4}(r, t) = k_4 \cdot \rho_{\mathrm{vac}}(r) \cdot \cos(\pi t_n) \cdot [SCm]$$
+$$U_{g4}(r, t) = k_4 \cdot \rho _{\mathrm{vac}}(r) \cdot \cos(\pi t_n) \cdot [SCm]$$
 
 The cos(p t_n) reversal factor is the key UQFF suppression mechanism. When t_n ? non-integer values,
 UQFF predicts destructive interference between mediator exchange amplitudes, generating the observed
@@ -97,13 +97,13 @@ limit corresponds to N_sig < 12 events in 5.4 fb?.
 ### 3.1 Z' Boson Exchange
 
 A generation-off-diagonal Z' with coupling:
-$$\mathcal{L}_{Z'} = \frac{g_{\tau e}}{M_{Z'}} \bar{b}_L \gamma^\mu s_L Z'_\mu \cdot \bar{\tau}_L \gamma_mu e_L + h.c.$$
+$$\mathcal{L}_{Z'} = \frac{g_{\tau e}}{M_{Z'}} \bar{b}_L \gamma^\mu s_L Z'_\mu \cdot \bar{\tau}_L \gamma _mu e_L + h.c.$$
 
 generates the amplitude:
 $$\mathcal{M}(B^0 \to K^{*0} \tau e) = \frac{g_{bs} g_{\tau e}}{M_{Z'}^2} \cdot F(q^2)$$
 
 where F(q) is the B?K* transition form factor. The branching fraction scales as:
-$$\text{BR} \propto \left(\frac{g_{\tau e}}{M_{Z'}}\right)^2 \cdot \frac{\tau_B m_B^3}{192\pi^3}$$
+$$\text{BR} \propto \left(\frac{g_{\tau e}}{M_{Z'}}\right)^2 \cdot \frac{\tau _B m_B^3}{192\pi^3}$$
 
 From the LHCb limit BR < 5.9$\times$10-6:
 $$\frac{g_{\tau e}}{M_{Z'}^2} < 1.8 \times 10^{-3} \text{ GeV}^{-2}$$
@@ -117,13 +117,13 @@ TeV for generic models.
 ### 3.2 Scalar Leptoquark Exchange
 
 Scalar leptoquarks S1 (color-triplet, SU(2)-singlet, Y = -1/3) with:
-$$\mathcal{L}_{LQ} = \lambda_{bt} \bar{Q}^c_3 \cdot S_1 L_3 + \lambda_{se} \bar{Q}^c_2 \cdot S_1 L_1 + h.c.$$
+$$\mathcal{L}_{LQ} = \lambda _{bt} \bar{Q}^c_3 \cdot S_1 L_3 + \lambda _{se} \bar{Q}^c_2 \cdot S_1 L_1 + h.c.$$
 
 The B ? K* t?e? amplitude goes as:
-$$\mathcal{M} \sim \frac{\lambda_{bt} \lambda^*_{se}}{M_{LQ}^2}$$
+$$\mathcal{M} \sim \frac{\lambda _{bt} \lambda^*_{se}}{M_{LQ}^2}$$
 
 The LHCb limit implies:
-$$|\lambda_{bt} \lambda_{se}| < 3.4 \times 10^{-3} \cdot \left(\frac{M_{LQ}}{1 \text{ TeV}}\right)^2$$
+$$|\lambda _{bt} \lambda _{se}| < 3.4 \times 10^{-3} \cdot \left(\frac{M_{LQ}}{1 \text{ TeV}}\right)^2$$
 
 For TeV-scale leptoquarks with O(1) couplings, the LHCb null result provides the strongest
 constraint on the (b,t)  (s,e) coupling product.
@@ -198,15 +198,15 @@ suppressed to below current experimental sensitivity  they share the same vacuum
 In the UQFF vacuum, lepton flavor mixing is controlled by the aether string resonance frequency. The
 aether string field Ug3 carries angular momentum that can flip lepton flavor at rate:
 
-$$\Gamma_{\mathrm{LFV}} = \frac{g_{\mathrm{string}}^2}{\tau_{\mathrm{string}}} \cdot |\langle K^{*0} | \bar{s} b | B^0 \rangle|^2$$
+$$\Gamma _{\mathrm{LFV}} = \frac{g_{\mathrm{string}}^2}{\tau _{\mathrm{string}}} \cdot |\langle K^{*0} | \bar{s} b | B^0 \rangle|^2$$
 
 where t_string = ?/E_react and E_react = tan4(?_C) = 2.846$\times$10? (from Cabibbo angle ?_C = 0.227 rad).
 This produces a UQFF-estimated rate:
 
-$$\Gamma_{\mathrm{LFV}}^{\mathrm{UQFF}} \sim \frac{E_{\mathrm{react}}}{\hbar} \cdot F_B^2 \approx 2.85 \times 10^{-3} \times 2.15\times10^{-2} \approx 6.1 \times 10^{-5} \text{ GeV}$$
+$$\Gamma _{\mathrm{LFV}}^{\mathrm{UQFF}} \sim \frac{E_{\mathrm{react}}}{\hbar} \cdot F_B^2 \approx 2.85 \times 10^{-3} \times 2.15\times10^{-2} \approx 6.1 \times 10^{-5} \text{ GeV}$$
 
 Converting to branching fraction via t_B = 1.519 ps:
-$$\text{BR}^{\mathrm{string}} \sim \Gamma \cdot \tau_B \approx 6.1 \times 10^{-5} \times 6.582 \times 10^{-13} \times 10^{24} \sim 10^{-6}$$
+$$\text{BR}^{\mathrm{string}} \sim \Gamma \cdot \tau _B \approx 6.1 \times 10^{-5} \times 6.582 \times 10^{-13} \times 10^{24} \sim 10^{-6}$$
 
 This places the UQFF string-mediated LFV rate in the range 10?7$\times$10-6, below current LHCb
 sensitivity, consistent with the null result.
@@ -244,7 +244,7 @@ This would remain consistent with, but not discoverable at, HL-LHC luminosities.
 
 Belle II at vs = 10.58 GeV (?(4S)) probes B ? K* te with complementary systematics. The UQFF
 prediction for the Belle II measurement:
-$$\text{BR}_{\mathrm{Belle II}} = \text{BR}_{\mathrm{LHCb}} \times \epsilon_{\mathrm{UQFF}}(\sqrt{s}=10.58)$$
+$$\text{BR}_{\mathrm{Belle II}} = \text{BR}_{\mathrm{LHCb}} \times \epsilon _{\mathrm{UQFF}}(\sqrt{s}=10.58)$$
 
 where e_UQFF accounts for the energy-dependent Ug4 vacuum term. At e+e? vs. pp collision energies,
 e_UQFF ~ 1.04, slightly enhancing the Belle II predicted rate.
@@ -295,8 +295,8 @@ suppression factor.  The corrected strain amplitude is:
 $$h_{\text{UQFF}}(\Gamma) = h_{\text{GR}} \cdot \left(1 - 0.47\,\frac{\Phi(\Gamma)}{S_{26}^{(3)}}\right)$$
 
 where:
-- $\Phi(\Gamma) = \cos(\omega_{\text{SCm}} \cdot t) \cdot \Theta(H_{\text{SCm}} - 0.5)$ is the phonon modulation factor
-- $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ is the SCm phonon resonance frequency
+- $\Phi(\Gamma) = \cos(\omega _{\text{SCm}} \cdot t) \cdot \Theta(H_{\text{SCm}} - 0.5)$ is the phonon modulation factor
+- $\omega _{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ is the SCm phonon resonance frequency
 - $S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$ is the third-order Ramanujan summation
 - $\Theta$ is the Heaviside step ensuring $H_{\text{SCm}} \geq 0.5$ (phase-transition threshold)
 
@@ -308,7 +308,7 @@ neutron-star crust couples to this phonon field, creating a mass-gap
 classifier that distinguishes NS from BH remnants at $M \approx 2.5\,M_\odot$.
 
 **Calibration (canonical):** $\kappa = 5 \times 10^{-4}\;\text{day}^{-1}$,
-$[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
+$[\text{SSq}] = 0.57$, $\beta _i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 <!-- PKG-LAG-S225 -->
 
@@ -322,10 +322,10 @@ equations of motion derive:
 
 $$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
 
-$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
+$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial _\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
 
-The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
-(matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
+The SCm condensate potential minimum gives $V(\phi _0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
+(matching $\rho _{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
 
 **Nine-sector closure (Session 202):**
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
@@ -335,7 +335,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
-| 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
+| 4 (SCm) | Superconducting manifold | $V(\phi _0) = -\rho _{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
 | 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
@@ -348,16 +348,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ## Appendix: Key UQFF Constants (from `bsm_{physics\_validation}.py`)
 
-$$
-\begin{aligned}
-  & \text{BR\_LFV\_tau\_minus} = 5.9e-06      # 90% CL limit: B0 ? K*0 t-e+ \\
-  & \text{BR\_LFV\_tau\_plus}  = 4.9e-06      # 90% CL limit: B0 ? K*0 t+e- \\
-  & LHCb_luminosity  = 5.4 fb^-1   # Run 2 integrated luminosity \\
-  & \text{t\_n\_LFV\_constraint} = 3.832629   # UQFF temporal reversal parameter \\
-  & \text{E\_react\_DCS} = 2.846465e-03      # tan4(?_C), Cabibbo suppression \\
-  & \text{SCm\_flavor\_mixing} = 1.536640e-03 # |V_cb| flavor vacuum mixing
-\end{aligned}
-$$
+```
+BR_LFV_tau_minus    = 5.9e-06    # 90% CL limit: B0 -> K*0 tau- e+
+BR_LFV_tau_plus     = 4.9e-06    # 90% CL limit: B0 -> K*0 tau+ e-
+LHCb_luminosity     = 5.4 fb^-1  # Run 2 integrated luminosity
+t_n_LFV_constraint  = 3.832629   # UQFF temporal reversal parameter
+E_react_DCS         = 2.846465e-03  # tan^4(theta_C), Cabibbo suppression
+SCm_flavor_mixing   = 1.536640e-03  # |V_cb| flavor vacuum mixing
+```
 
 *Validator output: `b`sm_{physics\_validation}`.py` ? PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
@@ -385,7 +383,7 @@ $$
 
 ### A.2 F_U Master Equation (Complete --- 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda _i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -402,7 +400,7 @@ $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free par
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho _{SCm} - \rho _c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
@@ -436,19 +434,19 @@ This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial _mu \phi _{\mathrm{NS}})(\partial^\mu \phi _{\mathrm{NS}}) - V(\phi _{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho _{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
+$$V(\phi _{\mathrm{NS}}) = \frac{1}{2} m^2 \phi _{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi _{\mathrm{NS}}^4 + \kappa \cdot \rho _{\mathrm{vac,[SCm]}} \cdot \phi _{\mathrm{NS}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi _{\mathrm{NS}}} = \nabla^2 \phi _{\mathrm{NS}} - (4\pi G \rho _{\mathrm{NS}}/c^2)\phi _{\mathrm{NS}} + \Omega _{\mathrm{spin}} \partial _t \phi _{\mathrm{NS}} = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi _{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -460,11 +458,11 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho _{\mathrm{vac,[SCm]}} / \rho _{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho _{\mathrm{vac}}(r) = \rho _{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda _{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.143$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.143$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -478,11 +476,11 @@ Since $p_{\mathrm{DVP}} = 2$ is **sub-threshold** (threshold at $p > 26$), the s
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -490,7 +488,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.143 | PASS Threshold-consistent |
+| VDS ratio | $\rho _{\mathrm{SCm}}/\rho _{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.143 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 2$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
@@ -589,7 +587,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
+| $\sin^2\theta _W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 | $m_Z$ | SCm phonon predicts $Z$ mass | $91.1876$ GeV | PDG 2024 | 99.8% |
 

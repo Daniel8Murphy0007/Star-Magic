@@ -29,7 +29,7 @@ We derive the Cooper-pair sector of the UQFF Lagrangian and impose the stationar
 
 ## 1. Gap Lagrangian
 
-$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln\!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
 
 ## 2. Stationarity Condition
 
@@ -40,7 +40,7 @@ $$1 = \frac{V_\text{SCm}}{2} \cdot \frac{\tanh(\Delta/2k_BT)}{\Delta} \cdot S_{2
 
 ## 3. SCm Gap Equation
 
-$$\Delta = \frac{\hbar\omega_\text{SCm}}{2} \cdot \tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
+$$\Delta = \frac{\hbar\omega_\text{SCm}}{2} \cdot \tanh\!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
 Critical temperature:
 $$T_c = \frac{1.13\,\hbar\omega_\text{SCm}}{k_B} \cdot \exp\!\left(-\frac{1}{N(0)V_\text{SCm}}\right)$$
@@ -185,7 +185,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 **Sector:** Cooper Pair Lagrangian (Variational Gap Principle)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln\!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 $$\boxed{\frac{\delta S}{\delta\varphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_isum U_{g,i}\frac{\Omega_g M}{d_g[UA]} + F_n \Phi_{1.25\text{THz}}\right) = 0}$$

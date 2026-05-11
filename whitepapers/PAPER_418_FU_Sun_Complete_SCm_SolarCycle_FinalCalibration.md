@@ -103,7 +103,7 @@ $$A_{\mu\nu} \approx \underbrace{[1, -1, -1, -1]}_{\text{Minkowski}} + \underbra
 
 $$\boxed{F_U \approx (1.17 \times 10^{27} + 4.68 \times 10^{24} \sin(\omega_c t)) \cdot e^{-0.001t} \cdot \cos(\pi t) \cdot (1 + 0.01\sin(0.001t))}$$
 $$\quad + \; 1.18 \times 10^{53} \cdot e^{-0.0005t}$$
-$$\quad + \; (1.005 \times 10^3 + 2.405\sin(\omega_c t)) \cdot \cos!\left((2.5\times10^{-6} - 0.4\times10^{-6}\sin(\omega_c t)) \cdot t\pi\right) \cdot e^{-0.0005t}$$
+$$\quad + \; (1.005 \times 10^3 + 2.405\sin(\omega_c t)) \cdot \cos\!\left((2.5\times10^{-6} - 0.4\times10^{-6}\sin(\omega_c t)) \cdot t\pi\right) \cdot e^{-0.0005t}$$
 $$\quad + \; (2.26\times10^{19} + 9.04\times10^{16}\sin(\omega_c t)) \cdot (1 - e^{-0.0001t})$$
 $$\quad + \; [1,-1,-1,-1] + 1.27\times10^{-20} + 1.11\times10^{-16}$$
 
@@ -254,11 +254,11 @@ Since $p_{\mathrm{DVP}} = 109$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

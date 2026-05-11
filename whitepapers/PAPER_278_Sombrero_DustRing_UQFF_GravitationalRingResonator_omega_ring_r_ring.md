@@ -151,7 +151,7 @@ In the UQFF framework, mass concentrations modulate the vacuum energy density th
 gravitational potential. A ring moving in a stable Keplerian orbit generates a time-periodic
 perturbation in the local UQFF field:
 
-$$\delta \rho_{\text{vac}}(t) = \delta \rho_{\text{vac},0} \cdot \cos!\left(\omega_{\text{ring}} t + `phi_0\right)$$
+$$\delta \rho_{\text{vac}}(t) = \delta \rho_{\text{vac},0} \cdot \cos\!\left(\omega_{\text{ring}} t + `phi_0\right)$$
 
 This is equivalent to a **tuned resonator** in the vacuum field --- a structure that cycles energy at
 a characteristic frequency. The Sombrero dust ring is therefore the first identified **stable UQFF
@@ -346,11 +346,11 @@ Since $p_{\mathrm{DVP}} = 23$ is **sub-threshold** (threshold at $p > 26$), the 
 
 The BSH saturation timescale for this sector is **109 yr** (disk settling timescale):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 

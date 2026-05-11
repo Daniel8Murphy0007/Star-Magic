@@ -1,3 +1,4 @@
+
 // STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
 // UQFF 2.0 Standard Module — Star Magic_09Sept2025.docx
 // ©2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
@@ -19,6 +20,10 @@
 
 #pragma once
 #include <cmath>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 #include <string>
 #include <map>
 #include <vector>
@@ -862,8 +867,8 @@ namespace WormholeGeodesics {
         os << "  Traversal L=0.5: r_final=" << trav.back().r << " (expect crosses 0)\n";
         // Reflection case
         auto refl = propagate(1.0, 1.5, 2.0, 50, 0.1);
-        double r_min = *std::min_element(refl.begin(), refl.end(),
-                         [](const GeodesicState& a, const GeodesicState& b){ return a.r < b.r; }).r;
+        double r_min = std::min_element(refl.begin(), refl.end(),
+                         [](const GeodesicState& a, const GeodesicState& b){ return a.r < b.r; })->r;
         os << "  Reflection L=1.5: r_min=" << refl[0].r << " (expect ≈1.12)\n";
         os << "  z_embed(r=1.0)=" << z_embed(1.0) << " rho_embed(r=1.0)=" << rho_embed(1.0) << "\n";
         os << "[WormholeGeodesics] PAPER_373 self-test complete.\n";
@@ -899,26 +904,12 @@ namespace J1610QuasarJet {
         FluidSolver fs;
         double jet_force = v_SCm_rel / 10.0; // relativistic jet forcing
 
-        double mean_v = 0.0;
+        // Apply jet force and run NS steps using public interface
+        fs.add_jet_force(jet_force + uqff_g / 1e30);
         for (int step = 0; step < NS_steps; ++step) {
-            int N = fs.N;
-            // Inject relativistic jet force into central column
-            for (int i = N / 4; i <= 3 * N / 4; ++i)
-                fs.v[(i) * (N + 2) + N / 2] += jet_force;
-            // Add UQFF resonance as uniform body force (scaled for NS grid)
-            for (int i = 0; i < (N + 2) * (N + 2); ++i)
-                fs.v[i] += uqff_g / 1e30;
-            fs.step(fs.visc, 0.0, fs.dt);
+            fs.step();
         }
-        // Compute mean |v|
-        int N = fs.N; double sum = 0.0; int cnt = 0;
-        for (int i = 1; i <= N; ++i)
-            for (int j = 1; j <= N; ++j) {
-                double u = fs.u[i * (N + 2) + j];
-                double v = fs.v[i * (N + 2) + j];
-                sum += std::sqrt(u * u + v * v); cnt++;
-            }
-        mean_v = sum / cnt;
+        double mean_v = fs.mean_velocity_magnitude();
         os << "J1610+1811 Relativistic Quasar Jet (PAPER_374)\n";
         os << "  z=" << z_redshift << " P_jet=" << P_jet << "W  L=" << L_luminosity << "W\n";
         os << "  v_SCm=" << v_SCm_rel << " m/s  uqff_g=" << uqff_g << " m/s²\n";
@@ -1231,3 +1222,75 @@ inline void session102_selftest(std::ostream& os) {
 // Session 101 — PAPER_371 / PAPER_372 / PAPER_373 / PAPER_374 / PAPER_375
 // Session 102 — PAPER_376 / PAPER_377
 // ============================================================
+
+
+// ============================================================================
+// STANDALONE MAIN — STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
+// Star-Magic UQFF Standalone Module (self-updating, self-simulating)
+// ============================================================================
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+
+#ifdef STAR_MAGIC_STANDALONE_MODULE
+#include <iostream>
+#include <iomanip>
+#include <chrono>
+int main(int argc, char* argv[]) {
+    using clock = std::chrono::high_resolution_clock;
+    auto t0 = clock::now();
+    std::cout << "=== StarMagic09Sept::StarMagic09SeptModule Standalone Self-Simulation ===\n";
+    std::cout << std::fixed << std::setprecision(8);
+    StarMagic09Sept::StarMagic09SeptModule module;
+    constexpr double DT = 3.15576e7;
+    constexpr int N = 10;
+    for (int i = 0; i < N; ++i) {
+        double t = i * DT;
+        module.computeAll(t);
+        std::cout << "  epoch " << i << "  t=" << t << " s\n";
+    }
+    std::cout << "  Done\n";
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(clock::now()-t0).count();
+    std::cout << "  Done in " << ms << " ms\n";
+    return 0;
+}
+#endif // STAR_MAGIC_STANDALONE_MODULE
