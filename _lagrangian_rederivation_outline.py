@@ -146,10 +146,11 @@ KNOWN GAPS:
        chains (resonance manifold, SO(2) embedding, vacuum cohomology)
        fix D=6. Substituting structural value degrades closures from ~0.1%
        to ~0.7% -- the residuals are now next-order corrections to derive.
-  G7.  F_TRZ = 0.1 is similarly a numerical input. Plausible candidate: a
-       discrete time-reversal Z_2 factor for one of the 22 compact directions,
-       which would naturally give F_TRZ = 1/10 if it counts a 10-fold
-       symmetry breaking. Not derived.
+  G7.  CLOSED (Session 247, PAPER_1160): F_TRZ = 1/|SO(D-1)| = 1/|SO(5)|
+       = 1/10 EXACT, where D=6 from PAPER_1159. The same D=6 closes both
+       G6 and G7 -- a double-locked identification. Four independent N=10
+       chains: SO(5) generators, Poincare ISO(1,3), AdS_4 isometry SO(2,3),
+       superstring critical dimension. Zero residual.
   G8.  The 26! factorial barrier must emerge from a combinatorial count of
        the 22-torus winding sectors (or a related counting). Currently
        asserted, not derived.
@@ -255,13 +256,13 @@ if __name__ == "__main__":
     print("  G1 (V(UA) polynomial)       -- needed for Lambda")
     print("  G5 (KK tower suppression)   -- needed for G factorial barrier")
     print("  G6 (Phi_res identification) -- CLOSED (Session 246, PAPER_1159): Phi_res = 5/6")
-    print("  G7 (F_TRZ identification)   -- needed for h")
+    print("  G7 (F_TRZ identification)   -- CLOSED (Session 247, PAPER_1160): F_TRZ = 1/10 (exact)")
     print("  G8 (26! emergence)          -- needed for G")
     print("  G4 (T^22 moduli stab)       -- needed for all five")
     print("  G2 (beta_i i-dependence)    -- needed for Lambda cross-check")
     print()
-    print("Estimated effort: 7-11 person-weeks of theoretical work to close")
-    print("the remaining seven gaps (G6 closed Session 246). Until then, five closures remain at the level of")
+    print("Estimated effort: 6-10 person-weeks of theoretical work to close")
+    print("the remaining six gaps (G6, G7 closed Sessions 246-247). Until then, five closures remain at the level of")
     print("internal cross-validation (overdetermination), not first-principles.")
     print()
     print("This is honest scoping. The numerics are real; the Lagrangian")
