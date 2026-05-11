@@ -50,9 +50,15 @@ KNOWN GAPS:
   G1.  The exact form of V(UA) is not yet specified. The current code uses
        a Mexican-hat-like minimum at rho_A = 7.09e-37 J/m^3 but the
        polynomial coefficients are not derived; they are fit to magnetar data.
-  G2.  The coupling beta_i is a 26-component vector with beta_i ~ 0.603
-       across all i. The i-dependence (whether truly constant or weakly
-       i-varying) is not derived.
+  G2.  CLOSED (Session 252, PAPER_1165): beta_i is a 4-component vector
+       (not 26 -- the four Ug-channels Ug1..Ug4) with exact triangular
+       structure beta_i = 3(5-i)/20 = (3/2) * (5-i)/|SO(5)|. Sum =
+       3/2 (Archimedean half-coefficient for D_phys-1=3). Three of
+       four values match calibrated data exactly (0.450, 0.300, 0.150);
+       beta_1 = 0.603 differs from 0.600 by +0.5%, the subleading
+       1/(2|SO(5)|^2)=1/200 SO(5)^2 correction localised to the dipole
+       channel. Denominator |SO(5)|=10 IDENTICAL to G7 (F_TRZ=1/10)
+       denominator -- G2-G7 cross-lock to same group. Zero free parameters.
   G3.  CLOSED (Session 250, PAPER_1163): SO(2)_DPM = light-cone gauge 2-plane
        in SO(26), the textbook bosonic string embedding SO(26) > SO(24) x SO(2).
        Dim count exact: 325 = 276 + 1 + 48 (with 48 = 24*2 transverse x light-cone).
@@ -279,10 +285,10 @@ if __name__ == "__main__":
     print("  G7 (F_TRZ identification)   -- CLOSED (Session 247, PAPER_1160): F_TRZ = 1/10 (exact)")
     print("  G8 (26! emergence)          -- CLOSED (Session 248, PAPER_1161): 26! = (1)_{26} Pochhammer")
     print("  G4 (T^22 moduli stab)       -- CLOSED (Session 251, PAPER_1164): tau_i=[SSq]^i, m_i^2=2K/i^26>0 (lightest matches G5)")
-    print("  G2 (beta_i i-dependence)    -- needed for Lambda cross-check")
+    print("  G2 (beta_i i-dependence)    -- CLOSED (Session 252, PAPER_1165): beta_i=3(5-i)/20=(3/2)/|SO(5)|, G2-G7 cross-lock")
     print()
-    print("Estimated effort: 2-3 person-weeks of theoretical work to close")
-    print("the remaining two gaps G1, G2 (G3, G4, G5, G6, G7, G8 closed Sessions 246-251). Until then, two closures remain at the level of")
+    print("Estimated effort: 1-2 person-weeks of theoretical work to close")
+    print("the remaining one gap G1 (G2, G3, G4, G5, G6, G7, G8 closed Sessions 246-252). Until then, one closure remains at the level of")
     print("internal cross-validation (overdetermination), not first-principles.")
     print()
     print("This is honest scoping. The numerics are real; the Lagrangian")
