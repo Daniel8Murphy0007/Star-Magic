@@ -73,7 +73,7 @@ $$
 ### Type 2: Angular Momentum Transport (Accretion)
 ```
 Angular momentum equation for accretion disk:
-  dL/dt = ?\cdotr2\cdotO - T_B
+  dL/dt = ?\cdot r2\cdot O - T_B
 
 where:
   L = angular momentum of accretion disk at radius r
@@ -88,7 +88,7 @@ Blandford-Payne torque (disk wind):
   T_BP = B_p \cdot B_f \cdot r2 / (4p)   (where B_p = poloidal, B_f = toroidal)
 
 UQFF F_UBii,angmom:
-  F_UBii,angmom = F_rel \times (?\cdotr2\cdotO/E_LEP \times (1 - T_B/L)) \times Q_wave
+  F_UBii,angmom = F_rel \times (?\cdot r2\cdot O/E_LEP \times (1 - T_B/L)) \times Q_wave
 ```
 
 ### Type 3: Disk MHD and Alfvén Velocity
@@ -102,7 +102,7 @@ $$
   & Alfvénic Mach number: \\
   & M_A = v_flow / v_A    (plasma beta parameter ß ~ 1 when M_A ~ 1) \\
   & For Perseus cluster (Perseus cooling core): \\
-  & B_Perseus ˜ 5--30 \mu\mathrm{G} (Chandra X-ray inferences) \\
+  & B_{Perseus} \sim 5\text{--}30\;\mu\text{G (Chandra X-ray inferences)} \\
   & ?_ICM ˜ 10?26 kg/m3  (central ICM density) \\
   & v_A = 30\times10?1° / v(4p\times10-7 \times 10?26) \\
   & = 3\times10?? / 3.54\times10?17 ˜ 8.5\times107 m/s = 85 km/s \\
@@ -210,7 +210,7 @@ New F_env modes added for 61 additional systems:
 For neutron star wind nebulae:
   F_env,pwn(t) = (E_spin / E_pulsar0) \times (1 - exp(-t/P_cross)^ß)
 
-  E_spin = -I\cdotO\cdotO?  (spindown power)
+  E_spin = -I\cdot O\cdot O?  (spindown power)
   P_cross = crossing time for pulsar wind to traverse nebula
 
 These additions allow Crab Nebula, B0540-69, MSH 15-52
@@ -223,12 +223,12 @@ and all PWN in UQFF to be modeled with single F_env,pwn
 
 | System | B-field | v_A (km/s) | SFR (M_?/yr) | F_env value |
 |--------|---------|-----------|------------|------------|
-| Perseus Cluster | 25 \mu\mathrm{G} | 85 | 0 (cooling flow halted) | 0.85 |
+| Perseus Cluster | 25 μG | 85 | 0 (cooling flow halted) | 0.85 |
 | Westerlund 2 | ~1 mG (OB winds) | ~300 | 2000 | 0.80 |
-| M87 (Virgo A) | ~20 \mu\mathrm{G} | 70 | 0.001 | 0.95 |
-| SGR A* vicinity | ~150 \mu\mathrm{G} | 500 | 0.04 (CMZ) | 0.72 |
+| M87 (Virgo A) | ~20 μG | 70 | 0.001 | 0.95 |
+| SGR A* vicinity | ~150 μG | 500 | 0.04 (CMZ) | 0.72 |
 | Cassiopeia A | ~0.3 mG (SNR) | 900 | 0 (post-SN) | 0.91 |
-| ESO 137-001 | ~5 \mu\mathrm{G} | 20 | 5 (pre-strip) | 0.68 |
+| ESO 137-001 | ~5 μG | 20 | 5 (pre-strip) | 0.68 |
 
 ---
 
@@ -339,7 +339,7 @@ This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_\mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
 where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 

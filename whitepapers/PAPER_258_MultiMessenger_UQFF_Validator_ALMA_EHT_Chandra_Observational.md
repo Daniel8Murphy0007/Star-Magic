@@ -137,12 +137,14 @@ f_\text{flare,pred} = k_\text{flare} \times \frac{\lvert F_{U,\text{Bi},i} \rver
 $$
 
 $$
-k_\text{flare} = 10^{-76} \text{ Hz\cdot N}^{-1}
+k_\text{flare} = 10^{-76} \text{ Hz}\cdot\text{N}^{-1}
 $$
 
-`f_{flare\_predicted}` = 1e-76 $\times$ |`F_{U\_Bi\_i}`| / F_0 
-matches_sgrA  = |\log_{10}(f_pred) - \log_{10}(1.157e-5)| < 2.0 
-matches_psr   = |\log_{10}(f_pred) - \log_{10}(1e-3)| < 2.0
+```
+f_flare_predicted = 1e-76 * |F_{U_Bi_i}| / F_0
+matches_sgrA  = |log10(f_pred) - log10(1.157e-5)| < 2.0
+matches_psr   = |log10(f_pred) - log10(1e-3)| < 2.0
+```
 
 **Calibration:** At F_{U\_Bi\_i} = 2.11 $\times$ 10208 N (equivalence-class value):
 $$

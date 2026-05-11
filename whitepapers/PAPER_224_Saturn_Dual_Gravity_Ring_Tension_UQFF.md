@@ -30,7 +30,7 @@ $$
 ## Abstract
 
 Saturn presents a unique UQFF configuration with two explicit gravitational sources summed with
-**asymmetric modifiers**: solar heliocentric gravity carries the `(1+H(z)\cdott)` expansion term, while
+**asymmetric modifiers**: solar heliocentric gravity carries the `(1+H(z)\cdot t)` expansion term, while
 Saturn's self-gravity carries the `(1-B/B_crit)` magnetic suppression --- and neither term receives
 the modifier of the other. Additionally, the ring tidal tension T_ring ˜ 2.043$\times$10-7 m/s2 and solar
 wind ram pressure F_{wind\_solar} appear as additive corrections. This is the only UQFF document among
@@ -74,11 +74,11 @@ $$
 
 ### 2.1 Why H(z)$\cdot$t only on the Solar Term
 
-The Hubble expansion factor `(1+H\cdott)` represents the effect of cosmological spacetime expansion on
+The Hubble expansion factor `(1+H\cdot t)` represents the effect of cosmological spacetime expansion on
 the gravitational potential. At the Saturn-Sun scale (r_orbit ~ 9.5 AU):
 
-- Solar term: effectively sits in the cosmological background ? receives `H\cdott` correction
-- Saturn's self-gravity: a local planetary gravitational field, screened from cosmological expansion by the Solar System's gravitational binding ? no `H\cdott` correction
+- Solar term: effectively sits in the cosmological background ? receives `H\cdot t` correction
+- Saturn's self-gravity: a local planetary gravitational field, screened from cosmological expansion by the Solar System's gravitational binding ? no `H\cdot t` correction
 
 This is the **screening principle**: local bound systems do not participate in Hubble flow. The
 Sun-Saturn orbit is bound; Saturn's self-gravity is hyper-local. Therefore H(z)$\cdot$t applies only to
@@ -86,7 +86,7 @@ the heliocentric (Sun-Saturn orbit) term.
 
 ### 2.2 Why B/B_crit Only on Saturn's Self-Gravity
 
-Saturn's magnetic field B ˜ 20 \mu\mathrm{T} is a planetary-scale field centered on Saturn. It suppresses
+Saturn's magnetic field B ˜ 20 μT is a planetary-scale field centered on Saturn. It suppresses
 Saturn's OWN internal gravitational dynamics (via magnetohydrodynamic magnetic pressure resisting
 gravitational compression).
 
@@ -144,7 +144,7 @@ Parameters (Saturn, current epoch):
 - r_orbit = 1.426$\times$1012 m (9.54 AU)
 - M_Saturn = 5.683$\times$1026 kg  
 - r = 6.0268$\times$107 m (equatorial radius)
-- B = 20 \mu\mathrm{T} = 2$\times$10-5 T; B_crit = 4.4$\times$1013 T ? B/B_crit = 4.5$\times$10?1? ˜ 0
+- B = 20 μT = 2$\times$10-5 T; B_crit = 4.4$\times$1013 T ? B/B_crit = 4.5$\times$10?1? ˜ 0
 
 $$
 \begin{aligned}
@@ -174,7 +174,7 @@ The dual-source structure `g_A + g_B` with DIFFERENT modifiers on each source is
 | Saturn (Doc 22) | Dual: G$\cdot$M_Sun/r_orbit2 + G$\cdot$M_Saturn/r2 | H$\cdot$t on solar; B/B_crit on Saturn | Hierarchy: orbit vs surface |
 
 The closest analogues (Magnetar SGR1745, NGC2525, NGC1275) all have an ADDITIVE BH term
-`(G\cdotM_BH)/r_BH2` with no modifiers --- they do not apply different UQFF factors to each gravitational
+`(G\cdot M_BH)/r_BH2` with no modifiers --- they do not apply different UQFF factors to each gravitational
 source. Saturn is unique in the asymmetric modifier assignment.
 
 ---
@@ -353,7 +353,7 @@ bridge.*
 
 1. grok_{share\_7514fe}.txt --- Document 22: Saturn g_Saturn equation
 2. Esposito (2002) --- "Planetary Rings", ARAA 40 --- ring tidal structure
-3. Dougherty et al. (2005) --- Cassini magnetometry, Saturn B = 20 \mu\mathrm{T}
+3. Dougherty et al. (2005) --- Cassini magnetometry, Saturn B = 20 μT
 4. CP1 CondensedPhysics.py --- Saturn benchmark T_ring = 2.043$\times$10-7 m/s2
 5. CondensedPhysics3.py --- `SaturnDualGravityRingTensionCalculator` (Session 56)
 

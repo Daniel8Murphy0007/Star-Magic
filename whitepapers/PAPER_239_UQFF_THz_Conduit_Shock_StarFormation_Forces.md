@@ -107,7 +107,7 @@ star-formation forcing --- a unique coupling absent from standard MHD/HD star-fo
 ## 5. Novel Contributions
 
 1. **THz frequency-squared force** --- star-formation molecular line coupling via $(\omega_{\mathrm{thz}}/\omega_0)^2$
-2. **Water phase gate** --- $w_{\mathrm{state}}\in{0,1\}$ activates/deactivates COx conduit channel
+2. **Water phase gate** --- $w_{\mathrm{state}}\in\{0,1\}$ activates/deactivates COx conduit channel
 3. **Hydrogen abundance coupling** --- $H_{\mathrm{abund}}=0.74$ connects cosmic composition to local SF force
 4. **Dual neutron-factor coupling** --- both forces scale with $\rho_n/\rho_{\mathrm{ref}}$ (dense-matter bridge)
 5. **$F_{\mathrm{thz}}$ vs $F_{\mathrm{conduit}}$ orthogonality** --- THz scales with $\omega^2$, conduit scales with chemistry

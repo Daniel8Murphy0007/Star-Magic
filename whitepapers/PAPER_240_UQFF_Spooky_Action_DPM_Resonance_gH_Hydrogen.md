@@ -50,11 +50,11 @@ $$\boxed{F_{\mathrm{spooky}} = k_{\mathrm{spooky}}\cdot\frac{\omega_{\mathrm{str
 
 The string-wave frequency $\omega_{\mathrm{string}} = 5\times10^{14}$ Hz corresponds to visible light photon oscillations (~600 nm). In the UQFF framework, quantum strings oscillating at photon frequencies couple to the local UQFF field through a Planck-constant coupling $k_{\mathrm{spooky}}\approx\hbar$. The ratio $\omega_{\mathrm{string}}/\omega_0$ normalises this to the system reference frequency, yielding a dimensionless frequency amplification factor $\approx 5\times10^4$:
 
-$$F_{\mathrm{spooky}} = 1.11\times10^{-34}\;\text{J\cdot s}\times\frac{5\times10^{14}\;\text{Hz}}{10^{10}\;\text{rad/s}} = 1.11\times10^{-34}\times 5\times10^4\;\text{N} \approx 5.55\times10^{-30}\;\text{N}$$
+$$F_{\mathrm{spooky}} = 1.11\times10^{-34}\;\text{J}\cdot\text{s}\times\frac{5\times10^{14}\;\text{Hz}}{10^{10}\;\text{rad/s}} = 1.11\times10^{-34}\times 5\times10^4\;\text{N} \approx 5.55\times10^{-30}\;\text{N}$$
 
 (The example value $2.71\times10^{89}$ N applies at astronomical-scale $\omega_{\mathrm{string}}$ values consistent with collective coherent string-field excitations.)
 
-**Key property:** $F_{\mathrm{spooky}}$ is **linear in frequency** --- distinguishing it from the THz shock term ($\proptoomega^2$) and establishing a separate scaling law for quantum entanglement forces.
+**Key property:** $F_{\mathrm{spooky}}$ is **linear in frequency** --- distinguishing it from the THz shock term ($\propto \omega^2$) and establishing a separate scaling law for quantum entanglement forces.
 
 ---
 

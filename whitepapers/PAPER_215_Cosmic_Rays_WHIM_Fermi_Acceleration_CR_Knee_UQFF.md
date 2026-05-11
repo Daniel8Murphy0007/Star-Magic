@@ -52,7 +52,7 @@ present in Standard Model treatments.
 ```
 Physical setup:
   Charged particle bouncing across strong shock front
-  Each crossing: momentum gain dp/p = (4/3)\cdot(u1-u2)/c = (4/3)\cdotv_shock/c\cdot(1-1/r)
+  Each crossing: momentum gain dp/p = (4/3)\cdot(u1-u2)/c = (4/3)\cdot v_shock/c\cdot(1-1/r)
   where r = compression ratio = (?+1)M2/((?-1)M2+2), r=4 for strong shock (M>>1)
 
 DSA power-law spectrum:
@@ -63,7 +63,7 @@ DSA power-law spectrum:
   Intrinsic: N(E) ? E^{-2} (confirmed by ?-ray observations)
 
 UQFF F_UBii,cr:
-  F_UBii,cr = F_rel \times (?N(E)\cdotE\cdotdE / E_LEP) \times Q_wave
+  F_UBii,cr = F_rel \times (?N(E)\cdot E\cdot dE / E_LEP) \times Q_wave
             = F_rel \times (E_CR,total / E_LEP) \times Q_wave
 
   E_CR,total = energy density of cosmic rays: u_CR ˜ 1 eV/cm3 (local ISM)
@@ -164,7 +164,7 @@ CR propagation equation:
   ?N/?t = ?\cdot(D\cdot?N) - N/t_esc + Q(E)
 
   Steady state: D\cdot?2N - N/t_esc + Q = 0 ? exponential profile N ? e^{-r/r_diff}
-  Diffusion radius r_diff = v(D\cdott_esc) ~ few kpc for PeV CRs
+  Diffusion radius r_diff = v(D\cdot t_esc) ~ few kpc for PeV CRs
 
 UQFF enhancement of diffusion (Ug2 charge-reactivity):
   D_UQFF(E,r) = D(E) \times (1 + Ug2(r)/u_CR)

@@ -78,7 +78,7 @@ $$
 | 7 | Neutron Cooper pair | ? ~ 10 fm | NS superfluid | ?_pair, d_pair | 10?14 m |
 | 8 | Atomic size | r_atom ~ 1 Å | Molecular/atomic | H_res, S_shell | 10?1° m |
 | 9 | Molecular rotor | t_rot ~ 10?34 N$\cdot$m | Gas opacity | k_?, CIA | 10?1° m |
-| 10 | Dust grain | d ~ 0.1 \mum | Dust optics | F_UBii,photoevap | 10-7 m |
+| 10 | Dust grain | d ~ 0.1 \mu m | Dust optics | F_UBii,photoevap | 10-7 m |
 | 11 | Photon mean free path | ?_mfp (stellar) ~ 1 cm | Stellar interior | Ug3' (radiation) | 10?2 m |
 | 12 | Neutron star surface | R_NS ~ 10 km | Magnetar | F_UBii,tov | 104 m |
 | 13 | NS crust depth | d_crust ~ 1 km | NS vortex lattice | F_UBii,glitch | 103 m |
@@ -156,7 +156,7 @@ Rotational transition modeled: ?j=2  (quadrupolar CIA induction)
   Physical process: H2O induces transient dipole in H2 ? CIA absorption
 
 Linear fit:
-  s(E) = a + b\cdotE  [E in cm?1, s in Å2]
+  s(E) = a + b\cdot E  [E in cm?1, s in Å2]
   Fit result: b = 0.004997 Å2/(cm?1)
 
 Predicted cross-section at E = 400 cm?1:
@@ -203,7 +203,7 @@ $$
 $$
 \begin{aligned}
   & H2 molecular rotor torque (lowest-energy scale in 48-scale table): \\
-  & Rotational energy levels: E_J = B\cdot J(J+1)  where B = h2/(2\mur2) \\
+  & Rotational energy levels: E_J = B\cdot J(J+1)  where B = h2/(2\mu r2) \\
   & B(H2) = 60.853 cm?1 = 7.55\times10?23 J (rotational constant) \\
   & Torque t_rot from first excited state: \\
   & t_rot = dE/d? ~ B\cdot J ~ 60.853 cm?1 \times J (classical limit) \\
