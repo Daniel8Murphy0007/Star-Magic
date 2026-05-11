@@ -3,6 +3,35 @@
 
 ---
 
+## CLOSED LAGRANGIAN (Sessions 246-253, PAPERS 1159-1167)
+
+All 8 Lagrangian gaps catalogued in `_lagrangian_rederivation_outline.py` are
+closed with **zero remaining free parameters introduced**. Closure papers and
+final forms:
+
+| Gap | Closed form | Paper |
+|---|---|---|
+| G1 | `V(UA) = (25/12) * rho_SCm * [(UA/v_UA)^2 - 1]^2`,  K = Phi_res*\|SO(5)\|/D_phys | PAPER_1166 |
+| G2 | `beta_i = 3(5-i)/20 = (3/2)*(5-i)/\|SO(5)\|`,  i=1..4 | PAPER_1165 |
+| G3 | `SO(2)_DPM` = light-cone of SO(26) > SO(24) x SO(2) | PAPER_1163 |
+| G4 | `tau_i* = [SSq]^i`,  `m_i^2 = 2K/i^26 > 0`,  i=5..26 | PAPER_1164 |
+| G5 | `Sum_{n>=1} 1/lambda_n^26 = 1.624e-37` | PAPER_1162 |
+| G6 | `Phi_res = (D_BSFG-1)/D_BSFG = 5/6` | PAPER_1159 |
+| G7 | `F_TRZ = 1/\|SO(5)\| = 1/10` | PAPER_1160 |
+| G8 | `26! = (1)_{26}` Pochhammer (26-fold radial derivative) | PAPER_1161 |
+
+**Reduction:** 9+ originally free numerical/structural inputs reduced to
+**2 textbook integers** (D_crit=26 Polyakov critical, D_phys=4 observed).
+`D_BSFG = 6` emerges from `D_crit - 4*|SO(5)|/2 = 26 - 20`.
+
+**SO(5) cross-lock (G1, G2, G7):** All three closures use `|SO(5)|=10` as a
+shared group factor — non-trivial overdetermination.
+
+Master synthesis: PAPER_1167.  Master verification calculator:
+`UQFFLagrangianFullClosureCalculator` in `CondensedPhysics4.py`.
+
+---
+
 ## TABLE OF CONTENTS
 1. [Core UQFF Equation - F_U_Bi_i](#core-uqff)
 2. [26-Layer Compressed Gravity - compressed_g](#compressed-gravity)

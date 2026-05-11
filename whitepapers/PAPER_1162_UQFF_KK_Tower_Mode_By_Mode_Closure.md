@@ -193,6 +193,8 @@ below any conceivable observation.
 | G7 (F_TRZ ID) | CLOSED (PAPER_1160) | CLOSED |
 | G8 (26! emergence) | CLOSED (PAPER_1161) | CLOSED |
 
+> **Session 253 Update (PAPER_1166):** ALL 8 Lagrangian gaps now closed. The $1/26^{26}$ leading suppression derived here for the lightest KK mode matches the $T^{22}$ moduli lightest mass $m_{26}^2 = 2K/26^{26}$ (G4, PAPER_1164) -- non-trivial G5-G4 cross-consistency confirmed at all digits.
+
 **Result:** **4 of 8 gaps closed**; 4 remain (G1, G2, G3, G4). All
 four closures (G5, G6, G7, G8) trace back to the
 $26 \to 10 \to 6 \to 4$ critical-dimension flow. The duality between

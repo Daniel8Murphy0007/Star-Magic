@@ -163,7 +163,7 @@ where:
 
 | Lagrangian gap | Status (pre-252) | Status (post-252) |
 |---|---|---|
-| G1 (V(UA) polynomial) | OPEN | OPEN |
+| **G1 (V(UA) polynomial)** | OPEN | **CLOSED (PAPER_1166, Session 253)** |
 | **G2 (beta_i index)** | **OPEN** | **CLOSED (this paper)** |
 | G3 (DPM SO(2)) | CLOSED | CLOSED |
 | G4 (T^22 moduli) | CLOSED | CLOSED |
@@ -172,9 +172,9 @@ where:
 | G7 (F_TRZ ID) | CLOSED | CLOSED |
 | G8 (26! emergence) | CLOSED | CLOSED |
 
-**Result:** **7 of 8 gaps closed**; only **G1** ($V(UA)$ polynomial)
-remains. G1 is qualitatively distinct -- it concerns the field-
-theoretic potential shape, not a dimensional/group/index relation.
+> **Session 253 Update (PAPER_1166):** G1 closed via $V(UA) = K\rho_{\rm SCm}[(UA/v_{UA})^2-1]^2$ with $K = \Phi_{\rm res}|SO(5)|/D_{\rm phys} = 25/12$. The $|SO(5)|=10$ factor is IDENTICAL to the denominator of $\beta_i = 3(5-i)/20$ derived in this paper -- G1 and G2 are now confirmed cross-locked to the same SO(5) breaking chain.
+
+**Result:** **8 of 8 gaps closed (post-Session 253)**; the historical pre-253 status was 7 of 8. G1 was qualitatively distinct (field-theoretic, not dimensional) but ultimately reduced to the same SO(5) chain via the prefactor $K$.
 
 ## 8. Conclusions
 

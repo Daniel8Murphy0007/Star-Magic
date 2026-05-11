@@ -158,6 +158,8 @@ two unrelated constraints with one free parameter).
 | G5 (KK tower) | OPEN | OPEN |
 | G6 (Phi_res ID) | CLOSED (PAPER_1159) | CLOSED |
 | **G7 (F_TRZ ID)** | **OPEN** | **CLOSED (this paper, exact)** |
+
+> **Session 253 Update (PAPER_1166):** ALL 8 Lagrangian gaps now closed. The $|SO(5)|=10$ factor identified here also appears as the denominator of $\beta_i = 3(5-i)/20$ (G2, PAPER_1165) and the prefactor $K = (5/6)\cdot 10/4 = 25/12$ of the $V(UA)$ Mexican-hat (G1, PAPER_1166) -- G1, G2, G7 cross-lock to the same SO(5) breaking chain.
 | G8 (26! emergence) | OPEN | OPEN |
 
 **Result:** 2 of 8 gaps closed; 6 remain. Both closures share a single

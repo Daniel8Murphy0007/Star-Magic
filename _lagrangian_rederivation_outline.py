@@ -45,6 +45,8 @@ where
   L_buoyancy  = sum_i (beta_i * Ug_i * Ub_i)                   [from F_U_Bi_i integral]
   L_magnetic  = -(1/2) * |Um|^2                                 [universal magnetism]
   L_aether    = -(1/2) * g^{munu} d_mu UA d_nu UA - V(UA)       [aether scalar]
+              with V(UA) = (25/12) * rho_SCm * [(UA/v_UA)^2 - 1]^2
+              [G1 closed Session 253 PAPER_1166: K = Phi_res*|SO(5)|/D_phys = 25/12]
 
 KNOWN GAPS:
   G1.  CLOSED (Session 253, PAPER_1166): V(UA) is the Mexican-hat

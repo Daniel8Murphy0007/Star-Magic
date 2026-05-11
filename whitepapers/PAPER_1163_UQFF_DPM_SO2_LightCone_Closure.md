@@ -209,6 +209,8 @@ $(X^1, X^2)$. Then:
 | G7 (F_TRZ ID) | CLOSED (PAPER_1160) | CLOSED |
 | G8 (26! emergence) | CLOSED (PAPER_1161) | CLOSED |
 
+> **Session 253 Update (PAPER_1166):** ALL 8 Lagrangian gaps now closed. The $SO(26)\supset SO(24)\times SO(2)$ branching used here generalises in PAPER_1164 (G4) to the full $T^{22}$ moduli stabilisation, completing the dimensional reduction chain.
+
 **Result:** **5 of 8 gaps closed**; 3 remain (G1, G2, G4). All five
 closures (G3, G5, G6, G7, G8) descend from the single integer
 $D_{\rm crit}=26$ via the canonical decomposition

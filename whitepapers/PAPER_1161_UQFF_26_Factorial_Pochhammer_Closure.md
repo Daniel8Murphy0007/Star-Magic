@@ -174,6 +174,8 @@ $\mathrm{Li}_{26}([\mathrm{SSq}])$ and in the BSFG 26-rung ladder.
 | G7 (F_TRZ ID) | CLOSED (PAPER_1160) | CLOSED |
 | **G8 (26! emergence)** | **OPEN** | **CLOSED (this paper, exact)** |
 
+> **Session 253 Update (PAPER_1166):** ALL 8 Lagrangian gaps now closed. The $26 \to 10 \to 6 \to 4$ critical-dimension flow noted below proved comprehensive -- every subsequent closure (G3, G4, G5, G2, G1) reduced to it.
+
 **Result:** **3 of 8 gaps closed**; 5 remain. All three closures
 ($\Phi_{\rm res}, F_{\rm TRZ}, 26!$) trace back to the
 $26 \to 10 \to 6 \to 4$ critical-dimension flow. **Two integers

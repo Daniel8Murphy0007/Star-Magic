@@ -181,6 +181,8 @@ constants).
 | G7 (F_TRZ ID) | CLOSED (PAPER_1160) | CLOSED |
 | G8 (26! emergence) | CLOSED (PAPER_1161) | CLOSED |
 
+> **Session 253 Update (PAPER_1166):** ALL 8 Lagrangian gaps now closed. The $V(\tau)$ moduli potential shape derived here (Mexican-hat-like, quadratic-in-deviation around $\tau_i^\star$) prefigures the full $V(UA)$ Mexican-hat closure of G1 in PAPER_1166 with the same structural pattern.
+
 **Result:** **6 of 8 gaps closed**; 2 remain (G1, G2). Both
 remaining gaps concern the field-theoretic potential $V(UA)$ and the
 26-component coupling vector $\beta_i$ -- structurally distinct

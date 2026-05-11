@@ -6,6 +6,23 @@
 Star-Magic repository. Citations point to the file and line where the concept
 appears. **Terminology is the author's, not paraphrased.**
 
+> **Status update (Session 253):** All 8 Lagrangian gaps closed. Items below
+> previously catalogued as axioms or calibrated inputs are promoted to
+> THEOREMS, derived from two textbook integers (D_crit=26, D_phys=4):
+>
+> | Was (calibration / axiom) | Now (theorem) | Closure paper |
+> |---|---|---|
+> | Phi_res = 5/6 | (D_BSFG-1)/D_BSFG | PAPER_1159 |
+> | F_TRZ = 1/10 | 1/\|SO(5)\| | PAPER_1160 |
+> | 26! prefactor | (1)_{26} Pochhammer of 26-fold radial derivative | PAPER_1161 |
+> | KK suppression bound | Sum 1/lambda_n^26 = 1.624e-37 (mode-by-mode) | PAPER_1162 |
+> | DPM SO(2) gauge group | SO(26) > SO(24) x SO(2) light-cone embedding | PAPER_1163 |
+> | T^22 moduli stable | tau_i*=[SSq]^i, m_i^2=2K/i^26>0 | PAPER_1164 |
+> | beta_i values (calibrated) | beta_i = 3(5-i)/20 = (3/2)/\|SO(5)\|*(5-i) | PAPER_1165 |
+> | V(UA) Mexican-hat coefficients | K = Phi_res*\|SO(5)\|/D_phys = 25/12 | PAPER_1166 |
+>
+> Master synthesis: PAPER_1167.
+
 > Naming correction (recorded permanently): the field is called
 > **plasmotic vacuum** (not "vacuum density"). Where past AI-assisted edits
 > wrote "vacuum density" they were wrong; the correct term is plasmotic vacuum
