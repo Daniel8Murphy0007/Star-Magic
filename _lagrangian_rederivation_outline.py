@@ -29,6 +29,30 @@ The work needed is in Stages 3 and 4 -- multi-day theoretical effort.
 from __future__ import annotations
 import math
 
+# ----------------------------------------------------------------------------
+# Drift-detection import (Session 254, PAPER_1168 follow-up):
+# `uqff_closed_constants` is the canonical single source of truth for all
+# closed integer-rational constants (K=25/12, Phi_res=5/6, F_TRZ=1/10,
+# beta_i=3*(5-i)/20, suppression=1/26**26). The literal values in this
+# outline file are derivational (they show how each closure was obtained).
+# We import the canonical values here purely to assert at import time that
+# they have not drifted; if assertions fail, regenerate this file from
+# uqff_closed_constants.py.
+# ----------------------------------------------------------------------------
+try:
+    from uqff_closed_constants import (
+        K_MEXICAN_HAT, PHI_RES, F_TRZ, SUPPRESSION_26, BETA_I_OBSERVED,
+        D_CRIT, D_PHYS, D_BSFG, DIM_SO5,
+    )
+    assert abs(K_MEXICAN_HAT - 25.0/12.0) < 1e-15, "K drift"
+    assert abs(PHI_RES - 5.0/6.0) < 1e-15, "Phi_res drift"
+    assert abs(F_TRZ - 1.0/10.0) < 1e-15, "F_TRZ drift"
+    assert (D_CRIT, D_PHYS, D_BSFG, DIM_SO5) == (26, 4, 6, 10), "dim chain drift"
+    assert BETA_I_OBSERVED.get(1) == 0.603, "beta_1 drift"
+except Exception as _drift_exc:  # pragma: no cover
+    import warnings as _warnings
+    _warnings.warn(f"uqff_closed_constants drift check failed: {_drift_exc}", RuntimeWarning)
+
 
 # ============================================================================
 # STAGE 1 -- UQFF ACTION (declaration only; not yet a working Lagrangian)

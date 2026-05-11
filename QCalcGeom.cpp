@@ -10,7 +10,7 @@
  *   vds_branches, dvp_branches, bh26_branches,
  *   vds_dvp_coupled, bh26_bsh_resonance     <- Phase H202 additions
  *
- * runQCalcGeomTests() covers T01–T70 (70 tests total).
+ * runQCalcGeomTests() covers T01–T73 (73 tests total; T71-T73 added Session 254 for G1 V(UA) closure).
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
@@ -1294,6 +1294,29 @@ void runQCalcGeomTests() {
         R.push_back({ "T70","VDS-DVP-DH26",
             "bh26_bsh_resonance energy_density > 0 (k=1, t_n=0)",
             res.energy_density, 0.0, 0.0, t70, t70 });
+
+        // ── G1 V(UA) closure (T71-T73): bsfg_aether_potential, PAPER_1166/1168 ─
+        // T71: V(v_UA) ~= 0  (Mexican-hat minimum at vacuum expectation value)
+        const BSFGAetherPotentialResult vmin = bsfg_aether_potential(1.0e8, 7.09e-37, 1.0e8);
+        bool t71 = (std::abs(vmin.V) < 1.0e-50) && vmin.at_minimum;
+        R.push_back({ "T71","G1-V(UA)",
+            "bsfg_aether_potential V(v_UA) == 0  (Mexican-hat minimum)",
+            vmin.V, 0.0, 0.0, t71, t71 });
+
+        // T72: V(0) = (25/12)*rho_SCm = 1.4771e-36 J/m^3
+        const BSFGAetherPotentialResult v0 = bsfg_aether_potential(0.0, 7.09e-37, 1.0e8);
+        const double V0_expected = (25.0/12.0) * 7.09e-37;
+        bool t72 = (std::abs(v0.V - V0_expected) / V0_expected < 1.0e-12);
+        R.push_back({ "T72","G1-V(UA)",
+            "bsfg_aether_potential V(0) == (25/12)*rho_SCm",
+            v0.V, V0_expected, 1.0e-10, t72, t72 });
+
+        // T73: m_UA^2 = (50/3)*rho_SCm/v_UA^2 = 1.1817e-51
+        const double m2_expected = (50.0/3.0) * 7.09e-37 / (1.0e8 * 1.0e8);
+        bool t73 = (std::abs(v0.mass2 - m2_expected) / m2_expected < 1.0e-12);
+        R.push_back({ "T73","G1-V(UA)",
+            "bsfg_aether_potential mass2 == (50/3)*rho_SCm/v_UA^2",
+            v0.mass2, m2_expected, 1.0e-10, t73, t73 });
     }
 
     // ── Print results table ──────────────────────────────────────────────────
