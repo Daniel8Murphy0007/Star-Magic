@@ -30,7 +30,7 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 The tau lepton anomalous magnetic moment $a_{\tau}$^SM = (g-2)/2 = 1.17721e-3 is the most
 precisely SM-calculable single-lepton g-2 parameter. We demonstrate that the UQFF Ug1
-magnetic dipole term naturally produces $a_{\tau}$ as its normalised ratio Ug1/$m_{\tau}$2 with coupling
+magnetic dipole term naturally produces $a_{\tau}$ as its normalised ratio $U_{g1}/m_\tau^2$ with coupling
 $\kappa$, providing the first explicit UQFF bridge to SM lepton dipole physics. The alignment
 between the UQFF Ug1 parameterisation and the full QED radiative correction chain is 98.7%.
 
@@ -40,10 +40,10 @@ between the UQFF Ug1 parameterisation and the full QED radiative correction chai
 
 The tau lepton's high mass ($m_{\tau}$ = 1776.86 MeV) makes its g-2 the most sensitive SM probe
 of hypothetical new physics contributions. Any beyond-SM physics that couples to lepton
-dipoles at order $m_{\tau}$2/$\Lambda$_NP2 is constrained by $a_{\tau}$ measurements.
+dipoles at order $m_\tau^2/\Lambda_\text{NP}^2$ is constrained by $a_{\tau}$ measurements.
 
 UQFF claim: the Ug1 term describes magnetic buoyancy of charged-leptonic vacuum topology.
-The ratio Ug1/$m_{\tau}$2 must reproduce $a_{\tau}$^SM within 1$\sigma$ to validate the dipole parameterisation.
+The ratio $U_{g1}/m_\tau^2$ must reproduce $a_{\tau}$^SM within 1$\sigma$ to validate the dipole parameterisation.
 
 ---
 
@@ -57,7 +57,7 @@ where:
 - $\beta$_i = 0.61 (UQFF buoyancy coupling)
 - r = tau lepton Compton wavelength $r_{\tau}$ = ℏ/($m_{\tau}$ c)
 
-The dimensionless ratio Ug1/$m_{\tau}$2 at r = $r_{\tau}$ gives:
+The dimensionless ratio $U_{g1}/m_\tau^2$ at r = $r_{\tau}$ gives:
 
 $$\frac{U_{g1}}{m_\tau^2} = \frac{\kappa \alpha}{2\pi} \times C_{UQFF}$$
 
@@ -68,7 +68,7 @@ with C_UQFF $\approx$ 1.162 (from $\beta$_i/$\kappa$ normalisation chain).
 ## §4 SM Cross-Validation
 
 The SM prediction at five-loop QED is:
-$$a_\tau^{SM} = \frac{\alpha}{\pi}\left(1 + \frac{\alpha}{\pi}c_1 + \cdot sright) = 1.17721 \times 10^{-3}$$
+$$a_\tau^{SM} = \frac{\alpha}{\pi}\left(1 + \frac{\alpha}{\pi}c_1 + \cdot s\right) = 1.17721 \times 10^{-3}$$
 
 UQFF Ug1 ratio: 1.162e-3 (deviation: 0.13% = 0.98$\sigma$)
 
@@ -232,7 +232,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| $a_{\tau}$^SM = ($g_{\tau}$-2)/2 | Ug1/$m_{\tau}$2 ratio = 1.162e-3 | $a_{\tau}$^SM = 1.17721e-3 (5-loop QED) | arXiv:2506.15245 | 98.7% |
+| $a_{\tau}$^SM = ($g_{\tau}$-2)/2 | $U_{g1}/m_\tau^2$ ratio = 1.162e-3 | $a_{\tau}$^SM = 1.17721e-3 (5-loop QED) | arXiv:2506.15245 | 98.7% |
 | $\alpha$_EM fine structure | UQFF $\alpha$ = $\kappa$ $\times$ $\beta$_i / (4$\pi$ $k_{\eta}$^{1/113}) | $\alpha$ = 1/137.036 | PDG 2024 | PASS Consistent |
 | $m_{\tau}$ Compton scale | $r_{\tau}$ = ℏ/($m_{\tau}$c) = 1.11e-16 m (UQFF Ug1 denominator) | $m_{\tau}$ = 1776.86 MeV | PDG 2024 | 100% (exact input) |
 | Beyond-SM contribution | $\delta$$a_{\tau}$^UQFF = 10-116 (vacuum topology) | Current bound: |$\Delta$$a_{\tau}$| < 1.7e-2 | Belle II future | Testable UQFF prediction |

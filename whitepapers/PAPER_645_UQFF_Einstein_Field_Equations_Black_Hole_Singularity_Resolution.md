@@ -187,7 +187,7 @@ $$F_{neutron} \approx 10^{49} \text{ N} = \int \nabla UA \, dt$$
 **External (event horizon):** 26D projection reflects via lensing, with Ub providing
 repulsion that creates the photon sphere at r = 3GM/c2:
 
-$$r_{photon} = \underbrace{\frac{3GM}{c^2} \sim r_s \cdot \frac{3}{2}$$
+$$r_{photon} = \frac{3GM}{c^2} \sim r_s \cdot \frac{3}{2}$$
 
 This ratio 3/2 emerges naturally from the triad weighting (1/3 + 1/3 + 2/3 = 1 $\to$ 2/3
 Ub dominates at r ~ r_s giving 3GM/2c2) --- a non-trivial prediction of triad symmetry.

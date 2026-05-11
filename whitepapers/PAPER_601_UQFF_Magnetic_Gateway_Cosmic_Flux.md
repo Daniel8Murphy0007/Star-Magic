@@ -69,7 +69,7 @@ $$DPM_s > DPM_n: \quad \text{net CCW (UA' south)} \to \text{jet outflow}$$
 
 At a compact object of radius r (e.g., black hole Schwarzschild radius $R_s$):
 
-$$\text{Gateway aperture} \propto \frac{1}{r^{26}} \quad \text{(narrows as r\to 0)}$$
+$$\text{Gateway aperture} \propto \frac{1}{r^{26}} \quad (\text{narrows as } r\to 0)$$
 
 As $r \to R_s$: the gateway aperture $\to 0$, concentrating the flux into an ultra-narrow relativistic beam $\to$ **quasar jet formation**.
 

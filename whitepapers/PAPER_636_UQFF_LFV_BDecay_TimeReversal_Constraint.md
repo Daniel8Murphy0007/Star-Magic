@@ -32,7 +32,7 @@ LHCb has placed the world's best limit on lepton flavor violation (LFV) in B-mes
 BR(B$\to$K*$\tau$e) < 5.9e-6 at 90% CL (5.4 fb-1). We show that the UQFF vacuum-topology
 suppression parameter $k_{\eta}$ = 10-113 generates an expected LFV rate at UQFF scale that
 is 107 orders below this bound, providing an effective UQFF upper limit on LFV through the
-t_n time-reversal node constraint: BR_UQFF(B$\to$K*$\tau$e) < $k_{\eta}$2 $\times$ phase_space ~ 10-230.
+t_n time-reversal node constraint: $\text{BR}_\text{UQFF}(B \to K^*\tau e) < k_\eta^2 \times \text{phase\_space} \sim 10^{-230}$.
 
 ---
 
@@ -253,7 +253,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BR(B$\to$K*$\tau$e) upper limit | BR_UQFF < 10-230 ($k_{\eta}$2 suppression) | BR < 5.9e-6 at 90% CL | arXiv:2506.15347 (LHCb 5.4/fb) | PASS UQFF far below bound |
+| BR$(B\to K^*\tau e)$ upper limit | $\text{BR}_\text{UQFF} < 10^{-230}$ ($k_\eta^2$ suppression) | $\text{BR} < 5.9\times 10^{-6}$ at 90\% CL | arXiv:2506.15347 (LHCb 5.4/fb) | PASS UQFF far below bound |
 | SM LFV prediction | BR_SM ~ 10-54 ($\nu$ loop) | SM: no tree-level LFV | PDG 2024 | UQFF consistent with SM null |
 | $k_{\eta}$ suppression scale | $k_{\eta}$ = 10-113 $\leftrightarrow$ LFV cutoff energy $\Lambda$_LFV = m_W/$\sqrt{k}$_$\eta$ ~ 1060 GeV | No collider can reach $\Lambda$_LFV | n/a | UQFF LFV unreachable |
 | LHCb Run 4 null prediction | UQFF: BR(B$\to$K*$\tau$e) will remain unobserved at any LHCb run | LHCb Run 4: target BR ~ 10-8 | LHCb 2027+ | Testable UQFF null prediction |

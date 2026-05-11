@@ -291,7 +291,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Electron mass (inertial) | 9.109$\times$10-31 kg | Ui$\cdot$$\rho$vac,[SCm]$\cdot$V_e / $\lambda$i coupling | \checkmark 96.4% via $\kappa$-scaling |
 | Vacuum energy density (observed $\Lambda$) | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (aether baseline) | 14 orders --- hierarchy problem noted |
 | Centrifugal force quantum (Coriolis) | F_cor = 2mv$\times$$\Omega$ | Ui$\cdot$$\omega$s$\cdot$$\nabla$(UA) | \checkmark functional analog |
-| Pauli Exclusion (inertial anti-bunching) | Fermi statistics | Caduceus chiral inversion (anti-parallel coils) | 🔍 topological analog |
+| Pauli Exclusion (inertial anti-bunching) | Fermi statistics | Caduceus chiral inversion (anti-parallel coils) |  topological analog |
 
 > **SM Anchor Reference:** All UQFF calibration constants --- $\kappa$, [SSq], $\beta$_i, H_SCm --- mapped
 > in PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator). This paper satisfies

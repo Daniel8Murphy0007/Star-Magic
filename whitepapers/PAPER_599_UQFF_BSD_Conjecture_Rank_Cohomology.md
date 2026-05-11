@@ -73,9 +73,9 @@ $$\text{rank}(E) = \text{multiplicity of } \lambda_1 = 0$$
 
 ### 3.3 Arithmetic Invariant Mapping
 
-$$d_b \sim |\text{Sha}(E)| \cdot \Omega_E \qquad \text{(buoyancy = Tate–Shafarevich \times period)}$$
+$$d_b \sim |\text{Sha}(E)| \cdot \Omega_E \qquad \text{(buoyancy = Tate--Shafarevich} \times \text{period)}$$
 
-$$\frac{d_g}{d_m} \sim \frac{R \cdot \prod c_p}{|\text{tors}(E(\mathbb{Q}))|^2} \qquad \text{(gravity/magnetism = regulator \times Tamagawa / torsion2)}$$
+$$\frac{d_g}{d_m} \sim \frac{R \cdot \prod c_p}{|\text{tors}(E(\mathbb{Q}))|^2} \qquad \text{(gravity/magnetism = regulator} \times \text{Tamagawa / torsion}^2)$$
 
 ---
 
