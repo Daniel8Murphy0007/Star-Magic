@@ -111,7 +111,7 @@ hierarchy connects Casimir physics to Schwarzschild proton physics in the UQFF f
 
 ### 3.1 Standard Wheeler-DeWitt Equation
 
-$$\hat{H}|\Psirangle = 0 \qquad \left[-\frac{\hbar^2}{2}\nabla^2 + V(\phi, a)\right]\Psi(a,\phi) = 0$$
+$$\hat{H}|\Psi\rangle = 0 \qquad \left[-\frac{\hbar^2}{2}\nabla^2 + V(\phi, a)\right]\Psi(a,\phi) = 0$$
 
 where a is the scale factor and $\phi$ the scalar field.
 
@@ -308,7 +308,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Proton charge radius | 0.8775 fm | r_p input (exact) | \checkmark 100% |
 | Planck length | 1.616$\times$10-33 cm | ℓP from G,ℏ,c (exact) | \checkmark 100% |
 | Casimir pressure (1 nm gap) | ~1.3$\times$10-3 Pa | Casimir formula (exact) | \checkmark |
-| Vacuum energy density | $\rho$vac $\approx$ 10-9 J/m3 (QFT) | UQFF $\rho$vac,sw = 8$\times$10-21 | 🔍 UQFF vs QFT |
+| Vacuum energy density | $\rho$vac $\approx$ 10-9 J/m3 (QFT) | UQFF $\rho$vac,sw = 8$\times$10-21 |  UQFF vs QFT |
 | Wheeler-DeWitt | H|$\Psi$⟩=0 (standard) | V_UQFF layered boundary | \checkmark structural |
 
 > **SM Anchor Reference:** PAPER_642 --- UQFFSMParameterBridgeMasterComparisonCalculator

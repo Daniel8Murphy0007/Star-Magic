@@ -55,7 +55,6 @@ where A = |dM/dt|_UQFF $\times$ M02.
 CP4 #255 — `UQFFDMDtDerivationCalculator`
 
 
----
 *PAPER_671 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

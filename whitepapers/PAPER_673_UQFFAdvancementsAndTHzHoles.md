@@ -79,7 +79,6 @@ CP4 #257 — `UQFFAdvancementsAndTHzHolesCalculator`
 | Session version | v5.29 |
 
 
----
 *PAPER_673 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

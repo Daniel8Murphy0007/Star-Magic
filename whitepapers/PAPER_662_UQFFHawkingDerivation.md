@@ -218,7 +218,6 @@ bridge.*
 - UQFF PAPER_658 (BlackHoleBounceUQFF).
 
 
----
 *PAPER_662 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 

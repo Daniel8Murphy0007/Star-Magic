@@ -53,7 +53,6 @@ Factor $\approx$ 30$\times$.
 CP4 #252 — `UQFFStabilityPrimordialBHCalculator`
 
 
----
 *PAPER_668 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

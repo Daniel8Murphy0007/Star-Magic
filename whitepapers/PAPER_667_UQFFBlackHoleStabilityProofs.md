@@ -55,7 +55,6 @@ $$\text{Factor} = 1.11 \times 10 \times 2.718 \approx \mathbf{30}$$
 CP4 #251 — `UQFFBlackHoleStabilityProofsCalculator`
 
 
----
 *PAPER_667 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

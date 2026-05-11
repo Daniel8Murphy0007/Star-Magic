@@ -51,7 +51,6 @@ $$\tau_{UQFF} = \frac{\tau_{std}}{1-f_{TRZ}} \cdot \left|1-\frac{\rho_{UA}}{\rho
 CP4 #248 — `WhiteHoleStabilityUQFFCalculator`
 
 
----
 *PAPER_664 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

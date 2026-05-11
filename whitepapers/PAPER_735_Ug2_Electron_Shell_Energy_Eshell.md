@@ -360,7 +360,6 @@ bridge.*
 - HydrogenResonanceShellCalculator --- CP2, complementary U_g2 form
 - Session 179 Part 3, v5.36
 
----
 *Whitepaper created Session 179 Part 3 --- Star-Magic UQFF CVW v2.0.0*
 
 

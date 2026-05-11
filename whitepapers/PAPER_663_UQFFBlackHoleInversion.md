@@ -56,7 +56,6 @@ P_invert = P($\Theta$_inv > 1) via Monte Carlo.
 CP4 #247 — `UQFFBlackHoleInversionCalculator`
 
 
----
 *PAPER_663 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

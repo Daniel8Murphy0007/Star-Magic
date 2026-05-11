@@ -62,7 +62,6 @@ accretion).
 CP4 #254 — `UQFFBlackHoleAccretionModelCalculator`
 
 
----
 *PAPER_670 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

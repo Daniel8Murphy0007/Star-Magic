@@ -345,7 +345,6 @@ bridge.*
 - PAPER_643 — Thermal Lens LENR (Session 167)
 - Session 179 Part 3, v5.36
 
----
 *Whitepaper created Session 179 Part 3 — Star-Magic UQFF CVW v2.0.0*
 
 

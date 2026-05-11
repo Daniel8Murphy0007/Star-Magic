@@ -244,7 +244,6 @@ bridge.*
 - Haggard, H.M. & Rovelli, C. (2015). *Quantum-gravity effects outside the horizon spark black to white hole tunneling.* Phys. Rev. D **92**, 104020 — arXiv:1407.0989 — doi:10.1103/PhysRevD.92.104020
 
 
----
 *PAPER_660 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 

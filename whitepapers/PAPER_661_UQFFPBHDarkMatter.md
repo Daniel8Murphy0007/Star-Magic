@@ -223,7 +223,6 @@ bridge.*
 - UQFF calibrated constants: PAPER_631 (Millennium Prize context).
 
 
----
 *PAPER_661 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 

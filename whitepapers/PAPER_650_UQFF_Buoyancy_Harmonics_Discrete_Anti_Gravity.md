@@ -145,9 +145,9 @@ The v7 simulator applies three simultaneous gravity bands:
 
 $$
 \begin{aligned}
-  & Ug1 = f(internal dipole, spin, mass)      ↕ Ub1 = -\betai\cdot Ug1\cdot...\cdot\cos(\pitn) \\
-  & Ug2 = f(field bubble, z-height, tension)  ↕ Ub2 = -\betai\cdot Ug2\cdot...\cdot\cos(\pitn\cdot k2) \\
-  & Ug3 = f(string disk, magnetism)           ↕ Ub3 = -\betai\cdot Ug3\cdot...\cdot\cos(\pitn\cdot k3)
+  & Ug1 = f(\text{internal dipole, spin, mass}) \quad\Leftrightarrow\quad Ub1 = -\beta_i\cdot Ug1\cdot\ldots\cdot\cos(\pi t_n) \\
+  & Ug2 = f(\text{field bubble, z-height, tension}) \quad\Leftrightarrow\quad Ub2 = -\beta_i\cdot Ug2\cdot\ldots\cdot\cos(\pi t_n\cdot k_2) \\
+  & Ug3 = f(\text{string disk, magnetism}) \quad\Leftrightarrow\quad Ub3 = -\beta_i\cdot Ug3\cdot\ldots\cdot\cos(\pi t_n\cdot k_3)
 \end{aligned}
 $$
 
@@ -285,7 +285,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Galactic orbital speed | ~220 km/s (flat) | Ub1 modulates flat rotation curve via anti-phase Ug2 | \checkmark structural |
 | Solar mass | 1.989$\times$1030 kg | Mbh in Ub1 formula | \checkmark input parameter |
 | Galactic rotation period | ~225 Myr | Harmonic period 1/f_Ub $\approx$ 2/($\Omega$g/2$\pi$) | \checkmark scale match |
-| $\tau$ lepton coherence | (via cos($\pi$tn) topological) | UQFF half-period maps $\tau$ decay | 🔍 candidate |
+| $\tau$ lepton coherence | (via cos($\pi$tn) topological) | UQFF half-period maps $\tau$ decay |  candidate |
 
 > **SM Anchor Reference:** PAPER_642 --- UQFFSMParameterBridgeMasterComparisonCalculator
 

@@ -123,7 +123,7 @@ filtered to significant UQFF-related positions).
 
 $$P(\text{"117" appears}) = 10^{-3}; \quad \text{variance} = \sigma^2 = N \cdot p(1-p)$$
 
-At N = 106 trials: expected 1000 $\pm$ $\sqrt{9}$99 $\approx$ 1000 $\pm$ 32.
+At $N = 10^6$ trials: expected $1000 \pm \sqrt{999} \approx 1000 \pm 32$.
 
 $\pi$ is conjectured (but unproven) to be a **normal number** --- every digit string of length
 n appears with limiting frequency 10-ⁿ. The PISequenceAnalysis module verifies this

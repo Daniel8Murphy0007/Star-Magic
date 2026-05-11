@@ -60,7 +60,6 @@ As $\rho$_UA/$\rho$_SCm varies from 2 to 20: S2 ranges 0.5$\to$0.95, strongly af
 CP4 #249 — `UQFFSuppressionEquationsHawkingCalculator`
 
 
----
 *PAPER_665 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

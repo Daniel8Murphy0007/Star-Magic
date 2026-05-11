@@ -58,7 +58,6 @@ PBHs in the previously evaporating mass range 1.8$\times$1011–5.5$\times$1011 
 CP4 #256 — `UQFFEvaporationTimescaleCalculator`
 
 
----
 *PAPER_672 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---

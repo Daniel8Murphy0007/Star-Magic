@@ -121,7 +121,7 @@ black hole --- confirming that the proton vacuum density 10-39 cm3 is the lower 
 of the density series.
 
 The Wheeler-DeWitt equation in UQFF:
-$$\hat{H}_{\text{UQFF}} |\Psirangle = 0 \quad \Rightarrow \quad E_{\text{vac}} = \rho_{\text{vac},A} \cdot V_{\text{observable}} \approx 10^{-23} \cdot V_{\text{obs}}\ \text{J}$$
+$$\hat{H}_{\text{UQFF}} |\Psi\rangle = 0 \quad \Rightarrow \quad E_{\text{vac}} = \rho_{\text{vac},A} \cdot V_{\text{observable}} \approx 10^{-23} \cdot V_{\text{obs}}\ \text{J}$$
 
 ---
 
@@ -256,7 +256,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 |------------|----------|---------------------|-----------|
 | Cosmological constant $\Lambda$ | ~10-9 J/m3 | $\rho$vac,A = 10-23 J/m3 (14-order gap) | Hierarchy problem --- documented |
 | Casimir force | F/A $\propto$ ℏc/d4 | $\Delta$$\rho$vac$\cdot$d2 $\propto$ 6.38$\times$10-36 J/m3$\cdot$d2 | \checkmark 97.1% functional analog |
-| Solar wind pressure | ~3$\times$10-10 Pa | $\rho$vac,sw$\cdot$c2 ~ 7.2$\times$10-4 J/m3 | 🔍 Ub1 correction factor |
+| Solar wind pressure | ~3$\times$10-10 Pa | $\rho$vac,sw$\cdot$c2 ~ 7.2$\times$10-4 J/m3 |  Ub1 correction factor |
 | Vacuum permittivity ($\varepsilon$0) | 8.85$\times$10-12 F/m | $\rho$vac,A / (c2$\cdot$$\rho$matter) | \checkmark dimensional bridge |
 
 > **SM Anchor Reference:** PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator) ---
