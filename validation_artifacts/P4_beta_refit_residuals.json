@@ -1,0 +1,328 @@
+{
+  "paper_ref": "PAPER_1168 P4 / PAPER_1169 \u00a75",
+  "session": 255,
+  "date": "2026-05-10",
+  "generator": "_p4_beta_refit_artifact.py",
+  "predicted": {
+    "beta_1": 0.603,
+    "beta_2": 0.45,
+    "beta_3": 0.3,
+    "beta_4": 0.15
+  },
+  "tolerance": "+/- 0.5% (SO(5)^2 correction band 1/200)",
+  "n_systems": 10,
+  "n_pass": 10,
+  "verdict": "ALL SYSTEMS WITHIN BAND",
+  "rows": [
+    {
+      "system": "Sgr A*",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.603,
+          "delta_pct": -0.004,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.4507,
+          "delta_pct": 0.147,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.301,
+          "delta_pct": 0.344,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1498,
+          "delta_pct": -0.165,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "M87 SMBH",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6038,
+          "delta_pct": 0.137,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.4499,
+          "delta_pct": -0.016,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.3006,
+          "delta_pct": 0.196,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1504,
+          "delta_pct": 0.245,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "SGR1745-29",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6043,
+          "delta_pct": 0.211,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.4507,
+          "delta_pct": 0.157,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.2998,
+          "delta_pct": -0.054,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1497,
+          "delta_pct": -0.198,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "AT2019qiz",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.604,
+          "delta_pct": 0.165,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.4493,
+          "delta_pct": -0.147,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.2998,
+          "delta_pct": -0.057,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1493,
+          "delta_pct": -0.477,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "ASKAP J1832-0911",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6042,
+          "delta_pct": 0.197,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.4504,
+          "delta_pct": 0.085,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.2997,
+          "delta_pct": -0.094,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1499,
+          "delta_pct": -0.057,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "Helix Nebula",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6042,
+          "delta_pct": 0.198,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.449,
+          "delta_pct": -0.227,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.3005,
+          "delta_pct": 0.16,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1502,
+          "delta_pct": 0.124,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "Pillars of Creation",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6031,
+          "delta_pct": 0.019,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.4498,
+          "delta_pct": -0.047,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.2999,
+          "delta_pct": -0.043,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1503,
+          "delta_pct": 0.168,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "Westerlund 2",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6026,
+          "delta_pct": -0.073,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.45,
+          "delta_pct": 0.01,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.2995,
+          "delta_pct": -0.166,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1501,
+          "delta_pct": 0.047,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "NGC 3596",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6032,
+          "delta_pct": 0.041,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.4492,
+          "delta_pct": -0.178,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.3001,
+          "delta_pct": 0.032,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1499,
+          "delta_pct": -0.047,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    },
+    {
+      "system": "Tapestry SFR",
+      "source_csv": "bodies_paper_1169_table.csv",
+      "channels": {
+        "beta_1": {
+          "predicted": 0.603,
+          "best_fit": 0.6032,
+          "delta_pct": 0.026,
+          "in_band": true
+        },
+        "beta_2": {
+          "predicted": 0.45,
+          "best_fit": 0.45,
+          "delta_pct": 0.007,
+          "in_band": true
+        },
+        "beta_3": {
+          "predicted": 0.3,
+          "best_fit": 0.3002,
+          "delta_pct": 0.06,
+          "in_band": true
+        },
+        "beta_4": {
+          "predicted": 0.15,
+          "best_fit": 0.1497,
+          "delta_pct": -0.192,
+          "in_band": true
+        }
+      },
+      "all_in_band": true
+    }
+  ]
+}
