@@ -146,10 +146,10 @@ $$
 ## 6. HII Bubble Growth During Reionization
 
 ```
-dN_b/dt = ?_?,eff\cdote_esc - a_B\cdotn_H\cdot(4/3pR3_b)
+dN_b/dt = ?_?,eff\cdot e_esc - a_B\cdot n_H\cdot(4/3pR3_b)
 
 Simplified overlap model (Stromgren sphere analog):
-  R_b(t) = (3?_?\cdott/(4p\cdotn_H))^{1/3}    (linear ionization front growth)
+  R_b(t) = (3?_?\cdot t/(4p\cdot n_H))^{1/3}    (linear ionization front growth)
 
   ?_? = rate of ionizing photons emitted (from galaxy SFR)
   n_H = neutral H density (z-dependent)
@@ -194,7 +194,7 @@ Alfvén wave velocity:
   v_A = B/v(4p?)    (for B in Gauss, ? in g/cm3)
 
 Anisotropic cascade (Goldreich-Sridhar):
-  k_?/k_? ˜ (k_?\cdotl_A)^{1/3}    (scale-dependent anisotropy)
+  k_?/k_? ˜ (k_?\cdot l_A)^{1/3}    (scale-dependent anisotropy)
 
 F_UBii,alf = F_rel \times (v_A / E_LEP) \times Q_wave \times (B\cdot?v_A) \times e^{-t/t_eddy}
 
@@ -203,10 +203,10 @@ Turbulent energy cascade (Kolmogorov in ISM):
   v_l ? l^{1/3}            (velocity-scale relation)
   Power spectrum: E(k) ? k^{-5/3}
 
-F_UBii,turb = F_rel \times (e^{2/3}\cdotl^{-2/3} / E_LEP) \times Q_wave \times e^{-kl/k_J}
+F_UBii,turb = F_rel \times (e^{2/3}\cdot l^{-2/3} / E_LEP) \times Q_wave \times e^{-kl/k_J}
 
-Um,alf(B)   = \mu(?_vac)\cdot(1-e^{-?t})\cdotv_A(B)
-Um,turb(l)  = \mu(?_vac)\cdot(1-e^{-?t})\cdot(?\cdotv_l3/l)
+Um,alf(B)   = \mu(?_vac)\cdot(1-e^{-?t})\cdot v_A(B)
+Um,turb(l)  = \mu(?_vac)\cdot(1-e^{-?t})\cdot(?\cdot v_l3/l)
 ```
 
 ---
@@ -215,7 +215,7 @@ Um,turb(l)  = \mu(?_vac)\cdot(1-e^{-?t})\cdot(?\cdotv_l3/l)
 
 ```
 Ionization parameter:
-  U = Q_H/(4p\cdotr2\cdotn_H\cdotc)
+  U = Q_H/(4p\cdot r2\cdot n_H\cdot c)
 
 where:
   Q_H = number of ionizing photons per second (from AGN or OB stars)
@@ -223,16 +223,16 @@ where:
   log U ˜ -2 to -3 for NLR, -1 to 0 for BLR
 
 AGN feedback coupling efficiency:
-  e_f = E_kin/(?_acc\cdotc2) ˜ 0.05--0.1
+  e_f = E_kin/(?_acc\cdot c2) ˜ 0.05--0.1
 
-  E_kin = (1/2)?_out\cdotv2_out
+  E_kin = (1/2)?_out\cdot v2_out
   Only e_f \times 10^{-5} per M_? needed to match M_BH--s
 
-F_UBii,upar = F_rel \times (U\cdotn_H\cdotc / E_LEP) \times Q_wave \times (Q_H/r2)
-F_UBii,coup = F_rel \times (e_f\cdot?_acc\cdotc2 / E_LEP) \times Q_wave \times [0.05--0.1]
+F_UBii,upar = F_rel \times (U\cdot n_H\cdot c / E_LEP) \times Q_wave \times (Q_H/r2)
+F_UBii,coup = F_rel \times (e_f\cdot?_acc\cdot c2 / E_LEP) \times Q_wave \times [0.05--0.1]
 
 Um,upar(r)  = \mu(?_vac)\cdot(1-e^{-?t})\cdot(Q_H/(4pr2n_Hc))
-Um,coup(?) = \mu(?_vac)\cdot(1-e^{-?t})\cdote_f (couple fraction to kinetic energy)
+Um,coup(?) = \mu(?_vac)\cdot(1-e^{-?t})\cdot e_f (couple fraction to kinetic energy)
 ```
 
 ---

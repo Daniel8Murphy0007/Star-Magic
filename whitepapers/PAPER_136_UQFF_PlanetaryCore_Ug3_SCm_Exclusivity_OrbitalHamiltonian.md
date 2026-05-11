@@ -179,7 +179,7 @@ print(f"Precession period = {T_prec/86400:.1f} days")  # ~29 days
 
 # Quasi-invariant
 J_Ug3 = H_Ug3 * T_prec
-print(f"Quasi-invariant J_Ug3 = {J_Ug3:.3e} J\cdots/m^3")
+print(f"Quasi-invariant J_Ug3 = {J_Ug3:.3e} J\cdot s/m^3")
 ```
 
 ---

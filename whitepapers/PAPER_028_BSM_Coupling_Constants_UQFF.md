@@ -363,15 +363,15 @@ class CKMVcbTerm : public PhysicsTerm_BSM {
     
 double compute(...) const override {
         // Decay width
-        double Gamma = G_F2 \times Vcb2 \times pow(m_B\timesGeV_{to\_J}, 5)
+        double Gamma = G_F2 \times Vcb2 \times pow(m_B\times GeV_{to\_J}, 5)
                        \times phase_space \times form_factor2 / (192\pi3hbar);
         // UQFF terms
         double Ug1 = m_B \times GeV_{to\_J} / (m_p \times c2);          // 5.614
         double Ug2 = Vcb \times Vcb \times kappa_Higgs;               // [SCm]_flavor = 1.537e-3
-        double Ug3 = form_factor \times hbar\timesc / (m_B\timesGeV_{to\_J}\times1e-15); // 0.02960
-        double Ug4 = rho_{vac\_UA} \times (m_W\timesGeV_{to\_J}) / (rho_{vac\_SCm} \times m_p\timesc2); // 95.06
-        double Um  = eta_weak \times mu_B / (m_B\timesGeV_{to\_J}\timesc);   // ~0 (suppressed)
-        double Ub_i = beta_i \times Gamma / (m_B\timesGeV_{to\_J}\timesc2);  // 24.89
+        double Ug3 = form_factor \times hbar\times c / (m_B\times GeV_{to\_J}\times1e-15); // 0.02960
+        double Ug4 = rho_{vac\_UA} \times (m_W\times GeV_{to\_J}) / (rho_{vac\_SCm} \times m_p\times c2); // 95.06
+        double Um  = eta_weak \times mu_B / (m_B\times GeV_{to\_J}\times c);   // ~0 (suppressed)
+        double Ub_i = beta_i \times Gamma / (m_B\times GeV_{to\_J}\times c2);  // 24.89
         // getName() \rightarrow "CKMVcbTerm"
         // getEquation() \rightarrow \Gamma(B\rightarrowDl\nu) prop G_F2 |V_cb|2 m_B5 \times F(q2)2
     }

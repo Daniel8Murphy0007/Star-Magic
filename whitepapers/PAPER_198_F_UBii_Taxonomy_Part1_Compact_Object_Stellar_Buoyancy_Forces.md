@@ -76,7 +76,7 @@ $$
 
 ### 2.2 Terminal Velocity Buoyancy
 ```
-F_UBii,termv = F_rel \times (v(2GM(1-G)/r_launch) / E_LEP) \times Q_wave \times (t\cdotL/c)
+F_UBii,termv = F_rel \times (v(2GM(1-G)/r_launch) / E_LEP) \times Q_wave \times (t\cdot L/c)
 
   G = L/L_Edd ˜ 1   (Eddington ratio for wind-driven systems)
   r_launch ˜ 100 R_s  (wind launch radius)
