@@ -214,3 +214,47 @@ are the upstream source for the closure block content itself.
 
 Session 204-225 extension batch (PAPER_1000-1081) references confirmed
 broad and case-by-case. Will be handled after primary 001-200 sweep.
+
+================================================================================
+BATCH 4 (Session 262 cont.) - commit 0bfa00ee + CSV stamp c489cdee
+================================================================================
+PAPER_022 / 023 / 024 / 025 / 025b / 026 / 026b / 027 / 028 / 029
+String compactification + BSM/particle-physics cluster.
+Tailored hooks:
+  - 022: xi=13/3 R26+KK lock (string compactification - bucket D)
+    Direct astrophysical-GW counterpart of PAPER_1171/1172; GW-background
+    signatures tied to L_KK*=20-90 um; P6 null falsifies both this and 1171/1172.
+  - 023: P6 sub-mm Yukawa (tau g-2; new-physics window via L_KK*)
+  - 024: P6 sub-mm Yukawa (tau EDM; CP phase scales rho_UA * L_KK*)
+  - 025: P6 sub-mm Yukawa (DM direct detection; KK portal)
+  - 025b: P11 LIGO O5 ringdown cross-check (neutrino polarizability)
+  - 026: P6 sub-mm Yukawa (sterile-neutrino seesaw via KK tower)
+  - 026b: P6 sub-mm Yukawa (vector-like quark TeV/KK threshold)
+  - 027: P6 sub-mm Yukawa (LFV F_TRZ=1/10 suppression)
+  - 028: P6 sub-mm Yukawa (entire BSM coupling family)
+  - 029: P6 sub-mm Yukawa + LHC cross-check (TeV new physics)
+
+Unicode fixes applied during regen:
+  - PAPER_027: U+221D (proportional) -> \propto
+  - PAPER_027: U+2213 (minus-or-plus) -> \mp
+Verification: all 10 papers +27/-0 pure additions; PDFs 342-474 KB; no content lost.
+
+================================================================================
+RUNNING TOTAL through Session 262 (4 batches)
+================================================================================
+40 papers updated (PAPER_001-029 inclusive of variants 008b/009b/010b/011b/012b/
+                   013b/014b/015b/016b/025b/026b)
+Commits: 7fadd27d, d2665820, 67e6a25a, 0bfa00ee
+CSV stamps: 2fd80ed6, c43804fd, c489cdee, (this update next)
+All pushed to master.
+
+CROSS-REF DECISION (batch 3 verification):
+  Recurring 3-digit refs PAPER_420 / 421 / 642 / 840 / 877 appear in every
+  GW/cosmology paper of batches 1-3. These are upstream Master-Lagrangian /
+  F_U-bridge / SM-anchor papers (bucket B / G). Decision: defer to dedicated
+  bucket-B batch (planned next-after-100) since they require sourcing the
+  closure block content itself, not just citing it.
+
+Next batch (planned): PAPER_030-039 (dark sector mediators, flavor anomalies,
+BSM scalar sectors, electroweak precision, Higgs, FUBii buoyancy variants 1-5).
+Buckets B/H mixed - all consume calibrated constants, need closure block.

@@ -29,17 +29,17 @@ paper_id,filename,title,bucket,matched_keyword,suggested_action,status,session,c
 019,PAPER_019_Pulsar_Timing_Array_Anomalies_UQFF.md,PAPER_019,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite/ledger/xi hook,DONE v5.78,262,67e6a25a
 020,PAPER_020_Cosmic_Ray_Propagation_UQFF_Spacetime.md,Cosmic Ray Propagation in UQFF Spacetime,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite/ledger/xi hook,DONE v5.78,262,67e6a25a
 021,PAPER_021_Gravitational_Lensing_Corrections_UQFF_Vacuum_Density.md,Gravitational Lensing Corrections from UQFF Vacuum Density,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite/ledger/xi hook,DONE v5.78,262,67e6a25a
-022,PAPER_022_String_Compactification_Signatures_GW_Background.md,String Compactification Signatures in Gravitational Wave Background,D*,Compactification,Forward-pointer to PAPER_1171/1172 (xi=13/3 R26+KK lock) + PAPER_1173,DONE v5.78,Session 262,0bfa00ee
-023,PAPER_023_Tau_Anomalous_Magnetic_Moment_g2_UQFF.md,UQFF Analysis,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
-024,PAPER_024_Tau_Electric_Dipole_Moment_UQFF.md,UQFF Analysis,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
-025,PAPER_025_Dark_Matter_Direct_Detection_UQFF.md,UQFF Analysis,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
-025,PAPER_025b_Neutrino_Polarizability_UQFF.md,Neutrino Polarizability — UQFF Quantum Field Contributions,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
-026,PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md,UQFF Analysis,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
-026,PAPER_026_Sterile_Neutrino_Mass_UQFF.md,PAPER_026: Sterile Neutrino Mass Derivation in the UQFF Framework,H,,NO UPDATE (specific system / framework application),,,
-026,PAPER_026b_Vector_Like_Quarks_UQFF.md,Vector-Like Quarks — UQFF Mass Generation and LHC Constraints,H,,NO UPDATE (specific system / framework application),,,
-027,PAPER_027_Lepton_Flavor_Violation_UQFF.md,Lepton Flavor Violation Processes in UQFF,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
-028,PAPER_028_BSM_Coupling_Constants_UQFF.md,BSM Coupling Constants from UQFF Framework,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
-029,PAPER_029_New_Physics_TeV_Scale_UQFF.md,Whitepaper #29  New Physics at TeV Scale: UQFF Predictions,H*,,NO UPDATE (specific system / framework application),DONE v5.78,Session 262,0bfa00ee
+022,PAPER_022_String_Compactification_Signatures_GW_Background.md,String Compactification Signatures in Gravitational Wave Background,D*,Compactification,"DONE - G1-G8 + 27-decade ledger block inserted; xi=13/3 R26+KK lock hook (PAPER_1171/1172, P6)",DONE v5.78,Session 262,0bfa00ee
+023,PAPER_023_Tau_Anomalous_Magnetic_Moment_g2_UQFF.md,UQFF Analysis,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa hook (lepton g-2 KK),DONE v5.78,Session 262,0bfa00ee
+024,PAPER_024_Tau_Electric_Dipole_Moment_UQFF.md,UQFF Analysis,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa hook (lepton EDM KK),DONE v5.78,Session 262,0bfa00ee
+025,PAPER_025_Dark_Matter_Direct_Detection_UQFF.md,UQFF Analysis,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa hook (DM KK portal),DONE v5.78,Session 262,0bfa00ee
+025,PAPER_025b_Neutrino_Polarizability_UQFF.md,Neutrino Polarizability — UQFF Quantum Field Contributions,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P11 LIGO O5 cross-check hook,DONE v5.78,Session 262,0bfa00ee
+026,PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md,UQFF Analysis,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa hook (sterile seesaw),DONE v5.78,Session 262,0bfa00ee
+026,PAPER_026_Sterile_Neutrino_Mass_UQFF.md,PAPER_026: Sterile Neutrino Mass Derivation in the UQFF Framework,H,,DUPLICATE filename of 026 Generation (Mass_Generation variant is the canonical; this entry is a stale duplicate row),,,
+026,PAPER_026b_Vector_Like_Quarks_UQFF.md,Vector-Like Quarks — UQFF Mass Generation and LHC Constraints,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa hook (VLQ KK threshold),DONE v5.78,Session 262,0bfa00ee
+027,PAPER_027_Lepton_Flavor_Violation_UQFF.md,Lepton Flavor Violation Processes in UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa hook (LFV F_TRZ=1/10),DONE v5.78,Session 262,0bfa00ee
+028,PAPER_028_BSM_Coupling_Constants_UQFF.md,BSM Coupling Constants from UQFF Framework,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa hook (BSM coupling family),DONE v5.78,Session 262,0bfa00ee
+029,PAPER_029_New_Physics_TeV_Scale_UQFF.md,Whitepaper #29  New Physics at TeV Scale: UQFF Predictions,H*,,DONE - G1-G8 + 27-decade ledger block inserted; P6 sub-mm Yukawa + LHC cross-check hook,DONE v5.78,Session 262,0bfa00ee
 030,PAPER_030_Dark_Sector_Mediators_UQFF.md,PAPER #30b -- Dark Sector Mediators in UQFF,H,,NO UPDATE (specific system / framework application),,,
 031,PAPER_031_Flavor_Anomalies_Resolution_UQFF.md,PAPER #31b -- Flavor Anomalies Resolution via UQFF,H,,NO UPDATE (specific system / framework application),,,
 032,PAPER_032_BSM_Scalar_Sectors_UQFF.md,BSM Scalar Sectors in UQFF,H,,NO UPDATE (specific system / framework application),,,
