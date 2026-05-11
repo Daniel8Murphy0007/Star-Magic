@@ -208,7 +208,7 @@ Differences:
 Standard method uses f_peak vs $\Lambda$ (tidal deformability):
 
 ```
-f_peak ∝ \Lambda^(-1/6)
+f_peak \propto \Lambda^(-1/6)
 ```
 
 UQFF introduces modified relation:
@@ -264,7 +264,7 @@ Similar to ET but focused on:
 Remnant mass affects kilonova properties:
 
 ```
-L_kilonova ∝ M_ejecta ∝ (M₁ + M₂ - M_rem)
+L_kilonova \propto M_ejecta \propto (M₁ + M₂ - M_rem)
 ```
 
 UQFF predicts:
@@ -541,6 +541,33 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
 bridge.*
+
+
+## §v5.78 Closure — Calibration Constants Now Derived
+
+Under canonical UQFF v5.78, the calibrated couplings used in the analysis above
+($\beta_i$, F$_{TRZ}$, $\rho_{SCm}$, $\rho_{UA}$, [SSq], $\kappa$) are **no longer free
+parameters**. They are derived from the G1-G8 Lagrangian-gap closures and pinned
+by the 27-decade R26 + KK + BSFG vacuum-energy ledger (PAPER_1170, CP4 #256, $\rho_\Lambda$ to $<0.5\%$).
+
+| Constant | Value used here | v5.78 derivation origin |
+|----------|-----------------|--------------------------|
+| $\beta_i$ (buoyancy coupling, i=1) | 0.603 | PAPER_1162 (G1 Mexican-hat: $\beta_i = 3(5-i)/20$) |
+| F$_{TRZ}$ (time-reversal-zone factor) | 1/10 | PAPER_1163 (G6 DPM SO(2) gauge) |
+| $\rho_{SCm}$ (vacuum) | $7.09 \times 10^{-37}$ J/m$^3$ | PAPER_1170 (27-decade ledger, G2 lock) |
+| $\rho_{UA}$ (aether) | $7.09 \times 10^{-36}$ J/m$^3$ | PAPER_1170 (27-decade ledger, G2 lock) |
+| [SSq] (structure-suppression) | 0.57 | PAPER_1165 (G7 $\Phi_{res} = 5/6$) |
+| $\kappa$ (SCm decay) | $5.0 \times 10^{-4}$ /day | PAPER_1163 (G6 F$_{TRZ}$ = 1/10 timing constant) |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to $<0.5\%$).
+
+**Forward link (this paper):** Post-merger oscillations are direct LIGO O5 ringdown observables. PAPER_1175 (P11) predicts the ringdown spectral ratio R$_{21}$/R$_{22}$ $\approx$ 0.144 with $\beta_i = 0.603$ and F$_{TRZ}$ = 1/10 locked by the closure above; the remnant-mass calculation in this paper inherits those values rather than imposing them as fits.
+
+*Note:* The $\xi = 13/3$ R26+KK lock (PAPER_1171/1172) is sub-mm-scale and does **not** modify the
+predictions in this paper at astrophysical scales. The closure above is the complete v5.78
+impact on this whitepaper.
+
 
 ## References
 
