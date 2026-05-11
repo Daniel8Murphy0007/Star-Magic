@@ -10,7 +10,7 @@ import csv
 import re
 from pathlib import Path
 
-BUNDLE = Path(__file__).resolve().parent / "arxiv_submission_1159_1170"
+BUNDLE = Path(__file__).resolve().parent / "arxiv_submission_1159_1172"
 MD_DIR = BUNDLE / "md"
 ABS_DIR = BUNDLE / "abstracts"
 ABS_DIR.mkdir(exist_ok=True)
@@ -71,7 +71,7 @@ def main() -> None:
         f"  {r['paper_id']:10s}  {r['title']}" for r in rows
     )
     readme = BUNDLE / "00README.txt"
-    readme.write_text(f"""arXiv submission bundle: PAPER_1159 - PAPER_1170 (Sessions 246-255)
+    readme.write_text(f"""arXiv submission bundle: PAPER_1159 - PAPER_1172 (Sessions 246-256)
 ================================================================================
 
 Contents

@@ -70,5 +70,17 @@
         "md":  "PAPER_1170_UQFF_Vacuum_Energy_Ledger_R26_KK_BSFG_Saturation.md",
         "pdf":  "PAPER_1170_UQFF_Vacuum_Energy_Ledger_R26_KK_BSFG_Saturation.pdf",
         "tex":  "PAPER_1170_UQFF_Vacuum_Energy_Ledger_R26_KK_BSFG_Saturation.tex"
+    },
+    {
+        "paper_id":  "PAPER_1171",
+        "md":  "PAPER_1171_UQFF_KK_Regulator_First_Principles_Derivation.md",
+        "pdf":  "PAPER_1171_UQFF_KK_Regulator_First_Principles_Derivation.pdf",
+        "tex":  "PAPER_1171_UQFF_KK_Regulator_First_Principles_Derivation.tex"
+    },
+    {
+        "paper_id":  "PAPER_1172",
+        "md":  "PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.md",
+        "pdf":  "PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.pdf",
+        "tex":  "PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.tex"
     }
 ]

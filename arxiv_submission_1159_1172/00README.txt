@@ -1,12 +1,12 @@
-arXiv submission bundle: PAPER_1159 - PAPER_1170 (Sessions 246-255)
+arXiv submission bundle: PAPER_1159 - PAPER_1172 (Sessions 246-256)
 ================================================================================
 
 Contents
 --------
-  md/         12 markdown source files (canonical)
-  pdf/        12 PDFs rendered with pandoc + pdflatex
-  tex/        12 standalone LaTeX files (pandoc -s output)
-  abstracts/  12 per-paper abstract.txt extracts
+  md/         14 markdown source files (canonical)
+  pdf/        14 PDFs rendered with pandoc + pdflatex
+  tex/        14 standalone LaTeX files (pandoc -s output)
+  abstracts/  14 per-paper abstract.txt extracts
   bundle_index.csv   tabular index of all papers in this bundle
   manifest.json      JSON manifest mapping paper_id -> {md, pdf, tex}
 
@@ -24,6 +24,8 @@ Papers
   PAPER_1168  Falsifiable Predictions of the Closed UQFF Lagrangian: Five No-Free-Parameter Tests
   PAPER_1169  PAPER_1169_UQFF_Numerical_Confrontation_P1_P5_With_Archival_Data
   PAPER_1170  Closing the 27-Decade Vacuum-Energy Ledger: $R_{26}$ + KK Tower + BSFG Back-Reaction Saturate $\\rho_\\Lambda^{\\mathrm{obs}}$
+  PAPER_1171  First-Principles Derivation of the Kaluza-Klein Zero-Point Tower Regulator: Closing the Last Approximation in the UQFF Vacuum-Energy Ledger
+  PAPER_1172  Independent Re-Derivation of the 26-D Curvature Coefficient $\\rho_{R_{26}} = (13/2)\\,v_{UA}^{2}\\,\\rho_{\\mathrm{SCm}}$ via Two Routes
 
 Compile recipe
 --------------

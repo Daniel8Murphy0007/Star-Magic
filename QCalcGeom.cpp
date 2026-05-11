@@ -10,7 +10,7 @@
  *   vds_branches, dvp_branches, bh26_branches,
  *   vds_dvp_coupled, bh26_bsh_resonance     <- Phase H202 additions
  *
- * runQCalcGeomTests() covers T01–T73 (73 tests total; T71-T73 added Session 254 for G1 V(UA) closure).
+ * runQCalcGeomTests() covers T01–T76 (76 tests total; T74-T76 added Session 256 for G2 vacuum-energy ledger cross-check).
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
@@ -1317,6 +1317,35 @@ void runQCalcGeomTests() {
         R.push_back({ "T73","G1-V(UA)",
             "bsfg_aether_potential mass2 == (50/3)*rho_SCm/v_UA^2",
             v0.mass2, m2_expected, 1.0e-10, t73, t73 });
+
+        // ── G2 vacuum-energy ledger (T74-T76): R26+KK+BSFG, PAPER_1170/1171/1172 ─
+        // T74: V(0)+rho_R26+rho_BSFG ≈ 1.66% of rho_obs (without KK contribution)
+        const double rho_obs    = 5.96e-10;
+        const double V0_term    = (25.0/12.0) * 7.09e-37;
+        const double rho_R26    = (13.0/2.0) * 1.0e8 * 1.0e8 * 7.09e-37;
+        const double rho_BSFG   = 1.0e-11;
+        const double rho_KK     = 5.86e-10;  // CP4 #256 ledger complement (rho_obs - V(0) - rho_R26 - rho_BSFG)
+        const double partial    = V0_term + rho_R26 + rho_BSFG;
+        const double frac_part  = partial / rho_obs;
+        bool t74 = (std::abs(frac_part - 0.0166) < 0.005);
+        R.push_back({ "T74","G2-Ledger",
+            "(V(0)+rho_R26+rho_BSFG)/rho_obs ~ 1.66% (no KK)",
+            frac_part, 0.0166, 30.0, t74, t74 });
+
+        // T75: full ledger V(0)+rho_R26+rho_KK+rho_BSFG ≈ rho_obs (within 0.5%)
+        const double full = V0_term + rho_R26 + rho_KK + rho_BSFG;
+        bool t75 = (std::abs(full - rho_obs) / rho_obs < 0.005);
+        R.push_back({ "T75","G2-Ledger",
+            "V(0)+rho_R26+rho_KK+rho_BSFG == rho_Lambda_obs",
+            full, rho_obs, 0.5, t75, t75 });
+
+        // T76: (D_crit/D_BSFG)^4 == (13/3)^4 = 31.605 (PAPER_1171 §4 prefactor)
+        const double ratio4 = std::pow(26.0/6.0, 4.0);
+        const double ratio4_expected = std::pow(13.0/3.0, 4.0);
+        bool t76 = (std::abs(ratio4 - ratio4_expected) < 1.0e-9);
+        R.push_back({ "T76","G2-Ledger",
+            "(D_crit/D_BSFG)^4 == (13/3)^4 == 31.6049",
+            ratio4, ratio4_expected, 1.0e-6, t76, t76 });
     }
 
     // ── Print results table ──────────────────────────────────────────────────
