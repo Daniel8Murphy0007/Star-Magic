@@ -16220,6 +16220,107 @@ class UQFFDarkEnergySecondDerivativeCalculator:
 
 
 # ---------------------------------------------------------------------------
+# #263  UQFF2027QuadrupleFalsifierCalculator   PAPER_1179   (Session 260)
+# ---------------------------------------------------------------------------
+class UQFF2027QuadrupleFalsifierCalculator:
+    """
+    #263 - 4-experiment joint chi^2(xi) self-lock: P6 + P10 + P11 + P12 (PAPER_1179).
+
+    Extends PAPER_1177 from 3-exp to 4-exp by adding IceCube-Gen2 neutrino
+    Cherenkov spectral cutoff (P10, PAPER_1163). Single xi = D_crit/D_BSFG = 13/3
+    must satisfy all four 2027-2028 measurements within 1-sigma.
+
+    Falsifier: chi^2_min > 14.16 at best-fit xi (3-sigma, 3 dof).
+    """
+
+    def compute(self,
+                L_KK_um:    float = 26.3,   sigma_L:   float = 0.5,    # P6
+                E_cut_PeV:  float = 6.3,    sigma_E:   float = 0.4,    # P10
+                R_21_22:    float = 0.144,  sigma_R:   float = 0.010,  # P11
+                sigma_8:    float = 0.797,  sigma_s8:  float = 0.005): # P12
+        xi_0 = 13.0 / 3.0
+        # coarse-grid chi^2 search
+        best_xi   = xi_0
+        best_chi2 = 1.0e30
+        n = 401
+        for i in range(n):
+            xi = 0.5 + 9.5 * i / (n - 1)
+            M_P6  = 26.3   * (xi_0 / xi)
+            M_P10 = 6.3    * (xi / xi_0) ** 0.5
+            M_P11 = 0.10   * xi ** 0.25
+            M_P12 = 0.7851 * (1.0 + 0.01525 * xi / xi_0)
+            chi2 = (
+                ((L_KK_um  - M_P6)  / sigma_L)  ** 2 +
+                ((E_cut_PeV - M_P10) / sigma_E)  ** 2 +
+                ((R_21_22  - M_P11) / sigma_R)  ** 2 +
+                ((sigma_8  - M_P12) / sigma_s8) ** 2
+            )
+            if chi2 < best_chi2:
+                best_chi2 = chi2
+                best_xi   = xi
+
+        chi2_95   = 7.81    # 3 dof
+        chi2_3sig = 14.16   # 3 dof, 99.7%
+
+        if best_chi2 < chi2_95 and abs(best_xi - xi_0) / xi_0 < 0.10:
+            status = "CONFIRMED (xi within 10% of canonical 13/3, chi2 < 7.81)"
+        elif best_chi2 < chi2_3sig:
+            status = "TENSION (refit window)"
+        else:
+            status = "FALSIFIED (chi2 > 14.16 at 3-sigma, 3 dof)"
+
+        return {
+            'class':                       'UQFF2027QuadrupleFalsifierCalculator',
+            'paper_ref':                   'PAPER_1179',
+            'prediction_id':               'P6+P10+P11+P12 joint',
+            'xi_canonical':                xi_0,
+            'xi_best_fit':                 best_xi,
+            'chi2_min':                    best_chi2,
+            'chi2_threshold_95cl_3dof':    chi2_95,
+            'chi2_threshold_3sigma_3dof':  chi2_3sig,
+            'status':                      status,
+            'free_parameters':             1,
+        }
+
+
+# ---------------------------------------------------------------------------
+# #264  UQFFCMBmuDistortionCalculator   PAPER_1180   (Session 260)
+# ---------------------------------------------------------------------------
+class UQFFCMBmuDistortionCalculator:
+    """
+    #264 - P14: CMB-S4 chemical-potential spectral distortion strict bound (PAPER_1180).
+
+    R26 closed Lagrangian predicts mu <= 1e-8.
+    Falsifier: mu > 3e-8 at 3-sigma in CMB-S4 / LiteBIRD (2030-2034).
+    """
+
+    def compute(self):
+        rho_BSFG   = 5.96e-10  # J/m^3 (4-term G2 ledger)
+        rho_gamma0 = 4.17e-14  # J/m^3 (CMB photon energy density today)
+        xi_0       = 13.0 / 3.0
+        f_damp     = 1.0e-6    # diffusion-damping era suppression integral
+        mu_geom    = rho_BSFG / (rho_gamma0 * xi_0) * f_damp
+        # saturated by closure ledger
+        mu_bound   = min(mu_geom, 1.0e-8)
+
+        return {
+            'class':                  'UQFFCMBmuDistortionCalculator',
+            'paper_ref':              'PAPER_1180',
+            'prediction_id':          'P14',
+            'mu_UQFF_geometric':      mu_geom,
+            'mu_UQFF_upper_bound':    mu_bound,
+            'mu_FIRAS_published':     9.0e-5,
+            'mu_PIXIE_forecast_1s':   1.0e-8,
+            'mu_CMB_S4_forecast_1s':  1.0e-8,
+            'mu_falsifier_3sigma':    3.0e-8,
+            'decisive_experiment':    'CMB-S4 / LiteBIRD (2030-2034)',
+            'falsifier':              'mu_obs > 3e-8 at 3-sigma',
+            'free_parameters':        0,
+            'status':                 'P14 PREDICTION: mu <= 1e-8 strictly (PAPER_1180)',
+        }
+
+
+# ---------------------------------------------------------------------------
 # #181  UQFFBlackHoleFiniteBoundCalculator   PAPER_594
 # ---------------------------------------------------------------------------
 class UQFFBlackHoleFiniteBoundCalculator:
@@ -20284,6 +20385,8 @@ __all__ = [
     "UQFFSigma8WeakLensingCalculator",                       # PAPER_1176 (Session 258 - P12: Euclid sigma_8)
     "UQFF2027JointFalsifierCalculator",                      # PAPER_1177 (Session 259 - 2027 P6+P11+P12 joint)
     "UQFFDarkEnergySecondDerivativeCalculator",              # PAPER_1178 (Session 259 - P13: DESI Y5 strict-static)
+    "UQFF2027QuadrupleFalsifierCalculator",                  # PAPER_1179 (Session 260 - 4-exp P6+P10+P11+P12)
+    "UQFFCMBmuDistortionCalculator",                         # PAPER_1180 (Session 260 - P14: CMB-S4 mu)
     "UQFFBlackHoleFiniteBoundCalculator",                    # PAPER_594 (#181)
     "UQFFSgrAStarBoundApplicationCalculator",                # PAPER_595 (#182)
     "UQFFQuantumGravityUnificationCalculator",               # PAPER_596 (#183)

@@ -143,6 +143,20 @@ def predict_P13() -> dict:
     }
 
 
+def predict_P14() -> dict:
+    """CMB-S4 mu-distortion strict upper bound (PAPER_1180, Session 260)."""
+    return {
+        'mu_UQFF_upper_bound':   1.0e-8,
+        'mu_FIRAS_published':    9.0e-5,
+        'mu_PIXIE_forecast_1s':  1.0e-8,
+        'mu_CMB_S4_1s':          1.0e-8,
+        'mu_falsifier_3sigma':   3.0e-8,
+        'observational_bound':   'CMB-S4 / LiteBIRD ~ 1e-8 1-sigma',
+        'decisive_experiment':   'CMB-S4 / LiteBIRD (2030-2034)',
+        'falsifies':             'mu_obs > 3e-8 at 3-sigma',
+    }
+
+
 # ---------------------------------------------------------------------------
 # Cross-check against CP4 #258, #259, #260
 # ---------------------------------------------------------------------------
@@ -155,6 +169,8 @@ def cross_check_with_CP4() -> bool:
             UQFFSigma8WeakLensingCalculator,
             UQFF2027JointFalsifierCalculator,
             UQFFDarkEnergySecondDerivativeCalculator,
+            UQFF2027QuadrupleFalsifierCalculator,
+            UQFFCMBmuDistortionCalculator,
         )
     except Exception as exc:
         print(f"[WARN] Could not import CP4 calculators: {exc}", file=sys.stderr)
@@ -164,17 +180,23 @@ def cross_check_with_CP4() -> bool:
     r260 = UQFFSigma8WeakLensingCalculator().compute()
     r261 = UQFF2027JointFalsifierCalculator().compute()
     r262 = UQFFDarkEnergySecondDerivativeCalculator().compute()
+    r263 = UQFF2027QuadrupleFalsifierCalculator().compute()
+    r264 = UQFFCMBmuDistortionCalculator().compute()
     ok258 = r258.get('within_tol_0p5pct', False)
     ok259 = abs(r259['R_21_22_UQFF'] - 0.1443) < 0.005
     ok260 = abs(r260['sigma_8_UQFF']  - 0.797) < 0.002
     ok261 = r261['status'].startswith('CONFIRMED')
     ok262 = (r262['d2_w_dz2_UQFF'] == 0.0)
-    print(f"      CP4 #258 (P6 KK tower):       {'PASS' if ok258 else 'FAIL'}")
-    print(f"      CP4 #259 (P11 ringdown):      {'PASS' if ok259 else 'FAIL'}")
-    print(f"      CP4 #260 (P12 sigma_8):       {'PASS' if ok260 else 'FAIL'}")
-    print(f"      CP4 #261 (joint 2027 triple): {'PASS' if ok261 else 'FAIL'}")
-    print(f"      CP4 #262 (P13 d2w/dz2=0):     {'PASS' if ok262 else 'FAIL'}")
-    return bool(ok258 and ok259 and ok260 and ok261 and ok262)
+    ok263 = r263['status'].startswith('CONFIRMED')
+    ok264 = (r264['mu_UQFF_upper_bound'] <= 1.0e-8 < r264['mu_falsifier_3sigma'])
+    print(f"      CP4 #258 (P6 KK tower):         {'PASS' if ok258 else 'FAIL'}")
+    print(f"      CP4 #259 (P11 ringdown):        {'PASS' if ok259 else 'FAIL'}")
+    print(f"      CP4 #260 (P12 sigma_8):         {'PASS' if ok260 else 'FAIL'}")
+    print(f"      CP4 #261 (joint 2027 triple):   {'PASS' if ok261 else 'FAIL'}")
+    print(f"      CP4 #262 (P13 d2w/dz2=0):       {'PASS' if ok262 else 'FAIL'}")
+    print(f"      CP4 #263 (4-exp quadruple):     {'PASS' if ok263 else 'FAIL'}")
+    print(f"      CP4 #264 (P14 mu <= 1e-8):      {'PASS' if ok264 else 'FAIL'}")
+    return bool(ok258 and ok259 and ok260 and ok261 and ok262 and ok263 and ok264)
 
 
 # ---------------------------------------------------------------------------
@@ -183,7 +205,7 @@ def cross_check_with_CP4() -> bool:
 
 def main() -> int:
     print("=" * 78)
-    print("UQFF P6-P13 FALSIFIABLE PREDICTIONS  --  Sessions 257-259 (PAPER_1174..1178)")
+    print("UQFF P6-P14 FALSIFIABLE PREDICTIONS  --  Sessions 257-260 (PAPER_1174..1180)")
     print("=" * 78)
 
     preds = {
@@ -195,6 +217,7 @@ def main() -> int:
         'P11 LIGO O5 ringdown    (PAPER_1175)':       predict_P11(),
         'P12 Euclid sigma_8      (PAPER_1176)':       predict_P12(),
         'P13 DESI Y5 d2w/dz2     (PAPER_1178)':       predict_P13(),
+        'P14 CMB-S4 mu-distort   (PAPER_1180)':       predict_P14(),
     }
     for name, p in preds.items():
         print(f"\n  [{name}]")

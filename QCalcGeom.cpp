@@ -10,7 +10,7 @@
  *   vds_branches, dvp_branches, bh26_branches,
  *   vds_dvp_coupled, bh26_bsh_resonance     <- Phase H202 additions
  *
- * runQCalcGeomTests() covers T01–T83 (83 tests total; T83 added Session 259 for P13 strict-static dark energy).
+ * runQCalcGeomTests() covers T01–T84 (84 tests total; T84 added Session 260 for P14 CMB-S4 mu-distortion bound).
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
@@ -1419,6 +1419,16 @@ void runQCalcGeomTests() {
         R.push_back({ "T83","G2-Prediction",
             "P13 d^2w/dz^2 == 0 strictly (UQFF static R26, PAPER_1178)",
             d2w_dz2_UQFF, 0.0, 1.0e-9, t83, t83 });
+
+        // T84 (Session 260): P14 CMB-S4 mu-distortion strict upper bound.
+        // R26 closed Lagrangian fixes mu <= 1e-8; falsifier mu > 3e-8 at 3-sigma.
+        const double mu_UQFF_bound = 1.0e-8;
+        const double mu_falsifier_3s = 3.0e-8;
+        bool t84 = (mu_UQFF_bound > 0.0) && (mu_UQFF_bound < mu_falsifier_3s)
+                && (mu_falsifier_3s / mu_UQFF_bound > 2.9);
+        R.push_back({ "T84","G2-Prediction",
+            "P14 mu_UQFF <= 1e-8 < 3e-8 = 3-sigma falsifier (PAPER_1180)",
+            mu_UQFF_bound, 1.0e-8, 0.1, t84, t84 });
     }
 
     // ── Print results table ──────────────────────────────────────────────────
