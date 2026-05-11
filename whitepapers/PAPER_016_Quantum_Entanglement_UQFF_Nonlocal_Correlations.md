@@ -68,15 +68,11 @@ $$\hat{H}_{eff} = \hat{H}_0 + \hat{H}_{int} + \hat{H}_{UQFF},\quad \hat{H}_{UQFF
 **Key numerical results:** gamma_damp ~ kappa $\times$ E/E_ref = 5.0e-4 $\times$ (E/E_ref), alpha_Q ~ 1.0e-2,
 D_total = 3.33e-1, entanglement range extended by 1/D_total = 3.0e0
 
-$$
-|\psi(t)⟩_UQFF = exp[-iĤ_eff t - \gamma_damp(E)t/2] |\psi(0)⟩
-$$
+$$|\psi(t)\rangle_{UQFF} = \exp\!\left[-i\hat{H}_{eff}\,t - \frac{\gamma_{damp}(E)\,t}{2}\right]|\psi(0)\rangle$$
 
 Where the effective Hamiltonian:
 
-$$
-Ĥ_eff = Ĥ_0 + Ĥ_int + Ĥ_UQFF
-$$
+$$\hat{H}_{eff} = \hat{H}_0 + \hat{H}_{int} + \hat{H}_{UQFF}$$
 
 Components:
 - `Ĥ_0` = free particle Hamiltonian
@@ -195,7 +191,7 @@ For typical photon energies:
 Gravitational wave passing through entangled system:
 
 $$
-\Delta\phi_GW = (\pi L f_GW/c) \times h_0 \times sin(2\pif_GW t)
+\Delta\phi_{GW} = (\pi L f_{GW}/c) \times h_0 \times \sin(2\pi f_{GW} t)
 $$
 
 Where:
@@ -208,7 +204,7 @@ Where:
 UQFF modifies the coupling:
 
 $$
-\Delta\phi_UQFF = \Delta\phi_GW \times [1 + \beta_Q(f_GW/f_damp)^\nu]
+\Delta\phi_{UQFF} = \Delta\phi_{GW} \times [1 + \beta_Q(f_{GW}/f_{damp})^\nu]
 $$
 
 Parameters:

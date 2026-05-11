@@ -90,7 +90,7 @@ R-parity-violating supersymmetry.
 The LHCb collaboration performed a search for B0 $\to$ K*0 $\tau$$\pm$e$\mp$ using 5.4 fb-1 of Run 2 proton-proton
 collision data at $\sqrt{s}$ = 13 TeV. The analysis employed:
 
-- **Double-tag technique:** Reconstructing both B mesons in BB̄ pairs to control $\tau$ reconstruction  
+- **Double-tag technique:** Reconstructing both B mesons in $B\bar{B}$ pairs to control $\tau$ reconstruction  
 - **GBDT/Fisher discriminants:** Multivariate selection optimized for signal-background separation  
 - **K*0 reconstruction:** Via K*0 $\to$ K+$\pi$- with tight vertex constraints
 
@@ -98,8 +98,8 @@ No significant excess was observed. The resulting limits at 90% (95%) confidence
 
 $$
 \begin{aligned}
-  & BR(B0 \to K*0 \tau-e+) < 5.9 (7.1) \times 10-6 \\
-  & BR(B0 \to K*0 \tau+e-) < 4.9 (6.0) \times 10-6
+  & BR(B0 \to K*0 \tau-e+) < 5.9 (7.1) \times 10^{-6} \\
+  & BR(B0 \to K*0 \tau+e-) < 4.9 (6.0) \times 10^{-6}
 \end{aligned}
 $$
 
@@ -147,8 +147,8 @@ $$
   & [SSq] = 0.57               (Superconductive Shell Quotient) \\
   & H_SCm \approx 0.99               (SCm Heaviside factor, quiet state) \\
   & U_UA \approx 0.0001              (Universal Aether contribution) \\
-  & \beta_i \approx 0.603                (buoyancy-gravity balance parameter) \\
-  & k_\eta = 10-113               (LENR neutron coupling)
+  & \beta _i \approx 0.603                (buoyancy-gravity balance parameter) \\
+  & k_\eta = 10^{-113}               (LENR neutron coupling)
 \end{aligned}
 $$
 
@@ -163,8 +163,8 @@ producing constructive interference between lepton flavors:
 
 $$
 \begin{aligned}
-  & \Psi_flavor-conserving \propto cos(\pi \times t_n)    with t_n > 0 \\
-  & \to cos(\pit_n) > 0 (constructive)
+  & \Psi _flavor-conserving \propto \cos(\pi \times t_n)    with t_n > 0 \\
+  & \to \cos(\pi t_n) > 0 (constructive)
 \end{aligned}
 $$
 
@@ -174,8 +174,8 @@ without invoking anti-temporal propagation:
 
 $$
 \begin{aligned}
-  & \Psi_LFV \propto cos(\pi \times t_n)    with t_n = -1.0 \\
-  & \to cos(-\pi) = -1 (destructive suppression)
+  & \Psi _LFV \propto \cos(\pi \times t_n)    with t_n = -1.0 \\
+  & \to \cos(-\pi) = -1 (destructive suppression)
 \end{aligned}
 $$
 
@@ -191,7 +191,7 @@ The LFV branching ratio in UQFF is derived from the `LFVBDecayTerm` in `BSMPhysi
 
 **Step 1 --- LFV Wilson Coefficient Proxy:**
 $$
-C_LFV = BR_observed / 10-5
+C_LFV = BR_observed / 10^{-5}
 $$
 This maps the phenomenological LFV amplitude to the UQFF DPM coupling strength. At the LHCb limit,
 C_LFV = 5.9$\times$10-6 / 10-5 = 0.59.
@@ -204,7 +204,7 @@ LFV requires t_n < 0 by the DPM conservation theorem.
 
 **Step 3 --- Exponential Suppression Factor:**
 $$
-S_LFV = exp(-|t_n| \times [SSq]) = exp(-1.0 \times 0.57) = 0.5655
+S_LFV = \exp(-|t_n| \times [SSq]) = \exp(-1.0 \times 0.57) = 0.5655
 $$
 The [SSq] = 0.57 calibration modulates the strength of the SCm suppression at t_n reversal
 boundaries.
@@ -212,8 +212,8 @@ boundaries.
 **Step 4 --- Ug3 Contribution (t_n reversal term):**
 $$
 \begin{aligned}
-  & Ug3 = cos(\pi \times t_n) \times C_LFV \times S_LFV \\
-  & = cos(-\pi) \times 0.59 \times 0.5655 \\
+  & Ug3 = \cos(\pi \times t_n) \times C_LFV \times S_LFV \\
+  & = \cos(-\pi) \times 0.59 \times 0.5655 \\
   & = (-1) \times 0.59 \times 0.5655 \\
   & = -0.3337
 \end{aligned}
@@ -227,23 +227,23 @@ MeV/c2):
 
 $$
 \begin{aligned}
-  & Ug1 = m_B \times \text{GeV\_to\_J} / (m_p \times c2) \\
-  & = 5.27965 \times 1.602\times10-10 / (1.673\times10-27 \times (3\times108)2) \\
-  & = 8.457\times10-10 / 1.504\times10-10 \\
+  & Ug1 = m_B \times \text{GeV\_to\_J} / (m_p \times c^2) \\
+  & = 5.27965 \times 1.602\times10^{-10} / (1.673\times10^{-27} \times (3\times108)2) \\
+  & = 8.457\times10^{-10} / 1.504\times10^{-10} \\
   & = 5.622 \\
-  & Ug2 = \Deltam_lepton \times G / (c2 \times r_B)     [r_B ~ 1 fm = 10-15 m] \\
-  & = (m_\tau - m_e) \times 6.674\times10-11 / ((3\times108)2 \times 10-15) \\
-  & = 1.77175 GeV/c2 \times (6.674\times10-11 / 9\times101) \\
-  & \approx 1.31\times10-13   [dimensionless ratio in UQFF units] \\
+  & Ug2 = \Delta m_lepton \times G / (c^2 \times r_B)     [r_B ~ 1 fm = 10^{-15} m] \\
+  & = (m_\tau - m_e) \times 6.674\times10^{-11} / ((3\times108)2 \times 10^{-15}) \\
+  & = 1.77175 GeV/c^2 \times (6.674\times10^{-11} / 9\times101) \\
+  & \approx 1.31\times10^{-13}   [dimensionless ratio in UQFF units] \\
   & Ug3 = -0.3337   (from Step 4) \\
-  & Ug4 = \rho_UA \times BR_LFV / \rho_SCm \\
-  & = (7.09\times10-36 \times 5.9\times10-6) / 6.38\times10-36 \\
-  & = 6.558\times10-6 \\
-  & Um  = |t_n| \times \mu_B \times (m_\tau - m_e) / (m_B \times \text{GeV\_to\_J} \times c) \\
-  & \approx 3.18\times10-55   [strongly suppressed] \\
-  & Ub_i = \beta_i \times k_\eta \times G_F2 \times m_B2 \times BR_LFV / \pi \\
-  & \approx 2.1\times10-134   [negligible at LFV scale] \\
-  & F_U(B0\toK*0\tau-e+) \approx 5.622 + 1.31\times10-13 - 0.3337 + 6.56\times10-6 + 3.18\times10-55 - 0 \\
+  & Ug4 = \rho _UA \times BR_LFV / \rho _SCm \\
+  & = (7.09\times10^{-36} \times 5.9\times10^{-6}) / 6.38\times10^{-36} \\
+  & = 6.558\times10^{-6} \\
+  & Um  = |t_n| \times \mu _B \times (m_\tau - m_e) / (m_B \times \text{GeV\_to\_J} \times c) \\
+  & \approx 3.18\times10^{-55}   [strongly suppressed] \\
+  & Ub_i = \beta _i \times k_\eta \times G_F^2 \times m_B^2 \times BR_LFV / \pi \\
+  & \approx 2.1\times10^{-134}   [negligible at LFV scale] \\
+  & F_U(B0\to K*0\tau-e+) \approx 5.622 + 1.31\times10^{-13} - 0.3337 + 6.56\times10^{-6} + 3.18\times10^{-55} - 0 \\
   & \approx 5.288   (net positive: LFV transition strongly disfavored)
 \end{aligned}
 $$
@@ -259,8 +259,8 @@ temporal reversal threshold:
 
 $$
 \begin{aligned}
-  & \text{t\_n\_LFV} = -ln(BR_LFV) / \pi \\
-  & = -ln(5.9\times10-6) / \pi \\
+  & \text{t\_n\_LFV} = -\ln(BR_LFV) / \pi \\
+  & = -\ln(5.9\times10^{-6}) / \pi \\
   & = -(-12.04) / \pi \\
   & = 12.04 / \pi \\
   & = 3.833
@@ -275,10 +275,10 @@ The branching ratio derived from this constraint:
 
 $$
 \begin{aligned}
-  & BR_UQFF = exp(-\pi \times \text{t\_n\_LFV}) \\
-  & = exp(-\pi \times 3.833) \\
-  & = exp(-12.04) \\
-  & = 5.9\times10-6   \checkmark
+  & BR_UQFF = \exp(-\pi \times \text{t\_n\_LFV}) \\
+  & = \exp(-\pi \times 3.833) \\
+  & = \exp(-12.04) \\
+  & = 5.9\times10^{-6}   \checkmark
 \end{aligned}
 $$
 This exactly reproduces the LHCb limit, confirming the UQFF calibration is consistent.
@@ -289,10 +289,10 @@ In the Standard Model, LFV is suppressed by the GIM mechanism. For charged lepto
 mediated by virtual neutrinos:
 
 $$
-A_SM(ℓ \to ℓ') ~ (\alpha/4\pi) \times (m_\nu_i2 - m_\nu_j2) / m_W2
+A_{SM}(\ell \to \ell') \sim (\alpha/4\pi) \times (m_{\nu_i}^2 - m_{\nu_j}^2) / m_W^2
 $$
-Since neutrino masses satisfy $\Delta$$m_{\nu}$2 / m_W2 ~ (10-3 eV)2 / (80 GeV)2 ~ 10-40, the SM prediction for
-B0 $\to$ K*0 $\tau$e is:
+Since neutrino masses satisfy $\Delta m_{\nu}^2 / m_W^2 \sim (10^{-3}\,\text{eV})^2 / (80\,\text{GeV})^2 \sim 10^{-40}$, the SM prediction for
+$B^0 \to K^{*0}\tau e$ is:
 
 ```
 BR_SM(B0\rightarrowK*0\taue) ~ 10-54   (completely unobservable)
@@ -382,8 +382,8 @@ class LFVBDecayTerm : public PhysicsTerm_BSM {
 The two LFV modes exhibit different upper limits:
 
 ```
-BR(B0\rightarrowK*0 \tau-e⁺) < 5.9\times10-6    \rightarrow  t_n⁽1⁾ = -ln(5.9\times10-6)/\pi = 3.833
-BR(B0\rightarrowK*0 \tau⁺e-) < 4.9\times10-6    \rightarrow  t_n⁽2⁾ = -ln(4.9\times10-6)/\pi = 3.900
+BR(B0 -> K*0 tau- e+) < 5.9e-6   ==>  t_n^(1) = -ln(5.9e-6)/pi = 3.833
+BR(B0 -> K*0 tau+ e-) < 4.9e-6   ==>  t_n^(2) = -ln(4.9e-6)/pi = 3.900
 ```
 The difference $\Delta$t_n = 0.067 is consistent with a small CP-asymmetric contribution from the UQFF
 magnetic term Um (spin-flip factor), which enters with opposite sign for the $\tau$+e- vs $\tau$-e+ mode due
@@ -545,10 +545,10 @@ equations of motion derive:
 
 $$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
 
-$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
+$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial _\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
 
-The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
-(matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
+The SCm condensate potential minimum gives $V(\phi _0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
+(matching $\rho _{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
 
 **Nine-sector closure (Session 202):**
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
@@ -558,7 +558,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
-| 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
+| 4 (SCm) | Superconducting manifold | $V(\phi _0) = -\rho _{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
 | 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
@@ -637,7 +637,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ### A.2 F_U Master Equation (Complete --- 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda _i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -654,7 +654,7 @@ $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free par
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho _{SCm} - \rho _c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
@@ -688,19 +688,19 @@ This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial _mu \phi _{\mathrm{NS}})(\partial^\mu \phi _{\mathrm{NS}}) - V(\phi _{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho _{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
+$$V(\phi _{\mathrm{NS}}) = \frac{1}{2} m^2 \phi _{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi _{\mathrm{NS}}^4 + \kappa \cdot \rho _{\mathrm{vac,[SCm]}} \cdot \phi _{\mathrm{NS}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi _{\mathrm{NS}}} = \nabla^2 \phi _{\mathrm{NS}} - (4\pi G \rho _{\mathrm{NS}}/c^2)\phi _{\mathrm{NS}} + \Omega _{\mathrm{spin}} \partial _t \phi _{\mathrm{NS}} = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi _{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -713,11 +713,11 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho _{\mathrm{vac,[SCm]}} / \rho _{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho _{\mathrm{vac}}(r) = \rho _{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda _{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.143$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.143$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -731,11 +731,11 @@ Since $p_{\mathrm{DVP}} = 107$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -743,7 +743,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.143 | PASS Threshold-consistent |
+| VDS ratio | $\rho _{\mathrm{SCm}}/\rho _{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.143 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 107$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
@@ -842,7 +842,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
+| $\sin^2\theta _W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 | $m_Z$ | SCm phonon predicts $Z$ mass | $91.1876$ GeV | PDG 2024 | 99.8% |
 

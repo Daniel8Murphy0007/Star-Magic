@@ -77,7 +77,7 @@ from exclusive and inclusive semileptonic B-meson decays.
 In the Standard Model, |V_cb| enters the B $\to$ D*ℓ$\nu$ and B $\to$ Dℓ$\nu$ decay rates as:
 
 $$
-\Gamma(B \to Dℓ\nu) \propto G_F2 |V_cb|2 m_B5 \times |F(q2)|2 \times phase_space(q2)
+\Gamma(B \to Dℓ\nu) \propto G_F^2 |V_cb|2 m_B5 \times |F(q2)|2 \times phase_space(q2)
 $$
 
 where G_F = 1.1663787 $\times$ 10-5 GeV-2 is the Fermi constant, F(q2) is the hadronic form factor at
@@ -99,22 +99,22 @@ The Belle II collaboration used 365 fb-1 of data collected at the SuperKEKB e+e-
 employed:
 
 - **Tag-side reconstruction:** Hadronic full-reconstruction tagging of one B meson
-- **Signal-side:** B0 $\to$ D-ℓ+$\nu$ℓ and B+ $\to$ D̄0ℓ+$\nu$ℓ signal modes
+- **Signal-side:** $B^0 \to D^- \ell^+ \nu_\ell$ and $B^+ \to \bar{D}^0 \ell^+ \nu_\ell$ signal modes
 - **Form factor parameterization:** Caprini-Lellouch-Neubert (CLN) and Boyd-Grinstein-Lebed (BGL) fits
 - **q2 range:** 0 to 11.6 GeV2 (full kinematic range)
 
 The primary result:
 $$
 \begin{aligned}
-  & |V_cb| = (39.2 \pm 0.4(stat) \pm 0.6(sys) \pm 0.5(th)) \times 10-3 \\
-  & = (39.2 \pm 0.9) \times 10-3   [combined uncertainty]
+  & |V_cb| = (39.2 \pm 0.4(stat) \pm 0.6(sys) \pm 0.5(th)) \times 10^{-3} \\
+  & = (39.2 \pm 0.9) \times 10^{-3}   [combined uncertainty]
 \end{aligned}
 $$
 Additionally, the branching fractions are measured as:
 $$
 \begin{aligned}
   & BR(B0 \to D-ℓ+\nuℓ) = (2.06 \pm 0.08) % \\
-  & BR(B+ \to D̄0ℓ+\nuℓ) = (2.31 \pm 0.09) % \\
+  & BR(B^+ \to \bar{D}^0 \ell^+ \nu_\ell) = (2.31 \pm 0.09)\,\% \\
   & LFU ratio R(De\nu/D\mu\nu) = 1.020 \pm 0.030   [SM = 1.000 \pm 0.003]
 \end{aligned}
 $$
@@ -126,7 +126,7 @@ universality in b $\to$ c transitions at this precision.
 The longstanding V_cb puzzle --- a ~2$\sigma$ tension between inclusive determinations (|V_cb|^incl ~ 42 $\times$
 10-3) and exclusive determinations (|V_cb|^excl ~ 39 $\times$ 10-3) --- persists at the level of:
 $$
-\Delta|V_cb| = |V_cb|^incl - |V_cb|^excl \approx 3 \times 10-3  (~2\sigma)
+\Delta|V_cb| = |V_cb|^incl - |V_cb|^excl \approx 3 \times 10^{-3}  (~2\sigma)
 $$
 Within the UQFF framework, this tension is interpreted as a physical consequence of the SCm vacuum
 flavor mixing density [SCm]_flavor, which modulates the effective weak coupling at the hadronic
@@ -148,8 +148,8 @@ vacuum density of the Superconducting Manifold. Specifically:
 $$
 \begin{aligned}
   & [SCm]_flavor = |V_cb|2 \\
-  & = (39.2 \times 10-3)2 \\
-  & = 1.537 \times 10-3
+  & = (39.2 \times 10^{-3})2 \\
+  & = 1.537 \times 10^{-3}
 \end{aligned}
 $$
 This quantity represents the fraction of the SCm vacuum that supports b $\to$ c flavor transitions ---
@@ -165,7 +165,7 @@ The physical interpretation is:
 
 In the UQFF, the LENR neutron rate coupling $k_{\eta}$ enters weak decays through the $\eta$ parameter:
 $$
-\eta_weak = k_\eta \times G_F2 \times q2 / \pi
+\eta _weak = k_\eta \times G_F^2 \times q2 / \pi
 $$
 where:
 - $k_{\eta}$ = 10-113 is the UQFF LENR neutron rate coefficient (dimensionless, from `BSMPhysicsUQFFModule.cpp`)
@@ -185,26 +185,26 @@ $$
 **Step 1 --- Decay Width (Standard physics baseline):**
 $$
 \begin{aligned}
-  & \Gamma(B\toDℓ\nu) = G_F2 \times |V_cb|2 \times (m_B \times \text{GeV\_to\_J})5 \\
+  & \Gamma(B\to Dℓ\nu) = G_F^2 \times |V_cb|2 \times (m_B \times \text{GeV\_to\_J})5 \\
   & \times phase_space(m_D/m_B) \\
   & \times form_factor2(q2) \\
   & / (192 \pi3 ℏ) \\
   & phase_space = \sqrt{}(1 - (m_D/m_B)2) = \sqrt{}(1 - (1.86966/5.27965)2) = 0.9360 \\
-  & form_factor = 1 - q2/m_B2     [simplified CLN at mid-range q2] \\
+  & form_factor = 1 - q2/m_B^2     [simplified CLN at mid-range q2] \\
   & With q2 = 5.8 GeV2 (midpoint of [0, 11.6]): \\
   & form_factor = 1 - 5.8/27.87 = 0.7920 \\
-  & \Gamma \approx (1.1664\times10-5)2 \times (39.2\times10-3)2 \times (5.27965 \times 1.602\times10-10)5 \\
-  & \times 0.9360 \times 0.79202 / (192 \times \pi3 \times 1.0546\times10-34) \\
-  & \approx 3.14 \times 109 s-1   (\to \tau_B ~ 1.5 ps, consistent with PDG)
+  & \Gamma \approx (1.1664\times10^{-5})2 \times (39.2\times10^{-3})2 \times (5.27965 \times 1.602\times10^{-10})5 \\
+  & \times 0.9360 \times 0.79202 / (192 \times \pi3 \times 1.0546\times10^{-34}) \\
+  & \approx 3.14 \times 109 s-1   (\to \tau _B ~ 1.5 ps, consistent with PDG)
 \end{aligned}
 $$
 
 **Step 2 --- Ug1 (B meson rest-mass gravity):**
 $$
 \begin{aligned}
-  & Ug1 = m_B \times \text{GeV\_to\_J} / (m_p \times c2) \\
-  & = 5.27965 \times 1.602\times10-10 / (1.673\times10-27 \times 9\times1016) \\
-  & = 8.458\times10-10 / 1.506\times10-10 \\
+  & Ug1 = m_B \times \text{GeV\_to\_J} / (m_p \times c^2) \\
+  & = 5.27965 \times 1.602\times10^{-10} / (1.673\times10^{-27} \times 9\times1016) \\
+  & = 8.458\times10^{-10} / 1.506\times10^{-10} \\
   & = 5.614
 \end{aligned}
 $$
@@ -212,9 +212,9 @@ $$
 **Step 3 --- Ug2 (CKM unitarity constraint):**
 $$
 \begin{aligned}
-  & Ug2 = |V_cb|2 \times \kappa_Higgs \\
-  & = (39.2\times10-3)2 \times 1.0 \\
-  & = 1.537 \times 10-3 \\
+  & Ug2 = |V_cb|2 \times \kappa _Higgs \\
+  & = (39.2\times10^{-3})2 \times 1.0 \\
+  & = 1.537 \times 10^{-3} \\
   & = [SCm]_flavor
 \end{aligned}
 $$
@@ -224,8 +224,8 @@ This is the key UQFF result: **Ug2 is exactly the SCm flavor-mixing vacuum densi
 $$
 \begin{aligned}
   & Ug3 = F(q2) \times ℏc / (m_B \times \text{GeV\_to\_J} \times 1 fm) \\
-  & = 0.7920 \times (1.0546\times10-34 \times 2.998\times108) / (8.458\times10-10 \times 10-15) \\
-  & = 0.7920 \times 3.162\times10-26 / 8.458\times10-25 \\
+  & = 0.7920 \times (1.0546\times10^{-34} \times 2.998\times108) / (8.458\times10^{-10} \times 10^{-15}) \\
+  & = 0.7920 \times 3.162\times10^{-26} / 8.458\times10^{-25} \\
   & = 0.02960
 \end{aligned}
 $$
@@ -233,9 +233,9 @@ $$
 **Step 5 --- Ug4 (Weak-scale vacuum ratio):**
 $$
 \begin{aligned}
-  & Ug4 = \rho_UA \times (m_W \times \text{GeV\_to\_J}) / (\rho_SCm \times m_p \times c2) \\
-  & = (7.09\times10-36 \times 80.379 \times 1.602\times10-10) / (6.38\times10-36 \times 1.506\times10-10) \\
-  & = 9.133\times10-44 / 9.608\times10-46 \\
+  & Ug4 = \rho _UA \times (m_W \times \text{GeV\_to\_J}) / (\rho _SCm \times m_p \times c^2) \\
+  & = (7.09\times10^{-36} \times 80.379 \times 1.602\times10^{-10}) / (6.38\times10^{-36} \times 1.506\times10^{-10}) \\
+  & = 9.133\times10^{-44} / 9.608\times10^{-46} \\
   & = 95.06
 \end{aligned}
 $$
@@ -243,17 +243,17 @@ $$
 **Step 6 --- Um (weak coupling magnetism):**
 $$
 \begin{aligned}
-  & Um = \eta_weak \times \mu_B / (m_B \times \text{GeV\_to\_J} \times c) \\
-  & = (10-113 \times G_F2 \times q2 / \pi) \times 9.274\times10-24 / (8.458\times10-10 \times 3\times108) \\
-  & \approx 0  [strongly suppressed at O(10-113)]
+  & Um = \eta _weak \times \mu _B / (m_B \times \text{GeV\_to\_J} \times c) \\
+  & = (10^{-113} \times G_F^2 \times q2 / \pi) \times 9.274\times10^{-24} / (8.458\times10^{-10} \times 3\times108) \\
+  & \approx 0  [strongly suppressed at O(10^{-113})]
 \end{aligned}
 $$
 
 **Step 7 --- Ub_i (LENR buoyancy):**
 $$
 \begin{aligned}
-  & Ub_i = \beta_i \times \Gamma / (m_B \times \text{GeV\_to\_J} \times c2) \\
-  & = 0.603 \times 3.14\times109 / (8.458\times10-10 \times 9\times1016) \\
+  & Ub_i = \beta _i \times \Gamma / (m_B \times \text{GeV\_to\_J} \times c^2) \\
+  & = 0.603 \times 3.14\times109 / (8.458\times10^{-10} \times 9\times1016) \\
   & = 1.895\times109 / 7.612\times107 \\
   & = 24.89
 \end{aligned}
@@ -263,7 +263,7 @@ $$
 $$
 \begin{aligned}
   & F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i \\
-  & = 5.614 + 1.537\times10-3 + 0.02960 + 95.06 + ~0 - 24.89 \\
+  & = 5.614 + 1.537\times10^{-3} + 0.02960 + 95.06 + ~0 - 24.89 \\
   & = 75.81
 \end{aligned}
 $$
@@ -275,9 +275,9 @@ with the observed 2.06% branching fraction.
 The core UQFF result for Paper #28 is the mapping of |V_cb| to the SCm vacuum:
 $$
 \begin{aligned}
-  & [SCm]_flavor \equiv Ug2 = |V_cb|2 \times \kappa_Higgs \\
-  & With |V_cb| = 39.2\times10-3 and \kappa_Higgs = 1.0: \\
-  & [SCm]_flavor = (39.2\times10-3)2 = 1.5366 \times 10-3
+  & [SCm]_flavor \equiv Ug2 = |V_cb|2 \times \kappa _Higgs \\
+  & With |V_cb| = 39.2\times10^{-3} and \kappa _Higgs = 1.0: \\
+  & [SCm]_flavor = (39.2\times10^{-3})2 = 1.5366 \times 10^{-3}
 \end{aligned}
 $$
 This value appears in `source4.cpp`:
@@ -295,17 +295,17 @@ requirement that Higgs-mediated corrections to |V_cb| are at the SM level. In th
 \kappa_Higgs modulates the Ug2 term:
 Ug2 = |V_cb|2 \times \kappa_Higgs
 For \kappa_Higgs = 1.0 (SM limit): Ug2 = [SCm]_flavor exactly as measured. 
-For \kappa_Higgs \neq 1.0 (BSM): Ug2 shifts, implying a deviation in B \rightarrow Dℓ\nu form factors that would be
+For \kappa_Higgs \neq 1.0 (BSM): Ug2 shifts, implying a deviation in B \rightarrow Dl\nu form factors that would be
 detectable with HL-LHC and future B-factory data. 
 This provides a testable UQFF prediction: any measurement of \kappa_Higgs deviating from 1.0 in
-Higgs\rightarrowbb̄ decays (Paper #34) must be accompanied by a corresponding shift in |V_cb|_eff. 
+Higgs\rightarrowbbbar decays (Paper #34) must be accompanied by a corresponding shift in |V_cb|_eff. 
 ### 2.6 UQFF vs Standard Model Comparison 
 | Quantity | Standard Model | UQFF | Belle II Measured | 
 |----------|----------------|------|-------------------| 
 | Mechanism | CKM matrix, form factors | SCm vacuum mixing [SCm]_flavor = |V_cb|2 | --- | 
 | |V_cb| | Free parameter (fitted) | \sqrt{}[SCm]_flavor = \sqrt{}(Ug2/\kappa_Higgs) | (39.2 \pm 0.9)\times10-3 \checkmark | 
 | [SCm]_flavor | N/A | 1.537 \times 10-3 | --- | 
-| \Gamma(B\rightarrowDℓ\nu) | G_F2|V_cb|2m_B5/192\pi3 | F_U(Ug1+Ug2+Ug3+Ug4+Um-Ub_i) | 3.14\times109 s-1 \checkmark | 
+| \Gamma(B\rightarrowDl\nu) | G_F2|V_cb|2m_B5/192\pi3 | F_U(Ug1+Ug2+Ug3+Ug4+Um-Ub_i) | 3.14\times109 s-1 \checkmark | 
 | LFU R(e\nu/\mu\nu) | 1.000 \pm 0.003 (SM) | 1.020 (\kappa_Higgs = 1.0) | 1.020 \pm 0.030 \checkmark | 
 | \kappa_Higgs | 1.0 (SM) | 1.0 (calibrated) | Consistent \checkmark | 
 --- 
@@ -314,8 +314,8 @@ Higgs\rightarrowbb̄ decays (Paper #34) must be accompanied by a corresponding s
 Running `bsm_{physics\_validation}.py` produces the following CKM/B-physics section output:
 --- 2506.15256: Belle II |V_cb| ---
   |V_cb| = (39.2 \pm 0.9) \times 10^-3
-  B0 \rightarrow D-ℓ+\nuℓ: BR = 2.06%
-  B+ \rightarrow D̄0ℓ+\nuℓ: BR = 2.31%
+  B0 \rightarrow D-l+\nul: BR = 2.06%
+  B+ \rightarrow Dbar0l+\nul: BR = 2.31%
   LFU ratio: 1.020 \pm 0.03 (SM = 1.0)
 ```
 The `BSMPhysicsConstants` dataclass:
@@ -325,8 +325,8 @@ V_cb: float          = 39.2e-3   # CKM matrix element
 V_{cb\_stat\_err}: float = 0.4e-3    # Statistical uncertainty
 V_{cb\_sys\_err}: float  = 0.6e-3    # Systematic uncertainty
 V_{cb\_th\_err}: float   = 0.5e-3    # Theoretical uncertainty
-BR_{B0\_D\_ell\_nu}: float = 2.06e-2  # B0 \rightarrow D-ℓ+\nuℓ (2.06%)
-BR_{Bp\_D\_ell\_nu}: float = 2.31e-2  # B+ \rightarrow D̄0ℓ+\nuℓ (2.31%)
+BR_{B0\_D\_ell\_nu}: float = 2.06e-2  # B0 \rightarrow D-l+\nul (2.06%)
+BR_{Bp\_D\_ell\_nu}: float = 2.31e-2  # B+ \rightarrow Dbar0l+\nul (2.31%)
 LFU_ratio: float     = 1.020     # B(B\rightarrowDe\nu)/B(B\rightarrowD\mu\nu) = 1.020 \pm 0.03
 ```
 
@@ -347,8 +347,8 @@ mappings['SCm_{flavor\_mixing}'] = bsm.V_cb**2  # ~1.5 \times 10^-3
 
 double V_cb             = 39.2e-3;     // CKM matrix element |V_cb|
 double V_{cb\_total\_err}   = 0.9e-3;      // Combined uncertainty
-double BR_{B0\_D\_ell\_nu}   = 2.06e-2;     // B0 \rightarrow D-ℓ+\nuℓ branching fraction (2.06%)
-double BR_{Bp\_D\_ell\_nu}   = 2.31e-2;     // B+ \rightarrow D̄0ℓ+\nuℓ branching fraction (2.31%)
+double BR_{B0\_D\_ell\_nu}   = 2.06e-2;     // B0 \rightarrow D-l+\nul branching fraction (2.06%)
+double BR_{Bp\_D\_ell\_nu}   = 2.31e-2;     // B+ \rightarrow Dbar0l+\nul branching fraction (2.31%)
 double LFU_ratio        = 1.020;       // B(B\rightarrowDe\nu)/B(B\rightarrowD\mu\nu) - tests universality
 double `SCm_{flavor\_mixing}` = 1.5366e-3;  // |V_cb|2 - vacuum flavor suppression
 ```
@@ -364,7 +364,7 @@ class CKMVcbTerm : public PhysicsTerm_BSM {
 double compute(...) const override {
         // Decay width
         double Gamma = G_F2 \times Vcb2 \times pow(m_B\timesGeV_{to\_J}, 5)
-                       \times phase_space \times form_factor2 / (192\pi3ℏ);
+                       \times phase_space \times form_factor2 / (192\pi3hbar);
         // UQFF terms
         double Ug1 = m_B \times GeV_{to\_J} / (m_p \times c2);          // 5.614
         double Ug2 = Vcb \times Vcb \times kappa_Higgs;               // [SCm]_flavor = 1.537e-3
@@ -373,7 +373,7 @@ double compute(...) const override {
         double Um  = eta_weak \times mu_B / (m_B\timesGeV_{to\_J}\timesc);   // ~0 (suppressed)
         double Ub_i = beta_i \times Gamma / (m_B\timesGeV_{to\_J}\timesc2);  // 24.89
         // getName() \rightarrow "CKMVcbTerm"
-        // getEquation() \rightarrow \Gamma(B\rightarrowDℓ\nu) ∝ G_F2 |V_cb|2 m_B5 \times F(q2)2
+        // getEquation() \rightarrow \Gamma(B\rightarrowDl\nu) prop G_F2 |V_cb|2 m_B5 \times F(q2)2
     }
 };
 ```
@@ -410,7 +410,7 @@ background --- a dimensionless suppression factor unique to the b $\to$ $\tau$e 
 | |V_cb| | $\sqrt{}$[SCm]_flavor = 39.2$\times$10-3 | (39.2 $\pm$ 0.9)$\times$10-3 | \checkmark Exact | within 1$\sigma$ |
 | [SCm]_flavor | |V_cb|2 = 1.537$\times$10-3 | N/A (UQFF quantity) | \checkmark Defined | --- |
 | BR(B0$\to$D-ℓ+$\nu$ℓ) | $\Gamma$/$\Gamma$_total $\to$ 2.06% | (2.06 $\pm$ 0.08)% | \checkmark Exact | within 1$\sigma$ |
-| BR(B+$\to$D̄0ℓ+$\nu$ℓ) | isospin $\to$ 2.31% | (2.31 $\pm$ 0.09)% | \checkmark Exact | within 1$\sigma$ |
+| $BR(B^+\to\bar{D}^0\ell^+\nu_\ell)$ | isospin $\to$ 2.31% | (2.31 $\pm$ 0.09)% | \checkmark Exact | within 1$\sigma$ |
 | LFU R(e$\nu$/$\mu$$\nu$) | 1.000 ($\kappa$_Higgs=1.0) | 1.020 $\pm$ 0.030 | \checkmark Within 1$\sigma$ | 0.67$\sigma$ |
 | F_U (B$\to$Dℓ$\nu$) | 75.81 (positive $\to$ allowed) | Signal observed | \checkmark Consistent | --- |
 | Ug2 = [SCm]_flavor | 1.537$\times$10-3 | --- | \checkmark Calibrated | --- |
@@ -550,8 +550,8 @@ suppression factor.  The corrected strain amplitude is:
 $$h_{\text{UQFF}}(\Gamma) = h_{\text{GR}} \cdot \left(1 - 0.47\,\frac{\Phi(\Gamma)}{S_{26}^{(3)}}\right)$$
 
 where:
-- $\Phi(\Gamma) = \cos(\omega_{\text{SCm}} \cdot t) \cdot \Theta(H_{\text{SCm}} - 0.5)$ is the phonon modulation factor
-- $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ is the SCm phonon resonance frequency
+- $\Phi(\Gamma) = \cos(\omega _{\text{SCm}} \cdot t) \cdot \Theta(H_{\text{SCm}} - 0.5)$ is the phonon modulation factor
+- $\omega _{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ is the SCm phonon resonance frequency
 - $S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$ is the third-order Ramanujan summation
 - $\Theta$ is the Heaviside step ensuring $H_{\text{SCm}} \geq 0.5$ (phase-transition threshold)
 
@@ -563,7 +563,7 @@ neutron-star crust couples to this phonon field, creating a mass-gap
 classifier that distinguishes NS from BH remnants at $M \approx 2.5\,M_\odot$.
 
 **Calibration (canonical):** $\kappa = 5 \times 10^{-4}\;\text{day}^{-1}$,
-$[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
+$[\text{SSq}] = 0.57$, $\beta _i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 <!-- PKG-LAG-S225 -->
 
@@ -577,10 +577,10 @@ equations of motion derive:
 
 $$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
 
-$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
+$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial _\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
 
-The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
-(matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
+The SCm condensate potential minimum gives $V(\phi _0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
+(matching $\rho _{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
 
 **Nine-sector closure (Session 202):**
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
@@ -590,7 +590,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
-| 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
+| 4 (SCm) | Superconducting manifold | $V(\phi _0) = -\rho _{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
 | 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
@@ -646,7 +646,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 **Validator:** `bsm_{physics\_validation}.py` --- PASSED  
 *CKM: |V_cb| = (39.2 $\pm$ 0.9)$\times$10-3 (Belle II exact); [SCm]_flavor = |V_cb|2 = 1.537$\times$10-3; BR(B0$\to$D-ℓ+$\nu$)
-= 2.06%, BR(B+$\to$D̄0ℓ+$\nu$) = 2.31%; LFU R = 1.000 (SM limit, within 1$\sigma$ of 1.020$\pm$0.030); F_U(B$\to$Dℓ$\nu$) =
+= 2.06%, $BR(B^+\to\bar{D}^0\ell^+\nu) = 2.31\%$; LFU R = 1.000 (SM limit, within 1$\sigma$ of 1.020$\pm$0.030); F_U(B$\to$Dℓ$\nu$) =
 75.81 (positive signal); $\kappa$ = 0.0005/day, [SSq] = 0.57*
 ---
 
@@ -672,7 +672,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ### A.2 F_U Master Equation (Complete --- 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda _i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -689,7 +689,7 @@ $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free par
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho _{SCm} - \rho _c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
@@ -723,19 +723,19 @@ This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial _mu \phi _{\mathrm{NS}})(\partial^\mu \phi _{\mathrm{NS}}) - V(\phi _{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho _{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
+$$V(\phi _{\mathrm{NS}}) = \frac{1}{2} m^2 \phi _{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi _{\mathrm{NS}}^4 + \kappa \cdot \rho _{\mathrm{vac,[SCm]}} \cdot \phi _{\mathrm{NS}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi _{\mathrm{NS}}} = \nabla^2 \phi _{\mathrm{NS}} - (4\pi G \rho _{\mathrm{NS}}/c^2)\phi _{\mathrm{NS}} + \Omega _{\mathrm{spin}} \partial _t \phi _{\mathrm{NS}} = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi _{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -748,11 +748,11 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho _{\mathrm{vac,[SCm]}} / \rho _{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho _{\mathrm{vac}}(r) = \rho _{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda _{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.090$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.090$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -766,11 +766,11 @@ Since $p_{\mathrm{DVP}} = 109$ is **resonant** (threshold at $p > 26$), the syst
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -778,7 +778,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
+| VDS ratio | $\rho _{\mathrm{SCm}}/\rho _{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.090 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 109$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
@@ -881,7 +881,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
+| $\sin^2\theta _W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 | $m_Z$ | SCm phonon predicts $Z$ mass | $91.1876$ GeV | PDG 2024 | 99.8% |
 
