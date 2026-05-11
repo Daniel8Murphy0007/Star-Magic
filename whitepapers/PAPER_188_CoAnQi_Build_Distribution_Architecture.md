@@ -272,13 +272,13 @@ set(CPACK_{DEBIAN\_PACKAGE\_PRIORITY} "optional")
 Reproducibility of UQFF numerical results requires bit-exact binary preservation
 across platforms. The compressed MUGE gravity formula executed at installation time:
 
-$$g_\text{MUGE}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \sum_{k=1}^{9} \delta_kright), \quad \delta_text{Quantum} = \frac{\hbar \omega_g}{k_B T_\text{CMB}} \approx \frac{1.055\times10^{-34}\times7.3\times10^{-16}}{1.38\times10^{-23}\times2.725} \approx 2.05\times10^{-27}$$
+$$g_\text{MUGE}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \sum_{k=1}^{9} \delta_k\right), \quad \delta_\text{Quantum} = \frac{\hbar \omega_g}{k_B T_\text{CMB}} \approx \frac{1.055\times10^{-34}\times7.3\times10^{-16}}{1.38\times10^{-23}\times2.725} \approx 2.05\times10^{-27}$$
 
 **Numerical Fidelity Check:** The UPX-decompressed binary must reproduce MUGE
 gravity for Sagittarius A* within the double-precision limit. Verified on both
 Windows (MSVC 14.44) and Linux (GCC 12.3):
 
-$$\Delta g / g = 1.00\times10^{-14}\;(\text{double-precision floor}), \quad \delta_text{Quantum} = 2.05\times10^{-27}$$
+$$\Delta g / g = 1.00\times10^{-14}\;(\text{double-precision floor}), \quad \delta_\text{Quantum} = 2.05\times10^{-27}$$
 
 In standard e-notation: Delta_g/g = 1.00e-14, quantum correction delta = 2.05e-27.
 

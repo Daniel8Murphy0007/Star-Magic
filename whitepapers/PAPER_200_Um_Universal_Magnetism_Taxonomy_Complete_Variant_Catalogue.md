@@ -23,10 +23,7 @@ catalogue)
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
-$$
-L_\text{UQFF} = \frac{4\pi G M c}{\kappa_text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa,\Delta t}\Bigr),
-\quad [SSq] = 0.57
-$$
+$$L_{\text{UQFF}} = \frac{4\pi G M c}{\kappa_{\text{es}}}\Bigl(1 - [SSq]\cdot e^{-\kappa\,\Delta t}\Bigr),\quad [SSq] = 0.57$$
 <!— $\kappa$ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
@@ -107,7 +104,7 @@ $$
 | Um,ang(t,r) | v($\mu$_s$\nabla$(M_s/r)/r)$\cdot$r_A ; accretion adds L=?r2O | Angular momentum accretion |
 | Um,jetvel(r) | O$\cdot$r_A$\cdot$(r_A/r0)^{1/2} | Jet velocity from Alfvén radius |
 | Um,glitch(t) | Angular momentum transfer ?L = I_s$\cdot$?O | Superfluid vortex glitch |
-| Um,ms(M) | Eddington: L ˜ \mu4M3 (opacity, composition \mu) | Main-sequence L-M relation |
+| Um,ms(M) | Eddington: $L \sim \mu^4 M^3$ (opacity, composition $\mu$) | Main-sequence L-M relation |
 | Um,ml(M) | Calibrate from HR diagram | Mass-luminosity relation |
 | Um,relax(?) | s_v3/(G2?m) | Two-body relaxation time |
 | Um,evap(N) | Integrate exponential cluster dissolution | Star cluster evaporation |
@@ -120,7 +117,7 @@ $$
 | Symbol | F_X Expression | Physical Context |
 |--------|---------------|-----------------|
 | Um,chirp(f) | (32/5)(G??^{5/3}/c5)(pf)^{10/3} | GW chirp mass inspiral energy loss |
-| Um,orbdec(e) | dE/dt = -L, E = -GM$\cdot$\mu/(2a) | Orbital decay by GW quadrupole radiation |
+| Um,orbdec(e) | $dE/dt = -L,\; E = -GM\cdot\mu/(2a)$ | Orbital decay by GW quadrupole radiation |
 | Um,peri(a) | Kepler: a3/P2 = GM/(4p2) | Post-Keplerian periastron advance |
 | Um,kilo(t) | Diffusion t_d2 = 3?M/(4pcv2) | Kilonova light curve peak |
 
@@ -186,7 +183,7 @@ $$
 | Um,merg(t) | 3r_vir/(5GM) | Virial merger crossing time |
 | Um,cross(M) | Matches ~2 Gyr for relaxed clusters | Merger timescale (dynamical age) |
 | Um,heat(T) | Balance with duty-cycled AGN | Cool core AGN heating rate |
-| Um,whim(M) | \mu ˜ 0.6 (mean molecular weight) | WHIM temperature from virialization |
+| Um,whim(M) | $\mu \sim 0.6$ (mean molecular weight) | WHIM temperature from virialization |
 | Um,cool(T) | t = E/E | Cooling time (bremsstrahlung T > 107 K) |
 | Um,lens(?) | ?_E2 = a$\cdot$? ? Einstein radius | Strong gravitational lensing |
 
@@ -250,23 +247,23 @@ current codebase (`MAIN_{1\_CoAnQi}.cpp`, `CondensedPhysics.py`, `CondensedPhysi
 
 | Status | Meaning |
 |--------|---------|
-| ✅ **Operational** | Fully implemented, returns numerical result for any input dataset |
-| 🔄 **Partial** | Core formula implemented; specialized sub-terms use placeholder values |
-| 📋 **Reference** | Equation documented for reproducibility; not yet callable from pipeline |
+|  **Operational** | Fully implemented, returns numerical result for any input dataset |
+|  **Partial** | Core formula implemented; specialized sub-terms use placeholder values |
+|  **Reference** | Equation documented for reproducibility; not yet callable from pipeline |
 
 ### Core Um Variants
 
 | Symbol | Description | Status | Notes |
 |--------|-------------|--------|-------|
-| Um (base) | `\Sigma_j[\mu_j/r_j\cdot(1−e^{−\gammat\cdotcos(\pit_n)})\cdot\phî_j]\cdotP_SCm\cdotE_react` | ✅ **Operational** | `c`ompute_{Um\_SOURCE}`4`, `compute_Um()` |
-| Um (Heaviside-amplified) | Um_base $\times$ (1+1013$\cdot$$\Theta$($\rho$_SCm-$\rho$_c)) $\times$ (1+A_q$\cdot$cos($\Delta$$\omega$$\cdot$t)) | ✅ **Operational** | PAPER_421 — integrated v4.75 |
-| Um,BZ | Blandford-Znajek power extraction | ✅ **Operational** | `CondensedPhysics2.py` BZ class |
-| Um,haw | Hawking temperature surface gravity | ✅ **Operational** | `b`h_{thermodynamics\_module}`.py` |
-| Um,qnm | QNM ringdown frequency | ✅ **Operational** | `CondensedPhysics.py` QNM class |
+| Um (base) | `\Sigma_j[\mu_j/r_j*(1-e^{-\gamma t \cdot cos(\pi t_n)})*\phi_j]*P_SCm*E_react` |  **Operational** | `compute_Um_SOURCE4`, `compute_Um()` |
+| Um (Heaviside-amplified) | Um_base $\times$ (1+1013$\cdot$$\Theta$($\rho$_SCm-$\rho$_c)) $\times$ (1+A_q$\cdot$cos($\Delta$$\omega$$\cdot$t)) |  **Operational** | PAPER_421 — integrated v4.75 |
+| Um,BZ | Blandford-Znajek power extraction |  **Operational** | `CondensedPhysics2.py` BZ class |
+| Um,haw | Hawking temperature surface gravity |  **Operational** | `b`h_{thermodynamics\_module}`.py` |
+| Um,qnm | QNM ringdown frequency |  **Operational** | `CondensedPhysics.py` QNM class |
 
 ### Reference-Only Variants (50+)
 
-All remaining Um,X variants catalogued in §2–§10 of this paper are **📋 Reference**
+All remaining Um,X variants catalogued in §2–§10 of this paper are ** Reference**
 status. They contain correct analytical expressions derived from BB_{C\_Equations\_04Sept2025}.pdf
 but are not yet wired into the main computation pipeline.
 
@@ -384,7 +381,7 @@ This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{BH}})(\partial^\mu \phi_{\mathrm{BH}}) - V(\phi_{\mathrm{BH}}) + \mathcal{L}_{\mathrm{cosmo}}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_\mu \phi_{\mathrm{BH}})(\partial^\mu \phi_{\mathrm{BH}}) - V(\phi_{\mathrm{BH}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
 where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 

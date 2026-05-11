@@ -172,7 +172,7 @@ $$
   & Jeans length: \\
   & ?_J = p^{1/2} \cdot c_s / (G\cdot?)^{1/2} \\
   & Jeans mass: \\
-  & M_J = (p/6) \cdot ? \cdot ?_J3 = (5k_BT/(G\mum_H))^{3/2} \cdot (3/(4p?))^{1/2} \\
+  & M_J = (\pi/6) \cdot \rho \cdot \lambda_J^3 = (5 k_B T/(G \mu m_H))^{3/2} \cdot (3/(4\pi\rho))^{1/2} \\
   & Stability condition: ? > ?_J ? gravitational collapse \\
   & Dispersion relation: ?2 = c2_s\cdot k2 - 4pG? \\
   & Unstable: ?2 < 0 ? k < k_J = 2p/?_J \\

@@ -35,8 +35,53 @@ MAP = {
 SORTED_KEYS = sorted(MAP.keys(), key=len, reverse=True)
 INLINE = re.compile(r"\$(" + "|".join(re.escape(k) for k in SORTED_KEYS) + r")\$")
 
+# Bare-command pattern (outside math + code) for replacement with unicode
+BARE = re.compile(r"\\(" + "|".join(re.escape(k[1:]) for k in SORTED_KEYS) + r")(?![A-Za-z])")
+
 def preprocess(text):
-    return INLINE.sub(lambda m: MAP[m.group(1)], text)
+    text = INLINE.sub(lambda m: MAP[m.group(1)], text)
+    # Now walk lines: skip inside fenced code blocks and $$..$$ blocks
+    lines = text.split("\n")
+    out = []
+    in_code = False
+    in_block = False
+    for line in lines:
+        stripped = line.lstrip()
+        if stripped.startswith("```"):
+            in_code = not in_code
+            out.append(line); continue
+        if in_code:
+            out.append(line); continue
+        dd = line.count("$$")
+        if in_block:
+            out.append(line)
+            if dd % 2 == 1:
+                in_block = False
+            continue
+        if dd >= 2:
+            out.append(line); continue
+        if dd == 1:
+            out.append(line); in_block = True; continue
+        # not in math block; replace bare commands outside $...$ regions
+        # walk char by char tracking single $
+        s = line
+        out_chars = []
+        j = 0
+        inm = False
+        while j < len(s):
+            c = s[j]
+            if c == "$":
+                inm = not inm
+                out_chars.append(c); j += 1; continue
+            if not inm and c == "\\" and j+1 < len(s):
+                m = BARE.match(s, j)
+                if m:
+                    cmd = "\\" + m.group(1)
+                    out_chars.append(MAP[cmd])
+                    j = m.end(); continue
+            out_chars.append(c); j += 1
+        out.append("".join(out_chars))
+    return "\n".join(out)
 
 def main():
     if len(sys.argv) != 2:

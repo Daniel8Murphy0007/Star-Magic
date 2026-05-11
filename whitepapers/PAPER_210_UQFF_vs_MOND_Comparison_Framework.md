@@ -66,8 +66,8 @@ $$
 \begin{aligned}
   & For typical spiral galaxy (M_baryon = 5\times101° M_?, v_flat = 200 km/s): \\
   & DPM-seeded: g_N = \mu_s?(M_s/r)  decreases as 1/r2 \\
-  & Deep-MOND: g = v(g_N\cdota0) ? v = (G\cdotM\cdota0)^{1/4} = constant \\
-  & MOND flat rotation: v_flat = (G\cdotM_b\cdota0)^{1/4} \\
+  & Deep-MOND: g = v(g_N\cdot a0) ? v = (G\cdot M\cdot a0)^{1/4} = constant \\
+  & MOND flat rotation: v_flat = (G\cdot M_b\cdot a0)^{1/4} \\
   & ? Baryonic Tully-Fisher Relation (BTFR): M_b ? v_flat4 \\
   & MOND fit to galactic rotation: \\
   & Galaxies: ?2/N \approx 1.2 (excellent, McGaugh+2016) \\
@@ -83,10 +83,10 @@ $$
   & g(r) = g_N(r)\cdot[1+H(t,z)] + Ug1(r) + Ug2(r) + Ug4(r) + F_env(r) \\
   & + F_UBii,nfwrot(r)/m  (NFW-based rotation contribution) \\
   & In deep galactic field: \\
-  & Ug1(r) = k_UA\cdot(M_b/M_MW)\cdot[UA]\cdotr^{-0.5}   (slowly falling, flatter than g_N) \\
+  & Ug1(r) = k_UA\cdot(M_b/M_MW)\cdot[UA]\cdot r^{-0.5}   (slowly falling, flatter than g_N) \\
   & This reproduces flat rotation without MOND's interpolation function \\
   & k_UA absorbs what MOND calls a0: effectively a0 \approx k_UA\cdot[UA]/G^{1/2} \\
-  & UQFF BTFR: v_flat ? (G\cdotM_b\cdotk_UA\cdot[UA])^{1/4}  --- identical structure to MOND \\
+  & UQFF BTFR: v_flat ? (G\cdot M_b\cdot k_UA\cdot[UA])^{1/4}  --- identical structure to MOND \\
   & ? UQFF recovers MOND rotation at galactic scales as limiting case
 \end{aligned}
 $$
@@ -104,7 +104,7 @@ Observed phenomenon:
   Discrepancy: M_lensing/M_b \approx 2\times  (factor 2 missing mass)
 
 MOND prediction for Bullet Cluster:
-  g_MOND = v(g_N,baryon\cdota0) or g_N,baryon (in high-g regime)
+  g_MOND = v(g_N,baryon\cdot a0) or g_N,baryon (in high-g regime)
   MOND mass \approx M_b (no dark matter) ? underpredicts by factor 2--5
   
 MOND ad hoc fix: "neutrino dark matter" (Sanders 2003)
@@ -117,13 +117,13 @@ MOND on cluster scales: ?2/N \approx 3--10 (poor fit)
 ### UQFF Treatment of Clusters
 ```
 Cluster-specific F_env(t):
-  F_env,cluster(t) = f_ICM\cdot(1 + ?P_ram/P_th)\cdot(1 + f_AGN\cdott/t_cool)
+  F_env,cluster(t) = f_ICM\cdot(1 + ?P_ram/P_th)\cdot(1 + f_AGN\cdot t/t_cool)
 
   ICM adds additional UQFF buoyancy F_UBii,ps ? M^{0.3}
   This provides ~40% additional effective mass at cluster scales
 
 F_UBii,vir:
-  F_UBii,vir = F_rel \times (s_r2\cdotM_cluster/R_2002\cdotE_LEP) \times Q_wave
+  F_UBii,vir = F_rel \times (s_r2\cdot M_cluster/R_2002\cdot E_LEP) \times Q_wave
 
 Effective UQFF mass for clusters:
   M_eff = M_visible + ?M_UBii,vir + ?M_UBii,ps
@@ -140,22 +140,22 @@ Comparison: MOND ?2/N \approx 3--10, CDM ?2/N \approx 1.2--2.0
 $$
 \begin{aligned}
   & Milgrom's a0 fundamental question: Why a0 \approx cH0/6 \approx 1.2\times10?1° m/s2? \\
-  & MOND: empirical coincidence with a0 \approx cH0/(2p) (Hu & Sawicki 2007) \\
+  & MOND: empirical coincidence with a0 \approx cH0/(2p) (Hu \& Sawicki 2007) \\
   & UQFF derivation of effective a0: \\
-  & In deep galactic field: Ug1 \approx k_UA\cdot?_vac,[UA]\cdotr/r_galaxy \\
+  & In deep galactic field: Ug1 \approx k_UA\cdot?_vac,[UA]\cdot r/r_galaxy \\
   & This contributes: ?g \approx k_UA\cdot?_vac,[UA]/M_galaxy \times r \\
   & Flat curve condition: ?g = g_N at some radius r_trans \\
   & k_UA\cdot?_vac,[UA]/M \times r_trans = \mu_s?(M_s/r) \\
-  & ? a0_eff = v(k_UA\cdot?_vac,[UA]\cdotG)   (UQFF prediction) \\
+  & ? a0_eff = v(k_UA\cdot?_vac,[UA]\cdot G)   (UQFF prediction) \\
   & Numerically: \\
   & k_UA = [UA] = 0.0001    (UQFF calibrated coupling) \\
   & ?_vac,[UA] = 10?15 kg/m3 \\
-  & G = 6.674\times10?11 m3/(kg\cdots2) \\
+  & G = 6.674\times10?11 m3/(kg\cdot s2) \\
   & a0_eff = v(10?4 \times 10?15 \times 6.674\times10?11) \approx v(6.67\times10?3°) \approx 2.6\times10?15 m/s2 \\
   & Discrepancy: 2.6\times10?15 vs 1.2\times10?1° ? factor ~5\times104 off \\
   & Resolution: k_UA enters as (k_UA \times r_scale)2 / r3 form: \\
   & At transition scale r_trans (few kpc): \\
-  & a0_eff, local = k_UA\cdot?_vac,[UA]\cdotr_trans2/M_galaxy \\
+  & a0_eff, local = k_UA\cdot?_vac,[UA]\cdot r_trans2/M_galaxy \\
   & This recovers a0 \approx 10?1° m/s2 with appropriate r_trans \approx 5 kpc \\
   & Conclusion: a0 is not a fundamental constant in UQFF but an emergent \\
   & scale set by k_UA\cdot?_vac,[UA] at galactic transition radii
@@ -178,9 +178,9 @@ $$
   & ?f_lens = f_Newton + UQFF correction Ug1+Ug4 \\
   & + F_UBii,lens/c4 \times area term \\
   & For Einstein ring radius ?_E: \\
-  & ?_E2 = 4G/c2 \times M_eff/(D_L\cdotD_S/D_LS) \\
+  & ?_E2 = 4G/c2 \times M_eff/(D_L\cdot D_S/D_LS) \\
   & M_eff = M_Newton + M_UQFF,equivalent \\
-  & = M_Newton \times (1 + F_UBii,vir/g_N\cdotr) \\
+  & = M_Newton \times (1 + F_UBii,vir/g_N\cdot r) \\
   & UQFF strong lensing of Abell 2744: \\
   & Predicted: 36 multiple images ? Observed: 33 (CLASH/HFF) \\
   & Agreement: ~9% (vs MOND/TeVeS: 25--40% discrepancy)
@@ -193,14 +193,14 @@ $$
 
 ```
 MOND prediction for v_pec:
-  v_pec = fH\cdotd\cdot?MOND  (with MOND enhancement factor ?MOND = \mu/\mu_{cluster})
+  v_pec = fH\cdot d\cdot?MOND  (with MOND enhancement factor ?MOND = \mu/\mu_{cluster})
   Problem: MOND doesn't model cluster-scale dynamics consistently
   Observed: s_v = bulk flow ~250 km/s (CosmicFlows-4)
   MOND: overpredicts s_v by ~30% without additional hot DM
 
 UQFF prediction:
-  v_pec = fH\cdotd + v_UQFF,extra   (F_UBii,pec term)
-  F_UBii,pec = F_rel \times (v_pec\cdot?F_UQFF / H\cdotE_LEP) \times Q_wave
+  v_pec = fH\cdot d + v_UQFF,extra   (F_UBii,pec term)
+  F_UBii,pec = F_rel \times (v_pec\cdot?F_UQFF / H\cdot E_LEP) \times Q_wave
 
 UQFF bulk flow:
   s_v,UQFF \approx 240 km/s at 150 Mpc (CosmicFlows-4: 248 km/s)
@@ -231,8 +231,8 @@ UQFF bulk flow:
 $$
 \begin{aligned}
   & MOND standard \mu(x) = x/v(1+x2): \\
-  & Deep-MOND: x<<1 ? \mu\approxx ? g_MOND \approx v(g_N\cdota0) \\
-  & DPM-seeded:  x>>1 ? \mu\approx1 ? g_MOND \approx g_N (recovers Newton) \\
+  & Deep-MOND: x<<1 ? \mu\approx x ? g_MOND \approx v(g_N\cdot a0) \\
+  & DPM-seeded:  x>>1 ? \mu\approx 1 ? g_MOND \approx g_N (recovers Newton) \\
   & Discontinuous derivatives at x=1 (scale-dependent kink) \\
   & UQFF effective \mu(r): \\
   & \mu_UQFF(r) = (1 + Ug1(r)/g_N(r))^{-1/2} \\

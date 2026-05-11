@@ -1,0 +1,10 @@
+import re, sys, pathlib
+p = pathlib.Path(sys.argv[1])
+s = p.read_text(encoding='utf-8')
+s = re.sub(r'\\cdot([A-Za-z])', r'\\cdot \1', s)
+s = re.sub(r'\\times([A-Za-z])', r'\\times \1', s)
+s = re.sub(r'\\nabla([A-Za-z])', r'\\nabla \1', s)
+s = re.sub(r'\\approx([A-Za-z0-9])', r'\\approx \1', s)
+s = re.sub(r'\\mu([a-zA-Z])', r'\\mu \1', s)  # \muX => \mu X (but not \mu_)
+p.write_text(s, encoding='utf-8')
+print('done')

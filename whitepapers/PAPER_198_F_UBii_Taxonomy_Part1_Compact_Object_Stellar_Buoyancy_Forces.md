@@ -50,7 +50,7 @@ present in Standard Model treatments.
 
 $$
 \begin{aligned}
-  & F_UBii,X = \pmF_rel \times (F_X / E_LEP) \times Q_wave \times [decay/oscillation factor] \\
+  & F_UBii,X = \pm F_rel \times (F_X / E_LEP) \times Q_wave \times [decay/oscillation factor] \\
   & where: \\
   & F_rel ˜ 4.3\times1033 N  (relativistic UQFF force scale) \\
   & E_LEP = energy of characteristic LEP scale (J) \\
