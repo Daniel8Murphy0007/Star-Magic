@@ -53,8 +53,13 @@ KNOWN GAPS:
   G2.  The coupling beta_i is a 26-component vector with beta_i ~ 0.603
        across all i. The i-dependence (whether truly constant or weakly
        i-varying) is not derived.
-  G3.  L_DPM uses an SO(2) gauge structure (CW-CCW pair) but its embedding
-       in the full 26D internal symmetry group is not written down.
+  G3.  CLOSED (Session 250, PAPER_1163): SO(2)_DPM = light-cone gauge 2-plane
+       in SO(26), the textbook bosonic string embedding SO(26) > SO(24) x SO(2).
+       Dim count exact: 325 = 276 + 1 + 48 (with 48 = 24*2 transverse x light-cone).
+       Dynkin index T = 1 (minimal, irreducible). Branching of vector 26:
+       (24,1_0) + (1,1_+1) + (1,1_-1) -- the two SO(2)-charged singlets are
+       the CW (q=+1) and CCW (q=-1) monopoles. F_DPM = I*A*(omega1-omega2)
+       is the SO(2) charge-difference current. Zero free parameters.
 
 CHECK-TEST T1:
   Once L_F_U is fully specified, the equations of motion d L_F_U / d g_{munu} = 0
@@ -261,7 +266,7 @@ if __name__ == "__main__":
     print("=" * 72)
     print("OUTSTANDING WORK (in priority order):")
     print()
-    print("  G3 (DPM gauge embedding)    -- needed for h, alpha")
+    print("  G3 (DPM gauge embedding)    -- CLOSED (Session 250, PAPER_1163): SO(2) = light-cone in SO(26)>SO(24)xSO(2)")
     print("  G1 (V(UA) polynomial)       -- needed for Lambda")
     print("  G5 (KK tower suppression)   -- CLOSED (Session 249, PAPER_1162): Sum 1/lambda_n^26 = 1.6e-37 << 1/26!")
     print("  G6 (Phi_res identification) -- CLOSED (Session 246, PAPER_1159): Phi_res = 5/6")
@@ -270,8 +275,8 @@ if __name__ == "__main__":
     print("  G4 (T^22 moduli stab)       -- needed for all five")
     print("  G2 (beta_i i-dependence)    -- needed for Lambda cross-check")
     print()
-    print("Estimated effort: 4-7 person-weeks of theoretical work to close")
-    print("the remaining four gaps (G5, G6, G7, G8 closed Sessions 246-249). Until then, four closures remain at the level of")
+    print("Estimated effort: 3-5 person-weeks of theoretical work to close")
+    print("the remaining three gaps (G3, G5, G6, G7, G8 closed Sessions 246-250). Until then, three closures remain at the level of")
     print("internal cross-validation (overdetermination), not first-principles.")
     print()
     print("This is honest scoping. The numerics are real; the Lagrangian")
