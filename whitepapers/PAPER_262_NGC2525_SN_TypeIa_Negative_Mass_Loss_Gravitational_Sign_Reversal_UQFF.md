@@ -29,7 +29,7 @@ This paper derives and proves the **SN Type Ia Negative-Mass-Loss Gravitational 
 mechanism within the Unified Quantum Field Framework (UQFF) for NGC 2525 (barred spiral, z $\approx$ 0.016,
 ~70 Mpc), host of the well-observed Type Ia supernova SN 2018gv. The unique physics is a negative
 contribution to the effective MUGE gravitational acceleration from SN ejecta mass permanently
-escaping the galaxy's gravitational potential well. This is expressed as `term_SN = -G\cdotM_SN(t)/r2`
+escaping the galaxy's gravitational potential well. This is expressed as `term_SN = -G\cdot M_SN(t)/r2`
 with `M_SN(t) = M_ej\cdot(1 - e^{-t/\tau_SN})` --- a growing negative gravitational term as the ejecta
 progressively decouples from the bound galaxy mass. This mechanism is **fundamentally distinct**
 from the only other UQFF gravitational sign reversal: the Sgr A* Negative Buoyancy Inversion
@@ -52,14 +52,14 @@ $$
   & + term2     [UQFF Ug1_base + Ug4 with f_TRZ] \\
   & + term3     [\Lambda_c2/3] \\
   & + term4     [q(v\times B)/m_p \times corr_UA] \\
-  & + term_q    [ℏ/\sqrt{}(\Deltax\cdot\Deltap) \times \psi \times (2\pi/t_H)] \\
+  & + term_q    [ℏ/\sqrt{\Delta x\cdot\Delta p} \times \psi \times (2\pi/t_H)] \\
   & + term_fluid [\rho_fluid\cdot V\cdot ug1_base / M] \\
-  & + term_osc  [2A\cdot\cos(kx)\cdot\cos(\omegat) + …] \\
+  & + term_osc  [2A\cdot\cos(kx)\cdot\cos(\omega t) + …] \\
   & + term_DM   [(M+M_DM)\cdot(\delta\rho/\rho+3\mu_s\nabla(M_s/r)/r)/M] \\
   & + term_tide  [tidal correction] \\
   & + term_Ubi  [0.5 \times ug1_base]                          \leftarrow Tier-1 buoyancy \\
-  & + \text{term\_F\_UBii} [-\beta_i\cdot ug1_base\cdot\omega_g\cdot(M/r)\cdot U_UA\cdot\cos(\pit)]  \leftarrow Tier-2 \\
-  & + \text{term\_Ub\_i}   [-\beta_i\cdot ug1_base\cdot\omega_g\cdot(\text{M\_ext\_ngc}/\text{r\_ext\_ngc})\cdot U_UA\cdot\cos(\pit)] \leftarrow Tier-3 Virgo
+  & + \text{term\_F\_UBii} [-\beta_i\cdot ug1_base\cdot\omega_g\cdot(M/r)\cdot U_UA\cdot\cos(\pi t)]  \leftarrow Tier-2 \\
+  & + \text{term\_Ub\_i}   [-\beta_i\cdot ug1_base\cdot\omega_g\cdot(\text{M\_ext\_ngc}/\text{r\_ext\_ngc})\cdot U_UA\cdot\cos(\pi t)] \leftarrow Tier-3 Virgo
 \end{aligned}
 $$
 
@@ -81,7 +81,7 @@ $$
 
 ```
 UQFF SN Type Ia Negative Mass-Loss Term:
-  term_SN = -G\cdotM_SN(t) / r2
+  term_SN = -G\cdot M_SN(t) / r2
 
 where:
   M_SN(t) = M_ej \cdot (1 - e^{-t/\tau_SN})
@@ -107,7 +107,7 @@ The MUGE term_SN captures the contribution of this mass loss to the net gravitat
 $$\text{term\_SN} = -\frac{G \cdot M_\text{SN}(t)}{r^2} = -\frac{G \cdot M_\text{ej}}{r^2} \cdot \left(1 - e^{-t/\tau_text{SN}}\right)$$
 
 This is a **growing negative term** --- it starts at 0 (t=0, ejecta still bound) and approaches
-`-G\cdotM_ej/r2` asymptotically (ejecta fully escaped). The net effect: the galaxy's gravitational
+`-G\cdot M_ej/r2` asymptotically (ejecta fully escaped). The net effect: the galaxy's gravitational
 confinement is **permanently and irreversibly reduced** by one SN event.
 
 ### 2.3 Contrast with Sgr A* Negative Buoyancy Inversion (PAPER_253)
@@ -121,7 +121,7 @@ buoyancy force flips due to a regime change in the frequency parameter.
 |----------|--------------------|----------------------|
 | **Mechanism** | $\omega$0 regime change $\to$ F_LENR dominance | SN ejecta mass escape |
 | **Physical driver** | Black hole proximity + frequency shift | Thermonuclear event |
-| **Mathematical form** | `F_{U\_Bi\_i}` sign flip (complex expression) | `-G\cdotM_SN(t)/r2` (simple DPM-seeded) |
+| **Mathematical form** | `F_{U\_Bi\_i}` sign flip (complex expression) | `-G\cdot M_SN(t)/r2` (simple DPM-seeded) |
 | **Timescale** | Instantaneous (field property) | ~10--100 Myr (ejecta crossing time) |
 | **Reversibility** | Reversible (if $\omega$0 changes back) | **Irreversible** (mass permanently lost) |
 | **Magnitude** | ~10208 N (enormous) | ~10-27 m/s2 (tiny) |
@@ -130,16 +130,16 @@ buoyancy force flips due to a regime change in the frequency parameter.
 
 **Critical distinction:** The NGC 2525 mechanism is the **first UQFF gravitational sign contribution
 from mass removal rather than field inversion**. It operates at the level of the DPM-seeded
-gravitational kernel `G\cdotM/r2`, not through the UQFF field equations.
+gravitational kernel `G\cdot M/r2`, not through the UQFF field equations.
 
 ### 2.4 Uniqueness Among Mass-Loss Terms
 
 | System | Mass-Loss Form | Direction | Source | Reversible? |
 |--------|----------------|-----------|--------|-------------|
-| NGC 2525 (SN 2018gv) | `-G\cdotM_SN(t)/r2` | **Negative** | SN ejecta escape | No |
+| NGC 2525 (SN 2018gv) | `-G\cdot M_SN(t)/r2` | **Negative** | SN ejecta escape | No |
 | NGC 3603 (UQFF C++) | `+G\cdot\DeltaM_SF(t)/r2` accretion | **Positive** | SF mass growth | No |
 | Westerlund 2 | `+G\cdot\DeltaM_SF(t)/r2` | **Positive** | SF mass growth | No |
-| Antennae (CP3, PAPER_235) | `-G\cdotM_coll(t)/r2` | **Negative** | merger tidal disruption | No |
+| Antennae (CP3, PAPER_235) | `-G\cdot M_coll(t)/r2` | **Negative** | merger tidal disruption | No |
 | NGC 1275 AGN | `M_BH grows via accretion` | **Positive** | AGN fueling | No |
 
 NGC 2525's term_SN is unique in arising from a **single thermonuclear event** (not merger, not

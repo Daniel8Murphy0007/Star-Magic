@@ -56,7 +56,7 @@ $$
   & + (U_g1 + U_g2 + U_g3 + U_g4) \\
   & + U_i \\
   & + (Lambda*c^2/3) \\
-  & + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
+  & + (hbar/\sqrt{Deltax*Deltap}) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
   & + rho_fluid*V*g \\
   & + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3) \\
   & + D_dust

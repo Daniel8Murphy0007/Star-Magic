@@ -199,7 +199,7 @@ This ~29-day period connects to:
 ## 7. FIRST Declarations
 
 1. **FIRST explicit U_i complex-valued superconductive vacuum density equation** — full
-`\beta_i(?_vac,[SCm]/?_vac,[UA]\cdot?_s\cdotcos(pt_n)\cdot(1+f_TRZ))` formulation
+`\beta_i(?_vac,[SCm]/?_vac,[UA]\cdot?_s\cdot \cos(pt_n)\cdot(1+f_TRZ))` formulation
 2. **FIRST compact/galactic scale bifurcation** — 1.051 ratio; same for real and imaginary
 3. **FIRST ?_s = 2.5$\times$10-6 rad/s calibration** — ~29-day superconductive oscillation period
 4. **FIRST f_TRZ = 0.1 explicit calibration** in U_i context

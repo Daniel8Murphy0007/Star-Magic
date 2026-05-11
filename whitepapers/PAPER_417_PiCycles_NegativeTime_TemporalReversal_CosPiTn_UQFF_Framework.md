@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_417
-title: "\pi Cycles and Negative Time: cos(\pit_n) Temporal Reversal Framework in UQFF"
+title: "\pi Cycles and Negative Time: cos(\pi t_n) Temporal Reversal Framework in UQFF"
 session: 110
 date: 2025-01-01
 author: "Daniel T. Murphy"

@@ -35,7 +35,7 @@ $$
 \begin{aligned}
   & \Phi(\omega) = \Phi0\cdot\exp[-(\omega-\omega_SCm)2/(2\Gamma2)]\cdot S26 \\
   & Q = \omega_SCm/\Gamma \\
-  & FWHM = 2\Gamma\sqrt{}(2ln2)
+  & FWHM = 2\Gamma\sqrt{2ln2}
 \end{aligned}
 $$
 

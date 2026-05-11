@@ -637,7 +637,7 @@ Problems
 
 $$
 \begin{aligned}
-  & L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_\phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ] \\
+  & L_UQFF = \sqrt{-g} [ L_EH + L_YM + L_Dirac + L_\phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ] \\
   & \delta S_UQFF/\delta\phi_I = 0 \to \text{F\_U\_Bi\_i} = 13 force terms from 9 sectors
 \end{aligned}
 $$

@@ -171,7 +171,7 @@ $$
 
 ```
 From PAPER_196 (resonance UQFF):
-  R(t) = S_{i=1}^{26} [R_{Ug1,i}\cdotcos(?_{Ug1,i}\cdott) + ...]
+  R(t) = S_{i=1}^{26} [R_{Ug1,i}\cdot \cos(?_{Ug1,i}\cdott) + ...]
 
   Negative R(t) phases (cos(?t) < 0) correspond to:
     ? Torque addition phase (spin-up from outflow compression)

@@ -54,7 +54,7 @@ However, the UQFF framework identifies four correction factors that modify this 
 
 ```
 D_universe = 2*D_p * (1+H(z)*t_0) * (1+Lambda*c^2/(3*H_0^2))
-           * (1 + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total))
+           * (1 + (hbar/\sqrt{Deltax*Deltap}) * integral(psi*H*psi dV) / (G*M_total))
            * (1 + k*r_c^2)
 
   D_p  = particle horizon distance = 46.5 billion ly = 4.40x10^{2}6 m
@@ -102,13 +102,13 @@ Therefore: (1 + 0.643) = 1.643
 ## 5. Factor 3: Quantum Gravity Correction
 
 $$
-Quantum factor = (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total)
+Quantum factor = (hbar/\sqrt{Deltax*Deltap}) * integral(psi*H*psi dV) / (G*M_total)
 $$
 
 For cosmological scales with M_total $\approx$ 10^{5}3 kg (observed baryons + DM):
 $$
 \begin{aligned}
-  & hbar/\sqrt{}(Deltax*Deltap) ~= \sqrt{}2 * hbar/(hbar) = \sqrt{}2   [from Heisenberg minimum] \\
+  & hbar/\sqrt{Deltax*Deltap} ~= \sqrt{}2 * hbar/(hbar) = \sqrt{}2   [from Heisenberg minimum] \\
   & integral(psi*H*psi dV) ~= E_total = M_total*c^2 \\
   & Quantum factor = \sqrt{}2 * M_total*c^2 / (G*M_total) \\
   & = \sqrt{}2 * c^2 / G \\
@@ -134,7 +134,7 @@ Therefore: (1 + 0.141) = 1.141
 For k $\approx$ 0.001 (slightly positive curvature, consistent with Planck CMB data 1-sigma):
 $$
 \begin{aligned}
-  & r_c = \sqrt{}(3/Lambda) = \sqrt{}(3 / 1.1x10^{-}5^2) = \sqrt{}(2.73x10^{5}1) ~= 5.22x10^{2}5 m \\
+  & r_c = \sqrt{3/Lambda} = \sqrt{3 / 1.1x10^{-}5^2} = \sqrt{2.73x10^{5}1} ~= 5.22x10^{2}5 m \\
   & k*r_c^2 = 0.001 * (5.22x10^{2}5)^2 = 0.001 * 2.72x10^{5}1 ~= 2.72x10^{4}8   [too large]
 \end{aligned}
 $$

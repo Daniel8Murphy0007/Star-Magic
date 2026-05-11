@@ -452,14 +452,14 @@ A non-zero a_\tau deviation from the SM would signal partial DPM activation --- 
 polarization in the SCm. This same DPM activation would modestly increase the LFV amplitude by
 relaxing the t_n = -1 constraint:
 $$
-If \deltaa_\tau \neq 0: t_n(LFV) \rightarrow t_n(LFV) - \Deltat_n(dipole)
+If \delta a_\tau \neq 0: t_n(LFV) \rightarrow t_n(LFV) - \Delta t_n(dipole)
 ```
 This provides a testable cross-prediction: measurement of $a_{\tau}$ at STCF (arXiv:2506.15245) at
 sensitivity Re($a_{\tau}$) $\in$ [-4.5, 6.9]$\times$10-3 would, if a deviation is found, predict a corresponding shift
 in the B0 $\to$ K*0$\tau$e branching ratio at the level:
 
 ```
-\DeltaBR/BR ~ \Deltat_n / t_n ~ 0.01 - 0.05 (1--5% shift in BR limits)
+\Delta \mathrm{BR}/BR ~ \Delta t_n / t_n ~ 0.01 - 0.05 (1--5% shift in BR limits)
 ```
 This cross-domain prediction is unique to the UQFF framework and provides a falsifiable test
 distinguishing UQFF from other BSM models.

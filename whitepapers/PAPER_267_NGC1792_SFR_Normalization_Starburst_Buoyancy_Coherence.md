@@ -92,10 +92,10 @@ The UQFF 2.0 upgrade introduces three buoyancy tiers, all derived from Ug1_t:
 $$\text{term\_Ubi} = 0.5 \cdot \text{Ug1\_t}$$
 
 **Tier 2 --- Dynamic compact cos modulation (F_UBii, PAPER_198):**
-$$\text{term\_F_UBii} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{M(t)}{r} \cdot [UA] \cdot \cos(\pi t)$$
+$$\text{term\_F\_UBii} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{M(t)}{r} \cdot [UA] \cdot \cos(\pi t)$$
 
 **Tier 3 --- Outer-frame via Fornax Cluster external body (Ub_i, CP1):**
-$$\text{term\_Ub_i} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA] \cdot \cos(\pi t)$$
+$$\text{term\_Ub\_i} = -\beta_i \cdot \text{Ug1\_t} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA] \cdot \cos(\pi t)$$
 
 where $\beta$_i = 0.61, $\omega$_g = 7.3$\times$10-16 rad/s, [UA] = 10-11, M_Fornax = 1.393$\times$1044 kg, r_Fornax =
 6.17$\times$1023 m.
@@ -115,13 +115,13 @@ For Tier 1:
 $$\Delta\text{term\_Ubi} = 0.5 \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot e^{-t/\tau_text{SF}}$$
 
 For Tiers 2 and 3 (at t=0):
-$$\Delta\text{term\_F_UBii}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_0}{r} \cdot [UA]$$
+$$\Delta\text{term\_F\_UBii}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_0}{r} \cdot [UA]$$
 
-$$\Delta\text{term\_Ub_i}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA]$$
+$$\Delta\text{term\_Ub\_i}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{sSFR} \cdot \omega_g \cdot \frac{M_\text{Fornax}}{r_\text{Fornax}} \cdot [UA]$$
 
 The total coherent buoyancy boost is:
 
-$$\boxed{\Delta g_\text{buoy\_total} = \text{sSFR} \cdot \left(\text{term\_Ubi}^\infty + \text{term\_F_UBii}^\infty + \text{term\_Ub_i}^\infty\right) \cdot e^{-t/\tau_text{SF}}}$$
+$$\boxed{\Delta g_\text{buoy\_total} = \text{sSFR} \cdot \left(\text{term\_Ubi}^\infty + \text{term\_F\_UBii}^\infty + \text{term\_Ub\_i}^\infty\right) \cdot e^{-t/\tau_\text{SF}}}$$
 
 where the superscript $\infty$ denotes the static (non-sSFR) component amplitudes.
 

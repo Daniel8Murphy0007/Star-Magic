@@ -134,13 +134,13 @@ context*
 of the 9-sector UQFF Unified Lagrangian:
 
 $$
-L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{-g} [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
 **Sector 9 (Kaluza-Klein-26D) — Dimensional Structure:**
 $$
 \begin{aligned}
-  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{}(-\text{g\_2\_2}) [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
+  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{-\text{g\_2\_2}} [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
   & deltaS/deltag_mn = 0 -> KK tower quantization \\
   & -> 26D = 4D spacetime + 22 compactified \\
   & -> NP problems solvable in 26D with O(n^k) complexity \\

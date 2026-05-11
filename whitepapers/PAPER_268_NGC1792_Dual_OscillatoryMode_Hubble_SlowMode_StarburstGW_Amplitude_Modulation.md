@@ -26,7 +26,7 @@ modulation, dimensional analysis
 ## Abstract
 
 In the pre-UQFF-2.0 NGC 1792 module, the second oscillatory gravity term `term_osc2` was computed as
-`(2\pi / t_{Hubble\_gyr}) \times A_osc \times cos(k\cdotx - \omega\cdott)` where `t_{Hubble\_gyr} = 13.8` is a **dimensionless Gyr
+`(2\pi / t_{Hubble\_gyr}) \times A_osc \times cos(k\cdot x - \omega\cdot t)` where `t_{Hubble\_gyr} = 13.8` is a **dimensionless Gyr
 number**, creating a dimensional inconsistency. The canonical fix replaces this with `(2\pi /
 t_Hubble)` where `t_Hubble = 13.8 \times 109 \times 3.15576\times107 s = 4.352\times1017 s`. After correction, the two
 oscillatory terms produce **modes at distinct frequency scales**: a fast standing wave at $\omega$_osc =
@@ -172,7 +172,7 @@ At fixed position x = r, the combined signal is:
 
 $$g_\text{osc}(t) \approx A_\text{osc} \left[ 2\cos(\omega_text{osc} t) + \omega_H \cos(\omega_text{osc} t) \right] \cdot k x$$
 
-$$= A_\text{osc} \cos(\omega_text{osc} t) \underbrace{\left(2 + \omega_Hright)}_{\text{Hubble-modulated amplitude}}$$
+$$= A_\text{osc} \cos(\omega_\text{osc} t) \underbrace{\left(2 + \omega_H\right)}_{\text{Hubble-modulated amplitude}}$$
 
 The amplitude modulation at the Hubble frequency has the form:
 

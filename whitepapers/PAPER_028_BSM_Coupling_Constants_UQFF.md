@@ -303,7 +303,7 @@ Higgs\rightarrowbbbar decays (Paper #34) must be accompanied by a corresponding 
 | Quantity | Standard Model | UQFF | Belle II Measured | 
 |----------|----------------|------|-------------------| 
 | Mechanism | CKM matrix, form factors | SCm vacuum mixing [SCm]_flavor = |V_cb|2 | --- | 
-| |V_cb| | Free parameter (fitted) | \sqrt{}[SCm]_flavor = \sqrt{}(Ug2/\kappa_Higgs) | (39.2 \pm 0.9)\times10-3 \checkmark | 
+| |V_cb| | Free parameter (fitted) | \sqrt{}[SCm]_flavor = \sqrt{Ug2/\kappa_Higgs} | (39.2 \pm 0.9)\times10-3 \checkmark | 
 | [SCm]_flavor | N/A | 1.537 \times 10-3 | --- | 
 | \Gamma(B\rightarrowDl\nu) | G_F2|V_cb|2m_B5/192\pi3 | F_U(Ug1+Ug2+Ug3+Ug4+Um-Ub_i) | 3.14\times109 s-1 \checkmark | 
 | LFU R(e\nu/\mu\nu) | 1.000 \pm 0.003 (SM) | 1.020 (\kappa_Higgs = 1.0) | 1.020 \pm 0.030 \checkmark | 
@@ -472,7 +472,7 @@ The Higgs coupling modifier $\kappa$_Higgs = 1.0 applied here will be revisited 
 Coupling: UQFF vs CERN HL-LHC Data). If Paper #34 finds $\kappa$_Higgs $\neq$ 1.0 for the top quark coupling,
 the CKM sector would require a corresponding correction via:
 ```
-|V_cb|_eff = |V_cb|_SM \times \sqrt{}(\kappa_Higgs)
+|V_cb|_eff = |V_cb|_SM \times \sqrt{\kappa_Higgs}
 ```
 This cross-domain consistency constraint is a unique UQFF feature, linking the B-physics sector to
 the Higgs sector through the shared $\kappa$_Higgs parameter.

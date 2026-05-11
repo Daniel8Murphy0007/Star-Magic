@@ -223,9 +223,9 @@ $$
 \begin{aligned}
   & Step 1: DPM = UA' + SCm \\
   & Step 2: U_i = k_\eta * (\rho_vac,SCm - \rho_vac,UA) * \omega_i * cos(\pi*t_n) \\
-  & Step 3: U_m,i = U_i * \mu_dipole * (1/r_i) * (1 - e^(-\gammat)) * cos(\pit_n) \\
+  & Step 3: U_m,i = U_i * \mu_dipole * (1/r_i) * (1 - e^(-\gamma t)) * cos(\pi t_n) \\
   & Step 4: \Psi_proto = \Sigma_{i=1}^{26} U_m,i  \to  capacitance threshold reached \\
-  & Step 5: F_stab = SM_mag * \Psi_proto + U_b  \to  U_b = -\beta*Ug*\Omega_g*(M_bh/d_g)*cos(\pit_n) \\
+  & Step 5: F_stab = SM_mag * \Psi_proto + U_b  \to  U_b = -\beta*Ug*\Omega_g*(M_bh/d_g)*cos(\pi t_n) \\
   & Step 6: E_shell = c * \nu_res * h(f_SCm) * G_geo  \to  atomic mass emerges
 \end{aligned}
 $$

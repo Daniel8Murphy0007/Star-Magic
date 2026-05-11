@@ -76,7 +76,7 @@ $$
 
 $$
 \begin{aligned}
-  & U_i = k \cdot (\rho_SCm - \rho_UA/10) \cdot \omega \cdot cos(\pit) \\
+  & U_i = k \cdot (\rho_SCm - \rho_UA/10) \cdot \omega \cdot cos(\pi t) \\
   & \omega = 2\pi\nu_THz
 \end{aligned}
 $$
@@ -88,7 +88,7 @@ gravitational collapse.
 
 $$
 \begin{aligned}
-  & U_m,i = U_i \cdot \mu_d \cdot (1/r_i) \cdot (1 - e^{-\gammat}) \cdot cos(\pit)     [i = 1...26] \\
+  & U_m,i = U_i \cdot \mu_d \cdot (1/r_i) \cdot (1 - e^{-\gamma t}) \cdot cos(\pi t)     [i = 1...26] \\
   & \Psi_proto = \Sigma_{i=1}^{26} U_m,i                                 [proto-wavefunction]
 \end{aligned}
 $$

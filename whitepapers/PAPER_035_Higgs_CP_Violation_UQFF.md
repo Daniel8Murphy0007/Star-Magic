@@ -150,7 +150,7 @@ cos($\pi$ $\times$ 0.353) = cos(1.1088)
 
 In Python: import math; math.cos(math.pi * 0.353) = cos(1.1088 rad) = 0.4163
 
-But the validator reports: `cos(\pit_n) = cos(\pi \times 0.353) = 0.445573`
+But the validator reports: `cos(\pi t_n) = cos(\pi \times 0.353) = 0.445573`
 
 Let me recalculate: cos($\pi$ $\times$ 0.353) = cos($\pi$ $\times$ 0.353)...
 At t_n = 0.353: $\pi$ $\times$ 0.353 = 1.1089 rad

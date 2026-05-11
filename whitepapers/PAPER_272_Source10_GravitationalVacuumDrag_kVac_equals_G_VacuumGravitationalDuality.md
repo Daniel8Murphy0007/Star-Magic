@@ -26,7 +26,7 @@ gradient, momentum coupling, UQFF duality
 ## Abstract
 
 The UQFF Source10 Catalogue introduces a vacuum repulsion force `F_{vac\_rep} = k_vac \times \Delta\rho_vac \times M \times v`
-with coupling constant `k_vac = 6.674\times10-11 m3/kg\cdots2`. The discovery reported here is that **k_vac =
+with coupling constant `k_vac = 6.674\times10-11 m3/kg\cdot s2`. The discovery reported here is that **k_vac =
 G** (Newton's gravitational constant) exactly. This identification, verified by dimensional
 analysis, elevates F_{vac\_rep} from a phenomenological fitting force to a first-principles
 gravitational effect: a velocity-dependent gravitational force not present in standard DPM-seeded
@@ -94,7 +94,7 @@ The analysis above gives m1$\cdot$kg1$\cdot$s-3 if v appears as m$\cdot$s-1. Thi
 **$\Delta$$\rho$_vac itself carries an implicit 1/v factor** through the vacuum perturbation: `\Delta\rho_vac ≡ \delta\rho/\deltav`
 where $\delta$v is volume change, which in a 1D flow introduces an extra s-1 denominator:
 
-More precisely, in UQFF's parameterization `\Delta\rho_vac [=] kg\cdotm-3\cdots` (density gradient per unit time in
+More precisely, in UQFF's parameterization `\Delta\rho_vac [=] kg\cdot m-3\cdot s` (density gradient per unit time in
 the flow frame), so:
 
 $$[F_\text{vac\_rep}] = m^3 kg^{-1} s^{-2} \times (kg\,m^{-3}\,s) \times kg \times m\,s^{-1} = kg\,m\,s^{-2} = \mathbf{N}\ PASS$$
@@ -136,7 +136,7 @@ $$\eta_text{UQFF} = \frac{6.674 \times 10^{-11} \times 10^{-26} \times 2.387 \ti
 
 $$= \frac{6.674 \times 10^{-11} \times 10^{-26} \times 2.387 \times 10^{32}}{1.341 \times 10^{21}}$$
 
-$$= \frac{1.59 \times 10^{-4}}{1.341 \times 10^{21}} \approx 1.19 \times 10^{-25}\ \text{Pa\cdot s}$$
+$$= \frac{1.59 \times 10^{-4}}{1.341 \times 10^{21}} \approx 1.19 \times 10^{-25}\ \text{Pa}\cdot\text{s}$$
 
 This is the **UQFF gravitational viscosity of the vacuum** — 25 orders of magnitude below the
 viscosity of air, consistent with the vacuum being nearly frictionless while still exhibiting a
@@ -233,7 +233,7 @@ This is significantly below the Pioneer anomaly (~8.74$\times$10-10 m/s2) and cu
 
 ## 7. Conclusions
 
-1. The UQFF Source10 vacuum coupling constant `k_vac = 6.674\times10-11 m3/kg\cdots2` is **exactly G**
+1. The UQFF Source10 vacuum coupling constant `k_vac = 6.674\times10-11 m3/kg\cdot s2` is **exactly G**
 (Newton's gravitational constant).
 
 2. This identification establishes `F_{vac\_rep} = G \times \Delta\rho_vac \times M \times v` as a **velocity-dependent

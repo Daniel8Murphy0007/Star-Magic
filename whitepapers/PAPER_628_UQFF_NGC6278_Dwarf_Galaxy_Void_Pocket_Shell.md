@@ -60,7 +60,7 @@ topology, independent of point-mass sources.
 The VDS equilibrium pocket formation threshold:
 
 $$
-\nabla UA_eq = \sqrt{}(\kappa / g)
+\nabla UA_eq = \sqrt{\kappa / g}
 $$
 
 For $\kappa$ = 1, g = 10-3:

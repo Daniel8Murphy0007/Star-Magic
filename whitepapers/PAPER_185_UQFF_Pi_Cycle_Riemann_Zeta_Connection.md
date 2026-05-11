@@ -22,7 +22,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper establishes a formal connection between the UQFF $\pi$-cycle oscillation factor `cos(\pit_n)`
+This paper establishes a formal connection between the UQFF $\pi$-cycle oscillation factor `cos(\pi t_n)`
 and the Riemann Hypothesis through the distribution of zeros of the Riemann zeta function. The
 normalized UQFF time index t_n creates a discrete sequence of field values at integer and
 half-integer points that mirrors the prime-counting distribution encoded by non-trivial zeros of

@@ -1,7 +1,7 @@
 ---
 paper_id: PAPER_131
 title: "UQFF Superconductive Mode Dual Synthesis — GW170817 LIGO Kilonova Y_e \approx 0.1 r-Process and
-Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos(\pit_n) Asymmetry at R = 1.5"
+Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos(\pi t_n) Asymmetry at R = 1.5"
 session: 0
 date: 2026-03-01
 author: "Daniel T. Murphy"

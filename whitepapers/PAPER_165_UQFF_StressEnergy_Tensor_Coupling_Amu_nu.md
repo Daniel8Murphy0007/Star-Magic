@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_165
-title: "UQFF Stress-Energy Tensor Coupling: A_\mu\nu = g_\mu\nu + \eta\cdotT_s00\cdotcos(\pit_n)"
+title: "UQFF Stress-Energy Tensor Coupling: A_\mu\nu = g_\mu\nu + \eta\cdot T_s00\cdot \cos(\pi t_n)"
 session: 47
 date: 2026-01-01
 author: "Daniel T. Murphy"

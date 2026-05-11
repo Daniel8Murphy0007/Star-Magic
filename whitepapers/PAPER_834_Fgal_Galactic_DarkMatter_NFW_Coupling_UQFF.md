@@ -181,7 +181,7 @@ physics beyond the already-integrated dark matter density parameterization.
 $$
 \begin{aligned}
   & v(8 kpc) = 220 km/s  (observed, VLBI/Gaia DR2) \\
-  & v(8 kpc) = \sqrt{}(G*M_total/r_gal) requires M_total >> M_visible \\
+  & v(8 kpc) = \sqrt{G*M_total/r_gal} requires M_total >> M_visible \\
   & F_gal = 4.79\times10-10 m/s2 \to M_total = F_gal * r_gal2 / G = 1.74\times1041 kg \approx 8.75\times1010 M_Sun
 \end{aligned}
 $$

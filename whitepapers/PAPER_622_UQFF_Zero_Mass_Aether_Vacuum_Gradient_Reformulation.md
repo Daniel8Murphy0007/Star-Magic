@@ -97,7 +97,7 @@ $$
 Setting F_U = 0 and isolating the buoyancy-gravitational balance:
 
 $$
-\nabla UA_eq = \sqrt{}(\kappa / g)
+\nabla UA_eq = \sqrt{\kappa / g}
 $$
 
 For $\kappa$ = 1, g = 10-3: $\nabla$UA_eq $\approx$ 31.62 m-1 (dimensionless normalization).  

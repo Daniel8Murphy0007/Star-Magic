@@ -28,8 +28,8 @@ sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 This paper derives and proves the **Dual-Dynamic Feedback Equilibrium Timescale** and the **UQFF
 Scale-Invariant Feedback Theorem** for NGC 3603, the most luminous OB star cluster in the Milky Way
 (~7.6 kpc; Carina arm). The unique physics is the **simultaneous additive operation** of two
-independent time-dependent processes: (1) `M(t) = M$_0$\cdot(1 + Ṁ_factor\cdote^{-t/\tau_SF})` star-formation mass
-growth driving increasing gravitational confinement, and (2) `P(t) = P$_0$\cdote^{-t/\tau_exp}` OB-stellar
+independent time-dependent processes: (1) `M(t) = M$_0$\cdot(1 + Ṁ_factor\cdot e^{-t/\tau_SF})` star-formation mass
+growth driving increasing gravitational confinement, and (2) `P(t) = P$_0$\cdot e^{-t/\tau_exp}` OB-stellar
 cavity pressure expansion driving dispersal. Both operate additively and simultaneously within the
 MUGE --- a combination unprecedented among the UQFF C++ module series. A critical result emerges: when
 $\tau$_SF = $\tau$_exp (both equal to the characteristic star-formation timescale ~1 Myr for NGC 3603), the
@@ -52,9 +52,9 @@ $$
   & + term2    [UQFF Ug1_t + Ug4_t with f_TRZ]            \leftarrow uses ug1_t \\
   & + term3    [\Lambda_c2/3] \\
   & + term4    [q(v\times B)/m_p \times corr_UA] \\
-  & + term_q   [ℏ/\sqrt{}(\Deltax\cdot\Deltap) \times \psi \times (2\pi/t_H)] \\
+  & + term_q   [ℏ/\sqrt{\Delta x\cdot\Delta p} \times \psi \times (2\pi/t_H)] \\
   & + term_fluid [\rho_fluid\cdot V\cdot ug1_t / M(t)] \\
-  & + term_osc  [2A\cdot\cos(kx)\cdot\cos(\omegat) + …] \\
+  & + term_osc  [2A\cdot\cos(kx)\cdot\cos(\omega t) + …] \\
   & + term_DM   [(M+M_DM)\cdot(\delta\rho/\rho + 3GM(t)/r3)/M(t)] \\
   & + term_P    [P(t) / \rho_fluid]                           \leftarrow ADDITIVE cavity pressure \\
   & + term_Ubi  [0.5 \times ug1_t]                             \leftarrow Tier-1 buoyancy (M(t) variant) \\
@@ -80,7 +80,7 @@ $$
 ### 2.1 Distinction from PAPER_218 (Multiplicative P(t))
 
 PAPER_218 (`NGC3603StellarPressureModulationCalculator`, CP3 Session 55) treated P(t) as a
-**multiplicative suppressor** on the base gravity term: `g ~ G\cdotM/r2 \times (1 - P(t))`. This captures the
+**multiplicative suppressor** on the base gravity term: `g ~ G\cdot M/r2 \times (1 - P(t))`. This captures the
 fraction of molecular cloud mass dispersed.
 
 **The NGC3603.cpp C++ upgrade (this paper) uses P(t) as an ADDITIVE TERM:**
@@ -105,8 +105,8 @@ outward).
 
 ### 2.2 The Equilibrium Timescale t*
 
-M(t) grows the gravitational confinement: `ug1_t(t) = G\cdotM(t)/r2` increases with t  
-P(t) pressure decays: `term_P = P$_0$\cdote^{-t/\tau_exp}/\rho_fluid` decreases with t
+M(t) grows the gravitational confinement: `ug1_t(t) = G\cdot M(t)/r2` increases with t  
+P(t) pressure decays: `term_P = P$_0$\cdot e^{-t/\tau_exp}/\rho_fluid` decreases with t
 
 The **mechanical feedback-to-gravity ratio** $\Phi$(t) is:
 

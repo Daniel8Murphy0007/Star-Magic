@@ -127,7 +127,7 @@ Prize context*
 (LENR-Resonance) and 9 (Kaluza-Klein-26D) of the 9-sector Unified Lagrangian:
 
 $$
-L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{-g} [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
 **Sector 8 (LENR-Resonance) — Spectral Mode Source:**
@@ -144,7 +144,7 @@ $$
 **Sector 9 (Kaluza-Klein-26D) — Mode Quantization:**
 $$
 \begin{aligned}
-  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{}(-\text{g\_2\_2}) [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
+  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{-\text{g\_2\_2}} [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
   & deltaS/deltag_mn = 0 -> KK tower quantization \\
   & -> 26 modes (4D + 22 compactified) define spectral lattice
 \end{aligned}

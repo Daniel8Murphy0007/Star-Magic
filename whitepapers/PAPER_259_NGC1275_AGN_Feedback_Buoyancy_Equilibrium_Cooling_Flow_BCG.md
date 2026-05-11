@@ -29,7 +29,7 @@ flow infall acceleration term `term_cool = (\rho_cool \times v_cool2) / \rho_flu
 buoyancy tiers. Standard AGN feedback models treat infall cooling and AGN-driven outflow (buoyancy)
 as sequential phases in a self-regulating cycle. The UQFF demonstrates these processes are
 **simultaneously active** because both are functions of the same gravitational kernel `ug1_base =
-G\cdotM/r2`. A critical equilibrium point exists --- the **UQFF AGN Feedback Equilibrium Point** --- where
+G\cdot M/r2`. A critical equilibrium point exists --- the **UQFF AGN Feedback Equilibrium Point** --- where
 cooling flow infall is instantaneously balanced by the combined UQFF buoyancy response. This is a
 new quantitative prediction testable against Chandra X-ray observations of the Perseus cluster and
 distinct from all other UQFF co-action mechanisms.
@@ -40,23 +40,21 @@ distinct from all other UQFF co-action mechanisms.
 
 From `NGC1275.cpp` (UQFF 2.0, Session 72f upgrade):
 
-$$
-\begin{aligned}
-  & g_NGC1275(r, t) = term1  [base gravity + H(z) + B(t) + F(t) corrections] \\
-  & + term_BH  [central SMBH M_BH = 8\times108 M_sun influence] \\
-  & + term2    [UQFF Ug1+Ug4 with f_TRZ + filament F(t)] \\
-  & + term3    [\Lambda_c2/3 cosmological constant] \\
-  & + term4    [scaled EM: q(v\times B)/m_p \times corr_UA] \\
-  & + term_q   [quantum uncertainty: ℏ/\sqrt{}(\Deltax\cdot\Deltap) \times \psi \times (2\pi/t_Hubble)] \\
-  & + term_fluid [\rho_fluid\cdot V\cdot ug1_base / M] \\
-  & + term_osc  [2A\cdot\cos(kx)\cdot\cos(\omegat) + (2\pi/\text{t\_H\_gyr})\cdot A\cdot\cos(kx-\omegat)] \\
-  & + term_DM   [(M + M_DM)\cdot(\delta\rho/\rho + 3\mu_s\nabla(M_s/r)/r) / M] \\
-  & + term_cool [\rho_cool\cdot v_cool2 / \rho_fluid]          \leftarrow Term 10: UNIQUE \\
-  & + term_Ubi  [0.5 \times ug1_base]                    \leftarrow Tier-1 buoyancy \\
-  & + \text{term\_F\_UBii} [-\beta_i\cdot ug1_base\cdot\omega_g\cdot(M/r)\cdot U_UA\cdot\cos(\pi\cdot t)] \leftarrow Tier-2 \\
-  & + \text{term\_Ub\_i}   [-\beta_i\cdot ug1_base\cdot\omega_g\cdot(M_vc/r_vc)\cdot U_UA\cdot\cos(\pi\cdot t)] \leftarrow Tier-3 Virgo
-\end{aligned}
-$$
+```
+g_NGC1275(r, t) = term1   [base gravity + H(z) + B(t) + F(t) corrections]
+                + term_BH [central SMBH M_BH = 8e8 M_sun influence]
+                + term2   [UQFF Ug1+Ug4 with f_TRZ + filament F(t)]
+                + term3   [Lambda_c^(2/3) cosmological constant]
+                + term4   [scaled EM: q(v x B)/m_p * corr_UA]
+                + term_q  [quantum uncertainty: hbar/sqrt(Delta_x * Delta_p) * psi * (2*pi/t_Hubble)]
+                + term_fluid [rho_fluid * V * ug1_base / M]
+                + term_osc   [2A*cos(kx)*cos(omega*t) + (2*pi/t_H_gyr)*A*cos(kx - omega*t)]
+                + term_DM    [(M + M_DM)*(delta_rho/rho + 3*mu_s*grad(M_s/r)/r) / M]
+                + term_cool  [rho_cool * v_cool^2 / rho_fluid]    <- Term 10: UNIQUE
+                + term_Ubi   [0.5 * ug1_base]                     <- Tier-1 buoyancy
+                + term_F_UBii [-beta_i * ug1_base * omega_g * (M/r) * U_UA * cos(pi*t)]   <- Tier-2
+                + term_Ub_i   [-beta_i * ug1_base * omega_g * (M_vc/r_vc) * U_UA * cos(pi*t)] <- Tier-3 Virgo
+```
 
 **System Parameters:**
 - M = 1$\times$1011 M_sun = 1.989$\times$1041 kg (total stellar + gas mass)
@@ -96,7 +94,7 @@ In the Perseus cluster, NGC 1275 sits at the center of a massive cooling flow. T
 4. Heating quenches cooling $\to$ cycle repeats on ~10--100 Myr timescale
 
 **The UQFF challenge to this picture:** both cooling infall (term_cool) and buoyant outflow ($\Sigma$_buoy)
-are functions of `ug1_base = G\cdotM/r2`. The same gravitational potential that drives cooling also
+are functions of `ug1_base = G\cdot M/r2`. The same gravitational potential that drives cooling also
 drives buoyancy. Therefore they cannot be strictly sequential --- they are **simultaneously active at
 all radii and at all times**.
 
@@ -122,7 +120,7 @@ $$\frac{\rho_text{cool} \cdot v_\text{cool}^2}{\rho_text{fluid}} = \text{ug1\_ba
 
 ### 2.4 Time-Dependent Equilibrium: Cooling Flow Oscillation
 
-The term `cos(\pit)` in Tier-2 and Tier-3 buoyancy means the buoyancy response oscillates. At the
+The term `cos(\pi t)` in Tier-2 and Tier-3 buoyancy means the buoyancy response oscillates. At the
 equilibrium crossing times t* where cos($\pi$t*) satisfies the balance:
 
 $$\cos(\pi t^*) = \frac{\rho_text{cool} v_\text{cool}^2 / (\rho_text{fluid} \cdot \text{ug1\_base}) - 0.5}{-\beta_i \cdot \omega_g \cdot (M/r + M_\text{vc}/r_\text{vc}) \cdot U_{UA}}$$
@@ -135,13 +133,13 @@ consistent with the observed ~10 Myr quasi-periodicity of Perseus X-ray cavity p
 
 | System | Cooling/Infall Mechanism | UQFF Form | PDR Type |
 |--------|--------------------------|-----------|----------|
-| NGC 1275 (this paper) | BCG ICM cooling flow | `(\rho_cool\cdotv_cool2)/\rho_fluid` simultaneous w/ $\Sigma$_buoy | AGN/ICM |
+| NGC 1275 (this paper) | BCG ICM cooling flow | `(\rho_cool\cdot v_cool2)/\rho_fluid` simultaneous w/ $\Sigma$_buoy | AGN/ICM |
 | Horsehead Nebula | E(t) PDR erosion | `E$_0$\cdot(1-e^{-t/\tau_erosion})` simultaneous w/ $\Sigma$_buoy | Stellar UV |
 | Pillars of Creation | E(t) PDR erosion | same form, pillar geometry | Stellar UV |
 | NGC 3603 | P(t) cavity pressure | `P(t)/\rho_fluid` additive term | OB wind |
-| Sgr A* (PAPER_253) | QPO burst + NSC tidal | `D$_0$\cdotcos(\omega_D\cdott)\cdote^{-t/\tau_D}` | BH proximity |
+| Sgr A* (PAPER_253) | QPO burst + NSC tidal | `D$_0$\cdot cos(\omega_D\cdot t)\cdot e^{-t/\tau_D}` | BH proximity |
 
-The cooling flow term `(\rho\cdotv2)/\rho` is unique to BCG/cluster environments --- it is the **only UQFF term
+The cooling flow term `(\rho\cdot v2)/\rho` is unique to BCG/cluster environments --- it is the **only UQFF term
 derived from thermodynamic infall ram pressure** rather than from electromagnetic, erosion, or tidal
 competition.
 
@@ -161,9 +159,9 @@ The **AGN Feedback Equilibrium Tensor** (AFET) is then:
 
 $$\mathcal{E}_\text{AGN} = \frac{\text{term\_cool}}{|\Sigma_text{buoy}|} = \frac{\rho_text{cool} v_\text{cool}^2 / \rho_text{fluid}}{\text{ug1\_base} \cdot |0.5 - \beta_i \omega_g (M/r + M_\text{vc}/r_\text{vc}) U_{UA} \cos(\pi t)|}$$
 
-At **𝒠_AGN = 1**: equilibrium (self-regulated feedback)  
-At **𝒠_AGN > 1**: cooling-dominated $\to$ gas accumulation $\to$ AGN trigger  
-At **𝒠_AGN < 1**: buoyancy-dominated $\to$ quenched cooling $\to$ AGN quiescence
+At **_AGN = 1**: equilibrium (self-regulated feedback)  
+At **_AGN > 1**: cooling-dominated $\to$ gas accumulation $\to$ AGN trigger  
+At **_AGN < 1**: buoyancy-dominated $\to$ quenched cooling $\to$ AGN quiescence
 
 ---
 
@@ -198,7 +196,7 @@ infall process (cooling flow) and the UQFF buoyancy tiers. It demonstrates:
 pair** with any infall/dissipative term that shares the same `ug1_base` kernel.
 
 2. The AGN feedback cycle in BCGs is not fundamentally a thermodynamic cycle --- it is a
-**gravitational field modulation cycle** governed by the UQFF buoyancy response to `G\cdotM/r2`.
+**gravitational field modulation cycle** governed by the UQFF buoyancy response to `G\cdot M/r2`.
 
 3. The Virgo Cluster outer frame (independent of Perseus at 77 Mpc) introduces a **super-cluster
 gravitational environment** into the local feedback physics --- a prediction unique to UQFF

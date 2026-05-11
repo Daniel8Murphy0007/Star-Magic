@@ -74,7 +74,7 @@ $$
 $$
 \begin{aligned}
   & F_U = \Sigma_i [k_i\cdot U_gi - \beta_i\cdot U_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdot E_react] \\
-  & + \Sigma_j [\mu_j/r_j \cdot (1-e^(-\gammat)\cdot\cos(\pi\cdot t_n))\cdot\phî_j] \\
+  & + \Sigma_j [\mu_j/r_j \cdot (1-e^(-\gamma t)\cdot\cos(\pi\cdot t_n))\cdot\phî_j] \\
   & + (g_\mu\nu + \eta\cdot T_s^(\mu\nu)) \\
   & - \Sigma_i [\lambda_i\cdot U_i\cdot E_react] \\
   & At t=0, Sun: F_U \approx U_m \approx 2.28\times1065 J/m3 (U_m dominates)
@@ -181,7 +181,7 @@ $$
   & \mu_j(t) = (103 + 0.4\cdot\sin(\omega_c\cdot t)) \cdot 3.38\times1020 T\cdot pm3 \\
   & \omega_c = 2\pi / (3.96\times108 s) (solar magnetic cycle frequency) \\
   & At t=0:  \mu_j = 103 \times 3.38\times1020 = 3.38\times1023 T\cdot pm3 \\
-  & At t=1000 days: (1-e^(-\gammat)\cdot\cos(\pi\cdot t_n)) \approx 0.049 \to U_m scales accordingly
+  & At t=1000 days: (1-e^(-\gamma t)\cdot\cos(\pi\cdot t_n)) \approx 0.049 \to U_m scales accordingly
 \end{aligned}
 $$
 
@@ -191,7 +191,7 @@ $$
 
 Role: Controls temporal decay of magnetic string effects in U_m
 
-1-e^(-\gammat) \rightarrow small for t << 1/\gamma \approx 20,000 days
+1-e^(-\gamma t) \rightarrow small for t << 1/\gamma \approx 20,000 days
 At t=1000 days: 1-e^(-0.05) \approx 0.049  (still growing)
 ```
 
@@ -260,7 +260,7 @@ With all 15 variables defined:
 $$
 \begin{aligned}
   & F_U = \Sigma_{i=1}^{4} [k_i\cdot U_gi - \beta_i\cdot U_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdot E_react] \\
-  & + \Sigma_{j} [\mu_j(t)/r_j \cdot (1-e^(-\gammat)\cdot\cos(\pi\cdot t_n))\cdot\phî_j] \\
+  & + \Sigma_{j} [\mu_j(t)/r_j \cdot (1-e^(-\gamma t)\cdot\cos(\pi\cdot t_n))\cdot\phî_j] \\
   & \cdot P_SCm \cdot E_react \cdot (1+1013\cdot f_Heaviside) \cdot (1+f_quasi) \\
   & + H_SCm \cdot (g_\mu\nu + \eta\cdot T_s^(\mu\nu)) \\
   & - \lambda_i \cdot \Sigma_i [U_i \cdot E_react]

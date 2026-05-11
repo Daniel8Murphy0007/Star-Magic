@@ -58,7 +58,7 @@ $$
   & + (U_g1 + U_g2 + U_g3 + U_g4) \\
   & + U_i \\
   & + (Lambda*c^2/3) \\
-  & + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
+  & + (hbar/\sqrt{Deltax*Deltap}) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
   & + rho_gas*V*g \\
   & - E_rad                                          [radiation erosion — NEW] \\
   & + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3)

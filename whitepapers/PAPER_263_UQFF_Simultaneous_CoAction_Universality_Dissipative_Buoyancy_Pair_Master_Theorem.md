@@ -28,11 +28,11 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 This paper presents the **UQFF Simultaneous Co-action Universality Theorem** — the mathematical
 proof that any gravitationally bound astrophysical system with an active dissipative process must
 simultaneously host a UQFF buoyancy response, because both are functions of the same gravitational
-kernel `ug1_base = G\cdotM/r2`. Drawing on four C++ UQFF module upgrades from Sessions 71b–72f (NGC
+kernel `ug1_base = G\cdot M/r2`. Drawing on four C++ UQFF module upgrades from Sessions 71b–72f (NGC
 2525, RINGS_{OF\_RELATIVITY}, NGC 3603, Horsehead Nebula, NGC 1275), we identify a universal pattern:
 `g_UQFF = g_{MUGE\_base} + g_dissipative(t) + \Sigma_buoy(t)`. The **dissipative process** and the
 **buoyancy response** are never sequential phases — they are co-present at all times because both
-derive from the same `G\cdotM/r2` kernel. This unifies five physically distinct environments (AGN
+derive from the same `G\cdot M/r2` kernel. This unifies five physically distinct environments (AGN
 feedback in BCGs, PDR photoevaporation in dark nebulae, OB cavity pressure in YMCs, SN ejecta mass
 loss in spirals, and Einstein ring lensing in cluster arcs) under a single mathematical co-action
 framework. We prove four sub-theorems: the **Morphology-Independence Theorem** (PAPER_260), the
@@ -61,17 +61,17 @@ perturbation.
 
 | System | `g_diss` | Physical Process | Direction |
 |--------|----------|-----------------|-----------|
-| NGC 1275 (BCG) | `\rho_cool\cdotv_cool2/\rho_fluid` | ICM cooling flow infall | + (inward) |
+| NGC 1275 (BCG) | `\rho_cool\cdot v_cool2/\rho_fluid` | ICM cooling flow infall | + (inward) |
 | Horsehead Nebula | `E(t)` multiplicative on term1 | PDR photoevaporation erosion | - (removes confinement) |
 | NGC 3603 (YMC) | `P(t)/\rho_fluid` additive | OB stellar cavity pressure | + (outward dispersal) |
-| NGC 2525 (spiral) | `−G\cdotM_SN(t)/r2` | SN Ia ejecta mass escape | - (removes confinement) |
+| NGC 2525 (spiral) | `−G\cdot M_SN(t)/r2` | SN Ia ejecta mass escape | - (removes confinement) |
 | `RINGS_{OF\_RELATIVITY}` | `(1+L_t)` multiplicative on term1 | Einstein ring lensing amplification | + (amplifies) |
 
 **`g_buoy^{(3)}(r,t)`** = the 3-tier UQFF buoyancy response (canonical, same form in all systems):
 
 $$g_\text{buoy}^{(3)} = \underbrace{0.5 \cdot \text{ug1}}_\text{T1} \underbrace{- \beta_i \cdot \text{ug1} \cdot \omega_g \frac{M_\text{local}}{r} U_{UA} \cos(\pi t)}_\text{T2} \underbrace{- \beta_i \cdot \text{ug1} \cdot \omega_g \frac{M_\text{ext}}{r_\text{ext}} U_{UA} \cos(\pi t)}_\text{T3}$$
 
-with `ug1 = G\cdotM/r2` (static for dark nebulae/lensing/spirals; evolving ug1_t for YMCs/clusters).
+with `ug1 = G\cdot M/r2` (static for dark nebulae/lensing/spirals; evolving ug1_t for YMCs/clusters).
 
 ### 1.2 The Universality Theorem: Formal Statement
 
@@ -120,7 +120,7 @@ P(t)$\cdot$r2/($\rho$$\cdot$G$\cdot$M(t)) decays exponentially with timescale $\
 scale-invariant dynamics and universal ~30% SFE.
 
 **Position in universality:** The dissipative term `g_diss = P(t)/\rho_fluid` and the mass-growing
-kernel `ug1_t(t) = G\cdotM(t)/r2` both depend on t. However, B^{(3)} uses ug1_t and oscillates at $\omega$_g —
+kernel `ug1_t(t) = G\cdot M(t)/r2` both depend on t. However, B^{(3)} uses ug1_t and oscillates at $\omega$_g —
 parametrically orthogonal to $\tau$_exp (since $\omega$_g << 2$\pi$/$\tau$_exp for any reasonable $\tau$_exp). The universality
 theorem applies with the additional result that the ratio $\Phi$(t) becomes scale-invariant when $\tau$_SF =
 $\tau$_exp.
@@ -132,11 +132,11 @@ share the same timescale.
 ### 2.3 AGN Feedback Equilibrium Theorem (PAPER_259)
 
 **Statement:** In BCG/cooling-flow environments, term_cool = ($\rho$_cool$\cdot$v_cool2)/$\rho$_fluid and $\Sigma$_buoy
-simultaneously operate, with an equilibrium point 𝒠_AGN = term_cool/|$\Sigma$_buoy| = 1 defining the
+simultaneously operate, with an equilibrium point _AGN = term_cool/|$\Sigma$_buoy| = 1 defining the
 self-regulated feedback state.
 
 **Position in universality:** term_cool derives from thermodynamic infall kinematics — completely
-orthogonal to {$\beta$_i, $\omega$_g, U_UA}. 𝒠_AGN = 1 is a special case of the general co-action where the two
+orthogonal to {$\beta$_i, $\omega$_g, U_UA}. _AGN = 1 is a special case of the general co-action where the two
 force contributions precisely cancel. The UQFF predicts BCG AGN feedback cycles are NOT
 thermodynamic cycles — they are gravitational field modulation cycles with period set by cos($\pi$t) in
 the buoyancy tiers.
@@ -202,10 +202,10 @@ G\cdot\DeltaM(t)/r2`. Both are simultaneously active with B^{(3)}.
 **Cooling + Buoyancy = Equilibrium (NGC 1275):** `g_diss^{(1)} + \Sigma_buoy = 0` at equilibrium $\to$
 self-regulating system.
 
-**Erosion + Static B^{(3)} (Horsehead):** `g_diss^{(1)} = E(t)\cdotg_base`, B^{(3)} uses fixed ug1_base
+**Erosion + Static B^{(3)} (Horsehead):** `g_diss^{(1)} = E(t)\cdot g_base`, B^{(3)} uses fixed ug1_base
 $\to$ **asymmetric co-action**: dissipative grows, buoyancy constant.
 
-**Mass-loss + Static B^{(3)} (NGC 2525):** `g_diss^{(1)} = −G\cdotM_SN(t)/r2`, both tend negative $\to$
+**Mass-loss + Static B^{(3)} (NGC 2525):** `g_diss^{(1)} = −G\cdot M_SN(t)/r2`, both tend negative $\to$
 additive negative co-action, no cancellation.
 
 ---
@@ -276,10 +276,10 @@ paper)**
 
 | Paper | System | Dissipative Term | Unique Sub-Theorem |
 |-------|--------|-----------------|-------------------|
-| PAPER_259 | NGC 1275 (BCG) | `\rho_cool\cdotv_cool2/\rho_fluid` | AGN Feedback Equilibrium Theorem |
+| PAPER_259 | NGC 1275 (BCG) | `\rho_cool\cdot v_cool2/\rho_fluid` | AGN Feedback Equilibrium Theorem |
 | PAPER_260 | Horsehead Nebula | `E(t)` multiplicative | Morphology-Independence Theorem |
 | PAPER_261 | NGC 3603 (YMC) | `P(t)/\rho + M(t)` dual-additive | Scale-Invariant Feedback Theorem |
-| PAPER_262 | NGC 2525 (SN Ia) | `−G\cdotM_SN(t)/r2` | Dual Sign-Reversal Channel Theorem |
+| PAPER_262 | NGC 2525 (SN Ia) | `−G\cdot M_SN(t)/r2` | Dual Sign-Reversal Channel Theorem |
 | **PAPER_263** | **All five** | **General g_diss** | **UQFF Co-action Universality** |
 
 ---

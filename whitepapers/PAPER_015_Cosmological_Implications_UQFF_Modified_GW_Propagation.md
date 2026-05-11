@@ -388,7 +388,7 @@ pi(Gamma_0, alpha, beta)
 
 Likelihood:
 $$
-L = Pi_i (1/\sqrt{}(2pisigma_i^2)) exp[-(d_L,i - d_L,UQFF(z_i,f_i))^2 / (2sigma_i^2)]
+L = Pi_i (1/\sqrt{2pisigma_i^2}) exp[-(d_L,i - d_L,UQFF(z_i,f_i))^2 / (2sigma_i^2)]
 $$
 
 Prior choices:

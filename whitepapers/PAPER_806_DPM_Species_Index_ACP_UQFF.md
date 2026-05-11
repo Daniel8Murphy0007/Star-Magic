@@ -185,8 +185,8 @@ $$
 **Stage 6 — Quantum Ripple Shell**
 $$
 \begin{aligned}
-  & \rho_proto oscillates at \omega_shell = \sqrt{}(4\pi G \rho_proto / 3) (Jeans frequency) \\
-  & \omega_shell = \sqrt{}(4\pi \times 6.67e-11 \times 7.083e-37 / 3) = \sqrt{}(6.269e-46) = 2.504e-23 rad/s \\
+  & \rho_proto oscillates at \omega_shell = \sqrt{4\pi G \rho_proto / 3} (Jeans frequency) \\
+  & \omega_shell = \sqrt{4\pi \times 6.67e-11 \times 7.083e-37 / 3} = \sqrt{6.269e-46} = 2.504e-23 rad/s \\
   & \tau_shell = 2\pi/\omega_shell = 2.51e24 s (age of universe \times 180) \\
   & \to Shell frequency is sub-cosmological \to persists indefinitely
 \end{aligned}

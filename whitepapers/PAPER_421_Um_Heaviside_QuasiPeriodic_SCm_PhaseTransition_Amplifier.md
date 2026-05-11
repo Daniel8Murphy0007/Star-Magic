@@ -170,7 +170,7 @@ $$\boxed{U_m^{(\text{complete})} = \underbrace{\sum_j \frac{\mu_j(t,\rho_{\text{
 // Current compute_Um() — SOURCE4 (INCOMPLETE)
 double compute_{Um\_SOURCE4}(const SystemParams& body, double r, double t) {
     double single = (body.mu_s + body.B_SCm) * std::pow(body.R_s, 3) / r;
-    double decay = 1.0 - std::exp(-body.gamma * t);       // ← Missing cos(\pit_n) modulation!
+    double decay = 1.0 - std::exp(-body.gamma * t);       // ← Missing cos(\pi t_n) modulation!
     double Um = single * body.num_strings * body.PSCm * body.Ereact;
     //
     // MISSING: (1 + 1e13 * f_Heaviside)  ← 13-order-of-magnitude phase jump
@@ -186,7 +186,7 @@ double compute_{Um\_SOURCE4}(const SystemParams& body, double r, double t) {
 |---------------|---------------------|
 | `(1 + 1e13 * f_Heaviside)` | Up to $10^{13}$$\times$ during SCm phase transitions |
 | `(1 + f_quasi)` | $\pm A_q$ (up to $\pm 100\%$) amplitude modulation |
-| `cos(\pit_n)` in decay exponent | Temporal reversal modulation of string decay |
+| `cos(\pi t_n)` in decay exponent | Temporal reversal modulation of string decay |
 
 ### 7.3 Physical Consequences
 

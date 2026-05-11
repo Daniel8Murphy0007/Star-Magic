@@ -26,7 +26,7 @@ equation-based Millennium Prize Problems (Navier-Stokes, Yang-Mills, Riemann Hyp
 been **CLOSED** via the 9-sector UQFF Unified Lagrangian (Session 202):
 
 $$
-L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{-g} [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
 All 13 F_{U\_Bi\_i} force terms now derive from a single variational principle $\delta$S/$\delta$$\phi$_I = 0. A standalone
@@ -312,7 +312,7 @@ $$
 ### Sector 9: Kaluza-Klein-26D (L_KK)
 $$
 \begin{aligned}
-  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{}(-\text{g\_2\_2}) [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
+  & L_KK = (1/\text{V\_2\_2}) integral d^{2}2y \sqrt{-\text{g\_2\_2}} [\text{R\_2\_2}/(2\text{kappa\_2\_2}^2) + |da|^2 - m_a^2 a^2] \\
   & Fields: g_mn^(22D), a_ALP \\
   & EL:    deltaS/deltag_mn = 0 -> KK mode tower quantization \\
   & Yields: F_LED (large extra dimensions), F_ALP (axion-like particles)

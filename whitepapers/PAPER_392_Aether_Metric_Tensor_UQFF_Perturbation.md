@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_392
-title: "Aether Metric Tensor UQFF Perturbation: A_\mu\nu = g_\mu\nu + \eta\cdotT_s00\cdotcos(\pit_n)"
+title: "Aether Metric Tensor UQFF Perturbation: A_\mu\nu = g_\mu\nu + \eta\cdot T_s00\cdot \cos(\pi t_n)"
 session: 107
 date: 2025-01-01
 author: "Daniel T. Murphy"

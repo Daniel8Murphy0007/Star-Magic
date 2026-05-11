@@ -129,7 +129,7 @@ context*
 (LENR-Resonance) of the 9-sector Unified Lagrangian:
 
 $$
-L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{-g} [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
 **Sector 8 (LENR-Resonance):**

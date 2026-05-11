@@ -331,7 +331,7 @@ bridge.*
 UQFF Unified Lagrangian via Sector 2:
 
 $$
-L_UQFF = \sqrt{}(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = \sqrt{-g} [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 $$
 
 **Sector 2 (Yang-Mills) — This Paper's Focus:**
@@ -354,7 +354,7 @@ $$
   & deltaS_YM/deltaA^a_mu = 0 \\
   & -> D_nu F^{amunu} = J^{amu}               (Yang-Mills equations of motion) \\
   & -> Magnetic sector: B_i^a B_i^a/2 -> Ug3    (string rotation) \\
-  & -> Confinement: m_gap = \sqrt{}(2sigma H_SCm/v_SCm^2) = 5969.92 GeV \\
+  & -> Confinement: m_gap = \sqrt{2sigma H_SCm/v_SCm^2} = 5969.92 GeV \\
   & -> Kozima bridge (Sector 3): phonon condensate <-> gluon condensate
 \end{aligned}
 $$

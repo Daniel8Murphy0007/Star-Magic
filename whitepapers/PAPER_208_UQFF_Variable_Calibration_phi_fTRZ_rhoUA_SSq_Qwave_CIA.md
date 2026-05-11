@@ -51,7 +51,7 @@ present in Standard Model treatments.
 
 ```
 Definition:
-  ?(t) = sin(pt_n) + 0.01\cdotcos(2pf_flare\cdott)
+  ?(t) = sin(pt_n) + 0.01\cdot \cos(2pf_flare\cdott)
 
 where:
   t_n = t/t_Hubble \cdot (1 + H(z)\cdott0)    (normalized cosmic time)
@@ -61,12 +61,12 @@ Calibrated value: ? ˜ 0.81 \pm 0.01
 
 SymPy derivation:
   For n=1 (present epoch), standard UQFF t_n ˜ 1:
-    ? = sin(p) + 0.01\cdotcos(2p\cdotf_flare\cdott_present)
+    ? = sin(p) + 0.01\cdot \cos(2p\cdotf_flare\cdott_present)
     sin(p) = 0  ? dominant term is ZERO at t_n = 1
     But: t ? t_Hubble necessarily ? t_n ? exactly 1
     For typical observational epoch: t_n ˜ 0.95–1.05
     ?(t_n = 0.97) = sin(0.97p) ˜ sin(176°\cdotp/180) ˜ sin(3.04) ˜ 0.098
-                    + 0.01\cdotcos(2p\cdotf_flare\cdott) ˜ +0.01
+                    + 0.01\cdot \cos(2p\cdotf_flare\cdott) ˜ +0.01
     ? But different ? calibration sources suggest 0.81
 
 Alternate derivation for ? ˜ 0.81:

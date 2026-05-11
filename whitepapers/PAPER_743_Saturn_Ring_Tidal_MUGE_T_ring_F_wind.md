@@ -62,7 +62,7 @@ $$
   & + (U_g1 + U_g2 + U_g3 + U_g4) \\
   & + U_i \\
   & + (Lambda*c^2/3) \\
-  & + (hbar/\sqrt{}(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
+  & + (hbar/\sqrt{Deltax*Deltap}) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
   & + rho_atm*V*g \\
   & + F_wind                                       [atmospheric forcing — NEW]
 \end{aligned}

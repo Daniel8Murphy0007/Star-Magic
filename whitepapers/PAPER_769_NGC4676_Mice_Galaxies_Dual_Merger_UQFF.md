@@ -102,8 +102,8 @@ $$
 \begin{aligned}
   & H(z) = H0 \times \sqrt{}(\Omega_m(1+z)3 + \Omega_\Lambda) \\
   & = 2.268e-18 \times \sqrt{}(0.3 \times (1.022)3 + 0.7) \\
-  & = 2.268e-18 \times \sqrt{}(0.3 \times 1.0677 + 0.7) \\
-  & = 2.268e-18 \times \sqrt{}(1.0203) \\
+  & = 2.268e-18 \times \sqrt{0.3 \times 1.0677 + 0.7} \\
+  & = 2.268e-18 \times \sqrt{1.0203} \\
   & = 2.268e-18 \times 1.01010 = 2.291e-18 s-1 \\
   & H(z) \times t = 2.291e-18 \times 9.468e15 = 2.169e-2 \\
   & 1 + H(z) \times t = 1.02169
