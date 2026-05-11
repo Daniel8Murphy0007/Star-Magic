@@ -8,7 +8,7 @@ Exits 0 on full pass, 1 on any failure. Designed for unattended CI invocation.
 Coverage:
   - uqff_closed_constants assertions (K_MEXICAN_HAT, PHI_RES, F_TRZ, ...)
   - CP4 calculators #253-#257 smoke tests
-  - QCalcGeom test runner (_qcalcgeom_tests.exe) -> 76/76 PASS expected
+  - QCalcGeom test runner (_qcalcgeom_tests.exe) -> all tests PASS expected (version-agnostic)
 """
 from __future__ import annotations
 
@@ -96,10 +96,15 @@ def check_qcalcgeom() -> None:
         tail = out.stdout.splitlines()[-12:]
         for line in tail:
             print(f"    {line}")
-        if "76/76 passed" in out.stdout or "PASSED:       76" in out.stdout:
-            _ok("QCalcGeom 76/76 PASS")
+        # Version-agnostic: accept any N/N pass count, fail only on any FAILED>0
+        import re as _re
+        m_total = _re.search(r"Total tests:\s+(\d+)", out.stdout)
+        m_pass  = _re.search(r"PASSED:\s+(\d+)", out.stdout)
+        m_fail  = _re.search(r"FAILED:\s+(\d+)", out.stdout)
+        if m_total and m_pass and m_fail and m_fail.group(1) == "0" and m_pass.group(1) == m_total.group(1):
+            _ok(f"QCalcGeom {m_pass.group(1)}/{m_total.group(1)} PASS")
         else:
-            _fail("QCalcGeom", "expected 76/76 PASS")
+            _fail("QCalcGeom", f"unexpected output (pass={m_pass and m_pass.group(1)}, fail={m_fail and m_fail.group(1)}, total={m_total and m_total.group(1)})")
     except Exception:
         _fail("QCalcGeom run", traceback.format_exc().splitlines()[-1])
 
