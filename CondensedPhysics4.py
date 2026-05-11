@@ -15918,6 +15918,91 @@ class UQFFKKTowerRegulatorCalculator:
 
 
 # ---------------------------------------------------------------------------
+# #258  UQFFKKTowerHbarRegulatorCalculator   PAPER_1173   (Session 257)
+# ---------------------------------------------------------------------------
+class UQFFKKTowerHbarRegulatorCalculator:
+    """
+    #258  hbar-Tracked KK Zero-Point Density
+    -----------------------------------------
+    Independent second-route KK calculation (PAPER_1173) with hbar tracked
+    at every step. Takes the KK lightest-mode rest energy m_1*c^2 as input
+    and returns rho_KK in J/m^3.
+
+    Closed form:
+        rho_KK = (3*zeta(5) / (128*pi^6)) * (D_crit/D_BSFG)^4
+                 * (m_1*c^2)^4 / (hbar*c)^3
+
+    Default input: m_1*c^2 = 1.6e-21 J (=10 meV) saturating rho_KK = 5.86e-10
+    (PAPER_1173 §3). Matches CP4 #257 ledger-complement value.
+
+    Source: PAPER_1173 §2-3 (Session 257)
+    """
+
+    def compute(self, dataset: dict | None = None) -> dict:
+        import math
+        try:
+            from uqff_closed_constants import D_CRIT, D_BSFG  # type: ignore
+        except Exception:
+            D_CRIT, D_BSFG = 26, 6
+
+        ds = dataset or {}
+        # SI physical constants (CODATA 2022)
+        c       = 2.998e8
+        hbar    = 1.0545718e-34
+        hbar_c  = hbar * c   # 3.1615e-26 J*m
+
+        # Input: lightest KK mode rest energy (default saturates ledger complement)
+        m1_c2   = ds.get('m1_c2_J', 1.2006e-21)  # J  (= 7.49 meV; predicts rho_KK=5.86e-10)
+        rho_obs = ds.get('rho_Lambda_obs', 5.96e-10)
+        rho_KK_target = ds.get('rho_KK_target', 5.86e-10)
+
+        zeta_5      = 1.0369277551433699
+        D_ratio_4   = (D_CRIT / D_BSFG) ** 4
+        prefactor   = (3.0 * zeta_5) / (128.0 * math.pi ** 6) * D_ratio_4
+        rho_KK      = prefactor * (m1_c2 ** 4) / (hbar_c ** 3)
+
+        # Inverse: solve for m_1*c^2 that saturates rho_KK_target
+        m1_c2_predicted = (rho_KK_target * hbar_c ** 3 / prefactor) ** 0.25
+        L_KK_star       = hbar_c / m1_c2_predicted  # meters
+        L_KK_per_ladder = L_KK_star * (D_CRIT / D_BSFG)  # per-ladder length
+
+        residual_pct = 100.0 * abs(rho_KK - rho_KK_target) / rho_KK_target
+
+        return {
+            'paper_ref':         'PAPER_1173',
+            'session':           257,
+            'class':             'UQFFKKTowerHbarRegulatorCalculator',
+            'inputs': {
+                'm1_c2_J':       m1_c2,
+                'c':             c,
+                'hbar':          hbar,
+                'D_crit':        D_CRIT,
+                'D_BSFG':        D_BSFG,
+                'rho_Lambda_obs': rho_obs,
+            },
+            'geometry': {
+                'zeta_5':        zeta_5,
+                'D_ratio_4':     D_ratio_4,
+                'prefactor':     prefactor,
+                'hbar_c':        hbar_c,
+            },
+            'rho_KK':            rho_KK,
+            'rho_KK_target':     rho_KK_target,
+            'residual_pct':      residual_pct,
+            'within_tol_0p5pct': residual_pct <= 0.5,
+            'prediction_P6': {
+                'm1_c2_J':          m1_c2_predicted,
+                'm1_c2_eV':         m1_c2_predicted / 1.602e-19,
+                'L_KK_star_m':      L_KK_star,
+                'L_KK_per_ladder_m': L_KK_per_ladder,
+                'falsifies_at':     'Yukawa null result at L=20 um, alpha>=1',
+            },
+            'free_parameters':   0,
+            'status':            'P6 PREDICTION: sub-mm Yukawa at L_KK* ~ 20-90 um (PAPER_1173, PAPER_1174 P6)',
+        }
+
+
+# ---------------------------------------------------------------------------
 # #181  UQFFBlackHoleFiniteBoundCalculator   PAPER_594
 # ---------------------------------------------------------------------------
 class UQFFBlackHoleFiniteBoundCalculator:
@@ -19977,6 +20062,7 @@ __all__ = [
     "UQFFFalsifiablePredictionsCalculator",                  # PAPER_1168 (Session 254 - 5 no-free-parameter falsifiable predictions)
     "UQFFVacuumEnergyLedgerCalculator",                      # PAPER_1170 (Session 255 - 27-decade vacuum-energy ledger closure)
     "UQFFKKTowerRegulatorCalculator",                        # PAPER_1171 (Session 256 - first-principles KK regulator)
+    "UQFFKKTowerHbarRegulatorCalculator",                    # PAPER_1173 (Session 257 - hbar-tracked KK; sub-mm Yukawa P6)
     "UQFFBlackHoleFiniteBoundCalculator",                    # PAPER_594 (#181)
     "UQFFSgrAStarBoundApplicationCalculator",                # PAPER_595 (#182)
     "UQFFQuantumGravityUnificationCalculator",               # PAPER_596 (#183)

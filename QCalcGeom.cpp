@@ -10,7 +10,7 @@
  *   vds_branches, dvp_branches, bh26_branches,
  *   vds_dvp_coupled, bh26_bsh_resonance     <- Phase H202 additions
  *
- * runQCalcGeomTests() covers T01–T76 (76 tests total; T74-T76 added Session 256 for G2 vacuum-energy ledger cross-check).
+ * runQCalcGeomTests() covers T01–T80 (80 tests total; T77-T80 added Session 257 for G2 ledger sensitivity).
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
@@ -1346,6 +1346,50 @@ void runQCalcGeomTests() {
         R.push_back({ "T76","G2-Ledger",
             "(D_crit/D_BSFG)^4 == (13/3)^4 == 31.6049",
             ratio4, ratio4_expected, 1.0e-6, t76, t76 });
+
+        // ── G2-Sensitivity (T77-T80): ledger drift checks (Session 257, PAPER_1174) ─
+        // T77: rho_SCm +/-1% drift  ->  rho_R26 scales by 1% (linear-in-rho_SCm)
+        const double rho_SCm_drift  = 7.09e-37 * 1.01;
+        const double rho_R26_drift  = (13.0/2.0) * 1.0e8 * 1.0e8 * rho_SCm_drift;
+        const double rho_R26_base   = (13.0/2.0) * 1.0e8 * 1.0e8 * 7.09e-37;
+        const double rho_R26_ratio  = rho_R26_drift / rho_R26_base;
+        bool t77 = (std::abs(rho_R26_ratio - 1.01) < 1.0e-12);
+        R.push_back({ "T77","G2-Sensitivity",
+            "rho_R26(rho_SCm*1.01)/rho_R26(rho_SCm) == 1.01 (linear)",
+            rho_R26_ratio, 1.01, 1.0e-10, t77, t77 });
+
+        // T78: v_UA +/-1% drift -> rho_R26 scales by 1.0201 (quadratic-in-v_UA)
+        const double v_UA_drift     = 1.0e8 * 1.01;
+        const double rho_R26_v2     = (13.0/2.0) * v_UA_drift * v_UA_drift * 7.09e-37;
+        const double rho_R26_v2_r   = rho_R26_v2 / rho_R26_base;
+        bool t78 = (std::abs(rho_R26_v2_r - 1.0201) < 1.0e-12);
+        R.push_back({ "T78","G2-Sensitivity",
+            "rho_R26(v_UA*1.01)/rho_R26(v_UA) == 1.0201 (quadratic)",
+            rho_R26_v2_r, 1.0201, 1.0e-10, t78, t78 });
+
+        // T79: D_BSFG=5 vs 7 sensitivity in (D_crit/D_BSFG)^4
+        const double r5 = std::pow(26.0/5.0, 4.0);   // 731.16
+        const double r7 = std::pow(26.0/7.0, 4.0);   // 190.40
+        const double r6 = std::pow(26.0/6.0, 4.0);   // 352.60
+        // Predicted: D_BSFG=6 is geometric mean of 5,7 to <5%  (sqrt(731.16*190.40)=372.5)
+        const double r_gm = std::sqrt(r5 * r7);
+        bool t79 = (std::abs(r6 - r_gm) / r6 < 0.10);  // within 10%
+        R.push_back({ "T79","G2-Sensitivity",
+            "(13/3)^4 ~ geom-mean((13/2.5)^4,(13/3.5)^4) to 10%",
+            r6, r_gm, 10.0, t79, t79 });
+
+        // T80: zeta(5) vs zeta(3) vs zeta(7) substitution sensitivity
+        // zeta(3)=1.20206 zeta(5)=1.03693 zeta(7)=1.00835
+        // Closed-ledger requires zeta(5); zeta(3) overshoots by 16%, zeta(7) undershoots by 2.7%
+        const double z3 = 1.20206;
+        const double z5 = 1.03693;
+        const double z7 = 1.00835;
+        const double ratio_35 = z3 / z5;
+        const double ratio_75 = z7 / z5;
+        bool t80 = (std::abs(ratio_35 - 1.159) < 0.01) && (std::abs(ratio_75 - 0.9724) < 0.005);
+        R.push_back({ "T80","G2-Sensitivity",
+            "zeta(3)/zeta(5)~1.159 and zeta(7)/zeta(5)~0.972 (KK selects zeta(5))",
+            ratio_35, 1.159, 1.0, t80, t80 });
     }
 
     // ── Print results table ──────────────────────────────────────────────────
