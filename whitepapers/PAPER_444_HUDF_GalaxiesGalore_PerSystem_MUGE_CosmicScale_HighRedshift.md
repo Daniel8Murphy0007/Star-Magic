@@ -119,7 +119,7 @@ At $t = 0$ (redshift $z = 3.5$, early universe):
 | $T_2$ UQFF$\times$(1+I) | $4.24 \times 10^{-22}$ | negligible |
 | $T_9$ Wind | $8.13 \times 10^{-16}$ | trace |
 
-$$\boxed{g_\text{HUDF}(t=0) \approx 4.11\times10^{-9} \, \text{m/s}^2} \quad [\text{\Lambda cosmological term dominant at co-moving scale}]$$
+$$\boxed{g_\text{HUDF}(t=0) \approx 4.11\times10^{-9} \, \text{m/s}^2} \quad [\Lambda \text{ cosmological term dominant at co-moving scale}]$$
 
 **Remark — $\Lambda$ dominance at cosmic scale:** This result is the **first occurrence in the 17-paper series** where the dark energy ($T_3$) term dominates over all other gravitational terms. At co-moving $r = 10^{27}$ m, $T_3$ exceeds $T_1$ by 13 orders of magnitude. This reflects the HUDF FoV being a cosmological scale — the MUGE correctly predicts that dark energy governs on scales larger than the matter power spectrum coherence length.
 

@@ -166,7 +166,7 @@ $$g_{\mathrm{fluid}}^{\mathrm{LENR}} \approx 2.75\times10^8 \times 10^{-6} \time
 |---------|-----|----------------|
 | LENR Q-value | Standard nuclear physics: 0.78 MeV | Same (confirmed by UQFF) |
 | Energy correction factor | Fermi-Dirac statistics | Basel S(2) = $\pi$2/6 |
-| Cyclotron energy | E = \hbar$\omega$_c = e\hbarB/m | W_mag = 15$\times$109 B_kG R_km (v/c) eV |
+| Cyclotron energy | $E = \hbar\omega_c = e\hbar B/m$ | $W_\text{mag} = 15\times10^9 B_\text{kG} R_\text{km} (v/c)$ eV |
 | Buoyancy series | Not defined | $\Sigma$1/3^{($\pi$+1)^n} $\approx$ 0.0106 |
 
 ---

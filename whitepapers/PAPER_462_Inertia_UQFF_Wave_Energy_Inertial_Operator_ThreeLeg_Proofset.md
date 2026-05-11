@@ -48,7 +48,7 @@ This is the **first use of a localised spherical wave ansatz** in UQFF gravity c
 
 ### 2.2 Inertial Operator Î (FIRST in UQFF)
 
-$$\hat{I}\psi = \lambda_Ileft(\frac{\partial}{\partial t} + i\omega_m \hat{r}\cdot\nabla\right)\psi$$
+$$\hat{I}\psi = \lambda_I\left(\frac{\partial}{\partial t} + i\omega_m \hat{r}\cdot\nabla\right)\psi$$
 
 Where:
 - $\lambda_I$ = inertial coupling constant

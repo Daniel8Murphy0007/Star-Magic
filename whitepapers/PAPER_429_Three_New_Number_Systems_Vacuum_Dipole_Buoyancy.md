@@ -75,7 +75,7 @@ The series is dominated by $k=1$; higher terms contribute less than $10^{-8}$ du
 
 The **Dipole Vortex Prime sequence** $\mathcal{P}_{\text{DV}}$ consists of the prime numbers $p > 26$:
 
-$$\mathcal{P}_{\text{DV}} = \{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, \ldots}$$
+$$\mathcal{P}_{\text{DV}} = \{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, \ldots\}$$
 
 The 27th prime is $p_{27} = 103$ and the 30th prime is $p_{30} = 113$.
 
