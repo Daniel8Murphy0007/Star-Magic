@@ -91,7 +91,7 @@ $$r_{\text{ring}} = \frac{r}{3} = \frac{2.36 \times 10^{20}}{3} = 7.867 \times 1
 
 The Keplerian orbital frequency of a test mass at r_ring within the total gravitational potential:
 
-$$\omega_{\text{ring}} = \sqrt{\underbrace{\frac{GM}{r_{\text{ring}}_{\text{DPM mass gradient}}}^3}}$$
+$$\omega_{\text{ring}} = \sqrt{\frac{GM}{r_{\text{ring}}^3}} \quad \text{(DPM mass gradient)}$$
 
 Substituting values:
 $$\omega_{\text{ring}} = \sqrt{\frac{6.674 \times 10^{-11} \times 1.989 \times 10^{41}}{(7.867 \times 10^{19})^3}}$$

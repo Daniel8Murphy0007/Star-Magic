@@ -50,16 +50,14 @@ present in Standard Model treatments.
 
 ### 2.1 Master Equation
 
-$$
-\begin{aligned}
-  & g_Compressed(r,t) = (G M(t) / r2) \cdot (1 + H(t,z)) \cdot (1 - B(t)/B_crit) \cdot (1 + F_env(t)) \\
-  & + ? U_g,i' \\
-  & + ? c2 / 3 \\
-  & + ? / v(?x\cdot?p) \cdot ? ?_total† H_op ?_total dV \cdot (2p / t_Hubble) \\
-  & + ?_fluid \cdot V \cdot g \\
-  & + (M_vis + M_DM) \cdot (d?/? + 3G M / r3)
-\end{aligned}
-$$
+```
+g_Compressed(r,t) = (G*M(t)/r^2) * (1 + H(t,z)) * (1 - B(t)/B_crit) * (1 + F_env(t))
+                  + Sum U_g,i'
+                  + Lambda_c^(2/3)
+                  + (hbar/v)*(Delta_x*Delta_p) * <psi_total|H_op|psi_total> dV * (2*pi/t_Hubble)
+                  + rho_fluid * V * g
+                  + (M_vis + M_DM) * (delta_rho/rho + 3*G*M/r^3)
+```
 
 ### 2.2 Term-by-Term Reference
 
@@ -73,15 +71,15 @@ $$
 - (1+F_env(t)): envelope feedback correction
 
 **Term 2: Compressed Ug_i Prime Sum**
-$$
-? U_g,i' = compressed form of MUGE Ug1+Ug2+Ug3+Ug4 at reduced fidelity
-$$
+```
+Sum U_g,i' = compressed form of MUGE Ug1+Ug2+Ug3+Ug4 at reduced fidelity
+```
 Same 26-state structure but with prime notation indicating compression (parameter reduction)
 
 **Term 3: Cosmological Constant**
-$$
-? c2 / 3 = (1.1\times10-52 m?2) \times (3\times108 m/s)2 / 3 = 3.30\times10?36 m/s2
-$$
+```
+Lambda_c^(2/3) = (1.1e-52 m^-2) * (3e8 m/s)^2 / 3 = 3.30e-36 m/s^2
+```
 (Same as PAPER_296 for reference)
 
 **Term 4: Quantum Hamiltonian Term (NEW in completeness)**
@@ -134,14 +132,12 @@ instability criterion and the dark matter halo perturbation.
 
 ### 3.1 Master Equation
 
-$$
-\begin{aligned}
-  & R(t) = ?_{i=1}^{26} [ \text{R\_U\_g1},i \cdot cos(?_U_g1,i \cdot t) \\
-  & + \text{R\_U\_g2},i \cdot cos(?_U_g2,i \cdot t) \\
-  & + \text{R\_U\_g3},i \cdot cos(?_U_g3,i \cdot t) \\
-  & + \text{R\_U\_g4i},i \cdot cos(?_U_g4i,i \cdot t) ]
-\end{aligned}
-$$
+```
+R(t) = Sum_{i=1}^{26} [ R_U_g1,i  * cos(omega_U_g1,i  * t)
+                      + R_U_g2,i  * cos(omega_U_g2,i  * t)
+                      + R_U_g3,i  * cos(omega_U_g3,i  * t)
+                      + R_U_g4i,i * cos(omega_U_g4i,i * t) ]
+```
 
 ### 3.2 Four Resonance Sub-Terms per State
 
@@ -149,15 +145,15 @@ Each of the 26 states i contributes 4 cosine resonance components:
 
 | Sub-term | Physical Origin | Frequency Scale |
 |----------|----------------|----------------|
-| `R_{U\_g1}`,i $\cdot$ cos(?_U_g1,i t) | Magnetic dipole resonance | f_super = 1.411$\times$1016 Hz at i=1 |
-| `R_{U\_g2}`,i $\cdot$ cos(?_U_g2,i t) | Charge-reactivity resonance | f_react = 101° Hz at i=1 |
-| `R_{U\_g3}`,i $\cdot$ cos(?_U_g3,i t) | String rotation resonance | f_THz = 1012 Hz at i=1 |
-| `R_{U\_g4i}`,i $\cdot$ cos(?_U_g4i,i t) | Vacuum concentration resonance | f_quantum = 1.445$\times$10?17 Hz at i=1 |
+| `R_{U\_g1}`,i $\cdot$ cos(omega\_U\_g1\_i t) | Magnetic dipole resonance | f_super = 1.411$\times$1016 Hz at i=1 |
+| `R_{U\_g2}`,i $\cdot$ cos(omega\_U\_g2\_i t) | Charge-reactivity resonance | f_react = 101° Hz at i=1 |
+| `R_{U\_g3}`,i $\cdot$ cos(omega\_U\_g3\_i t) | String rotation resonance | f_THz = 1012 Hz at i=1 |
+| `R_{U\_g4i}`,i $\cdot$ cos(omega\_U\_g4i\_i t) | Vacuum concentration resonance | f_quantum = 1.445$\times$10?17 Hz at i=1 |
 
-**State-to-state scaling:** ?_U_gX,i decreases with increasing i by the [SSq] exponential factor:
-$$
-?_U_gX,i = ?_U_gX,1 \times exp(-[SSq] \cdot i/26)
-$$
+**State-to-state scaling:** `omega_U_gX,i` decreases with increasing i by the [SSq] exponential factor:
+```
+omega_U_gX,i = omega_U_gX,1 * exp(-[SSq] * i/26)
+```
 
 ### 3.3 Total Term Count
 
@@ -175,20 +171,16 @@ $$
 
 ### 3.5 Vela Frequency Assignment
 
-For Vela Pulsar THz blobs (0.3--0.7c velocities, f_res~1012 Hz):
-$$
-\begin{aligned}
-  & \text{R\_U\_g3},i = R_0 \cdot (v_blob/c) \cdot (f_THz/f_ref)   [THz component dominant] \\
-  & ?_U_g3,i = 2p \times f_THz = 2p \times 1012 rad/s
-\end{aligned}
-$$
+For Vela Pulsar THz blobs (0.3--0.7c velocities, f_res~10^12 Hz):
+```
+R_U_g3_i  = R_0 * (v_blob/c) * (f_THz/f_ref)   [THz component dominant]
+omega_U_g3_i = 2*pi * f_THz = 2*pi * 10^12 rad/s
+```
 The ~0.3 phase separation characteristic of the Vela multi-peak profile maps to:
-$$
-\begin{aligned}
-  & phase_sep = 0.3 ? cos(p \times 0.3/0.3) = cos(p) = -1   [anti-phase sum] \\
-  & R_total ~ 2 \times |\text{R\_U\_g3}| \times cos(p \times phase_sep) at minimum
-\end{aligned}
-$$
+```
+phase_sep = 0.3  ->  cos(pi * 0.3/0.3) = cos(pi) = -1   [anti-phase sum]
+R_total ~ 2 * |R_U_g3| * cos(pi * phase_sep) at minimum
+```
 
 ---
 
@@ -219,21 +211,21 @@ states (104 total terms)
 
 ## 6. Key Equations Summary
 
-$$
-\begin{aligned}
-  & g_Compressed = (GM(t)/r2)(1+H(t,z))(1-B/B_crit)(1+F_env) \\
-  & + ?U_g,i' + ?c2/3 \\
-  & + ?/v(?x?p)\cdot??†H_op ? dV\cdot(2p/t_Hubble) \\
-  & + ?_fluid\cdot V\cdot g \\
-  & + (M_vis+M_DM)\cdot(d?/? + 3\mu_s\nabla(M_s/r)/r)     [NEW DM perturbation] \\
-  & R(t) = ?_{i=1}^{26} [R_Ug1,i cos(?_Ug1,i t)       [magnetic dipole] \\
-  & + R_Ug2,i cos(?_Ug2,i t)       [charge-reactivity] \\
-  & + R_Ug3,i cos(?_Ug3,i t)       [string rotation ? THz] \\
-  & + R_Ug4i,i cos(?_Ug4i,i t)]    [vacuum concentration] \\
-  & [compact]  g_Compressed ˜ 3.95\times10-41 N; R(t) ˜ -1.12\times10-42 N \\
-  & [galactic] g_Compressed ˜ 4.12\times10-41 N; R(t) ˜ -2.29\times10-41 N
-\end{aligned}
-$$
+```
+g_Compressed = (GM(t)/r^2)*(1+H(t,z))*(1-B/B_crit)*(1+F_env)
+             + Sigma U_g,i' + Lambda_c^(2/3)
+             + (hbar/v)*(Delta_x*Delta_p) * <psi|H_op|psi> * dV * (2*pi/t_Hubble)
+             + rho_fluid * V * g
+             + (M_vis+M_DM) * (delta_rho/rho + 3*mu_s*grad(M_s/r)/r)   [NEW DM perturbation]
+
+R(t) = Sum_{i=1}^{26} [ R_Ug1,i  * cos(omega_Ug1,i  * t)    [magnetic dipole]
+                      + R_Ug2,i  * cos(omega_Ug2,i  * t)    [charge-reactivity]
+                      + R_Ug3,i  * cos(omega_Ug3,i  * t)    [string rotation -> THz]
+                      + R_Ug4i,i * cos(omega_Ug4i,i * t) ]  [vacuum concentration]
+
+[compact]  g_Compressed ~ 3.95e-41 N;  R(t) ~ -1.12e-42 N
+[galactic] g_Compressed ~ 4.12e-41 N;  R(t) ~ -2.29e-41 N
+```
 
 ---
 

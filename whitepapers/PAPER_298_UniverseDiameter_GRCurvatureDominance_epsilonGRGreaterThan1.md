@@ -48,7 +48,7 @@ operating inside 30% of its own Schwarzschild radius.
 ## 2. Master Parameter
 
 **Post-DPM-seeded GR Curvature Parameter:**
-$$\boxed{\varepsilon_{GR} = \underbrace{\frac{3GM}{r \cdot c^2}}$$
+$$\boxed{\varepsilon_{GR} = \frac{3GM}{r \cdot c^2}}$$
 
 This arises from the first post-Newtonian (1PN) correction to DPM-seeded gravity in the weak-field,
 slow-motion expansion of GR. For $\varepsilon$_GR >> 1, the full GR treatment is required.
@@ -70,7 +70,7 @@ $$a_{GR} = g_{base} \times \varepsilon_{GR} = 3.447 \times 10^{-10} \times 5.056
 This is the **largest single term** in the UQFF 9-term sum at Universe scale.
 
 **Ratio analysis:**
-$$\frac{a_{GR}}{g_{base}} = \varepsilon_{GR} = 5.056 \quad \text{(GR exceeds DPM-seeded by 5\times)}$$
+$$\frac{a_{GR}}{g_{base}} = \varepsilon_{GR} = 5.056 \quad \text{(GR exceeds DPM-seeded by 5}\times\text{)}$$
 
 ---
 

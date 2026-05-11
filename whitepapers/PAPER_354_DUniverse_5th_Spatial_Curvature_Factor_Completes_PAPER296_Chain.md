@@ -129,7 +129,7 @@ At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from
 
 The DVP framework maps the curvature constant onto the dipole vortex prime lattice:
 
-$$k_{\mathrm{curv}} \to p_{\mathrm{DVP}}(n_{\mathrm{curv}}) : \quad n_{\mathrm{curv}} = \left\lfloor -\log_{10}(k_{\mathrm{curv}}) \right\floor = 53$$
+$$k_{\mathrm{curv}} \to p_{\mathrm{DVP}}(n_{\mathrm{curv}}) : \quad n_{\mathrm{curv}} = \left\lfloor -\log_{10}(k_{\mathrm{curv}}) \right\rfloor = 53$$
 
 The value $n_{\mathrm{curv}} = 53$ lies between DVP primes $p_{16} = 53$ (which is itself prime), confirming that $k_{\mathrm{curv}}$ falls on a DVP resonance node. This is not coincidental: the Friedmann curvature parameter inherits the DVP lattice structure from the underlying UQFF vacuum topology.
 

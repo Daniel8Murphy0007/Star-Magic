@@ -34,7 +34,7 @@ In Session 78, Saturn's Solar tidal term was implemented as a **constant**:
 $$g_{Sun\_tidal} = \frac{G M_{Sun}}{r_{orbit}^2} = 6.49 \times 10^{-5} \ \text{m/s}^2$$
 
 Analysis of the legacy Saturn module revealed that the Solar tidal field was formulated as
-time-dependent via Hubble expansion: `g_sun \times (1 + H(z)\timest)`. This motivates PAPER_283: the Solar
+time-dependent via Hubble expansion: `g_sun \times (1 + H(z)\times t)`. This motivates PAPER_283: the Solar
 tidal field **modulated by the Friedmann Hubble factor** — a distinct physical channel from the
 additive Hubble coupling on Saturn's self-gravity (`g_exp = g_grav \times H \times t`).
 
@@ -92,7 +92,7 @@ cosmological expansion factor** — a planetary-stellar-cosmological three-body 
 | Term | Formula | Channel | Module |
 |------|---------|---------|--------|
 | `g_exp` (Saturn self) | `g_grav \times H \times t` | Additive, self-gravity | SATURN |
-| `g_{ST\_HE}` (PAPER_283) | `g_{Sun\_tidal} \times (1 + H\timest)` | **Multiplicative, external tidal** | SATURN |
+| `g_{ST\_HE}` (PAPER_283) | `g_{Sun\_tidal} \times (1 + H\times t)` | **Multiplicative, external tidal** | SATURN |
 | `kappa_recession` (galaxy modules) | `g \times (1 + z)` | Cosmological redshift (z>0) | Galactic |
 | `Friedmann H(z)` coupling | `H(z) = H₀√(\Omegaₘ(1+z)3 + \Omega_\Lambda)` | H(z) in expansion | Multiple |
 
@@ -168,7 +168,7 @@ coupling
 New private members added:
 ```cpp
 double t_{Solar\_age};          // Solar System age (s): 4.5 Gyr = 1.420e17 s
-double hubble_{tidal\_factor};  // 1 + H(z=0)\timest_{Solar\_age} at system age = 1.3222 (32% boost)
+double hubble_{tidal\_factor};  // 1 + H(z=0)\times t_{Solar\_age} at system age = 1.3222 (32% boost)
 ```
 
 `updateCache()` computes reference value:
@@ -193,7 +193,7 @@ parameter.
 influence on Saturn has been evaluated as constant since formation, it has been underestimated by
 ~32% integrated over Solar System history.
 
-4. **Universal formula independent of planet**: `\xi_HT = 1 + H₀\timest_age` is the same for all planets in
+4. **Universal formula independent of planet**: `\xi_HT = 1 + H₀\times t_age` is the same for all planets in
 a given system — the fractional boost is determined entirely by system age and the Hubble constant,
 not by planetary mass or orbital radius. The absolute correction `\Deltag` scales with `g_tidal,0`.
 
