@@ -36,9 +36,9 @@ parameters beyond the canonical kappa and [SSq].
 
 $$
 \begin{aligned}
-& v_pred(system) = v_0 * exp(kappa*t + [SSq]*t/26) * S_26 * Phi_{1.25THz} * (F_{U,Bi}/F_U)_system \\
-  & agreement_% = |v_pred - v_obs| / v_obs * 100 \\
-  & mean_agreement = (1/N) * Sum agreement_i
+& v_{\text{pred}}(\text{system}) = v_0 \cdot \exp(\kappa t + [SSq] t/26) \cdot S_{26} \cdot \Phi_{1.25\,\text{THz}} \cdot (F_{U,Bi}/F_U)_{\text{system}} \\
+  & \text{agreement}\,\% = \lvert v_{\text{pred}} - v_{\text{obs}} \rvert / v_{\text{obs}} \cdot 100 \\
+  & \text{mean\_agreement} = (1/N) \cdot \sum \text{agreement}_i
 \end{aligned}
 $$
 
