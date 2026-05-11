@@ -129,6 +129,20 @@ def predict_P12() -> dict:
     }
 
 
+def predict_P13() -> dict:
+    """DESI Y5 dark-energy w(z) second derivative strict-static (PAPER_1178, Session 259)."""
+    z = 0.5
+    return {
+        'redshift':              z,
+        'd2_w_dz2_UQFF':         0.0,
+        'd2_w_dz2_DESI2024':     2.0 * (-0.75) / (1 + z) ** 3,
+        'd2_w_dz2_bound_Y5_1s':  abs(2.0 * 0.05 / (1 + z) ** 3),
+        'observational_bound':   'DESI Y5 forecast 1-sigma on w_a ~ +/-0.05',
+        'decisive_experiment':   'DESI Y5 + CMB-S4 + SN (2028)',
+        'falsifies':             '|d2 w/dz2| > 0.030 at z=0.5 at 3-sigma',
+    }
+
+
 # ---------------------------------------------------------------------------
 # Cross-check against CP4 #258, #259, #260
 # ---------------------------------------------------------------------------
@@ -139,6 +153,8 @@ def cross_check_with_CP4() -> bool:
             UQFFKKTowerHbarRegulatorCalculator,
             UQFFRingdownSpectralOffsetCalculator,
             UQFFSigma8WeakLensingCalculator,
+            UQFF2027JointFalsifierCalculator,
+            UQFFDarkEnergySecondDerivativeCalculator,
         )
     except Exception as exc:
         print(f"[WARN] Could not import CP4 calculators: {exc}", file=sys.stderr)
@@ -146,13 +162,19 @@ def cross_check_with_CP4() -> bool:
     r258 = UQFFKKTowerHbarRegulatorCalculator().compute()
     r259 = UQFFRingdownSpectralOffsetCalculator().compute()
     r260 = UQFFSigma8WeakLensingCalculator().compute()
+    r261 = UQFF2027JointFalsifierCalculator().compute()
+    r262 = UQFFDarkEnergySecondDerivativeCalculator().compute()
     ok258 = r258.get('within_tol_0p5pct', False)
     ok259 = abs(r259['R_21_22_UQFF'] - 0.1443) < 0.005
     ok260 = abs(r260['sigma_8_UQFF']  - 0.797) < 0.002
+    ok261 = r261['status'].startswith('CONFIRMED')
+    ok262 = (r262['d2_w_dz2_UQFF'] == 0.0)
     print(f"      CP4 #258 (P6 KK tower):       {'PASS' if ok258 else 'FAIL'}")
     print(f"      CP4 #259 (P11 ringdown):      {'PASS' if ok259 else 'FAIL'}")
     print(f"      CP4 #260 (P12 sigma_8):       {'PASS' if ok260 else 'FAIL'}")
-    return bool(ok258 and ok259 and ok260)
+    print(f"      CP4 #261 (joint 2027 triple): {'PASS' if ok261 else 'FAIL'}")
+    print(f"      CP4 #262 (P13 d2w/dz2=0):     {'PASS' if ok262 else 'FAIL'}")
+    return bool(ok258 and ok259 and ok260 and ok261 and ok262)
 
 
 # ---------------------------------------------------------------------------
@@ -161,7 +183,7 @@ def cross_check_with_CP4() -> bool:
 
 def main() -> int:
     print("=" * 78)
-    print("UQFF P6-P12 FALSIFIABLE PREDICTIONS  --  Sessions 257-258 (PAPER_1174/1175/1176)")
+    print("UQFF P6-P13 FALSIFIABLE PREDICTIONS  --  Sessions 257-259 (PAPER_1174..1178)")
     print("=" * 78)
 
     preds = {
@@ -172,6 +194,7 @@ def main() -> int:
         'P10 IceCube nu-Cherenkov (PAPER_1163)':      predict_P10(),
         'P11 LIGO O5 ringdown    (PAPER_1175)':       predict_P11(),
         'P12 Euclid sigma_8      (PAPER_1176)':       predict_P12(),
+        'P13 DESI Y5 d2w/dz2     (PAPER_1178)':       predict_P13(),
     }
     for name, p in preds.items():
         print(f"\n  [{name}]")

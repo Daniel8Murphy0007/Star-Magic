@@ -14,7 +14,12 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-BUNDLE = Path(__file__).resolve().parent / "arxiv_submission_1159_1172"
+import sys as _sys
+_BUNDLE_NAME = "arxiv_submission_1159_1172"
+for _i, _a in enumerate(_sys.argv[1:]):
+    if _a == "--bundle" and _i + 2 <= len(_sys.argv):
+        _BUNDLE_NAME = _sys.argv[_i + 2]
+BUNDLE = Path(__file__).resolve().parent / _BUNDLE_NAME
 MD_DIR = BUNDLE / "md"
 TEX_DIR = BUNDLE / "tex"
 

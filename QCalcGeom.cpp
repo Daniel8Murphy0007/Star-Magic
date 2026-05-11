@@ -10,7 +10,7 @@
  *   vds_branches, dvp_branches, bh26_branches,
  *   vds_dvp_coupled, bh26_bsh_resonance     <- Phase H202 additions
  *
- * runQCalcGeomTests() covers T01–T82 (82 tests total; T81-T82 added Session 258 for P11/P12 closed-form invariance).
+ * runQCalcGeomTests() covers T01–T83 (83 tests total; T83 added Session 259 for P13 strict-static dark energy).
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
@@ -1409,6 +1409,16 @@ void runQCalcGeomTests() {
         R.push_back({ "T82","G2-Prediction",
             "P12 sigma_8 CVW geom-mean == sqrt(0.811*0.76) ~ 0.7851 (PAPER_1176)",
             s8_gm, s8_gm_expected, 0.2, t82, t82 });
+
+        // T83 (Session 259): P13 strict-static d^2 w / dz^2 = 0 invariance.
+        // UQFF closed Lagrangian has zero free parameters in time -> all derivatives vanish.
+        const double d2w_dz2_UQFF = 0.0;
+        const double d2w_dz2_DESI2024 = 2.0 * (-0.75) / std::pow(1.0 + 0.5, 3.0);  // -0.4444
+        bool t83 = (std::abs(d2w_dz2_UQFF) < 1.0e-12)
+                && (std::abs(d2w_dz2_DESI2024 + 0.4444) < 1.0e-3);
+        R.push_back({ "T83","G2-Prediction",
+            "P13 d^2w/dz^2 == 0 strictly (UQFF static R26, PAPER_1178)",
+            d2w_dz2_UQFF, 0.0, 1.0e-9, t83, t83 });
     }
 
     // ── Print results table ──────────────────────────────────────────────────

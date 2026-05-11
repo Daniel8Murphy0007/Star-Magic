@@ -16,9 +16,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-BUNDLE = Path(__file__).resolve().parent / "arxiv_submission_1159_1172"
-MD_DIR = BUNDLE / "md"
-TEX_DIR = BUNDLE / "tex"
+BUNDLE_DEFAULT = "arxiv_submission_1159_1172"
+# BUNDLE / MD_DIR / TEX_DIR are set in main() after CLI parse
 
 # Tokens flagged when found OUTSIDE math mode ($...$ or $$...$$ or \(...\)).
 FORBIDDEN_UNICODE = {
@@ -41,6 +40,9 @@ def _strip_math(text: str) -> str:
     text = re.sub(r"\$[^$\n]+\$", " ", text)
     text = re.sub(r"\\\(.*?\\\)", " ", text, flags=re.DOTALL)
     return text
+
+
+TEX_DIR = None  # type: ignore  # populated in main()
 
 
 def lint_unicode(md_path: Path) -> list[str]:
@@ -86,9 +88,14 @@ def compile_pass(md_path: Path) -> list[str]:
 
 
 def main() -> int:
+    global TEX_DIR
     ap = argparse.ArgumentParser()
     ap.add_argument("--compile", action="store_true", help="also run pdflatex pass 1")
+    ap.add_argument("--bundle", default=BUNDLE_DEFAULT, help="bundle directory (default: %(default)s)")
     args = ap.parse_args()
+    BUNDLE = Path(__file__).resolve().parent / args.bundle
+    MD_DIR = BUNDLE / "md"
+    TEX_DIR = BUNDLE / "tex"
 
     if not MD_DIR.exists():
         print(f"[FAIL] missing bundle: {MD_DIR}")

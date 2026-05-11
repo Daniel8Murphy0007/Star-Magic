@@ -16114,6 +16114,112 @@ class UQFFSigma8WeakLensingCalculator:
 
 
 # ---------------------------------------------------------------------------
+# #261  UQFF2027JointFalsifierCalculator   PAPER_1177   (Session 259)
+# ---------------------------------------------------------------------------
+class UQFF2027JointFalsifierCalculator:
+    """
+    #261 - 2027 joint P6+P11+P12 falsification geometry (PAPER_1177).
+
+    Reduces the 3-experiment likelihood to a single chi^2(xi) where xi = D_crit/D_BSFG.
+    Canonical xi_0 = 13/3.
+
+    Inputs: hypothetical 2027 measurements (L_KK_um, R_21_22, sigma_8) with 1-sigma widths.
+    Output: best-fit xi, chi^2_min, status (CONFIRMED / EXCLUDED / INCONCLUSIVE).
+    """
+
+    def compute(self,
+                L_KK_um:        float = 26.3,
+                sigma_L_um:     float = 5.0,
+                R_21_22:        float = 0.144,
+                sigma_R:        float = 0.012,
+                sigma_8:        float = 0.797,
+                sigma_sigma_8:  float = 0.005):
+        import math
+        # Predicted observables as f(xi)
+        xi_0 = 13.0 / 3.0
+        L_canon = 26.3
+        def L_pred(xi):  return L_canon * (xi_0 / xi)
+        def R_pred(xi):  return 0.10 * xi ** 0.25
+        def s8_pred(xi): return 0.7851 * (1.0 + 0.01525 * xi / xi_0)
+
+        def chi2(xi):
+            return ((L_pred(xi)  - L_KK_um) / sigma_L_um) ** 2 \
+                 + ((R_pred(xi)  - R_21_22) / sigma_R) ** 2 \
+                 + ((s8_pred(xi) - sigma_8) / sigma_sigma_8) ** 2
+
+        # Coarse + fine grid
+        best_xi, best_c = xi_0, chi2(xi_0)
+        for k in range(1, 2001):
+            x = 0.5 + k * 0.005   # xi in [0.505, 10.5]
+            c = chi2(x)
+            if c < best_c:
+                best_c, best_xi = c, x
+
+        # 95% CL for 3 dof = 7.81
+        if best_c < 7.81 and abs(best_xi - xi_0) / xi_0 < 0.10:
+            status = 'CONFIRMED (xi within 10% of canonical 13/3)'
+        elif best_c < 7.81:
+            status = 'INCONCLUSIVE (chi^2 ok but xi shifted >10%)'
+        else:
+            status = 'EXCLUDED (chi^2 > 7.81 at 95% CL, 3 dof)'
+
+        return {
+            'class':              'UQFF2027JointFalsifierCalculator',
+            'paper_ref':          'PAPER_1177',
+            'inputs':             {'L_KK_um': L_KK_um, 'R_21_22': R_21_22, 'sigma_8': sigma_8},
+            'predicted_canonical':{'L_KK_um': L_canon, 'R_21_22': 0.1443, 'sigma_8': 0.797},
+            'xi_canonical':       xi_0,
+            'xi_best_fit':        best_xi,
+            'chi2_min':           best_c,
+            'chi2_threshold_95cl_3dof': 7.81,
+            'status':             status,
+            'free_parameters':    0,
+        }
+
+
+# ---------------------------------------------------------------------------
+# #262  UQFFDarkEnergySecondDerivativeCalculator   PAPER_1178   (Session 259)
+# ---------------------------------------------------------------------------
+class UQFFDarkEnergySecondDerivativeCalculator:
+    """
+    #262 - P13: DESI Y5 dark-energy w(z) second derivative strict-static (PAPER_1178).
+
+    UQFF strict-static R26 vacuum predicts d^n w / dz^n = 0 for all n >= 1.
+    Returns d^2 w/dz^2 = 0 at any redshift, with DESI Y5 bound for comparison.
+
+    Falsifier: |d^2 w/dz^2| > 0.030 at z=0.5 at 3-sigma in DESI Y5 (2028).
+    """
+
+    def compute(self, z: float = 0.5,
+                desi_y5_w_a_bound: float = 0.05):
+        # UQFF strict prediction
+        d1_w_dz_UQFF = 0.0
+        d2_w_dz2_UQFF = 0.0
+
+        # DESI 2024 best fit: w_a = -0.75 -> d^2 w / dz^2 = 2 w_a / (1+z)^3
+        w_a_2024 = -0.75
+        d2_w_dz2_2024 = 2.0 * w_a_2024 / (1.0 + z) ** 3
+
+        # DESI Y5 1-sigma bound on d^2 w/dz^2 at this z
+        d2_bound_Y5 = abs(2.0 * desi_y5_w_a_bound / (1.0 + z) ** 3)
+
+        return {
+            'class':                 'UQFFDarkEnergySecondDerivativeCalculator',
+            'paper_ref':             'PAPER_1178',
+            'prediction_id':         'P13',
+            'redshift':              z,
+            'd1_w_dz_UQFF':          d1_w_dz_UQFF,
+            'd2_w_dz2_UQFF':         d2_w_dz2_UQFF,
+            'd2_w_dz2_DESI2024':     d2_w_dz2_2024,
+            'd2_w_dz2_bound_Y5_1s':  d2_bound_Y5,
+            'falsifier':             '|d2 w/dz2| > 0.030 at z=0.5 at 3-sigma in DESI Y5 (2028)',
+            'decisive_window':       '2028 DESI Y5 + CMB-S4 + SN combination',
+            'free_parameters':       0,
+            'status':                'P13 PREDICTION: d2w/dz2 = 0 strictly (PAPER_1178)',
+        }
+
+
+# ---------------------------------------------------------------------------
 # #181  UQFFBlackHoleFiniteBoundCalculator   PAPER_594
 # ---------------------------------------------------------------------------
 class UQFFBlackHoleFiniteBoundCalculator:
@@ -20176,6 +20282,8 @@ __all__ = [
     "UQFFKKTowerHbarRegulatorCalculator",                    # PAPER_1173 (Session 257 - hbar-tracked KK; sub-mm Yukawa P6)
     "UQFFRingdownSpectralOffsetCalculator",                  # PAPER_1175 (Session 258 - P11: LIGO O5 ringdown R_21/22)
     "UQFFSigma8WeakLensingCalculator",                       # PAPER_1176 (Session 258 - P12: Euclid sigma_8)
+    "UQFF2027JointFalsifierCalculator",                      # PAPER_1177 (Session 259 - 2027 P6+P11+P12 joint)
+    "UQFFDarkEnergySecondDerivativeCalculator",              # PAPER_1178 (Session 259 - P13: DESI Y5 strict-static)
     "UQFFBlackHoleFiniteBoundCalculator",                    # PAPER_594 (#181)
     "UQFFSgrAStarBoundApplicationCalculator",                # PAPER_595 (#182)
     "UQFFQuantumGravityUnificationCalculator",               # PAPER_596 (#183)
