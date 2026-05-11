@@ -132,9 +132,9 @@ The key contribution of NGC 2525 to UQFF theory is the **transient mass-loss cor
 
 $$
 \begin{aligned}
-  & M_SN(t) = 1.4\cdot\text{M\_M\_sun}\cdot\exp(--t/\tau_SN) \\
-  & \deltag_SN(t=0) = G\cdot M_SN / r2 = 2.303\times10-21 m/s2 \\
-  & \deltag_SN(t=1yr) = \deltag_SN(t=0) \times e-1 = 8.47\times10-22 m/s2
+  & M_{SN}(t) = 1.4\,M_\odot \cdot \exp(-t/\tau_{SN}) \\
+  & \delta g_{SN}(t=0) = G\cdot M_{SN} / r^2 = 2.303\times 10^{-21}\ \text{m/s}^2 \\
+  & \delta g_{SN}(t=1\,\text{yr}) = \delta g_{SN}(t=0) \cdot e^{-1} = 8.47\times 10^{-22}\ \text{m/s}^2
 \end{aligned}
 $$
 

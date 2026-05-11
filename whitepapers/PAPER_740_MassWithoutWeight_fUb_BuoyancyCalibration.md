@@ -80,9 +80,9 @@ coupling constant $k_{\eta}$:
 
 $$
 \begin{aligned}
-  & f_Ub = \Delta k_\eta / k_\eta_reference \\
-  & \Delta k_\eta = k_\eta_nominal(scale) - k_\eta_measured(observation) \\
-  & k_\eta_reference = reference coupling at chosen scale (e.g., galaxy-scale = 1e9)
+  & f_{Ub} = \Delta k_\eta / k_{\eta,\text{reference}} \\
+  & \Delta k_\eta = k_{\eta,\text{nominal}}(\text{scale}) - k_{\eta,\text{measured}}(\text{observation}) \\
+  & k_{\eta,\text{reference}} = \text{reference coupling at chosen scale (e.g., galaxy-scale} = 10^9)
 \end{aligned}
 $$
 
@@ -115,10 +115,10 @@ the halo.
 
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi}(full) = \Sigma_{k=1}^{26} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r2 * cos(\theta_k) * f(\nu_THz) * f_Ub] \\
-  & where f_Ub at any scale: \\
-  & f_Ub = (k_\eta_nominal - k_\eta_observed) / k_\eta_reference \\
-  & k_{Ub,k} = k_\eta * f_Ub  (per-state coupling, includes calibration)
+  & \text{F\_U\_Bi}(\text{full}) = \sum_{k=1}^{26} \left[ k_{Ub,k} \cdot (f_{UA'} \cdot f_{SCm} \cdot R_{EB})/r^2 \cdot \cos(\theta_k) \cdot f(\nu_{THz}) \cdot f_{Ub} \right] \\
+  & \text{where } f_{Ub} \text{ at any scale:} \\
+  & f_{Ub} = (k_{\eta,\text{nominal}} - k_{\eta,\text{observed}}) / k_{\eta,\text{reference}} \\
+  & k_{Ub,k} = k_\eta \cdot f_{Ub} \quad (\text{per-state coupling, includes calibration})
 \end{aligned}
 $$
 

@@ -74,7 +74,7 @@ $$
 $$
 \begin{aligned}
   & F_U = \Sigma_i [k_i\cdot U_gi - \beta_i\cdot U_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdot E_react] \\
-  & + \Sigma_j [\mu_j/r_j \cdot (1-e^(-\gamma t)\cdot\cos(\pi\cdot t_n))\cdot\phî_j] \\
+  & + \Sigma_j [\mu_j/r_j \cdot (1-e^(-\gamma t)\cdot\cos(\pi\cdot t_n))\cdot\hat{\phi}_j] \\
   & + (g_\mu\nu + \eta\cdot T_s^(\mu\nu)) \\
   & - \Sigma_i [\lambda_i\cdot U_i\cdot E_react] \\
   & At t=0, Sun: F_U \approx U_m \approx 2.28\times1065 J/m3 (U_m dominates)
@@ -123,7 +123,7 @@ i ∈ {1,2,3,4}   (integer index for U_g1, U_g2, U_g3, U_g4)
 
 Role: Indexes the 4 universal gravity components in F_U summation
 
-\Sigma(k_i\cdotU_gi) = k_1\cdotU_g1 + k_2\cdotU_g2 + k_3\cdotU_g3 + k_4\cdotU_g4
+\Sigma(k_i\cdot U_gi) = k_1\cdot U_g1 + k_2\cdot U_g2 + k_3\cdot U_g3 + k_4\cdot U_g4
 At t=0, Sun: \approx 1.42\times1053 J/m3 (U_g2 dominant)
 ```
 
@@ -144,11 +144,11 @@ $$
 
 Role: Scales Universal Inertia U_i in F_U
 
-U_i = \lambda_i \cdot \rho_vac,[SCm] \cdot \rho_vac,[UA] \cdot \omega_s(t) \cdot cos(\pi\cdott_n) \cdot (1 + f_TRZ)
+U_i = \lambda_i \cdot \rho_vac,[SCm] \cdot \rho_vac,[UA] \cdot \omega_s(t) \cdot cos(\pi\cdot t_n) \cdot (1 + f_TRZ)
     = 1.0 \times 7.09\times10-37 \times 7.09\times10-36 \times 2.5\times10-6 \times 1 \times 1.1
     \approx 1.38\times10-47 J/m3
 
-Net contribution: -\lambda_i\cdotU_i\cdotE_react \approx -0.138 J/m3
+Net contribution: -\lambda_i\cdot U_i\cdot E_react \approx -0.138 J/m3
 ```
 
 ### j --- Magnetic String Index
@@ -260,7 +260,7 @@ With all 15 variables defined:
 $$
 \begin{aligned}
   & F_U = \Sigma_{i=1}^{4} [k_i\cdot U_gi - \beta_i\cdot U_gi\cdot\Omega_g\cdot(M_bh/d_g)\cdot E_react] \\
-  & + \Sigma_{j} [\mu_j(t)/r_j \cdot (1-e^(-\gamma t)\cdot\cos(\pi\cdot t_n))\cdot\phî_j] \\
+  & + \Sigma_{j} [\mu_j(t)/r_j \cdot (1-e^(-\gamma t)\cdot\cos(\pi\cdot t_n))\cdot\hat{\phi}_j] \\
   & \cdot P_SCm \cdot E_react \cdot (1+1013\cdot f_Heaviside) \cdot (1+f_quasi) \\
   & + H_SCm \cdot (g_\mu\nu + \eta\cdot T_s^(\mu\nu)) \\
   & - \lambda_i \cdot \Sigma_i [U_i \cdot E_react]

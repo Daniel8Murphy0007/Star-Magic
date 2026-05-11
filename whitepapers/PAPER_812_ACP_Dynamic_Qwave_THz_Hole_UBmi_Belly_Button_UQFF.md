@@ -71,7 +71,7 @@ at THz frequencies near galactic nuclei.
 
 The UB_mi term represents the galactic buoyancy anchor:
 
-$$UB_{mi} = \left[(-UA_{THz,hole}) + \text{"belly\_button(static*\_SMBH_dark)"}\right]$$
+$$UB_{mi} = \left[(-UA_{THz,\text{hole}}) + \text{belly\_button(static*\_SMBH\_dark)}\right]$$
 
 Numerically:
 $$UB_{mi} \approx -3.08 \times 10^{-18} \text{ J/m}^3$$

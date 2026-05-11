@@ -36,7 +36,7 @@ equation with all correction factors and computes the result from first principl
 The standard model of cosmology gives the comoving distance to the particle horizon as:
 
 $$
-d_p ~= c * integral_0^t_0 dt'/a(t')
+d_p \approx c \int_0^{t_0} \frac{dt'}{a(t')}
 $$
 
 where a(t) is the scale factor. For $\Lambda$CDM with H_0 = 70 km/s/Mpc, $\Omega$_m = 0.3, $\Omega$_$\Lambda$ = 0.7, this gives

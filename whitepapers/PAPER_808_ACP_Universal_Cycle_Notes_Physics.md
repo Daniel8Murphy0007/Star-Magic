@@ -400,7 +400,7 @@ $$
 \end{aligned}
 $$
 
-For n=26 (maximum DPM state): S_vacuum = \log_{10}(10 $\cdot$ 0.435) = \log_{10}(4.35) = 0.638 (dimensionless
+For n=26 (maximum DPM state): $S_{\text{vacuum}} = \log_{10}(10 \cdot 0.435) = \log_{10}(4.35) = 0.638$ (dimensionless
 nuclear vacuum strength indicator).
 
 ---

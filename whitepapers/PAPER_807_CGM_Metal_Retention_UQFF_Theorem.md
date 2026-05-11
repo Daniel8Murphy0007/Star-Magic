@@ -143,7 +143,7 @@ This is entirely analogous to a quantum amplitude ratio --- the probability that
 
 ### 3.1 Under-Massive SMBHs ($\Delta$M_BH < 0, f_Z,CGM $\to$ 0.89)
 
-Under-massive BHs exhibit enhanced DPM activity: k_i scales as `1 + |\DeltaM_BH|\cdotf_scale` where f_scale =
+Under-massive BHs exhibit enhanced DPM activity: k_i scales as `1 + |\DeltaM_BH|\cdot f_scale` where f_scale =
 0.5:
 
 Using NGC 3511 as example ($\sigma$ = 100 km/s, M_BH = 107 MM_sun):
