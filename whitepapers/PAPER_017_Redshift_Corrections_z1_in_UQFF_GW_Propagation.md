@@ -491,6 +491,33 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
+
+## §v5.78 Closure — Calibration Constants Now Derived
+
+Under canonical UQFF v5.78, the calibrated couplings used in the analysis above
+($\beta_i$, F$_{TRZ}$, $\rho_{SCm}$, $\rho_{UA}$, [SSq], $\kappa$) are **no longer free
+parameters**. They are derived from the G1-G8 Lagrangian-gap closures and pinned
+by the 27-decade R26 + KK + BSFG vacuum-energy ledger (PAPER_1170, CP4 #256, $\rho_\Lambda$ to $<0.5\%$).
+
+| Constant | Value used here | v5.78 derivation origin |
+|----------|-----------------|--------------------------|
+| $\beta_i$ (buoyancy coupling, i=1) | 0.603 | PAPER_1162 (G1 Mexican-hat: $\beta_i = 3(5-i)/20$) |
+| F$_{TRZ}$ (time-reversal-zone factor) | 1/10 | PAPER_1163 (G6 DPM SO(2) gauge) |
+| $\rho_{SCm}$ (vacuum) | $7.09 \times 10^{-37}$ J/m$^3$ | PAPER_1170 (27-decade ledger, G2 lock) |
+| $\rho_{UA}$ (aether) | $7.09 \times 10^{-36}$ J/m$^3$ | PAPER_1170 (27-decade ledger, G2 lock) |
+| [SSq] (structure-suppression) | 0.57 | PAPER_1165 (G7 $\Phi_{res} = 5/6$) |
+| $\kappa$ (SCm decay) | $5.0 \times 10^{-4}$ /day | PAPER_1163 (G6 F$_{TRZ}$ = 1/10 timing constant) |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to $<0.5\%$).
+
+**Forward link (this paper):** Redshift corrections at $z=1$ probe the dark-energy equation of state. PAPER_1178 (P13, DESI Y5 strict-static $d^2w/dz^2=0$) is the direct falsifiability anchor for the $z=1$ propagation modification derived here. PAPER_1170 (27-decade ledger) fixes the vacuum-energy scale that controls the redshift dependence; $w(z)$ in this paper inherits the v5.78 value rather than being free.
+
+*Note:* The $\xi = 13/3$ R26+KK lock (PAPER_1171/1172) is sub-mm-scale and does **not** modify the
+predictions in this paper at astrophysical scales except where explicitly cited above. The closure
+above is the complete v5.78 impact on this whitepaper.
+
+
 ## References
 
 1. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910

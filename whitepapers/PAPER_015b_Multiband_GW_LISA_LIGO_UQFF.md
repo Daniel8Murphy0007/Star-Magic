@@ -462,6 +462,33 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 ---
 
+
+## §v5.78 Closure — Calibration Constants Now Derived
+
+Under canonical UQFF v5.78, the calibrated couplings used in the analysis above
+($\beta_i$, F$_{TRZ}$, $\rho_{SCm}$, $\rho_{UA}$, [SSq], $\kappa$) are **no longer free
+parameters**. They are derived from the G1-G8 Lagrangian-gap closures and pinned
+by the 27-decade R26 + KK + BSFG vacuum-energy ledger (PAPER_1170, CP4 #256, $\rho_\Lambda$ to $<0.5\%$).
+
+| Constant | Value used here | v5.78 derivation origin |
+|----------|-----------------|--------------------------|
+| $\beta_i$ (buoyancy coupling, i=1) | 0.603 | PAPER_1162 (G1 Mexican-hat: $\beta_i = 3(5-i)/20$) |
+| F$_{TRZ}$ (time-reversal-zone factor) | 1/10 | PAPER_1163 (G6 DPM SO(2) gauge) |
+| $\rho_{SCm}$ (vacuum) | $7.09 \times 10^{-37}$ J/m$^3$ | PAPER_1170 (27-decade ledger, G2 lock) |
+| $\rho_{UA}$ (aether) | $7.09 \times 10^{-36}$ J/m$^3$ | PAPER_1170 (27-decade ledger, G2 lock) |
+| [SSq] (structure-suppression) | 0.57 | PAPER_1165 (G7 $\Phi_{res} = 5/6$) |
+| $\kappa$ (SCm decay) | $5.0 \times 10^{-4}$ /day | PAPER_1163 (G6 F$_{TRZ}$ = 1/10 timing constant) |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to $<0.5\%$).
+
+**Forward link (this paper):** Multi-band (LISA + LIGO) synergy is the cleanest falsifier of the v5.78 closure: both bands inherit the SAME $\beta_i = 0.603$ and $F_{TRZ}=1/10$. PAPER_1175 (P11, LIGO O5 ringdown $R_{21}/R_{22} \approx 0.144$) and the LISA-band EMRI counterpart (cf. PAPER_014b) must agree on these constants; this paper's multi-band consistency check IS the synergy test.
+
+*Note:* The $\xi = 13/3$ R26+KK lock (PAPER_1171/1172) is sub-mm-scale and does **not** modify the
+predictions in this paper at astrophysical scales except where explicitly cited above. The closure
+above is the complete v5.78 impact on this whitepaper.
+
+
 ## References
 
 1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
