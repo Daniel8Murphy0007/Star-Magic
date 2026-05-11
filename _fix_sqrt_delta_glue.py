@@ -14,6 +14,15 @@ PATS = [
     (re.compile(r'\\gammat(?![A-Za-z])'), r'\\gamma t'),
     (re.compile(r'\\cdotT(?![A-Za-z])'), r'\\cdot T'),
     (re.compile(r'\\cdotcos(?![A-Za-z])'), r'\\cdot \\cos'),
+    (re.compile(r'\\kappat(?![A-Za-z])'), r'\\kappa t'),
+    (re.compile(r'\\sigmasim(?![A-Za-z])'), r'\\sigma \\sim'),
+    (re.compile(r'\\sigmat(?![A-Za-z])'), r'\\sigma t'),
+    (re.compile(r'\\rhot(?![A-Za-z])'), r'\\rho t'),
+    (re.compile(r'\\thetat(?![A-Za-z])'), r'\\theta t'),
+    (re.compile(r'\\phit(?![A-Za-z])'), r'\\phi t'),
+    (re.compile(r'\\alphat(?![A-Za-z])'), r'\\alpha t'),
+    (re.compile(r'\\betat(?![A-Za-z])'), r'\\beta t'),
+    (re.compile(r'\\deltat(?![A-Za-z])'), r'\\delta t'),
 ]
 
 count = 0

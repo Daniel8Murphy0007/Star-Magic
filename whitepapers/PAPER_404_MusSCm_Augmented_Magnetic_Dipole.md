@@ -104,7 +104,7 @@ suggesting a potential tidal magnetic coupling between Jupiter and the solar cyc
 
 At $t = T_c/4$ (sin peak = 1):
 $$B_{\text{eff,Sun}}(T_c/4) = 10^{-3} + 0.4 + 10^3 \approx 1000.4001\ \text{T}$$
-$$\mu_{s,\text{Sun}}^{\max} = 1000.4001 \times (6.96\times10^8)^3 = 3.367\times10^{29}\ \text{T\cdot m}^3$$
+$$\mu_{s,\text{Sun}}^{\max} = 1000.4001 \times (6.96\times10^8)^3 = 3.367\times10^{29}\ \text{T}\cdot\text{m}^3$$
 
 At solar minimum ($\sin = -1$):
 $$B_{\text{eff,Sun,min}} = 10^{-3} - 0.4 + 10^3 \approx 999.6001\ \text{T}$$

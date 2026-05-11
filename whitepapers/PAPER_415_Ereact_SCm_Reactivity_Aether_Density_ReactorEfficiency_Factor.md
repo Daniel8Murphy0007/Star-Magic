@@ -41,7 +41,7 @@ representing temporal SCm consumption across the star's lifetime.
 ### 2.1 SCm Kinetic Power Density
 
 SCm moves at near-light velocity:
-$$P_{\text{SCm}} = \rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \quad [\text{kg/(m\cdot s}^2)]$$
+$$P_{\text{SCm}} = \rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \quad [\text{kg/(m}\cdot\text{s}^2)]$$
 
 With canonical values: $\rho_{\text{SCm}} = 10^{15}$ kg/m3, $v_{\text{SCm}} = 10^8$ m/s:
 $$P_{\text{SCm}} = 10^{15} \times (10^8)^2 = 10^{31} \text{ Pa}$$

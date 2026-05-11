@@ -78,7 +78,7 @@ $$\boxed{n_{\text{cosmic}}(t) = \int_0^{t_{\text{universe}}} n_{\text{ions}} \, 
 
 For $t_{\text{universe}} = 13.8 \times 10^9$ yr $= 4.35 \times 10^{17}$ s and $n_{\text{ions}} \approx 0.5$ ions/(ft3):
 
-$$n_{\text{cosmic}} \approx 2.18 \times 10^{17} \ \text{ion\cdot s/ft}^3$$
+$$n_{\text{cosmic}} \approx 2.18 \times 10^{17} \ \text{ion}\cdot\text{s/ft}^3$$
 
 This represents the **cumulative ionic flux** of Aether on matter — a measure of total charge
 exchange between Aether medium and baryonic matter over cosmological timescales.

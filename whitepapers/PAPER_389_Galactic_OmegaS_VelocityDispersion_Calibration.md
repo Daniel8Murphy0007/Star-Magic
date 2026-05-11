@@ -140,7 +140,7 @@ $$\omega_{s,\text{galactic}}^{\text{MW-class}} = \frac{2\times10^5}{6.171\times1
 | Massive BCG | 350 | 15.0 | 7.56e-16 |
 
 The canonical UQFF value $\omega_g = 7.3\times10^{-16}$ rad/s corresponds to a massive BCG
-($\sigmasim350$ km/s, $R_{\text{bulge}}\sim15$ kpc), consistent with its use in the CP1/CP3
+($\sigma \sim350$ km/s, $R_{\text{bulge}}\sim15$ kpc), consistent with its use in the CP1/CP3
 outer-frame tidal calculation.
 
 ---
@@ -171,7 +171,7 @@ def compute_{omega\_s\_galactic}(sigma_{km\_s}: float, R_{bulge\_m}: float) -> f
 For systems with known $\sigma$ and $R_{\text{bulge}}$, this formula replaces the
 canonical `\omega_g = 7.3e-16 rad/s` with a system-specific observationally anchored value.
 
-The MUGE resonance tier `term_{Ub\_i} = -\beta_i \times ug1 \times \omega_s \times (M/r) \times U_UA \times cos(\pi\cdott)` then
+The MUGE resonance tier `term_{Ub\_i} = -\beta_i \times ug1 \times \omega_s \times (M/r) \times U_UA \times cos(\pi\cdot t)` then
 uses $\omega_{s,\text{galactic}}$ for the system-specific outer-frame coupling.
 
 ---

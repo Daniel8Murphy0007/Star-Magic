@@ -115,7 +115,7 @@ The **two opposing jets** correspond to two opposite $t_n$ values — one being 
 The $\cos(\pi t_n)$ term introduces **oscillations at prime-like intervals** when $t_n$ takes values associated with Riemann zeros $1/2 + i\gamma_k$:
 
 $$\text{If } t_n = \text{Im}(\rho_k)/\pi \quad \text{(Riemann non-trivial zeros)}, \text{ then:}$$
-$$\cos(\pi t_n) = \cos(\text{Im}(\rho_k)) \quad \text{\to UQFF field zeros at prime-counting events}$$
+$$\cos(\pi t_n) = \cos(\text{Im}(\rho_k)) \quad \to \text{UQFF field zeros at prime-counting events}$$
 
 This is a hypothetical connection: the UQFF framework's $\pi$-cycle temporal modulations mirror the oscillatory structure of the prime counting function $\pi(x)$ error term through the explicit formula:
 

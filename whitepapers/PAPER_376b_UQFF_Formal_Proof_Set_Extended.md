@@ -65,7 +65,7 @@ couples the DPM proportion pair to the magnetic field geometry.
 ### 1.2 Ug2: Charge-Reactivity Decay
 
 $$
-Ug2_i = \rho_SCm \cdot M / r \cdot exp(-\kappat)
+Ug2_i = \rho_SCm \cdot M / r \cdot exp(-\kappa t)
 $$
 
 **Dimensional verification:**

@@ -52,7 +52,7 @@ $$\boxed{U_i \approx 8.05\times10^{-80}\,\text{J/m}^6}$$
 ## 3. Aether-Superconductive Paper
 
 Magnetic dipole moment (Inertia frame spin):
-$$\mu_{dipole} = I \cdot A \cdot \omega_{spin} \approx 10^{-51}\,\text{A\cdot m}^2$$
+$$\mu_{dipole} = I \cdot A \cdot \omega_{spin} \approx 10^{-51}\,\text{A}\cdot\text{m}^2$$
 $$U_{g1} = \mu_{dipole} \cdot B$$
 
 Superconductor field energy:

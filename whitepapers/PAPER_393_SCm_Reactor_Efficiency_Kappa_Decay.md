@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_393
-title: "SCm Reactor Efficiency with \kappa-Decay: E_react = (\rho_SCm\cdotv_SCm2/\rho_A)\cdotexp(−\kappat)"
+title: "SCm Reactor Efficiency with \kappa-Decay: E_react = (\rho_SCm\cdot v_SCm2/\rho_A)\cdot exp(−\kappa t)"
 session: 107
 date: 2025-01-01
 author: "Daniel T. Murphy"

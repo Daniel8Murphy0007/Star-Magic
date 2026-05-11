@@ -56,7 +56,7 @@ where:
 
 $$f_{\text{res}} = \frac{E_{\text{bind}}}{h} \cdot \frac{A_H}{A} \cdot \left(1 + S_{\text{shell}}\right)$$
 
-where $E_{\text{bind}}$ is the nuclear binding energy per nucleon (MeV $\to$ Joules) and $h = 6.626 \times 10^{-34}\ \text{J\cdot s}$.
+where $E_{\text{bind}}$ is the nuclear binding energy per nucleon (MeV $\to$ Joules) and $h = 6.626 \times 10^{-34}\ \text{J}\cdot\text{s}$.
 
 ### 3.3 Nuclear UQFF Coupling $k_{\text{nuc}}$
 

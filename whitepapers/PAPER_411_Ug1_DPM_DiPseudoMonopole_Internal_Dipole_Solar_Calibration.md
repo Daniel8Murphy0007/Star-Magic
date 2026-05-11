@@ -38,7 +38,7 @@ trapped SCm.
 - Drives surface irregularities through internal defects ($\delta_{\text{def}}$)
 - Is the **origin force** from which Ug2, Ug3, Ug4, and Ug4i all cascade
 - Is modulated by $\pi$ cycles and non-linear time decay
-- Has been calibrated using specific solar data: $\mu_s \approx 3.38 \times 10^{20} \, \text{T\cdot m}^3$ (base)
+- Has been calibrated using specific solar data: $\mu_s \approx 3.38 \times 10^{20} \, \text{T}\cdot\text{m}^3$ (base)
 
 ---
 
@@ -84,10 +84,10 @@ where:
 $$B_s^{(0)} = 10^{-4} \, \text{T}, \quad R_s = 6.96 \times 10^8 \, \text{m}$$
 
 Base DPM moment (no SCm):
-$$\mu_{s,\text{base}} = 10^{-4} \cdot (6.96 \times 10^8)^3 \approx 3.38 \times 10^{20} \, \text{T\cdot m}^3$$
+$$\mu_{s,\text{base}} = 10^{-4} \cdot (6.96 \times 10^8)^3 \approx 3.38 \times 10^{20} \, \text{T}\cdot\text{m}^3$$
 
 Full DPM moment (with SCm):
-$$\mu_{s,\text{full}} \approx (10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20} \approx 3.38 \times 10^{23} + 1.35 \times 10^{20} \sin(\omega_c t) \, \text{T\cdot m}^3$$
+$$\mu_{s,\text{full}} \approx (10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20} \approx 3.38 \times 10^{23} + 1.35 \times 10^{20} \sin(\omega_c t) \, \text{T}\cdot\text{m}^3$$
 
 The **SCm contribution dominates** by 7 orders of magnitude over the bare magnetic field.
 

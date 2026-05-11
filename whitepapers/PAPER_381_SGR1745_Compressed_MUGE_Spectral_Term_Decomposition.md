@@ -142,7 +142,7 @@ remains a small correction. The **Resonance MUGE model** (PAPER_371) with fluid-
 $a_{fluid\_freq} = 1.773\times10^{-9}$ m/s2 is the physically appropriate description.
 
 **Validity domain criterion:**
-$$\text{Compressed MUGE valid when: } \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} \ll \frac{\delta\rho}{\rho} \quad \Rightarrow \quad r \gg \left(\underbrace{\frac{3GM}{\delta\rho/\rho}\right)^{1/3}$$
+$$\text{Compressed MUGE valid when: } \underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} \ll \frac{\delta\rho}{\rho} \quad \Rightarrow \quad r \gg \left(\frac{3GM}{\delta\rho/\rho}\right)^{1/3}$$
 
 For SGR1745 with $\delta\rho/\rho = 0.1$:
 $$r_\text{min\_compressed} = \left(\frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{0.1}\right)^{1/3} \approx 1.3\times10^7 \ \text{m}$$

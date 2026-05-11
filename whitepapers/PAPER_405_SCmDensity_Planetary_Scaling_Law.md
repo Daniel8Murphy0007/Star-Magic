@@ -42,7 +42,7 @@ dipole moment.
 
 ## 2. SCm Density Canonical Values
 
-| Body | Mass (kg) | $\rho_{\text{SCm}}$ (arb. units) | \log_{10}($M$) | \log_{10}($\rho_{\text{SCm}}$) |
+| Body | Mass (kg) | $\rho_{\text{SCm}}$ (arb. units) | $\log_{10}(M)$ | $\log_{10}(\rho_{\text{SCm}})$ |
 |------|-----------|----------------------------------|------------|--------------------------|
 | **Sun** | $1.989\times10^{30}$ | $10^{15}$ | 30.30 | 15.00 |
 | **Jupiter** | $1.898\times10^{27}$ | $10^{13}$ | 27.28 | 13.00 |

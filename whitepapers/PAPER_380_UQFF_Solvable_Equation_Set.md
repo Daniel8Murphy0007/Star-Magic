@@ -212,9 +212,9 @@ wave propagation in the UQFF vacuum medium.
 
 | Problem | Prize | UQFF Mechanism | Key Term |
 |---------|-------|----------------|----------|
-| Navier-Stokes smoothness | $1M USD | Fluid freq. stabilizes turbulence | $a_{fluid\_freq}$ |
-| Yang-Mills mass gap | $1M USD | SCm Meissner exponential | $e^{-B/B_{crit}}$ |
-| Riemann Hypothesis | $1M USD | \pi-cycles encode zeta zeros | $\cos(\pi t_n)$, $\omega_1=-\omega_2$ |
+| Navier-Stokes smoothness | \$1M USD | Fluid freq. stabilizes turbulence | $a_{fluid\_freq}$ |
+| Yang-Mills mass gap | \$1M USD | SCm Meissner exponential | $e^{-B/B_{crit}}$ |
+| Riemann Hypothesis | \$1M USD | $\pi$-cycles encode zeta zeros | $\cos(\pi t_n)$, $\omega_1=-\omega_2$ |
 
 **Combined:** Three Millennium Prize Problems have structural analogs in the UQFF resonance
 and compressed MUGE framework, emerging naturally from the vacuum energy coupling terms.

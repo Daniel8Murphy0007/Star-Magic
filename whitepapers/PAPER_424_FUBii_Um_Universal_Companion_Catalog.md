@@ -57,7 +57,7 @@ where:
 $$\boxed{U_{m,X} = \frac{\mu_j(t)}{r} \cdot \left(1 - e^{-\gamma t}\right) \cdot \mathcal{D}_X(r, t)}$$
 
 where:
-- $\mu_j(t) = \left(10^3 + 0.4\sin(\omega_c t)\right) \times 3.38 \times 10^{20}\ \text{T\cdot pm}^3$ — time-varying SCm magnetic moment
+- $\mu_j(t) = \left(10^3 + 0.4\sin(\omega_c t)\right) \times 3.38 \times 10^{20}\ \text{T}\cdot\text{pm}^3$ — time-varying SCm magnetic moment
 - $\omega_c \approx 1.585 \times 10^{-8}\ \text{rad/s}$
 - $\gamma = 5 \times 10^{-5}\ \text{day}^{-1}$ — vacuum decay constant
 - $r$ — domain characteristic length

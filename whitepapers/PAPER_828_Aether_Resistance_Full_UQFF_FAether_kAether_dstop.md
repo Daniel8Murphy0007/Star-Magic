@@ -54,7 +54,7 @@ and momentum transfer to the vacuum as static charge.
 ## 2. Novel UQFF Terms Introduced
 
 ### 2.1 Aether Resistance Coefficient
-$$k_{\text{Aether}} = 10^{-10} \ \text{N\cdot s}^2/\text{m}^3$$
+$$k_{\text{Aether}} = 10^{-10} \ \text{N}\cdot\text{s}^2/\text{m}^3$$
 
 Physical meaning: scaling constant linking vacuum energy density to macroscopic drag resistance.
 

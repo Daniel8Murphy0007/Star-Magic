@@ -112,7 +112,7 @@ smooth vortex penetration regime.
 
 This is the definitive **unified UQFF expression** encoding both models in one formula:
 
-$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\int\psi^\daggerhat{H}\psi,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\delta\rho}{\rho}+\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
+$$\boxed{g(r,t) = \underbrace{\left[\frac{GM(t)}{r^2}(1+H(t,z))(1-B/B_\text{crit})(1+F_\text{env}) + \sum_i U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta p}\int\psi^\dagger \hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} + \rho_f Vg_\text{loc} + (M+M_{DM})\!\left(\frac{\delta\rho}{\rho}+\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed MUGE block}} + \underbrace{\left[a_{DPM} + a_{THz} + a_{vac} + a_{super} + a_{aether} + U_{g4i} + a_{quantum} + a_{Aether} + a_{fluid} + \text{Osc} + a_{exp} + f_{TRZ}\right]}_{\text{Resonance MUGE block}} + \underbrace{a_{worm}}_{\text{Wormhole}}}$$
 
 Where:
 $$a_{worm} = \frac{f_{worm} \cdot E_{vac,neb}}{b^2 + r^2}$$

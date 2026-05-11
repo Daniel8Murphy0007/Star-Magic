@@ -48,17 +48,17 @@ This is the **FIRST Ts00 explicit two-component stress-energy decomposition** in
 
 ### 2.1 Two-Component Ts00
 
-$$\boxed{T_{s00} = T_{\text{solar}} + T_{\text{SCm,UA}} = 1.27\times10^3 + 1.11\times10^7 \approx 1.11127\times10^7\ \text{kg/(m\cdot s}^2\text{)}}$$
+$$\boxed{T_{s00} = T_{\text{solar}} + T_{\text{SCm,UA}} = 1.27\times10^3 + 1.11\times10^7 \approx 1.11127\times10^7\ \text{kg/(m}\cdot\text{s}^2\text{)}}$$
 
 ### 2.2 Component Definitions
 
 **Solar radiation component:**
-$$T_{\text{solar}} = \frac{L_\odot}{4\pi r^2 c} \approx 1.27\times10^3\ \text{kg/(m\cdot s}^2\text{)}$$
+$$T_{\text{solar}} = \frac{L_\odot}{4\pi r^2 c} \approx 1.27\times10^3\ \text{kg/(m}\cdot\text{s}^2\text{)}$$
 
 *(Solar radiation pressure at 1 AU distance)*
 
 **SCm-UA stress-energy component:**
-$$T_{\text{SCm,UA}} = \rho_{\text{SCm,Sun}} \cdot v_{\text{SCm}}^2 \approx 1.11\times10^7\ \text{kg/(m\cdot s}^2\text{)}$$
+$$T_{\text{SCm,UA}} = \rho_{\text{SCm,Sun}} \cdot v_{\text{SCm}}^2 \approx 1.11\times10^7\ \text{kg/(m}\cdot\text{s}^2\text{)}$$
 
 *(SCm field energy density contributing to stress-energy tensor)*
 
@@ -80,7 +80,7 @@ $$T_{\text{solar}} = \frac{L_\odot}{4\pi r_{\text{AU}}^2 c} = \frac{3.846\times1
 
 $$T_{\text{solar}} = \frac{3.846\times10^{26}}{8.453\times10^{31} \times 3\times10^8} = \frac{3.846\times10^{26}}{2.536\times10^{40}}$$
 
-$$T_{\text{solar}} \approx 1.518\times10^{-14}\ \text{kg/(m\cdot s}^2\text{)}$$
+$$T_{\text{solar}} \approx 1.518\times10^{-14}\ \text{kg/(m}\cdot\text{s}^2\text{)}$$
 
 > Note: The C++ value $1.27\times10^3$ appears to use a different normalization,
 > possibly per unit solid angle or integrated over a disk cross-section. The functional

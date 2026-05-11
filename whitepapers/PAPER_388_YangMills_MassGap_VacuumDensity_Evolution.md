@@ -120,7 +120,7 @@ With canonical parameters:
 - $\kappa = 0.0005$ day-1 = $5.787\times10^{-9}$ s-1
 - At $t=0$: $\dot{\rho}_{\text{vac,UA}} = \rho_0 \cdot \kappa \cdot e^0 \cdot e^{-1} = 6\times10^{-27} \cdot 5.787\times10^{-9} \cdot e^{-1}$
 
-$$\dot{\rho}_{\text{vac,UA}}(0) = 6\times10^{-27} \cdot 5.787\times10^{-9} \cdot 0.3679 \approx 1.279\times10^{-35} \text{ kg/(m}^3\text{\cdot s)}$$
+$$\dot{\rho}_{\text{vac,UA}}(0) = 6\times10^{-27} \cdot 5.787\times10^{-9} \cdot 0.3679 \approx 1.279\times10^{-35} \text{ kg}/(\text{m}^3\cdot\text{s})$$
 
 For n=1:
 $$R_1 = 10^{-3}$$
@@ -129,7 +129,7 @@ $$G(0) = \exp(-e^{-\pi}) \approx 0.9577$$
 
 $$\Delta m(n=1, t=0) = \sqrt{1.279\times10^{-35} \cdot 10^{-3} \cdot 0.9577}$$
 
-$$\Delta m(n=1, t=0) = \sqrt{1.225\times10^{-38}} \approx 3.5\times10^{-19} \text{ (kg\cdot m}^{-3}\text{\cdot s}^{-1})^{1/2}$$
+$$\Delta m(n=1, t=0) = \sqrt{1.225\times10^{-38}} \approx 3.5\times10^{-19} \text{ (kg}\cdot\text{m}^{-3}\cdot\text{s}^{-1})^{1/2}$$
 
 ---
 
