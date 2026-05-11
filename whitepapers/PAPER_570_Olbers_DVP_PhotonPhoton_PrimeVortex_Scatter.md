@@ -59,7 +59,7 @@ In the UQFF DVP lattice (PAPER_429), primes $p > 26$ define vortex scattering ce
 
 $$A(p) \propto \frac{[\text{SSq}]^{\pi(p)}}{p^{26}}$$
 
-with $\pi(p) = $ count of primes $\leq p$.
+with $\pi(p)$ = count of primes $\leq p$.
 
 The DVP-modulated mean free path:
 

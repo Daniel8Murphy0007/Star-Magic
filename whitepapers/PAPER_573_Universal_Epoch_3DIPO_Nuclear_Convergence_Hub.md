@@ -75,7 +75,7 @@ $$\text{DVP}_\sigma = \sigma(n) \cdot \varphi, \quad \varphi = \frac{1+\sqrt{5}}
 
 **BH harmonic shell filling + magic numbers:**
 
-$$H_m = \sum_{k=1}^{m} \frac{f_{U\_b}}{k}, \quad \text{magic numbers} = \bigl{n : \partial H_n/\partial n = 0\bigr}$$
+$$H_m = \sum_{k=1}^{m} \frac{f_{U\_b}}{k}, \quad \text{magic numbers} = \bigl\{n : \partial H_n/\partial n = 0\bigr\}$$
 
 ---
 

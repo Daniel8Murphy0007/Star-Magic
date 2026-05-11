@@ -57,7 +57,7 @@ $$\square h_{\mu\nu} = 0 \;\Rightarrow; \omega^2 = c^2 k^2$$
 LQG quantizes area/volume via operators with discrete eigenvalues
 ($A \sim l_{Pl}^2\sqrt{j(j+1)}$). The effective Hamiltonian constraint becomes:
 
-$$H_{eff} = \int d^3x\left[\frac{\sin^2(\mu K)}{\mu^2\sqrt{q}} + \cdot sright]$$
+$$H_{eff} = \int d^3x\left[\frac{\sin^2(\mu K)}{\mu^2\sqrt{q}} + \cdot s\right]$$
 
 where $\mu \sim l_{Pl}\sqrt{\Delta}$ (area gap), $K$ = curvature, $q$ = metric determinant.
 
@@ -67,7 +67,7 @@ Expanding $\sin(\mu K) \approx \mu K - (\mu K)^3/6$:
 
 **Step 2:** For small tensor perturbations $h_{ij}^{TT}$, effective wave equation:
 
-$$\left(\square + \alpha,l_{Pl}^2\,\square^2 + \beta,l_{Pl}^4\,\nabla^6 + \cdot sright) h_{\mu\nu} = 0$$
+$$\left(\square + \alpha\,l_{Pl}^2\,\square^2 + \beta\,l_{Pl}^4\,\nabla^6 + \cdot s\right) h_{\mu\nu} = 0$$
 
 ($\alpha, \beta = \mathcal{O}(1)$, sign from holonomy/inverse volume ambiguity).
 
@@ -151,8 +151,8 @@ $^*$ LQG correction $\delta v_g/c \approx 10^{-42}$ --- negligible at 100 Hz.
 | Framework | Discreteness mechanism | Magnetism/buoyancy | $\Lambda$ |
 |-----------|----------------------|--------------------|-----------|
 | UQFF | Hypergraph + $f$-modes | \checkmark DPM, $U_m$, $U_b$ | Emergent |
-| LQG | Spin foam loops | ❌ | External |
-| $\Lambda$_CDM | None (continuous) | ❌ | Ad-hoc |
+| LQG | Spin foam loops |  | External |
+| $\Lambda$_CDM | None (continuous) |  | Ad-hoc |
 
 ---
 

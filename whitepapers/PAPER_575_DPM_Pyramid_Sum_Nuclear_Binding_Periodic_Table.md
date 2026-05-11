@@ -65,7 +65,7 @@ $$c_{26}^{(i)} = \frac{1}{26!} \leq \lambda_{\min}^{(i)} = \frac{P_{\text{order}
 
 **BH harmonic periodic group assignment:**
 
-$$\text{Group}(Z) = \min\bigl\{n : BH_{\text{cumulative}}(n) \geq Z\bigr}, \quad BH_{\text{cum}}(n) = \sum_{k=1}^{n} 2(2k-1)$$
+$$\text{Group}(Z) = \min\bigl\{n : BH_{\text{cumulative}}(n) \geq Z\bigr\}, \quad BH_{\text{cum}}(n) = \sum_{k=1}^{n} 2(2k-1)$$
 
 ---
 
