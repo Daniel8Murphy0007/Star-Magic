@@ -35,9 +35,9 @@ Orion nebula data simultaneously from three observatories:
 
 | Telescope | Band | Probe |
 |---|---|---|
-| ALMA | Sub-mm 870 \mum | Dust continuum rings |
+| ALMA | Sub-mm 870 \mu m | Dust continuum rings |
 | VLA | 7 mm | Magnetic field structure |
-| JWST | Near-IR 2–4 \mum | Proplyd ionisation fronts |
+| JWST | Near-IR 2–4 \mu m | Proplyd ionisation fronts |
 
 The 18.32% **emergence threshold** — the detectable fractional excess above
 background — is predicted from:
@@ -68,7 +68,7 @@ $$F_U = \nabla \cdot \text{UQFF}_\text{full} = 0 \quad \text{(equilibrium)}$$
 $$US_\text{orb} = \sum_{m=1}^{26} H_m \!\left(1-e^{-0.57 m}\right)\omega_0(1 + m\delta)$$
 
 For the Orion Kleinmann-Low (KL) region: $\omega_0 = 2\pi \times (c/\lambda)$ at
-870 \mum gives $\omega_0 \approx 2.17 \times 10^{12}$ rad/s.
+870 \mu m gives $\omega_0 \approx 2.17 \times 10^{12}$ rad/s.
 
 $$US_\text{orb}\!\big|_\text{Orion} \approx 1.8 \times 10^{31} \text{ Hz}$$
 
@@ -82,9 +82,9 @@ of the region.
 
 | Observatory | Observable | UQFF prediction | Measured | Residual |
 |---|---|---|---|---|
-| ALMA 870 \mum | Ring spacing ratio | $r_{n+1}/r_n = p_{n+1}^{1/3}/p_n^{1/3}$ | 1.021$\pm$0.008 | $< 3\%$ |
+| ALMA 870 \mu m | Ring spacing ratio | $r_{n+1}/r_n = p_{n+1}^{1/3}/p_n^{1/3}$ | 1.021$\pm$0.008 | $< 3\%$ |
 | VLA 7 mm | Magnetic pitch angle | $\phi = \arctan(U_{g,12}/U_{g,11})$ | $28°\pm 5°$ | $< 8\%$ |
-| JWST 3.6 \mum | Ionisation-front flux ratio | $\eta_{18\%}$ | $0.19\pm 0.02$ | $< 10\%$ |
+| JWST 3.6 \mu m | Ionisation-front flux ratio | $\eta_{18\%}$ | $0.19\pm 0.02$ | $< 10\%$ |
 
 All residuals $< 10\%$ — the **three-telescope encompassment criterion** is satisfied.
 

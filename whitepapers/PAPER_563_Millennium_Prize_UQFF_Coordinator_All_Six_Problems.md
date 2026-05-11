@@ -307,28 +307,26 @@ BSD L-function partial products could in principle diverge. PAPER_553 closes thi
 
 The UQFF Millennium proofs form an interconnected mathematical structure:
 
-$$
-\begin{aligned}
-  & P_order = exp(-E/F)/Z26 \\
-  & | \\
-  & |--\to  [NS regularity]  \lambda_max = 2P/3 < 1         PAPER_543 \\
-  & | \\
-  & |--\to  [YM mass gap]    \Delta = P/3 > 0              PAPER_544 \\
-  & |         | \\
-  & |         └--\to DVP p=113 (aperiodic)  -------------------------- PAPER_530/540 \\
-  & | \\
-  & Z26 ----\to [Riemann]    t_n = (2\pin/ln26)\cdot Z26        PAPER_530/540 \\
-  & | \\
-  & └--\to [FUBi26]    1/27! < float64_eps            PAPER_553 \\
-  & | \\
-  & └--\to  [BSD]  L_UQFF Euler product   PAPER_156 \\
-  & | \\
-  & [UA] \\
-  & | \\
-  & └--\to [P\neqNP]  2^26/26^4 \approx 147  PAPER_104 \\
-  & E_0 = 1e-19 J --\to [Hodge]  E_n/E_0 = 10^{n-1} \in \mathbb{Q}  PAPER_156
-\end{aligned}
-$$
+```text
+P_order = exp(-E/F)/Z26
+  |
+  |--> [NS regularity]  lambda_max = 2P/3 < 1         PAPER_543
+  |
+  |--> [YM mass gap]    Delta = P/3 > 0               PAPER_544
+  |         |
+  |         +--> DVP p=113 (aperiodic) -------------- PAPER_530/540
+  |
+  Z26 ----> [Riemann]   t_n = (2*pi*n/ln 26)*Z26      PAPER_530/540
+  |
+  +--> [FUBi26]    1/27! < float64_eps                PAPER_553
+  |
+  +--> [BSD]  L_UQFF Euler product                    PAPER_156
+  |
+  [UA]
+  |
+  +--> [P != NP]  2^26 / 26^4 ~ 147                   PAPER_104
+  E_0 = 1e-19 J --> [Hodge]  E_n/E_0 = 10^(n-1) in Q  PAPER_156
+```
 
 ### Key Cross-Problem Relationships
 

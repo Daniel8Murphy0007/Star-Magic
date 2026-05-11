@@ -97,8 +97,8 @@ $$H = \frac{\text{Tr}(\text{UQFF\_comp})}{3} = \frac{P_\text{order}}{3}$$
 
 The spectrum of $H$ (eigenvalues of UQFF_comp divided by 3):
 
-$$\sigma(H) = \left{ \frac{P_\text{order}}{3},\; \frac{P_\text{order}}{3},\;
-  \frac{2P_\text{order}}{3} \right}$$
+$$\sigma(H) = \left\{ \frac{P_\text{order}}{3},\; \frac{P_\text{order}}{3},\;
+  \frac{2P_\text{order}}{3} \right\}$$
 
 The **mass gap** is the infimum of the positive spectrum:
 

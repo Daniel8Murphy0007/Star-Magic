@@ -66,7 +66,7 @@ $$\varepsilon'(r) = \frac{d\varepsilon}{dr} = -\frac{3\eta\cos(\pi t_n)\,C_{\mat
 
 $$\Gamma^r_{\mu\mu} = -\frac{\partial_r A_{\mu\mu}}{2\,A_{rr}} = -\frac{\varepsilon'}{2(-1+\varepsilon)} \qquad \text{(no sum on }\mu\text{)}$$
 
-$$\Gamma^\alpha_{\alpha r} = \Gamma^\alpha_{r\alpha} = \frac{\partial_r A_{\alphaalpha}}{2\,A_{\alphaalpha}} \qquad \text{(no sum on }\alpha\text{)}$$
+$$\Gamma^\alpha_{\alpha r} = \Gamma^\alpha_{r\alpha} = \frac{\partial_r A_{\alpha\alpha}}{2\,A_{\alpha\alpha}} \qquad \text{(no sum on }\alpha\text{)}$$
 
 Explicitly at leading order in $\varepsilon$:
 
@@ -110,7 +110,7 @@ $$R_{rr} = -R^r{}_{0r0} + 2\!\left(\frac{\varepsilon''}{2} - \frac{(\varepsilon'
 
 **Ricci scalar:**
 
-$$R = A^{\mu\nu}R_{\mu\nu} = \frac{R_{00}}{A_{00}} + \frac{R_{rr}}{A_{rr}} + \frac{2R_{\thetatheta}}{A_{\thetatheta}}$$
+$$R = A^{\mu\nu}R_{\mu\nu} = \frac{R_{00}}{A_{00}} + \frac{R_{rr}}{A_{rr}} + \frac{2R_{\theta\theta}}{A_{\theta\theta}}$$
 
 **Kretschner scalar** (leading order):
 
@@ -289,7 +289,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 |------------|-----------------|-----------------|--------|-----------|
 | GR Schwarzschild metric recovery | BSFG line element $\to$ g_tt = -(1-2$\mu$_s$\nabla$(M_s/r)$\cdot$r/c2) $\equiv$ GR in $\varepsilon$_BSFG$\to$0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
 | Shapiro time delay | BSFG geodesic $\to$ $\Delta$t_BSFG $\approx$ $\Delta$t_GR $\times$ (1 + $\varepsilon$_correction) | Cassini: $\Delta$t/$\Delta$t_GR = 1 $\pm$ 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
-| Gravitational wave speed v_GW | BSFG: v_GW = c $\times$ (1 + $k_{\eta}$2) $\approx$ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
+| Gravitational wave speed v_GW | BSFG: $v_\text{GW} = c \times (1 + k_\eta^2) \approx c + 10^{-226}$ m/s | GW150914 / GW170817: $|v_\text{GW}/c - 1| < 10^{-15}$ | LIGO/Fermi GBM | PASS UQFF deviation $10^{-211}$ orders below bound |
 | Perihelion precession (Mercury) | BSFG adds buoyancy correction $\delta$$\phi$ = $\kappa$ $\times$ $\phi$_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
 
 **New physics claim:** BSFG (Buoyancy-Stratified Factorial Geometry) reproduces all tested GR

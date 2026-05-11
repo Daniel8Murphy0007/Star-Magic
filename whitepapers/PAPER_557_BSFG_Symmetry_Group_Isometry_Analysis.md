@@ -46,7 +46,7 @@ $$\nabla_{(\mu}\xi_{\nu)} = \frac{1}{2}\left(`partial_\mu\xi_`nu + `partial_\nu\
 
 On the diagonal metric $A_{\mu\nu}(r)$, this reduces to:
 
-$$\partial_{(\mu}(A_{\nu\nu}\xi^\nu) = \Gamma^\alpha_{\mu\nu}A_{\alphaalpha}\xi^\alpha \qquad \text{(no sum)}$$
+$$\partial_{(\mu}(A_{\nu\nu}\xi^\nu) = \Gamma^\alpha_{\mu\nu}A_{\alpha\alpha}\xi^\alpha \qquad \text{(no sum)}$$
 
 ---
 
@@ -291,7 +291,7 @@ By Noether's theorem, each Killing vector generates a conserved charge:
 | Killing Vector | Conservation Law |
 |---|---|
 | $\partial_t$ | Energy $E = A_{00}\,\dot{t}$ = const along geodesics |
-| $L_z = \partial_phi$ | Angular momentum $L = A_{\phiphi}\,\dot{\phi}$ = const |
+| $L_z = \partial_phi$ | Angular momentum $L = A_{\phi\phi}\,\dot{\phi}$ = const |
 | $L_x, L_y$ | Two more angular momentum components |
 | $\partial_{\theta\_i}$ | Kaluza-Klein charge $q_i = L_i^2\,\dot{\theta}_i$ = const |
 
