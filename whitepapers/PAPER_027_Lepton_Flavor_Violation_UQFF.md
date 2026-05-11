@@ -325,14 +325,14 @@ naturally sits in this range.
 Running `bsm_{physics\_validation}.py` produces the following LFV section output:
 
 ```
---- 2506.15347: LFV B0 \rightarrow K*0 \tau\pme∓ ---
+--- 2506.15347: LFV B0 \rightarrow K*0 \tau\pme\mp  ---
   BR(B0 \rightarrow K*0 \tau-e+) < 5.9e-06 (90% CL)
   BR(B0 \rightarrow K*0 \tau+e-) < 4.9e-06 (90% CL)
 ```
 The `BSMPhysicsConstants` dataclass encodes the LHCb measurements:
 
 ```python
-# === 2506.15347: LFV B0 \rightarrow K*0 \tau\pme∓ Limits ===
+# === 2506.15347: LFV B0 \rightarrow K*0 \tau\pme\mp  Limits ===
 BR_{LFV\_tau\_minus}: float = 5.9e-6     # B0 \rightarrow K*0 \tau-e+ limit (90% CL)
 BR_{LFV\_tau\_plus}: float  = 4.9e-6     # B0 \rightarrow K*0 \tau+e- limit (90% CL)
 LHCb_luminosity: float  = 5.4        # fb^-1 integrated luminosity
@@ -350,7 +350,7 @@ mappings['t_{n\_LFV\_constraint}'] = -np.log(bsm.BR_{LFV\_tau\_minus}) / np.pi
 The C++ implementation in `source4.cpp` confirms the numerical values:
 
 ```cpp
-// --- 2506.15347: LFV B0 \rightarrow K*0 \tau\pme∓ Limits (LHCb 5.4 fb^-1) ---
+// --- 2506.15347: LFV B0 \rightarrow K*0 \tau\pme\mp  Limits (LHCb 5.4 fb^-1) ---
 double BR_{LFV\_tau\_minus\_e} = 5.9e-6;     // B0 \rightarrow K*0 \tau-e+ limit (90% CL)
 double BR_{LFV\_tau\_plus\_e}  = 4.9e-6;     // B0 \rightarrow K*0 \tau+e- limit (90% CL)
 double t_{n\_LFV\_constraint} = 3.833;      // -ln(BR_LFV)/\pi reversal constraint
@@ -365,7 +365,7 @@ calculation:
 class LFVBDecayTerm : public PhysicsTerm_BSM {
     // arxiv:  2506.15347
     // experiment: LHCb Run 2
-    // observable: BR(B0\rightarrowK*0\tau\pme∓)
+    // observable: BR(B0\rightarrowK*0\tau\pme\mp )
     
     double compute(double t, const std::map<std::string,double>& params) const override {
         double C_LFV = br / 1e-5;                          // Wilson coefficient proxy
@@ -446,7 +446,7 @@ The tau anomalous magnetic moment $a_{\tau}$ and the LFV amplitude share the sam
 $\mu$_s dipole strength:
 
 ```
-\mu_s ∝ exp(-\alpha \times a_\tau_deviation)    where a_\tau_deviation = (a_\tau_upper - a_\tau_SM) / a_\tau_SM \approx 4.917
+\mu_s \propto  exp(-\alpha \times a_\tau_deviation)    where a_\tau_deviation = (a_\tau_upper - a_\tau_SM) / a_\tau_SM \approx 4.917
 $$
 A non-zero a_\tau deviation from the SM would signal partial DPM activation --- a non-zero vacuum
 polarization in the SCm. This same DPM activation would modestly increase the LFV amplitude by
@@ -508,6 +508,32 @@ calibration block), and `Core/Modules/BSMPhysicsUQFFModule.cpp` (class `LFVBDeca
 ready for integration into the MAIN_{1\_CoAnQi}.cpp validation pipeline.
 
 ---
+
+
+## §v5.78 Closure — Calibration Constants Now Derived
+
+Under canonical UQFF v5.78, the calibrated couplings used in the analysis above
+($\beta_i$, F$_{TRZ}$, $\rho_{SCm}$, $\rho_{UA}$, [SSq], $\kappa$) are **no longer free
+parameters**. They are derived from the eight Lagrangian-gap closures
+(G1–G8) summarized below:
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i$ | 0.603 (i=1) | G1 Mexican-hat moduli, PAPER_1162; $\beta_i = 3(5-i)/20$ |
+| F$_{TRZ}$ | 1/10 | G6 time-reversal-zone fraction, PAPER_1163 |
+| $\rho_{SCm}$ | 7.09×10$^{-37}$ J/m³ | 27-decade R26+KK+BSFG ledger, PAPER_1170 |
+| $\rho_{UA}$ | 7.09×10$^{-36}$ J/m³ | 27-decade R26+KK+BSFG ledger, PAPER_1170 |
+| [SSq] | 0.57 | G5 T$^{22}$ moduli kernel, PAPER_1165 |
+| $\kappa$ | 5.0×10$^{-4}$/day | G2 DPM SO(2) gauge dissipation, PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to <0.5%).
+
+**LFV hook:** The lepton-flavor-violating rates computed above use the F$_{TRZ}=1/10$ suppression derived in G6. The associated KK-mediated channels are the same ones probed by P6 (sub-mm Yukawa, PAPER_1174): a null sets a firm upper bound on the LFV prediction here.
+
+*Note:* The $\xi = 13/3$ R26+KK lock (PAPER_1171/1172) sets a sub-mm KK length
+$L_{KK}^* \sim 20$–$90\,\mu$m, which is the canonical UV completion underlying
+the BSM scale used in this paper.
 
 ## References
 

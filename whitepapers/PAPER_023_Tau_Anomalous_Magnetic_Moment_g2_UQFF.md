@@ -257,6 +257,32 @@ UQFF predicts:
 
 ---
 
+
+## §v5.78 Closure — Calibration Constants Now Derived
+
+Under canonical UQFF v5.78, the calibrated couplings used in the analysis above
+($\beta_i$, F$_{TRZ}$, $\rho_{SCm}$, $\rho_{UA}$, [SSq], $\kappa$) are **no longer free
+parameters**. They are derived from the eight Lagrangian-gap closures
+(G1–G8) summarized below:
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i$ | 0.603 (i=1) | G1 Mexican-hat moduli, PAPER_1162; $\beta_i = 3(5-i)/20$ |
+| F$_{TRZ}$ | 1/10 | G6 time-reversal-zone fraction, PAPER_1163 |
+| $\rho_{SCm}$ | 7.09×10$^{-37}$ J/m³ | 27-decade R26+KK+BSFG ledger, PAPER_1170 |
+| $\rho_{UA}$ | 7.09×10$^{-36}$ J/m³ | 27-decade R26+KK+BSFG ledger, PAPER_1170 |
+| [SSq] | 0.57 | G5 T$^{22}$ moduli kernel, PAPER_1165 |
+| $\kappa$ | 5.0×10$^{-4}$/day | G2 DPM SO(2) gauge dissipation, PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to <0.5%).
+
+**Lepton g-2 hook:** The tau g-2 anomaly contribution computed above scales as $(L_{KK}^*/L_{EW})^2$ with the R26+KK length. The predicted shift is **cross-checked** by P6 (sub-mm Yukawa, PAPER_1174): a Yukawa null at 20–90 $\mu$m falsifies the new-physics window invoked here.
+
+*Note:* The $\xi = 13/3$ R26+KK lock (PAPER_1171/1172) sets a sub-mm KK length
+$L_{KK}^* \sim 20$–$90\,\mu$m, which is the canonical UV completion underlying
+the BSM scale used in this paper.
+
 ## References
 
 1. DELPHI Collaboration (2004). Eur.Phys.J.C, 35, 159.

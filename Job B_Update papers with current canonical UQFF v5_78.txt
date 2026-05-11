@@ -164,3 +164,53 @@ Categorization CSV updated:
 
 Next batch (Session 262 continuation): PAPER_010 through PAPER_014 + b-variants
   (010, 010b, 011, 011b, 012, 012b, 013, 013b, 014, 014b)
+
+================================================================================
+BATCH 2 (Session 262 cont.) — commit d2665820
+================================================================================
+PAPER_010 / 010b / 011 / 011b / 012 / 012b / 013 / 013b / 014 / 014b
+GW/magnetar/PBH/EMRI papers. Same closure block. Tailored P-suite hooks:
+  - 010, 011b, 012b, 014b: P11 ringdown
+  - 010b: P11 chirp morphology test
+  - 011, 014: P14 CMB-S4 + P13 DESI (cosmological)
+  - 012: P11 + P6 sub-mm Yukawa
+  - 013: P6 sub-mm Yukawa (magnetar B-anomaly)
+  - 013b: P12 Euclid sigma_8 + P13 DESI
+  - PAPER_010 also fixed U+221D (proportional) -> \propto for pdflatex
+Verification: all +28/-0 pure additions, PDFs 353-408 KB, no content lost.
+
+================================================================================
+BATCH 3 (Session 262 cont.) — commit 67e6a25a
+================================================================================
+PAPER_009b / 015 / 015b / 016 / 016b / 017 / 018 / 019 / 020 / 021
+GW damping decomposition + cosmological GW propagation + multi-band synergy +
+entanglement + WD foreground + redshift z=1 + LISA aether noise + PTA +
+cosmic rays + gravitational lensing.
+Tailored hooks:
+  - 009b: per-channel G2/G5/G6/G7 mapping
+  - 015: full ledger + xi=13/3 + P12/P13/P14 (cosmology bucket A)
+  - 015b: P11 multi-band consistency test
+  - 016: P6 sub-mm Yukawa (entanglement KK probe)
+  - 016b: P11 LISA WD-foreground cross-check
+  - 017: P13 DESI Y5 w(z) (redshift correction)
+  - 018: P11 F_TRZ cross-band test (LISA aether noise)
+  - 019: P12/P14 PTA cosmological cross-check
+  - 020: P6 sub-mm Yukawa (cosmic ray SCm/UA probe)
+  - 021: P12 Euclid sigma_8 + xi=13/3 KK lensing kernel
+Verification: all +27/-0 pure additions, PDFs 352-428 KB, no content lost.
+
+================================================================================
+RUNNING TOTAL through Session 262 (3 batches)
+================================================================================
+30 papers updated (PAPER_001-021 inclusive of variants 008b/009b/010b/011b/012b/013b/014b/015b/016b)
+Commits: 7fadd27d, d2665820, 67e6a25a + CSV stamps 2fd80ed6, c43804fd
+All pushed to master.
+
+RECURRING UNRESOLVED CROSS-REFS (appearing in nearly every paper):
+  PAPER_420, 421, 642 (Master Lagrangian / F_U bridge papers - bucket B/G)
+  PAPER_840, 877 (extension papers)
+These are HIGH-PRIORITY targets for an upcoming bucket-B batch since they
+are the upstream source for the closure block content itself.
+
+Session 204-225 extension batch (PAPER_1000-1081) references confirmed
+broad and case-by-case. Will be handled after primary 001-200 sweep.
