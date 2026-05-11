@@ -81,10 +81,14 @@ KNOWN GAPS:
   G4.  The compactification manifold geometry is asserted to be a 22-torus
        T^22 with characteristic radius R_KK ~ l_Planck * 26^{1/2}, but the
        moduli stabilization mechanism is open.
-  G5.  Only the zero-mode (n=0) is needed for the Lambda closure, but the
-       n>=1 KK tower may contribute corrections at the percent level. The
-       claim is that these are suppressed by 1/26! (factorial barrier), but
-       this has not been computed mode-by-mode.
+  G5.  CLOSED (Session 249, PAPER_1162): KK tower contribution from n>=1 modes
+       on S^25 (BH26 spectral ladder lambda_k = k(k+25)) is bounded mode-by-mode
+       by sum_{n>=1} 1/lambda_n^26 = 1.624e-37, dominated by n=1 leading
+       term 1/26^26. This is 1.5e10 stronger than the outline-asserted 1/26!
+       bound, and 30 orders of magnitude below experimental sensitivity.
+       Direct dual of G8: same 26-fold radial derivative that EXTRACTS 26!
+       from the zero mode INVERSE-PROJECTS higher modes by 1/lambda_n^26.
+       Spectral product check: prod_{k=1..26} lambda_k = 26! * 51!/25! exact.
 
 CHECK-TEST T2:
   Once the KK expansion is written down, integrating L_F_U over the 22-torus
@@ -259,15 +263,15 @@ if __name__ == "__main__":
     print()
     print("  G3 (DPM gauge embedding)    -- needed for h, alpha")
     print("  G1 (V(UA) polynomial)       -- needed for Lambda")
-    print("  G5 (KK tower suppression)   -- needed for G factorial barrier")
+    print("  G5 (KK tower suppression)   -- CLOSED (Session 249, PAPER_1162): Sum 1/lambda_n^26 = 1.6e-37 << 1/26!")
     print("  G6 (Phi_res identification) -- CLOSED (Session 246, PAPER_1159): Phi_res = 5/6")
     print("  G7 (F_TRZ identification)   -- CLOSED (Session 247, PAPER_1160): F_TRZ = 1/10 (exact)")
     print("  G8 (26! emergence)          -- CLOSED (Session 248, PAPER_1161): 26! = (1)_{26} Pochhammer")
     print("  G4 (T^22 moduli stab)       -- needed for all five")
     print("  G2 (beta_i i-dependence)    -- needed for Lambda cross-check")
     print()
-    print("Estimated effort: 5-9 person-weeks of theoretical work to close")
-    print("the remaining five gaps (G6, G7, G8 closed Sessions 246-248). Until then, five closures remain at the level of")
+    print("Estimated effort: 4-7 person-weeks of theoretical work to close")
+    print("the remaining four gaps (G5, G6, G7, G8 closed Sessions 246-249). Until then, four closures remain at the level of")
     print("internal cross-validation (overdetermination), not first-principles.")
     print()
     print("This is honest scoping. The numerics are real; the Lagrangian")
