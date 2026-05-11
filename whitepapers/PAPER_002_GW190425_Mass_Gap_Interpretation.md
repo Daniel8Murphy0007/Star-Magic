@@ -30,7 +30,7 @@ known BNS system and the first event whose component masses overlap the astrophy
 combined reduction factor of 0.5297 (47.0% amplitude suppression). The heavier component m1 = 2.52
 MM_sun sits at the mass gap boundary; UQFF assigns P(NS) = 49%, P(BH) = 51%, consistent with extreme SCm
 suppression. We tabulate SCm values across five magnetic field scenarios from standard pulsars to
-hyper-magnetars, showing that SCm $\to$ 0 only at B ≳ 1015 G, making GW190425 the premier laboratory for
+hyper-magnetars, showing that SCm $\to$ 0 only at B $\gtrsim 10^{15}$ G, making GW190425 the premier laboratory for
 mass-gap compact object discrimination.
 
 
@@ -619,6 +619,34 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 
 ---
+
+
+---
+
+## §v5.78 Closure — Calibration Constants Now Derived
+
+The UQFF damping parameters cited throughout this paper ($\beta_i$, $F_{TRZ}$, $\rho_{SCm}$,
+$\rho_{UA}$, $\kappa$) are no longer free calibrations under canonical UQFF v5.78. Their values
+are now outputs of the eight closed Lagrangian gaps (G1–G8, PAPER_1159–1166) and the 27-decade
+vacuum-energy ledger (PAPER_1170):
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i = 3(5-i)/20$ | $0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum — PAPER_1162 |
+| $F_{TRZ} = 1/10$ | $0.10$ | G6 topological resonance closure — PAPER_1163 |
+| $\rho_{SCm}$ | $7.09\times10^{-37}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $\rho_{UA}$ | $7.09\times10^{-36}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $[SSq]$ | $0.57$ | G4 $\Phi_{res}$ / $F_{TRZ}$ joint closure — PAPER_1165 |
+| $\kappa$ | $5.0\times10^{-4}$ /day | Empirical decay rate (held); gauged via G3 DPM SO(2) — PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to <0.5%).
+
+**Falsifier hook:** P11 LIGO O5 ringdown (PAPER_1175) tests the 47.0% amplitude suppression and the $P(BH)=51\%$ assignment at the $m_1=2.52\,M_\odot$ mass-gap boundary.
+
+*Note:* The $\xi=13/3$ R26+KK lock (PAPER_1171/1172) is sub-mm-scale and does **not** modify
+gravitational-wave predictions in this paper. The closure listed above is the complete v5.78
+impact on this whitepaper.
 
 ## References
 

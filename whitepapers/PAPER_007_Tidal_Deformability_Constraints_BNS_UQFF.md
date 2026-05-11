@@ -620,6 +620,34 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
 bridge.*
 
+
+---
+
+## §v5.78 Closure — Calibration Constants Now Derived
+
+The UQFF damping parameters cited throughout this paper ($\beta_i$, $F_{TRZ}$, $\rho_{SCm}$,
+$\rho_{UA}$, $\kappa$) are no longer free calibrations under canonical UQFF v5.78. Their values
+are now outputs of the eight closed Lagrangian gaps (G1–G8, PAPER_1159–1166) and the 27-decade
+vacuum-energy ledger (PAPER_1170):
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i = 3(5-i)/20$ | $0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum — PAPER_1162 |
+| $F_{TRZ} = 1/10$ | $0.10$ | G6 topological resonance closure — PAPER_1163 |
+| $\rho_{SCm}$ | $7.09\times10^{-37}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $\rho_{UA}$ | $7.09\times10^{-36}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $[SSq]$ | $0.57$ | G4 $\Phi_{res}$ / $F_{TRZ}$ joint closure — PAPER_1165 |
+| $\kappa$ | $5.0\times10^{-4}$ /day | Empirical decay rate (held); gauged via G3 DPM SO(2) — PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to <0.5%).
+
+**Falsifier hook:** The tidal deformability $\Lambda$ range ($\sim 190$–$600$ GR vs UQFF-shifted) is bounded by P11 ringdown spectroscopy (PAPER_1175) and P12 Euclid $\sigma_8$ (PAPER_1176).
+
+*Note:* The $\xi=13/3$ R26+KK lock (PAPER_1171/1172) is sub-mm-scale and does **not** modify
+gravitational-wave predictions in this paper. The closure listed above is the complete v5.78
+impact on this whitepaper.
+
 ## References
 
 1. Abbott et al. (LIGO/Virgo Collaborations, 2018). *GW170817: Measurements of Neutron Star Radii and Equation of State.* Phys. Rev. Lett. **121**, 161101 — arXiv:1805.11579 — doi:10.1103/PhysRevLett.121.161101
