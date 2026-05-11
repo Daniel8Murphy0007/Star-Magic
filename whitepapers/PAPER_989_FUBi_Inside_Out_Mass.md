@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [F_{U\_Bi}, buoyancy, mass, inside-out, SCm, vacuum, ratio]
+tags: ["F_U_Bi", "buoyancy", "mass", "inside-out", "SCm", "vacuum", "ratio"]
 crosslinks: [PAPER_979, PAPER_990, PAPER_994]
 calibration: {F_U_{Bi\_solar}: 2.33e40, ratio: 0.606}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"

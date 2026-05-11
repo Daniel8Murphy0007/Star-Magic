@@ -6,7 +6,7 @@ date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [jet, F_{U\_Bi\_i}, buoyancy, black-hole, UQFF]
+tags: ["jet", "F_U_Bi_i", "buoyancy", "black-hole", "UQFF"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

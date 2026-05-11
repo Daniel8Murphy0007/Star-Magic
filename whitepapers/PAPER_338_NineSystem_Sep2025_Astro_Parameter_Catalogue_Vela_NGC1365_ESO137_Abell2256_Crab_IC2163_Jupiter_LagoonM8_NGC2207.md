@@ -7,7 +7,7 @@ date: 2025-09-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [AGN, cluster, pulsar, F_{U\_Bi\_i}, neutron-star, nebula, UQFF]
+tags: ["AGN", "cluster", "pulsar", "F_U_Bi_i", "neutron-star", "nebula", "UQFF"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

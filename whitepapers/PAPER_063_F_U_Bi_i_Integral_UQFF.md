@@ -7,7 +7,7 @@ date: 2026-03-07
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [galaxy, merger, F_{U\_Bi\_i}, neutron-star, BEC, black-hole, buoyancy, UQFF]
+tags: ["galaxy", "merger", "F_U_Bi_i", "neutron-star", "BEC", "black-hole", "buoyancy", "UQFF"]
 sm_anchor: "CVW v2.0.0 --- G6 SM Anchor Gate compliant"
 ---
 

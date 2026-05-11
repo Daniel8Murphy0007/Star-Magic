@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [REST, API, endpoint, F_{U\_Bi}, Gamma, sweep, inside-outside]
+tags: ["REST", "API", "endpoint", "F_U_Bi", "Gamma", "sweep", "inside-outside"]
 crosslinks: [PAPER_988, PAPER_989, PAPER_995]
 calibration: {port: 3141, routes: 18, new_routes: 2}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"

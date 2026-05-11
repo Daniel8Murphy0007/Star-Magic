@@ -6,7 +6,7 @@ date: 2026-04-15
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: ['unified', 'F_{U\_Bi}', 'F_{U\_Bi\_i}', 'eleven-domain', 'LENR', 'GW', 'blazar', 'QGP', 'DM', 'CMB', 'clusters', 'BCS', 'wormhole', 'inflation', 'dark-energy', 'validation']
+tags: ["unified", "F_U_Bi", "F_U_Bi_i", "eleven-domain", "LENR", "GW", "blazar", "QGP", "DM", "CMB", "clusters", "BCS", "wormhole", "inflation", "dark-energy", "validation"]
 crosslinks: [PAPER_1088, PAPER_1089, PAPER_1090, PAPER_1094, PAPER_1095, PAPER_979, PAPER_990]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---

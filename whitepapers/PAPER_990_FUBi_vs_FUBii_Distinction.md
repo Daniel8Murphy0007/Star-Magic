@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [F_{U\_Bi}, F_{U\_Bi\_i}, distinction, direction, buoyancy, sign]
+tags: ["F_U_Bi", "F_U_Bi_i", "distinction", "direction", "buoyancy", "sign"]
 crosslinks: [PAPER_989, PAPER_979, PAPER_991]
 calibration: {F_U_Bi: 2.33e40, F_{U\_Bi\_i}: -2.41e-02}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"

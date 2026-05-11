@@ -6,7 +6,7 @@ date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [galaxy, AGN, cluster, supernova, pulsar, F_{U\_Bi\_i}, SMBH, neutron-star]
+tags: ["galaxy", "AGN", "cluster", "supernova", "pulsar", "F_U_Bi_i", "SMBH", "neutron-star"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

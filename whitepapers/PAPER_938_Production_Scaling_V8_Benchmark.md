@@ -6,7 +6,7 @@ date: 2026-04-12
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [GW, jet, F_{U\_Bi\_i}, phonon, UQFF]
+tags: ["GW", "jet", "F_U_Bi_i", "phonon", "UQFF"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

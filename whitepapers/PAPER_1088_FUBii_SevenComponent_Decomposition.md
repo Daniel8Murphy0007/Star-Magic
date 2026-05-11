@@ -6,7 +6,7 @@ date: 2026-04-15
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: ['F_{U\_Bi\_i}', 'decomposition', 'seven-component', 'BCS', 'VDS', 'DVP', 'BSH', 'QCalcGeom', 'phonon', 'inflation']
+tags: ["F_U_Bi_i", "decomposition", "seven-component", "BCS", "VDS", "DVP", "BSH", "QCalcGeom", "phonon", "inflation"]
 crosslinks: [PAPER_1089, PAPER_1090, PAPER_892, PAPER_893]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---

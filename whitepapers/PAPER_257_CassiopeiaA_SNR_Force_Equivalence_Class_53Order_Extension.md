@@ -7,7 +7,7 @@ date: 2026-03-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [AGN, F_{U\_Bi\_i}, UQFF, neutron-star, Chandra, FUBi, supernova]
+tags: ["AGN", "F_U_Bi_i", "UQFF", "neutron-star", "Chandra", "FUBi", "supernova"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

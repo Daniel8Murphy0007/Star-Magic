@@ -6,7 +6,7 @@ date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [TDE, galaxy, F_{U\_Bi\_i}, black-hole, UQFF]
+tags: ["TDE", "galaxy", "F_U_Bi_i", "black-hole", "UQFF"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

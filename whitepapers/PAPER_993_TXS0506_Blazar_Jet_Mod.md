@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [TXS_0506, blazar, jet, neutrino, F_{U\_Bi\_i}, modulation, IceCube]
+tags: ["TXS_0506", "blazar", "jet", "neutrino", "F_U_Bi_i", "modulation", "IceCube"]
 crosslinks: [PAPER_991, PAPER_989, PAPER_948]
 calibration: {M_BH: "3e8 Msun", a_spin: 0.95, peak_mod: "3.3x", B_gauss: 5000}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"

@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [99-system, Gamma, sweep, linewidth, aggregate, F_{U\_Bi\_i}, catalogue]
+tags: ["99-system", "Gamma", "sweep", "linewidth", "aggregate", "F_U_Bi_i", "catalogue"]
 crosslinks: [PAPER_984, PAPER_996, PAPER_989]
 calibration: {systems: 99, gamma_values: 7, aggregate_0p1: -6.11e13}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"

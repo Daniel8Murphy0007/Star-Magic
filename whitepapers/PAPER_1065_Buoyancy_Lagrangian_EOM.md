@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: ['buoyancy', 'Lagrangian', 'EOM', 'variational', 'F_{U\_Bi\_i}', 'SCm']
+tags: ["buoyancy", "Lagrangian", "EOM", "variational", "F_U_Bi_i", "SCm"]
 crosslinks: [PAPER_1064]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---

@@ -376,20 +376,18 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ## Appendix: Key Constants
 
-$$
-\begin{aligned}
-  & F_rel   = 1.0e-10 N    # Relativistic field strength baseline \\
-  & E_LEP   = 1.22e-19 J   # Lepton energy scale (~0.76 eV) \\
-  & \text{RHO\_VAC\_UA}  = 7.09e-36 J/m^{3}  # Universal Aether vacuum density \\
-  & \text{RHO\_VAC\_SCM} = 7.09e-37 J/m^{3}  # SCm vacuum density \\
-  & \kappa       = 0.0005/day   # UQFF temporal decay constant \\
-  & [SSq]   = 0.57         # Superconducting manifold calibration \\
-  & # Perseus Cluster \\
-  & sigma_X = 1300 km/s = 1.300e6 m/s \\
-  & r_h     = 2.5e22 m (\approx 0.81 Mpc) \\
-  & \text{F\_UBii\_virx} = -2.024e60 N  \leftarrow BuoyancyProofVariants.py confirmed PASS
-\end{aligned}
-$$
+```
+F_rel        = 1.0e-10 N         # Relativistic field strength baseline
+E_LEP        = 1.22e-19 J        # Lepton energy scale (~0.76 eV)
+RHO_VAC_UA   = 7.09e-36 J/m^3    # Universal Aether vacuum density
+RHO_VAC_SCM  = 7.09e-37 J/m^3    # SCm vacuum density
+kappa        = 0.0005/day        # UQFF temporal decay constant
+[SSq]        = 0.57              # Superconducting manifold calibration
+# Perseus Cluster
+sigma_X      = 1300 km/s = 1.300e6 m/s
+r_h          = 2.5e22 m (approx 0.81 Mpc)
+F_UBii_virx  = -2.024e60 N       # BuoyancyProofVariants.py confirmed PASS
+```
 
 *Validator: `BuoyancyProofVariants.py` $\to$ All 17 F_UBii variants operational PASS | $\kappa$ = 0.0005/day |
 [SSq] = 0.57*

@@ -7,7 +7,7 @@ date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [TDE, AGN, cluster, DPM, jet, pulsar, F_{U\_Bi\_i}, LENR]
+tags: ["TDE", "AGN", "cluster", "DPM", "jet", "pulsar", "F_U_Bi_i", "LENR"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

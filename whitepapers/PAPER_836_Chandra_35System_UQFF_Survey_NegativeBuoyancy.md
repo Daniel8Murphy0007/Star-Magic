@@ -6,7 +6,7 @@ date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [quasar, galaxy, AGN, cluster, DPM, F_{U\_Bi\_i}, SMBH, JWST]
+tags: ["quasar", "galaxy", "AGN", "cluster", "DPM", "F_U_Bi_i", "SMBH", "JWST"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

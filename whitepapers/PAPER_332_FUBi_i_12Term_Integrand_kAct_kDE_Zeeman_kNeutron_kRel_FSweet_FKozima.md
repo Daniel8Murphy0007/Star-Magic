@@ -7,7 +7,7 @@ date: 2025-09-14
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [AGN, vacuum, dark-energy, F_{U\_Bi\_i}, DPM, LENR, phonon, UQFF]
+tags: ["AGN", "vacuum", "dark-energy", "F_U_Bi_i", "DPM", "LENR", "phonon", "UQFF"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 

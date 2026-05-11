@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: ['F_{U\_Bi\_i}', 'multi-system', 'buoyancy', 'curve', 'sweep', 'Gamma']
+tags: ["F_U_Bi_i", "multi-system", "buoyancy", "curve", "sweep", "Gamma"]
 crosslinks: [PAPER_979, PAPER_995]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---

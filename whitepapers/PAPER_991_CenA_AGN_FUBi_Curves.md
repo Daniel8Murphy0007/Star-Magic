@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [Centaurus_A, AGN, jet, F_{U\_Bi\_i}, Gamma, sweep, CenA, SMBH]
+tags: ["Centaurus_A", "AGN", "jet", "F_U_Bi_i", "Gamma", "sweep", "CenA", "SMBH"]
 crosslinks: [PAPER_989, PAPER_993, PAPER_930]
 calibration: {M_BH: "5.5e7 Msun", a_spin: 0.70, B_gauss: 3000, gamma_points: 7}
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"

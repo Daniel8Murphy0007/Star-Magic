@@ -84,13 +84,13 @@ The UQFF proposes:
 Standard vacuum energy from zero-point fluctuations:
 
 $$
-?_vac = ?_0^k_max (??_k/2) \times (d^3k/(2p)^3)
+\rho_{\mathrm{vac}} = \int_0^{k_{\max}} \frac{\hbar\omega_k}{2}\,\frac{d^3k}{(2\pi)^3}
 $$
 
 UQFF-modified vacuum energy:
 
 $$
-?_vac,UQFF(t) = ?_0^k_Q (??_k/2) \times exp[-?_damp(k) t] \times F_UQFF(k) \times (d^3k/(2p)^3)
+\rho_{\mathrm{vac,UQFF}}(t) = \int_0^{k_Q} \frac{\hbar\omega_k}{2}\,\exp\!\left[-\Gamma_{\mathrm{damp}}(k)\,t\right]\,F_{\mathrm{UQFF}}(k)\,\frac{d^3k}{(2\pi)^3}
 $$
 
 Where:
@@ -376,14 +376,15 @@ This ratio is NOT coincidental in UQFF:
 
 UQFF vacuum energy from effective action:
 
-$$
-S_eff = ? d^4x v(-g) [R/(16pG) - ?_eff(t) + L_matter + L_UQFF]
-$$
+```
+S_eff = integral d^4x sqrt(-g) [ R/(16 pi G) - Lambda_eff(t) + L_matter + L_UQFF ]
+```
 
 Where:
-$$
-L_UQFF = -a_Q (?\muf)2 - ß_damp f (?_t f) + ...
-$$
+
+```
+L_UQFF = -alpha_Q (partial_mu phi)^2 - beta_damp phi (partial_t phi) + ...
+```
 
 ### 10.2 Renormalization
 
@@ -395,7 +396,7 @@ UQFF provides natural cutoff:
 ### 10.3 Symmetry Breaking
 
 UQFF damping breaks time-translation symmetry:
-- Non-zero ?T^\mu??_vac
+- Non-zero `partial_T^mu nu rho_vac`
 - Dynamic vacuum state
 - Emergent arrow of time
 
@@ -445,7 +446,7 @@ UQFF advantages:
 |------------|------|-----------------|-------------------|
 | w(z=0.5) | -1.000 | -0.980 $\pm$ 0.015 | -1.03 $\pm$ 0.03 |
 | H_0 (late) | 67.4 km/s/Mpc | 70.1 $\pm$ 1.0 | 73.0 $\pm$ 1.0 |
-| ??\mu(z=2) | 0.000 mag | +0.12 $\pm$ 0.03 | $\pm$0.15 mag |
+| $\Delta\mu(z=2)$ | 0.000 mag | +0.12 $\pm$ 0.03 | $\pm$0.15 mag |
 | fs_8(z=1) | 0.46 | 0.45 $\pm$ 0.01 | 0.46 $\pm$ 0.02 |
 
 ---

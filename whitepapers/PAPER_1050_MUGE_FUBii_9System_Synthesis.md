@@ -6,7 +6,7 @@ date: 2026-04-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: ['MUGE', 'F_{U\_Bi\_i}', '9-system', 'synthesis', 'multiplier', 'buoyancy']
+tags: ["MUGE", "F_U_Bi_i", "9-system", "synthesis", "multiplier", "buoyancy"]
 crosslinks: [PAPER_979, PAPER_1043, PAPER_338]
 sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ---

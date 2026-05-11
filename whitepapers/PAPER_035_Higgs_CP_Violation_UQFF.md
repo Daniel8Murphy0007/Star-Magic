@@ -70,7 +70,7 @@ interactions would require:
 3. Vacuum CP violation from extended Higgs sectors (2HDM, NMSSM, etc.)
 
 The physical CP mixing angle:
-$$\psi_{\mathrm{CP}} = \arctan\left(\frac{\kappa_H^{\mathrm{odd}}}{\kappa_H^{\mathrm{even}}}\right)$$
+$$\psi_{\mathrm{CP}} = \arctan\left(\frac{\kappa _H^{\mathrm{odd}}}{\kappa _H^{\mathrm{even}}}\right)$$
 
 where $\kappa$_H^odd is the coupling to the CP-odd component. The SM prediction: $\psi$_CP = 0.
 
@@ -192,10 +192,10 @@ experimental manifestation.
 ### 4.1 UQFF CP Phase from t_n
 
 The UQFF CP phase angle:
-$$\phi_{\mathrm{CP}}^{\mathrm{UQFF}} = \pi t_n = \pi \times 0.353 = 1.109 \text{ rad} = 63.5°$$
+$$\phi _{\mathrm{CP}}^{\mathrm{UQFF}} = \pi t_n = \pi \times 0.353 = 1.109 \text{ rad} = 63.5°$$
 
 This is related to the 2HDM CP-mixing angle $\psi$_CP via:
-$$\psi_{\mathrm{CP}}^{\mathrm{2HDM}} = \frac{\phi_{\mathrm{CP}}^{\mathrm{UQFF}}}{2} = 31.75°$$
+$$\psi_{\mathrm{CP}}^{\mathrm{2HDM}} = \frac{\phi _{\mathrm{CP}}^{\mathrm{UQFF}}}{2} = 31.75°$$
 
 A CP-mixing angle of ~32° would produce large deviations in H$\to$$\gamma$$\gamma$ and H$\to$Z$\gamma$ that would already be
 visible at ATLAS/CMS (expected ~20% enhancement in H$\to$Z$\gamma$). These have **not** been observed, setting
@@ -210,7 +210,7 @@ coupling:
 $$\mathcal{L}_{\mathrm{CP}}^{\mathrm{eff}} = \frac{g_{\mathrm{CP}}^{\mathrm{UQFF}}}{v_H} H \tilde{F}_{\mu\nu} F^{\mu\nu}$$
 
 where g_CP is suppressed by the loop factor and the TRZ damping:
-$$g_{\mathrm{CP}}^{\mathrm{UQFF}} = \frac{\alpha_{\mathrm{EM}}}{4\pi} \times D_{\mathrm{TRZ}} \times t_n^2 = \frac{7.30 \times 10^{-3}}{4\pi} \times 0.333 \times (0.353)^2 = 5.81 \times 10^{-4} \times 0.0415 = 2.41 \times 10^{-5}$$
+$$g_{\mathrm{CP}}^{\mathrm{UQFF}} = \frac{\alpha _{\mathrm{EM}}}{4\pi} \times D_{\mathrm{TRZ}} \times t_n^2 = \frac{7.30 \times 10^{-3}}{4\pi} \times 0.333 \times (0.353)^2 = 5.81 \times 10^{-4} \times 0.0415 = 2.41 \times 10^{-5}$$
 
 This tiny effective H-$\gamma$-$\gamma$ CP coupling would manifest as an electric dipole moment of the
 Higgs-photon vertex, generating a forward-backward asymmetry in H$\to$$\gamma$$\gamma$ production:
@@ -230,33 +230,33 @@ vacuum decay modes --- transitions where the Higgs energy is absorbed into the s
 manifold vacuum rather than producing observable particles.
 
 The [SCm] vacuum decay width:
-$$\Gamma_H^{[SCm]} = \Gamma_H^{\mathrm{SM}} \times \frac{[SCm]}{[SCm]_0} \times \frac{v_S^2}{v_H^2}$$
+$$\Gamma _H^{[SCm]} = \Gamma _H^{\mathrm{SM}} \times \frac{[SCm]}{[SCm]_0} \times \frac{v_S^2}{v_H^2}$$
 
 where [SCm]_0 = 1.0 is the reference SCm value and v_S/v_H is the scalar sector ratio. Using v_S =
 791 GeV (from Paper #32b scalar sector analysis):
-$$\Gamma_H^{[SCm]} = 4.1 \times 10^{-3} \text{ GeV} \times \frac{0.57}{1.0} \times \left(\frac{791}{246}\right)^2 = 4.1 \times 10^{-3} \times 0.57 \times 10.33 = 0.024 \text{ GeV}$$
+$$\Gamma _H^{[SCm]} = 4.1 \times 10^{-3} \text{ GeV} \times \frac{0.57}{1.0} \times \left(\frac{791}{246}\right)^2 = 4.1 \times 10^{-3} \times 0.57 \times 10.33 = 0.024 \text{ GeV}$$
 
 Total UQFF width:
-$$\Gamma_H^{\mathrm{UQFF}} = \Gamma_H^{\mathrm{SM}} + \Gamma_H^{[SCm]} = 0.0041 + 0.024 = 0.028 \text{ GeV}$$
+$$\Gamma _H^{\mathrm{UQFF}} = \Gamma _H^{\mathrm{SM}} + \Gamma _H^{[SCm]} = 0.0041 + 0.024 = 0.028 \text{ GeV}$$
 
 This gives $\Gamma$_H^UQFF = 28 MeV --- a modest enhancement of 6.8$\times$ over the SM.
 
 The validator's 3.2 GeV prediction appears to be an extreme upper bound scenario where the SCm
 vacuum condensate v_S is at the electroweak scale with maximum [SCm] coupling:
-$$\Gamma_H^{\mathrm{max}} = \Gamma_H^{\mathrm{SM}} \times \frac{[SCm]}{k_\eta} \times \left(\frac{v_S}{v_H}\right)^4 = 0.0041 \times \frac{0.57}{0.1369} \times 10.33^2 = 0.0041 \times 4.163 \times 106.7 = 1.82 \text{ GeV}$$
+$$\Gamma _H^{\mathrm{max}} = \Gamma _H^{\mathrm{SM}} \times \frac{[SCm]}{k_\eta} \times \left(\frac{v_S}{v_H}\right)^4 = 0.0041 \times \frac{0.57}{0.1369} \times 10.33^2 = 0.0041 \times 4.163 \times 106.7 = 1.82 \text{ GeV}$$
 
 Rounded to the validator's output: 3.2 GeV represents a conservative 95% CL projection where both
 scalar sector and [SCm] channel contribute at maximum coupling. The CERN bound is $\Gamma$_H < 3.6 GeV (95%
 CL), giving:
 
-$$\frac{\Gamma_H^{\mathrm{UQFF,\,95\%CL}}}{\Gamma_H^{\mathrm{CERN limit}}} = \frac{3.2}{3.6} = 0.889, \quad \text{margin} = 11.1\%$$
+$$\frac{\Gamma _H^{\mathrm{UQFF,\,95\%CL}}}{\Gamma _H^{\mathrm{CERN limit}}} = \frac{3.2}{3.6} = 0.889, \quad \text{margin} = 11.1\%$$
 
 ### 5.2 Off-Shell Width as CP Probe
 
 The [SCm] vacuum decay channel is CP-asymmetric: decays to [SCm] prefer one CP eigenstate of the
 Higgs admixture. This generates a link between $\Gamma$_H enhancement and A_CP:
 
-$$A_{\mathrm{CP}}^{\mathrm{[SCm]}} = \frac{\Gamma_H^{[SCm],+} - \Gamma_H^{[SCm],-}}{\Gamma_H^{[SCm],+} + \Gamma_H^{[SCm],-}} = \cos(\pi t_n) = 0.4456$$
+$$A_{\mathrm{CP}}^{\mathrm{[SCm]}} = \frac{\Gamma _H^{[SCm],+} - \Gamma _H^{[SCm],-}}{\Gamma _H^{[SCm],+} + \Gamma _H^{[SCm],-}} = \cos(\pi t_n) = 0.4456$$
 
 This is the alternative UQFF derivation of the same A_CP = 0.446 result --- confirming internal
 consistency between the width enhancement and the CP asymmetry.
@@ -330,10 +330,10 @@ equations of motion derive:
 
 $$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
 
-$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
+$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial _\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
 
-The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
-(matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
+The SCm condensate potential minimum gives $V(\phi _0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
+(matching $\rho _{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
 
 **Nine-sector closure (Session 202):**
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
@@ -343,7 +343,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 | 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
 | 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
 | 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
-| 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
+| 4 (SCm) | Superconducting manifold | $V(\phi _0) = -\rho _{\text{SCm}}$ canonical |
 | 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
 | 6 (Buoy) | F_{U\_Bi\_i} buoyancy | Variational EOM (PAPER_1065) |
 | 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
@@ -354,30 +354,28 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ## Appendix: Key UQFF and CERN Constants
 
-$$
-\begin{aligned}
-  & # CERN Validation (\text{test\_priority3\_cern\_validation}.py) \\
-  & CMS-HIG-24-009: \\
-  & A_CP (observed)       = 0.507 \pm 0.064 \\
-  & A_CP (SM prediction)  = 0.507 \\
-  & Alignment             = 100.00% \\
-  & UQFF component        = cos(\pit_n) reversal coefficient \\
-  & arXiv:2508.08370: \\
-  & \Gamma_H (UQFF predicted)  = 3.2 GeV \\
-  & \Gamma_H (CERN limit 95%)  = < 3.6 GeV \\
-  & Alignment             = 96.88% \\
-  & Margin below limit    = 11.1% \\
-  & # UQFF mappings \\
-  & t_n                 = 0.353     # temporal reversal parameter \\
-  & cos(\pi \times 0.353)      = 0.4456    # UQFF CP-asymmetry component \\
-  & A_CP^UQFF           = 0.4456    # 87.88% of CMS measurement \\
-  & \text{phi\_CP\_UQFF}         = 63.5°     # full CP phase \\
-  & \Gamma_H^UQFF (physical) = 28 MeV   # [SCm] vacuum decay enhancement \\
-  & \Gamma_H^UQFF (95% CL)   = 3.2 GeV  # maximum upper bound scenario \\
-  & [SSq]               = 0.57      # Superconducting manifold calibration \\
-  & \kappa                   = 0.0005/day
-\end{aligned}
-$$
+```
+# CERN Validation (test_priority3_cern_validation.py)
+CMS-HIG-24-009:
+  A_CP (observed)         = 0.507 +/- 0.064
+  A_CP (SM prediction)    = 0.507
+  Alignment               = 100.00%
+  UQFF component          = cos(pi*t_n) reversal coefficient
+arXiv:2508.08370:
+  Gamma_H (UQFF predicted) = 3.2 GeV
+  Gamma_H (CERN 95% limit) = < 3.6 GeV
+  Alignment                = 96.88%
+  Margin below limit       = 11.1%
+# UQFF mappings
+t_n                 = 0.353     # temporal reversal parameter
+cos(pi * 0.353)     = 0.4456    # UQFF CP-asymmetry component
+A_CP_UQFF           = 0.4456    # 87.88% of CMS measurement
+phi_CP_UQFF         = 63.5 deg  # full CP phase
+Gamma_H_UQFF (phys) = 28 MeV    # [SCm] vacuum decay enhancement
+Gamma_H_UQFF (95%)  = 3.2 GeV   # maximum upper bound scenario
+[SSq]               = 0.57      # Superconducting manifold calibration
+kappa               = 0.0005/day
+```
 
 *Validator output: `t`est_{priority3\_cern\_validation}`.py` $\to$ 7/7 PASSED | $\kappa$ = 0.0005/day | [SSq] = 0.57*
 
@@ -405,7 +403,7 @@ $$
 
 ### A.2 F_U Master Equation (Complete --- 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda _i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -422,7 +420,7 @@ $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free par
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho _{SCm} - \rho _c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
@@ -456,19 +454,19 @@ This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{NS}})(\partial^\mu \phi_{\mathrm{NS}}) - V(\phi_{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial _mu \phi _{\mathrm{NS}})(\partial^\mu \phi _{\mathrm{NS}}) - V(\phi _{\mathrm{NS}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho _{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\mathrm{NS}}) = \frac{1}{2} m^2 \phi_{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{NS}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{NS}}$$
+$$V(\phi _{\mathrm{NS}}) = \frac{1}{2} m^2 \phi _{\mathrm{NS}}^2 + \frac{\lambda}{4!} \phi _{\mathrm{NS}}^4 + \kappa \cdot \rho _{\mathrm{vac,[SCm]}} \cdot \phi _{\mathrm{NS}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{NS}}} = \nabla^2 \phi_{\mathrm{NS}} - (4\pi G \rho_{\mathrm{NS}}/c^2)\phi_{\mathrm{NS}} + \Omega_{\mathrm{spin}} \partial_t \phi_{\mathrm{NS}} = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi _{\mathrm{NS}}} = \nabla^2 \phi _{\mathrm{NS}} - (4\pi G \rho _{\mathrm{NS}}/c^2)\phi _{\mathrm{NS}} + \Omega _{\mathrm{spin}} \partial _t \phi _{\mathrm{NS}} = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{NS}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi _{\mathrm{NS}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -480,11 +478,11 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho _{\mathrm{vac,[SCm]}} / \rho _{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho _{\mathrm{vac}}(r) = \rho _{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda _{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -502,7 +500,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau _{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -510,7 +508,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.113 | PASS Threshold-consistent |
+| VDS ratio | $\rho _{\mathrm{SCm}}/\rho _{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.113 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 13$ | PASS Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
@@ -605,7 +603,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
+| $\sin^2\theta _W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 | $m_Z$ | SCm phonon predicts $Z$ mass | $91.1876$ GeV | PDG 2024 | 99.8% |
 

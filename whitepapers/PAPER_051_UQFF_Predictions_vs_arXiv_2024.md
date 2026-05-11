@@ -47,7 +47,7 @@ present in Standard Model treatments.
 ### 1.1 Alignment Definition
 
 For each comparison pair (predicted, observed):
-$$\text{alignment\%} = \max!\left(0,\; \min!\left(100,\; \left(1 - \frac{|\hat{y} - y|}{|y|}\right)\times 100right\right)$$
+$$\text{alignment\%} = \max\!\left(0,\; \min\!\left(100,\; \left(1 - \frac{|\hat{y} - y|}{|y|}\right)\times 100\right)\right)$$
 
 Category status thresholds:
 - ? PASS: alignment = target
@@ -261,11 +261,11 @@ coefficient is 15% higher than observed  the single largest deviation in 2024
 The late-corpus analysis shows that the SCm phonon field modifies the NFW
 density profile at all radii via a buoyancy-coupled power-law term:
 
-$$\rho_{\text{UQFF}}(r) = \frac{\rho_s}{\left(\frac{r}{r_s}\right)\left(1+\frac{r}{r_s}\right)^2} \times \left[1 + H_{\text{SCm}} \cdot \beta_i \cdot S_{26}^{(3)} \cdot \left(\frac{r_s}{r}\right)^{\alpha_{\text{phonon}}}\right]$$
+$$\rho _{\text{UQFF}}(r) = \frac{\rho _s}{\left(\frac{r}{r_s}\right)\left(1+\frac{r}{r_s}\right)^2} \times \left[1 + H_{\text{SCm}} \cdot \beta _i \cdot S_{26}^{(3)} \cdot \left(\frac{r_s}{r}\right)^{\alpha _{\text{phonon}}}\right]$$
 
 where:
-- $\alpha_{\text{phonon}} = 0.3$ governs the radial decay of phonon coupling
-- $\beta_i = 0.603$ is the universal buoyancy coefficient
+- $\alpha _{\text{phonon}} = 0.3$ governs the radial decay of phonon coupling
+- $\beta _i = 0.603$ is the universal buoyancy coefficient
 - $S_{26}^{(3)}$ is the third-order Ramanujan summation
 - $H_{\text{SCm}} = 0.99$ is the manifold completeness factor
 
@@ -274,7 +274,7 @@ with flatness ratio $f = v_c(10\,r_s)/v_{\text{peak}} = 0.891$, compared to pure
 $f \approx 0.75$.  Peak circular velocity $v_{\text{peak}} \approx 204\;\text{km/s}$
 for $M_{\text{halo}} = 10^{12}\,M_\odot$, $c = 10$.
 
-**Halo stabilization:** The effective buoyancy pressure $P_{\text{SCm}} = \rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \cdot \beta_i$ prevents cusp-core divergence, providing a physical mechanism for observed cored profiles without invoking SIDM cross-sections.
+**Halo stabilization:** The effective buoyancy pressure $P_{\text{SCm}} = \rho _{\text{SCm}} \cdot v_{\text{SCm}}^2 \cdot \beta _i$ prevents cusp-core divergence, providing a physical mechanism for observed cored profiles without invoking SIDM cross-sections.
 
 <!-- PKG-S26-S225 -->
 
@@ -331,7 +331,7 @@ mock-theta framework with the SCm phonon spectrum.
 
 ### A.2 F_U Master Equation (Complete --- 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda _i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -348,7 +348,7 @@ $\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free par
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho _{SCm} - \rho _c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
@@ -382,19 +382,19 @@ This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial_mu \phi_{\mathrm{BH}})(\partial^\mu \phi_{\mathrm{BH}}) - V(\phi_{\mathrm{BH}}) + \mathcal{L}_{\mathrm{cosmo}}$$
+$$\mathcal{L}_{\mathrm{sector}} = \frac{1}{2}(\partial _mu \phi _{\mathrm{BH}})(\partial^\mu \phi _{\mathrm{BH}}) - V(\phi _{\mathrm{BH}}) + \mathcal{L}_{\mathrm{cosmo}}$$
 
-where $\mathcal{L}_{\mathrm{cosmo}} = \rho_{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\mathrm{cosmo}} = \rho _{\mathrm{vac,[SCm]}} \cdot f_{\mathrm{SCm}} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\mathrm{BH}}) = \frac{1}{2} m^2 \phi_{\mathrm{BH}}^2 + \frac{\lambda}{4!} \phi_{\mathrm{BH}}^4 + \kappa \cdot \rho_{\mathrm{vac,[SCm]}} \cdot \phi_{\mathrm{BH}}$$
+$$V(\phi _{\mathrm{BH}}) = \frac{1}{2} m^2 \phi _{\mathrm{BH}}^2 + \frac{\lambda}{4!} \phi _{\mathrm{BH}}^4 + \kappa \cdot \rho _{\mathrm{vac,[SCm]}} \cdot \phi _{\mathrm{BH}}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\mathrm{BH}}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R + \rho_{\mathrm{vac,[SCm]}} g_{\mu\nu} + F_{U\_Bi\_i}/r^2 = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi _{\mathrm{BH}}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R + \rho _{\mathrm{vac,[SCm]}} g_{\mu\nu} + F_{U\_Bi\_i}/r^2 = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\mathrm{BH}} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} \xrightarrow{\text{Stage 5}} U_{b,\mathrm{seed}} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi _{\mathrm{BH}} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -406,11 +406,11 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\mathrm{vac,[SCm]}} / \rho_{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho _{\mathrm{vac,[SCm]}} / \rho _{\mathrm{UA}} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\mathrm{vac}}(r) = \rho_{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\mathrm{VDS}}}\right)\right)$$
+$$\rho _{\mathrm{vac}}(r) = \rho _{\mathrm{vac,[SCm]}} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda _{\mathrm{VDS}}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.139$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\mathrm{vac}} = \rho_{\mathrm{UA}} + \rho_{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.139$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho _{\mathrm{vac}} = \rho _{\mathrm{UA}} + \rho _{\mathrm{SCm}} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -428,7 +428,7 @@ $$\mathcal{F}_{\mathrm{BSH}} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot 
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau_{\mathrm{BSH}}}\right)\right)$$
+$$\mathcal{F}_{\mathrm{BSH,sat}} = \mathcal{F}_{\mathrm{BSH}} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\mathrm{sat}}}{\tau _{\mathrm{BSH}}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\mathrm{SCm}}$ which initializes the harmonic series at cosmogenesis.
 
@@ -436,7 +436,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
+| VDS ratio | $\rho _{\mathrm{SCm}}/\rho _{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 79$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
 | $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
@@ -537,7 +537,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
+| $\sin^2\theta _W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 | $m_Z$ | SCm phonon predicts $Z$ mass | $91.1876$ GeV | PDG 2024 | 99.8% |
 

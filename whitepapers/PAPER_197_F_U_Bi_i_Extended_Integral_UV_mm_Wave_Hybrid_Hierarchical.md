@@ -6,7 +6,7 @@ date: 2026-03-13
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [DPM, F_{U\_Bi\_i}, buoyancy, LENR, UQFF]
+tags: ["DPM", "F_U_Bi_i", "buoyancy", "LENR", "UQFF"]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
