@@ -10,16 +10,16 @@ paper_id,filename,title,bucket,matched_keyword,suggested_action,status,session,c
 008,PAPER_008b_Full_Inspiral_Waveform_UQFF.md,Full Inspiral Waveform Modeling with UQFF — GW170817 100-Second Analysis,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,7fadd27d
 009,PAPER_009_Damping_Mechanism_Decomposition_UQFF.md,Damping Mechanism Decomposition in UQFF Framework,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,7fadd27d
 009,PAPER_009b_Aether_String_TRZ_Damping_GW.md,"Aether, String, TRZ, and SCm Damping Decomposition in Gravitational Wave Strain",H,,NO UPDATE (specific system / framework application),,,
-010,PAPER_010_Post_Merger_Oscillations_Remnant_Mass_UQFF.md,Post-Merger Oscillations and Remnant Mass in UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-010,PAPER_010b_Time_Domain_Chirp_23Hz_UQFF.md,Time-Domain Chirp Analysis — 23 Hz Onset and UQFF Frequency Evolution,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-011,PAPER_011_Stochastic_GW_Background_UQFF_Implications.md,Stochastic Gravitational Wave Background in UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-011,PAPER_011b_Amplitude_Reduction_Factor_UQFF.md,UQFF Amplitude Reduction Factor — Derivation and Calibration,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-012,PAPER_012_Eccentric_Binary_Circularization_UQFF.md,Eccentric Binary Circularization in UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-012,PAPER_012b_GW150914_Waveform_Validation.md,"GW150914 Waveform Validation — Peak Strain, Phase Lag, and Damping Ratio",H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-013,PAPER_013_Magnetar_Spin_Down_UQFF_Framework.md,Magnetar Spin-Down in UQFF Framework,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-013,PAPER_013b_LISA_SMBH_Merger_Rate_UQFF.md,LISA SMBH Merger Rate Predictions Under UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-014,PAPER_014_Primordial_Black_Holes_UQFF_Formation.md,Primordial Black Holes and UQFF Formation Mechanisms,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
-014,PAPER_014b_EMRI_Aether_Damping_UQFF.md,EMRI Signal Modification by Aether Damping and String Harmonics,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,PENDING
+010,PAPER_010_Post_Merger_Oscillations_Remnant_Mass_UQFF.md,Post-Merger Oscillations and Remnant Mass in UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+010,PAPER_010b_Time_Domain_Chirp_23Hz_UQFF.md,Time-Domain Chirp Analysis — 23 Hz Onset and UQFF Frequency Evolution,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+011,PAPER_011_Stochastic_GW_Background_UQFF_Implications.md,Stochastic Gravitational Wave Background in UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+011,PAPER_011b_Amplitude_Reduction_Factor_UQFF.md,UQFF Amplitude Reduction Factor — Derivation and Calibration,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+012,PAPER_012_Eccentric_Binary_Circularization_UQFF.md,Eccentric Binary Circularization in UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+012,PAPER_012b_GW150914_Waveform_Validation.md,"GW150914 Waveform Validation — Peak Strain, Phase Lag, and Damping Ratio",H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+013,PAPER_013_Magnetar_Spin_Down_UQFF_Framework.md,Magnetar Spin-Down in UQFF Framework,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+013,PAPER_013b_LISA_SMBH_Merger_Rate_UQFF.md,LISA SMBH Merger Rate Predictions Under UQFF,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+014,PAPER_014_Primordial_Black_Holes_UQFF_Formation.md,Primordial Black Holes and UQFF Formation Mechanisms,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
+014,PAPER_014b_EMRI_Aether_Damping_UQFF.md,EMRI Signal Modification by Aether Damping and String Harmonics,H*,,DONE - G1-G8 + 27-decade ledger block inserted; tailored P-suite hook,DONE v5.78,262,d2665820
 015,PAPER_015_Cosmological_Implications_UQFF_Modified_GW_Propagation.md,Cosmological Implications of UQFF Modified GW Propagation,A,Cosmological_,Add closing section: v5.78 27-decade vacuum ledger (PAPER_1170) + xi=13/3,,,
 015,PAPER_015b_Multiband_GW_LISA_LIGO_UQFF.md,PAPER_015b: Multi-Band Gravitational Wave Astronomy: LISA+LIGO Synergy Under UQFF,H,,NO UPDATE (specific system / framework application),,,
 016,PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations.md,Quantum Entanglement and UQFF Nonlocal Correlations,H,,NO UPDATE (specific system / framework application),,,
