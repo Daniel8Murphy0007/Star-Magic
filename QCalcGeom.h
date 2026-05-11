@@ -546,6 +546,26 @@ struct BH26BSHResonanceResult {
     double energy_density;  ///< resonance × 7.09e-37  [J/m³]
 };
 
+/**
+ * @brief Closed Mexican-hat aether potential V(UA) (G1 closure, PAPER_1166).
+ *
+ *   V(UA) = K · ρ_SCm · [(UA/v_UA)² − 1]²,    K = Φ_res · |SO(5)| / D_phys = 25/12
+ *
+ * All coefficients integer-rational; zero free parameters added.
+ * Defaults: ρ_SCm = 7.09e-37 J/m³, v_UA = 1.0e8 m/s (= c/3 canonical).
+ *
+ * Reference: PAPER_1166 (Session 253) — V(UA) Mexican-hat polynomial closure.
+ *            PAPER_1167 (Session 253) — master synthesis.
+ *            MAIN_1_CoAnQi.cpp SOURCE4 compute_V_UA_SOURCE4.
+ */
+struct BSFGAetherPotentialResult {
+    double V;             ///< V(UA) value  [J/m³]
+    double V_prime;       ///< dV/dUA = 4KÂρ_SCm·(UA/v_UA²)·[(UA/v_UA)²-1]
+    double mass2;         ///< m_UA² ≡ V''(v_UA) = (50/3)Âρ_SCm/v_UA²  [J/m³/(m/s)²]
+    double K;             ///< 25/12 — closed coefficient
+    bool   at_minimum;    ///< true when |UA − v_UA| / v_UA < 1e-12
+};
+
 // ============================================================================
 // SECTION 4 — PUBLIC API DECLARATIONS
 // Implemented in QCalcGeom.cpp (Phase B).
@@ -817,6 +837,20 @@ BH26BSHResonanceResult bh26_bsh_resonance(double f_Ub = 3.3e7,
                                             double SSq  = SSQ_DEFAULT,
                                             double t_n  = 0.0,
                                             int    k    = 1);
+
+/**
+ * @brief V(UA) closed Mexican-hat aether potential (G1 closure, PAPER_1166).
+ *
+ * @param UA       Aether field value [m/s]
+ * @param rho_SCm  Plasmotic vacuum density [J/m³] (default 7.09e-37)
+ * @param v_UA     Aether VEV [m/s] (default 1.0e8)
+ * @return BSFGAetherPotentialResult with V, V', m², K, at_minimum.
+ *
+ * K = (5/6) · 10 / 4 = 25/12   exact rational from Φ_res, |SO(5)|, D_phys.
+ */
+BSFGAetherPotentialResult bsfg_aether_potential(double UA,
+                                                  double rho_SCm = 7.09e-37,
+                                                  double v_UA    = 1.0e8);
 
 /**
  * @brief Run all 70 QCalcGeom requirements-boundary tests and print results.

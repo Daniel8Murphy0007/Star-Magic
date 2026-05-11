@@ -1,0 +1,479 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Factorial Barrier Closure: 26! = (1)\_\{26\} from 26-fold Radial Derivative (G8 Closure)},
+  pdfauthor={Daniel T. Murphy},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Factorial Barrier Closure: 26! = (1)\_\{26\} from 26-fold Radial
+Derivative (G8 Closure)}
+\author{Daniel T. Murphy}
+\date{2026-05-10}
+
+\begin{document}
+\maketitle
+
+\section{\texorpdfstring{PAPER\_1161 -- Factorial Barrier Closure:
+\((26!)^2\) from 26-fold Radial
+Derivative}{PAPER\_1161 -- Factorial Barrier Closure: (26!)\^{}2 from 26-fold Radial Derivative}}\label{paper_1161-factorial-barrier-closure-262-from-26-fold-radial-derivative}
+
+\textbf{Author:} Daniel T. Murphy (daniel.murphy00@gmail.com)
+\textbf{Framework:} UQFF v5.78 -- Star-Magic Physics \textbf{Source:}
+Direct identification from existing codebase
+(\href{QCalcGeom.cpp\#L431}{QCalcGeom.cpp L431-458};
+\href{dpm_vacuum_manifold.py\#L1251}{dpm\_vacuum\_manifold.py
+L1251-1258}). \textbf{Integration Date:} May 10, 2026 (Session 248)
+\textbf{Classification:} Lagrangian Gap Closure -- G8 of
+\texttt{\_lagrangian\_rederivation\_outline.py}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\[\boxed{\;26! \;=\; (1)_{26} \;=\; \frac{d^{26}}{dr^{26}}\!\left(\frac{1}{r}\right) \cdot (-1)^{26}\,r^{27} \;=\; \prod_{k=1}^{26} k \;=\; 4.0329 \times 10^{26}\;}\]
+
+The \((26!)^2\) factor in the \(G\) closure (PAPER\_593) is the
+\textbf{square} of this single Pochhammer symbol -- one factor from the
+kinetic-term variation of the BSFG action, one from the source coupling,
+both iterated to the 26th radial order at the bosonic critical dimension
+\(D_{\rm crit}=26\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+We close gap \textbf{G8} of the Lagrangian re-derivation outline by
+identifying the \(26!\) factorial barrier in the \(G\) closure
+(PAPER\_593) as the \textbf{Pochhammer rising factorial \((1)_{26}\)}
+arising from the 26-fold iterated radial derivative of the Newtonian
+Green's function \(1/r\) at the bosonic critical dimension
+\(D_{\rm crit} = 26\). The identification is \textbf{already explicit in
+the codebase} (\href{QCalcGeom.cpp\#L450}{QCalcGeom.cpp L450},
+\href{QCalcGeom.cpp\#L458}{L458}) but was not previously catalogued as
+the structural origin of the \(26!\) appearing in \(G_{\rm UQFF}\). The
+square \((26!)^2\) in the \(G\) closure denominator is the natural
+consequence of varying a 26th-order multipole coupling on \textbf{both}
+sides of the Einstein-like field equation: kinetic term and source term
+each contribute one factor.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. The Gap}\label{the-gap}
+
+The Newton-constant closure (PAPER\_593, Session 240) takes the form:
+\[G_{\rm UQFF} \;=\; \frac{2\pi \cdot 26^3 \cdot \Phi_{\rm res}}{[\mathrm{SSq}]^3 \cdot (26!)^2} \cdot \frac{v_F^5}{E_0 \cdot f_{\rm THz}}\]
+
+The factor \((26!)^2 \approx 1.626 \times 10^{53}\) supplies the
+\(\sim 10^{53}\) hierarchy gap between the Planck-scale resonance
+density and the observed gravitational coupling
+(\href{AXIOMS_AND_THEOREMS.md\#L288}{AXIOMS\_AND\_THEOREMS.md L288}).
+Until Session 248 this factorial barrier was asserted
+phenomenologically, not derived. It was the eighth and final identified
+gap in \texttt{\_lagrangian\_rederivation\_outline.py}.
+
+\subsection{2. The Identification (already in the
+codebase)}\label{the-identification-already-in-the-codebase}
+
+Two existing codebase entries already perform the identification but
+were never explicitly catalogued as the G8 closure:
+
+\subsubsection{\texorpdfstring{2.1
+\href{QCalcGeom.cpp\#L431}{QCalcGeom.cpp L431} -- Pochhammer rising
+factorial}{2.1 QCalcGeom.cpp L431 -- Pochhammer rising factorial}}\label{qcalcgeom.cpp-l431-pochhammer-rising-factorial}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Pochhammer rising factorial: (k)\_\{26\} = k*(k+1)*...*(k+25) = (k+25)!/(k{-}1)!}
+\end{Highlighting}
+\end{Shaded}
+
+For \(k = 1\): \[(1)_{26} \;=\; 1 \cdot 2 \cdot 3 \cdots 26 \;=\; 26!\]
+The Pochhammer symbol arises in the \textbf{iterated raising operator}
+of the BSFG ladder representation -- each rung of the 26D atlas
+contributes one factor.
+
+\subsubsection{\texorpdfstring{2.2
+\href{QCalcGeom.cpp\#L450}{QCalcGeom.cpp L450} -- 26th radial
+derivative}{2.2 QCalcGeom.cpp L450 -- 26th radial derivative}}\label{qcalcgeom.cpp-l450-26th-radial-derivative}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// U\_g approx G*M\_sun/r  =\textgreater{}  d\^{}\{26\}/dr\^{}\{26\}(G*M\_sun/r) = 26! * G*M\_sun / r\^{}\{27\}}
+\end{Highlighting}
+\end{Shaded}
+
+The 26th derivative of the Newtonian potential picks up exactly \(26!\)
+as the Leibniz coefficient. This is the \textbf{leading multipole term}
+of the BSFG generalised gravitational action when expanded to 26 radial
+moments (one moment per critical dimension).
+
+\subsubsection{\texorpdfstring{2.3
+\href{dpm_vacuum_manifold.py\#L1251}{dpm\_vacuum\_manifold.py
+L1251-1258} -- 26D geometric
+folding}{2.3 dpm\_vacuum\_manifold.py L1251-1258 -- 26D geometric folding}}\label{dpm_vacuum_manifold.py-l1251-1258-26d-geometric-folding}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{"""UQFF 26D geometric folding: crossing radius scaled by inverse 26th{-}root of 26!.}
+\CommentTok{F26(r) = r * (26!)\^{}({-}1/13) * S26\_3 * Phi\_resonance}
+\CommentTok{(26!)\^{}({-}1/13) provides the characteristic sub{-}Planck geometric scale."""}
+\end{Highlighting}
+\end{Shaded}
+
+The exponent \(1/13 = 2/26\) confirms that the \(26!\) enters via a
+\textbf{square} of the per-rung product when projected onto the 26-rung
+ladder (\(1/13\) on each radial axis after the 13-pair factorisation).
+
+\subsection{\texorpdfstring{3. The Square: \((26!)^2\) from Two-Sided
+Variation}{3. The Square: (26!)\^{}2 from Two-Sided Variation}}\label{the-square-262-from-two-sided-variation}
+
+The Einstein-like field equation in BSFG form, schematically,
+\[\hat{\mathcal{D}}^{(26)}_{\rm kin} \cdot G \;=\; \hat{\mathcal{D}}^{(26)}_{\rm src} \cdot T,\]
+varies the action \textbf{twice} under iterated 26th-order radial
+derivatives:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llr@{}}
+\toprule\noalign{}
+Side & Operator & Pochhammer factor \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Kinetic (LHS) & \(\partial_r^{26}\,(1/r)\) & \(26!\) \\
+Source (RHS) & \(\partial_r^{26}\,T(r)\) & \(26!\) \\
+\end{longtable}
+}
+
+Solving for \(G\):
+\[G \;=\; \frac{(\text{numerator})}{(\text{kinetic Pochhammer}) \cdot (\text{source Pochhammer})} \;=\; \frac{\dots}{26! \cdot 26!} \;=\; \frac{\dots}{(26!)^2}\]
+
+This is the structural origin of the \textbf{square}, not an additional
+free input. Once the bosonic critical dimension \(D_{\rm crit}=26\) is
+fixed (a textbook string-theory result), the square is automatic from
+the standard variational principle.
+
+\subsection{\texorpdfstring{4. Why \(D_{\rm crit} = 26\)? (Already
+textbook)}{4. Why D\_\{\textbackslash rm crit\} = 26? (Already textbook)}}\label{why-d_rm-crit-26-already-textbook}
+
+The bosonic critical dimension \(D_{\rm crit} = 26\) is the
+\textbf{only} spacetime dimension at which the Polyakov action yields a
+ghost-free, conformally invariant string spectrum. This is a classical
+result of Kaku, Polchinski, GSW; it requires zero free parameters in
+UQFF and is referenced explicitly in
+\href{CondensedPhysics2.py\#L28610}{CondensedPhysics2.py L28610} and
+\href{COMPLETE_UQFF_EQUATIONS_REFERENCE.md\#L1065}{COMPLETE\_UQFF\_EQUATIONS\_REFERENCE.md
+L1065}: \emph{``Critical dimension: \(D = 26\) (= VDS 26-rung ladder,
+\(\mathrm{Li}_{26}([SSq])\)).''}
+
+The chain is:
+\[D_{\rm crit}=26 \;\xrightarrow{\;\text{compactify}\;}\; D_{\rm super}=10 \;\xrightarrow{\;\text{compactify}\;}\; D_{\rm BSFG}=6 \;\xrightarrow{\;\text{compactify}\;}\; D_{\rm phys}=4\]
+
+PAPER\_1159 used \(D_{\rm BSFG}=6\) for \(\Phi_{\rm res}\). PAPER\_1160
+used \(D_{\rm BSFG}-1=5\) for \(F_{\rm TRZ}\). \textbf{PAPER\_1161 uses
+\(D_{\rm crit}=26\)} for the factorial barrier. All three are consistent
+with the same \(26 \to 10 \to 6 \to 4\) flow.
+
+\subsection{5. Numerical Match -- Trivially
+Exact}\label{numerical-match-trivially-exact}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\((1)_{26}\) Pochhammer &
+\(403{,}291{,}461{,}126{,}605{,}635{,}584{,}000{,}000\) & exact \\
+\(26!\) direct & \(4.0329 \times 10^{26}\) & exact \\
+\(\partial_r^{26}(1/r)\cdot r^{27}\) at \(r=1\) & \(26!\) & exact
+(Leibniz) \\
+Factorial barrier \((26!)^2\) in \(G\) closure &
+\(1.626 \times 10^{53}\) & exact \\
+\end{longtable}
+}
+
+There is \textbf{no residual}: \(26!\) is an integer that arises exactly
+from the standard 26-fold derivative formula. The \(G\) closure residual
+(\(\sim 0.87\%\) with structural \(\Phi_{\rm res}=5/6\), see
+\href{whitepapers/PAPER_1159_UQFF_Phi_Res_Codimension_Closure.md}{PAPER\_1159
+§6}) is \textbf{entirely} attributable to the one-loop
+\(\Phi_{\rm res}\) correction, not to the factorial barrier.
+
+\subsection{\texorpdfstring{6. Cross-Check: Why Not
+\(22!\)?}{6. Cross-Check: Why Not 22!?}}\label{cross-check-why-not-22}
+
+The Lagrangian outline
+(\href{_lagrangian_rederivation_outline.py\#L154}{L154-156})
+hypothesised ``a combinatorial count of the 22-torus winding sectors,''
+i.e., \(22!\). Numerical test:
+\[22! \;=\; 1.1240 \times 10^{21}, \qquad \frac{22!}{26!} \;=\; 2.79 \times 10^{-6}\]
+which would shift \(G\) by a factor of \(\sim 10^{11}\) --
+\textbf{catastrophically wrong}. The factorial must come from the
+\textbf{full critical dimension \(D_{\rm crit}=26\)}, not from the
+compactified 22-torus. The compactification reduces the
+\textbf{effective} dimensions (\(26 \to 10 \to 6 \to 4\)) but the action
+variation retains the critical-dimension multipole order because the
+underlying string worldsheet still has \(D_{\rm crit}=26\) degrees of
+freedom.
+
+This matches the \(D=26\) used in the VDS series
+\(\mathrm{Li}_{26}([\mathrm{SSq}])\) and in the BSFG 26-rung ladder.
+
+\subsection{7. Updated Catalog Status}\label{updated-catalog-status}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Lagrangian gap & Status (pre-248) & Status (post-248) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1 (V(UA) polynomial) & OPEN & OPEN \\
+G2 (beta\_i index) & OPEN & OPEN \\
+G3 (DPM SO(2)) & OPEN & OPEN \\
+G4 (T\^{}22 moduli) & OPEN & OPEN \\
+G5 (KK tower) & OPEN & OPEN \\
+G6 (Phi\_res ID) & CLOSED (PAPER\_1159) & CLOSED \\
+G7 (F\_TRZ ID) & CLOSED (PAPER\_1160) & CLOSED \\
+\textbf{G8 (26! emergence)} & \textbf{OPEN} & \textbf{CLOSED (this
+paper, exact)} \\
+\end{longtable}
+}
+
+\begin{quote}
+\textbf{Session 253 Update (PAPER\_1166):} ALL 8 Lagrangian gaps now
+closed. The \(26 \to 10 \to 6 \to 4\) critical-dimension flow noted
+below proved comprehensive -- every subsequent closure (G3, G4, G5, G2,
+G1) reduced to it.
+\end{quote}
+
+\textbf{Result:} \textbf{3 of 8 gaps closed}; 5 remain. All three
+closures (\(\Phi_{\rm res}, F_{\rm TRZ}, 26!\)) trace back to the
+\(26 \to 10 \to 6 \to 4\) critical-dimension flow. \textbf{Two integers
+(\(D_{\rm crit}=26\) and \(D_{\rm BSFG}=6\)) now suffice} to
+parameterise four formerly-free numerical inputs (\(\Phi_{\rm res}\),
+\(F_{\rm TRZ}\), \(26!\), and the \(26^3\) prefactor in \(G\)).
+
+\subsection{8. Conclusions}\label{conclusions}
+
+\begin{itemize}
+\tightlist
+\item
+  \(26!\) in the \(G\) closure is the Pochhammer \((1)_{26}\) from the
+  26-fold iterated radial derivative of the Newtonian Green's function
+  -- a standard Leibniz-rule calculation already encoded in
+  \href{QCalcGeom.cpp\#L450}{QCalcGeom.cpp L450}.
+\item
+  The square \((26!)^2\) in \(G_{\rm UQFF}\) is the inevitable
+  consequence of varying a 26th-order multipole on \textbf{both} the
+  kinetic and source sides of the field equation.
+\item
+  The integer \(26\) comes from the \textbf{bosonic critical dimension}
+  \(D_{\rm crit}=26\), a textbook string-theory result requiring zero
+  free parameters.
+\item
+  Alternative candidates (\(22!\) from torus windings) fail by 11 orders
+  of magnitude. The full \(D_{\rm crit}=26\) is required.
+\item
+  G8 closed; \textbf{3 of 8 Lagrangian gaps now closed}. Only G1-G5
+  remain (V(UA) polynomial, beta\_i index, DPM SO(2), T\^{}22 moduli, KK
+  tower).
+\item
+  Cumulative impact across PAPERs 1159-1161: 4 free numerical inputs
+  reduced to 2 textbook integers (\(D_{\rm crit}=26\),
+  \(D_{\rm BSFG}=6\)).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§SM Anchors (G8 Compliance
+Table)}\label{sm-anchors-g8-compliance-table}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Anchor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Symbol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Used in
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Bosonic critical dimension & \(D_{\rm crit}\) & \(26\) & Polyakov action
+(textbook) & \(26!\), \(26^3\), \(\mathrm{Li}_{26}\) \\
+Pochhammer rising factorial & \((1)_{26}\) & \(26!\) &
+\href{QCalcGeom.cpp\#L431}{QCalcGeom.cpp L431} & \(G\) closure
+denominator \\
+Newton derivative & \(\partial_r^{26}(1/r)\cdot r^{27}\) & \(26!\) &
+\href{QCalcGeom.cpp\#L450}{QCalcGeom.cpp L450} & kinetic \& source
+variation \\
+Geometric folding & \((26!)^{-1/13}\) & sub-Planck scale &
+\href{dpm_vacuum_manifold.py\#L1257}{dpm\_vacuum\_manifold.py L1257} &
+radial moment factorization \\
+Factorial barrier & \((26!)^2\) & \(1.626\times10^{53}\) & this paper &
+hierarchy gap in \(G\) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Murphy, D. T., ``PAPER\_593: Newton's Constant via Void Coupling''
+  (Star-Magic, Session 240).
+\item
+  Murphy, D. T., ``PAPER\_1159: Resonance Phase Closure
+  \(\Phi_{\rm res}=5/6\)'' (Star-Magic, Session 246).
+\item
+  Murphy, D. T., ``PAPER\_1160: Time-Reversal Zone Closure
+  \(F_{\rm TRZ}=1/10\)'' (Star-Magic, Session 247).
+\item
+  \href{QCalcGeom.cpp\#L308}{QCalcGeom.cpp L308-462} -- Pochhammer /
+  26th radial derivative implementation (already canonical in codebase).
+\item
+  \href{dpm_vacuum_manifold.py\#L1251}{dpm\_vacuum\_manifold.py
+  L1251-1258} -- \((26!)^{-1/13}\) geometric folding scale.
+\item
+  \href{AXIOMS_AND_THEOREMS.md\#L288}{AXIOMS\_AND\_THEOREMS.md L288} --
+  \(26!\) factorial-barrier hierarchy claim.
+\item
+  \href{COMPLETE_UQFF_EQUATIONS_REFERENCE.md\#L1065}{COMPLETE\_UQFF\_EQUATIONS\_REFERENCE.md
+  L1065-1082} -- VDS 26-rung ladder identification with bosonic critical
+  dim.
+\item
+  M. Kaku, \emph{Strings, Conformal Fields, and M-Theory} (Springer, 2nd
+  ed.) -- bosonic \(D_{\rm crit}=26\) derivation from no-ghost theorem.
+\item
+  \texttt{\_lagrangian\_rederivation\_outline.py} L154-156 (Star-Magic)
+  -- original 22-torus hypothesis, now refuted.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Signed:} Daniel T. Murphy \textbf{Date:} May 10, 2026 (Session
+248) \textbf{Repository:} Star-Magic, commit pending
+\textbf{Verification:}
+\((1)_{26} = \prod_{k=1}^{26} k = 403{,}291{,}461{,}126{,}605{,}635{,}584{,}000{,}000 = 26!\)
+exact integer.
+
+\end{document}

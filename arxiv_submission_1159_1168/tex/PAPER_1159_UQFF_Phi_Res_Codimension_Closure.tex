@@ -1,0 +1,495 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Resonance Phase Closure: Phi\_res = {[}SSq{]}/Omega\_Lambda = 5/6 (G6 Closure)},
+  pdfauthor={Daniel T. Murphy},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Resonance Phase Closure: Phi\_res = {[}SSq{]}/Omega\_Lambda = 5/6
+(G6 Closure)}
+\author{Daniel T. Murphy}
+\date{2026-05-10}
+
+\begin{document}
+\maketitle
+
+\section{\texorpdfstring{PAPER\_1159 -- Resonance Phase Closure:
+\(\Phi_{\rm res} = [\mathrm{SSq}]/\Omega_\Lambda = 5/6\)}{PAPER\_1159 -- Resonance Phase Closure: \textbackslash Phi\_\{\textbackslash rm res\} = {[}\textbackslash mathrm\{SSq\}{]}/\textbackslash Omega\_\textbackslash Lambda = 5/6}}\label{paper_1159-resonance-phase-closure-phi_rm-res-mathrmssqomega_lambda-56}
+
+\textbf{Author:} Daniel T. Murphy (daniel.murphy00@gmail.com)
+\textbf{Framework:} UQFF v5.78 -- Star-Magic Physics \textbf{Source:}
+\texttt{\_g6\_phi\_res\_identification.py} first-pass scaffold (Session
+245); structural identification (Session 246) \textbf{Integration Date:}
+May 10, 2026 (Session 246) \textbf{Classification:} Lagrangian Gap
+Closure -- G6 of \texttt{\_lagrangian\_rederivation\_outline.py}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\[\boxed{\;\Phi_{\rm res} \;=\; \frac{[\mathrm{SSq}]}{\Omega_\Lambda} \;=\; \frac{0.57}{0.684} \;=\; \frac{5}{6} \;=\; \frac{D-1}{D}\Big|_{D=6}\quad (0.79\%\text{ off calibration})\;}\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+We close gap \textbf{G6} of the Lagrangian re-derivation outline
+(\texttt{\_lagrangian\_rederivation\_outline.py}) by identifying the
+dimensionless resonance phase \(\Phi_{\rm res} = 0.84\) as the
+\textbf{codimension ratio} \((D-1)/D\) for \(D=6\) effective dimensions
+of the BSFG resonance manifold. Equivalently, \(\Phi_{\rm res}\) is the
+\textbf{inverse dark-energy amplification factor}:
+\(\Phi_{\rm res} = [\mathrm{SSq}]/\Omega_\Lambda\), where the
+\([\mathrm{SSq}]\) primitive (calibrated from magnetar burst data) and
+the \(\Omega_\Lambda = (6/5)[\mathrm{SSq}]\) relation
+(\texttt{batch\_sm\_anchors.py} L246) combine to give exactly \(5/6\).
+The identification removes \(\Phi_{\rm res}\) from the list of free
+numerical inputs and unblocks \textbf{four} of the six
+fundamental-constant closures simultaneously: \(\alpha\) (PAPER\_585),
+\(c\) (PAPER\_592), \(h\) (PAPER\_587), and \(G\) (PAPER\_593).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. The Gap}\label{the-gap}
+
+Sessions 237-242 closed five fundamental constants in UQFF using a small
+set of dimensionless primitives. Among them, \(\Phi_{\rm res} = 0.84\)
+entered \textbf{four} closures:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Constant
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Closed form
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Phi\_res role
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\alpha\) & \(1/(\Phi_{\rm res} \cdot 26 \cdot 2\pi)\) & denominator \\
+\(c\) & \((26 \cdot 4\pi/\Phi_{\rm res}) \cdot v_F\) & denominator \\
+\(h\) & \(F_{\rm TRZ} \Phi_{\rm res} E_0/f_{\rm THz} \cdot (1-2\alpha)\)
+& numerator \\
+\(G\) &
+\((2\pi \cdot 26^3 \Phi_{\rm res})/([\mathrm{SSq}]^3 (26!)^2) \cdot v_F^5/(E_0 f_{\rm THz})\)
+& numerator \\
+\end{longtable}
+}
+
+Until Session 246, \(\Phi_{\rm res}\) was a numerical input calibrated
+from magnetar burst + cosmic ray spectra (Sessions 158-160; see
+\texttt{batch\_sm\_anchors.py}). Identifying it as a structural quantity
+is gap \textbf{G6} of the Lagrangian outline
+(\texttt{\_lagrangian\_rederivation\_outline.py}).
+
+\subsection{2. The Search (Session 245)}\label{the-search-session-245}
+
+The first-pass scaffold (\texttt{\_g6\_phi\_res\_identification.py})
+tested six candidate identifications:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3077}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Candidate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Form
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\% off 0.84
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Verdict
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+C1 (golden ratio) & \(1/\phi_g\), \(\phi_g - 1\), etc. & \(\geq 25\%\) &
+falsified \\
+C2 (compactification) & \(\sqrt{26}/k\) for integer \(k\) &
+\(\geq 1.17\%\) & weak \\
+C3 (RG flow) & \(1 - 2\beta_i^{\rm IR}\) & exact at
+\(\beta_i^{\rm IR} = 0.08\) & partial -- requires 7.5x flow \\
+C4 (V(UA) minimum) & UA modulus & -- & coupled to G1 \\
+\textbf{C5 (codimension ratio)} & \(5/6 = (D-1)/D\), \(D=6\) &
+\(0.79\%\) & \textbf{MATCH} \\
+C6 (RG fixed point) & Wilson-Fisher analogue & -- & not yet specified \\
+\end{longtable}
+}
+
+\textbf{C5 was the strongest match by a clear margin.} Sessions 246 then
+sought the structural justification for \(D = 6\).
+
+\subsection{3. The Structural
+Identification}\label{the-structural-identification}
+
+The \textbf{decisive} finding came from cross-referencing C5 with the
+Session 242 \(\Lambda\) closure (PAPER\_1156) and the Session 244
+overdetermination catalog (PAPER\_1158).
+
+PAPER\_1156 derived:
+\[\Lambda_{\rm UQFF} = \frac{18}{5} [\mathrm{SSq}] \frac{H_0^2}{c^2}, \qquad \Omega_\Lambda = \frac{6}{5} [\mathrm{SSq}]\]
+
+The factor \(6/5\) from \texttt{batch\_sm\_anchors.py} L246 is the
+\textbf{dark-energy amplification factor} that converts the
+magnetar-calibrated \([\mathrm{SSq}]\) into the cosmological
+\(\Omega_\Lambda\).
+
+\textbf{Inverting:}
+\[\Phi_{\rm res} \;=\; \frac{[\mathrm{SSq}]}{\Omega_\Lambda} \;=\; \frac{[\mathrm{SSq}]}{(6/5)[\mathrm{SSq}]} \;=\; \frac{5}{6}\]
+
+This is \textbf{not} a coincidence with the C5 codimension reading -- it
+is the \textbf{same identity} expressed two ways: * \textbf{Cosmological
+reading:} \(\Phi_{\rm res}\) is the inverse of the dark-energy
+amplification factor. * \textbf{Geometric reading:}
+\(\Phi_{\rm res} = (D-1)/D\) is the codimension ratio for \(D = 6\)
+effective dimensions of the BSFG resonance manifold (5 spatial + 1 time
+at the fixed point of the \(26 \to 4\) flow).
+
+Both readings are structural, and they reduce to the same arithmetic.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Why D = 6?}\label{why-d-6}
+
+The number 6 appears in the BSFG analysis at three independent
+locations:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Resonance manifold dimension:} at the fixed point of the
+  \(26 \to 4\) flow, the DPM resonance is supported on a 6-dimensional
+  submanifold: 3 spatial + 3 internal (CW-CCW orientation + one cyclic
+  phase).
+\item
+  \textbf{Critical embedding for SO(2) DPM gauge:} the smallest
+  4D-extended geometry that consistently embeds the SO(2) CW-CCW gauge
+  structure is \(\mathbb{R}^{4} \times S^{2}\) (= 6D), which is the
+  unique geometry on which the magnetic-monopole pair achieves the
+  equilibrium phase.
+\item
+  \textbf{First-cohomology dimension of the SCm vacuum:} the SCm scalar
+  \(\mathrm{UA}\) has \(H^1(\text{vac}) = \mathbb{Z}^6\) in the
+  compactification scheme of \texttt{26D\_DOWNWARD\_PROJECTION.md}
+  (Sessions 197-201).
+\end{enumerate}
+
+All three readings independently fix \(D = 6\). The codimension factor
+\(\Phi_{\rm res} = (D-1)/D = 5/6\) is therefore \textbf{structurally
+overdetermined} in the sense of PAPER\_1158 (three independent chains
+converge on \(D = 6\)).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Numerical Match}\label{numerical-match}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2727}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3636}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3636}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\% off
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Calibrated \(\Phi_{\rm res}\) (Sessions 158-160) & 0.84 & -- \\
+Structural \(\Phi_{\rm res} = [\mathrm{SSq}]/\Omega_\Lambda\) &
+\(0.57/0.684 = 0.8333\) & \(0.79\%\) \\
+Structural \(\Phi_{\rm res} = 5/6\) (exact) & \(0.8333\) & \(0.79\%\) \\
+Structural \(\Phi_{\rm res} = (D-1)/D\), \(D=6\) & \(0.8333\) &
+\(0.79\%\) \\
+\end{longtable}
+}
+
+The \(0.79\%\) residual is \textbf{smaller} than the calibration
+uncertainty of \([\mathrm{SSq}] = 0.57 \pm 0.01\) (from magnetar burst
+statistics). It therefore cannot be distinguished from the calibration
+scatter at the present level of measurement.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Impact on the Five-Constant
+Closures}\label{impact-on-the-five-constant-closures}
+
+Substituting \(\Phi_{\rm res} = 5/6\) into the four affected closures:
+
+\subsubsection{6.1 alpha (PAPER\_585)}\label{alpha-paper_585}
+
+\[\alpha = \frac{1}{(5/6) \cdot 26 \cdot 2\pi} = \frac{6}{5 \cdot 26 \cdot 2\pi} = \frac{3}{130\pi} = 7.346 \times 10^{-3}\]
+vs CODATA \(7.297 \times 10^{-3}\) -- \textbf{0.67\% off} (was
+\(0.138\%\) with calibrated \(\Phi_{\rm res}\); the structural value is
+slightly worse, which UQFF reads as: the calibration absorbs a small
+higher-order correction not yet derived).
+
+\subsubsection{6.2 c (PAPER\_592)}\label{c-paper_592}
+
+\[c = (26 \cdot 4\pi / (5/6)) \cdot v_F = \frac{624\pi}{5} \cdot v_F = 391.85 \cdot v_F\]
+With \(v_F = 0.77 \times 10^6\) m/s: \(c = 3.017 \times 10^8\) m/s vs
+CODATA \(2.998 \times 10^8\) -- \textbf{0.63\% off} (was \(0.101\%\)).
+
+\subsubsection{6.3 h (PAPER\_587)}\label{h-paper_587}
+
+\[h = F_{\rm TRZ} \cdot (5/6) \cdot E_0/f_{\rm THz} \cdot (1 - 2\alpha)\]
+With \(F_{\rm TRZ} = 0.1\), \(E_0 = 10^{-20}\) J,
+\(f_{\rm THz} = 1.25 \times 10^{12}\) Hz: \(h = 6.575 \times 10^{-34}\)
+J·s vs CODATA \(6.626 \times 10^{-34}\) -- \textbf{0.77\% off} (was
+\(0.060\%\)).
+
+\subsubsection{6.4 G (PAPER\_593)}\label{g-paper_593}
+
+\[G = \frac{2\pi \cdot 26^3 \cdot (5/6)}{[\mathrm{SSq}]^3 \cdot (26!)^2} \cdot \frac{v_F^5}{E_0 f_{\rm THz}}\]
+\(G = 6.617 \times 10^{-11}\) m\(^3\)/(kg·s\(^2\)) vs CODATA
+\(6.674 \times 10^{-11}\) -- \textbf{0.85\% off} (was \(0.075\%\)).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. The Honest Trade-Off}\label{the-honest-trade-off}
+
+Replacing the calibrated \(\Phi_{\rm res} = 0.84\) with the structural
+\(\Phi_{\rm res} = 5/6 = 0.8333\) \textbf{slightly degrades} the four
+closure percentages (from \(\sim 0.1\%\) to \(\sim 0.7\%\)). This is the
+\textbf{expected} behavior when a fitted parameter is replaced by a
+structural identity: the calibrated value absorbed all higher-order
+corrections, while the structural value is the leading-order term only.
+
+\textbf{Honest reading:} the \(0.7\%\) residuals are now the
+\textbf{subleading corrections} that the next layer of the Lagrangian
+re-derivation must account for. These corrections likely arise from:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Renormalization-group flow} of the BSFG resonance manifold
+  dimension \(D\) from \(D = 6\) at the fixed point to
+  \(D \approx 6.06\) at the observation scale.
+\item
+  \textbf{Quantum corrections} to the codimension ratio at one-loop:
+  \(\Phi_{\rm res}^{\rm 1-loop} = 5/6 \cdot (1 + \alpha \cdot c_1)\)
+  with \(c_1\) to be derived.
+\end{itemize}
+
+Both routes are now well-posed theoretical problems with a clean
+leading-order answer. \textbf{This is what closing a gap looks like.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Updated Catalog Status}\label{updated-catalog-status}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Lagrangian gap
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status (pre-Session 246)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status (post-Session 246)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1 (V(UA) polynomial) & OPEN & OPEN (still required for Lambda from
+action) \\
+G2 (beta\_i index) & OPEN & OPEN \\
+G3 (DPM SO(2)) & OPEN & OPEN \\
+G4 (T\^{}22 moduli) & OPEN & OPEN \\
+G5 (KK tower) & OPEN & OPEN \\
+\textbf{G6 (Phi\_res ID)} & \textbf{OPEN} & \textbf{CLOSED (this
+paper)} \\
+G7 (F\_TRZ ID) & OPEN & OPEN \\
+G8 (26! emergence) & OPEN & OPEN \\
+\end{longtable}
+}
+
+\textbf{Result:} 1 of 8 Lagrangian gaps is now closed. The remaining 7
+are the next-priority theoretical work items.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Conclusions}\label{conclusions}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\Phi_{\rm res} = 5/6 = (D-1)/D\) for \(D=6\) is the structural
+  identification of the resonance phase factor. Equivalently,
+  \(\Phi_{\rm res} = [\mathrm{SSq}]/\Omega_\Lambda\) inverts the
+  dark-energy amplification.
+\item
+  Three independent readings (resonance manifold, SO(2) embedding,
+  vacuum cohomology) fix \(D = 6\). This is itself an instance of
+  PAPER\_1158-style overdetermination (\(N=3\) for the dimension
+  identification).
+\item
+  G6 of \texttt{\_lagrangian\_rederivation\_outline.py} is now closed; 7
+  of 8 Lagrangian gaps remain.
+\item
+  Four constant closures (\(\alpha\), \(c\), \(h\), \(G\)) lose their
+  last numerical input and become \textbf{fully structural} at the
+  leading order.
+\item
+  The \(\sim 0.7\%\) residuals after substitution are the
+  \textbf{next-order corrections} that one-loop / RG-flow analysis must
+  capture.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§SM Anchors (G6 Compliance
+Table)}\label{sm-anchors-g6-compliance-table}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Anchor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Symbol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Used in
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Magnetar dark-energy ratio & \([\mathrm{SSq}]\) & \(0.57\) & Sessions
+154-157 & \(\Lambda\) closure, \(\Phi_{\rm res}\) ID \\
+Dark-energy amplification & \(6/5\) & exact &
+\texttt{batch\_sm\_anchors.py} L246 & \(\Omega_\Lambda\) \\
+Resonance manifold dimension & \(D\) & \(6\) & this paper, three chains
+& \(\Phi_{\rm res}\) \\
+Codimension ratio & \(\Phi_{\rm res}\) & \(5/6\) & this paper &
+\(\alpha\), \(c\), \(h\), \(G\) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Murphy, D. T., ``PAPER\_585: Fine-Structure Constant via DPM
+  Resonance'' (Star-Magic, Session 237).
+\item
+  Murphy, D. T., ``PAPER\_587: Planck Constant via Canonical
+  Commutator'' (Star-Magic, Session 239).
+\item
+  Murphy, D. T., ``PAPER\_592: Speed of Light via Triad Equilibrium''
+  (Star-Magic, Session 238).
+\item
+  Murphy, D. T., ``PAPER\_593: Newton's Constant via Void Coupling''
+  (Star-Magic, Session 240).
+\item
+  Murphy, D. T., ``PAPER\_1156: UQFF Cosmological Constant Closure''
+  (Star-Magic, Session 242).
+\item
+  Murphy, D. T., ``PAPER\_1158: Overdetermination as Epistemology in
+  UQFF'' (Star-Magic, Session 244).
+\item
+  \texttt{\_lagrangian\_rederivation\_outline.py}, Star-Magic repository
+  (Session 242).
+\item
+  \texttt{\_g6\_phi\_res\_identification.py}, Star-Magic repository
+  (Session 245).
+\item
+  \texttt{batch\_sm\_anchors.py} line 246 (Star-Magic;
+  magnetar/cosmic-ray calibration).
+\item
+  \texttt{26D\_DOWNWARD\_PROJECTION.md} (Star-Magic, Sessions 197-201).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Signed:} Daniel T. Murphy \textbf{Date:} May 10, 2026 (Session
+246) \textbf{Repository:} Star-Magic, commit pending
+\textbf{Verification:}
+\texttt{python\ \_g6\_phi\_res\_identification.py}
+
+\end{document}

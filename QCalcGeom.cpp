@@ -625,6 +625,28 @@ BH26BSHResonanceResult bh26_bsh_resonance(double f_Ub, double SSq, double t_n, i
     return r;
 }
 
+// ----------------------------------------------------------------------------
+// bsfg_aether_potential(UA, rho_SCm, v_UA)
+// G1 closure (Session 253, PAPER_1166): closed Mexican-hat aether potential.
+//   V(UA)  = K * rho_SCm * [(UA/v_UA)^2 - 1]^2,  K = Phi_res*|SO(5)|/D_phys = 25/12
+//   V'(UA) = 4*K*rho_SCm*(UA/v_UA^2)*[(UA/v_UA)^2 - 1]
+//   m_UA^2 = V''(v_UA) = 8*K*rho_SCm/v_UA^2 = (50/3)*rho_SCm/v_UA^2
+// All coefficients integer-rational; zero free parameters added.
+// Reference: PAPER_1166, PAPER_1167; MAIN_1_CoAnQi.cpp compute_V_UA_SOURCE4.
+// ----------------------------------------------------------------------------
+BSFGAetherPotentialResult bsfg_aether_potential(double UA, double rho_SCm, double v_UA) {
+    BSFGAetherPotentialResult r{};
+    const double K     = 25.0 / 12.0;                    // Phi_res*|SO(5)|/D_phys
+    const double x     = UA / v_UA;
+    const double xx_m1 = x * x - 1.0;
+    r.K          = K;
+    r.V          = K * rho_SCm * xx_m1 * xx_m1;
+    r.V_prime    = 4.0 * K * rho_SCm * (UA / (v_UA * v_UA)) * xx_m1;
+    r.mass2      = (50.0 / 3.0) * rho_SCm / (v_UA * v_UA);
+    r.at_minimum = std::abs(UA - v_UA) / v_UA < 1.0e-12;
+    return r;
+}
+
 // ============================================================================
 // SECTION 3 — REQUIREMENTS-BOUNDARY TEST RUNNER
 // Uses the real QCalcGeom functions (Phase B refactoring of qcalcgeom_tests.cpp).
