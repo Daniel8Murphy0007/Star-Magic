@@ -258,3 +258,34 @@ CROSS-REF DECISION (batch 3 verification):
 Next batch (planned): PAPER_030-039 (dark sector mediators, flavor anomalies,
 BSM scalar sectors, electroweak precision, Higgs, FUBii buoyancy variants 1-5).
 Buckets B/H mixed - all consume calibrated constants, need closure block.
+
+==============================================================================
+BATCH 1 FORMAT REMEDIATION (Session 262 cont.) - commit 02c98b50
+==============================================================================
+Date: 2026-05-11
+Toolchain: pdflatex direct (MiKTeX) - NO pandoc, NO xelatex, NO reportlab.
+Converter: _md_to_arxiv_tex.py (markdown -> arXiv-canonical LaTeX).
+Driver:    _build_batch.py (convert + pdflatex x2 + backup + replace).
+Preamble matches whitepapers/PAPER_495_Cosmic_Quantum_Egg_Theory.tex and
+Manuscript 1_12Feb2026/uqff_production_arxiv.tex.
+Old pandoc PDFs preserved in pdf_backup_pandoc_2026-05-11/.
+Source .md files untouched (v5.78 closure content preserved verbatim).
+
+Files (10):
+  PAPER_001  md=  41251B tex=  50059B pdf= 383885B (was  423821B pandoc)
+  PAPER_002  md=  31204B tex=  39046B pdf= 380255B (was  423108B pandoc)
+  PAPER_003  md=  29840B tex=  37631B pdf= 356193B (was  409654B pandoc)
+  PAPER_004  md=  30468B tex=  37973B pdf= 357844B (was  382137B pandoc)
+  PAPER_005  md=  29800B tex=  37440B pdf= 357773B (was  382507B pandoc)
+  PAPER_006  md=  32648B tex=  40635B pdf= 375412B (was  389257B pandoc)
+  PAPER_007  md=  40750B tex=  51017B pdf= 401793B (was  417799B pandoc)
+  PAPER_008  md=  36761B tex=  45906B pdf= 381247B (was  435493B pandoc)
+  PAPER_008b md=  35849B tex=  44131B pdf= 373771B (was  399600B pandoc)
+  PAPER_009  md=  41832B tex=  53114B pdf= 389894B (was  419403B pandoc)
+
+All 10 papers built cleanly through pdflatex pass 2 (cross-refs resolved).
+No content lost. YAML frontmatter stripped, body content preserved.
+Math ($...$, 5...5) passed through as-is. Tables -> booktabs longtable.
+arXiv 4-pass typeout line included before \end{document}.
+
+CSV updated: 10 rows -> status=DONE v5.78 arXiv-LaTeX, commit=02c98b50.
