@@ -63,13 +63,13 @@ $$
 **Constants:**
 $$
 \begin{aligned}
-  & G = 6.674\1\times 10^{-1}1 m^3 kg-^1 s-^2 \\
-  & hbar = 1.0546x10-^34 J*s \\
-  & Lambda = 1.1x10-5^2 m-^2 \\
-  & c = 3x108 m/s \\
-  & t_Hubble = 4.35x10^17 s \\
-  & H_0 = 2.27x10-^18 s-^1 \\
-  & H(t,z) = H_0 * sqrt(0.3*(1+z)^3 + 0.7)
+  & G = 6.674\times 10^{-11}\ \text{m}^3\,\text{kg}^{-1}\,\text{s}^{-2} \\
+  & \hbar = 1.0546\times 10^{-34}\ \text{J}\cdot\text{s} \\
+  & \Lambda = 1.1\times 10^{-52}\ \text{m}^{-2} \\
+  & c = 3\times 10^{8}\ \text{m/s} \\
+  & t_{\text{Hubble}} = 4.35\times 10^{17}\ \text{s} \\
+  & H_0 = 2.27\times 10^{-18}\ \text{s}^{-1} \\
+  & H(t,z) = H_0 \sqrt{0.3(1+z)^3 + 0.7}
 \end{aligned}
 $$
 
@@ -475,8 +475,8 @@ $$
 Where F_env(t) = Sigma Fi subsumes the 15 identified sub-terms:
 $$
 \begin{aligned}
-  & F_env = { F_wind, F_erode, F_merge, F_SN, F_rad, F_fil, F_BH, \\
-  & F_dust, F_ring, F_mag, F_tech, F_shell, F_cosmo, F_torque, F_shock }
+  & F_{\text{env}} = \{ F_{\text{wind}}, F_{\text{erode}}, F_{\text{merge}}, F_{SN}, F_{\text{rad}}, F_{\text{fil}}, F_{BH}, \\
+  & F_{\text{dust}}, F_{\text{ring}}, F_{\text{mag}}, F_{\text{tech}}, F_{\text{shell}}, F_{\text{cosmo}}, F_{\text{torque}}, F_{\text{shock}} \}
 \end{aligned}
 $$
 

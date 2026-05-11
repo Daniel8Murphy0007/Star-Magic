@@ -56,7 +56,7 @@ $$\kappa_t = \frac{\lambda_t^{\mathrm{obs}}}{\lambda_t^{\mathrm{SM}}}$$
 
 is measured in two complementary channels:
 1. **tH production:** pp $\to$ tHj or pp $\to$ tHW (sensitive to sign of $\kappa$_t)
-2. **ttH production:** pp $\to$ tt̄H (sensitive to |$\kappa$_t|2, less to sign)
+2. **ttH production:** pp $\to$ t\bar{t}H (sensitive to |$\kappa$_t|2, less to sign)
 
 The sign of $\kappa$_t is crucial: SM has $\kappa$_t = +1, but many BSM models predict $\kappa$_t < 0 (flipped top
 Yukawa), which would make gg$\to$H via top loops destructively interfere with other loop contributions.
@@ -84,7 +84,7 @@ probes the interference between top and W loops in a way no other channel can.
 
 ### 2.1 tH Production Search
 
-ATLAS analyzed 140 fb-1 at $\sqrt{s}$ = 13 TeV, searching for tH $\to$ (bqq̄' or bℓ$\nu$)$\times$(H$\to$bb̄/$\gamma$$\gamma$/$\tau$+$\tau$-/WW*/ZZ*).
+ATLAS analyzed 140 fb-1 at $\sqrt{s}$ = 13 TeV, searching for tH $\to$ (bq\bar{q}' or bℓ$\nu$)$\times$(H$\to$b\bar{b}/$\gamma$$\gamma$/$\tau$+$\tau$-/WW*/ZZ*).
 The combined result for the $\kappa$_SM point:
 
 | Quantity | Value |
@@ -237,12 +237,12 @@ A **definitive 10$\sigma$ discovery** of the UQFF UH Level-18 modification at FC
 
 ### 5.3 $\kappa$_c at FCC-ee (Higgs factory)
 
-At FCC-ee with 106 ZH events, the sensitivity to H$\to$cc̄ decay:
+At FCC-ee with 106 ZH events, the sensitivity to H$\to$c\bar{c} decay:
 $$\delta|\kappa_c|_{\mathrm{FCC-ee}} \sim \pm 3 \text{ (SM units)}$$
 
 This will push the |$\kappa$_c| < 47 bound down to |$\kappa$_c| < 3, providing a 16$\times$ improvement. If the UQFF
 prediction |$\kappa$_c| = 18.8 is correct, FCC-ee would see a **definitive 5$\sigma$ detection** of anomalous
-H$\to$cc̄ at $\sqrt{}$(18.8/3)2 ~ (6.3)2 ~ 6.3$\sigma$.
+H$\to$c\bar{c} at $\sqrt{}$(18.8/3)2 ~ (6.3)2 ~ 6.3$\sigma$.
 
 ---
 

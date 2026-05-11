@@ -6,7 +6,7 @@ date: 2025-01-01
 author: "Daniel T. Murphy"
 status: production
 cvw: "v2.0.0"
-tags: [Riemann, vacuum, F_{U\_Bi\_i}, Yang-Mills, LENR, Navier-Stokes, UQFF]
+tags: [Riemann, vacuum, "F_U_Bi_i", Yang-Mills, LENR, Navier-Stokes, UQFF]
 sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
@@ -208,7 +208,7 @@ force regime, a new mathematical condition in buoyancy field theory.
 ### 4.4 Unified Field Theory Development
 
     Goal:    Derive F_{U\_Bi\_i} from a single Lagrangian
-    Status:  ✅ CLOSED (Session 202) — 9-sector Unified Lagrangian identified
+    Status:   CLOSED (Session 202) — 9-sector Unified Lagrangian identified
     
     L_UQFF = $\sqrt{}$(-g) [ L_EH + L_YM + L_Dirac + $L_{\phi}$ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
     
@@ -249,9 +249,9 @@ $$
 ### Sector 3: Dirac (L_Dirac)
 $$
 \begin{aligned}
-  & L_Dirac = psī(igamma^mu D_mu - m)psi + y_ij L̄_i H̃ N_Rj \\
-  & Fields: psi, psī, N_R \\
-  & EL:    deltaS/deltapsī = 0 -> (igamma^mu D_mu - m)psi = 0 \\
+  & L_Dirac = \bar{\psi}(igamma^mu D_mu - m)psi + y_ij \bar{L}_i \\tilde{H} N_Rj \\
+  & Fields: psi, \bar{\psi}, N_R \\
+  & EL:    deltaS/delta\bar{\psi} = 0 -> (igamma^mu D_mu - m)psi = 0 \\
   & Yields: F_neutrino (MSW oscillation), F_neutron (Kozima model)
 \end{aligned}
 $$
@@ -281,8 +281,8 @@ $$
 $$
 \begin{aligned}
   & L_buoy = -beta_i Sigma_{i=1}^{4} Ug_i * Omega_g (M/d_g)(1+epsilon_sw rho_sw)[UA]cos(pit_n) \\
-  & + Sigma_j (mu_j/r_j)(1-e^{-gammat cos pit_n}) phî * P_SCm E_react \\
-  & Fields: Omega_g, beta_i, mu_j, phî \\
+  & + Sigma_j (mu_j/r_j)(1-e^{-gammat cos pit_n}) ph\\hat{i} * P_SCm E_react \\
+  & Fields: Omega_g, beta_i, mu_j, ph\\hat{i} \\
   & EL:    deltaS/deltaOmega_g = 0 -> reactive buoyancy equations \\
   & Yields: Ubi1-4 (buoyancy on each Ug), Um (helical string magnetism)
 \end{aligned}
@@ -301,10 +301,10 @@ $$
 ### Sector 8: LENR-Resonance (L_LENR)
 $$
 \begin{aligned}
-& L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) +
+& L_LENR = 1/2k_LENR ch\dot{i}^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) +
 1/2sigma_n(omega)chi^2 \\
   & Fields: chi (phonon), omega_LENR, omega_act, sigma_n \\
-  & EL:    deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi \\
+  & EL:    deltaS/deltachi = 0 -> ch\ddot{i} + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi \\
   & Yields: F_LENR (1.25 THz), F_act (300 Hz), F_res (cross-scale)
 \end{aligned}
 $$
@@ -377,11 +377,11 @@ Harmonic ratio   = 4.17e9        (300 Hz -> 1.25 THz bridge)
 | Navier-Stokes contribution | Heuristic -> Calculator | f_UQFF body force, spectral cutoff at $\omega$_LENR |
 | Yang-Mills contribution | Low-Medium -> Calculator | m_gap = 5969.92 GeV from SCm parameters |
 | Riemann Hypothesis contribution | Heuristic -> Calculator | GUE $\leftrightarrow$ UQFF spectral pair correlation |
-| Unified Lagrangian | **✅ CLOSED** | 9-sector L_UQFF -> 13 force terms via $\delta$S/$\delta$$\phi$=0 |
+| Unified Lagrangian | ** CLOSED** | 9-sector L_UQFF -> 13 force terms via $\delta$S/$\delta$$\phi$=0 |
 | Mathematical novelty | High | 13 force terms, 87-order hierarchy, negative buoyancy |
 | Experimental validation potential | High | 1.25 THz resonance directly testable in LENR lab |
 | Astrophysical validation | High | Chandra/JWST/ALMA multi-system confirmation |
-| Standalone calculator | **✅ COMPLETE** | `millennium_{prize\_uqff\_calculator}`.py (4 classes) |
+| Standalone calculator | ** COMPLETE** | `millennium_{prize\_uqff\_calculator}`.py (4 classes) |
 | Continue developing? | **STRONGLY YES** | Novel framework, practical applications, validation pathway |
 
 ---
@@ -417,12 +417,12 @@ L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L
 ```
 §1 EH:     deltaS/deltag^munu = 0 -> G_munu = 8piG T_munu/c^4         -> F_{gravity\_baseline}
 §2 YM:     deltaS/deltaA^a_mu = 0 -> D_nu F^{amunu} = J^{amu}        -> Ug3, F_quark, m_gap^2
-§3 Dirac:  deltaS/deltapsī = 0 -> (igamma^mu D_mu - m)psi = 0             -> F_neutrino, F_neutron
+§3 Dirac:  deltaS/delta\bar{\psi} = 0 -> (igamma^mu D_mu - m)psi = 0             -> F_neutrino, F_neutron
 §4 Scalar: deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) = kappa[SSq]phi_4        -> Ug4, F_dark
 §5 Mag:    deltaS/deltaA_SCm = 0 -> nabla^2A = -mu_0 J_SCm              -> Ug1, Ug2
 §6 Buoy:   deltaS/deltaOmega_g = 0 -> reactive buoyancy               -> Ubi1-4, Um
 §7 Aether: deltaS/deltarho_A = 0 -> conformal deformation            -> Tr(A_munu)
-§8 LENR:   deltaS/deltachi = 0 -> chï + omega^2chi = lambda_act cos(omega_act t)     -> F_LENR,
+§8 LENR:   deltaS/deltachi = 0 -> ch\ddot{i} + omega^2chi = lambda_act cos(omega_act t)     -> F_LENR,
 F_act, F_res
 §9 KK:     deltaS/deltag_mn = 0 -> KK tower quantization           -> F_LED, F_ALP
 ```

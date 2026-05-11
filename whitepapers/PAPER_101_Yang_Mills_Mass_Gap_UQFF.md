@@ -145,8 +145,8 @@ $$
 **Sector 3 (Dirac) — Kozima Bridge:**
 $$
 \begin{aligned}
-  & L_Dirac = psī(igamma^mu D_mu - m)psi + y_ij L̄_i H̃ N_Rj \\
-  & deltaS/deltapsī = 0 -> (igamma^mu D_mu - m)psi = 0 \\
+  & L_Dirac = ps\bar{i}(igamma^mu D_mu - m)psi + y_ij \bar{L}_i \tilde{H} N_Rj \\
+  & deltaS/deltaps\bar{i} = 0 -> (igamma^mu D_mu - m)psi = 0 \\
   & -> F_neutron via sigma_n(omega) Gaussian cross-section \\
   & -> Phonon condensate <-> gluon condensate mass generation parallel
 \end{aligned}

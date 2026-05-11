@@ -133,9 +133,9 @@ $$
 **Sector 8 (LENR-Resonance) — Spectral Mode Source:**
 $$
 \begin{aligned}
-& L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) +
+& L_LENR = 1/2k_LENR ch\dot{i}^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) +
 1/2sigma_n(omega)chi^2 \\
-  & deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t) \\
+  & deltaS/deltachi = 0 -> ch\ddot{i} + omega^2 chi = lambda_act cos(omega_act t) \\
   & -> KK-like mode spectrum: omega_n = omega_act + n x omega_LENR \\
   & -> zeta(s) -> integral e^{-iomegat} [F_LENR(omega/omega_0)^2 + F_neutron sigma_n(omega)] dt
 \end{aligned}

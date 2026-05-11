@@ -34,7 +34,7 @@ expansion potential. Links the expansion Lagrangian to the buoyancy ratio and fi
 $$
 \begin{aligned}
   & L_expansion = E+(t)\cdot V\cdot S26 \\
-  & \delta S/\delta\phi = \partial L/\partial\phi - d/dt(\partial L/\partial\phi̇) = 0
+  & \delta S/\delta\phi = \partial L/\partial\phi - d/dt(\partial L/\partial\ph\dot{i}) = 0
 \end{aligned}
 $$
 

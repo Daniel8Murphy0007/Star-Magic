@@ -53,7 +53,7 @@ $$
 Where:
 - H(t,z) = H_0 sqrt(0.3(1+z)^3 + 0.7)
 - F_env(t) = Sigmai Fi (system-specific environmental forces)
-- G = 6.674\1\times 10^{-1}1 m^3 kg-^1 s-^2
+- G = 6.674\times 10^{-11} m^3 kg-^1 s-^2
 - hbar = 1.0546x10-^34 J*s
 - Lambda = 1.1x10-5^2 m-^2
 - c = 3x108 m/s
@@ -113,7 +113,7 @@ tidal locking in close-orbit (a < 0.1 AU) planets.
 
 **Standard value** (R_p = 1.5 R_Earth = 9.555x106 m, a = 0.01 AU):
 $$
-F_tide = (6.6743e-11 * 1.192e25 * 2.188e30 * 9.555e6) / (1.496e9)6 ~= 2.9\1\times 10^{-1}1 m/s^2
+F_{\text{tide}} = \frac{(6.6743\times 10^{-11})(1.192\times 10^{25})(2.188\times 10^{30})(9.555\times 10^{6})}{(1.496\times 10^{9})^6} \approx 2.9\times 10^{-11}\ \text{m/s}^2
 $$
 
 ### 3.4 F_gal --- Galactic Rotation + Dark Matter Coupling
@@ -133,8 +133,8 @@ $$
 \begin{aligned}
   & rho_DM = 4.2x10-^2 kg/m^3  (at 8 kpc, Navarro-Frenk-White profile) \\
   & M_DM = rho_DM * (4/3)pi r_gal^3 = 2.57x104^0 kg \\
-  & F_DM = G*M_DM / r_gal^2 = 2.8\1\times 10^{-1}0 m/s^2 \\
-  & F_gal = (2.2e5)^2 / (2.47e20) + 2.83e-10 ~= 4.7\1\times 10^{-1}0 m/s^2
+  & F_DM = G*M_DM / r_gal^2 = 2.8\times 10^{-10} m/s^2 \\
+  & F_gal = (2.2e5)^2 / (2.47e20) + 2.83e-10 ~= 4.7\times 10^{-10} m/s^2
 \end{aligned}
 $$
 
@@ -181,7 +181,7 @@ Weighted to reflect dominant contributions across 62 Kepler frames:
 
 | System  | Parameter  | F_tide (m/s^2)  | Effect  |
 |--------|-----------|---------------|--------|
-| TOI-849b  | a=0.016 AU, M_p=40 M_Earth  | 5.6\1\times 10^{-1}2  | Circularized (OK)  |
+| TOI-849b  | a=0.016 AU, M_p=40 M_Earth  | 5.6\times 10^{-12}  | Circularized (OK)  |
 | Kepler-13Ab  | a=0.033 AU, M_p=1 M_Jup  | 2.59x10-^17  | Tidally locked (OK)  |
 | TOI-2109b  | a=0.018 AU  | dominates  | Tidal distortion (OK)  |
 
@@ -232,7 +232,7 @@ $$
   & Output: tidal locking timescale
 \end{aligned}
 $$
-Example (TOI-849b): F_tide = 5.6\1\times 10^{-1}2 m/s^2
+Example (TOI-849b): F_tide = 5.6\times 10^{-12} m/s^2
 
 ---
 

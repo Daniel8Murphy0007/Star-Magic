@@ -112,7 +112,7 @@ The imaginary relativistic force is derived from the imaginary scattering amplit
 
 $$F_{\text{rel,im}} = k_{\text{rel}} \cdot \left(\frac{E_{\text{cm,astro}}}{E_{\text{cm}}}\right)^2 \cdot \mathcal{A}_{\text{im,BSM}}$$
 
-where $\mathcal{A}_{\text{im,BSM}} = \text{Im}[\mathcal{M}_{\text{Z'\to e\mu}}] = 10^{-11}$ (dimensionless, from BSM mixing angle):
+where $\mathcal{A}_{\text{im,BSM}} = \text{Im}[\mathcal{M}_{Z'\to e\mu}] = 10^{-11}$ (dimensionless, from BSM mixing angle):
 
 $$\boxed{F_{\text{rel,im}} = i \times 10^{-11} \times k_{\text{rel}} \times \left(\frac{E_{\text{cm,astro}}}{E_{\text{cm}}}\right)^2}$$
 

@@ -135,9 +135,9 @@ $$
 **Sector 8 (LENR-Resonance):**
 $$
 \begin{aligned}
-& L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) +
+& L_LENR = 1/2k_LENR ch\dot{i}^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) +
 1/2sigma_n(omega)chi^2 \\
-  & deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi \\
+  & deltaS/deltachi = 0 -> ch\ddot{i} + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi \\
   & -> F_LENR (1.25 THz oscillatory body force), F_act (300 Hz), F_res
 \end{aligned}
 $$

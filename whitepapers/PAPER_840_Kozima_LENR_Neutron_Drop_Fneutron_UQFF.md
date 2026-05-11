@@ -779,7 +779,7 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 | CP4 Class | # | PAPER | Equation Wrapped |
 |-----------|---|-------|-----------------|
 | `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | $A_{\mathrm{SCm}}(B) = \exp[-B^2/B_{\mathrm{crit}}^2]$ (this paper §K.5) |
-| `BuoyancyKleinGordonScalarFieldEOMCalc` | 463 | PAPER_879 | $\Boxphi + m_{\mathrm{eff}}^2\phi = J_{\mathrm{buoy}}$ (this paper §8) |
+| `BuoyancyKleinGordonScalarFieldEOMCalc` | 463 | PAPER_879 | $\Box\phi + m_{\mathrm{eff}}^2\phi = J_{\mathrm{buoy}}$ (this paper §8) |
 | `KozimaExpansionNeutronDropCouplingCalc` | 465 | PAPER_881 | $F_{\mathrm{coupled}} = F_{\mathrm{Kozima}}(\omega_{\mathrm{SCm}}) \times E^+(t) \times \Phi(\omega)$ |
 | `SCmKozimaPhononResonanceCouplingCalc` | 476 | PAPER_892 | $\sigma_n^{\mathrm{SCm}}(\omega, n)$ (this paper §K.2) |
 | `PhononModulationFactor125THzGaussianCalc` | 480 | PAPER_896 | $Q = \omega_{\mathrm{SCm}}/(2\Gamma)$ phonon Q-factor |

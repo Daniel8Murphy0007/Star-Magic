@@ -142,7 +142,7 @@ After adding F_neutrino, the 5 prior systems retain same F_{U\_Bi} values (F_LEN
 - **2506.14881** (neutrino polarizability NOMAD/MiniBooNE/SBND/DUNE) $\to$ **F_neutrino = 1 N**
 - 2506.14989 (ALICE QGP Pb-Pb 5.36 TeV — QCD medium dynamics observed)
 - 2506.15046 (comagnetometer exotic spin-dep couplings — axion-nucleon bounds)
-- 2506.15164 (ATLAS H$\to$bb̄ 139 fb-1 — Higgs coupling)
+- 2506.15164 (ATLAS H$\to$b\bar{b} 139 fb-1 — Higgs coupling)
 - 2506.15245 (tau lepton large-scale dipole moments photon fusion)
 - 2506.15306 (new physics at neutrino facilities — facility survey)
 

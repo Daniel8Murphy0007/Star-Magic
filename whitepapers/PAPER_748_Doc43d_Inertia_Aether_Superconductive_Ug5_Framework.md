@@ -226,7 +226,7 @@ $$
 
 $$
 \begin{aligned}
-  & Um(t,r,n) = Sigma_j [mu_j(t,rho_vac,[SCm])/r_j * (1-e^(-gammat)*cos(pi*t_n))*phî_j] \\
+  & Um(t,r,n) = Sigma_j [mu_j(t,rho_vac,[SCm])/r_j * (1-e^(-gammat)*cos(pi*t_n))*ph\hat{i}_j] \\
   & * P_SCm * E_react(t) \\
   & * (1 + 10^{1}3*f_Heaviside) * (1 + f_quasi) \\
   & mu_j(t)       = (1000 + 0.4*sin(omega_c*t)) * 3.38x10^{2}0 T*pm^3 \\

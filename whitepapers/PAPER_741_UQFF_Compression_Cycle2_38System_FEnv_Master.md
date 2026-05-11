@@ -133,7 +133,7 @@ $$
 
 $$
 \begin{aligned}
-  & U_m(t,r,n) = Sigma_j [mu_j(t,rho_vac,[SCm])/r_j * (1-e^(-gammat)*cos(pi*t_n))*phî_j] \\
+  & U_m(t,r,n) = Sigma_j [mu_j(t,rho_vac,[SCm])/r_j * (1-e^(-gammat)*cos(pi*t_n))*ph\hat{i}_j] \\
   & * P_SCm * E_react(t) \\
   & * (1 + 10^{1}3*f_Heaviside) * (1 + f_quasi) \\
   & mu_j(t) = (1000 + 0.4*sin(omega_c*t)) * 3.38x10^{2}0 T*pm^3 \\
@@ -153,7 +153,7 @@ $$
 $$
 \begin{aligned}
   & F_U = Sigma_i [k_i*U_gi - beta_i*U_gi*Omega_g*(M_bh/d_g)*E_react] \\
-  & + Sigma_j [mu_j/r_j * (1-e^(-gammat)*cos(pi*t_n))*phî_j] \\
+  & + Sigma_j [mu_j/r_j * (1-e^(-gammat)*cos(pi*t_n))*ph\hat{i}_j] \\
   & + (g_munu + eta*T_s^(munu)) \\
   & - Sigma_i [lambda_i*U_i*E_react]
 \end{aligned}

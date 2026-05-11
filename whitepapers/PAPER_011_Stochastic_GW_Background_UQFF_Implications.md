@@ -200,7 +200,7 @@ Cosmological SGWB (from inflation, phase transitions):
 
 Cross-correlation statistic:
 
-**Y(f) = Re[s̃_H(f) s̃_L^*(f)] / S_H(f) S_L(f)**
+**Y(f) = Re[\tilde{s}_H(f) \tilde{s}_L^*(f)] / S_H(f) S_L(f)**
 
 Expected signal:
 **⟨Y(f)⟩ = $\gamma$(f) $\Omega$_GW(f)**
