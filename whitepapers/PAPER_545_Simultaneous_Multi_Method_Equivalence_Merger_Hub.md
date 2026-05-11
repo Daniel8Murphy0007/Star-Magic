@@ -80,8 +80,8 @@ in $\pi$, giving a one-to-one correspondence between smooth solutions and $\pi$ 
 
 Numerical estimate:
 
-$$n_\text{cross} = \left\lfloor\frac{\pi}{1 - [\text{SSq}]}\rightrfloor
-  = \left\lfloor\frac{3.14159}{0.43}\rightrfloor = 7$$
+$$n_\text{cross} = \left\lfloor\frac{\pi}{1 - [\text{SSq}]}\right\floor
+  = \left\lfloor\frac{3.14159}{0.43}\right\floor = 7$$
 
 ---
 

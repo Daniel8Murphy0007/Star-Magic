@@ -97,7 +97,7 @@ since it depends only on global Mbh/dg, not per-body mass).
 The calibration $\rho$_v = $\Lambda$c2/(8$\pi$G) establishes a **direct bridge** between UQFF Ug4 and the
 $\Lambda$CDM cosmological constant, completing the dark energy chain:
 
-$$\Lambda \cdot c^2/3 \quad \xleftrightarrow{\text{PAPER\_160}} \quad k_4 \cdot \rho_v \cdot C_{conc} \cdot M_{bh}/d_g$$
+$$\Lambda \cdot c^2/3 \quad \longleftrightarrow_{\text{PAPER\_160}} \quad k_4 \cdot \rho_v \cdot C_{conc} \cdot M_{bh}/d_g$$
 
 The compressed cosmological term $\Lambda$C2/3 in PAPER_090 and the Ug4 vacuum term here are
 **complementary** representations of the same dark energy at different scales (global vs. local).

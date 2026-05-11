@@ -74,7 +74,7 @@ where $\text{tw}$ is treewidth and $\text{pw}$ is pathwidth.
 **Statement:** For the complete graph $K_n$, there exists an ascending subgraph decomposition into graphs $G_1, G_2, \ldots, G_t$ where $|E(G_i)| = i$ and each $G_i$ is a subgraph of $G_{i+1}$.
 
 The maximum number of parts satisfies:
-$$t_{\max} = \left\lfloor \frac{\sqrt{1 + 4\binom{n}{2}} - 1}{2} \rightrfloor$$
+$$t_{\max} = \left\lfloor \frac{\sqrt{1 + 4\binom{n}{2}} - 1}{2} \right\rfloor$$
 
 ### Theorem 5: Sumset Partition Conditions
 A set $S \subseteq \mathbb{Z}_n$ admits a **sumset partition** into $k$ parts $\{A_1, \ldots, A_k\}$ if:

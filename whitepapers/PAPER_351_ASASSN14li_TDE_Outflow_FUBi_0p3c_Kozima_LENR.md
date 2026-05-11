@@ -130,7 +130,7 @@ At the tidal radius $r = r_{\mathrm{tide}}$, the VDS is at near-threshold ($t \t
 
 DVP primes $> 26$ encode the neutron-drop stability at the stellar disruption interface. For ASASSN-14li, the Kozima force maps onto the DVP lattice threshold:
 
-$$F_{\mathrm{Kozima}} \to p_{\mathrm{DVP}}(Z_{\mathrm{eff}}) : \quad Z_{\mathrm{eff}} = \left\lfloor \frac{F_{\mathrm{Kozima}}}{F_{\mathrm{nuclear}}} \rightrfloor \bmod p_k$$
+$$F_{\mathrm{Kozima}} \to p_{\mathrm{DVP}}(Z_{\mathrm{eff}}) : \quad Z_{\mathrm{eff}} = \left\lfloor \frac{F_{\mathrm{Kozima}}}{F_{\mathrm{nuclear}}} \right\floor \bmod p_k$$
 
 where $p_k$ is the $k$-th dipole vortex prime and $F_{\mathrm{nuclear}} \approx 10^4$ N is the strong nuclear force scale. The DVP encoding predicts that LENR coupling is strongest when $Z_{\mathrm{eff}}$ falls on a DVP prime, i.e., at specific tidal radii where compressed stellar nuclei achieve resonant lattice configurations.
 

@@ -13,13 +13,13 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 # PAPER_172: F_U Complete Unified Field Assembly
 **Author:** Daniel T. Murphy
 **Date:** 2025
-## A_Î1/4Î1/2 Tensor, Buoyancy, and Full FU Summation
+## A_1/41/2 Tensor, Buoyancy, and Full FU Summation
 ## Whitepaper Â§2.4-D | Thread 381a8fe7 | Session 48
 
 ### Abstract
-The Unified Quantum Field equation F_U assembles all sub-components â€” Universal
-Gravity (Ug1â€“Ug4), Universal Buoyancy (Ubi1â€“4), Universal Magnetism (Um), and
-the Universal Aether tensor trace (A_Î1/4Î1/2) â€” into a single scalar field value.
+The Unified Quantum Field equation F_U assembles all sub-components - Universal
+Gravity (Ug1-Ug4), Universal Buoyancy (Ubi1-4), Universal Magnetism (Um), and
+the Universal Aether tensor trace (A_1/41/2) - into a single scalar field value.
 This paper documents the complete assembly as implemented in `main.cpp`.
 
 
@@ -30,23 +30,23 @@ present in Standard Model treatments.
 
 ---
 
-### 1. Universal Buoyancy â€” Ubi
+### 1. Universal Buoyancy - Ubi
 
 Each Ug component has a corresponding buoyancy term that opposes it:
 
 $$
 \begin{aligned}
-  & Ubi = âˆ’Î^2_i Ã— Ugi Ã— Î©_g Ã— Mbh/dg Ã— (1 + Î\mu_swÃ—Ï_sw) Ã— [UA] Ã— cos(Ï€Ã—tâ‚™) \\
+  & Ubi = -^2_i * Ugi * Omega_g * Mbh/dg * (1 + mu_sw*rho_sw) * [UA] * cos(pi*t_n) \\
   & where: \\
-  & Î^2_i    = 0.6         [buoyancy coupling constant per Ug level] \\
+  & ^2_i    = 0.6         [buoyancy coupling constant per Ug level] \\
   & Ugi    = any of Ug1/Ug2/Ug3/Ug4 (computed first) \\
-  & Î©_g    = 7.3e-16 rad/s  [galactic spin rate] \\
+  & Omega_g    = 7.3e-16 rad/s  [galactic spin rate] \\
   & Mbh    = 8.15e36 kg  [Sgr A* mass] \\
-  & dg     = 2.55e20 m   [Sunâ€“GC distance] \\
-  & Î\mu_sw   = 0.001       [solar wind coupling] \\
-  & Ï_sw   = 8e-21 kg/mÂ^3 [solar wind density] \\
+  & dg     = 2.55e20 m   [Sun-GC distance] \\
+  & mu_sw   = 0.001       [solar wind coupling] \\
+  & rho_sw   = 8e-21 kg/mÂ^3 [solar wind density] \\
   & [UA]   = UUA = 1.0   [Universal Aether concentration factor] \\
-  & tâ‚™     = negative time index
+  & t_n     = negative time index
 \end{aligned}
 $$
 
@@ -55,21 +55,21 @@ mass, introducing temporal reversal dynamics in quasar phenomena.
 
 ---
 
-### 2. Universal Aether Tensor â€” A_Î1/4Î1/2
+### 2. Universal Aether Tensor - A_1/41/2
 
 $$
 \begin{aligned}
-  & A_Î1/4Î1/2 = g_Î1/4Î1/2 + Î* Ã— T_s00 Ã— cos(Ï€Ã—tâ‚™) \\
+  & A_1/41/2 = g_1/41/2 + * * T_s00 * cos(pi*t_n) \\
   & where: \\
-  & g_Î1/4Î1/2  = diag(1,âˆ’1,âˆ’1,âˆ’1)   [Minkowski metric baseline] \\
-  & Î*     = 1e-22               [Aether coupling constant] \\
-  & T_s00 = 1.27e3 + 1.11e7    [stress-energy time component â‰ˆ 1.127e7] \\
-  & tâ‚™    = negative time index \\
-  & Implementation: 4Ã—4 matrix, OpenMP-parallelized loop \\
-  & tr(A_Î1/4Î1/2) = g00 + g11 + g22 + g33 + 4 Ã— Î* Ã— T_s00 Ã— cos(Ï€Ã—tâ‚™) \\
-  & = (1âˆ’1âˆ’1âˆ’1) + 4Î*Â*T_s00Â*cos(Ï€Â*tâ‚™) \\
-  & = âˆ’2 + 4 Ã— 1e-22 Ã— 1.127e7 Ã— cos(Ï€Â*tâ‚™) \\
-  & â‰ˆ âˆ’2 + 4.508e-15 Ã— cos(Ï€Â*tâ‚™)
+  & g_1/41/2  = diag(1,-1,-1,-1)   [Minkowski metric baseline] \\
+  & *     = 1e-22               [Aether coupling constant] \\
+  & T_s00 = 1.27e3 + 1.11e7    [stress-energy time component ‰ˆ 1.127e7] \\
+  & t_n    = negative time index \\
+  & Implementation: 4*4 matrix, OpenMP-parallelized loop \\
+  & tr(A_1/41/2) = g00 + g11 + g22 + g33 + 4 * * * T_s00 * cos(pi*t_n) \\
+  & = (1-1-1-1) + 4*Â*T_s00Â*cos(piÂ*t_n) \\
+  & = -2 + 4 * 1e-22 * 1.127e7 * cos(piÂ*t_n) \\
+  & ‰ˆ -2 + 4.508e-15 * cos(piÂ*t_n)
 \end{aligned}
 $$
 
@@ -131,8 +131,10 @@ U_{b\_i}(r,t) = \rho_{\text{vac}}\,V_{\text{eff}}\,g_{\text{loc}}\cdot[SSq]\,e^{
 $$
 
 
-NameU_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
-5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61Name
+$$
+U_{b\_i}(r) = \kappa\cdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
+5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
 
 ---
 
@@ -148,16 +150,16 @@ for t in linspace(0, 1e6, N_steps):
     print(t, FU, Ub, F_jet)
 ```
 
-The jet force F_jet = FU âˆ’ Ub drives the Navier-Stokes FluidSolver
+The jet force F_jet = FU - Ub drives the Navier-Stokes FluidSolver
 (documented in PAPER_177).
 
 ---
 
 ### 6. Validation
 
-From UnitTests.cpp â€” compressed_MUGE route uses a simplified FU proxy:
-- `compute_{compressed\_MUGE}(SGR1745)` â†’ expected â‰ˆ 1.782e39
-- `compute_{resonance\_MUGE}(SGR1745)` â†’ expected â‰ˆ 1.773e-9
+From UnitTests.cpp - compressed_MUGE route uses a simplified FU proxy:
+- `compute_{compressed\_MUGE}(SGR1745)` †’ expected ‰ˆ 1.782e39
+- `compute_{resonance\_MUGE}(SGR1745)` †’ expected ‰ˆ 1.773e-9
 
 Both serve as cross-validation targets for the full FU assembly.
 
@@ -171,8 +173,8 @@ noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravit
 future observations.
 
 ### 7. References
-- main.cpp (thread 381a8fe7) â€” full FU function body
-- PAPER_171 (Ug1â€“Ug4 individual formulations)
+- main.cpp (thread 381a8fe7) - full FU function body
+- PAPER_171 (Ug1-Ug4 individual formulations)
 - PAPER_173, PAPER_174 (MUGE validation proxies)
 - PAPER_176 (SCm role in Ereact)
 
