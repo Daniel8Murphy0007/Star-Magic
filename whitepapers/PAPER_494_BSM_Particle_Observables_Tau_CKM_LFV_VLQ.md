@@ -89,7 +89,7 @@ The [SCm] factor provides a natural BSM-to-UQFF bridge: in the Standard Model, $
 ## §5 Testable Prediction
 
 1. **Belle II tau-anomalous moment**: If $\Delta a_\tau \sim 10^{-5}$--$10^{-4}$, UQFF vacuum contribution is $\lesssim 2\%$ of total --- currently below Belle II sensitivity of $\delta a_\tau \approx 10^{-3}$, but testable by FCC-ee with $10^{10}$ tau pairs
-2. **Next-generation LFV searches**: MEG-II (2026) will probe $\text{BR}(\muto e\gamma) < 10^{-14}$; the UQFF [SSq] suppression framework predicts $\text{BR}(\tau_0\mu\gamma) < 10^{-14}$ --- below current PDG limit by a factor $10\times$, resolving the MEG-II non-observation as consistency with UQFF
+2. **Next-generation LFV searches**: MEG-II (2026) will probe $\text{BR}(\mu to e\gamma) < 10^{-14}$; the UQFF [SSq] suppression framework predicts $\text{BR}(\tau_0\mu\gamma) < 10^{-14}$ --- below current PDG limit by a factor $10\times$, resolving the MEG-II non-observation as consistency with UQFF
 3. **FCC-hh VLQ direct production**: If $M_{\text{VLQ}} \approx 120$ TeV, VLQ pair-production cross-section $\sigma \sim g_c^2 \cdot s/M_{\text{VLQ}}^4 \approx 10^{-4}$ fb at $\sqrt{s} = 100$ TeV (FCC-hh) --- detectable in $10^6$ fb$^{-1}$ run
 
 ---

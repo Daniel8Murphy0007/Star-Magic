@@ -128,7 +128,7 @@ $$
 T_1 = f_{di1}(P_{1a}, P_{1b}) = P_{1a}^{-P_{1b}} \quad \text{[Wolfram strand, internal dynamics]}
 $$
 $$
-T_2 = f_{di2}(P_{2a}, P_{2b}) = P_{2a}^{-P_{2b}} \quad \text{[\pi strand, angular frequencies]}
+T_2 = f_{di2}(P_{2a}, P_{2b}) = P_{2a}^{-P_{2b}} \quad [\pi \text{ strand, angular frequencies}]
 $$
 $$
 T_3 = f_{di3}(P_{3a}, P_{3b}) = P_{3a}^{-P_{3b}} \quad \text{[Infinity Generator, buoyancy loops]}

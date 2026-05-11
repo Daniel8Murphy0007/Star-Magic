@@ -54,7 +54,7 @@ $$r_\text{Alf} = \left(\frac{B_\text{pol}^2 \, r^6}{2 \, G M_\star \dot{M}^2 \mu
 $$F_\text{sm,26D} = \frac{B_\text{pol}^2}{8\pi} \cdot r_\text{Alf} \cdot \sum_{k=1}^{26} \frac{[SSq]^k}{k^{26}}$$
 
 **DVP disc launch radii:**
-$$r_{\text{launch},n} = r_0 \cdot p_n^{2/3}, \quad p_n \in \{29, 31, 37, \ldots}$$
+$$r_{\text{launch},n} = r_0 \cdot p_n^{2/3}, \quad p_n \in \{29, 31, 37, \ldots\}$$
 
 **Force balance condition (kappa DPM = 1):**
 $$F_\text{net} = 0 \implies r_\text{Alf} = r_0 \cdot \left(\frac{8\pi}{Z_{26}} \cdot \frac{F_U}{B_\text{pol}^2}\right)^{-1}$$

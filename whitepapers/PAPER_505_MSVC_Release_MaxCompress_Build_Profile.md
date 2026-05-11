@@ -102,7 +102,7 @@ Debug x64 (no opt)           →  ~50 MB
 + /arch:AVX2 /Oi                → ~11.0 MB  (−2%, mainly speed)
 = Pre-UPX Release binary        → ~11.0 MB
 + UPX —best —ultra-brute      →  ~1.75 MB  (−84%)
-= FINAL MAIN_{1\_CoAnQi}.exe       →   1.75 MB  ✅
+= FINAL MAIN_{1\_CoAnQi}.exe       →   1.75 MB  
 ```
 
 ---

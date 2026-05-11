@@ -46,7 +46,7 @@ empirical Titius-Bode rule for the outer planets.
 ## §2 --- DVP Orbital Quantization Law
 
 **DVP sequence** $\{p_n\}_{n \geq 1}$: primes $> 26$:
-$$\{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, \ldots}$$
+$$\{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, \ldots\}$$
 
 The quantization condition from the Yang-Mills proof (PAPER_530):
 $$q_e = 2\pi n \quad (n \in \mathbb{Z}^+)$$

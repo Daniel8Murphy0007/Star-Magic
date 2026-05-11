@@ -80,7 +80,7 @@ magnetic monopole extra wave, characterized by the **Dipole Vortex Prime** (DVP)
 
 Charge quantization of the eighth mode:
 
-$$q_e = 2\pi n, \quad n \in \mathbb{N}^{+}, \quad n \in \text{DVP} = \{29, 31, 37, 41, \ldots}$$
+$$q_e = 2\pi n, \quad n \in \mathbb{N}^{+}, \quad n \in \text{DVP} = \{29, 31, 37, 41, \ldots\}$$
 
 For all $n \geq 1$: $q_e \geq 2\pi \neq 0$.
 
@@ -132,7 +132,7 @@ hypergraph causal graph against periodicity:
 3. No zero Laplacian eigenvalue $\to$ no zero-energy vacuum fluctuation $\to$ mass gap positive. ∎
 
 The number 113 is confirmed prime by the DVP sieve ($p \geq 29$): $113 \in \{29, 31, \ldots,
-109, 113, \ldots}$.
+109, 113, \ldots\}$.
 
 ---
 

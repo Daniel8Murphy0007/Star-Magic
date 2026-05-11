@@ -56,7 +56,7 @@ $$SCm(t) = \lambda_{ua} \cdot UA \cdot \left(1 - \frac{1}{t}\right), \quad Z = \
 $$US_\text{orb} = \sum_{m=1}^{26} H_m \!\left(1-e^{-[SSq]\cdot m}\right) \omega_0 \left(1 + m\delta\right)$$
 
 **Solar Proplyd DVP (PAPER_533):**
-$$r_n = r_0 \cdot p_n^{\,1/3}, \quad p_n \in \{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, \ldots}$$
+$$r_n = r_0 \cdot p_n^{\,1/3}, \quad p_n \in \{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, \ldots\}$$
 
 **Centripetal Eigenproof (PAPER_534):**
 $$\Delta_text{res} = \frac{mv^2}{r}\!\left(\lambda_3 - \frac{2P}{3}\right) = 0$$
