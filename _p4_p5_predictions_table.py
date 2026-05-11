@@ -97,19 +97,62 @@ def predict_P10() -> dict:
     }
 
 
+def predict_P11() -> dict:
+    """LIGO O5 ringdown spectral offset (PAPER_1175, Session 258)."""
+    D_ratio = 26.0 / 6.0
+    gain = D_ratio ** 0.25
+    R_Kerr = 0.10
+    return {
+        'R_21_22_Kerr':          R_Kerr,
+        'R26_gain':              gain,
+        'R_21_22_UQFF':          R_Kerr * gain,
+        'observational_bound':   'R_21/22 ~ 0.10 (Kerr, q~0.6)',
+        'decisive_experiment':   'LIGO O5 (2027-2029) stacked spectroscopy',
+        'falsifies':             'R_21/22 < 0.12 at 3-sigma across >=30 events',
+    }
+
+
+def predict_P12() -> dict:
+    """Euclid weak-lensing sigma_8 (PAPER_1176, Session 258)."""
+    s_Planck = 0.811
+    s_WL     = 0.760
+    s_gm     = math.sqrt(s_Planck * s_WL)
+    return {
+        'sigma_8_Planck':        s_Planck,
+        'sigma_8_WL_floor':      s_WL,
+        'sigma_8_geom_mean':     s_gm,
+        'sigma_8_UQFF':          0.797,
+        'sigma_8_unc':           0.005,
+        'observational_bound':   'Planck 0.811+/-0.006 vs KiDS/DES 0.76+/-0.02',
+        'decisive_experiment':   'Euclid Y1 (2027)',
+        'falsifies':             'sigma_8 > 0.815 or < 0.780 at 3-sigma',
+    }
+
+
 # ---------------------------------------------------------------------------
-# Cross-check against CP4 #258
+# Cross-check against CP4 #258, #259, #260
 # ---------------------------------------------------------------------------
 
 def cross_check_with_CP4() -> bool:
     try:
-        from CondensedPhysics4 import UQFFKKTowerHbarRegulatorCalculator
+        from CondensedPhysics4 import (
+            UQFFKKTowerHbarRegulatorCalculator,
+            UQFFRingdownSpectralOffsetCalculator,
+            UQFFSigma8WeakLensingCalculator,
+        )
     except Exception as exc:
-        print(f"[WARN] Could not import CP4 #258: {exc}", file=sys.stderr)
+        print(f"[WARN] Could not import CP4 calculators: {exc}", file=sys.stderr)
         return False
-    r = UQFFKKTowerHbarRegulatorCalculator().compute()
-    in_tol = r.get('within_tol_0p5pct', False)
-    return bool(in_tol)
+    r258 = UQFFKKTowerHbarRegulatorCalculator().compute()
+    r259 = UQFFRingdownSpectralOffsetCalculator().compute()
+    r260 = UQFFSigma8WeakLensingCalculator().compute()
+    ok258 = r258.get('within_tol_0p5pct', False)
+    ok259 = abs(r259['R_21_22_UQFF'] - 0.1443) < 0.005
+    ok260 = abs(r260['sigma_8_UQFF']  - 0.797) < 0.002
+    print(f"      CP4 #258 (P6 KK tower):       {'PASS' if ok258 else 'FAIL'}")
+    print(f"      CP4 #259 (P11 ringdown):      {'PASS' if ok259 else 'FAIL'}")
+    print(f"      CP4 #260 (P12 sigma_8):       {'PASS' if ok260 else 'FAIL'}")
+    return bool(ok258 and ok259 and ok260)
 
 
 # ---------------------------------------------------------------------------
@@ -118,7 +161,7 @@ def cross_check_with_CP4() -> bool:
 
 def main() -> int:
     print("=" * 78)
-    print("UQFF P6-P10 FALSIFIABLE PREDICTIONS  --  Session 257 (PAPER_1174)")
+    print("UQFF P6-P12 FALSIFIABLE PREDICTIONS  --  Sessions 257-258 (PAPER_1174/1175/1176)")
     print("=" * 78)
 
     preds = {
@@ -127,6 +170,8 @@ def main() -> int:
         'P8  JWST high-z delta_mu (PAPER_1165)':      predict_P8(),
         'P9  LISA stochastic GW   (PAPER_1173)':      predict_P9(),
         'P10 IceCube nu-Cherenkov (PAPER_1163)':      predict_P10(),
+        'P11 LIGO O5 ringdown    (PAPER_1175)':       predict_P11(),
+        'P12 Euclid sigma_8      (PAPER_1176)':       predict_P12(),
     }
     for name, p in preds.items():
         print(f"\n  [{name}]")
@@ -138,7 +183,7 @@ def main() -> int:
 
     print("\n" + "=" * 78)
     ok = cross_check_with_CP4()
-    print(f"  CP4 #258 cross-check: {'PASS' if ok else 'FAIL'}")
+    print(f"  CP4 cross-check (all): {'PASS' if ok else 'FAIL'}")
     print("=" * 78)
     return 0 if ok else 1
 

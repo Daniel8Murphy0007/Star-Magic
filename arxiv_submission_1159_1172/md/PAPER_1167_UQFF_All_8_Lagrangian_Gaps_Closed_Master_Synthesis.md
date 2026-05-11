@@ -10,7 +10,7 @@ tags: [UQFF, Lagrangian, master-synthesis, closure, SO5, D_crit_26, D_phys_4, BS
 sm_anchor: G6_SM_Anchor_Gate
 ---
 
-# PAPER_1167: All Eight UQFF Lagrangian Gaps Closed — First-Principles Reduction to $(D_{\mathrm{crit}}=26,\ D_{\mathrm{phys}}=4)$
+# PAPER_1167: All Eight UQFF Lagrangian Gaps Closed --- First-Principles Reduction to $(D_{\mathrm{crit}}=26,\ D_{\mathrm{phys}}=4)$
 
 ## Abstract
 
@@ -20,7 +20,7 @@ remaining free parameters introduced**. Nine or more originally fitted
 numerical/structural inputs to the UQFF Lagrangian are now derived from a
 single chain of two textbook integers: $D_{\mathrm{crit}}=26$ (Polyakov
 critical bosonic dimension) and $D_{\mathrm{phys}}=4$ (observed spacetime).
-The intermediate dimension $D_{\mathrm{BSFG}}=6$ is not independent — it
+The intermediate dimension $D_{\mathrm{BSFG}}=6$ is not independent --- it
 emerges from the SO(5) breaking ladder $D_{\mathrm{crit}} - 4\cdot 5 = 6$.
 This paper consolidates the closures, exhibits the SO(5) cross-lock that
 ties G1, G2, and G7 to the same group, and presents the master verification
@@ -93,8 +93,8 @@ G5 (PAPER_1162) computes the leading KK tower suppression
 
 $$ \frac{1}{\lambda_1^{26}} \;=\; \frac{1}{26^{26}} \;=\; 1.624\times 10^{-37}\,. $$
 
-These two quantities — derived from completely independent physics (moduli
-potential vs. spectral Laplacian) — agree to all digits. The duality is a
+These two quantities --- derived from completely independent physics (moduli
+potential vs. spectral Laplacian) --- agree to all digits. The duality is a
 consequence of the same 26-fold radial derivative appearing in both the
 $26!$ extraction (G8) and the inverse mode projection (G5).
 
@@ -157,13 +157,13 @@ of UQFF Star-Magic Physics.
 
 ## References
 
-- PAPER_1159 — G6 $\Phi_{\mathrm{res}} = 5/6$
-- PAPER_1160 — G7 $F_{\mathrm{TRZ}} = 1/|SO(5)|$
-- PAPER_1161 — G8 $26!$ Pochhammer
-- PAPER_1162 — G5 KK tower mode-by-mode
-- PAPER_1163 — G3 DPM SO(2) = light-cone
-- PAPER_1164 — G4 $T^{22}$ moduli stabilisation
-- PAPER_1165 — G2 $\beta_i$ triangular ladder
-- PAPER_1166 — G1 $V(UA)$ Mexican-hat polynomial
-- `_lagrangian_rederivation_outline.py` — gap catalogue
-- `CondensedPhysics4.py` — `UQFFLagrangianFullClosureCalculator` (companion to this paper)
+- PAPER_1159 --- G6 $\Phi_{\mathrm{res}} = 5/6$
+- PAPER_1160 --- G7 $F_{\mathrm{TRZ}} = 1/|SO(5)|$
+- PAPER_1161 --- G8 $26!$ Pochhammer
+- PAPER_1162 --- G5 KK tower mode-by-mode
+- PAPER_1163 --- G3 DPM SO(2) = light-cone
+- PAPER_1164 --- G4 $T^{22}$ moduli stabilisation
+- PAPER_1165 --- G2 $\beta_i$ triangular ladder
+- PAPER_1166 --- G1 $V(UA)$ Mexican-hat polynomial
+- `_lagrangian_rederivation_outline.py` --- gap catalogue
+- `CondensedPhysics4.py` --- `UQFFLagrangianFullClosureCalculator` (companion to this paper)

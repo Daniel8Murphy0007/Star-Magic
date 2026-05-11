@@ -20,7 +20,7 @@ sits 27 decades below the observed cosmological-constant energy density
 $\rho_{\Lambda}^{\mathrm{obs}} = 5.96\times 10^{-10}\ \mathrm{J/m^3}$
 (Planck 2024). The flagged gap is closed here: the remaining 27 decades
 are saturated by three contributions already present in the closed UQFF
-Lagrangian — the 26-D Einstein–Hilbert curvature integral
+Lagrangian --- the 26-D Einstein–Hilbert curvature integral
 $R_{26}/(2\kappa_E)$, the Kaluza–Klein zero-point tower
 (PAPER_1162, $\sum 1/\lambda_n^{26}$), and the BSFG buoyancy back-reaction
 (PAPER_1165). All three contribute through coefficients fixed by
@@ -169,7 +169,7 @@ $$
                               \;\approx\; 1.0\times 10^{-11}\ \mathrm{J/m^3}.
 $$
 
-This is a $\sim 2\%$ correction on top of the KK saturation — well within the
+This is a $\sim 2\%$ correction on top of the KK saturation --- well within the
 tolerance band $\pm 0.5\%$ of the closed coefficients $\beta_{i}$.
 
 ---
@@ -212,12 +212,12 @@ back-reaction correction.
 
 ## References
 
-- PAPER_1162 — KK tower mode-by-mode summation.
-- PAPER_1165 — Triangular $\beta_{i}$ ladder closure.
-- PAPER_1166 — V(UA) Mexican-hat polynomial closure.
-- PAPER_1167 — All-eight Lagrangian closure master synthesis.
-- PAPER_1168 — Five no-free-parameter falsifiable predictions (P1–P5).
-- PAPER_1169 — Numerical confrontation P1–P5 with archival data.
-- Planck Collaboration (2024) — cosmological parameters.
-- `uqff_closed_constants.py` — canonical integer-rational constants.
-- `CondensedPhysics4.UQFFVacuumEnergyLedgerCalculator` — programmatic ledger.
+- PAPER_1162 --- KK tower mode-by-mode summation.
+- PAPER_1165 --- Triangular $\beta_{i}$ ladder closure.
+- PAPER_1166 --- V(UA) Mexican-hat polynomial closure.
+- PAPER_1167 --- All-eight Lagrangian closure master synthesis.
+- PAPER_1168 --- Five no-free-parameter falsifiable predictions (P1–P5).
+- PAPER_1169 --- Numerical confrontation P1–P5 with archival data.
+- Planck Collaboration (2024) --- cosmological parameters.
+- `uqff_closed_constants.py` --- canonical integer-rational constants.
+- `CondensedPhysics4.UQFFVacuumEnergyLedgerCalculator` --- programmatic ledger.

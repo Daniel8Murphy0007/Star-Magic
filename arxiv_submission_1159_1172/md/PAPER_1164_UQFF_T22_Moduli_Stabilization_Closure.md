@@ -36,7 +36,7 @@ across G4, G5, and G8.
 We close gap **G4** of the Lagrangian re-derivation outline by
 formalising the $T^{22}$ moduli stabilisation already present in
 [PAPER_1144 §5](whitepapers/PAPER_1144_Type_IIB_Superstring_SCm_10D_Compactification.md#L60).
-The 22 compact dimensions of the $D_{\rm crit}=26$ → $D_{\rm phys}=4$
+The 22 compact dimensions of the $D_{\rm crit}=26$ $\to$ $D_{\rm phys}=4$
 descent carry moduli $\tau_i = R_i/\ell_s$ with $i = 5,\dots,26$
 (22 = 26 - 4). A VDS-induced potential
 $V(\tau) = K\sum_i (\tau_i - [SSq]^i)^2/i^{26}$ has unique stationary

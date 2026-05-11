@@ -10,7 +10,7 @@ tags: [UQFF, predictions, falsifiability, V_UA, KK, vacuum-energy, GW, no-free-p
 sm_anchor: G6_SM_Anchor_Gate
 ---
 
-# PAPER_1168: Falsifiable Predictions of the Closed UQFF Lagrangian — Five No-Free-Parameter Tests
+# PAPER_1168: Falsifiable Predictions of the Closed UQFF Lagrangian --- Five No-Free-Parameter Tests
 
 ## Abstract
 
@@ -47,7 +47,7 @@ The only physical scales are the calibrated reference $\rho_{\mathrm{SCm}}=
 
 ---
 
-## 2. Prediction P1 — Aether quasiparticle mass
+## 2. Prediction P1 --- Aether quasiparticle mass
 
 Direct from the Mexican-hat curvature (PAPER_1166 §3):
 
@@ -73,7 +73,7 @@ at a mass $\geq 10^{-6}$ eV with the predicted Mexican-hat coupling.
 
 ---
 
-## 3. Prediction P2 — Vacuum offset and $\Lambda$ scale
+## 3. Prediction P2 --- Vacuum offset and $\Lambda$ scale
 
 The Mexican-hat sits at $V(0) = \tfrac{25}{12}\rho_{\mathrm{SCm}}$ above
 the true vacuum:
@@ -102,7 +102,7 @@ of $\rho_{\mathrm{SCm}}$ that disagrees with the value above by more than 1%.
 
 ---
 
-## 4. Prediction P3 — KK tower echo amplitude bound
+## 4. Prediction P3 --- KK tower echo amplitude bound
 
 PAPER_1162 closed G5 by mode-by-mode summation of the Kaluza-Klein tower:
 
@@ -123,13 +123,13 @@ h_{\text{echo}}\;\lesssim\;1.6\times10^{-37}\;h_{\text{ringdown}}
 $$
 
 **Falsifiable signature.** Any confirmed GW echo above $10^{-50}$ strain at
-post-merger frequencies — 8 orders of magnitude above the prediction — would
+post-merger frequencies --- 8 orders of magnitude above the prediction --- would
 falsify G5 closure. Conversely, the predicted absence of echoes is consistent
 with all GWTC-4.0 non-detections.
 
 ---
 
-## 5. Prediction P4 — Buoyancy coupling triangular ladder
+## 5. Prediction P4 --- Buoyancy coupling triangular ladder
 
 PAPER_1165 closed G2 with the exact rational
 
@@ -151,7 +151,7 @@ independent confirmation.
 
 ---
 
-## 6. Prediction P5 — $F_{\mathrm{TRZ}}$ and $\Phi_{\mathrm{res}}$ cross-correlation
+## 6. Prediction P5 --- $F_{\mathrm{TRZ}}$ and $\Phi_{\mathrm{res}}$ cross-correlation
 
 PAPER_1160 closed G7 with $F_{\text{TRZ}} = 1/|SO(5)| = 0.100$ exact.
 PAPER_1159 closed G6 with $\Phi_{\text{res}} = (D_{\text{BSFG}}-1)/D_{\text{BSFG}} = 5/6$ exact.
@@ -205,13 +205,13 @@ in a single pass.
 
 ## References
 
-- PAPER_1159 (Session 246) — $\Phi_{\text{res}} = 5/6$.
-- PAPER_1160 (Session 247) — $F_{\text{TRZ}} = 1/|SO(5)|$.
-- PAPER_1162 (Session 249) — KK tower mode-by-mode bound.
-- PAPER_1165 (Session 252) — $\beta_{i} = 3(5-i)/20$ triangular ladder.
-- PAPER_1166 (Session 253) — V(UA) Mexican-hat $K = 25/12$.
-- PAPER_1167 (Session 253) — All-eight closure master synthesis.
-- `_lagrangian_rederivation_outline.py` — gap catalogue.
-- `uqff_closed_constants.py` — canonical integer-rational constants.
-- `MAIN_1_CoAnQi.cpp` SOURCE4 `compute_V_UA_SOURCE4` — C++ implementation.
-- `QCalcGeom.cpp` `bsfg_aether_potential` — BSFG geometric layer.
+- PAPER_1159 (Session 246) --- $\Phi_{\text{res}} = 5/6$.
+- PAPER_1160 (Session 247) --- $F_{\text{TRZ}} = 1/|SO(5)|$.
+- PAPER_1162 (Session 249) --- KK tower mode-by-mode bound.
+- PAPER_1165 (Session 252) --- $\beta_{i} = 3(5-i)/20$ triangular ladder.
+- PAPER_1166 (Session 253) --- V(UA) Mexican-hat $K = 25/12$.
+- PAPER_1167 (Session 253) --- All-eight closure master synthesis.
+- `_lagrangian_rederivation_outline.py` --- gap catalogue.
+- `uqff_closed_constants.py` --- canonical integer-rational constants.
+- `MAIN_1_CoAnQi.cpp` SOURCE4 `compute_V_UA_SOURCE4` --- C++ implementation.
+- `QCalcGeom.cpp` `bsfg_aether_potential` --- BSFG geometric layer.

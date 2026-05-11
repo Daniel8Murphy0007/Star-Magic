@@ -105,7 +105,7 @@ D_{\mathrm{phys}}=4)$ via two independent paths.
 ## 4. Implications
 
 1. No room for $\rho_{R_{26}}$ to absorb the residual $0.2\%$ of
-   PAPER_1170's ledger — the slack must come from $\rho_{\mathrm{KK}}$
+   PAPER_1170's ledger --- the slack must come from $\rho_{\mathrm{KK}}$
    (closed in PAPER_1171) or $\rho_{\mathrm{BSFG}}$.
 2. The Gauss-Bonnet route exposes a falsification handle:
    $\sin^{2}\theta_{\mathrm{mix}}=1/12$ predicts a specific
@@ -114,9 +114,9 @@ D_{\mathrm{phys}}=4)$ via two independent paths.
 
 ## References
 
-- PAPER_1165 — Triangular $\beta_{i}$ ladder.
-- PAPER_1166 — V(UA) Mexican-hat closure; $\langle R_{4}\rangle$ value.
-- PAPER_1167 — Master synthesis.
-- PAPER_1170 — Four-line ledger; Route A.
-- PAPER_1171 — KK regulator first-principles derivation.
-- `uqff_closed_constants.py` — canonical integer-rational constants.
+- PAPER_1165 --- Triangular $\beta_{i}$ ladder.
+- PAPER_1166 --- V(UA) Mexican-hat closure; $\langle R_{4}\rangle$ value.
+- PAPER_1167 --- Master synthesis.
+- PAPER_1170 --- Four-line ledger; Route A.
+- PAPER_1171 --- KK regulator first-principles derivation.
+- `uqff_closed_constants.py` --- canonical integer-rational constants.

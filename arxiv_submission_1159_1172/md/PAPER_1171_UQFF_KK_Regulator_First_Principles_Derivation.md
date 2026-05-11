@@ -160,7 +160,7 @@ $\zeta(5)$.
 ## 7. Falsifiability
 
 If $\zeta(5)$ were replaced by any other rational/transcendental in
-the regulator, $\rho_{\mathrm{KK}}$ shifts by $>5\%$ — outside the
+the regulator, $\rho_{\mathrm{KK}}$ shifts by $>5\%$ --- outside the
 $\pm 0.5\%$ tolerance band of the ledger. Conversely, an experimental
 revision of $\rho_{\Lambda}^{\mathrm{obs}}$ by more than $\pm 1\%$
 would force a re-examination of either $\zeta(5)$'s entrance into the
@@ -168,10 +168,10 @@ calculation or the compactification ratio $D_{\mathrm{BSFG}}/D_{\mathrm{crit}}=6
 
 ## References
 
-- PAPER_1162 — KK tower mode-by-mode closure.
-- PAPER_1167 — Closed Lagrangian master synthesis.
-- PAPER_1170 — Four-line vacuum-energy ledger.
+- PAPER_1162 --- KK tower mode-by-mode closure.
+- PAPER_1167 --- Closed Lagrangian master synthesis.
+- PAPER_1170 --- Four-line vacuum-energy ledger.
 - Elizalde (2012), *Ten Physical Applications of Spectral Zeta Functions*, §2.
-- Planck Collaboration (2024) — cosmological parameters.
-- `uqff_closed_constants.py` — canonical integer-rational constants.
-- `CondensedPhysics4.UQFFKKTowerRegulatorCalculator` — programmatic regulator.
+- Planck Collaboration (2024) --- cosmological parameters.
+- `uqff_closed_constants.py` --- canonical integer-rational constants.
+- `CondensedPhysics4.UQFFKKTowerRegulatorCalculator` --- programmatic regulator.

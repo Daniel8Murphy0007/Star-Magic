@@ -36,7 +36,7 @@ references listed in §7. Tolerances are taken verbatim from PAPER_1168.
 
 ---
 
-## 2. P1 — Aether quasiparticle mass
+## 2. P1 --- Aether quasiparticle mass
 
 **Prediction.** $m_{UA}^2 = (50/3)\,\rho_{\mathrm{SCm}}/v_{UA}^2 \approx 1.182\times 10^{-51}\ \text{(SI)}$,
 energy-equivalent $m_{UA}c^2 \sim 6.3\times 10^{-8}\ \text{eV}$.
@@ -46,14 +46,14 @@ mass from LIGO/Virgo dispersion analyses is $m_g < 1.27\times 10^{-23}\ \text{eV
 (GWTC-4.0 catalogue paper, Abbott et al. 2025).
 
 **Residual.** Predicted scale is $4\times 10^{15}$ times higher than current
-LIGO sensitivity floor — i.e. **decoupled** from existing data. Matches
+LIGO sensitivity floor --- i.e. **decoupled** from existing data. Matches
 all non-detections trivially.
 
 **Verdict.** [OK] Consistent with all current data. Not yet probed.
 
 ---
 
-## 3. P2 — Vacuum offset and $\Lambda$
+## 3. P2 --- Vacuum offset and $\Lambda$
 
 **Prediction.** $V(0) = (25/12)\rho_{\mathrm{SCm}} = 1.477\times 10^{-36}\ \text{J/m}^3$.
 
@@ -71,13 +71,13 @@ The remaining 27 decades are absorbed by:
 | KK tower zero-point sum (PAPER_1162) | $\leq 10^{-10}\ \text{J/m}^3$ | PAPER_1162 §4 |
 | BSFG buoyancy back-reaction | $\sim 10^{-11}\ \text{J/m}^3$ | PAPER_1165 §3 |
 
-**Verdict.** [OK] Consistent — $V(0)$ is the *minimum* contribution; the KK
+**Verdict.** [OK] Consistent --- $V(0)$ is the *minimum* contribution; the KK
 + BSFG sum saturates the observed value within the closed Lagrangian's
 suppression bound $1/26^{26}$.
 
 ---
 
-## 4. P3 — KK echo strain bound
+## 4. P3 --- KK echo strain bound
 
 **Prediction.** $h_{\text{echo}}/h_{\text{ringdown}} \leq 1/26^{26} = 1.624\times 10^{-37}$.
 
@@ -88,20 +88,20 @@ at $\geq 95\%$ confidence across 90 binary mergers.
 **Residual.** Predicted bound is **35 orders of magnitude below** current
 sensitivity. Cannot be tested with present detectors; future
 spaceborne (LISA) and atom-interferometer arrays may approach $10^{-25}$
-within 30 years — still 12 decades above the prediction.
+within 30 years --- still 12 decades above the prediction.
 
 **Verdict.** [OK] Consistent with all non-detections. Practically untestable
-with current technology — represents **strongest possible** suppression
+with current technology --- represents **strongest possible** suppression
 prediction.
 
 ---
 
-## 5. P4 — Triangular buoyancy ladder $\beta_i$
+## 5. P4 --- Triangular buoyancy ladder $\beta_i$
 
 **Prediction.** $\{\beta_1,\beta_2,\beta_3,\beta_4\} = \{0.603, 0.450, 0.300, 0.150\}$, $\pm 0.5\%$.
 
 **Comparator.** All UQFF calibrated systems (Sessions 130–253) used these
-$\beta_i$ values implicitly — they appear hard-coded in
+$\beta_i$ values implicitly --- they appear hard-coded in
 `MAIN_1_CoAnQi.cpp` `compute_Ubi_SOURCE4` and were derived from first
 principles in PAPER_1165. To test as a *prediction* (rather than a
 post-hoc input) we re-fit a representative subset releasing $\beta_i$ as
@@ -127,7 +127,7 @@ Triangular ladder confirmed as physical, not fitted.
 
 ---
 
-## 6. P5 — BSFG cross-product $\Phi_{\text{res}}\cdot F_{\text{TRZ}}$
+## 6. P5 --- BSFG cross-product $\Phi_{\text{res}}\cdot F_{\text{TRZ}}$
 
 **Prediction.** $\Phi_{\text{res}}\cdot F_{\text{TRZ}} = 5/6 \cdot 1/10 = 1/12 = 0.08333\ldots$, $\pm 0.5\%$.
 
@@ -179,14 +179,14 @@ archival data.**
 
 ## References
 
-- PAPER_1167 — Master synthesis (8/8 closures).
-- PAPER_1168 — Five no-free-parameter predictions (this paper's parent).
-- PAPER_1162 — KK tower mode-by-mode summation.
-- PAPER_1165 — Triangular $\beta_i$ ladder closure.
-- PAPER_1160 — $F_{\text{TRZ}} = 1/|SO(5)|$.
-- PAPER_1159 — $\Phi_{\text{res}} = 5/6$.
-- Planck Collaboration (2024) — cosmological parameters.
-- Abbott et al. (2025) — GWTC-4.0 and dispersion bounds.
-- `bodies_*.csv` — UQFF calibrated system catalogue (Sessions 130–253).
-- `uqff_closed_constants.py` — single source of truth for closed constants.
-- `CondensedPhysics4.UQFFFalsifiablePredictionsCalculator` — programmatic predictions.
+- PAPER_1167 --- Master synthesis (8/8 closures).
+- PAPER_1168 --- Five no-free-parameter predictions (this paper's parent).
+- PAPER_1162 --- KK tower mode-by-mode summation.
+- PAPER_1165 --- Triangular $\beta_i$ ladder closure.
+- PAPER_1160 --- $F_{\text{TRZ}} = 1/|SO(5)|$.
+- PAPER_1159 --- $\Phi_{\text{res}} = 5/6$.
+- Planck Collaboration (2024) --- cosmological parameters.
+- Abbott et al. (2025) --- GWTC-4.0 and dispersion bounds.
+- `bodies_*.csv` --- UQFF calibrated system catalogue (Sessions 130–253).
+- `uqff_closed_constants.py` --- single source of truth for closed constants.
+- `CondensedPhysics4.UQFFFalsifiablePredictionsCalculator` --- programmatic predictions.

@@ -10,7 +10,7 @@ tags: [UQFF, Lagrangian, V_UA, Mexican-hat, G1, SCm, vacuum-potential, closure]
 sm_anchor: G6_SM_Anchor_Gate
 ---
 
-# PAPER_1166: UQFF V(UA) Mexican-Hat Polynomial Closure — G1 Final Gap
+# PAPER_1166: UQFF V(UA) Mexican-Hat Polynomial Closure --- G1 Final Gap
 
 ## Abstract
 
@@ -95,7 +95,7 @@ $$ m_{\mathrm{UA}}^{2} \;=\; V''(v_{\mathrm{UA}})
 
 **Cross-lock with G2/G7**: the appearance of $|SO(5)|=10$ in $K$ is the same
 group factor that produces $\beta_i = 3(5-i)/20$ in PAPER_1165 and
-$F_{\mathrm{TRZ}} = 1/10$ in PAPER_1160 — G1, G2, and G7 share the SO(5)
+$F_{\mathrm{TRZ}} = 1/10$ in PAPER_1160 --- G1, G2, and G7 share the SO(5)
 breaking chain.
 
 ## 5. Comparison with Prior Magnetar Fit
@@ -111,7 +111,7 @@ minimum $\mathrm{UA}^{2}_{\min} = -a_2/(2a_4) = v_{\mathrm{UA}}^{2}$ is the
 canonical SCm-UA flux velocity squared. The magnetar fit is recovered
 identically with zero residual.
 
-## 6. Conclusion — All Eight Lagrangian Gaps Closed
+## 6. Conclusion --- All Eight Lagrangian Gaps Closed
 
 G1 reduces the V(UA) functional shape to a single rational $K = 25/12$ and
 two pre-calibrated scales. With this closure:
@@ -136,12 +136,12 @@ The UQFF Lagrangian is now fully derived from first principles.
 
 ## References
 
-- PAPER_1159 — G6 anchor coefficient $\Phi_{\mathrm{res}} = 5/6$
-- PAPER_1160 — G7 $F_{\mathrm{TRZ}} = 1/|SO(5)|$
-- PAPER_1161 — G8 Pochhammer normalisation
-- PAPER_1162 — G5 lightest modulus mass
-- PAPER_1163 — G3 DPM SO(2) light-cone closure
-- PAPER_1164 — G4 $T^{22}$ moduli stabilisation
-- PAPER_1165 — G2 $\beta_i$ triangular closure
+- PAPER_1159 --- G6 anchor coefficient $\Phi_{\mathrm{res}} = 5/6$
+- PAPER_1160 --- G7 $F_{\mathrm{TRZ}} = 1/|SO(5)|$
+- PAPER_1161 --- G8 Pochhammer normalisation
+- PAPER_1162 --- G5 lightest modulus mass
+- PAPER_1163 --- G3 DPM SO(2) light-cone closure
+- PAPER_1164 --- G4 $T^{22}$ moduli stabilisation
+- PAPER_1165 --- G2 $\beta_i$ triangular closure
 - `_lagrangian_rederivation_outline.py` L50-51 (G1 statement)
 - `dpm_vacuum_manifold.py` L5451 ($\rho_{\mathrm{UA}}/\rho_{\mathrm{SCm}}=10$)

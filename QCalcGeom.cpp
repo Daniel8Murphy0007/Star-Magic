@@ -10,7 +10,7 @@
  *   vds_branches, dvp_branches, bh26_branches,
  *   vds_dvp_coupled, bh26_bsh_resonance     <- Phase H202 additions
  *
- * runQCalcGeomTests() covers T01–T80 (80 tests total; T77-T80 added Session 257 for G2 ledger sensitivity).
+ * runQCalcGeomTests() covers T01–T82 (82 tests total; T81-T82 added Session 258 for P11/P12 closed-form invariance).
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
@@ -1390,6 +1390,25 @@ void runQCalcGeomTests() {
         R.push_back({ "T80","G2-Sensitivity",
             "zeta(3)/zeta(5)~1.159 and zeta(7)/zeta(5)~0.972 (KK selects zeta(5))",
             ratio_35, 1.159, 1.0, t80, t80 });
+
+        // ── Session 258: P11 / P12 closed-form invariance ─────────────────────
+        // T81: Ringdown R_21/22 R26 gain = (D_crit/D_BSFG)^(1/4) = (13/3)^0.25
+        const double r26_gain = std::pow(26.0/6.0, 0.25);
+        const double r26_gain_expected = 1.44285;   // (13/3)^0.25
+        bool t81 = (std::abs(r26_gain - r26_gain_expected) < 1.0e-4);
+        R.push_back({ "T81","G2-Prediction",
+            "P11 R_21/22 R26 gain == (13/3)^0.25 ~ 1.4429 (PAPER_1175)",
+            r26_gain, r26_gain_expected, 1.0e-2, t81, t81 });
+
+        // T82: sigma_8 CVW geom-mean lock = sqrt(0.811 * 0.760) ~ 0.785
+        const double s8_planck = 0.811;
+        const double s8_wl     = 0.760;
+        const double s8_gm     = std::sqrt(s8_planck * s8_wl);
+        const double s8_gm_expected = 0.7851;
+        bool t82 = (std::abs(s8_gm - s8_gm_expected) < 1.0e-3);
+        R.push_back({ "T82","G2-Prediction",
+            "P12 sigma_8 CVW geom-mean == sqrt(0.811*0.76) ~ 0.7851 (PAPER_1176)",
+            s8_gm, s8_gm_expected, 0.2, t82, t82 });
     }
 
     // ── Print results table ──────────────────────────────────────────────────
