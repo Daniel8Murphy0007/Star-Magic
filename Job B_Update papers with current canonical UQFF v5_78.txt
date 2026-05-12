@@ -322,3 +322,41 @@ Cross-references (in all 10 papers, still pandoc - future batches):
   PAPER_1000-1081 (Session 204-225 extension batch)
 
 CSV updated: 10 rows -> status=DONE v5.78 arXiv-LaTeX, commit=58eff400.
+
+
+==============================================================================
+BATCH 3 FORMAT REMEDIATION (Session 262 cont.) - commit e87aa5cc
+==============================================================================
+Date: 2026-05-12
+Toolchain: pdflatex direct (MiKTeX) - NO pandoc, NO xelatex, NO reportlab.
+Old pandoc PDFs preserved in pdf_backup_pandoc_2026-05-12/ (shared with Batch 2).
+Source .md files untouched (v5.78 closure content preserved verbatim).
+Converter _md_to_arxiv_tex.py extended for Batch 3:
+  - Math-mode unicode mappings added: hbar, Box, ell, mathcal{M/E/H/L/I},
+    mathbb{R/N/Z/C/Q}, odot, oplus, otimes, sim, cong
+  - Text-mode unicode mappings added: square (Box), script M (mathcal{M})
+  - Verbatim ASCII fallback expanded for code-span unicode (hbar, M, Box, etc.)
+  - Stash 2nd math pass after map_unicode so injected $...$ survives escape_text
+  - ZZCODE restore now sanitizes unicode before \texttt{}
+  - wrap_math_leaks: global regex pre-pass wraps \log\?_{...} style chains
+    even inside text-mode wrappers (e.g. \textbf{...exp[-\log_{10}(...)]})
+  - Zero-width / variation selectors (U+FEFF, U+FE0F, U+FE0E, U+200B-D) stripped
+
+Files (10):
+  PAPER_009b_Aether_String_TRZ_Damping_GW                           md= 35457B tex= 46347B pdf= 504813B
+  PAPER_015_Cosmological_Implications_UQFF_Modified_GW_Propagation  md= 34862B tex= 45741B pdf= 531188B
+  PAPER_015b_Multiband_GW_LISA_LIGO_UQFF                            md= 25414B tex= 34250B pdf= 470140B
+  PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations         md= 31481B tex= 42570B pdf= 511260B
+  PAPER_016b_White_Dwarf_Foreground_UQFF                            md= 23238B tex= 31657B pdf= 450282B
+  PAPER_017_Redshift_Corrections_z1_in_UQFF_GW_Propagation          md= 25465B tex= 35297B pdf= 479499B
+  PAPER_018_Aether_Noise_Spectrum_Characterization_for_LISA         md= 26716B tex= 36251B pdf= 486524B
+  PAPER_019_Pulsar_Timing_Array_Anomalies_UQFF                      md= 51667B tex= 66301B pdf= 531822B (was 439072B pandoc)
+  PAPER_020_Cosmic_Ray_Propagation_UQFF_Spacetime                   md= 35821B tex= 47688B pdf= 503342B (was 398428B pandoc)
+  PAPER_021_Gravitational_Lensing_Corrections_UQFF_Vacuum_Density   md= 32678B tex= 43197B pdf= 500858B
+
+All 10 PDFs verified: Creator=LaTeX with hyperref (compliant).
+Marker scan: beta_i, SCm, UA, SSq, kappa, UQFF all present in all 10.
+TRZ marker present in 6 (009b, 017, 018, 019, 020, 021).
+No content lost. YAML frontmatter stripped, body preserved.
+
+CSV updated: 10 rows -> status=DONE v5.78 arXiv-LaTeX, commit=e87aa5cc.
