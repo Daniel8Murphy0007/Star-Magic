@@ -37,7 +37,7 @@ decades. UQFF reduces the LIGO horizon from 13,440 Mpc to 8,355 Mpc (38% reducti
 SMBH detection horizon from 140.8 Gpc to 87.5 Gpc (38% reduction). The accessible detection volume
 drops to 24% of the GR expectation (volume ratio = 0.522 $\times$ correction ˜ 0.24). For the benchmark
 GW150914-like BBH event: Gw150914 SNR drops from 268 (GR) to 167 (UQFF), and for the SMBH benchmark:
-SNR 1116 ? 694. The UQFF factor of 0.622 is frequency-independent across both the mHz and kHz GW
+SNR 1116 $\rightarrow$ 694. The UQFF factor of 0.622 is frequency-independent across both the mHz and kHz GW
 bands, making multi-band consistency a direct test of the UQFF propagation model. We derive
 multi-band discriminants for separating UQFF from astrophysical uncertainty.
 
@@ -70,7 +70,7 @@ equally.
 
 ### 2.1 LIGO Horizon
 
-For a BBH event similar to GW150914 (36+29 M?), the optimal LIGO matched-filter horizon:
+For a BBH event similar to GW150914 (36+29 M$_\odot$), the optimal LIGO matched-filter horizon:
 
 | Model | Horizon distance | Reduction |
 |-------|-----------------|-----------|
@@ -83,7 +83,7 @@ simulation uses D = 0.622 as a cross-band average.
 
 ### 2.2 LISA Horizon (SMBH)
 
-For SMBH mergers (106 M? at cosmological distances):
+For SMBH mergers (10$^6$ M$_\odot$ at cosmological distances):
 
 | Model | Horizon distance | Reduction |
 |-------|-----------------|-----------|
@@ -121,7 +121,7 @@ rather than a source-property effect.
 The GW detection volume scales as d_max3:
 
 ```
-V_det ? d_max3 ? (SNR_reference / SNR_threshold)3
+V_det $\propto$ d_max$^3$ $\times$ (SNR_reference / SNR_threshold)$^3$
 ```
 
 Applying D = 0.622 to the detection horizon:

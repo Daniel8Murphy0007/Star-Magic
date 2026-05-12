@@ -36,13 +36,13 @@ prediction for this foreground, finding a 61.4% reduction: P_GR = 4.31 \times 10
 \times 10-41 in strain power spectral density. This reduced foreground is counterintuitive but
 beneficial: LISA sensitivity to cosmological sources *improves* in UQFF relative to GR.
 Additionally, UQFF shifts approximately 104 WD binaries above the individually-resolvable threshold
-(GR: 10,000 ? UQFF threshold: 6,216 detected but individually resolved). The net effect is a LISA
+(GR: 10,000 $\rightarrow$ UQFF threshold: 6,216 detected but individually resolved). The net effect is a LISA
 sensitivity improvement to high-redshift sources by factor ~1.6 in SNR, complementing the detection
 horizon reduction described in Papers #13–15.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0\times10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0\times10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -86,10 +86,10 @@ The confusion foreground power spectral density is estimated by summing the GW p
 binaries within the Milky Way:
 
 $$
-P_WD(f) = S_i h_i(f)2 / (4 \times ?f)
+P_{WD}(f) = \sum_i h_i(f)^2 / (4 \times \Delta f)
 $$
 
-where the sum is over all systems contributing to frequency bin f, and ?f is the frequency
+where the sum is over all systems contributing to frequency bin f, and $\Delta$f is the frequency
 resolution.
 
 ---
@@ -141,7 +141,7 @@ The LISA sensitivity to extragalactic sources (z ~ 1 SMBH mergers) in UQFF is mo
 competing effects:
 
 1. **Signal suppression:** h_signal \times D_cosmo = h_signal \times 0.619 (38% strain reduction)
-2. **Foreground reduction:** P_noise ? P_noise \times D_local2 = P_noise \times 0.614 (61.4% noise reduction)
+2. **Foreground reduction:** P_noise $\rightarrow$ P_noise \times D_local2 = P_noise \times 0.614 (61.4% noise reduction)
 
 Net SNR change for a source at z = 1:
 $$
@@ -159,7 +159,7 @@ signal-suppression case.
 
 ### 4.2 Window to High-Redshift Sources
 
-For sources at very high redshift (z > 3), D_cosmo ? D_local because Aether compensation saturates:
+For sources at very high redshift (z > 3), D_cosmo $\neq$ D_local because Aether compensation saturates:
 
 $$
 SNR(UQFF, high-z) / SNR(GR, high-z) = D_cosmo(z>3) / D_local ~ 0.33/0.62 ~ 0.53
@@ -217,14 +217,14 @@ $[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ? | 5.0 \times 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 \times 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | ß_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
 | k4 | 2.0 | Ug4 vacuum-concentration coupling |
-| ? | 10-22 | Inertia tensor scale |
+| I | 10-22 | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -239,10 +239,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `c`ompute_{Ug4\_SOURCE}`4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `c`ompute_{Ubi\_SOURCE}`4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_{Um\_SOURCE}`4` / `compute_Um()` |
-| -S??\cdotU?\cdotE_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
+| -$\Sigma\lambda_i\cdot$U$_i\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-?1=10-10, ?2=10-12, ?3=10-11, ?4=10-13 (free parameters, not yet empirically calibrated)
+$\lambda_1$=10-10, $\lambda_2$=10-12, $\lambda_3$=10-11, $\lambda_4$=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -250,9 +250,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ?_c | 1015 kg/m3 | SCm critical superconducting density |
+| $\rho_c$ | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| ?? | 2p/(434\cdot365.25) rad/day | 434-year Gleisberg supercycle |
+| $\Delta\omega$ | 2$\pi$/(434\cdot365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -338,7 +338,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.171 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 59$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| ? decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -350,12 +350,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant a | UQFF reproduces a via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant ? | 1.1\times10-52 m-2 (UQFF vacuum term) | 1.114\times10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | ? = 0.0005/day ? G_p suppression | < 4.17\times10-35/yr | Super-K 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1\times10-52 m-2 (UQFF vacuum term) | 1.114\times10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\rightarrow$ G_p suppression | < 4.17\times10-35/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
-produce measurable deviations from GR at scales where vacuum condensate density ?_SCm becomes
+produce measurable deviations from GR at scales where vacuum condensate density $\rho_{SCm}$ becomes
 significant, offering a falsifiable prediction beyond the Standard Model.
 
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM

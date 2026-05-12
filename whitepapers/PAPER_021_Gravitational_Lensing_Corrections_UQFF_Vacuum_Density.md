@@ -32,8 +32,8 @@ cornerstone prediction of General Relativity confirmed across scales from solar 
 cosmological. However, precision weak lensing surveys (DES, HSC, KiDS) report a persistent s8
 tension: the observed matter power spectrum amplitude is ~3s lower than Planck CMB predictions. The
 Unified Quantum Field Framework (UQFF) resolves this tension through vacuum density contributions to
-the effective lensing potential. UQFF vacuum density ?_vac modifies the deflection angle,
-convergence ?_lens, and shear ? fields via the aether and TRZ components. We derive UQFF-corrected
+the effective lensing potential. UQFF vacuum density $\rho_{vac}$ modifies the deflection angle,
+convergence $\kappa_{lens}$, and shear $\gamma$ fields via the aether and TRZ components. We derive UQFF-corrected
 lensing equations, calculate the modified matter power spectrum P(k), and predict an 8.3%
 suppression of s8 relative to GR  precisely matching the observed discrepancy. Additionally, UQFF
 predicts gravitational wave lensing magnification deviations of ~2.4% detectable by third-generation
@@ -61,13 +61,13 @@ where:
 - a_GR = deflection angle (twice DPM-seeded prediction)
 
 Lensing observables:  
-- **Convergence ?_lens:** projected mass density / critical surface density  
-- **Shear ?:** tidal distortion of background images  
+- **Convergence $\kappa_{lens}$:** projected mass density / critical surface density  
+- **Shear $\gamma$:** tidal distortion of background images  
 - **Magnification :** flux amplification
 
 ### 1.2 The s8 Tension
 
-The matter power spectrum amplitude s8 parameterizes density fluctuation amplitude at 8 h? Mpc:
+The matter power spectrum amplitude s8 parameterizes density fluctuation amplitude at 8 h$^{-1}$ Mpc:
 
 | Measurement | s8 | Method |  
 |-------------|-----|--------|  
@@ -103,12 +103,12 @@ $$\rho_{TRZ} = [SSq]^2 \times f_{TRZ} \times \rho_{crit} = 0.325 \times 0.12 \ti
 $$\alpha_{UQFF} = \frac{4G(M + M_{vac,eff})}{c^2 b},\qquad \sigma_{8,UQFF} = 0.917\,\sigma_{8,GR}$$
 
 Using UQFF calibration constants:
-- **?_aether = U_UA  ?_crit = 0.0001 $\times$ 9.47 $\times$ 10? g/cm = 9.47 $\times$ 10?4 g/cm**  
-- **?_TRZ = [SSq]  ?_crit  f_TRZ = 0.325 $\times$ 9.47 $\times$ 10? $\approx$ 0.12 = 3.69 $\times$ 10? g/cm**  
-- **?_string = ?  t_Hubble  ?_crit = negligible**
+- **$\rho_{aether}$ = U_UA $\times$ $\rho_{crit}$ = 0.0001 $\times$ 9.47 $\times$ 10$^{-30}$ g/cm$^3$ = 9.47 $\times$ 10$^{-34}$ g/cm$^3$**  
+- **$\rho_{TRZ}$ = [SSq] $\times$ $\rho_{crit}$ $\times$ f_TRZ = 0.325 $\times$ 9.47 $\times$ 10$^{-30}$ $\times$ 0.12 = 3.69 $\times$ 10$^{-31}$ g/cm$^3$**  
+- **$\rho_{string}$ = $\kappa$ $\times$ t_Hubble $\times$ $\rho_{crit}$ = negligible**
 
 Total UQFF vacuum density:  
-**?_vac,UQFF  3.70 $\times$ 10? g/cm = 3.91 $\times$ 10? ?_crit**
+**$\rho_{vac,UQFF}$ $\approx$ 3.70 $\times$ 10$^{-31}$ g/cm$^3$ = 3.91 $\times$ 10$^{-2}$ $\rho_{crit}$**
 
 ### 2.2 Modified Deflection Angle
 
@@ -122,11 +122,11 @@ The modified deflection angle:
 
 where the vacuum correction:
 
-**d_vac = -?_vac,UQFF / (2 ?_lens)  (b / r_s)**
+**$\delta_{vac}$ = $-\rho_{vac,UQFF}$ / (2 $\rho_{lens}$) $\times$ (b / r_s)**
 
-For galaxy cluster lensing (?_lens ~ 10?6 g/cm, b/r_s ~ 0.3):
+For galaxy cluster lensing ($\rho_{lens}$ ~ 10$^{-26}$ g/cm$^3$, b/r_s ~ 0.3):
 
-**d_vac = -3.70 $\times$ 10? / (2 $\times$ 10?6) $\approx$ 0.09 = -1.67 $\times$ 10?6**
+**$\delta_{vac}$ = -3.70 $\times$ 10$^{-31}$ / (2 $\times$ 10$^{-26}$) $\times$ 0.09 = -1.67 $\times$ 10$^{-6}$**
 
 This is negligible for individual lenses but cumulative over cosmic distances.
 
@@ -134,26 +134,26 @@ This is negligible for individual lenses but cumulative over cosmic distances.
 
 The UQFF-corrected convergence:
 
-**?_UQFF(?) = ?_GR(?)  (1 - f_vac(z))**
+**$\kappa_{UQFF}$($\theta$) = $\kappa_{GR}$($\theta$) $\times$ (1 - f_vac(z))**
 
 where the redshift-dependent vacuum suppression:
 
-**f_vac(z) = (?_vac,UQFF / ?_crit)  D_A(z)  ?_calibration**
+**f_vac(z) = ($\rho_{vac,UQFF}$ / $\rho_{crit}$) $\times$ D_A(z) $\times$ $\kappa_{calibration}$**
 
-- **?_calibration = ?_UQFF = 0.0005/day**  
-- At z = 0.5 (typical WL survey depth): f_vac = 0.083 (8.3% suppression) ?
+- **$\kappa_{calibration}$ = $\kappa_{UQFF}$ = 0.0005/day**  
+- At z = 0.5 (typical WL survey depth): f_vac = 0.083 (8.3% suppression) $\checkmark$
 
 ### 2.4 Modified Shear
 
 The UQFF shear field:
 
-**?_UQFF = ?_GR  (1 - f_vac(z))**
+**$\gamma_{UQFF}$ = $\gamma_{GR}$ $\times$ (1 - f_vac(z))**
 
 The shear two-point correlation function:
 
-**?,UQFF(?) = (1 - f_vac)  ?,GR(?)**
+**$\xi_{\gamma,UQFF}$($\theta$) = (1 - f_vac) $\times$ $\xi_{\gamma,GR}$($\theta$)**
 
-Suppression factor: **(1 - 0.083) = 0.840**  16% reduction in ?
+Suppression factor: **(1 - 0.083) = 0.840**  16% reduction in $\xi_\gamma$
 
 ---
 
@@ -197,7 +197,7 @@ Key scales:
 | Planck CMB | 0.811 |  
 | UQFF prediction | **0.762** |  
 | DES/HSC/KiDS observed | **0.762 $\times$ 0.012** |  
-| **Match** | **? Perfect (0.0s tension)** |
+| **Match** | **$\checkmark$ Perfect (0.0$\sigma$ tension)** |
 
 ---
 
@@ -220,7 +220,7 @@ At z = 0.5: **2.4% magnification deficit**
 | Parameter | GR Prediction | UQFF Prediction | Difference |  
 |-----------|---------------|-----------------|------------|  
 | Magnification  | 2.00 | 1.95 | -2.5% |  
-| Time delay ?t | 10 days | 10.08 days | +0.8% |  
+| Time delay $\Delta$t | 10 days | 10.08 days | +0.8% |  
 | Image separation | 0.5 arcsec | 0.499 arcsec | -0.2% |  
 | Waveform phase shift | None | 0.003 rad | UQFF unique |
 
@@ -237,7 +237,7 @@ At z = 0.5: **2.4% magnification deficit**
 
 ### 5.1 Einstein Ring Radius
 
-**?_E,UQFF = ?_E,GR  v(1 - f_vac(z_lens)) = ?_E,GR $\approx$ 0.969**
+**$\theta_{E,UQFF}$ = $\theta_{E,GR}$ $\times$ $\sqrt{(1 - f_{vac}(z_{lens}))}$ = $\theta_{E,GR}$ $\times$ 0.969**
 
 3.1% reduction  measurable with JWST precision astrometry.
 
@@ -245,7 +245,7 @@ At z = 0.5: **2.4% magnification deficit**
 
 - **Giant arc abundance:** 8.3% fewer arcs than GR prediction  
 - **Einstein ring size:** 3.1% smaller rings  
-- **SDSS observed:** ~10% fewer arcs than GR  consistent with UQFF 8.3% ?
+- **SDSS observed:** ~10% fewer arcs than GR  consistent with UQFF 8.3% $\checkmark$
 
 ---
 
@@ -253,12 +253,12 @@ At z = 0.5: **2.4% magnification deficit**
 
 | Observable | GR | UQFF | Observed | UQFF Match |  
 |------------|-----|------|----------|------------|  
-| s8 | 0.811 | **0.762** | 0.762 $\times$ 0.012 | ? |  
-| ? suppression | 0% | 16% | ~15% vs CMB | ? |  
-| Arc abundance | Baseline | -8.3% | ~-10% | ? |  
-| Einstein radius | Baseline | -3.1% | Under-measured | ? |  
+| s8 | 0.811 | **0.762** | 0.762 $\times$ 0.012 | $\checkmark$ |  
+| $\xi_\gamma$ suppression | 0% | 16% | ~15% vs CMB | $\checkmark$ |  
+| Arc abundance | Baseline | -8.3% | ~-10% | $\checkmark$ |  
+| Einstein radius | Baseline | -3.1% | Under-measured | $\checkmark$ |  
 | GW mag. deficit | 0% | 2.4% | Not yet measured | Prediction |  
-| S8 = s8v(Om/0.3) | 0.832 | 0.782 | 0.776 $\times$ 0.017 | ? |
+| S8 = s8v(Om/0.3) | 0.832 | 0.782 | 0.776 $\times$ 0.017 | $\checkmark$ |
 
 ---
 
@@ -280,8 +280,8 @@ The s8 tension has persisted for over a decade. UQFF provides the first paramete
 ### 7.3 CMB Unaffected
 
 UQFF vacuum effects negligible at z ~ 1100 because:  
-- ?_vac,UQFF ? (1+z)^(-3) ? much smaller at recombination  
-- ?_TRZ ? (1+z)^(-4) ? even more suppressed at z = 1100
+- $\rho_{vac,UQFF}$ $\propto$ (1+z)$^{-3}$ $\rightarrow$ much smaller at recombination  
+- $\rho_{TRZ}$ $\propto$ (1+z)$^{-4}$ $\rightarrow$ even more suppressed at z = 1100
 
 This is why Planck CMB gives higher s8  UQFF effect only manifests at late times (z < 2).
 
@@ -292,9 +292,9 @@ This is why Planck CMB gives higher s8  UQFF effect only manifests at late times
 UQFF vacuum density corrections to gravitational lensing resolve three outstanding observational
 tensions:
 
-1. **s8 tension (3.2s ? 0s):** UQFF predicts s8 = 0.762, exactly matching DES/HSC/KiDS ?  
-2. **Arc abundance deficit:** 8.3% fewer arcs predicted, ~10% observed ?  
-3. **S8 tension:** UQFF S8 = 0.782 matches observed 0.776 $\times$ 0.017 ?
+1. **s8 tension (3.2$\sigma$ $\rightarrow$ 0$\sigma$):** UQFF predicts s8 = 0.762, exactly matching DES/HSC/KiDS $\checkmark$  
+2. **Arc abundance deficit:** 8.3% fewer arcs predicted, ~10% observed $\checkmark$  
+3. **S8 tension:** UQFF S8 = 0.782 matches observed 0.776 $\times$ 0.017 $\checkmark$
 
 New prediction: **2.4% GW lensing magnification deficit**, detectable by Einstein Telescope within 2
 years.

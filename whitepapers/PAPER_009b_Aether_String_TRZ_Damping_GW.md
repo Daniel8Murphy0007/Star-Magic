@@ -35,8 +35,8 @@ The Unified Quantum Field Framework (UQFF) predicts that gravitational wave stra
 four independent vacuum-field channels: Aether compression (U_A), Super-Conductor mode (SCm),
 Topological Resonance Zone (TRZ), and String rotation coupling (ß_string). We perform a full
 decomposition of these damping contributions for GW150914 (binary black hole, d = 410 Mpc) and show
-that the combined suppression factor is D = 0.333, reducing the GR strain from 1.2499 $\times$ 10?21 to
-4.1622 $\times$ 10?22 (UQFF). This produces a measurable distance bias: if LIGO analysts assume GR waveform
+that the combined suppression factor is D = 0.333, reducing the GR strain from 1.2499 $\times$ 10$^{-21}$ to
+4.1622 $\times$ 10$^{-22}$ (UQFF). This produces a measurable distance bias: if LIGO analysts assume GR waveform
 templates, they infer an apparent distance of 1231 Mpc rather than the true 410 Mpc — a factor-of-3
 systematic. We further demonstrate that the SNR drops from 24 (GR) to 8.0 (UQFF), placing the event
 near the detection threshold and explaining marginal detections in the UQFF picture. Phase lag
@@ -53,8 +53,8 @@ present in Standard Model treatments.
 ## 1. Introduction
 
 GW150914, the first direct detection of gravitational waves, was produced by a binary black hole
-merger with component masses 36 + 29 M? at luminosity distance d_L = 410 Mpc (z ˜ 0.09). The LIGO
-detectors measured a peak strain of ~10?21 consistent with GR predictions.
+merger with component masses 36 + 29 M$_\odot$ at luminosity distance d_L = 410 Mpc (z ˜ 0.09). The LIGO
+detectors measured a peak strain of ~10$^{-21}$ consistent with GR predictions.
 
 The UQFF framework introduces quantum vacuum field contributions that modify the effective strain at
 any observer. The modification arises from four physical channels acting in the space between source
@@ -85,10 +85,10 @@ The Aether damping factor U_A depends on the integrated vacuum buoyancy along th
 path:
 
 $$
-U_A(d) = exp(-?_aether \times d / d_ref)
+U_A(d) = \exp(-\kappa_{aether} \times d / d_{ref})
 $$
 
-At d = 410 Mpc for a short-duration event (0.2 s chirp), ?_aether is negligible and U_A = 1.0000.
+At d = 410 Mpc for a short-duration event (0.2 s chirp), $\kappa_{aether}$ is negligible and U_A = 1.0000.
 
 ### 2.2 Super-Conductor Mode
 
@@ -133,12 +133,12 @@ redistributed into quantum vacuum oscillations rather than free-propagating stra
 | TRZ | 0.9000 | 0.9000 |
 | String (ß_string) | 0.3700 | 0.3330 |
 
-**Combined damping: D = 0.333 ? 66.7% amplitude reduction**
+**Combined damping: D = 0.333 $\rightarrow$ 66.7% amplitude reduction**
 
 | Quantity | Standard GR | UQFF Prediction |
 |----------|-------------|-----------------|
-| Peak strain h | 1.2499 $\times$ 10?21 | 4.1622 $\times$ 10?22 |
-| Strain from observed (UQFF) | — | 3.3300 $\times$ 10?22 |
+| Peak strain h | 1.2499 $\times$ 10$^{-21}$ | 4.1622 $\times$ 10$^{-22}$ |
+| Strain from observed (UQFF) | --- | 3.3300 $\times$ 10$^{-22}$ |
 | Amplitude reduction | — | 66.7% |
 
 ---
@@ -175,8 +175,8 @@ UQFF-suppressed, they infer the wrong distance:
 
 $$
 \begin{aligned}
-  & h_GR(d_apparent) = h_UQFF(d_true) / D_combined \\
-  & ?  d_apparent = d_true / D_combined = 410 Mpc / 0.333 = 1231 Mpc
+  & h_{GR}(d_{apparent}) = h_{UQFF}(d_{true}) / D_{combined} \\
+  & \rightarrow d_{apparent} = d_{true} / D_{combined} = 410\ \mathrm{Mpc} / 0.333 = 1231\ \mathrm{Mpc}
 \end{aligned}
 $$
 
@@ -201,9 +201,9 @@ The 0.2-second GW150914 chirp accumulates a phase lag:
 
 $$
 \begin{aligned}
-  & ?f = 2p \times ß_string_correction \times N_cycles \\
-  & N_cycles ˜ 20 (from 35 Hz to 250 Hz over 0.2 s) \\
-  & ?f = 0.126 rad (over 0.2 s chirp)
+  & \Delta f = 2\pi \times \beta_{string\_correction} \times N_{cycles} \\
+  & N_{cycles} \sim 20\ \mathrm{(from\ 35\ Hz\ to\ 250\ Hz\ over\ 0.2\ s)} \\
+  & \Delta f = 0.126\ \mathrm{rad\ (over\ 0.2\ s\ chirp)}
 \end{aligned}
 $$
 
@@ -230,15 +230,15 @@ principle be detected in public GW150914 data via Q-transform analysis.
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Event | GW150914 | LIGO O1 |
-| Component masses | 36 + 29 M? | GR inference |
-| Final mass | ~62 M? | Energy conservation |
+| Component masses | 36 + 29 M$_\odot$ | GR inference |
+| Final mass | ~62 M$_\odot$ | Energy conservation |
 | True distance | 410 Mpc | GR + EM cross-check |
 | Chirp duration | 0.2 s | In-band |
 | TRZ factor | 0.9000 | UQFF calibration |
 | String coupling | 0.3700 | UQFF calibration |
 | Combined damping | 0.3330 | Product |
-| Peak GR strain | 1.2499 $\times$ 10?21 | GR simulation |
-| Peak UQFF strain | 4.1622 $\times$ 10?22 | GR $\times$ D |
+| Peak GR strain | 1.2499 $\times$ 10$^{-21}$ | GR simulation |
+| Peak UQFF strain | 4.1622 $\times$ 10$^{-22}$ | GR $\times$ D |
 | SNR (GR) | 24 | Template matching |
 | SNR (UQFF) | 8.0 | SNR $\times$ D |
 | Apparent distance | 1231 Mpc | d / D |
@@ -253,7 +253,7 @@ principle be detected in public GW150914 data via Q-transform analysis.
 underestimate H0 by ~D ˜ 0.33 relative to electromagnetic methods.
 
 2. **Template bank coverage:** LIGO matched-filter pipelines using GR templates will recover UQFF
-signals at reduced efficiency; a UQFF template bank covering D ? [0.30, 0.40] would improve
+signals at reduced efficiency; a UQFF template bank covering D $\in$ [0.30, 0.40] would improve
 detection rate.
 
 3. **Damping factor universality:** All BBH events at similar distances should show the same D =
@@ -268,8 +268,8 @@ GW170817 (100 s) should show ~100$\times$ more accumulation than GW150914 (0.2 s
 
 We have decomposed the UQFF damping mechanism acting on GW150914 into four physical channels. The
 Aether and SCm channels are at unity for nearby events (< 500 Mpc), while TRZ (f = 0.90) and String
-(ß = 0.37) channels combine to D = 0.333. This reduces the peak strain from 1.2499 $\times$ 10?21 to 4.1622
-$\times$ 10?22 and the integrated SNR from 24 to 8.0. The most falsifiable prediction is a factor-of-3
+(ß = 0.37) channels combine to D = 0.333. This reduces the peak strain from 1.2499 $\times$ 10$^{-21}$ to 4.1622
+$\times$ 10$^{-22}$ and the integrated SNR from 24 to 8.0. The most falsifiable prediction is a factor-of-3
 distance bias in GW-based cosmology, which would appear as a systematic offset between GW standard
 siren H0 and electromagnetic H0.
 
@@ -480,7 +480,7 @@ Letters **934**, L7 (2022)
 SNR-below-threshold test flag is intended UQFF behavior)  
 *GR strain = 1.2499e-21; UQFF strain = 4.1622e-22; Combined damping = 0.333 (TRZ=0.90 $\times$
 String=0.37);*  
-*SNR: 24 ? 8.0; Apparent distance: 410 Mpc ? 1231 Mpc; Phase lag: 0.126 rad; Ripples: $\pm$1.0%;*  
+*SNR: 24 $\rightarrow$ 8.0; Apparent distance: 410 Mpc $\rightarrow$ 1231 Mpc; Phase lag: 0.126 rad; Ripples: $\pm$1.0%;*  
 *$\kappa$ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 009b**
