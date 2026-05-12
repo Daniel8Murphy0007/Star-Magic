@@ -27,21 +27,21 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-Ultra-high-energy cosmic rays (UHECRs) with energies E > 10-8 eV exhibit propagation anomalies
+Ultra-high-energy cosmic rays (UHECRs) with energies E > 10$^{18}$ eV exhibit propagation anomalies
 including the GZK suppression cutoff, anisotropy excess toward Centaurus A, and energy spectrum
 irregularities that standard diffusive shock acceleration models struggle to explain simultaneously.
 The Unified Quantum Field Framework (UQFF) introduces vacuum structure modifications to cosmic ray
 propagation through aether drag, topological resonance zone (TRZ) scattering, and string sector
 energy exchange. We derive UQFF-modified transport equations, calculate energy loss rates, and
 predict spectral features at the GZK threshold (E ~ 5 $\times$ 10$^{19}$ eV). Key results: UQFF aether drag
-produces a 3.7% excess attenuation above 10 eV, TRZ scattering explains the observed anisotropy
+produces a 3.7% excess attenuation above 10$^{20}$ eV, TRZ scattering explains the observed anisotropy
 toward Centaurus A without requiring extreme magnetic field configurations, and string sector
-exchange predicts a secondary spectral feature at E ~ 8 $\times$ 10-8 eV detectable by Auger and Telescope
+exchange predicts a secondary spectral feature at E ~ 8 $\times$ 10$^{19}$ eV detectable by Auger and Telescope
 Array.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10$^{-4}$ day$^{-1}$, [SSq] =
 0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -55,16 +55,16 @@ Cosmic rays are observed across an enormous energy range (10$^{9}$ -- 10$^{20}$ 
 
 | Observatory | Energy Range | Key Finding |
 |-------------|-------------|-------------|
-| Pierre Auger | 10-8 $\times$ 10 eV | GZK suppression confirmed, Cen A anisotropy |
-| Telescope Array | 10-8 $\times$ 10 eV | Hotspot at l ~ 177, b ~ 48 |
-| HiRes | 10-8 $\times$ 10 eV | GZK feature at 6 $\times$ 10$^{19}$ eV |
-| IceCube | 10-5 $\times$ 10-8 eV | Diffuse neutrino flux correlated with CRs |
+| Pierre Auger | 10$^{18}$--10$^{20}$ eV | GZK suppression confirmed, Cen A anisotropy |
+| Telescope Array | 10$^{18}$--10$^{20}$ eV | Hotspot at l ~ 177$^\circ$, b ~ 48$^\circ$ |
+| HiRes | 10$^{18}$--10$^{20}$ eV | GZK feature at 6 $\times$ 10$^{19}$ eV |
+| IceCube | 10$^{15}$--10$^{18}$ eV | Diffuse neutrino flux correlated with CRs |
 
 Key unsolved problems:
 1. **GZK threshold shape:** Observed suppression sharper than pure CMB photopion production
 2. **Anisotropy:** Centaurus A excess at 5s significance (Auger 2023)
-3. **Composition:** Transition from light (proton) to heavy (iron) at ankle (3 $\times$ 10-8 eV)
-4. **Secondary feature:** Possible spectral break at 8 $\times$ 10-8 eV
+3. **Composition:** Transition from light (proton) to heavy (iron) at ankle (3 $\times$ 10$^{18}$ eV)
+4. **Secondary feature:** Possible spectral break at 8 $\times$ 10$^{19}$ eV
 
 ### 1.2 Standard GR Transport Framework
 
@@ -82,7 +82,7 @@ where:
 Energy loss mechanisms (GR):
 1. Adiabatic losses (cosmological expansion)
 2. CMB photopion production (GZK process, E > 5 $\times$ 10$^{19}$ eV)
-3. CMB pair production (Bethe-Heitler, E > 10-8 eV)
+3. CMB pair production (Bethe-Heitler, E > 10$^{18}$ eV)
 4. Synchrotron radiation (magnetic fields)
 
 ### 1.3 UQFF Modifications Overview
@@ -120,15 +120,15 @@ The aether drag coefficient using UQFF calibration constant $\kappa$:
 
 where:
 - **$\kappa$ = 0.0005/day = 5.79 $\times$ 10$^{-9}$ s$^{-1}$**
-- **E_ref = 10-8 eV (ankle energy)**
+- **E_ref = 10$^{18}$ eV (ankle energy)**
 - **$\kappa$_aether = 0.37** (string sector coupling, from [SSq] = 0.57)
 
 Energy loss rate from aether drag:
 
 **-dE/dt|_aether = G_aether(E)  E**
 
-At E = 10 eV:
-- **G_aether = 0.0005 $\times$ (10/10-8)$^{0.37}$ = 0.0005 $\times$ 8.51 = 4.26 $\times$ 10$^{-3}$/day**
+At E = 10$^{20}$ eV:
+- **G_aether = 0.0005 $\times$ (10$^{20}$/10$^{18}$)$^{0.37}$ = 0.0005 $\times$ 5.36 = 2.68 $\times$ 10$^{-3}$/day**
 - **Energy loss length: L_aether = c/G_aether ~ 192 Mpc**
 
 ### 2.3 TRZ Scattering
@@ -139,7 +139,7 @@ Topological Resonance Zones scatter cosmic rays with a cross-section:
 
 Parameters:
 - **$\sigma_0$ = 3.2 $\times$ 10$^{-26}$ cm$^2$** (TRZ cross-section at peak)
-- **E_TRZ = 8 $\times$ 10-8 eV** (TRZ resonance energy)
+- **E_TRZ = 8 $\times$ 10$^{19}$ eV** (TRZ resonance energy)
 - **s_log = 0.5** (logarithmic width)
 
 TRZ scattering mean free path:
@@ -151,7 +151,7 @@ TRZ scattering mean free path:
 | 10$^{19}$ | 2.8 $\times$ 10$^{-26}$ | 217 |
 | 10$^{20}$ | 4.1 $\times$ 10$^{-28}$ | 148,000 |
 
-**Key result:** TRZ scattering peaks at E_TRZ = 8 $\times$ 10-8 eV, producing a secondary spectral feature.
+**Key result:** TRZ scattering peaks at E_TRZ = 8 $\times$ 10$^{19}$ eV, producing a secondary spectral feature.
 
 ### 2.4 String Sector Exchange
 
@@ -161,7 +161,7 @@ String sector energy exchange using [SSq] = 0.57:
 
 **f_string(E) = (E/E_Planck)^(2/3)  exp(-E_Planck/E)**
 
-At UHECR energies (E << E_Planck = 1.22 $\times$ 10-8 eV), string exchange is negligible:
+At UHECR energies (E << E_Planck = 1.22 $\times$ 10$^{28}$ eV), string exchange is negligible:
 - f_string(10$^{20}$ eV) ~ 10$^{-58}$ $\rightarrow$ effectively zero
 
 String effects become important only at Planck-scale energies, providing a natural UV cutoff.
@@ -193,7 +193,7 @@ Combined energy loss lengths:
 
 UQFF predicts three spectral features:
 
-**Feature 1  TRZ Secondary Break at E ~ 8 $\times$ 10-8 eV:**
+**Feature 1 -- TRZ Secondary Break at E ~ 8 $\times$ 10$^{19}$ eV:**
 - Spectral softening $\Delta\gamma$ ~ 0.3 due to TRZ scattering peak
 - Detectable by Auger with 10 years of data
 
@@ -209,8 +209,8 @@ UQFF predicts three spectral features:
 
 | Energy Range | GR Index $\gamma$ | UQFF Index $\gamma$ | Difference $\Delta\gamma$ |
 |-------------|-----------|-------------|---------------|
-| 10-8 $\times$ 3  10-8 eV | 3.30 | 3.28 | -0.02 |
-| 3 $\times$ 10-8 $\times$ 8  10-8 eV | 2.60 | 2.58 | -0.02 |
+| 10$^{18}$--3 $\times$ 10$^{18}$ eV | 3.30 | 3.28 | -0.02 |
+| 3 $\times$ 10$^{18}$--8 $\times$ 10$^{19}$ eV | 2.60 | 2.58 | -0.02 |
 | 8 $\times$ 10$^{18}$ -- 10$^{19}$ eV | 2.60 | 2.90 | +0.30 (TRZ break) |
 | 10$^{19}$ -- 5 $\times$ 10$^{19}$ eV | 2.60 | 2.62 | +0.02 |
 | > 5 $\times$ 10$^{19}$ eV | 5.00 | 5.19 | +0.19 (aether) |
@@ -249,7 +249,7 @@ Centaurus A, producing the observed 14% excess without requiring Cen A as the do
 ### 4.3 Magnetic Field Constraints
 
 Under UQFF:
-- Required intergalactic B field: **B ~ 3$\times$10 nG** (vs < 1 nG required by GR)
+- Required intergalactic B field: **B ~ 3$\times$10$^{-12}$ G** (vs < 1 nG required by GR)
 - This is consistent with observational upper limits (B < 20 nG)
 - UQFF reduces the magnetic field tension by factor ~5
 
@@ -274,10 +274,10 @@ This produces:
 
 | Energy (eV) | GR $\langle$lnA$\rangle$ | UQFF $\langle$lnA$\rangle$ | Observed (Auger Xmax) |
 |-------------|----------|-----------|----------------------|
-| 10-8 | 1.5 | 1.6 | 1.5§2.0 |
-| 3 $\times$ 10-8 | 2.0 | 2.2 | 2.0§2.5 |
+| 10$^{18}$ | 1.5 | 1.6 | 1.5--2.0 |
+| 3 $\times$ 10$^{18}$ | 2.0 | 2.2 | 2.0--2.5 |
 | 10$^{19}$ | 2.5 | 2.8 | 2.5--3.0 |
-| 10 | 3.0 | 3.2 | 3.0§3.5 |
+| 10$^{20}$ | 3.0 | 3.2 | 3.0--3.5 |
 
 UQFF predicts slightly heavier composition at all energies due to preferential proton attenuation by
 aether drag, consistent with Auger Xmax data.
@@ -317,10 +317,10 @@ of energy (nHz GW $\rightarrow$ 10$^{20}$ eV cosmic rays).
 
 | Detector | Prediction | Timeline |
 |----------|------------|----------|
-| Auger upgrade (AugerPrime) | Confirm TRZ break at 8 $\times$ 10-8 eV | 20262028 |
-| Telescope Array 4 | Resolve Cen A hotspot angular structure | 20272030 |
+| Auger upgrade (AugerPrime) | Confirm TRZ break at 8 $\times$ 10$^{19}$ eV | 2026--2028 |
+| Telescope Array 4 | Resolve Cen A hotspot angular structure | 2027--2030 |
 | GRAND (200,000 km) | Detect aether pile-up at 2 $\times$ 10$^{19}$ eV | 2030--2035 |
-| IceCube-Gen2 | Correlated neutrino flux from TRZ interactions | 20302035 |
+| IceCube-Gen2 | Correlated neutrino flux from TRZ interactions | 2030--2035 |
 
 ### 7.3 Limitations
 
@@ -341,7 +341,7 @@ B-field required $\checkmark$
 energies $\checkmark$
 
 All results derived from pre-calibrated constants $\kappa$ = 0.0005/day and [SSq] = 0.57. A new prediction
--- TRZ secondary spectral break at E ~ 8 $\times$ 10-8 eV with $\Delta\gamma$ ~ +0.3 is testable by AugerPrime within
+-- TRZ secondary spectral break at E ~ 8 $\times$ 10$^{19}$ eV with $\Delta\gamma$ ~ +0.3 is testable by AugerPrime within
 23 years.
 
 **Validation file:** `validate_{cosmic\_ray\_uqff}.py`
@@ -507,14 +507,14 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10$^{-4}$ day$^{-1}$ | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
 | k4 | 2.0 | Ug4 vacuum-concentration coupling |
-| $\eta$ | 10-22 | Inertia tensor scale |
+| $\eta$ | 10$^{-22}$ | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -532,7 +532,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10$^{-10}$, $\lambda$2=10$^{-12}$, $\lambda$3=10$^{-11}$, $\lambda$4=10$^{-13}$ (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -628,7 +628,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.079 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 73$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day$^{-1}$ | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 

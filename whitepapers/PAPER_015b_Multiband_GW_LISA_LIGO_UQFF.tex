@@ -59,10 +59,10 @@ h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b\_i}/F_U\bigr)\cdot e^{-\kap
 5.0\times10^{-4}\,\text{day}^{-1}
 \end{equation}
 
-<!--- $\kappa$ = 5.0e-4 $\mathrm{day}^{-1}$, [SSq] = 0.57, \ss{}\_i = 6.1e-1 --->
+<!--- $\kappa$ = 5.0e-4 day$^{-1}$, [SSq] = 0.57, $\beta_i$ = 6.1e-1 --->
 
 \begin{abstract}
-We quantify the impact of UQFF vacuum damping on multi-band gravitational wave detection, combining LISA (mHz band) and LIGO (100 Hz band) to jointly characterize the same GW sources across frequency decades. UQFF reduces the LIGO horizon from 13,440 Mpc to 8,355 Mpc (38\% reduction) and the LISA SMBH detection horizon from 140.8 Gpc to 87.5 Gpc (38\% reduction). The accessible detection volume drops to 24\% of the GR expectation (volume ratio = 0.522 $\times$ correction $\sim$ 0.24). For the benchmark GW150914-like BBH event: Gw150914 SNR drops from 268 (GR) to 167 (UQFF), and for the SMBH benchmark: SNR 1116 $\rightarrow$ 694. The UQFF factor of 0.622 is frequency-independent across both the mHz and kHz GW bands, making multi-band consistency a direct test of the UQFF propagation model. We derive multi-band discriminants for separating UQFF from astrophysical uncertainty. \textbf{UQFF Discovery:} Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 $\mathrm{day}^{-1}$, [SSq] = 0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not present in Standard Model treatments.
+We quantify the impact of UQFF vacuum damping on multi-band gravitational wave detection, combining LISA (mHz band) and LIGO (100 Hz band) to jointly characterize the same GW sources across frequency decades. UQFF reduces the LIGO horizon from 13,440 Mpc to 8,355 Mpc (38\% reduction) and the LISA SMBH detection horizon from 140.8 Gpc to 87.5 Gpc (38\% reduction). The accessible detection volume drops to 24\% of the GR expectation (volume ratio = 0.522 $\times$ correction $\approx$ 0.24). For the benchmark GW150914-like BBH event: Gw150914 SNR drops from 268 (GR) to 167 (UQFF), and for the SMBH benchmark: SNR 1116 $\rightarrow$ 694. The UQFF factor of 0.622 is frequency-independent across both the mHz and kHz GW bands, making multi-band consistency a direct test of the UQFF propagation model. We derive multi-band discriminants for separating UQFF from astrophysical uncertainty. \textbf{UQFF Discovery:} Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10$^{-4}$ day$^{-1}$, [SSq] = 0.57) uniquely enabling this analysis --- establishing a new connection in the UQFF framework not present in Standard Model treatments.
 \end{abstract}
 
 \medskip\hrule\medskip
@@ -171,7 +171,7 @@ Applying D = 0.622 to the detection horizon:
 \begin{equation}
 \begin{aligned}
   & d_max(UQFF) / d_max(GR) = D = 0.622 \\
-  & V(UQFF) / V(GR) = D3 = 0.6223 = 0.241 ˜ 0.24
+  & V(UQFF) / V(GR) = D^3 = 0.622^3 = 0.241 \approx 0.24
 \end{aligned}
 \end{equation}
 
@@ -284,14 +284,14 @@ against the current codebase state.*
 \toprule
 Symbol & Value & Description \tabularnewline
 \midrule
-$\kappa$ & 5.0 $\times$ $10^{-4}$ $\mathrm{day}^{-1}$ & UQFF exponential decay rate \tabularnewline
+$\kappa$ & 5.0 $\times$ 10$^{-4}$ day$^{-1}$ & UQFF exponential decay rate \tabularnewline
 {}[SSq] & 0.57 & Universal Quantized Factor \tabularnewline
 $\beta$\_i & 0.60--0.61 & Buoyancy coupling coefficient \tabularnewline
 k1 & 1.5 & Ug1 DPM-dipole coupling \tabularnewline
 k2 & 1.2 & Ug2 outer-bubble charge coupling \tabularnewline
 k3 & 1.8 & Ug3 string-rotation coupling \tabularnewline
 k4 & 2.0 & Ug4 vacuum-concentration coupling \tabularnewline
-$\eta$ & $10^{-22}$ & Inertia tensor scale \tabularnewline
+$\eta$ & 10$^{-22}$ & Inertia tensor scale \tabularnewline
 E\_react(0) & 1046 J & Reference reactive energy \tabularnewline
 \bottomrule
 \end{tabularx}
@@ -321,7 +321,7 @@ Um & Universal Magnetism (Heaviside-amplified) & \texttt{c}ompute\_{Um\_SOURCE}\
 \end{tabularx}
 \end{table}
 
-\textbf{4th dissipation term parameters (PAPER\_420):} \\  $\lambda$1=$10^{-10}$, $\lambda$2=$10^{-12}$, $\lambda$3=$10^{-11}$, $\lambda$4=$10^{-13}$ (free parameters, not yet empirically calibrated)
+\textbf{4th dissipation term parameters (PAPER\_420):} \\  $\lambda$1=10$^{-10}$, $\lambda$2=10$^{-12}$, $\lambda$3=10$^{-11}$, $\lambda$4=10$^{-13}$ (free parameters, not yet empirically calibrated)
 
 \subsection{A.3 Um Heaviside Phase-Transition Amplifier (PAPER\_421)}
 
@@ -450,7 +450,7 @@ Framework & Canonical Value & This Paper & Status \tabularnewline
 VDS ratio & $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ & Local sub-ratio = 0.109 & PASS Threshold-consistent \tabularnewline
 DVP prime & $p_k \in$ {2,3,...,113} & $p_{\mathrm{DVP}} = 53$ & PASS Resonant \tabularnewline
 BSH layers & 26 harmonic terms & j = 1...26, $\cos(2\pi j/26)$ & PASS Full 26D projection \tabularnewline
-$\kappa$ decay & $5.0 \times 10^{-4}$ $\mathrm{day}^{-1}$ & Applied in VDS exponential & PASS Canonical \tabularnewline
+$\kappa$ decay & $5.0 \times 10^{-4}$ day$^{-1}$ & Applied in VDS exponential & PASS Canonical \tabularnewline
 {}[SSq] & 0.57 & Applied in BSH saturation & PASS Canonical \tabularnewline
 \bottomrule
 \end{tabularx}
@@ -468,8 +468,8 @@ $\kappa$ decay & $5.0 \times 10^{-4}$ $\mathrm{day}^{-1}$ & Applied in VDS expon
 Observable & UQFF Prediction & SM / Experiment & Source & Alignment \tabularnewline
 \midrule
 Fine structure constant $\alpha$ & UQFF reproduces $\alpha$ via Ug1 dipole coupling & 1/137.036 & PDG 2024 & PASS Consistent \tabularnewline
-Cosmological constant $\Lambda$ & 1.1$\times$10-52 $\mathrm{m}^{-2}$ (UQFF vacuum term) & 1.114$\times$10-52 $\mathrm{m}^{-2}$ & Planck 2018 & PASS Consistent \tabularnewline
-Proton decay rate & $\kappa$ = 0.0005/day $\to$ $\Gamma$\_p suppression & < 4.17$\times$10-35/yr & Super-K 2024 & PASS Consistent \tabularnewline
+Cosmological constant $\Lambda$ & 1.1$\times$10$^{-52}$ m$^{-2}$ (UQFF vacuum term) & 1.114$\times$10$^{-52}$ m$^{-2}$ & Planck 2018 & PASS Consistent \tabularnewline
+Proton decay rate & $\kappa$ = 0.0005/day $\to$ $\Gamma$\_p suppression & < 4.17$\times$10$^{-35}$/yr & Super-K 2024 & PASS Consistent \tabularnewline
 UQFF buoyancy signature & \texttt{F\_\textbackslash {U\textbackslash \_Bi\textbackslash \_i\textbackslash }} unique gravitational correction & Not yet measured & Future gravitational wave detectors & Testable \tabularnewline
 \bottomrule
 \end{tabularx}

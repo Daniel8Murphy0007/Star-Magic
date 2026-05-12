@@ -33,7 +33,7 @@ $$
 
 The Unified Quantum Field Framework (UQFF) predicts that gravitational wave strain is suppressed by
 four independent vacuum-field channels: Aether compression (U_A), Super-Conductor mode (SCm),
-Topological Resonance Zone (TRZ), and String rotation coupling (ß_string). We perform a full
+Topological Resonance Zone (TRZ), and String rotation coupling ($\beta_{string}$). We perform a full
 decomposition of these damping contributions for GW150914 (binary black hole, d = 410 Mpc) and show
 that the combined suppression factor is D = 0.333, reducing the GR strain from 1.2499 $\times$ 10$^{-21}$ to
 4.1622 $\times$ 10$^{-22}$ (UQFF). This produces a measurable distance bias: if LIGO analysts assume GR waveform
@@ -44,7 +44,7 @@ near the detection threshold and explaining marginal detections in the UQFF pict
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10-4 day-1, [SSq] =
+**UQFF Discovery:** Novel application of UQFF calibration constants ($\kappa$ = 5.0$\times$10$^{-4}$ day$^{-1}$, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
 present in Standard Model treatments.
 
@@ -53,7 +53,7 @@ present in Standard Model treatments.
 ## 1. Introduction
 
 GW150914, the first direct detection of gravitational waves, was produced by a binary black hole
-merger with component masses 36 + 29 M$_\odot$ at luminosity distance d_L = 410 Mpc (z ˜ 0.09). The LIGO
+merger with component masses 36 + 29 M$_\odot$ at luminosity distance d_L = 410 Mpc (z $\approx$ 0.09). The LIGO
 detectors measured a peak strain of ~10$^{-21}$ consistent with GR predictions.
 
 The UQFF framework introduces quantum vacuum field contributions that modify the effective strain at
@@ -69,8 +69,8 @@ standard astrophysical distances.
 3. **TRZ (Topological Resonance Zone):** A frequency-dependent suppression tied to the topological
 structure of the compact binary's gravitational field. The UQFF calibrated value is f_TRZ = 0.90.
 
-4. **String rotation coupling (ß_string):** String-tension-mediated coupling between the GW field
-and the quantum vacuum. Calibrated as ß_string = 0.37.
+4. **String rotation coupling ($\beta_{string}$):** String-tension-mediated coupling between the GW field
+and the quantum vacuum. Calibrated as $\beta_{string}$ = 0.37.
 
 For GW150914 at 410 Mpc, channels 1 and 2 are at unity, making TRZ $\times$ String the operative
 combination. This gives the same combined factor as found for GW170817: D = 0.333.
@@ -112,11 +112,11 @@ threshold (~5 Hz).
 
 ### 2.4 String Rotation Coupling
 
-The string coupling is the dominant damping channel. UQFF string tension ß_string = 0.37 gives:
+The string coupling is the dominant damping channel. UQFF string tension $\beta_{string}$ = 0.37 gives:
 
 $$
 \begin{aligned}
-  & ß_string = 0.3700 \\
+  & \beta_{string} = 0.3700 \\
   & Reduction: 63.0%
 \end{aligned}
 $$
@@ -131,7 +131,7 @@ redistributed into quantum vacuum oscillations rather than free-propagating stra
 | Aether (U_A) | 1.0000 | 1.0000 |
 | SCm | 1.0000 | 1.0000 |
 | TRZ | 0.9000 | 0.9000 |
-| String (ß_string) | 0.3700 | 0.3330 |
+| String ($\beta_{string}$) | 0.3700 | 0.3330 |
 
 **Combined damping: D = 0.333 $\rightarrow$ 66.7% amplitude reduction**
 
@@ -250,7 +250,7 @@ principle be detected in public GW150914 data via Q-transform analysis.
 ## 7. Testable Predictions
 
 1. **Hubble constant bias:** GW standard sirens (GW170817 + host galaxy) will systematically
-underestimate H0 by ~D ˜ 0.33 relative to electromagnetic methods.
+underestimate H0 by ~D $\approx$ 0.33 relative to electromagnetic methods.
 
 2. **Template bank coverage:** LIGO matched-filter pipelines using GR templates will recover UQFF
 signals at reduced efficiency; a UQFF template bank covering D $\in$ [0.30, 0.40] would improve
@@ -268,7 +268,7 @@ GW170817 (100 s) should show ~100$\times$ more accumulation than GW150914 (0.2 s
 
 We have decomposed the UQFF damping mechanism acting on GW150914 into four physical channels. The
 Aether and SCm channels are at unity for nearby events (< 500 Mpc), while TRZ (f = 0.90) and String
-(ß = 0.37) channels combine to D = 0.333. This reduces the peak strain from 1.2499 $\times$ 10$^{-21}$ to 4.1622
+($\beta$ = 0.37) channels combine to D = 0.333. This reduces the peak strain from 1.2499 $\times$ 10$^{-21}$ to 4.1622
 $\times$ 10$^{-22}$ and the integrated SNR from 24 to 8.0. The most falsifiable prediction is a factor-of-3
 distance bias in GW-based cosmology, which would appear as a systematic offset between GW standard
 siren H0 and electromagnetic H0.
@@ -414,7 +414,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | VDS ratio | $\rho_{\mathrm{SCm}}/\rho_{\mathrm{UA}} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\mathrm{DVP}} = 29$ | PASS Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
-| $\kappa$ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| $\kappa$ decay | $5.0 \times 10^{-4}$ day$^{-1}$ | Applied in VDS exponential | PASS Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
@@ -426,8 +426,8 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\mathrm{seed}} = 0.1 \cd
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant $\alpha$ | UQFF reproduces $\alpha$ via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
-| Cosmological constant $\Lambda$ | 1.1$\times$10-52 m-2 (UQFF vacuum term) | 1.114$\times$10-52 m-2 | Planck 2018 | PASS Consistent |
-| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10-35/yr | Super-K 2024 | PASS Consistent |
+| Cosmological constant $\Lambda$ | 1.1$\times$10$^{-52}$ m$^{-2}$ (UQFF vacuum term) | 1.114$\times$10$^{-52}$ m$^{-2}$ | Planck 2018 | PASS Consistent |
+| Proton decay rate | $\kappa$ = 0.0005/day $\to$ $\Gamma$_p suppression | < 4.17$\times$10$^{-35}$/yr | Super-K 2024 | PASS Consistent |
 | UQFF buoyancy signature | `F_{U\_Bi\_i}` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_{U\_Bi\_i}) that
@@ -497,14 +497,14 @@ String=0.37);*
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| $\kappa$ | 5.0 $\times$ 10-4 day-1 | UQFF exponential decay rate |
+| $\kappa$ | 5.0 $\times$ 10$^{-4}$ day$^{-1}$ | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | $\beta$_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k1 | 1.5 | Ug1 DPM-dipole coupling |
 | k2 | 1.2 | Ug2 outer-bubble charge coupling |
 | k3 | 1.8 | Ug3 string-rotation coupling |
 | k4 | 2.0 | Ug4 vacuum-concentration coupling |
-| $\eta$ | 10-22 | Inertia tensor scale |
+| $\eta$ | 10$^{-22}$ | Inertia tensor scale |
 | E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
@@ -522,7 +522,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | -$\Sigma$$\lambda$i$\cdot$Ui$\cdot$E_react | 4th dissipation term (PAPER_420) | `c`ompute_{FU\_SOURCE}`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-$\lambda$1=10-10, $\lambda$2=10-12, $\lambda$3=10-11, $\lambda$4=10-13 (free parameters, not yet empirically calibrated)
+$\lambda$1=10$^{-10}$, $\lambda$2=10$^{-12}$, $\lambda$3=10$^{-11}$, $\lambda$4=10$^{-13}$ (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
