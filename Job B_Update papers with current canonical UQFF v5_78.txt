@@ -360,3 +360,29 @@ TRZ marker present in 6 (009b, 017, 018, 019, 020, 021).
 No content lost. YAML frontmatter stripped, body preserved.
 
 CSV updated: 10 rows -> status=DONE v5.78 arXiv-LaTeX, commit=e87aa5cc.
+
+==============================================================================
+BATCH 3 SOURCE-MD REPAIR (Session 263, commit e15f6123)
+==============================================================================
+Issue: 5 Batch-3 whitepapers contained 191 corruption ? characters introduced
+by commit d2f9bed6 ("v4.72 Content quality enrichment") which performed
+cp437/UTF-8 round-tripping and dropped non-ASCII codepoints.
+
+Repair: Direct unicode substitutions sourced from CP1/CP3 canonical content
+(CosmicRayPropagationUQFFCalculator line 143298: E_GZK=5e19, E_ankle=3e18,
+E_knee=3e15, kappa=0.0005/day; Fokker-Planck canonical form in CP_InputData
+3169/3249 and CP_OutputData 473/710). Applied LaTeX commands compatible with
+arxiv pdflatex pipeline ($\kappa$, $\partial$, $\nabla$, $\rightarrow$,
+$\propto$, $\lambda$, $\theta$, $\gamma$, $\Delta\gamma$, $\langle$\rangle$,
+$\checkmark$, and 10^{N} exponents).
+
+Files repaired (md ? count after / before / legitimate-residual):
+  PAPER_009b_Aether_String_TRZ_Damping_GW.md           : 1/23  (Hawking 1974 title)
+  PAPER_015b_Multiband_GW_LISA_LIGO_UQFF.md            : 0/5
+  PAPER_016b_White_Dwarf_Foreground_UQFF.md            : 0/23
+  PAPER_020_Cosmic_Ray_Propagation_UQFF_Spacetime.md   : 1/72  (Greisen 1966 title)
+  PAPER_021_Gravitational_Lensing_Corrections_UQFF_Vacuum_Density.md : 0/67
+
+PDFs regenerated via pdflatex x 2 (arXiv-canonical).
+Pandoc backups in pdf_backup_pandoc_2026-05-12/ replaced with corrupted versions
+of new PDFs (preserves historical pandoc output - safe).
