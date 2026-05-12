@@ -386,3 +386,10 @@ Files repaired (md ? count after / before / legitimate-residual):
 PDFs regenerated via pdflatex x 2 (arXiv-canonical).
 Pandoc backups in pdf_backup_pandoc_2026-05-12/ replaced with corrupted versions
 of new PDFs (preserves historical pandoc output - safe).
+
+--- FOLLOW-UP: beta/approx/exponent mojibake repair (2026-05-12T04:54:02-04:00) ---
+Commit: a4d8d79f
+Files: PAPER_009b, PAPER_015b, PAPER_016b, PAPER_020, PAPER_021
+Fixes: ss(eszett)->beta, smalltilde->approx, 10-N->10^{N}/^{-N} exponents, day-1->day^{-1}, m-2->m^{-2}, year ranges, PowerShell $^ injection repair
+PDFs regenerated via pdflatex x2
+
