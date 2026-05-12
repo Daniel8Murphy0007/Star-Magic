@@ -289,3 +289,36 @@ Math ($...$, 5...5) passed through as-is. Tables -> booktabs longtable.
 arXiv 4-pass typeout line included before \end{document}.
 
 CSV updated: 10 rows -> status=DONE v5.78 arXiv-LaTeX, commit=02c98b50.
+
+
+==============================================================================
+BATCH 2 FORMAT REMEDIATION (Session 262 cont.) - commit 58eff400
+==============================================================================
+Date: 2026-05-12
+Toolchain: pdflatex direct (MiKTeX) - NO pandoc, NO xelatex, NO reportlab.
+Old pandoc PDFs preserved in pdf_backup_pandoc_2026-05-12/.
+Source .md files untouched (v5.78 closure content preserved verbatim).
+
+Files (10):
+  PAPER_010   md= 30678B tex= 41203B pdf=491160B (was 389064B pandoc)
+  PAPER_010b  md= 30601B tex= 39837B pdf=479645B (was 381322B pandoc)
+  PAPER_011   md= 33531B tex= 43571B pdf=504166B (was 418174B pandoc)
+  PAPER_011b  md= 30544B tex= 39588B pdf=483674B (was 386948B pandoc)
+  PAPER_012   md= 30423B tex= 39476B pdf=486074B (was 386249B pandoc)
+  PAPER_012b  md= 30234B tex= 39449B pdf=484043B (was 381197B pandoc)
+  PAPER_013   md= 30358B tex= 40227B pdf=490534B (was 386032B pandoc)
+  PAPER_013b  md= 27830B tex= 36881B pdf=470796B (was 379727B pandoc)
+  PAPER_014   md= 25460B tex= 35550B pdf=471995B (was 361498B pandoc)
+  PAPER_014b  md= 32511B tex= 42112B pdf=482047B (was 389177B pandoc)
+
+All 10 PDFs verified: Creator=LaTeX with hyperref (compliant).
+Deep marker scan: beta_i, SCm, UA, SSq, kappa, G1-G8, 27-decade all present.
+F_TRZ context verified intact in PAPER_014 ("TRZ (Time-Reversal-Zeroth)").
+No content lost. YAML frontmatter stripped, body preserved.
+
+Cross-references (in all 10 papers, still pandoc - future batches):
+  PAPER_420, 421, 642, 840, 877 (master Lagrangian/bridge - bucket B/G)
+  PAPER_1162-1180 (v5.78 canonical source papers)
+  PAPER_1000-1081 (Session 204-225 extension batch)
+
+CSV updated: 10 rows -> status=DONE v5.78 arXiv-LaTeX, commit=58eff400.
