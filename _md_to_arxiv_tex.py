@@ -79,6 +79,9 @@ UNICODE_MAP = {
     "•": r"\textbullet{}",
     "⊙": r"$\odot$", "⊕": r"$\oplus$", "⊗": r"$\otimes$",
     "ℏ": r"$\hbar$", "ℓ": r"$\ell$",
+    "□": r"$\Box$", "ℳ": r"$\mathcal{M}$",
+    "ℰ": r"$\mathcal{E}$", "ℋ": r"$\mathcal{H}$",
+    "ℒ": r"$\mathcal{L}$", "ℐ": r"$\mathcal{I}$",
     "ℝ": r"$\mathbb{R}$", "ℕ": r"$\mathbb{N}$",
     "ℤ": r"$\mathbb{Z}$", "ℂ": r"$\mathbb{C}$", "ℚ": r"$\mathbb{Q}$",
     "∼": r"$\sim$", "≅": r"$\cong$",
@@ -109,6 +112,9 @@ UNICODE_MAP = {
     "©": r"\textcopyright{}", "®": r"\textregistered{}", "™": r"\texttrademark{}",
     "\u00a0": " ",
     "\ufeff": "",
+    "\ufe0f": "",
+    "\ufe0e": "",
+    "\u200b": "", "\u200c": "", "\u200d": "",
 }
 
 
@@ -169,6 +175,24 @@ MATH_UNICODE_MAP = {
     "\u22c5": r"\cdot",
     "\u2192": r"\to",
     "\u21d2": r"\Rightarrow",
+    "\u210f": r"\hbar",
+    "\u2113": r"\ell",
+    "\u25a1": r"\Box",
+    "\u2133": r"\mathcal{M}",
+    "\u2130": r"\mathcal{E}",
+    "\u210b": r"\mathcal{H}",
+    "\u2112": r"\mathcal{L}",
+    "\u2110": r"\mathcal{I}",
+    "\u211d": r"\mathbb{R}",
+    "\u2115": r"\mathbb{N}",
+    "\u2124": r"\mathbb{Z}",
+    "\u2102": r"\mathbb{C}",
+    "\u211a": r"\mathbb{Q}",
+    "\u2299": r"\odot",
+    "\u2295": r"\oplus",
+    "\u2297": r"\otimes",
+    "\u223c": r"\sim",
+    "\u2245": r"\cong",
 }
 
 
@@ -176,7 +200,10 @@ def map_unicode_math(s: str) -> str:
     for u, repl in MATH_UNICODE_MAP.items():
         if u in s:
             # Add trailing space if next char is a letter (so \beta_x not \betax)
-            s = re.sub(re.escape(u) + r"(?=[A-Za-z])", repl + " ", s)
+            # NOTE: pass replacement as a lambda to avoid re.sub interpreting
+            # backslash sequences (e.g. \B) as template escapes.
+            spaced = repl + " "
+            s = re.sub(re.escape(u) + r"(?=[A-Za-z])", lambda _m, r=spaced: r, s)
             s = s.replace(u, repl)
     return s
 
@@ -212,6 +239,16 @@ _VERBATIM_ASCII_MAP = {
     # Misc
     "\u00df": "ss", "\u2026": "...", "\u2013": "-", "\u2014": "--",
     "\u201c": '"', "\u201d": '"', "\u2018": "'", "\u2019": "'",
+    # Math-letter unicode that can appear in code spans
+    "\u210f": "hbar", "\u2113": "l",
+    "\u25a1": "Box", "\u2133": "M", "\u2130": "E",
+    "\u210b": "H", "\u2112": "L", "\u2110": "I",
+    "\u211d": "R", "\u2115": "N", "\u2124": "Z", "\u2102": "C", "\u211a": "Q",
+    "\u2299": "(.)", "\u2295": "(+)", "\u2297": "(x)",
+    "\u223c": "~", "\u2245": "~=",
+    # Strip zero-width / variation selectors
+    "\ufeff": "", "\ufe0f": "", "\ufe0e": "",
+    "\u200b": "", "\u200c": "", "\u200d": "", "\u00a0": " ",
 }
 
 
@@ -348,6 +385,22 @@ def wrap_math_leaks(s: str) -> str:
     )
     _split_re = re.compile(r"\\(" + _KNOWN_MATH_CMDS + r")(?=[A-Za-z])")
     s = _split_re.sub(lambda m: "\\" + m.group(1) + " ", s)
+    # Pre-pass 2: globally wrap math-only commands followed by an optional
+    # sub/superscript chain into inline math, so they survive even inside
+    # text-mode wrappers like \textbf{...} (which the tokenizer below would
+    # otherwise emit verbatim without recursing). Handles both raw `_{..}`
+    # and the post-escape form `\_{..}`.
+    _MATH_LEAK_RE = re.compile(
+        r"\\(" + _KNOWN_MATH_CMDS + r")"
+        r"((?:\\?[_^](?:\{[^{}]*\}|[A-Za-z0-9]))*)"
+    )
+
+    def _wrap_leak(m, src=s):
+        if _is_in_math(src, m.start()):
+            return m.group(0)
+        return "$\\" + m.group(1) + m.group(2) + "$"
+
+    s = _MATH_LEAK_RE.sub(_wrap_leak, s)
     out = []
     i = 0
     n = len(s)
@@ -372,6 +425,38 @@ def wrap_math_leaks(s: str) -> str:
                     elif s[k] == "}":
                         depth -= 1
                     k += 1
+            # Also consume trailing sub/superscript chains: _{..}, ^{..},
+            # _x, ^x (so `\log_{10}` wraps as a single math span, not just
+            # `\log`). Also handle the post-escape form `\_{..}` `\^{..}`
+            # produced by escape_text running before wrap_math_leaks.
+            while k < n:
+                # `_` or `^` directly
+                if s[k] in ("_", "^"):
+                    k += 1
+                # escaped `\_` or `\^`
+                elif s[k] == "\\" and k + 1 < n and s[k + 1] in ("_", "^"):
+                    k += 2
+                else:
+                    break
+                if k < n and s[k] == "{":
+                    depth = 1
+                    k += 1
+                    while k < n and depth > 0:
+                        if s[k] == "\\" and k + 1 < n:
+                            k += 2
+                            continue
+                        if s[k] == "{":
+                            depth += 1
+                        elif s[k] == "}":
+                            depth -= 1
+                        k += 1
+                elif k < n and (s[k].isalnum() or s[k] == "\\"):
+                    if s[k] == "\\" and k + 1 < n and s[k + 1].isalpha():
+                        k += 2
+                        while k < n and s[k].isalpha():
+                            k += 1
+                    else:
+                        k += 1
             token = s[i:k]
             if name in TEXT_MODE_CMDS or _is_in_math(s, i):
                 out.append(token)
@@ -410,6 +495,12 @@ def render_inline(line: str) -> str:
 
     # Now apply text-mode unicode mapping to the remaining prose only.
     line = map_unicode(line)
+
+    # map_unicode may have introduced new inline math like `$\hbar$` for
+    # symbols (□, ℳ, ℏ, etc.). Stash those too so escape_text doesn't
+    # mangle the `$` into `\$` (which would leave \mathcal in text mode).
+    line = re.sub(r"(?<!\$)\$([^\$]+?)\$(?!\$)",
+                  lambda m: make_token("MATH", m.group(1)), line, flags=re.DOTALL)
 
     # Wrap bare ASCII scientific notation like `10^10`, `10^-4`, `x^{n}` so
     # they survive text mode. Done AFTER math stashing so existing math
@@ -468,6 +559,9 @@ def render_inline(line: str) -> str:
             # body: literal braces -> \{ \}, literal backslash -> \textbackslash\
             # (no braces, since braces in code are usually literal). Then
             # escape_text handles _ % # & ~ $.
+            # First sanitize unicode to ASCII (T1 font can't render arbitrary
+            # unicode inside \texttt -- same constraint as verbatim).
+            v = sanitize_verbatim(v)
             v_e = v.replace("{", r"\{").replace("}", r"\}")
             v_e = v_e.replace("\\", r"\textbackslash ")
             v_e = escape_text(v_e)
