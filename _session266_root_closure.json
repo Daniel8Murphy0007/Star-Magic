@@ -1,0 +1,56 @@
+{
+  "closures": [
+    {
+      "target": "c",
+      "sm": 299792458.0,
+      "uqff": 300000000.0,
+      "residual_pct": 0.06922855944561487
+    },
+    {
+      "target": "1/alpha",
+      "sm": 137.0359990836958,
+      "uqff": 137,
+      "residual_pct": 0.02626980058999851
+    },
+    {
+      "target": "m_p/m_e",
+      "sm": 1836.152669389233,
+      "uqff": 1836.0,
+      "residual_pct": 0.008314634821944292
+    },
+    {
+      "target": "a_0/r_p",
+      "sm": 62932.107329670456,
+      "uqff": 62883.0,
+      "residual_pct": 0.07803223466394826
+    },
+    {
+      "target": "rho_Lambda_prefactor",
+      "sm": 48.0,
+      "uqff": 48,
+      "residual_pct": 0.0
+    },
+    {
+      "target": "F_U",
+      "sm": 1.0,
+      "uqff": 1.0,
+      "residual_pct": 0.0
+    }
+  ],
+  "probability_anchors": [
+    {
+      "target": "1/alpha",
+      "p_value": 0.000855,
+      "trials": 200000,
+      "tol_pct": 0.05,
+      "hits": 171
+    },
+    {
+      "target": "m_p/m_e",
+      "p_value": 0.000435,
+      "trials": 200000,
+      "tol_pct": 0.05,
+      "hits": 87
+    }
+  ]
+}
