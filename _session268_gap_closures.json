@@ -1,0 +1,19 @@
+{
+  "gap1": {
+    "m_e_form": "D_crit^5",
+    "m_e_pct": 44.92230562990836,
+    "status": "OPEN"
+  },
+  "gap2": {
+    "L_SCm_meso": 8e-05,
+    "verdict": "L_SCm := V_SCm/f_THz = 8e-5 m as meso coherence length (CLOSED). Atomic length scale (a_0, r_p) remains OPEN -- requires separate anchor or chain via mass."
+  },
+  "gap3": {
+    "verdict": "GAP 3 OPEN.  k_B requires independent temperature anchor. Best candidate: T_SCm = E_0/k_B ~ 724 K (LENR coherence T). If T_SCm is anchored at 724 K, k_B closes exactly by def.",
+    "T_SCm_candidate": 724.2970516039919
+  },
+  "gap4": {
+    "verdict": "GAP 4 partially OPEN.  The PRODUCT e^2/eps_0 is closed by alpha+hbar+c (residual ~0.09%).  Splitting requires one independent charge anchor (e, eps_0, or mu_0).",
+    "e2_over_eps0_pct": 0.08863584626299201
+  }
+}
