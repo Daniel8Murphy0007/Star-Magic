@@ -1,0 +1,102 @@
+{
+  "anchors": {
+    "mu_0": 1.2566370614359173e-06,
+    "T_SCm": 724.0,
+    "r_p": 8.414e-16
+  },
+  "results": [
+    {
+      "name": "c",
+      "predicted": 300000000.0,
+      "sm": 299792458.0,
+      "residual_pct": 0.06922855944561487,
+      "status": "CLOSED"
+    },
+    {
+      "name": "hbar",
+      "predicted": 1.0526315789473684e-34,
+      "sm": 1.054571817e-34,
+      "residual_pct": 0.18398349181671753,
+      "status": "CLOSED"
+    },
+    {
+      "name": "1/alpha",
+      "predicted": 137,
+      "sm": 137.035999084,
+      "residual_pct": 0.026269800811923878,
+      "status": "CLOSED"
+    },
+    {
+      "name": "eps_0",
+      "predicted": 8.841941282883074e-12,
+      "sm": 8.8541878128e-12,
+      "residual_pct": 0.1383134193203212,
+      "status": "CLOSED"
+    },
+    {
+      "name": "e",
+      "predicted": 1.6003585204673753e-19,
+      "sm": 1.602176634e-19,
+      "residual_pct": 0.11347772112276214,
+      "status": "CLOSED"
+    },
+    {
+      "name": "k_B",
+      "predicted": 1.3812154696132595e-23,
+      "sm": 1.380649e-23,
+      "residual_pct": 0.041029227070704284,
+      "status": "CLOSED"
+    },
+    {
+      "name": "a_0",
+      "predicted": 5.29097562e-11,
+      "sm": 5.29177210903e-11,
+      "residual_pct": 0.015051461279679618,
+      "status": "CLOSED"
+    },
+    {
+      "name": "m_e",
+      "predicted": 9.08531410670089e-31,
+      "sm": 9.1093837015e-31,
+      "residual_pct": 0.2642285755857099,
+      "status": "CLOSED"
+    },
+    {
+      "name": "m_p",
+      "predicted": 1.6680636699902835e-27,
+      "sm": 1.67262192369e-27,
+      "residual_pct": 0.2725214607770167,
+      "status": "CLOSED"
+    },
+    {
+      "name": "lambda_C",
+      "predicted": 2.426582501914555e-12,
+      "sm": 2.42631023867e-12,
+      "residual_pct": 0.011221287377674284,
+      "status": "CLOSED"
+    },
+    {
+      "name": "R_inf",
+      "predicted": 10978267.492749551,
+      "sm": 10973731.56816,
+      "residual_pct": 0.04133438622385164,
+      "status": "CLOSED"
+    },
+    {
+      "name": "G (via L)",
+      "predicted": 6.647806955071995e-11,
+      "sm": 6.6743e-11,
+      "residual_pct": 0.3969411762732343,
+      "status": "CLOSED"
+    },
+    {
+      "name": "E_ion(H)",
+      "predicted": 2.1782680739599342e-18,
+      "sm": 2.1798723611035e-18,
+      "residual_pct": 0.073595462385402,
+      "status": "CLOSED"
+    }
+  ],
+  "closed": 13,
+  "total": 13
+}
