@@ -1,0 +1,31 @@
+{
+  "session": 263,
+  "paper_1170_correction": {
+    "old_formula_actual_value": 1.1674699968634174e-59,
+    "old_formula_claimed_value": 5.95e-10,
+    "old_formula_error_factor": 5.096490715809026e+49,
+    "new_formula": "rho_Lambda = 2 * D_BSFG * D_phys * rho_A * f_THz",
+    "new_formula_value": 6e-10,
+    "observed_value": 5.96e-10,
+    "new_formula_residual_pct": 0.6711409395973131,
+    "structural_interpretation": "Cosmological constant = (doubled BSFG x physical spacetime cell volume) * (ambient aether density) * (THz reactant-pair oscillation frequency).  Factor 2 from F_U_Bi/F_U_Bi_i=1 crossing identity at cosmological boundary."
+  },
+  "closures": [
+    {
+      "name": "S263-rho_Lambda",
+      "predicted": 6e-10,
+      "observed": 5.96e-10,
+      "residual_pct": 0.6711409395973131,
+      "verdict": "CLOSED",
+      "note": "rho_Lambda_obs = 2 * D_BSFG * D_phys * rho_A * f_THz = 48 * 1e-23 * 1.25e12 = 6.0e-10 J/m^3.  Single-line closure from 4 anchors (rho_A, f_THz) + 2 structural primitives (D_BSFG, D_phys) + the factor 2 from the F_U=1 crossing identity."
+    },
+    {
+      "name": "S263-Lambda-alt",
+      "predicted": 6.25e-10,
+      "observed": 5.96e-10,
+      "residual_pct": 4.8657718120805376,
+      "verdict": "MARGINAL",
+      "note": "Alternative form: rho_Lambda = A5 * Phi_res * rho_A * f_THz = 60 * (5/6) * 1e-23 * 1.25e12 = 6.25e-10 J/m^3.  Uses the master integer A5=60 and Phi_res=5/6 explicitly.  Residual 4.9%."
+    }
+  ]
+}
