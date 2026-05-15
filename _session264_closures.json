@@ -1,0 +1,25 @@
+{
+  "session": 264,
+  "paper_1171_audit": {
+    "issue": "10^17 'bookkeeping factor' inconsistent with paper's own table value 10^8; neither value matches numerical claim.  Actual factor required: 10^12.67",
+    "units_error": "m_1 = v_UA^2 / c * (D_crit/D_BSFG) has units of m/s (velocity), not mass/energy.  Paper's subsequent treatment is dimensionally inconsistent.",
+    "bare_formula_result": 1.2639362490480855e-22,
+    "target_value": 5.951e-10,
+    "required_log10_factor": 12.672864780895056,
+    "verdict": "FUDGE - hand-tuned conversion factor."
+  },
+  "replacement": {
+    "form": "rho_Lambda = 2 * D_BSFG * D_phys * rho_A * f_THz",
+    "value": 6e-10,
+    "observed": 5.96e-10,
+    "residual_pct": 0.6711409395973131,
+    "verdict": "CLOSED",
+    "source_session": 263
+  },
+  "structural_clean_m1": {
+    "form": "m_1 c^2 = (D_crit/D_BSFG) * h * f_THz",
+    "value_J": 3.5891213312499995e-21,
+    "value_meV": 22.404003316167287,
+    "interpretation": "Resonant-pair excitation energy at THz scale with structural enhancement ratio 13/3."
+  }
+}
