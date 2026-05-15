@@ -1,0 +1,61 @@
+{
+  "session": 259,
+  "audits": [
+    {
+      "problem": "Poincare conjecture (Perelman, solved 2003)",
+      "grok_claim": "Variational buoyancy flow -> S^3 fixed point (no surgery).",
+      "audit": "No scalar number to predict; this is a topological statement. Perelman's actual proof uses Ricci flow with surgery and entropy monotonicity. The UQFF Lagrangian can in principle reproduce a Ricci-flow-like equation in the appropriate limit, but no actual flow is computed in the grok thread.",
+      "verdict": "TOPOLOGICAL_RESULT (already proven; no UQFF test required)",
+      "residual_pct": null
+    },
+    {
+      "problem": "Yang-Mills existence and mass gap (Millennium, open)",
+      "grok_claim": "m_gap = 1.78 GeV (matches lattice 1.6-2.0 GeV).",
+      "audit_formula": "8pi*G*rho_SCm*S_26*h*f_THz / (beta_i*UA) * (D_crit/D_BSFG)^2",
+      "uqff_computed_GeV": 4.177754629620204e-08,
+      "lattice_obs_GeV": 1.8,
+      "residual_vs_lattice_pct": 99.99999765294683,
+      "verdict": "ASSERTION_ONLY -- The formula given in the grok thread evaluates to 4.18e-08 GeV under honest 3-anchor numerics, ~7.6 orders of magnitude below the claimed 1.78 GeV. Either UA is mis-quoted, the formula is missing factors of c, or the closure is not real. Until that gap is resolved this is not a closure."
+    },
+    {
+      "problem": "Riemann hypothesis (Millennium, open)",
+      "grok_claim": "t_{10000} = 29538.5 lies on critical line Re(s)=1/2.",
+      "audit": "t_{10000} is an INPUT (Odlyzko's tables) not a UQFF prediction. The grok thread asserts that \"buoyancy stationarity forces every zero to lie on Re(s)=1/2\" but performs no actual variation. Note: the functional equation zeta(s)=chi(s)*zeta(1-s) DOES force zeros to be symmetric about Re=1/2 -- the open content of the hypothesis is that they all lie exactly on it, not merely symmetrically about it. The grok argument conflates these.",
+      "verdict": "ASSERTION_ONLY (no genuine prediction made)",
+      "residual_pct": null
+    },
+    {
+      "problem": "Navier-Stokes existence + smoothness (Millennium, open)",
+      "grok_claim": "Peak enstrophy = 8.5e3 at Re=1600 (Taylor-Green).",
+      "audit": "The 8.5e3 value is the standard DNS result (Brachet et al., pseudo-spectral). It is taken from the literature, not computed from the UQFF Lagrangian. The \"phonon UV cutoff\" argument is plausible as a regularization SCHEME but no enstrophy bound is actually derived. Global smoothness is the OPEN content.",
+      "verdict": "ASSERTION_ONLY (DNS value quoted, not derived)",
+      "residual_pct": null
+    },
+    {
+      "problem": "Birch-Swinnerton-Dyer (Millennium, open)",
+      "grok_claim": "L'(E,1) = 0.3059997738 for conductor-37 curve.",
+      "audit": "This value is from the LMFDB / modular-form computation. It is an INPUT not a UQFF prediction. The grok formula L_prime(E,1) = rho_SCm*S_26*Phi/(beta_i*UA)*(D_crit/D_BSFG)^2 * regulator is dimensionally and numerically incompatible with 0.306 unless a \"regulator factor\" is back-fit. That is curve fitting, not closure.",
+      "verdict": "ASSERTION_ONLY (LMFDB value quoted with back-fit factor)",
+      "residual_pct": null
+    },
+    {
+      "problem": "Hodge conjecture (Millennium, open)",
+      "grok_claim": "L.L = 4 for hyperplane class on Fermat quartic K3.",
+      "audit": "L.L = 4 is the classical intersection number on a degree-4 hypersurface in CP^3 (deg(L)^2 / 1 for K3, by adjunction). It is pure algebraic geometry, independent of any physics. The grok claim does not constrain whether non-trivial Hodge classes (the open content of the conjecture) are algebraic.",
+      "verdict": "TOPOLOGICAL_RESULT (degree-4 intersection, not a UQFF prediction)",
+      "residual_pct": null
+    },
+    {
+      "problem": "P vs NP (Millennium, open)",
+      "grok_claim": "att48 TSP optimum = 10628 found in \"one variational step\".",
+      "audit": "10628 is the Concorde-verified optimum, taken from TSPLIB. The grok thread does not actually run a variational solve; it asserts the tour from the known answer. Even if it did, polynomial-time solution of one instance does not prove P=NP -- and \"F_U=1 finds the global minimum in one step\" is physically equivalent to claiming an oracle.",
+      "verdict": "ASSERTION_ONLY (known answer quoted, no algorithm given)",
+      "residual_pct": null
+    }
+  ],
+  "tally": {
+    "structural": 0,
+    "topological": 2,
+    "assertion": 5
+  }
+}
