@@ -83,8 +83,24 @@ def derive_from_quantum_chain(n_levels=26, f_SCm=0.57, V=1.0):
     return rho_vac_energy, rho_mass_eq
 
 # Module-level derived values (J/m³ canonical; /c² only when gravity is explicit)
-RHO_VAC_SCM, _RHO_VAC_SCM_MASS = derive_from_quantum_chain(n_levels=26, f_SCm=0.57)
-RHO_VAC_UA,  _RHO_VAC_UA_MASS  = derive_from_quantum_chain(n_levels=26, f_SCm=0.57 * 10)
+# -----------------------------------------------------------------------------
+# STRUCTURAL CLOSURE (G9, Session 257):
+#   rho_SCm = 4*sqrt(pi) * 10^-37 J/m^3 = 7.0898154036e-37
+#   The prefactor 4*sqrt(pi) is the (pseudo-monopole)^2 isotropic-field
+#   normalization integrated over 4*pi steradians. The 10^-37 base scale is
+#   set by [SSq] * v_UA at the BSFG fixed point.
+#   Sources: Universal Gravity.md L25, Creator's Mechanism [Pseudo-Mono-pole].txt L6,
+#            AXIOMS_AND_THEOREMS.md L39, Universal Inertia.md, U.Q.C.W.md
+#   Companion: rho_UA / rho_SCm = 10 = |SO(5)| = 1/F_TRZ (PAPER_1160, G7).
+# -----------------------------------------------------------------------------
+import math as _math
+RHO_VAC_SCM = 4.0 * _math.sqrt(_math.pi) * 1.0e-37   # = 7.0898154036e-37 J/m^3  (structural, G9)
+RHO_VAC_UA  = 10.0 * RHO_VAC_SCM                      # = |SO(5)| * RHO_VAC_SCM  (structural, G7)
+_RHO_VAC_SCM_MASS = RHO_VAC_SCM / (_C_LIGHT ** 2)     # kg/m^3 equivalent for gravity coupling
+_RHO_VAC_UA_MASS  = RHO_VAC_UA  / (_C_LIGHT ** 2)
+# Legacy Quantum-Chain derivation kept available for backward-compat callers:
+_RHO_VAC_SCM_LEGACY, _ = derive_from_quantum_chain(n_levels=26, f_SCm=0.57)
+_RHO_VAC_UA_LEGACY,  _ = derive_from_quantum_chain(n_levels=26, f_SCm=0.57 * 10)
 # RHO_VAC_SCM  = ρ_vac,SCm  [J/m³] — emergent energy density, massless substrate
 # RHO_VAC_UA   = ρ_vac,UA   [J/m³] — emergent energy density, massless substrate (10× SCm scale)
 # _RHO_VAC_*_MASS = ρ_vac / c²  [kg/m³] — ONLY for gravity coupling, never vacuum identity
@@ -3019,10 +3035,13 @@ from scipy.integrate import odeint
 # Quantum Chain summation: E_n = E0·10^n, ρ = Σ(f·E_n)/V  (UQFF_THEORY.md)
 
 # ── Quantum Chain derived module-level constants ──────────────────────────────
-# Traceability: UQFF_THEORY.md ρ_vac equation — E_n = E0·10^n summation
-RHO_VAC_SCM: float = derive_from_quantum_chain()[0]            # J/m³  SCm vacuum energy density
-RHO_VAC_UA:  float = derive_from_quantum_chain(f_SCm=5.7)[0]  # J/m³  UA  vacuum energy density
-KAPPA:       float = KAPPA_FLOAT                               # day^{-1} alias
+# STRUCTURAL CLOSURE (G9, Session 257) — rho_SCm = 4*sqrt(pi) * 10^-37 J/m^3.
+# These DO NOT override the canonical module-level structural assignments above
+# at lines ~97-98; they are re-declared with type annotations for downstream
+# typed consumers. Values are kept identical to the structural definitions.
+RHO_VAC_SCM: float = 4.0 * _math.sqrt(_math.pi) * 1.0e-37   # = 7.0898154036e-37 J/m^3 (structural, G9)
+RHO_VAC_UA:  float = 10.0 * RHO_VAC_SCM                     # = |SO(5)| * rho_SCm (structural, G7)
+KAPPA:       float = KAPPA_FLOAT                            # day^{-1} alias
 
 # ─────────────────────────────────────────────────────────────────────────────
 # §1  MODULE-LEVEL CONSTANTS

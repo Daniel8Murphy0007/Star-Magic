@@ -1,0 +1,46 @@
+{
+  "anchors_SI": {
+    "E_0": 1e-20,
+    "f_THz": 1250000000000.0,
+    "v_F": 770000.0
+  },
+  "primitives": {
+    "Phi_res": 0.8333333333333334,
+    "F_TRZ": 0.1,
+    "4_sqrt_pi": 7.0898154036220635,
+    "rho_SCm_structural": 7.089815403622064e-37,
+    "rho_UA_over_rho_SCm": 10.0,
+    "S_26": 1.4531e+26,
+    "SSq": 0.57,
+    "D_crit": 26
+  },
+  "constants_UQFF": {
+    "alpha": 0.007345612758087477,
+    "c": 301894487.6393648,
+    "h": 6.666666666666668e-34,
+    "G": 6.616063402338573e-11,
+    "k_B": 1.388888888888889e-23
+  },
+  "constants_CODATA": {
+    "h": 6.62607015e-34,
+    "hbar": 1.054571817e-34,
+    "c": 299792458.0,
+    "G": 6.6743e-11,
+    "k_B": 1.380649e-23,
+    "e": 1.602176634e-19,
+    "alpha": 0.0072973525693
+  },
+  "residuals_pct": {
+    "alpha": 0.6613383186459628,
+    "c": 0.7011616147344104,
+    "h": 0.6126786428101396,
+    "G": 0.8725498952912938,
+    "k_B": 0.5968127227766816
+  },
+  "planck_closure_pct": {
+    "l_Pl": 1.1739123268932312,
+    "m_Pl": 1.0989461695939633,
+    "t_Pl": 1.8620181848560544
+  },
+  "grok_h_derivation_status": "arithmetic error: step 7 lands on 6.63e-31 not 6.626e-34 (off by 10^3); 'exact ledger conversion factor' 3.041e-32 is back-fit per target. Replaced by closed form h = F_TRZ * Phi_res * E_0 / f_THz."
+}
