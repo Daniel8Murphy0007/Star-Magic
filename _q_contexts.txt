@@ -1,0 +1,142 @@
+
+========== PAPER_009b_Aether_String_TRZ_Damping_GW  ?-count=23 ==========
+  | = 0.333, reducing the GR strain from 1.2499 $\times$ 10?21 to
+  | 4.1622 $\times$ 10?22 (UQFF). This produces a measurable distance bias: if
+  | merger with component masses 36 + 29 M? at luminosity distance d_L = 410 Mpc (z ˜ 0.09). The L
+  | detectors measured a peak strain of ~10?21 consistent with GR predictions.
+  | U_A(d) = exp(-?_aether \times d / d_ref)
+  |  d = 410 Mpc for a short-duration event (0.2 s chirp), ?_aether is negligible and U_A = 1.0000.
+  | **Combined damping: D = 0.333 ? 66.7% amplitude reduction**
+  | | Peak strain h | 1.2499 $\times$ 10?21 | 4.1622 $\times$ 10?22 |
+  | | Strain from observed (UQFF) | — | 3.3300 $\times$ 10?22 |
+  |   & ?  d_apparent = d_true / D_combined = 410 Mpc / 0.333 = 
+  |   & ?f = 2p \times ß_string_correction \times N_cycles \\
+  |   & ?f = 0.126 rad (over 0.2 s chirp)
+  | | Component masses | 36 + 29 M? | GR inference |
+  | | Final mass | ~62 M? | Energy conservation |
+  | | Peak GR strain | 1.2499 $\times$ 10?21 | GR simulation |
+  | | Peak UQFF strain | 4.1622 $\times$ 10?22 | GR $\times$ D |
+  | at reduced efficiency; a UQFF template bank covering D ? [0.30, 0.40] would improve
+  | 3. This reduces the peak strain from 1.2499 $\times$ 10?21 to 4.1622
+  | $\times$ 10?22 and the integrated SNR from 24 to 8.0. The most fals
+  | *SNR: 24 ? 8.0; Apparent distance: 410 Mpc ? 1231 Mpc; Phase lag: 0.126 rad; Ripples: $\pm$1.0%;*  
+  | 7. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
+
+========== PAPER_015b_Multiband_GW_LISA_LIGO_UQFF  ?-count=5 ==========
+  | SNR 1116 ? 694. The UQFF factor of 0.622 is frequency-independent
+  | For a BBH event similar to GW150914 (36+29 M?), the optimal LIGO matched-filter horizon:
+  | For SMBH mergers (106 M? at cosmological distances):
+  | V_det ? d_max3 ? (SNR_reference / SNR_threshold)3
+
+========== PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations  ?-count=3 ==========
+  | :** What quantum field processes generate $\gamma$_damp?
+  | e entanglement:** How does UQFF modify GHZ and W states?
+  | nection between $\Lambda$_UQFF and entanglement entropy?
+
+========== PAPER_016b_White_Dwarf_Foreground_UQFF  ?-count=23 ==========
+  | (GR: 10,000 ? UQFF threshold: 6,216 detected but individually resolv
+  | ry:** Novel application of UQFF calibration constants (? = 5.0\times10-4 day-1, [SSq] =
+  | P_WD(f) = S_i h_i(f)2 / (4 \times ?f)
+  |  over all systems contributing to frequency bin f, and ?f is the frequency
+  | 2. **Foreground reduction:** P_noise ? P_noise \times D_local2 = P_noise \times 0.614 (61.4% 
+  | For sources at very high redshift (z > 3), D_cosmo ? D_local because Aether compensation saturates:
+  | | ? | 5.0 \times 10-4 day-1 | UQFF exponential decay rate 
+  | | ? | 10-22 | Inertia tensor scale |
+  | | -S??\cdotU?\cdotE_react | 4th dissipation term (PAPER_420) | `c`om
+  | ?1=10-10, ?2=10-12, ?3=10-11, ?4=10-13 (free parameters, not yet empirically calibrate
+  | | ?_c | 1015 kg/m3 | SCm critical superconducting density 
+  | | ?? | 2p/(434\cdot365.25) rad/day | 434-year Gleisberg sup
+  | | ? decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS ex
+  | | Cosmological constant ? | 1.1\times10-52 m-2 (UQFF vacuum term) | 1.114\times1
+  | | Proton decay rate | ? = 0.0005/day ? G_p suppression | < 4.17\times10-35/yr | Super-K 2024 
+  | ions from GR at scales where vacuum condensate density ?_SCm becomes
+
+========== PAPER_018_Aether_Noise_Spectrum_Characterization_for_LISA  ?-count=1 ==========
+  | ce | Spectrum Shape | Prediction | UQFF Distinguishable? |
+
+========== PAPER_020_Cosmic_Ray_Propagation_UQFF_Spacetime  ?-count=72 ==========
+  | ectral features at the GZK threshold (E ~ 5 $\times$ 10? eV). Key results: UQFF aether drag
+  | c rays are observed across an enormous energy range (10?  10 eV). At the highest energies:
+  | es | 10-8 $\times$ 10 eV | GZK feature at 6 $\times$ 10? eV |
+  | **?N/?t = ?(D?N) - ?(v N) + Q - N/t**
+  | MB photopion production (GZK process, E > 5 $\times$ 10? eV)
+  | ether drag coefficient using UQFF calibration constant ?:
+  | **G_aether(E) = ?  (E / E_ref)^$\kappa$_aether**
+  | - **$\kappa$ = 0.0005/day = 5.79 $\times$ 10?? s-1**
+  | 10/10-8)^0.37 = 0.0005 $\times$ 8.51 = 4.26 $\times$ 10?/day**
+  | - **s0 = 3.2 $\times$ 10?6 cm** (TRZ cross-section at peak)
+  | | Energy (eV) | s_TRZ (cm) | ?_TRZ (Mpc) |
+  | | 10-8 | 2.1 $\times$ 10?7 | 2,900 |
+  | | 8 $\times$ 10-8 | 3.2 $\times$ 10?6 | 190 |
+  | | 10? | 2.8 $\times$ 10?6 | 217 |
+  | | 10 | 4.1 $\times$ 10?8 | 148,000 |
+  | - f_string(10 eV) ~ 10-58 ? effectively zero
+  | **t_GZK(E) ? exp(E_GZK / E),  E_GZK = 5 $\times$ 10? eV**
+  | **L_eff(E) = [1/L_GZK(E) + 1/L_aether(E) + 1/L_TRZ(E)]?**
+  | | 10? | 1,000 | 570 | 217 | 148 |
+  | | 5 $\times$ 10? | 100 | 340 | 8,200 | 82 |
+  | - Spectral softening ?? ~ 0.3 due to TRZ scattering peak
+  |  GZK + Aether Combined Suppression at E ~ 5 $\times$ 10? eV:**
+  | **Feature 3  Aether Pile-up at E ~ 2 $\times$ 10? eV:**
+  | - Slight spectral hardening ?? ~ -0.15 from aether energy redistribution
+  | | Energy Range | GR Index ? | UQFF Index ? | Difference ?? |
+  | | 8 $\times$ 10-8 $\times$ 10? eV | 2.60 | 2.90 | +0.30 (TRZ break) |
+  | | 10?  5 $\times$ 10? eV | 2.60 | 2.62 | +0.02 |
+  | | > 5 $\times$ 10? eV | 5.00 | 5.19 | +0.19 (aether) |
+  | **s_TRZ,aniso = s_TRZ,iso  (1 + A_TRZ cos?)**
+  | where ? is the angle to the nearest large-scale TRZ filament (
+  | - Centaurus A sits at a TRZ filament node ? reduced scattering in that direction
+  | **G_aether(E, Z) = ?  Z^(1/3)  (E/A / E_ref)^$\kappa$_aether**
+  | | Energy (eV) | GR ?lnA? | UQFF ?lnA? | Observed (Auger Xmax) |
+  | | 10? | 2.5 | 2.8 | 2.5§3.0 |
+  | | GZK cutoff energy | 5 $\times$ 10? eV | 4.8 $\times$ 10? eV | ~5 $\times$ 10? eV | ? |
+  | sharpness | Standard | 3.7% sharper | Slightly sharp | ? |
+  |  Requires B < 1 nG | B ~ 5 nG sufficient | 5s excess | ? |
+  | | Secondary break at 8 EeV | Not predicted | ?? ~ +0.3 | Tentative (2s) | ? |
+  | | ?lnA? at 10? eV | 2.5 | 2.8 | 2.5§3.0 | ? |
+  | | Proton fraction > 10 eV | ~30% | ~22% | ~2030% | ? |
+  | of energy (nHz GW ? 10 eV cosmic rays).
+  | D (200,000 km) | Detect aether pile-up at 2 $\times$ 10? eV | 20302035 |
+  | ther drag adds 3.7% additional suppression above 10 eV ?
+  | B-field required ?
+  | energies ?
+  | econdary spectral break at E ~ 8 $\times$ 10-8 eV with ?? ~ +0.3  is testable by AugerPrime within
+  | 3. Greisen, K. (1966). "End to the Cosmic-Ray Spectrum?" *PRL*, 16, 748.
+
+========== PAPER_021_Gravitational_Lensing_Corrections_UQFF_Vacuum_Density  ?-count=67 ==========
+  | the effective lensing potential. UQFF vacuum density ?_vac modifies the deflection angle,
+  | convergence ?_lens, and shear ? fields via the aether and TRZ components. We derive UQ
+  | - **Convergence ?_lens:** projected mass density / critical surface dens
+  | - **Shear ?:** tidal distortion of background images  
+  | e s8 parameterizes density fluctuation amplitude at 8 h? Mpc:
+  | - **?_aether = U_UA  ?_crit = 0.0001 $\times$ 9.47 $\times$ 10? g/cm = 9.47 $
+  | \times$ 10?4 g/cm**  
+  | - **?_TRZ = [SSq]  ?_crit  f_TRZ = 0.325 $\times$ 9.47 $\times$ 10? $\appro
+  | x$ 0.12 = 3.69 $\times$ 10? g/cm**  
+  | - **?_string = ?  t_Hubble  ?_crit = negligible**
+  | **?_vac,UQFF  3.70 $\times$ 10? g/cm = 3.91 $\times$ 10? ?_crit**
+  | **d_vac = -?_vac,UQFF / (2 ?_lens)  (b / r_s)**
+  | For galaxy cluster lensing (?_lens ~ 10?6 g/cm, b/r_s ~ 0.3):
+  | **d_vac = -3.70 $\times$ 10? / (2 $\times$ 10?6) $\approx$ 0.09 = -1.67 $\times$ 10?6**
+  | **?_UQFF(?) = ?_GR(?)  (1 - f_vac(z))**
+  | **f_vac(z) = (?_vac,UQFF / ?_crit)  D_A(z)  ?_calibration**
+  | - **?_calibration = ?_UQFF = 0.0005/day**  
+  | cal WL survey depth): f_vac = 0.083 (8.3% suppression) ?
+  | **?_UQFF = ?_GR  (1 - f_vac(z))**
+  | **?,UQFF(?) = (1 - f_vac)  ?,GR(?)**
+  | sion factor: **(1 - 0.083) = 0.840**  16% reduction in ?
+  | | **Match** | **? Perfect (0.0s tension)** |
+  | | Time delay ?t | 10 days | 10.08 days | +0.8% |  
+  | **?_E,UQFF = ?_E,GR  v(1 - f_vac(z_lens)) = ?_E,GR $\approx$ 0.969**
+  | :** ~10% fewer arcs than GR  consistent with UQFF 8.3% ?
+  | | s8 | 0.811 | **0.762** | 0.762 $\times$ 0.012 | ? |  
+  | | ? suppression | 0% | 16% | ~15% vs CMB | ? |  
+  | | Arc abundance | Baseline | -8.3% | ~-10% | ? |  
+  |  Einstein radius | Baseline | -3.1% | Under-measured | ? |  
+  | = s8v(Om/0.3) | 0.832 | 0.782 | 0.776 $\times$ 0.017 | ? |
+  | - ?_vac,UQFF ? (1+z)^(-3) ? much smaller at recombination  
+  | - ?_TRZ ? (1+z)^(-4) ? even more suppressed at z = 1100
+  | 1. **s8 tension (3.2s ? 0s):** UQFF predicts s8 = 0.762, exactly matching DES/
+  | HSC/KiDS ?  
+  | ce deficit:** 8.3% fewer arcs predicted, ~10% observed ?  
+  |  UQFF S8 = 0.782 matches observed 0.776 $\times$ 0.017 ?

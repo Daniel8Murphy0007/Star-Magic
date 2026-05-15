@@ -1,0 +1,151 @@
+﻿TOTAL replacement ops with ?: 144
+  PRE: '╬║'
+  POST:'?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: 'Γü╣'
+  POST:'?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: 'Γêé'
+  POST:'?'
+
+  PRE: 'Γêé'
+  POST:'?'
+
+  PRE: 'Γêç┬╖'
+  POST:'?Γòû'
+
+  PRE: 'Γêç'
+  POST:'?'
+
+  PRE: 'Γêç┬╖'
+  POST:'?Γòû'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '╬║'
+  POST:'?'
+
+  PRE: '╬║'
+  POST:'?'
+
+  PRE: '╬║'
+  POST:'?'
+
+  PRE: 'Γü╗Γü╣'
+  POST:'??'
+
+  PRE: 'Γü╗┬╣'
+  POST:'?Γòú'
+
+  PRE: 'Γü╗┬│'
+  POST:'?Γöé'
+
+  PRE: 'Γü╗┬▓Γü╢'
+  POST:'?Γûô6'
+
+  PRE: '╬╗'
+  POST:'?'
+
+  PRE: 'Γü╗┬▓Γü╖'
+  POST:'?Γûô7'
+
+  PRE: 'Γü╗┬▓Γü╢'
+  POST:'?Γûô6'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: 'Γü╗┬▓Γü╢'
+  POST:'?Γûô6'
+
+  PRE: 'Γü╗┬▓Γü╕'
+  POST:'?Γûô8'
+
+  PRE: 'Γü╗Γü╡Γü╕'
+  POST:'?58'
+
+  PRE: 'ΓåÆ'
+  POST:'?'
+
+  PRE: 'Γê¥'
+  POST:'?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: 'Γü╗┬╣'
+  POST:'?Γòú'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '╬ö╬│'
+  POST:'??'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '╬ö╬│'
+  POST:'??'
+
+  PRE: '╬│'
+  POST:'?'
+
+  PRE: '╬│'
+  POST:'?'
+
+  PRE: '╬ö╬│'
+  POST:'??'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+
+  PRE: '┬▓╬╕'
+  POST:'Γûô?'
+
+  PRE: '╬╕'
+  POST:'?'
+
+  PRE: 'ΓåÆ'
+  POST:'?'
+
+  PRE: '╬║'
+  POST:'?'
+
+  PRE: 'Γƒ¿'
+  POST:'?'
+
+  PRE: 'Γƒ⌐'
+  POST:'?'
+
+  PRE: 'Γƒ¿'
+  POST:'?'
+
+  PRE: 'Γƒ⌐'
+  POST:'?'
+
+  PRE: '┬╣Γü╣'
+  POST:'Γòú?'
+

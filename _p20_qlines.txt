@@ -1,0 +1,47 @@
+﻿L36: predict spectral features at the GZK threshold (E ~ 5 $\times$ 10? eV). Key results: UQFF aether drag
+L54: Cosmic rays are observed across an enormous energy range (10?  10 eV). At the highest energies:
+L60: | HiRes | 10-8 $\times$ 10 eV | GZK feature at 6 $\times$ 10? eV |
+L73: **?N/?t = ?(D?N) - ?(v N) + Q - N/t**
+L84: 2. CMB photopion production (GZK process, E > 5 $\times$ 10? eV)
+L117: The aether drag coefficient using UQFF calibration constant ?:
+L119: **G_aether(E) = ?  (E / E_ref)^$\kappa$_aether**
+L122: - **$\kappa$ = 0.0005/day = 5.79 $\times$ 10?? s-1**
+L131: - **G_aether = 0.0005  (10/10-8)^0.37 = 0.0005 $\times$ 8.51 = 4.26 $\times$ 10?/day**
+L141: - **s0 = 3.2 $\times$ 10?6 cm** (TRZ cross-section at peak)
+L147: | Energy (eV) | s_TRZ (cm) | ?_TRZ (Mpc) |
+L149: | 10-8 | 2.1 $\times$ 10?7 | 2,900 |
+L150: | 8 $\times$ 10-8 | 3.2 $\times$ 10?6 | 190 |
+L151: | 10? | 2.8 $\times$ 10?6 | 217 |
+L152: | 10 | 4.1 $\times$ 10?8 | 148,000 |
+L165: - f_string(10 eV) ~ 10-58 ? effectively zero
+L177: **t_GZK(E) ? exp(E_GZK / E),  E_GZK = 5 $\times$ 10? eV**
+L181: **L_eff(E) = [1/L_GZK(E) + 1/L_aether(E) + 1/L_TRZ(E)]?**
+L187: | 10? | 1,000 | 570 | 217 | 148 |
+L188: | 5 $\times$ 10? | 100 | 340 | 8,200 | 82 |
+L197: - Spectral softening ?? ~ 0.3 due to TRZ scattering peak
+L200: **Feature 2  GZK + Aether Combined Suppression at E ~ 5 $\times$ 10? eV:**
+L204: **Feature 3  Aether Pile-up at E ~ 2 $\times$ 10? eV:**
+L205: - Slight spectral hardening ?? ~ -0.15 from aether energy redistribution
+L210: | Energy Range | GR Index ? | UQFF Index ? | Difference ?? |
+L214: | 8 $\times$ 10-8 $\times$ 10? eV | 2.60 | 2.90 | +0.30 (TRZ break) |
+L215: | 10?  5 $\times$ 10? eV | 2.60 | 2.62 | +0.02 |
+L216: | > 5 $\times$ 10? eV | 5.00 | 5.19 | +0.19 (aether) |
+L237: **s_TRZ,aniso = s_TRZ,iso  (1 + A_TRZ cos?)**
+L239: where ? is the angle to the nearest large-scale TRZ filament (aligned with Centaurus A
+L244: - Centaurus A sits at a TRZ filament node ? reduced scattering in that direction
+L264: **G_aether(E, Z) = ?  Z^(1/3)  (E/A / E_ref)^$\kappa$_aether**
+L275: | Energy (eV) | GR ?lnA? | UQFF ?lnA? | Observed (Auger Xmax) |
+L279: | 10? | 2.5 | 2.8 | 2.5┬º3.0 |
+L291: | GZK cutoff energy | 5 $\times$ 10? eV | 4.8 $\times$ 10? eV | ~5 $\times$ 10? eV | ? |
+L292: | GZK cutoff sharpness | Standard | 3.7% sharper | Slightly sharp | ? |
+L293: | Cen A anisotropy | Requires B < 1 nG | B ~ 5 nG sufficient | 5s excess | ? |
+L294: | Secondary break at 8 EeV | Not predicted | ?? ~ +0.3 | Tentative (2s) | ? |
+L295: | ?lnA? at 10? eV | 2.5 | 2.8 | 2.5┬º3.0 | ? |
+L296: | Proton fraction > 10 eV | ~30% | ~22% | ~2030% | ? |
+L314: of energy (nHz GW ? 10 eV cosmic rays).
+L322: | GRAND (200,000 km) | Detect aether pile-up at 2 $\times$ 10? eV | 20302035 |
+L337: 1. **GZK sharpness:** Aether drag adds 3.7% additional suppression above 10 eV ?
+L339: B-field required ?
+L341: energies ?
+L344: ΓÇô TRZ secondary spectral break at E ~ 8 $\times$ 10-8 eV with ?? ~ +0.3  is testable by AugerPrime within
+L384: 3. Greisen, K. (1966). "End to the Cosmic-Ray Spectrum?" *PRL*, 16, 748.

@@ -1,0 +1,39 @@
+{
+  "session": 258,
+  "closures": [
+    {
+      "name": "Omega_b * h^2",
+      "formula": "sqrt(5) * F_TRZ^2 = sqrt(5)/100",
+      "uqff": 0.022360679774997904,
+      "observed": 0.02237,
+      "residual_pct": 0.041663947260156355
+    },
+    {
+      "name": "Omega_DM * h^2",
+      "formula": "F_TRZ / Phi_res  =  6 / 50",
+      "uqff": 0.12,
+      "observed": 0.12,
+      "residual_pct": 0.0
+    },
+    {
+      "name": "H_0",
+      "formula": "100 * sqrt( (sqrt(5)/100 + 6/50) / (1 - [SSq]/Phi_res) )",
+      "uqff_km_s_Mpc": 67.1199285086498,
+      "planck_obs": 67.4,
+      "sh0es_obs": 73.0,
+      "residual_vs_planck_pct": 0.41553633731483547,
+      "residual_vs_sh0es_pct": 8.054892453904374,
+      "interpretation": "H_0 emerges from CMB-side primitives; matches Planck within 0.5%. The Planck-vs-SH0ES H_0 tension is interpreted as late-universe new physics, NOT a recalibration of the 3-anchor framework."
+    },
+    {
+      "name": "t_0 * H_0  (and t_0)",
+      "formula": "1 - F_TRZ * (F_TRZ + Phi_res) / 2",
+      "uqff_t0H0": 0.9533333333333334,
+      "observed_t0H0": 0.954,
+      "residual_t0H0_pct": 0.06988120195666596,
+      "uqff_t0_Gyr": 13.888370186241245,
+      "observed_t0_Gyr": 13.797,
+      "residual_t0_pct": 0.6622467655377556
+    }
+  ]
+}
