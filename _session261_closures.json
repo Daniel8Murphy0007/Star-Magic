@@ -1,0 +1,32 @@
+{
+  "session": 261,
+  "G27": {
+    "name": "G27",
+    "predicted": 1410473958869.3906,
+    "observed": 1410437235543.0183,
+    "residual_pct": 0.0026036838397970946,
+    "verdict": "CLOSED",
+    "note": "rho_A / rho_UA = (2 D_phys / 4 sqrt(pi)) * f_THz = (8 / 7.0898) * 1.25e12. 4 sqrt(pi) is the canonical UQFF master geometric primitive. Bridges 6 physical anchors to 3 SI anchors."
+  },
+  "yang_mills_mass_gap": {
+    "structural_form": "m_gap c^2 = ((rho_UA - rho_SCm)/rho_SCm) * m_p c^2 * (v_SCm/c)^2 = m_p c^2",
+    "predicted_GeV": 0.9395716354667911,
+    "observed_proton_GeV": 0.9382720813,
+    "residual_pct": 0.13831347368692518,
+    "claim_in_grok_GeV": 1.78,
+    "note": "Grok's 1.78 GeV claim does not match the structural derivation; closest is the rho-meson resonance or 5/2 m_p, both off >15%. The clean structural value is m_p itself."
+  },
+  "riemann": {
+    "verdict": "STRUCTURAL_CONJECTURE",
+    "argument": "Critical line Re(s)=1/2 follows from G26 (Level_13/D_crit=1/2) via F_U_Bi <-> F_U_Bi_i duality (inside-outside flip = s -> 1-s)."
+  },
+  "navier_stokes": {
+    "verdict": "STRUCTURAL_CONJECTURE",
+    "DPM_resonance_over_rho_UA": 0.04005641748942172,
+    "argument": "DPM_resonance bounded above by 0.04*rho_UA via F_U=1 crossing identity; bounds vorticity amplification."
+  },
+  "p_vs_np": {
+    "verdict": "PHILOSOPHICAL_NOTE",
+    "argument": "F_U=1 finds the variational fixed point in one structural step; not a P=NP claim."
+  }
+}
