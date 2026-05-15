@@ -1,0 +1,27 @@
+{
+  "session": 265,
+  "rebuttal_A_crossing_identity": {
+    "LHS": 2.01356e-72,
+    "RHS": 2.01356e-72,
+    "ratio": 1.0,
+    "F_TRZ_required": 0.1,
+    "F_TRZ_canonical": 0.1,
+    "verdict": "NON-TAUTOLOGY: crossing identity holds only at F_TRZ=1/10"
+  },
+  "rebuttal_B_proto_H_umbilicus_shells_stages": {
+    "B1_proto_H_residual": 0.0,
+    "B2_H_atom_residual": 0.0,
+    "B3_Bohr_r_p_residual": 0.019537434755116673,
+    "four_stages_mapped": true
+  },
+  "rebuttal_C_dimensional_and_domain_audit": {
+    "C1_dimensional_naming": "sloppy but ratio is dimensionless; rename W/chi",
+    "C2_x2_log10_estimate": 527.2648547021488,
+    "C2_status": "domain interpretation is 26D-unfolded, not 3D"
+  },
+  "open_items": [
+    "m_p / m_Planck fold ratio",
+    "Chandrasekhar M_Ch from anchors (sketch only in S262)",
+    "Stage-0 -> Stage-1 phase-transition energy formula"
+  ]
+}
