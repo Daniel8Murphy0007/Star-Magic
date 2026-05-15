@@ -1,0 +1,84 @@
+{
+  "part_A": [
+    {
+      "name": "kappa",
+      "target": 0.0005,
+      "best": "1/(2000)",
+      "pct": 0.0,
+      "status": "CLOSED"
+    },
+    {
+      "name": "SSq",
+      "target": 0.57,
+      "best": "primitive",
+      "pct": 0.0,
+      "status": "PRIMITIVE"
+    },
+    {
+      "name": "H_SCm",
+      "target": 0.99,
+      "best": "1 - F_TRZ/SO5",
+      "pct": 0.0,
+      "status": "CLOSED"
+    },
+    {
+      "name": "U_UA",
+      "target": 0.0001,
+      "best": "RHO_SCm/RHO_UA / 1000",
+      "pct": 0.0,
+      "status": "CLOSED"
+    },
+    {
+      "name": "k_eta",
+      "target": 1e-113,
+      "best": "F_TRZ^113",
+      "pct": 6.347672799727694e-13,
+      "status": "CLOSED"
+    },
+    {
+      "name": "beta_i",
+      "target": 0.603,
+      "best": "Phi_res*0.7236",
+      "pct": 1.8411658783170093e-14,
+      "status": "CLOSED"
+    },
+    {
+      "name": "Phi_res",
+      "target": 0.8333333333333334,
+      "best": "(D_phys+1)/(D_phys+2)",
+      "pct": 0.0,
+      "status": "CLOSED"
+    },
+    {
+      "name": "K_Mex",
+      "target": 2.0833333333333335,
+      "best": "25/12",
+      "pct": 0.0,
+      "status": "CLOSED"
+    }
+  ],
+  "part_B": [
+    {
+      "name": "m_p/m_Planck",
+      "target": 7.685148842969738e-20,
+      "best": "1/(D_crit^14)",
+      "pct": 79.82930580092608,
+      "status": "OPEN"
+    },
+    {
+      "name": "M_Chandra",
+      "target": 2.8958675199999997e+30,
+      "best": "omega3 chain",
+      "pct": 127.57715607802152,
+      "status": "OPEN",
+      "omega3_struct": 2.04,
+      "omega3_pct": 1.0901883052527375
+    },
+    {
+      "name": "Stage01_E",
+      "prediction": 9.999999999999995e-12,
+      "unit": "J",
+      "status": "PREDICTION"
+    }
+  ]
+}
