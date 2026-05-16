@@ -1,0 +1,11 @@
+{
+  "beta_i_observed_from_Lambda": -0.6050226621191257,
+  "beta_i_S270": 0.603,
+  "beta_i_S270_match_pct": 200.33543318725137,
+  "closure_formula": "rho_Lambda = rho_Planck * F_TRZ^(123 - beta_i*F_TRZ)",
+  "exponent": 122.9397,
+  "predicted_rho_Lambda": 5.323947834191707e-10,
+  "observed_rho_Lambda": 5.326427961407685e-10,
+  "residual_pct": 0.04656267265694417,
+  "remaining_open": "structural form of beta_i = 0.6031"
+}
