@@ -1,0 +1,16 @@
+{
+  "M_Ch_obs": 2.7844879999999997e+30,
+  "M_Ch_obs_Msun": 1.4,
+  "raw_mPl3_over_mp2": 3.6851700133150944e+30,
+  "K_pre": 0.7744945856422204,
+  "K_pre_struct": 0.7828449315790638,
+  "omega_3_struct": 2.04,
+  "N_Ch": 38,
+  "beta_Ch": 2.28,
+  "M_Ch_pred": 2.8495049704520277e+30,
+  "M_Ch_struct": 2.880227396009462e+30,
+  "residual_pct": 3.4383123938570423,
+  "closure": "M_Ch = m_Planck * F_TRZ^(-(2*N_p + 4*SSq*F_TRZ)) * K_pre",
+  "K_pre_form": "sqrt((D_phys-1)*pi) * omega_3 / (2 * mu_e^2)",
+  "non_UQFF_input": "mu_e = 2 (SM composition for He/C/O WD)"
+}
