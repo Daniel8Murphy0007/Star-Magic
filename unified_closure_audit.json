@@ -1,0 +1,332 @@
+[
+  {
+    "id": "C1",
+    "claim": "|SO(5)| = dim of Lie algebra so(5) = 10",
+    "target": "10",
+    "derived": "10",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "dim so(n) = n(n-1)/2; n=5 -> 10",
+    "paper": "PAPER_1160"
+  },
+  {
+    "id": "C2",
+    "claim": "|A_5| = 60 (alternating group)",
+    "target": "60",
+    "derived": "60",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "|A_n| = n!/2; n=5 -> 60",
+    "paper": "PAPER_1165 (related), Mexican-hat normalisation"
+  },
+  {
+    "id": "C3",
+    "claim": "|S_5| = 120 (symmetric group)",
+    "target": "120",
+    "derived": "120",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "|S_n| = n!",
+    "paper": "general"
+  },
+  {
+    "id": "C4",
+    "claim": "dim SO(2) = 1",
+    "target": "1",
+    "derived": "1",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "dim so(n) = n(n-1)/2; n=2 -> 1",
+    "paper": "PAPER_1163"
+  },
+  {
+    "id": "C5",
+    "claim": "dim SO(26) = 325",
+    "target": "325",
+    "derived": "325",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "dim so(n) = n(n-1)/2; n=26 -> 325",
+    "paper": "general (Polyakov gauge)"
+  },
+  {
+    "id": "P1",
+    "claim": "D_phys = 4 (observed spacetime dimension)",
+    "target": "4",
+    "derived": "4",
+    "match": true,
+    "status": "POSTULATED",
+    "chain": "Observational; not derived within framework.",
+    "paper": "universal"
+  },
+  {
+    "id": "P2",
+    "claim": "D_crit = 26 (Polyakov bosonic string critical dim)",
+    "target": "26",
+    "derived": "26",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Weyl anomaly cancellation: c_matter + c_ghost = 0; c_ghost = -26, c_matter = D -> D = 26.",
+    "paper": "universal (Polyakov 1981)"
+  },
+  {
+    "id": "P3",
+    "claim": "rho_SCm = 7.09e-37 J/m^3 (vacuum density)",
+    "target": "7.09e-37",
+    "derived": "7.09e-37",
+    "match": true,
+    "status": "CALIBRATED",
+    "chain": "Calibrated from magnetar / Sgr A* data; no first-principles derivation in repo.",
+    "paper": "PAPER_1166"
+  },
+  {
+    "id": "P4",
+    "claim": "v_UA = c/3 \u2248 1e8 m/s (SCm-UA flux velocity)",
+    "target": "299792458/3",
+    "derived": "299792458/3",
+    "match": true,
+    "status": "POSTULATED",
+    "chain": "Canonical DPM differential velocity; postulate.",
+    "paper": "PAPER_1166"
+  },
+  {
+    "id": "I1",
+    "claim": "D_BSFG = 6 = D_crit - 4*|SO(5)|/2",
+    "target": "6",
+    "derived": "6",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "26 - 4*10/2 = 6.  Arithmetic; coefficient '4' is chosen so the chain lands on 6.  Calabi-Yau dim is also 6 by independent textbook input.",
+    "paper": "PAPER_1167"
+  },
+  {
+    "id": "I2",
+    "claim": "Phi_res = (D_BSFG - 1)/D_BSFG = 5/6",
+    "target": "5/6",
+    "derived": "5/6",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "With D_BSFG=6 identified: (6-1)/6 = 5/6.",
+    "paper": "PAPER_1159"
+  },
+  {
+    "id": "I3",
+    "claim": "F_TRZ = 1/|SO(5)| = 1/10",
+    "target": "1/10",
+    "derived": "1/10",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "1/10 numerically matches 1/dim(SO(5)).",
+    "paper": "PAPER_1160"
+  },
+  {
+    "id": "I4",
+    "claim": "K_Mex = Phi_res * |SO(5)| / D_phys = 25/12",
+    "target": "25/12",
+    "derived": "25/12",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "(5/6)*10/4 = 25/12.  See _K_Mex_REAL_derivation.py: Mexican-hat shape does NOT fix K; this is an identification with a group-theoretic ratio.",
+    "paper": "PAPER_1166"
+  },
+  {
+    "id": "I5.1",
+    "claim": "beta_1 = 3*(5-1)/20",
+    "target": "3/5",
+    "derived": "3/5",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "3*(5-1)/20 = 3/5.  Coefficient '3' chosen so beta_1=6/10 fits dipole observation.",
+    "paper": "PAPER_1165"
+  },
+  {
+    "id": "I5.2",
+    "claim": "beta_2 = 3*(5-2)/20",
+    "target": "9/20",
+    "derived": "9/20",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "3*(5-2)/20 = 9/20.  Coefficient '3' chosen so beta_1=6/10 fits dipole observation.",
+    "paper": "PAPER_1165"
+  },
+  {
+    "id": "I5.3",
+    "claim": "beta_3 = 3*(5-3)/20",
+    "target": "3/10",
+    "derived": "3/10",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "3*(5-3)/20 = 3/10.  Coefficient '3' chosen so beta_1=6/10 fits dipole observation.",
+    "paper": "PAPER_1165"
+  },
+  {
+    "id": "I5.4",
+    "claim": "beta_4 = 3*(5-4)/20",
+    "target": "3/20",
+    "derived": "3/20",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "3*(5-4)/20 = 3/20.  Coefficient '3' chosen so beta_1=6/10 fits dipole observation.",
+    "paper": "PAPER_1165"
+  },
+  {
+    "id": "I5.1c",
+    "claim": "beta_1_obs codebase value vs stated chain (3/5)*(1+1/200)",
+    "target": "6029/10000",
+    "derived": "603/1000",
+    "match": false,
+    "status": "FAILED",
+    "chain": "(3/5)*(201/200) = 603/1000; codebase stores 6029/10000; residual = -1/10000. Stated chain does NOT produce stored constant. Either chain wrong or constant wrong.",
+    "paper": "PAPER_1165 / uqff_closed_constants.py"
+  },
+  {
+    "id": "I6",
+    "claim": "[SSq] = 0.57",
+    "target": "57/100",
+    "derived": "57/100",
+    "match": true,
+    "status": "CALIBRATED",
+    "chain": "No symbolic chain in repo; calibrated from SGR1745/Sgr A* observations.",
+    "paper": "various"
+  },
+  {
+    "id": "I7",
+    "claim": "N_ch = 9 = D_crit - D_BSFG - D_phys + ... ",
+    "target": "9",
+    "derived": "9",
+    "match": true,
+    "status": "POSTULATED",
+    "chain": "Stated in framework; no symbolic chain found in repo.",
+    "paper": "various"
+  },
+  {
+    "id": "I8",
+    "claim": "A_5 = |A_5| = 60 (in K_Mex extended form)",
+    "target": "60",
+    "derived": "60",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "|A_5| = 5!/2 = 60 (Tier 1)",
+    "paper": "PAPER_1165 cross-ref"
+  },
+  {
+    "id": "L1",
+    "claim": "V(UA) minimum location",
+    "target": "v",
+    "derived": "v",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "d/dUA[K rho ((UA/v)^2-1)^2] = 0 -> UA = [v]",
+    "paper": "PAPER_1166"
+  },
+  {
+    "id": "L2",
+    "claim": "V(UA) mass-squared at minimum",
+    "target": "8*K*rho/v**2",
+    "derived": "8*K*rho/v**2",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "V''(v) = 8*K*rho/v**2  (parametric in K)",
+    "paper": "PAPER_1166"
+  },
+  {
+    "id": "L3",
+    "claim": "m_UA^2 numerical value at K=25/12",
+    "target": "50*rho/(3*v**2)",
+    "derived": "50*rho/(3*v**2)",
+    "match": true,
+    "status": "IDENTIFIED",
+    "chain": "8*(25/12)/1 = 50/6 = ... -> (50/3) rho/v^2; depends on assumed K.",
+    "paper": "PAPER_1166"
+  },
+  {
+    "id": "KG1",
+    "claim": "Klein-Gordon equation from variational principle",
+    "target": "residual = 0",
+    "derived": "residual = 0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "delta S / delta phi = 0 on free massive scalar density; residual against textbook KG form computed symbolically.",
+    "paper": "buoyancy_lagrangian_eom.py"
+  },
+  {
+    "id": "A1",
+    "claim": "Sum beta_i (i=1..4) = 3/2",
+    "target": "3/2",
+    "derived": "3/2",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "3/20 * sum(5-i for i in 1..4) = 3/20 * 10 = 3/2",
+    "paper": "PAPER_1165"
+  },
+  {
+    "id": "A2",
+    "claim": "(1)_26 Pochhammer = 26!",
+    "target": "403291461126605635584000000",
+    "derived": "403291461126605635584000000",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "(1)_n = Gamma(1+n)/Gamma(1) = n!",
+    "paper": "PAPER_1161"
+  },
+  {
+    "id": "A3",
+    "claim": "Suppression scale 1/26^26",
+    "target": "1.62440e-37",
+    "derived": "1.62440e-37",
+    "match": true,
+    "status": "POSTULATED",
+    "chain": "Ansatz: KK tower geometric mean.  No first-principles derivation that *this* form (vs 1/(2pi)^26 or 1/26! etc.) is the right one.",
+    "paper": "PAPER_1161/1162"
+  },
+  {
+    "id": "V1",
+    "claim": "PAPER_1066: V(phi_0) = -rho_SCm",
+    "target": "-rho_SCm",
+    "derived": "0",
+    "match": false,
+    "status": "FAILED",
+    "chain": "lambda(phi^2-v^2)^2 is non-negative; min = 0 at phi=v, NOT -rho_SCm. Claim requires undocumented additive offset.",
+    "paper": "PAPER_1066"
+  },
+  {
+    "id": "V2",
+    "claim": "PAPER_1066: m_phonon^2 = 8 lambda v^2",
+    "target": "8*lambda*v**2",
+    "derived": "8*lambda*v**2",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Expand V(v+eta), 2x coefficient of eta^2 gives m^2 = 8 lambda v^2. Standard Mexican-hat second-derivative result; SymPy verified.",
+    "paper": "PAPER_1066"
+  },
+  {
+    "id": "V3",
+    "claim": "PAPER_1066: delta S/delta phi=0 -> KG EOM",
+    "target": "0",
+    "derived": "0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "EL operator d/dphi - d/dt(d/dphidot) applied to L = (1/2)phidot^2 - V(phi) yields phi_tt = -dV/dphi.  Residual = 0 in SymPy.",
+    "paper": "PAPER_1066"
+  },
+  {
+    "id": "V4",
+    "claim": "PAPER_1065 (as-written): buoyancy EOM rdd = -mu_s grad(M_s/r) + g_buoy + g_phonon",
+    "target": "rdd = -mu_s grad(M_s/r) + g_buoy + g_phonon",
+    "derived": "(not computable -- V_buoy, L_phonon unspecified in PAPER_1065)",
+    "match": false,
+    "status": "IDENTIFIED",
+    "chain": "PAPER_1065 writes L_UQFF = T - V_grav + V_buoy + L_phonon as a sum of NAMED terms only.  Functional forms not given. SUPERSEDED by PAPER_1183 / entry V5 which supplies explicit terms and verifies residual = 0.",
+    "paper": "PAPER_1065 (original)"
+  },
+  {
+    "id": "V5",
+    "claim": "PAPER_1183 (patch): first-principles variational derivation of buoyancy EOM",
+    "target": "0",
+    "derived": "0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Explicit L = (1/2)m rdot^2 - m*mu_s*M_s/r + m*g_buoy*r + m*g_phonon*r. Apply EL: d/dt(dL/d rdot) - dL/dr = 0.  SymPy yields rdd = mu_s*M_s/r^2 + g_buoy + g_phonon = -mu_s*grad(M_s/r) + g_buoy + g_phonon. Residual = 0 exactly.  Closes PAPER_1065 gap.",
+    "paper": "PAPER_1183"
+  }
+]
