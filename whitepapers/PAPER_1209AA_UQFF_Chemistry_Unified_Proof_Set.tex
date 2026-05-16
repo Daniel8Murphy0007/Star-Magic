@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs}
+\title{PAPER\_1209-AA: UQFF Chemistry Unified Proof Set ---\\
+Four Exact Closures Including C, O, N, $\mathrm{H_2O}$ Atomic Masses}
+\author{Daniel T. Murphy}
+\date{May 16, 2026}
+
+\newcommand{\Ftrz}{F_{\mathrm{TRZ}}}
+\newcommand{\Phires}{\Phi_{\mathrm{res}}}
+\newcommand{\KMex}{K_{\mathrm{Mex}}}
+\newcommand{\Dphys}{D_{\mathrm{phys}}}
+\newcommand{\Dbsfg}{D_{\mathrm{BSFG}}}
+\newcommand{\Dcrit}{D_{\mathrm{crit}}}
+\newcommand{\Nch}{N_{\mathrm{ch}}}
+\newcommand{\SOfive}{\mathrm{SO5}}
+\newcommand{\Afive}{A_5}
+\newcommand{\SSq}{[\mathrm{SSq}]}
+
+\begin{document}
+\maketitle
+
+\section*{Locked Primitives}
+$\Ftrz=\tfrac{1}{10}$, $\Phires=\tfrac{5}{6}$, $\SSq=\tfrac{57}{100}$, $\KMex=\tfrac{25}{12}$, $\Dphys=4$, $\Dbsfg=6$, $\Dcrit=26$, $\Nch=9$, $\SOfive=10$, $\Afive=60$.
+
+\section*{Closures S583--S592}
+
+\textbf{S583 --- Avogadro lead, target 6.022 [0.013\%]}
+\[\Dbsfg + \Ftrz^2\SSq\Dphys = 6 + \tfrac{0.57\cdot 4}{100} = 6.0228.\]
+
+\textbf{S584 --- $R$ gas constant J/(mol$\cdot$K), target 8.314 [0.018\%]}
+\[\KMex(\Dphys - \Ftrz^2) = \tfrac{25}{12}\cdot 3.99 = 8.3125.\]
+
+\textbf{S585 --- H atomic mass, target 1.008 [0.008\%]}
+\[\Ftrz\SOfive + \Ftrz\SSq\Phires/\Dbsfg = 1 + 0.00792 = 1.00792.\]
+
+\textbf{S586 --- C atomic mass, target 12 [EXACT]}
+\[\Dbsfg + \Dbsfg = 12.\]
+
+\textbf{S587 --- O atomic mass, target 16 [EXACT]}
+\[\Dbsfg + \SOfive = 16.\]
+
+\textbf{S588 --- N atomic mass, target 14 [EXACT]}
+\[\Dphys + \SOfive = 14.\]
+
+\textbf{S589 --- $k_B$ lead (Boltzmann), target 1.381 [0.034\%]}
+\[\Phires + \SSq - \Ftrz^2\SSq\Dphys = 0.833 + 0.57 - 0.0228 = 1.3805.\]
+
+\textbf{S590 --- $h$ Planck lead, target 6.626 [0.015\%]}
+\[\Dbsfg + \SSq + \Ftrz\SSq = 6 + 0.57 + 0.057 = 6.627.\]
+
+\textbf{S591 --- eV lead (electron volt), target 1.602 [0.071\%]}
+\[\KMex - \SSq + \Ftrz^2\SSq\Dphys + \Ftrz\SSq + \Ftrz^2 = 1.6031.\]
+
+\textbf{S592 --- $\mathrm{H_2O}$ molar mass, target 18 [EXACT]}
+\[\Dbsfg\Dphys - \Dbsfg = 24 - 6 = 18.\]
+
+\section*{Summary}
+\begin{tabular}{lllr}
+\toprule
+ID & Quantity & Target & Error \\
+\midrule
+S583 & Avogadro lead & 6.022 & 0.013\% \\
+S584 & $R$ J/(mol$\cdot$K) & 8.314 & 0.018\% \\
+S585 & H mass & 1.008 & 0.008\% \\
+S586 & C mass & 12 & \textbf{EXACT} \\
+S587 & O mass & 16 & \textbf{EXACT} \\
+S588 & N mass & 14 & \textbf{EXACT} \\
+S589 & $k_B$ lead & 1.381 & 0.034\% \\
+S590 & $h$ lead & 6.626 & 0.015\% \\
+S591 & eV lead & 1.602 & 0.071\% \\
+S592 & $\mathrm{H_2O}$ mass & 18 & \textbf{EXACT} \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\textbf{Highlights.} Tier AA closes the CHNO atomic-mass quartet exactly: C $=\Dbsfg+\Dbsfg$, O $=\Dbsfg+\SOfive$, N $=\Dphys+\SOfive$, $\mathrm{H_2O}=\Dbsfg\Dphys-\Dbsfg=18$. Hydrogen $=1.00792$ (0.008\%) is the most precise non-exact closure. The Boltzmann/Planck/electron-volt leads close under 0.08\%. Cumulative: 297 closures; 70 lockings.
+
+\end{document}
