@@ -1,0 +1,246 @@
+{
+  "target_beta_i": 0.6028,
+  "tolerance": 0.005,
+  "n_binary_matches": 132,
+  "best_unary": [
+    {
+      "form": "log(Phi_res+1)",
+      "value": 0.6061358035703156,
+      "residual_pct": 0.5533847993224285
+    },
+    {
+      "form": "exp(-1/2)",
+      "value": 0.6065306597126334,
+      "residual_pct": 0.6188884725669247
+    }
+  ],
+  "best_binary": [
+    {
+      "form": "log(ln2+1) * log(pi)",
+      "value": 0.6028022049395344,
+      "residual_pct": 0.0003657829353683434
+    },
+    {
+      "form": "log(pi) * log(ln2+1)",
+      "value": 0.6028022049395344,
+      "residual_pct": 0.0003657829353683434
+    },
+    {
+      "form": "1/D_phys + exp(-K_Mex/2)",
+      "value": 0.6028660814588489,
+      "residual_pct": 0.010962418521715152
+    },
+    {
+      "form": "exp(-K_Mex/2) + 1/D_phys",
+      "value": 0.6028660814588489,
+      "residual_pct": 0.010962418521715152
+    },
+    {
+      "form": "log(D_BSFG) - sqrt(sqrt2)",
+      "value": 0.6025523542253339,
+      "residual_pct": 0.041082577084617135
+    },
+    {
+      "form": "log(Phi_res+1) / log(sqrt3+1)",
+      "value": 0.6030886746764218,
+      "residual_pct": 0.04788896423719247
+    },
+    {
+      "form": "exp(-Phi_res) * log(3+1)",
+      "value": 0.602481045806169,
+      "residual_pct": 0.052912109129228474
+    },
+    {
+      "form": "exp(-Phi_res) * log(D_phys)",
+      "value": 0.602481045806169,
+      "residual_pct": 0.052912109129228474
+    },
+    {
+      "form": "log(3+1) * exp(-Phi_res)",
+      "value": 0.602481045806169,
+      "residual_pct": 0.052912109129228474
+    },
+    {
+      "form": "log(D_phys) * exp(-Phi_res)",
+      "value": 0.602481045806169,
+      "residual_pct": 0.052912109129228474
+    },
+    {
+      "form": "1/sqrt5 / log(ln3+1)",
+      "value": 0.6033021541864844,
+      "residual_pct": 0.0833036142143929
+    },
+    {
+      "form": "exp(-e/2) + log(sqrt2)",
+      "value": 0.603454955593443,
+      "residual_pct": 0.1086522218717608
+    },
+    {
+      "form": "log(sqrt2) + exp(-e/2)",
+      "value": 0.603454955593443,
+      "residual_pct": 0.1086522218717608
+    },
+    {
+      "form": "ln3 * log(sqrt3)",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "ln3^2 / sqrt2^2",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "log(2+1) * log(sqrt3)",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "log(3) * log(sqrt3)",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "log(sqrt3) * ln3",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "log(sqrt3) * log(2+1)",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "log(sqrt3) * log(3)",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "log(sqrt3) / 1/ln3",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "1/2 * ln3^2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "exp(-ln2) * ln3^2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "ln3^2 * 1/2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "ln3^2 * exp(-ln2)",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "ln3^2 / 2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "ln3^2 / sqrt(D_phys)",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "exp(-ln2/2) / log(sqrt5+1)",
+      "value": 0.6021214788688097,
+      "residual_pct": 0.11256156788159728
+    },
+    {
+      "form": "1/sqrt2 / log(sqrt5+1)",
+      "value": 0.6021214788688096,
+      "residual_pct": 0.11256156788161568
+    },
+    {
+      "form": "exp(-1/2) / log(sqrt3+1)",
+      "value": 0.6034815458220555,
+      "residual_pct": 0.11306334141597293
+    }
+  ],
+  "clean_forms": [
+    {
+      "form": "1/D_phys + exp(-K_Mex/2)",
+      "value": 0.6028660814588489,
+      "residual_pct": 0.010962418521715152
+    },
+    {
+      "form": "exp(-K_Mex/2) + 1/D_phys",
+      "value": 0.6028660814588489,
+      "residual_pct": 0.010962418521715152
+    },
+    {
+      "form": "ln3^2 / sqrt2^2",
+      "value": 0.6034744804062909,
+      "residual_pct": 0.1118912419195293
+    },
+    {
+      "form": "1/2 * ln3^2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "exp(-ln2) * ln3^2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "ln3^2 * 1/2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "ln3^2 * exp(-ln2)",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "ln3^2 / 2",
+      "value": 0.603474480406291,
+      "residual_pct": 0.11189124191954773
+    },
+    {
+      "form": "1/D_crit + exp(-SSq)",
+      "value": 0.6039869771610755,
+      "residual_pct": 0.19691061066282678
+    },
+    {
+      "form": "exp(-SSq) + 1/D_crit",
+      "value": 0.6039869771610755,
+      "residual_pct": 0.19691061066282678
+    },
+    {
+      "form": "exp(-1/2) - exp(-D_BSFG)",
+      "value": 0.604051907535967,
+      "residual_pct": 0.20768207298723376
+    },
+    {
+      "form": "1/N_ch + exp(-sqrt2/2)",
+      "value": 0.604179802506351,
+      "residual_pct": 0.2288988895738133
+    },
+    {
+      "form": "exp(-sqrt2/2) + 1/N_ch",
+      "value": 0.604179802506351,
+      "residual_pct": 0.2288988895738133
+    },
+    {
+      "form": "1/D_BSFG + exp(-Phi_res)",
+      "value": 0.6012648751737448,
+      "residual_pct": 0.25466569778619347
+    },
+    {
+      "form": "exp(-Phi_res) + 1/D_BSFG",
+      "value": 0.6012648751737448,
+      "residual_pct": 0.25466569778619347
+    }
+  ]
+}
