@@ -1,0 +1,13 @@
+# UQFF Predictive Validation Targets
+# columns: experiment, quantity, predicted (closure ID or value), expected_year, status
+# All entries reference closures already in master_closures.csv where possible.
+J-PARC E34,muon_g-2_anomaly,a_mu_BSM ~ 1e-9 (S433 family),2026,upcoming
+CMB-S4,r_tensor-to-scalar,r < 0.001 (S455 inflation closure),2027,planned
+DESI Y3,w0_dark_energy,w0 = -1.00 + 0.01 (S521 lambda closure),2026,planned
+JWST high-z,UV_LF_z=12,phi* ~ 1e-5 Mpc^-3 (S560 NIRCam closure),2026,ongoing
+PERKEO-IV,neutron_beta_asymm_A,A = -0.11933(34) (S612 weak closure),2027,planned
+LEGEND-1000,Majorana_t12,T_1/2 > 1e28 yr (S634 0vbb closure),2028,planned
+LIGO-O5,GW_inspiral_chirp,Mc spectrum (S652 strain closure),2027,planned
+nEDM-PSI,neutron_EDM_upper,d_n < 1e-27 e.cm (S665 CP closure),2026,ongoing
+Euclid DR1,sigma_8,sigma8 = 0.811 +/- 0.005 (S675 LSS closure),2026,planned
+Roman WFI,DE_eq_of_state,w_a < 0.05 (S692 Mars-orbit family),2027,planned

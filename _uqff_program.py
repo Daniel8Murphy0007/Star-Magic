@@ -190,6 +190,19 @@ def sigma():
     print(f"  TOTAL OK:    {len(ok):4d}")
 
 
+def predict():
+    p = ROOT / "_predictive_targets.csv"
+    if not p.exists():
+        print("_predictive_targets.csv missing."); return
+    rows = [r for r in csv.reader(p.open(encoding="utf-8")) if r and not r[0].startswith("#")]
+    print(f"{'experiment':14s} {'quantity':28s} {'predicted':45s} year status")
+    print("-"*120)
+    for r in rows:
+        if len(r) < 5: continue
+        print(f"{r[0]:14s} {r[1]:28s} {r[2]:45s} {r[3]} {r[4]}")
+    print(f"\nTotal predictive targets: {len(rows)}")
+
+
 def status():
     scripts = list(ROOT.glob("_session*.py"))
     ids = sorted(int(SESSION_RE.match(s.name).group(1)) for s in scripts if SESSION_RE.match(s.name))
@@ -213,6 +226,7 @@ def main():
     ap.add_argument("--search", action="store_true", help="brute-force closure search")
     ap.add_argument("--status", action="store_true", help="print program status")
     ap.add_argument("--sigma",  action="store_true", help="build sigma_table.csv from master_closures.csv")
+    ap.add_argument("--predict",action="store_true", help="print predictive-validation tracker")
     ap.add_argument("--tier", help="tier letter (e.g. JJ) for --search")
     ap.add_argument("--targets", help="path to targets CSV (name,value) for --search")
     ap.add_argument("--max-terms", type=int, default=5)
@@ -225,6 +239,7 @@ def main():
         search(args.tier, args.targets, args.max_terms, args.tol)
     elif args.status: status()
     elif args.sigma:  sigma()
+    elif args.predict: predict()
     else: ap.print_help()
 
 if __name__ == "__main__":
