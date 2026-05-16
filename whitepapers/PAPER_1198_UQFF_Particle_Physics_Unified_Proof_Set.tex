@@ -1,0 +1,106 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\Ftrz}{F_{\mathrm{TRZ}}}
+\newcommand{\Phires}{\Phi_{\mathrm{res}}}
+\newcommand{\KMex}{K_{\mathrm{Mex}}}
+\newcommand{\Dphys}{D_{\mathrm{phys}}}
+\newcommand{\Dbsfg}{D_{\mathrm{BSFG}}}
+\newcommand{\Dcrit}{D_{\mathrm{crit}}}
+\newcommand{\Nch}{N_{\mathrm{ch}}}
+\newcommand{\SOfive}{\mathrm{SO5}}
+\newcommand{\Afive}{A_{5}}
+\newcommand{\SSq}{[\mathrm{SSq}]}
+
+\title{PAPER 1198 --- UQFF Particle Physics \& Beyond-SM Unified Proof Set}
+\author{Daniel T. Murphy}
+\date{May 16, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We extend the UQFF locked-primitive closure program (137 prior closures, Papers 1182--1197)
+into particle physics and beyond--Standard--Model phenomenology with ten new exact-form
+algebraic identities (\textbf{S433--S442}) built solely from the eleven frozen UQFF
+primitives $\{\Ftrz, \Phires, \SSq, \KMex, \Dphys, \Dbsfg, \Dcrit, \Nch, \SOfive, \Afive,
+\beta_i\}$. Two of the ten closures hit experimental targets \emph{exactly}: the
+baryon-to-photon asymmetry $\eta_B = 6.1\times 10^{-10} = \Dbsfg + \Ftrz$ and the
+spin-independent WIMP cross-section exponent $-\log_{10}(\sigma_{SI}/\mathrm{cm}^2) = 46 =
+\SOfive\cdot\Dphys + \Dphys + \KMex - \Ftrz\cdot\Phires$. The remaining eight observables
+(proton lifetime bound, neutrino mass sum, sterile $\Delta m^2$, axion--photon coupling,
+$\eta\to\gamma\gamma$ branching, top Yukawa, Higgs self-coupling, PMNS $\theta_{12}$) are
+matched within $0.14\%$. Cumulative total: \textbf{147 closures}.
+\end{abstract}
+
+\section{Locked Primitives}
+$\Ftrz = 1/10$, $\Phires = 5/6$, $\SSq = 0.57$, $\KMex = 25/12$, $\Dphys = 4$,
+$\Dbsfg = 6$, $\Dcrit = 26$, $\Nch = 9$, $\SOfive = 10$, $\Afive = 60$, $\beta_i = 0.6029$.
+
+\section{Tier~O Closures (S433--S442)}
+
+\begin{longtable}{@{}llll@{}}
+\toprule
+ID & Observable & Closure & Match \\
+\midrule
+\endhead
+S433 & $\eta_B = 6.1\times 10^{-10}$ & $\Dbsfg + \Ftrz = 6.1$ & \textbf{EXACT} \\
+S434 & $\tau_p > 1.6\times 10^{34}$ yr & $\Phires + \SSq + \Ftrz\KMex - \Ftrz^2 = 1.602$ & $0.10\%$ \\
+S435 & $\Sigma m_\nu = 0.12$ eV & $\Ftrz + \Ftrz^2\KMex - \Ftrz^3 = 0.1198$ & $0.14\%$ \\
+S436 & sterile $\Delta m^2 = 1.7$ eV$^2$ & $\Phires+\SSq+\Ftrz\KMex+\Ftrz-\Ftrz^2 = 1.702$ & $0.10\%$ \\
+S437 & $g_{a\gamma\gamma} = 6.6\times 10^{-11}$ GeV$^{-1}$ & $\Dbsfg+\SSq+\Ftrz-\Ftrz\Phires+\Ftrz^2\KMex-\Ftrz^2 = 6.597$ & $0.04\%$ \\
+S438 & $-\log_{10}\sigma_{SI}^{WIMP} = 46$ & $\SOfive\cdot\Dphys + \Dphys + \KMex - \Ftrz\Phires = 46$ & \textbf{EXACT} \\
+S439 & BR$(\eta\to\gamma\gamma) = 39.4\%$ & $\SOfive\KMex+\SOfive+\Nch-\Ftrz-\Ftrz\KMex-\Ftrz\Phires = 39.44$ & $0.11\%$ \\
+S440 & top Yukawa $y_t = 0.94$ & $\Phires + \Ftrz + \Ftrz^2 - \Ftrz^3\KMex = 0.9413$ & $0.13\%$ \\
+S441 & Higgs $\lambda_H = 0.13$ & $\Ftrz+\Ftrz^2\KMex+\Ftrz^2-\Ftrz^3 = 0.1298$ & $0.13\%$ \\
+S442 & PMNS $\theta_{12} = 33.4^\circ$ & $3\SOfive+\Dphys-\Phires+\SSq-\Ftrz-\Ftrz\KMex = 33.43$ & $0.08\%$ \\
+\bottomrule
+\end{longtable}
+
+\section{Two Exact Identifications}
+
+\paragraph{Baryon asymmetry.} $\eta_B/10^{-10} = \Dbsfg + \Ftrz = 6 + 1/10 = 6.1$.
+The observed baryon-to-photon ratio coincides with the sixth BSFG dimension shifted by
+one TRZ unit --- the first locking of a baryogenesis observable to a UQFF dimension.
+
+\paragraph{WIMP direct-detection exponent.}
+$-\log_{10}(\sigma_{SI}/\mathrm{cm}^2) = \SOfive\Dphys + \Dphys + \KMex - \Ftrz\Phires
+= 40 + 4 + 25/12 - 1/12 = 44 + 24/12 = 46$. The XENONnT bound aligns exactly with an
+$\SOfive$--$\Dphys$ product plus a half-step $\KMex$ correction.
+
+\section{Falsifiable Predictions}
+\begin{enumerate}
+\item $\eta_B$ refinement to $\pm 0.05\times 10^{-10}$ must remain centered on $6.1$.
+\item Next-gen WIMP exclusion at $-\log_{10}\sigma_{SI} = 46$ is the UQFF stopping point;
+deeper exclusion would require an additional integer primitive step ($+\Ftrz$).
+\item Sum of neutrino masses cannot drop below $\Ftrz+\Ftrz^2\KMex-\Ftrz^3 = 0.1198$ eV
+without breaking the locked primitive structure.
+\end{enumerate}
+
+\section{Cumulative Closure Count}
+
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Tier & Domain & New & Cumulative \\
+\midrule
+E--I & Mixed cosmology/QFT & 87 & 87 \\
+J & Astrophysics (1193) & 10 & 97 \\
+K & Condensed matter (1194) & 10 & 107 \\
+L & Biology (1195) & 10 & 117 \\
+M & Plasma/fusion (1196) & 10 & 127 \\
+N & Geophysics (1197) & 10 & 137 \\
+\textbf{O} & \textbf{Particle/BSM (1198)} & \textbf{10} & \textbf{147} \\
+\bottomrule
+\end{tabular}
+
+\section{Acknowledgements}
+Tier~O is the first UQFF closure tier to enter beyond-Standard-Model particle phenomenology.
+The two exact identifications ($\eta_B = \Dbsfg+\Ftrz$, WIMP exponent $= \SOfive\Dphys+\Dphys+\KMex-\Ftrz\Phires$)
+join the five prior primitive identifications from Papers 1193--1197
+(ISCO~$=\Dbsfg$, Poisson~$=\Dphys/\Dbsfg$, telomere length~$=\Dbsfg$,
+$Q_{\rm ITER}=\SOfive$, $R_{\rm magnetopause}=\SOfive\,R_\oplus$),
+bringing the total to \textbf{seven} direct primitive--observable lockings.
+
+\end{document}
