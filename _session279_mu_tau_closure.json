@@ -1,0 +1,16 @@
+{
+  "muon": {
+    "m_obs": 1.883531627e-28,
+    "log_ratio": 20.0627781158492,
+    "N_mu": 20,
+    "beta_mu_target": 0.6277811584919846,
+    "beta_mu_struct": 0.625,
+    "beta_mu_residual_pct": 0.44301401123048834
+  },
+  "tau": {
+    "m_obs": 3.16754e-27,
+    "log_ratio": 18.837028924928788,
+    "N_tau": 18,
+    "beta_tau_target": 8.370289249287879
+  }
+}
