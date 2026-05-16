@@ -1,4 +1,8 @@
 tier,ID,name,label,predicted,observed,error_pct
+EXACT,262,S262-closures-1,closures-1,938.783,938.783,0.0
+EXACT,262,S262-closures-4,closures-4,938.783,938.783,0.0
+EXACT,290,S290-dark_sector_inflation-0,dark_sector_inflation-0,0.12,0.12,0.0
+EXACT,290,S290-dark_sector_inflation-2,dark_sector_inflation-2,0.02237,0.02237,0.0
 EXACT,383,astro_chandrasekhar,astro_chandrasekhar,1.4400,2,0.0000
 EXACT,386,astro_isco,astro_isco,6,6.0,0.0000
 EXACT,388,astro_wd_exponent,astro_wd_exponent,-0.333333,3,0.0000
@@ -46,6 +50,13 @@ EXACT,626,faraday,Faraday F,96485.000000,96485,0.0000
 EXACT,632,hartree,Hartree E_h lead,4.360000,4.3600,0.0000
 EXACT,651,zRecomb,z_recomb,1090.000000,1090.000000,0.0000
 EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
+<0.01%,261,S261-closures-0,closures-0,1410470000000.0,1410440000000.0,0.0026
+<0.01%,261,S261-closures-2,closures-2,1410476671440.0,1410440000000.0,0.0026
+<0.01%,262,S262-S262-H-atom,S262-H-atom,938.78308711,938.78307,1.8225722843873045e-06
+<0.01%,278,S278-me_closure-0,me_closure-0,1836.3051006741002,1836.1527,0.0083
+<0.01%,279,S279-mu_tau_closure-0,mu_tau_closure-0,0.627818834,0.6278,0.003
+<0.01%,290,S290-dark_sector_inflation-1,dark_sector_inflation-1,5.36435682165,5.36433,0.0005
+<0.01%,294,S294-neutron_lifetime-3,neutron_lifetime-3,887.6840214000001,887.7,0.0018
 <0.01%,381,sm_mt_mw,sm_mt_mw,2.1487,2.1485,0.008
 <0.01%,573,moon,Moon/RE,60.333333,60.336,0.0044
 <0.01%,580,jupiter,M_J/M_E,317.783333,317.8,0.0052
@@ -64,6 +75,29 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 <0.01%,678,Earth_orb_v,Earth orbital v (km/s),29.778661,29.78,0.0045
 <0.01%,680,Moon_dist,Moon distance (1e8 m),3.843962,3.844,0.0010
 <0.01%,690,KK_Moon_orbital_period_per_day,Moon_orbital_period_per_day,27.32127097800926,27.32,0.0047
+0.01-0.1%,262,S262-S262-Bohr/r_p,S262-Bohr/r_p,62904.7540187624,62892.46623520323,0.019537767072479235
+0.01-0.1%,262,S262-closures-2,closures-2,62904.8,62892.5,0.0195
+0.01-0.1%,274,S274-beta_lambda_closure,beta_lambda_closure,5.328910115448001e-10,5.326428e-10,0.0466
+0.01-0.1%,275,S275-mp_planck_closure,mp_planck_closure,1.673983514308e-27,1.672622e-27,0.0814
+0.01-0.1%,277,S277-beta_i_hunt-1,beta_i_hunt-1,0.60293231526,0.602866,0.011
+0.01-0.1%,277,S277-beta_i_hunt-2,beta_i_hunt-2,0.60293231526,0.602866,0.011
+0.01-0.1%,277,S277-beta_i_hunt-3,beta_i_hunt-3,0.60280031493,0.602481,0.053
+0.01-0.1%,277,S277-beta_i_hunt-4,beta_i_hunt-4,0.60280031493,0.602481,0.053
+0.01-0.1%,278,S278-me_closure-1,me_closure-1,3.7852763832000003,3.783952,0.035
+0.01-0.1%,278,S278-me_closure-2,me_closure-2,3.7885327524,3.78558,0.078
+0.01-0.1%,278,S278-me_closure-3,me_closure-3,3.7885327524,3.78558,0.078
+0.01-0.1%,278,S278-me_closure-4,me_closure-4,3.7885327524,3.78558,0.078
+0.01-0.1%,279,S279-mu_tau_closure-1,mu_tau_closure-1,0.6281646707,0.62797,0.031
+0.01-0.1%,279,S279-mu_tau_closure-2,mu_tau_closure-2,0.62821352,0.628,0.034
+0.01-0.1%,279,S279-mu_tau_closure-3,mu_tau_closure-3,0.62821352,0.628,0.034
+0.01-0.1%,279,S279-mu_tau_closure-4,mu_tau_closure-4,0.6282749316999999,0.62803,0.039
+0.01-0.1%,288,S288-gauge_couplings-1,gauge_couplings-1,137.054909967862,137.035999,0.0138
+0.01-0.1%,289,S289-cosmology,cosmology,6.143192800000001e-10,6.14e-10,0.052
+0.01-0.1%,290,S290-dark_sector_inflation-3,dark_sector_inflation-3,0.965498238,0.9649,0.062
+0.01-0.1%,293,S293-hubble_tension_split-2,hubble_tension_split-2,73.0166272,73.04,0.032
+0.01-0.1%,294,S294-neutron_lifetime,neutron_lifetime,877.565,877.75,0.0211
+0.01-0.1%,294,S294-neutron_lifetime-0,neutron_lifetime-0,877.565,877.75,0.0211
+0.01-0.1%,294,S294-neutron_lifetime-1,neutron_lifetime-1,877.56479475,877.75,0.0211
 0.01-0.1%,353,math_catalan,math_catalan,11,0.91596559,0.077
 0.01-0.1%,355,math_khinchin,math_khinchin,2.68500,2.685452,0.017
 0.01-0.1%,360,math_twin_prime,math_twin_prime,0.65990,0.66016181,0.040
@@ -124,6 +158,34 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 0.01-0.1%,672,deuteron,deuteron BE,2.225128,2.224600,0.0237
 0.01-0.1%,674,Earth_radius,Earth radius (1e3 km),6.369517,6.371,0.0233
 0.01-0.1%,676,Earth_escape,Earth escape (km/s),11.182979,11.186,0.0270
+0.1-1%,261,S261-closures-1,closures-1,0.938272,0.939572,0.1383
+0.1-1%,261,S261-closures-3,closures-3,0.9408714280759999,0.939572,0.1383
+0.1-1%,262,S262-S262-Proto-H,S262-Proto-H,1.0,1.0013850504482567,0.13831347368693525
+0.1-1%,262,S262-closures-0,closures-0,1.0,1.00139,0.1383
+0.1-1%,262,S262-closures-3,closures-3,1.00277492237,1.00139,0.1383
+0.1-1%,263,S263-S263-rho_Lambda,S263-rho_Lambda,6e-10,5.96e-10,0.6711409395973131
+0.1-1%,263,S263-closures-0,closures-0,6e-10,5.96e-10,0.6711
+0.1-1%,263,S263-closures-2,closures-2,5.99999756e-10,5.96e-10,0.6711
+0.1-1%,277,S277-beta_i_hunt-0,beta_i_hunt-0,0.61028542689,0.606531,0.619
+0.1-1%,282,S282-newton_G_closure-0,newton_G_closure-0,5.9156e-39,5.9061e-39,0.16
+0.1-1%,282,S282-newton_G_closure-1,newton_G_closure-1,6.685e-11,6.6743e-11,0.16
+0.1-1%,282,S282-newton_G_closure-2,newton_G_closure-2,5.91554976e-39,5.9061e-39,0.16
+0.1-1%,282,S282-newton_G_closure-3,newton_G_closure-3,6.68497888e-11,6.6743e-11,0.16
+0.1-1%,284,S284-seesaw_MR,seesaw_MR,600300000000000.0,605000000000000.0,0.788
+0.1-1%,284,S284-seesaw_MR-0,seesaw_MR-0,600300000000000.0,605000000000000.0,0.788
+0.1-1%,284,S284-seesaw_MR-1,seesaw_MR-1,609767400000000.1,605000000000000.0,0.788
+0.1-1%,287,S287-proton_radius_higgs-4,proton_radius_higgs-4,173.1355402,172.69,0.258
+0.1-1%,288,S288-gauge_couplings-0,gauge_couplings-0,137.27170091828,137.035999,0.172
+0.1-1%,288,S288-gauge_couplings-2,gauge_couplings-2,0.231670879,0.23122,0.195
+0.1-1%,288,S288-gauge_couplings-3,gauge_couplings-3,80.780895,80.379,0.5
+0.1-1%,288,S288-gauge_couplings-4,gauge_couplings-4,0.118299681,0.1179,0.339
+0.1-1%,291,S291-muon_g2,muon_g2,2.5065e-09,2.51e-09,0.14
+0.1-1%,291,S291-muon_g2-0,muon_g2-0,2.5065e-09,2.51e-09,0.14
+0.1-1%,291,S291-muon_g2-1,muon_g2-1,2.506486e-09,2.51e-09,0.14
+0.1-1%,291,S291-muon_g2-2,muon_g2-2,2.5064838e-09,2.49e-09,0.662
+0.1-1%,292,S292-cosmological_constant-0,cosmological_constant-0,2.8722816e-122,2.88e-122,0.268
+0.1-1%,293,S293-hubble_tension_split-0,hubble_tension_split-0,67.18634200000001,67.4,0.317
+0.1-1%,293,S293-hubble_tension_split-1,hubble_tension_split-1,72.7850904,73.04,0.349
 0.1-1%,354,math_apery,math_apery,1,1.2020569,0.344
 0.1-1%,356,math_feigenbaum,math_feigenbaum,4.65972,4.6692016,0.203
 0.1-1%,357,math_euler_mascheroni,math_euler_mascheroni,0.57833,0.57721566,0.194
@@ -178,6 +240,22 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 0.1-1%,691,KK_sidereal_year_per_100_day,sidereal_year_per_100_day,3.642925572389,3.65256,0.2638
 0.1-1%,692,KK_Mars_orbit_AU,Mars_orbit_AU,1.5205052953872107,1.524,0.2293
 0.1-1%,693,KK_Mercury_year_per_10_day,Mercury_year_per_10_day,8.822047162389,8.797,0.2847
+>=1%,263,S263-S263-Lambda-alt,S263-Lambda-alt,6.25e-10,5.96e-10,4.8657718120805376
+>=1%,263,S263-closures-1,closures-1,6.25e-10,5.96e-10,4.8658
+>=1%,263,S263-closures-3,closures-3,6.250001680000001e-10,5.96e-10,4.8658
+>=1%,276,S276-chandrasekhar_closure-0,chandrasekhar_closure-0,2.5646000399999997,2.502,2.502
+>=1%,276,S276-chandrasekhar_closure-1,chandrasekhar_closure-1,2.3895222499999997,2.335,2.335
+>=1%,287,S287-proton_radius_higgs-0,proton_radius_higgs-0,248.319,125.25,1.096
+>=1%,287,S287-proton_radius_higgs-1,proton_radius_higgs-1,0.12656,0.12938,2.181
+>=1%,287,S287-proton_radius_higgs-2,proton_radius_higgs-2,126.62274000000001,125.25,1.096
+>=1%,287,S287-proton_radius_higgs-3,proton_radius_higgs-3,0.1322017778,0.12938,2.181
+>=1%,291,S291-muon_g2-3,muon_g2-3,0.001197082570567,0.001165921,2.6727
+>=1%,292,S292-cosmological_constant-1,cosmological_constant-1,5.891215e-27,5.83e-27,1.05
+>=1%,294,S294-neutron_lifetime-2,neutron_lifetime-2,1.01706,1.0,1.706
+>=1%,295,S295-lithium7_problem,lithium7_problem,1.667e-10,1.58e-10,5.49
+>=1%,295,S295-lithium7_problem-0,lithium7_problem-0,1.667e-10,1.58e-10,5.49
+>=1%,295,S295-lithium7_problem-1,lithium7_problem-1,1.666742e-10,1.58e-10,5.49
+>=1%,295,S295-lithium7_problem-2,lithium7_problem-2,1.666742e-10,1.58e-10,5.49
 >=1%,363,cosmo_baryon_asymmetry,cosmo_baryon_asymmetry,6.000e-10,6.140e-10,2.28
 >=1%,364,cosmo_bao_sound_horizon,cosmo_bao_sound_horizon,154.06,147.05,4.77
 >=1%,368,cosmo_deuterium,cosmo_deuterium,2.583e-05,2.547e-05,1.43
