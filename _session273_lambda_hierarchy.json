@@ -1,0 +1,111 @@
+{
+  "rho_Lambda_obs": 5.326427961407685e-10,
+  "rho_Planck": 4.633762722712754e+113,
+  "rho_SCm": 7.09e-37,
+  "ratio_Lambda_Planck": 1.1494822415700694e-123,
+  "log10_ratio": -122.93949773378809,
+  "best_Planck_form": {
+    "name": "4*D_crit + 2*N_ch + 1",
+    "N": 123,
+    "residual_pct": 13.004310650844511
+  },
+  "best_SCm_form": {
+    "name": "D_crit + Phi_res",
+    "N": 26.833333333333332,
+    "residual_pct": 9.313318332304203
+  },
+  "candidates_planck": [
+    {
+      "name": "4*D_crit + N_ch (= k_eta exponent)",
+      "N": 113,
+      "residual_pct": 869956893391.5547
+    },
+    {
+      "name": "4*D_crit + 2*N_ch + 1",
+      "N": 123,
+      "residual_pct": 13.004310650844511
+    },
+    {
+      "name": "2*A5 + (D_phys - 1)",
+      "N": 123,
+      "residual_pct": 13.004310650844511
+    },
+    {
+      "name": "A5 + D_crit + D_BSFG*D_phys + D_phys + D_phys-1",
+      "N": 117,
+      "residual_pct": 86995589.34915547
+    },
+    {
+      "name": "D_BSFG*D_crit - D_BSFG*D_phys - D_phys - 1",
+      "N": 127,
+      "residual_pct": 99.99130043106508
+    },
+    {
+      "name": "5*D_crit - SO5 + D_BSFG - 3",
+      "N": 123,
+      "residual_pct": 13.004310650844511
+    },
+    {
+      "name": "A5*2 + D_phys - 1",
+      "N": 123,
+      "residual_pct": 13.004310650844511
+    },
+    {
+      "name": "D_crit*D_BSFG/2 + A5",
+      "N": 138,
+      "residual_pct": 99.99999999999993
+    },
+    {
+      "name": "4*D_crit + D_BSFG*D_phys + 1",
+      "N": 129,
+      "residual_pct": 99.99991300431064
+    },
+    {
+      "name": "D_crit*(D_phys+1) + N_ch + 4",
+      "N": 143,
+      "residual_pct": 100.0
+    },
+    {
+      "name": "4*D_crit + 19",
+      "N": 123,
+      "residual_pct": 13.004310650844511
+    },
+    {
+      "name": "A5 + D_crit*2 + N_ch + 2",
+      "N": 123,
+      "residual_pct": 13.004310650844511
+    }
+  ],
+  "candidates_scm": [
+    {
+      "name": "D_crit",
+      "N": 26,
+      "residual_pct": 86.689015506508
+    },
+    {
+      "name": "D_crit + 1",
+      "N": 27,
+      "residual_pct": 33.109844934920005
+    },
+    {
+      "name": "4*D_BSFG + N_ch -7",
+      "N": 26,
+      "residual_pct": 86.689015506508
+    },
+    {
+      "name": "A5/2 - D_phys",
+      "N": 26,
+      "residual_pct": 86.689015506508
+    },
+    {
+      "name": "D_crit + Phi_res",
+      "N": 26.833333333333332,
+      "residual_pct": 9.313318332304203
+    },
+    {
+      "name": "A5 - D_BSFG*D_phys - SO5",
+      "N": 26,
+      "residual_pct": 86.689015506508
+    }
+  ]
+}
