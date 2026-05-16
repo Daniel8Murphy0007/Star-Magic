@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\Ftrz}{F_{\mathrm{TRZ}}}
+\newcommand{\Phires}{\Phi_{\mathrm{res}}}
+\newcommand{\KMex}{K_{\mathrm{Mex}}}
+\newcommand{\Dphys}{D_{\mathrm{phys}}}
+\newcommand{\Dbsfg}{D_{\mathrm{BSFG}}}
+\newcommand{\Dcrit}{D_{\mathrm{crit}}}
+\newcommand{\Nch}{N_{\mathrm{ch}}}
+\newcommand{\SOfive}{\mathrm{SO5}}
+\newcommand{\Afive}{A_{5}}
+\newcommand{\SSq}{[\mathrm{SSq}]}
+
+\title{PAPER 1200 --- UQFF General Relativity Precision Tests Unified Proof Set}
+\author{Daniel T. Murphy}
+\date{May 16, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We extend the UQFF locked-primitive closure program (157 prior closures, Papers 1182--1199)
+into the classical precision tests of General Relativity. Ten new closures
+(\textbf{S453--S462}) reproduce iconic GR observables --- Mercury's anomalous
+perihelion precession, solar light bending, the Shapiro time delay coefficient,
+Gravity Probe B's geodetic and frame-dragging precessions, Hulse--Taylor pulsar
+orbital decay, black hole shadow size, the Schwarzschild photon sphere,
+NANOGrav stochastic-background amplitude, and the Kerr extremal ISCO ---
+solely from the eleven frozen UQFF primitives. \textbf{Three closures are exact}:
+the Shapiro coefficient $2(1+\gamma) = \Dphys$, the photon sphere radius
+$r_{\rm ph}/M = \Dphys - \Ftrz\SOfive = 3$, and the extremal Kerr ISCO
+$r_{\rm ISCO}^{\rm Kerr+}/M = \Ftrz\SOfive = 1$. The remaining seven match within
+$0.09\%$. This is the program's milestone 1200th whitepaper. Cumulative total:
+\textbf{167 closures}.
+\end{abstract}
+
+\section{Locked Primitives}
+$\Ftrz = 1/10$, $\Phires = 5/6$, $\SSq = 0.57$, $\KMex = 25/12$, $\Dphys = 4$,
+$\Dbsfg = 6$, $\Dcrit = 26$, $\Nch = 9$, $\SOfive = 10$, $\Afive = 60$, $\beta_i = 0.6029$.
+
+\section{Tier~Q Closures (S453--S462)}
+
+\begin{longtable}{@{}llll@{}}
+\toprule
+ID & GR observable & Closure & Match \\
+\midrule
+\endhead
+S453 & Mercury $43.0''/$cy & $\SOfive\Dphys+\KMex+\Ftrz\Nch-\Ftrz^2+\Ftrz^2\KMex = 42.994$ & $0.01\%$ \\
+S454 & Light bending $1.7510''$ & $\Phires+\SSq+\Ftrz\KMex+\Ftrz+\Ftrz^2\KMex+\Ftrz^2+\Ftrz^2\Phires-\Ftrz^3 = 1.7498$ & $0.07\%$ \\
+S455 & Shapiro $2(1+\gamma) = 4$ & $\Dphys = 4$ & \textbf{EXACT} \\
+S456 & GPB geodetic $6.6028''/$yr & $\Dbsfg+\SSq+\Ftrz-\Ftrz\Phires+\Ftrz^2\KMex-\Ftrz^2\Phires+\Ftrz^3 = 6.6002$ & $0.04\%$ \\
+S457 & GPB frame-drag $0.0392''/$yr & $\Ftrz^2\KMex+\Ftrz^2+\Ftrz^2\Phires = 0.0392$ & $0.09\%$ \\
+S458 & PSR B1913+16 ratio $0.997$ & $\Phires+\Ftrz+\Ftrz\Phires-\Ftrz^2\KMex+\Ftrz^2-\Ftrz^2\Phires-\Ftrz^3 = 0.9965$ & $0.05\%$ \\
+S459 & BH shadow $3\sqrt{3}=5.1962$ & $\SOfive-\Dphys-\Ftrz-\Ftrz\Nch+\Ftrz\KMex-\Ftrz^2\Phires-\Ftrz^3 = 5.1990$ & $0.05\%$ \\
+S460 & Photon sphere $r_{\rm ph}/M=3$ & $\Dphys - \Ftrz\SOfive = 3$ & \textbf{EXACT} \\
+S461 & NANOGrav $h_c = 2.4\times10^{-15}$ & $\KMex+\Ftrz+\Ftrz\KMex+\Ftrz^2-\Ftrz^3 = 2.4007$ & $0.03\%$ \\
+S462 & Kerr ISCO $r/M = 1$ & $\Ftrz\SOfive = 1$ & \textbf{EXACT} \\
+\bottomrule
+\end{longtable}
+
+\section{Three Exact Identifications}
+
+\paragraph{Shapiro coefficient.}
+The radar-echo time-delay coefficient $2(1+\gamma)$ equals $4$ in GR (with PPN
+$\gamma = 1$). UQFF locks this directly onto the physical-dimension primitive:
+$2(1+\gamma) = \Dphys$. The Cassini bound $|\gamma-1| < 2.3\times 10^{-5}$ is
+consistent with $\Dphys = 4$ to all measured precision.
+
+\paragraph{Photon sphere.}
+The Schwarzschild photon sphere $r_{\rm ph} = 3M$ (where unstable circular null
+geodesics exist) is locked at $\Dphys - \Ftrz\SOfive = 4 - 1 = 3$. This is the
+\textbf{first joint locking} between two primitives ($\Dphys$ and the
+$\Ftrz\SOfive = 1$ product).
+
+\paragraph{Kerr extremal ISCO.}
+For a maximally-spinning Kerr black hole ($a = M$), the prograde ISCO sits at
+$r_{\rm ISCO}/M = 1 = \Ftrz\SOfive$. Combined with the Schwarzschild ISCO
+$r_{\rm ISCO}/M = 6 = \Dbsfg$ (Paper 1193), the entire Kerr ISCO range
+$[\Ftrz\SOfive, \Dbsfg]$ is bracketed by UQFF primitives.
+
+\section{Falsifiable Predictions}
+\begin{enumerate}
+\item Any future tightening of the Shapiro coefficient measurement must remain
+centered on exactly $4 = \Dphys$; a deviation would falsify the locking.
+\item NANOGrav follow-up observations must converge on $h_c = (2.40\pm 0.02)\times 10^{-15}$.
+\item PSR B1913+16 long-term timing residuals must remain at the locked ratio $0.997$.
+\end{enumerate}
+
+\section{Cumulative Closure Count}
+
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Tier & Domain & New & Cumulative \\
+\midrule
+E--I & Mixed cosmology/QFT & 87 & 87 \\
+J & Astrophysics (1193) & 10 & 97 \\
+K & Condensed matter (1194) & 10 & 107 \\
+L & Biology (1195) & 10 & 117 \\
+M & Plasma/fusion (1196) & 10 & 127 \\
+N & Geophysics (1197) & 10 & 137 \\
+O & Particle/BSM (1198) & 10 & 147 \\
+P & Information/math (1199) & 10 & 157 \\
+\textbf{Q} & \textbf{GR precision tests (1200)} & \textbf{10} & \textbf{167} \\
+\bottomrule
+\end{tabular}
+
+\section{Acknowledgements}
+Tier~Q is the program's \textbf{milestone 1200th whitepaper} and the first tier
+to deliver three exact closures within a single domain. The total count of direct
+primitive--observable lockings now stands at \textbf{eleven}: ISCO Schwarzschild
+$=\Dbsfg$, Poisson ratio $=\Dphys/\Dbsfg$, telomere length $=\Dbsfg$,
+$Q_{\rm ITER}=\SOfive$, $R_{\rm magnetopause}=\SOfive R_\oplus$,
+$\eta_B = \Dbsfg+\Ftrz$, WIMP exponent $=\SOfive\Dphys+\Dphys+\KMex-\Ftrz\Phires$,
+$p_{th}^{\rm surf\,code}=\Ftrz^2$, Shapiro $= \Dphys$, photon sphere $=\Dphys-\Ftrz\SOfive$,
+and Kerr extremal ISCO $=\Ftrz\SOfive$.
+
+\end{document}
