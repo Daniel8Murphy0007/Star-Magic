@@ -148,31 +148,66 @@ class BuoyancyLagrangianEOM:
 
     # ── 1b. Source term ──────────────────────────────────────────────────
 
+    @staticmethod
+    def near_horizon_heaviside(r: float,
+                               r_s: float,
+                               shell_width: float = 0.01,
+                               amplification: float = 1.0e13) -> float:
+        """
+        Near-horizon Heaviside phase-transition amplifier f_H(r/r_s).
+
+        The SCm vacuum undergoes a phase transition in a thin shell just
+        outside the Schwarzschild horizon, amplifying the buoyancy source
+        current by (1 + amplification · f_H) for r_s < r < r_s(1+shell_width).
+
+        f_H = 1   for r_s ≤ r ≤ r_s(1+shell_width)
+        f_H = 0   elsewhere
+
+        Returns the multiplicative amplifier (1 + amplification · f_H).
+        Item 3 / first_principles_derivation.py — see PAPER_1171 §6.
+        """
+        if r < r_s or r > r_s * (1.0 + shell_width):
+            f_H = 0.0
+        else:
+            f_H = 1.0
+        return 1.0 + amplification * f_H
+
     def compute_source_term(self,
                             F_U_Bi: float = 1.1,
-                            F_U: float = 1.0) -> Dict[str, Any]:
+                            F_U: float = 1.0,
+                            r: Optional[float] = None,
+                            r_s: Optional[float] = None,
+                            shell_width: float = 0.01,
+                            amplification: float = 1.0e13) -> Dict[str, Any]:
         """
-        Buoyancy source current:
-          J_buoy = (F_{U,Bi}/F_U - 1) · ρ_SCm · c²
+        Buoyancy source current with optional near-horizon amplifier:
+          J_buoy = (F_{U,Bi}/F_U - 1) · ρ_SCm · c² · (1 + 10¹³·f_H(r/r_s))
 
-        This is the 'charge' that sources the buoyancy field.
-        Positive when buoyancy is reversed (F_{U,Bi} > F_U).
+        f_H is the Heaviside near-horizon phase-transition function.
+        When r and r_s are supplied, the amplifier is applied; otherwise
+        the bare current is returned (backward compatible).
         """
         if F_U == 0:
             reversal = 0.0
         else:
             reversal = (F_U_Bi / F_U) - 1.0
 
-        J_buoy = reversal * self.rho_scm * C**2
+        if r is not None and r_s is not None:
+            amp = self.near_horizon_heaviside(r, r_s, shell_width, amplification)
+        else:
+            amp = 1.0
+
+        J_buoy = reversal * self.rho_scm * C**2 * amp
 
         return {
             "J_buoy": J_buoy,
             "reversal_factor": reversal,
+            "near_horizon_amplifier": amp,
             "buoyancy_reversed": reversal > 0,
             "F_U_Bi": F_U_Bi,
             "F_U": F_U,
             "rho_SCm": self.rho_scm,
-            "equation": "J_buoy = (F_{U,Bi}/F_U - 1) · ρ_SCm · c²",
+            "equation": "J_buoy = (F_{U,Bi}/F_U - 1) · ρ_SCm · c² · (1 + 10¹³·f_H)",
         }
 
     # ── 1c. Full EOM derivation ──────────────────────────────────────────

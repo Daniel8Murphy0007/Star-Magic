@@ -19,13 +19,28 @@ fieldnames = ["ID","name","label","predicted","observed","error_pct","status","s
 
 # group JSON files by session id
 json_files = sorted(ROOT.glob("_session*.json"))
+
+# Manually-mapped JSON files belonging to specific sessions (S257-S260)
+EXTRA_JSON = {
+    "_cosmological_closures.json": 257,
+    "_millennium_prize_audit.json": 259,
+    "_six_anchor_closures.json":   260,
+}
+for fn, sid in EXTRA_JSON.items():
+    p = ROOT / fn
+    if p.exists(): json_files.append(p)
+
 print(f"scanning {len(json_files)} JSON files")
 
 harvested = []  # new audit rows
 for jf in json_files:
     m = SESS_RE.match(jf.name)
-    if not m: continue
-    sid = int(m.group(1))
+    if m:
+        sid = int(m.group(1))
+    elif jf.name in EXTRA_JSON:
+        sid = EXTRA_JSON[jf.name]
+    else:
+        continue
     try:
         data = json.loads(jf.read_text(encoding="utf-8", errors="ignore"))
     except Exception:

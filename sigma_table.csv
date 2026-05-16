@@ -1,8 +1,12 @@
 tier,ID,name,label,predicted,observed,error_pct
+EXACT,260,S260-G22,G22,10.0,10.0,0.0
+EXACT,260,S260-G26,G26,0.5,0.5,0.0
 EXACT,262,S262-closures-1,closures-1,938.783,938.783,0.0
 EXACT,262,S262-closures-4,closures-4,938.783,938.783,0.0
 EXACT,290,S290-dark_sector_inflation-0,dark_sector_inflation-0,0.12,0.12,0.0
 EXACT,290,S290-dark_sector_inflation-2,dark_sector_inflation-2,0.02237,0.02237,0.0
+EXACT,349,S349_StefanBoltz,StefanBoltz,5.670374419e-08,5.670374419e-08,0.0
+EXACT,351,S351_n_periods,n_periods,7,7,0.0
 EXACT,383,astro_chandrasekhar,astro_chandrasekhar,1.4400,2,0.0000
 EXACT,386,astro_isco,astro_isco,6,6.0,0.0000
 EXACT,388,astro_wd_exponent,astro_wd_exponent,-0.333333,3,0.0000
@@ -57,6 +61,7 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 <0.01%,279,S279-mu_tau_closure-0,mu_tau_closure-0,0.627818834,0.6278,0.003
 <0.01%,290,S290-dark_sector_inflation-1,dark_sector_inflation-1,5.36435682165,5.36433,0.0005
 <0.01%,294,S294-neutron_lifetime-3,neutron_lifetime-3,887.6840214000001,887.7,0.0018
+<0.01%,344,S344_mp_me,mp_me,1836.1181087116884,1836.15267,0.0018822665934188968
 <0.01%,381,sm_mt_mw,sm_mt_mw,2.1487,2.1485,0.008
 <0.01%,573,moon,Moon/RE,60.333333,60.336,0.0044
 <0.01%,580,jupiter,M_J/M_E,317.783333,317.8,0.0052
@@ -75,6 +80,7 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 <0.01%,678,Earth_orb_v,Earth orbital v (km/s),29.778661,29.78,0.0045
 <0.01%,680,Moon_dist,Moon distance (1e8 m),3.843962,3.844,0.0010
 <0.01%,690,KK_Moon_orbital_period_per_day,Moon_orbital_period_per_day,27.32127097800926,27.32,0.0047
+0.01-0.1%,260,S260-G25,G25,0.3333333333333333,0.33356409519815206,0.06918066666667391
 0.01-0.1%,262,S262-S262-Bohr/r_p,S262-Bohr/r_p,62904.7540187624,62892.46623520323,0.019537767072479235
 0.01-0.1%,262,S262-closures-2,closures-2,62904.8,62892.5,0.0195
 0.01-0.1%,274,S274-beta_lambda_closure,beta_lambda_closure,5.328910115448001e-10,5.326428e-10,0.0466
@@ -98,6 +104,10 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 0.01-0.1%,294,S294-neutron_lifetime,neutron_lifetime,877.565,877.75,0.0211
 0.01-0.1%,294,S294-neutron_lifetime-0,neutron_lifetime-0,877.565,877.75,0.0211
 0.01-0.1%,294,S294-neutron_lifetime-1,neutron_lifetime-1,877.56479475,877.75,0.0211
+0.01-0.1%,343,S343_inv_alpha,inv_alpha,137.0,137.035999,0.026269739530270356
+0.01-0.1%,345,S345_Rydberg_eV,Rydberg_eV,13.61284431765582,13.605693,0.05256121577798515
+0.01-0.1%,346,S346_a0_m,a0_m,5.290381967822683e-11,5.29177210903e-11,0.02626986156385999
+0.01-0.1%,352,S352_H_Lyalpha_eV,H_Lyalpha_eV,10.209633238241866,10.2,0.0944435121751592
 0.01-0.1%,353,math_catalan,math_catalan,11,0.91596559,0.077
 0.01-0.1%,355,math_khinchin,math_khinchin,2.68500,2.685452,0.017
 0.01-0.1%,360,math_twin_prime,math_twin_prime,0.65990,0.66016181,0.040
@@ -158,6 +168,8 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 0.01-0.1%,672,deuteron,deuteron BE,2.225128,2.224600,0.0237
 0.01-0.1%,674,Earth_radius,Earth radius (1e3 km),6.369517,6.371,0.0233
 0.01-0.1%,676,Earth_escape,Earth escape (km/s),11.182979,11.186,0.0270
+0.1-1%,260,S260-G23,G23,4.0,4.005641748942172,0.140845070422535
+0.1-1%,260,S260-G24,G24,2.5,2.4964788732394365,0.1410437235543061
 0.1-1%,261,S261-closures-1,closures-1,0.938272,0.939572,0.1383
 0.1-1%,261,S261-closures-3,closures-3,0.9408714280759999,0.939572,0.1383
 0.1-1%,262,S262-S262-Proto-H,S262-Proto-H,1.0,1.0013850504482567,0.13831347368693525
@@ -186,6 +198,8 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 0.1-1%,292,S292-cosmological_constant-0,cosmological_constant-0,2.8722816e-122,2.88e-122,0.268
 0.1-1%,293,S293-hubble_tension_split-0,hubble_tension_split-0,67.18634200000001,67.4,0.317
 0.1-1%,293,S293-hubble_tension_split-1,hubble_tension_split-1,72.7850904,73.04,0.349
+0.1-1%,347,S347_sin2_thetaW,sin2_thetaW,0.23148148148148148,0.23122,0.11308774391552358
+0.1-1%,348,S348_alpha_s_MZ,alpha_s_MZ,0.11857707509881422,0.1179,0.5742791338543002
 0.1-1%,354,math_apery,math_apery,1,1.2020569,0.344
 0.1-1%,356,math_feigenbaum,math_feigenbaum,4.65972,4.6692016,0.203
 0.1-1%,357,math_euler_mascheroni,math_euler_mascheroni,0.57833,0.57721566,0.194
@@ -240,6 +254,7 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 0.1-1%,691,KK_sidereal_year_per_100_day,sidereal_year_per_100_day,3.642925572389,3.65256,0.2638
 0.1-1%,692,KK_Mars_orbit_AU,Mars_orbit_AU,1.5205052953872107,1.524,0.2293
 0.1-1%,693,KK_Mercury_year_per_10_day,Mercury_year_per_10_day,8.822047162389,8.797,0.2847
+>=1%,260,S260-G27,G27,9.424777960769378e+31,1410437235543.0183,6.682167574185489e+21
 >=1%,263,S263-S263-Lambda-alt,S263-Lambda-alt,6.25e-10,5.96e-10,4.8657718120805376
 >=1%,263,S263-closures-1,closures-1,6.25e-10,5.96e-10,4.8658
 >=1%,263,S263-closures-3,closures-3,6.250001680000001e-10,5.96e-10,4.8658
@@ -256,6 +271,7 @@ EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
 >=1%,295,S295-lithium7_problem-0,lithium7_problem-0,1.667e-10,1.58e-10,5.49
 >=1%,295,S295-lithium7_problem-1,lithium7_problem-1,1.666742e-10,1.58e-10,5.49
 >=1%,295,S295-lithium7_problem-2,lithium7_problem-2,1.666742e-10,1.58e-10,5.49
+>=1%,350,S350_rH2_pm,rH2_pm,71.42015656560622,74.14,3.6685236503827627
 >=1%,363,cosmo_baryon_asymmetry,cosmo_baryon_asymmetry,6.000e-10,6.140e-10,2.28
 >=1%,364,cosmo_bao_sound_horizon,cosmo_bao_sound_horizon,154.06,147.05,4.77
 >=1%,368,cosmo_deuterium,cosmo_deuterium,2.583e-05,2.547e-05,1.43

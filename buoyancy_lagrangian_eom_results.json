@@ -1,6 +1,6 @@
 {
   "calculator": "BuoyancyLagrangianEOM",
-  "timestamp": "2026-04-09T14:02:01.862799+00:00",
+  "timestamp": "2026-05-15T05:58:23.453648+00:00",
   "sgr_a_star": {
     "eom": "\u25a1\u03c6 + m_eff\u00b2\u00b7\u03c6 = J_buoy",
     "effective_mass": {

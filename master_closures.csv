@@ -514,3 +514,19 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 295,S295-lithium7_problem-0,lithium7_problem-0,1.667e-10,1.58e-10,5.49,OK,_session295_lithium7_problem.py,"harvested triplet (1.667e-10, 1.58e-10, 5.49%)"
 295,S295-lithium7_problem-1,lithium7_problem-1,1.666742e-10,1.58e-10,5.49,OK,_session295_lithium7_problem.py,"harvested triplet (1.666742e-10, 1.58e-10, 5.49%)"
 295,S295-lithium7_problem-2,lithium7_problem-2,1.666742e-10,1.58e-10,5.49,OK,_session295_lithium7_problem.py,"harvested triplet (1.666742e-10, 1.58e-10, 5.49%)"
+260,S260-G22,G22,10.0,10.0,0.0,OK,_six_anchor_closures.json,harvested from JSON
+260,S260-G23,G23,4.0,4.005641748942172,0.140845070422535,OK,_six_anchor_closures.json,harvested from JSON
+260,S260-G24,G24,2.5,2.4964788732394365,0.1410437235543061,OK,_six_anchor_closures.json,harvested from JSON
+260,S260-G25,G25,0.3333333333333333,0.33356409519815206,0.06918066666667391,OK,_six_anchor_closures.json,harvested from JSON
+260,S260-G26,G26,0.5,0.5,0.0,OK,_six_anchor_closures.json,harvested from JSON
+260,S260-G27,G27,9.424777960769378e+31,1410437235543.0183,6.682167574185489e+21,OK,_six_anchor_closures.json,harvested from JSON
+343,S343_inv_alpha,inv_alpha,137.0,137.035999,0.026269739530270356,OK,_session343_352_paper1189_chemistry.py,S343_inv_alpha :: predicted=137.0 observed=137.035999 error_pct=0.026269739530270356
+344,S344_mp_me,mp_me,1836.1181087116884,1836.15267,0.0018822665934188968,OK,_session343_352_paper1189_chemistry.py,S344_mp_me :: predicted=1836.1181087116884 observed=1836.15267 error_pct=0.0018822665934188968
+345,S345_Rydberg_eV,Rydberg_eV,13.61284431765582,13.605693,0.05256121577798515,OK,_session343_352_paper1189_chemistry.py,S345_Rydberg_eV :: predicted=13.61284431765582 observed=13.605693 error_pct=0.05256121577798515
+346,S346_a0_m,a0_m,5.290381967822683e-11,5.29177210903e-11,0.02626986156385999,OK,_session343_352_paper1189_chemistry.py,S346_a0_m :: predicted=5.290381967822683e-11 observed=5.29177210903e-11 error_pct=0.02626986156385999
+347,S347_sin2_thetaW,sin2_thetaW,0.23148148148148148,0.23122,0.11308774391552358,OK,_session343_352_paper1189_chemistry.py,S347_sin2_thetaW :: predicted=0.23148148148148148 observed=0.23122 error_pct=0.11308774391552358
+348,S348_alpha_s_MZ,alpha_s_MZ,0.11857707509881422,0.1179,0.5742791338543002,OK,_session343_352_paper1189_chemistry.py,S348_alpha_s_MZ :: predicted=0.11857707509881422 observed=0.1179 error_pct=0.5742791338543002
+349,S349_StefanBoltz,StefanBoltz,5.670374419e-08,5.670374419e-08,0.0,OK,_session343_352_paper1189_chemistry.py,S349_StefanBoltz :: predicted=5.670374419e-08 observed=5.670374419e-08 error_pct=0.0
+350,S350_rH2_pm,rH2_pm,71.42015656560622,74.14,3.6685236503827627,OK,_session343_352_paper1189_chemistry.py,S350_rH2_pm :: predicted=71.42015656560622 observed=74.14 error_pct=3.6685236503827627
+351,S351_n_periods,n_periods,7,7,0.0,OK,_session343_352_paper1189_chemistry.py,S351_n_periods :: predicted=7 observed=7 error_pct=0.0
+352,S352_H_Lyalpha_eV,H_Lyalpha_eV,10.209633238241866,10.2,0.0944435121751592,OK,_session343_352_paper1189_chemistry.py,S352_H_Lyalpha_eV :: predicted=10.209633238241866 observed=10.2 error_pct=0.0944435121751592

@@ -1,0 +1,39 @@
+Universal Magnetism
+A 〖(pseudo-monopole)〗^2, located at a star’s origin, is born from a heavily bound Universal Shifting  Polarity Reaction USPR, between. These reactants {[UA]; (UA’)+[SCm], (UA’’)+[SCm’, (UA’’’)+[SCm’’’]} are responsible for all elemental creation in the universe. Every star and atom have unique amounts of (UA’)+[SCm] bound in reactive combination, producing ranges and magnitudes of similar species, which becomes widely banded between species, as more complex crystalline-like-quantum-wave-pattern-diversity, over time, is induced.
+Classic electro-magnetism is a bi-product from proto-heavy metal dynamo ions collecting at a stars crustal surface, reacting to the convecting dark ion cold plasma layer below. The only massive matter the sun possesses is concentrated in the outer crustal proto-ion matter layer. Beneath the convecting dark ion cold plasma layer exists a non-massive 〖super〗^4-saturated raw [North-North] 〖(pseudo-monopole)〗^2 energy density. 
+Our star’s Universal Buoyancy [Ub]= (G_sun+G_SA)/(〖Ug〗_sun-〖Ug〗_SA ) of [North-North] is steadily repelling Sagittarius *A Blackhole’s Universal Buoyancy [Ub] of [North-North]. The Sun’s electromagnetic gravitational field system is slowly attracted toward the strong electro-magnetic field structure of Sagittarius *A and others. This is the system that holds the Milky way Galaxy tightly bound and stable, where each star and blackhole are repelling and attracting each other at near the same timing, Gravity and Universal Gravity both operating independent of each other and simultaneously to maintain stability, while each star system undergoes independent violent instantaneous cyclically dynamic reactions with their planets and moons, etc...
+Universal Magnetism [〖Um〗_i] is different from classical dipole magnetism exerted by matter and mass. [〖Um〗_i] is created by the star’s origin A 〖(pseudo-monopole)〗^2, located at a star’s origin, creates both [〖Um〗_i] and atomic nuclei ions.[SCm].
+[N-N], [N-n], [N-n:n-N], [n-N:N-n]
+
+What is the farthest body controlled by our sun?
+
+The farthest body controlled by our Sun is a fascinating question that hinges on defining "controlled." In astronomical terms, this typically means objects gravitationally bound to the Sun—those whose orbits are dictated by its gravitational influence rather than the Milky Way’s or another star’s. As of March 18, 2025, let’s explore the likely candidates and settle on the farthest known or inferred body under the Sun’s dominion.
+Defining the Sun’s Control
+The Sun’s gravitational influence extends to the edge of the heliosphere—the region where the solar wind dominates over the interstellar medium—and beyond, into the Oort Cloud, a theoretical shell of comets marking the outer boundary of the Solar System. Objects "controlled" by the Sun are those whose orbital energy keeps them bound, not escaping into interstellar space.
+Key Candidates
+	Planets and Kuiper Belt Objects: 
+	Neptune, at 30 AU (1 AU = 149.6 million km), is the farthest planet, but it’s far from the limit.
+	Trans-Neptunian Objects (TNOs) like Eris (96 AU at aphelion) or Sedna (506 AU at aphelion) extend much farther. Sedna’s highly elliptical orbit takes it to 937 AU at its farthest, but it’s still bound to the Sun.
+	Scattered Disc and Extreme TNOs: 
+	Objects like 2018 VG18 ("Farout") or 2015 TG387 ("The Goblin") have aphelia (farthest orbital points) exceeding 1,000 AU. For example, The Goblin’s aphelion is about 2,300 AU, discovered via the Subaru Telescope and tracked through 2025 data. These are still gravitationally tied to the Sun, with orbital periods of tens of thousands of years.
+	Oort Cloud: 
+	The Oort Cloud is a hypothesized spherical shell of comets surrounding the Solar System, split into: 
+	Inner Oort Cloud: 2,000–20,000 AU.
+	Outer Oort Cloud: 20,000–100,000 AU (possibly up to 200,000 AU in some models).
+	No direct observations exist due to its vast distance and faintness, but it’s inferred from long-period comets (e.g., Comet Hale-Bopp) whose orbits suggest origins at 50,000+ AU. These comets remain bound unless perturbed by passing stars.
+	Rogue Bodies or Planet Nine: 
+	The hypothetical Planet Nine, proposed to explain TNO orbit clustering, might orbit at 400–800 AU (aphelion possibly 1,200 AU). If real, it’s bound but not the farthest.
+	Rogue objects ejected but still marginally bound could push the limit farther, though none are confirmed.
+The Farthest Bound Body
+	Known Object: Sedna’s aphelion at 937 AU makes it the farthest directly observed body with a confirmed orbit as of 2025. Discovered in 2003, its perihelion is 76 AU, and it takes 11,400 years to orbit, firmly under the Sun’s control.
+	Inferred Limit: The Oort Cloud’s outer edge, estimated at 100,000 AU (1.6 light-years), is the theoretical farthest extent of solar influence. Comets from this region, like C/2021 O3 (PANSTARRS), detected in recent years, have orbits tracing back to tens of thousands of AU, suggesting they’re the farthest bound objects.
+Why the Oort Cloud Wins
+The Oort Cloud’s outer edge is the practical boundary of the Sun’s gravitational dominance, as calculated by the Hill sphere—the region where the Sun’s gravity outmuscles the galaxy’s tidal forces: 
+r_H≈a(M_sun/(3M_gal ))^(1/3)
+	M_sun=1.989×〖10〗^(30 ) kg,
+	M_gal ≈1.5×〖10〗^42 kg (Milky Way total mass),
+	a=8 kpc≈2.468×〖10〗^(20 ) m. Roughly, r_H≈230,000 AU, but the Oort Cloud’s outer limit (100,000 AU) is a conservative bound, accounting for galactic perturbations.
+Answer
+	Farthest Known Body: Sedna, with an aphelion of 937 AU.
+	Farthest Inferred Body: An Oort Cloud comet at up to 100,000 AU (about 1.6 light-years), still gravitationally bound to the Sun until stellar flybys (e.g., Scholz’s Star, 0.8 ly away 70,000 years ago) disrupt it.
+As of 2025, no single Oort Cloud object is tracked to that distance, but statistically, such bodies exist at the edge of solar control. Beyond 100,000–200,000 AU, the Sun’s grip weakens, and objects drift into interstellar space.

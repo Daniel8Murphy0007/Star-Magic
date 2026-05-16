@@ -11,3 +11,25 @@ LIGO-O5,GW_inspiral_chirp,Mc spectrum (S652 strain closure),2027,planned
 nEDM-PSI,neutron_EDM_upper,d_n < 1e-27 e.cm (S665 CP closure),2026,ongoing
 Euclid DR1,sigma_8,sigma8 = 0.811 +/- 0.005 (S675 LSS closure),2026,planned
 Roman WFI,DE_eq_of_state,w_a < 0.05 (S692 Mars-orbit family),2027,planned
+# Expanded April 2026 from PAPER_1181/1184/1185/1186/1187 specifics
+PERKEO-IV,neutron_beta_A_param,A = -0.11933(34) (S294/PAPER1181),2027,planned
+UCNTau-II,neutron_lifetime,tau_n = 879.4 +/- 0.6 s (S294/PAPER1181),2027,planned
+ELT-HARMONI,proton-electron_mu,mu = 1836.15267343 (S278/PAPER1181),2028,planned
+JWST-NIRSpec,CMB_anomaly_axis,quadrupole-octupole alignment (PAPER1181),2026,ongoing
+CMB-S4,r_tensor_scalar_v2,r < 0.003 (PAPER1181 inflation),2028,planned
+LIGO-LISA,SMBH_merger_chirp,Mc(M87/Sgr-A*) (PAPER1181 GW),2030,planned
+TDCOSMO,H0_lensing,H0 = 67.4 km/s/Mpc (PAPER1181/S293),2027,planned
+Euclid-DR2,sigma8_S8,S8 = 0.785 +/- 0.010 (PAPER1181),2028,planned
+DESI-Y3,w0_wa_CPL,w0=-1.00, wa=0.00 (PAPER1181/S292),2026,planned
+Fermilab-g2_final,muon_g-2_final,a_mu = 251.0 +/- 1.0 x 10^-11 (S291/PAPER1181),2026,ongoing
+DESI-Y3-BAO,BAO_isotropic_z=0.5,r_BAO/r_d = 8.45 +/- 0.05 (PAPER1184),2027,planned
+JUNO,theta12_neutrino,sin^2(theta_12) = 0.307(13) (PAPER1184/S286),2028,planned
+LEGEND-1000,0nubb_Majorana,T_1/2 > 1.3e28 yr Ge-76 (PAPER1184),2030,planned
+n2EDM-PSI,neutron_EDM_2030,d_n < 5e-28 e.cm (PAPER1184),2030,planned
+LiteBIRD,CMB_B-mode_r,r < 0.002 sigma(r)=5e-4 (PAPER1184),2030,planned
+SH0ES-Cepheid,H0_local,H0_local = 73.0 +/- 1.0 km/s/Mpc (S293),2026,ongoing
+Planck-final,H0_CMB,H0_CMB = 67.4 +/- 0.5 km/s/Mpc (S293),2026,planned
+KATRIN,m_nu_eff,m_nu_eff < 0.45 eV (PAPER1185/S281),2027,ongoing
+JWST-z>14,UV_LF_extreme,phi*(z=14) ~ 5e-6 Mpc^-3 (PAPER1186),2027,ongoing
+MACHO-finder,PBH_DM_fraction,f_PBH < 1e-3 (PAPER1187/S290),2028,planned
+# 20 new predictive targets appended Tier-JJ
