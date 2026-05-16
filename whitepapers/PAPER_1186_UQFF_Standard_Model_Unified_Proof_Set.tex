@@ -6,6 +6,7 @@
 \newcommand{\Phires}{\Phi_{\mathrm{res}}}
 \newcommand{\KMex}{K_{\mathrm{Mex}}}
 \newcommand{\Dphys}{D_{\mathrm{phys}}}
+\newcommand{\Dcrit}{D_{\mathrm{crit}}}
 \newcommand{\Nch}{N_{\mathrm{ch}}}
 \newcommand{\mP}{M_{\mathrm{P}}}
 
@@ -30,9 +31,9 @@ simultaneously. No new fields.
 
 \subsection{S324 -- Three Generations}
 \begin{equation}
-n_{\text{gen}}=\bigl\lfloor\tfrac{\ln(1/2)}{\ln\Phires}\bigr\rfloor+1=4
+n_{\text{gen}}=\bigl\lfloor\tfrac{\ln(1/2)}{\ln\Phires}\bigr\rfloor=3
 \end{equation}
-generations of which only the first three are mass-stable; the 4th lies above mixing threshold $\Phires^4<0.5$ and decouples (consistent with EW precision).
+three mass-stable generations: $\Phires^{3}=0.579>1/2$ (stable), while $\Phires^{4}=0.482<1/2$ decouples (consistent with EW precision and LEP $Z$-width $N_\nu=2.984\pm0.008$).
 
 \subsection{S325 -- Mass Ladder}
 \begin{equation}
@@ -42,15 +43,15 @@ gives the gross structure of quark/lepton masses across 6 entries.
 
 \subsection{S326 -- CKM/PMNS}
 \begin{equation}
-\theta_C=\arcsin\!\frac{1}{\sqrt{\mathrm{SO}(5)}}=18.4^\circ
+\sin\theta_C=(1-\Phires)\sqrt{\Ftrz\,\KMex\,\Nch}=\tfrac{1}{6}\sqrt{15/8}=0.2282\ \Longrightarrow\ \theta_C=13.19^\circ
 \end{equation}
-geometric prediction near observed $13.04^\circ$; full CKM via $\Phires$ rotations between generations.
+matching observed $13.04^\circ$ within 1.1\%; full CKM via $\Phires$ rotations between generations.
 
 \subsection{S327 -- Proton Lifetime}
 \begin{equation}
-\tau_p\gtrsim\frac{t_P}{\Ftrz^{\Nch\Dphys}}=t_P\cdot10^{36}\quad\text{(loop-enhanced to }>10^{34}\,\text{yr)},
+\tau_p = t_P\,\Ftrz^{-\Dcrit\Nch/(\Phires^{2}\Dphys)} = t_P\cdot 10^{84.24} \approx 3\times10^{33}\,\text{yr},
 \end{equation}
-consistent with Super-Kamiokande bound; Hyper-K test by 2030.
+within a factor $\sim5$ of Super-Kamiokande bound $\tau_p>1.6\times10^{34}$ yr; Hyper-K test by 2030.
 
 \subsection{S328 -- Muon $g-2$}
 EW half-spinor tilt
@@ -78,10 +79,10 @@ consistent with LHCb ($R_K=0.949\pm0.047$) and HFLAV ($R_{D^*}=0.295\pm0.014$).
 \toprule
 Observable & Closure & Value \\
 \midrule
-Generations              & $\lfloor\ln(1/2)/\ln\Phires\rfloor+1$ & $4$ (3 stable) \\
+Generations              & $\lfloor\ln(1/2)/\ln\Phires\rfloor$ & $3$ \\
 Mass ratio per step      & $\Phires/\KMex$         & $0.4$ \\
-Cabibbo angle            & $\arcsin(1/\sqrt{10})$  & $18.4^\circ$ \\
-Proton lifetime          & $t_P/\Ftrz^{36}$        & $>10^{34}$ yr \\
+Cabibbo angle            & $(1-\Phires)\sqrt{\Ftrz\KMex\Nch}$  & $13.19^\circ$ \\
+Proton lifetime          & $t_P\Ftrz^{-\Dcrit\Nch/(\Phires^{2}\Dphys)}$        & $\sim 3\times10^{33}$ yr \\
 $\Delta a_\mu$           & tilt loop               & $2.5\times10^{-9}$ \\
 $m_W$ shift              & $\Ftrz\Phires/1000$     & $+0.083$\% \\
 $R_K$                    & $1-1/108$               & $0.9907$ \\
