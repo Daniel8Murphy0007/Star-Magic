@@ -1,0 +1,11 @@
+# Tier KK solar system targets (name, value)
+AU_per_1e10_m,14.96
+Sun_mass_per_1e29_kg,19.89
+Earth_orbit_v_per_km_s,29.78
+Sun_radius_per_1e8_m,6.96
+Jupiter_mass_per_1e27_kg,1.898
+Earth_radius_per_1e6_m,6.371
+Moon_orbital_period_per_day,27.32
+sidereal_year_per_100_day,3.65256
+Mars_orbit_AU,1.524
+Mercury_year_per_10_day,8.797

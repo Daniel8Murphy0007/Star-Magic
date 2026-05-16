@@ -171,3 +171,13 @@ ID,name,label,primitives,sectors,error_pct
 680,Moon_dist,Moon distance (1e8 m),"F,beta","L_aether(7),L_buoy(6)",0.0010
 681,Moon_mass,Moon mass (1e22 kg),beta,L_buoy(6),0.1263
 682,Earth_density,Earth density (g/cm^3),"F,beta","L_aether(7),L_buoy(6)",0.1916
+684,KK_AU_per_1e10_m,AU_per_1e10_m,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.3741
+685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2614
+686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2069
+687,KK_Sun_radius_per_1e8_m,Sun_radius_per_1e8_m,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.4910
+688,KK_Jupiter_mass_per_1e27_kg,Jupiter_mass_per_1e27_kg,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.3468
+689,KK_Earth_radius_per_1e6_m,Earth_radius_per_1e6_m,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.1179
+690,KK_Moon_orbital_period_per_day,Moon_orbital_period_per_day,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.0047
+691,KK_sidereal_year_per_100_day,sidereal_year_per_100_day,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2638
+692,KK_Mars_orbit_AU,Mars_orbit_AU,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2293
+693,KK_Mercury_year_per_10_day,Mercury_year_per_10_day,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2847

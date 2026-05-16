@@ -424,3 +424,15 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 680,Moon_dist,Moon distance (1e8 m),3.843962,3.844,0.0010,OK,_session680_Moon_dist.py,Moon distance (1e8 m): 3.843962 vs 3.844 -> 0.0010%
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
+683,lagrangian_primitives,lagrangian_primitives,,,,PARSE_FAIL,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
+684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 172/172 closures mapped -> EXACT
+684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
+685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
+686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%
+687,KK_Sun_radius_per_1e8_m,Sun_radius_per_1e8_m,6.99417364427611,6.96,0.4910,OK,_session687_KK_Sun_radius_per_1e8_m.py,Sun_radius_per_1e8_m: 6.99417364427611 vs 6.96 -> 0.4910%
+688,KK_Jupiter_mass_per_1e27_kg,Jupiter_mass_per_1e27_kg,1.9045829013406672,1.898,0.3468,OK,_session688_KK_Jupiter_mass_per_1e27_kg.py,Jupiter_mass_per_1e27_kg: 1.9045829013406672 vs 1.898 -> 0.3468%
+689,KK_Earth_radius_per_1e6_m,Earth_radius_per_1e6_m,6.36348841,6.371,0.1179,OK,_session689_KK_Earth_radius_per_1e6_m.py,Earth_radius_per_1e6_m: 6.36348841 vs 6.371 -> 0.1179%
+690,KK_Moon_orbital_period_per_day,Moon_orbital_period_per_day,27.32127097800926,27.32,0.0047,OK,_session690_KK_Moon_orbital_period_per_day.py,Moon_orbital_period_per_day: 27.32127097800926 vs 27.32 -> 0.0047%
+691,KK_sidereal_year_per_100_day,sidereal_year_per_100_day,3.642925572389,3.65256,0.2638,OK,_session691_KK_sidereal_year_per_100_day.py,sidereal_year_per_100_day: 3.642925572389 vs 3.65256 -> 0.2638%
+692,KK_Mars_orbit_AU,Mars_orbit_AU,1.5205052953872107,1.524,0.2293,OK,_session692_KK_Mars_orbit_AU.py,Mars_orbit_AU: 1.5205052953872107 vs 1.524 -> 0.2293%
+693,KK_Mercury_year_per_10_day,Mercury_year_per_10_day,8.822047162389,8.797,0.2847,OK,_session693_KK_Mercury_year_per_10_day.py,Mercury_year_per_10_day: 8.822047162389 vs 8.797 -> 0.2847%
