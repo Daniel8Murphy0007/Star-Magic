@@ -1,0 +1,10 @@
+Earth_mass_e24kg,5.972
+Earth_radius_km_e3,6.371
+Earth_g_ms2,9.80665
+Earth_escape_kms,11.186
+Earth_MoI_factor,0.3307
+Earth_orb_v_kms,29.78
+Earth_year_days,365.25
+Moon_dist_e5km,3.844
+Moon_mass_e22kg,7.342
+Earth_density_gcm3,5.514

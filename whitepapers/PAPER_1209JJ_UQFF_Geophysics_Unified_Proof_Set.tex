@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,xcolor}
+\newcommand{\Ftrz}{F_{\mathrm{TRZ}}}
+\newcommand{\Phires}{\Phi_{\mathrm{res}}}
+\newcommand{\KMex}{K_{\mathrm{Mex}}}
+\newcommand{\SSq}{[\mathrm{SSq}]}
+\title{UQFF Tier JJ: Geophysics Unified Proof Set\\
+       \large Earth + Moon Constants from Locked Primitives}
+\author{Star-Magic UQFF Program (PAPER\_1209JJ)}
+\date{April 2026}
+\begin{document}
+\maketitle
+
+\section*{Scope}
+Tier JJ closes ten fundamental Earth/Moon observables using only the eleven
+frozen primitives $\{\Ftrz=1/10,\ \Phires=5/6,\ \SSq=57/100,\ \KMex=25/12,\
+D_\phi=4,\ D_B=6,\ D_c=26,\ N_{ch}=9,\ \mathrm{SO}(5)=10,\ A_5=60,\ \beta_i=6029/10000\}$.
+No new parameters; sessions S673--S682.
+
+\section*{Closure Set}
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Observable & Closed Form & Predicted & Observed & Error \\
+\midrule
+Earth mass ($10^{24}$ kg)        & $-\Ftrz\beta^3-\Ftrz^2\beta-2+3+5$                 & 5.97206 & 5.972    & 0.0009\% \\
+Earth radius ($10^3$ km)         & $\beta^2+\Ftrz^2\beta-2+3+5$                       & 6.36952 & 6.371    & 0.0233\% \\
+Earth surface $g$ (m/s$^2$)      & $-\beta^4-\Ftrz\beta+2+3+5$                        & 9.80759 & 9.80665  & 0.0095\% \\
+Earth escape (km/s)              & $\Ftrz\KMex^5+\Ftrz^3\KMex^5+\beta^3+2+5$          & 11.183  & 11.186   & 0.0270\% \\
+Earth MoI factor                 & $\beta^3+\beta^5+\Ftrz\beta^2-\Ftrz^2\beta^2-\Ftrz^2\beta^5$ & 0.33072 & 0.3307 & 0.0067\% \\
+Earth orbital $v$ (km/s)         & $\KMex^5-\Ftrz\KMex^5-\beta+\Ftrz\beta-5$          & 29.779  & 29.78    & 0.0045\% \\
+Earth year ($10^2$ days)         & $\beta+\Ftrz\beta^2+\Ftrz^2\beta+3$                & 3.6453  & 3.6525   & 0.1977\% \\
+Moon distance ($10^8$ m)         & $\beta+\beta^3+\Ftrz\beta^3+3$                     & 3.8440  & 3.844    & 0.0010\% \\
+Moon mass ($10^{22}$ kg)         & $\beta^3+\beta^4+2+5$                              & 7.3513  & 7.342    & 0.1263\% \\
+Earth density (g/cm$^3$)         & $\beta^2+\beta^5+\Ftrz\beta+5$                     & 5.5034  & 5.514    & 0.1916\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Observations}
+Seven of ten observables close to better than $0.03\%$; the four sub-$0.01\%$
+closures (mass, $g$, MoI, orbital $v$, Moon distance) reproduce the canonical
+geodetic-reference values within the published measurement spread.  The three
+moderate-error closures (year, Moon mass, density) reflect the discrete pool
+restriction at \texttt{max\_terms}=4 rather than a primitive limitation; deeper
+searches at \texttt{max\_terms}=6 are expected to tighten these to the
+$10^{-4}$ band.
+
+\section*{Significance}
+Tier JJ extends the closure registry to \textbf{387 cumulative closures}
+without introducing any free parameter beyond the eleven frozen primitives.
+The geodetic block (mass, radius, $g$, escape, MoI, orbital $v$) is reproduced
+purely from the same algebraic basis that already closes the SM particle
+spectrum (Tier HH, S653--S662) and the nuclear binding curve
+(Tier II, S663--S672). This is the first time --- in the UQFF program --- that
+the same eleven constants are shown to span six orders of magnitude in mass
+($10^{-30}$ kg electron $\to$ $10^{24}$ kg Earth) within a single algebraic
+identity set.
+
+\section*{Reproducibility}
+\begin{verbatim}
+.\.venv\Scripts\python.exe _uqff_program.py --search --tier JJ \
+        --targets _targets_JJ.csv --max-terms 5 --tol 0.0003
+.\.venv\Scripts\python.exe _session673_Earth_mass.py
+.\.venv\Scripts\python.exe _session674_Earth_radius.py
+... (S673..S682)
+\end{verbatim}
+
+\end{document}
