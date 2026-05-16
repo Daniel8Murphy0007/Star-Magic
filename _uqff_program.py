@@ -33,7 +33,25 @@ Dp=4; DB=6; Dc=26; N=9; SO=10; A=60; beta=Fraction(6029,10000)
 # AUDIT MODE — build master_closures.csv from all _session*.py scripts
 # ---------------------------------------------------------------------------
 SESSION_RE = re.compile(r"^_session(\d+)_([^.]+)\.py$")
-OUTPUT_RE  = re.compile(r"([\w\-+/ ]+?):?\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*(?:vs|->|=)\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*->\s*([\d.]+)%", re.I)
+# Pattern A: "label: PRED vs OBS -> ERR%" or "-> EXACT"
+OUTPUT_RE_A = re.compile(r"([\w\-+/ ()^.]+?):\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*vs\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*->\s*(EXACT|[\d.]+%)", re.I)
+# Pattern B: "... = PRED ...; obs (...) = OBS; match ERR%"
+OUTPUT_RE_B = re.compile(r"=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^;]*?;\s*obs[^=]*?=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^;]*?;\s*match\s*([\d.]+)\s*%", re.I)
+# Pattern C: "label = PRED, obs = OBS, err = ERR%"  /  "label: PRED (obs OBS, err ERR%)"
+OUTPUT_RE_C = re.compile(r"([\w\-+/ ()^.]+?)\s*[:=]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^,]*?,\s*obs[^=:]*[:=]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^,]*?,\s*(?:err|error|match)[^=:]*[:=]\s*([\d.]+)\s*%", re.I)
+
+def _parse_line(line, fallback_name):
+    m = OUTPUT_RE_A.search(line)
+    if m:
+        raw = m.group(4)
+        return m.group(1).strip(), m.group(2), m.group(3), ("0" if raw.upper()=="EXACT" else raw.rstrip("%"))
+    m = OUTPUT_RE_B.search(line)
+    if m:
+        return fallback_name, m.group(1), m.group(2), m.group(3)
+    m = OUTPUT_RE_C.search(line)
+    if m:
+        return m.group(1).strip(), m.group(2), m.group(3), m.group(4)
+    return None
 
 def audit():
     py = str(VENV_PY) if VENV_PY.exists() else sys.executable
@@ -51,19 +69,19 @@ def audit():
         except Exception as e:
             out = f"ERROR: {e}"
         lines = [l.strip() for l in out.splitlines() if l.strip()]
-        last = lines[-1] if lines else ""
-        mm = OUTPUT_RE.search(last)
-        if mm:
-            label = mm.group(1).strip()
-            predicted = mm.group(2)
-            observed  = mm.group(3)
-            err_pct   = mm.group(4)
-            status    = "OK"
+        parsed = None
+        for ln in reversed(lines):
+            parsed = _parse_line(ln, name)
+            if parsed:
+                break
+        if parsed:
+            label, predicted, observed, err_pct = parsed
+            status = "OK"
         else:
             label = name
             predicted = observed = err_pct = ""
             status    = "PARSE_FAIL"
-        rows.append((sid, name, label, predicted, observed, err_pct, status, sp.name, last))
+        rows.append((sid, name, label, predicted, observed, err_pct, status, sp.name, (lines[-1] if lines else "")))
     csv_path = ROOT / "master_closures.csv"
     with csv_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
@@ -78,6 +96,8 @@ def audit():
     # sigma table — only when err_pct numeric and < 0.005 we flag candidate EXACT
     cands = [r for r in rows if r[6]=="OK" and r[5] and float(r[5])<0.0005]
     print(f"  candidate-EXACT (err<0.0005%): {len(cands)}")
+    exacts = [r for r in rows if r[6]=="OK" and r[5]=="0"]
+    print(f"  exact (=0%): {len(exacts)}")
     return csv_path
 
 
@@ -139,8 +159,37 @@ def search(tier, targets_path, max_terms=5, tol=0.0003):
 
 
 # ---------------------------------------------------------------------------
-# STATUS MODE
+# SIGMA MODE — build falsifiability table from master_closures.csv
 # ---------------------------------------------------------------------------
+def sigma():
+    csv_p = ROOT / "master_closures.csv"
+    if not csv_p.exists():
+        print("master_closures.csv missing — run --audit first."); return
+    rows = list(csv.DictReader(csv_p.open(encoding="utf-8")))
+    ok = [r for r in rows if r["status"]=="OK" and r["error_pct"]]
+    # bucket by sigma proxy: |err%|/100 vs typical experimental uncertainty
+    # crude tiers (no measurement uncertainty available here):
+    tiers = {"EXACT":[], "<0.01%":[], "0.01-0.1%":[], "0.1-1%":[], ">=1%":[]}
+    for r in ok:
+        e = float(r["error_pct"])
+        if e == 0:        tiers["EXACT"].append(r)
+        elif e < 0.01:    tiers["<0.01%"].append(r)
+        elif e < 0.1:     tiers["0.01-0.1%"].append(r)
+        elif e < 1:       tiers["0.1-1%"].append(r)
+        else:             tiers[">=1%"].append(r)
+    out = ROOT / "sigma_table.csv"
+    with out.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["tier","ID","name","label","predicted","observed","error_pct"])
+        for t,items in tiers.items():
+            for r in sorted(items, key=lambda x:int(x["ID"])):
+                w.writerow([t, r["ID"], r["name"], r["label"], r["predicted"], r["observed"], r["error_pct"]])
+    print(f"Sigma table written: {out}")
+    for t,items in tiers.items():
+        print(f"  {t:12s} {len(items):4d}")
+    print(f"  TOTAL OK:    {len(ok):4d}")
+
+
 def status():
     scripts = list(ROOT.glob("_session*.py"))
     ids = sorted(int(SESSION_RE.match(s.name).group(1)) for s in scripts if SESSION_RE.match(s.name))
@@ -163,6 +212,7 @@ def main():
     ap.add_argument("--audit", action="store_true", help="run all _session*.py and build master_closures.csv")
     ap.add_argument("--search", action="store_true", help="brute-force closure search")
     ap.add_argument("--status", action="store_true", help="print program status")
+    ap.add_argument("--sigma",  action="store_true", help="build sigma_table.csv from master_closures.csv")
     ap.add_argument("--tier", help="tier letter (e.g. JJ) for --search")
     ap.add_argument("--targets", help="path to targets CSV (name,value) for --search")
     ap.add_argument("--max-terms", type=int, default=5)
@@ -174,6 +224,7 @@ def main():
             ap.error("--search requires --tier and --targets")
         search(args.tier, args.targets, args.max_terms, args.tol)
     elif args.status: status()
+    elif args.sigma:  sigma()
     else: ap.print_help()
 
 if __name__ == "__main__":

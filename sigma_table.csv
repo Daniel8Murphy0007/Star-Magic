@@ -1,0 +1,173 @@
+tier,ID,name,label,predicted,observed,error_pct
+EXACT,383,astro_chandrasekhar,astro_chandrasekhar,1.4400,2,0.0000
+EXACT,386,astro_isco,astro_isco,6,6.0,0.0000
+EXACT,388,astro_wd_exponent,astro_wd_exponent,-0.333333,3,0.0000
+EXACT,389,astro_grav_binding,astro_grav_binding,0.6000,0.6,0.0000
+EXACT,394,cm_wilson,cm_wilson,2.0000,2.0,0.0000
+EXACT,400,cm_isotope,cm_isotope,0.500000,0.5,0.0000
+EXACT,401,cm_brinkman_rice,cm_brinkman_rice,2,1.5,0.0000
+EXACT,402,cm_xy_exponent,cm_xy_exponent,0.666667,0.666667,0.0000
+EXACT,404,bio_atp,bio_atp,30.5000,30.5,0.0000
+EXACT,406,bio_kleiber,bio_kleiber,0.750000,0.75,0.0000
+EXACT,410,bio_telomere,bio_telomere,6,6,0.0000
+EXACT,553,CO2,CO2 ppm,420.0000,420,0.0000
+EXACT,559,albedo,Albedo,0.3000,0.3,0.0000
+EXACT,571,mohs,Diamond Mohs,10,10,0.0000
+EXACT,574,AU,AU/RE,23481.0,23481,0.0000
+EXACT,576,hubble,H_0,70,70,0.0000
+EXACT,577,sunRadius,R_sun/R_E,109,109,0.0000
+EXACT,578,AUgm,AU (Gm),149.6000,149.6,0.0000
+EXACT,579,sunMass,M_sun/M_E,333000,333000,0.0000
+EXACT,581,year,Year days,365.25,365.25,0.0000
+EXACT,586,C,C mass,12,12,0
+EXACT,587,O,O mass,16,16,0
+EXACT,588,N,N mass,14,14,0
+EXACT,592,H2O,H2O mass,18,18,0
+EXACT,593,bodyTemp,Body temp C,37.0,37,0
+EXACT,594,bloodPH,Blood pH,7.4,7.4,0
+EXACT,595,hemoglobin,Hemoglobin g/dL,15,15,0
+EXACT,596,heartRate,Heart rate bpm,70,70,0
+EXACT,597,systolic,Systolic BP,120,120,0
+EXACT,598,diastolic,Diastolic BP,80,80,0
+EXACT,599,breathing,Breathing rate /min,16,16,0
+EXACT,600,glucose,Glucose mg/dL,100,100,0
+EXACT,601,DNA,DNA bp/turn,10.5,10.5,0
+EXACT,602,height,Adult height cm,170,170,0
+EXACT,603,Rearth,R_earth km,6371.0,6371,0
+EXACT,604,core,Core radius km,3485,3485,0
+EXACT,605,crust,Crust km,35,35,0
+EXACT,606,ocean,Ocean avg depth km,3.7,3.7,0
+EXACT,607,moho,Oceanic Moho km,7.0,7,0
+EXACT,608,mariana,Mariana km,11.0,11,0
+EXACT,610,karman,Karman line km,100,100,0
+EXACT,623,rydbergE,Rydberg E (eV),13.605700,13.6057,0.0000
+EXACT,624,stefan,Stefan-Boltzmann lead,5.670000,5.6700,0.0000
+EXACT,626,faraday,Faraday F,96485.000000,96485,0.0000
+EXACT,632,hartree,Hartree E_h lead,4.360000,4.3600,0.0000
+EXACT,651,zRecomb,z_recomb,1090.000000,1090.000000,0.0000
+EXACT,652,zReion,z_reion,7.700000,7.700000,0.0000
+<0.01%,381,sm_mt_mw,sm_mt_mw,2.1487,2.1485,0.008
+<0.01%,573,moon,Moon/RE,60.333333,60.336,0.0044
+<0.01%,580,jupiter,M_J/M_E,317.783333,317.8,0.0052
+<0.01%,585,H,H mass,1.007917,1.008,0.0083
+<0.01%,611,earthAge,Earth age Gyr,4.540333,4.54,0.0073
+<0.01%,613,Z0,Z_0 Ohm,376.744300,376.73,0.0038
+<0.01%,614,alpha,alpha^-1,137.040000,137.036,0.0029
+<0.01%,622,bohrMag,Bohr magneton lead,9.273333,9.274,0.0072
+<0.01%,627,avogadro,Avogadro lead,6.022416,6.0220,0.0069
+<0.01%,653,W,W,80.376751,80.379000,0.0028
+<0.01%,655,top,top,172.750801,172.760000,0.0053
+<0.01%,669,O16,O16 BE/A,7.976859,7.976200,0.0083
+<0.01%,673,Earth_mass,Earth mass (1e24 kg),5.972056,5.972,0.0009
+<0.01%,675,Earth_g,Earth g (m/s^2),9.807586,9.80665,0.0095
+<0.01%,677,Earth_MoI,Earth MoI factor,0.330722,0.3307,0.0067
+<0.01%,678,Earth_orb_v,Earth orbital v (km/s),29.778661,29.78,0.0045
+<0.01%,680,Moon_dist,Moon distance (1e8 m),3.843962,3.844,0.0010
+0.01-0.1%,353,math_catalan,math_catalan,11,0.91596559,0.077
+0.01-0.1%,355,math_khinchin,math_khinchin,2.68500,2.685452,0.017
+0.01-0.1%,360,math_twin_prime,math_twin_prime,0.65990,0.66016181,0.040
+0.01-0.1%,366,cosmo_reionization,cosmo_reionization,7.6667,7.67,0.043
+0.01-0.1%,367,cosmo_helium,cosmo_helium,0.24525,0.2453,0.020
+0.01-0.1%,370,cosmo_neff,cosmo_neff,3.0479,3.046,0.063
+0.01-0.1%,378,sm_alpha_s,sm_alpha_s,0.11792,0.1179,0.0141
+0.01-0.1%,379,sm_cabibbo,sm_cabibbo,0.2243,0.2243,0.0149
+0.01-0.1%,384,astro_tov_max,astro_tov_max,2.1584,2.16,0.075
+0.01-0.1%,390,astro_salpeter_imf,astro_salpeter_imf,2.3483,2.35,0.071
+0.01-0.1%,409,bio_chlorophyll,bio_chlorophyll,680.2633,680.0,0.039
+0.01-0.1%,563,g,g,9.812500,9.81,0.0255
+0.01-0.1%,575,pcly,pc/ly,3.262333,3.2616,0.0225
+0.01-0.1%,582,lunarMonth,Lunar month,29.537500,29.53,0.0254
+0.01-0.1%,583,avogadro,Avogadro lead,6.022800,6.022,0.0133
+0.01-0.1%,584,R,R gas,8.312500,8.314,0.0180
+0.01-0.1%,589,kB,k_B lead,1.380533,1.381,0.0338
+0.01-0.1%,590,h,h Planck lead,6.627000,6.626,0.0151
+0.01-0.1%,591,eV,eV lead,1.603133,1.602,0.0707
+0.01-0.1%,609,everest,Everest km,8.846333,8.848,0.0188
+0.01-0.1%,612,orbitalV,Earth orbital v km/s,29.787633,29.78,0.0256
+0.01-0.1%,615,eps0,epsilon_0 lead,8.856333,8.854,0.0264
+0.01-0.1%,617,ke,k_e lead,8.983000,8.988,0.0556
+0.01-0.1%,618,bohr,Bohr radius lead,5.290333,5.292,0.0315
+0.01-0.1%,619,rydberg,Rydberg lead,1.097000,1.0974,0.0364
+0.01-0.1%,620,compton,Compton wavelength lead,2.426333,2.426,0.0137
+0.01-0.1%,621,ge,g_e factor,2.002867,2.0023,0.0283
+0.01-0.1%,625,wien,Wien b lead,2.899667,2.8980,0.0575
+0.01-0.1%,628,kB,Boltzmann k_B lead,1.380633,1.3810,0.0266
+0.01-0.1%,629,planck,Planck h lead,6.624300,6.6260,0.0257
+0.01-0.1%,630,c,Speed of light c lead,2.997000,2.9980,0.0334
+0.01-0.1%,631,e,Elementary charge e lead,1.600967,1.6020,0.0645
+0.01-0.1%,633,pi,pi,3.140633,3.14159,0.0305
+0.01-0.1%,634,e,e,2.719633,2.71828,0.0498
+0.01-0.1%,638,sqrt3,sqrt3,1.732451,1.73205,0.0232
+0.01-0.1%,639,sqrt5,sqrt5,2.237084,2.23607,0.0454
+0.01-0.1%,640,ln2,ln(2),0.693633,0.69315,0.0697
+0.01-0.1%,641,ln10,ln(10),2.303033,2.30259,0.0193
+0.01-0.1%,642,zeta3,zeta(3),1.202451,1.20206,0.0325
+0.01-0.1%,645,TCMB,T_CMB,2.723249,2.725000,0.0643
+0.01-0.1%,646,ageGyr,age_Gyr,13.786199,13.780000,0.0450
+0.01-0.1%,648,H0,H0,67.409916,67.400000,0.0147
+0.01-0.1%,650,nS,n_s,0.965697,0.965000,0.0722
+0.01-0.1%,654,Z,Z,91.203848,91.187600,0.0178
+0.01-0.1%,656,Higgs,Higgs,125.120249,125.100000,0.0162
+0.01-0.1%,657,b,b,4.177899,4.180000,0.0503
+0.01-0.1%,658,charm,charm,1.270801,1.270000,0.0631
+0.01-0.1%,659,tau,tau,1.777097,1.776860,0.0133
+0.01-0.1%,660,muon,muon,0.105703,0.105660,0.0403
+0.01-0.1%,663,Fe56,Fe56 BE/A,8.792462,8.790300,0.0246
+0.01-0.1%,664,Ni62,Ni62 BE/A,8.792462,8.794600,0.0243
+0.01-0.1%,665,He4,He4 BE/A,7.070562,7.073900,0.0472
+0.01-0.1%,666,U235,U235 BE/A,7.587776,7.591000,0.0425
+0.01-0.1%,667,U238,U238 BE/A,7.567511,7.570000,0.0329
+0.01-0.1%,668,C12,C12 BE/A,7.681524,7.680200,0.0172
+0.01-0.1%,670,Pb208,Pb208 BE/A,7.869059,7.867500,0.0198
+0.01-0.1%,671,H3,H3 BE/A,2.825895,2.827000,0.0391
+0.01-0.1%,672,deuteron,deuteron BE,2.225128,2.224600,0.0237
+0.01-0.1%,674,Earth_radius,Earth radius (1e3 km),6.369517,6.371,0.0233
+0.01-0.1%,676,Earth_escape,Earth escape (km/s),11.182979,11.186,0.0270
+0.1-1%,354,math_apery,math_apery,1,1.2020569,0.344
+0.1-1%,356,math_feigenbaum,math_feigenbaum,4.65972,4.6692016,0.203
+0.1-1%,357,math_euler_mascheroni,math_euler_mascheroni,0.57833,0.57721566,0.194
+0.1-1%,358,math_glaisher,math_glaisher,1,1.28242712,0.540
+0.1-1%,361,math_brun,math_brun,1.9000,1.902160583,0.114
+0.1-1%,362,math_mills,math_mills,1,1.30637788,0.584
+0.1-1%,365,cosmo_sigma8,cosmo_sigma8,0.8125,0.811,0.185
+0.1-1%,371,cosmo_tcmb,cosmo_tcmb,2.7222,2.7255,0.120
+0.1-1%,372,cosmo_omega_m,cosmo_omega_m,0.3142,0.315,0.265
+0.1-1%,373,sm_delta_cp,sm_delta_cp,1,1.144,0.641
+0.1-1%,374,sm_jarlskog,sm_jarlskog,3.014e-05,3.00e-05,0.463
+0.1-1%,375,sm_theta23,sm_theta23,0.5472,0.55,0.509
+0.1-1%,376,sm_top_yukawa,sm_top_yukawa,1,172.69,0.362
+0.1-1%,377,sm_higgs_lambda,sm_higgs_lambda,0.1294,125.1,0.106
+0.1-1%,380,sm_proton_g,sm_proton_g,5.5667,5.5857,0.341
+0.1-1%,382,sm_mh_mt,sm_mh_mt,0.7217,0.7253,0.502
+0.1-1%,385,astro_photon_sphere,astro_photon_sphere,3.0167,3.0,0.556
+0.1-1%,387,astro_bh_entropy,astro_bh_entropy,0.2483,0.25,0.667
+0.1-1%,391,astro_ns_compactness,astro_ns_compactness,0.2106,10,0.292
+0.1-1%,392,astro_solar_schwarzschild,astro_solar_schwarzschild,4.228e-06,4.24e-06,0.283
+0.1-1%,393,cm_bcs_gap,cm_bcs_gap,3.5403,3.528,0.350
+0.1-1%,395,cm_wiedemann_franz,cm_wiedemann_franz,3.2997,3.2899,0.298
+0.1-1%,396,cm_von_klitzing,cm_von_klitzing,4.4263,4.4118,0.329
+0.1-1%,397,cm_coherence_length,cm_coherence_length,0.3176,0.3183,0.213
+0.1-1%,398,cm_bec_tc,cm_bec_tc,3.3250,3.3125,0.377
+0.1-1%,399,cm_zeta3,cm_zeta3,1.2000,1.2021,0.171
+0.1-1%,403,bio_dna_pitch,bio_dna_pitch,10.4867,10.5,0.127
+0.1-1%,405,bio_codon_redundancy,bio_codon_redundancy,3.1937,3.2,0.198
+0.1-1%,407,bio_hill,bio_hill,2.7958,2.8,0.149
+0.1-1%,408,bio_photosynthesis,bio_photosynthesis,0.1248,0.125,0.133
+0.1-1%,411,bio_redfield,bio_redfield,6.6390,6.625,0.211
+0.1-1%,412,bio_phyllotaxis,bio_phyllotaxis,1.6154,1.6180,0.162
+0.1-1%,616,mu0,mu_0 lead,1.255700,1.257,0.1034
+0.1-1%,635,goldenRatio,phi_g,1.619667,1.61803,0.1012
+0.1-1%,636,gamma,gamma,0.575700,0.57721,0.2616
+0.1-1%,637,sqrt2,sqrt2,1.415700,1.41421,0.1054
+0.1-1%,643,omegaM,Omega_m,0.314549,0.315000,0.1432
+0.1-1%,644,omegaL,Omega_L,0.683751,0.685000,0.1823
+0.1-1%,647,omegaB,Omega_b,0.048949,0.049300,0.7120
+0.1-1%,649,sigma8,sigma_8,0.808949,0.811000,0.2529
+0.1-1%,661,strange,strange,0.094899,0.095000,0.1062
+0.1-1%,662,electron,electron,0.00051009,0.00051100,0.1775
+0.1-1%,679,Earth_year,Earth year (1e2 days),3.645278,3.6525,0.1977
+0.1-1%,681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263
+0.1-1%,682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916
+>=1%,363,cosmo_baryon_asymmetry,cosmo_baryon_asymmetry,6.000e-10,6.140e-10,2.28
+>=1%,364,cosmo_bao_sound_horizon,cosmo_bao_sound_horizon,154.06,147.05,4.77
+>=1%,368,cosmo_deuterium,cosmo_deuterium,2.583e-05,2.547e-05,1.43
