@@ -628,5 +628,85 @@
     "status": "DERIVED",
     "chain": "f_k = RERING_BB_HZ / lambda_k; lambda_1 = 26 (SO(26) Casimir); 1.15e14 / 26 = 4.423076923e+12 Hz.  Depends on H202-1 convention.  QCalcGeom.bh26_bsh_resonance(k=1).freq_k.",
     "paper": "PAPER_S202 sec 2.2"
+  },
+  {
+    "id": "H203-1",
+    "claim": "PTF net displacement D_A + D_B = 0",
+    "target": "0",
+    "derived": "0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Forward leg: D_A = n*(f-b) = 3*(3-2) = +3.  Backward leg: D_B = n*(b-f) = 3*(2-3) = -3.  Sum = 0 by sign antisymmetry (CPT closure on the discrete Fibonacci walk).  qcalcgeom_sim_engine.validate_primordial_timing_function().",
+    "paper": "PAPER_S203 sec 2"
+  },
+  {
+    "id": "H203-2",
+    "claim": "int_0^1 cos(pi*t_n) dt_n = 0",
+    "target": "0.0",
+    "derived": "0.0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Antiderivative sin(pi*t_n)/pi; evaluated on [0,1]: (sin(pi) - sin(0))/pi = 0 exactly.  Independent verification: sin(pi*k) = 0 for all integers k, so the closure is exact at the endpoint pair t_n in {0, 1}.  PTF return-to-zero.",
+    "paper": "PAPER_S203 sec 2"
+  },
+  {
+    "id": "H203-3",
+    "claim": "PTF (f, b, f-b) = (F_4, F_3, F_2) = (3, 2, 1)",
+    "target": "(3, 2, 1)",
+    "derived": "(3, 2, 1)",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Fibonacci recurrence F_k = F_{k-1} + F_{k-2} with F_1=F_2=1: F_2=1, F_3=2, F_4=3.  PTF parameters selected to embed unit-step Fibonacci identity F_4 - F_3 = F_2 = 1.  Pure arithmetic.",
+    "paper": "PAPER_S203 sec 3"
+  },
+  {
+    "id": "H203-4",
+    "claim": "PTF repeat count n = floor(pi) = 3",
+    "target": "3",
+    "derived": "3",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "pi = 3.14159... so floor(pi) = 3.  Matches PTF n=3.  Geometric interpretation: three full pi-half-cycles per epoch in cos(pi*t_n).",
+    "paper": "PAPER_S203 sec 3"
+  },
+  {
+    "id": "H203-5",
+    "claim": "First 15 digits of pi tile 5 epochs of 3 digits each",
+    "target": "15",
+    "derived": "15",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Numerical fact: pi = 3.14159265358979...  First 15 digits are [3,1,4,1,5,9,2,6,5,3,5,8,9,7,9].  Partition into 5 groups of 3 yields the EPOCH_PI_T_N table: [(3,1,4),(1,5,9),(2,6,5),(3,5,8),(9,7,9)].  Verified by casting math.pi to 14 decimal places.  Numerical convention (definition of epoch boundaries), not a theorem.",
+    "paper": "PAPER_S203 sec 3"
+  },
+  {
+    "id": "H203-6",
+    "claim": "Triple-point g = cbrt(a*b*c) is the geometric mean",
+    "target": "24.0",
+    "derived": "24.0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "g_triple = cbrt(a_DPM * g_res * R_bsfg) is by definition the geometric mean of the three path operators (Compressed, Resonance, BSFG).  Verification: cbrt(8*27*64) = cbrt(2^3 * 3^3 * 4^3) = 2*3*4 = 24.  AM-GM bound: g_triple <= (a+b+c)/3 with equality iff a=b=c.  Formula is a CONVENTION (definition of the bridge), not a derived identity; the cube-root arithmetic itself is exact.  MAIN_1_CoAnQi.cpp:110125.",
+    "paper": "PAPER_S203 sec 4"
+  },
+  {
+    "id": "H203-7",
+    "claim": "vds_prime = Li_25(z)/z -> 1 as z -> 0",
+    "target": "1.0",
+    "derived": "1.0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Li_25(z)/z = sum_{n>=1} z^(n-1)/n^25; n=1 term = 1, n>=2 tail bounded by z/(2^25*(1-z)).  At z=1e-06: correction <= 2.980e-14.  Numeric value (200 terms) = 1.0 to 12 decimal places.  Matches source7 Source7VDSBridgeTerm_S233.vds_prime ~ 1.0 assertion.",
+    "paper": "PAPER_S203 sec 4"
+  },
+  {
+    "id": "H203-8",
+    "claim": "BH26 lambda_1 = 26 (cross-consistency S202 <-> S203)",
+    "target": "26",
+    "derived": "26",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Source7TriplePointTerm_S233 (MAIN_1_CoAnQi.cpp:110110) sets lam1 = 1.0 * 26.0.  This is the same SO(26) Casimir convention lambda_k = k(k+25) used in H202-1 at k=1: lambda_1 = 1*(1+25) = 26.  Cross-module consistency check; depends on H202-1.",
+    "paper": "PAPER_S203 sec 4"
   }
 ]

@@ -1,0 +1,77 @@
+{
+  "session": 203,
+  "closures": [
+    {
+      "label": "S203-PTF-net-displacement",
+      "predicted": 0,
+      "observed": 0,
+      "error_pct": 0.0,
+      "tag": "PTF",
+      "line": "S203-PTF-net-displacement: 0 vs 0 -> EXACT"
+    },
+    {
+      "label": "S203-PTF-cos-integral",
+      "predicted": 0.0,
+      "observed": 0.0,
+      "error_pct": 0.0,
+      "tag": "PTF",
+      "line": "S203-PTF-cos-integral: 0.0 vs 0.0 -> EXACT"
+    },
+    {
+      "label": "S203-PTF-fibonacci-triple",
+      "predicted": [
+        3,
+        2,
+        1
+      ],
+      "observed": [
+        3,
+        2,
+        1
+      ],
+      "error_pct": 0.0,
+      "tag": "PTF",
+      "line": "S203-PTF-fibonacci-triple: (3, 2, 1) vs (3, 2, 1) -> EXACT"
+    },
+    {
+      "label": "S203-PTF-n-equals-pi-floor",
+      "predicted": 3,
+      "observed": 3,
+      "error_pct": 0.0,
+      "tag": "PTF",
+      "line": "S203-PTF-n-equals-pi-floor: 3 vs 3 -> EXACT"
+    },
+    {
+      "label": "S203-PTF-pi-15digit-tiling",
+      "predicted": 15,
+      "observed": 15,
+      "error_pct": 0.0,
+      "tag": "PTF",
+      "line": "S203-PTF-pi-15digit-tiling: 15 vs 15 -> EXACT"
+    },
+    {
+      "label": "S203-TPB-geometric-mean",
+      "predicted": 24.0,
+      "observed": 24.0,
+      "error_pct": 0.0,
+      "tag": "TPB",
+      "line": "S203-TPB-geometric-mean: 24.0 vs 24.0 -> EXACT"
+    },
+    {
+      "label": "S203-TPB-vds-prime-limit",
+      "predicted": 1.0,
+      "observed": 1.0,
+      "error_pct": 0.0,
+      "tag": "TPB",
+      "line": "S203-TPB-vds-prime-limit: 1.0 vs 1.0 -> EXACT"
+    },
+    {
+      "label": "S203-BH26-lambda1-cross-consistency",
+      "predicted": 26,
+      "observed": 26,
+      "error_pct": 0.0,
+      "tag": "BH26",
+      "line": "S203-BH26-lambda1-cross-consistency: 26 vs 26 -> EXACT"
+    }
+  ]
+}

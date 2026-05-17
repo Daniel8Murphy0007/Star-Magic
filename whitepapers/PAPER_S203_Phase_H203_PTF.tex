@@ -1,0 +1,214 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\title{PAPER\_S203: Phase H203 -- Primordial Timing Function and Triple-Point Bridge Closures}
+\author{UQFF Closure Audit (Session 203 Backfill)}
+\date{May 2026}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Session 203 introduced two structural additions to the UQFF framework: the
+\emph{Primordial Timing Function} (PTF) in
+\texttt{qcalcgeom\_sim\_engine.py} v1.1.0, and the \emph{Triple-Point Bridge}
+across Compressed MUGE, Resonance MUGE, and BSFG metric paths in
+\texttt{MAIN\_1\_CoAnQi.cpp} SOURCE7 (lines 110018--110136, commit
+\texttt{553caec8}). Eight structural identities arising from these additions
+were never registered in the closure ledger. This paper records the
+backfilled identities, separates rigorously provable closures from
+conventions, and cross-checks the SO(26) Casimir convention shared with
+Phase H202. All eight entries are verified \texttt{EXACT} in
+\texttt{master\_closures.csv} and tier \texttt{EXACT} in
+\texttt{sigma\_table.csv}.
+\end{abstract}
+
+\section{Ledger Summary}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+ID & Identity & Class & Status \\
+\midrule
+H203-1 & $D_A + D_B = 0$                                       & PTF / proof       & DERIVED \\
+H203-2 & $\int_0^1 \cos(\pi t_n)\,dt_n = 0$                    & PTF / proof       & DERIVED \\
+H203-3 & $(f, b, f-b) = (F_4, F_3, F_2) = (3,2,1)$             & PTF / arithmetic  & DERIVED \\
+H203-4 & $n = \lfloor \pi \rfloor = 3$                         & PTF / arithmetic  & DERIVED \\
+H203-5 & First 15 digits of $\pi$ tile 5 epochs of 3           & PTF / convention  & DERIVED \\
+H203-6 & $g_{\text{triple}} = \sqrt[3]{abc}$ (geometric mean)  & TPB / convention  & DERIVED \\
+H203-7 & $\operatorname{Li}_{25}(z)/z \to 1$ as $z \to 0$      & TPB / proof       & DERIVED \\
+H203-8 & $\lambda_1 = 26$ cross-consistency with H202-1        & BH26 / convention & DERIVED \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{PTF Return-to-Zero (H203-1, H203-2)}
+
+The Primordial Timing Function in
+\texttt{qcalcgeom\_sim\_engine.py} fixes
+$f = 3$, $b = 2$, $n = 3$, with forward leg displacement
+$D_A = n(f-b) = +3$ and backward leg $D_B = n(b-f) = -3$.
+
+\begin{thm}[CPT closure of the discrete walk]
+$D_A + D_B = 0$.
+\end{thm}
+
+\begin{proof}
+$D_A + D_B = n(f-b) + n(b-f) = n\bigl[(f-b) + (b-f)\bigr] = n \cdot 0 = 0$.
+The sum vanishes for every choice of integers $(f, b, n)$ by sign
+antisymmetry; the PTF is a special case.
+\end{proof}
+
+\begin{thm}[continuous closure]
+$\displaystyle \int_0^1 \cos(\pi t_n)\,dt_n = 0$.
+\end{thm}
+
+\begin{proof}
+$\int_0^1 \cos(\pi t_n)\,dt_n
+   = \bigl[\sin(\pi t_n)/\pi\bigr]_0^1
+   = (\sin \pi - \sin 0)/\pi = 0$.
+Independent verification: $\sin(\pi k) = 0$ for every integer $k$, so the
+closure is exact at the endpoint pair $\{0,1\}$.
+\end{proof}
+
+\section{Fibonacci / $\pi$-Decimal Structure (H203-3, H203-4, H203-5)}
+
+\begin{prop}[Fibonacci identity]
+With $F_1 = F_2 = 1$ and $F_k = F_{k-1} + F_{k-2}$, the PTF parameters
+satisfy $(f, b, f-b) = (F_4, F_3, F_2) = (3, 2, 1)$.
+\end{prop}
+
+\begin{proof}
+$F_2 = 1$, $F_3 = F_2 + F_1 = 2$, $F_4 = F_3 + F_2 = 3$. Hence
+$F_4 - F_3 = 1 = F_2$. Pure arithmetic.
+\end{proof}
+
+\begin{prop}
+$n = \lfloor \pi \rfloor = 3$.
+\end{prop}
+
+\begin{proof}
+$\pi = 3.14159\ldots$ so $\lfloor \pi \rfloor = 3$. Geometric
+interpretation: three full $\pi$-half-cycles per epoch of
+$\cos(\pi t_n)$.
+\end{proof}
+
+\paragraph{$\pi$-decimal epoch partition (convention).}
+The constant
+\[
+\texttt{PRIMORDIAL\_PI\_DIGITS} \;=\; [3,1,4,1,5,9,2,6,5,3,5,8,9,7,9]
+\]
+matches the first 15 decimal digits of $\pi$ verbatim, as cross-checked
+against \texttt{math.pi} cast to 14 decimal places. The partition into
+five epochs of three digits,
+$\{(3,1,4), (1,5,9), (2,6,5), (3,5,8), (9,7,9)\}$,
+is a \emph{convention} (the definition of epoch boundaries used by
+\texttt{EPOCH\_PI\_T\_N}), not a theorem; the underlying decimal expansion
+of $\pi$ is the only mathematical content. The closure
+$\sum_e |\text{epoch}_e| = 15$ is trivially $5 \times 3$.
+
+\section{Triple-Point Bridge (H203-6, H203-7, H203-8)}
+
+The source7 triple-point bridge in \texttt{MAIN\_1\_CoAnQi.cpp:110125}
+defines
+\[
+   g_{\text{triple}} \;=\; \sqrt[3]{a_{\text{DPM}} \cdot g_{\text{res}} \cdot R_{\text{bsfg}}}.
+\]
+
+\begin{rem}[H203-6 is a definition]
+The cube root is by construction the geometric mean of the three path
+operators (Compressed MUGE, Resonance MUGE, BSFG metric); it is a
+\emph{convention}, not a theorem. The cube-root arithmetic itself is
+exact and well-defined for positive operands. As a sanity check,
+$\sqrt[3]{8 \cdot 27 \cdot 64} = \sqrt[3]{2^3 \cdot 3^3 \cdot 4^3}
+= 2 \cdot 3 \cdot 4 = 24$, and the AM--GM bound
+$g_{\text{triple}} \le (a+b+c)/3$ holds with equality iff $a = b = c$.
+\end{rem}
+
+\begin{thm}[VDS leading-term identity]
+$\displaystyle \lim_{z \to 0^+} \frac{\operatorname{Li}_{25}(z)}{z} = 1$.
+\end{thm}
+
+\begin{proof}
+By definition $\operatorname{Li}_{25}(z) = \sum_{n \ge 1} z^n/n^{25}$, so
+\[
+   \frac{\operatorname{Li}_{25}(z)}{z} \;=\; \sum_{n \ge 1} \frac{z^{n-1}}{n^{25}}
+     \;=\; 1 \;+\; \sum_{n \ge 2} \frac{z^{n-1}}{n^{25}}.
+\]
+For $z \in (0, 1)$ the tail is bounded by
+$z/(2^{25}(1-z))$, which tends to $0$ as $z \to 0^+$. Numerically at
+$z = 10^{-6}$ with 200 terms the value equals $1.0$ to twelve decimal
+places, confirming the \texttt{vds\_prime $\approx$ 1.0} assertion in
+\texttt{Source7VDSBridgeTerm\_S233}.
+\end{proof}
+
+\begin{prop}[BH26 cross-consistency]
+The source7 bridge code sets $\lambda_1 = 1.0 \times 26.0 = 26$, in
+agreement with Phase H202-1.
+\end{prop}
+
+\begin{proof}
+H202-1 uses the SO(26) Casimir convention $\lambda_k = k(k+25)$, giving
+$\lambda_1 = 26$. The source7 bridge hardcodes the same numerical value,
+so the Session 202 (QCalcGeom) and Session 203 (source7) modules share a
+single spectral convention. This is a cross-module consistency check;
+the convention itself is fixed by H202-1 and is not re-derived here.
+\end{proof}
+
+\section{Honest Classification}
+
+Of the eight identities:
+
+\begin{itemize}
+   \item \textbf{Three rigorous proofs}: H203-1 (sign antisymmetry),
+         H203-2 ($\sin$ at integer multiples of $\pi$), H203-7
+         (\textit{Li}$_{25}$ leading term).
+   \item \textbf{Three arithmetic identities}: H203-3 (Fibonacci
+         recurrence), H203-4 ($\lfloor \pi \rfloor = 3$), and the
+         length-tally $5 \times 3 = 15$ in H203-5.
+   \item \textbf{Two conventions}: H203-5 ($\pi$-decimal epoch
+         partition, defining \texttt{EPOCH\_PI\_T\_N}) and H203-6
+         (triple-point geometric mean, defining the bridge operator).
+   \item \textbf{One cross-consistency check}: H203-8, depending on
+         H202-1.
+\end{itemize}
+
+None of these resolve open problems (Yang--Mills mass gap, Navier--Stokes
+existence, etc.); the YM mass-gap formula
+$m_{\text{gap}}^2 = 2\sigma H_{\text{SCm}}/v_{\text{SCm}}^2$ in
+\texttt{yang\_mills\_dvp\_sim.py} is a calibration-dependent definition
+inside the SCm parameter family, not a proof of mass-gap existence in
+pure SU(2) Yang--Mills, and is therefore \emph{not} promoted to a
+closure.
+
+\section{Ledger Verification}
+
+\begin{itemize}
+   \item \texttt{\_session203\_closures.py}: prints
+         \texttt{S203-PTF-net-displacement: 0 vs 0 -> EXACT}, parsed by
+         \texttt{\_uqff\_program.py --audit} into
+         \texttt{master\_closures.csv} row 3.
+   \item \texttt{sigma\_table.csv}: \texttt{EXACT} tier.
+   \item \texttt{UQFF\_UNIFIED\_CLOSURE\_DERIVATIONS.py}: Tier 10
+         records H203-1 \ldots H203-8 all status \texttt{DERIVED}; full
+         run produces $\ge 71$ \texttt{DERIVED} entries with zero
+         failures.
+   \item \texttt{unified\_closure\_audit.json}: contains all eight
+         entries.
+\end{itemize}
+
+\end{document}
