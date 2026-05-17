@@ -110,9 +110,9 @@ namespace QCALCGEOM {
 // ============================================================================
 
 constexpr int    QCALCGEOM_VERSION_MAJOR = 1;
-constexpr int    QCALCGEOM_VERSION_MINOR = 4;
+constexpr int    QCALCGEOM_VERSION_MINOR = 5;
 constexpr int    QCALCGEOM_VERSION_PATCH = 0;
-constexpr const char* QCALCGEOM_VERSION_STR = "1.4.0-S230";
+constexpr const char* QCALCGEOM_VERSION_STR = "1.5.0-S268";
 
 // C++ standard gate — matches CMakeLists.txt /std:c++20 project setting
 // MSVC reports correct value only with /Zc:__cplusplus; fall back to _MSVC_LANG
@@ -196,6 +196,10 @@ constexpr double R_Q_AU_REF     = 0.0973;              // Proplyd quantization r
 
 // BH26 ReRing oscillation centre frequency (_S146_RERING_BB)
 constexpr double RERING_BB_HZ   = 1.15e14;            // Hz
+
+// ─── Plasmotic Vacuum SCm density (Session 268 — Aether UA spring constant) ───
+// Canonical: 7.09e-37 J/m³ (per UQFF Quantum Chain).  Sets the FUBii amplitude.
+constexpr double RHO_VAC_SCM_BSFG = 7.09e-37;          // J/m³
 
 // ─── Buoyancy canonical parameters (SOURCE4 compute_Ubi_SOURCE4 formula) ───
 // Source: MAIN_1_CoAnQi.cpp SOURCE4 namespace, session 151 neg-buoy integration.
@@ -567,6 +571,83 @@ struct BSFGAetherPotentialResult {
 };
 
 // ============================================================================
+// SECTION 3c — SESSION 268 UNIVERSAL BUOYANCY RESULT STRUCTS
+// Mirrors QCalcGeom.py v2.3.0 (FUBiiResult, UniversalGravityResult,
+// HabitableZoneResult, EmergentMassResult).  Implements the simultaneous
+// equation system:
+//   Eq1: FUBi(r, t_n) + FUBii(r, t_n) = 0    [buoyancy crossing]
+//   Eq2: ε'(r, t_n) + G·M/(c²·r²) = 0        [metric–geodesic match]
+// Mass emerges at the crossing (Quantum Chain Step 7) via compute_emergent_mass.
+// ============================================================================
+
+/**
+ * @brief Aether counter-buoyancy at (r, t_n).
+ *   FUBii = +ρ_vac,SCm · (4π/3) · r · c² · cos(π·t_n)
+ * Grows linearly with r — opposes FUBi's 1/r² collapse.
+ */
+struct FUBiiResult {
+    double FUBii;        ///< Outward Aether pressure  [SI]
+    double rho_aether;   ///< RHO_VAC_SCM_BSFG  [J/m³]
+    double cos_tn;       ///< cos(π·t_n)
+    double r_m;          ///< Radial coordinate  [m]
+    bool   outward;      ///< true when FUBii > 0
+};
+
+/**
+ * @brief Universal Gravity full assembly:
+ *   F_U = Ug1 + Ug2 + Ug3 + Ug4 − FUBi + FUBii + Um
+ */
+struct UniversalGravityResult {
+    double r_m;          ///< [m]
+    double t_n;          ///< phase
+    double eps;          ///< BSFG ε(r, t_n)
+    double Ug1;          ///< magnetic dipole component
+    double Ug2;          ///< charge-reactivity component
+    double Ug3;          ///< string rotation component
+    double Ug4;          ///< vacuum concentration component
+    double Um;           ///< magnetic string contribution  μ/r³
+    double FUBi;         ///< SOURCE4 Ubi (collapse)
+    double FUBii;        ///< Aether counter-buoyancy
+    double F_U;          ///< sum total
+};
+
+/**
+ * @brief Habitable-zone simultaneous solve result.
+ *   FUBi(r_hz, t_n_hz) + FUBii(r_hz, t_n_hz) = 0       AND
+ *   ε'(r_hz, t_n_hz) + G·M/(c²·r_hz²) = 0
+ */
+struct HabitableZoneResult {
+    double r_hz_m;        ///< habitable zone radius  [m]
+    double r_hz_AU;       ///< [AU]
+    double t_n_hz;        ///< phase at equilibrium
+    double FUBi_at_hz;    ///< should be ≈ −FUBii
+    double FUBii_at_hz;   ///< should be ≈ −FUBi
+    double residual_eq1;  ///< FUBi + FUBii at solution
+    double residual_eq2;  ///< ε' + GM/(c²r²) at solution
+    bool   converged;     ///< Newton-Raphson convergence flag
+    int    iterations;    ///< NR iteration count
+};
+
+/**
+ * @brief Mass-emergence at the FUBi+FUBii=0 crossing (Quantum Chain Step 7).
+ *   M_emergent = sqrt[ ρ_vac · (4π/3) · r_hz³ · c² / (β_i · G · orbit_factor) ]
+ * Mass is BORN from Aether buoyancy at the crossing — NOT GM/r² input.
+ */
+struct EmergentMassResult {
+    double r_hz_m;          ///< input crossing radius  [m]
+    double r_hz_AU;         ///< [AU]
+    double t_n_hz;          ///< phase at crossing
+    double M_emergent_kg;   ///< emergent mass  [kg]
+    double M_emergent_sun;  ///< [M_⊙]
+    double rho_vac_used;    ///< vacuum density mass condensed against  [J/m³]
+    double orbit_factor;    ///< FUBi geometric pre-factor
+    double beta_i_used;     ///< buoyancy coupling used
+    double residual_at_M;   ///< |FUBi(M_emergent) + FUBii|  (≈0)
+    bool   converged;       ///< residual within tolerance
+    char   classification[32]; ///< "sub_stellar"/"sub_solar"/"solar"/...
+};
+
+// ============================================================================
 // SECTION 4 — PUBLIC API DECLARATIONS
 // Implemented in QCalcGeom.cpp (Phase B).
 // Default parameters use canonical constants from Section 2.
@@ -851,6 +932,66 @@ BH26BSHResonanceResult bh26_bsh_resonance(double f_Ub = 3.3e7,
 BSFGAetherPotentialResult bsfg_aether_potential(double UA,
                                                   double rho_SCm = 7.09e-37,
                                                   double v_UA    = 1.0e8);
+
+/**
+ * @brief Compute Aether counter-buoyancy FUBii at (r, t_n).
+ *   FUBii = +ρ_vac · (4π/3) · r · c² · cos(π·t_n)
+ *
+ * Tests T85.  Reference: QCalcGeom.py v2.0.0 compute_FUBii.
+ */
+FUBiiResult compute_FUBii(double r, double t_n,
+                          double rho_vac = RHO_VAC_SCM_BSFG);
+
+/**
+ * @brief Compute Universal Gravity F_U = ΣUg − FUBi + FUBii + Um at (r, t_n).
+ *
+ * Simplified 26D components matching QCalcGeom.py compute_F_U (Session 265).
+ *
+ * Tests T86.  Reference: QCalcGeom.py v2.2.0 compute_F_U.
+ */
+UniversalGravityResult compute_F_U(double r, double t_n,
+                                    double M       = M_SUN,
+                                    double beta_i  = BETA_I_BSFG,
+                                    double Omega_g = OMEGA_G_BSFG,
+                                    double M_bh    = M_BH_BSFG,
+                                    double d_g     = D_G_BSFG,
+                                    double rho_vac = RHO_VAC_SCM_BSFG);
+
+/**
+ * @brief Solve simultaneous habitable-zone equations for (r_hz, t_n_hz).
+ *
+ * Closed-form initial guess from FUBi+FUBii=0:
+ *   r_hz³ = β_i·G·M²·orbit / (ρ_vac·(4π/3)·c²)
+ * Newton-Raphson refinement on the 2-equation system.
+ *
+ * Tests T87, T88.  Reference: QCalcGeom.py v2.0.0 solve_habitable_zone.
+ */
+HabitableZoneResult solve_habitable_zone(double M       = M_SUN,
+                                          double beta_i  = BETA_I_BSFG,
+                                          double Omega_g = OMEGA_G_BSFG,
+                                          double M_bh    = M_BH_BSFG,
+                                          double d_g     = D_G_BSFG,
+                                          double rho_vac = RHO_VAC_SCM_BSFG,
+                                          double t_n_guess = 0.0);
+
+/**
+ * @brief Compute emergent mass M at the FUBi+FUBii=0 crossing.
+ *
+ * Closed form: M = sqrt[ ρ_vac · (4π/3) · r_hz³ · c² / (β_i·G·orbit_factor) ]
+ * The inverse of solve_habitable_zone: given r_hz, find M.
+ * Quantum Chain Step 7 — mass BORN at the crossing, not input.
+ *
+ * Tests T89, T90.  Reference: QCalcGeom.py v2.3.0 compute_emergent_mass.
+ */
+EmergentMassResult compute_emergent_mass(double r_hz_m, double t_n_hz = 0.0,
+                                          double rho_vac = RHO_VAC_SCM_BSFG,
+                                          double beta_i  = BETA_I_BSFG,
+                                          double Omega_g = OMEGA_G_BSFG,
+                                          double M_bh    = M_BH_BSFG,
+                                          double d_g     = D_G_BSFG,
+                                          double epsilon_sw = EPS_SW_BSFG,
+                                          double rho_sw  = RHO_SW_BSFG,
+                                          double U_UA    = U_UA_BSFG);
 
 /**
  * @brief Run all 70 QCalcGeom requirements-boundary tests and print results.

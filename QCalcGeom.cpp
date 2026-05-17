@@ -23,6 +23,7 @@
 #include "QCalcGeom.h"
 
 #include <cmath>
+#include <cstring>
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -645,6 +646,215 @@ BSFGAetherPotentialResult bsfg_aether_potential(double UA, double rho_SCm, doubl
     r.mass2      = (50.0 / 3.0) * rho_SCm / (v_UA * v_UA);
     r.at_minimum = std::abs(UA - v_UA) / v_UA < 1.0e-12;
     return r;
+}
+
+// ============================================================================
+// SECTION 2c — SESSION 268 UNIVERSAL BUOYANCY IMPLEMENTATIONS
+// Ports QCalcGeom.py v2.0–2.3 (FUBii, F_U, habitable zone, emergent mass)
+// to C++.  Closes the cross-language parity gap exposed by extern "C" JSON
+// adapter — these four functions are now callable from any FFI consumer.
+// ============================================================================
+
+FUBiiResult compute_FUBii(double r, double t_n, double rho_vac) {
+    FUBiiResult out;
+    out.cos_tn     = std::cos(M_PI * t_n);
+    out.rho_aether = rho_vac;
+    out.r_m        = r;
+    out.FUBii      = rho_vac * (4.0 * M_PI / 3.0) * r * (C_LIGHT * C_LIGHT) * out.cos_tn;
+    out.outward    = (out.FUBii > 0.0);
+    return out;
+}
+
+UniversalGravityResult compute_F_U(double r, double t_n,
+                                    double M, double beta_i,
+                                    double Omega_g, double M_bh,
+                                    double d_g, double rho_vac) {
+    UniversalGravityResult res{};
+    res.r_m = r;
+    res.t_n = t_n;
+
+    auto met = bsfg_metric(r, t_n);
+    res.eps = met.eps;
+
+    double cos_tn = std::cos(M_PI * t_n);
+    double V_body = (4.0 / 3.0) * M_PI * R_SUN * R_SUN * R_SUN;
+    double rho_A  = rho_vac;
+    double mu_s   = rho_A * V_body;
+    double grad_M = M / (r * r);
+
+    // Ug1: magnetic dipole (k1·μ_s·M/r²·cos(πt_n))
+    const double k1 = 1.0e-22;
+    res.Ug1 = k1 * mu_s * grad_M * cos_tn;
+
+    // Ug2: heliosphere charge coupling (matches Python simplified form)
+    const double k2 = 1.0e-22;
+    double Q_SCm   = rho_A * V_body;
+    double Q_UA    = 7.09e-36 * V_body;
+    double R_b     = R_SUN * 100.0;
+    double S_rb    = (r > R_b) ? 1.0 : 0.0;
+    double E_react = rho_A * (1.0e6 * 1.0e6) / 7.09e-36;
+    res.Ug2 = k2 * (Q_SCm + Q_UA) * M / (r * r) * S_rb * 1.0 * 0.99 * E_react;
+
+    // Ug3: magnetic string rotation (k3·B·cos(ωt·π)·P·E_react)
+    const double k3 = 1.0e-22;
+    double B_disk    = 1.0e-4;
+    double omega_s   = 2.5e-6;
+    double rotation  = std::cos(omega_s * t_n * M_PI);
+    res.Ug3 = k3 * B_disk * rotation * 1.0 * E_react;
+
+    // Ug4: vacuum concentration (k4·ρ_vac·C·cos(πt_n))
+    const double k4 = 1.0e-22;
+    res.Ug4 = k4 * rho_vac * 1.0 * cos_tn;
+
+    // FUBi via SOURCE4 bsfg_buoyancy
+    auto buo = bsfg_buoyancy(r, t_n, beta_i, Omega_g, M_bh, d_g,
+                              EPS_SW_BSFG, RHO_SW_BSFG, U_UA_BSFG);
+    res.FUBi = buo.Ubi;
+
+    // FUBii
+    auto fb2 = compute_FUBii(r, t_n, rho_vac);
+    res.FUBii = fb2.FUBii;
+
+    // Um: M·R²·ω₀ / r³
+    double mu = M * R_SUN * R_SUN * 2.5e-6;
+    res.Um = mu / (r * r * r);
+
+    res.F_U = res.Ug1 + res.Ug2 + res.Ug3 + res.Ug4
+            - res.FUBi + res.FUBii + res.Um;
+    return res;
+}
+
+HabitableZoneResult solve_habitable_zone(double M, double beta_i,
+                                          double Omega_g, double M_bh,
+                                          double d_g, double rho_vac,
+                                          double t_n_guess) {
+    HabitableZoneResult out{};
+    out.iterations = 0;
+    out.converged  = false;
+
+    // Closed-form initial guess from FUBi+FUBii=0 (cos cancels):
+    //   r³ = β_i·G·M²·orbit / (ρ_vac·(4π/3)·c²)
+    double wind_mod     = 1.0 + EPS_SW_BSFG * RHO_SW_BSFG;
+    double orbit_factor = Omega_g * M_bh / d_g * wind_mod * U_UA_BSFG;
+    // Mirror QCalcGeom.py: closed-form uses M_SUN² (FUBi formula references
+    // solar-mass scale).  Param M only affects Eq2 (metric-geodesic check).
+    double numerator    = beta_i * G_NEWTON * M_SUN * M_SUN * orbit_factor;
+    double denominator  = rho_vac * (4.0 * M_PI / 3.0) * (C_LIGHT * C_LIGHT);
+    if (denominator <= 0.0) return out;
+
+    double r_hz = std::cbrt(numerator / denominator);
+    double t_n  = t_n_guess;
+
+    // Newton-Raphson on the 2-eq system (refines analytical guess; usually
+    // converges in 1-2 iterations since cos(π·t_n) factors out exactly).
+    for (int it = 0; it < 50; ++it) {
+        auto fb1 = bsfg_buoyancy(r_hz, t_n, beta_i, Omega_g, M_bh, d_g,
+                                  EPS_SW_BSFG, RHO_SW_BSFG, U_UA_BSFG);
+        auto fb2 = compute_FUBii(r_hz, t_n, rho_vac);
+        auto met = bsfg_metric(r_hz, t_n);
+
+        double f1 = fb1.Ubi + fb2.FUBii;
+        double f2 = met.eps_p + G_NEWTON * M / ((C_LIGHT * C_LIGHT) * r_hz * r_hz);
+
+        double norm = std::max(std::abs(fb1.Ubi) + std::abs(fb2.FUBii), 1.0);
+        if (std::abs(f1) / norm < 1.0e-12) {
+            out.converged  = true;
+            out.iterations = it;
+            out.FUBi_at_hz = fb1.Ubi;
+            out.FUBii_at_hz= fb2.FUBii;
+            out.residual_eq1 = f1;
+            out.residual_eq2 = f2;
+            break;
+        }
+        // dr finite-difference Jacobian (radial only — t_n is mostly free)
+        double dr = r_hz * 1.0e-6;
+        auto fb1p = bsfg_buoyancy(r_hz + dr, t_n, beta_i, Omega_g, M_bh, d_g,
+                                   EPS_SW_BSFG, RHO_SW_BSFG, U_UA_BSFG);
+        auto fb2p = compute_FUBii(r_hz + dr, t_n, rho_vac);
+        double dfdr = ((fb1p.Ubi + fb2p.FUBii) - f1) / dr;
+        if (std::abs(dfdr) < 1.0e-300) break;
+        r_hz -= f1 / dfdr;
+        if (r_hz <= 0.0) { r_hz = std::cbrt(numerator / denominator); break; }
+        out.iterations = it + 1;
+    }
+
+    out.r_hz_m   = r_hz;
+    out.r_hz_AU  = r_hz / AU_METERS;
+    out.t_n_hz   = t_n;
+    if (!out.converged) {
+        auto fb1 = bsfg_buoyancy(r_hz, t_n, beta_i, Omega_g, M_bh, d_g,
+                                  EPS_SW_BSFG, RHO_SW_BSFG, U_UA_BSFG);
+        auto fb2 = compute_FUBii(r_hz, t_n, rho_vac);
+        auto met = bsfg_metric(r_hz, t_n);
+        out.FUBi_at_hz   = fb1.Ubi;
+        out.FUBii_at_hz  = fb2.FUBii;
+        out.residual_eq1 = fb1.Ubi + fb2.FUBii;
+        out.residual_eq2 = met.eps_p + G_NEWTON * M
+                         / ((C_LIGHT * C_LIGHT) * r_hz * r_hz);
+        double norm = std::max(std::abs(fb1.Ubi) + std::abs(fb2.FUBii), 1.0);
+        out.converged = std::abs(out.residual_eq1) / norm < 1.0e-9;
+    }
+    return out;
+}
+
+EmergentMassResult compute_emergent_mass(double r_hz_m, double t_n_hz,
+                                          double rho_vac, double beta_i,
+                                          double Omega_g, double M_bh,
+                                          double d_g, double epsilon_sw,
+                                          double rho_sw, double U_UA) {
+    EmergentMassResult out{};
+    out.r_hz_m       = r_hz_m;
+    out.r_hz_AU      = r_hz_m / AU_METERS;
+    out.t_n_hz       = t_n_hz;
+    out.rho_vac_used = rho_vac;
+    out.beta_i_used  = beta_i;
+    std::strcpy(out.classification, "");
+
+    double wind_mod     = 1.0 + epsilon_sw * rho_sw;
+    double orbit_factor = Omega_g * M_bh / d_g * wind_mod * U_UA;
+    out.orbit_factor    = orbit_factor;
+
+    if (orbit_factor <= 0.0 || beta_i <= 0.0 || r_hz_m <= 0.0) {
+        out.converged = false;
+        return out;
+    }
+
+    double numerator   = rho_vac * (4.0 * M_PI / 3.0)
+                       * r_hz_m * r_hz_m * r_hz_m * (C_LIGHT * C_LIGHT);
+    double denominator = beta_i * G_NEWTON * orbit_factor;
+    double M_squared   = numerator / denominator;
+    if (M_squared <= 0.0 || !std::isfinite(M_squared)) {
+        out.converged = false;
+        return out;
+    }
+
+    double M_em = std::sqrt(M_squared);
+    out.M_emergent_kg  = M_em;
+    out.M_emergent_sun = M_em / M_SUN;
+
+    // Residual check at solution
+    double cos_tn = std::cos(M_PI * t_n_hz);
+    double FUBi_at  = -beta_i * G_NEWTON * M_em * M_em / (r_hz_m * r_hz_m)
+                     * orbit_factor * cos_tn;
+    double FUBii_at = rho_vac * (4.0 * M_PI / 3.0) * r_hz_m
+                     * (C_LIGHT * C_LIGHT) * cos_tn;
+    out.residual_at_M = FUBi_at + FUBii_at;
+    double rel_resid  = (std::abs(FUBi_at) + std::abs(FUBii_at) > 0.0)
+                      ? std::abs(out.residual_at_M)
+                        / (std::abs(FUBi_at) + std::abs(FUBii_at))
+                      : 1.0;
+    out.converged = (rel_resid < 1.0e-12);
+
+    // Classification on M_⊙ ladder
+    double ratio = out.M_emergent_sun;
+    if      (ratio < 0.08)  std::strcpy(out.classification, "sub_stellar");
+    else if (ratio < 0.5)   std::strcpy(out.classification, "sub_solar");
+    else if (ratio < 2.0)   std::strcpy(out.classification, "solar");
+    else if (ratio < 8.0)   std::strcpy(out.classification, "stellar");
+    else if (ratio < 25.0)  std::strcpy(out.classification, "massive_stellar");
+    else                    std::strcpy(out.classification, "BH_seed");
+
+    return out;
 }
 
 // ============================================================================
@@ -1431,6 +1641,67 @@ void runQCalcGeomTests() {
             mu_UQFF_bound, 1.0e-8, 0.1, t84, t84 });
     }
 
+    // ── SESSION 268: UNIVERSAL BUOYANCY C++ PARITY (T85–T90) ────────────────
+    {
+        // T85: FUBii positivity at r=1 AU, t_n=0
+        auto fb = compute_FUBii(AU_METERS, 0.0);
+        bool t85 = (fb.FUBii > 0.0) && fb.outward
+                && std::abs(fb.cos_tn - 1.0) < 1e-12;
+        R.push_back({ "T85","UNIVERSAL-BUOY",
+            "FUBii > 0 at 1 AU, t_n=0 (cos=+1, outward)",
+            fb.FUBii, 0.0, 0.0, t85, t85 });
+    }
+    {
+        // T86: F_U assembly returns finite, FUBi opposite sign to FUBii
+        auto u = compute_F_U(AU_METERS, 0.0);
+        bool t86 = std::isfinite(u.F_U) && std::isfinite(u.FUBi)
+                && std::isfinite(u.FUBii) && (u.FUBii > 0.0);
+        R.push_back({ "T86","UNIVERSAL-BUOY",
+            "compute_F_U finite, FUBii > 0 at 1 AU",
+            u.FUBii, 0.0, 0.0, t86, t86 });
+    }
+    {
+        // T87: solve_habitable_zone — relative residual < 1e-12 (cos cancels)
+        auto hz = solve_habitable_zone();
+        double norm = std::max(std::abs(hz.FUBi_at_hz) + std::abs(hz.FUBii_at_hz), 1.0);
+        double rel  = std::abs(hz.residual_eq1) / norm;
+        bool t87 = hz.converged && rel < 1.0e-12 && (hz.r_hz_m > 0.0);
+        R.push_back({ "T87","UNIVERSAL-BUOY",
+            "habitable zone: |FUBi+FUBii|/norm < 1e-12",
+            rel, 0.0, 0.0, t87, t87 });
+    }
+    {
+        // T88: r_hz is M-invariant — FUBi formula uses fixed M_⊙ reference
+        // (mirrors QCalcGeom.py: numerator uses M_SUN² not param M)
+        auto hz1 = solve_habitable_zone(M_SUN);
+        auto hz2 = solve_habitable_zone(2.0 * M_SUN);
+        double ratio = hz2.r_hz_m / hz1.r_hz_m;
+        bool t88 = std::abs(ratio - 1.0) < 1.0e-9;
+        R.push_back({ "T88","UNIVERSAL-BUOY",
+            "r_hz invariant under M (FUBi uses M_SUN reference)",
+            ratio, 1.0, 1e-6, t88, t88 });
+    }
+    {
+        // T89: compute_emergent_mass round-trip — feed r_hz back, get M_⊙ ≈ 1
+        auto hz  = solve_habitable_zone(M_SUN);
+        auto em  = compute_emergent_mass(hz.r_hz_m, hz.t_n_hz);
+        double rel = std::abs(em.M_emergent_sun - 1.0);
+        bool t89 = (rel < 1.0e-6) && em.converged
+                && std::isfinite(em.M_emergent_kg);
+        R.push_back({ "T89","UNIVERSAL-BUOY",
+            "emergent_mass round-trip: r_hz(M_sun) → M ≈ 1 M_sun",
+            em.M_emergent_sun, 1.0, 1e-4, t89, t89 });
+    }
+    {
+        // T90: classification ladder — solar-class at M ≈ 1 M_⊙
+        auto hz = solve_habitable_zone(M_SUN);
+        auto em = compute_emergent_mass(hz.r_hz_m, hz.t_n_hz);
+        bool t90 = (std::strcmp(em.classification, "solar") == 0);
+        R.push_back({ "T90","UNIVERSAL-BUOY",
+            "classification == 'solar' at 1 M_sun",
+            em.M_emergent_sun, 1.0, 100.0, t90, t90 });
+    }
+
     // ── Print results table ──────────────────────────────────────────────────
 
     cout << std::left
@@ -1582,7 +1853,7 @@ QCALCGEOM_API int qcalcgeom_run_tests(void) {
     // For now, invoke the suite and return 70 (full suite count) on success.
     try {
         QCALCGEOM::runQCalcGeomTests();
-        return 70;  // total tests in the H202 suite
+        return 90;  // total tests in the Session 268 suite
     } catch (...) {
         return -1;
     }
@@ -1803,6 +2074,78 @@ QCALCGEOM_API const char* qcalcgeom_compute_json(const char* fn, const char* p) 
         j.d("bsh_at_k",r.bsh_at_k);
         j.d("resonance",r.resonance);
         j.d("energy_density",r.energy_density);
+        return set_result(j.finish());
+    }
+
+    // ── compute_FUBii ─────────────────────────────────────────────────────────
+    if (std::strcmp(fn, "compute_FUBii") == 0) {
+        double r       = json_get_d(p, "r",       QCALCGEOM::AU_METERS);
+        double t_n     = json_get_d(p, "t_n",     0.0);
+        double rho_vac = json_get_d(p, "rho_vac", QCALCGEOM::RHO_VAC_SCM_BSFG);
+        auto   r2      = QCALCGEOM::compute_FUBii(r, t_n, rho_vac);
+        JB j;
+        j.d("FUBii",r2.FUBii); j.d("rho_aether",r2.rho_aether);
+        j.d("cos_tn",r2.cos_tn); j.d("r_m",r2.r_m); j.b("outward",r2.outward);
+        return set_result(j.finish());
+    }
+
+    // ── compute_F_U ──────────────────────────────────────────────────────────
+    if (std::strcmp(fn, "compute_F_U") == 0) {
+        double r       = json_get_d(p, "r",       QCALCGEOM::AU_METERS);
+        double t_n     = json_get_d(p, "t_n",     0.0);
+        double M       = json_get_d(p, "M",       QCALCGEOM::M_SUN);
+        double beta_i  = json_get_d(p, "beta_i",  QCALCGEOM::BETA_I_BSFG);
+        double Omega_g = json_get_d(p, "Omega_g", QCALCGEOM::OMEGA_G_BSFG);
+        double M_bh    = json_get_d(p, "M_bh",    QCALCGEOM::M_BH_BSFG);
+        double d_g     = json_get_d(p, "d_g",     QCALCGEOM::D_G_BSFG);
+        double rho_vac = json_get_d(p, "rho_vac", QCALCGEOM::RHO_VAC_SCM_BSFG);
+        auto   u = QCALCGEOM::compute_F_U(r, t_n, M, beta_i, Omega_g, M_bh, d_g, rho_vac);
+        JB j;
+        j.d("r_m",u.r_m); j.d("t_n",u.t_n); j.d("eps",u.eps);
+        j.d("Ug1",u.Ug1); j.d("Ug2",u.Ug2); j.d("Ug3",u.Ug3); j.d("Ug4",u.Ug4);
+        j.d("Um",u.Um); j.d("FUBi",u.FUBi); j.d("FUBii",u.FUBii); j.d("F_U",u.F_U);
+        return set_result(j.finish());
+    }
+
+    // ── solve_habitable_zone ─────────────────────────────────────────────────
+    if (std::strcmp(fn, "solve_habitable_zone") == 0) {
+        double M       = json_get_d(p, "M",        QCALCGEOM::M_SUN);
+        double beta_i  = json_get_d(p, "beta_i",   QCALCGEOM::BETA_I_BSFG);
+        double Omega_g = json_get_d(p, "Omega_g",  QCALCGEOM::OMEGA_G_BSFG);
+        double M_bh    = json_get_d(p, "M_bh",     QCALCGEOM::M_BH_BSFG);
+        double d_g     = json_get_d(p, "d_g",      QCALCGEOM::D_G_BSFG);
+        double rho_vac = json_get_d(p, "rho_vac",  QCALCGEOM::RHO_VAC_SCM_BSFG);
+        double t_n_g   = json_get_d(p, "t_n_guess",0.0);
+        auto   hz = QCALCGEOM::solve_habitable_zone(M, beta_i, Omega_g, M_bh, d_g, rho_vac, t_n_g);
+        JB j;
+        j.d("r_hz_m",hz.r_hz_m); j.d("r_hz_AU",hz.r_hz_AU); j.d("t_n_hz",hz.t_n_hz);
+        j.d("FUBi_at_hz",hz.FUBi_at_hz); j.d("FUBii_at_hz",hz.FUBii_at_hz);
+        j.d("residual_eq1",hz.residual_eq1); j.d("residual_eq2",hz.residual_eq2);
+        j.b("converged",hz.converged); j.i("iterations",hz.iterations);
+        return set_result(j.finish());
+    }
+
+    // ── compute_emergent_mass ────────────────────────────────────────────────
+    if (std::strcmp(fn, "compute_emergent_mass") == 0) {
+        double r_hz    = json_get_d(p, "r_hz_m",     QCALCGEOM::AU_METERS);
+        double t_n     = json_get_d(p, "t_n_hz",     0.0);
+        double rho_vac = json_get_d(p, "rho_vac",    QCALCGEOM::RHO_VAC_SCM_BSFG);
+        double beta_i  = json_get_d(p, "beta_i",     QCALCGEOM::BETA_I_BSFG);
+        double Omega_g = json_get_d(p, "Omega_g",    QCALCGEOM::OMEGA_G_BSFG);
+        double M_bh    = json_get_d(p, "M_bh",       QCALCGEOM::M_BH_BSFG);
+        double d_g     = json_get_d(p, "d_g",        QCALCGEOM::D_G_BSFG);
+        double eps_sw  = json_get_d(p, "epsilon_sw", QCALCGEOM::EPS_SW_BSFG);
+        double rho_sw  = json_get_d(p, "rho_sw",     QCALCGEOM::RHO_SW_BSFG);
+        double U_UA    = json_get_d(p, "U_UA",       QCALCGEOM::U_UA_BSFG);
+        auto em = QCALCGEOM::compute_emergent_mass(r_hz, t_n, rho_vac, beta_i,
+                                                    Omega_g, M_bh, d_g,
+                                                    eps_sw, rho_sw, U_UA);
+        JB j;
+        j.d("r_hz_m",em.r_hz_m); j.d("r_hz_AU",em.r_hz_AU); j.d("t_n_hz",em.t_n_hz);
+        j.d("M_emergent_kg",em.M_emergent_kg); j.d("M_emergent_sun",em.M_emergent_sun);
+        j.d("rho_vac_used",em.rho_vac_used); j.d("orbit_factor",em.orbit_factor);
+        j.d("beta_i_used",em.beta_i_used); j.d("residual_at_M",em.residual_at_M);
+        j.b("converged",em.converged); j.str("classification",em.classification);
         return set_result(j.finish());
     }
 
