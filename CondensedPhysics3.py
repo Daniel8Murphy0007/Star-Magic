@@ -144,6 +144,16 @@ except ImportError:
     SESSION_282_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session283_gw190425_bayesian import (  # noqa: F401
+        GW190425MassGapPosteriorCalculator,
+        gw190425_mass_gap_posterior,
+        component_masses_from_chirp,
+        SESSION_283_CALCULATORS,
+    )
+except ImportError:
+    SESSION_283_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
