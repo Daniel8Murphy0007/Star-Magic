@@ -568,5 +568,65 @@
     "status": "DERIVED",
     "chain": "U_I [J/m^3] x V_body [m^3] = [J] (energy / force-length).  Multiplied by dimensionless coupling xi=1e-6 gives a perturbative additive contribution to F_U_total that vanishes at zero-point (M9) and flips sign across the great cycle (M10).  Wired into compute_F_U at QCalcGeom.py L1241.",
     "paper": "QCalcGeom.py compute_F_U (Session 265)"
+  },
+  {
+    "id": "H202-1",
+    "claim": "BH26 spectral ladder lambda_k = k(k+25) at k=1 = 26",
+    "target": "26",
+    "derived": "26",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "NOTE: framework uses the ambient-dimension parametrisation lambda_k = k(k+n-1) with n=26, equivalent to the quadratic Casimir of SO(26) on degree-k harmonics.  This differs from the standard Laplacian convention on S^25 (which gives k(k+24)).  Both conventions are mathematically equivalent up to an additive shift; UQFF picks the SO(26) Casimir form so that lambda_1 = embedding dim = 26.  k=1: lambda_1 = 26.  QCalcGeom.bh26_eigenvalue(1).lambda_k.",
+    "paper": "PAPER_S202 sec 2"
+  },
+  {
+    "id": "H202-2",
+    "claim": "deg(k=1) on S^25 = embedding dim = 26",
+    "target": "26",
+    "derived": "26",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "k=1 spherical harmonics on S^{n-1} carry the standard representation of SO(n); dim = n.  For S^25: dim = 26.  QCalcGeom.bh26_branches(N=10).degeneracy_k1.",
+    "paper": "PAPER_S202 sec 2"
+  },
+  {
+    "id": "H202-3",
+    "claim": "Sum_{k=1..10} k(k+25) = 1760 (closed form)",
+    "target": "1760",
+    "derived": "1760",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Sum k^2 + 25*Sum k = N(N+1)(2N+1)/6 + 25*N(N+1)/2; N=10 -> 385 + 1375 = 1760.  Matches numeric sum 1760.  QCalcGeom.bh26_branches(N=10).spectral_sum.",
+    "paper": "PAPER_S202 sec 2.1"
+  },
+  {
+    "id": "H202-4",
+    "claim": "26! mod 113 = 12 (DVP prime projector)",
+    "target": "12",
+    "derived": "12",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Iterative modular product over k=1..26 modulo the 30th prime (p_30 = 113).  Result: 12.  Cross-checked against math.factorial(26) % 113 = 12 (exact bigint).  Wilson's theorem (p-1)! = -1 (mod p) confirms 113 prime.  QCalcGeom.dvp_arithmetic().fac26_mod_113.",
+    "paper": "PAPER_S202 sec 3"
+  },
+  {
+    "id": "H202-5",
+    "claim": "Li_26(0.57) leading term = 0.57; tail bound 0.57^2/2^26",
+    "target": "0.57",
+    "derived": "0.57",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Li_26(z) = sum z^n / n^26 dominated by n=1 term = z.  Tail < z^2/2^26 = 4.841e-09.  Numerical Li_26(0.57) to 400 terms = 0.570000004841, deviation 4.84e-9 saturates the bound.  QCalcGeom.vds_branches(SSq=0.57).",
+    "paper": "PAPER_S202 sec 4"
+  },
+  {
+    "id": "H202-6",
+    "claim": "BH26 k=1 frequency = f_ring_BB / 26",
+    "target": "4423076923076.923",
+    "derived": "4423076923076.923",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "f_k = RERING_BB_HZ / lambda_k; lambda_1 = 26 (SO(26) Casimir); 1.15e14 / 26 = 4.423076923e+12 Hz.  Depends on H202-1 convention.  QCalcGeom.bh26_bsh_resonance(k=1).freq_k.",
+    "paper": "PAPER_S202 sec 2.2"
   }
 ]

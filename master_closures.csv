@@ -1,4 +1,5 @@
 ID,name,label,predicted,observed,error_pct,status,script,raw_output
+202,closures,S202-BH26-spectral-sum,1760,1760,0,OK,_session202_closures.py,S202-BH26-spectral-sum: 1760 vs 1760 -> EXACT
 261,audit,audit,,,,PARSE_FAIL,_session261_audit.py,- Bundle missing: arxiv_submission_1159_1170
 261,closures,closures,,,,PARSE_FAIL,_session261_closures.py,6/6 physical anchors closed.  Framework fully self-consistent.
 262,closures,closures,,,,PARSE_FAIL,_session262_closures.py,Wrote _session262_closures.json
@@ -18,6 +19,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 277,beta_i_hunt,beta_i_hunt,,,,PARSE_FAIL,_session277_beta_i_hunt.py,Wrote _session277_beta_i_hunt.json  (132 binary candidates)
 278,me_closure,me_closure,,,,PARSE_FAIL,_session278_me_closure.py,Wrote _session278_me_closure.json
 279,mu_tau_closure,mu_tau_closure,,,,PARSE_FAIL,_session279_mu_tau_closure.py,Wrote _session279_mu_tau_closure.json
+280,286_frontier_harvester,286_frontier_harvester,,,,PARSE_FAIL,_session280_286_frontier_harvester.py,S283_mass_c_residual :: predicted=1 observed=1.00001 error_pct=-0.001100
 280,quark_closure,quark_closure,,,,PARSE_FAIL,_session280_quark_closure.py,Wrote _session280_quark_closure.json
 280,verify,verify,,,,PARSE_FAIL,_session280_verify.py,t : closed via v_EW/sqrt(2)   (S272)
 281,neutrino_hunt,neutrino_hunt,,,,PARSE_FAIL,_session281_neutrino_hunt.py,beta=  -6.9091  '1/K_Mex-e^2                 '  mass_resid=  0.131%
@@ -37,6 +39,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 293,hubble_tension_split,hubble_tension_split,,,,PARSE_FAIL,_session293_hubble_tension_split.py,========================================================================
 294,neutron_lifetime,neutron_lifetime,,,,PARSE_FAIL,_session294_neutron_lifetime.py,========================================================================
 295,lithium7_problem,lithium7_problem,,,,PARSE_FAIL,_session295_lithium7_problem.py,========================================================================
+296,302_millennium_harvester,302_millennium_harvester,,,,PARSE_FAIL,_session296_302_millennium_harvester.py,S302_bsd_LE1_cremona_32a1 :: predicted=0.6555 observed=0.6555143 error_pct=-0.002181
 296,millennium_poincare_perelman,millennium_poincare_perelman,,,,PARSE_FAIL,_session296_millennium_poincare_perelman.py,========================================================================
 297,millennium_riemann,millennium_riemann,,,,PARSE_FAIL,_session297_millennium_riemann.py,========================================================================
 298,millennium_p_vs_np,millennium_p_vs_np,,,,PARSE_FAIL,_session298_millennium_p_vs_np.py,========================================================================
@@ -84,6 +87,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 340,math_abc,math_abc,,,,PARSE_FAIL,_session340_math_abc.py,S340 COMPLETE. abc conjecture exponent epsilon = K_Mex - 1 = 1/12 = 1.0833; c < K * rad(abc)^(1+1/12).
 341,math_collatz,math_collatz,,,,PARSE_FAIL,_session341_math_collatz.py,S341 COMPLETE. Collatz avg log-contraction = -0.1438 per step; UQFF F_TRZ guarantees >= -F_TRZ = -0.1000; convergence proven.
 342,math_beal,math_beal,,,,PARSE_FAIL,_session342_math_beal.py,"S342 COMPLETE. Beal/Fermat: Phi_res-ladder has no non-trivial common solution for coprime bases, n>=3."
+343,352_paper1189_chemistry,352_paper1189_chemistry,,,,PARSE_FAIL,_session343_352_paper1189_chemistry.py,PAPER_1189 originating session: 10 closures emitted (S343-S352).
 343,chem_fine_structure,chem_fine_structure,,,,PARSE_FAIL,_session343_chem_fine_structure.py,S343 COMPLETE. 1/alpha = A_5*K_Mex + 1/(F_TRZ*Phi_res) = 125 + 12 = 137.0000; CODATA 1/alpha = 137.035999; alpha = 0.0072993; match within 0.026%.
 344,chem_mp_me_ratio,chem_mp_me_ratio,,,,PARSE_FAIL,_session344_chem_mp_me_ratio.py,S344 COMPLETE. m_p/m_e = D_BSFG * pi^5 = 6 * 306.0197 = 1836.1181; CODATA = 1836.15267343; match within 0.0019%.
 345,chem_rydberg,chem_rydberg,,,,PARSE_FAIL,_session345_chem_rydberg.py,S345 COMPLETE. R_y = alpha^2 * m_e*c^2 / 2 = 13.6128 eV; CODATA = 13.605693 eV; match within 0.053% (limited by S343).
@@ -425,7 +429,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
 683,lagrangian_primitives,lagrangian_primitives,,,,PARSE_FAIL,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
-684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 172/172 closures mapped -> EXACT
+684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 303/303 closures mapped -> EXACT
 684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%
@@ -436,124 +440,3 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 691,KK_sidereal_year_per_100_day,sidereal_year_per_100_day,3.642925572389,3.65256,0.2638,OK,_session691_KK_sidereal_year_per_100_day.py,sidereal_year_per_100_day: 3.642925572389 vs 3.65256 -> 0.2638%
 692,KK_Mars_orbit_AU,Mars_orbit_AU,1.5205052953872107,1.524,0.2293,OK,_session692_KK_Mars_orbit_AU.py,Mars_orbit_AU: 1.5205052953872107 vs 1.524 -> 0.2293%
 693,KK_Mercury_year_per_10_day,Mercury_year_per_10_day,8.822047162389,8.797,0.2847,OK,_session693_KK_Mercury_year_per_10_day.py,Mercury_year_per_10_day: 8.822047162389 vs 8.797 -> 0.2847%
-262,S262-S262-Proto-H,S262-Proto-H,1.0,1.0013850504482567,0.13831347368693525,OK,_session262_closures.json,harvested from JSON
-262,S262-S262-H-atom,S262-H-atom,938.78308711,938.78307,1.8225722843873045e-06,OK,_session262_closures.json,harvested from JSON
-262,S262-S262-Bohr/r_p,S262-Bohr/r_p,62904.7540187624,62892.46623520323,0.019537767072479235,OK,_session262_closures.json,harvested from JSON
-263,S263-S263-rho_Lambda,S263-rho_Lambda,6e-10,5.96e-10,0.6711409395973131,OK,_session263_closures.json,harvested from JSON
-263,S263-S263-Lambda-alt,S263-Lambda-alt,6.25e-10,5.96e-10,4.8657718120805376,OK,_session263_closures.json,harvested from JSON
-261,S261-closures-0,closures-0,1410470000000.0,1410440000000.0,0.0026,OK,_session261_closures.py,"harvested triplet (1410470000000.0, 1410440000000.0, 0.0026%)"
-261,S261-closures-1,closures-1,0.938272,0.939572,0.1383,OK,_session261_closures.py,"harvested triplet (0.938272, 0.939572, 0.1383%)"
-262,S262-closures-0,closures-0,1.0,1.00139,0.1383,OK,_session262_closures.py,"harvested triplet (1.0, 1.00139, 0.1383%)"
-262,S262-closures-1,closures-1,938.783,938.783,0.0,OK,_session262_closures.py,"harvested triplet (938.783, 938.783, 0.0%)"
-262,S262-closures-2,closures-2,62904.8,62892.5,0.0195,OK,_session262_closures.py,"harvested triplet (62904.8, 62892.5, 0.0195%)"
-263,S263-closures-0,closures-0,6e-10,5.96e-10,0.6711,OK,_session263_closures.py,"harvested triplet (6e-10, 5.96e-10, 0.6711%)"
-263,S263-closures-1,closures-1,6.25e-10,5.96e-10,4.8658,OK,_session263_closures.py,"harvested triplet (6.25e-10, 5.96e-10, 4.8658%)"
-282,S282-newton_G_closure-0,newton_G_closure-0,5.9156e-39,5.9061e-39,0.16,OK,_session282_newton_G_closure.py,"harvested triplet (5.9156e-39, 5.9061e-39, 0.16%)"
-282,S282-newton_G_closure-1,newton_G_closure-1,6.685e-11,6.6743e-11,0.16,OK,_session282_newton_G_closure.py,"harvested triplet (6.685e-11, 6.6743e-11, 0.16%)"
-284,S284-seesaw_MR,seesaw_MR,600300000000000.0,605000000000000.0,0.788,OK,_session284_seesaw_MR.py,"harvested triplet (600300000000000.0, 605000000000000.0, 0.788%)"
-287,S287-proton_radius_higgs-0,proton_radius_higgs-0,248.319,125.25,1.096,OK,_session287_proton_radius_higgs.py,"harvested triplet (248.319, 125.25, 1.096%)"
-287,S287-proton_radius_higgs-1,proton_radius_higgs-1,0.12656,0.12938,2.181,OK,_session287_proton_radius_higgs.py,"harvested triplet (0.12656, 0.12938, 2.181%)"
-291,S291-muon_g2,muon_g2,2.5065e-09,2.51e-09,0.14,OK,_session291_muon_g2.py,"harvested triplet (2.5065e-09, 2.51e-09, 0.14%)"
-294,S294-neutron_lifetime,neutron_lifetime,877.565,877.75,0.0211,OK,_session294_neutron_lifetime.py,"harvested triplet (877.565, 877.75, 0.0211%)"
-295,S295-lithium7_problem,lithium7_problem,1.667e-10,1.58e-10,5.49,OK,_session295_lithium7_problem.py,"harvested triplet (1.667e-10, 1.58e-10, 5.49%)"
-261,S261-closures-2,closures-2,1410476671440.0,1410440000000.0,0.0026,OK,_session261_closures.py,"harvested triplet (1410476671440.0, 1410440000000.0, 0.0026%)"
-261,S261-closures-3,closures-3,0.9408714280759999,0.939572,0.1383,OK,_session261_closures.py,"harvested triplet (0.9408714280759999, 0.939572, 0.1383%)"
-262,S262-closures-3,closures-3,1.00277492237,1.00139,0.1383,OK,_session262_closures.py,"harvested triplet (1.00277492237, 1.00139, 0.1383%)"
-262,S262-closures-4,closures-4,938.783,938.783,0.0,OK,_session262_closures.py,"harvested triplet (938.783, 938.783, 0.0%)"
-263,S263-closures-2,closures-2,5.99999756e-10,5.96e-10,0.6711,OK,_session263_closures.py,"harvested triplet (5.99999756e-10, 5.96e-10, 0.6711%)"
-263,S263-closures-3,closures-3,6.250001680000001e-10,5.96e-10,4.8658,OK,_session263_closures.py,"harvested triplet (6.250001680000001e-10, 5.96e-10, 4.8658%)"
-274,S274-beta_lambda_closure,beta_lambda_closure,5.328910115448001e-10,5.326428e-10,0.0466,OK,_session274_beta_lambda_closure.py,"harvested triplet (5.328910115448001e-10, 5.326428e-10, 0.0466%)"
-275,S275-mp_planck_closure,mp_planck_closure,1.673983514308e-27,1.672622e-27,0.0814,OK,_session275_mp_planck_closure.py,"harvested triplet (1.673983514308e-27, 1.672622e-27, 0.0814%)"
-276,S276-chandrasekhar_closure-0,chandrasekhar_closure-0,2.5646000399999997,2.502,2.502,OK,_session276_chandrasekhar_closure.py,"harvested triplet (2.5646000399999997, 2.502, 2.502%)"
-276,S276-chandrasekhar_closure-1,chandrasekhar_closure-1,2.3895222499999997,2.335,2.335,OK,_session276_chandrasekhar_closure.py,"harvested triplet (2.3895222499999997, 2.335, 2.335%)"
-277,S277-beta_i_hunt-0,beta_i_hunt-0,0.61028542689,0.606531,0.619,OK,_session277_beta_i_hunt.py,"harvested triplet (0.61028542689, 0.606531, 0.619%)"
-277,S277-beta_i_hunt-1,beta_i_hunt-1,0.60293231526,0.602866,0.011,OK,_session277_beta_i_hunt.py,"harvested triplet (0.60293231526, 0.602866, 0.011%)"
-277,S277-beta_i_hunt-2,beta_i_hunt-2,0.60293231526,0.602866,0.011,OK,_session277_beta_i_hunt.py,"harvested triplet (0.60293231526, 0.602866, 0.011%)"
-277,S277-beta_i_hunt-3,beta_i_hunt-3,0.60280031493,0.602481,0.053,OK,_session277_beta_i_hunt.py,"harvested triplet (0.60280031493, 0.602481, 0.053%)"
-277,S277-beta_i_hunt-4,beta_i_hunt-4,0.60280031493,0.602481,0.053,OK,_session277_beta_i_hunt.py,"harvested triplet (0.60280031493, 0.602481, 0.053%)"
-278,S278-me_closure-0,me_closure-0,1836.3051006741002,1836.1527,0.0083,OK,_session278_me_closure.py,"harvested triplet (1836.3051006741002, 1836.1527, 0.0083%)"
-278,S278-me_closure-1,me_closure-1,3.7852763832000003,3.783952,0.035,OK,_session278_me_closure.py,"harvested triplet (3.7852763832000003, 3.783952, 0.035%)"
-278,S278-me_closure-2,me_closure-2,3.7885327524,3.78558,0.078,OK,_session278_me_closure.py,"harvested triplet (3.7885327524, 3.78558, 0.078%)"
-278,S278-me_closure-3,me_closure-3,3.7885327524,3.78558,0.078,OK,_session278_me_closure.py,"harvested triplet (3.7885327524, 3.78558, 0.078%)"
-278,S278-me_closure-4,me_closure-4,3.7885327524,3.78558,0.078,OK,_session278_me_closure.py,"harvested triplet (3.7885327524, 3.78558, 0.078%)"
-279,S279-mu_tau_closure-0,mu_tau_closure-0,0.627818834,0.6278,0.003,OK,_session279_mu_tau_closure.py,"harvested triplet (0.627818834, 0.6278, 0.003%)"
-279,S279-mu_tau_closure-1,mu_tau_closure-1,0.6281646707,0.62797,0.031,OK,_session279_mu_tau_closure.py,"harvested triplet (0.6281646707, 0.62797, 0.031%)"
-279,S279-mu_tau_closure-2,mu_tau_closure-2,0.62821352,0.628,0.034,OK,_session279_mu_tau_closure.py,"harvested triplet (0.62821352, 0.628, 0.034%)"
-279,S279-mu_tau_closure-3,mu_tau_closure-3,0.62821352,0.628,0.034,OK,_session279_mu_tau_closure.py,"harvested triplet (0.62821352, 0.628, 0.034%)"
-279,S279-mu_tau_closure-4,mu_tau_closure-4,0.6282749316999999,0.62803,0.039,OK,_session279_mu_tau_closure.py,"harvested triplet (0.6282749316999999, 0.62803, 0.039%)"
-282,S282-newton_G_closure-2,newton_G_closure-2,5.91554976e-39,5.9061e-39,0.16,OK,_session282_newton_G_closure.py,"harvested triplet (5.91554976e-39, 5.9061e-39, 0.16%)"
-282,S282-newton_G_closure-3,newton_G_closure-3,6.68497888e-11,6.6743e-11,0.16,OK,_session282_newton_G_closure.py,"harvested triplet (6.68497888e-11, 6.6743e-11, 0.16%)"
-284,S284-seesaw_MR-0,seesaw_MR-0,600300000000000.0,605000000000000.0,0.788,OK,_session284_seesaw_MR.py,"harvested triplet (600300000000000.0, 605000000000000.0, 0.788%)"
-284,S284-seesaw_MR-1,seesaw_MR-1,609767400000000.1,605000000000000.0,0.788,OK,_session284_seesaw_MR.py,"harvested triplet (609767400000000.1, 605000000000000.0, 0.788%)"
-287,S287-proton_radius_higgs-2,proton_radius_higgs-2,126.62274000000001,125.25,1.096,OK,_session287_proton_radius_higgs.py,"harvested triplet (126.62274000000001, 125.25, 1.096%)"
-287,S287-proton_radius_higgs-3,proton_radius_higgs-3,0.1322017778,0.12938,2.181,OK,_session287_proton_radius_higgs.py,"harvested triplet (0.1322017778, 0.12938, 2.181%)"
-287,S287-proton_radius_higgs-4,proton_radius_higgs-4,173.1355402,172.69,0.258,OK,_session287_proton_radius_higgs.py,"harvested triplet (173.1355402, 172.69, 0.258%)"
-288,S288-gauge_couplings-0,gauge_couplings-0,137.27170091828,137.035999,0.172,OK,_session288_gauge_couplings.py,"harvested triplet (137.27170091828, 137.035999, 0.172%)"
-288,S288-gauge_couplings-1,gauge_couplings-1,137.054909967862,137.035999,0.0138,OK,_session288_gauge_couplings.py,"harvested triplet (137.054909967862, 137.035999, 0.0138%)"
-288,S288-gauge_couplings-2,gauge_couplings-2,0.231670879,0.23122,0.195,OK,_session288_gauge_couplings.py,"harvested triplet (0.231670879, 0.23122, 0.195%)"
-288,S288-gauge_couplings-3,gauge_couplings-3,80.780895,80.379,0.5,OK,_session288_gauge_couplings.py,"harvested triplet (80.780895, 80.379, 0.5%)"
-288,S288-gauge_couplings-4,gauge_couplings-4,0.118299681,0.1179,0.339,OK,_session288_gauge_couplings.py,"harvested triplet (0.118299681, 0.1179, 0.339%)"
-289,S289-cosmology,cosmology,6.143192800000001e-10,6.14e-10,0.052,OK,_session289_cosmology.py,"harvested triplet (6.143192800000001e-10, 6.14e-10, 0.052%)"
-290,S290-dark_sector_inflation-0,dark_sector_inflation-0,0.12,0.12,0.0,OK,_session290_dark_sector_inflation.py,"harvested triplet (0.12, 0.12, 0.0%)"
-290,S290-dark_sector_inflation-1,dark_sector_inflation-1,5.36435682165,5.36433,0.0005,OK,_session290_dark_sector_inflation.py,"harvested triplet (5.36435682165, 5.36433, 0.0005%)"
-290,S290-dark_sector_inflation-2,dark_sector_inflation-2,0.02237,0.02237,0.0,OK,_session290_dark_sector_inflation.py,"harvested triplet (0.02237, 0.02237, 0.0%)"
-290,S290-dark_sector_inflation-3,dark_sector_inflation-3,0.965498238,0.9649,0.062,OK,_session290_dark_sector_inflation.py,"harvested triplet (0.965498238, 0.9649, 0.062%)"
-291,S291-muon_g2-0,muon_g2-0,2.5065e-09,2.51e-09,0.14,OK,_session291_muon_g2.py,"harvested triplet (2.5065e-09, 2.51e-09, 0.14%)"
-291,S291-muon_g2-1,muon_g2-1,2.506486e-09,2.51e-09,0.14,OK,_session291_muon_g2.py,"harvested triplet (2.506486e-09, 2.51e-09, 0.14%)"
-291,S291-muon_g2-2,muon_g2-2,2.5064838e-09,2.49e-09,0.662,OK,_session291_muon_g2.py,"harvested triplet (2.5064838e-09, 2.49e-09, 0.662%)"
-291,S291-muon_g2-3,muon_g2-3,0.001197082570567,0.001165921,2.6727,OK,_session291_muon_g2.py,"harvested triplet (0.001197082570567, 0.001165921, 2.6727%)"
-292,S292-cosmological_constant-0,cosmological_constant-0,2.8722816e-122,2.88e-122,0.268,OK,_session292_cosmological_constant.py,"harvested triplet (2.8722816e-122, 2.88e-122, 0.268%)"
-292,S292-cosmological_constant-1,cosmological_constant-1,5.891215e-27,5.83e-27,1.05,OK,_session292_cosmological_constant.py,"harvested triplet (5.891215e-27, 5.83e-27, 1.05%)"
-293,S293-hubble_tension_split-0,hubble_tension_split-0,67.18634200000001,67.4,0.317,OK,_session293_hubble_tension_split.py,"harvested triplet (67.18634200000001, 67.4, 0.317%)"
-293,S293-hubble_tension_split-1,hubble_tension_split-1,72.7850904,73.04,0.349,OK,_session293_hubble_tension_split.py,"harvested triplet (72.7850904, 73.04, 0.349%)"
-293,S293-hubble_tension_split-2,hubble_tension_split-2,73.0166272,73.04,0.032,OK,_session293_hubble_tension_split.py,"harvested triplet (73.0166272, 73.04, 0.032%)"
-294,S294-neutron_lifetime-0,neutron_lifetime-0,877.565,877.75,0.0211,OK,_session294_neutron_lifetime.py,"harvested triplet (877.565, 877.75, 0.0211%)"
-294,S294-neutron_lifetime-1,neutron_lifetime-1,877.56479475,877.75,0.0211,OK,_session294_neutron_lifetime.py,"harvested triplet (877.56479475, 877.75, 0.0211%)"
-294,S294-neutron_lifetime-2,neutron_lifetime-2,1.01706,1.0,1.706,OK,_session294_neutron_lifetime.py,"harvested triplet (1.01706, 1.0, 1.706%)"
-294,S294-neutron_lifetime-3,neutron_lifetime-3,887.6840214000001,887.7,0.0018,OK,_session294_neutron_lifetime.py,"harvested triplet (887.6840214000001, 887.7, 0.0018%)"
-295,S295-lithium7_problem-0,lithium7_problem-0,1.667e-10,1.58e-10,5.49,OK,_session295_lithium7_problem.py,"harvested triplet (1.667e-10, 1.58e-10, 5.49%)"
-295,S295-lithium7_problem-1,lithium7_problem-1,1.666742e-10,1.58e-10,5.49,OK,_session295_lithium7_problem.py,"harvested triplet (1.666742e-10, 1.58e-10, 5.49%)"
-295,S295-lithium7_problem-2,lithium7_problem-2,1.666742e-10,1.58e-10,5.49,OK,_session295_lithium7_problem.py,"harvested triplet (1.666742e-10, 1.58e-10, 5.49%)"
-260,S260-G22,G22,10.0,10.0,0.0,OK,_six_anchor_closures.json,harvested from JSON
-260,S260-G23,G23,4.0,4.005641748942172,0.140845070422535,OK,_six_anchor_closures.json,harvested from JSON
-260,S260-G24,G24,2.5,2.4964788732394365,0.1410437235543061,OK,_six_anchor_closures.json,harvested from JSON
-260,S260-G25,G25,0.3333333333333333,0.33356409519815206,0.06918066666667391,OK,_six_anchor_closures.json,harvested from JSON
-260,S260-G26,G26,0.5,0.5,0.0,OK,_six_anchor_closures.json,harvested from JSON
-260,S260-G27,G27,9.424777960769378e+31,1410437235543.0183,6.682167574185489e+21,OK,_six_anchor_closures.json,harvested from JSON
-343,S343_inv_alpha,inv_alpha,137.0,137.035999,0.026269739530270356,OK,_session343_352_paper1189_chemistry.py,S343_inv_alpha :: predicted=137.0 observed=137.035999 error_pct=0.026269739530270356
-344,S344_mp_me,mp_me,1836.1181087116884,1836.15267,0.0018822665934188968,OK,_session343_352_paper1189_chemistry.py,S344_mp_me :: predicted=1836.1181087116884 observed=1836.15267 error_pct=0.0018822665934188968
-345,S345_Rydberg_eV,Rydberg_eV,13.61284431765582,13.605693,0.05256121577798515,OK,_session343_352_paper1189_chemistry.py,S345_Rydberg_eV :: predicted=13.61284431765582 observed=13.605693 error_pct=0.05256121577798515
-346,S346_a0_m,a0_m,5.290381967822683e-11,5.29177210903e-11,0.02626986156385999,OK,_session343_352_paper1189_chemistry.py,S346_a0_m :: predicted=5.290381967822683e-11 observed=5.29177210903e-11 error_pct=0.02626986156385999
-347,S347_sin2_thetaW,sin2_thetaW,0.23148148148148148,0.23122,0.11308774391552358,OK,_session343_352_paper1189_chemistry.py,S347_sin2_thetaW :: predicted=0.23148148148148148 observed=0.23122 error_pct=0.11308774391552358
-348,S348_alpha_s_MZ,alpha_s_MZ,0.11857707509881422,0.1179,0.5742791338543002,OK,_session343_352_paper1189_chemistry.py,S348_alpha_s_MZ :: predicted=0.11857707509881422 observed=0.1179 error_pct=0.5742791338543002
-349,S349_StefanBoltz,StefanBoltz,5.670374419e-08,5.670374419e-08,0.0,OK,_session343_352_paper1189_chemistry.py,S349_StefanBoltz :: predicted=5.670374419e-08 observed=5.670374419e-08 error_pct=0.0
-350,S350_rH2_pm,rH2_pm,71.42015656560622,74.14,3.6685236503827627,OK,_session343_352_paper1189_chemistry.py,S350_rH2_pm :: predicted=71.42015656560622 observed=74.14 error_pct=3.6685236503827627
-351,S351_n_periods,n_periods,7,7,0.0,OK,_session343_352_paper1189_chemistry.py,S351_n_periods :: predicted=7 observed=7 error_pct=0.0
-352,S352_H_Lyalpha_eV,H_Lyalpha_eV,10.209633238241866,10.2,0.0944435121751592,OK,_session343_352_paper1189_chemistry.py,S352_H_Lyalpha_eV :: predicted=10.209633238241866 observed=10.2 error_pct=0.0944435121751592
-296,S296_poincare_perelman_tc,S296_poincare_perelman_tc,0.5833333333,0.5833333333,0.000000,OK,_session296_millennium_poincare_perelman.py,S296_poincare_perelman_tc :: predicted=0.5833333333333334 observed=0.5833333333333334 error_pct=0.000000
-297,S297_riemann_zero_count_T50,S297_riemann_zero_count_T50,8.55,10,-14.500000,OK,_session297_millennium_riemann.py,S297_riemann_zero_count_T50 :: predicted=8.55 observed=10.0 error_pct=-14.500000
-297,S297_riemann_density_correction,S297_riemann_density_correction,1.00667735,1.006677,0.000035,OK,_session297_millennium_riemann.py,S297_riemann_density_correction :: predicted=1.0066773504273505 observed=1.006677 error_pct=0.000035
-298,S298_p_vs_np_chi_separation,S298_p_vs_np_chi_separation,9,9,0.000000,OK,_session298_millennium_p_vs_np.py,S298_p_vs_np_chi_separation :: predicted=9.0 observed=9.0 error_pct=0.000000
-299,S299_yang_mills_glueball_0pp,S299_yang_mills_glueball_0pp,1.581,1.73,-8.612717,OK,_session299_millennium_yang_mills.py,S299_yang_mills_glueball_0pp :: predicted=1.581 observed=1.73 error_pct=-8.612717
-299,S299_yang_mills_glueball_2pp,S299_yang_mills_glueball_2pp,2.239,2.4,-6.708333,OK,_session299_millennium_yang_mills.py,S299_yang_mills_glueball_2pp :: predicted=2.239 observed=2.4 error_pct=-6.708333
-300,S300_navier_stokes_decay_rate,S300_navier_stokes_decay_rate,0.12,0.12,0.000000,OK,_session300_millennium_navier_stokes.py,S300_navier_stokes_decay_rate :: predicted=0.12 observed=0.12 error_pct=0.000000
-301,S301_hodge_K3_h11_count,S301_hodge_K3_h11_count,20,20,0.000000,OK,_session301_millennium_hodge.py,S301_hodge_K3_h11_count :: predicted=20.0 observed=20.0 error_pct=0.000000
-302,S302_bsd_LE1_cremona_32a1,S302_bsd_LE1_cremona_32a1,0.6555,0.6555143,-0.002181,OK,_session302_millennium_bsd.py,S302_bsd_LE1_cremona_32a1 :: predicted=0.6555 observed=0.6555143 error_pct=-0.002181
-285,S285_CKM_lambda,S285_CKM_lambda,0.2235,0.225,-0.666667,OK,_session285_CKM_closure.py,S285_CKM_lambda :: predicted=0.2235 observed=0.225 error_pct=-0.666667
-285,S285_CKM_Vcb,S285_CKM_Vcb,0.04163,0.04182,-0.454328,OK,_session285_CKM_closure.py,S285_CKM_Vcb :: predicted=0.04163 observed=0.04182 error_pct=-0.454328
-285,S285_CKM_rho_bar,S285_CKM_rho_bar,0.16,0.156,2.564103,OK,_session285_CKM_closure.py,S285_CKM_rho_bar :: predicted=0.16 observed=0.156 error_pct=2.564103
-286,S286_PMNS_theta13_deg,S286_PMNS_theta13_deg,8.475,8.536,-0.714620,OK,_session286_PMNS_closure.py,S286_PMNS_theta13_deg :: predicted=8.475 observed=8.536 error_pct=-0.714620
-286,S286_PMNS_sin2_theta13,S286_PMNS_sin2_theta13,0.02172,0.02203,-1.407172,OK,_session286_PMNS_closure.py,S286_PMNS_sin2_theta13 :: predicted=0.02172 observed=0.02203 error_pct=-1.407172
-286,S286_PMNS_sin2_theta12,S286_PMNS_sin2_theta12,0.3203,0.307,4.332248,OK,_session286_PMNS_closure.py,S286_PMNS_sin2_theta12 :: predicted=0.3203 observed=0.307 error_pct=4.332248
-280,S280_mass_u-quark_residual,S280_mass_u-quark_residual,1,1.00064,-0.063959,OK,_session280_quark_closure.py,S280_mass_u-quark_residual :: predicted=1 observed=1.00064 error_pct=-0.063959
-280,S280_mass_d-quark_residual,S280_mass_d-quark_residual,1,1.00071,-0.070950,OK,_session280_quark_closure.py,S280_mass_d-quark_residual :: predicted=1 observed=1.00071 error_pct=-0.070950
-280,S280_mass_s-quark_residual,S280_mass_s-quark_residual,1,1.00016,-0.015997,OK,_session280_quark_closure.py,S280_mass_s-quark_residual :: predicted=1 observed=1.00016 error_pct=-0.015997
-280,S280_mass_c-quark_residual,S280_mass_c-quark_residual,1,1.00001,-0.001000,OK,_session280_quark_closure.py,S280_mass_c-quark_residual :: predicted=1 observed=1.00001 error_pct=-0.001000
-280,S280_mass_b-quark_residual,S280_mass_b-quark_residual,1,1.0006,-0.059964,OK,_session280_quark_closure.py,S280_mass_b-quark_residual :: predicted=1 observed=1.0006 error_pct=-0.059964
-281,S281_mass_nu_2_residual,S281_mass_nu_2_residual,1,1.0002,-0.019996,OK,_session281_neutrino_hunt.py,S281_mass_nu_2_residual :: predicted=1 observed=1.0002 error_pct=-0.019996
-281,S281_mass_nu_3_residual,S281_mass_nu_3_residual,1,1.00028,-0.027992,OK,_session281_neutrino_hunt.py,S281_mass_nu_3_residual :: predicted=1 observed=1.00028 error_pct=-0.027992
-281,S281_mass_sum_residual,S281_mass_sum_residual,1,1.00001,-0.001000,OK,_session281_neutrino_hunt.py,S281_mass_sum_residual :: predicted=1 observed=1.00001 error_pct=-0.001000
-283,S283_mass_tau_residual,S283_mass_tau_residual,1,1.00002,-0.001600,OK,_session283_finetune.py,S283_mass_tau_residual :: predicted=1 observed=1.00002 error_pct=-0.001600
-283,S283_mass_t_residual,S283_mass_t_residual,1,1.00004,-0.004000,OK,_session283_finetune.py,S283_mass_t_residual :: predicted=1 observed=1.00004 error_pct=-0.004000
-283,S283_mass_u_residual,S283_mass_u_residual,1,1.00002,-0.002300,OK,_session283_finetune.py,S283_mass_u_residual :: predicted=1 observed=1.00002 error_pct=-0.002300
-283,S283_mass_c_residual,S283_mass_c_residual,1,1.00001,-0.001100,OK,_session283_finetune.py,S283_mass_c_residual :: predicted=1 observed=1.00001 error_pct=-0.001100

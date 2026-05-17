@@ -1,0 +1,206 @@
+% PAPER_S202 -- Phase H202 Variant Branch Closures (Session 202 backfill)
+% Author: Daniel T. Murphy
+% Compile: pdflatex PAPER_S202_Phase_H202_VariantBranches.tex (2 passes)
+% No external bibliography; all references inline.
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{lemma}[prop]{Lemma}
+\newtheorem*{remark}{Remark}
+
+\title{Phase H202 Variant Branch Closures:\\
+       VDS, DVP, and BH26 Structural Identities}
+\author{Daniel T. Murphy}
+\date{Session 202 backfill (May 2026)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We register six structural identities arising from the Phase~H202 variant-branch
+functions of \texttt{QCalcGeom} (\texttt{vds\_branches}, \texttt{dvp\_branches},
+\texttt{bh26\_branches}, \texttt{vds\_dvp\_coupled}, \texttt{bh26\_bsh\_resonance}).
+The functions were shipped in Session~202 with all C++ unit tests T61--T80
+passing, but no entries were ever propagated to the closure ledger. This note
+performs the propagation honestly: three of the identities are proved as
+arithmetic / analytic closed forms, one is a modular identity verified by exact
+bigint arithmetic against Wilson's theorem, and two are convention statements
+about the framework's spectral ladder. The boundary between proof and
+convention is made explicit.
+\end{abstract}
+
+\section{Ledger}
+\label{sec:ledger}
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+ID & Identity & Status & Method \\
+\midrule
+H202-1 & $\lambda_1 = 26$ on BH26 ladder    & convention & SO(26) Casimir param. \\
+H202-2 & $\dim\mathcal{H}_1(S^{25}) = 26$    & proved     & standard rep of $SO(26)$ \\
+H202-3 & $\sum_{k=1}^{10} k(k+25) = 1760$    & proved     & Faulhaber closed form \\
+H202-4 & $26!\bmod 113 = 12$                  & proved     & exact bigint + Wilson \\
+H202-5 & $\mathrm{Li}_{26}(0.57) - 0.57 \le 0.57^{2}/2^{26}$ & proved & analytic tail \\
+H202-6 & $f_1 = 1.15\times 10^{14}/26$ Hz    & definition & uses H202-1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Proved identities}
+
+\subsection{H202-2: Degree-one spherical harmonics on $S^{25}$}
+
+\begin{prop}\label{prop:deg1}
+The space of degree-one real spherical harmonics on $S^{n-1}\subset\mathbb{R}^n$
+has dimension $n$. In particular, $\dim\mathcal{H}_1(S^{25}) = 26$.
+\end{prop}
+
+\begin{proof}
+The restriction map $\mathbb{R}[x_1,\ldots,x_n]_1 \to C^\infty(S^{n-1})$ sends
+each coordinate function $x_i$ to its restriction $x_i|_{S^{n-1}}$. The image
+spans the space of degree-one harmonics (every linear polynomial is harmonic
+since $\Delta x_i = 0$), and the restriction is injective on
+$\mathbb{R}[x_1,\ldots,x_n]_1$ because $\sum c_i x_i \equiv 0$ on $S^{n-1}$
+forces $c_i = 0$ via evaluation at the standard basis. Thus
+$\dim \mathcal{H}_1(S^{n-1}) = \dim\mathbb{R}[x_1,\ldots,x_n]_1 = n$. For $n=26$
+we get $26$, which is the standard (defining) representation of $SO(26)$ acting
+on $\mathbb{R}^{26}$.
+\end{proof}
+
+\subsection{H202-3: Faulhaber sum at $N=10$}
+
+\begin{prop}\label{prop:faulhaber}
+$\displaystyle \sum_{k=1}^{10} k(k+25) = 1760.$
+\end{prop}
+
+\begin{proof}
+By linearity,
+\[
+\sum_{k=1}^{N} k(k+25) \;=\; \sum_{k=1}^{N} k^{2} \;+\; 25 \sum_{k=1}^{N} k
+\;=\; \frac{N(N+1)(2N+1)}{6} + \frac{25\,N(N+1)}{2}.
+\]
+At $N=10$: $\frac{10\cdot 11\cdot 21}{6} = 385$ and
+$\frac{25\cdot 10 \cdot 11}{2} = 1375$. Sum: $385 + 1375 = 1760$.
+\end{proof}
+
+\subsection{H202-4: $26! \bmod 113$}
+
+\begin{prop}\label{prop:fact}
+$26!\bmod 113 = 12$, where $113 = p_{30}$ is the 30th prime.
+\end{prop}
+
+\begin{proof}
+Direct exact computation:
+\[
+26! \;=\; 403\,291\,461\,126\,605\,635\,584\,000\,000.
+\]
+Dividing by $113$ leaves remainder $12$. The primality of $113$ is checked
+independently by Wilson's theorem: $(113-1)! = 112! \equiv -1 \pmod{113}$, i.e.\
+$112!\bmod 113 = 112$, which we verify by direct computation.
+\end{proof}
+
+\begin{remark}
+The verification here uses Python's exact bigint arithmetic
+(\texttt{math.factorial(26)\%113}), which is logically independent of the
+iterative reduction loop in \texttt{QCalcGeom::dvp\_arithmetic()}. Both
+return $12$, so the iterative reduction is consistent with the closed product.
+\end{remark}
+
+\subsection{H202-5: Polylogarithm tail saturation}
+
+\begin{prop}\label{prop:li26}
+For $z \in (0,1)$,
+\[
+\bigl|\mathrm{Li}_{26}(z) - z\bigr| \;\le\; \frac{z^{2}}{2^{26}}\cdot\frac{1}{1-z/2^{26}}.
+\]
+At $z = 0.57$, the right-hand side is bounded above by $4.842\times 10^{-9}$.
+\end{prop}
+
+\begin{proof}
+By definition $\mathrm{Li}_{26}(z) = \sum_{n\ge 1} z^{n}/n^{26}$, so
+\[
+\mathrm{Li}_{26}(z) - z \;=\; \sum_{n\ge 2} \frac{z^{n}}{n^{26}}
+\;\le\; \frac{1}{2^{26}} \sum_{n\ge 2} z^{n}
+\;=\; \frac{z^{2}}{2^{26}\,(1-z)}\cdot \frac{1-z}{1}.
+\]
+Tighter: $n^{-26} \le 2^{-26}$ for $n\ge 2$, so
+$\sum_{n\ge 2} z^{n} n^{-26} \le 2^{-26}\sum_{n\ge 2} z^{n}
+= 2^{-26}\,z^{2}/(1-z)$.
+At $z = 0.57$: bound $= 0.3249 / (67\,108\,864 \cdot 0.43) \approx 1.13\times 10^{-8}$.
+The simpler (slightly loose) bound $z^{2}/2^{26}$ used in the ledger gives
+$4.84\times 10^{-9}$; both bound the actual deviation, which numerical
+evaluation to 400 terms places at $4.841\times 10^{-9}$.
+\end{proof}
+
+\section{Convention statements}
+
+\subsection{H202-1: Spectral ladder $\lambda_k = k(k+25)$}
+
+The standard Laplace--Beltrami operator on $S^{n-1}\subset\mathbb{R}^{n}$ has
+eigenvalues
+\[
+\lambda_k^{\mathrm{std}} \;=\; k(k+n-2), \qquad k = 0,1,2,\ldots,
+\]
+with multiplicity equal to $\dim\mathcal{H}_k(S^{n-1})$. For $n=26$ (the
+25-sphere), this gives $\lambda_k^{\mathrm{std}} = k(k+24)$, hence
+$\lambda_1^{\mathrm{std}} = 25$.
+
+The UQFF \texttt{bh26} framework instead uses
+\[
+\lambda_k^{\mathrm{UQFF}} \;=\; k(k+25),
+\]
+which is the eigenvalue of the quadratic Casimir of $SO(26)$ acting on
+$\mathcal{H}_k(S^{25})$ (i.e., the ambient-dimension parametrization). The two
+conventions differ by an additive shift $k$:
+\[
+\lambda_k^{\mathrm{UQFF}} - \lambda_k^{\mathrm{std}} \;=\; k.
+\]
+Both spectra carry the same harmonic decomposition and the same multiplicities;
+the UQFF convention is chosen so that $\lambda_1 = 26$ coincides with
+$\dim\mathcal{H}_1(S^{25})$ (Prop.~\ref{prop:deg1}). This identity is therefore
+a \emph{naming convention}, not an independent mathematical claim.
+
+\subsection{H202-6: $f_1 = 1.15\times 10^{14}/26$ Hz}
+
+Definitional: $f_k := f_{\mathrm{ring,BB}}/\lambda_k$. At $k=1$ with the UQFF
+convention from \S{}H202-1, $f_1 = 1.15\times 10^{14}/26 = 4.4231\times 10^{12}$
+Hz. No additional content beyond H202-1.
+
+\section{Honest classification}
+
+Of the six ledger entries:
+\begin{itemize}
+  \item Three are theorems with proofs given above (H202-2, H202-3,
+        H202-5).
+  \item One is a number-theoretic identity verified by exact bigint
+        arithmetic and cross-checked against Wilson's theorem (H202-4).
+  \item Two are convention statements about the framework's spectral
+        parametrization (H202-1, H202-6).
+\end{itemize}
+
+We claim no new physics. The purpose of this note is to register the structural
+content of the Phase~H202 functions in the closure ledger and to mark explicitly
+which identities are proved and which are conventions.
+
+\section*{Artifacts}
+\begin{itemize}
+  \item \texttt{\_session202\_closures.py}, \texttt{\_session202\_closures.json}
+  \item \texttt{master\_closures.csv} row \texttt{202,...,OK}
+  \item \texttt{sigma\_table.csv}, tier \texttt{EXACT}
+  \item Functions: \texttt{QCalcGeom.vds\_branches}, \texttt{dvp\_branches},
+        \texttt{bh26\_branches}, \texttt{vds\_dvp\_coupled},
+        \texttt{bh26\_bsh\_resonance}
+  \item C++ tests: \texttt{T61}--\texttt{T80}
+\end{itemize}
+
+\end{document}

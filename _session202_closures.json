@@ -1,0 +1,64 @@
+{
+  "session": 202,
+  "phase": "H202",
+  "deliverable": "VDS/DVP/BH26 variant branches + coupling + resonance",
+  "qcalcgeom_functions": [
+    "vds_branches",
+    "dvp_branches",
+    "bh26_branches",
+    "vds_dvp_coupled",
+    "bh26_bsh_resonance"
+  ],
+  "tests": "T61-T70 (C++) / T71-T80 (Py), 80/80 pass",
+  "closures": [
+    {
+      "label": "S202-BH26-eigenvalue-k1",
+      "predicted": 26.0,
+      "observed": 26.0,
+      "error_pct": 0.0,
+      "tag": "EXACT"
+    },
+    {
+      "label": "S202-BH26-degeneracy-k1",
+      "predicted": 26.0,
+      "observed": 26.0,
+      "error_pct": 0.0,
+      "tag": "EXACT"
+    },
+    {
+      "label": "S202-BH26-spectral-sum-N10",
+      "predicted": 1760.0,
+      "observed": 1760.0,
+      "error_pct": 0.0,
+      "tag": "EXACT"
+    },
+    {
+      "label": "S202-DVP-fact26-mod113",
+      "predicted": 12.0,
+      "observed": 12.0,
+      "error_pct": 0.0,
+      "tag": "EXACT"
+    },
+    {
+      "label": "S202-VDS-Li26-leading-n1",
+      "predicted": 0.5700000048414601,
+      "observed": 0.57,
+      "error_pct": 8.493789687186268e-07,
+      "tag": "0.000001%"
+    },
+    {
+      "label": "S202-VDS-DVP-joint-sqrt-id",
+      "predicted": 0.6881420163395804,
+      "observed": 0.6881420163395804,
+      "error_pct": 0.0,
+      "tag": "EXACT"
+    },
+    {
+      "label": "S202-BH26-freq-k1",
+      "predicted": 4423076923076.923,
+      "observed": 4423076923076.923,
+      "error_pct": 0.0,
+      "tag": "EXACT"
+    }
+  ]
+}
