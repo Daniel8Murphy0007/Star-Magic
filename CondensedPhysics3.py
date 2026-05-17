@@ -106,6 +106,17 @@ except ImportError:
     SESSION_278_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session279_um_heaviside_amplifier import (  # noqa: F401
+        UmHeavisideAmplifierCalculator,
+        heaviside_factor,
+        quasiperiodic_beat,
+        um_correction_factor,
+        SESSION_279_CALCULATORS,
+    )
+except ImportError:
+    SESSION_279_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
