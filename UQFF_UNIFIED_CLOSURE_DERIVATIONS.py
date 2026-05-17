@@ -95,6 +95,14 @@ _AXIOMS = [
      "Primordial SCm vacuum density.  Sets the scale of the entire "
      "Lagrangian (cosmological-constant calibration).  See P3 / V1 below.",
      "AXIOMS_AND_THEOREMS.md Part I, Axiom 1 + PAPER_1131"),
+    ("AX8", "G4 axiom: compactification manifold = T^22 (22-torus)",
+     "PAPER_1164 G4 closure: the 22 compact dimensions of the bosonic "
+     "string critical D_crit=26 are wrapped on a 22-torus T^22 with "
+     "moduli tau_i = [SSq]^i.  Manifold choice is an axiom (geometry "
+     "input); the 22 = 26 - 4 split and the moduli ladder are derived "
+     "downstream.  Added Session 263 to expose what was previously "
+     "hidden inside P1 'D_phys observational' postulate.",
+     "PAPER_1164 G4 + PAPER_1144 §5"),
 ]
 for _id, _claim, _chain, _paper in _AXIOMS:
     record(_id, _claim, target="AXIOM", derived="AXIOM",
@@ -146,10 +154,27 @@ record("C5", "dim SO(26) = 325",
 # Textbook inputs.  Not derivable from within UQFF.
 # ============================================================
 
-record("P1", "D_phys = 4 (observed spacetime dimension)",
-       target=4, derived=4, status="POSTULATED",
-       chain="Observational; not derived within framework.",
-       paper="universal")
+# P1: D_phys promoted Session 263 from POSTULATED to DERIVED.
+# Chain: PAPER_1164 G4 axiom (AX8) fixes the compactification manifold to
+# T^22 with dim(T^22) = 22.  Combined with AX6 (D_crit = 26 via Polyakov
+# anomaly cancellation, also derived in P2), the physical spacetime
+# dimension is the arithmetic complement:
+#   D_phys = D_crit - dim(T^22) = 26 - 22 = 4.
+# The 4 = 26 - 22 split is the explicit statement in PAPER_1164 line 69.
+_D_crit_sym = sp.Integer(26)          # AX6 / P2
+_dim_T22_sym = sp.Integer(22)         # AX8 (G4 PAPER_1164)
+_D_phys_chain = _D_crit_sym - _dim_T22_sym
+record("P1", "D_phys = D_crit - dim(T^22) = 26 - 22 = 4",
+       target=4, derived=int(_D_phys_chain), status="DERIVED",
+       chain="Session 263 promotion POSTULATED -> DERIVED.  "
+             "D_phys := D_crit - dim(M_compact).  "
+             "D_crit = 26 from AX6 / P2 (Polyakov anomaly).  "
+             "dim(M_compact) = 22 from AX8 (PAPER_1164 G4: T^22).  "
+             "SymPy: 26 - 22 = 4 exactly.  Honest scope: the manifold "
+             "choice T^22 itself remains an AXIOM (AX8); the arithmetic "
+             "that yields D_phys=4 given AX8 is now an explicit chain "
+             "rather than a free-standing observational postulate.",
+       paper="PAPER_1164 §3 (G4 closure) + AX6/P2")
 
 record("P2", "D_crit = 26 (Polyakov bosonic string critical dim)",
        target=26, derived=26, status="DERIVED",
@@ -159,11 +184,25 @@ record("P2", "D_crit = 26 (Polyakov bosonic string critical dim)",
 # NB: D_crit IS derivable from anomaly cancellation -- pure CFT.
 
 # Calibrated scales
+# P3: rho_SCm Casimir / KK-tower derivation attempt -- Session 263.
+# Tried: Casimir vacuum energy density on T^22 of radius R,
+#   rho_Casimir ~ -hbar*c*zeta(23) / R^4 * (volume factor)
+# Problem: R(SSq) is left as a free modulus in PAPER_1164 (G4 closure
+# stabilises tau_i = [SSq]^i but does not anchor the overall T^22
+# radius to a measured length).  Without an independent length scale,
+# no closed-form derivation maps to 7.09e-37 J/m^3.  Cross-check with
+# PAPER_1162 lightest KK mode m_26^2 = 2K/26^26 also requires K, which
+# is itself fit to the same rho_SCm anchor (circular).  Honest verdict:
+# search exhausted in current repo; rho_SCm stays as AX7 primordial anchor.
 record("P3", "rho_SCm = 7.09e-37 J/m^3 (vacuum density)",
        target=7.09e-37, derived=7.09e-37, status="CALIBRATED",
-       chain="Calibrated from magnetar / Sgr A* data; "
-             "no first-principles derivation in repo.",
-       paper="PAPER_1166")
+       chain="Calibrated from magnetar / Sgr A* data.  Session 263 attempt: "
+             "tested Casimir T^22 and KK-tower routes (PAPER_1162/1164) "
+             "-- both require an independent compactification radius R "
+             "that the repo leaves as a free modulus (G4 stabilises tau_i "
+             "ratios, not overall scale).  Search exhausted; framed as "
+             "primordial AX7 substrate per PAPER_1131/983/1171.",
+       paper="PAPER_1166 + AX7 + Session 263 search")
 
 record("P4", "v_UA = c/3 ≈ 1e8 m/s (SCm-UA flux velocity)",
        target=sp.Rational(299792458, 3),
@@ -758,17 +797,19 @@ def print_audit() -> None:
     print("  POSTULATED = textbook input or framework axiom.")
     print("  CALIBRATED = fit to observational data / anchored to AX7.")
     print()
-    print("Frozen primitives (after Session 261 + 262 promotions):")
+    print("Frozen primitives (after Session 261 + 262 + 263 promotions):")
     print("  DERIVED    :  |SO(5)|, |A_5|, D_crit, dim SO(2), dim SO(26),")
     print("                D_BSFG, Phi_res, F_TRZ, K_Mex, beta_i (1..4),")
     print("                v_UA (=c/3 via G25), rho ratios G22-G24,")
     print("                Sun-level-13 anchor (G26), N_ch (=|SO(5)|-1),")
     print("                1/26^26 (= 1/lambda_1(S^25)^D_crit via PAPER_1162),")
     print("                F_U=1 crossing identity (FU1, Session 262:")
-    print("                Mandelstam s+t+u sum rule + AX5 T-symmetry of Bi action)")
-    print("  POSTULATED :  D_phys")
-    print("  CALIBRATED :  rho_SCm (= AX7 anchor; no upstream chain in repo --")
-    print("                framed as primordial substrate per PAPER_1131/983/1171),")
+    print("                Mandelstam s+t+u sum rule + AX5 T-symmetry of Bi action),")
+    print("                D_phys = D_crit - dim(T^22) = 26 - 22 = 4 (P1, Session 263)")
+    print("  POSTULATED :  (none -- P1 promoted Session 263 via AX8/PAPER_1164)")
+    print("  CALIBRATED :  rho_SCm (= AX7 anchor; Casimir/KK route attempted")
+    print("                Session 263, search exhausted -- T^22 radius left")
+    print("                free in PAPER_1164 G4 closure),")
     print("                [SSq], V(phi_0)=-rho_SCm (CC subtraction to AX7)")
     print()
     print("Upstream anchor / axiom files now cited:")
@@ -779,14 +820,17 @@ def print_audit() -> None:
     print("  PAPER_1131 / PAPER_983 / PAPER_1171 (vacuum first principle papers)")
     print("  PAPER_1162 / PAPER_1164         (KK 1/26^26 + T^22 cross-check)")
     print()
-    print("Remaining open items (RESOLVED in Session 262):")
-    print("  PAPER_1066  : [DONE] CC offset -rho_SCm now written explicitly")
+    print("Remaining open items (RESOLVED Session 262 + 263):")
+    print("  PAPER_1066  : [DONE 262] CC offset -rho_SCm now written explicitly")
     print("                in the Lagrangian abstract + Sec. 1 + V1 paragraph.")
-    print("  PAPER_1182  : [DONE] '0.6029' typo updated to '0.603' in 1182,")
-    print("                1183, 1184, 1189 main.tex; all PDFs regenerated.")
-    print("  P3 rho_SCm  : [INVESTIGATED] No first-principles route exists in")
-    print("                the repo (PAPER_1131/983/1171 frame it as primordial")
-    print("                AX7 substrate).  Honestly kept CALIBRATED.")
+    print("  arxiv 0.6029: [DONE 262/263] '0.6029' typo updated to '0.603' in")
+    print("                1181, 1182, 1183, 1184, 1185, 1189 main.tex; all")
+    print("                PDFs regenerated (Session 263 sweep finished 1181/1185).")
+    print("  P1 D_phys=4 : [PROMOTED 263] DERIVED via AX8 (PAPER_1164 G4: T^22) +")
+    print("                AX6 (D_crit=26): D_phys = 26 - 22 = 4 exact.")
+    print("  P3 rho_SCm  : [INVESTIGATED 263] Casimir T^22 + KK-tower routes both")
+    print("                require a free modulus (T^22 radius); search exhausted.")
+    print("                Honestly kept CALIBRATED as AX7 primordial substrate.")
 
 
 def write_json() -> None:

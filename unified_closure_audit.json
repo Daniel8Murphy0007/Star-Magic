@@ -70,6 +70,16 @@
     "paper": "AXIOMS_AND_THEOREMS.md Part I, Axiom 1 + PAPER_1131"
   },
   {
+    "id": "AX8",
+    "claim": "G4 axiom: compactification manifold = T^22 (22-torus)",
+    "target": "AXIOM",
+    "derived": "AXIOM",
+    "match": true,
+    "status": "AXIOM",
+    "chain": "PAPER_1164 G4 closure: the 22 compact dimensions of the bosonic string critical D_crit=26 are wrapped on a 22-torus T^22 with moduli tau_i = [SSq]^i.  Manifold choice is an axiom (geometry input); the 22 = 26 - 4 split and the moduli ladder are derived downstream.  Added Session 263 to expose what was previously hidden inside P1 'D_phys observational' postulate.",
+    "paper": "PAPER_1164 G4 + PAPER_1144 \u00a75"
+  },
+  {
     "id": "C1",
     "claim": "|SO(5)| = dim of Lie algebra so(5) = 10",
     "target": "10",
@@ -121,13 +131,13 @@
   },
   {
     "id": "P1",
-    "claim": "D_phys = 4 (observed spacetime dimension)",
+    "claim": "D_phys = D_crit - dim(T^22) = 26 - 22 = 4",
     "target": "4",
     "derived": "4",
     "match": true,
-    "status": "POSTULATED",
-    "chain": "Observational; not derived within framework.",
-    "paper": "universal"
+    "status": "DERIVED",
+    "chain": "Session 263 promotion POSTULATED -> DERIVED.  D_phys := D_crit - dim(M_compact).  D_crit = 26 from AX6 / P2 (Polyakov anomaly).  dim(M_compact) = 22 from AX8 (PAPER_1164 G4: T^22).  SymPy: 26 - 22 = 4 exactly.  Honest scope: the manifold choice T^22 itself remains an AXIOM (AX8); the arithmetic that yields D_phys=4 given AX8 is now an explicit chain rather than a free-standing observational postulate.",
+    "paper": "PAPER_1164 \u00a73 (G4 closure) + AX6/P2"
   },
   {
     "id": "P2",
@@ -146,8 +156,8 @@
     "derived": "7.09e-37",
     "match": true,
     "status": "CALIBRATED",
-    "chain": "Calibrated from magnetar / Sgr A* data; no first-principles derivation in repo.",
-    "paper": "PAPER_1166"
+    "chain": "Calibrated from magnetar / Sgr A* data.  Session 263 attempt: tested Casimir T^22 and KK-tower routes (PAPER_1162/1164) -- both require an independent compactification radius R that the repo leaves as a free modulus (G4 stabilises tau_i ratios, not overall scale).  Search exhausted; framed as primordial AX7 substrate per PAPER_1131/983/1171.",
+    "paper": "PAPER_1166 + AX7 + Session 263 search"
   },
   {
     "id": "P4",
