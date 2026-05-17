@@ -95,6 +95,17 @@ except ImportError:
     SESSION_277_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session278_dpm_layer_counter import (  # noqa: F401
+        DPMActiveLayerCounter,
+        ANCHOR_LAYER_TABLE,
+        build_anchor_table,
+        layer_truncation_check,
+        SESSION_278_CALCULATORS,
+    )
+except ImportError:
+    SESSION_278_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
