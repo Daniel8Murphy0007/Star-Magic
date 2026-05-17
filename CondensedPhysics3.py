@@ -74,6 +74,26 @@ try:
 except ImportError:
     _CP1_LOADED = False
 
+# ---------------------------------------------------------------------------
+# Session 277: register crustal/tectonic + UQFF gap-closure calculators
+# ---------------------------------------------------------------------------
+try:
+    from QCalcGeom import CrustalZeroPointCalculator  # noqa: F401
+except ImportError:
+    CrustalZeroPointCalculator = None  # type: ignore
+
+try:
+    from _session277_uqff_gap_patches import (  # noqa: F401
+        OrionH2OMaserUQFFCalculator,
+        NeutrinoGWCoincidenceCalculator,
+        PerseusACoolingSuppressionCalculator,
+        PLANETARY_CRUSTAL_PRESETS,
+        planetary_crustal_preset,
+        SESSION_277_CALCULATORS,
+    )
+except ImportError:
+    SESSION_277_CALCULATORS = {}  # type: ignore
+
 try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
