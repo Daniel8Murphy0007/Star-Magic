@@ -101,8 +101,17 @@ _AXIOMS = [
      "moduli tau_i = [SSq]^i.  Manifold choice is an axiom (geometry "
      "input); the 22 = 26 - 4 split and the moduli ladder are derived "
      "downstream.  Added Session 263 to expose what was previously "
-     "hidden inside P1 'D_phys observational' postulate.",
-     "PAPER_1164 G4 + PAPER_1144 §5"),
+     "hidden inside P1 'D_phys observational' postulate.  "
+     "Session 264 honest first-principles search for dim(M_compact)=22: "
+     "(a) 22 = D_crit - D_phys = 26 - 4 is circular (uses D_phys as input); "
+     "(b) 22 = 2*dim(SO(5))+dim(SU(2))-1 = 2*10+3-1 is numerology with no "
+     "structural meaning; (c) 22 = b_2(K3) (second Betti number of K3 "
+     "surface, suggestive topological coincidence with bosonic mirror "
+     "symmetry literature, not a derivation in repo).  Conclusion: ONE "
+     "geometric input is required by the framework -- either T^22 (AX8) "
+     "OR D_phys=4 (P1).  PAPER_1164 picks T^22 as the axiom; P1 then "
+     "becomes derivable.  Honestly kept AXIOM.",
+     "PAPER_1164 G4 + PAPER_1144 §5 + Session 264 search"),
 ]
 for _id, _claim, _chain, _paper in _AXIOMS:
     record(_id, _claim, target="AXIOM", derived="AXIOM",
