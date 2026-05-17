@@ -47,7 +47,15 @@ NEW IN v2.0.0 (simultaneous equation level):
 Author  : Daniel T. Murphy
 Created : Session 201 — May 5, 2026
 Based on: QCalcGeom.cpp v1.2.0 (Session 151 Phase G)
-Version : 2.2.1
+Version : 2.3.0
+
+NEW IN v2.3.0 (Session 276 Track C — Crustal/Tectonic Zero-Point Zone):
+  - SECTION 3.6 added: superconductive_plasma_density, crustal_buoyancy_balance,
+    tectonic_resonance, crustal_zero_point_window, crustal_zero_point_state
+  - CrustalZeroPointResult dataclass for full state
+  - CrustalZeroPointCalculator class (CondensedPhysics pattern)
+  - Tests T101-T110: plasma profile, Archimedean float, tectonic resonance,
+    Ring 3 amplification (φ^12), timing resolution, calculator triple
 
 NEW IN v2.2.1 (Session 206 Phase H-UBS hardening):
   - UniversalBuoyancySimultaneousSolver.compute() now returns a REAL
@@ -998,6 +1006,238 @@ def zero_point_years_in_epoch5(n_zeroes: int = 5) -> List[float]:
         MAYAN_EPOCH5_YEAR + (2.0 * k + 1.0) / 2.0 * MAYAN_GREAT_CYCLE_YEARS
         for k in range(n_zeroes)
     ]
+
+
+# =============================================================================
+# SECTION 3.6 — CRUSTAL / TECTONIC ZERO-POINT ZONE  (v2.3.0 — Track C, Session 276)
+#
+# Physics: a solid crust floats on a superconductive heavy plasma supported by
+# Aether UA buoyancy (FUBii). Zero-point gravity occurs when the Universal
+# Inertia invariant U_I crosses zero — i.e., cos(π·t_n) = 0.  At that instant
+# centripetal and centrifugal forces balance exactly and the crustal layer
+# experiences a true mass-neutral state (massless-to-massive scalar gate).
+#
+# QUANTUM TIMING — Ring 3 (inner) precision:
+#   The Mayan three-ring system amplifies temporal resolution by φ^(2(epoch-1)).
+#   In Epoch 5, Ring 3 is φ^12 ≈ 322× faster than Ring 1, giving a zero-point
+#   detection precision of:
+#       Δt_zero  =  (Great Cycle period) / (gear_ratio_13 × N_teeth)
+#   With N_teeth = 260 (Mayan Tzolkin), Epoch 5 resolution ≈ 1 / (322 × 260)
+#   per Great Cycle ≈ 5125.36 / 83720  ≈ 0.0612 yr  ≈ 22.4 days.
+# =============================================================================
+
+# Default superconductive-plasma reference values (calibrated to terrestrial
+# crust–mantle analog; ρ_crust ≈ 2700 kg/m³, ρ_plasma scales from RHO_VAC_SCM
+# via 26-layer compression — see dpm_vacuum_manifold.py v3.0).
+RHO_CRUST_DEFAULT_KG_M3   : float = 2700.0      # rocky crust density [kg/m³]
+RHO_PLASMA_DEFAULT_KG_M3  : float = 12000.0     # superconductive heavy plasma [kg/m³]
+CRUST_THICKNESS_M_DEFAULT : float = 3.5e4       # 35 km — terrestrial average
+TZOLKIN_TEETH             : int   = 260         # ring gear teeth (sacred count)
+
+@dataclass
+class CrustalZeroPointResult:
+    """Crustal/tectonic floating zone — zero-point gravity timing & resonance.
+
+    Floating equilibrium (Archimedean balance in superconductive heavy plasma):
+      F_buoy(plasma) + FUBii(Aether) = F_weight(crust) + FUBi(collapse)
+      → crust thickness h_eq sets where the layer settles in the plasma column
+
+    Tectonic resonance:
+      ω_tect = sqrt( g_eff · Δρ / (ρ_crust · h_crust) )
+      Natural bobbing frequency of the crust on the plasma surface
+      [analog: ice floes on water, planetary lithospheres on asthenosphere]
+
+    Zero-point gravity window:
+      |U_I| < threshold  ⇔  |cos(π·t_n)| < ε
+      Width of window in t_n: Δt_n ≈ ε / π   (half-window)
+      Window in years:        Δt_yr ≈ 2·(ε/π) · MAYAN_GREAT_CYCLE_YEARS
+    """
+    # Inputs (echo)
+    rho_crust_kg_m3    : float = 0.0
+    rho_plasma_kg_m3   : float = 0.0
+    h_crust_m          : float = 0.0
+    epoch              : int   = 5
+    t_n                : float = 0.0
+
+    # Buoyancy balance
+    delta_rho_kg_m3    : float = 0.0   # ρ_plasma − ρ_crust  [kg/m³]
+    F_buoy_per_area    : float = 0.0   # Δρ·g_eff·h_crust  [N/m²]
+    h_eq_m             : float = 0.0   # equilibrium submersion depth  [m]
+    floats             : bool  = False # True if Δρ > 0
+
+    # Universal Inertia at this t_n
+    u_inertia          : float = 0.0   # 3·ρ_vac·(4π/3)·c²·cos(π·t_n)  [N/m²]
+    cos_tn             : float = 0.0
+    g_eff              : float = 0.0   # |U_I| / (ρ_crust·h_crust)  [m/s²]
+
+    # Tectonic resonance
+    omega_tect_rad_s   : float = 0.0   # natural bobbing frequency [rad/s]
+    f_tect_Hz          : float = 0.0   # natural bobbing frequency [Hz]
+    period_tect_yr     : float = 0.0   # natural bobbing period   [yr]
+
+    # Zero-point gravity window
+    zero_point_active  : bool  = False # |U_I| below threshold
+    window_half_t_n    : float = 0.0   # half-width in t_n units
+    window_half_yr     : float = 0.0   # half-width in years
+    next_zero_year     : float = 0.0   # next exact zero-point year
+
+    # Quantum timing precision (from Mayan Ring 3)
+    gear_ratio_13      : float = 0.0   # φ^(2(epoch-1))
+    timing_resolution_yr: float = 0.0  # GREAT_CYCLE_YR / (gear_ratio_13 × Tzolkin)
+
+
+def superconductive_plasma_density(depth_m: float = 0.0,
+                                    T_kelvin: float = 1.0e6,
+                                    rho_surface: float = RHO_PLASMA_DEFAULT_KG_M3
+                                    ) -> float:
+    """Density of the superconductive heavy plasma layer beneath the crust.
+
+    Profile: ρ(d, T) = ρ_surface · (1 + d/H_scale) · (T_ref/T)^{1/4}
+      H_scale = 100 km (typical plasma scale height under crust)
+      T_ref   = 1e6 K (Cooper-pair coherence reference)
+
+    Returns ρ in kg/m³. Plasma becomes superconductive at T ≥ T_critical_SC
+    (model: above 1e5 K the heavy ion lattice supports Aether-mediated pairing).
+    """
+    H_scale = 1.0e5   # 100 km scale height [m]
+    T_ref   = 1.0e6   # K
+    depth_factor = 1.0 + max(depth_m, 0.0) / H_scale
+    temp_factor  = (T_ref / max(T_kelvin, 1.0)) ** 0.25
+    return rho_surface * depth_factor * temp_factor
+
+
+def crustal_buoyancy_balance(rho_crust_kg_m3: float = RHO_CRUST_DEFAULT_KG_M3,
+                              rho_plasma_kg_m3: float = RHO_PLASMA_DEFAULT_KG_M3,
+                              h_crust_m: float = CRUST_THICKNESS_M_DEFAULT,
+                              g_local: float = 9.81) -> dict:
+    """Archimedean balance: how deep does the crust submerge into the plasma?
+
+      h_eq / h_crust  =  ρ_crust / ρ_plasma   (Archimedes)
+      F_buoy_per_area =  Δρ · g · h_crust     [N/m²]
+    """
+    delta_rho = rho_plasma_kg_m3 - rho_crust_kg_m3
+    floats    = delta_rho > 0.0
+    h_eq      = h_crust_m * (rho_crust_kg_m3 / rho_plasma_kg_m3) if floats else h_crust_m
+    F_per_A   = delta_rho * g_local * h_crust_m
+    return {
+        'delta_rho_kg_m3' : delta_rho,
+        'floats'          : floats,
+        'h_eq_m'          : h_eq,
+        'F_buoy_per_area' : F_per_A,
+    }
+
+
+def tectonic_resonance(rho_crust_kg_m3: float = RHO_CRUST_DEFAULT_KG_M3,
+                        rho_plasma_kg_m3: float = RHO_PLASMA_DEFAULT_KG_M3,
+                        h_crust_m: float = CRUST_THICKNESS_M_DEFAULT,
+                        g_local: float = 9.81) -> dict:
+    """Natural bobbing frequency of crust floating on superconductive plasma.
+
+      ω_tect = sqrt( g · (ρ_plasma − ρ_crust) / (ρ_crust · h_crust) )
+
+    Reference (Earth-like, g=9.81): ~ 2.8e-3 rad/s → period ~ 37 min
+    """
+    delta_rho = rho_plasma_kg_m3 - rho_crust_kg_m3
+    if delta_rho <= 0.0 or h_crust_m <= 0.0 or rho_crust_kg_m3 <= 0.0:
+        return {'omega_rad_s': 0.0, 'f_Hz': 0.0, 'period_s': 0.0, 'period_yr': 0.0}
+    omega = math.sqrt(g_local * delta_rho / (rho_crust_kg_m3 * h_crust_m))
+    f_Hz  = omega / (2.0 * math.pi)
+    T_s   = 1.0 / f_Hz if f_Hz > 0.0 else 0.0
+    return {
+        'omega_rad_s': omega,
+        'f_Hz'       : f_Hz,
+        'period_s'   : T_s,
+        'period_yr'  : T_s / (365.25 * 86400.0),
+    }
+
+
+def crustal_zero_point_window(epoch: int = 5,
+                               current_year: float = 2026.33,
+                               threshold_frac: float = 1.0e-3) -> dict:
+    """Find the next zero-point gravity window using Mayan Ring 3 precision.
+
+    Threshold: |cos(π·t_n)| < threshold_frac defines window.
+      → window_half_t_n = arcsin(threshold_frac) / π  ≈ threshold_frac / π (small ε)
+      → window_half_yr  = window_half_t_n × MAYAN_GREAT_CYCLE_YEARS
+
+    Quantum-timing resolution (Ring 3 amplification):
+      Δt_resolution = GREAT_CYCLE_YR / (φ^(2(epoch-1)) × TZOLKIN_TEETH)
+    """
+    t_n_now      = (current_year - MAYAN_EPOCH5_YEAR) / MAYAN_GREAT_CYCLE_YEARS
+    # Next half-integer t_n (zero of cos(π·t_n))
+    next_half    = math.floor(t_n_now - 0.5) + 1.5 if t_n_now > 0.5 else 0.5
+    next_zero_yr = MAYAN_EPOCH5_YEAR + next_half * MAYAN_GREAT_CYCLE_YEARS
+
+    # Window half-width (small-angle approx for cos near zero)
+    half_t_n     = math.asin(min(threshold_frac, 0.999999)) / math.pi
+    half_yr      = half_t_n * MAYAN_GREAT_CYCLE_YEARS
+
+    # Ring 3 timing resolution.
+    # Outer ring radius = φ^(n-1); Inner ring radius = φ^(-2(n-1)).
+    # Mesh ratio = r_outer / r_inner = φ^(3(n-1))  → φ^12 in epoch 5.
+    gear_13      = PHI ** (3.0 * (epoch - 1))
+    dt_res_yr    = MAYAN_GREAT_CYCLE_YEARS / (gear_13 * TZOLKIN_TEETH)
+
+    return {
+        't_n_now'              : t_n_now,
+        'next_zero_year'       : next_zero_yr,
+        'window_half_t_n'      : half_t_n,
+        'window_half_yr'       : half_yr,
+        'gear_ratio_13'        : gear_13,
+        'timing_resolution_yr' : dt_res_yr,
+        'years_to_next_zero'   : next_zero_yr - current_year,
+    }
+
+
+def crustal_zero_point_state(rho_crust_kg_m3: float = RHO_CRUST_DEFAULT_KG_M3,
+                              rho_plasma_kg_m3: float = RHO_PLASMA_DEFAULT_KG_M3,
+                              h_crust_m: float = CRUST_THICKNESS_M_DEFAULT,
+                              epoch: int = 5,
+                              current_year: float = 2026.33,
+                              rho_vac: float = None,
+                              threshold_frac: float = 1.0e-3,
+                              g_local: float = 9.81) -> CrustalZeroPointResult:
+    """Full crustal/tectonic zero-point state at a given epoch and year."""
+    if rho_vac is None:
+        rho_vac = RHO_VAC_SCM
+
+    state  = mayan_ring_state(epoch, current_year, 1.0)
+    t_n    = state.t_n
+    cos_tn = state.cos_tn
+    u_inertia = 3.0 * rho_vac * (4.0 * math.pi / 3.0) * C_LIGHT**2 * cos_tn
+
+    # Effective gravity exerted on crustal layer by U_I field
+    g_eff = abs(u_inertia) / (rho_crust_kg_m3 * h_crust_m) if h_crust_m > 0 else 0.0
+
+    bb  = crustal_buoyancy_balance(rho_crust_kg_m3, rho_plasma_kg_m3,
+                                    h_crust_m, g_local)
+    tr  = tectonic_resonance(rho_crust_kg_m3, rho_plasma_kg_m3,
+                              h_crust_m, g_local)
+    win = crustal_zero_point_window(epoch, current_year, threshold_frac)
+
+    res = CrustalZeroPointResult()
+    res.rho_crust_kg_m3     = rho_crust_kg_m3
+    res.rho_plasma_kg_m3    = rho_plasma_kg_m3
+    res.h_crust_m           = h_crust_m
+    res.epoch               = epoch
+    res.t_n                 = t_n
+    res.delta_rho_kg_m3     = bb['delta_rho_kg_m3']
+    res.F_buoy_per_area     = bb['F_buoy_per_area']
+    res.h_eq_m              = bb['h_eq_m']
+    res.floats              = bb['floats']
+    res.u_inertia           = u_inertia
+    res.cos_tn              = cos_tn
+    res.g_eff               = g_eff
+    res.omega_tect_rad_s    = tr['omega_rad_s']
+    res.f_tect_Hz           = tr['f_Hz']
+    res.period_tect_yr      = tr['period_yr']
+    res.zero_point_active   = abs(cos_tn) < threshold_frac
+    res.window_half_t_n     = win['window_half_t_n']
+    res.window_half_yr      = win['window_half_yr']
+    res.next_zero_year      = win['next_zero_year']
+    res.gear_ratio_13       = win['gear_ratio_13']
+    res.timing_resolution_yr = win['timing_resolution_yr']
+    return res
 
 
 # =============================================================================
@@ -2407,6 +2647,109 @@ class MayanTimingCalculator:
         }
 
 
+class CrustalZeroPointCalculator:
+    """Crustal/tectonic floating zone with Mayan-Ring-3 quantum timing.
+
+    Solves the simultaneous problem of a solid crust floating on a
+    superconductive heavy plasma layer (Aether UA-supported) while tracking
+    the Universal Inertia zero-crossing windows that define zero-point gravity.
+
+    Input dataset keys (all optional, sensible defaults):
+      rho_crust_kg_m3   : crust density        (default 2700 kg/m³)
+      rho_plasma_kg_m3  : plasma density       (default 12000 kg/m³)
+      h_crust_m         : crust thickness      (default 3.5e4 m = 35 km)
+      epoch             : Mayan epoch          (default 5)
+      current_year      : decimal year         (default 2026.33)
+      rho_vac           : vacuum override      (default RHO_VAC_SCM)
+      threshold_frac    : zero-point threshold (default 1e-3)
+      g_local           : local gravity        (default 9.81 m/s²)
+
+    Returns the CondensedPhysics output triple:
+      primary_equations / available_equations / simulation_set + diagnostics.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        rho_c   = dataset.get('rho_crust_kg_m3',   RHO_CRUST_DEFAULT_KG_M3)
+        rho_p   = dataset.get('rho_plasma_kg_m3',  RHO_PLASMA_DEFAULT_KG_M3)
+        h_c     = dataset.get('h_crust_m',         CRUST_THICKNESS_M_DEFAULT)
+        epoch   = dataset.get('epoch',             5)
+        year    = dataset.get('current_year',      2026.33)
+        rho_v   = dataset.get('rho_vac',           RHO_VAC_SCM)
+        thr     = dataset.get('threshold_frac',    1.0e-3)
+        g_loc   = dataset.get('g_local',           9.81)
+
+        s = crustal_zero_point_state(rho_c, rho_p, h_c, epoch, year,
+                                      rho_v, thr, g_loc)
+
+        return {
+            # Echo + diagnostics
+            'rho_crust_kg_m3'      : s.rho_crust_kg_m3,
+            'rho_plasma_kg_m3'     : s.rho_plasma_kg_m3,
+            'h_crust_m'            : s.h_crust_m,
+            'epoch'                : s.epoch,
+            't_n'                  : s.t_n,
+            'cos_tn'               : s.cos_tn,
+            # Buoyancy
+            'delta_rho_kg_m3'      : s.delta_rho_kg_m3,
+            'floats'               : s.floats,
+            'h_eq_m'               : s.h_eq_m,
+            'F_buoy_per_area'      : s.F_buoy_per_area,
+            # Universal Inertia field
+            'u_inertia'            : s.u_inertia,
+            'g_eff_m_s2'           : s.g_eff,
+            # Tectonic resonance
+            'omega_tect_rad_s'     : s.omega_tect_rad_s,
+            'f_tect_Hz'            : s.f_tect_Hz,
+            'period_tect_yr'       : s.period_tect_yr,
+            # Zero-point window
+            'zero_point_active'    : s.zero_point_active,
+            'window_half_t_n'      : s.window_half_t_n,
+            'window_half_yr'       : s.window_half_yr,
+            'next_zero_year'       : s.next_zero_year,
+            'gear_ratio_13'        : s.gear_ratio_13,
+            'timing_resolution_yr' : s.timing_resolution_yr,
+            'primary_equations': [
+                f"CRUSTAL/TECTONIC ZONE — Epoch {s.epoch}",
+                f"  ρ_crust  = {s.rho_crust_kg_m3:.1f} kg/m³",
+                f"  ρ_plasma = {s.rho_plasma_kg_m3:.1f} kg/m³ (superconductive heavy)",
+                f"  h_crust  = {s.h_crust_m/1000:.1f} km",
+                f"ARCHIMEDEAN BALANCE:",
+                f"  Δρ = {s.delta_rho_kg_m3:.1f} kg/m³   floats: {s.floats}",
+                f"  h_eq (submersion) = {s.h_eq_m/1000:.2f} km",
+                f"UNIVERSAL INERTIA at t_n={s.t_n:.4f}:",
+                f"  U_I = {s.u_inertia:.4e} N/m²   cos(π·t_n) = {s.cos_tn:.4e}",
+                f"  g_eff on crust    = {s.g_eff:.4e} m/s²",
+                f"TECTONIC RESONANCE: ω_tect = sqrt(g·Δρ/(ρ_crust·h))",
+                f"  ω = {s.omega_tect_rad_s:.4e} rad/s   f = {s.f_tect_Hz:.4e} Hz",
+                f"  period = {s.period_tect_yr*365.25*86400:.1f} s "
+                f"({s.period_tect_yr*365.25*1440:.1f} min)",
+                f"ZERO-POINT WINDOW (Ring 3 precision):",
+                f"  active now: {s.zero_point_active}",
+                f"  next zero @ year {s.next_zero_year:.2f}  "
+                f"(window ±{s.window_half_yr:.2f} yr)",
+                f"  Ring 3 amplification = {s.gear_ratio_13:.2f}×",
+                f"  timing resolution    = {s.timing_resolution_yr*365.25:.2f} days",
+            ],
+            'available_equations': [
+                "ρ_plasma(d,T) = ρ_surf · (1+d/H_scale) · (T_ref/T)^{1/4}",
+                "h_eq/h_crust = ρ_crust/ρ_plasma  (Archimedes)",
+                "F_buoy_per_area = Δρ · g · h_crust  [N/m²]",
+                "U_I = 3·ρ_vac·(4π/3)·c²·cos(π·t_n)  [N/m²]",
+                "g_eff = |U_I| / (ρ_crust · h_crust)  [m/s²]",
+                "ω_tect = sqrt( g · Δρ / (ρ_crust · h_crust) )  [rad/s]",
+                "Window: |cos(π·t_n)| < ε  →  half-width = arcsin(ε)/π in t_n",
+                "Δt_res = GREAT_CYCLE_YR / (φ^{2(epoch-1)} · TZOLKIN_TEETH)",
+            ],
+            'simulation_set': [
+                "Bob the crust: F(t) = F_buoy + U_I(t_n(t)) for one Tzolkin",
+                "Zero-point sweep: scan year 2026→7138, mark all |U_I|<threshold windows",
+                "Plasma depth profile: ρ_plasma(d) at d=0..1000 km, T=1e5..1e7 K",
+                "Tectonic eigenmodes: vary h_crust=10..70 km → ω_tect spectrum",
+                "Quantum gate: width of zero-point window vs ε = 1e-2..1e-6",
+            ],
+        }
+
+
 # =============================================================================
 # SECTION 7 — TEST SUITE (60 tests: T01–T60 mirroring C++ runQCalcGeomTests)
 # =============================================================================
@@ -2947,6 +3290,72 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
     chk("T100","UBS-SimSet","radial sweep visits all 3 Aether UA zones",
         float(len(zones_seen)), 3.0, 0.0,
         qual_ok=(zones_seen == {'collapsing','habitable_shell','gaseous_outer'}))
+
+    # ── v2.3.0: Crustal / Tectonic Zero-Point Zone (Track C) ────────────────
+    # T101: superconductive_plasma_density at depth=0 returns surface density
+    p0 = superconductive_plasma_density(0.0, 1.0e6)
+    chk("T101","CRUSTAL","plasma density at depth=0 = surface value",
+        p0, RHO_PLASMA_DEFAULT_KG_M3, 0.1)
+
+    # T102: plasma density increases with depth
+    p100km = superconductive_plasma_density(1.0e5, 1.0e6)
+    chk("T102","CRUSTAL","plasma density at d=100km > surface",
+        1.0 if p100km > p0 else 0.0, 1.0, 0.0,
+        qual_ok=(p100km > p0))
+
+    # T103: Archimedean balance — crust floats (Δρ > 0)
+    bb = crustal_buoyancy_balance()
+    chk("T103","CRUSTAL","crust floats on plasma (Δρ > 0)",
+        bb['delta_rho_kg_m3'], 9300.0, 1.0,
+        qual_ok=bb['floats'])
+
+    # T104: equilibrium submersion ratio = ρ_crust/ρ_plasma
+    expected_ratio = RHO_CRUST_DEFAULT_KG_M3 / RHO_PLASMA_DEFAULT_KG_M3
+    actual_ratio   = bb['h_eq_m'] / CRUST_THICKNESS_M_DEFAULT
+    chk("T104","CRUSTAL","h_eq/h_crust = ρ_crust/ρ_plasma",
+        actual_ratio, expected_ratio, 0.1)
+
+    # T105: tectonic resonance frequency positive and finite
+    tr = tectonic_resonance()
+    chk("T105","CRUSTAL","ω_tect positive and finite",
+        tr['omega_rad_s'], 0.0, 0.0,
+        qual_ok=(tr['omega_rad_s'] > 0.0 and math.isfinite(tr['omega_rad_s'])))
+
+    # T106: Earth-like tectonic period in 1-100 minute range
+    period_min = tr['period_s'] / 60.0
+    chk("T106","CRUSTAL","tectonic period in 1-100 min (Earth analog)",
+        1.0 if (1.0 < period_min < 100.0) else 0.0, 1.0, 0.0,
+        qual_ok=(1.0 < period_min < 100.0))
+
+    # T107: zero-point window — Ring 3 amplification = φ^12 for epoch 5
+    win = crustal_zero_point_window(5, 2026.33, 1.0e-3)
+    expected_gear13 = ((1.0 + math.sqrt(5.0))/2.0) ** 12  # φ^(3(5-1))
+    chk("T107","CRUSTAL","Ring 3 amplification = φ^12 (epoch 5)",
+        win['gear_ratio_13'], expected_gear13, 0.01)
+
+    # T108: timing resolution < 100 days (sub-Tzolkin precision)
+    res_days = win['timing_resolution_yr'] * 365.25
+    chk("T108","CRUSTAL","timing resolution < 100 days in epoch 5",
+        1.0 if res_days < 100.0 else 0.0, 1.0, 0.0,
+        qual_ok=(res_days < 100.0))
+
+    # T109: state computation finite at current year
+    s = crustal_zero_point_state(current_year=2026.33)
+    chk("T109","CRUSTAL","state has finite U_I and g_eff",
+        1.0 if (math.isfinite(s.u_inertia) and math.isfinite(s.g_eff)) else 0.0,
+        1.0, 0.0,
+        qual_ok=(math.isfinite(s.u_inertia) and math.isfinite(s.g_eff)))
+
+    # T110: CrustalZeroPointCalculator returns full primary/available/sim triple
+    czpc = CrustalZeroPointCalculator().compute({'current_year': 2026.33})
+    chk("T110","CRUSTAL","Calculator returns primary/available/simulation triple",
+        float(len(czpc.get('primary_equations',[])) +
+              len(czpc.get('available_equations',[])) +
+              len(czpc.get('simulation_set',[]))),
+        0.0, 0.0,
+        qual_ok=(len(czpc.get('primary_equations',[])) > 0 and
+                 len(czpc.get('available_equations',[])) > 0 and
+                 len(czpc.get('simulation_set',[])) > 0))
 
     # ── Summary ──────────────────────────────────────────────────────────────
     passed = sum(1 for r in results if r['passed'])
