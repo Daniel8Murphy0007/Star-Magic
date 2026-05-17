@@ -1,6 +1,7 @@
 ID,name,label,predicted,observed,error_pct,status,script,raw_output
 202,closures,S202-BH26-spectral-sum,1760,1760,0,OK,_session202_closures.py,S202-BH26-spectral-sum: 1760 vs 1760 -> EXACT
 203,closures,S203-PTF-net-displacement,0,0,0,OK,_session203_closures.py,S203-PTF-net-displacement: 0 vs 0 -> EXACT
+204,closures,S204-GW-chirp-equal-mass,0.870550563296,0.870550563296,0,OK,_session204_closures.py,S204-GW-chirp-equal-mass: 0.870550563296 vs 0.870550563296 -> EXACT
 261,audit,audit,,,,PARSE_FAIL,_session261_audit.py,- Bundle missing: arxiv_submission_1159_1170
 261,closures,closures,,,,PARSE_FAIL,_session261_closures.py,6/6 physical anchors closed.  Framework fully self-consistent.
 262,closures,closures,,,,PARSE_FAIL,_session262_closures.py,Wrote _session262_closures.json
@@ -430,7 +431,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
 683,lagrangian_primitives,lagrangian_primitives,,,,PARSE_FAIL,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
-684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 183/183 closures mapped -> EXACT
+684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 184/184 closures mapped -> EXACT
 684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%

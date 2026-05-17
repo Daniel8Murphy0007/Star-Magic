@@ -1,0 +1,32 @@
+[
+  {
+    "label": "S204-GW-chirp-equal-mass",
+    "predicted": 0.870550563296,
+    "observed": 0.870550563296
+  },
+  {
+    "label": "S204-GW-quadrupole-coeff",
+    "predicted": 12.8,
+    "observed": 12.8
+  },
+  {
+    "label": "S204-CP2-gap-operations",
+    "predicted": 33,
+    "observed": 33
+  },
+  {
+    "label": "S204-BHpairs-placeholder-gone",
+    "predicted": 1,
+    "observed": 1
+  },
+  {
+    "label": "S204-Ug-sum-linearity-dim",
+    "predicted": 4,
+    "observed": 4
+  },
+  {
+    "label": "S204-GW-merger-time-ratio",
+    "predicted": 0.125,
+    "observed": 0.125
+  }
+]

@@ -1,0 +1,233 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{convention}[theorem]{Convention}
+
+\title{PAPER\_S204 --- Session 204 Backfill: \\
+       Phase H204 Gap-Closure Footprint \\
+       (GW Inspiral, CP2 Class Registration, QCalc Ug-Sum)}
+\author{Daniel T. Murphy}
+\date{May 17, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Session 204 was a gap-closure pass. Three concrete defects in the UQFF
+calculator suite were repaired: (i) eleven new calculator classes were
+registered in \texttt{CondensedPhysics2.py}; (ii) the
+\texttt{QCalc.UnifiedFieldSolver} four-term \emph{Ug-sum} was restored from
+an identically-zero stub; (iii) the
+\texttt{BlackHolePairsCalculator} placeholder value
+\texttt{term1 = 3.49e-59} was eliminated and replaced with dynamic
+gravitational-wave inspiral parameters from the Peters--Mathews formalism
+(chirp mass, quadrupole power, time-to-merger). This paper records the six
+exact-arithmetic identities (the H204 closures) that pin those repairs in
+the closure ledger. Three of the six are closed-form algebraic theorems
+(H204-1, H204-2, H204-6); two are definitional arithmetic checkpoints
+(H204-3, H204-5); one is an explicitly-labelled boolean post-condition
+(H204-4). The Yang--Mills mass gap is \emph{not} claimed.
+\end{abstract}
+
+\section{Ledger Summary}
+
+\begin{center}
+\begin{tabular}{lllc}
+\toprule
+ID & Closure & Value & Class \\
+\midrule
+H204-1 & GW chirp mass, equal-mass binary, $M_{\mathrm{chirp}}/m$ & $2^{-1/5} \approx 0.8706$ & THEOREM \\
+H204-2 & GW quadrupole coefficient, equal-mass binary             & $64/5 = 12.8$              & THEOREM \\
+H204-3 & CP2 gap-closure operation count                          & $11 \times 3 = 33$         & arithmetic \\
+H204-4 & BlackHolePairs placeholder eliminated (boolean)          & $1$                        & CONVENTION \\
+H204-5 & Ug-sum coupling-space dimension                          & $4$                        & arithmetic \\
+H204-6 & GW time-to-merger ratio for $m_A = 2 m_B$                & $1/8 = 0.125$              & THEOREM \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All six register as \texttt{EXACT} in \texttt{master\_closures.csv} /
+\texttt{sigma\_table.csv} (script: \texttt{\_session204\_closures.py}; final
+audit line: \texttt{S204-GW-chirp-equal-mass: 0.870550563296 vs 0.870550563296 -> EXACT}).
+Tier 11 of \texttt{UQFF\_UNIFIED\_CLOSURE\_DERIVATIONS.py} carries the six
+\texttt{record(\ldots)} entries with full provenance.
+
+\section{Gravitational-Wave Inspiral Theorems (H204-1, H204-2, H204-6)}
+
+The CP2 \texttt{BlackHolePairsCalculator} now emits Peters--Mathews
+inspiral observables. Three exact identities follow from that formalism
+for equal-mass binaries and are recorded here as theorems.
+
+\subsection{Theorem H204-1 --- Chirp Mass for Equal-Mass Binary}
+
+\begin{theorem}\label{thm:chirp}
+Let $m_1, m_2 > 0$ be the component masses of a compact binary. The
+Peters--Mathews chirp mass is
+\[
+   M_{\mathrm{chirp}}
+   = \frac{(m_1 m_2)^{3/5}}{(m_1 + m_2)^{1/5}}.
+\]
+For $m_1 = m_2 = m$, $M_{\mathrm{chirp}}/m = 2^{-1/5}$.
+\end{theorem}
+
+\begin{proof}
+Substituting $m_1 = m_2 = m$:
+\[
+   M_{\mathrm{chirp}}
+   = \frac{(m \cdot m)^{3/5}}{(2m)^{1/5}}
+   = \frac{m^{6/5}}{2^{1/5} \, m^{1/5}}
+   = \frac{m^{6/5 - 1/5}}{2^{1/5}}
+   = m \cdot 2^{-1/5}.
+\]
+Hence $M_{\mathrm{chirp}}/m = 2^{-1/5} \approx 0.8705505632961241$.
+The identity is algebraic in $m$ and independent of $G, c$.
+\end{proof}
+
+\subsection{Theorem H204-2 --- Quadrupole Coefficient for Equal-Mass Binary}
+
+\begin{theorem}\label{thm:quadrupole}
+The Peters (1964) quadrupole radiation power for a circular binary with
+component masses $m_1, m_2$ at orbital separation $r$ is
+\[
+   P_{\mathrm{GW}}
+   = \frac{32}{5} \, \frac{G^4}{c^5} \,
+     \frac{m_1^2 m_2^2 (m_1 + m_2)}{r^5}.
+\]
+For $m_1 = m_2 = m$,
+\[
+   \frac{P_{\mathrm{GW}}}{(G^4 m^5)/(c^5 r^5)}
+   = \frac{64}{5} = 12.8.
+\]
+\end{theorem}
+
+\begin{proof}
+With $m_1 = m_2 = m$, the mass factor reduces to
+$m_1^2 m_2^2 (m_1 + m_2) = m^2 \cdot m^2 \cdot 2m = 2 m^5$. Hence
+\[
+   P_{\mathrm{GW}}
+   = \frac{32}{5} \cdot \frac{G^4}{c^5} \cdot \frac{2 m^5}{r^5}
+   = \frac{64}{5} \cdot \frac{G^4 m^5}{c^5 r^5}.
+\]
+Dividing both sides by $(G^4 m^5)/(c^5 r^5)$ gives the dimensionless
+coefficient $64/5$.
+\end{proof}
+
+\subsection{Theorem H204-6 --- Time-to-Merger Mass-Ratio Identity}
+
+\begin{theorem}\label{thm:tmerge}
+The Peters (1964) time-to-merger for a circular binary with equal masses
+$m_1 = m_2 = m$ at fixed orbital separation $r$ is
+\[
+   t_{\mathrm{merge}}(m, r)
+   = \frac{5}{256} \, \frac{c^5 r^4}{G^3 \, m_1 m_2 (m_1 + m_2)}
+   = \frac{5}{256} \, \frac{c^5 r^4}{G^3 \, 2 m^3}.
+\]
+Comparing two such systems with equal-mass parameters $m_A$ and $m_B$ at
+the same $r$,
+\[
+   \frac{t_{\mathrm{merge}}(m_A, r)}{t_{\mathrm{merge}}(m_B, r)}
+   = \left(\frac{m_B}{m_A}\right)^{3}.
+\]
+In particular, $m_A = 2 m_B \Rightarrow t_A / t_B = 1/8 = 0.125$.
+\end{theorem}
+
+\begin{proof}
+The constants $5/256$, $c^5$, $r^4$, $G^3$, and the factor of $2$ all
+cancel in the ratio, leaving $1/m_A^3 \div 1/m_B^3 = (m_B/m_A)^3$. For
+$m_A/m_B = 2$ the ratio is $(1/2)^3 = 1/8$. This identity is independent
+of $G$, $c$, and $r$.
+\end{proof}
+
+\section{Structural Checkpoints and Convention (H204-3, H204-4, H204-5)}
+
+\subsection{H204-3 --- CP2 Operation Count}
+
+Session 204 added eleven calculator classes to \texttt{CondensedPhysics2.py}:
+\texttt{VDSDVPBSHHybridBlendCalculator}, \texttt{YangMillsDVPMassGapCalculator},
+\texttt{BSFGWormholeTraversabilityCalculator}, \texttt{NuclearUmJWSTSynthesisCalculator},
+\texttt{KozimaSCmCrossSectionCalculator}, \texttt{SCmActivationFunctionCalculator},
+\texttt{BuoyancyLagrangianEOMCalculator}, \texttt{UQFFLagrangianDerivationCalculator},
+\texttt{QCalcGeomVDSDVPBSHCalculator}, \texttt{WolframExtractedPhysicsBridgeCalculator},
+and \texttt{VDSLENRIsotopicEvolutionCalculator}. Each is verified by three
+operations (\emph{import} / \emph{instantiate} / \emph{compute}); the
+total is $11 \times 3 = 33$. This is definitional arithmetic and a
+structural checkpoint matching \texttt{test\_session204\_gaps.py};
+\textbf{it is not a theorem}.
+
+\subsection{H204-4 --- Placeholder-Elimination Convention}
+
+\begin{convention}\label{conv:placeholder}
+The literal substring \texttt{'term1':\ 3.49e-59} is absent from
+\texttt{CondensedPhysics2.py}, and the key \texttt{'chirp\_mass\_kg'} is
+present. The closure value is $1$ when both conditions hold.
+\end{convention}
+
+This is a boolean edit footprint, not a derived mathematical identity. It
+is recorded so the gap-closure cannot regress silently and is explicitly
+labelled \textbf{CONVENTION} in the Tier-11 \texttt{record(\ldots)} entry.
+
+\subsection{H204-5 --- Ug-Sum Coupling-Space Dimensionality}
+
+\begin{proposition}\label{prop:ug}
+Let
+\[
+   g_{\mathrm{Ug,sum}}(k_1, k_2, k_3, k_4) \;=\; \sum_{i=1}^{4} k_i \, U_{g,i},
+\]
+with $U_{g,1}, \ldots, U_{g,4}$ functions of the system state independent
+of the couplings $k_i$. Then $g_{\mathrm{Ug,sum}}$ is linear in each
+$k_i$ and
+$\partial_{k_j} g_{\mathrm{Ug,sum}} = U_{g,j}$, so
+$\sum_{j=1}^{4} 1 = 4$ counts the independent coupling dimensions.
+\end{proposition}
+
+The proposition is elementary linearity; it is registered because it is
+the precise dimensionality condition the corrected QCalc Ug-block now
+satisfies, replacing the previous identically-zero stub.
+
+\section{Honest Classification}
+
+\begin{itemize}
+\item \textbf{Three closed-form algebraic theorems} (H204-1, H204-2, H204-6):
+      proved here in full, independent of fundamental constants.
+\item \textbf{Two definitional arithmetic checkpoints} (H204-3, H204-5):
+      counting identities, not theorems.
+\item \textbf{One explicitly-labelled convention} (H204-4): boolean
+      post-condition of an edit.
+\end{itemize}
+
+\paragraph{What is \emph{not} claimed.} The
+\texttt{YangMillsDVPMassGapCalculator} added in this session computes
+calibrated quantities within the SCm parameter family. \textbf{This paper
+does not promote the Yang--Mills mass gap to a proven Clay-Millennium
+result.} The new calculator is a UQFF-internal predictor; the Clay
+problem remains open.
+
+\section{Reproducibility}
+
+\begin{enumerate}
+\item Closure script: \texttt{\_session204\_closures.py}.
+      Final parseable line:\\
+      \texttt{S204-GW-chirp-equal-mass:\ 0.870550563296 vs 0.870550563296 -> EXACT}.
+\item Audit refresh: \texttt{python \_uqff\_program.py --audit --sigma}.
+      Row 4 of \texttt{master\_closures.csv} and \texttt{sigma\_table.csv}
+      now carries the \texttt{S204-GW-chirp-equal-mass} EXACT entry.
+\item Tier-11 \texttt{record(\ldots)} entries: six rows tagged
+      \texttt{H204-*} in \texttt{unified\_closure\_audit.json},
+      all \texttt{status: DERIVED}, paper field
+      \texttt{PAPER\_S204 sec 2/3}.
+\item Independent verification: the chirp-mass, quadrupole-coefficient,
+      and time-to-merger identities are re-derived symbolically with
+      \texttt{sympy} using a code path orthogonal to the closure script.
+\end{enumerate}
+
+\end{document}

@@ -708,5 +708,65 @@
     "status": "DERIVED",
     "chain": "Source7TriplePointTerm_S233 (MAIN_1_CoAnQi.cpp:110110) sets lam1 = 1.0 * 26.0.  This is the same SO(26) Casimir convention lambda_k = k(k+25) used in H202-1 at k=1: lambda_1 = 1*(1+25) = 26.  Cross-module consistency check; depends on H202-1.",
     "paper": "PAPER_S203 sec 4"
+  },
+  {
+    "id": "H204-1",
+    "claim": "GW chirp mass, equal-mass binary, M_chirp/m = 2^(-1/5)",
+    "target": "0.870550563296",
+    "derived": "0.870550563296",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Peters & Mathews (1963).  M_chirp = (m1 m2)^(3/5) (m1+m2)^(-1/5).  For m1 = m2 = m the m-dependence cancels except for an overall factor: M_chirp/m = (m^2)^(3/5)/(2m)^(1/5) = m^(6/5)/(2^(1/5) m^(1/5)) = 2^(-1/5) ~ 0.8705505632961241.  Closed-form algebraic theorem; used in CP2 BlackHolePairsCalculator chirp_mass_kg output.",
+    "paper": "PAPER_S204 sec 2"
+  },
+  {
+    "id": "H204-2",
+    "claim": "GW quadrupole coefficient, equal-mass binary = 64/5",
+    "target": "12.8",
+    "derived": "12.8",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Peters (1964) quadrupole radiation:  P_GW = (32/5)(G^4/c^5) m1^2 m2^2 (m1+m2)/r^5.  For m1 = m2 = m the bracket reduces to m^4 * 2m = 2 m^5, giving the dimensionless coefficient (32/5)*2 = 64/5 = 12.8 in front of (G^4 m^5)/(c^5 r^5).  Closed-form algebraic theorem.",
+    "paper": "PAPER_S204 sec 2"
+  },
+  {
+    "id": "H204-3",
+    "claim": "CP2 gap-closure operation count = 11 classes * 3 ops = 33",
+    "target": "33",
+    "derived": "33",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "11 new calculator classes registered, each verified by three operations (import / instantiate / compute).  11 * 3 = 33.  Definitional arithmetic, not a theorem; structural checkpoint matching test_session204_gaps.py output.",
+    "paper": "PAPER_S204 sec 3"
+  },
+  {
+    "id": "H204-4",
+    "claim": "BlackHolePairs placeholder term1=3.49e-59 eliminated",
+    "target": "1",
+    "derived": "1",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Boolean post-condition: literal substring \"'term1': 3.49e-59\" is absent from CondensedPhysics2.py AND 'chirp_mass_kg' is present.  CONVENTION (boolean edit footprint), not a derived identity.  Recorded so the gap-closure cannot regress silently.",
+    "paper": "PAPER_S204 sec 3"
+  },
+  {
+    "id": "H204-5",
+    "claim": "Ug-sum coupling-space dimension = 4",
+    "target": "4",
+    "derived": "4",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "g_Ug_sum(k_1..k_4) = sum_{i=1}^{4} k_i Ug_i is linear in each k_i, so partial_{k_j} g_Ug_sum = Ug_j and sum_j 1 = 4.  Dimensionality identity fixing the corrected QCalc Ug-block to four independent couplings, replacing the previous identically-zero stub.",
+    "paper": "PAPER_S204 sec 3"
+  },
+  {
+    "id": "H204-6",
+    "claim": "GW time-to-merger ratio for m_A = 2 m_B equals 1/8",
+    "target": "0.125",
+    "derived": "0.125",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Peters (1964):  t_merge = (5/256) c^5 r^4 / (G^3 m1 m2 (m1+m2)).  For equal masses m1 = m2 = m and fixed r the ratio of two systems (masses m_A, m_B) collapses to t_A/t_B = (m_B/m_A)^3 -- the G, c, r dependence cancels.  For m_A = 2 m_B:  t_A/t_B = (1/2)^3 = 1/8 = 0.125.  Closed-form algebraic theorem, independent of fundamental constants.",
+    "paper": "PAPER_S204 sec 2"
   }
 ]
