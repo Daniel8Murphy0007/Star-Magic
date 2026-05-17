@@ -154,6 +154,19 @@ except ImportError:
     SESSION_283_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session284_snr_shock_velocity import (  # noqa: F401
+        SNRShockVelocityFromPhotometryCalculator,
+        shock_velocity_sedov,
+        shock_velocity_free_expansion,
+        shock_velocity_from_xray_T,
+        shock_velocity_from_halpha_fwhm,
+        sedov_energy_estimate,
+        SESSION_284_CALCULATORS,
+    )
+except ImportError:
+    SESSION_284_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
