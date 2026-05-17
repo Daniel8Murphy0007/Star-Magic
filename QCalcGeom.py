@@ -302,6 +302,12 @@ class HabitableZoneResult:
     The habitable zone is where neutral Aether buoyancy holds:
       FUBi(r_hz, t_n_hz) + FUBii(r_hz, t_n_hz) = 0   AND
       ε′(r_hz, t_n_hz) + G·M/(c²·r_hz²) = 0
+
+    Epoch-aware tectonic band (Session 265):
+      Mayan three-ring scaling defines the inner/outer tectonic band
+      bounding the crustal/floating zone around r_hz.  In Epoch 5 the
+      inner ring shrinks by φ^(-8) ≈ 0.0213× and the outer ring expands
+      by φ^4 ≈ 6.854× → the habitable shell narrows asymmetrically.
     """
     r_hz_m       : float = 0.0   # habitable zone radius [m]
     r_hz_AU      : float = 0.0   # [AU]
@@ -314,10 +320,24 @@ class HabitableZoneResult:
     solver_msg   : str   = ""
     # Habitable zone classification
     hz_type      : str   = ""    # "rocky_inner" / "habitable" / "gas_outer"
+    # Epoch-aware tectonic band (Session 265)
+    epoch                : int   = 5     # Mayan epoch (1-5)
+    r_hz_inner_band_AU   : float = 0.0   # r_hz × φ^(-2(E-1))  inner tectonic floor
+    r_hz_outer_band_AU   : float = 0.0   # r_hz × φ^(E-1)      outer tectonic ceiling
+    band_width_AU        : float = 0.0   # outer − inner
+    U_I_at_hz            : float = 0.0   # Universal Inertia [J/m³] at (t_n_hz, epoch)
+    U_I_mode             : str   = ""    # "centripetal" / "zero-point" / "centrifugal"
 
 @dataclass
 class UniversalGravityResult:
-    """Complete F_U assembly: F_U = Ug1+Ug2+Ug3+Ug4 − FUBi + FUBii + Um"""
+    """Complete F_U assembly with Universal Inertia (Session 265):
+      F_U = Ug1+Ug2+Ug3+Ug4 − FUBi + FUBii + Um + U_I·V_body·xi
+
+    Universal Inertia U_I is the invariant differential — primordial
+    radiance scalar that reverses centripetal↔centrifugal across t_n.
+    Coupled perturbatively (xi=1e-6) so it vanishes at zero-point
+    (cos(π·t_n)=0) and flips sign over a great cycle.
+    """
     Ug1      : float = 0.0
     Ug2      : float = 0.0
     Ug3      : float = 0.0
@@ -325,7 +345,10 @@ class UniversalGravityResult:
     FUBi     : float = 0.0   # SOURCE4 Ubi (negative = opposes gravity normally)
     FUBii    : float = 0.0   # Aether counter-buoyancy (positive outward)
     Um       : float = 0.0
-    F_U_total: float = 0.0   # Ug_sum − FUBi + FUBii + Um
+    U_I      : float = 0.0   # Universal Inertia invariant [J/m³]  (Session 265)
+    U_I_term : float = 0.0   # U_I·V_body·xi contribution to F_U   (Session 265)
+    epoch    : int   = 5     # Mayan epoch used for U_I                (Session 265)
+    F_U_total: float = 0.0   # Ug_sum − FUBi + FUBii + Um + U_I_term
     r_m      : float = 0.0
     t_n      : float = 0.0
     eps      : float = 0.0   # BSFG metric perturbation
@@ -1135,14 +1158,19 @@ def compute_F_U(r: float, t_n: float,
                 epsilon_sw: float = EPS_SW_BSFG,
                 rho_sw: float     = RHO_SW_BSFG,
                 U_UA: float       = U_UA_BSFG,
-                rho_vac: float    = None) -> UniversalGravityResult:
-    """Universal Gravity full assembly.
-    F_U = Ug1 + Ug2 + Ug3 + Ug4 − FUBi + FUBii + Um
+                rho_vac: float    = None,
+                epoch: int        = 5,
+                xi_UI: float      = 1.0e-6) -> UniversalGravityResult:
+    """Universal Gravity full assembly with Universal Inertia (Session 265).
+      F_U = Ug1 + Ug2 + Ug3 + Ug4 − FUBi + FUBii + Um + ξ·U_I·V_body
 
     Ug1..Ug4 are simplified 26D field components (canonical SOURCE4 parameters).
     FUBi  = SOURCE4 Ubi (collapsing zone; negative when t_n≈0 → opposes collapse).
     FUBii = Aether counter-buoyancy spring (positive outward when cos > 0).
     Um    = magnetic string contribution M·R_⊙²·ω_s / r³.
+    U_I   = 3·ρ_vac·(4π/3)·c²·cos(π·t_n)  invariant differential (Mayan three-ring),
+            modulates centripetal↔centrifugal, vanishes at zero-point (t_n=k+½).
+    ξ     = perturbative coupling (default 1e-6); set 0 to disable U_I term.
 
     Mass M is used only AFTER emergence (Step 7+ in Quantum Chain).
     """
@@ -1200,9 +1228,17 @@ def compute_F_U(r: float, t_n: float,
     mu_m    = M * R_SUN**2 * omega_s
     res.Um  = mu_m / r**3
 
+    # ── U_I: Universal Inertia (Session 265) ─────────────────────────────────
+    # Invariant differential, frame-independent, primordial radiance scalar.
+    # Frame-independent: same value across all bodies, depends only on (t_n, epoch).
+    ui          = universal_inertia(t_n, epoch=epoch, r_base_AU=1.0, rho_vac=rho_vac)
+    res.U_I     = ui.u_inertia
+    res.epoch   = epoch
+    res.U_I_term = xi_UI * ui.u_inertia * V_body   # ξ·U_I·V_body  → force units
+
     # ── Full assembly ─────────────────────────────────────────────────────────
     Ug_sum        = res.Ug1 + res.Ug2 + res.Ug3 + res.Ug4
-    res.F_U_total = Ug_sum - res.FUBi + res.FUBii + res.Um
+    res.F_U_total = Ug_sum - res.FUBi + res.FUBii + res.Um + res.U_I_term
     return res
 
 
@@ -1250,7 +1286,8 @@ def _habitable_zone_system(x: List[float], params: dict) -> List[float]:
 
 def solve_habitable_zone(params: dict,
                           r_guess_m: float = None,
-                          t_n_guess: float = 0.5) -> HabitableZoneResult:
+                          t_n_guess: float = 0.5,
+                          epoch: int = 5) -> HabitableZoneResult:
     """Solve for the habitable zone (r_hz, t_n_hz) simultaneously.
 
     Uses the system:
@@ -1354,6 +1391,27 @@ def solve_habitable_zone(params: dict,
         result.hz_type = "habitable"
     else:
         result.hz_type = "gas_outer"
+
+    # ── Epoch-aware tectonic band (Session 265) ──────────────────────────────
+    # Mayan three-ring scaling defines the crustal/floating zone bounds:
+    #   r_inner_band = r_hz × φ^(-2(E-1))   (inner ring scaling — shrinks fastest)
+    #   r_outer_band = r_hz × φ^( (E-1))    (outer ring scaling — expands)
+    # In Epoch 5: inner = r_hz × 0.0213, outer = r_hz × 6.854 (asymmetric band).
+    ring = mayan_ring_proportions(epoch, 1.0)
+    result.epoch              = epoch
+    result.r_hz_inner_band_AU = result.r_hz_AU * ring['r_inner_AU']
+    result.r_hz_outer_band_AU = result.r_hz_AU * ring['r_outer_AU']
+    result.band_width_AU      = result.r_hz_outer_band_AU - result.r_hz_inner_band_AU
+
+    # Universal Inertia at the HZ point
+    ui_hz = universal_inertia(t_n_hz, epoch=epoch, rho_vac=rho_vac)
+    result.U_I_at_hz = ui_hz.u_inertia
+    if ui_hz.zero_point:
+        result.U_I_mode = "zero-point"
+    elif ui_hz.centripetal_mode:
+        result.U_I_mode = "centripetal"
+    else:
+        result.U_I_mode = "centrifugal"
 
     return result
 
@@ -1782,10 +1840,11 @@ def _tol_check(computed: float, expected: float, tol_pct: float) -> bool:
 
 
 def run_qcalcgeom_tests(verbose: bool = True) -> dict:
-    """Run all 80 QCalcGeom requirements-boundary tests.
+    """Run all 85 QCalcGeom requirements-boundary tests.
     T01–T60: mirrors C++ runQCalcGeomTests() with identical reference values.
     T61–T70: Mayan three-ring timing / Universal Inertia system.
     T71–T80: Session 202 VDS/DVP/DH26 variant branches + coupling (Phase H202).
+    T81–T85: F_U + U_I integration + epoch-aware tectonic band (Session 265).
     Returns {'passed': int, 'failed': int, 'results': list-of-dicts}.
     """
     results = []
@@ -1806,7 +1865,7 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
 
     if verbose:
         print("\n" + "="*72)
-        print("QCalcGeom.py v2.1.0 — Requirements-Boundary Test Suite (T01–T80)")
+        print("QCalcGeom.py v2.2.0 — Requirements-Boundary Test Suite (T01–T85)")
         print("="*72 + "\n")
 
     # ── BSFG-METRIC (T01–T06) ────────────────────────────────────────────────
@@ -2162,6 +2221,39 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
     # T80: BH26×BSH cross-resonance energy density > 0 at t_n=0, k=1
     chk("T80","VDS-DVP-DH26","bh26_bsh_resonance energy_density > 0  (k=1, t_n=0)",
         res_r.energy_density, 0.0, 0.0, qual_ok=(res_r.energy_density > 0.0))
+
+    # ── F_U + U_I INTEGRATION (T81–T85) — Session 265 ─────────────────────────
+    # Wire Universal Inertia into the Universal Gravity master equation.
+    fu_tn0    = compute_F_U(AU_METERS, 0.0, epoch=5)
+    fu_tnH    = compute_F_U(AU_METERS, 0.5, epoch=5)
+    fu_tn1    = compute_F_U(AU_METERS, 1.0, epoch=5)
+    hz_E1     = solve_habitable_zone({}, epoch=1)
+    hz_E5     = solve_habitable_zone({}, epoch=5)
+
+    # T81: compute_F_U returns U_I field (non-zero at t_n=0)
+    chk("T81","F_U+U_I","compute_F_U populates U_I field at t_n=0 (centripetal)",
+        fu_tn0.U_I, 0.0, 0.0,
+        qual_ok=(fu_tn0.U_I > 0.0))
+
+    # T82: U_I sign flips between t_n=0 and t_n=1 (centripetal → centrifugal)
+    chk("T82","F_U+U_I","U_I sign flips across great cycle (cos(π·t_n))",
+        fu_tn0.U_I + fu_tn1.U_I, 0.0, 0.0,
+        qual_ok=(fu_tn0.U_I * fu_tn1.U_I < 0.0))
+
+    # T83: U_I ≈ 0 at t_n=0.5 (zero-point gravity / massless scalar)
+    chk("T83","F_U+U_I","U_I ≈ 0 at zero-point t_n=0.5 (massless scalar)",
+        abs(fu_tnH.U_I), 0.0, 0.0,
+        qual_ok=(abs(fu_tnH.U_I) < abs(fu_tn0.U_I) * 1.0e-10))
+
+    # T84: epoch-aware tectonic band populated and non-zero
+    chk("T84","F_U+U_I","solve_habitable_zone tectonic band populated (Epoch 5)",
+        hz_E5.band_width_AU, 0.0, 0.0,
+        qual_ok=(hz_E5.band_width_AU > 0.0 and hz_E5.epoch == 5))
+
+    # T85: Epoch-5 band is asymmetrically wider than Epoch-1 (outer expanded)
+    chk("T85","F_U+U_I","Epoch 5 band wider than Epoch 1 (outer ring expansion)",
+        hz_E5.band_width_AU - hz_E1.band_width_AU, 0.0, 0.0,
+        qual_ok=(hz_E5.band_width_AU > hz_E1.band_width_AU))
 
     # ── Summary ──────────────────────────────────────────────────────────────
     passed = sum(1 for r in results if r['passed'])
