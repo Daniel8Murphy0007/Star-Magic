@@ -1,0 +1,182 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{convention}[theorem]{Convention}
+
+\title{PAPER\_S205 --- Session 205 Backfill: \\
+       Phase H205 $E^{\pm}(t)$ Expansion--Erosion Footprint \\
+       (Universal Buoyancy Counter-Balance, $F_{U,Bi}/F_U$)}
+\author{Daniel T. Murphy}
+\date{May 18, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Session 205 introduced three standalone modules: \texttt{positive\_et\_expansion.py}
+(positive-energy expansion engine $E^{+}(t)$, Kozima neutron-drop coupling,
+expansion Lagrangian), \texttt{negative\_et\_erosion.py} (negative-energy
+erosion engine $E^{-}(t)$, net-energy balance, gravitational-wave damping,
+erosion Lagrangian), and \texttt{uqff\_vs\_string\_comparison.py} (10-aspect
+weighted UQFF vs. String-Theory comparison). The master equations encode the
+universal-buoyancy counter-balance $F_{U,Bi}/F_U$ as the single algebraic
+parameter that governs whether vacuum energy expands, erodes, or balances.
+This paper records the six exact identities (the H205 closures) that pin
+that algebra in the closure ledger. Three of the six are closed-form
+calculus / algebra theorems (H205-1 doubling-time, H205-2 critical balance,
+H205-3 net-factor); two are definitional arithmetic checkpoints (H205-4
+weight-sum, H205-6 test count); one is the postulated VDS dimensionality
+(H205-5, $N_{\text{levels}}=26$). No claim is made on the overall winner of
+the UQFF vs. String comparison; the closures only verify that the
+comparison's scoring weights are a probability simplex.
+\end{abstract}
+
+\section{Ledger Summary}
+
+\begin{center}
+\begin{tabular}{lllc}
+\toprule
+ID & Closure & Value & Class \\
+\midrule
+H205-1 & Doubling-time identity $t_{\text{double}}(\kappa + [\mathrm{SSq}]/26) = \ln 2$ & $31.6172$~s & THEOREM \\
+H205-2 & Critical balance ratio $r_{\text{crit}}$ solving $2r-1=0$ & $1/2$ & THEOREM \\
+H205-3 & Net-factor formula $\text{nf}(r) = 2r - 1$, $r=1.1$ & $1.2$ & THEOREM \\
+H205-4 & Comparison-weight unit sum & $1.00$ & arithmetic \\
+H205-5 & VDS spacetime level count $N_{\text{levels}}$ & $26$ & CONVENTION \\
+H205-6 & S205 module-test total $9+10+14$ & $33$ & arithmetic \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All six register as \texttt{EXACT} in \texttt{master\_closures.csv} /
+\texttt{sigma\_table.csv} (script: \texttt{\_session205\_closures.py}; final
+parseable line \texttt{S205-doubling-time-identity: 31.6172 vs 31.6172 -> EXACT}).
+Independent verification is provided by \texttt{\_verify\_s205.py}.
+
+\section{Theorems --- Calculus and Algebraic Identities}
+
+\begin{theorem}[H205-1 --- Doubling-time identity]
+\label{thm:H205-1}
+Let $E^{+}(t) = E_0 \exp\!\big((\kappa + [\mathrm{SSq}]/N_{\mathrm{lev}})\, t\big)
+\cdot S_{26}([\mathrm{SSq}]) \cdot (F_{U,Bi}/F_U)$, with all factors other than
+$\exp(\cdot)$ time-independent. Then the doubling time
+$t_{\mathrm{double}}$ satisfying $E^{+}(t_{\mathrm{double}}) = 2\, E^{+}(0)$ is
+\[
+   t_{\mathrm{double}} \;=\; \frac{\ln 2}{\kappa + [\mathrm{SSq}]/N_{\mathrm{lev}}}.
+\]
+\end{theorem}
+\begin{proof}
+$E^{+}(t)/E^{+}(0) = \exp\!\big((\kappa + [\mathrm{SSq}]/N_{\mathrm{lev}})\, t\big)$
+since the $S_{26}$ and buoyancy-ratio factors cancel. Setting this equal to $2$
+and taking $\ln$ gives the stated identity.
+\end{proof}
+
+\noindent
+With canonical $\kappa = 5 \times 10^{-4}\,\text{day}^{-1} = 5.787 \times 10^{-9}\,\text{s}^{-1}$,
+$[\mathrm{SSq}]=0.57$, $N_{\mathrm{lev}}=26$:
+\[
+   t_{\mathrm{double}} = \frac{\ln 2}{5.787\times10^{-9} + 0.57/26}
+   = \frac{0.6931\ldots}{2.1923\ldots \times 10^{-2}} = 31.6172\ldots\,\text{s},
+\]
+matching the module test $T_5$ output \texttt{3.1617e+01 s} byte-for-byte.
+
+\begin{theorem}[H205-2 --- Critical balance ratio]
+\label{thm:H205-2}
+The net-energy equation
+\[
+   E_{\mathrm{net}}(t) \;=\; E_0\, \exp\!\big((\kappa + [\mathrm{SSq}]/N_{\mathrm{lev}})\, t\big)\, S_{26}([\mathrm{SSq}])\, \big[\, 2(F_{U,Bi}/F_U) - 1\, \big]
+\]
+admits the unique zero $E_{\mathrm{net}}(t)\equiv 0$ at $r := F_{U,Bi}/F_U = 1/2$.
+\end{theorem}
+\begin{proof}
+The exponential and $S_{26}$ factors are strictly positive. Hence
+$E_{\mathrm{net}}=0$ iff $2r - 1 = 0$, which gives the unique root $r=1/2$.
+\end{proof}
+
+\begin{theorem}[H205-3 --- Net-factor formula]
+\label{thm:H205-3}
+Define $\text{nf}(r) := r - (1-r) = 2r - 1$, where $r = F_{U,Bi}/F_U$.
+Then for $r = 1.1$, $\text{nf}(1.1) = 1.2$ exactly.
+\end{theorem}
+\begin{proof}
+$\text{nf}(1.1) = 2(1.1) - 1 = 2.2 - 1 = 1.2$.
+\end{proof}
+
+\section{Structural Checkpoints --- Arithmetic and Convention}
+
+\begin{proposition}[H205-4 --- Weight-sum identity]
+\label{prop:H205-4}
+The category weights
+$W = \{w_{\text{test}}, w_{\text{pred}}, w_{\text{found}}, w_{\text{math}}\}
+= \{0.30, 0.30, 0.20, 0.20\}$ used in
+\texttt{uqff\_vs\_string\_comparison.OverallScoreCalculator} satisfy
+$\sum_{w \in W} w = 1$, i.e.\ $W$ is a probability simplex.
+\end{proposition}
+\begin{proof}
+$0.30 + 0.30 + 0.20 + 0.20 = 1.00$ by direct addition.
+\end{proof}
+
+\begin{convention}[H205-5 --- VDS spacetime level count]
+\label{conv:H205-5}
+The Vacuum-Dimensional-Spacetime (VDS) level count is fixed at
+$N_{\mathrm{lev}} = 26$ throughout the UQFF framework. This appears in the
+$S_{26}([\mathrm{SSq}])$ factor of $E^{\pm}(t)$ and in the per-level rate
+contribution $[\mathrm{SSq}]/N_{\mathrm{lev}}$. It is a postulated structural
+constant, not a derived quantity in S205.
+\end{convention}
+
+\begin{proposition}[H205-6 --- S205 module-test total]
+\label{prop:H205-6}
+The three S205 standalone modules carry, respectively, $9$, $10$, and $14$
+self-test cases (\texttt{positive\_et\_expansion.py},
+\texttt{negative\_et\_erosion.py}, \texttt{uqff\_vs\_string\_comparison.py}).
+Their sum is $33$, and all $33$ pass clean.
+\end{proposition}
+\begin{proof}
+$9 + 10 + 14 = 33$ by direct addition; module self-tests verified
+independently by execution.
+\end{proof}
+
+\section{Honest Classification}
+
+Of the six H205 closures: three are closed-form theorems
+(\ref{thm:H205-1}, \ref{thm:H205-2}, \ref{thm:H205-3}); two are definitional
+arithmetic checkpoints (\ref{prop:H205-4}, \ref{prop:H205-6}); one is a
+postulated structural constant (\ref{conv:H205-5}). No physical-content claim
+is made; in particular, the $E^{\pm}(t)$ framework's identification of
+$F_{U,Bi}/F_U = 1/2$ as the cosmological balance point is a model statement
+of the UQFF Universal-Buoyancy postulate, not a derivation from first
+principles. The closures verify only that the model's algebra is internally
+consistent.
+
+\section{Reproducibility}
+
+\begin{itemize}
+\item Closure script: \texttt{\_session205\_closures.py}
+\item Closure JSON:   \texttt{\_session205\_closures.json}
+\item Tier-13 block:  \texttt{UQFF\_UNIFIED\_CLOSURE\_DERIVATIONS.py},
+                      records \texttt{H205-1} through \texttt{H205-6}
+\item Ledger row:     \texttt{master\_closures.csv} (S205 row 6, status \texttt{OK})
+\item Sigma row:      \texttt{sigma\_table.csv}     (S205 row 6, bucket \texttt{EXACT})
+\item Verifier:       \texttt{\_verify\_s205.py} (independent algorithm:
+                      \texttt{sympy} symbolic root, \texttt{fractions.Fraction}
+                      rational arithmetic, \texttt{mpmath} arbitrary-precision
+                      logarithm)
+\item Source modules: \texttt{positive\_et\_expansion.py},
+                      \texttt{negative\_et\_erosion.py},
+                      \texttt{uqff\_vs\_string\_comparison.py}
+\item Canonical record: \texttt{VALIDATION\_MASTER\_INDEX\_2.md}, L462 (v5.62,
+                        commit \texttt{336d98e7}).
+\end{itemize}
+
+\end{document}

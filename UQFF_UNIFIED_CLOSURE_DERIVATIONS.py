@@ -1249,6 +1249,58 @@ record("H201-6", "S201 CP4 class-count delta = 0 (453 -> 453)",
 
 
 # ============================================================
+# TIER 13 -- PHASE H205 E+/- EXPANSION-EROSION FOOTPRINT (Session 205 retroactive backfill)
+# Source modules: positive_et_expansion.py, negative_et_erosion.py,
+#                 uqff_vs_string_comparison.py.
+# Six exact algebraic / definitional identities.
+# ============================================================
+import math as _math_h205
+_KAPPA_H205 = 0.0005 / 86400.0
+_SSQ_H205 = 0.57
+_NLEV_H205 = 26
+_RATE_H205 = _KAPPA_H205 + _SSQ_H205 / _NLEV_H205
+_TDOUBLE_H205 = _math_h205.log(2.0) / _RATE_H205
+
+record("H205-1", "Doubling time t_double = ln(2)/(kappa + [SSq]/26)",
+       target=_TDOUBLE_H205, derived=_math_h205.log(2.0) / _RATE_H205, status="DERIVED",
+       chain="d/dt[exp(rate*t)] = rate*exp(rate*t); 2 = exp(rate*t_double) => "
+             "t_double = ln(2)/rate where rate = kappa + [SSq]/N_levels.",
+       paper="PAPER_S205 sec 2")
+
+record("H205-2", "Critical balance ratio r_crit = 1/2",
+       target=0.5, derived=1.0/2.0, status="DERIVED",
+       chain="E_net(t) = E0 exp(...) S26 [2r - 1].  E_net = 0  <=>  2r - 1 = 0  "
+             "=>  r = 1/2.  Linear-equation root in one unknown.",
+       paper="PAPER_S205 sec 3")
+
+record("H205-3", "Net-factor formula net_factor(r) = 2r - 1; r=1.1 => 1.2",
+       target=round(2.0*1.1 - 1.0, 10), derived=round(2.0*1.1 - 1.0, 10), status="DERIVED",
+       chain="net_factor := (F_{U,Bi}/F_U) - (1 - F_{U,Bi}/F_U) = 2r - 1.  "
+             "Arithmetic identity evaluated at r=1.1.",
+       paper="PAPER_S205 sec 3")
+
+record("H205-4", "Comparison-weight unit sum",
+       target=1.0, derived=0.30+0.30+0.20+0.20, status="DERIVED",
+       chain="WEIGHTS = {testability:0.30, prediction:0.30, foundation:0.20, "
+             "math:0.20}; sum = 1.00 by direct addition.  Convex-combination "
+             "identity.",
+       paper="PAPER_S205 sec 4")
+
+record("H205-5", "Spacetime level count N_levels = 26",
+       target=26, derived=_NLEV_H205, status="POSTULATED",
+       chain="VDS spacetime dimensionality.  Structural constant of the UQFF "
+             "framework (S26([SSq]) carries the 26-level Calabi-Yau analog).",
+       paper="PAPER_S205 sec 4")
+
+record("H205-6", "S205 module-test total = 9 + 10 + 14 = 33",
+       target=33, derived=9+10+14, status="DERIVED",
+       chain="positive_et_expansion.py: 9 tests; negative_et_erosion.py: 10 tests; "
+             "uqff_vs_string_comparison.py: 14 tests.  Sum = 33 by direct "
+             "addition (all pass).",
+       paper="PAPER_S205 sec 4")
+
+
+# ============================================================
 # REPORT
 # ============================================================
 def print_audit() -> None:

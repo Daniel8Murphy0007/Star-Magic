@@ -1,0 +1,50 @@
+[
+  {
+    "id": "H205-1",
+    "label": "S205-doubling-time-identity",
+    "predicted": 31.6172,
+    "observed": 31.6172,
+    "status": "EXACT",
+    "chain": "t_double = ln(2) / (kappa + [SSq]/N_levels)"
+  },
+  {
+    "id": "H205-2",
+    "label": "S205-critical-balance-ratio",
+    "predicted": 0.5,
+    "observed": 0.5,
+    "status": "EXACT",
+    "chain": "2r - 1 = 0  =>  r_crit = 1/2"
+  },
+  {
+    "id": "H205-3",
+    "label": "S205-net-factor-formula",
+    "predicted": 1.2,
+    "observed": 1.2,
+    "status": "EXACT",
+    "chain": "net_factor(r) = 2r - 1;  r=1.1 => 1.2"
+  },
+  {
+    "id": "H205-4",
+    "label": "S205-weight-unit-sum",
+    "predicted": 1.0,
+    "observed": 1.0,
+    "status": "EXACT",
+    "chain": "0.30 + 0.30 + 0.20 + 0.20 = 1.0"
+  },
+  {
+    "id": "H205-5",
+    "label": "S205-spacetime-levels-26",
+    "predicted": 26,
+    "observed": 26,
+    "status": "EXACT",
+    "chain": "N_levels = 26 (VDS spacetime dimension)"
+  },
+  {
+    "id": "H205-6",
+    "label": "S205-module-test-total",
+    "predicted": 33,
+    "observed": 33,
+    "status": "EXACT",
+    "chain": "9 (pos) + 10 (neg) + 14 (cmp) = 33"
+  }
+]

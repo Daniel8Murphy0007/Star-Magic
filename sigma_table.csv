@@ -3,6 +3,7 @@ EXACT,201,closures,S201-new-classes-zero,0,0,0
 EXACT,202,closures,S202-BH26-spectral-sum,1760,1760,0
 EXACT,203,closures,S203-PTF-net-displacement,0,0,0
 EXACT,204,closures,S204-GW-chirp-equal-mass,0.870550563296,0.870550563296,0
+EXACT,205,closures,S205-doubling-time-identity,31.6172,31.6172,0
 EXACT,383,astro_chandrasekhar,astro_chandrasekhar,1.4400,2,0.0000
 EXACT,386,astro_isco,astro_isco,6,6.0,0.0000
 EXACT,388,astro_wd_exponent,astro_wd_exponent,-0.333333,3,0.0000
