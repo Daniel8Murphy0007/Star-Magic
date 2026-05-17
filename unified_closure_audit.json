@@ -521,23 +521,23 @@
   },
   {
     "id": "M5",
-    "claim": "Three-ring radii: r_outer=phi^(E-1), r_inner=phi^(-2(E-1))",
+    "claim": "Three-ring radii ANSATZ: r_outer=phi^(E-1), r_inner=phi^(-2(E-1))",
     "target": "(6.854, 0.0213)",
     "derived": "(6.854, 0.0213)",
     "match": true,
-    "status": "DERIVED",
-    "chain": "Outer ring expands by phi^1 per epoch; inner ring shrinks by phi^2 per epoch (gear-tooth pitch matching).  At Epoch 5: r_outer = phi^4 = 6.854102, r_inner = phi^-8 = 0.02128624.  Matches QCalcGeom.py mayan_ring_proportions() output exactly.",
-    "paper": "QCalcGeom.py L780-808 (mayan_ring_proportions)"
+    "status": "POSTULATED",
+    "chain": "HONEST SCOPE: the exponents (+1 for outer, -2 for inner) are a POSTULATED geometric ansatz, NOT derived from any physical principle in the repo.  No Lagrangian, no variational argument, no gauge constraint fixes the integers (1, -2).  They are chosen by hand so that (a) outer expands, inner shrinks, (b) Epoch 5 gives the desired ring spread.  Numerical evaluation at E=5: r_outer = phi^4 = 6.854102, r_inner = phi^-8 = 0.02128624 -- this matches QCalcGeom.py mayan_ring_proportions() exactly, but matching a function to its own definition is not a derivation.  OPEN PROBLEM: derive the (1, -2) exponent pair from a physical principle (candidate: angular-momentum quantisation across nested co-rotating shells, n_outer:n_companion:n_inner = 1:-1:-2).  Until that exists, this stays POSTULATED.",
+    "paper": "QCalcGeom.py L780-808 (mayan_ring_proportions) -- ANSATZ"
   },
   {
     "id": "M6",
-    "claim": "Gear ratio g_13(E) = phi^(3(E-1))",
+    "claim": "Gear ratio g_13(E) = phi^(3(E-1))  [algebraic from M5 ansatz]",
     "target": "321.99689437998484",
     "derived": "321.99689437998484",
     "match": true,
     "status": "DERIVED",
-    "chain": "g_13 = r_outer/r_inner = phi^(E-1) / phi^(-2(E-1)) = phi^(3(E-1)).  At Epoch 5: phi^12 \u2248 321.996894.  SymPy residual (g_13 - phi^(3(E-1))) = 0 confirmed.",
-    "paper": "QCalcGeom.py L795 (gear_ratio_13)"
+    "chain": "GIVEN POSTULATE M5: g_13 := r_outer/r_inner = phi^(E-1) / phi^(-2(E-1)) = phi^(3(E-1)).  At Epoch 5: phi^12 = 321.996894.  SymPy residual (g_13 - phi^(3(E-1))) = 0 confirmed.  This is pure algebra on the M5 postulate -- if M5 is later derived from first principles, M6 inherits that derivation; if M5 is replaced, M6 changes accordingly.",
+    "paper": "QCalcGeom.py L795 (gear_ratio_13) -- algebraic from M5"
   },
   {
     "id": "M7",

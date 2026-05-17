@@ -831,16 +831,25 @@ _r_inner = _phi_sym**(-2*(_E - 1))
 # At Epoch 5: outer = phi^4, inner = phi^-8
 _r_outer_E5 = float(_r_outer.subs(_E, 5))
 _r_inner_E5 = float(_r_inner.subs(_E, 5))
-record("M5", "Three-ring radii: r_outer=phi^(E-1), r_inner=phi^(-2(E-1))",
+record("M5", "Three-ring radii ANSATZ: r_outer=phi^(E-1), r_inner=phi^(-2(E-1))",
        target=(6.854, 0.0213),
        derived=(round(_r_outer_E5, 3), round(_r_inner_E5, 4)),
-       status="DERIVED",
-       chain="Outer ring expands by phi^1 per epoch; inner ring shrinks "
-             "by phi^2 per epoch (gear-tooth pitch matching).  At Epoch 5: "
-             f"r_outer = phi^4 = {_r_outer_E5:.6f}, "
-             f"r_inner = phi^-8 = {_r_inner_E5:.8f}.  Matches QCalcGeom.py "
-             "mayan_ring_proportions() output exactly.",
-       paper="QCalcGeom.py L780-808 (mayan_ring_proportions)")
+       status="POSTULATED",
+       chain="HONEST SCOPE: the exponents (+1 for outer, -2 for inner) are "
+             "a POSTULATED geometric ansatz, NOT derived from any physical "
+             "principle in the repo.  No Lagrangian, no variational "
+             "argument, no gauge constraint fixes the integers (1, -2).  "
+             "They are chosen by hand so that (a) outer expands, inner "
+             "shrinks, (b) Epoch 5 gives the desired ring spread.  "
+             f"Numerical evaluation at E=5: r_outer = phi^4 = {_r_outer_E5:.6f}, "
+             f"r_inner = phi^-8 = {_r_inner_E5:.8f} -- this matches "
+             "QCalcGeom.py mayan_ring_proportions() exactly, but matching "
+             "a function to its own definition is not a derivation.  "
+             "OPEN PROBLEM: derive the (1, -2) exponent pair from a "
+             "physical principle (candidate: angular-momentum quantisation "
+             "across nested co-rotating shells, n_outer:n_companion:n_inner "
+             "= 1:-1:-2).  Until that exists, this stays POSTULATED.",
+       paper="QCalcGeom.py L780-808 (mayan_ring_proportions) -- ANSATZ")
 
 # ---- M6: Gear ratio g_13(E) = r_outer/r_inner = phi^(3(E-1)) (DERIVED) ----
 _gear_ratio = _r_outer / _r_inner
@@ -850,14 +859,18 @@ _expected = _phi_sym**(3*(_E - 1))
 _gear_residual = sp.simplify(_gear_ratio_simplified - _expected)
 assert _gear_residual == 0
 _gear_E5 = float(_gear_ratio.subs(_E, 5))
-record("M6", "Gear ratio g_13(E) = phi^(3(E-1))",
+record("M6", "Gear ratio g_13(E) = phi^(3(E-1))  [algebraic from M5 ansatz]",
        target=float(_phi_sym**12),
        derived=_gear_E5,
        status="DERIVED",
-       chain="g_13 = r_outer/r_inner = phi^(E-1) / phi^(-2(E-1)) "
-             f"= phi^(3(E-1)).  At Epoch 5: phi^12 ≈ {_gear_E5:.6f}.  "
-             "SymPy residual (g_13 - phi^(3(E-1))) = 0 confirmed.",
-       paper="QCalcGeom.py L795 (gear_ratio_13)")
+       chain="GIVEN POSTULATE M5: g_13 := r_outer/r_inner "
+             "= phi^(E-1) / phi^(-2(E-1)) = phi^(3(E-1)).  "
+             f"At Epoch 5: phi^12 = {_gear_E5:.6f}.  "
+             "SymPy residual (g_13 - phi^(3(E-1))) = 0 confirmed.  "
+             "This is pure algebra on the M5 postulate -- if M5 is later "
+             "derived from first principles, M6 inherits that derivation; "
+             "if M5 is replaced, M6 changes accordingly.",
+       paper="QCalcGeom.py L795 (gear_ratio_13) -- algebraic from M5")
 
 # ---- M7: OMEGA_BAKTUN = 2*pi/(144000*86400 s)  (DERIVED) ----
 _seconds_per_baktun = sp.Integer(144000) * sp.Integer(86400)
@@ -995,10 +1008,15 @@ def print_audit() -> None:
     print("                F_U=1 crossing identity (FU1, Session 262:")
     print("                Mandelstam s+t+u sum rule + AX5 T-symmetry of Bi action),")
     print("                D_phys = D_crit - dim(T^22) = 26 - 22 = 4 (P1, Session 263),")
-    print("                Mayan three-ring geometry phi^(E-1)/phi^(-2(E-1)) (M4-M6),")
     print("                Great Cycle = 13*144000 days = 1,872,000 d (M2-M3),")
-    print("                U_I zero-points + sign-flip from cos(pi*t_n) (M9, M10)")
-    print("  POSTULATED :  baktun = 144000 days (M1, calendrical),")
+    print("                phi as positive root of x^2=x+1 (M4),")
+    print("                Omega_baktun dimensional (M7),")
+    print("                Gear ratio phi^(3(E-1)) -- algebraic from M5 ansatz (M6),")
+    print("                U_I zero-points + sign-flip from cos(pi*t_n) (M9, M10),")
+    print("                F_U += xi*U_I*V_body dimensional structure (M11)")
+    print("  POSTULATED :  baktun = 144000 days (M1, calendrical input),")
+    print("                three-ring exponents (1, -2) (M5, geometric ansatz --")
+    print("                  no first-principles derivation in repo yet),")
     print("                U_I functional form (M8, physical ansatz)")
     print("  CALIBRATED :  rho_SCm (= AX7 anchor; Casimir/KK route attempted")
     print("                Session 263, search exhausted -- T^22 radius left")
