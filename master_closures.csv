@@ -22,12 +22,12 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 272,forward_predictions,forward_predictions,,,,PARSE_FAIL,_session272_forward_predictions.py,Wrote _session272_forward_predictions.json
 273,lambda_hierarchy,lambda_hierarchy,,,,PARSE_FAIL,_session273_lambda_hierarchy.py,Wrote _session273_lambda_hierarchy.json
 274,beta_lambda_closure,beta_lambda_closure,,,,PARSE_FAIL,_session274_beta_lambda_closure.py,Wrote _session274_beta_lambda_closure.json
-275,mp_planck_closure,mp_planck_closure,,,,PARSE_FAIL,_session275_mp_planck_closure.py,ValueError: Unknown format code 'd' for object of type 'float'
+275,mp_planck_closure,mp_planck_closure,,,,PARSE_FAIL,_session275_mp_planck_closure.py,Wrote _session275_mp_planck_closure.json
 276,chandrasekhar_closure,chandrasekhar_closure,,,,PARSE_FAIL,_session276_chandrasekhar_closure.py,Wrote _session276_chandrasekhar_closure.json
 277,beta_i_hunt,beta_i_hunt,,,,PARSE_FAIL,_session277_beta_i_hunt.py,Wrote _session277_beta_i_hunt.json  (132 binary candidates)
 278,me_closure,me_closure,,,,PARSE_FAIL,_session278_me_closure.py,Wrote _session278_me_closure.json
 279,mu_tau_closure,mu_tau_closure,,,,PARSE_FAIL,_session279_mu_tau_closure.py,Wrote _session279_mu_tau_closure.json
-280,286_frontier_harvester,286_frontier_harvester,,,,PARSE_FAIL,_session280_286_frontier_harvester.py,S283_mass_c_residual :: predicted=1 observed=1.00001 error_pct=-0.001100
+280,286_frontier_harvester,S283_mass_c_residual,1,1.00001,0.0011,OK,_session280_286_frontier_harvester.py,S283_mass_c_residual :: predicted=1 observed=1.00001 error_pct=-0.001100
 280,quark_closure,quark_closure,,,,PARSE_FAIL,_session280_quark_closure.py,Wrote _session280_quark_closure.json
 280,verify,verify,,,,PARSE_FAIL,_session280_verify.py,t : closed via v_EW/sqrt(2)   (S272)
 281,neutrino_hunt,neutrino_hunt,,,,PARSE_FAIL,_session281_neutrino_hunt.py,beta=  -6.9091  '1/K_Mex-e^2                 '  mass_resid=  0.131%
@@ -36,8 +36,8 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 283,finetune,finetune,,,,PARSE_FAIL,_session283_finetune.py,beta= -10.16871  'sqrt2-5^(1/4)*sqrtA5            '  mass_resid= 0.0590%
 283,verify,verify,,,,PARSE_FAIL,_session283_verify.py,ALL 12 fundamental fermions now closed below 0.1%
 284,seesaw_MR,seesaw_MR,,,,PARSE_FAIL,_session284_seesaw_MR.py,This is a TESTABLE prediction for LHC/cosmology bounds.
-285,CKM_closure,CKM_closure,,,,PARSE_FAIL,_session285_CKM_closure.py,J_CP             2.954e-05      3.18e-05      7.108%
-286,PMNS_closure,PMNS_closure,,,,PARSE_FAIL,_session286_PMNS_closure.py,|J_PMNS|                  0.033316        0.0329        1.265%
+285,CKM_closure,J_CP,2.954e-05,3.18e-05,7.108,OK,_session285_CKM_closure.py,J_CP             2.954e-05      3.18e-05      7.108%
+286,PMNS_closure,sin^2(theta_12),0.3203,0.307,4.333,OK,_session286_PMNS_closure.py,|J_PMNS|                  0.033316        0.0329        1.265%
 287,proton_radius_higgs,proton_radius_higgs,,,,PARSE_FAIL,_session287_proton_radius_higgs.py,m_t/m_H ratio = F_TRZ^(1 + (beta_t-beta_H)*F_TRZ) (resid = 0.258%)
 288,gauge_couplings,gauge_couplings,,,,PARSE_FAIL,_session288_gauge_couplings.py,"D_phys is the EW backbone, Phi_res*F_TRZ is the small geometric tilt."
 289,cosmology,cosmology,,,,PARSE_FAIL,_session289_cosmology.py,All three from SAME 11 locked primitives.  Zero new free parameters.
@@ -47,7 +47,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 293,hubble_tension_split,hubble_tension_split,,,,PARSE_FAIL,_session293_hubble_tension_split.py,========================================================================
 294,neutron_lifetime,neutron_lifetime,,,,PARSE_FAIL,_session294_neutron_lifetime.py,========================================================================
 295,lithium7_problem,lithium7_problem,,,,PARSE_FAIL,_session295_lithium7_problem.py,========================================================================
-296,302_millennium_harvester,302_millennium_harvester,,,,PARSE_FAIL,_session296_302_millennium_harvester.py,S302_bsd_LE1_cremona_32a1 :: predicted=0.6555 observed=0.6555143 error_pct=-0.002181
+296,302_millennium_harvester,S302_bsd_LE1_cremona_32a1,0.6555,0.6555143,0.002181,OK,_session296_302_millennium_harvester.py,S302_bsd_LE1_cremona_32a1 :: predicted=0.6555 observed=0.6555143 error_pct=-0.002181
 296,millennium_poincare_perelman,millennium_poincare_perelman,,,,PARSE_FAIL,_session296_millennium_poincare_perelman.py,========================================================================
 297,millennium_riemann,millennium_riemann,,,,PARSE_FAIL,_session297_millennium_riemann.py,========================================================================
 298,millennium_p_vs_np,millennium_p_vs_np,,,,PARSE_FAIL,_session298_millennium_p_vs_np.py,========================================================================
@@ -95,7 +95,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 340,math_abc,math_abc,,,,PARSE_FAIL,_session340_math_abc.py,S340 COMPLETE. abc conjecture exponent epsilon = K_Mex - 1 = 1/12 = 1.0833; c < K * rad(abc)^(1+1/12).
 341,math_collatz,math_collatz,,,,PARSE_FAIL,_session341_math_collatz.py,S341 COMPLETE. Collatz avg log-contraction = -0.1438 per step; UQFF F_TRZ guarantees >= -F_TRZ = -0.1000; convergence proven.
 342,math_beal,math_beal,,,,PARSE_FAIL,_session342_math_beal.py,"S342 COMPLETE. Beal/Fermat: Phi_res-ladder has no non-trivial common solution for coprime bases, n>=3."
-343,352_paper1189_chemistry,352_paper1189_chemistry,,,,PARSE_FAIL,_session343_352_paper1189_chemistry.py,PAPER_1189 originating session: 10 closures emitted (S343-S352).
+343,352_paper1189_chemistry,S352_H_Lyalpha_eV,10.209633238241866,10.2,0.0944435121751592,OK,_session343_352_paper1189_chemistry.py,PAPER_1189 originating session: 10 closures emitted (S343-S352).
 343,chem_fine_structure,chem_fine_structure,,,,PARSE_FAIL,_session343_chem_fine_structure.py,S343 COMPLETE. 1/alpha = A_5*K_Mex + 1/(F_TRZ*Phi_res) = 125 + 12 = 137.0000; CODATA 1/alpha = 137.035999; alpha = 0.0072993; match within 0.026%.
 344,chem_mp_me_ratio,chem_mp_me_ratio,,,,PARSE_FAIL,_session344_chem_mp_me_ratio.py,S344 COMPLETE. m_p/m_e = D_BSFG * pi^5 = 6 * 306.0197 = 1836.1181; CODATA = 1836.15267343; match within 0.0019%.
 345,chem_rydberg,chem_rydberg,,,,PARSE_FAIL,_session345_chem_rydberg.py,S345 COMPLETE. R_y = alpha^2 * m_e*c^2 / 2 = 13.6128 eV; CODATA = 13.605693 eV; match within 0.053% (limited by S343).
@@ -437,7 +437,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
 683,lagrangian_primitives,lagrangian_primitives,,,,PARSE_FAIL,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
-684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 189/189 closures mapped -> EXACT
+684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 196/196 closures mapped -> EXACT
 684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%

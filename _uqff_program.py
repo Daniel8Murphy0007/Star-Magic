@@ -39,6 +39,12 @@ OUTPUT_RE_A = re.compile(r"([\w\-+/ ()^.]+?):\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?
 OUTPUT_RE_B = re.compile(r"=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^;]*?;\s*obs[^=]*?=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^;]*?;\s*match\s*([\d.]+)\s*%", re.I)
 # Pattern C: "label = PRED, obs = OBS, err = ERR%"  /  "label: PRED (obs OBS, err ERR%)"
 OUTPUT_RE_C = re.compile(r"([\w\-+/ ()^.]+?)\s*[:=]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^,]*?,\s*obs[^=:]*[:=]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^,]*?,\s*(?:err|error|match)[^=:]*[:=]\s*([\d.]+)\s*%", re.I)
+# Pattern D: harvester form "<label> :: predicted=PRED observed=OBS error_pct=ERR"
+#   used by S280_286/S296_302/etc. harvesters.  Last-matching line wins.
+OUTPUT_RE_D = re.compile(r"([\w\-+/ ().:^*]+?)\s*(?:::|:)?\s*predicted\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s+observed\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s+error_?pct\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)", re.I)
+# Pattern E: 3-col tabular "  LABEL    PRED    OBS    ERR%"  (whitespace separated,
+#   PRED and OBS in scientific or decimal, ERR a bare percent w/o sign)
+OUTPUT_RE_E = re.compile(r"^([A-Za-z][\w|/.()\-+^*\\]*?)\s{2,}([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s{2,}([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s{2,}([\d.]+)\s*%?\s*$")
 
 def _normalize_err(err_str: str) -> str:
     """Promote machine-zero (< 1e-9 %) errors to EXACT.
@@ -65,6 +71,18 @@ def _parse_line(line, fallback_name):
     if m:
         return fallback_name, m.group(1), m.group(2), _normalize_err(m.group(3))
     m = OUTPUT_RE_C.search(line)
+    if m:
+        return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
+    m = OUTPUT_RE_D.search(line)
+    if m:
+        # Pattern D yields signed/absolute error_pct; normalize to absolute %.
+        err = m.group(4)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(err)
+    m = OUTPUT_RE_E.match(line)
     if m:
         return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
     return None

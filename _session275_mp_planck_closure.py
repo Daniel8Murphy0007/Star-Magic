@@ -141,7 +141,7 @@ e_cands = {
 }
 for name, val in e_cands.items():
     flag = "  <-- match" if val == N_e else ""
-    print(f"    {val:3d}  {name}{flag}")
+    print(f"    {val!s:>5}  {name}{flag}")
 print()
 
 # Use m_p/m_e known closure (S266: A5^2/2 + D_BSFG^2 = 1836)
