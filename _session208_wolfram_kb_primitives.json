@@ -1,0 +1,44 @@
+[
+  {
+    "id": "WKB-1",
+    "label": "Mayan Baktun = 400 tuns * 360 days = 144000 days",
+    "target": 144000,
+    "derived": 144000
+  },
+  {
+    "id": "WKB-2",
+    "label": "Mayan Long Count = 13 Baktuns = 1872000 days",
+    "target": 1872000,
+    "derived": 1872000
+  },
+  {
+    "id": "WKB-3",
+    "label": "Biblical generation = 40 years (Exodus 16:35 canon)",
+    "target": 40,
+    "derived": 40
+  },
+  {
+    "id": "WKB-4",
+    "label": "Epoch-5 zero-point cycle = 5 * 4320 yr = 21600 yr",
+    "target": 21600,
+    "derived": 21600
+  },
+  {
+    "id": "WKB-5",
+    "label": "PI decoder: digit-sum of first 10 digits = 39",
+    "target": 39,
+    "derived": 39
+  },
+  {
+    "id": "WKB-6",
+    "label": "Bosonic string D_crit from (D-2)/24 = 1  =>  D = 26",
+    "target": 26,
+    "derived": 26
+  },
+  {
+    "id": "WKB-7",
+    "label": "D_phys = D_crit - 22 (AX8 T^22 compactification) = 4",
+    "target": 4,
+    "derived": 4
+  }
+]

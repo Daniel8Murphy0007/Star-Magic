@@ -1,0 +1,44 @@
+[
+  {
+    "id": "NRP-1",
+    "label": "magic-number set cardinality |{2,8,20,28,50,82,126}|",
+    "target": 7,
+    "derived": 7
+  },
+  {
+    "id": "NRP-2",
+    "label": "sum of all 7 magic numbers = 2+8+20+28+50+82+126 = 316",
+    "target": 316,
+    "derived": 316
+  },
+  {
+    "id": "NRP-3",
+    "label": "doubly-magic 208-Pb: Z(82) + N(126) = 208",
+    "target": 208,
+    "derived": 208
+  },
+  {
+    "id": "NRP-4",
+    "label": "doubly-magic 4-He: Z(2) + N(2) = 4",
+    "target": 4,
+    "derived": 4
+  },
+  {
+    "id": "NRP-5",
+    "label": "doubly-magic 16-O: Z(8) + N(8) = 16",
+    "target": 16,
+    "derived": 16
+  },
+  {
+    "id": "NRP-6",
+    "label": "pairing-sign sum over (even/odd)x(even/odd) = +1+0+0-1 = 0",
+    "target": 0,
+    "derived": 0
+  },
+  {
+    "id": "NRP-7",
+    "label": "periodic-table span Z_max - Z_min + 1 = 118",
+    "target": 118,
+    "derived": 118
+  }
+]

@@ -40,17 +40,33 @@ OUTPUT_RE_B = re.compile(r"=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^;]*?;\s*obs[^=
 # Pattern C: "label = PRED, obs = OBS, err = ERR%"  /  "label: PRED (obs OBS, err ERR%)"
 OUTPUT_RE_C = re.compile(r"([\w\-+/ ()^.]+?)\s*[:=]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^,]*?,\s*obs[^=:]*[:=]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^,]*?,\s*(?:err|error|match)[^=:]*[:=]\s*([\d.]+)\s*%", re.I)
 
+def _normalize_err(err_str: str) -> str:
+    """Promote machine-zero (< 1e-9 %) errors to EXACT.
+
+    Many closure scripts compute err_pct = abs(d-t)/t*100 which can yield
+    values like 1e-14 for IEEE-754-equal results.  Treat anything below
+    1 part in 10^11 (i.e. 1e-9 %) as algebraically EXACT.
+    """
+    try:
+        v = float(err_str)
+    except (TypeError, ValueError):
+        return err_str
+    if abs(v) < 1e-9:
+        return "0"
+    return err_str
+
 def _parse_line(line, fallback_name):
     m = OUTPUT_RE_A.search(line)
     if m:
         raw = m.group(4)
-        return m.group(1).strip(), m.group(2), m.group(3), ("0" if raw.upper()=="EXACT" else raw.rstrip("%"))
+        err = "0" if raw.upper()=="EXACT" else _normalize_err(raw.rstrip("%"))
+        return m.group(1).strip(), m.group(2), m.group(3), err
     m = OUTPUT_RE_B.search(line)
     if m:
-        return fallback_name, m.group(1), m.group(2), m.group(3)
+        return fallback_name, m.group(1), m.group(2), _normalize_err(m.group(3))
     m = OUTPUT_RE_C.search(line)
     if m:
-        return m.group(1).strip(), m.group(2), m.group(3), m.group(4)
+        return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
     return None
 
 def audit():

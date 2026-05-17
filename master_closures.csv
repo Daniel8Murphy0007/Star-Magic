@@ -6,6 +6,8 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 205,closures,S205-doubling-time-identity,31.6172,31.6172,0,OK,_session205_closures.py,S205-doubling-time-identity: 31.6172 vs 31.6172 -> EXACT
 206,qcalcgeom_ubs_closures,QCalcGeom-v220-system-dimensionality,4,4,0,OK,_session206_qcalcgeom_ubs_closures.py,QCalcGeom-v220-system-dimensionality: 4 vs 4 -> EXACT
 207,cp_chain_closures,CPCH-1-bsfg-buoyancy-inverse-square,0.25,0.25,0,OK,_session207_cp_chain_closures.py,CPCH-1-bsfg-buoyancy-inverse-square: 0.25 vs 0.25 -> EXACT
+208,wolfram_kb_primitives,WKB-1-Mayan-Baktun,144000,144000,0,OK,_session208_wolfram_kb_primitives.py,WKB-1-Mayan-Baktun: 144000 vs 144000 -> EXACT
+209,nuclear_resonance_primitives,NRP-1-magic-cardinality,7,7,0,OK,_session209_nuclear_resonance_primitives.py,NRP-1-magic-cardinality: 7 vs 7 -> EXACT
 261,audit,audit,,,,PARSE_FAIL,_session261_audit.py,- Bundle missing: arxiv_submission_1159_1170
 261,closures,closures,,,,PARSE_FAIL,_session261_closures.py,6/6 physical anchors closed.  Framework fully self-consistent.
 262,closures,closures,,,,PARSE_FAIL,_session262_closures.py,Wrote _session262_closures.json
@@ -134,34 +136,34 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 380,sm_proton_g,sm_proton_g,5.5667,5.5857,0.341,OK,_session380_sm_proton_g.py,S380 COMPLETE. g_p = D_BSFG - Phi_res + F_TRZ*D_phys = 5.5667; obs (CODATA) = 5.5857; match 0.341%.
 381,sm_mt_mw,sm_mt_mw,2.1487,2.1485,0.008,OK,_session381_sm_mt_mw.py,S381 COMPLETE. m_t/m_W = K_Mex + F_TRZ*SSq + F_TRZ^2*Phi_res = 2.1487; obs (PDG) = 2.1485; match 0.008%.
 382,sm_mh_mt,sm_mh_mt,0.7217,0.7253,0.502,OK,_session382_sm_mh_mt.py,S382 COMPLETE. m_H/m_t = beta_i + F_TRZ*K_Mex*SSq = 0.7217; obs (PDG) = 0.7253; match 0.502%.
-383,astro_chandrasekhar,astro_chandrasekhar,1.4400,2,0.0000,OK,_session383_astro_chandrasekhar.py,"S383 COMPLETE. M_Ch = F_TRZ*D_phys^2*(1-F_TRZ) = 1.4400 M_sun; obs (textbook, mu_e=2) = 1.44; match 0.0000%."
+383,astro_chandrasekhar,astro_chandrasekhar,1.4400,2,0,OK,_session383_astro_chandrasekhar.py,"S383 COMPLETE. M_Ch = F_TRZ*D_phys^2*(1-F_TRZ) = 1.4400 M_sun; obs (textbook, mu_e=2) = 1.44; match 0.0000%."
 384,astro_tov_max,astro_tov_max,2.1584,2.16,0.075,OK,_session384_astro_tov_max.py,S384 COMPLETE. M_TOV = K_Mex + F_TRZ*SSq + F_TRZ^2*SSq*(D_phys-Phi_res) = 2.1584 M_sun; obs (GW170817+J0740) = 2.16; match 0.075%.
 385,astro_photon_sphere,astro_photon_sphere,3.0167,3.0,0.556,OK,_session385_astro_photon_sphere.py,S385 COMPLETE. r_ph/M = K_Mex + Phi_res + F_TRZ = 3.0167; obs (GR exact) = 3.0; match 0.556%.
-386,astro_isco,astro_isco,6,6.0,0.0000,OK,_session386_astro_isco.py,S386 COMPLETE. r_ISCO/M = D_BSFG = 6; obs (GR exact) = 6.0; match 0.0000%. (D_BSFG locked primitive = ISCO factor)
+386,astro_isco,astro_isco,6,6.0,0,OK,_session386_astro_isco.py,S386 COMPLETE. r_ISCO/M = D_BSFG = 6; obs (GR exact) = 6.0; match 0.0000%. (D_BSFG locked primitive = ISCO factor)
 387,astro_bh_entropy,astro_bh_entropy,0.2483,0.25,0.667,OK,_session387_astro_bh_entropy.py,S387 COMPLETE. S/A = F_TRZ*K_Mex + F_TRZ^2*D_phys = 0.2483; obs (Bekenstein-Hawking) = 0.25; match 0.667%.
-388,astro_wd_exponent,astro_wd_exponent,-0.333333,3,0.0000,OK,_session388_astro_wd_exponent.py,S388 COMPLETE. WD exponent = -Phi_res*F_TRZ*D_phys = -0.333333; obs (polytrope n=3/2) = -0.333333; match 0.0000%. (= -1/3 exact)
-389,astro_grav_binding,astro_grav_binding,0.6000,0.6,0.0000,OK,_session389_astro_grav_binding.py,S389 COMPLETE. U_grav coeff = SSq + F_TRZ^2*(D_phys-1) = 0.6000; obs (3/5 uniform sphere) = 0.6; match 0.0000%. (= 0.60 exact)
+388,astro_wd_exponent,astro_wd_exponent,-0.333333,3,0,OK,_session388_astro_wd_exponent.py,S388 COMPLETE. WD exponent = -Phi_res*F_TRZ*D_phys = -0.333333; obs (polytrope n=3/2) = -0.333333; match 0.0000%. (= -1/3 exact)
+389,astro_grav_binding,astro_grav_binding,0.6000,0.6,0,OK,_session389_astro_grav_binding.py,S389 COMPLETE. U_grav coeff = SSq + F_TRZ^2*(D_phys-1) = 0.6000; obs (3/5 uniform sphere) = 0.6; match 0.0000%. (= 0.60 exact)
 390,astro_salpeter_imf,astro_salpeter_imf,2.3483,2.35,0.071,OK,_session390_astro_salpeter_imf.py,S390 COMPLETE. alpha_Salpeter = K_Mex+Phi_res-F_TRZ*D_BSFG+F_TRZ^2*(D_phys-Phi_res) = 2.3483; obs (Salpeter 1955) = 2.35; match 0.071%.
 391,astro_ns_compactness,astro_ns_compactness,0.2106,10,0.292,OK,_session391_astro_ns_compactness.py,"S391 COMPLETE. NS compactness = K_Mex*F_TRZ + F_TRZ^3*D_phys*SSq = 0.2106; obs (1.4 M_sun, R=10 km) = 0.21; match 0.292%."
 392,astro_solar_schwarzschild,astro_solar_schwarzschild,4.228e-06,4.24e-06,0.283,OK,_session392_astro_solar_schwarzschild.py,S392 COMPLETE. R_s/R_sun = F_TRZ^6*D_phys*(1+F_TRZ*SSq) = 4.228e-06; obs (2.95 km / 6.96e5 km) = 4.24e-06; match 0.283%.
 393,cm_bcs_gap,cm_bcs_gap,3.5403,3.528,0.350,OK,_session393_cm_bcs_gap.py,S393 COMPLETE. 2Delta/(k_B T_c) = K_Mex+Phi_res+F_TRZ*(SSq+D_phys+2*Phi_res) = 3.5403; obs (BCS weak-coupling) = 3.528; match 0.350%.
-394,cm_wilson,cm_wilson,2.0000,2.0,0.0000,OK,_session394_cm_wilson.py,S394 COMPLETE. R_W = K_Mex - F_TRZ*Phi_res = 2.0000; obs (free-electron) = 2.0; match 0.0000%. (= 24/12 exact)
+394,cm_wilson,cm_wilson,2.0000,2.0,0,OK,_session394_cm_wilson.py,S394 COMPLETE. R_W = K_Mex - F_TRZ*Phi_res = 2.0000; obs (free-electron) = 2.0; match 0.0000%. (= 24/12 exact)
 395,cm_wiedemann_franz,cm_wiedemann_franz,3.2997,3.2899,0.298,OK,_session395_cm_wiedemann_franz.py,S395 COMPLETE. L_0 coeff = K_Mex+Phi_res+F_TRZ*D_phys-SSq*F_TRZ+F_TRZ^2*D_phys = 3.2997; obs (pi^2/3) = 3.2899; match 0.298%.
 396,cm_von_klitzing,cm_von_klitzing,4.4263,4.4118,0.329,OK,_session396_cm_von_klitzing.py,S396 COMPLETE. log10(R_K) = D_phys+SSq*Phi_res-SSq*F_TRZ+F_TRZ^2*Phi_res = 4.4263; obs (log10 h/e^2) = 4.4118; match 0.329%.
 397,cm_coherence_length,cm_coherence_length,0.3176,0.3183,0.213,OK,_session397_cm_coherence_length.py,S397 COMPLETE. xi_0/(hbar v_F/Delta) = F_TRZ*Phi_res*D_phys-F_TRZ^2-F_TRZ^2*SSq = 0.3176; obs (1/pi) = 0.3183; match 0.213%.
 398,cm_bec_tc,cm_bec_tc,3.3250,3.3125,0.377,OK,_session398_cm_bec_tc.py,S398 COMPLETE. T_BEC coeff = K_Mex+Phi_res+F_TRZ*(D_phys+F_TRZ*Phi_res) = 3.3250; obs (4pi/zeta(3/2)^(2/3)) = 3.3125; match 0.377%.
 399,cm_zeta3,cm_zeta3,1.2000,1.2021,0.171,OK,_session399_cm_zeta3.py,S399 COMPLETE. zeta(3) closure = Phi_res+F_TRZ*D_phys-F_TRZ^2*Phi_res*D_phys = 1.2000; obs (Apery) = 1.2021; match 0.171%.
-400,cm_isotope,cm_isotope,0.500000,0.5,0.0000,OK,_session400_cm_isotope.py,S400 COMPLETE. alpha_iso = Phi_res-F_TRZ*Phi_res*D_phys = 0.500000; obs (BCS) = 0.5; match 0.0000%. (= 1/2 exact)
-401,cm_brinkman_rice,cm_brinkman_rice,2,1.5,0.0000,OK,_session401_cm_brinkman_rice.py,S401 COMPLETE. U_c/W = 2*Phi_res*(1-F_TRZ) = 1.500000; obs (Brinkman-Rice) = 1.5; match 0.0000%. (= 3/2 exact)
-402,cm_xy_exponent,cm_xy_exponent,0.666667,0.666667,0.0000,OK,_session402_cm_xy_exponent.py,"S402 COMPLETE. nu_XY = D_phys/D_BSFG = 0.666667; obs (mean-field XY) = 0.666667; match 0.0000%. (= 2/3 exact, primitive identification)"
+400,cm_isotope,cm_isotope,0.500000,0.5,0,OK,_session400_cm_isotope.py,S400 COMPLETE. alpha_iso = Phi_res-F_TRZ*Phi_res*D_phys = 0.500000; obs (BCS) = 0.5; match 0.0000%. (= 1/2 exact)
+401,cm_brinkman_rice,cm_brinkman_rice,2,1.5,0,OK,_session401_cm_brinkman_rice.py,S401 COMPLETE. U_c/W = 2*Phi_res*(1-F_TRZ) = 1.500000; obs (Brinkman-Rice) = 1.5; match 0.0000%. (= 3/2 exact)
+402,cm_xy_exponent,cm_xy_exponent,0.666667,0.666667,0,OK,_session402_cm_xy_exponent.py,"S402 COMPLETE. nu_XY = D_phys/D_BSFG = 0.666667; obs (mean-field XY) = 0.666667; match 0.0000%. (= 2/3 exact, primitive identification)"
 403,bio_dna_pitch,bio_dna_pitch,10.4867,10.5,0.127,OK,_session403_bio_dna_pitch.py,S403 COMPLETE. DNA bp/turn = SO5+SSq-F_TRZ*Phi_res = 10.4867; obs (B-DNA) = 10.5; match 0.127%.
-404,bio_atp,bio_atp,30.5000,30.5,0.0000,OK,_session404_bio_atp.py,S404 COMPLETE. |dG_ATP| = Phi_res*A_5 - F_TRZ*D_phys*A_5*Phi_res + F_TRZ*Phi_res*SO5 - F_TRZ*Phi_res*D_phys = 30.5000 kJ/mol; obs = 30.5; match 0.0000%. (= 30.5 exact)
+404,bio_atp,bio_atp,30.5000,30.5,0,OK,_session404_bio_atp.py,S404 COMPLETE. |dG_ATP| = Phi_res*A_5 - F_TRZ*D_phys*A_5*Phi_res + F_TRZ*Phi_res*SO5 - F_TRZ*Phi_res*D_phys = 30.5000 kJ/mol; obs = 30.5; match 0.0000%. (= 30.5 exact)
 405,bio_codon_redundancy,bio_codon_redundancy,3.1937,3.2,0.198,OK,_session405_bio_codon_redundancy.py,S405 COMPLETE. codons/aa = K_Mex+SSq+F_TRZ*D_phys+SSq*F_TRZ+F_TRZ*Phi_res = 3.1937; obs (64/20) = 3.2; match 0.198%.
-406,bio_kleiber,bio_kleiber,0.750000,0.75,0.0000,OK,_session406_bio_kleiber.py,S406 COMPLETE. Kleiber exponent = Phi_res - F_TRZ*Phi_res = 0.750000; obs (3/4) = 0.75; match 0.0000%. (= 3/4 exact)
+406,bio_kleiber,bio_kleiber,0.750000,0.75,0,OK,_session406_bio_kleiber.py,S406 COMPLETE. Kleiber exponent = Phi_res - F_TRZ*Phi_res = 0.750000; obs (3/4) = 0.75; match 0.0000%. (= 3/4 exact)
 407,bio_hill,bio_hill,2.7958,2.8,0.149,OK,_session407_bio_hill.py,S407 COMPLETE. n_H = K_Mex+Phi_res-F_TRZ-F_TRZ^2*K_Mex = 2.7958; obs (hemoglobin) = 2.8; match 0.149%.
 408,bio_photosynthesis,bio_photosynthesis,0.1248,0.125,0.133,OK,_session408_bio_photosynthesis.py,S408 COMPLETE. PS quantum yield = F_TRZ+F_TRZ^2*K_Mex+F_TRZ^3*D_phys = 0.1248; obs (1/8) = 0.125; match 0.133%.
 409,bio_chlorophyll,bio_chlorophyll,680.2633,680.0,0.039,OK,_session409_bio_chlorophyll.py,S409 COMPLETE. chlorophyll-a peak = A_5*SO5+SO5*D_BSFG+SO5*K_Mex-SSq = 680.2633 nm; obs (Q_y band) = 680.0; match 0.039%.
-410,bio_telomere,bio_telomere,6,6,0.0000,OK,_session410_bio_telomere.py,S410 COMPLETE. telomere repeat = D_BSFG = 6; obs (TTAGGG) = 6 bp; match 0.0000%. (primitive identification: TTAGGG length = D_BSFG)
+410,bio_telomere,bio_telomere,6,6,0,OK,_session410_bio_telomere.py,S410 COMPLETE. telomere repeat = D_BSFG = 6; obs (TTAGGG) = 6 bp; match 0.0000%. (primitive identification: TTAGGG length = D_BSFG)
 411,bio_redfield,bio_redfield,6.6390,6.625,0.211,OK,_session411_bio_redfield.py,S411 COMPLETE. Redfield C/N = D_BSFG+Phi_res-F_TRZ-F_TRZ*Phi_res-F_TRZ^2-F_TRZ^3 = 6.6390; obs (106/16) = 6.625; match 0.211%.
 412,bio_phyllotaxis,bio_phyllotaxis,1.6154,1.6180,0.162,OK,_session412_bio_phyllotaxis.py,S412 COMPLETE. phi = K_Mex-SSq+F_TRZ*Phi_res+F_TRZ^2*K_Mex-F_TRZ^3*K_Mex = 1.6154; obs (golden ratio) = 1.6180; match 0.162%.
 413,plasma_iter_aspect,plasma_iter_aspect,,,,PARSE_FAIL,_session413_plasma_iter_aspect.py,S413 COMPLETE. ITER aspect R/a = 3.1000; target 3.1; match 0.0000%.
@@ -304,13 +306,13 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 550,mp_MeV,mp_MeV,,,,PARSE_FAIL,_session550_mp_MeV.py,S550 COMPLETE. m_p (MeV) = 938.2500; closure = N_ch*SO5^2+N_ch*D_phys+K_Mex+2*F*Phi_res; target 938.2721; match 0.0024%.
 551,me_MeV,me_MeV,,,,PARSE_FAIL,_session551_me_MeV.py,S551 COMPLETE. m_e (MeV) = 0.511167; closure = SSq-F*Phi_res+F^2*K-F^2*Phi_res+F^2+2*F^3; target 0.510999; match 0.0328%.
 552,alpha,alpha,,,,PARSE_FAIL,_session552_alpha.py,S552 COMPLETE. fine structure alpha = 0.007300; closure = F^3*D_BSFG+F^3+F^4*D_phys-F^4; target 0.007297; match 0.0363%.
-553,CO2,CO2 ppm,420.0000,420,0.0000,OK,_session553_CO2.py,CO2 ppm: 420.0000 vs 420 -> 0.0000% [EXACT]
+553,CO2,CO2 ppm,420.0000,420,0,OK,_session553_CO2.py,CO2 ppm: 420.0000 vs 420 -> 0.0000% [EXACT]
 554,lapse,lapse,,,,PARSE_FAIL,_session554_lapse.py,Lapse rate: 6.486667 K/km vs 6.5 -> 0.2051%
 555,scaleH,scaleH,,,,PARSE_FAIL,_session555_scaleH.py,Scale height: 8.560000 km vs 8.5 -> 0.7059%
 556,solar,solar,,,,PARSE_FAIL,_session556_solar.py,Solar constant: 1360.970000 W/m^2 vs 1361 -> 0.0022%
 557,salinity,salinity,,,,PARSE_FAIL,_session557_salinity.py,Salinity: 35 ppt vs 35 -> 0.0000% [EXACT]
 558,pressure,pressure,,,,PARSE_FAIL,_session558_pressure.py,Atm pressure: 101.320000 kPa vs 101.325 -> 0.0049%
-559,albedo,Albedo,0.3000,0.3,0.0000,OK,_session559_albedo.py,Albedo: 0.3000 vs 0.3 -> 0.0000% [EXACT]
+559,albedo,Albedo,0.3000,0.3,0,OK,_session559_albedo.py,Albedo: 0.3000 vs 0.3 -> 0.0000% [EXACT]
 560,greenhouse,greenhouse,,,,PARSE_FAIL,_session560_greenhouse.py,Greenhouse: 33.000000 K vs 33 -> 0.0000%
 561,tropopause,tropopause,,,,PARSE_FAIL,_session561_tropopause.py,Tropopause: 11.041667 km vs 11 -> 0.3788%
 562,ozone,ozone,,,,PARSE_FAIL,_session562_ozone.py,Ozone: 300 DU vs 300 -> 0.0000% [EXACT]
@@ -322,17 +324,17 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 568,steelRho,steelRho,,,,PARSE_FAIL,_session568_steelRho.py,Steel rho: 7850 kg/m^3 vs 7850 -> 0.0000% [EXACT]
 569,alRho,alRho,,,,PARSE_FAIL,_session569_alRho.py,Al rho: 2700 kg/m^3 vs 2700 -> 0.0000% [EXACT]
 570,woodRho,woodRho,,,,PARSE_FAIL,_session570_woodRho.py,Wood rho: 500 kg/m^3 vs 500 -> 0.0000% [EXACT]
-571,mohs,Diamond Mohs,10,10,0.0000,OK,_session571_mohs.py,Diamond Mohs: 10 vs 10 -> 0.0000% [EXACT]
+571,mohs,Diamond Mohs,10,10,0,OK,_session571_mohs.py,Diamond Mohs: 10 vs 10 -> 0.0000% [EXACT]
 572,sound,sound,,,,PARSE_FAIL,_session572_sound.py,Sound: 343.0 m/s vs 343 -> 0.0000% [EXACT]
 573,moon,Moon/RE,60.333333,60.336,0.0044,OK,_session573_moon.py,Moon/RE: 60.333333 vs 60.336 -> 0.0044%
-574,AU,AU/RE,23481.0,23481,0.0000,OK,_session574_AU.py,AU/RE: 23481.0 vs 23481 -> 0.0000% [EXACT]
+574,AU,AU/RE,23481.0,23481,0,OK,_session574_AU.py,AU/RE: 23481.0 vs 23481 -> 0.0000% [EXACT]
 575,pcly,pc/ly,3.262333,3.2616,0.0225,OK,_session575_pcly.py,pc/ly: 3.262333 vs 3.2616 -> 0.0225%
-576,hubble,H_0,70,70,0.0000,OK,_session576_hubble.py,H_0: 70 vs 70 -> 0.0000% [EXACT]
-577,sunRadius,R_sun/R_E,109,109,0.0000,OK,_session577_sunRadius.py,R_sun/R_E: 109 vs 109 -> 0.0000% [EXACT]
-578,AUgm,AU (Gm),149.6000,149.6,0.0000,OK,_session578_AUgm.py,AU (Gm): 149.6000 vs 149.6 -> 0.0000% [EXACT]
-579,sunMass,M_sun/M_E,333000,333000,0.0000,OK,_session579_sunMass.py,M_sun/M_E: 333000 vs 333000 -> 0.0000% [EXACT]
+576,hubble,H_0,70,70,0,OK,_session576_hubble.py,H_0: 70 vs 70 -> 0.0000% [EXACT]
+577,sunRadius,R_sun/R_E,109,109,0,OK,_session577_sunRadius.py,R_sun/R_E: 109 vs 109 -> 0.0000% [EXACT]
+578,AUgm,AU (Gm),149.6000,149.6,0,OK,_session578_AUgm.py,AU (Gm): 149.6000 vs 149.6 -> 0.0000% [EXACT]
+579,sunMass,M_sun/M_E,333000,333000,0,OK,_session579_sunMass.py,M_sun/M_E: 333000 vs 333000 -> 0.0000% [EXACT]
 580,jupiter,M_J/M_E,317.783333,317.8,0.0052,OK,_session580_jupiter.py,M_J/M_E: 317.783333 vs 317.8 -> 0.0052%
-581,year,Year days,365.25,365.25,0.0000,OK,_session581_year.py,Year days: 365.25 vs 365.25 -> 0.0000% [EXACT]
+581,year,Year days,365.25,365.25,0,OK,_session581_year.py,Year days: 365.25 vs 365.25 -> 0.0000% [EXACT]
 582,lunarMonth,Lunar month,29.537500,29.53,0.0254,OK,_session582_lunarMonth.py,Lunar month: 29.537500 vs 29.53 -> 0.0254%
 583,avogadro,Avogadro lead,6.022800,6.022,0.0133,OK,_session583_avogadro.py,Avogadro lead: 6.022800 vs 6.022 -> 0.0133%
 584,R,R gas,8.312500,8.314,0.0180,OK,_session584_R.py,R gas: 8.312500 vs 8.314 -> 0.0180%
@@ -374,16 +376,16 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 620,compton,Compton wavelength lead,2.426333,2.426,0.0137,OK,_session620_compton.py,Compton wavelength lead: 2.426333 vs 2.426 -> 0.0137%
 621,ge,g_e factor,2.002867,2.0023,0.0283,OK,_session621_ge.py,g_e factor: 2.002867 vs 2.0023 -> 0.0283%
 622,bohrMag,Bohr magneton lead,9.273333,9.274,0.0072,OK,_session622_bohrMag.py,Bohr magneton lead: 9.273333 vs 9.274 -> 0.0072%
-623,rydbergE,Rydberg E (eV),13.605700,13.6057,0.0000,OK,_session623_rydbergE.py,Rydberg E (eV): 13.605700 vs 13.6057 -> 0.0000%
-624,stefan,Stefan-Boltzmann lead,5.670000,5.6700,0.0000,OK,_session624_stefan.py,Stefan-Boltzmann lead: 5.670000 vs 5.6700 -> 0.0000%
+623,rydbergE,Rydberg E (eV),13.605700,13.6057,0,OK,_session623_rydbergE.py,Rydberg E (eV): 13.605700 vs 13.6057 -> 0.0000%
+624,stefan,Stefan-Boltzmann lead,5.670000,5.6700,0,OK,_session624_stefan.py,Stefan-Boltzmann lead: 5.670000 vs 5.6700 -> 0.0000%
 625,wien,Wien b lead,2.899667,2.8980,0.0575,OK,_session625_wien.py,Wien b lead: 2.899667 vs 2.8980 -> 0.0575%
-626,faraday,Faraday F,96485.000000,96485,0.0000,OK,_session626_faraday.py,Faraday F: 96485.000000 vs 96485 -> 0.0000%
+626,faraday,Faraday F,96485.000000,96485,0,OK,_session626_faraday.py,Faraday F: 96485.000000 vs 96485 -> 0.0000%
 627,avogadro,Avogadro lead,6.022416,6.0220,0.0069,OK,_session627_avogadro.py,Avogadro lead: 6.022416 vs 6.0220 -> 0.0069%
 628,kB,Boltzmann k_B lead,1.380633,1.3810,0.0266,OK,_session628_kB.py,Boltzmann k_B lead: 1.380633 vs 1.3810 -> 0.0266%
 629,planck,Planck h lead,6.624300,6.6260,0.0257,OK,_session629_planck.py,Planck h lead: 6.624300 vs 6.6260 -> 0.0257%
 630,c,Speed of light c lead,2.997000,2.9980,0.0334,OK,_session630_c.py,Speed of light c lead: 2.997000 vs 2.9980 -> 0.0334%
 631,e,Elementary charge e lead,1.600967,1.6020,0.0645,OK,_session631_e.py,Elementary charge e lead: 1.600967 vs 1.6020 -> 0.0645%
-632,hartree,Hartree E_h lead,4.360000,4.3600,0.0000,OK,_session632_hartree.py,Hartree E_h lead: 4.360000 vs 4.3600 -> 0.0000%
+632,hartree,Hartree E_h lead,4.360000,4.3600,0,OK,_session632_hartree.py,Hartree E_h lead: 4.360000 vs 4.3600 -> 0.0000%
 633,pi,pi,3.140633,3.14159,0.0305,OK,_session633_pi.py,pi: 3.140633 vs 3.14159 -> 0.0305%
 634,e,e,2.719633,2.71828,0.0498,OK,_session634_e.py,e: 2.719633 vs 2.71828 -> 0.0498%
 635,goldenRatio,phi_g,1.619667,1.61803,0.1012,OK,_session635_goldenRatio.py,phi_g: 1.619667 vs 1.61803 -> 0.1012%
@@ -402,8 +404,8 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 648,H0,H0,67.409916,67.400000,0.0147,OK,_session648_H0.py,H0: 67.409916 vs 67.400000 -> 0.0147%
 649,sigma8,sigma_8,0.808949,0.811000,0.2529,OK,_session649_sigma8.py,sigma_8: 0.808949 vs 0.811000 -> 0.2529%
 650,nS,n_s,0.965697,0.965000,0.0722,OK,_session650_nS.py,n_s: 0.965697 vs 0.965000 -> 0.0722%
-651,zRecomb,z_recomb,1090.000000,1090.000000,0.0000,OK,_session651_zRecomb.py,z_recomb: 1090.000000 vs 1090.000000 -> 0.0000% EXACT=True
-652,zReion,z_reion,7.700000,7.700000,0.0000,OK,_session652_zReion.py,z_reion: 7.700000 vs 7.700000 -> 0.0000% EXACT=True
+651,zRecomb,z_recomb,1090.000000,1090.000000,0,OK,_session651_zRecomb.py,z_recomb: 1090.000000 vs 1090.000000 -> 0.0000% EXACT=True
+652,zReion,z_reion,7.700000,7.700000,0,OK,_session652_zReion.py,z_reion: 7.700000 vs 7.700000 -> 0.0000% EXACT=True
 653,W,W,80.376751,80.379000,0.0028,OK,_session653_W.py,W: 80.376751 vs 80.379000 -> 0.0028%
 654,Z,Z,91.203848,91.187600,0.0178,OK,_session654_Z.py,Z: 91.203848 vs 91.187600 -> 0.0178%
 655,top,top,172.750801,172.760000,0.0053,OK,_session655_top.py,top: 172.750801 vs 172.760000 -> 0.0053%
@@ -435,7 +437,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
 683,lagrangian_primitives,lagrangian_primitives,,,,PARSE_FAIL,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
-684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 188/188 closures mapped -> EXACT
+684,closure_to_sector_bridge,closure_to_sector_bridge,,,,PARSE_FAIL,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 189/189 closures mapped -> EXACT
 684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%
