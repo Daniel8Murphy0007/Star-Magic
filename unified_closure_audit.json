@@ -888,5 +888,75 @@
     "status": "DERIVED",
     "chain": "positive_et_expansion.py: 9 tests; negative_et_erosion.py: 10 tests; uqff_vs_string_comparison.py: 14 tests.  Sum = 33 by direct addition (all pass).",
     "paper": "PAPER_S205 sec 4"
+  },
+  {
+    "id": "UBS-1",
+    "claim": "4x4 simultaneous system: unknowns = equations = 4",
+    "target": "4",
+    "derived": "4",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Unknowns {r_hz, t_n_hz, r_cg, M_emergent} = 4; Equations {E1: F_U_Bi+F_U_Bi_i=0, E2: F_U=0, E3: F_U_Bi+2*F_U_Bi_i=0, E4: M-rho*(4pi/3)*r_hz^3=0} = 4.  Square Jacobian => well-posed (generic) Newton fixed point.",
+    "paper": "QCalcGeom.py v2.2.0 sec 5.5"
+  },
+  {
+    "id": "UBS-2",
+    "claim": "Aether trichotomy: 3 radial zones",
+    "target": "3",
+    "derived": "3",
+    "match": true,
+    "status": "POSTULATED",
+    "chain": "Greek-Aether partitioning of radial coordinate by sign of F_U_Bi + F_U_Bi_i: r<r_cg (collapsing), r_cg<=r<=r_hz (habitable shell), r>r_hz (gaseous outer).  Three connected components of {r : sign(F_U_Bi + F_U_Bi_i)} -> cardinality 3.",
+    "paper": "QCalcGeom.py v2.2.0 sec 5.5"
+  },
+  {
+    "id": "UBS-3",
+    "claim": "HZ buoyancy unit ratio: |F_U_Bi/F_U_Bi_i|(r_hz) = 1",
+    "target": "1.0",
+    "derived": "1.0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "E1 states F_U_Bi(r_hz) + F_U_Bi_i(r_hz) = 0  =>  F_U_Bi(r_hz) = -F_U_Bi_i(r_hz)  =>  |F_U_Bi/F_U_Bi_i| = 1 (algebraic identity).",
+    "paper": "QCalcGeom.py v2.2.0 sec 5.5 E1"
+  },
+  {
+    "id": "UBS-4",
+    "claim": "Collapse-boundary 2:1 ratio: |F_U_Bi/F_U_Bi_i|(r_cg) = 2",
+    "target": "2.0",
+    "derived": "2.0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "E3 states F_U_Bi(r_cg) + 2*F_U_Bi_i(r_cg) = 0  =>  F_U_Bi(r_cg) = -2*F_U_Bi_i(r_cg)  =>  |F_U_Bi/F_U_Bi_i| = 2 (algebraic identity defining r_cg).",
+    "paper": "QCalcGeom.py v2.2.0 sec 5.5 E3"
+  },
+  {
+    "id": "UBS-5",
+    "claim": "Aether mass cube-law: M(2*r_hz)/M(r_hz) = 8",
+    "target": "8.0",
+    "derived": "8.0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "E4 states M = rho_vac*(4*pi/3)*r_hz^3.  Scaling r_hz -> 2*r_hz yields M -> rho_vac*(4*pi/3)*(2*r_hz)^3 = 8*M.  Cube-volume identity.",
+    "paper": "QCalcGeom.py v2.2.0 sec 5.5 E4"
+  },
+  {
+    "id": "UBS-6",
+    "claim": "Seed-ratio cube-root: r_cg_seed/r_hz_seed = 2^(-1/3)",
+    "target": "0.793700525984",
+    "derived": "0.793700525984",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "F_U_Bi ~ 1/r^2 (collapsing) and F_U_Bi_i ~ r (Aether spring) => ratio F_U_Bi/F_U_Bi_i ~ 1/r^3.  Transitioning the ratio from 1 (at r_hz, E1) to 2 (at r_cg, E3) requires r_cg/r_hz = 2^(-1/3).  Closed-form seed for the simultaneous solver.",
+    "paper": "QCalcGeom.py v2.2.0 sec 5.5 seed"
+  },
+  {
+    "id": "UBS-7",
+    "claim": "UBS-track test count: T91..T97 inclusive = 7",
+    "target": "7",
+    "derived": "7",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "QCalcGeom.run_qcalcgeom_tests: T91 (finite r_hz), T92 (r_cg<r_hz), T93 (M positive), T94 (E1 residual<1e-6), T95 (collapse ratio ~ 2), T96 (calculator-class consistency), T97 (solver_msg populated).  Cardinality 7 by enumeration.",
+    "paper": "QCalcGeom.py v2.2.0 sec 7 T91-T97"
   }
 ]
