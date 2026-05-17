@@ -117,6 +117,18 @@ except ImportError:
     SESSION_279_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session280_ftrz_suppression import (  # noqa: F401
+        FTRZSuppressionCalculator,
+        ftrz_amplitude,
+        ftrz_phase,
+        ftrz_suppression_multiplier,
+        ftrz_correction,
+        SESSION_280_CALCULATORS,
+    )
+except ImportError:
+    SESSION_280_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
