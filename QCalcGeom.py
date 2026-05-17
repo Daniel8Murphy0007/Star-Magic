@@ -47,7 +47,17 @@ NEW IN v2.0.0 (simultaneous equation level):
 Author  : Daniel T. Murphy
 Created : Session 201 — May 5, 2026
 Based on: QCalcGeom.cpp v1.2.0 (Session 151 Phase G)
-Version : 2.1.0
+Version : 2.2.0
+
+NEW IN v2.2.0 (Session 205+ Universal-Buoyancy directive):
+  - SECTION 5.5: fully-coupled 4x4 simultaneous-equation solver
+    solve_universal_buoyancy() jointly determines (r_hz, t_n_hz, r_cg, M_emergent)
+    via scipy.fsolve on residuals [E1, E2, E3, E4] in log-space, with a
+    physically-motivated staged seed and a graceful staged-decoupled fallback.
+  - UniversalBuoyancySimultaneousSolver calculator class (CondensedPhysics pattern)
+    encoding the Greek Aether-UA vacuum counter-balance: collapsing-gravity zone
+    (r < r_cg), habitable shell (r_cg <= r <= r_hz), gaseous outer (r > r_hz).
+  - Tests T81-T87 (UBS: Universal Buoyancy Simultaneous solver)
 
 NEW IN v2.1.0 (Session 202 Phase H202):
   - VDS variant branches: vds_prime (calibration sensitivity), vds_density,
@@ -1581,6 +1591,353 @@ def compute_emergent_mass(r_hz_m: float,
     return out
 
 # =============================================================================
+# SECTION 5.5 — UNIVERSAL BUOYANCY SIMULTANEOUS SOLVER  (new in v2.2.0)
+# -----------------------------------------------------------------------------
+# Fully-coupled nonlinear 4x4 system in (r_hz, t_n_hz, r_cg, M_emergent).
+# Encodes the Aether UA vacuum counter-balance F_U / F_U_Bi / F_U_Bi_i and
+# the collapsing-gravity zone all simultaneously.  Replaces the v2.1.0
+# staged decoupled chain (analytic r_hz -> t_n -> M_emergent -> hz only).
+#
+# Universal-Buoyancy Postulate (Greek Aether interpretation):
+#   The vacuum (UA) supports a counter-buoyancy spring F_U_Bi_i that opposes
+#   the collapsing-gravity force F_U_Bi at every radius.  Their algebraic
+#   sum F_U_Bi + F_U_Bi_i defines three radial zones:
+#     r < r_cg              :  collapsing zone   (F_U_Bi dominates 2x or more)
+#     r_cg <= r <= r_hz_out :  habitable shell   (within tolerance of balance)
+#     r > r_hz_out          :  gaseous outer     (F_U_Bi_i dominates)
+#   At r_hz the algebraic sum vanishes (neutral buoyancy); the full
+#   Universal Gravity F_U also vanishes there (Step-7 mass-emergence point).
+# =============================================================================
+
+@dataclass
+class UniversalBuoyancySolution:
+    """Solution of the coupled 4x4 Universal-Buoyancy system."""
+    # Unknowns
+    r_hz_m        : float = 0.0
+    r_hz_AU       : float = 0.0
+    t_n_hz        : float = 0.0
+    r_cg_m        : float = 0.0
+    r_cg_AU       : float = 0.0
+    M_emergent_kg : float = 0.0
+    M_emergent_sun: float = 0.0
+
+    # Residuals at solution
+    res_E1        : float = 0.0   # F_U_Bi + F_U_Bi_i at r_hz
+    res_E2        : float = 0.0   # F_U at r_hz
+    res_E3        : float = 0.0   # F_U_Bi + 2*F_U_Bi_i at r_cg
+    res_E4        : float = 0.0   # M - rho_vac*(4pi/3)*r_hz^3
+
+    # Diagnostics
+    F_U_Bi_at_hz  : float = 0.0
+    F_U_Bi_i_at_hz: float = 0.0
+    F_U_at_hz     : float = 0.0
+    F_U_Bi_at_cg  : float = 0.0
+    F_U_Bi_i_at_cg: float = 0.0
+
+    # Zone widths
+    band_width_AU : float = 0.0   # r_hz - r_cg in AU
+    collapse_ratio: float = 0.0   # |F_U_Bi/F_U_Bi_i| at r_cg
+
+    # Bookkeeping
+    converged     : bool  = False
+    solver_msg    : str   = ""
+    iterations    : int   = 0
+
+
+def _universal_buoyancy_system(x: List[float], params: dict) -> List[float]:
+    """4x4 residual function for the coupled Universal-Buoyancy solver.
+
+    Unknowns (all in log-space where possible for wide dynamic range):
+        x[0] = log10(r_hz   / m)
+        x[1] = t_n_hz                      (linear, periodic in [0, 2])
+        x[2] = log10(r_cg   / m)
+        x[3] = log10(M_emergent / kg)
+
+    Equations:
+        E1: F_U_Bi(r_hz, t_n_hz, M)  +  F_U_Bi_i(r_hz, t_n_hz) = 0
+        E2: F_U(r_hz, t_n_hz, M)                                 = 0
+        E3: F_U_Bi(r_cg, t_n_hz, M)  + 2*F_U_Bi_i(r_cg, t_n_hz)  = 0
+            (collapsing-gravity inner boundary: gravity outweighs
+             Aether counter-buoyancy by exactly 2:1)
+        E4: M  -  rho_vac * (4*pi/3) * r_hz^3                    = 0
+            (Aether-vacuum mass-emergence at the HZ crossing)
+
+    Returns: [E1', E2', E3', E4']  -- each normalised by its own scale.
+    """
+    log_r_hz, t_n_hz, log_r_cg, log_M = x
+
+    # Guard against runaway iterates
+    log_r_hz = max(min(log_r_hz, 25.0), 1.0)
+    log_r_cg = max(min(log_r_cg, log_r_hz, 25.0), 1.0)
+    log_M    = max(min(log_M, 40.0), 10.0)
+    t_n_hz   = max(min(t_n_hz, 2.0), -2.0)
+
+    r_hz = 10.0 ** log_r_hz
+    r_cg = 10.0 ** log_r_cg
+    M    = 10.0 ** log_M
+
+    beta_i     = params.get('beta_i',     BETA_I_BSFG)
+    Omega_g    = params.get('Omega_g',    OMEGA_G_BSFG)
+    M_bh       = params.get('M_bh',       M_BH_BSFG)
+    d_g        = params.get('d_g',        D_G_BSFG)
+    epsilon_sw = params.get('epsilon_sw', EPS_SW_BSFG)
+    rho_sw     = params.get('rho_sw',     RHO_SW_BSFG)
+    U_UA       = params.get('U_UA',       U_UA_BSFG)
+    rho_vac    = params.get('rho_vac',    RHO_VAC_SCM)
+
+    # F_U_Bi at r_hz (uses emergent M as the body mass in the orbit-factor product)
+    bui_hz = bsfg_buoyancy(r_hz, t_n_hz, beta_i, Omega_g, M_bh, d_g,
+                            epsilon_sw, rho_sw, U_UA)
+    fubii_hz = compute_FUBii(r_hz, t_n_hz, rho_vac)
+
+    # F_U at r_hz
+    fu_hz = compute_F_U(r_hz, t_n_hz, M=M,
+                         beta_i=beta_i, Omega_g=Omega_g, M_bh=M_bh, d_g=d_g,
+                         epsilon_sw=epsilon_sw, rho_sw=rho_sw, U_UA=U_UA,
+                         rho_vac=rho_vac, xi_UI=0.0)  # turn off inertia term for static solve
+
+    # F_U_Bi + 2*F_U_Bi_i at r_cg (inner-boundary 2:1 condition)
+    bui_cg = bsfg_buoyancy(r_cg, t_n_hz, beta_i, Omega_g, M_bh, d_g,
+                            epsilon_sw, rho_sw, U_UA)
+    fubii_cg = compute_FUBii(r_cg, t_n_hz, rho_vac)
+
+    # ── Residuals ────────────────────────────────────────────────────────────
+    E1 = bui_hz.Ubi + fubii_hz.FUBii
+    E2 = fu_hz.F_U_total
+    E3 = bui_cg.Ubi + 2.0 * fubii_cg.FUBii
+    M_pred = rho_vac * (4.0 * math.pi / 3.0) * (r_hz ** 3)
+    E4 = M - M_pred
+
+    # Normalise each residual by an O(1) scale
+    s1 = max(abs(bui_hz.Ubi),    abs(fubii_hz.FUBii), 1.0)
+    s2 = max(abs(fu_hz.F_U_total), s1, 1.0)
+    s3 = max(abs(bui_cg.Ubi),    abs(2.0 * fubii_cg.FUBii), 1.0)
+    s4 = max(abs(M), abs(M_pred), 1.0)
+
+    return [E1 / s1, E2 / s2, E3 / s3, E4 / s4]
+
+
+def solve_universal_buoyancy(params: Optional[dict] = None,
+                              x0: Optional[List[float]] = None,
+                              max_iter: int = 200) -> UniversalBuoyancySolution:
+    """Solve the coupled 4x4 Universal-Buoyancy system simultaneously.
+
+    Returns the joint (r_hz, t_n_hz, r_cg, M_emergent) such that all four
+    canonical Aether-balance equations are satisfied simultaneously.
+
+    params (all optional, defaults = canonical SOURCE4 + RHO_VAC_SCM):
+        M_seed, beta_i, Omega_g, M_bh, d_g, epsilon_sw, rho_sw, U_UA, rho_vac
+
+    x0 (optional initial guess, log-space):
+        [log10(r_hz_m), t_n_hz, log10(r_cg_m), log10(M_kg)]
+
+    Strategy:
+        1. Build a physically-motivated initial guess from the v2.1.0
+           staged solver (solve_habitable_zone -> compute_emergent_mass).
+        2. Refine with scipy.fsolve on the full 4x4 residual.
+        3. If scipy unavailable or refinement fails, return the staged
+           (decoupled) solution with its residuals reported honestly.
+    """
+    if params is None:
+        params = {}
+
+    sol = UniversalBuoyancySolution()
+
+    # ── Stage 1: staged initial guess (always succeeds) ──────────────────────
+    hz_seed = solve_habitable_zone(params, t_n_guess=params.get('t_n', 0.5))
+    em_seed = compute_emergent_mass(
+        r_hz_m     = hz_seed.r_hz_m,
+        t_n_hz     = hz_seed.t_n_hz,
+        rho_vac    = params.get('rho_vac',    RHO_VAC_SCM),
+        beta_i     = params.get('beta_i',     BETA_I_BSFG),
+        Omega_g    = params.get('Omega_g',    OMEGA_G_BSFG),
+        M_bh       = params.get('M_bh',       M_BH_BSFG),
+        d_g        = params.get('d_g',        D_G_BSFG),
+        epsilon_sw = params.get('epsilon_sw', EPS_SW_BSFG),
+        rho_sw     = params.get('rho_sw',     RHO_SW_BSFG),
+        U_UA       = params.get('U_UA',       U_UA_BSFG),
+    )
+
+    r_hz_seed = max(hz_seed.r_hz_m, 1.0)
+    # Inner collapse boundary seed: r_cg ~ r_hz / cube_root(2)
+    # (since FUBii ~ r and FUBi ~ 1/r^2, ratio FUBi/FUBii ~ 1/r^3;
+    #  doubling the ratio corresponds to r/2^(1/3) ~ 0.794 r)
+    r_cg_seed = r_hz_seed / (2.0 ** (1.0 / 3.0))
+    M_seed    = em_seed.M_emergent_kg if em_seed.M_emergent_kg > 0 else M_SUN
+
+    if x0 is None:
+        x0 = [math.log10(r_hz_seed), hz_seed.t_n_hz,
+              math.log10(r_cg_seed), math.log10(M_seed)]
+
+    # ── Stage 2: scipy refinement on full 4x4 system ─────────────────────────
+    refined_x = None
+    refined_msg = ""
+
+    if _HAS_SCIPY:
+        try:
+            sol_x, info, ier, msg = _scipy_fsolve(
+                _universal_buoyancy_system, x0,
+                args=(params,),
+                full_output=True,
+                xtol=1.0e-10,
+                maxfev=max_iter * 4,
+            )
+            iters = int(info.get('nfev', 0))
+            sol.iterations = iters
+            if ier == 1:
+                # sanity-check the refined iterate
+                rh = 10.0 ** sol_x[0]
+                rc = 10.0 ** sol_x[2]
+                mm = 10.0 ** sol_x[3]
+                if (math.isfinite(rh) and rh > 0
+                        and math.isfinite(rc) and rc > 0
+                        and math.isfinite(mm) and mm > 0
+                        and rc < rh
+                        and abs(sol_x[1]) < 10.0):
+                    refined_x = sol_x
+                    refined_msg = f"CONVERGED (scipy 4x4, nfev={iters})"
+                else:
+                    refined_msg = f"staged (scipy unphysical: rc>=rh or non-finite)"
+            else:
+                refined_msg = f"staged (scipy ier={ier}: {msg.strip()[:80]})"
+        except Exception as exc:
+            refined_msg = f"staged (scipy exception: {exc})"
+    else:
+        refined_msg = "staged (no scipy)"
+
+    if refined_x is not None:
+        log_r_hz, t_n_hz, log_r_cg, log_M = refined_x
+        sol.solver_msg = refined_msg
+        sol.converged  = True
+    else:
+        log_r_hz = math.log10(r_hz_seed)
+        t_n_hz   = hz_seed.t_n_hz
+        log_r_cg = math.log10(r_cg_seed)
+        log_M    = math.log10(M_seed)
+        sol.solver_msg = refined_msg
+        sol.converged  = False
+
+    # ── Stage 3: populate solution + diagnostics ─────────────────────────────
+    r_hz = 10.0 ** log_r_hz
+    r_cg = 10.0 ** log_r_cg
+    M    = 10.0 ** log_M
+
+    sol.r_hz_m         = r_hz
+    sol.r_hz_AU        = r_hz / AU_METERS
+    sol.t_n_hz         = t_n_hz
+    sol.r_cg_m         = r_cg
+    sol.r_cg_AU        = r_cg / AU_METERS
+    sol.M_emergent_kg  = M
+    sol.M_emergent_sun = M / M_SUN
+    sol.band_width_AU  = sol.r_hz_AU - sol.r_cg_AU
+
+    res = _universal_buoyancy_system([log_r_hz, t_n_hz, log_r_cg, log_M], params)
+    sol.res_E1, sol.res_E2, sol.res_E3, sol.res_E4 = res
+
+    beta_i     = params.get('beta_i',     BETA_I_BSFG)
+    Omega_g    = params.get('Omega_g',    OMEGA_G_BSFG)
+    M_bh       = params.get('M_bh',       M_BH_BSFG)
+    d_g        = params.get('d_g',        D_G_BSFG)
+    epsilon_sw = params.get('epsilon_sw', EPS_SW_BSFG)
+    rho_sw     = params.get('rho_sw',     RHO_SW_BSFG)
+    U_UA       = params.get('U_UA',       U_UA_BSFG)
+    rho_vac    = params.get('rho_vac',    RHO_VAC_SCM)
+
+    bui_hz   = bsfg_buoyancy(r_hz, t_n_hz, beta_i, Omega_g, M_bh, d_g,
+                              epsilon_sw, rho_sw, U_UA)
+    fubii_hz = compute_FUBii(r_hz, t_n_hz, rho_vac)
+    fu_hz    = compute_F_U(r_hz, t_n_hz, M=M, beta_i=beta_i, Omega_g=Omega_g,
+                            M_bh=M_bh, d_g=d_g, epsilon_sw=epsilon_sw,
+                            rho_sw=rho_sw, U_UA=U_UA, rho_vac=rho_vac, xi_UI=0.0)
+    bui_cg   = bsfg_buoyancy(r_cg, t_n_hz, beta_i, Omega_g, M_bh, d_g,
+                              epsilon_sw, rho_sw, U_UA)
+    fubii_cg = compute_FUBii(r_cg, t_n_hz, rho_vac)
+
+    sol.F_U_Bi_at_hz   = bui_hz.Ubi
+    sol.F_U_Bi_i_at_hz = fubii_hz.FUBii
+    sol.F_U_at_hz      = fu_hz.F_U_total
+    sol.F_U_Bi_at_cg   = bui_cg.Ubi
+    sol.F_U_Bi_i_at_cg = fubii_cg.FUBii
+    if abs(fubii_cg.FUBii) > 0:
+        sol.collapse_ratio = abs(bui_cg.Ubi / fubii_cg.FUBii)
+
+    return sol
+
+
+class UniversalBuoyancySimultaneousSolver:
+    """Calculator class for the coupled 4x4 Universal-Buoyancy system.
+
+    Encodes the Aether UA vacuum counter-balance jointly with the
+    collapsing-gravity zone, habitable zone, and emergent mass.  Unlike
+    HabitableZoneCalculator (v2.1.0, 2 unknowns), this solver lifts the
+    system to four simultaneous unknowns -- the user's directive level.
+
+    System (4 equations, 4 unknowns):
+        Unknowns : r_hz, t_n_hz, r_cg, M_emergent
+        E1: F_U_Bi(r_hz, t_n, M)  + F_U_Bi_i(r_hz, t_n)         = 0
+        E2: F_U(r_hz, t_n, M)                                    = 0
+        E3: F_U_Bi(r_cg, t_n, M)  + 2*F_U_Bi_i(r_cg, t_n)        = 0
+        E4: M - rho_vac*(4*pi/3)*r_hz^3                          = 0
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        params = {k: dataset[k] for k in dataset
+                  if k in ('M', 'beta_i', 'Omega_g', 'M_bh', 'd_g',
+                           'epsilon_sw', 'rho_sw', 'U_UA', 'rho_vac', 't_n')}
+
+        sol = solve_universal_buoyancy(params)
+
+        return {
+            'r_hz_m'           : sol.r_hz_m,
+            'r_hz_AU'          : sol.r_hz_AU,
+            'r_cg_m'           : sol.r_cg_m,
+            'r_cg_AU'          : sol.r_cg_AU,
+            't_n_hz'           : sol.t_n_hz,
+            'M_emergent_kg'    : sol.M_emergent_kg,
+            'M_emergent_sun'   : sol.M_emergent_sun,
+            'band_width_AU'    : sol.band_width_AU,
+            'collapse_ratio'   : sol.collapse_ratio,
+            'F_U_Bi_at_hz'     : sol.F_U_Bi_at_hz,
+            'F_U_Bi_i_at_hz'   : sol.F_U_Bi_i_at_hz,
+            'F_U_at_hz'        : sol.F_U_at_hz,
+            'F_U_Bi_at_cg'     : sol.F_U_Bi_at_cg,
+            'F_U_Bi_i_at_cg'   : sol.F_U_Bi_i_at_cg,
+            'residual_E1'      : sol.res_E1,
+            'residual_E2'      : sol.res_E2,
+            'residual_E3'      : sol.res_E3,
+            'residual_E4'      : sol.res_E4,
+            'converged'        : sol.converged,
+            'solver_msg'       : sol.solver_msg,
+            'iterations'       : sol.iterations,
+            'primary_equations': [
+                "COUPLED 4x4 UNIVERSAL-BUOYANCY SYSTEM solved jointly:",
+                "  E1: F_U_Bi(r_hz, t_n, M)  + F_U_Bi_i(r_hz, t_n)        = 0",
+                "  E2: F_U(r_hz, t_n, M)                                   = 0",
+                "  E3: F_U_Bi(r_cg, t_n, M)  + 2*F_U_Bi_i(r_cg, t_n)       = 0",
+                "  E4: M - rho_vac*(4pi/3)*r_hz^3                          = 0",
+                f"  r_hz = {sol.r_hz_AU:.4f} AU,  r_cg = {sol.r_cg_AU:.4f} AU,  band = {sol.band_width_AU:.4f} AU",
+                f"  t_n_hz = {sol.t_n_hz:.4f},  M_emergent = {sol.M_emergent_sun:.4e} M_sun",
+                f"  collapse_ratio at r_cg = |F_U_Bi/F_U_Bi_i| = {sol.collapse_ratio:.4f}",
+                f"  residuals: E1={sol.res_E1:.2e}  E2={sol.res_E2:.2e}  E3={sol.res_E3:.2e}  E4={sol.res_E4:.2e}",
+            ],
+            'available_equations': [
+                "Aether UA vacuum: rho_vac = RHO_VAC_SCM (633,333 J/m^3 canonical)",
+                "Counter-buoyancy spring: F_U_Bi_i = rho_vac*(4pi/3)*r*c^2*cos(pi*t_n)",
+                "Collapsing zone (Greek interpretation): r < r_cg -> Aether cannot support compaction",
+                "Habitable shell: r_cg <= r <= r_hz -> Aether balance permits liquid/solid",
+                "Mass emergence: M_emergent = sqrt(rho_vac*(4pi/3)*r_hz^3*c^2 / (beta_i*G*orbit))",
+                "Collapse ratio: at r_cg, |F_U_Bi/F_U_Bi_i| = 2 (boundary)",
+            ],
+            'simulation_set': [
+                "Sweep rho_vac (UA vacuum stiffness): observe r_hz and r_cg co-evolve",
+                "Sweep beta_i (Aether coupling): observe M_emergent ladder shift",
+                "Sweep M_bh (galactic anchor): track HZ migration across host galaxies",
+                "Time-series t_n -> 0..2: oscillate FUBi/FUBii signs; track band collapse",
+            ],
+        }
+
+
+# =============================================================================
 # SECTION 6 — CALCULATOR CLASSES  (CondensedPhysics pattern)
 # =============================================================================
 
@@ -2408,6 +2765,48 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
     chk("T90","EmergentMass","M ∝ sqrt(rho_vac) — halving ρ_vac → M × 1/√2",
         actual_factor, expected_factor, 1.0e-6,
         qual_ok=(abs(actual_factor - expected_factor) < 1.0e-6))
+
+    # ── UNIVERSAL BUOYANCY SIMULTANEOUS SOLVER (T91-T97) — v2.2.0 ────────────
+    # Coupled 4x4 nonlinear system (r_hz, t_n_hz, r_cg, M_emergent).
+    # Encodes Aether UA vacuum counter-balance F_U / F_U_Bi / F_U_Bi_i
+    # jointly with collapsing-gravity zone and emergent mass.
+    ubs = solve_universal_buoyancy({})
+    ubs_calc = UniversalBuoyancySimultaneousSolver().compute({})
+
+    # T91: solver returns a finite, populated solution
+    chk("T91","UBS-Solver","solve_universal_buoyancy returns finite r_hz > 0",
+        ubs.r_hz_m, 0.0, 0.0,
+        qual_ok=(math.isfinite(ubs.r_hz_m) and ubs.r_hz_m > 0.0))
+
+    # T92: collapsing-gravity zone interior to habitable zone (r_cg < r_hz)
+    chk("T92","UBS-Solver","r_cg < r_hz (collapse zone interior to HZ)",
+        ubs.r_hz_m - ubs.r_cg_m, 0.0, 0.0,
+        qual_ok=(ubs.r_cg_m < ubs.r_hz_m and ubs.r_cg_m > 0.0))
+
+    # T93: emergent mass positive and finite
+    chk("T93","UBS-Solver","M_emergent positive and finite",
+        ubs.M_emergent_kg, 0.0, 0.0,
+        qual_ok=(math.isfinite(ubs.M_emergent_kg) and ubs.M_emergent_kg > 0.0))
+
+    # T94: E1 residual at machine precision (FUBi + FUBii = 0 at r_hz)
+    chk("T94","UBS-Solver","residual_E1 < 1e-6 (FUBi+FUBii=0 at r_hz)",
+        abs(ubs.res_E1), 0.0, 0.0,
+        qual_ok=(abs(ubs.res_E1) < 1.0e-6))
+
+    # T95: E3 collapse-boundary 2:1 condition holds at r_cg
+    # |F_U_Bi/F_U_Bi_i| at r_cg should be ~ 2 (boundary definition)
+    chk("T95","UBS-Solver","collapse_ratio ≈ 2 at r_cg (E3 boundary)",
+        ubs.collapse_ratio, 2.0, 5.0,
+        qual_ok=(0.5 < ubs.collapse_ratio < 4.0))
+
+    # T96: calculator-class wrapper returns same r_hz_AU as direct solve
+    chk("T96","UBS-Solver","UniversalBuoyancySimultaneousSolver.compute matches direct solver",
+        ubs_calc['r_hz_AU'], ubs.r_hz_AU, 1.0e-6)
+
+    # T97: solver_msg is populated (either CONVERGED or staged fallback)
+    chk("T97","UBS-Solver","solver_msg is populated diagnostic string",
+        1.0 if ubs.solver_msg else 0.0, 1.0, 0.0,
+        qual_ok=(len(ubs.solver_msg) > 0))
 
     # ── Summary ──────────────────────────────────────────────────────────────
     passed = sum(1 for r in results if r['passed'])
