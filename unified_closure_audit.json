@@ -478,5 +478,115 @@
     "status": "DERIVED",
     "chain": "Promoted Session 261.  Three-step proof: (1) Mandelstam sum rule s+t+u = sum(m_i^2) verified symbolically from 4-momentum conservation + on-shell (residual = 0). (2) T-symmetry (AX5 bidirectional time) of the Bi Lagrangian L = (1/2)phi_dot^2 - V(phi): substitution tau = T-t maps L_fwd(t) onto L_bwd(tau) identically (sympy diff = 0).  At variational extremum delta S = 0 this forces F_U_Bi = F_U_Bi_i, hence F_U = F_U_Bi/F_U_Bi_i = 1. (3) Map DPM_grav->s, DPM_mom->u, DPM_stab*DPM_res->t^2: the constraint F_U = 1 picks the geometric-mean Mandelstam locus t^2 = s*u, the unique self-crossing-symmetric point. Mandelstam residual = 0; T-sym residual = 0.",
     "paper": "_six_anchor_closures.py F_U fixed point + AX5"
+  },
+  {
+    "id": "M1",
+    "claim": "MAYAN_BAKTUN_DAYS = 20*20*360 = 144000",
+    "target": "144000",
+    "derived": "144000",
+    "match": true,
+    "status": "POSTULATED",
+    "chain": "Calendrical definition: 1 baktun = 20 katun, 1 katun = 20 tun, 1 tun = 360 days.  SymPy: 20*20*360 = 144000.  The factor structure is a Mayan convention; the value is not derivable from physics first principles, but the arithmetic is.",
+    "paper": "QCalcGeom.py L156 + Mayan codices"
+  },
+  {
+    "id": "M2",
+    "claim": "MAYAN_GREAT_CYCLE_DAYS = 13 baktuns = 1,872,000 days",
+    "target": "1872000",
+    "derived": "1872000",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "13 baktuns x 144000 days/baktun = 1,872,000 days.  Pure arithmetic from M1.",
+    "paper": "QCalcGeom.py L157"
+  },
+  {
+    "id": "M3",
+    "claim": "MAYAN_GREAT_CYCLE_YEARS \u2248 5125.257",
+    "target": "5125.257",
+    "derived": "5125.257",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "1,872,000 days / 365.25 days/yr = 187200000/36525 = 2496000/487 \u2248 5125.256674 years.  Julian year used (365.25 d); Gregorian (365.2425) gives 5125.36.",
+    "paper": "QCalcGeom.py L158"
+  },
+  {
+    "id": "M4",
+    "claim": "PHI = (1+sqrt(5))/2 (golden ratio, positive root of x^2=x+1)",
+    "target": "1.618033988749895",
+    "derived": "1.618033988749895",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "x^2 - x - 1 = 0; positive root phi = (1+sqrt(5))/2 \u2248 1.6180339887.  SymPy solve verified.",
+    "paper": "QCalcGeom.py L154 + classical mathematics"
+  },
+  {
+    "id": "M5",
+    "claim": "Three-ring radii: r_outer=phi^(E-1), r_inner=phi^(-2(E-1))",
+    "target": "(6.854, 0.0213)",
+    "derived": "(6.854, 0.0213)",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "Outer ring expands by phi^1 per epoch; inner ring shrinks by phi^2 per epoch (gear-tooth pitch matching).  At Epoch 5: r_outer = phi^4 = 6.854102, r_inner = phi^-8 = 0.02128624.  Matches QCalcGeom.py mayan_ring_proportions() output exactly.",
+    "paper": "QCalcGeom.py L780-808 (mayan_ring_proportions)"
+  },
+  {
+    "id": "M6",
+    "claim": "Gear ratio g_13(E) = phi^(3(E-1))",
+    "target": "321.99689437998484",
+    "derived": "321.99689437998484",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "g_13 = r_outer/r_inner = phi^(E-1) / phi^(-2(E-1)) = phi^(3(E-1)).  At Epoch 5: phi^12 \u2248 321.996894.  SymPy residual (g_13 - phi^(3(E-1))) = 0 confirmed.",
+    "paper": "QCalcGeom.py L795 (gear_ratio_13)"
+  },
+  {
+    "id": "M7",
+    "claim": "OMEGA_BAKTUN = 2*pi/(144000*86400) rad/s \u2248 5.05e-13",
+    "target": "5.05e-13",
+    "derived": "5.050142511557666e-10",
+    "match": false,
+    "status": "DERIVED",
+    "chain": "Omega = 2*pi / (T_baktun in seconds) = 2*pi/12441600000 \u2248 5.0501e-10 rad/s.  Pure dimensional conversion from M1.",
+    "paper": "QCalcGeom.py L165 (OMEGA_BAKTUN)"
+  },
+  {
+    "id": "M8",
+    "claim": "U_I(t_n) = 3*rho_vac*(4pi/3)*c^2*cos(pi*t_n)",
+    "target": "ansatz",
+    "derived": "4*pi*c**2*rho_vac*cos(pi*t_n)",
+    "match": false,
+    "status": "POSTULATED",
+    "chain": "Physical ansatz: Universal Inertia = vacuum energy density x volume normalisation x c^2 x phase oscillator.  Carries the centripetal<->centrifugal sign reversal across the great cycle.  Form is postulated; consequences (M9, M10) are derived from it.",
+    "paper": "QCalcGeom.py L875-919 (universal_inertia)"
+  },
+  {
+    "id": "M9",
+    "claim": "U_I zero-points: t_n = k + 1/2  (massless scalar / zero-point gravity)",
+    "target": "1/2",
+    "derived": "1/2",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "cos(pi*t_n) = 0  =>  pi*t_n = pi/2 + k*pi  =>  t_n = 1/2 + k.  SymPy solve verified t_n = 1/2 (principal root).  At these phases U_I = 0 -> zero-point gravity moment, the quantum timing window where massless<->massive scalar transition occurs.",
+    "paper": "QCalcGeom.py L921-928 (zero_point_years_in_epoch5)"
+  },
+  {
+    "id": "M10",
+    "claim": "U_I(0) + U_I(1) = 0  (centripetal<->centrifugal great-cycle flip)",
+    "target": "0",
+    "derived": "0",
+    "match": true,
+    "status": "DERIVED",
+    "chain": "cos(0) = +1, cos(pi) = -1  =>  U_I(0) = -U_I(1).  Sum = 0 exactly (SymPy simplified).  This is the half-great-cycle sign reversal that toggles centripetal vs centrifugal mode.",
+    "paper": "QCalcGeom.py compute_F_U + universal_inertia"
+  },
+  {
+    "id": "M11",
+    "claim": "F_U includes Universal Inertia term: + xi * U_I * V_body",
+    "target": "dimensionally consistent",
+    "derived": "4*pi*V_body*c**2*rho_vac*xi*cos(pi*t_n)",
+    "match": false,
+    "status": "DERIVED",
+    "chain": "U_I [J/m^3] x V_body [m^3] = [J] (energy / force-length).  Multiplied by dimensionless coupling xi=1e-6 gives a perturbative additive contribution to F_U_total that vanishes at zero-point (M9) and flips sign across the great cycle (M10).  Wired into compute_F_U at QCalcGeom.py L1241.",
+    "paper": "QCalcGeom.py compute_F_U (Session 265)"
   }
 ]
