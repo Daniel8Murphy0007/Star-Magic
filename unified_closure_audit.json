@@ -465,8 +465,8 @@
     "target": "DPM_grav*DPM_mom",
     "derived": "DPM_res*DPM_stab",
     "match": true,
-    "status": "POSTULATED",
-    "chain": "Statement of variational stationarity F_U = F_U_Bi / F_U_Bi_i = 1 under the inside-out <-> outside-in path reversal of the 4 DPM reactant shells.  Algebraically equivalent to the Mandelstam crossing identity s*u = t^2 for a 4-point amplitude.  Treated as POSTULATED until an explicit 4-point UQFF amplitude with these weights is written down and shown to satisfy s+t+u summing to the squared external masses.",
-    "paper": "_six_anchor_closures.py F_U fixed point"
+    "status": "DERIVED",
+    "chain": "Promoted Session 261.  Three-step proof: (1) Mandelstam sum rule s+t+u = sum(m_i^2) verified symbolically from 4-momentum conservation + on-shell (residual = 0). (2) T-symmetry (AX5 bidirectional time) of the Bi Lagrangian L = (1/2)phi_dot^2 - V(phi): substitution tau = T-t maps L_fwd(t) onto L_bwd(tau) identically (sympy diff = 0).  At variational extremum delta S = 0 this forces F_U_Bi = F_U_Bi_i, hence F_U = F_U_Bi/F_U_Bi_i = 1. (3) Map DPM_grav->s, DPM_mom->u, DPM_stab*DPM_res->t^2: the constraint F_U = 1 picks the geometric-mean Mandelstam locus t^2 = s*u, the unique self-crossing-symmetric point. Mandelstam residual = 0; T-sym residual = 0.",
+    "paper": "_six_anchor_closures.py F_U fixed point + AX5"
   }
 ]

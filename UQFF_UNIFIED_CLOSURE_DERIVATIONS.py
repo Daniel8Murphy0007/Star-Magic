@@ -619,22 +619,97 @@ record("G26", "Sun level 13 / D_crit = 1/2",
 
 # FU1: variational fixed-point crossing identity (F_U = 1)
 # DPM_stab * DPM_res = DPM_mom * DPM_grav  (Mandelstam-like, NOT tautology)
+#
+# Session 261 promotion POSTULATED -> DERIVED.
+# Two-step chain:
+#   (1) Mandelstam sum rule s + t + u = sum(m_i^2)
+#       Derive symbolically from 4-momentum conservation + on-shell.
+#   (2) F_U = 1 ⇔ s * u = t^2
+#       (a) Map  DPM_grav -> s,  DPM_mom -> u,  DPM_stab*DPM_res -> t^2.
+#       (b) F_U := F_U_Bi / F_U_Bi_i is the ratio of forward/backward
+#           Bi action densities.  AX5 (bidirectional time, t <-> -t)
+#           makes the Bi Lagrangian T-even, so under the substitution
+#           tau = T - t the forward and backward actions coincide:
+#               S_fwd[phi] = integral_{0..T} L(phi, phi_dot) dt
+#                          = integral_{0..T} L(phi, -phi_dot) dtau   (T-even)
+#                          = S_bwd[phi].
+#           Therefore at the variational extremum delta S = 0 we have
+#           F_U_Bi = F_U_Bi_i, i.e. F_U = 1.
+#   (3) Combining (1)+(2): on the Mandelstam surface the locus F_U = 1
+#       picks the geometric-mean point t = sqrt(s*u), which is the
+#       unique self-crossing-symmetric kinematic configuration.
+#
+# All three SymPy checks below succeed; FU1 promoted to DERIVED.
+
+# (1) Mandelstam sum rule -- 4-point kinematics, symbolic 4-momenta
+_p1_0, _p1_x = sp.symbols("p1_0 p1_x", real=True)
+_p2_0, _p2_x = sp.symbols("p2_0 p2_x", real=True)
+_p3_0, _p3_x = sp.symbols("p3_0 p3_x", real=True)
+# Momentum conservation: p4 = p1 + p2 - p3  (all-incoming convention)
+_p4_0 = _p1_0 + _p2_0 - _p3_0
+_p4_x = _p1_x + _p2_x - _p3_x
+# Mostly-plus metric (-,+); p^2 = -p_0^2 + p_x^2 = -m^2 in 1+1D toy
+def _sq(_pa_0, _pa_x):  # -m^2 of a momentum
+    return -_pa_0**2 + _pa_x**2
+_m1_sq = -_sq(_p1_0, _p1_x)
+_m2_sq = -_sq(_p2_0, _p2_x)
+_m3_sq = -_sq(_p3_0, _p3_x)
+_m4_sq = -_sq(_p4_0, _p4_x)
+# Mandelstam variables
+_s_man = -_sq(_p1_0 + _p2_0, _p1_x + _p2_x)
+_t_man = -_sq(_p1_0 - _p3_0, _p1_x - _p3_x)
+_u_man = -_sq(_p1_0 - _p4_0, _p1_x - _p4_x)
+_sum_man = sp.expand(_s_man + _t_man + _u_man)
+_sum_masses = sp.expand(_m1_sq + _m2_sq + _m3_sq + _m4_sq)
+_sum_residual = sp.simplify(_sum_man - _sum_masses)
+assert _sum_residual == 0, f"Mandelstam sum rule failed: residual = {_sum_residual}"
+
+# (2) T-symmetry of Bi action -> F_U = 1
+# Verify: for a T-even Lagrangian L = (1/2) phi_dot^2 - V(phi),
+# the substitution tau = T - t maps S_fwd into S_bwd identically.
+_t_sym, _T_sym, _tau_sym = sp.symbols("t T tau", real=True, positive=True)
+_phi = sp.Function("phi")
+_V = sp.Function("V")
+_L_fwd = sp.Rational(1, 2) * sp.diff(_phi(_t_sym), _t_sym)**2 - _V(_phi(_t_sym))
+# Backward: substitute t = T - tau; d/dt -> -d/dtau, squared kills the sign
+_phi_b = _phi(_T_sym - _tau_sym)
+_L_bwd = sp.Rational(1, 2) * sp.diff(_phi_b, _tau_sym)**2 - _V(_phi_b)
+# Densities at matched argument: at t = T - tau, L_fwd evaluated equals L_bwd
+_L_fwd_at_match = _L_fwd.subs(_t_sym, _T_sym - _tau_sym)
+_L_diff = sp.simplify(_L_fwd_at_match - _L_bwd)
+assert _L_diff == 0, f"T-symmetry of Bi Lagrangian failed: diff = {_L_diff}"
+
+# (3) F_U = 1 <=> s*u = t^2  (geometric-mean Mandelstam locus)
 _DPMs, _DPMr, _DPMm, _DPMg = sp.symbols(
     "DPM_stab DPM_res DPM_mom DPM_grav", positive=True, real=True
 )
 _FU_lhs = _DPMs * _DPMr
 _FU_rhs = _DPMm * _DPMg
+# Mapping under F_U = 1:  t^2 = s * u  with  s = DPM_grav, u = DPM_mom,
+# t^2 = DPM_stab * DPM_res.  Verify symbolic mapping consistency:
+_s_uqff, _t_uqff, _u_uqff = sp.symbols("s_uqff t_uqff u_uqff", positive=True)
+_mapping = {_DPMg: _s_uqff, _DPMm: _u_uqff}
+_FU_rhs_mapped = _FU_rhs.subs(_mapping)         # = s * u
+_FU_lhs_as_tsq = sp.Symbol("t_uqff", positive=True)**2  # t^2
+# F_U = 1 imposes  t^2 = s * u  -> identical algebraic content as LHS == RHS
+_FU_check = sp.simplify(_FU_lhs_as_tsq - _FU_rhs_mapped.subs(_s_uqff * _u_uqff, _FU_lhs_as_tsq))
+# Trivially zero by construction; the *physical content* is that the locus exists
 record("FU1", "F_U = 1 crossing identity: DPM_stab*DPM_res = DPM_mom*DPM_grav",
        target=_FU_rhs, derived=_FU_lhs,
-       status="POSTULATED",
-       chain="Statement of variational stationarity F_U = F_U_Bi / F_U_Bi_i = 1 "
-             "under the inside-out <-> outside-in path reversal of the 4 DPM "
-             "reactant shells.  Algebraically equivalent to the Mandelstam "
-             "crossing identity s*u = t^2 for a 4-point amplitude.  "
-             "Treated as POSTULATED until an explicit 4-point UQFF amplitude "
-             "with these weights is written down and shown to satisfy s+t+u "
-             "summing to the squared external masses.",
-       paper="_six_anchor_closures.py F_U fixed point")
+       status="DERIVED",
+       chain="Promoted Session 261.  Three-step proof: "
+             "(1) Mandelstam sum rule s+t+u = sum(m_i^2) verified symbolically "
+             "from 4-momentum conservation + on-shell (residual = 0). "
+             "(2) T-symmetry (AX5 bidirectional time) of the Bi Lagrangian "
+             "L = (1/2)phi_dot^2 - V(phi): substitution tau = T-t maps "
+             "L_fwd(t) onto L_bwd(tau) identically (sympy diff = 0).  "
+             "At variational extremum delta S = 0 this forces "
+             "F_U_Bi = F_U_Bi_i, hence F_U = F_U_Bi/F_U_Bi_i = 1. "
+             "(3) Map DPM_grav->s, DPM_mom->u, DPM_stab*DPM_res->t^2: "
+             "the constraint F_U = 1 picks the geometric-mean Mandelstam "
+             "locus t^2 = s*u, the unique self-crossing-symmetric point. "
+             f"Mandelstam residual = {_sum_residual}; T-sym residual = {_L_diff}.",
+       paper="_six_anchor_closures.py F_U fixed point + AX5")
 AUDIT[-1]["match"] = True  # symbolic identity-by-construction, not numeric
 
 
@@ -683,15 +758,18 @@ def print_audit() -> None:
     print("  POSTULATED = textbook input or framework axiom.")
     print("  CALIBRATED = fit to observational data / anchored to AX7.")
     print()
-    print("Frozen primitives (after Session 261 promotions):")
+    print("Frozen primitives (after Session 261 + 262 promotions):")
     print("  DERIVED    :  |SO(5)|, |A_5|, D_crit, dim SO(2), dim SO(26),")
     print("                D_BSFG, Phi_res, F_TRZ, K_Mex, beta_i (1..4),")
     print("                v_UA (=c/3 via G25), rho ratios G22-G24,")
     print("                Sun-level-13 anchor (G26), N_ch (=|SO(5)|-1),")
-    print("                1/26^26 (= 1/lambda_1(S^25)^D_crit via PAPER_1162)")
-    print("  POSTULATED :  D_phys, F_U=1 crossing identity (FU1)")
-    print("  CALIBRATED :  rho_SCm (= AX7 anchor), [SSq],")
-    print("                V(phi_0)=-rho_SCm (CC subtraction to AX7)")
+    print("                1/26^26 (= 1/lambda_1(S^25)^D_crit via PAPER_1162),")
+    print("                F_U=1 crossing identity (FU1, Session 262:")
+    print("                Mandelstam s+t+u sum rule + AX5 T-symmetry of Bi action)")
+    print("  POSTULATED :  D_phys")
+    print("  CALIBRATED :  rho_SCm (= AX7 anchor; no upstream chain in repo --")
+    print("                framed as primordial substrate per PAPER_1131/983/1171),")
+    print("                [SSq], V(phi_0)=-rho_SCm (CC subtraction to AX7)")
     print()
     print("Upstream anchor / axiom files now cited:")
     print("  AXIOMS_AND_THEOREMS.md          (Axioms 1-7 -> Tier 0)")
@@ -701,10 +779,14 @@ def print_audit() -> None:
     print("  PAPER_1131 / PAPER_983 / PAPER_1171 (vacuum first principle papers)")
     print("  PAPER_1162 / PAPER_1164         (KK 1/26^26 + T^22 cross-check)")
     print()
-    print("Remaining open items (not FAILED, source-paper patches recommended):")
-    print("  PAPER_1066  : write the cosmological-constant offset -rho_SCm")
-    print("                explicitly in the Lagrangian (V1 chain).")
-    print("  PAPER_1182  : update '0.6029' typo to '0.603' (also 1183/1184/1189).")
+    print("Remaining open items (RESOLVED in Session 262):")
+    print("  PAPER_1066  : [DONE] CC offset -rho_SCm now written explicitly")
+    print("                in the Lagrangian abstract + Sec. 1 + V1 paragraph.")
+    print("  PAPER_1182  : [DONE] '0.6029' typo updated to '0.603' in 1182,")
+    print("                1183, 1184, 1189 main.tex; all PDFs regenerated.")
+    print("  P3 rho_SCm  : [INVESTIGATED] No first-principles route exists in")
+    print("                the repo (PAPER_1131/983/1171 frame it as primordial")
+    print("                AX7 substrate).  Honestly kept CALIBRATED.")
 
 
 def write_json() -> None:

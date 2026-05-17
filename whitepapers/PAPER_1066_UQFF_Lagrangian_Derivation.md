@@ -16,15 +16,28 @@ sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 ## Abstract
 
 We derive the complete UQFF Lagrangian from first principles. The total Lagrangian density L = L_GR
-+ L_SCm + L_phonon + L_interaction, where L_SCm = (1/2)(partial_mu phi)^2 - V(phi) with V(phi) =
-lambda * (phi^2 - v_SCm^2)^2, yields the SCm vacuum condensate. Dimensional analysis confirms [L] =
-J/m^3, V(phi_0) = -7.09e-37 J/m^3 (matching rho_SCm), and the phonon mass m_phonon = sqrt(8*lambda)
-* v_SCm.
++ L_SCm + L_phonon + L_interaction, where L_SCm = (1/2)(partial_mu phi)^2 - V(phi) with
+V(phi) := V_0(phi) - rho_SCm  and  V_0(phi) = lambda * (phi^2 - v_SCm^2)^2,
+yields the SCm vacuum condensate. The explicit additive offset -rho_SCm is the standard
+cosmological-constant calibration: the bare Mexican-hat V_0 has min 0; subtracting rho_SCm
+places the vacuum exactly at the observed plasmotic-vacuum density (Axiom AX7 of
+AXIOMS_AND_THEOREMS.md). Dimensional analysis confirms [L] = J/m^3,
+V(phi_0) = -rho_SCm = -7.09e-37 J/m^3, and the phonon mass m_phonon = sqrt(8*lambda) * v_SCm
+(unaffected by the constant offset since d^2 V / d phi^2 = d^2 V_0 / d phi^2).
 
 ## 1. Key Equations
 
-- $\mathcal{L} = \mathcal{L}_{\text{GR}} + \frac{1}{2}(\partial_mu\phi)^2 - \lambda(\phi^2 - v_{\text{SCm}}^2)^2 + \mathcal{L}_{\text{phonon}}$
-- $V(\phi_0) = -7.09 \times 10^{-37}$ J/m$^3$; $m_{\text{phonon}} = \sqrt{8\lambda} v_{\text{SCm}}$
+- $\mathcal{L} = \mathcal{L}_{\text{GR}} + \tfrac{1}{2}(\partial_\mu\phi)^2 - V(\phi) + \mathcal{L}_{\text{phonon}}$
+- $V(\phi) := V_0(\phi) - \rho_{\text{SCm}}, \qquad V_0(\phi) = \lambda\,(\phi^2 - v_{\text{SCm}}^2)^2$
+- $V(\phi_0) = -\rho_{\text{SCm}} = -7.09 \times 10^{-37}$ J/m$^3$  (vacuum anchored to AX7)
+- $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$  (offset-invariant: second derivative kills the constant)
+
+**Cosmological-constant calibration (V1 closure, Session 261):**
+The additive constant $-\rho_{\text{SCm}}$ is *not* derivable from the Mexican-hat shape
+alone; it is fixed by anchoring the vacuum to the AX7 plasmotic-vacuum density. This is the
+UQFF analogue of the standard Weinberg / Rugh-Zinkernagel cosmological-constant subtraction.
+All second-derivative observables (phonon mass, scattering amplitudes) are independent of
+this offset, so no observable is altered by the calibration.
 
 ## 2. Results
 
@@ -61,10 +74,12 @@ equations of motion derive:
 
 $$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
 
-$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
+$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - V(\phi), \quad V(\phi) := \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2 - \rho_{\text{SCm}}$$
 
-The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
-(matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
+With the explicit cosmological-constant subtraction $-\rho_{\text{SCm}}$, the SCm condensate
+potential minimum gives $V(\phi_0) = -\rho_{\text{SCm}} = -7.09 \times 10^{-37}\;\text{J/m}^3$
+by construction (anchored to AX7), and the phonon mass
+$m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$ is unchanged (constants drop out of $V''$).
 
 **Nine-sector closure (Session 202):**
 $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
