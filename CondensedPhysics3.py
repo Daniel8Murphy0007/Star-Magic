@@ -129,6 +129,21 @@ except ImportError:
     SESSION_280_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session282_alma_molecular_gas import (  # noqa: F401
+        ALMAMolecularGasCalculator,
+        column_density_LTE,
+        excitation_temperature_from_ratio,
+        h2_mass_from_CO,
+        dense_gas_mass_from_HCN,
+        virial_mass,
+        line_luminosity_K_kms_pc2,
+        brightness_temperature,
+        SESSION_282_CALCULATORS,
+    )
+except ImportError:
+    SESSION_282_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
