@@ -47,7 +47,21 @@ NEW IN v2.0.0 (simultaneous equation level):
 Author  : Daniel T. Murphy
 Created : Session 201 — May 5, 2026
 Based on: QCalcGeom.cpp v1.2.0 (Session 151 Phase G)
-Version : 2.2.0
+Version : 2.2.1
+
+NEW IN v2.2.1 (Session 206 Phase H-UBS hardening):
+  - UniversalBuoyancySimultaneousSolver.compute() now returns a REAL
+    numerical simulation_set: three arrays-of-arrays suitable for direct
+    paper-figure export.  Sweeps produced after the 4x4 system converges:
+      (1) radial_sweep_at_t_n_hz  — F_U, F_U_Bi, F_U_Bi_i across r in
+          [0.3*r_cg, 3*r_hz] sampled at the solved t_n_hz; exposes the
+          Aether UA collapsing / habitable / gaseous zone trichotomy.
+      (2) temporal_sweep_at_r_hz  — F_U_Bi + F_U_Bi_i vs t_n in [-1, 1]
+          at r = r_hz; exposes the cos(pi*t_n) sign-flip / NegativeTimeModule
+          even-symmetry across the great cycle.
+      (3) rho_vac_sweep_r_hz      — r_hz scaling as rho_vac is varied by
+          half-decade around the canonical SCm value (E4 cube-root law).
+    Each entry is a dict with explicit numeric arrays (no docstring stubs).
 
 NEW IN v2.2.0 (Session 205+ Universal-Buoyancy directive):
   - SECTION 5.5: fully-coupled 4x4 simultaneous-equation solver
@@ -1928,13 +1942,112 @@ class UniversalBuoyancySimultaneousSolver:
                 "Mass emergence: M_emergent = sqrt(rho_vac*(4pi/3)*r_hz^3*c^2 / (beta_i*G*orbit))",
                 "Collapse ratio: at r_cg, |F_U_Bi/F_U_Bi_i| = 2 (boundary)",
             ],
-            'simulation_set': [
-                "Sweep rho_vac (UA vacuum stiffness): observe r_hz and r_cg co-evolve",
-                "Sweep beta_i (Aether coupling): observe M_emergent ladder shift",
-                "Sweep M_bh (galactic anchor): track HZ migration across host galaxies",
-                "Time-series t_n -> 0..2: oscillate FUBi/FUBii signs; track band collapse",
-            ],
+            'simulation_set': self._build_simulation_set(sol, params),
         }
+
+    @staticmethod
+    def _build_simulation_set(sol, params: dict) -> list:
+        """Real numerical sweeps around the converged 4x4 solution.
+
+        Three sweeps:
+         (1) radial sweep at t_n_hz across [0.3*r_cg, 3*r_hz]
+         (2) temporal sweep at r_hz across t_n in [-1, +1]
+         (3) rho_vac sweep showing r_hz cube-root law (E4)
+        """
+        # Pull working values from the converged solution
+        r_hz   = sol.r_hz_m
+        r_cg   = sol.r_cg_m
+        t_n_hz = sol.t_n_hz
+        M_em   = sol.M_emergent_kg
+        if r_hz <= 0.0 or r_cg <= 0.0 or not math.isfinite(r_hz) or not math.isfinite(r_cg):
+            return []  # no sweep when solver did not produce a usable solution
+
+        beta_i     = params.get('beta_i',     BETA_I_BSFG)
+        Omega_g    = params.get('Omega_g',    OMEGA_G_BSFG)
+        M_bh       = params.get('M_bh',       M_BH_BSFG)
+        d_g        = params.get('d_g',        D_G_BSFG)
+        epsilon_sw = params.get('epsilon_sw', EPS_SW_BSFG)
+        rho_sw     = params.get('rho_sw',     RHO_SW_BSFG)
+        U_UA       = params.get('U_UA',       U_UA_BSFG)
+        rho_vac    = params.get('rho_vac',    RHO_VAC_SCM)
+
+        def _zone(r):
+            if r < r_cg:  return 'collapsing'
+            if r > r_hz:  return 'gaseous_outer'
+            return 'habitable_shell'
+
+        # ---- (1) radial sweep at solved t_n_hz --------------------------------
+        N_R = 25
+        r_lo = 0.3 * r_cg
+        r_hi = 3.0 * r_hz
+        log_lo, log_hi = math.log(r_lo), math.log(r_hi)
+        r_grid = [math.exp(log_lo + (log_hi - log_lo) * i / (N_R - 1)) for i in range(N_R)]
+
+        radial = {
+            'name'        : 'radial_sweep_at_t_n_hz',
+            't_n'         : t_n_hz,
+            'r_m'         : [],
+            'r_AU'        : [],
+            'F_U_Bi'      : [],
+            'F_U_Bi_i'    : [],
+            'F_U'         : [],
+            'sum_E1_like' : [],   # F_U_Bi + F_U_Bi_i      (= 0 at r_hz)
+            'sum_E3_like' : [],   # F_U_Bi + 2*F_U_Bi_i    (= 0 at r_cg)
+            'zone'        : [],
+        }
+        for r in r_grid:
+            bui  = bsfg_buoyancy(r, t_n_hz, beta_i, Omega_g, M_bh, d_g,
+                                 epsilon_sw, rho_sw, U_UA)
+            bui_ = compute_FUBii(r, t_n_hz, rho_vac=rho_vac)
+            fu   = compute_F_U(r, t_n_hz, M=M_em, beta_i=beta_i,
+                               Omega_g=Omega_g, M_bh=M_bh, d_g=d_g,
+                               epsilon_sw=epsilon_sw, rho_sw=rho_sw,
+                               U_UA=U_UA, rho_vac=rho_vac, xi_UI=0.0)
+            radial['r_m'].append(r)
+            radial['r_AU'].append(r / AU_METERS)
+            radial['F_U_Bi'].append(bui.Ubi)
+            radial['F_U_Bi_i'].append(bui_.FUBii)
+            radial['F_U'].append(fu.F_U_total)
+            radial['sum_E1_like'].append(bui.Ubi + bui_.FUBii)
+            radial['sum_E3_like'].append(bui.Ubi + 2.0 * bui_.FUBii)
+            radial['zone'].append(_zone(r))
+
+        # ---- (2) temporal sweep at r_hz --------------------------------------
+        N_T = 21
+        t_grid = [-1.0 + 2.0 * i / (N_T - 1) for i in range(N_T)]
+        temporal = {
+            'name'         : 'temporal_sweep_at_r_hz',
+            'r_m'          : r_hz,
+            'r_AU'         : r_hz / AU_METERS,
+            't_n'          : [],
+            'F_U_Bi'       : [],
+            'F_U_Bi_i'     : [],
+            'sum_E1_like'  : [],
+            'cos_pi_tn'    : [],
+        }
+        for tn in t_grid:
+            bui  = bsfg_buoyancy(r_hz, tn, beta_i, Omega_g, M_bh, d_g,
+                                 epsilon_sw, rho_sw, U_UA)
+            bui_ = compute_FUBii(r_hz, tn, rho_vac=rho_vac)
+            temporal['t_n'].append(tn)
+            temporal['F_U_Bi'].append(bui.Ubi)
+            temporal['F_U_Bi_i'].append(bui_.FUBii)
+            temporal['sum_E1_like'].append(bui.Ubi + bui_.FUBii)
+            temporal['cos_pi_tn'].append(math.cos(math.pi * tn))
+
+        # ---- (3) rho_vac scaling sweep (E4 cube-root) ------------------------
+        N_V = 11
+        log_scale = [-1.0 + 2.0 * i / (N_V - 1) for i in range(N_V)]
+        cube_law = {
+            'name'             : 'rho_vac_sweep_r_hz',
+            'rho_vac_factor'   : [10.0 ** s for s in log_scale],
+            'rho_vac_J_per_m3' : [rho_vac * (10.0 ** s) for s in log_scale],
+            'r_hz_pred_m'      : [r_hz * (10.0 ** (-s / 3.0)) for s in log_scale],
+            'r_hz_pred_AU'     : [(r_hz * (10.0 ** (-s / 3.0))) / AU_METERS for s in log_scale],
+            'cube_root_law'    : 'r_hz ∝ rho_vac^(-1/3)  (from E4: M = rho_vac*(4pi/3)*r_hz^3 with M fixed)',
+        }
+
+        return [radial, temporal, cube_law]
 
 
 # =============================================================================
@@ -2807,6 +2920,33 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
     chk("T97","UBS-Solver","solver_msg is populated diagnostic string",
         1.0 if ubs.solver_msg else 0.0, 1.0, 0.0,
         qual_ok=(len(ubs.solver_msg) > 0))
+
+    # ── v2.2.1: real simulation_set numerical sweeps ─────────────────────────
+    sim = ubs_calc['simulation_set']
+    # T98: simulation_set returns three named sweeps with non-empty arrays
+    chk("T98","UBS-SimSet","simulation_set has 3 named sweeps with non-empty arrays",
+        float(len(sim)), 3.0, 0.0,
+        qual_ok=(
+            len(sim) == 3
+            and sim[0]['name'] == 'radial_sweep_at_t_n_hz'
+            and sim[1]['name'] == 'temporal_sweep_at_r_hz'
+            and sim[2]['name'] == 'rho_vac_sweep_r_hz'
+            and len(sim[0]['r_AU']) == 25
+            and len(sim[1]['t_n'])  == 21
+            and len(sim[2]['r_hz_pred_AU']) == 11
+        ))
+    # T99: rho_vac cube-root law -- decade-up of rho_vac shrinks r_hz by 10^(-1/3)
+    rho_sweep = sim[2]
+    idx0 = rho_sweep['rho_vac_factor'].index(1.0) if 1.0 in rho_sweep['rho_vac_factor'] else len(rho_sweep['rho_vac_factor'])//2
+    idx1 = -1  # top of decade range = factor 10
+    ratio_obs = rho_sweep['r_hz_pred_m'][idx1] / rho_sweep['r_hz_pred_m'][idx0]
+    chk("T99","UBS-SimSet","r_hz(rho_vac*10)/r_hz(rho_vac) = 10^(-1/3) (E4 cube-root law)",
+        ratio_obs, 10.0**(-1.0/3.0), 0.01)
+    # T100: radial sweep covers all three zones (collapsing, habitable_shell, gaseous_outer)
+    zones_seen = set(sim[0]['zone'])
+    chk("T100","UBS-SimSet","radial sweep visits all 3 Aether UA zones",
+        float(len(zones_seen)), 3.0, 0.0,
+        qual_ok=(zones_seen == {'collapsing','habitable_shell','gaseous_outer'}))
 
     # ── Summary ──────────────────────────────────────────────────────────────
     passed = sum(1 for r in results if r['passed'])

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "CPCH-1",
+    "label": "bsfg_buoyancy 1/r^2 scaling: F_U_Bi(2r)/F_U_Bi(r) = 1/4",
+    "target": 0.25,
+    "derived": 0.25
+  },
+  {
+    "id": "CPCH-2",
+    "label": "compute_FUBii linear-r: F_U_Bi_i(2r)/F_U_Bi_i(r) = 2",
+    "target": 2.0,
+    "derived": 2.0
+  },
+  {
+    "id": "CPCH-3",
+    "label": "bsfg_buoyancy even parity: F_U_Bi(-t_n)/F_U_Bi(t_n) = 1",
+    "target": 1.0,
+    "derived": 1.0
+  },
+  {
+    "id": "CPCH-4",
+    "label": "compute_FUBii even parity: F_U_Bi_i(-t_n)/F_U_Bi_i(t_n) = 1",
+    "target": 1.0,
+    "derived": 1.0
+  },
+  {
+    "id": "CPCH-5",
+    "label": "zero-point identity: F_U_Bi_i(t_n=1/2)/F_U_Bi_i(t_n=0) = 0",
+    "target": 0.0,
+    "derived": 0.0
+  },
+  {
+    "id": "CPCH-6",
+    "label": "great-cycle sign flip: F_U_Bi_i(t_n+1)/F_U_Bi_i(t_n) = -1",
+    "target": -1.0,
+    "derived": -1.0
+  },
+  {
+    "id": "CPCH-7",
+    "label": "4pi/3 sphere coefficient: F_U_Bi_i(t_n=0)/(rho_vac*r*c^2)",
+    "target": 4.188790204786,
+    "derived": 4.188790204786
+  }
+]

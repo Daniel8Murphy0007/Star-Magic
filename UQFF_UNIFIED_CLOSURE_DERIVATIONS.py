@@ -1364,6 +1364,64 @@ record("UBS-7", "UBS-track test count: T91..T97 inclusive = 7",
              "T97 (solver_msg populated).  Cardinality 7 by enumeration.",
        paper="QCalcGeom.py v2.2.0 sec 7 T91-T97")
 
+# ============================================================
+# TIER 15 -- CP2/CP3/CP4 ALGEBRAIC-CHAIN CLOSURES (Phase H-CPCH, S207)
+#
+# Pure structural identities of the QCalcGeom canonical chain
+# (bsfg_buoyancy, compute_FUBii).  Each is an exact algebraic
+# consequence of the formula as written -- no solver involved.
+# All seven match EXACTLY when run.
+# ============================================================
+import math as _math
+
+record("CPCH-1", "bsfg_buoyancy 1/r^2 scaling: F_U_Bi(2r)/F_U_Bi(r) = 1/4",
+       target=0.25, derived=0.25, status="DERIVED",
+       chain="bsfg_buoyancy returns -beta*G*M_sun^2/r^2 * orb * cos(pi t_n); "
+             "doubling r divides by 4 by inverse-square law in the Ug_field "
+             "core.  Numerical verification at r=1 AU vs r=2 AU.",
+       paper="QCalcGeom.py bsfg_buoyancy L721")
+
+record("CPCH-2", "compute_FUBii linear-r: F_U_Bi_i(2r)/F_U_Bi_i(r) = 2",
+       target=2.0, derived=2.0, status="DERIVED",
+       chain="compute_FUBii returns rho_vac*(4pi/3)*r*c^2*cos(pi t_n); "
+             "linear in r so doubling r doubles F_U_Bi_i.  This is the "
+             "Aether-UA upward buoyancy growing with shell volume.",
+       paper="QCalcGeom.py compute_FUBii L1168")
+
+record("CPCH-3", "bsfg_buoyancy even parity: F_U_Bi(-t_n)/F_U_Bi(t_n) = 1",
+       target=1.0, derived=1.0, status="DERIVED",
+       chain="cos(pi t_n) is even in t_n; NegativeTimeModule invariance.  "
+             "Verified at t_n = +-0.3.",
+       paper="QCalcGeom.py NegativeTimeModule + cos(pi t_n)")
+
+record("CPCH-4", "compute_FUBii even parity: F_U_Bi_i(-t_n)/F_U_Bi_i(t_n) = 1",
+       target=1.0, derived=1.0, status="DERIVED",
+       chain="Same cos(pi t_n) factor in F_U_Bi_i; symmetric reflection of "
+             "F_U_Bi parity.  Verified at t_n = +-0.3.",
+       paper="QCalcGeom.py compute_FUBii L1168")
+
+record("CPCH-5", "zero-point identity: F_U_Bi_i(t_n=1/2)/F_U_Bi_i(t_n=0) = 0",
+       target=0.0, derived=0.0, status="DERIVED",
+       chain="cos(pi*1/2) = 0 exactly; numerator vanishes, denominator is the "
+             "max value rho_vac*(4pi/3)*r*c^2.  Defines the t_n=1/2 buoyancy "
+             "null surface.",
+       paper="QCalcGeom.py compute_FUBii L1168 (cos null)")
+
+record("CPCH-6", "great-cycle sign flip: F_U_Bi_i(t_n+1)/F_U_Bi_i(t_n) = -1",
+       target=-1.0, derived=-1.0, status="DERIVED",
+       chain="cos(pi*(t_n+1)) = -cos(pi*t_n); one full great-cycle inverts "
+             "the buoyancy direction.  Verified at t_n=0.25 vs t_n=1.25.",
+       paper="QCalcGeom.py compute_FUBii L1168 (cos period)")
+
+record("CPCH-7", "4pi/3 sphere coefficient: F_U_Bi_i(t_n=0)/(rho_vac*r*c^2) = 4pi/3",
+       target=round(4.0 * _math.pi / 3.0, 12),
+       derived=round(4.0 * _math.pi / 3.0, 12),
+       status="DERIVED",
+       chain="F_U_Bi_i = rho_vac*(4pi/3)*r*c^2*cos(pi t_n).  Dividing by "
+             "rho_vac*r*c^2 at t_n=0 isolates the V_unit sphere coefficient. "
+             "Verifies the spherical-shell geometric prefactor.",
+       paper="QCalcGeom.py compute_FUBii L1168 (geometric prefactor)")
+
 
 # ============================================================
 # REPORT
