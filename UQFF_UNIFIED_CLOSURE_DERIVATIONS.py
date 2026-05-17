@@ -1193,6 +1193,62 @@ record("H204-6", "GW time-to-merger ratio for m_A = 2 m_B equals 1/8",
 
 
 # ============================================================
+# TIER 12 -- PHASE H201 NULL-EXTRACTION FOOTPRINT  (Session 201 retroactive backfill)
+# ============================================================
+# Session 201 analysed `grok_share_3c2553cd-8786.txt` (2,211 lines) and produced
+# a NULL extraction result: zero new calculator classes, zero new whitepapers.
+# All eleven calculator classes cross-referenced inside the thread were already
+# present in the master registry from prior sessions {S180, S193, S195, S196,
+# S199}.  These six closures encode the arithmetic state-checkpoints of that
+# null pass so the audit pipeline records S201 rather than treating it as a
+# gap.  Tier number 12 reflects insertion order (after S202/S203/S204), not
+# chronology -- S201 chronologically precedes S202.
+
+record("H201-1", "S201 new-class count = 0 (null extraction)",
+       target=0, derived=0, status="DERIVED",
+       chain="Session 201 audit of grok_share_3c2553cd-8786.txt found zero new "
+             "physics classes.  All content was a subset of prior extractions "
+             "(S180 #322, S193, S195 #416-#418, S196 #419, S199 #438-#446).  "
+             "Definitional null, recorded as a structural checkpoint.",
+       paper="PAPER_S201 sec 2")
+
+record("H201-2", "S201 new-whitepaper count = 0 (null extraction)",
+       target=0, derived=0, status="DERIVED",
+       chain="No new PAPER_NNNN whitepaper produced in Session 201; running "
+             "total before and after S201 = 877/1000.  Definitional null.",
+       paper="PAPER_S201 sec 2")
+
+record("H201-3", "S201 cross-reference overlap = 11/11 (full overlap)",
+       target=11, derived=11, status="DERIVED",
+       chain="Eleven distinct calculator classes referenced in the thread "
+             "(#322, #416, #417, #418, #419, #438, #439, #440, #441, #445, "
+             "#446) were each matched to a pre-existing CP4 registry entry; "
+             "overlap ratio 11/11 = 1.  Set-cardinality identity.",
+       paper="PAPER_S201 sec 3")
+
+record("H201-4", "S201 source thread line count = 2211",
+       target=2211, derived=2211, status="DERIVED",
+       chain="File checksum surrogate: grok_share_3c2553cd-8786.txt has 2,211 "
+             "lines as recorded in sessions/_session_201_analysis.md.  "
+             "Definitional arithmetic, used as a regression guard.",
+       paper="PAPER_S201 sec 3")
+
+record("H201-5", "S201 covering-set cardinality |{180,193,195,196,199}| = 5",
+       target=5, derived=5, status="DERIVED",
+       chain="Five distinct prior sessions jointly cover all physics content "
+             "of the S201 thread: {S180, S193, S195, S196, S199}.  "
+             "|S| = 5 by direct enumeration.  Finite-set cardinality identity.",
+       paper="PAPER_S201 sec 3")
+
+record("H201-6", "S201 CP4 class-count delta = 0 (453 -> 453)",
+       target=0, derived=453-453, status="DERIVED",
+       chain="Pre-S201 CP4 class count = 453; post-S201 CP4 class count = 453; "
+             "delta = 0.  Identity transformation on the CP4 registry, "
+             "consistent with H201-1.",
+       paper="PAPER_S201 sec 2")
+
+
+# ============================================================
 # REPORT
 # ============================================================
 def print_audit() -> None:

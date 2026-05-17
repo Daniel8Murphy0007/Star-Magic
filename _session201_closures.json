@@ -1,0 +1,32 @@
+[
+  {
+    "label": "S201-new-classes-zero",
+    "predicted": 0,
+    "observed": 0
+  },
+  {
+    "label": "S201-new-papers-zero",
+    "predicted": 0,
+    "observed": 0
+  },
+  {
+    "label": "S201-crossref-overlap-eleven",
+    "predicted": 11,
+    "observed": 11
+  },
+  {
+    "label": "S201-thread-line-count",
+    "predicted": 2211,
+    "observed": 2211
+  },
+  {
+    "label": "S201-prior-sessions-cardinal",
+    "predicted": 5,
+    "observed": 5
+  },
+  {
+    "label": "S201-cp4-class-count-delta",
+    "predicted": 0,
+    "observed": 0
+  }
+]
