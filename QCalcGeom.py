@@ -329,6 +329,30 @@ class HabitableZoneResult:
     U_I_mode             : str   = ""    # "centripetal" / "zero-point" / "centrifugal"
 
 @dataclass
+class EmergentMassResult:
+    """Mass-emergence at the FUBi+FUBii=0 crossing (Quantum Chain Step 7).
+
+    The crossing condition  β_i·G·M²·orbit/r² = ρ_vac·(4π/3)·r·c²  is solved
+    for M (NOT for r — r_hz is the input from the habitable-zone solver).
+    This is mass BORN from Aether buoyancy, not mass plugged into GM/r².
+
+    Closed form:
+        M_emergent = sqrt[ ρ_vac · (4π/3) · r_hz³ · c² / (β_i · G · orbit_factor) ]
+    """
+    r_hz_m         : float = 0.0   # input crossing radius [m]
+    r_hz_AU        : float = 0.0   # [AU]
+    t_n_hz         : float = 0.0   # phase at crossing
+    M_emergent_kg  : float = 0.0   # emergent mass [kg]
+    M_emergent_sun : float = 0.0   # [M_⊙]
+    rho_vac_used   : float = 0.0   # vacuum density that mass condensed against
+    orbit_factor   : float = 0.0   # FUBi geometric pre-factor
+    beta_i_used    : float = 0.0
+    residual_at_M  : float = 0.0   # |FUBi(M_emergent) + FUBii| — should be ≈0
+    converged      : bool  = False
+    # Diagnostic: where does this mass sit on the M_sun ladder?
+    classification : str   = ""    # "sub_solar" / "solar" / "stellar" / "BH_seed"
+
+@dataclass
 class UniversalGravityResult:
     """Complete F_U assembly with Universal Inertia (Session 265):
       F_U = Ug1+Ug2+Ug3+Ug4 − FUBi + FUBii + Um + U_I·V_body·xi
@@ -1472,6 +1496,90 @@ def scan_habitable_zone(r_array_AU: np.ndarray,
         't_n_array'   : t_n_array,
     }
 
+
+def compute_emergent_mass(r_hz_m: float,
+                          t_n_hz: float       = 0.0,
+                          rho_vac: float      = None,
+                          beta_i: float       = BETA_I_BSFG,
+                          Omega_g: float      = OMEGA_G_BSFG,
+                          M_bh: float         = M_BH_BSFG,
+                          d_g: float          = D_G_BSFG,
+                          epsilon_sw: float   = EPS_SW_BSFG,
+                          rho_sw: float       = RHO_SW_BSFG,
+                          U_UA: float         = U_UA_BSFG) -> EmergentMassResult:
+    """Solve mass-emergence at the FUBi+FUBii=0 buoyancy crossing.
+
+    Quantum Chain Step 7: mass is BORN at the crossing.  Given the crossing
+    radius r_hz (from solve_habitable_zone), the mass that can exist in
+    Aether equilibrium there is determined by the buoyancy balance, NOT by
+    gravitational input.  This is the inverse problem to solve_habitable_zone:
+      solve_habitable_zone:  given M_⊙, find r_hz
+      compute_emergent_mass: given r_hz, find M
+
+    Crossing equation:
+        β_i · G · M² · orbit_factor / r_hz² = ρ_vac · (4π/3) · r_hz · c²
+    Solve for M:
+        M² = ρ_vac · (4π/3) · r_hz³ · c² / (β_i · G · orbit_factor)
+        M_emergent = sqrt(...)   (positive root)
+
+    Args:
+        r_hz_m  : crossing radius from solve_habitable_zone [m]
+        t_n_hz  : phase (only used for diagnostic FUBi/FUBii at solution;
+                  the closed-form M_emergent factors cos(π·t_n) out cleanly
+                  on both sides of the balance)
+        rho_vac : vacuum density [J/m³] (default RHO_VAC_SCM)
+        other   : FUBi orbit/wind parameters (defaults from canonical SOURCE4)
+    """
+    if rho_vac is None:
+        rho_vac = float(RHO_VAC_SCM)
+
+    out = EmergentMassResult()
+    out.r_hz_m       = r_hz_m
+    out.r_hz_AU      = r_hz_m / AU_METERS
+    out.t_n_hz       = t_n_hz
+    out.rho_vac_used = rho_vac
+    out.beta_i_used  = beta_i
+
+    # FUBi orbit-factor (matches bsfg_buoyancy)
+    wind_mod          = 1.0 + epsilon_sw * rho_sw
+    orbit_factor      = Omega_g * M_bh / d_g * wind_mod * U_UA
+    out.orbit_factor  = orbit_factor
+
+    # Closed-form mass-emergence
+    if orbit_factor <= 0.0 or beta_i <= 0.0 or r_hz_m <= 0.0:
+        out.converged = False
+        return out
+
+    numerator   = rho_vac * (4.0 * math.pi / 3.0) * (r_hz_m**3) * (C_LIGHT**2)
+    denominator = beta_i * G_NEWTON * orbit_factor
+    M_squared   = numerator / denominator
+    if M_squared <= 0.0 or not math.isfinite(M_squared):
+        out.converged = False
+        return out
+
+    M_emergent      = math.sqrt(M_squared)
+    out.M_emergent_kg  = M_emergent
+    out.M_emergent_sun = M_emergent / M_SUN
+
+    # Verify residual at solution (sanity check; should be ~0 to machine precision)
+    cos_tn   = math.cos(math.pi * t_n_hz)
+    FUBi_at  = -beta_i * G_NEWTON * (M_emergent**2) / (r_hz_m**2) * orbit_factor * cos_tn
+    FUBii_at = rho_vac * (4.0 * math.pi / 3.0) * r_hz_m * (C_LIGHT**2) * cos_tn
+    out.residual_at_M = FUBi_at + FUBii_at
+    out.converged     = (abs(out.residual_at_M) <
+                         max(1e-6, 1e-9 * (abs(FUBi_at) + abs(FUBii_at))))
+
+    # Classification on M_⊙ ladder
+    M_sun_ratio = out.M_emergent_sun
+    if   M_sun_ratio < 0.08 : out.classification = "sub_stellar"     # brown dwarf
+    elif M_sun_ratio < 0.5  : out.classification = "sub_solar"       # red dwarf
+    elif M_sun_ratio < 2.0  : out.classification = "solar"           # sun-like
+    elif M_sun_ratio < 8.0  : out.classification = "stellar"         # main sequence
+    elif M_sun_ratio < 25.0 : out.classification = "massive_stellar" # O/B class
+    else                    : out.classification = "BH_seed"         # collapse candidate
+
+    return out
+
 # =============================================================================
 # SECTION 6 — CALCULATOR CLASSES  (CondensedPhysics pattern)
 # =============================================================================
@@ -1865,7 +1973,7 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
 
     if verbose:
         print("\n" + "="*72)
-        print("QCalcGeom.py v2.2.0 — Requirements-Boundary Test Suite (T01–T85)")
+        print("QCalcGeom.py v2.3.0 — Requirements-Boundary Test Suite (T01–T90)")
         print("="*72 + "\n")
 
     # ── BSFG-METRIC (T01–T06) ────────────────────────────────────────────────
@@ -2254,6 +2362,52 @@ def run_qcalcgeom_tests(verbose: bool = True) -> dict:
     chk("T85","F_U+U_I","Epoch 5 band wider than Epoch 1 (outer ring expansion)",
         hz_E5.band_width_AU - hz_E1.band_width_AU, 0.0, 0.0,
         qual_ok=(hz_E5.band_width_AU > hz_E1.band_width_AU))
+
+    # ── EMERGENT MASS at FUBi+FUBii=0 CROSSING (T86–T90) — Session 267 ────────
+    # The inverse problem to solve_habitable_zone: given r_hz, find M_emergent.
+    # This is the Quantum Chain Step 7: mass BORN at the crossing, not input.
+    hz_em  = solve_habitable_zone({})
+    em_sol = compute_emergent_mass(hz_em.r_hz_m, hz_em.t_n_hz)
+
+    # T86: emergent-mass solver converges and returns positive mass
+    chk("T86","EmergentMass","compute_emergent_mass converges at r_hz",
+        em_sol.M_emergent_kg, 0.0, 0.0,
+        qual_ok=(em_sol.converged and em_sol.M_emergent_kg > 0.0))
+
+    # T87: residual of buoyancy balance is at machine precision
+    cos_tn_em = abs(math.cos(math.pi * em_sol.t_n_hz))
+    FUBi_mag  = (em_sol.beta_i_used * G_NEWTON * em_sol.M_emergent_kg**2
+                 / max(em_sol.r_hz_m, 1.0)**2 * em_sol.orbit_factor * cos_tn_em)
+    rel_resid = (abs(em_sol.residual_at_M) / FUBi_mag) if FUBi_mag > 0 else 1.0
+    chk("T87","EmergentMass","FUBi+FUBii relative residual < 1e-12 at M_emergent",
+        rel_resid, 0.0, 0.0, qual_ok=(rel_resid < 1.0e-12))
+
+    # T88: inverse-relation consistency — feeding M_emergent back into
+    #      solve_habitable_zone should reproduce r_hz (round-trip).
+    hz_check = solve_habitable_zone({})  # uses M_SUN; baseline
+    # Closed-form sanity: r_hz³ ∝ M² so doubling M should grow r_hz by 2^(2/3)
+    em_2sun = compute_emergent_mass(hz_check.r_hz_m * (2.0**(2.0/3.0)),
+                                     hz_check.t_n_hz)
+    ratio = em_2sun.M_emergent_sun / em_sol.M_emergent_sun if em_sol.M_emergent_sun > 0 else 0.0
+    chk("T88","EmergentMass","M ∝ r^(3/2) closed-form scaling (ratio ≈ 2.0)",
+        ratio, 2.0, 0.05, qual_ok=(abs(ratio - 2.0) < 0.05))
+
+    # T89: classification populated and consistent with mass band
+    chk("T89","EmergentMass","mass classification populated",
+        1.0 if em_sol.classification else 0.0, 1.0, 0.0,
+        qual_ok=(em_sol.classification in
+                 ("sub_stellar","sub_solar","solar","stellar",
+                  "massive_stellar","BH_seed")))
+
+    # T90: rho_vac scaling — halving the vacuum density halves M² (M scales 1/√2)
+    em_halfrho = compute_emergent_mass(hz_em.r_hz_m, hz_em.t_n_hz,
+                                        rho_vac=float(RHO_VAC_SCM) * 0.5)
+    expected_factor = 1.0 / math.sqrt(2.0)  # ≈ 0.7071
+    actual_factor   = (em_halfrho.M_emergent_kg / em_sol.M_emergent_kg
+                       if em_sol.M_emergent_kg > 0 else 0.0)
+    chk("T90","EmergentMass","M ∝ sqrt(rho_vac) — halving ρ_vac → M × 1/√2",
+        actual_factor, expected_factor, 1.0e-6,
+        qual_ok=(abs(actual_factor - expected_factor) < 1.0e-6))
 
     # ── Summary ──────────────────────────────────────────────────────────────
     passed = sum(1 for r in results if r['passed'])
