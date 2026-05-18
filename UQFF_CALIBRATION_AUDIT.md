@@ -103,12 +103,12 @@ quality averages **95.8%**, with the strongest tier (22 systems) at 99–100% ma
 | Rank | Gap | Severity | Resolution |
 |------|-----|----------|------------|
 | 1 | Orion H₂O ice formation rate — no calculator for d[H₂O]/dt | ✅ CLOSED S291 | `OrionH2OIceFormationRateCalculator` (cp4_id=435): Hasegawa-Herbst rate eqn + UQFF Aether modulation; 4-anchor validation (Orion BN/KL + TMC-1 ACTIVE, hot core + diffuse ZERO); 20/20 tests |
-| 2 | Chandra flux → physical parameter bridge incomplete | 🟠 HIGH | Complete CP4 #427 response matrix inversion |
-| 3 | Neutrino-GW cross-coupling stubs only | 🟠 HIGH | Extend `scm_gw_metric_perturbation()` |
-| 4 | High-z quasar evolution (z=6.5) — only J1610 | 🟠 HIGH | Create `HighZQuasarEvolutionBatch` (10 systems) |
-| 5 | Perseus A cooling flow lacks accretion rate | 🟡 MEDIUM | Add `CoolingFlowMassAccretionModifier` |
-| 6 | SGR 1745 crust–core thermal coupling missing | 🟡 MEDIUM | Add κ(B,ρ,T) in `MagnetarThermalModule` |
-| 7 | QCalcGeom: Orion not in HZ test suite | 🟡 MEDIUM | Add Orion to `HabitableZoneCalculator` |
+| 2 | Chandra flux → physical parameter bridge incomplete | ✅ CLOSED S292 | `ChandraFluxToParamCalculator` (cp4_id=436): flux→L_X bridge with Morrison-McCammon absorption + UQFF Aether modulation; 4 anchors (Sgr A*, Cas A, NGC 1275, background); 20/20 tests |
+| 3 | Neutrino-GW cross-coupling stubs only | ✅ CLOSED S293 | `NeutrinoGWCouplingCalculator` (cp4_id=437): h_UQFF=h_GR·(1/3)·(1-η_ν)·f_A; 4 anchors (GW150914, GW170817, SN1987A, LIGO noise); 20/20 tests |
+| 4 | High-z quasar evolution (z=6.5) — only J1610 | ✅ CLOSED S294 | `HighZQuasarEvolutionBatch` (cp4_id=438): L_bol, L_Edd, Ṁ + flat-LCDM D_L for 10 quasars z=4.4–7.64 (J0313, J1342, ULAS J1120, etc.); 20/20 tests |
+| 5 | Perseus A cooling flow lacks accretion rate | ✅ CLOSED S295 | `CoolingFlowMassAccretionCalculator` (cp4_id=439): classical isobaric Ṁ_cool=(2/5)μm_p L_X/(k_B T) + UQFF Aether; 4 anchors (NGC 1275, M87, Coma, NGC 1399); 20/20 tests |
+| 6 | SGR 1745 crust–core thermal coupling missing | ✅ CLOSED S296 | `MagnetarThermalCouplingCalculator` (cp4_id=440): κ_⊥(B,ρ,T)=κ_0/(1+(B/B_crit)²) calibrated K_0=4.6e9; 4 anchors (SGR 1745, SGR 1806, 1E 1207, NS core); 20/20 tests |
+| 7 | QCalcGeom: Orion not in HZ test suite | ✅ CLOSED S297 | `OrionHabitableZoneCalculator` (cp4_id=441): Kopparapu HZ + UV photoevaporation compression d_HZ_out·(F_sun/F_cl)^(1/4); 4 anchors (G2V/K5V/M4V in Orion + isolated control); 20/20 tests |
 | 8 | ALMA CO/CS/HCN absent | 🟡 MEDIUM | Create `ALMAMolecularGasCalculator` |
 | 9 | GW190425 mass-gap fractions lack error bars | 🟡 MEDIUM | Bayesian posterior calc |
 | 10 | SNR shock velocity not computed (only radii) | 🟡 MEDIUM | `SNRShockVelocityFromPhotometryCalculator` |

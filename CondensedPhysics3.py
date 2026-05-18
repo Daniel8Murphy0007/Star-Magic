@@ -264,6 +264,60 @@ except ImportError:
     SESSION_291_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session292_chandra_flux_to_param import (  # noqa: F401
+        ChandraFluxToParamCalculator,
+        ANCHORS as CHANDRA_ANCHORS,
+        SESSION_292_CALCULATORS,
+    )
+except ImportError:
+    SESSION_292_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session293_neutrino_gw_coupling import (  # noqa: F401
+        NeutrinoGWCouplingCalculator,
+        ANCHORS as GW_NU_ANCHORS,
+        SESSION_293_CALCULATORS,
+    )
+except ImportError:
+    SESSION_293_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session294_high_z_quasar_batch import (  # noqa: F401
+        HighZQuasarEvolutionBatch,
+        ANCHORS as HIGHZ_QUASAR_ANCHORS,
+        SESSION_294_CALCULATORS,
+    )
+except ImportError:
+    SESSION_294_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session295_cooling_flow_mass_accretion import (  # noqa: F401
+        CoolingFlowMassAccretionCalculator,
+        ANCHORS as COOLING_FLOW_ANCHORS,
+        SESSION_295_CALCULATORS,
+    )
+except ImportError:
+    SESSION_295_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session296_magnetar_thermal_coupling import (  # noqa: F401
+        MagnetarThermalCouplingCalculator,
+        ANCHORS as MAGNETAR_KAPPA_ANCHORS,
+        SESSION_296_CALCULATORS,
+    )
+except ImportError:
+    SESSION_296_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session297_orion_habitable_zone import (  # noqa: F401
+        OrionHabitableZoneCalculator,
+        ANCHORS as ORION_HZ_ANCHORS,
+        SESSION_297_CALCULATORS,
+    )
+except ImportError:
+    SESSION_297_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
