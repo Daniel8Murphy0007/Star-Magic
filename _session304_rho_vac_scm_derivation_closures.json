@@ -1,0 +1,12 @@
+{
+  "headline": {
+    "name": "S304_rho_vac_SCm_canonical_J_m3",
+    "predicted": 7.0898e-37,
+    "observed": 7.0898e-37,
+    "residual_pct": 0.0
+  },
+  "cp4_id": 448,
+  "audit_session": 304,
+  "n_chains_closed": 14,
+  "n_chains_total": 14
+}

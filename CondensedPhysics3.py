@@ -363,6 +363,24 @@ except ImportError:
     SESSION_302_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session303_universal_buoyancy_solver import (  # noqa: F401
+        UniversalBuoyancySimultaneousSolver,
+        ANCHORS as UB_SOLVER_ANCHORS,
+        SESSION_303_CALCULATORS,
+    )
+except ImportError:
+    SESSION_303_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session304_rho_vac_scm_derivation import (  # noqa: F401
+        RhoVacSCmDerivationCalculator,
+        RHO_VAC_DERIVATION_CHAINS,
+        SESSION_304_CALCULATORS,
+    )
+except ImportError:
+    SESSION_304_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:

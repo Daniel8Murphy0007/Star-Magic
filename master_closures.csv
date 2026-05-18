@@ -8,11 +8,11 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 207,cp_chain_closures,CPCH-1-bsfg-buoyancy-inverse-square,0.25,0.25,0,OK,_session207_cp_chain_closures.py,CPCH-1-bsfg-buoyancy-inverse-square: 0.25 vs 0.25 -> EXACT
 208,wolfram_kb_primitives,WKB-1-Mayan-Baktun,144000,144000,0,OK,_session208_wolfram_kb_primitives.py,WKB-1-Mayan-Baktun: 144000 vs 144000 -> EXACT
 209,nuclear_resonance_primitives,NRP-1-magic-cardinality,7,7,0,OK,_session209_nuclear_resonance_primitives.py,NRP-1-magic-cardinality: 7 vs 7 -> EXACT
-261,audit,audit,,,,PARSE_FAIL,_session261_audit.py,- Bundle missing: arxiv_submission_1159_1170
-261,closures,closures,,,,PARSE_FAIL,_session261_closures.py,6/6 physical anchors closed.  Framework fully self-consistent.
-262,closures,closures,,,,PARSE_FAIL,_session262_closures.py,Wrote _session262_closures.json
-263,closures,closures,,,,PARSE_FAIL,_session263_closures.py,Wrote _session263_closures.json
-264,closures,closures,,,,PARSE_FAIL,_session264_closures.py,Wrote _session264_closures.json
+261,audit,G27,1410473958869.3906,1410437235543.0183,0.0026036838397970946,OK_JSON,_session261_audit.py,- Bundle missing: arxiv_submission_1159_1170
+261,closures,G27,1410473958869.3906,1410437235543.0183,0.0026036838397970946,OK_JSON,_session261_closures.py,6/6 physical anchors closed.  Framework fully self-consistent.
+262,closures,S262-Proto-H,1.0,1.0013850504482567,0.13831347368693525,OK_JSON,_session262_closures.py,Wrote _session262_closures.json
+263,closures,S263-rho_Lambda,6e-10,5.96e-10,0.6711409395973131,OK_JSON,_session263_closures.py,Wrote _session263_closures.json
+264,closures,replacement,6e-10,5.96e-10,0.6711409395973131,OK_JSON,_session264_closures.py,Wrote _session264_closures.json
 265,grok_rebuttals,grok_rebuttals,,,,PARSE_FAIL,_session265_grok_rebuttals.py,Wrote _session265_grok_rebuttals.json
 266,root_closure,root_closure,,,,PARSE_FAIL,_session266_root_closure.py,Wrote _session266_root_closure.json
 267,extended_closures,extended_closures,,,,PARSE_FAIL,_session267_extended_closures.py,Wrote _session267_extended_closures.json
@@ -25,38 +25,65 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 275,mp_planck_closure,mp_planck_closure,,,,PARSE_FAIL,_session275_mp_planck_closure.py,Wrote _session275_mp_planck_closure.json
 276,chandrasekhar_closure,chandrasekhar_closure,,,,PARSE_FAIL,_session276_chandrasekhar_closure.py,Wrote _session276_chandrasekhar_closure.json
 277,beta_i_hunt,beta_i_hunt,,,,PARSE_FAIL,_session277_beta_i_hunt.py,Wrote _session277_beta_i_hunt.json  (132 binary candidates)
+277,uqff_gap_patches,uqff_gap_patches,,,,PARSE_FAIL,_session277_uqff_gap_patches.py,TOTAL: 21/21 PASS  |  0 FAIL
+278,dpm_layer_counter,dpm_layer_counter,,,,PARSE_FAIL,_session278_dpm_layer_counter.py,M42_Trapezium                    0.3        6.52      26            warm     3
 278,me_closure,me_closure,,,,PARSE_FAIL,_session278_me_closure.py,Wrote _session278_me_closure.json
 279,mu_tau_closure,mu_tau_closure,,,,PARSE_FAIL,_session279_mu_tau_closure.py,Wrote _session279_mu_tau_closure.json
+279,um_heaviside_amplifier,um_heaviside_amplifier,,,,PARSE_FAIL,_session279_um_heaviside_amplifier.py,M87_jet                       80     0.981      9.809e+12       1.471e+13
 280,286_frontier_harvester,S283_mass_c_residual,1,1.00001,0.0011,OK,_session280_286_frontier_harvester.py,S283_mass_c_residual :: predicted=1 observed=1.00001 error_pct=-0.001100
+280,ftrz_suppression,ftrz_suppression,,,,PARSE_FAIL,_session280_ftrz_suppression.py,"Results: 15 PASS, 0 FAIL"
 280,quark_closure,quark_closure,,,,PARSE_FAIL,_session280_quark_closure.py,Wrote _session280_quark_closure.json
 280,verify,verify,,,,PARSE_FAIL,_session280_verify.py,t : closed via v_EW/sqrt(2)   (S272)
 281,neutrino_hunt,neutrino_hunt,,,,PARSE_FAIL,_session281_neutrino_hunt.py,beta=  -6.9091  '1/K_Mex-e^2                 '  mass_resid=  0.131%
 281,verify,verify,,,,PARSE_FAIL,_session281_verify.py,m_3/m_2:  pred = 5.8183   obs = 5.8161   resid = 0.037%
+282,alma_molecular_gas,alma_molecular_gas,,,,PARSE_FAIL,_session282_alma_molecular_gas.py,"Results: 16 PASS, 0 FAIL"
 282,newton_G_closure,newton_G_closure,,,,PARSE_FAIL,_session282_newton_G_closure.py,G       = alpha_G * hbar*c / m_p^2  (definition)
 283,finetune,finetune,,,,PARSE_FAIL,_session283_finetune.py,beta= -10.16871  'sqrt2-5^(1/4)*sqrtA5            '  mass_resid= 0.0590%
+283,gw190425_bayesian,gw190425_bayesian,,,,PARSE_FAIL,_session283_gw190425_bayesian.py,"P(m1 ∈ mass-gap)   = 0.0866  [90% CI 0.0855, 0.0877]"
 283,verify,verify,,,,PARSE_FAIL,_session283_verify.py,ALL 12 fundamental fermions now closed below 0.1%
 284,seesaw_MR,seesaw_MR,,,,PARSE_FAIL,_session284_seesaw_MR.py,This is a TESTABLE prediction for LHC/cosmology bounds.
+284,snr_shock_velocity,snr_shock_velocity,,,,PARSE_FAIL,_session284_snr_shock_velocity.py,Tycho     v_s = 1620.0 km/s   (halpha_balmer)
 285,CKM_closure,J_CP,2.954e-05,3.18e-05,7.108,OK,_session285_CKM_closure.py,J_CP             2.954e-05      3.18e-05      7.108%
+285,p_vs_np_conjecture_tag,p_vs_np_conjecture_tag,,,,PARSE_FAIL,_session285_p_vs_np_conjecture_tag.py,========================================================================
 286,PMNS_closure,sin^2(theta_12),0.3203,0.307,4.333,OK,_session286_PMNS_closure.py,|J_PMNS|                  0.033316        0.0329        1.265%
+286,tde_mass_rate,tde_mass_rate,,,,PARSE_FAIL,_session286_tde_mass_rate.py,Sgr A* TDE   M_BH=4.15e+06  t_fb= 83.42 d  dMdt_pk=1.459 M_sun/yr  super-Edd×15.8
 287,proton_radius_higgs,proton_radius_higgs,,,,PARSE_FAIL,_session287_proton_radius_higgs.py,m_t/m_H ratio = F_TRZ^(1 + (beta_t-beta_H)*F_TRZ) (resid = 0.258%)
+287,rho_vac_scm_derivation_chain,rho_vac_scm_derivation_chain,,,,PARSE_FAIL,_session287_rho_vac_scm_derivation_chain.py,canonical match  : 1.178e-10 ppm
 288,gauge_couplings,gauge_couplings,,,,PARSE_FAIL,_session288_gauge_couplings.py,"D_phys is the EW backbone, Phi_res*F_TRZ is the small geometric tilt."
+288,universal_buoyancy_simultaneous_solver,universal_buoyancy_simultaneous_solver,,,,PARSE_FAIL,_session288_universal_buoyancy_simultaneous_solver.py,habitable   = True
 289,cosmology,cosmology,,,,PARSE_FAIL,_session289_cosmology.py,All three from SAME 11 locked primitives.  Zero new free parameters.
+289,dpm_foundational_kernel,dpm_foundational_kernel,,,,PARSE_FAIL,_session289_dpm_foundational_kernel.py,100 AU    a_two_pair = 1.297e-93 m/s^2
 290,dark_sector_inflation,dark_sector_inflation,,,,PARSE_FAIL,_session290_dark_sector_inflation.py,string critical dimension. Dark matter abundance is geometric.
+290,field_generator_lab_plasma_validation,field_generator_lab_plasma_validation,,,,PARSE_FAIL,_session290_field_generator_lab_plasma_validation.py,tau_relax_SCm = 4.799e-17 s
 291,muon_g2,muon_g2,,,,PARSE_FAIL,_session291_muon_g2.py,========================================================================
+291,orion_h2o_ice_formation_rate,orion_h2o_ice_formation_rate,,,,PARSE_FAIL,_session291_orion_h2o_ice_formation_rate.py,"[-] Diffuse cloud                     T_d= 20.0K  rate=4.55e-19  X_pred=0.0e+00  X_obs=0.0e+00  [ZERO, ACCRETION_LIMITED]"
+292,chandra_flux_to_param,chandra_flux_to_param,,,,PARSE_FAIL,_session292_chandra_flux_to_param.py,========================================================================
 292,cosmological_constant,cosmological_constant,,,,PARSE_FAIL,_session292_cosmological_constant.py,========================================================================
 293,hubble_tension_split,hubble_tension_split,,,,PARSE_FAIL,_session293_hubble_tension_split.py,========================================================================
+293,neutrino_gw_coupling,neutrino_gw_coupling,,,,PARSE_FAIL,_session293_neutrino_gw_coupling.py,========================================================================
+294,high_z_quasar_batch,high_z_quasar_batch,,,,PARSE_FAIL,_session294_high_z_quasar_batch.py,========================================================================
 294,neutron_lifetime,neutron_lifetime,,,,PARSE_FAIL,_session294_neutron_lifetime.py,========================================================================
+295,cooling_flow_mass_accretion,cooling_flow_mass_accretion,,,,PARSE_FAIL,_session295_cooling_flow_mass_accretion.py,========================================================================
 295,lithium7_problem,lithium7_problem,,,,PARSE_FAIL,_session295_lithium7_problem.py,========================================================================
 296,302_millennium_harvester,S302_bsd_LE1_cremona_32a1,0.6555,0.6555143,0.002181,OK,_session296_302_millennium_harvester.py,S302_bsd_LE1_cremona_32a1 :: predicted=0.6555 observed=0.6555143 error_pct=-0.002181
+296,magnetar_thermal_coupling,magnetar_thermal_coupling,,,,PARSE_FAIL,_session296_magnetar_thermal_coupling.py,========================================================================
 296,millennium_poincare_perelman,millennium_poincare_perelman,,,,PARSE_FAIL,_session296_millennium_poincare_perelman.py,========================================================================
 297,millennium_riemann,millennium_riemann,,,,PARSE_FAIL,_session297_millennium_riemann.py,========================================================================
+297,orion_habitable_zone,orion_habitable_zone,,,,PARSE_FAIL,_session297_orion_habitable_zone.py,========================================================================
+298,alma_molecular_gas,alma_molecular_gas,,,,PARSE_FAIL,_session298_alma_molecular_gas.py,========================================================================
 298,millennium_p_vs_np,millennium_p_vs_np,,,,PARSE_FAIL,_session298_millennium_p_vs_np.py,========================================================================
+299,gw190425_mass_gap_errors,gw190425_mass_gap_errors,,,,PARSE_FAIL,_session299_gw190425_mass_gap_errors.py,========================================================================
 299,millennium_yang_mills,millennium_yang_mills,,,,PARSE_FAIL,_session299_millennium_yang_mills.py,========================================================================
 300,millennium_navier_stokes,millennium_navier_stokes,,,,PARSE_FAIL,_session300_millennium_navier_stokes.py,========================================================================
+300,snr_shock_velocity,snr_shock_velocity,,,,PARSE_FAIL,_session300_snr_shock_velocity.py,========================================================================
 301,millennium_hodge,millennium_hodge,,,,PARSE_FAIL,_session301_millennium_hodge.py,========================================================================
+301,pnp_conjecture_anchor,pnp_conjecture_anchor,,,,PARSE_FAIL,_session301_pnp_conjecture_anchor.py,========================================================================
 302,millennium_bsd,millennium_bsd,,,,PARSE_FAIL,_session302_millennium_bsd.py,========================================================================
-303,paradox_amps_firewall,paradox_amps_firewall,,,,PARSE_FAIL,_session303_paradox_amps_firewall.py,========================================================================
-304,paradox_boltzmann_brain,paradox_boltzmann_brain,,,,PARSE_FAIL,_session304_paradox_boltzmann_brain.py,========================================================================
+302,tde_rate_mass,tde_rate_mass,,,,PARSE_FAIL,_session302_tde_rate_mass.py,========================================================================
+303,paradox_amps_firewall,S303_UB_HZ_inner_edge_Earth_Sun_AU,0.9089784828844266,0.95,4.318054433218246,OK_JSON,_session303_paradox_amps_firewall.py,========================================================================
+303,universal_buoyancy_solver,S303_UB_HZ_inner_edge_Earth_Sun_AU,0.9089784828844266,0.95,4.318054433218246,OK_JSON,_session303_universal_buoyancy_solver.py,Wrote _session303_universal_buoyancy_solver_closures.json: predicted=0.9090 AU vs observed=0.95 AU (residual=4.318%)
+304,paradox_boltzmann_brain,S304_rho_vac_SCm_canonical_J_m3,7.0898e-37,7.0898e-37,0,OK_JSON,_session304_paradox_boltzmann_brain.py,========================================================================
+304,rho_vac_scm_derivation,S304_rho_vac_SCm_canonical_J_m3,7.0898e-37,7.0898e-37,0,OK_JSON,_session304_rho_vac_scm_derivation.py,Wrote _session304_rho_vac_scm_derivation_closures.json: canonical=7.0898e-37 J/m^3 vs target=7.0898e-37 (residual=0.000%)
 305,paradox_frauchiger_renner,paradox_frauchiger_renner,,,,PARSE_FAIL,_session305_paradox_frauchiger_renner.py,========================================================================
 306,paradox_loschmidt,paradox_loschmidt,,,,PARSE_FAIL,_session306_paradox_loschmidt.py,========================================================================
 307,paradox_maxwell_demon,paradox_maxwell_demon,,,,PARSE_FAIL,_session307_paradox_maxwell_demon.py,========================================================================

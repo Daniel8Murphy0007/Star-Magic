@@ -115,7 +115,7 @@ quality averages **95.8%**, with the strongest tier (22 systems) at 99–100% ma
 | 11 | P vs NP — no observational anchor | ✅ CLOSED S301 | `PvsNPConjectureAnchor` (cp4_id=445): explicit CONJECTURE tier — 4 statements unanchored, UQFF informational-buoyancy stance Δ_C(n)=2^n−n^k > 0 → P≠NP unanchored; 20/20 tests |
 | 12 | TDE rate-mass function missing | ✅ CLOSED S302 | `TDEMassRateRelationCalculator` (cp4_id=446): Stone-Metzger Γ=10⁻⁴·(M/1e6)^(−0.404) yr⁻¹ + Hills cutoff M>1.1e8 M_⊙; 4 anchors (Sgr A*, AT2019qiz, ASASSN-14li, dwarf); 20/20 tests |
 | 13 | FieldGeneratorCorrelationV3 untested | ✅ CLOSED S290 | V4 with 4 DERIVED indices + 6-anchor validation (3 pos C>0.70 / 3 neg C<0.30), 23/23 tests |
-| 14 | 14 derivation chains incomplete (RHO_VAC_SCM) | 🔵 LOW | Session 280+ closure |
+| 14 | 14 derivation chains incomplete (RHO_VAC_SCM) | ✅ CLOSED S304 | `RhoVacSCmDerivationCalculator` (cp4_id=448): 14 chains C01–C14 reproduce $\rho_{SCm}=7.0898\times10^{-37}$ J/m³ via locked-primitive pivot $\mathcal{P}=1.18895\times10^{-35}$ J/m³; calibration gap +0.00%; 20/20 tests; PAPER_1198 |
 
 ---
 

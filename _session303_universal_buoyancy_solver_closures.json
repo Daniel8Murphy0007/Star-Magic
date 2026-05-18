@@ -1,0 +1,11 @@
+{
+  "headline": {
+    "name": "S303_UB_HZ_inner_edge_Earth_Sun_AU",
+    "predicted": 0.9089784828844266,
+    "observed": 0.95,
+    "residual_pct": 4.318054433218246
+  },
+  "cp4_id": 447,
+  "audit_session": 303,
+  "anchors_checked": 5
+}

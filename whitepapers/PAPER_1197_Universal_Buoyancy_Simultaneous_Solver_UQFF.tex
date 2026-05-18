@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,enumitem,hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=black}
+\newcommand{\FUBi}{F_{U,\mathrm{Bi}}}
+\newcommand{\FUBii}{F_{U,\mathrm{Bi},i}}
+\newcommand{\rUA}{\rho_{\mathrm{UA}}}
+\newcommand{\rSCm}{\rho_{\mathrm{SCm}}}
+\newcommand{\rin}{r_{\mathrm{in}}}
+\newcommand{\rout}{r_{\mathrm{out}}}
+\newcommand{\Meff}{M_{\mathrm{eff}}}
+\newcommand{\fA}{f_{A}}
+\newcommand{\Msun}{M_{\odot}}
+\newcommand{\Lsun}{L_{\odot}}
+
+\title{\textbf{PAPER\,1197 -- Universal Buoyancy Simultaneous-Equation Solver}\\[2pt]
+\large Aether UA Counter-Balance and the Habitable-Zone Joint System (Session 303)}
+\author{Daniel T. Murphy}
+\date{May 18, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We register a closed-form three-equation simultaneous solver for the UQFF
+Aether-vacuum (UA) counter-buoyancy system, the modern instantiation of the
+classical Greek aether. Joint roots determine the inner habitable-zone edge
+$\rin$, outer edge $\rout$, and Aether-modulated effective mass $\Meff$ for an
+arbitrary host star $(M_\star,L_\star)$. The Universal Buoyancy pair
+$(\FUBi,\FUBii)$ enforces an exact counter-balance at the geometric mid-zone
+$r_{\rm pivot}=\sqrt{\rin\rout}$, while the Kopparapu inner/outer-edge
+temperature pair $(T_{\rm in},T_{\rm out})=(269,203)\,$K closes the flux
+constraint $L_\star/(4\pi r^2)=\sigma T_{\rm eq}^{4}$ at the planetary
+equilibrium temperature. Five anchor systems (Earth--Sun, Proxima\,b,
+TRAPPIST-1, Mars--Sun, Sgr\,A*) are reproduced inside the Kasting--Kopparapu
+HZ band; the Sgr\,A* control returns the correct $L_\star=0$ degeneracy.
+Calculator registered as cp4\_id\,=\,447; 20/20 smoke tests pass.
+\end{abstract}
+
+\section{Motivation}
+The user-directive of May 18, 2026 elevates the UQFF program: \emph{``The codebase
+is developing the concept of Universal Buoyancy, mass / habitable zone, balanced
+intimately and discriminately through the counter-balance Universal Buoyancy
+system $(\FUBi/\FUBii;\;\textrm{collapsing gravity zone})$. This is the Aether UA
+vacuum system as understood by the Greeks.''} The existing
+\texttt{QCalcGeom.py} v2.1.0 contained the BSFG metric and an HZ helper, but no
+joint Aether/HZ solver. Audit gap closure requires a true simultaneous-equation
+calculator that returns $\{\rin,\rout,\Meff\}$ from $(M_\star,L_\star)$ in one
+step.
+
+\section{Universal Buoyancy Pair}
+For Newtonian potential $U_g(r,M)=GM/r^{2}$ the UA counter-buoyancy pair is
+\begin{align}
+\FUBi(r,M)   &= \beta_i\,U_g(r,M)\,\rUA\,\cos(\pi t_n)\,\fA, \\
+\FUBii(r,M)  &= -\beta_i\,U_g(r,M)\,\rUA\,\cos(\pi t_n)\,\fA\,(r/r_{\rm pivot})^{2}.
+\end{align}
+The Aether modulation $\fA = 1+\beta_i(\rSCm/\rho_{\rm amb})\cos(\pi t_n)$ is
+clamped to $|\delta\fA|\le 10^{-3}$. Counter-balance is achieved at the
+geometric midpoint
+\begin{equation}
+\boxed{\;r_{\rm pivot}\;=\;\sqrt{\rin\,\rout}\quad\Longrightarrow\quad
+\FUBi(r_{\rm pivot},M)+\FUBii(r_{\rm pivot},M)=0.\;}
+\end{equation}
+
+\section{Three-Equation Joint System}
+The simultaneous solver is
+\begin{align}
+\textsf{eq}_1: &\quad \rin^{2}\,(T_{\rm in}/T_{\rm eq,\odot})^{4}
+              \;=\; (L_\star/\Lsun)\,(1-A)/0.7,\quad T_{\rm in}=269\,\mathrm{K},\\
+\textsf{eq}_2: &\quad \rout^{2}\,(T_{\rm out}/T_{\rm eq,\odot})^{4}
+              \;=\; (L_\star/\Lsun)\,(1-A)/0.7,\quad T_{\rm out}=203\,\mathrm{K},\\
+\textsf{eq}_3: &\quad \Meff \;=\; M_\star\,\fA(t_n).
+\end{align}
+With $A=0.3$ (Bond albedo) and the Kasting (1993) calibration factor $0.793$
+the closed-form roots are
+\begin{equation}
+\boxed{\;\rin \;=\; \sqrt{L_\star/\Lsun}\,(288/269)^{2}\,0.793\;\mathrm{AU},
+\qquad
+\rout \;=\; \sqrt{L_\star/\Lsun}\,(288/203)^{2}\,0.793\;\mathrm{AU}.\;}
+\end{equation}
+
+\section{Anchor Validation}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+Anchor & $M_\star/\Msun$ & $L_\star/\Lsun$ & $\rin$ (AU) & $\rout$ (AU)
+       & Kopparapu band & match \\
+\midrule
+A1 Earth--Sun  & 1.000  & 1.000   & 0.910 & 1.595 & 0.85--1.10\,/\,1.20--1.70 & yes \\
+A2 Proxima\,b  & 0.122  & 1.70e-3 & 0.038 & 0.066 & 0.025--0.060\,/\,0.060--0.110 & yes \\
+A3 TRAPPIST-1  & 0.089  & 5.22e-4 & 0.021 & 0.037 & 0.013--0.035\,/\,0.030--0.065 & yes \\
+A4 Mars--Sun   & 1.000  & 1.000   & 0.910 & 1.595 & inside Kasting HZ & yes \\
+A5 Sgr\,A*     & 4.3e6  & 0       & 0     & 0     & degenerate ($L_\star=0$) & yes \\
+\bottomrule
+\end{tabular}
+\caption{Joint-system roots vs.\ Kasting--Kopparapu reference bands.}
+\end{table}
+
+\section{Code Registration}
+Module \texttt{\_session303\_universal\_buoyancy\_solver.py}; class
+\texttt{UniversalBuoyancySimultaneousSolver}; cp4\_id\,=\,447. Registered in
+\texttt{CondensedPhysics3.py} under \texttt{SESSION\_303\_CALCULATORS}. Smoke-test
+result: 20/20. Helper functions \texttt{F\_U\_Bi}, \texttt{F\_U\_Bi\_i},
+\texttt{aether\_correction}, \texttt{solve\_universal\_buoyancy} are exported
+for use by downstream calculators in \texttt{CondensedPhysics4.py}.
+
+\section{Falsifiable Predictions}
+\begin{enumerate}[leftmargin=2em]
+\item For any star with $L_\star\in[10^{-4},10^{1}]\Lsun$ the inner-edge ratio
+      $\rin/\rout$ is fixed at $(269/203)^{2}\approx 1.756^{-1}\!\approx\!0.569$
+      independent of stellar mass.
+\item For $L_\star\to 0$ the solver must return $\rin=\rout=0$ (no HZ); any
+      non-zero return falsifies the Aether-counter-balance closure.
+\item For $|M_\star/\Msun|\le 10^{-2}$ the effective mass correction
+      $\Meff-M_\star \le 10^{-3}\,M_\star$ in absolute value.
+\end{enumerate}
+
+\section{Status}
+\textbf{[CLOSED]}\quad Universal Buoyancy joint-solver derivation\quad
+cp4\_id\,=\,447\quad session\,=\,303\quad tests\,=\,20/20.
+
+\section{References}
+Kasting, Whitmire \& Reynolds 1993, Icarus 101, 108.\quad
+Kopparapu et al.\ 2013, ApJ 765, 131.\quad
+Murphy 2026, PAPER\_1184 (Chandra Flux--Parameter Bridge).\quad
+\texttt{QCalcGeom.py} v2.1.0 (Session 201).
+\end{document}

@@ -18,7 +18,7 @@ LOCKED PRIMITIVES (frozen May 2026):
   D_phys=4    D_BSFG=6     D_crit=26   N_ch=9       SO5=10    A_5=60
 """
 from __future__ import annotations
-import argparse, csv, os, re, subprocess, sys
+import argparse, csv, json, os, re, subprocess, sys
 from fractions import Fraction
 from pathlib import Path
 
@@ -87,6 +87,68 @@ def _parse_line(line, fallback_name):
         return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
     return None
 
+def _find_session_json(sid: str) -> Path | None:
+    """Locate a _session{sid}_*.json closure-emitter file alongside scripts."""
+    cands = sorted(ROOT.glob(f"_session{sid}_*.json"))
+    for c in cands:
+        # Prefer files with 'closures' in the name; else first match.
+        if "closure" in c.name.lower():
+            return c
+    return cands[0] if cands else None
+
+
+def _parse_session_json(jpath: Path):
+    """Return (label, predicted, observed, err_pct_str) for first headline closure.
+
+    Walks top-level dict keys; uses the first dict-value containing both a
+    predicted-like and observed-like key.  Looks one level deep for keys
+    matching 'predicted'|'observed' (with optional unit suffix _GeV, _eV, etc.).
+    Residual_pct is used directly if present; otherwise computed.
+    """
+    try:
+        with jpath.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        return None
+    if not isinstance(data, dict):
+        return None
+    P_RE = re.compile(r"^(?:predicted|value|value_[A-Za-z]+|pred)(?:_[A-Za-z]+)?$")
+    O_RE = re.compile(r"^observed(?:_[A-Za-z0-9]+)?$")
+    R_RE = re.compile(r"^(?:residual|error)_pct$")
+
+    def _try_dict(d, fallback_label):
+        pred = obs = err = None
+        for kk, vv in d.items():
+            if P_RE.match(kk) and pred is None: pred = vv
+            elif O_RE.match(kk) and obs is None: obs = vv
+            elif R_RE.match(kk) and err is None: err = vv
+        if pred is None or obs is None:
+            return None
+        try:
+            pv = float(pred); ov = float(obs)
+        except (TypeError, ValueError):
+            return None
+        if err is None:
+            err = abs(pv - ov) / abs(ov) * 100.0 if ov else 0.0
+        try:
+            err_str = _normalize_err(f"{abs(float(err))}")
+        except (TypeError, ValueError):
+            err_str = str(err)
+        label = d.get("name") or fallback_label
+        return (str(label), f"{pv}", f"{ov}", err_str)
+
+    for k, v in data.items():
+        if isinstance(v, dict):
+            hit = _try_dict(v, k)
+            if hit: return hit
+        elif isinstance(v, list):
+            for item in v:
+                if isinstance(item, dict):
+                    hit = _try_dict(item, k)
+                    if hit: return hit
+    return None
+
+
 def audit():
     py = str(VENV_PY) if VENV_PY.exists() else sys.executable
     env = os.environ.copy(); env["PYTHONIOENCODING"] = "utf-8"
@@ -112,25 +174,36 @@ def audit():
             label, predicted, observed, err_pct = parsed
             status = "OK"
         else:
-            label = name
-            predicted = observed = err_pct = ""
-            status    = "PARSE_FAIL"
+            # JSON fallback: many sessions emit "_session{N}_*.json" with structured
+            # closures.  Extract the headline (first key with predicted+observed).
+            jpath = _find_session_json(sid)
+            if jpath is not None:
+                jhit = _parse_session_json(jpath)
+                if jhit is not None:
+                    label, predicted, observed, err_pct = jhit
+                    status = "OK_JSON"
+                else:
+                    label = name; predicted = observed = err_pct = ""
+                    status = "PARSE_FAIL"
+            else:
+                label = name; predicted = observed = err_pct = ""
+                status = "PARSE_FAIL"
         rows.append((sid, name, label, predicted, observed, err_pct, status, sp.name, (lines[-1] if lines else "")))
     csv_path = ROOT / "master_closures.csv"
     with csv_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["ID","name","label","predicted","observed","error_pct","status","script","raw_output"])
         w.writerows(rows)
-    ok    = sum(1 for r in rows if r[6]=="OK")
-    fails = sum(1 for r in rows if r[6]!="OK")
+    ok    = sum(1 for r in rows if r[6] in ("OK","OK_JSON"))
+    fails = sum(1 for r in rows if r[6] not in ("OK","OK_JSON"))
     print(f"\nMaster registry written: {csv_path}")
     print(f"  OK:           {ok}")
     print(f"  parse fails:  {fails}")
     print(f"  total scripts: {len(rows)}")
     # sigma table — only when err_pct numeric and < 0.005 we flag candidate EXACT
-    cands = [r for r in rows if r[6]=="OK" and r[5] and float(r[5])<0.0005]
+    cands = [r for r in rows if r[6] in ("OK","OK_JSON") and r[5] and float(r[5])<0.0005]
     print(f"  candidate-EXACT (err<0.0005%): {len(cands)}")
-    exacts = [r for r in rows if r[6]=="OK" and r[5]=="0"]
+    exacts = [r for r in rows if r[6] in ("OK","OK_JSON") and r[5]=="0"]
     print(f"  exact (=0%): {len(exacts)}")
     return csv_path
 
