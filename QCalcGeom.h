@@ -111,8 +111,8 @@ namespace QCALCGEOM {
 
 constexpr int    QCALCGEOM_VERSION_MAJOR = 1;
 constexpr int    QCALCGEOM_VERSION_MINOR = 5;
-constexpr int    QCALCGEOM_VERSION_PATCH = 0;
-constexpr const char* QCALCGEOM_VERSION_STR = "1.5.0-S268";
+constexpr int    QCALCGEOM_VERSION_PATCH = 1;
+constexpr const char* QCALCGEOM_VERSION_STR = "1.5.1-S305";
 
 // C++ standard gate — matches CMakeLists.txt /std:c++20 project setting
 // MSVC reports correct value only with /Zc:__cplusplus; fall back to _MSVC_LANG
@@ -1097,7 +1097,7 @@ std::string poly26_symbolic(int k, const std::string& c_wl);
 //   dvp_arithmetic       bsh_harmonic          bh26_eigenvalue
 //   bsfg_buoyancy        poly26_derivative     uqff_comp_matrix
 //   vds_branches         dvp_branches          bh26_branches
-//   vds_dvp_coupled      bh26_bsh_resonance
+//   vds_dvp_coupled      bh26_bsh_resonance    universal_buoyancy
 //
 // JSON parameter keys are the same as the C++ function parameter names.
 // Unknown keys are ignored; missing keys fall back to canonical defaults.

@@ -100,33 +100,43 @@ def _find_session_json(sid: str) -> Path | None:
 def _parse_session_json(jpath: Path):
     """Return (label, predicted, observed, err_pct_str) for first headline closure.
 
-    Walks top-level dict keys; uses the first dict-value containing both a
-    predicted-like and observed-like key.  Looks one level deep for keys
-    matching 'predicted'|'observed' (with optional unit suffix _GeV, _eV, etc.).
-    Residual_pct is used directly if present; otherwise computed.
+    Handles three top-level JSON shapes:
+      1. dict-of-dicts (S261/S262/S264/...): walks dict values, looks one level deep.
+      2. dict containing ``closures`` / ``rows`` / ``results`` list of dicts.
+      3. top-level list of dicts (S267): scans items directly.
+    Field name matches:
+      predicted-like : ``predicted``, ``pred``, ``value``, ``uqff``, ``derived``,
+                       optional unit suffix ``_GeV`` / ``_meV`` / ``_J`` / ...
+      observed-like  : ``observed``, ``obs``, ``target``, ``sm`` (Standard-Model
+                       reference), optional unit suffix.
+      residual_pct   : ``residual_pct``, ``error_pct``, ``err_pct``.
     """
     try:
         with jpath.open("r", encoding="utf-8") as f:
             data = json.load(f)
     except Exception:
         return None
-    if not isinstance(data, dict):
-        return None
-    P_RE = re.compile(r"^(?:predicted|value|value_[A-Za-z]+|pred)(?:_[A-Za-z]+)?$")
-    O_RE = re.compile(r"^observed(?:_[A-Za-z0-9]+)?$")
-    R_RE = re.compile(r"^(?:residual|error)_pct$")
+    P_RE = re.compile(r"^(?:predicted|pred|value|uqff|derived)(?:_[A-Za-z0-9]+)?$", re.I)
+    O_RE = re.compile(r"^(?:observed|obs|target|sm)(?:_[A-Za-z0-9]+)?$", re.I)
+    R_RE = re.compile(r"^(?:residual|error|err)_pct$", re.I)
+    NAME_KEYS = ("name", "label", "target", "id")
 
     def _try_dict(d, fallback_label):
-        pred = obs = err = None
-        for kk, vv in d.items():
-            if P_RE.match(kk) and pred is None: pred = vv
-            elif O_RE.match(kk) and obs is None: obs = vv
-            elif R_RE.match(kk) and err is None: err = vv
-        if pred is None or obs is None:
+        if not isinstance(d, dict):
             return None
-        try:
-            pv = float(pred); ov = float(obs)
-        except (TypeError, ValueError):
+        pred_cands = []; obs_cands = []; err = None
+        for kk, vv in d.items():
+            if P_RE.match(kk): pred_cands.append((kk, vv))
+            elif O_RE.match(kk): obs_cands.append((kk, vv))
+            elif err is None and R_RE.match(kk): err = vv
+        def _first_num(cands):
+            for _k, v in cands:
+                try: return float(v)
+                except (TypeError, ValueError): continue
+            return None
+        pv = _first_num(pred_cands)
+        ov = _first_num(obs_cands)
+        if pv is None or ov is None:
             return None
         if err is None:
             err = abs(pv - ov) / abs(ov) * 100.0 if ov else 0.0
@@ -134,19 +144,35 @@ def _parse_session_json(jpath: Path):
             err_str = _normalize_err(f"{abs(float(err))}")
         except (TypeError, ValueError):
             err_str = str(err)
-        label = d.get("name") or fallback_label
+        label = None
+        for nk in NAME_KEYS:
+            v = d.get(nk)
+            if isinstance(v, (str, int, float)):
+                label = str(v); break
+        if not label:
+            label = fallback_label
         return (str(label), f"{pv}", f"{ov}", err_str)
 
-    for k, v in data.items():
-        if isinstance(v, dict):
-            hit = _try_dict(v, k)
-            if hit: return hit
-        elif isinstance(v, list):
-            for item in v:
-                if isinstance(item, dict):
-                    hit = _try_dict(item, k)
-                    if hit: return hit
-    return None
+    def _scan(obj, fallback_label):
+        # Try the object itself, then recurse into list / dict children.
+        hit = _try_dict(obj, fallback_label)
+        if hit: return hit
+        if isinstance(obj, dict):
+            # Prefer keys named 'closures' / 'rows' / 'results' first.
+            preferred = ("closures", "rows", "results", "anchors", "data", "table")
+            keys = list(obj.keys())
+            ordered = [k for k in preferred if k in keys] + [k for k in keys if k not in preferred]
+            for k in ordered:
+                v = obj[k]
+                hit = _scan(v, k)
+                if hit: return hit
+        elif isinstance(obj, list):
+            for item in obj:
+                hit = _scan(item, fallback_label)
+                if hit: return hit
+        return None
+
+    return _scan(data, jpath.stem)
 
 
 def audit():

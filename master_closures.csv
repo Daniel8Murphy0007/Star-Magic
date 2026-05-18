@@ -14,10 +14,10 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 263,closures,S263-rho_Lambda,6e-10,5.96e-10,0.6711409395973131,OK_JSON,_session263_closures.py,Wrote _session263_closures.json
 264,closures,replacement,6e-10,5.96e-10,0.6711409395973131,OK_JSON,_session264_closures.py,Wrote _session264_closures.json
 265,grok_rebuttals,grok_rebuttals,,,,PARSE_FAIL,_session265_grok_rebuttals.py,Wrote _session265_grok_rebuttals.json
-266,root_closure,root_closure,,,,PARSE_FAIL,_session266_root_closure.py,Wrote _session266_root_closure.json
-267,extended_closures,extended_closures,,,,PARSE_FAIL,_session267_extended_closures.py,Wrote _session267_extended_closures.json
+266,root_closure,c,300000000.0,299792458.0,0.06922855944561487,OK_JSON,_session266_root_closure.py,Wrote _session266_root_closure.json
+267,extended_closures,hbar,1.0526315789473684e-34,1.054571817e-34,0.18398349181671753,OK_JSON,_session267_extended_closures.py,Wrote _session267_extended_closures.json
 268,gap_closures,gap_closures,,,,PARSE_FAIL,_session268_gap_closures.py,Wrote _session268_gap_closures.json
-269,full_cascade,full_cascade,,,,PARSE_FAIL,_session269_full_cascade.py,Wrote _session269_full_cascade.json
+269,full_cascade,c,300000000.0,299792458.0,0.06922855944561487,OK_JSON,_session269_full_cascade.py,Wrote _session269_full_cascade.json
 270,271_calibrated_and_open,271_calibrated_and_open,,,,PARSE_FAIL,_session270_271_calibrated_and_open.py,Wrote _session270_271_results.json
 272,forward_predictions,forward_predictions,,,,PARSE_FAIL,_session272_forward_predictions.py,Wrote _session272_forward_predictions.json
 273,lambda_hierarchy,lambda_hierarchy,,,,PARSE_FAIL,_session273_lambda_hierarchy.py,Wrote _session273_lambda_hierarchy.json
@@ -26,14 +26,14 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 276,chandrasekhar_closure,chandrasekhar_closure,,,,PARSE_FAIL,_session276_chandrasekhar_closure.py,Wrote _session276_chandrasekhar_closure.json
 277,beta_i_hunt,beta_i_hunt,,,,PARSE_FAIL,_session277_beta_i_hunt.py,Wrote _session277_beta_i_hunt.json  (132 binary candidates)
 277,uqff_gap_patches,uqff_gap_patches,,,,PARSE_FAIL,_session277_uqff_gap_patches.py,TOTAL: 21/21 PASS  |  0 FAIL
-278,dpm_layer_counter,dpm_layer_counter,,,,PARSE_FAIL,_session278_dpm_layer_counter.py,M42_Trapezium                    0.3        6.52      26            warm     3
-278,me_closure,me_closure,,,,PARSE_FAIL,_session278_me_closure.py,Wrote _session278_me_closure.json
+278,dpm_layer_counter,mp_me_identity,1836.0,1836.1526734400013,0.00831485541533304,OK_JSON,_session278_dpm_layer_counter.py,M42_Trapezium                    0.3        6.52      26            warm     3
+278,me_closure,mp_me_identity,1836.0,1836.1526734400013,0.00831485541533304,OK_JSON,_session278_me_closure.py,Wrote _session278_me_closure.json
 279,mu_tau_closure,mu_tau_closure,,,,PARSE_FAIL,_session279_mu_tau_closure.py,Wrote _session279_mu_tau_closure.json
 279,um_heaviside_amplifier,um_heaviside_amplifier,,,,PARSE_FAIL,_session279_um_heaviside_amplifier.py,M87_jet                       80     0.981      9.809e+12       1.471e+13
 280,286_frontier_harvester,S283_mass_c_residual,1,1.00001,0.0011,OK,_session280_286_frontier_harvester.py,S283_mass_c_residual :: predicted=1 observed=1.00001 error_pct=-0.001100
-280,ftrz_suppression,ftrz_suppression,,,,PARSE_FAIL,_session280_ftrz_suppression.py,"Results: 15 PASS, 0 FAIL"
-280,quark_closure,quark_closure,,,,PARSE_FAIL,_session280_quark_closure.py,Wrote _session280_quark_closure.json
-280,verify,verify,,,,PARSE_FAIL,_session280_verify.py,t : closed via v_EW/sqrt(2)   (S272)
+280,ftrz_suppression,top,-2.4805483021587085,-2.477772368484885,0.11203344218100124,OK_JSON,_session280_ftrz_suppression.py,"Results: 15 PASS, 0 FAIL"
+280,quark_closure,top,-2.4805483021587085,-2.477772368484885,0.11203344218100124,OK_JSON,_session280_quark_closure.py,Wrote _session280_quark_closure.json
+280,verify,top,-2.4805483021587085,-2.477772368484885,0.11203344218100124,OK_JSON,_session280_verify.py,t : closed via v_EW/sqrt(2)   (S272)
 281,neutrino_hunt,neutrino_hunt,,,,PARSE_FAIL,_session281_neutrino_hunt.py,beta=  -6.9091  '1/K_Mex-e^2                 '  mass_resid=  0.131%
 281,verify,verify,,,,PARSE_FAIL,_session281_verify.py,m_3/m_2:  pred = 5.8183   obs = 5.8161   resid = 0.037%
 282,alma_molecular_gas,alma_molecular_gas,,,,PARSE_FAIL,_session282_alma_molecular_gas.py,"Results: 16 PASS, 0 FAIL"

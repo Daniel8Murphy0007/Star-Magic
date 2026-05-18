@@ -2149,6 +2149,37 @@ QCALCGEOM_API const char* qcalcgeom_compute_json(const char* fn, const char* p) 
         return set_result(j.finish());
     }
 
+    // ── universal_buoyancy (S303 closed-form Kasting/Kopparapu HZ) ───────────
+    //   Inputs : M_star_solar, L_star_solar, t_n (default 0.5).
+    //   Output : r_in_AU, r_out_AU, r_mid_AU, M_eff_solar (currently == M_star).
+    //   Calibration constants match _session303_universal_buoyancy_solver.py:
+    //     T_in=269 K (recent-Venus), T_out=203 K (early-Mars), A=0.3,
+    //     cal=0.793 (Kasting 1993).  Earth-Sun test returns r_in≈0.9090 AU.
+    if (std::strcmp(fn, "universal_buoyancy") == 0) {
+        double M_star = json_get_d(p, "M_star_solar", 1.0);
+        double L_star = json_get_d(p, "L_star_solar", 1.0);
+        double t_n    = json_get_d(p, "t_n",          0.5);
+        const double T_IN  = 269.0;
+        const double T_OUT = 203.0;
+        const double CAL   = 0.793;
+        double sqrtL = std::sqrt(L_star > 0.0 ? L_star : 0.0);
+        double r_in_AU  = sqrtL * std::pow(288.0 / T_IN , 2.0) * CAL;
+        double r_out_AU = sqrtL * std::pow(288.0 / T_OUT, 2.0) * CAL;
+        double r_mid_AU = std::sqrt(r_in_AU * r_out_AU);
+        JB j;
+        j.d("M_star_solar", M_star);
+        j.d("L_star_solar", L_star);
+        j.d("t_n",          t_n);
+        j.d("r_in_AU",      r_in_AU);
+        j.d("r_out_AU",     r_out_AU);
+        j.d("r_mid_AU",     r_mid_AU);
+        j.d("M_eff_solar",  M_star);
+        j.d("T_in_K",       T_IN);
+        j.d("T_out_K",      T_OUT);
+        j.d("calibration",  CAL);
+        return set_result(j.finish());
+    }
+
     // ── unknown function ──────────────────────────────────────────────────────
     JB j;
     j.str("error", (std::string("unknown function: ") + fn).c_str());
