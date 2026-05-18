@@ -221,6 +221,19 @@ except ImportError:
     SESSION_288_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session289_dpm_foundational_kernel import (  # noqa: F401
+        DPMFoundationalGravityCalculator,
+        symbolic_kernel as dpm_symbolic_kernel,
+        emergence_substitution as dpm_emergence_substitution,
+        a_DPM_emergent,
+        newton_ratio,
+        K_DPM,
+        SESSION_289_CALCULATORS,
+    )
+except ImportError:
+    SESSION_289_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
