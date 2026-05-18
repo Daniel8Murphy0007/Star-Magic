@@ -194,6 +194,21 @@ except ImportError:
     SESSION_286_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session287_rho_vac_scm_derivation_chain import (  # noqa: F401
+        RHOVacSCmDerivationChainCalculator,
+        derive_structural,
+        derive_companion,
+        derive_F_TRZ,
+        derive_mass_equivalent,
+        derive_quantum_chain,
+        derive_bsfg_fixed_point,
+        full_chain,
+        SESSION_287_CALCULATORS,
+    )
+except ImportError:
+    SESSION_287_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
