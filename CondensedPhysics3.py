@@ -209,6 +209,18 @@ except ImportError:
     SESSION_287_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session288_universal_buoyancy_simultaneous_solver import (  # noqa: F401
+        UniversalBuoyancySimultaneousSolver,
+        solve_universal_buoyancy,
+        habitable_radius_radiative,
+        chi_UB,
+        symbolic_system,
+        SESSION_288_CALCULATORS,
+    )
+except ImportError:
+    SESSION_288_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
