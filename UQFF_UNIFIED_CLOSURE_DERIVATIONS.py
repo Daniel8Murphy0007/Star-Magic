@@ -798,7 +798,7 @@ _great_cycle_years = sp.Rational(1872000, 36525) * sp.Integer(100)  # 1872000/36
 _great_cycle_years_float = float(_great_cycle_years)
 record("M3", "MAYAN_GREAT_CYCLE_YEARS ≈ 5125.257",
        target=5125.257,
-       derived=round(_great_cycle_years_float, 3),
+       derived=_great_cycle_years_float,
        status="DERIVED",
        chain="1,872,000 days / 365.25 days/yr = 187200000/36525 "
              f"= {_great_cycle_years} ≈ {_great_cycle_years_float:.6f} years.  "
@@ -1025,7 +1025,7 @@ record("H203-1", "PTF net displacement D_A + D_B = 0",
 import math as _math_h203
 _cos_int = (_math_h203.sin(_math_h203.pi) - _math_h203.sin(0.0)) / _math_h203.pi
 record("H203-2", "int_0^1 cos(pi*t_n) dt_n = 0",
-       target=0.0, derived=round(_cos_int, 12), status="DERIVED",
+       target=0.0, derived=_cos_int, status="DERIVED",
        chain="Antiderivative sin(pi*t_n)/pi; evaluated on [0,1]: "
              "(sin(pi) - sin(0))/pi = 0 exactly.  Independent verification: "
              "sin(pi*k) = 0 for all integers k, so the closure is exact at "
@@ -1080,7 +1080,7 @@ record("H203-5", "First 15 digits of pi tile 5 epochs of 3 digits each",
 _a, _b_tp, _c = 8.0, 27.0, 64.0
 _g_triple = (_a * _b_tp * _c) ** (1.0/3.0)
 record("H203-6", "Triple-point g = cbrt(a*b*c) is the geometric mean",
-       target=24.0, derived=round(_g_triple, 9), status="DERIVED",
+       target=24.0, derived=_g_triple, status="DERIVED",
        chain="g_triple = cbrt(a_DPM * g_res * R_bsfg) is by definition the "
              "geometric mean of the three path operators (Compressed, "
              "Resonance, BSFG).  Verification: cbrt(8*27*64) = cbrt(2^3 * "
@@ -1097,7 +1097,7 @@ record("H203-6", "Triple-point g = cbrt(a*b*c) is the geometric mean",
 _z = 1e-6
 _li25_over_z = sum(_z**(n - 1) / n**25 for n in range(1, 200))
 record("H203-7", "vds_prime = Li_25(z)/z -> 1 as z -> 0",
-       target=1.0, derived=round(_li25_over_z, 12), status="DERIVED",
+       target=1.0, derived=_li25_over_z, status="DERIVED",
        chain=f"Li_25(z)/z = sum_{{n>=1}} z^(n-1)/n^25; n=1 term = 1, "
              f"n>=2 tail bounded by z/(2^25*(1-z)).  At z={_z}: "
              f"correction <= {_z/2**25:.3e}.  Numeric value (200 terms) "
@@ -1137,7 +1137,7 @@ record("H203-8", "BH26 lambda_1 = 26 (cross-consistency S202 <-> S203)",
 #       (chirp_mass_kg, quadrupole power, time-to-merger).
 # The six closures below are the exact-arithmetic footprints of that work.
 
-_chirp_val = round(2.0 ** (-1.0/5.0), 12)
+_chirp_val = 2.0 ** (-1.0/5.0)
 record("H204-1", "GW chirp mass, equal-mass binary, M_chirp/m = 2^(-1/5)",
        target=_chirp_val, derived=_chirp_val, status="DERIVED",
        chain="Peters & Mathews (1963).  M_chirp = (m1 m2)^(3/5) (m1+m2)^(-1/5).  "
@@ -1274,7 +1274,7 @@ record("H205-2", "Critical balance ratio r_crit = 1/2",
        paper="PAPER_S205 sec 3")
 
 record("H205-3", "Net-factor formula net_factor(r) = 2r - 1; r=1.1 => 1.2",
-       target=round(2.0*1.1 - 1.0, 10), derived=round(2.0*1.1 - 1.0, 10), status="DERIVED",
+       target=(2.0*1.1 - 1.0), derived=(2.0*1.1 - 1.0), status="DERIVED",
        chain="net_factor := (F_{U,Bi}/F_U) - (1 - F_{U,Bi}/F_U) = 2r - 1.  "
              "Arithmetic identity evaluated at r=1.1.",
        paper="PAPER_S205 sec 3")
@@ -1348,8 +1348,8 @@ record("UBS-5", "Aether mass cube-law: M(2*r_hz)/M(r_hz) = 8",
        paper="QCalcGeom.py v2.2.0 sec 5.5 E4")
 
 record("UBS-6", "Seed-ratio cube-root: r_cg_seed/r_hz_seed = 2^(-1/3)",
-       target=round(2.0**(-1.0/3.0), 12),
-       derived=round(2.0**(-1.0/3.0), 12), status="DERIVED",
+       target=2.0**(-1.0/3.0),
+       derived=2.0**(-1.0/3.0), status="DERIVED",
        chain="F_U_Bi ~ 1/r^2 (collapsing) and F_U_Bi_i ~ r (Aether spring) => "
              "ratio F_U_Bi/F_U_Bi_i ~ 1/r^3.  Transitioning the ratio from "
              "1 (at r_hz, E1) to 2 (at r_cg, E3) requires r_cg/r_hz = 2^(-1/3).  "
@@ -1414,8 +1414,8 @@ record("CPCH-6", "great-cycle sign flip: F_U_Bi_i(t_n+1)/F_U_Bi_i(t_n) = -1",
        paper="QCalcGeom.py compute_FUBii L1168 (cos period)")
 
 record("CPCH-7", "4pi/3 sphere coefficient: F_U_Bi_i(t_n=0)/(rho_vac*r*c^2) = 4pi/3",
-       target=round(4.0 * _math.pi / 3.0, 12),
-       derived=round(4.0 * _math.pi / 3.0, 12),
+       target=4.0 * _math.pi / 3.0,
+       derived=4.0 * _math.pi / 3.0,
        status="DERIVED",
        chain="F_U_Bi_i = rho_vac*(4pi/3)*r*c^2*cos(pi t_n).  Dividing by "
              "rho_vac*r*c^2 at t_n=0 isolates the V_unit sphere coefficient. "
