@@ -318,6 +318,51 @@ except ImportError:
     SESSION_297_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session298_alma_molecular_gas import (  # noqa: F401
+        ALMAMolecularGasCalculator,
+        ANCHORS as ALMA_MOLGAS_ANCHORS,
+        SESSION_298_CALCULATORS,
+    )
+except ImportError:
+    SESSION_298_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session299_gw190425_mass_gap_errors import (  # noqa: F401
+        GW190425MassGapBayesianCalculator,
+        ANCHORS as GW190425_MASS_GAP_ANCHORS,
+        SESSION_299_CALCULATORS,
+    )
+except ImportError:
+    SESSION_299_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session300_snr_shock_velocity import (  # noqa: F401
+        SNRShockVelocityFromPhotometryCalculator,
+        ANCHORS as SNR_SHOCK_ANCHORS,
+        SESSION_300_CALCULATORS,
+    )
+except ImportError:
+    SESSION_300_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session301_pnp_conjecture_anchor import (  # noqa: F401
+        PvsNPConjectureAnchor,
+        STATEMENTS as PNP_STATEMENTS,
+        SESSION_301_CALCULATORS,
+    )
+except ImportError:
+    SESSION_301_CALCULATORS = {}  # type: ignore
+
+try:
+    from _session302_tde_rate_mass import (  # noqa: F401
+        TDEMassRateRelationCalculator,
+        ANCHORS as TDE_RATE_ANCHORS,
+        SESSION_302_CALCULATORS,
+    )
+except ImportError:
+    SESSION_302_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:

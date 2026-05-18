@@ -109,11 +109,11 @@ quality averages **95.8%**, with the strongest tier (22 systems) at 99–100% ma
 | 5 | Perseus A cooling flow lacks accretion rate | ✅ CLOSED S295 | `CoolingFlowMassAccretionCalculator` (cp4_id=439): classical isobaric Ṁ_cool=(2/5)μm_p L_X/(k_B T) + UQFF Aether; 4 anchors (NGC 1275, M87, Coma, NGC 1399); 20/20 tests |
 | 6 | SGR 1745 crust–core thermal coupling missing | ✅ CLOSED S296 | `MagnetarThermalCouplingCalculator` (cp4_id=440): κ_⊥(B,ρ,T)=κ_0/(1+(B/B_crit)²) calibrated K_0=4.6e9; 4 anchors (SGR 1745, SGR 1806, 1E 1207, NS core); 20/20 tests |
 | 7 | QCalcGeom: Orion not in HZ test suite | ✅ CLOSED S297 | `OrionHabitableZoneCalculator` (cp4_id=441): Kopparapu HZ + UV photoevaporation compression d_HZ_out·(F_sun/F_cl)^(1/4); 4 anchors (G2V/K5V/M4V in Orion + isolated control); 20/20 tests |
-| 8 | ALMA CO/CS/HCN absent | 🟡 MEDIUM | Create `ALMAMolecularGasCalculator` |
-| 9 | GW190425 mass-gap fractions lack error bars | 🟡 MEDIUM | Bayesian posterior calc |
-| 10 | SNR shock velocity not computed (only radii) | 🟡 MEDIUM | `SNRShockVelocityFromPhotometryCalculator` |
-| 11 | P vs NP — no observational anchor | 🔵 LOW | Mark as "conjecture-grade" |
-| 12 | TDE rate-mass function missing | 🔵 LOW | `TDEMassRateRelationCalculator` |
+| 8 | ALMA CO/CS/HCN absent | ✅ CLOSED S298 | `ALMAMolecularGasCalculator` (cp4_id=442): L'_CO=3.25e7·S·D_L²/[(1+z)·ν²] + α_CO conversions; 4 anchors (NGC 253, Arp 220, M82, MW GMC); 20/20 tests |
+| 9 | GW190425 mass-gap fractions lack error bars | ✅ CLOSED S299 | `GW190425MassGapBayesianCalculator` (cp4_id=443): MC posterior over (M_c, q) with Gaussian σ and uniform q → f_gap with 16/84 percentiles; 4 anchors (GW190425, GW190814, GW170817, mock BBH); 20/20 tests |
+| 10 | SNR shock velocity not computed (only radii) | ✅ CLOSED S300 | `SNRShockVelocityFromPhotometryCalculator` (cp4_id=444): v_s=√(16kT/3μm_p) + Sedov age estimator; 4 anchors (Cas A, Tycho, SN 1006, Crab); 20/20 tests |
+| 11 | P vs NP — no observational anchor | ✅ CLOSED S301 | `PvsNPConjectureAnchor` (cp4_id=445): explicit CONJECTURE tier — 4 statements unanchored, UQFF informational-buoyancy stance Δ_C(n)=2^n−n^k > 0 → P≠NP unanchored; 20/20 tests |
+| 12 | TDE rate-mass function missing | ✅ CLOSED S302 | `TDEMassRateRelationCalculator` (cp4_id=446): Stone-Metzger Γ=10⁻⁴·(M/1e6)^(−0.404) yr⁻¹ + Hills cutoff M>1.1e8 M_⊙; 4 anchors (Sgr A*, AT2019qiz, ASASSN-14li, dwarf); 20/20 tests |
 | 13 | FieldGeneratorCorrelationV3 untested | ✅ CLOSED S290 | V4 with 4 DERIVED indices + 6-anchor validation (3 pos C>0.70 / 3 neg C<0.30), 23/23 tests |
 | 14 | 14 derivation chains incomplete (RHO_VAC_SCM) | 🔵 LOW | Session 280+ closure |
 
