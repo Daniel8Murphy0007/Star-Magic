@@ -177,6 +177,23 @@ except ImportError:
     SESSION_285_TAGS = {}  # type: ignore
 
 try:
+    from _session286_tde_mass_rate import (  # noqa: F401
+        TDEMassRateRelationCalculator,
+        tidal_radius_m,
+        schwarzschild_radius_m,
+        hills_mass_kg,
+        fallback_timescale_s,
+        peak_fallback_rate_kg_s,
+        fallback_rate_at_t_kg_s,
+        eddington_luminosity_erg_s,
+        eddington_accretion_rate_kg_s,
+        can_disrupt,
+        SESSION_286_CALCULATORS,
+    )
+except ImportError:
+    SESSION_286_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
