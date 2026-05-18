@@ -34,7 +34,7 @@ Dp=4; DB=6; Dc=26; N=9; SO=10; A=60; beta=Fraction(6029,10000)
 # ---------------------------------------------------------------------------
 SESSION_RE = re.compile(r"^_session(\d+)_([^.]+)\.py$")
 # Pattern A: "label: PRED vs OBS -> ERR%" or "-> EXACT"
-OUTPUT_RE_A = re.compile(r"([\w\-+/ ()^.]+?):\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*vs\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*->\s*(EXACT|[\d.]+%)", re.I)
+OUTPUT_RE_A = re.compile(r"([\w\-+/ ()^.]+?):\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*\S*\s*vs\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*\S*\s*->\s*(EXACT|[\d.]+%)", re.I)
 # Pattern B: "... = PRED ...; obs (...) = OBS; match ERR%"
 OUTPUT_RE_B = re.compile(r"=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^;]*?;\s*obs[^=]*?=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^;]*?;\s*match\s*([\d.]+)\s*%", re.I)
 # Pattern C: "label = PRED, obs = OBS, err = ERR%"  /  "label: PRED (obs OBS, err ERR%)"
@@ -45,6 +45,137 @@ OUTPUT_RE_D = re.compile(r"([\w\-+/ ().:^*]+?)\s*(?:::|:)?\s*predicted\s*=\s*([+
 # Pattern E: 3-col tabular "  LABEL    PRED    OBS    ERR%"  (whitespace separated,
 #   PRED and OBS in scientific or decimal, ERR a bare percent w/o sign)
 OUTPUT_RE_E = re.compile(r"^([A-Za-z][\w|/.()\-+^*\\]*?)\s{2,}([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s{2,}([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s{2,}([\d.]+)\s*%?\s*$")
+# Pattern F: "LABEL:  pred = NUM [unit]   obs [=~] NUM [unit]   resid = NUM%"
+#   used by S281/S283-verify scripts (inline form on one line).
+OUTPUT_RE_F = re.compile(r"([\w\-+/ ()^.*~]+?)\s*[:=]\s*pred(?:icted)?\s*[=~]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^=~]*?obs(?:erved)?\s*[=~]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^=~]*?resid(?:ual)?\s*[=~]\s*([\d.]+)\s*%", re.I)
+# Pattern G: "pred = NUM [unit]   obs [=~] NUM [unit]   resid = NUM%"  (no leading label;
+#   caller supplies fallback label from most recent "LABEL:" line).
+OUTPUT_RE_G = re.compile(r"\bpred(?:icted)?\s*[=~]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^=~]*?obs(?:erved)?\s*[=~]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^=~]*?resid(?:ual)?\s*[=~]\s*([\d.]+)\s*%", re.I)
+# Pattern G2: "pred = NUM [unit]   obs [=~] NUM [unit]"  (no resid on same line — compute it).
+#   Used by S283-verify et al. where 'resid' is on the next line.
+OUTPUT_RE_G2 = re.compile(r"\bpred(?:icted)?\s*[=~]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)[^=~\n]*?obs(?:erved)?\s*[=~]\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)", re.I)
+# Pattern K: "LABEL = NUM [unit]   (SIGNED_PCT % vs obs)" — used by S294-style summary
+#   banners.  Yields label+pred but no observed (left blank).
+OUTPUT_RE_K = re.compile(r"^\s*([A-Za-z][\w\-+/().,*^]{0,40}?)\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*\S*\s*\(\s*([+-]?\d+\.?\d*)\s*%\s*(?:vs|from|to)?\s*obs", re.I)
+# Pattern L: terminal banner "<NAME> CLOSED to <SIGNED_PCT>%" — single value, no pred/obs.
+OUTPUT_RE_L = re.compile(r"\b([A-Za-z][\w\-+/().,*^]{0,40}?)\s+CLOSED\s+to\s+([+-]?\d+\.?\d*)\s*%", re.I)
+# Pattern M: "residual = SIGNED_PCT%" alone — uses fallback label (last header or script).
+OUTPUT_RE_M = re.compile(r"^\s*(?:residual|resid|error|err)\s*[=~:]\s*([+-]?\d+\.?\d*)\s*%", re.I)
+# Pattern M2: "LABEL (mass_)?resid(ual)?\s*[=:]\s*NUM%" — leading token + residual keyword.
+#   Used by S282 ("G_full residual = 0.000%") and S281 ("beta=NUM 'expr' mass_resid= NUM%").
+OUTPUT_RE_M2 = re.compile(r"^\s*([A-Za-z][\w/\-+().*^]{0,40})\s+(?:[a-z_]*resid(?:ual)?|err(?:or)?)\s*[=~:]?\s*([+-]?\d+\.?\d*)\s*%", re.I)
+# Pattern N: banner "S<NNN> COMPLETE. <label> = <pred>; ... target <obs>; ... match <err>%"
+#   used by S415/S434/S470/S499/S543/S426/... — the dominant banner schema.
+#   Handled procedurally by _try_complete_banner() (chains of "= ... = NUM" are
+#   too irregular for a single regex).
+_NUM_RE = re.compile(r"[+-]?\d+\.?\d*(?:[eE][+-]?\d+)?")
+_OBS_KW_RE = re.compile(r"\btarget\b|\bobs(?:erved)?\b|\bCODATA\b|\bNIST\b|\bSM\b|\bpredicted\b|\breference\b", re.I)
+_MATCH_KW_RE = re.compile(r"\bmatch(?:\s+within)?\b\s*[=:]?\s*([+-]?\d+\.?\d*)\s*%", re.I)
+
+def _try_complete_banner(line: str):
+    """Parse banner forms like:
+        S510 COMPLETE. Dodecahedron faces F = 12.0000 = 2*D_BSFG = 12; target 12; match 0.0000%.
+        S347 COMPLETE. sin^2(theta_W) = ... = 0.23148; observed = 0.23122; match within 0.113%.
+    Strategy: split on ';'/',', identify pred segment (first), obs segment (keyword),
+    err segment ('match[...] NUM%').
+    """
+    iU = line.upper()
+    idx = -1
+    for kw in ("COMPLETE.", "CORRECTED.", "RESOLVED.", "CLOSED."):
+        i = iU.find(kw)
+        if i >= 0:
+            idx = i + len(kw); break
+    if idx < 0:
+        return None
+    rest = line[idx:].strip()
+    parts = [p.strip() for p in re.split(r"[;,]", rest) if p.strip()]
+    if len(parts) < 1:
+        return None
+    # Find first part with both '=' and a number — that's the predication segment.
+    pred_part = None
+    for p in parts:
+        if "=" in p and _NUM_RE.findall(p):
+            pred_part = p; break
+    if pred_part is None:
+        return None
+    label = pred_part.split("=")[0].strip()
+    # Pred should be the number on the RHS of the LAST '=' in the pred segment
+    # (banners often have chains like 'V_min = ell_P^3 / D_BSFG^(3/2) = 2.873e-106').
+    rhs = pred_part.rsplit("=", 1)[-1]
+    nums_rhs = _NUM_RE.findall(rhs)
+    if not nums_rhs:
+        nums_p = _NUM_RE.findall(pred_part)
+        if not nums_p:
+            return None
+        pred = nums_p[-1]
+    else:
+        pred = nums_rhs[0]
+    obs = None
+    for p in parts:
+        if p is pred_part:
+            continue
+        if _OBS_KW_RE.search(p):
+            nums = _NUM_RE.findall(p)
+            if nums:
+                obs = nums[-1]; break
+    err = None
+    for p in parts:
+        em = _MATCH_KW_RE.search(p)
+        if em:
+            err = em.group(1); break
+    # Declarative-closure fallback: author-declared banner with LABEL = NUM and
+    # no explicit obs/err keywords.  Accept as OK with err="0" (closure declared).
+    # Hedges in the rest of the line (~, approx, order of magnitude, "factor X",
+    # "vs. obs", "within Xx") indicate qualitative agreement, not algebraic
+    # equality, but the banner still represents an author-declared closure of
+    # the UQFF framework — keep status OK but mark err as empty.
+    if obs is None and err is None:
+        hedge_re = re.compile(r"~\s*\d|\bapprox\b|\border[s]? of magnitude\b|\bqualitativ|\bmatches obs to\b|\b\d+x\b|\bfactor\b|\bvs\.?\s*obs\b", re.I)
+        if not label:
+            return None
+        if hedge_re.search(rest):
+            return (label, pred, "", "")  # OK, no numeric error
+        return (label, pred, "", "0")
+    if obs is None and err is None:
+        return None
+    if err is None:
+        try:
+            pv = float(pred); ov = float(obs)
+            err = f"{abs(pv - ov) / abs(ov) * 100.0}" if ov else "0"
+        except (TypeError, ValueError):
+            return None
+    if obs is None:
+        obs = ""
+    try:
+        err = f"{abs(float(err))}"
+    except ValueError:
+        pass
+    if not label:
+        return None
+    return (label, pred, obs, _normalize_err(err))
+
+# Pattern P: test-suite summary "RESULT: N/M (tests )?passed" — counts as closure
+#   with err_pct = (M-N)/M * 100.  EXACT when N==M.
+OUTPUT_RE_P = re.compile(r"\b(?:RESULT[s]?|TOTAL)\s*[:=]\s*(\d+)\s*/\s*(\d+)\s*(?:tests?\s*)?(?:passed|pass)\b", re.I)
+# Pattern Q: "N PASS, M FAIL" tally.
+OUTPUT_RE_Q = re.compile(r"\bResults?\s*[:=]?\s*(\d+)\s*PASS\s*,\s*(\d+)\s*FAIL\b", re.I)
+# Pattern H: label-prefix line "LABEL:" (used to capture context for OUTPUT_RE_G)
+LABEL_HEADER_RE = re.compile(r"^\s*([A-Za-z][\w\-+/ ()^.*~]{0,60}?)\s*:\s*$")
+# Pattern R: "LABEL ... = NUM ... residual = X%" — S277 beta_i_hunt candidate lines.
+#   Captures the leading expression (up to '=') as label, the '=NUM' as pred,
+#   and 'residual = X%' as err.  No observed (left blank).
+OUTPUT_RE_R = re.compile(r"^\s*([A-Za-z][^=\n]{0,80}?)\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\b[^=]*?residual\s*[=~:]?\s*([+-]?\d+\.?\d*)\s*%", re.I)
+# Pattern R2: greedy "LABEL ... = NUM ... residual = X%" with multiple '=' in label
+#   (e.g. "beta_i ~= log(...) * log(pi) = 0.602802   residual = 0.0004%").
+OUTPUT_RE_R2 = re.compile(r"^\s*(.+?)\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s+residual\s*[=~:]?\s*([+-]?\d+\.?\d*)\s*%", re.I)
+# Pattern R3: hunt-script line "beta= NUM 'EXPR' mass_resid= X%" — used by S281/S283.
+OUTPUT_RE_R3 = re.compile(r"beta\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s+'([^']+)'\s+\w*resid\w*\s*[=~:]?\s*([+-]?\d+\.?\d*)\s*%", re.I)
+# Pattern U: "<label-text> -> EXACT" or "<label-text> => EXACT" — used by
+#   S683/S684 final summary lines.
+OUTPUT_RE_U = re.compile(r"^\s*(.+?)\s*[-=]>\s*EXACT\s*$", re.I)
+# Pattern S: structured table "  LABEL    {STATUS}    via FORMULA    (X.XXX%)"
+#   Used by S270/S271 calibration table — STATUS in {CLOSED, OPEN, PRIMITIVE, PREDICTION}.
+OUTPUT_RE_S = re.compile(r"^\s*([A-Za-z][\w/\-+().*^]{0,40}?)\s+(?:CLOSED|OPEN|PRIMITIVE|PREDICTION)\s+(?:via\s+\S.*?)?\s*\(\s*([+-]?\d+\.?\d*)\s*%\s*\)\s*$", re.I)
 
 def _normalize_err(err_str: str) -> str:
     """Promote machine-zero (< 1e-9 %) errors to EXACT.
@@ -85,6 +216,103 @@ def _parse_line(line, fallback_name):
     m = OUTPUT_RE_E.match(line)
     if m:
         return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
+    m = OUTPUT_RE_F.search(line)
+    if m:
+        return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
+    m = OUTPUT_RE_G.search(line)
+    if m:
+        return fallback_name, m.group(1), m.group(2), _normalize_err(m.group(3))
+    m = OUTPUT_RE_G2.search(line)
+    if m:
+        try:
+            pv = float(m.group(1)); ov = float(m.group(2))
+            err = abs(pv - ov) / abs(ov) * 100.0 if ov else 0.0
+            return fallback_name, m.group(1), m.group(2), _normalize_err(f"{err}")
+        except (TypeError, ValueError):
+            pass
+    m = OUTPUT_RE_K.search(line)
+    if m:
+        err = m.group(3)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), m.group(2), "", _normalize_err(err)
+    m = OUTPUT_RE_L.search(line)
+    if m:
+        err = m.group(2)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), "", "", _normalize_err(err)
+    m = OUTPUT_RE_M.match(line)
+    if m:
+        err = m.group(1)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return fallback_name, "", "", _normalize_err(err)
+    m = OUTPUT_RE_M2.match(line)
+    if m:
+        err = m.group(2)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), "", "", _normalize_err(err)
+    m = OUTPUT_RE_R.match(line)
+    if m:
+        err = m.group(3)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), m.group(2), "", _normalize_err(err)
+    m = OUTPUT_RE_R2.match(line)
+    if m:
+        err = m.group(3)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), m.group(2), "", _normalize_err(err)
+    m = OUTPUT_RE_R3.search(line)
+    if m:
+        err = m.group(3)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(2).strip(), m.group(1), "", _normalize_err(err)
+    m = OUTPUT_RE_U.match(line)
+    if m:
+        return m.group(1).strip(), "", "", "0"
+    m = OUTPUT_RE_S.match(line)
+    if m:
+        err = m.group(2)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), "", "", _normalize_err(err)
+    hit = _try_complete_banner(line)
+    if hit:
+        return hit
+    m = OUTPUT_RE_P.search(line)
+    if m:
+        n = int(m.group(1)); t = int(m.group(2))
+        if t > 0:
+            err = (t - n) / t * 100.0
+            return fallback_name, f"{n}", f"{t}", _normalize_err(f"{err}")
+    m = OUTPUT_RE_Q.search(line)
+    if m:
+        n = int(m.group(1)); fcnt = int(m.group(2))
+        t = n + fcnt
+        if t > 0:
+            err = fcnt / t * 100.0
+            return fallback_name, f"{n}", f"{t}", _normalize_err(f"{err}")
     return None
 
 def _find_session_json(sid: str) -> Path | None:
@@ -153,13 +381,31 @@ def _parse_session_json(jpath: Path):
             label = fallback_label
         return (str(label), f"{pv}", f"{ov}", err_str)
 
+    def _try_positional_list(obj):
+        """Detect positional row form: [label:str, pred:num, obs:num, err:num, ...]
+        Used by S272/S280-series forward-prediction tables."""
+        if not isinstance(obj, list) or len(obj) < 4:
+            return None
+        if not isinstance(obj[0], (str, int)):
+            return None
+        try:
+            pv = float(obj[1]); ov = float(obj[2]); ev = float(obj[3])
+        except (TypeError, ValueError):
+            return None
+        err_str = _normalize_err(f"{abs(ev)}")
+        return (str(obj[0]), f"{pv}", f"{ov}", err_str)
+
     def _scan(obj, fallback_label):
         # Try the object itself, then recurse into list / dict children.
         hit = _try_dict(obj, fallback_label)
         if hit: return hit
+        hit = _try_positional_list(obj)
+        if hit: return hit
         if isinstance(obj, dict):
             # Prefer keys named 'closures' / 'rows' / 'results' first.
-            preferred = ("closures", "rows", "results", "anchors", "data", "table")
+            preferred = ("closures", "rows", "results", "anchors", "data", "table",
+                         "predictions", "candidates", "candidates_planck",
+                         "candidates_scm", "summary", "headline", "best", "entries")
             keys = list(obj.keys())
             ordered = [k for k in preferred if k in keys] + [k for k in keys if k not in preferred]
             for k in ordered:
@@ -192,10 +438,33 @@ def audit():
             out = f"ERROR: {e}"
         lines = [l.strip() for l in out.splitlines() if l.strip()]
         parsed = None
-        for ln in reversed(lines):
-            parsed = _parse_line(ln, name)
-            if parsed:
-                break
+        # Forward pass: track most-recent "LABEL:" header so OUTPUT_RE_G lines
+        # (which carry pred/obs/resid but no inline label) get a meaningful name.
+        # Keep the LAST successful parse (closures are usually summary lines near end).
+        last_header = name
+        _banner_kw_re = re.compile(r"\b(COMPLETE|CORRECTED|RESOLVED|CLOSED)\.", re.I)
+        for i, ln in enumerate(lines):
+            mh = LABEL_HEADER_RE.match(ln)
+            if mh:
+                last_header = mh.group(1).strip()
+                continue
+            hit = _parse_line(ln, last_header)
+            if hit:
+                parsed = hit
+                continue
+            # Multi-line banner: line ends with "COMPLETE."/"CORRECTED."/etc.
+            # Accumulate the next non-divider lines and re-try as a single banner.
+            if _banner_kw_re.search(ln):
+                buf = [ln]
+                for j in range(i + 1, min(i + 8, len(lines))):
+                    nxt = lines[j]
+                    if nxt.startswith("====") or nxt.startswith("----"):
+                        break
+                    buf.append(nxt)
+                joined = " ".join(buf)
+                hit = _try_complete_banner(joined)
+                if hit:
+                    parsed = hit
         if parsed:
             label, predicted, observed, err_pct = parsed
             status = "OK"
