@@ -31,23 +31,45 @@ This module:
   4. Numerically demonstrates a_DPM -> G*M/r^2 across 5 anchor systems
      (Sun-Earth, Sun-Mars, Sun-Jupiter, Earth-Moon, Sgr A* - S2 star).
 
+DPM = MINIMUM 2 PAIRS OF REACTANTS  (canonical, per repo convention)
+-------------------------------------------------------------------
+A di-pseudo-monopole is, by definition, the smallest stable resonant
+unit and contains TWO coupled (+/-) reactant pairs.  Each pair carries
+its own (I_k, A_k, omega_k1 - omega_k2) triplet and contributes a
+dipole-like field ~ mu_k / r^3 ; the FORCE between the two pairs scales
+as the gradient of one dipole field across the other, giving the
+foundational two-pair signature
+
+        a_DPM_two_pair(r)  ~  1 / r^4
+
+This 1/r^4 scaling is the CANONICAL DPM acceleration and is what the
+full geometric closure (Section 3a, two-pair) yields.  Newton's 1/r^2
+is NOT the foundational form; it is recovered ONLY after the second
+pair is *radially averaged* (single-pair light-cone reduction,
+Section 3b), under which one factor of (c/r) and the inner volume
+(4/3)pi r^3 collapse to body-scale constants.
+
 RIGOR DISCLOSURE
 ----------------
-* DERIVED   : kernel functional form, dimensional consistency, 1/r^2
-              scaling under geometric closure.
+* DERIVED   : kernel functional form, dimensional consistency,
+              1/r^4 scaling under canonical two-pair closure (Section 3a),
+              1/r^2 scaling under single-pair light-cone reduction (Section 3b).
 * CALIBRATED: K_DPM bridge factor (one global anchor to G; ratios across
               bodies test self-consistency, not closure to Newton).
-* POSTULATED: geometric closure parametrisation (light-cone)
-                I*A             = mu_eff           (constant source moment)
-                omega_1 - omega_2 = c / r          (light-cone scaling, AX5)
-                f_DPM           = c / r            (light-cone scaling, AX5)
-                E_vac,neb       = rho_SCm          (canonical vacuum density)
-                V_sys           = V_body           (source volume, constant)
+* POSTULATED:
+   Canonical two-pair closure (Section 3a, gives 1/r^4):
+     I*A             = beta_geom * rho_SCm * V_body * c
+     omega_1 - omega_2 = c / r              (light-cone, first pair)
+     f_DPM * E_vac    = (3/(4*pi)) * rho_SCm * c^2 / R_body  (shell, second pair)
+     V_sys            = (4/3) * pi * r^3    (second-pair resonance volume)
+     Archimedes       : a_eff = a_raw / rho_body
+   Single-pair light-cone reduction (Section 3b, gives 1/r^2):
+     V_sys -> V_body, second-pair (c/r) factor radially averaged.
 
-The 1/r^2 emergence is a *theorem* given the closure parametrisation;
-the closure parametrisation itself is one of the explicit postulates of
-the framework (cf. AXIOMS_AND_THEOREMS.md axiom 5, DPM as light-cone
-SO(2)).  No claim of unconditional Newton derivation is made.
+The 1/r^4 emergence is a *theorem* given the two-pair closure; the
+closure parametrisation itself is one of the explicit postulates of the
+framework (cf. AXIOMS_AND_THEOREMS.md axiom 5, DPM as light-cone SO(2)).
+No claim of unconditional Newton derivation is made.
 
 Author : Daniel T. Murphy / Copilot agent
 Session: 289 (May 17, 2026)
@@ -192,6 +214,72 @@ def emergence_substitution() -> Dict[str, Any]:
     }
 
 
+def emergence_substitution_two_pair() -> Dict[str, Any]:
+    """CANONICAL DPM two-pair closure -> 1/r^4 emergence (FOUNDATIONAL).
+
+    DPM = minimum 2 pairs of reactants.  Each pair contributes one
+    light-cone (c/r) factor; the second-pair resonance volume is the
+    full radial control volume (4/3)pi*r^3.  Substituting:
+
+        I * A             = beta_geom * rho_SCm * V_body * c       (a)
+        omega_1 - omega_2 = c / r                                  (b, pair 1)
+        f_DPM * E_vac     = (3/(4*pi)) * rho_SCm * c^2 / R_body    (c, pair 2)
+        V_sys             = (4/3) * pi * r^3                       (d)
+        a_eff             = a_raw / rho_body                       (e, Archimedes)
+
+    yields the CANONICAL two-pair scaling
+
+        a_eff(r) = beta_geom * (rho_SCm^2 / rho_body) * c^2
+                   * V_body / (R_body * r^4)
+
+    -- the foundational 1/r^4 DPM signature, NOT 1/r^2.
+    """
+    sym = symbolic_kernel()
+    I, A, om1, om2, f_DPM, E_vac, c, V_sys = (
+        sym["symbols"]["I"], sym["symbols"]["A"],
+        sym["symbols"]["omega_1"], sym["symbols"]["omega_2"],
+        sym["symbols"]["f_DPM"], sym["symbols"]["E_vac"],
+        sym["symbols"]["c"], sym["symbols"]["V_sys"],
+    )
+    r, R_body, V_body, rho_SCm_s, rho_body, beta_geom = sp.symbols(
+        "r R_body V_body rho_SCm rho_body beta_geom", positive=True, real=True
+    )
+    a_subbed = sym["a_DPM"] \
+        .subs(I * A,          beta_geom * rho_SCm_s * V_body * c) \
+        .subs(om1 - om2,      c / r) \
+        .subs(f_DPM * E_vac,  sp.Rational(3, 4) / sp.pi * rho_SCm_s * c**2 / R_body) \
+        .subs(V_sys,          sp.Rational(4, 3) * sp.pi * r**3)
+    a_eff = sp.simplify(a_subbed / rho_body)
+    # coefficient of 1/r^4
+    coeff = sp.simplify(a_eff * r**4)
+    return {
+        "a_eff_two_pair": a_eff,
+        "coefficient_r4": coeff,
+        "symbols": {
+            "r": r, "R_body": R_body, "V_body": V_body,
+            "rho_SCm": rho_SCm_s, "rho_body": rho_body,
+            "beta_geom": beta_geom,
+        },
+    }
+
+
+def a_DPM_two_pair(M_star_kg: float,
+                   R_star_m:  float,
+                   r_m:       float,
+                   beta_geom: float = 1.0) -> float:
+    """Canonical two-pair DPM acceleration (1/r^4 scaling).
+
+    a_eff = beta_geom * (rho_SCm^2 / rho_body) * c^2 * V_body
+            / (R_body * r^4)
+    """
+    if M_star_kg <= 0 or R_star_m <= 0 or r_m <= 0:
+        raise ValueError("M_star, R_star, r must be > 0")
+    V_body   = (4.0 / 3.0) * PI * R_star_m**3
+    rho_body = M_star_kg / V_body
+    return beta_geom * (RHO_SCm**2 / rho_body) * C_LIGHT**2 \
+           * V_body / (R_star_m * r_m**4)
+
+
 # ---------------------------------------------------------------------------
 # SECTION 4 — NUMERIC BRIDGE TO NEWTON (CALIBRATED)
 # ---------------------------------------------------------------------------
@@ -328,6 +416,20 @@ class DPMFoundationalGravityCalculator:
 SESSION_289_CALCULATORS: Dict[str, type] = {
     "DPMFoundationalGravityCalculator": DPMFoundationalGravityCalculator,
 }
+
+
+__all__ = [
+    "symbolic_kernel",
+    "emergence_substitution",
+    "emergence_substitution_two_pair",
+    "a_DPM_emergent",
+    "a_DPM_two_pair",
+    "newton_ratio",
+    "K_DPM",
+    "DPMFoundationalGravityCalculator",
+    "SESSION_289_CALCULATORS",
+    "RHO_SCm", "RHO_UA", "G_SI", "C_LIGHT",
+]
 
 
 # ---------------------------------------------------------------------------
@@ -489,15 +591,39 @@ def _run_tests() -> int:
     ok("T-19 tag tier mix is reported as DERIVED+POSTULATED+CALIBRATED",
        out["headline"]["tag"] == "DERIVED+POSTULATED+CALIBRATED", "")
 
-    # T-20: 1/r^2 ratio invariant across multiple orbital radii (sanity)
+    # T-20: single-pair 1/r^2 ratio invariant across multiple orbital radii (sanity)
     rs = [r_au * 1.49597870700e11 for r_au in [0.1, 1.0, 10.0, 100.0]]
     inv_test = [a_DPM_emergent(M_SUN, 6.957e8, r) * r**2 for r in rs]
     spread = max(inv_test) / min(inv_test) - 1.0
-    ok("T-20 a_DPM * r^2 invariant (1/r^2 emergence)",
+    ok("T-20 single-pair a_DPM * r^2 invariant (1/r^2 reduction)",
        abs(spread) < 1e-12, f"spread = {spread:.3e}")
 
+    # --- canonical TWO-PAIR closure (foundational 1/r^4) -------------------
+    em2 = emergence_substitution_two_pair()
+    r2  = em2["symbols"]["r"]
+    coeff4 = em2["coefficient_r4"]
+    ok("T-21 canonical two-pair a_DPM scales as 1/r^4 (DPM = 2 pairs)",
+       r2 not in coeff4.free_symbols,
+       f"a*r^4 free syms: {sorted(s.name for s in coeff4.free_symbols)}")
+
+    # T-22 numeric two-pair 1/r^4 invariant
+    inv4 = [a_DPM_two_pair(M_SUN, 6.957e8, r) * r**4 for r in rs]
+    spread4 = max(inv4) / min(inv4) - 1.0
+    ok("T-22 two-pair a_DPM * r^4 invariant across 0.1-100 AU",
+       abs(spread4) < 1e-12, f"spread = {spread4:.3e}")
+
+    # T-23 two-pair gives DIFFERENT scaling than single-pair (sanity)
+    a4_earth = a_DPM_two_pair(M_SUN, 6.957e8, 1.49597870700e11)
+    a4_mars  = a_DPM_two_pair(M_SUN, 6.957e8, 2.279e11)
+    expected_ratio_r4 = (1.49597870700e11 / 2.279e11)**4
+    actual_ratio = a4_mars / a4_earth
+    # a4 ~ 1/r^4  => a4(Mars)/a4(Earth) = (r_E / r_M)^4 ~ 0.185
+    ok("T-23 two-pair ratio Mars/Earth = (r_E/r_M)^4 (1/r^4 sig)",
+       abs(actual_ratio - expected_ratio_r4) / expected_ratio_r4 < 1e-12,
+       f"actual={actual_ratio:.6f}, expected={expected_ratio_r4:.6f}")
+
     print("-" * 72)
-    print(f"  RESULT: {n}/20 tests passed")
+    print(f"  RESULT: {n}/23 tests passed")
     print(bar)
 
     print()
@@ -507,9 +633,15 @@ def _run_tests() -> int:
     print()
     print(f"K_DPM (CALIBRATED @ Sun-Earth)  = {K_DPM:.6e}")
     print(f"Anchor scale: rho_SCm = {RHO_SCm:.4e} J/m^3, rho_UA = {RHO_UA:.4e} J/m^3")
+
+    print()
+    print("Canonical TWO-PAIR DPM (foundational 1/r^4 signature):")
+    for nm, r_AU in [("0.1 AU", 0.1), ("1.0 AU", 1.0), ("10 AU", 10.0), ("100 AU", 100.0)]:
+        r_m = r_AU * 1.49597870700e11
+        print(f"  {nm:8s}  a_two_pair = {a_DPM_two_pair(M_SUN, 6.957e8, r_m):.3e} m/s^2")
     return n
 
 
 if __name__ == "__main__":
     n = _run_tests()
-    assert n == 20, f"expected 20/20, got {n}/20"
+    assert n == 23, f"expected 23/23, got {n}/23"
