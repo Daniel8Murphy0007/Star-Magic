@@ -167,6 +167,16 @@ except ImportError:
     SESSION_284_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session285_p_vs_np_conjecture_tag import (  # noqa: F401
+        SESSION_285_TAGS,
+        SESSION_285_CLOSURE,
+        get_tag as get_conjecture_tag,
+        assert_conjecture_grade,
+    )
+except ImportError:
+    SESSION_285_TAGS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
