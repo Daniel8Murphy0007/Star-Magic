@@ -102,7 +102,7 @@ quality averages **95.8%**, with the strongest tier (22 systems) at 99–100% ma
 
 | Rank | Gap | Severity | Resolution |
 |------|-----|----------|------------|
-| 1 | Orion H₂O ice formation rate — no calculator for d[H₂O]/dt | 🔴 CRITICAL | Add `OrionH2OFormationRateCalculator` (CP4) |
+| 1 | Orion H₂O ice formation rate — no calculator for d[H₂O]/dt | ✅ CLOSED S291 | `OrionH2OIceFormationRateCalculator` (cp4_id=435): Hasegawa-Herbst rate eqn + UQFF Aether modulation; 4-anchor validation (Orion BN/KL + TMC-1 ACTIVE, hot core + diffuse ZERO); 20/20 tests |
 | 2 | Chandra flux → physical parameter bridge incomplete | 🟠 HIGH | Complete CP4 #427 response matrix inversion |
 | 3 | Neutrino-GW cross-coupling stubs only | 🟠 HIGH | Extend `scm_gw_metric_perturbation()` |
 | 4 | High-z quasar evolution (z=6.5) — only J1610 | 🟠 HIGH | Create `HighZQuasarEvolutionBatch` (10 systems) |

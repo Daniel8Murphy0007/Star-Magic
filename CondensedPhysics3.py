@@ -248,6 +248,22 @@ except ImportError:
     SESSION_290_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session291_orion_h2o_ice_formation_rate import (  # noqa: F401
+        OrionH2OIceFormationRateCalculator,
+        IceAnchor as H2OIceAnchor,
+        ANCHORS as H2O_ICE_ANCHORS,
+        d_H2O_ice_dt_cm3_s,
+        k_LH_per_grain_s as h2o_k_LH_per_grain_s,
+        k_accretion_cm3_s as h2o_k_accretion_cm3_s,
+        thermal_velocity_cms as h2o_thermal_velocity_cms,
+        aether_modulation as h2o_aether_modulation,
+        T_SUBL_H2O_K,
+        SESSION_291_CALCULATORS,
+    )
+except ImportError:
+    SESSION_291_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
