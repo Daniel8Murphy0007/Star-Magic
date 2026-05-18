@@ -114,7 +114,7 @@ quality averages **95.8%**, with the strongest tier (22 systems) at 99–100% ma
 | 10 | SNR shock velocity not computed (only radii) | 🟡 MEDIUM | `SNRShockVelocityFromPhotometryCalculator` |
 | 11 | P vs NP — no observational anchor | 🔵 LOW | Mark as "conjecture-grade" |
 | 12 | TDE rate-mass function missing | 🔵 LOW | `TDEMassRateRelationCalculator` |
-| 13 | FieldGeneratorCorrelationV3 untested | 🔵 LOW | Validation against lab plasma |
+| 13 | FieldGeneratorCorrelationV3 untested | ✅ CLOSED S290 | V4 with 4 DERIVED indices + 6-anchor validation (3 pos C>0.70 / 3 neg C<0.30), 23/23 tests |
 | 14 | 14 derivation chains incomplete (RHO_VAC_SCM) | 🔵 LOW | Session 280+ closure |
 
 ---

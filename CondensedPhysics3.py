@@ -234,6 +234,20 @@ except ImportError:
     SESSION_289_CALCULATORS = {}  # type: ignore
 
 try:
+    from _session290_field_generator_lab_plasma_validation import (  # noqa: F401
+        FieldGeneratorCorrelationV4Calculator,
+        PlasmaAnchor as FGPlasmaAnchor,
+        ANCHORS as FG_ANCHORS,
+        gamma_f as fg_gamma_f,
+        eta_P as fg_eta_P,
+        rho_DPM as fg_rho_DPM,
+        C_total as fg_C_total,
+        SESSION_290_CALCULATORS,
+    )
+except ImportError:
+    SESSION_290_CALCULATORS = {}  # type: ignore
+
+try:
     from CondensedPhysics2 import *      # Phase 2 — 546 classes
     _CP2_LOADED = True
 except ImportError:
