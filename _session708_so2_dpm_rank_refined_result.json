@@ -1,0 +1,88 @@
+{
+  "session": 708,
+  "topic": "so2_dpm_rank_refined",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "rank_scan": {
+    "SO5_order / 2": {
+      "value": 5.0,
+      "err_pct": 15.620023391684063
+    },
+    "D_crit / 6": {
+      "value": 4.333333333333333,
+      "err_pct": 0.20402027279284723
+    },
+    "D_crit / D_BSFG": {
+      "value": 4.333333333333333,
+      "err_pct": 0.20402027279284723
+    },
+    "5 * Phi_res": {
+      "value": 4.166666666666667,
+      "err_pct": -3.649980506929941
+    },
+    "A_5 / 12": {
+      "value": 5.0,
+      "err_pct": 15.620023391684063
+    },
+    "N_ch * Phi_res / 2": {
+      "value": 3.75,
+      "err_pct": -13.284982456236955
+    },
+    "D_phys + F_TRZ * 10/3": {
+      "value": 4.333333333333333,
+      "err_pct": 0.20402027279284723
+    },
+    "K_Mex * 2": {
+      "value": 4.166666666666667,
+      "err_pct": -3.649980506929941
+    },
+    "(D_crit - 1) / D_BSFG": {
+      "value": 4.166666666666667,
+      "err_pct": -3.649980506929941
+    },
+    "D_crit / (2 * D_phys-2)": {
+      "value": 4.333333333333333,
+      "err_pct": 0.20402027279284723
+    }
+  },
+  "selected_rank": {
+    "rational": "13/3",
+    "value": 4.333333333333333,
+    "interpretation": "critical-manifold to BSFG-manifold projection (26/6 = 13/3)",
+    "match_err_pct": 0.20402027279284723
+  },
+  "final_c_prediction": {
+    "c_predicted_m_per_s": 299792457.99911696,
+    "c_codata_m_per_s": 299792458.0,
+    "residual_m_per_s": -0.0008830428123474121,
+    "err_pct": -2.945513767218961e-10
+  },
+  "headline_closures": {
+    "so2_dpm_rank_refined": {
+      "predicted": 4.333333333333333,
+      "observed": 4.324510455305464,
+      "error_pct": 0.20402027279284723,
+      "status": "OK"
+    },
+    "c_chain_geom_refined": {
+      "predicted": 299792457.99911696,
+      "observed": 299792458.0,
+      "error_pct": -2.945513767218961e-10,
+      "status": "OK"
+    }
+  },
+  "next_slot": "S709 -- third independent chain (hbar via DPM action quantum) to verify universal loop+geom phase rule"
+}

@@ -1,0 +1,52 @@
+{
+  "session": 705,
+  "topic": "universal_loop_factorial_rule",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "structural_identity": {
+    "rule": "c_n = c_2^(n-1) / (n-1)!",
+    "n3_check": "c_3 * c_1 / c_2^2 == 1/2",
+    "alpha_chain_ratio_rational": "1/2",
+    "c_chain_ratio_rational": "1/2",
+    "predicted": "1/2",
+    "status": "EXACT"
+  },
+  "borel_diagnostic": {
+    "c_chain_u": 0.003807717747333858,
+    "c_chain_partial": 1.0038149763144897,
+    "c_chain_exp": 1.00381497631449,
+    "c_chain_err": 2.220446049250313e-16,
+    "alpha_chain_u": 0.002858071919204688,
+    "alpha_chain_partial": 1.0028621601005967,
+    "alpha_chain_exp": 1.0028621601005967,
+    "alpha_chain_err": 0.0
+  },
+  "headline_closures": {
+    "universal_loop_factorial_rule": {
+      "predicted": 0.5,
+      "observed": 0.4999999999999999,
+      "error_pct": -2.220446049250313e-14,
+      "status": "OK"
+    },
+    "borel_exponential_summation": {
+      "predicted": 1.00381497631449,
+      "observed": 1.0038149763144897,
+      "error_pct": -2.2120072938169228e-14,
+      "status": "OK"
+    }
+  },
+  "next_slot": "S706 -- third independent chain (G/Newton or hbar) to verify universal rule across THREE chains"
+}

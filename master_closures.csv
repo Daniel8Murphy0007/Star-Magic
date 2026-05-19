@@ -466,7 +466,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
 683,lagrangian_primitives,Lagrangian primitive derivation: 11/11 primitives linked to sectors,,,0,OK,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
-684,closure_to_sector_bridge,Lagrangian re-run bridge: 481/481 closures mapped,,,0,OK,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 481/481 closures mapped -> EXACT
+684,closure_to_sector_bridge,Lagrangian re-run bridge: 486/486 closures mapped,,,0,OK,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 486/486 closures mapped -> EXACT
 684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%
@@ -487,3 +487,8 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 701,c_tree_derivation,v_SCM_consistency,1.000000e+08,9.993082e+07,0.069229,OK,_session701_c_tree_derivation.py,Artifact written: _session701_c_tree_derivation_result.json
 702,c_tree_layered_dpm,c_tree_R_layered,2.997917e+08,2.997925e+08,0.000264,OK,_session702_c_tree_layered_dpm.py,Artifact written: _session702_c_tree_layered_result.json
 703,c_2loop_coefficient,c_2loop_layered_dpm,2.997925e+08,2.997925e+08,6.48e-07,OK,_session703_c_2loop_coefficient.py,Artifact written: _session703_c_2loop_result.json
+704,c_3loop_tail_bound,c_3loop_layered_dpm,2.997925e+08,2.997925e+08,1.437e-07,OK,_session704_c_3loop_tail_bound.py,Artifact written: _session704_c_3loop_result.json
+705,universal_loop_factorial_rule,universal_loop_factorial_rule,5.000000000000e-01,5.000000000000e-01,0,OK,_session705_universal_loop_factorial_rule.py,Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session705_universal_loop_factorial_result.json
+706,loop_factorial_n4,loop_factorial_rule_n4,3.333333333333e-01,3.333333333333e-01,0,OK,_session706_loop_factorial_n4.py,Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session706_loop_factorial_n4_result.json
+707,so2_dpm_geometric_phase,c_chain_geom_closure,2.997925e+08,2.997925e+08,2.26e-08,OK,_session707_so2_dpm_geometric_phase.py,Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session707_so2_dpm_geometric_phase_result.json
+708,so2_dpm_rank_refined,c_chain_geom_refined,2.997925e+08,2.997925e+08,0,OK,_session708_so2_dpm_rank_refined.py,Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session708_so2_dpm_rank_refined_result.json

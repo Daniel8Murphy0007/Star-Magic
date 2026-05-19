@@ -1,0 +1,16 @@
+{
+  "m_Planck": 2.1764617185980235e-08,
+  "m_p_obs": 1.67262192369e-27,
+  "log10_ratio": -19.11435324788283,
+  "N_p": 19,
+  "N_p_form": "N_ch + D_phys + D_BSFG",
+  "beta_p": 1.14,
+  "beta_p_form": "2 * SSq",
+  "beta_p_obs": 1.1435324788282841,
+  "exp_total": 19.114,
+  "m_p_pred": 1.673982959892248e-27,
+  "residual_pct": 0.08137141950436685,
+  "template": "target = anchor * F_TRZ^(N_int + beta * F_TRZ)",
+  "lambda_form": "rho_Lambda = rho_Planck * F_TRZ^(123 + beta_i*F_TRZ), beta_i=0.603",
+  "mp_form": "m_p = m_Planck * F_TRZ^(19 + 2*SSq*F_TRZ)"
+}

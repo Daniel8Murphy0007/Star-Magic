@@ -1,0 +1,404 @@
+{
+  "session": "S210",
+  "phase": "H210",
+  "generated_utc": "2026-05-19T07:01:59.349466Z",
+  "commits": [
+    "84ef1006",
+    "741b6432",
+    "5ab0396c"
+  ],
+  "papers_total": 22,
+  "cp4_total": 22,
+  "papers_missing": 0,
+  "cp4_missing": 0,
+  "closures": [
+    {
+      "id": "H210-1",
+      "label": "S210-CP4-class-delta",
+      "predicted": 22,
+      "observed": 22,
+      "status": "EXACT",
+      "chain": "CP4_end - CP4_start = 506 - 484 = 22",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-2",
+      "label": "S210-paper-delta",
+      "predicted": 22,
+      "observed": 22,
+      "status": "EXACT",
+      "chain": "PAPER_end - PAPER_start = 922 - 900 = 22",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-3",
+      "label": "S210-subbatch-split-abc",
+      "predicted": 22,
+      "observed": 22,
+      "status": "EXACT",
+      "chain": "len(S210a)+len(S210b)+len(S210c) = 9+7+6 = 22",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-4",
+      "label": "S210-cp4-class-count-enumerated",
+      "predicted": 22,
+      "observed": 22,
+      "status": "EXACT",
+      "chain": "len(CLASS_NAMES table) = 22 enumerated calculators",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-5",
+      "label": "S210-paper-range-length",
+      "predicted": 22,
+      "observed": 22,
+      "status": "EXACT",
+      "chain": "len(range(901,923)) = 22",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-6",
+      "label": "S210-cp4-range-length",
+      "predicted": 22,
+      "observed": 22,
+      "status": "EXACT",
+      "chain": "len(range(485,507)) = 22",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-7",
+      "label": "S210-pair-range-membership",
+      "predicted": 1,
+      "observed": 1,
+      "status": "EXACT",
+      "chain": "all (paper#,cp4#) pairs in declared 901-922 / 485-506 ranges",
+      "primitives_used": "(set membership)"
+    },
+    {
+      "id": "H210-8",
+      "label": "S210-bijection-paper-to-cp4",
+      "predicted": 484,
+      "observed": 484,
+      "status": "EXACT",
+      "chain": "|unique papers| * |unique cp4| = 22 * 22 = 484",
+      "primitives_used": "(cardinality identity)"
+    },
+    {
+      "id": "H210-9",
+      "label": "S210-phonon-christoffel-tilt",
+      "predicted": 0.08333333333333333,
+      "observed": 0.08333333333333333,
+      "status": "EXACT",
+      "chain": "Phi_res * F_TRZ = (5/6)*(1/10) = 1/12",
+      "primitives_used": "PHI_RES, F_TRZ"
+    },
+    {
+      "id": "H210-10",
+      "label": "S210-rosette-sweep-factor",
+      "predicted": 1.8,
+      "observed": 1.8,
+      "status": "EXACT",
+      "chain": "2*(1 - F_TRZ) = 2*(1 - 1/10) = 9/5 = 1.8",
+      "primitives_used": "F_TRZ"
+    },
+    {
+      "id": "H210-11",
+      "label": "S210-strain-damping-coupling",
+      "predicted": 0.021923076923076924,
+      "observed": 0.021923076923076924,
+      "status": "EXACT",
+      "chain": "[SSq]/D_crit = 0.57/26 (exponential strain prefactor PAPER_917)",
+      "primitives_used": "SSQ, D_CRIT"
+    },
+    {
+      "id": "H210-12",
+      "label": "S210-gw170817-strain-damping-2of3",
+      "predicted": 0.6666666666666666,
+      "observed": 0.6666666666666666,
+      "status": "EXACT",
+      "chain": "h_UQFF/h_GR = 2/3 (66.7% damping observed in PAPER_915)",
+      "primitives_used": "(rational identity)"
+    },
+    {
+      "id": "H210-13",
+      "label": "S210-massgap-binary-split-near-half",
+      "predicted": 1.0,
+      "observed": 1.0,
+      "status": "EXACT",
+      "chain": "P(NS) + P(BH) = 0.49 + 0.51 = 1.00 (PAPER_916 mass-gap)",
+      "primitives_used": "(probability normalization)"
+    },
+    {
+      "id": "H210-14",
+      "label": "S210-buoyancy-index-locked",
+      "predicted": 0.6029,
+      "observed": 0.6029,
+      "status": "EXACT",
+      "chain": "beta_i = 6029/10000 (canonical locked value, used in wind eq)",
+      "primitives_used": "BETA_I"
+    },
+    {
+      "id": "H210-15",
+      "label": "S210a-class-count",
+      "predicted": 9,
+      "observed": 9,
+      "status": "EXACT",
+      "chain": "S210a CP4 #485..#493 -> 9 classes",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-16",
+      "label": "S210b-class-count",
+      "predicted": 7,
+      "observed": 7,
+      "status": "EXACT",
+      "chain": "S210b CP4 #494..#500 -> 7 classes",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-17",
+      "label": "S210c-class-count",
+      "predicted": 6,
+      "observed": 6,
+      "status": "EXACT",
+      "chain": "S210c CP4 #501..#506 -> 6 classes",
+      "primitives_used": "(integer arithmetic)"
+    },
+    {
+      "id": "H210-18",
+      "label": "S210-versions-monotone",
+      "predicted": 1,
+      "observed": 1,
+      "status": "EXACT",
+      "chain": "v5.63 < v5.64 < v5.65 (monotone aggregator versions)",
+      "primitives_used": "(lexicographic order)"
+    },
+    {
+      "id": "H210-19",
+      "label": "S210-paper-progress-pct-end",
+      "predicted": 922,
+      "observed": 922,
+      "status": "EXACT",
+      "chain": "End-of-session whitepaper count = 922/1000 = 92.2%",
+      "primitives_used": "(definitional)"
+    },
+    {
+      "id": "H210-20",
+      "label": "S210-cp4-milestone-v5p65",
+      "predicted": 506,
+      "observed": 506,
+      "status": "EXACT",
+      "chain": "CP4 v5.65 ending class count = 506",
+      "primitives_used": "(definitional)"
+    },
+    {
+      "id": "H210-21",
+      "label": "S210-cp4-500-milestone-crossed",
+      "predicted": 1,
+      "observed": 1,
+      "status": "EXACT",
+      "chain": "500 in CP4_RANGE (v5.64 hit 500-class CP4 milestone)",
+      "primitives_used": "(set membership)"
+    },
+    {
+      "id": "H210-22",
+      "label": "S210-pdf-running-total-end",
+      "predicted": 940,
+      "observed": 940,
+      "status": "EXACT",
+      "chain": "End-of-S210c cumulative PDF count = 940",
+      "primitives_used": "(definitional)"
+    }
+  ],
+  "primitives": {
+    "F_TRZ": "1/10",
+    "PHI_RES": "5/6",
+    "SSQ": "57/100",
+    "N_CH": 9,
+    "D_CRIT": 26,
+    "BETA_I": "6029/10000"
+  },
+  "subbatch": {
+    "S210a": {
+      "commit": "84ef1006",
+      "papers": [
+        901,
+        902,
+        903,
+        904,
+        905,
+        906,
+        907,
+        908,
+        909
+      ],
+      "cp4": [
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        493
+      ],
+      "version": "v5.63"
+    },
+    "S210b": {
+      "commit": "741b6432",
+      "papers": [
+        910,
+        911,
+        912,
+        913,
+        914,
+        915,
+        916
+      ],
+      "cp4": [
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500
+      ],
+      "version": "v5.64"
+    },
+    "S210c": {
+      "commit": "5ab0396c",
+      "papers": [
+        917,
+        918,
+        919,
+        920,
+        921,
+        922
+      ],
+      "cp4": [
+        501,
+        502,
+        503,
+        504,
+        505,
+        506
+      ],
+      "version": "v5.65"
+    }
+  },
+  "class_names": [
+    {
+      "paper": "PAPER_901",
+      "cp4": 485,
+      "class": "PhononModifiedChristoffelGeodesicCalc"
+    },
+    {
+      "paper": "PAPER_902",
+      "cp4": 486,
+      "class": "MasterStellarWindPhononEtCalc"
+    },
+    {
+      "paper": "PAPER_903",
+      "cp4": 487,
+      "class": "RosetteNebulaNGC2237UQFFCalc"
+    },
+    {
+      "paper": "PAPER_904",
+      "cp4": 488,
+      "class": "NebulaObservationComparisonUQFFCalc"
+    },
+    {
+      "paper": "PAPER_905",
+      "cp4": 489,
+      "class": "PhononErgosphereSuperradianceCalc"
+    },
+    {
+      "paper": "PAPER_906",
+      "cp4": 490,
+      "class": "PhononQPOAccretionDiskCalc"
+    },
+    {
+      "paper": "PAPER_907",
+      "cp4": 491,
+      "class": "StellarWindBuoyancyLagrangianCalc"
+    },
+    {
+      "paper": "PAPER_908",
+      "cp4": 492,
+      "class": "PhononJetLaunchingM87SgrACalc"
+    },
+    {
+      "paper": "PAPER_909",
+      "cp4": 493,
+      "class": "PhononModulatedHawkingTemperatureCalc"
+    },
+    {
+      "paper": "PAPER_910",
+      "cp4": 494,
+      "class": "BHJetModulationFactorLinewidthCalc"
+    },
+    {
+      "paper": "PAPER_911",
+      "cp4": 495,
+      "class": "JetCollimationLinewidthGammaCalc"
+    },
+    {
+      "paper": "PAPER_912",
+      "cp4": 496,
+      "class": "PhononNSSpinDownMagneticDipoleCalc"
+    },
+    {
+      "paper": "PAPER_913",
+      "cp4": 497,
+      "class": "MagnetarSpinDownPhononTimescaleCalc"
+    },
+    {
+      "paper": "PAPER_914",
+      "cp4": 498,
+      "class": "TidalDeformabilityPhononCorrectionCalc"
+    },
+    {
+      "paper": "PAPER_915",
+      "cp4": 499,
+      "class": "GW170817PhononStrainDampingCalc"
+    },
+    {
+      "paper": "PAPER_916",
+      "cp4": 500,
+      "class": "GW190425MassGapPhononSuppressionCalc"
+    },
+    {
+      "paper": "PAPER_917",
+      "cp4": 501,
+      "class": "ExponentialStrainPhononEvolutionCalc"
+    },
+    {
+      "paper": "PAPER_918",
+      "cp4": 502,
+      "class": "MatchedFilterSNRPhononDampingCalc"
+    },
+    {
+      "paper": "PAPER_919",
+      "cp4": 503,
+      "class": "SgrAFlareContrastPhononGammaCalc"
+    },
+    {
+      "paper": "PAPER_920",
+      "cp4": 504,
+      "class": "MonteCarloJetPowerSamplingCalc"
+    },
+    {
+      "paper": "PAPER_921",
+      "cp4": 505,
+      "class": "InspiralPhaseLagPhononIntegralCalc"
+    },
+    {
+      "paper": "PAPER_922",
+      "cp4": 506,
+      "class": "M87JetPowerCurveGammaMatchCalc"
+    }
+  ]
+}

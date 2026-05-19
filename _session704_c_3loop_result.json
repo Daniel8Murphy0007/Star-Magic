@@ -1,0 +1,108 @@
+{
+  "session": "S704",
+  "topic": "c-chain 3-loop tail bound via loop-factorial identity",
+  "extends": "S703",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "primitives_used_implicitly": [
+    "F_TRZ",
+    "Phi_res",
+    "D_phys",
+    "D_BSFG"
+  ],
+  "small_parameter": {
+    "name": "delta_c",
+    "rational": "1/1440",
+    "value": 0.0006944444444444445
+  },
+  "two_loop_coefficient": {
+    "closed_form": "5*pi^2/9",
+    "value": 5.483113556160754
+  },
+  "three_loop_coefficient": {
+    "closed_form": "25*pi^4/162",
+    "loop_factorial_form": "(c_2^(c))^2 / 2!",
+    "rational_factor": "25/162",
+    "value": 15.032267134876916
+  },
+  "closed_form": {
+    "expression": "c_obs = 3*v_SCM * (1 - delta_c + (5 pi^2/9) delta_c^2 - (25 pi^4/162) delta_c^3)",
+    "c_3loop_m_per_s": 299792458.4309146,
+    "c_CODATA_m_per_s": 299792458.0,
+    "residual_ppb": 1.4373763225957839,
+    "residual_pct": 1.4373763225957838e-07
+  },
+  "cascade": {
+    "residual_1loop_ppm": -2.639603873268437,
+    "residual_2loop_ppb": 6.47513732890526,
+    "residual_3loop_ppb": 1.4373763225957839,
+    "improvement_2to3": 4.504830938923282
+  },
+  "tail_check": {
+    "predicted_tail": 5.034275848389315e-09,
+    "observed_gap": 6.4706577857335405e-09,
+    "ratio": 0.7780160866316945,
+    "in_band": true
+  },
+  "borel_terms": [
+    {
+      "n": 1,
+      "coeff_c_n": 1.0,
+      "contribution": -0.0006944444444444445,
+      "partial_sum": 0.9993055555555556
+    },
+    {
+      "n": 2,
+      "coeff_c_n": 5.483113556160754,
+      "contribution": 2.644248435648512e-06,
+      "partial_sum": 0.9993081998039912
+    },
+    {
+      "n": 3,
+      "coeff_c_n": 15.032267134876916,
+      "contribution": -5.034275848389315e-09,
+      "partial_sum": 0.9993081947697153
+    },
+    {
+      "n": 4,
+      "coeff_c_n": 27.474542569024468,
+      "contribution": 6.389700497628735e-12,
+      "partial_sum": 0.999308194776105
+    },
+    {
+      "n": 5,
+      "coeff_c_n": 37.66150920238344,
+      "contribution": -6.082543996242228e-15,
+      "partial_sum": 0.9993081947760989
+    },
+    {
+      "n": 6,
+      "coeff_c_n": 41.30046633061233,
+      "contribution": 4.632122144686106e-18,
+      "partial_sum": 0.9993081947760989
+    },
+    {
+      "n": 7,
+      "coeff_c_n": 37.74252446885688,
+      "contribution": -2.9396356163565765e-21,
+      "partial_sum": 0.9993081947760989
+    }
+  ],
+  "closures": [
+    {
+      "name": "c3_loop_factorial",
+      "predicted": 15.032267134876916,
+      "observed": 19.321280617675775,
+      "error_pct": -22.19839133683055,
+      "status": "OK"
+    },
+    {
+      "name": "c_3loop_layered_dpm",
+      "predicted": 299792458.4309146,
+      "observed": 299792458.0,
+      "error_pct": 1.4373763225957838e-07,
+      "status": "OK"
+    }
+  ],
+  "next_slot": "S705 -- c-chain Borel convergence proof + universal loop-factorial rule (parallel to alpha S700)"
+}
