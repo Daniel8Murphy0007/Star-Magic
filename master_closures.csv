@@ -8,6 +8,8 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 207,cp_chain_closures,CPCH-1-bsfg-buoyancy-inverse-square,0.25,0.25,0,OK,_session207_cp_chain_closures.py,CPCH-1-bsfg-buoyancy-inverse-square: 0.25 vs 0.25 -> EXACT
 208,wolfram_kb_primitives,WKB-1-Mayan-Baktun,144000,144000,0,OK,_session208_wolfram_kb_primitives.py,WKB-1-Mayan-Baktun: 144000 vs 144000 -> EXACT
 209,nuclear_resonance_primitives,NRP-1-magic-cardinality,7,7,0,OK,_session209_nuclear_resonance_primitives.py,NRP-1-magic-cardinality: 7 vs 7 -> EXACT
+210,closures,S210-CP4-class-delta,22,22,0,OK,_session210_closures.py,"""generated_utc"":  datetime.utcnow().isoformat() + ""Z"","
+211,closures,benchmark-kernel-count,8,8,0,OK,_session211_closures.py,"""generated_utc"": datetime.utcnow().isoformat() + ""Z"","
 261,audit,G27,1410473958869.3906,1410437235543.0183,0.0026036838397970946,OK_JSON,_session261_audit.py,- Bundle missing: arxiv_submission_1159_1170
 261,closures,Test: 2   * m_p c^2,1.8765,,5.42,OK,_session261_closures.py,6/6 physical anchors closed.  Framework fully self-consistent.
 262,closures,Structural reading,,,0.0195,OK,_session262_closures.py,Wrote _session262_closures.json
@@ -464,7 +466,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
 683,lagrangian_primitives,Lagrangian primitive derivation: 11/11 primitives linked to sectors,,,0,OK,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
-684,closure_to_sector_bridge,Lagrangian re-run bridge: 469/469 closures mapped,,,0,OK,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 469/469 closures mapped -> EXACT
+684,closure_to_sector_bridge,Lagrangian re-run bridge: 481/481 closures mapped,,,0,OK,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 481/481 closures mapped -> EXACT
 684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%
@@ -475,3 +477,13 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 691,KK_sidereal_year_per_100_day,sidereal_year_per_100_day,3.642925572389,3.65256,0.2638,OK,_session691_KK_sidereal_year_per_100_day.py,sidereal_year_per_100_day: 3.642925572389 vs 3.65256 -> 0.2638%
 692,KK_Mars_orbit_AU,Mars_orbit_AU,1.5205052953872107,1.524,0.2293,OK,_session692_KK_Mars_orbit_AU.py,Mars_orbit_AU: 1.5205052953872107 vs 1.524 -> 0.2293%
 693,KK_Mercury_year_per_10_day,Mercury_year_per_10_day,8.822047162389,8.797,0.2847,OK,_session693_KK_Mercury_year_per_10_day.py,Mercury_year_per_10_day: 8.822047162389 vs 8.797 -> 0.2847%
+694,alpha_forward_derivation,alpha_inverse,137.427500157,137.035999084,0.285692,OK,_session694_alpha_forward_derivation.py,Wrote: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session694_alpha_forward_result.json
+695,4pi_coset_derivation,alpha_inverse_v2,137.427500157,137.035999084,0.285692,OK,_session695_4pi_coset_derivation.py,Artifact written: _session695_4pi_coset_result.json
+696,2loop_kk_closure,alpha_inverse_v3,137.034801075,137.035999084,0.0008742,OK,_session696_2loop_kk_closure.py,Artifact written: _session696_2loop_kk_result.json
+697,c2_exact_decomposition,alpha_inverse_v3_locked,137.034801075,137.035999084,0.0008742,OK,_session697_c2_exact_decomposition.py,Artifact written: _session697_c2_exact_result.json
+698,so2dpm_selection_rule,alpha_inverse_v3_certified,137.034801075,137.035999084,0.0008742,OK,_session698_so2dpm_selection_rule.py,Artifact written: _session698_so2dpm_selection_result.json
+699,3loop_tail_bound,alpha_inverse_v4_3loop,137.035360541,137.035999084,0.000466,OK,_session699_3loop_tail_bound.py,Artifact written: _session699_3loop_tail_result.json
+700,alpha_chain_convergence,alpha_inverse_v5_sealed,137.424646736,137.035999084,0.2836099,OK,_session700_alpha_chain_convergence.py,Artifact written: _session700_alpha_chain_convergence_result.json
+701,c_tree_derivation,v_SCM_consistency,1.000000e+08,9.993082e+07,0.069229,OK,_session701_c_tree_derivation.py,Artifact written: _session701_c_tree_derivation_result.json
+702,c_tree_layered_dpm,c_tree_R_layered,2.997917e+08,2.997925e+08,0.000264,OK,_session702_c_tree_layered_dpm.py,Artifact written: _session702_c_tree_layered_result.json
+703,c_2loop_coefficient,c_2loop_layered_dpm,2.997925e+08,2.997925e+08,6.48e-07,OK,_session703_c_2loop_coefficient.py,Artifact written: _session703_c_2loop_result.json

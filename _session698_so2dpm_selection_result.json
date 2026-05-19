@@ -1,0 +1,53 @@
+{
+  "session": "S698",
+  "depends_on": [
+    "S694",
+    "S695",
+    "S696",
+    "S697"
+  ],
+  "target_a": {
+    "name": "so2dpm_phase_selection_rule",
+    "claim": "Bubble-insertion 2-loop diagram is suppressed by alpha_tree^5 relative to the sunset, hence negligible at S697 precision (~ppm).",
+    "phi_res": "5/6",
+    "min_non_trivial_winding_n_min": 6,
+    "amp_sunset_rel": 0.0028575000000000002,
+    "amp_bubble_rel": 1.4844245223852398e-13,
+    "ratio_B_over_S": 5.1948364737891155e-11,
+    "ratio_to_residual_8p7ppm": 1.7062350832014252e-08,
+    "selection_rule_holds": true,
+    "uses_empirical_calibration": false
+  },
+  "target_b": {
+    "name": "alpha_inverse_v3_certified",
+    "predicted": 137.0348010753351,
+    "codata": 137.035999084,
+    "residual_ppm": -8.74229160873138,
+    "status": "OK",
+    "note": "Numerical value unchanged from S697; epistemic upgrade: c_2 = pi/8 is now the *unique* 2-loop coefficient at ppm precision, with the bubble-insertion competitor formally excluded."
+  },
+  "primitives_used": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "D_BSFG": 6,
+    "D_phys": 4,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO2_DPM_dim": 2,
+    "SO5_order": 10
+  },
+  "structural_identities_verified": {
+    "half_spinor F_TRZ*Phi_res = 1/12": true,
+    "G1 K_Mex = Phi_res * |SO(5)| / D_phys": true,
+    "min winding n_min = denom(Phi_res) = 6": true,
+    "selection rule suppression alpha_tree^5 vs sunset": true
+  },
+  "open_items": [
+    "S699: bound the residual 8.7 ppm by the 3-loop coefficient c_3 ~ (pi/8)^2 ~ 0.154 to certify it as the 3-loop tail.",
+    "S700: extend the SO(2)_DPM phase selection rule to all higher-loop fermion-insertion sub-diagrams and prove the alpha-chain convergence on M_BSFG."
+  ],
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

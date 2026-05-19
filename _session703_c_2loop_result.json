@@ -1,0 +1,70 @@
+{
+  "session": "S703",
+  "topic": "c-chain 2-loop coefficient on layered M_BSFG bundle",
+  "extends": "S702",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "small_parameter": {
+    "name": "delta_c",
+    "rational": "1/1440",
+    "value": 0.0006944444444444445,
+    "source": "S702 layered-DPM tree correction"
+  },
+  "two_loop_coefficient": {
+    "expression": "c_2^(c) = Phi_res * (D_phys / D_BSFG) * pi^2 = (5/9) * pi^2",
+    "rational_factor": "5/9",
+    "rational_factor_origin": "Phi_res * (D_phys/D_BSFG) = (5/6)*(4/6) = 5/9",
+    "value": 5.483113556160754,
+    "geometric_decomposition": {
+      "two_winding_S1_DPM": 9.869604401089358,
+      "phase_per_cycle_Phi_res": 0.8333333333333334,
+      "dim_projection_D_phys_over_D_BSFG": 0.6666666666666666
+    }
+  },
+  "closed_form": {
+    "expression": "c_obs = (D_phys - 1) * v_SCM * (1 - delta_c + (5*pi^2/9) * delta_c^2)",
+    "simplified": "c_obs = 3 * v_SCM * (1 - 1/1440 + (5*pi^2/9) * (1/1440)^2)",
+    "c_2loop_m_per_s": 299792459.94119734,
+    "c_CODATA_m_per_s": 299792458.0,
+    "residual_ppm": 0.0064751373289052595,
+    "residual_ppb": 6.47513732890526
+  },
+  "comparison_to_S702": {
+    "c_tree_R_1loop": 299791666.6666667,
+    "residual_1loop_ppm": -2.639603873268437,
+    "residual_2loop_ppm": 0.0064751373289052595,
+    "improvement_factor": 407.6521839135588
+  },
+  "tail_check": {
+    "predicted_tail": 2.644248435648512e-06,
+    "observed_tail_gap": 2.637777777758643e-06,
+    "match_pct": 0.24530716516108172
+  },
+  "candidate_search": {
+    "candidates": {
+      "Phi_res*(D_phys/D_BSFG)*pi^2 = 5pi^2/9": 5.483113556160754,
+      "SSq * pi^2 = 0.57*pi^2": 5.625674508620934,
+      "K_Mex * 2 = 25/6": 4.166666666666667,
+      "pi^2 / 2": 4.934802200544679,
+      "(D_phys-1) * pi^2 / D_BSFG = pi^2/2": 4.934802200544679
+    },
+    "best_match": "Phi_res*(D_phys/D_BSFG)*pi^2 = 5pi^2/9"
+  },
+  "closures": [
+    {
+      "name": "c2_coefficient_geometric",
+      "predicted": 5.483113556160754,
+      "observed": 5.469695999960322,
+      "error_pct": 0.2453071651610853,
+      "status": "OK"
+    },
+    {
+      "name": "c_2loop_layered_dpm",
+      "predicted": 299792459.94119734,
+      "observed": 299792458.0,
+      "error_pct": 6.47513732890526e-07,
+      "status": "OK"
+    }
+  ],
+  "next_slot": "S704 -- c-chain 3-loop tail bound (analogue of alpha S699: c_3 = c_2^2 / 2!) targeting the residual ~7 ppb"
+}

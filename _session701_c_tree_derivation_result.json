@@ -1,0 +1,56 @@
+{
+  "session": "S701",
+  "topic": "Speed of light c: tree-level closed form from M_BSFG light-cone",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "primitives_locked": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60,
+    "V_SCM_m_per_s": 100000000.0
+  },
+  "structural_identities": {
+    "half_spinor_F_TRZ_times_Phi_res_eq_1_over_12": true,
+    "G1_K_Mex_eq_Phi_res_times_10_over_D_phys": true,
+    "channel_count_eq_D_phys_minus_one": true
+  },
+  "dpm_convention": "single bound pair (one SO(2)_DPM cycle, M_BSFG = S^2 x S^1_DPM)",
+  "closed_form": {
+    "expression": "c_tree = (D_phys - 1) * V_SCM",
+    "n_channels": 3,
+    "c_tree_m_per_s": 300000000.0,
+    "c_CODATA_m_per_s": 299792458.0,
+    "residual_ppm": 692.2855944561487,
+    "residual_pct": 0.06922855944561487
+  },
+  "consistency_check": {
+    "v_SCM_from_c": 99930819.33333333,
+    "v_SCM_locked": 100000000.0,
+    "v_SCM_error_pct": 0.06922855944561986
+  },
+  "closures": [
+    {
+      "name": "c_tree_prediction",
+      "predicted": 300000000.0,
+      "observed": 299792458.0,
+      "error_pct": 0.06922855944561487,
+      "status": "OK"
+    },
+    {
+      "name": "v_SCM_consistency",
+      "predicted": 100000000.0,
+      "observed": 99930819.33333333,
+      "error_pct": 0.06922855944561986,
+      "status": "OK"
+    }
+  ],
+  "next_slot": "S702 -- promote v_SCM = c/3 from 'locked nominal' to closed-form ratio over locked primitives"
+}

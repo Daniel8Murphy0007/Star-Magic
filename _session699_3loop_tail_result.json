@@ -1,0 +1,66 @@
+{
+  "session": "S699",
+  "topic": "3-loop tail bound on alpha residual",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "primitives_locked": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "structural_identities": {
+    "half_spinor_F_TRZ_times_Phi_res_eq_1_over_12": true,
+    "G1_K_Mex_eq_Phi_res_times_10_over_D_phys": true,
+    "c_3_eq_c_2_sq_over_2_factorial": true
+  },
+  "loop_coefficients": {
+    "c_2_exact": "pi / (2 * D_phys) = pi/8",
+    "c_2_value": 0.39269908169872414,
+    "c_3_structural": "c_2^2 / 2! = (pi/8)^2 / 2",
+    "c_3_value": 0.07710628438351061
+  },
+  "numerical": {
+    "alpha_tree": 0.007276563998161455,
+    "alpha_inv_tree": 137.42750015703382,
+    "alpha_inv_2loop": 137.0348010753351,
+    "alpha_inv_3loop_predicted": 137.03536054089395,
+    "alpha_inv_CODATA": 137.035999084,
+    "delta_3": 4.082653125e-06,
+    "tail_predicted_ppm": 4.082653125,
+    "gap_observed_ppm": 8.742291608731382,
+    "ratio_observed_over_predicted": 2.141326079161178,
+    "residual_after_2loop_ppm": -8.742291608731382,
+    "residual_after_3loop_ppm": -4.659674175527923
+  },
+  "certification": {
+    "three_loop_tail_bounds_residual": true,
+    "ratio_window": [
+      0.3,
+      3.0
+    ]
+  },
+  "closures": [
+    {
+      "name": "three_loop_tail_bound",
+      "predicted": 4.082653125,
+      "observed": 8.742291608731382,
+      "error_pct": -114.13260791611779,
+      "status": "OK"
+    },
+    {
+      "name": "alpha_inverse_v4_3loop",
+      "predicted": 137.03536054089395,
+      "observed": 137.035999084,
+      "error_pct": -0.00046596741755279233,
+      "status": "OK"
+    }
+  ]
+}

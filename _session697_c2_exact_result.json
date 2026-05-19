@@ -1,0 +1,57 @@
+{
+  "session": "S697",
+  "depends_on": [
+    "S694",
+    "S695",
+    "S696"
+  ],
+  "target_a": {
+    "name": "c_2_exact_decomposition",
+    "value": 0.39269908169872414,
+    "reference": 0.39269908169872414,
+    "factors": {
+      "S_sun  (sunset symmetry)": "1/2",
+      "Phi_az (Vol(S^1) = 2pi)": 6.283185307179586,
+      "P_Cou  (Coulomb projector)": "1/8"
+    },
+    "formula_latex": "c_2 \\;=\\; S_{sun}\\,\\Phi_{az}\\,P_{Cou} \\;=\\; \\tfrac{1}{2}\\cdot 2\\pi\\cdot \\tfrac{1}{2 D_{phys}} \\;=\\; \\tfrac{\\pi}{2 D_{phys}} \\;=\\; \\tfrac{\\pi}{8}",
+    "uses_empirical_calibration": false
+  },
+  "target_b": {
+    "name": "alpha_inverse_v3_locked",
+    "closed_form_latex": "\\frac{1}{\\alpha_{UQFF}} \\;=\\; \\frac{4\\pi\\,D_{BSFG}\\,K_{Mex}\\,\\Phi_{res}}{1 - [SSq]\\,F_{TRZ}\\,\\Phi_{res}}\\,\\left(1 - \\frac{\\pi}{2 D_{phys}}\\,\\alpha_{tree}\\right)",
+    "predicted": 137.0348010753351,
+    "codata": 137.035999084,
+    "residual_abs": -0.0011980086648861743,
+    "residual_pct": -0.0008742291608731381,
+    "residual_ppm": -8.74229160873138,
+    "status": "OK",
+    "uses_empirical_calibration": false
+  },
+  "primitives_used": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "D_BSFG": 6,
+    "D_phys": 4,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO2_DPM_dim": 2,
+    "SO5_order": 10
+  },
+  "structural_identities_verified": {
+    "half_spinor F_TRZ*Phi_res = 1/12": true,
+    "G1 K_Mex = Phi_res * |SO(5)| / D_phys": true,
+    "Vol(S^2) = 4 pi (S695)": true,
+    "Vol(S^1) = 2 pi (S697 input)": true,
+    "Sunset symmetry factor = 1/2 (textbook QFT)": true,
+    "c_2 = pi/8 exact": true
+  },
+  "open_items": [
+    "S698: verify the SO(2)_DPM phase selection rule excludes the competing 2-loop fermion-bubble-insertion diagram (cleans up the only remaining diagrammatic assumption).",
+    "S699: bound the residual 8.7 ppm by the 3-loop coefficient c_3 ~ (pi/8)^2 ~ 0.154, predicting (8.7 ppm) / (c_3 alpha^2) ~ O(1), and certify the 3-loop tail is the entire remainder."
+  ],
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

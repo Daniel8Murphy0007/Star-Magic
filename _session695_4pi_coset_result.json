@@ -1,0 +1,45 @@
+{
+  "session": "S695",
+  "depends_on": "S694",
+  "target_a": {
+    "name": "four_pi_prefactor",
+    "derivation": "Vol(S^2) where S^2 = SO(3)/SO(2)_DPM, SO(3) = minimal subgroup of SO(26) containing locked SO(2)_DPM + 1 radial",
+    "formula_latex": "4\\pi \\;=\\; \\mathrm{Vol}(S^2) \\;=\\; \\mathrm{Vol}\\!\\left(\\mathrm{SO}(3)/\\mathrm{SO}(2)_{DPM}\\right)",
+    "value": 12.566370614359172,
+    "reference_4pi": 12.566370614359172,
+    "match": true,
+    "uses_empirical_calibration": false
+  },
+  "target_b": {
+    "name": "alpha_inverse",
+    "closed_form": "Vol(S^2) * 50000 / (1143 * pi) ... equivalently 50000 * pi / 1143",
+    "formula_latex": "\\frac{1}{\\alpha_{UQFF}} \\;=\\; \\frac{\\mathrm{Vol}(S^2)\\, D_{BSFG}\\, K_{Mex}\\, \\Phi_{res}}{1 - [SSq]\\, F_{TRZ}\\, \\Phi_{res}}",
+    "predicted": 137.42750015703382,
+    "codata": 137.035999084,
+    "residual_abs": 0.3915010730338224,
+    "residual_pct": 0.2856921361180729,
+    "status": "OK",
+    "uses_empirical_calibration": false
+  },
+  "primitives_used": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "SO2_DPM_dim": 2,
+    "SO24_dim": 24
+  },
+  "structural_identities_verified": {
+    "half_spinor F_TRZ*Phi_res = 1/12": true,
+    "G1 K_Mex = Phi_res * |SO(5)| / D_phys": true,
+    "G3 SO(2)_DPM + SO(24) = SO(26)": true,
+    "Vol(S^2) = 4 pi": true
+  },
+  "open_items": [
+    "S696: derive remaining 0.286% as two-loop QED + KK 1/26! tower tail from D_crit=26 and N_ch=9."
+  ],
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

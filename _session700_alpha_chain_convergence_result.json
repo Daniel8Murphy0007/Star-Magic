@@ -1,0 +1,119 @@
+{
+  "session": "S700",
+  "topic": "Universal SO(2)_DPM rule + alpha-chain convergence on M_BSFG",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "primitives_locked": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "structural_identities": {
+    "half_spinor_F_TRZ_times_Phi_res_eq_1_over_12": true,
+    "G1_K_Mex_eq_Phi_res_times_10_over_D_phys": true,
+    "universal_selection_rule_n_min_eq_denom_Phi_res": true
+  },
+  "selection_rule": {
+    "n_min_winding": 6,
+    "per_wrapped_loop_suppression": 1.4844245223852398e-13,
+    "ratio_to_8p7_ppm": 1.7062350832014252e-08,
+    "blocked_windings": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "convergence": {
+    "radius_R_eq_2_over_pi": 0.6366197723675814,
+    "alpha_tree": 0.007276563998161455,
+    "margin_R_over_alpha_tree": 87.48906386701663,
+    "all_c_n_within_bound": true,
+    "coefficient_ladder": [
+      {
+        "n": 2,
+        "c_n_struct": 0.39269908169872414,
+        "c_n_bound": 1.2337005501361697,
+        "within_bound": true,
+        "term_ppm": 20.792781624746357
+      },
+      {
+        "n": 3,
+        "c_n_struct": 0.07710628438351061,
+        "c_n_bound": 0.6459640975062462,
+        "within_bound": true,
+        "term_ppm": 0.02970768674635636
+      },
+      {
+        "n": 4,
+        "c_n_struct": 0.010093189023535096,
+        "c_n_bound": 0.253669507901048,
+        "within_bound": true,
+        "term_ppm": 2.8296571625904432e-05
+      },
+      {
+        "n": 5,
+        "c_n_struct": 0.0009908965152384687,
+        "c_n_bound": 0.07969262624616703,
+        "within_bound": true,
+        "term_ppm": 2.021436335525548e-08
+      },
+      {
+        "n": 6,
+        "c_n_struct": 7.78248303185225e-05,
+        "c_n_bound": 0.020863480763352957,
+        "within_bound": true,
+        "term_ppm": 1.1552508657528509e-11
+      },
+      {
+        "n": 7,
+        "c_n_struct": 5.093623233240468e-06,
+        "c_n_bound": 0.004681754135318687,
+        "within_bound": true,
+        "term_ppm": 5.501882248147952e-15
+      },
+      {
+        "n": 8,
+        "c_n_struct": 2.857515951732597e-07,
+        "c_n_bound": 0.0009192602748394263,
+        "within_bound": true,
+        "term_ppm": 2.2459469320118248e-18
+      }
+    ],
+    "alpha_inv_full_structural": 137.424646735801,
+    "residual_full_ppm": 2836.098940416102,
+    "convergence_certified": true
+  },
+  "closures": [
+    {
+      "name": "so2dpm_universal_rule",
+      "predicted": 1.4844245223852398e-13,
+      "observed": 8.7e-06,
+      "error_pct": 1.7062350832014252e-06,
+      "status": "OK"
+    },
+    {
+      "name": "alpha_chain_convergence",
+      "predicted": 0.6366197723675814,
+      "observed": 0.007276563998161455,
+      "error_pct": 1.143,
+      "status": "OK"
+    },
+    {
+      "name": "alpha_inverse_v5_sealed",
+      "predicted": 137.424646735801,
+      "observed": 137.035999084,
+      "error_pct": 0.2836098940416102,
+      "status": "WARN"
+    }
+  ]
+}
