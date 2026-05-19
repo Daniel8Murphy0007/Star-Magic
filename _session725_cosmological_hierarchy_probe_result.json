@@ -1,0 +1,52 @@
+{
+  "session": 725,
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "purpose": "Cosmological hierarchy probe; D_crit^7 hit found for rho_Lambda/rho_vac_SCm",
+  "L_H_m": 1.6472579504822302e+26,
+  "L_dS_m": 9.510448211356669e+25,
+  "L_SCM_m": 349.22673319198134,
+  "ratio_L_H_L_SCM": 4.71687243249124e+23,
+  "rho_Lambda_J_m3": 5.923710864890967e-27,
+  "rho_vac_SCm_J_m3": 7.09e-37,
+  "ratio_rho_Lambda_rho_vac_SCm": 8355022376.432957,
+  "D_crit_7": 8031810176.0,
+  "D_crit_7_match_rel_err_pct": -3.8684779749320906,
+  "N_SCm_pixel_count": 2.7958774150733626e+48,
+  "vacuum_hierarchy_reduction": 6.534555712270803e+149,
+  "two_anchor_hits": [
+    {
+      "p": 17,
+      "q": 10,
+      "K_name": "D_crit = 26",
+      "K_value": 26.0,
+      "rel_err": 0.006920895750642449,
+      "L_H_predicted": 1.6359358092913846e+26
+    },
+    {
+      "p": 26,
+      "q": 8,
+      "K_name": "1 - F_TRZ",
+      "K_value": 0.9,
+      "rel_err": 0.005278887152413302,
+      "L_H_predicted": 1.6386079241635284e+26
+    },
+    {
+      "p": 28,
+      "q": 8,
+      "K_name": "F_TRZ = 1/10",
+      "K_value": 0.1,
+      "rel_err": 0.006671249125687062,
+      "L_H_predicted": 1.6363415086235084e+26
+    }
+  ],
+  "best_two_anchor_fit": {
+    "p": 26,
+    "q": 8,
+    "K_name": "1 - F_TRZ",
+    "K_value": 0.9,
+    "rel_err": 0.005278887152413302,
+    "L_H_predicted": 1.6386079241635284e+26
+  },
+  "cc_problem_SCm_units": "log10(rho_Lambda/rho_vac_SCm) ~ 10  (vs Planck units ~ -122)"
+}

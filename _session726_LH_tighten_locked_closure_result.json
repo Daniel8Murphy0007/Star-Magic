@@ -1,0 +1,35 @@
+{
+  "session": 726,
+  "title": "L_H closure tightening + D_crit^7 dressing",
+  "cvw": {
+    "version": "v2.0.0",
+    "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+  },
+  "L_H_obs": 1.6472579504822302e+26,
+  "L_SCM": 349.226733192,
+  "rho_Lambda_over_rho_vac_SCm": 8355022376.432958,
+  "best_2atom": {
+    "p": 42,
+    "q": 2,
+    "K_name": "K_Mex/K_G",
+    "K_val": 6.565656565656566,
+    "L_pred": 1.647410623940308e+26,
+    "rel_err_pct": 0.009268339426324903
+  },
+  "best_3atom": {
+    "p": 48,
+    "q": 2,
+    "K_name": "beta_i*1-F_TRZ/A_5",
+    "K_val": 0.0090435,
+    "L_pred": 1.6473446158829622e+26,
+    "rel_err_pct": 0.005261191831349963
+  },
+  "best_D7_dressing": {
+    "K_name": "1+1/D_crit",
+    "K_val": 1.0384615384615385,
+    "predicted": 8340725952.000001,
+    "rel_err_pct": -0.1711117431987097
+  },
+  "sub_01pct_hits_count": 14,
+  "anchor_decision": "COLLAPSE_TO_3"
+}

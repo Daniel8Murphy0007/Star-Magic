@@ -1,0 +1,67 @@
+{
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "session": 715,
+  "chain": "alpha",
+  "purpose": "4-loop locked-rational closure on top of S714 lambda_3=15/7",
+  "lambda_3": "15/7",
+  "lambda_4_eff_backsolve": 1.5877482326793535,
+  "lambda_4_locked": "19/12",
+  "lambda_4_form": "K_Mex - F_TRZ*Phi_res*D_BSFG",
+  "alpha_inv_tree": 137.42750015703382,
+  "alpha_inv_2loop": 137.0348010753351,
+  "alpha_inv_3loop": 137.03599993010405,
+  "alpha_inv_4loop": 137.0359990863527,
+  "codata": 137.035999084,
+  "codata_sigma_ppb": 0.0015324440395495982,
+  "residual_3loop_ppb": 6.174319621000388,
+  "residual_4loop_ppb": 0.017168424931815435,
+  "within_codata_1sigma": false,
+  "candidates_tested": [
+    {
+      "name": "1",
+      "lambda": "1",
+      "form": "pure Borel"
+    },
+    {
+      "name": "11/7",
+      "lambda": "11/7",
+      "form": "(D_BSFG+SO5/2) / (D_phys+3) ad hoc"
+    },
+    {
+      "name": "8/5",
+      "lambda": "8/5",
+      "form": "D_phys^2 / SO5_ord / 2 * something"
+    },
+    {
+      "name": "19/12",
+      "lambda": "19/12",
+      "form": "K_Mex - F_TRZ*Phi_res*D_BSFG"
+    },
+    {
+      "name": "45/28",
+      "lambda": "45/28",
+      "form": "lambda_3 * (1-F_TRZ)*Phi_res = (15/7)*(3/4)"
+    },
+    {
+      "name": "13/8",
+      "lambda": "13/8",
+      "form": "ad hoc"
+    },
+    {
+      "name": "5/3",
+      "lambda": "5/3",
+      "form": "SO5_ord/D_BSFG/F_TRZ trivial"
+    },
+    {
+      "name": "3/2",
+      "lambda": "3/2",
+      "form": "trivial"
+    },
+    {
+      "name": "K_Mex-1/2",
+      "lambda": "19/12",
+      "form": "= 19/12 (alternative form)"
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "session": 722,
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "purpose": "K_G dimensionless prefactor search; align M_SCM to astrophysical mass",
+  "L_SCM_m": 349.22673319198134,
+  "M_SCM_K_G_1_kg": 4.702655484614628e+29,
+  "candidates": [
+    {
+      "K_G_name": "1                 (S721 default)",
+      "K_G_value": 1.0,
+      "M_SCM_kg": 4.702655484614628e+29,
+      "M_SCM_solar": 0.23643315659198735,
+      "closest_ref": "0.5 M_sun (mid M-dwarf)",
+      "closest_val_kg": 9.945e+29,
+      "rel_err": 0.5271336868160253
+    },
+    {
+      "K_G_name": "F_TRZ = 1/10",
+      "K_G_value": 0.1,
+      "M_SCM_kg": 4.702655484614628e+28,
+      "M_SCM_solar": 0.023643315659198735,
+      "closest_ref": "0.075 M_sun (H-burn min)",
+      "closest_val_kg": 1.4917499999999999e+29,
+      "rel_err": 0.6847557912106835
+    },
+    {
+      "K_G_name": "Phi_res = 5/6",
+      "K_G_value": 0.8333333333333334,
+      "M_SCM_kg": 3.91887957051219e+29,
+      "M_SCM_solar": 0.19702763049332278,
+      "closest_ref": "0.5 M_sun (mid M-dwarf)",
+      "closest_val_kg": 9.945e+29,
+      "rel_err": 0.6059447390133544
+    },
+    {
+      "K_G_name": "SSq = 57/100",
+      "K_G_value": 0.57,
+      "M_SCM_kg": 2.680513626230338e+29,
+      "M_SCM_solar": 0.1347668992574328,
+      "closest_ref": "0.1 M_sun",
+      "closest_val_kg": 1.989e+29,
+      "rel_err": 0.3476689925743278
+    },
+    {
+      "K_G_name": "1/K_Mex = 12/25",
+      "K_G_value": 0.48,
+      "M_SCM_kg": 2.2572746326150212e+29,
+      "M_SCM_solar": 0.11348791516415391,
+      "closest_ref": "0.1 M_sun",
+      "closest_val_kg": 1.989e+29,
+      "rel_err": 0.1348791516415391
+    },
+    {
+      "K_G_name": "beta_i = 6029/10000",
+      "K_G_value": 0.6029,
+      "M_SCM_kg": 2.8352309916741593e+29,
+      "M_SCM_solar": 0.14254555010930917,
+      "closest_ref": "0.1 M_sun",
+      "closest_val_kg": 1.989e+29,
+      "rel_err": 0.4254555010930917
+    },
+    {
+      "K_G_name": "N_ch/D_crit = 9/26",
+      "K_G_value": 0.34615384615384615,
+      "M_SCM_kg": 1.6278422831358328e+29,
+      "M_SCM_solar": 0.081842246512611,
+      "closest_ref": "0.08 M_sun  (BD upper)",
+      "closest_val_kg": 1.5912e+29,
+      "rel_err": 0.023028081407637443
+    },
+    {
+      "K_G_name": "D_BSFG/D_crit = 3/13",
+      "K_G_value": 0.23076923076923078,
+      "M_SCM_kg": 1.085228188757222e+29,
+      "M_SCM_solar": 0.054561497675074004,
+      "closest_ref": "0.075 M_sun (H-burn min)",
+      "closest_val_kg": 1.4917499999999999e+29,
+      "rel_err": 0.2725133643323466
+    },
+    {
+      "K_G_name": "D_phys/D_crit = 2/13",
+      "K_G_value": 0.15384615384615385,
+      "M_SCM_kg": 7.234854591714813e+28,
+      "M_SCM_solar": 0.03637433178338267,
+      "closest_ref": "0.075 M_sun (H-burn min)",
+      "closest_val_kg": 1.4917499999999999e+29,
+      "rel_err": 0.5150089095548978
+    },
+    {
+      "K_G_name": "N_ch/A_5 = 3/20",
+      "K_G_value": 0.15,
+      "M_SCM_kg": 7.053983226921942e+28,
+      "M_SCM_solar": 0.0354649734887981,
+      "closest_ref": "0.075 M_sun (H-burn min)",
+      "closest_val_kg": 1.4917499999999999e+29,
+      "rel_err": 0.5271336868160253
+    },
+    {
+      "K_G_name": "F_TRZ*Phi_res = 1/12",
+      "K_G_value": 0.08333333333333333,
+      "M_SCM_kg": 3.91887957051219e+28,
+      "M_SCM_solar": 0.019702763049332276,
+      "closest_ref": "0.013 M_sun (H/D burn)",
+      "closest_val_kg": 2.5857e+28,
+      "rel_err": 0.5155971576409445
+    },
+    {
+      "K_G_name": "1/(2*pi)",
+      "K_G_value": 0.15915494309189535,
+      "M_SCM_kg": 7.484508660346307e+28,
+      "M_SCM_solar": 0.03762950558243493,
+      "closest_ref": "0.075 M_sun (H-burn min)",
+      "closest_val_kg": 1.4917499999999999e+29,
+      "rel_err": 0.4982732589008676
+    },
+    {
+      "K_G_name": "1/(4*pi)",
+      "K_G_value": 0.07957747154594767,
+      "M_SCM_kg": 3.7422543301731535e+28,
+      "M_SCM_solar": 0.018814752791217464,
+      "closest_ref": "0.013 M_sun (H/D burn)",
+      "closest_val_kg": 2.5857e+28,
+      "rel_err": 0.4472886762474973
+    },
+    {
+      "K_G_name": "1/(8*pi)  (Einstein-Hilbert)",
+      "K_G_value": 0.039788735772973836,
+      "M_SCM_kg": 1.8711271650865768e+28,
+      "M_SCM_solar": 0.009407376395608732,
+      "closest_ref": "13 M_jup (BD min)",
+      "closest_val_kg": 2.4674e+28,
+      "rel_err": 0.2416603853908662
+    },
+    {
+      "K_G_name": "1/(16*pi) (action norm)",
+      "K_G_value": 0.019894367886486918,
+      "M_SCM_kg": 9.355635825432884e+27,
+      "M_SCM_solar": 0.004703688197804366,
+      "closest_ref": "13 M_jup (BD min)",
+      "closest_val_kg": 2.4674e+28,
+      "rel_err": 0.6208301926954332
+    },
+    {
+      "K_G_name": "N_ch/(D_crit*2*pi)",
+      "K_G_value": 0.055092095685656074,
+      "M_SCM_kg": 2.590791459350644e+28,
+      "M_SCM_solar": 0.013025598086227472,
+      "closest_ref": "0.013 M_sun (H/D burn)",
+      "closest_val_kg": 2.5857e+28,
+      "rel_err": 0.0019690835559594204
+    }
+  ],
+  "best": {
+    "K_G_name": "N_ch/(D_crit*2*pi)",
+    "K_G_value": 0.055092095685656074,
+    "M_SCM_kg": 2.590791459350644e+28,
+    "M_SCM_solar": 0.013025598086227472,
+    "closest_ref": "0.013 M_sun (H/D burn)",
+    "closest_val_kg": 2.5857e+28,
+    "rel_err": 0.0019690835559594204
+  },
+  "K_G_for_H_burn_threshold": 0.31721439192823314,
+  "K_G_NchDcrit": 0.34615384615384615,
+  "class_VI_peek": {
+    "Lambda_obs": 1.1056e-52,
+    "L_Lambda_m": 9.510448211356669e+25,
+    "ratio_to_L_SCM": 2.7232875686319423e+23,
+    "dim_anchor_sequence_extended": [
+      0,
+      0,
+      1,
+      3,
+      4,
+      5
+    ]
+  }
+}

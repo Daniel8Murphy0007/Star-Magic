@@ -1,0 +1,93 @@
+{
+  "session": 724,
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "purpose": "Class VI opening: cosmological constant Lambda; no-go for existing anchors; L_H added.",
+  "Lambda_obs": 1.1056e-52,
+  "L_dS_obs": 9.510448211356669e+25,
+  "L_Hubble_obs": 1.372506806603264e+26,
+  "L_SCM": 349.22673319198134,
+  "M_SCM": 1.49218875954118e+29,
+  "K_G_locked": "33/104",
+  "dimensional_family": [
+    {
+      "a": -3,
+      "b": 6,
+      "d": -11,
+      "e": 3,
+      "base": 7.182481385080519e+218,
+      "K_needed": 1.5393008916062866e-271
+    },
+    {
+      "a": -2,
+      "b": 4,
+      "d": -8,
+      "e": 2,
+      "base": 1.6172531974902633e+144,
+      "K_needed": 6.836282665668721e-197
+    },
+    {
+      "a": -1,
+      "b": 2,
+      "d": -5,
+      "e": 1,
+      "base": 3.641510175334983e+69,
+      "K_needed": 3.0361030088246164e-122
+    },
+    {
+      "a": 0,
+      "b": 0,
+      "d": -2,
+      "e": 0,
+      "base": 8.199455952628008e-06,
+      "K_needed": 1.348382144361229e-47
+    },
+    {
+      "a": 1,
+      "b": -2,
+      "d": 1,
+      "e": -1,
+      "base": 1.8462416602447712e-80,
+      "K_needed": 5.988381823500947e+27
+    },
+    {
+      "a": 2,
+      "b": -4,
+      "d": 4,
+      "e": -2,
+      "base": 4.157115164367553e-155,
+      "K_needed": 2.6595366168264464e+102
+    },
+    {
+      "a": 3,
+      "b": -6,
+      "d": 7,
+      "e": -3,
+      "base": 9.360424944329068e-230,
+      "K_needed": 1.181142957264796e+177
+    }
+  ],
+  "no_locked_rational_match": true,
+  "L_H_as_new_anchor": {
+    "Friedmann_K_Lambda": 3.0,
+    "L_dS_from_Lambda": 9.510448211356669e+25,
+    "ratio_L_H_over_L_SCM": 2.7232875686319423e+23,
+    "log10_ratio": 23.435093503578624,
+    "not_derivable_via_locked_rational": true
+  },
+  "anchor_sequence": [
+    0,
+    0,
+    1,
+    3,
+    3,
+    4
+  ],
+  "total_dimensional_anchors": 4,
+  "anchors": [
+    "c (Class III)",
+    "rho_vac (Class IV)",
+    "L_SCM (Class IV/V joint)",
+    "L_H (Class VI, NEW)"
+  ]
+}

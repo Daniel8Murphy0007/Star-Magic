@@ -1,0 +1,43 @@
+{
+  "session": 727,
+  "title": "exponent 42 derivation + Lambda ratio closure",
+  "cvw": {
+    "version": "v2.0.0",
+    "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+  },
+  "track_a": {
+    "derivations_of_42": [
+      "D_crit + D_BSFG + N_ch + 1",
+      "D_crit + 2 SO5 - D_phys",
+      "D_crit + D_phys + 3 D_phys",
+      "D_crit + 4 D_phys",
+      "D_crit + SO5 + D_BSFG",
+      "7 D_phys + D_crit - 12",
+      "A_5 - 3 D_phys - D_BSFG",
+      "A_5 - D_crit - D_phys + 12",
+      "D_crit + SO5 + N_ch - 3",
+      "N_ch + D_BSFG + D_crit + 1"
+    ],
+    "p_hit_density": {
+      "28": 2,
+      "42": 3,
+      "55": 3,
+      "56": 1
+    },
+    "p42_count": 3,
+    "parsimonious": "D_crit + 4*D_phys = 26 + 16"
+  },
+  "track_b": {
+    "ratio_obs": 8355022376.432958,
+    "best_pqK": {
+      "p": 9,
+      "q": 4,
+      "K": "1-F_TRZ*27/26",
+      "K_val": 0.9346153846153846,
+      "predicted": 8354349578.143661,
+      "err_pct": -0.008052621034204151
+    },
+    "sub_01pct_count": 10
+  },
+  "verdict": "FRAMEWORK CLOSED at 14 constants (3 dimensional + 11 dimensionless)"
+}

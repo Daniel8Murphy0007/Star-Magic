@@ -1,0 +1,87 @@
+{
+  "session": 717,
+  "topic": "alpha_chain_class_universality_test",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "alpha_carry_over": {
+    "lambda_3": "15/7",
+    "lambda_4": "19/12",
+    "c_2": "pi/8"
+  },
+  "class_II_unified_ratio_test": {
+    "r_2to3": 0.42074901610577586,
+    "r_3to4": 0.09672032938135243,
+    "ratio_of_ratios_rational": "4050/931",
+    "ratio_of_ratios_value": 4.35016111707841,
+    "expected_if_class_II": 1.0,
+    "mismatch_pct": 335.016111707841,
+    "verdict": "REJECTED (alpha is NOT Class II)"
+  },
+  "lambda_sequence_recursion_candidates": {
+    "A_ratio": {
+      "value": "133/180",
+      "decimal": 0.7388888888888889,
+      "locked_matches": []
+    },
+    "B_diff": {
+      "value": "-47/84",
+      "decimal": -0.5595238095238095,
+      "locked_matches": []
+    },
+    "C_prod": {
+      "value": "95/28",
+      "decimal": 3.392857142857143,
+      "locked_matches": []
+    },
+    "D_borel": {
+      "value": "133/540",
+      "decimal": 0.2462962962962963,
+      "locked_matches": []
+    },
+    "verdict": "no clean single-step lambda recursion in locked primitives"
+  },
+  "class_I_per_loop_structural_forms": {
+    "lambda_3": "2 / [SO5_order * F_TRZ * (Phi_res + F_TRZ)]  =  15/7",
+    "lambda_4": "K_Mex - F_TRZ * Phi_res * D_BSFG            =  19/12",
+    "verified_exact_in_Fraction": true
+  },
+  "universality_classes": {
+    "Class_I_Borel_per_loop_locked": [
+      "alpha"
+    ],
+    "Class_II_single_locked_ratio": [
+      "mu"
+    ],
+    "Class_geometric_phase": [
+      "c"
+    ]
+  },
+  "headline_closures": {
+    "alpha_classII_unified_ratio_test": {
+      "predicted": 1.0,
+      "observed": 4.35016111707841,
+      "error_pct": 335.016111707841,
+      "status": "FAIL"
+    },
+    "alpha_classI_per_loop_locked": {
+      "predicted": 1.0,
+      "observed": 1.0,
+      "error_pct": 0.0,
+      "status": "EXACT"
+    }
+  },
+  "next_slot": "S718 -- c-chain class assignment test: apply Test 1 and Test 2 to the c-chain (using its 2-loop coefficient c_2 = 5*pi^2/9, 3-loop tail bound from S704, and the 13/3 geom-phase from S708) to determine whether c is Class I, Class II, or a hybrid."
+}

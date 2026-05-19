@@ -1,0 +1,69 @@
+{
+  "session": 718,
+  "topic": "c_chain_class_assignment_class_III",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "c_chain_carry_over": {
+    "c_2_rational_part": "5/9",
+    "c_2_numeric": 5.483113556160754,
+    "lambda_3_c_borel": "1",
+    "lambda_4_c_borel": "1",
+    "rank_geom": "13/3"
+  },
+  "test1_classII_rejection": {
+    "ratio_of_ratios_rational": "3/2",
+    "value": 1.5,
+    "class_II_expected": 1.0,
+    "mismatch_pct": 50.0,
+    "verdict": "REJECTED (c is NOT Class II)"
+  },
+  "test2_effective_lambda_3": {
+    "lambda_3_eff_numeric": 1.2871732226688986,
+    "closed_form_no_damp": "1 + 702/(75*pi^4)",
+    "closed_form_no_damp_value": 1.2882687817115361,
+    "closed_form_damped": "1 + 702/(75*pi^4) * exp(-c_2 delta)",
+    "closed_form_damped_value": 1.2871732226688986,
+    "best_locked_rational_match_name": "9/7",
+    "best_locked_rational_match_value": "9/7",
+    "best_match_rel_err": 0.0011334425925888208,
+    "verdict": "no clean locked rational; additive damped form is canonical"
+  },
+  "c_chain_final_closure": {
+    "c_predicted_m_per_s": 299792458.86654246,
+    "c_codata": 299792458.0,
+    "err_pct": 2.890474511317562e-07
+  },
+  "universality_classification_FINAL": {
+    "Class_I_alpha": "c_n = lambda_n * c_2^(n-1)/(n-1)!  with per-loop locked lambda",
+    "Class_II_mu": "c_n = c_2 * r^(n-2)  with r = 3*K_Mex = 25/4 (G1 anchor)",
+    "Class_III_c": "Borel (lambda=1) + additive geom phase 13/3 * delta^3 * exp(-c_2 delta)"
+  },
+  "headline_closures": {
+    "c_chain_classII_unified_ratio": {
+      "predicted": 1.0,
+      "observed": 1.5,
+      "error_pct": 50.0,
+      "status": "FAIL"
+    },
+    "c_chain_classIII_borel_plus_geom": {
+      "predicted": 299792458.86654246,
+      "observed": 299792458.0,
+      "error_pct": 2.890474511317562e-07,
+      "status": "WARN"
+    }
+  },
+  "next_slot": "S719 -- open a fourth chain (hbar via DPM action quantum or m_e via BSFG lepton-mass tree) and classify its universality class (I/II/III) to test whether the three classes are exhaustive or a Class IV exists."
+}

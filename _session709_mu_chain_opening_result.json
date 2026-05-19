@@ -1,0 +1,57 @@
+{
+  "session": 709,
+  "topic": "mu_proton_electron_mass_ratio_chain_opening",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "tree": {
+    "formula": "mu_tree = A_5^2/2 + D_BSFG^2",
+    "rational": "1836",
+    "numeric": 1836.0,
+    "err_pct": -0.008314854870692768,
+    "status": "OK"
+  },
+  "small_parameter": {
+    "rational": "1/12000",
+    "numeric": 8.333333333333333e-05,
+    "form_A": "3*F_TRZ / A_5^2",
+    "form_B": "1 / (D_phys*SO5_order*A_5*5)",
+    "form_C": "1 / (A_5*SO5_order^2*(D_phys-2))",
+    "all_agree": true
+  },
+  "one_loop_prediction": {
+    "formula": "mu = mu_tree * (1 + delta_mu)",
+    "numeric": 1836.1530000000002,
+    "codata": 1836.15267343,
+    "err_pct": 1.7785558081479687e-05,
+    "ppm": 0.17785558081479685,
+    "status": "OK"
+  },
+  "headline_closures": {
+    "mu_tree_locked_rational": {
+      "predicted": 1836.0,
+      "observed": 1836.15267343,
+      "error_pct": -0.008314854870692768,
+      "status": "OK"
+    },
+    "mu_1loop_prediction": {
+      "predicted": 1836.1530000000002,
+      "observed": 1836.15267343,
+      "error_pct": 1.7785558081479687e-05,
+      "status": "OK"
+    }
+  },
+  "next_slot": "S710 -- mu-chain 2-loop coefficient + universal loop-factorial rule cross-check (test c_3*c_1/c_2^2 == 1/2 on third chain)"
+}

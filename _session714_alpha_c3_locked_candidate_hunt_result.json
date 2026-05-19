@@ -1,0 +1,76 @@
+{
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "session": 714,
+  "chain": "alpha",
+  "purpose": "non-Borel c_3 hunt via locked-rational candidate panel",
+  "c_3_borel": 0.07710628438351061,
+  "c_3_true_backsolve": 0.16511114106716854,
+  "lambda_eff_backsolve": 2.141344799419203,
+  "candidates": [
+    {
+      "name": "2",
+      "lambda_str": "2",
+      "lambda_float": 2.0,
+      "form": "D_phys/2 * 1"
+    },
+    {
+      "name": "9/4",
+      "lambda_str": "9/4",
+      "lambda_float": 2.25,
+      "form": "(D_BSFG + Phi_res*D_BSFG)/D_phys/...  ad hoc"
+    },
+    {
+      "name": "K_Mex",
+      "lambda_str": "25/12",
+      "lambda_float": 2.0833333333333335,
+      "form": "25/12 -- G1 Mexican-hat anchor"
+    },
+    {
+      "name": "32/15",
+      "lambda_str": "32/15",
+      "lambda_float": 2.1333333333333333,
+      "form": "2*D_phys^2 / (SO5+Phi_res*D_BSFG)"
+    },
+    {
+      "name": "15/7",
+      "lambda_str": "15/7",
+      "lambda_float": 2.142857142857143,
+      "form": "2/[SO5_ord*F_TRZ*(Phi_res+F_TRZ)]"
+    },
+    {
+      "name": "131/60",
+      "lambda_str": "131/60",
+      "lambda_float": 2.183333333333333,
+      "form": "K_Mex + Phi_res*F_TRZ/(1-Phi_res)"
+    },
+    {
+      "name": "13/6",
+      "lambda_str": "13/6",
+      "lambda_float": 2.1666666666666665,
+      "form": "K_Mex + Phi_res/SO5_ord  (= c-chain 13/3 / 2)"
+    },
+    {
+      "name": "55/24",
+      "lambda_str": "55/24",
+      "lambda_float": 2.2916666666666665,
+      "form": "K_Mex*(1+F_TRZ)"
+    },
+    {
+      "name": "13/3",
+      "lambda_str": "13/3",
+      "lambda_float": 4.333333333333333,
+      "form": "c-chain geometric phase (transplanted)"
+    }
+  ],
+  "best_candidate": {
+    "name": "15/7",
+    "lambda_str": "15/7",
+    "predicted": 137.03599993010405,
+    "residual_ppb": 6.174319621000388,
+    "form": "2/[SO5_ord*F_TRZ*(Phi_res+F_TRZ)]"
+  },
+  "codata": 137.035999084,
+  "codata_sigma_ppb": 0.0015324440395495982,
+  "interpretation": "Best locked-rational candidate is lambda = 15/7 with structural form '2/[SO5_ord*F_TRZ*(Phi_res+F_TRZ)]'.  Predicted alpha_inv residual = +6.174 ppb. CODATA 2018 1-sigma is ~0.00 ppb. Status: outside 1-sigma -- needs refinement."
+}

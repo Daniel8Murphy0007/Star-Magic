@@ -1,0 +1,66 @@
+{
+  "session": 716,
+  "topic": "mu_5loop_locked_ratio_validation",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "carry_over": {
+    "tree": 1836,
+    "delta": "1/12000",
+    "c_2": "128/5",
+    "c_3": 160,
+    "c_4": 1000
+  },
+  "ratio_rule": {
+    "form": "c_{n+1}/c_n = 3 * K_Mex = 25/4",
+    "value": "25/4",
+    "anchor": "G1 Mexican-hat (K_Mex = Phi_res * SO5_order / D_phys)"
+  },
+  "c5_prediction": {
+    "form_A_c4_times_3KMex": 6250,
+    "form_B_c2_times_25_4_cubed": 6250,
+    "form_C_distractor": 1760,
+    "selected": 6250
+  },
+  "loop_magnitudes": {
+    "2_loop_rel": 1.777777777777778e-07,
+    "3_loop_rel": 9.259259259259259e-11,
+    "4_loop_rel": 4.8225308641975307e-14,
+    "5_loop_rel": 2.5117348251028805e-17,
+    "codata_1sigma_rel": 6e-13,
+    "5_loop_vs_1sigma_ratio": 4.186224708504801e-05
+  },
+  "borel_tower": {
+    "common_ratio_r": 0.0005208333333333333,
+    "convergent": true,
+    "infinite_tail_magnitude": 1.7787041862080945e-07,
+    "tail_correction_vs_2loop": 0.0005211047420530246
+  },
+  "headline_closures": {
+    "mu_5loop_c5_locked_ratio": {
+      "predicted": 6250.0,
+      "observed": 6250.0,
+      "error_pct": 0.0,
+      "status": "EXACT"
+    },
+    "mu_5loop_observability": {
+      "predicted": 4.186224708504801e-05,
+      "observed": 4.186224708504801e-05,
+      "error_pct": 0.004186224708504801,
+      "status": "OK"
+    }
+  },
+  "next_slot": "S717 -- universal Borel-tower test on alpha and c chains: does the K_Mex ratio rule (or another locked rational) close the higher-loop geometric tail beyond the per-loop locked-lambda framework?"
+}

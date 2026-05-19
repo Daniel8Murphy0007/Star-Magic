@@ -1,0 +1,159 @@
+{
+  "session": 723,
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "purpose": "K_G locked-rational refinement adjudication; lock M_SCM to H-burning threshold",
+  "L_SCM_m": 349.22673319198134,
+  "K_G_locked": {
+    "name": "(N_ch/D_crit)(1 - F_TRZ*Phi_res)",
+    "fraction": "33/104",
+    "value": 0.3173076923076923
+  },
+  "M_SCM_locked_kg": 1.49218875954118e+29,
+  "M_SCM_locked_Msun": 0.07502205930322675,
+  "target": "0.075 M_sun (hydrogen-burning threshold)",
+  "rel_err_pct": 0.02941240430234047,
+  "candidates": [
+    {
+      "name": "base: N_ch/D_crit",
+      "K_G": 0.34615384615384615,
+      "M_kg": 1.6278422831358328e+29,
+      "M_solar": 0.081842246512611,
+      "closest": "0.080 M_sun (BD upper)",
+      "rel_err": 0.023028081407637443,
+      "K_G_frac": "9/26"
+    },
+    {
+      "name": "base * (1 - F_TRZ*Phi_res) = (9/26)*(11/12)",
+      "K_G": 0.3173076923076923,
+      "M_kg": 1.49218875954118e+29,
+      "M_solar": 0.07502205930322675,
+      "closest": "0.075 M_sun (H-burn min)",
+      "rel_err": 0.0002941240430234047,
+      "K_G_frac": "33/104"
+    },
+    {
+      "name": "base * Phi_res = (9/26)*(5/6)",
+      "K_G": 0.28846153846153844,
+      "M_kg": 1.3565352359465273e+29,
+      "M_solar": 0.0682018720938425,
+      "closest": "0.075 M_sun (H-burn min)",
+      "rel_err": 0.09064170541543329,
+      "K_G_frac": "15/52"
+    },
+    {
+      "name": "base * SSq",
+      "K_G": 0.1973076923076923,
+      "M_kg": 9.278701013874247e+28,
+      "M_solar": 0.04665008051218827,
+      "closest": "0.075 M_sun (H-burn min)",
+      "rel_err": 0.3779989265041564,
+      "K_G_frac": "513/2600"
+    },
+    {
+      "name": "base * beta_i",
+      "K_G": 0.20869615384615384,
+      "M_kg": 9.814261125025935e+28,
+      "M_solar": 0.04934269042245317,
+      "closest": "0.075 M_sun (H-burn min)",
+      "rel_err": 0.3420974610339577,
+      "K_G_frac": "54261/260000"
+    },
+    {
+      "name": "base * (1 - F_TRZ)",
+      "K_G": 0.31153846153846154,
+      "M_kg": 1.4650580548222495e+29,
+      "M_solar": 0.0736580218613499,
+      "closest": "0.075 M_sun (H-burn min)",
+      "rel_err": 0.017893041848667933,
+      "K_G_frac": "81/260"
+    },
+    {
+      "name": "base * (1 - 1/D_crit)",
+      "K_G": 0.3328402366863905,
+      "M_kg": 1.5652329645536852e+29,
+      "M_solar": 0.07869446780058749,
+      "closest": "0.080 M_sun (BD upper)",
+      "rel_err": 0.016319152492656457,
+      "K_G_frac": "225/676"
+    },
+    {
+      "name": "base * (D_BSFG/D_phys)/2  = (9/26)*(3/4)",
+      "K_G": 0.25961538461538464,
+      "M_kg": 1.2208817123518747e+29,
+      "M_solar": 0.061381684884458255,
+      "closest": "0.075 M_sun (H-burn min)",
+      "rel_err": 0.18157753487388986,
+      "K_G_frac": "27/104"
+    },
+    {
+      "name": "base * (1 + F_TRZ*Phi_res) = (9/26)*(13/12)",
+      "K_G": 0.375,
+      "M_kg": 1.7634958067304858e+29,
+      "M_solar": 0.08866243372199527,
+      "closest": "0.080 M_sun (BD upper)",
+      "rel_err": 0.10828042152494069,
+      "K_G_frac": "3/8"
+    },
+    {
+      "name": "base * (A_5-1)/A_5 = (9/26)*(59/60)",
+      "K_G": 0.3403846153846154,
+      "M_kg": 1.6007115784169024e+29,
+      "M_solar": 0.08047820907073416,
+      "closest": "0.080 M_sun (BD upper)",
+      "rel_err": 0.005977613384176925,
+      "K_G_frac": "177/520"
+    },
+    {
+      "name": "base / Phi_res = (9/26)*(6/5)",
+      "K_G": 0.4153846153846154,
+      "M_kg": 1.9534107397629995e+29,
+      "M_solar": 0.09821069581513321,
+      "closest": "0.1 M_sun",
+      "rel_err": 0.017893041848667933,
+      "K_G_frac": "27/65"
+    },
+    {
+      "name": "base * (1 - SSq/D_crit) = (9/26)*(2543/2600)",
+      "K_G": 0.33856508875739644,
+      "M_kg": 1.592154971544009e+29,
+      "M_solar": 0.08004801264675761,
+      "closest": "0.080 M_sun (BD upper)",
+      "rel_err": 0.0006001580844700327,
+      "K_G_frac": "22887/67600"
+    },
+    {
+      "name": "(9/26) * (11/12) [= 33/104]  REPEAT TARGET",
+      "K_G": 0.3173076923076923,
+      "M_kg": 1.49218875954118e+29,
+      "M_solar": 0.07502205930322675,
+      "closest": "0.075 M_sun (H-burn min)",
+      "rel_err": 0.0002941240430234047,
+      "K_G_frac": "33/104"
+    }
+  ],
+  "best": {
+    "name": "base * (1 - F_TRZ*Phi_res) = (9/26)*(11/12)",
+    "K_G": 0.3173076923076923,
+    "M_kg": 1.49218875954118e+29,
+    "M_solar": 0.07502205930322675,
+    "closest": "0.075 M_sun (H-burn min)",
+    "rel_err": 0.0002941240430234047,
+    "K_G_frac": "33/104"
+  },
+  "classIV_invariant": {
+    "hbar_predicted": 1.0545718169999996e-34,
+    "hbar_observed": 1.054571817e-34,
+    "rel_err_pct": -4.055127841660795e-14,
+    "note": "Class IV decoupled from K_G choice"
+  },
+  "primitive_count_proposal": {
+    "before": 11,
+    "after": 13,
+    "new_dimensionful": [
+      "L_SCM (12th, Class IV anchor)",
+      "K_G = 33/104 [pure rational; no new primitive]",
+      "M_SCM (derived from L_SCM, K_G, G, c)"
+    ]
+  }
+}

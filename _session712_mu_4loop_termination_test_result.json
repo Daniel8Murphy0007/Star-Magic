@@ -1,0 +1,27 @@
+{
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "session": 712,
+  "chain": "mu",
+  "chain_class": "II (finite polynomial, K_Mex-keyed)",
+  "rule_tested": "c_n / c_{n-1} = 3 * K_Mex = 25/4",
+  "c_4_predicted": "1000",
+  "c_4_locked_forms": {
+    "A": "c_3 * 3*K_Mex",
+    "B": "(D_crit*D_BSFG+D_phys)*3*K_Mex"
+  },
+  "delta": "1/12000",
+  "shift_rel_4loop": 4.8225308641975307e-14,
+  "shift_ppt_4loop": 0.04822530864197531,
+  "codata_sigma_rel": 6e-14,
+  "codata_sigma_ppt": 0.06,
+  "below_codata_floor": true,
+  "mu_3loop": 1836.15267343,
+  "mu_4loop_plus": 1836.1526734300885,
+  "mu_4loop_minus": 1836.1526734299114,
+  "mu_codata": 1836.15267343,
+  "residual_3loop_rel": 0.0,
+  "residual_4loop_plus_rel": 4.822129877755079e-14,
+  "residual_4loop_minus_rel": -4.822129877755079e-14,
+  "interpretation": "mu-chain is NOT strictly terminating (c_4 = 1000), but the 4-loop relative shift (~0.048 ppt) lies BELOW CODATA 2018 precision (~0.06 ppt). Class II K_Mex ratio rule c_n/c_{n-1} = 25/4 survives the 4-loop test."
+}

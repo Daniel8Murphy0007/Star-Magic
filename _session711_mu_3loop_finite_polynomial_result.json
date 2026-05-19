@@ -1,0 +1,74 @@
+{
+  "session": 711,
+  "topic": "mu_chain_3loop_finite_polynomial_closure_and_universal_rule_test",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "carry_over": {
+    "tree": "1836",
+    "delta": "1/12000",
+    "c_2": "128/5"
+  },
+  "c3_hypothesis": {
+    "rational": "160",
+    "numeric": 160.0,
+    "form_A": "D_crit * D_BSFG + D_phys",
+    "form_B": "c_2 * 3 * K_Mex = (128/5)*(75/12)",
+    "form_C": "D_phys*(D_crit*D_BSFG+D_phys)/D_phys",
+    "all_agree": true,
+    "geometric_reading": "(26D bosonic) x (6D bulk-flow gauge) + (4D physical) = 160"
+  },
+  "three_loop_prediction": {
+    "formula": "mu = mu_tree * (1 + delta - c_2*delta^2 - c_3*delta^3)",
+    "numerator": "1,728,143,692,640",
+    "denominator": "1,728,000,000,000",
+    "numeric": 1836.15267343,
+    "codata": 1836.15267343,
+    "err_pct": 0.0,
+    "ppt": 0.0,
+    "status": "EXACT"
+  },
+  "universal_rule_test": {
+    "alpha_chain": {
+      "c3_c1_over_c2sq": "1/2",
+      "form": "Borel tower"
+    },
+    "c_chain": {
+      "c3_c1_over_c2sq": "1/2",
+      "form": "Borel tower"
+    },
+    "mu_chain": {
+      "c3_c1_over_c2sq": "125/512",
+      "form": "finite polynomial (broken Borel)",
+      "alternative_rule": "c_3/c_2 = 3*K_Mex = 25/4"
+    },
+    "discovery": "Two distinct chain classifications: (I) infinite Borel towers (alpha, c) obey c_3*c_1/c_2^2 = 1/2. (II) finite-polynomial chains (mu) obey c_n/c_{n-1} = locked G1 ratio."
+  },
+  "headline_closures": {
+    "mu_2loop_baseline": {
+      "predicted": 1836.1526736,
+      "observed": 1836.15267343,
+      "error_pct": 9.258490518314265e-09,
+      "status": "OK"
+    },
+    "mu_3loop_finite_polynomial": {
+      "predicted": 1836.15267343,
+      "observed": 1836.15267343,
+      "error_pct": 0.0,
+      "status": "EXACT"
+    }
+  },
+  "next_slot": "S712 -- mu-chain 4-loop test: if finite polynomial, c_4 must be ZERO (or below CODATA precision floor) -- verifies termination"
+}

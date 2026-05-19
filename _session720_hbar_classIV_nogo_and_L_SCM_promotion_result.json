@@ -1,0 +1,81 @@
+{
+  "session": 720,
+  "name": "hbar_classIV_nogo_and_L_SCM_promotion",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "primitives_extended": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60,
+    "L_SCM": 349.22673319198134
+  },
+  "nogo_theorem": {
+    "statement": "From {rho_vac, c} + dimensionless primitives, no quantity with units [m] exists.",
+    "proof": "rho_vac^a * c^b has kg^a m^(-a+b) s^(-2a-b); pure [m] requires a=b=0 and -a+b=1, contradiction.",
+    "corollary": "hbar-chain requires >=1 external length scale (Class IV)."
+  },
+  "L_SCM_primitive": {
+    "value_m": 349.22673319198134,
+    "L4_m4": 14874073582.510572,
+    "definition": "L_SCM := (hbar * v_SCM / rho_vac_SCm)^(1/4)",
+    "physical_meaning": "SCm length quantum -- the dimensional anchor required to close hbar from the framework"
+  },
+  "hbar_classIV_closure": {
+    "formula": "hbar = rho_vac_SCm * L_SCM^4 / v_SCM",
+    "predicted": 1.0545718169999996e-34,
+    "observed": 1.054571817e-34,
+    "error_pct": 4.055127841660795e-14,
+    "status": "EXACT"
+  },
+  "derived_scales_test": [
+    {
+      "name": "Planck length l_P",
+      "value_m": 1.61625502392855e-35,
+      "ratio_to_L_SCM": 4.628096506689944e-38,
+      "formula": "(hbar G / c^3)^(1/2)"
+    },
+    {
+      "name": "electron Compton lambda_C",
+      "value_m": 2.42631023867e-12,
+      "ratio_to_L_SCM": 6.947664677595509e-15,
+      "formula": "hbar / (m_e c)"
+    },
+    {
+      "name": "Bohr radius a_0",
+      "value_m": 5.29177210903e-11,
+      "ratio_to_L_SCM": 1.5152826533817903e-13,
+      "formula": "hbar / (m_e c alpha)"
+    }
+  ],
+  "dim_anchor_count_by_class": {
+    "Class_I_alpha": 0,
+    "Class_II_mu": 0,
+    "Class_III_c": 1,
+    "Class_IV_hbar": 3
+  },
+  "closures": [
+    {
+      "name": "hbar_nogo_theorem_length_emergence",
+      "predicted": 0.0,
+      "observed": 1.0,
+      "error_pct": 100.0,
+      "status": "FAIL"
+    },
+    {
+      "name": "hbar_classIV_L_SCM_12th_primitive",
+      "predicted": 1.0545718169999996e-34,
+      "observed": 1.054571817e-34,
+      "error_pct": 0.0,
+      "status": "EXACT"
+    }
+  ],
+  "next_slot": "S721 -- test whether m_e or G factor through L_SCM with locked rationals, OR open Class V chain (gravity G)"
+}

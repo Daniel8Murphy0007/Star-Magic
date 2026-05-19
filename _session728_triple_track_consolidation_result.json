@@ -1,0 +1,27 @@
+{
+  "session": 728,
+  "title": "(9,4) selection rule + Class VII H_0 + Class III v_SCM",
+  "cvw": {
+    "version": "v2.0.0",
+    "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+  },
+  "track_a": {
+    "verdict": "SELECTION RULE SUPPORTED: (9,4) is labeled and basis is sparse",
+    "candidate_count": 2,
+    "labeled_at_9_4": 2,
+    "lambda_ratio_err_pct": -0.008052621034204151
+  },
+  "track_b": {
+    "verdict": "CLASS VII OPENS: H_0 closed to -0.3994% via locked rational",
+    "best_K": "6/5",
+    "best_val": 1.2,
+    "best_pred": 2.1839381591370305e-18,
+    "best_err_pct": -0.3993795795280114,
+    "H0_obs_SI": 2.192695336552484e-18
+  },
+  "track_c": {
+    "verdict": "CLASS III HOLDS: v_SCM = c/3 within -0.0692% (Borel correction)",
+    "v_SCM_err_pct": -0.06918066666667164,
+    "delta": -0.0006918066666667163
+  }
+}

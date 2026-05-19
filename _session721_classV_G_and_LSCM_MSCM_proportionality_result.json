@@ -1,0 +1,118 @@
+{
+  "session": 721,
+  "name": "classV_G_and_LSCM_MSCM_proportionality",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "primitives_extended": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60,
+    "L_SCM": 349.22673319198134,
+    "M_SCM": 4.702655484614628e+29
+  },
+  "part_a_classV_G": {
+    "formula": "G = c^2 * L_SCM / M_SCM",
+    "M_SCM_kg": 4.702655484614628e+29,
+    "M_SCM_solar": 0.236442666603716,
+    "M_SCM_planck": 2.16071553079002e+37,
+    "G_predicted": 6.6743e-11,
+    "G_observed": 6.6743e-11,
+    "error_pct": 0.0,
+    "status": "EXACT"
+  },
+  "part_b_LSCM_MSCM_proportionality": {
+    "law": "L_SCM = G * M_SCM / c^2  (gravitational radius)",
+    "R_g_predicted": 349.22673319198134,
+    "L_SCM_observed": 349.22673319198134,
+    "error_pct": 0.0,
+    "status": "EXACT",
+    "user_insight_confirmed": true,
+    "interpretation": "Class IV (length) and Class V (mass) anchors are PROPORTIONAL -- they collapse to one free parameter."
+  },
+  "compton_independence_test": {
+    "law_tested": "hbar = M_SCM * c * L_SCM",
+    "predicted": 4.923470588894541e+40,
+    "observed": 1.054571817e-34,
+    "ratio": 4.668691604997198e+74,
+    "status": "FAIL",
+    "interpretation": "Schwarzschild and Compton laws are STRUCTURALLY INDEPENDENT; only Schwarzschild ties the anchors."
+  },
+  "physical_identification": {
+    "M_SCM_kg": 4.702655484614628e+29,
+    "M_SCM_solar": 0.236442666603716,
+    "regime": "sub-stellar (near hydrogen-burning threshold)",
+    "closest_reference": "2 * 0.075 M_sun (binary brown dwarf)",
+    "closest_rel_err": 0.36559673364112466
+  },
+  "universality_taxonomy_5class": [
+    {
+      "class": "I",
+      "chain": "alpha",
+      "form": "per-loop locked rationals (lambda_3=15/7, lambda_4=19/12)",
+      "anchors": "0 dim anchors"
+    },
+    {
+      "class": "II",
+      "chain": "mu",
+      "form": "single locked ratio r = 3*K_Mex = 25/4",
+      "anchors": "0 dim anchors"
+    },
+    {
+      "class": "III",
+      "chain": "c",
+      "form": "Borel + (13/3) delta^3 exp(-c_2 delta)",
+      "anchors": "1 dim anchor (c)"
+    },
+    {
+      "class": "IV",
+      "chain": "hbar",
+      "form": "rho_vac * L_SCM^4 / v_SCM",
+      "anchors": "3 dim anchors (c, rho_vac, L_SCM)"
+    },
+    {
+      "class": "V",
+      "chain": "G",
+      "form": "c^2 * L_SCM / M_SCM",
+      "anchors": "4 dim anchors (c, rho_vac, L_SCM, M_SCM)"
+    }
+  ],
+  "dim_anchor_sequence": [
+    0,
+    0,
+    1,
+    3,
+    4
+  ],
+  "closures": [
+    {
+      "name": "G_classV_closure",
+      "predicted": 6.6743e-11,
+      "observed": 6.6743e-11,
+      "error_pct": 0.0,
+      "status": "EXACT"
+    },
+    {
+      "name": "L_SCM_M_SCM_proportionality",
+      "predicted": 349.22673319198134,
+      "observed": 349.22673319198134,
+      "error_pct": 0.0,
+      "status": "EXACT"
+    },
+    {
+      "name": "compton_vs_gravity_independence",
+      "predicted": 4.923470588894541e+40,
+      "observed": 1.054571817e-34,
+      "error_pct": 4.6686916049971984e+76,
+      "status": "FAIL"
+    }
+  ],
+  "next_slot": "S722 -- derive K_G dimensionless prefactor from locked primitives (test K_G = 1, 1/(2 pi), N_ch/(D_crit*2pi), etc.) OR test whether L_SCM corresponds to a measurable astrophysical scale (mid-mass neutron star, sub-brown-dwarf cluster)."
+}

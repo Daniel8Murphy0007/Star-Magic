@@ -1,0 +1,77 @@
+{
+  "session": 710,
+  "topic": "mu_chain_2loop_coefficient_locked_rational",
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "locked_primitives": {
+    "F_TRZ": "1/10",
+    "Phi_res": "5/6",
+    "SSq": "57/100",
+    "K_Mex": "25/12",
+    "beta_i": "6029/10000",
+    "D_phys": 4,
+    "D_BSFG": 6,
+    "D_crit": 26,
+    "N_ch": 9,
+    "SO5_order": 10,
+    "A_5": 60
+  },
+  "tree": {
+    "formula": "A_5^2/2 + D_BSFG^2",
+    "rational": "1836"
+  },
+  "delta_mu": {
+    "rational": "1/12000",
+    "numeric": 8.333333333333333e-05
+  },
+  "c2_hypothesis": {
+    "rational": "128/5",
+    "numeric": 25.6,
+    "form_A": "D_crit - F_TRZ * D_phys",
+    "form_B": "(D_crit * SO5_order - D_phys) / SO5_order",
+    "form_C": "D_crit - D_phys / SO5_order",
+    "form_D": "(10 * D_crit - D_phys) / 10",
+    "all_agree": true,
+    "geometric_reading": "D_crit (full 26D critical anchor) minus F_TRZ-suppressed D_phys"
+  },
+  "two_loop_prediction": {
+    "formula": "mu = mu_tree * (1 + delta - c_2 * delta^2)",
+    "factor": "1 + 7484/90,000,000",
+    "numeric": 1836.1526736,
+    "codata": 1836.15267343,
+    "err_pct": 9.258490518314265e-09,
+    "ppm": 9.258490518314265e-05,
+    "ppt": 92.58490518314265,
+    "status": "OK"
+  },
+  "one_loop_baseline": {
+    "numeric": 1836.153,
+    "err_pct": 1.778555806909653e-05,
+    "ppm": 0.1778555806909653,
+    "status": "OK"
+  },
+  "universal_rule_setup": {
+    "predicted_c3": "8192/25",
+    "predicted_c3_numeric": 327.68,
+    "rule": "c_3 = c_2^2 / 2!  (Borel form 1 + delta*exp(-c_2*delta))",
+    "ratio_check": "c_3 * c_1 / c_2^2 = 1/2  (verified algebraically below)",
+    "alpha_chain": "c_3*c_1/c_2^2 = 1/2  (S705)",
+    "c_chain": "c_3*c_1/c_2^2 = 1/2  (S705)",
+    "mu_chain": "predicted 1/2  -- to be verified observationally at S711"
+  },
+  "headline_closures": {
+    "mu_1loop_baseline": {
+      "predicted": 1836.153,
+      "observed": 1836.15267343,
+      "error_pct": 1.778555806909653e-05,
+      "status": "OK"
+    },
+    "mu_2loop_prediction": {
+      "predicted": 1836.1526736,
+      "observed": 1836.15267343,
+      "error_pct": 9.258490518314265e-09,
+      "status": "OK"
+    }
+  },
+  "next_slot": "S711 -- 3-loop direction (Borel vs Pade) + universal rule c_3*c_1/c_2^2 = 1/2 verification on third chain"
+}

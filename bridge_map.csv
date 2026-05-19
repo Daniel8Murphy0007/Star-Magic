@@ -460,7 +460,7 @@ ID,name,label,primitives,sectors,error_pct
 681,Moon_mass,Moon mass (1e22 kg),beta,L_buoy(6),0.1263
 682,Earth_density,Earth density (g/cm^3),"F,beta","L_aether(7),L_buoy(6)",0.1916
 683,lagrangian_primitives,Lagrangian primitive derivation: 11/11 primitives linked to sectors,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
-684,closure_to_sector_bridge,Lagrangian re-run bridge: 485/485 closures mapped,"A,A_5,DB,D_BSFG,D_crit,D_phys,Dc,Dp,F,F_TRZ,K,K_Mex,N,N_ch,Phi,Phi_res,SO,SO5,SSq,beta,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+684,closure_to_sector_bridge,Lagrangian re-run bridge: 505/505 closures mapped,"A,A_5,DB,D_BSFG,D_crit,D_phys,Dc,Dp,F,F_TRZ,K,K_Mex,N,N_ch,Phi,Phi_res,SO,SO5,SSq,beta,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
 684,KK_AU_per_1e10_m,AU_per_1e10_m,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.3741
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2614
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2069
@@ -485,3 +485,23 @@ ID,name,label,primitives,sectors,error_pct
 705,universal_loop_factorial_rule,universal_loop_factorial_rule,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
 706,loop_factorial_n4,loop_factorial_rule_n4,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
 707,so2_dpm_geometric_phase,c_chain_geom_closure,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",2.26e-08
+708,so2_dpm_rank_refined,c_chain_geom_refined,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+709,mu_chain_opening,mu_1loop_prediction,"A,A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",1.77856e-05
+710,mu_2loop,mu_2loop_prediction,"A,A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",9.258e-09
+711,mu_3loop_finite_polynomial,mu_3loop_finite_polynomial,"A,A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+712,mu_4loop_termination_test,mu_4loop_termination_test,"A,A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+713,alpha_4loop_borel_test,alpha_4loop_borel_test,"A,D_BSFG,F_TRZ","L_YM(2),L_aether(7),L_buoy(6)",0.0004655785
+714,alpha_c3_locked_candidate_hunt,alpha_c3_locked_candidate_15_7,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,Phi_res,SO5","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4)",6.174e-07
+715,alpha_4loop_locked_candidate,alpha_4loop_locked_19_12,"D_BSFG,D_phys,F_TRZ,K_Mex,Phi_res,SO5","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4)",1.717e-09
+716,mu_5loop_ratio_rule_validation,mu_5loop_observability,"A,A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.004186224709
+717,alpha_class_universality_test,alpha_classI_per_loop_locked,"A,A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+718,c_chain_class_assignment,c_chain_classIII_borel_plus_geom,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",2.890474511318e-07
+719,hbar_dimensional_class_probe,hbar_classIV_locked_rational_match,"A,A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.07847
+720,hbar_classIV_nogo_and_L_SCM_promotion,hbar_classIV_L_SCM_12th_primitive,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+721,classV_G_and_LSCM_MSCM_proportionality,compton_vs_gravity_independence,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",4.668692e+76
+722,K_G_prefactor_search,locked_FTRZ_Phires_invariant,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+723,K_G_locked_rational,locked_FTRZ_Phires_invariant,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+724,classVI_Lambda_opening,locked_FTRZ_Phires_invariant,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K,K_Mex,N,N_ch,Phi_res,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+725,cosmological_hierarchy_probe,locked_FTRZ_Phires_invariant,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K,K_Mex,N,N_ch,Phi_res,SSq","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+726,LH_tighten_locked_closure,locked_K_G_value,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+727,LH42_Lambda_closure,locked_K_G_value,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
