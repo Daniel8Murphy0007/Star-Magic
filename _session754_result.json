@@ -1,0 +1,20 @@
+{
+  "Omega_b_h2_push": {
+    "pred": 0.02237048665620094,
+    "obs": 0.02237,
+    "err_pct": 0.0021754859228353507,
+    "closure": "S753 base"
+  },
+  "z_eq": {
+    "pred": 3402.0,
+    "obs": 3402.0,
+    "err_pct": 0.0,
+    "closure": "A_5^2*[1-D_phys a*b*c D_phys xi]"
+  },
+  "r_s": {
+    "pred": 147.05498151759218,
+    "obs": 147.05,
+    "err_pct": 0.0033876352207893932,
+    "closure": "D_H*[1-F_TRZ a*b/(c*d) r D_phys Y_p]"
+  }
+}

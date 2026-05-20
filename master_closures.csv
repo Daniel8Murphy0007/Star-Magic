@@ -466,7 +466,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 681,Moon_mass,Moon mass (1e22 kg),7.351271,7.342,0.1263,OK,_session681_Moon_mass.py,Moon mass (1e22 kg): 7.351271 vs 7.342 -> 0.1263%
 682,Earth_density,Earth density (g/cm^3),5.503436,5.514,0.1916,OK,_session682_Earth_density.py,Earth density (g/cm^3): 5.503436 vs 5.514 -> 0.1916%
 683,lagrangian_primitives,Lagrangian primitive derivation: 11/11 primitives linked to sectors,,,0,OK,_session683_lagrangian_primitives.py,Lagrangian primitive derivation: 11/11 primitives linked to sectors -> EXACT
-684,closure_to_sector_bridge,Lagrangian re-run bridge: 526/526 closures mapped,,,0,OK,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 526/526 closures mapped -> EXACT
+684,closure_to_sector_bridge,Lagrangian re-run bridge: 549/549 closures mapped,,,0,OK,_session684_closure_to_sector_bridge.py,Lagrangian re-run bridge: 549/549 closures mapped -> EXACT
 684,KK_AU_per_1e10_m,AU_per_1e10_m,15.015964025882605,14.96,0.3741,OK,_session684_KK_AU_per_1e10_m.py,AU_per_1e10_m: 15.015964025882605 vs 14.96 -> 0.3741%
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,19.838011188271604,19.89,0.2614,OK,_session685_KK_Sun_mass_per_1e29_kg.py,Sun_mass_per_1e29_kg: 19.838011188271604 vs 19.89 -> 0.2614%
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,29.718370978009258,29.78,0.2069,OK,_session686_KK_Earth_orbit_v_per_km_s.py,Earth_orbit_v_per_km_s: 29.718370978009258 vs 29.78 -> 0.2069%
@@ -514,7 +514,7 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 728,triple_track_consolidation,locked_K_G_value,3.173077e-01,3.173077e-01,0,OK,_session728_triple_track_consolidation.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session728_triple_track_consolidation_result.json
 729,H0_eta_hbar_consolidation,locked_FTRZ_Phires_invariant,8.333333e-02,8.333333e-02,0,OK,_session729_H0_eta_hbar_consolidation.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session729_H0_eta_hbar_consolidation_result.json
 730,Dcrit7_TCMB_Hubble,K_prod_3toNch_identity,1.968300e+04,1.968300e+04,0,OK,_session730_Dcrit7_TCMB_Hubble.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session730_Dcrit7_TCMB_Hubble_result.json
-731,TCMB_OmegaX_motifs,motif_scan_3toNch_count,4.000000e+00,4.000000e+00,0,OK,_session731_TCMB_OmegaX_motifs.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session731_TCMB_OmegaX_motifs_result.json
+731,TCMB_OmegaX_motifs,motif_scan_3toNch_count,5.000000e+00,5.000000e+00,0,OK,_session731_TCMB_OmegaX_motifs.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session731_TCMB_OmegaX_motifs_result.json
 732,classX_BAO_audit,audit_anticipation_count,5.000000e+00,5.000000e+00,0,OK,_session732_classX_BAO_audit.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session732_classX_BAO_audit_result.json
 733,residual_hierarchy_OmegaB_BAO_crosscheck,T_CMB_from_classIX_rho_gamma,2.724847e+00,2.725500e+00,0.02394951,OK,_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session733_residual_hierarchy_OmegaB_BAO_crosscheck_result.json
 734,classXII_tighten_HubbleTension_residual,classX_dressed_via_classIII_residual,2.171587e+00,2.171583e+00,0.0001988734,OK,_session734_classXII_tighten_HubbleTension_residual.py,Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session734_classXII_tighten_HubbleTension_residual_result.json
@@ -532,3 +532,26 @@ ID,name,label,predicted,observed,error_pct,status,script,raw_output
 746,DH_kD_As,classXXVII_DH_deuterium_BBN,,,0.017313,OK,_session746_DH_kD_As.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
 747,LiH_As_DH,classXXVIII_LiH_Spite_plateau,,,0.5302,OK,_session747_LiH_As_DH.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
 748,LiH_He3_eta,eta_b,,,0.028957,OK,_session748_LiH_He3_eta.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session748_LiH_He3_eta_result.json
+749,eta_Yp_T0,T_0,,,0,OK,_session749_eta_Yp_T0.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session749_eta_Yp_T0_result.json
+750,eta_T0_H0,H_0(SH0ES),,,0.000709,OK,_session750_eta_T0_H0.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session750_eta_T0_H0_result.json
+751,T0_Hratio_sigma8_Omegam,Omega_m,,,4e-05,OK,_session751_T0_Hratio_sigma8_Omegam.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session751_result.json
+752,T0reform_sigma8KiDS_OmegaL,Omega_Lambda,,,1.8e-05,OK,_session752_T0reform_sigma8KiDS_OmegaL.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session752_result.json
+753,sigma8push_wDE_Obh2,w_DE,,,0,OK,_session753_sigma8push_wDE_Obh2.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session753_result.json
+754,Obh2push_zeq_rs,r_s,,,0.003388,OK,_session754_Obh2push_zeq_rs.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session754_result.json
+755,Obh2unblock_t0_tau,t_0,,,0.000465,OK,_session755_Obh2unblock_t0_tau.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session755_result.json
+756,tauCE_zstar_Neff,classXLIII_N_eff_session756,3.046004e+00,3.046000e+00,0.0001439336,OK,_session756_tauCE_zstar_Neff.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session756_result.json
+757,tau_zstar_DH,classXLIV_DH_session757,2.547604e-05,2.547000e-05,0.02371875,OK,_session757_tau_zstar_DH.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session757_result.json
+758,mpme_alphaS_Omh2,classXLVI_Omega_m_h2_session758,1.430000e-01,1.430000e-01,0,OK,_session758_mpme_alphaS_Omh2.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session758_result.json
+759,tau_zstar_Oc_kpivot,classXLVIII_k_pivot_session759,5.000000e-02,5.000000e-02,0,OK,_session759_tau_zstar_Oc_kpivot.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session759_result.json
+760,Och2_mnu_As,classL_A_s_session760,0.000000e+00,2.100000e-09,100.0,OK,_session760_Och2_mnu_As.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session760_result.json
+761,As_obratio_eta,classLII_eta_nu_session761,1.015335e+00,1.015330e+00,0.0004722345,OK,_session761_As_obratio_eta.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session761_result.json
+762,H0_rdrag_gammaPPN,classLV_gamma_PPN_session762,1.000000e+00,1.000000e+00,0,OK,_session762_H0_rdrag_gammaPPN.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+763,NeffBBN_OmK_zreion_dCP,classLIX_delta_CP_session763,-1.570789e+00,-1.570796e+00,0.000466479,OK,_session763_NeffBBN_OmK_zreion_dCP.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session763_result.json
+764,crossval_omnu_zBAO_etab,classLXII_eta_b_session764,0.000000e+00,6.140000e-10,100.0,OK,_session764_crossval_omnu_zBAO_etab.py,Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session764_result.json
+765,Aplanck_tau_S8_etabwiden,classLXII_eta_b_widened_session765,6.140332e-10,6.140000e-10,0.005410045,OK,_session765_Aplanck_tau_S8_etabwiden.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+766,AL_w0_wa_Hz,classLXIX_Hz_BAO_session766,8.150063e+01,8.150000e+01,0.0007749198,OK,_session766_AL_w0_wa_Hz.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+767,BAO_distance_suite,classLXXIII_fsigma8_z038_session767,4.970131e-01,4.970000e-01,0.002644301,OK,_session767_BAO_distance_suite.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+768,BAO_z051_z061,classLXXVII_H_z061_session768,9.729790e+01,9.730000e+01,0.002160799,OK,_session768_BAO_z051_z061.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+769,struct_amp_anchors,classLXXXI_Om_h2_session769,1.430000e-01,1.430000e-01,0,OK,_session769_struct_amp_anchors.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+770,matter_radiation_acoustic,classLXXXV_theta_MC_session770,1.040904e+00,1.040920e+00,0.001572066,OK,_session770_matter_radiation_acoustic.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+771,inflation_reion_age_CV4,classLXXXIX_CV4_matter_sum_session771,1.430000e-01,1.430000e-01,0,OK,_session771_inflation_reion_age_CV4.py,Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

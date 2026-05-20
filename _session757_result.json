@@ -1,0 +1,22 @@
+{
+  "tau": {
+    "pred": 0.05440202278438386,
+    "obs": 0.0544,
+    "err_pct": 0.0037183536468028975,
+    "closure": "S755 base",
+    "status": "tight CLOSED"
+  },
+  "z_star": {
+    "pred": 1089.809927258337,
+    "obs": 1089.8,
+    "err_pct": 0.0009109247877619143,
+    "closure": "S756 base",
+    "status": "tight CLOSED"
+  },
+  "DH": {
+    "pred": 2.5476041166461548e-05,
+    "obs": 2.547e-05,
+    "err_pct": 0.023718753284449026,
+    "closure": "[1/mpme a*b/(c*d) alpha D_BSFG D_crit]"
+  }
+}

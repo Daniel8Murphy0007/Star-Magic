@@ -1,0 +1,21 @@
+{
+  "DH": {
+    "pred": 2.5470027395909595e-05,
+    "obs": 2.547e-05,
+    "err_pct": 0.00010756148251618775,
+    "closure": "base11_6*[1-xi a*b/c 307/325 11/6]",
+    "status": "CE_strict"
+  },
+  "alpha_s": {
+    "pred": -0.0045,
+    "obs": -0.0045,
+    "err_pct": 0.0,
+    "closure": "-[F_TRZ a*b*c*d F_TRZ 33/40 6/11]"
+  },
+  "Omega_m_h2": {
+    "pred": 0.143,
+    "obs": 0.143,
+    "err_pct": 0.0,
+    "closure": "[D_crit a*b*c/d 1-F*P r D_BSFG]"
+  }
+}

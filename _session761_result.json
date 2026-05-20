@@ -1,0 +1,23 @@
+{
+  "session": 761,
+  "A_s": {
+    "best": "alpha^4*137/200*[1+n_s a/(b*c*d) D_BSFG 27/25 mpme]",
+    "pred": 2.1000007860583923e-09,
+    "err_pct": 3.743135200734388e-05,
+    "status": "CE_strict"
+  },
+  "omegab_omegac": {
+    "best": "algebraic XXXVII/XLVII",
+    "pred": 0.18548903795634394,
+    "err_pct": -9.844642343748818e-05,
+    "status": "CE_strict"
+  },
+  "eta_nu": {
+    "best": "algebraic XLIII/3",
+    "pred": 1.0153347947389397,
+    "err_pct": 0.00047223453849111805,
+    "status": "CE_strict"
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

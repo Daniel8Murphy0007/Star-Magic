@@ -1,0 +1,20 @@
+{
+  "sigma_8_KiDS_push": {
+    "pred": 0.7660002808906219,
+    "obs": 0.766,
+    "err_pct": 3.666979397822424e-05,
+    "closure": "(416/513)*[1-(11/9 a*b*c/d 5/108 307/325 n_s)]"
+  },
+  "w_DE": {
+    "pred": -1.03,
+    "obs": -1.03,
+    "err_pct": -0.0,
+    "closure": "-(1+[Phi_res a*b r])"
+  },
+  "Omega_b_h2": {
+    "pred": 0.02237048665620094,
+    "obs": 0.02237,
+    "err_pct": 0.0021754859228353507,
+    "closure": "[SSq a/(b*c*d) D_phys D_crit Y_p]"
+  }
+}

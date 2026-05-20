@@ -1,0 +1,27 @@
+{
+  "session": 763,
+  "N_eff_BBN": {
+    "form": "[1-F*P a*b/(c*d) 137/200 D_BSFG 1-n_s]",
+    "predicted": 2.9900793650793647,
+    "observed": 2.99,
+    "err_pct": 0.0026543504804166338
+  },
+  "Omega_K": {
+    "form": "F_TRZ - F_TRZ",
+    "predicted": 0.0,
+    "observed": 0.0,
+    "err_pct": 0.0
+  },
+  "z_reion": {
+    "form": "[D_phys a*b/c D_phys K_Mex]",
+    "predicted": 7.68,
+    "observed": 7.68,
+    "err_pct": 0.0
+  },
+  "delta_CP": {
+    "form": "-[22/9 a*b/(c*d) 307/325 D_BSFG Y_p]",
+    "predicted": -1.570788999360428,
+    "observed": -1.5707963267948966,
+    "err_pct": -0.00046647896633863844
+  }
+}

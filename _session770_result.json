@@ -1,0 +1,40 @@
+{
+  "session": 770,
+  "tracks": {
+    "LXXXII_omega_b_h2": {
+      "obs": 0.02237,
+      "pred": 0.02236997807838941,
+      "err_pct": -9.799557706428993e-05,
+      "label": "[1/137 a*b/(c*d) 416/513 27/25 Y_p]",
+      "status": "candidate_EXACT"
+    },
+    "LXXXIII_omega_c_h2": {
+      "obs": 0.12,
+      "pred": 0.12,
+      "err_pct": 0.0,
+      "label": "[1-F_TRZ a/b/c N_ch Phi_res]",
+      "status": "EXACT"
+    },
+    "LXXXIV_N_eff": {
+      "obs": 3.046,
+      "pred": 3.046039603516921,
+      "err_pct": 0.0013001811201905835,
+      "label": "[6/11 a*b*c/d mpme K_Mex 137/200]",
+      "status": "CE_strict"
+    },
+    "LXXXV_theta_MC": {
+      "obs": 1.04092,
+      "pred": 1.0409036360519304,
+      "err_pct": -0.0015720658715076606,
+      "label": "[137/200 a/(b*c*d) 11/9 307/325 SSq]",
+      "status": "CE_strict"
+    }
+  },
+  "sum_rule": {
+    "omega_b_plus_omega_c": 0.14236997807838941,
+    "LXXXI_Om_h2": 0.143,
+    "err_pct": -0.44057477035704484
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

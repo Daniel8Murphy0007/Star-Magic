@@ -1,0 +1,32 @@
+{
+  "session": 767,
+  "r_drag_LIV_Mpc": 147.05016824750433,
+  "classLXX_D_A": {
+    "pred": 1099.7886495689345,
+    "obs": 1099.8,
+    "err_pct": -0.0010320450141358595,
+    "status": "CE_strict",
+    "form": "r_drag * [31/30 a*b/(c*d) D_phys 1-F*P beta_i]"
+  },
+  "classLXXI_D_V": {
+    "pred": 1476.7531067543275,
+    "obs": 1476.8,
+    "err_pct": -0.0031753281197478347,
+    "status": "CE_strict",
+    "form": "r_drag * [307/325 a*b*c*d D_BSFG mpme n_s]"
+  },
+  "classLXXII_D_M": {
+    "pred": 1517.7417003107353,
+    "obs": 1517.7,
+    "err_pct": 0.0027475990469277823,
+    "status": "CE_strict",
+    "form": "r_drag * [D_phys a*b*c/d D_phys beta_i 243/260]"
+  },
+  "classLXXIII_fs8": {
+    "pred": 0.4970131421744323,
+    "obs": 0.497,
+    "err_pct": 0.0026443006906083423,
+    "status": "CE_strict",
+    "form": "[416/513 a*b/(c*d) SSq 1-F_TRZ 31/30]"
+  }
+}

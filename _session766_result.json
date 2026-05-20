@@ -1,0 +1,32 @@
+{
+  "session": 766,
+  "classLXVI_A_L": {
+    "pred": 1.180003546832876,
+    "obs": 1.18,
+    "err_pct": 0.0003005790572937992,
+    "status": "candidate_EXACT",
+    "form": "N_ch 1/mpme D_phys 27/26 a*b/(c*d)"
+  },
+  "classLXVII_w_0": {
+    "pred": -1.0299843014128731,
+    "obs": -1.03,
+    "err_pct": -0.0015241346725156388,
+    "status": "CE_strict",
+    "form": "(-1) * [243/260 27/25 D_phys Y_p a*b/(c*d)]"
+  },
+  "classLXVIII_w_a": {
+    "pred": -0.39,
+    "obs": -0.39,
+    "err_pct": -0.0,
+    "status": "EXACT",
+    "form": "(-1) * [F_TRZ D_crit N_ch A_5 a*b*c/d]"
+  },
+  "classLXIX_Hz_BAO": {
+    "pred": 81.50063155965809,
+    "obs": 81.5,
+    "err_pct": 0.0007749198258761123,
+    "status": "CE_strict",
+    "form": "H_0 * [SSq a*b/(c*d) xi 1-n_s 5/108]",
+    "H_0_used_LIII": 67.39965986385573
+  }
+}

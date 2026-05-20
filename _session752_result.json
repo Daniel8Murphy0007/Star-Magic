@@ -1,0 +1,20 @@
+{
+  "T0_reform": {
+    "pred": 2.7254996680677754,
+    "obs": 2.7255,
+    "err_pct": -1.2178764423897726e-05,
+    "closure": "base*[1+beta_i a/b/c A_5 A_5]"
+  },
+  "sigma_8_KiDS": {
+    "pred": 0.7660038986354776,
+    "obs": 0.766,
+    "err_pct": 0.0005089602451124857,
+    "closure": "(416/513)*[1-27/26 a/b/c K_Mex N_ch]"
+  },
+  "Omega_Lambda": {
+    "pred": 0.684699875,
+    "obs": 0.6847,
+    "err_pct": -1.8256170588209763e-05,
+    "closure": "1 - Omega_m_closure"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "session": 764,
+  "cross_validation": {
+    "id1_Omega_m": -0.16181963714071385,
+    "id2_Sigmav": 0.0,
+    "id3_baryon_CDM_sum": -0.02097902097902255,
+    "id4_zr_kp_product": 0.384,
+    "id5_Sigmav_check": 0.0,
+    "id6_Hubble_age_ratio": 0.9510084558469075
+  },
+  "omega_nu_h2": {
+    "form": "[27/26 a*b*c/d 5/108 alpha 1/mpme]",
+    "predicted": 0.0006441852608626738,
+    "observed": 0.0006441915396177796,
+    "err_pct": -0.0009746720842554234
+  },
+  "z_BAO_eff": {
+    "form": "[SSq a*b/c D_BSFG N_ch]",
+    "predicted": 0.38,
+    "observed": 0.38,
+    "err_pct": 0.0
+  },
+  "eta_b": {
+    "form": "none",
+    "predicted": 0.0,
+    "observed": 6.14e-10,
+    "err_pct": 9999.0
+  }
+}

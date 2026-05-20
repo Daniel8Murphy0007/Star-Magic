@@ -1,0 +1,21 @@
+{
+  "tau_CE_push": {
+    "pred": 0.05440176997325033,
+    "obs": 0.0544,
+    "err_pct": 0.0032536272984065788,
+    "closure": "base*[1+D_crit a*b/c D_crit r]",
+    "status": "tight CLOSED"
+  },
+  "z_star": {
+    "pred": 1089.809927258337,
+    "obs": 1089.8,
+    "err_pct": 0.0009109247877619143,
+    "closure": "[N_ch a*b/(c*d) 27/25 11/9 alpha]"
+  },
+  "N_eff": {
+    "pred": 3.0460043842168196,
+    "obs": 3.046,
+    "err_pct": 0.0001439335791138632,
+    "closure": "3+[r a/b/c n_s 416/513]"
+  }
+}

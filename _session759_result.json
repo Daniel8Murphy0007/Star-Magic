@@ -1,0 +1,29 @@
+{
+  "session": 759,
+  "tau": {
+    "best": "base*[1-D_phys a*b*c*d Y_p 31/30 alpha]",
+    "pred": 0.0540000034942604,
+    "err_pct": 6.470852596036143e-06,
+    "status": "CE_strict"
+  },
+  "z_star": {
+    "best": "base*[1-r a*b*c/d r 1/137 27/26]",
+    "pred": 1089.7999996467368,
+    "err_pct": -3.241541600096673e-08,
+    "status": "CE_strict"
+  },
+  "Omega_c_h2": {
+    "best": "[beta_i a/(b*c*d) N_ch 416/513 137/200]",
+    "pred": 0.12059692588433464,
+    "err_pct": -0.002549017964641774,
+    "status": "tight CLOSED"
+  },
+  "k_pivot": {
+    "best": "[27/25 a*b 5/108]",
+    "pred": 0.05,
+    "err_pct": 0.0,
+    "status": "EXACT"
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

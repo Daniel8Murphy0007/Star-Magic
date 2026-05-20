@@ -1,0 +1,23 @@
+{
+  "session": 760,
+  "Omega_c_h2": {
+    "best": "base*[1+1-n_s a*b/(c*d) 5/108 D_crit 22/9]",
+    "pred": 0.12060000054372125,
+    "err_pct": 4.508468064513893e-07,
+    "status": "CE_strict"
+  },
+  "sum_mnu": {
+    "best": "[D_BSFG a/b/c SO5 SO5]",
+    "pred": 0.06,
+    "err_pct": 0.0,
+    "status": "EXACT"
+  },
+  "A_s": {
+    "best": "none",
+    "pred": 0.0,
+    "err_pct": 9999.0,
+    "status": "OPEN"
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

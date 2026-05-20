@@ -1,0 +1,21 @@
+{
+  "session": 762,
+  "H0": {
+    "form": "[1/mpme a/(b*c*d) beta_i 1/137 mpme]",
+    "predicted": 67.39965986385573,
+    "observed": 67.4,
+    "err_pct": -0.0005046530330476016
+  },
+  "r_drag": {
+    "form": "[27/26 a*b/c 31/30 alpha]",
+    "predicted": 147.05016824750436,
+    "observed": 147.05,
+    "err_pct": 0.00011441516786676202
+  },
+  "gamma_PPN": {
+    "form": "SSq/SSq",
+    "predicted": 1.0,
+    "observed": 1.0,
+    "err_pct": 0.0
+  }
+}

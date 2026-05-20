@@ -1,0 +1,40 @@
+{
+  "session": 768,
+  "anchors": {
+    "r_drag_LIV_Mpc": 147.05016824750433,
+    "H0_LIII": 67.4,
+    "z_BAO_eff_LXI": 0.38
+  },
+  "tracks": {
+    "LXXIV_H_z051": {
+      "obs": 90.5,
+      "pred": 90.49870154287835,
+      "err_pct": -0.0014347592504411286,
+      "label": "H_0 * [243/260 a/(b*c*d) 11/9 307/325 beta_i]",
+      "status": "CE_strict"
+    },
+    "LXXV_D_M_z051": {
+      "obs": 1977.0,
+      "pred": 1977.0075033400194,
+      "err_pct": 0.0003795316145377619,
+      "label": "r_drag * [137/200 a*b*c*d 27/26 63/200 A_5]",
+      "status": "candidate_EXACT"
+    },
+    "LXXVI_fsigma8_z051": {
+      "obs": 0.458,
+      "pred": 0.45799545265054914,
+      "err_pct": -0.000992871059143785,
+      "label": "[416/513 a*b/(c*d) 6/11 243/260 31/30]",
+      "status": "CE_strict"
+    },
+    "LXXVII_H_z061": {
+      "obs": 97.3,
+      "pred": 97.29789754219723,
+      "err_pct": -0.0021607993861906725,
+      "label": "H_0 * [K_Mex a/(b*c*d) 11/6 307/325 Phi_res]",
+      "status": "CE_strict"
+    }
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}
