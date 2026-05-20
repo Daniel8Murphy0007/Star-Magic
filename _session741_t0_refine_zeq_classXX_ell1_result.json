@@ -1,0 +1,90 @@
+{
+  "session": "S741",
+  "cvw": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "tracks": {
+    "a_t0_refinement": [
+      [
+        "1-F*P*27/26*1+xi",
+        0.9551953125,
+        0.05215697366275594,
+        "24453/25600"
+      ],
+      [
+        "27/26*11/12*1+xi",
+        0.9551953125,
+        0.05215697366275594,
+        "24453/25600"
+      ],
+      [
+        "1-F*P*27/25*n_s",
+        0.95535,
+        0.0683597521200322,
+        "19107/20000"
+      ],
+      [
+        "27/25*n_s*11/12",
+        0.95535,
+        0.0683597521200322,
+        "19107/20000"
+      ]
+    ],
+    "b_zeq_classXX": [
+      [
+        "D_crit^2 * 5 + 22",
+        3402.0,
+        0.0
+      ],
+      [
+        "D_crit^2 * 5 + D_crit",
+        3406.0,
+        0.11757789535567313
+      ],
+      [
+        "D_crit^2 * 5 * (243/260) * (27/25)",
+        3411.7200000000003,
+        0.2857142857142932
+      ],
+      [
+        "D_crit^2 * 5 * (1+xi)",
+        3391.61875,
+        -0.3051513815402678
+      ],
+      [
+        "D_crit^2 * 5",
+        3380.0,
+        -0.6466784244562023
+      ]
+    ],
+    "c_ell1_acoustic": {
+      "closure": "A_5*D_phys*(1-F*P)",
+      "value": 220,
+      "exact": true
+    }
+  },
+  "results": [
+    {
+      "label": "classXIX_t0_refined_3atom",
+      "predicted": 13.80419609765625,
+      "observed": 13.797,
+      "error_pct": 0.052156973662750836,
+      "status": "OK",
+      "raw_output": "classXIX_t0_refined_3atom: predicted=1.380420e+01 observed=1.379700e+01 error_pct=5.215697e-02 status=OK"
+    },
+    {
+      "label": "classXX_zeq_structural",
+      "predicted": 3402.0,
+      "observed": 3402.0,
+      "error_pct": 0.0,
+      "status": "OK",
+      "raw_output": "classXX_zeq_structural: predicted=3.402000e+03 observed=3.402000e+03 error_pct=0.000000e+00 status=OK"
+    },
+    {
+      "label": "classXXI_ell1_acoustic_peak",
+      "predicted": 220.0,
+      "observed": 220.0,
+      "error_pct": 0.0,
+      "status": "OK",
+      "raw_output": "classXXI_ell1_acoustic_peak: predicted=2.200000e+02 observed=2.200000e+02 error_pct=0.000000e+00 status=OK"
+    }
+  ]
+}

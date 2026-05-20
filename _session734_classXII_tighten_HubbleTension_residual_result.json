@@ -1,0 +1,28 @@
+{
+  "session": 734,
+  "a_classXII": {
+    "K_current": "171/1100",
+    "err_current_pct": 0.09152171088050647,
+    "best_2atom_correction": null
+  },
+  "b_classXIII": {
+    "ratio_H": 1.0795152231746972,
+    "best_2atom": {
+      "name": "1-F_TRZ^1*6/5^1",
+      "val": 1.08,
+      "err": 0.0449069003285793
+    },
+    "best_3atom": {
+      "name": "1-F*P^1*1-F_TRZ^1*72/55^1",
+      "val": 1.0799999999999998,
+      "err": 0.04490690032855873
+    }
+  },
+  "c_residual_hypothesis": {
+    "ratio_meas": 1.3155893536121674,
+    "hyp_72_55": 1.309090909090909,
+    "deviation_pct": 0.49640895648501376,
+    "K_X_dressed": 2.1715873187000003,
+    "K_X_dressed_err_pct": 0.00019887335645393778
+  }
+}

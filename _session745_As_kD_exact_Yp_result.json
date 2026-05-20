@@ -1,0 +1,25 @@
+{
+  "session": 745,
+  "tracks": {
+    "A_s": {
+      "closure": "31/30",
+      "predicted": 2.0986429850260418e-09,
+      "observed": 2.1e-09,
+      "err_pct": -0.06461976066468636
+    },
+    "k_D": {
+      "closure": "1+5/108*5/108",
+      "predicted": 0.1299819296984065,
+      "observed": 0.13,
+      "err_pct": -0.013900231995006987
+    },
+    "Y_p": {
+      "closure": "7*(1-n_s) = 49/200",
+      "predicted": 0.245,
+      "observed": 0.245,
+      "err_pct": 0.0
+    }
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

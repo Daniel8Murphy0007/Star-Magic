@@ -1,0 +1,105 @@
+{
+  "session": 737,
+  "rows": [
+    {
+      "closure": "classXV_delta_dress_III",
+      "predicted": "-7.144184e-04",
+      "observed": "-6.920000e-04",
+      "error_pct": "3.239650e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_III",
+      "raw_output": "sign=1 c=+Phi_res/beta_i=1.382208"
+    },
+    {
+      "closure": "classXV_delta_dress_V",
+      "predicted": "3.000779e-04",
+      "observed": "2.900000e-04",
+      "error_pct": "3.475139e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_V",
+      "raw_output": "sign=-1 c=-beta_i/(27/26)=0.580570"
+    },
+    {
+      "closure": "classXV_delta_dress_X",
+      "predicted": "-5.467006e-04",
+      "observed": "-5.260000e-04",
+      "error_pct": "3.935481e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_X",
+      "raw_output": "sign=1 c=+beta_i/SSq=1.057719"
+    },
+    {
+      "closure": "classXV_delta_dress_XII",
+      "predicted": "9.416613e-04",
+      "observed": "9.200000e-04",
+      "error_pct": "2.354486e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_XII",
+      "raw_output": "sign=-1 c=-(27/26)/SSq=1.821862"
+    },
+    {
+      "closure": "classXV_delta_dress_XIII",
+      "predicted": "4.651807e-04",
+      "observed": "4.500000e-04",
+      "error_pct": "3.373481e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_XIII",
+      "raw_output": "sign=-1 c=-(243/260)/(27/26)=0.900000"
+    },
+    {
+      "closure": "classXII_dressed_via_delta_univ",
+      "predicted": "1.556009e-01",
+      "observed": "1.563590e-01",
+      "error_pct": "-4.848407e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXII_dressed_via_delta_univ",
+      "raw_output": ""
+    },
+    {
+      "closure": "classXVI_alpha_s_3atom",
+      "predicted": "-4.500000e-03",
+      "observed": "-4.500000e-03",
+      "error_pct": "-0.000000e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVI_alpha_s_3atom",
+      "raw_output": "-1/A_5*1/D_phys*27/25"
+    },
+    {
+      "closure": "classXVI_alpha_s_neg_oneMinusNs_sq",
+      "predicted": "-1.225000e-03",
+      "observed": "-4.500000e-03",
+      "error_pct": "-7.277778e+01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVI_alpha_s_neg_oneMinusNs_sq",
+      "raw_output": "-(1-n_s)^2 = -(7/200)^2"
+    },
+    {
+      "closure": "classVII_residual_decompose_best",
+      "predicted": "-3.876506e-03",
+      "observed": "-4.000000e-03",
+      "error_pct": "-3.087361e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classVII_residual_decompose_best",
+      "raw_output": "c=Phi_res*N_ch"
+    }
+  ],
+  "delta_univ_closed": -0.0005168674066034102
+}

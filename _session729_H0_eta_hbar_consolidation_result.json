@@ -1,0 +1,29 @@
+{
+  "session": 729,
+  "title": "H_0 tighten + Class VIII eta + Class IV stress",
+  "cvw": {
+    "version": "v2.0.0",
+    "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+  },
+  "track_a": {
+    "best_K": "K_Mex*beta_i/27/26",
+    "K_val": 1.2095216049382715,
+    "H_pred": 2.2012669894377964e-18,
+    "err_pct": 0.39091855318072916,
+    "sub_01pct_count": 0
+  },
+  "track_b": {
+    "p": 1,
+    "q": -7,
+    "K": "243/260/SSq",
+    "K_val": 1.639676113360324,
+    "predicted": 6.12019609000503e-10,
+    "err_pct": 0.0032040850495215693,
+    "log10_eta": -9.213248577854438
+  },
+  "track_c": {
+    "err_v1e8_pct": 2.1329972447135785e-11,
+    "err_vc3_pct": 0.06922855946695754,
+    "delta_pct": 0.06922855944562757
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "session": "S743",
+  "cvw": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "results": [
+    {
+      "label": "classXXII_rs_sound_horizon",
+      "predicted": 144.561890625,
+      "observed": 144.6,
+      "error_pct": -0.02635503112033525,
+      "status": "OK",
+      "raw_output": "classXXII_rs_sound_horizon: predicted=1.445619e+02 observed=1.446000e+02 error_pct=-2.635503e-02 status=OK"
+    },
+    {
+      "label": "classXXIII_kD_silk_damping",
+      "predicted": 0.06508355770570247,
+      "observed": 0.13,
+      "error_pct": -49.93572484176733,
+      "status": "OK",
+      "raw_output": "classXXIII_kD_silk_damping: predicted=6.508356e-02 observed=1.300000e-01 error_pct=-4.993572e+01 status=OK"
+    },
+    {
+      "label": "classXXIV_As_scalar_amplitude",
+      "predicted": 2.0309448242187497e-09,
+      "observed": 2.1e-09,
+      "error_pct": -3.2883417038690688,
+      "status": "OK",
+      "raw_output": "classXXIV_As_scalar_amplitude: predicted=2.030945e-09 observed=2.100000e-09 error_pct=-3.288342e+00 status=OK"
+    }
+  ]
+}

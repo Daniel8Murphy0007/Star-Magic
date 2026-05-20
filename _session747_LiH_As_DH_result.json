@@ -1,0 +1,25 @@
+{
+  "session": 747,
+  "tracks": {
+    "A_s": {
+      "closure": "(1-n_s)^6*(11/9)*(243/260)",
+      "predicted": 2.099864963942309e-09,
+      "observed": 2.1e-09,
+      "err_pct": -0.006430288461491137
+    },
+    "DH": {
+      "closure": "Y_p*xi/(D_phys\u00b2*K_Mex)*[1+(5/108)^2*1/A_5^2/xi]",
+      "predicted": 2.527000100022862e-05,
+      "observed": 2.527e-05,
+      "err_pct": 3.958166285560176e-06
+    },
+    "LiH": {
+      "closure": "Y_p*(1-n_s)^5 * 3/(4*A_5)",
+      "predicted": 1.6084824218750008e-10,
+      "observed": 1.6e-10,
+      "err_pct": 0.5301513671875551
+    }
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

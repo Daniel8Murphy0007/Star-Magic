@@ -1,0 +1,52 @@
+{
+  "session": 739,
+  "rows": [
+    {
+      "closure": "global_R_xi_correction",
+      "predicted": "9.683507e-01",
+      "observed": "9.683068e-01",
+      "error_pct": "4.533113e-03",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "global_R_xi_correction",
+      "raw_output": "n_s*(1+1/240*Phi_res)"
+    },
+    {
+      "closure": "classXVIII_Omega_Lambda_via_X",
+      "predicted": "6.847004e-01",
+      "observed": "6.847000e-01",
+      "error_pct": "6.359869e-05",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVIII_Omega_Lambda_via_X",
+      "raw_output": "K_X/(1+K_X) from X dressed"
+    },
+    {
+      "closure": "classXVIII_Omega_m_via_X",
+      "predicted": "3.152996e-01",
+      "observed": "3.153000e-01",
+      "error_pct": "-1.381098e-04",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVIII_Omega_m_via_X",
+      "raw_output": "1/(1+K_X) from X dressed"
+    },
+    {
+      "closure": "classXVI_beta_s_canonical_recursion",
+      "predicted": "-1.458333e-04",
+      "observed": "-4.287500e-05",
+      "error_pct": "2.401361e+02",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVI_beta_s_canonical_recursion",
+      "raw_output": "alpha_s*(7/216) vs -(1-n_s)^3"
+    }
+  ],
+  "xi_obs": 0.003426735751295393,
+  "Omega_L": 0.6847004354602286,
+  "beta_s": -0.00014583333333333335
+}

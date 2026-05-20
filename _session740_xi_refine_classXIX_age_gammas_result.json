@@ -1,0 +1,41 @@
+{
+  "session": 740,
+  "rows": [
+    {
+      "closure": "global_R_xi_3atom_refined",
+      "predicted": "9.683172e-01",
+      "observed": "9.683068e-01",
+      "error_pct": "1.072749e-03",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "global_R_xi_3atom_refined",
+      "raw_output": "n_s*(1+1-F*P*1-F_TRZ*1/240)"
+    },
+    {
+      "closure": "classXIX_t0_via_Hubble_time",
+      "predicted": "1.375687e+01",
+      "observed": "1.379700e+01",
+      "error_pct": "-2.908691e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXIX_t0_via_Hubble_time",
+      "raw_output": "(1-F*P*27/26)*t_H"
+    },
+    {
+      "closure": "classXVI_gamma_s_recursion",
+      "predicted": "-4.726080e-06",
+      "observed": "-4.726080e-06",
+      "error_pct": "-0.000000e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVI_gamma_s_recursion",
+      "raw_output": "beta_s*(7/216) = -49/10368000"
+    }
+  ],
+  "t0_over_tH": 0.9547000038614254,
+  "gamma_s": -4.726080246913581e-06,
+  "xi_obs": 0.003426736
+}

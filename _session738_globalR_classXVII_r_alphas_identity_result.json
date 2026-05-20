@@ -1,0 +1,128 @@
+{
+  "session": 738,
+  "rows": [
+    {
+      "closure": "global_R_dressing_1atom",
+      "predicted": "9.650000e-01",
+      "observed": "9.683068e-01",
+      "error_pct": "-3.415017e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "global_R_dressing_1atom",
+      "raw_output": "n_s=193/200"
+    },
+    {
+      "closure": "global_R_dressing_2atom",
+      "predicted": "9.705621e-01",
+      "observed": "9.683068e-01",
+      "error_pct": "2.329164e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "global_R_dressing_2atom",
+      "raw_output": "243/260*27/26"
+    },
+    {
+      "closure": "classXV_delta_dress_III_with_R",
+      "predicted": "-6.894138e-04",
+      "observed": "-6.920000e-04",
+      "error_pct": "-3.737347e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_III_with_R",
+      "raw_output": "R=n_s=193/200"
+    },
+    {
+      "closure": "classXV_delta_dress_V_with_R",
+      "predicted": "2.895752e-04",
+      "observed": "2.900000e-04",
+      "error_pct": "-1.464919e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_V_with_R",
+      "raw_output": "R=n_s=193/200"
+    },
+    {
+      "closure": "classXV_delta_dress_X_with_R",
+      "predicted": "-5.275661e-04",
+      "observed": "-5.260000e-04",
+      "error_pct": "2.977337e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_X_with_R",
+      "raw_output": "R=n_s=193/200"
+    },
+    {
+      "closure": "classXV_delta_dress_XII_with_R",
+      "predicted": "9.087032e-04",
+      "observed": "9.200000e-04",
+      "error_pct": "-1.227918e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_XII_with_R",
+      "raw_output": "R=n_s=193/200"
+    },
+    {
+      "closure": "classXV_delta_dress_XIII_with_R",
+      "predicted": "4.488994e-04",
+      "observed": "4.500000e-04",
+      "error_pct": "-2.445832e-01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_delta_dress_XIII_with_R",
+      "raw_output": "R=n_s=193/200"
+    },
+    {
+      "closure": "classXVII_r_consistency_neg8alphas",
+      "predicted": "3.600000e-02",
+      "observed": "3.600000e-02",
+      "error_pct": "0.000000e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVII_r_consistency_neg8alphas",
+      "raw_output": "r = -8*alpha_s = 9/250"
+    },
+    {
+      "closure": "classXVII_r_9_over_250",
+      "predicted": "3.600000e-02",
+      "observed": "3.600000e-02",
+      "error_pct": "0.000000e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVII_r_9_over_250",
+      "raw_output": "9/250"
+    },
+    {
+      "closure": "classXVI_beta_s_recursive_prediction",
+      "predicted": "1.875000e-05",
+      "observed": "4.300000e-05",
+      "error_pct": "-5.639535e+01",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXVI_beta_s_recursive_prediction",
+      "raw_output": "-alpha_s/(A_5*D_phys) vs (1-n_s)^3"
+    },
+    {
+      "closure": "classXV_oneMinusNs_via_XIII",
+      "predicted": "3.500000e-02",
+      "observed": "3.500000e-02",
+      "error_pct": "0.000000e+00",
+      "status": "OK",
+      "cvw_stamp": "v2.0.0",
+      "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+      "label": "classXV_oneMinusNs_via_XIII",
+      "raw_output": "(27/25)*(7/D_BSFG^3) = 7/200"
+    }
+  ],
+  "R_obs": 0.9683067844878804,
+  "delta_univ": -0.0005168674066034102
+}

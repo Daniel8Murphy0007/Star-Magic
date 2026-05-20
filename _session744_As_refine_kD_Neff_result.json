@@ -1,0 +1,30 @@
+{
+  "session": "S744",
+  "cvw": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "results": [
+    {
+      "label": "classXXIV_As_refined",
+      "predicted": 2.0986429850260418e-09,
+      "observed": 2.1e-09,
+      "error_pct": -0.06461976066468636,
+      "status": "OK",
+      "raw_output": "classXXIV_As_refined: predicted=2.098643e-09 observed=2.100000e-09 error_pct=-6.461976e-02 status=OK"
+    },
+    {
+      "label": "classXXIII_kD_silk_via_product",
+      "predicted": 0.1297022244450301,
+      "observed": 0.13,
+      "error_pct": -0.22905811920761807,
+      "status": "OK",
+      "raw_output": "classXXIII_kD_silk_via_product: predicted=1.297022e-01 observed=1.300000e-01 error_pct=-2.290581e-01 status=OK"
+    },
+    {
+      "label": "classXXV_Neff_eff_neutrinos",
+      "predicted": 3.046,
+      "observed": 3.046,
+      "error_pct": 0.0,
+      "status": "OK",
+      "raw_output": "classXXV_Neff_eff_neutrinos: predicted=3.046000e+00 observed=3.046000e+00 error_pct=0.000000e+00 status=OK"
+    }
+  ]
+}

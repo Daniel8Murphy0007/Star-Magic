@@ -1,0 +1,79 @@
+{
+  "session": 732,
+  "title": "Class X tighten + Class XI BAO + Anticipation audit",
+  "cvw": {
+    "version": "v2.0.0",
+    "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+  },
+  "track_a_4atom": null,
+  "track_a_corr": {
+    "corr_name": "1",
+    "full_K": 2.17044,
+    "err_pct": -0.05261691251641234
+  },
+  "track_b": {
+    "p": 13,
+    "q": 11,
+    "K": "Phi_res*405/247*405/247",
+    "r_pred_Mpc": 147.04986850943666,
+    "r_err_pct": -8.941894820755539e-05,
+    "sub_01pct": 22
+  },
+  "track_c": {
+    "289": {
+      "ID": "289",
+      "name": "dpm_foundational_kernel",
+      "label": "dpm_foundational_kernel",
+      "predicted": "23",
+      "observed": "23",
+      "error_pct": "0",
+      "status": "OK",
+      "script": "_session289_dpm_foundational_kernel.py",
+      "raw_output": "100 AU    a_two_pair = 1.297e-93 m/s^2"
+    },
+    "364": {
+      "ID": "364",
+      "name": "cosmo_bao_sound_horizon",
+      "label": "cosmo_bao_sound_horizon",
+      "predicted": "154.06",
+      "observed": "147.05",
+      "error_pct": "4.77",
+      "status": "OK",
+      "script": "_session364_cosmo_bao_sound_horizon.py",
+      "raw_output": "S364 COMPLETE. r_d * H_0 / c = (1-F_TRZ)/D_crit = 0.0346; r_d = 154.06 Mpc (using H_0=67.36); obs = 147.05 Mpc; match 4.77%."
+    },
+    "372": {
+      "ID": "372",
+      "name": "cosmo_omega_m",
+      "label": "cosmo_omega_m",
+      "predicted": "0.3142",
+      "observed": "0.315",
+      "error_pct": "0.265",
+      "status": "OK",
+      "script": "_session372_cosmo_omega_m.py",
+      "raw_output": "S372 COMPLETE. Omega_m = SSq - K_Mex*F_TRZ - Phi_res*F_TRZ*SSq = 0.3142; obs (Planck) = 0.315; match 0.265%."
+    },
+    "433": {
+      "ID": "433",
+      "name": "part_baryogenesis",
+      "label": "eta_B (norm)",
+      "predicted": "6.1000",
+      "observed": "6.1",
+      "error_pct": "0",
+      "status": "OK",
+      "script": "_session433_part_baryogenesis.py",
+      "raw_output": "S433 COMPLETE. eta_B (norm) = 6.1000; target 6.1; match 0.0000%."
+    },
+    "440": {
+      "ID": "440",
+      "name": "part_top_yukawa",
+      "label": "y_t",
+      "predicted": "0.9413",
+      "observed": "0.94",
+      "error_pct": "0.133",
+      "status": "OK",
+      "script": "_session440_part_top_yukawa.py",
+      "raw_output": "S440 COMPLETE. y_t = 0.9413; target 0.94; match 0.1330%."
+    }
+  }
+}

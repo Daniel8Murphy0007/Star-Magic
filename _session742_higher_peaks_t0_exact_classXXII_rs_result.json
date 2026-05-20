@@ -1,0 +1,39 @@
+{
+  "session": "S742",
+  "cvw": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "results": [
+    {
+      "label": "classXXI_ell2_peak",
+      "predicted": 537.7777777777778,
+      "observed": 537.5,
+      "error_pct": 0.05167958656331689,
+      "status": "OK",
+      "raw_output": "classXXI_ell2_peak: predicted=5.377778e+02 observed=5.375000e+02 error_pct=5.167959e-02 status=OK"
+    },
+    {
+      "label": "classXXI_ell3_peak",
+      "predicted": 806.6666666666666,
+      "observed": 810.0,
+      "error_pct": -0.4115226337448607,
+      "status": "OK",
+      "raw_output": "classXXI_ell3_peak: predicted=8.066667e+02 observed=8.100000e+02 error_pct=-4.115226e-01 status=OK"
+    },
+    {
+      "label": "classXXI_ell4_peak",
+      "predicted": 1122.9166666666667,
+      "observed": 1130.0,
+      "error_pct": -0.6268436578171025,
+      "status": "OK",
+      "raw_output": "classXXI_ell4_peak: predicted=1.122917e+03 observed=1.130000e+03 error_pct=-6.268437e-01 status=OK"
+    },
+    {
+      "label": "classXIX_t0_with_correction",
+      "predicted": 13.797006412188722,
+      "observed": 13.797,
+      "error_pct": 4.6475238974614326e-05,
+      "status": "OK",
+      "raw_output": "classXIX_t0_with_correction: predicted=1.379701e+01 observed=1.379700e+01 error_pct=4.647524e-05 status=OK"
+    }
+  ],
+  "found4_count": 0
+}

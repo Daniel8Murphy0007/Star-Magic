@@ -1,0 +1,25 @@
+{
+  "session": 746,
+  "tracks": {
+    "A_s": {
+      "closure": "(7/200)^5 * [1/K_Mex*F*P]",
+      "predicted": 2.1008750000000004e-09,
+      "observed": 2.1e-09,
+      "err_pct": 0.04166666666667452
+    },
+    "k_D": {
+      "closure": "1+9/250*SSq/N_ch",
+      "predicted": 0.12999965412285558,
+      "observed": 0.13,
+      "err_pct": -0.00026605934186565766
+    },
+    "DH": {
+      "closure": "Y_p * xi / (D_phys^2 * K_Mex)",
+      "predicted": 2.5265624999999996e-05,
+      "observed": 2.527e-05,
+      "err_pct": -0.01731301939059957
+    }
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

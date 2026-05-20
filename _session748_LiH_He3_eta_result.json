@@ -1,0 +1,22 @@
+{
+  "session": 748,
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "tracks": {
+    "a_LiH": {
+      "formula": "(1-n_s)^7*(SO5/D_phys)*[1-beta_i*1-n_s/D_phys]",
+      "value": 1.5999970739187023e-10,
+      "err_pct": -0.0001828800810988307
+    },
+    "b_He3H": {
+      "formula": "[r a/b/c A_5 A_5]",
+      "value": 9.999999999999999e-06,
+      "err_pct": -1.6940658945086004e-14
+    },
+    "c_eta_b": {
+      "formula": "(1-n_s)^7 * [416/513 a/b/c 1-n_s 22/9]",
+      "value": 6.098233652312602e-10,
+      "err_pct": -0.028956519465530378
+    }
+  }
+}

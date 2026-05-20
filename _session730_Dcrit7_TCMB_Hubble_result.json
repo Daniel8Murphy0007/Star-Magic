@@ -1,0 +1,24 @@
+{
+  "session": 730,
+  "title": "D_crit^7 cancellation + Class IX T_CMB + Hubble tension",
+  "cvw": {
+    "version": "v2.0.0",
+    "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+  },
+  "track_a": {
+    "pred_product": 5.113025762269001,
+    "obs_product": 5.11327369437697,
+    "err_pct": -0.004848793997495634,
+    "K_prod": "19683/12844"
+  },
+  "track_b": {
+    "verdict": "no closure"
+  },
+  "track_c": {
+    "H_pred": 2.1839381591370305e-18,
+    "err_planck": -0.3993795795280114,
+    "err_shoes": -7.735788914989943,
+    "closer": "Planck",
+    "Lam_shoes": 1.8702255116839275e-52
+  }
+}

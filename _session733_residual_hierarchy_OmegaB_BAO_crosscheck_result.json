@@ -1,0 +1,41 @@
+{
+  "session": 733,
+  "tracks": {
+    "a_residual_hierarchy": {
+      "residuals": {
+        "III (c)": -0.000692,
+        "V (G)": 0.00029,
+        "VI (Lambda)": -8e-05,
+        "VII (H0)": -0.004,
+        "VIII (eta_b)": 3.2e-05,
+        "IX (T_CMB)": 1.5e-05,
+        "X (Omega_L/m)": -0.000526,
+        "XI (r_d)": -1e-06
+      },
+      "ratio_III_X": 1.3155893536121674,
+      "ratio_V_X": -0.5513307984790875,
+      "delta_geo_IIIVx": 0.0004726031502167712,
+      "hypothesis": "r_III / r_X ~ 4/3 (D_phys/N_ch?) -- possible link"
+    },
+    "b_classXII_OmegaB": {
+      "f_b_obs": 0.15531240088804313,
+      "best_2atom": {
+        "name": "243/260^1*D_BSFG^-1",
+        "val": 0.15576923076923077,
+        "err_pct": 0.29413612729929284
+      },
+      "best_3atom": {
+        "name": "1-F*P^-1*D_phys^-1*SSq^1",
+        "val": 0.15545454545454546,
+        "err_pct": 0.09152171088050647
+      }
+    },
+    "c_BAO_crosscheck": {
+      "T_CMB_from_IX": 2.7248472561717607,
+      "T_CMB_err_pct": -0.023949507548673626,
+      "r_d_XI_Mpc": 147.0498685094367,
+      "decomposition": "XI exponents (13,11) NOT integer combo of IX^a*VIII^b",
+      "conclusion": "Class XI is structurally independent closure"
+    }
+  }
+}

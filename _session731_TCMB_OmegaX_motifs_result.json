@@ -1,0 +1,32 @@
+{
+  "session": 731,
+  "title": "T_CMB extended + Class X Omega ratio + Motif scan",
+  "cvw": {
+    "version": "v2.0.0",
+    "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+  },
+  "track_a": {
+    "p": 11,
+    "q": 13,
+    "K": "N_ch*1-F_TRZ/A_5",
+    "T_pred": 2.7255399906370505,
+    "T_err_pct": 0.0014672770886345716,
+    "sub_01pct": 17
+  },
+  "track_b": {
+    "K_name": "D_phys*1-F_TRZ*beta_i",
+    "K_val": 2.17044,
+    "err_pct": -0.05261691251641234,
+    "target": 2.1715826197272436,
+    "sub_01pct": 1
+  },
+  "track_c": {
+    "3^N_ch=19683": 4,
+    "D_crit/2=13": 7,
+    "factor 19": 5,
+    "3^N_ch/12844": 8,
+    "243/260": 6,
+    "405/247": 6,
+    "33/104=K_G": 12
+  }
+}
