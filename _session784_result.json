@@ -1,0 +1,35 @@
+{
+  "session": 784,
+  "tracks": {
+    "CXXXVIII_log_MGUT_MPl": {
+      "obs": -2.78,
+      "pred": -2.77994383592381,
+      "err_pct": -0.002020290510424529,
+      "label": "[alpha a/(b*c*d) 63/200 F_TRZ 1/12]",
+      "status": "CE_strict"
+    },
+    "CXXXIX_log_Dm2atm": {
+      "obs": -2.602,
+      "pred": -2.6020189486590906,
+      "err_pct": 0.0007282344001033646,
+      "label": "[1/mpme a*b*c/d D_BSFG 6/11 137/200]",
+      "status": "CE_strict"
+    },
+    "CXL_sin2_theta23": {
+      "obs": 0.55,
+      "pred": 0.55,
+      "err_pct": 0.0,
+      "label": "[1-F*P a*b*c D_BSFG F_TRZ]",
+      "status": "EXACT"
+    },
+    "CXLI_CV17_eq3": {
+      "obs": 3.0,
+      "pred": 3.0,
+      "err_pct": 0.0,
+      "label": "N_ch - D_BSFG = 9-6 = 3",
+      "status": "EXACT"
+    }
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

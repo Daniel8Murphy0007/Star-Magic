@@ -1,0 +1,35 @@
+{
+  "session": 780,
+  "tracks": {
+    "CXXII_MH_MZ": {
+      "obs": 1.37193,
+      "pred": 1.371909985291494,
+      "err_pct": -0.0014588724283381635,
+      "label": "[416/513 a/(b*c*d) N_ch N_ch alpha]",
+      "status": "CE_strict"
+    },
+    "CXXIII_log_MPl_mp": {
+      "obs": 19.0894,
+      "pred": 19.08866666666667,
+      "err_pct": -0.003841573508506336,
+      "label": "[22/9 a*b*c/d F_TRZ SSq 1/137]",
+      "status": "CE_strict"
+    },
+    "CXXIV_mtop_MH": {
+      "obs": 1.38098,
+      "pred": 1.3809855088219014,
+      "err_pct": 0.0003989067112711399,
+      "label": "[5/108 a/(b*c*d) n_s n_s r]",
+      "status": "candidate_EXACT"
+    },
+    "CXXV_CV13_SO5_DBSFG_Dphys": {
+      "obs": 4.0,
+      "pred": 4.0,
+      "err_pct": 0.0,
+      "label": "SO5 - D_BSFG = 10 - 6 = 4 = D_phys",
+      "status": "EXACT"
+    }
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant"
+}

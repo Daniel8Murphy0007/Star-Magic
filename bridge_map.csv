@@ -460,7 +460,7 @@ ID,name,label,primitives,sectors,error_pct
 681,Moon_mass,Moon mass (1e22 kg),beta,L_buoy(6),0.1263
 682,Earth_density,Earth density (g/cm^3),"F,beta","L_aether(7),L_buoy(6)",0.1916
 683,lagrangian_primitives,Lagrangian primitive derivation: 11/11 primitives linked to sectors,"A_5,D_BSFG,D_crit,D_phys,F_TRZ,K_Mex,N_ch,Phi_res,SO,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
-684,closure_to_sector_bridge,Lagrangian re-run bridge: 525/525 closures mapped,"A,A_5,DB,D_BSFG,D_crit,D_phys,Dc,Dp,F,F_TRZ,K,K_Mex,N,N_ch,Phi,Phi_res,SO,SO5,SSq,beta,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+684,closure_to_sector_bridge,Lagrangian re-run bridge: 561/561 closures mapped,"A,A_5,DB,D_BSFG,D_crit,D_phys,Dc,Dp,F,F_TRZ,K,K_Mex,N,N_ch,Phi,Phi_res,SO,SO5,SSq,beta,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
 684,KK_AU_per_1e10_m,AU_per_1e10_m,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.3741
 685,KK_Sun_mass_per_1e29_kg,Sun_mass_per_1e29_kg,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2614
 686,KK_Earth_orbit_v_per_km_s,Earth_orbit_v_per_km_s,"F,K,Phi,SSq,beta","L_KK(9),L_aether(7),L_buoy(6),L_phi(4)",0.2069
@@ -525,3 +525,39 @@ ID,name,label,primitives,sectors,error_pct
 745,As_kD_exact_Yp,classXXVI_Yp_helium_BBN,"A,A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
 746,DH_kD_As,classXXVII_DH_deuterium_BBN,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.017313
 747,LiH_As_DH,classXXVIII_LiH_Spite_plateau,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.5302
+748,LiH_He3_eta,eta_b,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.028957
+749,eta_Yp_T0,T_0,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+750,eta_T0_H0,H_0(SH0ES),"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.000709
+751,T0_Hratio_sigma8_Omegam,Omega_m,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",4e-05
+752,T0reform_sigma8KiDS_OmegaL,Omega_Lambda,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",1.8e-05
+753,sigma8push_wDE_Obh2,w_DE,"A,A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+754,Obh2push_zeq_rs,r_s,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.003388
+755,Obh2unblock_t0_tau,t_0,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.000465
+756,tauCE_zstar_Neff,classXLIII_N_eff_session756,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.0001439336
+757,tau_zstar_DH,classXLIV_DH_session757,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.02371875
+758,mpme_alphaS_Omh2,classXLVI_Omega_m_h2_session758,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+759,tau_zstar_Oc_kpivot,classXLVIII_k_pivot_session759,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+760,Och2_mnu_As,classL_A_s_session760,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",100.0
+761,As_obratio_eta,classLII_eta_nu_session761,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.0004722345
+762,H0_rdrag_gammaPPN,classLV_gamma_PPN_session762,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+763,NeffBBN_OmK_zreion_dCP,classLIX_delta_CP_session763,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.000466479
+764,crossval_omnu_zBAO_etab,classLXII_eta_b_session764,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",100.0
+765,Aplanck_tau_S8_etabwiden,classLXII_eta_b_widened_session765,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.005410045
+766,AL_w0_wa_Hz,classLXIX_Hz_BAO_session766,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.0007749198
+767,BAO_distance_suite,classLXXIII_fsigma8_z038_session767,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.002644301
+768,BAO_z051_z061,classLXXVII_H_z061_session768,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.002160799
+769,struct_amp_anchors,classLXXXI_Om_h2_session769,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+770,matter_radiation_acoustic,classLXXXV_theta_MC_session770,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0.001572066
+771,inflation_reion_age_CV4,classLXXXIX_CV4_matter_sum_session771,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+772,running_zdec_DH_CV5,classXCIII_CV5_tensor_tilt_session772,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+773,zeq_BAO_nu_CV6,classXCVII_CV6_alphas_over_r_session773,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+774,Rstar_DV015_fs8_CV7,classCI_CV7_xi_A5_Dphys_atomfact_session774,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+775,teq_keq_mnu_CV8,classCV_CV8_Yp_DBSFG_atomfact_session775,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+776,zdrag_theta_OmDE_CV9,classCIX_CV9_Dcrit_DBSFG_atomfact_session776,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+777,SMsector_CV10,classCXIII_CV10_Dphys_plus_Nch_session777,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+778,SMmasses_CV11,classCXVII_CV11_Dphys_Nch_DBSFGsq_session778,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+779,quarks_CKM_CV12,classCXXI_CV12_SO5_plus_Nch_session779,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+780,Higgs_gravity_CV13,classCXXV_CV13_SO5_minus_DBSFG_Dphys_session780,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+781,cosmoconst_entropy_CV14,classCXXIX_CV14_4DBSFG_plus2_Dcrit_session781,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+782,lambdaH_yt_etaB_CV15,classCXXXIII_CV15_alpha137_dimalgebra_session782,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
+783,sinW_alphasGUT_rho_CV16,classCXXXVII_CV16_DBSFG_plus_Nch_minus_Dphys_eq11_session783,"A_5,D_BSFG,D_crit,D_phys,F,F_TRZ,K_Mex,N_ch,Phi_res,SO5,SSq,beta_i","L_EH(1),L_KK(9),L_YM(2),L_aether(7),L_buoy(6),L_phi(4),master(N=9)",0
