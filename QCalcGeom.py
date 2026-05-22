@@ -16,7 +16,9 @@ to a Python simultaneous-equation solver for:
     → Yields r_hz (habitable zone radius) + t_n_hz (phase at equilibrium)
 
   QUANTUM CHAIN compliance  (dpm_vacuum_manifold.py v3.0):
-    RHO_VAC_SCM = 633,333 J/m³  derived from 26-level hydrogen geometry.
+    RHO_VAC_SCM = 4·√π · 1e-37 ≈ 7.0898154036e-37 J/m³  (structural G9 closure,
+                  26-level hydrogen geometry; dpm_vacuum_manifold.py L97).
+    RHO_VAC_UA  = 10 · RHO_VAC_SCM ≈ 7.0898154036e-36 J/m³  (G7 |SO(5)| ratio).
     Mass emerges at the FUBi+FUBii = 0 crossing — NOT from hardcoded GM/r².
 
   HABITABLE ZONE PHYSICS:
@@ -105,8 +107,8 @@ import numpy as np
 # ─── DPM Quantum Chain — canonical vacuum constants ──────────────────────────
 from dpm_vacuum_manifold import (
     derive_from_quantum_chain,
-    RHO_VAC_SCM,    # 633,333 J/m³  emergent SCm energy density
-    RHO_VAC_UA,     # 6,333,333 J/m³ emergent UA energy density (10× SCm)
+    RHO_VAC_SCM,    # 7.0898154036e-37 J/m³  SCm vacuum density (G9, structural)
+    RHO_VAC_UA,     # 7.0898154036e-36 J/m³  UA vacuum density (G7, 10× SCm)
     BETA_I,         # 0.60  buoyancy coupling β_i
     LAMBDA_I,       # 1.0   manifold coupling λ_i
     OMEGA_S,        # 2.5e-6 rad/s stellar angular frequency
