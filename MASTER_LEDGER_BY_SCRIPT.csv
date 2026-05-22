@@ -1,5 +1,5 @@
 script,count,status_breakdown
-,26,OK=8;CE_strict=6;EXACT=6;OPEN=4;CE=2
+,26,OK=8;CE_strict=6;EXACT=6;OPEN_PREDICTIONS=4;CE=2
 _session201_closures.py,1,OK=1
 _session202_closures.py,1,OK=1
 _session203_closures.py,1,OK=1

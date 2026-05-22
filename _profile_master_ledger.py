@@ -60,10 +60,16 @@ buckets = [("EXACT (0)",0,0), ("<1e-6",0,1e-6), ("<1e-3",1e-6,1e-3),
            ("<1%",1e-3,1.0), ("<10%",1.0,10.0), (">=10%",10.0,math.inf)]
 hist = Counter()
 worst = []
+SENTINEL_PCT = 9999.0
 for r in rows:
     e = safe_float(r["error_pct"])
     if e is None: hist["NaN"] += 1; continue
     a = abs(e)
+    # Skip T-PRED sentinels (predicted=observed=error_pct=9999, status OPEN_PREDICTIONS)
+    # from both the error-distribution histogram and the worst-residual ranking.
+    if r.get("status","").strip() == "OPEN_PREDICTIONS" and abs(a - SENTINEL_PCT) < 1e-6:
+        hist["OPEN_PREDICTIONS (T-PRED sentinel)"] += 1
+        continue
     for name, lo, hi in buckets:
         if name == "EXACT (0)" and a == 0: hist[name]+=1; break
         if lo < a <= hi: hist[name]+=1; break
@@ -74,8 +80,10 @@ print("\n=== ERROR DISTRIBUTION (|error_pct|) ===")
 for name,_,_ in buckets:
     print(f"  {hist[name]:5d}  {name}")
 if hist["NaN"]: print(f"  {hist['NaN']:5d}  NaN/non-numeric")
+if hist["OPEN_PREDICTIONS (T-PRED sentinel)"]:
+    print(f"  {hist['OPEN_PREDICTIONS (T-PRED sentinel)']:5d}  OPEN_PREDICTIONS (T-PRED sentinel, excluded from ranking)")
 
-print("\n=== TOP 15 WORST RESIDUALS ===")
+print("\n=== TOP 15 WORST RESIDUALS (sentinels excluded) ===")
 for a, _id, r in worst[:15]:
     print(f"  {a:12.4e}%  ID={r['ID']:>4}  {r['status']:<10}  {r['label'][:55]}")
 
