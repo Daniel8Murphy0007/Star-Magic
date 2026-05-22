@@ -1,0 +1,39 @@
+rank,abs_error_pct,ID,status,closure,predicted,observed,script,label
+1,2.500000e+03,293,OK,,13,0.5,_session293_hubble_tension_split.py,Hubble tension is the K_Mex - 1
+2,2.401361e+02,739,OK,,-1.458333e-04,-4.287500e-05,_session739_R_xi_classXVIII_OmegaLambda_betas.py,classXVI_beta_s_canonical_recursion
+3,2.401361e+02,,OK,classXVI_beta_s_canonical_recursion,-1.458333e-04,-4.287500e-05,,classXVI_beta_s_canonical_recursion
+4,2.401361e+02,,OK,classXVI_beta_s_canonical_recursion,-1.458333e-04,-4.287500e-05,,classXVI_beta_s_canonical_recursion
+5,2.358305e+02,330,OK,,0.9907,0.295,_session330_sm_flavor.py,R_K UQFF
+6,1.975000e+02,337,OK,,58.5,-60,_session337_cosmo_inflation.py,Inflation e-folds N_e
+7,1.275770e+02,270,OK,,,,_session270_271_calibrated_and_open.py,M_Chandra
+8,1.000000e+02,760,OK,,0.000000e+00,2.100000e-09,_session760_Och2_mnu_As.py,classL_A_s_session760
+9,1.000000e+02,764,OK,,0.000000e+00,6.140000e-10,_session764_crossval_omnu_zBAO_etab.py,classLXII_eta_b_session764
+10,9.406780e+01,351,OK,,7,118,_session351_chem_periodic_table.py,n_periods_stable
+11,3.345882e+01,352,OK,,13.6128,10.20,_session352_chem_h_ionization.py,E_ion(H)
+12,2.872000e+01,805,OK,,,,_chain_trace_np_split.py,Delta_M_np
+13,9.310000e+00,273,OK,,,,_session273_lambda_hierarchy.py,Best SCm-amplification form
+14,8.000000e+00,333,OK,,2.880,3.1,_session333_cosmo_li7.py,Li-7 abundance ratio (theory/obs)
+15,7.108000e+00,285,OK,,2.954e-05,3.18e-05,_session285_CKM_closure.py,J_CP
+16,7.000000e+00,339,OK,,0.6111,,_session339_math_twinprime.py,Twin prime constant C_2 ~ Phi_res^2 - F_TRZ*Phi_res
+17,6.070000e+00,803,OK,,,,_chain_trace_fix348.py,electron
+18,5.490000e+00,295,OK,,,,_session295_lithium7_problem.py,Other primordial isotopes do not satisfy this
+19,5.420000e+00,261,OK,,1.8765,,_session261_closures.py,Test: 2   * m_p c^2
+20,5.000000e+00,335,OK,,2.600,2.5,_session335_cosmo_edges.py,EDGES extra cooling factor
+21,4.865800e+00,263,OK,,,,_session263_closures.py,Interpretation
+22,4.770000e+00,364,OK,,154.06,147.05,_session364_cosmo_bao_sound_horizon.py,cosmo_bao_sound_horizon
+23,4.333000e+00,286,OK,,0.3203,0.307,_session286_PMNS_closure.py,sin^2(theta_12)
+24,4.318054e+00,303,OK_JSON,,0.9089784828844266,0.95,_session303_paradox_amps_firewall.py,S303_UB_HZ_inner_edge_Earth_Sun_AU
+25,4.318000e+00,303,OK,,0.9090,0.95,_session303_universal_buoyancy_solver.py,Wrote _session303_universal_buoyancy_solver_closures.json
+26,3.640000e+00,350,OK,,1.3500,74.14,_session350_chem_h2_bond.py,r_H2/a_0
+27,3.288342e+00,743,OK,,,,_session743_rs_silk_As.py,classXXIV_As_scalar_amplitude
+28,3.087361e+00,737,OK,,-3.876506e-03,-4.000000e-03,_session737_delta_dress_classXVI_alphas_VII_decompose.py,classVII_residual_decompose_best
+29,2.750000e+00,800,OK,,,,_chain_trace_26layer.py,PROTON
+30,2.280000e+00,363,OK,,6.000e-10,6.140e-10,_session363_cosmo_baryon_asymmetry.py,cosmo_baryon_asymmetry
+31,1.710000e+00,294,OK,,1.140,,_session294_neutron_lifetime.py,BR_other
+32,1.560300e+00,498,OK,,0.4773,0.47,_session498_sphere_drag.py,Sphere drag C_d
+33,1.430000e+00,368,OK,,2.583e-05,2.547e-05,_session368_cosmo_deuterium.py,cosmo_deuterium
+34,1.293816e+00,272,OK_JSON,,123.62949577528089,125.25,_session272_forward_predictions.py,m_H
+35,1.242400e+00,504,OK,,0.918167,0.906900,_session504_circle_packing.py,Circle packing eta_2D
+36,1.100000e+00,326,OK,,0.2282,13.04,_session326_sm_ckm_pmns.py,sin(theta_C)
+37,1.080000e+00,276,OK,,,,_session276_chandrasekhar_closure.py,omega_3
+38,1.038000e+00,503,OK,,0.748167,0.740480,_session503_kepler_packing.py,Kepler eta_3D
