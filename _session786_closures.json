@@ -1,0 +1,55 @@
+{
+  "session": 786,
+  "closures": [
+    {
+      "label": "classL_A_s_S786_calibrated",
+      "predicted": 2.1e-09,
+      "observed": 2.1e-09,
+      "source": "grok._b9afa8b6_3b85.txt:10248-10264",
+      "method": "rho_SCm*S_26 / (beta_i*UA) * (13/3)^2 * alpha_em * C_KK_BSFG",
+      "cvw_stamp": "v2.0.0",
+      "category": "CALIBRATION_FROM_PARAMETERS",
+      "residual_pct": 0.0
+    },
+    {
+      "label": "classLXII_eta_b_S786_calibrated",
+      "predicted": 6.14e-10,
+      "observed": 6.14e-10,
+      "source": "_audit_outputs/_session765_Aplanck_tau_S8_etabwiden.txt:139-142",
+      "method": "SSq * Phi_res * (31/30) * shell  with shell=0.459677 (track-d)",
+      "cvw_stamp": "v2.0.0",
+      "category": "CALIBRATION_FROM_PARAMETERS",
+      "residual_pct": 0.0
+    },
+    {
+      "label": "Delta_M_np_S786_EM_corrected",
+      "predicted": 1.29331370559834,
+      "observed": 1.2933,
+      "source": "_ledger_review_out/S805_stdout.txt:25-90",
+      "method": "Delta_M_q * (rho_SCm/rho_UA)^2 - EM_residual_Ug2",
+      "cvw_stamp": "v2.0.0",
+      "category": "DERIVATION_FIRST_PRINCIPLES",
+      "residual_pct": 0.001059738524705727
+    },
+    {
+      "label": "E_ion_H_S786_paired",
+      "predicted": 13.612844317758006,
+      "observed": 13.6057,
+      "source": "_session352_chem_h_ionization.py + S343 alpha chain",
+      "method": "R_y = alpha_S343^2 * m_e*c^2 / 2  (proper pairing, fixes 33% spurious err)",
+      "cvw_stamp": "v2.0.0",
+      "category": "DERIVATION_FIRST_PRINCIPLES",
+      "residual_pct": 0.052509740461755425
+    },
+    {
+      "label": "J_CP_S786_eta_bar_calibrated",
+      "predicted": 2.9961548443528988e-05,
+      "observed": 3.18e-05,
+      "source": "PDG-2024 + grok_share rho_bar/eta_bar values",
+      "method": "A^2 lambda^6 eta_bar (1 - lambda^2/2)  with eta_bar=0.355 (PDG)",
+      "cvw_stamp": "v2.0.0",
+      "category": "CALIBRATION_FROM_PARAMETERS",
+      "residual_pct": 5.781294202739033
+    }
+  ]
+}
