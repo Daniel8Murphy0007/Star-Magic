@@ -1,0 +1,86 @@
+% =============================================================================
+% UQFF v5.78  Section Template :: T-xi
+% Closure-coupling papers (xi-coupling between two or more existing closures)
+% -----------------------------------------------------------------------------
+% USAGE
+%   1. Copy to whitepapers/PAPER_<NNNN>_<slug>.tex
+%   2. Replace every <PLACEHOLDER>
+%   3. Document BOTH parents (PAPER_<a> and PAPER_<b>) and the coupling xi.
+% -----------------------------------------------------------------------------
+% Coupling form:  xi_{ab} = <closure_a> * <weight_a> + <closure_b> * <weight_b> + ...
+% Constraint:     dxi/d<param> = 0 at canonical operating point.
+% =============================================================================
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage{listings,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,
+        language=Python,showstringspaces=false,columns=fullflexible}
+
+\title{<PAPER TITLE>: \\ $\xi$-Coupling Closure between PAPER\_<a> and PAPER\_<b>, v5.78}
+\author{Star-Magic UQFF \\ PAPER\_<NNNN> \,/\, Session <SESSION>}
+\date{<DATE>}
+
+% CLOSURE :: xi_<a>_<b> :: predicted=<X> observed=<Y> error_pct=<Z>
+% TEMPLATE :: T-xi
+% CANONICAL :: coupling_form = xi_ab = sum_k w_k * closure_k
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper derives the $\xi$-coupling between the previously closed
+sectors PAPER\_<a> (\emph{<short title a>}) and PAPER\_<b>
+(\emph{<short title b>}). The coupling is required to be stationary
+($\partial\xi/\partial p = 0$) at the canonical operating point in
+\texttt{dpm\_vacuum\_manifold.py} v3.0, and we verify the resulting
+joint prediction against <observational anchor>.
+\end{abstract}
+
+\section{Parent Closures}
+\begin{description}
+  \item[PAPER\_<a>] <short title>, closure $C_a = <value>$, $z_a=<z>$.
+  \item[PAPER\_<b>] <short title>, closure $C_b = <value>$, $z_b=<z>$.
+\end{description}
+
+\section{Coupling Definition}
+\begin{equation}
+  \xi_{ab} \;=\; w_a\, C_a \;+\; w_b\, C_b \;+\; \kappa_{ab}\, C_a C_b
+\end{equation}
+with weights $w_a, w_b$ derived from the canonical $|SO(5)|=10$ ratio and
+$\kappa_{ab}$ proportional to $F_{TRZ}^{\,n}$ where $n=<n>$ is fixed by
+dimensional analysis.
+
+\section{Stationarity Constraint}
+At the canonical operating point,
+\begin{equation}
+  \left.\frac{\partial \xi_{ab}}{\partial p}\right|_{\,p=p_\star} \;=\; 0
+\end{equation}
+which fixes <which canonical parameter or relationship>.
+
+\section{Joint Prediction}
+\begin{longtable}{lll}
+\toprule
+Observable & Predicted (joint) & Observed (cite) \\
+\midrule
+<obs> & <value> & <value $\pm$ error> \\
+\bottomrule
+\end{longtable}
+$\varepsilon = <Z>\%$, $z = <z>$.
+
+\section{Cross-references}
+\begin{itemize}
+  \item Parent PAPER\_<a>, parent PAPER\_<b>.
+  \item Ledger row: \texttt{xi\_<a>\_<b>} in \texttt{master\_closures.csv}.
+\end{itemize}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+\bibitem{ref1} <DOI/arXiv for the joint observational anchor>.
+\bibitem{paperA} PAPER\_<a> (Star-Magic).
+\bibitem{paperB} PAPER\_<b> (Star-Magic).
+\end{thebibliography}
+
+\end{document}

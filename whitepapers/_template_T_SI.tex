@@ -1,0 +1,91 @@
+% =============================================================================
+% UQFF v5.78  Section Template :: T-SI
+% Sigma-Inventory papers (closure-statistics / chi^2 / sigma deviation tables)
+% -----------------------------------------------------------------------------
+% USAGE
+%   1. Copy to whitepapers/PAPER_<NNNN>_<slug>.tex
+%   2. Replace every <PLACEHOLDER>
+%   3. Keep CLOSURE / TEMPLATE / CANONICAL banner lines VERBATIM
+% =============================================================================
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage{listings,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,
+        language=Python,showstringspaces=false,columns=fullflexible}
+
+\title{<PAPER TITLE>: \\ Sigma Inventory of <cluster> Closures under v5.78}
+\author{Star-Magic UQFF \\ PAPER\_<NNNN> \,/\, Session <SESSION>}
+\date{<DATE>}
+
+% CLOSURE :: <cluster_label>_sigma_inventory :: predicted=<chi2> observed=<dof> error_pct=<Z>
+% TEMPLATE :: T-SI
+% CANONICAL :: sigma_method = absolute_residual_over_observational_sigma
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper aggregates <N> closures from <cluster description> and reports
+the sigma-deviation inventory under UQFF v5.78. Of <N> closures,
+<n_exact> are exact (CE), <n_1sigma> within $1\sigma$ of the observational
+target, <n_2sigma> within $2\sigma$, and <n_open> remain as
+\texttt{OPEN\_PREDICTIONS} sentinels.
+\end{abstract}
+
+\section{Method}
+For each closure $i$ with UQFF prediction $P_i$ and observation $O_i\pm\sigma_i$,
+\begin{equation}
+  z_i \;=\; \frac{P_i - O_i}{\sigma_i}, \qquad \chi^2 \;=\; \sum_i z_i^{2}, \qquad
+  \mathrm{dof} = N - 1 .
+\end{equation}
+A closure is \emph{exact} (CE) if $|z_i|<10^{-6}$ and the predicted form is
+algebraically derivable from the canonical constants without fitting.
+
+\section{Inventory}
+\begin{longtable}{rlllrr}
+\toprule
+\# & Closure label & Predicted & Observed & $z_i$ & Tag \\
+\midrule
+1  & <closure_1>   & <P>       & <O>      & <z>   & <CE / 1S / 2S / OPEN> \\
+2  & <closure_2>   & <P>       & <O>      & <z>   & <CE / 1S / 2S / OPEN> \\
+% ... add rows ...
+\bottomrule
+\end{longtable}
+
+\section{Aggregate Statistics}
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+$N$ closures            & <N> \\
+Exact (CE)              & <n_exact> \\
+Within $1\sigma$        & <n_1sigma> \\
+Within $2\sigma$        & <n_2sigma> \\
+Beyond $2\sigma$        & <n_outlier> \\
+Open predictions (9999) & <n_open> \\
+$\chi^2$ / dof          & <chi2>/<dof> = <ratio> \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Outlier Analysis}
+<For every closure beyond $2\sigma$, give a one-paragraph diagnostic:
+which canonical constant or equation snippet from the \texttt{.txt}
+source dumps reconciles the gap, and which prior PAPER\_<NN> hosts
+the calibration.>
+
+\section{Cross-references}
+\begin{itemize}
+  \item Master ledger: \texttt{master\_closures.csv} (rows tagged \texttt{<cluster>}).
+  \item Tracker source: \texttt{\_uqff\_program.py}.
+  \item Open-prediction sentinels: \texttt{LEDGER\_REVIEW\_QUEUE.csv} \texttt{OPEN\_PLACEHOLDER}.
+\end{itemize}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+\bibitem{ref1} <DOI/arXiv per observational anchor>.
+\end{thebibliography}
+
+\end{document}

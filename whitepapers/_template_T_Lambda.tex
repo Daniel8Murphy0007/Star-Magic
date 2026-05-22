@@ -1,0 +1,94 @@
+% =============================================================================
+% UQFF v5.78  Section Template :: T-Lambda
+% Cosmological-constant / dark-energy / vacuum-density anchored sections
+% -----------------------------------------------------------------------------
+% USAGE
+%   1. Copy this file to whitepapers/PAPER_<NNNN>_<slug>.tex
+%   2. Replace every <PLACEHOLDER> token (search for the literal '<')
+%   3. Keep every CANONICAL :: line VERBATIM (the closure parser keys on them)
+%   4. Compile with pdflatex direct (NO PANDOC).  Two passes.
+% -----------------------------------------------------------------------------
+% CANONICAL CONSTANTS (do not edit; mirrored from dpm_vacuum_manifold.py v3.0)
+%   RHO_VAC_SCM = 4*sqrt(pi)*1e-37 = 7.0898154036e-37 J/m^3   (G9 structural)
+%   RHO_VAC_UA  = 10 * RHO_VAC_SCM = 7.0898154036e-36 J/m^3   (G7, |SO(5)|)
+%   BETA_I = 0.60     KAPPA = 5e-4 / day     [SSq] = 0.57
+%   H_SCm  = 0.99     U_UA  = 1.0e-4         F_TRZ = 0.1
+%   k_eta  = F_TRZ^113 = 1.0e-113
+% =============================================================================
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage{listings,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,
+        language=Python,showstringspaces=false,columns=fullflexible}
+
+\title{<PAPER TITLE>: \\ Cosmological-Constant / Vacuum-Density Closure under v5.78}
+\author{Star-Magic UQFF \\ PAPER\_<NNNN> \,/\, Session <SESSION>}
+\date{<DATE>}
+
+% --- Closure-tracker banner (parser keys on these lines, do not edit format) --
+% CLOSURE :: <closure_label> :: predicted=<X> observed=<Y> error_pct=<Z>
+% TEMPLATE :: T-Lambda
+% CANONICAL :: rho_vac_scm = 7.0898154036e-37 J/m^3
+% CANONICAL :: rho_vac_ua  = 7.0898154036e-36 J/m^3
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+<2--6 sentence abstract.  State: (a) the cosmological-constant/dark-energy
+anchor being closed, (b) the canonical UQFF expression involving
+$\rho_{\mathrm{vac,SCm}}$ or $\rho_{\mathrm{vac,UA}}$, (c) the observational
+target (Planck 2018, DES, eBOSS, JWST, etc.), and (d) the resulting
+predicted-vs-observed error.>
+\end{abstract}
+
+\section{Anchor and Target}
+\textbf{Observational anchor.} <e.g. Planck 2018 $\Omega_\Lambda h^2 = \ldots$ at $z=0$.>\\
+\textbf{Reference.} <DOI / arXiv / catalog ID> --- this MUST be a real citation.\\
+\textbf{UQFF target quantity.} <name and symbol>.
+
+\section{Canonical Equation}
+\begin{equation}
+  \boxed{\;<UQFF EQUATION involving \rho_{\mathrm{vac,SCm}} or \rho_{\mathrm{vac,UA}}>\;}
+  \label{eq:tlambda-main}
+\end{equation}
+The structural derivation enters via $\rho_{\mathrm{vac,SCm}} = 4\sqrt{\pi}\cdot 10^{-37}\,\mathrm{J/m^3}$
+under the G9 structural closure (PAPER\_409, hydrogen geometry); the
+$|SO(5)|=10$ ratio to $\rho_{\mathrm{vac,UA}}$ is G7 (PAPER\_1160).
+
+\section{Numerical Closure}
+\begin{longtable}{lll}
+\toprule
+Quantity & Predicted (UQFF v5.78) & Observed \\
+\midrule
+<quantity 1> & <value> & <value $\pm$ error> \\
+<quantity 2> & <value> & <value $\pm$ error> \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Error.} $\varepsilon = |P-O|/O = <Z>\%$.
+
+\section{Cross-references}
+\begin{itemize}
+  \item Canonical vacuum source: \texttt{dpm\_vacuum\_manifold.py} L97--98 (v3.0).
+  \item Calculator: <e.g. \texttt{CondensedPhysics3.py::CosmologicalConstantCalculator}>
+  \item Prior closure(s): PAPER\_<NN>, PAPER\_<MM>.
+\end{itemize}
+
+\section{Reproducibility}
+\begin{lstlisting}
+from dpm_vacuum_manifold import RHO_VAC_SCM, RHO_VAC_UA
+# show the one-liner that reproduces the predicted value
+\end{lstlisting}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+\bibitem{planck2018} Planck Collaboration, \emph{Planck 2018 results VI. Cosmological parameters}, A\&A 641, A6 (2020). \texttt{arXiv:1807.06209}.
+\bibitem{paper409}   PAPER\_409 (Star-Magic): \emph{Hydrogen-Geometry Derivation of $\rho_{\mathrm{vac,SCm}}$}.
+\bibitem{paper1160}  PAPER\_1160 (Star-Magic): \emph{F\_TRZ G7 Structural Closure / |SO(5)| Ratio}.
+\end{thebibliography}
+
+\end{document}

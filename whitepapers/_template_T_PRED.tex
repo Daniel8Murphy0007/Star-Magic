@@ -1,0 +1,85 @@
+% =============================================================================
+% UQFF v5.78  Section Template :: T-PRED
+% Open-Prediction papers (predicted-but-not-yet-observed; 9999 sentinels)
+% -----------------------------------------------------------------------------
+% USAGE
+%   1. Copy to whitepapers/PAPER_<NNNN>_<slug>.tex
+%   2. Replace every <PLACEHOLDER>
+%   3. The closure tracker tags err==9999 rows from this template into the
+%      OPEN_PREDICTIONS ledger tab, NOT into the high-error physics bucket.
+% =============================================================================
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage{listings,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,
+        language=Python,showstringspaces=false,columns=fullflexible}
+
+\title{<PAPER TITLE>: \\ Open UQFF Prediction (Pre-Observation), v5.78}
+\author{Star-Magic UQFF \\ PAPER\_<NNNN> \,/\, Session <SESSION>}
+\date{<DATE>}
+
+% NOTE: predicted is a finite number; observed=9999 is the OPEN-PREDICTION sentinel.
+% Error %=9999 is also a sentinel and MUST NOT be aggregated as a physics gap.
+% CLOSURE :: <closure_label> :: predicted=<X> observed=9999 error_pct=9999
+% TEMPLATE :: T-PRED
+% CANONICAL :: open_prediction = true
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The UQFF v5.78 framework predicts the value of <observable>; no published
+measurement currently exists at the required precision. This paper
+documents the prediction, the derivation chain, the observational
+program(s) that could test it, and the threshold at which the prediction
+falsifies.
+\end{abstract}
+
+\section{Prediction}
+\begin{equation}
+  \boxed{\;<UQFF observable> \;=\; <numerical prediction with units>\;}
+\end{equation}
+Derivation chain: <PAPER\_NN $\to$ PAPER\_MM $\to$ this paper>.
+
+\section{Falsification Criterion}
+The prediction is falsified at the $5\sigma$ level if a future measurement
+yields a value outside $<P>\pm 5\sigma_P$ where $\sigma_P$ is the propagated
+theoretical uncertainty from the canonical constants:
+\begin{itemize}
+  \item $\rho_{\mathrm{vac,SCm}}$: structural (zero theoretical uncertainty).
+  \item $\beta_i \approx 0.603$ ($\pm 0.0004\%$ from the closure hunt).
+  \item $\kappa = 5\times 10^{-4}/\mathrm{day}$ (exact rational $5/10000$).
+  \item $[SSq] = 0.57$ (exact rational $57/100$).
+\end{itemize}
+Propagated $\sigma_P$ = <value>.
+
+\section{Suggested Observational Tests}
+\begin{longtable}{lll}
+\toprule
+Probe / Instrument & Target sensitivity & Earliest data release \\
+\midrule
+<e.g. LISA, CTA, SKA-low, Roman, ELT, LIGO O5, future LHCb run> & <value> & <year> \\
+\bottomrule
+\end{longtable}
+
+\section{Status in the Ledger}
+This closure carries \texttt{observed=9999, error\_pct=9999} as a sentinel
+and is filed in the \texttt{OPEN\_PREDICTIONS} tab of the ledger triage.
+Do \emph{not} aggregate this into the high-error physics bucket.
+
+\section{Cross-references}
+\begin{itemize}
+  \item Sister open predictions: <e.g. $A_s$ at S764, $\eta_b$ at S764>.
+  \item Canonical source: \texttt{dpm\_vacuum\_manifold.py} v3.0.
+\end{itemize}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+\bibitem{ref1} <DOI/arXiv for the instrument design report or proposal>.
+\end{thebibliography}
+
+\end{document}
+
