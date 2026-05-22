@@ -7,7 +7,7 @@
 #  - Pipeline: pandoc .md -> pdflatex two-pass -> pdf/
 
 $pandoc = "$env:LOCALAPPDATA\Pandoc\pandoc.exe"
-$pdflatex = "C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe"
+$xelatex = "C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\xelatex.exe"
 $srcDir = "whitepapers"
 $outDir = "pdf"
 
@@ -16,8 +16,8 @@ if (!(Test-Path $pandoc)) {
     Write-Host "ERROR: pandoc not found at $pandoc"
     exit 1
 }
-if (!(Test-Path $pdflatex)) {
-    Write-Host "ERROR: pdflatex not found at $pdflatex"
+if (!(Test-Path $xelatex)) {
+    Write-Host "ERROR: xelatex not found at $xelatex"
     exit 1
 }
 
@@ -28,7 +28,7 @@ if (!(Test-Path $outDir)) {
 
 Write-Host "[Phase 3] Starting PDF regeneration"
 Write-Host "  pandoc: $pandoc"
-Write-Host "  pdflatex: $pdflatex"
+Write-Host "  xelatex: $xelatex"
 Write-Host ""
 
 # Get all PAPER_*.md files
@@ -55,8 +55,8 @@ foreach ($paper in $papers) {
     }
     $i++
     
-    # Convert MD to PDF: Simple pandoc direct PDF
-    & $pandoc $src -o $pdf --pdf-engine=$pdflatex 2>&1 | Out-Null
+    # Convert MD to PDF: Pandoc with xelatex (Unicode math support)
+    & $pandoc $src -o $pdf --pdf-engine=$xelatex 2>&1 | Out-Null
     
     $success = $false
     if (Test-Path $pdf) {
