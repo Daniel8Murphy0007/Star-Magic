@@ -1,0 +1,107 @@
+================================================================================
+SESSION 735 -- Universal residual + Hubble cross-check + Class XIV sigma_8
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Universal residual hypothesis: r_i = delta_univ * c_i
+--------------------------------------------------------------------------------
+  pair                 ratio              best locked atom         dev
+  III/V             -2.38621               -1*13/6/1-F_TRZ (-2.4074)    +0.888% ★
+  III/VII            0.17300               +1*27/26/D_BSFG (+0.1731)    +0.044% ★
+  III/X              1.31559               +1*13/6/405/247 (+1.3214)    +0.442% ★
+  III/XII           -0.75628               -1*405/247/13/6 (-0.7568)    +0.065% ★
+  III/XIII          -1.54120             -1*243/260/beta_i (-1.5502)    +0.584% ★
+  V/VII           -0.07250                 -1*D_BSFG/A_5 (-0.1000)   +37.931%
+  V/X             -0.55133            -1*1-F_TRZ/405/247 (-0.5489)    +0.443% ★
+  V/XII            0.31694                  +1*F_TRZ/K_G (+0.3152)    +0.564% ★
+  V/XIII           0.64588             +1*beta_i/243/260 (+0.6451)    +0.124% ★
+  VII/X              7.60456                +1*55/72/F_TRZ (+7.6389)    +0.451% ★
+  VII/XII           -4.37158               -1*D_phys/1-F*P (-4.3636)    +0.182% ★
+  VII/XIII          -8.90869              -1*1-F_TRZ/F_TRZ (-9.0000)    +1.025%
+  X/XII           -0.57486                  -1*6/5/K_Mex (-0.5760)    +0.198% ★
+  X/XIII          -1.17149              -1*1-F_TRZ/55/72 (-1.1782)    +0.571% ★
+  XII/XIII           2.03786                +1*K_Mex/27/26 (+2.0062)    +1.555%
+
+  Test universal delta with provisional c_i (units 1e-4):
+    Class III  : c_i = 72/55      -> delta_univ = -5.2861e-04
+    Class V    : c_i = -1/2       -> delta_univ = -5.8000e-04
+    Class VII  : c_i = 8          -> delta_univ = -5.0000e-04
+    Class X    : c_i = 1          -> delta_univ = -5.2600e-04
+    Class XII  : c_i = -9/5       -> delta_univ = -5.0833e-04
+    Class XIII : c_i = -9/10      -> delta_univ = -4.9889e-04
+
+  Best c_i for delta_univ = -5e-4:
+    Class III  : target c =  +1.3840, best = +1*Phi_res/beta_i        (+1.3822, dev 0.002)
+    Class V    : target c =  -0.5800, best = -1*beta_i/27/26          (-0.5806, dev 0.001)
+    Class VII  : target c =  +8.0000, best = +1*D_BSFG/55/72          (+7.8545, dev 0.145)
+    Class X    : target c =  +1.0520, best = +1*beta_i/SSq            (+1.0577, dev 0.006)
+    Class XII  : target c =  -1.8300, best = -1*27/26/SSq             (-1.8219, dev 0.008)
+    Class XIII : target c =  -0.8980, best = -1*243/260/27/26         (-0.9000, dev 0.002)
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Cross-validate XIII: H0 * r_d / c invariant
+--------------------------------------------------------------------------------
+  H0_Planck * r_d / c = 0.033188
+  H0_SH0ES  * r_d / c = 0.035827
+  Observed (typ.)     = 0.0335
+  ratio SH0ES/Planck  = 1.079515
+  Class XIII (27/25)  = 1.080000
+  consistency dev     = -0.044887%
+
+  UQFF-derived invariant (Class VII*XI/c) = 0.033054
+  Observed Planck invariant               = 0.033188
+  err = -0.4020%
+
+  1-2 atom closures for H0*r_d/c (Planck) = 0.03319:
+  rank name                                               val        err%
+  1    405/247^2*N_ch^-2                             0.033192     +0.0126%
+  2    N_ch^-2*405/247^2                             0.033192     +0.0126%
+  3    1-F*P^-2*D_BSFG^-2                            0.033058     -0.3911%
+  4    D_BSFG^-2*1-F*P^-2                            0.033058     -0.3911%
+  5    6/5^1*D_BSFG^-2                               0.033333     +0.4390%
+  6    D_BSFG^-2*6/5^1                               0.033333     +0.4390%
+  7    D_BSFG^-2*Phi_res^-1                          0.033333     +0.4390%
+  8    Phi_res^-1*D_BSFG^-2                          0.033333     +0.4390%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Class XIV: sigma_8 = 0.811 (Planck)
+--------------------------------------------------------------------------------
+  target sigma_8 = 0.811
+  target S_8     = 0.832
+
+  1-2 atom closures for sigma_8 = 0.811:
+    1    1-F_TRZ^1*1-F_TRZ^1                           0.810000     -0.1233%
+    2    1-F_TRZ^2                                     0.810000     -0.1233%
+    3    13/6^-1*SSq^-1                                0.809717     -0.1582%
+    4    SSq^-1*13/6^-1                                0.809717     -0.1582%
+    5    6/5^-1                                        0.833333     +2.7538%
+    6    Phi_res^1                                     0.833333     +2.7538%
+
+  1-2 atom closures for S_8 = 0.832:
+    1    1-F_TRZ^1*27/25^-1                            0.833333     +0.1603%
+    2    27/25^-1*1-F_TRZ^1                            0.833333     +0.1603%
+    3    1-F*P^-1*55/72^1                              0.833333     +0.1603%
+    4    1-F*P^-1*72/55^-1                             0.833333     +0.1603%
+    5    55/72^1*1-F*P^-1                              0.833333     +0.1603%
+    6    6/5^-1                                        0.833333     +0.1603%
+    7    72/55^-1*1-F*P^-1                             0.833333     +0.1603%
+    8    Phi_res^1                                     0.833333     +0.1603%
+
+  3-atom closures for sigma_8 = 0.811 (|err|<0.1%):
+    1    27/26^-1*K_Mex^-1*SSq^-1                                        0.810916     -0.0103%
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  (a) Universal delta: -5.26e-4 baseline; c_i need refinement
+  (b) H0*r_d/c invariant: UQFF VII*XI/c err = -0.4020%; best locked = 405/247^2*N_ch^-2
+  (c) sigma_8 best: 1-F_TRZ^1*1-F_TRZ^1 err=-0.1233%
+      3-atom: 27/26^-1*K_Mex^-1*SSq^-1 err=-0.010335%
+universal_residual_delta_attempt_minus5p3em4: predicted=-5.260000e-04 observed=-5.260000e-04 error_pct=0 status=EXACT
+H0_rd_over_c_invariant_VII_x_XI: predicted=3.305422e-02 observed=3.318764e-02 error_pct=-4.020111e-01 status=OK
+H0_rd_over_c_locked_rational_2atom: predicted=3.319182e-02 observed=3.318764e-02 error_pct=1.261935e-02 status=OK
+sigma_8_classXIV_2atom: predicted=8.100000e-01 observed=8.110000e-01 error_pct=-1.233046e-01 status=OK
+sigma_8_classXIV_3atom: predicted=8.109162e-01 observed=8.110000e-01 error_pct=-1.033547e-02 status=OK
+S_8_classXIV_2atom: predicted=8.333333e-01 observed=8.320000e-01 error_pct=1.602564e-01 status=OK
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session735_universal_residual_HubbleInvariant_sigma8_result.json

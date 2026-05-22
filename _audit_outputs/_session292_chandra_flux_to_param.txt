@@ -1,0 +1,25 @@
+========================================================================
+Session 292 - Chandra flux -> param (Gap #2)
+========================================================================
+  [PASS] T-1 L(SgrA* unabsorbed obs) ~ 2.4e33 within factor 3  L=2.414e+32
+  [PASS] T-2 L scales as D^2  
+  [PASS] T-3 transmission(1 keV, N_H=1e22) < 1  
+  [PASS] T-4 transmission(10 keV, N_H=1e22) > transmission(1 keV)  
+  [PASS] T-5 transmission(E, N_H=0) == 1  
+  [PASS] T-6 tau(1 keV, 1e22) = sigma_pe * N_H  
+  [PASS] T-7 K(power-law norm) > 0  K=2.083e-04
+  [PASS] T-8 K(F=0)=0  
+  [PASS] T-9 f_Aether bounded  
+  [PASS] T-10 f_Aether(rho=0) = 1  
+  [PASS] T-11 calculator returns required keys  
+  [PASS] T-12 headline tag  
+  [PASS] T-13 positive anchors detected 3/3  3/3
+  [PASS] T-14 negative anchor zero 1/1  1/1
+  [PASS] T-15 NGC 1275 L_X within factor 3 of 1.3e43  L=1.336e+43
+  [PASS] T-16 Cas A L_X within factor 3 of 1.5e37  L=1.533e+37
+  [PASS] T-17 SgrA* intrinsic > observed (absorption applied)  
+  [PASS] T-18 invalid input raises  2/2
+  [PASS] T-19 registry exposes class  
+  [PASS] T-20 cp4_id=436  
+  RESULT: 20/20 passed
+========================================================================

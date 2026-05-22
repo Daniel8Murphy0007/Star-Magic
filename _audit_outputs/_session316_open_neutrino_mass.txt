@@ -1,0 +1,80 @@
+========================================================================
+ S316  --  NEUTRINO MASS MECHANISM
+========================================================================
+
+   Higgs VEV:               v = 246.0 GeV
+   Planck mass:             M_P = 1.220e+19 GeV
+
+------------------------------------------------------------------------
+ UQFF locked seesaw scale
+------------------------------------------------------------------------
+
+   M_R  =  M_P * F_TRZ^D_phys
+        =  M_P * 10^-4
+        =  1.220e+15  GeV
+
+ CORRECTION (Daniel T. Murphy, May 2026): seesaw scale anchored
+ to D_phys (= 4 spacetime dims) rather than (N_ch+1).  This places
+ M_R at the natural GUT scale ~10^15 GeV and yields sub-eV neutrino
+ masses without arbitrary Yukawa suppression.
+
+ Standard seesaw mass:  m_nu = y^2 * v^2 / M_R, with y ~ 1.
+   m_nu (y=1)  =  v^2 / M_R  =  4.960e-11  GeV
+               =  0.0496  eV
+
+ Additional half-spinor pairing prefactor Phi_res applied uniformly,
+ then generation ladder Phi_res^k (k=0,1,2 for gen 3,2,1).
+
+   m_nu_top (corrected) = Phi_res * v^2/M_R * 1e9 = 0.0413  eV
+
+   m_3  =  0.0413  eV
+   m_2  =  m_3 * Phi_res        =  0.0344  eV
+   m_1  =  m_3 * Phi_res^2      =  0.0287  eV
+
+   Sum m_nu = m_1 + m_2 + m_3   =  0.1045  eV
+   Planck bound:                  < 0.12 eV (95% CL)
+   Compatibility:                 YES
+
+------------------------------------------------------------------------
+ Mass-squared splittings vs observation
+------------------------------------------------------------------------
+
+   Delta m_21^2  predicted:  0.363 * 10^-3 eV^2
+                 observed:   0.0742 * 10^-3 eV^2
+                 ratio:      4.89
+
+   Delta m_31^2  predicted:  0.8847 * 10^-3 eV^2
+                 observed:   2.510 * 10^-3 eV^2
+                 ratio:      0.352
+
+ UQFF predicts splittings ~ correct order of magnitude with
+ normal hierarchy by construction.  Quantitative tuning would
+ require the full BSFG-vortex coupling matrix (next paper).
+
+------------------------------------------------------------------------
+ Dirac vs Majorana?
+------------------------------------------------------------------------
+
+ UQFF: neutrinos acquire mass via BSFG-vortex pairing.  The
+ pairing is LEPTON-NUMBER VIOLATING (Delta L = 2), making
+ neutrinos MAJORANA.  Predicts neutrinoless double beta decay
+ with effective mass:
+   m_bb  ~  Sum_i U_ei^2 * m_i ~ 30.03  meV  for normal hierarchy
+
+ KamLAND-Zen 2024 limit: m_bb < 36-156 meV.  UQFF prediction
+ 30.0 meV is within reach of next-generation 0vbb experiments
+ (LEGEND-1000, nEXO, CUPID by 2030).
+
+------------------------------------------------------------------------
+ Hierarchy prediction
+------------------------------------------------------------------------
+
+ UQFF Phi_res = 5/6 monotonic suppression ENFORCES
+ NORMAL hierarchy (m_3 > m_2 > m_1).
+ JUNO will determine hierarchy at 4 sigma by 2028.
+ Inverted hierarchy would refute UQFF.
+
+========================================================================
+ S316 COMPLETE.  M_R = M_P*F_TRZ^D_phys = 1.22e+15 GeV;
+ Sum m_nu = 0.1045 eV (< 0.12 eV Planck cap); normal hierarchy; Majorana.
+========================================================================

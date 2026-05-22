@@ -1,0 +1,1 @@
+Karman line km: 100 vs 100 -> EXACT

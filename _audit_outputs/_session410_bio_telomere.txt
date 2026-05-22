@@ -1,0 +1,1 @@
+S410 COMPLETE. telomere repeat = D_BSFG = 6; obs (TTAGGG) = 6 bp; match 0.0000%. (primitive identification: TTAGGG length = D_BSFG)

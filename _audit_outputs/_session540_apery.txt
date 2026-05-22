@@ -1,0 +1,1 @@
+S540 COMPLETE. Apery zeta(3) = 1.204833; closure = F*SO5+F*K+F^2*Phi_res-F^2*K+F^2-F^3; target 1.202057; match 0.2310%.

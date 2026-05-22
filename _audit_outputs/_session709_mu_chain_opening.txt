@@ -1,0 +1,26 @@
+================================================================================
+SESSION 709 -- mu = m_p/m_e  (third independent UQFF chain)
+================================================================================
+  Tree formula:   mu_tree = A_5^2/2 + D_BSFG^2 = 1836  (EXACT)
+                  numeric                       = 1836.0000000000
+  CODATA mu                                     = 1836.1526734300
+  tree residual                                  = -8.314855e-03 % (-83.149 ppm)
+--------------------------------------------------------------------------------
+  Small parameter delta_mu (locked rational)
+    Form A: 3*F_TRZ / A_5^2                       = 1/12000
+    Form B: 1 / (D_phys*SO5_order*A_5*5)           = 1/12000
+    Form C: 1 / (A_5*SO5_order^2*(D_phys-2))       = 1/12000
+    numeric value                                  = 8.3333333333e-05
+--------------------------------------------------------------------------------
+  1-loop prediction  mu = mu_tree*(1 + delta_mu)  = 1836.1530000000
+  CODATA mu                                       = 1836.1526734300
+  residual                                        = +3.265700e-04
+  err_pct                                         = +1.778556e-05 % (+0.1779 ppm)
+--------------------------------------------------------------------------------
+  Residual cascade mu-chain (opening):
+    tree (A_5^2/2 + D_BSFG^2)                     =   -83.149 ppm
+    tree + 1-loop (1 + 1/12000)                   =    +0.178 ppm
+================================================================================
+mu_tree_locked_rational: predicted=1.8360000000e+03 observed=1.8361526734e+03 error_pct=-0.00831485 status=OK
+mu_1loop_prediction: predicted=1.8361530000e+03 observed=1.8361526734e+03 error_pct=+0.0000177856 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session709_mu_chain_opening_result.json

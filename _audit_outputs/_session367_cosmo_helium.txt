@@ -1,0 +1,1 @@
+S367 COMPLETE. Y_p = (1-Phi_res) + Phi_res*F_TRZ*(1-F_TRZ*SSq) = 0.24525; obs = 0.2453; match 0.020%.

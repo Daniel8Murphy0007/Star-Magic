@@ -1,0 +1,26 @@
+========================================================================
+S302 TDE mass-rate smoke tests
+========================================================================
+  [PASS] T-1 rate(M=0)=0  
+  [PASS] T-2 rate(M=-1)=0  
+  [PASS] T-3 rate(M>Hills)=0  
+  [PASS] T-4 rate at pivot = Gamma_0  
+  [PASS] T-5 rate decreases with M_BH  
+  [PASS] T-6 rate(low M) > rate(pivot)  
+  [PASS] T-7 slope = -0.404 within 1%  
+  [PASS] T-8 rate just below Hills > 0  
+  [PASS] T-9 rate just above Hills = 0  
+  [PASS] T-10 aether bounded  
+  [PASS] T-11 aether(rho=0)=1  
+  [PASS] T-12 keys present  
+  [PASS] T-13 S302 tag  
+  [PASS] T-14 n_anchors=4  
+  [PASS] T-15 all 4 match  4/4
+  [PASS] T-16 SgrA* Gamma in (4e-5, 1e-4)  
+  [PASS] T-17 dwarf Gamma > SgrA* Gamma  
+  [PASS] T-18 Hills cutoff exposed in query_result  
+  [PASS] T-19 cp4_id=446  
+  [PASS] T-20 audit_session=302  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

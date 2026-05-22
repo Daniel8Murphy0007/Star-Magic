@@ -1,0 +1,1 @@
+S523 COMPLETE. Pareto 80/20 exponent = 1.154167; closure = Phi_res+F*K+F*Phi_res+F^2*K+F^2*Phi_res; target 1.161; match 0.5886%.

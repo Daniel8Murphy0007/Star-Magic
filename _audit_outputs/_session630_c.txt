@@ -1,0 +1,1 @@
+Speed of light c lead: 2.997000 vs 2.9980 -> 0.0334%

@@ -1,0 +1,12 @@
+S343_inv_alpha :: predicted=137.0 observed=137.035999 error_pct=0.026269739530270356
+S344_mp_me :: predicted=1836.1181087116884 observed=1836.15267 error_pct=0.0018822665934188968
+S345_Rydberg_eV :: predicted=13.61284431765582 observed=13.605693 error_pct=0.05256121577798515
+S346_a0_m :: predicted=5.290381967822683e-11 observed=5.29177210903e-11 error_pct=0.02626986156385999
+S347_sin2_thetaW :: predicted=0.23148148148148148 observed=0.23122 error_pct=0.11308774391552358
+S348_alpha_s_MZ :: predicted=0.11857707509881422 observed=0.1179 error_pct=0.5742791338543002
+S349_StefanBoltz :: predicted=5.670374419e-08 observed=5.670374419e-08 error_pct=0.0
+S350_rH2_pm :: predicted=71.42015656560622 observed=74.14 error_pct=3.6685236503827627
+S351_n_periods :: predicted=7 observed=7 error_pct=0.0
+S352_H_Lyalpha_eV :: predicted=10.209633238241866 observed=10.2 error_pct=0.0944435121751592
+
+PAPER_1189 originating session: 10 closures emitted (S343-S352).

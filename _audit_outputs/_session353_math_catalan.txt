@@ -1,0 +1,1 @@
+S353 COMPLETE. G_Catalan = (1+Phi_res)/2 = 11/12 = 0.91667; obs = 0.91596559; match 0.077%.

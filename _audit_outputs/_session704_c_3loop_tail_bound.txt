@@ -1,0 +1,35 @@
+================================================================================
+SESSION 704 -- c-chain 3-loop tail bound (loop-factorial identity)
+================================================================================
+  delta_c (locked S702)                              = 1/1440 = 6.944444e-04
+  c_2^(c) (locked S703) = 5 pi^2 / 9                  = 5.4831135562
+  c_3^(c) = (c_2^(c))^2 / 2! = 25 pi^4 / 162          = 15.0322671349
+           rational factor = 25/162                   = 0.1543209877
+--------------------------------------------------------------------------------
+  c_tree-R (S702 1-loop)                             = 2.997917e+08 m/s
+  c_2loop  (S703 2-loop)                             = 2.997925e+08 m/s
+  c_3loop  (S704 3-loop)                             = 2.997925e+08 m/s
+  c_CODATA  (exact)                                   = 2.997925e+08 m/s
+--------------------------------------------------------------------------------
+  residual S702 (1-loop)                              =    -2.6396 ppm
+  residual S703 (2-loop)                              =    +6.4751 ppb
+  residual S704 (3-loop)                              =    +1.4374 ppb
+  improvement factor (2-loop -> 3-loop)               = 4.50x
+--------------------------------------------------------------------------------
+  predicted 3-loop tail = c_3 * delta_c^3             = 5.034276e-09
+  observed 2-loop residual gap                        = 6.470658e-09
+  ratio (predicted / observed)                        = 0.7780
+  in convergence band (0.3, 3.0)                      = True
+--------------------------------------------------------------------------------
+  Borel ratio test: c_n * delta_c^n for n=1..7:
+    n=1: c_n=  1.000000e+00  contrib=-6.944444e-04  partial=0.999305555556
+    n=2: c_n=  5.483114e+00  contrib=+2.644248e-06  partial=0.999308199804
+    n=3: c_n=  1.503227e+01  contrib=-5.034276e-09  partial=0.999308194770
+    n=4: c_n=  2.747454e+01  contrib=+6.389700e-12  partial=0.999308194776
+    n=5: c_n=  3.766151e+01  contrib=-6.082544e-15  partial=0.999308194776
+    n=6: c_n=  4.130047e+01  contrib=+4.632122e-18  partial=0.999308194776
+    n=7: c_n=  3.774252e+01  contrib=-2.939636e-21  partial=0.999308194776
+================================================================================
+c3_loop_factorial: predicted=1.503226713e+01 observed=1.932128062e+01 error_pct=-22.198391 status=OK
+c_3loop_layered_dpm: predicted=2.997925e+08 observed=2.997925e+08 error_pct=0.0000001437 status=OK
+Artifact written: _session704_c_3loop_result.json

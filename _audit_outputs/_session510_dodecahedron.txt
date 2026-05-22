@@ -1,0 +1,1 @@
+S510 COMPLETE. Dodecahedron faces F = 12.0000 = 2*D_BSFG = 12; target 12; match 0.0000%.

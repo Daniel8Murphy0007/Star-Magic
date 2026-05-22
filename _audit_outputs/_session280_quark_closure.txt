@@ -1,0 +1,54 @@
+  q  log10(M/m)  best closures
+==========================================================================================
+
+--- u-quark  log10(m_Planck/m_u) = 21.7522 ---
+  N=22  beta=  -2.4805  form='e^2-pi^2                    '  mass_resid=  0.064%
+  N=21  beta=   7.5176  form='K_Mex^2*sqrt3               '  mass_resid=  0.107%
+  N=21  beta=   7.5176  form='sqrt3*K_Mex^2               '  mass_resid=  0.107%
+  N=22  beta=  -2.4669  form='3^(1/4)-beta_e              '  mass_resid=  0.251%
+  N=21  beta=   7.5358  form='K_Mex*D_BSFG*beta_i         '  mass_resid=  0.313%
+  N=21  beta=   7.5358  form='beta_i*K_Mex*D_BSFG         '  mass_resid=  0.313%
+  N=21  beta=   7.5398  form='1/Phi_res*2pi               '  mass_resid=  0.404%
+  N=21  beta=   7.5047  form='N_ch-5^(1/4)                '  mass_resid=  0.406%
+
+--- d-quark  log10(m_Planck/m_d) = 21.4174 ---
+  N=21  beta=   4.1767  form='2K_Mex+F_TRZ^2              '  mass_resid=  0.071%
+  N=21  beta=   4.1767  form='F_TRZ^2+2K_Mex              '  mass_resid=  0.071%
+  N=20  beta=  14.1667  form='2K_Mex+SO5                  '  mass_resid=  0.160%
+  N=20  beta=  14.1667  form='D_crit-N_ch*Phi_res         '  mass_resid=  0.160%
+  N=20  beta=  14.1667  form='Phi_res*D_crit-N_ch         '  mass_resid=  0.160%
+  N=20  beta=  14.1667  form='SO5+2K_Mex                  '  mass_resid=  0.160%
+  N=20  beta=  14.1667  form='2Phi_res+K_Mex*D_BSFG       '  mass_resid=  0.160%
+  N=20  beta=  14.1667  form='K_Mex*D_BSFG+2Phi_res       '  mass_resid=  0.160%
+
+--- s-quark  log10(m_Planck/m_s) = 20.1163 ---
+  N=20  beta=   1.1626  form='ln10-2SSq                   '  mass_resid=  0.016%
+  N=20  beta=   1.1626  form='ln10-beta_p                 '  mass_resid=  0.016%
+  N=20  beta=   1.1623  form='sqrtSO5-2                   '  mass_resid=  0.023%
+  N=20  beta=   1.1623  form='sqrtSO5-sqrtD_phys          '  mass_resid=  0.023%
+  N=20  beta=   1.1621  form='sqrt3-SSq                   '  mass_resid=  0.029%
+  N=20  beta=   1.1667  form='2-Phi_res                   '  mass_resid=  0.078%
+  N=19  beta=  11.1691  form='beta_e^2-pi                 '  mass_resid=  0.133%
+  N=19  beta=  11.1720  form='beta_e+e^2                  '  mass_resid=  0.200%
+
+--- c-quark  log10(m_Planck/m_c) = 18.9829 ---
+  N=19  beta=  -0.1713  form='5^(1/4)-2Phi_res            '  mass_resid=  0.001%
+  N=19  beta=  -0.1713  form='log_pi-3^(1/4)              '  mass_resid=  0.002%
+  N=19  beta=  -0.1736  form='2K_Mex-K_Mex^2              '  mass_resid=  0.054%
+  N=18  beta=   9.8333  form='N_ch+Phi_res                '  mass_resid=  0.106%
+  N=18  beta=   9.8333  form='Phi_res+N_ch                '  mass_resid=  0.106%
+  N=19  beta=  -0.1667  form='4-2K_Mex                    '  mass_resid=  0.106%
+  N=19  beta=  -0.1667  form='D_phys-2K_Mex               '  mass_resid=  0.106%
+  N=19  beta=  -0.1667  form='Phi_res-1                   '  mass_resid=  0.106%
+
+--- b-quark  log10(m_Planck/m_b) = 18.4655 ---
+  N=18  beta=   4.6576  form='5^(1/4)+sqrtSO5             '  mass_resid=  0.060%
+  N=18  beta=   4.6576  form='sqrtSO5+5^(1/4)             '  mass_resid=  0.060%
+  N=18  beta=   4.6585  form='K_Mex*sqrt5                 '  mass_resid=  0.080%
+  N=18  beta=   4.6585  form='sqrt5*K_Mex                 '  mass_resid=  0.080%
+  N=18  beta=   4.6587  form='1/beta_i+3                  '  mass_resid=  0.086%
+  N=18  beta=   4.6587  form='1/beta_i+sqrtN_ch           '  mass_resid=  0.086%
+  N=17  beta=  14.6616  form='2pi+beta_tau                '  mass_resid=  0.151%
+  N=17  beta=  14.6616  form='beta_tau+2pi                '  mass_resid=  0.151%
+
+Wrote _session280_quark_closure.json

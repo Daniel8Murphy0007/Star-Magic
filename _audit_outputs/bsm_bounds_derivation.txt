@@ -1,0 +1,23 @@
+========================================================================
+BSM Mass Bound Derivation from SCm Phonon Gap
+========================================================================
+  m_BSM = (ℏω_SCm/c²)·S₂₆⁽³⁾·(2·F_{UBi}/F_U - 1)
+  ℏω_SCm = 8.285951e-22 J = 5.172254e-03 eV
+  S₂₆⁽³⁾ = 5.921681e+26
+  2·F_{UBi}/F_U - 1 = 0.2000
+  m_BSM = 1.091828e-12 kg = 6.125688e+23 eV/c²
+  σ_m/m = 0.5029 (50.3%)
+
+Error budget:
+  omega_frac: 0.0%
+  SSq_frac: 1.1%
+  FUBi_frac: 98.9%
+
+Experimental comparisons:
+  tau_g-2: arXiv:2506.15245
+  CKM_Vcb: arXiv:2506.15256
+  LFV_B_Kstar: arXiv:2506.15347
+  VLQ_mass: arXiv:2506.15515
+  neutrino_polarizability: arXiv:2506.14881
+
+✓ BSM mass bound derivation complete

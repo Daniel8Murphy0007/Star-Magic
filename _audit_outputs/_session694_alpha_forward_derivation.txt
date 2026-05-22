@@ -1,0 +1,43 @@
+==============================================================================
+  Session 694  --  Forward Derivation of 1/alpha from UQFF Primitives
+==============================================================================
+
+  Locked primitives used:
+    F_TRZ   = 1/10   (0.100000)
+    Phi_res = 5/6    (0.833333)
+    SSq     = 57/100 (0.570000)
+    K_Mex   = 25/12   (2.083333)
+    D_BSFG  = 6
+    |SO(5)| = 10
+
+  Structural identities verified:
+    F_TRZ * Phi_res                  = 1/12  (half-spinor identity)
+    Phi_res * |SO(5)| / D_phys       = 25/12  (G1 Mexican-hat)
+    |SO(5)| * D_BSFG                 = 60  (G6-G7 ladder)
+
+  Forward closed form (rational coefficient of pi):
+    1/alpha_UQFF  =  (4 pi * D_BSFG * K_Mex * Phi_res)
+                    -----------------------------------
+                       1  -  SSq * F_TRZ * Phi_res
+
+                  =  4 pi * (125/12)  /  (1 - 57/1200)
+                  =  50000 * pi / 1143
+
+  Numerical:
+    1/alpha_UQFF   = 137.427500157
+    1/alpha_CODATA = 137.035999084    (empirical anchor, not used)
+
+    Residual (abs) = +0.391501
+    Residual (%)   = +0.2857 %
+
+  Verdict: PASS  (forward derivation closes to < 1 % without calibration)
+
+  Honesty caveat:
+    The 4 pi factor is a structural QED normalization, not derived from
+    the locked primitives in this session.  Promoting that 4 pi to a
+    pure G1-G8 consequence (likely via the SO(26)/(SO(24)xSO(2)) coset
+    volume) is queued for Session 695.  The residual ~0.29 % gap is
+    attributed to two-loop + KK 1/26! tower corrections per PAPER_1162.
+==============================================================================
+alpha_inverse: predicted=137.427500157 observed=137.035999084 error_pct=0.285692 status=OK
+  Wrote: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session694_alpha_forward_result.json

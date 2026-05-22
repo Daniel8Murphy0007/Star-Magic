@@ -1,0 +1,16 @@
+========================================================================
+Session 285 — P vs NP conjecture-grade tag smoke tests
+========================================================================
+  [PASS] T-1 status is CONJECTURE-GRADE  status='CONJECTURE-GRADE'
+  [PASS] T-2 solvability == 0.00  solv=0.0
+  [PASS] T-3 UQFF position == P_neq_NP  pos='P_neq_NP'
+  [PASS] T-4 Clay status OPEN  
+  [PASS] T-5 forbidden-claim words present  missing=set()
+  [PASS] T-6 get_tag returns a copy  
+  [PASS] T-7 unknown key raises KeyError  
+  [PASS] T-8 assert guard fires on tampering  
+  [PASS] T-9 audit_gap == 11  
+  [PASS] T-10 whitepaper use restricted to motivation_only  
+------------------------------------------------------------------------
+  RESULT: 10/10 tests passed
+========================================================================

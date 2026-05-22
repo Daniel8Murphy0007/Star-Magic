@@ -1,0 +1,1 @@
+S534 COMPLETE. e^2 = 7.395833; closure = D_BSFG+K-F*SO5+F*Phi_res+F*K+F^2*K; target 7.389056; match 0.0917%.

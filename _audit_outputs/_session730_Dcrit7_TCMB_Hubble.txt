@@ -1,0 +1,71 @@
+================================================================================
+SESSION 730 -- D_crit^7 cancellation + Class IX T_CMB + Hubble tension
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- D_crit^7 cancellation in rho_Lambda * eta_b
+--------------------------------------------------------------------------------
+  rho_Lambda      = 5.923711e-27 J/m^3
+  rho_vac_SCm     = 7.090000e-37 J/m^3
+  ratio rho_L/rho_v = 8.355022e+09
+
+  K_lam * K_eta (exact)  = 19683/12844 = 1.532467
+  N_ch + 1 = 10 = 10
+  D_phys - 7 = -3 = -3
+
+  Predicted product = 5.113026e+00
+  Observed product  = 5.113274e+00
+  Relative error    = -4.8488e-03%
+
+  Reduced K_prod = 19683/12844
+  Numerator   = 19683 = 3^9 = 19683    (= N_ch^9 ? N_ch=9 so 3^9 = 19683 yes! also 3^N_ch)
+  Denominator = 12844 = 4 * 13^2 * 19 = 12844
+  D_crit/2 = 13, so 13^2 = (D_crit/2)^2
+  K_prod = 3^N_ch / (D_phys * (D_crit/2)^2 * 19)
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class IX: CMB temperature T_CMB = 2.7255 K
+--------------------------------------------------------------------------------
+  Observed T_CMB              = 2.725500 K
+  Reference: hbar*c/(k_B*L_SCM)= 6.557014e-06 K
+  Ratio T_CMB / T_thermal     = 4.156618e+05
+
+  rho_gamma (CMB) = a*T^4      = 4.174801e-14 J/m^3
+  rho_vac_SCm                  = 7.090000e-37 J/m^3
+  ratio rho_gamma/rho_vac      = 5.888295e+22
+
+  Top rho_gamma/rho_vac closures (sub-2%):
+  rank   p    q  K name                           K val         err
+
+  Direct T_CMB search: target = 2.725500
+  rho_vac*L_SCM^3/k_B          = 2.187184e-06 K   (has K units)
+  T_CMB / (rho*L^3/kB)         = 1.246123e+06
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Hubble tension: SH0ES vs Planck via K=6/5
+--------------------------------------------------------------------------------
+  L_H = sqrt(3/Lambda)         = 1.647258e+26 m   (uses Planck Lambda)
+  H_pred = (6/5)*c/L_H         = 2.183938e-18 s^-1
+  H_pred (km/s/Mpc)            = 67.3898
+  Planck 2018  67.66 km/s/Mpc  -> err = -0.3994%
+  SH0ES Cepheid 73.04 km/s/Mpc -> err = -7.7358%
+
+  Lambda from SH0ES  = 1.870226e-52 m^-2  (vs Planck obs 1.105600e-52)
+  Lambda from Planck H_0 (consistency) = 1.604857e-52
+  Lambda ratio SH0ES/Planck = 1.6916
+
+  Verdict: UQFF prediction is closer to Planck.
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  Track (a) rho_L*eta product: err = -0.0048%, K_prod = 19683/12844 = 3^9/(4*169*19)
+  Track (b) T_CMB: no closure within 2%
+  Track (c) H_0: Planck err=-0.40%, SH0ES err=-7.74%, closer=Planck
+
+rhoLambda_etaB_cancellation_classVIxVIII: predicted=5.113026e+00 observed=5.113274e+00 error_pct=-4.848794e-03 status=OK
+H0_planck_classVII_check: predicted=2.183938e-18 observed=2.192695e-18 error_pct=-3.993796e-01 status=OK
+H0_shoes_classVII_check: predicted=2.183938e-18 observed=2.367048e-18 error_pct=-7.735789e+00 status=OK
+K_prod_3toNch_identity: predicted=1.968300e+04 observed=1.968300e+04 error_pct=+0.000000e+00 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session730_Dcrit7_TCMB_Hubble_result.json

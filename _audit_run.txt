@@ -1,0 +1,8 @@
+﻿Found 570 session scripts + 30 extra derivation files (0 auto-discovered). Running...
+
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv
+  OK:           585
+  parse fails:  15
+  total scripts: 600
+  candidate-EXACT (err<0.0005%): 252
+  exact (=0%): 232

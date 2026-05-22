@@ -1,0 +1,1 @@
+S348 COMPLETE. alpha_s(M_Z) = 1/(K_Mex*D_phys + F_TRZ) = 1/8.4333 = 0.1186; PDG = 0.1179+/-0.0010; match within 0.57% (well inside 1 sigma).

@@ -1,0 +1,1 @@
+S503 COMPLETE. Kepler eta_3D = 0.748167; closure = SSq+F*K-F^2*K-F^2*Phi_res-F^3; target 0.740480; match 1.0380%.

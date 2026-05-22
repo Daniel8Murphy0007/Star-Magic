@@ -1,5 +1,6 @@
 script,count,status_breakdown
 ,26,OK=8;CE_strict=6;EXACT=6;OPEN_PREDICTIONS=4;CE=2
+_session785_PMNS_solar_reactor_CV18.py,5,EXACT=3;OK=1;candidate_EXACT=1
 _session201_closures.py,1,OK=1
 _session202_closures.py,1,OK=1
 _session203_closures.py,1,OK=1
@@ -569,7 +570,6 @@ _session781_cosmoconst_entropy_CV14.py,1,OK=1
 _session782_lambdaH_yt_etaB_CV15.py,1,OK=1
 _session783_sinW_alphasGUT_rho_CV16.py,1,OK=1
 _session784_MGUT_Dm2atm_PMNS_CV17.py,1,OK=1
-_session785_PMNS_solar_reactor_CV18.py,1,OK=1
 _chain_trace_26layer.py,1,OK=1
 _chain_trace_C.py,1,PARSE_FAIL=1
 _chain_trace_C_particles.py,1,PARSE_FAIL=1

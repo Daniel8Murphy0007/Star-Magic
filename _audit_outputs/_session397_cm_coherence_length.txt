@@ -1,0 +1,1 @@
+S397 COMPLETE. xi_0/(hbar v_F/Delta) = F_TRZ*Phi_res*D_phys-F_TRZ^2-F_TRZ^2*SSq = 0.3176; obs (1/pi) = 0.3183; match 0.213%.

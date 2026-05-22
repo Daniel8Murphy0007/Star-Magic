@@ -1,0 +1,36 @@
+================================================================================
+SESSION 717 -- alpha-chain universal-ratio test (Class I vs Class II)
+================================================================================
+  alpha carry-over: lambda_3 = 15/7 (S714),  lambda_4 = 19/12 (S715)
+  c_2 = pi/8 = 0.3926990817
+--------------------------------------------------------------------------------
+  TEST 1: Unified geometric-ratio hypothesis
+    r_{2->3} = lambda_3 * c_2 / 2          = 4.207490e-01
+    r_{3->4} = (lambda_4/lambda_3)*c_2/3   = 9.672033e-02
+    ratio-of-ratios (pi/8 cancels)         = 3*lambda_3^2 / (2*lambda_4) = 4050/931 = 4.350161
+    Class II requires this = 1 exactly
+    mismatch                               = +335.0161 %   --> alpha is NOT Class II
+--------------------------------------------------------------------------------
+  TEST 2: lambda-sequence recursion candidates
+    A) lambda_4 / lambda_3 = 133/180  =  0.738889
+    B) lambda_4 - lambda_3 = -47/84  =  -0.559524
+    C) lambda_3 * lambda_4 = 95/28  =  3.392857
+    D) (lambda_4 / lambda_3) / 3 = 133/540  =  0.246296
+--------------------------------------------------------------------------------
+  TEST 3: Structural decomposition recap (from S714/S715)
+    lambda_3 = 15/7 = 2 / [SO5_order * F_TRZ * (Phi_res + F_TRZ)]
+        verified: 15/7 == 15/7  OK
+    lambda_4 = 19/12 = K_Mex - F_TRZ * Phi_res * D_BSFG
+        verified: 19/12 == 19/12  OK
+    -> distinct generating templates -- no single recursion connects them
+================================================================================
+  CONCLUSION:
+    * alpha-chain is Class I:  c_n = lambda_n * c_2^(n-1) / (n-1)!
+                               with per-loop locked rationals lambda_n
+    * mu-chain    is Class II: c_n = c_2 * (3*K_Mex)^(n-2)
+                               with single locked ratio
+    * The universality boundary is REAL and locked-primitive resolved.
+================================================================================
+alpha_classII_unified_ratio_test: predicted=1.000000000000e+00 observed=4.350161117078e+00 error_pct=+335.016112 status=FAIL
+alpha_classI_per_loop_locked: predicted=1.000000000000e+00 observed=1.000000000000e+00 error_pct=+0.000000000000 status=EXACT
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session717_alpha_class_universality_test_result.json

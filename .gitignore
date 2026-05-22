@@ -264,3 +264,8 @@ wolfram_debug_*.txt
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Backup files (added 2026-05-22)
+*.bak
+*.bak[0-9]
+*.bak_*

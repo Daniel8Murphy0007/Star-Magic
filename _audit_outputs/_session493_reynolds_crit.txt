@@ -1,0 +1,1 @@
+S493 COMPLETE. Re_crit pipe (x100) = 23.0000 = 23 = D_crit - D_phys + F_TRZ*SO5; target 23; match 0.0000%.

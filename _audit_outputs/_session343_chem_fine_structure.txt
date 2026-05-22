@@ -1,0 +1,1 @@
+S343 COMPLETE. 1/alpha = A_5*K_Mex + 1/(F_TRZ*Phi_res) = 125 + 12 = 137.0000; CODATA 1/alpha = 137.035999; alpha = 0.0072993; match within 0.026%.

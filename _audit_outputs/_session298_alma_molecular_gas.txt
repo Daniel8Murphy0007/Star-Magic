@@ -1,0 +1,26 @@
+========================================================================
+S298 ALMAMolGas smoke tests
+========================================================================
+  [PASS] T-1 L' scales as D_L^2  
+  [PASS] T-2 L' scales as 1/nu^2  
+  [PASS] T-3 L'(S=0)=0  
+  [PASS] T-4 L'(D=0)=0  
+  [PASS] T-5 L'(nu=0)=0  
+  [PASS] T-6 (1+z) suppression  
+  [PASS] T-7 M_gas linear in alpha_CO  
+  [PASS] T-8 M_gas(L=0)=0  
+  [PASS] T-9 alpha_CO ULIRG < MW  
+  [PASS] T-10 M_dense > 0  
+  [PASS] T-11 aether bounded  
+  [PASS] T-12 aether(rho=0)=1  
+  [PASS] T-13 keys present  
+  [PASS] T-14 S298 tag  
+  [PASS] T-15 n_anchors=4  
+  [PASS] T-16 NGC253 M_gas > 0  
+  [PASS] T-17 Arp220 dense fraction > NGC253  
+  [PASS] T-18 all rows have f_dense in [0,1]  
+  [PASS] T-19 cp4_id=442  
+  [PASS] T-20 audit_session=298  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

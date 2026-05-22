@@ -1,0 +1,41 @@
+========================================================================
+Session 278 — DPM Active Layer Counter (Track D)
+========================================================================
+  [PASS] D-1 At T=T_SCm, N_effective = 26 (floor): N_eff = 26
+  [PASS] D-2 Perseus A core: N_active in [300, 340]: N_active = 317.2
+  [PASS] D-3 Perseus matches ring 5 (phi^12 ≈ 322): ring_match = 5
+  [PASS] D-4 Sgr A* regime = relativistic: regime = relativistic
+  [PASS] D-5 All 22 audit anchors compute: got 22 rows
+  [PASS] D-6 N=26 truncation rel_err in (1e-3, 5e-2) — needs ring upgrade for hot: rel_err = 2.288e-02
+  [PASS] D-7 N=322 (Ring 5) tail < 2.5e-3 (Chandra noise floor): rel_err = 1.824e-03
+  [PASS] D-7b N=1364 (Ring 6) strict-acceptable (rel_err < 1e-3): rel_err = 3.848e-04
+  [PASS] D-8 T_kelvin=1e6 K yields T_ratio ≈ 1: T_ratio = 1.002
+  [PASS] D-9 Triple output structure: triple OK
+  [PASS] D-10 N_active strictly increases with T: monotone
+
+TOTAL: 11/11 PASS  |  0 FAIL
+
+Anchor layer reference (22 systems):
+  system                         T_keV    N_active   N_eff          regime  ring
+  Earth_crust                  2.5e-05        0.00      26            cool     3
+  Europa_ocean                 2.3e-05        0.00      26            cool     3
+  Enceladus_plume              1.4e-05        0.00      26            cool     3
+  Io_lava                      0.00014        0.00      26            cool     3
+  Solar_corona                    0.17        2.78      26            warm     3
+  Orion_KL_maser                 0.025        0.16      26            cool     3
+  JWST_2025_Orion                 0.04        0.32      26            cool     3
+  Crab_nebula_filament             1.5       72.84      73            warm     4
+  SGR_1745_2900                   0.55       16.17      26            warm     3
+  GW150914_remnant                 100    39650.83   10000    relativistic     6
+  GW170817_kilonova                 10     1253.87    1254             hot     6
+  GW190425                          50    14018.69   10000    relativistic     6
+  SgrA_inner_flow                   50    14018.69   10000    relativistic     6
+  M87_jet_base                      80    28371.83   10000    relativistic     6
+  Perseus_A_core                     4      317.21     317             hot     5
+  Perseus_A_outer                    7      734.34     734             hot     6
+  Coma_ICM                           8      897.20     897             hot     6
+  NGC2264                         0.05        0.44      26            cool     3
+  Tapestry_region                 0.08        0.90      26            cool     3
+  Westerlund_2                     0.2        3.55      26            warm     3
+  Pillars_Creation                0.01        0.04      26            cool     3
+  M42_Trapezium                    0.3        6.52      26            warm     3

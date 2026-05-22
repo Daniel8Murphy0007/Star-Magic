@@ -1,0 +1,1 @@
+S532 COMPLETE. Resting heart rate (bpm) = 60 = A_5 = 60; target 60; match 0.0000%.

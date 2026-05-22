@@ -1,0 +1,1 @@
+S356 COMPLETE. delta_Feigenbaum = D_phys + Phi_res*(1 - F_TRZ*K_Mex) = 4.65972; obs = 4.6692016; match 0.203%.

@@ -24,6 +24,69 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 VENV_PY = ROOT / ".venv" / "Scripts" / "python.exe"
+SELF_NAME = Path(__file__).name
+
+# Glob patterns for auto-discovery of derivation/closure scripts that are NOT
+# named _session*.py.  A script is harvested if its filename (case-insensitive)
+# contains any of these substrings.  Tools, patchers, and the program head
+# itself are filtered out further below.
+AUTO_DISCOVERY_KEYWORDS = ("derivation", "derive", "closure", "closures")
+# Filename substrings that should NEVER be auto-included (utilities/patchers).
+AUTO_DISCOVERY_BLOCKLIST = (
+    "_apply_", "_fix_", "_regen_", "_audit_", "_check_", "_scan_",
+    "_verify_", "_list_", "_test_", "_inspect_", "_show_", "_peek_",
+    "_update_", "_merge_", "_combine_", "_relocate_", "_revert_",
+    "_find_", "_read_", "_propagate_", "_sample_",
+    "_append_", "_harvest_", "_classify_", "_emit_", "_confirm_",
+)
+
+# Dialect declaration: a script can opt-in by placing a comment in its first
+# 40 lines of the form:
+#   # CLOSURE_FORMAT: <dialect>
+# where <dialect> is one of the keys in DIALECT_PATTERNS below or 'skip'
+# (do not audit) or 'auto' (default cascade).  When set to a specific dialect,
+# parsing is deterministic instead of probabilistic.
+DIALECT_HEADER_RE = re.compile(r"^\s*#\s*CLOSURE[_-]?FORMAT\s*:\s*([\w\-]+)", re.I)
+
+def _read_closure_format(path: Path) -> str:
+    """Return the script's declared closure dialect ('auto' if absent)."""
+    try:
+        with path.open("r", encoding="utf-8", errors="replace") as f:
+            for _ in range(40):
+                line = f.readline()
+                if not line:
+                    break
+                m = DIALECT_HEADER_RE.match(line)
+                if m:
+                    return m.group(1).strip().lower()
+    except OSError:
+        pass
+    return "auto"
+
+def _discover_extra_scripts() -> list[Path]:
+    """Auto-discover derivation/closure scripts beyond the hardcoded list.
+
+    A file is included if (a) it matches an AUTO_DISCOVERY_KEYWORDS substring,
+    (b) it doesn't match any AUTO_DISCOVERY_BLOCKLIST substring, (c) it isn't
+    a _session*.py (those are audited separately), (d) it isn't the program
+    head itself, and (e) its CLOSURE_FORMAT header is not 'skip'.
+    """
+    found = []
+    for p in sorted(ROOT.glob("*.py")):
+        nm = p.name
+        if nm == SELF_NAME:
+            continue
+        if SESSION_RE.match(nm):
+            continue
+        lo = nm.lower()
+        if not any(k in lo for k in AUTO_DISCOVERY_KEYWORDS):
+            continue
+        if any(b in lo for b in AUTO_DISCOVERY_BLOCKLIST):
+            continue
+        if _read_closure_format(p) == "skip":
+            continue
+        found.append(p)
+    return found
 
 F = Fraction(1,10); Phi=Fraction(5,6); SSq=Fraction(57,100); K=Fraction(25,12)
 Dp=4; DB=6; Dc=26; N=9; SO=10; A=60; beta=Fraction(6029,10000)
@@ -33,6 +96,45 @@ Dp=4; DB=6; Dc=26; N=9; SO=10; A=60; beta=Fraction(6029,10000)
 # AUDIT MODE — build master_closures.csv from all _session*.py scripts
 # ---------------------------------------------------------------------------
 SESSION_RE = re.compile(r"^_session(\d+)_([^.]+)\.py$")
+
+# Extra derivation files that are NOT named _session*.py but should still be
+# audited.  Synthetic IDs start at 800 so they never collide with real session
+# numbers.  Tools/auditors are intentionally excluded — only files that
+# actually produce predicted/observed/error closures belong here.
+EXTRA_DERIVATION_FILES = [
+    # NOTE: _apply_quantum_chain_rules.py removed -- it is a code patcher, not a derivation.
+    "_chain_trace_26layer.py",
+    "_chain_trace_C.py",
+    "_chain_trace_C_particles.py",
+    "_chain_trace_fix348.py",
+    "_chain_trace_fix56_7_910.py",
+    "_chain_trace_np_split.py",
+    "_chain_trace_SSq.py",
+    "_constant_derivation_attempt.py",
+    "_constant_derivation_v2.py",
+    "_constant_derivation_v3.py",
+    "_K_Mex_REAL_derivation.py",
+    "_lagrangian_rederivation_outline.py",
+    "_PAPER_1065_1066_variational_audit.py",
+    "_PAPER_1183_first_principles_derivation.py",
+    "_variational_sustainability_solution.py",
+    "bsm_bounds_derivation.py",
+    "buoyancy_lagrangian_eom.py",
+    "et_full_lagrangian.py",
+    "first_principles_derivation.py",
+    "lagrangian_re_runner.py",
+    "qcalcgeom_core_derivation.py",
+    "thorne_morris_exotic_derivation.py",
+    "uqff_lagrangian_derivation.py",
+    "UQFF_UNIFIED_CLOSURE_DERIVATIONS.py",
+    "variational_reversal_condition.py",
+    "vds_dvp_bsh_symbolic_proofs.py",
+    # ---- Added: real closure files previously orphaned (not _session*.py named) ----
+    "_six_anchor_closures.py",
+    "_matter_density_closures.py",
+    "_cosmological_closures.py",
+    "_lambda_closure_v1.py",
+]
 # Pattern A: "label: PRED vs OBS -> ERR%" or "-> EXACT"
 OUTPUT_RE_A = re.compile(r"([\w\-+/ ()^.]+?):\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*\S*\s*vs\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*\S*\s*->\s*(EXACT|[\d.]+%)", re.I)
 # Pattern B: "... = PRED ...; obs (...) = OBS; match ERR%"
@@ -159,6 +261,18 @@ def _try_complete_banner(line: str):
 OUTPUT_RE_P = re.compile(r"\b(?:RESULT[s]?|TOTAL)\s*[:=]\s*(\d+)\s*/\s*(\d+)\s*(?:tests?\s*)?(?:passed|pass)\b", re.I)
 # Pattern Q: "N PASS, M FAIL" tally.
 OUTPUT_RE_Q = re.compile(r"\bResults?\s*[:=]?\s*(\d+)\s*PASS\s*,\s*(\d+)\s*FAIL\b", re.I)
+# Pattern TESTS: per-script self-test summary  "<scriptname>.py: N/M tests passed"
+#   Used by qcalcgeom_core_derivation, vds_dvp_bsh_symbolic_proofs, etc.
+#   Class C closures: declares N of M assertions verified.  EXACT when N==M.
+OUTPUT_RE_TESTS = re.compile(r"^\s*[\w/\-.]+\.py\s*:\s*(\d+)\s*/\s*(\d+)\s+tests?\s+(?:passed|pass)\s*$", re.I)
+# Pattern E2: tabular 4-col with TRAILING identity text — like Pattern E but
+#   allows free text after the '%' column.  Used by _cosmological_closures.py:
+#     T_CMB            2.726843e+00    2.725500e+00      0.049%  60K / (D_crit-D_phys)
+OUTPUT_RE_E2 = re.compile(r"^([A-Za-z][\w|/.()\-+^*\\]*?)\s{2,}([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s{2,}([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s{2,}([\d.]+)\s*%\s+\S")
+# Pattern PCTOFF: "LABEL = NUM (X.XX% off)" or "LABEL = NUM   (X.XX% off)"
+#   Used by _constant_derivation_v3 BEST OVERALL block and _lambda_closure_v1.
+#   No observed (left blank).
+OUTPUT_RE_PCTOFF = re.compile(r"^\s*([A-Za-z][\w_\-]{0,40})\s*=\s*([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)\s*[^()\n]{0,40}\(\s*([+-]?\d+\.?\d*)\s*%\s*off\s*\)", re.I)
 # Pattern H: label-prefix line "LABEL:" (used to capture context for OUTPUT_RE_G)
 LABEL_HEADER_RE = re.compile(r"^\s*([A-Za-z][\w\-+/ ()^.*~]{0,60}?)\s*:\s*$")
 # Pattern R: "LABEL ... = NUM ... residual = X%" — S277 beta_i_hunt candidate lines.
@@ -192,12 +306,24 @@ def _normalize_err(err_str: str) -> str:
         return "0"
     return err_str
 
+def _sanity(label, pred, obs, err):
+    """Reject obviously-bogus parses: errors above 1000% are almost always the
+    result of regex cross-matching unrelated numbers on the same line.  Return
+    None so the caller treats the line as no-match and keeps searching.
+    """
+    try:
+        if abs(float(err)) > 1000.0:
+            return None
+    except (TypeError, ValueError):
+        pass
+    return (label, pred, obs, err)
+
 def _parse_line(line, fallback_name):
     m = OUTPUT_RE_A.search(line)
     if m:
         raw = m.group(4)
         err = "0" if raw.upper()=="EXACT" else _normalize_err(raw.rstrip("%"))
-        return m.group(1).strip(), m.group(2), m.group(3), err
+        return _sanity(m.group(1).strip(), m.group(2), m.group(3), err)
     m = OUTPUT_RE_B.search(line)
     if m:
         return fallback_name, m.group(1), m.group(2), _normalize_err(m.group(3))
@@ -300,6 +426,23 @@ def _parse_line(line, fallback_name):
     hit = _try_complete_banner(line)
     if hit:
         return hit
+    m = OUTPUT_RE_TESTS.match(line)
+    if m:
+        n = int(m.group(1)); t = int(m.group(2))
+        if t > 0:
+            err = (t - n) / t * 100.0
+            return fallback_name, f"{n}", f"{t}", _normalize_err(f"{err}")
+    m = OUTPUT_RE_E2.match(line)
+    if m:
+        return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
+    m = OUTPUT_RE_PCTOFF.match(line)
+    if m:
+        err = m.group(3)
+        try:
+            err = f"{abs(float(err))}"
+        except ValueError:
+            pass
+        return m.group(1).strip(), m.group(2), "", _normalize_err(err)
     m = OUTPUT_RE_P.search(line)
     if m:
         n = int(m.group(1)); t = int(m.group(2))
@@ -314,6 +457,59 @@ def _parse_line(line, fallback_name):
             err = fcnt / t * 100.0
             return fallback_name, f"{n}", f"{t}", _normalize_err(f"{err}")
     return None
+
+# Dialect dispatch: when a script declares "# CLOSURE_FORMAT: <name>" we use
+# only the pattern(s) for that dialect, bypassing the full cascade.  This makes
+# parsing deterministic for opt-in scripts while leaving all legacy scripts
+# unchanged (their dialect defaults to 'auto' = full cascade).
+def _parse_line_dialect(line, fallback_name, dialect):
+    if dialect in (None, "", "auto"):
+        return _parse_line(line, fallback_name)
+    d = dialect.lower()
+    if d == "self-test":
+        m = OUTPUT_RE_TESTS.match(line)
+        if m:
+            n = int(m.group(1)); t = int(m.group(2))
+            if t > 0:
+                err = (t - n) / t * 100.0
+                return fallback_name, f"{n}", f"{t}", _normalize_err(f"{err}")
+        return None
+    if d in ("tabular-4col", "tabular"):
+        m = OUTPUT_RE_E2.match(line) or OUTPUT_RE_E.match(line)
+        if m:
+            return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(m.group(4))
+        return None
+    if d in ("pct-off", "pctoff"):
+        m = OUTPUT_RE_PCTOFF.match(line)
+        if m:
+            err = m.group(3)
+            try:
+                err = f"{abs(float(err))}"
+            except ValueError:
+                pass
+            return m.group(1).strip(), m.group(2), "", _normalize_err(err)
+        return None
+    if d in ("harvester", "harvester-d"):
+        m = OUTPUT_RE_D.search(line)
+        if m:
+            err = m.group(4)
+            try:
+                err = f"{abs(float(err))}"
+            except ValueError:
+                pass
+            return m.group(1).strip(), m.group(2), m.group(3), _normalize_err(err)
+        return None
+    if d in ("complete-banner", "banner"):
+        return _try_complete_banner(line)
+    if d in ("a", "label-vs-obs"):
+        m = OUTPUT_RE_A.search(line)
+        if m:
+            raw = m.group(4)
+            err = "0" if raw.upper() == "EXACT" else _normalize_err(raw.rstrip("%"))
+            return m.group(1).strip(), m.group(2), m.group(3), err
+        return None
+    # Unknown dialect token: fall back to full cascade so we don't lose data.
+    return _parse_line(line, fallback_name)
 
 def _find_session_json(sid: str) -> Path | None:
     """Locate a _session{sid}_*.json closure-emitter file alongside scripts."""
@@ -425,17 +621,64 @@ def audit():
     py = str(VENV_PY) if VENV_PY.exists() else sys.executable
     env = os.environ.copy(); env["PYTHONIOENCODING"] = "utf-8"
     rows = []
-    scripts = sorted(ROOT.glob("_session*.py"), key=lambda p: int(SESSION_RE.match(p.name).group(1)) if SESSION_RE.match(p.name) else 0)
-    print(f"Found {len(scripts)} session scripts. Running...")
+    # Preserve any existing 'category' tags from a prior master_closures.csv so
+    # this re-audit doesn't wipe the CALIBRATION_FROM_PARAMETERS column.
+    csv_path = ROOT / "master_closures.csv"
+    prior_cat = {}
+    if csv_path.exists():
+        with csv_path.open("r", encoding="utf-8", newline="") as _f:
+            for r in csv.DictReader(_f):
+                if r.get("script") and r.get("category"):
+                    prior_cat[r["script"]] = r["category"]
+    session_scripts = sorted(ROOT.glob("_session*.py"), key=lambda p: int(SESSION_RE.match(p.name).group(1)) if SESSION_RE.match(p.name) else 0)
+    # Combine hardcoded EXTRA_DERIVATION_FILES (manual seed list) with
+    # auto-discovered derivation/closure scripts.  Deduplicate by name,
+    # preserve the manual-list order for stable synthetic IDs starting at 800.
+    extra_names: list[str] = []
+    seen: set[str] = set()
+    for fname in EXTRA_DERIVATION_FILES:
+        if fname not in seen and (ROOT / fname).exists():
+            # Respect CLOSURE_FORMAT: skip even on manual list entries.
+            if _read_closure_format(ROOT / fname) == "skip":
+                continue
+            extra_names.append(fname); seen.add(fname)
+    auto_found = _discover_extra_scripts()
+    n_auto_added = 0
+    for p in auto_found:
+        if p.name not in seen:
+            extra_names.append(p.name); seen.add(p.name); n_auto_added += 1
+    extra_scripts = [(800 + i, ROOT / fname) for i, fname in enumerate(extra_names)]
+    scripts = list(session_scripts) + [p for (_, p) in extra_scripts]
+    extra_id_map = {p.name: sid for (sid, p) in extra_scripts}
+    print(f"Found {len(session_scripts)} session scripts + {len(extra_scripts)} extra derivation files "
+          f"({n_auto_added} auto-discovered). Running...")
     for sp in scripts:
         m = SESSION_RE.match(sp.name)
-        if not m: continue
-        sid, name = m.group(1), m.group(2)
+        if m:
+            sid, name = m.group(1), m.group(2)
+        elif sp.name in extra_id_map:
+            sid = str(extra_id_map[sp.name])
+            name = sp.stem.lstrip("_")
+        else:
+            continue
+        # Honor declared dialect (Gap 3).  'skip' was already filtered above for
+        # auto-discovery; recheck here so manual-list 'skip' entries are dropped.
+        dialect = _read_closure_format(sp)
+        if dialect == "skip":
+            continue
         try:
             r = subprocess.run([py, str(sp)], capture_output=True, text=True, timeout=30, env=env)
             out = (r.stdout or "") + (r.stderr or "")
         except Exception as e:
             out = f"ERROR: {e}"
+        # Sidecar capture: preserve full stdout for every script so PARSE_FAIL
+        # rows can be re-parsed later without re-running the script.
+        try:
+            _audit_dir = ROOT / "_audit_outputs"
+            _audit_dir.mkdir(exist_ok=True)
+            (_audit_dir / f"{sp.stem}.txt").write_text(out, encoding="utf-8", errors="replace")
+        except Exception:
+            pass
         lines = [l.strip() for l in out.splitlines() if l.strip()]
         parsed = None
         # Forward pass: track most-recent "LABEL:" header so OUTPUT_RE_G lines
@@ -448,7 +691,14 @@ def audit():
             if mh:
                 last_header = mh.group(1).strip()
                 continue
-            hit = _parse_line(ln, last_header)
+            hit = _parse_line_dialect(ln, last_header, dialect)
+            if hit:
+                # Reject bogus huge-error parses (regex cross-match on unrelated nums).
+                try:
+                    if abs(float(hit[3])) > 1000.0:
+                        hit = None
+                except (TypeError, ValueError, IndexError):
+                    pass
             if hit:
                 parsed = hit
                 continue
@@ -483,11 +733,11 @@ def audit():
             else:
                 label = name; predicted = observed = err_pct = ""
                 status = "PARSE_FAIL"
-        rows.append((sid, name, label, predicted, observed, err_pct, status, sp.name, (lines[-1] if lines else "")))
+        rows.append((sid, name, label, predicted, observed, err_pct, status, sp.name, (lines[-1] if lines else ""), prior_cat.get(sp.name, "")))
     csv_path = ROOT / "master_closures.csv"
     with csv_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["ID","name","label","predicted","observed","error_pct","status","script","raw_output"])
+        w.writerow(["ID","name","label","predicted","observed","error_pct","status","script","raw_output","category"])
         w.writerows(rows)
     ok    = sum(1 for r in rows if r[6] in ("OK","OK_JSON"))
     fails = sum(1 for r in rows if r[6] not in ("OK","OK_JSON"))

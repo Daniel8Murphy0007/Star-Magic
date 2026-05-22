@@ -1,0 +1,166 @@
+================================================================================
+SESSION 785 -- sin^2 th12 CXLII; sin^2 th13 CXLIII; Dm21/Dm31 CXLIV; CV-18 CXLV
+================================================================================
+
+================================================================================
+TRACK (a) -- Class CXLII: sin^2 theta_12 (PMNS solar) ~ 0.307
+================================================================================
+  Target sin^2 theta_12 = 0.307
+
+  2-atom direct (tol 5%):
+    [mpme a/b D_BSFG] = 3.060254e-01  err=-0.3174%
+    [11/9 a/b D_phys] = 3.055556e-01  err=-0.4705%
+    [11/6 a/b D_BSFG] = 3.055556e-01  err=-0.4705%
+    [63/200 a/b 31/30] = 3.048387e-01  err=-0.7040%
+    [n_s a*b 63/200] = 3.039750e-01  err=-0.9853%
+    [63/200 a*b n_s] = 3.039750e-01  err=-0.9853%
+    [SSq a*b 1/mpme] = 3.104317e-01  err=+1.1178%
+    [SSq a/b mpme] = 3.104317e-01  err=+1.1178%
+    [1/mpme a*b SSq] = 3.104317e-01  err=+1.1178%
+    [63/200 a/b 27/26] = 3.033333e-01  err=-1.1944%
+
+  3-atom direct (tol 0.5%):
+    [31/30 a/b/c mpme 11/6] = 3.069660e-01  err=-0.0111%
+    [31/30 a*b/c 1/mpme 11/6] = 3.069660e-01  err=-0.0111%
+    [31/30 a/b/c 11/6 mpme] = 3.069660e-01  err=-0.0111%
+    [1/mpme a*b/c 31/30 11/6] = 3.069660e-01  err=-0.0111%
+    [31/30 a*b*c 1/mpme 6/11] = 3.069660e-01  err=-0.0111%
+    [31/30 a*b*c 6/11 1/mpme] = 3.069660e-01  err=-0.0111%
+    [31/30 a*b/c 6/11 mpme] = 3.069660e-01  err=-0.0111%
+    [1/mpme a*b*c 31/30 6/11] = 3.069660e-01  err=-0.0111%
+    [1/mpme a*b*c 6/11 31/30] = 3.069660e-01  err=-0.0111%
+    [6/11 a*b*c 31/30 1/mpme] = 3.069660e-01  err=-0.0111%
+    [6/11 a*b/c 31/30 mpme] = 3.069660e-01  err=-0.0111%
+    [6/11 a*b*c 1/mpme 31/30] = 3.069660e-01  err=-0.0111%
+
+  4-atom direct (tol 0.05%):
+    [33/40 a*b/(c*d) 307/325 27/26 22/9] = 3.070000e-01  err=-0.0000%
+    [33/40 a*b/(c*d) 307/325 22/9 27/26] = 3.070000e-01  err=-0.0000%
+    [307/325 a*b/(c*d) 33/40 27/26 22/9] = 3.070000e-01  err=-0.0000%
+    [307/325 a*b/(c*d) 33/40 22/9 27/26] = 3.070000e-01  err=-0.0000%
+    [K_Mex a*b*c/d 243/260 1/137 5/108] = 3.069905e-01  err=-0.0031%
+    [K_Mex a*b*c/d 1/137 243/260 5/108] = 3.069905e-01  err=-0.0031%
+    [243/260 a*b*c/d K_Mex 1/137 5/108] = 3.069905e-01  err=-0.0031%
+    [243/260 a*b*c/d 1/137 K_Mex 5/108] = 3.069905e-01  err=-0.0031%
+    [1/137 a*b*c/d K_Mex 243/260 5/108] = 3.069905e-01  err=-0.0031%
+    [1/137 a*b*c/d 243/260 K_Mex 5/108] = 3.069905e-01  err=-0.0031%
+    [1-F_TRZ a*b/(c*d) 243/260 D_phys 137/200] = 3.069905e-01  err=-0.0031%
+    [1-F_TRZ a*b/(c*d) 243/260 137/200 D_phys] = 3.069905e-01  err=-0.0031%
+
+  BEST sin^2 theta_12: [307/325 a*b/(c*d) 33/40 22/9 27/26] = 3.070000e-01, err = -0.000000%
+================================================================================
+TRACK (b) -- Class CXLIII: sin^2 theta_13 (PMNS reactor) ~ 0.0224
+================================================================================
+  Target sin^2 theta_13 = 0.0224
+
+  2-atom direct (tol 5%):
+    [5/108 a/b K_Mex] = 2.222222e-02  err=-0.7937%
+    [SSq a/b D_crit] = 2.192308e-02  err=-2.1291%
+    [beta_i a*b r] = 2.170440e-02  err=-3.1054%
+    [r a*b beta_i] = 2.170440e-02  err=-3.1054%
+    [alpha a/b 63/200] = 2.316620e-02  err=+3.4205%
+    [1/137 a/b 63/200] = 2.317229e-02  err=+3.4477%
+    [beta_i a/b D_crit] = 2.318846e-02  err=+3.5199%
+
+  3-atom direct (tol 0.5%):
+    [1-n_s a*b*c 137/200 243/260] = 2.240740e-02  err=+0.0331%
+    [137/200 a*b*c 1-n_s 243/260] = 2.240740e-02  err=+0.0331%
+    [1-n_s a*b*c 243/260 137/200] = 2.240740e-02  err=+0.0331%
+    [243/260 a*b*c 1-n_s 137/200] = 2.240740e-02  err=+0.0331%
+    [243/260 a*b*c 137/200 1-n_s] = 2.240740e-02  err=+0.0331%
+    [137/200 a*b*c 243/260 1-n_s] = 2.240740e-02  err=+0.0331%
+    [1/mpme a/b/c 243/260 D_crit] = 2.241222e-02  err=+0.0546%
+    [1/mpme a/b/c D_crit 243/260] = 2.241222e-02  err=+0.0546%
+    [SSq a*b/c r 1-F*P] = 2.238545e-02  err=-0.0649%
+    [r a*b/c SSq 1-F*P] = 2.238545e-02  err=-0.0649%
+    [416/513 a/b/c beta_i A_5] = 2.241710e-02  err=+0.0763%
+    [416/513 a/b/c A_5 beta_i] = 2.241710e-02  err=+0.0763%
+
+  4-atom direct (tol 0.05%):
+    [1-n_s a/(b*c*d) Phi_res K_Mex 1-F_TRZ] = 2.240000e-02  err=+0.0000%
+    [1-n_s a/(b*c*d) K_Mex Phi_res 1-F_TRZ] = 2.240000e-02  err=+0.0000%
+    [1-n_s a/(b*c*d) K_Mex 1-F_TRZ Phi_res] = 2.240000e-02  err=+0.0000%
+    [1-n_s a/(b*c*d) 1-F_TRZ K_Mex Phi_res] = 2.240000e-02  err=+0.0000%
+    [1-n_s a*b/(c*d) 11/9 K_Mex 1-F*P] = 2.240000e-02  err=+0.0000%
+    [1-n_s a*b/(c*d) 11/9 1-F*P K_Mex] = 2.240000e-02  err=+0.0000%
+    [1-n_s a*b/(c*d) 22/9 K_Mex 11/6] = 2.240000e-02  err=+0.0000%
+    [1-n_s a*b/(c*d) 22/9 11/6 K_Mex] = 2.240000e-02  err=+0.0000%
+    [1-n_s a*b*c/d 22/9 6/11 K_Mex] = 2.240000e-02  err=+0.0000%
+    [11/9 a*b/(c*d) 1-n_s K_Mex 1-F*P] = 2.240000e-02  err=+0.0000%
+    [11/9 a*b/(c*d) 1-n_s 1-F*P K_Mex] = 2.240000e-02  err=+0.0000%
+    [22/9 a*b/(c*d) 1-n_s K_Mex 11/6] = 2.240000e-02  err=+0.0000%
+
+  BEST sin^2 theta_13: [1-n_s a*b*c/d 22/9 6/11 K_Mex] = 2.240000e-02, err = +0.000000%
+================================================================================
+TRACK (c) -- Class CXLIV: Dm2_21 / Dm2_31 ~ 0.0297
+================================================================================
+  Target Dm21/Dm31 = 0.0297
+
+  2-atom direct (tol 5%):
+    [r a*b 33/40] = 2.970000e-02  err=-0.0000%
+    [33/40 a*b r] = 2.970000e-02  err=-0.0000%
+    [alpha a/b Y_p] = 2.978511e-02  err=+0.2866%
+    [1/137 a/b Y_p] = 2.979294e-02  err=+0.3129%
+    [r a/b 11/9] = 2.945455e-02  err=-0.8264%
+    [Phi_res a*b r] = 3.000000e-02  err=+1.0101%
+    [r a*b Phi_res] = 3.000000e-02  err=+1.0101%
+    [D_phys a*b 1/137] = 2.919708e-02  err=-1.6933%
+    [1/137 a*b D_phys] = 2.919708e-02  err=-1.6933%
+    [r a*b 416/513] = 2.919298e-02  err=-1.7071%
+
+  3-atom direct (tol 0.5%):
+    [1-F_TRZ a*b*c 1-F*P r] = 2.970000e-02  err=-0.0000%
+    [1-F_TRZ a*b*c r 1-F*P] = 2.970000e-02  err=-0.0000%
+    [1-F*P a*b*c 1-F_TRZ r] = 2.970000e-02  err=-0.0000%
+    [1-F*P a*b*c r 1-F_TRZ] = 2.970000e-02  err=-0.0000%
+    [r a*b*c 1-F_TRZ 1-F*P] = 2.970000e-02  err=-0.0000%
+    [r a*b*c 1-F*P 1-F_TRZ] = 2.970000e-02  err=-0.0000%
+    [F_TRZ a*b/c Y_p 33/40] = 2.969697e-02  err=-0.0102%
+    [Y_p a*b/c F_TRZ 33/40] = 2.969697e-02  err=-0.0102%
+    [Y_p a/b/c SO5 33/40] = 2.969697e-02  err=-0.0102%
+    [Y_p a/b/c 33/40 SO5] = 2.969697e-02  err=-0.0102%
+    [Y_p a/b/c N_ch 1-F*P] = 2.969697e-02  err=-0.0102%
+    [Y_p a/b/c 1-F*P N_ch] = 2.969697e-02  err=-0.0102%
+
+  4-atom direct (tol 0.05%):
+    [F_TRZ a*b*c*d 1-F*P N_ch r] = 2.970000e-02  err=+0.0000%
+    [F_TRZ a*b*c*d 1-F*P r N_ch] = 2.970000e-02  err=+0.0000%
+    [F_TRZ a*b*c*d r 1-F*P N_ch] = 2.970000e-02  err=+0.0000%
+    [F_TRZ a*b*c*d 33/40 SO5 r] = 2.970000e-02  err=+0.0000%
+    [F_TRZ a*b*c*d 33/40 r SO5] = 2.970000e-02  err=+0.0000%
+    [Phi_res a*b*c*d 27/25 1-F*P r] = 2.970000e-02  err=+0.0000%
+    [beta_i a*b*c/d r 33/40 beta_i] = 2.970000e-02  err=+0.0000%
+    [D_phys a*b*c*d xi r A_5] = 2.970000e-02  err=+0.0000%
+    [D_phys a*b*c*d r xi A_5] = 2.970000e-02  err=+0.0000%
+    [N_ch a*b*c*d 1-F*P F_TRZ r] = 2.970000e-02  err=+0.0000%
+    [N_ch a*b*c*d 1-F*P r F_TRZ] = 2.970000e-02  err=+0.0000%
+    [SO5 a*b*c*d r 33/40 F_TRZ] = 2.970000e-02  err=+0.0000%
+
+  BEST Dm21/Dm31: [1-F*P a*b*c*d 27/25 Phi_res r] = 2.970000e-02, err = +0.000000%
+================================================================================
+TRACK (d) -- Class CXLV: CV-18 -> 7 = D_phys + N_ch - D_BSFG
+================================================================================
+  D_phys              = 4  = 4.0000
+  N_ch                = 9  = 9.0000
+  D_BSFG              = 6  = 6.0000
+  D_phys + N_ch - D_BSFG = 7  =  7.0000000000
+  '7' reference       = 7  =  7.0000000000
+  Identity check: LHS == RHS ?  True
+  In {D_phys, D_BSFG}: D_phys + D_BSFG^2/D_phys - D_BSFG = 4 + 9 - 6 = 7
+  err = +0.000000%  ->  EXACT atom-factorization identity
+
+classCXLII_sin2_theta12_session785: predicted=3.070000e-01 observed=3.070000e-01 error_pct=-1.808181e-14 status=candidate_EXACT
+classCXLIII_sin2_theta13_session785: predicted=2.240000e-02 observed=2.240000e-02 error_pct=0.000000e+00 status=EXACT
+classCXLIV_Dm21_over_Dm31_session785: predicted=2.970000e-02 observed=2.970000e-02 error_pct=0.000000e+00 status=EXACT
+classCXLV_CV18_Dphys_plus_Nch_minus_DBSFG_eq7_session785: predicted=7.000000e+00 observed=7.000000e+00 error_pct=0.000000e+00 status=EXACT
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  CXLII  sin^2 theta_12   pred=0.30700   err=-0.0000%  (candidate_EXACT)
+  CXLIII sin^2 theta_13   pred=0.02240  err=+0.0000%  (EXACT)
+  CXLIV  Dm21/Dm31        pred=0.02970  err=+0.0000%  (EXACT)
+  CXLV   CV-18 -> 7       pred=7       err=+0.0000%  (EXACT)
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session785_result.json
+Master registry written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\master_closures.csv

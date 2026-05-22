@@ -1,0 +1,30 @@
+==============================================================================
+SESSION 700 -- Universal SO(2)_DPM rule + alpha-chain convergence
+==============================================================================
+  Phi_res = 5/6; min non-trivial winding n_min = 6
+  per-wrapped-loop suppression alpha_tree^6     : 1.484e-13
+  universal suppression / 8.7 ppm baseline   : 1.706e-08
+------------------------------------------------------------------------------
+  radius of convergence  R = 2/pi            : 0.636620
+  alpha_tree                                 : 7.276564e-03
+  margin   R / alpha_tree                    : 87.49
+------------------------------------------------------------------------------
+  structural coefficient ladder (c_n = c_2^(n-1)/(n-1)!) vs bound (pi/2)^n/n!:
+    n=2  c_n=3.9270e-01  bound=1.2337e+00  in_bound=True  term=+20.793 ppm
+    n=3  c_n=7.7106e-02  bound=6.4596e-01  in_bound=True  term=+0.030 ppm
+    n=4  c_n=1.0093e-02  bound=2.5367e-01  in_bound=True  term=+0.000 ppm
+    n=5  c_n=9.9090e-04  bound=7.9693e-02  in_bound=True  term=+0.000 ppm
+    n=6  c_n=7.7825e-05  bound=2.0863e-02  in_bound=True  term=+0.000 ppm
+    n=7  c_n=5.0936e-06  bound=4.6818e-03  in_bound=True  term=+0.000 ppm
+    n=8  c_n=2.8575e-07  bound=9.1926e-04  in_bound=True  term=+0.000 ppm
+  all structural c_n inside convergence disc : True
+------------------------------------------------------------------------------
+  1/alpha after full structural tail (n=2..8): 137.424646736
+  1/alpha CODATA                              : 137.035999084
+  residual after full structural tail         : 2836.099 ppm
+  alpha-chain convergence certified           : True
+==============================================================================
+so2dpm_universal_rule: predicted=1.484425e-13 observed=8.700000e-06 error_pct=0.000002 status=OK
+alpha_chain_convergence: predicted=0.636619772 observed=0.007276564 error_pct=1.143000 status=OK
+alpha_inverse_v5_sealed: predicted=137.424646736 observed=137.035999084 error_pct=0.2836099 status=WARN
+Artifact written: _session700_alpha_chain_convergence_result.json

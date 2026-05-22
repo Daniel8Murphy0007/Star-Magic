@@ -1,0 +1,7 @@
+S205-doubling-time-identity: 31.6172 vs 31.6172 -> EXACT
+S205-critical-balance-ratio: 0.5 vs 0.5 -> EXACT
+S205-net-factor-formula: 1.2 vs 1.2 -> EXACT
+S205-weight-unit-sum: 1.0 vs 1.0 -> EXACT
+S205-spacetime-levels-26: 26 vs 26 -> EXACT
+S205-module-test-total: 33 vs 33 -> EXACT
+S205-doubling-time-identity: 31.6172 vs 31.6172 -> EXACT

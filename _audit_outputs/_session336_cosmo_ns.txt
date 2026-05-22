@@ -1,0 +1,1 @@
+S336 CORRECTED. n_s = 1 - (1-Phi_res)*F_TRZ*K_Mex = 1 - 25/720 = 0.9653; Planck = 0.9649+/-0.0042; match within 0.04% (well inside 1 sigma).

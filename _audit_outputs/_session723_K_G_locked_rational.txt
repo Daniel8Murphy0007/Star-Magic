@@ -1,0 +1,74 @@
+================================================================================
+SESSION 723 -- K_G locked-rational refinement (H-burning adjudication)
+================================================================================
+
+  L_SCM = 349.226733 m
+  c^2 * L_SCM / G = 4.702655e+29 kg  (= M_SCM at K_G=1)
+
+  K_G needed for 0.013 M_sun (D-burn)         = 0.054984
+  K_G needed for 0.075 M_sun (H-burn min)     = 0.317214
+  K_G needed for 0.080 M_sun (BD upper)       = 0.338362
+  K_G needed for 0.013 M_sun = 13.6 M_jup     = 0.054890
+
+--------------------------------------------------------------------------------
+CANDIDATE LOCKED-RATIONAL K_G VALUES (refinement search)
+--------------------------------------------------------------------------------
+
+candidate                                               K_G         M_SCM (M_sun)  closest ref                    rel err
+----------------------------------------------------------------------------------------------------------------------------------
+base: N_ch/D_crit                                       0.346154    0.081842       0.080 M_sun (BD upper)          2.3028% <-- GOOD (<5%)
+base * (1 - F_TRZ*Phi_res) = (9/26)*(11/12)             0.317308    0.075022       0.075 M_sun (H-burn min)        0.0294% <-- CANDIDATE-EXACT (<0.1%)
+base * Phi_res = (9/26)*(5/6)                           0.288462    0.068202       0.075 M_sun (H-burn min)        9.0642%
+base * SSq                                              0.197308    0.046650       0.075 M_sun (H-burn min)       37.7999%
+base * beta_i                                           0.208696    0.049343       0.075 M_sun (H-burn min)       34.2097%
+base * (1 - F_TRZ)                                      0.311538    0.073658       0.075 M_sun (H-burn min)        1.7893% <-- GOOD (<5%)
+base * (1 - 1/D_crit)                                   0.332840    0.078694       0.080 M_sun (BD upper)          1.6319% <-- GOOD (<5%)
+base * (D_BSFG/D_phys)/2  = (9/26)*(3/4)                0.259615    0.061382       0.075 M_sun (H-burn min)       18.1578%
+base * (1 + F_TRZ*Phi_res) = (9/26)*(13/12)             0.375000    0.088662       0.080 M_sun (BD upper)         10.8280%
+base * (A_5-1)/A_5 = (9/26)*(59/60)                     0.340385    0.080478       0.080 M_sun (BD upper)          0.5978% <-- VERY GOOD (<1%)
+base / Phi_res = (9/26)*(6/5)                           0.415385    0.098211       0.1 M_sun                       1.7893% <-- GOOD (<5%)
+base * (1 - SSq/D_crit) = (9/26)*(2543/2600)            0.338565    0.080048       0.080 M_sun (BD upper)          0.0600% <-- CANDIDATE-EXACT (<0.1%)
+(9/26) * (11/12) [= 33/104]  REPEAT TARGET              0.317308    0.075022       0.075 M_sun (H-burn min)        0.0294% <-- CANDIDATE-EXACT (<0.1%)
+
+================================================================================
+BEST CANDIDATE
+  base * (1 - F_TRZ*Phi_res) = (9/26)*(11/12)
+  K_G = 33/104 = 0.3173076923
+  M_SCM = 1.492189e+29 kg = 0.075022 M_sun
+  closest ref: 0.075 M_sun (H-burn min)  rel err = 0.02941%
+================================================================================
+
+--------------------------------------------------------------------------------
+CLASS IV CROSS-CONTAMINATION CHECK
+--------------------------------------------------------------------------------
+
+  Class IV: hbar = rho_vac * L_SCM^4 / v_SCM    (no K_G factor)
+  Does choice of K_G (in Class V) affect the hbar closure?
+  hbar_pred = 1.054572e-34  hbar_obs = 1.054572e-34
+  rel err   = -4.055128e-14%  (independent of K_G -- as expected)
+  -> Class IV is decoupled from Class V; no cross-contamination.
+
+--------------------------------------------------------------------------------
+LOCK DECISION RATIONALE
+--------------------------------------------------------------------------------
+
+  CANONICAL K_G = (N_ch/D_crit)(1 - F_TRZ*Phi_res) = (9/26)(11/12) = 33/104
+  = 0.3173076923
+  Built from 4 locked primitives: N_ch, D_crit, F_TRZ, Phi_res
+
+  Resulting M_SCM = 1.492189e+29 kg = 0.075022 M_sun
+  Target: 0.075 M_sun (hydrogen-burning threshold)
+  rel err = +0.02941%
+
+  Decomposition:
+    1 - F_TRZ*Phi_res = 1 - 1/12 = 11/12
+    => K_G structure: 'channel ratio x (1 - vacuum suppression)'
+    Physical: 9 SO(3,1) channels of 26D framework,
+              modulated by (1 - F_TRZ*Phi_res) = (1 - vacuum dressing).
+
+K_G_locked_HburnThreshold: predicted=1.492189e+29 observed=1.491750e+29 error_pct=+2.941240e-02 status=OK
+K_G_value_locked_rational: predicted=3.173077e-01 observed=3.172144e-01 error_pct=+2.941240e-02 status=OK
+hbar_classIV_invariant_under_K_G: predicted=1.054572e-34 observed=1.054572e-34 error_pct=-4.055128e-14 status=EXACT
+locked_FTRZ_Phires_invariant: predicted=8.333333e-02 observed=8.333333e-02 error_pct=+0.000000e+00 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session723_K_G_locked_rational_result.json

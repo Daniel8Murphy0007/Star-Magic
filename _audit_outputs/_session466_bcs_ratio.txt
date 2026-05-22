@@ -1,0 +1,1 @@
+S466 COMPLETE. BCS 2D/kTc = 3.5265; target 3.53; match 0.0992%.

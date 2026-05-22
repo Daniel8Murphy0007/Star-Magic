@@ -1,0 +1,1 @@
+S400 COMPLETE. alpha_iso = Phi_res-F_TRZ*Phi_res*D_phys = 0.500000; obs (BCS) = 0.5; match 0.0000%. (= 1/2 exact)

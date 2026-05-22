@@ -1,0 +1,1 @@
+S331 COMPLETE. H0 tension UQFF = 1 + tilt = 1.0833; obs = 1.0837; match within 0.04%.

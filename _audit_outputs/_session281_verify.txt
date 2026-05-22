@@ -1,0 +1,16 @@
+beta_u (S280, up quark) = K_Mex^2 * sqrt(3) = 7.517582
+
+m_nu_2:  N=29, beta = D_phys + beta_u = 11.5176
+   pred = 8.6083 meV   obs = 8.610 meV  resid = 0.020%
+
+m_nu_3:  N=29, beta = pi^2 - D_BSFG = 3.8696
+   pred = 50.0860 meV   obs = 50.10 meV  resid = 0.028%
+
+Sigma m_nu:  N=29, beta = K_Mex + 1 = 37/12 = 3.0833
+   pred = 60.0265 meV   obs ~ 60 meV  resid = 0.044%
+
+--- mass-squared differences (oscillation observables) ---
+dm21^2:  pred = 7.410e-5 eV^2   obs = 7.420e-5 eV^2   resid = 0.131%
+dm31^2:  pred = 2.509e-3 eV^2   obs = 2.510e-3 eV^2   resid = 0.056%
+
+m_3/m_2:  pred = 5.8183   obs = 5.8161   resid = 0.037%

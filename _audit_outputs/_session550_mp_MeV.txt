@@ -1,0 +1,1 @@
+S550 COMPLETE. m_p (MeV) = 938.2500; closure = N_ch*SO5^2+N_ch*D_phys+K_Mex+2*F*Phi_res; target 938.2721; match 0.0024%.

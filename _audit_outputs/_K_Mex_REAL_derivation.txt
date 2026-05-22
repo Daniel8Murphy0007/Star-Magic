@@ -1,0 +1,107 @@
+======================================================================
+STEP 1.  Postulated Mexican-hat potential
+======================================================================
+V(UA) = K*rho*(UA**2/v**2 - 1)**2
+     = K*UA**4*rho/v**4 - 2*K*UA**2*rho/v**2 + K*rho
+
+a0 = coeff(UA^0) = K*rho
+a2 = coeff(UA^2) = -2*K*rho/v**2
+a4 = coeff(UA^4) = K*rho/v**4
+
+======================================================================
+STEP 2.  Stationarity dV/dUA = 0  (Euler-Lagrange for static UA)
+======================================================================
+dV/dUA = 4*K*UA*rho*(UA**2 - v**2)/v**4
+Solutions: UA = [v]
+
+======================================================================
+STEP 3.  Mass-squared at the minimum UA = v
+======================================================================
+V''(UA)     = 4*K*rho*(3*UA**2 - v**2)/v**4
+V''(v)      = m^2 = 8*K*rho/v**2
+
+======================================================================
+STEP 4.  PAPER_1166 'consistency checks' -- do they fix K?
+======================================================================
+  Check (a):  a2^2/(4 a4) = K*rho
+              a0          = K*rho
+              difference  = 0
+              VERDICT: holds IDENTICALLY for ANY value of K.
+                       Does NOT constrain K.
+
+  Check (b):  V(v) = 0
+              VERDICT: V(v) = 0 holds for ANY K (geometric property
+                       of the Mexican-hat shape).  Does NOT fix K.
+
+  Check (c):  |a2|/a4 = 2*v**2
+              VERDICT: ratio = 2 v^2 holds for ANY K.
+                       Does NOT fix K.
+
+======================================================================
+STEP 5.  What additional condition would actually fix K?
+======================================================================
+Solve V''(v) = m^2 for K, given an INDEPENDENTLY known m^2:
+  K = m_sq*v**2/(8*rho)
+
+So K is fixed ONLY IF m_UA^2 (the physical mass of the aether scalar)
+is known from outside the potential -- e.g. from a measurement, an RG
+matching condition, or a one-loop Coleman-Weinberg calculation.
+
+PAPER_1166 plugs m^2 = (50/3) rho/v^2 INTO this equation and recovers
+K = 25/12.  But m^2 = (50/3) rho/v^2 is NOT independently derived in
+the paper -- it is obtained by ALREADY ASSUMING K = 25/12.  This is
+circular.
+
+======================================================================
+STEP 6.  Does Mexican-hat shape force K = Phi_res*|SO(5)|/D_phys?
+======================================================================
+  Claimed:  K = Phi_res * |SO(5)| / D_phys = (5/6)*(10)/4
+          = 25/12  =  25/12  =  25/12
+
+  Question: is there any symbolic property of the polynomial
+            V(UA) = K rho [(UA/v)^2 - 1]^2 that requires K = 25/12?
+
+  Answer (from SymPy variations above):  NO.
+  The Mexican-hat shape fixes:
+    - minimum location:  UA_min = +/- v
+    - minimum value:     V_min  = 0
+    - degree-4 polynomial structure
+  The Mexican-hat shape does NOT fix:
+    - the prefactor K
+    - the scalar mass m_UA^2 = 8 K rho / v^2  (depends on K)
+
+======================================================================
+VERDICT  (SymPy, not narration)
+======================================================================
+
+CLAIM (PAPER_1166):  K_Mex = 25/12 is derived from first principles.
+
+REALITY  (this script):
+  The Mexican-hat scalar potential
+       V(UA) = K rho_SCm [(UA/v_UA)^2 - 1]^2
+  has a one-parameter family of physically distinct realizations
+  indexed by K > 0.  No internal consistency condition of this
+  potential fixes K.
+
+  All three 'consistency checks' in PAPER_1166 are tautologies of the
+  Mexican-hat polynomial shape:
+     a2^2/(4 a4) = a0     holds for every K
+     V(v) = 0             holds for every K
+     |a2|/a4 = 2 v^2      holds for every K
+
+  The claim K = 25/12 is therefore an IDENTIFICATION with a group-
+  theoretic combination, NOT a derivation from the action.
+
+  To make K = 25/12 a REAL derivation requires ONE of:
+    (i)   an independent measurement of m_UA (none in the repo)
+    (ii)  a Coleman-Weinberg one-loop calculation that produces 25/12
+          from the matter content circulating in the loop
+    (iii) an RG matching condition at a UV scale where K is fixed
+          by a higher-symmetry theory
+    (iv)  a dimensional-reduction argument from 26D -> 4D where K
+          drops out of integrating over the compactified manifold
+
+  None of (i)-(iv) is present in PAPER_1166, PAPER_1167, or any
+  Lagrangian script reviewed in this thread.
+
+======================================================================

@@ -1,0 +1,1 @@
+S392 COMPLETE. R_s/R_sun = F_TRZ^6*D_phys*(1+F_TRZ*SSq) = 4.228e-06; obs (2.95 km / 6.96e5 km) = 4.24e-06; match 0.283%.

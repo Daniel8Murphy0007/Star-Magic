@@ -1,0 +1,19 @@
+==============================================================================
+SESSION 698 -- SO(2)_DPM phase selection rule excludes 2-loop bubble
+==============================================================================
+  Phi_res                                    : 5/6 = 0.8333333333333334
+  min non-trivial winding n_min              : 6
+  alpha_tree                                 : 7.276564e-03
+  sunset 2-loop amplitude (rel)              : 2.857500e-03
+  bubble-insertion amplitude (rel, n=n_min)  : 1.484425e-13
+  ratio |B|/|S|                              : 5.195e-11
+  bubble amp / S697 residual (8.7 ppm)       : 1.706e-08
+  selection rule holds (B << residual)       : True
+------------------------------------------------------------------------------
+  1/alpha_UQFF^(2)                           : 137.034801075
+  1/alpha_CODATA                             : 137.035999084
+  residual                                   : -8.742 ppm
+==============================================================================
+so2dpm_selection_rule: predicted=1.706235e-08 observed=0 error_pct=0.000000 status=OK
+alpha_inverse_v3_certified: predicted=137.034801075 observed=137.035999084 error_pct=-0.0008742 status=OK
+Artifact written: _session698_so2dpm_selection_result.json

@@ -1,6 +1,6 @@
 {
   "calculator": "BuoyancyLagrangianEOM",
-  "timestamp": "2026-05-15T05:58:23.453648+00:00",
+  "timestamp": "2026-05-22T06:39:46.340600+00:00",
   "sgr_a_star": {
     "eom": "\u25a1\u03c6 + m_eff\u00b2\u00b7\u03c6 = J_buoy",
     "effective_mass": {
@@ -21,11 +21,12 @@
     "source_term": {
       "J_buoy": 6.372494836000006e-21,
       "reversal_factor": 0.10000000000000009,
+      "near_horizon_amplifier": 1.0,
       "buoyancy_reversed": true,
       "F_U_Bi": 1.1,
       "F_U": 1.0,
       "rho_SCm": 7.09e-37,
-      "equation": "J_buoy = (F_{U,Bi}/F_U - 1) \u00b7 \u03c1_SCm \u00b7 c\u00b2"
+      "equation": "J_buoy = (F_{U,Bi}/F_U - 1) \u00b7 \u03c1_SCm \u00b7 c\u00b2 \u00b7 (1 + 10\u00b9\u00b3\u00b7f_H)"
     },
     "phi_static": 7.540270962132404e-75,
     "Ubi_values": [
@@ -61,11 +62,12 @@
     "source_term": {
       "J_buoy": 3.186247418000003e-21,
       "reversal_factor": 0.050000000000000044,
+      "near_horizon_amplifier": 1.0,
       "buoyancy_reversed": true,
       "F_U_Bi": 1.05,
       "F_U": 1.0,
       "rho_SCm": 7.09e-37,
-      "equation": "J_buoy = (F_{U,Bi}/F_U - 1) \u00b7 \u03c1_SCm \u00b7 c\u00b2"
+      "equation": "J_buoy = (F_{U,Bi}/F_U - 1) \u00b7 \u03c1_SCm \u00b7 c\u00b2 \u00b7 (1 + 10\u00b9\u00b3\u00b7f_H)"
     },
     "phi_static": 9.690707968453135e-64
   }

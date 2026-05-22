@@ -1,0 +1,1 @@
+S382 COMPLETE. m_H/m_t = beta_i + F_TRZ*K_Mex*SSq = 0.7217; obs (PDG) = 0.7253; match 0.502%.

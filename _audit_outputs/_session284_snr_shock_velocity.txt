@@ -1,0 +1,30 @@
+========================================================================
+Session 284 — SNR shock velocity from photometry smoke tests
+========================================================================
+  [PASS] T-1 Vela Sedov ~650 km/s  v_s=651.9 km/s
+  [PASS] T-2 Crab free-exp ~1700 km/s  v_s=1711.9 km/s
+  [PASS] T-3 Cas A Sedov ~2800 km/s  v_s=2793.8 km/s
+  [PASS] T-4 SN1006 X-ray (T_e=1.5 keV)  v_s=1120.5 km/s
+  [PASS] T-5 X-ray kT=10 keV → v_s ~ 2900 km/s  v_s=2893.0 km/s
+  [PASS] T-6 Tycho Hα FWHM=2000 → v_s≈1620  v_s=1620.0 km/s
+  [PASS] T-7 Cas A Sedov E_0 in [1e50, 1e52] erg  E0=1.137e+50 erg
+  [PASS] T-8 v_s → kT → v_s roundtrip  v_in=3000.0 v_out=3000.000
+  [PASS] T-9 Sedov v_s ∝ t^(-3/5) decay law  ratio=2.2974 expected=2.2974
+  [PASS] T-10 invalid inputs raise  raised=4/4
+  [PASS] T-11 calculator required keys  
+  [PASS] T-12 Vela auto-regime → sedov  best=sedov_taylor
+  [PASS] T-13 Crab regime=free → free_expansion  best=free_expansion
+  [PASS] T-14 multi-method: all velocities present  best=xray_rankine_hugoniot v_best=1293.8
+  [PASS] T-15 X-ray method wins priority  
+  [PASS] T-16 empty dataset raises ValueError  
+  [PASS] T-17 SESSION_284_CALCULATORS registry  
+------------------------------------------------------------------------
+  RESULT: 17/17 tests passed
+========================================================================
+
+Headline SNR shock velocities:
+  Vela      v_s =  651.9 km/s   (sedov_taylor)
+  Crab      v_s = 1711.9 km/s   (free_expansion)
+  Cas A     v_s = 2793.8 km/s   (sedov_taylor)
+  SN1006    v_s = 1120.5 km/s   (xray_rankine_hugoniot)
+  Tycho     v_s = 1620.0 km/s   (halpha_balmer)

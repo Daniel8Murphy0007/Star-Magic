@@ -1,0 +1,38 @@
+================================================================================
+SESSION 716 -- mu-chain 5-loop locked-ratio validation
+================================================================================
+  Carry-over: tree=1836, delta=1/12000, c_2=128/5, c_3=160, c_4=1000
+  Locked rule:  c_{n+1}/c_n = 3 * K_Mex = 25/4 = 6.250000
+--------------------------------------------------------------------------------
+  S716 prediction (locked-rational, two equivalent forms):
+    Form A: c_4 * 3*K_Mex = 1000 * 25/4           = 6250
+    Form B: c_2 * (25/4)^3 = (128/5)*15625/64     = 6250
+    Form C distractor (A_5^2/2 - SO5*D_phys=1760) = 1760  (should NOT match)
+    -> c_5 = 6250  CONFIRMED via locked ratio rule
+--------------------------------------------------------------------------------
+  Loop-by-loop relative magnitudes (|c_n * delta^n|):
+    n=2  | c_2 delta^2 | = 1.7778e-07   (   0.178 ppm)
+    n=3  | c_3 delta^3 | = 9.2593e-11   (   0.093 ppb)
+    n=4  | c_4 delta^4 | = 4.8225e-14   (   0.048 ppt)
+    n=5  | c_5 delta^5 | = 2.5117e-17   (   0.025 ppq)
+    CODATA 1-sigma (rel)  = 6.0e-13   (0.600 ppt)
+    5-loop / 1-sigma      = 4.186e-05
+--------------------------------------------------------------------------------
+  Borel tower convergence:
+    common ratio  r = (25/4) * delta = 5.208333e-04
+    convergence?    |r| << 1  -- YES (geometric series convergent)
+    infinite-tail magnitude bound = c_2 delta^2 / (1-r)
+                                  = 1.778704e-07
+    vs 2-loop alone               = 1.777778e-07
+    relative correction from infinite tail = 0.0521 %
+================================================================================
+  mu-chain loop-tower closure:
+    2-loop  ->    0.178 ppm   (dominant, observable)
+    3-loop  ->    0.093 ppb   (observable, CODATA-locked)
+    4-loop  ->    0.048 ppt  (sub-CODATA, structural)
+    5-loop  ->    0.025 ppq  (deep sub-CODATA, terminal)
+    n>=5    : entire infinite tail < 1 ppq  -- chain observationally CLOSED
+================================================================================
+mu_5loop_c5_locked_ratio: predicted=6.250000000000e+03 observed=6.250000000000e+03 error_pct=+0.000000000000 status=EXACT
+mu_5loop_observability: predicted=4.186224708505e-05 observed=4.186224708505e-05 error_pct=+0.004186224709 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session716_mu_5loop_ratio_rule_validation_result.json

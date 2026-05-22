@@ -1,0 +1,1 @@
+S323 COMPLETE. Born rule = half-spinor self-pairing; Phi_res^2 + (1-Phi_res)^2 + 2*Phi_res*(1-Phi_res) = 1.000000; quadratic probability natural.

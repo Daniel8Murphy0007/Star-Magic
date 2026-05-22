@@ -1,0 +1,94 @@
+================================================================================
+SESSION 733 -- Residual hierarchy + Omega_b/Omega_m + BAO cross-check
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Residual hierarchy: Class III/V/VII/X joint analysis
+--------------------------------------------------------------------------------
+  Class                       residual         |res|    log10|res|
+  III (c)                   -6.920e-04     6.920e-04       -3.1599
+  V (G)                      2.900e-04     2.900e-04       -3.5376
+  VI (Lambda)               -8.000e-05     8.000e-05       -4.0969
+  VII (H0)                  -4.000e-03     4.000e-03       -2.3979
+  VIII (eta_b)               3.200e-05     3.200e-05       -4.4949
+  IX (T_CMB)                 1.500e-05     1.500e-05       -4.8239
+  X (Omega_L/m)             -5.260e-04     5.260e-04       -3.2790
+  XI (r_d)                  -1.000e-06     1.000e-06       -6.0000
+
+  ratio r_III / r_X = +1.315589
+  ratio r_V   / r_X = -0.551331
+  ratio r_III / r_V = -2.386207
+
+  Top rationals approximating r_III / r_X = +1.3156:
+    +1*13/6/405/247                 +1.321399   |dev|=0.005810
+    +1*6/5/1-F*P                    +1.309091   |dev|=0.006498
+    +1*6/5/1-F_TRZ                  +1.333333   |dev|=0.017744
+    +1*6/5/243/260                  +1.283951   |dev|=0.031639
+    +1*K_Mex/405/247                +1.270576   |dev|=0.045013
+    +1*D_phys/1/K_G                 +1.269231   |dev|=0.046359
+    +1*405/247/6/5                  +1.366397   |dev|=0.050807
+    +1*Phi_res/beta_i               +1.382208   |dev|=0.066619
+
+  Geometric mean |residuals| (III,V,X) = 4.7260e-04
+  log10(delta_geo) = -3.3255
+  Compare 1/D_crit^2 = 1.4793e-03    1/A_5^2 = 2.7778e-04    1/(2*A_5)^2 = 6.9444e-05
+
+  Hypothesis: r_III / r_X ~ 4/3 (D_phys/N_ch?) -- possible link
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XII candidate: Omega_b/Omega_m baryon fraction
+--------------------------------------------------------------------------------
+  Omega_b / Omega_m (Planck) = 0.155312
+  log = -0.8088
+
+  1-2 atom closures for Omega_b/Omega_m = 0.15531:
+  rank name                                               val        err%
+  1    243/260^1*D_BSFG^-1                           0.155769     +0.2941%
+  2    D_BSFG^-1*243/260^1                           0.155769     +0.2941%
+  3    D_crit^-1*D_phys^1                            0.153846     -0.9441%
+  4    D_phys^1*D_crit^-1                            0.153846     -0.9441%
+
+  Best 1-2 atom: 243/260^1*D_BSFG^-1 = 0.155769, err = +0.2941%
+
+  3-atom search near 0.155 (|err|<0.5%):
+  1    1-F*P^-1*D_phys^-1*SSq^1                                          0.155455     +0.0915%
+  2    1-F*P^-1*SSq^1*D_phys^-1                                          0.155455     +0.0915%
+  3    D_phys^-1*1-F*P^-1*SSq^1                                          0.155455     +0.0915%
+  4    D_phys^-1*SSq^1*1-F*P^-1                                          0.155455     +0.0915%
+  5    SSq^1*1-F*P^-1*D_phys^-1                                          0.155455     +0.0915%
+  6    SSq^1*D_phys^-1*1-F*P^-1                                          0.155455     +0.0915%
+  7    243/260^1*beta_i^-1*F_TRZ^1                                       0.155020     -0.1883%
+  8    F_TRZ^1*beta_i^-1*243/260^1                                       0.155020     -0.1883%
+  9    beta_i^-1*243/260^1*F_TRZ^1                                       0.155020     -0.1883%
+  10   beta_i^-1*F_TRZ^1*243/260^1                                       0.155020     -0.1883%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- BAO cross-check: r_d = c_s * eta_drag (independent path)
+--------------------------------------------------------------------------------
+  Class VIII eta_b form scale: K*(c/v)/D_crit^7 = 6.1202e-10
+  Observed eta_b = 6.1200e-10
+
+  Class IX -> rho_gamma = 4.1750e-14 J/m^3
+  -> T_CMB derived = 2.72485 K (obs 2.7255)
+  err = -0.0239%
+
+  Class XI r_d = 147.0499 Mpc (obs 147.05)
+  err = -0.000089%
+
+  Decomposition test: does (Class IX)^a * (Class VIII)^b structure match XI?
+  XI exponents (13,11) do not decompose as integer powers of (IX, VIII)
+  --> Class XI is INDEPENDENT structural closure (not derivative)
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  Track (a): residual geo mean = 4.7260e-04, no universal delta found
+  Track (b): best Omega_b/m closure 243/260^1*D_BSFG^-1 err=+0.2941%
+             best 3-atom 1-F*P^-1*D_phys^-1*SSq^1 err=+0.091522%
+  Track (c): T_CMB cross-check err=-0.0239%; XI independent of IX/VIII
+residual_hierarchy_delta_geo: predicted=4.726032e-04 observed=4.726032e-04 error_pct=0 status=EXACT
+Omega_b_over_Omega_m_classXII_2atom: predicted=1.557692e-01 observed=1.553124e-01 error_pct=2.941361e-01 status=OK
+Omega_b_over_Omega_m_classXII_3atom: predicted=1.554545e-01 observed=1.553124e-01 error_pct=9.152171e-02 status=OK
+T_CMB_from_classIX_rho_gamma: predicted=2.724847e+00 observed=2.725500e+00 error_pct=-2.394951e-02 status=OK
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session733_residual_hierarchy_OmegaB_BAO_crosscheck_result.json

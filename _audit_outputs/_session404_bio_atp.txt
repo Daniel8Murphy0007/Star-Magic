@@ -1,0 +1,1 @@
+S404 COMPLETE. |dG_ATP| = Phi_res*A_5 - F_TRZ*D_phys*A_5*Phi_res + F_TRZ*Phi_res*SO5 - F_TRZ*Phi_res*D_phys = 30.5000 kJ/mol; obs = 30.5; match 0.0000%. (= 30.5 exact)

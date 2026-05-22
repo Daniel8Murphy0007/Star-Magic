@@ -1,0 +1,1 @@
+S344 COMPLETE. m_p/m_e = D_BSFG * pi^5 = 6 * 306.0197 = 1836.1181; CODATA = 1836.15267343; match within 0.0019%.

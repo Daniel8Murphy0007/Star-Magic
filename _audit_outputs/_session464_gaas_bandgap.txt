@@ -1,0 +1,1 @@
+S464 COMPLETE. GaAs bandgap = 1.4190 eV; target 1.42; match 0.0704%.

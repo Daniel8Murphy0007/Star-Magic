@@ -1,0 +1,1 @@
+S368 COMPLETE. D/H = F_TRZ^5 * (K_Mex + Phi_res*F_TRZ*D_BSFG) = 2.583e-05; obs = 2.547e-05; match 1.43%.

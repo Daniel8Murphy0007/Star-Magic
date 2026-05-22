@@ -1,0 +1,47 @@
+=== lambda (Cabibbo / |V_us|) via GST ===
+  m_d/m_s    = F_TRZ^(1 + (beta_d-beta_s)*F_TRZ) = 0.049953
+  lambda_pred = sqrt(m_d/m_s) = 0.22350
+  lambda_obs  =                 0.22500
+  residual    = 0.666%
+
+=== A = Phi_res = 5/6 ===
+  A_pred      = 0.83333  (5/6)
+  |V_cb|_pred = A*lambda^2 = 0.04163
+  |V_cb|_obs  =              0.04182
+  residual    = 0.460%
+
+=== Wolfenstein CP parameters ===
+  rho_bar_pred = F_TRZ + F_TRZ^2 * D_BSFG = 0.1600
+  rho_bar_obs  =                            0.1560
+  residual     = 2.564%
+  eta_bar_pred = F_TRZ + 1/D_phys         = 0.3500
+  eta_bar_obs  =                            0.3550
+  residual     = 1.408%
+
+=== |V_ub| = A*lambda^3*sqrt(rho^2+eta^2) ===
+  |V_ub|_pred = 0.00358
+  |V_ub|_obs  = 0.00382
+  residual    = 6.271%
+
+=== CKM CP-violating phase delta ===
+  delta_pred = arctan(eta_bar/rho_bar) = 65.433 deg = 1.1420 rad
+  delta_obs  = 65.50 deg
+  residual   = 0.103%
+
+=== Jarlskog invariant J_CP ===
+  J_pred = 2.954e-05
+  J_obs  = 3.180e-05
+  residual = 7.11%
+
+====================================================================
+CKM SUMMARY -- zero new parameters, all from UQFF primitives:
+====================================================================
+observable         predicted      observed    residual
+--------------------------------------------------------------------
+  |V_us|=lambda        0.2235         0.225      0.666%
+  |V_cb|            0.041627       0.04182      0.460%
+  |V_ub|           0.0035805       0.00382      6.271%
+  rho_bar               0.16         0.156      2.564%
+  eta_bar               0.35         0.355      1.408%
+  delta_CP[deg]        65.433          65.5      0.103%
+  J_CP             2.954e-05      3.18e-05      7.108%

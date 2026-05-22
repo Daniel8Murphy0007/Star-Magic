@@ -1,0 +1,1 @@
+S369 COMPLETE. Li-7/H = F_TRZ^10 * D_phys*Phi_res/K_Mex = 1.600e-10; obs (Spite plateau) = 1.60e-10 (match 0.0%); BBN prediction = 5.00e-10 (UQFF prefers obs over BBN by 3x).

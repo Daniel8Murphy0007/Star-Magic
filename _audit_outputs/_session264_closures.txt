@@ -1,0 +1,76 @@
+============================================================================
+SESSION 264  -  PAPER_1171 fudge-factor audit and replacement
+============================================================================
+
+PART 1: Compute PAPER_1171 formula exactly as written
+----------------------------------------------------------------------------
+  Prefactor 3 zeta(5)/(64 pi^6)     = 5.0558e-05
+  (D_crit/D_BSFG)^4 = (13/3)^4      = 352.6049
+  (v_UA/c)^4                        = 1.2380e-02
+  rho_SCm c^2 (c/v_UA)^2            = 5.7270e-19
+  Bare product (no 10^N factor)     = 1.2639e-22 J/m^3
+
+  With 10^8 bookkeeping:  1.2639e-14
+  With 10^17 bookkeeping: 1.2639e-05
+  Target (paper claim):   5.951e-10
+
+  Actual factor needed:   10^12.67
+  Conclusion: neither 10^8 nor 10^17 reproduces the claim.
+  The required factor 10^12.67 is not a structural
+  primitive — this is a hand-tuned fudge.
+
+PART 2: Units check on PAPER_1171 equation 3 (m_1 definition)
+----------------------------------------------------------------------------
+
+  Paper writes: m_1 = v_UA / L_KK*  with  L_KK* = (D_BSFG/D_crit)*(c/v_UA)
+  m_1 = v_UA / ((D_BSFG/D_crit)(c/v_UA))
+       = (D_crit/D_BSFG) * v_UA^2 / c        (units of m/s)
+
+  But m_1 is supposed to be a MASS in QFT KK calculations.  v_UA^2/c
+  has units of m/s (velocity), not kg.  This is dimensionally wrong.
+
+  The paper later treats m_1^4 as having units of J^4/m^4 via
+  rho_SCm * (some factors), but the unit-tracking is inconsistent.
+
+PART 3: Clean re-interpretation of m_1
+----------------------------------------------------------------------------
+
+  m_1 c^2 = (D_crit/D_BSFG) * h * f_THz
+          = (13/3) * 6.626e-34 * 1.25e12
+          = 3.5891e-21 J
+          = 22.40 meV
+
+  Compare paper's m_1 c^2 ~ 7.49 meV (from CondensedPhysics4 line 15955).
+  Ratio of clean/paper = 2.991
+  These differ by ~3x; both are O(10 meV).  The clean form is fully
+  structural (D_crit/D_BSFG * h * f_THz) and dimensionally consistent.
+
+PART 4: Carry forward Session 263 closure as canonical
+----------------------------------------------------------------------------
+  S263 canonical: rho_Lambda = 2 D_BSFG D_phys rho_A f_THz
+                             = 6.0000e-10 J/m^3
+                  residual = 0.671%   [CLOSED]
+
+  This supersedes both PAPER_1170 KK tower and PAPER_1171's
+  (13/3)^4 + 10^17 derivation.
+
+PART 5: Recommended PAPER_1171 revision
+----------------------------------------------------------------------------
+
+  REMOVE:  Sections 3-5 KK-tower zeta-regularisation derivation
+           (units inconsistent, requires 10^13.74 fudge).
+
+  REPLACE WITH: Session 263 closure
+    rho_Lambda = 2 * D_BSFG * D_phys * rho_A * f_THz
+    = (paired-buoyancy crossing factor 2) x
+      (BSFG-physical-spacetime cell volume D_BSFG * D_phys = 24) x
+      (ambient aether anchor density rho_A) x
+      (THz reactant-pair oscillation frequency f_THz)
+
+  RETAIN: PAPER_1171's identification (13/3) = D_crit/D_BSFG as a
+          structural ratio appearing throughout UQFF.  Used at
+          stage-3 Chandrasekhar bound (Session 262) and Riemann
+          critical-line argument (Session 261, Level_13/D_crit=1/2).
+
+
+Wrote _session264_closures.json

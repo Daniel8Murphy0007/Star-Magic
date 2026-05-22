@@ -1,0 +1,1 @@
+S477 COMPLETE. H ionization (eV) = 13.6000 = 13.6; target 13.6; match 0.0000%.

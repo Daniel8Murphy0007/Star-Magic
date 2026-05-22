@@ -1,0 +1,1 @@
+S389 COMPLETE. U_grav coeff = SSq + F_TRZ^2*(D_phys-1) = 0.6000; obs (3/5 uniform sphere) = 0.6; match 0.0000%. (= 0.60 exact)

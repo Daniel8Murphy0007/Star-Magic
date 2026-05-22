@@ -1,0 +1,1 @@
+S543 COMPLETE. m_p/m_e = 1836.0000; closure = A_5*D_crit+A_5*D_phys+N_ch*D_phys; target 1836.1527; match 0.0083%.

@@ -1,0 +1,21 @@
+================================================================================
+SESSION 705 -- Universal Loop-Factorial Rule
+================================================================================
+  alpha-chain ratio  c_3 c_1 / c_2^2  (rational) = 1/2  (= 0.5000000000000000)
+  alpha-chain ratio  c_3 c_1 / c_2^2  (numeric)  = 0.5000000000000000
+  c-chain   ratio    c_3 c_1 / c_2^2  (rational) = 1/2  (= 0.5000000000000000)
+  c-chain   ratio    c_3 c_1 / c_2^2  (numeric)  = 0.4999999999999998
+--------------------------------------------------------------------------------
+  c-chain physical point: u = c_2 * delta_c        = 3.807718e-03
+  Borel partial sum (n=0..7)                       = 1.0038149763144897
+  Borel exact = exp(u)                              = 1.0038149763144899
+  Borel truncation error |partial - exact|          = 2.220e-16
+--------------------------------------------------------------------------------
+  alpha-chain physical point: u = c_2 * delta_a    = 2.858072e-03
+  Borel partial sum (n=0..7)                       = 1.0028621601005967
+  Borel exact = exp(u)                              = 1.0028621601005967
+  Borel truncation error                            = 0.000e+00
+--------------------------------------------------------------------------------
+borel_exponential_summation: predicted=1.003814976314e+00 observed=1.003814976314e+00 error_pct=-0.0000000000 status=OK
+universal_loop_factorial_rule: predicted=5.000000000000e-01 observed=5.000000000000e-01 error_pct=-0.0000000000 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session705_universal_loop_factorial_result.json

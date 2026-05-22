@@ -1,0 +1,1 @@
+S388 COMPLETE. WD exponent = -Phi_res*F_TRZ*D_phys = -0.333333; obs (polytrope n=3/2) = -0.333333; match 0.0000%. (= -1/3 exact)

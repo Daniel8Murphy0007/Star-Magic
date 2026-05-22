@@ -1,0 +1,1 @@
+﻿S352 COMPLETE. E_ion(H) = R_y = 13.6128 eV (obs 13.6057); E_Lyman = 3/4 R_y = 10.2096 eV (obs 10.20); E_Balmer = 5/36 R_y = 1.8907 eV (obs 1.89); all chain from S343 alpha.

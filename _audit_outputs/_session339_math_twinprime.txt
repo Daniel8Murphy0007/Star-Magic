@@ -1,0 +1,1 @@
+S339 COMPLETE. Twin prime constant C_2 ~ Phi_res^2 - F_TRZ*Phi_res = 0.6111; Hardy-Littlewood = 0.6602; match within 7%.

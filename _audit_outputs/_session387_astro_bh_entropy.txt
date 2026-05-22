@@ -1,0 +1,1 @@
+S387 COMPLETE. S/A = F_TRZ*K_Mex + F_TRZ^2*D_phys = 0.2483; obs (Bekenstein-Hawking) = 0.25; match 0.667%.

@@ -1,0 +1,87 @@
+================================================================================
+SESSION 737 -- delta_univ dressing + Class XVI alpha_s + VII decomposition
+================================================================================
+delta_univ closed form = -(243/260)(27/25)(c/v)^2/D_crit^3 = -5.168674e-04
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Dress 5 residual classes with delta_univ closed form
+--------------------------------------------------------------------------------
+ cls         r_obs                    c_i     r_pred=delta*c       err%
+ III    -6.920e-04        +Phi_res/beta_i         -7.144e-04      3.24%
+classXV_delta_dress_III: predicted=-7.144184e-04 observed=-6.920000e-04 error_pct=3.239650e+00 status=OK
+   V     2.900e-04        -beta_i/(27/26)          3.001e-04      3.48%
+classXV_delta_dress_V: predicted=3.000779e-04 observed=2.900000e-04 error_pct=3.475139e+00 status=OK
+   X    -5.260e-04            +beta_i/SSq         -5.467e-04      3.94%
+classXV_delta_dress_X: predicted=-5.467006e-04 observed=-5.260000e-04 error_pct=3.935481e+00 status=OK
+ XII     9.200e-04           -(27/26)/SSq          9.417e-04      2.35%
+classXV_delta_dress_XII: predicted=9.416613e-04 observed=9.200000e-04 error_pct=2.354486e+00 status=OK
+XIII     4.500e-04     -(243/260)/(27/26)          4.652e-04      3.37%
+classXV_delta_dress_XIII: predicted=4.651807e-04 observed=4.500000e-04 error_pct=3.373481e+00 status=OK
+
+  Class XII dressed: K_bare=0.155455, r_pred=9.417e-04
+  K_XII_dressed = 0.155601, K_obs=0.156359, err=-0.4848%
+classXII_dressed_via_delta_univ: predicted=1.556009e-01 observed=1.563590e-01 error_pct=-4.848407e-01 status=OK
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XVI: running of spectral index alpha_s = -0.0045
+--------------------------------------------------------------------------------
+  target alpha_s = -0.0045
+  |alpha_s|     = 4.5000e-03
+  Heuristics:
+    -(7/200)*(7/200) = -(1-n_s)^2                      = -1.2250e-03   err = -72.778%
+    -(F_TRZ)*(243/260)*beta_i                          = -5.6348e-02   err = +1152.177%
+    -1/(2*D_crit^2)                                    = -7.3964e-04   err = -83.563%
+    -(SSq*F_TRZ)/(K_Mex*N_ch)                          = -3.0400e-03   err = -32.444%
+    -(1-n_s)*F_TRZ*N_ch/A_5                            = -5.2500e-04   err = -88.333%
+    -9/2000                                            = -4.5000e-03   err = -0.000%
+    -(7/200)*beta_i/SSq                                = -3.7020e-02   err = +722.671%
+
+  2-atom search alpha_s = -A*B (sub-1%):
+
+  3-atom search alpha_s = -A*B*C (sub-0.1%):
+    -1/A_5*1/D_phys*27/25 = -4.5000e-03   err = -0.0000%
+classXVI_alpha_s_3atom: predicted=-4.500000e-03 observed=-4.500000e-03 error_pct=-0.000000e+00 status=OK
+classXVI_alpha_s_neg_oneMinusNs_sq: predicted=-1.225000e-03 observed=-4.500000e-03 error_pct=-7.277778e+01 status=OK
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Decompose Class VII Hubble residual (-4e-3)
+--------------------------------------------------------------------------------
+  r_VII_obs / delta_univ_closed = 7.7389
+  delta_univ_closed = -5.1687e-04
+  Hypothesis: r_VII = k * delta_univ * c_VII
+  Test if ratio matches a locked rational:
+             candidate c      value        r_pred       err%
+                      10    10.0000    -5.169e-03    +29.22%
+               10*beta_i     6.0290    -3.116e-03    -22.10%
+                    N_ch     9.0000    -4.652e-03    +16.30%
+              K_Mex*N_ch    18.7500    -9.691e-03   +142.28%
+                       8     8.0000    -4.135e-03     +3.37%
+                       7     7.0000    -3.618e-03     -9.55%
+            Phi_res*N_ch     7.5000    -3.877e-03     -3.09%
+                1/beta_i     1.6586    -8.573e-04    -78.57%
+                 K_Mex^2     4.3403    -2.243e-03    -43.92%
+                D_phys*2     8.0000    -4.135e-03     +3.37%
+            243/260*N_ch     8.4115    -4.348e-03     +8.69%
+        Phi_res*D_phys*2     6.6667    -3.446e-03    -13.86%
+
+  best: c=Phi_res*N_ch, r_pred=-3.877e-03, err=3.087%
+classVII_residual_decompose_best: predicted=-3.876506e-03 observed=-4.000000e-03 error_pct=-3.087361e+00 status=OK
+
+  Second-order: r_VII / sqrt|delta| = 0.1759
+  Test r_VII = sign * sqrt|delta| * c2:
+  c2=Phi_res*K_Mex        = 1.7361  r_pred=-3.947e-02  err=+886.75%
+  c2=beta_i*N_ch          = 5.4261  r_pred=-1.234e-01  err=+2984.02%
+  c2=D_phys               = 4.0000  r_pred=-9.094e-02  err=+2173.47%
+  c2=D_BSFG               = 6.0000  r_pred=-1.364e-01  err=+3310.21%
+  c2=SSq*N_ch             = 5.1300  r_pred=-1.166e-01  err=+2815.73%
+  c2=Phi_res*N_ch         = 7.5000  r_pred=-1.705e-01  err=+4162.76%
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  (a) 5 classes dressed via delta_univ -- see ledger entries classXV_delta_dress_*
+      Class XII dressed: err = -0.4848%
+  (b) Class XVI alpha_s best 3-atom: -1/A_5*1/D_phys*27/25 err=-0.0000%
+  (c) Class VII best 1st-order: c=Phi_res*N_ch, err=3.087%
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session737_delta_dress_classXVI_alphas_VII_decompose_result.json

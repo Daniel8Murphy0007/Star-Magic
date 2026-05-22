@@ -1,0 +1,1 @@
+S479 COMPLETE. Hartree (eV) = 27.2240; target 27.211; match 0.0478%.

@@ -1,0 +1,1 @@
+S487 COMPLETE. Magic number Ni = 28.0000 = 28 = D_crit + SO5 - 2*D_phys; target 28; match 0.0000%.

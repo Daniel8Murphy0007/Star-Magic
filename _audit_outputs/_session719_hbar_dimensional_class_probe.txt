@@ -1,0 +1,58 @@
+================================================================================
+SESSION 719 -- hbar-chain dimensional class probe
+================================================================================
+
+Dimensional analysis:
+    [hbar] = J*s requires d=4 in L  (length appears as L^4 always)
+    Free exponent in (c/v_SCM); no exponent eliminates the L^4 anchor
+
+    => hbar requires an EXTERNAL length anchor L_DPM beyond the
+       locked primitives + {c, v_SCM, rho_vac}.  This is a structural
+       distinction from alpha (dimensionless), mu (dimensionless),
+       and c (length/time ratio).
+
+--------------------------------------------------------------------------------
+Back-solve implied DPM length anchor (Form A, C_locked = 1):
+    L_DPM^4 = hbar * v_SCM / rho_vac = 1.487407e+10 m^4
+    L_DPM   = 349.226733 m
+--------------------------------------------------------------------------------
+Locked-rational structural search for L_DPM:
+
+  candidate                                 value (m)      rel err vs L_DPM
+  ----------------------------------------  -------------  -------------
+  (c/v_SCM)^3 * 13                             350.272031  2.9932e-03 <-- closest
+  (c/v_SCM)^3 * 12                             323.328029  7.4160e-02
+  c_2 * 64                                     350.919268  4.8465e-03
+  K_Mex * 168                                  350.000000  2.2142e-03 <-- closest
+  pi^4 * 3.6                                   350.672728  4.1406e-03
+  (D_crit/D_BSFG) * 81                         351.000000  5.0777e-03
+  Phi_res * 420                                350.000000  2.2142e-03
+  (c/v_SCM)^4 * 4.32                           348.952696  7.8470e-04 <-- closest
+  c_2^2 * 11.63                                349.650534  1.2135e-03
+  13/3 * 80.69                                 349.656667  1.2311e-03
+
+  Closest locked candidate: (c/v_SCM)^4 * 4.32  (rel err 7.85e-04)
+
+  Verdict: every candidate REQUIRES a non-locked numerical factor
+           (13, 12, 64, 168, 3.6, 81, 420, 4.32, 11.63, 80.69 -- none
+           are products of {F_TRZ, Phi_res, SSq, K_Mex, beta_i,
+           D_phys, D_BSFG, D_crit, N_ch, SO5, A_5}).
+
+  => L_DPM is NOT reachable from the 11 locked primitives.
+     hbar-chain is CLASS IV: requires an external SCM length scale.
+
+================================================================================
+UNIVERSALITY CLASSIFICATION (extended to 4 chains):
+================================================================================
+
+  Class   Chain   Closure form                                      Anchor
+  ------  ------  ------------------------------------------------  ------
+  I       alpha   c_n = lambda_n * c_2^(n-1) / (n-1)!               per-loop locked rationals (15/7, 19/12)
+  II      mu      c_n = c_2 * r^(n-2)                               single locked ratio r = 3*K_Mex = 25/4
+  III     c       Borel + (D_crit/D_BSFG) * delta^3 * exp(-c_2*delta)  additive damped geom phase, rank 13/3
+  IV      hbar    rho_vac * L_DPM^4 / v_SCM                         requires external length anchor L_DPM ~ 350 m
+
+hbar_classIV_dimensional_identity: predicted=1.487407358251e+10 observed=1.487407358251e+10 error_pct=+0.000000e+00 status=EXACT
+hbar_classIV_locked_rational_match: predicted=3.492267331920e+02 observed=3.489526964043e+02 error_pct=+0.078470 status=FAIL
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session719_hbar_dimensional_class_probe_result.json

@@ -1,0 +1,17 @@
+========================================================================
+SESSION 695 -- 4 pi prefactor derived from SO(26)/(SO(24) x SO(2)_DPM)
+========================================================================
+  G3 coset            : SO(26) / (SO(24) x SO(2)_DPM)
+  Minimal EM subgroup : SO(3) (contains SO(2)_DPM + 1 radial)
+  Gauss-law surface   : S^2 = SO(3) / SO(2)_DPM
+  Vol(S^2)            : 12.566370614359172
+  4 * pi (reference)  : 12.566370614359172
+  match               : True
+  ratio (rational)    : 12500/1143 = 10.936132983377078
+  1/alpha_UQFF        : 137.427500157
+  1/alpha_CODATA      : 137.035999084
+  residual            : +0.285692 %
+========================================================================
+four_pi_prefactor: predicted=12.566370614359 observed=12.566370614359 error_pct=0.000000 status=OK
+alpha_inverse_v2: predicted=137.427500157 observed=137.035999084 error_pct=0.285692 status=OK
+Artifact written: _session695_4pi_coset_result.json

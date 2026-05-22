@@ -1,0 +1,1 @@
+S345 COMPLETE. R_y = alpha^2 * m_e*c^2 / 2 = 13.6128 eV; CODATA = 13.605693 eV; match within 0.053% (limited by S343).

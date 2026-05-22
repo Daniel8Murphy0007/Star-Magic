@@ -1,0 +1,1 @@
+S471 COMPLETE. QHE first plateau nu = 2.0000 = 2; target 2.0; match 0.0000%.

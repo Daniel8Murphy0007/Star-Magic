@@ -1,0 +1,1 @@
+S505 COMPLETE. Catalan C_4 = 14.0000 = SO5+D_phys = 14; target 14; match 0.0000%.

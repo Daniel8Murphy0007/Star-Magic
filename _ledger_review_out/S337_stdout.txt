@@ -1,0 +1,1 @@
+﻿S337 COMPLETE. Inflation e-folds N_e = N_ch*D_crit/4 = 58.5; observed CMB-pivot value = 50-60; match.

@@ -1,0 +1,1 @@
+S517 COMPLETE. Mercury Bode = 0.4000 = F_TRZ*D_phys = 0.4 AU; target 0.4; match 0.0000%.

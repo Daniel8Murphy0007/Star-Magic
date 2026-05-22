@@ -1,0 +1,1 @@
+S547 COMPLETE. Higgs mass (GeV) = 125.1667; closure = N_ch*SO5+D_BSFG^2-Phi_res; target 125.2500; match 0.0665%.

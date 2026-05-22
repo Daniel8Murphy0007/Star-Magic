@@ -1,0 +1,1 @@
+S374 COMPLETE. J_CP = F_TRZ^5*D_BSFG*SSq*(1-F_TRZ*K_Mex*SSq) = 3.014e-05; obs = 3.00e-05; match 0.463%.

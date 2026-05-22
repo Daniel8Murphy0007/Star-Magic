@@ -1,0 +1,162 @@
+﻿================================================================================
+SESSION 764 -- Cross-validation + omega_nu*h^2 (LX); z_BAO_eff (LXI); eta_b (LXII)
+================================================================================
+
+================================================================================
+TRACK (a) -- CROSS-VALIDATION SUITE (no new atoms; uses closed classes only)
+================================================================================
+
+  IDENTITY 1: Omega_m = (Omega_m*h^2) / h^2   [XLVI + LIII]
+    H_0 (LIII)        = 67.3997 km/s/Mpc
+    h^2               = 0.454271
+    Omega_m*h^2 (XLVI)= 0.143000
+    Omega_m predicted = 0.314790
+    Planck Omega_m    = 0.315300
+    cross-validation residual = -0.1618%   [CE]
+
+  IDENTITY 2: Sigma m_nu = k_pivot / Phi_res   [XLVIII / Phi_res ==? XLIX]
+    k_pivot (XLVIII)        = 0.050000 = 1/20
+    k_pivot / Phi_res       = 0.060000
+    Sigma m_nu (XLIX)       = 0.060000 = 3/50
+    cross-validation residual = +0.000000e+00%   [EXACT]
+
+  IDENTITY 3: Omega_b*h^2 + Omega_c*h^2 = Omega_m*h^2   [XXXVII + XLVII ==? XLVI]
+    omega_b*h^2 (XXXVII)= 0.022370
+    omega_c*h^2 (XLVII) = 0.120600
+    sum                 = 0.142970
+    Omega_m*h^2 (XLVI)  = 0.143000
+    cross-validation residual = -0.0210%   [CE_strict]
+
+  IDENTITY 4: z_reion * k_pivot = D_phys^2 / (K_Mex * 20)  [LVIII * XLVIII]
+    z_reion (LVIII)         = 7.680000
+    k_pivot (XLVIII)        = 0.050000
+    product                 = 0.384000 = 192/500 = 48/125 = 0.384
+    NOTE: 0.384 ~ z_BAO_eff = 0.38 (track c)!  Possible structural identity.
+
+  IDENTITY 5: Sigma m_nu * SO5^2 / D_BSFG = 1   [XLIX self-consistency]
+    value = 1.0000000000  (expect 1)  err = +0.000000e+00%
+
+  IDENTITY 6: Hubble time 1/H_0 vs cosmic age t_0   [LIII vs XL]
+    H_0                    = 67.3997 km/s/Mpc
+    1/H_0 (Hubble time)    = 14.5078 Gyr
+    Observed t_0           = 13.7970 Gyr
+    t_0 / (1/H_0)          = 0.9510   (Planck: 0.951)
+
+================================================================================
+TRACK (b) -- Class LX: omega_nu*h^2 = Sigma m_nu / 93.14 eV
+================================================================================
+  Target: omega_nu*h^2 = Sigma m_nu / 93.14 eV = 6.441915e-04
+
+  2-atom direct (tol 3%):
+
+  3-atom direct (tol 0.5%):
+    [1/137 a*b/c 1/12 307/325] = 6.439367e-04  err=-0.0396%
+    [1/12 a*b/c 1/137 307/325] = 6.439367e-04  err=-0.0396%
+    [alpha a*b/c 1/12 307/325] = 6.437675e-04  err=-0.0658%
+    [1/12 a*b/c alpha 307/325] = 6.437675e-04  err=-0.0658%
+    [Phi_res a*b/c 5/108 A_5] = 6.430041e-04  err=-0.1843%
+    [5/108 a*b/c Phi_res A_5] = 6.430041e-04  err=-0.1843%
+    [5/108 a*b/c 1/12 D_BSFG] = 6.430041e-04  err=-0.1843%
+    [1/12 a*b/c 5/108 D_BSFG] = 6.430041e-04  err=-0.1843%
+    [r a*b*c 1/137 22/9] = 6.423358e-04  err=-0.2881%
+    [22/9 a*b*c 1/137 r] = 6.423358e-04  err=-0.2881%
+    [1/137 a*b*c r 22/9] = 6.423358e-04  err=-0.2881%
+    [1/137 a*b*c 22/9 r] = 6.423358e-04  err=-0.2881%
+
+  4-atom direct (tol 0.05%):
+    [27/26 a*b*c/d 5/108 alpha 1/mpme] = 6.441853e-04  err=-0.0010%
+    [27/26 a*b*c/d alpha 5/108 1/mpme] = 6.441853e-04  err=-0.0010%
+    [5/108 a*b*c/d 27/26 alpha 1/mpme] = 6.441853e-04  err=-0.0010%
+    [5/108 a*b*c/d alpha 27/26 1/mpme] = 6.441853e-04  err=-0.0010%
+    [alpha a*b*c/d 27/26 5/108 1/mpme] = 6.441853e-04  err=-0.0010%
+    [alpha a*b*c/d 5/108 27/26 1/mpme] = 6.441853e-04  err=-0.0010%
+    [27/26 a*b*c*d 5/108 alpha mpme] = 6.441853e-04  err=-0.0010%
+    [27/26 a*b*c*d 5/108 mpme alpha] = 6.441853e-04  err=-0.0010%
+    [27/26 a*b*c*d alpha 5/108 mpme] = 6.441853e-04  err=-0.0010%
+    [27/26 a*b*c*d alpha mpme 5/108] = 6.441853e-04  err=-0.0010%
+    [27/26 a*b*c*d mpme 5/108 alpha] = 6.441853e-04  err=-0.0010%
+    [27/26 a*b*c*d mpme alpha 5/108] = 6.441853e-04  err=-0.0010%
+
+  BEST omega_nu*h^2: [27/26 a*b*c/d 5/108 alpha 1/mpme] = 6.441853e-04, err = -0.000975%
+
+================================================================================
+TRACK (c) -- Class LXI: z_BAO_eff = 0.38 (BOSS DR12)
+================================================================================
+  Target: z_BAO_eff = 0.38
+  Cross-class hint: z_reion * k_pivot = 192/500 = 48/125 = 0.384 (err +1.05%)
+
+  2-atom direct (tol 3%):
+    [63/200 a/b 33/40] = 0.381818  err=+0.4785%
+    [63/200 a/b Phi_res] = 0.378000  err=-0.5263%
+    [243/260 a/b 22/9] = 0.382343  err=+0.6165%
+    [SO5 a/b D_crit] = 0.384615  err=+1.2146%
+    [11/9 a*b 63/200] = 0.385000  err=+1.3158%
+    [63/200 a*b 11/9] = 0.385000  err=+1.3158%
+    [1-F*P a/b 22/9] = 0.375000  err=-1.3158%
+    [137/200 a/b 11/6] = 0.373636  err=-1.6746%
+    [137/200 a*b 6/11] = 0.373636  err=-1.6746%
+    [6/11 a*b 137/200] = 0.373636  err=-1.6746%
+
+  3-atom direct (tol 0.5%):
+    [SSq a*b/c D_BSFG N_ch] = 0.380000  err=+0.0000%
+    [SSq a*b/c 11/9 11/6] = 0.380000  err=+0.0000%
+    [D_BSFG a*b/c SSq N_ch] = 0.380000  err=+0.0000%
+    [11/9 a*b/c SSq 11/6] = 0.380000  err=+0.0000%
+    [SSq a*b/c D_phys D_BSFG] = 0.380000  err=-0.0000%
+    [SSq a*b*c 11/9 6/11] = 0.380000  err=-0.0000%
+    [SSq a*b*c 6/11 11/9] = 0.380000  err=-0.0000%
+    [D_phys a*b/c SSq D_BSFG] = 0.380000  err=-0.0000%
+    [11/9 a*b*c SSq 6/11] = 0.380000  err=-0.0000%
+    [11/9 a*b*c 6/11 SSq] = 0.380000  err=-0.0000%
+    [6/11 a*b*c SSq 11/9] = 0.380000  err=-0.0000%
+    [6/11 a*b*c 11/9 SSq] = 0.380000  err=-0.0000%
+
+  4-atom direct (tol 0.05%):
+    [F_TRZ a*b*c/d SSq A_5 N_ch] = 0.380000  err=+0.0000%
+    [F_TRZ a*b*c/d D_BSFG SSq 1-F_TRZ] = 0.380000  err=+0.0000%
+    [F_TRZ a*b*c/d A_5 SSq N_ch] = 0.380000  err=+0.0000%
+    [SSq a*b*c/d F_TRZ A_5 N_ch] = 0.380000  err=+0.0000%
+    [SSq a*b*c/d D_BSFG F_TRZ 1-F_TRZ] = 0.380000  err=+0.0000%
+    [SSq a*b/(c*d) D_BSFG SO5 1-F_TRZ] = 0.380000  err=+0.0000%
+    [SSq a*b/(c*d) D_BSFG 1-F_TRZ SO5] = 0.380000  err=+0.0000%
+    [SSq a*b*c/d A_5 F_TRZ N_ch] = 0.380000  err=+0.0000%
+    [SSq a*b*c/d 1-n_s D_BSFG 63/200] = 0.380000  err=+0.0000%
+    [SSq a*b/(c*d) 22/9 D_phys 1-F*P] = 0.380000  err=+0.0000%
+    [SSq a*b/(c*d) 22/9 1-F*P D_phys] = 0.380000  err=+0.0000%
+    [D_BSFG a*b*c/d F_TRZ SSq 1-F_TRZ] = 0.380000  err=+0.0000%
+
+  BEST z_BAO_eff: [SSq a*b/c D_BSFG N_ch] = 0.380000, err = +0.000000%
+
+================================================================================
+TRACK (d) -- Class LXII: eta_b = n_b/n_gamma = 6.14e-10
+================================================================================
+  Target: eta_b = 6.1400e-10
+
+  Seed analysis: alpha^3 * xi = 1.3358e-09 (target ratio = 0.4597)
+
+  2-atom direct (tol 5%):
+
+  3-atom direct (tol 1%):
+
+  4-atom direct (tol 0.1%):
+
+  BEST eta_b: none = 0.0000e+00, err = +9999.000000%
+
+cross_val_Omega_m_session764: predicted=3.147898e-01 observed=3.153000e-01 error_pct=-1.618196e-01 status=CE
+cross_val_Sigmav_id_session764: predicted=6.000000e-02 observed=6.000000e-02 error_pct=0.000000e+00 status=EXACT
+cross_val_baryon_CDM_sum_session764: predicted=1.429700e-01 observed=1.430000e-01 error_pct=-2.097902e-02 status=CE_strict
+classLX_omega_nu_h2_session764: predicted=6.441853e-04 observed=6.441915e-04 error_pct=-9.746721e-04 status=CE_strict
+classLXI_z_BAO_eff_session764: predicted=3.800000e-01 observed=3.800000e-01 error_pct=0.000000e+00 status=EXACT
+classLXII_eta_b_session764: predicted=0.000000e+00 observed=6.140000e-10 error_pct=-1.000000e+02 status=OPEN
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  CV-1 Omega_m derived         err = -0.1618%  (CE)
+  CV-2 Sigma m_nu identity     err = +0.000000e+00%  (EXACT)
+  CV-3 baryon+CDM = matter sum err = -0.0210%  (CE_strict)
+  omega_nu*h^2 (LX)            err = -0.000975%  (CE_strict)
+  z_BAO_eff (LXI)              err = +0.000000%  (EXACT)
+  eta_b (LXII)                 err = +9999.000000%  (OPEN)
+
+Artifact: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session764_result.json

@@ -1,0 +1,32 @@
+
+Dimensional reference: v_F^5/(E_0*f_THz) = 2.1654e+37 m^3 kg^-1 s^-2
+G observed (CODATA) = 6.6740e-11 m^3 kg^-1 s^-2
+Required dimensionless prefactor = G_obs / G_ref_dim = 3.0821e-48
+log10(required) = -47.5112
+
+--- searching 1-primitive combinations ---
+--- searching 2-primitive combinations ---
+--- searching 3-primitive combinations ---
+  log10_err=+0.0045  ratio=0.9896  G_uqff=6.6048e-11   BETA_I^-3 * 1/26!^3 * 1/(R_HZ*f_THz/v_F)^-1
+  log10_err=+0.0079  ratio=0.9819  G_uqff=6.5535e-11   1/(2pi)^-3 * 1/(4pi)^-3 * 1/26!^2
+  log10_err=+0.0079  ratio=0.9819  G_uqff=6.5535e-11   1/(2pi)^-3 * 4pi^3 * 1/26!^2
+  log10_err=+0.0102  ratio=0.9767  G_uqff=6.5184e-11   alpha^-2 * 1/26^-1 * 1/26!^2
+  log10_err=+0.0102  ratio=0.9767  G_uqff=6.5184e-11   alpha^-2 * 26 * 1/26!^2
+--- searching 4-primitive combinations ---
+  log10_err=+0.0003  ratio=0.9992  G_uqff=6.6690e-11   SSQ^-3 * alpha^-1 * 1/26^-2 * 1/26!^2
+  log10_err=+0.0003  ratio=0.9992  G_uqff=6.6690e-11   SSQ^-3 * alpha^-1 * 26^2 * 1/26!^2
+  log10_err=+0.0008  ratio=1.0018  G_uqff=6.6861e-11   1/PHI_RES^3 * BETA_I^-2 * 1/26!^3 * 1/(R_HZ*f_THz/v_F)^-1
+  log10_err=+0.0008  ratio=1.0018  G_uqff=6.6861e-11   PHI_RES^-3 * BETA_I^-2 * 1/26!^3 * 1/(R_HZ*f_THz/v_F)^-1
+  log10_err=+0.0008  ratio=1.0019  G_uqff=6.6866e-11   SSQ^3 * 1/(4pi)^-3 * 1/26!^3 * H_0/f_THz^-1
+
+=== BEST OVERALL (337 candidates within log10 tolerance) ===
+  G_uqff = 6.6690e-11  (0.08% off)   prefactor = SSQ^-3 * alpha^-1 * 1/26^-2 * 1/26!^2
+  G_uqff = 6.6690e-11  (0.08% off)   prefactor = SSQ^-3 * alpha^-1 * 26^2 * 1/26!^2
+  G_uqff = 6.6861e-11  (0.18% off)   prefactor = 1/PHI_RES^3 * BETA_I^-2 * 1/26!^3 * 1/(R_HZ*f_THz/v_F)^-1
+  G_uqff = 6.6861e-11  (0.18% off)   prefactor = PHI_RES^-3 * BETA_I^-2 * 1/26!^3 * 1/(R_HZ*f_THz/v_F)^-1
+  G_uqff = 6.6866e-11  (0.19% off)   prefactor = SSQ^3 * 1/(4pi)^-3 * 1/26!^3 * H_0/f_THz^-1
+  G_uqff = 6.6866e-11  (0.19% off)   prefactor = SSQ^3 * 4pi^3 * 1/26!^3 * H_0/f_THz^-1
+  G_uqff = 6.6908e-11  (0.25% off)   prefactor = 1/F_TRZ^-3 * 1/(26*2pi)^-2 * alpha^-2 * 1/26!^2
+  G_uqff = 6.6908e-11  (0.25% off)   prefactor = F_TRZ^3 * 1/(26*2pi)^-2 * alpha^-2 * 1/26!^2
+  G_uqff = 6.6944e-11  (0.31% off)   prefactor = 1/F_TRZ^3 * SSQ^-2 * 1/(26*2pi)^-1 * 1/26!^2
+  G_uqff = 6.6944e-11  (0.31% off)   prefactor = F_TRZ^-3 * SSQ^-2 * 1/(26*2pi)^-1 * 1/26!^2

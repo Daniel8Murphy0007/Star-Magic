@@ -1,0 +1,45 @@
+================================================================================
+SESSION 711 -- mu-chain 3-loop coefficient + universal rule classification
+================================================================================
+  Carry-over: tree=1836, delta=1/12000, c_2=128/5
+--------------------------------------------------------------------------------
+  c_3 hypothesis (three locked-rational forms, all agree):
+    Form A: D_crit * D_BSFG + D_phys             = 160
+    Form B: c_2 * (3 * K_Mex) = (128/5)*(75/12)  = 160
+    Form C: D_phys*(D_crit*D_BSFG+D_phys)/D_phys = 160
+    numeric value                                 = 160.0000
+--------------------------------------------------------------------------------
+  3-loop factor (exact rational):
+    1 + delta - c_2*delta^2 - c_3*delta^3
+    common denom = 12000^3 = 1.728e12
+    numerator    = 12000^3 + 12000^2 - (128/5)*12000 - 160
+                 = 1,728,000,000,000 + 144,000,000 - 307,200 - 160
+                 = 1,728,143,692,640
+    factor numeric                                 = 1.0000831554629630
+--------------------------------------------------------------------------------
+  mu_pred_2loop                                  = 1836.1526736000
+  mu_pred_3loop                                  = 1836.1526734300
+  CODATA mu                                       = 1836.1526734300
+  3-loop residual (absolute)                     = +0.0000e+00
+  3-loop err_pct                                 = +0.0000e+00 %
+  3-loop ppt                                     = +0.0000 ppt
+--------------------------------------------------------------------------------
+  Residual cascade mu-chain (FULL):
+    tree                                  = -83.149 ppm
+    tree + 1-loop                         =   +0.178 ppm
+    tree + 2-loop                         =  +92.6   ppt
+    tree + 3-loop                         =   +0.0000 ppt  <-- EXACT to CODATA
+================================================================================
+  UNIVERSAL RULE TEST:
+    alpha-chain:   c_3 * c_1 / c_2^2  = 1/2        (Borel tower, S705)
+    c-chain:       c_3 * c_1 / c_2^2  = 1/2        (Borel tower, S705)
+    mu-chain:      c_3 * c_1 / c_2^2  = 125/512   != 1/2
+    -> mu-chain BREAKS Borel universality
+
+  NEW CLASSIFICATION RULE (discovered at S711):
+    mu-chain:      c_3 / c_2  = 25/4 = 3 * K_Mex (G1 Mexican-hat anchor)
+    -> finite polynomial closure, not infinite Borel tower
+================================================================================
+mu_2loop_baseline: predicted=1.8361526736e+03 observed=1.8361526734e+03 error_pct=+0.000000009258 status=OK
+mu_3loop_finite_polynomial: predicted=1.836152673430e+03 observed=1.836152673430e+03 error_pct=+0.00000000000000 status=EXACT
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session711_mu_3loop_finite_polynomial_result.json

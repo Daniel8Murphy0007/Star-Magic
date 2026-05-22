@@ -1,0 +1,1 @@
+﻿S351 COMPLETE. n_periods_stable = D_BSFG + 1 = 7; matches periodic table (1..7); Madelung n+l rule from N_ch = 9 angular channels; period 8 destabilized by relativistic + alpha-decay (Z > 118 observed).

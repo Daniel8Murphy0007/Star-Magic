@@ -1,0 +1,30 @@
+========================================================================
+Session 283 — GW190425 Bayesian mass-gap posterior smoke tests
+========================================================================
+  [PASS] T-1 equal-mass inversion  m1=1.1487 m2=1.1487
+  [PASS] T-2 chirp definition self-consistent  Mc_in=1.44 Mc_out=1.440000
+  [PASS] T-3 ordering m1 >= m2  m1=1.983 m2=1.388
+  [PASS] T-4 q=1 ⇒ equal masses  
+  [PASS] T-5 q=0 raises ValueError  
+  [PASS] T-6 posterior n_samples  
+  [PASS] T-7 m1 median in [1.60, 2.55]  m1_med=1.981
+  [PASS] T-8 m2 median in [1.05, 1.75]  m2_med=1.389
+  [PASS] T-9 M_tot median in [3.25, 3.75]  Mtot_med=3.382
+  [PASS] T-10 BNS+NSBH frac <= 1.001  total=1.0000
+  [PASS] T-11 mass-gap CI nonzero width  width=0.00392
+  [PASS] T-12 m1 CI brackets median  
+  [PASS] T-13 BNS-like fraction > 0.5  P_BNS=0.914
+  [PASS] T-14 calculator returns required keys  
+  [PASS] T-15 seed reproducible  
+  [PASS] T-16 calculator registry exposed  
+------------------------------------------------------------------------
+  RESULT: 16/16 tests passed
+========================================================================
+
+GW190425 headline (200k MC samples, low-spin prior):
+  m1       = 1.984  [90% CI 1.678, 2.567] M_sun
+  m2       = 1.388  [90% CI 1.103, 1.631] M_sun
+  M_tot    = 3.384  [90% CI 3.264, 3.676] M_sun
+  P(BNS-like)        = 0.9134  [90% CI 0.9124, 0.9144]
+  P(NS-BH-like)      = 0.0866  [90% CI 0.0856, 0.0877]
+  P(m1 ∈ mass-gap)   = 0.0866  [90% CI 0.0855, 0.0877]

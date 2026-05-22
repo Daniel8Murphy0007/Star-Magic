@@ -1,0 +1,3 @@
+Scanning 0 PARSE_FAIL session scripts (S261-S342) for prediction/observed/residual triplets
+Harvested 0 new triplets
+master_closures.csv: 105 OK, 0 PARSE_FAIL

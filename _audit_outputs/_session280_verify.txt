@@ -1,0 +1,21 @@
+  q   N       beta  form                              m_pred[kg]       m_obs[kg]  resid
+==============================================================================================================
+  u  21     7.5176  K_Mex^2 * sqrt(3)                 3.8547e-30      3.8505e-30   0.107%
+  d  21     4.1767  2*K_Mex + F_TRZ^2                 8.3191e-30      8.3250e-30   0.071%
+  s  20     1.1623  sqrt(SO5) - sqrt(D_phys)          1.6654e-28      1.6650e-28   0.023%
+  c  19    -0.1667  Phi_res - 1  =  -1/D_BSFG         2.2616e-27      2.2640e-27   0.106%
+  b  18     4.6585  K_Mex * sqrt(5)                   7.4456e-27      7.4515e-27   0.080%
+
+--- mass ratios (predicted vs observed) ---
+  m_d/m_u:  pred=   2.1582   obs=   2.1620   resid=0.178%
+  m_s/m_d:  pred=  20.0188   obs=  20.0000   resid=0.094%
+  m_c/m_s:  pred=  13.5798   obs=  13.5974   resid=0.129%
+  m_b/m_c:  pred=   3.2922   obs=   3.2913   resid=0.026%
+
+--- integer ladder (mass-ordered) ---
+  u : N=21 = D_crit - SO5/2     (= D_phys+D_BSFG+N_ch+2)
+  d : N=21    (same as u; isospin doublet)
+  s : N=20 = 2*SO5               (same as muon N_mu)
+  c : N=19 = N_p                 (same as proton N_p)
+  b : N=18 = 2*N_ch              (same as tau N_tau)
+  t : closed via v_EW/sqrt(2)   (S272)

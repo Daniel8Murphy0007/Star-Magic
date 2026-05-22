@@ -1,0 +1,1 @@
+S378 COMPLETE. alpha_s(M_Z) = F_TRZ*K_Mex*SSq - F_TRZ^3*Phi_res = 0.11792; obs (PDG 2022) = 0.1179; match 0.0141%.

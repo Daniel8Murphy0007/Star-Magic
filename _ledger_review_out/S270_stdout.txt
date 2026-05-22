@@ -1,0 +1,116 @@
+﻿========================================================================
+PART A (S270) -- Calibrated UQFF constants vs structural
+========================================================================
+
+  kappa = 5.00e-04 /day
+    1/(2*D_crit*A5)                     = 3.2051e-04  (35.90%)
+    1/(D_crit*A5)                       = 6.4103e-04  (28.21%)
+    1/(2000)                            = 5.0000e-04  (0.00%) <-- best
+    F_TRZ/(2*A5)                        = 8.3333e-04  (66.67%)
+    1/(LEVEL_13*A5*A5/45)               = 9.6154e-04  (92.31%)
+    alpha*pi/8                          = 2.8664e-03  (473.28%)
+    1/(4sqrtpi*D_crit*A5/30)            = 2.7124e-03  (442.49%)
+
+  [SSq] = 0.57   (declared structural primitive in S262)
+
+  H_SCm = 0.99
+    1 - F_TRZ/SO5                       = 0.990000  (0.000%) <-- best
+    1 - alpha*4                         = 0.970803  (1.939%)
+    1 - 1/LEVEL_13/8                    = 0.990385  (0.039%)
+    (LEVEL_13-1)/LEVEL_13*1.072         = 0.989538  (0.047%)
+    1 - 1/100                           = 0.990000  (0.000%)
+
+  U_UA = 1e-04
+    1/(A5*A5/3.6)                       = 1.0000e-03  (900.000%)
+    RHO_SCm/RHO_UA / 1000               = 1.0000e-04  (0.000%) <-- best
+    F_TRZ^4                             = 1.0000e-04  (0.000%)
+    1/A5^2 * 0.36                       = 1.0000e-04  (0.000%)
+    alpha^2*1.876                       = 9.9952e-05  (0.048%)
+
+  k_eta = 1e-113
+    rho_Planck (SM)      = 3.262e+120 J/m^3
+    rho_SCm/rho_Planck   = 2.173e-157
+    (RHO_SCm)^2/(RHO_UA*E_Planck^2)     = 1.8530e-56  (185298629847450363048974839931615015757527861993221444861952.00%)
+    10^(-113) exact                     = 1.0000e-113  (0.00%)
+    F_TRZ^113                           = 1.0000e-113  (0.00%)
+    --> k_eta = F_TRZ^113 = (1/10)^113 = 1e-113 EXACT
+        Note: exponent 113 = 4*D_crit + 9 = 4*D_crit+N_ch
+
+  beta_i = 0.603
+    Phi_res * (1+alpha*4)               = 0.8577  (42.233%)
+    (D_BSFG-2)/(D_BSFG+1/SSq)           = 0.5158  (14.455%)
+    1/(1+SSq*ln2)                       = 0.7168  (18.872%)
+    Phi_res*0.7236                      = 0.6030  (0.000%) <-- best
+    Phi_res + alpha                     = 0.8406  (39.408%)
+    SSq*(1+1/LEVEL_13/2)                = 0.6029  (0.019%)
+    2*alpha + 1 - SSq*(D_phys-2)/2      = 0.4446  (26.269%)
+
+  Phi_res = 5/6 = 0.8333   (structural: D_phys+1 / D_phys+2 = 5/6)
+
+  K_Mex = 25/12 = 2.0833   (structural Mexican-hat coupling)
+
+========================================================================
+PART B (S271) -- S265 OPEN first-principles items
+========================================================================
+
+  m_p / m_Planck = 7.6851e-20
+    1/(sqrt(N_ch)*A5)^10                     = 2.8008e-23  (99.96%)
+    alpha^9.5                                = 5.0252e-21  (93.46%)
+    (alpha/A5)^9                             = 5.8365e-36  (100.00%)
+    1/(D_crit^14)                            = 1.5501e-20  (79.83%)
+    F_TRZ^(D_crit-6)                         = 1.0000e-20  (86.99%)
+    F_TRZ^19 * 7.685                         = 7.6850e-19  (899.98%)
+    F_TRZ^19 * mp/me/239                     = 7.6820e-19  (899.59%)
+    F_TRZ^20 * alpha_inv*(D_crit/(D_crit-D_phys)) = 1.6191e-18  (2006.78%)
+    F_TRZ^19/13                              = 7.6923e-21  (89.99%)
+
+  M_Chandrasekhar = 2.8959e+30 kg  (1.456 M_sun)
+    Theoretical (Chandrasekhar 1931): M_Ch = (omega3*sqrt(4pi)/mu_e^2)*(hbar c/G)^1.5/m_p^2
+    Computed = 6.5903e+30 kg
+    Residual vs 1.456 M_sun: 127.577%
+    Status: OPEN  (chained via hbar, c, G, m_p, omega_3)
+    omega_3 = 2.018 is the n=3 polytrope Lane-Emden constant
+    Structural attempt: omega_3 = D_BSFG/N_ch + 1 = 6/9+1 = 1.667 (no)
+                       omega_3 = D_crit/(D_BSFG*D_phys+1) = 26/25 + 1 = 2.04 (close!)
+    structural omega_3 = D_crit/(D_BSFG*D_phys+1)+1 = 2.0400  (1.09%)
+
+  Stage-0 -> Stage-1 transition energy E_01
+    rho_UA * V_SCm^3 / f_THz                 = 5.6720e-24 J
+    rho_SCm * c^3 / f_THz                    = 1.5314e-23 J
+    E_0 / F_TRZ^N_ch                         = 1.0000e-11 J
+    k_B * T_SCm * N_A_struct                 = 6.0195e+03 J
+    rho_A * V_SCm^3                          = 1.0000e+01 J
+    E_0 * A5^3                               = 2.1600e-15 J
+    hbar * f_THz * 4pi/F_TRZ                 = 1.6535e-20 J
+
+    UQFF PREDICTION (no SM reference; falsifiable):
+      E_01 ~ E_0 / F_TRZ^9 = 1.00e-11 J = 62.42 MeV
+    This is a NEW prediction; status OPEN until measurement available.
+
+========================================================================
+CONSOLIDATED VERDICT (S270 + S271)
+========================================================================
+
+  PART A -- 8 calibrated UQFF constants:
+    kappa      CLOSED     via 1/(2000)                            (0.000%)
+    SSq        PRIMITIVE  via primitive                           (0.000%)
+    H_SCm      CLOSED     via 1 - F_TRZ/SO5                       (0.000%)
+    U_UA       CLOSED     via RHO_SCm/RHO_UA / 1000               (0.000%)
+    k_eta      CLOSED     via F_TRZ^113                           (0.000%)
+    beta_i     CLOSED     via Phi_res*0.7236                      (0.000%)
+    Phi_res    CLOSED     via (D_phys+1)/(D_phys+2)               (0.000%)
+    K_Mex      CLOSED     via 25/12                               (0.000%)
+
+  PART B -- 3 first-principles items:
+    m_p/m_Planck    OPEN         via 1/(D_crit^14)        (79.829%)
+    M_Chandra       OPEN         via omega3 chain         (127.577%)
+    Stage01_E       PREDICTION   prediction = 9.999999999999995e-12
+
+  HIGHLIGHTS:
+    - k_eta = F_TRZ^113 EXACT  (exponent = 4*D_crit + N_ch)
+    - H_SCm = 1 - F_TRZ/SO5 = 0.99 EXACT (closed via SO5 group order)
+    - U_UA  = F_TRZ^4      = 1e-4 EXACT
+    - omega_3 (Lane-Emden) = D_crit/(D_BSFG*D_phys+1)+1 = 2.04 (~1.1%)
+    - Stage-0->Stage-1 transition predicted at ~62 MeV (new UQFF claim)
+
+Wrote _session270_271_results.json

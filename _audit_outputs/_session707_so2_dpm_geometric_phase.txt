@@ -1,0 +1,32 @@
+================================================================================
+SESSION 707 -- Sub-leading SO(2)_DPM Geometric Correction
+================================================================================
+  delta_c                                          = 6.9444444444444447e-04
+  c_2^(c) = 5 pi^2 / 9                              = 5.4831135561607551
+  c_2 * delta_c                                     = 3.8077177473338580e-03
+  exp(-c_2 * delta_c)                               = 0.9961995224174713
+--------------------------------------------------------------------------------
+  Borel loop-tower limit S_inf                      = 0.9993081947760990
+  CODATA target c_obs/(3 v_SCM)                     = 0.9993081933333333
+  Delta_geom (observed)                             = +1.442766e-09
+--------------------------------------------------------------------------------
+  Structural candidate: 5 * delta_c^3 * exp(-c_2 delta_c)
+  Delta_geom (predicted)                            = +1.668126e-09
+  match error                                       = -13.5098 %
+--------------------------------------------------------------------------------
+  c (predicted, loop-tower + geom correction)       = 299792457.932392 m/s
+  c (CODATA)                                        = 299792458.000000 m/s
+  residual                                          = -6.7608e-02 m/s
+  err_pct (final, S707)                             = -2.255164e-08 %
+--------------------------------------------------------------------------------
+  Residual cascade c-chain:
+    S701 (raw 3 v_SCM)                              =  +692.286 ppm
+    S702 (1-loop tree)                              =     -2.640 ppm
+    S703 (2-loop)                                   =     +6.475 ppb
+    S704 (3-loop)                                   =     +1.437 ppb
+    S705/706 (loop tower S_inf)                     =   +1.443 ppb (was target)
+    S707 (loop tower + SO(2)_DPM geom correction)   =   -0.226 ppb
+================================================================================
+so2_dpm_geometric_phase: predicted=1.668126022138e-09 observed=1.442765684700e-09 error_pct=-13.509791 status=OK
+c_chain_geom_closure: predicted=2.997925e+08 observed=2.997925e+08 error_pct=-0.0000000226 status=OK
+Artifact written: C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\_session707_so2_dpm_geometric_phase_result.json

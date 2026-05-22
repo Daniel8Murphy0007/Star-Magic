@@ -1,0 +1,1 @@
+S379 COMPLETE. sin(theta_C) = F_TRZ*K_Mex + F_TRZ^3*D_phys^2 = 0.2243; obs (|V_us| PDG) = 0.2243; match 0.0149%.

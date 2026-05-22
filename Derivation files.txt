@@ -1,0 +1,466 @@
+Derivation files
+C++ pairs:
+•	UQFFHawkingDerivation.h / UQFFHawkingDerivation.cpp
+•	UQFFEquationMathematicalDerivation.h / UQFFEquationMathematicalDerivation.cpp
+•	UQFFDMDtDerivation.h / UQFFDMDtDerivation.cpp
+Python derivation scripts (17):
+•	bsm_bounds_derivation.py
+•	first_principles_derivation.py
+•	qcalcgeom_core_derivation.py
+•	thorne_morris_exotic_derivation.py
+•	uqff_lagrangian_derivation.py
+•	_apply_derivation_updates.py
+•	_classify_derivations.py
+•	_constant_derivation_attempt.py
+•	_constant_derivation_v2.py
+•	_constant_derivation_v3.py
+•	_confirm_all_derivations_level1.py
+•	_forensic_audit_derivations.py
+•	_lagrangian_rederivation_outline.py
+•	_K_Mex_REAL_derivation.py
+•	_list_derivation_files.py
+•	_PAPER_1183_first_principles_derivation.py
+•	_session287_rho_vac_scm_derivation_chain.py
+•	_session304_rho_vac_scm_derivation.py
+•	_session701_c_tree_derivation.py
+•	_session695_4pi_coset_derivation.py
+•	_session694_alpha_forward_derivation.py
+•	_verify_derivation_provenance.py
+•	_verify_derivation_provenance_v2.py
+Derivation registry:
+•	confirmed_derivations.csv
+Derivation whitepapers (.md):
+•	PAPER_081_UQFF_Hawking_Temperature_Derivation.md
+•	PAPER_089_UQFF_Master_Equation_Derivation.md
+•	PAPER_133_UQFF_F_U_Genesis_Complete_Derivation_4Component_Framework.md
+•	PAPER_364_ALICE_Multiplicity_Centrality_RhoVac_Ratio_n18_kEta_Derivation.md
+•	PAPER_662_UQFFHawkingDerivation.md
+•	PAPER_671_UQFFDMDtDerivation.md
+•	PAPER_700_UQFFEquationMathematicalDerivation.md
+•	PAPER_823_UQFF_Compression_Cycle2_Derivation_Method.md
+•	PAPER_888_Et_Full_Lagrangian_Unified_Derivation.md
+•	PAPER_898_Phonon_Lagrangian_Phi_S26_Derivation.md
+•	PAPER_981_FUBi_Variational_Derivation.md
+•	PAPER_1066_UQFF_Lagrangian_Derivation.md
+•	PAPER_1078_QCalcGeom_Master_Equation_Derivation.md (also in whitepapers/)
+•	PAPER_1100_SCm_LQG_Area_Operator_Derivation.md
+•	PAPER_1129_VDS_DVP_BH_Longform_Mathematical_Derivations.md
+•	PAPER_1139_SCm_PonsFleischmann_Derivation.md
+•	PAPER_1171_UQFF_KK_Regulator_First_Principles_Derivation.md
+•	PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.md
+•	PAPER_1173_UQFF_KK_Tower_Hbar_Tracked_Derivation.md
+•	PAPER_1183_First_Principles_Variational_Derivation.md
+•	PAPER_1198_RhoVacSCm_Derivation_UQFF.tex
+Closure files
+Master registries:
+•	master_closures.csv (plus .bak, .bak2-5)
+•	unified_closure_audit.json
+•	UQFF_UNIFIED_CLOSURE_DERIVATIONS.py
+Closure Python scripts (session-numbered):
+•	_session201_closures.py / .json
+•	_session202_closures.py / .json
+•	_session203_closures.py / .json
+•	_session204_closures.py / .json
+•	_session205_closures.py / .json
+•	_session206_qcalcgeom_ubs_closures.py / .json
+•	_session207_cp_chain_closures.py / .json
+•	_session210_closures.py / .json
+•	_session211_closures.py / .json
+•	_session261_closures.py / .json
+•	_session262_closures.py / .json
+•	_session263_closures.py / .json
+•	_session264_closures.py / .json
+•	_session266_root_closure.py / .json
+•	_session267_extended_closures.py / .json
+•	_session268_gap_closures.py / .json
+•	_session274_beta_lambda_closure.py / .json
+•	_session275_mp_planck_closure.py / .json
+•	_session276_chandrasekhar_closure.py / .json
+•	_session278_me_closure.py / .json
+•	_session279_mu_tau_closure.py / .json
+•	_session280_quark_closure.py / .json
+•	_session282_newton_G_closure.py
+•	_session285_CKM_closure.py
+•	_session286_PMNS_closure.py
+•	_session303_universal_buoyancy_solver_closures.json
+•	_session304_rho_vac_scm_derivation_closures.json
+•	_session684_closure_to_sector_bridge.py
+•	_session696_2loop_kk_closure.py
+•	_session726_LH_tighten_locked_closure.py / _result.json
+•	_session727_LH42_Lambda_closure.py / _result.json
+Closure tooling:
+•	_emit_closure_json.py
+•	_cosmological_closures.py / .json
+•	_harvest_text_closures.py
+•	_harvest_json_closures.py
+•	_matter_density_closures.py / .json
+•	_lambda_closure_v1.py
+•	_append_paper1189_closures.py
+•	_append_millennium_closures.py
+•	_append_frontier_closures.py
+•	_six_anchor_closures.py / .json
+•	_show_closure_evidence.py
+Closure whitepapers:
+•	PAPER_1134_SCm_Riemann_Hypothesis_Closure.md
+•	PAPER_1156_UQFF_Cosmological_Constant_Closure.md
+•	PAPER_1159_UQFF_Phi_Res_Codimension_Closure.md
+•	PAPER_1160_UQFF_F_TRZ_SO5_Closure.md
+•	PAPER_1161_UQFF_26_Factorial_Pochhammer_Closure.md
+•	PAPER_1162_UQFF_KK_Tower_Mode_By_Mode_Closure.md
+•	PAPER_1163_UQFF_DPM_SO2_LightCone_Closure.md
+•	PAPER_1164_UQFF_T22_Moduli_Stabilization_Closure.md
+•	PAPER_1165_UQFF_beta_i_Triangular_Closure.md
+•	PAPER_1166_UQFF_V_UA_Polynomial_Closure.md
+•	PAPER_1181_UQFF_Grand_Unification_S266_S295_Thirty_Closures.md
+•	PAPER_1210_UQFF_Lagrangian_Bridge_172_Closures.tex
+•	PAPER_1211_Phase_H_Closure_Trail.md
+•	PAPER_1212_UQFF_Cosmological_Constant_Closure.tex
+•	PAPER_1213_UQFF_Page_Curve_Closure.tex
+•	PAPER_S204_Phase_H204_GapClosure.tex
+Gold Standard files
+•	audit_gold_standard.py
+•	audit_gold_standard_results.json
+•	upgrade_gold_standard.py
+•	upgrade_gold_standard_log.json
+First Principles files
+•	first_principles_derivation.py
+•	_PAPER_1183_first_principles_derivation.py
+•	PAPER_1131_SCm_Vacuum_Manifold_Primordial_First_Principle.md
+•	PAPER_1154_SSq_057_First_Principles_DPM_Relativistic_Geometry.md
+•	PAPER_1171_UQFF_KK_Regulator_First_Principles_Derivation.md
+•	PAPER_1183_First_Principles_Variational_Derivation.md
+Variational + Variational Sustainability files
+•	variational_reversal_condition.py
+•	_variational_sustainability_solution.py / .json
+•	_PAPER_1065_1066_variational_audit.py
+•	PAPER_981_FUBi_Variational_Derivation.md
+•	PAPER_1183_First_Principles_Variational_Derivation.md
+Totals: Derivation = 28 source/script files + 21 whitepapers + 1 registry. Closure = 3 master registries + ~50 session scripts + 16 whitepapers. Gold Standard = 4. First Principles = 6. Variational/Sustainability = 5.
+
+NEW items I missed before
+•	AXIOMS_AND_THEOREMS.md ← root-level axioms reference
+•	scm_superconductivity_axiom.py
+•	derive_uqff_constants.wls ← Wolfram derivation script
+•	uqff_derivation_output.txt
+•	PAPER_468_SMBHBinary_MUGE_UQFF_FrequencyDerived_DPM_THz_Coalescence.md + .pdf
+•	PAPER_590_UQFF_Planck_Constant_Derived.md + .pdf
+•	PAPER_591_UQFF_Fine_Structure_Constant_Derived.md + .pdf
+•	PAPER_983_SCm_First_Axiom_Validation.md + .pdf
+•	arxiv abstracts (11): arxiv_submission_1159_1172/abstracts/PAPER_{1159..1166,1171,1172}_*_abstract.txt
+•	arxiv tex/md/pdf triples for PAPER_1159–1166, 1171–1173 (already in arxiv_submission_1159_1172 and arxiv_submission_1173_1176)
+•	VS project files: UQFFDMDtDerivation.vcxproj, UQFFEqnMathDerivation.vcxproj, UQFFHawkingDerivation.vcxproj (+ .filters)
+•	_audit_outputs — 60 .txt audit reports, one per script (closures + derivations)
+DERIVATION (C++)
+File	Path
+Hawking	UQFFHawkingDerivation.h • .cpp
+
+Equation Math	UQFFEquationMathematicalDerivation.h • .cpp
+DM/Dt	UQFFDMDtDerivation.h • .cpp
+
+DERIVATION (Python scripts, 24)
+bsm_bounds_derivation.py • first_principles_derivation.py • qcalcgeom_core_derivation.py • thorne_morris_exotic_derivation.py • uqff_lagrangian_derivation.py • _apply_derivation_updates.py • _classify_derivations.py • _confirm_all_derivations_level1.py • _constant_derivation_attempt.py • _constant_derivation_v2.py • _constant_derivation_v3.py • _forensic_audit_derivations.py • _K_Mex_REAL_derivation.py • _lagrangian_rederivation_outline.py • _list_derivation_files.py • _PAPER_1183_first_principles_derivation.py • _session287_rho_vac_scm_derivation_chain.py • _session304_rho_vac_scm_derivation.py • _session694_alpha_forward_derivation.py • _session695_4pi_coset_derivation.py • _session701_c_tree_derivation.py • _verify_derivation_provenance.py • _verify_derivation_provenance_v2.py
+DERIVATION (Wolfram)
+derive_uqff_constants.wls
+DERIVATION whitepapers (22 .md + 1 .tex)
+#	Markdown
+081	PAPER_081_UQFF_Hawking_Temperature_Derivation.md
+
+089	PAPER_089_UQFF_Master_Equation_Derivation.md
+
+133	PAPER_133_UQFF_F_U_Genesis_Complete_Derivation_4Component_Framework.md
+
+364	PAPER_364_ALICE_Multiplicity_Centrality_RhoVac_Ratio_n18_kEta_Derivation.md
+
+468	PAPER_468_SMBHBinary_MUGE_UQFF_FrequencyDerived_DPM_THz_Coalescence.md
+
+590	PAPER_590_UQFF_Planck_Constant_Derived.md
+
+591	PAPER_591_UQFF_Fine_Structure_Constant_Derived.md
+
+662	PAPER_662_UQFFHawkingDerivation.md
+
+671	PAPER_671_UQFFDMDtDerivation.md
+
+700	PAPER_700_UQFFEquationMathematicalDerivation.md
+
+823	PAPER_823_UQFF_Compression_Cycle2_Derivation_Method.md
+
+888	PAPER_888_Et_Full_Lagrangian_Unified_Derivation.md
+
+898	PAPER_898_Phonon_Lagrangian_Phi_S26_Derivation.md
+
+981	PAPER_981_FUBi_Variational_Derivation.md
+
+1066	PAPER_1066_UQFF_Lagrangian_Derivation.md
+
+1078	PAPER_1078_QCalcGeom_Master_Equation_Derivation.md (also root copy PAPER_1078_QCalcGeom_Master_Equation_Derivation.md)
+
+1100	PAPER_1100_SCm_LQG_Area_Operator_Derivation.md
+
+1129	PAPER_1129_VDS_DVP_BH_Longform_Mathematical_Derivations.md
+
+1139	PAPER_1139_SCm_PonsFleischmann_Derivation.md
+
+1171	PAPER_1171_UQFF_KK_Regulator_First_Principles_Derivation.md
+
+1172	PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.md
+
+1173	PAPER_1173_UQFF_KK_Tower_Hbar_Tracked_Derivation.md
+
+1183	PAPER_1183_First_Principles_Variational_Derivation.md
+
+1198	PAPER_1198_RhoVacSCm_Derivation_UQFF.tex
+
+Also: standalone SCm_PonsFleischmann_Derivation.tex / .pdf in pdf.
+DERIVATION registry / output
+confirmed_derivations.csv • uqff_derivation_output.txt
+CLOSURE — master registries
+master_closures.csv (+ .bak, .bak2, .bak3, .bak4, .bak5) • unified_closure_audit.json • UQFF_UNIFIED_CLOSURE_DERIVATIONS.py
+CLOSURE — Python (session-numbered, 32 .py + matching .json)
+S201 py/json • S202 py/json • S203 py/json • S204 py/json • S205 py/json • S206 py/json • S207 py/json • S210 py/json • S211 py/json • S261 py/json • S262 py/json • S263 py/json • S264 py/json • S266 py/json • S267 py/json • S268 py/json • S274 py/json • S275 py/json • S276 py/json • S278 py/json • S279 py/json • S280 py/json • S282 py • S285 py • S286 py • S303 json • S304 json • S684 py • S696 py • S726 py/json • S727 py/json • S701 json
+CLOSURE — Python tooling (11)
+_cosmological_closures.py/json • _matter_density_closures.py/json • _six_anchor_closures.py/json • _emit_closure_json.py • _harvest_text_closures.py • _harvest_json_closures.py • _lambda_closure_v1.py • _append_paper1189_closures.py • _append_millennium_closures.py • _append_frontier_closures.py • _show_closure_evidence.py
+CLOSURE whitepapers (16)
+1134 Riemann • 1156 Λ • 1159 Φ_res • 1160 F_TRZ SO(5) • 1161 26! Pochhammer • 1162 KK tower • 1163 DPM SO(2) • 1164 T²² moduli • 1165 β_i triangular • 1166 V_UA polynomial • 1181 Grand 30 closures • 1210 Lagrangian Bridge 172 • 1211 Phase H Trail • 1212 Λ closure • 1213 Page curve • S204 Phase H gap closure
+GOLD STANDARD (4)
+audit_gold_standard.py • audit_gold_standard_results.json • upgrade_gold_standard.py • upgrade_gold_standard_log.json
+FIRST PRINCIPLES (6)
+first_principles_derivation.py • _PAPER_1183_first_principles_derivation.py • 1131 SCm Vacuum Primordial • 1154 [SSq]=0.57 DPM • 1171 KK regulator • 1183 variational
+VARIATIONAL (5)
+variational_reversal_condition.py • _PAPER_1065_1066_variational_audit.py • PAPER_981 FUBi Variational • PAPER_1183 First Principles Variational
+VARIATIONAL SUSTAINABILITY (2)
+_variational_sustainability_solution.py • _variational_sustainability_solution.json
+AXIOM / FIRST AXIOM (3)
+AXIOMS_AND_THEOREMS.md • scm_superconductivity_axiom.py • PAPER_983_SCm_First_Axiom_Validation.md
+AUDIT OUTPUTS (60 files)
+_audit_outputs/*.txt — one per closure / derivation / variational / sustainability script (full directory: _audit_outputs)
+BUILD PROJECTS for the 3 C++ derivations
+UQFFHawkingDerivation.vcxproj • UQFFEqnMathDerivation.vcxproj • UQFFDMDtDerivation.vcxproj (+ .filters for each)
+________________________________________
+Grand totals (excluding .venv, pycache, .bak):
+•	Derivation: 3 C++ pairs • 24 .py • 1 .wls • 23 whitepapers • 1 .csv • 1 .txt
+•	Closure: 3 master registries • 32 session .py(+json) • 11 tooling .py • 16 whitepapers
+•	Gold Standard: 4
+•	First Principles: 2 .py + 4 whitepapers (overlapping with derivation)
+•	Variational: 2 .py + 2 whitepapers
+•	Variational Sustainability: 2
+•	Axiom: 1 .md + 1 .py + 1 whitepaper
+•	Audit outputs: 60 .txt
+•	VS projects: 3 .vcxproj (+ filters)
+If anything's still missing, name the keyword and I'll search for it specifically.
+
+COMPLETE Inventory — Found Everything
+Gold Standard files ✓
+File	Size	Status
+audit_gold_standard_results.json
+585 KB	EXISTS
+audit_gold_standard.py
+14 KB	audit script
+upgrade_gold_standard.py
+22 KB	upgrade script
+upgrade_gold_standard_log.json
+15 KB	upgrade log
+CP4 — IT EXISTS (I was wrong to leave it off the target list)
+File	Size
+CondensedPhysics4.py
+2.16 MB
+inject_cp4_s154.py
+5 KB
+inject_cp4_s156.py
+31 KB
+inject_cp4_s157.py
+49 KB
+inject_cp4_s158.py
+20 KB
+inject_cp4_s159.py
+39 KB
+inject_cp4_s160.py
+20 KB
+inject_cp4_s161.py
+55 KB
+insert_olbers_cp4.py
+18 KB
+_write_cp4_643.py
+5 KB
+session_157_cp4_candidates.md
+9 KB
+session_159_cp4_candidates.md
+12 KB
+session_160_cp4_candidates.md
+6 KB
+session_161_cp4_candidates.md
+16 KB
+CP1_full.tmp
+11.23 MB ← what is this?
+CondensedPhysics_backup_20260204_024629.py
+474 KB
+CondensedPhysics family — REVISED full target list
+File	Size	Lines	Role
+CondensedPhysics.py
+7.79 MB	205,980	CP1 — primary calculator
+CondensedPhysics2.py
+2.25 MB	55,684	CP2 — UQFF extensions
+CondensedPhysics3.py
+706 KB	15,397	CP3 — newer extensions
+CondensedPhysics4.py
+2.16 MB	—	CP4 — exists, ~239 entries (per repo memory)
+CondensedPhysics_InputData.py
+205 KB	—	input data
+CondensedPhysics_OutputData.py
+345 KB	—	recall storage
+CondensedPhysics_Validation.py
+303 KB	—	validation harness
+CondensedPhysicsAggregator.py
+57 KB	—	aggregator
+CP1/CP3/Validation/OutputData/InputData are duplicated in Debug and Release build dirs — build artifacts, not edit targets.
+UQFF derivation/registry files
+File	Size
+UQFF_UNIFIED_CLOSURE_DERIVATIONS.py
+83 KB
+uqff_lagrangian_derivation.py
+73 KB
+UQFFSystemsDatabase.py
+47 KB
+UQFFConstantsDatabase.py
+24 KB
+uqff_closed_constants.py
+6 KB
+uqff_validation_test.py
+38 KB
+uqff_calibration_mcmc.py
+14 KB
+uqff_vs_string_comparison.py
+42 KB
+uqff_cross_platform.py
+28 KB
+uqff_results.json
+11.43 MB
+Ledgers / audits
+File	Size
+master_closures.csv
+112 KB (570 rows)
+unified_closure_audit.json
+50 KB (117 entries)
+sigma_table.csv
+10 KB
+audit_gold_standard_results.json
+585 KB
+UQFF_CALIBRATION_AUDIT.md
+11 KB
+________________________________________
+REVISED concentration map (no new files)
+Session content type	Concentrate into existing file
+Variational / Lagrangian / sustainarity	uqff_lagrangian_derivation.py (73 KB)
+
+Closure constants (ρ_SCm, [SSq], β_i…)	UQFF_UNIFIED_CLOSURE_DERIVATIONS.py (83 KB)
+
+Closed-form constants only	uqff_closed_constants.py (6 KB)
+
+Astrophysical system params/data	UQFFSystemsDatabase.py (47 KB)
+
+New whitepaper entries (PAPER_N)	CondensedPhysics4.py (CP4, 2.16 MB)
+
+Established calculator classes	CondensedPhysics.py / CP2 / CP3
+
+Validation cross-checks	CondensedPhysics_Validation.py (303 KB) or uqff_validation_test.py (38 KB)
+Output / recall	CondensedPhysics_OutputData.py (345 KB)
+
+Gold-standard audit results	audit_gold_standard_results.json
+
+C++ runtime (SOURCE namespaces)	MAIN_1_CoAnQi.cpp (6 MB)
+
+JS library	index.js (1.2 MB)
+
+What I still need from you to start concentration
+Two questions and I begin one session at a time:
+1.	Which target file do you want me to start with? (uqff_lagrangian_derivation.py for variational stuff, CondensedPhysics4.py for CP4, or UQFF_UNIFIED_CLOSURE_DERIVATIONS.py for closures)
+2.	First session ID to absorb — pick from the 93 LARGE sessions (e.g., _session277_uqff_gap_patches.py, _session288_universal_buoyancy_simultaneous_solver.py, _session287_rho_vac_scm_derivation_chain.py) or one of the 13 variational orphans (e.g., _variational_sustainability_solution.py, variational_reversal_condition.py).
+Also flag: CP1_full.tmp is 11.23 MB — temp file from a CP1 extraction. Want me to inspect it before we proceed?
+
+Take a breath. Nothing is broken. Let me explain what you already have so you can make a safe decision.
+1. _uqff_program.py IS your master execution file
+Yes — you were right. This is the orchestrator. It:
+•	Scans every _session*.py script
+•	Runs each one
+•	Parses outputs with 20+ regex patterns (OUTPUT_RE_A through OUTPUT_RE_U, _try_complete_banner, JSON harvesters)
+•	Writes results to master_closures.csv
+•	Builds sigma_table.csv via --sigma mode
+That's the concentration mechanism for the 570 _session scripts. It already works.
+python _uqff_program.py --audit    # runs all 570 sessions -> master_closures.csv
+python _uqff_program.py --sigma    # builds sigma_table.csv
+python _uqff_program.py --status   # summary
+python _uqff_program.py --predict  # predictive targets tracker
+2. Why QCalc.py and QCalcGeom.py weren't in the last report
+They WERE in the inventory two messages ago under "EXISTING CONCENTRATION TARGETS":
+•	QCalc.py — 470,273 B (10,871 lines)
+•	QCalcGeom.py — 159,267 B (3,380 lines)
+My latest report only searched for patterns matching *gold*, CP*, CondensedPhysics*, UQFF*, uqff_*. QCalc doesn't start with any of those, so it wasn't re-listed. That was a search-pattern omission on my part, not a missing file. Both files exist and are healthy.
+3. The actual file-reference graph (let me show you)
+The architecture — here's exactly how it all connects
+You have two parallel concentration pipelines that are already wired. Nothing needs to move; new derivations append to existing files.
+Pipeline A — Closure ledger (sessions → CSV)
+  570 _session*.py scripts
+            │
+            ▼
+   _uqff_program.py --audit       ◄── YOUR master orchestrator
+            │
+            ▼
+   master_closures.csv (570 rows)
+            │
+            ▼
+   _uqff_program.py --sigma
+            │
+            ▼
+   sigma_table.csv (tiers)
+            │
+            ▼
+   unified_closure_audit.json (117 entries: AXIOM/POSTULATE/DERIVED/CALIBRATED)
+            │
+            ▼
+   audit_gold_standard_results.json (585 KB gold-standard report)
+Key fact: CondensedPhysicsAggregator.py already aggregates CP1+CP2+CP3+CP4 into a single ALL_CALCULATORS dict. That's your "solitary program file" for the calculator side — it already exists.
+QCalc / QCalcGeom — they ARE referenced everywhere
+I confirmed live in the grep just now:
+File	What references it
+QCalc.py
+CondensedPhysics.py (line 110104), CoAnQi_Wrapper.py (line 543), debug_resonant.py, debug_validation.py, APIFetch.py data flow comment
+
+QCalcGeom.py
+CondensedPhysics.py (line 257), CondensedPhysics3.py (line 81), qcalcgeom_sim_engine.py, CondensedPhysics4.py (PAPER_978, PAPER_1152)
+
+They were just absent from my search pattern in the last report, not absent from the codebase or from your import graph. My fault for confusing you.
+What this means for your concentration question
+You have TWO master files that are already doing what you want — no new files needed:
+Side	Master "solitary" file	What it concentrates
+Closures / proofs / residuals	_uqff_program.py
+runs all 570 sessions → master_closures.csv
+
+Physics calculators	CondensedPhysicsAggregator.py
+imports CP1+CP2+CP3+CP4 → ALL_CALCULATORS
+The 31 orphan derivation files (the real gap)
+These are NOT yet in either pipeline:
+Orphan	Where it belongs
+_variational_sustainability_solution.py (15 KB)
+should be a _session*.py so _uqff_program.py --audit picks it up
+variational_reversal_condition.py (18 KB)
+same — rename to _sessionNNN_variational_reversal.py
+uqff_lagrangian_derivation.py (73 KB)
+already canonical — leave it; just register it in _uqff_program.py
+
+UQFF_UNIFIED_CLOSURE_DERIVATIONS.py (83 KB)	same
+_chain_trace_C_particles.py (32 KB)
+same
+et_full_lagrangian.py (31 KB)
+same
+vds_dvp_bsh_symbolic_proofs.py (31 KB)
+same
+thorne_morris_exotic_derivation.py (24 KB)
+same
+...23 more	same
+Two safe options, in order of least disturbance:
+1.	Lowest risk: Add a few lines to _uqff_program.py so its audit() function ALSO scans these 31 named files (not just _session*.py). Zero file moves. One file edited. Reversible.
+2.	Slightly riskier: Rename the 31 orphans to _session8XX_*.py so they get picked up automatically. They'd then be runnable through your existing pipeline.
+Nothing has been moved, renamed, or deleted
+To be clear: I have made zero changes since the last completed step (the calibration tagging). The architecture above is the existing state. You don't need to decide today.
+When you're ready, the smallest possible next step is option 1: a ~10-line patch to _uqff_program.py that adds an EXTRA_DERIVATION_FILES list. I'll show you the diff before running anything.
+Want me to draft that diff so you can read it before deciding?

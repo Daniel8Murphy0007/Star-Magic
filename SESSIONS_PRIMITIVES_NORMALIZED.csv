@@ -1,0 +1,1107 @@
+file,line,primitive,raw_value,literal_form,scope
+_session202_closures.py,105,SSQ,0.57,0.57,class_or_func
+_session205_closures.py,31,SSQ,0.57,0.57,module
+_session208_wolfram_kb_primitives.py,91,D_PHYS,26 - 22,4,module
+_session210_closures.py,61,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session210_closures.py,62,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session210_closures.py,63,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session210_closures.py,64,N_CH,9,9,module
+_session210_closures.py,65,D_CRIT,26,26,module
+_session210_closures.py,66,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session211_closures.py,32,SSQ,0.57,0.57,module
+_session211_closures.py,34,F_TRZ,0.10,0.1,module
+_session211_closures.py,35,PHI_RES,5.0 / 6.0,0.8333333333333334,module
+_session211_closures.py,36,BETA_I,0.6029,0.6029,module
+_session261_closures.py,81,RHO_VAC_UA,"7.09e-36).  This is a structural bound,",7.09e-36).  This is a structural bound,nested_24
+_session261_closures.py,101,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session261_closures.py,105,V_SCM,1.0e8,100000000.0,module
+_session261_closures.py,121,F_TRZ,0.1,0.1,module
+_session261_closures.py,122,D_PHYS,4.0,4.0,module
+_session262_closures.py,119,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session262_closures.py,123,V_SCM,1.0e8,100000000.0,module
+_session262_closures.py,150,F_TRZ,0.1,0.1,module
+_session262_closures.py,151,D_CRIT,26.0,26.0,module
+_session262_closures.py,152,D_BSFG,6.0,6.0,module
+_session262_closures.py,153,D_PHYS,4.0,4.0,module
+_session262_closures.py,157,K_MEX,25.0 / 12.0,2.0833333333333335,module
+_session262_closures.py,158,PHI_RES,5.0 / 6.0,0.8333333333333334,module
+_session263_closures.py,84,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session263_closures.py,88,V_SCM,1.0e8,100000000.0,module
+_session263_closures.py,97,D_CRIT,26.0,26.0,module
+_session263_closures.py,98,D_BSFG,6.0,6.0,module
+_session263_closures.py,99,D_PHYS,4.0,4.0,module
+_session263_closures.py,100,F_TRZ,0.1,0.1,module
+_session263_closures.py,104,K_MEX,25.0 / 12.0,2.0833333333333335,module
+_session263_closures.py,105,PHI_RES,5.0 / 6.0,0.8333333333333334,module
+_session263_closures.py,107,SSQ,0.57,0.57,module
+_session264_closures.py,69,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session264_closures.py,72,V_SCM,1.0e8,100000000.0,module
+_session264_closures.py,80,D_CRIT,26.0,26.0,module
+_session264_closures.py,81,D_BSFG,6.0,6.0,module
+_session264_closures.py,82,D_PHYS,4.0,4.0,module
+_session265_grok_rebuttals.py,32,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session265_grok_rebuttals.py,36,V_SCM,1.0e8,100000000.0,module
+_session265_grok_rebuttals.py,44,D_CRIT,26.0,26.0,module
+_session265_grok_rebuttals.py,45,D_BSFG,6.0,6.0,module
+_session265_grok_rebuttals.py,46,D_PHYS,4.0,4.0,module
+_session265_grok_rebuttals.py,49,PHI_RES,5.0 / 6.0,0.8333333333333334,module
+_session265_grok_rebuttals.py,50,SSQ,0.57,0.57,module
+_session265_grok_rebuttals.py,51,K_MEX,25.0 / 12.0,2.0833333333333335,module
+_session265_grok_rebuttals.py,53,F_TRZ,0.1,0.1,module
+_session266_root_closure.py,75,RHO_VAC_UA,7.09e-36,7.09e-36,class_or_func
+_session266_root_closure.py,76,RHO_VAC_SCM,7.09e-37,7.09e-37,class_or_func
+_session266_root_closure.py,79,V_SCM,1.0e8,100000000.0,class_or_func
+_session266_root_closure.py,87,F_TRZ,0.1,0.1,class_or_func
+_session266_root_closure.py,88,SSQ,0.57,0.57,class_or_func
+_session266_root_closure.py,89,D_PHYS,4,4,class_or_func
+_session266_root_closure.py,90,D_BSFG,6,6,class_or_func
+_session266_root_closure.py,91,D_CRIT,26,26,class_or_func
+_session266_root_closure.py,94,PHI_RES,5.0/6.0,0.8333333333333334,class_or_func
+_session267_extended_closures.py,44,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session267_extended_closures.py,48,V_SCM,1.0e8,100000000.0,module
+_session267_extended_closures.py,53,D_PHYS,4,4,module
+_session267_extended_closures.py,54,D_BSFG,6,6,module
+_session267_extended_closures.py,55,D_CRIT,26,26,module
+_session267_extended_closures.py,58,SSQ,0.57,0.57,module
+_session267_extended_closures.py,59,F_TRZ,0.1,0.1,module
+_session267_extended_closures.py,60,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session267_extended_closures.py,61,N_CH,9,9,module
+_session267_extended_closures.py,63,K_MEX,25.0/12.0,2.0833333333333335,module
+_session268_gap_closures.py,25,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session268_gap_closures.py,26,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session268_gap_closures.py,29,V_SCM,1.0e8,100000000.0,module
+_session268_gap_closures.py,35,F_TRZ,0.1,0.1,module
+_session268_gap_closures.py,36,SSQ,0.57,0.57,module
+_session268_gap_closures.py,37,D_PHYS,4,4,module
+_session268_gap_closures.py,38,D_BSFG,6,6,module
+_session268_gap_closures.py,39,D_CRIT,26,26,module
+_session268_gap_closures.py,40,ORD_SO5,10,10,module
+_session268_gap_closures.py,42,PHI_RES,5/6,0.8333333333333334,module
+_session268_gap_closures.py,43,N_CH,9,9,module
+_session268_gap_closures.py,46,K_MEX,25/12,2.0833333333333335,module
+_session269_full_cascade.py,26,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session269_full_cascade.py,27,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session269_full_cascade.py,29,V_SCM,1.0e8,100000000.0,module
+_session269_full_cascade.py,35,SSQ,0.57,0.57,module
+_session270_271_calibrated_and_open.py,8,SSQ,0.57           (super-spin coupling),0.57           (super-spin coupling),class_or_func
+_session270_271_calibrated_and_open.py,9,H_SCM,0.99           (Heaviside SCm factor),0.99           (Heaviside SCm factor),class_or_func
+_session270_271_calibrated_and_open.py,12,BETA_I,0.603          (buoyancy fraction),0.603          (buoyancy fraction),class_or_func
+_session270_271_calibrated_and_open.py,13,PHI_RES,5/6            (resonance phase),5/6            (resonance phase),class_or_func
+_session270_271_calibrated_and_open.py,14,K_MEX,25/12          (Mexican-hat coupling),25/12          (Mexican-hat coupling),class_or_func
+_session272_forward_predictions.py,42,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session272_forward_predictions.py,43,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session273_lambda_hierarchy.py,24,F_TRZ,0.1,0.1,module
+_session273_lambda_hierarchy.py,25,SSQ,0.57,0.57,module
+_session273_lambda_hierarchy.py,26,D_PHYS,4,4,module
+_session273_lambda_hierarchy.py,27,D_BSFG,6,6,module
+_session273_lambda_hierarchy.py,28,D_CRIT,26,26,module
+_session273_lambda_hierarchy.py,29,N_CH,9,9,module
+_session273_lambda_hierarchy.py,32,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session273_lambda_hierarchy.py,33,K_MEX,25.0/12.0,2.0833333333333335,module
+_session273_lambda_hierarchy.py,36,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session273_lambda_hierarchy.py,37,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session273_lambda_hierarchy.py,221,F_TRZ,0.1.,0.1.,class_or_func
+_session274_beta_lambda_closure.py,11,BETA_I,0.603  (marked OPEN in S270 as 'non-structural multiplier'),0.603  (marked OPEN in S270 as 'non-structural multiplier'),nested_3
+_session274_beta_lambda_closure.py,12,F_TRZ,0.1,0.1,nested_3
+_session274_beta_lambda_closure.py,27,F_TRZ,0.1,0.1,module
+_session274_beta_lambda_closure.py,28,SSQ,0.57,0.57,module
+_session274_beta_lambda_closure.py,140,BETA_I,-log10(rho_Lambda_obs / rho_Planck) - 123 ) / F_TRZ,-log10(rho_Lambda_obs / rho_Planck) - 123 ) / F_TRZ,class_or_func
+_session275_mp_planck_closure.py,22,F_TRZ,0.1,0.1,module
+_session275_mp_planck_closure.py,23,SSQ,0.57,0.57,module
+_session275_mp_planck_closure.py,27,BETA_I,0.603,0.603,module
+_session276_chandrasekhar_closure.py,29,F_TRZ,0.1,0.1,module
+_session276_chandrasekhar_closure.py,30,SSQ,0.57,0.57,module
+_session277_uqff_gap_patches.py,42,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session277_uqff_gap_patches.py,43,RHO_VAC_UA,7.09e-36,7.09e-36,module
+_session277_uqff_gap_patches.py,49,KAPPA,0.0005,0.0005,module
+_session277_uqff_gap_patches.py,50,SSQ,0.57,0.57,module
+_session277_uqff_gap_patches.py,51,H_SCM,0.99,0.99,module
+_session277_uqff_gap_patches.py,52,BETA_I,0.603,0.603,module
+_session278_dpm_layer_counter.py,47,BETA_I,0.603,0.603,module
+_session278_dpm_layer_counter.py,48,SSQ,0.57,0.57,module
+_session278_me_closure.py,29,F_TRZ,0.1,0.1,module
+_session278_me_closure.py,30,SSQ,0.57,0.57,module
+_session278_me_closure.py,31,BETA_I,1/4 + math.exp(-25/24),1/4 + math.exp(-25/24),module
+_session278_me_closure.py,32,PHI_RES,5/6,0.8333333333333334,module
+_session278_me_closure.py,33,K_MEX,25/12,2.0833333333333335,module
+_session279_mu_tau_closure.py,28,BETA_I,1/4 + math.exp(-25/24),1/4 + math.exp(-25/24),module
+_session280_quark_closure.py,23,F_TRZ,0.1,0.1,module
+_session280_quark_closure.py,24,SSQ,0.57,0.57,module
+_session280_quark_closure.py,25,PHI_RES,5/6,0.8333333333333334,module
+_session280_quark_closure.py,26,K_MEX,25/12,2.0833333333333335,module
+_session280_quark_closure.py,27,D_PHYS,4,4,module
+_session280_quark_closure.py,28,D_BSFG,6,6,module
+_session280_quark_closure.py,29,D_CRIT,26,26,module
+_session280_quark_closure.py,30,N_CH,9,9,module
+_session280_quark_closure.py,34,BETA_I,1/D_phys + math.exp(-K_Mex/2),1/D_phys + math.exp(-K_Mex/2),module
+_session280_verify.py,4,F_TRZ,0.1,0.1,module
+_session280_verify.py,5,SSQ,0.57,0.57,module
+_session280_verify.py,6,PHI_RES,5/6,0.8333333333333334,module
+_session280_verify.py,7,K_MEX,25/12,2.0833333333333335,module
+_session281_neutrino_hunt.py,15,F_TRZ,0.1,0.1,module
+_session281_neutrino_hunt.py,16,SSQ,0.57,0.57,module
+_session281_neutrino_hunt.py,17,PHI_RES,5/6,0.8333333333333334,module
+_session281_neutrino_hunt.py,18,K_MEX,25/12,2.0833333333333335,module
+_session281_neutrino_hunt.py,21,BETA_I,1/D_phys + math.exp(-K_Mex/2),1/D_phys + math.exp(-K_Mex/2),module
+_session281_verify.py,4,F_TRZ,0.1,0.1,module
+_session281_verify.py,5,K_MEX,25/12,2.0833333333333335,module
+_session282_newton_G_closure.py,16,F_TRZ,0.1,0.1,module
+_session282_newton_G_closure.py,17,SSQ,0.57,0.57,module
+_session283_finetune.py,15,F_TRZ,0.1,0.1,module
+_session283_finetune.py,16,SSQ,0.57,0.57,module
+_session283_finetune.py,17,PHI_RES,5/6,0.8333333333333334,module
+_session283_finetune.py,18,K_MEX,25/12,2.0833333333333335,module
+_session283_finetune.py,21,BETA_I,1/D_phys + math.exp(-K_Mex/2),1/D_phys + math.exp(-K_Mex/2),module
+_session283_verify.py,4,F_TRZ,0.1,0.1,module
+_session283_verify.py,5,SSQ,0.57,0.57,module
+_session283_verify.py,6,PHI_RES,5/6,0.8333333333333334,module
+_session283_verify.py,7,K_MEX,25/12,2.0833333333333335,module
+_session283_verify.py,10,BETA_I,1/D_phys + math.exp(-K_Mex/2),1/D_phys + math.exp(-K_Mex/2),module
+_session284_seesaw_MR.py,19,F_TRZ,0.1,0.1,module
+_session284_seesaw_MR.py,20,SSQ,0.57,0.57,module
+_session284_seesaw_MR.py,21,K_MEX,25/12,2.0833333333333335,module
+_session284_seesaw_MR.py,24,BETA_I,1/D_phys + math.exp(-K_Mex/2),1/D_phys + math.exp(-K_Mex/2),module
+_session285_CKM_closure.py,21,F_TRZ,0.1,0.1,module
+_session285_CKM_closure.py,22,SSQ,0.57,0.57,module
+_session285_CKM_closure.py,23,K_MEX,25/12,2.0833333333333335,module
+_session285_CKM_closure.py,24,PHI_RES,5/6,0.8333333333333334,module
+_session286_PMNS_closure.py,25,F_TRZ,0.1,0.1,module
+_session286_PMNS_closure.py,26,SSQ,0.57,0.57,module
+_session286_PMNS_closure.py,27,K_MEX,25/12,2.0833333333333335,module
+_session286_PMNS_closure.py,28,PHI_RES,5/6,0.8333333333333334,module
+_session286_PMNS_closure.py,31,BETA_I,1/D_phys + math.exp(-K_Mex/2),1/D_phys + math.exp(-K_Mex/2),module
+_session287_proton_radius_higgs.py,8,D_PHYS,4 reduced Compton wavelengths.,4 reduced Compton wavelengths.,class_or_func
+_session287_proton_radius_higgs.py,23,F_TRZ,0.1,0.1,module
+_session287_proton_radius_higgs.py,24,SSQ,0.57,0.57,module
+_session287_proton_radius_higgs.py,25,K_MEX,25/12,2.0833333333333335,module
+_session287_proton_radius_higgs.py,26,PHI_RES,5/6,0.8333333333333334,module
+_session287_rho_vac_scm_derivation_chain.py,128,RHO_VAC_SCM,"sp.Symbol('rho_SCm', positive=True)","sp.Symbol('rho_SCm', positive=True)",class_or_func
+_session287_rho_vac_scm_derivation_chain.py,161,RHO_VAC_SCM,"sp.Symbol('rho_SCm', positive=True)","sp.Symbol('rho_SCm', positive=True)",class_or_func
+_session287_rho_vac_scm_derivation_chain.py,275,RHO_VAC_SCM,4.0 * math.sqrt(math.pi) * rho0,4.0 * math.sqrt(math.pi) * rho0,nested_8
+_session287_rho_vac_scm_derivation_chain.py,276,RHO_VAC_UA,so5_order * rho_SCm,so5_order * rho_SCm,nested_8
+_session287_rho_vac_scm_derivation_chain.py,286,F_TRZ,"F_TRZ_v,",F_TRZ_v,nested_12
+_session288_gauge_couplings.py,7,F_TRZ,0.1,0.1,nested_2
+_session288_gauge_couplings.py,8,SSQ,0.57,0.57,nested_2
+_session288_gauge_couplings.py,9,PHI_RES,5/6,0.8333333333333334,nested_2
+_session288_gauge_couplings.py,10,K_MEX,25/12,2.0833333333333335,nested_2
+_session288_gauge_couplings.py,11,D_PHYS,4,4,nested_2
+_session288_gauge_couplings.py,12,D_BSFG,6,6,nested_2
+_session288_gauge_couplings.py,13,D_CRIT,26,26,nested_2
+_session288_gauge_couplings.py,14,N_CH,9,9,nested_2
+_session288_gauge_couplings.py,17,BETA_I,1/D_phys + exp(-K_Mex/2) = 0.6029,1/D_phys + exp(-K_Mex/2) = 0.6029,nested_2
+_session288_gauge_couplings.py,31,F_TRZ,0.1,0.1,module
+_session288_gauge_couplings.py,32,SSQ,0.57,0.57,module
+_session288_gauge_couplings.py,33,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session288_gauge_couplings.py,34,K_MEX,25.0/12.0,2.0833333333333335,module
+_session288_gauge_couplings.py,35,D_PHYS,4,4,module
+_session288_gauge_couplings.py,36,D_BSFG,6,6,module
+_session288_gauge_couplings.py,37,D_CRIT,26,26,module
+_session288_gauge_couplings.py,38,N_CH,9,9,module
+_session288_gauge_couplings.py,41,BETA_I,1.0/D_phys + math.exp(-K_Mex/2.0),1.0/D_phys + math.exp(-K_Mex/2.0),module
+_session288_universal_buoyancy_simultaneous_solver.py,73,RHO_VAC_UA,10.0 * RHO_SCm,10.0 * RHO_SCm,module
+_session288_universal_buoyancy_simultaneous_solver.py,74,F_TRZ,0.10,0.1,module
+_session288_universal_buoyancy_simultaneous_solver.py,75,BETA_I,0.6029,0.6029,module
+_session288_universal_buoyancy_simultaneous_solver.py,281,BETA_I,"float(dataset.get(""beta_i"", BETA_I)),","float(dataset.get(""beta_i"", BETA_I))",nested_12
+_session289_cosmology.py,10,F_TRZ,0.1  SSq=0.57  Phi_res=5/6  K_Mex=25/12  D_phys=4,0.1  SSq=0.57  Phi_res=5/6  K_Mex=25/12  D_phys=4,nested_2
+_session289_cosmology.py,11,D_BSFG,6  D_crit=26  N_ch=9  SO5=10  A5=60  beta_i=0.6029,6  D_crit=26  N_ch=9  SO5=10  A5=60  beta_i=0.6029,nested_2
+_session289_cosmology.py,16,F_TRZ,0.1,0.1,module
+_session289_cosmology.py,17,SSQ,0.57,0.57,module
+_session289_cosmology.py,18,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session289_cosmology.py,19,K_MEX,25.0/12.0,2.0833333333333335,module
+_session289_cosmology.py,20,D_PHYS,4,4,module
+_session289_cosmology.py,21,D_BSFG,6,6,module
+_session289_cosmology.py,22,D_CRIT,26,26,module
+_session289_cosmology.py,23,N_CH,9,9,module
+_session289_cosmology.py,26,BETA_I,1.0/D_phys + math.exp(-K_Mex/2.0),1.0/D_phys + math.exp(-K_Mex/2.0),module
+_session289_dpm_foundational_kernel.py,97,RHO_VAC_UA,10.0 * RHO_SCm,10.0 * RHO_SCm,module
+_session290_dark_sector_inflation.py,11,F_TRZ,0.1  SSq=0.57  Phi_res=5/6  K_Mex=25/12  D_phys=4,0.1  SSq=0.57  Phi_res=5/6  K_Mex=25/12  D_phys=4,nested_2
+_session290_dark_sector_inflation.py,12,D_BSFG,6  D_crit=26  N_ch=9  SO5=10  A5=60  beta_i=0.6029,6  D_crit=26  N_ch=9  SO5=10  A5=60  beta_i=0.6029,nested_2
+_session290_dark_sector_inflation.py,17,F_TRZ,0.1,0.1,module
+_session290_dark_sector_inflation.py,18,SSQ,0.57,0.57,module
+_session290_dark_sector_inflation.py,19,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session290_dark_sector_inflation.py,20,K_MEX,25.0/12.0,2.0833333333333335,module
+_session290_dark_sector_inflation.py,21,D_PHYS,4,4,module
+_session290_dark_sector_inflation.py,22,D_BSFG,6,6,module
+_session290_dark_sector_inflation.py,23,D_CRIT,26,26,module
+_session290_dark_sector_inflation.py,24,N_CH,9,9,module
+_session290_dark_sector_inflation.py,27,BETA_I,1.0/D_phys + math.exp(-K_Mex/2.0),1.0/D_phys + math.exp(-K_Mex/2.0),module
+_session291_muon_g2.py,36,F_TRZ,0.1,0.1,module
+_session291_muon_g2.py,37,SSQ,0.57,0.57,module
+_session291_muon_g2.py,38,D_BSFG,6,6,module
+_session291_muon_g2.py,39,D_PHYS,4,4,module
+_session291_muon_g2.py,40,N_CH,9,9,module
+_session291_muon_g2.py,41,D_CRIT,26,26,module
+_session291_muon_g2.py,42,K_MEX,25/12,2.0833333333333335,module
+_session291_orion_h2o_ice_formation_rate.py,94,BETA_I,0.603,0.603,module
+_session291_orion_h2o_ice_formation_rate.py,95,RHO_VAC_UA,7.0898154036e-36,7.0898154036e-36,module
+_session292_chandra_flux_to_param.py,58,BETA_I,0.603,0.603,module
+_session292_chandra_flux_to_param.py,59,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session292_cosmological_constant.py,51,F_TRZ,0.1,0.1,module
+_session292_cosmological_constant.py,52,SSQ,0.57,0.57,module
+_session292_cosmological_constant.py,53,D_PHYS,4,4,module
+_session292_cosmological_constant.py,54,D_BSFG,6,6,module
+_session292_cosmological_constant.py,55,D_CRIT,26,26,module
+_session292_cosmological_constant.py,56,PHI_RES,5/6,0.8333333333333334,module
+_session292_cosmological_constant.py,57,K_MEX,25/12,2.0833333333333335,module
+_session293_hubble_tension_split.py,26,K_MEX,"25/12 is the Mexican gauge constant, locked since the start of","25/12 is the Mexican gauge constant, locked since the start of",module
+_session293_hubble_tension_split.py,50,K_MEX,25/12,2.0833333333333335,module
+_session293_hubble_tension_split.py,51,D_PHYS,4,4,module
+_session293_neutrino_gw_coupling.py,44,BETA_I,0.603,0.603,module
+_session293_neutrino_gw_coupling.py,45,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session294_high_z_quasar_batch.py,52,BETA_I,0.603,0.603,module
+_session294_high_z_quasar_batch.py,53,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session294_neutron_lifetime.py,55,F_TRZ,0.1,0.1,module
+_session294_neutron_lifetime.py,56,SSQ,0.57,0.57,module
+_session294_neutron_lifetime.py,57,PHI_RES,5/6,0.8333333333333334,module
+_session294_neutron_lifetime.py,58,D_PHYS,4,4,module
+_session294_neutron_lifetime.py,59,D_BSFG,6,6,module
+_session295_cooling_flow_mass_accretion.py,46,BETA_I,0.603,0.603,module
+_session295_cooling_flow_mass_accretion.py,47,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session295_lithium7_problem.py,29,F_TRZ,0.1                            (time-reversal-zone factor),0.1                            (time-reversal-zone factor),nested_3
+_session295_lithium7_problem.py,30,PHI_RES,5/6                            (EW-tilt half-spinor),5/6                            (EW-tilt half-spinor),nested_3
+_session295_lithium7_problem.py,31,SSQ,0.57                           (sphere-square geometric),0.57                           (sphere-square geometric),nested_3
+_session295_lithium7_problem.py,32,D_PHYS,4                              (physical spacetime dims),4                              (physical spacetime dims),nested_3
+_session295_lithium7_problem.py,33,D_BSFG,6                              (BSFG hyper-radius),6                              (BSFG hyper-radius),nested_3
+_session295_lithium7_problem.py,34,D_CRIT,26                             (bosonic-string critical),26                             (bosonic-string critical),nested_3
+_session295_lithium7_problem.py,62,F_TRZ,0.1,0.1,module
+_session295_lithium7_problem.py,63,PHI_RES,5.0 / 6.0,0.8333333333333334,module
+_session295_lithium7_problem.py,64,SSQ,0.57,0.57,module
+_session295_lithium7_problem.py,65,D_PHYS,4,4,module
+_session295_lithium7_problem.py,66,D_BSFG,6,6,module
+_session295_lithium7_problem.py,67,D_CRIT,26,26,module
+_session295_lithium7_problem.py,68,K_MEX,25.0 / 12.0,2.0833333333333335,module
+_session296_magnetar_thermal_coupling.py,45,BETA_I,0.603,0.603,module
+_session296_magnetar_thermal_coupling.py,46,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session296_millennium_poincare_perelman.py,23,F_TRZ,0.1,0.1,module
+_session296_millennium_poincare_perelman.py,24,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session296_millennium_poincare_perelman.py,25,SSQ,0.57,0.57,module
+_session296_millennium_poincare_perelman.py,26,D_PHYS,4,4,module
+_session296_millennium_poincare_perelman.py,27,D_BSFG,6,6,module
+_session296_millennium_poincare_perelman.py,28,D_CRIT,26,26,module
+_session296_millennium_poincare_perelman.py,29,K_MEX,25.0/12.0,2.0833333333333335,module
+_session297_millennium_riemann.py,14,F_TRZ,0.1,0.1,module
+_session297_millennium_riemann.py,15,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session297_millennium_riemann.py,16,SSQ,0.57,0.57,module
+_session297_millennium_riemann.py,17,D_PHYS,4,4,module
+_session297_millennium_riemann.py,18,D_BSFG,6,6,module
+_session297_millennium_riemann.py,19,D_CRIT,26,26,module
+_session297_millennium_riemann.py,20,K_MEX,25.0/12.0,2.0833333333333335,module
+_session297_orion_habitable_zone.py,46,BETA_I,0.603,0.603,module
+_session297_orion_habitable_zone.py,47,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session298_alma_molecular_gas.py,44,BETA_I,0.603,0.603,module
+_session298_alma_molecular_gas.py,45,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session298_millennium_p_vs_np.py,11,F_TRZ,0.1,0.1,module
+_session298_millennium_p_vs_np.py,12,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session298_millennium_p_vs_np.py,13,SSQ,0.57,0.57,module
+_session298_millennium_p_vs_np.py,14,D_PHYS,4,4,module
+_session298_millennium_p_vs_np.py,15,D_BSFG,6,6,module
+_session298_millennium_p_vs_np.py,16,D_CRIT,26,26,module
+_session298_millennium_p_vs_np.py,17,K_MEX,25.0/12.0,2.0833333333333335,module
+_session298_millennium_p_vs_np.py,18,N_CH,9,9,module
+_session299_gw190425_mass_gap_errors.py,41,BETA_I,0.603,0.603,module
+_session299_gw190425_mass_gap_errors.py,42,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session299_millennium_yang_mills.py,15,F_TRZ,0.1,0.1,module
+_session299_millennium_yang_mills.py,16,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session299_millennium_yang_mills.py,17,SSQ,0.57,0.57,module
+_session299_millennium_yang_mills.py,18,D_PHYS,4,4,module
+_session299_millennium_yang_mills.py,19,D_BSFG,6,6,module
+_session299_millennium_yang_mills.py,20,D_CRIT,26,26,module
+_session299_millennium_yang_mills.py,21,K_MEX,25.0/12.0,2.0833333333333335,module
+_session299_millennium_yang_mills.py,22,N_CH,9,9,module
+_session300_millennium_navier_stokes.py,16,F_TRZ,0.1,0.1,module
+_session300_millennium_navier_stokes.py,17,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session300_millennium_navier_stokes.py,18,SSQ,0.57,0.57,module
+_session300_millennium_navier_stokes.py,19,D_PHYS,4,4,module
+_session300_millennium_navier_stokes.py,20,D_BSFG,6,6,module
+_session300_millennium_navier_stokes.py,21,D_CRIT,26,26,module
+_session300_millennium_navier_stokes.py,22,K_MEX,25.0/12.0,2.0833333333333335,module
+_session300_snr_shock_velocity.py,46,BETA_I,0.603,0.603,module
+_session300_snr_shock_velocity.py,47,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session301_millennium_hodge.py,16,F_TRZ,0.1,0.1,module
+_session301_millennium_hodge.py,17,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session301_millennium_hodge.py,18,SSQ,0.57,0.57,module
+_session301_millennium_hodge.py,19,D_PHYS,4,4,module
+_session301_millennium_hodge.py,20,D_BSFG,6,6,module
+_session301_millennium_hodge.py,21,D_CRIT,26,26,module
+_session301_millennium_hodge.py,22,K_MEX,25.0/12.0,2.0833333333333335,module
+_session301_pnp_conjecture_anchor.py,38,BETA_I,0.603,0.603,module
+_session301_pnp_conjecture_anchor.py,39,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session302_millennium_bsd.py,15,F_TRZ,0.1,0.1,module
+_session302_millennium_bsd.py,16,PHI_RES,5.0/6.0,0.8333333333333334,module
+_session302_millennium_bsd.py,17,SSQ,0.57,0.57,module
+_session302_millennium_bsd.py,18,D_PHYS,4,4,module
+_session302_millennium_bsd.py,19,D_BSFG,6,6,module
+_session302_millennium_bsd.py,20,D_CRIT,26,26,module
+_session302_millennium_bsd.py,21,K_MEX,25.0/12.0,2.0833333333333335,module
+_session302_tde_rate_mass.py,43,BETA_I,0.603,0.603,module
+_session302_tde_rate_mass.py,44,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session303_universal_buoyancy_solver.py,63,BETA_I,0.603,0.603,module
+_session303_universal_buoyancy_solver.py,64,RHO_VAC_SCM,7.0898e-37,7.0898e-37,module
+_session303_universal_buoyancy_solver.py,65,RHO_VAC_UA,7.0898e-36,7.0898e-36,module
+_session304_rho_vac_scm_derivation.py,17,K_MEX,25/12          (Mexican-hat coupling),25/12          (Mexican-hat coupling),nested_3
+_session304_rho_vac_scm_derivation.py,18,BETA_I,0.6029         (buoyancy coupling),0.6029         (buoyancy coupling),nested_3
+_session304_rho_vac_scm_derivation.py,19,F_TRZ,1/10           (time-reversal zone suppression),1/10           (time-reversal zone suppression),nested_3
+_session304_rho_vac_scm_derivation.py,20,PHI_RES,5/6            (resonance phase),5/6            (resonance phase),nested_3
+_session304_rho_vac_scm_derivation.py,21,SSQ,57/100         (Standard Stress-quotient),57/100         (Standard Stress-quotient),nested_3
+_session304_rho_vac_scm_derivation.py,22,D_PHYS,4              (physical dimensions),4              (physical dimensions),nested_3
+_session304_rho_vac_scm_derivation.py,23,D_BSFG,6              (BSFG manifold dimensions),6              (BSFG manifold dimensions),nested_3
+_session304_rho_vac_scm_derivation.py,24,D_CRIT,26             (critical / string dimension),26             (critical / string dimension),nested_3
+_session304_rho_vac_scm_derivation.py,25,N_CH,9              (channel count),9              (channel count),nested_3
+_session304_rho_vac_scm_derivation.py,28,KAPPA,5e-4           (per-day decay),5e-4           (per-day decay),nested_3
+_session304_rho_vac_scm_derivation.py,43,K_MEX,25.0 / 12.0,2.0833333333333335,module
+_session304_rho_vac_scm_derivation.py,44,BETA_I,0.6029,0.6029,module
+_session304_rho_vac_scm_derivation.py,45,F_TRZ,1.0 / 10.0,0.1,module
+_session304_rho_vac_scm_derivation.py,46,PHI_RES,5.0 / 6.0,0.8333333333333334,module
+_session304_rho_vac_scm_derivation.py,47,SSQ,57.0 / 100.0,0.57,module
+_session304_rho_vac_scm_derivation.py,48,D_PHYS,4.0,4.0,module
+_session304_rho_vac_scm_derivation.py,49,D_BSFG,6.0,6.0,module
+_session304_rho_vac_scm_derivation.py,50,D_CRIT,26.0,26.0,module
+_session304_rho_vac_scm_derivation.py,51,N_CH,9.0,9.0,module
+_session304_rho_vac_scm_derivation.py,54,KAPPA,5e-4,0.0005,module
+_session304_rho_vac_scm_derivation.py,127,RHO_VAC_UA,K_MEX * BETA_I * F_TRZ * PHI_RES * SSQ * (PIVOT_J_m3 * 10.0),K_MEX * BETA_I * F_TRZ * PHI_RES * SSQ * (PIVOT_J_m3 * 10.0),class_or_func
+_session308_paradox_bell_tsirelson.py,14,D_PHYS,4 (not higher).,4 (not higher).,module
+_session313_open_baryogenesis.py,12,PHI_RES,5/6 -> (1 - Phi_res) = 1/6 residual.,5/6 -> (1 - Phi_res) = 1/6 residual.,module
+_session323_qg_born.py,2,PHI_RES,5/6,0.8333333333333334,module
+_session333_cosmo_li7.py,2,PHI_RES,5/6,0.8333333333333334,module
+_session338_math_goldbach.py,2,PHI_RES,5/6,0.8333333333333334,module
+_session340_math_abc.py,2,K_MEX,25/12,2.0833333333333335,module
+_session341_math_collatz.py,2,F_TRZ,0.1,0.1,module
+_session342_math_beal.py,2,PHI_RES,5/6,0.8333333333333334,module
+_session343_352_paper1189_chemistry.py,5,K_MEX,"25/12, D_phys=4, D_BSFG=6, D_crit=26, N_ch=9, SO5=10, A_5=60,","25/12, D_phys=4, D_BSFG=6, D_crit=26, N_ch=9, SO5=10, A_5=60",module
+_session343_352_paper1189_chemistry.py,6,BETA_I,6029/10000.,0.6029,module
+_session343_352_paper1189_chemistry.py,14,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session343_352_paper1189_chemistry.py,15,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session343_352_paper1189_chemistry.py,16,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session343_352_paper1189_chemistry.py,17,D_PHYS,4,4,module
+_session343_352_paper1189_chemistry.py,18,D_BSFG,6,6,module
+_session343_352_paper1189_chemistry.py,19,N_CH,9,9,module
+_session344_chem_mp_me_ratio.py,3,D_BSFG,6,6,module
+_session353_math_catalan.py,2,PHI_RES,5/6,0.8333333333333334,module
+_session373_sm_delta_cp.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,module
+_session374_sm_jarlskog.py,2,F_TRZ,0.1; D_BSFG=6; K_Mex=25/12; SSq=0.57,0.1; D_BSFG=6; K_Mex=25/12; SSq=0.57,module
+_session375_sm_theta23.py,2,F_TRZ,0.1; D_phys=4; SSq=0.57,0.1; D_phys=4; SSq=0.57,module
+_session376_sm_top_yukawa.py,2,F_TRZ,0.1,0.1,module
+_session377_sm_higgs_lambda.py,2,F_TRZ,0.1; K_Mex=25/12; SSq=0.57; N_ch=9,0.1; K_Mex=25/12; SSq=0.57; N_ch=9,module
+_session378_sm_alpha_s.py,2,F_TRZ,0.1; K_Mex=25/12; SSq=0.57; Phi_res=5/6,0.1; K_Mex=25/12; SSq=0.57; Phi_res=5/6,module
+_session379_sm_cabibbo.py,2,F_TRZ,0.1; K_Mex=25/12; D_phys=4,0.1; K_Mex=25/12; D_phys=4,module
+_session380_sm_proton_g.py,2,F_TRZ,0.1; D_BSFG=6; Phi_res=5/6; D_phys=4,0.1; D_BSFG=6; Phi_res=5/6; D_phys=4,module
+_session381_sm_mt_mw.py,2,F_TRZ,0.1; K_Mex=25/12; SSq=0.57; Phi_res=5/6,0.1; K_Mex=25/12; SSq=0.57; Phi_res=5/6,module
+_session382_sm_mh_mt.py,2,F_TRZ,0.1; K_Mex=25/12; SSq=0.57; beta_i=0.6029,0.1; K_Mex=25/12; SSq=0.57; beta_i=0.6029,module
+_session383_astro_chandrasekhar.py,2,F_TRZ,0.1; D_phys=4,0.1; D_phys=4,module
+_session384_astro_tov_max.py,2,F_TRZ,0.1; K_Mex=25/12; SSq=0.57; D_phys=4; Phi_res=5/6,0.1; K_Mex=25/12; SSq=0.57; D_phys=4; Phi_res=5/6,module
+_session385_astro_photon_sphere.py,2,F_TRZ,0.1; K_Mex=25/12; Phi_res=5/6,0.1; K_Mex=25/12; Phi_res=5/6,module
+_session386_astro_isco.py,2,D_BSFG,6,6,module
+_session387_astro_bh_entropy.py,2,F_TRZ,0.1; K_Mex=25/12; D_phys=4,0.1; K_Mex=25/12; D_phys=4,module
+_session388_astro_wd_exponent.py,2,F_TRZ,0.1; Phi_res=5/6; D_phys=4,0.1; Phi_res=5/6; D_phys=4,module
+_session389_astro_grav_binding.py,2,F_TRZ,0.1; SSq=0.57; D_phys=4,0.1; SSq=0.57; D_phys=4,module
+_session390_astro_salpeter_imf.py,2,F_TRZ,0.1; K_Mex=25/12; Phi_res=5/6; D_BSFG=6; D_phys=4,0.1; K_Mex=25/12; Phi_res=5/6; D_BSFG=6; D_phys=4,module
+_session391_astro_ns_compactness.py,2,F_TRZ,0.1; K_Mex=25/12; D_phys=4; SSq=0.57,0.1; K_Mex=25/12; D_phys=4; SSq=0.57,module
+_session392_astro_solar_schwarzschild.py,2,F_TRZ,0.1; D_phys=4; SSq=0.57,0.1; D_phys=4; SSq=0.57,module
+_session393_cm_bcs_gap.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4; D_BSFG=6,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4; D_BSFG=6,module
+_session394_cm_wilson.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session395_cm_wiedemann_franz.py,3,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4,module
+_session396_cm_von_klitzing.py,3,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; D_phys=4,0.1; Phi_res=5/6; SSq=0.57; D_phys=4,module
+_session397_cm_coherence_length.py,3,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; D_phys=4,0.1; Phi_res=5/6; SSq=0.57; D_phys=4,module
+_session398_cm_bec_tc.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4,module
+_session399_cm_zeta3.py,2,F_TRZ,0.1; Phi_res=5/6; D_phys=4,0.1; Phi_res=5/6; D_phys=4,module
+_session400_cm_isotope.py,2,F_TRZ,0.1; Phi_res=5/6; D_phys=4,0.1; Phi_res=5/6; D_phys=4,module
+_session401_cm_brinkman_rice.py,2,F_TRZ,0.1; Phi_res=5/6,0.1; Phi_res=5/6,module
+_session402_cm_xy_exponent.py,2,D_PHYS,4; D_BSFG=6,4; D_BSFG=6,module
+_session403_bio_dna_pitch.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; SO5=10,0.1; Phi_res=5/6; SSq=0.57; SO5=10,module
+_session404_bio_atp.py,2,F_TRZ,0.1; Phi_res=5/6; D_phys=4; SO5=10; A_5=60,0.1; Phi_res=5/6; D_phys=4; SO5=10; A_5=60,module
+_session405_bio_codon_redundancy.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4,module
+_session406_bio_kleiber.py,2,F_TRZ,0.1; Phi_res=5/6,0.1; Phi_res=5/6,module
+_session407_bio_hill.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session408_bio_photosynthesis.py,2,F_TRZ,0.1; K_Mex=25/12; D_phys=4,0.1; K_Mex=25/12; D_phys=4,module
+_session409_bio_chlorophyll.py,2,SSQ,0.57; K_Mex=25/12; D_BSFG=6; SO5=10; A_5=60,0.57; K_Mex=25/12; D_BSFG=6; SO5=10; A_5=60,module
+_session410_bio_telomere.py,2,D_BSFG,6,6,module
+_session411_bio_redfield.py,2,F_TRZ,0.1; Phi_res=5/6; D_BSFG=6,0.1; Phi_res=5/6; D_BSFG=6,module
+_session412_bio_phyllotaxis.py,3,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,module
+_session413_plasma_iter_aspect.py,2,F_TRZ,0.1; D_BSFG=6,0.1; D_BSFG=6,module
+_session414_plasma_troyon.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,module
+_session415_plasma_triple_product.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session416_plasma_coulomb_log.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10; SSq=0.57,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10; SSq=0.57,module
+_session417_plasma_bohm.py,3,F_TRZ,"Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12)","Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12)",module
+_session418_plasma_safety_q.py,3,F_TRZ,"Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12)","Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12)",module
+_session421_plasma_lawson.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,module
+_session422_plasma_sheath.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session423_geo_j2.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,module
+_session424_geo_scale_height.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57; SO5=10,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57; SO5=10,module
+_session426_geo_lapse.py,2,F_TRZ,0.1; Phi_res=5/6; SO5=10,0.1; Phi_res=5/6; SO5=10,module
+_session427_geo_obliquity.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,module
+_session428_geo_greenhouse.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; N_ch=9,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; N_ch=9,module
+_session429_geo_salinity.py,2,F_TRZ,0.1; K_Mex=25/12; D_phys=4; SO5=10,0.1; K_Mex=25/12; D_phys=4; SO5=10,module
+_session430_geo_earth_moon.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; A_5=60,0.1; Phi_res=5/6; K_Mex=25/12; A_5=60,module
+_session431_geo_brunt_vaisala.py,2,F_TRZ,0.1,0.1,module
+_session432_geo_pressure.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session433_part_baryogenesis.py,2,F_TRZ,0.1; D_BSFG=6,0.1; D_BSFG=6,module
+_session434_part_proton_lifetime.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,module
+_session435_part_neutrino_mass.py,2,F_TRZ,0.1; K_Mex=25/12,0.1; K_Mex=25/12,module
+_session436_part_sterile_neutrino.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,module
+_session437_part_axion.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57; D_BSFG=6,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57; D_BSFG=6,module
+_session438_part_wimp.py,3,F_TRZ,"Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12); D_phys=4; SO5=10","Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12); D_phys=4; SO5=10",module
+_session439_part_eta_gg.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; N_ch=9; SO5=10,0.1; Phi_res=5/6; K_Mex=25/12; N_ch=9; SO5=10,module
+_session440_part_top_yukawa.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session441_part_higgs.py,2,F_TRZ,0.1; K_Mex=25/12,0.1; K_Mex=25/12,module
+_session442_part_pmns_t12.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10; SSq=0.57,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10; SSq=0.57,module
+_session443_info_ln2.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session444_info_log2e.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,module
+_session445_info_pi_over_2.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,module
+_session446_info_surface_code.py,3,F_TRZ,"Fraction(1,10)","Fraction(1,10)",module
+_session447_info_euler_mascheroni.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57,0.1; Phi_res=5/6; SSq=0.57,module
+_session448_info_catalan.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session449_info_ln10.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session450_info_omega_lambert.py,2,F_TRZ,0.1; SSq=0.57; Phi_res=5/6,0.1; SSq=0.57; Phi_res=5/6,module
+_session451_info_khinchin.py,2,F_TRZ,0.1; SSq=0.57; K_Mex=25/12,0.1; SSq=0.57; K_Mex=25/12,module
+_session452_info_sqrt_2pi.py,2,F_TRZ,0.1; SSq=0.57; Phi_res=5/6; K_Mex=25/12,0.1; SSq=0.57; Phi_res=5/6; K_Mex=25/12,module
+_session453_gr_mercury.py,2,F_TRZ,0.1; K_Mex=25/12; N_ch=9,0.1; K_Mex=25/12; N_ch=9,module
+_session454_gr_light_bending.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,module
+_session455_gr_shapiro.py,3,D_PHYS,Fraction(4),Fraction(4),module
+_session456_gr_gpb_geodetic.py,2,F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_BSFG=6,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_BSFG=6,module
+_session457_gr_gpb_frame_drag.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session458_gr_hulse_taylor.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,0.1; Phi_res=5/6; K_Mex=25/12,module
+_session459_gr_bh_shadow.py,2,F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; N_ch=9; SO5=10; D_phys=4,0.1; Phi_res=5/6; K_Mex=25/12; N_ch=9; SO5=10; D_phys=4,module
+_session460_gr_photon_sphere.py,3,F_TRZ,"Fraction(1,10); SO5=Fraction(10); D_phys=Fraction(4)","Fraction(1,10); SO5=Fraction(10); D_phys=Fraction(4)",module
+_session461_gr_nanograv.py,2,F_TRZ,0.1; K_Mex=25/12,0.1; K_Mex=25/12,module
+_session462_gr_kerr_isco.py,3,F_TRZ,"Fraction(1,10); SO5=Fraction(10)","Fraction(1,10); SO5=Fraction(10)",module
+_session463_si_bandgap.py,1,F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12,1/10; Phi_res=5/6; K_Mex=25/12,module
+_session464_gaas_bandgap.py,1,F_TRZ,1/10; Phi_res=5/6; SSq=0.57,1/10; Phi_res=5/6; SSq=0.57,module
+_session465_diamond_bandgap.py,1,F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,module
+_session466_bcs_ratio.py,1,F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4,module
+_session467_lorenz_number.py,1,F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12,1/10; Phi_res=5/6; K_Mex=25/12,module
+_session469_n_water.py,1,F_TRZ,1/10; Phi_res=5/6; SSq=0.57; K_Mex=25/12,1/10; Phi_res=5/6; SSq=0.57; K_Mex=25/12,module
+_session470_stefan_boltzmann.py,1,F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,module
+_session472_avogadro.py,1,F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12; D_BSFG=6,1/10; Phi_res=5/6; K_Mex=25/12; D_BSFG=6,module
+_session623_rydbergE.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session624_stefan.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session625_wien.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session626_faraday.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session627_avogadro.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session628_kB.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session629_planck.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session630_c.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session631_e.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session632_hartree.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session633_pi.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session634_e.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session635_goldenRatio.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session636_gamma.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session637_sqrt2.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session638_sqrt3.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session639_sqrt5.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session640_ln2.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session641_ln10.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session642_zeta3.py,2,F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60","F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",module
+_session694_alpha_forward_derivation.py,14,F_TRZ,1/10                 (Time-Reversal-Zone amplitude),1/10                 (Time-Reversal-Zone amplitude),nested_10
+_session694_alpha_forward_derivation.py,15,PHI_RES,"5/6                  (Resonance phase closure, G6)","5/6                  (Resonance phase closure, G6)",nested_10
+_session694_alpha_forward_derivation.py,16,SSQ,57/100               (Sustainarity-square ledger anchor),57/100               (Sustainarity-square ledger anchor),nested_10
+_session694_alpha_forward_derivation.py,17,K_MEX,"25/12                (Mexican-hat coupling, G1)","25/12                (Mexican-hat coupling, G1)",nested_10
+_session694_alpha_forward_derivation.py,18,D_PHYS,4,4,nested_10
+_session694_alpha_forward_derivation.py,19,D_BSFG,6,6,nested_10
+_session694_alpha_forward_derivation.py,20,D_CRIT,26,26,nested_10
+_session694_alpha_forward_derivation.py,23,N_CH,9,9,nested_10
+_session694_alpha_forward_derivation.py,24,BETA_I,6029/10000           (S293 calibrated),6029/10000           (S293 calibrated),nested_10
+_session694_alpha_forward_derivation.py,67,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session694_alpha_forward_derivation.py,68,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session694_alpha_forward_derivation.py,69,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session694_alpha_forward_derivation.py,70,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session694_alpha_forward_derivation.py,71,D_PHYS,Fraction(4),Fraction(4),module
+_session694_alpha_forward_derivation.py,72,D_BSFG,Fraction(6),Fraction(6),module
+_session694_alpha_forward_derivation.py,73,D_CRIT,Fraction(26),Fraction(26),module
+_session695_4pi_coset_derivation.py,48,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session695_4pi_coset_derivation.py,49,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session695_4pi_coset_derivation.py,50,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session695_4pi_coset_derivation.py,51,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session695_4pi_coset_derivation.py,52,D_BSFG,6,6,module
+_session695_4pi_coset_derivation.py,53,D_CRIT,26,26,module
+_session695_4pi_coset_derivation.py,61,D_PHYS,4,4,module
+_session696_2loop_kk_closure.py,47,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session696_2loop_kk_closure.py,48,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session696_2loop_kk_closure.py,49,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session696_2loop_kk_closure.py,50,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session696_2loop_kk_closure.py,51,D_BSFG,6,6,module
+_session696_2loop_kk_closure.py,52,D_PHYS,4,4,module
+_session696_2loop_kk_closure.py,53,D_CRIT,26,26,module
+_session696_2loop_kk_closure.py,54,N_CH,9,9,module
+_session696_2loop_kk_closure.py,55,ORD_SO5,10,10,module
+_session697_c2_exact_decomposition.py,96,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session697_c2_exact_decomposition.py,97,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session697_c2_exact_decomposition.py,98,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session697_c2_exact_decomposition.py,99,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session697_c2_exact_decomposition.py,100,D_BSFG,6,6,module
+_session697_c2_exact_decomposition.py,101,D_PHYS,4,4,module
+_session697_c2_exact_decomposition.py,102,D_CRIT,26,26,module
+_session697_c2_exact_decomposition.py,103,N_CH,9,9,module
+_session697_c2_exact_decomposition.py,105,ORD_SO5,10,10,module
+_session698_so2dpm_selection_rule.py,83,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session698_so2dpm_selection_rule.py,84,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session698_so2dpm_selection_rule.py,85,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session698_so2dpm_selection_rule.py,86,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session698_so2dpm_selection_rule.py,87,D_BSFG,6,6,module
+_session698_so2dpm_selection_rule.py,88,D_PHYS,4,4,module
+_session698_so2dpm_selection_rule.py,89,D_CRIT,26,26,module
+_session698_so2dpm_selection_rule.py,90,N_CH,9,9,module
+_session698_so2dpm_selection_rule.py,91,ORD_SO5,10,10,module
+_session699_3loop_tail_bound.py,28,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session699_3loop_tail_bound.py,29,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session699_3loop_tail_bound.py,30,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session699_3loop_tail_bound.py,31,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session699_3loop_tail_bound.py,32,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session699_3loop_tail_bound.py,33,D_PHYS,4,4,module
+_session699_3loop_tail_bound.py,34,D_BSFG,6,6,module
+_session699_3loop_tail_bound.py,35,D_CRIT,26,26,module
+_session699_3loop_tail_bound.py,36,N_CH,9,9,module
+_session699_3loop_tail_bound.py,37,ORD_SO5,10,10,module
+_session700_alpha_chain_convergence.py,43,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session700_alpha_chain_convergence.py,44,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session700_alpha_chain_convergence.py,45,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session700_alpha_chain_convergence.py,46,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session700_alpha_chain_convergence.py,47,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session700_alpha_chain_convergence.py,48,D_PHYS,4,4,module
+_session700_alpha_chain_convergence.py,49,D_BSFG,6,6,module
+_session700_alpha_chain_convergence.py,50,D_CRIT,26,26,module
+_session700_alpha_chain_convergence.py,51,N_CH,9,9,module
+_session700_alpha_chain_convergence.py,52,ORD_SO5,10,10,module
+_session701_c_tree_derivation.py,36,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session701_c_tree_derivation.py,37,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session701_c_tree_derivation.py,38,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session701_c_tree_derivation.py,39,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session701_c_tree_derivation.py,40,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session701_c_tree_derivation.py,41,D_PHYS,4,4,module
+_session701_c_tree_derivation.py,42,D_BSFG,6,6,module
+_session701_c_tree_derivation.py,43,D_CRIT,26,26,module
+_session701_c_tree_derivation.py,44,N_CH,9,9,module
+_session701_c_tree_derivation.py,45,ORD_SO5,10,10,module
+_session701_c_tree_derivation.py,52,V_SCM,1.0e8,100000000.0,module
+_session702_c_tree_layered_dpm.py,44,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session702_c_tree_layered_dpm.py,45,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session702_c_tree_layered_dpm.py,46,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session702_c_tree_layered_dpm.py,47,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session702_c_tree_layered_dpm.py,48,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session702_c_tree_layered_dpm.py,49,D_PHYS,4,4,module
+_session702_c_tree_layered_dpm.py,50,D_BSFG,6,6,module
+_session702_c_tree_layered_dpm.py,51,D_CRIT,26,26,module
+_session702_c_tree_layered_dpm.py,52,N_CH,9,9,module
+_session702_c_tree_layered_dpm.py,53,ORD_SO5,10,10,module
+_session702_c_tree_layered_dpm.py,60,V_SCM,1.0e8,100000000.0,module
+_session703_c_2loop_coefficient.py,53,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session703_c_2loop_coefficient.py,54,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session703_c_2loop_coefficient.py,55,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session703_c_2loop_coefficient.py,56,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session703_c_2loop_coefficient.py,57,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session703_c_2loop_coefficient.py,58,D_PHYS,4,4,module
+_session703_c_2loop_coefficient.py,59,D_BSFG,6,6,module
+_session703_c_2loop_coefficient.py,60,D_CRIT,26,26,module
+_session703_c_2loop_coefficient.py,61,N_CH,9,9,module
+_session703_c_2loop_coefficient.py,62,ORD_SO5,10,10,module
+_session703_c_2loop_coefficient.py,90,V_SCM,1.0e8,100000000.0,module
+_session704_c_3loop_tail_bound.py,35,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session704_c_3loop_tail_bound.py,36,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session704_c_3loop_tail_bound.py,37,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session704_c_3loop_tail_bound.py,38,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session704_c_3loop_tail_bound.py,39,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session704_c_3loop_tail_bound.py,40,D_PHYS,4,4,module
+_session704_c_3loop_tail_bound.py,41,D_BSFG,6,6,module
+_session704_c_3loop_tail_bound.py,42,D_CRIT,26,26,module
+_session704_c_3loop_tail_bound.py,43,N_CH,9,9,module
+_session704_c_3loop_tail_bound.py,44,ORD_SO5,10,10,module
+_session704_c_3loop_tail_bound.py,72,V_SCM,1.0e8,100000000.0,module
+_session705_universal_loop_factorial_rule.py,30,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session705_universal_loop_factorial_rule.py,31,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session705_universal_loop_factorial_rule.py,32,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session705_universal_loop_factorial_rule.py,33,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session705_universal_loop_factorial_rule.py,34,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session705_universal_loop_factorial_rule.py,35,D_PHYS,4,4,module
+_session705_universal_loop_factorial_rule.py,36,D_BSFG,6,6,module
+_session705_universal_loop_factorial_rule.py,37,D_CRIT,26,26,module
+_session705_universal_loop_factorial_rule.py,38,N_CH,9,9,module
+_session706_loop_factorial_n4.py,38,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session706_loop_factorial_n4.py,39,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session706_loop_factorial_n4.py,40,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session706_loop_factorial_n4.py,41,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session706_loop_factorial_n4.py,42,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session706_loop_factorial_n4.py,43,D_PHYS,4,4,module
+_session706_loop_factorial_n4.py,44,D_BSFG,6,6,module
+_session706_loop_factorial_n4.py,45,D_CRIT,26,26,module
+_session706_loop_factorial_n4.py,46,N_CH,9,9,module
+_session707_so2_dpm_geometric_phase.py,33,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session707_so2_dpm_geometric_phase.py,34,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session707_so2_dpm_geometric_phase.py,35,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session707_so2_dpm_geometric_phase.py,36,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session707_so2_dpm_geometric_phase.py,37,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session707_so2_dpm_geometric_phase.py,38,D_PHYS,4,4,module
+_session707_so2_dpm_geometric_phase.py,39,D_BSFG,6,6,module
+_session707_so2_dpm_geometric_phase.py,40,D_CRIT,26,26,module
+_session707_so2_dpm_geometric_phase.py,41,N_CH,9,9,module
+_session708_so2_dpm_rank_refined.py,38,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session708_so2_dpm_rank_refined.py,39,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session708_so2_dpm_rank_refined.py,40,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session708_so2_dpm_rank_refined.py,41,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session708_so2_dpm_rank_refined.py,42,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session708_so2_dpm_rank_refined.py,43,D_PHYS,4,4,module
+_session708_so2_dpm_rank_refined.py,44,D_BSFG,6,6,module
+_session708_so2_dpm_rank_refined.py,45,D_CRIT,26,26,module
+_session708_so2_dpm_rank_refined.py,46,N_CH,9,9,module
+_session709_mu_chain_opening.py,40,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session709_mu_chain_opening.py,41,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session709_mu_chain_opening.py,42,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session709_mu_chain_opening.py,43,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session709_mu_chain_opening.py,44,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session709_mu_chain_opening.py,45,D_PHYS,4,4,module
+_session709_mu_chain_opening.py,46,D_BSFG,6,6,module
+_session709_mu_chain_opening.py,47,D_CRIT,26,26,module
+_session709_mu_chain_opening.py,48,N_CH,9,9,module
+_session710_mu_2loop.py,47,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session710_mu_2loop.py,48,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session710_mu_2loop.py,49,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session710_mu_2loop.py,50,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session710_mu_2loop.py,51,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session710_mu_2loop.py,52,D_PHYS,4,4,module
+_session710_mu_2loop.py,53,D_BSFG,6,6,module
+_session710_mu_2loop.py,54,D_CRIT,26,26,module
+_session710_mu_2loop.py,55,N_CH,9,9,module
+_session711_mu_3loop_finite_polynomial.py,52,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session711_mu_3loop_finite_polynomial.py,53,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session711_mu_3loop_finite_polynomial.py,54,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session711_mu_3loop_finite_polynomial.py,55,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session711_mu_3loop_finite_polynomial.py,56,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session711_mu_3loop_finite_polynomial.py,57,D_PHYS,4,4,module
+_session711_mu_3loop_finite_polynomial.py,58,D_BSFG,6,6,module
+_session711_mu_3loop_finite_polynomial.py,59,D_CRIT,26,26,module
+_session711_mu_3loop_finite_polynomial.py,60,N_CH,9,9,module
+_session712_mu_4loop_termination_test.py,26,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session712_mu_4loop_termination_test.py,27,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session712_mu_4loop_termination_test.py,28,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session712_mu_4loop_termination_test.py,29,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session712_mu_4loop_termination_test.py,30,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session712_mu_4loop_termination_test.py,31,D_PHYS,4,4,module
+_session712_mu_4loop_termination_test.py,32,D_BSFG,6,6,module
+_session712_mu_4loop_termination_test.py,33,D_CRIT,26,26,module
+_session712_mu_4loop_termination_test.py,34,N_CH,9,9,module
+_session713_alpha_4loop_borel_test.py,25,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session713_alpha_4loop_borel_test.py,26,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session713_alpha_4loop_borel_test.py,27,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session713_alpha_4loop_borel_test.py,28,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session713_alpha_4loop_borel_test.py,29,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session713_alpha_4loop_borel_test.py,30,D_PHYS,4,4,module
+_session713_alpha_4loop_borel_test.py,31,D_BSFG,6,6,module
+_session713_alpha_4loop_borel_test.py,32,D_CRIT,26,26,module
+_session713_alpha_4loop_borel_test.py,33,N_CH,9,9,module
+_session713_alpha_4loop_borel_test.py,34,ORD_SO5,10,10,module
+_session714_alpha_c3_locked_candidate_hunt.py,33,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session714_alpha_c3_locked_candidate_hunt.py,34,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session714_alpha_c3_locked_candidate_hunt.py,35,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session714_alpha_c3_locked_candidate_hunt.py,36,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session714_alpha_c3_locked_candidate_hunt.py,37,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session714_alpha_c3_locked_candidate_hunt.py,38,D_PHYS,4,4,module
+_session714_alpha_c3_locked_candidate_hunt.py,39,D_BSFG,6,6,module
+_session714_alpha_c3_locked_candidate_hunt.py,40,D_CRIT,26,26,module
+_session714_alpha_c3_locked_candidate_hunt.py,41,N_CH,9,9,module
+_session714_alpha_c3_locked_candidate_hunt.py,42,ORD_SO5,10,10,module
+_session715_alpha_4loop_locked_candidate.py,29,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session715_alpha_4loop_locked_candidate.py,30,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session715_alpha_4loop_locked_candidate.py,31,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session715_alpha_4loop_locked_candidate.py,32,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session715_alpha_4loop_locked_candidate.py,33,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session715_alpha_4loop_locked_candidate.py,34,D_PHYS,4,4,module
+_session715_alpha_4loop_locked_candidate.py,35,D_BSFG,6,6,module
+_session715_alpha_4loop_locked_candidate.py,36,D_CRIT,26,26,module
+_session715_alpha_4loop_locked_candidate.py,37,N_CH,9,9,module
+_session715_alpha_4loop_locked_candidate.py,38,ORD_SO5,10,10,module
+_session716_mu_5loop_ratio_rule_validation.py,31,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session716_mu_5loop_ratio_rule_validation.py,32,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session716_mu_5loop_ratio_rule_validation.py,33,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session716_mu_5loop_ratio_rule_validation.py,34,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session716_mu_5loop_ratio_rule_validation.py,35,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session716_mu_5loop_ratio_rule_validation.py,36,D_PHYS,4,4,module
+_session716_mu_5loop_ratio_rule_validation.py,37,D_BSFG,6,6,module
+_session716_mu_5loop_ratio_rule_validation.py,38,D_CRIT,26,26,module
+_session716_mu_5loop_ratio_rule_validation.py,39,N_CH,9,9,module
+_session717_alpha_class_universality_test.py,38,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session717_alpha_class_universality_test.py,39,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session717_alpha_class_universality_test.py,40,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session717_alpha_class_universality_test.py,41,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session717_alpha_class_universality_test.py,42,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session717_alpha_class_universality_test.py,43,D_PHYS,4,4,module
+_session717_alpha_class_universality_test.py,44,D_BSFG,6,6,module
+_session717_alpha_class_universality_test.py,45,D_CRIT,26,26,module
+_session717_alpha_class_universality_test.py,46,N_CH,9,9,module
+_session718_c_chain_class_assignment.py,43,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session718_c_chain_class_assignment.py,44,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session718_c_chain_class_assignment.py,45,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session718_c_chain_class_assignment.py,46,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session718_c_chain_class_assignment.py,47,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session718_c_chain_class_assignment.py,48,D_PHYS,4,4,module
+_session718_c_chain_class_assignment.py,49,D_BSFG,6,6,module
+_session718_c_chain_class_assignment.py,50,D_CRIT,26,26,module
+_session718_c_chain_class_assignment.py,51,N_CH,9,9,module
+_session719_hbar_dimensional_class_probe.py,22,F_TRZ,"1/10, Phi_res=5/6, SSq=57/100, K_Mex=25/12, beta_i=6029/10000,","1/10, Phi_res=5/6, SSq=57/100, K_Mex=25/12, beta_i=6029/10000",class_or_func
+_session719_hbar_dimensional_class_probe.py,23,D_PHYS,"4, D_BSFG=6, D_crit=26, N_ch=9, SO5_order=10, A_5=60.","4, D_BSFG=6, D_crit=26, N_ch=9, SO5_order=10, A_5=60.",class_or_func
+_session719_hbar_dimensional_class_probe.py,35,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session719_hbar_dimensional_class_probe.py,36,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session719_hbar_dimensional_class_probe.py,37,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session719_hbar_dimensional_class_probe.py,38,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session719_hbar_dimensional_class_probe.py,39,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session719_hbar_dimensional_class_probe.py,40,D_PHYS,4,4,module
+_session719_hbar_dimensional_class_probe.py,41,D_BSFG,6,6,module
+_session719_hbar_dimensional_class_probe.py,42,D_CRIT,26,26,module
+_session719_hbar_dimensional_class_probe.py,43,N_CH,9,9,module
+_session719_hbar_dimensional_class_probe.py,55,V_SCM,1.0e8,100000000.0,module
+_session719_hbar_dimensional_class_probe.py,56,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,29,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,30,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,31,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,32,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,33,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,34,D_PHYS,4,4,module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,35,D_BSFG,6,6,module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,36,D_CRIT,26,26,module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,37,N_CH,9,9,module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,47,V_SCM,1.0e8,100000000.0,module
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,48,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,34,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,35,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,36,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,37,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,38,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,39,D_PHYS,4,4,module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,40,D_BSFG,6,6,module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,41,D_CRIT,26,26,module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,42,N_CH,9,9,module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,51,V_SCM,1.0e8,100000000.0,module
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,52,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session722_K_G_prefactor_search.py,27,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session722_K_G_prefactor_search.py,28,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session722_K_G_prefactor_search.py,29,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session722_K_G_prefactor_search.py,30,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session722_K_G_prefactor_search.py,31,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session722_K_G_prefactor_search.py,32,D_PHYS,Fraction(4),Fraction(4),module
+_session722_K_G_prefactor_search.py,33,D_BSFG,Fraction(6),Fraction(6),module
+_session722_K_G_prefactor_search.py,34,D_CRIT,Fraction(26),Fraction(26),module
+_session722_K_G_prefactor_search.py,35,N_CH,Fraction(9),Fraction(9),module
+_session722_K_G_prefactor_search.py,46,V_SCM,1.0e8,100000000.0,module
+_session722_K_G_prefactor_search.py,47,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session723_K_G_locked_rational.py,31,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session723_K_G_locked_rational.py,32,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session723_K_G_locked_rational.py,33,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session723_K_G_locked_rational.py,34,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session723_K_G_locked_rational.py,35,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session723_K_G_locked_rational.py,36,D_PHYS,Fraction(4),Fraction(4),module
+_session723_K_G_locked_rational.py,37,D_BSFG,Fraction(6),Fraction(6),module
+_session723_K_G_locked_rational.py,38,D_CRIT,Fraction(26),Fraction(26),module
+_session723_K_G_locked_rational.py,39,N_CH,Fraction(9),Fraction(9),module
+_session723_K_G_locked_rational.py,49,V_SCM,1.0e8,100000000.0,module
+_session724_classVI_Lambda_opening.py,36,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session724_classVI_Lambda_opening.py,37,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session724_classVI_Lambda_opening.py,38,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session724_classVI_Lambda_opening.py,39,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session724_classVI_Lambda_opening.py,40,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session724_classVI_Lambda_opening.py,41,D_PHYS,Fraction(4),Fraction(4),module
+_session724_classVI_Lambda_opening.py,42,D_BSFG,Fraction(6),Fraction(6),module
+_session724_classVI_Lambda_opening.py,43,D_CRIT,Fraction(26),Fraction(26),module
+_session724_classVI_Lambda_opening.py,44,N_CH,Fraction(9),Fraction(9),module
+_session724_classVI_Lambda_opening.py,57,V_SCM,1.0e8,100000000.0,module
+_session725_cosmological_hierarchy_probe.py,26,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session725_cosmological_hierarchy_probe.py,27,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session725_cosmological_hierarchy_probe.py,28,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session725_cosmological_hierarchy_probe.py,29,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session725_cosmological_hierarchy_probe.py,30,D_PHYS,Fraction(4),Fraction(4),module
+_session725_cosmological_hierarchy_probe.py,31,D_BSFG,Fraction(6),Fraction(6),module
+_session725_cosmological_hierarchy_probe.py,32,D_CRIT,Fraction(26),Fraction(26),module
+_session725_cosmological_hierarchy_probe.py,33,N_CH,Fraction(9),Fraction(9),module
+_session725_cosmological_hierarchy_probe.py,42,V_SCM,1.0e8,100000000.0,module
+_session726_LH_tighten_locked_closure.py,26,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session726_LH_tighten_locked_closure.py,27,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session726_LH_tighten_locked_closure.py,28,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session726_LH_tighten_locked_closure.py,29,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session726_LH_tighten_locked_closure.py,30,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session726_LH_tighten_locked_closure.py,31,D_PHYS,Fraction(4),Fraction(4),module
+_session726_LH_tighten_locked_closure.py,32,D_BSFG,Fraction(6),Fraction(6),module
+_session726_LH_tighten_locked_closure.py,33,D_CRIT,Fraction(26),Fraction(26),module
+_session726_LH_tighten_locked_closure.py,34,N_CH,Fraction(9),Fraction(9),module
+_session726_LH_tighten_locked_closure.py,35,ORD_SO5,Fraction(10),Fraction(10),module
+_session726_LH_tighten_locked_closure.py,52,V_SCM,1.0e8,100000000.0,module
+_session726_LH_tighten_locked_closure.py,53,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session727_LH42_Lambda_closure.py,28,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session727_LH42_Lambda_closure.py,29,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session727_LH42_Lambda_closure.py,30,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session727_LH42_Lambda_closure.py,31,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session727_LH42_Lambda_closure.py,32,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session727_LH42_Lambda_closure.py,33,D_PHYS,Fraction(4),Fraction(4),module
+_session727_LH42_Lambda_closure.py,34,D_BSFG,Fraction(6),Fraction(6),module
+_session727_LH42_Lambda_closure.py,35,D_CRIT,Fraction(26),Fraction(26),module
+_session727_LH42_Lambda_closure.py,36,N_CH,Fraction(9),Fraction(9),module
+_session727_LH42_Lambda_closure.py,37,ORD_SO5,Fraction(10),Fraction(10),module
+_session727_LH42_Lambda_closure.py,46,V_SCM,1.0e8,100000000.0,module
+_session727_LH42_Lambda_closure.py,47,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session728_triple_track_consolidation.py,17,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session728_triple_track_consolidation.py,18,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session728_triple_track_consolidation.py,19,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session728_triple_track_consolidation.py,20,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session728_triple_track_consolidation.py,21,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session728_triple_track_consolidation.py,22,D_PHYS,Fraction(4),Fraction(4),module
+_session728_triple_track_consolidation.py,23,D_BSFG,Fraction(6),Fraction(6),module
+_session728_triple_track_consolidation.py,24,D_CRIT,Fraction(26),Fraction(26),module
+_session728_triple_track_consolidation.py,25,N_CH,Fraction(9),Fraction(9),module
+_session728_triple_track_consolidation.py,26,ORD_SO5,Fraction(10),Fraction(10),module
+_session728_triple_track_consolidation.py,33,V_SCM,1.0e8,100000000.0,module
+_session728_triple_track_consolidation.py,34,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session729_H0_eta_hbar_consolidation.py,19,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session729_H0_eta_hbar_consolidation.py,20,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session729_H0_eta_hbar_consolidation.py,21,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session729_H0_eta_hbar_consolidation.py,22,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session729_H0_eta_hbar_consolidation.py,23,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session729_H0_eta_hbar_consolidation.py,24,D_PHYS,Fraction(4),Fraction(4),module
+_session729_H0_eta_hbar_consolidation.py,25,D_BSFG,Fraction(6),Fraction(6),module
+_session729_H0_eta_hbar_consolidation.py,26,D_CRIT,Fraction(26),Fraction(26),module
+_session729_H0_eta_hbar_consolidation.py,27,N_CH,Fraction(9),Fraction(9),module
+_session729_H0_eta_hbar_consolidation.py,35,V_SCM,1.0e8,100000000.0,module
+_session729_H0_eta_hbar_consolidation.py,36,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session730_Dcrit7_TCMB_Hubble.py,16,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session730_Dcrit7_TCMB_Hubble.py,17,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session730_Dcrit7_TCMB_Hubble.py,18,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session730_Dcrit7_TCMB_Hubble.py,19,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session730_Dcrit7_TCMB_Hubble.py,20,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session730_Dcrit7_TCMB_Hubble.py,21,D_PHYS,Fraction(4),Fraction(4),module
+_session730_Dcrit7_TCMB_Hubble.py,22,D_BSFG,Fraction(6),Fraction(6),module
+_session730_Dcrit7_TCMB_Hubble.py,23,D_CRIT,Fraction(26),Fraction(26),module
+_session730_Dcrit7_TCMB_Hubble.py,24,N_CH,Fraction(9),Fraction(9),module
+_session730_Dcrit7_TCMB_Hubble.py,31,V_SCM,1.0e8,100000000.0,module
+_session730_Dcrit7_TCMB_Hubble.py,32,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session731_TCMB_OmegaX_motifs.py,17,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session731_TCMB_OmegaX_motifs.py,18,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session731_TCMB_OmegaX_motifs.py,19,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session731_TCMB_OmegaX_motifs.py,20,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session731_TCMB_OmegaX_motifs.py,21,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session731_TCMB_OmegaX_motifs.py,22,D_PHYS,Fraction(4),Fraction(4),module
+_session731_TCMB_OmegaX_motifs.py,23,D_BSFG,Fraction(6),Fraction(6),module
+_session731_TCMB_OmegaX_motifs.py,24,D_CRIT,Fraction(26),Fraction(26),module
+_session731_TCMB_OmegaX_motifs.py,25,N_CH,Fraction(9),Fraction(9),module
+_session731_TCMB_OmegaX_motifs.py,32,V_SCM,1.0e8,100000000.0,module
+_session731_TCMB_OmegaX_motifs.py,33,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session732_classX_BAO_audit.py,17,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session732_classX_BAO_audit.py,18,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session732_classX_BAO_audit.py,19,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session732_classX_BAO_audit.py,20,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session732_classX_BAO_audit.py,21,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session732_classX_BAO_audit.py,22,D_PHYS,Fraction(4),Fraction(4),module
+_session732_classX_BAO_audit.py,23,D_BSFG,Fraction(6),Fraction(6),module
+_session732_classX_BAO_audit.py,24,D_CRIT,Fraction(26),Fraction(26),module
+_session732_classX_BAO_audit.py,25,N_CH,Fraction(9),Fraction(9),module
+_session732_classX_BAO_audit.py,32,V_SCM,1.0e8,100000000.0,module
+_session732_classX_BAO_audit.py,33,RHO_VAC_SCM,7.09e-37,7.09e-37,module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,22,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,23,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,24,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,25,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,26,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,27,D_PHYS,Fraction(4),Fraction(4),module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,28,D_BSFG,Fraction(6),Fraction(6),module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,29,D_CRIT,Fraction(26),Fraction(26),module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,30,N_CH,Fraction(9),Fraction(9),module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,31,ORD_SO5,Fraction(10),Fraction(10),module
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,50,V_SCM,1.0e8,100000000.0,module
+_session734_classXII_tighten_HubbleTension_residual.py,19,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session734_classXII_tighten_HubbleTension_residual.py,20,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session734_classXII_tighten_HubbleTension_residual.py,21,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session734_classXII_tighten_HubbleTension_residual.py,22,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session734_classXII_tighten_HubbleTension_residual.py,23,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session734_classXII_tighten_HubbleTension_residual.py,24,D_PHYS,Fraction(4),Fraction(4),module
+_session734_classXII_tighten_HubbleTension_residual.py,25,D_BSFG,Fraction(6),Fraction(6),module
+_session734_classXII_tighten_HubbleTension_residual.py,26,D_CRIT,Fraction(26),Fraction(26),module
+_session734_classXII_tighten_HubbleTension_residual.py,27,N_CH,Fraction(9),Fraction(9),module
+_session735_universal_residual_HubbleInvariant_sigma8.py,18,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session735_universal_residual_HubbleInvariant_sigma8.py,19,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session735_universal_residual_HubbleInvariant_sigma8.py,20,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session735_universal_residual_HubbleInvariant_sigma8.py,21,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session735_universal_residual_HubbleInvariant_sigma8.py,22,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session735_universal_residual_HubbleInvariant_sigma8.py,23,D_PHYS,Fraction(4),Fraction(4),module
+_session735_universal_residual_HubbleInvariant_sigma8.py,24,D_BSFG,Fraction(6),Fraction(6),module
+_session735_universal_residual_HubbleInvariant_sigma8.py,25,D_CRIT,Fraction(26),Fraction(26),module
+_session735_universal_residual_HubbleInvariant_sigma8.py,26,N_CH,Fraction(9),Fraction(9),module
+_session736_delta_univ_classXV_ns_S8_check.py,14,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session736_delta_univ_classXV_ns_S8_check.py,15,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session736_delta_univ_classXV_ns_S8_check.py,16,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session736_delta_univ_classXV_ns_S8_check.py,17,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session736_delta_univ_classXV_ns_S8_check.py,18,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session736_delta_univ_classXV_ns_S8_check.py,19,D_PHYS,Fraction(4),Fraction(4),module
+_session736_delta_univ_classXV_ns_S8_check.py,20,D_BSFG,Fraction(6),Fraction(6),module
+_session736_delta_univ_classXV_ns_S8_check.py,21,D_CRIT,Fraction(26),Fraction(26),module
+_session736_delta_univ_classXV_ns_S8_check.py,22,N_CH,Fraction(9),Fraction(9),module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,21,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,22,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,23,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,24,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,25,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,26,D_PHYS,Fraction(4),Fraction(4),module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,27,D_BSFG,Fraction(6),Fraction(6),module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,28,D_CRIT,Fraction(26),Fraction(26),module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,29,N_CH,Fraction(9),Fraction(9),module
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,48,V_SCM,C / 3.0,C / 3.0,module
+_session738_globalR_classXVII_r_alphas_identity.py,21,F_TRZ,"Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)","Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)",module
+_session738_globalR_classXVII_r_alphas_identity.py,22,K_MEX,"Fraction(25, 12); beta_i = Fraction(6029, 10000)","Fraction(25, 12); beta_i = Fraction(6029, 10000)",module
+_session738_globalR_classXVII_r_alphas_identity.py,23,D_PHYS,Fraction(4); D_BSFG = Fraction(6); D_crit = Fraction(26),Fraction(4); D_BSFG = Fraction(6); D_crit = Fraction(26),module
+_session738_globalR_classXVII_r_alphas_identity.py,24,N_CH,Fraction(9); SO5 = Fraction(10); A_5 = Fraction(60),Fraction(9); SO5 = Fraction(10); A_5 = Fraction(60),module
+_session739_R_xi_classXVIII_OmegaLambda_betas.py,21,F_TRZ,"Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)","Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)",module
+_session739_R_xi_classXVIII_OmegaLambda_betas.py,22,K_MEX,"Fraction(25, 12); beta_i = Fraction(6029, 10000)","Fraction(25, 12); beta_i = Fraction(6029, 10000)",module
+_session739_R_xi_classXVIII_OmegaLambda_betas.py,23,D_PHYS,Fraction(4); D_BSFG = Fraction(6); D_crit = Fraction(26),Fraction(4); D_BSFG = Fraction(6); D_crit = Fraction(26),module
+_session739_R_xi_classXVIII_OmegaLambda_betas.py,24,N_CH,Fraction(9); SO5 = Fraction(10); A_5 = Fraction(60),Fraction(9); SO5 = Fraction(10); A_5 = Fraction(60),module
+_session740_xi_refine_classXIX_age_gammas.py,21,F_TRZ,"Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)","Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)",module
+_session740_xi_refine_classXIX_age_gammas.py,22,K_MEX,"Fraction(25, 12); beta_i = Fraction(6029, 10000)","Fraction(25, 12); beta_i = Fraction(6029, 10000)",module
+_session740_xi_refine_classXIX_age_gammas.py,23,D_PHYS,Fraction(4); D_BSFG = Fraction(6); D_crit = Fraction(26),Fraction(4); D_BSFG = Fraction(6); D_crit = Fraction(26),module
+_session740_xi_refine_classXIX_age_gammas.py,24,N_CH,Fraction(9); SO5 = Fraction(10); A_5 = Fraction(60),Fraction(9); SO5 = Fraction(10); A_5 = Fraction(60),module
+_session741_t0_refine_zeq_classXX_ell1.py,17,F_TRZ,"Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)","Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)",module
+_session741_t0_refine_zeq_classXX_ell1.py,18,K_MEX,"Fraction(25, 12); beta_i = Fraction(6029, 10000)","Fraction(25, 12); beta_i = Fraction(6029, 10000)",module
+_session741_t0_refine_zeq_classXX_ell1.py,19,D_PHYS,4; D_BSFG = 6; D_crit = 26; N_ch = 9; SO5_order = 10; A_5 = 60,4; D_BSFG = 6; D_crit = 26; N_ch = 9; SO5_order = 10; A_5 = 60,module
+_session742_higher_peaks_t0_exact_classXXII_rs.py,16,F_TRZ,"Fraction(1,10); Phi_res = Fraction(5,6); SSq = Fraction(57,100)","Fraction(1,10); Phi_res = Fraction(5,6); SSq = Fraction(57,100)",module
+_session742_higher_peaks_t0_exact_classXXII_rs.py,17,K_MEX,"Fraction(25,12); beta_i = Fraction(6029,10000)","Fraction(25,12); beta_i = Fraction(6029,10000)",module
+_session743_rs_silk_As.py,16,F_TRZ,"Fraction(1,10); Phi_res = Fraction(5,6); SSq = Fraction(57,100)","Fraction(1,10); Phi_res = Fraction(5,6); SSq = Fraction(57,100)",module
+_session743_rs_silk_As.py,17,K_MEX,"Fraction(25,12); beta_i = Fraction(6029,10000)","Fraction(25,12); beta_i = Fraction(6029,10000)",module
+_session744_As_refine_kD_Neff.py,15,F_TRZ,"Fraction(1,10); Phi_res = Fraction(5,6); SSq = Fraction(57,100)","Fraction(1,10); Phi_res = Fraction(5,6); SSq = Fraction(57,100)",module
+_session744_As_refine_kD_Neff.py,16,K_MEX,"Fraction(25,12); beta_i = Fraction(6029,10000)","Fraction(25,12); beta_i = Fraction(6029,10000)",module
+_session745_As_kD_exact_Yp.py,14,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session745_As_kD_exact_Yp.py,16,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session745_As_kD_exact_Yp.py,17,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session745_As_kD_exact_Yp.py,18,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session745_As_kD_exact_Yp.py,19,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session745_As_kD_exact_Yp.py,20,D_PHYS,4,4,module
+_session745_As_kD_exact_Yp.py,21,D_BSFG,6,6,module
+_session745_As_kD_exact_Yp.py,22,D_CRIT,26,26,module
+_session745_As_kD_exact_Yp.py,23,N_CH,9,9,module
+_session746_DH_kD_As.py,14,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session746_DH_kD_As.py,16,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session746_DH_kD_As.py,17,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session746_DH_kD_As.py,18,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session746_DH_kD_As.py,19,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session746_DH_kD_As.py,20,D_PHYS,4,4,module
+_session746_DH_kD_As.py,21,D_BSFG,6,6,module
+_session746_DH_kD_As.py,22,D_CRIT,26,26,module
+_session746_DH_kD_As.py,23,N_CH,9,9,module
+_session747_LiH_As_DH.py,14,F_TRZ,"Fraction(1, 10)","Fraction(1, 10)",module
+_session747_LiH_As_DH.py,16,PHI_RES,"Fraction(5, 6)","Fraction(5, 6)",module
+_session747_LiH_As_DH.py,17,SSQ,"Fraction(57, 100)","Fraction(57, 100)",module
+_session747_LiH_As_DH.py,18,K_MEX,"Fraction(25, 12)","Fraction(25, 12)",module
+_session747_LiH_As_DH.py,19,BETA_I,"Fraction(6029, 10000)","Fraction(6029, 10000)",module
+_session747_LiH_As_DH.py,20,D_PHYS,4,4,module
+_session747_LiH_As_DH.py,21,D_BSFG,6,6,module
+_session747_LiH_As_DH.py,22,D_CRIT,26,26,module
+_session747_LiH_As_DH.py,23,N_CH,9,9,module
+_session748_LiH_He3_eta.py,16,F_TRZ,"F(1,10); Phi_res = F(5,6); SSq = F(57,100); K_Mex = F(25,12)","F(1,10); Phi_res = F(5,6); SSq = F(57,100); K_Mex = F(25,12)",module
+_session748_LiH_He3_eta.py,17,BETA_I,"F(6029,10000); D_phys = F(4); D_BSFG = F(6); D_crit = F(26)","F(6029,10000); D_phys = F(4); D_BSFG = F(6); D_crit = F(26)",module
+_session748_LiH_He3_eta.py,18,N_CH,F(9); SO5 = F(10); A_5 = F(60),F(9); SO5 = F(10); A_5 = F(60),module
+_session749_eta_Yp_T0.py,18,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session749_eta_Yp_T0.py,19,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session749_eta_Yp_T0.py,20,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session750_eta_T0_H0.py,15,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session750_eta_T0_H0.py,16,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session750_eta_T0_H0.py,17,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session751_T0_Hratio_sigma8_Omegam.py,21,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session751_T0_Hratio_sigma8_Omegam.py,22,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session751_T0_Hratio_sigma8_Omegam.py,23,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session752_T0reform_sigma8KiDS_OmegaL.py,20,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session752_T0reform_sigma8KiDS_OmegaL.py,21,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session752_T0reform_sigma8KiDS_OmegaL.py,22,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session753_sigma8push_wDE_Obh2.py,29,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session753_sigma8push_wDE_Obh2.py,30,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session753_sigma8push_wDE_Obh2.py,31,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session754_Obh2push_zeq_rs.py,31,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session754_Obh2push_zeq_rs.py,32,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session754_Obh2push_zeq_rs.py,33,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session755_Obh2unblock_t0_tau.py,27,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session755_Obh2unblock_t0_tau.py,28,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session755_Obh2unblock_t0_tau.py,29,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session756_tauCE_zstar_Neff.py,23,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session756_tauCE_zstar_Neff.py,24,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session756_tauCE_zstar_Neff.py,25,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session757_tau_zstar_DH.py,25,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session757_tau_zstar_DH.py,26,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session757_tau_zstar_DH.py,27,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session758_mpme_alphaS_Omh2.py,24,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session758_mpme_alphaS_Omh2.py,25,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session758_mpme_alphaS_Omh2.py,26,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session759_tau_zstar_Oc_kpivot.py,24,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session759_tau_zstar_Oc_kpivot.py,25,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session759_tau_zstar_Oc_kpivot.py,26,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session760_Och2_mnu_As.py,23,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session760_Och2_mnu_As.py,24,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session760_Och2_mnu_As.py,25,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session761_As_obratio_eta.py,23,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session761_As_obratio_eta.py,24,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session761_As_obratio_eta.py,25,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session762_H0_rdrag_gammaPPN.py,16,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session762_H0_rdrag_gammaPPN.py,17,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session762_H0_rdrag_gammaPPN.py,18,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session763_NeffBBN_OmK_zreion_dCP.py,19,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session763_NeffBBN_OmK_zreion_dCP.py,20,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session763_NeffBBN_OmK_zreion_dCP.py,21,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session764_crossval_omnu_zBAO_etab.py,26,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session764_crossval_omnu_zBAO_etab.py,27,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session764_crossval_omnu_zBAO_etab.py,28,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session765_Aplanck_tau_S8_etabwiden.py,13,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session765_Aplanck_tau_S8_etabwiden.py,14,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session765_Aplanck_tau_S8_etabwiden.py,15,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session766_AL_w0_wa_Hz.py,13,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session766_AL_w0_wa_Hz.py,14,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session766_AL_w0_wa_Hz.py,15,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session767_BAO_distance_suite.py,17,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session767_BAO_distance_suite.py,18,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session767_BAO_distance_suite.py,19,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session768_BAO_z051_z061.py,15,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session768_BAO_z051_z061.py,16,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session768_BAO_z051_z061.py,17,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session769_struct_amp_anchors.py,15,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session769_struct_amp_anchors.py,16,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session769_struct_amp_anchors.py,17,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session770_matter_radiation_acoustic.py,19,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session770_matter_radiation_acoustic.py,20,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session770_matter_radiation_acoustic.py,21,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session771_inflation_reion_age_CV4.py,18,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session771_inflation_reion_age_CV4.py,19,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session771_inflation_reion_age_CV4.py,20,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session772_running_zdec_DH_CV5.py,18,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session772_running_zdec_DH_CV5.py,19,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session772_running_zdec_DH_CV5.py,20,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session773_zeq_BAO_nu_CV6.py,19,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session773_zeq_BAO_nu_CV6.py,20,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session773_zeq_BAO_nu_CV6.py,21,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session774_Rstar_DV015_fs8_CV7.py,21,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session774_Rstar_DV015_fs8_CV7.py,22,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session774_Rstar_DV015_fs8_CV7.py,23,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session775_teq_keq_mnu_CV8.py,19,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session775_teq_keq_mnu_CV8.py,20,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session775_teq_keq_mnu_CV8.py,21,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session776_zdrag_theta_OmDE_CV9.py,19,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session776_zdrag_theta_OmDE_CV9.py,20,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session776_zdrag_theta_OmDE_CV9.py,21,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session777_SMsector_CV10.py,20,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session777_SMsector_CV10.py,21,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session777_SMsector_CV10.py,22,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session778_SMmasses_CV11.py,19,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session778_SMmasses_CV11.py,20,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session778_SMmasses_CV11.py,21,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session779_quarks_CKM_CV12.py,23,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session779_quarks_CKM_CV12.py,24,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session779_quarks_CKM_CV12.py,25,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session780_Higgs_gravity_CV13.py,12,D_PHYS,SO5 - D_BSFG  =  10 - 6  =  4,SO5 - D_BSFG  =  10 - 6  =  4,class_or_func
+_session780_Higgs_gravity_CV13.py,13,N_CH,D_BSFG^2 / D_phys  =  36 / 4  =  9,D_BSFG^2 / D_phys  =  36 / 4  =  9,class_or_func
+_session780_Higgs_gravity_CV13.py,26,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session780_Higgs_gravity_CV13.py,27,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session780_Higgs_gravity_CV13.py,28,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session781_cosmoconst_entropy_CV14.py,10,D_PHYS,SO5 - D_BSFG               (CV-13),SO5 - D_BSFG               (CV-13),nested_14
+_session781_cosmoconst_entropy_CV14.py,11,N_CH,D_BSFG^2 / D_phys          (CV-11),D_BSFG^2 / D_phys          (CV-11),nested_14
+_session781_cosmoconst_entropy_CV14.py,13,D_CRIT,4*D_BSFG + 2               (CV-14)  <-- NEW,4*D_BSFG + 2               (CV-14)  <-- NEW,nested_14
+_session781_cosmoconst_entropy_CV14.py,22,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session781_cosmoconst_entropy_CV14.py,23,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session781_cosmoconst_entropy_CV14.py,24,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session782_lambdaH_yt_etaB_CV15.py,24,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session782_lambdaH_yt_etaB_CV15.py,25,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session782_lambdaH_yt_etaB_CV15.py,26,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session783_sinW_alphasGUT_rho_CV16.py,22,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session783_sinW_alphasGUT_rho_CV16.py,23,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session783_sinW_alphasGUT_rho_CV16.py,24,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session784_MGUT_Dm2atm_PMNS_CV17.py,20,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session784_MGUT_Dm2atm_PMNS_CV17.py,21,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session784_MGUT_Dm2atm_PMNS_CV17.py,22,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module
+_session785_PMNS_solar_reactor_CV18.py,26,F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)","F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",module
+_session785_PMNS_solar_reactor_CV18.py,27,BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)","F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",module
+_session785_PMNS_solar_reactor_CV18.py,28,N_CH,F(9); SO5=F(10); A_5=F(60),F(9); SO5=F(10); A_5=F(60),module

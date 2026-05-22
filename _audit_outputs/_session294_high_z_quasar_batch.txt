@@ -1,0 +1,26 @@
+========================================================================
+S294 HighZQuasarBatch smoke tests
+========================================================================
+  [PASS] T-1 D_L(z=7) ~ 70 Gpc  2.130e+29
+  [PASS] T-2 D_L(z=0) = 0  
+  [PASS] T-3 D_L monotonic increasing  
+  [PASS] T-4 L_bol > 0  
+  [PASS] T-5 L_bol(F=0)=0  
+  [PASS] T-6 L_bol scales as D^2  
+  [PASS] T-7 L_Edd(1e9) > 1e47  
+  [PASS] T-8 L_Edd(0)=0  
+  [PASS] T-9 L_Edd linear in M  
+  [PASS] T-10 M_dot > 0  
+  [PASS] T-11 M_dot(L=0)=0  
+  [PASS] T-12 aether bounded  
+  [PASS] T-13 calculator returns required keys  
+  [PASS] T-14 headline tag  
+  [PASS] T-15 10 quasars  
+  [PASS] T-16 all rows have L_bol > 0  
+  [PASS] T-17 all rows have positive Eddington ratio  
+  [PASS] T-18 z range 4 to 8  
+  [PASS] T-19 cp4_id=438  
+  [PASS] T-20 audit_session=294  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

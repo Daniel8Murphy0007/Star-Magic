@@ -1,0 +1,4 @@
+  n=3: 2*Phi_res^n = 1.1574, Phi_res^(n-1) = 0.6944 (not equal)
+  n=4: 2*Phi_res^n = 0.9645, Phi_res^(n-1) = 0.5787 (not equal)
+  n=5: 2*Phi_res^n = 0.8038, Phi_res^(n-1) = 0.4823 (not equal)
+S342 COMPLETE. Beal/Fermat: Phi_res-ladder has no non-trivial common solution for coprime bases, n>=3.

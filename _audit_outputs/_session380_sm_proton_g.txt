@@ -1,0 +1,1 @@
+S380 COMPLETE. g_p = D_BSFG - Phi_res + F_TRZ*D_phys = 5.5667; obs (CODATA) = 5.5857; match 0.341%.

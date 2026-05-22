@@ -1,0 +1,1 @@
+S507 COMPLETE. Buckyball faces F = 32.0000 = D_crit+D_BSFG = 32; target 32; match 0.0000%.

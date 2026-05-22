@@ -1,0 +1,1 @@
+S403 COMPLETE. DNA bp/turn = SO5+SSq-F_TRZ*Phi_res = 10.4867; obs (B-DNA) = 10.5; match 0.127%.

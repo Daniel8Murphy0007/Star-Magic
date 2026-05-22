@@ -1,0 +1,87 @@
+================================================================================
+SESSION 725 -- cosmological hierarchy probe (L_H/L_SCM)
+================================================================================
+
+  L_SCM    = 349.226733 m
+  L_H      = sqrt(3/Lambda) = 1.647258e+26 m
+  L_dS     = Lambda^(-1/2)  = 9.510448e+25 m
+  L_Planck = 1.616255e-35 m
+  L_H / L_SCM   = 4.716872e+23  (log10 = 23.6737)
+  L_H / L_Planck = 1.019182e+61  (log10 = 61.0083)
+
+--------------------------------------------------------------------------------
+STEP (a) -- Two-anchor product search:  L_H = L_SCM * (c/v_SCM)^p * D_crit^q * K
+--------------------------------------------------------------------------------
+
+  p   q K_name                       K_val      L_H pred       rel err
+ 26   8 1 - F_TRZ                    0.9000     1.6386e+26      0.5279%
+ 28   8 F_TRZ = 1/10                 0.1000     1.6363e+26      0.6671%
+ 17  10 D_crit = 26                  26.0000    1.6359e+26      0.6921%
+
+  Baseline (p=49, q=0): L_SCM * (c/v_SCM)^49 = 8.0783e+25 m
+    residual factor = 2.0391
+    locked-rational fit: 6/5 = 1.2  vs  2.0391  (rel 69.93%)
+
+--------------------------------------------------------------------------------
+STEP (b) -- Holographic SCm count: N_SCm = 4*pi * L_H^2 / L_SCM^2
+--------------------------------------------------------------------------------
+
+  N_SCm    = 4*pi (L_H/L_SCM)^2    = 2.7959e+48    (log10 = 48.4465)
+  N_Planck = 4*pi (L_H/L_Planck)^2 = 1.3053e+123    (log10 = 123.1157)
+  ratio N_Planck / N_SCm           = 4.6687e+74  (= (L_SCM/L_Planck)^2)
+                                                            = 4.6687e+74
+
+  De Sitter entropy:    S_dS = pi (L_H/L_Planck)^2 = 3.2633e+122
+  SCm-pixel entropy:    S_SCm = pi (L_H/L_SCM)^2 = 6.9897e+47
+  Reduction factor (Planck -> SCm pixels): 4.6687e+74
+
+--------------------------------------------------------------------------------
+STEP (c) -- rho_Lambda / rho_vac_SCm
+--------------------------------------------------------------------------------
+
+  rho_Lambda    = Lambda * c^2 / (8*pi*G) = 5.9237e-27 J/m^3
+  rho_vac_SCm   = 7.0900e-37 J/m^3
+  ratio rho_Lambda / rho_vac_SCm = 8.3550e+09  (log10 = 9.9219)
+
+  Compare Planck-CC problem: rho_Lambda / rho_Planck = 1.2786e-140
+    log10 = -139.8933  (the famous ~10^-122 'cc problem')
+
+  In SCm units: hierarchy reduced from 10^122 down to ~10^10.
+    Reduction factor = (rho_Planck/rho_vac_SCm) = 6.5346e+149
+    log10 = 149.8152
+
+  -> The SCm vacuum density absorbs ~112 orders of the cc hierarchy.
+  -> Residual hierarchy ~10^10 may be addressable by a future
+     locked-rational dressing of L_H from L_SCM + (c/v_SCM)^49.
+
+--------------------------------------------------------------------------------
+STEP (c.2) -- locked-rational tests for the ~10^10 residual hierarchy
+--------------------------------------------------------------------------------
+  D_crit^7 = 26^7    = 8.0318e+09    vs ratio_rho = 8.3550e+09    rel 3.868%
+    D_crit^7 * 1                    = 8.0318e+09  rel 3.868% <-- GOOD
+    D_crit^7 * F_TRZ=1/10           = 8.0318e+08  rel 90.387%
+    D_crit^7 * Phi_res=5/6          = 6.6932e+09  rel 19.890%
+    D_crit^7 * K_Mex=25/12          = 1.6733e+10  rel 100.274%
+    D_crit^7 * 33/104               = 2.5486e+09  rel 69.497%
+    D_crit^7 * (c/v_SCM)/3 ~ 1      = 8.0263e+09  rel 3.935% <-- GOOD
+    D_crit^7 * (c/v_SCM)^2/9        = 8.0207e+09  rel 4.001% <-- GOOD
+  (c/v_SCM)^N = ratio_rho: N = 20.8086
+    (c/v_SCM)^21 = 1.0309e+10  residual = 0.8104
+    locked-rational test for residual 0.8104:
+      Phi_res=5/6    = 0.8333    rel 2.827% <-- GOOD
+      Phi_res^-1     = 1.2000    rel 48.070%
+      F_TRZ=0.1      = 0.1000    rel 87.661%
+      33/104         = 0.3173    rel 60.847%
+      104/33         = 3.1515    rel 288.872%
+      11/6           = 1.8333    rel 126.219%
+      1+F_TRZ=11/10  = 1.1000    rel 35.731%
+      2              = 2.0000    rel 146.784%
+      13/7           = 1.8571    rel 129.157%
+
+D_crit_7_vs_rhoLambda_rhoVacRatio: predicted=8.031810e+09 observed=8.355022e+09 error_pct=-3.868478e+00 status=OK
+L_H_two_anchor_best_fit: predicted=1.638608e+26 observed=1.647258e+26 error_pct=-5.251167e-01 status=OK
+holographic_SCm_pixel_count: predicted=2.795877e+48 observed=2.795877e+48 error_pct=+0.000000e+00 status=EXACT
+vacuum_hierarchy_reduction_factor: predicted=6.534556e+149 observed=6.534556e+149 error_pct=+0.000000e+00 status=EXACT
+locked_FTRZ_Phires_invariant: predicted=8.333333e-02 observed=8.333333e-02 error_pct=+0.000000e+00 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session725_cosmological_hierarchy_probe_result.json

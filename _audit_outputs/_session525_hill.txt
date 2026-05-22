@@ -1,0 +1,1 @@
+S525 COMPLETE. Hill coefficient (hemoglobin) = 2.804167; closure = K_Mex+Phi_res-F*Phi_res-F^2*Phi_res-F^2*K_Mex; target 2.8; match 0.1488%.

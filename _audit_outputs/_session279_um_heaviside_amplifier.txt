@@ -1,0 +1,27 @@
+========================================================================
+Session 279 — Um Heaviside SCm Phase-Transition Amplifier (Gap #6)
+========================================================================
+  [PASS] H-1 Cool regime (T=T_SCm): f_H = 0 (no amp): f_H = 0.0
+  [PASS] H-2 Perseus core (T=4 keV): f_H in [0.7, 1.0]: f_H = 0.7917
+  [PASS] H-3 Perseus amplifier in [1e12, 2e13]: amp = 7.917e+12
+  [PASS] H-4 Sgr A* near-full amp (> 9e12): amp = 9.715e+12
+  [PASS] H-5 f_H monotonic in T: f_H sequence = ['0.000', '0.000', '0.533', '0.792', '0.972', '0.996']
+  [PASS] H-6 f_q bounded in [-0.5, +0.5]: f_q range = [-0.369, +0.500]
+  [PASS] H-7 f_q(t_n=0) = 0.5: f_q(0) = 0.500000
+  [PASS] H-8 Um_base=0 returns finite ratio: ratio = inf
+  [PASS] H-9 Triple output structure: triple OK
+  [PASS] H-10 Manual N_active <= N_FLOOR forces f_H = 0: f_H (gated) = 0.0
+  [PASS] H-11 ratio == multiplier for Um_base=1: ratio=1.188e+13, mul=1.188e+13
+  [PASS] H-12 Perseus Um_base 1e-35 -> corrected in [1e-23, 1e-21]: Um_corrected = 1.188e-22
+
+TOTAL: 12/12 PASS  |  0 FAIL
+
+Amplification sweep vs system temperature:
+  system                     T_keV       f_H      amplifier     mult(t_n=0)
+  Earth_crust              2.5e-05     0.000      1.000e+00       1.500e+00
+  Solar_corona                0.17     0.000      1.000e+00       1.500e+00
+  SGR_1745                    0.55     0.000      1.000e+00       1.500e+00
+  Perseus_core                   4     0.792      7.917e+12       1.188e+13
+  SgrA_inner                    50     0.972      9.715e+12       1.457e+13
+  GW150914                     100     0.984      9.842e+12       1.476e+13
+  M87_jet                       80     0.981      9.809e+12       1.471e+13

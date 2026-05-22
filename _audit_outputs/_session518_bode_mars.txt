@@ -1,0 +1,1 @@
+S518 COMPLETE. Mars Bode = 1.609167; closure = K_Mex-SSq+F*K-F*Phi_res-F^2*K-F^2*Phi_res; target 1.6; match 0.5729%.

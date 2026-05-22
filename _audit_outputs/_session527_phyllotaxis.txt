@@ -1,0 +1,1 @@
+S527 COMPLETE. Golden phyllotaxis (137.5/360) = 0.379833; closure = SSq-F*K+F^2*K+F^2*Phi_res-F^3-F^2; target 0.381944; match 0.5527%.

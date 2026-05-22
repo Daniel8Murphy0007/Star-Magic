@@ -1,0 +1,1 @@
+S391 COMPLETE. NS compactness = K_Mex*F_TRZ + F_TRZ^3*D_phys*SSq = 0.2106; obs (1.4 M_sun, R=10 km) = 0.21; match 0.292%.

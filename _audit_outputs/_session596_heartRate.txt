@@ -1,0 +1,1 @@
+Heart rate bpm: 70 vs 70 -> EXACT

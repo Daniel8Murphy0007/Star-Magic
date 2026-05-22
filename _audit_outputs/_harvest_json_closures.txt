@@ -1,0 +1,4 @@
+scanning 127 JSON files
+harvested 105 closures from JSON
+adding 105 new OK rows
+master_closures.csv now: 105 OK, 0 PARSE_FAIL, 105 total

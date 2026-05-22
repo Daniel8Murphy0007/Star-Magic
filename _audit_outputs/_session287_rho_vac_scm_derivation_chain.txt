@@ -1,0 +1,33 @@
+========================================================================
+Session 287 — RHO_VAC_SCM derivation chain smoke tests
+========================================================================
+  [PASS] T-1 ρ_SCm = 4√π·10⁻³⁷  matches canonical  ρ=7.0898154036e-37  canonical=7.0898154036e-37
+  [PASS] T-2 prefactor exactly 4√π  coeff=4*sqrt(pi)
+  [PASS] T-3 |SO(5)| = n(n−1)/2 = 10 for n=5  dim=10
+  [PASS] T-4 ρ_UA / ρ_SCm = 10 (companion ratio)  ratio=10.000000000000000
+  [PASS] T-5 ρ_UA companion matches canonical RHO_VAC_UA  ppm=1.885e-10
+  [PASS] T-6 F_TRZ = 1/10 (exact rational)  F_TRZ=1/10
+  [PASS] T-7 F_TRZ · |SO(5)| = 1  closure=1
+  [PASS] T-8 ρ_SCm,mass = ρ_SCm / c²  ratio=1.000000000000000
+  [PASS] T-9 ρ_SCm,mass in [7e-54, 9e-54] kg/m³  ρ_mass=7.888e-54
+  [PASS] T-10 quantum_chain ρ_QC > 0 finite  ρ_QC=6.333e+05
+  [PASS] T-11 quantum_chain closed form = f·E₀·(10^(N+1)−10)/9  qc=6.333e+05  expected=6.333e+05
+  [PASS] T-12 BSFG fixed-point closure has 3 free params  params=('[SSq]', 'v_UA', 'hbar_geom')
+  [PASS] T-13 BSFG fixed-point equation is symbolic  type=Equality
+  [PASS] T-14 canonical_check_ppm < 1e-6 (machine precision)  ppm=1.178e-10
+  [PASS] T-15 compute() returns required keys  missing=set()
+  [PASS] T-16 primary_equations has 4 entries  n=4
+  [PASS] T-17 simulation_set has 3 entries with ρ_SCm in scaling order  ρ values=['7.09e-37', '3.54e-37', '1.42e-36']
+  [PASS] T-18 invalid inputs raise ValueError  raised=6/6
+  [PASS] T-19 SESSION_287_CALCULATORS registry  
+  [PASS] T-20 doubling rho0 doubles ρ_SCm (linearity check)  ratio=2.000000000000000
+------------------------------------------------------------------------
+  RESULT: 20/20 tests passed
+========================================================================
+
+Canonical RHO_VAC_SCM derivation chain:
+  G9 structural    : ρ_SCm = 4√π·10⁻³⁷       = 7.0898154036e-37 J/m³
+  G7 companion     : ρ_UA  = 10·ρ_SCm        = 7.0898154036e-36 J/m³
+  F_TRZ closure    : 1/|SO(5)|              = 0.1000
+  mass-equiv       : ρ_SCm/c²               = 7.8885e-54 kg/m³
+  canonical match  : 1.178e-10 ppm

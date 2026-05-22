@@ -1,0 +1,1 @@
+S318 COMPLETE. Firewall amplitude / naive = F_TRZ^9*(1-Phi_res) = 1.667e-10; smooth horizon preserved, complementarity = TRZ interior/exterior duality.

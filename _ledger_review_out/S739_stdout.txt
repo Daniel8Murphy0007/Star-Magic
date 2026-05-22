@@ -1,0 +1,99 @@
+﻿================================================================================
+SESSION 739 -- R deviation xi + Class XVIII Omega_Lambda + beta_s recursion
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- Resolve R deviation: R_obs = 0.9683 vs n_s = 0.965
+--------------------------------------------------------------------------------
+  R_obs   = 0.968307
+  n_s     = 0.965000
+  xi_obs  = (R_obs - n_s)/n_s = 3.426736e-03
+  R_obs - n_s = 3.306800e-03
+
+  Heuristics:
+    1/D_crit^2 = 1/676                     = +1.4793e-03   err = -56.831%
+    1/(N_ch*K_Mex*D_BSFG)                  = +8.8889e-03   err = +159.398%
+    alpha_s = -9/2000 ΓåÆ +9/2000            = +4.5000e-03   err = +31.320%
+    (1-n_s)/10                             = +3.5000e-03   err = +2.138%
+    1/(2*A_5*D_phys/n_s)                   = +2.0104e-03   err = -41.331%
+    (27/25-1)/30 = (2/25)/30               = +2.6667e-03   err = -22.181%
+    Phi_res*F_TRZ*F_TRZ/SSq                = +1.4620e-02   err = +326.642%
+    1/A_5/(K_Mex*K_Mex)                    = +3.8400e-03   err = +12.060%
+    F_TRZ*alpha_s_abs/F_TRZ = alpha_s_abs  = +4.5000e-03   err = +31.320%
+    |delta_univ|*n_s/alpha_s               = +1.1084e-01   err = +3134.546%
+    (1-n_s)*F_TRZ                          = +3.5000e-03   err = +2.138%
+    1/(K_Mex*N_ch*D_crit)                  = +2.0513e-03   err = -40.139%
+    1/D_crit/N_ch/K_Mex                    = +2.0513e-03   err = -40.139%
+
+  2-atom search xi = A*B (sub-2%):
+    1/240*Phi_res = 3.472222e-03   err = +1.3274%
+    1/240*416/513 = 3.378817e-03   err = -1.3984%
+
+  R = n_s*(1+1/240*Phi_res) = 0.968351, err vs R_obs = +0.0045%
+global_R_xi_correction: predicted=9.683507e-01 observed=9.683068e-01 error_pct=4.533113e-03 status=OK
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class XVIII: Omega_Lambda direct closure
+--------------------------------------------------------------------------------
+  K_X (dressed) = 2.171587
+  Omega_Lambda = K_X/(1+K_X) = 0.684700
+  Omega_m      = 1/(1+K_X)   = 0.315300
+  Omega_L_obs  = 0.6847
+  err = +0.0001%
+classXVIII_Omega_Lambda_via_X: predicted=6.847004e-01 observed=6.847000e-01 error_pct=6.359869e-05 status=OK
+  Omega_m err = -0.0001%
+classXVIII_Omega_m_via_X: predicted=3.152996e-01 observed=3.153000e-01 error_pct=-1.381098e-04 status=OK
+
+  Direct closures for Omega_Lambda = 0.6847:
+    2/3 + 1/60                             = 0.6833   err = -0.1996%
+    0.685 Γëê 137/200                        = 0.6850   err = +0.0438%
+    1 - SSq*beta_i/Phi_res                 = 0.5876   err = -14.1790%
+    13/19 = 0.6842                         = 0.6842   err = -0.0715%
+
+  2-atom A/(A+B) search:
+    27/26/(27/26+1/K_Mex) = 0.683891   err = -0.1182%
+    K_Mex/(K_Mex+n_s) = 0.683434   err = -0.1850%
+
+  1-atom direct (Omega_L sub-0.5%):
+
+--------------------------------------------------------------------------------
+TRACK (c) -- beta_s recursion via (1-n_s)/216 = 7/216
+--------------------------------------------------------------------------------
+  Candidates:
+    alpha_s * 7/216                        = -1.4583e-04
+    alpha_s / 216                          = -2.0833e-05
+    alpha_s / 240                          = -1.8750e-05
+    alpha_s * (1-n_s)                      = -1.5750e-04
+    alpha_s^2 / (27/25)                    = +1.8750e-05
+    alpha_s * F_TRZ                        = -4.5000e-04
+    -(1-n_s)^3                             = -4.2875e-05
+    alpha_s * 27/25 / D_BSFG^3             = -2.2500e-05
+    -(27/25)^2 / (A_5*D_phys)^2            = -2.0250e-05
+    (1-n_s) * alpha_s / D_BSFG^3           = -7.2917e-07
+
+  Canonical beta_s = alpha_s * (1-n_s)/D_BSFG^3 = alpha_s*(7/216)
+    = -9/2000 * 7/216 = -63/432000 = -7/48000 = -1.458333e-04
+    Exact: -7/48000 = -1.458333e-04
+
+  Comparison:
+    Planck 2018 central: beta_s = 0.013 (1-sigma ┬▒0.013, consistent with 0)
+    Slow-roll est (1-n_s)^3 = 4.2875e-05
+    Canonical |beta_s| = 1.4583e-04
+classXVI_beta_s_canonical_recursion: predicted=-1.458333e-04 observed=-4.287500e-05 error_pct=2.401361e+02 status=OK
+
+  Structural inflation recursion chain (locked-rational):
+    n_s    = 193/200             [Class XV]
+    1-n_s  = (27/25)(7/D_BSFG^3) = 7/200
+    alpha_s= -(27/25)/(A_5*D_phys) = -9/2000   [Class XVI]
+    beta_s = alpha_s*(7/D_BSFG^3) = -7/48000  Γëê -1.46e-4
+    r      = -8*alpha_s = 9/250                [Class XVII]
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  (a) xi best 2-atom: 1/240*Phi_res = 3.4722e-03, err = +1.327%
+      R = n_s*(1+xi) = 0.968351, err vs R_obs = +0.0045%
+  (b) Class XVIII Omega_Lambda via X-dressed: 0.684700, err = +0.0001%
+  (c) beta_s canonical = alpha_s*(7/216) = -7/48000 = -1.458e-04
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session739_R_xi_classXVIII_OmegaLambda_betas_result.json

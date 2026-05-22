@@ -1,0 +1,1 @@
+S322 COMPLETE. ER=EPR bridge count per Bell pair = N_ch = 9; geometric entropy = N_ch*(1-Phi_res) = 1.500.

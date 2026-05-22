@@ -1,0 +1,1 @@
+S360 COMPLETE. C_2_TwinPrime = beta_i + F_TRZ*SSq = 0.65990; obs = 0.66016181; match 0.040%.

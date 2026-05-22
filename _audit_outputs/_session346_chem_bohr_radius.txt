@@ -1,0 +1,1 @@
+S346 COMPLETE. a_0 = hbar/(m_e*c*alpha) = 5.29038e-11 m; CODATA = 5.29177e-11 m; match within 0.026%.

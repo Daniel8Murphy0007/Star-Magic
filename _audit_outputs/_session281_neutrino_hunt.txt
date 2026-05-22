@@ -1,0 +1,60 @@
+
+--- nu_2  m=8.610 meV  log10(m_Planck/m)=30.1517 ---
+  N=29  target_beta=11.5167
+     beta=  11.5176  '4+K_Mex^2*sqrt3             '  mass_resid=  0.020%
+     beta=  11.5176  'D_phys+K_Mex^2*sqrt3        '  mass_resid=  0.020%
+     beta=  11.5176  'K_Mex^2*sqrt3+4             '  mass_resid=  0.020%
+     beta=  11.5176  'K_Mex^2*sqrt3+D_phys        '  mass_resid=  0.020%
+     beta=  11.5200  'beta_tau+pi                 '  mass_resid=  0.075%
+  N=30  target_beta=1.5167
+     beta=   1.5176  'K_Mex^2*sqrt3-6             '  mass_resid=  0.020%
+     beta=   1.5176  'K_Mex^2*sqrt3-D_BSFG        '  mass_resid=  0.020%
+     beta=   1.5179  '1/K_Mex*sqrtSO5             '  mass_resid=  0.027%
+     beta=   1.5179  'sqrtSO5*1/K_Mex             '  mass_resid=  0.027%
+     beta=   1.5183  'e-1/Phi_res                 '  mass_resid=  0.036%
+  N=31  target_beta=-8.4833
+     beta=  -8.4824  'K_Mex^2*sqrt3-D_phys^2      '  mass_resid=  0.020%
+     beta=  -8.5047  '5^(1/4)-10                  '  mass_resid=  0.494%
+     beta=  -8.5047  '5^(1/4)-SO5                 '  mass_resid=  0.494%
+     beta=  -8.4554  'sqrt2-pi^2                  '  mass_resid=  0.640%
+     beta=  -8.5200  '1/K_Mex-9                   '  mass_resid=  0.849%
+
+--- nu_3  m=50.100 meV  log10(m_Planck/m)=29.3868 ---
+  N=28  target_beta=13.8684
+     beta=  13.8696  '4+pi^2                      '  mass_resid=  0.028%
+     beta=  13.8696  'D_phys+pi^2                 '  mass_resid=  0.028%
+     beta=  13.8696  'pi^2+4                      '  mass_resid=  0.028%
+     beta=  13.8696  'pi^2+D_phys                 '  mass_resid=  0.028%
+     beta=  13.8606  'e*sqrtD_crit                '  mass_resid=  0.180%
+  N=29  target_beta=3.8684
+     beta=   3.8696  'pi^2-6                      '  mass_resid=  0.028%
+     beta=   3.8696  'pi^2-D_BSFG                 '  mass_resid=  0.028%
+     beta=   3.8730  'sqrt3*sqrt5                 '  mass_resid=  0.106%
+     beta=   3.8730  'sqrt5*sqrt3                 '  mass_resid=  0.106%
+     beta=   3.8637  'sqrt2+sqrtD_BSFG            '  mass_resid=  0.108%
+  N=30  target_beta=-6.1316
+     beta=  -6.1304  'pi^2-D_phys^2               '  mass_resid=  0.028%
+     beta=  -6.1423  'sqrt5-beta_tau              '  mass_resid=  0.247%
+     beta=  -6.1034  'sqrt2-K_Mex^2*sqrt3         '  mass_resid=  0.648%
+     beta=  -6.1638  '1/beta_tau-2pi              '  mass_resid=  0.745%
+     beta=  -6.1667  'Phi_res-7                   '  mass_resid=  0.810%
+
+--- sum  m=60.000 meV  log10(m_Planck/m)=29.3085 ---
+  N=28  target_beta=13.0853
+     beta=  13.0900  '2pi*K_Mex                   '  mass_resid=  0.109%
+     beta=  13.0900  'K_Mex*2pi                   '  mass_resid=  0.109%
+     beta=  13.0990  '8+sqrtD_crit                '  mass_resid=  0.316%
+     beta=  13.0990  'sqrtD_crit+8                '  mass_resid=  0.316%
+     beta=  13.0319  'pi^2+sqrtSO5                '  mass_resid=  1.236%
+  N=29  target_beta=3.0853
+     beta=   3.0833  '1+K_Mex                     '  mass_resid=  0.044%
+     beta=   3.0833  'K_Mex+1                     '  mass_resid=  0.044%
+     beta=   3.0773  'beta_mu+sqrtD_BSFG          '  mass_resid=  0.184%
+     beta=   3.0773  'sqrtD_BSFG+beta_mu          '  mass_resid=  0.184%
+     beta=   3.0740  'beta_i*sqrtD_crit           '  mass_resid=  0.259%
+  N=30  target_beta=-6.9147
+     beta=  -6.9147  'beta_i-K_Mex^2*sqrt3        '  mass_resid=  0.001%
+     beta=  -6.9167  'K_Mex-9                     '  mass_resid=  0.044%
+     beta=  -6.9167  'K_Mex-N_ch                  '  mass_resid=  0.044%
+     beta=  -6.9126  'Phi_res-sqrtA5              '  mass_resid=  0.049%
+     beta=  -6.9091  '1/K_Mex-e^2                 '  mass_resid=  0.131%

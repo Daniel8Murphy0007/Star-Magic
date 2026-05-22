@@ -1,0 +1,1 @@
+S452 COMPLETE. sqrt(2pi) = 2.5082; target 2.5066; match 0.0625%.

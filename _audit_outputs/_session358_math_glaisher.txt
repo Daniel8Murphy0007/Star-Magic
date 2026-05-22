@@ -1,0 +1,1 @@
+S358 COMPLETE. A_GlaisherKinkelin = 1 + Phi_res*K_Mex/D_BSFG = 1.28935; obs = 1.28242712; match 0.540%.

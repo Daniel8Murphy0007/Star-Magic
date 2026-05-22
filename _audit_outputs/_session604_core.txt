@@ -1,0 +1,1 @@
+Core radius km: 3485 vs 3485 -> EXACT

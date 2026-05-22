@@ -1,0 +1,1 @@
+S407 COMPLETE. n_H = K_Mex+Phi_res-F_TRZ-F_TRZ^2*K_Mex = 2.7958; obs (hemoglobin) = 2.8; match 0.149%.

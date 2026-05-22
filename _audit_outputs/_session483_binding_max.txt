@@ -1,0 +1,1 @@
+S483 COMPLETE. BE/A max (MeV/nuc) = 8.7917; target 8.79; match 0.0190%.

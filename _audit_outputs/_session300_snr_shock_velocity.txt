@@ -1,0 +1,26 @@
+========================================================================
+S300 SNR shock velocity smoke tests
+========================================================================
+  [PASS] T-1 v(T=0)=0  
+  [PASS] T-2 v_sedov(R=0)=0  
+  [PASS] T-3 v_sedov(t=0)=0  
+  [PASS] T-4 v_free(R=0)=0  
+  [PASS] T-5 v_free(t=0)=0  
+  [PASS] T-6 Cas A T=3 keV gives v~1600 km/s (T_e equilibrium)  1585 km/s
+  [PASS] T-7 v scales as sqrt(T)  
+  [PASS] T-8 Sedov < free expansion  
+  [PASS] T-9 Sedov = 0.4 * free  
+  [PASS] T-10 aether bounded  
+  [PASS] T-11 aether(rho=0)=1  
+  [PASS] T-12 keys present  
+  [PASS] T-13 S300 tag  
+  [PASS] T-14 n_anchors=4  
+  [PASS] T-15 >=3 anchors match  4/4
+  [PASS] T-16 CasA Sedov v_s in (1500, 4500)  2794
+  [PASS] T-17 SN1006 v_T < CasA v_T (lower T)  
+  [PASS] T-18 v_s_Sedov > 0 for all  
+  [PASS] T-19 cp4_id=444  
+  [PASS] T-20 audit_session=300  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

@@ -29,7 +29,8 @@
       "error_pct": "0",
       "status": "OK",
       "script": "_session289_dpm_foundational_kernel.py",
-      "raw_output": "100 AU    a_two_pair = 1.297e-93 m/s^2"
+      "raw_output": "100 AU    a_two_pair = 1.297e-93 m/s^2",
+      "category": "DERIVATION_FIRST_PRINCIPLES"
     },
     "364": {
       "ID": "364",
@@ -40,7 +41,8 @@
       "error_pct": "4.77",
       "status": "OK",
       "script": "_session364_cosmo_bao_sound_horizon.py",
-      "raw_output": "S364 COMPLETE. r_d * H_0 / c = (1-F_TRZ)/D_crit = 0.0346; r_d = 154.06 Mpc (using H_0=67.36); obs = 147.05 Mpc; match 4.77%."
+      "raw_output": "S364 COMPLETE. r_d * H_0 / c = (1-F_TRZ)/D_crit = 0.0346; r_d = 154.06 Mpc (using H_0=67.36); obs = 147.05 Mpc; match 4.77%.",
+      "category": "DERIVATION_FIRST_PRINCIPLES"
     },
     "372": {
       "ID": "372",
@@ -51,7 +53,8 @@
       "error_pct": "0.265",
       "status": "OK",
       "script": "_session372_cosmo_omega_m.py",
-      "raw_output": "S372 COMPLETE. Omega_m = SSq - K_Mex*F_TRZ - Phi_res*F_TRZ*SSq = 0.3142; obs (Planck) = 0.315; match 0.265%."
+      "raw_output": "S372 COMPLETE. Omega_m = SSq - K_Mex*F_TRZ - Phi_res*F_TRZ*SSq = 0.3142; obs (Planck) = 0.315; match 0.265%.",
+      "category": "DERIVATION_FIRST_PRINCIPLES"
     },
     "433": {
       "ID": "433",
@@ -62,7 +65,8 @@
       "error_pct": "0",
       "status": "OK",
       "script": "_session433_part_baryogenesis.py",
-      "raw_output": "S433 COMPLETE. eta_B (norm) = 6.1000; target 6.1; match 0.0000%."
+      "raw_output": "S433 COMPLETE. eta_B (norm) = 6.1000; target 6.1; match 0.0000%.",
+      "category": "DERIVATION_FIRST_PRINCIPLES"
     },
     "440": {
       "ID": "440",
@@ -73,7 +77,8 @@
       "error_pct": "0.133",
       "status": "OK",
       "script": "_session440_part_top_yukawa.py",
-      "raw_output": "S440 COMPLETE. y_t = 0.9413; target 0.94; match 0.1330%."
+      "raw_output": "S440 COMPLETE. y_t = 0.9413; target 0.94; match 0.1330%.",
+      "category": "DERIVATION_FIRST_PRINCIPLES"
     }
   }
 }

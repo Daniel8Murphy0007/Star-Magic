@@ -1,0 +1,29 @@
+==============================================================================
+SESSION 702 -- c tree closed form with layered-DPM correction (supersedes S701)
+==============================================================================
+  D_phys                                 : 4
+  D_crit (canonical DPM layer count)     : 26
+  A_26 = sum(i^6, i=1..26)                : 1,307,797,101
+  V_SCM (single-layer SCm speed)          : 1.000000e+08 m/s
+  half_spinor = F_TRZ * Phi_res           : 1/12 = 0.083333
+  delta_c = F_TRZ * (half_spinor)^2       : 1/1440 = 6.944444e-04
+                                           (694.444 ppm)
+------------------------------------------------------------------------------
+  c_tree (S701, no correction)            : 3.000000e+08 m/s
+  c_tree-R = 3*v_SCM*(1 - 1/1440)         : 2.997917e+08 m/s
+  c_CODATA (exact)                        : 2.997925e+08 m/s
+  residual S701 (uncorrected)             : +692.286 ppm
+  residual S701-R                         : -2.640 ppm
+  improvement factor                      : 262.3x
+------------------------------------------------------------------------------
+  candidate structural forms (closest to target 691.807 ppm):
+    F_TRZ * (F_TRZ*Phi_res)^2 = 1/1440                =  694.444 ppm   d= +2.638 ppm  <-- adopted
+    1/D_crit^2 = 1/676                                = 1479.290 ppm   d=+787.483 ppm
+    1/(2*D_crit^2 - 8) = 1/1344                       =  744.048 ppm   d=+52.241 ppm
+    F_TRZ * Phi_res / D_crit = 1/312                  = 3205.128 ppm   d=+2513.322 ppm
+    SSq * F_TRZ * Phi_res = 57/1200                   = 47500.000 ppm   d=+46808.193 ppm
+  best low-order match                    : F_TRZ * (F_TRZ*Phi_res)^2 = 1/1440
+==============================================================================
+delta_c_structural_form: predicted=6.944444444e-04 observed=6.918066667e-04 error_pct=0.381288 status=OK
+c_tree_R_layered: predicted=2.997917e+08 observed=2.997925e+08 error_pct=-0.000264 status=OK
+Artifact written: _session702_c_tree_layered_result.json

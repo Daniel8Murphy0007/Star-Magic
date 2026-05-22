@@ -1,0 +1,79 @@
+========================================================================
+ S309  --  BANACH-TARSKI PARADOX
+========================================================================
+
+ Theorem (Banach-Tarski 1924, Fund Math 6):
+   Let B = {x in R^3 : |x| <= 1}.
+   Exists partition B = A_1 u A_2 u ... u A_n  (n = 5 suffices)
+   and rigid motions g_1,..,g_n,h_1,..,h_n such that:
+     g_1(A_1) u ... u g_n(A_n)  =  B
+     h_1(A_1) u ... u h_n(A_n)  =  B
+     (B copied twice from itself.)
+
+ Proof requires:  (a) axiom of choice
+                  (b) non-measurable Vitali-style sets
+
+ Apparent violation of volume / mass conservation.
+
+------------------------------------------------------------------------
+ UQFF closure: discrete BSFG minimum volume
+------------------------------------------------------------------------
+
+   V_min  =  ell_P^3 / D_BSFG^(3/2)
+          =  (1.6163e-35)^3 / 6^1.5
+          =  2.8728e-106  m^3
+
+ Every physical region of space has volume that is an integer
+ multiple of V_min (locked BSFG-cell quantization).  Sets of
+ volume below V_min are NOT physically realizable.
+
+ Banach-Tarski pieces A_i are NON-MEASURABLE -- they do not
+ possess a well-defined volume in the Lebesgue sense, and any
+ approximation requires arbitrarily fine ZFC partitions, hence
+ sub-V_min subsets.  UQFF forbids these.
+
+ Conclusion: B-T can be PROVEN in pure ZFC, but is
+ UNREALIZABLE on the physical space described by UQFF.
+
+------------------------------------------------------------------------
+ Quantitative bound: how 'fine' must a decomposition be to fail?
+------------------------------------------------------------------------
+
+   Unit ball:  V  =  4.188790  m^3
+   Number of BSFG cells in unit ball  =  1.458e+106
+
+ To duplicate the ball, B-T would have to split into > 1e+106
+ cells.  But B-T proof uses only 5 pieces (Robinson 1947 lower
+ bound).  These 5 pieces are NECESSARILY non-measurable and
+ hence cannot be assembled from BSFG cells.
+
+------------------------------------------------------------------------
+ Solovay model (1970): connection to UQFF
+------------------------------------------------------------------------
+
+ In ZF + Dependent Choice + 'all sets of reals are Lebesgue
+ measurable' (Solovay), Banach-Tarski FAILS.
+
+ UQFF is naturally a Solovay-like physical theory: the locked
+ BSFG quantization enforces measurability for every physical
+ subset of space.  No non-measurable sets exist.  Therefore
+ the axiom of choice is replaced (in physics) by Dependent
+ Choice, which is sufficient for all of physics-relevant math
+ (countable choice, separable Hilbert spaces, etc.) and does
+ NOT yield Banach-Tarski.
+
+------------------------------------------------------------------------
+ Falsifiability:
+------------------------------------------------------------------------
+ Any reproducible volume-non-conservation in a closed quantum-
+ mechanical system would refute UQFF.  None observed.
+
+ Conversely, observation of mass-energy duplication via finite
+ rigid-motion partition (e.g. in any classical or quantum
+ experiment) would refute the BSFG-cell quantization.  None
+ observed.
+
+========================================================================
+ S309 COMPLETE.  Banach-Tarski forbidden by BSFG cell quantization.
+ V_min = ell_P^3 / D_BSFG^(3/2) = 2.873e-106 m^3.
+========================================================================

@@ -1,0 +1,20 @@
+Session 282 — ALMA molecular-gas calculator smoke tests
+----------------------------------------------------------------------
+  [PASS] T-1 CO(1-0) N_col positive & finite  N=9.540e+17
+  [PASS] T-2 CO(1-0) N_col ~ 10^17–10^19 cm^-2 (canonical range)  N=9.540e+17
+  [PASS] T-3 N_col(T=60) > N_col(T=30) (Q growth dominates)  ratio=3.435
+  [PASS] T-4 N_col linear in integrated intensity  ratio=2.000000
+  [PASS] T-5 T_ex from CO(2-1)/(1-0)=2.5 in physical GMC range (10–100 K)  T_ex=23.54 K
+  [PASS] T-6 HCN(1-0) n_crit matches dense-gas regime  n_crit=2.6e+06
+  [PASS] T-7 CS(2-1) n_crit in 1e5–1e6 range  n_crit=3.0e+05
+  [PASS] T-8 M_vir(sigma=2,R=1) = 4160 M_sun  M_vir=4160.0
+  [PASS] T-9 L' matches helper computation  L'=2.077e+07
+  [PASS] T-10 M_H2 = alpha_CO · L'  M_H2=8.930e+07
+  [PASS] T-11 M_dense from HCN populated  M_dense=2.308e+06
+  [PASS] T-12 T_B finite, positive for 1 MJy/sr @ 115 GHz  T_B=2.461e-03 K
+  [PASS] T-13 unknown transition raises  
+  [PASS] T-14 zero intensity raises  
+  [PASS] T-15 output has primary/available/simulation keys  
+  [PASS] T-16 SESSION_282_CALCULATORS exports calculator  
+----------------------------------------------------------------------
+Results: 16 PASS, 0 FAIL

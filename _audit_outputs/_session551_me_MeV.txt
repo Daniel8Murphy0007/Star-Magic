@@ -1,0 +1,1 @@
+S551 COMPLETE. m_e (MeV) = 0.511167; closure = SSq-F*Phi_res+F^2*K-F^2*Phi_res+F^2+2*F^3; target 0.510999; match 0.0328%.

@@ -1,0 +1,1 @@
+Earth orbital v km/s: 29.787633 vs 29.78 -> 0.0256%

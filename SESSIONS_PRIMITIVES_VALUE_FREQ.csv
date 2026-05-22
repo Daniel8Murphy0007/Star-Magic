@@ -1,0 +1,158 @@
+primitive,value,count,n_files,example_sites
+BETA_I,"Fraction(6029, 10000)",42,42,_session210_closures.py#L66; _session699_3loop_tail_bound.py#L32; _session700_alpha_chain_convergence.py#L47
+BETA_I,"F(6029,10000); D_phys=F(4); D_BSFG=F(6); D_crit=F(26)",37,37,_session749_eta_Yp_T0.py#L19; _session750_eta_T0_H0.py#L16; _session751_T0_Hratio_sigma8_Omegam.py#L22
+BETA_I,0.603,16,16,_session275_mp_planck_closure.py#L27; _session277_uqff_gap_patches.py#L52; _session278_dpm_layer_counter.py#L47
+BETA_I,1/D_phys + math.exp(-K_Mex/2),6,6,_session280_quark_closure.py#L34; _session281_neutrino_hunt.py#L21; _session283_finetune.py#L21
+BETA_I,0.6029,4,4,_session211_closures.py#L36; _session288_universal_buoyancy_simultaneous_solver.py#L75; _session304_rho_vac_scm_derivation.py#L44
+BETA_I,1.0/D_phys + math.exp(-K_Mex/2.0),3,3,_session288_gauge_couplings.py#L41; _session289_cosmology.py#L26; _session290_dark_sector_inflation.py#L27
+BETA_I,1/4 + math.exp(-25/24),2,2,_session278_me_closure.py#L31; _session279_mu_tau_closure.py#L28
+BETA_I,0.603          (buoyancy fraction),1,1,_session270_271_calibrated_and_open.py#L12
+BETA_I,0.603  (marked OPEN in S270 as 'non-structural multiplier'),1,1,_session274_beta_lambda_closure.py#L11
+BETA_I,-log10(rho_Lambda_obs / rho_Planck) - 123 ) / F_TRZ,1,1,_session274_beta_lambda_closure.py#L140
+BETA_I,1/D_phys + exp(-K_Mex/2) = 0.6029,1,1,_session288_gauge_couplings.py#L17
+BETA_I,"float(dataset.get(""beta_i"", BETA_I))",1,1,_session288_universal_buoyancy_simultaneous_solver.py#L281
+BETA_I,0.6029         (buoyancy coupling),1,1,_session304_rho_vac_scm_derivation.py#L18
+BETA_I,6029/10000           (S293 calibrated),1,1,_session694_alpha_forward_derivation.py#L24
+BETA_I,"F(6029,10000); D_phys = F(4); D_BSFG = F(6); D_crit = F(26)",1,1,_session748_LiH_He3_eta.py#L17
+D_BSFG,6,55,54,_session266_root_closure.py#L90; _session267_extended_closures.py#L54; _session268_gap_closures.py#L38
+D_BSFG,Fraction(6),17,17,_session694_alpha_forward_derivation.py#L72; _session722_K_G_prefactor_search.py#L33; _session723_K_G_locked_rational.py#L37
+D_BSFG,6.0,5,5,_session262_closures.py#L152; _session263_closures.py#L98; _session264_closures.py#L81
+D_BSFG,6  D_crit=26  N_ch=9  SO5=10  A5=60  beta_i=0.6029,2,2,_session289_cosmology.py#L11; _session290_dark_sector_inflation.py#L12
+D_BSFG,6                              (BSFG hyper-radius),1,1,_session295_lithium7_problem.py#L33
+D_BSFG,6              (BSFG manifold dimensions),1,1,_session304_rho_vac_scm_derivation.py#L23
+D_CRIT,26,51,50,_session210_closures.py#L65; _session266_root_closure.py#L91; _session267_extended_closures.py#L55
+D_CRIT,Fraction(26),17,17,_session694_alpha_forward_derivation.py#L73; _session722_K_G_prefactor_search.py#L34; _session723_K_G_locked_rational.py#L38
+D_CRIT,26.0,5,5,_session262_closures.py#L151; _session263_closures.py#L97; _session264_closures.py#L80
+D_CRIT,26                             (bosonic-string critical),1,1,_session295_lithium7_problem.py#L34
+D_CRIT,26             (critical / string dimension),1,1,_session304_rho_vac_scm_derivation.py#L24
+D_CRIT,4*D_BSFG + 2               (CV-14)  <-- NEW,1,1,_session781_cosmoconst_entropy_CV14.py#L13
+D_PHYS,4,54,53,_session208_wolfram_kb_primitives.py#L91; _session266_root_closure.py#L89; _session267_extended_closures.py#L53
+D_PHYS,Fraction(4),18,18,_session455_gr_shapiro.py#L3; _session694_alpha_forward_derivation.py#L71; _session722_K_G_prefactor_search.py#L32
+D_PHYS,4.0,6,6,_session261_closures.py#L122; _session262_closures.py#L153; _session263_closures.py#L99
+D_PHYS,Fraction(4); D_BSFG = Fraction(6); D_crit = Fraction(26),3,3,_session738_globalR_classXVII_r_alphas_identity.py#L23; _session739_R_xi_classXVIII_OmegaLambda_betas.py#L23; _session740_xi_refine_classXIX_age_gammas.py#L23
+D_PHYS,4 reduced Compton wavelengths.,1,1,_session287_proton_radius_higgs.py#L8
+D_PHYS,4                              (physical spacetime dims),1,1,_session295_lithium7_problem.py#L32
+D_PHYS,4              (physical dimensions),1,1,_session304_rho_vac_scm_derivation.py#L22
+D_PHYS,4 (not higher).,1,1,_session308_paradox_bell_tsirelson.py#L14
+D_PHYS,4; D_BSFG=6,1,1,_session402_cm_xy_exponent.py#L2
+D_PHYS,"4, D_BSFG=6, D_crit=26, N_ch=9, SO5_order=10, A_5=60.",1,1,_session719_hbar_dimensional_class_probe.py#L23
+D_PHYS,4; D_BSFG = 6; D_crit = 26; N_ch = 9; SO5_order = 10; A_5 = 60,1,1,_session741_t0_refine_zeq_classXX_ell1.py#L19
+D_PHYS,SO5 - D_BSFG  =  10 - 6  =  4,1,1,_session780_Higgs_gravity_CV13.py#L12
+D_PHYS,SO5 - D_BSFG               (CV-13),1,1,_session781_cosmoconst_entropy_CV14.py#L10
+F_TRZ,"Fraction(1, 10)",49,49,_session210_closures.py#L61; _session343_352_paper1189_chemistry.py#L14; _session694_alpha_forward_derivation.py#L67
+F_TRZ,0.1,45,43,_session211_closures.py#L34; _session261_closures.py#L121; _session262_closures.py#L150
+F_TRZ,"F(1,10); Phi_res=F(5,6); SSq=F(57,100); K_Mex=F(25,12)",37,37,_session749_eta_Yp_T0.py#L18; _session750_eta_T0_H0.py#L15; _session751_T0_Hratio_sigma8_Omegam.py#L21
+F_TRZ,"F(1,10);Phi=F(5,6);SSq=F(57,100);K=F(25,12);Dp=4;DB=6;SO=10;N=9;A=60",20,20,_session623_rydbergE.py#L2; _session624_stefan.py#L2; _session625_wien.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12,11,11,_session394_cm_wilson.py#L2; _session407_bio_hill.py#L2; _session415_plasma_triple_product.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57,5,5,_session373_sm_delta_cp.py#L2; _session421_plasma_lawson.py#L2; _session423_geo_j2.py#L2
+F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12,4,4,_session412_bio_phyllotaxis.py#L3; _session444_info_log2e.py#L2; _session445_info_pi_over_2.py#L2
+F_TRZ,"Fraction(1, 10); Phi_res = Fraction(5, 6); SSq = Fraction(57, 100)",4,4,_session738_globalR_classXVII_r_alphas_identity.py#L21; _session739_R_xi_classXVIII_OmegaLambda_betas.py#L21; _session740_xi_refine_classXIX_age_gammas.py#L21
+F_TRZ,0.1; K_Mex=25/12; D_phys=4,3,3,_session379_sm_cabibbo.py#L2; _session387_astro_bh_entropy.py#L2; _session408_bio_photosynthesis.py#L2
+F_TRZ,0.1; Phi_res=5/6; D_phys=4,3,3,_session388_astro_wd_exponent.py#L2; _session399_cm_zeta3.py#L2; _session400_cm_isotope.py#L2
+F_TRZ,0.1; K_Mex=25/12,3,3,_session435_part_neutrino_mass.py#L2; _session441_part_higgs.py#L2; _session461_gr_nanograv.py#L2
+F_TRZ,"Fraction(1,10); Phi_res = Fraction(5,6); SSq = Fraction(57,100)",3,3,_session742_higher_peaks_t0_exact_classXXII_rs.py#L16; _session743_rs_silk_As.py#L16; _session744_As_refine_kD_Neff.py#L15
+F_TRZ,0.1  SSq=0.57  Phi_res=5/6  K_Mex=25/12  D_phys=4,2,2,_session289_cosmology.py#L10; _session290_dark_sector_inflation.py#L11
+F_TRZ,0.1; D_phys=4; SSq=0.57,2,2,_session375_sm_theta23.py#L2; _session392_astro_solar_schwarzschild.py#L2
+F_TRZ,0.1; K_Mex=25/12; SSq=0.57; Phi_res=5/6,2,2,_session378_sm_alpha_s.py#L2; _session381_sm_mt_mw.py#L2
+F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4,2,2,_session395_cm_wiedemann_franz.py#L3; _session405_bio_codon_redundancy.py#L2
+F_TRZ,0.1; Phi_res=5/6; SSq=0.57; D_phys=4,2,2,_session396_cm_von_klitzing.py#L3; _session397_cm_coherence_length.py#L3
+F_TRZ,0.1; Phi_res=5/6,2,2,_session401_cm_brinkman_rice.py#L2; _session406_bio_kleiber.py#L2
+F_TRZ,0.1; D_BSFG=6,2,2,_session413_plasma_iter_aspect.py#L2; _session433_part_baryogenesis.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,2,2,_session414_plasma_troyon.py#L2; _session427_geo_obliquity.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10; SSq=0.57,2,2,_session416_plasma_coulomb_log.py#L2; _session442_part_pmns_t12.py#L2
+F_TRZ,"Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12)",2,2,_session417_plasma_bohm.py#L3; _session418_plasma_safety_q.py#L3
+F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12,2,2,_session463_si_bandgap.py#L1; _session467_lorenz_number.py#L1
+F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4; SO5=10,2,2,_session465_diamond_bandgap.py#L1; _session470_stefan_boltzmann.py#L1
+F_TRZ,0.1.,1,1,_session273_lambda_hierarchy.py#L221
+F_TRZ,F_TRZ_v,1,1,_session287_rho_vac_scm_derivation_chain.py#L286
+F_TRZ,0.1                            (time-reversal-zone factor),1,1,_session295_lithium7_problem.py#L29
+F_TRZ,1/10           (time-reversal zone suppression),1,1,_session304_rho_vac_scm_derivation.py#L19
+F_TRZ,0.1; D_BSFG=6; K_Mex=25/12; SSq=0.57,1,1,_session374_sm_jarlskog.py#L2
+F_TRZ,0.1; K_Mex=25/12; SSq=0.57; N_ch=9,1,1,_session377_sm_higgs_lambda.py#L2
+F_TRZ,0.1; D_BSFG=6; Phi_res=5/6; D_phys=4,1,1,_session380_sm_proton_g.py#L2
+F_TRZ,0.1; K_Mex=25/12; SSq=0.57; beta_i=0.6029,1,1,_session382_sm_mh_mt.py#L2
+F_TRZ,0.1; D_phys=4,1,1,_session383_astro_chandrasekhar.py#L2
+F_TRZ,0.1; K_Mex=25/12; SSq=0.57; D_phys=4; Phi_res=5/6,1,1,_session384_astro_tov_max.py#L2
+F_TRZ,0.1; K_Mex=25/12; Phi_res=5/6,1,1,_session385_astro_photon_sphere.py#L2
+F_TRZ,0.1; SSq=0.57; D_phys=4,1,1,_session389_astro_grav_binding.py#L2
+F_TRZ,0.1; K_Mex=25/12; Phi_res=5/6; D_BSFG=6; D_phys=4,1,1,_session390_astro_salpeter_imf.py#L2
+F_TRZ,0.1; K_Mex=25/12; D_phys=4; SSq=0.57,1,1,_session391_astro_ns_compactness.py#L2
+F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_phys=4; D_BSFG=6,1,1,_session393_cm_bcs_gap.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4,1,1,_session398_cm_bec_tc.py#L2
+F_TRZ,0.1; Phi_res=5/6; SSq=0.57; SO5=10,1,1,_session403_bio_dna_pitch.py#L2
+F_TRZ,0.1; Phi_res=5/6; D_phys=4; SO5=10; A_5=60,1,1,_session404_bio_atp.py#L2
+F_TRZ,0.1; Phi_res=5/6; D_BSFG=6,1,1,_session411_bio_redfield.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57; SO5=10,1,1,_session424_geo_scale_height.py#L2
+F_TRZ,0.1; Phi_res=5/6; SO5=10,1,1,_session426_geo_lapse.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; D_phys=4; N_ch=9,1,1,_session428_geo_greenhouse.py#L2
+F_TRZ,0.1; K_Mex=25/12; D_phys=4; SO5=10,1,1,_session429_geo_salinity.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; A_5=60,1,1,_session430_geo_earth_moon.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; SSq=0.57; D_BSFG=6,1,1,_session437_part_axion.py#L2
+F_TRZ,"Fraction(1,10); Phi_res=Fraction(5,6); K_Mex=Fraction(25,12); D_phys=4; SO5=10",1,1,_session438_part_wimp.py#L3
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; N_ch=9; SO5=10,1,1,_session439_part_eta_gg.py#L2
+F_TRZ,"Fraction(1,10)",1,1,_session446_info_surface_code.py#L3
+F_TRZ,0.1; Phi_res=5/6; SSq=0.57,1,1,_session447_info_euler_mascheroni.py#L2
+F_TRZ,0.1; SSq=0.57; Phi_res=5/6,1,1,_session450_info_omega_lambert.py#L2
+F_TRZ,0.1; SSq=0.57; K_Mex=25/12,1,1,_session451_info_khinchin.py#L2
+F_TRZ,0.1; SSq=0.57; Phi_res=5/6; K_Mex=25/12,1,1,_session452_info_sqrt_2pi.py#L2
+F_TRZ,0.1; K_Mex=25/12; N_ch=9,1,1,_session453_gr_mercury.py#L2
+F_TRZ,0.1; Phi_res=5/6; SSq=0.57; K_Mex=25/12; D_BSFG=6,1,1,_session456_gr_gpb_geodetic.py#L2
+F_TRZ,0.1; Phi_res=5/6; K_Mex=25/12; N_ch=9; SO5=10; D_phys=4,1,1,_session459_gr_bh_shadow.py#L2
+F_TRZ,"Fraction(1,10); SO5=Fraction(10); D_phys=Fraction(4)",1,1,_session460_gr_photon_sphere.py#L3
+F_TRZ,"Fraction(1,10); SO5=Fraction(10)",1,1,_session462_gr_kerr_isco.py#L3
+F_TRZ,1/10; Phi_res=5/6; SSq=0.57,1,1,_session464_gaas_bandgap.py#L1
+F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12; D_phys=4,1,1,_session466_bcs_ratio.py#L1
+F_TRZ,1/10; Phi_res=5/6; SSq=0.57; K_Mex=25/12,1,1,_session469_n_water.py#L1
+F_TRZ,1/10; Phi_res=5/6; K_Mex=25/12; D_BSFG=6,1,1,_session472_avogadro.py#L1
+F_TRZ,1/10                 (Time-Reversal-Zone amplitude),1,1,_session694_alpha_forward_derivation.py#L14
+F_TRZ,"1/10, Phi_res=5/6, SSq=57/100, K_Mex=25/12, beta_i=6029/10000",1,1,_session719_hbar_dimensional_class_probe.py#L22
+F_TRZ,"F(1,10); Phi_res = F(5,6); SSq = F(57,100); K_Mex = F(25,12)",1,1,_session748_LiH_He3_eta.py#L16
+H_SCM,0.99           (Heaviside SCm factor),1,1,_session270_271_calibrated_and_open.py#L9
+H_SCM,0.99,1,1,_session277_uqff_gap_patches.py#L51
+KAPPA,0.0005,2,2,_session277_uqff_gap_patches.py#L49; _session304_rho_vac_scm_derivation.py#L54
+KAPPA,5e-4           (per-day decay),1,1,_session304_rho_vac_scm_derivation.py#L28
+K_MEX,"Fraction(25, 12)",48,48,_session343_352_paper1189_chemistry.py#L16; _session694_alpha_forward_derivation.py#L70; _session695_4pi_coset_derivation.py#L51
+K_MEX,2.0833333333333335,34,33,_session262_closures.py#L157; _session263_closures.py#L104; _session265_grok_rebuttals.py#L51
+K_MEX,"Fraction(25, 12); beta_i = Fraction(6029, 10000)",4,4,_session738_globalR_classXVII_r_alphas_identity.py#L22; _session739_R_xi_classXVIII_OmegaLambda_betas.py#L22; _session740_xi_refine_classXIX_age_gammas.py#L22
+K_MEX,"Fraction(25,12); beta_i = Fraction(6029,10000)",3,3,_session742_higher_peaks_t0_exact_classXXII_rs.py#L17; _session743_rs_silk_As.py#L17; _session744_As_refine_kD_Neff.py#L16
+K_MEX,25/12          (Mexican-hat coupling),2,2,_session270_271_calibrated_and_open.py#L14; _session304_rho_vac_scm_derivation.py#L17
+K_MEX,"25/12 is the Mexican gauge constant, locked since the start of",1,1,_session293_hubble_tension_split.py#L26
+K_MEX,"25/12, D_phys=4, D_BSFG=6, D_crit=26, N_ch=9, SO5=10, A_5=60",1,1,_session343_352_paper1189_chemistry.py#L5
+K_MEX,"25/12                (Mexican-hat coupling, G1)",1,1,_session694_alpha_forward_derivation.py#L17
+N_CH,9,43,42,_session210_closures.py#L64; _session267_extended_closures.py#L61; _session268_gap_closures.py#L43
+N_CH,F(9); SO5=F(10); A_5=F(60),37,37,_session749_eta_Yp_T0.py#L20; _session750_eta_T0_H0.py#L17; _session751_T0_Hratio_sigma8_Omegam.py#L23
+N_CH,Fraction(9),16,16,_session722_K_G_prefactor_search.py#L35; _session723_K_G_locked_rational.py#L39; _session724_classVI_Lambda_opening.py#L44
+N_CH,Fraction(9); SO5 = Fraction(10); A_5 = Fraction(60),3,3,_session738_globalR_classXVII_r_alphas_identity.py#L24; _session739_R_xi_classXVIII_OmegaLambda_betas.py#L24; _session740_xi_refine_classXIX_age_gammas.py#L24
+N_CH,9              (channel count),1,1,_session304_rho_vac_scm_derivation.py#L25
+N_CH,9.0,1,1,_session304_rho_vac_scm_derivation.py#L51
+N_CH,F(9); SO5 = F(10); A_5 = F(60),1,1,_session748_LiH_He3_eta.py#L18
+N_CH,D_BSFG^2 / D_phys  =  36 / 4  =  9,1,1,_session780_Higgs_gravity_CV13.py#L13
+N_CH,D_BSFG^2 / D_phys          (CV-11),1,1,_session781_cosmoconst_entropy_CV14.py#L11
+ORD_SO5,10,13,13,_session268_gap_closures.py#L40; _session696_2loop_kk_closure.py#L55; _session697_c2_exact_decomposition.py#L105
+ORD_SO5,Fraction(10),4,4,_session726_LH_tighten_locked_closure.py#L35; _session727_LH42_Lambda_closure.py#L37; _session728_triple_track_consolidation.py#L26
+PHI_RES,"Fraction(5, 6)",49,49,_session210_closures.py#L62; _session343_352_paper1189_chemistry.py#L15; _session694_alpha_forward_derivation.py#L68
+PHI_RES,0.8333333333333334,37,36,_session211_closures.py#L35; _session262_closures.py#L158; _session263_closures.py#L105
+PHI_RES,5/6            (resonance phase),2,2,_session270_271_calibrated_and_open.py#L13; _session304_rho_vac_scm_derivation.py#L20
+PHI_RES,5/6                            (EW-tilt half-spinor),1,1,_session295_lithium7_problem.py#L30
+PHI_RES,5/6 -> (1 - Phi_res) = 1/6 residual.,1,1,_session313_open_baryogenesis.py#L12
+PHI_RES,"5/6                  (Resonance phase closure, G6)",1,1,_session694_alpha_forward_derivation.py#L15
+RHO_VAC_SCM,7.09e-37,17,17,_session266_root_closure.py#L76; _session268_gap_closures.py#L26; _session269_full_cascade.py#L27
+RHO_VAC_SCM,7.0898e-37,12,12,_session292_chandra_flux_to_param.py#L59; _session293_neutrino_gw_coupling.py#L45; _session294_high_z_quasar_batch.py#L53
+RHO_VAC_SCM,"sp.Symbol('rho_SCm', positive=True)",2,1,_session287_rho_vac_scm_derivation_chain.py#L128; _session287_rho_vac_scm_derivation_chain.py#L161
+RHO_VAC_SCM,4.0 * math.sqrt(math.pi) * rho0,1,1,_session287_rho_vac_scm_derivation_chain.py#L275
+RHO_VAC_UA,7.09e-36,12,12,_session261_closures.py#L101; _session262_closures.py#L119; _session263_closures.py#L84
+RHO_VAC_UA,10.0 * RHO_SCm,2,2,_session288_universal_buoyancy_simultaneous_solver.py#L73; _session289_dpm_foundational_kernel.py#L97
+RHO_VAC_UA,7.09e-36).  This is a structural bound,1,1,_session261_closures.py#L81
+RHO_VAC_UA,so5_order * rho_SCm,1,1,_session287_rho_vac_scm_derivation_chain.py#L276
+RHO_VAC_UA,7.0898154036e-36,1,1,_session291_orion_h2o_ice_formation_rate.py#L95
+RHO_VAC_UA,7.0898e-36,1,1,_session303_universal_buoyancy_solver.py#L65
+RHO_VAC_UA,K_MEX * BETA_I * F_TRZ * PHI_RES * SSQ * (PIVOT_J_m3 * 10.0),1,1,_session304_rho_vac_scm_derivation.py#L127
+SSQ,"Fraction(57, 100)",48,48,_session210_closures.py#L63; _session694_alpha_forward_derivation.py#L69; _session695_4pi_coset_derivation.py#L50
+SSQ,0.57,42,41,_session202_closures.py#L105; _session205_closures.py#L31; _session211_closures.py#L32
+SSQ,0.57           (super-spin coupling),1,1,_session270_271_calibrated_and_open.py#L8
+SSQ,0.57                           (sphere-square geometric),1,1,_session295_lithium7_problem.py#L31
+SSQ,57/100         (Standard Stress-quotient),1,1,_session304_rho_vac_scm_derivation.py#L21
+SSQ,0.57; K_Mex=25/12; D_BSFG=6; SO5=10; A_5=60,1,1,_session409_bio_chlorophyll.py#L2
+SSQ,57/100               (Sustainarity-square ledger anchor),1,1,_session694_alpha_forward_derivation.py#L16
+V_SCM,100000000.0,28,28,_session261_closures.py#L105; _session262_closures.py#L123; _session263_closures.py#L88
+V_SCM,C / 3.0,1,1,_session737_delta_dress_classXVI_alphas_VII_decompose.py#L48

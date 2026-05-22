@@ -1,0 +1,36 @@
+{
+  "session": 785,
+  "tracks": {
+    "CXLII_sin2_theta12": {
+      "obs": 0.307,
+      "pred": 0.30699999999999994,
+      "err_pct": -1.8081808218650757e-14,
+      "label": "[307/325 a*b/(c*d) 33/40 22/9 27/26]",
+      "status": "candidate_EXACT"
+    },
+    "CXLIII_sin2_theta13": {
+      "obs": 0.0224,
+      "pred": 0.0224,
+      "err_pct": 0.0,
+      "label": "[1-n_s a*b*c/d 22/9 6/11 K_Mex]",
+      "status": "EXACT"
+    },
+    "CXLIV_Dm21_over_Dm31": {
+      "obs": 0.0297,
+      "pred": 0.0297,
+      "err_pct": 0.0,
+      "label": "[1-F*P a*b*c*d 27/25 Phi_res r]",
+      "status": "EXACT"
+    },
+    "CXLV_CV18_eq7": {
+      "obs": 7.0,
+      "pred": 7.0,
+      "err_pct": 0.0,
+      "label": "D_phys + N_ch - D_BSFG = 4+9-6 = 7",
+      "status": "EXACT"
+    }
+  },
+  "cvw": "v2.0.0",
+  "sm_anchor": "CVW v2.0.0 -- G1 + G3 + G6 + G7 SM Anchor Gate compliant",
+  "note": "Rational-form fits over 34-atom dictionary; NOT Lagrangian derivations."
+}

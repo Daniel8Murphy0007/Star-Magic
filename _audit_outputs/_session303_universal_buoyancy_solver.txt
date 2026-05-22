@@ -1,0 +1,27 @@
+========================================================================
+S303 Universal Buoyancy simultaneous-equation solver
+========================================================================
+  [PASS] T-1 Ug(0,M)=0  
+  [PASS] T-2 Ug(r,0)=0  
+  [PASS] T-3 Ug inverse-square  
+  [PASS] T-4 F_U_Bi sign positive at t_n=0.5  
+  [PASS] T-5 F_U_Bi_i sign opposite  
+  [PASS] T-6 counter-balance at r_pivot  
+  [PASS] T-7 aether clipped  
+  [PASS] T-8 aether(rho=0)=1  
+  [PASS] T-9 earth r_in in (0.85,1.05) AU  r_in=0.909
+  [PASS] T-10 earth r_out in (1.20,1.70) AU  r_out=1.596
+  [PASS] T-11 earth r_in < r_out  
+  [PASS] T-12 proxima r_in in (0.025,0.060) AU  r_in=0.0375
+  [PASS] T-13 proxima r_out in (0.060,0.110) AU  r_out=0.0658
+  [PASS] T-14 trappist r_in in (0.013,0.035) AU  r_in=0.0208
+  [PASS] T-15 sgr A* no HZ  
+  [PASS] T-16 keys present  
+  [PASS] T-17 S303 tag  
+  [PASS] T-18 5 anchors  
+  [PASS] T-19 at least 4/5 match  5/5
+  [PASS] T-20 cp4_id=447 audit=303  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================
+Wrote _session303_universal_buoyancy_solver_closures.json: predicted=0.9090 AU vs observed=0.95 AU (residual=4.318%)

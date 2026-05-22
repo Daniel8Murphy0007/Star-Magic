@@ -1,0 +1,1 @@
+S355 COMPLETE. K_Khinchin = (K_Mex+Phi_res)(1-F_TRZ) + F_TRZ^2*D_BSFG = 2.68500; obs = 2.685452; match 0.017%.

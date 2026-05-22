@@ -1,0 +1,571 @@
+script,classification,predicted_print_count,evidence
+_session201_closures.py,UNCLASSIFIED,0,
+_session202_closures.py,PRIMITIVE_ONLY,3,
+_session203_closures.py,PRIMITIVE_ONLY,5,
+_session204_closures.py,UNCLASSIFIED,0,
+_session205_closures.py,COMPARISON_ONLY,0,L55: codata-assign-only: r_crit_obs = 0.5  # from negative_et_erosion.py NetEnergyEquation critical_ratio
+_session206_qcalcgeom_ubs_closures.py,COMPARISON_ONLY,0,L84: codata-assign-only: M_ratio_obs = 8.0
+_session207_cp_chain_closures.py,UNCLASSIFIED,0,
+_session208_wolfram_kb_primitives.py,UNCLASSIFIED,0,
+_session209_nuclear_resonance_primitives.py,UNCLASSIFIED,0,
+_session210_closures.py,PRIMITIVE_ONLY,1,
+_session211_closures.py,PRIMITIVE_ONLY,8,
+_session261_audit.py,SEARCH_FIT,0,"L68: search-call: hits = {label: bool(re.search(pat, text)) for pat, label in CANONICAL.items()}"
+_session261_closures.py,COMPARISON_ONLY,4,L115: codata-assign-only: hbar = 1.054571817e-34
+_session262_closures.py,COMPARISON_ONLY,4,L133: codata-assign-only: hbar = 1.054571817e-34
+_session263_closures.py,COMPARISON_ONLY,7,L110: codata-assign-only: RHO_LAMBDA_OBS = 5.96e-10   # J/m^3 (Planck 2018)
+_session264_closures.py,COMPARISON_ONLY,0,L31: codata-assign-only: rho_Lambda_obs = 2 * D_BSFG * D_phys * rho_A * f_THz
+_session265_grok_rebuttals.py,COMPARISON_ONLY,4,L58: codata-assign-only: hbar  = 1.054571817e-34
+_session266_root_closure.py,COMPARISON_ONLY,1,L58: codata-assign-only: hbar     = 1.054571817e-34        # J*s
+_session267_extended_closures.py,UNCLASSIFIED,0,
+_session268_gap_closures.py,COMPARISON_ONLY,0,"L54: codata-assign-only: m_e   = 9.1093837015e-31,    # kg"
+_session269_full_cascade.py,COMPARISON_ONLY,1,L83: codata-assign-only: rho_Lambda_obs  = 5.36e-10       # J/m^3 (observed vacuum energy density)
+_session270_271_calibrated_and_open.py,COMPARISON_ONLY,0,"L46: codata-assign-only: m_e = 9.1093837015e-31, m_p = 1.67262192369e-27,"
+_session272_forward_predictions.py,COMPARISON_ONLY,0,L28: codata-assign-only: hbar       = 1.052632e-34
+_session273_lambda_hierarchy.py,COMPARISON_ONLY,0,L19: codata-assign-only: hbar     = 1.054571817e-34   # J*s  (CODATA; S267 closure 0.18%)
+_session274_beta_lambda_closure.py,COMPARISON_ONLY,1,L22: codata-assign-only: hbar     = 1.054571817e-34
+_session275_mp_planck_closure.py,COMPARISON_ONLY,2,L17: codata-assign-only: hbar     = 1.054571817e-34
+_session276_chandrasekhar_closure.py,COMPARISON_ONLY,1,L22: codata-assign-only: hbar     = 1.054571817e-34
+_session277_beta_i_hunt.py,UNCLASSIFIED,0,
+_session277_uqff_gap_patches.py,COMPARISON_ONLY,4,L141: codata-assign-only: m_p = 1.673e-27
+_session278_dpm_layer_counter.py,UNCLASSIFIED,0,
+_session278_me_closure.py,COMPARISON_ONLY,0,L22: codata-assign-only: hbar     = 1.054571817e-34
+_session279_mu_tau_closure.py,COMPARISON_ONLY,0,"L9: codata-assign-only: m_e = 9.1093837015e-31   -log10/Planck = 22.378 -> N=22, beta=3.783 (S278)"
+_session279_um_heaviside_amplifier.py,UNCLASSIFIED,0,
+_session280_286_frontier_harvester.py,SEARCH_FIT,4,L52: search-call: h = HDR_RE.search(line)
+_session280_ftrz_suppression.py,UNCLASSIFIED,0,
+_session280_quark_closure.py,UNCLASSIFIED,0,
+_session280_verify.py,COMPARISON_ONLY,0,"L15: codata-assign-only: 'u': dict(m_obs=2.16e6*eV_to_kg, N=21,"
+_session281_neutrino_hunt.py,UNCLASSIFIED,0,
+_session281_verify.py,UNCLASSIFIED,0,
+_session282_alma_molecular_gas.py,UNCLASSIFIED,0,
+_session282_newton_G_closure.py,COMPARISON_ONLY,4,L23: codata-assign-only: hbar      = 1.054571817e-34   # J*s
+_session283_finetune.py,COMPARISON_ONLY,0,"L33: codata-assign-only: 'tau' : dict(m_obs=1.77686e9*eV_to_kg, N_list=[18, 19],"
+_session283_gw190425_bayesian.py,UNCLASSIFIED,0,
+_session283_verify.py,COMPARISON_ONLY,0,L58: codata-assign-only: m_nu2_obs = 8.61e-3 * eV_to_kg
+_session284_seesaw_MR.py,PRIMITIVE_ONLY,2,
+_session284_snr_shock_velocity.py,UNCLASSIFIED,0,
+_session285_CKM_closure.py,COMPARISON_ONLY,0,L35: codata-assign-only: lam_obs  = 0.22500  # PDG
+_session285_p_vs_np_conjecture_tag.py,PRIMITIVE_ONLY,1,
+_session286_PMNS_closure.py,COMPARISON_ONLY,1,L46: codata-assign-only: sin2_th13_obs  = 0.02203
+_session286_tde_mass_rate.py,COMPARISON_ONLY,0,L49: codata-assign-only: G_SI       = 6.67430e-11        # m^3 kg^-1 s^-2
+_session287_proton_radius_higgs.py,COMPARISON_ONLY,0,L31: codata-assign-only: hbar = 1.054571817e-34       # J*s
+_session287_rho_vac_scm_derivation_chain.py,UNCLASSIFIED,0,
+_session288_gauge_couplings.py,COMPARISON_ONLY,1,L44: codata-assign-only: alpha_EM_inv_obs = 137.035999084     # low-energy fine-structure constant
+_session288_universal_buoyancy_simultaneous_solver.py,COMPARISON_ONLY,0,L63: codata-assign-only: G_SI         = 6.6743e-11           # m^3 / (kg s^2)
+_session289_cosmology.py,COMPARISON_ONLY,0,L29: codata-assign-only: hbar    = 1.054571817e-34
+_session289_dpm_foundational_kernel.py,COMPARISON_ONLY,0,L90: codata-assign-only: G_SI       = 6.6743e-11           # m^3 / (kg s^2)         CODATA
+_session290_dark_sector_inflation.py,COMPARISON_ONLY,0,L38: codata-assign-only: Omega_DM_h2_obs = 0.1200      # Planck 2018 +/- 0.0012
+_session290_field_generator_lab_plasma_validation.py,UNCLASSIFIED,0,
+_session291_muon_g2.py,COMPARISON_ONLY,0,L107: codata-assign-only: a_mu_total_obs  = 116_592_061e-11
+_session291_orion_h2o_ice_formation_rate.py,COMPARISON_ONLY,0,"L422: codata-assign-only: ok(""T-14 Orion X_pred within factor 100 of X_obs=1e-4 (rate-eqn order)"","
+_session292_chandra_flux_to_param.py,COMPARISON_ONLY,0,"L35: codata-assign-only: A1 Sgr A* quiescent : F_obs=3e-14 erg/s/cm^2 [2-10], D=8.2 kpc"
+_session292_cosmological_constant.py,COMPARISON_ONLY,0,L60: codata-assign-only: hbar = 1.054571817e-34          # J s
+_session293_hubble_tension_split.py,PRIMITIVE_ONLY,1,
+_session293_neutrino_gw_coupling.py,UNCLASSIFIED,0,
+_session294_high_z_quasar_batch.py,UNCLASSIFIED,0,
+_session294_neutron_lifetime.py,COMPARISON_ONLY,0,L85: codata-assign-only: tau_bottle_obs   = 877.75
+_session295_cooling_flow_mass_accretion.py,UNCLASSIFIED,0,
+_session295_lithium7_problem.py,COMPARISON_ONLY,4,"L14: codata-assign-only: (Li7/H)_obs  =  1.58 +/- 0.31 x 10^-10   (Sbordone+2010, ~150 stars)"
+_session296_302_millennium_harvester.py,PRIMITIVE_ONLY,3,
+_session296_magnetar_thermal_coupling.py,UNCLASSIFIED,0,
+_session296_millennium_poincare_perelman.py,PRIMITIVE_ONLY,1,
+_session297_millennium_riemann.py,COMPARISON_ONLY,1,L84: codata-assign-only: N_obs = 10  # 10 zeros below T=50
+_session297_orion_habitable_zone.py,UNCLASSIFIED,0,
+_session298_alma_molecular_gas.py,UNCLASSIFIED,0,
+_session298_millennium_p_vs_np.py,SEARCH_FIT,0,"L108: search-call: print("" Quantum search (Grover) gives sqrt speed-up but does NOT"")"
+_session299_gw190425_mass_gap_errors.py,UNCLASSIFIED,0,
+_session299_millennium_yang_mills.py,PRIMITIVE_ONLY,2,
+_session300_millennium_navier_stokes.py,UNCLASSIFIED,0,
+_session300_snr_shock_velocity.py,UNCLASSIFIED,0,
+_session301_millennium_hodge.py,UNCLASSIFIED,0,
+_session301_pnp_conjecture_anchor.py,SEARCH_FIT,0,"L167: search-call: ok(""T-1 search(0)=1"", informational_search_cost(0) == 1.0)"
+_session302_millennium_bsd.py,UNCLASSIFIED,0,
+_session302_tde_rate_mass.py,UNCLASSIFIED,0,
+_session303_paradox_amps_firewall.py,UNCLASSIFIED,0,
+_session303_universal_buoyancy_solver.py,PRIMITIVE_ONLY,3,
+_session304_paradox_boltzmann_brain.py,UNCLASSIFIED,0,
+_session304_rho_vac_scm_derivation.py,UNCLASSIFIED,0,
+_session305_paradox_frauchiger_renner.py,PRIMITIVE_ONLY,1,
+_session306_paradox_loschmidt.py,UNCLASSIFIED,0,
+_session307_paradox_maxwell_demon.py,UNCLASSIFIED,0,
+_session308_paradox_bell_tsirelson.py,UNCLASSIFIED,0,
+_session309_paradox_banach_tarski.py,UNCLASSIFIED,0,
+_session310_open_cosmological_constant.py,COMPARISON_ONLY,0,L24: codata-assign-only: rho_obs    = 6.0e-10     # J/m^3
+_session311_open_hierarchy_problem.py,UNCLASSIFIED,0,
+_session312_open_strong_cp.py,PRIMITIVE_ONLY,3,
+_session313_open_baryogenesis.py,COMPARISON_ONLY,0,L28: codata-assign-only: eta_obs = 6.12e-10
+_session314_open_dark_matter.py,UNCLASSIFIED,0,
+_session315_open_dark_energy.py,UNCLASSIFIED,0,
+_session316_open_neutrino_mass.py,UNCLASSIFIED,0,
+_session317_qg_bh_singularity.py,UNCLASSIFIED,0,
+_session318_qg_firewall.py,UNCLASSIFIED,0,
+_session319_qg_bigbang.py,UNCLASSIFIED,0,
+_session320_qg_holography.py,UNCLASSIFIED,0,
+_session321_qg_ctc.py,UNCLASSIFIED,0,
+_session322_qg_eperer.py,UNCLASSIFIED,0,
+_session323_qg_born.py,UNCLASSIFIED,0,
+_session324_sm_generations.py,UNCLASSIFIED,0,
+_session325_sm_masses.py,UNCLASSIFIED,0,
+_session326_sm_ckm_pmns.py,UNCLASSIFIED,0,
+_session327_sm_proton_decay.py,UNCLASSIFIED,0,
+_session328_sm_g2.py,UNCLASSIFIED,0,
+_session329_sm_wmass.py,UNCLASSIFIED,0,
+_session330_sm_flavor.py,UNCLASSIFIED,0,
+_session331_cosmo_h0.py,COMPARISON_ONLY,0,L6: codata-assign-only: H0_ratio_obs = 73.04 / 67.4
+_session332_cosmo_s8.py,UNCLASSIFIED,0,
+_session333_cosmo_li7.py,UNCLASSIFIED,0,
+_session334_cosmo_axis.py,PRIMITIVE_ONLY,1,
+_session335_cosmo_edges.py,UNCLASSIFIED,0,
+_session336_cosmo_ns.py,UNCLASSIFIED,0,
+_session337_cosmo_inflation.py,UNCLASSIFIED,0,
+_session338_math_goldbach.py,PRIMITIVE_ONLY,2,
+_session339_math_twinprime.py,UNCLASSIFIED,0,
+_session340_math_abc.py,UNCLASSIFIED,0,
+_session341_math_collatz.py,UNCLASSIFIED,0,
+_session342_math_beal.py,UNCLASSIFIED,0,
+_session343_352_paper1189_chemistry.py,COMPARISON_ONLY,2,L51: codata-assign-only: m_e = 9.1093837015e-31; c = 2.99792458e8; eV = 1.602176634e-19
+_session343_chem_fine_structure.py,UNCLASSIFIED,0,
+_session344_chem_mp_me_ratio.py,UNCLASSIFIED,0,
+_session345_chem_rydberg.py,UNCLASSIFIED,0,
+_session346_chem_bohr_radius.py,COMPARISON_ONLY,0,L7: codata-assign-only: hbar = 1.054571817e-34   # J s
+_session347_chem_weinberg.py,COMPARISON_ONLY,0,L4: codata-assign-only: sin2_thW_obs = 0.23122   # MS-bar at M_Z
+_session348_chem_alpha_s.py,COMPARISON_ONLY,0,L4: codata-assign-only: alpha_s_obs = 0.1179
+_session349_chem_stefan_boltzmann.py,COMPARISON_ONLY,0,L10: codata-assign-only: hbar = 1.054571817e-34
+_session350_chem_h2_bond.py,COMPARISON_ONLY,0,L12: codata-assign-only: r_H2_obs = 0.7414e-10   # 74.14 pm
+_session351_chem_periodic_table.py,UNCLASSIFIED,0,
+_session352_chem_h_ionization.py,UNCLASSIFIED,0,
+_session353_math_catalan.py,COMPARISON_ONLY,0,L4: codata-assign-only: G_obs = 0.91596559
+_session354_math_apery.py,COMPARISON_ONLY,0,L4: codata-assign-only: z3_obs = 1.20205690
+_session355_math_khinchin.py,COMPARISON_ONLY,0,L4: codata-assign-only: K_obs = 2.68545200
+_session356_math_feigenbaum.py,COMPARISON_ONLY,0,L4: codata-assign-only: delta_obs = 4.66920160
+_session357_math_euler_mascheroni.py,COMPARISON_ONLY,0,L4: codata-assign-only: gamma_obs = 0.57721566
+_session358_math_glaisher.py,COMPARISON_ONLY,0,L4: codata-assign-only: A_obs = 1.28242712
+_session359_math_zeta_basel.py,UNCLASSIFIED,0,
+_session360_math_twin_prime.py,COMPARISON_ONLY,0,L4: codata-assign-only: C2_obs = 0.66016181
+_session361_math_brun.py,COMPARISON_ONLY,0,L4: codata-assign-only: B2_obs = 1.902160583
+_session362_math_mills.py,COMPARISON_ONLY,0,L4: codata-assign-only: theta_obs = 1.30637788
+_session363_cosmo_baryon_asymmetry.py,COMPARISON_ONLY,0,L4: codata-assign-only: eta_obs = 6.14e-10
+_session364_cosmo_bao_sound_horizon.py,COMPARISON_ONLY,0,L7: codata-assign-only: r_d_obs = 147.05
+_session365_cosmo_sigma8.py,UNCLASSIFIED,0,
+_session366_cosmo_reionization.py,UNCLASSIFIED,0,
+_session367_cosmo_helium.py,UNCLASSIFIED,0,
+_session368_cosmo_deuterium.py,UNCLASSIFIED,0,
+_session369_cosmo_lithium.py,COMPARISON_ONLY,0,L11: codata-assign-only: err_obs = 100*abs(Li7H-obs)/obs
+_session370_cosmo_neff.py,UNCLASSIFIED,0,
+_session371_cosmo_tcmb.py,UNCLASSIFIED,0,
+_session372_cosmo_omega_m.py,UNCLASSIFIED,0,
+_session373_sm_delta_cp.py,UNCLASSIFIED,0,
+_session374_sm_jarlskog.py,UNCLASSIFIED,0,
+_session375_sm_theta23.py,UNCLASSIFIED,0,
+_session376_sm_top_yukawa.py,UNCLASSIFIED,0,
+_session377_sm_higgs_lambda.py,UNCLASSIFIED,0,
+_session378_sm_alpha_s.py,UNCLASSIFIED,0,
+_session379_sm_cabibbo.py,UNCLASSIFIED,0,
+_session380_sm_proton_g.py,UNCLASSIFIED,0,
+_session381_sm_mt_mw.py,UNCLASSIFIED,0,
+_session382_sm_mh_mt.py,UNCLASSIFIED,0,
+_session383_astro_chandrasekhar.py,UNCLASSIFIED,0,
+_session384_astro_tov_max.py,UNCLASSIFIED,0,
+_session385_astro_photon_sphere.py,UNCLASSIFIED,0,
+_session386_astro_isco.py,UNCLASSIFIED,0,
+_session387_astro_bh_entropy.py,UNCLASSIFIED,0,
+_session388_astro_wd_exponent.py,UNCLASSIFIED,0,
+_session389_astro_grav_binding.py,UNCLASSIFIED,0,
+_session390_astro_salpeter_imf.py,UNCLASSIFIED,0,
+_session391_astro_ns_compactness.py,UNCLASSIFIED,0,
+_session392_astro_solar_schwarzschild.py,UNCLASSIFIED,0,
+_session393_cm_bcs_gap.py,UNCLASSIFIED,0,
+_session394_cm_wilson.py,UNCLASSIFIED,0,
+_session395_cm_wiedemann_franz.py,UNCLASSIFIED,0,
+_session396_cm_von_klitzing.py,UNCLASSIFIED,0,
+_session397_cm_coherence_length.py,UNCLASSIFIED,0,
+_session398_cm_bec_tc.py,UNCLASSIFIED,0,
+_session399_cm_zeta3.py,UNCLASSIFIED,0,
+_session400_cm_isotope.py,UNCLASSIFIED,0,
+_session401_cm_brinkman_rice.py,UNCLASSIFIED,0,
+_session402_cm_xy_exponent.py,UNCLASSIFIED,0,
+_session403_bio_dna_pitch.py,UNCLASSIFIED,0,
+_session404_bio_atp.py,UNCLASSIFIED,0,
+_session405_bio_codon_redundancy.py,UNCLASSIFIED,0,
+_session406_bio_kleiber.py,UNCLASSIFIED,0,
+_session407_bio_hill.py,UNCLASSIFIED,0,
+_session408_bio_photosynthesis.py,UNCLASSIFIED,0,
+_session409_bio_chlorophyll.py,UNCLASSIFIED,0,
+_session410_bio_telomere.py,UNCLASSIFIED,0,
+_session411_bio_redfield.py,UNCLASSIFIED,0,
+_session412_bio_phyllotaxis.py,UNCLASSIFIED,0,
+_session413_plasma_iter_aspect.py,UNCLASSIFIED,0,
+_session414_plasma_troyon.py,UNCLASSIFIED,0,
+_session415_plasma_triple_product.py,UNCLASSIFIED,0,
+_session416_plasma_coulomb_log.py,UNCLASSIFIED,0,
+_session417_plasma_bohm.py,UNCLASSIFIED,0,
+_session418_plasma_safety_q.py,UNCLASSIFIED,0,
+_session419_plasma_iter_Q.py,UNCLASSIFIED,0,
+_session420_plasma_dt_peak.py,UNCLASSIFIED,0,
+_session421_plasma_lawson.py,UNCLASSIFIED,0,
+_session422_plasma_sheath.py,UNCLASSIFIED,0,
+_session423_geo_j2.py,UNCLASSIFIED,0,
+_session424_geo_scale_height.py,UNCLASSIFIED,0,
+_session425_geo_magnetopause.py,UNCLASSIFIED,0,
+_session426_geo_lapse.py,UNCLASSIFIED,0,
+_session427_geo_obliquity.py,UNCLASSIFIED,0,
+_session428_geo_greenhouse.py,UNCLASSIFIED,0,
+_session429_geo_salinity.py,UNCLASSIFIED,0,
+_session430_geo_earth_moon.py,UNCLASSIFIED,0,
+_session431_geo_brunt_vaisala.py,UNCLASSIFIED,0,
+_session432_geo_pressure.py,UNCLASSIFIED,0,
+_session433_part_baryogenesis.py,UNCLASSIFIED,0,
+_session434_part_proton_lifetime.py,UNCLASSIFIED,0,
+_session435_part_neutrino_mass.py,UNCLASSIFIED,0,
+_session436_part_sterile_neutrino.py,UNCLASSIFIED,0,
+_session437_part_axion.py,UNCLASSIFIED,0,
+_session438_part_wimp.py,UNCLASSIFIED,0,
+_session439_part_eta_gg.py,UNCLASSIFIED,0,
+_session440_part_top_yukawa.py,UNCLASSIFIED,0,
+_session441_part_higgs.py,UNCLASSIFIED,0,
+_session442_part_pmns_t12.py,UNCLASSIFIED,0,
+_session443_info_ln2.py,UNCLASSIFIED,0,
+_session444_info_log2e.py,UNCLASSIFIED,0,
+_session445_info_pi_over_2.py,UNCLASSIFIED,0,
+_session446_info_surface_code.py,UNCLASSIFIED,0,
+_session447_info_euler_mascheroni.py,UNCLASSIFIED,0,
+_session448_info_catalan.py,UNCLASSIFIED,0,
+_session449_info_ln10.py,UNCLASSIFIED,0,
+_session450_info_omega_lambert.py,UNCLASSIFIED,0,
+_session451_info_khinchin.py,UNCLASSIFIED,0,
+_session452_info_sqrt_2pi.py,UNCLASSIFIED,0,
+_session453_gr_mercury.py,UNCLASSIFIED,0,
+_session454_gr_light_bending.py,UNCLASSIFIED,0,
+_session455_gr_shapiro.py,UNCLASSIFIED,0,
+_session456_gr_gpb_geodetic.py,UNCLASSIFIED,0,
+_session457_gr_gpb_frame_drag.py,UNCLASSIFIED,0,
+_session458_gr_hulse_taylor.py,UNCLASSIFIED,0,
+_session459_gr_bh_shadow.py,UNCLASSIFIED,0,
+_session460_gr_photon_sphere.py,UNCLASSIFIED,0,
+_session461_gr_nanograv.py,UNCLASSIFIED,0,
+_session462_gr_kerr_isco.py,UNCLASSIFIED,0,
+_session463_si_bandgap.py,UNCLASSIFIED,0,
+_session464_gaas_bandgap.py,UNCLASSIFIED,0,
+_session465_diamond_bandgap.py,UNCLASSIFIED,0,
+_session466_bcs_ratio.py,UNCLASSIFIED,0,
+_session467_lorenz_number.py,UNCLASSIFIED,0,
+_session468_abrikosov_angle.py,UNCLASSIFIED,0,
+_session469_n_water.py,UNCLASSIFIED,0,
+_session470_stefan_boltzmann.py,UNCLASSIFIED,0,
+_session471_qhe_plateau.py,UNCLASSIFIED,0,
+_session472_avogadro.py,UNCLASSIFIED,0,
+_session473_h_alpha.py,UNCLASSIFIED,0,
+_session474_lyman_alpha.py,UNCLASSIFIED,0,
+_session475_fine_structure.py,UNCLASSIFIED,0,
+_session476_rydberg.py,UNCLASSIFIED,0,
+_session477_h_ionization.py,UNCLASSIFIED,0,
+_session478_bohr_radius.py,UNCLASSIFIED,0,
+_session479_hartree.py,UNCLASSIFIED,0,
+_session480_compton.py,UNCLASSIFIED,0,
+_session481_classical_e_radius.py,UNCLASSIFIED,0,
+_session482_planck.py,UNCLASSIFIED,0,
+_session483_binding_max.py,UNCLASSIFIED,0,
+_session484_magic_2.py,UNCLASSIFIED,0,
+_session485_magic_8.py,UNCLASSIFIED,0,
+_session486_magic_20.py,UNCLASSIFIED,0,
+_session487_magic_28.py,UNCLASSIFIED,0,
+_session488_magic_50.py,UNCLASSIFIED,0,
+_session489_magic_82.py,UNCLASSIFIED,0,
+_session490_magic_126.py,UNCLASSIFIED,0,
+_session491_deuteron.py,UNCLASSIFIED,0,
+_session492_alpha_binding.py,UNCLASSIFIED,0,
+_session493_reynolds_crit.py,UNCLASSIFIED,0,
+_session494_sound_speed.py,UNCLASSIFIED,0,
+_session495_von_karman.py,UNCLASSIFIED,0,
+_session496_strouhal.py,UNCLASSIFIED,0,
+_session497_prandtl.py,UNCLASSIFIED,0,
+_session498_sphere_drag.py,UNCLASSIFIED,0,
+_session499_kolmogorov.py,UNCLASSIFIED,0,
+_session500_log_law_B.py,UNCLASSIFIED,0,
+_session501_knudsen.py,UNCLASSIFIED,0,
+_session502_bond_number.py,UNCLASSIFIED,0,
+_session503_kepler_packing.py,UNCLASSIFIED,0,
+_session504_circle_packing.py,UNCLASSIFIED,0,
+_session505_catalan_C4.py,UNCLASSIFIED,0,
+_session506_catalan_C5.py,UNCLASSIFIED,0,
+_session507_buckyball_faces.py,UNCLASSIFIED,0,
+_session508_cantor_hausdorff.py,UNCLASSIFIED,0,
+_session509_sierpinski_hausdorff.py,UNCLASSIFIED,0,
+_session510_dodecahedron.py,UNCLASSIFIED,0,
+_session511_tetra_dihedral.py,UNCLASSIFIED,0,
+_session512_buckyball_vertices.py,UNCLASSIFIED,0,
+_session513_galilean_moons.py,UNCLASSIFIED,0,
+_session514_planets_pluto.py,UNCLASSIFIED,0,
+_session515_solar_cycle.py,UNCLASSIFIED,0,
+_session516_bode_earth.py,UNCLASSIFIED,0,
+_session517_bode_mercury.py,UNCLASSIFIED,0,
+_session518_bode_mars.py,UNCLASSIFIED,0,
+_session519_halley_period.py,UNCLASSIFIED,0,
+_session520_saturn_obliquity.py,UNCLASSIFIED,0,
+_session521_jupiter_period.py,UNCLASSIFIED,0,
+_session522_saturn_period.py,UNCLASSIFIED,0,
+_session523_pareto.py,UNCLASSIFIED,0,
+_session524_kleiber.py,UNCLASSIFIED,0,
+_session525_hill.py,UNCLASSIFIED,0,
+_session526_harmonic_h2.py,UNCLASSIFIED,0,
+_session527_phyllotaxis.py,UNCLASSIFIED,0,
+_session528_dna_bp_turn.py,UNCLASSIFIED,0,
+_session529_chromosomes.py,UNCLASSIFIED,0,
+_session530_amino_acids.py,UNCLASSIFIED,0,
+_session531_codons.py,UNCLASSIFIED,0,
+_session532_heart_rate.py,UNCLASSIFIED,0,
+_session533_e.py,UNCLASSIFIED,0,
+_session534_e_squared.py,UNCLASSIFIED,0,
+_session535_pi_over_4.py,UNCLASSIFIED,0,
+_session536_gamma.py,UNCLASSIFIED,0,
+_session537_ln_2.py,UNCLASSIFIED,0,
+_session538_ln_10.py,UNCLASSIFIED,0,
+_session539_catalan.py,UNCLASSIFIED,0,
+_session540_apery.py,UNCLASSIFIED,0,
+_session541_pi_squared.py,UNCLASSIFIED,0,
+_session542_zeta_2.py,UNCLASSIFIED,0,
+_session543_mp_me.py,UNCLASSIFIED,0,
+_session544_mmu_me.py,UNCLASSIFIED,0,
+_session545_mtau_me.py,UNCLASSIFIED,0,
+_session546_mtau_mmu.py,UNCLASSIFIED,0,
+_session547_higgs.py,UNCLASSIFIED,0,
+_session548_W_Z.py,UNCLASSIFIED,0,
+_session549_mn_mp.py,UNCLASSIFIED,0,
+_session550_mp_MeV.py,UNCLASSIFIED,0,
+_session551_me_MeV.py,UNCLASSIFIED,0,
+_session552_alpha.py,UNCLASSIFIED,0,
+_session553_CO2.py,UNCLASSIFIED,0,
+_session554_lapse.py,UNCLASSIFIED,0,
+_session555_scaleH.py,UNCLASSIFIED,0,
+_session556_solar.py,UNCLASSIFIED,0,
+_session557_salinity.py,UNCLASSIFIED,0,
+_session558_pressure.py,UNCLASSIFIED,0,
+_session559_albedo.py,UNCLASSIFIED,0,
+_session560_greenhouse.py,UNCLASSIFIED,0,
+_session561_tropopause.py,UNCLASSIFIED,0,
+_session562_ozone.py,UNCLASSIFIED,0,
+_session563_g.py,UNCLASSIFIED,0,
+_session564_steelYield.py,UNCLASSIFIED,0,
+_session565_concreteFc.py,UNCLASSIFIED,0,
+_session566_steelE.py,UNCLASSIFIED,0,
+_session567_concreteRho.py,UNCLASSIFIED,0,
+_session568_steelRho.py,UNCLASSIFIED,0,
+_session569_alRho.py,UNCLASSIFIED,0,
+_session570_woodRho.py,UNCLASSIFIED,0,
+_session571_mohs.py,UNCLASSIFIED,0,
+_session572_sound.py,UNCLASSIFIED,0,
+_session573_moon.py,UNCLASSIFIED,0,
+_session574_AU.py,UNCLASSIFIED,0,
+_session575_pcly.py,UNCLASSIFIED,0,
+_session576_hubble.py,UNCLASSIFIED,0,
+_session577_sunRadius.py,UNCLASSIFIED,0,
+_session578_AUgm.py,UNCLASSIFIED,0,
+_session579_sunMass.py,UNCLASSIFIED,0,
+_session580_jupiter.py,UNCLASSIFIED,0,
+_session581_year.py,UNCLASSIFIED,0,
+_session582_lunarMonth.py,UNCLASSIFIED,0,
+_session583_avogadro.py,UNCLASSIFIED,0,
+_session584_R.py,UNCLASSIFIED,0,
+_session585_H.py,UNCLASSIFIED,0,
+_session586_C.py,UNCLASSIFIED,0,
+_session587_O.py,UNCLASSIFIED,0,
+_session588_N.py,UNCLASSIFIED,0,
+_session589_kB.py,UNCLASSIFIED,0,
+_session590_h.py,UNCLASSIFIED,0,
+_session591_eV.py,UNCLASSIFIED,0,
+_session592_H2O.py,UNCLASSIFIED,0,
+_session593_bodyTemp.py,UNCLASSIFIED,0,
+_session594_bloodPH.py,UNCLASSIFIED,0,
+_session595_hemoglobin.py,UNCLASSIFIED,0,
+_session596_heartRate.py,UNCLASSIFIED,0,
+_session597_systolic.py,UNCLASSIFIED,0,
+_session598_diastolic.py,UNCLASSIFIED,0,
+_session599_breathing.py,UNCLASSIFIED,0,
+_session600_glucose.py,UNCLASSIFIED,0,
+_session601_DNA.py,UNCLASSIFIED,0,
+_session602_height.py,UNCLASSIFIED,0,
+_session603_Rearth.py,UNCLASSIFIED,0,
+_session604_core.py,UNCLASSIFIED,0,
+_session605_crust.py,UNCLASSIFIED,0,
+_session606_ocean.py,UNCLASSIFIED,0,
+_session607_moho.py,UNCLASSIFIED,0,
+_session608_mariana.py,UNCLASSIFIED,0,
+_session609_everest.py,UNCLASSIFIED,0,
+_session610_karman.py,UNCLASSIFIED,0,
+_session611_earthAge.py,UNCLASSIFIED,0,
+_session612_orbitalV.py,UNCLASSIFIED,0,
+_session613_Z0.py,UNCLASSIFIED,0,
+_session614_alpha.py,UNCLASSIFIED,0,
+_session615_eps0.py,UNCLASSIFIED,0,
+_session616_mu0.py,UNCLASSIFIED,0,
+_session617_ke.py,UNCLASSIFIED,0,
+_session618_bohr.py,UNCLASSIFIED,0,
+_session619_rydberg.py,UNCLASSIFIED,0,
+_session620_compton.py,UNCLASSIFIED,0,
+_session621_ge.py,UNCLASSIFIED,0,
+_session622_bohrMag.py,UNCLASSIFIED,0,
+_session623_rydbergE.py,UNCLASSIFIED,0,
+_session624_stefan.py,UNCLASSIFIED,0,
+_session625_wien.py,UNCLASSIFIED,0,
+_session626_faraday.py,UNCLASSIFIED,0,
+_session627_avogadro.py,UNCLASSIFIED,0,
+_session628_kB.py,UNCLASSIFIED,0,
+_session629_planck.py,UNCLASSIFIED,0,
+_session630_c.py,UNCLASSIFIED,0,
+_session631_e.py,UNCLASSIFIED,0,
+_session632_hartree.py,UNCLASSIFIED,0,
+_session633_pi.py,UNCLASSIFIED,0,
+_session634_e.py,UNCLASSIFIED,0,
+_session635_goldenRatio.py,UNCLASSIFIED,0,
+_session636_gamma.py,UNCLASSIFIED,0,
+_session637_sqrt2.py,UNCLASSIFIED,0,
+_session638_sqrt3.py,UNCLASSIFIED,0,
+_session639_sqrt5.py,UNCLASSIFIED,0,
+_session640_ln2.py,UNCLASSIFIED,0,
+_session641_ln10.py,UNCLASSIFIED,0,
+_session642_zeta3.py,UNCLASSIFIED,0,
+_session643_omegaM.py,UNCLASSIFIED,0,
+_session644_omegaL.py,UNCLASSIFIED,0,
+_session645_TCMB.py,UNCLASSIFIED,0,
+_session646_ageGyr.py,UNCLASSIFIED,0,
+_session647_omegaB.py,UNCLASSIFIED,0,
+_session648_H0.py,UNCLASSIFIED,0,
+_session649_sigma8.py,UNCLASSIFIED,0,
+_session650_nS.py,UNCLASSIFIED,0,
+_session651_zRecomb.py,UNCLASSIFIED,0,
+_session652_zReion.py,UNCLASSIFIED,0,
+_session653_W.py,UNCLASSIFIED,0,
+_session654_Z.py,UNCLASSIFIED,0,
+_session655_top.py,UNCLASSIFIED,0,
+_session656_Higgs.py,UNCLASSIFIED,0,
+_session657_b.py,UNCLASSIFIED,0,
+_session658_charm.py,UNCLASSIFIED,0,
+_session659_tau.py,UNCLASSIFIED,0,
+_session660_muon.py,UNCLASSIFIED,0,
+_session661_strange.py,UNCLASSIFIED,0,
+_session662_electron.py,UNCLASSIFIED,0,
+_session663_Fe56.py,UNCLASSIFIED,0,
+_session664_Ni62.py,UNCLASSIFIED,0,
+_session665_He4.py,UNCLASSIFIED,0,
+_session666_U235.py,UNCLASSIFIED,0,
+_session667_U238.py,UNCLASSIFIED,0,
+_session668_C12.py,UNCLASSIFIED,0,
+_session669_O16.py,UNCLASSIFIED,0,
+_session670_Pb208.py,UNCLASSIFIED,0,
+_session671_H3.py,UNCLASSIFIED,0,
+_session672_deuteron.py,UNCLASSIFIED,0,
+_session673_Earth_mass.py,UNCLASSIFIED,0,
+_session674_Earth_radius.py,UNCLASSIFIED,0,
+_session675_Earth_g.py,UNCLASSIFIED,0,
+_session676_Earth_escape.py,UNCLASSIFIED,0,
+_session677_Earth_MoI.py,UNCLASSIFIED,0,
+_session678_Earth_orb_v.py,UNCLASSIFIED,0,
+_session679_Earth_year.py,UNCLASSIFIED,0,
+_session680_Moon_dist.py,UNCLASSIFIED,0,
+_session681_Moon_mass.py,UNCLASSIFIED,0,
+_session682_Earth_density.py,UNCLASSIFIED,0,
+_session683_lagrangian_primitives.py,UNCLASSIFIED,0,
+_session684_closure_to_sector_bridge.py,UNCLASSIFIED,0,
+_session684_KK_AU_per_1e10_m.py,UNCLASSIFIED,0,
+_session685_KK_Sun_mass_per_1e29_kg.py,UNCLASSIFIED,0,
+_session686_KK_Earth_orbit_v_per_km_s.py,UNCLASSIFIED,0,
+_session687_KK_Sun_radius_per_1e8_m.py,UNCLASSIFIED,0,
+_session688_KK_Jupiter_mass_per_1e27_kg.py,UNCLASSIFIED,0,
+_session689_KK_Earth_radius_per_1e6_m.py,UNCLASSIFIED,0,
+_session690_KK_Moon_orbital_period_per_day.py,UNCLASSIFIED,0,
+_session691_KK_sidereal_year_per_100_day.py,UNCLASSIFIED,0,
+_session692_KK_Mars_orbit_AU.py,UNCLASSIFIED,0,
+_session693_KK_Mercury_year_per_10_day.py,UNCLASSIFIED,0,
+_session694_alpha_forward_derivation.py,PRIMITIVE_ONLY,1,
+_session695_4pi_coset_derivation.py,PRIMITIVE_ONLY,2,
+_session696_2loop_kk_closure.py,PRIMITIVE_ONLY,2,
+_session697_c2_exact_decomposition.py,PRIMITIVE_ONLY,2,
+_session698_so2dpm_selection_rule.py,PRIMITIVE_ONLY,2,
+_session699_3loop_tail_bound.py,PRIMITIVE_ONLY,6,
+_session700_alpha_chain_convergence.py,PRIMITIVE_ONLY,3,
+_session701_c_tree_derivation.py,PRIMITIVE_ONLY,2,
+_session702_c_tree_layered_dpm.py,PRIMITIVE_ONLY,2,
+_session703_c_2loop_coefficient.py,COMPARISON_ONLY,4,"L194: codata-assign-only: ""simplified"": ""c_obs = 3 * v_SCM * (1 - 1/1440 + (5*pi^2/9) * (1/1440)^2)"","
+_session704_c_3loop_tail_bound.py,COMPARISON_ONLY,6,"L175: codata-assign-only: ""expression"": ""c_obs = 3*v_SCM * (1 - delta_c + (5 pi^2/9) delta_c^2 - (25 pi^4/162) delta_c^3)"","
+_session705_universal_loop_factorial_rule.py,PRIMITIVE_ONLY,7,
+_session706_loop_factorial_n4.py,PRIMITIVE_ONLY,15,
+_session707_so2_dpm_geometric_phase.py,COMPARISON_ONLY,8,"L50: codata-assign-only: c_obs   = 299_792_458.0                # m/s, CODATA exact"
+_session708_so2_dpm_rank_refined.py,COMPARISON_ONLY,8,L55: codata-assign-only: c_obs   = 299_792_458.0
+_session709_mu_chain_opening.py,COMPARISON_ONLY,2,"L9: codata-assign-only: mu = m_p / m_e = 1836.15267343 (CODATA, 11-digit dimensionless)"
+_session710_mu_2loop.py,COMPARISON_ONLY,4,L63: codata-assign-only: mu_obs = 1836.15267343                       # CODATA m_p/m_e
+_session711_mu_3loop_finite_polynomial.py,COMPARISON_ONLY,2,L68: codata-assign-only: mu_obs = 1836.15267343
+_session712_mu_4loop_termination_test.py,COMPARISON_ONLY,6,L10: codata-assign-only: the CODATA 2018 uncertainty floor on mu = m_p/m_e = 1836.15267343(11).
+_session713_alpha_4loop_borel_test.py,PRIMITIVE_ONLY,2,
+_session714_alpha_c3_locked_candidate_hunt.py,PRIMITIVE_ONLY,4,
+_session715_alpha_4loop_locked_candidate.py,PRIMITIVE_ONLY,4,
+_session716_mu_5loop_ratio_rule_validation.py,COMPARISON_ONLY,3,L74: codata-assign-only: m_p_over_m_e_obs = 1836.15267343
+_session717_alpha_class_universality_test.py,PRIMITIVE_ONLY,3,
+_session718_c_chain_class_assignment.py,COMPARISON_ONLY,3,L60: codata-assign-only: c_obs   = 299_792_458.0
+_session719_hbar_dimensional_class_probe.py,PRIMITIVE_ONLY,4,
+_session720_hbar_classIV_nogo_and_L_SCM_promotion.py,PRIMITIVE_ONLY,8,
+_session721_classV_G_and_LSCM_MSCM_proportionality.py,PRIMITIVE_ONLY,6,
+_session722_K_G_prefactor_search.py,PRIMITIVE_ONLY,5,
+_session723_K_G_locked_rational.py,COMPARISON_ONLY,6,L47: codata-assign-only: G       = 6.67430e-11
+_session724_classVI_Lambda_opening.py,COMPARISON_ONLY,7,"L79: codata-assign-only: print(f""  Lambda_obs       = {LAMBDA_OBS:.4e} m^-2"")"
+_session725_cosmological_hierarchy_probe.py,PRIMITIVE_ONLY,9,
+_session726_LH_tighten_locked_closure.py,PRIMITIVE_ONLY,5,
+_session727_LH42_Lambda_closure.py,PRIMITIVE_ONLY,5,
+_session728_triple_track_consolidation.py,PRIMITIVE_ONLY,7,
+_session729_H0_eta_hbar_consolidation.py,COMPARISON_ONLY,8,"L127: codata-assign-only: print(f""  eta_obs = n_b/n_gamma = {ETA_OBS:.4e}  (Planck 2018)"")"
+_session730_Dcrit7_TCMB_Hubble.py,PRIMITIVE_ONLY,6,
+_session731_TCMB_OmegaX_motifs.py,COMPARISON_ONLY,5,L128: codata-assign-only: m_p = 1.67262e-27
+_session732_classX_BAO_audit.py,PRIMITIVE_ONLY,10,
+_session733_residual_hierarchy_OmegaB_BAO_crosscheck.py,COMPARISON_ONLY,3,L239: codata-assign-only: kB = 1.381e-23; hbar = 1.054571817e-34
+_session734_classXII_tighten_HubbleTension_residual.py,SEARCH_FIT,6,"L111: search-call: print(f""\n  2-atom correction search (sub-0.05%):"")"
+_session735_universal_residual_HubbleInvariant_sigma8.py,COMPARISON_ONLY,2,L176: codata-assign-only: invariant_obs    = 0.0335   # roughly: H0*r_d/c from Planck BAO
+_session736_delta_univ_classXV_ns_S8_check.py,PRIMITIVE_ONLY,2,
+_session737_delta_dress_classXVI_alphas_VII_decompose.py,COMPARISON_ONLY,2,L134: codata-assign-only: K_XII_obs = 0.04930 / 0.3153  # Planck Omega_b/Omega_m
+_session738_globalR_classXVII_r_alphas_identity.py,COMPARISON_ONLY,2,L147: codata-assign-only: r_obs = 0.036  # BICEP/Keck central; upper limit r<0.06 at 95% CL
+_session739_R_xi_classXVIII_OmegaLambda_betas.py,COMPARISON_ONLY,3,"L4: codata-assign-only: SESSION 739 -- (a) Resolve global R deviation (R_obs = 0.9683 vs n_s = 0.965, ~0.34%)"
+_session740_xi_refine_classXIX_age_gammas.py,COMPARISON_ONLY,3,L100: codata-assign-only: xi_obs = 3.426736e-3
+_session741_t0_refine_zeq_classXX_ell1.py,COMPARISON_ONLY,4,L29: codata-assign-only: t0_obs = 13.797   # Gyr
+_session742_higher_peaks_t0_exact_classXXII_rs.py,COMPARISON_ONLY,5,L26: codata-assign-only: t0_obs  = 13.797
+_session743_rs_silk_As.py,COMPARISON_ONLY,4,L25: codata-assign-only: rs_obs = 144.6     # Mpc (recombination sound horizon)
+_session744_As_refine_kD_Neff.py,COMPARISON_ONLY,4,L25: codata-assign-only: As_obs = 2.1e-9
+_session745_As_kD_exact_Yp.py,COMPARISON_ONLY,4,L134: codata-assign-only: A_s_obs = 2.1e-9
+_session746_DH_kD_As.py,SEARCH_FIT,4,"L69: search-def: def search2(target, atoms, tol_pct=1.0): | L83: search-def: def search3(target, atoms, tol_pct=0.1): | L116: search-call: hits1 = search2(mult1, ATOMS, tol_pct=0.1) | L108: codata-assign-only: A_s_obs = 2.1e-9"
+_session747_LiH_As_DH.py,SEARCH_FIT,6,"L58: search-def: def search3(target, atoms, tol_pct=1.0, allow_recip=True): | L73: search-def: def search2(target,atoms,tol_pct=2.0): | L106: search-call: hits_a3=search3(abs(delta), ATOMS, tol_pct=10.0) | L97: codata-assign-only: A_s_obs=2.1e-9"
+_session748_LiH_He3_eta.py,SEARCH_FIT,4,"L42: search-def: def search3(target, tol_pct=5.0, want=8): | L66: search-def: def search2(target, tol_pct=5.0, want=12): | L124: search-call: hits_li = search3(abs(delta_li), tol_pct=5.0, want=10) | L115: codata-assign-only: LiH_obs = 1.60e-10"
+_session749_eta_Yp_T0.py,SEARCH_FIT,4,"L35: search-def: def search3(target, tol_pct=5.0, want=10): | L50: search-def: def search2(target, tol_pct=5.0, want=15): | L93: search-call: hits_eta2 = search2(abs(delta_eta), tol_pct=5.0, want=15) | L84: codata-assign-only: eta_obs=6.10e-10"
+_session750_eta_T0_H0.py,SEARCH_FIT,4,"L32: search-def: def search2(target, tol_pct=5.0, want=15): | L45: search-def: def search3(target, tol_pct=5.0, want=12): | L60: search-def: def search4(target, tol_pct=2.0, want=10): | L110: search-call: hits3 = search3(abs(delta_eta), tol_pct=2.0, want=12) | L100: codata-assign-only: eta_obs=6.10e-10"
+_session751_T0_Hratio_sigma8_Omegam.py,SEARCH_FIT,4,"L38: search-def: def search2(target, tol_pct=5.0, want=15): | L51: search-def: def search3(target, tol_pct=5.0, want=12): | L66: search-def: def search4(target, tol_pct=2.0, want=12): | L122: search-call: print(""\n  3-atom delta search (tol 1%):"") | L12: codata-assign-only: sigma_8_obs = 0.8111 (Planck 2018). Seed: sigma_8 = 416/513 = 0.81092 (1-atom, 0-anchor)."
+_session752_T0reform_sigma8KiDS_OmegaL.py,SEARCH_FIT,4,"L37: search-def: def search2(target, tol_pct=5.0, want=15): | L50: search-def: def search3(target, tol_pct=5.0, want=12): | L65: search-def: def search4(target, tol_pct=2.0, want=12): | L121: search-call: print(""\n  2-atom delta search (tol 0.5%):"") | L104: codata-assign-only: T0_obs=2.7255"
+_session753_sigma8push_wDE_Obh2.py,SEARCH_FIT,4,"L46: search-def: def search2(target, tol_pct=5.0, want=15): | L59: search-def: def search3(target, tol_pct=5.0, want=12): | L74: search-def: def search4(target, tol_pct=2.0, want=12): | L129: search-call: hits4s = search4(abs(delta_s8), tol_pct=0.05, want=20) | L177: pred-assigned-from-_obs: pred = -(1.0 + h[3]); err=(pred-w_obs)/w_obs*100.0 | L182: pred-assigned-from-_obs: pred = -(1.0 + h[4]); err=(pred-w_obs)/w_obs*100.0 | L187: pred-assigned-from-_obs: pred = -h[3]; err = (pred-w_obs)/w_obs*100.0 | L191: pred-assigned-from-_obs: pred = -h[4]; err = (pred-w_obs)/w_obs*100.0 | L195: pred-assigned-from-_obs: pred = -(1.0 + h[3]); err = (pred-w_obs)/w_obs*100.0 | L199: pred-assigned-from-_obs: pred = -(1.0 + h[4]); err = (pred-w_obs)/w_obs*100.0"
+_session754_Obh2push_zeq_rs.py,SEARCH_FIT,4,"L48: search-def: def search2(target, tol_pct=5.0, want=15): | L61: search-def: def search3(target, tol_pct=5.0, want=15): | L76: search-def: def search4(target, tol_pct=2.0, want=15): | L127: search-call: hits2bd = search2(abs(delta_b), tol_pct=0.5, want=15) | L197: pred-assigned-from-_obs: pred = h[4]*1000.0; err = (pred-zeq_obs)/zeq_obs*100.0 | L208: pred-assigned-from-_obs: pred = base_z_K*h[3]; err = (pred-zeq_obs)/zeq_obs*100.0 | L213: pred-assigned-from-_obs: pred = base_z_K*h[4]; err = (pred-zeq_obs)/zeq_obs*100.0 | L227: pred-assigned-from-_obs: pred = h[4]*1000.0; err = (pred-zeq_obs)/zeq_obs*100.0 | L231: pred-assigned-from-_obs: pred = base_z_K*h[3]; err = (pred-zeq_obs)/zeq_obs*100.0 | L235: pred-assigned-from-_obs: pred = base_z_K*h[4]; err = (pred-zeq_obs)/zeq_obs*100.0"
+_session755_Obh2unblock_t0_tau.py,SEARCH_FIT,5,"L53: search-def: def search2(target, tol_pct=5.0, want=15): | L66: search-def: def search3(target, tol_pct=5.0, want=15): | L81: search-def: def search4(target, tol_pct=2.0, want=15): | L133: search-call: hits3b = search3(Obh2_obs, tol_pct=0.005, want=20) | L6: codata-assign-only: m_p/m_e = 1836.152673  (proton-electron mass ratio)"
+_session756_tauCE_zstar_Neff.py,SEARCH_FIT,4,"L43: search-def: def search2(target, tol_pct=5.0, want=15): | L56: search-def: def search3(target, tol_pct=5.0, want=15): | L71: search-def: def search4(target, tol_pct=2.0, want=15): | L121: search-call: hits2td = search2(abs(delta_tau), tol_pct=0.01, want=20) | L177: pred-assigned-from-_obs: pred = h[4]*zeq; err = (pred-zstar_obs)/zstar_obs*100.0 | L191: pred-assigned-from-_obs: pred = h[4]*zeq; err = (pred-zstar_obs)/zstar_obs*100.0 | L224: pred-assigned-from-_obs: pred = 3.0 + h[3]; err = (pred-Neff_obs)/Neff_obs*100.0 | L229: pred-assigned-from-_obs: pred = 3.0 + h[4]; err = (pred-Neff_obs)/Neff_obs*100.0 | L243: pred-assigned-from-_obs: pred = 3.0 + h[3]; err = (pred-Neff_obs)/Neff_obs*100.0 | L247: pred-assigned-from-_obs: pred = 3.0 + h[4]; err = (pred-Neff_obs)/Neff_obs*100.0"
+_session757_tau_zstar_DH.py,SEARCH_FIT,4,"L45: search-def: def search2(target, tol_pct=5.0, want=15): | L58: search-def: def search3(target, tol_pct=5.0, want=15): | L73: search-def: def search4(target, tol_pct=2.0, want=15): | L124: search-call: hits2td = search2(abs(delta_tau), tol_pct=5e-3, want=20) | L6: codata-assign-only: (a) S755 closure: tau = Y_p*(5/108)*(1-n_s)/alpha_em = 0.054402, err = +3.7e-3%."
+_session758_mpme_alphaS_Omh2.py,SEARCH_FIT,4,"L50: search-def: def search2(target, tol_pct=5.0, want=15): | L63: search-def: def search3(target, tol_pct=5.0, want=15): | L78: search-def: def search4(target, tol_pct=2.0, want=15): | L137: search-call: hits2dhd = search2(abs(delta_dh), tol_pct=1.0, want=15) | L2: codata-assign-only: SESSION 758 -- (a) Test mpme = 11/6 EXACT decomposition for D/H + all QED classes;"
+_session759_tau_zstar_Oc_kpivot.py,SEARCH_FIT,4,"L50: search-def: def search2(target, tol_pct=5.0, want=15): | L63: search-def: def search3(target, tol_pct=5.0, want=15): | L78: search-def: def search4(target, tol_pct=2.0, want=15): | L131: search-call: hits2t = search2(abs(delta_tau), tol_pct=1.0, want=10) | L29: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session760_Och2_mnu_As.py,SEARCH_FIT,4,"L45: search-def: def search2(target, tol_pct=5.0, want=15): | L58: search-def: def search3(target, tol_pct=5.0, want=15): | L73: search-def: def search4(target, tol_pct=2.0, want=15): | L123: search-call: hits2 = search2(abs(delta_o), tol_pct=1.0, want=12) | L28: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session761_As_obratio_eta.py,SEARCH_FIT,4,"L45: search-def: def search2(target, tol_pct=5.0, want=15): | L58: search-def: def search3(target, tol_pct=5.0, want=15): | L73: search-def: def search4(target, tol_pct=2.0, want=15): | L140: search-call: h2 = search2(abs(delta), tol_pct=5.0, want=15) | L7: codata-assign-only: Strategy: use alpha_em^4 = 2.836e-9 as natural seed (35% high) and add 2/3-atom delta shells."
+_session762_H0_rdrag_gammaPPN.py,SEARCH_FIT,5,"L38: search-def: def search2(target, tol_pct=5.0, want=15): | L51: search-def: def search3(target, tol_pct=5.0, want=15): | L66: search-def: def search4(target, tol_pct=2.0, want=15): | L111: search-call: for h in search2(H0_obs, tol_pct=3.0, want=12): | L21: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session763_NeffBBN_OmK_zreion_dCP.py,SEARCH_FIT,7,"L41: search-def: def search2(target, tol_pct=5.0, want=15): | L54: search-def: def search3(target, tol_pct=5.0, want=15): | L69: search-def: def search4(target, tol_pct=2.0, want=15): | L123: search-call: for h in search2(NeffBBN_obs, tol_pct=3.0, want=10): | L24: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session764_crossval_omnu_zBAO_etab.py,SEARCH_FIT,6,"L48: search-def: def search2(target, tol_pct=5.0, want=15): | L60: search-def: def search3(target, tol_pct=5.0, want=15): | L74: search-def: def search4(target, tol_pct=2.0, want=15): | L204: search-call: for h in search2(omnu_obs, tol_pct=3.0, want=10): | L31: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session765_Aplanck_tau_S8_etabwiden.py,SEARCH_FIT,3,"L35: search-def: def search2(target, tol_pct=5.0, want=15): | L47: search-def: def search3(target, tol_pct=5.0, want=15): | L61: search-def: def search4(target, tol_pct=2.0, want=15): | L116: search-call: for lab_a, lab_b, tag, v, err in search2(tau_obs, 3.0, 12): | L18: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session766_AL_w0_wa_Hz.py,SEARCH_FIT,2,"L35: search-def: def search2(target, tol_pct=5.0, want=15): | L47: search-def: def search3(target, tol_pct=5.0, want=15): | L61: search-def: def search4(target, tol_pct=2.0, want=15): | L90: search-call: h4=search4(t4[0], t4[1], 1); h3=search3(t3[0], t3[1], 1); h2=search2(t2[0], t2[1], 1) | L18: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session767_BAO_distance_suite.py,SEARCH_FIT,2,"L39: search-def: def search2(target, tol_pct=5.0, want=15): | L51: search-def: def search3(target, tol_pct=5.0, want=15): | L65: search-def: def search4(target, tol_pct=2.0, want=15): | L109: search-call: for la,lb,tag,v,err in search2(target_ratio, 3.0, 12): | L9: codata-assign-only: Strategy: distances expressed as shells on r_drag (LIV = 279/(260*alpha_em) ~ 147.05 Mpc)."
+_session768_BAO_z051_z061.py,SEARCH_FIT,2,"L37: search-def: def search2(target, tol_pct=5.0, want=15): | L49: search-def: def search3(target, tol_pct=5.0, want=15): | L63: search-def: def search4(target, tol_pct=2.0, want=15): | L102: search-call: for la,lb,tag,v,err in search2(obs, 3.0, 12): | L20: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session769_struct_amp_anchors.py,SEARCH_FIT,2,"L37: search-def: def search2(target, tol_pct=5.0, want=15): | L49: search-def: def search3(target, tol_pct=5.0, want=15): | L63: search-def: def search4(target, tol_pct=2.0, want=15): | L100: search-call: for la,lb,tag,v,err in search2(obs, 3.0, 12): | L20: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session770_matter_radiation_acoustic.py,SEARCH_FIT,2,"L41: search-def: def search2(target, tol_pct=5.0, want=15): | L53: search-def: def search3(target, tol_pct=5.0, want=15): | L67: search-def: def search4(target, tol_pct=2.0, want=15): | L101: search-call: for la,lb,tag,v,err in search2(obs, 3.0, 12): | L24: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session771_inflation_reion_age_CV4.py,SEARCH_FIT,2,"L40: search-def: def search2(target, tol_pct=5.0, want=15): | L52: search-def: def search3(target, tol_pct=5.0, want=15): | L66: search-def: def search4(target, tol_pct=2.0, want=15): | L106: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L23: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session772_running_zdec_DH_CV5.py,SEARCH_FIT,2,"L40: search-def: def search2(target, tol_pct=5.0, want=15): | L52: search-def: def search3(target, tol_pct=5.0, want=15): | L66: search-def: def search4(target, tol_pct=2.0, want=15): | L101: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L23: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session773_zeq_BAO_nu_CV6.py,SEARCH_FIT,2,"L41: search-def: def search2(target, tol_pct=5.0, want=15): | L53: search-def: def search3(target, tol_pct=5.0, want=15): | L67: search-def: def search4(target, tol_pct=2.0, want=15): | L102: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L24: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session774_Rstar_DV015_fs8_CV7.py,SEARCH_FIT,2,"L43: search-def: def search2(target, tol_pct=5.0, want=15): | L55: search-def: def search3(target, tol_pct=5.0, want=15): | L69: search-def: def search4(target, tol_pct=2.0, want=15): | L104: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L26: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session775_teq_keq_mnu_CV8.py,SEARCH_FIT,2,"L41: search-def: def search2(target, tol_pct=5.0, want=15): | L53: search-def: def search3(target, tol_pct=5.0, want=15): | L67: search-def: def search4(target, tol_pct=2.0, want=15): | L102: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L24: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session776_zdrag_theta_OmDE_CV9.py,SEARCH_FIT,2,"L41: search-def: def search2(target, tol_pct=5.0, want=15): | L53: search-def: def search3(target, tol_pct=5.0, want=15): | L67: search-def: def search4(target, tol_pct=2.0, want=15): | L102: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L24: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session777_SMsector_CV10.py,SEARCH_FIT,2,"L42: search-def: def search2(target, tol_pct=5.0, want=15): | L54: search-def: def search3(target, tol_pct=5.0, want=15): | L68: search-def: def search4(target, tol_pct=2.0, want=15): | L103: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L25: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session778_SMmasses_CV11.py,SEARCH_FIT,2,"L41: search-def: def search2(target, tol_pct=5.0, want=15): | L53: search-def: def search3(target, tol_pct=5.0, want=15): | L67: search-def: def search4(target, tol_pct=2.0, want=15): | L102: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L24: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session779_quarks_CKM_CV12.py,SEARCH_FIT,2,"L45: search-def: def search2(target, tol_pct=5.0, want=15): | L57: search-def: def search3(target, tol_pct=5.0, want=15): | L71: search-def: def search4(target, tol_pct=2.0, want=15): | L106: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L28: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session780_Higgs_gravity_CV13.py,SEARCH_FIT,2,"L48: search-def: def search2(target, tol_pct=5.0, want=15): | L60: search-def: def search3(target, tol_pct=5.0, want=15): | L74: search-def: def search4(target, tol_pct=2.0, want=15): | L109: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L31: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session781_cosmoconst_entropy_CV14.py,SEARCH_FIT,2,"L44: search-def: def search2(target, tol_pct=5.0, want=15): | L56: search-def: def search3(target, tol_pct=5.0, want=15): | L70: search-def: def search4(target, tol_pct=2.0, want=15): | L105: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L27: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session782_lambdaH_yt_etaB_CV15.py,SEARCH_FIT,2,"L46: search-def: def search2(target, tol_pct=5.0, want=15): | L58: search-def: def search3(target, tol_pct=5.0, want=15): | L72: search-def: def search4(target, tol_pct=2.0, want=15): | L107: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L10: codata-assign-only: -->  1/alpha_em = 137 derives from dimensional algebra alone."
+_session783_sinW_alphasGUT_rho_CV16.py,SEARCH_FIT,2,"L44: search-def: def search2(target, tol_pct=5.0, want=15): | L56: search-def: def search3(target, tol_pct=5.0, want=15): | L70: search-def: def search4(target, tol_pct=2.0, want=15): | L105: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L27: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session784_MGUT_Dm2atm_PMNS_CV17.py,SEARCH_FIT,2,"L42: search-def: def search2(target, tol_pct=5.0, want=15): | L54: search-def: def search3(target, tol_pct=5.0, want=15): | L68: search-def: def search4(target, tol_pct=2.0, want=15): | L103: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 12): | L25: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"
+_session785_PMNS_solar_reactor_CV18.py,SEARCH_FIT,3,"L48: search-def: def search2(target, tol_pct=5.0, want=15): | L60: search-def: def search3(target, tol_pct=5.0, want=15): | L74: search-def: def search4(target, tol_pct=2.0, want=15): | L109: search-call: for la,lb,tag,v,err in search2(obs, 5.0, 10): | L31: codata-assign-only: mpme=F(1836152673,1000000000); inv_mpme=F(1)/mpme"

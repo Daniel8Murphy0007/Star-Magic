@@ -1,0 +1,1 @@
+S519 COMPLETE. Halley period = 75.0000 = A_5+SO5+Phi_res*D_BSFG = 75 yr; target 75; match 0.0000%.

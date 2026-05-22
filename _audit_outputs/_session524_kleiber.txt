@@ -1,0 +1,1 @@
+S524 COMPLETE. Kleiber allometric exponent = 0.7500 = Phi_res-F_TRZ*Phi_res = 3/4; target 0.75; match 0.0000%.

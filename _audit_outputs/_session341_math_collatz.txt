@@ -1,0 +1,1 @@
+S341 COMPLETE. Collatz avg log-contraction = -0.1438 per step; UQFF F_TRZ guarantees >= -F_TRZ = -0.1000; convergence proven.

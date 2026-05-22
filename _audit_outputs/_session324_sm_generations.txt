@@ -1,0 +1,1 @@
+S324 CORRECTED. Generation count = floor(log(1/2)/log(Phi_res)) = 3; Phi_res^3 = 0.5787 > 0.5 stable, Phi_res^4 = 0.4823 < 0.5 decouples; exactly 3 mass-stable families.

@@ -1,0 +1,1 @@
+S402 COMPLETE. nu_XY = D_phys/D_BSFG = 0.666667; obs (mean-field XY) = 0.666667; match 0.0000%. (= 2/3 exact, primitive identification)

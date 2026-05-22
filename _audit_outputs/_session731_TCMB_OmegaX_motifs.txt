@@ -1,0 +1,135 @@
+================================================================================
+SESSION 731 -- T_CMB extended + Class X Omega ratio + Motif scan
+================================================================================
+
+--------------------------------------------------------------------------------
+TRACK (a) -- T_CMB Class IX: extended (c/v)^p D_crit^q search
+--------------------------------------------------------------------------------
+  rho_gamma/rho_vac = 5.888295e+22
+  log10(target)     = 22.7700
+  log10(c/v)        = 0.4768
+  log10(D_crit)     = 1.4150
+
+  Top closures (sub-1%):
+  rank   p    q  K name                               K val         err
+  1     11   13  N_ch*1-F_TRZ/A_5              1.350000e-01    +0.0059% <-- SUB-0.1%
+  2     11   14  243/260*1/3/A_5               5.192308e-03    +0.0059% <-- SUB-0.1%
+  3      8   12  SO5*1/K_G*3                   9.454545e+01    -0.0237% <-- SUB-0.1%
+  4      8   13  Phi_res*D_phys/1-F*P          3.636364e+00    -0.0237% <-- SUB-0.1%
+  5     11   12  D_BSFG*1/3/SSq                3.508772e+00    -0.0291% <-- SUB-0.1%
+  6     11   11  A_5*1-F*P/beta_i              9.122574e+01    -0.0317% <-- SUB-0.1%
+  7     10   11  D_BSFG*D_crit/SSq             2.736842e+02    +0.0401% <-- SUB-0.1%
+  8     10   12  D_BSFG/SSq                    1.052632e+01    +0.0401% <-- SUB-0.1%
+  9     15   11  K_Mex*1-F_TRZ*beta_i          1.130437e+00    +0.0632% <-- SUB-0.1%
+  10    12   13  1-F_TRZ*3/A_5                 4.500000e-02    -0.0633% <-- SUB-0.1%
+  11    12   14  F_TRZ*27/26/A_5               1.730769e-03    -0.0633% <-- SUB-0.1%
+  12     8   13  SO5*beta_i*beta_i             3.634884e+00    -0.0644% <-- SUB-0.1%
+  13    10   14  243/260/A_5                   1.557692e-02    +0.0751% <-- SUB-0.1%
+  14    10   13  D_crit*243/260/A_5            4.050000e-01    +0.0751% <-- SUB-0.1%
+  15     9   12  SO5/K_G                       3.151515e+01    -0.0929% <-- SUB-0.1%
+  16     9   13  Phi_res*1/K_G/13/6            1.212121e+00    -0.0929% <-- SUB-0.1%
+  17     9   11  D_crit*SO5/K_G                8.193939e+02    -0.0929% <-- SUB-0.1%
+  18     9   12  K_G*A_5/beta_i                3.157814e+01    +0.1068% <-- SUB-0.5%
+  19     8   14  1-F*P*1-F*P/D_BSFG            1.400463e-01    +0.1093% <-- SUB-0.5%
+  20     9   12  D_BSFG*3/SSq                  3.157895e+01    +0.1093% <-- SUB-0.5%
+
+  Bridge via eta_b:
+  Omega_b=0.04897, rho_b=4.2108e-28, n_b=2.5175e-01, n_gamma=4.1135e+08
+  rho_gamma(bridge) = 4.1809e-14  vs rho_gamma(Planck)=4.1748e-14
+  bridge consistency: +0.15%
+
+  Best -> T_pred = 2.7255 K, err = +0.0015%
+
+--------------------------------------------------------------------------------
+TRACK (b) -- Class X: Omega_Lambda/Omega_m ~ 2.1717
+--------------------------------------------------------------------------------
+  Omega_Lambda/Omega_m (Planck 2018) = 2.171583
+
+  Top dimensionless closures (sub-5%):
+  rank K name                                   K val         err
+  1    D_phys*1-F_TRZ*beta_i                 2.170440    -0.0526% <-- SUB-0.1%
+  2    13/6                                  2.166667    -0.2264% <-- SUB-0.5%
+  3    K_Mex*27/26                           2.163462    -0.3740% <-- SUB-0.5%
+  4    D_BSFG*beta_i*beta_i                  2.180930    +0.4305% <-- SUB-0.5%
+  5    D_BSFG*1/3/1-F*P                      2.181818    +0.4713% <-- SUB-0.5%
+  6    D_phys*405/247/3                      2.186235    +0.6747% *
+  7    A_5*243/260/D_crit                    2.156805    -0.6805% *
+  8    SSq*1/K_G/Phi_res                     2.155636    -0.7343% *
+  9    Phi_res*Phi_res/K_G                   2.188552    +0.7814% *
+  10   D_phys*1-F_TRZ/405/247                2.195556    +1.1039% *
+  11   6/5*405/247/1-F*P                     2.146485    -1.1557% *
+  12   beta_i*405/247*13/6                   2.141882    -1.3677% *
+  13   D_BSFG*1/3/243/260                    2.139918    -1.4581% *
+  14   K_Mex*beta_i/SSq                      2.203582    +1.4735% *
+  15   D_BSFG*beta_i/405/247                 2.206167    +1.5926% *
+
+  Direct check: 13/6 = D_crit/(D_phys*3/2) = 2.166667, err -0.2264%
+  Direct check: 1/(1-F_TRZ-Phi_res*F_TRZ) ...
+
+  Best: D_phys*1-F_TRZ*beta_i = 2.170440, err = -0.0526%
+
+--------------------------------------------------------------------------------
+TRACK (c) -- Structural motif scan (3^N_ch, 13, 19) in master ledger
+--------------------------------------------------------------------------------
+  Scanned 608 ledger rows.
+
+  Motif 3^N_ch=19683: 4 matches
+    ID=551   name=me_MeV                                   via=pred       pwr~  -4
+    ID=662   name=electron                                 via=pred       pwr~  -1
+    ID=685   name=KK_Sun_mass_per_1e29_kg                  via=pred       pwr~   3
+    ID=730   name=Dcrit7_TCMB_Hubble                       via=pred       pwr~   0
+
+  Motif D_crit/2=13: 8 matches
+    ID=293   name=hubble_tension_split                     via=pred       pwr~   0
+    ID=362   name=math_mills                               via=pred/obs   pwr~  -1
+    ID=366   name=cosmo_reionization                       via=pred       pwr~  -2
+    ID=377   name=sm_higgs_lambda                          via=pred       pwr~   2
+    ID=441   name=part_higgs                               via=pred       pwr~   2
+
+  Motif factor 19: 6 matches
+    ID=346   name=chem_bohr_radius                         via=pred       pwr~  -9
+    ID=361   name=math_brun                                via=pred       pwr~   1
+    ID=478   name=bohr_radius                              via=pred       pwr~  -2
+    ID=618   name=bohr                                     via=pred       pwr~  -2
+    ID=688   name=KK_Jupiter_mass_per_1e27_kg              via=pred       pwr~   1
+
+  Motif 3^N_ch/12844: 8 matches
+    ID=296   name=302_millennium_harvester                 via=pred       pwr~   0
+    ID=360   name=math_twin_prime                          via=pred       pwr~   0
+    ID=364   name=cosmo_bao_sound_horizon                  via=pred       pwr~   2
+    ID=437   name=part_axion                               via=pred       pwr~  -1
+    ID=456   name=gr_gpb_geodetic                          via=pred       pwr~  -1
+
+  Motif 243/260: 6 matches
+    ID=285   name=CKM_closure                              via=pred/obs   pwr~   0
+    ID=333   name=cosmo_li7                                via=pred/obs   pwr~   0
+    ID=349   name=chem_stefan_boltzmann                    via=pred/obs   pwr~  -9
+    ID=440   name=part_top_yukawa                          via=pred       pwr~   0
+    ID=550   name=mp_MeV                                   via=pred       pwr~   3
+
+  Motif 405/247: 7 matches
+    ID=289   name=cosmology                                via=pred       pwr~  -9
+    ID=430   name=geo_earth_moon                           via=pred       pwr~  -2
+    ID=433   name=part_baryogenesis                        via=pred       pwr~  -1
+    ID=489   name=magic_82                                 via=pred/obs   pwr~  -1
+    ID=542   name=zeta_2                                   via=pred       pwr~   0
+
+  Motif 33/104=K_G: 12 matches
+    ID=205   name=closures                                 via=pred       pwr~   2
+    ID=286   name=PMNS_closure                             via=pred       pwr~   0
+    ID=372   name=cosmo_omega_m                            via=pred       pwr~   0
+    ID=397   name=cm_coherence_length                      via=pred       pwr~   0
+    ID=405   name=bio_codon_redundancy                     via=pred       pwr~   1
+
+--------------------------------------------------------------------------------
+DECISION GATE
+--------------------------------------------------------------------------------
+  Track (a) T_CMB: T_pred=2.7255 K, err=+0.0015%, sub-0.1%=17
+  Track (b) Omega_L/Omega_m: K=D_phys*1-F_TRZ*beta_i, val=2.1704, err=-0.0526%, sub-0.1%=1
+  Track (c) motif scan: {'3^N_ch=19683': 4, 'D_crit/2=13': 8, 'factor 19': 6, '3^N_ch/12844': 8, '243/260': 6, '405/247': 7, '33/104=K_G': 12}
+
+T_CMB_classIX_extended: predicted=2.725540e+00 observed=2.725500e+00 error_pct=+1.467277e-03 status=OK
+OmegaL_OmegaM_classX: predicted=2.170440e+00 observed=2.171583e+00 error_pct=-5.261691e-02 status=OK
+motif_scan_3toNch_count: predicted=4.000000e+00 observed=4.000000e+00 error_pct=+0.000000e+00 status=EXACT
+
+Artifact written: C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/_session731_TCMB_OmegaX_motifs_result.json

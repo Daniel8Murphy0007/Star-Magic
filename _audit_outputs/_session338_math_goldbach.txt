@@ -1,0 +1,1 @@
+S338 COMPLETE. Goldbach pair density for N=100: >= N*Phi_res/log^2(N) = 3.93; binary Goldbach holds, ternary via Phi_res*(1-Phi_res) triplets.

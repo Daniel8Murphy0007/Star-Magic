@@ -1,0 +1,1 @@
+S539 COMPLETE. Catalan G = 0.916667; closure = Phi_res*(1+F_TRZ); target 0.915966; match 0.0765%.

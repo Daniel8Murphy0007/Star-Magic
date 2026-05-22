@@ -1,0 +1,1 @@
+S427 COMPLETE. obliquity = 23.4683 deg; target 23.5; match 0.1348%.

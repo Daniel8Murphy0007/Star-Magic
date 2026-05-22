@@ -1,0 +1,1 @@
+S530 COMPLETE. Canonical amino acids = 20 = 2*SO5 = 20; target 20; match 0.0000%.

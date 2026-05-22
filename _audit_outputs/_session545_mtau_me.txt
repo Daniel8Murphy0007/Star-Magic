@@ -1,0 +1,1 @@
+S545 COMPLETE. m_tau/m_e = 3477.6000; closure = A_5^2-A_5*D_phys+A_5*F*D_phys+A_5*Phi_res+N_ch*D_phys+F*SO5*D_phys+N_ch*F*D_phys; target 3477.2300; match 0.0106%.

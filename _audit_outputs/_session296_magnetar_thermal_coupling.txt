@@ -1,0 +1,26 @@
+========================================================================
+S296 MagnetarThermal smoke tests
+========================================================================
+  [PASS] T-1 kappa_0(rho0, T=1e8) ~ K_0*1e8  4.600e+17
+  [PASS] T-2 kappa_0(rho=0)=0  
+  [PASS] T-3 kappa_0(T=0)=0  
+  [PASS] T-4 kappa_0 scales as T  
+  [PASS] T-5 kappa_0 scales as rho^(2/3)  
+  [PASS] T-6 kappa_perp > 0  
+  [PASS] T-7 kappa_perp < kappa_0 for high B  
+  [PASS] T-8 kappa_perp(B=0) == kappa_0  
+  [PASS] T-9 kappa_perp -> 0 for B >> B_crit  8.962e+12
+  [PASS] T-10 aether bounded  
+  [PASS] T-11 aether(rho=0)=1  
+  [PASS] T-12 B_crit_e == 4.414e13  
+  [PASS] T-13 calculator returns required keys  
+  [PASS] T-14 headline tag  
+  [PASS] T-15 n_anchors=4  
+  [PASS] T-16 all anchors in expected range  4/4
+  [PASS] T-17 all kappa > 0  
+  [PASS] T-18 SGR1806 lowest kappa (highest B)  
+  [PASS] T-19 cp4_id=440  
+  [PASS] T-20 audit_session=296  
+========================================================================
+  RESULT: 20/20 passed
+========================================================================

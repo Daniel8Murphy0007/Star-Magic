@@ -1,0 +1,1 @@
+S384 COMPLETE. M_TOV = K_Mex + F_TRZ*SSq + F_TRZ^2*SSq*(D_phys-Phi_res) = 2.1584 M_sun; obs (GW170817+J0740) = 2.16; match 0.075%.

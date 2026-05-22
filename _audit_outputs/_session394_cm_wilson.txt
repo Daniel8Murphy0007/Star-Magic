@@ -1,0 +1,1 @@
+S394 COMPLETE. R_W = K_Mex - F_TRZ*Phi_res = 2.0000; obs (free-electron) = 2.0; match 0.0000%. (= 24/12 exact)
