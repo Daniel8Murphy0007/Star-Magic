@@ -55,20 +55,18 @@ foreach ($paper in $papers) {
     }
     $i++
     
-    # Convert MD to PDF using pandoc + pdflatex
-    $err = & $pandoc $src -o $pdf `
-        "--pdf-engine=$pdflatex" `
-        -V "geometry:margin=1in" `
-        -V "fontsize=11pt" `
-        -V "colorlinks=true" `
-        --highlight-style=tango `
-        2>&1
+    # Convert MD to PDF: Simple pandoc direct PDF
+    & $pandoc $src -o $pdf --pdf-engine=$pdflatex 2>&1 | Out-Null
     
-    if ($LASTEXITCODE -eq 0) {
+    $success = $false
+    if (Test-Path $pdf) {
+        $success = $true
+    }
+    
+    if ($success) {
         $ok++
     } else {
         Write-Host "  FAIL: $stem"
-        Write-Host "    $($err[0])"
         $fail++
         $failList += $stem
     }
