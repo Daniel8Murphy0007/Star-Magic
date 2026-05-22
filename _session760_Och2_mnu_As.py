@@ -241,6 +241,9 @@ if best_a[1] != 9999.0 and abs(best_a[1]) > 0.1 and abs(best_a[1]) < 10.0:
 
 print(f"\n  BEST A_s: {best_a[0]} = {best_a[2]:.4e}, err = {best_a[1]:+.6f}%")
 a_status = "EXACT" if abs(best_a[1])<1e-8 else ("CE_strict" if abs(best_a[1])<5e-4 else ("tight CLOSED" if abs(best_a[1])<0.1 else ("CLOSED" if abs(best_a[1])<5.0 else "OPEN")))
+# Guard: if no rational atom match was found best_a[2] stays at 0.0; flag honestly.
+if best_a[2] == 0.0:
+    a_status = "OPEN_NO_RATIONAL_MATCH"
 
 # ============================================================
 # Write ledger
@@ -248,7 +251,7 @@ a_status = "EXACT" if abs(best_a[1])<1e-8 else ("CE_strict" if abs(best_a[1])<5e
 print()
 write_ledger("classXLVII_Omega_c_h2_session760", best_o[2], Och2_obs, status=o_status)
 write_ledger("classXLIX_sum_mnu_session760", best_m[2], mnu_obs, status=m_status)
-write_ledger("classL_A_s_session760", best_a[2], As_obs, status=a_status)
+write_ledger("classL_A_s_session760", best_a[2] if best_a[2] > 0 else As_obs, As_obs, status=a_status)
 
 # ============================================================
 # Decision gate

@@ -285,9 +285,12 @@ err_d = (best_d[2]-etab_obs)/etab_obs*100.0 if best_d[2]!=0 else 9999.0
 write_ledger("cross_val_Omega_m_session764", Om_uqff, Om_planck, classify(err1))
 write_ledger("cross_val_Sigmav_id_session764", smnu_from_kpv, smnu_LIX, classify(err2))
 write_ledger("cross_val_baryon_CDM_sum_session764", sum_b_c, Omh2, classify(err3))
-write_ledger("classLX_omega_nu_h2_session764", best_b[2], omnu_obs, classify(err_b))
-write_ledger("classLXI_z_BAO_eff_session764", best_c[2], zb_obs, classify(err_c))
-write_ledger("classLXII_eta_b_session764", best_d[2], etab_obs, classify(err_d))
+write_ledger("classLX_omega_nu_h2_session764", best_b[2] if best_b[2]>0 else omnu_obs, omnu_obs,
+             "OPEN_NO_RATIONAL_MATCH" if best_b[2]==0 else classify(err_b))
+write_ledger("classLXI_z_BAO_eff_session764", best_c[2] if best_c[2]>0 else zb_obs, zb_obs,
+             "OPEN_NO_RATIONAL_MATCH" if best_c[2]==0 else classify(err_c))
+write_ledger("classLXII_eta_b_session764", best_d[2] if best_d[2]>0 else etab_obs, etab_obs,
+             "OPEN_NO_RATIONAL_MATCH" if best_d[2]==0 else classify(err_d))
 
 print("\n"+"-"*80); print("DECISION GATE"); print("-"*80)
 print(f"  CV-1 Omega_m derived         err = {err1:+.4f}%  ({classify(err1)})")
