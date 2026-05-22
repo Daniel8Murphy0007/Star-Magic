@@ -1,0 +1,19 @@
+Phase 1 Closure Extraction Report
+============================================================
+Total papers scanned: 1216
+
+Extraction Results:
+------------------------------------------------------------
+
+Statistics:
+  Total: 1216
+  Status=OK: 0
+  Status=RESEARCH_TRACE: 1216
+  With predicted value: 0
+  With observed value: 7
+  Errors: 0
+
+Next IDs assigned: 641-1856
+Total new ledger rows: 1216
+
+Next Phase: Merge extracted_closures into master_closures.csv
