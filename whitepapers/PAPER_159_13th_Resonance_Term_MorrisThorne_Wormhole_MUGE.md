@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_159
-title: "13th Resonance Term: Morris-Thorne Wormhole in MUGE (a_worm = f_worm$\cdot$E_vac/(b2+r2))"
+title: "13th Resonance Term: Morris-Thorne Wormhole in MUGE (a_worm = f_worm_vac/(b2+r2))"
 session: 47
 date: 2026-01-01
 author: "Daniel T. Murphy"
@@ -413,3 +413,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 7. Murphy, D. (2026). *Master Universal Gravity Equation (MUGE): DPM-Driven Gravity Framework.* Star-Magic Whitepaper Series — github.com/Daniel8Murphy0007/Star-Magic
 8. Morris, M.S. & Thorne, K.S. (1988). *Wormholes in spacetime and their use for interstellar travel.* Am. J. Phys. **56**, 395 — doi:10.1119/1.15620
 9. Maldacena, J. & Susskind, L. (2013). *Cool horizons for entangled black holes.* Fortschr. Phys. **61**, 781 — arXiv:1306.0533 — doi:10.1002/prop.201300020
+

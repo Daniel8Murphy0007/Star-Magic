@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_1183
-title: "First-Principles Variational Derivation of $F_{U\\_Bi\\_i}$ -- Patch to PAPER_1065"
+title: "First-Principles Variational Derivation of F_{U\\_Bi\\_i} -- Patch to PAPER_1065"
 session: 278
 date: 2026-05-16
 author: "Daniel T. Murphy"
@@ -159,3 +159,4 @@ with Section 2 "Results" stating only "See implementation for numerical results.
 - Session 277: $K_{\text{Mex}}$ derivability --- proven undetermined by Mexican-hat potential alone. Logged as ledger entry K1 IDENTIFIED.
 - Session 278: PAPER_1065 / PAPER_1066 audit --- found $V(\phi_0) = -\rho_{\text{SCm}}$ claim mathematically false for written potential; found PAPER_1065 contains no actual variation. Logged as V1 FAILED, V2/V3 DERIVED, V4 IDENTIFIED.
 - Session 278: **PAPER_1183 (this paper)** — supplies explicit Lagrangian, SymPy-verifies residual = 0, upgrades ledger to V5 DERIVED.
+

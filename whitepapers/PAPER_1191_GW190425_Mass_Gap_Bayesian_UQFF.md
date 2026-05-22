@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_1191
-title: "GW190425 Mass-Gap Bayesian Posterior: MC Error Bars on $f_{\rm gap}$ Under UQFF Aether Modulation"
+title: "GW190425 Mass-Gap Bayesian Posterior: MC Error Bars on f_{ gap} Under UQFF Aether Modulation"
 session: 299
 date: 2026-05-17
 author: "Daniel T. Murphy"
@@ -69,3 +69,4 @@ Module `_session299_gw190425_mass_gap_errors.py`; class `GW190425MassGapBayesian
 ## 9. References
 
 Abbott et al.\ 2020, ApJ 892, L3 (GW190425). Abbott et al.\ 2020, ApJ 896, L44 (GW190814). UQFF\_CALIBRATION\_AUDIT.md.
+

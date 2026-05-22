@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_034
-title: "Higgs $\kappa$_t Coupling: UQFF vs CERN HL-LHC Data"
+title: "Higgs _t Coupling: UQFF vs CERN HL-LHC Data"
 session: 0
 date: 2026-03-07
 author: "Daniel T. Murphy"
@@ -597,3 +597,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 4. Particle Data Group (2024). *Review of Particle Physics.* Phys. Rev. D **110**, 030001 — doi:10.1103/PhysRevD.110.030001
 5. `test_priority3_cern_validation.py` — UQFF CERN BSM kappa_t validation (7/7 PASSED, 95.83% alignment)
 6. `MAIN_1_CoAnQi.cpp` SOURCE27 — UH Level-18 Higgs hierarchy coupling equations
+

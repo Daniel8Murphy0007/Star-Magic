@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_442
-title: "Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) $\tau$=5 Myr"
+title: "Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) =5 Myr"
 session: 119
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -369,3 +369,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 9. Pitaevskii, L. & Stringari, S. (2003). *Bose–Einstein Condensation.* Oxford: Clarendon Press
 10. Hester, J.J. (2008). *The Crab Nebula: An Astrophysical Chimera.* ARA&A **46**, 127 — arXiv:0812.1502 — doi:10.1146/annurev.astro.45.051806.110608
 11. O'Dell, C.R. et al. (2001). *Hubble Space Telescope Observations of the Helix Nebula.* AJ **122**, 3293 — doi:10.1086/324272
+

@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_297
-title: "UQFF Superluminal Hubble Expansion Ratio $\eta$_exp = 3.328 > 1"
+title: "UQFF Superluminal Hubble Expansion Ratio _exp = 3.328 > 1"
 session: 84
 date: 2026-03-17
 author: "Daniel T. Murphy"
@@ -400,3 +400,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 3. Riess, A.G. et al. (2022). *A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km/s/Mpc Uncertainty from the Hubble Space Telescope.* ApJL **934**, L7 — arXiv:2112.04510 — doi:10.3847/2041-8213/ac5c5b
 4. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
 5. Verde, L., Treu, T. & Riess, A.G. (2019). *Tensions between the Early and Late Universe.* Nature Astron. **3**, 891 — arXiv:1907.10625 — doi:10.1038/s41550-019-0902-0
+

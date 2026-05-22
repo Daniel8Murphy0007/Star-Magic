@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_1188
-title: "Magnetar Perpendicular Thermal Conductivity $\\kappa_\\perp(B, \\rho, T)$: Calibration to SGR 1745--2900 and the Galactic Magnetar Sample"
+title: "Magnetar Perpendicular Thermal Conductivity \_\(B, \, T): Calibration to SGR 1745--2900 and the Galactic Magnetar Sample"
 session: 296
 date: 2026-05-17
 author: "Daniel T. Murphy"
@@ -73,3 +73,4 @@ The Onsager suppression at A2 (SGR 1806--20) is dramatic ($B/B_{\text{crit},e} \
 ---
 
 *PAPER_1188 closes audit gap #6. Session 296, May 17 2026.*
+

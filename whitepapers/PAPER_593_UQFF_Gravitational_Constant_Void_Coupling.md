@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_593
-title: "Gravitational Constant $G$ Derived from Void Coupling"
+title: "Gravitational Constant G Derived from Void Coupling"
 session: 157
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -513,3 +513,4 @@ python _constant_derivation_v3.py
 - [PAPER_594](PAPER_594_UQFF_Black_Hole_Finite_Bound_Derived.md) — $26!$ factorial barrier
 - [CondensedPhysics4.py](../CondensedPhysics4.py) — calculator class #180
 - [AXIOMS_AND_THEOREMS.md](../AXIOMS_AND_THEOREMS.md) — Theorem 6 (Session 240: 4/4 DERIVED)
+

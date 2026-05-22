@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_158
-title: "Hybrid MUGE Blending Model: g_hybrid = $\beta$$\cdot$g_compressed + (1-$\beta$)$\cdot$g_resonance"
+title: "Hybrid MUGE Blending Model: g_hybrid = _compressed + (1-)_resonance"
 session: 47
 date: 2026-01-01
 author: "Daniel T. Murphy"
@@ -431,3 +431,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 10. Kaspi, V.M. & Beloborodov, A.M. (2017). *Magnetars.* ARA&A **55**, 261 — arXiv:1703.00068 — doi:10.1146/annurev-astro-081915-023329
 11. Olausen, S.A. & Kaspi, V.M. (2014). *The McGill Magnetar Catalog.* ApJS **212**, 6 — arXiv:1309.4167 — doi:10.1088/0067-0049/212/1/6
 12. Thompson, C. & Duncan, R.C. (1993). *Magnetar formation through a convective dynamo in protoneutron stars.* ApJ **408**, 194 — doi:10.1086/172580
+

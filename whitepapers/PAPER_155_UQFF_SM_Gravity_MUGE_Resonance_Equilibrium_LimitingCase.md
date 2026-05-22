@@ -1,7 +1,6 @@
 ﻿---
 paper_id: PAPER_155
-title: "UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium  lim(fTRZ?0)[g_UQFF] =
-$\mu$_s$\nabla$(M_s/r) and the Emergence of DPM-seeded Gravity"
+title: "UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium lim(fTRZ?0)[g_UQFF] = _s(M_s/r) and the Emergence of DPM-seeded Gravity"
 session: 0
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -559,3 +558,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 9. Leray, J. (1934). *Sur le mouvement d'un liquide visqueux emplissant l'espace.* Acta Math. **63**, 193 — doi:10.1007/BF02547354
 10. Fefferman, C.L. (2000). *Existence and Smoothness of the Navier–Stokes Equation.* Clay Mathematics Institute Millennium Problem — www.claymath.org/millennium-problems/navier-stokes-equation
 11. Constantin, P. & Foias, C. (1988). *Navier-Stokes Equations.* Chicago Lectures in Mathematics
+

@@ -1,7 +1,6 @@
 ﻿---
 paper_id: PAPER_289
-title: "Cooper-DPM Dual-Frequency SC Synthesis — ħ$\times$f_super$\times$f_DPM Triple-Mode Quantum Product (A_sc =
-6.994$\times$1021)"
+title: "Cooper-DPM Dual-Frequency SC Synthesis — ħ_super_DPM Triple-Mode Quantum Product (A_sc = 6.9941021)"
 session: 81
 date: 2026-03-17
 author: "Daniel T. Murphy"
@@ -385,3 +384,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 4. Castelnovo, C., Moessner, R. & Sondhi, S.L. (2008). *Magnetic monopoles in spin ice.* Nature **451**, 42 — arXiv:0710.5515 — doi:10.1038/nature06433
 5. Rugh, S.E. & Zinkernagel, H. (2002). *The Quantum Vacuum and the Cosmological Constant Problem.* Stud. Hist. Phil. Mod. Phys. **33**, 663 — arXiv:hep-th/0012253 — doi:10.1016/S1355-2198(02)00033-3
 6. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
+

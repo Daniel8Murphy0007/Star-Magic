@@ -1,7 +1,6 @@
 ﻿---
 paper_id: PAPER_273
-title: "Blueshift UQFF Gravitational Approach Amplifier — $\kappa$_approach = 1/(1+z) for Negative Redshift
-Systems"
+title: "Blueshift UQFF Gravitational Approach Amplifier — _approach = 1/(1+z) for Negative Redshift Systems"
 session: 75
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -401,3 +400,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 4. de Vaucouleurs, G. (1948). *Recherches sur les Nebuleuses Extragalactiques.* Ann. Astrophys. **11**, 247
 5. Kennicutt, R.C. & Evans, N.J. (2012). *Star Formation in the Milky Way and Nearby Galaxies.* ARA&A **50**, 531 — arXiv:1204.3552 — doi:10.1146/annurev-astro-081811-125610
 6. Sofue, Y. & Rubin, V. (2001). *Rotation Curves of Spiral Galaxies.* ARA&A **39**, 137 — arXiv:astro-ph/0010594 — doi:10.1146/annurev.astro.39.1.137
+

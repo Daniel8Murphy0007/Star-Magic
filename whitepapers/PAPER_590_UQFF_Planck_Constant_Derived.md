@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_590
-title: "Planck Constant $h$ Derived from UQFF Energy Gap"
+title: "Planck Constant h Derived from UQFF Energy Gap"
 session: 157
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -469,3 +469,4 @@ python _constant_derivation_v2.py
 - [PAPER_593](PAPER_593_UQFF_Gravitational_Constant_Derived.md) — $G$ (still STRUCTURAL)
 - [CondensedPhysics4.py](../CondensedPhysics4.py) — calculator class #177
 - [AXIOMS_AND_THEOREMS.md](../AXIOMS_AND_THEOREMS.md) — Theorem 6 (Session 239 update)
+

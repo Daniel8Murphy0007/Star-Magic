@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_1170
-title: "Closing the 27-Decade Vacuum-Energy Ledger: $R_{26}$ + KK Tower + BSFG Back-Reaction Saturate $\\rho_\\Lambda^{\\mathrm{obs}}$"
+title: "Closing the 27-Decade Vacuum-Energy Ledger: R_{26} + KK Tower + BSFG Back-Reaction Saturate \_\^{\{obs}}"
 session: 255
 date: 2026-05-10
 author: Daniel Murphy
@@ -221,3 +221,4 @@ back-reaction correction.
 - Planck Collaboration (2024) — cosmological parameters.
 - `uqff_closed_constants.py` — canonical integer-rational constants.
 - `CondensedPhysics4.UQFFVacuumEnergyLedgerCalculator` — programmatic ledger.
+

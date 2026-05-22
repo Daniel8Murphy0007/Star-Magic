@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_299
-title: "Hydrogen Atom UQFF Electrogravitational Dominance Ratio: $\eta$_EM = 9.65$\times$1029"
+title: "Hydrogen Atom UQFF Electrogravitational Dominance Ratio: _EM = 9.651029"
 session: 85
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -403,3 +403,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 5. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
 6. Hester, J.J. (2008). *The Crab Nebula: An Astrophysical Chimera.* ARA&A **46**, 127 — arXiv:0812.1502 — doi:10.1146/annurev.astro.45.051806.110608
 7. O'Dell, C.R. et al. (2001). *Hubble Space Telescope Observations of the Helix Nebula.* AJ **122**, 3293 — doi:10.1086/324272
+

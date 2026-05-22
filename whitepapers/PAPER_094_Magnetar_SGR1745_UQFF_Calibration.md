@@ -1,7 +1,6 @@
 ﻿---
 paper_id: PAPER_094
-title: "SGR1745-2900 Magnetar UQFF Calibration: Determining $\kappa$ = 0.0005/day and [SSq] = 0.57 from
-Magnetar Physics"
+title: "SGR1745-2900 Magnetar UQFF Calibration: Determining = 0.0005/day and [SSq] = 0.57 from Magnetar Physics"
 session: 0
 date: 2026-03-07
 author: "Daniel T. Murphy"
@@ -432,3 +431,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 4. Rea, N. et al. (2013). *A Strongly Magnetized Pulsar within the Grasp of the Milky Way's Central Black Hole.* ApJL **775**, L34 — arXiv:1307.6114 — doi:10.1088/2041-8205/775/2/L34
 5. `source4.cpp` sgr1745_SOURCE4 — B_CRIT_MAGNETAR calibration and kappa=0.0005/day derivation
 6. `validate_uqff_muge.py` — UQFF SGR1745 kappa/[SSq] calibration (Star-Magic repository)
+

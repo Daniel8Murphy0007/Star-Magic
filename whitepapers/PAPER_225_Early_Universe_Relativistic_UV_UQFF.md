@@ -1,7 +1,6 @@
 ﻿---
 paper_id: PAPER_225
-title: "UQFF Early-Universe Relativistic UV Coupling — (v/c)2 $\cdot$ L_UV for Proto-Galactic Formation at
-High Redshift"
+title: "UQFF Early-Universe Relativistic UV Coupling — (v/c)2 L_UV for Proto-Galactic Formation at High Redshift"
 session: 57
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -571,3 +570,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
 2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+

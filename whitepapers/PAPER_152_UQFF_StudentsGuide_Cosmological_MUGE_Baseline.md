@@ -1,7 +1,6 @@
 ﻿---
 paper_id: PAPER_152
-title: "UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance
-Baseline: g = 3.958$\times$10^14 m/s^2"
+title: "UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.95810^14 m/s^2"
 session: 0
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -598,3 +597,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 7. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
 8. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
 9. Murphy, D. (2026). *Master Universal Gravity Equation (MUGE): DPM-Driven Gravity Framework.* Star-Magic Whitepaper Series — github.com/Daniel8Murphy0007/Star-Magic
+

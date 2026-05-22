@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_304
-title: "Aether-Gravitational Dominance at Atomic Scale: $\xi$_aether = 1.852$\times$1024"
+title: "Aether-Gravitational Dominance at Atomic Scale: _aether = 1.8521024"
 session: 86
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -450,3 +450,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 8. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
 9. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
 10. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+

@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_592
-title: "Speed of Light $c$ Derived from Pre-Mass Triad Equilibrium"
+title: "Speed of Light c Derived from Pre-Mass Triad Equilibrium"
 session: 157
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -476,3 +476,4 @@ python _constant_derivation_v2.py
 - [PAPER_593](PAPER_593_UQFF_Gravitational_Constant_Derived.md) — $G$ (still STRUCTURAL)
 - [CondensedPhysics4.py](../CondensedPhysics4.py) — calculator class #179
 - [AXIOMS_AND_THEOREMS.md](../AXIOMS_AND_THEOREMS.md) — Theorem 6 (Session 239 update)
+

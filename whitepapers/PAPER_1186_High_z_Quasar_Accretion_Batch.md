@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_1186
-title: "High-Redshift Quasar Accretion Batch: Ten Systems at $z=4.4$--$7.64$ Under UQFF SCm Modulation"
+title: "High-Redshift Quasar Accretion Batch: Ten Systems at z=4.4--7.64 Under UQFF SCm Modulation"
 session: 294
 date: 2026-05-17
 author: "Daniel T. Murphy"
@@ -89,3 +89,4 @@ All ten systems return Eddington ratios in the range $\lambda_{\text{Edd}}\sim0.
 ---
 
 *PAPER_1186 closes audit gap #4. Session 294, May 17 2026.*
+

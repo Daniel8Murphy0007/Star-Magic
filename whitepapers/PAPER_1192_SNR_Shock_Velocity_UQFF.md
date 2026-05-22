@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_1192
-title: "SNR Shock Velocity from X-ray Photometry: $v_s = \\sqrt{16 k T / 3 \\mu m_p}$ With Sedov Cross-Check"
+title: "SNR Shock Velocity from X-ray Photometry: v_s = \{16 k T / 3 \ m_p} With Sedov Cross-Check"
 session: 300
 date: 2026-05-17
 author: "Daniel T. Murphy"
@@ -65,3 +65,4 @@ Module `_session300_snr_shock_velocity.py`; class `SNRShockVelocityFromPhotometr
 ## 9. References
 
 Sedov 1959. Hwang \& Laming 2012 (Cas A). Cassam-Chenai et al.\ 2008 (SN 1006). UQFF\_CALIBRATION\_AUDIT.md.
+

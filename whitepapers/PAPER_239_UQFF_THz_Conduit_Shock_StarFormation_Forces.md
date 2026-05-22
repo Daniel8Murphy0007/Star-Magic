@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_239
-title: "UQFF THz Shock Force and H$_2$O Conduit Force --- 26-Layer Star-Formation Coupling"
+title: "UQFF THz Shock Force and H_2O Conduit Force --- 26-Layer Star-Formation Coupling"
 session: 59
 date: 2026-03-01
 author: "Daniel T. Murphy"
@@ -356,3 +356,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 
 1. Abbott et al. (LIGO Scientific and Virgo Collaborations, 2016). *Observation of Gravitational Waves from a Binary Black Hole Merger.* Phys. Rev. Lett. **116**, 061102 — arXiv:1602.03837 — doi:10.1103/PhysRevLett.116.061102
 2. Murphy, D. (2026). *Unified Quantum Field Framework (UQFF): Star-Magic v5.x Whitepaper Series.* Star-Magic Repository — github.com/Daniel8Murphy0007/Star-Magic
+

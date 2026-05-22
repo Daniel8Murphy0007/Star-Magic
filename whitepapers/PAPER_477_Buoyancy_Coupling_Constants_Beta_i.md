@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_477
-title: "Buoyancy Coupling Constants $\beta$_i in the UQFF Framework"
+title: "Buoyancy Coupling Constants _i in the UQFF Framework"
 session: 123
 date: 2026-01-01
 author: "Daniel T. Murphy"
@@ -419,3 +419,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 8. Hawking, S.W. (1974). *Black hole explosions?* Nature **248**, 30 — doi:10.1038/248030a0
 9. Event Horizon Telescope Collaboration (2019). *First M87 Event Horizon Telescope Results. I.* ApJL **875**, L1 — arXiv:1906.11238 — doi:10.3847/2041-8213/ab0ec7
 10. Bekenstein, J.D. (1973). *Black Holes and Entropy.* Phys. Rev. D **7**, 2333 — doi:10.1103/PhysRevD.7.2333
+

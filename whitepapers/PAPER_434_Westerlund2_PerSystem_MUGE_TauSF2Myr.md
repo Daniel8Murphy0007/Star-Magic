@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_434
-title: "Westerlund 2: Per-System MUGE with $\tau$=2 Myr Wind Evolution and M0=30,000 MM_sun"
+title: "Westerlund 2: Per-System MUGE with =2 Myr Wind Evolution and M0=30,000 MM_sun"
 session: 119
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -407,3 +407,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 6. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
 7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
 8. Murphy, D. (2026). *Master Universal Gravity Equation (MUGE): DPM-Driven Gravity Framework.* Star-Magic Whitepaper Series — github.com/Daniel8Murphy0007/Star-Magic
+

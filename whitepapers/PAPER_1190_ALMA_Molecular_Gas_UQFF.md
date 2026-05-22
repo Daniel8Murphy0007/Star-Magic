@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_1190
-title: "ALMA Molecular Gas Mass Calculator: $L'_{CO}$ Bridge and HCN Dense-Gas Tracer Under UQFF SCm Modulation"
+title: "ALMA Molecular Gas Mass Calculator: L'_{CO} Bridge and HCN Dense-Gas Tracer Under UQFF SCm Modulation"
 session: 298
 date: 2026-05-17
 author: "Daniel T. Murphy"
@@ -63,3 +63,4 @@ Module `_session298_alma_molecular_gas.py`; class `ALMAMolecularGasCalculator`; 
 ## 9. References
 
 Solomon \& Vanden Bout 2005, ARA\&A 43, 677. Gao \& Solomon 2004, ApJ 606, 271. UQFF\_CALIBRATION\_AUDIT.md.
+

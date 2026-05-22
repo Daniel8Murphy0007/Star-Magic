@@ -1,7 +1,6 @@
 ﻿---
 paper_id: PAPER_378
-title: "Cohesive UQFF Integration Formula: Compressed$\times$Resonance Unification with Resonance Damping
-and SM Gravity Emergence"
+title: "Cohesive UQFF Integration Formula: Compressed Unification with Resonance Damping and SM Gravity Emergence"
 session: 103
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -438,3 +437,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 4. Dirac, P.A.M. (1931). *Quantised Singularities in the Electromagnetic Field.* Proc. R. Soc. Lond. A **133**, 60 — doi:10.1098/rspa.1931.0130
 5. Castelnovo, C., Moessner, R. & Sondhi, S.L. (2008). *Magnetic monopoles in spin ice.* Nature **451**, 42 — arXiv:0710.5515 — doi:10.1038/nature06433
 6. Blanchet, L. (2014). *Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries.* Living Rev. Relativ. **17**, 2 — arXiv:1310.1528 — doi:10.12942/lrr-2014-2
+

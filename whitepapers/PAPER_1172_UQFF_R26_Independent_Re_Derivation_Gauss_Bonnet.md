@@ -1,6 +1,6 @@
----
+﻿---
 paper_id: PAPER_1172
-title: "Independent Re-Derivation of the 26-D Curvature Coefficient $\\rho_{R_{26}} = (13/2)\\,v_{UA}^{2}\\,\\rho_{\\mathrm{SCm}}$ via Two Routes"
+title: "Independent Re-Derivation of the 26-D Curvature Coefficient \_{R_{26}} = (13/2)\\,v_{UA}^{2}\\,\_{\{SCm}} via Two Routes"
 session: 256
 date: 2026-05-10
 author: Daniel Murphy
@@ -120,3 +120,4 @@ D_{\mathrm{phys}}=4)$ via two independent paths.
 - PAPER_1170 — Four-line ledger; Route A.
 - PAPER_1171 — KK regulator first-principles derivation.
 - `uqff_closed_constants.py` — canonical integer-rational constants.
+

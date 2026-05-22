@@ -1,6 +1,6 @@
 ﻿---
 paper_id: PAPER_301
-title: "Hydrogen Atom Proton GR Spectral Minimum: $\varepsilon$_GR = 7.04$\times$10-44"
+title: "Hydrogen Atom Proton GR Spectral Minimum: _GR = 7.0410-44"
 session: 85
 date: 2025-01-01
 author: "Daniel T. Murphy"
@@ -442,3 +442,4 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 3. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
 4. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
 5. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+
