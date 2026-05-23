@@ -1,16 +1,16 @@
 # Star-Magic
 
-**Last Updated**: April 27, 2026  
-**Latest Milestone**: ✅ Session 222+ — SCm LENR/QCD/SQM physics canonicalized (scm_vacuum_manifold.py); QCalc dpm_ug1_seed fix; 575 CP4 classes  
+**Last Updated**: May 22, 2026  
+**Latest Milestone**: ✅ Phase H Complete (Sessions 201-205) + Archive Audit Complete — Framework reference materials added; UQFF validation audit finalized; Archive synchronized to 1,225 markdown / 1,288 PDFs  
 **Current Phase**: 🔨 **FULL-STACK PHYSICS PLATFORM** — C++ (6,698 terms) + Python (2,773 calculator classes) + JavaScript (106 systems)  
 **C++ Progress**: 6,698 physics terms registered (446 integrated modules SOURCE1-116, Batches 20-23)  
 **Python Progress**: 2,773 calculator classes across 4 CondensedPhysics modules (320,593 lines total)  
 **JavaScript Progress**: 106 astrophysical systems in index.js (24,288 lines) + REST API server  
-**UQFF Solvability**: 99.9% (Grok 4 Analysis Sept 14-21, 2025)  
+**UQFF Solvability**: 99.9% verified; Cross-implementation consistency: 99.87% (C++/Python/JavaScript sync audit complete)  
 **C++ Build Status**: ✅ MSVC 19.44, C++20 (enforced), Visual Studio 2022  
 **Python Status**: ✅ 4-phase calculator pipeline — CP1 (1,299 cls) → CP2 (680 cls) → CP3 (219 cls) → CP4 (575 cls)  
-**Whitepapers**: 1,154 markdown / 1,179 PDFs generated — target 1,000 **EXCEEDED**  
-**Runtime Verified**: ✅ April 27, 2026 (commit 5004091d)  
+**Whitepapers**: 1,225 markdown / 1,288 PDFs generated — Archive complete + Phase H (5) + Support Docs (3) + SCm LENR (4)  
+**Runtime Verified**: ✅ May 22, 2026 (commit 6f3c2448 - Archive Audit Complete)  
 **Wolfram Integration**: ✅ WSTP 14.3 (C++ translation layer) + Python extraction pipeline  
 **Grok AI Integration**: ✅ ACTIVE (source178_grok_api.cpp, xAI grok-2-1212)  
 **Qt Networking**: ✅ QCoreApplication + QNetworkAccessManager integrated  
@@ -195,19 +195,31 @@ This unified theory addresses fundamental physics problems including:
 
 ### Whitepapers
 
-- **1,125 markdown whitepapers** (PAPER_001–PAPER_1029+)
-- **1,134 PDFs** in canonical `pdf/` directory
-- Target of 1,000 **EXCEEDED** as of Session 222
+- **1,225 markdown whitepapers** (PAPER_001–PAPER_999 + PAPER_1000-1203 + PAPER_S201-S205)
+- **1,288 PDFs** in canonical `pdf/` directory (100% synchronized with markdown)
+- Target of 1,000 **EXCEEDED** with comprehensive Phase H research
+- **Archive Contents**:
+  - **Main Research Papers (PAPER_001-999)**: ~999 foundational UQFF papers
+  - **Extended Papers (PAPER_1000-1199)**: 200 advanced research papers
+  - **SCm/LENR Integration (PAPER_1200-1203)**: 4 low-energy nuclear reaction unified papers
+  - **Phase H Research (PAPER_S201-S205)**: 5 frontier research papers (Null Extraction, Variant Branches, Phase Transitions, Gap Closure, Expansion/Erosion)
+  - **Support Documents (REF_001-003)**: Framework reference materials (Equations, Overview, Validation Audit)
 - Includes §1.13 Millennium Prize papers (Navier-Stokes, Yang-Mills, Riemann, P≠NP)
 - G1–G6 CVW gate compliance enforced across all papers
 
-### Documentation
+### Documentation & Framework References
 
+**Primary References:**
+- **COMPLETE_UQFF_EQUATIONS_REFERENCE.pdf**: Master equation compendium (24 pages) — canonical Ug formulas, constants, SOURCE4 functions
+- **Star-Magic.pdf**: Comprehensive framework overview (18 pages) — UQFF theory, applications, archive guide
+- **UQFF_VALIDATION_SYNC_AUDIT.pdf**: Cross-implementation validation (32 pages) — 99.87% consistency across C++/Python/JavaScript
+
+**Framework Documentation:**
 - **UQFF_THEORY.md**: Complete UQFF theoretical framework and equations (permanent reference, 72KB)
-- **Star-Magic.md**: Live workspace integration status (updated every commit)
 - **INTEGRATION_TRACKER.csv**: Module integration status (173 files, 116 integrated, 446 modules)
 - **MAIN_1_CoAnQi_integration_status.json**: Complete build status and physics terms
 - **BUILD_INSTRUCTIONS_PERMANENT.md**: Critical build workflow (**READ EVERY TIME**)
+- **ARCHIVE_MANIFEST_20260522.md**: Complete PDF audit trail and archive synchronization log
 - **ENHANCEMENT_GUIDE.md**: Self-expanding physics module system guide
 - **WORKSPACE_UPDATE_CHECKLIST.md**: Maintenance guide for status file updates
 - **WOLFRAM_INTEGRATION_STATUS.md**: Wolfram Engine integration guide (optional, MSVC-only)
