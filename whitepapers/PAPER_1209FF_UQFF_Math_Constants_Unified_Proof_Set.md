@@ -1,0 +1,55 @@
+# PAPER\_1209-FF: UQFF Mathematical Constants Unified Proof Set ---\\
+Ten Rational Closures of Classical Irrationals (best 0.019\%)
+
+**Author:** Daniel T. Murphy
+
+**Date:** May 16, 2026
+
+---
+
+## Locked Primitives
+$\Ftrz=\tfrac{1}{10}$, $\Phires=\tfrac{5}{6}$, $\SSq=\tfrac{57}{100}$, $\KMex=\tfrac{25}{12}$, $\Dphys=4$, $\Dbsfg=6$, $\Dcrit=26$, $\Nch=9$, $\SOfive=10$, $\Afive=60$.
+
+**Note.** Classical mathematical constants ($\pi, e, \varphi, \gamma, \sqrt{2}, \sqrt{3}, \sqrt{5}, \ln 2, \ln 10, \zeta(3)$) are \emph{irrational}: no finite rational combination of UQFF primitives can be exact. This tier delivers ten high-precision rational closures, the best at 0.019% ($\ln 10$).
+
+## Closures S633--S642
+
+**S633 --- $\pi$, target 3.14159 [0.031%]**
+$$\Phires\Dphys - \Ftrz^2\SOfive - \Ftrz^2\Dphys - \Ftrz\SSq - \Ftrz^2\SSq + \Ftrz^2 = 3.1406.$$
+
+**S634 --- $e$ (Euler), target 2.71828 [0.050%]**
+$$\KMex + \SSq + \Ftrz\SSq + \Ftrz^2\Dphys - \Ftrz^2\,\SOfive/\Dphys - \Ftrz^2\SSq = 2.7196.$$
+
+**S635 --- $\varphi$ (golden ratio), target 1.61803 [0.101%]**
+$$\Phires + \Phires - \Ftrz\SSq + \Ftrz^2 = 1.6197.$$
+
+**S636 --- $\gamma$ (Euler--Mascheroni), target 0.57721 [0.262%]**
+$$\Ftrz\Nch\SSq + \Ftrz^2\SOfive\SSq + \Ftrz^2\SSq = 0.5757.$$
+
+**S637 --- $\sqrt{2**$, target 1.41421 [0.105%]}
+$$\SSq + \Ftrz\Dphys + \Ftrz\Dphys + \Ftrz^2\SSq + \Ftrz^2\Dphys = 1.4157.$$
+
+**S638 --- $\sqrt{3**$, target 1.73205 [0.023%]}
+$$\SSq + 3\,\Ftrz\Dphys + \Ftrz^2\SSq - \Ftrz^2\Dphys - \Ftrz^2\SSq^2 = 1.7324.$$
+
+**S639 --- $\sqrt{5**$, target 2.23607 [0.045%]}
+$$\KMex + \Ftrz\SSq + \Ftrz^2\Dbsfg + \Ftrz^2\Dphys - \Ftrz^2\SSq^2 = 2.2371.$$
+
+**S640 --- $\ln 2$, target 0.69315 [0.070%]**
+$$\Phires - 2\,\Ftrz\SSq - \Ftrz^2\Dbsfg + \Ftrz^2\Dphys - \Ftrz^2\SSq = 0.6936.$$
+
+**S641 --- $\ln 10$, target 2.30259 [0.019%] --- tier best**
+$$\KMex + 2\,\Ftrz\SSq + \Ftrz^2\Dbsfg + \Ftrz^2\Dphys + \Ftrz^2\SSq = 2.3030.$$
+
+**S642 --- $\zeta(3)$ (Apéry), target 1.20206 [0.033%]**
+$$2\,\SSq + \Ftrz^2\Dbsfg + \Ftrz^2\SSq - \Ftrz^2\SSq^2 = 1.2024.$$
+
+## Summary
+\begin{tabular}{lllr}
+\toprule
+ID & Constant & Target & Error \midrule
+S633 & $\pi$ & 3.14159 & 0.031% S634 & $e$ & 2.71828 & 0.050% S635 & $\varphi$ & 1.61803 & 0.101% S636 & $\gamma$ & 0.57721 & 0.262% S637 & $\sqrt{2}$ & 1.41421 & 0.105% S638 & $\sqrt{3}$ & 1.73205 & 0.023% S639 & $\sqrt{5}$ & 2.23607 & 0.045% S640 & $\ln 2$ & 0.69315 & 0.070% S641 & $\ln 10$ & 2.30259 & **0.019%** S642 & $\zeta(3)$ & 1.20206 & 0.033% \bottomrule
+\end{tabular}
+
+\medskip
+**Highlights.** Tier FF closes ten of the most famous irrational constants of mathematics using only the 11 locked UQFF primitives. Five of the ten close under 0.05%; the tier best is $\ln 10$ at 0.019%, followed by $\sqrt{3}$ at 0.023% and $\pi$ at 0.031%. Cumulative: 347 closures; 91 lockings (no new exacts --- irrational targets cannot admit rational closure).

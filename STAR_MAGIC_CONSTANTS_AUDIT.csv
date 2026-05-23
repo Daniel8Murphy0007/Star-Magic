@@ -1,0 +1,71 @@
+Constant Name,Symbol,Value,Units,Source File,Category,Description,References
+RHO_VAC_SCM,ρ_vac_SCm,7.0898154036e-37,J/m³,dpm_vacuum_manifold.py,Quantum Chain,SCm vacuum energy density - emergent from 26D hydrogen geometry,G9 structural closure - PAPER_409
+RHO_VAC_UA,ρ_vac_UA,7.0898154036e-36,J/m³,dpm_vacuum_manifold.py,Quantum Chain,UA vacuum energy density - 10× SCm scale,G7 |SO(5)| ratio
+SOLAR_MASS,M_☉,1.989e30,kg,index.js / copilot-instructions.md,Physical Constants,Mass of the Sun,Standard SI unit
+PLANCK_CONSTANT,h,1.055e-34,J·s,index.js / copilot-instructions.md / MAIN_1_CoAnQi.cpp,Physical Constants,Planck's reduced constant (ℏ),PAPER_590 derivation
+SPEED_OF_LIGHT,c,2.998e8,m/s,index.js / copilot-instructions.md / dpm_vacuum_manifold.py,Physical Constants,Speed of light in vacuum,PAPER_592 triad equilibrium
+GRAVITATIONAL_CONSTANT,G,6.674e-11,m³/(kg·s²),index.js / copilot-instructions.md,Physical Constants,Gravitational constant,PAPER_593 void coupling
+B_CRIT_MAGNETAR,B_crit,4.4e13,T,index.js / copilot-instructions.md / AntennaeGalaxies.cpp,Physical Constants,Critical magnetic field for magnetars,Magnetar field strength
+SSQ,[SSq],0.57,dimensionless,dpm_vacuum_manifold.py / QCalcGeom.py / index.js / CondensedPhysics.py,UQFF Framework,Squared-sum convergence constant - triple-point calibration,26D Ramanujan calibration center
+BETA_I,β_i,0.6,dimensionless,dpm_vacuum_manifold.py / QCalcGeom.py / index.js,UQFF Framework,Buoyancy coupling constant,Canonical from scm_vacuum_manifold
+KAPPA,κ,0.0005,day⁻¹,dpm_vacuum_manifold.py / 99system_master_equation.py,UQFF Framework,Reactivity decay constant - learning rate,Gradient descent on [SSq]
+KAPPA_FLOAT,κ,0.0005,dimensionless,dpm_vacuum_manifold.py / index.js,UQFF Framework,Reactivity decay constant (Python float),For numpy/math exp() calculations
+F_TRZ,F_TRZ,0.1,dimensionless,QCalcGeom.py / copilot-instructions.md,UQFF Framework,Time-Reversal Zone suppression factor,Temporal reversal in quasar dynamics
+H_SCm,H_SCm,0.99,dimensionless,copilot-instructions.md / workspace_22May2026.md,UQFF Framework,Superconductive coupling coefficient,Session 278-291 calibration
+U_UA,U_UA,0.0001,dimensionless,copilot-instructions.md,UQFF Framework,UA vacuum coupling factor,Session 278-291 calibration
+k_eta,k_η,1e-113,dimensionless,copilot-instructions.md / add_uqff_remaining.py,UQFF Framework,Exotic coupling constant - dimensionless exponent,Velocity-squared relativistic term
+E0,E_0,1e-20,J,dpm_vacuum_manifold.py,Quantum Chain,Base energy scale for 26 quantum levels,26-level hydrogen geometry magnitude
+LAMBDA_I,λ_i,1.0,dimensionless,dpm_vacuum_manifold.py / QCalcGeom.py,UQFF Framework,Manifold coupling constant,DPM quantum chain topology
+OMEGA_S,ω_s,2.5e-6,rad/s,dpm_vacuum_manifold.py / QCalcGeom.py,UQFF Framework,Stellar angular frequency,DPM vortex rotation
+C_LIGHT,c,2.99792458e8,m/s,dpm_vacuum_manifold.py / index.js,Physical Constants,Speed of light (high precision),For /c² conversion calculations
+BOHR_RADIUS,a_0,0.529e-10,m,index.js / MAIN_1_CoAnQi.cpp,Physical Constants,Bohr radius - atomic scale,Quantum mechanical baseline
+THZ_PHONON,f_THz,1.25e12,Hz,dpm_vacuum_manifold.py / index.js / 99system_master_equation.py,Experimental Integration,1.25 THz SCm phonon resonance frequency,Holmlid/Parkhomov resonance
+S26_3,S26_3,1.4531e26,dimensionless,dpm_vacuum_manifold.py / index.js / 99system_wstp_gamma.py,26D Framework,26D Ramanujan amplification factor,VDS convergence amplifier
+PHI_RESONANCE,φ_res,0.84,dimensionless,index.js,Experimental Integration,On-resonance Gaussian factor,Holmlid KER calculation
+E_PHONON_SCM,E_phonon,8.28e-22,J,index.js,Experimental Integration,SCm phonon energy (h × f_THz),"h × 1.25 THz"
+KER_SCM,KER,1.2e-45,J,index.js,Experimental Integration,Holmlid Karabut Energy Release,Holmlid KER = h × f_THz × S26_3 × φ_res
+SOLAR_RADIUS,R_☉,6.96e8,m,index.js,Astrophysical Constants,Solar radius,Standard SI unit
+GALACTIC_SPIN_RATE,Ω_gal,7.3e-16,rad/s,index.js,Astrophysical Constants,Milky Way galactic rotation rate,Typical spiral galaxy spin
+BLACK_HOLE_MASS_SgrA,M_bh,8.15e36,kg,index.js,Astrophysical Constants,Sagittarius A* supermassive black hole mass,4.1 million solar masses
+GALACTIC_DISTANCE,d_gal,2.55e20,m,index.js,Astrophysical Constants,Distance to galactic center,~25,000 light-years
+AETHER_DENSITY,ρ_aether,1e-23,kg/m³,index.js,Quantum Vacuum,Aether vacuum density,Classical Newtonian medium
+SCM_DENSITY,ρ_SCm,1e15,kg/m³,index.js,Quantum Vacuum,Superconductive material density,Core coupling medium
+HELIOSPHERE_RADIUS,R_helio,1.496e13,m,index.js,Astrophysical Constants,Heliosphere radius,"~100,000 AU"
+HUBBLE_TIME,t_H,4.358e17,s,index.js,Cosmological Constants,Hubble time = age of universe,13.8 billion years
+LAMBDA_COSMO,Λ,1.1e-52,m⁻²,index.js,Cosmological Constants,Cosmological constant,Dark energy scale
+COLMAN_GILLESPIE_FREQ,f_CG,300,Hz,index.js,Experimental Integration,Colman-Gillespie activation frequency,Lab resonance marker
+THZ_RESONANCE_LOW,f_low,1.2e12,Hz,index.js,Experimental Integration,THz resonance lower bound,Resonance window
+THZ_RESONANCE_HIGH,f_high,1.3e12,Hz,index.js,Experimental Integration,THz resonance upper bound,Resonance window
+RHO_VAC_GRADIENT_RATIO,r_grad,7.09e-9,dimensionless,index.js,Quantum Vacuum,Vacuum density gradient ratio,Drives DPM field-gravity coupling
+LEP_F_REL,F_rel,4.30e33,N,index.js,Experimental Integration,Relativistic coherence force from LEP 1998,Particle physics baseline
+B_DPM,B_DPM,1e-4,T,index.js / CoAnQi_enhancements.cpp,DPM Framework,DPM dipole field strength (default),"Configurable per system"
+COUPLING_k1,k_1,1.5,dimensionless,index.js / copilot-instructions.md,Gravity Coupling,Internal dipole coupling constant,Ug1 family scaling
+COUPLING_k2,k_2,1.2,dimensionless,index.js / copilot-instructions.md,Gravity Coupling,Outer field bubble coupling constant,Ug2 heliosphere scaling
+COUPLING_k3,k_3,1.8,dimensionless,index.js / copilot-instructions.md,Gravity Coupling,Magnetic strings disk coupling constant,Ug3 core penetration
+COUPLING_k4,k_4,2.1,dimensionless,index.js / copilot-instructions.md,Gravity Coupling,Star-black hole interaction coupling,Ug4 galactic scale
+COUPLING_ALPHA,α,0.0005,day⁻¹,index.js,Gravity Coupling,Non-linear time decay rate,Exponential damping term
+COUPLING_GAMMA,γ,1e-22,dimensionless,index.js,Gravity Coupling,Aether coupling constant,Vacuum-field interaction strength
+KAPPA_BFLOAT,κ_bfloat,0.0005,dimensionless,99system_wstp_gamma.py,UQFF Framework,Reactivity decay in Wolfram Language,For Exp[-κ t] time evolution
+RHO_VAC_LEGACY,ρ_vac_legacy,1e-10,J/m³,add_uqff_remaining.py / add_uqff_methods.py,Legacy Constants,"Fallback legacy vacuum density value (DEPRECATED)",Used in old QCalc versions
+RHO_VAC_UA_FALLBACK,ρ_vac_UA_fallback,7.09e-36,J/m³,add_uqff_methods.py,Vacuum Density,Fallback UA density when property unavailable,Equivalent to RHO_VAC_UA
+RHO_VAC_SCM_FALLBACK,ρ_vac_SCm_fallback,7.09e-37,J/m³,add_uqff_methods.py,Vacuum Density,Fallback SCm density when property unavailable,Equivalent to RHO_VAC_SCM
+G_STANDARD,G,6.67430e-11,m³/(kg·s²),CoAnQi_enhancements.cpp,Physical Constants,Standard gravitational constant (high precision),CODATA 2018 value
+DPM_RATIO,[DPM],10,dimensionless,workspace_22May2026.md / dpm_vacuum_manifold.py,Quantum Chain,Ratio UA/SCm - scale-invariant DPM ratio,Fundamental topological ratio
+E_CRACK,E_crack,9.9862e+22,J,workspace_22May2026.md,Quantum Chain,Critical energy for quantum crack threshold,"From 26-layer analysis"
+RHO_VAC_ISM,ρ_vac_ISM,7.09e-37,J/m³,workspace_22May2026.md,Quantum Vacuum,Vacuum density ISM scale (=RHO_VAC_SCM),Interstellar medium coupling
+RHO_VAC_NEBULA,ρ_vac_neb,7.09e-36,J/m³,workspace_22May2026.md,Quantum Vacuum,Vacuum density nebula scale (=RHO_VAC_UA),Nebula coupling
+BETA_I_CANONICAL,β_i_canonical,0.603,dimensionless,workspace_22May2026.md / copilot-instructions.md,UQFF Framework,Refined buoyancy coupling constant,Grok Session 278-291 precise value
+SSQ_BSFG,[SSq]_BSFG,0.57,dimensionless,workspace_22May2026.md,BSFG Framework,BSFG triple-point [SSq] calibration,Triple-path geometric convergence
+RERING_BB_HZ,r_hz_BB,spherical,dimensionless,workspace_22May2026.md,Habitable Zone,Black body habitable zone radius,Recirculation equilibrium
+BH26_SPECTRAL_N10_S7,N_10,26,dimensionless,workspace_22May2026.md,26D Framework,Black hole 26-sphere spectral multiplicity,S^25 degeneracy count
+TRIPLE_PT_TOL,δ_3pt,1%,dimensionless,workspace_22May2026.md,Convergence Tolerance,Triple-point convergence tolerance,All 3 paths match within 1%
+VDS_CALIBRATION_KNOTS,V_knots,99,dimensionless,workspace_22May2026.md,VDS Framework,Number of VDS knots for LUT interpolation,Li_25 and Li_26 samples
+BSFG_FIXED_POINT,[SSq]_fp,0.57,dimensionless,workspace_22May2026.md,BSFG Framework,BSFG fixed point where all paths converge,Scalar curvature critical point
+TIME_SCALE_MAYAN,t_Baktun,5125.36,years,workspace_22May2026.md / copilot-instructions.md,Mayan Timing,Mayan Baktun period,13 Baktun = 1,872,000 days
+TIME_SCALE_BIBLICAL,t_generation,25,years,workspace_22May2026.md / copilot-instructions.md,Biblical Timing,Biblical generation period,Conventional genealogical unit
+PI_DECIMAL_DIGITS,π_digits,312,digits,workspace_22May2026.md / copilot-instructions.md,Mathematical Constants,Pi infinity decoder from Wolfram,Sacred time constant extraction
+OMEGA_C,ω_sun,2.0e-6,rad/s,index.js,Solar Cycles,Solar cycle frequency,11-year solar cycle × 2π
+F_SM,F_SM,varies,dimensionless,various .cpp / .py,System-specific,System-specific scaling factors,AGN jets; star clusters; ICM
+RHO_IM,ρ_IM,varies,kg/m³,various .cpp / .py,System-specific,Intra-cluster medium density,Cluster-specific parameter
+MAGNETIC_FIELD_B,B,varies,T,various .cpp / .py,System-specific,Magnetic field strength (system-dependent),"Abell clusters; AGN"
+KAPPA_BZ,κ_BZ,0.044,dimensionless,AGNJetDynamicsBlandfordZnajek.cpp,AGN Physics,Blandford-Znajek power coupling coefficient,P_BZ = κ_BZ × a² × B² × r_g² × c

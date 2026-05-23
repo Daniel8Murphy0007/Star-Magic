@@ -1,63 +1,674 @@
-﻿===================================================
-  UQFF Constant Derivation - Wolfram Engine 14.3  
-===================================================
+================================================================================
+UQFF DERIVATION EQUATIONS OUTPUT REGISTRY
+Generated from: _uqff_derivation_equations.py + _uqff_reference_documentation.py
+================================================================================
 
---- PART 1: Z26 = Li26(SSq) ---
-Z26 = PolyLog[26, 0.57] = 0.5700000048414601
-Z26 = PolyLog[26, 4/7] = 0.57142857629433014635698851814448308158`15.
-Diff |0.57 - 4/7| = 0.0014285714285714457
-Diff |Z26(0.57) - Z26(4/7)| = 0.0014285714528701199
+[001] F_TRZ
+     Equation: F_TRZ = 1/|SO(5)| = 1/10; time-reversal zone suppression factor appearing in cos(π·t_n) oscillations [PAPER_1160]
+     Sources: Session 237-241: Time-reversal zone suppression factor derivation
+     CVW: v2.0.0
 
-Key insight: For large degree n, Li_n(x) = x + x^2/2^n + x^3/3^n + ...
-At n=26, second term = 0.57^2/2^26 = 4.841387271881103*^-9
-Hence Z26 ~ SSq is expected, not a special property of 0.57
+[002] PHI_RES
+     Equation: PHI_RES = (D_BSFG - 1)/D_BSFG = 5/6; resonance phase factor in on-resonance Gaussian UQFF selection [PAPER_1159]
+     Sources: PAPER_591: Fine-structure constant derivation, resonance phase factor
+     CVW: v2.0.0
 
---- PART 2: Origin of SSq = 0.57 ---
-beta = (1-Ye)^(1/26) at Ye=0.1: 0.9959558720743248
-  -> 0.9^(1/26) = 0.9959558720743248 not 0.57
-SSq^26 = 4.495171312401197*^-7 (26-layer total suppression)
-SSq^13 = 0.00067046038752496 (13-layer, half-shell suppression)
+[003] SSQ
+     Equation: E_crack = (ρ_vac,SCm × c²) / [SSq]; [SSq]=0.57 = Yang-Mills mass gap quotient → E_crack = 3.35e-19 J [PAPER_113]
+     Sources: Cosmological calibration: Squared-Sum Vacuum Topology
+     CVW: v2.0.0
 
-4/7 = 0.57142857142857142857142857142857142857`10.
-Diff 0.57 - 4/7 = -0.0014285714285714457 (0.57 is slightly less)
-FractionBox: SSq = 57/100 exactly (terminating decimal)
-The physics discriminates 57/100 vs 4/7 only at 4th decimal place
+[004] N_LAYERS
+     Equation: D_crit = 26 [Polyakov critical dimension]; 26D spherical harmonic decomposition → 26-layer buoyancy frame [PAPER_141]
+     Sources: 26-dimensional fundamental framework
+     CVW: v2.0.0
 
---- PART 3: kappa from JWST quasar tau=2000 days ---
-kappa = 1/tau = 1/2000 days = ScientificForm[0.0005`6., 4]
-Target kappa = 5e-4 = ScientificForm[1/2000, 4]
-Match: kappa derived = kappa target? Diff =      -9
-0. 10
-E-fold check: exp(-kappa * tau) = exp(-1) = 0.3678794411714423216`6.
+[005] PI
+     Equation: π = 3.14159265...; geometry constant in (4π/3) volume factor and cos(π·t_n) quantum oscillator [geometric]
+     Sources: Mathematical constant: 3.14159...
+     CVW: v2.0.0
 
---- PART 4: FindFit SSq from Solar system SCm densities ---
-Log10 linear fit: intercept=14.70000000170702 slope=-1.3000000011380135
-slope = -log10(base) where base is the ratio per step
-Density ratio per step = 10^|slope| = 19.95262320197211
-Exp fit: alpha = 4.603366216999058 (compare SSq=0.57, but note alpha is per body-step)
-         rho0 = ScientificForm[9.999999095119099*^14]
-Note: alpha here is per 1-unit n step, not directly SSq
-SSq enters as: rho(n) = rho0 * Exp[-SSq * n * C] where C = ln(rho_step)
+[006] F_TRZ_INV
+     Equation: F_TRZ_INV = |SO(5)| = 10; inverse of F_TRZ, count of time-reversal antiphase configurations [PAPER_1160]
+     Sources: Reciprocal of F_TRZ for phase calculations
+     CVW: v2.0.0
 
---- PART 5: [UA] from H_SCm = 0.99 constraint ---
-rhoUA/rhoSCm = (1 - H_SCm)/H_SCm = 0.01010101010101011
-[UA] enters as rhoUA = [UA] * rho_vac_lambda
-[UA] = 1e-4 from bodies.csv column U_UA (all rows)
-Interpreted as: Boson-aether density = 1e-4 of total vacuum density
+[007] ALPHA_UQFF
+     Equation: ALPHA_UQFF = 1/(PHI_RES × 26 × 2π) = 1/(0.84 × 26 × 2π) ≈ 7.287e-3; dimensionless UQFF fine structure [PAPER_591]
+     Sources: PAPER_591: Parameter-free fine-structure constant from 26-layer projection
+     CVW: v2.0.0
 
---- PART 6: Cross-verification ---
-F_Ubi = [UA]*SSq*kappa*Z26 = ScientificForm[1.6245000137981612*^-8]
-This is the characteristic buoyancy coupling strength
-SSq^26 = 4.495171312401197*^-7 (full 26-layer suppression factor)
-sqrt(SSq^26) = SSq^13 = 0.00067046038752496 (half-stack)
-kappa * Z26 = ScientificForm[0.00028500000242073005] day^-1
+[008] radiative_correction
+     Equation: radiative_correction = 1 - 2×ALPHA_UQFF ≈ 0.9854; vacuum polarization self-energy in UQFF loop [PAPER_592]
+     Sources: Session 241: Radiative correction factor for physical constants
+     CVW: v2.0.0
 
-=== FINAL RESULTS ===
-[SSq]  = 0.57 = 57/100  [empirical; ~4/7 but not exact; triple convergence]
-Z26    = 0.5700000048414601  [= PolyLog[26, 0.57]; ~SSq by Li_n large-n property]
-kappa  = ScientificForm[0.0005`6., 3] day^-1  [= 1/2000 exactly; JWST quasar tau]
-[UA]   = 1e-4           [vacuum density fraction; H_SCm constraint gives ratio only]
+[009] C_LIGHT
+     Equation: c = 299792458 [m/s] [CODATA 2022 exact, speed of light]
+     Sources: CODATA 2022: Speed of light (exact by definition)
+     CVW: v2.0.0
 
-===================================================
-  DERIVATION COMPLETE ΓÇö v2                        
-===================================================
+[010] H_PLANCK
+     Equation: h = 6.62607015×10⁻³⁴ [J⋅s] [CODATA 2022 exact, Planck constant]
+     Sources: CODATA 2022: Planck constant (exact)
+     CVW: v2.0.0
+
+[011] HBAR
+     Equation: ℏ = h/(2π) = 1.054571817×10⁻³⁴ [J⋅s] [CODATA 2022 exact, reduced Planck]
+     Sources: CODATA 2022: Reduced Planck constant
+     CVW: v2.0.0
+
+[012] K_BOLTZMANN
+     Equation: k_B = 1.380649×10⁻²³ [J⋅K⁻¹] [CODATA 2022 exact, Boltzmann constant]
+     Sources: CODATA 2022: Boltzmann constant (exact)
+     CVW: v2.0.0
+
+[013] G_NEWTON
+     Equation: G = 6.67430(15)×10⁻¹¹ [m³⋅kg⁻¹⋅s⁻²] [CODATA 2022, gravitational constant]
+     Sources: CODATA 2022: Gravitational constant
+     CVW: v2.0.0
+
+[014] ELEMENTARY_CHARGE
+     Equation: e = 1.602176634×10⁻¹⁹ [C] [CODATA 2022 exact, elementary charge]
+     Sources: CODATA 2022: Elementary charge (exact)
+     CVW: v2.0.0
+
+[015] FINE_STRUCTURE
+     Equation: α = 1/137.035999177(20) [dimensionless] [CODATA 2022, fine-structure constant]
+     Sources: Fine-structure constant: α = 1/137.035999177
+     CVW: v2.0.0
+
+[016] AVOGADRO
+     Equation: N_A = 6.02214076×10²³ [mol⁻¹] [CODATA 2022 exact, Avogadro constant]
+     Sources: CODATA 2022: Avogadro constant (exact)
+     CVW: v2.0.0
+
+[017] MOLAR_GAS_CONSTANT
+     Equation: R = 8.314462618 [J⋅mol⁻¹⋅K⁻¹] [CODATA 2022 exact, gas constant]
+     Sources: CODATA 2022: Universal gas constant (exact)
+     CVW: v2.0.0
+
+[018] RHO_VAC_SCM
+     Equation: ρ_vac,SCm = 4√π × 10⁻³⁷ J/m³; vacuum density of trapped superconductive vortex (DPM core) = 7.09e-37 J/m³; couples to E_crack = (ρ_vac,SCm × c²) / [SSq] [Sessions 237-285]
+     Sources: Session 237-285: DPM Quantum Chain SCm vacuum density, structural G9
+     CVW: v2.0.0
+
+[019] RHO_VAC_UA
+     Equation: ρ_vac,UA = 10 × ρ_vac,SCm = 7.09e-36 J/m³; universal aether vacuum density (|SO(5)| = 10 scaling); E_react = (ρ_vac,SCm × v_SCm²) / ρ_vac,UA × exp(-κ×t) [Sessions 237-285]
+     Sources: Session 237-285: DPM Quantum Chain UA vacuum density (|SO(5)| factor)
+     CVW: v2.0.0
+
+[020] BETA_I
+     Equation: β_i = 3(5-i)/20 = (3/2)(5-i)/|SO(5)| [i=1..4] [PAPER_1165 closure G2, buoyancy]
+     Sources: Session 237-241: Buoyancy amplification factor calibration
+     CVW: v2.0.0
+
+[021] LAMBDA_I
+     Equation: λ_i = 1.0 [dimensionless] [manifold coupling, structural constant]
+     Sources: Structural: Manifold coupling constant
+     CVW: v2.0.0
+
+[022] RHO_AETHER
+     Equation: ρ_A = 1.244×10⁻²³ [kg/m³] [universal aether density in vacuum manifold]
+     Sources: Universal aether density (rho_A) from dpm_vacuum_manifold v3.0
+     CVW: v2.0.0
+
+[023] V_AETHER
+     Equation: v_A = 1.0×10⁸ [m/s] [aether speed = c/3, superconductive regime]
+     Sources: Superconductive aether speed: c/3 = 1.0e8 m/s
+     CVW: v2.0.0
+
+[024] E_CRACK
+     Equation: E_crack = 9.9862×10²² [J/m⁶] [aether shear energy density, dpm_vacuum_manifold v3.0]
+     Sources: dpm_vacuum_manifold v3.0: Aether shear energy density
+     CVW: v2.0.0
+
+[025] THZ_PHONON
+     Equation: f_THz = 1.25×10¹² [Hz] [Holmlid coherent resonance, phonon frequency]
+     Sources: Holmlid LENR physics: 1.25 THz phonon frequency (Compton edge)
+     CVW: v2.0.0
+
+[026] E_PHONON
+     Equation: E_phonon = h × f_THz = 8.283914×10⁻²² [J] [Holmlid bridge energy]
+     Sources: Holmlid bridge: Energy of 1.25 THz phonon = h × 1.25 THz
+     CVW: v2.0.0
+
+[027] OMEGA_STELLAR
+     Equation: ω_s = 2.5×10⁻⁶ [rad/s] [stellar angular frequency, rotation scale]
+     Sources: Stellar angular frequency parameter: 2.5e-6 rad/s
+     CVW: v2.0.0
+
+[028] PHI_RESONANCE
+     Equation: Φ_res = 0.84 [dimensionless] [on-resonance Gaussian, PAPER_591 fine-structure]
+     Sources: PAPER_591: On-resonance Gaussian resonance phase factor
+     CVW: v2.0.0
+
+[029] S26_3
+     Equation: S₂₆,₃ = 1.4531×10²⁶ [dimensionless] [26D Ramanujan amplification, vacuum depth factor]
+     Sources: 26-dimensional Ramanujan amplification factor (VDS_26)
+     CVW: v2.0.0
+
+[030] KER_SCM
+     Equation: E_Ker = 630 eV = 630 × 1.60217662×10⁻¹⁹ [J] [Kerr resonance coherent energy]
+     Sources: Coherent energy resonance: 630 eV from SCm sector
+     CVW: v2.0.0
+
+[031] KAPPA
+     Equation: κ = 0.0005 [day⁻¹] [decay rate, vacuum energy timescale coupling, Session 237]
+     Sources: Session 237: Decay/coupling strength = 0.0005 per day
+     CVW: v2.0.0
+
+[032] E_REACT_0
+     Equation: 1.0e46 [W/m³] Astrophysical reactor efficiency scale
+     Sources: Astrophysical reactor efficiency scale: 1.0e46 W/m³
+     CVW: v2.0.0
+
+[033] M_ELECTRON
+     Equation: 9.1093837015e-31 [kg] Electron mass (CODATA 2022)
+     Sources: CODATA 2022: Electron mass
+     CVW: v2.0.0
+
+[034] M_PROTON
+     Equation: 1.67262192369e-27 [kg] Proton mass (CODATA 2022)
+     Sources: CODATA 2022: Proton mass
+     CVW: v2.0.0
+
+[035] M_NEUTRON
+     Equation: 1.67492749804e-27 [kg] Neutron mass (CODATA 2022)
+     Sources: CODATA 2022: Neutron mass
+     CVW: v2.0.0
+
+[036] M_MUON
+     Equation: 1.88353162755e-28 [kg] Muon mass (CODATA 2022)
+     Sources: CODATA 2022: Muon mass
+     CVW: v2.0.0
+
+[037] M_TAU
+     Equation: 3.16754e-27 [kg] Tau mass (approx)
+     Sources: Standard Model: Tau lepton mass (approx)
+     CVW: v2.0.0
+
+[038] M_SUN
+     Equation: 1.989e30 [kg] Solar mass
+     Sources: Astronomical: Solar mass
+     CVW: v2.0.0
+
+[039] R_SUN
+     Equation: 6.96e8 [m] Solar radius
+     Sources: Astronomical: Solar radius
+     CVW: v2.0.0
+
+[040] M_EARTH
+     Equation: 5.972e24 [kg] Earth mass
+     Sources: Astronomical: Earth mass
+     CVW: v2.0.0
+
+[041] R_EARTH
+     Equation: 6.371e6 [m] Earth radius
+     Sources: Astronomical: Earth radius
+     CVW: v2.0.0
+
+[042] AU
+     Equation: 1.496e11 [m] Astronomical unit
+     Sources: Astronomical: Astronomical unit (Earth-Sun distance)
+     CVW: v2.0.0
+
+[043] HUBBLE_H0
+     Equation: 67.4 [km/s/Mpc] Hubble parameter (Planck 2018)
+     Sources: Cosmology: Hubble parameter H₀ = 67.4 km/s/Mpc (Planck 2018)
+     CVW: v2.0.0
+
+[044] LAMBDA
+     Equation: 1.089e-52 [m⁻²] Cosmological constant
+     Sources: Cosmology: Cosmological constant
+     CVW: v2.0.0
+
+[045] STEFAN_BOLTZMANN
+     Equation: 5.670374419e-8 [W⋅m⁻²⋅K⁻⁴] Stefan-Boltzmann constant (exact)
+     Sources: Radiation physics: Stefan-Boltzmann constant (exact)
+     CVW: v2.0.0
+
+[046] HEAVISIDE_AMPLIFIER
+     Equation: 1.0e13 [dimensionless] Known gap in Um implementations (Session 785+)
+     Sources: Session 785+: Gap in Um implementations (needs phase-transition amplifier)
+     CVW: v2.0.0
+
+[047] F_U_Ug1_component
+     Equation: Ug1 = k₁ · μₛ(t,ρ_vac,[SCm]) · ∇(Mₛ/r) · exp(-α·t) · cos(π·tₙ) · (1+δ_def); magnetic dipole gravity (DPM seed → Ug1) [EQUATION_CONSTANT_MAPPING_TOP50, Rank 1]
+     Sources: Session 210+: Magnetic dipole component physics
+     CVW: v2.0.0
+
+[048] F_U_Ug2_component
+     Equation: Ug2 = k₂ · (ρ_vac,[UA] + ρ_vac,[SCm]) · Mₛ/r² · S(r-Rᵦ) · (1+δ_sw·v_sw) · H_SCm · E_react; heliosphere outer-field bubble [EQUATION_CONSTANT_MAPPING_TOP50, Rank 2]
+     Sources: Session 210+: Charge-reactivity coupling physics
+     CVW: v2.0.0
+
+[049] F_U_Ug3_component
+     Equation: Ug3 = k₃ · Σⱼ Bⱼ(r,θ,t,ρ_vac,[SCm]) · cos(ωₛ(t)·t·π) · P_core · E_react; magnetic-string 90° disk rotation [EQUATION_CONSTANT_MAPPING_TOP50, Rank 10]
+     Sources: Session 210+: Magnetic string rotation (90°)
+     CVW: v2.0.0
+
+[050] F_U_Ug4_component
+     Equation: Ug4 = k₄ · ρ_vac,[SCm] · (Mᵦₕ/dɢ) · exp(-α·t) · cos(π·tₙ) · (1+f_feedback); black hole M-σ feedback gravity [EQUATION_CONSTANT_MAPPING_TOP50, Rank 3]
+     Sources: Session 210+: Vacuum concentration physics
+     CVW: v2.0.0
+
+[051] F_U_Ubi_component
+     Equation: F_U_Bi = -βᵢ · Uɢᵢ · Ωɢ · (Mᵦₕ/dɢ) · E_react · (1+ε_sw·ρ_sw) · ρ_A · cos(π·tₙ); inside-outward collapsing gravity zone [QCalcGeom.py, Rank 5]
+     Sources: Session 210+: Buoyancy force derivation
+     CVW: v2.0.0
+
+[052] F_U_Um_component
+     Equation: Um = (μⱼ/rⱼ) · (1 - exp(-γ·t·cos(π·tₙ))) · P_SCm · E_react · (1+f_TRZ); universal magnetism (10⁹ strings) [EQUATION_CONSTANT_MAPPING_TOP50, Rank 11]
+     Sources: Session 210+: Universal magnetism physics
+     CVW: v2.0.0
+
+[053] F_DPM_base
+     Equation: a_DPM = (F_DPM · f_DPM · E_vac,neb) / (c · V_sys); where F_DPM = I·A·(ω₁-ω₂); primordial dipole-pair mechanism activation [EQUATION_CONSTANT_MAPPING_TOP50, Rank 1]
+     Sources: DPM di-pseudo-monopole base force derivation
+     CVW: v2.0.0
+
+[054] DPM_frequency_omega1
+     Equation: ω₁ = 2π · f₁; first pseudomonopole rotational frequency (co-rotating with primordial vortex) [rad/s] [Star-Magic.txt, Line 22]
+     Sources: First pseudomonopole oscillation frequency
+     CVW: v2.0.0
+
+[055] DPM_frequency_omega2
+     Equation: ω₂ = 2π · f₂; second pseudomonopole rotational frequency (counter-rotating); Δω = ω₁ - ω₂ drives F_DPM [rad/s] [Star-Magic.txt, Line 25]
+     Sources: Second pseudomonopole oscillation frequency
+     CVW: v2.0.0
+
+[056] DPM_current_I
+     Equation: I = charge flow rate [A]; pseudomonopole current ∝ rho_A · V_body · (dV/dt); seeds μₛ growth [Star-Magic.txt, Line 36]
+     Sources: DPM current generation in di-pseudo-monopole pairs
+     CVW: v2.0.0
+
+[057] DPM_area_A
+     Equation: A = circuit loop area [m²]; F_DPM = I·A·(ω₁-ω₂) → torque × area in di-pseudo-monopole geometry [Star-Magic.txt, Line 23]
+     Sources: DPM circuit area in quantum field structure
+     CVW: v2.0.0
+
+[058] E_VAC_SCM
+     Equation: E_vac,SCm = ρ_vac,SCm · c² [J/m³]; SCm sector aether energy density = 7.09e-37 × (3e8)² ≈ 6.38e-21 J/m³ [DPM Quantum Chain]
+     Sources: SCm aether energy density scaling
+     CVW: v2.0.0
+
+[059] E_VAC_UA
+     Equation: E_vac,UA = ρ_vac,UA · c² = 10 × E_vac,SCm [J/m³]; universal aether energy density [DPM Quantum Chain]
+     Sources: UA aether energy density scaling
+     CVW: v2.0.0
+
+[060] V_AETHER_SPRING
+     Equation: V_spring = -ρ_vac · (4π/3) · c² · cos(π·tₙ); aether potential (spring restoring) grows/shrinks with phase [QCalcGeom.py line 1020]
+     Sources: Aether elasticity / spring constant
+     CVW: v2.0.0
+
+[061] OMEGA_M
+     Equation: 0.315 Matter density parameter (Planck 2018)
+     Sources: Planck 2018: Cosmic microwave background + structure
+     CVW: v2.0.0
+
+[062] OMEGA_LAMBDA
+     Equation: 0.685 Dark energy density (Planck 2018)
+     Sources: Planck 2018: Type Ia supernovae + acoustic scale
+     CVW: v2.0.0
+
+[063] OMEGA_B
+     Equation: 0.049 Baryon density (Planck 2018)
+     Sources: Planck 2018: Big Bang nucleosynthesis + CMB
+     CVW: v2.0.0
+
+[064] OMEGA_K
+     Equation: 0.0 Curvature density (flat universe)
+     Sources: WMAP + Planck: Flatness of universe
+     CVW: v2.0.0
+
+[065] TCMB
+     Equation: 2.72548 [K] CMB temperature (CODATA 2022)
+     Sources: Cowie 1995 + CODATA 2022: CMB temperature measurement
+     CVW: v2.0.0
+
+[066] SIGMA8
+     Equation: 0.811 Matter clustering amplitude (Planck 2018)
+     Sources: Planck 2018: Galaxy cluster abundance
+     CVW: v2.0.0
+
+[067] N_S
+     Equation: 0.965 Scalar spectral index (Planck 2018)
+     Sources: Planck 2018: Temperature/polarization power spectrum
+     CVW: v2.0.0
+
+[068] ALPHA_EM
+     Equation: 0.00729735256 Fine structure constant α (Session 475, 552)
+     Sources: Session 475, 552: Fine structure constant from CODATA 2022
+     CVW: v2.0.0
+
+[069] ALPHA_S
+     Equation: 0.1179 Strong coupling constant (approx)
+     Sources: PDG 2022: Strong coupling constant (MS-bar scheme)
+     CVW: v2.0.0
+
+[070] SIN2_THETA_W
+     Equation: 0.2223 Weak mixing angle sin²(θ_W)
+     Sources: Particle Data Group: Weak mixing angle
+     CVW: v2.0.0
+
+[071] M_W
+     Equation: 80.379 GeV / c² W boson mass
+     Sources: PDG 2022: W boson mass from precision electroweak
+     CVW: v2.0.0
+
+[072] M_Z
+     Equation: 91.1876 GeV / c² Z boson mass
+     Sources: PDG 2022: Z boson mass from LEP + Tevatron
+     CVW: v2.0.0
+
+[073] M_HIGGS
+     Equation: 125.1 GeV / c² Higgs boson mass
+     Sources: ATLAS + CMS (2012): Higgs discovery at 125.1 GeV
+     CVW: v2.0.0
+
+[074] M_TOP
+     Equation: 172.69 GeV / c² Top quark mass
+     Sources: CDF + D0 + LHC: Top quark mass measurement
+     CVW: v2.0.0
+
+[075] M_BOTTOM
+     Equation: 4.18 GeV / c² Bottom quark mass
+     Sources: PDG 2022: Bottom quark mass (running mass, 2 GeV)
+     CVW: v2.0.0
+
+[076] M_CHARM
+     Equation: 1.27 GeV / c² Charm quark mass
+     Sources: PDG 2022: Charm quark mass
+     CVW: v2.0.0
+
+[077] M_STRANGE
+     Equation: 93.5 MeV / c² Strange quark mass
+     Sources: PDG 2022: Strange quark mass
+     CVW: v2.0.0
+
+[078] M_UP
+     Equation: 2.16 MeV / c² Up quark mass
+     Sources: PDG 2022: Up quark mass
+     CVW: v2.0.0
+
+[079] M_DOWN
+     Equation: 4.67 MeV / c² Down quark mass
+     Sources: PDG 2022: Down quark mass
+     CVW: v2.0.0
+
+[080] M_DEUTERON
+     Equation: 3.3435837724e-27 [kg] Deuteron mass (2×M_p + M_n - binding)
+     Sources: CODATA 2022: Deuteron mass from atomic precision spectroscopy
+     CVW: v2.0.0
+
+[081] BOHR_RADIUS
+     Equation: 5.29177210903e-11 [m] Bohr radius a₀ (Session 346, 618)
+     Sources: Session 346, 618: Bohr model / hydrogen spectrum
+     CVW: v2.0.0
+
+[082] RYDBERG_ENERGY
+     Equation: 13.605693122994 [eV] Rydberg energy (Session 345, 619)
+     Sources: Session 345, 619: Hydrogen Balmer series
+     CVW: v2.0.0
+
+[083] COMPTON_WAVELENGTH
+     Equation: 2.42631023867e-12 [m] Electron Compton wavelength
+     Sources: Compton scattering 1923: Electron-photon collisions
+     CVW: v2.0.0
+
+[084] G_EARTH
+     Equation: 9.80665 [m/s²] Earth surface gravity (Session 563, 675)
+     Sources: Session 563, 675: Standard gravity (ISO 80000-3)
+     CVW: v2.0.0
+
+[085] M_MOON
+     Equation: 7.342e22 [kg] Moon mass (Session 681)
+     Sources: Session 681: Lunar missions (Apollo, GRAIL)
+     CVW: v2.0.0
+
+[086] PARSEC
+     Equation: 3.086e16 [m] Parsec distance (Session 575)
+     Sources: Session 575: Hipparcos parallax distance unit
+     CVW: v2.0.0
+
+[087] LIGHT_YEAR
+     Equation: 9.461e15 [m] Light-year distance
+     Sources: Astronomical distance: 1 year × speed of light
+     CVW: v2.0.0
+
+[088] HUBBLE_TIME
+     Equation: ~13.8 Gyr Hubble time = 1/H₀
+     Sources: Age of universe ≈ 13.8 Gyr from H₀
+     CVW: v2.0.0
+
+[089] E
+     Equation: 2.718281828459045 Euler's number e (Session 533, 631)
+     Sources: Session 533, 631: Euler constant (natural logarithm base)
+     CVW: v2.0.0
+
+[090] LN_2
+     Equation: 0.693147180559945 Natural logarithm of 2 (Session 443, 537, 640)
+     Sources: Session 443, 537, 640: Binary logarithm constant
+     CVW: v2.0.0
+
+[091] LN_10
+     Equation: 2.302585092994046 Natural logarithm of 10 (Session 449, 538, 641)
+     Sources: Session 449, 538, 641: Decimal logarithm constant
+     CVW: v2.0.0
+
+[092] LOG2_E
+     Equation: 1.442695040888963 log₂(e) = 1/ln(2) (Session 444)
+     Sources: Session 444: Information theory constant
+     CVW: v2.0.0
+
+[093] CATALAN
+     Equation: 0.915965594177219 Catalan constant G (Session 353, 448, 539)
+     Sources: Session 353, 448, 539: Catalan's constant (infinite series)
+     CVW: v2.0.0
+
+[094] APERY
+     Equation: 1.202056903159594 Apéry's constant ζ(3) (Session 354, 540)
+     Sources: Session 354, 540: Apéry constant ζ(3) (irrational)
+     CVW: v2.0.0
+
+[095] EULER_MASCHERONI
+     Equation: 0.577215664901533 Euler-Mascheroni constant γ (Session 357, 447)
+     Sources: Session 357, 447: Euler-Mascheroni constant γ
+     CVW: v2.0.0
+
+[096] GOLDEN_RATIO
+     Equation: 1.618033988749895 Golden ratio φ = (1+√5)/2 (Session 523, 635)
+     Sources: Session 523, 635: Fibonacci spiral limit
+     CVW: v2.0.0
+
+[097] SQRT_2
+     Equation: 1.414213562373095 √2 (Pythagoras, Session 637)
+     Sources: Session 637: Pythagorean constant (√2)
+     CVW: v2.0.0
+
+[098] SQRT_3
+     Equation: 1.732050807568877 √3 (Session 638)
+     Sources: Session 638: Cubic diagonal (√3)
+     CVW: v2.0.0
+
+[099] SQRT_5
+     Equation: 2.236067977499790 √5 (Session 639)
+     Sources: Session 639: Golden ratio root (√5)
+     CVW: v2.0.0
+
+[100] PARKHOMOV_N_CLUSTERS
+     Equation: 2.0e18 Ni-H clusters per unit volume (LENR Session 481-587)
+     Sources: Session 481-587: Nickel-hydrogen LENR cluster density (Parkhomov 2014-2015)
+     CVW: v2.0.0
+
+[101] PARKHOMOV_EXCESS_HEAT_W
+     Equation: 200.0 [W] Expected excess heat (Parkhomov replication)
+     Sources: Session 481-587: Parkhomov E-Cat replication excess power
+     CVW: v2.0.0
+
+[102] PF_LOADING_THRESHOLD
+     Equation: 0.85 McKubre threshold PdD loading ratio
+     Sources: McKubre 1992-1998: PdD loading ratio for LENR activation
+     CVW: v2.0.0
+
+[103] PF_ACTIVE_FRACTION
+     Equation: 0.015 Fraction of Pd sites active under SCm resonance
+     Sources: Pons-Fleischmann 1989: Fraction of Pd sites active in fusion
+     CVW: v2.0.0
+
+[104] PF_PD_DENSITY
+     Equation: 6.8e28 [atoms/m³] Palladium atomic density
+     Sources: Materials science: Palladium crystal density
+     CVW: v2.0.0
+
+[105] PF_EXCESS_HEAT_W
+     Equation: 5.0 [W] Expected excess heat (Pons-Fleischmann, low-radiation)
+     Sources: Pons-Fleischmann 1989: Electrochemical cell excess power
+     CVW: v2.0.0
+
+[106] MIZUNO_COOLING_TIME
+     Equation: 3600.0 [s] Time to thermal equilibrium (Mizuno LENR)
+     Sources: Mizuno 2000s: Palladium cathode thermal equilibration
+     CVW: v2.0.0
+
+[107] ROSSI_COP_RATIO
+     Equation: 12.0 Coefficient of performance (E-Cat)
+     Sources: Rossi 2011-2012: E-Cat COP (energy out / energy in)
+     CVW: v2.0.0
+
+[108] HOLMLID_KER_EV
+     Equation: 630.0 [eV] Coherent energy resonance (exact)
+     Sources: Session 481-587: Holmlid K-cavity coherent energy resonance (LENR signature)
+     CVW: v2.0.0
+
+[109] HOLMLID_KER_J
+     Equation: 1.008e-17 [J] = 630 eV in joules
+     Sources: Session 481-587: 630 eV resonance in joules
+     CVW: v2.0.0
+
+[110] QCD_DECONFINEMENT_TEMP
+     Equation: 155.0e6 [K] QCD deconfinement temperature
+     Sources: Lattice QCD: Quark-gluon plasma transition temperature
+     CVW: v2.0.0
+
+[111] QCD_DECONFINEMENT_ENERGY
+     Equation: 150.0 [MeV/fm³] QCD energy density scale
+     Sources: Lattice QCD: Thermodynamic transition energy density
+     CVW: v2.0.0
+
+[112] MIT_BAG_CONSTANT
+     Equation: 1.0e32 [Pa] MIT bag constant ≈ RHO_VAC_SCM × S26_3 × Phi_res
+     Sources: MIT bag model: Quark confinement energy scale
+     CVW: v2.0.0
+
+[113] SQM_DENSITY
+     Equation: 1.0e18 [kg/m³] Strange quark matter bulk density (~10^15 g/cm³)
+     Sources: Witten 1984: Strange quark matter bulk density (neutron star core)
+     CVW: v2.0.0
+
+[114] SQM_ESCAPE_VELOCITY
+     Equation: 0.3 [dimensionless, units c] SQM escape velocity
+     Sources: Strange matter physics: SQM surface escape velocity
+     CVW: v2.0.0
+
+[115] QGP_VISCOSITY_OVER_ENTROPY
+     Equation: 0.1359 [ℏ/k_B] QGP shear viscosity ratio (holographic)
+     Sources: Gauge/gravity duality: QGP transport properties (RHIC, LHC)
+     CVW: v2.0.0
+
+[116] S26_3_CALIBRATION_FACTOR
+     Equation: 1.0 S26_3 = polylog(26, 0.57) × calibration
+     Sources: Vacuum Density Series: 26D Ramanujan amplification calibration
+     CVW: v2.0.0
+
+[117] VDS_CONVERGENCE_TERMS
+     Equation: 1000.0 Number of terms in Vacuum Density Series
+     Sources: Session 237-241: Number of terms for VDS accuracy
+     CVW: v2.0.0
+
+[118] PHONON_COUPLING_COEFFICIENT
+     Equation: 0.9 Holmlid phonon-to-vacuum coupling
+     Sources: Holmlid LENR: Phonon-to-vacuum coupling strength
+     CVW: v2.0.0
+
+[119] ALPHA_DECAY_RATE
+     Equation: d(Ug1)/dt: decay component α = 0.001 day⁻¹ → half-life = ln(2)/0.001 = 693 days (~700 days); Ug1 amplitude drops to 50% over 700 days [Star-Magic.txt, Line 42]
+     Sources: LIGO 2016: GW150914 strain sensitivity (Advanced LIGO)
+     CVW: v2.0.0
+
+[120] KAPPA_VACUUM_RATE
+     Equation: E_react(t) = E₀ · exp(-κ·t); κ = 5e-4 day⁻¹ → half-life = 1,386 days (~2000 days); reactor efficiency decay (FASTEST vacuum timescale) [Star-Magic.txt, Line 305]
+     Sources: LIGO design: Primary observing frequency band
+     CVW: v2.0.0
+
+[121] GAMMA_MAGNETISM_RATE
+     Equation: Um_decay: γ = 5e-5 day⁻¹ → half-life = 13,860 days (~38 years); universal magnetism timescale (SLOWEST) [Star-Magic.txt, Line 521]
+     Sources: Galactic rotation curves + lensing: Local dark matter density
+     CVW: v2.0.0
+
+[122] EPSILON_SOLAR_WIND_COUPLING
+     Equation: ε_sw = 0.1 [dimensionless]; solar wind enhancement factor in (1 + ε_sw·ρ_sw) term; modulates Ug2 strength [Star-Magic.txt, Line 501]
+     Sources: Milky Way dynamics: Halo velocity dispersion (~230 km/s)
+     CVW: v2.0.0
+
+[123] OMEGA_BAKTUN_CYCLE
+     Equation: ω_Baktun = 2π / T_Baktun; T_Baktun = 5125.36 years (Mayan Great Cycle); epochal oscillation frequency [QCalcGeom.py, Epoch 5]
+     Sources: Session 463: Silicon semiconductor band gap (300 K)
+     CVW: v2.0.0
+
+[124] MAYAN_EPOCH5_START
+     Equation: t_epoch5 = 2012.972 CE; Epoch 5 began Dec 21, 2012; inner ring φ⁻⁸ amplification, outer ring φ⁴ expansion [QCalcGeom.py, Rank 61-70]
+     Sources: Session 464: Gallium arsenide optoelectronics band gap
+     CVW: v2.0.0
+
+[125] GRAVITATIONAL_WAVE_STRAIN_LIGO
+     Equation: 1.0e-21 [dimensionless] LIGO sensitivity
+     Sources: Session 465: Diamond insulator / wide-bandgap semiconductor
+     CVW: v2.0.0
+
+[126] GW_FREQUENCY_LIGO_BAND
+     Equation: 100.0 [Hz] LIGO observing band
+     Sources: Yttrium barium copper oxide high-Tc superconductor (1987)
+     CVW: v2.0.0
+
+[127] DARK_MATTER_HALO_DENSITY
+     Equation: 2.0e-26 [kg/m³] Dark matter local density
+     Sources: Superconductivity: London penetration depth (typ. 160 nm)
+     CVW: v2.0.0
+
+[128] DARK_MATTER_VELOCITY_DISPERSION
+     Equation: 230e3 [m/s] Galactic halo velocity dispersion
+     Sources: Star-Magic.txt Line 42-50: Ug1 temporal decay equation (α = 0.001 day⁻¹, 700-day half-life)
+     CVW: v2.0.0
+
+[129] BANDGAP_SI
+     Equation: 1.166 [eV] Silicon bandgap at 300 K (Session 463)
+     Sources: Star-Magic.txt Line 305-310: E_react exponential decay (κ = 5e-4 day⁻¹, 2000-day half-life)
+     CVW: v2.0.0
+
+[130] BANDGAP_GAAS
+     Equation: 1.424 [eV] GaAs bandgap at 300 K (Session 464)
+     Sources: Star-Magic.txt Line 521-530: Um universal magnetism timescale (γ = 5e-5 day⁻¹, 38-year half-life)
+     CVW: v2.0.0
+
+[131] BANDGAP_DIAMOND
+     Equation: 5.47 [eV] Diamond bandgap (Session 465)
+     Sources: Star-Magic.txt Line 501-505: Solar wind enhancement factor in Ug2 bubble dynamics
+     CVW: v2.0.0
+
+[132] SUPERCONDUCTOR_CRITICAL_TEMP_YBCO
+     Equation: 92.0 [K] YBCO critical temperature
+     Sources: QCalcGeom.py Epoch-5 solver: Mayan Baktun epochal oscillation (5125.36-year period)
+     CVW: v2.0.0
+
+[133] SUPERCONDUCTOR_LONDON_DEPTH
+     Equation: 160.0e-9 [m] Penetration depth
+     Sources: QCalcGeom.py v2.1.0 (Rank 61-70): Epoch 5 (2012 CE) timing correction + ring geometry
+     CVW: v2.0.0
+
+
+================================================================================
+Total Derivations: 133
+================================================================================

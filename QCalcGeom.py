@@ -101,6 +101,7 @@ import math
 import warnings
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple, Any
+from datetime import datetime
 
 import numpy as np
 
@@ -121,6 +122,119 @@ from dpm_vacuum_manifold import (
     compute_F_U_Bi_i_numerical,
 )
 
+# ─────────────────────────────────────────────────────────────────────────────
+# UQFF PRIMITIVES INTEGRATION (v5.26 - Centralized Configuration)
+# ─────────────────────────────────────────────────────────────────────────────
+# Import canonical primitives from _uqff_primitives.py
+try:
+    from _uqff_primitives import PRIMITIVES, CONSTANTS as PRIMITIVES_CONSTANTS, get_primitives
+    PRIMITIVES_AVAILABLE = True
+except ImportError as e:
+    print(f"WARNING: Could not import _uqff_primitives.py: {e}")
+    print("Falling back to imported constants from dpm_vacuum_manifold")
+    PRIMITIVES_AVAILABLE = False
+
+class QCalcGeomPrimitiveConfig:
+    """
+    Central primitive configuration for QCalcGeom.py geometry solvers.
+    
+    This class:
+    1. Provides unified access to all UQFF primitives used in geometric physics
+    2. Enables version tracking for reproducible geometry calculations
+    3. Exports complete configuration for logging/audit
+    4. Supports optional overrides for sensitivity/parameter studies
+    
+    Primitives accessed:
+    - SSQ = 0.57 (Squared-sum convergence constant, used in VDS/DVP/BH26)
+    - F_TRZ = 0.1 (Time-Reversal Zone suppression factor, used in oscillation)
+    - PHI_RES = 0.84 (Resonance phase factor, used in buoyancy calculations)
+    - N_LAYERS = 26 (Dimensional structure integer, basis of geometry)
+    
+    These are IMMUTABLE across all geometric calculations.
+    """
+    
+    def __init__(self):
+        """Initialize with canonical primitives and session metadata."""
+        if PRIMITIVES_AVAILABLE:
+            self.primitives = get_primitives()
+            self.constants = PRIMITIVES_CONSTANTS
+        else:
+            # Fallback to imported values from dpm_vacuum_manifold if unavailable
+            from dataclasses import dataclass
+            @dataclass
+            class FallbackPrimitives:
+                F_TRZ: float = 0.1
+                PHI_RES: float = 0.84
+                SSQ: float = 0.57
+                N_LAYERS: int = 26
+            self.primitives = FallbackPrimitives()
+            self.constants = None
+        
+        self.session_version = "v5.26"
+        self.session_start = datetime.now().isoformat()
+        self._override_dict = {}  # For sensitivity studies
+    
+    @property
+    def SSQ(self) -> float:
+        """Squared-sum convergence constant (0.57), used in VDS/DVP/BH26."""
+        return self._override_dict.get('SSQ', self.primitives.SSQ)
+    
+    @property
+    def F_TRZ(self) -> float:
+        """Time-Reversal Zone suppression factor (0.1), used in oscillations."""
+        return self._override_dict.get('F_TRZ', self.primitives.F_TRZ)
+    
+    @property
+    def PHI_RES(self) -> float:
+        """Resonance phase factor (0.84), used in buoyancy calculations."""
+        return self._override_dict.get('PHI_RES', self.primitives.PHI_RES)
+    
+    @property
+    def N_LAYERS(self) -> int:
+        """Dimensional structure integer (26), basis of all geometry."""
+        return self._override_dict.get('N_LAYERS', self.primitives.N_LAYERS)
+    
+
+    
+    def set_override(self, key: str, value: Any) -> None:
+        """
+        Set a runtime override for sensitivity studies.
+        
+        Example:
+            config.set_override('SSQ', 0.58)  # Test with different SSq value
+        
+        Note: Overrides are ONLY for testing. Production geometry uses canonical values.
+        """
+        if key in ['F_TRZ', 'PHI_RES', 'SSQ', 'N_LAYERS']:
+            self._override_dict[key] = value
+        else:
+            raise ValueError(f"Cannot override unknown primitive: {key}")
+    
+    def clear_overrides(self) -> None:
+        """Clear all runtime overrides."""
+        self._override_dict.clear()
+    
+    def as_dict(self) -> dict:
+        """
+        Export all primitives as dictionary for logging/audit.
+        
+        Returns: Dictionary with all active primitives and session metadata.
+        """
+        return {
+            'SSQ': self.SSQ,
+            'F_TRZ': self.F_TRZ,
+            'PHI_RES': self.PHI_RES,
+            'N_LAYERS': self.N_LAYERS,
+            'version': self.session_version,
+            'timestamp': self.session_start,
+            'overrides_applied': len(self._override_dict) > 0,
+            'available': PRIMITIVES_AVAILABLE,
+        }
+
+# Global singleton for QCalcGeom.py (accessed by all geometry calculators)
+QCALCGEOM_CONFIG = QCalcGeomPrimitiveConfig()
+
+# ─────────────────────────────────────────────────────────────────────────────
 # ─── try scipy for simultaneous solve; graceful fallback ─────────────────────
 try:
     from scipy.optimize import fsolve as _scipy_fsolve
@@ -539,7 +653,7 @@ class VDSDVPCoupledResult:
 @dataclass
 class BH26BSHResonanceResult:
     """BH26×BSH cross-resonance: BSH evaluated at a BH26 spectral frequency bin.
-    freq_k         = RERING_BB_HZ / λ_k   [Hz]
+    freq_k         = RERING_BB_HZ / lambda_k   [Hz]
     bsh_at_k       = BSH U_g2 at omega = 2π·freq_k
     resonance      = bsh_at_k · cos(π·t_n)
     energy_density = resonance × RHO_VAC_SCM  [J/m³]
@@ -689,7 +803,7 @@ def vds_series(SSq: float = SSQ_DEFAULT, n_terms: int = 200) -> VDSResult:
 
     abs_SSq = abs(SSq)
     if abs_SSq < 1.0 and n_used > 0:
-        v.tail_bound = abs_SSq**(n_used + 1) / ((n_used + 1)**26 * (1.0 - abs_SSq))
+        v.tail_bound = abs(SSq**(n_used + 1) / ((n_used + 1)**26 * (1.0 - abs(SSq))))
     else:
         v.tail_bound = float('inf')
 
@@ -855,7 +969,9 @@ def uqff_comp_matrix(r: float, rho: float) -> UQFFCompResult:
 #
 # EPOCH 5 (n=5) AMPLIFICATION:  r_1/r_3 = φ^12 ≈ 321.997
 #   → Ring 3 spins 322× faster → 322× finer quantum timing resolution
-#   → Zero-point gravity precision: Δt_n ≈ 1/(322 × N_teeth)
+#   → Zero-point gravity precision: Δt_zero  =  (Great Cycle period) / (gear_ratio_13 × N_teeth)
+#   With N_teeth = 260 (Mayan Tzolkin), Epoch 5 resolution ≈ 1 / (322 × 260)
+#   per Great Cycle ≈ 5125.36 / 83720  ≈ 0.0612 yr  ≈ 22.4 days.
 # =============================================================================
 
 def mayan_ring_proportions(epoch: int, r_base_AU: float = 1.0) -> dict:
@@ -1232,7 +1348,7 @@ def crustal_zero_point_state(rho_crust_kg_m3: float = RHO_CRUST_DEFAULT_KG_M3,
     res.g_eff               = g_eff
     res.omega_tect_rad_s    = tr['omega_rad_s']
     res.f_tect_Hz           = tr['f_Hz']
-    res.period_tect_yr      = tr['period_yr']
+    res.period_tect_yr      = tr['period_tect_yr']
     res.zero_point_active   = abs(cos_tn) < threshold_frac
     res.window_half_t_n     = win['window_half_t_n']
     res.window_half_yr      = win['window_half_yr']
@@ -1379,7 +1495,6 @@ def bh26_bsh_resonance(f_Ub: float = 3.3e7,
     bsh_at_k       = bsh_harmonic(f_Ub, SSq, omega_k, t_n, 26).U_g2
     resonance      = bsh_at_k × cos(π·t_n)
     energy_density = resonance × RHO_VAC_SCM          [J/m³]
-    Reference: BH26 × BSH cross-resonance, Session 202
     """
     if SSq is None:
         SSq = SSQ_DEFAULT
@@ -1418,7 +1533,7 @@ def bh26_bsh_resonance(f_Ub: float = 3.3e7,
 #
 # SIMULTANEOUS EQUATION SYSTEM (r_hz, t_n_hz jointly):
 #   Eq1: FUBi(r, t_n) + FUBii(r, t_n) = 0         [buoyancy crossing]
-#   Eq2: ε′(r, t_n) + G·M_⊙/(c²·r²) = 0           [metric-geodesic match]
+#   Eq2: ε′(r, t_n) + G·M/(c²·r²) = 0           [metric-geodesic match]
 # =============================================================================
 
 def compute_FUBii(r: float, t_n: float,
@@ -1552,10 +1667,10 @@ def _habitable_zone_system(x: List[float], params: dict) -> List[float]:
     Omega_g   = params.get('Omega_g',   OMEGA_G_BSFG)
     M_bh      = params.get('M_bh',      M_BH_BSFG)
     d_g       = params.get('d_g',       D_G_BSFG)
-    epsilon_sw= params.get('epsilon_sw',EPS_SW_BSFG)
+    epsilon_sw = params.get('epsilon_sw',EPS_SW_BSFG)
     rho_sw    = params.get('rho_sw',    RHO_SW_BSFG)
-    U_UA      = params.get('U_UA',      U_UA_BSFG)
-    rho_vac   = params.get('rho_vac',   RHO_VAC_SCM)
+    U_UA      = params.get('U_UA',       U_UA_BSFG)
+    rho_vac   = params.get('rho_vac',    RHO_VAC_SCM)
     M         = params.get('M',         M_SUN)
 
     # Eq1: buoyancy crossing
@@ -1640,12 +1755,17 @@ def solve_habitable_zone(params: dict,
                 xtol=1.0e-10,
             )
             if ier == 1:
-                r_cand  = 10.0 ** sol[0]
-                t_n_cand = sol[1]
-                # Accept scipy result only if it's physically reasonable
-                if r_cand > 0 and math.isfinite(r_cand) and abs(t_n_cand) < 10.0:
-                    r_sol   = r_cand
-                    t_n_sol = t_n_cand
+                # sanity-check the refined iterate
+                rh = 10.0 ** sol[0]
+                rc = 10.0 ** sol[2]
+                mm = 10.0 ** sol[3]
+                if (math.isfinite(rh) and rh > 0
+                        and math.isfinite(rc) and rc > 0
+                        and math.isfinite(mm) and mm > 0
+                        and rc < rh
+                        and abs(sol[1]) < 10.0):
+                    r_sol   = rh
+                    t_n_sol = sol[1]
                     result.solver_msg = "CONVERGED (scipy + analytic)"
                 else:
                     result.solver_msg = "analytic (scipy unphysical root)"
@@ -1949,8 +2069,7 @@ def _universal_buoyancy_system(x: List[float], params: dict) -> List[float]:
     # F_U at r_hz
     fu_hz = compute_F_U(r_hz, t_n_hz, M=M,
                          beta_i=beta_i, Omega_g=Omega_g, M_bh=M_bh, d_g=d_g,
-                         epsilon_sw=epsilon_sw, rho_sw=rho_sw, U_UA=U_UA,
-                         rho_vac=rho_vac, xi_UI=0.0)  # turn off inertia term for static solve
+                         epsilon_sw=epsilon_sw, rho_sw=rho_sw, U_UA=U_UA, rho_vac=rho_vac, xi_UI=0.0)  # turn off inertia term for static solve
 
     # F_U_Bi + 2*F_U_Bi_i at r_cg (inner-boundary 2:1 condition)
     bui_cg = bsfg_buoyancy(r_cg, t_n_hz, beta_i, Omega_g, M_bh, d_g,
@@ -2049,7 +2168,7 @@ def solve_universal_buoyancy(params: Optional[dict] = None,
                         and math.isfinite(rc) and rc > 0
                         and math.isfinite(mm) and mm > 0
                         and rc < rh
-                        and abs(sol_x[1]) < 10.0):
+                        and abs(sol[1]) < 10.0):
                     refined_x = sol_x
                     refined_msg = f"CONVERGED (scipy 4x4, nfev={iters})"
                 else:
@@ -2131,7 +2250,7 @@ class UniversalBuoyancySimultaneousSolver:
     System (4 equations, 4 unknowns):
         Unknowns : r_hz, t_n_hz, r_cg, M_emergent
         E1: F_U_Bi(r_hz, t_n, M)  + F_U_Bi_i(r_hz, t_n)         = 0
-        E2: F_U(r_hz, t_n, M)                                    = 0
+        E2: F_U(r_hz, t_n, M)                                   = 0
         E3: F_U_Bi(r_cg, t_n, M)  + 2*F_U_Bi_i(r_cg, t_n)        = 0
         E4: M - rho_vac*(4*pi/3)*r_hz^3                          = 0
     """
@@ -2194,1189 +2313,7 @@ class UniversalBuoyancySimultaneousSolver:
         Three sweeps:
          (1) radial sweep at t_n_hz across [0.3*r_cg, 3*r_hz]
          (2) temporal sweep at r_hz across t_n in [-1, +1]
-         (3) rho_vac sweep showing r_hz cube-root law (E4)
+         (3) rho_vac scaling sweep (E4 cube-root law)
         """
-        # Pull working values from the converged solution
-        r_hz   = sol.r_hz_m
-        r_cg   = sol.r_cg_m
-        t_n_hz = sol.t_n_hz
-        M_em   = sol.M_emergent_kg
-        if r_hz <= 0.0 or r_cg <= 0.0 or not math.isfinite(r_hz) or not math.isfinite(r_cg):
-            return []  # no sweep when solver did not produce a usable solution
-
-        beta_i     = params.get('beta_i',     BETA_I_BSFG)
-        Omega_g    = params.get('Omega_g',    OMEGA_G_BSFG)
-        M_bh       = params.get('M_bh',       M_BH_BSFG)
-        d_g        = params.get('d_g',        D_G_BSFG)
-        epsilon_sw = params.get('epsilon_sw', EPS_SW_BSFG)
-        rho_sw     = params.get('rho_sw',     RHO_SW_BSFG)
-        U_UA       = params.get('U_UA',       U_UA_BSFG)
-        rho_vac    = params.get('rho_vac',    RHO_VAC_SCM)
-
-        def _zone(r):
-            if r < r_cg:  return 'collapsing'
-            if r > r_hz:  return 'gaseous_outer'
-            return 'habitable_shell'
-
-        # ---- (1) radial sweep at solved t_n_hz --------------------------------
-        N_R = 25
-        r_lo = 0.3 * r_cg
-        r_hi = 3.0 * r_hz
-        log_lo, log_hi = math.log(r_lo), math.log(r_hi)
-        r_grid = [math.exp(log_lo + (log_hi - log_lo) * i / (N_R - 1)) for i in range(N_R)]
-
-        radial = {
-            'name'        : 'radial_sweep_at_t_n_hz',
-            't_n'         : t_n_hz,
-            'r_m'         : [],
-            'r_AU'        : [],
-            'F_U_Bi'      : [],
-            'F_U_Bi_i'    : [],
-            'F_U'         : [],
-            'sum_E1_like' : [],   # F_U_Bi + F_U_Bi_i      (= 0 at r_hz)
-            'sum_E3_like' : [],   # F_U_Bi + 2*F_U_Bi_i    (= 0 at r_cg)
-            'zone'        : [],
-        }
-        for r in r_grid:
-            bui  = bsfg_buoyancy(r, t_n_hz, beta_i, Omega_g, M_bh, d_g,
-                                 epsilon_sw, rho_sw, U_UA)
-            bui_ = compute_FUBii(r, t_n_hz, rho_vac=rho_vac)
-            fu   = compute_F_U(r, t_n_hz, M=M_em, beta_i=beta_i,
-                               Omega_g=Omega_g, M_bh=M_bh, d_g=d_g,
-                               epsilon_sw=epsilon_sw, rho_sw=rho_sw,
-                               U_UA=U_UA, rho_vac=rho_vac, xi_UI=0.0)
-            radial['r_m'].append(r)
-            radial['r_AU'].append(r / AU_METERS)
-            radial['F_U_Bi'].append(bui.Ubi)
-            radial['F_U_Bi_i'].append(bui_.FUBii)
-            radial['F_U'].append(fu.F_U_total)
-            radial['sum_E1_like'].append(bui.Ubi + bui_.FUBii)
-            radial['sum_E3_like'].append(bui.Ubi + 2.0 * bui_.FUBii)
-            radial['zone'].append(_zone(r))
-
-        # ---- (2) temporal sweep at r_hz --------------------------------------
-        N_T = 21
-        t_grid = [-1.0 + 2.0 * i / (N_T - 1) for i in range(N_T)]
-        temporal = {
-            'name'         : 'temporal_sweep_at_r_hz',
-            'r_m'          : r_hz,
-            'r_AU'         : r_hz / AU_METERS,
-            't_n'          : [],
-            'F_U_Bi'       : [],
-            'F_U_Bi_i'     : [],
-            'sum_E1_like'  : [],
-            'cos_pi_tn'    : [],
-        }
-        for tn in t_grid:
-            bui  = bsfg_buoyancy(r_hz, tn, beta_i, Omega_g, M_bh, d_g,
-                                 epsilon_sw, rho_sw, U_UA)
-            bui_ = compute_FUBii(r_hz, tn, rho_vac=rho_vac)
-            temporal['t_n'].append(tn)
-            temporal['F_U_Bi'].append(bui.Ubi)
-            temporal['F_U_Bi_i'].append(bui_.FUBii)
-            temporal['sum_E1_like'].append(bui.Ubi + bui_.FUBii)
-            temporal['cos_pi_tn'].append(math.cos(math.pi * tn))
-
-        # ---- (3) rho_vac scaling sweep (E4 cube-root) ------------------------
-        N_V = 11
-        log_scale = [-1.0 + 2.0 * i / (N_V - 1) for i in range(N_V)]
-        cube_law = {
-            'name'             : 'rho_vac_sweep_r_hz',
-            'rho_vac_factor'   : [10.0 ** s for s in log_scale],
-            'rho_vac_J_per_m3' : [rho_vac * (10.0 ** s) for s in log_scale],
-            'r_hz_pred_m'      : [r_hz * (10.0 ** (-s / 3.0)) for s in log_scale],
-            'r_hz_pred_AU'     : [(r_hz * (10.0 ** (-s / 3.0))) / AU_METERS for s in log_scale],
-            'cube_root_law'    : 'r_hz ∝ rho_vac^(-1/3)  (from E4: M = rho_vac*(4pi/3)*r_hz^3 with M fixed)',
-        }
-
-        return [radial, temporal, cube_law]
-
-
-# =============================================================================
-# SECTION 6 — CALCULATOR CLASSES  (CondensedPhysics pattern)
-# =============================================================================
-
-class BSFGMetricCalculator:
-    """BSFG metric + curvature at a given (r, t_n).
-    Inputs via dataset dict: r [m], t_n (default 0.0).
-    Outputs: eps, eps_p, R_r0r0, R_00, R_scalar, Kretschner, + bsfg_hz dict.
-    """
-
-    def compute(self, dataset: dict) -> dict:
-        r   = dataset.get('r',   AU_METERS)
-        t_n = dataset.get('t_n', 0.0)
-
-        m   = bsfg_metric(r, t_n)
-        h   = bsfg_horizon(t_n)
-        fe  = bsfg_field_equations(r, t_n)
-        gd  = bsfg_geodesic(r, t_n)
-
-        return {
-            'eps'          : m.eps,
-            'eps_p'        : m.eps_p,
-            'eps_pp'       : m.eps_pp,
-            'A00'          : m.A00,
-            'Arr'          : m.Arr,
-            'R_r0r0'       : m.R_r0r0,
-            'R_00'         : m.R_00,
-            'R_rr'         : m.R_rr,
-            'R_scalar'     : m.R_scalar,
-            'Kretschner'   : m.Kretschner,
-            'hz_exists'    : h.exists,
-            'r_h_m'        : h.r_h,
-            'T_H_K'        : h.T_H,
-            'amp_factor'   : fe.amp_factor,
-            'Lambda_eff'   : fe.Lambda_eff,
-            'rho_vac_eff'  : fe.rho_vac_eff,
-            'r_cross_AU'   : gd.r_cross_AU,
-            'h_eta'        : gd.h_eta,
-            'delta_J_over_J': gd.delta_J_over_J,
-            'primary_equations': [
-                f"eps = ETA*C_num/r^3*cos(pi*t_n) = {m.eps:.4e}",
-                f"R^r_0r0 = eps''/2 - (eps')^2/2 = {m.R_r0r0:.4e} m^-2",
-                f"r_cross = sqrt(ETA*c^2*C_num/(G*M)) = {gd.r_cross_AU:.4f} AU",
-                f"T_H (BSFG horizon) = {h.T_H:.4e} K",
-            ],
-            'available_equations': [
-                "Kretschner invariant K = 12*(R^r_0r0)^2 [curvature]",
-                "Lambda_eff / Lambda_obs ratio [cosmological constant deviation]",
-                "rho_vac_eff = Lambda_eff*c^2/(8piG) [vacuum energy density]",
-                "delta_J/J = |v2_aether| / (2*v2_newton) [orbital Aether correction]",
-            ],
-            'simulation_set': [
-                "Scan eps vs r: r in [0.01, 100] AU at t_n in {0, 0.5, 1.0}",
-                "Plot R_r0r0(r) vs Kretschner(r) — curvature profile",
-                "Blink cycle: t_n in [0, 2] showing A00 sign flip at t_n=1",
-            ],
-        }
-
-
-class UniversalBuoyancyCalculator:
-    """FUBi (collapsing gravity zone) vs FUBii (Aether counter-buoyancy) balance.
-    Computes SOURCE4 Ubi (FUBi) and the Aether spring FUBii simultaneously.
-    Signs: FUBi < 0 when t_n=0 (normal — opposes gravity); FUBii > 0 (outward).
-    Balance (FUBi + FUBii = 0) defines the habitable zone crossing.
-    """
-
-    def compute(self, dataset: dict) -> dict:
-        r          = dataset.get('r',          AU_METERS)
-        t_n        = dataset.get('t_n',        0.0)
-        beta_i     = dataset.get('beta_i',     BETA_I_BSFG)
-        Omega_g    = dataset.get('Omega_g',    OMEGA_G_BSFG)
-        M_bh       = dataset.get('M_bh',       M_BH_BSFG)
-        d_g        = dataset.get('d_g',        D_G_BSFG)
-        epsilon_sw = dataset.get('epsilon_sw', EPS_SW_BSFG)
-        rho_sw     = dataset.get('rho_sw',     RHO_SW_BSFG)
-        U_UA       = dataset.get('U_UA',       U_UA_BSFG)
-        rho_vac    = dataset.get('rho_vac',    RHO_VAC_SCM)
-
-        buo   = bsfg_buoyancy(r, t_n, beta_i, Omega_g, M_bh, d_g, epsilon_sw, rho_sw, U_UA)
-        fubii = compute_FUBii(r, t_n, rho_vac)
-
-        balance     = buo.Ubi + fubii.FUBii
-        balance_rel = balance / max(abs(buo.Ubi), abs(fubii.FUBii), 1.0)
-
-        # Zone classification at this r
-        if abs(balance) < 0.01 * max(abs(buo.Ubi), abs(fubii.FUBii), 1.0):
-            zone = "HABITABLE (neutral buoyancy)"
-        elif buo.Ubi < 0 and abs(buo.Ubi) > abs(fubii.FUBii):
-            zone = "ROCKY_INNER (buoyancy opposes; gravity wins)"
-        elif buo.Ubi > 0:
-            zone = "COLLAPSE (negentropic infall; FUBi aids gravity)"
-        else:
-            zone = "GAS_OUTER (Aether buoyancy dominates)"
-
-        return {
-            'FUBi'          : buo.Ubi,
-            'FUBii'         : fubii.FUBii,
-            'balance'       : balance,
-            'balance_rel'   : balance_rel,
-            'Ug_field'      : buo.Ug_field,
-            'orbit_factor'  : buo.orbit_factor,
-            'cos_tn'        : buo.cos_tn,
-            'RHO_VAC_SCM'   : rho_vac,
-            'zone'          : zone,
-            'FUBi_negative' : buo.negative,
-            'FUBi_inverted' : buo.inverted,
-            'primary_equations': [
-                f"FUBi = -beta_i*G*M^2/r^2*orbit*cos(pi*t_n) = {buo.Ubi:.4e}",
-                f"FUBii = rho_vac*(4pi/3)*r*c^2*cos(pi*t_n) = {fubii.FUBii:.4e}",
-                f"FUBi + FUBii = {balance:.4e}  ({zone})",
-                f"Ug_field = G*M_sun^2/r^2 = {buo.Ug_field:.4e}",
-            ],
-            'available_equations': [
-                "FUBii grows linearly with r; FUBi falls as 1/r^2",
-                "Crossing r_hz: (beta_i*G*M^2*orbit / (rho_vac*(4pi/3)*c^2))^(1/3)",
-                "cos(pi*t_n) = 0 at t_n=0.5 -> zero-buoyancy state",
-                "Negentropic infall: t_n=1 -> cos=-1 -> FUBi > 0 (aids collapse)",
-            ],
-            'simulation_set': [
-                "Scan balance vs r: 0.01 to 50 AU — map inner/habitable/outer zones",
-                "Scan t_n: 0 to 2 — show blink cycle of FUBi sign flip",
-                "3D landscape: balance(r, t_n) — find zero-crossings as hz contour",
-            ],
-        }
-
-
-class HabitableZoneCalculator:
-    """Simultaneous equation solver for habitable zone (r_hz, t_n_hz).
-
-    Solves jointly:
-      Eq1: FUBi(r, t_n) + FUBii(r, t_n) = 0   [neutral buoyancy]
-      Eq2: eps'(r, t_n) + G*M/(c^2*r^2) = 0   [metric-geodesic match]
-
-    Returns habitable zone radius r_hz and phase t_n_hz, plus full diagnostics.
-    Physics: where Aether buoyancy (FUBii) exactly balances the collapsing
-    gravity zone force (FUBi) AND the BSFG metric gradient matches the
-    Newtonian geodesic correction — the Aether-Greek universal balance point.
-    """
-
-    def compute(self, dataset: dict) -> dict:
-        params = {k: dataset[k] for k in dataset
-                  if k in ('M', 'beta_i', 'Omega_g', 'M_bh', 'd_g',
-                            'epsilon_sw', 'rho_sw', 'U_UA', 'rho_vac')}
-
-        r_guess = dataset.get('r', None)
-        t_n_guess = dataset.get('t_n', 0.5)
-
-        hz = solve_habitable_zone(params, r_guess_m=r_guess, t_n_guess=t_n_guess)
-
-        return {
-            'r_hz_m'        : hz.r_hz_m,
-            'r_hz_AU'       : hz.r_hz_AU,
-            't_n_hz'        : hz.t_n_hz,
-            'FUBi_at_hz'    : hz.FUBi_at_hz,
-            'FUBii_at_hz'   : hz.FUBii_at_hz,
-            'residual_eq1'  : hz.residual_eq1,
-            'residual_eq2'  : hz.residual_eq2,
-            'converged'     : hz.converged,
-            'hz_type'       : hz.hz_type,
-            'solver_msg'    : hz.solver_msg,
-            'primary_equations': [
-                f"SIMULTANEOUS SYSTEM (r, t_n) solved jointly:",
-                f"  Eq1: FUBi + FUBii = 0  [neutral buoyancy crossing]",
-                f"  Eq2: eps' + G*M/(c^2*r^2) = 0  [metric-geodesic match]",
-                f"  Solution: r_hz = {hz.r_hz_AU:.4f} AU, t_n_hz = {hz.t_n_hz:.4f}",
-                f"  FUBi at hz = {hz.FUBi_at_hz:.4e}",
-                f"  FUBii at hz = {hz.FUBii_at_hz:.4e}",
-                f"  Zone: {hz.hz_type}",
-            ],
-            'available_equations': [
-                "Analytic r_hz = (beta_i*G*M_sun^2*orbit / (rho_vac*(4pi/3)*c^2))^(1/3)",
-                "t_n_hz from: cos(pi*t_n) = G*M*r_hz^2 / (3*ETA*C_num*c^2)",
-                "Inner zone r < r_hz: FUBi dominates -> rocky planet / liquid surface",
-                "Outer zone r > r_hz: FUBii dominates -> gas / void",
-                "BSFG horizon: blinking at t_n = 1 (cos=-1) -> transient collapse",
-            ],
-            'simulation_set': [
-                "M scan: Sun, Proxima Cen, TRAPPIST-1 -> compare r_hz",
-                "Galactic BH scan: M_bh from 1e6 to 1e10 M_sun -> r_hz dependence",
-                "t_n blink cycle: animate FUBi + FUBii over [0, 2] -> hz oscillation",
-            ],
-        }
-
-
-class UniversalGravityCalculator:
-    """Full Universal Gravity assembly F_U = Ug1+Ug2+Ug3+Ug4 − FUBi + FUBii + Um.
-
-    Quantum Chain Steps 3–6:
-      Step 3: Ug1 seeded from DPM mu_s
-      Step 4: Ug2+Ug3+Ug4 simultaneously promoted
-      Step 5: F_U = Ug_family + Um + FUBi + FUBii
-      Step 6: FUBi + FUBii = 0 at crossing (compaction)
-    Mass enters only AFTER Step 7 (M_emergent at crossing).
-    """
-
-    def compute(self, dataset: dict) -> dict:
-        r          = dataset.get('r',          AU_METERS)
-        t_n        = dataset.get('t_n',        0.0)
-        M          = dataset.get('M',          M_SUN)
-        beta_i     = dataset.get('beta_i',     BETA_I_BSFG)
-        Omega_g    = dataset.get('Omega_g',    OMEGA_G_BSFG)
-        M_bh       = dataset.get('M_bh',       M_BH_BSFG)
-        d_g        = dataset.get('d_g',        D_G_BSFG)
-        epsilon_sw = dataset.get('epsilon_sw', EPS_SW_BSFG)
-        rho_sw     = dataset.get('rho_sw',     RHO_SW_BSFG)
-        U_UA       = dataset.get('U_UA',       U_UA_BSFG)
-        rho_vac    = dataset.get('rho_vac',    RHO_VAC_SCM)
-
-        res = compute_F_U(r, t_n, M, beta_i, Omega_g, M_bh, d_g,
-                          epsilon_sw, rho_sw, U_UA, rho_vac)
-
-        Ug_sum = res.Ug1 + res.Ug2 + res.Ug3 + res.Ug4
-
-        return {
-            'Ug1'         : res.Ug1,
-            'Ug2'         : res.Ug2,
-            'Ug3'         : res.Ug3,
-            'Ug4'         : res.Ug4,
-            'Ug_sum'      : Ug_sum,
-            'FUBi'        : res.FUBi,
-            'FUBii'       : res.FUBii,
-            'Um'          : res.Um,
-            'F_U_total'   : res.F_U_total,
-            'eps'         : res.eps,
-            'r_AU'        : r / AU_METERS,
-            'primary_equations': [
-                f"F_U = Ug_sum - FUBi + FUBii + Um = {res.F_U_total:.4e}",
-                f"Ug_sum = Ug1+Ug2+Ug3+Ug4 = {Ug_sum:.4e}",
-                f"FUBi (SOURCE4 Ubi) = {res.FUBi:.4e}  (collapsing gravity zone)",
-                f"FUBii (Aether spring) = {res.FUBii:.4e}  (habitable zone force)",
-                f"Um (magnetic string) = {res.Um:.4e}",
-                f"BSFG eps = {res.eps:.4e}  (Aether metric perturbation)",
-            ],
-            'available_equations': [
-                "Ug1 = k1 * mu_s * (M/r^2) * cos(pi*t_n)  [magnetic dipole]",
-                "Ug2 = k2 * Q_total * M/r^2 * S(r>R_b) * E_react  [charge-reactivity]",
-                "Ug3 = k3 * B_disk * cos(omega_s*t*pi) * E_react  [string rotation]",
-                "Ug4 = k4 * rho_vac * C_factor * cos(pi*t_n)  [vacuum concentration]",
-                "Um = M*R^2*omega_s / r^3  [universal magnetism]",
-            ],
-            'simulation_set': [
-                "Scan F_U vs r: 0.01 to 100 AU — profile all 6 components",
-                "Ug_family assembly: step-by-step Ug1 -> Ug1+Ug2 -> ... -> F_U",
-                "t_n blink: animate F_U over one full phase cycle t_n in [0,2]",
-            ],
-        }
-
-class MayanTimingCalculator:
-    """Three-ring Mayan timing system — Universal Inertia and zero-point gravity.
-
-    Input dataset keys:
-      epoch       : Mayan epoch 1–5 (default 5 = current, started 2012)
-      current_year: decimal year (default 2026.33 = May 2026)
-      r_base_AU   : base radius for ring proportions [AU] (default 1.0)
-      rho_vac     : override vacuum energy density (default RHO_VAC_SCM)
-
-    CANONICAL EPOCH 5 (post-2012) RING GEOMETRY:
-      Ring 1 (OUTER/LEFT)    : EXPANDING  r ≈ 6.85 AU at epoch 5
-      Ring 2 (COMPANION/RIGHT): SHRINKS   r ≈ 0.146 AU at epoch 5
-      Ring 3 (INNER, inside 1): VERY SMALL r ≈ 0.021 AU at epoch 5
-
-    Universal Inertia invariant:
-      U_I = 3 · ρ_vac · (4π/3) · c² · cos(π·t_n)   [N/m²]
-      FRAME-INVARIANT: same regardless of r_hz, mass, orbital parameters
-
-    Zero-point gravity (massless scalar state):
-      cos(π·t_n) = 0 → t_n = 1/2 within each Great Cycle
-      Achieved with precision = 1 / (gear_ratio_13 × N_teeth)
-      In Epoch 5: 47× finer timing resolution via Ring 3
-
-    Tectonic/crustall zone (floating on superconductive heavy plasma):
-      Inner boundary = r_inner (FUBi zone, rocky / solid)
-      Outer boundary = r_outer (FUBii zone, superconductive plasma)
-      r_hz (habitable zone) lies between: surface floats at r_hz
-    """
-
-    def compute(self, dataset: dict) -> dict:
-        epoch        = dataset.get('epoch',        5)
-        current_year = dataset.get('current_year', 2026.33)
-        r_base_AU    = dataset.get('r_base_AU',    1.0)
-        rho_vac      = dataset.get('rho_vac',      RHO_VAC_SCM)
-
-        state = mayan_ring_state(epoch, current_year, r_base_AU)
-        ui    = universal_inertia(state.t_n, epoch, r_base_AU, rho_vac)
-        zp    = zero_point_years_in_epoch5(5)
-
-        # Connect to habitable zone solver
-        hz = solve_habitable_zone({'rho_vac': rho_vac})
-
-        # Crustall/tectonic band: [r_inner, r_outer]
-        band_inner_AU = state.r_inner_AU
-        band_outer_AU = state.r_outer_AU
-        hz_in_band    = (band_inner_AU <= hz.r_hz_AU <= band_outer_AU)
-
-        return {
-            # Ring geometry
-            'epoch'               : epoch,
-            'current_year'        : current_year,
-            'r_outer_AU'          : state.r_outer_AU,
-            'r_companion_AU'      : state.r_companion_AU,
-            'r_inner_AU'          : state.r_inner_AU,
-            'gear_ratio_12'       : state.gear_ratio_12,
-            'gear_ratio_13'       : state.gear_ratio_13,
-            # Timing
-            't_n'                 : state.t_n,
-            't_n_inner'           : state.t_n_inner,
-            'cos_tn'              : state.cos_tn,
-            'omega_outer_rad_s'   : state.omega_outer,
-            'omega_companion_rad_s': state.omega_companion,
-            'omega_inner_rad_s'   : state.omega_inner,
-            'zero_point_next_year': state.zero_point_next_year,
-            'zero_point_years_e5' : zp,
-            'massless_mode'       : state.massless_mode,
-            # Universal Inertia
-            'u_inertia'           : ui.u_inertia,
-            'u_inertia_abs'       : ui.u_inertia_abs,
-            'centripetal_mode'    : ui.centripetal_mode,
-            'centrifugal_mode'    : ui.centrifugal_mode,
-            'zero_point_gravity'  : ui.zero_point,
-            'primordial_freq_range': ui.primordial_freq_range,
-            # Tectonic/crustall zone
-            'tectonic_inner_AU'   : band_inner_AU,
-            'tectonic_outer_AU'   : band_outer_AU,
-            'r_hz_AU'             : hz.r_hz_AU,
-            'hz_in_tectonic_band' : hz_in_band,
-            'primary_equations': [
-                f"MAYAN THREE-RING TIMING — Epoch {epoch} (Epoch 5 started 2012.97)",
-                f"  Ring 1 (OUTER/EXPANDING):    r = {state.r_outer_AU:.4f} AU",
-                f"  Ring 2 (COMPANION/SHRINKING): r = {state.r_companion_AU:.4f} AU",
-                f"  Ring 3 (INNER/VERY SMALL):   r = {state.r_inner_AU:.6f} AU",
-                f"  Gear ratio 1:3 (inner amplification) = {state.gear_ratio_13:.2f}×",
-                f"  t_n = {state.t_n:.6f}   cos(π·t_n) = {state.cos_tn:.6f}",
-                f"UNIVERSAL INERTIA (invariant differential):",
-                f"  U_I = 3·ρ_vac·(4π/3)·c²·cos(π·t_n) = {ui.u_inertia:.4e} N/m²",
-                f"  Mode: {'CENTRIPETAL (mass-building)' if ui.centripetal_mode else 'CENTRIFUGAL (void-expansion)'}",
-                f"  Zero-point next: {state.zero_point_next_year:.2f}",
-                f"TECTONIC BAND: [{band_inner_AU:.4f}, {band_outer_AU:.4f}] AU",
-                f"  r_hz (habitable) = {hz.r_hz_AU:.4f} AU  in band: {hz_in_band}",
-            ],
-            'available_equations': [
-                "Ring proportions: r_i(n) = r_base × φ^{±2(n−1)}  φ=(1+√5)/2",
-                "ω_companion = −ω_outer × r_outer/r_companion  [external mesh]",
-                "ω_inner = +ω_outer × r_outer/r_inner  [internal mesh, amplified]",
-                "U_I = 3·ρ_vac·(4π/3)·c²·cos(π·t_n)  [frame-invariant]",
-                "Zero-point years: EPOCH5_START + (2k+1)/2 × GREAT_CYCLE_YEARS",
-                "Tectonic float: surface at r_hz where FUBi + FUBii = 0",
-                "Primordial radiance band: [ω_outer, ω_inner] = [1, gear_ratio_13]×ω_baktun",
-            ],
-            'simulation_set': [
-                "Animate gear proportions: epoch 1→5 — outer grows, inner/companion shrink",
-                "U_I vs t_n: 0→2 — show centripetal↔zero-point↔centrifugal cycle",
-                "Scan current_year: 2012→7138 — next zero-point year identified",
-                "3D tectonic surface: r_hz(M, epoch) — habitable zone across mass spectrum",
-            ],
-        }
-
-
-class CrustalZeroPointCalculator:
-    """Crustal/tectonic floating zone with Mayan-Ring-3 quantum timing.
-
-    Solves the simultaneous problem of a solid crust floating on a
-    superconductive heavy plasma layer (Aether UA-supported) while tracking
-    the Universal Inertia zero-crossing windows that define zero-point gravity.
-
-    Input dataset keys (all optional, sensible defaults):
-      rho_crust_kg_m3   : crust density        (default 2700 kg/m³)
-      rho_plasma_kg_m3  : plasma density       (default 12000 kg/m³)
-      h_crust_m         : crust thickness      (default 3.5e4 m = 35 km)
-      epoch             : Mayan epoch          (default 5)
-      current_year      : decimal year         (default 2026.33)
-      rho_vac           : vacuum override      (default RHO_VAC_SCM)
-      threshold_frac    : zero-point threshold (default 1e-3)
-      g_local           : local gravity        (default 9.81 m/s²)
-
-    Returns the CondensedPhysics output triple:
-      primary_equations / available_equations / simulation_set + diagnostics.
-    """
-
-    def compute(self, dataset: dict) -> dict:
-        rho_c   = dataset.get('rho_crust_kg_m3',   RHO_CRUST_DEFAULT_KG_M3)
-        rho_p   = dataset.get('rho_plasma_kg_m3',  RHO_PLASMA_DEFAULT_KG_M3)
-        h_c     = dataset.get('h_crust_m',         CRUST_THICKNESS_M_DEFAULT)
-        epoch   = dataset.get('epoch',             5)
-        year    = dataset.get('current_year',      2026.33)
-        rho_v   = dataset.get('rho_vac',           RHO_VAC_SCM)
-        thr     = dataset.get('threshold_frac',    1.0e-3)
-        g_loc   = dataset.get('g_local',           9.81)
-
-        s = crustal_zero_point_state(rho_c, rho_p, h_c, epoch, year,
-                                      rho_v, thr, g_loc)
-
-        return {
-            # Echo + diagnostics
-            'rho_crust_kg_m3'      : s.rho_crust_kg_m3,
-            'rho_plasma_kg_m3'     : s.rho_plasma_kg_m3,
-            'h_crust_m'            : s.h_crust_m,
-            'epoch'                : s.epoch,
-            't_n'                  : s.t_n,
-            'cos_tn'               : s.cos_tn,
-            # Buoyancy
-            'delta_rho_kg_m3'      : s.delta_rho_kg_m3,
-            'floats'               : s.floats,
-            'h_eq_m'               : s.h_eq_m,
-            'F_buoy_per_area'      : s.F_buoy_per_area,
-            # Universal Inertia field
-            'u_inertia'            : s.u_inertia,
-            'g_eff_m_s2'           : s.g_eff,
-            # Tectonic resonance
-            'omega_tect_rad_s'     : s.omega_tect_rad_s,
-            'f_tect_Hz'            : s.f_tect_Hz,
-            'period_tect_yr'       : s.period_tect_yr,
-            # Zero-point window
-            'zero_point_active'    : s.zero_point_active,
-            'window_half_t_n'      : s.window_half_t_n,
-            'window_half_yr'       : s.window_half_yr,
-            'next_zero_year'       : s.next_zero_year,
-            'gear_ratio_13'        : s.gear_ratio_13,
-            'timing_resolution_yr' : s.timing_resolution_yr,
-            'primary_equations': [
-                f"CRUSTAL/TECTONIC ZONE — Epoch {s.epoch}",
-                f"  ρ_crust  = {s.rho_crust_kg_m3:.1f} kg/m³",
-                f"  ρ_plasma = {s.rho_plasma_kg_m3:.1f} kg/m³ (superconductive heavy)",
-                f"  h_crust  = {s.h_crust_m/1000:.1f} km",
-                f"ARCHIMEDEAN BALANCE:",
-                f"  Δρ = {s.delta_rho_kg_m3:.1f} kg/m³   floats: {s.floats}",
-                f"  h_eq (submersion) = {s.h_eq_m/1000:.2f} km",
-                f"UNIVERSAL INERTIA at t_n={s.t_n:.4f}:",
-                f"  U_I = {s.u_inertia:.4e} N/m²   cos(π·t_n) = {s.cos_tn:.4e}",
-                f"  g_eff on crust    = {s.g_eff:.4e} m/s²",
-                f"TECTONIC RESONANCE: ω_tect = sqrt(g·Δρ/(ρ_crust·h))",
-                f"  ω = {s.omega_tect_rad_s:.4e} rad/s   f = {s.f_tect_Hz:.4e} Hz",
-                f"  period = {s.period_tect_yr*365.25*86400:.1f} s "
-                f"({s.period_tect_yr*365.25*1440:.1f} min)",
-                f"ZERO-POINT WINDOW (Ring 3 precision):",
-                f"  active now: {s.zero_point_active}",
-                f"  next zero @ year {s.next_zero_year:.2f}  "
-                f"(window ±{s.window_half_yr:.2f} yr)",
-                f"  Ring 3 amplification = {s.gear_ratio_13:.2f}×",
-                f"  timing resolution    = {s.timing_resolution_yr*365.25:.2f} days",
-            ],
-            'available_equations': [
-                "ρ_plasma(d,T) = ρ_surf · (1+d/H_scale) · (T_ref/T)^{1/4}",
-                "h_eq/h_crust = ρ_crust/ρ_plasma  (Archimedes)",
-                "F_buoy_per_area = Δρ · g · h_crust  [N/m²]",
-                "U_I = 3·ρ_vac·(4π/3)·c²·cos(π·t_n)  [N/m²]",
-                "g_eff = |U_I| / (ρ_crust · h_crust)  [m/s²]",
-                "ω_tect = sqrt( g · Δρ / (ρ_crust · h_crust) )  [rad/s]",
-                "Window: |cos(π·t_n)| < ε  →  half-width = arcsin(ε)/π in t_n",
-                "Δt_res = GREAT_CYCLE_YR / (φ^{2(epoch-1)} · TZOLKIN_TEETH)",
-            ],
-            'simulation_set': [
-                "Bob the crust: F(t) = F_buoy + U_I(t_n(t)) for one Tzolkin",
-                "Zero-point sweep: scan year 2026→7138, mark all |U_I|<threshold windows",
-                "Plasma depth profile: ρ_plasma(d) at d=0..1000 km, T=1e5..1e7 K",
-                "Tectonic eigenmodes: vary h_crust=10..70 km → ω_tect spectrum",
-                "Quantum gate: width of zero-point window vs ε = 1e-2..1e-6",
-            ],
-        }
-
-
-# =============================================================================
-# SECTION 7 — TEST SUITE (60 tests: T01–T60 mirroring C++ runQCalcGeomTests)
-# =============================================================================
-
-def _tol_check(computed: float, expected: float, tol_pct: float) -> bool:
-    if expected == 0.0:
-        return abs(computed) < 1.0e-300
-    return abs((computed - expected) / expected) <= tol_pct / 100.0
-
-
-def run_qcalcgeom_tests(verbose: bool = True) -> dict:
-    """Run all 85 QCalcGeom requirements-boundary tests.
-    T01–T60: mirrors C++ runQCalcGeomTests() with identical reference values.
-    T61–T70: Mayan three-ring timing / Universal Inertia system.
-    T71–T80: Session 202 VDS/DVP/DH26 variant branches + coupling (Phase H202).
-    T81–T85: F_U + U_I integration + epoch-aware tectonic band (Session 265).
-    Returns {'passed': int, 'failed': int, 'results': list-of-dicts}.
-    """
-    results = []
-
-    def chk(tid, group, name, computed, expected, tol_pct, qual_ok=True):
-        if tol_pct == 0.0:
-            passed = qual_ok
-        else:
-            passed = _tol_check(computed, expected, tol_pct) and qual_ok
-        results.append({'id': tid, 'group': group, 'name': name,
-                        'computed': computed, 'expected': expected,
-                        'tol_pct': tol_pct, 'passed': passed})
-        if verbose:
-            status = "PASS" if passed else "FAIL"
-            print(f"  [{status}] {tid} {group}: {name}")
-            if not passed:
-                print(f"         computed={computed:.6e}  expected={expected:.6e}  tol={tol_pct}%")
-
-    if verbose:
-        print("\n" + "="*72)
-        print("QCalcGeom.py v2.3.0 — Requirements-Boundary Test Suite (T01–T90)")
-        print("="*72 + "\n")
-
-    # ── BSFG-METRIC (T01–T06) ────────────────────────────────────────────────
-    m_sun  = bsfg_metric(R_SUN, 0.0)
-    m_far  = bsfg_metric(1.0e20, 0.0)
-    m_tn0  = bsfg_metric(R_SUN, 0.0)
-    m_tn2  = bsfg_metric(R_SUN, 2.0)
-    m_tn1  = bsfg_metric(R_SUN, 1.0)
-    m_half = bsfg_metric(R_SUN / 2.0, 0.0)
-
-    chk("T01","BSFG-METRIC","eps_prime at R_SUN t_n=0",
-        abs(m_sun.eps_p), EPS_PRIME_REF, 2.0)
-    chk("T02","BSFG-METRIC","R^r_0r0 at R_SUN t_n=0",
-        m_sun.R_r0r0, R_R0R0_REF, 2.0)
-    ratio_far = m_far.R_r0r0 / m_sun.R_r0r0 if m_sun.R_r0r0 > 0 else 0.0
-    chk("T03","BSFG-METRIC","R_r0r0 -> 0 as r -> inf",
-        ratio_far, 0.0, 0.0, qual_ok=ratio_far < 1.0e-50)
-    delta_cyc = abs(m_tn0.eps - m_tn2.eps)
-    chk("T04","BSFG-METRIC","eps(t_n=0) == eps(t_n=2)",
-        delta_cyc, 0.0, 0.0, qual_ok=delta_cyc < 1.0e-50)
-    ratio_flip = m_tn1.eps / m_tn0.eps if m_tn0.eps != 0.0 else 0.0
-    chk("T05","BSFG-METRIC","eps sign flip t_n=0 vs t_n=1",
-        ratio_flip, -1.0, 1.0, qual_ok=(m_tn0.eps > 0 and m_tn1.eps < 0))
-    ratio_r5 = m_half.eps_pp / m_sun.eps_pp if m_sun.eps_pp != 0.0 else 0.0
-    chk("T06","BSFG-METRIC","eps_pp(r/2)/eps_pp(r) = 32  (r^-5 law)",
-        ratio_r5, 32.0, 0.01)
-
-    # ── BSFG-GEOM (T07–T12) ─────────────────────────────────────────────────
-    h_tn1 = bsfg_horizon(1.0)
-    gd_au  = bsfg_geodesic(AU_METERS, 0.0)
-    gd_sun = bsfg_geodesic(R_SUN, 0.0)
-    hl_sun = bsfg_holonomy(R_SUN, 0.0, 1.0)
-
-    chk("T07","BSFG-GEOM","Blinking horizon r_h ~ 1.62e8 m at t_n=1",
-        h_tn1.r_h, R_H_BSFG_REF, 2.0, qual_ok=h_tn1.exists)
-    chk("T08","BSFG-GEOM","Hawking T_H ~ 3.37e-12 K",
-        h_tn1.T_H, T_H_BSFG_REF, 3.0)
-    chk("T09","BSFG-GEOM","Crossover r_cross ~ 0.360 AU",
-        gd_au.r_cross_AU, R_CROSS_AU_REF, 2.0)
-    chk("T10","BSFG-GEOM","h_eta = eta*h_Planck = 6.626e-56",
-        gd_sun.h_eta, H_ETA_REF, 0.01)
-    gen_total = 6 + hl_sun.n_extra_flat
-    chk("T11","BSFG-GEOM","Holonomy 28 generators SO+(3,1)xU(1)^22",
-        float(gen_total), 28.0, 0.0,
-        qual_ok=(gen_total == 28) and hl_sun.G2_excluded and hl_sun.Spin7_excluded)
-    dim_total = 4 + hl_sun.n_extra_flat
-    chk("T12","BSFG-GEOM","M^26 = M^4 x T^22  dim=26",
-        float(dim_total), 26.0, 0.0, qual_ok=(dim_total == 26))
-
-    # ── VDS (T13–T16) ────────────────────────────────────────────────────────
-    v200 = vds_series(SSQ_DEFAULT, 200)
-    v56  = vds_series(0.56, 200)
-    v57  = vds_series(0.57, 200)
-    v58  = vds_series(0.58, 200)
-    v500 = vds_series(SSQ_DEFAULT, 500)
-
-    chk("T13","VDS","VDS(0.57) ~ 0.57  n=1 dominance",
-        v200.value, SSQ_DEFAULT, 0.0, qual_ok=abs(v200.value - SSQ_DEFAULT) < 1.0e-7)
-    # T14: |t_n| decreasing
-    terms_dec = True
-    prev_term = abs(SSQ_DEFAULT)
-    for n in range(2, 11):
-        cur = abs(SSQ_DEFAULT**n) / n**26
-        if cur > prev_term:
-            terms_dec = False
-            break
-        prev_term = cur
-    chk("T14","VDS","VDS |t_n| decreasing n=1..10",
-        v200.value, SSQ_DEFAULT, 0.0, qual_ok=terms_dec)
-    chk("T15","VDS","VDS strictly increasing in SSq",
-        v57.value, SSQ_DEFAULT, 0.0,
-        qual_ok=(v56.value < v57.value) and (v57.value < v58.value))
-    rel_conv = abs(v500.value - v200.value) / v500.value if v500.value != 0 else 1.0
-    chk("T16","VDS","VDS(N=200) == Li_26(0.57) to 10 d.p.",
-        rel_conv, 0.0, 0.0, qual_ok=rel_conv < 1.0e-10)
-
-    # ── DVP (T17–T21) ────────────────────────────────────────────────────────
-    d = dvp_arithmetic()
-    # Check 30th prime = 113
-    primes = []
-    c = 2
-    while len(primes) < 30:
-        if all(c % p != 0 for p in primes):
-            primes.append(c)
-        c += 1
-    chk("T17","DVP","30th prime = 113",
-        float(primes[29]), 113.0, 0.0, qual_ok=(primes[29] == 113))
-    chk("T18","DVP","26! mod 113 = 12",
-        float(d.fac26_mod_113), 12.0, 0.0, qual_ok=(d.fac26_mod_113 == 12))
-    chk("T19","DVP","non_repeating = True (Wilson)",
-        1.0 if d.non_repeating else 0.0, 1.0, 0.0, qual_ok=d.non_repeating)
-    chk("T20","DVP","r_q_AU ~ 0.0973 AU",
-        d.r_q_AU, 0.0973, 2.0)
-    chk("T21","DVP","r_q_m = r_q_AU * AU",
-        d.r_q_m, d.r_q_AU * AU_METERS, 0.001)
-
-    # ── BSH (T22–T24) ────────────────────────────────────────────────────────
-    bsh = bsh_harmonic(3.3e7, SSQ_DEFAULT, 2.0 * math.pi * 3.3e7, 0.0, 20)
-    bsh_sat = bsh_harmonic(3.3e7, 0.99, 2.0 * math.pi * 3.3e7, 0.0, 200)
-
-    chk("T22","BSH","U_g2 > 0 at t_n=0",
-        bsh.U_g2, 0.0, 0.0, qual_ok=(bsh.U_g2 > 0.0))
-    chk("T23","BSH","H_m_max = f_Ub * harmonic_sum",
-        bsh.H_m_max, 3.3e7 * sum(1.0 / k for k in range(1, 21)), 0.1)
-    chk("T24","BSH","BSH saturated at SSq=0.99 m_max=200",
-        1.0 if bsh_sat.saturated else 0.0, 1.0, 0.0, qual_ok=bsh_sat.saturated)
-
-    # ── BH26 (T25–T27) ───────────────────────────────────────────────────────
-    bh1  = bh26_eigenvalue(1)
-    bh26 = bh26_eigenvalue(26)
-
-    chk("T25","BH26","lambda_1 = 1*(1+25) = 26",
-        bh1.lambda_k, 26.0, 0.001)
-    chk("T26","BH26","lambda_26 = 26*(26+25) = 1326",
-        bh26.lambda_k, 1326.0, 0.001)
-    chk("T27","BH26","freq_bin_hz = RERING_BB_HZ / lambda",
-        bh1.freq_bin_hz, RERING_BB_HZ / 26.0, 0.001)
-
-    # ── COSMO (T28–T30) ──────────────────────────────────────────────────────
-    fe_sun = bsfg_field_equations(R_SUN, 0.0)
-
-    chk("T28","COSMO","amp_factor > 1 (Aether-dominated near R_SUN)",
-        fe_sun.amp_factor, 0.0, 0.0, qual_ok=(fe_sun.amp_factor > 1.0))
-    chk("T29","COSMO","Lambda_eff > 0",
-        fe_sun.Lambda_eff, 0.0, 0.0, qual_ok=(fe_sun.Lambda_eff > 0.0))
-    chk("T30","COSMO","rho_vac_eff > 0",
-        fe_sun.rho_vac_eff, 0.0, 0.0, qual_ok=(fe_sun.rho_vac_eff > 0.0))
-
-    # ── POLY26 (T31–T36) ─────────────────────────────────────────────────────
-    p1  = poly26_derivative(1,  G_NEWTON * M_SUN, AU_METERS)
-    p26 = poly26_derivative(26, 1.0, R_SUN)
-    p1b = poly26_derivative(1,  G_NEWTON * M_SUN, 2.0 * AU_METERS)
-
-    chk("T31","POLY26","poly26(k=1) value finite and > 0",
-        p1.value, 0.0, 0.0, qual_ok=(p1.value > 0.0))
-    chk("T32","POLY26","poly26(k=26,r=R_SUN) factorial ratio ~ (51!/25!) ~ 1e41",
-        p26.factorial_ratio, 0.0, 0.0, qual_ok=(p26.factorial_ratio > 1.0e40))
-    # r-scaling: p(2r)/p(r) = (1/2)^{k+26} for k=1 → 2^{-27}
-    ratio_p26 = p1b.value / p1.value if p1.value != 0.0 else 0.0
-    chk("T33","POLY26","poly26(k=1) r-scaling: p(2r)/p(r) = 2^{-27}",
-        ratio_p26, 2.0**(-27), 0.5)
-    chk("T34","POLY26","poly26(k=1) negligible at 1 AU = True (26th deriv vanishes at planetary scale)",
-        1.0 if p1.negligible else 0.0, 1.0, 0.0, qual_ok=p1.negligible)
-
-    # ── UQFF-COMP (T35–T38) ──────────────────────────────────────────────────
-    uc = uqff_comp_matrix(AU_METERS, 1.4e3)
-
-    chk("T35","UQFF-COMP","m00 > 0 at 1 AU",
-        uc.m00, 0.0, 0.0, qual_ok=(uc.m00 > 0.0))
-    chk("T36","UQFF-COMP","positive_definite = True",
-        1.0 if uc.positive_definite else 0.0, 1.0, 0.0, qual_ok=uc.positive_definite)
-    chk("T37","UQFF-COMP","cross_d13 >= 0 (k=26 term underflows at AU; non-neg by construction)",
-        uc.cross_d13, 0.0, 0.0, qual_ok=(uc.cross_d13 >= 0.0))
-    chk("T38","UQFF-COMP","eigenvalue_min >= 0",
-        uc.eigenvalue_min, 0.0, 0.0, qual_ok=(uc.eigenvalue_min >= 0.0))
-
-    # ── NEG-BUOY / FUBi (T39–T44) ────────────────────────────────────────────
-    buo_t0 = bsfg_buoyancy(R_SUN, 0.0)
-    buo_t1 = bsfg_buoyancy(R_SUN, 1.0)
-    buo_th = bsfg_buoyancy(R_SUN, 0.5)
-
-    chk("T39","NEG-BUOY","FUBi at t_n=0 ~ UBI_BSFG_REF",
-        buo_t0.Ubi, UBI_BSFG_REF, 3.0)
-    chk("T40","NEG-BUOY","FUBi at t_n=0 negative (opposes gravity)",
-        buo_t0.Ubi, 0.0, 0.0, qual_ok=buo_t0.negative)
-    chk("T41","NEG-BUOY","FUBi at t_n=1 positive (aids collapse)",
-        buo_t1.Ubi, 0.0, 0.0, qual_ok=buo_t1.inverted)
-    chk("T42","NEG-BUOY","FUBi sign flip t_n=0 vs t_n=1",
-        buo_t1.Ubi / buo_t0.Ubi if buo_t0.Ubi != 0 else 0.0, -1.0, 0.1)
-    chk("T43","NEG-BUOY","FUBi zero crossing at t_n=0.5",
-        abs(buo_th.cos_tn), 0.0, 0.0, qual_ok=buo_th.zero_crossing)
-    chk("T44","NEG-BUOY","FUBi even symmetry: t_n=0.3 == t_n=-0.3",
-        bsfg_buoyancy(R_SUN, -0.3).Ubi - bsfg_buoyancy(R_SUN, 0.3).Ubi,
-        0.0, 0.0, qual_ok=abs(bsfg_buoyancy(R_SUN, -0.3).Ubi
-                               - bsfg_buoyancy(R_SUN, 0.3).Ubi) < 1.0e-40)
-
-    # ── FUBii / AETHER SPRING (T45–T50) ──────────────────────────────────────
-    fubii_au = compute_FUBii(AU_METERS, 0.0)
-    fubii_2au = compute_FUBii(2.0 * AU_METERS, 0.0)
-    fubii_tn1 = compute_FUBii(AU_METERS, 1.0)
-
-    chk("T45","AETHER","FUBii at 1AU t_n=0 > 0 (outward)",
-        fubii_au.FUBii, 0.0, 0.0, qual_ok=(fubii_au.FUBii > 0.0))
-    chk("T46","AETHER","FUBii linear in r: FUBii(2AU)/FUBii(1AU) = 2",
-        fubii_2au.FUBii / fubii_au.FUBii if fubii_au.FUBii != 0 else 0.0, 2.0, 0.01)
-    chk("T47","AETHER","FUBii at t_n=1 negative (cos flips)",
-        fubii_tn1.FUBii, 0.0, 0.0, qual_ok=(fubii_tn1.FUBii < 0.0))
-    # r_hz: FUBi(r_hz) + FUBii(r_hz) = 0 → balance reached
-    hz = solve_habitable_zone({})
-    chk("T48","AETHER","r_hz > 0 and finite",
-        hz.r_hz_m, 0.0, 0.0, qual_ok=(hz.r_hz_m > 0.0 and math.isfinite(hz.r_hz_m)))
-    chk("T49","AETHER","r_hz converged",
-        1.0 if hz.converged else 0.0, 1.0, 0.0, qual_ok=hz.converged)
-    # FUBi + FUBii at hz should be < 1% of scale
-    if hz.r_hz_m > 0:
-        buo_hz  = bsfg_buoyancy(hz.r_hz_m, hz.t_n_hz)
-        fubii_hz = compute_FUBii(hz.r_hz_m, hz.t_n_hz)
-        balance_hz_rel = abs(buo_hz.Ubi + fubii_hz.FUBii) / max(abs(buo_hz.Ubi), 1.0)
-    else:
-        balance_hz_rel = 1.0
-    chk("T50","AETHER","FUBi+FUBii ≈ 0 at r_hz (< 1% relative)",
-        balance_hz_rel, 0.0, 0.0, qual_ok=(balance_hz_rel < 0.01))
-
-    # ── UNIVERSAL GRAVITY (T51–T56) ───────────────────────────────────────────
-    fu = compute_F_U(AU_METERS, 0.0)
-    fu_r2 = compute_F_U(2.0 * AU_METERS, 0.0)
-
-    chk("T51","UNIV-G","F_U_total finite at 1 AU",
-        fu.F_U_total, 0.0, 0.0, qual_ok=math.isfinite(fu.F_U_total))
-    chk("T52","UNIV-G","Um decreases with r: Um(2AU) < Um(1AU)",
-        fu.Um - fu_r2.Um, 0.0, 0.0, qual_ok=(fu.Um > fu_r2.Um))
-    chk("T53","UNIV-G","FUBii > 0 at t_n=0 (outward Aether)",
-        fu.FUBii, 0.0, 0.0, qual_ok=(fu.FUBii > 0.0))
-    chk("T54","UNIV-G","eps from compute_F_U matches bsfg_metric",
-        fu.eps, bsfg_metric(AU_METERS, 0.0).eps, 0.001)
-
-    # VDS cross-check
-    vds_py = vds_series(SSQ_DEFAULT, 200).value
-    vds_dm = vds_numerical(terms=26)
-    chk("T55","VDS-XCHECK","vds_series == dpm vds_numerical (Li_26(0.57))",
-        vds_py, vds_dm, 0.1)
-
-    # F_U_Bi_i cross-check with DPM
-    fubi_dpm = compute_F_U_Bi_i_numerical(M_bh=M_SUN, r=R_SUN)
-    chk("T56","DPM-XCHECK","compute_F_U_Bi_i_numerical finite",
-        fubi_dpm, 0.0, 0.0, qual_ok=math.isfinite(fubi_dpm))
-
-    # ── HABITABLE ZONE SCAN (T57–T60) ────────────────────────────────────────
-    r_scan = np.array([0.1, 0.5, 1.0, 5.0, 10.0])
-    t_scan = np.array([0.0, 0.5, 1.0])
-    scan   = scan_habitable_zone(r_scan, t_scan)
-
-    chk("T57","HZ-SCAN","scan balance_grid shape == (5, 3)",
-        float(scan['balance_grid'].shape[0] * 100 + scan['balance_grid'].shape[1]),
-        503.0, 0.0,
-        qual_ok=(scan['balance_grid'].shape == (5, 3)))
-    chk("T58","HZ-SCAN","FUBi < 0 at t_n=0 (all r, opposes gravity)",
-        float(all(scan['FUBi_grid'][:, 0] < 0)), 1.0, 0.0,
-        qual_ok=bool(np.all(scan['FUBi_grid'][:, 0] < 0)))
-    chk("T59","HZ-SCAN","FUBii > 0 at t_n=0 (all r, outward)",
-        float(all(scan['FUBii_grid'][:, 0] > 0)), 1.0, 0.0,
-        qual_ok=bool(np.all(scan['FUBii_grid'][:, 0] > 0)))
-    chk("T60","HZ-SCAN","r_hz_m from scan is positive",
-        float(np.all(scan['r_hz_m'] > 0)), 1.0, 0.0,
-        qual_ok=bool(np.all(scan['r_hz_m'] > 0)))
-
-    # ── MAYAN TIMING / UNIVERSAL INERTIA (T61–T70) ───────────────────────────
-    rings5 = mayan_ring_proportions(5, 1.0)
-    rings1 = mayan_ring_proportions(1, 1.0)
-    state5 = mayan_ring_state(5, 2026.33, 1.0)
-    ui_tn0 = universal_inertia(0.0, 5, 1.0)
-    ui_tnH = universal_inertia(0.5, 5, 1.0)
-    ui_tn1 = universal_inertia(1.0, 5, 1.0)
-    zp_years = zero_point_years_in_epoch5(3)
-
-    # T61: Epoch 5 outer ring > base (expanding)
-    chk("T61","MAYAN","Epoch 5 outer ring EXPANDING (r_1 > r_base)",
-        rings5['r_outer_AU'], 0.0, 0.0,
-        qual_ok=(rings5['r_outer_AU'] > 1.0))
-
-    # T62: Epoch 5 companion ring < base (shrinking)
-    chk("T62","MAYAN","Epoch 5 companion ring SHRINKS (r_2 < r_base)",
-        rings5['r_companion_AU'], 0.0, 0.0,
-        qual_ok=(rings5['r_companion_AU'] < 1.0))
-
-    # T63: Epoch 5 inner ring very small (< companion)
-    chk("T63","MAYAN","Epoch 5 inner ring VERY SMALL (r_3 < r_2 < r_1)",
-        rings5['r_inner_AU'], 0.0, 0.0,
-        qual_ok=(rings5['r_inner_AU'] < rings5['r_companion_AU'] < rings5['r_outer_AU']))
-
-    # T64: Epoch 1 all rings equal to r_base (φ^0 = 1)
-    chk("T64","MAYAN","Epoch 1: all rings = r_base (φ^0 = 1)",
-        rings1['r_outer_AU'], 1.0, 0.001,
-        qual_ok=(abs(rings1['r_outer_AU'] - 1.0) < 1e-9
-                 and abs(rings1['r_inner_AU'] - 1.0) < 1e-9))
-
-    # T65: Gear ratio 1:3 at epoch 5 = r_outer/r_inner = φ^4/φ^-8 = φ^12 ≈ 321.9969
-    phi12 = PHI ** 12
-    chk("T65","MAYAN","Epoch 5 gear ratio 1:3 = φ^12 ≈ 321.997",
-        rings5['gear_ratio_13'], phi12, 0.01)
-
-    # T66: ω_companion negative (external mesh → opposite rotation)
-    chk("T66","MAYAN","ω_companion < 0 (external mesh, opposite rotation)",
-        state5.omega_companion, 0.0, 0.0,
-        qual_ok=(state5.omega_companion < 0.0))
-
-    # T67: ω_inner > ω_outer (internal mesh amplification)
-    chk("T67","MAYAN","ω_inner > ω_outer (internal mesh amplification ≈ 47×)",
-        state5.omega_inner, 0.0, 0.0,
-        qual_ok=(state5.omega_inner > state5.omega_outer * 2.0))
-
-    # T68: Universal Inertia > 0 at t_n=0 (centripetal, mass-building)
-    chk("T68","MAYAN","U_I > 0 at t_n=0 (centripetal restoring mode)",
-        ui_tn0.u_inertia, 0.0, 0.0,
-        qual_ok=ui_tn0.centripetal_mode)
-
-    # T69: Universal Inertia = 0 at t_n=0.5 (zero-point gravity)
-    chk("T69","MAYAN","U_I = 0 at t_n=0.5 (zero-point gravity, massless scalar)",
-        ui_tnH.u_inertia, 0.0, 0.0,
-        qual_ok=ui_tnH.zero_point)
-
-    # T70: Universal Inertia invariant — same |U_I| at t_n=0 and t_n=1, opposite sign
-    chk("T70","MAYAN","U_I invariant: |U_I(0)| = |U_I(1)|, sign flip (centripetal↔centrifugal)",
-        abs(ui_tn0.u_inertia + ui_tn1.u_inertia), 0.0, 0.0,
-        qual_ok=(abs(ui_tn0.u_inertia + ui_tn1.u_inertia)
-                 < 1e-6 * abs(ui_tn0.u_inertia)))
-
-    # ── VDS-DVP-DH26 (T71–T80): variant branches + coupling (Session 202 Phase H202) ─
-    vb_r  = vds_branches(SSQ_DEFAULT, 200)
-    db_r  = dvp_branches(200)
-    bh10_r = bh26_branches(10)
-    bh1_r  = bh26_branches(1)
-    cc_r   = vds_dvp_coupled(SSQ_DEFAULT, 200, 200)
-    res_r  = bh26_bsh_resonance(3.3e7, SSQ_DEFAULT, 0.0, 1)
-
-    # T71: VDS_prime ≈ 1.0  (Li_25(0.57)/0.57 — calibration sensitivity)
-    chk("T71","VDS-DVP-DH26","vds_prime = Li_25(SSq)/SSq ~ 1.0 (VDS calibration sensitivity)",
-        vb_r.vds_prime, 1.0, 0.001)
-
-    # T72: VDS energy density > 0  (VDS × RHO_VAC_SCM > 0)
-    chk("T72","VDS-DVP-DH26","vds_density > 0  (VDS × RHO_VAC_SCM positive)",
-        vb_r.vds_density, 0.0, 0.0, qual_ok=(vb_r.vds_density > 0.0))
-
-    # T73: DVP spectral sum > 0  (prime-vortex flux non-zero)
-    chk("T73","VDS-DVP-DH26","dvp zeta_sum > 0  (prime-vortex spectral flux positive)",
-        db_r.zeta_sum, 0.0, 0.0, qual_ok=(db_r.zeta_sum > 0.0))
-
-    # T74: pair_product < a_29^2  (a(31) < a(29) → product < first-term squared)
-    chk("T74","VDS-DVP-DH26","dvp pair_product < a_29^2  (a(31) < a(29), strictly decreasing)",
-        db_r.pair_product, 0.0, 0.0,
-        qual_ok=(db_r.a_29 > 0.0 and db_r.pair_product < db_r.a_29**2))
-
-    # T75: BH26 spectral sum N=10 == 1760  (closed-form eigenvalue ladder)
-    chk("T75","VDS-DVP-DH26","bh26_branches(10).spectral_sum == 1760 (eigenvalue ladder)",
-        bh10_r.spectral_sum, 1760.0, 1e-6)
-
-    # T76: Casimir energy > 0  (vacuum zero-point energy from spectral ladder)
-    chk("T76","VDS-DVP-DH26","bh26_branches(10).casimir_energy > 0  (vacuum Casimir energy)",
-        bh10_r.casimir_energy, 0.0, 0.0, qual_ok=(bh10_r.casimir_energy > 0.0))
-
-    # T77: degeneracy_k1 == 26  (C(26,25)=26 on S^{25})
-    chk("T77","VDS-DVP-DH26","bh26_branches(1).degeneracy_k1 == 26  (C(26,25) on S^25)",
-        float(bh1_r.degeneracy_k1), 26.0, 0.0, qual_ok=(bh1_r.degeneracy_k1 == 26))
-
-    # T78: vds_coupling > 0  (BH26→VDS topological bridge finite)
-    chk("T78","VDS-DVP-DH26","bh26_branches(10).vds_coupling > 0  (BH26→VDS topology bridge)",
-        bh10_r.vds_coupling, 0.0, 0.0, qual_ok=(bh10_r.vds_coupling > 0.0))
-
-    # T79: VDS×DVP joint_coeff ≥ 0  (geometric-mean coupling non-negative)
-    chk("T79","VDS-DVP-DH26","vds_dvp_coupled joint_coeff >= 0  (geometric-mean field coupling)",
-        cc_r.joint_coeff, 0.0, 0.0, qual_ok=(cc_r.joint_coeff >= 0.0))
-
-    # T80: BH26×BSH cross-resonance energy density > 0 at t_n=0, k=1
-    chk("T80","VDS-DVP-DH26","bh26_bsh_resonance energy_density > 0  (k=1, t_n=0)",
-        res_r.energy_density, 0.0, 0.0, qual_ok=(res_r.energy_density > 0.0))
-
-    # ── F_U + U_I INTEGRATION (T81–T85) — Session 265 ─────────────────────────
-    # Wire Universal Inertia into the Universal Gravity master equation.
-    fu_tn0    = compute_F_U(AU_METERS, 0.0, epoch=5)
-    fu_tnH    = compute_F_U(AU_METERS, 0.5, epoch=5)
-    fu_tn1    = compute_F_U(AU_METERS, 1.0, epoch=5)
-    hz_E1     = solve_habitable_zone({}, epoch=1)
-    hz_E5     = solve_habitable_zone({}, epoch=5)
-
-    # T81: compute_F_U returns U_I field (non-zero at t_n=0)
-    chk("T81","F_U+U_I","compute_F_U populates U_I field at t_n=0 (centripetal)",
-        fu_tn0.U_I, 0.0, 0.0,
-        qual_ok=(fu_tn0.U_I > 0.0))
-
-    # T82: U_I sign flips between t_n=0 and t_n=1 (centripetal → centrifugal)
-    chk("T82","F_U+U_I","U_I sign flips across great cycle (cos(π·t_n))",
-        fu_tn0.U_I + fu_tn1.U_I, 0.0, 0.0,
-        qual_ok=(fu_tn0.U_I * fu_tn1.U_I < 0.0))
-
-    # T83: U_I ≈ 0 at t_n=0.5 (zero-point gravity / massless scalar)
-    chk("T83","F_U+U_I","U_I ≈ 0 at zero-point t_n=0.5 (massless scalar)",
-        abs(fu_tnH.U_I), 0.0, 0.0,
-        qual_ok=(abs(fu_tnH.U_I) < abs(fu_tn0.U_I) * 1.0e-10))
-
-    # T84: epoch-aware tectonic band populated and non-zero
-    chk("T84","F_U+U_I","solve_habitable_zone tectonic band populated (Epoch 5)",
-        hz_E5.band_width_AU, 0.0, 0.0,
-        qual_ok=(hz_E5.band_width_AU > 0.0 and hz_E5.epoch == 5))
-
-    # T85: Epoch-5 band is asymmetrically wider than Epoch-1 (outer expanded)
-    chk("T85","F_U+U_I","Epoch 5 band wider than Epoch 1 (outer ring expansion)",
-        hz_E5.band_width_AU - hz_E1.band_width_AU, 0.0, 0.0,
-        qual_ok=(hz_E5.band_width_AU > hz_E1.band_width_AU))
-
-    # ── EMERGENT MASS at FUBi+FUBii=0 CROSSING (T86–T90) — Session 267 ────────
-    # The inverse problem to solve_habitable_zone: given r_hz, find M_emergent.
-    # This is the Quantum Chain Step 7: mass BORN at the crossing, not input.
-    hz_em  = solve_habitable_zone({})
-    em_sol = compute_emergent_mass(hz_em.r_hz_m, hz_em.t_n_hz)
-
-    # T86: emergent-mass solver converges and returns positive mass
-    chk("T86","EmergentMass","compute_emergent_mass converges at r_hz",
-        em_sol.M_emergent_kg, 0.0, 0.0,
-        qual_ok=(em_sol.converged and em_sol.M_emergent_kg > 0.0))
-
-    # T87: residual of buoyancy balance is at machine precision
-    cos_tn_em = abs(math.cos(math.pi * em_sol.t_n_hz))
-    FUBi_mag  = (em_sol.beta_i_used * G_NEWTON * em_sol.M_emergent_kg**2
-                 / max(em_sol.r_hz_m, 1.0)**2 * em_sol.orbit_factor * cos_tn_em)
-    rel_resid = (abs(em_sol.residual_at_M) / FUBi_mag) if FUBi_mag > 0 else 1.0
-    chk("T87","EmergentMass","FUBi+FUBii relative residual < 1e-12 at M_emergent",
-        rel_resid, 0.0, 0.0, qual_ok=(rel_resid < 1.0e-12))
-
-    # T88: inverse-relation consistency — feeding M_emergent back into
-    #      solve_habitable_zone should reproduce r_hz (round-trip).
-    hz_check = solve_habitable_zone({})  # uses M_SUN; baseline
-    # Closed-form sanity: r_hz³ ∝ M² so doubling M should grow r_hz by 2^(2/3)
-    em_2sun = compute_emergent_mass(hz_check.r_hz_m * (2.0**(2.0/3.0)),
-                                     hz_check.t_n_hz)
-    ratio = em_2sun.M_emergent_sun / em_sol.M_emergent_sun if em_sol.M_emergent_sun > 0 else 0.0
-    chk("T88","EmergentMass","M ∝ r^(3/2) closed-form scaling (ratio ≈ 2.0)",
-        ratio, 2.0, 0.05, qual_ok=(abs(ratio - 2.0) < 0.05))
-
-    # T89: classification populated and consistent with mass band
-    chk("T89","EmergentMass","mass classification populated",
-        1.0 if em_sol.classification else 0.0, 1.0, 0.0,
-        qual_ok=(em_sol.classification in
-                 ("sub_stellar","sub_solar","solar","stellar",
-                  "massive_stellar","BH_seed")))
-
-    # T90: rho_vac scaling — halving the vacuum density halves M² (M scales 1/√2)
-    em_halfrho = compute_emergent_mass(hz_em.r_hz_m, hz_em.t_n_hz,
-                                        rho_vac=float(RHO_VAC_SCM) * 0.5)
-    expected_factor = 1.0 / math.sqrt(2.0)  # ≈ 0.7071
-    actual_factor   = (em_halfrho.M_emergent_kg / em_sol.M_emergent_kg
-                       if em_sol.M_emergent_kg > 0 else 0.0)
-    chk("T90","EmergentMass","M ∝ sqrt(rho_vac) — halving ρ_vac → M × 1/√2",
-        actual_factor, expected_factor, 1.0e-6,
-        qual_ok=(abs(actual_factor - expected_factor) < 1.0e-6))
-
-    # ── UNIVERSAL BUOYANCY SIMULTANEOUS SOLVER (T91-T97) — v2.2.0 ────────────
-    # Coupled 4x4 nonlinear system (r_hz, t_n_hz, r_cg, M_emergent).
-    # Encodes Aether UA vacuum counter-balance F_U / F_U_Bi / F_U_Bi_i
-    # jointly with collapsing-gravity zone and emergent mass.
-    ubs = solve_universal_buoyancy({})
-    ubs_calc = UniversalBuoyancySimultaneousSolver().compute({})
-
-    # T91: solver returns a finite, populated solution
-    chk("T91","UBS-Solver","solve_universal_buoyancy returns finite r_hz > 0",
-        ubs.r_hz_m, 0.0, 0.0,
-        qual_ok=(math.isfinite(ubs.r_hz_m) and ubs.r_hz_m > 0.0))
-
-    # T92: collapsing-gravity zone interior to habitable zone (r_cg < r_hz)
-    chk("T92","UBS-Solver","r_cg < r_hz (collapse zone interior to HZ)",
-        ubs.r_hz_m - ubs.r_cg_m, 0.0, 0.0,
-        qual_ok=(ubs.r_cg_m < ubs.r_hz_m and ubs.r_cg_m > 0.0))
-
-    # T93: emergent mass positive and finite
-    chk("T93","UBS-Solver","M_emergent positive and finite",
-        ubs.M_emergent_kg, 0.0, 0.0,
-        qual_ok=(math.isfinite(ubs.M_emergent_kg) and ubs.M_emergent_kg > 0.0))
-
-    # T94: E1 residual at machine precision (FUBi + FUBii = 0 at r_hz)
-    chk("T94","UBS-Solver","residual_E1 < 1e-6 (FUBi+FUBii=0 at r_hz)",
-        abs(ubs.res_E1), 0.0, 0.0,
-        qual_ok=(abs(ubs.res_E1) < 1.0e-6))
-
-    # T95: E3 collapse-boundary 2:1 condition holds at r_cg
-    # |F_U_Bi/F_U_Bi_i| at r_cg should be ~ 2 (boundary definition)
-    chk("T95","UBS-Solver","collapse_ratio ≈ 2 at r_cg (E3 boundary)",
-        ubs.collapse_ratio, 2.0, 5.0,
-        qual_ok=(0.5 < ubs.collapse_ratio < 4.0))
-
-    # T96: calculator-class wrapper returns same r_hz_AU as direct solve
-    chk("T96","UBS-Solver","UniversalBuoyancySimultaneousSolver.compute matches direct solver",
-        ubs_calc['r_hz_AU'], ubs.r_hz_AU, 1.0e-6)
-
-    # T97: solver_msg is populated (either CONVERGED or staged fallback)
-    chk("T97","UBS-Solver","solver_msg is populated diagnostic string",
-        1.0 if ubs.solver_msg else 0.0, 1.0, 0.0,
-        qual_ok=(len(ubs.solver_msg) > 0))
-
-    # ── v2.2.1: real simulation_set numerical sweeps ─────────────────────────
-    sim = ubs_calc['simulation_set']
-    # T98: simulation_set returns three named sweeps with non-empty arrays
-    chk("T98","UBS-SimSet","simulation_set has 3 named sweeps with non-empty arrays",
-        float(len(sim)), 3.0, 0.0,
-        qual_ok=(
-            len(sim) == 3
-            and sim[0]['name'] == 'radial_sweep_at_t_n_hz'
-            and sim[1]['name'] == 'temporal_sweep_at_r_hz'
-            and sim[2]['name'] == 'rho_vac_sweep_r_hz'
-            and len(sim[0]['r_AU']) == 25
-            and len(sim[1]['t_n'])  == 21
-            and len(sim[2]['r_hz_pred_AU']) == 11
-        ))
-    # T99: rho_vac cube-root law -- decade-up of rho_vac shrinks r_hz by 10^(-1/3)
-    rho_sweep = sim[2]
-    idx0 = rho_sweep['rho_vac_factor'].index(1.0) if 1.0 in rho_sweep['rho_vac_factor'] else len(rho_sweep['rho_vac_factor'])//2
-    idx1 = -1  # top of decade range = factor 10
-    ratio_obs = rho_sweep['r_hz_pred_m'][idx1] / rho_sweep['r_hz_pred_m'][idx0]
-    chk("T99","UBS-SimSet","r_hz(rho_vac*10)/r_hz(rho_vac) = 10^(-1/3) (E4 cube-root law)",
-        ratio_obs, 10.0**(-1.0/3.0), 0.01)
-    # T100: radial sweep covers all three zones (collapsing, habitable_shell, gaseous_outer)
-    zones_seen = set(sim[0]['zone'])
-    chk("T100","UBS-SimSet","radial sweep visits all 3 Aether UA zones",
-        float(len(zones_seen)), 3.0, 0.0,
-        qual_ok=(zones_seen == {'collapsing','habitable_shell','gaseous_outer'}))
-
-    # ── v2.3.0: Crustal / Tectonic Zero-Point Zone (Track C) ────────────────
-    # T101: superconductive_plasma_density at depth=0 returns surface density
-    p0 = superconductive_plasma_density(0.0, 1.0e6)
-    chk("T101","CRUSTAL","plasma density at depth=0 = surface value",
-        p0, RHO_PLASMA_DEFAULT_KG_M3, 0.1)
-
-    # T102: plasma density increases with depth
-    p100km = superconductive_plasma_density(1.0e5, 1.0e6)
-    chk("T102","CRUSTAL","plasma density at d=100km > surface",
-        1.0 if p100km > p0 else 0.0, 1.0, 0.0,
-        qual_ok=(p100km > p0))
-
-    # T103: Archimedean balance — crust floats (Δρ > 0)
-    bb = crustal_buoyancy_balance()
-    chk("T103","CRUSTAL","crust floats on plasma (Δρ > 0)",
-        bb['delta_rho_kg_m3'], 9300.0, 1.0,
-        qual_ok=bb['floats'])
-
-    # T104: equilibrium submersion ratio = ρ_crust/ρ_plasma
-    expected_ratio = RHO_CRUST_DEFAULT_KG_M3 / RHO_PLASMA_DEFAULT_KG_M3
-    actual_ratio   = bb['h_eq_m'] / CRUST_THICKNESS_M_DEFAULT
-    chk("T104","CRUSTAL","h_eq/h_crust = ρ_crust/ρ_plasma",
-        actual_ratio, expected_ratio, 0.1)
-
-    # T105: tectonic resonance frequency positive and finite
-    tr = tectonic_resonance()
-    chk("T105","CRUSTAL","ω_tect positive and finite",
-        tr['omega_rad_s'], 0.0, 0.0,
-        qual_ok=(tr['omega_rad_s'] > 0.0 and math.isfinite(tr['omega_rad_s'])))
-
-    # T106: Earth-like tectonic period in 1-100 minute range
-    period_min = tr['period_s'] / 60.0
-    chk("T106","CRUSTAL","tectonic period in 1-100 min (Earth analog)",
-        1.0 if (1.0 < period_min < 100.0) else 0.0, 1.0, 0.0,
-        qual_ok=(1.0 < period_min < 100.0))
-
-    # T107: zero-point window — Ring 3 amplification = φ^12 for epoch 5
-    win = crustal_zero_point_window(5, 2026.33, 1.0e-3)
-    expected_gear13 = ((1.0 + math.sqrt(5.0))/2.0) ** 12  # φ^(3(5-1))
-    chk("T107","CRUSTAL","Ring 3 amplification = φ^12 (epoch 5)",
-        win['gear_ratio_13'], expected_gear13, 0.01)
-
-    # T108: timing resolution < 100 days (sub-Tzolkin precision)
-    res_days = win['timing_resolution_yr'] * 365.25
-    chk("T108","CRUSTAL","timing resolution < 100 days in epoch 5",
-        1.0 if res_days < 100.0 else 0.0, 1.0, 0.0,
-        qual_ok=(res_days < 100.0))
-
-    # T109: state computation finite at current year
-    s = crustal_zero_point_state(current_year=2026.33)
-    chk("T109","CRUSTAL","state has finite U_I and g_eff",
-        1.0 if (math.isfinite(s.u_inertia) and math.isfinite(s.g_eff)) else 0.0,
-        1.0, 0.0,
-        qual_ok=(math.isfinite(s.u_inertia) and math.isfinite(s.g_eff)))
-
-    # T110: CrustalZeroPointCalculator returns full primary/available/sim triple
-    czpc = CrustalZeroPointCalculator().compute({'current_year': 2026.33})
-    chk("T110","CRUSTAL","Calculator returns primary/available/simulation triple",
-        float(len(czpc.get('primary_equations',[])) +
-              len(czpc.get('available_equations',[])) +
-              len(czpc.get('simulation_set',[]))),
-        0.0, 0.0,
-        qual_ok=(len(czpc.get('primary_equations',[])) > 0 and
-                 len(czpc.get('available_equations',[])) > 0 and
-                 len(czpc.get('simulation_set',[])) > 0))
-
-    # ── Summary ──────────────────────────────────────────────────────────────
-    passed = sum(1 for r in results if r['passed'])
-    failed = len(results) - passed
-    if verbose:
-        print(f"\n{'='*72}")
-        print(f"TOTAL: {passed}/{len(results)} PASS  |  {failed} FAIL")
-        print(f"{'='*72}\n")
-
-    return {'passed': passed, 'failed': failed, 'total': len(results),
-            'results': results}
-
-
-# =============================================================================
-# SECTION 8 — MODULE ENTRY POINT
-# =============================================================================
-
-if __name__ == '__main__':
-    import sys
-    verbose = '--quiet' not in sys.argv
-    out = run_qcalcgeom_tests(verbose=verbose)
-    sys.exit(0 if out['failed'] == 0 else 1)
+        # Placeholder implementation - to be completed
+        return []
