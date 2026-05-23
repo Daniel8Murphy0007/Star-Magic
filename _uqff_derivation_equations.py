@@ -17,37 +17,50 @@ class DerivationEquation:
 
 class DerivationRegistry:
     DERIVATIONS = [
-        DerivationEquation("F_TRZ", "1/10, from Sessions 237-241 (time-reversal zone suppression factor)", "v2.0.0"),
-        DerivationEquation("PHI_RES", "From PAPER_591, fine-structure constant derivation: resonance phase factor = 0.84", "v2.0.0"),
-        DerivationEquation("SSQ", "57/100, calibrated to cosmological observations: Squared-Sum Vacuum Topology", "v2.0.0"),
-        DerivationEquation("N_LAYERS", "26 (exact): Fundamental dimensional decomposition", "v2.0.0"),
-        DerivationEquation("PI", "3.14159... (mathematical constant)", "v2.0.0"),
-        DerivationEquation("F_TRZ_INV", "10.0 = 1/F_TRZ", "v2.0.0"),
-        DerivationEquation("ALPHA_UQFF", "1 / (PHI_RES * 26 * 2π) = 1 / (0.84 * 26 * 2π) ≈ 7.287e-3", "v2.0.0"),
-        DerivationEquation("radiative_correction", "1 - 2*alpha_UQFF ≈ 0.9854", "v2.0.0"),
-        DerivationEquation("C_LIGHT", "299792458.0 [m/s] Speed of light (CODATA 2022, exact)", "v2.0.0"),
-        DerivationEquation("H_PLANCK", "6.62607015e-34 [J⋅s] Planck constant (CODATA 2022, exact)", "v2.0.0"),
-        DerivationEquation("HBAR", "1.054571817e-34 [J⋅s] Reduced Planck constant = h/(2π) (CODATA 2022, exact)", "v2.0.0"),
-        DerivationEquation("K_BOLTZMANN", "1.380649e-23 [J⋅K⁻¹] Boltzmann constant (CODATA 2022, exact)", "v2.0.0"),
-        DerivationEquation("G_NEWTON", "6.67430e-11 [m³⋅kg⁻¹⋅s⁻²] Gravitational constant (CODATA 2022)", "v2.0.0"),
-        DerivationEquation("ELEMENTARY_CHARGE", "1.602176634e-19 [C] Elementary charge (CODATA 2022, exact)", "v2.0.0"),
-        DerivationEquation("FINE_STRUCTURE", "1.0/137.035999177 [dimensionless] Fine-structure constant α", "v2.0.0"),
-        DerivationEquation("AVOGADRO", "6.02214076e23 [mol⁻¹] Avogadro constant (CODATA 2022, exact)", "v2.0.0"),
-        DerivationEquation("MOLAR_GAS_CONSTANT", "8.314462618 [J⋅mol⁻¹⋅K⁻¹] Gas constant R (CODATA 2022, exact)", "v2.0.0"),
-        DerivationEquation("RHO_VAC_SCM", "7.0898154036e-37 [J/m³] SCm sector vacuum density = 4√π × 10^-37 (structural G9, DPM Quantum Chain Sessions 237-285)", "v2.0.0"),
-        DerivationEquation("RHO_VAC_UA", "7.0898154036e-36 [J/m³] UA sector vacuum density = 10 × RHO_VAC_SCM (|SO(5)| factor, DPM Quantum Chain)", "v2.0.0"),
-        DerivationEquation("BETA_I", "0.603 Buoyancy amplification factor (Session 237-241)", "v2.0.0"),
-        DerivationEquation("LAMBDA_I", "1.0 [dimensionless] Manifold coupling λ_i (structural)", "v2.0.0"),
-        DerivationEquation("RHO_AETHER", "1.244e-23 [kg/m³] Universal aether density (rho_A)", "v2.0.0"),
-        DerivationEquation("V_AETHER", "1.0e8 [m/s] Aether speed (c/3, superconductive)", "v2.0.0"),
-        DerivationEquation("E_CRACK", "9.9862e22 [J/m⁶] Aether shear energy density (dpm_vacuum_manifold v3.0)", "v2.0.0"),
-        DerivationEquation("THZ_PHONON", "1.25e12 [Hz] Holmlid 1.25 THz phonon frequency (Compton edge)", "v2.0.0"),
-        DerivationEquation("E_PHONON", "8.283914e-22 [J] = h × 1.25 THz (Holmlid bridge)", "v2.0.0"),
-        DerivationEquation("OMEGA_STELLAR", "2.5e-6 [rad/s] Stellar angular frequency ω_s", "v2.0.0"),
-        DerivationEquation("PHI_RESONANCE", "0.84 Resonance phase factor (on-resonance Gaussian, PAPER_591)", "v2.0.0"),
-        DerivationEquation("S26_3", "1.4531e26 [dimensionless] 26D Ramanujan amplification (VDS_26 amplification)", "v2.0.0"),
-        DerivationEquation("KER_SCM", "630.0 * 1.60217662e-19 [J] = 630 eV Coherent energy resonance", "v2.0.0"),
-        DerivationEquation("KAPPA", "0.0005 [1/day] Decay rate / coupling strength (Session 237)", "v2.0.0"),
+        # CORE UQFF PRIMITIVES
+        DerivationEquation("F_TRZ", "F_TRZ = 1/|SO(5)| = 1/10 [PAPER_1160, Sessions 237-241 Lagrangian closure G7]", "v2.0.0"),
+        DerivationEquation("PHI_RES", "PHI_RES = (D_BSFG - 1)/D_BSFG = 5/6 [PAPER_1159 Lagrangian closure G6]", "v2.0.0"),
+        DerivationEquation("SSQ", "[SSq] = 0.57 [calibrated UQFF vacuum topology from DPM Quantum Chain]", "v2.0.0"),
+        DerivationEquation("N_LAYERS", "N_LAYERS = 26 [Polyakov critical dimension D_crit, structural invariant]", "v2.0.0"),
+        DerivationEquation("PI", "π = 3.14159265... [mathematical constant, fundamental geometry]", "v2.0.0"),
+        DerivationEquation("F_TRZ_INV", "F_TRZ_INV = 1/F_TRZ = |SO(5)| = 10 [inverse time-reversal zone factor]", "v2.0.0"),
+        DerivationEquation("ALPHA_UQFF", "ALPHA_UQFF = 1/(PHI_RES × 26 × 2π) = 1/(0.84 × 26 × 2π) ≈ 7.287e-3 [fine-structure UQFF coupling, dimensionless]", "v2.0.0"),
+        DerivationEquation("radiative_correction", "radiative_correction = 1 - 2×ALPHA_UQFF ≈ 0.9854 [vacuum polarization in UQFF framework]", "v2.0.0"),
+        
+        # CODATA 2022 PHYSICAL CONSTANTS
+        DerivationEquation("C_LIGHT", "c = 299792458 [m/s] [CODATA 2022 exact, speed of light]", "v2.0.0"),
+        DerivationEquation("H_PLANCK", "h = 6.62607015×10⁻³⁴ [J⋅s] [CODATA 2022 exact, Planck constant]", "v2.0.0"),
+        DerivationEquation("HBAR", "ℏ = h/(2π) = 1.054571817×10⁻³⁴ [J⋅s] [CODATA 2022 exact, reduced Planck]", "v2.0.0"),
+        DerivationEquation("K_BOLTZMANN", "k_B = 1.380649×10⁻²³ [J⋅K⁻¹] [CODATA 2022 exact, Boltzmann constant]", "v2.0.0"),
+        DerivationEquation("G_NEWTON", "G = 6.67430(15)×10⁻¹¹ [m³⋅kg⁻¹⋅s⁻²] [CODATA 2022, gravitational constant]", "v2.0.0"),
+        DerivationEquation("ELEMENTARY_CHARGE", "e = 1.602176634×10⁻¹⁹ [C] [CODATA 2022 exact, elementary charge]", "v2.0.0"),
+        DerivationEquation("FINE_STRUCTURE", "α = 1/137.035999177(20) [dimensionless] [CODATA 2022, fine-structure constant]", "v2.0.0"),
+        DerivationEquation("AVOGADRO", "N_A = 6.02214076×10²³ [mol⁻¹] [CODATA 2022 exact, Avogadro constant]", "v2.0.0"),
+        DerivationEquation("MOLAR_GAS_CONSTANT", "R = 8.314462618 [J⋅mol⁻¹⋅K⁻¹] [CODATA 2022 exact, gas constant]", "v2.0.0"),
+        
+        # UQFF VACUUM DENSITIES (DPM Quantum Chain)
+        DerivationEquation("RHO_VAC_SCM", "ρ_vac,SCm = 4√π × 10⁻³⁷ = 7.0898154036×10⁻³⁷ [J/m³] [Sessions 237-285, SCm sector]", "v2.0.0"),
+        DerivationEquation("RHO_VAC_UA", "ρ_vac,UA = 10 × ρ_vac,SCm = 7.0898154036×10⁻³⁶ [J/m³] [|SO(5)| factor, UA sector]", "v2.0.0"),
+        
+        # UQFF LAGRANGIAN CLOSURE PARAMETERS
+        DerivationEquation("BETA_I", "β_i = 3(5-i)/20 = (3/2)(5-i)/|SO(5)| [i=1..4] [PAPER_1165 closure G2, buoyancy]", "v2.0.0"),
+        DerivationEquation("LAMBDA_I", "λ_i = 1.0 [dimensionless] [manifold coupling, structural constant]", "v2.0.0"),
+        
+        # AETHER & DPM PARAMETERS
+        DerivationEquation("RHO_AETHER", "ρ_A = 1.244×10⁻²³ [kg/m³] [universal aether density in vacuum manifold]", "v2.0.0"),
+        DerivationEquation("V_AETHER", "v_A = 1.0×10⁸ [m/s] [aether speed = c/3, superconductive regime]", "v2.0.0"),
+        DerivationEquation("E_CRACK", "E_crack = 9.9862×10²² [J/m⁶] [aether shear energy density, dpm_vacuum_manifold v3.0]", "v2.0.0"),
+        
+        # RESONANCE & THz FREQUENCIES
+        DerivationEquation("THZ_PHONON", "f_THz = 1.25×10¹² [Hz] [Holmlid coherent resonance, phonon frequency]", "v2.0.0"),
+        DerivationEquation("E_PHONON", "E_phonon = h × f_THz = 8.283914×10⁻²² [J] [Holmlid bridge energy]", "v2.0.0"),
+        DerivationEquation("OMEGA_STELLAR", "ω_s = 2.5×10⁻⁶ [rad/s] [stellar angular frequency, rotation scale]", "v2.0.0"),
+        DerivationEquation("PHI_RESONANCE", "Φ_res = 0.84 [dimensionless] [on-resonance Gaussian, PAPER_591 fine-structure]", "v2.0.0"),
+        
+        # AMPLIFICATION & COUPLING
+        DerivationEquation("S26_3", "S₂₆,₃ = 1.4531×10²⁶ [dimensionless] [26D Ramanujan amplification, vacuum depth factor]", "v2.0.0"),
+        DerivationEquation("KER_SCM", "E_Ker = 630 eV = 630 × 1.60217662×10⁻¹⁹ [J] [Kerr resonance coherent energy]", "v2.0.0"),
+        DerivationEquation("KAPPA", "κ = 0.0005 [day⁻¹] [decay rate, vacuum energy timescale coupling, Session 237]", "v2.0.0"),
         DerivationEquation("E_REACT_0", "1.0e46 [W/m³] Astrophysical reactor efficiency scale", "v2.0.0"),
         DerivationEquation("M_ELECTRON", "9.1093837015e-31 [kg] Electron mass (CODATA 2022)", "v2.0.0"),
         DerivationEquation("M_PROTON", "1.67262192369e-27 [kg] Proton mass (CODATA 2022)", "v2.0.0"),
