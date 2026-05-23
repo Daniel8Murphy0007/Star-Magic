@@ -143,6 +143,12 @@ class ReferenceDocumentationRegistry:
         ReferenceDocument("BANDGAP_DIAMOND", ["Session 465: Diamond insulator / wide-bandgap semiconductor"]),
         ReferenceDocument("SUPERCONDUCTOR_CRITICAL_TEMP_YBCO", ["Yttrium barium copper oxide high-Tc superconductor (1987)"]),
         ReferenceDocument("SUPERCONDUCTOR_LONDON_DEPTH", ["Superconductivity: London penetration depth (typ. 160 nm)"]),
+        ReferenceDocument("ALPHA_DECAY_RATE", ["Star-Magic.txt Line 42-50: Ug1 temporal decay equation (α = 0.001 day⁻¹, 700-day half-life)"]),
+        ReferenceDocument("KAPPA_VACUUM_RATE", ["Star-Magic.txt Line 305-310: E_react exponential decay (κ = 5e-4 day⁻¹, 2000-day half-life)"]),
+        ReferenceDocument("GAMMA_MAGNETISM_RATE", ["Star-Magic.txt Line 521-530: Um universal magnetism timescale (γ = 5e-5 day⁻¹, 38-year half-life)"]),
+        ReferenceDocument("EPSILON_SOLAR_WIND_COUPLING", ["Star-Magic.txt Line 501-505: Solar wind enhancement factor in Ug2 bubble dynamics"]),
+        ReferenceDocument("OMEGA_BAKTUN_CYCLE", ["QCalcGeom.py Epoch-5 solver: Mayan Baktun epochal oscillation (5125.36-year period)"]),
+        ReferenceDocument("MAYAN_EPOCH5_START", ["QCalcGeom.py v2.1.0 (Rank 61-70): Epoch 5 (2012 CE) timing correction + ring geometry"]),
     ]
     
     @classmethod

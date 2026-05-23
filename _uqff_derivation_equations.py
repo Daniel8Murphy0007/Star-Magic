@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-_uqff_derivation_equations.py - EQUATIONS Registry [SESSION 202+]
+_uqff_derivation_equations.py - MATHEMATICAL EQUATIONS Registry [SESSION 202+]
 
 MIRRORED LINE-BY-LINE with _uqff_primitives.py
-Each line N = derivation equation for constant N in primitives.py
+Each line N = ACTUAL MATHEMATICAL EQUATION (not just a value) for constant N
+Source: EQUATION_CONSTANT_MAPPING_TOP50.md (extracted from 432 .txt source files)
 """
 
 from dataclasses import dataclass
@@ -17,15 +18,15 @@ class DerivationEquation:
 
 class DerivationRegistry:
     DERIVATIONS = [
-        # CORE UQFF PRIMITIVES
-        DerivationEquation("F_TRZ", "F_TRZ = 1/|SO(5)| = 1/10 [PAPER_1160, Sessions 237-241 Lagrangian closure G7]", "v2.0.0"),
-        DerivationEquation("PHI_RES", "PHI_RES = (D_BSFG - 1)/D_BSFG = 5/6 [PAPER_1159 Lagrangian closure G6]", "v2.0.0"),
-        DerivationEquation("SSQ", "[SSq] = 0.57 [calibrated UQFF vacuum topology from DPM Quantum Chain]", "v2.0.0"),
-        DerivationEquation("N_LAYERS", "N_LAYERS = 26 [Polyakov critical dimension D_crit, structural invariant]", "v2.0.0"),
-        DerivationEquation("PI", "π = 3.14159265... [mathematical constant, fundamental geometry]", "v2.0.0"),
-        DerivationEquation("F_TRZ_INV", "F_TRZ_INV = 1/F_TRZ = |SO(5)| = 10 [inverse time-reversal zone factor]", "v2.0.0"),
-        DerivationEquation("ALPHA_UQFF", "ALPHA_UQFF = 1/(PHI_RES × 26 × 2π) = 1/(0.84 × 26 × 2π) ≈ 7.287e-3 [fine-structure UQFF coupling, dimensionless]", "v2.0.0"),
-        DerivationEquation("radiative_correction", "radiative_correction = 1 - 2×ALPHA_UQFF ≈ 0.9854 [vacuum polarization in UQFF framework]", "v2.0.0"),
+        # CORE UQFF PRIMITIVES (ACTUAL EQUATIONS)
+        DerivationEquation("F_TRZ", "F_TRZ = 1/|SO(5)| = 1/10; time-reversal zone suppression factor appearing in cos(π·t_n) oscillations [PAPER_1160]", "v2.0.0"),
+        DerivationEquation("PHI_RES", "PHI_RES = (D_BSFG - 1)/D_BSFG = 5/6; resonance phase factor in on-resonance Gaussian UQFF selection [PAPER_1159]", "v2.0.0"),
+        DerivationEquation("SSQ", "E_crack = (ρ_vac,SCm × c²) / [SSq]; [SSq]=0.57 = Yang-Mills mass gap quotient → E_crack = 3.35e-19 J [PAPER_113]", "v2.0.0"),
+        DerivationEquation("N_LAYERS", "D_crit = 26 [Polyakov critical dimension]; 26D spherical harmonic decomposition → 26-layer buoyancy frame [PAPER_141]", "v2.0.0"),
+        DerivationEquation("PI", "π = 3.14159265...; geometry constant in (4π/3) volume factor and cos(π·t_n) quantum oscillator [geometric]", "v2.0.0"),
+        DerivationEquation("F_TRZ_INV", "F_TRZ_INV = |SO(5)| = 10; inverse of F_TRZ, count of time-reversal antiphase configurations [PAPER_1160]", "v2.0.0"),
+        DerivationEquation("ALPHA_UQFF", "ALPHA_UQFF = 1/(PHI_RES × 26 × 2π) = 1/(0.84 × 26 × 2π) ≈ 7.287e-3; dimensionless UQFF fine structure [PAPER_591]", "v2.0.0"),
+        DerivationEquation("radiative_correction", "radiative_correction = 1 - 2×ALPHA_UQFF ≈ 0.9854; vacuum polarization self-energy in UQFF loop [PAPER_592]", "v2.0.0"),
         
         # CODATA 2022 PHYSICAL CONSTANTS
         DerivationEquation("C_LIGHT", "c = 299792458 [m/s] [CODATA 2022 exact, speed of light]", "v2.0.0"),
@@ -38,9 +39,9 @@ class DerivationRegistry:
         DerivationEquation("AVOGADRO", "N_A = 6.02214076×10²³ [mol⁻¹] [CODATA 2022 exact, Avogadro constant]", "v2.0.0"),
         DerivationEquation("MOLAR_GAS_CONSTANT", "R = 8.314462618 [J⋅mol⁻¹⋅K⁻¹] [CODATA 2022 exact, gas constant]", "v2.0.0"),
         
-        # UQFF VACUUM DENSITIES (DPM Quantum Chain)
-        DerivationEquation("RHO_VAC_SCM", "ρ_vac,SCm = 4√π × 10⁻³⁷ = 7.0898154036×10⁻³⁷ [J/m³] [Sessions 237-285, SCm sector]", "v2.0.0"),
-        DerivationEquation("RHO_VAC_UA", "ρ_vac,UA = 10 × ρ_vac,SCm = 7.0898154036×10⁻³⁶ [J/m³] [|SO(5)| factor, UA sector]", "v2.0.0"),
+        # UQFF VACUUM DENSITIES (DPM QUANTUM CHAIN EQUATIONS)
+        DerivationEquation("RHO_VAC_SCM", "ρ_vac,SCm = 4√π × 10⁻³⁷ J/m³; vacuum density of trapped superconductive vortex (DPM core) = 7.09e-37 J/m³; couples to E_crack = (ρ_vac,SCm × c²) / [SSq] [Sessions 237-285]", "v2.0.0"),
+        DerivationEquation("RHO_VAC_UA", "ρ_vac,UA = 10 × ρ_vac,SCm = 7.09e-36 J/m³; universal aether vacuum density (|SO(5)| = 10 scaling); E_react = (ρ_vac,SCm × v_SCm²) / ρ_vac,UA × exp(-κ×t) [Sessions 237-285]", "v2.0.0"),
         
         # UQFF LAGRANGIAN CLOSURE PARAMETERS
         DerivationEquation("BETA_I", "β_i = 3(5-i)/20 = (3/2)(5-i)/|SO(5)| [i=1..4] [PAPER_1165 closure G2, buoyancy]", "v2.0.0"),
@@ -76,20 +77,20 @@ class DerivationRegistry:
         DerivationEquation("LAMBDA", "1.089e-52 [m⁻²] Cosmological constant", "v2.0.0"),
         DerivationEquation("STEFAN_BOLTZMANN", "5.670374419e-8 [W⋅m⁻²⋅K⁻⁴] Stefan-Boltzmann constant (exact)", "v2.0.0"),
         DerivationEquation("HEAVISIDE_AMPLIFIER", "1.0e13 [dimensionless] Known gap in Um implementations (Session 785+)", "v2.0.0"),
-        DerivationEquation("F_U_Ug1_component", "Session 210+: Ug1 magnetic dipole component of unified field", "v2.0.0"),
-        DerivationEquation("F_U_Ug2_component", "Session 210+: Ug2 charge-reactivity component of unified field", "v2.0.0"),
-        DerivationEquation("F_U_Ug3_component", "Session 210+: Ug3 string rotation component of unified field", "v2.0.0"),
-        DerivationEquation("F_U_Ug4_component", "Session 210+: Ug4 vacuum concentration component of unified field", "v2.0.0"),
-        DerivationEquation("F_U_Ubi_component", "Session 210+: Ubi buoyancy component of unified field", "v2.0.0"),
-        DerivationEquation("F_U_Um_component", "Session 210+: Um universal magnetism component of unified field", "v2.0.0"),
-        DerivationEquation("F_DPM_base", "Base DPM dipole moment force from di-pseudo-monopole physics", "v2.0.0"),
-        DerivationEquation("DPM_frequency_omega1", "First pseudomonopole frequency [rad/s]", "v2.0.0"),
-        DerivationEquation("DPM_frequency_omega2", "Second pseudomonopole frequency [rad/s]", "v2.0.0"),
-        DerivationEquation("DPM_current_I", "Pseudomonopole current [A]", "v2.0.0"),
-        DerivationEquation("DPM_area_A", "Pseudomonopole circuit area [m²]", "v2.0.0"),
-        DerivationEquation("E_VAC_SCM", "SCm aether energy density [J/m³]", "v2.0.0"),
-        DerivationEquation("E_VAC_UA", "UA aether energy density [J/m³]", "v2.0.0"),
-        DerivationEquation("V_AETHER_SPRING", "Aether spring constant [N/m³]", "v2.0.0"),
+        DerivationEquation("F_U_Ug1_component", "Ug1 = k₁ · μₛ(t,ρ_vac,[SCm]) · ∇(Mₛ/r) · exp(-α·t) · cos(π·tₙ) · (1+δ_def); magnetic dipole gravity (DPM seed → Ug1) [EQUATION_CONSTANT_MAPPING_TOP50, Rank 1]", "v2.0.0"),
+        DerivationEquation("F_U_Ug2_component", "Ug2 = k₂ · (ρ_vac,[UA] + ρ_vac,[SCm]) · Mₛ/r² · S(r-Rᵦ) · (1+δ_sw·v_sw) · H_SCm · E_react; heliosphere outer-field bubble [EQUATION_CONSTANT_MAPPING_TOP50, Rank 2]", "v2.0.0"),
+        DerivationEquation("F_U_Ug3_component", "Ug3 = k₃ · Σⱼ Bⱼ(r,θ,t,ρ_vac,[SCm]) · cos(ωₛ(t)·t·π) · P_core · E_react; magnetic-string 90° disk rotation [EQUATION_CONSTANT_MAPPING_TOP50, Rank 10]", "v2.0.0"),
+        DerivationEquation("F_U_Ug4_component", "Ug4 = k₄ · ρ_vac,[SCm] · (Mᵦₕ/dɢ) · exp(-α·t) · cos(π·tₙ) · (1+f_feedback); black hole M-σ feedback gravity [EQUATION_CONSTANT_MAPPING_TOP50, Rank 3]", "v2.0.0"),
+        DerivationEquation("F_U_Ubi_component", "F_U_Bi = -βᵢ · Uɢᵢ · Ωɢ · (Mᵦₕ/dɢ) · E_react · (1+ε_sw·ρ_sw) · ρ_A · cos(π·tₙ); inside-outward collapsing gravity zone [QCalcGeom.py, Rank 5]", "v2.0.0"),
+        DerivationEquation("F_U_Um_component", "Um = (μⱼ/rⱼ) · (1 - exp(-γ·t·cos(π·tₙ))) · P_SCm · E_react · (1+f_TRZ); universal magnetism (10⁹ strings) [EQUATION_CONSTANT_MAPPING_TOP50, Rank 11]", "v2.0.0"),
+        DerivationEquation("F_DPM_base", "a_DPM = (F_DPM · f_DPM · E_vac,neb) / (c · V_sys); where F_DPM = I·A·(ω₁-ω₂); primordial dipole-pair mechanism activation [EQUATION_CONSTANT_MAPPING_TOP50, Rank 1]", "v2.0.0"),
+        DerivationEquation("DPM_frequency_omega1", "ω₁ = 2π · f₁; first pseudomonopole rotational frequency (co-rotating with primordial vortex) [rad/s] [Star-Magic.txt, Line 22]", "v2.0.0"),
+        DerivationEquation("DPM_frequency_omega2", "ω₂ = 2π · f₂; second pseudomonopole rotational frequency (counter-rotating); Δω = ω₁ - ω₂ drives F_DPM [rad/s] [Star-Magic.txt, Line 25]", "v2.0.0"),
+        DerivationEquation("DPM_current_I", "I = charge flow rate [A]; pseudomonopole current ∝ rho_A · V_body · (dV/dt); seeds μₛ growth [Star-Magic.txt, Line 36]", "v2.0.0"),
+        DerivationEquation("DPM_area_A", "A = circuit loop area [m²]; F_DPM = I·A·(ω₁-ω₂) → torque × area in di-pseudo-monopole geometry [Star-Magic.txt, Line 23]", "v2.0.0"),
+        DerivationEquation("E_VAC_SCM", "E_vac,SCm = ρ_vac,SCm · c² [J/m³]; SCm sector aether energy density = 7.09e-37 × (3e8)² ≈ 6.38e-21 J/m³ [DPM Quantum Chain]", "v2.0.0"),
+        DerivationEquation("E_VAC_UA", "E_vac,UA = ρ_vac,UA · c² = 10 × E_vac,SCm [J/m³]; universal aether energy density [DPM Quantum Chain]", "v2.0.0"),
+        DerivationEquation("V_AETHER_SPRING", "V_spring = -ρ_vac · (4π/3) · c² · cos(π·tₙ); aether potential (spring restoring) grows/shrinks with phase [QCalcGeom.py line 1020]", "v2.0.0"),
         DerivationEquation("OMEGA_M", "0.315 Matter density parameter (Planck 2018)", "v2.0.0"),
         DerivationEquation("OMEGA_LAMBDA", "0.685 Dark energy density (Planck 2018)", "v2.0.0"),
         DerivationEquation("OMEGA_B", "0.049 Baryon density (Planck 2018)", "v2.0.0"),
@@ -148,6 +149,14 @@ class DerivationRegistry:
         DerivationEquation("S26_3_CALIBRATION_FACTOR", "1.0 S26_3 = polylog(26, 0.57) × calibration", "v2.0.0"),
         DerivationEquation("VDS_CONVERGENCE_TERMS", "1000.0 Number of terms in Vacuum Density Series", "v2.0.0"),
         DerivationEquation("PHONON_COUPLING_COEFFICIENT", "0.9 Holmlid phonon-to-vacuum coupling", "v2.0.0"),
+        
+        # RATE HIERARCHY (CRITICAL TEMPORAL EQUATIONS)
+        DerivationEquation("ALPHA_DECAY_RATE", "d(Ug1)/dt: decay component α = 0.001 day⁻¹ → half-life = ln(2)/0.001 = 693 days (~700 days); Ug1 amplitude drops to 50% over 700 days [Star-Magic.txt, Line 42]", "v2.0.0"),
+        DerivationEquation("KAPPA_VACUUM_RATE", "E_react(t) = E₀ · exp(-κ·t); κ = 5e-4 day⁻¹ → half-life = 1,386 days (~2000 days); reactor efficiency decay (FASTEST vacuum timescale) [Star-Magic.txt, Line 305]", "v2.0.0"),
+        DerivationEquation("GAMMA_MAGNETISM_RATE", "Um_decay: γ = 5e-5 day⁻¹ → half-life = 13,860 days (~38 years); universal magnetism timescale (SLOWEST) [Star-Magic.txt, Line 521]", "v2.0.0"),
+        DerivationEquation("EPSILON_SOLAR_WIND_COUPLING", "ε_sw = 0.1 [dimensionless]; solar wind enhancement factor in (1 + ε_sw·ρ_sw) term; modulates Ug2 strength [Star-Magic.txt, Line 501]", "v2.0.0"),
+        DerivationEquation("OMEGA_BAKTUN_CYCLE", "ω_Baktun = 2π / T_Baktun; T_Baktun = 5125.36 years (Mayan Great Cycle); epochal oscillation frequency [QCalcGeom.py, Epoch 5]", "v2.0.0"),
+        DerivationEquation("MAYAN_EPOCH5_START", "t_epoch5 = 2012.972 CE; Epoch 5 began Dec 21, 2012; inner ring φ⁻⁸ amplification, outer ring φ⁴ expansion [QCalcGeom.py, Rank 61-70]", "v2.0.0"),
         DerivationEquation("GRAVITATIONAL_WAVE_STRAIN_LIGO", "1.0e-21 [dimensionless] LIGO sensitivity", "v2.0.0"),
         DerivationEquation("GW_FREQUENCY_LIGO_BAND", "100.0 [Hz] LIGO observing band", "v2.0.0"),
         DerivationEquation("DARK_MATTER_HALO_DENSITY", "2.0e-26 [kg/m³] Dark matter local density", "v2.0.0"),
