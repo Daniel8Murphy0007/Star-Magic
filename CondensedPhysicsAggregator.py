@@ -1107,3 +1107,17 @@ __all__ = [
 
 # Dynamically extend __all__ with CP4 and standalone calculator names
 __all__ += list(CP4_CALCULATORS.keys()) + list(STANDALONE_CALCULATORS.keys())
+    # Session 252 Solver Integration
+    'Simultaneous7LayerSolverBridge',
+    'UQFFAtomicSolverCalculator',
+    'UQFF_SOLVER_BRIDGE',
+    'UQFF_ATOMIC_SOLVER',
+]
+
+# Import Session 252 solvers
+from UQFFAtomicSolverIntegration import (
+    Simultaneous7LayerSolverBridge,
+    UQFFAtomicSolverCalculator,
+    UQFF_SOLVER_BRIDGE,
+    UQFF_ATOMIC_SOLVER,
+)
