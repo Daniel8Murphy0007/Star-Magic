@@ -1360,6 +1360,27 @@ else()
     message(STATUS "source177_wolfram_field_unity: Built WITHOUT Wolfram WSTP (pure C++ mode)")
 endif()
 
+# ========== SIMULTANEOUS 7-LAYER SOLVER ==========
+# Added: May 24, 2026
+# Purpose: Tier 2 Core solver for UQFF validation (Pillars 1+2+3+4 integration)
+# Components: Newton-Krylov method, 28x28 Jacobian (7 layers x 4 components), GMRES solver
+# Test Cases: Hydrogen (Z=1), Helium (Z=2), Neon (Z=10), Xenon (Z=54)
+# Physics: Buoyancy crossing, quantum gravity, orbital mechanics, superposition, entanglement, neutrino activation
+add_executable(simultaneous_7layer_solver simultaneous_7layer_solver.cpp)
+set_target_properties(simultaneous_7layer_solver PROPERTIES
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    AUTOMOC OFF
+    AUTOUIC OFF
+    AUTORCC OFF
+)
+target_compile_options(simultaneous_7layer_solver PRIVATE 
+    $<$<CXX_COMPILER_ID:MSVC>:/W4 /std:c++latest>
+    $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -std=c++20>
+    $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra -std=c++20>
+)
+message(STATUS "simultaneous_7layer_solver: Built with C++20 (Tier 2 Core solver)")
+
 # ========== UQFF CORE LIBRARY ==========
 # Added: November 14, 2025
 # Purpose: Consolidated Core architecture from extracted modules

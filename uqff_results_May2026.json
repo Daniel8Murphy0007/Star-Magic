@@ -1,0 +1,375 @@
+{
+  "Pillar_1_Buoyancy": {
+    "Hydrogen": {
+      "element": "Hydrogen",
+      "Z": 1,
+      "n": 1,
+      "shell_radius_m": 7.720393397784546e-13,
+      "shell_radius_angstrom": 0.007720393397784546,
+      "buoyancy_residual": 3.2030106247038335e-86,
+      "equilibrium_satisfied": "True"
+    },
+    "Helium": {
+      "element": "Helium",
+      "Z": 2,
+      "n": 1,
+      "shell_radius_m": 1.5439553316418267e-12,
+      "shell_radius_angstrom": 0.015439553316418267,
+      "buoyancy_residual": 1.6017612138383613e-86,
+      "equilibrium_satisfied": "True"
+    },
+    "Neon": {
+      "element": "Neon",
+      "Z": 10,
+      "n": 1,
+      "shell_radius_m": 7.700014909533727e-12,
+      "shell_radius_angstrom": 0.07700014909533727,
+      "buoyancy_residual": 3.219986926359243e-87,
+      "equilibrium_satisfied": "True"
+    },
+    "Argon": {
+      "element": "Argon",
+      "Z": 18,
+      "n": 1,
+      "shell_radius_m": 1.3776670325668801e-11,
+      "shell_radius_angstrom": 0.13776670325668802,
+      "buoyancy_residual": 1.8105945712436072e-87,
+      "equilibrium_satisfied": "True"
+    },
+    "Xenon": {
+      "element": "Xenon",
+      "Z": 54,
+      "n": 1,
+      "shell_radius_m": 3.831782935431551e-11,
+      "shell_radius_angstrom": 0.3831782935431551,
+      "buoyancy_residual": 7.021488718980137e-88,
+      "equilibrium_satisfied": "True"
+    }
+  },
+  "Pillar_2_Superposition": {
+    "Hydrogen": {
+      "element": "Hydrogen",
+      "Z": 1,
+      "n": 1,
+      "shell_radius_m": 7.720393397784546e-13,
+      "spooky_distance_m": 1.5440786795569092e-12,
+      "orbital_velocity_m_s": 2187691.249014857,
+      "pair_creation_cost_ev": 1021997.8998240407,
+      "dpm_binding_ev": 1021997.8998240407,
+      "pair_stable": true,
+      "twin_coherence": 0.018342142711459668,
+      "lending_capacity_ev": 3.8171261337588915e-20
+    },
+    "Helium": {
+      "element": "Helium",
+      "Z": 2,
+      "n": 1,
+      "shell_radius_m": 1.5439553316418267e-12,
+      "spooky_distance_m": 3.0879106632836534e-12,
+      "orbital_velocity_m_s": 4375382.498029714,
+      "pair_creation_cost_ev": 1021997.8998240407,
+      "dpm_binding_ev": 1021997.8998240407,
+      "pair_stable": true,
+      "twin_coherence": 0.0003366491971453729,
+      "lending_capacity_ev": 4.482405956207e-20
+    },
+    "Neon": {
+      "element": "Neon",
+      "Z": 10,
+      "n": 1,
+      "shell_radius_m": 7.700014909533727e-12,
+      "spooky_distance_m": 1.5400029819067454e-11,
+      "orbital_velocity_m_s": 21876912.490148574,
+      "pair_creation_cost_ev": 1021997.8998240407,
+      "dpm_binding_ev": 1021997.8998240407,
+      "pair_stable": true,
+      "twin_coherence": 4.7900281306849664e-18,
+      "lending_capacity_ev": 9.913986495054063e-30
+    },
+    "Argon": {
+      "element": "Argon",
+      "Z": 18,
+      "n": 1,
+      "shell_radius_m": 1.3776670325668801e-11,
+      "spooky_distance_m": 2.7553340651337602e-11,
+      "orbital_velocity_m_s": 39378442.48226743,
+      "pair_creation_cost_ev": 1021997.8998240407,
+      "dpm_binding_ev": 1021997.8998240407,
+      "pair_stable": true,
+      "twin_coherence": 1.0282589908419975e-31,
+      "lending_capacity_ev": 7.151680978971275e-42
+    },
+    "Xenon": {
+      "element": "Xenon",
+      "Z": 54,
+      "n": 1,
+      "shell_radius_m": 3.831782935431551e-11,
+      "spooky_distance_m": 7.663565870863102e-11,
+      "orbital_velocity_m_s": 118135327.44680229,
+      "pair_creation_cost_ev": 1021997.8998240407,
+      "dpm_binding_ev": 1021997.8998240407,
+      "pair_stable": true,
+      "twin_coherence": 6.48059480844152e-87,
+      "lending_capacity_ev": 2.824351544128673e-94
+    }
+  },
+  "Pillar_3_Simultaneous": {
+    "Hydrogen": {
+      "element": "Hydrogen",
+      "Z": 1,
+      "n": 1,
+      "pair_energy_ev": -27.2552542195461
+    },
+    "Helium": {
+      "element": "Helium",
+      "Z": 2,
+      "n": 1,
+      "pair_energy_ev": -78.95785478307099
+    },
+    "Neon": {
+      "element": "Neon",
+      "Z": 10,
+      "n": 1,
+      "pair_energy_ev": -2575.6321838392464
+    },
+    "Argon": {
+      "element": "Argon",
+      "Z": 18,
+      "n": 1,
+      "pair_energy_ev": -8590.986263744226
+    },
+    "Xenon": {
+      "element": "Xenon",
+      "Z": 54,
+      "n": 1,
+      "pair_energy_ev": -80664.73392553514
+    }
+  },
+  "Pillar_4_Neutrino": {
+    "Helium": {
+      "element": "Helium",
+      "Z": 2,
+      "n": 1,
+      "is_approximately_resonant": false,
+      "shell_frequency_hz": 5567444369051969.0,
+      "neutrino_frequency_hz": 17869265108.61602,
+      "relative_difference": 0.9999967904007792
+    },
+    "Neon": {
+      "element": "Neon",
+      "Z": 10,
+      "n": 1,
+      "is_approximately_resonant": false,
+      "shell_frequency_hz": 5567444369051969.0,
+      "neutrino_frequency_hz": 17869265108.61602,
+      "relative_difference": 0.9999967904007792
+    },
+    "Argon": {
+      "element": "Argon",
+      "Z": 18,
+      "n": 1,
+      "is_approximately_resonant": false,
+      "shell_frequency_hz": 5567444369051969.0,
+      "neutrino_frequency_hz": 17869265108.61602,
+      "relative_difference": 0.9999967904007792
+    },
+    "Xenon": {
+      "element": "Xenon",
+      "Z": 54,
+      "n": 1,
+      "is_approximately_resonant": false,
+      "shell_frequency_hz": 5567444369051969.0,
+      "neutrino_frequency_hz": 17869265108.61602,
+      "relative_difference": 0.9999967904007792
+    }
+  },
+  "Unified": {
+    "Hydrogen": {
+      "Pillar_1": {
+        "element": "Hydrogen",
+        "Z": 1,
+        "n": 1,
+        "shell_radius_m": 7.720393397784546e-13,
+        "shell_radius_angstrom": 0.007720393397784546,
+        "buoyancy_residual": 3.2030106247038335e-86,
+        "equilibrium_satisfied": "True"
+      },
+      "Pillar_2": {
+        "element": "Hydrogen",
+        "Z": 1,
+        "n": 1,
+        "shell_radius_m": 7.720393397784546e-13,
+        "spooky_distance_m": 1.5440786795569092e-12,
+        "orbital_velocity_m_s": 2187691.249014857,
+        "pair_creation_cost_ev": 1021997.8998240407,
+        "dpm_binding_ev": 1021997.8998240407,
+        "pair_stable": true,
+        "twin_coherence": 0.018342142711459668,
+        "lending_capacity_ev": 3.8171261337588915e-20
+      },
+      "Pillar_3": {
+        "element": "Hydrogen",
+        "Z": 1,
+        "n": 1,
+        "pair_energy_ev": -27.2552542195461
+      },
+      "Pillar_4": null
+    },
+    "Helium": {
+      "Pillar_1": {
+        "element": "Helium",
+        "Z": 2,
+        "n": 1,
+        "shell_radius_m": 1.5439553316418267e-12,
+        "shell_radius_angstrom": 0.015439553316418267,
+        "buoyancy_residual": 1.6017612138383613e-86,
+        "equilibrium_satisfied": "True"
+      },
+      "Pillar_2": {
+        "element": "Helium",
+        "Z": 2,
+        "n": 1,
+        "shell_radius_m": 1.5439553316418267e-12,
+        "spooky_distance_m": 3.0879106632836534e-12,
+        "orbital_velocity_m_s": 4375382.498029714,
+        "pair_creation_cost_ev": 1021997.8998240407,
+        "dpm_binding_ev": 1021997.8998240407,
+        "pair_stable": true,
+        "twin_coherence": 0.0003366491971453729,
+        "lending_capacity_ev": 4.482405956207e-20
+      },
+      "Pillar_3": {
+        "element": "Helium",
+        "Z": 2,
+        "n": 1,
+        "pair_energy_ev": -78.95785478307099
+      },
+      "Pillar_4": {
+        "element": "Helium",
+        "Z": 2,
+        "n": 1,
+        "is_approximately_resonant": false,
+        "shell_frequency_hz": 5567444369051969.0,
+        "neutrino_frequency_hz": 17869265108.61602,
+        "relative_difference": 0.9999967904007792
+      }
+    },
+    "Neon": {
+      "Pillar_1": {
+        "element": "Neon",
+        "Z": 10,
+        "n": 1,
+        "shell_radius_m": 7.700014909533727e-12,
+        "shell_radius_angstrom": 0.07700014909533727,
+        "buoyancy_residual": 3.219986926359243e-87,
+        "equilibrium_satisfied": "True"
+      },
+      "Pillar_2": {
+        "element": "Neon",
+        "Z": 10,
+        "n": 1,
+        "shell_radius_m": 7.700014909533727e-12,
+        "spooky_distance_m": 1.5400029819067454e-11,
+        "orbital_velocity_m_s": 21876912.490148574,
+        "pair_creation_cost_ev": 1021997.8998240407,
+        "dpm_binding_ev": 1021997.8998240407,
+        "pair_stable": true,
+        "twin_coherence": 4.7900281306849664e-18,
+        "lending_capacity_ev": 9.913986495054063e-30
+      },
+      "Pillar_3": {
+        "element": "Neon",
+        "Z": 10,
+        "n": 1,
+        "pair_energy_ev": -2575.6321838392464
+      },
+      "Pillar_4": {
+        "element": "Neon",
+        "Z": 10,
+        "n": 1,
+        "is_approximately_resonant": false,
+        "shell_frequency_hz": 5567444369051969.0,
+        "neutrino_frequency_hz": 17869265108.61602,
+        "relative_difference": 0.9999967904007792
+      }
+    },
+    "Argon": {
+      "Pillar_1": {
+        "element": "Argon",
+        "Z": 18,
+        "n": 1,
+        "shell_radius_m": 1.3776670325668801e-11,
+        "shell_radius_angstrom": 0.13776670325668802,
+        "buoyancy_residual": 1.8105945712436072e-87,
+        "equilibrium_satisfied": "True"
+      },
+      "Pillar_2": {
+        "element": "Argon",
+        "Z": 18,
+        "n": 1,
+        "shell_radius_m": 1.3776670325668801e-11,
+        "spooky_distance_m": 2.7553340651337602e-11,
+        "orbital_velocity_m_s": 39378442.48226743,
+        "pair_creation_cost_ev": 1021997.8998240407,
+        "dpm_binding_ev": 1021997.8998240407,
+        "pair_stable": true,
+        "twin_coherence": 1.0282589908419975e-31,
+        "lending_capacity_ev": 7.151680978971275e-42
+      },
+      "Pillar_3": {
+        "element": "Argon",
+        "Z": 18,
+        "n": 1,
+        "pair_energy_ev": -8590.986263744226
+      },
+      "Pillar_4": {
+        "element": "Argon",
+        "Z": 18,
+        "n": 1,
+        "is_approximately_resonant": false,
+        "shell_frequency_hz": 5567444369051969.0,
+        "neutrino_frequency_hz": 17869265108.61602,
+        "relative_difference": 0.9999967904007792
+      }
+    },
+    "Xenon": {
+      "Pillar_1": {
+        "element": "Xenon",
+        "Z": 54,
+        "n": 1,
+        "shell_radius_m": 3.831782935431551e-11,
+        "shell_radius_angstrom": 0.3831782935431551,
+        "buoyancy_residual": 7.021488718980137e-88,
+        "equilibrium_satisfied": "True"
+      },
+      "Pillar_2": {
+        "element": "Xenon",
+        "Z": 54,
+        "n": 1,
+        "shell_radius_m": 3.831782935431551e-11,
+        "spooky_distance_m": 7.663565870863102e-11,
+        "orbital_velocity_m_s": 118135327.44680229,
+        "pair_creation_cost_ev": 1021997.8998240407,
+        "dpm_binding_ev": 1021997.8998240407,
+        "pair_stable": true,
+        "twin_coherence": 6.48059480844152e-87,
+        "lending_capacity_ev": 2.824351544128673e-94
+      },
+      "Pillar_3": {
+        "element": "Xenon",
+        "Z": 54,
+        "n": 1,
+        "pair_energy_ev": -80664.73392553514
+      },
+      "Pillar_4": {
+        "element": "Xenon",
+        "Z": 54,
+        "n": 1,
+        "is_approximately_resonant": false,
+        "shell_frequency_hz": 5567444369051969.0,
+        "neutrino_frequency_hz": 17869265108.61602,
+        "relative_difference": 0.9999967904007792
+      }
+    }
+  }
+}
