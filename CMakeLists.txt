@@ -1381,6 +1381,48 @@ target_compile_options(simultaneous_7layer_solver PRIVATE
 )
 message(STATUS "simultaneous_7layer_solver: Built with C++20 (Tier 2 Core solver)")
 
+# ========== SIMULTANEOUS 7-LAYER SOLVER v2.0 (BUOYANCY-AWARE) ==========
+# Added: May 24, 2026
+# Purpose: Revised Tier 2 Core solver with complete F_U_Bi, F_U_Bi_i integration
+# KEY CHANGES: E_DPM dynamic (not fixed), Ubi term in Layer 7, force balance equation
+# Expected Result: H/He/Ne convergence (v1.0 plateaued), stronger Xe convergence
+# Test Cases: Hydrogen (Z=1), Helium (Z=2), Neon (Z=10), Xenon (Z=54)
+# Physics: Buoyancy-driven equilibrium, complete F_U = Ug_sum - Ubi + Um = 0
+add_executable(simultaneous_7layer_solver_v2 simultaneous_7layer_solver_v2_buoyancy.cpp)
+set_target_properties(simultaneous_7layer_solver_v2 PROPERTIES
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    AUTOMOC OFF
+    AUTOUIC OFF
+    AUTORCC OFF
+)
+target_compile_options(simultaneous_7layer_solver_v2 PRIVATE 
+    $<$<CXX_COMPILER_ID:MSVC>:/W4 /std:c++latest>
+    $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -std=c++20>
+    $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra -std=c++20>
+)
+message(STATUS "simultaneous_7layer_solver_v2: Built with C++20 (Buoyancy-Aware Tier 2 Core)")
+
+# ========== SIMULTANEOUS 7-LAYER SOLVER v1.5 (MINIMAL BUOYANCY TEST) ==========
+# Added: May 24, 2026
+# Purpose: Test minimal change: add Ubi term to v1.0's Layer 7 only
+# Strategy: Hypothesis test to verify if buoyancy is the missing physics
+# Expected: If this fixes H/He/Ne convergence, then v1 architecture is mostly correct
+add_executable(simultaneous_7layer_solver_v1_5 simultaneous_7layer_solver_v1_5_buoyancy_test.cpp)
+set_target_properties(simultaneous_7layer_solver_v1_5 PROPERTIES
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    AUTOMOC OFF
+    AUTOUIC OFF
+    AUTORCC OFF
+)
+target_compile_options(simultaneous_7layer_solver_v1_5 PRIVATE 
+    $<$<CXX_COMPILER_ID:MSVC>:/W4 /std:c++latest>
+    $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -std=c++20>
+    $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra -std=c++20>
+)
+message(STATUS "simultaneous_7layer_solver_v1_5: Built with C++20 (Minimal Buoyancy Test)")
+
 # ========== UQFF CORE LIBRARY ==========
 # Added: November 14, 2025
 # Purpose: Consolidated Core architecture from extracted modules
