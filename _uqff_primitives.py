@@ -224,6 +224,7 @@ class UQFFPhysicalConstants:
     # ======= AETHER & VACUUM PROPERTIES =======
     RHO_AETHER: float = 1.244e-23  # [kg/m³] Universal aether density (rho_A)
     V_AETHER: float = 1.0e8  # [m/s] Aether speed (c/3, superconductive)
+    V_SCM: float = 1.0e8  # [m/s] Superconductive vacuum speed (c/3) - Session 201+ / dpm_vacuum_manifold
     E_CRACK: float = 9.9862e22  # [J/m⁶] Aether shear energy density (dpm_vacuum_manifold)
     
     # ======= PHONON & RESONANCE PHYSICS =======

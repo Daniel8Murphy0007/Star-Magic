@@ -51,6 +51,24 @@ This workspace is the **active construction site** for the UQFF (Unified Quantum
 
 **But first:** We must complete assembly and validation of the 1000+ clone infrastructure built over one year.
 
+## 🐍 Installation & Python Dependencies
+
+**Core** (after `git clone` and `cd Star-Magic`):
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pip install -r clones_archive/requirements.txt   # Verification Framework (26D, QCalcGeom, VDS_CVP_BH26, GrokAPI)
+```
+
+Then build:
+
+```powershell
+cmake -S . -B build
+cmake --build build --config Release
+```
+
+See [UPLOAD_INSTRUCTIONS.md](UPLOAD_INSTRUCTIONS.md) for complete Windows/PowerShell instructions, CMake details, Python .py co-location requirements (critical for Grok + verification subprocesses), Grok key setup, and the explicit preservation directive covering every addition since the start of the TUI session (Grok API activation in source178 + full Phase 3 unified geometric verification framework).
+
 ## 🐍 Python Calculator Pipeline (4 Modules, 2,748 Classes)
 
 **Architecture**: 4-phase calculator pipeline — each CondensedPhysics module is a PURE PHYSICS CALCULATOR receiving datasets from source2.cpp (Principal GUI) via APIFetch.py, producing long-form equations with solutions.

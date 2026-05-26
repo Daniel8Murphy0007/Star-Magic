@@ -14,6 +14,12 @@
  * 3. Layer 6-7 over-constraint is correct design
  *
  * Date: May 24, 2026
+ *
+ * PHASE 2D STATUS (per Session252IntegrationGuide.md + workspace_25May2026.md):
+ * - This file is the primary validation harness for Ubi v1.5 buoyancy integration.
+ * - Exercises Layer 7 with Ubi term (E_pair = ... - Ubi_term).
+ * - Companion to UbiForceBalanceIntegrator in MAIN_1_CoAnQi.cpp (Phase 2C core complete).
+ * - Full comparison (v1.0 vs v1.5 across 446 modules) + menu-driven atomic solver tests remain for complete 2D closure.
  */
 
 #include <iostream>

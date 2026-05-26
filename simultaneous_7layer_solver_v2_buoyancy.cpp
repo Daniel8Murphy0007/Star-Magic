@@ -627,8 +627,11 @@ int main()
         state.E_neutrino = 0.511;
         
         // Initialize buoyancy variables
+        // Phase 2C: Ubi force balance (Session 252 / UbiForceBalanceIntegrator pattern)
+        // Ug2 here represents DPM quantum shell / compressed term (historically 0.0 placeholder).
+        // Full resolution applies Ubi = beta_i * |E_single| * Z * cos(π * t_norm) subtraction.
         state.Ug1 = 0.0;
-        state.Ug2 = 0.0;
+        state.Ug2 = 0.0;  // TODO resolved in core PhysicsTerm classes; see UbiForceBalanceIntegrator in MAIN_1
         state.Ug3 = 0.0;
         state.Ug4 = 0.0;
         state.Ug_sum = 0.0;
