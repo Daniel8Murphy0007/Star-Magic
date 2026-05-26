@@ -164,7 +164,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Compiler-specific flags for MSVC
 if(MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /std:c++20 /permissive- /Zc:__cplusplus /GR- /arch:AVX2 /wd4100 /wd4244 /wd4267 /wd4305 /wd4996 /wd4005")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /std:c++20 /permissive- /Zc:__cplusplus /GR- /arch:AVX2 /wd4100 /wd4244 /wd4267 /wd4305 /wd4996 /wd4005 /bigobj")
     # Warning suppressions: /wd4100=unreferenced params, /wd4244=conversion loss, /wd4267=size_t conversion, /wd4305=truncation, /wd4996=deprecated POSIX, /wd4005=macro redefinition
     set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od")
     set(CMAKE_CXX_FLAGS_RELEASE "/Os /GL /Gw /Gy /Zc:inline /GF /Oi")  # /Os = Favor small code, /GL = Whole Program Optimization, /Gw = Global data optimization, /Gy = Function-level linking, /Zc:inline = Remove unreferenced inline, /GF = String pooling, /Oi = Intrinsics
@@ -382,7 +382,8 @@ if(USE_EMBEDDED_WOLFRAM)
         shell32
     )
     
-    # Add Qt5 libraries if available (required for Grok API QNetworkAccessManager)
+    # Qt libraries are linked only if found (used by Source2 / optional GUI paths).
+    # The Grok AI feature (source178_grok_api.cpp) no longer requires Qt Network — it uses a Python subprocess.
     if(Qt5_FOUND)
         target_link_libraries(MAIN_1_CoAnQi
             Qt5::Core
@@ -393,7 +394,6 @@ if(USE_EMBEDDED_WOLFRAM)
         )
     endif()
     
-    # Add Qt6 libraries if available (required for Grok API QNetworkAccessManager)
     if(Qt6_FOUND)
         target_link_libraries(MAIN_1_CoAnQi
             Qt6::Core
@@ -451,22 +451,32 @@ endif()
 #endif()
 message(STATUS "UPX compression DISABLED for MAIN_1_CoAnQi during development")
 
-# OpenSSL DLL Auto-Copy for Qt6 TLS/HTTPS Support (Grok API Integration)
-# Automatically copies OpenSSL DLLs after building MAIN_1_CoAnQi
-# Required for: Grok AI integration (Option 13), Qt6 QNetworkAccessManager HTTPS requests
-# Installation: winget install ShiningLight.OpenSSL.Light
+# Grok API Python Wrapper Auto-Copy (source178_grok_api.cpp + GrokAPI.py + APIKeyManager.py)
+# Ensures GrokAPI.py and APIKeyManager.py are always next to MAIN_1_CoAnQi.exe
+# This is REQUIRED for menu options "Configure Grok API Key" and "Test Grok AI Integration" to work.
+add_custom_command(TARGET MAIN_1_CoAnQi POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/GrokAPI.py"
+        "$<TARGET_FILE_DIR:MAIN_1_CoAnQi>/GrokAPI.py"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/APIKeyManager.py"
+        "$<TARGET_FILE_DIR:MAIN_1_CoAnQi>/APIKeyManager.py"
+    COMMENT "Copying GrokAPI.py + APIKeyManager.py for Grok AI integration (source178_grok_api.cpp)"
+)
+message(STATUS "Grok API Python wrappers will be copied next to MAIN_1_CoAnQi.exe")
+
+# OpenSSL DLL Auto-Copy (only needed for legacy Qt GUI paths and Source2; not used by current Grok Python implementation)
 if(EXISTS "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll")
     add_custom_command(TARGET MAIN_1_CoAnQi POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "C:/Program Files/OpenSSL-Win64/bin/libssl-3-x64.dll"
             "C:/Program Files/OpenSSL-Win64/bin/libcrypto-3-x64.dll"
             $<TARGET_FILE_DIR:MAIN_1_CoAnQi>
-        COMMENT "Copying OpenSSL DLLs for Qt6 TLS/HTTPS support (Grok API)"
+        COMMENT "Copying OpenSSL DLLs (legacy Qt path)"
     )
-    message(STATUS "OpenSSL DLL auto-copy ENABLED for MAIN_1_CoAnQi")
+    message(STATUS "OpenSSL DLL auto-copy ENABLED for MAIN_1_CoAnQi (legacy)")
 else()
-    message(STATUS "OpenSSL not found at 'C:/Program Files/OpenSSL-Win64/' - Grok API will require manual DLL setup")
-    message(STATUS "Install via: winget install ShiningLight.OpenSSL.Light")
+    message(STATUS "OpenSSL not found - only needed for legacy Qt Grok paths (current implementation uses Python requests)")
 endif()
 
 # ========== IPC LIBRARY (Phase 1 - VR Architecture) ==========

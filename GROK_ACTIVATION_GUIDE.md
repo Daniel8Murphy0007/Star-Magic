@@ -1,11 +1,14 @@
 # Grok AI Integration - Activation Guide
 
 **Integration Date:** November 25, 2025 (Commit 33cdfcb)  
+**Updated:** April 2026 (Activation Plan execution)  
 **Phase:** Phase 23 - AI Integration  
-**Status:** ✅ **CODE COMPLETE** | ⚠️ **NOT ACTIVATED** (Requires API Key)  
-**File:** `source178_grok_api.cpp`  
-**CMake Integration:** Line 189 in CMakeLists.txt  
-**Dependencies:** Qt6 Network (QNetworkAccessManager)
+**Status:** ✅ **CODE COMPLETE + ACTIVATION IMPROVEMENTS APPLIED**  
+**File:** `source178_grok_api.cpp` (included directly by MAIN_1_CoAnQi.cpp)  
+**Python side:** `GrokAPI.py` + `APIKeyManager.py` (persistent config file support)  
+**CMake:** Automatic copy of the two .py files next to the executable
+
+**Current Architecture (2026):** Pure Python subprocess (no Qt dependency for Grok). The C++ side shells out to `python GrokAPI.py`. API keys are managed via `grok_api_config.json` (preferred) + `XAI_API_KEY` environment variable (fallback).
 
 ---
 
@@ -22,32 +25,21 @@ Grok is pre-configured with UQFF context:
 - **Windows threading model** (SimpleMutex, SimpleLockGuard)
 - **Physics terminology** (Universal Gravity, SCm, 26D polynomial structures)
 
-### Available Functions
+### Available Functions (C++ side)
 
-The Grok listener provides 5 wrapper functions in `source178_grok_api.cpp`:
+The Grok integration exposes these functions (usable from MAIN_1_CoAnQi menu or directly in code):
 
-1. **`callGrokAPI(QString prompt)`** - Core API call function
-   - Sends custom prompts to Grok with UQFF context
-   - Returns AI response as QString
-   - Logs token usage (prompt/completion/total)
+1. **`callGrokAPI(const std::string& prompt)`** - Core function (implemented in source178_grok_api.cpp)
+   - Delegates to GrokAPI.py (which prefers grok_api_config.json then XAI_API_KEY env var)
+   - Returns plain string response (empty on failure)
 
-2. **`diagnoseCompilationError(QString errorMessage, QString sourceFile, int lineNumber)`** - MSVC error diagnostics
-   - Analyzes C++ compilation errors with UQFF context
-   - Provides fix suggestions specific to your codebase
-   - Example: `diagnoseCompilationError("error C2065: 'undefined_var' : undeclared identifier", "MAIN_1_CoAnQi.cpp", 1234)`
+2. **`diagnoseCompilationError(...)`, `explainPhysicsEquation(...)`, `reviewPhysicsCode(...)`** - Convenience wrappers that build good prompts and call the above.
 
-3. **`explainPhysicsEquation(QString equationName, QString equationCode)`** - Physics explanations
-   - Explains UQFF equations in context of quantum field unity theory
-   - Example: `explainPhysicsEquation("F_U Primary Equation", "F_U = c^4/(8πG) * R_μν")`
+3. **`testGrokAPI()`** - Menu-driven connectivity test (highly recommended first step after configuration).
 
-4. **`reviewPhysicsCode(QString codeSnippet, QString concernedAspect)`** - Code review
-   - Reviews code for performance, correctness, physics validity
-   - Example: `reviewPhysicsCode("for(int i=0; i<1000000; i++) { sqrt(i); }", "performance")`
+4. **`configureGrokAPIKey()`** - Interactive key setup that persists to config file + sets env for the session.
 
-5. **`testGrokAPI()`** - Connectivity test
-   - Sends "Hello, Grok!" test message
-   - Prints detailed diagnostics if connection fails
-   - Returns void (outputs to console)
+5. **`printGrokAPIStatus()`** - One-line status printed at interactive startup.
 
 ### API Configuration
 
@@ -159,11 +151,10 @@ SUCCESS! Grok response: [Grok's actual response here]
 [Physics equation explanation in UQFF context]
 ```
 
-**If You See Errors:**
-- `[Grok API] XAI_API_KEY not set...` → Environment variable not set or misspelled
-- `QNetworkReply::NetworkError` → Check internet connection or API endpoint
-- `401 Unauthorized` → Invalid API key, regenerate at x.ai/api
-- `429 Rate Limit` → Too many requests, wait and retry
+**If You See Errors (2026 improved diagnostics):**
+- Key not found (config or env) → Use the in-app "Configure Grok API Key" menu option first.
+- Python execution failure → Install Python 3.9+, run `pip install requests`, ensure the two .py files are next to the .exe (CMake now copies them automatically).
+- 401 / rate limit → Check key validity at https://x.ai/api.
 
 ---
 
@@ -191,44 +182,11 @@ QString apiKey = "your_grok_api_key";  // Replace with environment variable
 
 ---
 
-## CMake Build Configuration
+## CMake / Runtime Notes (2026)
 
-Grok integration is defined in `CMakeLists.txt` (lines 182-220):
-
-```cmake
-# MAIN_1_CoAnQi with optional Wolfram integration + Grok AI API
-add_executable(MAIN_1_CoAnQi 
-    MAIN_1_CoAnQi.cpp 
-    source178_grok_api.cpp  # <-- Grok integration (Phase 23: AI Integration)
-)
-
-# Disable Qt AUTOMOC (pure C++ physics calculator)
-set_target_properties(MAIN_1_CoAnQi PROPERTIES 
-    AUTOMOC OFF 
-    AUTOUIC OFF 
-    AUTORCC OFF
-)
-
-# Link Wolfram WSTP and system libraries
-target_link_libraries(MAIN_1_CoAnQi 
-    wstp64i4 
-    kernel32 
-    user32 
-    advapi32 
-    shell32
-)
-
-# Add Qt6 libraries if available (required for Grok API)
-if(Qt6_FOUND)
-    target_link_libraries(MAIN_1_CoAnQi 
-        Qt6::Core 
-        Qt6::Widgets 
-        Qt6::WebEngineWidgets 
-        Qt6::PrintSupport 
-        Qt6::Network  # <-- Required for QNetworkAccessManager
-    )
-endif()
-```
+- No Qt is required for Grok anymore.
+- CMake automatically stages `GrokAPI.py` + `APIKeyManager.py` next to the executable.
+- Run the program from a shell with Python 3 + requests installed. The menu options will guide you.
 
 ---
 

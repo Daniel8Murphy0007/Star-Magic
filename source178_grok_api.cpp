@@ -36,16 +36,9 @@ std::string exec_command(const std::string& cmd) {
 
 // Function to call xAI Grok API via Python wrapper
 // Returns the AI response as string; empty on error
+// Improved (Activation Plan): delegates key management to Python (config file or env),
+// tries multiple python executables, and gives clearer diagnostics.
 std::string callGrokAPI(const std::string& prompt) {
-    // Check if XAI_API_KEY is set
-    const char* apiKey = std::getenv("XAI_API_KEY");
-    if (!apiKey || strlen(apiKey) == 0) {
-        std::cout << "[Grok API] WARNING: XAI_API_KEY environment variable not found.\n";
-        std::cout << "[Grok API] Set with PowerShell: $env:XAI_API_KEY=\"your_key_here\"\n";
-        std::cout << "[Grok API] Get your free API key at: https://x.ai/api\n" << std::flush;
-        return "";
-    }
-
     // Build Python command (escape quotes in prompt)
     std::string escaped_prompt = prompt;
     size_t pos = 0;
@@ -54,20 +47,44 @@ std::string callGrokAPI(const std::string& prompt) {
         pos += 2;
     }
 
-    std::string cmd = "python GrokAPI.py \"" + escaped_prompt + "\" \"grok-4-1-fast-reasoning\"";
-    
-    std::cout << "[Grok API] Calling Python wrapper...\n" << std::flush;
-    
-    // Execute Python script and capture JSON output
-    std::string jsonOutput = exec_command(cmd);
-    
+    // Try several python launchers (python, python3, py) + also look next to the exe if possible.
+    // This makes the feature far more reliable when the user double-clicks the .exe.
+    const std::vector<std::string> pythonCandidates = {
+        "python",
+        "python3",
+        "py -3",
+        "py"
+    };
+
+    std::string jsonOutput;
+    std::string usedPython;
+
+    for (const auto& py : pythonCandidates) {
+        std::string cmd = py + " GrokAPI.py \"" + escaped_prompt + "\" \"grok-4-1-fast-reasoning\"";
+        std::cout << "[Grok API] Trying: " << cmd << "\n" << std::flush;
+        jsonOutput = exec_command(cmd);
+        usedPython = py;
+
+        if (!jsonOutput.empty() && jsonOutput != "[ERROR] Failed to execute command") {
+            break;
+        }
+    }
+
     if (jsonOutput.empty() || jsonOutput == "[ERROR] Failed to execute command") {
-        std::cout << "[Grok API] ERROR: Failed to execute GrokAPI.py\n";
-        std::cout << "[Grok API] Check:\n";
-        std::cout << "  1. Python 3 is installed and in PATH\n";
-        std::cout << "  2. GrokAPI.py exists in current directory\n";
-        std::cout << "  3. requests library installed: pip install requests\n" << std::flush;
+        std::cout << "[Grok API] ERROR: Could not execute GrokAPI.py with any Python launcher.\n";
+        std::cout << "[Grok API] Troubleshooting:\n";
+        std::cout << "  1. Install Python 3.9+ and ensure it is in PATH\n";
+        std::cout << "  2. pip install requests\n";
+        std::cout << "  3. GrokAPI.py and APIKeyManager.py must be next to MAIN_1_CoAnQi.exe (CMake copies them automatically)\n";
+        std::cout << "  4. From a command prompt in the exe directory, test manually:\n";
+        std::cout << "        python GrokAPI.py \"Hello\" \"grok-4-1-fast-reasoning\"\n" << std::flush;
         return "";
+    }
+
+    // If Python side returned a structured error about missing key, surface it nicely
+    if (jsonOutput.find("XAI_API_KEY") != std::string::npos && jsonOutput.find("not set") != std::string::npos) {
+        std::cout << "[Grok API] Key not found (neither env var nor grok_api_config.json).\n";
+        std::cout << "             Use the menu 'Configure Grok API Key' option first.\n";
     }
 
     // Parse JSON response (simple manual parsing to avoid Qt dependency)
@@ -211,4 +228,86 @@ void testGrokAPI() {
     }
     
     std::cout << "=====================================\n\n" << std::flush;
+}
+
+// ===========================================================================================
+// Grok API Configuration & Status Helpers (Activation Plan 2026)
+// ===========================================================================================
+
+// Prints a clear one-time status about Grok API key availability at startup or on demand.
+// Checks environment variable first (fast path) then falls back to asking Python APIKeyManager.
+void printGrokAPIStatus() {
+    const char* envKey = std::getenv("XAI_API_KEY");
+    bool envHasKey = (envKey && strlen(envKey) > 8); // rough sanity check for real key length
+
+    std::cout << "\n[Grok API Status] ";
+    if (envHasKey) {
+        std::cout << "ACTIVE (XAI_API_KEY found in environment)\n";
+        return;
+    }
+
+    // Ask Python side (it checks config file first, then env)
+    std::string cmd = "python -c \"from APIKeyManager import get_api_key_status; print(get_api_key_status())\" 2>NUL";
+#ifdef _WIN32
+    // Windows: suppress stderr noise if module missing
+#endif
+    std::string status = exec_command(cmd);
+
+    // Clean the output
+    // Remove trailing newlines / carriage returns
+    while (!status.empty() && (status.back() == '\n' || status.back() == '\r')) {
+        status.pop_back();
+    }
+
+    if (status.find("Not configured") != std::string::npos || status.empty()) {
+        std::cout << "NOT CONFIGURED\n";
+        std::cout << "  -> Use menu option 'Configure Grok API Key' (or set XAI_API_KEY env var)\n";
+        std::cout << "  -> Get a free key at https://x.ai/api\n";
+    } else {
+        std::cout << status << "\n";
+    }
+}
+
+// Interactive configuration helper. Persists to grok_api_config.json via APIKeyManager
+// and sets the key for the current process so the session can use Grok immediately.
+void configureGrokAPIKey() {
+    std::cout << "\n=== Configure Grok API Key ===\n";
+    std::cout << "The key will be saved to grok_api_config.json (preferred) and also set for this session.\n";
+    std::cout << "Get your free API key at: https://x.ai/api\n";
+    std::cout << "\nPaste your xAI key (starts with xai-): ";
+
+    std::string apiKey;
+    std::getline(std::cin, apiKey);
+
+    // Trim whitespace
+    apiKey.erase(0, apiKey.find_first_not_of(" \t\r\n"));
+    apiKey.erase(apiKey.find_last_not_of(" \t\r\n") + 1);
+
+    if (apiKey.empty()) {
+        std::cout << "No API key entered. Configuration cancelled.\n";
+        return;
+    }
+
+    // 1. Set for current process (so this run of the program can use it immediately)
+#ifdef _WIN32
+    _putenv_s("XAI_API_KEY", apiKey.c_str());
+#else
+    setenv("XAI_API_KEY", apiKey.c_str(), 1);
+#endif
+
+    // 2. Persist via APIKeyManager.py (writes grok_api_config.json)
+    // We use a Python one-liner to avoid needing a dedicated --set CLI in GrokAPI.py
+    std::string persistCmd = "python -c \"from APIKeyManager import set_xai_api_key; import sys; sys.exit(0 if set_xai_api_key('" + apiKey + "') else 1)\"";
+    std::string persistResult = exec_command(persistCmd);
+
+    std::cout << "\n? Grok API key configured for this session.\n";
+
+    if (persistResult.find("Error") == std::string::npos && !persistResult.empty()) {
+        std::cout << "? Also saved to grok_api_config.json (will be used by future runs + GrokAPI.py)\n";
+    } else {
+        std::cout << "  (Note: Could not persist to config file this time - key is still active for this session via env var)\n";
+        std::cout << "  Run this in the same directory later: python -c \"from APIKeyManager import set_xai_api_key; set_xai_api_key('your_key')\"\n";
+    }
+
+    std::cout << "You can now select 'Test Grok AI Integration' from the menu.\n\n";
 }
