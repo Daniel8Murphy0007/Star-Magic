@@ -3,6 +3,12 @@
 clone_snapshot_writer.py
 Part of the UQFF Unified Geometric Verification Framework (VERIFICATION_CONTRACT.md Phase 3)
 
+Installation (required before running):
+    python -m pip install -r clones_archive/requirements.txt
+
+    This installs numpy, scipy, requests (needed for QCalcGeom.py geometric solvers,
+    26D / VDS_CVP_BH26 analysis, and Grok API calls from source178).
+
 - Writes standardized clone_N.json snapshots (runtime + imported Grok Threads)
 - Supports QCalcGeom.py + Wolfram checkpoint data
 - Supports VDS_CVP_BH26 variational black hole 26D branches

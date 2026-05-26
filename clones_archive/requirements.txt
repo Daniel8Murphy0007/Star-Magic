@@ -1,0 +1,18 @@
+# requirements.txt for UQFF Unified Geometric Verification Framework
+# (Phase 3 per VERIFICATION_CONTRACT.md)
+#
+# Install with:
+#   python -m pip install -r clones_archive/requirements.txt
+#
+# These packages are required for:
+#   - QCalcGeom.py (geometric solvers, simultaneous equations, 26D / BH26 work)
+#   - clone_snapshot_writer.py helpers
+#   - Grok API integration (source178_grok_api.cpp calls GrokAPI.py)
+#   - Future parallel verification runs and VDS_CVP_BH26 analysis
+
+numpy
+scipy
+requests
+# Optional but recommended for full QCalcGeom features:
+# matplotlib   # for scan_habitable_zone / plotting
+# sympy        # symbolic 26D polynomial work (if extending derivations)
