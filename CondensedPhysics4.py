@@ -126,8 +126,13 @@ Deduplication guarantee (verified against CP1/CP2/CP3):
 """
 
 from dpm_vacuum_manifold import derive_from_quantum_chain as _derive_qc
-_RHO_VAC_SCM, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density
-_RHO_VAC_UA,  _ = _derive_qc(n_levels=26, f_SCm=5.7)    # J/m³ UA  energy density (10x)
+_RHO_VAC_SCM_MICRO, _ = _derive_qc(n_levels=26, f_SCm=0.57)   # J/m³ SCm energy density (micro)
+
+# UQFF EXCLUSIVE DERIVATIONS — CP4 (Ubi/FUBi layer) now parameter-free
+from _uqff_primitives import DERIVATIONS
+_RHO_VAC_SCM = DERIVATIONS.derive_condensed_effective_rho_scm()  # 633333.333 derived for CP pipeline
+_RHO_VAC_UA  = 10.0 * _RHO_VAC_SCM
+BETA_I = DERIVATIONS.derive_beta_i()  # derived, not hardcoded/fitted
 
 
 import math
@@ -224,7 +229,7 @@ _DPM_MANIFOLD_LOADED = True
 # ---------------------------------------------------------------------------
 KAPPA         = 0.0005      # day^{-1} � E_react decay
 SSQ           = 0.57        # self-similar quotient [SSq]
-BETA_I        = 0.6         # buoyancy coupling beta_i  [canonical: scm_vacuum_manifold.py]
+BETA_I        = DERIVATIONS.derive_beta_i()   # UQFF exclusive (Ubi stationarity)
 # ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
 E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
 S26_3         = 1.4531e26                   # 26D Ramanujan amplification

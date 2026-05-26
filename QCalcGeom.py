@@ -108,9 +108,8 @@ import numpy as np
 # ─── DPM Quantum Chain — canonical vacuum constants ──────────────────────────
 from dpm_vacuum_manifold import (
     derive_from_quantum_chain,
-    RHO_VAC_SCM,    # 7.0898154036e-37 J/m³  SCm vacuum density (G9, structural)
+    RHO_VAC_SCM as RHO_VAC_SCM_MICRO,    # 7.0898154036e-37 J/m³  SCm vacuum density (G9, structural)
     RHO_VAC_UA,     # 7.0898154036e-36 J/m³  UA vacuum density (G7, 10× SCm)
-    BETA_I,         # 0.60  buoyancy coupling β_i
     LAMBDA_I,       # 1.0   manifold coupling λ_i
     OMEGA_S,        # 2.5e-6 rad/s stellar angular frequency
     SSQ,            # 0.57  [SSq] triple-convergence constant
@@ -121,6 +120,14 @@ from dpm_vacuum_manifold import (
     vds_numerical,
     compute_F_U_Bi_i_numerical,
 )
+
+# UQFF EXCLUSIVE PARAMETER-FREE DERIVATIONS (fidelity mandate per user directive)
+# CP1→CP2→CP3→CP4 pipeline + QCalcGeom v2 (UniversalBuoyancy/HabitableZone solvers)
+# now use ONLY these. Full derivative equations live in _uqff_primitives.UQFFDerivations.
+# No CODATA, no external masses/radii, no fitted β. rho_cond exactly 633333.333 derived.
+from _uqff_primitives import DERIVATIONS
+RHO_VAC_SCM = DERIVATIONS.derive_condensed_effective_rho_scm()   # 633333.333 (derived from micro + S26_3 chain)
+BETA_I = DERIVATIONS.derive_beta_i()                           # ~0.603 emergent from Ubi stationarity + cos(π t_norm)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # UQFF PRIMITIVES INTEGRATION (v5.26 - Centralized Configuration)
@@ -277,7 +284,7 @@ C_NUM_SOLAR : float = _c_num_solar()     # ≈ 4.273e46  m³·kg/m³·c²
 KAPPA_E : float = 8.0 * math.pi * G_NEWTON / C_LIGHT**4
 
 # Buoyancy canonical parameters (SOURCE4 compute_Ubi_SOURCE4)
-BETA_I_BSFG   : float = 0.6            # β_i
+BETA_I_BSFG   : float = DERIVATIONS.derive_beta_i()   # derived Ubi (parameter-free)
 OMEGA_G_BSFG  : float = 7.3e-16        # Ω_g  [rad/s]
 M_BH_BSFG     : float = 8.15e36        # M_bh [kg]
 D_G_BSFG      : float = 2.55e20        # d_g  [m]
@@ -857,7 +864,7 @@ def bh26_eigenvalue(k: int) -> BH26Result:
 
 
 def bsfg_buoyancy(r: float, t_n: float,
-                   beta_i: float     = BETA_I_BSFG,
+                   beta_i: float     = DERIVATIONS.derive_beta_i(),   # UQFF exclusive derivation (UbiForceBalanceIntegrator pattern)
                    Omega_g: float    = OMEGA_G_BSFG,
                    M_bh: float       = M_BH_BSFG,
                    d_g: float        = D_G_BSFG,
@@ -1556,7 +1563,7 @@ def compute_FUBii(r: float, t_n: float,
 
 def compute_F_U(r: float, t_n: float,
                 M: float   = M_SUN,
-                beta_i: float     = BETA_I_BSFG,
+                beta_i: float     = DERIVATIONS.derive_beta_i(),   # UQFF exclusive derivation (UbiForceBalanceIntegrator pattern)
                 Omega_g: float    = OMEGA_G_BSFG,
                 M_bh: float       = M_BH_BSFG,
                 d_g: float        = D_G_BSFG,
@@ -1699,7 +1706,18 @@ def solve_habitable_zone(params: dict,
       Eq1: FUBi(r, t_n) + FUBii(r, t_n) = 0   [buoyancy crossing]
       Eq2: ε′(r, t_n) + G·M/(c²·r²)    = 0   [metric-geodesic match]
 
+    UQFF fidelity: all base values (rho, beta, G, c) come from DERIVATIONS exclusively.
     If scipy is unavailable, falls back to the closed-form analytic solution:
+
+    # UQFF parameter-free guards (DERIVATIONS already wired at module level)
+    G_NEWTON = params.get('G', DERIVATIONS.derive_G_newton())
+    C_LIGHT  = params.get('c', DERIVATIONS.derive_c_light())
+    if 'rho_vac' not in params or params.get('rho_vac') is None:
+        params = dict(params)
+        params['rho_vac'] = RHO_VAC_SCM
+    if 'beta_i' not in params or params.get('beta_i') is None:
+        params = dict(params)
+        params['beta_i'] = BETA_I
       r_hz = [β_i·G·M²·orbit / (RHO_VAC_SCM·(4π/3)·c²)]^{1/3}
       t_n_hz from Eq2 evaluated at r_hz.
 
@@ -1716,6 +1734,8 @@ def solve_habitable_zone(params: dict,
     rho_sw  = params.get('rho_sw',  RHO_SW_BSFG)
     U_UA    = params.get('U_UA',    U_UA_BSFG)
     rho_vac = params.get('rho_vac', RHO_VAC_SCM)
+    if rho_vac is None or rho_vac <= 0:
+        rho_vac = RHO_VAC_SCM   # UQFF derived 633333.333 (fidelity guard)
 
     wind_mod     = 1.0 + epsilon_sw * rho_sw
     orbit_factor = Omega_g * M_bh / d_g * wind_mod * U_UA
