@@ -27,6 +27,10 @@ BSFG METRIC FRAMEWORK (full port of QCalcGeom.h v1.5.1-S305 + .cpp):
     "mass BORN at the FUBi+FUBii=0 crossing").
 
 SIMULTANEOUS EQUATION SOLVER (scipy, per user narrative "Writing the solver implementation"):
+    - scipy is OPTIONAL for full functionality. The module imports cleanly without it
+      (_HAS_SCIPY and _HAS_NUMPY are exposed). Default decoupled solver works everywhere.
+      Simultaneous (log-space 2D) mode requires scipy and raises a clear ImportError
+      with pip instructions if unavailable.
     - Same cosine term modulates both FUBi and FUBii (distinct mechanisms, not negatives).
       FUBi (outer Aether pressure, SOURCE4, ~1/r drop, M_SUN self-energy) reverses at t_n=1
       (aids negentropic infall). FUBii (inner SCm vacuum spring, linear in r) is the
@@ -54,6 +58,9 @@ ARCHITECTURE:
         HabitableZoneCalculator, UniversalGravityCalculator.
     - Comprehensive test suite (T01-T90+ equivalents + new HZ/UBS solver tests).
       Known-good: r_hz ≈ 1.7095376216580647e+19 m, |F_U| < 1e-10, balance=0 at crossing.
+    - Optional deps: scipy (for simultaneous 2D solver + some advanced paths),
+      numpy (used by many helpers and scans). Both guarded; core decoupled + dpm paths
+      remain usable in minimal environments.
 
 Integration: dpm_vacuum_manifold.py v3.0 (Quantum Chain) + prior UQFF/MAIN_1 UbiForceBalanceIntegrator
 at :2852 + QCalcGeom.h/.cpp 17-function API + extern "C" JSON bridge (simulated).
@@ -69,8 +76,30 @@ import warnings
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
-import numpy as np
-from scipy.optimize import root, fsolve
+# =============================================================================
+# OPTIONAL DEPENDENCIES (guarded for portability across venvs, including py314)
+# =============================================================================
+_HAS_NUMPY = False
+_HAS_SCIPY = False
+np = None
+root = None
+fsolve = None
+
+try:
+    import numpy as _np
+    np = _np
+    _HAS_NUMPY = True
+except ImportError:
+    pass
+
+try:
+    if _HAS_NUMPY:
+        from scipy.optimize import root as _root, fsolve as _fsolve
+        root = _root
+        fsolve = _fsolve
+        _HAS_SCIPY = True
+except ImportError:
+    pass
 
 # =============================================================================
 # dpm_vacuum_manifold.py v3.0 — IMMUTABLE SOLE ROOT (Quantum Chain 8 steps)
@@ -381,6 +410,42 @@ def _safe_cos(x: float) -> float:
 
 def _safe_sin(x: float) -> float:
     return math.sin(x)
+
+
+def _scalar_root_1d(f, x0: float = 0.0, bracket: Tuple[float, float] = (-2.0, 2.0),
+                    tol: float = 1e-10, maxiter: int = 100) -> Tuple[float, bool]:
+    """Pure-Python scalar root finder (bisection) — fallback when scipy is unavailable.
+    Used by extract_tn_from_metric_match to keep the default decoupled path working
+    in minimal environments (e.g. some py314 venvs without scipy).
+    """
+    a, b = float(bracket[0]), float(bracket[1])
+    fa = f(a)
+    fb = f(b)
+
+    # Expand bracket if needed (simple heuristic)
+    for _ in range(8):
+        if fa * fb <= 0:
+            break
+        a *= 1.6
+        b *= 1.6
+        fa = f(a)
+        fb = f(b)
+
+    if fa * fb > 0:
+        # No sign change — fall back to x0
+        return float(x0), False
+
+    for _ in range(maxiter):
+        c = (a + b) / 2.0
+        fc = f(c)
+        if abs(fc) < tol or abs(b - a) < tol:
+            return float(c), True
+        if fa * fc <= 0:
+            b, fb = c, fc
+        else:
+            a, fa = c, fc
+    return float((a + b) / 2.0), False
+
 
 # =============================================================================
 # SECTION: FULL BSFG PORT (QCalcGeom.h signatures + formulas from header comments)
@@ -713,7 +778,11 @@ def solve_r_from_buoyancy_balance(M: float = M_SUN,
     # Use the time-independent closed form (cubic). t_n_ref kept for API compat only.
     r_hz = _closed_form_r_hz(M, beta_i, Omega_g, M_bh, d_g, rho_vac, t_n=0.0)
     # Guard against under/overflow from extreme params; keep in physically plausible range
-    if not np.isfinite(r_hz) or r_hz < 1e3 or r_hz > 1e30:
+    if _HAS_NUMPY and np is not None:
+        finite_check = np.isfinite(r_hz)
+    else:
+        finite_check = math.isfinite(r_hz)
+    if not finite_check or r_hz < 1e3 or r_hz > 1e30:
         # Fallback modest scale (Earth-Sun order) while preserving decoupled contract
         r_hz = 1.5e11
     return float(r_hz)
@@ -735,19 +804,25 @@ def extract_tn_from_metric_match(r_hz: float,
 
     # Guard: phases are periodic mod 2; keep solver in a few cycles for physical interpretability
     t0 = float(t_n_guess) if abs(t_n_guess) < 10 else 0.0
-    try:
-        sol = root(residual, [t0], method='hybr', tol=1e-12)
-        tn = float(sol.x[0]) if sol.success else t0
-    except Exception:
-        tn = t0
+
+    if _HAS_SCIPY and root is not None:
+        try:
+            sol = root(residual, [t0], method='hybr', tol=1e-12)
+            tn = float(sol.x[0]) if sol.success else t0
+        except Exception:
+            tn = t0
+    else:
+        # Pure-Python fallback (bisection) — keeps decoupled path usable without scipy
+        tn, _ = _scalar_root_1d(residual, x0=t0, bracket=(-1.5, 1.5), tol=1e-10)
+
     # Wrap to [-1, 1] for canonical orbital phase reporting (period 2 in t_n)
     tn = ((tn + 1.0) % 2.0) - 1.0
     resid = residual(tn)
     metric = bsfg_metric(r_hz, tn)
     return tn, metric, float(resid)
 
-def _habitable_zone_residual(x: np.ndarray, M: float, beta_i: float, Omega_g: float,
-                             M_bh: float, d_g: float, rho_vac: float) -> np.ndarray:
+def _habitable_zone_residual(x: "np.ndarray", M: float, beta_i: float, Omega_g: float,
+                             M_bh: float, d_g: float, rho_vac: float) -> "np.ndarray":
     """2D residual vector (user narrative "Writing the solver implementation..."):
        Log-space for r (dynamic range): x = [log10(r), t_n]
        [0] FUBi(r,tn) + FUBii(r,tn) = 0   (same cos(π tn) on distinct mechanisms)
@@ -758,6 +833,9 @@ def _habitable_zone_residual(x: np.ndarray, M: float, beta_i: float, Omega_g: fl
     Initial guess: r = geodesic crossing radius, tn = half-phase point (0.5).
     M = M_SUN in self-energy term (SOURCE4 gravitational coupling consistency).
     """
+    if not _HAS_SCIPY or root is None or np is None:
+        raise ImportError("Internal _habitable_zone_residual requires scipy (called only from simultaneous path)")
+
     log10_r, tn = float(x[0]), float(x[1])
     r = 10.0 ** log10_r if log10_r > 0 else 1.0
     if r <= 0:
@@ -862,6 +940,14 @@ def solve_habitable_zone_simultaneous(M: float = M_SUN,
     Trivial solution (half-integer tn → flat metric) vs non-trivial (horizon r balance).
     Falls back to decoupled on failure. Emergent mass from dpm vacuum (Step 7).
     """
+    if not _HAS_SCIPY or root is None:
+        raise ImportError(
+            "QCalcGeom.solve_habitable_zone_simultaneous requires scipy.\n"
+            "The simultaneous (log-space 2D) solver uses scipy.optimize.root.\n"
+            "Install with:  python -m pip install scipy\n"
+            "The default decoupled mode (solve_habitable_zone) works without scipy."
+        )
+
     if rho_vac is None:
         rho_vac, _ = _derive_rho_from_quantum_chain()
 
