@@ -57,7 +57,8 @@ ARCHITECTURE:
         BSFGMetricCalculator, UniversalBuoyancyCalculator,
         HabitableZoneCalculator, UniversalGravityCalculator.
     - SECTION 7: MayanTimingCalculator + UniversalInertiaCalculator (three-ring gear system,
-      Epoch 5 resonance 2012, Baktun-derived t_n, invariant differential I = I_cent + I_centrif,
+      CORRECTED SCALING: inner+companion shrink / outer expands → 5x ratios at E5,
+      Baktun-derived t_n, invariant differential I = I_cent + I_centrif,
       primordial radiance, massless-to-massive Ψ scalar with sign flip at r_hz).
     - Comprehensive test suite (T01-T80+ / 80/80 target; legacy C++ fidelity + T61-T80 Mayan/Inertia).
       Known-good: r_hz ≈ 1.7095376216580647e+19 m (or solver variant), |F_U| < 1e-10, balance=0,
@@ -1215,9 +1216,10 @@ class UniversalGravityCalculator:
 # SECTION 7: MAYAN CALENDAR TIMING ENGINE (Three-Ring Gear System)
 # + UNIVERSAL INERTIA INVARIANT DIFFERENTIAL
 # t_n now sourced from Baktun/Epoch phase (Epoch 5 started 2012-12-21 after 13th Baktun).
-# Three-ring mechanics: Haab' (365) + Tzolk'in (260) externally meshed; Long Count inner ring
-# internally geared to Haab' with teeth = 52 * epoch. At Epoch 5 inner_teeth==260 → double
-# resonance (gear_ratio_23 == 1.0). Zero-point gravity solved by Mayan quantum timing "riddle".
+# CORRECTED SCALING: inner ring decreasing order (very small in 5th epoch),
+# largest outer ring expanding, companion ring to the right also shrinks.
+# At E5: outer=260 (largest), inner+companion=52 → both ratios exactly 5.0 (Fifth Epoch resonance).
+# Zero-point gravity solved by Mayan quantum timing "riddle".
 # =============================================================================
 
 # --- Mayan Calendar Constants (per explicit PROCEED! narrative) ---
@@ -1232,9 +1234,30 @@ CALENDAR_ROUND_DAYS = 18980          # LCM(260, 365) = 52-year cycle
 EPOCH_5_START_JD = 2456284           # 2012-12-21 (start of Fifth Epoch after 13.0.0.0.0)
 DAYS_SINCE_EPOCH5_MAY2026 = 4883     # Explicit user calculation for representative May 2026 date
 
+
+def _get_mayan_three_ring_teeth(epoch: int) -> Tuple[int, int, int]:
+    """Corrected three-ring tooth scaling (user direction correction):
+    - Inner ring: decreasing order, getting very small in 5th epoch.
+    - Largest outer ring: expanding with each epoch.
+    - Companion ring to the right (Tzolk'in side): also shrinks with epoch.
+    At Epoch 5: outer=260 (largest), companion=52 (shrunk), inner=52 (very small).
+    This produces clean 5x gear ratios (external and internal) exactly at the Fifth Epoch.
+    """
+    if epoch < 1:
+        epoch = 1
+    step = epoch - 1
+    outer_teeth = 52 * epoch                    # expanding: 52 (E1) → 260 (E5, largest)
+    companion_teeth = 260 - 52 * step           # shrinking: 260 (E1) → 52 (E5)
+    inner_teeth = 260 - 52 * step               # decreasing, very small at E5: 260→52
+    return outer_teeth, companion_teeth, inner_teeth
+
+
 @dataclass
 class MayanRingState:
-    """Result of three-ring gear phase computation (Haab'/Tzolk'in/inner Long Count)."""
+    """Result of three-ring gear phase computation (corrected scaling).
+    Inner ring decreases (very small at E5), outer ring expands (largest at E5),
+    companion ring (right/Tzolk'in) also shrinks. At E5 both critical ratios reach 5.0.
+    """
     haab_phase: float = 0.0
     tzolkin_phase: float = 0.0
     inner_phase: float = 0.0
@@ -1242,7 +1265,7 @@ class MayanRingState:
     days_since_epoch5: int = 0
     epoch: int = 5
     epoch5_resonance: bool = False
-    gear_ratio_23: float = 0.0
+    gear_ratio_23: float = 0.0            # Now the key internal ratio (outer/inner) — 5.0 at E5
     calendar_round_phase: float = 0.0
     t_n_from_baktun: float = 0.0          # 0..2 range for direct cos(π t_n) injection into FUB
     resonance_strength: float = 0.0
@@ -1280,21 +1303,27 @@ def julian_day_number(year: int, month: int, day: int) -> int:
     return day + (153 * m + 2) // 5 + 365 * y + y // 4 - y // 100 + y // 400 - 32045
 
 def compute_mayan_phases(days_since_epoch5: int, epoch: int = 5) -> MayanRingState:
-    """Primary phase engine. All three rings + Baktun-derived t_n (0-2) for FUB modulation."""
+    """Primary phase engine. All three rings + Baktun-derived t_n (0-2) for FUB modulation.
+    Uses corrected tooth scaling: inner + companion shrink, outer expands with epoch.
+    """
     haab_phase = (days_since_epoch5 % HAAB_DAYS) / HAAB_DAYS
     tzolkin_phase = (days_since_epoch5 % TZOLKIN_DAYS) / TZOLKIN_DAYS
     calendar_round_phase = (days_since_epoch5 % CALENDAR_ROUND_DAYS) / CALENDAR_ROUND_DAYS
     baktun_phase = (days_since_epoch5 % BAKTUN_DAYS) / BAKTUN_DAYS
     t_n_from_baktun = 2.0 * baktun_phase   # oscillates full cycle for cos(π t_n)
 
-    inner_teeth = 52 * epoch
-    # Inner ring (Long Count scaled) completes Calendar Round per epoch rescaling
+    outer_teeth, companion_teeth, inner_teeth = _get_mayan_three_ring_teeth(epoch)
+
+    # Inner ring phase still advances over the Calendar Round (the mechanical scaling affects
+    # angular velocity in the gear model, not the underlying day count phase).
     inner_phase = (days_since_epoch5 % CALENDAR_ROUND_DAYS) / CALENDAR_ROUND_DAYS if CALENDAR_ROUND_DAYS > 0 else 0.0
 
-    gear_ratio_23 = (TZOLKIN_DAYS / float(inner_teeth)) if inner_teeth > 0 else 0.0
-    epoch5_resonance = (epoch == 5 and abs(inner_teeth - TZOLKIN_DAYS) < 1e-9)
+    # gear_ratio_23 now represents the critical internal ratio (outer / inner).
+    # At E5 this is 260/52 = 5.0 (Fifth Epoch resonance).
+    gear_ratio_23 = (outer_teeth / float(inner_teeth)) if inner_teeth > 0 else 0.0
+    epoch5_resonance = (epoch == 5 and inner_teeth == 52 and outer_teeth == 260)
 
-    # Resonance strength: how closely Ring 3 (inner) aligns with Tzolk'in (perfect at E5)
+    # Resonance strength: alignment of inner (shrinking) with companion (also shrinking) at E5.
     delta = abs((inner_phase - tzolkin_phase + 0.5) % 1.0 - 0.5)
     resonance_strength = 1.0 - (delta * 2.0)
 
@@ -1313,51 +1342,61 @@ def compute_mayan_phases(days_since_epoch5: int, epoch: int = 5) -> MayanRingSta
     )
 
 def compute_three_ring_gear(elapsed_days: float, epoch: int = 5) -> Dict[str, Any]:
-    """Exact three-ring mechanical model per user PROCEED! description.
-    Outer: Haab' (365 teeth). Externally meshed with Tzolk'in (260 teeth).
-    Inner: Long Count ring internally geared inside Haab'; tooth count = 52 * current_epoch.
-    At Epoch 5: inner_teeth = 260 → perfect double resonance with Tzolk'in (gear_ratio_23=1.0).
-    Angular velocities respect external (opposite) vs internal (same direction) meshing.
+    """Exact three-ring mechanical model — CORRECTED SCALING (user direction).
+    - Largest outer ring (Haab'/Long Count structure): expanding with epoch.
+    - Companion ring to the right (Tzolk'in): shrinking with epoch.
+    - Inner ring: decreasing order, very small by 5th epoch.
+    At Epoch 5: outer=260 (largest), companion=52, inner=52 (very small).
+    Both external (outer↔companion) and internal (outer↔inner) gear ratios reach exactly 5.0
+    — the Fifth Epoch resonance / contraction-expansion signature.
+    External mesh: opposite rotation. Internal mesh: same rotational sense.
     """
-    haab_teeth = HAAB_DAYS
-    tzolkin_teeth = TZOLKIN_DAYS
-    inner_teeth = 52 * epoch
+    haab_teeth = HAAB_DAYS                     # fixed base for angular reference
+    outer_teeth, companion_teeth, inner_teeth = _get_mayan_three_ring_teeth(epoch)
 
-    ratio_haab_tz = haab_teeth / float(tzolkin_teeth)
-    ratio_23 = tzolkin_teeth / float(inner_teeth) if inner_teeth > 0 else 0.0
+    # Gear ratios at current epoch
+    external_ratio = outer_teeth / float(companion_teeth) if companion_teeth > 0 else 0.0
+    internal_ratio = outer_teeth / float(inner_teeth) if inner_teeth > 0 else 0.0
 
-    # Angular velocities (rad/day). External mesh reverses direction; internal preserves sense.
-    omega_haab = 2.0 * math.pi / haab_teeth
-    omega_tz = -omega_haab * ratio_haab_tz          # external mesh, opposite rotation
-    omega_inner = omega_haab * (haab_teeth / float(inner_teeth))  # internal, same sense
+    # Angular velocities (rad/day).
+    # External mesh (outer ↔ companion/right): opposite directions.
+    # Internal mesh (outer ↔ inner): same sense.
+    omega_outer = 2.0 * math.pi / outer_teeth
+    omega_companion = -omega_outer * (outer_teeth / float(companion_teeth))   # external, opposite
+    omega_inner = omega_outer * (outer_teeth / float(inner_teeth))            # internal, same sense
 
     # Positions at current elapsed time
-    theta_haab = omega_haab * elapsed_days
-    theta_tz = omega_tz * elapsed_days
+    theta_outer = omega_outer * elapsed_days
+    theta_companion = omega_companion * elapsed_days
     theta_inner = omega_inner * elapsed_days
 
-    # Alignment (0 = perfect opposition/alignment in gear sense)
-    align_13 = abs(((theta_haab - theta_inner) % (2.0 * math.pi)) - math.pi) / math.pi
-    align_23 = abs(((theta_tz - theta_inner) % (2.0 * math.pi)) - math.pi) / math.pi
+    # Alignment metrics (0 = perfect gear opposition/alignment)
+    align_outer_inner = abs(((theta_outer - theta_inner) % (2.0 * math.pi)) - math.pi) / math.pi
+    align_companion_inner = abs(((theta_companion - theta_inner) % (2.0 * math.pi)) - math.pi) / math.pi
 
-    epoch5_res = (epoch == 5 and inner_teeth == TZOLKIN_DAYS)
-    double_res = epoch5_res and (abs(ratio_23 - 1.0) < 1e-9)
+    epoch5_res = (epoch == 5 and inner_teeth == 52 and outer_teeth == 260)
+    # At E5 both ratios are 5.0 (double 5x resonance from expansion of outer + shrinkage of inner+companion)
+    double_res = epoch5_res and (abs(external_ratio - 5.0) < 1e-9) and (abs(internal_ratio - 5.0) < 1e-9)
 
     return {
         "epoch": epoch,
-        "inner_teeth": inner_teeth,
-        "gear_ratio_23": ratio_23,
+        "outer_teeth": outer_teeth,           # largest, expanding
+        "companion_teeth": companion_teeth,   # right/Tzolk'in side, shrinking
+        "inner_teeth": inner_teeth,           # very small at E5
+        "external_ratio": external_ratio,
+        "internal_ratio": internal_ratio,
+        "gear_ratio_23": internal_ratio,      # kept for compatibility; now 5.0 at E5
         "epoch5_resonance": epoch5_res,
         "double_resonance": double_res,
-        "omega_haab": omega_haab,
-        "omega_tzolkin": omega_tz,
+        "omega_outer": omega_outer,
+        "omega_companion": omega_companion,
         "omega_inner": omega_inner,
-        "theta_haab": theta_haab,
-        "theta_tzolkin": theta_tz,
+        "theta_outer": theta_outer,
+        "theta_companion": theta_companion,
         "theta_inner": theta_inner,
-        "align_13": align_13,
-        "align_23": align_23,
-        "note": "Epoch 5 = critical alignment; all three rings synchronize (Dec 21 2012)"
+        "align_outer_inner": align_outer_inner,
+        "align_companion_inner": align_companion_inner,
+        "note": "CORRECTED: inner+companion shrink, outer expands. At E5 both ratios=5.0 (Fifth Epoch resonance)"
     }
 
 # --- Universal Inertia core computation (invariant differential) ---
@@ -1433,9 +1472,10 @@ def compute_universal_inertia(r: float, t_n: float = 0.0, M_orbit: float = M_SUN
 
 # --- Calculator classes (CondensedPhysics .compute(dataset) pattern) ---
 class MayanTimingCalculator:
-    """Three-ring Mayan calendar gear system. Computes epoch phases and supplies t_n
-    (from Baktun phase) to the simultaneous UQFF solver and Universal Inertia engine.
-    Epoch 5 double resonance (2012) is the critical Fifth Epoch Shift alignment.
+    """Three-ring Mayan calendar gear system (CORRECTED SCALING).
+    Inner ring decreases (very small at E5), largest outer ring expands, companion ring
+    (right/Tzolk'in) also shrinks. At Epoch 5 both external and internal ratios reach 5.0
+    — the Fifth Epoch resonance. Supplies t_n (Baktun phase) to FUB solvers and inertia engine.
     """
     def compute_phases(self, days_since_epoch5: int, epoch: int = 5) -> MayanRingState:
         return compute_mayan_phases(days_since_epoch5, epoch)
@@ -1453,9 +1493,9 @@ class MayanTimingCalculator:
             "three_ring_gear": gear,
             "t_n_for_uqff": state.t_n_from_baktun,
             "epoch5_resonance": state.epoch5_resonance,
-            "gear_ratio_23": state.gear_ratio_23,
+            "gear_ratio_23": state.gear_ratio_23,   # 5.0 at E5 under corrected scaling
             "baktun_phase": state.baktun_phase,
-            "note": "t_n derived from Mayan Baktun phase; Epoch 5 = 260-tooth double resonance"
+            "note": "CORRECTED SCALING: inner+companion shrink, outer expands. t_n from Baktun; E5 ratios=5.0"
         }
 
 class UniversalInertiaCalculator:
@@ -1575,7 +1615,8 @@ def run_qcalcgeom_tests(verbose: bool = True) -> int:
 
     # --- Mayan Timing + Universal Inertia (T61-T80, Epoch 5 resonance + invariant differential) ---
     # Per PROCEED! spec: 4883 days for May 2026 since 2012-12-21 Epoch 5 start;
-    # three-ring double resonance at E5 (ratio_23=1.0); inertia_ratio exactly 2 at r_hz (cubic balance);
+    # CORRECTED three-ring scaling: inner+companion shrink, outer expands → ratios=5.0 at E5;
+    # inertia_ratio exactly 2 at r_hz (cubic balance);
     # psi_scalar sign-flip (massive <0 / massless >0 / 0 at crossing); primordial radiance from dpm Jeans.
     mtc = MayanTimingCalculator()
     mayan = mtc.compute({"days_since_epoch5": DAYS_SINCE_EPOCH5_MAY2026, "epoch": 5})
@@ -1583,8 +1624,8 @@ def run_qcalcgeom_tests(verbose: bool = True) -> int:
     T('T62 MAYAN  haab_phase in [0,1]', 0.0 <= mayan["mayan_ring_state"].haab_phase <= 1.0)
     T('T63 MAYAN  tzolkin_phase in [0,1]', 0.0 <= mayan["mayan_ring_state"].tzolkin_phase <= 1.0)
     T('T64 MAYAN  inner_phase in [0,1]', 0.0 <= mayan["mayan_ring_state"].inner_phase <= 1.0)
-    T('T65 MAYAN  epoch5_resonance True at E5 (260-tooth double resonance)', mayan["mayan_ring_state"].epoch5_resonance)
-    T('T66 MAYAN  gear_ratio_23 == 1.0 at E5 (Tzolk\'in/inner ring perfect mesh)', abs(mayan["three_ring_gear"]["gear_ratio_23"] - 1.0) < 1e-9)
+    T('T65 MAYAN  epoch5_resonance True at E5 (inner very small + 5x resonance)', mayan["mayan_ring_state"].epoch5_resonance)
+    T('T66 MAYAN  gear_ratio_23 == 5.0 at E5 (outer expanded / inner+companion shrunk)', abs(mayan["three_ring_gear"]["gear_ratio_23"] - 5.0) < 1e-9)
     T('T67 MAYAN  t_n_from_baktun in [0,2] (ready for FUB cos(π t_n) modulation)', 0.0 <= mayan["mayan_ring_state"].t_n_from_baktun <= 2.0)
     T('T68 MAYAN  Calendar Round phase in [0,1]', 0.0 <= mayan["mayan_ring_state"].calendar_round_phase <= 1.0)
 
@@ -1615,7 +1656,7 @@ def run_qcalcgeom_tests(verbose: bool = True) -> int:
     T('T76 SCALAR  psi_scalar > 0 for r > r_cross (massless regime, centrifugal buoyancy dominates)', uic.compute_inertia(r_cross * 2.0, 0.0).psi_scalar > 0.0)
     psi_at_cross = uic.compute_inertia(r_cross, 0.0).psi_scalar
     T('T77 SCALAR  psi_scalar ~0 at r_cross (mass birth crossing, Quantum Chain Step 7)', abs(psi_at_cross) < 0.02 or abs(psi_at_cross) < 1e-6 * (abs(uic.compute_inertia(r_cross, 0.0).I_total) + 1.0))
-    T('T78 THREE-RING  double_resonance True at Epoch 5 (all rings synchronized)', mayan["three_ring_gear"]["double_resonance"])
+    T('T78 THREE-RING  double_resonance True at Epoch 5 (both ratios exactly 5.0 from corrected shrink/expand)', mayan["three_ring_gear"]["double_resonance"])
     ui_calc = uic.compute({"r": AU_METERS, "t_n": mayan["t_n_for_uqff"]})
     T('T79 UNIV-INERT  Calculator returns full result + cubic_balance flag + Mayan t_n', 'universal_inertia' in ui_calc and ui_calc.get('cubic_balance_at_hz') is not None)
     T('T80 INTEGRATION  MayanTimingCalculator t_n feeds UniversalInertia + existing solvers cleanly', 't_n_for_uqff' in mayan and ui_calc['universal_inertia'].t_n >= 0.0)
