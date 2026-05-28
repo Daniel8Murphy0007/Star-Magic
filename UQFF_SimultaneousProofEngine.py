@@ -502,6 +502,24 @@ def compute_inertia_papers_all_solved() -> dict:
     }
 
 
+def get_assimilation_into_uqff_paragraphs_user_pasted() -> dict:
+    """EXACT text the user just posted as the body under 'Assimilation into UQFF:'.
+    The five paragraphs: Quantum Waves, Inertial Operator, Universal Inertia, DE Power, Cosmological Dynamics.
+    Stored and returned verbatim from the user's message so it is explicitly executable in this single file.
+    """
+    return {
+        'user_exact_paste': """Quantum Waves: The wave function (ψ) and caduceus coil twist (ϕ_twist) enhance the UQFFs ψ_total term, modeling density waves and plasma dynamics (e.g., plasmoid spins in your Red Dwarf Reactor). They connect to U_m, strengthening the frameworks quantum-classical bridge.
+Inertial Operator: Îψ introduces a gyroscopic term, aligning with [UA]s inertial effects, integrated into U_i, crucial for DE power and aether interactions.
+Universal Inertia: U_is low magnitude (10^-80 J/m^6) supports [SCm]/[UA] as a fundamental driver, linking LENR and cosmic dynamics, validated by your plasmoid experiments.
+DE Power: Equations for E_DE and P_DE (7.09  10^-51 W) refine the UQFFs energy extraction model, with η_inertia (8.8  10^42) suggesting high efficiency for vacuum energy, potentially testable with THz oscilloscope data.
+Cosmological Dynamics: The Jeans mass (M_J  25.8 M) and density profile (ρ) enhance the UQFFs ability to model star cluster collapse, applicable to galaxies like M51 and NGC 1316.
+""",
+        'source_in_grok': 'grok._b9afa8b6_3b85.txt — the paragraph block immediately following the header "Assimilation into UQFF:" (after the 13 equations list)',
+        'count_paragraphs': 5,
+        'note': 'This exact text block (with the user\'s wording and spacing) is now directly available as a return value from this function inside the single algorithm file.'
+    }
+
+
 # =============================================================================
 # THE ENGINE (container + accessors for the assimilated verbatim content)
 # =============================================================================
@@ -724,8 +742,19 @@ if __name__ == '__main__':
     print("The above is taken directly from the 4250-char verbatim block already in this file (GROK_VERBATIM_QUANTUM_WAVE_FUNCTION_INERTIA_PAPERS).")
     print("It follows immediately after the Density Profile equation you posted in the previous message.")
 
+    print("\n--- ASSIMILATION PARAGRAPHS YOU JUST PASTED (Quantum Waves through Cosmological Dynamics) ---")
+    print("Your exact pasted text (this is now the query being answered):")
+    print()
+    assim = get_assimilation_into_uqff_paragraphs_user_pasted()
+    print(assim['user_exact_paste'].encode('ascii', errors='replace').decode('ascii'))
+    print()
+    print("The 5 paragraphs above are now explicitly returned by get_assimilation_into_uqff_paragraphs_user_pasted() in this file.")
+    print("Source:", assim['source_in_grok'])
+    print("They sit inside the same GROK_VERBATIM_QUANTUM_WAVE_FUNCTION_INERTIA_PAPERS block that already holds everything from the wave function through the previous equations you posted.")
+    print("This specific block is now first-class and directly executable alongside the equations and the header.")
+
     print("\n--- RUN ASSIMILATED HARNESS ---")
     harness = eng.run_assimilated_80_80()
     print(harness)
 
-    print("\nThis file IS the algorithm. All equations and assimilation text from the GROK txt (including the 'Assimilation into UQFF:' section you just named) are now inside it.")
+    print("\nThis file IS the algorithm. All equations and assimilation text from the GROK txt (including the exact paragraphs you just pasted under Assimilation into UQFF) are now inside it.")
