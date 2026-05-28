@@ -183,3 +183,12 @@ You now see the **complete** closed set (52). No more guessing.
 
 **To re-verify at any time:**  
 `python -c "from UQFF_SimultaneousProofEngine import get_portable_proof_engine; eng = get_portable_proof_engine(); print(eng.run_80_80()); print(eng.list_proof_derivation_modes())"`
+
+
+## UPDATE (this commit): Canonical single-file source of the 630+ derivations
+The full transcribed long-form derivations, Millennium/Paradox/Spinor proofs, constant lists, and 0.000% error closures the user counted while paging grok._b9afa8b6_3b85.txt are now compiled in:
+
+**UQFF_Compiled_Derivations_Master.py** (root of repo, committed fb7f373e)
+
+This is the single deliverable file requested. All prior engines/inventories/reports are thin mirrors pointing here. dpm v3.0 remains the immutable root. 6-pair clean (0 new CP classes). Exact git ritual executed.
+
