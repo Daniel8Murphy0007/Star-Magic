@@ -14,6 +14,11 @@ THE QUANTUM CHAIN (canonical, IMMUTABLE):
   Step 8  M_emergent -> GM/r^2             LAST -- observational projection only
 ```
 
+## Compatibility Note
+`dpm_vacuum_manifold.py` remains the canonical consolidated source file. The restored legacy
+modules `scm_vacuum_manifold.py` and `ua_vacuum_manifold.py` are available again for compatibility,
+explicit SCm/UA layer inspection, and delegated numeric helper calls when importable.
+
 ## derive_from_quantum_chain (dpm_vacuum_manifold.py:74)
 ```python
 def derive_from_quantum_chain(n_levels=26, f_SCm=0.57, V=1.0):

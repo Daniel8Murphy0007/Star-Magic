@@ -39,6 +39,10 @@ DPM = scm_vacuum_manifold.py  (BASE)
     + ua_vacuum_manifold.py   (SUPERSTRUCTURE)
 ```
 
+> Note: `dpm_vacuum_manifold.py` is the canonical consolidated root import path.
+> The restored legacy modules `scm_vacuum_manifold.py` and `ua_vacuum_manifold.py`
+> are available for compatibility, direct SCm/UA inspection, and delegated numeric helper calls when importable.
+
 ---
 
 ## 2. Two-File DPM Architecture
@@ -203,6 +207,9 @@ The two modules form a **complementary pair** — neither is sufficient alone:
 ## 7. Codebase File Inventory — All UA / DPM Related Files
 
 ### Core DPM Python Modules
+
+The restored root modules `scm_vacuum_manifold.py` and `ua_vacuum_manifold.py` now exist again for compatibility
+and direct inspection, while `dpm_vacuum_manifold.py` remains the canonical consolidated entry point.
 
 | File | Role | Key DPM Content |
 |------|------|-----------------|

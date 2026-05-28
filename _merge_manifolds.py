@@ -181,8 +181,9 @@ Di-Pseudo-Monopole (DPM) Vacuum Calculator -- Quantum Chain Compliant
 CONSOLIDATED FILE:
   Absorbs scm_vacuum_manifold.py (SCm base layer) and
            ua_vacuum_manifold.py (UA superstructure) into a single module.
-  scm_vacuum_manifold.py and ua_vacuum_manifold.py have been deleted.
-  Import from this file only.
+  Legacy root modules scm_vacuum_manifold.py and ua_vacuum_manifold.py are
+  restored for compatibility and direct SCm/UA inspection.
+  Import dpm_vacuum_manifold.py as the canonical consolidated root.
 
 THE QUANTUM CHAIN (canonical, Star-Magic.txt lines 11-22, IMMUTABLE):
 

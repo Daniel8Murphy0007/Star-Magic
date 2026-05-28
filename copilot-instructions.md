@@ -2,12 +2,12 @@
 
 ## VACUUM MANIFOLD — SINGLE FILE (as of commit 336445d4, 2026-05-04)
 
-**`scm_vacuum_manifold.py` and `ua_vacuum_manifold.py` have been DELETED.**
-**`dpm_vacuum_manifold.py` is the ONE AND ONLY vacuum manifold file.**
+**`dpm_vacuum_manifold.py` remains the canonical consolidated vacuum manifold file.**
+**The legacy modules `scm_vacuum_manifold.py` and `ua_vacuum_manifold.py` are restored for compatibility and explicit SCm/UA inspection.**
 
 It contains three sections:
-- **Section A** — SCm vacuum manifold (former scm_vacuum_manifold.py)
-- **Section B** — UA vacuum manifold (former ua_vacuum_manifold.py)
+- **Section A** — SCm vacuum manifold (Former `scm_vacuum_manifold.py` content)
+- **Section B** — UA vacuum manifold (Former `ua_vacuum_manifold.py` content)
 - **Section C** — DPM quantum chain (original dpm content)
 
 ## CRITICAL RULE FOR ALL VACUUM TERMS
