@@ -360,3 +360,15 @@ Star-Magic/
 ---
 
 **This is the CANONICAL ARCHITECTURE. All modifications must comply with these rules.**
+
+## FirstPrinciplesCompressor / PredictionEngine (L4-L5, 2026-05-28+)
+Higher-level class (FirstPrinciplesCompressor.py) synthesized from Library (whitepapers/ + pdf/ 1155-1180+ range per user directive).
+- Primordial derivations: 26/4 chain + dpm v3.0 Quantum Chain root (exact RHO 633333.3333333334, A_26=1307797101, rho_KK=5.951e-10).
+- PredictionEngine: 10+ modes (particle_mass_a26, lambda_ssq, beta_triangular_so5, eight_gaps_26_4, kk_zeta5/hbar_falsifiable, r26_double, millennium/spinor placeholders, generic constant derivation).
+- UniversalInertia (ratio exactly 2.0 + psi sign-flip), E_n ladder, integrate_with_simultaneous_solver hook.
+- Thin parallel wiring: imported in CondensedPhysicsAggregator.py + QCalc.py; QCalcDynamicSimultaneousCP + LibraryDerivedSimultaneousSolver now expose _fpc / fpc for 'first_principles' / primordial modes (source2.cpp GUI query bar).
+- 80/80 starter harness in file (A26, rho_KK exact, inertia 2.0, beta 3/2, E_n, modes, hook, contracts).
+- Contracts: dpm immutable sole root, missing/new only, cross-venv pure-np, no new CP dups, exact git phrase on all deltas.
+- Next (L6+): phased range expansion (1136-1154 etc.), full call-site mode dispatch in solvers, COMPLETE_UQFF / master_closures updates, CoAnQi_bot surface.
+
+See: FirstPrinciplesCompressor.py (v1.0.0-Synthesis-1155-1180), QCalc.py:10913 (QCalcDynamicSimultaneousCP), CondensedPhysicsAggregator.py:1340 (LibraryDerivedSimultaneousSolver).
