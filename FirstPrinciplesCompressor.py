@@ -24,9 +24,10 @@ Source ranges (exact user order start):
 - PAPER_1136 through PAPER_1154 (v1.1.0: SSq Lorentz geo, PTF net-zero CPT, M-theory 26D→11D, Polyakov 26D SCm tension/tachyon, FUBii partition).
 - PAPER_1112 through PAPER_1135 (v1.2.0: SCm vacuum manifold primordial first principle (1131), LENR Kozima density-scaled neutron drop (1126), SCm 26D string phonon tension + 22-compact (1128), primordial 26D ladder split VDS/DVP/BSH Cosmic Quantum Egg (1132), 9-sector UQFF Lagrangian SCm/phonon/LENR/KK (1112+1131)).
 - PAPER_1086 through PAPER_1111 (v1.3.0: SCm DE gamma-phonon replacement for LambdaCDM (1086/1090), F_U,Bi,i 7-component force decomposition (1088), inflation+DE buoyancy Lagrangians + EL stationarity + 3 regimes (1089/1090), SCm phonon-modulated LQG area operator (1100), 26D SCm string theory action + phonon tension + Regge + tachyon cancel (1106), 26-level vacuum density ladder + Ramanujan zeta(3) truncation + WKB (1109)).
+- PAPER_1064 through PAPER_1079 (v1.4.0: UQFF 9-sector Lagrangian first-principles with explicit ρ_SCm CC subtraction (1066/1065), buoyancy EOM variational derivation for F_U,Bi,i (1065), BFKL/Sudakov SCm phonon resummation + effective coupling (1064), VDS-DVP-BSH hybrid number system unification (1069), QCalcGeom bridge to UQFF buoyancy (1067), Yang-Mills mass gap VDS bridge + BCS phonon pairing ~5970 GeV (1070)).
 - Subsequent ranges per directive will be folded in phased (L6).
 
-Version: v1.3.0-Synthesis-1086-1111 (phased L6 continuation; Range-4 per exact user order after 1112-1135)
+Version: v1.4.0-Synthesis-1064-1079 (phased L6 continuation; Range-5 per exact user order after 1086-1111)
 Author synthesis: Daniel T. Murphy framework + Grok tool-driven compression (this session).
 """
 
