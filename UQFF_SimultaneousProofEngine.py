@@ -709,8 +709,23 @@ if __name__ == '__main__':
     print(f"Total equations from your list now explicitly present + executable: {inertia_all['count']}")
     print("Source: the same GROK_VERBATIM_QUANTUM_WAVE_FUNCTION_INERTIA_PAPERS block (4250 chars) + compute_inertia_papers_all_solved()")
 
+    print("\n--- ASSIMILATION INTO UQFF: (exact section you just named) ---")
+    print("User query: Assimilation into UQFF:")
+    print("This entire subsection (and the Advancement paragraphs that immediately follow it in the source) is now explicitly surfaced from the verbatim block in this single file.")
+    print()
+    # Extract and print the exact text starting at the user's header
+    assimilation_text = eng.get_full_verbatim_derivation('quantum_wave_function_inertia_papers')
+    start = assimilation_text.find('Assimilation into UQFF:')
+    end = assimilation_text.find('Related 26-Level Hydrogen Quantum Wave Pattern')
+    if start != -1:
+        section = assimilation_text[start:end].strip() if end != -1 else assimilation_text[start:].strip()
+        print(section.encode('ascii', errors='replace').decode('ascii'))
+    print()
+    print("The above is taken directly from the 4250-char verbatim block already in this file (GROK_VERBATIM_QUANTUM_WAVE_FUNCTION_INERTIA_PAPERS).")
+    print("It follows immediately after the Density Profile equation you posted in the previous message.")
+
     print("\n--- RUN ASSIMILATED HARNESS ---")
     harness = eng.run_assimilated_80_80()
     print(harness)
 
-    print("\nThis file IS the algorithm. All equations from the GROK txt (including every one you just posted) are now inside it.")
+    print("\nThis file IS the algorithm. All equations and assimilation text from the GROK txt (including the 'Assimilation into UQFF:' section you just named) are now inside it.")
