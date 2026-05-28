@@ -127,6 +127,12 @@ enum class MessageType : uint32_t {
     SOLAR_UG3_DISK_FULL     = 0x0502,  // Ug3MagneticDiskFullCalculator (B_j(t)+E_react)
     SOLAR_UG4_SMBH          = 0x0503,  // Ug4SMBHVacuumInteractionCalculator (2025 EHT)
     SOLAR_FU_ASSEMBLY       = 0x0510,  // SolarFUAssemblyCalculator (full F_U solar)
+
+    // DPM Bridge + QCalcGeom H202 VDS/DVP/BH26 (rec #3 IPC exposure for VR/source2)
+    CALCULATE_VDS_BRANCH    = 0x0600,  // VDSBranch (thin QCALCGEOM::vds_branches via DPM)
+    CALCULATE_DVP_BRANCH    = 0x0601,  // DVPBranch
+    CALCULATE_BH26_BRANCH   = 0x0602,  // BH26Branch + coupled + resonance
+    DPM_BRIDGE_STATUS       = 0x0603,  // getDPMBridgeStatus() for CoAnQi_bot / diagnostics
     SOLAR_INFLATION_CORE    = 0x0511,  // InflationForceCoreCalculator (LENR ~10^10N)
     SOLAR_EPOCH_STATE       = 0x0512,  // SCmEpochStateCalculator (5-epoch table)
     SOLAR_WIND_DENSITY      = 0x0513,  // SolarWindVacuumDensityCalculator (inv-sq)

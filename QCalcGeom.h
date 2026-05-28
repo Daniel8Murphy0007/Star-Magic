@@ -37,12 +37,13 @@
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
- * Version  : 1.3.0
+ * Version  : 1.3.0-S202+ (T01-T84; VDS/DVP/BH26 H202 + DPM Bridge wired in MAIN_1)
  *
  * Revision history:
  *   v1.1.0 — Session 150  : Original 40 BSFG/VDS/DVP/BSH/BH26 tests
  *   v1.2.0 — Session 151  : +neg-buoy +poly26 +UQFF-comp (60 C++ tests)
  *   v1.3.0 — Session 202  : +VDS/DVP/DH26 variant branches + coupling (70 C++ tests)
+ *   v1.3.0-S202+ — 2026  : T71-T84 + DPM Bridge integration (MAIN_1 recs 1-7); 84 tests
  *   v1.4.0 — Session 230  : QCALCGEOM_API macro + platform guards + extern "C" JSON C-ABI
  */
 

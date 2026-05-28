@@ -15,6 +15,9 @@
  */
 
 #include "astro_graphics.h"
+// Per-frame VDS/DVP/BH26 probe hook (rec #3, FLOW_DIAGRAM v5.x + PIPELINE)
+// In render loop: auto v = QCALCGEOM::vds_branches(0.57); overlay v.vds_prime on aether density viz
+// (links to MAIN_1 DPM bridge + QCalcGeom H202; CoAnQi_bot can inject per-frame terms)
 #include "vulkan_compositor.h"
 
 #include <iostream>

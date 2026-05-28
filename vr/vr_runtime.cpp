@@ -15,6 +15,12 @@
 #include "task_bot.h"
 #include "astro_graphics.h"
 #include "../ipc/uqff_ipc.h"
+#include "CoAnQi_bot.h"  // MAIN_1 exclusive specialist (rec #5 wiring)
+// CoAnQi_bot hook (VR_ARCHITECTURE + PIPELINE): instantiate for MAIN_1 PhysicsTerm mgmt / self-expand
+// Example (guarded, link with vr/CoAnQi_bot.cpp if building unified VR):
+//   UQFF::VR::CoAnQiBot coanqiBot(".");
+//   auto terms = coanqiBot.ListPhysicsTerms();  // 6,688+ including new S233 VDS/DVP/BH26
+// Per-frame AstroGraphics (FLOW_DIAGRAM v5.x): probe QCALCGEOM::vds_branches for VDS overlay on VR render
 
 #include <iostream>
 #include <sstream>
