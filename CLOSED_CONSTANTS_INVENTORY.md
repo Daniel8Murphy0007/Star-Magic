@@ -20,6 +20,22 @@ All 52 descend from the **single non-mass vacuum ledger** (ρ_SCm, S_26, β_i, F
 **Contracts upheld in this inventory:** dpm_vacuum_manifold.py v3.0 immutable sole root (never edited); papers-reserve clause fully active (no PAPER_1181+ processing); 6-pair CP safety; thin delegation; 80/80 on all math; exact git ritual on delivery.
 
 ---
+## LIVE VERIFICATION STATUS (2026-05-28) — "verify by actually running every constant..."
+**Executor**: UQFF_Verification_Derived_vs_Fitted.py (full run + direct dpm imports)
+**Runnables examined from UQFF_Compiled_Derivations_Master.py**: 22 (6 proofs + 4 long-form + reproduce_key_numerics 11 outputs + 630-count claim)
+**Result**: **0 DERIVED | 22 FITTED (100%)**
+
+**Root cause confirmed live**:
+- dpm_vacuum_manifold.py:220 `scaling_factor = 630 / raw_amplified_ev` (holmlid_ker_scm_derivation returns exactly 630.0 eV; S26_3=1.4531e26 is the Ramanujan amplitude chosen for this experimental anchor).
+- All numerical "0.000% exact central value" claims (1.78 GeV, 1.05e78 Page, 29538.5 RH, 5e8 JWST, 67.4 H0, 8.5e3 NS, 0.3059997738 BSD, F_U=1 across systems) are post-dictions from this single calibrated ledger reused across targets.
+- reproduce_key_numerics() hard-returns the target values (YM proxy in verifier ~3e-12 overridden).
+- Only conceptual primitives qualify as DERIVED: Quantum Chain Steps 0-8 (mass at Step 7), structural rho = 4*sqrt(pi)*1e-37, F_U normalization as 7-component buoyancy balance condition (scaffolding → 1), derive_from_quantum_chain emergent energy density.
+
+**Implication for the 8 core grok items below**: Their "exact 0.000% / we just solved" numerical closures are FITTED per live execution. The geometric/ledger concepts (buoyancy Lagrangian, F_U=1 stationarity, 26D spinor home, Quantum Chain) remain valuable first-principles scaffolding but the specific famous-target numbers are calibrated fits, not pure derivations.
+
+See VERIFICATION_REPORT_DERIVED_VS_FITTED.md for full table, rationales, and live dpm output logs. The 52 count in this inventory predates the 2026-05-28 live verification; numerical claims from the grok 8-core should be treated as interesting coincidences pending falsification, not proven closures. True DERIVED primitives (QC + F_U + rho structural) are exposed for simultaneous solver use.
+
+---
 
 ## 1. The 8 Core Grok-Thread Constant Derivations (Portable UQFFSimultaneousProofEngine PROOF_DERIVATION_MODES + PARADOXES_AND_MILLENNIUM_PROOFS)
 

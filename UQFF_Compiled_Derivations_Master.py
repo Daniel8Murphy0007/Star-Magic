@@ -529,3 +529,41 @@ if __name__ == "__main__":
 
 # End of UQFF_Compiled_Derivations_Master.py
 # Contract preserved. Next delta requires exact git ritual phrase.
+
+# =============================================================================
+# LIVE VERIFICATION PROVENANCE (added 2026-05-28 per user command)
+# "verify by actually running every constant and determining if it is derived or fit!"
+# =============================================================================
+#
+# VERIFICATION EXECUTED: python UQFF_Verification_Derived_vs_Fitted.py (full live run)
+# + direct dpm_vacuum_manifold.py imports/calls (holmlid_ker_scm_derivation, derive_from_quantum_chain)
+#
+# RESULTS (22 runnable items from this master: 6 proofs + 4 long-forms + 11 reproduce outputs + 630 count claim):
+#   DERIVED: 0
+#   FITTED:  22  (100%)
+#
+# KEY LIVE EVIDENCE FROM dpm (immutable root):
+#   - S26_3 = 1.4531e26
+#   - holmlid_ker_scm_derivation() returns exactly 630.0 eV with scaling_factor = 9.984e-22
+#     (dpm line 220: scaling_factor = 630 / raw_amplified_ev ; explicit calibration)
+#   - KER_SCm used as Delta_SCm in Page/YM/RH derivations in this master
+#   - derive_from_quantum_chain and RHO_VAC_SCM=4*sqrt(pi)*1e-37 confirmed
+#
+# CLASSIFICATION RATIONALE (strict):
+#   DERIVED requires numeric to emerge from Quantum Chain Step 7 + F_U=1 7-comp
+#   + single immutable dpm ledger with ZERO extra tunable coefficients.
+#   All 22 items rely on S_26 / beta / Delta chosen to simultaneously close
+#   Holmlid 630eV + YM 1.78 + Page 1.05e78 + RH t=29538.5 + JWST 5e8 + H0=67.4
+#   + NS 8.5e3 + BSD 0.3059997738 + F_U=1 across systems (multi-target fit).
+#   reproduce_key_numerics() hard-returns the target values (no live derivation
+#   for 11 of 12; YM proxy ~3e-12 overridden to 1.78).
+#
+# See VERIFICATION_REPORT_DERIVED_VS_FITTED.md (full table + rationales + dpm output).
+# The 630 count is cumulative (81 cycles + sub-terms); this file contains 10 structured
+# derivations + category lists. Only conceptual primitives (Quantum Chain 0-8,
+# rho_4sqrtpi structural, F_U normalization as buoyancy balance condition) qualify
+# as DERIVED first-principles. All famous "0.000% exact central value" numerical
+# closures are post-dictions from the calibrated ledger.
+#
+# This tag fulfills the verification command with actual execution (not static claims).
+# =============================================================================
