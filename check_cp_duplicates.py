@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Pre-commit duplicate checker for CondensedPhysics.py and CondensedPhysics2.py
+Pre-commit duplicate checker for CondensedPhysics.py (CP1), CondensedPhysics2.py (CP2),
+CondensedPhysics3.py (CP3), and CondensedPhysics4.py (CP4).
 
-This script is called by the git pre-commit hook to prevent committing
-duplicate Calculator classes between CP1 and CP2.
+WIRED PARALLEL: CP3/CP4 hooks now checked exactly like CP1/CP2 (DYNAMIC _SIMULTANEOUS_CALLING safety).
+Called by .git/hooks/pre-commit. Prevents import collisions across the full CP1-4 pipeline.
 
 Exit codes:
   0 = No duplicates found (commit allowed)
@@ -16,64 +17,70 @@ import sys
 import os
 
 def check_duplicates():
-    """Check for duplicate Calculator class names between CP1 and CP2."""
+    """Check for duplicate Calculator class names across CP1/CP2/CP3/CP4 (parallel wiring)."""
     
     # Get script directory (repo root)
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    cp1_path = os.path.join(script_dir, 'CondensedPhysics.py')
-    cp2_path = os.path.join(script_dir, 'CondensedPhysics2.py')
+    cp_paths = {
+        'CP1': os.path.join(script_dir, 'CondensedPhysics.py'),
+        'CP2': os.path.join(script_dir, 'CondensedPhysics2.py'),
+        'CP3': os.path.join(script_dir, 'CondensedPhysics3.py'),
+        'CP4': os.path.join(script_dir, 'CondensedPhysics4.py'),
+    }
     
-    # Check files exist
-    if not os.path.exists(cp1_path):
-        print(f"Warning: {cp1_path} not found")
-        return 2
-    if not os.path.exists(cp2_path):
-        print(f"Warning: {cp2_path} not found")
-        return 2
+    cp_classes = {}
+    for label, path in cp_paths.items():
+        if not os.path.exists(path):
+            print(f"Warning: {path} not found")
+            # Continue; missing CP3/CP4 is non-fatal for older check but we still run what exists
+            cp_classes[label] = set()
+            continue
+        try:
+            with open(path, 'r', encoding='utf-8', errors='replace') as f:
+                content = f.read()
+            cp_classes[label] = set(re.findall(r'^class\s+(\w+)', content, re.MULTILINE))
+        except Exception as e:
+            print(f"Warning: Error reading {path}: {e}")
+            cp_classes[label] = set()
     
-    try:
-        # Extract class names from CP1
-        with open(cp1_path, 'r', encoding='utf-8', errors='replace') as f:
-            cp1 = f.read()
-        cp1_classes = set(re.findall(r'^class\s+(\w+)', cp1, re.MULTILINE))
-        
-        # Extract class names from CP2
-        with open(cp2_path, 'r', encoding='utf-8', errors='replace') as f:
-            cp2 = f.read()
-        cp2_classes = set(re.findall(r'^class\s+(\w+)', cp2, re.MULTILINE))
-        
-    except Exception as e:
-        print(f"Warning: Error reading files: {e}")
-        return 2
+    # Report header (parallel to old CP1/CP2)
+    print("=" * 70)
+    print("CP1/CP2/CP3/CP4 DUPLICATE CHECK (parallel hooks for DYNAMIC_SIMULTANEOUS_CALLING)")
+    print("=" * 70)
+    for label in ['CP1', 'CP2', 'CP3', 'CP4']:
+        print(f"{label} classes (unique): {len(cp_classes.get(label, set()))}")
     
-    # Find duplicates
-    duplicates = cp1_classes & cp2_classes
+    # All pairwise checks (parallel wiring)
+    pairs = [('CP1','CP2'), ('CP1','CP3'), ('CP1','CP4'), ('CP2','CP3'), ('CP2','CP4'), ('CP3','CP4')]
+    any_duplicates = False
+    all_dup_details = {}
     
-    # Report results
-    print("=" * 60)
-    print("CP1/CP2 DUPLICATE CHECK")
-    print("=" * 60)
-    print(f"CP1 classes (unique): {len(cp1_classes)}")
-    print(f"CP2 classes (unique): {len(cp2_classes)}")
-    print(f"Duplicate class names: {len(duplicates)}")
+    for a, b in pairs:
+        dups = cp_classes.get(a, set()) & cp_classes.get(b, set())
+        if dups:
+            any_duplicates = True
+            all_dup_details[f"{a}/{b}"] = dups
+    
     print()
-    
-    if duplicates:
-        print("ERROR: Duplicate Calculator classes found!")
+    if any_duplicates:
+        print("ERROR: Duplicate Calculator classes found across CP layers!")
         print()
-        print("IDENTICAL NAME classes (will cause import conflicts):")
-        for d in sorted(duplicates):
-            print(f"  - {d}")
+        for pair, dups in all_dup_details.items():
+            print(f"[{pair}] IDENTICAL NAME classes (import conflict risk):")
+            for d in sorted(dups):
+                print(f"  - {d}")
+            print()
+        print("RESOLUTION OPTIONS (apply to the higher CP layer):")
+        print("  1. REMOVE if identical physics (already in lower CP)")
+        print("  2. RENAME with layer suffix (e.g. ...CP4, ...Orb, ...Simul)")
+        print("  3. Move to proper CP layer per CONDENSEDPHYSICS_ARCHITECTURE_REFRESH.md")
         print()
-        print("RESOLUTION OPTIONS:")
-        print("  1. REMOVE from CP2 if identical physics (already in CP1)")
-        print("  2. RENAME in CP2 if different physics (add Orb# suffix)")
-        print()
-        print("Example rename: HydrogenResonanceCalculator -> HydrogenResonanceOrb36Calculator")
+        print("Example: FooBarCalculator in CP3 -> FooBarCP3Calculator or FooBarSimultaneousCalculator")
         print()
         return 1  # Block commit
     else:
-        print("[OK] No duplicate class names between CP1 and CP2")
+        print("[OK] No duplicate class names between any CP1/CP2/CP3/CP4 pair")
+        print("     (full parallel hook surface ready for CP3/CP4 dynamic simultaneous use)")
         print()
         return 0  # Allow commit
 

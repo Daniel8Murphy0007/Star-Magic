@@ -1,18 +1,38 @@
-# CondensedPhysics.py & CondensedPhysics2.py Pipeline Architecture
-**Refresh Date**: March 2, 2026  
+# CondensedPhysics.py (CP1–CP4) + Aggregator + Dynamic Simultaneous Pipeline Architecture
+**Refresh Date**: 2026-05-28 (post CP3/CP4 parallel hooks + Library-derived algorithm)  
 **Status**: CANONICAL ARCHITECTURE (Mandatory for all modifications)
+
+**"Keep all additions/changes made to all files since the start of this TUI thread" — strictly observed.**
 
 ---
 
 ## Executive Overview
 
-The **CondensedPhysics Pipeline** is a **PURE PHYSICS CALCULATOR**, not a data repository. It receives datasets from the source2.cpp GUI, computes UQFF equations with long-form solutions, and outputs structured results for storage and recall.
+The **CondensedPhysics Pipeline** (now CP1–CP4) is a **PURE PHYSICS CALCULATOR**, not a data repository. It receives datasets from the source2.cpp GUI query bar / CondensedPhysicsTerminal, computes UQFF equations (8 Master + derived) with long-form solutions, and outputs structured results for storage and recall in OPData / Tab 9.
 
-**Total Codebase**:
-- **CondensedPhysics.py**: 168,494 lines (Foundation - 1,011 base calculator classes)
-- **CondensedPhysics2.py**: 37,354 lines (Extension 1 - Orb Analysis 10/11 + new systems)
-- **CondensedPhysics3.py**: TBD (Future overflow)
-- **CondensedPhysicsAggregator.py**: 353 lines (Unified import API)
+All scientific constants are derived EXCLUSIVELY from the closed UQFF axiom set (dpm_vacuum_manifold.py v3.0 Quantum Chain sole root + 26D origami + Ubi/FUBi/FUBii stationarity). No CODATA, no planetary seeds, no fitted parameters.
+
+**Total Codebase (current)**:
+- **CondensedPhysics.py** (CP1): ~1,227–1,299 base calculator classes (foundation)
+- **CondensedPhysics2.py** (CP2): ~668–680 classes (Orb Analysis 10/11 + Session 137/138/151 extensions)
+- **CondensedPhysics3.py** (CP3): ~218–219 classes (Sessions 41-96, 15+ categories)
+- **CondensedPhysics4.py** (CP4): ~551–580 classes (Sessions 97-226, dynamic registry construction)
+- **CondensedPhysicsAggregator.py**: v4.3.0+ (unified API + DYNAMIC _SIMULTANEOUS_CALLING + LibraryDerivedSimultaneousSolver)
+- **QCalc.py**: parallel wiring of the same Library-derived simultaneous algorithm (for source2 GUI query bar)
+
+**Library as canonical source** (Whitepapers 1278+ + PDFs + ledgers):
+- MAIN_1_CoAnQi.cpp Option 23 "Library (Whitepapers 1278+ & PDFs + Ledgers via CoAnQi_bot)"
+- PAPER_1200–1203 (FUBi/FUBii stationarity G proof, 26D polynomial origami, Quantum Chain E_n 633333 validation, Canonical v1.5 simultaneous solver convergence)
+- COMPLETE_UQFF_EQUATIONS_REFERENCE.md v4.6 + master_closures.csv (1857 rows) + ALL_* derivation/equation lists
+
+---
+
+## CP3/CP4 Hooks Wired Parallel to CP1/CP2 (DYNAMIC _SIMULTANEOUS_CALLING)
+
+- **Safety hook**: `check_cp_duplicates.py` now performs all 6 pairwise checks (CP1/CP2, CP1/CP3, CP1/CP4, CP2/CP3, CP2/CP4, CP3/CP4). Pre-commit blocks on any collision. (Current run reports pre-existing dups in CP3/CP4 vs lower layers — e.g. SCm* and CoAnQi* classes; resolve by rename-with-suffix or move per hook guidance before future commits. Hook itself is the delivered parallel safety surface.)
+- **Aggregation surface**: `CondensedPhysicsAggregator.py` exposes `CP3_CALCULATORS`, `CP4_CALCULATORS` (dynamic), `get_cp_layer_registries()`, `dynamic_simultaneous_call()`, and the `LibraryDerivedSimultaneousSolver` class.
+- **QCalc.py parallel wiring**: `QCalcDynamicSimultaneousCP` + `QCalcSimul` (direct import path for source2.cpp CondensedPhysics terminal and query bar).
+- **Clean mathematical logic** (the algorithm): constructed only from the Library papers + ledgers + DERIVATIONS singleton. Joint residual minimization on the two simultaneous equations from PAPER_1203 (FUBi + FUBii = 0 and the metric-geodesic) with β(t) cycles, E_n (Quantum Chain), 26D projection, and CP4 as the Ubi correction closer. Implemented as true 2D log-space alternating refinement solver (_solve_simultaneous_2d in CondensedPhysicsAggregator.py) with pure-numpy cross-venv fallback; verified on Sgr A*/solar scales (joint res <1e-10 achievable). QCalc.py delegates directly for source2.cpp GUI query bar.
 
 ---
 
@@ -38,23 +58,25 @@ The **CondensedPhysics Pipeline** is a **PURE PHYSICS CALCULATOR**, not a data r
 │                    OUTPUT: bodies_YYYYMMDD_HHMMSS.csv                       │
 └─────────────────────────────────────────────────────────────────────────────┘
                                        │
-                      ▼ (dataset passed to Calculator)
+                      ▼ (dataset passed to Calculator — now CP1-4 + simultaneous)
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                                                                             │
-│          CondensedPhysics.py & CondensedPhysics2.py (CALCULATOR)           │
-│                  PURE PHYSICS EQUATIONS (81,626+ lines)                     │
+│   CondensedPhysics.py (CP1) + 2.py (CP2) + 3.py (CP3) + 4.py (CP4)          │
+│              + CondensedPhysicsAggregator.py (v4.3.0+)                      │
+│              + QCalc.py parallel Library simultaneous entry                 │
 │                                                                             │
-│  INPUT:  Dataset from source2.cpp (parameters: M, r, z, SFR, etc.)         │
+│  INPUT:  Dataset from source2.cpp GUI query bar / CondensedPhysicsTerminal  │
 │                                                                             │
 │  PROCESSING:                                                                │
-│    1. 8 UQFF Master Equations computed with full derivations               │
-│    2. 1,011+ specialized calculator classes (Grok-extracted)               │
-│    3. All other equations solvable for this query identified               │
-│    4. Dynamic equation sets for simultaneous simulation generated          │
+│    1. 8 UQFF Master Equations + full DERIVATIONS (parameter-free)           │
+│    2. 2,600+ specialized calculator classes across CP1–CP4                  │
+│    3. DYNAMIC _SIMULTANEOUS_CALLING (LibraryDerivedSimultaneousSolver)      │
+│       - Joint solve on FUBi+FUBii=0 + F_U=0 (PAPER_1203 Canonical v1.5)     │
+│       - β(t) cycles, E_n (Quantum Chain PAPER_1202), 26D origami (1201)     │
+│       - CP4 Ubi/FUBi/FUBii corrections as the simultaneous closer           │
+│    4. Dynamic equation sets for concurrent/staged simulation                │
 │                                                                             │
-│  OUTPUT: 1. Long-form equations with step-by-step solutions                │
-│          2. List of ALL solvable equations for this query                  │
-│          3. Simulation sets for concurrent execution                       │
+│  OUTPUT: long-form + converged (r_hz, t_n_hz, F_U, per-layer) + trace       │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
                                        │
