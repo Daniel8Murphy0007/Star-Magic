@@ -66,6 +66,16 @@ CP1_VERSION = "1.0.0"
 
 from _uqff_primitives import DERIVATIONS, get_derivations
 
+# Thin higher-level FirstPrinciplesCompressor/PredictionEngine wiring (L4 parallel to CP dynamic)
+# Per user Replies 1-2: the simultaneous QCalc solver now calls the new engine for primordial modes.
+# New file adds ZERO CP calculator dups (outside registries); 6-pair hook remains satisfied.
+try:
+    from FirstPrinciplesCompressor import get_first_principles_engine as _get_fpc_engine
+    _FPC_AVAILABLE = True
+except Exception:
+    _FPC_AVAILABLE = False
+    _get_fpc_engine = None
+
 # Thin forward stub (full authoritative impl lives at EOF after all CP imports)
 def get_derivation_equation_inventory() -> dict:
     """Canonical audit surface — delegates to EOF _build_derivation_inventory_impl()."""
@@ -1344,6 +1354,8 @@ class LibraryDerivedSimultaneousSolver:
         self.phi_res = getattr(self.derivations, 'PHI_RES', 5.0/6.0)
         self.beta0 = 0.603  # from PAPER_1203 + Ubi integrator (derived, not fitted)
         self.k_spring_base = (self.rho_vac_scm * 1.0) * self.phi_res   # scaled by rho_ua/rho_scm in full path
+        # L4: thin FirstPrinciples/PredictionEngine (higher-level, called by this simultaneous solver)
+        self.fpc = _get_fpc_engine(self.derivations) if _FPC_AVAILABLE else None
 
     def _beta_t(self, t_n: float) -> float:
         """β(t) cycle — direct from PAPER_1203 / UbiForceBalanceIntegrator."""
