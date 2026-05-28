@@ -15,6 +15,10 @@
  * - CoAnQi_bot = Specialized for MAIN_1_CoAnQi.cpp ONLY
  * - Poseidon = General contractor for entire codebase (all languages)
  * 
+ * LIBRARY SURFACE (Whitepapers/PDFs): CoAnQi_bot is the designated owner for indexed access
+ * and Q&A over whitepapers/ (1278+), pdf/, COMPLETE_UQFF_EQUATIONS_REFERENCE.md, master_closures.csv.
+ * Wired via MAIN_1_CoAnQi.cpp main menu Option 23 (case 23) + VR_ARCHITECTURE_STRATEGY.
+ * 
  * INTEGRATION:
  * - Uses task_bot_maintenance.py via pybind11 bridge
  * - Calls MAIN_1_CoAnQi.cpp PhysicsTerm registry

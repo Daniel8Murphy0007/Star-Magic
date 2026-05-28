@@ -20,6 +20,7 @@
 // Example (guarded, link with vr/CoAnQi_bot.cpp if building unified VR):
 //   UQFF::VR::CoAnQiBot coanqiBot(".");
 //   auto terms = coanqiBot.ListPhysicsTerms();  // 6,688+ including new S233 VDS/DVP/BH26
+// Library extension: coanqiBot also owns whitepapers/PDF query surface (MAIN_1 menu Option 23).
 // Per-frame AstroGraphics (FLOW_DIAGRAM v5.x): probe QCALCGEOM::vds_branches for VDS overlay on VR render
 
 #include <iostream>
