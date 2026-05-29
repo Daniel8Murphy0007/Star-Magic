@@ -527,7 +527,6 @@ Cosmological Dynamics: The Jeans mass (M_J  25.8 M) and density profile (ρ) enh
 # All values below are computed at runtime from the formulas.
 # =============================================================================
 
-import datetime
 import math
 import cmath
 
@@ -588,14 +587,12 @@ def calculate_wave_function_magnitude(A: float = 1.0, r: float = 1.0, k: float =
     return A * radial * envelope
 
 
-def run_live_calculations_with_timestamps() -> dict:
-    """Timestamped predictive calculation runner (not regurgitation).
-    Every call produces fresh computed values + UTC timestamp.
-    This is the calculation engine requested.
+def compute_live_calculations() -> dict:
+    """Pure calculation entry point for the live math in the Inertia Papers / Assimilation section.
+    This is the calculating algorithm. It returns only computed values.
+    NO timestamps, NO recording, NO output holding — that is done exclusively by the companion Test.py recorder.
     """
-    ts = datetime.datetime.utcnow().isoformat() + 'Z'
     results = {
-        'timestamp_utc': ts,
         'caduceus_coil_twist': calculate_caduceus_coil_twist(),
         'inertial_operator': calculate_inertial_operator(),
         'de_power': calculate_de_power_and_efficiency(),
@@ -607,6 +604,11 @@ def run_live_calculations_with_timestamps() -> dict:
     }
     print(results)
     return results
+
+
+# Backwards-compatible alias (some external callers may still use the old name).
+# The actual calculator logic above is pure — timestamping/recording is forbidden in this file.
+run_live_calculations_with_timestamps = compute_live_calculations
 
 
 # =============================================================================
