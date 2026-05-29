@@ -2,71 +2,95 @@
 """
 UQFF_SimultaneousProofEngine_Test.py
 
-THIS FILE RECORDS THE OUTPUT.
+THIS IS THE OUTPUT FILE.
+IT HOLDS THE TIMESTAMPS AND THE RECORDED RESULTS.
 
-Per user's explicit correction:
-- UQFF_SimultaneousProofEngine.py contains the calculator
-  (all calculate_* functions, run_live_calculations_with_timestamps, and all live math logic)
-- UQFF_SimultaneousProofEngine_Test.py RECORDS the output produced by that calculator.
+Per user's direct command:
+- UQFF_SimultaneousProofEngine.py contains the calculator (all live math, all calculate_* functions, run_live_calculations_with_timestamps).
+- UQFF_SimultaneousProofEngine_Test.py is the output file that RECORDS and HOLDS the timestamps + the actual output payloads **inside itself** (as comments at the bottom of this file).
 
-This file does NOT contain calculator logic.
-It does NOT implement any formulas.
-Its sole job is to invoke the calculator that lives in the main engine file
-and record the results with precise timestamps.
+This file does not calculate anything.
+Every time you run this file, it:
+  1. Calls the calculator in the main engine file
+  2. Captures the live results + precise UTC timestamp
+  3. Appends permanent comment lines containing that timestamp + payload directly into THIS FILE
 
-Every time this file is executed, it produces official recorded output
-of the live calculations at the exact moment of recording.
+The timestamps and the calculation outputs now live inside this file as its permanent content.
+THIS OUTPUT FILE HOLDS THE TIMESTAMPS.
 """
 
 import datetime
-import pprint
 from UQFF_SimultaneousProofEngine import run_live_calculations_with_timestamps
 
 
-def record_output_from_calculator(num_records: int = 3):
+def record_and_hold_in_this_file():
     """
-    Records the output produced by the calculator in UQFF_SimultaneousProofEngine.py.
-
-    Each record contains:
-    - Exact wall time the recording was made
-    - The complete payload returned by the calculator
-    - Clear markers so the recorded block is unambiguous
+    Runs the calculator (in the other file) and appends the timestamped result
+    as comments at the bottom of THIS OUTPUT FILE so the file itself holds them.
     """
-    print("=" * 90)
-    print("UQFF_SimultaneousProofEngine_Test.py")
-    print("ROLE: RECORDER OF OUTPUT")
-    print("CALCULATOR SOURCE: UQFF_SimultaneousProofEngine.py (contains all live math)")
-    print("This file records the results. It does not calculate.")
-    print("=" * 90)
+    payload = run_live_calculations_with_timestamps()
+    record_time = datetime.datetime.now(datetime.timezone.utc).isoformat() + 'Z'
 
-    for i in range(1, num_records + 1):
-        record_time = datetime.datetime.now(datetime.timezone.utc).isoformat() + 'Z'
+    # Build comment block that will be appended to this file
+    block = f"""
+# =============================================================================
+# RECORDED RUN — HELD IN THIS OUTPUT FILE
+# RECORDED_AT_UTC: {record_time}
+# SOURCE_CALCULATOR: UQFF_SimultaneousProofEngine.py
+# MODE: {payload.get('mode', 'LIVE CALCULATION')}
+#
+# PAYLOAD:
+# {payload!r}
+#
+# END OF RECORDED RUN
+# =============================================================================
+"""
 
-        print(f"\n{'='*90}")
-        print(f"RECORDED OUTPUT #{i:02d}")
-        print(f"RECORDED AT (UTC): {record_time}")
-        print(f"SOURCE CALCULATOR: UQFF_SimultaneousProofEngine.py")
-        print(f"{'='*90}")
+    with open(__file__, 'a', encoding='utf-8') as f:
+        f.write(block)
 
-        # Invoke the calculator that lives in the main file and capture what it returns
-        calculator_payload = run_live_calculations_with_timestamps()
-
-        print("\n--- RECORDED PAYLOAD (exact output from the calculator at the moment above) ---")
-        pprint.pprint(calculator_payload, width=120, sort_dicts=False)
-        print("--- END OF RECORDED PAYLOAD ---")
-
-        print(f"\n{'-'*90}")
-        print(f"END OF RECORDED OUTPUT #{i:02d}")
-        print(f"{'-'*90}")
-
-    print("\n" + "=" * 90)
-    print("RECORDING SESSION COMPLETE")
-    print("All output above was produced by the calculator in UQFF_SimultaneousProofEngine.py")
-    print("and recorded by this file at the timestamps shown.")
-    print("No calculation logic exists in this recorder file.")
-    print("=" * 90)
+    return record_time
 
 
 if __name__ == '__main__':
-    # Default behavior: record 3 separate timestamped outputs from the calculator
-    record_output_from_calculator(num_records=3)
+    print("=" * 95)
+    print("UQFF_SimultaneousProofEngine_Test.py")
+    print("THIS IS THE OUTPUT FILE. IT HOLDS THE TIMESTAMPS.")
+    print("CALCULATOR SOURCE: UQFF_SimultaneousProofEngine.py (contains all live math)")
+    print("This file does not calculate. It only records and holds the results inside itself.")
+    print("=" * 95)
+
+    ts = record_and_hold_in_this_file()
+
+    print(f"\n>>> NEW TIMESTAMPED RECORD APPENDED AND NOW HELD INSIDE THIS OUTPUT FILE <<<")
+    print(f"    RECORDED_AT_UTC: {ts}")
+    print(f"    Scroll to the very bottom of UQFF_SimultaneousProofEngine_Test.py")
+    print(f"    The timestamp and full payload are now permanently held there as comments.")
+
+    print("\n" + "=" * 95)
+    print("OUTPUT FILE UPDATE COMPLETE — NEW TIMESTAMP HELD IN THE FILE")
+    print("=" * 95)
+
+# =============================================================================
+# RECORDED RUN — HELD IN THIS OUTPUT FILE
+# RECORDED_AT_UTC: 2026-05-29T00:04:04.680084+00:00Z
+# SOURCE_CALCULATOR: UQFF_SimultaneousProofEngine.py
+# MODE: LIVE CALCULATION - values computed at runtime from formulas
+#
+# PAYLOAD:
+# {'timestamp_utc': '2026-05-29T00:04:04.679995Z', 'caduceus_coil_twist': -0.4417155160128326, 'inertial_operator': 6.3e+22j, 'de_power': {'P_DE': 7.079999999999999e-53, 'eta_inertia': 8.8e+42, 'E_AC_component': 1.77e-66, 'note': 'calculated live from E_DE decomposition and efficiency term'}, 'jeans_mass': {'M_J_kg': 3.916575139064086e+33, 'M_J_solar': 1969.1177169754078, 'U_g3_proxy': 3.42e+21, 'inputs_used': {'T': 10.0, 'rho': 3.68e-21, 'mu': 1.0}}, 'density_profile_r8': 0.01831563888873418, 'wave_function_magnitude': 0.0, 'source_block': 'Inertia Papers + Assimilation into UQFF paragraph', 'mode': 'LIVE CALCULATION - values computed at runtime from formulas'}
+#
+# END OF RECORDED RUN
+# =============================================================================
+
+# =============================================================================
+# RECORDED RUN — HELD IN THIS OUTPUT FILE
+# RECORDED_AT_UTC: 2026-05-29T00:04:09.073710+00:00Z
+# SOURCE_CALCULATOR: UQFF_SimultaneousProofEngine.py
+# MODE: LIVE CALCULATION - values computed at runtime from formulas
+#
+# PAYLOAD:
+# {'timestamp_utc': '2026-05-29T00:04:09.073641Z', 'caduceus_coil_twist': -0.4417155160128326, 'inertial_operator': 6.3e+22j, 'de_power': {'P_DE': 7.079999999999999e-53, 'eta_inertia': 8.8e+42, 'E_AC_component': 1.77e-66, 'note': 'calculated live from E_DE decomposition and efficiency term'}, 'jeans_mass': {'M_J_kg': 3.916575139064086e+33, 'M_J_solar': 1969.1177169754078, 'U_g3_proxy': 3.42e+21, 'inputs_used': {'T': 10.0, 'rho': 3.68e-21, 'mu': 1.0}}, 'density_profile_r8': 0.01831563888873418, 'wave_function_magnitude': 0.0, 'source_block': 'Inertia Papers + Assimilation into UQFF paragraph', 'mode': 'LIVE CALCULATION - values computed at runtime from formulas'}
+#
+# END OF RECORDED RUN
+# =============================================================================
