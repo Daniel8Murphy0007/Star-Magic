@@ -606,9 +606,8 @@ def compute_live_calculations() -> dict:
     return results
 
 
-# Backwards-compatible alias (some external callers may still use the old name).
-# The actual calculator logic above is pure — timestamping/recording is forbidden in this file.
-run_live_calculations_with_timestamps = compute_live_calculations
+# Timestamping and recording of output are strictly forbidden in this calculating algorithm file.
+# All such responsibility belongs exclusively to UQFF_SimultaneousProofEngine_Test.py.
 
 
 # =============================================================================
