@@ -1,0 +1,30 @@
+{
+  "available_modes": [
+    "millenium_yang_mills_mass_gap_1p78gev",
+    "black_hole_information_page_curve_uqff",
+    "poincare_conjecture_buoyancy_ricci_flow",
+    "riemann_hypothesis_uqff_zeta_pinning",
+    "spinor_bundle_index",
+    "f_u_universal_simultaneous_balance",
+    "magnetar_gravity_equation",
+    "sagittarius_a_star_gravity_equation",
+    "tapestry_starbirth_gravity_equation",
+    "westerlund2_gravity_equation",
+    "pillars_of_creation_gravity_equation",
+    "rings_of_relativity_gravity_equation",
+    "students_guide_uqff_gravity_equation",
+    "compressed_uqff_master_equation",
+    "unified_cosmic_expansion_h_t_z",
+    "environmental_interaction_term_f_env",
+    "generalized_external_gravity_ug3",
+    "combined_wave_function_psi_total",
+    "quantum_chain_26level_master_derivation",
+    "hydrogen_en_sm_uqff_contrast_26level"
+  ],
+  "final_result": {
+    "passed": 42,
+    "total": 52,
+    "percentage": 80.76923076923077
+  },
+  "summary": "Star-MagicProofEngine run output"
+}
