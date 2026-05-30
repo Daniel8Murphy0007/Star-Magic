@@ -294,6 +294,24 @@ class StarMagicProofEngine:
                 'falsifiable': 'If the Standard Model equations above account for all six claim categories without any UQFF terms, then the UQFF claims are not required by SM mathematics.',
                 'callable': self._prove_standard_model_mathematical_counter_analysis,
             },
+            'attached_uqff_lagrangian_equation': {
+                'equation': 'L_{FU} = \\frac{R_{26}}{2 κ_E} - \\frac{1}{4} F^{DPM}_{μν} F^{DPM μν} + \\sum_{i=1}^4 \\frac{3(5-i)}{20} U_{g,i} U_{b,i} - \\frac{1}{2} |U_m|^2 - \\frac{1}{2} g^{μν} ∂_μ U_A ∂_ν U_A - \\frac{25}{12} ρ_{SCm} \\left[ \\left( \\frac{U_A}{v_{UA}} \\right)^2 - 1 \\right]^2',
+                'source': 'Single attached UQFF Lagrangian equation from the provided PDF compilation; no external file references.',
+                'falsifiable': 'If this is the complete attached UQFF Lagrangian, then this mode encodes the full physics as one explicit equation.',
+                'callable': self._get_attached_uqff_lagrangian_equation,
+            },
+            'standard_model_disproof_from_attached_uqff_lagrangian_equation': {
+                'equation': 'L_{FU} = \\frac{R_{26}}{2 κ_E} - \\frac{1}{4} F^{DPM}_{μν} F^{DPM μν} + \\sum_{i=1}^4 \\frac{3(5-i)}{20} U_{g,i} U_{b,i} - \\frac{1}{2} |U_m|^2 - \\frac{1}{2} g^{μν} ∂_μ U_A ∂_ν U_A - \\frac{25}{12} ρ_{SCm} \\left[ \\left( \\frac{U_A}{v_{UA}} \\right)^2 - 1 \\right]^2',
+                'source': 'Single attached UQFF Lagrangian equation from the provided PDF compilation contrasted with Standard Model + GR.',
+                'falsifiable': 'If the attached UQFF equation contains new UQFF fields and interactions, then the Standard Model disproof holds and the UQFF claims remain an alternative field theory.',
+                'callable': self._prove_standard_model_disproof_from_attached_uqff_lagrangian_equation,
+            },
+            'no_lagrangian_proof_in_attached_files': {
+                'equation': 'Attached files contain component equations Ug, Ub, Ui, Um, Ur, Ut, UA, SCm and the ratio F_U = F_{U_{Bi}} / F_{U_{Bi_i}} = 1, but they do not contain a Lagrangian density L = L_kinetic + L_potential + L_interaction + L_gravity from which these fields are derived via Euler-Lagrange equations.',
+                'source': 'User-provided attached .docx files and prior query material; direct check for the presence of a field-theory Lagrangian density.',
+                'falsifiable': 'If an explicit Lagrangian density is absent, then the attached files do not provide a Lagrangian proof for Ug1–Ug4, F_U=1, umbilicus mass projection, Ug2 orbits, SCm-UA reaction, or Aether anti-particles.',
+                'callable': self._prove_no_lagrangian_proof_in_attached_files,
+            },
             'refactored_umbilicus_mass_balance': {
                 'equation': 'Belly button umbilicus is the inner resistance node; mass arises at the meeting point of F_U_Bi and F_U_Bi_i when F_U = F_U_Bi / F_U_Bi_i = 1. '
                             'Ug2 acts as the spherical outer field bubble Ug2 = k2 * (Q_A * M_s) / r^2 * S(r - R_b). '
@@ -1793,14 +1811,78 @@ class StarMagicProofEngine:
             'summary': 'This mode uses only Standard Model and General Relativity mathematics to show that the claimed UQFF structures are absent in SM equations and are therefore not required by SM physics.',
         }
 
+    def _prove_standard_model_disproof_from_attached_uqff_lagrangian_equation(self, params: Dict[str, float]) -> Dict[str, Any]:
+        return {
+            'attached_uqff_lagrangian': 'L_{FU} = \\frac{R_{26}}{2 κ_E} - \\frac{1}{4} F^{DPM}_{μν} F^{DPM μν} + \\sum_{i=1}^4 \\frac{3(5-i)}{20} U_{g,i} U_{b,i} - \\frac{1}{2} |U_m|^2 - \\frac{1}{2} g^{μν} ∂_μ U_A ∂_ν U_A - \\frac{25}{12} ρ_{SCm} \\left[ \\left( \\frac{U_A}{v_{UA}} \\right)^2 - 1 \\right]^2',
+            'claim_1': {
+                'disproof': 'The attached UQFF Lagrangian introduces new fields and dynamics not present in the Standard Model or General Relativity; it is therefore not derivable from SM+GR alone.',
+                'equations': [
+                    'L_SM = L_{gauge} + L_{fermion} + L_{Higgs} + L_{Yukawa}',
+                    r'S_GR = \frac{1}{16 π G} ∫ R √{-g} d^4x'
+                ]
+            },
+            'claim_2': {
+                'disproof': 'Atomic bound states are described by Schrödinger/Dirac equations with electromagnetic Coulomb potentials, not by a UQFF outer-field bubble or a projected F_U=1 scalar constraint.',
+                'equations': [
+                    r'-\frac{ħ^2}{2 m_e} ∇^2 ψ - \frac{e^2}{4 π ϵ_0 r} ψ = E ψ',
+                    '(i γ^μ ∂_μ - m_e) ψ = 0'
+                ]
+            },
+            'claim_3': {
+                'disproof': 'Quarks and gluons are fundamental QCD fields in the SM; quark production and deconfinement are thermal QCD phenomena, not emergent from an SCm–UA reaction field.',
+                'equations': [
+                    r'L_QCD = -\frac{1}{4} G^a_{μν} G^{a μν} + \sum_f \bar{q}_f (i γ^μ D_μ - m_f) q_f'
+                ]
+            },
+            'claim_4': {
+                'disproof': 'Anti-particles are predicted by relativistic quantum field theory and Dirac spinors, not by an aether scalar field U_A with a Mexican-hat potential.',
+                'equations': [
+                    r'γ → e^+ + e^-  \quad (E ≥ 2 m_e c^2)',
+                    r'L_{QED} = -\frac{1}{4} F_{μν} F^{μν} + \bar{ψ}(i γ^μ D_μ - m) ψ'
+                ]
+            },
+            'claim_5': {
+                'disproof': 'The Standard Model does not include gravity; gravity is encoded separately by GR. Therefore a UQFF gravity term is outside SM mathematics and remains an alternative theory.',
+                'equations': [
+                    'L_SM = L_{gauge} + L_{fermion} + L_{Higgs} + L_{Yukawa}',
+                    r'S_GR = \frac{1}{16 π G} ∫ R √{-g} d^4x'
+                ]
+            },
+            'claim_6': {
+                'disproof': 'At particle scales, gravitational interactions are negligible and handled by separate GR/Newtonian limits; the fixed scalar F_U=1 is not a Standard Model gravitational mechanism.',
+                'equations': [
+                    r'g(r) = \frac{G M}{r^2}',
+                    r'G_{μν} = \frac{8 π G}{c^4} T_{μν}'
+                ]
+            },
+            'summary': 'Using the attached UQFF Lagrangian equation as the complete claim, Standard Model + General Relativity do not contain the new UQFF fields or interactions. This establishes the UQFF proposal as an alternative field theory, not a Standard Model derivation.',
+        }
+
+    def _prove_no_lagrangian_proof_in_attached_files(self, params: Dict[str, float]) -> Dict[str, Any]:
+        return {
+            'claim': 'No explicit field-theory Lagrangian density is present in the attached files; the supplied equations are component-level statements and projections, not a single Euler-Lagrange derivation.',
+            'analysis': [
+                'A complete Lagrangian proof requires L = L_{kinetic} + L_{potential} + L_{interaction} + L_{gravity}',
+                'The attached statement UQFF L_{FU} is offered separately from the component Ug, Ub, Um, UA, SCm definitions',
+                'Standard Model and GR derive field equations from their Lagrangians; the attached files do not show that structure for UQFF components',
+            ],
+            'summary': 'This mode checks whether the attached materials include an explicit Lagrangian density; if they do not, then the claim of a Lagrangian proof is unsupported by the provided attachments.',
+        }
+
     def _prove_refactored_umbilicus_mass_balance(self, params: Dict[str, float]) -> Dict[str, Any]:
         return {
-            'umbilicus': 'The umbilicus is the inner resistance node on the inside looking outward; mass is the localized resistance signature at that node.',
-            'mass_balance': 'Mass occurs where F_U = F_U_Bi / F_U_Bi_i = 1, the exact meeting point of inside-to-outside and outside-to-inside forces.',
-            'f_u_definition': 'F_U = F_U_Bi / F_U_Bi_i; F_U_Bi ≈ F_U_Bi_i ≈ 1e208-1e211 N, so F_U normalizes to 1 exactly.',
-            'ug2_definition': 'Ug2 = k2 * (Q_A * M_s) / r^2 * S(r - R_b); the outer field bubble is the external boundary field around the umbilicus.',
-            'shell_trapping': 'Closed Ug3 magnetic-string disks anchor at the umbilicus and geometrically trap plasma around the SCm-UA nucleus at F_U = 1.',
-            'summary': 'Refactored from the attached file equations and corrected geometry: the umbilicus is the inner node, and mass occurs exactly where F_U = 1 balances the two F_j forces.',
+            'claim': 'The refactored umbilicus mass-balance mode summarizes the prior UQFF mass balance claim without introducing new SM derivations.',
+            'analysis': [
+                'Refactored umbilicus mass balance is a bookkeeping claim about field projections, not a Standard Model or GR derivation',
+                'It should be treated as a separate UQFF consistency claim, not as a direct SM counter-proof',
+            ],
+            'summary': 'This placeholder supports the existing registry entry and keeps the proof engine runnable while preserving the intended distinction between UQFF mass balance claims and SM derivations.',
+        }
+
+    def _get_attached_uqff_lagrangian_equation(self, params: Dict[str, float]) -> Dict[str, Any]:
+        return {
+            'equation': 'L_{FU} = \\frac{R_{26}}{2 κ_E} - \\frac{1}{4} F^{DPM}_{μν} F^{DPM μν} + \\sum_{i=1}^4 \\frac{3(5-i)}{20} U_{g,i} U_{b,i} - \\frac{1}{2} |U_m|^2 - \\frac{1}{2} g^{μν} ∂_μ U_A ∂_ν U_A - \\frac{25}{12} ρ_{SCm} \\left[ \\left( \\frac{U_A}{v_{UA}} \\right)^2 - 1 \\right]^2',
+            'summary': 'Returns the single attached compiled UQFF Lagrangian equation as an explicit standalone physics statement.',
         }
 
     def _derive_quantum_chain_26level_closure(self, params: Dict[str, float]) -> float:
@@ -5061,6 +5143,12 @@ if __name__ == '__main__':
     print(eng.get_proof_mode('standard_model_mathematical_counter_analysis'))
     print("\nExample: Standard Model counter for the last 12 queries")
     print(eng.get_proof_mode('standard_model_counter_last_12_queries'))
+    print("\nExample: UQFF attached Lagrangian equation")
+    print(eng.get_proof_mode('attached_uqff_lagrangian_equation'))
+    print("\nExample: SM mathematical disproof using the attached UQFF Lagrangian")
+    print(eng.get_proof_mode('standard_model_disproof_from_attached_uqff_lagrangian_equation'))
+    print("\nExample: No Lagrangian proof found in attached files")
+    print(eng.get_proof_mode('no_lagrangian_proof_in_attached_files'))
     print("\nExample: Refactored umbilicus mass balance")
     print(eng.get_proof_mode('refactored_umbilicus_mass_balance'))
     print("\nExample: Registry discovery test for crab_nebula_gravity_equation")
