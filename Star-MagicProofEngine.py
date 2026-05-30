@@ -90,7 +90,7 @@ class StarMagicProofEngine:
         self.n_layers = DPM_FOUNDATION_MIRROR['N_LAYERS_DPM']
         self.rho_scm = DPM_FOUNDATION_MIRROR['RHO_VAC_SCM_DPM']
         self.rho_vac_ua = 7.09e-36
-        self.rho_vac_A = 1.0e-23
+        self.rho_ua = self.rho_vac_ua
         self.rho_vac_um = 4.77e-22
         self.rho_vac_ub = 7.16e-25
         self.rho_vac_Ui = 2.84e-36
@@ -131,11 +131,12 @@ class StarMagicProofEngine:
         self.v_sw_default = 5.0e5
         self.f_heaviside = 0.01
         self.f_quasi = 0.01
-        self.f_TRZ = 0.1
+        self.f_TRZ = 0.01
         self.omega_c: float = 2.0 * math.pi / 3.96e8
         self.T_s: float = 5778.0
         self.phi_hat_default: List[float] = [1.0]
         self.rho_vac_ua_prime = 1.0e-23
+        self.rho_vac_ua_prime_SCm = self.rho_vac_ua_prime
         self.rho_vac_scm_nebula = 2.39e-22
         self.rho_vac_ug4 = 1.19e-24
         self.M_BH_canonical = 1.989e36
@@ -145,6 +146,11 @@ class StarMagicProofEngine:
         self.d_g_galactic_center = 2.55e20
         self.M_BH_galactic_center = 8.15e36
         self.M_BH_sgrA = self.M_BH_galactic_center
+        self.M_BH_sgrA_initial = 4.3e6 * self.M_star_canonical
+        self.sgrA_tau_acc = 9.0e9 * 3.156e7
+        self.sgrA_Mdot_norm = 0.01
+        self.sgrA_tau_B = 1.0e6 * 3.156e7
+        self.Bcrit_sgrA = 1.0e11
         self.Omega_galactic = 7.3e-16
         self.rj_100au = 1.496e13
         self.thz_frequency_hz = 1.246e12
@@ -163,6 +169,7 @@ class StarMagicProofEngine:
         self.P_SCm = 1.0
         self.E_react_muge_default = 1.0e46
         self.E_react_decay_rate = 0.0005
+        self.kappa = self.E_react_decay_rate
         self.omega_s0 = 2.5e-6
         self.M_magnetar = 1.4 * self.M_star_canonical
         self.r_magnetar = 20.0e3
@@ -173,8 +180,8 @@ class StarMagicProofEngine:
         self.omega_0_magnetar = 2.0 * math.pi / 5.0
         self.H0_magnetar = 2.184e-18
         self.g_munu_trace = 4.0
-        self.ii_index = 1.0
-        self.jj_index = 1.0
+        self.i_index = 1.0
+        self.j_index = 1.0
         self.H_SCm = 0.99
         self.P_core_default = 1.0
         self.P_core_planet = 1.0e-3
@@ -183,7 +190,6 @@ class StarMagicProofEngine:
         self.k_Higgs = 1.79e18
         self.higgs_mass_scale = 7.8e33
         self.k_br = 2.3e-3
-        self.f_TRZ = 0.01
         self.k_trans = 1.0e-13
         self.k_eta = 1.0e-12
         self.k_qg = 1.0e-18
@@ -243,6 +249,7 @@ class StarMagicProofEngine:
                 'falsifiable': 'Spinor bundle index modulations at S_26 resonance detectable in high-energy / condensed-matter spectra',
                 'callable': self._compute_spinor_bundle_index,
             },
+            # --- UQFF simultaneous balance proof modes ---
             'f_u_universal_simultaneous_balance': {
                 'equation': 'F_U = FUBi / FUBii = 1 exactly (signs cancel) for all astrophysical/lab systems after '
                             'VDS/DVP/BH26/QCalcGeom scaling; universal normalized buoyancy equilibrium constant from '
@@ -251,10 +258,54 @@ class StarMagicProofEngine:
                 'falsifiable': 'F_U=1 holds universally once full 26D geometric factors included (WD crystallization, LENR, analogue gravity, galactic buoyancy data)',
                 'callable': self._prove_fu_simultaneous_balance_1,
             },
+            'uqff_simultaneous_balance_7component': {
+                'equation': 'F_U = FUBi / FUBii = 1 exactly after VDS/DVP/BH26/QCalcGeom scaling for all systems; '
+                            '7-component UQFF balance: Ug1 + Ug2 + Ug3 + Ug4 + Archimedes Aether-ocean + rho_vac_ua terms '
+                            '+ 26D geometric folding = unity.',
+                'source': 'grok._b9afa8b6_3b85.txt L7664-7713 / 7730+ + dpm v3.0 Step 6 crossing',
+                'falsifiable': 'Second separate UQFF simultaneous solution captures the 7-component universal balance closure',
+                'callable': lambda params={}: 'UQFF 7-component simultaneous balance metadata only',
+            },
+            # --- Standard Model proof modes (separate category, not UQFF) ---
+            'standard_model_simultaneous_solution': {
+                'equation': 'SM Newtonian: F = G M_1 M_2 / r^2; g(r) = G M / r^2 (G = 6.67430e-11 m^3 kg^-1 s^-2); '
+                            'GR: G_{μν} + Λ g_{μν} = (8πG/c^4) T_{μν}; '
+                            'Schrödinger: i ħ ∂ψ/∂t = -ħ^2/(2m) ∇^2 ψ + V ψ with V = -k e^2 / r; '
+                            'SM L = L_gauge + L_fermion + L_Higgs + L_Yukawa; '
+                            'Pair production: γ → e^+ + e^-.',
+                'source': 'Standard Model simultaneous solution metadata for pure SM gravity and quantum field equations',
+                'falsifiable': 'Standard Model equations describe Newtonian gravity, General Relativity, quantum orbital dynamics, and SM field theory independently; no UQFF physics is included in this mode.',
+                'callable': lambda params={}: 'standard model simultaneous solution metadata only',
+            },
+            'standard_model_counter_last_12_queries': {
+                'equation': 'Claim 1: GR mass source T_{μν} and Higgs fermion mass m_f = y_f v / √2; no F_U=1, no umbilicus. '
+                            'Claim 2: Electron orbits from Schrödinger -ħ^2/(2m) ∇^2 ψ - e^2/(4πϵ_0 r) ψ = E ψ and Dirac (i γ^μ ∂_μ - m) ψ = 0; no Ug2 shells. '
+                            'Claim 3: Quarks are fundamental fields in QCD: L_QCD = -1/4 G^a_{μν} G^{a μν} + Σ_f ψ̄_f (i γ^μ D_μ - m_f) ψ_f; plasma is a thermal deconfined state, not a production mechanism. '
+                            'Claim 4: SM L = L_gauge + L_fermion + L_Higgs + L_Yukawa; gravity is external and not unified in SM. '
+                            'Claim 5: Pair production γ → e^+ + e^- from QED QFT creation/annihilation operators; no Aether term. '
+                            'Claim 6: Gravity at particle scales is weak and described by g(r) = G M / r^2 or GR; no integrated weak/strong+gravity term in SM.',
+                'source': 'Explicit Standard Model mathematical counter to the last 12 user claim clusters, encoded in repo proof metadata',
+                'falsifiable': 'Standard Model mathematics provides all counter-equations without UQFF F_U, umbilicus, Ug2 shell, SCm-UA reaction, or Aether-derived anti-particles.',
+                'callable': self._prove_standard_model_counter_last_12_claims,
+            },
+            'standard_model_mathematical_counter_analysis': {
+                'equation': 'SM direct disproof uses only: Einstein field equations G_{μν}+Λg_{μν}=(8πG/c^4)T_{μν}; Higgs fermion mass m_f=y_f v/√2; Schrödinger -ħ^2/(2m)∇^2ψ - e^2/(4πϵ_0 r)ψ=Eψ; Dirac (iγ^μ∂_μ-m)ψ=0; QED pair production γ→e^+e^-; L_QCD = -1/4 G^a_{μν}G^{aμν}+Σ_f ψ̄_f(iγ^μD_μ-m_f)ψ_f; L_SM = L_gauge+L_fermion+L_Higgs+L_Yukawa; S_GR = 1/(16πG)∫R√{-g}d^4x.',
+                'source': 'Standard Model mathematical counter-analysis using only SM + GR equations; directly disproves F_U=1, umbilicus, Ug2 mass projection, SCm-UA reaction, plasma→quarks, Aether anti-particles, and gravity+weak/strong integration claims.',
+                'falsifiable': 'If the Standard Model equations above account for all six claim categories without any UQFF terms, then the UQFF claims are not required by SM mathematics.',
+                'callable': self._prove_standard_model_mathematical_counter_analysis,
+            },
+            'refactored_umbilicus_mass_balance': {
+                'equation': 'Belly button umbilicus is the inner resistance node; mass arises at the meeting point of F_U_Bi and F_U_Bi_i when F_U = F_U_Bi / F_U_Bi_i = 1. '
+                            'Ug2 acts as the spherical outer field bubble Ug2 = k2 * (Q_A * M_s) / r^2 * S(r - R_b). '
+                            'The 26-shell SCm-UA reaction is anchored at the umbilicus, producing the nucleus-like mass resistance signature.',
+                'source': 'Refactored directly from attached file equations and corrected interior umbilicus interpretation',
+                'falsifiable': 'Mass location is encoded as the exact F_U=1 meeting point; shell trapping and Ug2 outer field bubble are described by the attached UQFF file equations.',
+                'callable': self._prove_refactored_umbilicus_mass_balance,
+            },
             'magnetar_gravity_equation': {
-                'equation': 'g_Magnetar(r,t) = (G*M)/(r^2)*(1+H(z)*t)*(1-B/B_crit) + (G*M_BH)/(r_BH^2) + (Ug1+Ug2+Ug3+Ug4) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + M_mag + D(t)',
-                'source': 'grok._b9afa8b6_3b85.txt L10-14 + L043-049 (Magnetar SGR 1745-2900 master equation)',
-                'falsifiable': 'Magnetar gravity includes SgrA* proximity, magnetic energy, and outburst decay in a unified UQFF expression.',
+                'equation': 'g_Magnetar(r,t) = (G*M)/(r^2)*(1+H_0*t)*(1-B(t)/B_crit) + (Ug1+Ug2+Ug3+Ug4) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B(t)) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + G*M^2/(c^4*r)*(dOmega/dt)^2 + M_mag + D(t)',
+                'source': 'grok._b9afa8b6_3b85.txt L10-14 + L043-049 (Master Universal Gravity Equation for Magnetar Evolution, document based)',
+                'falsifiable': 'Magnetar gravity now uses B(t), Omega(t), q(v×B(t)), and gravitational-wave spin-down terms in a UQFF-complete master equation.',
                 'callable': self._compute_g_magnetar,
             },
             'sgr0501_magnetar_evolution': {
@@ -264,33 +315,51 @@ class StarMagicProofEngine:
                 'callable': self._compute_g_sgr0501_magnetar,
             },
             'sagittarius_a_star_gravity_equation': {
-                'equation': 'g_SgrA*(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B(t)/B_crit) + (Ug1+Ug2+Ug3+Ug4) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B(t)) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)*sin(30)) + (G*M(t)^2)/(c^4*r)*(dOmega(t)/dt)^2',
+                'equation': 'g_SgrA*(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B(t)/B_crit) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B(t))*(1 + rho_vac_ua/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)*sin(30)) + (G*M(t)^2)/(c^4*r)*(dOmega(t)/dt)^2',
                 'source': 'grok._b9afa8b6_3b85.txt L13-15 + L044-049 (Sagittarius A* accretion and gravitational wave terms)',
-                'falsifiable': 'Sgr A* equation adds spin precession and gravitational wave power to the compressed UQFF core.',
+                'falsifiable': 'Sgr A* equation now includes f_TRZ amplification and UA/SCm correction on the electromagnetic term.',
                 'callable': self._compute_g_sagittarius_a_star,
             },
             'tapestry_starbirth_gravity_equation': {
-                'equation': 'g_Starbirth(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B/B_crit) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B)*(1 + rho_vac_UA/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + rho*v_wind^2',
-                'source': 'grok._b9afa8b6_3b85.txt L16-18 (Tapestry of Blazing Starbirth with wind feedback, star formation mass growth, and UQFF vacuum corrections)',
-                'falsifiable': 'Starbirth equation now includes f_TRZ amplification and rho_vac_UA / rho_vac_SCm scaling atop the UQFF core.',
+                'equation': 'g_Starbirth(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B/B_crit) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B)*(1 + rho_vac_ua/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + rho*v_wind^2',
+                'source': 'grok._b9afa8b6_3b85.txt L16-18 (Master Universal Gravity Equation (UQFF & SM Integration) "Tapestry of Blazing Starbirth" Evolution 03May2025)',
+                'falsifiable': 'Starbirth equation now includes f_TRZ amplification, UA/SCm vacuum scaling, and stellar wind feedback in the UQFF core.',
                 'callable': self._compute_g_starbirth,
             },
             'westerlund2_gravity_equation': {
-                'equation': 'g_Westerlund2(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B/B_crit) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B)*(1 + rho_vac_UA/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + rho*v_wind^2',
+                'equation': 'g_Westerlund2(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B/B_crit) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B)*(1 + rho_vac_ua/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + rho*v_wind^2',
                 'source': 'grok._b9afa8b6_3b85.txt L19-21 (Westerlund 2 dense cluster with stellar wind dynamics and UQFF vacuum corrections)',
-                'falsifiable': 'Westerlund 2 now includes f_TRZ amplification plus rho_vac_UA / rho_vac_SCm scaling in the UQFF cluster model.',
+                'falsifiable': 'Westerlund 2 now includes f_TRZ amplification plus rho_vac_ua / rho_vac_SCm scaling in the UQFF cluster model.',
                 'callable': self._compute_g_westerlund2,
             },
             'pillars_of_creation_gravity_equation': {
-                'equation': 'g_Pillars(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B/B_crit)*(1-E(t)) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B)*(1 + rho_vac_UA/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + rho*v_wind^2',
-                'source': 'grok._b9afa8b6_3b85.txt L22-24 (Pillars of Creation erosion and star formation adaptation with UQFF vacuum corrections)',
-                'falsifiable': 'Pillars equation now includes f_TRZ amplification and rho_vac_UA / rho_vac_SCm scaling in the UQFF erosion model.',
+                'equation': 'g_Pillars(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B/B_crit)*(1-E(t)) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B)*(1 + rho_vac_ua/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + rho*v_wind^2',
+                'source': 'grok._b9afa8b6_3b85.txt L22-24 (Master Universal Gravity Equation (UQFF & SM Integration) "Pillars of Creation" Evolution 03May2025)',
+                'falsifiable': 'Pillars equation now includes f_TRZ amplification and rho_vac_ua / rho_vac_SCm scaling in the UQFF erosion model.',
                 'callable': self._compute_g_pillars,
             },
+            'm16_gravity_equation': {
+                'equation': 'g_M16(r,t) = (G*M_region)/r^2 * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - E_rad(t)) * (1 + f_TRZ) + q*v*B*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for M16 Eagle Nebula evolution with star formation, radiation erosion, and UA/SCm vacuum effects)',
+                'falsifiable': 'M16 gravity now uses a streamlined UQFF form with pillar mass growth, radiation erosion, cosmic expansion, and Aether-scaled electromagnetic corrections.',
+                'callable': self._compute_g_m16,
+            },
+            'crab_nebula_gravity_equation': {
+                'equation': 'g_Crab(r,t) = (G*M_total)/r^2 * (1 + H(z)*t) * (1 + f_TRZ) + a_wind + a_mag',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for the Crab Nebula M1 with pulsar wind expansion, magnetic effects, and cosmic corrections)',
+                'falsifiable': 'Crab Nebula gravity now uses a streamlined UQFF form with pulsar-driven wind, magnetic field effects, and time-reversal correction.',
+                'callable': self._compute_g_crab_nebula,
+            },
+            'v838_mon_gravity_equation': {
+                'equation': 'g_V838Mon(r,t) = (G*M(t))/(r^2)*(1+H_0*t)*(1-B/B_crit)*(1-E(t)) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B)*(1 + rho_vac_ua/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) + rho*v_wind^2',
+                'source': 'grok._b9afa8b6_3b85.txt L044-049 (V838 Mon light echo evolution with UQFF corrections)',
+                'falsifiable': 'V838 Mon now includes UQFF aether and time-reversal corrections for light echo evolution.',
+                'callable': self._compute_g_v838_mon,
+            },
             'rings_of_relativity_gravity_equation': {
-                'equation': 'g_Rings(r,t) = (G*M)/(r^2)*(1+H(z)*t)*(1-B/B_crit)*(1+L(t)) + (Ug1+Ug2+Ug3+Ug4) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v x B) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3))',
-                'source': 'grok._b9afa8b6_3b85.txt L25-27 (Rings of Relativity with lensing and redshift expansion)',
-                'falsifiable': 'Rings equation includes lensing L(t) and redshift-dependent H(z) expansion in the universal equation.',
+                'equation': 'g_Rings(r,t) = (G*M)/(r^2)*(1+H(z)*t)*(1-B/B_crit)*(1+L(t)) + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v × B)*(1 + rho_vac_ua/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3))',
+                'source': 'grok._b9afa8b6_3b85.txt L25-27 (Rings of Relativity evolution for GAL-CLUS-022058s with Hubble lensing, redshift expansion, and high-energy UQFF corrections)',
+                'falsifiable': 'Rings equation now includes H(z)*t, lensing L(t), f_TRZ amplification, and rho_vac_ua / rho_vac_SCm correction on q(v×B) in the UQFF lensing model.',
                 'callable': self._compute_g_rings,
             },
             'students_guide_uqff_gravity_equation': {
@@ -354,13 +423,13 @@ class StarMagicProofEngine:
                 'callable': self._compute_pseudo_monopole_field,
             },
             'universal_inertia': {
-                'equation': 'U_i = lambda_I * rho_vac_SCm * rho_vac_UA * omega_i(t) * cos(pi*t_n) * (1 + f_TRZ) * E_react',
+                'equation': 'U_i = lambda_I * rho_vac_SCm * rho_vac_ua * omega_i(t) * cos(pi*t_n) * (1 + f_TRZ) * E_react',
                 'source': 'grok._b9afa8b6_3b85.txt L57-58 (Universal inertia closure from SCm and UA vacuum coupling with TRZ correction and reactor efficiency)',
                 'falsifiable': 'U_i scales with SCm*UA vacuum coupling, TRZ resonance modulation, and reactor efficiency decay',
                 'callable': self._compute_universal_inertia,
             },
             'universal_inertia_reactor_integration': {
-                'equation': 'U_i = lambda_I * rho_vac_SCm * rho_vac_UA * omega_i(t) * cos(pi*t_n) * (1 + f_TRZ) * E_react',
+                'equation': 'U_i = lambda_I * rho_vac_SCm * rho_vac_ua * omega_i(t) * cos(pi*t_n) * (1 + f_TRZ) * E_react',
                 'source': 'UQFF reactor efficiency integration mode for universal inertia assimilation into F_env via U_i',
                 'falsifiable': 'Universal inertia carries reactor efficiency into F_env, supporting long-term red dwarf reactor and nebula dynamics',
                 'callable': self._compute_universal_inertia,
@@ -378,9 +447,15 @@ class StarMagicProofEngine:
                 'callable': self._compute_defect_factor,
             },
             'ug2_charge_reactivity': {
-                'equation': 'Ug2 = k2 * (rho_vac_UA + rho_vac_SCm) * M / r^2 * S(r - R_b) * (1 + delta_sw * v_sw) * H_SCm * E_react',
+                'equation': 'Ug2 = k2 * (rho_vac_ua + rho_vac_SCm) * M / r^2 * S(r - R_b) * (1 + delta_sw * v_sw) * H_SCm * E_react',
                 'source': 'grok._b9afa8b6_3b85.txt L392-406 (U_g2 heliosphere charge-reactivity coupling with solar wind enhancement and field bubble boundary)',
                 'falsifiable': 'Ug2 uses a step-function S(r-R_b) to activate outside the field bubble boundary at R_b ≈ 100 AU',
+                'callable': self._compute_ug2_charge_reactivity,
+            },
+            'ug2_spherical_outer_field_bubble': {
+                'equation': 'Ug2 = k2 * (Q_A * M_s) / r^2 * S(r - R_b)',
+                'source': 'Explicit user-requested spherical outer field bubble form for Ug2 in the 26-shell UQFF manifold',
+                'falsifiable': 'This form emphasizes the outer field bubble behavior; it maps onto the computed Ug2 charge reactivity term in the file via vacuum energy and field normalization factors.',
                 'callable': self._compute_ug2_charge_reactivity,
             },
             'time_reversal_zone_factor': {
@@ -485,7 +560,7 @@ class StarMagicProofEngine:
                 'callable': self._compute_aether_metric_tensor,
             },
             'fubi_buoyancy_force': {
-                'equation': 'FUBi = beta_i * Ug_i * Omega_g * (M_bh / d_g) * E_react * (1 + epsilon_sw * rho_sw) * rho_A * cos(pi*t_n)',
+                'equation': 'FUBi = beta_i * Ug_i * Omega_g * (M_bh / d_g) * E_react * (1 + epsilon_sw * rho_sw) * rho_ua * cos(pi*t_n)',
                 'source': 'grok._b9afa8b6_3b85.txt L430-434 (F_U_Bi buoyancy outer negative pressure from galactic influence, wind enhancement, and reactor efficiency)',
                 'falsifiable': 'FUBi approx 1.0 for canonical SMBH and wind parameters in the universal buoyancy balance',
                 'callable': self._compute_fubi_buoyancy_force,
@@ -533,21 +608,21 @@ class StarMagicProofEngine:
                 'callable': self._compute_reciprocation_decay_rate,
             },
             'reactor_efficiency_factor': {
-                'equation': 'E_react = (rho_vac_A / rho_vac_SCm) * v_scm^2 * exp(-kappa * t)',
-                'source': 'UQFF reactor efficiency factor from Aether and SCm vacuum energy densities and SCm velocity',
-                'falsifiable': 'Reactor efficiency factor uses rho_vac_A=1e-23 J/m^3, rho_vac_SCm=7.09e-37 J/m^3, v_scm=1e8 m/s, and kappa=0.0005 day^-1',
+                'equation': 'E_react = (rho_vac_ua / rho_vac_SCm) * v_scm^2 * exp(-kappa * t)',
+                'source': 'UQFF reactor efficiency factor from UA and SCm vacuum energy densities and SCm velocity',
+                'falsifiable': 'Reactor efficiency factor uses rho_vac_ua=7.09e-36 J/m^3, rho_vac_SCm=7.09e-37 J/m^3, v_scm=1e8 m/s, and kappa=0.0005 day^-1',
                 'callable': self._compute_reactor_efficiency_factor,
             },
             'ua_vacuum_energy_density': {
-                'equation': 'rho_vac_UA = 7.09e-36 J/m^3',
+                'equation': 'rho_vac_ua = 7.09e-36 J/m^3',
                 'source': 'UQFF universal aether vacuum energy density for UA level-13 Sun conditions',
                 'falsifiable': 'UA vacuum energy density is fixed at 7.09e-36 J/m^3 for canonical UA coupling',
                 'callable': self._compute_ua_vacuum_energy_density,
             },
             'aether_vacuum_energy_density': {
-                'equation': 'rho_vac_A = 1e-23 J/m^3',
+                'equation': 'rho_vac_ua = 1e-23 J/m^3',
                 'source': 'UQFF Aether vacuum energy background constant for metric and reactor energy calculations',
-                'falsifiable': 'Aether vacuum energy is fixed at 1e-23 J/m^3 in the current UQFF model',
+                'falsifiable': 'UA vacuum energy is fixed at 1e-23 J/m^3 in the current UQFF model',
                 'callable': self._compute_aether_vacuum_energy_density,
             },
             'inertia_vacuum_energy_density': {
@@ -557,9 +632,9 @@ class StarMagicProofEngine:
                 'callable': self._compute_inertia_vacuum_energy_density,
             },
             'ua_and_scm_vacuum_energy_contributions': {
-                'equation': 'Ug2 = k2*(rho_vac_UA + rho_vac_SCm)*M/r^2*S(r-R_b)*(1 + delta_sw*v_sw)*H_SCm*E_react; '
-                            'Ui = lambda_i*rho_vac_SCm*rho_vac_UA*omega_s(t)*cos(pi*t_n)*(1 + f_TRZ); '
-                            'A_mu_nu = g_mu_nu + eta*T_s_mu_nu(rho_vac_UA, rho_vac_SCm, rho_vac_A, t_n)',
+                'equation': 'Ug2 = k2*(rho_vac_ua + rho_vac_SCm)*M/r^2*S(r-R_b)*(1 + delta_sw*v_sw)*H_SCm*E_react; '
+                            'Ui = lambda_i*rho_vac_SCm*rho_vac_ua*omega_s(t)*cos(pi*t_n)*(1 + f_TRZ); '
+                            'A_mu_nu = g_mu_nu + eta*T_s_mu_nu(rho_vac_ua, rho_vac_SCm, rho_vac_ua, t_n)',
                 'source': 'UA/SCm vacuum energy contribution equations for UQFF integration and Aether metric coupling',
                 'falsifiable': 'UA vacuum energy coupled consistently into Ug2, Ui, and A_mu_nu with the defined vacuum densities',
                 'callable': self._compute_ua_and_scm_vacuum_energy_contributions,
@@ -595,7 +670,7 @@ class StarMagicProofEngine:
                 'callable': self._compute_scm_penetration_factor,
             },
             'ui_rotational_inertia': {
-                'equation': 'U_i = lambda_i * rho_vac_SCm * rho_vac_UA * omega_s * cos(pi*t_n) * (1 + f_TRZ)',
+                'equation': 'U_i = lambda_i * rho_vac_SCm * rho_vac_ua * omega_s * cos(pi*t_n) * (1 + f_TRZ)',
                 'source': 'UQFF rotational inertia mode for stellar rotation coupling into F_env and cyclic dynamics',
                 'falsifiable': 'U_i follows the rotation rate omega_s and adds small rotational inertia correction to F_env',
                 'callable': self._compute_ui_rotational_inertia,
@@ -673,9 +748,9 @@ class StarMagicProofEngine:
                 'callable': self._compute_uqff_unified_field_eq11,
             },
             'fubii_positive_spring': {
-                'equation': 'FUBii = Um + Ug_sum',
-                'source': 'grok._b9afa8b6_3b85.txt L434-438 (F_U_Bi_i inner spring from universal magnetism and gravity modes)',
-                'falsifiable': 'FUBii approx 1.0 when Um and Ug contributions are balanced under the SCm ledger',
+                'equation': 'FUBii = integral_0^x2 [-F0 + (m_e c^2 / r^2) DPMmomentum cos(theta) + (G M / r^2) DPMgravity + rho_vac_ua DPMstability + k_LENR (omega_LENR/omega_0)^2 * VDS_factor * DVP_potential * BH26_geometry * QCalcGeom_folding + k_act cos(omega_act t) + k_DE L_X + 2 q B_0 V sin(theta) DPMresonance + k_neutron sigma_n + k_rel (E_cm_astro_local_adj_eff_enhanced / E_cm)^2] dx',
+                'source': 'grok._b9afa8b6_3b85.txt L434-438 (F_U_Bi_i integral inner spring from universal magnetism, gravity, and DPM resonance)',
+                'falsifiable': 'FUBii is now computed as the inner integral with explicit 26D geometric scaling from VDS/DVP/BH26/QCalcGeom in the F_U ratio closure',
                 'callable': self._compute_fubii_positive_spring,
             },
             'f_u_balance_closure': {
@@ -745,7 +820,7 @@ class StarMagicProofEngine:
                 'callable': self._compute_power_decomposition_ac,
             },
             'inertia_efficiency_eta': {
-                'equation': 'eta_inertia = U_i / (lambda_I * rho_vac_SCm / rho_vac_UA)',
+                'equation': 'eta_inertia = U_i / (lambda_I * rho_vac_SCm / rho_vac_ua)',
                 'source': 'grok._b9afa8b6_3b85.txt L65-66 (Inertia efficiency from universal inertia and vacuum ratios)',
                 'falsifiable': 'eta_inertia approx 8.8e42 for canonical resonance scaling and vacuum parameters',
                 'callable': self._compute_inertia_efficiency_eta,
@@ -814,7 +889,8 @@ class StarMagicProofEngine:
                 'equation': 'Big Bang 26D singularity ΓåÆ SCm-UA vacuum manifold (VDS/DVP/BH26) ΓåÆ 26D folding projection ΓåÆ '
                             'Ug1-4 compression (Ug3 magnetic-string disk anchored at umbilicus) ΓåÆ mass BORN at Step 7 crossing ΓåÆ '
                             'F_U=1 normalized inertial buoyancy ΓåÆ observed time evolution + cosmology. '
-                            'Mass is the localized resistance signature at the belly-button umbilicus.',
+                            'Mass is the localized resistance signature at the belly-button umbilicus. '
+                            'SCm-UA reactants {[UA]; (UA’)+[SCm], (UA’’)+[SCm’], (UA’’’)+[SCm’’’]} react inside the 26-shell oscillating EM field.',
                 'source': 'grok._b9afa8b6_3b85.txt L7671-7732 (Quantum Chain 26-level folding + belly button mass origin) + dpm v3.0 exact 8-step Quantum Chain (Star-Magic.txt lines 11-22)',
                 'falsifiable': 'Mass originates at umbilicus projection; F_U=1 is the exact point gravity emerges as weak secondary effect (testable via precision inertial + collider exotic production at resonance)',
                 'callable': self._derive_quantum_chain_26level_closure,
@@ -859,7 +935,7 @@ class StarMagicProofEngine:
                 'callable': self._compute_power_decomposition_ac,
             },
             'inertia_efficiency_eta': {
-                'equation': 'eta_inertia = U_i / (lambda_I * rho_vac_SCm / rho_vac_UA)',
+                'equation': 'eta_inertia = U_i / (lambda_I * rho_vac_SCm / rho_vac_ua)',
                 'source': 'grok._b9afa8b6_3b85.txt L65-66 (Inertia efficiency from universal inertia and vacuum ratios)',
                 'falsifiable': 'eta_inertia approx 8.8e42 for canonical resonance scaling and vacuum parameters',
                 'callable': self._compute_inertia_efficiency_eta,
@@ -901,52 +977,64 @@ class StarMagicProofEngine:
                 'callable': self._compute_milky_way_rotation_velocity,
             },
             'ngc2525_gravity_equation': {
-                'equation': 'g_NGC2525 = base + (G*M_BH)/r_BH^2 - M_SN(t) + Ug_sum + Lambda*c^2/3 + quantum + waves + visible',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (NGC 2525 with SMBH influence and supernova mass loss)',
-                'falsifiable': 'NGC 2525 gravity includes black hole influence and supernova mass loss terms',
+                'equation': 'g_NGC2525(r,t) = (G*M(t))/r^2*(1+H(z)*t)*(1-B/B_crit) + (G*M_BH)/r_BH^2 + (Ug1+Ug2+Ug3+Ug4)*(1+f_TRZ) + Lambda*c^2/3 + (hbar/sqrt(Delta_x*Delta_p))*integral(psi* H psi dV)*(2*pi/t_Hubble) + q*(v × B)*(1 + rho_vac_ua/rho_vac_SCm) + rho_fluid*V*g + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*exp(i*(k*x-omega*t)) + (M_visible+M_DM)*(delta_rho/rho + (3*G*M)/(r^3)) - M_SN(t)',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Master Universal Gravity Equation_"Galaxy NGC 2525" Evolution_08May2025 with SMBH, supernova, and UQFF vacuum corrections)',
+                'falsifiable': 'NGC 2525 gravity now uses H(z)*t, black hole influence, supernova mass loss, f_TRZ amplification, and UA/SCm vacuum scaling in the UQFF galaxy model.',
                 'callable': self._compute_g_ngc2525,
             },
             'ngc3603_gravity_equation': {
-                'equation': 'g_NGC3603 = base * (1 - P(t)) + Ug_sum + Lambda*c^2/3 + quantum + waves + visible + rho*v_wind^2',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (NGC 3603 with cavity pressure and stellar wind feedback)',
-                'falsifiable': 'NGC 3603 gravity captures cavity pressure and wind feedback in the star cluster',
+                'equation': 'g_NGC3603(r,t) = (G*M(t))/r^2*(1+H_0*t)*(1-P(t))*(1+f_TRZ) + q*(v × B)*(1 + rho_vac_ua/rho_vac_SCm)*1e-12 + rho*v_wind^2',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for NGC 3603 evolution, focusing on stellar feedback and non-standard vacuum effects)',
+                'falsifiable': 'NGC 3603 gravity now uses cleaned UQFF terms: M_dot(t), feedback pressure P(t), f_TRZ, and UA/SCm vacuum scaling, while avoiding unnecessary complexity.',
                 'callable': self._compute_g_ngc3603,
             },
             'bubble_nebula_gravity_equation': {
-                'equation': 'g_Bubble = base * (1 + E(t)) + Ug_sum + Lambda*c^2/3 + quantum + waves + visible + rho*v_wind^2',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Bubble Nebula shell expansion driven by stellar winds)',
-                'falsifiable': 'Bubble Nebula gravity includes expansion factor E(t) and stellar wind pressure',
+                'equation': 'g_NGC7635(r,t) = (G*M_star)/r^2*(1+H_0*t)*(1-P(t))*(1+f_TRZ) + q*(v × B)*(1 + rho_vac_ua/rho_vac_SCm)*1e-12 + rho*v_wind^2',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for Bubble Nebula NGC 7635 evolution with Wolf-Rayet stellar winds and vacuum corrections)',
+                'falsifiable': 'Bubble Nebula gravity now uses a simplified UQFF form with Wolf-Rayet gravity, feedback pressure P(t), f_TRZ, and UA/SCm vacuum scaling.',
                 'callable': self._compute_g_bubble_nebula,
             },
             'antennae_galaxies_gravity_equation': {
-                'equation': 'g_Antennae = base * (1 - M_coll(t)) + Ug_sum + Lambda*c^2/3 + quantum + waves + visible + rho*v_sf^2',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Antennae Galaxies with merger dynamics and star formation feedback)',
-                'falsifiable': 'Antennae gravity captures merger suppression and star formation energy feedback',
+                'equation': 'g_Antennae(r,t) = (G*M(t))/r^2*(1+H(z)*t)*(1-M_coll(t))*(1+f_TRZ) + q*(v × B)*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for the Antennae Galaxies NGC 4038/4039 merger evolution)',
+                'falsifiable': 'Antennae gravity now uses streamlined UQFF terms for merger progress, starburst-driven mass growth, and UA/SCm vacuum scaling.',
                 'callable': self._compute_g_antennae_galaxies,
             },
             'horsehead_nebula_gravity_equation': {
-                'equation': 'g_Horsehead = base * (1 - E(t)) + Ug_sum + Lambda*c^2/3 + quantum + waves + visible + P_rad',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Horsehead Nebula with erosion and radiation pressure)',
-                'falsifiable': 'Horsehead gravity includes erosion and radiation pressure terms',
+                'equation': 'g_Horsehead(r,t) = (G*M_nebula)/r^2 * (1 + H(z)*t) * (1 - E(t)) * (1 + f_TRZ) + P_rad + q*v*B*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for the Horsehead Nebula Barnard 33 evolution under erosion, radiation pressure, and UA/SCm vacuum scaling)',
+                'falsifiable': 'Horsehead Nebula gravity now uses a streamlined UQFF form with nebular erosion, Hubble expansion, time-reversal correction, radiation pressure, and Aether-scaled electromagnetic effects.',
                 'callable': self._compute_g_horsehead_nebula,
             },
             'ngc1275_gravity_equation': {
-                'equation': 'g_NGC1275 = base + F_BH + Ug_sum + Lambda*c^2/3 + quantum + waves + visible + M_fil',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (NGC 1275 with black hole feedback and magnetic filaments)',
-                'falsifiable': 'NGC 1275 gravity includes BH feedback and filament support terms',
+                'equation': 'g_NGC1275(r,t) = (G*M_total)/r^2 * (1 + H(z)*t) * (1 - F_BH(t)) * (1 + f_TRZ) + a_fil + q*v*B*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for NGC 1275 Perseus A evolution with SMBH feedback, filament magnetic support, and UA/SCm vacuum scaling)',
+                'falsifiable': 'NGC 1275 gravity now uses a streamlined UQFF form with black hole feedback, filament magnetic support, cosmic expansion, and non-standard vacuum effects.',
                 'callable': self._compute_g_ngc1275,
             },
             'hudf_gravity_equation': {
-                'equation': 'g_HUDF = base * (1 + M_evo(t)) * (1 - M_merge(t)) + Ug_sum + Lambda*c^2/3 + quantum + waves + visible',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (HUDF with galaxy evolution and merger scaling)',
-                'falsifiable': 'HUDF gravity models evolution and merger suppression over cosmic time',
+                'equation': 'g_HUDF(r,t) = (G*M_total)/r^2 * (1 + H(z)*t) * (1 + M_evo(t)) * (1 - M_merge(t)) * (1 + f_TRZ) + q*v*B*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for the Hubble Ultra Deep Field evolution with galaxy formation, mergers, cosmic expansion, and UA/SCm vacuum effects)',
+                'falsifiable': 'HUDF gravity now uses a streamlined UQFF form with field mass growth, merger suppression, cosmic expansion, and Aether-scaled electromagnetic corrections.',
                 'callable': self._compute_g_hudf,
             },
             'ngc1792_gravity_equation': {
-                'equation': 'g_NGC1792 = base * (1 + M_sf(t)) + Ug_sum + Lambda*c^2/3 + quantum + waves + visible + F_sn',
-                'source': 'grok._b9afa8b6_3b85.txt L10-19 (NGC 1792 with starburst and supernova feedback)',
-                'falsifiable': 'NGC 1792 gravity includes starburst enhancement and supernova feedback',
+                'equation': 'g_NGC1792(r,t) = (G*M_total)/r^2 * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - F_sn(t)) * (1 + f_TRZ) + q*v*B*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for NGC 1792 starburst evolution with gas feedback, cosmic expansion, and UA/SCm vacuum effects)',
+                'falsifiable': 'NGC 1792 gravity now uses a streamlined UQFF form with starburst mass growth, supernova feedback, cosmic expansion, and Aether-scaled electromagnetic corrections.',
                 'callable': self._compute_g_ngc1792,
+            },
+            'sombrero_galaxy_gravity_equation': {
+                'equation': 'g_Sombrero(r,t) = (G*M_total)/r^2 * (1 + H(z)*t) * (1 + f_TRZ) + (G*M_BH)/r_BH^2 + a_dust + q*v*B*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for the Sombrero Galaxy M104 with SMBH dynamics, dust lane friction, and UA/SCm vacuum effects)',
+                'falsifiable': 'Sombrero gravity now uses a streamlined UQFF form with SMBH influence, dust lane dynamical friction, cosmic expansion, and Aether-scaled electromagnetic corrections.',
+                'callable': self._compute_g_sombrero_galaxy,
+            },
+            'saturn_gravity_equation': {
+                'equation': 'g_Saturn(r,t) = (G*M_Sun)/r_orbit^2 * (1 + H(z)*t) * (1 + f_TRZ) + (G*M)/r^2 + T_ring + a_wind + q*v*B*(1 + rho_vac_ua/rho_vac_SCm)*1e-12',
+                'source': 'grok._b9afa8b6_3b85.txt L10-19 (Clean UQFF master gravity equation for Saturn evolution with orbital dynamics, rings, atmosphere, and UA/SCm vacuum effects)',
+                'falsifiable': 'Saturn gravity now uses Sun orbital influence, planetary surface gravity, ring tidal effects, atmospheric wind feedback, and Aether-scaled electromagnetic corrections.',
+                'callable': self._compute_g_saturn,
             },
             'control_logic_energy': {
                 'equation': 'E_control = 0.5 * C_control * V_control^2 * f_control',
@@ -1057,19 +1145,19 @@ class StarMagicProofEngine:
                 'callable': self._compute_solar_corona_kinetic_energy,
             },
             'electric_field_universal_magnetism': {
-                'equation': 'E = U_m / rho_vac_UA * 1/r',
+                'equation': 'E = U_m / rho_vac_ua * 1/r',
                 'source': 'LENR papers L8 (electric field from universal magnetism coupling)',
                 'falsifiable': 'E scales with U_m and the UA vacuum density inverse distance',
                 'callable': self._compute_electric_field_from_universal_magnetism,
             },
             'neutron_production_rate': {
-                'equation': 'eta = k_eta * exp(-[SSq]^n26 * exp(-pi - t)) * U_m / rho_vac_UA',
+                'equation': 'eta = k_eta * exp(-[SSq]^n26 * exp(-pi - t)) * U_m / rho_vac_ua',
                 'source': 'LENR papers L9 (neutron production rate in UQFF)',
-                'falsifiable': 'eta is strongly suppressed by SSq^n26 and scales with U_m / rho_vac_UA',
+                'falsifiable': 'eta is strongly suppressed by SSq^n26 and scales with U_m / rho_vac_ua',
                 'callable': self._compute_neutron_production_rate,
             },
             'transmutation_energy': {
-                'equation': 'E_trans propto U_m * rho_vac_UA_prime_SCm',
+                'equation': 'E_trans propto U_m * rho_vac_ua_prime_SCm',
                 'source': 'LENR papers L20 (transmutation energy from universal magnetism and vacuum density)',
                 'falsifiable': 'E_trans is proportional to U_m and the UA\":[SCm] cross-density',
                 'callable': self._compute_transmutation_energy,
@@ -1081,7 +1169,7 @@ class StarMagicProofEngine:
                 'callable': self._compute_universal_magnetism_energy,
             },
             'higgs_field_energy': {
-                'equation': 'U_H = lambda_H * rho_vac_UA_prime_SCm * omega_H * exp(-[SSq]^n26 * exp(-pi - t)) * (1 + f_quasi)',
+                'equation': 'U_H = lambda_H * rho_vac_ua_prime_SCm * omega_H * exp(-[SSq]^n26 * exp(-pi - t)) * (1 + f_quasi)',
                 'source': 'UQFF framework L6 (Higgs field energy from vacuum densities and quasi factor)',
                 'falsifiable': 'U_H scales with UA\":[SCm] density and Higgs-like frequency',
                 'callable': self._compute_higgs_field_energy,
@@ -1093,13 +1181,13 @@ class StarMagicProofEngine:
                 'callable': self._compute_universal_gravity_ug3,
             },
             'pseudo_monopole_state_density': {
-                'equation': 'rho_vac_UA_prime_SCm = 1e-23 * (0.1)^n * exp(-[SSq]^n26 * exp(-pi - t))',
+                'equation': 'rho_vac_ua_prime_SCm = 1e-23 * (0.1)^n * exp(-[SSq]^n26 * exp(-pi - t))',
                 'source': 'UQFF framework L11 (pseudo-monopole vacuum density for discrete n states)',
                 'falsifiable': 'Pseudo-monopole density falls sharply with n and SSq^n26 suppression',
                 'callable': self._compute_pseudo_monopole_state_density,
             },
             'higgs_mass_model': {
-                'equation': 'm_H = lambda_H * rho_vac_UA_prime_SCm * omega_H * (1 + f_quasi) * k_Higgs',
+                'equation': 'm_H = lambda_H * rho_vac_ua_prime_SCm * omega_H * (1 + f_quasi) * k_Higgs',
                 'source': 'Collider data L24 (Higgs mass from UA\':[SCm] density, Higgs frequency, quasi correction, and calibrated k_Higgs)',
                 'falsifiable': 'm_H should be near 125 GeV with k_Higgs ≈ 1.79 × 10^18',
                 'callable': self._compute_higgs_mass_model,
@@ -1117,13 +1205,13 @@ class StarMagicProofEngine:
                 'callable': self._compute_higgs_branching_ratio_gamma_gamma_scaled,
             },
             'higgs_signal_strength_mu': {
-                'equation': 'mu ~ U_H / rho_vac_UA',
+                'equation': 'mu ~ U_H / rho_vac_ua',
                 'source': 'Collider data L26 (Higgs signal strength scaling with Higgs field and UA vacuum density)',
                 'falsifiable': 'Signal strength grows with Higgs energy density relative to UA vacuum density',
                 'callable': self._compute_higgs_signal_strength_mu,
             },
             'higgs_coupling_scale_factors': {
-                'equation': 'kappa ~ U_H / rho_vac_UA + U_m / rho_vac_UA',
+                'equation': 'kappa ~ U_H / rho_vac_ua + U_m / rho_vac_ua',
                 'source': 'Collider data L27 (Higgs coupling scale factors from U_H and U_m ratios)',
                 'falsifiable': 'Coupling scales are positive and derive from Higgs and universal magnetism densities',
                 'callable': self._compute_higgs_coupling_scale_factors,
@@ -1237,16 +1325,16 @@ class StarMagicProofEngine:
                 'callable': self._compute_fu_unified_field_summary,
             },
             'magnetic_amplification': {
-                'equation': 'amplification = 1 + fHeaviside * 1e13 * (1 + 0.01 * jj)',
+                'equation': 'amplification = 1 + fHeaviside * 1e13 * (1 + 0.01 * j)',
                 'source': 'UQFF magnetic amplification L70 (Heaviside-driven amplification for quasar jets and nebular magnetism)',
-                'falsifiable': 'Magnetic amplification factor exceeds 1 and scales with fHeaviside and magnetic index jj.',
+                'falsifiable': 'Magnetic amplification factor exceeds 1 and scales with fHeaviside and magnetic index j.',
                 'callable': self._compute_heaviside_component_fraction,
             },
-            'gravity_index_ii': {
-                'equation': 'ii = 1.0 (gravity index for g_munu coupling and scalability across stellar to BH systems)',
+            'gravity_index_i': {
+                'equation': 'i = 1.0 (gravity index for g_munu coupling and scalability across stellar to BH systems)',
                 'source': 'UQFF gravity index L71 (gravity indexing variable for aether-metric coupling)',
-                'falsifiable': 'Gravity index ii remains order unity and modifies the aether metric trace.',
-                'callable': self._compute_gravity_index_ii,
+                'falsifiable': 'Gravity index i remains order unity and modifies the aether metric trace.',
+                'callable': self._compute_gravity_index_i,
             },
             'heliospheric_scaling_hscm': {
                 'equation': 'H_SCm = 0.99',
@@ -1273,9 +1361,9 @@ class StarMagicProofEngine:
                 'callable': self._compute_uqff_synthesis_of_contributions,
             },
             'heaviside_component_fraction': {
-                'equation': 'fHeaviside = 0.01; heaviside factor = 1 + 1e13 * fHeaviside; jj adds magnetic index scaling',
+                'equation': 'fHeaviside = 0.01; heaviside factor = 1 + 1e13 * fHeaviside; j adds magnetic index scaling',
                 'source': 'UQFF heaviside component fraction L58 (threshold-driven nonlinear amplification factor in Um)',
-                'falsifiable': 'Heaviside component fraction returns 0.01, jj index, and amplification factor for canonical UQFF values.',
+                'falsifiable': 'Heaviside component fraction returns 0.01, j index, and amplification factor for canonical UQFF values.',
                 'callable': self._compute_heaviside_component_fraction,
             },
             'uqff_comprehensive_scope': {
@@ -1358,7 +1446,7 @@ class StarMagicProofEngine:
             },
             # --- Gas Nebula Observations ---
             'star_formation_temperature': {
-                'equation': 'T_scaled = C_T * U_g3 / rho_vac_UA',
+                'equation': 'T_scaled = C_T * U_g3 / rho_vac_ua',
                 'source': 'Gas Nebula observations L28 (star formation temperature from U_g3 and UA vacuum density; Drawing 32)',
                 'falsifiable': 'T_scaled ≈ 1.424e6 K for default U_g3 and vacuum densities',
                 'callable': self._compute_star_formation_temperature,
@@ -1370,13 +1458,13 @@ class StarMagicProofEngine:
                 'callable': self._compute_blueshift_radial_velocity,
             },
             'neutrino_energy': {
-                'equation': 'E_neutrino ~ rho_vac_UA_prime_SCm * exp(-[SSq]^n26 * exp(-pi - t)) * U_m / rho_vac_UA',
+                'equation': 'E_neutrino ~ rho_vac_ua_prime_SCm * exp(-[SSq]^n26 * exp(-pi - t)) * U_m / rho_vac_ua',
                 'source': 'Gas Nebula observations L30 (neutrino energy from UA\":[SCm] cross-density, SSq suppression, and U_m)',
                 'falsifiable': 'Neutrino energy scales with UA\":[SCm] cross-density, SSq suppression, and U_m',
                 'callable': self._compute_neutrino_energy,
             },
             'decay_rate': {
-                'equation': 'Decay Rate ~ rho_vac_SCm / rho_vac_UA * exp(-[SSq]^n26 * exp(-pi - t))',
+                'equation': 'Decay Rate ~ rho_vac_SCm / rho_vac_ua * exp(-[SSq]^n26 * exp(-pi - t))',
                 'source': 'Gas Nebula observations L31 (decay rate from vacuum density ratio and SSq suppression)',
                 'falsifiable': 'Decay Rate ≈ 0.0963 for default n and t',
                 'callable': self._compute_decay_rate,
@@ -1388,19 +1476,19 @@ class StarMagicProofEngine:
                 'callable': self._compute_energy_flow_dna,
             },
             'buoyancy_ratio': {
-                'equation': 'Buoyancy ~ rho_vac_UA / rho_vac_SCm * V_little / V_big',
+                'equation': 'Buoyancy ~ rho_vac_ua / rho_vac_SCm * V_little / V_big',
                 'source': 'Gas Nebula observations L33 (buoyancy ratio from UA/SCm vacuum densities and volume ratio)',
                 'falsifiable': 'Buoyancy is positive and scales with V_little/V_big ≈ 1/33',
                 'callable': self._compute_buoyancy_ratio,
             },
             'pi_computational_effort': {
-                'equation': 'Effort ~ rho_vac_UA / rho_vac_SCm * N_digits',
+                'equation': 'Effort ~ rho_vac_ua / rho_vac_SCm * N_digits',
                 'source': 'Pi computation notes L34 (computational effort from vacuum density ratio and digit count)',
                 'falsifiable': 'Effort scales with the UA/SCm vacuum density ratio and N_digits=2e15',
                 'callable': self._compute_pi_computational_effort,
             },
             'pi_influence': {
-                'equation': 'Pi Influence ~ U_m * pi * rho_vac_UA',
+                'equation': 'Pi Influence ~ U_m * pi * rho_vac_ua',
                 'source': 'Pi computation notes L35 (Pi influence from U_m and UA vacuum density)',
                 'falsifiable': 'Pi Influence is proportional to U_m and UA vacuum density',
                 'callable': self._compute_pi_influence,
@@ -1418,19 +1506,19 @@ class StarMagicProofEngine:
                 'callable': self._compute_organic_life_energy,
             },
             'periodic_table_elements_energy': {
-                'equation': 'E_Elements ~ rho_vac_UA * pi * exp(-[SSq]^n26 * exp(-pi - t))',
+                'equation': 'E_Elements ~ rho_vac_ua * pi * exp(-[SSq]^n26 * exp(-pi - t))',
                 'source': 'Pi computation notes L38 (periodic table elements energy from vacuum density and SSq suppression)',
                 'falsifiable': 'E_Elements is positive and exponentially suppressed by SSq^n26',
                 'callable': self._compute_periodic_table_elements_energy,
             },
             'phi_influence': {
-                'equation': 'Phi Influence ~ U_m * phi * rho_vac_UA',
+                'equation': 'Phi Influence ~ U_m * phi * rho_vac_ua',
                 'source': 'Pi computation notes L39 (phi influence from U_m, phi, and UA vacuum density)',
                 'falsifiable': 'Phi Influence scales with phi ≈ 1.618 and the UA vacuum density',
                 'callable': self._compute_phi_influence,
             },
             'ratio_influence': {
-                'equation': 'Ratio Influence ~ Count_phi / Count_pi * rho_vac_UA / rho_vac_SCm',
+                'equation': 'Ratio Influence ~ Count_phi / Count_pi * rho_vac_ua / rho_vac_SCm',
                 'source': 'Pi computation notes L40 (ratio influence from phi/pi counts and vacuum density ratio)',
                 'falsifiable': 'Ratio Influence is positive and proportional to the vacuum density ratio',
                 'callable': self._compute_ratio_influence,
@@ -1567,6 +1655,14 @@ class StarMagicProofEngine:
             'engine': 'StarMagicProofEngine (portable) v1.0-grok-restructure',
         }
 
+    def verify_registry_discovery(self, name: str = 'crab_nebula_gravity_equation') -> Dict[str, Any]:
+        """Registry discovery test for portable proof engine lookup."""
+        discoverable = name in self.PROOF_DERIVATION_MODES
+        result: Dict[str, Any] = {'mode': name, 'discoverable': discoverable}
+        if discoverable:
+            result['lookup_result'] = self.get_proof_mode(name, {})
+        return result
+
     def derive_constant_from_quantum_chain(self, step: int = 7) -> Dict[str, Any]:
         """Convenience: returns the master Quantum Chain constant derivation closure at given step."""
         return self.get_proof_mode('quantum_chain_26level_master_derivation', {'step': step})
@@ -1639,6 +1735,73 @@ class StarMagicProofEngine:
         fubii: float = params.get('FUBii', 2.11e208)
         fu: float = fubi / max(fubii, 1e-300)
         return abs(fu - 1.0)
+
+    def _prove_standard_model_counter_last_12_claims(self, params: Dict[str, float]) -> Dict[str, Any]:
+        return {
+            'claim_1': 'GR mass derives from T_{μν} and SM fermion masses from Higgs Yukawa couplings m_f = y_f v / √2; no F_U=1 or umbilicus appears.',
+            'claim_2': 'Electron shells are solutions of Schrödinger and Dirac with Coulomb potential; no Ug2 outer field bubble term appears.',
+            'claim_3': 'Quarks are fundamental QCD fields from L_QCD = -1/4 G^a_{μν} G^{a μν} + Σ_f ψ̄_f (i γ^μ D_μ - m_f) ψ_f; plasma is a deconfined thermal state, not a quark production mechanism.',
+            'claim_4': 'SM Lagrangian is L_gauge + L_fermion + L_Higgs + L_Yukawa; gravity is external to SM and not unified there.',
+            'claim_5': 'Anti-particles arise from QFT creation/annihilation operators and Dirac negative-energy interpretation; pair production γ → e^+ + e^- requires 2 m_e c^2 and contains no Aether term.',
+            'claim_6': 'Gravity is weak at particle scales and described by g(r) = G M / r^2 or GR curvature; SM has no integrated weak/strong+gravity unification term.',
+            'summary': 'This mode encodes the Standard Model mathematical counter to the last 12 claim clusters with explicit equation-by-equation comparison.',
+        }
+
+    def _prove_standard_model_mathematical_counter_analysis(self, params: Dict[str, float]) -> Dict[str, Any]:
+        return {
+            'claim_1': {
+                'disproof': 'Mass is sourced by T_{μν} in GR and by the Higgs vev in SM; there is no F_U=1 or umbilicus in these equations.',
+                'equations': [
+                    'G_{μν} + Λ g_{μν} = (8π G / c^4) T_{μν}',
+                    'm_f = y_f v / √2,  v ≈ 246 GeV'
+                ]
+            },
+            'claim_2': {
+                'disproof': 'Electron orbitals are solutions of Coulomb Schrödinger/Dirac equations; Ug2 shells do not appear.',
+                'equations': [
+                    '-ħ^2/(2 m_e) ∇^2 ψ - e^2/(4πϵ_0 r) ψ = E ψ',
+                    '(i γ^μ ∂_μ - m_e) ψ = 0'
+                ]
+            },
+            'claim_3': {
+                'disproof': 'Quarks are fundamental fermion fields in the QCD Lagrangian; plasma is a deconfined thermal state, not a source of quark generation.',
+                'equations': [
+                    'L_QCD = -1/4 G^a_{μν} G^{a μν} + Σ_f \bar{q}_f (i γ^μ D_μ - m_f) q_f'
+                ]
+            },
+            'claim_4': {
+                'disproof': 'Anti-particles and pair production are derived from QFT, not from a classical Aether term.',
+                'equations': [
+                    'γ → e^+ + e^-  (E ≥ 2 m_e c^2)',
+                    'L_QED = -1/4 F_{μν} F^{μν} + \bar{ψ}(i γ^μ D_μ - m) ψ'
+                ]
+            },
+            'claim_5': {
+                'disproof': 'The SM Lagrangian contains gauge, fermion, Higgs, and Yukawa sectors only; gravity is external and not unified in SM.',
+                'equations': [
+                    'L_SM = L_gauge + L_fermion + L_Higgs + L_Yukawa',
+                    'S_GR = 1/(16π G) ∫ R √{-g} d^4x'
+                ]
+            },
+            'claim_6': {
+                'disproof': 'Gravity is weak at particle scales and treated separately in GR/Newtonian limits; there is no SM term integrating weak, strong, and gravity.',
+                'equations': [
+                    'g(r) = G M / r^2',
+                    'GR: G_{μν} = (8πG/c^4) T_{μν}'
+                ]
+            },
+            'summary': 'This mode uses only Standard Model and General Relativity mathematics to show that the claimed UQFF structures are absent in SM equations and are therefore not required by SM physics.',
+        }
+
+    def _prove_refactored_umbilicus_mass_balance(self, params: Dict[str, float]) -> Dict[str, Any]:
+        return {
+            'umbilicus': 'The umbilicus is the inner resistance node on the inside looking outward; mass is the localized resistance signature at that node.',
+            'mass_balance': 'Mass occurs where F_U = F_U_Bi / F_U_Bi_i = 1, the exact meeting point of inside-to-outside and outside-to-inside forces.',
+            'f_u_definition': 'F_U = F_U_Bi / F_U_Bi_i; F_U_Bi ≈ F_U_Bi_i ≈ 1e208-1e211 N, so F_U normalizes to 1 exactly.',
+            'ug2_definition': 'Ug2 = k2 * (Q_A * M_s) / r^2 * S(r - R_b); the outer field bubble is the external boundary field around the umbilicus.',
+            'shell_trapping': 'Closed Ug3 magnetic-string disks anchor at the umbilicus and geometrically trap plasma around the SCm-UA nucleus at F_U = 1.',
+            'summary': 'Refactored from the attached file equations and corrected geometry: the umbilicus is the inner node, and mass occurs exactly where F_U = 1 balances the two F_j forces.',
+        }
 
     def _derive_quantum_chain_26level_closure(self, params: Dict[str, float]) -> float:
         step: float = params.get('step', 7)
@@ -1719,7 +1882,7 @@ class StarMagicProofEngine:
         t_n: float = params.get('t_n', 0.0)
         mu_j: float = params.get('mu_j', self._compute_magnetic_string_moment(params))
         phi: float = params.get('phi', 1.0)
-        jj: float = params.get('jj', self.jj_index)
+        j: float = params.get('j', self.j_index)
         P_SCm: float = params.get('P_SCm', self.P_SCm)
         E_react: float = params.get('E_react', self._compute_reactor_efficiency_factor(params))
         f_heaviside: float = params.get('f_heaviside', self.f_heaviside)
@@ -1728,8 +1891,8 @@ class StarMagicProofEngine:
         thz_signal_energy_density: float = self._compute_thz_signal_energy_density(params)
         energy_density_scale: float = 1.0 + min(thz_signal_energy_density * params.get('thz_energy_density_scaling_factor', self.thz_energy_density_scaling_factor), 0.5)
         rho_scm_scale: float = 1.0 + min(self.rho_scm * 1e-12, 0.01)
-        phi_power = phi ** max(jj, 1.0)
-        heaviside_factor = 1.0 + self.heaviside_amplifier * f_heaviside * (1.0 + 0.01 * jj)
+        phi_power = phi ** max(j, 1.0)
+        heaviside_factor = 1.0 + self.heaviside_amplifier * f_heaviside * (1.0 + 0.01 * j)
         return abs(mu_j / max(rj, 1e-30) * g_term * phi_power * P_SCm * E_react * heaviside_factor * (1.0 + f_quasi) * energy_density_scale * rho_scm_scale)
 
     def _compute_magnetic_string_moment(self, params: Dict[str, float]) -> float:
@@ -1830,26 +1993,26 @@ class StarMagicProofEngine:
             f"F_env={breakdown['F_env']:.3g} J/m^3, "
             f"aether_trace={self._compute_aether_metric(params):.3g}, "
             f"fHeaviside={params.get('f_heaviside', self.f_heaviside):.3g}, "
-            f"jj={params.get('jj', self.jj_index):.3g}, "
+            f"j={params.get('j', self.j_index):.3g}, "
             f"H_SCm={params.get('H_SCm', self.H_SCm):.3g}, "
             f"lambda_i={params.get('lambda_i', self.lambda_i_default):.3g}, "
-            f"ii={params.get('ii', self.ii_index):.3g}, "
+            f"i={params.get('i', self.i_index):.3g}, "
             f"F_U={breakdown['F_U']:.3g} J/m^3"
         )
 
     def _compute_heaviside_component_fraction(self, params: Dict[str, float]) -> Dict[str, float]:
         f_heaviside: float = params.get('f_heaviside', self.f_heaviside)
-        jj: float = params.get('jj', self.jj_index)
-        factor: float = 1.0 + self.heaviside_amplifier * f_heaviside * (1.0 + 0.01 * jj)
+        j: float = params.get('j', self.j_index)
+        factor: float = 1.0 + self.heaviside_amplifier * f_heaviside * (1.0 + 0.01 * j)
         return {
             'fHeaviside': f_heaviside,
-            'jj': jj,
+            'j': j,
             'factor': factor,
-            'description': 'Heaviside threshold amplification factor used in Um with magnetic index jj',
+            'description': 'Heaviside threshold amplification factor used in Um with magnetic index j',
         }
 
-    def _compute_gravity_index_ii(self, params: Dict[str, float]) -> float:
-        return params.get('ii', self.ii_index)
+    def _compute_gravity_index_i(self, params: Dict[str, float]) -> float:
+        return params.get('i', self.i_index)
 
     def _compute_H_SCm_factor(self, params: Dict[str, float]) -> float:
         return params.get('H_SCm', self.H_SCm)
@@ -1884,10 +2047,10 @@ class StarMagicProofEngine:
             },
             'third_variable_set': {
                 'fHeaviside': params.get('f_heaviside', self.f_heaviside),
-                'ii': params.get('ii', self.ii_index),
+                'i': params.get('i', self.i_index),
                 'H_SCm': params.get('H_SCm', self.H_SCm),
                 'lambda_i': params.get('lambda_i', self.lambda_i_default),
-                'jj': params.get('jj', self.jj_index),
+                'j': params.get('j', self.j_index),
                 'description': 'Refined magnetic, gravitational, heliospheric, and inertial effects, supporting cosmic and experimental applications.',
             },
             'fourth_variable_set': {
@@ -1970,10 +2133,10 @@ class StarMagicProofEngine:
 
     def _compute_ug1_magnetic_dipole(self, params: Dict[str, float]) -> float:
         k1: float = params.get('k1', self.k1)
-        rho_A: float | None = params.get('rho_A', self.rho_scm)
+        rho_ua: float | None = params.get('rho_ua', self.rho_ua)
         R: float = max(params.get('R', 1.0), 1e-30)
         V_body: float = (4.0 / 3.0) * math.pi * R**3
-        mu_s = rho_A * V_body
+        mu_s = rho_ua * V_body
         M: float = params.get('M', 1.0)
         r: float = params.get('r', 1.0)
         alpha: float = params.get('alpha', 0.0)
@@ -1989,7 +2152,7 @@ class StarMagicProofEngine:
 
     def _compute_ug2_charge_reactivity(self, params: Dict[str, float]) -> float:
         k2: float = params.get('k2', self.k2)
-        rho_UA: float = params.get('rho_UA', self.rho_vac_ua)
+        rho_ua: float = params.get('rho_ua', self.rho_vac_ua)
         rho_SCm: float = params.get('rho_SCm', self.rho_scm)
         M: float = params.get('M', self.M_star_canonical)
         r: float = params.get('r', 1.0)
@@ -1998,7 +2161,7 @@ class StarMagicProofEngine:
         H_SCm: float = params.get('H_SCm', self.H_SCm)
         E_react: float = params.get('E_react', self._compute_reactor_efficiency_factor(params))
         S_rb: float = self._compute_field_bubble_step_function(params)
-        return k2 * (rho_UA + rho_SCm) * M / max(r**2, 1e-30) * S_rb * (1.0 + delta_sw * v_sw) * H_SCm * E_react
+        return k2 * (rho_ua + rho_SCm) * M / max(r**2, 1e-30) * S_rb * (1.0 + delta_sw * v_sw) * H_SCm * E_react
 
     def _compute_ug3_string_rotation(self, params: Dict[str, float]) -> float:
         k3: float = params.get('k3', self.k3)
@@ -2342,7 +2505,7 @@ class StarMagicProofEngine:
             'Magnetar fields of 10^9–10^11 T decay over ~10,000 years, powering X-ray/gamma bursts and potentially FRBs, while gravitational interactions influence evolutionary paths. '
             'High-energy lab datasets from Fermilab and others show magnetar crustal fields evolving through instabilities into kilometer-scale toroidal components, supporting Um magnetic string dynamics, and SQMS superconductivity research suggests Type-II superconductive cores consistent with SCm. '
             'Gravitational wave models from high-energy physics add a future observational testbed for UQFF. '
-            'Step 2: Deriving the Master Universal Gravity Equation — start from g_grav = (G M) / r^2 and add Hubble expansion, magnetic decay correction, UQFF components (Ug1–Ug4), f_TRZ, rho_vac_[UA], cosmological constant, quantum uncertainty, electromagnetic, fluid, and density perturbation terms. '
+            'Step 2: Deriving the Master Universal Gravity Equation — start from g_grav = (G M) / r^2 and add Hubble expansion, magnetic decay correction, UQFF components (Ug1–Ug4), f_TRZ, rho_vac_ua, cosmological constant, quantum uncertainty, electromagnetic, fluid, and density perturbation terms. '
             'The resulting equation embeds UQFF into magnetar evolution, with B(t)=10^10 exp(-t/4000 yr) T, Omega(t)=(2π/5) exp(-t/10000 yr), and corrections for superconductive field decay, Aether influence, and gravitational wave emission. '
             'Step 3: Critical Reflection — Hubble data suggest alternative formation mechanisms and non-standard physics, while UQFF’s [UA], f_TRZ, and Um provide a richer model for magnetar behavior than classical supernova-only narratives. '
             'Step 4: Advancements to UQFF — cosmic-scale validation, refined variable modeling, and new research directions link magnetar evolution to THz hole dynamics and reactor physics, while Step 5 highlights data gaps, calibration needs, and the importance of q-scope linkage.'
@@ -2470,6 +2633,13 @@ class StarMagicProofEngine:
     def _compute_u_g5_tensor_sum(self, params: Dict[str, float]) -> float:
         return sum(params.get(f'T_{mu}{nu}', 0.0) for mu in range(4) for nu in range(4))
 
+    def _compute_quantum_chain_geometry_scaling(self, params: Dict[str, float]) -> float:
+        VDS_factor: float = params.get('VDS_factor', 1.0)
+        DVP_potential: float = params.get('DVP_potential', 1.0)
+        BH26_geometry: float = params.get('BH26_geometry', 1.0)
+        QCalcGeom_folding: float = params.get('QCalcGeom_folding', 1.0)
+        return VDS_factor * DVP_potential * BH26_geometry * QCalcGeom_folding
+
     def _compute_fubi_buoyancy_force(self, params: Dict[str, float]) -> float:
         beta_i: float = params.get('beta_i', self.beta_i)
         Ug_i: float | None = params.get('Ug_i') if params.get('Ug_i') is not None else self._compute_ug1_magnetic_dipole(params)
@@ -2478,32 +2648,43 @@ class StarMagicProofEngine:
         d_g: float = params.get('d_g', 1.0)
         epsilon_sw: float = params.get('epsilon_sw', self.epsilon_sw)
         rho_sw: float = params.get('rho_sw', self.rho_vac_sw)
-        rho_A: float | None = params.get('rho_A', self.rho_scm)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
         t_n: float = params.get('t_n', 0.0)
         E_react: float = params.get('E_react', self._compute_reactor_efficiency_factor(params))
-        return beta_i * Ug_i * Omega_g * (M_bh / max(d_g, 1e-30)) * E_react * (1.0 + epsilon_sw * rho_sw) * rho_A * math.cos(math.pi * t_n)
+        geometric_scaling: float = self._compute_quantum_chain_geometry_scaling(params)
+        return (
+            beta_i
+            * Ug_i
+            * Omega_g
+            * (M_bh / max(d_g, 1e-30))
+            * E_react
+            * (1.0 + epsilon_sw * rho_sw)
+            * rho_vac_ua
+            * math.cos(math.pi * t_n)
+            * geometric_scaling
+        )
 
     def _default_minkowski_metric(self) -> List[float]:
         return [1.0, -1.0, -1.0, -1.0]
 
     def _compute_aether_metric(self, params: Dict[str, float]) -> float:
         g_munu: float = params.get('g_munu', self.g_munu_trace)
-        ii: float = params.get('ii', self.ii_index)
+        i: float = params.get('i', self.i_index)
         eta: float = params.get('eta', self.eta_aether)
-        rho_vac_UA: float = self._compute_ua_vacuum_energy_density(params)
+        rho_vac_ua: float = self._compute_ua_vacuum_energy_density(params)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
-        rho_vac_A: float = self._compute_aether_vacuum_energy_density(params)
+        rho_vac_ua_aether: float = self._compute_aether_vacuum_energy_density(params)
         t_n: float = params.get('t_n', 0.0)
-        T_scalar: float = params.get('T_scalar', 1.123e7 + rho_vac_UA + rho_vac_SCm + rho_vac_A) * (1.0 + 0.01 * t_n)
+        T_scalar: float = params.get('T_scalar', 1.123e7 + rho_vac_ua + rho_vac_SCm + rho_vac_ua_aether) * (1.0 + 0.01 * t_n)
         g_norm: float = g_munu * g_munu
-        return g_norm + eta * T_scalar * (1.0 + 0.1 * ii)
+        return g_norm + eta * T_scalar * (1.0 + 0.1 * i)
 
     def _compute_stress_energy_tensor(self, params: Dict[str, float]) -> List[float]:
         T_s_effective: float = self._compute_T_s_effective(params)
-        rho_vac_UA: float = self._compute_ua_vacuum_energy_density(params)
+        rho_vac_ua: float = self._compute_ua_vacuum_energy_density(params)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
-        rho_vac_A: float = self._compute_aether_vacuum_energy_density(params)
-        total_T: float = T_s_effective + rho_vac_UA + rho_vac_SCm + rho_vac_A
+        rho_vac_ua_aether: float = self._compute_aether_vacuum_energy_density(params)
+        total_T: float = T_s_effective + rho_vac_ua + rho_vac_SCm + rho_vac_ua_aether
         return [total_T, -total_T, -total_T, -total_T]
 
     def _compute_T_s_effective(self, params: Dict[str, float]) -> float:
@@ -2542,10 +2723,67 @@ class StarMagicProofEngine:
         gravity_constants: float = self._compute_gravity_coupling_constants(params)
         return ug_sum - fubi + um + aether_trace + gravity_constants
 
+    def _solve_fubi_inner_integral_limit(self, params: Dict[str, float]) -> float:
+        a: float = params.get('a_quad', 3.49e-59)
+        b: float = params.get('b_quad', 4.72e-3)
+        c: float = params.get('c_quad', -3.06e175)
+        discriminant: float = b * b - 4.0 * a * c
+        if discriminant < 0.0:
+            return params.get('x2', 0.0)
+        root1: float = (-b + math.sqrt(discriminant)) / (2.0 * a)
+        root2: float = (-b - math.sqrt(discriminant)) / (2.0 * a)
+        if root1 > 0.0 and root2 > 0.0:
+            return max(root1, root2)
+        if root1 > 0.0:
+            return root1
+        if root2 > 0.0:
+            return root2
+        return max(root1, root2)
+
     def _compute_fubii_positive_spring(self, params: Dict[str, float]) -> float:
-        Um: float = self._compute_um_universal_magnetism(params)
-        ug_sum: float = self._compute_ug_modes(params)
-        return Um + ug_sum
+        F0: float = params.get('F0', 1.83e71)
+        m_e: float = params.get('m_e', 9.10938356e-31)
+        c: float = self.c
+        r: float = max(params.get('r', 1.0), 1e-30)
+        theta: float = params.get('theta', 0.0)
+        cos_theta: float = math.cos(theta)
+        sin_theta: float = math.sin(theta)
+        DPM_momentum: float = params.get('DPM_momentum', 1.0)
+        DPM_gravity: float = params.get('DPM_gravity', 1.0)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        DPM_stability: float = params.get('DPM_stability', 1.0)
+        k_LENR: float = params.get('k_LENR', 1.56e36)
+        omega_LENR: float = params.get('omega_LENR', self.omega_s0)
+        omega_0: float = params.get('omega_0', self.omega_s0)
+        k_act: float = params.get('k_act', 1.0)
+        omega_act: float = params.get('omega_act', self.omega_c)
+        geometric_scaling: float = self._compute_quantum_chain_geometry_scaling(params)
+        t: float = params.get('t', 0.0)
+        k_DE: float = params.get('k_DE', 1.0)
+        L_X: float = params.get('L_X', 1.0)
+        q: float = params.get('q', 1.0)
+        B_0: float = params.get('B_0', params.get('B0', 1.0))
+        V: float = params.get('V', 1.0)
+        DPM_resonance: float = params.get('DPM_resonance', 1.0)
+        k_neutron: float = params.get('k_neutron', 1.0)
+        sigma_n: float = params.get('sigma_n', 1.0)
+        k_rel: float = params.get('k_rel', 1.0)
+        E_cm: float = max(params.get('E_cm', 1.0), 1e-30)
+        E_cm_enhanced: float = params.get('E_cm_astro_local_adj_eff_enhanced', E_cm)
+        x2: float = params.get('x2', self._solve_fubi_inner_integral_limit(params))
+        integrand: float = (
+            -F0
+            + (m_e * c**2 / max(r**2, 1e-30)) * DPM_momentum * cos_theta
+            + (self.G * params.get('M', self.M_star_canonical) / max(r**2, 1e-30)) * DPM_gravity
+            + rho_vac_ua * DPM_stability
+            + k_LENR * (omega_LENR / max(omega_0, 1e-30)) ** 2 * geometric_scaling
+            + k_act * math.cos(omega_act * t)
+            + k_DE * L_X
+            + 2.0 * q * B_0 * V * sin_theta * DPM_resonance
+            + k_neutron * sigma_n
+            + k_rel * (E_cm_enhanced / E_cm) ** 2
+        )
+        return integrand * x2
 
     def _compute_f_u_balance_closure(self, params: Dict[str, float]) -> float:
         fubi: float | None = params.get('FUBi') if params.get('FUBi') is not None else self._compute_fubi_buoyancy_force(params)
@@ -2595,26 +2833,26 @@ class StarMagicProofEngine:
         return params.get('v_scm', self.v_scm)
 
     def _compute_ua_vacuum_energy_density(self, params: Dict[str, float]) -> float:
-        return params.get('rho_vac_UA', self.rho_vac_ua)
+        return params.get('rho_vac_ua', self.rho_vac_ua)
 
     def _compute_aether_vacuum_energy_density(self, params: Dict[str, float]) -> float:
-        return params.get('rho_vac_A', self.rho_vac_A)
+        return params.get('rho_vac_ua', self.rho_vac_ua)
 
     def _compute_inertia_vacuum_energy_density(self, params: Dict[str, float]) -> float:
         return params.get('rho_vac_Ui', self.rho_vac_Ui)
 
     def _compute_reactor_efficiency_factor(self, params: Dict[str, float]) -> float:
         t: float = params.get('t', params.get('t_reactor', 0.0))
-        decay_rate: float = params.get('E_react_decay_rate', self.E_react_decay_rate)
-        rho_vac_A: float = self._compute_aether_vacuum_energy_density(params)
+        decay_rate: float = params.get('kappa', params.get('E_react_decay_rate', self.kappa))
+        rho_vac_ua: float = self._compute_aether_vacuum_energy_density(params)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
         v_scm: float = self._compute_scm_velocity(params)
-        return (rho_vac_A / max(rho_vac_SCm, 1e-50)) * v_scm**2 * math.exp(-decay_rate * t)
+        return (rho_vac_ua / max(rho_vac_SCm, 1e-50)) * v_scm**2 * math.exp(-decay_rate * t)
 
     def _compute_ua_and_scm_vacuum_energy_contributions(self, params: Dict[str, float]) -> Dict[str, Any]:
-        rho_vac_UA: float = self._compute_ua_vacuum_energy_density(params)
+        rho_vac_ua: float = self._compute_ua_vacuum_energy_density(params)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
-        rho_vac_A: float = self._compute_aether_vacuum_energy_density(params)
+        rho_vac_ua_aether: float = self._compute_aether_vacuum_energy_density(params)
         rho_vac_Ui: float = self._compute_inertia_vacuum_energy_density(params)
         k2: float = params.get('k2', self.k2)
         M: float = params.get('M', self.M_star_canonical)
@@ -2624,12 +2862,12 @@ class StarMagicProofEngine:
         v_sw: float = params.get('v_sw', self.v_sw_default)
         H_SCm: float = params.get('H_SCm', self.H_SCm)
         E_react: float = params.get('E_react', self._compute_reactor_efficiency_factor(params))
-        Ug2: float = k2 * (rho_vac_UA + rho_vac_SCm) * M / max(r**2, 1e-30) * S_rb * (1.0 + delta_sw * v_sw) * H_SCm * E_react
+        Ug2: float = k2 * (rho_vac_ua + rho_vac_SCm) * M / max(r**2, 1e-30) * S_rb * (1.0 + delta_sw * v_sw) * H_SCm * E_react
         lambda_i: float = params.get('lambda_i', self.lambda_i_default)
         omega_s: float = params.get('omega_s', self.omega_s0)
         t_n: float = params.get('t_n', self.t_n_default)
         f_TRZ: float = params.get('f_TRZ', self.f_TRZ)
-        Ui: float = lambda_i * rho_vac_SCm * rho_vac_UA * omega_s * math.cos(math.pi * t_n) * (1.0 + f_TRZ)
+        Ui: float = lambda_i * rho_vac_SCm * rho_vac_ua * omega_s * math.cos(math.pi * t_n) * (1.0 + f_TRZ)
         g_munu_param = params.get('g_munu', self._default_minkowski_metric())
         g_munu: List[float]
         if isinstance(g_munu_param, (list, tuple)):
@@ -2637,13 +2875,13 @@ class StarMagicProofEngine:
         else:
             g_munu = self._default_minkowski_metric()
         eta: float = params.get('eta', self.eta_aether)
-        T_scalar: float = params.get('T_s', 1.123e7) + rho_vac_UA + rho_vac_SCm + rho_vac_A
+        T_scalar: float = params.get('T_s', 1.123e7) + rho_vac_ua + rho_vac_SCm + rho_vac_ua_aether
         T_tensor: List[float] = [T_scalar, -T_scalar, -T_scalar, -T_scalar]
         A_mu_nu: List[float] = [g_munu[i] + eta * T_tensor[i] for i in range(4)]
         return {
-            'rho_vac_UA': rho_vac_UA,
+            'rho_vac_ua': rho_vac_ua,
             'rho_vac_SCm': rho_vac_SCm,
-            'rho_vac_A': rho_vac_A,
+            'rho_vac_ua': rho_vac_ua,
             'rho_vac_Ui': rho_vac_Ui,
             'v_scm': self._compute_scm_velocity(params),
             'E_react': E_react,
@@ -2824,7 +3062,7 @@ class StarMagicProofEngine:
 
     def _compute_transmutation_energy(self, params: Dict[str, float]) -> float:
         U_m: float = params.get('U_m', self._compute_universal_magnetism_energy(params))
-        rho_cross: float = params.get('rho_vac_ua_prime_sc_m', self._compute_pseudo_monopole_state_density(params))
+        rho_cross: float = params.get('rho_vac_ua_prime_SCm', self._compute_rho_vac_ua_prime_SCm(params))
         return U_m * rho_cross
 
     def _compute_universal_magnetism_energy(self, params: Dict[str, float]) -> float:
@@ -2844,10 +3082,11 @@ class StarMagicProofEngine:
     def _compute_higgs_field_energy(self, params: Dict[str, float]) -> float:
         n = int(max(1, params.get('n', 1)))
         t: float = params.get('t', 0.0)
-        rho_density: float = self._compute_pseudo_monopole_state_density({'n': n, 't': t})
+        rho_density: float = params.get('rho_vac_ua_prime_SCm', self._compute_rho_vac_ua_prime_SCm({'n': n, 't': t}))
         omega_H: float = params.get('omega_H', self.omega_c)
         lambda_H: float = params.get('lambda_H', 1.0)
-        return lambda_H * rho_density * omega_H * math.exp(- (self.ss_sq ** (n * 26)) * math.exp(-math.pi - t)) * (1.0 + self.f_quasi)
+        suppression: float = self._compute_ssq_folding_suppression({'n': n, 't': t})
+        return lambda_H * rho_density * omega_H * suppression * (1.0 + self.f_quasi)
 
     def _compute_universal_gravity_ug3(self, params: Dict[str, float]) -> float:
         k_3: float = params.get('k_3', 1.0)
@@ -2869,10 +3108,11 @@ class StarMagicProofEngine:
         return 2.0 * math.pi * n / 6.0
 
     def _compute_higgs_mass_model(self, params: Dict[str, float]) -> float:
-        rho_density: float = params.get('rho_vac_ua_prime_sc_m', self._compute_pseudo_monopole_state_density(params))
+        rho_density: float = params.get('rho_vac_ua_prime_SCm', self._compute_rho_vac_ua_prime_SCm(params))
         omega_H: float = params.get('omega_H', self.omega_c)
         lambda_H: float = params.get('lambda_H', 4.35e15)
-        return lambda_H * rho_density * omega_H * (1.0 + self.f_quasi) * self.k_Higgs
+        suppression: float = self._compute_ssq_folding_suppression(params)
+        return lambda_H * rho_density * omega_H * suppression * (1.0 + self.f_quasi) * self.k_Higgs
 
     def _compute_higgs_branching_ratio_gamma_gamma(self, params: Dict[str, float]) -> float:
         U_m: float = params.get('U_m', self._compute_universal_magnetism_energy(params))
@@ -3041,11 +3281,12 @@ class StarMagicProofEngine:
         return self.c * delta_lambda / max(lam, 1e-30)
 
     def _compute_neutrino_energy(self, params: Dict[str, float]) -> float:
-        rho_density: float = params.get('rho_vac_ua_prime_sc_m', self._compute_pseudo_monopole_state_density(params))
+        rho_density: float = params.get('rho_vac_ua_prime_SCm', self._compute_rho_vac_ua_prime_SCm(params))
         n = int(max(1, params.get('n', 1)))
         t: float = params.get('t', 0.0)
         U_m: float = params.get('U_m', self._compute_universal_magnetism_energy(params))
-        return rho_density * math.exp(- (self.ss_sq ** (n * 26)) * math.exp(-math.pi - t)) * U_m / max(self.rho_vac_ua, 1e-50)
+        suppression: float = self._compute_ssq_folding_suppression(params)
+        return rho_density * suppression * U_m / max(self.rho_vac_ua, 1e-50)
 
     def _compute_decay_rate(self, params: Dict[str, float]) -> float:
         n = int(max(1, params.get('n', 1)))
@@ -3222,36 +3463,280 @@ class StarMagicProofEngine:
         return self.rho_scm / max(self.rho_vac_ua, 1e-50)
 
     def _compute_g_ngc2525(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e41), params.get('r', 1.0e20), self._compute_h_t_z(params), params.get('B', 1.0e-9))
-        return base + self.G * params.get('M_BH', 1.0e8) / max(params.get('r_BH', 1.0e19)**2, 1e-30) - params.get('M_SN', 0.0) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params)
+        M: float = params.get('M', (1.0e10 + 2.25e7) * 1.989e30)
+        r: float = params.get('r', 2.836e20)
+        t: float = params.get('t', 7.0 * 3.156e7)
+        z: float = params.get('z', 0.016)
+        B: float = params.get('B', 1.0e-5)
+        B_crit: float = params.get('B_crit', 1.0e11)
+        M_BH: float = params.get('M_BH', 2.25e7 * 1.989e30)
+        r_BH: float = params.get('r_BH', 1.496e11)
+        f_TRZ: float = params.get('f_TRZ', self.f_TRZ)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        H_z: float = self._compute_h_t_z({'z': z})
+        H_term: float = H_z * t
+        lensing_factor: float = self.G * M / max(self.c**2 * r, 1e-30) * 0.67
+        base: float = self.G * M / max(r**2, 1e-30) * (1.0 + H_term) * (1.0 - B / max(B_crit, 1e-30)) * (1.0 + lensing_factor)
+        black_hole_term: float = self.G * M_BH / max(r_BH**2, 1e-30)
+        ug_sum: float = self._compute_ug_modes(params) * (1.0 + f_TRZ)
+        q_term: float = params.get('q', 1.602e-19) * params.get('v', 1.0e5) * B
+        q_term *= 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        supernova_mass: float = params.get('M_SN_initial', 1.4 * 1.989e30)
+        tau_sn: float = params.get('tau_SN', 1.0 * 3.156e7)
+        m_sn: float = supernova_mass * math.exp(-t / max(tau_sn, 1e-30))
+        sn_mass_loss_term: float = self.G * m_sn / max(r**2, 1e-30)
+        visible_term: float = self._compute_visible_density_term({
+            'M_visible': params.get('M_visible', M),
+            'M_DM': params.get('M_DM', 0.1 * M),
+            'delta_rho': params.get('delta_rho', 1.0e-5 * params.get('rho', 1.0e-20)),
+            'rho': params.get('rho', 1.0e-20),
+            'M': M,
+            'r': r,
+            'sin_factor': 1.0,
+        })
+        return (
+            base
+            + black_hole_term
+            + ug_sum
+            + self.Lambda * self.c * self.c / 3.0
+            + self._compute_quantum_memory_term(params)
+            + q_term
+            + params.get('rho_fluid', 1.0) * params.get('V', 1.0) * params.get('g', 9.81)
+            + self._compute_wave_superposition(params)
+            + visible_term
+            - sn_mass_loss_term
+        )
 
     def _compute_g_ngc3603(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 2.0e36), params.get('r', 1.0e17), self._compute_h_t_z(params), params.get('B', 1.0e-8))
-        return base * (1.0 - params.get('P_t', 0.0)) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params) + params.get('rho', 0.0) * params.get('v_wind', 1.0)**2
+        M_initial: float = params.get('M_initial', 4.0e5 * 1.989e30)
+        tau_SF: float = params.get('tau_SF', 1.0e6 * 3.156e7)
+        t_cluster: float = params.get('t', 5.0e5 * 3.156e7)
+        M_dot_factor: float = 0.1 * math.exp(-t_cluster / max(tau_SF, 1e-30))
+        M_total: float = M_initial * (1.0 + M_dot_factor)
+        r_cluster: float = params.get('r', 8.998e15)
+        H0: float = params.get('H_0', self.H0)
+        rho_gas: float = params.get('rho', 1.0e-20)
+        v_wind: float = params.get('v_wind', 2.0e6)
+        P_term: float = params.get('P_0', 0.1) * math.exp(-t_cluster / max(tau_SF, 1e-30))
+        f_TRZ_local: float = params.get('f_TRZ', self.f_TRZ)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        q_charge: float = params.get('q', 1.602e-19)
+        v_velocity: float = params.get('v', 1.0e5)
+        B_field: float = params.get('B', 1.0e-5)
+        H_term: float = H0 * t_cluster
+        base: float = self.G * M_total / max(r_cluster**2, 1e-30) * (1.0 + H_term) * (1.0 - P_term) * (1.0 + f_TRZ_local)
+        q_term: float = q_charge * v_velocity * B_field * (1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)) * 1.0e-12
+        wind_term: float = rho_gas * v_wind**2
+        return base + q_term + wind_term
 
     def _compute_g_bubble_nebula(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e34), params.get('r', 1.0e18), self._compute_h_t_z(params), params.get('B', 1.0e-8))
-        return base * (1.0 + params.get('E_t', 0.0)) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params) + params.get('rho', 0.0) * params.get('v_wind', 1.0)**2
+        M_star: float = params.get('M_star', 45.0 * 1.989e30)
+        r_bubble: float = params.get('r', 3.311e16)
+        t_wind: float = params.get('t', 4.0e6 * 3.156e7)
+        H0_value: float = params.get('H_0', self.H0)
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        rho_gas: float = params.get('rho', 1.0e-21)
+        v_wind: float = params.get('v_wind', 1.789e6)
+        P0: float = params.get('P_0', 0.1)
+        tau_exp: float = params.get('tau_exp', 4.0e6 * 3.156e7)
+        P_term: float = P0 * math.exp(-t_wind / max(tau_exp, 1e-30))
+        q_charge: float = params.get('q', 1.602e-19)
+        v_velocity: float = params.get('v', 1.0e5)
+        B_field: float = params.get('B', 1.0e-6)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        H_term: float = H0_value * t_wind
+        gravitational_term: float = self.G * M_star / max(r_bubble**2, 1e-30)
+        base: float = gravitational_term * (1.0 + H_term) * (1.0 - P_term) * (1.0 + f_TRZ_value)
+        q_term: float = q_charge * v_velocity * B_field * (1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)) * 1.0e-12
+        wind_pressure_term: float = rho_gas * v_wind**2
+        return base + q_term + wind_pressure_term
 
     def _compute_g_antennae_galaxies(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e41), params.get('r', 1.0e21), self._compute_h_t_z(params), params.get('B', 1.0e-9))
-        return base * (1.0 - params.get('M_coll', 0.0)) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params) + params.get('rho', 0.0) * params.get('v_sf', 1.0)**2
+        M_initial: float = params.get('M_initial', 2.0e11 * 1.989e30)
+        SFR_value: float = params.get('SFR', 20.0)
+        t_merger: float = params.get('t', 3.0e8 * 3.156e7)
+        M_initial_mass: float = M_initial
+        mass_growth_fraction: float = SFR_value * t_merger / max(M_initial_mass / 1.989e30, 1.0)
+        M_total: float = M_initial * (1.0 + mass_growth_fraction)
+        r_merger: float = params.get('r', 2.838e20)
+        z_value: float = params.get('z', 0.0105)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        M_coll_term: float = params.get('M_coll_0', 0.5) * (1.0 - math.exp(-t_merger / max(params.get('tau_merge', 4.0e8 * 3.156e7), 1e-30)))
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        q_charge: float = params.get('q', 1.602e-19)
+        v_velocity: float = params.get('v', 1.0e6)
+        B_field: float = params.get('B', 1.0e-4)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        gravitational_term: float = self.G * M_total / max(r_merger**2, 1e-30)
+        base_term: float = gravitational_term * (1.0 + H_z * t_merger) * (1.0 - M_coll_term) * (1.0 + f_TRZ_value)
+        q_term: float = q_charge * v_velocity * B_field * (1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)) * 1.0e-12
+        return base_term + q_term
 
     def _compute_g_horsehead_nebula(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e33), params.get('r', 1.0e18), self._compute_h_t_z(params), params.get('B', 1.0e-8))
-        return base * (1.0 - params.get('E_t', 0.0)) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params) + params.get('P_rad', 0.0)
+        M_nebula: float = params.get('M_nebula', 120.0 * self.M_sun)
+        r_pillar: float = params.get('r', 1.182e16)
+        t_age: float = params.get('t', 1.0e6 * 3.156e7)
+        z_value: float = params.get('z', 0.0003)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        E0: float = params.get('E0', 0.2)
+        tau_erode: float = params.get('tau_erode', 5.0e6 * 3.156e7)
+        E_term: float = E0 * (1.0 - math.exp(-t_age / max(tau_erode, 1e-30)))
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        L_sigma: float = params.get('L_star', 1.0e5 * self.L_sun)
+        rho_gas: float = params.get('rho', 1.0e-21)
+        v_gas: float = params.get('v', 1.0e5)
+        B_field: float = params.get('B', 1.0e-5)
+        q_charge: float = params.get('q', 1.602e-19)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        gravitational_accel: float = self.G * M_nebula / max(r_pillar**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_age
+        erosion_factor: float = 1.0 - E_term
+        trcz_factor: float = 1.0 + f_TRZ_value
+        base_accel: float = gravitational_accel * expansion_factor * erosion_factor * trcz_factor
+        radiation_pressure_accel: float = (L_sigma / (4.0 * math.pi * max(r_pillar**2, 1e-30) * self.c)) * (rho_gas / max(params.get('m_H', 1.67e-27), 1e-30))
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        electromagnetic_accel: float = q_charge * v_gas * B_field * ua_factor * 1.0e-12
+        return base_accel + radiation_pressure_accel + electromagnetic_accel
 
     def _compute_g_ngc1275(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e42), params.get('r', 1.0e21), self._compute_h_t_z(params), params.get('B', 1.0e-9))
-        return base + params.get('F_BH', 0.0) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params) + params.get('M_fil', 0.0)
+        M_total: float = params.get('M_total', (1.0e12 + 8.0e8) * 1.989e30)
+        r_galaxy: float = params.get('r', 9.46e20)
+        t_evol: float = params.get('t', 50.0e6 * 3.156e7)
+        z_value: float = params.get('z', 0.0176)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        F0: float = params.get('F0', 0.1)
+        tau_BH: float = params.get('tau_BH', 100.0e6 * 3.156e7)
+        F_BH: float = F0 * (1.0 - math.exp(-t_evol / max(tau_BH, 1e-30)))
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        B_field: float = params.get('B', 1.0e-8)
+        V_fil: float = params.get('V_fil', 1.42e50)
+        mu0: float = 4.0 * math.pi * 1e-7
+        M_fil_strength: float = (B_field**2 / (2.0 * mu0)) * V_fil
+        M_filament: float = params.get('M_filament', 1.0e6 * 1.989e30)
+        a_fil: float = M_fil_strength / max(M_filament, 1e-30) * 1.0e-12
+        v_hvs: float = params.get('v', 3.0e6)
+        q_charge: float = params.get('q', 1.602e-19)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        electromagnetic_accel: float = q_charge * v_hvs * B_field * ua_factor * 1.0e-12
+        gravitational_accel: float = self.G * M_total / max(r_galaxy**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_evol
+        feedback_factor: float = 1.0 - F_BH
+        trcz_factor: float = 1.0 + f_TRZ_value
+        base_accel: float = gravitational_accel * expansion_factor * feedback_factor * trcz_factor
+        return base_accel + a_fil + electromagnetic_accel
 
     def _compute_g_hudf(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e42), params.get('r', 1.0e22), self._compute_h_t_z(params), params.get('B', 1.0e-9))
-        return base * (1.0 + params.get('M_evo', 0.0)) * (1.0 - params.get('M_merge', 0.0)) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params)
+        M_total: float = params.get('M_total', 1.0e12 * 1.989e30)
+        r_field: float = params.get('r', 1.5e22)
+        t_field: float = params.get('t', 13.0e9 * 3.156e7)
+        z_value: float = params.get('z', 3.0)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        SFR_total: float = params.get('SFR_total', 1.0e4 * 1.989e30 / 3.156e7)
+        mass_growth_factor: float = SFR_total * t_field / max(M_total, 1e-30)
+        M_evo: float = 1.0 + mass_growth_factor
+        merge_fraction: float = params.get('merge_fraction', 0.2)
+        tau_merge: float = params.get('tau_merge', 1.0e9 * 3.156e7)
+        M_merge: float = merge_fraction * (1.0 - math.exp(-t_field / max(tau_merge, 1e-30)))
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        B_field: float = params.get('B', 1.0e-6)
+        v_field: float = params.get('v', 1.0e6)
+        q_charge: float = params.get('q', 1.602e-19)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        gravitational_accel: float = self.G * M_total / max(r_field**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_field
+        feedback_factor: float = 1.0 - M_merge
+        trcz_factor: float = 1.0 + f_TRZ_value
+        base_accel: float = gravitational_accel * expansion_factor * M_evo * feedback_factor * trcz_factor
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        electromagnetic_accel: float = q_charge * v_field * B_field * ua_factor * 1.0e-12
+        return base_accel + electromagnetic_accel
 
     def _compute_g_ngc1792(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e41), params.get('r', 1.0e21), self._compute_h_t_z(params), params.get('B', 1.0e-9))
-        return base * (1.0 + params.get('M_sf', 0.0)) + self._compute_ug_modes(params) + self._compute_quantum_memory_term(params) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params) + params.get('F_sn', 0.0)
+        M_total: float = params.get('M_total', 1.0e10 * 1.989e30)
+        r_galaxy: float = params.get('r', 3.78e20)
+        t_starburst: float = params.get('t', 100.0e6 * 3.156e7)
+        z_value: float = params.get('z', 0.0095)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        SFR: float = params.get('SFR', 10.0)
+        M_sf_factor: float = 1.0 + (SFR * t_starburst / max(M_total / 1.989e30, 1.0))
+        F0: float = params.get('F0', 0.05)
+        tau_sn: float = params.get('tau_sn', 100.0e6 * 3.156e7)
+        F_sn: float = F0 * (1.0 - math.exp(-t_starburst / max(tau_sn, 1e-30)))
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        B_field: float = params.get('B', 1.0e-5)
+        v_wind: float = params.get('v', 1.0e6)
+        q_charge: float = params.get('q', 1.602e-19)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        gravitational_accel: float = self.G * M_total / max(r_galaxy**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_starburst
+        starburst_factor: float = M_sf_factor
+        feedback_factor: float = 1.0 - F_sn
+        trcz_factor: float = 1.0 + f_TRZ_value
+        base_accel: float = gravitational_accel * expansion_factor * starburst_factor * feedback_factor * trcz_factor
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        electromagnetic_accel: float = q_charge * v_wind * B_field * ua_factor * 1.0e-12
+        return base_accel + electromagnetic_accel
+
+    def _compute_g_sombrero_galaxy(self, params: Dict[str, float]) -> float:
+        M_total: float = params.get('M_total', (1.0e11 + 1.0e9) * 1.989e30)
+        r_galaxy: float = params.get('r', 2.36e20)
+        t_galaxy: float = params.get('t', 10.0e9 * 3.156e7)
+        z_value: float = params.get('z', 0.0063)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        M_BH: float = params.get('M_BH', 1.0e9 * 1.989e30)
+        r_BH: float = params.get('r_BH', 1.0e15)
+        rho_dust: float = params.get('rho_dust', 1.0e-20)
+        v_orbit: float = params.get('v', 2.0e5)
+        a_dust: float = (rho_dust * v_orbit**2) / max(params.get('rho_ISM', 1.0e-21), 1e-30) * 1.0e-12
+        B_field: float = params.get('B', 1.0e-5)
+        q_charge: float = params.get('q', 1.602e-19)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        gravitational_accel: float = self.G * M_total / max(r_galaxy**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_galaxy
+        trcz_factor: float = 1.0 + f_TRZ_value
+        base_accel: float = gravitational_accel * expansion_factor * trcz_factor
+        BH_accel: float = self.G * M_BH / max(r_BH**2, 1e-30)
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        electromagnetic_accel: float = q_charge * v_orbit * B_field * ua_factor * 1.0e-12
+        return base_accel + BH_accel + a_dust + electromagnetic_accel
+
+    def _compute_g_saturn(self, params: Dict[str, float]) -> float:
+        M_Sun: float = params.get('M_Sun', 1.989e30)
+        r_orbit: float = params.get('r_orbit', 1.43e12)
+        M_planet: float = params.get('M', 5.683e26)
+        r_planet: float = params.get('r', 6.0268e7)
+        t_solar: float = params.get('t', 4.5e9 * 3.156e7)
+        z_value: float = params.get('z', 0.0)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        M_ring: float = params.get('M_ring', 1.5e19)
+        r_ring: float = params.get('r_ring', 7.0e7)
+        rho_atm: float = params.get('rho_atm', 2.0e-4)
+        v_wind: float = params.get('v_wind', 500.0)
+        B_field: float = params.get('B', 1.0e-7)
+        q_charge: float = params.get('q', 1.602e-19)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        sun_accel: float = self.G * M_Sun / max(r_orbit**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_solar
+        sun_term: float = sun_accel * expansion_factor * (1.0 + f_TRZ_value)
+        planet_term: float = self.G * M_planet / max(r_planet**2, 1e-30)
+        ring_term: float = self.G * M_ring / max(r_ring**2, 1e-30)
+        wind_pressure: float = rho_atm * v_wind**2 / max(params.get('rho_ref', rho_atm), 1e-30) * 1.0e-12
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        electromagnetic_term: float = q_charge * v_wind * B_field * ua_factor * 1.0e-12
+        return sun_term + planet_term + ring_term + wind_pressure + electromagnetic_term
 
     def _compute_bosonic_energy(self, params: Dict[str, float]) -> float:
         m: float = params.get('m', 1.964e-30)
@@ -3458,6 +3943,54 @@ class StarMagicProofEngine:
         f_TRZ: float = params.get('f_TRZ', self.f_TRZ)
         return L_outburst / max(4.0 * math.pi * r**2, 1e-30) * sigma_scatter * rho_dust * (1.0 + f_TRZ) * UA_factor
 
+    def _compute_v838_mass(self, params: Dict[str, float]) -> float:
+        M_initial: float = params.get('M_initial', 10100.0 * 1.989e30)
+        tau_SF: float = params.get('tau_SF', 1.0e6 * 3.156e7)
+        M_dot_scale: float = params.get('M_dot_scale', 1.0e4 / 10100.0)
+        t: float = params.get('t', 0.0)
+        return M_initial * (1.0 + M_dot_scale * math.exp(-t / max(tau_SF, 1e-30)))
+
+    def _compute_v838_erosion_factor(self, params: Dict[str, float]) -> float:
+        E0: float = params.get('E0', 0.1)
+        tau_erode: float = params.get('tau_erode', 1.0e6 * 3.156e7)
+        t: float = params.get('t', 0.0)
+        return 1.0 - E0 * math.exp(-t / max(tau_erode, 1e-30))
+
+    def _compute_g_v838_mon(self, params: Dict[str, float]) -> float:
+        M_v838: float = self._compute_v838_mass(params)
+        r: float = params.get('r', 4.731e16)
+        t: float = params.get('t', 0.0)
+        B: float = params.get('B', 1.0e-6)
+        B_crit: float = params.get('B_crit', 1.0e11)
+        H_term: float = self.H0 * t
+        erosion: float = self._compute_v838_erosion_factor(params)
+        base: float = self.G * M_v838 / max(r**2, 1e-30) * (1.0 + H_term) * (1.0 - B / max(B_crit, 1e-30)) * erosion
+        ug_sum: float = self._compute_ug_modes(params) * (1.0 + params.get('f_TRZ', self.f_TRZ))
+        q_term: float = params.get('q', 1.602e-19) * params.get('v', 1.0e5) * B
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        q_term *= 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        visible_term: float = self._compute_visible_density_term({
+            'M_visible': params.get('M_visible', M_v838),
+            'M_DM': params.get('M_DM', 0.1 * M_v838),
+            'delta_rho': params.get('delta_rho', 1.0e-5 * params.get('rho', 1.0e-21)),
+            'rho': params.get('rho', 1.0e-21),
+            'M': M_v838,
+            'r': r,
+            'sin_factor': 1.0,
+        })
+        return (
+            base
+            + ug_sum
+            + self.Lambda * self.c * self.c / 3.0
+            + self._compute_quantum_memory_term(params)
+            + q_term
+            + params.get('rho_fluid', 1.0) * params.get('V', 1.0) * params.get('g', 9.81)
+            + self._compute_wave_superposition(params)
+            + visible_term
+            + params.get('rho', 1.0e-21) * params.get('v_wind', 2.0e6) ** 2
+        )
+
     def _compute_visible_density_term(self, params: Dict[str, float]) -> float:
         M_visible: float = params.get('M_visible', 1.0e34)
         M_DM: float = params.get('M_DM', 1.0e35)
@@ -3472,11 +4005,11 @@ class StarMagicProofEngine:
         )
 
     def _compute_vacuum_energy_influence(self, params: Dict[str, float]) -> float:
-        rho_vac_UA: float = self._compute_ua_vacuum_energy_density(params)
+        rho_vac_ua: float = self._compute_ua_vacuum_energy_density(params)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
-        rho_vac_A: float = self._compute_aether_vacuum_energy_density(params)
+        rho_vac_ua_aether: float = self._compute_aether_vacuum_energy_density(params)
         rho_vac_Ui: float = self._compute_inertia_vacuum_energy_density(params)
-        return rho_vac_UA + rho_vac_SCm + rho_vac_A + rho_vac_Ui
+        return rho_vac_ua + rho_vac_SCm + rho_vac_ua_aether + rho_vac_Ui
 
     def _compute_environmental_interaction(self, params: Dict[str, float]) -> float:
         rho: float = params.get('rho', 1.0e-18)
@@ -3563,6 +4096,18 @@ class StarMagicProofEngine:
     def _compute_negative_time_factor(self, params: Dict[str, float]) -> float:
         t_n: float = params.get('t_n', self.t_n_default)
         return math.cos(math.pi * t_n)
+
+    def _compute_ssq_folding_suppression(self, params: Dict[str, float]) -> float:
+        n: int = int(max(1, params.get('n', 1)))
+        t: float = params.get('t', 0.0)
+        ssq: float = params.get('SSq', self.ss_sq)
+        return math.exp(- (ssq ** (n * 26)) * math.exp(-math.pi - t))
+
+    def _compute_rho_vac_ua_prime_SCm(self, params: Dict[str, float]) -> float:
+        return params.get(
+            'rho_vac_ua_prime_SCm',
+            params.get('rho_vac_ua_prime_sc_m', self._compute_pseudo_monopole_state_density(params)),
+        )
 
     def _compute_pi_constant(self, params: Dict[str, float]) -> float:
         return math.pi
@@ -3661,7 +4206,7 @@ class StarMagicProofEngine:
             't': t,
             'B0': self.B0_magnetar,
             'Bcrit': self.Bcrit_magnetar,
-            'rho_UA': self.rho_vac_ua,
+            'rho_ua': self.rho_vac_ua,
             'rho_SCm': self.rho_scm,
             'omega_s': params.get('omega_s', self.omega_s0),
             'R_b': params.get('R_b', min(r * 0.1, self.R_b)),
@@ -3700,24 +4245,51 @@ class StarMagicProofEngine:
         )
 
     def _compute_g_magnetar(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 4.1e30), params.get('r', 1e7), self._compute_h_t_z(params), params.get('B', 1e8))
-        return base + self.G * params.get('M_BH', 4.3e6 * 1.98847e30) / max(params.get('r_BH', 1e10)**2, 1e-30) + self._compute_ug_modes(params) + self.Lambda * self.c * self.c / 3.0 + self._compute_quantum_memory_term(params) + params.get('q', 1.0) * params.get('v', 1.0) * params.get('B_field', 1.0) + params.get('rho_fluid', 1.0) * params.get('V', 1.0) * params.get('g', 9.81) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params) + params.get('M_mag', 0.0) + params.get('D_t', 0.0)
+        M: float = params.get('M', self.M_magnetar)
+        r: float = params.get('r', self.r_magnetar)
+        t: float = params.get('t', 1.0e4 * 3.156e7)
+        H_correction: float = 1.0 + self.H0_magnetar * t
+        B_t: float = self._compute_magnetar_B_t({**params, 't': t})
+        Bcrit: float = params.get('Bcrit', self.Bcrit_magnetar)
+        superconductive_factor: float = 1.0 - B_t / max(Bcrit, 1e-30)
+        base: float = self.G * M / max(r**2, 1e-30) * H_correction * superconductive_factor
+
+        ug_sum: float = self._compute_ug_modes({**params, 'M': M, 'r': r, 'B': B_t, 't': t})
+        quantum_term: float = self._compute_quantum_memory_term(params)
+        q_term: float = self._compute_magnetar_electromagnetic_term({**params, 'B_vec': (0.0, 0.0, B_t)})
+        fluid_term: float = self._compute_magnetar_fluid_term({**params, 'M': M, 'r': r})
+        wave_term: float = self._compute_wave_superposition(params)
+        density_term: float = self._compute_magnetar_density_perturbation({**params, 'M': M, 'r': r})
+        gw_term: float = self._compute_magnetar_gravitational_wave_term({**params, 'M': M, 'r': r, 't': t})
+
+        return (
+            base
+            + ug_sum
+            + self.Lambda * self.c * self.c / 3.0
+            + quantum_term
+            + q_term
+            + fluid_term
+            + wave_term
+            + density_term
+            + gw_term
+            + params.get('M_mag', 0.0)
+            + params.get('D_t', 0.0)
+        )
 
     def _compute_g_sagittarius_a_star(self, params: Dict[str, float]) -> float:
-        M_initial: float = params.get('M', 4.3e6 * 1.98847e30)
-        t: float = params.get('t', 1.42e17)
-        accretion_fraction: float = params.get('M_fraction', 0.01)
-        tau_acc: float = params.get('tau_acc', 9e9 * 3.156e7)
+        M_initial: float = params.get('M', self.M_BH_sgrA_initial)
+        t: float = params.get('t', 4.5e9 * 3.156e7)
+        accretion_fraction: float = params.get('M_0', self.sgrA_Mdot_norm)
+        tau_acc: float = params.get('tau_acc', self.sgrA_tau_acc)
         M_dot: float = accretion_fraction * math.exp(-t / max(tau_acc, 1e-30))
         M_t: float = M_initial * (1.0 + M_dot)
 
-        r_s: float = 2.0 * self.G * M_t / max(self.c**2, 1e-30)
-        r: float = params.get('r', r_s)
+        r: float = params.get('r', 1.27e10)
         H_correction: float = 1.0 + self.H0 * t
         B0: float = params.get('B0', 1.0)
-        tau_B: float = params.get('tau_B', 1e6 * 3.156e7)
+        tau_B: float = params.get('tau_B', self.sgrA_tau_B)
         B_t: float = B0 * math.exp(-t / max(tau_B, 1e-30))
-        B_crit: float = params.get('B_crit', self.B_crit)
+        B_crit: float = params.get('B_crit', self.Bcrit_sgrA)
         superconductive_factor: float = 1.0 - B_t / max(B_crit, 1e-30)
 
         base: float = self.G * M_t / max(r**2, 1e-30) * H_correction * superconductive_factor
@@ -3727,18 +4299,18 @@ class StarMagicProofEngine:
             **params,
             'M': M_t,
             'r': r,
-            'B_disk': B0,
-            'rho_UA': self.rho_vac_ua,
-            'rho_SCm': self.rho_scm,
+            'B': B_t,
             't': t,
+            'rho_ua': self.rho_vac_ua,
+            'rho_SCm': self.rho_scm,
             'omega_s': params.get('omega_s', self.omega_s0),
             'R_b': params.get('R_b', min(r * 0.1, self.R_b)),
             'P_core': params.get('P_core', self.P_core_default),
             'E_react': params.get('E_react', self._compute_reactor_efficiency_factor(params)),
-            'M_visible': params.get('M_visible', 1.0e34),
-            'M_DM': params.get('M_DM', 1.0e35),
+            'M_visible': params.get('M_visible', M_t),
+            'M_DM': params.get('M_DM', 0.1 * M_t),
             'rho': params.get('rho', 1.0e-17),
-            'delta_rho': params.get('delta_rho', 1.0e-18),
+            'delta_rho': params.get('delta_rho', 1.0e-5 * params.get('rho', 1.0e-17)),
             'sin_factor': math.sin(math.radians(30.0)),
         }
         ug2: float = self._compute_ug2_charge_reactivity(local_params)
@@ -3748,33 +4320,18 @@ class StarMagicProofEngine:
         ug_sum: float = (ug1 + ug2 + ug3 + ug4) * (1.0 + f_TRZ)
 
         ua_correction: float = 1.0 + self.rho_vac_ua / max(self.rho_scm, 1e-30)
-        v_vec: Tuple[float, float, float] = params.get('v_vec', (params.get('v', 1.0), 0.0, 0.0))
-        B_vec: Tuple[float, float, float] = params.get('B_vec', (0.0, 0.0, B_t))
-        cross_vb: Tuple[float, float, float] = (
-            v_vec[1] * B_vec[2] - v_vec[2] * B_vec[1],
-            v_vec[2] * B_vec[0] - v_vec[0] * B_vec[2],
-            v_vec[0] * B_vec[1] - v_vec[1] * B_vec[0],
-        )
-        cross_magnitude: float = math.sqrt(
-            cross_vb[0]**2 + cross_vb[1]**2 + cross_vb[2]**2
-        )
-        q_param = params.get('q', 1.0)
-        if isinstance(q_param, tuple) or isinstance(q_param, list):
-            q_term: float = sum(q_param[i] * cross_vb[i] for i in range(min(3, len(q_param))))
-        else:
-            q_term = float(q_param) * ua_correction * cross_magnitude
+        q_term: float = self._compute_magnetar_electromagnetic_term({**params, 'B_vec': (0.0, 0.0, B_t)}) * ua_correction
 
-        visible_term: float = self._compute_visible_density_term(local_params)
         quantum_term: float = self._compute_quantum_memory_term(params)
         wave_term: float = self._compute_wave_superposition(params)
+        fluid_term: float = self._compute_magnetar_fluid_term({**params, 'M': M_t, 'r': r})
+        visible_term: float = self._compute_visible_density_term(local_params)
         dOmega_dt: float = params.get('dOmega_dt')
         if dOmega_dt is None:
-            tau_spin: float = params.get('tau_spin', 9e9 * 3.156e7)
+            tau_spin: float = params.get('tau_spin', self.sgrA_tau_acc)
             Omega_t: float = params.get('Omega_t', 0.3 * self.c / max(r, 1e-30) * math.exp(-t / max(tau_spin, 1e-30)))
             dOmega_dt = -Omega_t / max(tau_spin, 1e-30)
         gw_term: float = self.G * M_t**2 / max(self.c**4 * r, 1e-30) * float(dOmega_dt)**2
-
-        environmental_term: float = self._compute_environmental_interaction({**params, 'r': r, 'M': M_t, 'dOmega_dt': float(dOmega_dt), 'gravitational_wave_term': gw_term})
 
         return (
             base
@@ -3782,8 +4339,7 @@ class StarMagicProofEngine:
             + self.Lambda * self.c * self.c / 3.0
             + quantum_term
             + q_term
-            + environmental_term
-            + params.get('rho_fluid', 1.0) * params.get('V', 1.0) * params.get('g', 9.81)
+            + fluid_term
             + wave_term
             + visible_term
             + gw_term
@@ -3802,16 +4358,16 @@ class StarMagicProofEngine:
     def _compute_g_starbirth(self, params: Dict[str, float]) -> float:
         M_starbirth: float = self._compute_starbirth_mass(params)
         r: float = params.get('r', 10.0 * 9.461e15)
-        t: float = params.get('t', 0.0)
+        t: float = params.get('t', 1.0e6 * 3.156e7)
         H_term: float = self.H0 * t
         B: float = params.get('B', 1.0e-6)
         B_crit: float = params.get('B_crit', 1.0e11)
         base: float = self.G * M_starbirth / max(r**2, 1e-30) * (1.0 + H_term) * (1.0 - B / max(B_crit, 1e-30))
         ug_sum: float = self._compute_ug_modes(params) * (1.0 + params.get('f_TRZ', self.f_TRZ))
         q_term: float = params.get('q', 1.602e-19) * params.get('v', 1.0) * params.get('B_field', B)
-        rho_vac_UA: float = params.get('rho_vac_UA', self.rho_vac_ua)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
-        q_term *= 1.0 + rho_vac_UA / max(rho_vac_SCm, 1e-30)
+        q_term *= 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
         visible_term: float = self._compute_visible_density_term({
             'M_visible': params.get('M_visible', 1.254e34),
             'M_DM': params.get('M_DM', 0.1 * params.get('M_visible', 1.254e34)),
@@ -3850,9 +4406,9 @@ class StarMagicProofEngine:
         base: float = self.G * M_w2 / max(r**2, 1e-30) * (1.0 + H_term) * (1.0 - B / max(B_crit, 1e-30))
         ug_sum: float = self._compute_ug_modes(params) * (1.0 + params.get('f_TRZ', self.f_TRZ))
         q_term: float = params.get('q', 1.602e-19) * params.get('v', 1.0e5) * B
-        rho_vac_UA: float = params.get('rho_vac_UA', self.rho_vac_ua)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
-        q_term *= 1.0 + rho_vac_UA / max(rho_vac_SCm, 1e-30)
+        q_term *= 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
         visible_term: float = self._compute_visible_density_term({
             'M_visible': params.get('M_visible', M_w2),
             'M_DM': params.get('M_DM', 0.1 * M_w2),
@@ -3890,7 +4446,7 @@ class StarMagicProofEngine:
     def _compute_g_pillars(self, params: Dict[str, float]) -> float:
         M_pillars: float = self._compute_pillars_mass(params)
         r: float = params.get('r', 4.731e16)
-        t: float = params.get('t', 0.0)
+        t: float = params.get('t', 5.0e5 * 3.156e7)
         B: float = params.get('B', 1.0e-6)
         B_crit: float = params.get('B_crit', 1.0e11)
         H_term: float = self.H0 * t
@@ -3898,9 +4454,9 @@ class StarMagicProofEngine:
         base: float = self.G * M_pillars / max(r**2, 1e-30) * (1.0 + H_term) * (1.0 - B / max(B_crit, 1e-30)) * erosion
         ug_sum: float = self._compute_ug_modes(params) * (1.0 + params.get('f_TRZ', self.f_TRZ))
         q_term: float = params.get('q', 1.602e-19) * params.get('v', 1.0e5) * B
-        rho_vac_UA: float = params.get('rho_vac_UA', self.rho_vac_ua)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
         rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
-        q_term *= 1.0 + rho_vac_UA / max(rho_vac_SCm, 1e-30)
+        q_term *= 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
         visible_term: float = self._compute_visible_density_term({
             'M_visible': params.get('M_visible', M_pillars),
             'M_DM': params.get('M_DM', 0.1 * M_pillars),
@@ -3922,9 +4478,98 @@ class StarMagicProofEngine:
             + params.get('rho', 1.0e-21) * params.get('v_wind', 2.0e6) ** 2
         )
 
+    def _compute_g_m16(self, params: Dict[str, float]) -> float:
+        M_region: float = params.get('M_region', 1200.0 * 1.989e30)
+        r_region: float = params.get('r', 3.31e17)
+        t_age: float = params.get('t', 5.0e6 * 3.156e7)
+        z_value: float = params.get('z', 0.0015)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        SFR: float = params.get('SFR', 1.0)
+        mass_growth_factor: float = (SFR * t_age) / max(M_region / 1.989e30, 1.0)
+        M_sf: float = 1.0 + mass_growth_factor
+        E0: float = params.get('E0', 0.3)
+        tau_erode: float = params.get('tau_erode', 3.0e6 * 3.156e7)
+        E_rad: float = E0 * (1.0 - math.exp(-t_age / max(tau_erode, 1e-30)))
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        B_field: float = params.get('B', 1.0e-5)
+        v_gas: float = params.get('v', 1.0e5)
+        q_charge: float = params.get('q', 1.602e-19)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        gravitational_accel: float = self.G * M_region / max(r_region**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_age
+        base_accel: float = gravitational_accel * expansion_factor * M_sf * (1.0 - E_rad) * (1.0 + f_TRZ_value)
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        electromagnetic_accel: float = q_charge * v_gas * B_field * ua_factor * 1.0e-12
+        return base_accel + electromagnetic_accel
+
+    def _compute_g_crab_nebula(self, params: Dict[str, float]) -> float:
+        M_total: float = params.get('M_total', 4.6 * 1.989e30)
+        r_nebula: float = params.get('r', 5.2e16)
+        t_age: float = params.get('t', 971.0 * 3.156e7)
+        z_value: float = params.get('z', 0.0015)
+        H_z: float = self._compute_h_t_z({'z': z_value})
+        f_TRZ_value: float = params.get('f_TRZ', self.f_TRZ)
+        P_pulsar: float = params.get('P_pulsar', 5.0e31)
+        v_shock: float = params.get('v_shock', 1.5e6)
+        c_speed: float = self.c
+        density: float = params.get('rho', 1.0e-21)
+        B_field: float = params.get('B', 1.0e-8)
+        q_charge: float = params.get('q', 1.602e-19)
+        m_e: float = params.get('m_e', 9.11e-31)
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        gravitational_accel: float = self.G * M_total / max(r_nebula**2, 1e-30)
+        expansion_factor: float = 1.0 + H_z * t_age
+        base_accel: float = gravitational_accel * expansion_factor * (1.0 + f_TRZ_value)
+        wind_pressure: float = (P_pulsar / (4.0 * math.pi * max(r_nebula**2, 1e-30))) * (1.0 + v_shock / max(c_speed, 1e-30))
+        a_wind: float = wind_pressure / max(density, 1e-30) * 1.0e-12
+        electromagnetic_accel: float = q_charge * v_shock * B_field / max(m_e, 1e-30)
+        ua_factor: float = 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        a_mag: float = electromagnetic_accel * ua_factor * 1.0e-12
+        return base_accel + a_wind + a_mag
+
+    def _compute_rings_lensing_term(self, params: Dict[str, float]) -> float:
+        M: float = params.get('M', 1.0e14 * 1.989e30)
+        r: float = params.get('r', 3.086e20)
+        factor: float = params.get('lensing_factor', 0.67)
+        return self.G * M / max(self.c**2 * r, 1e-30) * factor
+
     def _compute_g_rings(self, params: Dict[str, float]) -> float:
-        base: float = self._compute_base_uqff_core(params.get('M', 1.0e35), params.get('r', 1e20), self._compute_h_t_z(params), params.get('B', 1e5))
-        return base * (1.0 + params.get('L_t', 0.0)) + self._compute_ug_modes(params) + self.Lambda * self.c * self.c / 3.0 + self._compute_quantum_memory_term(params) + params.get('q', 1.0) * params.get('v', 1.0) * params.get('B_field', 1.0) + params.get('rho_fluid', 1.0) * params.get('V', 1.0) * params.get('g', 9.81) + self._compute_wave_superposition(params) + self._compute_visible_density_term(params)
+        M: float = params.get('M', 1.0e14 * 1.989e30)
+        r: float = params.get('r', 3.086e20)
+        t: float = params.get('t', 5.0e9 * 3.156e7)
+        z: float = params.get('z', 0.5)
+        B: float = params.get('B', 1.0e-5)
+        B_crit: float = params.get('B_crit', 1.0e11)
+        H_z: float = self._compute_h_t_z({'z': z})
+        H_term: float = H_z * t
+        lensing: float = self._compute_rings_lensing_term(params)
+        base: float = self.G * M / max(r**2, 1e-30) * (1.0 + H_term) * (1.0 - B / max(B_crit, 1e-30)) * (1.0 + lensing)
+        ug_sum: float = self._compute_ug_modes(params) * (1.0 + params.get('f_TRZ', self.f_TRZ))
+        q_term: float = params.get('q', 1.602e-19) * params.get('v', 1.0e6) * B
+        rho_vac_ua: float = params.get('rho_vac_ua', self.rho_vac_ua)
+        rho_vac_SCm: float = params.get('rho_vac_SCm', self.rho_scm)
+        q_term *= 1.0 + rho_vac_ua / max(rho_vac_SCm, 1e-30)
+        visible_term: float = self._compute_visible_density_term({
+            'M_visible': params.get('M_visible', M),
+            'M_DM': params.get('M_DM', 0.1 * M),
+            'delta_rho': params.get('delta_rho', 1.0e-5 * params.get('rho', 1.0e-25)),
+            'rho': params.get('rho', 1.0e-25),
+            'M': M,
+            'r': r,
+            'sin_factor': 1.0,
+        })
+        return (
+            base
+            + ug_sum
+            + self.Lambda * self.c * self.c / 3.0
+            + self._compute_quantum_memory_term(params)
+            + q_term
+            + params.get('rho_fluid', 1.0) * params.get('V', 1.0) * params.get('g', 9.81)
+            + self._compute_wave_superposition(params)
+            + visible_term
+        )
 
     def _compute_g_uqff(self, params: Dict[str, float]) -> float:
         return self._compute_compressed_uqff(params)
@@ -4395,6 +5040,13 @@ def prove_constant_derivation(mode: str, **kwargs: Any) -> Dict[str, Any]:
 
 if __name__ == '__main__':
     eng: StarMagicProofEngine = get_portable_proof_engine()
+    # Example/demo section for newly added proof modes.
+    # This sequence shows the portable engine performing:
+    #  - UQFF universal balance verification,
+    #  - Quantum Chain master derivation,
+    #  - Standard Model direct counter-analysis,
+    #  - Standard Model counter for the last 12 queries,
+    #  - Refactored umbilicus mass-balance metadata.
     print("UQFF_SimultaneousProofEngine (portable) ΓÇö re-structured per directive")
     print("Available proof / constant derivation modes with first-principles closures:")
     for m in eng.list_proof_derivation_modes():
@@ -4405,6 +5057,14 @@ if __name__ == '__main__':
     print(eng.get_proof_mode('f_u_universal_simultaneous_balance'))
     print("\nExample: Quantum Chain 26-level master derivation (Step 7 mass BORN + F_U=1)")
     print(eng.derive_constant_from_quantum_chain(7))
+    print("\nExample: Standard Model direct counter-analysis")
+    print(eng.get_proof_mode('standard_model_mathematical_counter_analysis'))
+    print("\nExample: Standard Model counter for the last 12 queries")
+    print(eng.get_proof_mode('standard_model_counter_last_12_queries'))
+    print("\nExample: Refactored umbilicus mass balance")
+    print(eng.get_proof_mode('refactored_umbilicus_mass_balance'))
+    print("\nExample: Registry discovery test for crab_nebula_gravity_equation")
+    print(eng.verify_registry_discovery('crab_nebula_gravity_equation'))
     print("\n--- Deep grok extraction verification ---")
     print("Quantum Chain steps:", len(eng.QUANTUM_CHAIN_MASTER_DERIVATION['steps']))
     print("Paradoxes count (8 with 0.000% ledger):", eng.PARADOXES_AND_MILLENNIUM_PROOFS['count'])
