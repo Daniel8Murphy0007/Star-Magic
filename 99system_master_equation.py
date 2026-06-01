@@ -34,16 +34,10 @@ OMEGA_SCM = 2 * PI * 1.25e12
 SSQ       = 0.57
 S26       = sum(math.exp(-SSQ * k / 26.0) for k in range(1, 27))
 BETA_I    = 0.6   # canonical: scm_vacuum_manifold.py
-# ---- Holmlid/Parkhomov/SCm canonical constants [pdf/scm_vacuum_manifold.py] ----
-import math as _math_99
-E_PHONON_SCM  = 6.62607015e-34 * 1.25e12   # h * f_THz
-S26_3         = 1.4531e26                   # 26D Ramanujan amplification
-PHI_RESONANCE = 0.84                        # on-resonance Gaussian factor
-KER_SCM       = E_PHONON_SCM * S26_3 * PHI_RESONANCE
-SCALING_SCM   = 630 * 1.60217662e-19 / (E_PHONON_SCM * S26_3 * PHI_RESONANCE)  # exact 630 eV normalizer
-KAPPA_FLOAT   = 0.0005  # float(KAPPA)
 # --- SCm constants from dpm_vacuum_manifold (consolidated) ---
 from dpm_vacuum_manifold import (
+    RHO_VAC_SCM,
+    RHO_VAC_UA,
     E_phonon       as E_PHONON_SCM,
     S26_3          as S26_3,
     Phi_resonance  as PHI_RESONANCE,
@@ -95,13 +89,15 @@ def pons_fleischmann_excess_heat(PdD_loading=0.9, volume=1e-6):
 def parkhomov_excess_heat(N_clusters=2.0e18, t_hours=1):
     """Parkhomov Ni-H excess heat: 630 eV/cluster * N_clusters, realistic 100-300 W range"""
     energy_per_cluster_j = 630 * 1.60217662e-19
-    P = N_clusters * energy_per_cluster_j * _math_99.exp(-KAPPA_FLOAT * t_hours * 24)
+    P = N_clusters * energy_per_cluster_j * math.exp(-KAPPA_FLOAT * t_hours * 24)
     return P / 1e3  # kW  (~200 W at default params)
 
 def compute_F_U_Bi_i_numerical(M_bh=1.989e30, r=6.96e8, Gamma=1e12):
     """F_U_Bi_i integral numerical [canonical: scm_vacuum_manifold.py]"""
     import math as _m_fubi
-    G_N = 6.6743e-11; rho_ua = 7.09e-36; rho_scm_v = 7.09e-37
+    G_N = 6.6743e-11
+    rho_ua = RHO_VAC_UA
+    rho_scm_v = RHO_VAC_SCM
     cos_pi_tn = _m_fubi.cos(_m_fubi.pi * -100.0)
     grav_proj = G_N * float(M_bh) / (float(r)**2) if float(r) > 0 else 0.0
     integrand = -1.0e-10 + grav_proj * cos_pi_tn + rho_ua * cos_pi_tn + rho_scm_v
