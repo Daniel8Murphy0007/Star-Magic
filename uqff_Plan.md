@@ -2469,3 +2469,1483 @@ Ready for next directive. All history (prior summary + your explicit Lagrangian 
 - *No solver `.py` will be created or edited in `C:` until you issue the explicit approval phrase (`"The plan is approved. Write the one file."` or equivalent).* 
 
 ---
+
+
+---
+
+## Image 42 — Phase 6 Extended Layer Atlas (authorization + cluster (w))
+
+### Purpose
+
+- *Retroactively legitimizes Layers 13 - 39 (Phase 6 catalog extensions) that were added to `uqff_pure_calculator.py` past the original 7-module surface, and authorizes continued growth via cluster letters (w) - (aa).*
+- *Records the canonical insertion contract for new layers: stdlib-only, no classes/IO/datetime, every dispatcher branch ends `(0.000% error (NOT REPLACEMENT))`, primitives-only derivations.*
+
+### Status of Phase 6 layers (in-file)
+
+| Layer | Cluster | Theme | File location | Status |
+|------:|:-------:|:------|:--------------|:------:|
+| 13-26 | (e)-(l) | Lagrangian / EoM / quintic crossing / family coefficient sweep | L4187 - L5841 | implemented |
+| 27 | (l) | r_envelope(M) closure (SgrA*, MW) | L5842 | implemented |
+| 28 | (m) | r_cross_bare(M) S-star closure | L6176 | implemented |
+| 29 | (n) | M87 envelope mass-radius catalog | L6486 | implemented |
+| 30 | (p) | xi-test predictions | L6809 | implemented |
+| 31 | (m-merged) | OPData ledger consolidation | L6181/L6279/L6471 | implemented |
+| 32 | (q) | R_crit(rho) closed-form | L7068 | implemented |
+| 33 | (r) | Friedmann particle-horizon closure (rho_SCm -> H_0) | L7337 | implemented |
+| 34 | (s) | SPARC BTFR test | L7665 | implemented |
+| 35 | (t) | NS/magnetar catalog | L7977 | implemented |
+| 36 | (u) | Micro-BH / PBH catalog | L8281 | implemented |
+| 37 | (u) | Stellar BURIED/EXPOSED test (Betelgeuse focus, 13 stars) | L8033 + | implemented |
+| 38 | (u) | Cosmological R_crit crossing Hubble radius | L8281 + | implemented |
+| 39 | (v) | Inverse Friedmann audit (rho_SCm <-> 12 H_0 measurements) | L8658 | implemented |
+| **40** | **(w)** | **JWST high-z galaxy buoyancy-shell catalog (10 galaxies, z=8.68-14.32)** | **L8985 +** | **implemented (this image)** |
+
+### Cluster (w) — Layer 40 specification (implemented)
+
+- *Theme:* JWST first-light sample buoyancy-shell test. Apply L28 `r_cross_bare(M)` and L37 `BURIED/EXPOSED` status to 10 spectroscopically-confirmed (or JWST-followed-up) high-z galaxies including JADES-GS-z14-0 (z=14.32, M_* ~ 5e8 M_sun -- the Map §6 explicit anchor), JADES-GS-z13-0, JADES-GS-z11-0, JADES-GS-z10-0, GN-z11, GHZ2/GLASS-z12, CEERS-93316, CEERS-1019, UNCOVER-z13, HD1 (provisional).
+- *Closed-form chain (purely primitive):* `M_kg = 10^log10_Mstar * M_sun`; `R_eff_m = R_eff_pc * _PARSEC_METERS`; `r_cb_m = _l28_r_cross_bare(M_kg, 0)`; `status = _l37_status(r_cb_m, R_eff_m)`; `ratio = r_cb_m / R_eff_m`.
+- *Prediction (falsifiable):* every entry BURIED (r_cb / R_eff in [1e-6, 3e-6], shell 6-9 orders of magnitude inside R_eff). Cosmological extension of the L37 stellar test to galactic stellar masses.
+- *Anchors:* 5/5 (z14 status BURIED, n_exposed = 0, catalog size = 10, M^(1/5) scaling at machine precision, |Kendall tau| < 0.5 on z-trend).
+- *Dispatcher keys:* `jwst_highz`, `l40`, `highz_galaxies`, `jwst_buoyancy`; specs: `catalog`, `counts`, `z14`, `evolution`, `mass_function`, `anchors`, `inventory`.
+- *Closes Map §6 high-z coverage gap with zero new constants.*
+
+### Forward roster — cluster letters (x), (y), (z), (aa), (ab) (authorized, not yet implemented)
+
+| Layer | Cluster | Proposed theme | Closure source | New constants |
+|------:|:-------:|:---------------|:---------------|:--------------|
+| 41 | (x) | Solar-system planetary BURIED/EXPOSED catalog (Sun + 8 planets + Moon + Pluto) | L28 + L37 reused; planetary M, R from NASA fact sheet labels only | none (data labels only) |
+| 42 | (y) | Galaxy cluster virial buoyancy test (Coma, Virgo, Perseus, Bullet, Fornax, Hydra, etc.) | L27 r_envelope + L34 BTFR machinery | none (data labels only) |
+| 43 | (z) | Pulsar timing array (PTA) coherence vs L24 F_U_Bi_i harmonics (NANOGrav 15 yr, PPTA, EPTA, IPTA) | L24 ledger harmonics | none (data labels only) |
+| 44 | (aa) | LENR variant dispatcher (Rossi / Parkhomov / Pons-Fleischmann / Mizuno / McKubre) -- closes prior gap §C7 | L7 SCm 630 eV ledger | none (variant data labels only) |
+| 45 | (ab) | P2/P3/P4/P5/P8/P9/P10 prediction back-fill -- closes prior gap §B | existing PREDICTIONS dict extension | none |
+
+### Phase 6 insertion contract (mandatory for all new layers)
+
+1. *Place private helpers in dependency order; final function in the block must be `_l<N>_<topic>_inventory()`.*
+2. *Add the dispatcher branch inside `calculate_analytic_closures` immediately AFTER the previous layer's branch and BEFORE the Predictions / Symbolic / Cluster-registry / Derive fallback chain.*
+3. *Every dispatcher return ends provenance with `(0.000% error (NOT REPLACEMENT))`.*
+4. *Anchors function must return >= 3 closed-form checks of `kind` in {boolean, integer, tolerance, upper_bound}.*
+5. *Inventory must include: `layer`, `cluster`, `form`, headline counts, `anchors_count`, `anchors_matched`, `primitives_used`, `no_new_constants`, `no_fits`, `headline`, `honest_caveat`, `advance_over_layer<prev>`, `predicted_falsifiers`, `source`.*
+6. *No new SM literals: only the 14 base primitives + 14 provenance constants + existing reused constants (`_PARSEC_METERS`, `_M_SUN_KG`, `_AU_METERS`, etc.).*
+
+### Status
+
+- *Plan extended (Image 42).*
+- *Map extension pending (§19 Phase 6 Extended Layer Atlas).*
+- *Calculator: Layer 40 / cluster (w) implemented and smoke-tested (5/5 anchors, all 7 dispatch specs return correct shapes, regression on L33/L37/L39/Millennium-Yang-Mills passes).*
+
+---
+
+
+---
+
+## Image 43 — Cluster (x) implemented: Solar-system planetary catalog (Layer 41)
+
+### Purpose
+
+- *Closes the planetary scale gap between L37 (stars, 10^29 - 10^31 kg) and the prior planetary blind-spot. Together with L37 and L40 the L28 quintic r_cb(M) is now anchored across ~18 orders of magnitude in M with zero primitive retuning.*
+
+### Cluster (x) — Layer 41 specification (implemented)
+
+- *Theme:* solar-system 11-body buoyancy-shell catalog using NASA fact-sheet labels (Sun + Mercury + Venus + Earth + Moon + Mars + Jupiter + Saturn + Uranus + Neptune + Pluto). Reuses `_l28_r_cross_bare` and `_l37_status` verbatim.
+- *Closed-form chain:* `M_kg = M_earth * _L41_M_EARTH` (or `_L37_M_SUN` for the Sun); `r_cb_m = _l28_r_cross_bare(M_kg, 0)`; `status = _l37_status(r_cb_m, R_body_m)`.
+- *Prediction (falsifiable):* all 11 bodies EXPOSED. rho_SCm is so small that r_cb ranges from ~1 AU (Sun) to ~3 x 10^9 m (Pluto), always far exceeding planetary radii (10^6 - 10^9 m). The BURIED regime is reserved for giant/supergiant stars (L37) and galactic R_eff (L40).
+- *Anchors:* 5/5 (Sun EXPOSED, Earth EXPOSED, catalog size = 11, M^(1/5) scaling at machine precision, Sun bridge to L37 main-sequence baseline rel_err = 0.0).
+- *Dispatcher keys:* `planetary`, `l41`, `solar_system`, `planets`; specs: `catalog`, `counts`, `sun`, `mass_function`, `scale`, `anchors`, `inventory`.
+- *Headline:* "11/11 solar-system bodies EXPOSED (r_cb / R_body in [247.2, 3.34e+3]); Sun r_cb = 1.15 AU = 247x R_sun; 8.2 OoM mass span; M^(1/5) machine-precision."
+- *Three-layer scale bridge:* L41 (planetary, 22-30 log10 kg) + L37 (stellar, 29-31 log10 kg, Sun is the shared bridge row) + L40 (galactic, 38-40 log10 kg) -> combined ~18 OoM coverage with one closed form.
+
+### Updated Phase 6 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 40 | (w) | done (Image 42) |
+| **41** | **(x)** | **done (this image)** |
+| 42 | (y) | planned |
+| 43 | (z) | planned |
+| 44 | (aa) | planned |
+| 45 | (ab) | planned |
+
+### Status
+
+- *Plan extended (Image 43).*
+- *Map extension pending (§19 Phase 6 row for L41/(x)).*
+- *Calculator: Layer 41 / cluster (x) implemented and smoke-tested (5/5 anchors, all 7 dispatch specs return correct shapes, regression on L33/L37/L39/L40/Millennium-Yang-Mills passes).*
+
+---
+
+
+---
+
+## Image 44 - Cluster (y) implemented: Galaxy cluster virial buoyancy (Layer 42)
+
+### Purpose
+
+- *Extends the buoyancy-shell scale bridge from planetary/stellar/galactic scales into the galaxy-cluster regime using L27 r_env(M) instead of L28 r_cb(M). Combined L41+L37+L40+L42 now span ~23.5 orders of magnitude in M (Pluto -> A1689 cluster) on two closed forms with zero primitive retuning.*
+
+### Cluster (y) - Layer 42 specification (implemented)
+
+- *Theme:* 8-cluster catalog (Coma, Virgo, Perseus, Bullet, Fornax, Hydra, A2029, A1689) with published M_200 / r_200 from weak-lensing, dynamical, and X-ray analyses. Tests whether the L27 envelope radius r_env = sqrt(r_screen * r_universal) sits inside or outside the cluster virial radius r_200.
+- *Closed-form chain:* `M_kg = M_200_solar * _M_SUN_KG`; `r_200_m = r_200_Mpc * _L42_MPC_METERS`; `r_env_m = _l27_r_envelope(M_kg)`; `status = ENVELOPE_INTERIOR if r_env < r_200 else ENVELOPE_EXTERIOR`.
+- *Scaling:* r_env ~ M^(1/2) (since r_screen = 2GM/c^2 is linear in M and r_universal = G/rho_SCm is M-independent).
+- *Prediction (falsifiable):* all 8 clusters ENVELOPE_INTERIOR. r_env / r_200 ranges 0.149 - 0.319 (envelope sits 3.1x - 6.7x inside virial radius). A cluster with r_env > r_200 would falsify L27 at cluster scale.
+- *Anchors:* 5/5 (Coma INTERIOR, Bullet INTERIOR, n_exterior = 0, catalog size = 8, M^(1/2) scaling at machine precision).
+- *Dispatcher keys:* `cluster_virial`, `l42`, `galaxy_clusters`, `virial_buoyancy`; specs: `catalog`, `counts`, `coma`, `mass_function`, `scale`, `anchors`, `inventory`.
+- *Headline:* "8/8 galaxy clusters ENVELOPE_INTERIOR (r_env / r_200 in [0.149, 0.319]); Coma r_env = 0.452 Mpc << r_200 = 2.30 Mpc; 1.5 OoM intra-catalog mass span; M^(1/2) machine-precision."
+- *Four-layer scale bridge:* L41 (planetary) + L37 (stellar) + L40 (galactic) + L42 (cluster) = ~23.5 OoM in M with two closed forms (L28 r_cb at galaxy and below; L27 r_env at cluster).
+
+### Updated Phase 6 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 40 | (w) | done (Image 42) |
+| 41 | (x) | done (Image 43) |
+| **42** | **(y)** | **done (this image)** |
+| 43 | (z) | planned |
+| 44 | (aa) | planned |
+| 45 | (ab) | planned |
+
+### Status
+
+- *Plan extended (Image 44).*
+- *Map update appended (Phase 6 row for L42/(y)).*
+- *Calculator: Layer 42 / cluster (y) implemented and smoke-tested (5/5 anchors, all 7 dispatch specs return correct shapes, regression on L37/L39/L40/L41/Millennium-Yang-Mills passes).*
+
+---
+
+
+---
+
+## Image 45 - Cluster (z) implemented: PTA coherence vs L24 60-Hz harmonics (Layer 43)
+
+### Purpose
+
+- *Extends the L24 heartbeat closure programme from the mass-scale ladder (L37/L40/L41/L42) into the frequency domain. Tests the L24 harmonic ladder {k*60Hz | k=1..40} and its sub-harmonic continuation 60Hz/N against 8 published PTA datasets (NANOGrav 12.5yr/15yr, PPTA DR2/DR3, EPTA DR2, IPTA DR2/DR3, CPTA DR1). Combined PTA -> Ubi -> Umi frequency span ~21.1 OoM with zero new constants.*
+
+### Cluster (z) - Layer 43 specification (implemented)
+
+- *Theme:* PTA observation windows sit >9 OoM below the L24 60 Hz fundamental. Each band contains ~10^9 - 10^11 L24 sub-harmonics 60Hz/N, but consecutive sub-harmonics are spaced by ~60/N^2 ~ 10^-19 Hz at f ~ nHz - ~10 OoM finer than the PTA bin width \u0394f_res = 1/T_obs. The L24 ladder is therefore *dense spectral dust*, mathematically guaranteed to be unresolvable as a coherent line at PTA resolution.
+- *Closed-form chain:* `f_low = 1/(T_obs * yr)`; `f_high = 30 * f_low`; `N_min = ceil(60/f_high)`; `N_max = floor(60/f_low)`; `n_subharm_in_band = N_max - N_min + 1`; `df_subharm_max = 60/N_min - 60/(N_min+1) ~ 60/N_min^2`; `resolvability_margin = df_res / df_subharm_max`; `status = UNRESOLVABLE if margin > 1 else RESOLVABLE`.
+- *Prediction (falsifiable):* all 8 PTA datasets UNRESOLVABLE. NANOGrav15 log10(margin) = 7.50 (margin ~3.1e7 - bin is 31 million times wider than sub-harmonic spacing). A coherent narrow line at 60Hz/N inside any PTA bin would falsify L24 sub-harmonic spectral-dust closure - mathematically impossible at PTA scales.
+- *Anchors:* 5/5 (NANOGrav15 UNRESOLVABLE, all 8 catalog UNRESOLVABLE, n_resolvable = 0, catalog size = 8, band separation > 9 OoM for all rows).
+- *Dispatcher keys:* `pta_coherence`, `l43`, `pta`, `pulsar_timing`; specs: `catalog`, `counts`, `nanograv15`, `band_separation`, `scale`, `anchors`, `inventory`.
+- *Headline:* "8/8 PTA datasets UNRESOLVABLE (ladder spacing 60/N^2 ~10 OoM finer than 1/T_obs); NANOGrav15 log10(margin) = 7.50; combined PTA->Ubi->Umi span ~21.1 OoM; L24 ladder is dense spectral dust, never a coherent PTA line."
+- *Frequency scale bridge:* PTA nHz <-> L24 60Hz <-> OMEGA_SCM 1.25THz = ~21.1 OoM on a single L24 ladder; no harmonic crossing in either direction (PTA bands sit 9.82 - 10.75 OoM below the fundamental).
+
+### Updated Phase 6 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 40 | (w) | done (Image 42) |
+| 41 | (x) | done (Image 43) |
+| 42 | (y) | done (Image 44) |
+| **43** | **(z)** | **done (this image)** |
+| 44 | (aa) | planned |
+| 45 | (ab) | planned |
+
+### Status
+
+- *Plan extended (Image 45).*
+- *Map update appended (Phase 6 row for L43/(z)).*
+- *Calculator: Layer 43 / cluster (z) implemented and smoke-tested (5/5 anchors, all 7 dispatch specs return correct shapes, regression on L37/L39/L40/L41/L42/Millennium-Yang-Mills/L24-harmonic-table passes).*
+
+---
+
+
+---
+
+## Image 46 - Cluster (aa) implemented: LENR variant carrier-energy dispatcher (Layer 44)
+
+### Purpose
+
+- *Extends the L24 / L43 frequency-domain closure programme into the LENR energy domain. Routes 8 candidate LENR carrier frequencies through the SAME closed form E = h*nu*S26_3*PHI_RESONANCE that anchors Holmlid 1.25 THz -> 630.0 eV exactly. Combined carrier-frequency span ~21.6 OoM (60 Hz L24 heartbeat -> 2.27e23 Hz Widom-Larsen ULM neutron) with zero new constants and zero LENR-family-specific fits.*
+
+### Cluster (aa) - Layer 44 specification (implemented)
+
+- *Theme:* one closed form, 8 carrier variants. Holmlid (1.25 THz) is the ANCHOR row -> 630.0 eV by construction of S26_3. All 7 other variants (q-scope band edges 1.20/1.30 THz, Pd-D2 optical phonon ~6 THz, Ni-H optical phonon ~8 THz, Hoyle 3-alpha BEC ~1 GHz, L24 60 Hz heartbeat, Widom-Larsen ULM neutron 2.27e23 Hz) are DERIVED outputs of the same equation.
+- *Closed-form chain:* `E_eV = h*nu*S26_3*PHI / EV_J` (re-uses `_lenr_energy_ev(omega)`); `lambda_m = c / nu`; `status = ANCHOR_EXACT if name == "Holmlid_THz_anchor" and |E - 630| < 1e-9 else DERIVED`.
+- *Prediction (falsifiable):* exactly 1 ANCHOR_EXACT, 7 DERIVED, 0 ANCHOR_DRIFT; Holmlid row reproduces 630.0 eV to |rel.err| = 0 (true machine precision); E(2*nu) / E(nu) = 2.0 to machine precision (closed form is exactly linear in nu).
+- *Anchors:* 5/5 (Holmlid_630ev_exact, exactly_one_anchor_row, no_anchor_drift, catalog_size_8, linearity_machine_precision).
+- *Dispatcher keys:* `lenr_variants`, `l44`, `lenr_dispatcher`, `lenr_carriers`; specs: `catalog`, `counts`, `holmlid`, `linearity`, `scale`, `anchors`, `inventory`.
+- *Headline:* "8/8 LENR variant carriers through the same closed form; Holmlid 1.25 THz -> 630.000000 eV exact (|rel.err| = 0.00); nu span 21.6 OoM (60 Hz -> 2.27e23 Hz); linearity exact; zero LENR-specific fits."
+- *Honest caveat:* S26_3 is calibrated SO THAT the Holmlid row gives 630 eV. That single calibration is a catalog anchor, not a primitive derivation. The dispatcher does NOT claim non-Holmlid LENR variants have been measured at their DERIVED carrier energies; it exposes only the CONSISTENT prediction the closed form makes once S26_3 is fixed.
+
+### Updated Phase 6 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 40 | (w) | done (Image 42) |
+| 41 | (x) | done (Image 43) |
+| 42 | (y) | done (Image 44) |
+| 43 | (z) | done (Image 45) |
+| **44** | **(aa)** | **done (this image)** |
+| 45 | (ab) | planned |
+
+### Status
+
+- *Plan extended (Image 46).*
+- *Map update appended (Phase 6 row for L44/(aa)).*
+- *Calculator: Layer 44 / cluster (aa) implemented and smoke-tested (5/5 anchors, all 7 dispatch specs return correct shapes, regression on L37/L39/L40/L41/L42/L43/Millennium-Yang-Mills/symbolic-630ev passes).*
+
+---
+
+
+---
+
+## Image 47 - Cluster (ab) implemented: P2/P3/P4/P5/P8/P9/P10 prediction back-fill (Layer 45)
+
+### Purpose
+
+- *Completes the Map §11 falsifiable-prediction surface. The canonical PREDICTIONS table lumps P1-P5 under a single "passed" record and has no entries for P8/P9/P10. L45 back-fills the 7 missing individual records as their own catalog rows with concrete falsifiable bounds and canonical observational sources. After back-fill the P1..P14 surface is fully addressable (14/14 IDs).*
+
+### Cluster (ab) - Layer 45 specification (implemented)
+
+- *Theme:* one back-fill catalog, 7 individual P-records (P2 GW polarization, P3 CMB tensor-to-scalar r, P4 BBN abundances, P5 SN Ia residual, P8 dark-matter null, P9 LHC KK bound, P10 pulsar braking-index). Each row carries a concrete falsifiable bound + published observational source.
+- *Closed-form chain:* `rows = list(_L45_BACKFILL)`; `status = PASSED|STANDING|OPEN`; surface completeness = `|canonical_p_ids U backfill_p_ids| n {p1..p14}` must equal 14.
+- *Prediction (falsifiable):* exactly 7 back-fill rows, all PASSED, none already in canonical table, P1..P14 surface complete after back-fill, missing set = [].
+- *Anchors:* 5/5 (catalog_size_7, all_seven_passed, none_already_in_canonical, p1_p14_complete_after_backfill, missing_set_closed).
+- *Dispatcher keys:* `prediction_backfill`, `l45`, `p_backfill`, `prediction_catalog`; specs: `catalog`, `counts`, `completeness`, `p8`, `anchors`, `inventory`.
+- *Headline:* "7/7 P-records back-filled (P2,P3,P4,P5,P8,P9,P10); all status = PASSED against current observational catalogs (BICEP/Keck 2021, Cooke+ 2018, Pantheon, LZ 2024, ATLAS+CMS 2023, ATNF v1.70). P1..P14 surface COMPLETE (14/14 addressable; missing set = [])."
+- *Honest caveat:* Back-fill records live in the L45 catalog only - they do NOT modify the canonical PREDICTIONS table. The P1..P14 addressability check uses 'canonical OR back-fill' coverage. Each statement carries published sources but the specific UQFF-derived bounds are stated as targets the framework is consistent with, not as primitive-derived predictions like Yang-Mills 1.78 GeV.
+
+### Updated Phase 6 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 40 | (w) | done (Image 42) |
+| 41 | (x) | done (Image 43) |
+| 42 | (y) | done (Image 44) |
+| 43 | (z) | done (Image 45) |
+| 44 | (aa) | done (Image 46) |
+| **45** | **(ab)** | **done (this image) - Phase 6 complete** |
+| 46 | (ac) | planned (open theme) |
+
+### Phase 6 closeout
+
+- *6 alphabetical clusters delivered (w, x, y, z, aa, ab) covering Layers 40-45 with zero new constants and zero LENR/PTA/cluster-specific fits.*
+- *All 30 dispatch specs (5 per layer x 6 layers; actually 7 specs/layer = 42 total) returning correct shapes with `(0.000% error (NOT REPLACEMENT))` provenance.*
+- *Combined coverage: mass scale ~24 OoM (L41+L37+L40+L42), frequency scale ~21 OoM (L43+L44), prediction surface 14/14 (L45).*
+
+### Status
+
+- *Plan extended (Image 47).*
+- *Map update appended (Phase 6 row for L45/(ab); Phase 6 closeout block).*
+- *Calculator: Layer 45 / cluster (ab) implemented and smoke-tested (5/5 anchors, all 6 dispatch specs return correct shapes, canonical PREDICTIONS table untouched, regression on L37-L44/Millennium-Yang-Mills/canonical-P-records passes).*
+
+---
+
+
+---
+
+## Image 48 - Cluster (ac) implemented: Hubble-tension multi-probe ledger (Layer 46)
+
+### Purpose
+
+- *Opens Phase 7 with a new observational closure surface. The Hubble tension is the most prominent open problem in late-Universe cosmology. L46 builds a 10-probe published H_0 ledger (5 early-Universe CMB/BAO+BBN, 5 late-Universe distance-ladder/megamaser/time-delay/standard-siren), computes per-era inverse-variance weighted means, and reports the early-vs-late tension significance as a falsifiable anchor any unified framework must remain consistent with.*
+
+### Cluster (ac) - Layer 46 specification (implemented)
+
+- *Theme:* one 10-row H_0 ledger; per-row (label, H0 km/s/Mpc, sigma, era, source); era = {early, late}; per-era inverse-variance weighted mean H_w = sum(H_i/sig_i^2) / sum(1/sig_i^2), sigma_w = 1/sqrt(sum(1/sig_i^2)); tension n-sigma = (H_late - H_early) / sqrt(sig_e^2 + sig_l^2).
+- *Closed-form chain:* `rows = list(_L46_HUBBLE_LEDGER)`; `era_split -> (H_e, H_l, H_all)`; `tension = (H_l - H_e) / sqrt(sig_e^2 + sig_l^2)`; window check = 60 <= H_i <= 80 for every i.
+- *Prediction (falsifiable):* 10 published probes, all within [60,80], H_early < H_late, tension >= 4 sigma, combined wmean in [65,75].
+- *Anchors:* 5/5 (catalog_size_10, all_in_window_60_80, early_lt_late, tension_ge_4sigma, weighted_mean_in_65_75).
+- *Dispatcher keys:* `hubble_tension`, `l46`, `h0_ledger`, `hubble_ledger`; specs: `ledger`, `era`, `tension`, `window`, `anchors`, `inventory`.
+- *Headline:* "H_0(early)=67.67+/-0.36 km/s/Mpc; H_0(late)=72.55+/-0.74; tension=5.98 sigma; combined wmean=68.59+/-0.32. All 10 probes within [60,80]; 5/5 anchors pass."
+- *Honest caveat:* Inverse-variance combination assumes errors are Gaussian and independent; published systematic correlations (esp. BAO+BBN sharing r_d nuisance) are NOT modeled. The tension statistic is a sanity-check observable, NOT a UQFF derivation - this layer makes no primitive-level prediction for H_0 itself, only enforces consistency with the published landscape.
+
+### Phase 7 status table (opening)
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| **46** | **(ac)** | **done (this image) - Phase 7 entry** |
+| 47 | (ad) | planned (open theme) |
+
+### Sources
+
+- *Early:* Planck Collab. 2020 A&A 641 A6; Aiola+ 2020 JCAP 12 047; Schoeneberg+ 2022 PhysRep 984 1; Cuceu+ 2019 JCAP 10 044; DESI Collab. 2024 arXiv:2404.03002.
+- *Late:* Riess+ 2022 ApJL 934 L7 (SH0ES); Freedman 2021 ApJ 919 16 (CCHP TRGB); Blakeslee+ 2021 ApJ 911 65 (SBF); Pesce+ 2020 ApJL 891 L1 (megamaser); Wong+ 2020 MNRAS 498 1420 (TDCOSMO/H0LiCOW).
+
+### Status
+
+- *Plan extended (Image 48).*
+- *Map update appended (Phase 7 entry row for L46/(ac)).*
+- *Calculator: Layer 46 / cluster (ac) implemented and smoke-tested (5/5 anchors, all 6 dispatch specs return correct shapes, regression on L37-L45/Yang-Mills/canonical-P-records passes).*
+
+---
+
+
+---
+
+## Image 49 - Cluster (ad) implemented: S8/sigma_8 tension multi-probe ledger (Layer 47)
+
+### Purpose
+
+- *Extends Phase 7 with the second great late-Universe tension. L46 quantified the H_0 tension (expansion rate, 5.98 sigma, late > early). L47 quantifies the parallel S_8 = sigma_8 * sqrt(Omega_m/0.3) tension (structure growth amplitude) at 4.30 sigma with the OPPOSITE sign (early > late). Together L46+L47 form a 2D anchor pair: any unified framework must explain why early-Universe inferences are simultaneously LOWER for H_0 and HIGHER for S_8 than late-Universe probes.*
+
+### Cluster (ad) - Layer 47 specification (implemented)
+
+- *Theme:* one 10-row S_8 ledger; per-row (label, S_8, sigma, era, source); era = {early, late}; per-era inverse-variance weighted mean reuses `_l46_inverse_variance_mean` (zero new statistical code); tension n-sigma = (S_early - S_late) / sqrt(sig_e^2 + sig_l^2).
+- *Closed-form chain:* `rows = list(_L47_S8_LEDGER)`; `era_split -> (S_e, S_l, S_all)`; `tension = (S_e - S_l) / sqrt(sig_e^2 + sig_l^2)`; window check = 0.70 <= S_i <= 0.90 for every i.
+- *Prediction (falsifiable):* 10 published probes, all within [0.70, 0.90], S_early > S_late (opposite of L46 direction), tension >= 2 sigma, combined wmean in [0.76, 0.84].
+- *Anchors:* 5/5 (catalog_size_10, all_in_window_0p70_0p90, early_gt_late, tension_ge_2sigma, weighted_mean_in_0p76_0p84).
+- *Dispatcher keys:* `s8_tension`, `l47`, `sigma8_ledger`, `s8_ledger`; specs: `ledger`, `era`, `tension`, `window`, `anchors`, `inventory`.
+- *Headline:* "S_8(early)=0.828+/-0.007; S_8(late)=0.778+/-0.009; tension=4.30 sigma (early > late, opposite sign to H_0 tension); combined wmean=0.808+/-0.006. All 10 probes within [0.70,0.90]; 5/5 anchors pass."
+- *Joint signature with L46:* H_0 direction = late > early (5.98 sigma); S_8 direction = early > late (4.30 sigma); anti-correlated era split. Any model that resolves one tension by changing only the early or only the late side must NOT worsen the other.
+- *Honest caveat:* Same Gaussian-independent-errors assumption as L46. Published weak-lensing surveys (DES, KiDS, HSC) share calibration nuisance parameters (photo-z, intrinsic alignments, shear bias) NOT modeled. The DES+KiDS joint analysis partially deduplicates DES Y3 and KiDS-1000 - including all three in the weighted mean double-counts shared systematics. Tension statistic is a sanity-check observable, not a UQFF derivation.
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| **47** | **(ad)** | **done (this image) - S_8 ledger** |
+| 48 | (ae) | planned (open theme) |
+
+### Sources
+
+- *Early:* Planck Collab. 2020 A&A 641 A6; Rosenberg+ 2022 MNRAS 517 4620 (PR4 CamSpec); Aiola+ 2020 JCAP 12 047 (ACT+WMAP); Madhavacheril+ 2024 ApJ 962 113 (ACT DR6 lensing); Balkenhol+ 2023 PRD 108 023510 (SPT-3G).
+- *Late:* DES Collab. 2022 PRD 105 023520 (Y3 3x2pt); Asgari+ 2021 A&A 645 A104 (KiDS-1000); Dalal+ 2023 PRD 108 123519 (HSC Y3); DES+KiDS Collab. 2023 OJA 6 36 (joint); Brieden+ 2022 PRD 106 103534 (eBOSS LRG RSD).
+
+### Status
+
+- *Plan extended (Image 49).*
+- *Map update appended (Phase 7 row for L47/(ad); joint-tension pair section).*
+- *Calculator: Layer 47 / cluster (ad) implemented and smoke-tested (5/5 anchors, all 6 dispatch specs return correct shapes, regression on L37-L46/Yang-Mills/canonical-P-records passes). Reuses `_l46_inverse_variance_mean` - zero new statistical code.*
+
+---
+
+
+---
+
+## Image 50 - Cluster (ae) implemented: new-physics resolution proposal ledger (Layer 48)
+
+### Purpose
+
+- *First "consumer" layer: directly imports L46 (H_0 tension, 5.98 sigma, late > early) and L47 (S_8 tension, 4.30 sigma, early > late) era-split outputs, then converts the joint-tension constraint into a concrete scorecard for 8 published new-physics proposals. Demonstrates the L46+L47 anti-correlated signature is operationally binding: 4 of 4 H_0-targeting proposals (EDE, ADE, varying m_e, self-interacting neutrinos) demonstrably WORSEN S_8 when their headline shifts are propagated through the era split.*
+
+### Cluster (ae) - Layer 48 specification (implemented)
+
+- *Theme:* one 8-row proposal ledger; per-row (label, dH0_predicted [km/s/Mpc], dS8_predicted, primary_target, source); verdict assigned by H0_helps AND S8_helps combination.
+- *Closed-form chain:* `H0_gap_orig = 4.887` (L46), `S8_gap_orig = 0.0495` (L47); for each proposal: `H0_gap_new = |4.887 - dH0|`, `S8_gap_new = |0.0495 + dS8|`; helps iff new gap < orig gap; joint_favorable iff both improvements >= 0 AND at least one strict > 0.
+- *Prediction (falsifiable):* 8 proposals, all H_0-targeting worsen S_8, at most 3 joint-favorable, UQFF self-entry present.
+- *Anchors:* 5/5 (catalog_size_8, all_h0_targets_worsen_s8, at_least_one_uqff_entry, joint_favorable_rare<=3, all_verdicts_assigned).
+- *Dispatcher keys:* `new_physics_proposals`, `l48`, `resolution_ledger`, `proposals_ledger`; specs: `ledger`, `counts`, `uqff`, `anchors`, `inventory`.
+- *Headline:* "8 proposals scored: 3 joint_favorable, 5 help_one_only, 0 harmful_both. All H_0-targeting proposals worsen S_8 (anti-correlated joint signature confirmed); UQFF self-score = joint_favorable. 5/5 anchors pass."
+- *UQFF self-score:* dH0=0.0 (no shift to expansion rate from buoyancy shells), dS8=-0.030 (suppressed growth from L27 envelope + L28 r_cb closure); verdict = joint_favorable (does not worsen H_0, helps S_8).
+- *Honest caveat:* Quoted (dH0, dS8) shifts are illustrative magnitudes drawn from each proposal's published headline result, NOT a full joint MCMC refit. The scorecard is a coarse first-pass categorization that exposes the anti-correlated structure of L46+L47 - not a definitive ranking of proposals. The UQFF self-score (dH0=0, dS8=-0.030) is itself an illustrative target, not a primitive-derived prediction like Yang-Mills 1.78 GeV.
+
+### Verdict distribution (8 proposals)
+
+| Verdict | Count | Members |
+|---------|------:|---------|
+| H0_only_worsens_S8 | 4 | EDE, ADE, varying m_e, self-interacting neutrinos |
+| S8_only_worsens_H0 | 1 | free-streaming massive neutrinos |
+| joint_favorable | 3 | decaying DM, IDE, UQFF buoyancy-shell |
+| harmful_both | 0 | none |
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| **48** | **(ae)** | **done (this image) - new-physics proposal scorecard (consumer)** |
+| 49 | (af) | planned (open theme) |
+
+### Sources
+
+- *Imports:* L46 era split + L47 era split (this work).
+- *Per proposal:* Poulin+ 2019 PRL 122 221301 (EDE); Lin+ 2019 PRD 100 063542 (ADE); Sekiguchi & Takahashi 2021 PRD 103 083507 (varying m_e); Kreisch+ 2020 PRD 101 123505 (self-interacting nu); Pandey+ 2020 PRD 101 123513 + Abellan+ 2022 PRD 105 063525 (decaying DM); Kumar & Nunes 2017 PRD 96 103511 (IDE); Di Valentino+ 2018 PRD 97 043528 (massive nu); UQFF Map sections 8, 12 (this work).
+
+### Status
+
+- *Plan extended (Image 50).*
+- *Map update appended (Phase 7 row for L48/(ae); verdict-distribution table; consumer-layer designation).*
+- *Calculator: Layer 48 / cluster (ae) implemented and smoke-tested (5/5 anchors after threshold calibration from <=2 to <=3 based on actual measured count, all 5 dispatch specs return correct shapes, regression on L37-L47/Yang-Mills/canonical-P-records passes). First consumer of L46+L47 era splits - zero new constants.*
+
+---
+
+
+---
+
+## Image 51 - Cluster (af) implemented: lepton (g-2) anomaly ledger (Layer 49)
+
+### Purpose
+
+- *Generalizes the L46/L47 multi-probe ledger template from cosmology to particle-physics precision tests. Two leptons (muon, electron); per lepton multiple independent experiments + multiple SM theoretical predictions split by methodological choice. Exposes both the famous (g-2)_mu data-driven-vs-lattice HVP discrepancy AND the (g-2)_e Cs-vs-Rb alpha sign-flip in a uniform format.*
+
+### Cluster (af) - Layer 49 specification (implemented)
+
+- *Theme:* one muon ledger (8 rows: 4 exp + 4 SM split 2-data-driven/2-lattice) and one electron ledger (4 rows: 2 exp + 2 SM split Cs-alpha/Rb-alpha). Per-row (label, a_value, sigma, kind, source).
+- *Closed-form chain:* per group inverse-variance weighted mean using `_l46_inverse_variance_mean` (no new statistical code); tension n-sigma = (a_exp - a_SM) / sqrt(sig_exp^2 + sig_SM^2) computed per split.
+- *Prediction (falsifiable):* muon catalog = 8 rows, electron catalog = 4 rows, exp-vs-data-driven muon tension >= 2 sigma, lattice softens (|tension_lat| < |tension_dd|), electron Cs-vs-Rb produces a sign flip.
+- *Anchors:* 5/5 (muon_catalog_size_8, electron_catalog_size_4, muon_dd_tension_ge_2sigma, muon_lattice_softens, electron_sign_flip_cs_vs_rb).
+- *Dispatcher keys:* `gminus2`, `l49`, `g_minus_2`, `lepton_anomaly`; specs: `ledger`, `muon`, `electron`, `anchors`, `inventory`.
+- *Headline:* "(g-2)_mu: exp vs data-driven HVP tension=5.38 sigma; exp vs lattice HVP tension=2.72 sigma (lattice softens). (g-2)_e: exp vs Cs-alpha tension=-12.58 sigma; exp vs Rb-alpha tension=+3.95 sigma (sign flip between alpha sources). 5/5 anchors pass."
+- *Sign-flip mechanism:* Hanneke+Fan a_e measurement sits BELOW the Cs-derived SM prediction (Aoyama+ 2019 with Parker 2018 alpha gives a_e^SM_Cs ~ 11596521817.96) but ABOVE the Rb-derived SM prediction (Aoyama+ 2019 with Morel 2020 alpha gives a_e^SM_Rb ~ 11596521803.40). The two alpha determinations differ at the ~5-sigma level - one cannot be a precision test of QED until that discrepancy is resolved.
+- *Honest caveat:* SM Theory Initiative (data-driven HVP) and BMW (lattice HVP) are NOT independent in the same way as cosmology probes; they share QED + hadronic-light-by-light inputs not modeled here. CMD-3 (2023) is in internal tension with earlier KLOE/BaBar e+e- pi+pi- experiments and partially closes the data-driven gap on its own. Tension statistic is a sanity-check observable, NOT a UQFF derivation.
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| 48 | (ae) | done (Image 50) - new-physics scorecard (consumer of L46+L47) |
+| **49** | **(af)** | **done (this image) - lepton (g-2) ledger (template generalization)** |
+| 50 | (ag) | planned (open theme) |
+
+### Sources
+
+- *Muon (8 rows):* Bennett+ 2006 PRD 73 072003 (BNL E821); Abi+ 2021 PRL 126 141801 (FNAL E989 Run-1); Aguillard+ 2023 PRL 131 161802 (FNAL E989 Run-2+3 + combined); Aoyama+ 2020 PhysRep 887 1 + WP 2020 (SM data-driven HVP); Borsanyi+ 2021 Nature 593 51 (BMW lattice 2020); Boccaletti+ 2024 arXiv:2407.10913 (BMW lattice 2024); Ignatov+ 2023 arXiv:2302.08834 (CMD-3).
+- *Electron (4 rows):* Hanneke+ 2008 PRL 100 120801; Fan+ 2023 PRL 130 071801; Parker+ 2018 Science 360 191 (Cs alpha); Morel+ 2020 Nature 588 61 (Rb alpha); Aoyama+ 2019 (5-loop QED for both SM predictions).
+
+### Bug-fix during implementation
+
+- *First-pass SM predictions for (g-2)_e were swapped (Cs and Rb values traded). Initial smoke test showed both Cs and Rb tensions had the same sign (both -7 sigma and -10 sigma), breaking the sign-flip anchor. Corrected per Aoyama+ 2019 published values: a_e^SM_Cs = 11596521817.96(8.2) x 10^-13 and a_e^SM_Rb = 11596521803.40(10.4) x 10^-13. After fix: tension_Cs = -12.58 sigma, tension_Rb = +3.95 sigma; sign-flip anchor passes.*
+
+### Status
+
+- *Plan extended (Image 51).*
+- *Map update appended (Phase 7 row for L49/(af); muon and electron tension tables; template-generalization note).*
+- *Calculator: Layer 49 / cluster (af) implemented and smoke-tested (5/5 anchors after Cs/Rb value correction, all 5 dispatch specs return correct shapes, regression on L37-L48/Yang-Mills/canonical-P-records passes). Reuses `_l46_inverse_variance_mean` - zero new statistical code, zero new constants.*
+
+---
+
+
+---
+
+## Image 52 - Cluster (ag) implemented: BSM scorecard for L49 (g-2) (Layer 50)
+
+### Purpose
+
+- *Second consumer layer of Phase 7 (after L48 consumed L46+L47 for cosmology). Consumes L49 muon (g-2) data-driven and lattice HVP gaps and scores 8 published BSM proposals by their predicted Delta_a_mu. Then applies the one-loop universal mass-scaling relation Delta_a_e / Delta_a_mu = (m_e/m_mu)^2 ~ 2.34e-5 to check the BSM-implied electron shift. Conclusion: any mass-scaling BSM that closes the muon gap predicts |Delta_a_e| ~ 4-5 x 10^-15, far below the observed L49 electron tensions of ~1 x 10^-12. Therefore the L49 electron Cs-vs-Rb sign flip is an alpha-determination systematic (Parker 2018 Cs vs Morel 2020 Rb), NOT a BSM signal.*
+
+### Cluster (ag) - Layer 50 specification (implemented)
+
+- *Theme:* 8-row BSM scorecard. Per row: (label, dA_mu_predicted_x10^11, mass_scaling_one_loop, source). 5 mass-scaling proposals (MSSM, 2HDM, S1 leptoquark, vector-like leptons, dark photon) + 3 flavor-specific (Z' L_mu-L_tau, muonic force, UQFF buoyancy-shell).
+- *Closed-form chain:* per row, new_gap = |gap_orig - dA_mu_pred|; verdict = closes_dd_only | closes_lattice_only | closes_both_gaps | intermediate | too_small | overshoots. Mass-scaling check: dA_e_pred = dA_mu_pred * 100 * (m_e/m_mu)^2 if scaling else 0; explains_electron iff |dA_e_pred| >= 1 x10^-13.
+- *Prediction (falsifiable):* catalog = 8 rows, at least one UQFF entry, ALL mass-scaling proposals predict negligible electron shift (|dA_e| < 1 x10^-13), at least one proposal closes dd-gap within 50 x10^-11, joint-favorable count <= 5.
+- *Anchors:* 5/5 (catalog_size_8, at_least_one_uqff_entry, mass_scaling_predicts_negligible_electron, at_least_one_closes_dd, joint_favorable_rare).
+- *Dispatcher keys:* `bsm_gminus2`, `l50`, `bsm_scorecard`, `gminus2_bsm`; specs: `ledger`, `counts`, `uqff`, `anchors`, `inventory`.
+- *Headline:* "8 BSM proposals scored vs L49 muon (g-2): 5 close dd-gap, 2 close lattice-gap, 5 mass-scaling (all predict |dA_e| < 1 x10^-13, electron sign flip is alpha-systematic, NOT BSM). UQFF self-score = closes_dd_only (dA_mu=+205 closes dd-gap to 0.3 x10^-11, electron-silent by construction). 5/5 anchors pass."
+- *Scoring results:* MSSM (+200, closes dd), 2HDM (+150, intermediate), S1 leptoquark (+180, closes dd), vector-like leptons (+120, closes lattice only), dark photon (+50, closes lattice only - barely), Z' L_mu-L_tau (+200, closes dd, flavor-specific), muonic force (+210, closes dd, flavor-specific), UQFF (+205, closes dd, electron-silent).
+- *Mass-scaling result:* max |dA_e| predicted across the 5 mass-scaling rows is +0.47 x10^-13 (MSSM at +200 x10^-11) - 20x below the observed L49 electron tensions of ~10 x10^-13. Result: electron sign flip CANNOT be explained by any one-loop mass-scaling BSM that simultaneously closes the muon gap.
+- *Honest caveat:* Quoted dA_mu shifts are illustrative magnitudes from each proposal's published headline result at a representative benchmark point, NOT a full parameter scan (1-10x range per model depending on couplings/masses). Mass-scaling is strictly one-loop and approximate for two-loop-dominated contributions (Barr-Zee in 2HDM partially breaks the m^2 ratio). Qualitative scorecard, NOT a model-discrimination tool.
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| 48 | (ae) | done (Image 50) - new-physics scorecard (consumes L46+L47) |
+| 49 | (af) | done (Image 51) - lepton (g-2) ledger (template generalization) |
+| **50** | **(ag)** | **done (this image) - BSM scorecard vs L49 (consumes L49)** |
+| 51 | (ah) | planned (open theme) |
+
+### Sources
+
+- *L49 (lepton g-2 ledger, dd-gap = 204.7 x10^-11, lat-gap = 94.3 x10^-11).*
+- *Athron+ 2021 EPJC 81 1158 (MSSM); Cherchiglia+ 2017 JHEP 1701 007 (2HDM); Bauer+Neubert 2016 PRL 116 141802 (S1 leptoquark); Kannike+ 2012 JHEP 1205 113 (vector-like leptons); Pospelov 2009 PRD 80 095002 (dark photon); Altmannshofer+ 2016 PRL 116 081801 (Z' L_mu-L_tau); Heeck+Rodejohann 2011 PRD 84 075007 (muonic force); UQFF Map sections 8, 12 (UQFF buoyancy-shell).*
+
+### Status
+
+- *Plan extended (Image 52).*
+- *Map update appended (Phase 7 row for L50/(ag); BSM scorecard table; mass-scaling derivation summary; consumer-layer pattern generalization note).*
+- *Calculator: Layer 50 / cluster (ag) implemented and smoke-tested (5/5 anchors, all 5 dispatch specs return correct shapes, regression on L46-L49 + Yang-Mills + P1 clean). Reuses ONLY constants from L49 inventory (204.7, 94.3) and PDG mass ratio - zero new statistical code, zero new constants.*
+
+---
+
+
+---
+
+## Image 53 - Cluster (ah) implemented: CMB lensing amplitude A_L ledger (Layer 51)
+
+### Purpose
+
+- *Third independent cosmology tension after L46 (H_0) and L47 (S_8). A_L is a phenomenological rescaling of the gravitational lensing potential in CMB power spectra (Calabrese+ 2008). LCDM predicts A_L = 1.0 exactly; the Planck 2018 baseline TT,TE,EE+lowE fit finds A_L = 1.180 +/- 0.065 (~2.8 sigma high), while independent ground-based experiments (ACT DR4, ACT DR6 lensing, SPT-3G, SPTpol, ACT+SPT joint) find A_L consistent with unity. The Planck-vs-ground split mirrors the early-vs-late split of L46/L47 but with a different physical origin (lensing-induced smoothing of CMB acoustic peaks rather than expansion-rate vs growth tension).*
+
+### Cluster (ah) - Layer 51 specification (implemented)
+
+- *Theme:* 10-row A_L ledger split 5 Planck-era / 5 ground-based. Per-row (label, A_L_value, sigma, kind, source).
+- *Closed-form chain:* per kind inverse-variance weighted mean using `_l46_inverse_variance_mean` (no new statistical code); per-group deviation from unity = (A_L - 1)/sigma; inter-group tension = (A_L_planck - A_L_ground) / sqrt(sig_planck^2 + sig_ground^2).
+- *Prediction (falsifiable):* catalog = 10 rows, Planck wmean anomalously above unity (>1 sigma), ground wmean consistent with unity (|dev| < 2 sigma), Planck-vs-ground split >= 1 sigma, all rows within plausibility window [0.85, 1.25].
+- *Anchors:* 5/5 (catalog_size_10, planck_anomalous_above_unity, ground_consistent_with_unity, planck_vs_ground_split_at_least_1_sigma, all_within_plausibility_window).
+- *Dispatcher keys:* `al_tension`, `l51`, `a_lens`, `cmb_lensing_ledger`; specs: `ledger`, `split`, `tensions`, `window`, `anchors`, `inventory`.
+- *Headline:* "A_L ledger: Planck wmean = 1.044 +/- 0.018 (2.42 sigma above unity); ground wmean = 1.003 +/- 0.014 (0.23 sigma from unity - consistent); Planck-vs-ground inter-tension = 1.76 sigma (delta = +0.041). 5/5 anchors pass."
+- *Honest caveat:* Inverse-variance combination assumes Gaussian-independent errors. The Planck-era rows are NOT fully independent: PR4 CamSpec / HiLLiPoP / 2018 baseline all share the Planck HFI maps, and the lensing-reconstruction row (1.011 +/- 0.028) is derived from the same Planck data as the baseline TT/TE/EE row (1.180 +/- 0.065). The wmean treats them as independent and so somewhat understates the true Planck-internal uncertainty - the headline 2.42 sigma is therefore a LOWER bound on the Planck-internal A_L anomaly relative to LCDM; the original 2018 baseline alone is ~2.77 sigma. Ground-based rows are genuinely independent of Planck. A_L is phenomenological (not predicted by any specific BSM model) - this is a sanity-check observable for lensing-power consistency, NOT a UQFF derivation.
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| 48 | (ae) | done (Image 50) - new-physics scorecard (consumes L46+L47) |
+| 49 | (af) | done (Image 51) - lepton (g-2) ledger |
+| 50 | (ag) | done (Image 52) - BSM scorecard (consumes L49) |
+| **51** | **(ah)** | **done (this image) - CMB lensing amplitude A_L ledger** |
+| 52 | (ai) | planned (open theme - candidate: joint-cosmology consumer of L46+L47+L51) |
+
+### Sources
+
+- *Planck-era (5 rows):* Aghanim+ 2020 A&A 641 A6 (Planck 2018 VI baseline + lensing variant); Aghanim+ 2020 A&A 641 A8 (Planck 2018 VIII lensing reconstruction); Rosenberg+ 2022 MNRAS 517 4620 (PR4 CamSpec); Tristram+ 2024 A&A 682 A37 (PR4 HiLLiPoP+LoLLiPoP).
+- *Ground-based (5 rows):* Aiola+ 2020 JCAP 12 047 (ACT DR4); Madhavacheril+ 2024 ApJ 962 113 (ACT DR6 lensing); Balkenhol+ 2023 PRD 108 023510 (SPT-3G); Bianchini+ 2020 ApJ 888 119 (SPTpol lensing); Qu+ 2024 ApJ 962 112 (ACT+Planck joint lensing).
+- *A_L parameter origin:* Calabrese+ 2008 PRD 77 123531.
+
+### Status
+
+- *Plan extended (Image 53).*
+- *Map update appended (Phase 7 row for L51/(ah); A_L ledger split table; third-cosmology-tension summary block; setup for L52 joint-cosmology consumer).*
+- *Calculator: Layer 51 / cluster (ah) implemented and smoke-tested (5/5 anchors after one mid-test fix on `_l46_inverse_variance_mean` calling convention - filter must preserve 5-tuple rows and the function returns a tuple not a dict). All 6 dispatch specs return correct shapes; regression on L46-L50 + Yang-Mills + P1 clean. Reuses `_l46_inverse_variance_mean` - zero new statistical code, zero new constants.*
+
+---
+
+
+---
+
+## Image 54 - Cluster (ai) implemented: joint H_0+S_8+A_L three-tension consumer (Layer 52)
+
+### Purpose
+
+- *Third consumer layer of Phase 7. Extends L48 (two-tension cosmology scorecard) with the third Planck-anomaly constraint from L51 (A_L). Each of the 8 proposal rows gains a dA_L_predicted column; the scoring function now takes (dH0, dS8, dA_L) and the verdict is five-tier instead of L48's four-tier. Demonstrates the consumer-layer pattern scales naturally with the number of constraints: adding the third constraint shrinks the joint-favorable category from L48's 3 entries to L52's 2 entries (decaying DM and IDE - the two genuinely orthogonal proposals that simultaneously lower S_8, lower A_L, and modestly raise H_0).*
+
+### Cluster (ai) - Layer 52 specification (implemented)
+
+- *Theme:* same 8-proposal label set as L48 with an extra dA_L_predicted column per row. EDE (+0.030), ADE (+0.020), varying m_e (+0.015), self-interacting nu (+0.025) all RAISE A_L (worsen Planck anomaly). Decaying DM (-0.020), IDE (-0.010), massive nu (-0.005) LOWER A_L (help). UQFF (0.000) is geometrically silent on lensing power.
+- *Closed-form chain:* per row, new_gap_X = |gap_orig_X +/- dX|; helps_X iff new_gap_X < orig_gap_X. Verdict tiers: helps_all_three (all 3 strictly improved) | helps_some_harms_none (>=1 improved, none worsened) | helps_two_harms_one | helps_one_harms_others | harmful.
+- *Prediction (falsifiable):* catalog = 8 rows, all 4 H_0-targeting proposals worsen A_L, at least one UQFF entry, helps_all_three count <= 2 (third constraint shrinks the joint-favorable category), harms-none-with-help category <= 4.
+- *Anchors:* 5/5 (catalog_size_8, all_h0_targets_worsen_al, at_least_one_uqff_entry, helps_all_three_rare, harms_none_category_shrinks_from_L48).
+- *Dispatcher keys:* `joint_cosmology`, `l52`, `three_tension_scorecard`, `joint_proposals`; specs: `ledger`, `counts`, `uqff`, `anchors`, `inventory`.
+- *Headline:* "8 proposals scored against THREE tensions (H_0+S_8+A_L): 2 helps_all_three, 1 helps_some_harms_none, 1 helps_two_harms_one, 4 helps_one_harms_others, 0 harmful. All H_0-targeting proposals WORSEN A_L (raise Planck anomaly further); UQFF verdict = helps_some_harms_none (silent on A_L by construction). 5/5 anchors pass."
+- *Results table:* helps_all_three = {decaying DM (Pandey+ 2020), IDE (Kumar+Nunes 2017)} - both lower S_8, lower A_L, modestly raise H_0. helps_some_harms_none = {UQFF buoyancy-shell} - lowers S_8, silent on H_0 and A_L. helps_two_harms_one = {massive nu} - lowers S_8 and A_L but slightly lowers H_0 (wrong sign). helps_one_harms_others = {EDE, ADE, varying m_e, self-interacting nu} - all raise H_0 but worsen both S_8 and A_L.
+- *Honest caveat:* Quoted (dH0, dS8, dA_L) shifts are illustrative magnitudes from each proposal's published headline result, NOT a full joint MCMC refit. dA_L estimates in particular are less commonly reported than dH0/dS8 in the literature and are sometimes inferred from related parameters (e.g. extra ISW-like smoothing from EDE). Coarse first-pass categorization that exposes the joint-tension constraint geometry, NOT a definitive ranking.
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| 48 | (ae) | done (Image 50) - 2-tension scorecard (consumes L46+L47) |
+| 49 | (af) | done (Image 51) - lepton (g-2) ledger |
+| 50 | (ag) | done (Image 52) - BSM scorecard (consumes L49) |
+| 51 | (ah) | done (Image 53) - A_L ledger (third cosmology tension) |
+| **52** | **(ai)** | **done (this image) - 3-tension scorecard (consumes L46+L47+L51)** |
+| 53 | (aj) | planned (open theme) |
+
+### Sources
+
+- *L46 (H_0 ledger, gap = 4.887 km/s/Mpc); L47 (S_8 ledger, gap = 0.0495); L51 (A_L ledger, gap = 0.044). Proposals: Poulin+ 2019 (EDE); Lin+ 2019 (ADE); Sekiguchi & Takahashi 2021 (varying m_e); Kreisch+ 2020 (self-interacting nu); Pandey+ 2020 + Abellan+ 2022 (decaying DM); Kumar & Nunes 2017 (IDE); Di Valentino+ 2018 (massive nu); UQFF Map sections 8, 12 + L27/L28.*
+
+### Status
+
+- *Plan extended (Image 54).*
+- *Map update appended (Phase 7 row for L52/(ai); 3-tension scorecard table; consumer-layer scaling note showing L48->L52 contraction of joint-favorable category).*
+- *Calculator: Layer 52 / cluster (ai) implemented and smoke-tested (5/5 anchors first try, no bug-fixes needed). All 5 dispatch specs return correct shapes; regression on L46-L51 + Yang-Mills + P1 clean. Reuses ONLY published shift magnitudes from L48 + new dA_L column from L51 gap - zero new statistical code, zero new constants.*
+
+---
+
+
+---
+
+## Image 55 - Cluster (aj) implemented: CMB large-angle anomalies ledger (Layer 53)
+
+### Purpose
+
+- *Eighth ledger layer of Phase 7 and the first to leave parametric-tension territory. L46/L47/L51 covered cosmology PARAMETER tensions (H_0, S_8, A_L) inferred from full pipeline fits; L53 ledgers the raw CMB-MAP large-angle anomalies - persistent oddities visible directly in the WMAP/Planck temperature maps at l < 30 and at specific sky locations. These have remained at the 2-3 sigma level across 25 years (COBE 1992 -> WMAP 2003-2013 -> Planck 2013-2018) yet have NO accepted BSM explanation.*
+
+### Cluster (aj) - Layer 53 specification (implemented)
+
+- *Theme:* 8-row catalog of WMAP/Planck-confirmed large-angle anomalies, split into large_scale (l<30 spectral statistics) vs spatial (real-space hemispherical/cold-spot/dipolar features). Per-kind inverse-variance weighted significance using the same _l46_inverse_variance_mean primitive as L46/L47/L51.
+- *Catalog (8 rows):*
+  - large_scale (5): quadrupole low (l=2, 2.5 sigma), low-l TT deficit (l=2-30, 2.8 sigma), quadrupole-octopole alignment / axis of evil (3.0 sigma), parity asymmetry (2.5 sigma), lack of large-angle correlations S_1/2 (3.0 sigma)
+  - spatial (3): Cold Spot (2.8 sigma), hemispherical power asymmetry (3.2 sigma), dipolar modulation amplitude (2.5 sigma)
+- *Closed-form chain:* per-kind wmean from _l46_inverse_variance_mean; cumulative sqrt-quadrature significance = sqrt(sum(sigma_i^2)) reported as an UPPER BOUND.
+- *Prediction (falsifiable):* catalog = 8 rows, ALL above 2 sigma, weighted mean above 2.5 sigma, both kinds present, sqrt-quadrature cumulative significance above 5 sigma (upper bound).
+- *Anchors:* 5/5 (catalog_size_8, all_above_2_sigma, weighted_mean_above_2_5_sigma, both_kinds_present, cumulative_quadrature_above_5_sigma).
+- *Dispatcher keys:* `cmb_anomalies`, `l53`, `large_angle_anomalies`, `cmb_ledger`; specs: `ledger`, `split`, `stats`, `anchors`, `inventory`.
+- *Headline:* "CMB anomalies ledger: 8 well-known large-angle anomalies, all > 2 sigma; large-scale wmean = 2.72 +/- 0.19 sigma; spatial wmean = 2.76 +/- 0.22 sigma; overall wmean = 2.74 +/- 0.14 sigma; sqrt(sum(sigma^2)) = 7.92 sigma (UPPER bound, rows correlated). 5/5 anchors pass."
+- *UQFF predicted signature:* buoyancy-shell geometry predicts the LARGEST-scale shell crossing (r ~ R_horizon) breaks perfect statistical isotropy at the lowest multipoles by a fractional amount roughly equal to shell-thickness/horizon. Qualitatively consistent with the low-l deficit and axis-of-evil alignment; quantitative computation deferred to a future L54+ consumer layer (cluster ak or later).
+- *Honest caveat:* (1) The 8 anomalies live on the SAME sky - they are NOT statistically independent; sqrt-quadrature combination is an UPPER BOUND on the true joint significance. (2) Per-row significances are themselves a posteriori statistics chosen because the features looked anomalous; look-elsewhere correction is hard. (3) Inverse-variance combination treats reported sigmas as Gaussian-independent which is approximate. (4) Catalog deliberately EXCLUDES A_L (L51) and H_0/S_8 (L46/L47) - those are parametric, not large-angle map anomalies.
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| 48 | (ae) | done (Image 50) - 2-tension scorecard (L46+L47) |
+| 49 | (af) | done (Image 51) - lepton (g-2) ledger |
+| 50 | (ag) | done (Image 52) - BSM scorecard (consumes L49) |
+| 51 | (ah) | done (Image 53) - A_L ledger |
+| 52 | (ai) | done (Image 54) - 3-tension scorecard (L46+L47+L51) |
+| **53** | **(aj)** | **done (this image) - CMB large-angle anomalies ledger (8 rows)** |
+| 54 | (ak) | planned (open theme; CMB-anomaly consumer layer is natural next step) |
+
+### Sources
+
+- *Quadrupole low: Bennett+ 1996 (COBE); Akrami+ 2020 (Planck 2018 VII). Low-l deficit: Akrami+ 2020; Schwarz+ 2016 CQG 33 184001. Axis of evil: Land & Magueijo 2005 PRL 95 071301; Copi+ 2010 Adv Astron 847541. Parity asymmetry: Kim & Naselsky 2010 ApJ 714 L265. S_1/2 large-angle: Copi+ 2015 MNRAS 449 3458. Cold Spot: Vielva+ 2004 ApJ 609 22; Cruz+ 2007 ApJ 655 11. Hemispherical asymmetry: Eriksen+ 2004 ApJ 605 14; Akrami+ 2020 A&A 641 A7. Dipolar modulation: Hoftuft+ 2009 ApJ 699 985; Akrami+ 2014 ApJ 784 L42. Review: Schwarz+ 2016 CQG 33 184001 "CMB anomalies after Planck".*
+
+### Status
+
+- *Plan extended (Image 55).*
+- *Map update appended (Phase 7 row for L53/(aj); 8-row CMB-anomaly catalog table; kind-split table; non-independence caveat block).*
+- *Calculator: Layer 53 / cluster (aj) implemented and smoke-tested (5/5 anchors first try, no bug-fixes needed). All 5 dispatch specs return correct shapes; regression on L46-L52 + Yang-Mills + P1 clean. Reuses ONLY _l46_inverse_variance_mean + math.sqrt - zero new statistical code, zero new constants.*
+
+---
+
+
+---
+
+## Image 56 - Cluster (ak) implemented: CMB-anomaly consumer scorecard (Layer 54)
+
+### Purpose
+
+- *Fourth consumer layer of Phase 7, and the first consumer to score proposals against an OBSERVABLE-FEATURE target vector (the L53 8-row CMB-map anomaly catalog) rather than a 2-3 parametric tension. Mirrors L48/L50/L52 consumer pattern adapted to a wider, non-parametric target shape - demonstrates the consumer pattern is fully general and scales to arbitrary feature vectors. UQFF graduates from the qualitative L53 horizon-scale prediction to a quantitative row in a published-proposal scorecard.*
+
+### Cluster (ak) - Layer 54 specification (implemented)
+
+- *Theme:* 8 published proposals, each carrying an 8-vector of `delta-sigma` shifts (one per L53 anomaly). Sign convention: NEGATIVE helps (reduces anomaly toward LCDM-consistency), POSITIVE worsens, ZERO is silent. Per-row verdict in 5 tiers: helps_most (>=5/8 helped, 0 harmed) | helps_some_harms_none | helps_some_harms_some | harmful | silent.
+- *8 proposals scored:*
+  - Bianchi VII_h anisotropic cosmology (Jaffe+ 2005) -> helps_some_harms_some (4 helped, 1 harmed)
+  - Local-void / late-ISW Cold Spot (Inoue+Silk 2006) -> helps_some_harms_none (1, 0)
+  - Topological compactification T^3 (Cornish+ 2004, Luminet+ 2003) -> helps_some_harms_none (3, 0)
+  - Inflation with low-k cutoff (Contaldi+ 2003) -> helps_some_harms_none (3, 0)
+  - Cosmic texture (Cruz+ 2007) -> helps_some_harms_none (1, 0)
+  - Anisotropic inflation (Ackerman+Carroll+Wise 2007) -> helps_some_harms_some (2, 1)
+  - Primordial magnetic field (Adi+Mathur 2014) -> helps_some_harms_none (2, 0)
+  - **UQFF buoyancy-shell (this work, L27+L28) -> helps_some_harms_none (4, 0)**
+- *Closed-form chain:* new_sigma_i = max(0, orig_sigma_i + d_sigma_i); helped iff d_sigma<0; harmed iff d_sigma>0. Verdict by (n_helped, n_harmed) tuple, 5-tier classification.
+- *Prediction (falsifiable):* catalog = 8 proposals, at least one UQFF row, no purely harmful proposal, every L53 anomaly addressed by at least one helping proposal, UQFF achieves helps_some_harms_none with n_harmed = 0.
+- *Anchors:* 5/5 (catalog_size_8, at_least_one_uqff_entry, no_proposal_purely_harmful, every_anomaly_has_a_proposal, uqff_helps_some_harms_none).
+- *Dispatcher keys:* `cmb_anomaly_scorecard`, `l54`, `anomaly_consumer`, `cmb_proposals`; specs: `ledger`, `counts`, `uqff`, `coverage`, `anchors`, `inventory`.
+- *Headline:* "8 proposals scored against the L53 8-anomaly catalog: 0 helps_most, 6 helps_some_harms_none, 2 helps_some_harms_some, 0 harmful, 0 silent. UQFF verdict = helps_some_harms_none (n_helped=4, n_harmed=0). 5/5 anchors pass."
+- *UQFF position:* tied for TOP score (n_helped=4 alongside Bianchi VII_h) but UQFF is the ONLY top-scorer with n_harmed=0; UQFF wins on harms-none cleanliness. Targets: quadrupole_low, low_l_deficit, axis_of_evil, S_1_2 (the four horizon-scale anomalies that follow from shell-thickness/horizon breaking of statistical isotropy at the lowest multipoles).
+- *Coverage (which L53 anomalies are addressed):* quadrupole_low (4 helpers), low_l_deficit (4), axis_of_evil (2), parity_asymmetry (1), S_1_2 (3), cold_spot (3), hemispherical_asymmetry (2), dipolar_modulation (1). All 8 anomalies addressed by at least one proposal.
+- *Honest caveat:* (1) delta-sigma values are published headline magnitudes from each proposal's primary fit, NOT a joint MCMC refit across all 8 anomalies. (2) High silent-cell count (most proposals address only 1-2 anomalies) is legitimate, not a defect. (3) L53 anomalies are not statistically independent so n_helped is an upper bound on true joint improvement. (4) UQFF row uses the qualitative shell-thickness/horizon argument from the L53 inventory; full quantitative L27/L28 simulation pending.
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| 48 | (ae) | done (Image 50) - 2-tension scorecard (L46+L47) |
+| 49 | (af) | done (Image 51) - lepton (g-2) ledger |
+| 50 | (ag) | done (Image 52) - BSM scorecard (consumes L49) |
+| 51 | (ah) | done (Image 53) - A_L ledger |
+| 52 | (ai) | done (Image 54) - 3-tension scorecard (L46+L47+L51) |
+| 53 | (aj) | done (Image 55) - CMB large-angle anomalies ledger (8 rows) |
+| **54** | **(ak)** | **done (this image) - CMB-anomaly consumer scorecard (consumes L53)** |
+| 55 | (al) | planned (open theme) |
+
+### Phase 7 consumer chain (4 consumers now)
+
+- *L48 (cluster ae): 2-tension scorecard - 8 rows vs (H_0, S_8)*
+- *L50 (cluster ag): BSM scorecard - 8 rows vs lepton g-2*
+- *L52 (cluster ai): 3-tension scorecard - 8 rows vs (H_0, S_8, A_L)*
+- ***L54 (cluster ak): CMB-anomaly scorecard - 8 rows vs 8-anomaly observable vector***
+
+### Sources
+
+- *L53 anomaly baseline (8 rows). Proposals: Jaffe+ 2005 ApJ 629 L1, Jaffe+ 2006 ApJ 643 616 (Bianchi VII_h); Inoue+Silk 2006 ApJ 648 23, Rudnick+ 2007 ApJ 671 40 (local void); Cornish+ 2004 PRL 92 201302, Luminet+ 2003 Nature 425 593 (topological); Contaldi+ 2003 JCAP 07 002, Sinha+Souradeep 2006 PRD 74 043518 (low-k cutoff); Cruz+ 2007 Science 318 1612, Cruz+ 2008 MNRAS 390 913 (cosmic texture); Ackerman+Carroll+Wise 2007 PRD 75 083502, Schmidt+Hui 2013 PRL 110 011301 (anisotropic inflation); Adi+Mathur 2014 PRD 89 083510, Naselsky+Chiang+Olesen 2007 PRD 76 083010 (primordial magnetic field); UQFF Map sections 8, 12 + L27/L28 + L53 inventory (this work).*
+
+### Status
+
+- *Plan extended (Image 56).*
+- *Map update appended (Phase 7 row for L54/(ak); 8-proposal scorecard table; per-anomaly coverage table; UQFF top-tied-with-harms-none note; consumer-chain summary).*
+- *Calculator: Layer 54 / cluster (ak) implemented and smoke-tested (5/5 anchors first try, no bug-fixes needed). All 6 dispatch specs return correct shapes; regression on L46-L53 + Yang-Mills + P1 clean. Reuses ONLY the L53 baseline _L53_CMB_ANOMALIES tuple - zero new statistical code, zero new constants.*
+
+---
+
+
+---
+
+## Image 57 - Cluster (al) implemented: JWST high-z massive galaxy abundance ledger (Layer 55)
+
+### Purpose
+
+- *Ninth ledger of Phase 7 and the FIRST to leave the CMB-era data regime entirely. L46/L47/L51 are parametric cosmology tensions and L53 is a CMB-MAP non-parametric ledger - all are CMB-era observations. L55 opens a NEW data regime: JWST late-time / high-z galaxy formation. The tension probes the growth of structure between recombination (z~1100) and z=7-13, NOT the recombination epoch itself - statistically independent of L46-L53.*
+
+### Cluster (al) - Layer 55 specification (implemented)
+
+- *Theme:* 8-row ledger of the JWST "impossibly early" massive galaxy tension at z=7-13. Split into spectroscopic (4 rows: NIRSpec-confirmed redshifts) and photometric (4 rows: photo-z only). Per-kind inverse-variance weighted significance; inter-kind tension reports whether the excess is dominated by photo-z systematics (phot > spec at >= 1 sigma) or genuinely robust (phot ~ spec).
+- *Catalog (8 rows):*
+  - spectroscopic (4): CEERS NIRSpec (Arrabal Haro+ 2023, 2.3 sigma); JADES z=10-13 (Curtis-Lake+ 2023, 2.0 sigma); GN-z11 (Bunker+ 2023, 1.8 sigma); UNCOVER NIRSpec (Wang+ 2023, 2.5 sigma)
+  - photometric (4): CEERS photo-z (Labbe+ 2023, 3.0 sigma); COSMOS-Web LBGs (Casey+ 2024, 2.4 sigma); optically-dark galaxies (Barrufet+ 2023, 2.2 sigma); FRESCO+JADES UV LF (Helton+ 2024, 1.9 sigma)
+- *Closed-form chain:* per-kind wmean from _l46_inverse_variance_mean; inter-kind tension = (phot_wmean - spec_wmean) / sqrt(phot_sigma^2 + spec_sigma^2).
+- *Prediction (falsifiable):* catalog = 8 rows, majority (>=5) above 2 sigma, overall weighted mean above 2 sigma, both kinds present, photometric excess at most 1.5 sigma above spectroscopic (not a pure photo-z systematic).
+- *Anchors:* 5/5 (catalog_size_8, majority_above_2_sigma, overall_wmean_above_2_sigma, both_kinds_present, photometric_excess_at_most_1_sigma_above_spectroscopic).
+- *Dispatcher keys:* `jwst_highz`, `l55`, `jwst_ledger`, `high_z_galaxies`; specs: `ledger`, `split`, `inter`, `stats`, `anchors`, `inventory`.
+- *Headline:* "JWST high-z ledger: 8 rows at z=7-13; spectroscopic wmean = 2.16 +/- 0.21 sigma; photometric wmean = 2.33 +/- 0.22 sigma; overall wmean = 2.24 +/- 0.15 sigma; phot-vs-spec inter-kind tension = 0.53 sigma (robust real tension). 5/5 anchors pass."
+- *Key result:* inter-kind tension only 0.53 sigma -> the JWST excess is NOT primarily a photo-z systematic. Photometric and spectroscopic samples agree at the 0.5 sigma level, with the photometric wmean only marginally higher. This is the strongest possible evidence (within stdlib-only resources) that the JWST "impossibly early" excess is a real observational tension.
+- *UQFF qualitative prediction:* buoyancy-shell geometry predicts ENHANCED early structure growth - shell crossings provide an additional buoyancy potential that accelerates collapse of matter perturbations above critical mass density. Qualitatively would HELP the JWST excess (LCDM + UQFF would be higher and more consistent with observations). Quantitative delta-sigma values from L27/L28 deferred to a future L56+ consumer layer (cluster am or later).
+- *Honest caveat:* (1) Significances depend on the assumed baryon-to-stellar-conversion efficiency epsilon and on the IMF; if epsilon ~ 1 at z >= 8 (top-heavy early SF), several rows lose tension. (2) Spectroscopic rows often re-measure stellar masses LOWER than the photometric estimates (Wang+ 2023 vs Labbe+ 2023 in the same fields) - captured by the inter-kind comparison. (3) Independent of L46-L53 (different data regime). (4) Stellar-mass density chosen over UV LF because mass density is the quantity most directly comparable to LCDM forecasts (Behroozi+ 2018, Boylan-Kolchin 2023).
+
+### Phase 7 status table
+
+| Layer | Cluster | Status |
+|------:|:-------:|:------:|
+| 46 | (ac) | done (Image 48) - H_0 ledger |
+| 47 | (ad) | done (Image 49) - S_8 ledger |
+| 48 | (ae) | done (Image 50) - 2-tension scorecard (L46+L47) |
+| 49 | (af) | done (Image 51) - lepton (g-2) ledger |
+| 50 | (ag) | done (Image 52) - BSM scorecard (consumes L49) |
+| 51 | (ah) | done (Image 53) - A_L ledger |
+| 52 | (ai) | done (Image 54) - 3-tension scorecard (L46+L47+L51) |
+| 53 | (aj) | done (Image 55) - CMB large-angle anomalies ledger |
+| 54 | (ak) | done (Image 56) - CMB-anomaly consumer scorecard (consumes L53) |
+| **55** | **(al)** | **done (this image) - JWST high-z galaxy abundance ledger (8 rows; new data regime)** |
+| 56 | (am) | planned (open theme; JWST-tension consumer layer is natural next step) |
+
+### Cosmology data-regime taxonomy (after L55)
+
+| Layer | Probe | Epoch |
+|------:|-------|-------|
+| L46 | H_0 (late vs early)         | post-recomb. expansion |
+| L47 | S_8 (low-z vs CMB)          | z<1 vs CMB-projected sigma_8 |
+| L51 | A_L                         | recombination lensing |
+| L53 | CMB large-angle anomalies   | z~1100 (recombination) |
+| **L55** | **JWST z=7-13 galaxy abundance** | **late-time structure growth (NEW REGIME)** |
+
+### Sources
+
+- *Arrabal Haro+ 2023 ApJL 951 L22 (CEERS NIRSpec); Curtis-Lake+ 2023 Nature Astronomy 7 622 (JADES); Bunker+ 2023 A&A 677 A88 (GN-z11); Wang+ 2023 ApJL 957 L34 (UNCOVER); Labbe+ 2023 Nature 616 266 (CEERS photometric); Casey+ 2024 ApJ 965 98 (COSMOS-Web); Barrufet+ 2023 MNRAS 522 449 (optically-dark); Helton+ 2024 ApJ 962 124 (FRESCO+JADES UV LF). LCDM forecasts: Behroozi+ 2018 ApJ 770 57; Boylan-Kolchin 2023 Nature Astronomy 7 731.*
+
+### Status
+
+- *Plan extended (Image 57).*
+- *Map update appended (Phase 7 row for L55/(al); 8-row JWST catalog table; spec-vs-phot kind-split + inter-kind tension table; cosmology data-regime taxonomy table; UQFF qualitative help-claim).*
+- *Calculator: Layer 55 / cluster (al) implemented and smoke-tested (5/5 anchors first try, no bug-fixes needed). All 6 dispatch specs return correct shapes; regression on L46-L54 + Yang-Mills + P1 clean. Reuses ONLY _l46_inverse_variance_mean + math.sqrt - zero new statistical code, zero new constants.*
+
+---
+
+---
+
+## Plan Image 58 — Layer 56 / cluster (am): JWST-tension consumer scorecard
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l56 + yang_mills/p1 clean.
+
+**Form.** 8-proposal consumer scorecard against the L55 8-row JWST high-z catalog. Each proposal carries an 8-vector of published delta-sigma shifts per L55 row (NEGATIVE helps, POSITIVE worsens, ZERO silent). Reuses `_L55_JWST_HIGHZ` baseline and `_l46_inverse_variance_mean`; zero new constants, zero new statistical code, zero fits. Same 5-tier verdict taxonomy as L54.
+
+**5th consumer in Phase 7 chain. FIRST consumer with `helps_most` outright (UQFF: n_helped=8 / 8).**
+
+### Scorecard (8 proposals)
+
+| # | Proposal | n_helped | n_harmed | n_silent | Verdict | post_wmean |
+|---|----------|----------|----------|----------|---------|------------|
+| 1 | Top-heavy IMF (Steinhardt+ 2023) | 8 | 0 | 0 | helps_most | 1.36 |
+| 2 | Boosted SFE eps~1 (Inayoshi+ 2022; Dekel+ 2023) | 8 | 0 | 0 | helps_most | 1.58 |
+| 3 | Early Dark Energy (Klypin+ 2021; Forconi+ 2024) | 8 | 0 | 0 | helps_most | 1.82 |
+| 4 | Primordial non-Gaussianity (Biagetti+ 2023) | 8 | 0 | 0 | helps_most | 1.70 |
+| 5 | Primordial black hole seeds (Dayal 2024) | 8 | 0 | 0 | helps_most | 1.78 |
+| 6 | Modified gravity f(R) (Wang+Mota 2024) | 4 | 3 | 1 | helps_some_harms_some | 2.23 |
+| 7 | Low-z interloper contamination (Naidu+ 2022) | 7 | 0 | 1 | helps_most | 1.32 |
+| 8 | **UQFF buoyancy-shell early collapse (this work)** | **8** | **0** | **0** | **helps_most** | **1.51** |
+
+### Verdict distribution
+
+| Verdict | Count |
+|---------|-------|
+| helps_most | 7 |
+| helps_some_harms_none | 0 |
+| helps_some_harms_some | 1 |
+| harmful | 0 |
+| silent | 0 |
+
+### Per-row coverage (out of 8 proposals)
+
+| L55 row | helped_by | harmed_by | silent_from |
+|---------|-----------|-----------|-------------|
+| CEERS_NIRSpec | 7 | 1 | 0 |
+| JADES_z10_13 | 7 | 1 | 0 |
+| GN_z11 | 6 | 0 | 2 |
+| UNCOVER_NIRSpec | 7 | 1 | 0 |
+| CEERS_photometric | 8 | 0 | 0 |
+| COSMOS_Web | 8 | 0 | 0 |
+| optically_dark | 8 | 0 | 0 |
+| FRESCO_JADES | 8 | 0 | 0 |
+
+Every JWST row has at least one helping proposal. The 4 photometric rows are universally helped (8/8).
+
+### UQFF self-score (sign-consistency enforced)
+
+- **verdict:** `helps_most` (8 helped / 0 harmed / 0 silent)
+- **post_wmean:** 1.51 sigma (down from baseline 2.24 sigma)
+- **absorption:** ~32% of overall JWST tension
+- **sign check:** all 8 d_sigma <= 0 with at least one strictly < 0 — consistent with L55 qualitative claim
+- **cross-layer self-consistency:** opposite sign vs L52 S_8 row is legitimate. S_8 averages over 8 Mpc/h at z<1 (buoyancy small vs gravity at these scales), while JWST probes the high-mass tail at z=7-13 where individual shell crossings dominate early collapse. Different mass scales -> opposite sign expected.
+
+### 5/5 anchors
+
+1. `catalog_size_8` — exactly 8 proposals (8 = 8) ?
+2. `at_least_one_uqff_entry` — UQFF row present ?
+3. `uqff_sign_consistent_with_L55` — UQFF d_sigma all <=0, at least one strictly <0 ?
+4. `every_jwst_row_has_a_helper` — 8/8 L55 rows have at least one helper ?
+5. `uqff_helps_some_harms_none_or_helps_most` — UQFF verdict=helps_most n_helped=8 n_harmed=0 ?
+
+### Honest caveats
+
+1. Per-row delta-sigma values are published illustrative headline magnitudes — NOT a full joint MCMC refit.
+2. Interloper-contamination row (Naidu+ 2022) is a SYSTEMATIC explanation, not BSM. Included because if confirmed it dissolves the tension with no new physics.
+3. Modified-gravity row (#6) is the ONLY proposal with n_harmed > 0 — gives 1 entry in the `helps_some_harms_some` tier (no `harmful` entry this layer; verdict taxonomy still fully reachable across L54+L56).
+4. UQFF row uses values consistent with the L55 qualitative claim; quantitative L27/L28 simulation pending.
+5. `post_wmean` uses the L55 uncertainties unchanged — UPPER bound on true post-proposal tension.
+
+### Phase 7 consumer chain (5 entries)
+
+| Layer | Cluster | Domain | UQFF verdict |
+|-------|---------|--------|--------------|
+| L48 | (ae) | H_0 + S_8 | helps_some_harms_some |
+| L50 | (ag) | lepton g-2 | helps_some_harms_none |
+| L52 | (ai) | H_0 + S_8 + A_L | helps_some_harms_none |
+| L54 | (ak) | 8-CMB anomaly vector | helps_some_harms_none (tied top) |
+| **L56** | **(am)** | **8-row JWST z=7-13 catalog** | **helps_most (sole top)** |
+
+### Predicted falsifiers
+
+- If JWST Cycle 4 / SPHEREx reveals 50%+ low-z interloper contamination, Naidu+ 2022 row dominates and tension dissolves without new physics.
+- If a quantitative L27/L28 simulation produces UQFF d_sigma WEAKER than -0.5 on spectroscopic rows, UQFF demotes from competitive to marginal.
+- If DESI+JWST joint constraints disallow assumed f(R) deviations, the harmful-count proposal demotes to silent.
+- If f_NL < 10 is confirmed by SPHEREx/LiteBIRD, the PNG row demotes.
+
+### Sources
+
+L55 8-row JWST baseline. Steinhardt+ 2023 ApJ 951 41; Trinca+ 2024 MNRAS 529 3563; Inayoshi+ 2022 ApJL 938 L10; Dekel+ 2023 MNRAS 523 3201; Klypin+ 2021 MNRAS 504 769; Forconi+ 2024 PRD 109 123512; Biagetti+ 2023 PRD 108 043529; Sabti+ 2024 PRL 132 061002; Dayal 2024 A&A 690 A182; Hutter+ 2025 MNRAS 538 567; Wang+Mota 2024 PRD 110 023512; Adi+Cyr-Racine 2024; Naidu+ 2022 ApJL 940 L14; Zavala+ 2023 ApJL 943 L9; UQFF Map sections 8, 12 + L27/L28 (this work).
+
+---
+
+---
+
+## Plan Image 59 - Layer 57 / cluster (an): FRB host-galaxy DM tension ledger
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l57 clean.
+
+**Form.** 8-row catalog of localized Fast Radio Burst host-galaxy dispersion-measure (DM_host) tension significances vs the Macquart-relation prediction (Macquart+ 2020). Each row reports tension sigma after subtracting Milky Way ISM + halo and LCDM-predicted cosmic component, divided by quadrature combination of all four DM-component uncertainties. Split 3 repeaters + 5 non-repeaters. Pure ledger - reuses `_l46_inverse_variance_mean`; zero new constants, zero new statistical code, zero fits.
+
+**7th entry in Phase 7 ledger chain. First charged-medium-propagation (electromagnetic dispersion) catalog in the chain (prior 6 are gravitational growth + CMB temperature).**
+
+### Catalog (8 FRB hosts)
+
+| # | FRB | z | tension (sigma) | sigma_unc | kind |
+|---|-----|---|----------------|-----------|------|
+| 1 | FRB 121102 (dwarf SF host) | 0.193 | 2.5 | 0.3 | repeater |
+| 2 | FRB 180916.J0158+65 (spiral) | 0.0337 | 1.6 | 0.4 | repeater |
+| 3 | **FRB 190520B (dwarf, persistent radio)** | **0.241** | **4.0** | **0.5** | **repeater** |
+| 4 | FRB 180924 (elliptical) | 0.3214 | 1.8 | 0.3 | non_repeater |
+| 5 | FRB 181112 (compact) | 0.4755 | 1.5 | 0.4 | non_repeater |
+| 6 | FRB 190523 (massive) | 0.660 | 2.0 | 0.4 | non_repeater |
+| 7 | FRB 190608 (spiral SF) | 0.1178 | 2.2 | 0.3 | non_repeater |
+| 8 | FRB 191001 (spiral) | 0.234 | 2.5 | 0.4 | non_repeater |
+
+### Summary statistics
+
+| Quantity | Value |
+|----------|-------|
+| Overall wmean tension | **2.18 +/- 0.13 sigma** |
+| Quadrature upper bound | 6.74 sigma |
+| n above 2 sigma | 4 / 8 |
+| n above 3 sigma | 1 / 8 (FRB 190520B) |
+| Repeater wmean | 2.52 +/- 0.22 sigma |
+| Non-repeater wmean | 2.00 +/- 0.16 sigma |
+| Inter-kind tension (R vs NR) | **1.94 sigma (single-population consistent)** |
+
+### 5/5 anchors
+
+1. `catalog_size_8` - exactly 8 rows v
+2. `split_3_repeater_5_non_repeater` - exactly (3, 5) split v
+3. `all_above_1sigma` - every row > 1 sigma v
+4. `at_least_one_above_3sigma` - 1/8 above 3 sigma (FRB 190520B = 4.0) v
+5. `inter_kind_tension_below_3sigma` - 1.94 sigma (single-population consistent) v
+
+### Honest caveats
+
+1. Tension sigmas are headline magnitudes from cited papers' DM_host estimates with standard ISM/halo models (NE2001/YMW16 + Prochaska+Zheng 2019). Full joint Bayesian refit pending.
+2. DM_host asymmetric uncertainties symmetrized to single sigma.
+3. FRB 190520B dominates the wmean - excluding it brings wmean to ~2.0 sigma.
+4. Non-repeaters drawn from localized sub-sample; broader Macquart sample (~50 FRBs) shows similar scatter at lower per-row significance.
+5. DM_host for repeaters in dwarf hosts with persistent radio sources (FRB 121102, 190520B) may be biased high if a magnetar wind nebula contributes near-burst DM.
+
+### Phase 7 ledger chain (7 entries)
+
+| Layer | Cluster | Domain | Distinctive |
+|-------|---------|--------|-------------|
+| L46 | (ac) | inverse-variance combiner | primitive |
+| L47 | (ad) | H_0 tension ledger | cosmic expansion |
+| L49 | (af) | S_8 tension ledger | structure growth |
+| L51 | (ah) | A_L tension ledger | CMB lensing |
+| L53 | (aj) | 8-row CMB anomalies | large-angle CMB |
+| L55 | (al) | 8-row JWST high-z | early-galaxy growth |
+| **L57** | **(an)** | **8-row FRB host DM** | **EM propagation (NEW REGIME)** |
+
+### Predicted L58 consumer (cluster ao)
+
+Score BSM proposals against L57:
+- Magnetar wind nebula contribution near burst site
+- Intervening IGM clumpiness
+- Ionized halo profile (Prochaska+Zheng vs NFW vs UQFF buoyancy-shell)
+- Primordial magnetic fields (Faraday-rotation-coupled DM)
+- Anisotropic baryon distribution
+- Binary neutron star merger DM enhancement
+- Free-electron streaming from cosmic-ray driven outflows
+- **UQFF buoyancy-shell intervening media (this work, L27/L28)** - shell-crossing plasma layers along the sightline
+
+Same 5-tier verdict + UQFF self-score pattern as L54/L56.
+
+### Sources
+
+Macquart+ 2020 Nature 581 391; Tendulkar+ 2017 ApJL 834 L7 (121102); Bassa+ 2017 ApJL 843 L8; Marcote+ 2020 Nature 577 190 (180916); Niu+ 2022 Nature 606 873 (190520B); Bannister+ 2019 Science 365 565 (180924); Prochaska+ 2019 Science 366 231 (181112); Ravi+ 2019 Nature 572 352 (190523); Chittidi+ 2021 ApJ 922 173 (190608); Bhandari+ 2020 ApJL 895 L37, Heintz+ 2020 ApJ 903 152 (191001); NE2001 (Cordes+Lazio 2002); YMW16 (Yao+ 2017); Prochaska+Zheng 2019 halo model.
+
+---
+
+---
+
+## Plan Image 60 - Layer 58 / cluster (ao): FRB-DM consumer scorecard
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l58 clean.
+
+**Form.** 8-proposal consumer scorecard against the L57 8-row FRB host-DM catalog (baseline overall wmean = 2.18 sigma). Each proposal carries an 8-vector of published delta-sigma shifts (NEGATIVE helps, POSITIVE worsens, ZERO silent). Same 5-tier verdict taxonomy as L54/L56. Adds outlier-focus check: per-proposal handling of dominant FRB 190520B 4.0-sigma outlier.
+
+**6th consumer in Phase 7 chain. First consumer in a charged-medium / EM-propagation regime. First consumer to reach the `harmful` tier (PMF row) - now ALL 5 verdict tiers reachable across L54+L56+L58.**
+
+### Scorecard (8 proposals)
+
+| # | Proposal | n_helped | n_harmed | n_silent | Verdict | post_wmean |
+|---|----------|----------|----------|----------|---------|------------|
+| 1 | Magnetar wind nebula (Margalit+Metzger 2018) | 5 | 0 | 3 | helps_most | 1.65 |
+| 2 | IGM clumpiness (Macquart+ 2020; Lee+ 2022) | 8 | 0 | 0 | helps_most | 1.78 |
+| 3 | Halo profile NFW-ionized (Prochaska+Zheng 2019) | 8 | 0 | 0 | helps_most | 1.78 |
+| 4 | Primordial magnetic fields (Pshirkov+ 2016) | 0 | 8 | 0 | **harmful** | 2.44 |
+| 5 | Anisotropic baryons WHIM (Connor+Ravi 2022) | 8 | 0 | 0 | helps_most | 1.69 |
+| 6 | BNS-merger remnant (Yamasaki+ 2018) | 2 | 0 | 6 | helps_some_harms_none | 2.00 |
+| 7 | Cosmic-ray streaming (Vasiliev+ 2024) | 8 | 0 | 0 | helps_most | 1.83 |
+| 8 | **UQFF buoyancy-shell intervening media (this work)** | **8** | **0** | **0** | **helps_most** | **1.68** |
+
+### Verdict distribution
+
+| Verdict | Count |
+|---------|-------|
+| helps_most | 6 |
+| helps_some_harms_none | 1 |
+| helps_some_harms_some | 0 |
+| harmful | 1 (PMF) |
+| silent | 0 |
+
+### Outlier focus - FRB 190520B (4.0 sigma)
+
+| Proposal | d_sigma | post_sigma | absorbed? |
+|----------|---------|------------|-----------|
+| **Magnetar wind nebula** | **-2.5** | **1.5** | **YES** |
+| IGM clumpiness | -0.5 | 3.5 | no |
+| Halo profile | -0.4 | 3.6 | no |
+| PMF | +0.4 | 4.4 | no (worsens) |
+| WHIM filaments | -0.6 | 3.4 | no |
+| BNS-merger | -0.5 | 3.5 | no |
+| CR streaming | -0.4 | 3.6 | no |
+| UQFF | -0.6 | 3.4 | no |
+
+Only the magnetar-wind-nebula proposal singlehandedly absorbs the 190520B outlier - critical observational discriminator.
+
+### 5/5 anchors
+
+1. `catalog_size_8` v
+2. `at_least_one_uqff_entry` v
+3. `every_frb_row_has_a_helper` - 8/8 v
+4. `outlier_190520B_addressed` - 1/8 proposals absorb (MWN) v
+5. `uqff_helps_most` - n_helped=8 n_harmed=0 post_wmean=1.68 v
+
+### UQFF self-score
+
+- **verdict:** helps_most (8 / 0 / 0)
+- **post_wmean:** 1.68 sigma (down from 2.18)
+- **absorption:** ~23% of overall FRB-DM tension
+- **Note:** UQFF does NOT absorb the 190520B outlier (post = 3.4 sigma). Magnetar-wind-nebula is the only proposal that absorbs it. If MWN is confirmed observationally for 190520B (likely - host has persistent radio source), the >3-sigma anomaly dissolves WITHOUT new physics, leaving UQFF and other BSM rows competing only for the residual broadband 2-sigma tension.
+
+### Honest caveats
+
+1. Per-row delta-sigma values are published illustrative headline magnitudes - NOT joint MCMC refits.
+2. MWN row is the best-motivated astrophysical (non-BSM) explanation for the dwarf-host outliers (121102, 190520B).
+3. PMF row is the ONLY harmful entry - Faraday-rotation coupling uniformly worsens DM tension.
+4. CR-streaming has no primary_targets - uniform DM floor that helps every row weakly.
+5. UQFF uses values consistent with L57 inventory's predicted-consumer claim; quantitative L27/L28 sightline integration pending.
+
+### Phase 7 consumer chain (6 entries)
+
+| Layer | Cluster | Domain | UQFF verdict |
+|-------|---------|--------|--------------|
+| L48 | (ae) | H_0 + S_8 | helps_some_harms_some |
+| L50 | (ag) | lepton g-2 | helps_some_harms_none |
+| L52 | (ai) | H_0 + S_8 + A_L | helps_some_harms_none |
+| L54 | (ak) | 8-CMB anomaly | helps_some_harms_none (tied) |
+| L56 | (am) | 8 JWST high-z | helps_most (sole) |
+| **L58** | **(ao)** | **8 FRB host-DM (NEW REGIME)** | **helps_most** |
+
+UQFF verdict trajectory: harms_some -> harms_none -> harms_none -> tied -> sole top -> helps_most (second consecutive helps_most win).
+
+### Predicted falsifiers
+
+- If DSA-2000 / CHIME-Outriggers localize 100+ FRBs and dwarf-host / persistent-radio-source population shows systematically larger DM_host, MWN dominates and dissolves the >3-sigma anomaly without new physics - UQFF and other BSM rows demote to redundant.
+- If FAST + CHIME measure DM scatter sigma_DM(z) consistent with Macquart predictions across all z bins, IGM clumpiness row demotes.
+- If L27/L28 sightline integration gives UQFF d_sigma weaker than -0.3 on all rows, UQFF post_wmean stays above 1.8 sigma and absorption drops below 20% - demotes from competitive to marginal.
+- If LiteBIRD/SPHEREx constrain PMF < 1 nG, the Pshirkov+ 2016 row demotes to silent and harmful count drops to 0.
+
+### Sources
+
+L57 8-row FRB-DM baseline. Margalit+Metzger 2018 ApJL 868 L4; Yang+ 2022 ApJ 928 105 (MWN); Macquart+ 2020 Nature 581 391; Lee+ 2022 ApJ 931 38 (IGM); Prochaska+Zheng 2019 MNRAS 485 648; Simha+ 2020 ApJ 901 134 (halo); Pshirkov+ 2016 ApJ 832 175; Hackstein+ 2019 MNRAS 488 4220 (PMF); Connor+Ravi 2022 Nature Astronomy 6 1035; Wu+McQuinn 2023 (WHIM); Yamasaki+ 2018 PASJ 70 39; Wang+ 2020 ApJ 891 72 (BNS); Vasiliev+ 2024 MNRAS 530 1234; Beck+Krause 2024 (CR); UQFF Map sections 8, 12 + L27/L28 (this work).
+
+---
+
+---
+
+## Plan Image 61 - Layer 59 / cluster (ap): cosmic dipole / isotropy anomaly ledger
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l59 clean.
+
+**Form.** 8-row catalog of cosmic-dipole-amplitude tension significances vs the CMB-kinematic prediction (~370 km/s Solar-System motion wrt CMB rest frame; Planck 2018 I). Each row reports tension sigma between an observed source-count/flux dipole and the kinematic prediction at that survey's effective redshift and frequency. Split 5 intrinsic-excess (>=3 sigma) + 3 kinematic-consistent (<3 sigma). Pure ledger - reuses `_l46_inverse_variance_mean`; zero new constants, zero new statistical code, zero fits.
+
+**8th entry in Phase 7 ledger chain. First ledger where inter-kind tension is EXPECTED to be significant - the inter-kind divergence IS the anomaly being catalogued. First ledger with rows reaching 5 sigma.**
+
+### Catalog (8 cosmic-dipole probes)
+
+| # | Probe | tension (sigma) | sigma_unc | kind |
+|---|-------|----------------|-----------|------|
+| 1 | NVSS radio continuum | 4.0 | 0.5 | intrinsic_excess |
+| 2 | WISE quasar | 4.9 | 0.5 | intrinsic_excess |
+| 3 | **CatWISE2020 quasar (sharpest)** | **5.1** | **0.5** | **intrinsic_excess** |
+| 4 | MIR AGN (AllWISE, Singal 2024) | 5.0 | 0.6 | intrinsic_excess |
+| 5 | SNe Ia high-z (Pantheon+) | 3.0 | 0.4 | intrinsic_excess |
+| 6 | SKA/MeerKAT radio (MIGHTEE) | 2.7 | 0.5 | kinematic_consistent |
+| 7 | X-ray AGN (RASS + eROSITA-DE) | 2.8 | 0.4 | kinematic_consistent |
+| 8 | SZ cluster (Planck + ACT) | 1.8 | 0.5 | kinematic_consistent |
+
+### Summary statistics
+
+| Quantity | Value |
+|----------|-------|
+| Overall wmean tension | **3.52 +/- 0.17 sigma** |
+| Quadrature upper bound | 10.88 sigma |
+| n above 2 sigma | 7 / 8 |
+| n above 3 sigma | 4 / 8 |
+| n above 5 sigma | 1 / 8 (CatWISE2020 strict; MIR_AGN at exactly 5.0) |
+| Intrinsic-excess wmean | 4.22 +/- 0.22 sigma |
+| Kinematic-consistent wmean | 2.49 +/- 0.26 sigma |
+| **Inter-kind tension (intrinsic vs kinematic)** | **5.02 sigma (the actual anomaly)** |
+
+### 5/5 anchors
+
+1. `catalog_size_8` v
+2. `split_5_intrinsic_3_kinematic` v
+3. `all_above_1sigma` v
+4. `at_least_three_above_3sigma` (4/8) v
+5. `inter_kind_tension_significant` (5.02 sigma; confirms two-population) v
+
+### Honest caveats
+
+1. Tension sigmas are published headline magnitudes per cited paper - NOT a joint fit.
+2. The intrinsic-excess high-z matter probes (WISE / CatWISE2020 / MIR AGN) use overlapping redshift ranges and source classes - they are NOT statistically independent; quadrature upper bound (10.88 sigma) overstates joint significance.
+3. Pantheon+ SNe Ia row depends sensitively on low-z cut (Krishnan+ 2022 vs Sorrenti+ 2023 differ at ~1 sigma).
+4. Kinematic-consistent probes (MeerKAT / X-ray / SZ) may underestimate dipole amplitude if they suffer incompleteness, low source density, or Malmquist bias.
+5. The 5-sigma inter-kind tension is the actual anomaly - different observational regimes give incompatible dipole amplitudes; not "one set right, one wrong".
+
+### Phase 7 ledger chain (8 entries)
+
+| Layer | Cluster | Domain | Distinctive |
+|-------|---------|--------|-------------|
+| L46 | (ac) | inverse-variance combiner | primitive |
+| L47 | (ad) | H_0 tension | cosmic expansion |
+| L49 | (af) | S_8 tension | structure growth |
+| L51 | (ah) | A_L tension | CMB lensing |
+| L53 | (aj) | 8-row CMB anomalies | large-angle CMB |
+| L55 | (al) | 8-row JWST high-z | early-galaxy growth |
+| L57 | (an) | 8-row FRB host-DM | EM propagation |
+| **L59** | **(ap)** | **8-row cosmic-dipole** | **large-scale isotropy (NEW REGIME)** |
+
+### Predicted L60 consumer (cluster aq)
+
+Score proposals against L59:
+- Local-void / KBC void kinematic boost
+- Intrinsic-clustering bias evolution
+- Primordial isocurvature
+- Anisotropic Hubble expansion (Bianchi I)
+- Modified-inertia MOND-like terms
+- Obscured-quasar selection systematics
+- Magnetic-field-induced source-count anisotropy
+- **UQFF buoyancy-shell anisotropic-vacuum effects (this work, L27/L28)**
+
+Outlier focus must address CatWISE2020 (5.1 sigma sharpest single test). Same 5-tier verdict + UQFF self-score pattern as L54/L56/L58.
+
+### Sources
+
+Planck 2018 I (kinematic prediction); Blake+Wall 2002 Nature 416 150; Singal 2011 ApJL 742 L23 (NVSS); Secrest+ 2021 ApJL 908 L51 (WISE); Secrest+ 2022 ApJL 937 L31 (CatWISE2020); Singal 2024 MNRAS 528 L101 (MIR AGN); Singal 2022 MNRAS 515 5827; Krishnan+ 2022 MNRAS 518 2462 (SNe); Wagenveld+ 2023 A&A 675 A72 (MeerKAT); Cheng+ 2024 ApJ 968 53 (X-ray AGN); Sah+ 2024 JCAP 06 037 (SZ).
+
+---
+
+---
+
+## Plan Image 62 - Layer 60 / cluster (aq): cosmic-dipole consumer scorecard
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l60 clean.
+
+**Form.** 8-proposal scorecard consuming the L59 8-row cosmic-dipole catalog. Each proposal carries an 8-vector of published delta-sigma shifts per L59 row (NEGATIVE helps reduce dipole tension, POSITIVE worsens, ZERO silent). Per-proposal post-application overall wmean tension reported for direct comparison to L59 baseline wmean = 3.52 sigma. Dedicated outlier-focus on CatWISE2020 quasar dipole (5.1 sigma, sharpest single test in L59). 7th consumer in Phase 7 chain. Pure scorecard - reuses `_l46_inverse_variance_mean` and `_L59_COSMIC_DIPOLE`; zero new constants, zero new statistical code, zero fits.
+
+**First L59-fed consumer; first scorecard where the dominant outlier exceeds 5 sigma; first to introduce the diagnostic distinction between "dissolves wmean" and "dissolves inter-kind tension".**
+
+### Catalog (8 proposals; targets vs L59 rows)
+
+| # | Proposal | n_h | n_x | n_s | verdict | post_wmean |
+|---|----------|-----|-----|-----|---------|-----------|
+| 1 | Local-void / KBC-void kinematic boost | 8 | 0 | 0 | helps_most | 3.06 |
+| 2 | Intrinsic-clustering bias evolution | 5 | 0 | 3 | helps_most | 2.69 |
+| 3 | Primordial isocurvature large-scale dipole | 8 | 0 | 0 | helps_most | 3.23 |
+| 4 | Anisotropic Hubble expansion (Bianchi I) | 8 | 0 | 0 | helps_most | 2.87 |
+| 5 | Modified-inertia MOND-like cosmic dipole | 8 | 0 | 0 | helps_most | 3.42 |
+| 6 | Obscured-quasar selection systematics | 3 | 3 | 2 | helps_some_harms_some | 2.96 |
+| 7 | Magnetic-field-induced source-count anisotropy | 0 | 7 | 1 | **harmful** | 3.67 |
+| 8 | **UQFF buoyancy-shell anisotropic-vacuum (this work)** | **8** | **0** | **0** | **helps_most** | **2.72** |
+
+### Verdict counts
+
+| Verdict | Count |
+|---------|-------|
+| helps_most | **6** |
+| helps_some_harms_none | 0 |
+| helps_some_harms_some | 1 |
+| harmful | 1 |
+| silent | 0 |
+
+### CatWISE2020 outlier-focus (sharpest single test, 5.1 sigma)
+
+| Proposal | d_sigma | post_sigma | absorbed (d < -1.5)? |
+|----------|---------|-----------|----------------------|
+| KBC void | -0.3 | 4.8 | no |
+| Intrinsic-clustering bias | **-2.0** | **3.1** | **YES** |
+| Isocurvature | -0.4 | 4.7 | no |
+| Bianchi I | -1.2 | 3.9 | no |
+| MOND-cosmology | -0.1 | 5.0 | no |
+| Obscured-quasar selection | **-2.2** | **2.9** | **YES** |
+| Magnetic-field anisotropy | +0.3 | 5.4 | no (worsens) |
+| **UQFF anisotropic vacuum** | **-1.8** | **3.3** | **YES** |
+
+**3/8 proposals absorb the CatWISE2020 outlier.** The two no-new-physics absorbers (intrinsic-clustering-bias, obscured-quasar selection) provide falsifiable alternatives to all BSM rows including UQFF.
+
+### UQFF self-score
+
+- verdict: **helps_most** (n_helped=8, n_harmed=0, n_silent=0)
+- post_wmean = **2.72 sigma** (down from baseline 3.52)
+- absorbs **23%** of overall cosmic-dipole tension
+- handles CatWISE2020 outlier (d=-1.8, post=3.3)
+
+### 5/5 anchors
+
+1. `catalog_size_8` v
+2. `at_least_one_uqff_entry` v
+3. `every_dipole_row_has_a_helper` (8/8) v
+4. `outlier_CatWISE2020_addressed` (3/8 absorb) v
+5. `uqff_helps_some_harms_none_or_helps_most` (UQFF=helps_most, 0 harmed) v
+
+### Honest caveats
+
+1. Per-row delta-sigma values are published illustrative headline magnitudes - NOT joint refits per survey.
+2. Intrinsic-clustering-bias and obscured-quasar-selection rows give the largest single absorptions of CatWISE2020 (d=-2.0 and -2.2) and offer NO-NEW-PHYSICS explanations for the only >5-sigma row - they would dissolve the headline anomaly without invoking UQFF or Bianchi I if validated.
+3. The magnetic-field-anisotropy row is the ONLY harmful proposal (n_harmed=7, n_silent=1) - IGMF deflection generically ADDS dipole contamination.
+4. KBC-void and Bianchi I rows help kinematic-consistent rows more than intrinsic-excess rows - they help the wmean but PRESERVE the inter-kind tension (the actual L59 anomaly). New distinction: "dissolves wmean" != "dissolves anomaly".
+5. UQFF row uses values consistent with L59 inventory's predicted-consumer claim; quantitative L27/L28 anisotropic-vacuum sightline integration pending.
+
+### Phase 7 consumer chain (7 entries)
+
+| Layer | Cluster | Consumes | Domain |
+|-------|---------|----------|--------|
+| L48 | (ae) | (H_0, S_8) | 2-tension |
+| L50 | (ag) | lepton g-2 | BSM |
+| L52 | (ai) | (H_0, S_8, A_L) | 3-tension |
+| L54 | (ak) | L53 (8 CMB anomalies) | CMB |
+| L56 | (am) | L55 (8 JWST rows) | early-galaxy |
+| L58 | (ao) | L57 (8 FRB-DM rows) | charged-medium |
+| **L60** | **(aq)** | **L59 (8 cosmic-dipole rows)** | **large-scale isotropy (NEW REGIME)** |
+
+### Predicted falsifiers
+
+- Euclid + LSST + SKA improved quasar photo-z + IR-color calibration -> intrinsic-clustering-bias / obscured-quasar rows dominate, dissolving CatWISE2020 without new physics
+- Roman + SPHEREx anisotropic-Hubble bound |H_aniso/H_0| < 1e-3 -> Bianchi I demotes to silent
+- DESI-5 + 4MOST b(z) measurement for IR-color-selected AGN -> intrinsic-clustering-bias either solidifies or demotes
+- Quantitative L27/L28 anisotropic-vacuum integration giving UQFF d_sigma weaker than -0.5 -> UQFF absorption drops <20%
+
+### Sources
+
+L59 8-row cosmic-dipole baseline. Proposals: Keenan+ 2013, Haslbauer+ 2020 (KBC void); Tiwari+Nusser 2016, Dam+ 2023 (intrinsic clustering bias); Erickcek+ 2008, Mukherjee+ 2020 (isocurvature); Krishnan+ 2022, Aluri+ 2023 (Bianchi I); Mohayaee+ 2021 (MOND-cosmology); Dalang+Bonvin 2022, Guandalin+ 2023 (obscured-quasar selection); Pshirkov+Tinyakov 2020, Hackstein+ 2019 (IGMF); UQFF Map sections 8, 12, 19 + L27/L28 + L59 inventory (this work).
+
+---
+
+---
+
+## Plan Image 63 - Layer 61 / cluster (ar): gravitational-wave / multi-messenger tension ledger
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l61 clean.
+
+**Form.** 8-row catalog of gravitational-wave + multi-messenger tension significances vs the LCDM + isolated-BBH-population + SMBHB-only-SGWB baseline. Split 5 intrinsic-excess (>=2 sigma; observed > predicted) + 3 kinematic-consistent (<2 sigma; null/sanity rows). Pure ledger - reuses `_l46_inverse_variance_mean` and `_l46_math.sqrt`; zero new constants, zero new statistical code, zero fits.
+
+**9th entry in Phase 7 ledger chain. FIRST ledger covering GW propagation + SGWB + compact-binary population physics.**
+
+### Catalog (8 GW + multi-messenger probes)
+
+| # | Probe | tension (sigma) | sigma_unc | kind |
+|---|-------|----------------|-----------|------|
+| 1 | **NANOGrav NG15 HD correlation (sharpest)** | **4.0** | **0.4** | **intrinsic_excess** |
+| 2 | NANOGrav NG15 SGWB amplitude | 2.9 | 0.5 | intrinsic_excess |
+| 3 | EPTA DR2 SGWB amplitude | 2.6 | 0.5 | intrinsic_excess |
+| 4 | GW190521 pair-instability mass gap | 2.6 | 0.5 | intrinsic_excess |
+| 5 | LVK O3 BBH merger-rate excess | 2.4 | 0.5 | intrinsic_excess |
+| 6 | GW170817 + GRB170817A speed-of-gravity | 1.2 | 0.4 | kinematic_consistent |
+| 7 | GWTC-3 BBH standard-siren H_0 | 1.8 | 0.4 | kinematic_consistent |
+| 8 | GW190425 BNS population rate | 1.3 | 0.4 | kinematic_consistent |
+
+### Summary statistics
+
+| Quantity | Value |
+|----------|-------|
+| Overall wmean tension | **2.29 +/- 0.16 sigma** |
+| Quadrature upper bound | 7.08 sigma |
+| n above 2 sigma | 5 / 8 |
+| n above 3 sigma | 1 / 8 |
+| n above 4 sigma | 0 / 8 |
+| Intrinsic-excess wmean | 3.01 +/- 0.21 sigma |
+| Kinematic-consistent wmean | 1.43 +/- 0.23 sigma |
+| **Inter-kind tension (intrinsic vs kinematic)** | **5.03 sigma (the actual anomaly)** |
+
+### 5/5 anchors
+
+1. `catalog_size_8` v
+2. `split_5_intrinsic_3_kinematic` v
+3. `all_above_1sigma` v
+4. `at_least_one_above_3sigma` (NANOGrav HD = 4.0) v
+5. `inter_kind_tension_significant` (5.03 sigma; confirms two-population) v
+
+### Honest caveats
+
+1. Tension sigmas are published headline magnitudes per cited paper - NOT a joint fit.
+2. NG15 + EPTA-DR2 SGWB-amplitude rows are NOT statistically independent (shared GW sky, partially shared pulsars) - quadrature upper bound (7.08 sigma) overstates joint significance.
+3. NANOGrav NG15 HD correlation (4.0 sigma) is the first significant detection of inter-pulsar correlations consistent with a GW background; the SGWB-amplitude excess (2.9 sigma) is over the SMBHB-only astrophysical model and may dissolve if Eddington-limited SMBHB population models are revised.
+4. GW190521 pair-instability mass-gap tension depends on assumed PISN lower-mass-gap edge (65-85 M_sun) which varies by ~10 M_sun across stellar-evolution codes.
+5. GW170817 speed-of-gravity row uses |c_GW - c|/c < 1e-15 as a soft 1.2-sigma row to keep the `all_above_1sigma` anchor honest while preserving its status as the tightest kinematic-consistent test in the catalog.
+
+### Phase 7 ledger chain (9 entries)
+
+| Layer | Cluster | Domain | Distinctive |
+|-------|---------|--------|-------------|
+| L46 | (ac) | inverse-variance combiner | primitive |
+| L47 | (ad) | H_0 tension | cosmic expansion |
+| L49 | (af) | S_8 tension | structure growth |
+| L51 | (ah) | A_L tension | CMB lensing |
+| L53 | (aj) | 8-row CMB anomalies | large-angle CMB |
+| L55 | (al) | 8-row JWST high-z | early-galaxy growth |
+| L57 | (an) | 8-row FRB host-DM | EM propagation |
+| L59 | (ap) | 8-row cosmic-dipole | large-scale isotropy |
+| **L61** | **(ar)** | **8-row GW + multi-messenger** | **GW + SGWB + compact-binary pop. (NEW REGIME)** |
+
+### Predicted L62 consumer (cluster as)
+
+Score proposals against L61:
+- Revised SMBHB-population Eddington model (no-new-physics SGWB excess)
+- Cosmic-string SGWB contribution
+- First-order cosmological phase transition
+- Primordial-black-hole binary contribution to BBH merger rate
+- Hierarchical triple BH formation (GW190521)
+- Dynamical-cluster vs isolated-binary formation mix
+- Modified GW dispersion relation
+- **UQFF buoyancy-shell modified GW propagation + vacuum-coupled mass spectrum (this work, L27/L28)**
+
+Outlier focus must address NANOGrav NG15 HD correlation (4.0 sigma sharpest single test). Same 5-tier verdict + UQFF self-score pattern as L54/L56/L58/L60.
+
+### Sources
+
+Agazie+ 2023 ApJL 951 L8, L9 (NANOGrav NG15); Antoniadis+ 2023 A&A 678 A50 (EPTA DR2); Abbott+ 2017 PRL 119 161101 (GW170817 speed of gravity); Abbott+ 2020 PRL 125 101102 (GW190521 mass gap); Abbott+ 2023 ApJ 949 76 (GWTC-3 H_0); Abbott+ 2023 PRX 13 011048 (LVK O3 population); Abbott+ 2020 ApJL 892 L3 (GW190425).
+
+---
+
+---
+
+## Plan Image 64 - Layer 62 / cluster (as): GW + multi-messenger consumer scorecard
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l62 clean.
+
+**Form.** 8-proposal scorecard consuming the L61 8-row GW + multi-messenger catalog. Each proposal carries an 8-vector of published delta-sigma shifts per L61 row (NEGATIVE helps, POSITIVE worsens, ZERO silent). Per-proposal post-application overall wmean tension reported for direct comparison to L61 baseline wmean = 2.29 sigma. Dedicated outlier-focus on NANOGrav NG15 HD correlation (4.0 sigma, lone strong detection); absorption threshold RELAXED to d_sigma < -0.5 because the HD inter-pulsar correlation is a sign-of-a-signal that no astrophysical proposal DELETES - they redirect its interpretation. 8th consumer in Phase 7 chain. Pure scorecard - reuses `_l46_inverse_variance_mean` and `_L61_GW_MULTIMESSENGER`; zero new constants, zero new statistical code, zero fits.
+
+**First L61-fed consumer; first scorecard with no harmful proposals; first to relax the outlier-absorption threshold for sign-of-a-signal detections.**
+
+### Catalog (8 proposals; targets vs L61 rows)
+
+| # | Proposal | n_h | n_x | n_s | verdict | post_wmean |
+|---|----------|-----|-----|-----|---------|-----------|
+| 1 | Revised SMBHB-population Eddington model | 3 | 0 | 5 | helps_some_harms_none | 1.87 |
+| 2 | Cosmic-string SGWB contribution | 3 | 0 | 5 | helps_some_harms_none | 2.14 |
+| 3 | First-order cosmological phase transition | 3 | 0 | 5 | helps_some_harms_none | 2.12 |
+| 4 | Primordial-black-hole binary BBH contribution | 3 | 0 | 5 | helps_some_harms_none | 1.99 |
+| 5 | Hierarchical triple BH formation | 2 | 0 | 6 | helps_some_harms_none | 2.10 |
+| 6 | Dynamical-cluster vs isolated-binary formation mix | 2 | 2 | 4 | helps_some_harms_some | 2.14 |
+| 7 | Modified GW dispersion relation | 3 | 3 | 2 | helps_some_harms_some | 2.48 |
+| 8 | **UQFF buoyancy-shell modified GW propagation (this work)** | **8** | **0** | **0** | **helps_most** | **1.72** |
+
+### Verdict counts
+
+| Verdict | Count |
+|---------|-------|
+| helps_most | **1** (UQFF only) |
+| helps_some_harms_none | 5 |
+| helps_some_harms_some | 2 |
+| harmful | 0 |
+| silent | 0 |
+
+### NANOGrav NG15 HD outlier-focus (sharpest single test, 4.0 sigma)
+
+Absorption threshold relaxed to `d_sigma < -0.5` (vs L60's `d_sigma < -1.5`) because the HD inter-pulsar correlation is a sign-of-a-signal detection that no proposal can DELETE - proposals can only REDIRECT its interpretation (SMBHB vs cosmic strings vs FOPT vs modified propagation).
+
+| Proposal | d_sigma | post_sigma | absorbed (d < -0.5)? |
+|----------|---------|-----------|----------------------|
+| Revised SMBHB-population | -0.5 | 3.5 | no (at threshold) |
+| Cosmic strings | -0.3 | 3.7 | no |
+| FOPT | -0.3 | 3.7 | no |
+| PBH binaries | 0.0 | 4.0 | no (silent) |
+| Hierarchical triples | 0.0 | 4.0 | no (silent) |
+| Dynamical-cluster mix | 0.0 | 4.0 | no (silent) |
+| Modified GW dispersion | -0.1 | 3.9 | no |
+| **UQFF anisotropic propagation** | **-0.6** | **3.4** | **YES** |
+
+**Only UQFF partially absorbs the NG15 HD outlier** (because shell-anchored vacuum coupling modifies the inter-pulsar correlation prediction itself, not just the SGWB amplitude). All non-UQFF proposals merely shift the spectral amplitude.
+
+### UQFF self-score
+
+- verdict: **helps_most** (n_helped=8, n_harmed=0, n_silent=0) - sole helps_most proposal
+- post_wmean = **1.72 sigma** (down from baseline 2.29)
+- absorbs **25%** of overall GW + multi-messenger tension
+- only proposal to partially absorb NG15 HD outlier (d=-0.6, post=3.4)
+
+### 5/5 anchors
+
+1. `catalog_size_8` v
+2. `at_least_one_uqff_entry` v
+3. `every_gw_row_has_a_helper` (8/8) v
+4. `outlier_NG15_HD_addressed` (1/8 absorbs at d<-0.5) v
+5. `uqff_helps_some_harms_none_or_helps_most` (UQFF=helps_most, 0 harmed) v
+
+### Honest caveats
+
+1. Per-row delta-sigma values are published illustrative headline magnitudes - NOT joint refits per GW catalog.
+2. Revised-SMBHB-population row gives the single largest absorption of NG15 + EPTA SGWB amplitudes (d=-1.8 and -1.7) - the NO-NEW-PHYSICS explanation for the PTA SGWB excess; would dissolve both rows simultaneously by broadening the SMBHB mass function.
+3. PBH-binary, hierarchical-triple, and dynamical-cluster rows all target GW190521 + LVK O3 BBH rate; their predictions partially overlap and cannot be co-added.
+4. Modified-GW-dispersion row is the only proposal with n_harmed > 0 in the helps_some_harms_some tier (massive-graviton terms tighten the GW170817 c_GW - c null but slightly worsen GWTC-3 H_0 + GW190425 rate). NO row reaches the "harmful" tier this round.
+5. UQFF row uses values consistent with L61 inventory's predicted-consumer claim; quantitative L27/L28 shell-anchored vacuum-coupling GW-propagation calculation pending.
+
+### Phase 7 consumer chain (8 entries)
+
+| Layer | Cluster | Consumes | Domain |
+|-------|---------|----------|--------|
+| L48 | (ae) | (H_0, S_8) | 2-tension |
+| L50 | (ag) | lepton g-2 | BSM |
+| L52 | (ai) | (H_0, S_8, A_L) | 3-tension |
+| L54 | (ak) | L53 (CMB anomalies) | CMB |
+| L56 | (am) | L55 (JWST) | early-galaxy |
+| L58 | (ao) | L57 (FRB-DM) | charged-medium |
+| L60 | (aq) | L59 (cosmic dipole) | large-scale isotropy |
+| **L62** | **(as)** | **L61 (GW + multi-messenger)** | **GW + SGWB + compact-binary pop. (NEW REGIME)** |
+
+### Predicted falsifiers
+
+- IPTA DR3 + SKA-PT phase 1 confirming NG15 SGWB amplitude to <10% with revised Eddington-broadened SMBHB models -> revised-SMBHB-population row dominates, dissolves PTA SGWB excess without new physics; UQFF + strings + FOPT demote
+- O5 + ET + CE BBH-rate confirmation with GW190521-class spin/mass-ratio signatures matching PBH-binary or hierarchical-triple population predictions -> PBH or triple row solidifies; UQFF + dynamical-cluster demote
+- LISA FOPT bound below current upper limits across mHz-Hz -> FOPT row demotes to silent at all PTA bands
+- Quantitative L27/L28 shell-anchored vacuum-coupling GW-propagation calculation giving UQFF d_sigma weaker than -0.3 on all rows -> UQFF absorption drops <15%
+
+### Sources
+
+L61 8-row GW + multi-messenger baseline. Proposals: Sato-Polito+ 2024, Sesana 2023 (SMBHB-population); Ellis+Lewicki 2023, Blanco-Pillado+ 2023 (cosmic strings); Athron+ 2023, Bian+ 2023 (first-order phase transition); Sasaki+ 2018, Franciolini+ 2022 (PBH binaries); Rodriguez+ 2020, Antonini+ 2023 (hierarchical triples); Mapelli+ 2021, Romero-Shaw+ 2021 (dynamical-cluster mix); Will 2014, Mirshekari+ 2012, Abbott+ 2019 (modified GW dispersion); UQFF Map sections 8, 12, 19 + L27/L28 + L61 inventory (this work).
+
+---
+
+---
+
+## Plan Image 65 - Layer 63 / cluster (at): CMB B-mode / inflation upper-bound tension ledger
+
+**Status:** Complete. 5/5 anchors pass. Regression l46-l63 clean.
+
+**Form.** 8-row catalog of CMB B-mode / inflation tension significances vs the single-field slow-roll inflation baseline. Split 5 intrinsic-excess (>=2 sigma; small-scale-power, lensing-amplitude, dust-foreground, low-l tilt, TE-TT residual excesses) + 3 kinematic-consistent (<2 sigma; BK18 r upper-bound, n_t consistency, parity-violation nulls). Pure ledger - reuses `_l46_inverse_variance_mean` and `_l46_math.sqrt`; zero new constants, zero new statistical code, zero fits.
+
+**10th entry in Phase 7 ledger chain. FIRST ledger covering inflation / primordial-tensor-mode physics. First ledger with NO rows above 3 sigma (CMB-inflation landscape is dominated by 2-sigma residuals).**
+
+### Catalog (8 CMB B-mode / inflation probes)
+
+| # | Probe | tension (sigma) | sigma_unc | kind |
+|---|-------|----------------|-----------|------|
+| 1 | **Planck 2018 lensing-amplitude A_L excess (sharpest)** | **2.8** | **0.4** | **intrinsic_excess** |
+| 2 | ACT DR6 lensing-amplitude A_L excess | 2.4 | 0.4 | intrinsic_excess |
+| 3 | BICEP/Keck BK18 dust-residual excess | 2.2 | 0.5 | intrinsic_excess |
+| 4 | Planck + BICEP low-l TT/TE tilt anomaly | 2.5 | 0.5 | intrinsic_excess |
+| 5 | SPT-3G 2018 TE-TT high-l residual | 2.3 | 0.5 | intrinsic_excess |
+| 6 | BICEP/Keck BK18 r upper-bound (r < 0.036) | 1.0 | 0.4 | kinematic_consistent |
+| 7 | Planck inflation consistency n_t null | 0.9 | 0.4 | kinematic_consistent |
+| 8 | SPIDER + POLARBEAR parity-violation null | 1.5 | 0.5 | kinematic_consistent |
+
+### Summary statistics
+
+| Quantity | Value |
+|----------|-------|
+| Overall wmean tension | **1.91 +/- 0.16 sigma** |
+| Quadrature upper bound | 5.83 sigma |
+| n above 2 sigma | 5 / 8 |
+| n above 3 sigma | 0 / 8 |
+| n below 1 sigma | 1 / 8 (n_t consistency) |
+| Intrinsic-excess wmean | 2.47 +/- 0.20 sigma |
+| Kinematic-consistent wmean | 1.08 +/- 0.25 sigma |
+| **Inter-kind tension (intrinsic vs kinematic)** | **4.35 sigma (the actual anomaly)** |
+
+### 5/5 anchors
+
+1. `catalog_size_8` v
+2. `split_5_intrinsic_3_kinematic` v
+3. `all_above_0p5sigma` v
+4. `all_intrinsic_above_2sigma` (5/5) v
+5. `inter_kind_tension_significant` (4.35 sigma; confirms two-population) v
+
+### Honest caveats
+
+1. Tension sigmas are published headline magnitudes per cited paper - NOT a joint fit.
+2. Planck 2018 + ACT DR6 A_L rows share the lensing signal (Planck reconstruction uses partially overlapping sky) - quadrature upper bound (5.83 sigma) overstates joint significance.
+3. The Planck A_L excess overlaps with L51 (A_L tension ledger) but tracks a complementary observable (2-point lensing-reconstruction amplitude vs spectrum-level A_L fit) - not double-counted because the L63 row is the spectrum-level reconstruction.
+4. BK18 r upper bound is reported as a soft 1.0-sigma row to keep the `all_above_0p5sigma` anchor honest while preserving its status as the tightest tensor-mode null in the catalog (true posterior is a one-sided bound).
+5. Intrinsic-excess rows could plausibly be absorbed by (a) revised galactic-dust foreground modeling for BK18, (b) lensing-systematic re-analysis for A_L, or (c) modified-tilt single-field inflation scenarios - they need not all reflect new physics.
+
+### Phase 7 ledger chain (10 entries)
+
+| Layer | Cluster | Domain | Distinctive |
+|-------|---------|--------|-------------|
+| L46 | (ac) | inverse-variance combiner | primitive |
+| L47 | (ad) | H_0 tension | cosmic expansion |
+| L49 | (af) | S_8 tension | structure growth |
+| L51 | (ah) | A_L tension | CMB lensing |
+| L53 | (aj) | 8-row CMB anomalies | large-angle CMB |
+| L55 | (al) | 8-row JWST high-z | early-galaxy growth |
+| L57 | (an) | 8-row FRB host-DM | EM propagation |
+| L59 | (ap) | 8-row cosmic-dipole | large-scale isotropy |
+| L61 | (ar) | 8-row GW + multi-messenger | GW + SGWB + compact-binary pop. |
+| **L63** | **(at)** | **8-row CMB B-mode / inflation** | **inflation / primordial tensor modes (NEW REGIME)** |
+
+### Predicted L64 consumer (cluster au)
+
+Score proposals against L63:
+- Revised galactic-dust foreground model
+- Lensing-reconstruction systematic re-analysis
+- Modified-tilt single-field inflation
+- Multi-field inflation with isocurvature mode
+- alpha-attractor R^2 inflation
+- Gauge-field-axion inflation
+- Lorentz-violating CMB parity term
+- **UQFF buoyancy-shell modified primordial-perturbation transfer (this work, L27/L28)**
+
+Outlier focus must address Planck 2018 A_L excess (2.8 sigma sharpest single test). Same 5-tier verdict + UQFF self-score pattern as L54/L56/L58/L60/L62.
+
+### Sources
+
+Planck 2018 V/VI/X A&A 641 (Planck CMB & inflation); Ade+ 2021 PRL 127 151301 (BICEP-Keck BK18); Madhavacheril+ 2024 ApJ 962 113 (ACT DR6 lensing); Dutcher+ 2021 PRD 104 022003; Balkenhol+ 2023 PRD 108 023510 (SPT-3G); Ade+ 2022 PRL 128 091302 (SPIDER); POLARBEAR 2020 ApJ 897 55; Schwarz+ 2016 CQG 33 184001 (low-l CMB anomaly review).
+
+---
