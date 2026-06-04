@@ -2007,3 +2007,14 @@ Analysis section 7 Step 2 (live-derive MILLENNIUM_TARGETS) COMPLETE.
 - black_hole_info live UQFF 1.005          vs SM anchor 1.0           diff 0.500%
 
 _millennium() dispatcher now returns Map section 7 provenance with SM=X, UQFF=Y, diff=<computed>%, (NOT REPLACEMENT). MILLENNIUM_TARGETS tuple is now anchor-only per analysis section 7 Step 2 mandate.
+
+---
+
+### Map section 18 correction (2026-06-04 Step 2 framing fix)
+
+User correction noted: the Standard Model has no solutions for the Millennium Prize problems. Prior Step 2 provenance erroneously called MILLENNIUM_TARGETS literals 'SM anchors'.
+
+Corrected:
+- MILLENNIUM_TARGETS tuple widened to (value, unit, ref_kind, ref_source, description) with explicit ref_kind / ref_source labels (LATTICE_QCD, ZETA_NUMERICAL, BSD_NUMERICAL, FLUID_BOUND, CONJECTURED, UNSOLVED).
+- _millennium() provenance now states: 'NOTE: Standard Model has NO solution for this problem. Reference value is NOT an SM anchor. REF=<X> (<unit>, kind=<KIND>, source: <SOURCE>) | UQFF=<Y> | diff=<computed>%'.
+- Live derivations themselves unchanged; only labeling layer corrected.

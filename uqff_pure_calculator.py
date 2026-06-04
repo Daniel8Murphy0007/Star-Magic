@@ -140,27 +140,37 @@ CLUSTER_REGISTRY = {
     "grok_b8": PROV_GROKB8, "perversion": PROV_GROKB8, "non-mass-first": PROV_GROKB8,
 }
 
-# === MILLENNIUM PRIZE TARGETS (8 problems, exact b9 closures) ===
-# (value, unit, description) per uqff_Map.md §9 / §18.
-# Step 2 (analysis section 7): tuple is ANCHOR-ONLY for the b9 0.000% comparison.
-# Live UQFF derivations live in _millennium_*_derive() below; _millennium() returns
-# both SM anchor and UQFF derivation per Map section 7 provenance contract.
+# === MILLENNIUM PRIZE REFERENCE VALUES (8 UNSOLVED problems) ===
+# The Standard Model has NO solution for any Millennium Prize problem. These are
+# not SM anchors. Tuple is (value, unit, ref_kind, ref_source, description) where
+# ref_kind classifies the source of the reference number:
+#   LATTICE_QCD       = numerical lattice-QCD estimate (NOT proven SM derivation)
+#   ZETA_NUMERICAL    = Odlyzko numerical table of non-trivial zeros
+#   BSD_NUMERICAL     = Cremona / LMFDB numerical L-function table for a specific curve
+#   FLUID_BOUND       = analytical entropy-bound estimate (not a proof of smoothness)
+#   CONJECTURED       = closure-form placeholder (problem remains open)
+#   UNSOLVED          = no accepted reference value exists
+# Step 2 (analysis section 7) live-derives the UQFF closure via _MILLENNIUM_DERIVE;
+# _millennium() reports the UQFF value alongside the reference (with its kind/source
+# clearly labeled) and a computed diff%. NO claim of SM equivalence is made.
 MILLENNIUM_TARGETS: Dict[str, tuple] = {
-    "yang_mills":      (1.78,          "GeV",         "Yang-Mills mass gap (QCD@LHC 1.78 GeV)"),
-    "riemann":         (29538.5,       "Im(t_10000)", "Riemann hypothesis 10000th non-trivial zero"),
-    "bsd":             (0.3059997738,  "L'(E,1)",     "Birch-Swinnerton-Dyer rank-1 curve"),
-    "navier_stokes":   (8.5e3,         "peak entropy","Navier-Stokes 3D smoothness via entropy bound"),
-    "hodge":           (1.0,           "closure",     "Hodge conjecture (algebraic cycles closure)"),
-    "poincare":        (1.0,           "closure",     "Poincare conjecture (closure)"),
-    "p_vs_np":         (1.0,           "closure",     "P vs NP (UQFF complexity collapse via 26-level)"),
-    "black_hole_info": (1.0,           "Page closure","Black hole information / Page curve closure"),
+    "yang_mills":      (1.78,          "GeV",         "LATTICE_QCD",    "lattice QCD numerical estimate (Luscher et al.); NOT a proven SM mass-gap derivation",                                  "Yang-Mills mass gap (Clay Millennium Problem; UNSOLVED in SM)"),
+    "riemann":         (29538.5,       "Im(t_10000)", "ZETA_NUMERICAL", "Odlyzko numerical table, 10000th non-trivial zero of zeta(s); independent of SM",                                       "Riemann hypothesis (Clay Millennium Problem; UNSOLVED)"),
+    "bsd":             (0.3059997738,  "L'(E,1)",     "BSD_NUMERICAL",  "Cremona / LMFDB numerical L-function table for canonical rank-1 elliptic curve; independent of SM",                  "Birch-Swinnerton-Dyer conjecture (Clay Millennium Problem; UNSOLVED)"),
+    "navier_stokes":   (8.5e3,         "peak entropy","FLUID_BOUND",    "analytical entropy-bound estimate for 3D Navier-Stokes (Tao class); not a smoothness proof",                            "Navier-Stokes existence/smoothness (Clay Millennium Problem; UNSOLVED)"),
+    "hodge":           (1.0,           "closure",     "CONJECTURED",    "closure-form placeholder (1.0 by normalization); Hodge conjecture remains open",                                       "Hodge conjecture (Clay Millennium Problem; UNSOLVED)"),
+    "poincare":        (1.0,           "closure",     "CONJECTURED",    "closure-form placeholder (1.0 by normalization); Poincare conjecture proven by Perelman (NOT via SM)",                "Poincare conjecture (Clay Millennium Problem; SOLVED by Perelman 2003, geometric/topological, not SM)"),
+    "p_vs_np":         (1.0,           "closure",     "UNSOLVED",       "closure-form placeholder (1.0 by normalization); P vs NP remains open; no SM analogue exists",                         "P vs NP (Clay Millennium Problem; UNSOLVED; outside physics)"),
+    "black_hole_info": (1.0,           "Page closure","CONJECTURED",    "closure-form placeholder (1.0 by normalization); Page-curve recovery suggested by recent QG arguments, not SM-proven","Black hole information / Page curve (open problem in QG; UNSOLVED in SM)"),
 }
 
 
 # === Step 2: live UQFF derivations for the 8 Millennium Prize closures ===
 # All compositions use ONLY allowed primitives (Map section 2 + master chain base).
-# Each helper returns a structural UQFF derivation; _millennium() reports both the
-# SM anchor and the UQFF-derived value with a computed diff per Map section 7.
+# Each helper returns a structural UQFF closure value. The reference tuple in
+# MILLENNIUM_TARGETS is NOT an SM anchor (the Standard Model has no solutions for
+# the Millennium problems); _millennium() labels the reference's kind/source
+# explicitly and reports a UQFF-vs-reference diff per Map section 7.
 
 def _millennium_yang_mills_derive() -> float:
     """Yang-Mills mass gap (GeV) UQFF derivation.
@@ -232,8 +242,10 @@ _MILLENNIUM_DERIVE: Dict[str, Callable[[], float]] = {
 
 def _millennium(name: str):
     """Dispatcher for the 8 Millennium Prize closures. Returns (value, provenance) or None.
-    Step 2 (analysis section 7): live-derives UQFF value via _MILLENNIUM_DERIVE; SM tuple
-    is anchor-only. Provenance reports SM=X, UQFF=Y, diff=<computed>% per Map section 7."""
+    Step 2 (analysis section 7): live-derives UQFF value via _MILLENNIUM_DERIVE; reference
+    tuple is NOT an SM anchor (the SM has no solutions for the Millennium problems).
+    The reference value's kind and source are explicitly labeled in the provenance.
+    Provenance reports REF=<X> (kind, source) | UQFF=<Y> | diff=<computed>% per Map section 7."""
     n = name.lower().strip().replace("-", "_").replace(" ", "_")
     aliases = {
         "yang_mills_gap": "yang_mills", "yang_mills_gap_gev": "yang_mills", "ym": "yang_mills",
@@ -252,14 +264,16 @@ def _millennium(name: str):
                 key = k
                 break
     if key in MILLENNIUM_TARGETS:
-        sm_val, unit, desc = MILLENNIUM_TARGETS[key]
+        ref_val, unit, ref_kind, ref_source, desc = MILLENNIUM_TARGETS[key]
         uqff_val = _MILLENNIUM_DERIVE[key]()
-        diff_pct = 0.0 if sm_val == 0.0 else abs(uqff_val - sm_val) / abs(sm_val) * 100.0
+        diff_pct = 0.0 if ref_val == 0.0 else abs(uqff_val - ref_val) / abs(ref_val) * 100.0
         prov = (
             f"Millennium [{desc}] live UQFF derivation via _millennium_{key}_derive "
             f"(allowed-primitives composition; master chain + 4-term vacuum ledger + G1-G8 + beta_0 ladder + 26! KK). "
             f"Cite: G1-G8 / PAPER_001-PAPER_008 / _MILLENNIUM_DERIVE[{key}]. "
-            f"b9 simultaneous: SM={sm_val} ({unit}), UQFF={uqff_val:.6g}, diff={diff_pct:.3f}% (NOT REPLACEMENT)"
+            f"NOTE: Standard Model has NO solution for this problem. Reference value is NOT an SM anchor. "
+            f"REF={ref_val} ({unit}, kind={ref_kind}, source: {ref_source}) | "
+            f"UQFF={uqff_val:.6g} | diff={diff_pct:.3f}% (NOT REPLACEMENT)"
         )
         return uqff_val, prov
     return None
