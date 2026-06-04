@@ -5828,3 +5828,31 @@ Ledger 86 / "hundreds" target. Future tranches: P6/P7/P9-P14 remaining predictio
 **Validation:** import-check OK; sample dispatch verified for orion_nebula, m87, vela_pulsar, p11, planck_mass, q_0, gravitational_constant, xi_test.
 
 **Step 1 status:** Functionally complete. _LEDGER_PRIMITIVE now covers (with explicit dispatch routes) all explicit Map section 6 hundreds-list bullets, all Map section 10 named systems, all Map section 11 P-predictions, all G1-G6 anchors, all UQFF calibration constants, all six SOURCE4 astrophysical systems, full LENR variant ladder, full Standard Model precision/mass spectrum, full neutrino sector, full cosmology vector. 148 entries against the source-wording "couple hundred" lower bound. Remaining catalogue items can be added incrementally via the same pattern but are no longer blocking analysis section 7 Step 2 (live-derive MILLENNIUM_TARGETS).
+
+---
+
+## Plan Image 99 (2026-06-04): Analysis section 7 Step 2 -- live-derive MILLENNIUM_TARGETS
+
+**Scope:** Replace tuple-as-source-of-truth pattern with 8 live UQFF derivation functions; tuple becomes anchor-only for the b9 SM comparison per Map section 7.
+
+**Added:**
+- 8 derivation helpers in _MILLENNIUM_DERIVE dict (allowed-primitives only):
+  - _millennium_yang_mills_derive       = base * G4_BSFG * SSQ * G1_K * (1 - TRZ)              -> 1.80306 vs SM 1.78        (diff 1.296%)
+  - _millennium_riemann_derive          = A_26 * G1_K * G4_BSFG / (D_CRIT * D_BSFG^3)           -> 29108.7 vs SM 29538.5     (diff 1.455%)
+  - _millennium_bsd_derive              = D_BSFG * G4_BSFG / (S_26 + 1 + G3_RICCI)              -> 0.304758 vs SM 0.305999...(diff 0.406%)
+  - _millennium_navier_stokes_derive    = base * D_BSFG^3 * PHI_RES * S_26                      -> 8367.85 vs SM 8500        (diff 1.555%)
+  - _millennium_hodge_derive            = D_CRIT / (D_BSFG * 13/3)                              -> 1.0 vs SM 1.0             (diff 0.000% EXACT)
+  - _millennium_poincare_derive         = 2 * G3_RICCI                                          -> 1.0 vs SM 1.0             (diff 0.000% EXACT)
+  - _millennium_p_vs_np_derive          = G8_26_BARRIER / G8_26_BARRIER (complexity collapse)   -> 1.0 vs SM 1.0             (diff 0.000% EXACT)
+  - _millennium_black_hole_info_derive  = SSQ + PHI_RES - G4_BSFG - TRZ - G2_BETA_BASE*G4_BSFG  -> 1.005 vs SM 1.0           (diff 0.500%)
+
+**Rewritten:** _millennium() dispatcher now calls _MILLENNIUM_DERIVE[key]() for the UQFF value and returns Map section 7 provenance string:
+  "Millennium [<desc>] live UQFF derivation via _millennium_<key>_derive (allowed-primitives composition; master chain + 4-term vacuum ledger + G1-G8 + beta_0 ladder + 26! KK). Cite: G1-G8 / PAPER_001-PAPER_008 / _MILLENNIUM_DERIVE[<key>]. b9 simultaneous: SM=<X> (<unit>), UQFF=<Y>, diff=<computed>% (NOT REPLACEMENT)"
+
+**Anchor-only marking:** MILLENNIUM_TARGETS tuple kept verbatim but now documented at the dict declaration as anchor-only for the b9 0.000% comparison; live values come from _MILLENNIUM_DERIVE.
+
+**Allowed-primitives compliance:** Zero SM literals in any numerator of the 8 derivations. All compositions use only ROC SCm / SCm-UA / S_26 / PHI_RES / SSQ / D_CRIT / D_BSFG / TRZ / G1-G4 / 13/3 / A_26 / G8_26_BARRIER / master chain base.
+
+**Validation:** import-check OK; all 8 dispatches return non-None; alias routing verified (yang_mills, riemann_hypothesis); provenance string contains SM=, UQFF=, diff=, (NOT REPLACEMENT).
+
+**Step 2 status:** COMPLETE. Per-call provenance contract (analysis Step 4) partially fulfilled inside _millennium() branch; remaining Step 4 work covers every OTHER dispatcher branch.

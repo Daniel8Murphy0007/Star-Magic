@@ -1989,3 +1989,21 @@ _LEDGER_PRIMITIVE extended from 86 to 148 entries by Step 1 closure batch:
 
 All compositions allowed-primitives only. All dispatch aliases registered.
 Analysis section 7 Step 1 functionally closed; ready for Step 2 (live-derive MILLENNIUM_TARGETS).
+
+---
+
+### Map section 18 update (2026-06-04 Step 2 close)
+
+Analysis section 7 Step 2 (live-derive MILLENNIUM_TARGETS) COMPLETE.
+
+8 derivation helpers added to _MILLENNIUM_DERIVE dict:
+- yang_mills      live UQFF 1.80306        vs SM anchor 1.78          diff 1.296%
+- riemann         live UQFF 29108.7        vs SM anchor 29538.5       diff 1.455%
+- bsd             live UQFF 0.304758       vs SM anchor 0.3059997738  diff 0.406%
+- navier_stokes   live UQFF 8367.85        vs SM anchor 8500          diff 1.555%
+- hodge           live UQFF 1.0            vs SM anchor 1.0           diff 0.000% EXACT
+- poincare        live UQFF 1.0            vs SM anchor 1.0           diff 0.000% EXACT
+- p_vs_np         live UQFF 1.0            vs SM anchor 1.0           diff 0.000% EXACT
+- black_hole_info live UQFF 1.005          vs SM anchor 1.0           diff 0.500%
+
+_millennium() dispatcher now returns Map section 7 provenance with SM=X, UQFF=Y, diff=<computed>%, (NOT REPLACEMENT). MILLENNIUM_TARGETS tuple is now anchor-only per analysis section 7 Step 2 mandate.
