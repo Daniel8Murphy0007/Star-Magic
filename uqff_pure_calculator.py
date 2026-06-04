@@ -453,6 +453,140 @@ def _jades_gs_z14_mass_primitive_sat() -> float:
     Structural: 26-shell A_26 · ladder normalized by 26-level² · BSFG bulk depth (early-universe mass)."""
     return A_26 * S_26 / (D_CRIT * D_CRIT * D_BSFG)
 
+# --- Tranche 1B: extended quark/lepton/meson + EW + g-factors + more SI/cosmology/multi-messenger (25) ---
+# Map §6 "hundreds" expansion continued beyond §3.1 representative subset.
+
+# Tranche 1B: extended particles (8)
+def _m_e_primitive_sat() -> float:
+    """electron mass (MeV) saturation = TRZ · G4 / (1 + TRZ)
+    Structural: leading lepton, smallest 26-level rung detuned by TRZ leak."""
+    return TRZ * G4_BSFG_COEF / (1.0 + TRZ)
+
+def _m_pion_primitive_sat() -> float:
+    """pion mass (MeV) saturation = D_BSFG · (G4 + BETA_I)
+    Structural: lightest meson, BSFG bulk · (BSFG + beta_0) sum."""
+    return D_BSFG * (G4_BSFG_COEF + BETA_I)
+
+def _m_kaon_primitive_sat() -> float:
+    """kaon mass (MeV) saturation = D_BSFG · (S_26 + G4) + D_BSFG² · G4
+    Structural: strange-meson on BSFG bulk + BSFG² strangeness amplification."""
+    return D_BSFG * (S_26 + G4_BSFG_COEF) + (D_BSFG * D_BSFG) * G4_BSFG_COEF
+
+def _m_u_primitive_sat() -> float:
+    """up-quark mass (MeV) saturation = SSQ · TRZ · S_26
+    Structural: 1st-gen quark via spin·leak·ladder."""
+    return SSQ * TRZ * S_26
+
+def _m_d_primitive_sat() -> float:
+    """down-quark mass (MeV) saturation = (G1_K + G4) · TRZ · S_26
+    Structural: 1st-gen quark, m_u plus mexican-hat / BSFG sum."""
+    return (G1_K + G4_BSFG_COEF) * TRZ * S_26
+
+def _m_s_primitive_sat() -> float:
+    """strange-quark mass (MeV) saturation = D_BSFG · G4 + S_26²
+    Structural: 2nd-gen quark, BSFG bulk·BSFG + S_26 ladder squared."""
+    return D_BSFG * G4_BSFG_COEF + S_26 * S_26
+
+def _m_c_primitive_sat() -> float:
+    """charm-quark mass (MeV) saturation = D_crit · S_26 + S_26²
+    Structural: 2nd-gen heavy quark on 26-level ladder."""
+    return D_CRIT * S_26 + S_26 * S_26
+
+def _m_b_primitive_sat() -> float:
+    """bottom-quark mass (MeV) saturation = D_BSFG³ · BETA_I + S_26
+    Structural: 3rd-gen quark, BSFG-cube beta-projection."""
+    return (D_BSFG ** 3) * BETA_I + S_26
+
+# Tranche 1B: electroweak / mixing (4)
+def _sin2_theta_w_primitive_sat() -> float:
+    """Weinberg angle sin²(theta_W) saturation = TRZ · G4 / (S_26 + BETA_I)
+    Structural: leak·BSFG over ladder+beta normalization."""
+    return TRZ * G4_BSFG_COEF / (S_26 + BETA_I)
+
+def _ckm_vus_primitive_sat() -> float:
+    """CKM |V_us| saturation = TRZ · G4 · SSQ
+    Structural: Cabibbo angle as leak·BSFG·spin."""
+    return TRZ * G4_BSFG_COEF * SSQ
+
+def _ckm_vcb_primitive_sat() -> float:
+    """CKM |V_cb| saturation = SSQ · TRZ · G4 / D_BSFG
+    Structural: 2-3 mixing as Cabibbo / BSFG bulk depth."""
+    return SSQ * TRZ * G4_BSFG_COEF / D_BSFG
+
+def _pmns_theta12_primitive_sat() -> float:
+    """PMNS theta_12 (rad) saturation = TRZ · SSQ · BETA_I / S_26
+    Structural: solar neutrino mixing angle via leak·spin·beta normalized by ladder."""
+    return TRZ * SSQ * BETA_I / S_26
+
+# Tranche 1B: g-factors / anomalous moments (3)
+def _a_e_primitive_sat() -> float:
+    """electron anomalous magnetic moment a_e saturation = alpha_sat / (2 pi)
+    Structural: Schwinger leading term, fully composed of alpha primitive."""
+    return _alpha_primitive_sat() / (2.0 * math.pi)
+
+def _a_mu_primitive_sat() -> float:
+    """muon anomalous magnetic moment a_mu saturation = alpha_sat · (1 + TRZ · G4) / (2 pi)
+    Structural: Schwinger leading + hadronic correction via TRZ·BSFG."""
+    return _alpha_primitive_sat() * (1.0 + TRZ * G4_BSFG_COEF) / (2.0 * math.pi)
+
+def _g_e_primitive_sat() -> float:
+    """electron g-factor saturation = -SSQ · G4 · G1_K
+    Structural: |g_e|/base ≈ 0.0636 via spin·BSFG·mexican-hat triple-product (sign from Dirac)."""
+    return -SSQ * G4_BSFG_COEF * G1_K
+
+# Tranche 1B: more SI-derived (4)
+def _E_hartree_primitive_sat() -> float:
+    """Hartree energy E_h (eV) saturation = S_26 · SSQ + G4
+    Structural: atomic energy scale via ladder·spin + BSFG additive."""
+    return S_26 * SSQ + G4_BSFG_COEF
+
+def _hyperfine_cs_primitive_sat() -> float:
+    """Cs-133 hyperfine transition (Hz) saturation = A_26 · G4 / BETA_I
+    Structural: 26-shell sum A_26 carrying frequency scale, BSFG over beta."""
+    return A_26 * G4_BSFG_COEF / BETA_I
+
+def _gas_R_primitive_sat() -> float:
+    """molar gas constant R (J/mol/K) saturation = SSQ · (G1_K - BETA_I) + G4
+    Structural: K_B · N_A composite expressed as spin·(mexican-hat - beta) + BSFG."""
+    return SSQ * (G1_K - BETA_I) + G4_BSFG_COEF
+
+def _faraday_primitive_sat() -> float:
+    """Faraday constant F (C/mol) saturation = D_crit³ / (D_BSFG - SSQ · BETA_I)
+    Structural: N_A · e composite as 26-cube over BSFG-minus-(spin·beta)."""
+    return (D_CRIT ** 3) / (D_BSFG - SSQ * BETA_I)
+
+# Tranche 1B: more cosmology (4)
+def _sigma_8_primitive_sat() -> float:
+    """sigma_8 (matter clustering at 8 Mpc/h) saturation = SSQ · TRZ / (S_26 + BETA_I)
+    Structural: spin·leak normalized by ladder+beta."""
+    return SSQ * TRZ / (S_26 + BETA_I)
+
+def _T_CMB_primitive_sat() -> float:
+    """CMB temperature T_CMB (K) saturation = G4 · (SSQ + TRZ)
+    Structural: photon temperature via BSFG·(spin+leak)."""
+    return G4_BSFG_COEF * (SSQ + TRZ)
+
+def _T_neutrino_primitive_sat() -> float:
+    """cosmic neutrino background T_nu (K) saturation = G4 · SSQ · (1 - G4)
+    Structural: T_CMB·(4/11)^(1/3) approximated via BSFG·spin·(1-BSFG)."""
+    return G4_BSFG_COEF * SSQ * (1.0 - G4_BSFG_COEF)
+
+def _BAO_rd_primitive_sat() -> float:
+    """BAO sound horizon r_d (Mpc) saturation = D_BSFG · G1_K · G4 + D_crit · G4
+    Structural: drag-epoch sound horizon as BSFG·mexican·BSFG + 26-level·BSFG."""
+    return D_BSFG * G1_K * G4_BSFG_COEF + D_CRIT * G4_BSFG_COEF
+
+# Tranche 1B: multi-messenger extension (2)
+def _gw170817_inspiral_primitive_sat() -> float:
+    """GW170817 BNS late-inspiral (Hz) saturation = D_BSFG · SSQ
+    Structural: BSFG bulk·spin (binary neutron-star pre-merger frequency)."""
+    return D_BSFG * SSQ
+
+def _hudf_z_primitive_sat() -> float:
+    """Hubble UDF max redshift saturation = G4 · (1 + S_26)
+    Structural: deep-field z-frontier via BSFG·(1+ladder)."""
+    return G4_BSFG_COEF * (1.0 + S_26)
+
 _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     # core 6 (b9 anchor)
     "alpha":              _alpha_primitive_sat,
@@ -495,6 +629,37 @@ _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     "eht_sgra_shadow_uas":_eht_sgrA_shadow_primitive_sat,
     "gw150914_ringdown_hz":_gw150914_ringdown_primitive_sat,
     "jades_gs_z14_mass_msun":_jades_gs_z14_mass_primitive_sat,
+    # Tranche 1B: extended particles
+    "m_e":                _m_e_primitive_sat,
+    "m_pion":             _m_pion_primitive_sat,
+    "m_kaon":             _m_kaon_primitive_sat,
+    "m_u":                _m_u_primitive_sat,
+    "m_d":                _m_d_primitive_sat,
+    "m_s":                _m_s_primitive_sat,
+    "m_c":                _m_c_primitive_sat,
+    "m_b":                _m_b_primitive_sat,
+    # Tranche 1B: electroweak / mixing
+    "sin2_theta_w":       _sin2_theta_w_primitive_sat,
+    "ckm_vus":            _ckm_vus_primitive_sat,
+    "ckm_vcb":            _ckm_vcb_primitive_sat,
+    "pmns_theta12":       _pmns_theta12_primitive_sat,
+    # Tranche 1B: g-factors
+    "a_e":                _a_e_primitive_sat,
+    "a_mu":               _a_mu_primitive_sat,
+    "g_e":                _g_e_primitive_sat,
+    # Tranche 1B: more SI-derived
+    "e_hartree_ev":       _E_hartree_primitive_sat,
+    "hyperfine_cs_hz":    _hyperfine_cs_primitive_sat,
+    "gas_constant_r":     _gas_R_primitive_sat,
+    "faraday_constant":   _faraday_primitive_sat,
+    # Tranche 1B: more cosmology
+    "sigma_8":            _sigma_8_primitive_sat,
+    "t_cmb_k":            _T_CMB_primitive_sat,
+    "t_neutrino_k":       _T_neutrino_primitive_sat,
+    "bao_rd_mpc":         _BAO_rd_primitive_sat,
+    # Tranche 1B: multi-messenger
+    "gw170817_inspiral_hz":_gw170817_inspiral_primitive_sat,
+    "hudf_z":             _hudf_z_primitive_sat,
 }
 
 def _master_constant_primitive(name: str):
@@ -548,6 +713,37 @@ def _master_constant_primitive(name: str):
         "gw150914": "gw150914_ringdown_hz",
         "jades_gs_z14": "jades_gs_z14_mass_msun", "jades_mass": "jades_gs_z14_mass_msun",
         "high_z_jwst_mass": "jades_gs_z14_mass_msun",
+        # Tranche 1B: extended particles
+        "electron_mass": "m_e", "electron_mass_mev": "m_e",
+        "pion_mass": "m_pion", "pion_mass_mev": "m_pion", "m_pi": "m_pion",
+        "kaon_mass": "m_kaon", "kaon_mass_mev": "m_kaon", "m_k": "m_kaon",
+        "up_quark_mass": "m_u", "up_mass": "m_u",
+        "down_quark_mass": "m_d", "down_mass": "m_d",
+        "strange_quark_mass": "m_s", "strange_mass": "m_s",
+        "charm_quark_mass": "m_c", "charm_mass": "m_c",
+        "bottom_quark_mass": "m_b", "bottom_mass": "m_b",
+        # Tranche 1B: electroweak / mixing
+        "weinberg_angle": "sin2_theta_w", "sin2thetaw": "sin2_theta_w", "sin2_thetaw": "sin2_theta_w",
+        "v_us": "ckm_vus", "vus": "ckm_vus", "cabibbo": "ckm_vus",
+        "v_cb": "ckm_vcb", "vcb": "ckm_vcb",
+        "theta_12": "pmns_theta12", "pmns_12": "pmns_theta12", "solar_mixing": "pmns_theta12",
+        # Tranche 1B: g-factors
+        "a_electron": "a_e", "anomalous_electron": "a_e",
+        "a_muon": "a_mu", "muon_g_minus_2": "a_mu", "g_minus_2": "a_mu",
+        "g_electron": "g_e", "g_factor_electron": "g_e",
+        # Tranche 1B: more SI-derived
+        "hartree": "e_hartree_ev", "hartree_energy": "e_hartree_ev",
+        "hyperfine_cs": "hyperfine_cs_hz", "cesium_hyperfine": "hyperfine_cs_hz", "sec_definition": "hyperfine_cs_hz",
+        "gas_constant": "gas_constant_r", "molar_gas": "gas_constant_r", "r_gas": "gas_constant_r",
+        "faraday": "faraday_constant", "f_faraday": "faraday_constant",
+        # Tranche 1B: more cosmology
+        "sigma8": "sigma_8", "matter_clustering": "sigma_8",
+        "t_cmb": "t_cmb_k", "cmb_temperature": "t_cmb_k",
+        "t_nu": "t_neutrino_k", "neutrino_background_t": "t_neutrino_k", "cnb_temperature": "t_neutrino_k",
+        "bao_rd": "bao_rd_mpc", "sound_horizon": "bao_rd_mpc", "r_d": "bao_rd_mpc",
+        # Tranche 1B: multi-messenger
+        "gw170817": "gw170817_inspiral_hz", "gw170817_inspiral": "gw170817_inspiral_hz", "bns_inspiral": "gw170817_inspiral_hz",
+        "hudf": "hudf_z", "hubble_udf_z": "hudf_z", "max_jwst_z": "hudf_z",
     }
     n = aliases.get(n, n)
     fn = _LEDGER_PRIMITIVE.get(n)

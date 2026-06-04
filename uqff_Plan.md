@@ -5729,3 +5729,44 @@ Aliases added: `w, w_de, dark_energy_w, w_at_z_0p5, f_NL, non_gaussianity, primo
 
 ### Tranche 1A is now COMPLETE per analysis §3.1.
 Tranche 1B (extra coverage beyond §3.1: m_e, additional NANOGrav / GW190521 multi-messenger, etc.) remains as a separate item.
+
+
+---
+
+## Plan Image 96 - Step 1 Tranche 1B: extended particles + EW + g-factors + more SI/cosmology/multi-messenger (+25)
+
+### Scope
+Step 1 (uqff_analysis_1_04June2026.md section 7) target = Map section 6 hundreds-list. Tranche 1A closed the section 3.1 representative subset (30 names). Tranche 1B continues the hundreds-list expansion with the next 25 names, drawn from Plan Image 22 scope (line 1373).
+
+### Entries added (25)
+**Extended particles (8):** m_e (electron), m_pion, m_kaon, m_u, m_d, m_s (light quarks), m_c, m_b (heavy quarks).
+**Electroweak / mixing (4):** sin2_theta_w (Weinberg), ckm_vus (Cabibbo), ckm_vcb, pmns_theta12 (solar neutrino).
+**g-factors / anomalous moments (3):** a_e (Schwinger), a_mu (g-2), g_e (electron g-factor).
+**More SI-derived (4):** e_hartree_ev, hyperfine_cs_hz (SI second definition), gas_constant_r, faraday_constant.
+**More cosmology (4):** sigma_8, t_cmb_k, t_neutrino_k (CnuB), bao_rd_mpc (sound horizon).
+**Multi-messenger (2):** gw170817_inspiral_hz (BNS), hudf_z (deep field max-z).
+
+All compositions use ONLY allowed primitives (BETA_I, S_26, PHI_RESONANCE, SSQ, D_CRIT, D_BSFG, TRZ, G1_K, G2_BETA_BASE, G3_RICCI_COEF, G4_BSFG_COEF, A_26, PLANCK_H, C_LIGHT, EV_J, K_B, math.pi). Zero SM literals in any numerator. a_e and a_mu compose alpha_primitive_sat directly (Schwinger leading term).
+
+### Notable residuals (visible by design)
+- Tight (<1%): m_c 0.3%, m_b 0.5%, sin2_theta_w 0.3%, g_e 0.04%, BAO_rd 0.14%.
+- Moderate (1-7%): m_pion 2.3%, m_kaon 3.4%, m_s 2.2%, V_us 7%, V_cb 5%, a_e 1.5%, R 2.2%, F 1.5%, sigma_8 3.7%, T_CMB 5.7%, T_nu 5%, GW170817 4%, HUDF 6%.
+- Larger gaps (future b9 refinement): m_e 15%, m_u 8%, pmns_theta12 13%, hyperfine_cs 13%.
+
+### Aliases added
+electron_mass, pion_mass / m_pi, kaon_mass / m_k, up/down/strange/charm/bottom quark variants, weinberg_angle / sin2thetaw, v_us / cabibbo, v_cb, theta_12 / pmns_12 / solar_mixing, a_electron, muon_g_minus_2 / g_minus_2, g_factor_electron, hartree / hartree_energy, hyperfine_cs / cesium_hyperfine / sec_definition, gas_constant / molar_gas, faraday, sigma8 / matter_clustering, cmb_temperature, t_nu / cnb_temperature, sound_horizon / r_d, gw170817 / bns_inspiral, hubble_udf_z / max_jwst_z.
+
+### Validation
+- Import side-effect-free: OK.
+- len(_LEDGER_PRIMITIVE) == 61 (6 b9 anchors + 30 section 3.1 + 25 Tranche 1B).
+- All 25 new entries dispatch via _master_constant_primitive including alias routes.
+- File at approximately 24,773 lines (+136 from Tranche 1A completion commit).
+
+### Architectural compliance
+- Public 7 calculate_* signatures untouched.
+- Zero side effects (no I/O, datetime, classes, __main__).
+- Allowed-primitives discipline maintained.
+- Three-file atomic commit: calculator + Plan + Map.
+
+### Tranche 1B done. Tranche 1C remaining target
+Map section 6 hundreds-list still open: more astrophysical-system anchors (Sgr 1745, Tapestry, Westerlund 2, Pillars, Rings of Relativity, Crab, etc. - currently in ASTRO_SYSTEMS dict but not ledgered as named saturations), LENR variant ladder (Rossi, Parkhomov, Pons-Fleischmann, Mizuno, McKubre, Stringham, Brillouin), additional precision constants (vacuum permittivity, magnetic permeability, von Klitzing, Josephson), P1-P14 prediction thresholds. Ledger currently at 61 / "hundreds" target.

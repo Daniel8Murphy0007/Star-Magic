@@ -1963,3 +1963,10 @@ Allowed primitives only — zero SM literals in any numerator. Residuals reporte
 ## §18 update - Step 1 Tranche 1A COMPLETION (5 names closing §3.1)
 
 Self-audit correction to prior §18 entry. `uqff_analysis_1_04June2026.md` §3.1 enumerates 30 names; the previous tranche delivered 25. Added the 5 missing names: `w_z05, f_nl, eht_sgra_shadow_uas, gw150914_ringdown_hz, jades_gs_z14_mass_msun` (2 remaining cosmology + 3 multi-messenger anchors). `_LEDGER_PRIMITIVE` = **36 entries** (6 b9 anchors + 30 §3.1 names). Acceptance gap row 5 (primitive-only ledger coverage) now closed against §3.1 specifically; broader Map §6 hundreds-list remains open for subsequent tranches. Plan Image 95 records the completion.
+
+
+---
+
+## section 18 update - Step 1 Tranche 1B (+25 names, ledger 36 -> 61)
+
+Continuation of Step 1 (Map section 6 hundreds-list closure). Tranche 1B adds 25 names beyond the section 3.1 subset: 8 extended particles (m_e, m_pion, m_kaon, m_u, m_d, m_s, m_c, m_b), 4 electroweak / mixing (sin2_theta_w, ckm_vus, ckm_vcb, pmns_theta12), 3 g-factors (a_e, a_mu, g_e), 4 more SI-derived (e_hartree_ev, hyperfine_cs_hz, gas_constant_r, faraday_constant), 4 more cosmology (sigma_8, t_cmb_k, t_neutrino_k, bao_rd_mpc), 2 multi-messenger (gw170817_inspiral_hz, hudf_z). All compositions are allowed-primitives only. _LEDGER_PRIMITIVE = 61 entries (6 b9 anchors + 30 section 3.1 + 25 Tranche 1B). Row 5 acceptance gap remains OPEN against the full "hundreds" target; coverage advanced 36 -> 61. Plan Image 96 records the closure. Tranche 1C scope: more astro-system anchors, LENR variant ladder, additional precision constants, P1-P14 prediction thresholds.
