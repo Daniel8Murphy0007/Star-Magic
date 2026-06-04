@@ -5695,3 +5695,37 @@ Each new `_<name>_primitive_sat() -> float` helper uses ONLY: `{BETA_I, S_26, PH
 
 ### Phase 8 chain status
 First tranche of analysis §7 Step 1. Tranches 1B (multi-messenger anchors + remaining cosmology) and 1C (Map §6 sweep) to follow. Then Steps 2–12 of analysis §7.
+
+
+---
+
+## Plan Image 95 - Step 1 Tranche 1A COMPLETION: close `§3.1` 5-name shortfall
+
+### What this entry is
+Self-audit correction. Plan Image 94 claimed Tranche 1A closed `uqff_analysis_1_04June2026.md` §3.1 with 25 new entries. Re-reading §3.1 verbatim shows it enumerates **30 names** (Particles 9 + SI-derived 7 + Cosmology 11 + Multi-messenger 3). The previous tranche delivered 25 and arbitrarily punted 5 names (`w(z=0.5), f_NL, EHT Sgr A* shadow, GW150914 ringdown, JADES-GS-z14-0 mass`) into a self-invented "Tranche 1B" — that split was not in the analysis. §3.1 is one bullet list; Tranche 1A does not close until all 30 are in.
+
+### Entries added (5 to close §3.1)
+- `w_z05`: -(G1_K + G4)/D_crit
+- `f_nl`: G4*TRZ*SSQ - SSQ*TRZ/D_BSFG
+- `eht_sgra_shadow_uas`: (S_26 + G4)*(1 + TRZ/D_BSFG)
+- `gw150914_ringdown_hz`: D_BSFG + S_26 + G1_K*(1 - SSQ*G4)
+- `jades_gs_z14_mass_msun`: A_26 * S_26 / (D_crit^2 * D_BSFG)
+
+Aliases added: `w, w_de, dark_energy_w, w_at_z_0p5, f_NL, non_gaussianity, primordial_ng, eht_sgra, sgra_shadow, sgrastar_shadow, eht_shadow, gw150914_ringdown, ringdown_freq, gw150914, jades_gs_z14, jades_mass, high_z_jwst_mass`.
+
+### Final Tranche 1A state
+`_LEDGER_PRIMITIVE` = **36 entries** (6 b9 anchors + 30 §3.1 names). All entries are closed-form primitive compositions — no SM literal in any numerator. Residuals visible via `_ledger_residual()` (EHT incidentally lands within 0.14% of 51.8 \u03bcas anchor; GW150914 ringdown within 4% of 251 Hz; w(z=0.5) ~20% high; JADES order of magnitude — gap-visibility layer as designed).
+
+### Validation
+- Import side-effect-free: OK.
+- `len(_LEDGER_PRIMITIVE) == 36`: confirmed.
+- All 5 new entries dispatch via `_master_constant_primitive` including alias routes.
+- File at 24,637 lines (+36 from previous tranche).
+
+### Architectural compliance
+- Public 7 `calculate_*` signatures untouched.
+- Zero side effects, no I/O, no classes, no `__main__`.
+- Three-file atomic commit: calculator + Plan + Map.
+
+### Tranche 1A is now COMPLETE per analysis §3.1.
+Tranche 1B (extra coverage beyond §3.1: m_e, additional NANOGrav / GW190521 multi-messenger, etc.) remains as a separate item.

@@ -1956,3 +1956,10 @@ Per `uqff_analysis_1_04June2026.md` §1 acceptance gap row 5 (primitive-only led
 - **Cosmology core (9):** `omega_m, omega_b_h2, omega_dm_h2, n_s, a_s, eta, y_p, z_re, tau_reion`
 
 Allowed primitives only — zero SM literals in any numerator. Residuals reported by `_ledger_residual()`. Row 5 remains OPEN (further coverage in Tranches 1B/1C), but coverage advanced from ~6 names to ~31. Plan Image 94 in `uqff_Plan.md` records the full audit.
+
+
+---
+
+## §18 update - Step 1 Tranche 1A COMPLETION (5 names closing §3.1)
+
+Self-audit correction to prior §18 entry. `uqff_analysis_1_04June2026.md` §3.1 enumerates 30 names; the previous tranche delivered 25. Added the 5 missing names: `w_z05, f_nl, eht_sgra_shadow_uas, gw150914_ringdown_hz, jades_gs_z14_mass_msun` (2 remaining cosmology + 3 multi-messenger anchors). `_LEDGER_PRIMITIVE` = **36 entries** (6 b9 anchors + 30 §3.1 names). Acceptance gap row 5 (primitive-only ledger coverage) now closed against §3.1 specifically; broader Map §6 hundreds-list remains open for subsequent tranches. Plan Image 95 records the completion.

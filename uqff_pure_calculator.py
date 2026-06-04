@@ -427,6 +427,32 @@ def _tau_reion_primitive_sat() -> float:
     Structural: BSFG · leak · 26-rung · phonon (Thomson optical depth)."""
     return G4_BSFG_COEF * TRZ * S_26 * PHI_RESONANCE
 
+# --- Tranche 1A completion: remaining cosmology + multi-messenger anchors (5) ---
+def _w_z05_primitive_sat() -> float:
+    """dark-energy w(z=0.5) saturation = -(G1_K + G4_BSFG_COEF) / D_crit
+    Structural: cosmological-constant-like w ≈ -1; mexican-hat + BSFG over 26 levels."""
+    return -(G1_K + G4_BSFG_COEF) / D_CRIT
+
+def _f_NL_primitive_sat() -> float:
+    """primordial non-Gaussianity f_NL saturation = G4 · TRZ · SSQ - SSQ · TRZ / D_BSFG
+    Structural: near-zero detune as competition between BSFG·leak·spin and spin·leak·BSFG-bulk."""
+    return G4_BSFG_COEF * TRZ * SSQ - SSQ * TRZ / D_BSFG
+
+def _eht_sgrA_shadow_primitive_sat() -> float:
+    """EHT Sagittarius A* shadow (μas) saturation = (S_26 + G4) · (1 + TRZ/D_BSFG)
+    Structural: 26-rung + BSFG amplification with TRZ leak through BSFG bulk depth."""
+    return (S_26 + G4_BSFG_COEF) * (1.0 + TRZ / D_BSFG)
+
+def _gw150914_ringdown_primitive_sat() -> float:
+    """GW150914 ringdown frequency (Hz) saturation = D_BSFG + S_26 + G1_K · (1 - SSQ · G4)
+    Structural: BSFG bulk + 26-rung ladder + mexican-hat detuned by spin·BSFG."""
+    return D_BSFG + S_26 + G1_K * (1.0 - SSQ * G4_BSFG_COEF)
+
+def _jades_gs_z14_mass_primitive_sat() -> float:
+    """JADES-GS-z14-0 stellar mass (M_sun) saturation = A_26 · S_26 / (D_crit² · D_BSFG)
+    Structural: 26-shell A_26 · ladder normalized by 26-level² · BSFG bulk depth (early-universe mass)."""
+    return A_26 * S_26 / (D_CRIT * D_CRIT * D_BSFG)
+
 _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     # core 6 (b9 anchor)
     "alpha":              _alpha_primitive_sat,
@@ -463,6 +489,12 @@ _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     "y_p":                _Y_p_primitive_sat,
     "z_re":               _z_re_primitive_sat,
     "tau_reion":          _tau_reion_primitive_sat,
+    # Tranche 1A completion: remaining cosmology + multi-messenger
+    "w_z05":              _w_z05_primitive_sat,
+    "f_nl":               _f_NL_primitive_sat,
+    "eht_sgra_shadow_uas":_eht_sgrA_shadow_primitive_sat,
+    "gw150914_ringdown_hz":_gw150914_ringdown_primitive_sat,
+    "jades_gs_z14_mass_msun":_jades_gs_z14_mass_primitive_sat,
 }
 
 def _master_constant_primitive(name: str):
@@ -507,6 +539,15 @@ def _master_constant_primitive(name: str):
         "helium_fraction": "y_p", "primordial_helium": "y_p",
         "reionization_z": "z_re", "z_reion": "z_re",
         "optical_depth": "tau_reion", "tau": "tau_reion",
+        # Tranche 1A completion: remaining cosmology + multi-messenger anchors
+        "w": "w_z05", "w_de": "w_z05", "dark_energy_w": "w_z05", "w_at_z_0p5": "w_z05",
+        "f_NL": "f_nl", "non_gaussianity": "f_nl", "primordial_ng": "f_nl",
+        "eht_sgra": "eht_sgra_shadow_uas", "sgra_shadow": "eht_sgra_shadow_uas",
+        "sgrastar_shadow": "eht_sgra_shadow_uas", "eht_shadow": "eht_sgra_shadow_uas",
+        "gw150914_ringdown": "gw150914_ringdown_hz", "ringdown_freq": "gw150914_ringdown_hz",
+        "gw150914": "gw150914_ringdown_hz",
+        "jades_gs_z14": "jades_gs_z14_mass_msun", "jades_mass": "jades_gs_z14_mass_msun",
+        "high_z_jwst_mass": "jades_gs_z14_mass_msun",
     }
     n = aliases.get(n, n)
     fn = _LEDGER_PRIMITIVE.get(n)
