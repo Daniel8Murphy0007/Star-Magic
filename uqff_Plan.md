@@ -5660,3 +5660,38 @@ Specs: table | score | vector | comparison | anchors | inventory
 ### Phase 7 chain status
 35th entry (L57/an .. L91/bv). First derivation-style layer (the previous 34 were ledger or consumer-scorecard layers). Re-uses _l25_r_screen, _l27_r_envelope, _l27_f_shield, _L89_GW, _l46_inverse_variance_mean, _L90_PROPOSALS - NO new primitive equations, NO new constants, NO fits.
 
+
+
+---
+
+## Plan Image 94 — Step 1 Tranche 1A: _LEDGER_PRIMITIVE extension (core particles + SI-derived + cosmology core)
+
+### What this tranche is
+Per uqff_analysis_1_04June2026.md §7 Step 1 (primitive-only ledger coverage). Extends `_LEDGER_PRIMITIVE` in `uqff_pure_calculator.py` from 6 → 31 entries. Each new entry is a closed-form algebraic composition of allowed primitives only (no SM literal in numerator).
+
+### What gap it closes
+`uqff_analysis_1_04June2026.md` §1 Acceptance Gap row 5 (primitive-only ledger coverage) — partial. The b9 master chain (_master_constant_primitive) now resolves 25 additional named constants through pure-primitive algebra. Residuals vs SM anchors remain visible via `_ledger_residual()` for future refinement (the analysis explicitly designates this as the gap-visibility layer).
+
+### Entries added (25)
+- **Core particles (9):** `m_mu, m_tau, m_t, m_w, m_z, m_h, v_higgs, g_f, alpha_s`
+- **SI-derived (7):** `r_infinity, sigma_sb, b_wien, a_0, lambda_c, r_e, mu_b`
+- **Cosmology core (9):** `omega_m, omega_b_h2, omega_dm_h2, n_s, a_s, eta, y_p, z_re, tau_reion`
+
+### Derivation rule (allowed primitives ONLY)
+Each new `_<name>_primitive_sat() -> float` helper uses ONLY: `{BETA_I, S_26, PHI_RESONANCE, SSQ, D_CRIT, D_BSFG, TRZ, G1_K, G2_BETA_BASE, G3_RICCI_COEF, G4_BSFG_COEF, 13/3, OMEGA_SCM, PLANCK_H, C_LIGHT, EV_J, K_B, RHO_SCM, RHO_UA, A_26, S26_3, math.pi}`. Zero SM literals in any numerator. Zero new constants introduced.
+
+### Aliases extended
+`_master_constant_primitive` aliases grew from 6 → 31+ to cover natural names (`muon_mass, higgs_mass, bohr_radius, matter_density, etc.`) — pure dispatcher routing, no new physics.
+
+### Validation
+- Import-check: `python -c "import uqff_pure_calculator"` returns OK (side-effect-free).
+- `len(_LEDGER_PRIMITIVE) == 31` confirmed.
+- Sample resolutions: `alpha → 0.00739`, `m_mu → 117.4 MeV`, `higgs_mass → 333 GeV`, `omega_m → 7.41`, `sigma_sb → 1.8e-6 W/m²K⁴`. Residual visibility working.
+
+### Architectural compliance
+- `uqff_pure_calculator.py` still single file, 7 public `calculate_*` signatures untouched.
+- Zero side effects, no I/O, no datetime, no classes, no `__main__`.
+- Three-file commit: calculator + Plan + Map updated atomically per analysis §8 mandate.
+
+### Phase 8 chain status
+First tranche of analysis §7 Step 1. Tranches 1B (multi-messenger anchors + remaining cosmology) and 1C (Map §6 sweep) to follow. Then Steps 2–12 of analysis §7.

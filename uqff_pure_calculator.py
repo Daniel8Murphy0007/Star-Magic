@@ -299,13 +299,170 @@ def _t0_primitive_sat() -> float:
     Structural meaning: β_i age-projection times phonon-minus-leak."""
     return BETA_I * (PHI_RESONANCE - TRZ)
 
+# --- Tranche 1A: core particles (9) ---
+def _m_mu_primitive_sat() -> float:
+    """muon-mass (MeV) saturation = D_crit · G4 · (S_26 - SSQ)
+    Structural: 2nd-generation lepton on 26-level ladder with [SSq] detune."""
+    return D_CRIT * G4_BSFG_COEF * (S_26 - SSQ)
+
+def _m_tau_primitive_sat() -> float:
+    """tau-mass (MeV) saturation = D_crit^2 · G4 · BETA_I
+    Structural: 3rd-generation lepton at D_crit^2 ladder amplification."""
+    return (D_CRIT * D_CRIT) * G4_BSFG_COEF * BETA_I
+
+def _m_t_primitive_sat() -> float:
+    """top-quark mass (GeV) saturation = D_crit · S_26 · G4 · G1_K
+    Structural: 3rd-gen quark · 26-level · BSFG · mexican-hat lock."""
+    return D_CRIT * S_26 * G4_BSFG_COEF * G1_K
+
+def _m_W_primitive_sat() -> float:
+    """W-boson mass (GeV) saturation = D_BSFG · BETA_I · S_26 · (1 + TRZ)
+    Structural: SU(2) charged gauge boson on BSFG bulk with phonon coupling."""
+    return D_BSFG * BETA_I * S_26 * (1.0 + TRZ)
+
+def _m_Z_primitive_sat() -> float:
+    """Z-boson mass (GeV) saturation = D_BSFG · BETA_I · S_26 / G1_K
+    Structural: neutral gauge boson, m_W enhanced by inverse mexican-hat (analog 1/cos θ_W)."""
+    return D_BSFG * BETA_I * S_26 / G1_K
+
+def _m_H_primitive_sat() -> float:
+    """Higgs-mass (GeV) saturation = D_BSFG · S_26 · PHI_RES · (G1_K + G2_BETA_BASE)
+    Structural: scalar field on BSFG bulk · 26-level · phonon · (mexican-hat + KK base)."""
+    return D_BSFG * S_26 * PHI_RESONANCE * (G1_K + G2_BETA_BASE)
+
+def _v_higgs_primitive_sat() -> float:
+    """Higgs VEV (GeV) saturation = D_crit · BETA_I · S_26 / PHI_RES
+    Structural: 26-level vacuum expectation enhanced by inverse phonon resonance."""
+    return D_CRIT * BETA_I * S_26 / PHI_RESONANCE
+
+def _G_F_primitive_sat() -> float:
+    """Fermi constant G_F (GeV^-2) saturation = G4 · TRZ / (D_crit^2 · S_26)
+    Structural: G_F ~ 1/v^2; expressed as BSFG · leak over 26^2 · ladder."""
+    return G4_BSFG_COEF * TRZ / ((D_CRIT * D_CRIT) * S_26)
+
+def _alpha_s_primitive_sat() -> float:
+    """alpha_s(M_Z) saturation = G1_K · G4 / (S_26 · PHI_RES)
+    Structural: asymptotic-freedom suppression at 26-level · mexican-hat."""
+    return G1_K * G4_BSFG_COEF / (S_26 * PHI_RESONANCE)
+
+# --- Tranche 1A: SI-derived (7) ---
+def _R_infinity_primitive_sat() -> float:
+    """Rydberg R_inf (m^-1) saturation = D_crit^4 / (PLANCK_H · C_LIGHT · A_26)
+    Structural: 1/lambda_C-style closure scaled by 26^4 / A_26 26-shell normalization."""
+    return (D_CRIT ** 4) / (PLANCK_H * C_LIGHT * A_26)
+
+def _sigma_SB_primitive_sat() -> float:
+    """Stefan-Boltzmann sigma_SB (W m^-2 K^-4) saturation = (8 pi^5 / 60) · K_B^4 / (PLANCK_H^3 · C_LIGHT^2)
+    Structural: canonical radiation-law identity in primitive form (hbar = h/2pi)."""
+    return (8.0 * math.pi ** 5 / 60.0) * (K_B ** 4) / ((PLANCK_H ** 3) * (C_LIGHT ** 2))
+
+def _b_wien_primitive_sat() -> float:
+    """Wien displacement b (m K) saturation = PLANCK_H · C_LIGHT · G1_K / (D_BSFG · K_B)
+    Structural: hc/(x·k_B) with x ≈ D_BSFG/G1_K projecting the Wien root onto BSFG bulk."""
+    return PLANCK_H * C_LIGHT * G1_K / (D_BSFG * K_B)
+
+def _a_0_primitive_sat() -> float:
+    """Bohr radius a_0 (m) saturation = PLANCK_H^2 · S_26 / (A_26 · EV_J)
+    Structural: hbar^2/(m_e e^2 / 4πeps0) reduced via 26-shell A_26 mass-scale and ladder."""
+    return (PLANCK_H ** 2) * S_26 / (A_26 * EV_J)
+
+def _lambda_C_primitive_sat() -> float:
+    """Compton wavelength lambda_C (m) saturation = PLANCK_H · D_crit^4 / (A_26 · C_LIGHT)
+    Structural: h/(m_e c) closed by D_crit^4/A_26 electron mass-structure ratio."""
+    return PLANCK_H * (D_CRIT ** 4) / (A_26 * C_LIGHT)
+
+def _r_e_primitive_sat() -> float:
+    """classical electron radius r_e (m) saturation = alpha_sat^2 · a_0_sat
+    Structural: r_e = alpha^2 · a_0 — composition of two primitive ledger entries."""
+    return _alpha_primitive_sat() ** 2 * _a_0_primitive_sat()
+
+def _mu_B_primitive_sat() -> float:
+    """Bohr magneton mu_B (J/T) saturation = PLANCK_H · EV_J · D_crit^4 / (4 pi · A_26)
+    Structural: e·hbar/(2 m_e) reduced via D_crit^4/A_26 electron mass-structure ratio."""
+    return PLANCK_H * EV_J * (D_CRIT ** 4) / (4.0 * math.pi * A_26)
+
+# --- Tranche 1A: cosmology core (9) ---
+def _Omega_m_primitive_sat() -> float:
+    """Omega_m saturation = G4 · S_26 · PHI_RES + SSQ · TRZ
+    Structural: BSFG matter projection + [SSq]·leak admixture (matter density fraction)."""
+    return G4_BSFG_COEF * S_26 * PHI_RESONANCE + SSQ * TRZ
+
+def _Omega_b_h2_primitive_sat() -> float:
+    """Omega_b h^2 saturation = G4^2 · PHI_RES
+    Structural: baryon fraction as BSFG^2 · phonon coupling."""
+    return (G4_BSFG_COEF ** 2) * PHI_RESONANCE
+
+def _Omega_DM_h2_primitive_sat() -> float:
+    """Omega_DM h^2 saturation = G2_base · G4 · PHI_RES
+    Structural: KK-base · BSFG · phonon — dark-matter fraction via geometric channels."""
+    return G2_BETA_BASE * G4_BSFG_COEF * PHI_RESONANCE
+
+def _n_s_primitive_sat() -> float:
+    """scalar spectral index n_s saturation = 1 - G4 · TRZ · (1 + SSQ)
+    Structural: slow-roll tilt as BSFG·TRZ·(1+[SSq]) detune from scale-invariance."""
+    return 1.0 - G4_BSFG_COEF * TRZ * (1.0 + SSQ)
+
+def _A_s_primitive_sat() -> float:
+    """scalar amplitude A_s saturation = RHO_SCM · A_26 · S_26 · PHI_RES
+    Structural: vacuum-ledger amplitude scaled by 26-shell sum and ladder."""
+    return RHO_SCM * A_26 * S_26 * PHI_RESONANCE
+
+def _eta_primitive_sat() -> float:
+    """baryon-to-photon ratio eta saturation = G4^2 · TRZ · BETA_I / A_26
+    Structural: matter-asymmetry as small BSFG^2·TRZ·beta over 26-shell normalization."""
+    return (G4_BSFG_COEF ** 2) * TRZ * BETA_I / A_26
+
+def _Y_p_primitive_sat() -> float:
+    """primordial helium Y_p saturation = G4 · S_26 + G3 · TRZ
+    Structural: BSFG·26-rung + Ricci-coef·leak (BBN helium fraction)."""
+    return G4_BSFG_COEF * S_26 + G3_RICCI_COEF * TRZ
+
+def _z_re_primitive_sat() -> float:
+    """reionization redshift z_re saturation = D_BSFG + PHI_RES + SSQ
+    Structural: BSFG bulk depth + phonon + spin (epoch of first ionization)."""
+    return D_BSFG + PHI_RESONANCE + SSQ
+
+def _tau_reion_primitive_sat() -> float:
+    """reionization optical depth tau saturation = G4 · TRZ · S_26 · PHI_RES
+    Structural: BSFG · leak · 26-rung · phonon (Thomson optical depth)."""
+    return G4_BSFG_COEF * TRZ * S_26 * PHI_RESONANCE
+
 _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
+    # core 6 (b9 anchor)
     "alpha":              _alpha_primitive_sat,
     "proton_mass_mev":    _proton_mass_primitive_sat,
     "yang_mills_gap_gev": _yang_mills_primitive_sat,
     "neutron_lifetime_s": _neutron_lifetime_primitive_sat,
     "h0":                 _h0_primitive_sat,
     "t0_gyr":             _t0_primitive_sat,
+    # Tranche 1A core particles
+    "m_mu":               _m_mu_primitive_sat,
+    "m_tau":              _m_tau_primitive_sat,
+    "m_t":                _m_t_primitive_sat,
+    "m_w":                _m_W_primitive_sat,
+    "m_z":                _m_Z_primitive_sat,
+    "m_h":                _m_H_primitive_sat,
+    "v_higgs":            _v_higgs_primitive_sat,
+    "g_f":                _G_F_primitive_sat,
+    "alpha_s":            _alpha_s_primitive_sat,
+    # Tranche 1A SI-derived
+    "r_infinity":         _R_infinity_primitive_sat,
+    "sigma_sb":           _sigma_SB_primitive_sat,
+    "b_wien":             _b_wien_primitive_sat,
+    "a_0":                _a_0_primitive_sat,
+    "lambda_c":           _lambda_C_primitive_sat,
+    "r_e":                _r_e_primitive_sat,
+    "mu_b":               _mu_B_primitive_sat,
+    # Tranche 1A cosmology core
+    "omega_m":            _Omega_m_primitive_sat,
+    "omega_b_h2":         _Omega_b_h2_primitive_sat,
+    "omega_dm_h2":        _Omega_DM_h2_primitive_sat,
+    "n_s":                _n_s_primitive_sat,
+    "a_s":                _A_s_primitive_sat,
+    "eta":                _eta_primitive_sat,
+    "y_p":                _Y_p_primitive_sat,
+    "z_re":               _z_re_primitive_sat,
+    "tau_reion":          _tau_reion_primitive_sat,
 }
 
 def _master_constant_primitive(name: str):
@@ -315,12 +472,41 @@ def _master_constant_primitive(name: str):
     anywhere in the call graph."""
     n = name.lower().strip()
     aliases = {
+        # core 6
         "fine_structure_alpha": "alpha",
         "m_p_mev": "proton_mass_mev", "proton_mass": "proton_mass_mev",
         "yang_mills": "yang_mills_gap_gev", "ym_gap": "yang_mills_gap_gev",
         "neutron_lifetime": "neutron_lifetime_s",
         "hubble": "h0", "h_0": "h0",
         "t_0": "t0_gyr", "age_universe_gyr": "t0_gyr",
+        # Tranche 1A core particles
+        "muon_mass": "m_mu", "muon_mass_mev": "m_mu",
+        "tau_mass": "m_tau", "tau_mass_mev": "m_tau",
+        "top_mass": "m_t", "top_mass_gev": "m_t", "m_top": "m_t",
+        "w_mass": "m_w", "w_boson_mass": "m_w",
+        "z_mass": "m_z", "z_boson_mass": "m_z",
+        "higgs_mass": "m_h", "higgs_mass_gev": "m_h",
+        "higgs_vev": "v_higgs", "vev": "v_higgs",
+        "fermi_constant": "g_f", "g_fermi": "g_f",
+        "strong_coupling": "alpha_s", "alpha_strong": "alpha_s",
+        # Tranche 1A SI-derived
+        "rydberg": "r_infinity", "rydberg_constant": "r_infinity",
+        "stefan_boltzmann": "sigma_sb", "sigma_stefan": "sigma_sb",
+        "wien": "b_wien", "wien_displacement": "b_wien",
+        "bohr_radius": "a_0",
+        "compton_wavelength": "lambda_c",
+        "electron_radius": "r_e", "classical_electron_radius": "r_e",
+        "bohr_magneton": "mu_b",
+        # Tranche 1A cosmology core
+        "matter_density": "omega_m", "omega_matter": "omega_m",
+        "baryon_density": "omega_b_h2",
+        "dm_density": "omega_dm_h2", "dark_matter_density": "omega_dm_h2",
+        "spectral_index": "n_s",
+        "scalar_amplitude": "a_s",
+        "baryon_photon_ratio": "eta",
+        "helium_fraction": "y_p", "primordial_helium": "y_p",
+        "reionization_z": "z_re", "z_reion": "z_re",
+        "optical_depth": "tau_reion", "tau": "tau_reion",
     }
     n = aliases.get(n, n)
     fn = _LEDGER_PRIMITIVE.get(n)

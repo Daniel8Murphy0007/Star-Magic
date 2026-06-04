@@ -1943,3 +1943,16 @@ The one file is complete when:
 
 Derivation-style layer. Computes the UQFF dsigma 8-vector for the L90 GW consumer scorecard algebraically from L25 r_screen + L27 f_shield applied to each L89 GW row's representative (M_kg, r_test) pair. Conversion rule: dsigma_i = -min(|log10 f_shield_L27(M_i, r_i)|, 0.9 * sigma_baseline_i). Derived verdict: helps_most. Absorbs 56% of GW-sector tension. Max|derived - hand_set| = 1.60 sigma. 5/5 anchors. Closes the heuristic gap flagged in the L90 audit - the UQFF row in any consumer scorecard can now be cross-checked against this primitive-derived vector. NO new equations, NO new constants, NO fits.
 
+
+
+---
+
+## §18 update — Step 1 Tranche 1A: primitive-only ledger coverage (partial)
+
+Per `uqff_analysis_1_04June2026.md` §1 acceptance gap row 5 (primitive-only ledger coverage), `uqff_pure_calculator.py::_LEDGER_PRIMITIVE` extended from 6 → 31 entries. The `_master_constant_primitive` dispatcher now resolves through pure-primitive algebra for:
+
+- **Core particles (9):** `m_mu, m_tau, m_t, m_w, m_z, m_h, v_higgs, g_f, alpha_s`
+- **SI-derived (7):** `r_infinity, sigma_sb, b_wien, a_0, lambda_c, r_e, mu_b`
+- **Cosmology core (9):** `omega_m, omega_b_h2, omega_dm_h2, n_s, a_s, eta, y_p, z_re, tau_reion`
+
+Allowed primitives only — zero SM literals in any numerator. Residuals reported by `_ledger_residual()`. Row 5 remains OPEN (further coverage in Tranches 1B/1C), but coverage advanced from ~6 names to ~31. Plan Image 94 in `uqff_Plan.md` records the full audit.
