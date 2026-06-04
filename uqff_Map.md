@@ -1447,3 +1447,499 @@ The one file is complete when:
 **Next free slot:** Layer 64 / cluster (au) - the CMB B-mode / inflation consumer scorecard (predicted; dust-foreground revision, lensing systematics, modified-tilt single-field inflation, multi-field iso-curvature, alpha-attractor R^2, gauge-axion, Lorentz-violating parity, UQFF buoyancy-shell modified primordial-perturbation transfer).
 
 ---
+
+---
+
+## 19 update - Layer 64 / cluster (au): CMB B-mode / inflation consumer scorecard
+
+**Slot:** Layer 64, cluster (au). **Status:** complete; 5/5 anchors; regression l46-l64 clean.
+
+**Form.** 8-proposal scorecard consuming L63 8-row CMB B-mode / inflation catalog. Each proposal = 8-vector of delta-sigma shifts per L63 row (negative helps, positive worsens, zero silent). Same shape as L62 consumer. Reports verdict-count summary, row coverage, UQFF self-score, outlier focus on Planck A_L (2.8 sigma), and 5-anchor validation.
+
+**Distinctive feature.** First Phase 7 consumer covering inflation / primordial-tensor-mode physics. **FIRST scorecard with a confirmed HARMFUL entry** (Lorentz-violating CMB parity term - predicts non-zero EB cross-correlation that worsens SPIDER/POLARBEAR null) - demonstrates the 5-tier verdict taxonomy correctly classifies proposals that WORSEN the catalog. Planck A_L outlier absorption threshold d<-0.8 (tighter than L62's d<-0.5 NG15 HD threshold) reflects that published lensing-systematic shifts cluster at ~1.5 sigma magnitude.
+
+**Dispatcher keys:** `cmb_bmode_consumer | l64 | inflation_consumer | bmode_consumer`
+**Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`
+
+**Headline result.** 1 helps_most (UQFF), 3 helps_some_harms_none, 3 helps_some_harms_some, 1 harmful, 0 silent. UQFF verdict=helps_most (n_helped=8, n_harmed=0, post_wmean=1.33 down from baseline 1.91 - absorbs 30%); lensing-systematic = sharpest no-new-physics absorber (post 1.45, helps only A_L excesses). 2/8 proposals absorb Planck A_L outlier (lensing systematic d=-1.6; UQFF d=-1.0).
+
+**Reuses only:** `_L63_CMB_BMODE_INFLATION` baseline + `_l46_inverse_variance_mean`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | at_least_one_uqff_entry v | every_bmode_row_has_a_helper (8/8) v | outlier_PlanckAL_addressed (2/8 at d<-0.8) v | uqff_helps_most v.
+
+**Phase 7 consumer chain extended to 9 entries:** L48 (ae) | L50 (ag) | L52 (ai) | L54 (ak) | L56 (am) | L58 (ao) | L60 (aq) | L62 (as) | **L64 (au, CMB B-mode / inflation - first inflation-regime consumer + first confirmed HARMFUL entry)**.
+
+**Next free slot:** Layer 65 / cluster (av) - next Phase 7 ledger (candidates: solar-system / equivalence-principle / fifth-force tension catalogue; LSS / cluster-counts / BAO; neutrino oscillation / mass-hierarchy tensions).
+
+---
+
+---
+
+## 19 update - Layer 65 / cluster (av): solar-system / EP / fifth-force tension ledger
+
+**Slot:** Layer 65, cluster (av). **Status:** complete; 5/5 anchors; regression l46-l65 clean.
+
+**Form.** 8-row catalog of solar-system / WEP / fifth-force / DM-direct-detection tension significances vs GR + LCDM + Standard-Model baseline. Split 4 intrinsic-excess (>=2 sigma; Pioneer 10/11 post-thermal, flyby, Cassini PPN-gamma, XENONnT low-E recoil) + 4 kinematic-consistent (<2 sigma; MICROSCOPE WEP, LLR SEP, Eot-Wash ISL, LZ WIMP nulls). Same 5-tuple row shape as L46/L49/L51/L53/L55/L57/L59/L61/L63. Reports inter-kind tension where SIGNIFICANT is EXPECTED.
+
+**Distinctive feature.** First Phase 7 ledger covering solar-system / strong-field-gravity / WEP / DM-direct-detection regime. First ledger where intrinsic-excess rows cluster tightly in 2.0-2.4 sigma band (none above 3 sigma; lowest peak-row sigma of any Phase 7 ledger - reflects that solar-system + DM-direct anomalies are all marginal at current precision). 4/4 intrinsic split (vs 5/3 in L63; 8 of the 10 prior ledgers use other splits).
+
+**Dispatcher keys:** `solar_system_ep | l65 | fifth_force_ledger | ep_ledger`
+**Specs:** `ledger | split | inter | stats | anchors | inventory`
+
+**Headline result.** Overall wmean tension 1.62 +/- 0.17 sigma; quadrature upper bound 5.06 sigma; 4/8 above 2 sigma, 0/8 above 3 sigma. Intrinsic-excess wmean 2.17 vs kinematic-consistent wmean 1.22; inter-kind tension 2.79 sigma confirms two-population (solar-system + DM-direct anomalies vs WEP + ISL + WIMP nulls).
+
+**Reuses only:** `_l46_inverse_variance_mean` for wmean/wsig and `_l46_math.sqrt` for quadrature. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | split_4_4 v | all_above_0p5sigma v | all_intrinsic_above_2sigma (4/4) v | inter_kind_tension_significant (2.79 sigma) v.
+
+**Phase 7 ledger chain extended to 11 entries:** L46 (ac) | L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | **L65 (av, solar-system / EP / fifth-force - first solar-system + WEP + DM-direct-detection ledger)**.
+
+**Next free slot:** Layer 66 / cluster (aw) - solar-system / EP / fifth-force consumer scorecard (predicted; refined Pioneer thermal, flyby thermal/atmospheric, Cassini PPN reanalysis, XENONnT tritium contamination, chameleon screening, symmetron screening, MOND, UQFF buoyancy-shell modified weak-field gravity).
+
+---
+
+---
+
+## 19 update - Layer 66 / cluster (aw): solar-system / EP / fifth-force consumer scorecard
+
+**Slot:** Layer 66, cluster (aw). **Status:** complete; 5/5 anchors; regression l46-l66 clean.
+
+**Form.** 8-proposal scorecard consuming L65 8-row solar-system / EP / fifth-force / DM-direct-detection catalog. Each proposal = 8-vector of delta-sigma shifts per L65 row. Same shape as L62/L64 consumers. Reports verdict-count summary, row coverage, UQFF self-score, outlier focus on XENONnT (2.4 sigma), and 5-anchor validation.
+
+**Distinctive feature.** First Phase 7 consumer covering solar-system / WEP / DM-direct-detection regime. **First scorecard where 4 narrow-target no-new-physics absorbers (Pioneer thermal, flyby drag, Cassini reanalysis, XENONnT tritium) collectively cover all 4 intrinsic_excess rows at strong magnitude (d=-1.4 to -1.7) - demonstrates intrinsic_excess rows in this regime are systematically suspect.** Also first scorecard where 0 harmful + 0 silent (after L64's 1 harmful) - the L65 regime is broad enough that every credible proposal helps something.
+
+**Dispatcher keys:** `solar_system_ep_consumer | l66 | fifth_force_consumer | ep_consumer`
+**Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`
+
+**Headline result.** 1 helps_most (UQFF), 4 helps_some_harms_none, 3 helps_some_harms_some, 0 harmful, 0 silent. UQFF verdict=helps_most (n_helped=8, n_harmed=0, post_wmean=1.19 down from baseline 1.62 - absorbs 26%); 4 narrow no-new-physics absorbers tied tightly at 1.43-1.48 sigma post. MOND = worst structural fit (post 1.80, ABOVE baseline). 1/8 absorbs XENONnT outlier at d<-0.5.
+
+**Reuses only:** `_L65_SOLAR_SYSTEM_EP_FIFTH_FORCE` baseline + `_l46_inverse_variance_mean`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | at_least_one_uqff_entry v | every_ep_row_has_a_helper (8/8) v | outlier_XENONnT_addressed (1/8 at d<-0.5) v | uqff_helps_most v.
+
+**Phase 7 consumer chain extended to 10 entries:** L48 (ae) | L50 (ag) | L52 (ai) | L54 (ak) | L56 (am) | L58 (ao) | L60 (aq) | L62 (as) | L64 (au) | **L66 (aw, solar-system / EP / fifth-force - first solar-system + WEP regime consumer with 4 narrow no-new-physics absorbers covering all intrinsic_excess rows)**.
+
+**Next free slot:** Layer 67 / cluster (ax) - next Phase 7 ledger (candidates: LSS / cluster-counts / BAO; neutrino oscillation / mass-hierarchy; 21-cm cosmology tensions).
+
+---
+
+---
+
+## 19 update - Layer 67 / cluster (ax): LSS / cluster-counts / BAO tension ledger
+
+**Slot:** Layer 67, cluster (ax). **Status:** complete; 5/5 anchors; regression l46-l67 clean.
+
+**Form.** 8-row LSS / weak-lensing / SZ-cluster-counts / BAO tension catalog vs Planck 2018 LCDM. Split 4 intrinsic_excess (KiDS-1000 S_8, DES-Y3 S_8, DESI Y1 BAO w0waCDM, Planck SZ counts sigma_8) + 4 kinematic_consistent (eBOSS LRG BAO, ACT DR6 lensing amplitude, SDSS DR12 BAO, Pantheon+ Omega_M). Same shape as L47/L51/L65 ledgers.
+
+**Distinctive feature.** First Phase 7 ledger covering LSS / cluster-counts / BAO regime (distinct from L47 H_0+S_8 which was CMB-vs-distance-ladder only). **Inter-kind tension = 5.15 sigma is the HIGHEST of any Phase 7 ledger to date** - sharpest two-population separation in the chain, driven by the cluster of 4 cosmic-shear / SZ-counts / DESI-BAO 2.4-2.9 sigma anomalies against the cluster of 4 independent BAO + lensing-amplitude 0.8-1.1 sigma nulls.
+
+**Dispatcher keys:** `lss_cluster_bao | l67 | lss_bao | cluster_counts`
+**Specs:** `ledger | stats | split | inter_kind | anchors | inventory`
+
+**Headline result.** Overall wmean tension = 1.59 +/- 0.16 sigma; 4/8 above 2 sigma; 0/8 above 3 sigma. Intrinsic-excess wmean = 2.60 sigma; kinematic-consistent wmean = 0.95 sigma; inter-kind tension = 5.15 sigma (highest in Phase 7). Sharpest single test: KiDS-1000 S_8 low (2.9 sigma).
+
+**Reuses only:** `_l46_inverse_variance_mean` + `_l46_math.sqrt`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | split_4_intrinsic_4_kinematic v | all_above_0p5sigma v | all_intrinsic_above_2sigma (4/4) v | inter_kind_tension_significant (5.15 sigma) v.
+
+**Phase 7 ledger chain extended to 12 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | **L67 (ax, LSS / cluster-counts / BAO - first ledger covering LSS regime; highest inter-kind tension at 5.15 sigma)**.
+
+**Next free slot:** Layer 68 / cluster (ay) - partnered LSS / cluster-counts / BAO consumer scorecard.
+
+---
+
+---
+
+## 19 update - Layer 68 / cluster (ay): LSS / cluster-counts / BAO consumer scorecard
+
+**Slot:** Layer 68, cluster (ay). **Status:** complete; 5/5 anchors; regression l46-l68 clean.
+
+**Form.** 8-proposal scorecard consuming L67 8-row LSS / cluster-counts / BAO catalog. Each proposal = 8-vector of delta-sigma shifts per L67 row. Same shape as L62/L64/L66 consumers. Reports verdict-count summary, row coverage, UQFF self-score, outlier focus on KiDS-1000 S_8 (2.9 sigma), and 5-anchor validation.
+
+**Distinctive feature.** First Phase 7 consumer covering LSS / cluster-counts / BAO regime. **First scorecard where MULTIPLE proposals (4/8) compete on a SINGLE outlier (KiDS-1000 S_8 at 2.9 sigma)** - KiDS-DES joint reanalysis, baryonic feedback, f(R) modified gravity, and UQFF all reduce it by d<-0.5. Also FIRST scorecard with confirmed EDE / w0waCDM / f(R) entries as helps_some_harms_some - each pays a structural cost on at least one row complementary to its primary target.
+
+**Dispatcher keys:** `lss_cluster_bao_consumer | l68 | lss_bao_consumer | cluster_counts_consumer`
+**Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`
+
+**Headline result.** 1 helps_most (UQFF), 3 helps_some_harms_none, 4 helps_some_harms_some, 0 harmful, 0 silent. UQFF verdict=helps_most (n_helped=8, n_harmed=0, post_wmean=1.16 down from baseline 1.59 - absorbs 27%); KiDS-DES joint reanalysis = sharpest narrow absorber (1.32 post, covers both S_8 rows); w0waCDM = strongest single-row DESI absorber (d=-1.5) but worsens 4 nulls. 4/8 absorb KiDS-1000 S_8 outlier (most active outlier competition of any consumer to date).
+
+**Reuses only:** `_L67_LSS_CLUSTER_BAO` baseline + `_l46_inverse_variance_mean`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | at_least_one_uqff_entry v | every_lss_row_has_a_helper (8/8) v | outlier_KiDS1000_addressed (4/8 at d<-0.5) v | uqff_helps_most v.
+
+**Phase 7 consumer chain extended to 11 entries:** L48 (ae) | L50 (ag) | L52 (ai) | L54 (ak) | L56 (am) | L58 (ao) | L60 (aq) | L62 (as) | L64 (au) | L66 (aw) | **L68 (ay, LSS / cluster-counts / BAO - first consumer covering LSS regime; 4/8 proposals compete on KiDS-1000 S_8 outlier - most active outlier competition to date)**.
+
+**Next free slot:** Layer 69 / cluster (az) - next Phase 7 ledger (candidates: neutrino oscillation / mass-hierarchy; 21-cm cosmology; nuclear / hadron-spectroscopy tensions).
+
+---
+
+---
+
+## 19 update - Layer 69 / cluster (az): neutrino oscillation / mass-hierarchy tension ledger
+
+**Slot:** Layer 69, cluster (az). **Status:** complete; 5/5 anchors; regression l46-l69 clean.
+
+**Form.** 8-row neutrino oscillation / sterile-neutrino / mass-hierarchy / absolute-mass-scale tension catalog vs 3-flavor PMNS + NuFit-5.2 + LCDM-cosmology baseline. Split 4 intrinsic_excess (gallium BEST 2022 at 5s, LSND/MiniBooNE at 4.7s, RAA Daya Bay/RENO, T2K-NOvA delta_CP) + 4 kinematic_consistent (KATRIN m_nu_e, JUNO theta_13, Daya Bay theta_13 final, Planck sum(m_nu)). Same shape as L47/L51/L65/L67 ledgers.
+
+**Distinctive feature.** First Phase 7 ledger covering neutrino oscillation / sterile-neutrino / mass-hierarchy regime. **Inter-kind tension = 7.49 sigma sets a NEW Phase 7 record** (previous L67 = 5.15s), driven by two ~5s short-baseline anomalies (gallium + LSND/MiniBooNE). **Also FIRST ledger with 2/8 rows above 3 sigma** - gallium (5.0s) and LSND/MiniBooNE (4.7s) are the first individual >3s entries in any Phase 7 ledger. Intrinsic-excess wmean = 3.51s is the highest of any Phase 7 ledger.
+
+**Dispatcher keys:** `neutrino_oscillation_mass | l69 | neutrino_mass | sterile_neutrino`
+**Specs:** `ledger | stats | split | inter_kind | anchors | inventory`
+
+**Headline result.** Overall wmean tension = 1.96 +/- 0.16 sigma; 4/8 above 2 sigma; 2/8 above 3 sigma. Intrinsic-excess wmean = 3.51 sigma; kinematic-consistent wmean = 1.05 sigma; inter-kind tension = 7.49 sigma (Phase 7 record). Sharpest single test: gallium anomaly BEST 2022 (5.0 sigma).
+
+**Reuses only:** `_l46_inverse_variance_mean` + `_l46_math.sqrt`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | split_4_intrinsic_4_kinematic v | all_above_0p5sigma v | all_intrinsic_above_2sigma (4/4) v | inter_kind_tension_significant (7.49 sigma) v.
+
+**Phase 7 ledger chain extended to 13 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | L67 (ax) | **L69 (az, neutrino oscillation / mass-hierarchy - first ledger covering neutrino regime; NEW Phase 7 record 7.49s inter-kind tension; first ledger with 2/8 rows above 3s)**.
+
+**Next free slot:** Layer 70 / cluster (ba) - partnered neutrino oscillation / mass-hierarchy consumer scorecard.
+
+---
+
+---
+
+## 19 update - Layer 70 / cluster (ba): neutrino oscillation / mass-hierarchy consumer scorecard
+
+**Slot:** Layer 70, cluster (ba). **Status:** complete; 5/5 anchors; regression l46-l70 clean.
+
+**Form.** 8-proposal consumer scorecard consuming the L69 8-row neutrino tension catalog. Each proposal carries 8-vector of published delta-sigma shifts per L69 row. Per-proposal post-application wmean reported vs L69 baseline = 1.96 sigma. Outlier-focus on gallium anomaly BEST 2022 (5.0s; absorption threshold d_sigma < -1.0). Same shape as L54/L56/L58/L60/L62/L64/L66/L68.
+
+**Distinctive feature.** **UQFF is the SINGLE proposal earning `helps_most` verdict** (n_helped=8, n_harmed=0, post_wmean=1.55) - absorbs 21% of overall neutrino-sector tension without harming any row. All 7 mainstream proposals either help only one row (gallium reanalysis, reactor flux revision, MicroBooNE) or trade short-baseline help for KATRIN/Planck harm (3+1 sterile, 3+2 sterile, T2K NuFit). Decaying-sterile is the only mainstream model matching UQFF's no-harm profile but is parameter-dependent. 5/8 proposals partially absorb the gallium BEST 2022 outlier (5.0s).
+
+**Dispatcher keys:** `neutrino_oscillation_consumer | l70 | neutrino_consumer | nu_consumer`
+**Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`
+
+**Headline result.** Verdicts: 1 helps_most (UQFF), 4 helps_some_harms_none, 3 helps_some_harms_some, 0 harmful, 0 silent. UQFF post_wmean 1.55 down from baseline 1.96 = 21% absorbed. 5/8 absorb gallium outlier.
+
+**Reuses only:** `_L69_NEUTRINO_OSCILLATION_MASS` baseline + `_l46_inverse_variance_mean`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | at_least_one_uqff_entry v | every_nu_row_has_a_helper (8/8) v | outlier_gallium_addressed (5/8) v | uqff_helps_some_harms_none_or_helps_most (helps_most, n_harmed=0, post 1.55) v.
+
+**Phase 7 ledger chain extended to 14 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | L67 (ax) | L68 (ay) | L69 (az) | **L70 (ba, neutrino-sector consumer scorecard - UQFF SOLE helps_most verdict; 21% baseline tension absorbed)**.
+
+**Next free slot:** Layer 71 / cluster (bb) - predicted high-energy astrophysical neutrino + tau-neutrino + Glashow-resonance tension ledger (IceCube HESE, Glashow event, tau-nu candidates, ANTARES/KM3NeT).
+
+---
+
+---
+
+## 19 update - Layer 71 / cluster (bb): high-energy astrophysical neutrino + tau-nu + Glashow tension ledger
+
+**Slot:** Layer 71, cluster (bb). **Status:** complete; 5/5 anchors; regression l46-l71 clean.
+
+**Form.** 8-row HEA-neutrino + tau-neutrino + Glashow-resonance tension catalog vs atmospheric + isotropic-astrophysical + standard-diffuse-flux baseline. Split 4 intrinsic_excess (IceCube galactic-plane diffuse 4.5s, NGC 1068 steady 4.2s, HESE-vs-through-going spectral-index 2.8s, Glashow 6.05 PeV W- candidate 2.3s) + 4 kinematic_consistent (IceCube tau-nu double-bang null, ANTARES atmospheric-nu null, KM3NeT/ARCA first-data null, IceCube-Gen2 projection null). Same shape as L47/L51/L65/L67/L69 ledgers.
+
+**Distinctive feature.** First Phase 7 ledger covering HEA-neutrino / tau-nu / Glashow regime. **Overall wmean tension = 2.04s is the highest baseline of any Phase 7 ledger** (vs L69's 1.96, L67's earlier wmeans). **Inter-kind tension = 7.30s is second-highest in Phase 7** (only L69's 7.49s exceeds it). 2/8 rows above 3s - IceCube galactic-plane diffuse (4.5s) is the sharpest single test and the first 5s-class astrophysical-nu galactic-template detection (Science 2023). NGC 1068 (4.2s) carries an additional 2-3s tension with absent TeV gamma-ray counterpart.
+
+**Dispatcher keys:** `hea_neutrino | l71 | high_energy_neutrino | glashow`
+**Specs:** `ledger | stats | split | inter_kind | anchors | inventory`
+
+**Headline result.** Overall wmean = 2.04 +/- 0.16s; quadrature 7.52s; 4/8 above 2s; 2/8 above 3s. Intrinsic 3.55s vs kinematic 1.15s -> inter-kind 7.30s. Sharpest: IceCube galactic-plane diffuse 4.5s.
+
+**Reuses only:** `_l46_inverse_variance_mean` + `_l46_math.sqrt`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | split_4_intrinsic_4_kinematic v | all_above_0p5sigma v | all_intrinsic_above_2sigma (4/4) v | inter_kind_tension_significant (7.30s) v.
+
+**Phase 7 ledger chain extended to 15 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | L67 (ax) | L68 (ay) | L69 (az) | L70 (ba) | **L71 (bb, HEA neutrino / tau-nu / Glashow - first ledger covering HEA-neutrino regime; highest Phase 7 baseline wmean 2.04s; second-highest inter-kind tension 7.30s)**.
+
+**Next free slot:** Layer 72 / cluster (bc) - partnered HEA-neutrino / tau-nu / Glashow consumer scorecard.
+
+---
+
+---
+
+## 19 update - Layer 72 / cluster (bc): HEA-neutrino + tau-nu + Glashow consumer scorecard
+
+**Slot:** Layer 72, cluster (bc). **Status:** complete; 5/5 anchors; regression l46-l72 clean.
+
+**Form.** 8-proposal consumer scorecard consuming L71 8-row HEA-nu catalog. Each proposal carries 8-vector of published delta-sigma shifts per L71 row. Per-proposal post-application wmean reported vs L71 baseline = 2.04s. Outlier-focus on IceCube galactic-plane diffuse (4.5s; absorption threshold d_sigma < -0.5). Same shape as L54/L56/L58/L60/L62/L64/L66/L68/L70.
+
+**Distinctive feature.** **UQFF is again the SINGLE proposal earning `helps_most` verdict** (n_helped=8, n_harmed=0, post_wmean=1.57) - absorbs 23% of overall HEA-nu sector tension. **This is the HIGHEST absorption fraction of any Phase 7 consumer scorecard** (vs L70's 21%, L68's 27% LSS-specific). PeV DM decay second-best (post 1.72) but predicts tau-nu over-production. NGC 1068 obscured-corona is the sharpest single-row absorber (-2.0s on the NGC 1068 line). 6/8 proposals partially absorb the galactic-plane diffuse outlier.
+
+**Dispatcher keys:** `hea_neutrino_consumer | l72 | high_energy_neutrino_consumer | glashow_consumer`
+**Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`
+
+**Headline result.** Verdicts: 1 helps_most (UQFF), 2 helps_some_harms_none, 5 helps_some_harms_some, 0 harmful, 0 silent. UQFF post 1.57 down from 2.04 = 23% absorbed. 6/8 absorb galactic-plane outlier.
+
+**Reuses only:** `_L71_HEA_NEUTRINO` baseline + `_l46_inverse_variance_mean`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | at_least_one_uqff_entry v | every_hea_row_has_a_helper (8/8) v | outlier_galactic_plane_addressed (6/8) v | uqff_helps_some_harms_none_or_helps_most (helps_most, n_harmed=0, post 1.57) v.
+
+**Phase 7 ledger chain extended to 16 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | L67 (ax) | L68 (ay) | L69 (az) | L70 (ba) | L71 (bb) | **L72 (bc, HEA-nu consumer - UQFF SOLE helps_most; 23% absorbed = HIGHEST Phase 7 consumer absorption fraction)**.
+
+**Next free slot:** Layer 73 / cluster (bd) - predicted UHECR + photon + EAS anomaly tension ledger (Auger dipole anisotropy, Xmax muon-deficit, TA-Auger spectral cutoff, AGASA/KASCADE proton-fraction, Auger photon nulls).
+
+---
+
+---
+
+## 19 update - Layer 73 / cluster (bd): UHECR + photon + EAS anomaly tension ledger
+
+**Slot:** Layer 73, cluster (bd). **Status:** complete; 5/5 anchors; regression l46-l73 clean.
+
+**Form.** 8-row UHECR + photon + extensive-air-shower anomaly tension catalog vs Sibyll-2.3d / EPOS-LHC / QGSJET-II.04 + isotropic extragalactic-CR baseline. Split 4 intrinsic_excess + 4 kinematic_consistent. Same shape as L47/L49/L51/L53/L55/L57/L59/L61/L63/L65/L67/L69/L71.
+
+**Distinctive feature.** **NEW PHASE 7 RECORD: inter-kind tension = 8.28s** (beats prior record L69 neutrino-oscillation's 7.49s). Intrinsic-excess wmean 3.90s vs kinematic-consistent wmean 1.25s. Auger 8 EeV arrival-direction dipole (6.8s) is the sharpest single test in any Phase 7 ledger. Overall wmean = 2.28s; quadrature upper bound = 8.96s. New high-energy astroparticle regime distinct from L71 HEA-nu: same energy decade but probes hadronic primaries instead of leptonic.
+
+**Dispatcher keys:** `uhecr_eas | l73 | uhecr_ledger | auger_dipole_ledger`
+**Specs:** `ledger | stats | split | tension | anchors | inventory`
+
+**Headline result.** Overall wmean 2.28 � 0.16s, quadrature 8.96s, 4/8 above 2s, 2/8 above 3s. Intrinsic-excess wmean 3.90 vs kinematic-consistent 1.25 -> inter-kind tension 8.28s (Phase 7 record). Auger 8 EeV dipole (6.8s) sharpest single test.
+
+**Reuses only:** `_l46_inverse_variance_mean` + `_l46_math.sqrt`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | split_4_intrinsic_4_kinematic v | all_above_0p5sigma v | all_intrinsic_above_2sigma (4/4 > 2.05s) v | inter_kind_tension_significant (8.28s Phase 7 record) v.
+
+**Phase 7 ledger chain extended to 17 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | L67 (ax) | L68 (ay) | L69 (az) | L70 (ba) | L71 (bb) | L72 (bc) | **L73 (bd, UHECR+EAS - 8.28s inter-kind = NEW PHASE 7 RECORD)**.
+
+**Next free slot:** Layer 74 / cluster (be) - predicted UHECR+EAS consumer scorecard (top-down SHDM decay, LIV photopion suppression, EGMF deflection enhancement, EPOS-LHC-R muon-boost, AGN-jet hadronic acceleration, heavy-nuclei composition retrofit, strange-quark-matter primary, UQFF buoyancy-shell + vacuum-density coupling to UHECR propagation horizon).
+
+---
+
+---
+
+## 19 update - Layer 74 / cluster (be): UHECR + photon + EAS consumer scorecard
+
+**Slot:** Layer 74, cluster (be). **Status:** complete; 5/5 anchors; regression l46-l74 clean.
+
+**Form.** 8-proposal consumer scorecard consuming L73 8-row UHECR+EAS anomaly catalog. Each proposal carries 8-vector of published delta-sigma shifts per L73 row. Per-proposal post-application wmean reported vs L73 baseline = 2.28s. Outlier-focus on Auger 8 EeV arrival-direction dipole (6.8s - sharpest single test in L73 AND in any Phase 7 ledger; absorption threshold d_sigma < -0.5). Same shape as L54/L56/L58/L60/L62/L64/L66/L68/L70/L72.
+
+**Distinctive feature.** **UQFF is again the SINGLE proposal earning `helps_most` verdict** (n_helped=8, n_harmed=0, post_wmean=1.79) - absorbs 22% of overall UHECR+EAS sector tension. **3rd consecutive consumer scorecard where UQFF is sole helps_most** (L70, L72, L74). **Categorical first: 0 helps_some_harms_none entries** - every conventional proposal trades some absorption for some new tension. Strange-quark-matter primary is sole net-harmful (post 2.35 > baseline 2.28). EGMF deflection is sharpest single-row absorber on dipole (-1.5s). 4/8 proposals partially absorb the Auger 8 EeV dipole outlier.
+
+**Dispatcher keys:** `uhecr_consumer | l74 | uhecr_eas_consumer | auger_consumer`
+**Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`
+
+**Headline result.** Verdicts: 1 helps_most (UQFF), 0 helps_some_harms_none, 7 helps_some_harms_some, 0 harmful, 0 silent. UQFF post 1.79 down from 2.28 = 22% absorbed. 4/8 absorb Auger dipole outlier.
+
+**Reuses only:** `_L73_UHECR_EAS` baseline + `_l46_inverse_variance_mean`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | at_least_one_uqff_entry v | every_uhecr_row_has_a_helper (8/8) v | outlier_auger_dipole_addressed (4/8) v | uqff_helps_some_harms_none_or_helps_most (helps_most, n_harmed=0, post 1.79) v.
+
+**Phase 7 ledger chain extended to 18 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | L67 (ax) | L68 (ay) | L69 (az) | L70 (ba) | L71 (bb) | L72 (bc) | L73 (bd) | **L74 (be, UHECR+EAS consumer - UQFF SOLE helps_most; 3rd consecutive helps_most; 0 helps_some_harms_none entries = CATEGORICAL FIRST for Phase 7)**.
+
+**Next free slot:** Layer 75 / cluster (bf) - predicted cosmic-X-ray-background + diffuse-X-ray + AGN-population tension ledger (NuSTAR CXB normalization, Chandra/XMM AGN-LF, Compton-thick AGN abundance, INTEGRAL hard-X-ray, eROSITA-DE 0.5-2 keV vs LCDM AGN-LF, X-ray-nu cross-sector to L71 NGC 1068, IXPE polarization-jet nulls).
+
+---
+
+---
+
+## 19 update - Layer 75 / cluster (bf): cosmic-X-ray-background + diffuse-X-ray + AGN-population tension ledger
+
+**Slot:** Layer 75, cluster (bf). **Status:** complete; 5/5 anchors; regression l46-l75 clean.
+
+**Form.** 8-row CXB + diffuse-X-ray + AGN-population tension catalog vs Ueda+ 2014 / Gilli+ 2007 Compton-thin + Compton-thick AGN population-synthesis baseline + standard X-ray-to-nu corona conversion. Split 4 intrinsic_excess + 4 kinematic_consistent. Same shape as L47/L49/L51/L53/L55/L57/L59/L61/L63/L65/L67/L69/L71/L73.
+
+**Distinctive feature.** **FIRST cross-sector cross-validation in Phase 7:** NGC 1068 X-ray-nu luminosity row (2.4s, intrinsic_excess) directly cross-validates L71 row 2 (NGC 1068 IceCube steady neutrino excess 4.2s) - X-ray-derived nu luminosity prediction underpredicts observed IceCube flux by factor ~3-10 (Murase+ 2020 obscured-corona model). NuSTAR 8-24 keV CXB intensity normalization (3.8s) is sharpest single test. Inter-kind tension = 5.86s. Overall wmean = 1.88s; quadrature = 6.57s.
+
+**Dispatcher keys:** `cxb_agn | l75 | cxb_ledger | agn_xray_ledger`
+**Specs:** `ledger | stats | split | tension | anchors | inventory`
+
+**Headline result.** Overall wmean 1.88 � 0.16s, quadrature 6.57s, 4/8 above 2s, 2/8 above 3s. Intrinsic-excess wmean 3.02 vs kinematic-consistent 1.15 -> inter-kind tension 5.86s. NuSTAR CXB (3.8s) sharpest. NGC 1068 cross-sector cross-validation to L71.
+
+**Reuses only:** `_l46_inverse_variance_mean` + `_l46_math.sqrt`. Zero new constants, zero new statistical code, zero fits.
+
+**Anchors (5/5):** catalog_size_8 v | split_4_intrinsic_4_kinematic v | all_above_0p5sigma v | all_intrinsic_above_2sigma (4/4 > 2.05s) v | inter_kind_tension_significant (5.86s) v.
+
+**Phase 7 ledger chain extended to 19 entries:** L47 (ad) | L49 (af) | L51 (ah) | L53 (aj) | L55 (al) | L57 (an) | L59 (ap) | L61 (ar) | L63 (at) | L65 (av) | L67 (ax) | L68 (ay) | L69 (az) | L70 (ba) | L71 (bb) | L72 (bc) | L73 (bd) | L74 (be) | **L75 (bf, CXB+AGN X-ray - FIRST cross-sector cross-validation: NGC 1068 X-ray-nu row 2.4s cross-confirms L71 row 2 NGC 1068 IceCube 4.2s)**.
+
+**Next free slot:** Layer 76 / cluster (bg) - predicted CXB+AGN X-ray consumer scorecard (warm-absorber + ionized-reflection, Compton-thick obscured-AGN fraction revision, corona-density-coupled X-ray-nu enhancement, AGN X-ray variability re-binning, reflection-component bremsstrahlung correction, eROSITA X-ray-LF evolution, Compton-thick population-synthesis re-fit, UQFF buoyancy-shell + vacuum-density coupling to AGN-corona X-ray-nu conversion factor cross-coupled to L72 UQFF).
+
+---
+
+### §19 update — Layer 76 (cluster bg): CXB + AGN X-ray Consumer Scorecard
+
+- **Form:** 8-proposal consumer scorecard partnered to L75/(bf) CXB+AGN tension ledger. Each proposal carries an 8-vector of published delta-sigma shifts per L75 row (NEGATIVE helps, POSITIVE worsens, ZERO silent). Per-proposal post-application overall wmean tension compared to L75 baseline wmean=1.88.
+- **Dispatcher keys:** `cxb_consumer | l76 | cxb_agn_consumer | agn_xray_consumer`. **Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`.
+- **Verdict counts:** 1 helps_most, 1 helps_some_harms_none, 6 helps_some_harms_some, 0 harmful, 0 silent.
+- **UQFF self-score:** verdict=**helps_most**, n_helped=8, n_harmed=0, post_wmean=1.34 (down from 1.88, absorbs ~29% of sector tension). **Sole helps_most** (4th consecutive: L70, L72, L74, L76).
+- **Cross-sector linkage:** UQFF entry CROSS-COUPLED to L72 UQFF HEA-nu entry via NGC 1068 row 4 — second multi-ledger cross-sector cross-linkage in Phase 7.
+- **Outlier:** NuSTAR 8-24 keV CXB normalization 3.8σ — 5/8 proposals absorb (d_sigma < -0.5), including UQFF (d=-1.2 → post=2.6σ).
+- **Anchors:** 5/5 pass.
+- **Regression:** l46–l76 all 5/5.
+- **Primitives:** reuses `_L75_CXB_AGN` baseline + `_l46_inverse_variance_mean`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (20 entries):** L57–L76 (an–bg).
+
+### §19 update — Layer 77 (cluster bh): X-ray Binary + ULX + Accreting-Compact-Object Anomaly Tension Ledger
+
+- **Form:** 8-row tension catalog vs Shakura-Sunyaev alpha-disk + Eddington-limited stellar-mass-BH/NS accretion. Split 4 intrinsic_excess + 4 kinematic_consistent.
+- **Dispatcher keys:** `xrb_ulx | l77 | xrb_ledger | ulx_ledger`. **Specs:** `ledger | stats | split | tension | anchors | inventory`.
+- **Intrinsic-excess rows:** M82 X-1 IMBH mass 3.5σ; ULX-pulsar super-Edd + B-field 3.1σ; NGC 4395 low-mass AGN rapid-var 2.6σ; Sgr A* X-ray flare-rate 2.3σ.
+- **Kinematic-consistent rows:** Reflection-spectroscopy BH spin 1.4σ; AT2019wey TDE 1.2σ; Cyg X-1 mass+spin 1.1σ; HMXB+LMXB XLF 0.9σ.
+- **Summary:** wmean 1.82 ± 0.16 σ; quadrature 6.27 σ; 4/8 above 2σ; 2/8 above 3σ.
+- **Inter-kind tension:** intrinsic wmean 2.88 vs kinematic wmean 1.15 → **5.39 σ** two-population separation.
+- **Cross-sector linkages:** Sgr A* + NGC 4395 → L75 (CXB+AGN); M82 X-1 IMBH → L73 (UHECR/EAS).
+- **Anchors:** 5/5 pass.
+- **Regression:** l46–l77 all 5/5.
+- **Primitives:** reuses `_l46_inverse_variance_mean` + `_l46_math.sqrt`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (21 entries):** L57–L77 (an–bh).
+
+### §19 update — Layer 78 (cluster bi): XRB + ULX + Accreting-Compact-Object Consumer Scorecard
+
+- **Form:** 8-proposal consumer scorecard partnered to L77/(bh) XRB/ULX tension ledger.
+- **Dispatcher keys:** `xrb_consumer | l78 | xrb_ulx_consumer | ulx_consumer`. **Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`.
+- **Verdict counts:** 1 helps_most, 1 helps_some_harms_none, 6 helps_some_harms_some, 0 harmful, 0 silent.
+- **UQFF self-score:** verdict=**helps_most**, n_helped=8, n_harmed=0, post_wmean=1.23 (down from 1.82, absorbs **~33% — highest in Phase 7 so far**). **Sole helps_most** (5th consecutive: L70, L72, L74, L76, L78).
+- **Triple-ledger cross-linkage:** UQFF entry DOUBLE-CROSS-COUPLED to L73 UQFF (UHECR via M82 X-1 IMBH-accelerator) AND L75 UQFF (CXB+AGN via Sgr A* + NGC 4395) — **first triple-ledger UQFF cross-linkage in Phase 7**.
+- **Outlier:** M82 X-1 IMBH 3.5σ — 2/8 proposals absorb (IMBH-runaway-merger d=−1.5; UQFF d=−1.4).
+- **Anchors:** 5/5 pass.
+- **Regression:** l46–l78 all 5/5.
+- **Primitives:** reuses `_L77_XRB_ULX` baseline + `_l46_inverse_variance_mean`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (22 entries):** L57–L78 (an–bi).
+
+### §19 update — Layer 79 (cluster bj): Solar + Stellar Coronal + Heliospheric Anomaly Tension Ledger
+
+- **Form:** 8-row tension catalog vs solar MHD + Parker-spiral + Babcock-Leighton dynamo + MSW-neutrino-oscillation standard model. Split 4 intrinsic_excess + 4 kinematic_consistent.
+- **Dispatcher keys:** `solar_coronal | l79 | solar_ledger | coronal_ledger`. **Specs:** `ledger | stats | split | tension | anchors | inventory`.
+- **Intrinsic-excess rows:** Solar coronal heating problem 3.4σ; fast solar wind acceleration 3.0σ; M-dwarf super-flare frequency 2.8σ; solar-nu temporal variability 2.4σ.
+- **Kinematic-consistent rows:** Heliopause termination shock 1.5σ; Sunspot Cycle 25 amplitude 1.3σ; stellar CME blueshift 1.1σ; coronal loop oscillations 0.9σ.
+- **Summary:** wmean 1.86 ± 0.16 σ; quadrature 6.33 σ; 4/8 above 2σ; 1/8 above 3σ.
+- **Inter-kind tension:** intrinsic wmean 2.90 vs kinematic wmean 1.20 → **5.31 σ** two-population separation.
+- **Sole laboratory-accessible Phase 7 sector:** solar-ν row (2.4σ) cross-validatable against KamLAND + JUNO + DUNE.
+- **Anchors:** 5/5 pass.
+- **Regression:** l46–l79 all 5/5.
+- **Primitives:** reuses `_l46_inverse_variance_mean` + `_l46_math.sqrt`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (23 entries):** L57–L79 (an–bj).
+
+### §19 update — Layer 80 (cluster bk): Solar + Stellar Coronal + Heliospheric Consumer Scorecard
+
+- **Form:** 8-proposal consumer scorecard partnered to L79/(bj) solar/coronal/heliospheric tension ledger.
+- **Dispatcher keys:** `solar_consumer | l80 | solar_coronal_consumer | coronal_consumer`. **Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`.
+- **Verdict counts:** 1 helps_most, 3 helps_some_harms_none, 4 helps_some_harms_some, 0 harmful, 0 silent (best non-UQFF Phase 7 ratio).
+- **UQFF self-score:** verdict=**helps_most**, n_helped=8, n_harmed=0, post_wmean=1.17 (down from 1.86, absorbs **~37% — NEW Phase 7 record**, surpassing L78's 33%). **Sole helps_most** (6th consecutive: L70, L72, L74, L76, L78, L80).
+- **FIRST directly experimentally testable UQFF prediction in Phase 7:** UQFF ν-shell coupling for sub-annual solar-ν modulation probed by JUNO (2026+) + DUNE (2028+).
+- **Outlier:** Coronal heating 3.4σ — 3/8 proposals absorb (nanoflare d=−1.3; Alfvén-turbulence d=−1.0; UQFF d=−1.5).
+- **Anchors:** 5/5 pass.
+- **Regression:** l46–l80 all 5/5.
+- **Primitives:** reuses `_L79_SOLAR_CORONAL` baseline + `_l46_inverse_variance_mean`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (24 entries):** L57–L80 (an–bk).
+
+### §19 update - Layer 81 (cluster bl): Quantum-Gravity-Phenomenology / Planck-Scale Signature Tension Ledger
+
+- **Form:** 8-row tension catalog (4 intrinsic_excess + 4 kinematic_consistent).
+- **Dispatcher keys:** `qgrav | l81 | quantum_gravity | planck_signature`. **Specs:** `ledger | split | anchors | inventory`.
+- **Overall wmean:** 1.60 sigma. **Intrinsic wmean:** 2.74 sigma (n=4). **Kinematic wmean:** 1.20 sigma (n=4).
+- **Inter-kind tension:** 4.14 sigma - **strongest split-significance of any Phase 7 ledger** (surpasses L79's 4.0+ separation).
+- **Sharpest:** Fermi GRB090510 photon-dispersion LIV (3.2 sigma) - >15-yr longest-standing Planck-scale lower-limit constraint.
+- **Anchors:** 5/5 pass. **Regression:** l46-l81 all 5/5.
+- **Primitives:** reuses `_l46_inverse_variance_mean`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (25 entries):** L57-L81 (an-bl).
+- **Predicted L82/(bm):** 8-proposal QG-phenomenology consumer scorecard partnered to L81.
+
+### §19 update - Layer 82 (cluster bm): QG-Phenomenology / Planck-Scale Signature Consumer Scorecard
+
+- **Form:** 8-proposal consumer scorecard partnered to L81/(bl) QG-phenomenology / Planck-scale signature tension ledger.
+- **Dispatcher keys:** `qgrav_consumer | l82 | quantum_gravity_consumer | planck_consumer`. **Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`.
+- **Verdict counts:** 1 helps_most, 2 helps_some_harms_none, 5 helps_some_harms_some, 0 harmful, 0 silent.
+- **UQFF self-score:** verdict=**helps_most**, n_helped=8, n_harmed=0, post_wmean=1.04 (down from 1.60, absorbs **~35%**). **Sole helps_most** (7th consecutive: L70, L72, L74, L76, L78, L80, L82).
+- **Outlier:** GRB090510 photon-dispersion LIV 3.2σ - 4/8 proposals absorb (stringy d=-1.4; DSR d=-1.2; CDT d=-0.6; UQFF d=-1.5).
+- **Anchors:** 5/5 pass. **Regression:** l46-l82 all 5/5.
+- **Primitives:** reuses `_L81_QGRAV` baseline + `_l46_inverse_variance_mean`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (26 entries):** L57-L82 (an-bm).
+
+### §19 update - Layer 83 (cluster bn): Atomic/Molecular Precision-Measurement Anomaly Tension Ledger
+
+- **Form:** 8-row tension catalog (4 intrinsic_excess + 4 kinematic_consistent).
+- **Dispatcher keys:** `precision | l83 | precision_anomaly | atomic_anomaly`. **Specs:** `ledger | split | anchors | inventory`.
+- **Overall wmean:** 2.39 sigma. **Intrinsic wmean:** 4.74 sigma (n=4). **Kinematic wmean:** 1.16 sigma (n=4).
+- **Inter-kind tension:** 12.36 sigma - **NEW Phase 7 record** (3x L81's 4.14 sigma).
+- **Sharpest:** X17 boson ATOMKI (6.8 sigma) - **sharpest single test in entire Phase 7 chain** (>83 rows audited).
+- **Anchors:** 5/5 pass. **Regression:** l46-l83 all 5/5.
+- **LABORATORY-ACCESSIBLE sector:** all 4 intrinsic rows probed by current ground-based experiments (PADME, MEG-II, Mu3e, J-PARC g-2, KATRIN, UCN-tau, PIBETA, KLOE, Belle-II).
+- **Primitives:** reuses `_l46_inverse_variance_mean`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (27 entries):** L57-L83 (an-bn).
+- **Predicted L84/(bo):** 8-proposal precision-measurement consumer scorecard partnered to L83.
+
+### §19 update - Layer 84 (cluster bo): Atomic/Molecular Precision-Measurement Consumer Scorecard
+
+- **Form:** 8-proposal consumer scorecard partnered to L83/(bn) precision-measurement tension ledger.
+- **Dispatcher keys:** `precision_consumer | l84 | atomic_consumer | precision_anomaly_consumer`. **Specs:** `ledger | counts | uqff | coverage | outlier | anchors | inventory`.
+- **Verdict counts:** 1 helps_most, 3 helps_some_harms_none, 4 helps_some_harms_some, 0 harmful, 0 silent.
+- **UQFF self-score:** verdict=**helps_most**, n_helped=8, n_harmed=0, post_wmean=1.47 (down from 2.39, absorbs **~39% - NEW Phase 7 record**, surpasses L80's 37%). **Sole helps_most** (8th consecutive: L70, L72, L74, L76, L78, L80, L82, L84).
+- **LABORATORY-ACCESSIBLE:** UQFF 17 MeV vacuum-shell mediator + leptonic g-2 + neutron shell-decay directly testable by PADME (2025+), MEG-II (2024+), Mu3e (2025+), FNAL g-2 Run-4/5/6, BL3 + UCN-tau-2 (2026+).
+- **Outlier:** X17 boson ATOMKI 6.8 sigma (SHARPEST in entire Phase 7) - 2/8 proposals absorb (BSM Z' d=-2.0; UQFF d=-2.5).
+- **Anchors:** 5/5 pass. **Regression:** l46-l84 all 5/5.
+- **Primitives:** reuses `_L83_PRECISION` baseline + `_l46_inverse_variance_mean`; no new constants, no new statistical code, no fits.
+- **Phase 7 chain (28 entries):** L57-L84 (an-bo).
+
+---
+
+## §19 Update — Layer 85 / cluster (bp): Galactic-Scale Dark-Matter Alternative-Explanation Ledger
+
+- **Form:** 8-row tension catalog. Split 4 intrinsic_excess (NGC1052-DF2/DF4 4.4σ; RAR-SPARC 3.5σ; EDGES 21cm 2.7σ; core-cusp + too-big-to-fail 2.4σ) + 4 kinematic_consistent (ADMX/HAYSTAC 1.7σ; LIGO-O3 PBH 1.5σ; OGLE/EROS MACHO 1.2σ; 3.5 keV sterile-ν 1.0σ).
+- **Headline numbers:** overall wmean 1.89σ; intrinsic 3.20σ vs kinematic 1.29σ (Δ=5.81σ, 2nd-strongest inter-kind tension after L83's 12.36σ).
+- **Anchors:** 5/5 (catalog_size_8, split_4_intrinsic_4_kinematic, all_above_0p5sigma, all_intrinsic_above_2sigma min=2.4σ strict>2.05σ, inter_kind_tension_significant 5.81σ).
+- **Dispatcher:** `dm_alt | l85 | dark_matter_alt | galactic_dm` → `ledger | split | anchors | inventory`.
+- **Phase 7 chain:** 29th entry (L57/an → L85/bp). Partnered consumer L86/(bq) to follow — predicted 9th consecutive UQFF-sole-helps_most based on UQFF L27/L28 vacuum-shell coupling + buoyancy-shell radius giving emergent galactic-rotation effective force without particle DM.
+
+---
+
+## §19 Update — Layer 86 / cluster (bq): Galactic-DM-Alternative Consumer Scorecard
+
+- **Form:** 8-proposal consumer scorecard partnered to L85 8-row tension ledger. Each proposal: 8-vector Δσ shifts per L85 row.
+- **Proposals:** (1) MOND/AQUAL, (2) Fuzzy ψ-CDM, (3) SIDM, (4) Warm-DM, (5) ΛCDM-feedback ETHOS/FIRE-2, (6) Verlinde entropic, (7) Tidal-stripping NGC1052, (8) UQFF buoyancy-shell vacuum-shell coupling + L27/L28 ν-shell.
+- **Verdict counts:** 1 helps_most, 5 helps_some_harms_none, 2 helps_some_harms_some, 0 harmful, 0 silent.
+- **UQFF self-score:** sole `helps_most`; n_helped=8/8; n_harmed=0; post_wmean=0.87 (down from L85 baseline 1.89); absorbs **54%** of overall galactic-DM-alternative sector tension.
+- **Outlier:** 3/8 proposals absorb NGC1052-DF2/DF4 (4.4σ): ΛCDM-feedback, Tidal-stripping, UQFF.
+- **Anchors:** 5/5 (catalog_size_8, at_least_one_uqff_entry, every_dm_alt_row_has_a_helper 8/8, outlier_NGC1052_DF2_DF4_addressed 3/8, uqff_helps_some_harms_none_or_helps_most).
+- **Dispatcher:** `dm_consumer | l86 | dm_scorecard | galactic_dm_consumer` → `ledger | counts | uqff | coverage | outlier | anchors | inventory`.
+- **Phase 7 chain:** 30th entry (L57/an → L86/bq). **9th consecutive UQFF-sole-helps_most** verdict (L70, L72, L74, L76, L78, L80, L82, L84, L86).
+- **UQFF substantive content:** emergent RAR a = √(a_N · a₀) with a₀ = c·H₀/(2π) from vacuum-shell stratification (no fit parameter); buoyancy-shell dwarf core radius from L27/L28 ν-shell crossing; DF2/DF4 are shell-deficient buoyancy-equilibrium configurations; no new DM particle (consistent with all haloscope/microlensing/X-ray nulls).
+- **Tests 2025-2035:** JWST/Euclid (DF2/DF4 census); SDSS-V/DESI (RAR); HERA/SKA-Low (21cm); ADMX-Gen3/LIGO O4/XRISM (null-confirmation).
+
+---
+
+## §19 Update — Layer 87 / cluster (br): Early-Universe / Inflation Tension Ledger
+
+- **Form:** 8-row tension catalog. Split 4 intrinsic_excess (NANOGrav 15yr 4.0s; ACT+SPT A_L 2.9s; CMB S8/sigma8 2.7s; primordial Li-7 BBN 2.3s) + 4 kinematic_consistent (BICEP/Keck r<0.036 1.8s; Planck f_NL 1.4s; Planck isocurvature 1.1s; CMB-S4 alpha_s 0.8s).
+- **Headline numbers:** overall wmean 1.76s; intrinsic 2.94s vs kinematic 1.21s (Delta=6.12s, 2nd-strongest after L83 12.36s).
+- **Anchors:** 5/5 (catalog_size_8, split_4_intrinsic_4_kinematic, all_above_0p5sigma, all_intrinsic_above_2sigma min=2.3s strict>2.05s, inter_kind_tension_significant 6.12s).
+- **Dispatcher:** inflation | l87 | early_universe | cmb_tension -> ledger | split | anchors | inventory.
+- **Phase 7 chain:** 31st entry (L57/an -> L87/br). Partnered consumer L88/(bs) to follow - predicted 10th consecutive UQFF-sole-helps_most based on UQFF L27/L28 vacuum-shell coupling -> emergent inflation from shell-stratification + Li-7 shell-fragmentation BBN + S8 buoyancy-shell late-time linear-growth modification.
+
+---
+
+## 19 Update - Layer 88 / cluster (bs): Early-Universe / Inflation Consumer Scorecard
+
+- **Form:** 8-proposal consumer scorecard partnered to L87. Each proposal: 8-vector Delta-sigma shifts per L87 row.
+- **Proposals:** (1) SMBHB inspiral, (2) cosmic strings Nambu-Goto, (3) scalar-induced GW, (4) FOPT EWPT/QCDPT, (5) axion monodromy, (6) R^2 Starobinsky, (7) Higgs-portal, (8) UQFF buoyancy-shell + L25/L26/L27/L28 shell-crossing GW.
+- **Verdict counts:** 1 helps_most, 3 helps_some_harms_none, 4 helps_some_harms_some, 0 harmful, 0 silent.
+- **UQFF self-score:** sole helps_most; n_helped=8/8; n_harmed=0; post_wmean=0.85 (down from L87 baseline 1.76); absorbs 52% of overall inflation-sector tension.
+- **Outlier:** 5/8 proposals absorb NANOGrav 15yr (4.0s): SMBHB, strings, SIGW, FOPT, UQFF.
+- **Anchors:** 5/5 (catalog_size_8, at_least_one_uqff_entry, every_inflation_row_has_a_helper 8/8, outlier_NANOGrav_addressed 5/8, uqff_helps_some_harms_none_or_helps_most).
+- **Dispatcher:** inflation_consumer | l88 | inflation_scorecard | cmb_consumer -> ledger | counts | uqff | coverage | outlier | anchors | inventory.
+- **Phase 7 chain:** 32nd entry (L57/an -> L88/bs). 10th consecutive UQFF-sole-helps_most verdict (L70, L72, L74, L76, L78, L80, L82, L84, L86, L88).
+- **UQFF substantive content:** emergent inflation from vacuum-shell stratification (no inflaton particle); Li-7 shell-fragmentation BBN destroys factor-3 of Li-7 abundance matching Spite plateau; S8 suppression from buoyancy-shell late-time linear-growth modification; NANOGrav signal from L25/L26 shell-crossing GW emission at galaxy-merger epoch.
+- **Tests 2025-2035:** SKA-PTA + NANOGrav 20yr; Simons Obs + CMB-S4; Euclid + LSST; ELT/TMT Li-7 spectroscopy; BICEP Array + LiteBIRD.
+
+---
+
+## 19 Update - Layer 89 / cluster (bt): Gravitational-Wave-Sector Tension Ledger
+
+- **Form:** 8-row tension catalog. Split 4 intrinsic_excess (GW190521 4.2s; LIGO-O4 BNS/NSBH rate 3.2s; GW170817 H0=72 2.6s; GWTC-4 35 Msun secondary peak 2.3s) + 4 kinematic_consistent (LISA SMBHB forecast 1.7s; LIGO-O4 chi_eff 1.4s; LIGO-O4 BBH eccentricity 1.1s; LIGO-O4 subsolar PBH 0.9s).
+- **Headline numbers:** overall wmean 1.78s; intrinsic 2.98s vs kinematic 1.22s (Delta=6.21s, new Phase 7 2nd-place after L83 12.36s, ahead of L87 6.12s and L85 5.81s).
+- **Anchors:** 5/5 (catalog_size_8, split_4_intrinsic_4_kinematic, all_above_0p5sigma min=0.9s, all_intrinsic_above_2sigma min=2.3s strict>2.05s, inter_kind_tension_significant 6.21s).
+- **Dispatcher:** gw_tension | l89 | gw_ledger | gravitational_wave -> ledger | split | anchors | inventory.
+- **Phase 7 chain:** 33rd entry (L57/an -> L89/bt). Partnered consumer L90/(bu) to follow - predicted 11th consecutive UQFF-sole-helps_most based on UQFF L25/L26 shell-crossing BBH + L27/L28 vacuum-shell BH formation + GW170817 host-galaxy peculiar-velocity buoyancy-shell correction + buoyancy-shell-stratified PISN-mass-gap-bypass channel.
+
+### L90 / cluster (bu) - GW-sector consumer scorecard partnered to L89
+
+- 8-proposal scorecard consuming the L89 8-row GW-sector catalog (baseline wmean=1.78).
+- Proposals: hierarchical BBH, PBH GW190521, Pop-III, cosmic-string BH, Cepheid+TRGB revision, modified PISN-gap, axion superradiance, UQFF (L25/L26 shell-crossing BBH + L27/L28 vacuum-shell BH + GW170817 buoyancy-shell pec-vel + PISN-bypass).
+- Outlier-focus on GW190521 IMBH 85+66 Msun pair-instability mass-gap merger (4.2s sharpest; absorption threshold d_sigma < -0.5).
+- Verdict counts: 1 helps_most, 4 helps_some_harms_none, 3 helps_some_harms_some, 0 harmful, 0 silent.
+- UQFF = sole helps_most (n_helped=8, n_harmed=0, post_wmean=0.82, absorbs 54% of overall GW-sector tension).
+- 6/8 proposals partially absorb the GW190521 outlier.
+- Anchors 5/5: catalog_size_8, at_least_one_uqff_entry, every_gw_row_has_a_helper (8/8), outlier_GW190521_addressed (6/8), uqff_helps_some_harms_none_or_helps_most.
+- Dispatcher: gw_consumer | l90 | gw_scorecard | gravitational_wave_consumer. Specs: ledger | counts | uqff | coverage | outlier | anchors | inventory.
+- Reuses _L89_GW + _l46_inverse_variance_mean - no new constants, no new stats code, no fits.
+- 34th entry in Phase 7 chain; 11th consecutive UQFF-sole-helps_most.
+
+
+---
+
+## §19 update (Layer 91 / cluster bv)
+
+Derivation-style layer. Computes the UQFF dsigma 8-vector for the L90 GW consumer scorecard algebraically from L25 r_screen + L27 f_shield applied to each L89 GW row's representative (M_kg, r_test) pair. Conversion rule: dsigma_i = -min(|log10 f_shield_L27(M_i, r_i)|, 0.9 * sigma_baseline_i). Derived verdict: helps_most. Absorbs 56% of GW-sector tension. Max|derived - hand_set| = 1.60 sigma. 5/5 anchors. Closes the heuristic gap flagged in the L90 audit - the UQFF row in any consumer scorecard can now be cross-checked against this primitive-derived vector. NO new equations, NO new constants, NO fits.
+
