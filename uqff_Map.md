@@ -1970,3 +1970,10 @@ Self-audit correction to prior §18 entry. `uqff_analysis_1_04June2026.md` §3.1
 ## section 18 update - Step 1 Tranche 1B (+25 names, ledger 36 -> 61)
 
 Continuation of Step 1 (Map section 6 hundreds-list closure). Tranche 1B adds 25 names beyond the section 3.1 subset: 8 extended particles (m_e, m_pion, m_kaon, m_u, m_d, m_s, m_c, m_b), 4 electroweak / mixing (sin2_theta_w, ckm_vus, ckm_vcb, pmns_theta12), 3 g-factors (a_e, a_mu, g_e), 4 more SI-derived (e_hartree_ev, hyperfine_cs_hz, gas_constant_r, faraday_constant), 4 more cosmology (sigma_8, t_cmb_k, t_neutrino_k, bao_rd_mpc), 2 multi-messenger (gw170817_inspiral_hz, hudf_z). All compositions are allowed-primitives only. _LEDGER_PRIMITIVE = 61 entries (6 b9 anchors + 30 section 3.1 + 25 Tranche 1B). Row 5 acceptance gap remains OPEN against the full "hundreds" target; coverage advanced 36 -> 61. Plan Image 96 records the closure. Tranche 1C scope: more astro-system anchors, LENR variant ladder, additional precision constants, P1-P14 prediction thresholds.
+
+
+---
+
+## section 18 update - Step 1 Tranche 1C (+25 names, ledger 61 -> 86)
+
+Continuation of Step 1 Map section 6 hundreds-list closure. Tranche 1C adds 25 names beyond Tranches 1A/1B: 8 named astro-system triadic g anchors (sgr_1745_g, sgr_a_g, tapestry_g, westerlund_g, pillars_g, rings_of_relativity_g, crab_g, m16_g), 7 LENR variant ladder entries (rossi, parkhomov, pons_fleischmann, mizuno, mckubre, stringham, brillouin), 4 additional precision constants (von_klitzing_ohm, josephson_hz_v, vacuum_permittivity_eps0, vacuum_permeability_mu0), 6 P1-P14 prediction thresholds (p1_lkk_um, p2_alpha_yukawa, p3_w0, p4_dwdz2, p5_mu_uqff, p8_lepton_mass_mev). All allowed-primitives only. _LEDGER_PRIMITIVE = 86 entries. Row 5 acceptance gap remains OPEN against full hundreds target; coverage advanced 61 -> 86. Plan Image 97 records the closure. Section 18 row 2 LENR-variants criterion progressed: Holmlid 630 eV anchor closed + 7 variant primitive saturations now in ledger.

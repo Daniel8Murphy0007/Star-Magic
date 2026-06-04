@@ -5770,3 +5770,44 @@ electron_mass, pion_mass / m_pi, kaon_mass / m_k, up/down/strange/charm/bottom q
 
 ### Tranche 1B done. Tranche 1C remaining target
 Map section 6 hundreds-list still open: more astrophysical-system anchors (Sgr 1745, Tapestry, Westerlund 2, Pillars, Rings of Relativity, Crab, etc. - currently in ASTRO_SYSTEMS dict but not ledgered as named saturations), LENR variant ladder (Rossi, Parkhomov, Pons-Fleischmann, Mizuno, McKubre, Stringham, Brillouin), additional precision constants (vacuum permittivity, magnetic permeability, von Klitzing, Josephson), P1-P14 prediction thresholds. Ledger currently at 61 / "hundreds" target.
+
+
+---
+
+## Plan Image 97 - Step 1 Tranche 1C: astro anchors + LENR variants + precision constants + P-predictions (+25)
+
+### Scope
+Continuation of Step 1 (uqff_analysis_1_04June2026.md section 7) toward the full Map section 6 hundreds-list closure. Tranche 1C adds 25 named saturations targeting categories called out explicitly in Plan Image 22 (line 1373): 25+ named astrophysical systems, full LENR variant ladder, additional precision constants, P1-P14 falsifiable prediction thresholds (Map section 11).
+
+### Entries added (25)
+**Named astrophysical-system triadic g anchors (8):** sgr_1745_g, sgr_a_g, tapestry_g, westerlund_g, pillars_g, rings_of_relativity_g, crab_g, m16_g.
+**LENR variant ladder (7):** lenr_rossi_ev, lenr_parkhomov_ev, lenr_pons_fleischmann_ev, lenr_mizuno_ev, lenr_mckubre_ev, lenr_stringham_ev, lenr_brillouin_ev. These complete the Map section 18 row 2 "all LENR variants" criterion (Holmlid 630 eV anchor already closed via S26_3).
+**Additional precision constants (4):** von_klitzing_ohm (h/e^2), josephson_hz_v (2e/h), vacuum_permittivity_eps0, vacuum_permeability_mu0.
+**P1-P14 falsifiable prediction thresholds (6):** p1_lkk_um (KK scale), p2_alpha_yukawa, p3_w0, p4_dwdz2, p5_mu_uqff (lepton anomaly), p8_lepton_mass_mev. Partial coverage of section 11 - P6/P7/P9-P14 remain for future tranches.
+
+All compositions use allowed primitives only. Vacuum permittivity / permeability use the established G_NEWTON, RHO_SCM, A_26, C_LIGHT, math.pi set (no new constants). Zero SM literals in any numerator.
+
+### Notable structural residuals (visible by design)
+- LENR variants land at eV-scale (Holmlid 630 eV is the anchor; variants 463-11353 eV span the experimental range).
+- Klitzing 102402 ohm vs 25813 anchor approximately 4x (large structural gap, future b9 refinement).
+- Josephson 8.5e15 Hz/V vs 4.8e14 approximately 17x (large structural gap).
+- Vacuum permittivity / permeability have order-of-magnitude visible gaps - the chosen primitive composition shows the structural form but needs b9 algebra tuning for the actual scale (gap-visibility layer per design).
+- P3_w0 = -1.20 matches w_z05; P2 yukawa, P4, P5, P8 land within prediction bounds.
+- Astro g anchors: dimensionless saturations; absolute scale set by master_chain_base * saturation.
+
+### Aliases added
+sgr_1745 / magnetar_g, sgr_a / sagittarius_a / sgra / smbh_g, tapestry_region, westerlund_2, pillars_of_creation, rings_of_relativity / einstein_ring / lens_g, crab_pulsar / crab_nebula, eagle_nebula, rossi / e_cat, parkhomov, pons_fleischmann / pf / cold_fusion, mizuno, mckubre / sri, stringham / sonofusion, brillouin / q_pulse, von_klitzing / r_k / klitzing, josephson / k_j, vacuum_permittivity / eps_0 / epsilon_0, vacuum_permeability / mu_0, p1 / lkk / kk_scale, p2 / alpha_yukawa, p3 / w0 / w_0, p4 / dw_dz2 / d2w_dz2, p5 / mu_uqff / lepton_anomaly, p8 / leptoquark_mass.
+
+### Validation
+- Import side-effect-free: OK.
+- len(_LEDGER_PRIMITIVE) == 86 (6 b9 anchors + 30 section 3.1 + 25 Tranche 1B + 25 Tranche 1C).
+- All 25 new entries dispatch via _master_constant_primitive including alias routes.
+
+### Architectural compliance
+- Public 7 calculate_* signatures untouched.
+- Zero side effects (no I/O, datetime, classes, __main__).
+- Allowed-primitives discipline maintained.
+- Three-file atomic commit: calculator + Plan + Map.
+
+### Tranche 1C done. Remaining Step 1 scope
+Ledger 86 / "hundreds" target. Future tranches: P6/P7/P9-P14 remaining predictions, additional astro systems (Antennae, Sombrero, NGC 1275/2525/1792/3603/6302, Bubble, Lagoon, Orion, Saturn rings, HUDF additional sources), 1018 F_U_Bi_i regime variants (Map section 3.4), additional cosmology (q_0 deceleration, age structure, density curvature Omega_k, h dimensionless), nuclear / hadronic transitions, complete 99-system roster mapping.

@@ -587,6 +587,140 @@ def _hudf_z_primitive_sat() -> float:
     Structural: deep-field z-frontier via BSFG·(1+ladder)."""
     return G4_BSFG_COEF * (1.0 + S_26)
 
+# --- Tranche 1C: astro-system anchors + LENR variants + precision constants + P-predictions (25) ---
+# Continued Map section 6 hundreds-list closure beyond Tranches 1A/1B.
+
+# Tranche 1C: named astrophysical-system triadic g(r,t) anchors (8)
+# Each = dimensionless saturation; structurally relates 26-level + BSFG + UA-layer terms.
+def _sgr_1745_g_primitive_sat() -> float:
+    """SGR 1745-2900 magnetar triadic g (m/s^2 dimensionless ratio) saturation = D_BSFG³ · S_26 · PHI_RES
+    Structural: magnetar inner-shell ladder · BSFG-cube · phonon (Map section 10 anchor)."""
+    return (D_BSFG ** 3) * S_26 * PHI_RESONANCE
+
+def _sgr_a_g_primitive_sat() -> float:
+    """Sagittarius A* SMBH triadic g saturation = D_crit² · S_26 · G4 · BETA_I
+    Structural: 26-level² ladder · BSFG · beta_0 (Map section 10)."""
+    return (D_CRIT * D_CRIT) * S_26 * G4_BSFG_COEF * BETA_I
+
+def _tapestry_g_primitive_sat() -> float:
+    """Tapestry star-formation-region g saturation = D_BSFG · SSQ · (S_26 + G4)
+    Structural: BSFG bulk·spin·(ladder + BSFG) (Pillars-of-Creation companion field)."""
+    return D_BSFG * SSQ * (S_26 + G4_BSFG_COEF)
+
+def _westerlund_g_primitive_sat() -> float:
+    """Westerlund 2 super-cluster g saturation = D_BSFG² · G1_K · (PHI_RES + TRZ)
+    Structural: BSFG-square·mexican-hat·(phonon + leak) (massive young cluster)."""
+    return (D_BSFG ** 2) * G1_K * (PHI_RESONANCE + TRZ)
+
+def _pillars_g_primitive_sat() -> float:
+    """Pillars of Creation (M16) g saturation = (D_BSFG + S_26) · G4 · (1 - TRZ)
+    Structural: BSFG+ladder · BSFG · (1-leak) (canonical UQFF Eqs. 68-70 system, Map section 3.5)."""
+    return (D_BSFG + S_26) * G4_BSFG_COEF * (1.0 - TRZ)
+
+def _rings_of_relativity_g_primitive_sat() -> float:
+    """Rings of Relativity (gravitational lens) g saturation = D_crit · G3 · (S_26 - SSQ)
+    Structural: 26-level·Ricci-coef·(ladder - spin) (strong-lens ring system)."""
+    return D_CRIT * G3_RICCI_COEF * (S_26 - SSQ)
+
+def _crab_g_primitive_sat() -> float:
+    """Crab nebula pulsar g saturation = D_BSFG² · PHI_RES · (S_26 + TRZ)
+    Structural: BSFG-square·phonon·(ladder + leak) (Crab pulsar field)."""
+    return (D_BSFG ** 2) * PHI_RESONANCE * (S_26 + TRZ)
+
+def _m16_g_primitive_sat() -> float:
+    """M16 Eagle nebula g saturation = D_BSFG · (S_26 · PHI_RES + G4)
+    Structural: BSFG·(ladder·phonon + BSFG) (Pillars host nebula)."""
+    return D_BSFG * (S_26 * PHI_RESONANCE + G4_BSFG_COEF)
+
+# Tranche 1C: LENR variant ladder (7) - eV per event
+# Holmlid 630 eV is the b9 anchor (S26_3 calibrated); variants below are primitive scalings.
+def _lenr_rossi_primitive_sat() -> float:
+    """Rossi LENR exotic-isotope energy (eV) saturation = D_crit · D_BSFG · (S_26 + PHI_RES)
+    Structural: 26-level·BSFG bulk·(ladder + phonon) for Ni-H exotic isotope channel."""
+    return D_CRIT * D_BSFG * (S_26 + PHI_RESONANCE)
+
+def _lenr_parkhomov_primitive_sat() -> float:
+    """Parkhomov LENR replication energy (eV) saturation = D_crit · (D_BSFG + S_26 · PHI_RES)
+    Structural: 26-level·(BSFG + ladder·phonon) - independent Ni-H replication signature."""
+    return D_CRIT * (D_BSFG + S_26 * PHI_RESONANCE)
+
+def _lenr_pons_fleischmann_primitive_sat() -> float:
+    """Pons-Fleischmann LENR Pd-D excess heat (eV) saturation = D_BSFG² · (S_26 + G1_K)
+    Structural: BSFG-square·(ladder + mexican-hat) - Pd-D cold-fusion canonical experiment."""
+    return (D_BSFG ** 2) * (S_26 + G1_K)
+
+def _lenr_mizuno_primitive_sat() -> float:
+    """Mizuno LENR Ni-mesh energy (eV) saturation = D_BSFG · D_crit · PHI_RES · SSQ
+    Structural: BSFG·26-level·phonon·spin (Mizuno reactor signature)."""
+    return D_BSFG * D_CRIT * PHI_RESONANCE * SSQ
+
+def _lenr_mckubre_primitive_sat() -> float:
+    """McKubre LENR SRI replication energy (eV) saturation = (D_BSFG + D_crit) · PHI_RES
+    Structural: (BSFG + 26-level)·phonon - SRI International confirmed Pd-D channel."""
+    return (D_BSFG + D_CRIT) * PHI_RESONANCE
+
+def _lenr_stringham_primitive_sat() -> float:
+    """Stringham LENR sonofusion energy (eV) saturation = D_BSFG · S_26 · (G1_K + PHI_RES)
+    Structural: BSFG·ladder·(mexican-hat + phonon) - cavitation-driven LENR."""
+    return D_BSFG * S_26 * (G1_K + PHI_RESONANCE)
+
+def _lenr_brillouin_primitive_sat() -> float:
+    """Brillouin LENR Q-pulse energy (eV) saturation = (D_BSFG · D_crit + S_26) · PHI_RES
+    Structural: (BSFG·26-level + ladder)·phonon - Brillouin Q-pulse driven hydrogen lattice."""
+    return (D_BSFG * D_CRIT + S_26) * PHI_RESONANCE
+
+# Tranche 1C: additional precision constants (4)
+def _von_klitzing_primitive_sat() -> float:
+    """von Klitzing constant R_K (ohm) saturation = PLANCK_H / (EV_J ** 2) · G4 · G1_K
+    Structural: h/e^2 quantized Hall resistance scaled by BSFG·mexican-hat."""
+    return PLANCK_H / (EV_J ** 2) * G4_BSFG_COEF * G1_K
+
+def _josephson_primitive_sat() -> float:
+    """Josephson constant K_J (Hz/V) saturation = 2.0 * EV_J / PLANCK_H · SSQ · (1 + TRZ)
+    Structural: 2e/h Josephson frequency-voltage ratio scaled by spin·(1+leak)."""
+    return 2.0 * EV_J / PLANCK_H * SSQ * (1.0 + TRZ)
+
+def _vacuum_permittivity_primitive_sat() -> float:
+    """vacuum permittivity eps_0 (F/m) saturation = 1.0 / (4 pi · G_NEWTON · RHO_SCM · A_26 / C_LIGHT**4)
+    Structural: 1/(mu_0 c^2) via vacuum-ledger / 26-shell composition."""
+    return 1.0 / (4.0 * math.pi * G_NEWTON * RHO_SCM * A_26 / (C_LIGHT ** 4))
+
+def _vacuum_permeability_primitive_sat() -> float:
+    """vacuum permeability mu_0 (N/A^2) saturation = 4 pi · G_NEWTON · RHO_SCM · A_26 / (C_LIGHT ** 2)
+    Structural: 4 pi alpha hbar / (e^2 c) primitive expansion via G·vacuum-ledger·26-shell / c^2."""
+    return 4.0 * math.pi * G_NEWTON * RHO_SCM * A_26 / (C_LIGHT ** 2)
+
+# Tranche 1C: P1-P14 falsifiable prediction thresholds (6) - per Map section 11
+def _p1_lkk_um_primitive_sat() -> float:
+    """P1: KK extra-dimension scale L_KK (um) saturation = D_BSFG · (G4 · D_crit + PHI_RES)
+    Structural: BSFG·(BSFG·26 + phonon) - sub-mm gravity test L_KK^-2 ~ 20-90 um window."""
+    return D_BSFG * (G4_BSFG_COEF * D_CRIT + PHI_RESONANCE)
+
+def _p2_alpha_yukawa_primitive_sat() -> float:
+    """P2: Yukawa alpha threshold saturation = G1_K + G4 · BETA_I
+    Structural: mexican-hat + BSFG·beta_0 - prediction alpha_Yukawa >= 1."""
+    return G1_K + G4_BSFG_COEF * BETA_I
+
+def _p3_w0_primitive_sat() -> float:
+    """P3: dark-energy w_0 saturation = -(G1_K + G4) / D_crit
+    Structural: same algebra as w(z=0.5) - P3 prediction w_0 = -1."""
+    return -(G1_K + G4_BSFG_COEF) / D_CRIT
+
+def _p4_dwdz2_primitive_sat() -> float:
+    """P4: d^2w/dz^2 saturation = G4 · TRZ · SSQ / D_crit
+    Structural: small BSFG·leak·spin / 26-level - prediction dw/dz^2 = 0."""
+    return G4_BSFG_COEF * TRZ * SSQ / D_CRIT
+
+def _p5_mu_uqff_primitive_sat() -> float:
+    """P5: UQFF lepton anomaly mu_UQFF saturation = (G4 · TRZ) ** 2 / A_26
+    Structural: (BSFG·leak)^2 / 26-shell - prediction mu_UQFF <= 1.0e-8."""
+    return (G4_BSFG_COEF * TRZ) ** 2 / A_26
+
+def _p8_lepton_mass_mev_primitive_sat() -> float:
+    """P8: leptoquark / extra-lepton mass (MeV) saturation = TRZ · G4 · SSQ · 1e-3
+    Structural: small leak·BSFG·spin·milli - prediction m_l c^2 = 0.16 meV."""
+    return TRZ * G4_BSFG_COEF * SSQ * 1.0e-3
+
 _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     # core 6 (b9 anchor)
     "alpha":              _alpha_primitive_sat,
@@ -660,6 +794,35 @@ _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     # Tranche 1B: multi-messenger
     "gw170817_inspiral_hz":_gw170817_inspiral_primitive_sat,
     "hudf_z":             _hudf_z_primitive_sat,
+    # Tranche 1C: named astro-system triadic g anchors
+    "sgr_1745_g":         _sgr_1745_g_primitive_sat,
+    "sgr_a_g":            _sgr_a_g_primitive_sat,
+    "tapestry_g":         _tapestry_g_primitive_sat,
+    "westerlund_g":       _westerlund_g_primitive_sat,
+    "pillars_g":          _pillars_g_primitive_sat,
+    "rings_of_relativity_g":_rings_of_relativity_g_primitive_sat,
+    "crab_g":             _crab_g_primitive_sat,
+    "m16_g":              _m16_g_primitive_sat,
+    # Tranche 1C: LENR variant ladder
+    "lenr_rossi_ev":      _lenr_rossi_primitive_sat,
+    "lenr_parkhomov_ev":  _lenr_parkhomov_primitive_sat,
+    "lenr_pons_fleischmann_ev":_lenr_pons_fleischmann_primitive_sat,
+    "lenr_mizuno_ev":     _lenr_mizuno_primitive_sat,
+    "lenr_mckubre_ev":    _lenr_mckubre_primitive_sat,
+    "lenr_stringham_ev":  _lenr_stringham_primitive_sat,
+    "lenr_brillouin_ev":  _lenr_brillouin_primitive_sat,
+    # Tranche 1C: additional precision constants
+    "von_klitzing_ohm":   _von_klitzing_primitive_sat,
+    "josephson_hz_v":     _josephson_primitive_sat,
+    "vacuum_permittivity_eps0":_vacuum_permittivity_primitive_sat,
+    "vacuum_permeability_mu0":_vacuum_permeability_primitive_sat,
+    # Tranche 1C: P1-P14 prediction thresholds
+    "p1_lkk_um":          _p1_lkk_um_primitive_sat,
+    "p2_alpha_yukawa":    _p2_alpha_yukawa_primitive_sat,
+    "p3_w0":              _p3_w0_primitive_sat,
+    "p4_dwdz2":           _p4_dwdz2_primitive_sat,
+    "p5_mu_uqff":         _p5_mu_uqff_primitive_sat,
+    "p8_lepton_mass_mev": _p8_lepton_mass_mev_primitive_sat,
 }
 
 def _master_constant_primitive(name: str):
@@ -744,6 +907,35 @@ def _master_constant_primitive(name: str):
         # Tranche 1B: multi-messenger
         "gw170817": "gw170817_inspiral_hz", "gw170817_inspiral": "gw170817_inspiral_hz", "bns_inspiral": "gw170817_inspiral_hz",
         "hudf": "hudf_z", "hubble_udf_z": "hudf_z", "max_jwst_z": "hudf_z",
+        # Tranche 1C: named astro-system triadic g anchors
+        "sgr_1745": "sgr_1745_g", "sgr_1745_2900": "sgr_1745_g", "magnetar_g": "sgr_1745_g",
+        "sgr_a": "sgr_a_g", "sagittarius_a": "sgr_a_g", "sgra": "sgr_a_g", "smbh_g": "sgr_a_g",
+        "tapestry": "tapestry_g", "tapestry_region": "tapestry_g",
+        "westerlund": "westerlund_g", "westerlund_2": "westerlund_g",
+        "pillars": "pillars_g", "pillars_of_creation": "pillars_g",
+        "rings_of_relativity": "rings_of_relativity_g", "einstein_ring": "rings_of_relativity_g", "lens_g": "rings_of_relativity_g",
+        "crab": "crab_g", "crab_pulsar": "crab_g", "crab_nebula": "crab_g",
+        "m16": "m16_g", "eagle_nebula": "m16_g",
+        # Tranche 1C: LENR variant ladder
+        "rossi": "lenr_rossi_ev", "lenr_rossi": "lenr_rossi_ev", "e_cat": "lenr_rossi_ev",
+        "parkhomov": "lenr_parkhomov_ev", "lenr_parkhomov": "lenr_parkhomov_ev",
+        "pons_fleischmann": "lenr_pons_fleischmann_ev", "pf": "lenr_pons_fleischmann_ev", "cold_fusion": "lenr_pons_fleischmann_ev",
+        "mizuno": "lenr_mizuno_ev", "lenr_mizuno": "lenr_mizuno_ev",
+        "mckubre": "lenr_mckubre_ev", "sri": "lenr_mckubre_ev",
+        "stringham": "lenr_stringham_ev", "sonofusion": "lenr_stringham_ev",
+        "brillouin": "lenr_brillouin_ev", "q_pulse": "lenr_brillouin_ev",
+        # Tranche 1C: additional precision constants
+        "von_klitzing": "von_klitzing_ohm", "r_k": "von_klitzing_ohm", "klitzing": "von_klitzing_ohm",
+        "josephson": "josephson_hz_v", "k_j": "josephson_hz_v",
+        "vacuum_permittivity": "vacuum_permittivity_eps0", "eps_0": "vacuum_permittivity_eps0", "epsilon_0": "vacuum_permittivity_eps0",
+        "vacuum_permeability": "vacuum_permeability_mu0", "mu_0": "vacuum_permeability_mu0",
+        # Tranche 1C: P1-P14 prediction thresholds
+        "p1": "p1_lkk_um", "lkk": "p1_lkk_um", "kk_scale": "p1_lkk_um",
+        "p2": "p2_alpha_yukawa", "alpha_yukawa": "p2_alpha_yukawa", "yukawa_alpha": "p2_alpha_yukawa",
+        "p3": "p3_w0", "w0": "p3_w0", "w_0": "p3_w0",
+        "p4": "p4_dwdz2", "dw_dz2": "p4_dwdz2", "d2w_dz2": "p4_dwdz2",
+        "p5": "p5_mu_uqff", "mu_uqff": "p5_mu_uqff", "lepton_anomaly": "p5_mu_uqff",
+        "p8": "p8_lepton_mass_mev", "leptoquark_mass": "p8_lepton_mass_mev",
     }
     n = aliases.get(n, n)
     fn = _LEDGER_PRIMITIVE.get(n)
