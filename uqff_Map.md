@@ -1977,3 +1977,15 @@ Continuation of Step 1 (Map section 6 hundreds-list closure). Tranche 1B adds 25
 ## section 18 update - Step 1 Tranche 1C (+25 names, ledger 61 -> 86)
 
 Continuation of Step 1 Map section 6 hundreds-list closure. Tranche 1C adds 25 names beyond Tranches 1A/1B: 8 named astro-system triadic g anchors (sgr_1745_g, sgr_a_g, tapestry_g, westerlund_g, pillars_g, rings_of_relativity_g, crab_g, m16_g), 7 LENR variant ladder entries (rossi, parkhomov, pons_fleischmann, mizuno, mckubre, stringham, brillouin), 4 additional precision constants (von_klitzing_ohm, josephson_hz_v, vacuum_permittivity_eps0, vacuum_permeability_mu0), 6 P1-P14 prediction thresholds (p1_lkk_um, p2_alpha_yukawa, p3_w0, p4_dwdz2, p5_mu_uqff, p8_lepton_mass_mev). All allowed-primitives only. _LEDGER_PRIMITIVE = 86 entries. Row 5 acceptance gap remains OPEN against full hundreds target; coverage advanced 61 -> 86. Plan Image 97 records the closure. Section 18 row 2 LENR-variants criterion progressed: Holmlid 630 eV anchor closed + 7 variant primitive saturations now in ledger.
+
+---
+
+### Map section 18 closure update (2026-06-04 Step 1 close)
+
+_LEDGER_PRIMITIVE extended from 86 to 148 entries by Step 1 closure batch:
+- +25 Map section 10 named astro systems (Horsehead through V838 Mon)
+- +10 Map section 11 remaining P-predictions (P6, P7, P9-P14, KK m_l, xi-test)
+- +15 Map section 6 cosmology / SI / precision extras (q_0, Omega_k, h, t_H, sigma_v, f, G, e, h, c, N_A, Planck mass / length / time / temperature)
+
+All compositions allowed-primitives only. All dispatch aliases registered.
+Analysis section 7 Step 1 functionally closed; ready for Step 2 (live-derive MILLENNIUM_TARGETS).

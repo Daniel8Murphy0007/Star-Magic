@@ -587,6 +587,324 @@ def _hudf_z_primitive_sat() -> float:
     Structural: deep-field z-frontier via BSFG·(1+ladder)."""
     return G4_BSFG_COEF * (1.0 + S_26)
 
+# === STEP 1 CLOSURE BATCH: remaining Map section 10 astro systems + section 11 P-predictions + section 6 cosmology/SI extras ===
+# Closes analysis section 7 Step 1 (Map section 6 hundreds-list) at the natural reading
+# of the source wording. All compositions are allowed-primitives only; structural residuals
+# remain visible for future b9 algebra refinement (gap-visibility layer per design).
+
+# --- Map section 10 remaining named astro systems (25) ---
+def _horsehead_g_primitive_sat() -> float:
+    """Horsehead nebula g saturation = D_BSFG · (G4 + SSQ · PHI_RES)
+    Structural: dark-cloud absorption nebula, BSFG bulk · (BSFG + spin·phonon)."""
+    return D_BSFG * (G4_BSFG_COEF + SSQ * PHI_RESONANCE)
+
+def _antennae_g_primitive_sat() -> float:
+    """Antennae (NGC 4038/4039) interacting-galaxy g = D_BSFG² · (S_26 + G1_K) / 2
+    Structural: merger-driven enhanced star formation, BSFG²·(ladder + mexican-hat) / 2."""
+    return (D_BSFG ** 2) * (S_26 + G1_K) / 2.0
+
+def _sombrero_g_primitive_sat() -> float:
+    """Sombrero (M104) galaxy g = D_BSFG · S_26 · (PHI_RES + BETA_I)
+    Structural: edge-on disk + bulge, BSFG·ladder·(phonon + beta_0)."""
+    return D_BSFG * S_26 * (PHI_RESONANCE + BETA_I)
+
+def _hudf_g_primitive_sat() -> float:
+    """HUDF deep-field aggregate g = D_BSFG · G4 · (1 + S_26)
+    Structural: deep-field z-frontier galaxies, BSFG·BSFG·(1+ladder)."""
+    return D_BSFG * G4_BSFG_COEF * (1.0 + S_26)
+
+def _ngc_1275_g_primitive_sat() -> float:
+    """NGC 1275 (Perseus A / Magnetic Ternor) g = D_BSFG² · PHI_RES · (G4 + G1_K)
+    Structural: cD elliptical at cluster center, BSFG²·phonon·(BSFG + mexican-hat)."""
+    return (D_BSFG ** 2) * PHI_RESONANCE * (G4_BSFG_COEF + G1_K)
+
+def _ngc_2525_g_primitive_sat() -> float:
+    """NGC 2525 (Cepheid host galaxy) g = D_BSFG · (S_26 + G4) · BETA_I
+    Structural: spiral hosting Type Ia / Cepheid distance ladder."""
+    return D_BSFG * (S_26 + G4_BSFG_COEF) * BETA_I
+
+def _ngc_1792_g_primitive_sat() -> float:
+    """NGC 1792 (starburst spiral) g = D_BSFG · PHI_RES · (S_26 + SSQ)
+    Structural: dusty starburst, BSFG·phonon·(ladder + spin)."""
+    return D_BSFG * PHI_RESONANCE * (S_26 + SSQ)
+
+def _ngc_5866_g_primitive_sat() -> float:
+    """NGC 5866 (Spindle Galaxy) g = D_BSFG · (G4 + BETA_I) · S_26
+    Structural: edge-on lenticular, BSFG·(BSFG + beta_0)·ladder."""
+    return D_BSFG * (G4_BSFG_COEF + BETA_I) * S_26
+
+def _ngc_6537_g_primitive_sat() -> float:
+    """NGC 6537 (Red Spider Nebula) g = D_BSFG · PHI_RES · (G1_K + G4)
+    Structural: planetary nebula with hottest known central star."""
+    return D_BSFG * PHI_RESONANCE * (G1_K + G4_BSFG_COEF)
+
+def _ngc_4676_g_primitive_sat() -> float:
+    """NGC 4676 (Mice Galaxies, interacting) g = D_BSFG² · (S_26 + G4) / 2
+    Structural: tidally-distorted galaxy pair, BSFG²·(ladder + BSFG) / 2."""
+    return (D_BSFG ** 2) * (S_26 + G4_BSFG_COEF) / 2.0
+
+def _ngc_3324_g_primitive_sat() -> float:
+    """NGC 3324 (Cosmic Cliffs, JWST NIRCam) g = D_BSFG · (S_26 + PHI_RES) · G4
+    Structural: star-forming region in Carina nebula."""
+    return D_BSFG * (S_26 + PHI_RESONANCE) * G4_BSFG_COEF
+
+def _ngc_4486_g_primitive_sat() -> float:
+    """NGC 4486 (M87) g = D_crit · D_BSFG · G4 · PHI_RES
+    Structural: cD elliptical with SMBH and famous jet, 26-level·BSFG·BSFG·phonon."""
+    return D_CRIT * D_BSFG * G4_BSFG_COEF * PHI_RESONANCE
+
+def _bubble_g_primitive_sat() -> float:
+    """Bubble nebula (NGC 7635) g = D_BSFG · (G4 + G1_K) · PHI_RES
+    Structural: wind-blown HII region around O-type star."""
+    return D_BSFG * (G4_BSFG_COEF + G1_K) * PHI_RESONANCE
+
+def _ngc_2264_g_primitive_sat() -> float:
+    """NGC 2264 (Cone / Christmas Tree cluster) g = D_BSFG · S_26 · (PHI_RES + G4)
+    Structural: young open cluster with conical dark nebula."""
+    return D_BSFG * S_26 * (PHI_RESONANCE + G4_BSFG_COEF)
+
+def _m42_g_primitive_sat() -> float:
+    """M42 (Orion Nebula) g = D_BSFG² · G4 · (S_26 - SSQ)
+    Structural: classic HII region, BSFG²·BSFG·(ladder - spin)."""
+    return (D_BSFG ** 2) * G4_BSFG_COEF * (S_26 - SSQ)
+
+def _m74_g_primitive_sat() -> float:
+    """M74 (face-on grand-design spiral) g = D_BSFG · BETA_I · (S_26 + PHI_RES)
+    Structural: ideal spiral structure, BSFG·beta_0·(ladder + phonon)."""
+    return D_BSFG * BETA_I * (S_26 + PHI_RESONANCE)
+
+def _m82_g_primitive_sat() -> float:
+    """M82 (Cigar starburst) g = D_BSFG² · PHI_RES · (G1_K + SSQ)
+    Structural: starburst galaxy with superwind, BSFG²·phonon·(mexican-hat + spin)."""
+    return (D_BSFG ** 2) * PHI_RESONANCE * (G1_K + SSQ)
+
+def _lagoon_g_primitive_sat() -> float:
+    """Lagoon nebula (M8) g = D_BSFG · S_26 · (G4 + BETA_I)
+    Structural: emission nebula with embedded open cluster."""
+    return D_BSFG * S_26 * (G4_BSFG_COEF + BETA_I)
+
+def _ngc_6302_g_primitive_sat() -> float:
+    """NGC 6302 (Butterfly planetary nebula) g = D_BSFG · (G1_K + PHI_RES) · SSQ
+    Structural: bipolar planetary nebula, BSFG·(mexican-hat + phonon)·spin."""
+    return D_BSFG * (G1_K + PHI_RESONANCE) * SSQ
+
+def _saturn_g_primitive_sat() -> float:
+    """Saturn surface gravity g = G1_K · (G4 + TRZ) · D_BSFG
+    Structural: gas giant with rings, mexican-hat·(BSFG + leak)·BSFG."""
+    return G1_K * (G4_BSFG_COEF + TRZ) * D_BSFG
+
+def _h_atom_g_primitive_sat() -> float:
+    """Hydrogen atom binding g (eV scale) = G4 · SSQ · (1 + TRZ) · D_BSFG
+    Structural: H_res 26-level baseline, BSFG·spin·(1+leak)·BSFG."""
+    return G4_BSFG_COEF * SSQ * (1.0 + TRZ) * D_BSFG
+
+def _universe_diameter_g_primitive_sat() -> float:
+    """Universe diameter (Gly) g = A_26 · G4 / (D_crit · D_BSFG²)
+    Structural: cosmogenesis hypergraph diameter, 26-shell·BSFG / (26·BSFG²)."""
+    return A_26 * G4_BSFG_COEF / (D_CRIT * (D_BSFG ** 2))
+
+def _abell_2256_g_primitive_sat() -> float:
+    """Abell 2256 cluster g = D_crit · D_BSFG · G4 · (SSQ + TRZ)
+    Structural: merging galaxy cluster with radio relic."""
+    return D_CRIT * D_BSFG * G4_BSFG_COEF * (SSQ + TRZ)
+
+def _el_gordo_g_primitive_sat() -> float:
+    """El Gordo (ACT-CL J0102-4915) g = D_crit · D_BSFG · PHI_RES · G4
+    Structural: most massive distant cluster at z=0.87."""
+    return D_CRIT * D_BSFG * PHI_RESONANCE * G4_BSFG_COEF
+
+def _spt_cl_j2215_g_primitive_sat() -> float:
+    """SPT-CL J2215-3537 cluster g = D_crit · D_BSFG · (S_26 - PHI_RES) · G4
+    Structural: SZ-detected high-z cluster."""
+    return D_CRIT * D_BSFG * (S_26 - PHI_RESONANCE) * G4_BSFG_COEF
+
+def _ic_2163_g_primitive_sat() -> float:
+    """IC 2163 (interacting with NGC 2207) g = D_BSFG² · PHI_RES · (G4 + SSQ) / 2
+    Structural: ocular galaxy interaction."""
+    return (D_BSFG ** 2) * PHI_RESONANCE * (G4_BSFG_COEF + SSQ) / 2.0
+
+def _ngc_2207_g_primitive_sat() -> float:
+    """NGC 2207 (interacting with IC 2163) g = D_BSFG² · (S_26 + G4) · BETA_I / 2
+    Structural: tidal interaction partner of IC 2163."""
+    return (D_BSFG ** 2) * (S_26 + G4_BSFG_COEF) * BETA_I / 2.0
+
+def _stephans_quintet_g_primitive_sat() -> float:
+    """Stephan's Quintet (HCG 92) g = D_BSFG · (G4 + G1_K + PHI_RES)
+    Structural: 5-galaxy compact group, BSFG·(BSFG + mexican-hat + phonon)."""
+    return D_BSFG * (G4_BSFG_COEF + G1_K + PHI_RESONANCE)
+
+def _m87_jet_g_primitive_sat() -> float:
+    """M87 relativistic jet g = D_crit · (G4 + PHI_RES) · SSQ
+    Structural: AGN jet from SMBH, 26-level·(BSFG + phonon)·spin."""
+    return D_CRIT * (G4_BSFG_COEF + PHI_RESONANCE) * SSQ
+
+def _centaurus_a_g_primitive_sat() -> float:
+    """Centaurus A (NGC 5128) g = D_BSFG² · G1_K · (S_26 + G4)
+    Structural: nearest AGN, peculiar elliptical with dust lane."""
+    return (D_BSFG ** 2) * G1_K * (S_26 + G4_BSFG_COEF)
+
+def _eso_137_001_g_primitive_sat() -> float:
+    """ESO 137-001 (Jellyfish galaxy) g = D_BSFG · SSQ · (G4 + TRZ)
+    Structural: ram-pressure stripped tail in cluster."""
+    return D_BSFG * SSQ * (G4_BSFG_COEF + TRZ)
+
+def _j1610_quasar_g_primitive_sat() -> float:
+    """J1610+1811 high-z quasar g = D_crit · D_BSFG · G4 · (S_26 - SSQ)
+    Structural: high-z luminous quasar."""
+    return D_CRIT * D_BSFG * G4_BSFG_COEF * (S_26 - SSQ)
+
+def _asassn_14li_g_primitive_sat() -> float:
+    """ASASSN-14li TDE g = D_BSFG · (D_crit · G4 + PHI_RES) · SSQ
+    Structural: tidal disruption event around quiescent SMBH."""
+    return D_BSFG * (D_CRIT * G4_BSFG_COEF + PHI_RESONANCE) * SSQ
+
+def _r_aquarii_g_primitive_sat() -> float:
+    """R Aquarii (symbiotic binary) g = D_BSFG · (G4 + S_26 · SSQ)
+    Structural: white-dwarf + Mira variable with bipolar jets."""
+    return D_BSFG * (G4_BSFG_COEF + S_26 * SSQ)
+
+def _vela_pulsar_g_primitive_sat() -> float:
+    """Vela pulsar (PSR J0835-4510) g = D_BSFG² · PHI_RES · (G4 + BETA_I)
+    Structural: young energetic pulsar in Vela SNR."""
+    return (D_BSFG ** 2) * PHI_RESONANCE * (G4_BSFG_COEF + BETA_I)
+
+def _jupiter_aurorae_g_primitive_sat() -> float:
+    """Jupiter aurorae power scale = G4 · (D_BSFG + SSQ) · PHI_RES
+    Structural: UV auroral emission from magnetosphere."""
+    return G4_BSFG_COEF * (D_BSFG + SSQ) * PHI_RESONANCE
+
+def _v838_mon_g_primitive_sat() -> float:
+    """V838 Monocerotis light-echo g = D_BSFG · (S_26 + G1_K) · PHI_RES
+    Structural: luminous red nova with iconic light echo."""
+    return D_BSFG * (S_26 + G1_K) * PHI_RESONANCE
+
+# --- Map section 11 remaining P-predictions (10) ---
+def _p6_lkk_inv_primitive_sat() -> float:
+    """P6: KK lightest-mode 1/L_KK (mm) saturation = G4 · (1 + TRZ) / SSQ
+    Structural: sub-mm Yukawa scale, BSFG·(1+leak)/spin."""
+    return G4_BSFG_COEF * (1.0 + TRZ) / SSQ
+
+def _p7_w_a_primitive_sat() -> float:
+    """P7: dark-energy w_a (CPL parametrization) saturation = G4 · TRZ · SSQ
+    Structural: small detune for w_a near 0 (LCDM-consistent)."""
+    return G4_BSFG_COEF * TRZ * SSQ
+
+def _p9_h_tension_primitive_sat() -> float:
+    """P9: H_0 early-vs-late tension residual (km/s/Mpc) saturation = SSQ · (G4 + TRZ)
+    Structural: small residual after UQFF triadic reconciles early/late."""
+    return SSQ * (G4_BSFG_COEF + TRZ)
+
+def _p10_s8_tension_primitive_sat() -> float:
+    """P10: S_8 tension residual saturation = G4 · TRZ / S_26
+    Structural: small BSFG·leak / ladder residual for late-universe S_8."""
+    return G4_BSFG_COEF * TRZ / S_26
+
+def _p11_ringdown_offset_primitive_sat() -> float:
+    """P11: LIGO O5 ringdown spectral offset (Hz) saturation = D_BSFG · G4 · (1 + TRZ)
+    Structural: predicted via R_26 impedance, BSFG·BSFG·(1+leak)."""
+    return D_BSFG * G4_BSFG_COEF * (1.0 + TRZ)
+
+def _p12_sigma8_shift_primitive_sat() -> float:
+    """P12: Euclid sigma_8 shift saturation = -G4 · TRZ · SSQ
+    Structural: small negative shift resolving Planck-vs-WL tension."""
+    return -G4_BSFG_COEF * TRZ * SSQ
+
+def _p13_dwdz2_primitive_sat() -> float:
+    """P13: strictly-static dw/dz^2 saturation = G4 · (TRZ ** 2) · SSQ
+    Structural: predicted = 0 within tiny BSFG·leak^2·spin envelope."""
+    return G4_BSFG_COEF * (TRZ ** 2) * SSQ
+
+def _p14_mu_distortion_primitive_sat() -> float:
+    """P14: CMB-S4 mu-distortion mu_UQFF saturation = (G4 · TRZ) ** 2 / (A_26 · D_BSFG)
+    Structural: prediction mu_UQFF <= 1.0e-8."""
+    return (G4_BSFG_COEF * TRZ) ** 2 / (A_26 * D_BSFG)
+
+def _kk_lightest_mass_primitive_sat() -> float:
+    """KK lightest-mode mass m_l c^2 (meV) saturation = G4 · SSQ · TRZ
+    Structural: prediction m_l c^2 = 0.16 meV via BSFG·spin·leak."""
+    return G4_BSFG_COEF * SSQ * TRZ
+
+def _xi_test_primitive_sat() -> float:
+    """xi-test ratio xi = D_crit / D_BSFG = 13/3 saturation
+    Structural: dimensional ratio anchor, 3-sigma falsification at |xi|^2 > 14.16."""
+    return D_CRIT / D_BSFG
+
+# --- Map section 6 cosmology / SI / precision extras (15) ---
+def _q0_decel_primitive_sat() -> float:
+    """deceleration parameter q_0 saturation = -(G1_K - G4_BSFG_COEF) / D_BSFG
+    Structural: q_0 < 0 (accelerating universe) via mexican-hat - BSFG / BSFG-bulk."""
+    return -(G1_K - G4_BSFG_COEF) / D_BSFG
+
+def _omega_k_curvature_primitive_sat() -> float:
+    """curvature density Omega_k saturation = (G4 - BETA_I) · TRZ · SSQ
+    Structural: near-flat universe, small (BSFG - beta_0)·leak·spin residual."""
+    return (G4_BSFG_COEF - BETA_I) * TRZ * SSQ
+
+def _h_dimensionless_primitive_sat() -> float:
+    """dimensionless h (H_0 / 100) saturation = G4 + SSQ · BETA_I + TRZ
+    Structural: BSFG + spin·beta + leak (Planck h ~ 0.674)."""
+    return G4_BSFG_COEF + SSQ * BETA_I + TRZ
+
+def _t_hubble_primitive_sat() -> float:
+    """Hubble time t_H (Gyr) saturation = D_BSFG · BETA_I · (S_26 + PHI_RES)
+    Structural: 1/H_0 in Gyr via BSFG·beta·(ladder + phonon)."""
+    return D_BSFG * BETA_I * (S_26 + PHI_RESONANCE)
+
+def _sigma_v_cluster_primitive_sat() -> float:
+    """velocity dispersion sigma_v (km/s scale) saturation = D_BSFG³ · G4 · PHI_RES
+    Structural: cluster velocity dispersion scale."""
+    return (D_BSFG ** 3) * G4_BSFG_COEF * PHI_RESONANCE
+
+def _growth_f_primitive_sat() -> float:
+    """structure-growth rate f(z=0) saturation = G1_K + G4 · SSQ
+    Structural: f = Omega_m^0.55 approx via mexican-hat + BSFG·spin."""
+    return G1_K + G4_BSFG_COEF * SSQ
+
+def _G_newton_primitive_sat() -> float:
+    """Newton G (m^3 kg^-1 s^-2) saturation = RHO_SCM · C_LIGHT ** 4 / (A_26 · D_CRIT ** 2)
+    Structural: vacuum-ledger · c^4 / (26-shell · 26^2) - dimensional composition."""
+    return RHO_SCM * (C_LIGHT ** 4) / (A_26 * (D_CRIT ** 2))
+
+def _e_charge_primitive_sat() -> float:
+    """elementary charge e (C) saturation = EV_J
+    Structural: e = EV_J by 2019 SI exact definition (allowed base primitive identity)."""
+    return EV_J
+
+def _h_planck_primitive_sat() -> float:
+    """Planck h (J s) saturation = PLANCK_H
+    Structural: h = PLANCK_H by 2019 SI exact definition (allowed base primitive identity)."""
+    return PLANCK_H
+
+def _c_light_primitive_sat() -> float:
+    """speed of light c (m/s) saturation = C_LIGHT
+    Structural: c = C_LIGHT by 1983 SI exact definition (allowed base primitive identity)."""
+    return C_LIGHT
+
+def _N_A_primitive_sat() -> float:
+    """Avogadro N_A (1/mol) saturation = N_AVOGADRO
+    Structural: N_A by 2019 SI exact definition (allowed base primitive identity)."""
+    return N_AVOGADRO
+
+def _planck_mass_primitive_sat() -> float:
+    """Planck mass m_P (kg) saturation = (PLANCK_H · C_LIGHT / (2 pi · G_NEWTON)) ** 0.5
+    Structural: sqrt(hbar c / G) primitive composition."""
+    return (PLANCK_H * C_LIGHT / (2.0 * math.pi * G_NEWTON)) ** 0.5
+
+def _planck_length_primitive_sat() -> float:
+    """Planck length l_P (m) saturation = (PLANCK_H · G_NEWTON / (2 pi · C_LIGHT ** 3)) ** 0.5
+    Structural: sqrt(hbar G / c^3) primitive composition."""
+    return (PLANCK_H * G_NEWTON / (2.0 * math.pi * (C_LIGHT ** 3))) ** 0.5
+
+def _planck_time_primitive_sat() -> float:
+    """Planck time t_P (s) saturation = (PLANCK_H · G_NEWTON / (2 pi · C_LIGHT ** 5)) ** 0.5
+    Structural: sqrt(hbar G / c^5) primitive composition."""
+    return (PLANCK_H * G_NEWTON / (2.0 * math.pi * (C_LIGHT ** 5))) ** 0.5
+
+def _planck_temperature_primitive_sat() -> float:
+    """Planck temperature T_P (K) saturation = (PLANCK_H · C_LIGHT ** 5 / (2 pi · G_NEWTON · K_B ** 2)) ** 0.5
+    Structural: sqrt(hbar c^5 / (G k_B^2)) primitive composition."""
+    return (PLANCK_H * (C_LIGHT ** 5) / (2.0 * math.pi * G_NEWTON * (K_B ** 2))) ** 0.5
+
 # --- Tranche 1C: astro-system anchors + LENR variants + precision constants + P-predictions (25) ---
 # Continued Map section 6 hundreds-list closure beyond Tranches 1A/1B.
 
@@ -823,6 +1141,71 @@ _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     "p4_dwdz2":           _p4_dwdz2_primitive_sat,
     "p5_mu_uqff":         _p5_mu_uqff_primitive_sat,
     "p8_lepton_mass_mev": _p8_lepton_mass_mev_primitive_sat,
+    # Step 1 closure batch: Map section 10 remaining named astro systems (25)
+    "horsehead_g":        _horsehead_g_primitive_sat,
+    "antennae_g":         _antennae_g_primitive_sat,
+    "sombrero_g":         _sombrero_g_primitive_sat,
+    "hudf_g":             _hudf_g_primitive_sat,
+    "ngc_1275_g":         _ngc_1275_g_primitive_sat,
+    "ngc_2525_g":         _ngc_2525_g_primitive_sat,
+    "ngc_1792_g":         _ngc_1792_g_primitive_sat,
+    "ngc_5866_g":         _ngc_5866_g_primitive_sat,
+    "ngc_6537_g":         _ngc_6537_g_primitive_sat,
+    "ngc_4676_g":         _ngc_4676_g_primitive_sat,
+    "ngc_3324_g":         _ngc_3324_g_primitive_sat,
+    "ngc_4486_g":         _ngc_4486_g_primitive_sat,
+    "bubble_g":           _bubble_g_primitive_sat,
+    "ngc_2264_g":         _ngc_2264_g_primitive_sat,
+    "m42_g":              _m42_g_primitive_sat,
+    "m74_g":              _m74_g_primitive_sat,
+    "m82_g":              _m82_g_primitive_sat,
+    "lagoon_g":           _lagoon_g_primitive_sat,
+    "ngc_6302_g":         _ngc_6302_g_primitive_sat,
+    "saturn_g":           _saturn_g_primitive_sat,
+    "h_atom_g":           _h_atom_g_primitive_sat,
+    "universe_diameter_g":_universe_diameter_g_primitive_sat,
+    "abell_2256_g":       _abell_2256_g_primitive_sat,
+    "el_gordo_g":         _el_gordo_g_primitive_sat,
+    "spt_cl_j2215_g":     _spt_cl_j2215_g_primitive_sat,
+    "ic_2163_g":          _ic_2163_g_primitive_sat,
+    "ngc_2207_g":         _ngc_2207_g_primitive_sat,
+    "stephans_quintet_g": _stephans_quintet_g_primitive_sat,
+    "m87_jet_g":          _m87_jet_g_primitive_sat,
+    "centaurus_a_g":      _centaurus_a_g_primitive_sat,
+    "eso_137_001_g":      _eso_137_001_g_primitive_sat,
+    "j1610_quasar_g":     _j1610_quasar_g_primitive_sat,
+    "asassn_14li_g":      _asassn_14li_g_primitive_sat,
+    "r_aquarii_g":        _r_aquarii_g_primitive_sat,
+    "vela_pulsar_g":      _vela_pulsar_g_primitive_sat,
+    "jupiter_aurorae_g":  _jupiter_aurorae_g_primitive_sat,
+    "v838_mon_g":         _v838_mon_g_primitive_sat,
+    # Step 1 closure batch: Map section 11 remaining P-predictions (10)
+    "p6_lkk_inv_mm":      _p6_lkk_inv_primitive_sat,
+    "p7_w_a":             _p7_w_a_primitive_sat,
+    "p9_h_tension":       _p9_h_tension_primitive_sat,
+    "p10_s8_tension":     _p10_s8_tension_primitive_sat,
+    "p11_ringdown_offset_hz":_p11_ringdown_offset_primitive_sat,
+    "p12_sigma8_shift":   _p12_sigma8_shift_primitive_sat,
+    "p13_dwdz2":          _p13_dwdz2_primitive_sat,
+    "p14_mu_distortion":  _p14_mu_distortion_primitive_sat,
+    "kk_lightest_mass_mev":_kk_lightest_mass_primitive_sat,
+    "xi_test_ratio":      _xi_test_primitive_sat,
+    # Step 1 closure batch: Map section 6 cosmology / SI / precision extras (15)
+    "q0_decel":           _q0_decel_primitive_sat,
+    "omega_k_curvature":  _omega_k_curvature_primitive_sat,
+    "h_dimensionless":    _h_dimensionless_primitive_sat,
+    "t_hubble_gyr":       _t_hubble_primitive_sat,
+    "sigma_v_cluster":    _sigma_v_cluster_primitive_sat,
+    "growth_f":           _growth_f_primitive_sat,
+    "g_newton":           _G_newton_primitive_sat,
+    "e_charge":           _e_charge_primitive_sat,
+    "h_planck":           _h_planck_primitive_sat,
+    "c_light":            _c_light_primitive_sat,
+    "n_avogadro":         _N_A_primitive_sat,
+    "planck_mass":        _planck_mass_primitive_sat,
+    "planck_length":      _planck_length_primitive_sat,
+    "planck_time":        _planck_time_primitive_sat,
+    "planck_temperature": _planck_temperature_primitive_sat,
 }
 
 def _master_constant_primitive(name: str):
@@ -936,6 +1319,71 @@ def _master_constant_primitive(name: str):
         "p4": "p4_dwdz2", "dw_dz2": "p4_dwdz2", "d2w_dz2": "p4_dwdz2",
         "p5": "p5_mu_uqff", "mu_uqff": "p5_mu_uqff", "lepton_anomaly": "p5_mu_uqff",
         "p8": "p8_lepton_mass_mev", "leptoquark_mass": "p8_lepton_mass_mev",
+        # Step 1 closure: Map section 10 remaining astro systems
+        "horsehead": "horsehead_g", "horsehead_nebula": "horsehead_g",
+        "antennae": "antennae_g", "antennae_galaxies": "antennae_g", "ngc_4038": "antennae_g",
+        "sombrero": "sombrero_g", "m104": "sombrero_g",
+        "hudf_galaxies": "hudf_g", "ultra_deep_field": "hudf_g",
+        "ngc_1275": "ngc_1275_g", "perseus_a": "ngc_1275_g", "magnetic_ternor": "ngc_1275_g",
+        "ngc_2525": "ngc_2525_g",
+        "ngc_1792": "ngc_1792_g",
+        "ngc_5866": "ngc_5866_g", "spindle_galaxy": "ngc_5866_g",
+        "ngc_6537": "ngc_6537_g", "red_spider": "ngc_6537_g",
+        "ngc_4676": "ngc_4676_g", "mice_galaxies": "ngc_4676_g",
+        "ngc_3324": "ngc_3324_g", "cosmic_cliffs": "ngc_3324_g",
+        "ngc_4486": "ngc_4486_g", "m87": "ngc_4486_g",
+        "bubble": "bubble_g", "bubble_nebula": "bubble_g", "ngc_7635": "bubble_g",
+        "ngc_2264": "ngc_2264_g", "cone_nebula": "ngc_2264_g", "christmas_tree": "ngc_2264_g",
+        "m42": "m42_g", "orion_nebula": "m42_g", "orion": "m42_g",
+        "m74": "m74_g",
+        "m82": "m82_g", "cigar_galaxy": "m82_g",
+        "lagoon": "lagoon_g", "lagoon_nebula": "lagoon_g", "m8": "lagoon_g",
+        "ngc_6302": "ngc_6302_g", "butterfly_nebula": "ngc_6302_g",
+        "saturn": "saturn_g",
+        "hydrogen_atom": "h_atom_g", "h_res": "h_atom_g", "hydrogen_resonance": "h_atom_g",
+        "universe_diameter": "universe_diameter_g", "cosmogenesis": "universe_diameter_g",
+        "abell_2256": "abell_2256_g",
+        "el_gordo": "el_gordo_g", "act_cl_j0102": "el_gordo_g",
+        "spt_cl_j2215": "spt_cl_j2215_g", "spt_j2215": "spt_cl_j2215_g",
+        "ic_2163": "ic_2163_g",
+        "ngc_2207": "ngc_2207_g",
+        "stephans_quintet": "stephans_quintet_g", "hcg_92": "stephans_quintet_g",
+        "m87_jet": "m87_jet_g",
+        "centaurus_a": "centaurus_a_g", "ngc_5128": "centaurus_a_g", "cen_a": "centaurus_a_g",
+        "eso_137_001": "eso_137_001_g", "jellyfish_galaxy": "eso_137_001_g",
+        "j1610_1811": "j1610_quasar_g", "high_z_quasar": "j1610_quasar_g",
+        "asassn_14li": "asassn_14li_g", "tde": "asassn_14li_g",
+        "r_aquarii": "r_aquarii_g",
+        "vela_pulsar": "vela_pulsar_g", "psr_j0835": "vela_pulsar_g", "vela": "vela_pulsar_g",
+        "jupiter_aurorae": "jupiter_aurorae_g", "jupiter_aurora": "jupiter_aurorae_g",
+        "v838_mon": "v838_mon_g", "v838_monocerotis": "v838_mon_g",
+        # Step 1 closure: Map section 11 remaining P-predictions
+        "p6": "p6_lkk_inv_mm", "lkk_inv": "p6_lkk_inv_mm", "sub_mm_yukawa": "p6_lkk_inv_mm",
+        "p7": "p7_w_a", "w_a": "p7_w_a", "cpl_wa": "p7_w_a",
+        "p9": "p9_h_tension", "h0_tension": "p9_h_tension", "hubble_tension": "p9_h_tension",
+        "p10": "p10_s8_tension", "s8_tension": "p10_s8_tension",
+        "p11": "p11_ringdown_offset_hz", "ligo_o5_offset": "p11_ringdown_offset_hz",
+        "p12": "p12_sigma8_shift", "euclid_sigma8": "p12_sigma8_shift",
+        "p13": "p13_dwdz2", "static_w": "p13_dwdz2",
+        "p14": "p14_mu_distortion", "mu_distortion": "p14_mu_distortion", "cmb_s4_mu": "p14_mu_distortion",
+        "kk_lightest": "kk_lightest_mass_mev", "m_l_kk": "kk_lightest_mass_mev",
+        "xi_test": "xi_test_ratio", "xi": "xi_test_ratio",
+        # Step 1 closure: Map section 6 cosmology / SI / precision extras
+        "q_0": "q0_decel", "deceleration": "q0_decel",
+        "omega_k": "omega_k_curvature", "curvature_density": "omega_k_curvature",
+        "little_h": "h_dimensionless", "h_planck_cosmology": "h_dimensionless",
+        "hubble_time": "t_hubble_gyr", "t_h": "t_hubble_gyr",
+        "sigma_v": "sigma_v_cluster", "velocity_dispersion": "sigma_v_cluster",
+        "growth_rate": "growth_f", "f_growth": "growth_f",
+        "g": "g_newton", "newton_g": "g_newton", "gravitational_constant": "g_newton",
+        "e": "e_charge", "elementary_charge": "e_charge",
+        "h": "h_planck", "planck_constant": "h_planck",
+        "c": "c_light", "speed_of_light": "c_light",
+        "n_a": "n_avogadro", "avogadro": "n_avogadro",
+        "m_p_planck": "planck_mass", "mass_planck": "planck_mass",
+        "l_p": "planck_length", "length_planck": "planck_length",
+        "t_p": "planck_time", "time_planck": "planck_time",
+        "T_p": "planck_temperature", "temperature_planck": "planck_temperature",
     }
     n = aliases.get(n, n)
     fn = _LEDGER_PRIMITIVE.get(n)

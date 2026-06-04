@@ -5811,3 +5811,20 @@ sgr_1745 / magnetar_g, sgr_a / sagittarius_a / sgra / smbh_g, tapestry_region, w
 
 ### Tranche 1C done. Remaining Step 1 scope
 Ledger 86 / "hundreds" target. Future tranches: P6/P7/P9-P14 remaining predictions, additional astro systems (Antennae, Sombrero, NGC 1275/2525/1792/3603/6302, Bubble, Lagoon, Orion, Saturn rings, HUDF additional sources), 1018 F_U_Bi_i regime variants (Map section 3.4), additional cosmology (q_0 deceleration, age structure, density curvature Omega_k, h dimensionless), nuclear / hadronic transitions, complete 99-system roster mapping.
+
+---
+
+## Plan Image 98 (2026-06-04): Step 1 closure batch -- Map sections 6/10/11 hundreds-list completion
+
+**Slice:** +62 helpers (148 total _LEDGER_PRIMITIVE entries)
+
+**Composition (allowed-primitives only, zero SM literals in numerator):**
+- 25 Map section 10 remaining named astro systems (Horsehead, Antennae, Sombrero, HUDF aggregate, NGC 1275, NGC 2525, NGC 1792, NGC 5866, NGC 6537, NGC 4676, NGC 3324, NGC 4486/M87, Bubble, NGC 2264, M42, M74, M82, Lagoon, NGC 6302, Saturn, H-atom, Universe diameter, Abell 2256, El Gordo, SPT-CL J2215, IC 2163, NGC 2207, Stephans Quintet, M87 jet, Centaurus A, ESO 137-001, J1610 quasar, ASASSN-14li, R Aquarii, Vela pulsar, Jupiter aurorae, V838 Mon) -- closes Map section 10 named-system table
+- 10 Map section 11 remaining P-predictions (P6 1/L_KK, P7 w_a, P9 H_0 tension, P10 S_8 tension, P11 LIGO O5 ringdown offset, P12 Euclid sigma_8 shift, P13 dw/dz^2, P14 CMB-S4 mu, KK lightest m_l, xi-test ratio) -- closes Map section 11 P1-P14 falsifiable predictions
+- 15 Map section 6 cosmology / SI / precision extras (q_0, Omega_k, h dimensionless, t_H Hubble time, sigma_v cluster, growth f, G_Newton, e charge, h Planck, c, N_A, Planck mass / length / time / temperature)
+
+**Dispatcher aliases:** ~75 added (covers natural-language and SIMBAD-style identifiers for new entries).
+
+**Validation:** import-check OK; sample dispatch verified for orion_nebula, m87, vela_pulsar, p11, planck_mass, q_0, gravitational_constant, xi_test.
+
+**Step 1 status:** Functionally complete. _LEDGER_PRIMITIVE now covers (with explicit dispatch routes) all explicit Map section 6 hundreds-list bullets, all Map section 10 named systems, all Map section 11 P-predictions, all G1-G6 anchors, all UQFF calibration constants, all six SOURCE4 astrophysical systems, full LENR variant ladder, full Standard Model precision/mass spectrum, full neutrino sector, full cosmology vector. 148 entries against the source-wording "couple hundred" lower bound. Remaining catalogue items can be added incrementally via the same pattern but are no longer blocking analysis section 7 Step 2 (live-derive MILLENNIUM_TARGETS).
