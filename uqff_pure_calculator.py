@@ -28438,6 +28438,64 @@ def _dse_dispatch(dataset: Dict[str, Any]) -> Dict[str, Any]:
     return out
 
 
+# Slice 2 / Plan sec 3.5 / Map sec 20.3 — Lagrangian Sector Registry
+# 17 Lagrangian-derivation papers exposed as dataset['lagrangian_sector'] keys.
+# Closure operator is the single _stationarity_residual (Slice 6); no new public
+# functions. Each sector is a sector of the master action S = integral L d^4x;
+# closure iff delta-S/delta-phi_i = 0 at the configured base point.
+
+_LAGRANGIAN_SECTOR_REGISTRY: Dict[str, Dict[str, str]] = {
+    "PAPER_503":  {"domain": "Foundational L_UQFF",                     "b9_anchor": "L8520",  "phi_index": "phi_UQFF"},
+    "PAPER_882":  {"domain": "Inflation sector",                        "b9_anchor": "L8520",  "phi_index": "phi_inflaton"},
+    "PAPER_886":  {"domain": "Horizon problem",                         "b9_anchor": "L8520",  "phi_index": "phi_horizon"},
+    "PAPER_888":  {"domain": "CMB sector (CP4-linked)",                 "b9_anchor": "L11886", "phi_index": "phi_cmb"},
+    "PAPER_894":  {"domain": "Dark energy sector",                      "b9_anchor": "L8520",  "phi_index": "phi_DE"},
+    "PAPER_898":  {"domain": "Dark matter sector",                      "b9_anchor": "L8520",  "phi_index": "phi_DM"},
+    "PAPER_907":  {"domain": "LQG sector",                              "b9_anchor": "L8520",  "phi_index": "phi_LQG"},
+    "PAPER_946":  {"domain": "Merger sector",                           "b9_anchor": "L8520",  "phi_index": "phi_merger"},
+    "PAPER_957":  {"domain": "Quantum gravity sector",                  "b9_anchor": "L8520",  "phi_index": "phi_QG"},
+    "PAPER_1065": {"domain": "UQFF master action expansion",            "b9_anchor": "L8159",  "phi_index": "phi_UQFF"},
+    "PAPER_1066": {"domain": "Variational stationarity",                "b9_anchor": "L8159",  "phi_index": "phi_UQFF"},
+    "PAPER_1089": {"domain": "delta-S/delta-phi=0 closure",             "b9_anchor": "L8159",  "phi_index": "phi_UQFF"},
+    "PAPER_1090": {"domain": "Spinor bundle closure",                   "b9_anchor": "L8159",  "phi_index": "phi_spinor"},
+    "PAPER_1094": {"domain": "F_U=1 normalization derivation",          "b9_anchor": "L8159",  "phi_index": "phi_FU"},
+    "PAPER_1095": {"domain": "Buoyancy coefficient triangular ladder",  "b9_anchor": "L8159",  "phi_index": "phi_buoy"},
+    "PAPER_1103": {"domain": "26-layer Ramanujan amplification",        "b9_anchor": "L8159",  "phi_index": "phi_A26"},
+    "PAPER_1167": {"domain": "Closed UQFF Lagrangian (master)",         "b9_anchor": "L11853", "phi_index": "phi_UQFF"},
+}
+
+
+def _lagrangian_sector_residual(dataset: Dict[str, Any]) -> Dict[str, Any]:
+    """Look up dataset['lagrangian_sector'] = 'PAPER_NNNN' in the 17-sector
+    registry and evaluate the universal closure operator _stationarity_residual
+    against dataset.get('lagrangian_terms', {}).
+
+    Returns:
+        {
+            'paper':    'PAPER_NNNN'        (str or None if unknown),
+            'sector':   registry entry dict (or {} if unknown),
+            'residual': delta-S/delta-phi_i  (float; None if unknown sector),
+            'diff_str': diff% vs 0.0 target (str via _compute_diff_pct),
+        }
+
+    Closure iff abs(residual) == 0.0 at full float precision (per Slice 5 lock).
+    NOT REPLACEMENT — single primitive _stationarity_residual is the operator
+    for G1-G8, 8 Millennium, AND all 17 sectors (b9 L8520, L8565).
+    """
+    d = dataset or {}
+    key = d.get("lagrangian_sector")
+    if not isinstance(key, str) or key not in _LAGRANGIAN_SECTOR_REGISTRY:
+        return {"paper": key, "sector": {}, "residual": None,
+                "diff_str": "diff=undefined% (unknown sector)"}
+    entry = _LAGRANGIAN_SECTOR_REGISTRY[key]
+    lt = d.get("lagrangian_terms") or {}
+    phi_index = d.get("phi_index", entry.get("phi_index", "phi"))
+    residual = _stationarity_residual(lt, phi_index)
+    _, diff_str = _compute_diff_pct(residual, 0.0)
+    return {"paper": key, "sector": entry, "residual": residual,
+            "diff_str": diff_str}
+
+
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy (<1% residual on 99/99 systems).
     Step 5: OPData surfaces 3 parallel triadic masters + cross-method convergence vs
@@ -28502,6 +28560,14 @@ def calculate_analytic_closures(dataset: Dict[str, Any]) -> Dict[str, Any]:
       - dataset['vds_factor'] / 'dvp_potential' / 'bh26_geometry' / 'qcalcgeom_fold'
         / 'belly_button_umbilicus' / 'f_lenr_enhanced' / 'stationarity_residual'
             Direct leaf-helper access (single-value return + provenance).
+
+    Slice 2 (Plan sec 3.5 / Map sec 20.3) — additional dispatch key:
+      - dataset['lagrangian_sector'] = 'PAPER_NNNN'
+            Routes to one of 17 Lagrangian sectors of the master action
+            S = integral L d^4x. Closure operator is the single
+            _stationarity_residual primitive (Slice 6); same primitive resolves
+            G1-G8 + 8 Millennium + all 17 sectors. Optional companion key
+            dataset['lagrangian_terms'] supplies the partial-derivative terms.
     """
     d = dataset or {}
 
@@ -28588,6 +28654,28 @@ def calculate_analytic_closures(dataset: Dict[str, Any]) -> Dict[str, Any]:
                 f"Map sec 20.7; b9 L8520, L8565). Closure iff residual==0. "
                 f"REF=0.0 (stationarity target) | UQFF={val:.6g} | {diff_str}. "
                 "NOT REPLACEMENT."}
+
+    # Slice 2 (Plan sec 3.5 / Map sec 20.3) — Lagrangian sector dispatch
+    if "lagrangian_sector" in d:
+        info = _lagrangian_sector_residual(d)
+        paper = info.get("paper") or "UNKNOWN"
+        sector = info.get("sector") or {}
+        residual = info.get("residual")
+        diff_str = info.get("diff_str", "diff=undefined%")
+        domain = sector.get("domain", "unknown sector")
+        b9 = sector.get("b9_anchor", "n/a")
+        phi_index = sector.get("phi_index", d.get("phi_index", "phi"))
+        prov = (
+            f"Lagrangian sector dispatch [Plan sec 3.5 / Map sec 20.3; Slice 2] "
+            f"sector={paper} ({domain}); phi_index={phi_index}; b9 anchor={b9}. "
+            f"Closure operator: single _stationarity_residual primitive "
+            f"(b9 L8520, L8565). REF=0.0 stationarity target | "
+            f"UQFF={residual if residual is not None else 'None'} | {diff_str}. "
+            f"One of 17 sectors of master action S = integral L d^4x; same "
+            f"variational primitive resolves G1-G8 + 8 Millennium + all 17 "
+            f"Lagrangian sectors. NOT REPLACEMENT."
+        )
+        return {"value": info, "provenance": prov}
 
     return _resolve_uqff_ledger(d)
 
