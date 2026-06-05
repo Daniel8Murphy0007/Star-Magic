@@ -28496,6 +28496,176 @@ def _lagrangian_sector_residual(dataset: Dict[str, Any]) -> Dict[str, Any]:
             "diff_str": diff_str}
 
 
+# Slice 3 / Plan sec 3.8 / Map sec 20.4 — Shared universal-field component leaves
+# 14 PRIVATE leaf accessors that expose the canonical sub-terms already inlined
+# in _g_compressed (L3036-L3047), _u_mi (L3081), _g_resonance (L3052), and the
+# vacuum-ledger constants. These are EXTRACTED VIEWS, not alternate physics:
+# every helper returns the IDENTICAL closed form the canonical master functions
+# evaluate internally. The canonical masters are left UNTOUCHED (NOT REPLACEMENT
+# per Plan sec 1) — they continue to inline the algebra. The new helpers are
+# additive accessors for the 7 calculate_* functions and external CP4 mirror
+# validation; they enable per-layer comparison and per-sector dispatch without
+# duplicating physics.
+# Cite: b9 L7676 (Ug3 SCm-driven magnetic-string disk); PROV_DAVINCI cluster 13
+# (Ug1-3 + U_mi 1.2-1.3 THz inertial operator); Map sec 4 line 2 (g_compressed
+# 8-term master); Map sec 4 line 4 (g_resonance composite); Map sec 4 line 7
+# (U_mi inertia closure). All values dimensionally consistent with the masters.
+
+def _ug1(r: float, layer_i: int = 1,
+         dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Magnetic dipole layer — Ug1 = G_NEWTON * M / r^2.
+    Extracted view of _g_compressed L3039. M defaults to DEFAULT_M (override via
+    dataset['M']); layer_i reserved for higher-layer recursion (currently
+    layer-invariant — multi-layer recursion is the parent master's job).
+    """
+    d = dataset or {}
+    M = float(d.get("M", d.get("m", DEFAULT_M)))
+    return G_NEWTON * M / (r * r)
+
+
+def _ug2(r: float, layer_i: int = 1,
+         dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Charge-reactivity layer — Ug2 = Ug1 * SSQ.
+    Extracted view of _g_compressed L3040. SSQ is the module-band [SSq]=0.505
+    (distinct from _SSQ_GEOM_B9=0.57 used in VDS factor per PAPER_1154).
+    """
+    return _ug1(r, layer_i, dataset) * SSQ
+
+
+def _ug3(r: float, t: float = 0.0, layer_i: int = 1,
+         dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Magnetic-string disk layer — Ug3 = Ug1 * BETA_I * cos(pi * t_n).
+    Extracted view of _g_compressed L3041. Per b9 L7676, Ug3 is the SCm-driven
+    magnetic-string disk layer used by BH26 geometry (Slice 4). t_n defaults to
+    dataset['t_n'] (else uses t).
+    """
+    d = dataset or {}
+    t_n = float(d.get("t_n", t))
+    return _ug1(r, layer_i, dataset) * BETA_I * _cos_pi_tn(t_n)
+
+
+def _ug4(r: float, layer_i: int = 1,
+         dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Vacuum concentration layer — Ug4 = RHO_SCM * M / r.
+    Extracted view of _g_compressed L3042. The buoyancy floor invoked by
+    Navier-Stokes 3D peak entropy closure (L246-L252).
+    """
+    d = dataset or {}
+    M = float(d.get("M", d.get("m", DEFAULT_M)))
+    return RHO_SCM * M / r
+
+
+def _u_i(r: float, layer_i: int = 1,
+         dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Inertia layer — U_i = RHO_SCM * M / r^2 * n.
+    Extracted view of _u_mi base term L3087 (n defaults to layer_i). The
+    inertial reaction coefficient that scales with PTOE level n. Reduces to
+    a Ug1-shaped SCm-coupled term.
+    """
+    d = dataset or {}
+    M = float(d.get("M", d.get("m", DEFAULT_M)))
+    n = int(d.get("n", layer_i))
+    return RHO_SCM * M / (r * r) * n
+
+
+def _u_m(t: float, r: float = DEFAULT_R, n: int = 1,
+        dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Inertial envelope U_m = U_i * (1 - exp(-gamma * t * cos(pi t_n))).
+    Delegates to the CANONICAL _u_mi (L3081) — pure thin wrapper that pulls
+    M, gamma, t_n from dataset. NOT REPLACEMENT: _u_mi is the source of truth.
+    """
+    d = dataset or {}
+    M = float(d.get("M", d.get("m", DEFAULT_M)))
+    gamma = float(d.get("gamma", GAMMA))
+    t_n = float(d.get("t_n", 0.0))
+    return _u_mi(t=t, r=r, n=n, gamma=gamma, t_n=t_n, M=M)
+
+
+def _u_b(r: float, dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Buoyancy reaction — U_b = (RHO_SCM * M / r) * (1 + K_Ub * cos(pi t_n)).
+    Extracted view of the F_UBi buoyancy form repeated at L2566 / L2574. The
+    Layer-19 buoyancy crossing reference signal.
+    """
+    d = dataset or {}
+    M = float(d.get("M", d.get("m", DEFAULT_M)))
+    t_n = float(d.get("t_n", 0.0))
+    return (RHO_SCM * M / r) * (1.0 + K_Ub * _cos_pi_tn(t_n))
+
+
+def _f_env_layer27(r: float, dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Envelope mass-radius (Layer 27) — F_env = RHO_SCM * (4/3) pi r^3.
+    Extracted view of the buoyancy_fluid term in _g_compressed L3046. NAMED
+    _f_env_layer27 to avoid collision with the canonical Cycle 2 modular
+    environment dispatcher _f_env(name, **kwargs) at L3164 (NOT REPLACEMENT —
+    both leaves coexist; this one is the spherical-envelope mass at radius r).
+    """
+    _ = dataset  # reserved for future dataset-driven density override
+    return RHO_SCM * (4.0 / 3.0) * math.pi * r * r * r
+
+
+def _h_res(n: int = 1, dataset: Optional[Dict[str, Any]] = None) -> float:
+    """26-level Hydrogen Resonance PTOE — H_res(n) = (1/n^2) * h * OMEGA_SCM.
+    Closed form of the n-th PTOE quantum-integral contribution at the SCm
+    reference frequency. Bounded to n in [1, D_CRIT=26] (PROV_DAVINCI cluster
+    13 PTOE Hydrogen Resonance + N_QUANTUM_LEVELS=26 ladder).
+    """
+    _ = dataset
+    nn = max(1, min(int(n), int(D_CRIT)))
+    return (1.0 / (nn * nn)) * PLANCK_H * OMEGA_SCM
+
+
+def _a_res(dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Aether resonance amplitude (dimensionless prefactor).
+    Extracted from _g_resonance L3055: a_aether = (RHO_UA/RHO_SCM) * a_dpm *
+    PHI_RESONANCE. This leaf returns the dimensionless coefficient
+    (RHO_UA/RHO_SCM) * PHI_RESONANCE = 10 * PHI_RESONANCE (since RHO_UA = 10
+    RHO_SCM per Map sec 2 G-lock).
+    """
+    _ = dataset
+    return (RHO_UA / RHO_SCM) * PHI_RESONANCE
+
+
+def _f_res(n: int = 1, dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Resonance frequency ladder — f_res(n) = n * OMEGA_SCM / (2 pi).
+    n-th harmonic of the SCm base angular frequency 1.25 THz (Davinci U_mi
+    1.2-1.3 THz inertial operator band, PROV_DAVINCI cluster 13).
+    """
+    _ = dataset
+    return float(n) * OMEGA_SCM / (2.0 * math.pi)
+
+
+def _u_dp(dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Dipole vortex potential — U_dp = BETA_I * RHO_SCM.
+    Extracted closed-form coefficient of the dipole vortex prime series
+    (PAPER_647 family; b9 L8159 'Dipole Vortex Primes' UQFF number system).
+    """
+    _ = dataset
+    return BETA_I * RHO_SCM
+
+
+def _k_nuc(dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Nucleon-scale kernel — k_nuc = RHO_SCM * A_26.
+    Identical algebra to _belly_button_umbilicus baseline (b9 L7688 mass-at-
+    umbilicus); kept as a separate name because k_nuc is the COUPLING kernel
+    consumed by composition leaves, while _belly_button_umbilicus is the
+    singular MASS PROJECTION used as a stand-alone scalar in the VR outfall
+    composition. Same value, distinct semantic role.
+    """
+    _ = dataset
+    return RHO_SCM * A_26
+
+
+def _s_shell(r: float, dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Shell support — S(r - R_b) Heaviside indicator (1 above R_b, else 0).
+    R_b defaults to DEFAULT_R, overridable via dataset['R_b']. Used by buoyancy
+    crossing F_Bi = F_Bi_i shell-radius equilibrium (user_memory session 1
+    Pillar 1: shells = buoyancy equilibrium positions).
+    """
+    d = dataset or {}
+    R_b = float(d.get("R_b", DEFAULT_R))
+    return 1.0 if r >= R_b else 0.0
+
+
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy (<1% residual on 99/99 systems).
     Step 5: OPData surfaces 3 parallel triadic masters + cross-method convergence vs
@@ -28568,6 +28738,14 @@ def calculate_analytic_closures(dataset: Dict[str, Any]) -> Dict[str, Any]:
             _stationarity_residual primitive (Slice 6); same primitive resolves
             G1-G8 + 8 Millennium + all 17 sectors. Optional companion key
             dataset['lagrangian_terms'] supplies the partial-derivative terms.
+
+    Slice 3 (Plan sec 3.8 / Map sec 20.4) — universal-field leaf dispatch keys:
+      - dataset['ug1'] / 'ug2' / 'ug3' / 'ug4' = True (or cfg dict with r/t/M)
+      - dataset['u_i'] / 'u_m' / 'u_b' = True (or cfg dict)
+      - dataset['f_env_layer27'] = True (or cfg dict with r)
+      - dataset['h_res'] / 'a_res' / 'f_res' / 'u_dp' / 'k_nuc' / 's_shell'
+            14 extracted-view leaves of the canonical 8-term g_compressed +
+            g_resonance + U_mi algebra (NOT REPLACEMENT — masters untouched).
     """
     d = dataset or {}
 
@@ -28676,6 +28854,47 @@ def calculate_analytic_closures(dataset: Dict[str, Any]) -> Dict[str, Any]:
             f"Lagrangian sectors. NOT REPLACEMENT."
         )
         return {"value": info, "provenance": prov}
+
+    # Slice 3 (Plan sec 3.8 / Map sec 20.4) — universal-field leaf dispatch
+    # 14 extracted-view leaves; canonical masters (_g_compressed, _g_resonance,
+    # _u_mi) untouched. Each key returns the IDENTICAL closed form the master
+    # functions inline internally. NOT REPLACEMENT.
+    def _leaf_prov(name: str, val: float, extra: str = "") -> str:
+        return (
+            f"universal-field leaf {name} [Plan sec 3.8 / Map sec 20.4; "
+            f"Slice 3] extracted view of canonical master algebra "
+            f"(_g_compressed L3036-L3047 / _g_resonance L3052 / _u_mi L3081). "
+            f"UQFF={val:.6g}. {extra}NOT REPLACEMENT."
+        )
+    for key, fn in (
+        ("ug1",            lambda c: _ug1(float(c.get("r", d.get("r", DEFAULT_R))),
+                                          int(c.get("layer_i", 1)), d)),
+        ("ug2",            lambda c: _ug2(float(c.get("r", d.get("r", DEFAULT_R))),
+                                          int(c.get("layer_i", 1)), d)),
+        ("ug3",            lambda c: _ug3(float(c.get("r", d.get("r", DEFAULT_R))),
+                                          float(c.get("t", d.get("t", 0.0))),
+                                          int(c.get("layer_i", 1)), d)),
+        ("ug4",            lambda c: _ug4(float(c.get("r", d.get("r", DEFAULT_R))),
+                                          int(c.get("layer_i", 1)), d)),
+        ("u_i",            lambda c: _u_i(float(c.get("r", d.get("r", DEFAULT_R))),
+                                          int(c.get("layer_i", 1)), d)),
+        ("u_m",            lambda c: _u_m(float(c.get("t", d.get("t", 1.0))),
+                                          float(c.get("r", d.get("r", DEFAULT_R))),
+                                          int(c.get("n", 1)), d)),
+        ("u_b",            lambda c: _u_b(float(c.get("r", d.get("r", DEFAULT_R))), d)),
+        ("f_env_layer27",  lambda c: _f_env_layer27(float(c.get("r", d.get("r", DEFAULT_R))), d)),
+        ("h_res",          lambda c: _h_res(int(c.get("n", 1)), d)),
+        ("a_res",          lambda c: _a_res(d)),
+        ("f_res",          lambda c: _f_res(int(c.get("n", 1)), d)),
+        ("u_dp",           lambda c: _u_dp(d)),
+        ("k_nuc",          lambda c: _k_nuc(d)),
+        ("s_shell",        lambda c: _s_shell(float(c.get("r", d.get("r", DEFAULT_R))), d)),
+    ):
+        if key in d:
+            cfg = d.get(key)
+            cfg = cfg if isinstance(cfg, dict) else {}
+            val = fn(cfg)
+            return {"value": val, "provenance": _leaf_prov(key, val)}
 
     return _resolve_uqff_ledger(d)
 
