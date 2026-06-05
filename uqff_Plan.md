@@ -7218,3 +7218,103 @@ Working tree (committed across `eb2f6511` + `79b12280` + `5bb0ebb6` + `3a42e741`
 8. 5 housekeeping `.tex` files in `whitepapers/` (PAPER_420/421/642/840/877) from Session 264 batch 5.
 9. `uqff_Plan.md` -- this Plan Image 119 appended.
 10. `uqff_Map.md` -- Session 268 row added to section 20 commit ledger.
+
+
+---
+
+## Plan Image 120 -- Session 269 (05Jun2026): Catalog Registry Second-Pass Sync (CP4 #259-#264 Verification)
+
+**Trigger:** User directive "carry-forward Session 269+" -- execute the safe (verification-only) carry-forward items from Plan Image 119 before any new paper authoring.
+
+**Scope:** Pure governance/verification, mirroring Session 267 pattern. NO paper bodies authored. NO PDF rebuilds. NO toolchain changes. Verification-only second-pass extending Session 267's CP4 #254-#258 sync to cover the P-suite calculators CP4 #259-#264 (PAPER_1175-1180).
+
+### Items completed
+
+1. **CP4 #259-#264 inventory verified in `CondensedPhysics4.py`** -- all 6 P-suite calculators present with correct class definitions:
+
+   | CP4 # | Class | Paper | Class line | Header comment line | Session |
+   |-------|-------|-------|-----------:|---------------------:|--------:|
+   | #259 | `UQFFRingdownSpectralOffsetCalculator` | PAPER_1175 (P11: LIGO O5 ringdown R_21/22 = 0.144) | 16013 | 16011 | 258 |
+   | #260 | `UQFFSigma8WeakLensingCalculator` | PAPER_1176 (P12: Euclid sigma_8 = 0.797) | 16072 | 16070 | 258 |
+   | #261 | `UQFF2027JointFalsifierCalculator` | PAPER_1177 (2027 joint P6+P11+P12 falsification geometry) | 16124 | 16122 | 259 |
+   | #262 | `UQFFDarkEnergySecondDerivativeCalculator` | PAPER_1178 (P13: DESI Y5 d2w/dz2 = 0 strict-static) | 16188 | 16186 | 259 |
+   | #263 | `UQFF2027QuadrupleFalsifierCalculator` | PAPER_1179 (4-exp joint chi^2(xi) self-lock: P6+P10+P11+P12) | 16230 | 16228 | 260 |
+   | #264 | `UQFFCMBmuDistortionCalculator` | PAPER_1180 (P14: CMB-S4 mu-distortion) | 16294 | 16292 | 260 |
+
+2. **`__all__` exports verified** -- CondensedPhysics4.py lines 20389-20394 contain all 6 P-suite classes with correct paper references and session origin tags. No drift between header comments, class names, and `__all__` strings.
+
+3. **whitepapers/ canonical copies verified** -- all 6 P-suite papers present in `whitepapers/`:
+   - `PAPER_1175_UQFF_P11_LIGO_O5_Ringdown_Spectral_Offset.md` (3,271 B)
+   - `PAPER_1176_UQFF_P12_Euclid_Sigma8_R26_Saturation.md` (3,254 B)
+   - `PAPER_1177_UQFF_2027_Joint_Falsifier_Triple.md` (3,644 B)
+   - `PAPER_1178_UQFF_P13_DESI_Y5_w_Second_Derivative.md` (2,282 B)
+   - `PAPER_1179_UQFF_2027_2028_Quadruple_Falsifier.md` (5,104 B)
+   - `PAPER_1180_UQFF_P14_CMB_S4_mu_Distortion.md` (2,587 B)
+   - Additional copies present under `arxiv_submission_1173_1176/` and `arxiv_submission_1177_1180/` (md/tex/pdf trees, intentional for arXiv submission packaging).
+
+4. **`uqff_pure_calculator.py` re-export gap confirmed for #259-#264** -- grep `UQFFRingdownSpectralOffsetCalculator|UQFFSigma8WeakLensingCalculator|UQFF2027JointFalsifierCalculator|UQFFDarkEnergySecondDerivativeCalculator|UQFF2027QuadrupleFalsifierCalculator|UQFFCMBmuDistortionCalculator|PAPER_117[5-9]|PAPER_1180` -> **0 hits**. Same pattern as Session 267 finding for #257/#258. All P-suite classes usable today via direct `from CondensedPhysics4 import ...` but not re-exported through the honesty-bounded wrapper module. **Decision:** still DEFERRED pending user policy on honesty-bounded wrapper coverage for P-suite calculators specifically.
+
+5. **PDF backup rotation audit (no action)** -- three `pdf_backup_pandoc_*` directories present:
+   - `2026-05-11` -- age 24.7d -- eligible in 6 days (rotation date 2026-06-11)
+   - `2026-05-12` -- age 24.4d -- eligible in 6 days (rotation date 2026-06-11)
+   - `2026-06-05` -- age 0.1d -- eligible in 30 days (rotation date 2026-07-05)
+   No backups currently eligible. Earliest rotation window opens 2026-06-11 (concurrent for the two May backups).
+
+### Cumulative CP4 catalog coverage status (post-Session 269)
+
+| CP4 # range | Coverage source | Verified Session | Re-export in uqff_pure_calculator.py |
+|-------------|-----------------|-----------------:|----------------------------------------|
+| #254-#256 | Closure synthesis triplet (PAPER_1167, ledger, evaporation) | 267 | YES (lines verified) |
+| #257-#258 | xi=13/3 KK regulator pair (PAPER_1171, PAPER_1173) | 267 | NO (deferred) |
+| #259-#260 | P11 + P12 falsifiers (PAPER_1175, PAPER_1176) | **269** | NO (deferred) |
+| #261 | 2027 triple-joint geometry (PAPER_1177) | **269** | NO (deferred) |
+| #262 | P13 DESI strict-static (PAPER_1178) | **269** | NO (deferred) |
+| #263 | 2027/2028 quadruple-joint geometry (PAPER_1179) | **269** | NO (deferred) |
+| #264 | P14 CMB-S4 mu (PAPER_1180) | **269** | NO (deferred) |
+
+Full CP4 #254-#264 inventory now verified end-to-end (11 entries). The single open gap is the honesty-bounded wrapper coverage for #257-#264 (8 classes) -- pending user policy decision.
+
+### DONE counts (unchanged)
+
+| Bucket | Pre-session (Sess 268 end) | Post-session (Sess 269 end) |
+|--------|-----------------------------|------------------------------|
+| All buckets | 50 | 50 (unchanged -- no paper authoring this session) |
+
+50 / 1,199 = 4.17%.
+
+### Items NOT done (deferred)
+
+1. **Bucket-A Batch 7 paper authoring** -- 5 more cosmology/CMB/inflation papers per gap-13 anchor coverage rule. **STILL AWAITS EXPLICIT USER AUTHORIZATION.** Not started this session.
+
+2. **uqff_pure_calculator.py re-export of CP4 #257-#264** (8 classes) -- requires user policy decision on whether new CP4 P-suite classes get auto-wrapped or only on-demand. Held for Session 270+.
+
+3. **PDF backup rotations** -- earliest eligible 2026-06-11 (6 days from now), simultaneous for `2026-05-11` and `2026-05-12` backups (30-day window).
+
+### Carry-forward for Session 270+
+
+1. Bucket-A Batch 7 paper authoring (highest-priority unblocked work; still awaits user OK).
+2. Decision on whether to re-export CP4 #257-#264 in `uqff_pure_calculator.py` (8 classes total).
+3. PDF backup rotations eligible 2026-06-11 (both May backups simultaneously).
+4. Potential third-pass catalog sync if CP4 #265+ added in any new module-extension session.
+
+### Verification commands run
+
+```powershell
+grep_search '^# #(259|260|261|262|263|264|265)\s' in CondensedPhysics4.py  # -> 6 hits (#259-#264, no #265)
+grep_search '^class (UQFFRingdownSpectralOffsetCalculator|UQFFSigma8WeakLensingCalculator|UQFF2027JointFalsifierCalculator|UQFFDarkEnergySecondDerivativeCalculator|UQFF2027QuadrupleFalsifierCalculator|UQFFCMBmuDistortionCalculator)' in CondensedPhysics4.py  # -> 6 hits
+read_file CondensedPhysics4.py L20385-20400  # __all__ exports lines 20389-20394 confirmed
+grep_search 'UQFFRingdown*|UQFFSigma8*|UQFF2027Joint*|UQFFDarkEnergySecond*|UQFF2027Quadruple*|UQFFCMBmu*|PAPER_1175-1180' in uqff_pure_calculator.py  # -> 0 hits (gap confirmed)
+Get-ChildItem 'whitepapers\PAPER_117[5-9]*,whitepapers\PAPER_1180*'  # -> 6 files
+Get-ChildItem -Directory -Filter 'pdf_backup_pandoc_*'  # -> 3 dirs, ages 24.7/24.4/0.1d
+```
+
+### Repo memory anchors (unchanged)
+
+- `/memories/repo/v5_78_templates.md` -- canonical constants table + Path-A/Path-B authoring workflow (Path-B added Session 268 with `_inject_v578_banner.py`).
+- `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline.
+
+### Files touched this session
+
+1. `uqff_Plan.md` -- this Plan Image 120 appended.
+2. `uqff_Map.md` -- Session 269 row added to section 20 commit ledger.
+3. `Job B_Update papers with current canonical UQFF v5_78.txt` -- B4 status (Session 269 update) block appended documenting CP4 #259-#264 second-pass sync results.

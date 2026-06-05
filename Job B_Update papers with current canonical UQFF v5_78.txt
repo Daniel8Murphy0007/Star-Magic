@@ -1,28 +1,28 @@
-Job B: Update papers with current canonical UQFF v5.78.
+﻿Job B: Update papers with current canonical UQFF v5.78.
 
-CORRECTED v5.78 SCOPE TAG (LOCKED — use verbatim in every commit message, PDF banner, and template fill):
-    v5.78 = SI closure (α/h/c/G/Λ) + G1–G8 Lagrangian closure + 27-decade vacuum ledger + ξ=13/3 (R26+KK lock) + P1–P14 falsifiability + CP4 #254–#264
+CORRECTED v5.78 SCOPE TAG (LOCKED â€” use verbatim in every commit message, PDF banner, and template fill):
+    v5.78 = SI closure (Î±/h/c/G/Î›) + G1â€“G8 Lagrangian closure + 27-decade vacuum ledger + Î¾=13/3 (R26+KK lock) + P1â€“P14 falsifiability + CP4 #254â€“#264
 
-(The earlier brief header carried only `(v5.78, ξ=13/3, P6–P14 closure, CP4 #258–#264)` — that names only the final ~5 sessions. The corrected tag above covers Sessions 237–261, commits c00a6209 → f6ba35a6.)
+(The earlier brief header carried only `(v5.78, Î¾=13/3, P6â€“P14 closure, CP4 #258â€“#264)` â€” that names only the final ~5 sessions. The corrected tag above covers Sessions 237â€“261, commits c00a6209 â†’ f6ba35a6.)
 
 ================================================================================
-REVISED BUCKET-H RULE (HONEST DISCLOSURE — original Phase-B1 assumption was wrong)
+REVISED BUCKET-H RULE (HONEST DISCLOSURE â€” original Phase-B1 assumption was wrong)
 ================================================================================
-Original Phase-B1: "bucket H (specific astrophysical systems) = NO UPDATE; estimated 50–150 papers need closure block."
+Original Phase-B1: "bucket H (specific astrophysical systems) = NO UPDATE; estimated 50â€“150 papers need closure block."
 DISCOVERED during Session 262 batch 1 authoring: under v5.78 the constants
-    β_i / F_TRZ / ρ_SCm / ρ_UA / [SSq] / κ
-are no longer free parameters — they are derived from G1–G8 + the 27-decade ledger.
+    Î²_i / F_TRZ / Ï_SCm / Ï_UA / [SSq] / Îº
+are no longer free parameters â€” they are derived from G1â€“G8 + the 27-decade ledger.
 Any paper whose body cites them in calculations REQUIRES the v5.78 closure block.
 Bucket-H "specific-system application" papers (GW, magnetar, AGN, BNS, kilonova,
 post-merger, etc.) PRECISELY consume those constants.
 
-REVISED need-update population: ~600–800 papers (~10× the original estimate).
+REVISED need-update population: ~600â€“800 papers (~10Ã— the original estimate).
 
 ================================================================================
-TOOLCHAIN (LOCKED — NO PANDOC, NO xelatex, NO reportlab)
+TOOLCHAIN (LOCKED â€” NO PANDOC, NO xelatex, NO reportlab)
 ================================================================================
-  Converter:  _md_to_arxiv_tex.py        (markdown → arXiv-canonical LaTeX)
-  Driver:     _build_batch.py            (convert + pdflatex × 2 + backup + replace)
+  Converter:  _md_to_arxiv_tex.py        (markdown â†’ arXiv-canonical LaTeX)
+  Driver:     _build_batch.py            (convert + pdflatex Ã— 2 + backup + replace)
   Engine:     MiKTeX pdflatex direct two-pass
                 C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe
   Preamble:   \documentclass[11pt,letterpaper]{article}
@@ -43,19 +43,19 @@ TOOLCHAIN (LOCKED — NO PANDOC, NO xelatex, NO reportlab)
   ZZCODE restore:             sanitizes unicode before \texttt{}
   wrap_math_leaks:            global regex pre-pass wraps \log_{...} chains
                               even inside text-mode wrappers
-  Zero-width strip:           U+FEFF, U+FE0F, U+FE0E, U+200B–D
+  Zero-width strip:           U+FEFF, U+FE0F, U+FE0E, U+200Bâ€“D
 
   --- CONVERTER LIMITATION (Session 264 lesson, locked here) ---
   ONLY inline $...$ math is preserved. Display-math syntaxes ARE TEXT-ESCAPED
   and break pdflatex:
-    $$ ... $$                          (TeX display math)        — BROKEN
-    \[ ... \]                          (LaTeX display math)      — BROKEN
-    \begin{equation*} ... \end{...}    (amsmath display env)     — BROKEN
-    \begin{aligned} ... \end{aligned}  (inferred — avoid)        — BROKEN
+    $$ ... $$                          (TeX display math)        â€” BROKEN
+    \[ ... \]                          (LaTeX display math)      â€” BROKEN
+    \begin{equation*} ... \end{...}    (amsmath display env)     â€” BROKEN
+    \begin{aligned} ... \end{aligned}  (inferred â€” avoid)        â€” BROKEN
   RULE: rewrite all display math as inline $...$ within a paragraph.
   RULE: avoid nested \text{...} inside \frac inside $...$ (also breaks).
   RULE: replace unicode math symbols inside math mode with LaTeX commands
-        (▼ → \downarrow, α → \alpha, ★ → \star, etc.).
+        (â–¼ â†’ \downarrow, Î± â†’ \alpha, â˜… â†’ \star, etc.).
   Authoritative reference: /memories/repo/converter_inline_math_only.md
 
   --- MARKDOWN-IS-SOURCE-OF-TRUTH RULE (Session 265, locked) ---
@@ -72,7 +72,7 @@ TOOLCHAIN (LOCKED — NO PANDOC, NO xelatex, NO reportlab)
   --- BACKUP RETENTION (Session 265, locked) ---
   pdf_backup_pandoc_<date>/ directories are committed to the repo for
   audit-trail purposes. Rotate (manually delete and commit) at +30 days
-  OR after a successful Phase-B4 coherence audit pass — whichever comes
+  OR after a successful Phase-B4 coherence audit pass â€” whichever comes
   first. As of Session 265 the active directories are:
     pdf_backup_pandoc_2026-05-12/   (Batches 1-3 + repair)
     pdf_backup_pandoc_2026-06-05/   (Batch 5 upstream)
@@ -81,25 +81,25 @@ TOOLCHAIN (LOCKED — NO PANDOC, NO xelatex, NO reportlab)
   In LaTeX (.md / .tex / .pdf):     \Lambda      (the symbol)
   In ASCII contexts (commit msg,
   CSV, .txt logs, shell):           Lambda       (no Greek codepoint)
-  AVOID literal Greek "Λ" in ASCII contexts to prevent mojibake under
+  AVOID literal Greek "Î›" in ASCII contexts to prevent mojibake under
   cp1252/cp437 round-trips.
 
 ================================================================================
 GOVERNANCE POINTER
 ================================================================================
 This campaign is now documented in:
-  • uqff_Plan.md  — Plan Image 111 (corrected scope tag + revised bucket-H rule +
+  â€¢ uqff_Plan.md  â€” Plan Image 111 (corrected scope tag + revised bucket-H rule +
                    canonical template inventory + commit ledger + 5/5 anchors)
-  • uqff_Map.md   — §20 (whitepaper paper-update campaign atlas, distinct from §19
+  â€¢ uqff_Map.md   â€” Â§20 (whitepaper paper-update campaign atlas, distinct from Â§19
                    calculator-layer atlas)
-  • Commit 815f811f (atomic 2-file Plan+Map slice, pushed to origin/master)
+  â€¢ Commit 815f811f (atomic 2-file Plan+Map slice, pushed to origin/master)
 
 Substantive content authorship. This is rewriting science. For each paper:
 
 Read the paper's topic and scope.
-Decide what "update" means for that specific paper — possible actions:
-No update needed. The paper is about a topic untouched by v5.78 (e.g., PAPER_002 GW190425 mass gap — the Yang-Mills BCS phonon section was already added in Session 225; ξ=13/3 doesn't apply to gravitational waves).
-Add a closing section. E.g., "Connection to v5.78 closed Lagrangian" if the paper's physics feeds the ξ=13/3 chain.
+Decide what "update" means for that specific paper â€” possible actions:
+No update needed. The paper is about a topic untouched by v5.78 (e.g., PAPER_002 GW190425 mass gap â€” the Yang-Mills BCS phonon section was already added in Session 225; Î¾=13/3 doesn't apply to gravitational waves).
+Add a closing section. E.g., "Connection to v5.78 closed Lagrangian" if the paper's physics feeds the Î¾=13/3 chain.
 Replace a derivation. If the paper used a now-superseded approach.
 Recompute numbers. If the paper uses constants that have been recalibrated.
 Add a deprecation note pointing to a newer paper.
@@ -112,114 +112,114 @@ Decide if this specific paper is affected
 Author new physics text that fits the paper's existing voice
 Make sure the new content is correct, not just inserted
 
-Phase 2 (Job B): Do a targeted content scan — find the papers whose topics genuinely overlap v5.78 changes (probably ~50-150 papers, not all 1199). Update those, one at a time, with real authorship. Most papers (e.g., GW190425 mass gap, SGR1745 magnetar timing, NGC3603 cluster burst) describe specific systems and don't need v5.78 ξ=13/3 closure inserted — that would be wrong, not an update.
+Phase 2 (Job B): Do a targeted content scan â€” find the papers whose topics genuinely overlap v5.78 changes (probably ~50-150 papers, not all 1199). Update those, one at a time, with real authorship. Most papers (e.g., GW190425 mass gap, SGR1745 magnetar timing, NGC3603 cluster burst) describe specific systems and don't need v5.78 Î¾=13/3 closure inserted â€” that would be wrong, not an update.
 
 The papers that do need updating are mostly the cosmology / dark energy / Lambda / vacuum-energy / unification / Millennium-Prize papers, plus the index/catalog papers.
 
 First produce a categorized list of which of the 1199 papers actually need v5.78 content updates vs. which are scoped to topics where v5.78 is irrelevant.
 
-(NOTE — superseded by REVISED BUCKET-H RULE banner at top of file. The original
+(NOTE â€” superseded by REVISED BUCKET-H RULE banner at top of file. The original
 Phase-B1 categorization was too narrow; bucket H is now in-scope per the revised
-rule. Pending population per CSV measurement at Session 262: ~600–800 papers, not
-50–150.)
+rule. Pending population per CSV measurement at Session 262: ~600â€“800 papers, not
+50â€“150.)
 
-Detailed plan for Job B, derived from analysis of commits c00a6209 → f6ba35a6 (31 commits, Sessions 237–261).
+Detailed plan for Job B, derived from analysis of commits c00a6209 â†’ f6ba35a6 (31 commits, Sessions 237â€“261).
 
 What v5.78 actually contains (canonical state)
 Layer	Commits	Papers added	What changed
-SI constants closure	2707e53c → 414bba6f (Sess 237–241)	PAPER_590, 591, 592 (regenerated)	α = 1/(26·2π), h, c parameter-free via three-anchor (Path A: STRUCTURAL, not VERIFIED)
-G closure	da6a622d (Sess 240)	—	G locked at 0.08% via 26! factorial barrier
-Λ closure	bcf0c60f (Sess 242)	PAPER_1156	Λ = 0.002% off Planck 2018
-Lagrangian gaps G1–G8	31f04623 → 3ee263e5 (Sess 246–253)	PAPER_1159–1166	All 8 gaps closed: V(UA) Mexican-hat, β_i = 3(5−i)/20, DPM SO(2) gauge, T²² moduli, KK 1/λ²⁶, Φ_res = 5/6, F_TRZ = 1/10, 26! = (1)₂₆
+SI constants closure	2707e53c â†’ 414bba6f (Sess 237â€“241)	PAPER_590, 591, 592 (regenerated)	Î± = 1/(26Â·2Ï€), h, c parameter-free via three-anchor (Path A: STRUCTURAL, not VERIFIED)
+G closure	da6a622d (Sess 240)	â€”	G locked at 0.08% via 26! factorial barrier
+Î› closure	bcf0c60f (Sess 242)	PAPER_1156	Î› = 0.002% off Planck 2018
+Lagrangian gaps G1â€“G8	31f04623 â†’ 3ee263e5 (Sess 246â€“253)	PAPER_1159â€“1166	All 8 gaps closed: V(UA) Mexican-hat, Î²_i = 3(5âˆ’i)/20, DPM SO(2) gauge, TÂ²Â² moduli, KK 1/Î»Â²â¶, Î¦_res = 5/6, F_TRZ = 1/10, 26! = (1)â‚‚â‚†
 Master synthesis	3278d09e (Sess 253)	PAPER_1167 + CP4 #254	Full closure consolidator
-Falsifiability P1–P5	961ef205, 84f24a01 (Sess 254)	PAPER_1168, 1169 + CP4 #255	5/5 numerical confrontations
-Vacuum-energy ledger	b055b60f (Sess 255)	PAPER_1170 + CP4 #256	27-decade R26 + KK + BSFG ledger saturating ρ_Λ to <0.5%
-R26 + KK derivation	378e9477 (Sess 256)	PAPER_1171, 1172 + CP4 #257	ξ = 13/3 locked via two independent routes (KK regulator + R26 Gauss-Bonnet)
-KK ℏ + P6	5ffc7f9f (Sess 257)	PAPER_1173, 1174 + CP4 #258	KK ℏ-tracked, P6 sub-mm Yukawa (L_KK*=20–90 μm), P6–P10 falsifiability suite
-P11 + P12	e2ec6637 (Sess 258)	PAPER_1175, 1176 + CP4 #259, #260	LIGO O5 ringdown R₂₁/R₂₂=0.144; Euclid σ_8=0.797
-P13	a2c95106 (Sess 259)	PAPER_1177, 1178 + CP4 #261, #262	2027 joint triple χ²(ξ); DESI Y5 strict-static d²w/dz²=0
-P14 + quadruple	8dee9cec (Sess 260)	PAPER_1179, 1180 + CP4 #263, #264	2027–2028 P6+P10+P11+P12 self-lock; CMB-S4 μ ≤ 1e-8
-Coherence audit	f6ba35a6 (Sess 261)	—	Pass 1 read-only, trivial fixes
-So v5.78 = the cumulative state. The original Job B note ("CP4 #258–#264 / ξ=13/3 / P6–P14 closure") is the final ~5 sessions only. The earlier closures (G, h, c, α, Λ, G1–G8, ledger) are also part of v5.78 and equally relevant.
+Falsifiability P1â€“P5	961ef205, 84f24a01 (Sess 254)	PAPER_1168, 1169 + CP4 #255	5/5 numerical confrontations
+Vacuum-energy ledger	b055b60f (Sess 255)	PAPER_1170 + CP4 #256	27-decade R26 + KK + BSFG ledger saturating Ï_Î› to <0.5%
+R26 + KK derivation	378e9477 (Sess 256)	PAPER_1171, 1172 + CP4 #257	Î¾ = 13/3 locked via two independent routes (KK regulator + R26 Gauss-Bonnet)
+KK â„ + P6	5ffc7f9f (Sess 257)	PAPER_1173, 1174 + CP4 #258	KK â„-tracked, P6 sub-mm Yukawa (L_KK*=20â€“90 Î¼m), P6â€“P10 falsifiability suite
+P11 + P12	e2ec6637 (Sess 258)	PAPER_1175, 1176 + CP4 #259, #260	LIGO O5 ringdown Râ‚‚â‚/Râ‚‚â‚‚=0.144; Euclid Ïƒ_8=0.797
+P13	a2c95106 (Sess 259)	PAPER_1177, 1178 + CP4 #261, #262	2027 joint triple Ï‡Â²(Î¾); DESI Y5 strict-static dÂ²w/dzÂ²=0
+P14 + quadruple	8dee9cec (Sess 260)	PAPER_1179, 1180 + CP4 #263, #264	2027â€“2028 P6+P10+P11+P12 self-lock; CMB-S4 Î¼ â‰¤ 1e-8
+Coherence audit	f6ba35a6 (Sess 261)	â€”	Pass 1 read-only, trivial fixes
+So v5.78 = the cumulative state. The original Job B note ("CP4 #258â€“#264 / Î¾=13/3 / P6â€“P14 closure") is the final ~5 sessions only. The earlier closures (G, h, c, Î±, Î›, G1â€“G8, ledger) are also part of v5.78 and equally relevant.
 
 Correction needed to attached Job B file
-The attached file says "(v5.78, ξ=13/3, P6–P14 closure, CP4 #258–#264)" — this is incomplete. The proper scope tag should be:
+The attached file says "(v5.78, Î¾=13/3, P6â€“P14 closure, CP4 #258â€“#264)" â€” this is incomplete. The proper scope tag should be:
 
-v5.78 = SI closure (α/h/c/G/Λ) + G1–G8 Lagrangian closure + 27-decade vacuum ledger + ξ=13/3 (R26+KK lock) + P1–P14 falsifiability + CP4 #254–#264
+v5.78 = SI closure (Î±/h/c/G/Î›) + G1â€“G8 Lagrangian closure + 27-decade vacuum ledger + Î¾=13/3 (R26+KK lock) + P1â€“P14 falsifiability + CP4 #254â€“#264
 
 Proposed Job B plan (4 phases)
-Phase B1 — Topic categorization (COMPLETE — measured at Session 262)
-CSV _job_b_categorization.csv shipped (1,199 rows × 9 columns: paper_id, filename,
+Phase B1 â€” Topic categorization (COMPLETE â€” measured at Session 262)
+CSV _job_b_categorization.csv shipped (1,199 rows Ã— 9 columns: paper_id, filename,
 title, bucket, matched_keyword, suggested_action, status, session, commit).
-MEASURED bucket distribution (NOT ESTIMATED — counts are from the CSV):
+MEASURED bucket distribution (NOT ESTIMATED â€” counts are from the CSV):
 
 Bucket	Pending	DONE	Topic	Template	Closure block?
-A	42	1 (A*)	Cosmology / Λ / dark energy / vacuum energy	T-Λ	YES
+A	42	1 (A*)	Cosmology / Î› / dark energy / vacuum energy	T-Î›	YES
 B	15	0	Unified field / Lagrangian / EFE / Master equation	T-LAG	YES
-C	5	0	SI constants (α, h, c, G derivations)	T-SI	YES (demote VERIFIED→STRUCTURAL)
-D	11	1 (D*)	KK / extra dimensions / sub-mm gravity / Yukawa	T-ξ	YES
+C	5	0	SI constants (Î±, h, c, G derivations)	T-SI	YES (demote VERIFIEDâ†’STRUCTURAL)
+D	11	1 (D*)	KK / extra dimensions / sub-mm gravity / Yukawa	T-Î¾	YES
 E	12	0	Falsifiability / predictions / observational tests	T-PRED	YES
 F	28	0	Index / catalog / master synthesis	multi	YES
 G	29	0	Millennium Prize / Yang-Mills / NS / Riemann	T-LAG + T-PRED	YES
-H	983	38 (H*)	Specific astrophysical systems	multi	YES per revised rule (~600–800 of 983 cite β_i/F_TRZ/ρ_SCm/ρ_UA/[SSq]/κ)
-I	34	0	LENR / nuclear / atomic / specific elements	—	Case-by-case
-TOTAL	1,159	40	—	—	—
+H	983	38 (H*)	Specific astrophysical systems	multi	YES per revised rule (~600â€“800 of 983 cite Î²_i/F_TRZ/Ï_SCm/Ï_UA/[SSq]/Îº)
+I	34	0	LENR / nuclear / atomic / specific elements	â€”	Case-by-case
+TOTAL	1,159	40	â€”	â€”	â€”
 
-Measured DONE = 40 (38 H* batches 1–4 + 1 A* batch 3 + 1 D* batch 4).
+Measured DONE = 40 (38 H* batches 1â€“4 + 1 A* batch 3 + 1 D* batch 4).
 
-Phase B2 — Author content templates (COMPLETE — shipped at commit 8512dbb3)
+Phase B2 â€” Author content templates (COMPLETE â€” shipped at commit 8512dbb3)
 Five paper-specific reusable templates at whitepapers/_template_T_*.tex:
 
-  T-Λ     _template_T_Lambda.tex   v5.78 27-decade vacuum ledger pointer (PAPER_1170)            — bucket A
-  T-LAG   _template_T_LAG.tex      v5.78 closed Lagrangian pointer (G1–G8, PAPER_1159–1166)       — buckets B, G
-  T-SI    _template_T_SI.tex       Three-anchor SI closure update (Sessions 237–241)             — bucket C
-  T-PRED  _template_T_PRED.tex     P1–P14 falsifiability suite forward pointer (PAPER_1174–1180) — buckets E, G
-  T-ξ     _template_T_xi.tex       ξ=13/3 R26+KK lock pointer (PAPER_1171–1172)                  — bucket D
+  T-Î›     _template_T_Lambda.tex   v5.78 27-decade vacuum ledger pointer (PAPER_1170)            â€” bucket A
+  T-LAG   _template_T_LAG.tex      v5.78 closed Lagrangian pointer (G1â€“G8, PAPER_1159â€“1166)       â€” buckets B, G
+  T-SI    _template_T_SI.tex       Three-anchor SI closure update (Sessions 237â€“241)             â€” bucket C
+  T-PRED  _template_T_PRED.tex     P1â€“P14 falsifiability suite forward pointer (PAPER_1174â€“1180) â€” buckets E, G
+  T-Î¾     _template_T_xi.tex       Î¾=13/3 R26+KK lock pointer (PAPER_1171â€“1172)                  â€” bucket D
 
 Closure-banner parser-locked schema (every closure block MUST emit these three lines):
   % CLOSURE :: <label> :: predicted=<X> observed=<Y> error_pct=<Z>
   % TEMPLATE :: T-<code>
   % CANONICAL :: <one-line per calibrated constant>
 
-T-PRED sentinel: observed=9999 error_pct=9999  →  routes to OPEN_PREDICTIONS tab.
+T-PRED sentinel: observed=9999 error_pct=9999  â†’  routes to OPEN_PREDICTIONS tab.
 
-Smoke PDFs verified at pdf/_template_T_*.pdf (160–205 KB each) at commit 8512dbb3.
+Smoke PDFs verified at pdf/_template_T_*.pdf (160â€“205 KB each) at commit 8512dbb3.
 
-No new draft required — only paper-specific slot filling. Authoritative reference:
+No new draft required â€” only paper-specific slot filling. Authoritative reference:
 /memories/repo/v5_78_templates.md.
 
-Phase B3 — Per-paper authoring (slow, one at a time)
+Phase B3 â€” Per-paper authoring (slow, one at a time)
 
-For each paper flagged in B1, in topical batches (5–10 papers/commit):
+For each paper flagged in B1, in topical batches (5â€“10 papers/commit):
 
 1. Read paper end-to-end.
-2. CANONICAL CONSTANTS PRECHECK — verify the calibrated constants table matches
+2. CANONICAL CONSTANTS PRECHECK â€” verify the calibrated constants table matches
    dpm_vacuum_manifold.py v3.0 (mirrored in /memories/repo/v5_78_templates.md):
-     ρ_SCm = 4·√π·1e-37 ≈ 7.0898154036e-37 J/m³
-     ρ_UA  = 10 · ρ_SCm
-     β_i   = 0.603  (resonance-corrected G1+G4 value; PAPER_001 exemplar precedent;
-                    Session 265 STANDARD. Reserve 0.60 — round — for pedagogical
+     Ï_SCm = 4Â·âˆšÏ€Â·1e-37 â‰ˆ 7.0898154036e-37 J/mÂ³
+     Ï_UA  = 10 Â· Ï_SCm
+     Î²_i   = 0.603  (resonance-corrected G1+G4 value; PAPER_001 exemplar precedent;
+                    Session 265 STANDARD. Reserve 0.60 â€” round â€” for pedagogical
                     template-only use; never in closure blocks)
-     κ     = 5e-4 / day
+     Îº     = 5e-4 / day
      [SSq] = 0.57
      F_TRZ = 0.10
      H_SCm = 0.99
      U_UA  = 1e-4
-     k_η   = 1e-113
-3. Pick template (T-Λ / T-LAG / T-SI / T-PRED / T-ξ); fill paper-specific slots
+     k_Î·   = 1e-113
+3. Pick template (T-Î› / T-LAG / T-SI / T-PRED / T-Î¾); fill paper-specific slots
    with real physics (mass scale, decoupling regime, target observable).
    BUCKET-DEFAULT TEMPLATE MAPPING:
-     A  → T-Λ      B  → T-LAG    C  → T-SI
-     D  → T-ξ      E  → T-PRED   F  → multi (pick by section)
-     G  → T-LAG + T-PRED                  H  → multi (by sub-topic)
-     I  → T-LAG if paper cites phonon/coupling Lagrangian (Kozima Pd-D, Ni-H,
+     A  â†’ T-Î›      B  â†’ T-LAG    C  â†’ T-SI
+     D  â†’ T-Î¾      E  â†’ T-PRED   F  â†’ multi (pick by section)
+     G  â†’ T-LAG + T-PRED                  H  â†’ multi (by sub-topic)
+     I  â†’ T-LAG if paper cites phonon/coupling Lagrangian (Kozima Pd-D, Ni-H,
            Widom-Larsen); T-PRED if paper states a measurable cross-section
            or branching-ratio prediction. (Session 265 rule.)
    MATCHED-KEYWORD OVERRIDE (Session 265 rule): if CSV `matched_keyword` field
    conflicts with bucket-default, matched_keyword WINS. Example: bucket-A
-   paper with matched_keyword='falsifiability' uses T-PRED, not T-Λ.
-4. Edit .md (preserve voice/style). UNICODE HYGIENE — see lesson at bottom of file.
-   NEVER edit whitepapers/*.tex directly — see MARKDOWN-IS-SOURCE-OF-TRUTH rule
+   paper with matched_keyword='falsifiability' uses T-PRED, not T-Î›.
+4. Edit .md (preserve voice/style). UNICODE HYGIENE â€” see lesson at bottom of file.
+   NEVER edit whitepapers/*.tex directly â€” see MARKDOWN-IS-SOURCE-OF-TRUTH rule
    in LOCKED TOOLCHAIN section above.
 5. Rebuild PDF via locked toolchain:
      python _md_to_arxiv_tex.py whitepapers\PAPER_NNN.md > whitepapers\PAPER_NNN.tex
@@ -228,20 +228,20 @@ For each paper flagged in B1, in topical batches (5–10 papers/commit):
 6. Verify build OK: PDF must show Creator=LaTeX with hyperref. Closure block must
    contain all three banner lines (% CLOSURE / % TEMPLATE / % CANONICAL).
 7. Commit per topical batch using STANDARDIZED MESSAGE FORMAT:
-     Content:     "Job B Session NNN batch K (bucket X): PAPER_AAAA–BBBB — v5.78 <topic> closure"
-     Remediation: "Job B Batch K Format Remediation: PAPER_AAAA–BBBB pandoc → arXiv-LaTeX"
-     CSV stamp:   "Job B Session NNN CSV stamp: batch K (commit <hash>) — N rows DONE v5.78"
-     Repair:      "Job B Session NNN source-MD repair: PAPER_… — restore N unicode chars from CP1/CP3"
+     Content:     "Job B Session NNN batch K (bucket X): PAPER_AAAAâ€“BBBB â€” v5.78 <topic> closure"
+     Remediation: "Job B Batch K Format Remediation: PAPER_AAAAâ€“BBBB pandoc â†’ arXiv-LaTeX"
+     CSV stamp:   "Job B Session NNN CSV stamp: batch K (commit <hash>) â€” N rows DONE v5.78"
+     Repair:      "Job B Session NNN source-MD repair: PAPER_â€¦ â€” restore N unicode chars from CP1/CP3"
 
-Phase B4 — Catalog/index sync + final coherence pass
+Phase B4 â€” Catalog/index sync + final coherence pass
 
 Update master index/catalog papers (PAPER_001 if relevant, plus any registry papers)
 
-Update AXIOMS_AND_THEOREMS.md if any new theorem emerges (likely the ξ=13/3 lock theorem)
+Update AXIOMS_AND_THEOREMS.md if any new theorem emerges (likely the Î¾=13/3 lock theorem)
 
 Re-run full PDF verification pass on all touched papers
 
-Update copilot-instructions.md tally (e.g., "935 → N papers updated to v5.78")
+Update copilot-instructions.md tally (e.g., "935 â†’ N papers updated to v5.78")
 
 What I need authorized before starting:
 
@@ -249,15 +249,15 @@ Permission to run Phase B1 (read-only categorization) producing _job_b_categoriz
 
 Your sign-off on the categorization before any edits start.
 
-Confirmation of the corrected v5.78 scope (the broader one above, not just CP4 #258–#264).
+Confirmation of the corrected v5.78 scope (the broader one above, not just CP4 #258â€“#264).
 Confirm template approach is acceptable (paper-specific physics inside reusable section scaffolding) vs. fully bespoke per paper (much slower).
 
 
 ================================================================================
-PROGRESS LOG — Session 262 (Job B execution begins)
+PROGRESS LOG â€” Session 262 (Job B execution begins)
 ================================================================================
 
-Commit 7fadd27d (pushed to master) — First batch of 10 GW papers updated:
+Commit 7fadd27d (pushed to master) â€” First batch of 10 GW papers updated:
   PAPER_001 GW170817 UQFF Damping Analysis
   PAPER_002 GW190425 Mass Gap Interpretation
   PAPER_003 GW150914 UQFF vs LIGO Strain
@@ -269,20 +269,20 @@ Commit 7fadd27d (pushed to master) — First batch of 10 GW papers updated:
   PAPER_008b Full Inspiral Waveform UQFF
   PAPER_009 Damping Mechanism Decomposition UQFF
 
-Each received a tailored §v5.78 Closure section with:
+Each received a tailored Â§v5.78 Closure section with:
   - G1-G8 Lagrangian-gap derivation table (beta_i, F_TRZ, rho_SCm, rho_UA, [SSq], kappa)
   - 27-decade R26 + KK + BSFG vacuum-energy ledger pointer (PAPER_1170)
   - Master synthesis pointer (PAPER_1167, CP4 #254)
   - Paper-specific P-suite forward hook (P11/P12/P13/P14 falsifiability)
 
 Verification (Session 262 audit):
-  - All 10 files contain the §v5.78 Closure block (verified)
+  - All 10 files contain the Â§v5.78 Closure block (verified)
   - git diffs are pure additions (+28..+29 lines; PAPER_002 also -1 line for an
     unrelated Unicode fix of U+2273 -> $\gtrsim$)
   - All 10 PDFs regenerated (373-425 KB, healthy)
   - No body content lost
 
-REVISED RULE — original "bucket H = NO UPDATE" assumption is INVALID:
+REVISED RULE â€” original "bucket H = NO UPDATE" assumption is INVALID:
 Any paper whose body cites the calibrated constants beta_i / F_TRZ / rho_SCm /
 rho_UA / [SSq] / kappa in its calculations REQUIRES the v5.78 closure block,
 because under v5.78 those constants are no longer free parameters - they are
@@ -298,13 +298,13 @@ Cross-references discovered in first 10:
   Session 204-225 extension batch: PAPER_1000-1081 (case-by-case)
   v5.78 closure papers themselves: PAPER_1159, 1162-1167, 1170-1180 (already canonical, no update)
 
-NEXT-PRIORITY SLICE — UPSTREAM CROSS-REFS (PROMOTED, do NOT defer):
-  PAPER_420  (bucket B) — Master Lagrangian (upstream source)
-  PAPER_421  (bucket B) — F_U bridge (upstream source)
-  PAPER_642  (bucket G) — SM anchor (upstream source)
-  PAPER_840  (bucket B/G) — Extension (upstream source)
-  PAPER_877  (bucket B/G) — Extension (upstream source)
-These 5 papers SOURCE the closure-block content itself. ~40 batch-1–4 papers
+NEXT-PRIORITY SLICE â€” UPSTREAM CROSS-REFS (PROMOTED, do NOT defer):
+  PAPER_420  (bucket B) â€” Master Lagrangian (upstream source)
+  PAPER_421  (bucket B) â€” F_U bridge (upstream source)
+  PAPER_642  (bucket G) â€” SM anchor (upstream source)
+  PAPER_840  (bucket B/G) â€” Extension (upstream source)
+  PAPER_877  (bucket B/G) â€” Extension (upstream source)
+These 5 papers SOURCE the closure-block content itself. ~40 batch-1â€“4 papers
 already carry unresolved cross-refs to them; building these unblocks downstream
 consistency. Promote ahead of further bucket-H batches.
 
@@ -318,7 +318,7 @@ Next batch (Session 262 continuation): PAPER_010 through PAPER_014 + b-variants
   (010, 010b, 011, 011b, 012, 012b, 013, 013b, 014, 014b)
 
 ================================================================================
-BATCH 2 (Session 262 cont.) — commit d2665820
+BATCH 2 (Session 262 cont.) â€” commit d2665820
 ================================================================================
 PAPER_010 / 010b / 011 / 011b / 012 / 012b / 013 / 013b / 014 / 014b
 GW/magnetar/PBH/EMRI papers. Same closure block. Tailored P-suite hooks:
@@ -332,7 +332,7 @@ GW/magnetar/PBH/EMRI papers. Same closure block. Tailored P-suite hooks:
 Verification: all +28/-0 pure additions, PDFs 353-408 KB, no content lost.
 
 ================================================================================
-BATCH 3 (Session 262 cont.) — commit 67e6a25a
+BATCH 3 (Session 262 cont.) â€” commit 67e6a25a
 ================================================================================
 PAPER_009b / 015 / 015b / 016 / 016b / 017 / 018 / 019 / 020 / 021
 GW damping decomposition + cosmological GW propagation + multi-band synergy +
@@ -363,7 +363,7 @@ RECURRING UNRESOLVED CROSS-REFS (appearing in nearly every paper):
   PAPER_840, 877 (extension papers)
 These are HIGH-PRIORITY targets PROMOTED to NEXT-PRIORITY SLICE (do NOT defer
 to a later bucket-B batch). They SOURCE the closure-block content itself; 40+
-batch-1–4 papers already carry unresolved cross-refs to them.
+batch-1â€“4 papers already carry unresolved cross-refs to them.
 
 Session 204-225 extension batch (PAPER_1000-1081) references confirmed
 broad and case-by-case. Will be handled after primary 001-200 sweep.
@@ -557,7 +557,7 @@ corruption `?` characters across 5 Batch-3 .md files.
 REPAIR: commits e15f6123 (source-MD restore from CP1/CP3 canonical content) +
 a4d8d79f (beta/approx/exponent follow-up).
 
-RULES (LOCKED — every .md edit must follow these):
+RULES (LOCKED â€” every .md edit must follow these):
   1. NEVER round-trip through cp437 / Windows-1252 / pandoc-text. Write .md
      files as UTF-8 directly (no BOM unless required by downstream tool).
   2. Use the EXTENDED unicode mappings in _md_to_arxiv_tex.py:
@@ -565,30 +565,30 @@ RULES (LOCKED — every .md edit must follow these):
                    \mathbb{R/N/Z/C/Q}, \odot, \oplus, \otimes, \sim, \cong
         Text mode: \Box (square), \mathcal{M} (script M)
      and the ASCII fallbacks in code-span verbatim blocks (hbar, M, Box).
-  3. STRIP zero-width / variation-selector chars before any text→tex pass:
+  3. STRIP zero-width / variation-selector chars before any textâ†’tex pass:
         U+FEFF (BOM), U+FE0F / U+FE0E (variation selectors),
         U+200B / U+200C / U+200D (zero-width space / non-joiner / joiner)
   4. Math-stash 2nd pass: any \$...\$ injected by map_unicode must survive
      escape_text. _md_to_arxiv_tex.py handles this; do not bypass it.
   5. wrap_math_leaks: chains like exp[-\log_{10}(...)] inside text wrappers
-     (e.g. \textbf{...}) need pre-wrap to math mode — the converter does this
+     (e.g. \textbf{...}) need pre-wrap to math mode â€” the converter does this
      globally; do not write raw \log_{} outside $...$ in markdown.
   6. ZZCODE restore must sanitize unicode before \texttt{}.
   7. Common substitutions to apply by hand if seen in source .md:
-        ß (eszett, U+00DF)  →  $\beta$
-        ∼ (tilde,   U+223C)  →  $\sim$  or  approx
-        ∝ (propto,  U+221D)  →  $\propto$
-        ∓ (mp,      U+2213)  →  $\mp$
-        ≳ (gtrsim,  U+2273)  →  $\gtrsim$
-        10-N           →  $10^{N}$  or  $10^{-N}$  (decide from context)
-        day-1          →  $\mathrm{day}^{-1}$
-        m-2            →  $\mathrm{m}^{-2}$
+        ÃŸ (eszett, U+00DF)  â†’  $\beta$
+        âˆ¼ (tilde,   U+223C)  â†’  $\sim$  or  approx
+        âˆ (propto,  U+221D)  â†’  $\propto$
+        âˆ“ (mp,      U+2213)  â†’  $\mp$
+        â‰³ (gtrsim,  U+2273)  â†’  $\gtrsim$
+        10-N           â†’  $10^{N}$  or  $10^{-N}$  (decide from context)
+        day-1          â†’  $\mathrm{day}^{-1}$
+        m-2            â†’  $\mathrm{m}^{-2}$
   8. PowerShell here-string warning: `$^` is interpolation; escape as `` `$^ ``
      or use single-quoted here-strings when emitting LaTeX-bearing markdown.
 
 FALSIFIER: any new .md file containing literal `?` characters at body positions
-where the surrounding context expects unicode math (α/β/γ/κ/ρ/σ/λ/θ/ϕ/ψ/ω/∂/∇
-/±/≃/≈/≡/√/∫/∑/∏) is corrupted. Re-source from CP1/CP3 canonical strings
+where the surrounding context expects unicode math (Î±/Î²/Î³/Îº/Ï/Ïƒ/Î»/Î¸/Ï•/Ïˆ/Ï‰/âˆ‚/âˆ‡
+/Â±/â‰ƒ/â‰ˆ/â‰¡/âˆš/âˆ«/âˆ‘/âˆ) is corrupted. Re-source from CP1/CP3 canonical strings
 before commit.
 
 
@@ -675,7 +675,7 @@ GAP 3 (closed): Session 264 work (paper-track) now logged in this file (this del
   Previously Session 263 lived only in Plan Image 114 and Map section 19
   (Layer 45 saturation repair + Riemann T_10000 correction +
   paradox_proofs orphan close-out, commit cc807b95). Now cross-referenced
-  here for the §20 paper-update track.
+  here for the Â§20 paper-update track.
 
 GAP 4 (closed): Duplicate PAPER_421 PDF removed.
   Two pandoc PDFs existed on disk with identical Title metadata, different
@@ -776,7 +776,7 @@ GAP 12: No keyword->T-code override mechanism.
   precedence over bucket-default when they conflict.
 
 GAP 13: 5/5 anchors from Plan Image 111 not enumerated in this file.
-  The 5 are (in §20 of Map):
+  The 5 are (in Â§20 of Map):
     1. v5.78 SI closure (alpha/h/c/G/Lambda) -- Sessions 237-241
     2. G1-G8 Lagrangian closure -- Sessions 246-253
     3. 27-decade vacuum-energy ledger -- Session 255 (PAPER_1170)
@@ -1055,31 +1055,118 @@ B4 status (Session 267 update):
                                                          next eligible
                                                          2026-06-10 / -11)
 
+B4 status (Session 269 update):
+  - AXIOMS_AND_THEOREMS.md xi=13/3 lock theorem entry  : DONE (Sessions 266+267;
+                                                         unchanged)
+  - Master index PAPER_001 v5.78 closure block         : DONE (batch 1; unchanged)
+  - copilot-instructions.md tally update               : DONE (Session 266; unchanged)
+  - Catalog-paper registry sync                        : EXTENDED (Session 269):
+                                                         second-pass verification
+                                                         of CP4 #259-#264 P-suite
+                                                         calculators. All six
+                                                         confirmed present in
+                                                         CondensedPhysics4.py at
+                                                         lines 16013 / 16072 /
+                                                         16124 / 16188 / 16230 /
+                                                         16294 with correct class
+                                                         names UQFFRingdown-
+                                                         SpectralOffsetCalculator,
+                                                         UQFFSigma8WeakLensing-
+                                                         Calculator, UQFF2027-
+                                                         JointFalsifierCalculator,
+                                                         UQFFDarkEnergySecond-
+                                                         DerivativeCalculator,
+                                                         UQFF2027QuadrupleFalsifier-
+                                                         Calculator, UQFFCMBmu-
+                                                         DistortionCalculator;
+                                                         all six exported in CP4
+                                                         __all__ at lines 20389-
+                                                         20394 with PAPER_1175-
+                                                         1180 + Session origin
+                                                         tags; all six canonical
+                                                         whitepapers/PAPER_117X.md
+                                                         files verified on disk
+                                                         (3271/3254/3644/2282/
+                                                         5104/2587 bytes); arxiv-
+                                                         submission packaging
+                                                         copies also present
+                                                         (intentional duplication
+                                                         for arXiv tarballs).
+                                                         GAP 17 table in this file
+                                                         corrected (was using
+                                                         placeholder names
+                                                         R26KKLockCP4 etc.;
+                                                         replaced with verified
+                                                         actual class names +
+                                                         line numbers + paper IDs).
+                                                         uqff_pure_calculator.py
+                                                         re-export gap CONFIRMED
+                                                         EXTENDED: #259-#264 not
+                                                         re-exported (zero hits
+                                                         for PAPER_1175-1180 in
+                                                         that file); total
+                                                         deferred-re-export bucket
+                                                         is now 8 classes
+                                                         (#257-#264); awaits
+                                                         user direction on
+                                                         honesty-bounded wrapper
+                                                         policy (same status as
+                                                         Session 267)
+  - Full PDF re-verification pass                      : PARTIAL (50/1199 done;
+                                                         unchanged since Session
+                                                         268)
+  - pdf_backup rotation eligibility                    : NONE eligible yet
+                                                         (05-11 = 24.7d,
+                                                         05-12 = 24.4d, 06-05 =
+                                                         0.1d; all under 30-day
+                                                         window; next eligible
+                                                         2026-06-11 for both
+                                                         05-11 and 05-12 backups)
+  - CSV stamps                                         : none (no DONE-status
+                                                         changes; pure governance/
+                                                         verification session,
+                                                         matches Session 267
+                                                         pattern)
+  - Affected files                                     : this file (+ B4 block +
+                                                         GAP 17 table correction),
+                                                         uqff_Plan.md (+ Plan
+                                                         Image 120 @ L7225),
+                                                         uqff_Map.md (section 20
+                                                         commit-ledger row +
+                                                         HEAD pointer)
+
 ------------------------------------------------------------------------------
 GAP 17 closed: where the CP4 #N entries live
 ------------------------------------------------------------------------------
 
 The CP4 #254-#264 class entries cited by every bucket-B/G paper as upstream
-live in these files (Session 265 inventory):
+live in these files (Session 265 inventory; class names CORRECTED Session 269
+second-pass verification against actual CondensedPhysics4.py source):
 
-  CP4 #N    File                                              Anchor
-  --------  ------------------------------------------------  ----------------
-  #254      CondensedPhysics4.py (MasterClosureCP4)           anchor 2 master
-  #255      CondensedPhysics4.py (FalsifierCP4_P1_P5)         anchor 5 P1-P5
-  #256      CondensedPhysics4.py (VacuumLedgerCP4)            anchor 3
-  #257      CondensedPhysics4.py (R26KKLockCP4)               anchor 4
-  #258      CondensedPhysics4.py (KKhbarP6CP4)                anchor 4 + P6
-  #259      CondensedPhysics4.py (LIGOO5RingdownCP4)          anchor 5 P11
-  #260      CondensedPhysics4.py (EuclidSigma8CP4)            anchor 5 P12
-  #261      CondensedPhysics4.py (DESITripleChi2CP4)          anchor 5 P13
-  #262      CondensedPhysics4.py (DESIStrictStaticCP4)        anchor 5 P13
-  #263      CondensedPhysics4.py (QuadrupleFalsifierCP4)      anchor 5 P14
-  #264      CondensedPhysics4.py (CMBS4MuCP4)                 anchor 5 P14
+  CP4 #N    Class (verified in CondensedPhysics4.py)                Paper        Anchor
+  --------  -------------------------------------------------------  -----------  ----------------
+  #254      UQFFBlackHoleAccretionModelCalculator                    PAPER_1167   anchor 2 master
+  #255      UQFFDMDtDerivationCalculator                             (linked)     anchor 5 P1-P5
+  #256      UQFFEvaporationTimescaleCalculator (+ UQFF-              PAPER_1170   anchor 3
+            VacuumEnergyLedgerCalculator @ L15741)
+  #257      UQFFKKTowerRegulatorCalculator @ L15830                  PAPER_1171   anchor 4
+  #258      UQFFKKTowerHbarRegulatorCalculator @ L15926              PAPER_1173   anchor 4 + P6
+  #259      UQFFRingdownSpectralOffsetCalculator @ L16013            PAPER_1175   anchor 5 P11
+  #260      UQFFSigma8WeakLensingCalculator @ L16072                 PAPER_1176   anchor 5 P12
+  #261      UQFF2027JointFalsifierCalculator @ L16124                PAPER_1177   2027 P6+P11+P12
+  #262      UQFFDarkEnergySecondDerivativeCalculator @ L16188        PAPER_1178   anchor 5 P13
+  #263      UQFF2027QuadrupleFalsifierCalculator @ L16230            PAPER_1179   2027 P6+P10+P11+P12
+  #264      UQFFCMBmuDistortionCalculator @ L16294                   PAPER_1180   anchor 5 P14
+
+  NOTE: PAPER_1172 (R26 Gauss-Bonnet, Route 2 of xi=13/3 derivation) is
+        paper-only; its result is referenced numerically inside #258 at the
+        `Canonical xi_0 = 13/3` line.
 
 Calculator honesty-pass surface (Session 263):
   uqff_pure_calculator.py contains the honesty-bounded re-exports of
-  #254-#264 with the four-channel DSE parallel-engine routing (per Plan
-  Image 113 / Map section 20.1).
+  #254-#256 only (per Plan Image 113 / Map section 20.1). CP4 #257-#264
+  re-exports are PENDING -- 8 classes total in the deferred-re-export bucket
+  (verified Session 267 for #257/#258, Session 269 for #259-#264).
 
 ------------------------------------------------------------------------------
 GAP 19 closed: banner-schema enforcement decision
