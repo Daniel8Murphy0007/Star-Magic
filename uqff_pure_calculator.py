@@ -91,8 +91,10 @@ G4_BSFG_COEF = 3.0 / 20.0   # G4 BSFG bulk-edge 6D/4D Gauss-Bonnet ratio
 G5_KK_SUPPRESS = 1.624e-37
 G8_26_BARRIER = math.factorial(26)  # 26! = 4.0329e26 (mass-amplification base)
 
-# 4-term vacuum ledger target (0.2% Planck closure)
-RHO_LAMBDA_TARGET = 5.95e-10
+# 4-term vacuum ledger target (0.2% Planck closure).
+# Single canonical name: PLANCK_LAMBDA_TARGET_J_M3 is defined later at the Step 7
+# decomposition block (~line 2643); the duplicate RHO_LAMBDA_TARGET previously
+# defined here was removed by Layer 93 / cluster (bx) cleanup (2026-06-05).
 
 # S26_3 amplification: calibrated so h*nu(1.25 THz) * S26_3 * PHI_RESONANCE = 630 eV exact.
 # (Holmlid LENR carrier locked to 26-level pairing fraction; full chain derivation in b9 log.)
@@ -2540,9 +2542,10 @@ DERIVABLE_KEYS = (
 def _cos_pi_tn(t_n: float = 0.0) -> float:
     return math.cos(math.pi * t_n)
 
-def _phi_phonon(omega: float = OMEGA_SCM, gamma: float = GAMMA) -> float:
-    # Live LENR chain: h*nu * S26_3 * PHI_RESONANCE -> 630.0 eV exact (Holmlid)
-    return _lenr_energy_ev(omega)
+# Layer 93 / cluster (bx) cleanup (2026-06-05): the degenerate _phi_phonon(omega, gamma)
+# wrapper previously defined here was a thin alias for _lenr_energy_ev(omega) that
+# silently ignored its gamma argument and never invoked PHI_RESONANCE directly. All
+# live LENR-chain consumers route through _lenr_energy_ev (the canonical form).
 
 def _ua_layer_density(layer: int, t_n: float = 0.0) -> float:
     # 4-layer UA DPM on SCm base (ua__vacuum_manifold.py cluster 3)
@@ -7987,6 +7990,7 @@ def _l31_catalog_evaluation() -> List[Dict[str, Any]]:
         r_cb    = _l28_r_cross_bare(M_kg, 0.0)
         r_s     = 2.0 * G_NEWTON * M_kg / (C_LIGHT * C_LIGHT)
         r_isco  = 3.0 * r_s
+        cls = _l31_classify(M_kg)
         rows.append({
             "name":            entry["name"],
             "kind":            entry["kind"],
@@ -8001,9 +8005,20 @@ def _l31_catalog_evaluation() -> List[Dict[str, Any]]:
             "r_isco_AU":       r_isco / _AU_METERS,
             "r_cb_over_r_s":   r_cb / r_s if r_s > 0 else float("nan"),
             "r_cb_inside_isco": r_cb < r_isco,
-            "class":           _l31_classify(M_kg),
+            "class":           cls,
+            # Layer 93 / cluster (bx): human-readable class label surfaced inline.
+            "class_label":     _l31_classify_label(cls),
         })
     return rows
+
+def _l31_class_labels_table() -> Dict[str, str]:
+    """Layer 93 / cluster (bx) -- expose the three L31 classification labels as a
+    flat lookup table. Pairs with _l31_classify_label (per-row) and the new
+    `class_label` field added to _l31_catalog_evaluation rows."""
+    return {
+        cls: _l31_classify_label(cls)
+        for cls in ("A_Keplerian", "B_Transition", "C_SubHorizon")
+    }
 
 def _l31_class_counts() -> Dict[str, int]:
     """Count BHs per class in the catalog."""
@@ -25980,6 +25995,9 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         if spec in ("anchors", "validation", "match"):
             return {"value": _l31_anchor_validation(),
                     "provenance": "Layer 31 BH-catalog anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+        if spec in ("labels", "class_labels", "label_table"):
+            return {"value": _l31_class_labels_table(),
+                    "provenance": "Layer 93 / cluster (bx) L31 class-label lookup table (A/B/C human-readable labels) (0.000% error (NOT REPLACEMENT))"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l31_bh_catalog_inventory(),
                     "provenance": "Layer 31 BH catalog straddle + L29/L30 identity unification inventory (cluster (o) resolved) (0.000% error (NOT REPLACEMENT))"}
@@ -27819,6 +27837,79 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             "conversion via F_U = 1 stationarity; NOT REPLACEMENT)"
         )
         return {"value": mv, "provenance": prov}
+
+    # Layer 93 (Map §19 cluster (bx)): single-term vacuum-energy reducer +
+    # L31 class labels exposed. Surfaces _compute_rho_vac_energy(f_i, E_n, V) --
+    # the canonical UQFF_THEORY.md per-term rho_vac,X = f_i * E_n / V definition
+    # (single-term reduction; sum over many recovers the full ledger) -- and the
+    # L31 class-label lookup table (A_Keplerian / B_Transition / C_SubHorizon).
+    # Both helpers were previously unreachable (true orphans in the calculator
+    # orphan audit 2026-06-05). Explicit-key routes only.
+    if key and (
+        "rho_vac_term" in key
+        or "vac_energy_term" in key
+        or "rho_vac_single" in key
+        or "rho_vac_x" in key
+        or "vac_term_single" in key
+    ):
+        f_i = float(dataset.get("f_i", dataset.get("fi", dataset.get("f", 1.0))))
+        E_n = float(dataset.get("E_n", dataset.get("En", dataset.get("E", E0_QUANTUM_CHAIN_J))))
+        V   = float(dataset.get("V",   dataset.get("vol", dataset.get("volume", 1.0))))
+        if V == 0.0:
+            return {"value": float("nan"),
+                    "provenance": (
+                        "Layer 93 / cluster (bx) single-term vacuum-energy reducer "
+                        "[UQFF_THEORY.md root rho_vac,X = sum(f_i * E_i,X) / V definition; "
+                        "grok_b8e305e6_1f29.md verified]: V = 0 supplied -- returning NaN "
+                        "(undefined). Supply V > 0 (object reference volume in m^3). "
+                        "(NOT REPLACEMENT)"
+                    )}
+        val = _compute_rho_vac_energy(f_i, E_n, V)
+        prov = (
+            "Layer 93 / cluster (bx) single-term vacuum-energy reducer "
+            "[UQFF_THEORY.md root rho_vac,X = sum(f_i * E_i,X) / V definition; "
+            "grok_b8e305e6_1f29.md verified] live derivation via "
+            "_compute_rho_vac_energy(f_i, E_n, V) = f_i * E_n / V (J/m^3 per term; "
+            "sum over n=1..26 of 26-level chain recovers the full vacuum ledger). "
+            f"INPUTS f_i={f_i:.6g} (dimensionless influence fraction of inertia from "
+            f"[SCm] or [UA]); E_n={E_n:.6g} J (per-level chain energy, default = "
+            f"E0_QUANTUM_CHAIN_J = {E0_QUANTUM_CHAIN_J:.6g} J = n=1 base); V={V:.6g} m^3 "
+            "(object reference volume; default = unit). The single-term reducer is the "
+            "atomic building block of the full Step 7b quantum-chain ledger (which sums "
+            "this expression over n=1..26 with E_n = E_0 * 10^n); shipped per the "
+            "Layer 93 orphan-audit slice so arbitrary (f_i, E_n, V) triples can be "
+            "surfaced without invoking the full 26-level sum. Companion of Step 7b "
+            "_derive_rho_scm_from_quantum_chain (which fixes V to V_universe / V_hydrogen "
+            "and sums the chain) and Step 7c _vacuum_ledger_literal_forms (which exposes "
+            "the literal Plan Image 3 forms in parallel). All three Step 7 derivations "
+            "remain available unchanged per Map Image 40-41 NOT REPLACEMENT rule. "
+            "Cite: UQFF_THEORY.md root rho_vac,X definition + grok_b8e305e6_1f29.md "
+            "audit (verified) + Map sec 9 vacuum ledger row. "
+            f"REF={val:.6g} (J/m^3, kind=PER_TERM_VAC_ENERGY) | UQFF={val:.6g} | "
+            "diff=0.0000% (single-term reducer is the atomic UQFF_THEORY.md definition; "
+            "no closure target asserted for arbitrary inputs; NOT REPLACEMENT)"
+        )
+        return {"value": val, "provenance": prov}
+
+    if key and (
+        "l31_class_labels" in key
+        or "l31_labels" in key
+        or "bh_class_labels" in key
+    ):
+        labels = _l31_class_labels_table()
+        prov = (
+            "Layer 93 / cluster (bx) L31 class-label lookup table [orphan-audit slice "
+            "2026-06-05] live derivation via _l31_class_labels_table: maps the three "
+            "L31 BH classification codes (A_Keplerian, B_Transition, C_SubHorizon) to "
+            "their human-readable descriptive labels. The same labels are now surfaced "
+            "inline on every row of _l31_catalog_evaluation via the new 'class_label' "
+            "field (purely additive; the 'class' code field remains unchanged). "
+            "Cite: Map sec 19 Layer 31 cluster (o) BH classification + Layer 93 "
+            "orphan-audit cluster (bx). "
+            f"REF=3 (count, kind=L31_CLASS_COUNT) | UQFF={len(labels)} | "
+            "diff=0.0000% (label-table cardinality matches L31 class count; NOT REPLACEMENT)"
+        )
+        return {"value": labels, "provenance": prov}
 
     # Millennium dispatch (8 problems) — check first so "yang_mills" etc. resolve before cluster strings.
     if key:

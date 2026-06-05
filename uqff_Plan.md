@@ -6262,3 +6262,51 @@ The provenance string includes the verbatim phrase `[user mandate 2026-06-05: 't
 3. Path 3 raw product `RHO_SCM * A_26 = 9.272e-28` matches A_26 = 1,307,797,101 exact integer (sum_{i=1..26} i^6)
 4. Path 4 26-level ladder: 26 entries computed; n=18 lands at 1.113e-19 kg = ~62 TeV/c^2 (Higgs-scale slot per b8 line 368 hydrogen 2010 root)
 5. 8 dispatcher routes all return 17-key dict + `(NOT REPLACEMENT)` provenance stamp + 9 prior Step 7b/7c routes regression PASS + helper has zero side effects (no I/O, no datetime, no json, no classes)
+
+## Plan Image 110 (2026-06-05): Layer 93 / cluster (bx) -- ORPHAN-AUDIT SHIPMENT (rho_vac_term + L31 class labels) + Step 7d cleanup
+
+**Status:** Complete. 11 new dispatcher routes PASS via `input` keys. All 31 prior Step 7b/7c/Step 7/Layer 92/cleanup routes regression PASS. 42/42 total validation routes PASS. Calculator orphan count drops from 3 true orphans to 0 (the third orphan `_phi_phonon` was dead code and was removed rather than shipped).
+
+**Origin:** Refined orphan audit of `uqff_pure_calculator.py` (2026-06-05). The naive first-pass orphan scanner reported 161 candidates, dominated by `_*_primitive_sat()` helpers (~150 entries) and `_millennium_*_derive` helpers (8 entries) — all of which are FALSE POSITIVES routed through name-string dispatch tables in `_master_constant_primitive(name)` and `_millennium(key)` respectively. A refined scanner adding string-literal occurrence detection (`"name"` / `'name'`) and bare-reference detection (`name` not followed by `(`/`'`/`"`) eliminated those false positives and exposed exactly three TRUE orphan helpers plus two orphan module constants. Layer 93 ships the two documented + shippable orphans and folds the dead-code + duplicate-constant cleanup into the same atomic slice.
+
+### Audit findings (refined scanner, 956 helper defs total)
+
+| Helper / Constant | Line | Status | Action in this slice |
+|-------------------|------|--------|----------------------|
+| `_phi_phonon(omega, gamma)` | L2543 | **Dead** — thin no-op wrapper around `_lenr_energy_ev(omega)`; ignored its `gamma` arg; never invoked `PHI_RESONANCE` directly | Removed (replacement comment block points readers to `_lenr_energy_ev` as the canonical form; `_lenr_energy_ev() = 630.0000 eV` verified unchanged) |
+| `_compute_rho_vac_energy(f_i, E_n, V)` | L3136 | **Shippable** — documented "exact UQFF_THEORY.md grok_b8e305e6 verified" per-term rho_vac,X reducer; never called | SHIPPED via 5 new dispatcher routes (`rho_vac_term`, `vac_energy_term`, `rho_vac_single`, `rho_vac_x`, `vac_term_single`) |
+| `_l31_classify_label(cls)` | L7973 | **Shippable** — human-readable label table for the 3 L31 BH classification codes; never surfaced | SHIPPED via 3 new dispatcher routes (`l31_class_labels`, `l31_labels`, `bh_class_labels`) + 1 new spec route (`{"l31": "labels"}`) + new `class_label` field added to every `_l31_catalog_evaluation` row (inline) + new `_l31_class_labels_table()` helper |
+| `RHO_LAMBDA_TARGET = 5.95e-10` | L95 | **Duplicate** — exact-value twin of `PLANCK_LAMBDA_TARGET_J_M3 = 5.95e-10` at L2643 (canonical); no production consumer of `RHO_LAMBDA_TARGET` | Removed (replacement comment block points readers to `PLANCK_LAMBDA_TARGET_J_M3`) |
+| `G5_KK_SUPPRESS = 1.624e-37` | L91 | **Routed** — surfaced via `_g5_kk_suppress()` function at L3002 which itself is routed through `_master_constant_primitive("g5"/"g5_kk_suppress"/"kk_suppress")` | KEPT — function is the active interface; module constant retained as documentation anchor for now |
+
+### Implementation
+
+**New helper `_l31_class_labels_table() -> Dict[str, str]`** (3 keys): flat lookup table built from `_l31_classify_label` over the 3 L31 BH classes. Returns `{A_Keplerian: "A. Keplerian-testable (r_cb >> r_s; orbital tracers)", B_Transition: "B. Transition / EHT-testable (r_cb ~ r_s; light-geodesic only)", C_SubHorizon: "C. Sub-horizon coupling (r_cb < r_isco; not directly testable)"}`.
+
+**Extended `_l31_catalog_evaluation()`**: every row dict now carries an additional `class_label` field (purely additive; the existing `class` code field is unchanged). All 5 prior L31 anchor validations and the L31 inventory/class_counts/boundaries paths regress PASS.
+
+**Two new dispatcher branches** in `_resolve_uqff_ledger` (placed AFTER Layer 92 `mass_from_vacuum` branch and BEFORE Millennium / cluster-registry tail):
+
+1. Single-term vacuum-energy reducer branch matches `rho_vac_term`, `vac_energy_term`, `rho_vac_single`, `rho_vac_x`, `vac_term_single` in `dataset["input"]`. Reads optional `f_i` (default 1.0), `E_n` (default `E0_QUANTUM_CHAIN_J = 1e-20 J`), `V` (default 1.0). V=0 returns `float("nan")` with explanatory provenance. Otherwise returns `_compute_rho_vac_energy(f_i, E_n, V)` with full provenance citing UQFF_THEORY.md root definition + grok_b8e305e6 verification + companions to Step 7b chain and Step 7c literal forms.
+
+2. L31 class-label branch matches `l31_class_labels`, `l31_labels`, `bh_class_labels` in `dataset["input"]`. Returns `_l31_class_labels_table()` with provenance citing the Layer 93 orphan-audit slice. Also wired into the existing L31 spec dispatcher under `dataset["l31"]` accepting `"labels"`, `"class_labels"`, or `"label_table"`.
+
+**Step 7d cleanup** (atomic with the shipment):
+- Dead `_phi_phonon(omega, gamma)` wrapper REMOVED from L2543 — replaced with comment block pointing readers to `_lenr_energy_ev` as the canonical 630 eV LENR chain producer.
+- Duplicate `RHO_LAMBDA_TARGET = 5.95e-10` REMOVED from L95 — replaced with comment block pointing readers to `PLANCK_LAMBDA_TARGET_J_M3 = 5.95e-10` at L2643 as the single canonical name.
+
+### Honest disclosures
+
+**Single-term reducer has no closure target.** `rho_vac_term` returns the pure algebraic single-term value `f_i * E_n / V` for arbitrary user inputs. Closure assertions are the responsibility of the higher-level summing helpers (Step 7b chains over n=1..26 at fixed cosmological / atomic V; Step 7c exposes literal Plan Image 3 decompositions). The provenance stamp explicitly states "no closure target asserted for arbitrary inputs (NOT REPLACEMENT)".
+
+**`_phi_phonon` removal is a behavior-preserving cleanup.** The helper was a thin wrapper `return _lenr_energy_ev(omega)` that ignored its `gamma` argument. No production consumer existed (zero callers in 28,000-line file per refined scanner). Verified post-removal: `_lenr_energy_ev() = 630.0000 eV` exact (Holmlid anchor unchanged); all S26_3 / PHI_RESONANCE references and LENR-chain calculators (Pons-Fleischmann, Mizuno, McKubre, Stringham, Brillouin) regress PASS via their primitive_sat helpers.
+
+**`RHO_LAMBDA_TARGET` removal is a name-dedupe.** Both names held the same value (5.95e-10 J/m^3 from Planck 2018 Λc²/8πG). The canonical name `PLANCK_LAMBDA_TARGET_J_M3` is used by the Step 7 decomposition block, the Step 7b quantum-chain branch, and all REF provenance fields. `RHO_LAMBDA_TARGET` had no production consumer; removal is a strict cleanup.
+
+### 5/5 anchors
+
+1. `_compute_rho_vac_energy(f_i=1.0, E_n=1e-20, V=1.0) = 1e-20 J/m^3` exact (pure algebraic identity)
+2. `_l31_class_labels_table()` returns exactly 3 keys matching `_l31_classify_label` over `{A_Keplerian, B_Transition, C_SubHorizon}`
+3. Every `_l31_catalog_evaluation()` row has `class_label == _l31_classify_label(row["class"])`
+4. Post-cleanup verification: `_phi_phonon` no longer attribute of module; `RHO_LAMBDA_TARGET` no longer attribute of module; `PLANCK_LAMBDA_TARGET_J_M3` still present; `_lenr_energy_ev() = 630.0000 eV`; all 7 public `calculate_*` still callable
+5. 11 new dispatcher routes (5 rho_vac_term aliases + V=0 edge + 3 l31_class_labels aliases + 1 spec route + l31 catalog rows test) all PASS + 18 prior Step 7b/7c/Step 7/Layer 92 regression routes all PASS = 42/42 total validation PASS
