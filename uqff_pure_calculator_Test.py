@@ -318,6 +318,101 @@ def test_dispatch_inventory_counts() -> List[Tuple[str, bool, str]]:
     return out
 
 
+def test_constant_closure_report() -> List[Tuple[str, bool, str]]:
+    """Session 261 polish: closure report mechanically grades each fundamental.
+
+    Verifies the report exposes 16 named constants + _summary, that h/c/k_B/e/N_A
+    are correctly tagged as 'identity', that sigma_SB / Lambda / hbar are
+    'derived' (closure error < 1%), that Delta_SCm is 'hardcoded', and that
+    the documented broken-formula constants (G, eps_0, mu_0, Rydberg, Bohr_a0,
+    Compton, Wien_b, mu_B) are tagged 'broken' pending Layer 45 repair.
+    """
+    out: List[Tuple[str, bool, str]] = []
+    r = u._constant_closure_report()
+    expected_constants = {
+        "h", "hbar", "c", "k_B", "e", "N_A", "G", "sigma_SB",
+        "eps_0", "mu_0", "Rydberg", "Bohr_a0", "Compton", "Wien_b",
+        "mu_B", "Lambda", "Delta_SCm",
+    }
+    out.append(_check("closure_report::all_17_constants_present",
+                      expected_constants.issubset(set(r.keys())),
+                      f"missing: {expected_constants - set(r.keys())}"))
+    out.append(_check("closure_report::summary_present",
+                      "_summary" in r and isinstance(r["_summary"], dict),
+                      f"summary keys: {list(r.get('_summary', {}).keys())}"))
+    # Identity assertions (SI base anchors are not UQFF-derived; they are definitional)
+    for name in ("h", "c", "k_B", "e", "N_A"):
+        out.append(_check(f"closure_report::{name}_is_identity",
+                          r[name]["status"] == "identity",
+                          f"status={r[name]['status']}"))
+    # Genuine derivations (closure error < 1%)
+    for name in ("hbar", "sigma_SB", "Lambda"):
+        out.append(_check(f"closure_report::{name}_is_derived",
+                          r[name]["status"] == "derived" and r[name]["err_pct"] < 1.0,
+                          f"status={r[name]['status']} err={r[name]['err_pct']:.4f}%"))
+    # Delta_SCm: hardcoded primitive, geometric derivation pending
+    out.append(_check("closure_report::delta_scm_is_hardcoded",
+                      r["Delta_SCm"]["status"] == "hardcoded",
+                      f"status={r['Delta_SCm']['status']}"))
+    # Honest 'broken' tags (UQFF saturation formulas pending Layer 45 repair)
+    for name in ("G", "eps_0", "mu_0", "Rydberg", "Bohr_a0", "Compton", "Wien_b", "mu_B"):
+        out.append(_check(f"closure_report::{name}_flagged_broken",
+                          r[name]["status"] == "broken",
+                          f"status={r[name]['status']} err={r[name]['err_pct']:.4g}%"))
+    # Summary counters must match expected polish-session totals
+    s = r["_summary"]
+    out.append(_check("closure_report::summary_total_17",
+                      s.get("total") == 17, f"total={s.get('total')}"))
+    out.append(_check("closure_report::summary_derived_3",
+                      s.get("derived") == 3, f"derived={s.get('derived')}"))
+    out.append(_check("closure_report::summary_identity_5",
+                      s.get("identity") == 5, f"identity={s.get('identity')}"))
+    out.append(_check("closure_report::summary_broken_8",
+                      s.get("broken") == 8, f"broken={s.get('broken')}"))
+    out.append(_check("closure_report::summary_hardcoded_1",
+                      s.get("hardcoded") == 1, f"hardcoded={s.get('hardcoded')}"))
+    # Dispatch routes
+    out.append(_check("closure_report::derive_constant_route",
+                      isinstance(u._derive_constant("closure_report"), dict),
+                      "_derive_constant('closure_report') returns dict"))
+    out.append(_check("closure_report::dispatch_keys_summary",
+                      isinstance(u._dispatch_keys().get("constant_closure_report"), dict)
+                      and u._dispatch_keys()["constant_closure_report"].get("total") == 17,
+                      "dispatch_keys exposes summary"))
+    return out
+
+
+def test_new_polish_primitives() -> List[Tuple[str, bool, str]]:
+    """Session 261 polish: hbar, k_b, delta_scm_j exposed as ledger primitives + dispatch."""
+    out: List[Tuple[str, bool, str]] = []
+    import math as _m
+    hbar_val = u._hbar_primitive_sat()
+    out.append(_check("polish::hbar_value",
+                      abs(hbar_val - u.PLANCK_H / (2.0 * _m.pi)) < 1e-45,
+                      f"got {hbar_val}"))
+    out.append(_check("polish::k_b_primitive",
+                      u._k_b_primitive_sat() == u.K_B, "identity"))
+    out.append(_check("polish::delta_scm_primitive",
+                      u._delta_scm_primitive_sat() == u.DELTA_SCM_J, "matches DELTA_SCM_J"))
+    # Ledger primitive registration
+    out.append(_check("polish::hbar_in_ledger",
+                      "hbar" in u._LEDGER_PRIMITIVE, "registered"))
+    out.append(_check("polish::k_b_in_ledger",
+                      "k_b" in u._LEDGER_PRIMITIVE, "registered"))
+    out.append(_check("polish::delta_scm_j_in_ledger",
+                      "delta_scm_j" in u._LEDGER_PRIMITIVE, "registered"))
+    out.append(_check("polish::ledger_count_at_least_163",
+                      len(u._LEDGER_PRIMITIVE) >= 163, f"got {len(u._LEDGER_PRIMITIVE)}"))
+    # Dispatch routes
+    out.append(_check("polish::derive_hbar",
+                      isinstance(u._derive_constant("hbar"), float),
+                      "_derive_constant('hbar') returns float"))
+    out.append(_check("polish::derive_delta_scm",
+                      isinstance(u._derive_constant("delta_scm"), float),
+                      "_derive_constant('delta_scm') returns float"))
+    return out
+
+
 # === Report builders =============================================================
 
 def _run_all() -> List[Tuple[str, bool, str]]:
@@ -334,6 +429,8 @@ def _run_all() -> List[Tuple[str, bool, str]]:
     results.extend(test_paradox_proofs_dispatched())
     results.extend(test_new_inflation_primitives())
     results.extend(test_dispatch_inventory_counts())
+    results.extend(test_constant_closure_report())
+    results.extend(test_new_polish_primitives())
     return results
 
 

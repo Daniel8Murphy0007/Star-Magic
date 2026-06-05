@@ -1225,6 +1225,106 @@ def _f_baryon_primitive_sat() -> float:
     Structural: BSFG coefficient / bulk-edge ratio (~0.156 observed)."""
     return G4_BSFG_COEF / (float(D_BSFG) / float(D_CRIT))
 
+# --- Tranche 1E: derivation-honesty polish (Session 261 / 05Jun2026 deep-search close-out) ---
+# Closes the "have we derived c/G/h/sigma/Delta/Lambda?" question raised in the
+# Daniel-T-Murphy grok deep-search (grok_b8e305e6_1f29 + UFE_ORB_EXP 2_28 threads).
+# Honest framing: h, c, k_B, e, N_A are SI base anchors (identity primitives);
+# sigma_SB and Lambda are *derived* (canonical composition / 4-term G1-G8 ledger);
+# G, eps_0, mu_0, Rydberg, Bohr-a0, Compton, Wien-b, mu_B currently carry UQFF
+# saturation formulas with documented closure error (see _constant_closure_report).
+def _hbar_primitive_sat() -> float:
+    """reduced Planck hbar (J s) saturation = PLANCK_H / (2 pi)
+    Structural: hbar = h/(2 pi) primitive composition (exposes the standard derived form)."""
+    return PLANCK_H / (2.0 * math.pi)
+
+def _k_b_primitive_sat() -> float:
+    """Boltzmann k_B (J/K) saturation = K_B
+    Structural: k_B = K_B by 2019 SI exact definition (allowed base primitive identity)."""
+    return K_B
+
+def _delta_scm_primitive_sat() -> float:
+    """SCm shell-pairing gap Delta_SCm (J) saturation = DELTA_SCM_J
+    Structural: 5.17 meV from 26-level pairing (PAPER 26-level pairing anchor).
+    Hardcoded primitive; geometric derivation pending Layer 45 sweep
+    (predicted: PHI_RES^k · h · OMEGA_SCM / S26_3 family per quantum-chain ladder)."""
+    return DELTA_SCM_J
+
+
+def _constant_closure_report() -> dict:
+    """Honest derivation-status report for foundational constants.
+
+    For each fundamental, returns:
+      - uqff_sat: numerical value emitted by the UQFF saturation primitive (if any)
+      - si_anchor: CODATA/SI-exact reference value
+      - err_pct: 100 * |uqff_sat - si_anchor| / |si_anchor|
+      - status: 'identity' (SI base by definition, not derived from 26D substrate)
+                'derived'  (closure error < 1% — UQFF saturation matches anchor)
+                'broken'   (closure error >= 1% — UQFF saturation formula needs repair)
+                'hardcoded'(constant set from paper anchor; geometric derivation pending)
+      - formula: short symbolic description of the UQFF saturation chain
+      - notes: provenance / pending-work tag
+
+    This is the canonical answer to "is X derived?" — query the report's `status` field.
+    Session 261 (05Jun2026) audit reveals: sigma_SB and Lambda are fully derived;
+    h, c, k_B, e, N_A are SI identities; Delta_SCm is hardcoded;
+    G, eps_0, mu_0, Rydberg, Bohr-a0, Compton, Wien-b, mu_B carry saturation
+    formulas with closure error >> 1% (pending Layer 45 sweep correction).
+    """
+    items = [
+        ("h",        _h_planck_primitive_sat,           PLANCK_H,            "identity",  "PLANCK_H (2019 SI exact)"),
+        ("hbar",     _hbar_primitive_sat,               PLANCK_H/(2.0*math.pi), "derived","PLANCK_H/(2 pi)"),
+        ("c",        _c_light_primitive_sat,            C_LIGHT,             "identity",  "C_LIGHT (1983 SI exact)"),
+        ("k_B",      _k_b_primitive_sat,                K_B,                 "identity",  "K_B (2019 SI exact)"),
+        ("e",        _e_charge_primitive_sat,           EV_J,                "identity",  "EV_J (2019 SI exact)"),
+        ("N_A",      _N_A_primitive_sat,                N_AVOGADRO,          "identity",  "N_AVOGADRO (2019 SI exact)"),
+        ("G",        _G_newton_primitive_sat,           G_NEWTON,            None,        "RHO_SCM * c^4 / (A_26 * D_CRIT^2)"),
+        ("sigma_SB", _sigma_SB_primitive_sat,           5.670374419e-8,      None,        "(8 pi^5 / 60) * k_B^4 / (h^3 c^2)"),
+        ("eps_0",    _vacuum_permittivity_primitive_sat,8.8541878128e-12,    None,        "c^4 / (4 pi G rho_SCm A_26)"),
+        ("mu_0",     _vacuum_permeability_primitive_sat,1.25663706212e-6,    None,        "4 pi G rho_SCm A_26 / c^2"),
+        ("Rydberg",  _R_infinity_primitive_sat,         1.0973731568160e7,   None,        "D_crit^4 / (h c A_26)"),
+        ("Bohr_a0",  _a_0_primitive_sat,                5.29177210903e-11,   None,        "h^2 S_26 / (A_26 e)"),
+        ("Compton",  _lambda_C_primitive_sat,           2.4263102367e-12,    None,        "h D_crit^4 / (A_26 c)"),
+        ("Wien_b",   _b_wien_primitive_sat,             2.897771955e-3,      None,        "h c G1_K / (D_BSFG k_B)"),
+        ("mu_B",     _mu_B_primitive_sat,               9.2740100783e-24,    None,        "h e D_crit^4 / (4 pi A_26)"),
+        ("Lambda",   _vacuum_ledger_4term,              5.95e-10,            None,        "4-term G1-G8 vacuum ledger sum"),
+        ("Delta_SCm",_delta_scm_primitive_sat,          5.17e-3 * EV_J,      "hardcoded", "5.17 meV 26-level pairing (PAPER anchor)"),
+    ]
+    report = {}
+    for name, fn, anchor, forced_status, formula in items:
+        try:
+            v = float(fn())
+            err = 100.0 * abs(v - anchor) / abs(anchor) if anchor else float("nan")
+            if forced_status is not None:
+                status = forced_status
+            elif err < 1.0:
+                status = "derived"
+            else:
+                status = "broken"
+            note = "pending Layer 45 saturation-formula repair" if status == "broken" else "ok"
+        except Exception as exc:
+            v, err, status, note = float("nan"), float("nan"), "error", str(exc)
+        report[name] = {
+            "uqff_sat":  v,
+            "si_anchor": anchor,
+            "err_pct":   err,
+            "status":    status,
+            "formula":   formula,
+            "notes":     note,
+        }
+    # Summary counters for at-a-glance dispatch
+    statuses = [r["status"] for r in report.values()]
+    report["_summary"] = {
+        "total":     len(report),
+        "derived":   statuses.count("derived"),
+        "identity":  statuses.count("identity"),
+        "hardcoded": statuses.count("hardcoded"),
+        "broken":    statuses.count("broken"),
+        "error":     statuses.count("error"),
+        "source":    "Session 261 (05Jun2026) deep-search polish close-out",
+    }
+    return report
+
+
 # --- Tranche 1C: astro-system anchors + LENR variants + precision constants + P-predictions (25) ---
 # Continued Map section 6 hundreds-list closure beyond Tranches 1A/1B.
 
@@ -1540,6 +1640,10 @@ _LEDGER_PRIMITIVE: Dict[str, Callable[[], float]] = {
     # Tranche 1D: Gap 4 audit 04Jun2026
     "lambda_qcd_mev":     _Lambda_QCD_primitive_sat,
     "f_baryon":           _f_baryon_primitive_sat,
+    # Tranche 1E: derivation-honesty polish (Session 261 / 05Jun2026)
+    "hbar":               _hbar_primitive_sat,
+    "k_b":                _k_b_primitive_sat,
+    "delta_scm_j":        _delta_scm_primitive_sat,
 }
 
 def _master_constant_primitive(name: str):
@@ -2041,6 +2145,17 @@ def _derive_constant(name: str):
             return _paradox_proof(paradox_name)
         except KeyError:
             pass
+
+    # --- Layer 7E: derivation-honesty closure report (Session 261 / 05Jun2026) ---
+    # Answers "is constant X derived from the 26D substrate?" mechanically.
+    # Status per constant: identity / derived / broken / hardcoded.
+    if n in ("constant_closure_report", "closure_report", "constants_closure",
+             "derivation_status", "constant_status"):
+        return _constant_closure_report()
+    if n in ("hbar", "h_bar", "reduced_planck"):
+        return _hbar_primitive_sat()
+    if n in ("delta_scm", "delta_scm_j", "scm_shell_gap"):
+        return _delta_scm_primitive_sat()
 
     # --- Layer 8: MUGE_28May2025 dual-method validation (Map §12) ---
     if n in ("muge_inventory", "muge_28may2025_inventory"):
@@ -29584,6 +29699,10 @@ def _dispatch_keys() -> Dict[str, Any]:
             "ladder_levels": N_REGIME_LEVELS,
             "phase_windows": N_REGIME_PHASES,
         },
+        # 05Jun2026 (Session 261) derivation-honesty polish: machine-readable
+        # answer to "is constant X derived from the 26D substrate?".
+        # Status keys: identity | derived | hardcoded | broken | error
+        "constant_closure_report": _constant_closure_report()["_summary"],
         "version": __version__,
     }
 
