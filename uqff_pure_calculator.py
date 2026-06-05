@@ -29703,7 +29703,249 @@ def _dispatch_keys() -> Dict[str, Any]:
         # answer to "is constant X derived from the 26D substrate?".
         # Status keys: identity | derived | hardcoded | broken | error
         "constant_closure_report": _constant_closure_report()["_summary"],
+        # 05Jun2026 (Session 262) IPData/OPData wiring: symbolic IO ports.
+        "io_surface": _io_ports_info(),
         "version": __version__,
     }
+
+
+# ============================================================================
+# SESSION 262 (05Jun2026) — IPData / OPData symbolic IO wiring
+# ----------------------------------------------------------------------------
+# IPData.py defines the InputParameters dataclass (full UQFF input schema,
+# ~100 typed fields) and InputDataStore. OPData.py defines OutputDataStore +
+# module-level store/recall/search/list_queries/get_latest. Both were
+# originally attached to QCalc.py but never wired into uqff_pure_calculator.
+# Per user mandate: "This is a pure calculator that creates a spontaneous
+# answer after given symbolic input."
+#
+# _solve_from_input(params, ...) is the spontaneous orchestrator: accepts
+# IPData.InputParameters OR a raw dict; fans out across all 7 public
+# calculate_* surfaces; assembles a result; optionally persists to OPData.
+# Lazy imports keep the calculator standalone (works offline at quantum
+# levels when IPData/OPData absent — fail-soft, returns raw result dict).
+# NOT REPLACEMENT — additive; all existing public surfaces untouched.
+# ============================================================================
+
+# Cache of (calculate_fn_name, callable) tuples — populated lazily so
+# external callers can introspect the dispatch surface.
+_CALCULATE_SURFACES: List[Tuple[str, Any]] = []
+
+
+def _register_calculate_surfaces() -> List[Tuple[str, Any]]:
+    """Introspect this module for every public calculate_* callable.
+
+    Returns list of (name, fn) tuples in the canonical 7-function order.
+    Read-only; cached after first call.
+    """
+    global _CALCULATE_SURFACES
+    if _CALCULATE_SURFACES:
+        return _CALCULATE_SURFACES
+    canonical = [
+        "calculate_resonant_adpm",
+        "calculate_scm",
+        "calculate_f_u_bi",
+        "calculate_f_u_bi_i",
+        "calculate_triadic_g",
+        "calculate_vacuum_ledger",
+        "calculate_analytic_closures",
+    ]
+    g = globals()
+    _CALCULATE_SURFACES = [(n, g[n]) for n in canonical if n in g and callable(g[n])]
+    return _CALCULATE_SURFACES
+
+
+def _input_to_dataset(params: Any) -> Dict[str, Any]:
+    """Coerce IPData.InputParameters | dict | None to a dataset dict.
+
+    Accepts:
+      - None                                          -> {}
+      - dict                                          -> shallow copy
+      - IPData.InputParameters instance               -> .to_dict() (None-stripped)
+      - object with .to_dict()                        -> .to_dict()
+    """
+    if params is None:
+        return {}
+    if isinstance(params, dict):
+        return dict(params)
+    to_dict = getattr(params, "to_dict", None)
+    if callable(to_dict):
+        try:
+            return dict(to_dict())
+        except Exception:
+            pass
+    # Last-resort: dataclasses.asdict
+    try:
+        import dataclasses as _dc
+        if _dc.is_dataclass(params):
+            return {k: v for k, v in _dc.asdict(params).items() if v is not None}
+    except Exception:
+        pass
+    return {}
+
+
+def _solve_from_input(params: Any,
+                      *,
+                      query_name: Optional[str] = None,
+                      store: bool = True,
+                      surfaces: Optional[List[str]] = None) -> Dict[str, Any]:
+    """Spontaneous symbolic solve over the full pure-calculator surface.
+
+    Args:
+      params:     IPData.InputParameters | dict | None. Whatever symbolic
+                  fields are present will be honored; the rest fall back to
+                  module defaults (DEFAULT_M, DEFAULT_R, OMEGA_SCM, etc).
+      query_name: Optional human-readable label for the OPData query record.
+      store:      If True and OPData is importable, persists result and
+                  returns the assigned query_id in the result dict.
+      surfaces:   Optional subset of calculate_* names to run. Default: all 7.
+
+    Returns:
+      {
+        'query_id':           str (or None if storage failed/disabled),
+        'query_name':         str,
+        'timestamp':          ISO-8601 str,
+        'input_params':       dict (the coerced dataset),
+        'input_param_count':  int  (non-None field count from input),
+        'solutions':          {fn_name: value-or-scalar}    # primary scalar per surface
+        'long_form_equations':[{name, value, provenance}],  # one entry per surface
+        'available_equations':[fn_name, ...],               # surfaces that returned a value
+        'errors':             {fn_name: error_str},         # surfaces that raised
+        'dispatch_keys':      _dispatch_keys()  (snapshot, for downstream UI),
+      }
+
+    NOT REPLACEMENT: this function only COMPOSES the existing 7 public
+    calculate_* surfaces. It does not implement new physics.
+    """
+    dataset = _input_to_dataset(params)
+    requested = surfaces or [n for n, _ in _register_calculate_surfaces()]
+    fn_map = dict(_register_calculate_surfaces())
+
+    long_form: List[Dict[str, Any]] = []
+    solutions: Dict[str, Any] = {}
+    errors: Dict[str, str] = {}
+    available: List[str] = []
+
+    for name in requested:
+        fn = fn_map.get(name)
+        if fn is None:
+            errors[name] = "unknown surface"
+            continue
+        try:
+            res = fn(dataset)
+        except Exception as ex:
+            errors[name] = f"{type(ex).__name__}: {ex}"
+            continue
+        val = res.get("value") if isinstance(res, dict) else res
+        prov = res.get("provenance") if isinstance(res, dict) else None
+        long_form.append({"name": name, "value": val, "provenance": prov})
+        # Normalize scalar for the solutions dict — for surfaces that return a
+        # composite dict we keep the dict; otherwise the raw value.
+        solutions[name] = val
+        available.append(name)
+
+    from datetime import datetime as _dt
+    timestamp = _dt.now().isoformat()
+    qname = query_name or dataset.get("query_name") or "pure_calc_query"
+    qid_base = f"PCQ_{_dt.now().strftime('%Y%m%d_%H%M%S_%f')}"
+
+    result: Dict[str, Any] = {
+        "query_id": qid_base,
+        "query_name": qname,
+        "timestamp": timestamp,
+        "input_params": dataset,
+        "input_param_count": sum(1 for v in dataset.values() if v is not None),
+        "solutions": solutions,
+        "long_form_equations": long_form,
+        "available_equations": available,
+        "errors": errors,
+        "dispatch_keys": _dispatch_keys(),
+    }
+
+    if store:
+        try:
+            import OPData as _opd  # lazy — module stays standalone if absent
+            qid = _opd.store(result)
+            if qid:
+                result["query_id"] = qid
+        except Exception as ex:
+            result["errors"]["__opdata_store__"] = f"{type(ex).__name__}: {ex}"
+
+    return result
+
+
+def _solve_symbolic(symbol_dict: Optional[Dict[str, Any]] = None,
+                    **kwargs: Any) -> Dict[str, Any]:
+    """Thin convenience alias — accepts raw kwargs as symbolic input.
+
+    Example:
+        _solve_symbolic(M=1.989e30, r=1.496e11, T=5778, omega=1.25e12)
+    is equivalent to:
+        _solve_from_input({'M':1.989e30, 'r':1.496e11, 'T':5778, 'omega':1.25e12},
+                          store=False)
+    """
+    d: Dict[str, Any] = {}
+    if symbol_dict:
+        d.update(symbol_dict)
+    if kwargs:
+        d.update(kwargs)
+    return _solve_from_input(d, store=False)
+
+
+def _recall(query_id: str) -> Optional[Dict[str, Any]]:
+    """Recall a stored result via OPData. None if OPData unavailable or miss."""
+    try:
+        import OPData as _opd
+        return _opd.recall(query_id)
+    except Exception:
+        return None
+
+
+def _list_queries() -> List[str]:
+    """List all OPData-stored query IDs. Empty if OPData unavailable."""
+    try:
+        import OPData as _opd
+        return _opd.list_queries()
+    except Exception:
+        return []
+
+
+def _io_ports_info() -> Dict[str, Any]:
+    """Symbolic IO port metadata exposed via _dispatch_keys()['io_surface'].
+
+    Probes IPData/OPData lazily so the report reflects actual availability
+    at the moment _dispatch_keys() is called (offline-safe).
+    """
+    info: Dict[str, Any] = {
+        "solve_fn":          "_solve_from_input",
+        "convenience_fn":    "_solve_symbolic",
+        "recall_fn":         "_recall",
+        "list_fn":           "_list_queries",
+        "calculate_surfaces": [n for n, _ in _register_calculate_surfaces()],
+        "ipdata_available":   False,
+        "opdata_available":   False,
+        "ipdata_schema_keys": [],
+        "session":            "Session 262 (05Jun2026) IO wiring",
+    }
+    try:
+        import IPData as _ipd
+        info["ipdata_available"] = True
+        from dataclasses import fields as _fields
+        if hasattr(_ipd, "InputParameters"):
+            info["ipdata_schema_keys"] = sorted(
+                f.name for f in _fields(_ipd.InputParameters)
+            )
+    except Exception as ex:
+        info["ipdata_error"] = f"{type(ex).__name__}: {ex}"
+    try:
+        import OPData as _opd
+        info["opdata_available"] = True
+        info["opdata_store_class"] = "OutputDataStore"
+        info["opdata_module_functions"] = [
+            "store", "recall", "search", "list_queries", "get_latest",
+        ]
+    except Exception as ex:
+        info["opdata_error"] = f"{type(ex).__name__}: {ex}"
+    return info
 
 # End of single minimal thin pure calculator file.

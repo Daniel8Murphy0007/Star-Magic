@@ -382,6 +382,105 @@ def test_constant_closure_report() -> List[Tuple[str, bool, str]]:
     return out
 
 
+def test_io_ports_session262() -> List[Tuple[str, bool, str]]:
+    """Session 262: IPData/OPData symbolic IO wiring.
+
+    The pure calculator must orchestrate all 7 calculate_* surfaces from a
+    single symbolic input (IPData.InputParameters or dict) and persist the
+    result via OPData. Validates the offline-safe lazy-import pattern, the
+    98-field IPData schema exposure, and the spontaneous-answer contract.
+    """
+    out: List[Tuple[str, bool, str]] = []
+
+    # --- io_surface metadata is published via _dispatch_keys ---
+    d = u._dispatch_keys()
+    out.append(_check("io::dispatch_io_surface_present",
+                      "io_surface" in d and isinstance(d["io_surface"], dict),
+                      f"keys: {list(d.keys())[-5:]}"))
+    io = d.get("io_surface", {})
+    out.append(_check("io::ipdata_available",
+                      io.get("ipdata_available") is True,
+                      f"got {io.get('ipdata_available')}"))
+    out.append(_check("io::opdata_available",
+                      io.get("opdata_available") is True,
+                      f"got {io.get('opdata_available')}"))
+    out.append(_check("io::ipdata_schema_keys_at_least_90",
+                      len(io.get("ipdata_schema_keys", [])) >= 90,
+                      f"got {len(io.get('ipdata_schema_keys', []))}"))
+    out.append(_check("io::calculate_surfaces_7",
+                      len(io.get("calculate_surfaces", [])) == 7,
+                      f"got {len(io.get('calculate_surfaces', []))}"))
+
+    # --- _solve_symbolic with bare kwargs ---
+    res = u._solve_symbolic(M=1.989e30, r=1.496e11, t_n=0.0, omega=1.25e12)
+    out.append(_check("io::solve_symbolic_returns_dict",
+                      isinstance(res, dict) and "available_equations" in res,
+                      "missing available_equations"))
+    out.append(_check("io::solve_symbolic_no_errors",
+                      res.get("errors") == {},
+                      f"errors: {res.get('errors')}"))
+    out.append(_check("io::solve_symbolic_all_7_fired",
+                      len(res.get("available_equations", [])) == 7,
+                      f"available: {res.get('available_equations')}"))
+    out.append(_check("io::solve_symbolic_param_count_4",
+                      res.get("input_param_count") == 4,
+                      f"got {res.get('input_param_count')}"))
+
+    # --- _solve_from_input with IPData.InputParameters ---
+    import IPData as ipd
+    p = ipd.InputParameters(
+        query_name="harness_smoke",
+        M=1.989e30, r=1.496e11, T=5778.0, B=1e-3, omega=1.25e12,
+    )
+    res = u._solve_from_input(p, query_name="harness_smoke_test")
+    out.append(_check("io::ipdata_solve_query_id_present",
+                      isinstance(res.get("query_id"), str) and len(res["query_id"]) > 0,
+                      f"qid: {res.get('query_id')}"))
+    out.append(_check("io::ipdata_solve_no_errors",
+                      res.get("errors") == {},
+                      f"errors: {res.get('errors')}"))
+    out.append(_check("io::ipdata_solve_long_form_7",
+                      len(res.get("long_form_equations", [])) == 7,
+                      f"got {len(res.get('long_form_equations', []))}"))
+    # Each long_form entry must have a provenance string
+    lf = res.get("long_form_equations", [])
+    out.append(_check("io::ipdata_solve_long_form_has_provenance",
+                      all(isinstance(e.get("provenance"), str) and len(e["provenance"]) > 0
+                          for e in lf),
+                      f"provenance missing on {sum(1 for e in lf if not e.get('provenance'))} entries"))
+
+    # --- OPData recall round-trip ---
+    back = u._recall(res["query_id"])
+    out.append(_check("io::opdata_recall_round_trip",
+                      back is not None,
+                      f"recall returned None for {res['query_id']}"))
+    if back:
+        out.append(_check("io::opdata_recall_query_name",
+                          back.get("input_params", {}).get("query_name") == "harness_smoke",
+                          f"got {back.get('input_params', {}).get('query_name')}"))
+
+    # --- _input_to_dataset coercion contract ---
+    out.append(_check("io::coerce_none_to_empty",
+                      u._input_to_dataset(None) == {},
+                      "None coercion failed"))
+    out.append(_check("io::coerce_dict_passthrough",
+                      u._input_to_dataset({"M": 1.0, "r": 2.0}) == {"M": 1.0, "r": 2.0},
+                      "dict coercion failed"))
+    coerced = u._input_to_dataset(p)
+    out.append(_check("io::coerce_ipdata_to_dict",
+                      isinstance(coerced, dict) and coerced.get("M") == 1.989e30,
+                      f"coerced.M = {coerced.get('M')}"))
+
+    # --- offline-safe contract: surfaces subset works ---
+    res = u._solve_from_input({"M": 1e30, "r": 1e10},
+                              surfaces=["calculate_f_u_bi"], store=False)
+    out.append(_check("io::surfaces_subset_one_surface",
+                      res.get("available_equations") == ["calculate_f_u_bi"],
+                      f"got {res.get('available_equations')}"))
+
+    return out
+
+
 def test_new_polish_primitives() -> List[Tuple[str, bool, str]]:
     """Session 261 polish: hbar, k_b, delta_scm_j exposed as ledger primitives + dispatch."""
     out: List[Tuple[str, bool, str]] = []
@@ -431,6 +530,7 @@ def _run_all() -> List[Tuple[str, bool, str]]:
     results.extend(test_dispatch_inventory_counts())
     results.extend(test_constant_closure_report())
     results.extend(test_new_polish_primitives())
+    results.extend(test_io_ports_session262())
     return results
 
 
