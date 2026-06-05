@@ -6606,3 +6606,75 @@ Sectors: PAPER_503, 882, 886, 888, 894, 898, 907, 946, 957, 1065, 1066, 1089, 10
 
 *Image 112 keeps the 7-function public surface intact while formalizing what the b9 master log + CP1â€“CP4 pipeline have always done. G0 gate untouched; no `.py` written until user issues the approval phrase ("The plan is approved. Write the one file.").*
 
+
+---
+
+## Plan Image 77 - Gaps 1-5 (Session 260 / 04Jun2026 deep-audit close-out)
+
+**Status:** Complete. Commit ef51fbe4 on origin/master. Test harness 116/116 PASS (65 originals + 51 new). NOT REPLACEMENT discipline preserved across all 5 gaps.
+
+**User trigger.** *"deepsearch the attached grok files and find what's missing. there are many more derivations; you are looking for 1018+ different derivations. Where are the 8 paradox proofs? Where are the remaining SI unit derivations? Look deeper your not seeing the bigger picture."* -> 4-section audit identified 5 specific scaffolding gaps where grok evidence documented surfaces the calculator never exposed.
+
+### Audit findings (vs. 1018+/8-paradox/SI claim)
+
+| Gap | Missing surface | Source of truth |
+|-----|-----------------|-----------------|
+| 1 | 17 named F_UBii buoyancy proofs (virx/termv/upar/coup/orbdec/kn/fermi/kne/whim/ps/sfe/hawk/bd/roche/ent/dec/lobe) | GROK_THREAD_98b2e77d_ANALYSIS.md L585-1525 |
+| 2 | 26-rung Quantum Chain ladder + `derive_from_quantum_chain` single-source-of-truth | grok_b8e305e6_1f29.md L777-794 |
+| 3 | 10 inflation/cosmology primitives (Omega_GW h^2, r, dn_s/dlnk, f_NL^equil, f_NL^orth, epsilon, eta, N_efolds, T_reh, H_inf) | grok_8461fe4e_c903.md L1043-1098 |
+| 4 | Lambda_QCD + f_b baryon-fraction primitives | grok_8461fe4e_c903.md (22-challenge list) |
+| 5 | 8-paradox dispatcher (info_paradox routes through black_hole_info via F_UBii_ent operator) | grok_b8e305e6_1f29.md L467 + GROK_THREAD_98b2e77d L1397 |
+
+### Delivered surfaces (additive only - NOT REPLACEMENT)
+
+| Surface | Location in `uqff_pure_calculator.py` | Count |
+|---------|------------------------------------------|-------|
+| `_f_ubii_*` proof functions + `F_UBII_PROOFS` registry + `_f_ubii_proof()` dispatcher + `_f_ubii_inventory()` | L3591-3820 | 17 proofs |
+| `_quantum_chain_E_n(n)` + `_quantum_chain_total_energy()` + `_quantum_chain_volume(m)` + `_derive_from_quantum_chain()` + `_quantum_chain_inventory()` | ~L25543 | 26 rungs |
+| `_paradox_proof(name)` + `_paradox_inventory()` + `PARADOX_TO_MILLENNIUM` dict | ~L25621 | 8 paradoxes |
+| 12 new `_*_primitive_sat` functions + `_LEDGER_PRIMITIVE` entries + ~25 aliases in `_master_constant_primitive` | L1168-L1226 + L1517-L1535 + L1700-L1715 | 12 primitives (148 -> 160) |
+| 3 new `_si_unit_derivations()` keys: `kg_kilogram_chain`, `rho_mass_chain_kg_m3`, `rho_energy_chain_J_m3` | inside `_si_unit_derivations` | 7 -> 10 SI keys |
+| `_dispatch_keys()` new inventory surfaces: `f_ubii_proofs` (17), `paradox_proofs` (8), `quantum_chain` (n_levels=26), `ledger_primitive_keys` (160), `regime_corpus` (total=1018) | `_dispatch_keys` | 5 new keys |
+| `_derive_constant()` Layer 7B/7C/7D dispatch routes for `f_ubii_*`, `quantum_chain_*`, `paradox_*` symbolic keys | L2013-L2050 | 3 new layers |
+
+### Numerical baselines (canonical inputs)
+
+- F_UBii_virx (Perseus sigma_X=1200 km/s) = 2.93e+18
+- F_UBii_ent (GW150914 36+29 M_sun entanglement) = 2.24e+137
+- F_UBii_hawk = 3.70e-10; F_UBii_kn (AT2017gfo) = 1.76e-19; F_UBii_orbdec = 1.03e-13
+- Quantum chain: E_total = 4.97e-16 J = 3104.67 eV across 26 rungs; E_1 = 1.20e-16, E_26 = 1.54e-18
+- Paradox info_paradox = 1.41e-42 (page-curve closure) with F_UBii_ent=2.238e+137 cited in provenance
+- Omega_GW h^2 primitive = 8.20e-39; r = 0.009; epsilon = 7.5e-3; eta = 0.05; N_efolds = 52
+- Lambda_QCD = 414.9 MeV; f_baryon = 0.65 (structural saturation, not literal 0.157)
+
+### Resolver wiring rule learned
+
+`_resolve_uqff_ledger` consumes dataset keys: `system | mode | f_env | cycle2 | primitive | regime | muge | bridge | enhanced | calibrated | prediction | symbolic | input`. The `master` key is ONLY checked for `cycle2`. New surfaces are reached via:
+
+``python
+_resolve_uqff_ledger({"symbolic": "f_ubii_virx"})       # -> {"value": (2.93e+18, prov)}
+_resolve_uqff_ledger({"symbolic": "paradox_info_paradox"})  # -> {"value": (1.41e-42, prov citing F_UBii_ent)}
+_resolve_uqff_ledger({"symbolic": "quantum_chain_e_13"})    # -> 8.90e-18
+_resolve_uqff_ledger({"symbolic": "omega_gw_h2_primitive"}) # -> 2.60e-37
+``
+
+Routing chain: `_resolve_uqff_ledger` -> `_derive_constant(key)` -> Layer 7B/7C/7D match -> proof/chain/paradox dispatch.
+
+### Test additions (uqff_pure_calculator_Test.py)
+
+| Test function | Checks |
+|---------------|--------|
+| `test_f_ubii_proofs_complete` | 1 inventory + 17 finite_nonzero = 18 |
+| `test_quantum_chain_ladder` | n_levels=26, all 26 rungs positive_finite, inventory_shape, derive_three_quantities = 4 |
+| `test_paradox_proofs_dispatched` | registry size 8 + 8 finite + info_paradox cites F_UBii_ent = 10 |
+| `test_new_inflation_primitives` | 2 ledger checks + 12 finite_nonzero = 14 |
+| `test_dispatch_inventory_counts` | 5 dispatch inventory counts |
+| **Final** | **65 originals + 51 new = 116/116 PASS** |
+
+### Git anchor
+
+- Commit ef51fbe4 on master, pushed to origin/master
+- Files changed: uqff_pure_calculator.py (+677 / -1), uqff_pure_calculator_Test.py (+147 / -1)
+- Backup: uqff_pure_calculator.py.session_backup (untracked)
+- Repo memory note: `/memories/repo/session260_5gaps_complete.md`
+
