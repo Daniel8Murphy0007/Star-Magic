@@ -414,3 +414,55 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 7. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
 8. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory.* Cambridge University Press — doi:10.1017/CBO9781139248563
 9. Polchinski, J. (1998). *String Theory Vol. 1.* Cambridge University Press
+
+---
+
+## Â§v5.78 Closure â€” Calibration Constants Now Derived (Cosmology / Bucket-A, T-Î›)
+
+The "Cosmic Quantum Egg" pre-inflationary configuration described above (Drawings 14, 20) is the
+same 26-dimensional initial state that the v5.78 closure chain re-derives as the variational
+minimum of the closed UQFF Lagrangian. The Planck 2018 / CMB validation reported here is, under
+v5.78, a **first-principles agreement** rather than a tuned fit: the cosmological constant
+$\rho_\Lambda$ that anchors the post-inflation expansion is locked by the 27-decade vacuum-energy
+ledger (PAPER_1170) without empirical input.
+
+| Constant cited / used | v5.78 derivation origin | Anchor paper |
+|---|---|---|
+| $\rho_{SCm} = 7.09\times10^{-37}$ J/mÂ³ | 27-decade R26 + KK + BSFG vacuum-energy ledger | PAPER_1170 |
+| $\rho_{UA} = 7.09\times10^{-36}$ J/mÂ³ ($=10\cdot\rho_{SCm}$) | Ledger + $|SO(5)|=10$ rescale | PAPER_1170 + G3 (PAPER_1163) |
+| $H_0 \approx 67.4$ km/s/Mpc (Planck 2018) | Reproduced from ledger + Î¾-lock projection | PAPER_1170 + PAPER_1171/1173 |
+| $T_{CMB} = 2.725$ K | Output of 26-center collapse â†’ inflation transition | PAPER_1167 (CP4 #254) |
+| $[SSq] = 0.57$ | G4 joint $\Phi_{res}$ / $F_{TRZ}$ closure | PAPER_1165 |
+| $\beta_i = 3(5-i)/20$ | G1 Mexican-hat $V(U_A)$ minimum | PAPER_1162 |
+| $\kappa$ | Empirical decay rate (held); gauged via G3 DPM SO(2) | PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 â€” *All Eight Lagrangian Gaps Closed* (CP4 #254). The Cosmic
+Quantum Egg as superposition of all field configurations at $t<0$ is precisely the variational
+ground state of the closed Lagrangian $L_{UQFF} = L_{GR} + L_{SCm} + L_{phonon} + L_{interaction}$
+with $V_{min} = -\rho_{SCm}$.
+
+**Vacuum saturation:** PAPER_1170 â€” *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256).
+The "<0.5%" agreement reported here against Planck 2018 cosmological parameters is the same Planck-
+residual that the ledger achieves; the two are not independent â€” they are the same closure viewed
+from initial-state and steady-state ends.
+
+**Î¾ = 13/3 R26+KK lock:** the 26-dimensional Cosmic Egg projects to the observed 3+1 spacetime via
+the same compactification ratio fixed by Theorem 9 of `AXIOMS_AND_THEOREMS.md` (PAPER_1171/1172/1173,
+CP4 #257/#258). The Hubble parameter and CMB temperature reported here are post-projection
+quantities.
+
+**Falsifier hooks (P-suite):**
+- **P11** LIGO O5 ringdown $R_{21}/R_{22} = 0.144$ (PAPER_1175): constrains residual coherence in
+  the post-inflation gravitational-wave background.
+- **P12** Euclid $\sigma_8 = 0.797$ (PAPER_1176): probes the post-inflation imprint of the Cosmic
+  Egg's initial-state field distribution.
+- **P14** CMB-S4 $\mu$-distortion (PAPER_1179): constrains the energy released during the
+  $t=0$ collapse â†’ inflation transition. A null at $\geq 3\sigma$ would falsify the claim
+  that the Quantum-Egg state decays into the observable universe via $\kappa$-driven inflation.
+
+**Non-applicability note:** P6 sub-mm Yukawa (PAPER_1173) probes $L_{KK}^{*}$ at the 20â€“90 Âµm
+scale, downstream of the pre-inflationary Quantum Egg; P10 Cherenkov spectral cutoff is a
+high-energy-astrophysics signature; LENR-scale closures (Holmlid 630 eV / Kozima PAPER_840) are
+out of scope. None of these directly test the pre-inflationary configuration described here.
+
+*Closure label:* `BigBang_Cosmic_Quantum_Egg_26D` &mdash; Template `T-Lambda` &mdash; ledger-derived (PAPER_1170, CP4 #256).

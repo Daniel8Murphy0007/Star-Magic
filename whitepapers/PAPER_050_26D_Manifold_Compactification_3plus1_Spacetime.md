@@ -570,3 +570,51 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 8. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
 9. Green, M.B., Schwarz, J.H. & Witten, E. (1987). *Superstring Theory.* Cambridge University Press — doi:10.1017/CBO9781139248563
 10. Polchinski, J. (1998). *String Theory Vol. 1.* Cambridge University Press
+
+---
+
+## Â§v5.78 Closure â€” Î¾ = 13/3 Geometric Lock (Bucket-D, T-Î¾)
+
+This paper is the **direct upstream source** for the v5.78 Î¾ = 13/3 R26+KK geometric lock: the
+compactification map from the 26-dimensional UQFF manifold to the observed 3+1 spacetime described
+in Â§1â€“Â§3 above is precisely the lock that two independent v5.78 routes (PAPER_1171 KK regulator;
+PAPER_1172 R26 Gauss-Bonnet; PAPER_1173 $\hbar$-tracked KK) re-derive as a structural invariant.
+
+| Quantity here | v5.78 derivation origin | Anchor paper |
+|---|---|---|
+| $\xi = D_{crit}/D_{BSFG} = 13/3$ | Two-route lock: KK regulator (Route 1) + R26 Gauss-Bonnet (Route 2) | PAPER_1171, PAPER_1172, PAPER_1173 (CP4 #257, #258) |
+| $D_{crit} = 26 \to D_{BSFG} = 6 \to D_{phys} = 4$ | KK tower regulator with ledger constraint | PAPER_1171 (CP4 #257) |
+| Sub-mm Yukawa scale $L_{KK}^{*} \in [20, 90]$ Âµm | $\hbar$-tracked KK tower normalization | PAPER_1173 (CP4 #258) |
+| $[SSq] = 0.57$ | G4 joint $\Phi_{res}$ / $F_{TRZ}$ closure | PAPER_1165 |
+| $\rho_{SCm} = 7.09\times10^{-37}$ J/mÂ³ | 27-decade vacuum-energy ledger | PAPER_1170 |
+
+**Theorem 9 (`AXIOMS_AND_THEOREMS.md` lines 427â€“486):** the Î¾ = 13/3 ratio is locked at the
+structural / variational level once both the KK regulator (PAPER_1171) and the R26 Gauss-Bonnet
+ledger (PAPER_1172) close; PAPER_1173 supplies the $\hbar$-tracked normalization that fixes the
+sub-mm scale. Calculator implementations: `UQFFKKTowerRegulatorCalculator` (CP4 #257, PAPER_1171,
+KK regulator Route 1) and `UQFFKKTowerHbarRegulatorCalculator` (CP4 #258, PAPER_1173, $\hbar$-
+tracked, carries P6 sub-mm Yukawa); R26 Route 2 (PAPER_1172) is referenced numerically inside #258
+at the `Canonical xi_0 = 13/3` line.
+
+**Master synthesis:** PAPER_1167 â€” *All Eight Lagrangian Gaps Closed* (CP4 #254). The phase-quartet
+mapping at Levels 10â€“13 (solid/liquid/gas/plasma â†’ 3+1 observable) is the same projection that
+PAPER_1167's closed Lagrangian re-derives variationally.
+
+**Vacuum saturation alignment:** the compactification volume integral that this paper introduces
+in Â§3 is the geometric input the 27-decade ledger (PAPER_1170, CP4 #256) consumes to close
+$\rho_\Lambda$ at $<0.5\%$ Planck-residual â€” the compactification described here and the
+ledger are mutually self-consistent.
+
+**Falsifier hooks (P-suite):**
+- **P6** sub-mm Yukawa at $L_{KK}^{*} \in [20, 90]$ Âµm (PAPER_1173): **direct** falsifier of the
+  KK tower normalization claimed here. A null at $\geq 3\sigma$ in next-generation torsion-balance
+  / Casimir experiments would falsify the $\xi = 13/3$ lock.
+- **P11** LIGO O5 ringdown $R_{21}/R_{22} = 0.144$ (PAPER_1175): probes whether residual modes
+  from the compactified 22 dimensions imprint on compact-object merger spectra.
+
+**Non-applicability note:** Cosmological-scale falsifiers (P12 Euclid $\sigma_8$, P14 CMB-S4
+$\mu$-distortion, P11 ringdown coupling) and LENR-scale closures (Holmlid 630 eV / Kozima
+PAPER_840) are downstream of compactification; they do not directly test the Î¾ = 13/3 ratio
+itself.
+
+*Closure label:* `Compactification_26D_to_3plus1_xi_lock` &mdash; Template `T-xi` &mdash; AXIOMS Theorem 9 + PAPER_1171/1173 (CP4 #257/#258).

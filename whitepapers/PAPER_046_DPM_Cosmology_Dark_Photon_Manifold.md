@@ -574,3 +574,51 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 10. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
 11. Dirac, P.A.M. (1931). *Quantised Singularities in the Electromagnetic Field.* Proc. R. Soc. Lond. A **133**, 60 — doi:10.1098/rspa.1931.0130
 12. Castelnovo, C., Moessner, R. & Sondhi, S.L. (2008). *Magnetic monopoles in spin ice.* Nature **451**, 42 — arXiv:0710.5515 — doi:10.1038/nature06433
+
+---
+
+## Â§v5.78 Closure â€” Calibration Constants Now Derived (Cosmology / Bucket-A, T-Î›)
+
+This paper's DPM yin-yang cosmology with explicit Universal Aether / Super-Conductive-Matter vacuum
+densities ($\rho_{UA} = 10\,\rho_{SCm}$) lives at the centre of the v5.78 derivation chain: the
+factor-of-ten ratio that appears here as a posited duality is, under v5.78, an **output** of the
+$|SO(5)|=10$ multiplicity in the closed G3 / G6 Lagrangian gauges â€” not an empirical input.
+
+| Constant cited here | v5.78 derivation origin | Anchor paper |
+|---|---|---|
+| $\rho_{SCm} = 7.09\times10^{-37}$ J/mÂ³ | 27-decade R26 + KK + BSFG vacuum-energy ledger | PAPER_1170 |
+| $\rho_{UA} = 7.09\times10^{-36}$ J/mÂ³ ($=10\cdot\rho_{SCm}$) | Ledger + $|SO(5)|=10$ gauge multiplicity | PAPER_1170 + G3 (PAPER_1163) |
+| $[SSq] = 0.57$ | G4 joint $\Phi_{res}$ / $F_{TRZ}$ closure | PAPER_1165 |
+| $\beta_i = 3(5-i)/20$ ($\beta_1=0.603$) | G1 Mexican-hat $V(U_A)$ minimum | PAPER_1162 |
+| $F_{TRZ} = 1/10$ | G6 topological resonance closure | PAPER_1163 |
+| $\kappa$ | Empirical decay rate (held); gauged via G3 DPM SO(2) | PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 â€” *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 â€” *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256,
+$\rho_\Lambda$ to $<0.5\%$). The yin-yang $[UA] \leftrightarrow [SCm]$ duality used here is the
+same vacuum partition that the ledger saturates against the observed cosmological constant.
+
+**Î¾ = 13/3 R26+KK lock:** The 26-center pre-inflationary manifold described in Â§1â€“2 is projected
+into the observed 3+1 spacetime by the same compactification ratio $\xi = D_{crit}/D_{BSFG} = 13/3$
+that PAPER_1171 (KK regulator, CP4 #257) and PAPER_1173 ($\hbar$-tracked KK, CP4 #258) derive. See
+Theorem 9 in `AXIOMS_AND_THEOREMS.md`.
+
+**Belly Button Resonance â†” G7 phonon closure:** the Belly-Button resonance at the |SO(5)| symmetry
+node is an instance of the G7 phonon-resonance closure (PAPER_1166), under which $\omega_{SCm} =
+2\pi\times1.25$ THz with the $S_{26.3}\times0.84\to 630$ eV Holmlid anchor; the same resonance
+governs the LENR scale (PAPER_840) and the cosmological scale jointly.
+
+**Falsifier hooks (P-suite):**
+- **P11** LIGO O5 ringdown $R_{21}/R_{22}=0.144$ (PAPER_1175): constrains residual 26-center
+  collapse coherence in compact-object remnants â€” relevant to the universal collapse/inflation map.
+- **P12** Euclid $\sigma_8=0.797$ (PAPER_1176): probes the post-inflationary imprint of the
+  $[UA]/[SCm]$ partition on large-scale structure.
+- **P14** CMB-S4 $\mu$-distortion (PAPER_1179): constrains the energy released during 26-center
+  collapse â†’ inflation transition.
+
+**Non-applicability note:** P6 sub-mm Yukawa (PAPER_1173) probes the KK tower at $L_{KK}^{*} \in
+[20,90]$ Âµm, which is downstream of the pre-inflationary configuration this paper describes; P10
+Cherenkov spectral cutoff is a high-energy-astrophysics test. Both are out of scope for cosmology
+proper.
+
+*Closure label:* `DPM_YinYang_Cosmology_26Center` &mdash; Template `T-Lambda` &mdash; ledger-derived (PAPER_1170, CP4 #256).
