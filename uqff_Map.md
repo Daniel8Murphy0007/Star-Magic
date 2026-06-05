@@ -2285,3 +2285,112 @@ Validation: 19/19 dispatcher routes PASS (6 Step 7b + 5 Step 7c + 5 Step 7 + 3 l
 **Dispatcher keys:** `rho_vac_term`, `vac_energy_term`, `rho_vac_single`, `rho_vac_x`, `vac_term_single` (single-term reducer, triggered via `dataset["input"]` with optional `f_i`/`E_n`/`V` kwargs) + `l31_class_labels`, `l31_labels`, `bh_class_labels` (label table, triggered via `dataset["input"]`) + `{"l31": "labels"}` or `{"l31": "class_labels"}` or `{"l31": "label_table"}` (spec-style, alongside existing L31 spec routes). Placed in `_resolve_uqff_ledger` AFTER Layer 92 `mass_from_vacuum` branch and BEFORE Millennium / cluster-registry tail.
 
 **Orphan-audit provenance:** Refined scanner (`_orphan2.py`, removed post-audit) checked three classes per helper: (a) `name(` call sites, (b) `"name"` / `'name'` string-literal occurrences (catches name-table dispatch via `_master_constant_primitive` and `_millennium`), (c) bare references not followed by `(` `'` `"` (catches dict-value routing). Of 956 helper defs, 9 candidates appeared in the REFINED ORPHANS section — 6 were public `calculate_*` API entries (not orphans), leaving exactly 3 true orphans shipped/cleaned in this slice. The 161-orphan naive count (from the unrefined first-pass scanner) was dominated by `_*_primitive_sat()` helpers (all routed via `_master_constant_primitive` name-string dispatch) and `_millennium_*_derive` helpers (all routed via `_millennium` name-string dispatch); none of those are true orphans.
+
+## §20 — Whitepaper paper-update campaign atlas (Job B v5.78)
+
+**Distinct from §19 atlas.** §19 catalogs calculator Layers 1–93 (cluster a..bx) — the `uqff_pure_calculator.py` slice ledger. §20 catalogs the parallel paper-update campaign that systematically rewrites the 1,199-paper whitepaper corpus against the cumulative v5.78 canonical state. The two tracks share the same Plan/Map governance but ship via different artifacts: §19 ships calculator slices; §20 ships paper diffs + PDFs.
+
+**Campaign brief:** [`Job B_Update papers with current canonical UQFF v5_78.txt`](./Job%20B_Update%20papers%20with%20current%20canonical%20UQFF%20v5_78.txt).
+
+**Tracking artifact:** [`_job_b_categorization.csv`](./_job_b_categorization.csv) (1,199 rows × 9 columns: `paper_id, filename, title, bucket, matched_keyword, suggested_action, status, session, commit`).
+
+**Full Plan-side spec:** see `uqff_Plan.md` Plan Image 111 for corrected v5.78 scope tag, revised bucket-H rule, canonical template inventory, commit ledger, and 5/5 anchors.
+
+### Corrected v5.78 scope tag (LOCKED)
+
+> `v5.78 = SI closure (α/h/c/G/Λ) + G1–G8 Lagrangian closure + 27-decade vacuum ledger + ξ=13/3 (R26+KK lock) + P1–P14 falsifiability + CP4 #254–#264`
+
+The campaign brief originally carried `(v5.78, ξ=13/3, P6–P14 closure, CP4 #258–#264)` — this is INCOMPLETE (names only the final ~5 sessions). The corrected tag covers Sessions 237–261 (commits c00a6209 → f6ba35a6).
+
+### Bucket distribution (Session 262 snapshot)
+
+| Bucket | Pending | DONE | Closure required | Template |
+|--------|---------|------|------------------|----------|
+| A | 42 | 1 (A*) | YES | T-Λ |
+| B | 15 | 0 | YES | T-LAG |
+| C | 5 | 0 | YES | T-SI |
+| D | 11 | 1 (D*) | YES | T-ξ |
+| E | 12 | 0 | YES | T-PRED |
+| F | 28 | 0 | YES | multi |
+| G | 29 | 0 | YES | T-LAG + T-PRED |
+| H | 983 | 38 (H*) | **YES per revised rule** if body cites β_i/F_TRZ/ρ_SCm/ρ_UA/[SSq]/κ | multi |
+| I | 34 | 0 | Case-by-case | — |
+| **TOTAL** | **1,159** | **40** | — | — |
+
+### REVISED BUCKET-H RULE (HONEST DISCLOSURE)
+
+Original Phase-B1 assumption ("bucket H = NO UPDATE; estimated 50–150 papers need closure block") was INVALID. Under v5.78 the constants β_i / F_TRZ / ρ_SCm / ρ_UA / [SSq] / κ are no longer free parameters — they are derived from G1–G8 + the 27-decade ledger. Any paper whose body cites them in calculations requires the v5.78 closure block. Bucket-H "specific-system application" papers (GW, magnetar, AGN, BNS, kilonova, post-merger) PRECISELY consume those constants.
+
+**Revised need-update population:** ~600–800 papers (~10× the original estimate).
+
+### Canonical template inventory (commit `8512dbb3`)
+
+| T-code | File | Purpose |
+|--------|------|---------|
+| T-Λ | `whitepapers/_template_T_Lambda.tex` | v5.78 27-decade vacuum ledger pointer (PAPER_1170) |
+| T-LAG | `whitepapers/_template_T_LAG.tex` | v5.78 closed Lagrangian pointer (G1–G8, PAPER_1159–1166) |
+| T-SI | `whitepapers/_template_T_SI.tex` | Three-anchor SI closure update (Sessions 237–241) |
+| T-PRED | `whitepapers/_template_T_PRED.tex` | P1–P14 falsifiability forward pointer |
+| T-ξ | `whitepapers/_template_T_xi.tex` | ξ=13/3 R26+KK lock pointer (PAPER_1171–1172) |
+
+Closure-banner parser-locked schema (every closure block):
+
+```
+% CLOSURE :: <label> :: predicted=<X> observed=<Y> error_pct=<Z>
+% TEMPLATE :: T-<code>
+% CANONICAL :: <one-line per calibrated constant>
+```
+
+T-PRED sentinel `observed=9999 error_pct=9999` → OPEN_PREDICTIONS tab.
+
+### NO-PANDOC build discipline (LOCKED)
+
+Authoritative reference: [`/memories/repo/session202_backfill_and_no_pandoc_rule.md`](./memories/repo/session202_backfill_and_no_pandoc_rule.md).
+
+- **Converter:** `_md_to_arxiv_tex.py` (markdown → arXiv-canonical LaTeX)
+- **Driver:** `_build_batch.py` (convert + pdflatex × 2 + backup + replace)
+- **Engine:** MiKTeX `pdflatex` at `C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe`
+- **Preamble:** `\documentclass[11pt,letterpaper]{article}` + `lmodern` + `amsmath/amssymb/amsthm` + `booktabs` + `microtype` + `hyperref`
+- **Verification:** every regenerated PDF must show `Creator=LaTeX` with `hyperref` (NOT `Creator=pandoc`)
+
+### Commit ledger (Session 262)
+
+| Batch | Commit | Type | Papers (n) |
+|-------|--------|------|------------|
+| Content 1 | `7fadd27d` | v5.78 closure-content authoring | PAPER_001–009 (10) |
+| Content 2 | `d2665820` | v5.78 closure-content authoring | PAPER_010–014 + b-variants (10) |
+| Content 3 | `67e6a25a` | v5.78 closure-content authoring | PAPER_009b + 015–021 + b-variants (10) |
+| Content 4 | `0bfa00ee` | v5.78 closure-content authoring | PAPER_022–029 + b-variants (10) |
+| Format remediation 1 | `02c98b50` | pandoc → arXiv-LaTeX | PAPER_001–009 (10) |
+| Format remediation 2 | `58eff400` | pandoc → arXiv-LaTeX | PAPER_010–014 + b-variants (10) |
+| Format remediation 3 | `e87aa5cc` | pandoc → arXiv-LaTeX (+ extended unicode mappings) | PAPER_009b + 015–021 + b-variants (10) |
+| Source-MD repair | `e15f6123` | restore 191 `?` corruption chars from CP1/CP3 | PAPER_009b, 015b, 016b, 020, 021 (5) |
+| Beta/approx mojibake | `a4d8d79f` | ß→β, ~→approx, 10-N→10^{N}, day-1→day^{-1} | PAPER_009b, 015b, 016b, 020, 021 (5) |
+| CSV stamps | `2fd80ed6`, `c43804fd`, `c489cdee`, `fe697a78`, `6bb64aa6`, `aebb73da`, `37f53559`, `85ab73b1`, `cbe65318` | tracking artifact updates | — |
+
+All pushed to `origin/master`. HEAD `1120174d` is 286 commits ahead of `aebb73da` (calculator atlas track continued in parallel through Layer 88–93).
+
+### Recurring upstream cross-refs (NEXT-PRIORITY SLICE)
+
+Five papers cited by nearly every batch-1–4 paper as upstream Master-Lagrangian / F_U-bridge / SM-anchor sources. These SOURCE the closure-block content itself; promoting them to the next priority slice unblocks ~40 already-built papers from carrying unresolved cross-refs.
+
+| Paper | Bucket | Role |
+|-------|--------|------|
+| PAPER_420 | B | Master Lagrangian |
+| PAPER_421 | B | F_U bridge |
+| PAPER_642 | G | SM anchor |
+| PAPER_840 | B/G | Extension |
+| PAPER_877 | B/G | Extension |
+
+### v5.78 source papers (NO self-update — they ARE the source)
+
+PAPER_1159, 1162–1167, 1170–1180.
+
+### Predicted falsifiers (campaign-wide)
+
+1. Every new paper's PDF must show `Creator=LaTeX` with `hyperref` (NOT `Creator=pandoc`).
+2. Every paper citing β_i/F_TRZ/ρ_SCm/ρ_UA/[SSq]/κ must contain the `% CLOSURE` / `% TEMPLATE` / `% CANONICAL` banner block.
+3. All 5 `_template_T_*.tex` smoke PDFs at `pdf/_template_T_*.pdf` (160–205 KB) remain present at commit `8512dbb3`.
+4. CSV `status` field for every DONE row must read `DONE v5.78` (or `DONE v5.78 arXiv-LaTeX` for format-remediated rows, or `DONE v5.78 arXiv-LaTeX (source-repaired)` for the 5 repaired rows); no `DONE pandoc` strings on master.
+5. CSV `commit` field for every DONE row must match a real hash on `origin/master` (verified for all 5 unique content/remediation commits as of Session 262).
+

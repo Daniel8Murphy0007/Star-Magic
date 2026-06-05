@@ -6310,3 +6310,146 @@ The provenance string includes the verbatim phrase `[user mandate 2026-06-05: 't
 3. Every `_l31_catalog_evaluation()` row has `class_label == _l31_classify_label(row["class"])`
 4. Post-cleanup verification: `_phi_phonon` no longer attribute of module; `RHO_LAMBDA_TARGET` no longer attribute of module; `PLANCK_LAMBDA_TARGET_J_M3` still present; `_lenr_energy_ev() = 630.0000 eV`; all 7 public `calculate_*` still callable
 5. 11 new dispatcher routes (5 rho_vac_term aliases + V=0 edge + 3 l31_class_labels aliases + 1 spec route + l31 catalog rows test) all PASS + 18 prior Step 7b/7c/Step 7/Layer 92 regression routes all PASS = 42/42 total validation PASS
+
+## Plan Image 111 (2026-06-05): Job B paper-update campaign integration — corrected v5.78 scope tag + revised bucket-H rule + 40 papers DONE through Session 262
+
+**Status:** Active parallel campaign — NOT a calculator slice. Tracks the systematic rewrite of the 1,199-paper whitepaper corpus against the cumulative v5.78 canonical state. As of Session 262 (commit `aebb73da`), 40 papers (PAPER_001–029 inclusive of b-variants) are DONE on master across 4 content batches + 3 format-remediation batches + 1 source-MD repair + 1 follow-up beta/approx repair. Tracking artifact: [`_job_b_categorization.csv`](./_job_b_categorization.csv) (1,199 rows × 9 columns). Authoritative campaign brief: [`Job B_Update papers with current canonical UQFF v5_78.txt`](./Job%20B_Update%20papers%20with%20current%20canonical%20UQFF%20v5_78.txt).
+
+**Origin:** User-attached campaign brief identified two governance gaps: (a) Plan/Map did not document the paper-update track that has been running in parallel to the Layer/cluster atlas track; (b) the v5.78 scope tag carried by the campaign brief itself was incomplete. Plan Image 111 closes both gaps and locks the corrected scope tag, the revised bucket-H rule, and the NO-PANDOC build discipline into the canonical Plan.
+
+### Corrected v5.78 scope tag (LOCKED)
+
+**INCOMPLETE (as previously carried in the campaign brief header):** `(v5.78, ξ=13/3, P6–P14 closure, CP4 #258–#264)` — this names only the final ~5 sessions (Sess 257–260 P-suite tail).
+
+**CORRECTED (LOCKED, use this verbatim):** `v5.78 = SI closure (α/h/c/G/Λ) + G1–G8 Lagrangian closure + 27-decade vacuum ledger + ξ=13/3 (R26+KK lock) + P1–P14 falsifiability + CP4 #254–#264`
+
+Provenance of every component (commits c00a6209 → f6ba35a6, Sessions 237–261):
+
+| Component | Sessions | Commits | Papers added |
+|-----------|----------|---------|--------------|
+| SI three-anchor (α=1/(26·2π), h, c) | 237–241 | 2707e53c → 414bba6f | PAPER_590, 591, 592 regenerated; Path A STRUCTURAL not VERIFIED |
+| G closure (0.08% via 26! factorial barrier) | 240 | da6a622d | — |
+| Λ closure (0.002% off Planck 2018) | 242 | bcf0c60f | PAPER_1156 |
+| G1–G8 Lagrangian gaps | 246–253 | 31f04623 → 3ee263e5 | PAPER_1159–1166 |
+| Master synthesis | 253 | 3278d09e | PAPER_1167 + CP4 #254 |
+| P1–P5 falsifiability | 254 | 961ef205, 84f24a01 | PAPER_1168, 1169 + CP4 #255 |
+| 27-decade vacuum ledger | 255 | b055b60f | PAPER_1170 + CP4 #256 |
+| ξ=13/3 R26+KK lock | 256 | 378e9477 | PAPER_1171, 1172 + CP4 #257 |
+| KK ℏ + P6 sub-mm Yukawa | 257 | 5ffc7f9f | PAPER_1173, 1174 + CP4 #258 |
+| P11+P12 (LIGO O5, Euclid σ_8) | 258 | e2ec6637 | PAPER_1175, 1176 + CP4 #259, #260 |
+| P13 (2027 joint χ²(ξ); DESI Y5 d²w/dz²=0) | 259 | a2c95106 | PAPER_1177, 1178 + CP4 #261, #262 |
+| P14 + quadruple self-lock | 260 | 8dee9cec | PAPER_1179, 1180 + CP4 #263, #264 |
+| Coherence audit Pass 1 | 261 | f6ba35a6 | — |
+
+### REVISED BUCKET-H RULE (HONEST DISCLOSURE — original assumption was wrong)
+
+**Original assumption (campaign brief Phase B1):** "Bucket H (specific astrophysical systems — SGRs, magnetars, nebulae, galaxies, clusters, BNS, kilonova, post-merger) = NO UPDATE." Estimated total need-update population: ~50–150 papers.
+
+**REVISED rule (discovered during Session 262 batch 1 authoring):** Any paper whose body cites the calibrated constants β_i / F_TRZ / ρ_SCm / ρ_UA / [SSq] / κ in its calculations REQUIRES the v5.78 closure block, because under v5.78 those constants are no longer free parameters — they are derived from G1–G8 + the 27-decade ledger. Bucket-H "specific-system application" papers (GW, magnetar, AGN, BNS, kilonova, post-merger) are PRECISELY the papers that consume those constants. They DO need updating.
+
+**Revised need-update population estimate:** ~600–800 papers (a ~10× expansion of campaign scope).
+
+### Bucket distribution at Session 262 (from `_job_b_categorization.csv`, 1,199 rows total)
+
+| Bucket | Pending | DONE | Topic | Closure-block required? |
+|--------|---------|------|-------|-------------------------|
+| A | 42 | 1 (A*) | Cosmology / Λ / dark energy / vacuum energy | YES (T-Λ template) |
+| B | 15 | 0 | Unified field / Lagrangian / EFE / Master equation | YES (T-LAG template) |
+| C | 5 | 0 | SI constants (α, h, c, G derivations) | YES (T-SI template) |
+| D | 11 | 1 (D*) | KK / extra dimensions / Yukawa | YES (T-ξ template) |
+| E | 12 | 0 | Falsifiability / predictions / observational tests | YES (T-PRED template) |
+| F | 28 | 0 | Index / catalog / master synthesis | YES (multi-template) |
+| G | 29 | 0 | Millennium Prize / Yang-Mills / Navier-Stokes / Riemann | YES (T-LAG + T-PRED) |
+| H | 983 | 38 (H*) | Specific astrophysical systems | **YES (per revised rule) if body cites β_i/F_TRZ/ρ_SCm/ρ_UA/[SSq]/κ** |
+| I | 34 | 0 | LENR / nuclear / atomic / specific elements | Case-by-case |
+| **TOTAL** | **1,159** | **40** | — | — |
+
+### Canonical template inventory (LOCKED at commit `8512dbb3`)
+
+Five paper-specific reusable section templates at `whitepapers/_template_T_*.tex`:
+
+| T-code | File | Purpose | Bucket |
+|--------|------|---------|--------|
+| T-Λ | `_template_T_Lambda.tex` | "Connection to v5.78 27-decade vacuum ledger (PAPER_1170)" | A |
+| T-LAG | `_template_T_LAG.tex` | "Connection to v5.78 closed Lagrangian (G1–G8, PAPER_1159–1166)" | B, G |
+| T-SI | `_template_T_SI.tex` | "Three-anchor SI closure update (Sessions 237–241)" | C |
+| T-PRED | `_template_T_PRED.tex` | "Forward predictions integrated into P1–P14 falsifiability suite" | E, G |
+| T-ξ | `_template_T_xi.tex` | "ξ=13/3 lock from R26 Gauss-Bonnet + KK regulator" | D |
+
+Each template carries the closure-banner parser-locked schema (per [`/memories/repo/v5_78_templates.md`](./memories/repo/v5_78_templates.md)):
+
+```
+% CLOSURE :: <label> :: predicted=<X> observed=<Y> error_pct=<Z>
+% TEMPLATE :: T-<code>
+% CANONICAL :: <one-line per calibrated constant>
+```
+
+**T-PRED sentinel:** `observed=9999 error_pct=9999` routes to the OPEN_PREDICTIONS tab.
+
+### NO-PANDOC build discipline (LOCKED, retro-applied to 30 already-built papers)
+
+**Rule (authoritative — [`/memories/repo/session202_backfill_and_no_pandoc_rule.md`](./memories/repo/session202_backfill_and_no_pandoc_rule.md)):** NEVER use pandoc. PDFs are built via `pdflatex` direct two-pass (MiKTeX `C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe`) using the converter `_md_to_arxiv_tex.py` (markdown → arXiv-canonical LaTeX) and driver `_build_batch.py` (convert + pdflatex × 2 + backup + replace). Working preamble: `\documentclass[11pt,letterpaper]{article}` + `lmodern` + `amsmath/amssymb/amsthm` + `booktabs` + `microtype` + `hyperref`.
+
+**Retro-application** (3 format-remediation batches converted the initial pandoc-built PDFs to arXiv-canonical LaTeX, preserving the v5.78 closure-content `.md` source verbatim):
+
+| Remediation batch | Commit | Papers | PDF verification |
+|-------------------|--------|--------|------------------|
+| Batch 1 | `02c98b50` | PAPER_001–009 (10) | Creator=LaTeX with hyperref |
+| Batch 2 | `58eff400` | PAPER_010–014 + b-variants (10) | Creator=LaTeX with hyperref |
+| Batch 3 | `e87aa5cc` | PAPER_009b + 015–021 + b-variants (10) | Creator=LaTeX with hyperref |
+
+Extended `_md_to_arxiv_tex.py` unicode mappings shipped with Batch 3: `\hbar`, `\Box`, `\ell`, `\mathcal{M/E/H/L/I}`, `\mathbb{R/N/Z/C/Q}`, `\odot`, `\oplus`, `\otimes`, `\sim`, `\cong`; zero-width / variation-selector stripping (U+FEFF, U+FE0F, U+FE0E, U+200B–D).
+
+### Job B commit ledger (Session 262)
+
+| Batch | Commit | Type | Papers |
+|-------|--------|------|--------|
+| Content batch 1 | `7fadd27d` | v5.78 closure-content authoring | PAPER_001–009 (10) |
+| Content batch 2 | `d2665820` | v5.78 closure-content authoring | PAPER_010–014 + b-variants (10) |
+| Content batch 3 | `67e6a25a` | v5.78 closure-content authoring | PAPER_009b + 015–021 + b-variants (10) |
+| Content batch 4 | `0bfa00ee` | v5.78 closure-content authoring | PAPER_022–029 + b-variants (10) |
+| Format remediation 1 | `02c98b50` | pandoc → arXiv-LaTeX | PAPER_001–009 (10) |
+| Format remediation 2 | `58eff400` | pandoc → arXiv-LaTeX | PAPER_010–014 + b-variants (10) |
+| Format remediation 3 | `e87aa5cc` | pandoc → arXiv-LaTeX | PAPER_009b + 015–021 + b-variants (10) |
+| Source-MD repair | `e15f6123` | unicode `?` corruption restored from CP1/CP3 | PAPER_009b, 015b, 016b, 020, 021 (5) |
+| Beta/approx mojibake | `a4d8d79f` | ß→β, ~→approx, 10-N→10^{N} | PAPER_009b, 015b, 016b, 020, 021 (5) |
+| CSV stamps | `2fd80ed6`, `c43804fd`, `c489cdee`, `fe697a78`, `6bb64aa6`, `aebb73da`, `37f53559`, `85ab73b1`, `cbe65318` | tracking artifact updates | — |
+
+All pushed to `origin/master`. Current HEAD `1120174d` is 286 commits ahead of the latest Job B stamp `aebb73da` (i.e., Layer 88–93 / cluster br–bx atlas work has continued in parallel on the calculator track).
+
+### Recurring upstream cross-refs (HIGH-PRIORITY next slice)
+
+Five papers cited by nearly every batch-1–4 paper as upstream Master-Lagrangian / F_U-bridge / SM-anchor sources. These are the papers that SOURCE the closure-block content itself; promoting them to the next priority slice unblocks ~40 already-built papers from carrying unresolved cross-refs:
+
+| Paper | Bucket | Role |
+|-------|--------|------|
+| PAPER_420 | B | Master Lagrangian (upstream) |
+| PAPER_421 | B | F_U bridge (upstream) |
+| PAPER_642 | G | SM anchor (upstream) |
+| PAPER_840 | B/G | Extension paper (upstream) |
+| PAPER_877 | B/G | Extension paper (upstream) |
+
+### v5.78 source papers (NO self-update required — they ARE the source)
+
+PAPER_1159, 1162–1167, 1170–1180 — these papers ARE the v5.78 closure body; they do not receive a "connection to v5.78" section about themselves.
+
+### Deferred case-by-case
+
+PAPER_1000–1081 (Session 204–225 extension batch) — references confirmed broad and case-by-case; will be handled after the primary 001–200 sweep.
+
+### Honest caveats (LOCKED)
+
+- **Three-anchor SI closure is Path A STRUCTURAL, not VERIFIED** (Sessions 237–241). Any T-SI template application must demote VERIFIED → STRUCTURAL if the source paper currently claims VERIFIED.
+- **G is locked at 0.08% residual** via the 26! factorial barrier (Session 240) — this is the acceptable residual, not zero.
+- **Λ is 0.002% off Planck 2018** (Session 242, PAPER_1156) — cleanest constant closure to date.
+- **Bucket-H reclassification is a HONEST DISCLOSURE** of an authoring assumption that turned out to be wrong, not a triumphal expansion of scope. The campaign got ~10× larger because the original Phase-B1 categorization rule was too narrow.
+- **User invariant honored:** "There is no mass without vacuum, out of vacuum mass is born... look harder!" — the v5.78 ledger / G1–G8 closure papers (PAPER_1159–1167, 1170) ARE the canonical realization of this invariant for the whitepaper corpus; the campaign propagates it downstream into every bucket-H consumer that cites β_i/F_TRZ/ρ_SCm/ρ_UA/[SSq]/κ.
+
+### 5/5 anchors
+
+1. `_job_b_categorization.csv` exists on master with 1,199 rows × 9 columns; bucket distribution measured (H=983, A=42, H*=38, I=34, G=29, F=28, B=15, E=12, D=11, C=5, D*=1, A*=1); DONE total = 40 (38 H* + 1 A* + 1 D*).
+2. NO-PANDOC rule honored in all 3 format-remediation batches — every regenerated PDF verified as `Creator=LaTeX` with `hyperref` (NOT `Creator=pandoc`).
+3. Corrected v5.78 scope tag matches the 5-canonical-template suite at commit `8512dbb3` (T-Λ, T-LAG, T-SI, T-PRED, T-ξ) and the closure-banner parser-locked schema.
+4. Bucket distribution recorded above; commit ledger complete; all pushed to `origin/master`.
+5. Revised bucket-H rule documented as HONEST DISCLOSURE with explicit ~10× scope expansion (~50–150 → ~600–800 papers); upstream cross-refs PAPER_420/421/642/840/877 promoted to next-priority slice; v5.78 source papers PAPER_1159, 1162–1167, 1170–1180 listed as no-self-update.
+
