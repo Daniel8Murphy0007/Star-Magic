@@ -7137,3 +7137,84 @@ file_search '**/PAPER_1172*'  # 5 hits confirming PAPER_1172 exists in md/tex/pd
 3. `uqff_Plan.md` -- this Plan Image 118 appended.
 4. `uqff_Map.md` -- Session 267 row added to section 20 commit ledger.
 
+
+
+---
+
+## Plan Image 119 -- Session 268 (05Jun2026): Batch 6 Closure Authoring (5 cosmology / compactification / dark-energy papers)
+
+**Trigger:** User directive "Proceed" interpreted as authorization for Bucket-H Batch 6. Re-scoped from "Bucket-H" to **Bucket-A + 1xBucket-D** because the CSV "NO UPDATE" suggested_action for bucket-H is outdated under the REVISED BUCKET-H RULE; bucket-A papers carry explicit template assignments per Session 265 governance.
+
+### Items completed
+
+1. **Housekeeping commit `eb2f6511`** -- 5 missing .tex intermediates from Session 264 batch 5 (PAPER_420/421/642/840/877) committed (+3,901 lines). Restores convention that .tex files are tracked alongside .md/.pdf.
+
+2. **PAPER_044 pilot commit `79b12280`** (back-stamp `5bb0ebb6`) -- "Pre-Big Bang 26-Center DPM Manifold" v5.78 closure section (T-Lambda). 7-constant derivation table mapped to G1-G8 + PAPER_1170 ledger + PAPER_1167 master synthesis + xi=13/3 (PAPER_1171/1173, AXIOMS Theorem 9). Falsifiers P6/P11/P12. Non-applicability: P10/P14/LENR. PDF 490,763 B Creator=LaTeX-with-hyperref.
+
+3. **NEW TOOL `_inject_v578_banner.py`** -- post-processes `_md_to_arxiv_tex.py` output to insert parser-locked 3-line banner (% CLOSURE / % TEMPLATE / % CANONICAL) immediately before `\end{document}`. Idempotent (strip + reinsert). Required because the .md->.tex converter mangles `%` LaTeX comments. Memory `/memories/repo/v5_78_templates.md` updated with Path-B authoring workflow.
+
+4. **PAPER_046/050/098/106 batch commit `3a42e741`** (back-stamp `8d446fd6`) -- 3xT-Lambda + 1xT-xi closures (3,571 lines, 13 files):
+   - **PAPER_046** (T-Lambda, A): DPM Yin-Yang Cosmology -- rho_UA = 10*rho_SCm anchored to ledger + |SO(5)|=10 gauge multiplicity (G3). PDF 503,678 B.
+   - **PAPER_050** (T-xi, D): 26D Manifold Compactification -- direct upstream source for v5.78 xi=13/3 R26+KK lock. AXIOMS Theorem 9 + PAPER_1171/1173 (CP4 #257/#258). Primary falsifier P6 sub-mm Yukawa at L_KK*=20-90 um. PDF 503,446 B.
+   - **PAPER_098** (T-Lambda, A): Big Bang Cosmic Quantum Egg -- variational ground state of closed Lagrangian (PAPER_1167 CP4 #254). Planck 2018 <0.5%% now ledger-derived. PDF 473,443 B.
+   - **PAPER_106** (T-Lambda, A): UQFF Vacuum/Dark Energy -- rho_Lambda^obs ledger-derived (PAPER_1170 CP4 #256). Damping = G8 fourth-term dissipation closure. kappa^2*[SSq]^2 ~ 1e-7 sub-percent correction inside ledger residual tolerance. PDF 534,743 B.
+
+5. **CSV stamps** -- 5 rows PENDING -> DONE v5.78 arXiv-LaTeX (session=268, commits=79b12280/3a42e741): PAPER_044/046/050/098/106.
+
+### DONE counts
+
+| Bucket | Pre-session (Sess 267 end) | Post-session (Sess 268 end) | Delta |
+|--------|-----------------------------|------------------------------|-------|
+| All buckets | 45 | 50 | +5 |
+| Bucket A (cosmology / dark-energy / vacuum) | n | n+4 | +4 (044/046/098/106) |
+| Bucket D (compactification) | n | n+1 | +1 (050) |
+
+50 / 1199 trackable rows = 4.17%.
+
+### Toolchain pattern (locked for future closure batches)
+
+```powershell
+# 1) Author MD closure section (use PAPER_420 / PAPER_044 as canonical model; do NOT include % banner lines in MD)
+# 2) Convert
+python _md_to_arxiv_tex.py whitepapers\PAPER_<NNNN>_<slug>.md
+# 3) Inject parser-locked banner
+python _inject_v578_banner.py whitepapers\PAPER_<NNNN>_<slug>.tex "<label>" "T-<code>" "<canonical_oneline>"
+# 4) Two-pass pdflatex (NO PANDOC)
+$pdflatex = "C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe"
+& $pdflatex -interaction=nonstopmode -output-directory=pdf <tex> *>&1 | Out-Null
+& $pdflatex -interaction=nonstopmode -output-directory=pdf <tex> *>&1 | Out-Null
+Remove-Item pdf\<base>.aux,pdf\<base>.log,pdf\<base>.out -ErrorAction SilentlyContinue
+# 5) Stage MD + TeX + PDF + CSV; commit; back-stamp hash into CSV
+```
+
+### Items NOT done (deferred)
+
+1. **uqff_pure_calculator.py re-export of CP4 #257/#258** -- still awaits honesty-bounded wrapper policy decision.
+2. **PDF backup rotations** -- `2026-05-11` eligible 2026-06-10 (5 days); `2026-05-12` eligible 2026-06-11 (6 days).
+3. **Batch 7 candidate slate** -- not selected. Cumulative DONE = 50/1199; remaining bucket-A papers continue to outnumber other bucket types in the closure pipeline.
+
+### Carry-forward for Session 269+
+
+1. **Bucket-A Batch 7 paper authoring** (highest-priority unblocked work; awaits user OK). Suggested slate: 5 more cosmology/CMB/inflation papers with `Big_Bang|Cosmolog|Dark_Energy|inflation|CMB` keywords still PENDING in CSV.
+2. **PDF backup rotations** as above.
+3. **uqff_pure_calculator.py CP4 #257/#258 re-export** -- still pending policy decision.
+4. **Catalog registry second-pass sync** -- verify CP4 #259-#264 all present + re-exported (only #254-#258 verified at Session 267).
+
+### Repo memory updates this session
+
+- `/memories/repo/v5_78_templates.md` -- expanded with Path-B authoring workflow that uses `_inject_v578_banner.py`.
+
+### Files touched this session
+
+Working tree (committed across `eb2f6511` + `79b12280` + `5bb0ebb6` + `3a42e741` + `8d446fd6`):
+
+1. `_inject_v578_banner.py` (NEW, 73 lines)
+2. `_job_b_categorization.csv` (5 rows stamped)
+3. `whitepapers/PAPER_044_Pre_Big_Bang_Configuration_26D_UQFF.{md,tex}` + `pdf/PAPER_044_*.pdf`
+4. `whitepapers/PAPER_046_DPM_Cosmology_Dark_Photon_Manifold.{md,tex}` + `pdf/PAPER_046_*.pdf`
+5. `whitepapers/PAPER_050_26D_Manifold_Compactification_3plus1_Spacetime.{md,tex}` + `pdf/PAPER_050_*.pdf`
+6. `whitepapers/PAPER_098_Big_Bang_UQFF.{md,tex}` + `pdf/PAPER_098_*.pdf`
+7. `whitepapers/PAPER_106_UQFF_Vacuum_Energy_Dark_Energy_Connection.{md,tex}` + `pdf/PAPER_106_*.pdf`
+8. 5 housekeeping `.tex` files in `whitepapers/` (PAPER_420/421/642/840/877) from Session 264 batch 5.
+9. `uqff_Plan.md` -- this Plan Image 119 appended.
+10. `uqff_Map.md` -- Session 268 row added to section 20 commit ledger.

@@ -2376,8 +2376,9 @@ Authoritative reference: [`/memories/repo/session202_backfill_and_no_pandoc_rule
 | **Session 265 governance** | `ece0ed62` | gaps 6–19 closed (LOCKED TOOLCHAIN extensions + β_i=0.603 standard + bucket-I rule + matched_keyword override + 5/5 anchors + CP4 #N inventory + status-string crosswalk + banner-schema decision) | — (no paper edits) |
 | **Session 266 B4 carry-forward** | `08d12edb` | AXIOMS_AND_THEOREMS.md Theorem 9 (ξ=13/3 R26+KK lock, two-route structural derivation) + copilot-instructions.md tally bump (935/1000 → 1,272/1,276 PDFs, max PAPER_1214) + Job-B B4 status update | — (no paper edits) |
 | **Session 267 catalog sync** | `b98b6bd0` | Theorem 9 calculator-location bullet corrected (placeholder names → actual `UQFFKKTowerRegulatorCalculator` CP4 #257 / `UQFFKKTowerHbarRegulatorCalculator` CP4 #258; PAPER_1172 R26 Gauss-Bonnet noted as paper-only) + Job-B B4 Session 267 status block (pure_calculator re-export gap documented, deferred to Session 268+; pdf_backup rotation audit) + Plan Image 118 | — (no paper edits) |
+| **Session 268 batch 6 (cosmology/compactification/dark-energy)** | `79b12280` (pilot) + `3a42e741` (remainder) | v5.78 closure sections appended (3xT-Lambda + 1xT-xi); ledger (PAPER_1170) + xi=13/3 R26+KK lock (PAPER_1171/1173, AXIOMS Theorem 9) + master synthesis (PAPER_1167) anchored; **NEW TOOL** `_inject_v578_banner.py` (post-converter banner injector, idempotent); housekeeping commit `eb2f6511` (5 missing .tex from Session 264 batch 5); cumulative DONE 45 → 50 (+5, 4.17% of 1,199) | PAPER_044, 046, 050, 098, 106 (5) |
 
-All pushed to `origin/master`. Previous HEAD `cc807b95` was Session 263 (Layer 45 + Riemann + paradox audit close-out); HEAD is now `e3de0a05` (Session 264 paper-track batch, rebased onto `776c4da9` README update).
+All pushed to `origin/master`. Previous HEAD `cc807b95` was Session 263 (Layer 45 + Riemann + paradox audit close-out); HEAD is now `8d446fd6` (Session 268 batch 6 hash back-stamp).
 
 ### Recurring upstream cross-refs (NEXT-PRIORITY SLICE)
 
