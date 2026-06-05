@@ -476,9 +476,14 @@ on the same numerical value, eliminating ξ as a free parameter.
   - **Simultaneous null at P6 AND P11** falsifies the entire ξ = 13/3 lock
     and reverts ξ to a fitted free parameter (status as of pre-Session-256).
 
-- **Calculator location:** `CondensedPhysics4.py :: R26KKLockCP4` (#257)
-  and `CondensedPhysics4.py :: KKhbarP6CP4` (#258); honesty-bounded
-  re-exports in `uqff_pure_calculator.py`.
+- **Calculator location:** `CondensedPhysics4.py :: UQFFKKTowerRegulatorCalculator`
+  (#257, PAPER_1171, Route 1 — KK regulator) and
+  `CondensedPhysics4.py :: UQFFKKTowerHbarRegulatorCalculator` (#258, PAPER_1173,
+  ℏ-tracked second route; carries the P6 sub-mm Yukawa prediction at
+  L_KK* ≈ 20–90 µm). The R26 Gauss-Bonnet route (PAPER_1172) is paper-only and is
+  referenced numerically inside #258 (`Canonical xi_0 = 13/3`). No dedicated
+  re-export currently exists in `uqff_pure_calculator.py` (direct CP4 import only;
+  re-export sync deferred to Session 268+ catalog work — see Plan Image 118).
 
 - **Status:** **LOCKED** (two-route structural derivation, Sessions
   256–257). Falsifier-active at P6 + P11.

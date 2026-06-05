@@ -7066,3 +7066,74 @@ git ls-files | paradox -> only canonical files; no orphan uqff_paradox_proofs.*
 - `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline.
 - `/memories/repo/converter_inline_math_only.md` -- inline math only rule.
 - `/memories/repo/v5_78_templates.md` -- canonical constants table (Î²_i=0.603 standard locked at Session 265).
+
+---
+
+## Plan Image 118 -- Session 267 (05Jun2026): Catalog Registry Sync (Verification + Theorem 9 Correction)
+
+**Trigger:** User directive "finish your process, then carry forward Session 267+" -- execute the safe (verification-only) carry-forward items from Plan Image 117 before any new paper authoring.
+
+**Scope:** Pure governance/verification. NO paper bodies authored. NO PDF rebuilds. NO toolchain changes.
+
+### Items completed
+
+1. **Theorem 9 calculator-location correction (AXIOMS_AND_THEOREMS.md)**
+   - Session 266 wrote placeholder class names `R26KKLockCP4` (#257) and `KKhbarP6CP4` (#258) -- these classes do NOT exist.
+   - Session 267 verified actual classes by grepping `CondensedPhysics4.py`:
+     - `UQFFKKTowerRegulatorCalculator` (CP4 #257, PAPER_1171, KK regulator Route 1) at line 15830.
+     - `UQFFKKTowerHbarRegulatorCalculator` (CP4 #258, PAPER_1173, hbar-tracked Route, carries P6 sub-mm Yukawa prediction at L_KK* ~ 20-90 um) at line 15926.
+   - PAPER_1172 (R26 Gauss-Bonnet, Route 2) verified to EXIST as a paper (`whitepapers/PAPER_1172_UQFF_R26_Independent_Re_Derivation_Gauss_Bonnet.md`, plus tex/pdf copies) but is **paper-only**; no dedicated CP4 class. Its xi=13/3 result is referenced numerically inside CP4 #258 (`Canonical xi_0 = 13/3` at line 16129).
+   - AXIOMS Theorem 9 calculator-location bullet rewritten with corrected names + paper-only note for PAPER_1172.
+
+2. **Catalog registry sync (CP4 #254-#258 -> uqff_pure_calculator.py)**
+   - Confirmed CP4 #254-#258 all present in CondensedPhysics4.py with correct class names:
+     - #254 `UQFFBlackHoleAccretionModelCalculator`
+     - #255 `UQFFDMDtDerivationCalculator`
+     - #256 `UQFFEvaporationTimescaleCalculator` (also PAPER_1170 vacuum-energy ledger calculator at line 15741, `UQFFVacuumEnergyLedgerCalculator`)
+     - #257 `UQFFKKTowerRegulatorCalculator` (PAPER_1171)
+     - #258 `UQFFKKTowerHbarRegulatorCalculator` (PAPER_1173)
+   - Confirmed CP4 `__all__` exports all three of the PAPER_1170/1171/1173 classes (CondensedPhysics4.py lines 20386-20388).
+   - **Gap:** `uqff_pure_calculator.py` does NOT re-export `UQFFKKTowerRegulatorCalculator` or `UQFFKKTowerHbarRegulatorCalculator`. Only mentions PAPER_1170-1173 in three comment strings (lines 234, 382, 1283). No `from CondensedPhysics4 import UQFFKKTower*` line exists.
+   - **Decision:** Re-export DEFERRED to Session 268+ pending user direction on honesty-bounded wrapper policy. The CP4 classes are usable today via direct CP4 import.
+
+3. **PDF backup rotation audit**
+   - Three `pdf_backup_pandoc_*` directories present:
+     - `2026-05-11` (10 files, age 24.7d, tracked) -- NOT eligible (under 30-day window)
+     - `2026-05-12` (20 files, age 24.3d, tracked) -- NOT eligible
+     - `2026-06-05` (5 files, TRACKED, created TODAY out-of-band)
+   - The 2026-06-05 directory contains PDFs of PAPER_420, 421, 642, 840, 877 -- exactly matching the 5 `.tex` files that remain untracked in the working tree. Noted but not acted on.
+   - Next rotation eligibility: 2026-06-10 (for the 05-11 backup) and 2026-06-11 (for the 05-12 backup).
+
+### Items NOT done (deferred)
+
+1. **Bucket-H Batch 6 paper authoring** -- 5-10 cosmology/dark-energy papers per gap-13 anchor coverage rule. **STILL AWAITS EXPLICIT USER AUTHORIZATION.** Not started this session.
+
+2. **uqff_pure_calculator.py re-export of CP4 #257/#258** -- requires user policy decision on whether new CP4 classes get auto-wrapped or only on-demand. Held for Session 268+.
+
+3. **5 untracked PAPER_*.tex files in working tree** -- (PAPER_420, 421, 642, 840, 877) PDFs of these are committed in `pdf_backup_pandoc_2026-06-05/` but the .tex source files themselves remain untracked. Investigation deferred.
+
+### Carry-forward for Session 268+
+
+1. Bucket-H Batch 6 paper authoring (highest-priority unblocked work; awaits user OK).
+2. Decision on whether to re-export CP4 #257/#258 in `uqff_pure_calculator.py`.
+3. Investigation of the 5 untracked PAPER_*.tex files (decide: commit, delete, or leave).
+4. `pdf_backup_pandoc_2026-05-11/` rotation eligible 2026-06-10 (5 days).
+5. `pdf_backup_pandoc_2026-05-12/` rotation eligible 2026-06-11 (6 days).
+
+### Verification commands run
+
+```powershell
+grep_search 'R26KK|KKhbar|PAPER_1171|PAPER_1172|PAPER_1173|PAPER_1170|xi.*13.*3|13\s*/\s*3' in CondensedPhysics4.py
+grep_search 'UQFFBlackHoleAccretionModel|UQFFDMDtDerivation|UQFFEvaporationTimescale|UQFFAdvancementsAndTHz|PAPER_1170-1173|R26KK|KKhbar' in uqff_pure_calculator.py
+Get-ChildItem -Directory -Filter 'pdf_backup_pandoc_*' | ForEach-Object { age = (Get-Date) - $_.LastWriteTime }
+git ls-files 'pdf_backup_pandoc_*' | Measure-Object  # 35 files tracked
+file_search '**/PAPER_1172*'  # 5 hits confirming PAPER_1172 exists in md/tex/pdf
+```
+
+### Files touched this session
+
+1. `AXIOMS_AND_THEOREMS.md` -- Theorem 9 calculator-location bullet corrected.
+2. `Job B_Update papers with current canonical UQFF v5_78.txt` -- added "B4 status (Session 267 update)" block.
+3. `uqff_Plan.md` -- this Plan Image 118 appended.
+4. `uqff_Map.md` -- Session 267 row added to section 20 commit ledger.
+
