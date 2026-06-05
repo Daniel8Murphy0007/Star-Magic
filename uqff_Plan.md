@@ -6453,3 +6453,156 @@ PAPER_1000–1081 (Session 204–225 extension batch) — references confirmed b
 4. Bucket distribution recorded above; commit ledger complete; all pushed to `origin/master`.
 5. Revised bucket-H rule documented as HONEST DISCLOSURE with explicit ~10× scope expansion (~50–150 → ~600–800 papers); upstream cross-refs PAPER_420/421/642/840/877 promoted to next-priority slice; v5.78 source papers PAPER_1159, 1162–1167, 1170–1180 listed as no-self-update.
 
+
+
+---
+
+## Image 112 â€” Session 04Jun2026 Upgrade Addendum (DSE + VR-outfall geometry + precision lock)
+
+**Scope:** PLANNING contract additions. Companions to Images 1â€“111 + Phase 6 (Image 42). G0 ("The plan is approved. Write the one file.") still gates code creation. The 7-function public surface is unchanged.
+
+### Â§0.1 â€” Parallel-Engine Recognition invariant (NEW non-negotiable)
+
+The Standard Model (SM) and UQFF are **two simultaneous, non-derived parallel engines** that operate in the same reality. The calculator NEVER derives UQFF from SM or SM from UQFF. The convergence of independent paths IS the proof. Provenance for every numeric closure MUST cite both paths' values and the real diff%.
+
+- Source: `grok._b9afa8b6_3b85_31May2026.md` L8216 (mandate) and L10294 (user invariant: "two completely non-converging systems that operate in non-intersecting parallel universes within the same reality").
+- Enforcement: applies to all 7 `calculate_*` outputs; encoded as a contract row in the Â§1 Non-Negotiable Table.
+
+### Â§0.2 â€” DSE (Dynamic Simultaneous Encoding) invariant (NEW non-negotiable)
+
+Every public-surface query that has cross-channel evidence MUST route through up to 4 channel-paths in parallel and emit each channel's numeric value + diff% in provenance:
+
+| Channel | Codebase mirror | Role |
+|---|---|---|
+| CP1 (classical) | `CondensedPhysics.py` (1,299 classes) | Galaxy rotation / stellar evolution / lensing path |
+| CP2 (quantum / 26D) | `CondensedPhysics2.py` (680 classes) | Information paradox / Hawking / 26D channels |
+| CP3 (transient) | `CondensedPhysics3.py` | TDE / FRB / magnetar / single-event path |
+| CP4 (variational / Millennium / MUGE) | `CondensedPhysics4.py` (incl. _S234 #588â€“#600) | Î´S/Î´Ï†=0 / Millennium / MUGE / VDS/DVP/BH26 path |
+
+**Convergence at 0.0000% (true float equality) across applicable channels = proof. NOT REPLACEMENT.**
+
+Implementation: one private dispatcher `_dse_dispatch(dataset)` + 4 private channel helpers `_cp1_classical_path` / `_cp2_quantum_path` / `_cp3_transient_path` / `_cp4_variational_path`. All inside the single solver file; no new public surface. Channel applicability is governed by the matrix recorded in Map Â§20.1.
+
+### Â§2 â€” Module Table additions
+
+Two rows appended to the Â§2 module table (verbatim contents):
+
+| # | Module | Contents (verbatim) |
+|--:|---|---|
+| 8 | DSE Channel Helpers | `_cp1_classical_path`, `_cp2_quantum_path`, `_cp3_transient_path`, `_cp4_variational_path`, `_dse_dispatch` |
+| 9 | VR-Outfall Geometric Helpers | `_vds_factor`, `_dvp_potential`, `_bh26_geometry`, `_qcalcgeom_fold`, `_belly_button_umbilicus` + composition `F_LENR_enhanced` (b9 L7682) |
+
+### Â§3.1 â€” Private Composable Primitives (NEW)
+
+13 universal-field component helpers consumed by multiple `calculate_*` functions (closed forms from b9 + 99system):
+
+`_ug1`, `_ug2`, `_ug3` (SCm-driven magnetic-string disk per b9 L7676), `_ug4`, `_u_i`, `_u_m` (envelope `(1 âˆ’ e^{âˆ’Î³t cos(Ï€ t_n)})`), `_u_b`, `_f_env` (Layer 27 envelope mass-radius), `_h_res` (26-level Hydrogen Resonance PTOE), `_a_res`, `_f_res`, `_u_dp` (dipole vortex potential), `_k_nuc`, `_s_shell` (`S(r âˆ’ R_b)`).
+
+These are private; the public surface stays at 7. They are allowed under the Â§1 rule "Plus minimal pure private helpers".
+
+### Â§3.2 â€” MUGE Template Family (NEW)
+
+Single parametric closed form `g_*(r,t; sector_params)` that subsumes the per-system MUGE Compressed + MUGE Resonance forms. System dispatch is via `dataset["muge_system"]` (key into the sector table); no new top-level functions are added.
+
+### Â§3.3 â€” Single Closure Operator (NEW)
+
+One universal stationarity primitive `_stationarity_residual(lagrangian_terms, phi_index)` implements Î´S/Î´Ï† = 0 for all G1â€“G8 and 8 Millennium closures. Consumers: Millennium dispatcher (Â§9), G1â€“G8 (Â§5), Lagrangian sector registry (Â§3.5), DVP/BH26 stationarity (Â§3.4). Source: b9 L8520, L8565 ("single variational principle that simultaneously resolves both problems (and by extension the rest of the Millennium set via the same 26D ledger + spinor bundle compactification)").
+
+### Â§3.4 â€” VR Outfall Simulation Geometric Helpers (NEW)
+
+These 5 helpers are the geometric factorization of F_U used by **dynamic VR outfall simulations** (per user directive 04Jun2026). They are leaf helpers with no dependency on the 7 public functions; the 7 public functions call them, never the other way around. They are the in-file mirrors of `CondensedPhysics4.py` CP4 #588â€“#600 _S234 classes and `QCalcGeom.py` v2.3.0.
+
+| Helper | Form | Provenance |
+|---|---|---|
+| `_vds_factor(dataset, terms=1000)` | `VDS = Li_26([SSq]) = Î£_{n=1..terms} [SSq]^n / n^26`, `[SSq]=0.57` | PAPER_1151 Group A: VDS Branch / CP4 #588 (Session 202 T61â€“T63); `scm_vacuum_manifold.py` (b9 L7508); `99system_master_equation.py` L121â€“126; `vds_k_weighted = Li_25(z) + 25Â·Li_26(z)` |
+| `_dvp_potential(r, t, dataset)` | Dynamic Vacuum Potential: time-evolving SCmâ†”UA donation potential layered above VDS | PAPER_1151 Group A: DVP Branch / CP4 #589 (T64â€“T66) |
+| `_bh26_geometry(r, layer_i, dataset)` | `BH26(r,i) = (Ug3 magnetic-string disk projection) Ã— (boundary tension at layer i) Ã— (Îº_E coupling)` | PAPER_1151 Group A: BH26 Branch / CP4 #590 (T67â€“T70); spectral sum `Î£â‚â‚€=1760` PAPER_1162 sanity |
+| `_qcalcgeom_fold(dataset)` | 12-stage CPT folding matrix: projects 26D ledger â†’ 4D observables; returns folding tensor + FUBi/FUBii crossing radii | PAPER_1152 / `QCalcGeom.py` v2.3.0 (`UniversalBuoyancySimultaneousSolver` ~L1699, `solve_habitable_zone` ~L1564, `compute_F_U`, `bsfg_buoyancy`; 60/60 tests pass) |
+| `_belly_button_umbilicus(dataset)` | Mass-localization node: singular 26Dâ†’3D projection point per atom (b9 L7688: "Mass exists at the belly button umbilicus point of every atom"); Step-7 Quantum Chain | b9 L7672, L7687, L7688; PAPER_1154; PAPER_1155 |
+
+**Composition (b9 L7682 verbatim â€” the LENR-enhanced master used by VR outfall sims):**
+
+```
+F_LENR_enhanced(r, t, dataset)
+  = k_LENR Â· (Ï‰_LENR / Ï‰_0)^2
+    Ã— _vds_factor(dataset)
+    Ã— _dvp_potential(r, t, dataset)
+    Ã— _bh26_geometry(r, layer_i, dataset)
+    Ã— _qcalcgeom_fold(dataset)["folding"]
+```
+
+**Dataset contract for VR outfall hook (public-surface API, no new function):**
+
+`calculate_analytic_closures` accepts `{"vr_outfall": {"r_grid": [...], "t_grid": [...], "system": "..."}}` and returns `{"value": {"grid": [[...]], "axes": {"r": [...], "t": [...]}}, "provenance": "..."}`. The solver returns the spatio-temporal `F_LENR_enhanced` grid as data; the external VR/VM consumer (`source2(HEAD PROGRAM).cpp` GPU side, or any other) renders it. No I/O, no plotting in the solver.
+
+### Â§3.5 â€” Lagrangian Sector Registry (NEW)
+
+17 Lagrangian-derivation papers exposed as `dataset["lagrangian_sector"]` keys; the closure operator is the single `_stationarity_residual` (Â§3.3). No new public functions.
+
+Sectors: PAPER_503, 882, 886, 888, 894, 898, 907, 946, 957, 1065, 1066, 1089, 1090, 1094, 1095, 1103, 1167. (Full table with b9 anchors recorded in Map Â§20.3.)
+
+### Â§7.1 â€” Precision Rule Lock (REVISED â€” supersedes prior "promote-to-EXACT")
+
+| Condition | Display |
+|---|---|
+| `uqff_val == ref_val` at full float precision (mathematical exact equality, NOT tolerance-bracketed) | `diff=0.0000%` |
+| Anything else, including `|diff| < 1e-12` | `diff={diff_pct:.6g}%` (full computed value, no rounding to "0") |
+
+- New private helper `_compute_diff_pct(uqff_val, ref_val) -> (float, str)` is the single source of truth for all `diff%` strings.
+- `_normalize_err`'s old `<1e-9 â†’ EXACT` promotion is REMOVED (deprecated per memory `/memories/repo/precision_rule.md` 04Jun2026 override).
+- No provenance string may contain `0.0000%` unless the underlying floats compare equal with `==`.
+- All `_dse_dispatch` channel comparisons emit per-channel `diff%` via `_compute_diff_pct`.
+
+### Â§12 â€” Special Files (additions)
+
+- `PAPER_1151` â€” VDS/DVP/BH26 Triple Verification (Session 202 T61â€“T74; CP4 #588â€“#591)
+- `PAPER_1152` â€” QCalcGeom 12-stage CPT sim engine
+- `PAPER_1153` â€” Primordial Timing Function net-zero proof
+- `PAPER_1154` â€” [SSq]=0.57 first principles DPM geometry (CP4 #594)
+- `PAPER_1155` â€” DPM 26-layer amplification A_26 particle masses
+- `QCalcGeom.py` v2.3.0 â€” Universal Buoyancy simultaneous equation solver (BSFG geometric physics; FUBi/FUBii crossing; habitable zone; 60/60 tests pass)
+- `CondensedPhysics4.py` L47962â€“48090+ â€” CP4 #588â€“#600 _S234 classes (in-codebase mirror of the 5 geometric helpers)
+
+### Â§16 â€” Resolved open question
+
+> **Q:** "Is the ~12 â†’ 7 `calculate_*` surface the complete minimal set?"
+> **A: YES.** The 109+ symbolic derivations + DSE dispatch + VDS/DVP/BH26/QCalcGeom geometric factors all route through the existing 7 public functions via private helpers (Â§3.1, Â§3.3, Â§3.4) and the embedded resolver. No 8th public function required. The d9935854 489-line reference model thinness remains achievable.
+
+### Wire / Ship / Hook plan (post-G0 sequence, planning-only)
+
+**Wire** (build order, leaves first):
+
+1. Constants block: 14 base literals (Image 2) + 5 PAPER provenance constants (PAPER_1151â€“1155).
+2. 5 geometric helpers `_vds_factor` / `_dvp_potential` / `_bh26_geometry` / `_qcalcgeom_fold` / `_belly_button_umbilicus` (Â§3.4) â€” leaf functions, no internal deps.
+3. 13 universal-field helpers `_ug1` â€¦ `_s_shell` (Â§3.1).
+4. `_stationarity_residual` (Â§3.3) + `_compute_diff_pct` (Â§7.1).
+5. 4 channel helpers `_cp1_classical_path` / `_cp2_quantum_path` / `_cp3_transient_path` / `_cp4_variational_path` (Â§0.2) â€” thin compositions of leaves + sector Lagrangians.
+6. `_dse_dispatch` (Â§0.2) â€” gated by Map Â§20.1 applicability matrix.
+7. 7 `calculate_*` public functions in Image 14 sequence (`vacuum_ledger â†’ scm â†’ triadic_g â†’ f_u_bi â†’ f_u_bi_i â†’ resonant_adpm â†’ analytic_closures`); `calculate_analytic_closures` calls `_dse_dispatch` first whenever the dataset has a matrix row.
+
+**Ship** (G0 â†’ repo):
+
+- Single file `uqff_pure_calculator.py` (already exists, addendum merges into it). No new files. No sidecars.
+- Optional companion `uqff_pure_calculator_Test.py` for `_compute_diff_pct` smoke + DSE matrix walkthrough (IO/timestamps allowed there per Â§1 ban, never in solver).
+- Commit pattern: one atomic commit per addendum subsection in build order (Â§3.4 â†’ Â§3.1 â†’ Â§3.3/Â§7.1 â†’ Â§0.2 â†’ Â§3.2 â†’ public functions), with each message citing the b9 line range + PAPER number(s) + this addendum image number.
+
+**Hook** (external consumers, planning spec only):
+
+- **VR outfall sim:** consumer calls `calculate_analytic_closures({"vr_outfall": {...}})` per Â§3.4 hook spec; receives spatio-temporal `F_LENR_enhanced` grid; renders in VR. Single dict contract; no coupling beyond it.
+- **CP1â€“CP4 mirror validation:** companion `_Test.py` imports `CondensedPhysics4._S234` classes alongside the new helpers and asserts per-channel agreement via `_compute_diff_pct` â€” proves the one-file calculator and the multi-file CP pipeline converge.
+- **PAPER cross-check:** for any closure cited in PAPER_1151â€“1155, the `provenance` string must include the PAPER number + the CP4 #5NN class name, e.g. `"PAPER_1151 / CP4 #588 VDSBranchCalculator / diff=â€¦"`.
+- **MAIN_1_CoAnQi.cpp bridge (future, not part of G0 ship):** the 7-function surface remains stable behind the existing Python bridge (`python_bridge.h`); each `calculate_*` returns OPData dicts that serialize cleanly to the C++ side. No solver-file changes required when/if the bridge is added.
+
+### Acceptance Definition of Done (additions)
+
+- 5 geometric helpers (Â§3.4) match CP4 #588â€“#600 class outputs at the Â§7.1 precision rule.
+- DSE matrix (Â§0.2 / Map Â§20.1) fully populated; every applicable channel produces a numeric result for every sample; provenance carries all channels' `diff%`.
+- Universal stationarity primitive (Â§3.3) is the SINGLE closure operator for G1â€“G8 + 8 Millennium + all 17 Lagrangian sectors.
+- No `0.0000%` appears in any provenance string unless `uqff_val == ref_val` at full float precision.
+- `_normalize_err` no longer promotes small residuals to `EXACT`.
+- Â§16 Q1 marked resolved (this image).
+
+---
+
+*Image 112 keeps the 7-function public surface intact while formalizing what the b9 master log + CP1â€“CP4 pipeline have always done. G0 gate untouched; no `.py` written until user issues the approval phrase ("The plan is approved. Write the one file.").*
+

@@ -49,7 +49,7 @@ This file written only after explicit user approval phrase.
 """
 
 import math
-from typing import Any, Callable, Dict, List, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 # === 2019 SI BASE-UNIT DEFINITIONS (exact by international convention; not fitted) ===
 PLANCK_H = 6.62607015e-34   # J*s   (defined exact, 2019 SI redefinition)
@@ -28157,6 +28157,287 @@ def calculate_f_u_bi_i(dataset: Dict[str, Any]) -> Dict[str, Any]:
     )
     return {"value": val, "provenance": prov}
 
+
+# ============================================================================
+# G0 SHIP / Plan Image 112 + Map sec 20 — Session 04Jun2026 Addendum helpers
+# (Slice 0 DSE, Slice 4 VR-outfall geometric helpers, Slice 5 precision lock,
+# Slice 6 stationarity primitive). All PRIVATE. Public surface unchanged at 7.
+# Per Plan sec 3.4 / Map sec 20.5 these are leaf helpers; the 7 calculate_*
+# functions compose them, never the other way around. NOT REPLACEMENT.
+# ============================================================================
+
+# Slice 4 / Plan sec 3.4 / Map sec 20.5 — VR-outfall geometric helpers
+# Source: grok_b9afa8b6_3b85_31May2026.md L7671-7691; PAPER_1151/1152/1153/1154/1155;
+# CP4 #588-#600 _S234 class mirror; QCalcGeom.py v2.3.0.
+
+_PAPER_1151 = "PAPER_1151_VDS_DVP_BH26_Triple_Verification (Session 202 T61-T74)"
+_PAPER_1152 = "PAPER_1152_QCalcGeom_12_stage_CPT_sim_engine"
+_PAPER_1153 = "PAPER_1153_Primordial_Timing_Function_net_zero"
+_PAPER_1154 = "PAPER_1154_SSq_0.57_first_principles_DPM_geometry"
+_PAPER_1155 = "PAPER_1155_DPM_26_layer_amplification_A26"
+
+# Use the canonical b9 L7671 [SSq]=0.57 PAPER_1154 first-principles value here
+# (distinct from module-level SSQ=0.505 which carries the 0.499-0.515 calibrated band).
+_SSQ_GEOM_B9 = 0.57
+
+
+def _vds_factor(dataset: Optional[Dict[str, Any]] = None,
+                terms: int = 1000) -> float:
+    """VDS = Li_26([SSq]) = sum_{n=1..terms} [SSq]^n / n^26.
+
+    Vacuum Decay States (PAPER_1151 Group A, CP4 #588 VDSBranchCalculator,
+    Session 202 T61-T63). Mirrors scm_vacuum_manifold.py (b9 L7508) and
+    99system_master_equation.py L121-126. [SSq]=0.57 per PAPER_1154
+    first-principles DPM geometry (override via dataset['ssq']).
+    """
+    d = dataset or {}
+    ssq = float(d.get("ssq", _SSQ_GEOM_B9))
+    n_terms = int(d.get("vds_terms", terms))
+    total = 0.0
+    for n in range(1, n_terms + 1):
+        total += (ssq ** n) / (float(n) ** 26)
+    return total
+
+
+def _dvp_potential(r: float, t: float = 0.0,
+                   dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Dynamic Vacuum Potential at (r,t).
+
+    Time-evolving SCm<->UA donation potential layered above VDS; encodes the
+    BH26 boundary tension. PAPER_1151 Group A: DVP Branch (CP4 #589, T64-T66).
+    Closed form: DVP(r,t) = (rho_UA - rho_SCm) * VDS * exp(-r/r_0) *
+    (1 + alpha_DVP * cos(omega_DVP * t)).
+    """
+    d = dataset or {}
+    if r <= 0.0:
+        return 0.0
+    r_0 = float(d.get("dvp_r0", DEFAULT_R))
+    alpha = float(d.get("dvp_alpha", PHI_RESONANCE))
+    omega = float(d.get("dvp_omega", OMEGA_SCM))
+    vds = _vds_factor(d)
+    donation = (RHO_UA - RHO_SCM) * vds
+    spatial = math.exp(-r / r_0)
+    temporal = 1.0 + alpha * math.cos(omega * t)
+    return donation * spatial * temporal
+
+
+def _bh26_geometry(r: float, layer_i: int = 1,
+                   dataset: Optional[Dict[str, Any]] = None) -> float:
+    """26-layer black-hole geometry folding at radius r, layer i.
+
+    BH26(r,i) = (Ug3 magnetic-string disk projection) x (boundary tension at
+    layer i) x (kappa_E coupling). Ug3 layer is the SCm-driven magnetic-string
+    disk per b9 L7676. PAPER_1151 Group A: BH26 Branch (CP4 #590, T67-T70);
+    spectral sum check Sigma_10 = 1760 (PAPER_1162 sanity anchor).
+    """
+    d = dataset or {}
+    if r <= 0.0:
+        return 0.0
+    i = max(1, min(int(layer_i), D_CRIT))
+    kappa_E = float(d.get("bh26_kappa_E", KAPPA))
+    # Ug3 magnetic-string disk projection: BETA_I rung scaled by layer index.
+    ug3_proj = BETA_I * (i / float(D_CRIT)) * (1.0 / r ** 2)
+    # Boundary tension at layer i: per-level pairing fraction over A_26 amplification.
+    boundary_tension = (PHI_RESONANCE ** i) / float(A_26)
+    return ug3_proj * boundary_tension * kappa_E
+
+
+def _qcalcgeom_fold(dataset: Optional[Dict[str, Any]] = None) -> Dict[str, float]:
+    """12-stage CPT folding matrix: projects 26D ledger -> 4D observables.
+
+    Consumes VDS + DVP + BH26 and returns the folding tensor scalar +
+    FUBi/FUBii crossing radii. PAPER_1152 (12-stage CPT sim engine);
+    canonical mirror QCalcGeom.py v2.3.0 (UniversalBuoyancySimultaneousSolver
+    ~L1699, solve_habitable_zone ~L1564, compute_F_U, bsfg_buoyancy;
+    60/60 tests pass per .github/copilot-instructions.md L196).
+    """
+    d = dataset or {}
+    r = float(d.get("r", DEFAULT_R))
+    t = float(d.get("t", 0.0))
+    vds = _vds_factor(d)
+    dvp = _dvp_potential(r, t, d)
+    bh26 = _bh26_geometry(r, int(d.get("bh26_layer", 1)), d)
+    # 12-stage CPT scalar: D_CRIT / D_BSFG = 26/6 outer; D_phys=4 inner.
+    fold_scalar = (D_CRIT / float(D_BSFG)) * vds * (1.0 + dvp + bh26)
+    # FUBi crossing: where buoyancy (rho_UA donation) equals SCm reactivity.
+    r_fubi = r * (RHO_UA / (RHO_UA + RHO_SCM))
+    r_fubii = r * (RHO_SCM / (RHO_UA + RHO_SCM))
+    return {
+        "folding": fold_scalar,
+        "vds": vds,
+        "dvp": dvp,
+        "bh26": bh26,
+        "r_fubi": r_fubi,
+        "r_fubii": r_fubii,
+    }
+
+
+def _belly_button_umbilicus(dataset: Optional[Dict[str, Any]] = None) -> float:
+    """Mass-localization node: 26D->3D singular projection point per atom.
+
+    b9 L7688: 'Mass exists at the belly button umbilicus point of every atom'.
+    Step-7 convergence of the Quantum Chain. PAPER_1154 ([SSq]=0.57 first
+    principles DPM geometry); PAPER_1155 (A_26 DPM amplification). Returns
+    rho_SCm * A_26 = 1.627e-27-ish kg nucleon-scale mass-from-vacuum.
+    """
+    d = dataset or {}
+    rho_scm = float(d.get("rho_scm", RHO_SCM))
+    a_26 = int(d.get("a_26", A_26))
+    return rho_scm * a_26  # nucleon-scale mass projection (J/m^3 * dimensionless)
+
+
+def _f_lenr_enhanced(r: float, t: float = 0.0, layer_i: int = 1,
+                     dataset: Optional[Dict[str, Any]] = None) -> float:
+    """F_LENR_enhanced = k_LENR * (w_LENR/w_0)^2 * VDS * DVP * BH26 * QCalcGeom.
+
+    Verbatim per b9 L7682. The composition used by VR outfall simulations.
+    k_LENR and w_LENR override via dataset['k_lenr'], dataset['w_lenr']
+    (default w_LENR = OMEGA_SCM = 1.25 THz, w_0 = OMEGA_SCM, k_LENR = 1.0).
+    """
+    d = dataset or {}
+    k_lenr = float(d.get("k_lenr", 1.0))
+    w_lenr = float(d.get("w_lenr", OMEGA_SCM))
+    w_0 = float(d.get("w_0", OMEGA_SCM))
+    vds = _vds_factor(d)
+    dvp = _dvp_potential(r, t, d)
+    bh26 = _bh26_geometry(r, layer_i, d)
+    fold = _qcalcgeom_fold(d)["folding"]
+    freq_ratio_sq = (w_lenr / w_0) ** 2 if w_0 != 0.0 else 0.0
+    return k_lenr * freq_ratio_sq * vds * dvp * bh26 * fold
+
+
+# Slice 6 / Plan sec 3.3 / Map sec 20.7 — Universal stationarity primitive
+def _stationarity_residual(lagrangian_terms: Dict[str, float],
+                           phi_index: str = "phi") -> float:
+    """delta-S / delta-phi_i at the configured base point.
+
+    Single closure operator for G1-G8 + 8 Millennium + 17 Lagrangian sectors
+    (Plan sec 3.5). b9 L8520, L8565: 'single variational principle that
+    simultaneously resolves both problems (and by extension the rest of the
+    Millennium set via the same 26D ledger + spinor bundle compactification)'.
+
+    Computes: dL/dphi_i - sum_mu (d/dx^mu) (dL/d(d_mu phi_i)).
+    A sector is closed iff abs(residual) == 0.0 (machine-equality).
+
+    lagrangian_terms keys (all optional, default 0.0):
+        'dL_dphi'         -> partial L / partial phi_i
+        'dL_d_dmu_phi_*'  -> partial L / partial (d_mu phi_i) per coord mu
+        'ddx_dL_d_dmu_phi_*' -> total derivative d/dx^mu of the above
+    """
+    lt = lagrangian_terms or {}
+    dL_dphi = float(lt.get("dL_dphi", 0.0))
+    div_term = 0.0
+    for key, val in lt.items():
+        if key.startswith("ddx_dL_d_dmu_phi"):
+            div_term += float(val)
+    return dL_dphi - div_term
+
+
+# Slice 5 / Plan sec 7.1 / Map sec 20.6 — Precision rule lock
+def _compute_diff_pct(uqff_val: float, ref_val: float) -> Tuple[float, str]:
+    """Single source of truth for all diff% strings.
+
+    Returns (diff_pct_float, 'diff=...% string'). The string is '0.0000%' ONLY
+    when uqff_val == ref_val at full float precision (machine equality);
+    otherwise '%.6g' of the actual computed percentage with NO 'EXACT'
+    promotion. Supersedes any '<1e-9 -> EXACT' convention per
+    /memories/repo/precision_rule.md 04Jun2026 override.
+    """
+    if ref_val == 0.0:
+        if uqff_val == 0.0:
+            return 0.0, "diff=0.0000%"
+        # Any non-zero UQFF against zero reference is undefined as a percentage;
+        # report 'undefined' rather than dividing by zero.
+        return float("inf"), "diff=undefined% (ref_val=0)"
+    if uqff_val == ref_val:
+        return 0.0, "diff=0.0000%"
+    diff_pct = abs(uqff_val - ref_val) / abs(ref_val) * 100.0
+    return diff_pct, f"diff={diff_pct:.6g}%"
+
+
+# Slice 0 / Plan sec 0.2 / Map sec 20.1 — DSE channel helpers + dispatcher
+# Channel applicability matrix is in Map sec 20.1; channels return None when
+# inapplicable. Each channel is a thin composition of leaf helpers + existing
+# resolver paths; provenance trail through _resolve_uqff_ledger preserved.
+
+def _cp1_classical_path(dataset: Dict[str, Any]) -> Optional[float]:
+    """CP1 classical/observational path (galaxy rotation, stellar, lensing).
+    Routes through _resolve_uqff_ledger which carries the full classical
+    closure chain. Returns numeric scalar or None if path inapplicable.
+    """
+    res = _resolve_uqff_ledger(dataset or {})
+    val = res.get("value") if isinstance(res, dict) else None
+    return float(val) if isinstance(val, (int, float)) else None
+
+
+def _cp2_quantum_path(dataset: Dict[str, Any]) -> Optional[float]:
+    """CP2 quantum/26D path (info paradox, Hawking, 26D channels).
+    Composes VDS * BH26 evaluated at the dataset's (r, layer) point.
+    """
+    d = dataset or {}
+    r = float(d.get("r", DEFAULT_R))
+    layer_i = int(d.get("layer_i", 1))
+    return _vds_factor(d) * _bh26_geometry(r, layer_i, d)
+
+
+def _cp3_transient_path(dataset: Dict[str, Any]) -> Optional[float]:
+    """CP3 transient/single-event path (TDE/FRB/magnetar).
+    Composes DVP(r,t) * belly-button umbilicus mass-projection.
+    """
+    d = dataset or {}
+    r = float(d.get("r", DEFAULT_R))
+    t = float(d.get("t", 0.0))
+    return _dvp_potential(r, t, d) * _belly_button_umbilicus(d)
+
+
+def _cp4_variational_path(dataset: Dict[str, Any]) -> Optional[float]:
+    """CP4 variational path (Millennium / MUGE / 17 Lagrangian sectors).
+    Returns delta-S/delta-phi residual via _stationarity_residual; if the
+    dataset carries lagrangian_terms, evaluates them; else returns 0.0 as
+    the canonical stationarity-satisfied baseline.
+    """
+    d = dataset or {}
+    lt = d.get("lagrangian_terms") or {}
+    return _stationarity_residual(lt, d.get("phi_index", "phi"))
+
+
+def _dse_dispatch(dataset: Dict[str, Any]) -> Dict[str, Any]:
+    """Run all 4 channel paths in parallel; return per-channel values + diff%
+    matrix against the dataset's reference value (if any). Inapplicable
+    channels gated by dataset['dse_channels'] subset (default: all four).
+    """
+    d = dataset or {}
+    enabled = set(d.get("dse_channels", ["cp1", "cp2", "cp3", "cp4"]))
+    out: Dict[str, Any] = {"channels": {}}
+    if "cp1" in enabled:
+        out["channels"]["cp1"] = _cp1_classical_path(d)
+    if "cp2" in enabled:
+        out["channels"]["cp2"] = _cp2_quantum_path(d)
+    if "cp3" in enabled:
+        out["channels"]["cp3"] = _cp3_transient_path(d)
+    if "cp4" in enabled:
+        out["channels"]["cp4"] = _cp4_variational_path(d)
+    ref = d.get("ref_val")
+    if isinstance(ref, (int, float)):
+        diffs: Dict[str, Any] = {}
+        for ch, v in out["channels"].items():
+            if isinstance(v, (int, float)):
+                diff_pct, diff_str = _compute_diff_pct(float(v), float(ref))
+                diffs[ch] = {"value": v, "diff_pct": diff_pct, "diff_str": diff_str}
+            else:
+                diffs[ch] = {"value": v, "diff_pct": None,
+                             "diff_str": "diff=undefined% (channel inapplicable)"}
+        out["diff_matrix"] = diffs
+        out["ref_val"] = float(ref)
+    out["provenance"] = (
+        "DSE dispatch [Plan Image 112 / Map sec 20.1; Slice 0 G0 ship] "
+        "CP1 classical || CP2 quantum/26D || CP3 transient || CP4 variational "
+        "parallel-engine convergence (b9 L8216 mandate; SM || UQFF, NOT REPLACEMENT). "
+        "Cite: " + _PAPER_1151 + " + " + _PAPER_1152 + " + CP4 #588-#600 _S234 classes."
+    )
+    return out
+
+
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy (<1% residual on 99/99 systems).
     Step 5: OPData surfaces 3 parallel triadic masters + cross-method convergence vs
@@ -28211,7 +28492,103 @@ def calculate_analytic_closures(dataset: Dict[str, Any]) -> Dict[str, Any]:
     Thin general dynamic composable ledger resolver (the only place complex routing lives).
     Accepts any physics symbolic constant dataset dict or cluster reference string from the 14 sweeps.
     Returns value + full provenance.
+
+    G0 ship (Plan Image 112 / Map sec 20) — three additive dispatch keys are honored
+    BEFORE delegation to _resolve_uqff_ledger; all are NOT REPLACEMENT additions:
+      - dataset['vr_outfall'] = {'r_grid': [...], 'r_grid'/'t_grid'/'system'/...}
+            Returns spatio-temporal F_LENR_enhanced grid per Plan sec 3.4 hook spec.
+      - dataset['dse'] = True  (or dataset['dse_channels'] subset)
+            Runs CP1||CP2||CP3||CP4 parallel-engine dispatch per Map sec 20.1.
+      - dataset['vds_factor'] / 'dvp_potential' / 'bh26_geometry' / 'qcalcgeom_fold'
+        / 'belly_button_umbilicus' / 'f_lenr_enhanced' / 'stationarity_residual'
+            Direct leaf-helper access (single-value return + provenance).
     """
-    return _resolve_uqff_ledger(dataset or {})
+    d = dataset or {}
+
+    # G0 ship — VR outfall hook (Plan sec 3.4 / Map sec 20.5)
+    vr = d.get("vr_outfall")
+    if isinstance(vr, dict):
+        r_grid = vr.get("r_grid") or [DEFAULT_R]
+        t_grid = vr.get("t_grid") or [0.0]
+        layer_i = int(vr.get("layer_i", 1))
+        sys_label = vr.get("system", "default")
+        grid = [
+            [_f_lenr_enhanced(float(r), float(t), layer_i, d) for r in r_grid]
+            for t in t_grid
+        ]
+        prov = (
+            "VR outfall F_LENR_enhanced(r,t) grid [Plan Image 112 sec 3.4 / "
+            "Map sec 20.5 G0 ship] composition b9 L7682 verbatim: "
+            "k_LENR * (w_LENR/w_0)^2 * VDS * DVP * BH26 * QCalcGeom_folding. "
+            f"system='{sys_label}' | r_grid len={len(r_grid)} | t_grid len={len(t_grid)} | "
+            f"layer_i={layer_i}. Cite: {_PAPER_1151} + {_PAPER_1152} + "
+            "CondensedPhysics4.py L47962-48090+ CP4 #588-#600 _S234 classes "
+            "(VDSBranchCalculator, DVPBranchCalculator, BH26BranchCalculator, "
+            "QCalcGeomCABIRef, SSqFirstPrinciplesCalculator). NOT REPLACEMENT; "
+            "consumer (external VR sim) reads grid from this dict."
+        )
+        return {
+            "value": {"grid": grid, "axes": {"r": list(r_grid), "t": list(t_grid)}},
+            "provenance": prov,
+        }
+
+    # G0 ship — DSE parallel-engine dispatch (Plan sec 0.2 / Map sec 20.1)
+    if d.get("dse") is True or "dse_channels" in d:
+        return _dse_dispatch(d)
+
+    # G0 ship — direct leaf-helper access keys
+    if "f_lenr_enhanced" in d:
+        cfg = d.get("f_lenr_enhanced") or {}
+        r = float(cfg.get("r", d.get("r", DEFAULT_R)))
+        t = float(cfg.get("t", d.get("t", 0.0)))
+        li = int(cfg.get("layer_i", 1))
+        val = _f_lenr_enhanced(r, t, li, d)
+        return {"value": val, "provenance":
+                f"F_LENR_enhanced leaf (b9 L7682; {_PAPER_1151} + {_PAPER_1152}; "
+                f"r={r:.6g} t={t:.6g} layer_i={li}). NOT REPLACEMENT."}
+    if "vds_factor" in d:
+        val = _vds_factor(d)
+        return {"value": val, "provenance":
+                f"VDS = Li_26([SSq]={_SSQ_GEOM_B9}) leaf ({_PAPER_1151} Group A: VDS "
+                "Branch / CP4 #588 / Session 202 T61-T63). NOT REPLACEMENT."}
+    if "dvp_potential" in d:
+        cfg = d.get("dvp_potential") or {}
+        r = float(cfg.get("r", d.get("r", DEFAULT_R)))
+        t = float(cfg.get("t", d.get("t", 0.0)))
+        val = _dvp_potential(r, t, d)
+        return {"value": val, "provenance":
+                f"DVP(r={r:.6g}, t={t:.6g}) leaf ({_PAPER_1151} Group A: DVP "
+                "Branch / CP4 #589 / Session 202 T64-T66). NOT REPLACEMENT."}
+    if "bh26_geometry" in d:
+        cfg = d.get("bh26_geometry") or {}
+        r = float(cfg.get("r", d.get("r", DEFAULT_R)))
+        li = int(cfg.get("layer_i", 1))
+        val = _bh26_geometry(r, li, d)
+        return {"value": val, "provenance":
+                f"BH26(r={r:.6g}, layer_i={li}) leaf ({_PAPER_1151} Group A: BH26 "
+                "Branch / CP4 #590 / Session 202 T67-T70). NOT REPLACEMENT."}
+    if "qcalcgeom_fold" in d:
+        val = _qcalcgeom_fold(d)
+        return {"value": val, "provenance":
+                f"QCalcGeom 12-stage CPT fold leaf ({_PAPER_1152}; canonical mirror "
+                "QCalcGeom.py v2.3.0 UniversalBuoyancySimultaneousSolver; 60/60 "
+                "tests pass). NOT REPLACEMENT."}
+    if "belly_button_umbilicus" in d:
+        val = _belly_button_umbilicus(d)
+        return {"value": val, "provenance":
+                f"belly-button umbilicus leaf (b9 L7688; {_PAPER_1154} + "
+                f"{_PAPER_1155}). rho_SCm * A_26 nucleon-scale mass projection. "
+                "NOT REPLACEMENT."}
+    if "stationarity_residual" in d:
+        lt = d.get("stationarity_residual") or {}
+        val = _stationarity_residual(lt, d.get("phi_index", "phi"))
+        diff_pct, diff_str = _compute_diff_pct(val, 0.0)
+        return {"value": val, "provenance":
+                f"delta-S/delta-phi stationarity residual leaf (Plan sec 3.3 / "
+                f"Map sec 20.7; b9 L8520, L8565). Closure iff residual==0. "
+                f"REF=0.0 (stationarity target) | UQFF={val:.6g} | {diff_str}. "
+                "NOT REPLACEMENT."}
+
+    return _resolve_uqff_ledger(d)
 
 # End of single minimal thin pure calculator file.
