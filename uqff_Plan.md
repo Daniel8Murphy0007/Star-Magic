@@ -5996,3 +5996,35 @@ These are honest residuals: the canonical engine and the b9 Image 3 anchors do n
 These diffs are computed honestly per call with the actual computed value vs the documented anchor; the contract makes residuals visible to every caller without requiring downstream code to know the anchor.
 
 **Step 4 status:** COMPLETE. The §7 mandate "every dispatcher return composes the Map section 7 string ending (NOT REPLACEMENT)" is fulfilled. Future steps 5-12 remain (parallel-masters surfacing, G3 KK/spinor closure, vacuum-ledger decomposition output, LENR variant chain, ASTRO_SYSTEMS to 99, P1-P14 threshold checks, retire phonon_alpha_nearest_primitive, external _Test.py companion).
+
+---
+
+## Plan Image 104 (2026-06-04): Analysis section 7 Step 5 -- three parallel triadic masters + cross-method convergence surfaced in calculate_triadic_g OPData
+
+**Scope:** Map sec 3.5 acceptance criterion ("Pillars of Creation Eqs. 68-70 three parallel masters with identical numeric targets") + Map sec 8 ("every cluster converges through the same 7-function surface via Symbolic + Numerical + Discrete/hypergraph simultaneously"). Step 5 mandates `calculate_triadic_g` OPData surface `{g_comp, g_res, g_buoy, agreement_pct, triadic}` so the 3 parallel triadic masters are visible to every caller, not hidden behind the weighted scalar.
+
+**Pre-patch state:** `_triadic_g(M, r, t_n)` computed `g_comp`, `g_res`, `g_buoy` internally then discarded all three, returning only the weighted scalar `W_C*g_comp + W_R*g_res + W_B*g_buoy`. Public `calculate_triadic_g` returned `{value: scalar, provenance: ...}` -- the 3 parallel masters and their inter-master agreement were not surfaced.
+
+**Applied edits to `uqff_pure_calculator.py`:**
+- New helper `_triadic_g_decomposed(M, r, t_n) -> Dict` immediately after `_triadic_g` (line ~2570). Returns 9 OPData keys:
+  1. `triadic` -- weighted scalar (backward-compat target)
+  2. `g_comp` -- NUMERICAL master: `(rho_SCm * M / r^2) * (1 + [SSq])` (Ug_26layer approx)
+  3. `g_res`  -- SYMBOLIC master: `g_comp * Phi_RESONANCE` (resonance closure)
+  4. `g_buoy` -- DISCRETE master: `(rho_SCm * M / r) * (1 + K_Ub * cos(pi t_n))` (F_UBi)
+  5. `agreement_pct` -- max pairwise spread among `[g_comp, g_res, g_buoy]` as a percentage
+  6. `weights` -- `{w_C: 0.34, w_R: 0.33, w_B: 0.33}`
+  7. `cross_master_g_compressed_8term` -- canonical 8-term master from `_g_compressed` (Map sec 4 line 2)
+  8. `cross_master_g_resonance` -- composite resonance master from `_g_resonance` (Map sec 4 line 4)
+  9. `cross_method_agreement_pct` -- max pairwise spread across `[triadic, g_compressed_8term, g_resonance]` (Map sec 8 cross-method convergence)
+- `calculate_triadic_g` rewritten: value is now the full decomposition dict, provenance carries the Step 4 per-call contract with UQFF = computed `agreement_pct/100` (fractional spread) vs REF = 0.01 (<1% residual mandate from Map sec 9 99-system suite). Honest residual disclosure (no fudging to hit the 1% target).
+- Internal `_triadic_g` scalar untouched (cluster-registry path in `_resolve_uqff_ledger` and other internal callers continue to use the scalar; only the public OPData was promoted to dict-valued per the spinor Step 3 precedent).
+
+**Validation (8 sections PASS):** helper callable; 9 OPData keys present; real numeric values output at default dataset (g_comp = 1.067e-24, g_res = 8.963e-25, g_buoy = 7.799e-16, triadic = 2.574e-16; cross_master_8term = 2.246e+02, cross_master_resonance = 8.124e-13); public contract preserved (zero side effects, NOT REPLACEMENT stamped, REF/UQFF/diff present, dict-valued, all keys); Step 4 dispatcher branches still PASS (8/8); other 6 public calculators still PASS Step 4 contract; internal scalar consistent with `decomp["triadic"]`.
+
+**Honest agreement disclosure (default dataset M=1 kg, r=DEFAULT_R):**
+- `agreement_pct = 100.0000%` among the 3 triadic component masters (`g_buoy` dominates by ~8 orders at this scale -- expected since the three masters operate in different regimes; convergence is per-system, not universal at the default)
+- `cross_method_agreement_pct = 100.0000%` across `[triadic, g_compressed_8term, g_resonance]` (canonical 8-term carries Newton's G*M/r^2 which dominates at default M, r)
+
+These 100% spreads are the *truthful* report Map sec 8 demands. The contract surfaces the gap to every caller so per-system tuning of M/r reveals when the 3 masters actually converge. No anchor-tuning, no synthetic agreement -- consistent with the Step 2 corrective-port and Step 3 spinor honesty lessons.
+
+**Step 5 status:** COMPLETE. Map sec 3.5 / sec 8 mandate fulfilled: the 3 parallel triadic masters and the cross-method convergence vs the canonical 8-term and composite resonance masters are now exposed in every `calculate_triadic_g` return, with honest residual disclosure per call.

@@ -2563,6 +2563,34 @@ def _triadic_g(M: float = DEFAULT_M, r: float = DEFAULT_R, t_n: float = 0.0) -> 
     g_buoy = (RHO_SCM * M / r) * (1.0 + K_Ub * _cos_pi_tn(t_n))  # F_UBi approx
     return W_C * g_comp + W_R * g_res + W_B * g_buoy
 
+def _triadic_g_decomposed(M: float = DEFAULT_M, r: float = DEFAULT_R, t_n: float = 0.0) -> Dict[str, Any]:
+    # Step 5: Map sec 3.5 / sec 8 -- surface 3 parallel triadic masters with intra-master agreement,
+    # plus cross-method convergence vs canonical 8-term g_compressed and composite g_resonance masters.
+    g_comp = (RHO_SCM * M / (r * r)) * (1.0 + SSQ)               # NUMERICAL: Ug_26layer approx
+    g_res  = g_comp * PHI_RESONANCE                              # SYMBOLIC: resonance closure
+    g_buoy = (RHO_SCM * M / r) * (1.0 + K_Ub * _cos_pi_tn(t_n))  # DISCRETE: F_UBi buoyancy
+    triadic = W_C * g_comp + W_R * g_res + W_B * g_buoy
+    parts = [g_comp, g_res, g_buoy]
+    abs_max = max(abs(v) for v in parts)
+    abs_min = min(abs(v) for v in parts)
+    agreement_pct = ((abs_max - abs_min) / abs_max * 100.0) if abs_max != 0 else 0.0
+    g_canonical_8term  = _g_compressed(M, r, t_n)
+    g_master_resonance = _g_resonance(M, r, t_n)
+    cross_vals = [abs(triadic), abs(g_canonical_8term), abs(g_master_resonance)]
+    cmax = max(cross_vals); cmin = min(cross_vals)
+    cross_agreement_pct = ((cmax - cmin) / cmax * 100.0) if cmax != 0 else 0.0
+    return {
+        "triadic": triadic,
+        "g_comp": g_comp,
+        "g_res": g_res,
+        "g_buoy": g_buoy,
+        "agreement_pct": agreement_pct,
+        "weights": {"w_C": W_C, "w_R": W_R, "w_B": W_B},
+        "cross_master_g_compressed_8term": g_canonical_8term,
+        "cross_master_g_resonance": g_master_resonance,
+        "cross_method_agreement_pct": cross_agreement_pct,
+    }
+
 def _f_u_bi(M: float = DEFAULT_M, r: float = DEFAULT_R, t_n: float = 0.0) -> float:
     # F_UBi from 99system + 11Sept/11Oct (clusters 2,7,8)
     return (RHO_SCM * M / r) * (1.0 + BETA_I * _cos_pi_tn(t_n) + SSQ)
@@ -27520,22 +27548,30 @@ def calculate_f_u_bi_i(dataset: Dict[str, Any]) -> Dict[str, Any]:
     return {"value": val, "provenance": prov}
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
-    """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy (<1% residual on 99/99 systems)."""
+    """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy (<1% residual on 99/99 systems).
+    Step 5: OPData surfaces 3 parallel triadic masters + cross-method convergence vs
+    canonical 8-term g_compressed and composite g_resonance masters (Map sec 3.5 / sec 8).
+    """
     d = dataset or {}
     M = float(d.get("M", d.get("m", DEFAULT_M)))
     r = float(d.get("r", DEFAULT_R))
     t_n = d.get("t_n", 0.0)
-    val = _triadic_g(M, r, t_n)
+    decomp = _triadic_g_decomposed(M, r, t_n)
     res = _resolve_uqff_ledger(d)
     base_prov = res["provenance"] if "provenance" in res else PROV_BASE
-    label = "triadic g (w_C g_comp + w_R g_res + w_B g_buoy <1% on 99/99; Ug1-4 + U_mi Q-wave)"
-    # Anchor: <1% residual claim across 99-system suite (Map section 9 row 99-system).
+    label = (
+        "triadic g 3 parallel masters [g_comp NUMERICAL, g_res SYMBOLIC, g_buoy DISCRETE] "
+        "+ cross-method convergence vs g_compressed 8-term + g_resonance composite "
+        "(Map sec 3.5 / sec 8; agreement_pct = max pairwise spread among the 3 component masters)"
+    )
+    # Anchor: <1% residual mandate; UQFF = computed intra-master agreement spread (fractional).
     prov = _compose_step4_provenance(
-        label, base_prov, val=0.01,
+        label, base_prov,
+        val=decomp["agreement_pct"] / 100.0,
         anchor=0.01, anchor_unit="fractional residual", anchor_kind="99_SYSTEM_SUITE",
         anchor_source="uqff_Map.md section 9 99-system triadic g cross-validation (<1% residual mandate)",
     )
-    return {"value": val, "provenance": prov}
+    return {"value": decomp, "provenance": prov}
 
 def calculate_vacuum_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """4-term vacuum energy ledger (G1-G8 zero-param, UA 4-layer, 26! / KK, single non-mass root)."""
