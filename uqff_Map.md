@@ -2081,3 +2081,27 @@ Honest validated diffs:
 The canonical engine and the b9 Image 3 anchors do not numerically agree; we report that transparently per the Step 2 corrective-port lesson. The two anchors retain their place in `SPINOR_ANCHORS` for b9 regression bookkeeping but are explicitly labeled `kind=B9_ANCHOR_IMAGE3` with `source='no published derivation chain'`.
 
 Map section 9 row 9 mandate ("derive live") now satisfied for the spinor row in the same honest-port style as Map section 7 row Millennium: live canonical-engine derivation + transparent anchor disclosure + per-call residual reporting.
+
+---
+
+### Map section 18 update (2026-06-04 Step 4 per-call provenance contract enforced)
+
+Analysis section 7 Step 4 ("every dispatcher return composes the Map section 7 string including REF=<X>, UQFF=<Y>, diff=<computed>% and ends (NOT REPLACEMENT)") is now COMPLETE.
+
+Applied:
+- New helper `_compose_step4_provenance(calc_label, base_prov, val=None, anchor=None, anchor_unit, anchor_kind, anchor_source)` standardises the section 7 suffix across all public calculators. Without anchor: returns "<label> via <base_prov> (NOT REPLACEMENT)". With numeric anchor: appends "| REF=<X> (<unit>, kind=<KIND>, source: <SOURCE>) | UQFF=<Y> | diff=<computed>% (NOT REPLACEMENT)".
+- All 6 thin public calculators (`calculate_resonant_adpm`, `calculate_scm`, `calculate_f_u_bi`, `calculate_f_u_bi_i`, `calculate_triadic_g`, `calculate_vacuum_ledger`) rewritten to route through the helper with per-calculator anchors:
+  | calculator      | anchor       | unit             | kind                  | source                                                                                            |
+  |-----------------|--------------|------------------|-----------------------|---------------------------------------------------------------------------------------------------|
+  | resonant_adpm   | F_THZ        | Hz               | PHONON_CARRIER        | Holmlid 1.25 THz; Star-MagicProofEngine.OMEGA_SCM = F_THZ                                         |
+  | scm             | 26           | levels           | DPM_LADDER_DEPTH      | dpm_vacuum_manifold.py v3.0 line 216 (S26_3 = 1.4531e26)                                          |
+  | f_u_bi          | 1.0          | dimensionless    | F_U_BALANCE           | Star-MagicProofEngine PROOF_DERIVATION_MODES['f_u_universal_simultaneous_balance']                |
+  | f_u_bi_i        | 4            | layers           | DPM_LAYER_COUNT       | dpm_vacuum_manifold.py v3.0 4-term ledger (V0 + R26/2k_E + rho_KK + rho_BSFG)                     |
+  | triadic_g       | 0.01         | fractional       | 99_SYSTEM_SUITE       | uqff_Map.md section 9 99-system triadic g cross-validation (<1% residual mandate)                 |
+  | vacuum_ledger   | 5.95e-10     | J/m^3            | VACUUM_LEDGER_TOTAL   | uqff_Map.md section 9 4-term ledger total (Planck Lambda anchor 0.2% residual)                    |
+- `calculate_analytic_closures` cluster-registry loop patched to stamp `(NOT REPLACEMENT)` on every cluster-route return (covers PROV_DAVINCI / PROV_99 / PROV_14SEPT / PROV_UA / PROV_LAGR / PROV_11SEPT / PROV_11OCT / PROV_ARXIV that did not previously carry the suffix).
+- Spinor branch (Step 3) and Millennium branch (Step 2) already carry the full §7 contract via their own provenance composition.
+
+Validation: 38 independent checks PASS. helper test (3 checks) + 7 public calculators emit NOT REPLACEMENT and zero side effects + 6 thin calculators carry REF/UQFF/diff + 30 distinct `calculate_analytic_closures` dispatcher branches (spinor + 8 millennium + 3 _derive_constant + 4 default + 11 cluster-registry tags + unrecognized garbage + derive list + all_si).
+
+Map section 7 / 9 mandate satisfied: every public calculator emission and every dispatcher return now carries the per-call provenance contract. The contract makes anchor-vs-UQFF residuals visible at every call site without requiring downstream callers to know the anchor.
