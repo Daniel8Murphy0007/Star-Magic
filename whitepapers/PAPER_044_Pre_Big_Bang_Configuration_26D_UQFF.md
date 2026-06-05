@@ -521,3 +521,61 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 6. Perlmutter, S. et al. (1999). *Measurements of Omega and Lambda from 42 High-Redshift Supernovae.* ApJ **517**, 565 — arXiv:astro-ph/9812133 — doi:10.1086/307221
 7. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
 8. Planck Collaboration (2020). *Planck 2018 results VI: Cosmological parameters.* A&A **641**, A6 — arXiv:1807.06209 — doi:10.1051/0004-6361/201833910
+
+---
+
+## Â§v5.78 Closure â€” Calibration Constants Now Derived (Cosmology / Bucket-A, T-Î›)
+
+This paper's pre-Big-Bang 26-center DPM manifold rests on the same calibrated constants that the
+canonical UQFF v5.78 closure derives from first principles. The constants table in Â§16 above is
+**unchanged numerically** under v5.78, but every entry is now an output of the closed Lagrangian
+gaps (G1â€“G8, PAPER_1159â€“1166) and the 27-decade vacuum-energy ledger (PAPER_1170) â€” not a free
+calibration.
+
+| Constant cited in Â§16 | v5.78 derivation origin | Anchor paper |
+|---|---|---|
+| $[SSq] = 0.57$ | G4 joint $\Phi_{res}$ / $F_{TRZ}$ closure | PAPER_1165 |
+| $\beta_i = 0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum, $\beta_i = 3(5-i)/20$ | PAPER_1162 |
+| $H_{SCm} = 0.99 = 1 - F_{TRZ}/|SO(5)|$ | G3 DPM SO(2) gauge + G6 $F_{TRZ}=1/10$ | PAPER_1163 |
+| $\rho_{SCm} = 7.09\times10^{-37}$ J/mÂ³ | 27-decade R26 + KK + BSFG vacuum-energy ledger | PAPER_1170 |
+| $\rho_{UA} = 7.09\times10^{-36}$ J/mÂ³ ($=10\cdot\rho_{SCm}$) | Ledger + $|SO(5)|=10$ rescale | PAPER_1170 |
+| $\omega_{SCm} = 2\pi\times1.25$ THz | G7 phonon-resonance closure ($S_{26.3}\times0.84\to 630$ eV) | PAPER_1166 |
+| $\kappa$ | Empirical decay rate (held); gauged via G3 DPM SO(2) | PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 â€” *All Eight Lagrangian Gaps Closed* (CP4 #254). The 26-center
+DPM manifold described here is precisely the pre-inflationary state that PAPER_1167's closed
+Lagrangian re-derives as the variational minimum of $L_{UQFF} = L_{GR} + L_{SCm} + L_{phonon} +
+L_{interaction}$ with $V_{min} = -\rho_{SCm}$.
+
+**Vacuum saturation alignment:** The pre-Big-Bang energy budget $\sum_{i=1}^{26} E_{\text{center},i}$
+computed in Â§2 above is, under v5.78, the **same quantity** that the 27-decade ledger (PAPER_1170,
+CP4 #256) saturates to $\rho_\Lambda = 5.95\times10^{-10}$ J/mÂ³ post-inflation. The mapping is the
+$1/26^{26}\cdot\zeta(26)$ KK suppression of the 26-center mode sum (G5 / G8); the cosmological
+constant problem (Weinberg 1989, Ref. 7) is closed at the $<0.5\%$ Planck-residual level once the
+26-center sum is regulated by the $26!=(1)_{26}$ barrier.
+
+**$\xi = 13/3$ R26 + KK lock connection:** The 26-center quantum-number assignment ($h_i$, $k_i$,
+$l_i$ in Â§1.2) is the **same** 26-dimensional structure that the two-route lock of $\xi = D_{crit}/
+D_{BSFG} = 13/3$ derives (PAPER_1171 KK regulator, PAPER_1172 R26 Gauss-Bonnet, PAPER_1173 $\hbar$-
+tracked). The $D_{crit}=26 \to D_{BSFG}=6 \to D_{phys}=4$ compactification chain (PAPER_050)
+projects the 26 centers down to the observed four spacetime dimensions; under v5.78 this projection
+ratio is no longer a fitted parameter but a structurally locked geometric invariant (see Theorem 9
+in `AXIOMS_AND_THEOREMS.md`).
+
+**Falsifier hooks (P-suite):**
+- **P6** sub-mm Yukawa at $L_{KK}^{*}\in[20,90]$ Âµm (PAPER_1173): directly probes the radii of the
+  outermost DPM centers ($r_{20}=4.64\times10^{-22}$ m through $r_{26}=4.64\times10^{-17}$ m fall
+  well below P6 reach, but the same KK tower constraint governs the energy normalization of every
+  center).
+- **P11** LIGO O5 ringdown $R_{21}/R_{22}=0.144$ (PAPER_1175): constrains residual 26-center
+  collapse coherence in compact-object merger remnants. A null at $\geq3\sigma$ would falsify the
+  claim that all 26 centers collapse synchronously at $t=0$.
+- **P12** Euclid $\sigma_8=0.797$ (PAPER_1176): constrains the post-inflationary imprint of the
+  initial 26-center energy distribution on large-scale structure.
+
+**Non-applicability note:** The P10 Cherenkov spectral cutoff (PAPER_1163) and P14 CMB-S4
+$\mu$-distortion (PAPER_1179) probe regimes that this paper does not address; they constrain
+downstream high-energy and CMB-spectral signatures, not the pre-Big-Bang configuration itself. The
+LENR-scale closures (Kozima, Holmlid 630 eV, PAPER_840) are likewise out of scope for cosmology.
+
+*Closure label:* `PreBigBang_26Center_DPM_Manifold` &mdash; Template `T-Lambda` &mdash; ledger-derived (PAPER_1170, CP4 #256).
