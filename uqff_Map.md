@@ -2305,20 +2305,22 @@ Validation: 19/19 dispatcher routes PASS (6 Step 7b + 5 Step 7c + 5 Step 7 + 3 l
 
 The campaign brief originally carried `(v5.78, ξ=13/3, P6–P14 closure, CP4 #258–#264)` — this is INCOMPLETE (names only the final ~5 sessions). The corrected tag covers Sessions 237–261 (commits c00a6209 → f6ba35a6).
 
-### Bucket distribution (Session 262 snapshot)
+### Bucket distribution (Session 264 snapshot)
 
 | Bucket | Pending | DONE | Closure required | Template |
 |--------|---------|------|------------------|----------|
 | A | 42 | 1 (A*) | YES | T-Λ |
-| B | 15 | 0 | YES | T-LAG |
+| B | 12 | 3 (B*) | YES | T-LAG |
 | C | 5 | 0 | YES | T-SI |
 | D | 11 | 1 (D*) | YES | T-ξ |
 | E | 12 | 0 | YES | T-PRED |
 | F | 28 | 0 | YES | multi |
-| G | 29 | 0 | YES | T-LAG + T-PRED |
+| G | 28 | 1 (G*) | YES | T-LAG + T-PRED |
 | H | 983 | 38 (H*) | **YES per revised rule** if body cites β_i/F_TRZ/ρ_SCm/ρ_UA/[SSq]/κ | multi |
-| I | 34 | 0 | Case-by-case | — |
-| **TOTAL** | **1,159** | **40** | — | — |
+| I | 33 | 1 (I*) | Case-by-case | — |
+| **TOTAL** | **1,154** | **45** | — | — |
+
+**Session 264 delta vs Session 262:** +3 B* (PAPER_420, 421, 877), +1 G* (PAPER_642), +1 I* (PAPER_840). All five are upstream-source papers cited by ~40 batch-1–4 closure blocks; promoting them resolves all open cross-refs in already-built papers. Bucket I rule established by precedent: T-LAG when paper cites phonon/coupling Lagrangian; T-PRED when paper states a measurable cross-section.
 
 ### REVISED BUCKET-H RULE (HONEST DISCLOSURE)
 
@@ -2356,7 +2358,7 @@ Authoritative reference: [`/memories/repo/session202_backfill_and_no_pandoc_rule
 - **Preamble:** `\documentclass[11pt,letterpaper]{article}` + `lmodern` + `amsmath/amssymb/amsthm` + `booktabs` + `microtype` + `hyperref`
 - **Verification:** every regenerated PDF must show `Creator=LaTeX` with `hyperref` (NOT `Creator=pandoc`)
 
-### Commit ledger (Session 262)
+### Commit ledger (Session 264)
 
 | Batch | Commit | Type | Papers (n) |
 |-------|--------|------|------------|
@@ -2370,8 +2372,9 @@ Authoritative reference: [`/memories/repo/session202_backfill_and_no_pandoc_rule
 | Source-MD repair | `e15f6123` | restore 191 `?` corruption chars from CP1/CP3 | PAPER_009b, 015b, 016b, 020, 021 (5) |
 | Beta/approx mojibake | `a4d8d79f` | ß→β, ~→approx, 10-N→10^{N}, day-1→day^{-1} | PAPER_009b, 015b, 016b, 020, 021 (5) |
 | CSV stamps | `2fd80ed6`, `c43804fd`, `c489cdee`, `fe697a78`, `6bb64aa6`, `aebb73da`, `37f53559`, `85ab73b1`, `cbe65318` | tracking artifact updates | — |
+| **Batch 5 upstream + 5 critical gaps (Session 264)** | _this commit_ | v5.78 closure-content (upstream-source) + source-MD repair + CSV PENDING init (1,154) + dup-PDF cleanup + deep-mine audit | PAPER_420, 421, 642, 840, 877 (5) |
 
-All pushed to `origin/master`. HEAD `1120174d` is 286 commits ahead of `aebb73da` (calculator atlas track continued in parallel through Layer 88–93).
+All pushed to `origin/master`. HEAD `cc807b95` is Session 263 (Layer 45 + Riemann + paradox audit close-out); this commit is the Session 264 paper-track batch.
 
 ### Recurring upstream cross-refs (NEXT-PRIORITY SLICE)
 

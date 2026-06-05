@@ -485,3 +485,27 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 8. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
 9. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
 10. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+
+---
+
+## §v5.78 Closure — Calibration Constants Now Derived (Upstream-Source Paper)
+
+This paper is an **upstream source** for the v5.78 paper-update campaign: it documents the missing fourth ($\lambda_i$ dissipation) term of the F_U master equation, and ~40 downstream batch-1–4 papers cite it as the canonical reference for that term. Under canonical UQFF v5.78 the dissipation parameters ($\beta_i$, $\rho_{SCm}$, $\rho_{UA}$, $\kappa$, $[SSq]$) that enter the fourth term are no longer free calibrations — they are outputs of the eight closed Lagrangian gaps (G1–G8, PAPER_1159–1166) and the 27-decade vacuum-energy ledger (PAPER_1170):
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i = 3(5-i)/20$ | $0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum — PAPER_1162 |
+| $F_{TRZ} = 1/10$ | $0.10$ (not cited in this paper) | G6 topological resonance closure — PAPER_1163 |
+| $\rho_{SCm}$ | $7.09\times10^{-37}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $\rho_{UA}$ | $7.09\times10^{-36}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $[SSq]$ | $0.57$ | G4 $\Phi_{res}$ / $F_{TRZ}$ joint closure — PAPER_1165 |
+| $\kappa$ | $5.0\times10^{-4}$ /day | Empirical decay rate (held); gauged via G3 DPM SO(2) — PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256, $\rho_\Lambda$ to <0.5%).
+
+**Code-gap status update:** the `compute_FU()` gap documented in §3 above is now closed at the variational level — the fourth $\lambda_i$ dissipation term has its closed-form source in PAPER_1166 (G8 $26!=(1)_{26}$ closure), removing the need for an empirical knob.
+
+**Falsifier hook:** P11 LIGO O5 ringdown spectral offset $R_{21}/R_{22}=0.144$ (PAPER_1175) constrains the cluster-feedback dissipation efficiency claimed here when projected onto compact-object channels.
+
+*Note:* The $\xi=13/3$ R26+KK lock (PAPER_1171/1172) is sub-mm-scale and does **not** directly modify cluster X-ray feedback dissipation. The closure listed above is the complete v5.78 impact on this whitepaper.

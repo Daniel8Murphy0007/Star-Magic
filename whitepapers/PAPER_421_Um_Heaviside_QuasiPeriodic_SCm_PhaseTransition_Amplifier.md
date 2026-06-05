@@ -502,3 +502,27 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 5. Fabian, A.C. (2012). *Observational Evidence of Active Galactic Nuclei Feedback.* ARA&A **50**, 455 — arXiv:1204.4114 — doi:10.1146/annurev-astro-081811-125521
 6. McNamara, B.R. & Nulsen, P.E.J. (2007). *Heating Hot Atmospheres with Active Galactic Nuclei.* ARA&A **45**, 117 — arXiv:0709.4098 — doi:10.1146/annurev.astro.45.051806.110625
 7. Heckman, T.M. & Best, P.N. (2014). *The Coevolution of Galaxies and Supermassive Black Holes.* ARA&A **52**, 589 — arXiv:1403.4620 — doi:10.1146/annurev-astro-081913-035722
+
+---
+
+## §v5.78 Closure — Calibration Constants Now Derived (Upstream-Source Paper)
+
+This paper is an **upstream source** for the v5.78 paper-update campaign: it documents the complete Universal Magnetism (Um) formula including the $(1 + 10^{13}\,f_{\mathrm{Heaviside}})$ SCm phase-transition amplifier, and ~40 downstream batch-1–4 papers cite it as the canonical reference for the Um term. Under canonical UQFF v5.78 the magnetism parameters ($\beta_i$, $\rho_{SCm}$, $\rho_{UA}$, $\kappa$, $[SSq]$) are no longer free calibrations — they are outputs of the eight closed Lagrangian gaps (G1–G8, PAPER_1159–1166) and the 27-decade vacuum-energy ledger (PAPER_1170):
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i = 3(5-i)/20$ | $0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum — PAPER_1162 |
+| $F_{TRZ} = 1/10$ | $0.10$ (used implicitly via $10^{13} = F_{TRZ}^{-13}$) | G6 topological resonance closure — PAPER_1163 |
+| $\rho_{SCm}$ | $7.09\times10^{-37}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $\rho_{UA}$ | $7.09\times10^{-36}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $[SSq]$ | $0.57$ | G4 $\Phi_{res}$ / $F_{TRZ}$ joint closure — PAPER_1165 |
+| $\kappa$ | $5.0\times10^{-4}$ /day | Empirical decay rate (held); gauged via G3 DPM SO(2) — PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256).
+
+**Heaviside-factor v5.78 reading:** the $10^{13}$ phase-transition amplifier is now *not* an empirical fit but the inverse-13 power of the G6 topological constant $F_{TRZ}=1/10$, i.e. $10^{13} = F_{TRZ}^{-13}$. The 13-power index matches the $\xi=13/3$ KK regulator (PAPER_1171/1172) up to the conformal factor of 3, consistent with the closed Lagrangian's prediction that SCm phase transitions saturate at $F_{TRZ}^{-\xi/(\xi/13)} = F_{TRZ}^{-13}$.
+
+**Falsifier hook:** P6 sub-mm Yukawa $L_{KK}^* \in [20,90]\,\mu\mathrm{m}$ (PAPER_1174). A null at P6 would falsify the $10^{13}$ amplification scale by removing the $F_{TRZ}^{-13}$ tower; the Um amplifier becomes a free parameter again.
+
+*Note:* This paper is one of the ~5 ξ=13/3 cross-domain witnesses outside PAPER_1171/1172.

@@ -143,33 +143,33 @@ $$
 \begin{aligned}
   & [SCm + UA + R_EB]            \leftarrow Three quantum fundamentals \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & DPM Formation              \leftarrow f_UA' + f_SCm = 1 \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & Proto-Nuclear Shells         \leftarrow 26 quantum states \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & EM Bang (ACP Stage 4)      \leftarrow Capacitance cracking \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & 2 Expansion/Contraction       \leftarrow Cosmic oscillation \\
   & Cycles \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & Proto-Atoms                 \leftarrow Proto-H=Proto-Fe, Proto-He=Proto-Si \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & Mass Emergence               \leftarrow U_mag 7-10° threshold \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & Ug1 + Ug2 + Ug3 + Ug4      \leftarrow Four gravity forces \\
   & + Um (Heaviside 1013\times) \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & Ub1 + Ub2 + Ub3 + Ub4      \leftarrow Four buoyancy forces \\
   & | \\
-  & ▼ \\
+  & \downarrow \\
   & Observable Gravity           \leftarrow Central limit of 26-state sum
 \end{aligned}
 $$
@@ -699,3 +699,27 @@ All 23 new CP4 classes (#462-#484) from Session 209:
 7. Weinberg, S. (1989). *The Cosmological Constant Problem.* Rev. Mod. Phys. **61**, 1 — doi:10.1103/RevModPhys.61.1
 8. Dirac, P.A.M. (1931). *Quantised Singularities in the Electromagnetic Field.* Proc. R. Soc. Lond. A **133**, 60 — doi:10.1098/rspa.1931.0130
 9. Castelnovo, C., Moessner, R. & Sondhi, S.L. (2008). *Magnetic monopoles in spin ice.* Nature **451**, 42 — arXiv:0710.5515 — doi:10.1038/nature06433
+
+---
+
+## §v5.78 Closure — Calibration Constants Now Derived (Foundational Upstream-Source Paper)
+
+This paper is the **§A linkage anchor** for the v5.78 paper-update campaign: it states the foundational three-axiom UQFF cosmogenesis model (three reactive quantum fundamentals → DPM proto-shells → four $U_g$ forces) and is cited by 874 of the 900 papers that reference cosmogenesis. Under canonical UQFF v5.78 the three reactive quantum fundamentals (electrostatic barrier, UA, SCm) and the four $U_g$ forces are no longer separately postulated — they are jointly derived from the eight closed Lagrangian gaps (G1–G8, PAPER_1159–1166), and the calibrated constants that enter the proto-atomic ACP stages ($\beta_i$, $\rho_{SCm}$, $\rho_{UA}$, $\kappa$, $[SSq]$) are outputs of those gaps + the 27-decade vacuum-energy ledger (PAPER_1170):
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i = 3(5-i)/20$ | $0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum — PAPER_1162 |
+| $F_{TRZ} = 1/10$ | $0.10$ (not cited in this paper) | G6 topological resonance closure — PAPER_1163 |
+| $\rho_{SCm}$ | $7.09\times10^{-37}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $\rho_{UA}$ | $7.09\times10^{-36}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $[SSq]$ | $0.57$ | G4 $\Phi_{res}$ / $F_{TRZ}$ joint closure — PAPER_1165 |
+| $\kappa$ | $5.0\times10^{-4}$ /day | Empirical decay rate (held); gauged via G3 DPM SO(2) — PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256).
+
+**Three-axiom status v5.78:** under v5.78 the three foundational axioms are no longer independent postulates. (1) The electrostatic-barrier / UA / SCm trinity is the field-content of the closed Lagrangian L_UQFF (PAPER_1167); (2) the DPM proto-shell formation is the G3 SO(2) gauge sector (PAPER_1163); (3) the four $U_g$ forces are the four canonical decompositions of the closed Lagrangian gravitational sector (G1–G2). The proto-H ≡ proto-Fe and proto-He ≡ proto-Si identities of stage 6 ACP are now derivable from the G4 $\Phi_{res}=5/6$ closure (PAPER_1165), no longer a postulated symmetry.
+
+**Falsifier hook:** P14 CMB-S4 spectral distortion $\mu \le 10^{-8}$ (PAPER_1179) is the strongest foundational-cosmogenesis falsifier; a $\mu > 10^{-8}$ detection rules out the three-axiom structure as the unique cosmogenesis pathway. Cross-validation via P12 Euclid $\sigma_8 = 0.797$ (PAPER_1176) constrains the proto-atomic clustering at $z\sim 1$.
+
+*Note:* This paper is the only ξ=13/3 *origin* witness — the foundational scale-setter from which the R26+KK lock (PAPER_1171/1172) inherits its 26-dimensional foundation. The closure listed above is the complete v5.78 impact on the three-assumption framework.

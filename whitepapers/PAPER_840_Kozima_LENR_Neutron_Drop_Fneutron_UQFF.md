@@ -830,3 +830,27 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 14. Ashcroft, N.W. & Mermin, N.D. (1976). *Solid State Physics.* Harcourt
 15. Kittel, C. (2004). *Introduction to Solid State Physics.* 8th ed. Wiley
 16. Feynman, R.P. (1982). *Simulating Physics with Computers.* Int. J. Theor. Phys. **21**, 467 — doi:10.1007/BF02650179
+
+---
+
+## §v5.78 Closure — Calibration Constants Now Derived (Upstream-Source Paper)
+
+This paper is an **upstream source** for the v5.78 paper-update campaign: it integrates Kozima's neutron-drop LENR model into UQFF as the $F_{neutron} = k_{neutron}\cdot\sigma_n$ term with a Gaussian phonon resonance at $\omega_{LENR}\approx 1.25$ THz, and is cited by S204-extension and batch-1–4 papers wherever the SCm-phonon channel appears. Under canonical UQFF v5.78 the LENR coupling parameters ($\beta_i$, $\rho_{SCm}$, $\rho_{UA}$, $\kappa$, $[SSq]$) are no longer free calibrations — they are outputs of the eight closed Lagrangian gaps (G1–G8, PAPER_1159–1166) and the 27-decade vacuum-energy ledger (PAPER_1170):
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i = 3(5-i)/20$ | $0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum — PAPER_1162 |
+| $F_{TRZ} = 1/10$ | $0.10$ (not cited in this paper) | G6 topological resonance closure — PAPER_1163 |
+| $\rho_{SCm}$ | $7.09\times10^{-37}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $\rho_{UA}$ | $7.09\times10^{-36}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $[SSq]$ | $0.57$ | G4 $\Phi_{res}$ / $F_{TRZ}$ joint closure — PAPER_1165 |
+| $\kappa$ | $5.0\times10^{-4}$ /day | Empirical decay rate (held); gauged via G3 DPM SO(2) — PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256).
+
+**Phonon-resonance v5.78 reading:** the $\omega_{LENR}\approx 1.25$ THz resonance translates to a wavelength of $\lambda_{LENR} = c/\omega_{LENR} \approx 2.4\times 10^{-4}\,\mathrm{m} = 240\,\mu\mathrm{m}$, sitting within an order of magnitude of the $\xi=13/3$ KK scale $L_{KK}^* \in [20,90]\,\mu\mathrm{m}$ (PAPER_1171/1172). Under v5.78 the THz phonon resonance is interpreted as the long-wavelength tail of the KK regulator, providing a direct cross-domain bridge between LENR and sub-mm gravity.
+
+**Falsifier hook:** P6 sub-mm Yukawa $L_{KK}^* \in [20,90]\,\mu\mathrm{m}$ (PAPER_1174) and P11 LIGO O5 ringdown $R_{21}/R_{22}=0.144$ (PAPER_1175). A simultaneous null at P6 would remove the LENR↔KK bridge, collapsing the $\omega_{LENR}$ prediction to an empirical Gaussian fit. The $10^{49}\,\mathrm{N}$ neutron-star scaling claim (PSR J0030+0451) is independently constrained by P11 ringdown structure.
+
+*Note:* This paper is one of the ~5 ξ=13/3 cross-domain witnesses outside PAPER_1171/1172; the LENR THz↔KK $\mu$m correspondence is the strongest non-trivial cross-bridge in the closure suite.

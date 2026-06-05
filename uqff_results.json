@@ -305864,5 +305864,257 @@
         "unit": "days"
       }
     }
+  },
+  "PCQ_20260605_075054_826388": {
+    "timestamp": "2026-06-05T07:50:54.826380",
+    "input_params": {
+      "query_id": "",
+      "query_name": "Sgr_A_star_test",
+      "timestamp": "",
+      "sources": [],
+      "M": 8.546733e+36,
+      "r": 10000000000.0,
+      "T": 5778.0,
+      "T_cmb": 2.725,
+      "B": 0.001,
+      "omega": 1250000000000.0,
+      "H_0": 2.1840570317563187e-18,
+      "Omega_m": 0.315,
+      "Omega_Lambda": 0.685,
+      "Omega_b": 0.049,
+      "psi": "(1+0j)",
+      "Q": "0j",
+      "k_coupling": 1.0,
+      "beta_coupling": 0.603,
+      "eta_coupling": 1e-22,
+      "kappa": 0.0005,
+      "SSq": 0.57
+    },
+    "long_form_equations": [
+      {
+        "name": "calculate_resonant_adpm",
+        "value": 1050000000000.0,
+        "provenance": "resonant_adpm via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=1250000000000.0 (Hz, kind=PHONON_CARRIER, source: Holmlid 1.25 THz; Star-MagicProofEngine.OMEGA_SCM = F_THZ) | UQFF=1.25e+12 | diff=0.0000% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_scm",
+        "value": 8.508e-37,
+        "provenance": "SCm (26-level DPM + [SCm]^26 every particle + Inertial Operator I=m d2/dt2 SC_m=|psi|^2/int) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=26 (levels, kind=DPM_LADDER_DEPTH, source: dpm_vacuum_manifold.py v3.0 line 216 (S26_3 = 1.4531e26 ~ Li_26 ladder)) | UQFF=1 | diff=96.1538% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_f_u_bi",
+        "value": 1.2755528932185e-09,
+        "provenance": "F_UBi (U_bi + 4-layer UA>SCm beating heart + counter-rotating vortices) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=1.0 (dimensionless, kind=F_U_BALANCE, source: Star-MagicProofEngine.PROOF_DERIVATION_MODES['f_u_universal_simultaneous_balance'] (F_UBi/F_UBii=1)) | UQFF=1.27555e-09 | diff=100% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_f_u_bi_i",
+        "value": 4.837890351010861e-19,
+        "provenance": "F_U_Bi_i (4-layer DPM + 1018 regimes + 26D poly Master integrals) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=4 (layers, kind=DPM_LAYER_COUNT, source: dpm_vacuum_manifold.py v3.0 4-term ledger (V0 + R26/2k_E + rho_KK + rho_BSFG)) | UQFF=4 | diff=0.0000% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_triadic_g",
+        "value": {
+          "triadic": 2.1996470325738714e-10,
+          "g_comp": 9.119748713985e-20,
+          "g_res": 7.6605889197474e-20,
+          "g_buoy": 6.665597066700002e-10,
+          "agreement_pct": 99.99999998850727,
+          "weights": {
+            "w_C": 0.34,
+            "w_R": 0.33,
+            "w_B": 0.33
+          },
+          "cross_master_g_compressed_8term": 19199877.932504144,
+          "cross_master_g_resonance": 6.943330277864717e-08,
+          "cross_method_agreement_pct": 100.0
+        },
+        "provenance": "triadic g 3 parallel masters [g_comp NUMERICAL, g_res SYMBOLIC, g_buoy DISCRETE] + cross-method convergence vs g_compressed 8-term + g_resonance composite (Map sec 3.5 / sec 8; agreement_pct = max pairwise spread among the 3 component masters) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=0.01 (fractional residual, kind=99_SYSTEM_SUITE, source: uqff_Map.md section 9 99-system triadic g cross-validation (<1% residual mandate)) | UQFF=1 | diff=9900% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_vacuum_ledger",
+        "value": {
+          "V0": 2.382780382823029e-10,
+          "R26_term": 1.429668229693817e-10,
+          "rho_KK": 1.7156018756325805e-10,
+          "rho_BSFG": 4.289004689081451e-11,
+          "total": 5.956950957057572e-10,
+          "planck_target": 5.95e-10,
+          "residual_pct": 0.11682280769028472
+        },
+        "provenance": "4-term vacuum ledger decomposition [V0 + R26_term + rho_KK + rho_BSFG = total; G1-G8 zero-parameter closure; rho_SCm * 26! * (5/6 + 1/2 + 3/5 + 3/20) = rho_SCm * 26! * 25/12 ~ 5.957e-10 J/m^3 vs Planck Lambda ~5.95e-10 J/m^3] via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=5.95e-10 (J/m^3, kind=PLANCK_LAMBDA_TARGET, source: uqff_Map.md section 9 4-term ledger row (Planck 2018 Lambda c^2 / 8 pi G ~= 5.95e-10 J/m^3)) | UQFF=5.95695e-10 | diff=0.116823% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_analytic_closures",
+        "value": 33.0,
+        "provenance": "Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT)"
+      }
+    ],
+    "solutions": {
+      "calculate_resonant_adpm": 1050000000000.0,
+      "calculate_scm": 8.508e-37,
+      "calculate_f_u_bi": 1.2755528932185e-09,
+      "calculate_f_u_bi_i": 4.837890351010861e-19,
+      "calculate_triadic_g": {
+        "triadic": 2.1996470325738714e-10,
+        "g_comp": 9.119748713985e-20,
+        "g_res": 7.6605889197474e-20,
+        "g_buoy": 6.665597066700002e-10,
+        "agreement_pct": 99.99999998850727,
+        "weights": {
+          "w_C": 0.34,
+          "w_R": 0.33,
+          "w_B": 0.33
+        },
+        "cross_master_g_compressed_8term": 19199877.932504144,
+        "cross_master_g_resonance": 6.943330277864717e-08,
+        "cross_method_agreement_pct": 100.0
+      },
+      "calculate_vacuum_ledger": {
+        "V0": 2.382780382823029e-10,
+        "R26_term": 1.429668229693817e-10,
+        "rho_KK": 1.7156018756325805e-10,
+        "rho_BSFG": 4.289004689081451e-11,
+        "total": 5.956950957057572e-10,
+        "planck_target": 5.95e-10,
+        "residual_pct": 0.11682280769028472
+      },
+      "calculate_analytic_closures": 33.0
+    },
+    "available_equations": [
+      "calculate_resonant_adpm",
+      "calculate_scm",
+      "calculate_f_u_bi",
+      "calculate_f_u_bi_i",
+      "calculate_triadic_g",
+      "calculate_vacuum_ledger",
+      "calculate_analytic_closures"
+    ],
+    "simulation_set": {}
+  },
+  "PCQ_20260605_075147_674261": {
+    "timestamp": "2026-06-05T07:51:47.674258",
+    "input_params": {
+      "query_id": "",
+      "query_name": "harness_smoke",
+      "timestamp": "",
+      "sources": [],
+      "M": 1.989e+30,
+      "r": 149600000000.0,
+      "T": 5778.0,
+      "T_cmb": 2.725,
+      "B": 0.001,
+      "omega": 1250000000000.0,
+      "H_0": 2.1840570317563187e-18,
+      "Omega_m": 0.315,
+      "Omega_Lambda": 0.685,
+      "Omega_b": 0.049,
+      "psi": "(1+0j)",
+      "Q": "0j",
+      "k_coupling": 1.0,
+      "beta_coupling": 0.603,
+      "eta_coupling": 1e-22,
+      "kappa": 0.0005,
+      "SSq": 0.57
+    },
+    "long_form_equations": [
+      {
+        "name": "calculate_resonant_adpm",
+        "value": 1050000000000.0,
+        "provenance": "resonant_adpm via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=1250000000000.0 (Hz, kind=PHONON_CARRIER, source: Holmlid 1.25 THz; Star-MagicProofEngine.OMEGA_SCM = F_THZ) | UQFF=1.25e+12 | diff=0.0000% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_scm",
+        "value": 8.508e-37,
+        "provenance": "SCm (26-level DPM + [SCm]^26 every particle + Inertial Operator I=m d2/dt2 SC_m=|psi|^2/int) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=26 (levels, kind=DPM_LADDER_DEPTH, source: dpm_vacuum_manifold.py v3.0 line 216 (S26_3 = 1.4531e26 ~ Li_26 ladder)) | UQFF=1 | diff=96.1538% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_f_u_bi",
+        "value": 1.984273465909091e-17,
+        "provenance": "F_UBi (U_bi + 4-layer UA>SCm beating heart + counter-rotating vortices) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=1.0 (dimensionless, kind=F_U_BALANCE, source: Star-MagicProofEngine.PROOF_DERIVATION_MODES['f_u_universal_simultaneous_balance'] (F_UBi/F_UBii=1)) | UQFF=1.98427e-17 | diff=100% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_f_u_bi_i",
+        "value": 5.030689120989306e-28,
+        "provenance": "F_U_Bi_i (4-layer DPM + 1018 regimes + 26D poly Master integrals) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=4 (layers, kind=DPM_LAYER_COUNT, source: dpm_vacuum_manifold.py v3.0 4-term ledger (V0 + R26/2k_E + rho_KK + rho_BSFG)) | UQFF=4 | diff=0.0000% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_triadic_g",
+        "value": {
+          "triadic": 3.4218112500585306e-18,
+          "g_comp": 9.483187363271754e-29,
+          "g_res": 7.965877385148273e-29,
+          "g_buoy": 1.0369125000000001e-17,
+          "agreement_pct": 99.99999999923176,
+          "weights": {
+            "w_C": 0.34,
+            "w_R": 0.33,
+            "w_B": 0.33
+          },
+          "cross_master_g_compressed_8term": 0.029908307138607287,
+          "cross_master_g_resonance": 7.220034675856435e-17,
+          "cross_method_agreement_pct": 99.99999999999999
+        },
+        "provenance": "triadic g 3 parallel masters [g_comp NUMERICAL, g_res SYMBOLIC, g_buoy DISCRETE] + cross-method convergence vs g_compressed 8-term + g_resonance composite (Map sec 3.5 / sec 8; agreement_pct = max pairwise spread among the 3 component masters) via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=0.01 (fractional residual, kind=99_SYSTEM_SUITE, source: uqff_Map.md section 9 99-system triadic g cross-validation (<1% residual mandate)) | UQFF=1 | diff=9900% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_vacuum_ledger",
+        "value": {
+          "V0": 2.382780382823029e-10,
+          "R26_term": 1.429668229693817e-10,
+          "rho_KK": 1.7156018756325805e-10,
+          "rho_BSFG": 4.289004689081451e-11,
+          "total": 5.956950957057572e-10,
+          "planck_target": 5.95e-10,
+          "residual_pct": 0.11682280769028472
+        },
+        "provenance": "4-term vacuum ledger decomposition [V0 + R26_term + rho_KK + rho_BSFG = total; G1-G8 zero-parameter closure; rho_SCm * 26! * (5/6 + 1/2 + 3/5 + 3/20) = rho_SCm * 26! * 25/12 ~ 5.957e-10 J/m^3 vs Planck Lambda ~5.95e-10 J/m^3] via Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT) | REF=5.95e-10 (J/m^3, kind=PLANCK_LAMBDA_TARGET, source: uqff_Map.md section 9 4-term ledger row (Planck 2018 Lambda c^2 / 8 pi G ~= 5.95e-10 J/m^3)) | UQFF=5.95695e-10 | diff=0.116823% (NOT REPLACEMENT)"
+      },
+      {
+        "name": "calculate_analytic_closures",
+        "value": 33.0,
+        "provenance": "Bearden (516MB + 51 2025-03-28 PNG screenshots, scalar vacuum energy extraction, COP>1, MEG, Floyd Sweet vacuum triode, Whittaker-Heaviside; embedded SCm 21/thz 12/dpm 8/ua 7 hits) cluster 11 (rule change applied) (NOT REPLACEMENT)"
+      }
+    ],
+    "solutions": {
+      "calculate_resonant_adpm": 1050000000000.0,
+      "calculate_scm": 8.508e-37,
+      "calculate_f_u_bi": 1.984273465909091e-17,
+      "calculate_f_u_bi_i": 5.030689120989306e-28,
+      "calculate_triadic_g": {
+        "triadic": 3.4218112500585306e-18,
+        "g_comp": 9.483187363271754e-29,
+        "g_res": 7.965877385148273e-29,
+        "g_buoy": 1.0369125000000001e-17,
+        "agreement_pct": 99.99999999923176,
+        "weights": {
+          "w_C": 0.34,
+          "w_R": 0.33,
+          "w_B": 0.33
+        },
+        "cross_master_g_compressed_8term": 0.029908307138607287,
+        "cross_master_g_resonance": 7.220034675856435e-17,
+        "cross_method_agreement_pct": 99.99999999999999
+      },
+      "calculate_vacuum_ledger": {
+        "V0": 2.382780382823029e-10,
+        "R26_term": 1.429668229693817e-10,
+        "rho_KK": 1.7156018756325805e-10,
+        "rho_BSFG": 4.289004689081451e-11,
+        "total": 5.956950957057572e-10,
+        "planck_target": 5.95e-10,
+        "residual_pct": 0.11682280769028472
+      },
+      "calculate_analytic_closures": 33.0
+    },
+    "available_equations": [
+      "calculate_resonant_adpm",
+      "calculate_scm",
+      "calculate_f_u_bi",
+      "calculate_f_u_bi_i",
+      "calculate_triadic_g",
+      "calculate_vacuum_ledger",
+      "calculate_analytic_closures"
+    ],
+    "simulation_set": {}
   }
 }

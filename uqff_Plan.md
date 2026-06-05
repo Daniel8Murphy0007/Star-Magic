@@ -6900,3 +6900,69 @@ git ls-files | paradox -> only canonical files; no orphan uqff_paradox_proofs.*
 ### Repo memory anchor
 
 `/memories/session/grok_b8e305e6_lines_55065_eof.md` (deep-read catalog of grok slice + universal recipe).
+
+
+---
+
+## Plan Image 115 — Session 264 (05Jun2026): Job-B Batch 5 Upstream + 5 Critical Gaps Closed
+
+**Trigger:** User directive (this session) — "deep mine attached file for missing pieces" → "Proceed with all, starting with critical gaps". Resulting 18-gap audit of `Job B_Update papers with current canonical UQFF v5_78.txt` against `_job_b_categorization.csv`, on-disk artifacts, Plan Image 111, and Map §20. Critical gaps 1–5 closed in this commit; gaps 6–19 documented for future batches.
+
+### Critical gaps closed
+
+1. **Upstream-source slice built (5 papers).** PAPER_420, 421, 642, 840, 877 each authored with v5.78 closure block:
+   - Standard 6-row {β_i, F_TRZ, ρ_SCm, ρ_UA, [SSq], κ} table with G1–G8 origin paper IDs.
+   - Master synthesis pointer (PAPER_1167) + 27-decade vacuum-ledger pointer (PAPER_1170).
+   - Paper-specific P-suite falsifier hook (P6/P11/P12/P13/P14).
+   - ξ=13/3 disposition note (cross-domain witnesses identified in PAPER_421 via `10^13 = F_TRZ^(-13)` and PAPER_840 via ω_LENR=1.25 THz → λ=240 μm long-wavelength tail of L_KK*∈[20,90] μm).
+2. **CSV blank `status` fields initialized.** 1,159 → 1,154 PENDING (after 5 batch stamps) + 45 DONE (4 sub-buckets).
+3. **Session 263 work cross-referenced.** Layer 45 saturation repair + Riemann ζ(t₁₀₀₀₀) correction + paradox_proofs orphan close-out (commit `cc807b95`) was logged in Plan Image 114 and Map §19 but not in the Job-B file; now added as cross-reference in the Session 264 delta block.
+4. **Duplicate PAPER_421 PDF removed.** Two pandoc-builds existed on disk with identical Title metadata, different hashes, 10 minutes apart. `git rm pdf/PAPER_421_Um_Heaviside_QuasiPeriodic.pdf` (short-filename variant). Canonical long-filename variant overwritten in this session with new LaTeX build (Creator=LaTeX with hyperref).
+5. **PAPER_642 PDF size anomaly resolved.** Old PDF 105,918 B with no metadata (non-LaTeX or encrypted pipeline). New build 438,527 B with proper Creator=LaTeX with hyperref. Source-MD repair: abstract `$$F_{U,Bi}=...$$` display-math block was breaking the converter; rewritten as inline `$F_{U,Bi}=...$`; nested `\text{}` removed.
+
+### Source-MD repairs (pre-existing source-hygiene issues)
+
+- **PAPER_642**: line 26 `$$...$$` display math → inline `$...$`; nested `\text{SCm/UA}` removed.
+- **PAPER_877**: 9 occurrences of U+25BC `▼` in `aligned` environment (Evolution Flowchart, lines 146–172) → `\downarrow`.
+
+### NEW LESSON FOR REPO MEMORY
+
+**Converter limitation:** `_md_to_arxiv_tex.py` only supports inline `$...$` math. `$$...$$`, `\[...\]`, and `\begin{equation*}...\end{equation*}` are all text-escaped (producing `$\rho$\_{...}$` mangling that breaks pdflatex). All display math must be rewritten as inline math. Recorded under `/memories/repo/converter_inline_math_only.md`.
+
+### Deferred to future batches (gaps 6–19)
+
+- Gap 6: backfill 6 undocumented CSV-stamp commits (fe697a78 / 6bb64aa6 / aebb73da / 37f53559 / 85ab73b1 / cbe65318) into Job-B file commit ledger.
+- Gap 7: CSV status-string crosswalk table.
+- Gap 8: extend top-of-file LOCKED TOOLCHAIN with 9 Batch-3 converter additions + new converter math-mode lesson.
+- Gap 9: standardize β_i = 0.603 (resonance-corrected, G1+G4) in closure blocks; reserve 0.60 for pedagogical templates only.
+- Gap 10: bucket I decision rule (T-LAG if phonon/coupling Lagrangian cited; T-PRED if measurable cross-section/branching-ratio prediction stated).
+- Gap 11: lock `.md = single source of truth; never edit *.tex directly` rule.
+- Gap 12: document `matched_keyword` precedence over bucket-default in template selection.
+- Gap 13: enumerate Plan-Image-111 5/5 anchors in this file.
+- Gap 14: PDF-backup retention policy (rotate at 30 days OR after a coherence audit).
+- Gap 15: pick `\Lambda` (LaTeX) in PDFs, `Lambda` (ASCII) in commit messages, drop literal Greek.
+- Gap 16: add `B4 status:` line to Job-B file tail.
+- Gap 17: add "where the CP4 #N entries live" table.
+- Gap 18: `_build_batch.py` idempotency claim.
+- Gap 19: decide on `% CLOSURE` / `% TEMPLATE` / `% CANONICAL` banner-schema enforcement (currently absent in all 45 DONE papers).
+
+### Updated DONE counts (Map §20)
+
+| Bucket | Pre-session | Post-session |
+|--------|-------------|--------------|
+| A      | 1 (A*)      | 1 (A*)       |
+| B      | 0           | 3 (B*) — PAPER_420, 421, 877 |
+| D      | 1 (D*)      | 1 (D*)       |
+| G      | 0           | 1 (G*) — PAPER_642 |
+| H      | 38 (H*)     | 38 (H*)      |
+| I      | 0           | 1 (I*) — PAPER_840 |
+| **TOTAL** | **40**   | **45**       |
+
+### Carry-forward
+
+- Future batches resume the bucket-H mass-update once xi=13/3 cross-domain witnesses are catalogued (only ~5 identified outside PAPER_1171/1172; 2 newly added this session in PAPER_421 + PAPER_840).
+- Session 265 candidate work-items: gaps 6–19, plus continued Layer 94+ calculator-atlas track (§19).
+
+### Repo memory anchor
+
+`/memories/repo/converter_inline_math_only.md` (new) — Single-line rule: `_md_to_arxiv_tex.py` only supports inline `$...$`. All display math must be inline.

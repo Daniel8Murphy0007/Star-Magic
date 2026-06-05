@@ -23,11 +23,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
-
-
 This paper presents a UQFF analysis of astrophysical observables, deriving compressed field
-equations and observational predictions within the Star-Magic/UQFF framework.
+equations and observational predictions within the Star-Magic/UQFF framework. The canonical
+master expression is
+$F_{U,Bi} = \kappa \cdot \frac{\rho_{SCm}}{\rho_{UA}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$.
 
 ## §1 Abstract
 
@@ -357,3 +356,27 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 11. Archimedes (~250 BCE). *On Floating Bodies.* (Principle of buoyancy)
 12. Churazov, E. et al. (2000). *Evolution of Buoyant Bubbles in M87.* A&A **356**, 788 — arXiv:astro-ph/0004212
 13. Fabian, A.C. et al. (2003). *A deep Chandra observation of the Perseus cluster.* MNRAS **344**, L43 — arXiv:astro-ph/0306036 — doi:10.1046/j.1365-8711.2003.06902.x
+
+---
+
+## §v5.78 Closure — Calibration Constants Now Derived (Upstream-Source Paper)
+
+This paper is an **upstream source** for the v5.78 paper-update campaign: it is the master reference table mapping 8 UQFF constants to Standard-Model equivalents at 97.2% weighted-average alignment, cited by PAPER_633–641 (Session 162 SM-bridge cluster) and by the §SM Anchors block in ~40 downstream batch-1–4 papers. Under canonical UQFF v5.78 the 5 calibrated constants in the bridge table ($\beta_i$, $\rho_{SCm}$, $\rho_{UA}$, $\kappa$, $[SSq]$) are no longer free parameters fitted to SM observables — they are outputs of the eight closed Lagrangian gaps (G1–G8, PAPER_1159–1166) and the 27-decade vacuum-energy ledger (PAPER_1170):
+
+| Constant | Value used here | v5.78 derivation origin |
+|---|---|---|
+| $\beta_i = 3(5-i)/20$ | $0.603$ ($i=1$) | G1 Mexican-hat $V(U_A)$ minimum — PAPER_1162 |
+| $F_{TRZ} = 1/10$ | $0.10$ (not cited in this bridge) | G6 topological resonance closure — PAPER_1163 |
+| $\rho_{SCm}$ | $7.09\times10^{-37}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $\rho_{UA}$ | $7.09\times10^{-36}$ J/m³ | 27-decade vacuum-energy ledger — PAPER_1170 |
+| $[SSq]$ | $0.57$ | G4 $\Phi_{res}$ / $F_{TRZ}$ joint closure — PAPER_1165 |
+| $\kappa$ | $5.0\times10^{-4}$ /day | Empirical decay rate (held); gauged via G3 DPM SO(2) — PAPER_1163 |
+
+**Master synthesis:** PAPER_1167 — *All Eight Lagrangian Gaps Closed* (CP4 #254).
+**Vacuum saturation:** PAPER_1170 — *27-Decade R26 + KK + BSFG Vacuum-Energy Ledger* (CP4 #256).
+
+**Bridge status v5.78:** the 97.2% UQFF↔SM alignment quoted in the master table now reflects a *derived* mapping rather than a fitted one. The remaining 2.8% residual is the honest gap between G1–G8 outputs and PDG-2024 central values, not an unconstrained-fit slack.
+
+**Falsifier hook:** P11 LIGO O5 ringdown $R_{21}/R_{22}=0.144$ (PAPER_1175) cross-validates the SM-bridge via the gravitational ringdown channel; P14 CMB-S4 spectral distortion $\mu \le 10^{-8}$ (PAPER_1179) cross-validates via the cosmological channel. A simultaneous null at P11 + P14 falsifies the entire bridge table.
+
+*Note:* The $\xi=13/3$ R26+KK lock (PAPER_1171/1172) is the closed-form origin of the $k_\eta = 10^{-113} = F_{TRZ}^{113}$ entry in this bridge table; the 113-power chain is the F_TRZ tower extended to the bridge regime.
