@@ -411,16 +411,81 @@ def _master_constant_formula(name: str):
     return _master_chain_base() * sat
 
 
-# === SPINOR CLOSURE (Map §9 row 9) ===
-# Two locks from Image 3: (4.1028, 1.0587 k_B). b9 spinor-bundle closure.
-SPINOR_VALUES = (4.1028, 1.0587)  # second is in units of k_B
+# === SPINOR CLOSURE (Map §9 row 9) -- Step 3 LIVE-DERIVE per §7 ===
+# Canonical engine port (Star-MagicProofEngine._compute_spinor_bundle_index L2235-2240):
+#     spinor_index = ledger_sat * (Ug * Omega) * S26_DPM * 1e-26    [= 1.4531 default]
+# This is the ONLY derivation that exists for the spinor-bundle row anywhere in the
+# codebase. The two anchors (4.1028, 1.0587 k_B) appear in b9 v1 plan Image 3 and
+# Map §9 row 9 / Map L285 as locked values; FirstPrinciplesCompressor.py L459
+# 'spinor_bundle_equations' mode is explicitly TBD ('pending range synthesis'). Per
+# the Step 2 corrective-port lesson, we DO NOT invent structural compositions to hit
+# the anchors -- we expose the canonical engine value and report honest diff vs
+# each b9 anchor for transparent residual disclosure.
 
-def _spinor_closure() -> Dict[str, float]:
-    """Spinor bundle closure (Map §9): two locked values."""
+def _spinor_canonical_engine_derive() -> float:
+    """Verbatim port of Star-MagicProofEngine._compute_spinor_bundle_index
+    (file L2235-2240). With defaults Ug=Omega=ledger_sat=1, yields 1.4531."""
+    ug = 1.0
+    omega = 1.0
+    ledger_sat = 1.0
+    return ledger_sat * (ug * omega) * S26_DPM * 1.0e-26
+
+# b9 Image 3 / Map §9 row 9 anchors -- 5-tuple format aligned with MILLENNIUM_TARGETS:
+#   (value, unit, ref_kind, ref_source, description)
+SPINOR_ANCHORS: Dict[str, tuple] = {
+    "lock_1": (
+        4.1028,
+        "dimensionless",
+        "B9_ANCHOR_IMAGE3",
+        "grok b9afa8b6 v1 plan Image 3 / Map section 9 row 9 (Map L285); no published derivation chain",
+        "first spinor-bundle lock",
+    ),
+    "lock_2_natural": (
+        1.0587,
+        "k_B",
+        "B9_ANCHOR_IMAGE3",
+        "grok b9afa8b6 v1 plan Image 3 / Map section 9 row 9 (Map L285); no published derivation chain",
+        "second spinor-bundle lock in units of Boltzmann constant",
+    ),
+}
+
+# Backward-compat alias for any caller that still references SPINOR_VALUES.
+SPINOR_VALUES = (SPINOR_ANCHORS["lock_1"][0], SPINOR_ANCHORS["lock_2_natural"][0])
+
+def _spinor_closure() -> Dict[str, Any]:
+    """Spinor bundle closure (Map §9 row 9) -- Step 3 live-derive.
+
+    Returns:
+        canonical_uqff_value -- live derivation from Star-MagicProofEngine
+            ._compute_spinor_bundle_index verbatim port (= S26_DPM*1e-26 = 1.4531).
+        anchor_lock_1        -- b9 Image 3 first spinor lock (4.1028, dimensionless).
+        anchor_lock_2_natural-- b9 Image 3 second spinor lock (1.0587, in k_B units).
+        anchor_lock_2_J_per_K-- second lock converted to J/K via PHYSICAL k_B.
+        diff_lock_1_pct      -- honest analytic-vs-anchor residual for lock 1.
+        diff_lock_2_pct      -- honest analytic-vs-anchor residual for lock 2.
+        ref_kind / ref_source-- anchor disclosure metadata.
+
+    NO HIDDEN LITERALS: the only literals are dpm v3.0 immutable roots (S26_DPM)
+    and the b9 Image 3 anchor values themselves, both explicitly cited.
+    """
+    canonical = _spinor_canonical_engine_derive()
+    a1 = SPINOR_ANCHORS["lock_1"][0]
+    a2 = SPINOR_ANCHORS["lock_2_natural"][0]
+    diff1 = abs(canonical - a1) / abs(a1) * 100.0 if a1 != 0 else 0.0
+    diff2 = abs(canonical - a2) / abs(a2) * 100.0 if a2 != 0 else 0.0
     return {
-        "spinor_value_1":         SPINOR_VALUES[0],
-        "spinor_value_2_natural": SPINOR_VALUES[1],
-        "spinor_value_2_J_per_K": SPINOR_VALUES[1] * K_B,
+        "canonical_uqff_value":   canonical,
+        "anchor_lock_1":          a1,
+        "anchor_lock_2_natural":  a2,
+        "anchor_lock_2_J_per_K":  a2 * K_B,
+        "diff_lock_1_pct":        diff1,
+        "diff_lock_2_pct":        diff2,
+        "ref_kind":               SPINOR_ANCHORS["lock_1"][2],
+        "ref_source":             SPINOR_ANCHORS["lock_1"][3],
+        # back-compat keys (so any existing consumer expecting the old 2-key shape still works)
+        "spinor_value_1":         a1,
+        "spinor_value_2_natural": a2,
+        "spinor_value_2_J_per_K": a2 * K_B,
     }
 
 
@@ -27185,10 +27250,28 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
     elif "input" in dataset and isinstance(dataset["input"], str):
         key = dataset["input"].lower().strip()
 
-    # Spinor closure (Map §9 row 9)
+    # Spinor closure (Map §9 row 9) -- Step 3 LIVE-DERIVE per analysis sec 7 Step 3.
     if key and ("spinor" in key):
         sp = _spinor_closure()
-        return {"value": sp, "provenance": f"Spinor bundle closure (4.1028, 1.0587 k_B) Map §9 b9 {PROV_B9} (0.000% error (NOT REPLACEMENT))"}
+        prov = (
+            "Spinor bundle closure [Map section 9 row 9] canonical UQFF live derivation via "
+            "_spinor_canonical_engine_derive (verbatim port of Star-MagicProofEngine."
+            "_compute_spinor_bundle_index L2235-2240; spinor_index = ledger_sat * Ug * Omega * S26_DPM * 1e-26 = 1.4531 "
+            "with default Ug=Omega=ledger_sat=1). Cite: Star-MagicProofEngine.py PROOF_DERIVATION_MODES['spinor_bundle_index'] L245-250 "
+            "+ dpm_vacuum_manifold.py v3.0 (S26_3 line 216) + grok_b9afa8b6_3b85_32May2026.md cluster 5 (L8480-8609) + "
+            "uqff_Map.md section 9 row 9 (L285). "
+            "NOTE: the two anchors (4.1028, 1.0587 k_B) appear in b9 v1 plan Image 3 + Map L285 as locked values; "
+            "FirstPrinciplesCompressor.py L459 'spinor_bundle_equations' mode is explicitly TBD ('pending range synthesis'); "
+            "no published canonical derivation chain produces them. Per Step 2 corrective-port lesson, we do not invent "
+            "structural compositions to hit the anchors. The canonical engine derivation (1.4531) is reported alongside "
+            "both anchors with honest residual disclosure. "
+            f"REF_lock_1=4.1028 (dimensionless, kind=B9_ANCHOR_IMAGE3, source: grok b9 v1 plan Image 3 / Map L285) | "
+            f"REF_lock_2=1.0587 (k_B, kind=B9_ANCHOR_IMAGE3, source: grok b9 v1 plan Image 3 / Map L285) | "
+            f"UQFF_canonical={sp['canonical_uqff_value']:.6g} | "
+            f"diff_lock_1={sp['diff_lock_1_pct']:.3f}% | diff_lock_2={sp['diff_lock_2_pct']:.3f}% "
+            "(analytic-vs-anchor residuals; NOT REPLACEMENT)"
+        )
+        return {"value": sp, "provenance": prov}
 
     # Millennium dispatch (8 problems) — check first so "yang_mills" etc. resolve before cluster strings.
     if key:

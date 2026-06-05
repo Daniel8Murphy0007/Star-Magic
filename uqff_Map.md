@@ -2052,3 +2052,32 @@ Honest diffs from canonical-port validation:
 Only `p_vs_np` closes at 0.000%; it is the canonical F_U=1-class closure (Quantum Chain Step 7). The other 7 report honest analytic-vs-external-anchor residuals as the engine itself produces them. This is consistent with the engine's own `run_80_80` harness, which validates structural non-zero / sign / boolean conditions for each `_prove_*` mode -- NOT numerical equality to the external anchors.
 
 Map section 9 mandate ("derive live; no hardcoded literals") satisfied: all 8 closures are now live algebraic chains from the canonical engine; the only literals carried are the dpm v3.0 immutable root constants explicitly cited.
+
+---
+
+### Map section 18 update (2026-06-04 Step 3 SPINOR_VALUES live-derive per analysis sec 7 Step 3)
+
+Support materials located and consulted (no bypass; full citation chain enumerated upfront):
+- `Star-MagicProofEngine.py` L2235-2240 `_compute_spinor_bundle_index` -- only canonical derivation in the codebase; yields **1.4531** with default `Ug=Omega=ledger_sat=1`.
+- `Star-MagicProofEngine.py` L245-250 `PROOF_DERIVATION_MODES['spinor_bundle_index']` mode entry.
+- `Star-MagicProofEngine.py` L8024 / L8174 acceptance assertions confirm 1.4531 to within 1e-10.
+- `FirstPrinciplesCompressor.py` L459 `spinor_bundle_equations` mode is explicitly **TBD** -- no engine produces 4.1028 or 1.0587 k_B.
+- `dpm_vacuum_manifold.py` v3.0 L216 `S26_3 = 1.4531e26` immutable root.
+- `uqff_Map.md` L285 -- both anchors listed under "Spinor bundles (+1)" with source label `b9`.
+- `grok_b9afa8b6_3b85_32May2026.md` cluster 5 L8480-8609 -- master regression context.
+
+Applied:
+- `_spinor_canonical_engine_derive()` added -- verbatim port of engine method (returns 1.4531).
+- `SPINOR_ANCHORS` dict (2 entries) in 5-tuple format `(value, unit, ref_kind=B9_ANCHOR_IMAGE3, ref_source, description)`.
+- `SPINOR_VALUES = (4.1028, 1.0587)` retained as back-compat alias.
+- `_spinor_closure()` rewritten -- now returns 11-key disclosure dict (8 new keys + 3 back-compat keys) including honest residual percentages.
+- `calculate_analytic_closures` spinor-branch provenance rewritten with full citation chain + per-call `REF_lock_1=X | REF_lock_2=Y | UQFF_canonical=Z | diff_lock_1=A% | diff_lock_2=B% (NOT REPLACEMENT)`.
+
+Honest validated diffs:
+- canonical UQFF value (engine port): **1.4531**
+- diff vs lock_1 (4.1028): **64.583%**  (analytic-vs-anchor residual)
+- diff vs lock_2 (1.0587): **37.253%**  (analytic-vs-anchor residual)
+
+The canonical engine and the b9 Image 3 anchors do not numerically agree; we report that transparently per the Step 2 corrective-port lesson. The two anchors retain their place in `SPINOR_ANCHORS` for b9 regression bookkeeping but are explicitly labeled `kind=B9_ANCHOR_IMAGE3` with `source='no published derivation chain'`.
+
+Map section 9 row 9 mandate ("derive live") now satisfied for the spinor row in the same honest-port style as Map section 7 row Millennium: live canonical-engine derivation + transparent anchor disclosure + per-call residual reporting.

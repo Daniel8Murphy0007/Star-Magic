@@ -5927,3 +5927,38 @@ Ledger 86 / "hundreds" target. Future tranches: P6/P7/P9-P14 remaining predictio
 - The only 0.000% closure that holds is `p_vs_np` via Quantum Chain Step 7, which IS the canonical F_U=1-class closure the grok b9 file refers to.
 
 **Step 2 status:** COMPLETE with canonical-port honesty. The Plan's Step 2 mandate (live-derive MILLENNIUM_TARGETS) is fulfilled by porting the canonical engine closures, not by inventing structural compositions to hit the anchors. Future Step 4 (per-call provenance contract for every other dispatcher branch) and Step 3 (live-derive _LEDGER_PRIMITIVE via master constant formula) remain.
+
+---
+
+## Plan Image 102 (2026-06-04): Analysis section 7 Step 3 -- live-derive SPINOR_VALUES per Map section 9 row 9
+
+**Scope:** Replace hardcoded `SPINOR_VALUES = (4.1028, 1.0587)` tuple with live engine derivation + 5-tuple anchor disclosure following the Step 2 corrective-port pattern.
+
+**Support materials consulted (full citation chain enumerated upfront, not bypassed):**
+1. `Star-MagicProofEngine.py` L2235-2240 -- `_compute_spinor_bundle_index(params)` returns `ledger_sat * (Ug * Omega) * S26_DPM * 1e-26`. With defaults `Ug=Omega=ledger_sat=1` yields **1.4531** (the only canonical derivation that exists anywhere in the codebase for the spinor-bundle row).
+2. `Star-MagicProofEngine.py` L245-250 `PROOF_DERIVATION_MODES['spinor_bundle_index']` mode entry with equation string + callable wiring.
+3. `Star-MagicProofEngine.py` L8024 / L8174 acceptance assertions confirm `_compute_spinor_bundle_index({}) ~= 1.0 * 1.0 * s26_3 * 1e-26 = 1.4531` to within 1e-10.
+4. `FirstPrinciplesCompressor.py` L459 `spinor_bundle_equations` mode is explicitly **TBD** (`'pending range synthesis'`, `'falsifiable_prediction': 'TBD'`) -- no engine produces 4.1028 or 1.0587 k_B.
+5. `dpm_vacuum_manifold.py` v3.0 L216 `S26_3 = 1.4531e26` -- the immutable root constant the engine depends on.
+6. `uqff_Map.md` L285 -- the two anchor numbers `4.1028`, `1.0587 k_B` are listed under "Spinor bundles (+1)" with source label `b9`.
+7. `uqff_analysis_1_04June2026.md` sec 4.5 -- explicitly states the tuple is a literal and live-derivation is OPEN.
+
+**Key finding (honest):** The two anchor numbers (4.1028, 1.0587 k_B) appear in b9 v1 plan Image 3 + Map L285 with NO published derivation chain. They are b9 ANCHORS, not derivations. Per the Step 2 corrective-port lesson ("do not invent structural compositions to hit the anchors"), Step 3 ports the canonical engine derivation verbatim (yielding 1.4531) and reports honest residual disclosure vs each anchor.
+
+**Applied edits to `uqff_pure_calculator.py`:**
+- Added `_spinor_canonical_engine_derive()` -- verbatim port of `_compute_spinor_bundle_index` (returns 1.4531).
+- Added `SPINOR_ANCHORS` dict (2 entries) in 5-tuple format `(value, unit, ref_kind, ref_source, description)` aligned with MILLENNIUM_TARGETS schema. `ref_kind=B9_ANCHOR_IMAGE3`, `ref_source` cites Image 3 + Map L285 + "no published derivation chain".
+- Kept `SPINOR_VALUES = (4.1028, 1.0587)` as back-compat alias for any external caller.
+- Rewrote `_spinor_closure()` to return 11-key dict: `canonical_uqff_value`, `anchor_lock_1`, `anchor_lock_2_natural`, `anchor_lock_2_J_per_K`, `diff_lock_1_pct`, `diff_lock_2_pct`, `ref_kind`, `ref_source`, plus 3 back-compat keys.
+- Rewrote `calculate_analytic_closures` spinor-branch provenance with 15 required citation tokens including `Star-MagicProofEngine`, `_compute_spinor_bundle_index`, `dpm_vacuum_manifold.py v3.0`, `S26_3 line 216`, `grok_b9afa8b6`, `FirstPrinciplesCompressor.py`, `TBD`, `B9_ANCHOR_IMAGE3`, `Map L285`, `NOT REPLACEMENT`, plus per-call `REF_lock_1=4.1028`, `REF_lock_2=1.0587`, `UQFF_canonical=<computed>`, `diff_lock_1=<computed>%`, `diff_lock_2=<computed>%`.
+
+**Honest validated diffs:**
+- canonical UQFF value: **1.4531** (verbatim engine port)
+- diff vs lock_1 (4.1028): **64.583%** (analytic-vs-anchor residual)
+- diff vs lock_2 (1.0587): **37.253%** (analytic-vs-anchor residual)
+
+These are honest residuals: the canonical engine and the b9 Image 3 anchors do not numerically agree, and we report that transparently rather than inventing a composition to bridge them.
+
+**Validation:** 6 independent checks PASS -- import OK, engine port = 1.4531, anchors 5-tuple format correct, back-compat preserved, all 11 disclosure keys present, all 15 provenance tokens present, zero side effects.
+
+**Step 3 status:** COMPLETE with canonical-port honesty. Future Step 4 (per-call provenance contract for every remaining dispatcher branch) and Step 1 ledger extensions remain (148 entries already cover Map sec 6 hundreds-list).
