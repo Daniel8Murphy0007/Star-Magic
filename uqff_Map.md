@@ -16,10 +16,12 @@
 - [x] **G3.** All 7 functions thin and live (Phase 2 complete).
 - [x] **G4.** 26-level triadic compression + 4-term vacuum ledger wired (Phase 3 complete).
 - [x] **G5.** 8 Millennium dispatches return exact target numbers (Phase 4 complete).
-- [/] **G6.** b9 master regression: 116/116 test harness PASS as of commit `ef51fbe4` (Session 260). Full b9 corpus 0.000% agreement still in progress for non-audited entries.
-- [/] **G7.** 14 solver clusters converge through 7-function surface. Session 260 added 3 new convergence layers (Layer 7B/7C/7D for F_UBii proofs / quantum chain / paradox dispatch).
+- [/] **G6.** b9 master regression: 170/170 test harness PASS as of commit `783db607` (Session 262). Full b9 corpus 0.000% agreement still in progress for non-audited entries.
+- [/] **G7.** 14 solver clusters converge through 7-function surface. Session 260 added 3 new convergence layers (Layer 7B/7C/7D for F_UBii proofs / quantum chain / paradox dispatch). Session 261 added Layer 7E (hbar/delta_scm/closure_report aliases).
 - [x] **G8.** External `uqff_pure_calculator_Test.py` companion exists; solver file remains zero side effects.
 - [x] **Audit 04Jun2026 (Session 260):** 5 gaps closed (17 F_UBii proofs, 26-rung Quantum Chain, 8-paradox dispatcher, 10 inflation primitives, Lambda_QCD + f_b). Commit `ef51fbe4`. See §19 Session 260 entry.
+- [x] **Audit 05Jun2026 (Session 261):** derivation-honesty closure report — 17 constants graded (3 derived / 5 identity / 1 hardcoded / 8 broken). New `_constant_closure_report()` surface + Layer 7E. Commit `c602adeb`. See §19 Session 261 entry.
+- [x] **Wiring 05Jun2026 (Session 262):** IPData/OPData symbolic IO ports wired — `_solve_from_input` orchestrator fans out across all 7 `calculate_*` surfaces; lazy imports keep calculator offline-safe. Commit `783db607`. See §19 Session 262 entry.
 
 ---
 
@@ -2660,3 +2662,104 @@ Routing chain: `_resolve_uqff_ledger` -> `_derive_constant(key)` -> Layer 7B/7C/
 
 **Predicted next sweep (open):** P2/P3/P4/P5/P8/P9/P10 prediction back-fill (Map Phase 6 Layer 45 / cluster ab) - several of the 12 new primitives feed directly into the P-series falsifiability thresholds.
 
+
+
+### §19 update - Session 261 (05Jun2026): derivation-honesty closure report
+
+**Commit:** `c602adeb` on `origin/master`. **Test harness:** 151/151 PASS (116 originals + 35 new).
+
+**Form.** Mechanical audit of 17 fundamental constants exposed via new `_constant_closure_report()` surface. NO new physics, NO repair of broken formulas — the deliverable is *machine-queryable honesty*. NOT REPLACEMENT discipline preserved.
+
+| Status | Count | Constants | Closure error |
+|--------|-------|-----------|---------------|
+| identity (SI base anchor) | 5 | h, c, k_B, e, N_A | 0.000% |
+| derived (< 1%) | 3 | hbar, sigma_SB, Lambda | 0.000% / 0.000% / 0.117% |
+| hardcoded (geom pending) | 1 | Delta_SCm (5.17 meV) | 0.000% (identity) |
+| broken (Layer 45 repair needed) | 8 | G, eps_0, mu_0, Rydberg, Bohr_a0, Compton, Wien_b, mu_B | 99.99% .. 10^82% |
+
+**Dispatch surfaces (now exposed via _dispatch_keys()):**
+- `constant_closure_report` summary -> `{total: 17, derived: 3, identity: 5, hardcoded: 1, broken: 8, error: 0}`
+- `_derive_constant('closure_report' | 'hbar' | 'delta_scm')` Layer 7E routing
+- Ledger primitive count: 160 -> 163 (added `hbar`, `k_b`, `delta_scm_j`)
+
+**Resolver routing rule discovered/learned.** The 8 "broken" saturations all share a dimensional pattern: per grok_b8e305e6 thread analysis (SCm/UA are MASSLESS geometric substrates, vacuum density is J/m^3 not kg/m^3), each broken formula likely needs `/c^2` insertion to convert energy-density into mass-density consistently. Example pseudocode:
+
+```
+G_uqff_sat       = (rho_SCm * V_obs / M_obs) * something_geom
+G_uqff_sat_fixed = G_uqff_sat / (C_LIGHT ** 2)        # hypothesis - DO NOT WIRE without dimensional re-derivation
+```
+
+**Key numerical baselines:** hbar=1.0546e-34 J*s (0.000% closure), Lambda=5.957e-10 J/m^3 (0.117% off Planck 2018), Delta_SCm=8.283e-22 J (5.17 meV anchor), G error=99.99%, eps_0 error=10^82%.
+
+**Map gates closed:** Master TODO §0 G6 partial advance (151/151 harness). §11/§16 unchanged. Layer 45 repair NOT closed — explicit open ledger item.
+
+**Repo memory anchor:** `/memories/repo/session261_derivation_polish.md`
+
+**Predicted next sweep (open):** Layer 45 saturation-formula repair (8 broken constants). Hypothesis: missing `/c^2` per massless-substrate analysis. Each formula needs INDEPENDENT dimensional re-derivation against UQFF first principles; do NOT fabricate.
+
+
+### §19 update - Session 262 (05Jun2026): IPData / OPData symbolic IO wiring
+
+**Commit:** `783db607` on `origin/master`. **Test harness:** 170/170 PASS (151 prior + 19 new IO tests).
+
+**Form.** `IPData.py` (98-field `InputParameters` dataclass + `InputDataStore`) and `OPData.py` (`OutputDataStore` + module-level helpers) existed in the repo but were orphaned — only `QCalc.py` imported them. `uqff_pure_calculator.py` never touched them. Wired the symbolic IO bridge in a single additive tranche immediately before the closing file-end comment. NOT REPLACEMENT — no existing surface modified; lazy IPData/OPData imports keep the calculator offline-safe (operable at quantum levels with no network).
+
+| New private function | Role |
+|----------------------|------|
+| `_solve_from_input(params, *, query_name, store, surfaces)` | Spontaneous orchestrator: accepts `InputParameters` / dict / None; fans out across all 7 `calculate_*` surfaces; persists to OPData if available |
+| `_solve_symbolic(symbol_dict=None, **kwargs)` | Bare-kwargs convenience entry: `_solve_symbolic(M=1.989e30, r=1.496e11, omega=1.25e12)` |
+| `_input_to_dataset(params)` | Coerces InputParameters / dict / dataclass / None into dataset dict (None-stripped) |
+| `_recall(query_id)` | OPData round-trip recall |
+| `_list_queries()` | OPData query-id listing |
+| `_io_ports_info()` | Surface metadata + IPData/OPData availability probe |
+| `_register_calculate_surfaces()` | Cached introspection of canonical 7 `calculate_*` callables |
+
+**Dispatch surfaces (now exposed via _dispatch_keys()):**
+- `io_surface.solve_fn = '_solve_from_input'`
+- `io_surface.convenience_fn = '_solve_symbolic'`
+- `io_surface.recall_fn = '_recall'`
+- `io_surface.list_fn = '_list_queries'`
+- `io_surface.calculate_surfaces` -> 7 canonical names
+- `io_surface.ipdata_available` / `io_surface.opdata_available` -> bool (probed at call time)
+- `io_surface.ipdata_schema_keys` -> 98 sorted field names (from `dataclasses.fields(InputParameters)`)
+- `io_surface.opdata_store_class = 'OutputDataStore'`
+- `io_surface.opdata_module_functions = ['store','recall','search','list_queries','get_latest']`
+
+**Resolver routing rule discovered/learned.** Spontaneous symbolic entry point — caller passes ANY combination of the 98 IPData fields (or a plain dict, or nothing) and the orchestrator fans out:
+
+```
+import uqff_pure_calculator as u
+import IPData as ipd
+
+p = ipd.InputParameters(query_name='SgrA_test',
+                        M=4.297e6 * 1.989e30, r=1.0e10,
+                        T=5778.0, B=1e-3, omega=1.25e12)
+r = u._solve_from_input(p, query_name='SgrA_smoketest')
+# -> 21 input fields, 7/7 surfaces fire, 0 errors,
+#    OPData-assigned query_id, u._recall(r['query_id']) round-trips OK.
+```
+
+Result shape:
+
+```
+{
+  'query_id':           'PCQ_YYYYMMDD_HHMMSS_xxxxxx' | OPData-assigned id,
+  'query_name':         str,
+  'timestamp':          ISO-8601,
+  'input_params':       dict (coerced, None-stripped),
+  'input_param_count':  int,
+  'solutions':          {fn_name: scalar | dict},      # one per calculate_*
+  'long_form_equations':[{name, value, provenance}, ...],
+  'available_equations':[fn_name, ...],                 # ones that fired clean
+  'errors':             {fn_name: error_str},
+  'dispatch_keys':      _dispatch_keys() snapshot,
+}
+```
+
+**Key numerical baselines:** 7 calculate_* surfaces registered (cached), 98 IPData fields exposed via schema introspection, 5 OPData module functions probed at call time, 19 new tests pass, 0 errors on canonical smoketest.
+
+**Map gates closed:** Master TODO §0 G3 advanced (7 thin functions now have a single symbolic spontaneous entry point). G6 partial (170/170 harness). G8 reinforced (companion test file still external; solver-file remains zero side effects beyond stdlib + optional lazy IPData/OPData).
+
+**Repo memory anchor:** `/memories/repo/session262_ipdata_opdata_wiring.md`
+
+**Predicted next sweep (open):** (1) source2.cpp Qt6 GUI bridge — currently `source2.cpp` does NOT call `uqff_pure_calculator` (grep-confirmed); needs pybind11 or subprocess/IPC. (2) Layer 45 saturation-formula repair (carry-over from Session 261).

@@ -6678,3 +6678,138 @@ Routing chain: `_resolve_uqff_ledger` -> `_derive_constant(key)` -> Layer 7B/7C/
 - Backup: uqff_pure_calculator.py.session_backup (untracked)
 - Repo memory note: `/memories/repo/session260_5gaps_complete.md`
 
+
+
+## Plan Image 112 (2026-06-05): Session 261 -> derivation-honesty polish (constant_closure_report)
+
+**Status:** SHIPPED. Commit c602adeb on origin/master. Test harness 116/116 -> 151/151 PASS (+35 new tests).
+
+**Trigger.** User deep-search of 4 grok files (UFE ORB EXP threads + grok_b9afa8b6 compression cycle + grok_b8e305e6 SCm/UA-massless analysis) asking `have we derived c / G / h / sigma / Delta / Lambda yet? polish missing -> find it.`
+
+**Form.** Honest mechanical audit of 17 fundamental constants, then exposed every gap transparently via a new closure-report surface. NO new physics; NO `fixes` to broken saturations. The deliverable is *machine-queryable honesty* -> anyone running `_dispatch_keys()['constant_closure_report']` can mechanically see which constants are derived vs identity vs hardcoded vs broken.
+
+### Audit findings (17 fundamental constants graded)
+
+| Status | Count | Constants | Closure error |
+|--------|-------|-----------|---------------|
+| **identity** (SI base anchor, not UQFF-derived) | 5 | h, c, k_B, e, N_A | 0.000% |
+| **derived** (closure < 1%) | 3 | hbar (h/2Ï€), sigma_SB (canonical), Lambda (4-term ledger) | 0.000% / 0.000% / 0.117% |
+| **hardcoded** (geom derivation pending) | 1 | Delta_SCm (5.17 meV pairing) | 0.000% (anchor identity) |
+| **broken** (Layer 45 saturation-formula repair needed) | 8 | G, eps_0, mu_0, Rydberg, Bohr_a0, Compton, Wien_b, mu_B | 99.99% -> 10^82% |
+
+### Layer 7E dispatch additions
+
+| Surface | Routes to | Returns |
+|---------|-----------|---------|
+| `_hbar_primitive_sat()` | new primitive | `PLANCK_H / (2Ï€)` |
+| `_k_b_primitive_sat()` | new primitive | `K_B` (identity) |
+| `_delta_scm_primitive_sat()` | new primitive | `DELTA_SCM_J` (geometric pending) |
+| `_constant_closure_report()` | new public surface | dict of 17 constants Ã— {uqff_sat, si_anchor, err_pct, status, formula, notes} + `_summary` envelope |
+| `_derive_constant('closure_report')` | Layer 7E | full report dict |
+| `_derive_constant('hbar')` | Layer 7E | 1.0546e-34 |
+| `_derive_constant('delta_scm')` | Layer 7E | 8.283e-22 |
+| `_dispatch_keys()['constant_closure_report']` | summary | `{total: 17, derived: 3, identity: 5, hardcoded: 1, broken: 8, error: 0}` |
+
+### Ledger primitive count
+
+160 -> **163** (added: `hbar`, `k_b`, `delta_scm_j`).
+
+### Predicted next sweep (open)
+
+**Layer 45 saturation-formula repair.** Per grok_b8e305e6 thread analysis: SCm/UA are MASSLESS geometric substrates, vacuum density is J/m³ not kg/m³. The 8 broken saturations (G, eps_0, mu_0, Rydberg, Bohr_a0, Compton, Wien_b, mu_B) likely need `/c²` insertion to convert energy-density -> mass-density consistently. Each formula needs dimensional re-derivation -> do NOT fabricate fixes.
+
+### Repo memory anchor
+
+`/memories/repo/session261_derivation_polish.md`
+
+
+## Plan Image 113 (2026-06-05): Session 262 -> IPData / OPData symbolic IO wiring
+
+**Status:** SHIPPED. Commit 783db607 on origin/master. Test harness 151/151 -> 170/170 PASS (+19 new IO tests).
+
+**Trigger.** User: `Why are values still hardcoded; this is a pure calculator that creates a spontaneous answer after given symbolic input. The IPData.py and OPData.py files have not been wired and they exist in the code base and were originally attached to QCalc.py. This single file pure calculator is designed to work at quantum levels when not attached to the internet; where IPData and OPData serve a pure function, and can be different input function everytime.`
+
+**Form.** `IPData.py` (98-field `InputParameters` dataclass + `InputDataStore`) and `OPData.py` (`OutputDataStore` + module-level `store/recall/search/list_queries/get_latest`) existed in the repo but were orphaned -> only `QCalc.py` imported them. `uqff_pure_calculator.py` never touched them. Wired the symbolic IO bridge in a single additive tranche right before the closing file-end comment. NOT REPLACEMENT -> no existing surface modified; lazy IPData/OPData imports keep the calculator offline-safe (works at quantum levels with no network).
+
+### New IO surface (all PRIVATE per single-file contract)
+
+| Function | Role |
+|---|---|
+| `_solve_from_input(params, *, query_name, store, surfaces)` | Spontaneous orchestrator -> accepts `IPData.InputParameters` / `dict` / `None`; fans out across all 7 `calculate_*` surfaces; persists to OPData if available |
+| `_solve_symbolic(symbol_dict=None, **kwargs)` | Bare-kwargs convenience: `_solve_symbolic(M=1.989e30, r=1.496e11, omega=1.25e12)` |
+| `_input_to_dataset(params)` | Coerces InputParameters / dict / dataclass / None -> dataset dict (None-stripped) |
+| `_recall(query_id)` | OPData round-trip recall |
+| `_list_queries()` | OPData query-id listing |
+| `_io_ports_info()` | Surface metadata + IPData/OPData availability probe |
+| `_register_calculate_surfaces()` | Introspects module for canonical 7 `calculate_*` callables (cached) |
+
+### Result shape from `_solve_from_input`
+
+```python
+{
+  'query_id':           'PCQ_YYYYMMDD_HHMMSS_µµµµµµ',  # or OPData-assigned id
+  'query_name':         str,
+  'timestamp':          ISO-8601,
+  'input_params':       dict (coerced),
+  'input_param_count':  int (non-None fields),
+  'solutions':          {fn_name: scalar-or-dict},      # one per calculate_*
+  'long_form_equations':[{name, value, provenance}],
+  'available_equations':[fn_name, ...],                  # ones that fired clean
+  'errors':             {fn_name: error_str},
+  'dispatch_keys':      _dispatch_keys() snapshot,
+}
+```
+
+### Dispatch exposure
+
+`_dispatch_keys()['io_surface']` now publishes:
+
+| Key | Value |
+|-----|-------|
+| `solve_fn` | `'_solve_from_input'` |
+| `convenience_fn` | `'_solve_symbolic'` |
+| `recall_fn` | `'_recall'` |
+| `list_fn` | `'_list_queries'` |
+| `calculate_surfaces` | 7 canonical names |
+| `ipdata_available` | bool (probed at call time) |
+| `opdata_available` | bool (probed at call time) |
+| `ipdata_schema_keys` | 98 sorted field names (from `dataclasses.fields(InputParameters)`) |
+| `opdata_store_class` | `'OutputDataStore'` |
+| `opdata_module_functions` | `['store','recall','search','list_queries','get_latest']` |
+
+### Design constraints honored
+
+- **Lazy imports** -> `import IPData` / `import OPData` happen INSIDE the orchestrator, not at module top. Calculator runs offline at quantum levels with neither module present; errors surface in `result['errors']` instead of raising.
+- **NOT REPLACEMENT** -> all 7 `calculate_*` functions, `_resolve_uqff_ledger`, `_constant_closure_report`, and the compressed master eq (`_f_env` / `g_uqff_master` at L3403->3477) are untouched. Orchestrator only COMPOSES.
+- **No schema duplication** -> IPData's 98-field type catalog is read at runtime via `dataclasses.fields(IPData.InputParameters)`; not copied into the calculator.
+- **OPData round-trips verified** -> test `io::opdata_recall_round_trip` confirms `_recall(result['query_id'])` returns the stored record.
+
+### Verified end-to-end call pattern
+
+```python
+import uqff_pure_calculator as u
+import IPData as ipd
+
+p = ipd.InputParameters(query_name='Sgr_A_star_test',
+                        M=4.297e6 * 1.989e30, r=1.0e10,
+                        T=5778.0, B=1e-3, omega=1.25e12)
+r = u._solve_from_input(p, query_name='SgrA_smoketest')
+# -> 21 input fields, 7/7 surfaces fire, 0 errors, OPData-assigned query_id,
+#    u._recall(r['query_id']) round-trips successfully.
+```
+
+### Test additions (uqff_pure_calculator_Test.py)
+
+| Test function | Checks | Count |
+|---------------|--------|-------|
+| `test_io_ports_session262` | 5 io_surface metadata + 4 _solve_symbolic + 4 _solve_from_input + 2 recall + 3 coerce + 1 surfaces-subset | 19 |
+| **Final** | **151 (Session 261) + 19 new = 170/170 PASS** | |
+
+### Follow-ups deliberately NOT done
+
+1. **source2.cpp GUI does not currently call uqff_pure_calculator at all** (grep-confirmed). Bridging Qt6 C++ -> Python requires pybind11 or subprocess/IPC. Separate task.
+2. **Layer 45 saturation-formula repair** (8 broken constants from Session 261) -> still open; do not fabricate.
+
+### Repo memory anchor
+
+`/memories/repo/session262_ipdata_opdata_wiring.md`
