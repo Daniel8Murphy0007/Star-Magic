@@ -195,6 +195,129 @@ def test_slice3_leaves() -> List[Tuple[str, bool, str]]:
     return out
 
 
+def test_f_ubii_proofs_complete() -> List[Tuple[str, bool, str]]:
+    """Gap 1 (04Jun2026 audit): 17 named F_UBii proofs all callable, finite, non-zero."""
+    import math as _m
+    out: List[Tuple[str, bool, str]] = []
+    expected = {"virx", "termv", "upar", "coup", "orbdec", "kn", "fermi", "kne",
+                "whim", "ps", "sfe", "hawk", "bd", "roche", "ent", "dec", "lobe"}
+    inv = u._f_ubii_inventory()
+    proof_names = set(inv.get("proof_names", [])) if isinstance(inv, dict) else set()
+    out.append(_check("f_ubii::inventory_size_17",
+                      inv.get("total_proofs") == 17 and expected.issubset(proof_names),
+                      f"total={inv.get('total_proofs')!r}, missing={sorted(expected - proof_names)}"))
+    for name in sorted(expected):
+        try:
+            res = u._f_ubii_proof(name)
+            val = res["value"] if isinstance(res, dict) else res
+            v = val[0] if isinstance(val, tuple) else val
+            ok = isinstance(v, (int, float)) and _m.isfinite(v) and v != 0.0
+            out.append(_check(f"f_ubii::{name}::finite_nonzero", ok, f"v={v!r}"))
+        except Exception as e:
+            out.append(_check(f"f_ubii::{name}::callable", False, f"exc={e!r}"))
+    return out
+
+
+def test_quantum_chain_ladder() -> List[Tuple[str, bool, str]]:
+    """Gap 2 (04Jun2026 audit): 26-rung Quantum Chain ladder + derive_from_quantum_chain."""
+    import math as _m
+    out: List[Tuple[str, bool, str]] = []
+    out.append(_check("quantum_chain::n_levels_26",
+                      u.N_QUANTUM_CHAIN_LEVELS == 26,
+                      f"got {u.N_QUANTUM_CHAIN_LEVELS}"))
+    rungs_ok = True
+    for n in range(1, u.N_QUANTUM_CHAIN_LEVELS + 1):
+        e = u._quantum_chain_E_n(n)
+        if not (isinstance(e, (int, float)) and _m.isfinite(e) and e > 0.0):
+            rungs_ok = False
+            break
+    out.append(_check("quantum_chain::26_rungs_positive_finite", rungs_ok,
+                      f"E_1={u._quantum_chain_E_n(1):.3e} E_26={u._quantum_chain_E_n(26):.3e}"))
+    inv = u._quantum_chain_inventory()
+    out.append(_check("quantum_chain::inventory_shape",
+                      isinstance(inv, dict) and "n_levels" in inv and "E_total_J" in inv,
+                      f"keys={list(inv.keys()) if isinstance(inv,dict) else type(inv).__name__}"))
+    deriv = u._derive_from_quantum_chain()
+    needed = {"kg_chain", "rho_mass_kg_m3", "rho_E_J_m3"}
+    out.append(_check("quantum_chain::derive_three_quantities",
+                      isinstance(deriv, dict) and needed.issubset(deriv.keys()),
+                      f"missing={sorted(needed - set(deriv.keys())) if isinstance(deriv,dict) else 'not-dict'}"))
+    return out
+
+
+def test_paradox_proofs_dispatched() -> List[Tuple[str, bool, str]]:
+    """Gap 5 (04Jun2026 audit): 8 paradox proofs route through Millennium ports;
+    info_paradox provenance must surface the F_UBii_ent operator value."""
+    import math as _m
+    out: List[Tuple[str, bool, str]] = []
+    out.append(_check("paradox::registry_8_entries",
+                      len(u.PARADOX_TO_MILLENNIUM) == 8,
+                      f"got {len(u.PARADOX_TO_MILLENNIUM)}"))
+    for paradox_name in sorted(u.PARADOX_TO_MILLENNIUM.keys()):
+        try:
+            res = u._paradox_proof(paradox_name)
+            val = res["value"] if isinstance(res, dict) else res
+            v = val[0] if isinstance(val, tuple) else val
+            ok = isinstance(v, (int, float)) and _m.isfinite(v)
+            out.append(_check(f"paradox::{paradox_name}::finite", ok, f"v={v!r}"))
+        except Exception as e:
+            out.append(_check(f"paradox::{paradox_name}::callable", False, f"exc={e!r}"))
+    info = u._paradox_proof("info_paradox")
+    prov = info[1] if isinstance(info, tuple) else (info.get("provenance", "") if isinstance(info, dict) else "")
+    out.append(_check("paradox::info_paradox::cites_F_UBii_ent",
+                      "F_UBii_ent" in prov,
+                      f"prov[:120]={prov[:120]!r}"))
+    return out
+
+
+def test_new_inflation_primitives() -> List[Tuple[str, bool, str]]:
+    """Gaps 3+4 (04Jun2026 audit): 12 new primitives (10 inflation/cosmology + Lambda_QCD + f_b)."""
+    import math as _m
+    out: List[Tuple[str, bool, str]] = []
+    new_keys = ("omega_gw_h2", "r_tensor_scalar", "dn_s_dlnk",
+                "f_nl_equil", "f_nl_orth", "epsilon_slow_roll",
+                "eta_slow_roll", "n_efolds", "t_reh_gev",
+                "h_inflation_gev", "lambda_qcd_mev", "f_baryon")
+    out.append(_check("primitives::ledger_has_12_new_keys",
+                      all(k in u._LEDGER_PRIMITIVE for k in new_keys),
+                      f"missing={[k for k in new_keys if k not in u._LEDGER_PRIMITIVE]}"))
+    out.append(_check("primitives::ledger_count_at_least_160",
+                      len(u._LEDGER_PRIMITIVE) >= 160,
+                      f"got {len(u._LEDGER_PRIMITIVE)}"))
+    for k in new_keys:
+        try:
+            v = u._LEDGER_PRIMITIVE[k]()
+            ok = isinstance(v, (int, float)) and _m.isfinite(v) and v != 0.0
+            out.append(_check(f"primitive::{k}::finite_nonzero", ok, f"v={v!r}"))
+        except Exception as e:
+            out.append(_check(f"primitive::{k}::callable", False, f"exc={e!r}"))
+    return out
+
+
+def test_dispatch_inventory_counts() -> List[Tuple[str, bool, str]]:
+    """Gap 1-5: dispatch_keys exposes complete inventory surfaces with correct counts."""
+    out: List[Tuple[str, bool, str]] = []
+    d = u._dispatch_keys()
+    out.append(_check("dispatch::f_ubii_proofs_17",
+                      "f_ubii_proofs" in d and len(d["f_ubii_proofs"]) == 17,
+                      f"got {len(d.get('f_ubii_proofs', []))}"))
+    out.append(_check("dispatch::paradox_proofs_8",
+                      "paradox_proofs" in d and len(d["paradox_proofs"]) == 8,
+                      f"got {len(d.get('paradox_proofs', []))}"))
+    out.append(_check("dispatch::quantum_chain_n_levels_26",
+                      isinstance(d.get("quantum_chain"), dict)
+                      and d["quantum_chain"].get("n_levels") == 26,
+                      f"got {d.get('quantum_chain')!r}"))
+    out.append(_check("dispatch::ledger_primitive_keys_count",
+                      "ledger_primitive_keys" in d and len(d["ledger_primitive_keys"]) >= 160,
+                      f"got {len(d.get('ledger_primitive_keys', []))}"))
+    out.append(_check("dispatch::regime_corpus_1018",
+                      isinstance(d.get("regime_corpus"), dict)
+                      and d["regime_corpus"].get("total_variants") == 1018,
+                      f"got {d.get('regime_corpus')!r}"))
+    return out
+
+
 # === Report builders =============================================================
 
 def _run_all() -> List[Tuple[str, bool, str]]:
@@ -206,6 +329,11 @@ def _run_all() -> List[Tuple[str, bool, str]]:
     results.extend(test_spinor_and_predictions())
     results.extend(test_lagrangian_sectors())
     results.extend(test_slice3_leaves())
+    results.extend(test_f_ubii_proofs_complete())
+    results.extend(test_quantum_chain_ladder())
+    results.extend(test_paradox_proofs_dispatched())
+    results.extend(test_new_inflation_primitives())
+    results.extend(test_dispatch_inventory_counts())
     return results
 
 
