@@ -6103,3 +6103,105 @@ These 100% spreads are the *truthful* report Map sec 8 demands. The contract sur
 **Honest closure disclosure:** The 4-term G1-G8 closure is zero-parameter (all four prefactors structurally fixed by G1/G2/G3/G4 locks; coefficient sum = 5/6 + 1/2 + 3/5 + 3/20 = 25/12). The 0.117% residual vs the Planck-Lambda anchor reflects honest structural composition error, NOT a tunable fit -- consistent with Steps 2/3/5/6 honesty lessons. Largest term: V0 (Mexican-hat, ~40% of total). Smallest term: rho_BSFG (~7% of total).
 
 **Step 7 status:** COMPLETE. Map sec 9 vacuum ledger row is closed with the 7-key OPData decomposition exposed in both the public calculator and the dispatcher.
+
+---
+
+## Plan Image 107 (2026-06-04): Step 7b -- Quantum-Chain rho_SCm derivation (b8 vacuum-density perversion fix)
+
+**Status:** Complete. 6 dispatcher routes PASS. b8 perversion gap exposed honestly without breaking 9+ internal callers.
+
+**Origin:** grok_b8e305e6_1f29.md b8 audit. Original UQFF_THEORY.md canonical definition:
+- `rho_vac,X = sum(f_X(n) * E_n) / V_object` (J/m^3)
+- `E_n = E_0 * 10^n`, n=1..26, `E_0 = 1e-20 J` (26-level PTOE quantum ladder)
+- `f_X` = influence fraction of inertia from SCm or UA
+
+The Feb-2026 extraction `scm_vacuum_manifold.py` REPLACED this dynamic derivation with hardcoded `RHO_SCM = 7.09e-37` (originally mis-labeled kg/m^3, now consumed as J/m^3 across the codebase). This is the b8 perversion: the hardcoded constant does NOT come from the canonical chain.
+
+### Implementation
+
+**New module-level constants** (Step 7b):
+- `E0_QUANTUM_CHAIN_J = 1.0e-20` (canonical E_0)
+- `N_QUANTUM_LEVELS = 26` (= D_CRIT, 26-level PTOE ladder)
+- `HUBBLE_RADIUS_M = 1.373e26` (R_H = c / H_0 with H_0 = 67.4 km/s/Mpc)
+- `BOHR_RADIUS_M = 5.29177210903e-11` (CODATA 2018 a_0)
+
+**New helper `_derive_rho_scm_from_quantum_chain() -> Dict[str, float]`** (11 keys):
+
+| key | value @ default | derivation |
+|-----|-----------------|------------|
+| `E_0_J` | 1.000000e-20 | canonical E_0 per UQFF_THEORY.md |
+| `n_levels` | 26 | 26-level PTOE ladder |
+| `sum_E_n_J` | 1.111111e+06 | E_0 * 10 * (10^26 - 1) / 9 (geometric series) |
+| `peak_E_n_J` | 1.000000e+06 | E_26 = E_0 * 10^26 |
+| `V_universe_m3` | 1.084177e+79 | (4/3) pi R_H^3 |
+| `V_hydrogen_m3` | 6.207147e-31 | (4/3) pi a_0^3 |
+| `rho_chain_cosmological_J_m3` | 1.024843e-73 | bare chain / V_universe |
+| `rho_chain_atomic_J_m3` | 1.790051e+36 | bare chain / V_hydrogen |
+| `rho_scm_legacy_J_m3` | 7.090000e-37 | RHO_SCM module constant (preserved) |
+| `legacy_over_chain_cosmological_ratio` | 6.918e+36 | b8 gap magnitude |
+| `b8_perversion_disclosure` | NaN sentinel | full text in provenance |
+
+**6 dispatcher routes** added in `_resolve_uqff_ledger` after Step 7 branch: `rho_scm_chain`, `rho_scm_derive`, `quantum_chain_rho`, `quantum_chain` (exact), `b8_perversion`, `b8_disclosure`.
+
+**Honest disclosure:** The bare chain values DO NOT match the legacy hardcoded RHO_SCM = 7.09e-37 -- the gap (~7e36 cosmological-scale ratio) IS the b8 perversion exposed transparently. Per Map Image 40-41 NOT REPLACEMENT rule and the 9+ internal callers that depend on the scalar RHO_SCM identity (`cosm_lambda`, `Lambda_eff`, L20/L33 layers, `rho_lambda_mass`, OPData layer ratios, `_vacuum_ledger_4term` composition), the legacy constant is PRESERVED unchanged. Both forms are surfaced simultaneously per the "simultaneously solve by different methods" mandate.
+
+### 6/6 anchors
+
+1. helper callable + exactly 11 spec keys
+2. sum_E_n matches geometric series E_0 * 10 * (10^26 - 1) / 9 (1.111e6 J)
+3. peak_E_n = E_26 = 1e6 J exact
+4. V_universe ~ 1.08e79 m^3 (R_H = 1.373e26 m), V_hydrogen ~ 6.21e-31 m^3 (Bohr)
+5. 6 dispatcher routes all dict-valued + NR stamped + silent
+6. RHO_SCM module constant unchanged 7.09e-37 (scalar identity preserved for all 9+ callers)
+
+### Validation summary
+
+```
+[1a] qc keys match (11)        : PASS
+[2a] sum_E_n geom series        : PASS (1.111111e+06)
+[2b] peak_E_n = 1e6 J          : PASS
+[2c] V_universe ~ 1.08e79      : PASS (1.084177e+79)
+[2d] V_hydrogen ~ 6.21e-31     : PASS (6.207147e-31)
+[5a] RHO_SCM unchanged 7.09e-37: PASS
+6 Step 7b dispatcher routes    : 6/6 PASS
+```
+
+---
+
+## Plan Image 108 (2026-06-04): Step 7c -- Plan Image 3 literal-form parallel vacuum ledger decomposition
+
+**Status:** Complete. 5 dispatcher routes PASS. Literal Image 3 forms exposed in parallel with Step 7 G-coef amplified forms per NOT REPLACEMENT rule.
+
+**Origin:** Plan Image 3 `calculate_vacuum_ledger_closure` literal per-term specification. Step 7 closed Map sec 9 with the G-coef amplified forms `rho_SCm * 26! * G_i` (matches Planck-Lambda anchor at 0.117%); the Plan Image 3 literal forms WITHOUT 26! amplification were not yet exposed. This step closes that gap.
+
+### Implementation
+
+**New helper `_vacuum_ledger_literal_forms() -> Dict[str, float]`** (9 keys):
+
+| key | value @ default | derivation |
+|-----|-----------------|------------|
+| `V0_literal` | 1.477083e-36 | (25/12) * rho_SCm (sum 5/6+1/2+3/5+3/20 = 25/12 G-coefs) |
+| `R26_term_literal` | 3.545000e-37 | (1/2) * rho_SCm (G3 Einstein 26D Ricci split) |
+| `rho_KK_literal` | 1.624400e-37 | (1/26^26) * zeta(26) (KK 26-fold compactification) |
+| `rho_BSFG_literal` | 1.063500e-37 | (3/20) * rho_SCm (G4 BSFG 6D/4D Gauss-Bonnet) |
+| `total_literal` | 2.100373e-36 | sum of 4 literal terms |
+| `planck_target` | 5.950000e-10 | PLANCK_LAMBDA_TARGET_J_M3 |
+| `residual_literal_pct` | -100.000000% | literal is ~10^26 below Planck (huge gap; honest) |
+| `total_amplified_step7` | 5.956951e-10 | cross-validation: matches `_vacuum_ledger_4term()` scalar |
+| `amplified_over_literal_ratio` | 2.836e+26 | quantifies G8 26! amplification bridge |
+
+zeta(26) computed via truncated Dirichlet sum_{k=1..200} 1/k^26 ~ 1.0000000149 (converges to 14 digits well before truncation).
+
+**5 dispatcher routes** added BEFORE the Step 7 decomposition branch (order matters: `vacuum_4term_literal` substring would otherwise be caught by the Step 7 `vacuum_4term` substring): `vacuum_literal`, `vacuum_image3`, `plan_image3_decomp`, `rho_lambda_literal`, `vacuum_4term_literal`.
+
+### Honest disclosure: G8 26! amplification bridge
+
+The literal Image 3 forms land ~26 orders of magnitude below the Planck-Lambda anchor (`total_literal = 2.100e-36` vs `planck = 5.950e-10`). The ratio `amplified_over_literal = 2.836e+26` is structurally close to `26! / (25/12) ~ 1.935e+26` -- the G8 26! mass-amplification bridges the gap between element-scale SCm density (literal Image 3) and cosmological-scale rho_Lambda (Step 7 G-coef amplified). Both decompositions are valid and exposed simultaneously per Map Image 40-41 NOT REPLACEMENT / simultaneously-solve-by-different-methods rule. The literal forms reveal the structural per-term composition; the amplified forms reveal the anchor closure.
+
+### 5/5 anchors
+
+1. helper callable + exactly 9 spec keys
+2. V0_literal == (25/12) * RHO_SCM exact arithmetic
+3. R26 == 0.5 * RHO_SCM, BSFG == 0.15 * RHO_SCM exact
+4. zeta(26) ~ 1.0000000149 to 14 digits, rho_KK = zeta/26^26 exact
+5. 5 dispatcher routes all dict-valued + NR stamped + silent + Step 7 routes still intact after reorder

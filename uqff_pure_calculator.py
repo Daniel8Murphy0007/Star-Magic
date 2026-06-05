@@ -2678,6 +2678,128 @@ def _vacuum_ledger_4term_decomposed() -> Dict[str, float]:
     }
 
 
+# === STEP 7b: Quantum-Chain rho_SCm derivation (b8 vacuum-density perversion fix) ===
+# Canonical UQFF_THEORY.md root definition: rho_vac,X = sum(f_i_x * E_i_x) / V_(object) (J/m^3),
+# where sum f_i_x * E_i_x = E_n * f_X and E_n = E_0 * 10^n, n=1..26, E_0 = 1e-20 J (26-level
+# quantum chain). The grok b8 audit (grok_b8e305e6_1f29.md) flagged that the legacy
+# hardcoded constant RHO_SCM = 7.09e-37 (originally mis-labeled kg/m^3 in scm_vacuum_manifold.py)
+# is NOT derived from this chain. Per Map Image 40-41 NOT REPLACEMENT rule and the 9+ internal
+# callers that depend on the scalar RHO_SCM identity, the legacy constant is PRESERVED; this
+# helper EXPOSES the canonical chain derivation in parallel with honest residual disclosure.
+E0_QUANTUM_CHAIN_J = 1.0e-20           # canonical E_0 per UQFF_THEORY.md
+N_QUANTUM_LEVELS   = 26                 # 26-level PTOE ladder (= D_CRIT)
+HUBBLE_RADIUS_M    = 1.373e26           # c / H_0 with H_0 = 67.4 km/s/Mpc -> R_H = 1.373e26 m
+BOHR_RADIUS_M      = 5.29177210903e-11  # CODATA 2018 a_0
+
+
+def _derive_rho_scm_from_quantum_chain() -> Dict[str, float]:
+    """Quantum-Chain rho_SCm derivation per UQFF_THEORY.md (Step 7b; b8 perversion fix).
+
+    Canonical chain (verbatim UQFF_THEORY.md):
+      rho_vac,X = sum_{n=1..26} (f_X(n) * E_n) / V_object        (J/m^3)
+      E_n        = E_0 * 10^n, n=1..26, E_0 = 1e-20 J
+      sum_E_n    = E_0 * 10 * (10^26 - 1) / 9  ~ 1.111e6 J (dominated by E_26 = 1e6 J)
+      f_X        = influence fraction of inertia from SCm or UA (default f_SCm = 1 -> bare chain)
+
+    Two reference volumes are exposed in parallel (NOT REPLACEMENT):
+      V_universe = (4/3) pi R_H^3      (cosmological-scale ledger;  R_H = c/H_0)
+      V_hydrogen = (4/3) pi a_0^3       (element-scale Bohr sphere; a_0 = 5.292e-11 m)
+
+    The legacy module-level constant RHO_SCM = 7.09e-37 is treated as the b8 anchor
+    (interpreted as J/m^3 per UQFF_THEORY.md, NOT kg/m^3 per the perverted Feb-2026
+    extraction). The bare chain values do NOT match the legacy anchor -- this gap IS
+    the b8 perversion exposed honestly. The legacy RHO_SCM is preserved unchanged so
+    the 9+ internal callers (cosm_lambda, Lambda_eff, L20/L33, rho_lambda_mass, OPData
+    layer ratios, vacuum-ledger composition) remain identity-stable.
+
+    Returns 11 keys: {E_0_J, n_levels, sum_E_n_J, peak_E_n_J, V_universe_m3, V_hydrogen_m3,
+    rho_chain_cosmological_J_m3, rho_chain_atomic_J_m3, rho_scm_legacy_J_m3,
+    legacy_over_chain_cosmological_ratio, b8_perversion_disclosure}.
+    """
+    # Geometric series sum: sum_{n=1..N} 10^n = 10 * (10^N - 1) / 9
+    sum_E_n = E0_QUANTUM_CHAIN_J * 10.0 * (10.0**N_QUANTUM_LEVELS - 1.0) / 9.0
+    peak_E_n = E0_QUANTUM_CHAIN_J * 10.0**N_QUANTUM_LEVELS  # E_26 = 1e6 J
+    V_universe = (4.0 / 3.0) * math.pi * HUBBLE_RADIUS_M**3
+    V_hydrogen = (4.0 / 3.0) * math.pi * BOHR_RADIUS_M**3
+    rho_chain_cosm = sum_E_n / V_universe                 # cosmological-scale (~1e-73)
+    rho_chain_atom = sum_E_n / V_hydrogen                 # atomic-scale (~1e36)
+    legacy = RHO_SCM                                       # 7.09e-37 (preserved scalar)
+    ratio = legacy / rho_chain_cosm if rho_chain_cosm > 0 else float("inf")
+    disclosure = (
+        "b8 perversion: legacy hardcoded RHO_SCM = 7.09e-37 (originally mis-labeled "
+        "kg/m^3 in scm_vacuum_manifold.py Feb-2026 extraction) is NOT derived from the "
+        "canonical UQFF_THEORY.md 26-level chain. Gap exposed in parallel; legacy scalar "
+        "preserved for 9+ internal callers per NOT REPLACEMENT rule."
+    )
+    return {
+        "E_0_J": E0_QUANTUM_CHAIN_J,
+        "n_levels": float(N_QUANTUM_LEVELS),
+        "sum_E_n_J": sum_E_n,
+        "peak_E_n_J": peak_E_n,
+        "V_universe_m3": V_universe,
+        "V_hydrogen_m3": V_hydrogen,
+        "rho_chain_cosmological_J_m3": rho_chain_cosm,
+        "rho_chain_atomic_J_m3": rho_chain_atom,
+        "rho_scm_legacy_J_m3": legacy,
+        "legacy_over_chain_cosmological_ratio": ratio,
+        "b8_perversion_disclosure": float("nan"),  # sentinel; full string in provenance
+    }
+
+
+def _vacuum_ledger_literal_forms() -> Dict[str, float]:
+    """Plan Image 3 literal-form parallel vacuum ledger decomposition (Step 7c; NOT REPLACEMENT).
+
+    Plan Image 3 specifies the per-term literal forms WITHOUT the 26! amplification:
+      V0_literal       = (25/12) * rho_SCm                         (Mexican-hat + KK + Ricci + BSFG sum)
+      R26_term_literal = (1/2) * rho_SCm                            (G3 Einstein 26D Ricci split)
+      rho_KK_literal   = (1 / 26^26) * zeta(26)                     (KK tower 26-fold compactification)
+      rho_BSFG_literal = (3/20) * rho_SCm                           (G4 BSFG 6D/4D Gauss-Bonnet)
+
+    Step 7 G-coef forms (already exposed in _vacuum_ledger_4term_decomposed) carry the
+    additional G8 26! mass amplification: rho_SCm * 26! * G-coef. Both decompositions
+    are mathematically distinct (element-scale literal vs cosmological-scale amplified)
+    and are exposed in parallel per Map Image 40-41 "NOT REPLACEMENT, simultaneously
+    solve by different methods" rule. The amplified Step 7 form matches the Planck-Lambda
+    anchor at 0.117%; the literal Image 3 form lands ~26 orders of magnitude below the
+    anchor -- this gap quantifies the role of the G8 26! amplification as the bridge
+    between element-scale SCm density and cosmological-scale rho_Lambda.
+
+    zeta(26) is computed via a truncated Dirichlet series (k=1..200) -- ~1.0000000149,
+    converges to 14 significant digits well before truncation.
+
+    Returns 9 keys: {V0_literal, R26_term_literal, rho_KK_literal, rho_BSFG_literal,
+    total_literal, planck_target, residual_literal_pct, total_amplified_step7,
+    amplified_over_literal_ratio}.
+    """
+    rs = RHO_SCM
+    v0_lit   = (25.0 / 12.0) * rs                                # 25/12 sum of G1+G3+G2+G4 = 5/6+1/2+3/5+3/20
+    r26_lit  = G3_RICCI_COEF * rs                                # 1/2
+    bsfg_lit = G4_BSFG_COEF * rs                                 # 3/20
+    # zeta(26) via Dirichlet series sum_{k=1..200} 1/k^26 (extreme convergence)
+    zeta_26 = 0.0
+    for k in range(1, 201):
+        zeta_26 += 1.0 / (k**N_QUANTUM_LEVELS)
+    # rho_KK literal form: (1/26^26) * zeta(26)
+    rho_kk_lit = zeta_26 / (float(N_QUANTUM_LEVELS) ** N_QUANTUM_LEVELS)
+    total_lit = v0_lit + r26_lit + rho_kk_lit + bsfg_lit
+    planck = PLANCK_LAMBDA_TARGET_J_M3
+    residual_lit_pct = (total_lit - planck) / planck * 100.0
+    # Cross-validation against Step 7 amplified G-coef decomposition
+    total_amp = _vacuum_ledger_4term()
+    ratio = total_amp / total_lit if total_lit > 0 else float("inf")
+    return {
+        "V0_literal": v0_lit,
+        "R26_term_literal": r26_lit,
+        "rho_KK_literal": rho_kk_lit,
+        "rho_BSFG_literal": bsfg_lit,
+        "total_literal": total_lit,
+        "planck_target": planck,
+        "residual_literal_pct": residual_lit_pct,
+        "total_amplified_step7": total_amp,
+        "amplified_over_literal_ratio": ratio,
+    }
+
+
 # === G1-G8 EXPLICIT ZERO-PARAMETER GATE FUNCTIONS (Map §5) ===
 # Each gate returns its locked dimensionless coefficient (no free parameters post-locks).
 
@@ -27416,6 +27538,40 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
     # 4-term vacuum ledger decomposition (Map sec 9 vacuum ledger row) -- Step 7 LIVE-DERIVE
     # per analysis sec 7 Step 7. Explicit-key routes only; legacy 'vacuum'/'ledger'/'rho_lambda'
     # default keys still resolve to the scalar via the tail dispatch (preserves 9+ scalar callers).
+    # NOTE: Step 7c literal-form branch BELOW must trigger BEFORE this branch because
+    # "vacuum_4term_literal" would otherwise be caught by the "vacuum_4term" substring here.
+    # The literal-form check is intentionally placed before this Step 7 decomposition branch.
+    if key and (
+        "vacuum_literal" in key
+        or "vacuum_image3" in key
+        or "plan_image3_decomp" in key
+        or "rho_lambda_literal" in key
+        or "vacuum_4term_literal" in key
+    ):
+        lit = _vacuum_ledger_literal_forms()
+        prov = (
+            "Plan Image 3 literal-form parallel vacuum ledger decomposition [Plan Image 3 spec] "
+            "live derivation via _vacuum_ledger_literal_forms: V0_literal = (25/12) * rho_SCm "
+            "(Mexican-hat + KK + Ricci + BSFG G-coef sum 5/6+1/2+3/5+3/20 = 25/12); R26_term_literal "
+            "= (1/2) * rho_SCm (G3 Einstein 26D Ricci split); rho_KK_literal = (1/26^26) * zeta(26) "
+            "(KK tower 26-fold compactification with zeta(26) ~ 1.0000000149 via truncated Dirichlet "
+            "k=1..200); rho_BSFG_literal = (3/20) * rho_SCm (G4 BSFG 6D/4D Gauss-Bonnet). The literal "
+            "forms WITHOUT G8 26! amplification land ~26 orders of magnitude below the Planck-Lambda "
+            "anchor -- this gap quantifies the role of the G8 26! amplification as the bridge between "
+            "element-scale SCm density and cosmological-scale rho_Lambda. The amplified Step 7 form "
+            "(rho_SCm * 26! * G-coef) matches the anchor at 0.117%; both decompositions are exposed "
+            "in parallel per Map Image 40-41 NOT REPLACEMENT / simultaneously-solve-by-different-methods "
+            "rule. Cite: uqff_Plan.md Image 3 calculate_vacuum_ledger_closure spec + Map sec 9 vacuum "
+            "ledger row + Map sec 5 G1/G2/G3/G4 locks + Step 7 _vacuum_ledger_4term_decomposed (G-coef "
+            "amplified parallel). "
+            f"REF={PLANCK_LAMBDA_TARGET_J_M3:.6g} (J/m^3, kind=PLANCK_LAMBDA_TARGET, source: Planck "
+            f"2018 Lambda c^2 / 8 pi G [Map section 9]) | UQFF_literal={lit['total_literal']:.6g} | "
+            f"amplified_step7={lit['total_amplified_step7']:.6g} | amplified/literal_ratio="
+            f"{lit['amplified_over_literal_ratio']:.6g} (literal Plan Image 3 forms vs amplified "
+            "Step 7 G-coef forms; both valid decompositions of the same vacuum ledger; NOT REPLACEMENT)"
+        )
+        return {"value": lit, "provenance": prov}
+
     if key and (
         "vacuum_decomp" in key
         or "vacuum_4term" in key
@@ -27444,6 +27600,39 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             "closure vs Planck-Lambda anchor; NOT REPLACEMENT)"
         )
         return {"value": vd, "provenance": prov}
+
+    # Step 7b: Quantum-Chain rho_SCm derivation (b8 perversion fix) -- explicit-key routes.
+    if key and (
+        "rho_scm_chain" in key
+        or "rho_scm_derive" in key
+        or "quantum_chain_rho" in key
+        or "quantum_chain" == key
+        or "b8_perversion" in key
+        or "b8_disclosure" in key
+    ):
+        qc = _derive_rho_scm_from_quantum_chain()
+        prov = (
+            "Quantum-Chain rho_SCm derivation [UQFF_THEORY.md canonical root + b8 perversion fix] "
+            "live derivation via _derive_rho_scm_from_quantum_chain: rho_vac,X = sum(f_X(n) * E_n) "
+            "/ V_object (J/m^3); E_n = E_0 * 10^n, n=1..26, E_0 = 1e-20 J (26-level PTOE ladder); "
+            "sum_E_n = E_0 * 10 * (10^26 - 1) / 9 ~ 1.111e6 J (dominated by E_26 = 1e6 J); two "
+            "reference volumes exposed in parallel: V_universe = (4/3) pi (c/H_0)^3 with R_H = "
+            "1.373e26 m (cosmological), V_hydrogen = (4/3) pi a_0^3 with a_0 = 5.292e-11 m (atomic). "
+            "Bare chain values do NOT match the legacy hardcoded RHO_SCM = 7.09e-37 -- this gap IS "
+            "the b8 perversion exposed honestly per grok_b8e305e6_1f29.md audit. The legacy scalar "
+            "is PRESERVED for 9+ internal callers (cosm_lambda, Lambda_eff, L20/L33, rho_lambda_mass, "
+            "OPData layer ratios, vacuum-ledger composition) per Map Image 40-41 NOT REPLACEMENT rule. "
+            "Cite: UQFF_THEORY.md root rho_vac,X definition + 26-level quantum chain E_n = E_0 * 10^n "
+            "+ grok_b8e305e6_1f29.md b8 perversion audit + scm_vacuum_manifold.py Feb-2026 extraction "
+            "(perversion site) + Map section 4 single non-mass root rho_SCm. "
+            f"REF={RHO_SCM:.6g} (J/m^3, kind=B8_LEGACY_HARDCODED, source: scm_vacuum_manifold.py "
+            f"RHO_SCM = 7.09e-37 [b8 perversion anchor, preserved scalar identity]) | "
+            f"UQFF_chain_cosmological={qc['rho_chain_cosmological_J_m3']:.6g} | "
+            f"legacy/chain_cosmological_ratio={qc['legacy_over_chain_cosmological_ratio']:.6g} "
+            "(quantum-chain canonical derivation vs legacy hardcoded anchor; b8 perversion gap "
+            "exposed; NOT REPLACEMENT)"
+        )
+        return {"value": qc, "provenance": prov}
 
     # Millennium dispatch (8 problems) — check first so "yang_mills" etc. resolve before cluster strings.
     if key:
