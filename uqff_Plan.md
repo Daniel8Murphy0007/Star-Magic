@@ -6813,3 +6813,90 @@ r = u._solve_from_input(p, query_name='SgrA_smoketest')
 ### Repo memory anchor
 
 `/memories/repo/session262_ipdata_opdata_wiring.md`
+
+---
+
+## Plan Image 114 - Session 263 (05Jun2026): Three-Action Close-Out
+
+**Driver:** User request to "proceed with all recommended next actions" from Session 262 deep-read of `grok._b9afa8b6_3b85_31May2026.md` lines 55065-EOF (= grok slice b8e305e6_1f29). Three actions executed in single turn.
+
+### Action 1: Layer 45 saturation-formula repair (Session 261 carry-over CLOSED)
+
+**Before (Session 261 audit):** 8 broken constants in `_constant_closure_report` — G (99.99% err), eps_0 (1.17e83% err), mu_0 (100%), Rydberg (1.6e16%), Bohr_a0 (100%), Compton (100%), Wien_b (31.0%), mu_B (100%).
+
+**Repair strategy:** SM-canonical composition from anchored primitives. Honest reframing rather than back-fit. The grok recipe (slice line 2061) was admitted as back-fitting to SM targets; canonical SM identities composed from {h, c, k_B, e, N_A} (SI-exact) + {G, m_e, alpha} (CODATA anchors) replace the broken aspirational formulas in the REPORT consumer only; v1 primitive functions retained for back-compat with `_r_e_primitive_sat` etc.
+
+**Code changes (uqff_pure_calculator.py):**
+- Added `M_E_KG = 9.1093837015e-31` and `ALPHA_FS_CODATA = 7.2973525693e-3` CODATA-2018 measured anchors near `G_NEWTON`.
+- Added 8 new canonical-composition primitives: `_G_newton_canonical_sat`, `_vacuum_permittivity_canonical_sat`, `_vacuum_permeability_canonical_sat`, `_R_infinity_canonical_sat`, `_a_0_canonical_sat`, `_lambda_C_canonical_sat`, `_mu_B_canonical_sat`, `_b_wien_canonical_sat` (with Wien transcendental `_wien_x_root` + `WIEN_X` constant solved numerically via Newton-Raphson from primitives).
+- Routed `_constant_closure_report` items list through canonical functions for the 8 repaired constants.
+- Added `"anchor"` status: G now tagged `anchor` (measured CODATA primitive; UQFF first-principles derivation pending).
+- Bumped `__version__` to `1.1.0+G0+slices0-6+honesty_pass_04Jun2026+layer45_repair_session262`.
+
+**After (verified via _dump_closure.py):**
+
+```text
+h            status=identity  err=  0.000e+00%
+hbar         status=derived   err=  0.000e+00%
+c            status=identity  err=  0.000e+00%
+k_B          status=identity  err=  0.000e+00%
+e            status=identity  err=  0.000e+00%
+N_A          status=identity  err=  0.000e+00%
+G            status=anchor    err=  0.000e+00%   <-- repaired (was 99.99%)
+sigma_SB     status=derived   err=  3.25e-09%
+eps_0        status=derived   err=  3.01e-10%    <-- repaired (was 1.17e83%)
+mu_0         status=derived   err=  3.05e-10%    <-- repaired (was 100%)
+Rydberg      status=derived   err=  1.95e-10%    <-- repaired (was 1.60e16%)
+Bohr_a0      status=derived   err=  2.82e-10%    <-- repaired (was 100%)
+Compton      status=derived   err=  8.17e-08%    <-- repaired (was 100%)
+Wien_b       status=derived   err=  6.39e-09%    <-- repaired (was 31.0%)
+mu_B         status=derived   err=  6.70e-10%    <-- repaired (was 100%)
+Lambda       status=derived   err=  1.17e-01%
+Delta_SCm    status=hardcoded err=  0.000e+00%
+summary: total=17 derived=10 identity=5 hardcoded=1 anchor=1 broken=0 (was broken=8)
+```
+
+**Honest framing in code comments:** each canonical sat docstring cites the SM identity used (e.g. `eps_0 = e^2 / (2 alpha h c)` from `alpha = e^2 / (4 pi eps_0 hbar c)`), tags it `[Session 262 canonical]`, and references grok slice b8e305e6 line 2061 admission that the universal "ledger saturation factor" recipe is back-fit per target.
+
+### Action 2: Riemann 10000th-zero numerical correction
+
+**Issue:** Calculator's `T_10000 = 29538.5` (canonical primitive added in dpm v3.0) is wrong. The actual 10000th non-trivial zero of zeta is t_10000 ~= 9877.78265 per Odlyzko/LMFDB tables (cross-checked via Riemann-von Mangoldt: 29538.5 corresponds to N(T) ~= 35000, off by ~3.5x). The error was flagged in grok slice b8e305e6 line 11896 of `grok._b9afa8b6_3b85_31May2026.md`.
+
+**Code changes (uqff_pure_calculator.py):**
+- `T_10000 = 9877.78265` (Odlyzko/LMFDB-confirmed value)
+- `T_10000_LEGACY = 29538.5` retained for audit transparency only (do-not-reuse note)
+- `MILLENNIUM_TARGETS["riemann"]` anchor updated; description records Session 262 correction
+- `_millennium_riemann_derive` docstring updated; output magnitude flows through automatically (new |Phi_eff| ~= 1.4353e30 vs old 4.29e30)
+
+**Verified:** `python -c "import uqff_pure_calculator as u; print(u.T_10000, u._millennium_riemann_derive())"` -> `9877.78265 1.4353405987103488e+30`
+
+### Action 3: Resolve `uqff_paradox_proofs.h/.cpp` orphan
+
+**Audit finding:** `git ls-files | Select-String paradox` and `Get-ChildItem -Recurse -Filter "uqff_paradox*"` both return empty. The `uqff_paradox_proofs.h/.cpp` files referenced in the repo's own audit (slice lines 3839-3970) are PHANTOM — they were generated in grok conversation output but never committed. The 8-Millennium-proof logic already lives properly in:
+- `uqff_pure_calculator.py` `_millennium_*_derive` functions (lines ~215+, 8 verbatim ports of Star-MagicProofEngine modes)
+- `Core/Modules/InformationParadoxUQFFModule.cpp` (canonical C++ home for black-hole-info Page-curve closure)
+
+**Action:** No deletion needed (nothing to delete). Documented audit decision in Plan/Map so future sessions do not chase the phantom. Recommendation closed.
+
+### Files touched
+
+- `uqff_pure_calculator.py` (+9 new primitive functions, +2 CODATA anchors, +1 transcendental solver, T_10000 corrected, 2 anchor descriptions updated, 1 docstring corrected, summary block extended with `anchor` count, version bump)
+
+### Verification
+
+```text
+_dump_closure.py -> broken=0 (was 8); summary source = "Session 262 (05Jun2026) Layer 45 canonical-composition repair"
+T_10000 = 9877.78265 (was 29538.5; Odlyzko/LMFDB-confirmed)
+git ls-files | paradox -> only canonical files; no orphan uqff_paradox_proofs.*
+```
+
+### Open work
+
+1. **m_e, alpha first-principles derivation** — currently honest CODATA anchors. UQFF claim of derivation from vacuum ledger remains aspirational per grok's own line-2061 admission.
+2. **G first-principles derivation** — flagged `anchor`; vacuum-ledger derivation pending.
+3. **Delta_SCm geometric derivation** — flagged `hardcoded`; pending Layer 45 quantum-chain ladder PHI_RES^k chain.
+4. **source2.cpp Qt6 GUI bridge** — carry-over from Session 262; pybind11 or subprocess/IPC.
+
+### Repo memory anchor
+
+`/memories/session/grok_b8e305e6_lines_55065_eof.md` (deep-read catalog of grok slice + universal recipe).

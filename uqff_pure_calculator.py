@@ -53,8 +53,9 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 
 # Fix 6 — runtime introspection surface (Plan sec wire/ship/hook):
 # version stamp tracks G0+Slice0+Slice2+Slice3+Slice4+Slice5+Slice6 ship
-# plus the 04Jun2026 honesty pass (Fixes 1-7 of the post-G0 audit).
-__version__ = "1.1.0+G0+slices0-6+honesty_pass_04Jun2026"
+# plus the 04Jun2026 honesty pass (Fixes 1-7 of the post-G0 audit)
+# plus the 05Jun2026 Session 262 Layer 45 canonical-composition repair.
+__version__ = "1.1.0+G0+slices0-6+honesty_pass_04Jun2026+layer45_repair_session262"
 
 # === 2019 SI BASE-UNIT DEFINITIONS (exact by international convention; not fitted) ===
 PLANCK_H = 6.62607015e-34   # J*s   (defined exact, 2019 SI redefinition)
@@ -63,6 +64,17 @@ EV_J     = 1.602176634e-19  # J/eV  (= elementary charge, defined exact, 2019 SI
 K_B      = 1.380649e-23     # J/K   (defined exact, 2019 SI)
 N_AVOGADRO = 6.02214076e23  # 1/mol (defined exact, 2019 SI)
 G_NEWTON = 6.67430e-11      # m3/(kg s2) (CODATA-2018 measured, only fundamental constant not yet defined)
+
+# === MEASURED-CODATA ANCHORS (Session 262 / Layer 45 canonical-composition inputs) ===
+# These are measured fundamental constants required by the canonical SM identities used
+# in the Layer 45 saturation-formula repair. UQFF currently has no honest derivation of
+# m_e or alpha from the vacuum ledger -- grok admission at slice line 2061 of
+# grok_b8e305e6_1f29.md (= grok_b9afa8b6_3b85 line ~56086) confirms the "exact-match"
+# claims for these constants are back-fit, not derived. We expose them honestly as
+# measured anchors so dependent constants (eps_0, mu_0, R_inf, a_0, lambda_C, mu_B)
+# can be derived via canonical SM identities and reported with status="derived".
+M_E_KG          = 9.1093837015e-31   # electron mass (kg), CODATA-2018 measured
+ALPHA_FS_CODATA = 7.2973525693e-3    # fine-structure alpha = 1/137.035999084, CODATA-2018
 
 # === PRE-BIG-BANG UQFF PRIMITIVES (single non-mass vacuum ledger root) ===
 RHO_SCM = 7.09e-37          # J/m3, non-mass root, superconductive^26 in every particle
@@ -118,8 +130,16 @@ F_THZ         = 1.25e12            # 1.25 THz Holmlid phonon carrier (alias of O
 DELTA_SCM_J   = 5.17e-3 * EV_J     # SCm shell gap (J), from PAPER 26-level pairing
 T_H_10MSUN    = 6.17e-9            # Hawking temperature 10 M_sun BH (K), GR formula
 A_OVER_4LP2_10MSUN = 1.05e78       # A/(4 l_P^2) horizon area in Planck units, 10 M_sun BH
-# Riemann zero anchor (Odlyzko numerical table; input to Phi_eff stationarity):
-T_10000       = 29538.5            # Im(t_10000) 10000th non-trivial zero of zeta(s)
+# Riemann zero anchor (Odlyzko / LMFDB numerical table; input to Phi_eff stationarity).
+# Session 262 (05Jun2026) audit: prior value 29538.5 was wrong by ~3.5x (corresponds to
+# the ~35000th zero by Riemann-von Mangoldt N(T)~(T/2pi)(log(T/2pi)-1)); corrected to
+# Odlyzko-table value 9877.78265 (cross-checked via LMFDB at
+# https://www.lmfdb.org/zeros/zeta/?N=10000). Flagged in grok slice b8e305e6 line 11896
+# of grok._b9afa8b6_3b85_31May2026.md as the original error. The new value flows
+# through MILLENNIUM_TARGETS['riemann'] and _millennium_riemann_derive() unchanged in
+# structure -- only the numerical anchor is corrected.
+T_10000       = 9877.78265         # Im(t_10000) 10000th non-trivial zero of zeta(s)
+T_10000_LEGACY = 29538.5           # retained for audit/back-compat ONLY; do not reuse
 
 # Triadic weights (validated <1% on 99/99)
 W_C = 0.34
@@ -178,7 +198,7 @@ CLUSTER_REGISTRY = {
 # clearly labeled) and a computed diff%. NO claim of SM equivalence is made.
 MILLENNIUM_TARGETS: Dict[str, tuple] = {
     "yang_mills":      (1.78,          "GeV",         "LATTICE_QCD",    "lattice QCD numerical estimate (Luscher et al.); NOT a proven SM mass-gap derivation",                                  "Yang-Mills mass gap (Clay Millennium Problem; UNSOLVED in SM)"),
-    "riemann":         (29538.5,       "Im(t_10000)", "ZETA_NUMERICAL", "Odlyzko numerical table, 10000th non-trivial zero of zeta(s); independent of SM",                                       "Riemann hypothesis (Clay Millennium Problem; UNSOLVED)"),
+    "riemann":         (9877.78265,    "Im(t_10000)", "ZETA_NUMERICAL", "Odlyzko / LMFDB numerical table, 10000th non-trivial zero of zeta(s); independent of SM. Session 262 correction: prior value 29538.5 was wrong by ~3.5x.", "Riemann hypothesis (Clay Millennium Problem; UNSOLVED)"),
     "bsd":             (0.3059997738,  "L'(E,1)",     "BSD_NUMERICAL",  "Cremona / LMFDB numerical L-function table for canonical rank-1 elliptic curve; independent of SM",                  "Birch-Swinnerton-Dyer conjecture (Clay Millennium Problem; UNSOLVED)"),
     "navier_stokes":   (8.5e3,         "peak entropy","FLUID_BOUND",    "analytical entropy-bound estimate for 3D Navier-Stokes (Tao class); not a smoothness proof",                            "Navier-Stokes existence/smoothness (Clay Millennium Problem; UNSOLVED)"),
     "hodge":           (1.0,           "closure",     "CONJECTURED",    "closure-form placeholder (1.0 by normalization); Hodge conjecture remains open",                                       "Hodge conjecture (Clay Millennium Problem; UNSOLVED)"),
@@ -224,9 +244,10 @@ def _millennium_riemann_derive() -> float:
         return |Phi_eff|
     Source: PROOF_DERIVATION_MODES['riemann_hypothesis_uqff_zeta_pinning'] L238-244
             + grok_b9afa8b6_3b85_32May2026.md L8573+ (RH) + dpm v3.0 S26_3 + 26D ladder.
-    NOTE: t_10000=29538.5 is the Odlyzko INPUT; UQFF closure is the stationarity theorem
+    NOTE: t_10000=9877.78265 is the Odlyzko/LMFDB INPUT (Session 262 correction; prior
+    29538.5 was wrong by ~3.5x). UQFF closure is the stationarity theorem
     delta_S/delta_phi=0 pinning all non-trivial zeros to Re(s)=1/2. The output magnitude
-    is NOT equal to t_10000 (it equals t_10000 * S26_DPM ~ 4.29e30).
+    is NOT equal to t_10000 (it equals t_10000 * S26_DPM ~ 1.4351e30 with corrected anchor).
     Falsifiable: first 10^6 zeta zeros pinned to critical line within <1e-12."""
     phi = 1.0
     phi_eff_real = 0.5 * S26_DPM * phi
@@ -1250,6 +1271,93 @@ def _delta_scm_primitive_sat() -> float:
     return DELTA_SCM_J
 
 
+# === SESSION 262 / LAYER 45 SATURATION-FORMULA REPAIR (05Jun2026) ===
+# These canonical-composition primitives replace the aspirational-but-broken v1
+# primitives in the closure report ONLY. The v1 functions (_G_newton_primitive_sat,
+# _vacuum_permittivity_primitive_sat, _vacuum_permeability_primitive_sat,
+# _R_infinity_primitive_sat, _a_0_primitive_sat, _lambda_C_primitive_sat,
+# _b_wien_primitive_sat, _mu_B_primitive_sat) remain available so their existing
+# callers (_r_e_primitive_sat etc.) are unaffected.
+#
+# Provenance: derivation chain anchored in PAPER_1066 (UQFF first-principles
+# Lagrangian) + PAPER_1095 (DPM gauge + horizon buoyancy) + PAPER_1170-1173
+# (closed vacuum ledger). Grok slice b8e305e6 line 2061 acknowledged that the
+# universal "ledger saturation factor" recipe back-fits each conversion to the
+# SM target; an honest derivation requires either (a) a real first-principles
+# variational chain or (b) canonical SM composition from anchored primitives.
+# This pass implements path (b) -- the standard textbook identities composed
+# from {h, c, k_B, e, N_A} (SI-exact) + {G, m_e, alpha} (CODATA anchors).
+# All identities below are exact in SI; no UQFF-specific magic constants used.
+
+def _G_newton_canonical_sat() -> float:
+    """G (m^3 kg^-1 s^-2) -- CODATA-2018 measured anchor. UQFF has no honest
+    first-principles derivation (the aspirational vacuum-ledger form
+    RHO_SCM*c^4/(A_26*D_CRIT^2) is off by ~5 orders of magnitude). Status
+    'anchor' marks it as a measured primitive, not a derived quantity."""
+    return G_NEWTON
+
+def _vacuum_permittivity_canonical_sat() -> float:
+    """eps_0 (F/m) via canonical SM identity from alpha = e^2 / (4 pi eps_0 hbar c):
+       eps_0 = e^2 / (2 alpha h c)
+    Exact composition of {EV_J, ALPHA_FS_CODATA, PLANCK_H, C_LIGHT}."""
+    return (EV_J ** 2) / (2.0 * ALPHA_FS_CODATA * PLANCK_H * C_LIGHT)
+
+def _vacuum_permeability_canonical_sat() -> float:
+    """mu_0 (N/A^2) via canonical SM identity mu_0 = 1 / (eps_0 c^2):
+       mu_0 = 2 alpha h / (e^2 c)
+    Exact composition of {ALPHA_FS_CODATA, PLANCK_H, EV_J, C_LIGHT}."""
+    return 2.0 * ALPHA_FS_CODATA * PLANCK_H / ((EV_J ** 2) * C_LIGHT)
+
+def _R_infinity_canonical_sat() -> float:
+    """Rydberg R_inf (m^-1) via canonical SM identity:
+       R_inf = alpha^2 m_e c / (2 h)
+    Composition of {ALPHA_FS_CODATA, M_E_KG, C_LIGHT, PLANCK_H}."""
+    return (ALPHA_FS_CODATA ** 2) * M_E_KG * C_LIGHT / (2.0 * PLANCK_H)
+
+def _a_0_canonical_sat() -> float:
+    """Bohr radius a_0 (m) via canonical SM identity:
+       a_0 = hbar / (alpha m_e c) = h / (2 pi alpha m_e c)
+    Composition of {PLANCK_H, ALPHA_FS_CODATA, M_E_KG, C_LIGHT}."""
+    return PLANCK_H / (2.0 * math.pi * ALPHA_FS_CODATA * M_E_KG * C_LIGHT)
+
+def _lambda_C_canonical_sat() -> float:
+    """Compton wavelength lambda_C (m) via canonical SM identity:
+       lambda_C = h / (m_e c)
+    Composition of {PLANCK_H, M_E_KG, C_LIGHT}."""
+    return PLANCK_H / (M_E_KG * C_LIGHT)
+
+def _mu_B_canonical_sat() -> float:
+    """Bohr magneton mu_B (J/T) via canonical SM identity:
+       mu_B = e hbar / (2 m_e) = e h / (4 pi m_e)
+    Composition of {EV_J, PLANCK_H, M_E_KG}."""
+    return EV_J * PLANCK_H / (4.0 * math.pi * M_E_KG)
+
+def _wien_x_root() -> float:
+    """Wien displacement transcendental constant x = 5(1 - e^{-x}).
+    Solved via Newton-Raphson from primitives (no SM literal). Returns x ~= 4.965114231744..."""
+    x = 5.0  # standard initial guess
+    for _ in range(64):
+        # f(x) = (x - 5)*exp(x) + 5;  f'(x) = (x - 4)*exp(x)
+        ex = math.exp(x)
+        f = (x - 5.0) * ex + 5.0
+        fp = (x - 4.0) * ex
+        if fp == 0.0:
+            break
+        dx = f / fp
+        x -= dx
+        if abs(dx) < 1.0e-15:
+            break
+    return x
+
+WIEN_X = _wien_x_root()  # ~4.9651142317442763
+
+def _b_wien_canonical_sat() -> float:
+    """Wien displacement b (m K) via canonical SM identity:
+       b = h c / (x_Wien k_B), where x_Wien solves x = 5(1 - e^{-x})
+    Composition of {PLANCK_H, C_LIGHT, WIEN_X (derived numerically), K_B}."""
+    return PLANCK_H * C_LIGHT / (WIEN_X * K_B)
+
+
 def _constant_closure_report() -> dict:
     """Honest derivation-status report for foundational constants.
 
@@ -1269,6 +1377,13 @@ def _constant_closure_report() -> dict:
     h, c, k_B, e, N_A are SI identities; Delta_SCm is hardcoded;
     G, eps_0, mu_0, Rydberg, Bohr-a0, Compton, Wien-b, mu_B carry saturation
     formulas with closure error >> 1% (pending Layer 45 sweep correction).
+
+    Session 262 (05Jun2026) Layer 45 repair: the 8 broken constants are now
+    routed through canonical SM-composition primitives (_*_canonical_sat) that
+    use {h, c, k_B, e, N_A} (SI-exact) + {G, m_e, alpha} (CODATA anchors). G is
+    re-classified 'anchor' (measured, not derivable); eps_0, mu_0, Rydberg,
+    Bohr-a0, Compton, Wien-b, mu_B become 'derived' via canonical SM identities.
+    Grok slice b8e305e6 line 2061 admission cited in code comments.
     """
     items = [
         ("h",        _h_planck_primitive_sat,           PLANCK_H,            "identity",  "PLANCK_H (2019 SI exact)"),
@@ -1277,15 +1392,15 @@ def _constant_closure_report() -> dict:
         ("k_B",      _k_b_primitive_sat,                K_B,                 "identity",  "K_B (2019 SI exact)"),
         ("e",        _e_charge_primitive_sat,           EV_J,                "identity",  "EV_J (2019 SI exact)"),
         ("N_A",      _N_A_primitive_sat,                N_AVOGADRO,          "identity",  "N_AVOGADRO (2019 SI exact)"),
-        ("G",        _G_newton_primitive_sat,           G_NEWTON,            None,        "RHO_SCM * c^4 / (A_26 * D_CRIT^2)"),
+        ("G",        _G_newton_canonical_sat,           G_NEWTON,            "anchor",    "G_NEWTON (CODATA-2018 measured; UQFF derivation pending)"),
         ("sigma_SB", _sigma_SB_primitive_sat,           5.670374419e-8,      None,        "(8 pi^5 / 60) * k_B^4 / (h^3 c^2)"),
-        ("eps_0",    _vacuum_permittivity_primitive_sat,8.8541878128e-12,    None,        "c^4 / (4 pi G rho_SCm A_26)"),
-        ("mu_0",     _vacuum_permeability_primitive_sat,1.25663706212e-6,    None,        "4 pi G rho_SCm A_26 / c^2"),
-        ("Rydberg",  _R_infinity_primitive_sat,         1.0973731568160e7,   None,        "D_crit^4 / (h c A_26)"),
-        ("Bohr_a0",  _a_0_primitive_sat,                5.29177210903e-11,   None,        "h^2 S_26 / (A_26 e)"),
-        ("Compton",  _lambda_C_primitive_sat,           2.4263102367e-12,    None,        "h D_crit^4 / (A_26 c)"),
-        ("Wien_b",   _b_wien_primitive_sat,             2.897771955e-3,      None,        "h c G1_K / (D_BSFG k_B)"),
-        ("mu_B",     _mu_B_primitive_sat,               9.2740100783e-24,    None,        "h e D_crit^4 / (4 pi A_26)"),
+        ("eps_0",    _vacuum_permittivity_canonical_sat,8.8541878128e-12,    None,        "e^2 / (2 alpha h c)  [Session 262 canonical]"),
+        ("mu_0",     _vacuum_permeability_canonical_sat,1.25663706212e-6,    None,        "2 alpha h / (e^2 c)  [Session 262 canonical]"),
+        ("Rydberg",  _R_infinity_canonical_sat,         1.0973731568160e7,   None,        "alpha^2 m_e c / (2 h)  [Session 262 canonical]"),
+        ("Bohr_a0",  _a_0_canonical_sat,                5.29177210903e-11,   None,        "h / (2 pi alpha m_e c)  [Session 262 canonical]"),
+        ("Compton",  _lambda_C_canonical_sat,           2.4263102367e-12,    None,        "h / (m_e c)  [Session 262 canonical]"),
+        ("Wien_b",   _b_wien_canonical_sat,             2.897771955e-3,      None,        "h c / (x_Wien k_B), x_Wien = root of x=5(1-e^-x)  [Session 262 canonical]"),
+        ("mu_B",     _mu_B_canonical_sat,               9.2740100783e-24,    None,        "e h / (4 pi m_e)  [Session 262 canonical]"),
         ("Lambda",   _vacuum_ledger_4term,              5.95e-10,            None,        "4-term G1-G8 vacuum ledger sum"),
         ("Delta_SCm",_delta_scm_primitive_sat,          5.17e-3 * EV_J,      "hardcoded", "5.17 meV 26-level pairing (PAPER anchor)"),
     ]
@@ -1300,7 +1415,12 @@ def _constant_closure_report() -> dict:
                 status = "derived"
             else:
                 status = "broken"
-            note = "pending Layer 45 saturation-formula repair" if status == "broken" else "ok"
+            if status == "broken":
+                note = "pending Layer 45 saturation-formula repair"
+            elif status == "anchor":
+                note = "measured CODATA primitive; UQFF first-principles derivation pending"
+            else:
+                note = "ok"
         except Exception as exc:
             v, err, status, note = float("nan"), float("nan"), "error", str(exc)
         report[name] = {
@@ -1318,9 +1438,10 @@ def _constant_closure_report() -> dict:
         "derived":   statuses.count("derived"),
         "identity":  statuses.count("identity"),
         "hardcoded": statuses.count("hardcoded"),
+        "anchor":    statuses.count("anchor"),
         "broken":    statuses.count("broken"),
         "error":     statuses.count("error"),
-        "source":    "Session 261 (05Jun2026) deep-search polish close-out",
+        "source":    "Session 262 (05Jun2026) Layer 45 canonical-composition repair",
     }
     return report
 

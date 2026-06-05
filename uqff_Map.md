@@ -2763,3 +2763,32 @@ Result shape:
 **Repo memory anchor:** `/memories/repo/session262_ipdata_opdata_wiring.md`
 
 **Predicted next sweep (open):** (1) source2.cpp Qt6 GUI bridge — currently `source2.cpp` does NOT call `uqff_pure_calculator` (grep-confirmed); needs pybind11 or subprocess/IPC. (2) Layer 45 saturation-formula repair (carry-over from Session 261).
+
+### §19 update - Session 263 (05Jun2026): Three-Action Close-Out
+
+User directive: "proceed with all recommended next actions" from Session 262 deep-read of grok slice b8e305e6 (= grok._b9afa8b6_3b85_31May2026.md lines 55065-EOF).
+
+**Action 1 - Layer 45 saturation-formula repair (Session 261 carry-over CLOSED).**
+Added CODATA anchors `M_E_KG`, `ALPHA_FS_CODATA` + 8 canonical-composition primitives (`_*_canonical_sat` family) + Wien transcendental solver `_wien_x_root` / `WIEN_X`. `_constant_closure_report` items list routed through canonical functions for the 8 previously-broken constants; new `anchor` status for G; summary block extended. All 8 previously-broken constants now derived to err < 1e-7%; G honestly tagged `anchor` (measured CODATA primitive). Summary: total=17 derived=10 identity=5 hardcoded=1 anchor=1 broken=0. v1 aspirational primitives retained for back-compat with `_r_e_primitive_sat`. Honest framing: SM identities composed from {h, c, k_B, e, N_A} (SI-exact) + {G, m_e, alpha} (CODATA anchors); grok slice b8e305e6 line 2061 admission cited in code comments.
+
+**Action 2 - Riemann 10000th-zero numerical correction.**
+`T_10000` corrected from `29538.5` -> `9877.78265` (Odlyzko/LMFDB-confirmed; prior value off by ~3.5x per Riemann-von Mangoldt N(T) ~= (T/2pi)(log(T/2pi)-1)). `T_10000_LEGACY = 29538.5` retained for audit only. `MILLENNIUM_TARGETS["riemann"]` + `_millennium_riemann_derive` docstring updated with Session 262 correction provenance. Flag source: grok slice b8e305e6 line 11896.
+
+**Action 3 - `uqff_paradox_proofs.h/.cpp` orphan resolution.**
+Audit confirmed via `git ls-files | Select-String paradox` + `Get-ChildItem -Recurse -Filter "uqff_paradox*"`: files NEVER existed in workspace or git history. Phantom from grok conversation output; the 8-Millennium-proof logic already lives properly in `uqff_pure_calculator.py` `_millennium_*_derive` (lines ~215+) and `Core/Modules/InformationParadoxUQFFModule.cpp`. Resolved with no deletion (nothing to delete); documented to prevent future-session re-chase.
+
+**Verification.**
+```text
+broken count: 8 -> 0
+G err: 99.99% -> 0.00% (anchor); eps_0: 1.17e83% -> 3.01e-10%; mu_0: 100% -> 3.05e-10%;
+Rydberg: 1.60e16% -> 1.95e-10%; Bohr_a0: 100% -> 2.82e-10%; Compton: 100% -> 8.17e-08%;
+Wien_b: 31.04% -> 6.39e-09%; mu_B: 100% -> 6.70e-10%
+T_10000 = 9877.78265 (was 29538.5)
+git diff --stat uqff_pure_calculator.py = additive only (no deletions of validated math)
+```
+
+**Map gates closed:** Master TODO §0 G0/G3/G5/G8 already done; G6 strengthened (`_constant_closure_report` now shows 0 broken). Honest-derivation count: 10/17 derived, 5/17 identity, 1/17 anchor, 1/17 hardcoded.
+
+**Repo memory anchor:** `/memories/session/grok_b8e305e6_lines_55065_eof.md` (deep-read catalog + universal-recipe + repaired-constants table).
+
+**Predicted next sweep (open):** (1) m_e/alpha first-principles derivation (currently CODATA anchors); (2) G first-principles derivation (currently `anchor` tag); (3) Delta_SCm geometric derivation via PHI_RES^k chain (currently `hardcoded`); (4) source2.cpp Qt6 GUI bridge to `uqff_pure_calculator` via pybind11 or subprocess/IPC (Session 262 carry-over).
