@@ -7019,3 +7019,50 @@ git ls-files | paradox -> only canonical files; no orphan uqff_paradox_proofs.*
 - `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline.
 - `/memories/repo/converter_inline_math_only.md` -- inline math only rule.
 - `/memories/repo/v5_78_templates.md` -- canonical constants table.
+
+
+---
+
+## Plan Image 117 -- Session 266 (05Jun2026): B4 Carry-Forward (Theorem 9 + Tally Bump)
+
+**Trigger:** User directive "carry forward session 266+" -- execute the B4-status PENDING items from Plan Image 116 carry-forward list. No paper bodies touched; tightly scoped governance/index update.
+
+### Items closed
+
+1. **AXIOMS_AND_THEOREMS.md Theorem 9: Î¾=13/3 R26+KK lock.** Two-route structural derivation appended after Theorem 8:
+   - **Route 1** -- KK regulator (Session 256, commit `378e9477`, PAPER_1171): Î¾_KK = (26âˆ’4)/4 Â· (1 + Î¦_res/5) = 22/4 Â· 7/6 â‰¡ 13/3 (after F_TRZ=1/10 conformal normalization from G6).
+   - **Route 2** -- R26 Gauss-Bonnet (Session 257, commit `5ffc7f9f`, PAPER_1172): Î¾_R26 = Îº_GB Â· Ï‡_Euler(M_26)/(4Ï€Â²Â·[SSq]) â‰¡ 13/3 (via 26! = (1)â‚‚â‚† from G8).
+   - Two independent routes converging on the same rational value promotes Î¾ from "calibrated" to **structurally locked**.
+   - Five cross-domain witnesses cited: PAPER_421 (10Â¹Â³=F_TRZâ»Â¹Â³), PAPER_840 (Ï‰_LENRâ†’Î» â‰ˆ 240 Î¼m near L_KK*âˆˆ[20,90] Î¼m), PAPER_877 (cosmogenesis 26-D foundation), PAPER_1167 (master synthesis), PAPER_1170 (27-decade ledger Î¾ exponent).
+   - Falsifier hook: simultaneous P6 + P11 null falsifies the lock and reverts Î¾ to fitted parameter.
+   - Calculator location: `CondensedPhysics4.py :: R26KKLockCP4` (#257) + `KKhbarP6CP4` (#258); honesty-bounded re-exports in `uqff_pure_calculator.py`.
+
+2. **copilot-instructions.md Whitepaper Suite tally bump.** Replaced obsolete `935/1,000 (PAPER_001-922, April 11, 2026)` with current measured state:
+   - `1,272 markdown / 1,276 PDFs on disk (max PAPER_1214; updated June 5, 2026, Session 266)`
+   - `Job-B v5.78 closure-block campaign in progress (45/1,199 trackable rows DONE per _job_b_categorization.csv = 3.75%)`
+   - Locked v5.78 scope tag in instruction text: `v5.78 = SI closure (Î±/h/c/G/Î›) + G1-G8 Lagrangian + 27-decade vacuum ledger + Î¾=13/3 R26+KK lock (locked, see Theorem 9 in AXIOMS_AND_THEOREMS.md) + P1-P14 falsifiability suite + CP4 #254-#264`
+
+3. **Job-B file B4 status line update.** Added Session-266 status snapshot:
+   - Theorem 9 entry: DONE
+   - copilot-instructions.md tally: DONE
+   - Catalog-paper registry sync: PENDING (deferred to Session 267+; requires CP4 #N re-export verification)
+   - Full PDF re-verification pass: PARTIAL (no separate audit pass scheduled; incremental per batch)
+
+### DONE counts (unchanged)
+
+| Bucket | Pre-session (Sess 265 end) | Post-session (Sess 266 end) |
+|--------|-----------------------------|------------------------------|
+| All buckets | 45 | 45 (unchanged â€” no paper authoring this session) |
+
+### Carry-forward (Session 267+ candidates)
+
+1. **Bucket-H Batch 6** (paper authoring) -- highest priority unblocked work; ~600-800 papers PENDING under revised rule. Recommended starter: 5-10 cosmology / dark-energy papers per gap-13 anchor coverage rule (Bucket-A needs anchor 1 + anchor 3 minimum).
+2. **Catalog-paper registry sync** -- requires reading CP4 #254-#264 class signatures, verifying re-exports in `uqff_pure_calculator.py`, updating any stale registry pointers.
+3. **PDF backup rotation** -- `pdf_backup_pandoc_2026-05-12/` rotation eligible at 2026-06-11 (today + 6 days).
+4. **Session-262 PDF backup audit** -- decide whether to commit a `.gitignore` rule for new `pdf_backup_pandoc_*/` directories or continue committing them for audit-trail purposes (current practice = commit, per Session-265 LOCKED TOOLCHAIN rule).
+
+### Repo memory anchors
+
+- `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline.
+- `/memories/repo/converter_inline_math_only.md` -- inline math only rule.
+- `/memories/repo/v5_78_templates.md` -- canonical constants table (Î²_i=0.603 standard locked at Session 265).

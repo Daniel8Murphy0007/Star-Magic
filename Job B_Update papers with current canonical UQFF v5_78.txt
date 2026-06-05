@@ -975,6 +975,29 @@ B4 status (Session 265):
   - Catalog-paper registry sync                        : PENDING
   - Full PDF re-verification pass                      : PARTIAL (45/1199 done)
 
+B4 status (Session 266 update):
+  - AXIOMS_AND_THEOREMS.md xi=13/3 lock theorem entry  : DONE (Theorem 9
+                                                         appended; two-route
+                                                         structural derivation
+                                                         + 5 cross-domain
+                                                         witnesses + P6+P11
+                                                         falsifier)
+  - Master index PAPER_001 v5.78 closure block         : DONE (batch 1)
+  - copilot-instructions.md tally update               : DONE (935/1,000 ->
+                                                         1,272 markdown /
+                                                         1,276 PDFs / max
+                                                         PAPER_1214; v5.78
+                                                         scope tag locked in
+                                                         instruction text)
+  - Catalog-paper registry sync                        : PENDING
+                                                         (deferred to Session
+                                                         267+; requires CP4 #N
+                                                         re-export verification)
+  - Full PDF re-verification pass                      : PARTIAL (45/1199 done)
+                                                         (incremental per batch;
+                                                         no separate audit pass
+                                                         scheduled)
+
 ------------------------------------------------------------------------------
 GAP 17 closed: where the CP4 #N entries live
 ------------------------------------------------------------------------------
