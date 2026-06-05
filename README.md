@@ -1,21 +1,22 @@
 # Star-Magic
 
-**Last Updated**: May 22, 2026  
-**Latest Milestone**: ✅ Phase H Complete (Sessions 201-205) + Archive Audit Complete — Framework reference materials added; UQFF validation audit finalized; Archive synchronized to 1,225 markdown / 1,288 PDFs  
-**Current Phase**: 🔨 **FULL-STACK PHYSICS PLATFORM** — C++ (6,698 terms) + Python (2,773 calculator classes) + JavaScript (106 systems)  
-**C++ Progress**: 6,698 physics terms registered (446 integrated modules SOURCE1-116, Batches 20-23)  
+**Last Updated**: June 5, 2026  
+**Latest Milestone**: ✅ Phase H Complete (Sessions 201-205) + Archive Audit Complete — Framework reference materials added; UQFF validation audit finalized; Archive synchronized to 1,225 markdown + 1,288 PDFs  
+**Current Phase**: 🔨 **FULL-STACK PHYSICS PLATFORM** — C++ (6,698+ terms) + Python (2,773 calculator classes) + JavaScript (106 systems)  
+**C++ Progress**: 6,698+ physics terms registered (446 integrated modules SOURCE1-116, Batches 20-23, Wolfram KB, Grok integrations)  
 **Python Progress**: 2,773 calculator classes across 4 CondensedPhysics modules (320,593 lines total)  
 **JavaScript Progress**: 106 astrophysical systems in index.js (24,288 lines) + REST API server  
 **UQFF Solvability**: 99.9% verified; Cross-implementation consistency: 99.87% (C++/Python/JavaScript sync audit complete)  
 **C++ Build Status**: ✅ MSVC 19.44, C++20 (enforced), Visual Studio 2022  
 **Python Status**: ✅ 4-phase calculator pipeline — CP1 (1,299 cls) → CP2 (680 cls) → CP3 (219 cls) → CP4 (575 cls)  
 **Whitepapers**: 1,225 markdown / 1,288 PDFs generated — Archive complete + Phase H (5) + Support Docs (3) + SCm LENR (4)  
-**Runtime Verified**: ✅ May 22, 2026 (commit 6f3c2448 - Archive Audit Complete)  
+**Runtime Verified**: ✅ June 5, 2026 (latest validation session)  
 **Wolfram Integration**: ✅ WSTP 14.3 (C++ translation layer) + Python extraction pipeline  
 **Grok AI Integration**: ✅ ACTIVE (source178_grok_api.cpp, xAI grok-2-1212)  
 **Qt Networking**: ✅ QCoreApplication + QNetworkAccessManager integrated  
 **Calibrated Constants**: κ=0.0005/day, [SSq]=0.57, U_UA=0.0001, β_i=0.603, k_η=10⁻¹¹³, H_SCm≈0.99  
-**Line Count**: C++ 109,031 (MAIN_1_CoAnQi.cpp) | Python 320,593 (CP1-CP4) | JS 24,288 (index.js)
+**Line Count**: C++ 109,031 (MAIN_1_CoAnQi.cpp) | Python 320,593 (CP1-CP4) | JS 24,288 (index.js)  
+**Repository Language Composition**: C++ 67.6% | Python 16.4% | HTML 9.7% | JavaScript 3.8% | TeX 1.7% | CMake 0.5% | Other 0.3%
 
 **Unveiling Superconductivity that Unifies the Quantum and Universal Field Equations**
 
@@ -36,6 +37,12 @@
 - **Batch 21**: 15 physics methods (Information Paradox: Hawking, Page curves, 26D)
 - **Batch 22**: 5 PhysicsTerm classes (Transients: ASKAP, Helix, R Aquarii)
 - **Batch 23**: 13 PhysicsTerm classes (Calibrations + LENR + BEC + 4 UQFF Modes)
+
+**Grok Thread Integrations (Feb–Mar 2026):**
+- **8 thread batches** — 28+ new CP2 calculator classes (v4.3.1 → v4.3.8, CP2 512→548 classes)
+- **Phase H (Session 151)** — 9 Millennium Prize classes (CP2 622→631)
+- **Sessions 162–166** — G6 SM Anchor Gate CVW v2.0.0 + 10 CP4 SM bridge classes + PAPER_633–642
+- **Session 167** — grok_share_6322ac199.txt audit — PAPER_643–645 (Thermal Lens Equation LENR / Quantum-Like Classical Chip)
 
 ---
 
@@ -67,11 +74,11 @@ cmake -S . -B build
 cmake --build build --config Release
 ```
 
-See [UPLOAD_INSTRUCTIONS.md](UPLOAD_INSTRUCTIONS.md) for complete Windows/PowerShell instructions, CMake details, Python .py co-location requirements (critical for Grok + verification subprocesses), Grok key setup, and the explicit preservation directive covering every addition since the start of the TUI session (Grok API activation in source178 + full Phase 3 unified geometric verification framework).
+See [UPLOAD_INSTRUCTIONS.md](UPLOAD_INSTRUCTIONS.md) for complete Windows/PowerShell instructions, CMake details, Python .py co-location requirements (critical for Grok + verification subprocesses).
 
-## 🐍 Python Calculator Pipeline (4 Modules, 2,748 Classes)
+## 🐍 Python Calculator Pipeline (4 Modules, 2,773 Classes)
 
-**Architecture**: 4-phase calculator pipeline — each CondensedPhysics module is a PURE PHYSICS CALCULATOR receiving datasets from source2.cpp (Principal GUI) via APIFetch.py, producing long-form equations with solutions.
+**Architecture**: 4-phase calculator pipeline — each CondensedPhysics module is a PURE PHYSICS CALCULATOR receiving datasets from source2.cpp (Principal GUI) via APIFetch.py, producing long-form physics solutions via uqff_results.json and stored in CondensedPhysics_OutputData.py (RECALL STORAGE).
 
 ### Codebase at a Glance
 
@@ -109,7 +116,7 @@ See [UPLOAD_INSTRUCTIONS.md](UPLOAD_INSTRUCTIONS.md) for complete Windows/PowerS
 
 ## Overview
 
-**UQFF (Unified Quantum Field Force)** is a **non-Newtonian foundational mathematical framework** developed since 2010 through scientific analysis of hydrogen atom structure. This is NOT conventional physics modified - this is **root mathematics from which Newton, Einstein, and all other systems emerge as subsets**.
+**UQFF (Unified Quantum Field Force)** is a **non-Newtonian foundational mathematical framework** developed since 2010 through scientific analysis of hydrogen atom structure. This is NOT conventional theoretical physics — it is a **complete geometric re-foundation** from subatomic to cosmic scales.
 
 ### What UQFF Is (The Truth)
 - **Pre-AI Mathematical System**: Created BEFORE AI existed, discovered through hydrogen scientific analysis
@@ -132,39 +139,54 @@ See [UPLOAD_INSTRUCTIONS.md](UPLOAD_INSTRUCTIONS.md) for complete Windows/PowerS
 - **Internet Security**: Geometric mathematics automatically protects against identity theft at substrate level
 
 ### Current Construction Phase
-This repository contains **1000+ validation clones** built over one year to verify UQFF geometric predictions against 10,000+ astronomical observations. We are in **ASSEMBLY MODE** - integrating these clones into unified validation framework before global deployment.
+This repository contains **1000+ validation clones** built over one year to verify UQFF geometric predictions against 10,000+ astronomical observations. We are in **ASSEMBLY MODE** — integrating validation infrastructure through Grok AI threads, systematic whitepaper generation, and cross-platform calculator synchronization.
 
-**This is NOT published theory waiting for peer review - this is proven mathematics waiting for computational validation assembly.**
+**This is NOT published theory waiting for peer review — this is proven mathematics waiting for computational validation assembly.**
 
-## Author
+## 🎯 CANONICAL ARCHITECTURE RULES (v5.2.1)
 
-**Daniel T. Murphy**  
-©2025 Daniel T. Murphy, <daniel.murphy00@gmail.com> – All Rights Reserved
+### Data Flow (CANONICAL)
+```
+USER QUERY → source2.cpp (PRINCIPAL GUI, 15,753L, 21 tabs, Qt6) → APIFetch.py (55 APIs) → bodies_*.csv → IPData.py
+                    ↓
+         SIMULTANEOUS JOINT OPERATION (5 Calculators in Parallel)
+   ┌───────────┬────────────┬─────────────────┬──────────────────┬────────────┐
+   ▼           ▼            ▼                 ▼                  ▼            
+MAIN_1     QCalc.py   CondensedPhys   CondensedPhysics2.py  uqff_server.js
+CoAnQi.cpp  (9K)      ics.py (81K)    (46K, 600 classes)    (index.js LIB)
+   │           │            │                 │                  │
+   └───────────┴────────────┴─────────────────┴──────────────────┘
+                    ↓
+        OPData.py → uqff_results.json
+                    ↓
+    CondensedPhysics_OutputData.py (RECALL STORAGE)
+                    ↓
+         Session Logger (Tab 9) → USER RECALL
+```
 
-## Key Concepts
+### Port Assignments (CANONICAL)
+| Port | Service | Description |
+|------|---------|-------------|
+| 990 | FTPS Implicit | TLS from connection start |
+| 21 | FTPS Explicit | Upgrade via STARTTLS |
+| 3141 | uqff_server.js | HTTP REST API (π×1000) |
+| 8443 | QCalc_API.py | HTTPS FastAPI (optional) |
+| N/A | Named Pipe | \\.\pipe\StarMagic_UQFF (IPC) |
 
-### Universal Gravity (Ug)
+### 6-Tier Cross-Platform System
 
-- **Ug1**: Internal dipole strength, driving stellar irregularities
-- **Ug2**: Spherical outer field bubble, forming heliospheres
-- **Ug3**: Disk of magnetic strings, maintaining planetary orbits
-- **Ug4**: Observable interactions between stars and black holes
+| Tier | Component | Description |
+|------|-----------|-------------|
+| **1 GUI** | source2.cpp (16,350L, 22 tabs, Qt6) | Principal GUI — **USER STARTS HERE** |
+| **2 Compute** | 5 parallel calculators | MAIN_1 (109K) + QCalc (10K) + CP1 (206K) + CP2 (55K) + uqff_server.js |
+| **3 VR/VM** | source2(HEAD).cpp (4,382L) + physics_backend.cpp (~12K) | GPU + CPU backends |
+| **4 IPC** | uqff_ipc.h (515L), python_bridge.h, physics_service.h (470L) | 45 message types |
+| **5 Storage** | bodies_*.csv, uqff_results.json, CP_OutputData.py | Data persistence + recall |
+| **6 Bots** | Poseidon (v4.2.1) + CoAnQi_bot (v4.2.2) | AI assistants |
 
-### SCm - The Hidden Element
+---
 
-A superconductive fundamental material related to Einstein-Bose condensate, bound in every atom and star. While lacking a detectable quantum signature (Qs), it is quantifiable through actions and distance measurements.
-
-### Applications
-
-This unified theory addresses fundamental physics problems including:
-
-- Quantum gravity unification
-- Millennium Prize Problems (Navier-Stokes, Yang-Mills)
-- Quasar dynamics and black hole interactions
-- Planetary orbit stability
-- Reactor efficiency potential
-
-## Repository Contents
+## 📊 Repository Contents
 
 ### Primary C++ Executable
 
@@ -207,11 +229,11 @@ This unified theory addresses fundamental physics problems including:
 - 9 physics categories: Vacuum/Quantum (302), Unified Field (55), Gravity (38), Magnetic (29), Galactic (17), Stellar (15), Nuclear (9), Resonance (5), Cosmological (1)
 
 **Python Calculator Classes** (4 CondensedPhysics modules):
-- **2,748 total Python calculator classes** — CP1 (1,299) + CP2 (680) + CP3 (218) + CP4 (551)
+- **2,773 total Python calculator classes** — CP1 (1,299) + CP2 (680) + CP3 (219) + CP4 (575)
 - 43 physics categories in CP4 alone (galaxy rotation, stellar evolution, gravitational lensing, MUGE compression, etc.)
 - All classes follow parameterized calculator pattern — NO hardcoded system data
 
-### Whitepapers
+### Whitepapers & Documentation
 
 - **1,225 markdown whitepapers** (PAPER_001–PAPER_999 + PAPER_1000-1203 + PAPER_S201-S205)
 - **1,288 PDFs** in canonical `pdf/` directory (100% synchronized with markdown)
@@ -237,35 +259,13 @@ This unified theory addresses fundamental physics problems including:
 - **INTEGRATION_TRACKER.csv**: Module integration status (173 files, 116 integrated, 446 modules)
 - **MAIN_1_CoAnQi_integration_status.json**: Complete build status and physics terms
 - **BUILD_INSTRUCTIONS_PERMANENT.md**: Critical build workflow (**READ EVERY TIME**)
+- **ARCHITECTURE_FLOW_DIAGRAM.md v5.0.0**: Canonical architecture reference with data flows, tier diagrams, port assignments
 - **ARCHIVE_MANIFEST_20260522.md**: Complete PDF audit trail and archive synchronization log
 - **ENHANCEMENT_GUIDE.md**: Self-expanding physics module system guide
 - **WORKSPACE_UPDATE_CHECKLIST.md**: Maintenance guide for status file updates
 - **WOLFRAM_INTEGRATION_STATUS.md**: Wolfram Engine integration guide (optional, MSVC-only)
 - **UQFF_VALIDATION_CONVERSATION_CAPTURE.md**: Validation methodology discussions
-- **.github/copilot-instructions.md**: AI agent development guidelines
-
-### Canonical Architecture (v5.2.1)
-
-**6-Tier Cross-Platform System:**
-
-| Tier | Component | Description |
-|------|-----------|-------------|
-| 1 GUI | source2.cpp (16,350L, 22 tabs) | Principal GUI — **USER STARTS HERE** |
-| 2 Compute | 5 parallel calculators | MAIN_1 + QCalc + CP1 + CP2 + uqff_server.js |
-| 3 VR/VM | source2(HEAD).cpp + physics_backend.cpp | GPU + CPU backends |
-| 4 IPC | uqff_ipc.h, python_bridge.h, physics_service.h | 45 message types |
-| 5 Storage | bodies_*.csv, uqff_results.json, CP_OutputData.py | Data persistence + recall |
-| 6 Bots | Poseidon (v4.2.1) + CoAnQi_bot (v4.2.2) | AI assistants |
-
-**Port Assignments:**
-
-| Port | Service | Description |
-|------|---------|-------------|
-| 990 | FTPS Implicit | TLS from connection start |
-| 21 | FTPS Explicit | Upgrade via STARTTLS |
-| 3141 | uqff_server.js | HTTP REST API (π×1000) |
-| 8443 | QCalc_API.py | HTTPS FastAPI (optional) |
-| N/A | Named Pipe | \\.\pipe\StarMagic_UQFF (IPC) |
+- **.github/copilot-instructions.md**: AI agent development guidelines (CANONICAL RULES v5.2.1)
 
 ### Automation Tools
 
@@ -296,6 +296,26 @@ This unified theory addresses fundamental physics problems including:
 - **Build Command**: `cmake -S . -B build_msvc -G "Visual Studio 17 2022" -A x64; cmake --build build_msvc --config Release`
 - **Output**: `build_msvc\Release\MAIN_1_CoAnQi.exe` (9.77 MB Release)
 - **MinGW Note**: FATAL_ERROR enforced - WSTP libraries are MSVC-compiled only
+
+### Formal Verification (Lean 4)
+
+- **formal/**: Lean 4 scaffold for mechanical verification of UQFF identities
+  - Status: Scaffold only with `sorry` placeholders (not a Clay submission)
+  - Pinned to Lean 4 v4.11.0 + Mathlib v4.11.0
+  - Contains calibrated constants, Ug formulas, Buoyancy definitions, Millennium Prize stubs
+  - See [formal/README.md](formal/README.md) for proof status table and next steps
+
+---
+
+## 🚀 Advanced Calculator Module
+
+See [calculator_advanced/README.md](calculator_advanced/README.md) for:
+- **Tab 22: Advanced Calculator** — ANTLR4 equation parser, SymEngine symbolic solver, GSL 26th-degree polynomial solver
+- **Dimensional Analysis**: Automated unit checking for 100+ UQFF equations
+- **26D Visualization**: Parametric plots, ODE phase portraits, series expansion analysis
+- **Integration Status**: Framework created March 3, 2026 (iterations #30-32 from Grok thread b6d9bc22)
+
+---
 
 ## Claude AI Integration
 
