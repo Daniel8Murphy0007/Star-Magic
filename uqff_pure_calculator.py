@@ -2648,6 +2648,48 @@ def _g3_einstein_ricci() -> float:
     """G3: R_26 / (2 kappa_E) Einstein 26D Ricci split = 1/2."""
     return G3_RICCI_COEF
 
+def _g3_kk_spinor_closure() -> Dict[str, float]:
+    """G3 KK/spinor structural closure (Map sec 5 G3 row; Step 6 per analysis sec 7).
+
+    Closes the Map sec 5 G3 row (KK / spinor structure) by composing the locked
+    Einstein-Hilbert variational prefactor with the two subleading corrections that
+    structurally complete G3: the KK tower (compactified D_CRIT - D_BSFG internal
+    dimensions, each suppressed by the G5 1/26! lock) and the SO(26) Dirac spinor
+    bundle (representation dim 2^13 = 8192 per generation, distributed across the 26
+    critical dimensions).
+
+    Derivation chain (NOT anchor-tuned, NOT REPLACEMENT):
+      ricci_coef           = 1/2 (Einstein-Hilbert variational prefactor; G3_RICCI_COEF locked)
+      kk_internal_dims     = D_CRIT - D_BSFG = 26 - 6 = 20 (KK-compactified directions)
+      kk_leading_suppress  = 1/26! (G5 KK tower suppression lock)
+      kk_correction        = kk_internal_dims * kk_leading_suppress
+      spinor_so26_dim      = 2^(D_CRIT/2) = 2^13 = 8192 (SO(26) Dirac spinor rep dim)
+      spinor_per_dim       = spinor_so26_dim / D_CRIT
+      spinor_correction    = 1 / spinor_per_dim
+      g3_kk_spinor_total   = ricci_coef * (1 + kk_correction + spinor_correction)
+      closure_diff_pct     = (g3_kk_spinor_total - ricci_coef) / ricci_coef * 100
+    """
+    ricci_coef = G3_RICCI_COEF
+    kk_internal_dims = D_CRIT - D_BSFG
+    kk_leading_suppress = 1.0 / G8_26_BARRIER
+    kk_correction = kk_internal_dims * kk_leading_suppress
+    spinor_so26_dim = 2 ** (D_CRIT // 2)
+    spinor_per_dim = spinor_so26_dim / D_CRIT
+    spinor_correction = 1.0 / spinor_per_dim
+    g3_total = ricci_coef * (1.0 + kk_correction + spinor_correction)
+    closure_diff_pct = (g3_total - ricci_coef) / ricci_coef * 100.0
+    return {
+        "ricci_coef": ricci_coef,
+        "kk_internal_dims": float(kk_internal_dims),
+        "kk_leading_suppression": kk_leading_suppress,
+        "kk_correction": kk_correction,
+        "spinor_so26_dim": float(spinor_so26_dim),
+        "spinor_per_dim": spinor_per_dim,
+        "spinor_correction": spinor_correction,
+        "g3_kk_spinor_total": g3_total,
+        "closure_diff_pct": closure_diff_pct,
+    }
+
 def _g4_bsfg() -> float:
     """G4: BSFG bulk-edge 6D/4D Gauss-Bonnet ratio = 3/20."""
     return G4_BSFG_COEF
@@ -27279,7 +27321,8 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         key = dataset["input"].lower().strip()
 
     # Spinor closure (Map §9 row 9) -- Step 3 LIVE-DERIVE per analysis sec 7 Step 3.
-    if key and ("spinor" in key):
+    # Guard: route g3_* keys to the Step 6 G3 KK/spinor branch below, not the b9 spinor closure.
+    if key and ("spinor" in key) and not key.startswith("g3"):
         sp = _spinor_closure()
         prov = (
             "Spinor bundle closure [Map section 9 row 9] canonical UQFF live derivation via "
@@ -27300,6 +27343,30 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             "(analytic-vs-anchor residuals; NOT REPLACEMENT)"
         )
         return {"value": sp, "provenance": prov}
+
+    # G3 KK/spinor closure (Map sec 5 G3 row) -- Step 6 LIVE-DERIVE per analysis sec 7 Step 6.
+    if key and ("g3_kk" in key or "g3_closure" in key or "g3_spinor" in key):
+        g3 = _g3_kk_spinor_closure()
+        prov = (
+            "G3 KK/spinor closure [Map section 5 G3 row] live structural derivation via "
+            "_g3_kk_spinor_closure: ricci_coef = 1/2 (Einstein-Hilbert variational prefactor, "
+            "locked G3_RICCI_COEF); kk_internal_dims = D_CRIT - D_BSFG = 20 (compactified "
+            "26-6 KK tower); kk_leading_suppression = 1/26! (G5 KK lock); kk_correction = "
+            "kk_internal_dims * kk_leading_suppression; spinor_so26_dim = 2^(D_CRIT/2) = 2^13 = 8192 "
+            "(SO(26) Dirac spinor representation dim); spinor_per_dim = spinor_so26_dim / D_CRIT; "
+            "spinor_correction = 1 / spinor_per_dim; g3_kk_spinor_total = ricci_coef * "
+            "(1 + kk_correction + spinor_correction). "
+            "Cite: uqff_Map.md section 5 G3 row (KK/spinor structure entry) + Map sec 4 line 1 "
+            "Master Lagrangian R_GR/(16 pi G)/(2 k_E) + G5 KK suppression lock (Map sec 5) + "
+            "D_CRIT/D_BSFG primitives (Map sec 2). The locked 1/2 Ricci prefactor is preserved "
+            "as the dominant EH contribution; KK and spinor corrections are reported transparently "
+            "as honest structural addenda (not anchor-tuned). "
+            f"REF=0.5 (dimensionless, kind=EH_VARIATIONAL_PREFACTOR, source: G3_RICCI_COEF locked "
+            f"Einstein-Hilbert action prefactor) | UQFF={g3['g3_kk_spinor_total']:.10g} | "
+            f"diff={g3['closure_diff_pct']:.6f}% (KK + spinor structural corrections vs bare "
+            "Ricci prefactor; NOT REPLACEMENT)"
+        )
+        return {"value": g3, "provenance": prov}
 
     # Millennium dispatch (8 problems) — check first so "yang_mills" etc. resolve before cluster strings.
     if key:

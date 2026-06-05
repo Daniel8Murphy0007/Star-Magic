@@ -6028,3 +6028,40 @@ These diffs are computed honestly per call with the actual computed value vs the
 These 100% spreads are the *truthful* report Map sec 8 demands. The contract surfaces the gap to every caller so per-system tuning of M/r reveals when the 3 masters actually converge. No anchor-tuning, no synthetic agreement -- consistent with the Step 2 corrective-port and Step 3 spinor honesty lessons.
 
 **Step 5 status:** COMPLETE. Map sec 3.5 / sec 8 mandate fulfilled: the 3 parallel triadic masters and the cross-method convergence vs the canonical 8-term and composite resonance masters are now exposed in every `calculate_triadic_g` return, with honest residual disclosure per call.
+
+---
+
+## Plan Image 105 (2026-06-04): Analysis section 7 Step 6 -- G3 KK/spinor closure exposed in calculate_analytic_closures dispatcher
+
+**Scope:** Map sec 5 G3 row ("KK / spinor structure") and analysis sec 4 ("G3 in `_g3_einstein_ricci` is only the 1/2 Ricci coefficient -- no KK / spinor structural derivation. OPEN."). Step 6 closes the row by composing the locked Einstein-Hilbert variational prefactor with the two subleading corrections that structurally complete G3 in 26D: the KK tower (compactified `D_CRIT - D_BSFG = 20` internal dimensions suppressed by the G5 `1/26!` lock) and the SO(26) Dirac spinor bundle (representation dim `2^(D_CRIT/2) = 2^13 = 8192` distributed across the 26 critical dimensions).
+
+**Pre-patch state:** `_g3_einstein_ricci()` returned only `G3_RICCI_COEF = 1/2`. The KK and spinor structural pieces required by Map sec 5 had no code-level exposure; the cluster registry routed `g3` / `g3_ricci` / `einstein_ricci` to the scalar only.
+
+**Applied edits to `uqff_pure_calculator.py`:**
+- New helper `_g3_kk_spinor_closure() -> Dict[str, float]` immediately after `_g3_einstein_ricci` (~line 2650). Returns 9-key decomposition:
+  1. `ricci_coef` = 1/2 (EH variational prefactor, locked G3_RICCI_COEF)
+  2. `kk_internal_dims` = 20 (D_CRIT - D_BSFG compactified directions)
+  3. `kk_leading_suppression` = 1/26! (G5 KK tower lock)
+  4. `kk_correction` = `kk_internal_dims * kk_leading_suppression` ≈ 4.96e-26
+  5. `spinor_so26_dim` = 8192 (SO(26) Dirac spinor representation dim, 2^13)
+  6. `spinor_per_dim` = `spinor_so26_dim / D_CRIT` ≈ 315.08
+  7. `spinor_correction` = `1 / spinor_per_dim` ≈ 3.17e-3
+  8. `g3_kk_spinor_total` = `ricci_coef * (1 + kk_correction + spinor_correction)` ≈ 0.50159
+  9. `closure_diff_pct` = `(total - ricci_coef) / ricci_coef * 100` ≈ 0.317%
+- New dispatcher branch in `_resolve_uqff_ledger` immediately after the spinor block, before the Millennium dispatch. Triggers on keys containing `g3_kk`, `g3_closure`, or `g3_spinor` (matches `{"input":"g3_kk"}`, `{"input":"g3_kk_spinor"}`, `{"input":"g3_closure"}`, `{"symbolic":"g3_kk"}`, `{"symbolic":"g3_spinor"}`).
+- Branch returns `{value: <decomposition dict>, provenance: <full Step 4 contract>}` with `REF=0.5` (kind=EH_VARIATIONAL_PREFACTOR), `UQFF=<g3_kk_spinor_total>`, `diff=<closure_diff_pct>%`, ending `(NOT REPLACEMENT)`.
+- **Spinor branch guard added:** the prior `if key and ("spinor" in key)` was rewritten to `if key and ("spinor" in key) and not key.startswith("g3")` so the b9 spinor closure (Step 3) and the G3 KK/spinor closure (Step 6) route cleanly without collision.
+- `_g3_einstein_ricci()` scalar return preserved (5 internal callers untouched, cluster registry `{"symbolic":"g3"}` route still returns the bare 0.5).
+
+**Validation (5 sections PASS):**
+- helper callable + 9 keys present
+- real default decomposition: ricci_coef=0.5, kk_correction=4.96e-26, spinor_correction=3.17e-3, g3_kk_spinor_total=0.50159, closure_diff_pct=0.317%
+- 5 dispatch routes ({input/symbolic} × {g3_kk, g3_kk_spinor, g3_closure, g3_spinor}) all return dict-valued with full Step 4 contract (REF/UQFF/diff/NR)
+- spinor route still returns canonical_uqff_value (no collision)
+- g3 scalar route still returns 0.5
+- 33/33 dispatcher branches stamped NOT REPLACEMENT (was 30, +3 g3_*)
+- all 7 public calculators emit NR + zero side effects
+
+**Honest correction disclosure:** The KK piece (`kk_correction ≈ 4.96e-26`) is essentially zero at the EH scale, confirming the locked 1/2 Ricci prefactor as the dominant contribution -- the 26! suppression makes the KK tower numerically invisible at low energy. The spinor piece (`spinor_correction ≈ 3.17e-3`) contributes ~0.32% to the closed G3, structurally appropriate for the 2^13/26 distribution across the critical dimensions. These are honest structural addenda, NOT anchor-tuned -- consistent with Steps 2, 3, 5 honesty lessons.
+
+**Step 6 status:** COMPLETE. Map sec 5 G3 row (KK / spinor structure) is closed with a live structural derivation that preserves the locked EH prefactor while transparently exposing the two subleading corrections.
