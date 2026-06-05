@@ -772,10 +772,11 @@ COMMIT LEDGER (Session 264 addition)
              Source-MD fixes: 642 abstract $$...$$ -> $...$ + nested \text{}
                              877 9x U+25BC -> \downarrow
     PDF regen: all 5 via _build_batch.py (Creator=LaTeX with hyperref)
-    CSV stamp: 5 rows -> status="DONE v5.78 upstream-source", session=264
+    CSV stamp: 5 rows -> status="DONE v5.78 upstream-source", session=264, commit=e3de0a05
     Also: 1159 blank CSV status fields -> "PENDING"
     Also: removed duplicate pdf/PAPER_421_Um_Heaviside_QuasiPeriodic.pdf
-    Commit message: "Job B Session 264 batch 5 (upstream slice): PAPER_420/421/642/840/877 -- v5.78 closure (5 upstream-source papers) + CSV init + dup-PDF cleanup"
+    Commit hash: e3de0a05 (atomic: 5 .md + 5 .pdf + 5 backup-pdf + CSV + this file + Plan + Map + uqff_results.json) [rebased onto 776c4da9 README update]
+    Commit message: "Job B Session 264 batch 5 (upstream): PAPER_420/421/642/840/877 v5.78 closure + 5 critical gaps closed + CSV PENDING init (1154 rows)"
 
   Updated DONE counts:
     Pre-session:   40 done (38 H* + 1 A* + 1 D*)

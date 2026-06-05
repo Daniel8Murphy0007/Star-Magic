@@ -433,8 +433,8 @@ paper_id,filename,title,bucket,matched_keyword,suggested_action,status,session,c
 417,PAPER_417_PiCycles_NegativeTime_TemporalReversal_CosPiTn_UQFF_Framework.md,\pi Cycles and Negative Time: cos(\pi t_n) Temporal Reversal Framework in UQFF,H,,NO UPDATE (specific system / framework application),PENDING,,
 418,PAPER_418_FU_Sun_Complete_SCm_SolarCycle_FinalCalibration.md,F_U Sun: Complete SCm Solar Cycle Final Calibration with All Five Components,H,,NO UPDATE (specific system / framework application),PENDING,,
 419,PAPER_419_Hamiltonian_PlanetaryCore_HUg3_HSCm_HUA_YangMills_MassGap.md,Hamiltonian Planetary Core Quantum Gravity: H_Ug3 + H_SCm + H_UA and Yang-Mills Mass Gap,G,YangMills,Verify v5.78 closed-Lagrangian/ledger cross-ref present (Sess 225 baseline),PENDING,,
-420,PAPER_420_FU_Complete_Lambda_i_4th_Dissipation_Sum_Code_Gap.md,F_U Complete: The \lambda_i 4th Dissipation Sum — Missing Term and Code Gap,B*,_Lambda_,Add closing section: v5.78 27-decade vacuum ledger (PAPER_1170) + xi=13/3,DONE v5.78 upstream-source,264,PENDING_COMMIT
-421,PAPER_421_Um_Heaviside_QuasiPeriodic_SCm_PhaseTransition_Amplifier.md,Um Full Formula: Heaviside Phase-Transition Amplifier (1013) and Quasi-Periodic Beating,B*,,NO UPDATE (specific system / framework application),DONE v5.78 upstream-source,264,PENDING_COMMIT
+420,PAPER_420_FU_Complete_Lambda_i_4th_Dissipation_Sum_Code_Gap.md,F_U Complete: The \lambda_i 4th Dissipation Sum — Missing Term and Code Gap,B*,_Lambda_,Add closing section: v5.78 27-decade vacuum ledger (PAPER_1170) + xi=13/3,DONE v5.78 upstream-source,264,e3de0a05
+421,PAPER_421_Um_Heaviside_QuasiPeriodic_SCm_PhaseTransition_Amplifier.md,Um Full Formula: Heaviside Phase-Transition Amplifier (1013) and Quasi-Periodic Beating,B*,,NO UPDATE (specific system / framework application),DONE v5.78 upstream-source,264,e3de0a05
 422,PAPER_422_UQFF_29System_CrossValidation_Matrix.md,UQFF 29-System Compressed Cross-Validation Matrix,H,,NO UPDATE (specific system / framework application),PENDING,,
 423,PAPER_423_Um_Complete_SSq_Vacuum_Thermal_Damping.md,Um Complete Three-Modifier Formula: [SSq] Vacuum Thermal Damping Factor,H,,NO UPDATE (specific system / framework application),PENDING,,
 424,PAPER_424_FUBii_Um_Universal_Companion_Catalog.md,F_UBii / Um Universal Companion Catalog: 276+ Domain-Specific Equation Pairs,H,,NO UPDATE (specific system / framework application),PENDING,,
@@ -655,7 +655,7 @@ paper_id,filename,title,bucket,matched_keyword,suggested_action,status,session,c
 639,PAPER_639_UQFF_Higgs_125GeV_VEV_Buoyancy_Coupling.md,UQFF Higgs Mass 125 GeV and VEV Buoyancy Coupling,H,,NO UPDATE (specific system / framework application),PENDING,,
 640,PAPER_640_UQFF_Proton_Decay_Kappa_Rate_Scale_Separation.md,UQFF Proton Decay \kappa Rate Scale Separation and Stability,H,,NO UPDATE (specific system / framework application),PENDING,,
 641,PAPER_641_UQFF_Electroweak_SinThetaW_SCm_Vacuum.md,UQFF Electroweak sin2\theta_W and SCm Vacuum Connection,H,,NO UPDATE (specific system / framework application),PENDING,,
-642,PAPER_642_UQFF_SM_Parameter_Bridge_Master_Comparison.md,UQFF SM Parameter Bridge Master Comparison Table,G*,,NO UPDATE (specific system / framework application),DONE v5.78 upstream-source,264,PENDING_COMMIT
+642,PAPER_642_UQFF_SM_Parameter_Bridge_Master_Comparison.md,UQFF SM Parameter Bridge Master Comparison Table,G*,,NO UPDATE (specific system / framework application),DONE v5.78 upstream-source,264,e3de0a05
 643,PAPER_643_UQFF_Thermal_Lens_Equation_LENR_Applications.md,UQFF Thermal Lens Equation and LENR Applications,I,LENR_,NO UPDATE unless ledger/xi enters; verify only,PENDING,,
 644,PAPER_644_UQFF_Quantum_Like_Classical_Chip_Emulation.md,UQFF Programmatic Innovation for Quantum-Like Classical Chip Emulation,H,,NO UPDATE (specific system / framework application),PENDING,,
 645,PAPER_645_UQFF_Einstein_Field_Equations_Black_Hole_Singularity_Resolution.md,UQFF Applied to Einstein Field Equations and Black Hole Singularity Resolution,H,,NO UPDATE (specific system / framework application),PENDING,,
@@ -853,7 +853,7 @@ paper_id,filename,title,bucket,matched_keyword,suggested_action,status,session,c
 837,PAPER_837_Fquark_Fneutrino_FALP_Fdark_ArXiv_Bridge_UQFF.md,F_quark + F_neutrino + F_ALP + F_dark — arXiv Bridge to UQFF,H,,NO UPDATE (specific system / framework application),PENDING,,
 838,PAPER_838_Chandra_SNR_Nebula_UQFF_Batch2.md,"Chandra SNR/Nebula UQFF Survey Batch 2 — Vela, Tycho, Helix, SNR 1181, Cas A",H,,NO UPDATE (specific system / framework application),PENDING,,
 839,PAPER_839_ADD_Large_Extra_Dimensions_FLED_UQFF.md,ADD Large Extra Dimensions — F_LED Integration into UQFF,D,Extra_Dimension,Forward-pointer to PAPER_1171/1172 (xi=13/3 R26+KK lock) + PAPER_1173,PENDING,,
-840,PAPER_840_Kozima_LENR_Neutron_Drop_Fneutron_UQFF.md,Kozima LENR Neutron Drop Model --- F_neutron Integration into UQFF,I*,LENR_,NO UPDATE unless ledger/xi enters; verify only,DONE v5.78 upstream-source,264,PENDING_COMMIT
+840,PAPER_840_Kozima_LENR_Neutron_Drop_Fneutron_UQFF.md,Kozima LENR Neutron Drop Model --- F_neutron Integration into UQFF,I*,LENR_,NO UPDATE unless ledger/xi enters; verify only,DONE v5.78 upstream-source,264,e3de0a05
 841,PAPER_841_UQFF_Millennium_Prize_Applications.md,UQFF Contributions to Millennium Prize Equations and Practical Applications,G,Millennium,Verify v5.78 closed-Lagrangian/ledger cross-ref present (Sess 225 baseline),PENDING,,
 842,PAPER_842_Floyd_Sweet_VTA_6Document_PCVT_Motional_Efield.md,Floyd Sweet VTA 6-Document PCVT and Motional E-field UQFF Analysis,H,,NO UPDATE (specific system / framework application),PENDING,,
 843,PAPER_843_Chandra_Batch1_GC_Eagle_HBC672_NGC7469_Virgo.md,"Chandra X-ray Batch 1 — Galactic Center, Eagle Nebula, HBC 672, NGC 7469, Virgo Cluster UQFF",H,,NO UPDATE (specific system / framework application),PENDING,,
@@ -890,7 +890,7 @@ paper_id,filename,title,bucket,matched_keyword,suggested_action,status,session,c
 874,PAPER_874_Ug3ElectronTaggingTHzCirculationCalc.md,UQFF Analysis,H,,NO UPDATE (specific system / framework application),PENDING,,
 875,PAPER_875_SMMagSurfaceConductionFragmentAssemblyCalc.md,UQFF Analysis,H,,NO UPDATE (specific system / framework application),PENDING,,
 876,PAPER_876_DPMCoherentConsciousnessSpookyActionCalc.md,UQFF Analysis,H,,NO UPDATE (specific system / framework application),PENDING,,
-877,PAPER_877_Three_Assumption_UQFF_Cosmogenesis.md,Three-Assumption UQFF Cosmogenesis Master Equation,B*,Cosmogenesis,Add closing section: v5.78 27-decade vacuum ledger (PAPER_1170) + xi=13/3,DONE v5.78 upstream-source,264,PENDING_COMMIT
+877,PAPER_877_Three_Assumption_UQFF_Cosmogenesis.md,Three-Assumption UQFF Cosmogenesis Master Equation,B*,Cosmogenesis,Add closing section: v5.78 27-decade vacuum ledger (PAPER_1170) + xi=13/3,DONE v5.78 upstream-source,264,e3de0a05
 878,PAPER_878_SCm_Gaussian_Activation_BField_Suppression.md,SCm Gaussian Activation B-Field Suppression,H,,NO UPDATE (specific system / framework application),PENDING,,
 879,PAPER_879_Buoyancy_Klein_Gordon_Scalar_Field_EOM.md,Buoyancy Klein-Gordon Scalar Field EOM,H,,NO UPDATE (specific system / framework application),PENDING,,
 880,PAPER_880_Positive_Et_Buoyancy_Expansion_Master.md,Positive E(t) Buoyancy Expansion Master,H,,NO UPDATE (specific system / framework application),PENDING,,

@@ -2372,9 +2372,9 @@ Authoritative reference: [`/memories/repo/session202_backfill_and_no_pandoc_rule
 | Source-MD repair | `e15f6123` | restore 191 `?` corruption chars from CP1/CP3 | PAPER_009b, 015b, 016b, 020, 021 (5) |
 | Beta/approx mojibake | `a4d8d79f` | ß→β, ~→approx, 10-N→10^{N}, day-1→day^{-1} | PAPER_009b, 015b, 016b, 020, 021 (5) |
 | CSV stamps | `2fd80ed6`, `c43804fd`, `c489cdee`, `fe697a78`, `6bb64aa6`, `aebb73da`, `37f53559`, `85ab73b1`, `cbe65318` | tracking artifact updates | — |
-| **Batch 5 upstream + 5 critical gaps (Session 264)** | _this commit_ | v5.78 closure-content (upstream-source) + source-MD repair + CSV PENDING init (1,154) + dup-PDF cleanup + deep-mine audit | PAPER_420, 421, 642, 840, 877 (5) |
+| **Batch 5 upstream + 5 critical gaps (Session 264)** | `e3de0a05` | v5.78 closure-content (upstream-source) + source-MD repair + CSV PENDING init (1,154) + dup-PDF cleanup + deep-mine audit | PAPER_420, 421, 642, 840, 877 (5) |
 
-All pushed to `origin/master`. HEAD `cc807b95` is Session 263 (Layer 45 + Riemann + paradox audit close-out); this commit is the Session 264 paper-track batch.
+All pushed to `origin/master`. Previous HEAD `cc807b95` was Session 263 (Layer 45 + Riemann + paradox audit close-out); HEAD is now `e3de0a05` (Session 264 paper-track batch, rebased onto `776c4da9` README update).
 
 ### Recurring upstream cross-refs (NEXT-PRIORITY SLICE)
 
