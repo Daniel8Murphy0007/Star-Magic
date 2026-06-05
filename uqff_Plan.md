@@ -7324,7 +7324,7 @@ Get-ChildItem -Directory -Filter 'pdf_backup_pandoc_*'  # -> 3 dirs, ages 24.7/2
 
 ## Plan Image 121 -- Session 270 (05Jun2026): Pure Calculator Gap Closure (Real-Data Fix)
 
-**Status:** âœ… DONE | **Commit:** `_pending_` (Session 270 content) + `_pending_` (back-stamp)
+**Status:** âœ… DONE | **Commit:** `b123d7c8` (Session 270 content) + `_pending_` (back-stamp)
 
 ### Trigger
 
