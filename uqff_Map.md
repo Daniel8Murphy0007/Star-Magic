@@ -2373,6 +2373,7 @@ Authoritative reference: [`/memories/repo/session202_backfill_and_no_pandoc_rule
 | Beta/approx mojibake | `a4d8d79f` | ß→β, ~→approx, 10-N→10^{N}, day-1→day^{-1} | PAPER_009b, 015b, 016b, 020, 021 (5) |
 | CSV stamps | `2fd80ed6`, `c43804fd`, `c489cdee`, `fe697a78`, `6bb64aa6`, `aebb73da`, `37f53559`, `85ab73b1`, `cbe65318` | tracking artifact updates | — |
 | **Batch 5 upstream + 5 critical gaps (Session 264)** | `e3de0a05` | v5.78 closure-content (upstream-source) + source-MD repair + CSV PENDING init (1,154) + dup-PDF cleanup + deep-mine audit | PAPER_420, 421, 642, 840, 877 (5) |
+| **Session 265 governance** | `46f69624` | gaps 6–19 closed (LOCKED TOOLCHAIN extensions + β_i=0.603 standard + bucket-I rule + matched_keyword override + 5/5 anchors + CP4 #N inventory + status-string crosswalk + banner-schema decision) | — (no paper edits) |
 
 All pushed to `origin/master`. Previous HEAD `cc807b95` was Session 263 (Layer 45 + Riemann + paradox audit close-out); HEAD is now `e3de0a05` (Session 264 paper-track batch, rebased onto `776c4da9` README update).
 

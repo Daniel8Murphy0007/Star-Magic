@@ -33,6 +33,57 @@ TOOLCHAIN (LOCKED — NO PANDOC, NO xelatex, NO reportlab)
               (NEVER Creator=pandoc); pdf properties pdfinfo / Get-Pdf-Metadata.
   Authoritative reference: /memories/repo/session202_backfill_and_no_pandoc_rule.md
 
+  --- Converter extensions added in Batch-3 (Session 262, commit e87aa5cc) ---
+  Math-mode unicode mappings: \hbar, \Box, \ell, \mathcal{M/E/H/L/I},
+                              \mathbb{R/N/Z/C/Q}, \odot, \oplus, \otimes,
+                              \sim, \cong
+  Text-mode mappings:         \Box (square), \mathcal{M} (script M)
+  Verbatim ASCII fallback:    code-span unicode (hbar, M, Box, etc.)
+  Math-stash 2nd pass:        injected $...$ survives escape_text
+  ZZCODE restore:             sanitizes unicode before \texttt{}
+  wrap_math_leaks:            global regex pre-pass wraps \log_{...} chains
+                              even inside text-mode wrappers
+  Zero-width strip:           U+FEFF, U+FE0F, U+FE0E, U+200B–D
+
+  --- CONVERTER LIMITATION (Session 264 lesson, locked here) ---
+  ONLY inline $...$ math is preserved. Display-math syntaxes ARE TEXT-ESCAPED
+  and break pdflatex:
+    $$ ... $$                          (TeX display math)        — BROKEN
+    \[ ... \]                          (LaTeX display math)      — BROKEN
+    \begin{equation*} ... \end{...}    (amsmath display env)     — BROKEN
+    \begin{aligned} ... \end{aligned}  (inferred — avoid)        — BROKEN
+  RULE: rewrite all display math as inline $...$ within a paragraph.
+  RULE: avoid nested \text{...} inside \frac inside $...$ (also breaks).
+  RULE: replace unicode math symbols inside math mode with LaTeX commands
+        (▼ → \downarrow, α → \alpha, ★ → \star, etc.).
+  Authoritative reference: /memories/repo/converter_inline_math_only.md
+
+  --- MARKDOWN-IS-SOURCE-OF-TRUTH RULE (Session 265, locked) ---
+  NEVER edit whitepapers/*.tex directly. _md_to_arxiv_tex.py regenerates
+  the .tex from the .md on every _build_batch.py invocation; direct .tex
+  edits are silently overwritten. All hand-edits go into the .md.
+
+  --- IDEMPOTENCY (Session 265, locked) ---
+  _build_batch.py is idempotent within a calendar day: re-running the same
+  PAPER_NNN overwrites the .tex + .pdf cleanly. pandoc-backup directory
+  pdf_backup_pandoc_<YYYY-MM-DD>/ is created once per calendar day and
+  accumulates one entry per first-build-of-day per paper.
+
+  --- BACKUP RETENTION (Session 265, locked) ---
+  pdf_backup_pandoc_<date>/ directories are committed to the repo for
+  audit-trail purposes. Rotate (manually delete and commit) at +30 days
+  OR after a successful Phase-B4 coherence audit pass — whichever comes
+  first. As of Session 265 the active directories are:
+    pdf_backup_pandoc_2026-05-12/   (Batches 1-3 + repair)
+    pdf_backup_pandoc_2026-06-05/   (Batch 5 upstream)
+
+  --- LAMBDA NOTATION CONVENTION (Session 265, locked) ---
+  In LaTeX (.md / .tex / .pdf):     \Lambda      (the symbol)
+  In ASCII contexts (commit msg,
+  CSV, .txt logs, shell):           Lambda       (no Greek codepoint)
+  AVOID literal Greek "Λ" in ASCII contexts to prevent mojibake under
+  cp1252/cp437 round-trips.
+
 ================================================================================
 GOVERNANCE POINTER
 ================================================================================
@@ -146,7 +197,9 @@ For each paper flagged in B1, in topical batches (5–10 papers/commit):
    dpm_vacuum_manifold.py v3.0 (mirrored in /memories/repo/v5_78_templates.md):
      ρ_SCm = 4·√π·1e-37 ≈ 7.0898154036e-37 J/m³
      ρ_UA  = 10 · ρ_SCm
-     β_i   = 0.60  (SOURCE4 uses 0.603)
+     β_i   = 0.603  (resonance-corrected G1+G4 value; PAPER_001 exemplar precedent;
+                    Session 265 STANDARD. Reserve 0.60 — round — for pedagogical
+                    template-only use; never in closure blocks)
      κ     = 5e-4 / day
      [SSq] = 0.57
      F_TRZ = 0.10
@@ -155,7 +208,19 @@ For each paper flagged in B1, in topical batches (5–10 papers/commit):
      k_η   = 1e-113
 3. Pick template (T-Λ / T-LAG / T-SI / T-PRED / T-ξ); fill paper-specific slots
    with real physics (mass scale, decoupling regime, target observable).
+   BUCKET-DEFAULT TEMPLATE MAPPING:
+     A  → T-Λ      B  → T-LAG    C  → T-SI
+     D  → T-ξ      E  → T-PRED   F  → multi (pick by section)
+     G  → T-LAG + T-PRED                  H  → multi (by sub-topic)
+     I  → T-LAG if paper cites phonon/coupling Lagrangian (Kozima Pd-D, Ni-H,
+           Widom-Larsen); T-PRED if paper states a measurable cross-section
+           or branching-ratio prediction. (Session 265 rule.)
+   MATCHED-KEYWORD OVERRIDE (Session 265 rule): if CSV `matched_keyword` field
+   conflicts with bucket-default, matched_keyword WINS. Example: bucket-A
+   paper with matched_keyword='falsifiability' uses T-PRED, not T-Λ.
 4. Edit .md (preserve voice/style). UNICODE HYGIENE — see lesson at bottom of file.
+   NEVER edit whitepapers/*.tex directly — see MARKDOWN-IS-SOURCE-OF-TRUTH rule
+   in LOCKED TOOLCHAIN section above.
 5. Rebuild PDF via locked toolchain:
      python _md_to_arxiv_tex.py whitepapers\PAPER_NNN.md > whitepapers\PAPER_NNN.tex
      python _build_batch.py PAPER_NNN
@@ -781,3 +846,201 @@ COMMIT LEDGER (Session 264 addition)
   Updated DONE counts:
     Pre-session:   40 done (38 H* + 1 A* + 1 D*)
     Post-session:  45 done (+5 upstream: 2 B* + 1 G* + 1 I* + 1 B*)
+
+
+==============================================================================
+SESSION 265 GOVERNANCE BLOCK (gaps 6-19 closure from Session 264 deep-mine)
+==============================================================================
+Date: 2026-06-05
+Triggered by: user request "proceed with remaining work" -- close all 14
+              secondary gaps documented in Session 264 delta block.
+
+Sessions 263/264 closed critical gaps 1-5 (8 broken Layer-45 constants,
+Riemann t_10000, paradox orphans, 5 upstream-source papers with v5.78
+closure, 1159 PENDING init, dup PDF cleanup, 642 size anomaly). This
+session closes the remaining 14 documentation and policy gaps as a
+single atomic governance commit. NO paper bodies are modified.
+
+------------------------------------------------------------------------------
+SESSION 265 EDITS APPLIED IN-PLACE (above, NOT documented again below)
+------------------------------------------------------------------------------
+
+  Top-of-file LOCKED TOOLCHAIN section:
+    + Batch-3 converter extensions block (gap 8 part 1)
+    + Converter inline-math-only limitation (gap 8 part 2)
+    + Markdown-is-source-of-truth rule (gap 11)
+    + Idempotency claim (gap 18)
+    + Backup retention policy (gap 14)
+    + Lambda notation convention (gap 15)
+
+  Phase B3 step 2:
+    Reset standard from beta_i=0.60 to beta_i=0.603 (gap 9).
+    PAPER_001 exemplar precedent retained.
+
+  Phase B3 step 3:
+    + Bucket-default template mapping table including bucket-I rule (gap 10).
+    + matched_keyword override-bucket-default rule (gap 12).
+
+  Phase B3 step 4:
+    + Cross-reference to MARKDOWN-IS-SOURCE-OF-TRUTH rule (gap 11).
+
+------------------------------------------------------------------------------
+GAP 6 closed: backfill of 6 undocumented CSV-stamp commits
+------------------------------------------------------------------------------
+
+Map section 20 listed 9 CSV-stamp commits but the Job-B file commit ledger
+body documented only the first 3. The 6 missing entries reconstructed from
+git log on _job_b_categorization.csv:
+
+  CSV stamp 4: fe697a78 -- Session 262 cont. (post-Batch-3 remediation
+                           re-stamp; status now "DONE v5.78 arXiv-LaTeX")
+  CSV stamp 5: 6bb64aa6 -- Session 262 cont. (Batch-3 re-stamp after
+                           converter extensions; commit-hash updated)
+  CSV stamp 6: aebb73da -- Session 262 cont. (Batch-3 final hash lock)
+  CSV stamp 7: 37f53559 -- Session 263 (source-MD repair re-stamp;
+                           status "DONE v5.78 arXiv-LaTeX (source-repaired)")
+  CSV stamp 8: 85ab73b1 -- Session 263 (mojibake repair re-stamp)
+  CSV stamp 9: cbe65318 -- Session 263 (final 5-row lock after PAPER_009b
+                           mojibake re-pass; CSV invariant achieved)
+  CSV stamp 10: e3de0a05 -- Session 264 (5 upstream-source rows stamped
+                            in same commit as content authoring; atomic)
+
+All 10 stamps belong to the cc807b95 -> e95a4895 ancestry (pre-rebase)
+or its rebased equivalent e68ebf5d HEAD.
+
+------------------------------------------------------------------------------
+GAP 7 closed: CSV status-string crosswalk table
+------------------------------------------------------------------------------
+
+The CSV `status` column uses these exact strings (case-sensitive):
+
+  STATUS STRING                                  MEANING                    COMMIT-MESSAGE PREFIX
+  ----------------------------------------       -------------------------  ---------------------
+  (empty)                                        not yet triaged            (n/a)
+  PENDING                                        triaged; awaiting work     (n/a)
+  DONE v5.78                                     content authoring          "Job B Session NNN batch K (bucket X): ..."
+  DONE v5.78 arXiv-LaTeX                         format remediation         "Job B Batch K Format Remediation: ..."
+  DONE v5.78 arXiv-LaTeX (source-repaired)       source-MD repair           "Job B Session NNN source-MD repair: ..."
+  DONE v5.78 upstream-source                     upstream-source paper      "Job B Session NNN batch K (upstream): ..." (added Sess 264)
+
+A row may be re-stamped through this sequence:
+  empty -> PENDING -> DONE v5.78 -> (DONE v5.78 arXiv-LaTeX) -> (DONE v5.78 arXiv-LaTeX (source-repaired))
+Upstream-source rows skip the intermediate format-remediation step because
+they ship as arXiv-LaTeX from authoring.
+
+------------------------------------------------------------------------------
+GAP 13 closed: 5/5 anchors enumerated (referenced throughout this file)
+------------------------------------------------------------------------------
+
+Plan Image 111 anchors v5.78 on these 5 closure pillars (Map section 20 cites
+the count but not the contents):
+
+  1. SI closure  (alpha, h, c, G, Lambda)            -- Sessions 237-241
+                                                        commits 2707e53c -> bcf0c60f
+                                                        papers PAPER_590, 591, 592, 1156
+  2. G1-G8 Lagrangian closure                        -- Sessions 246-253
+                                                        commits 31f04623 -> 3278d09e
+                                                        papers PAPER_1159-1167
+                                                        (master synthesis = PAPER_1167)
+  3. 27-decade vacuum-energy ledger                  -- Session 255 (commit b055b60f)
+                                                        paper PAPER_1170
+                                                        (CP4 #256)
+  4. xi=13/3 R26+KK lock                             -- Sessions 256-257
+                                                        commits 378e9477, 5ffc7f9f
+                                                        papers PAPER_1171-1174
+                                                        (CP4 #257-#258)
+  5. P1-P14 falsifiability suite                     -- Sessions 254-260
+                                                        commits 961ef205 -> 8dee9cec
+                                                        papers PAPER_1168-1180
+                                                        (CP4 #255-#264)
+
+Coverage rule per bucket (Session 265 standard):
+  Bucket A papers   MUST cite anchor 3 + anchor 1 (SI closure)
+  Bucket B/G papers MUST cite anchor 2 + anchor 3 + paper-specific P-hook
+  Bucket C papers   MUST cite anchor 1
+  Bucket D papers   MUST cite anchor 4 + P6 (sub-mm Yukawa)
+  Bucket E papers   MUST cite anchor 5
+  Bucket H/I papers MUST cite at minimum {anchor 2, anchor 3} + paper-specific
+                    P-hook from anchor 5
+
+------------------------------------------------------------------------------
+GAP 16 closed: B4 status line (updated each batch)
+------------------------------------------------------------------------------
+
+B4 status (Session 265):
+  - AXIOMS_AND_THEOREMS.md xi=13/3 lock theorem entry  : PENDING
+  - Master index PAPER_001 v5.78 closure block         : DONE (batch 1)
+  - copilot-instructions.md tally update               : PENDING
+                                                         (current text: 935/1000)
+  - Catalog-paper registry sync                        : PENDING
+  - Full PDF re-verification pass                      : PARTIAL (45/1199 done)
+
+------------------------------------------------------------------------------
+GAP 17 closed: where the CP4 #N entries live
+------------------------------------------------------------------------------
+
+The CP4 #254-#264 class entries cited by every bucket-B/G paper as upstream
+live in these files (Session 265 inventory):
+
+  CP4 #N    File                                              Anchor
+  --------  ------------------------------------------------  ----------------
+  #254      CondensedPhysics4.py (MasterClosureCP4)           anchor 2 master
+  #255      CondensedPhysics4.py (FalsifierCP4_P1_P5)         anchor 5 P1-P5
+  #256      CondensedPhysics4.py (VacuumLedgerCP4)            anchor 3
+  #257      CondensedPhysics4.py (R26KKLockCP4)               anchor 4
+  #258      CondensedPhysics4.py (KKhbarP6CP4)                anchor 4 + P6
+  #259      CondensedPhysics4.py (LIGOO5RingdownCP4)          anchor 5 P11
+  #260      CondensedPhysics4.py (EuclidSigma8CP4)            anchor 5 P12
+  #261      CondensedPhysics4.py (DESITripleChi2CP4)          anchor 5 P13
+  #262      CondensedPhysics4.py (DESIStrictStaticCP4)        anchor 5 P13
+  #263      CondensedPhysics4.py (QuadrupleFalsifierCP4)      anchor 5 P14
+  #264      CondensedPhysics4.py (CMBS4MuCP4)                 anchor 5 P14
+
+Calculator honesty-pass surface (Session 263):
+  uqff_pure_calculator.py contains the honesty-bounded re-exports of
+  #254-#264 with the four-channel DSE parallel-engine routing (per Plan
+  Image 113 / Map section 20.1).
+
+------------------------------------------------------------------------------
+GAP 19 closed: banner-schema enforcement decision
+------------------------------------------------------------------------------
+
+DECISION (Session 265): the parser-locked banner schema
+    % CLOSURE :: <label> :: predicted=<X> observed=<Y> error_pct=<Z>
+    % TEMPLATE :: T-<code>
+    % CANONICAL :: <one-line per calibrated constant>
+is DEPRECATED for paper bodies. RATIONALE:
+  - None of the 45 DONE papers carry it (including PAPER_001 exemplar).
+  - It was designed for templates (the 5 _template_T_*.tex files); those
+    do carry it.
+  - Forward-pointing closure blocks (the bulk of batches 1-4 and Batch 5)
+    have nothing meaningful to fill for "predicted=X observed=Y" -- the
+    purpose of the block is to cite the closure paper, not to re-predict.
+  - The sentinel T-PRED carries "observed=9999 error_pct=9999"; that
+    sentinel mechanism remains valid in the TEMPLATES themselves.
+
+NEW RULE: banner schema is REQUIRED in `_template_T_*.tex` files and any
+NEW paper that BOTH (a) carries the T-PRED template AND (b) makes a
+numerical prediction. Banner is OPTIONAL elsewhere.
+
+DEFERRED: backfilling banners into the 45 already-DONE papers is a
+no-op until a parser actually consumes them.
+
+------------------------------------------------------------------------------
+COMMIT LEDGER (Session 265 addition)
+------------------------------------------------------------------------------
+
+  Session 265 governance commit (this commit):
+    Content: 14 documentation/policy gaps (6-19) closed in this file
+             + Plan Image 116 + Map section 20 commit-ledger entry
+    Source repairs: none (no paper bodies touched)
+    CSV stamps: none (no DONE-status changes)
+    Affected files: this file (+ ~180 lines), uqff_Plan.md (+Plan Image 116),
+                    uqff_Map.md (section 20 commit-ledger row)
+    Commit message: "Job B Session 265 governance: close gaps 6-19 (toolchain
+                     extensions + beta_i 0.603 standard + bucket-I rule +
+                     5/5 anchors + CP4 inventory + banner-schema decision)"
+
+  Updated DONE counts:
+    Pre-session:   45 done (38 H* + 1 A* + 3 B* + 1 D* + 1 G* + 1 I*)
+    Post-session:  45 done (unchanged -- governance only, no paper edits)

@@ -6966,3 +6966,56 @@ git ls-files | paradox -> only canonical files; no orphan uqff_paradox_proofs.*
 ### Repo memory anchor
 
 `/memories/repo/converter_inline_math_only.md` (new) — Single-line rule: `_md_to_arxiv_tex.py` only supports inline `$...$`. All display math must be inline.
+
+
+---
+
+## Plan Image 116 -- Session 265 (05Jun2026): Job-B Governance -- Close Gaps 6-19
+
+**Trigger:** User directive "proceed with remaining work" -- close the 14 secondary documentation and policy gaps documented in Session 264 delta block. NO paper bodies are modified.
+
+### In-place edits applied to `Job B_Update papers with current canonical UQFF v5_78.txt`
+
+- **LOCKED TOOLCHAIN section (top of file) extended with:**
+  - Batch-3 converter extensions block (gap 8 part 1): math-mode mappings, text-mode mappings, ZZCODE restore, wrap_math_leaks, zero-width strip.
+  - Converter inline-math-only limitation (gap 8 part 2): `$$...$$`, `\[ ... \]`, `\begin{equation*}` and `aligned` are text-escaped; rewrite as inline `$...$`.
+  - **Markdown-is-source-of-truth rule** (gap 11): never edit `whitepapers/*.tex` directly; they are regenerated from `.md`.
+  - **Idempotency claim** (gap 18): `_build_batch.py` is idempotent within a calendar day.
+  - **Backup retention policy** (gap 14): rotate `pdf_backup_pandoc_<date>/` at +30 days OR after a successful Phase-B4 coherence audit pass.
+  - **Lambda notation convention** (gap 15): `\Lambda` in LaTeX contexts; `Lambda` (no Greek) in ASCII contexts.
+- **Phase B3 step 2 (gap 9):** Î²_i standard reset from `0.60` to `0.603` (resonance-corrected G1+G4 value; PAPER_001 exemplar precedent).
+- **Phase B3 step 3 (gaps 10, 12):** added bucket-default template mapping table including bucket-I rule (T-LAG if phonon/coupling Lagrangian cited; T-PRED if measurable cross-section / branching-ratio prediction stated); added `matched_keyword` override-bucket-default rule.
+- **Phase B3 step 4 (gap 11):** cross-reference to MARKDOWN-IS-SOURCE-OF-TRUTH rule.
+
+### Appended Session 265 governance block (gaps 6, 7, 13, 16, 17, 19)
+
+- **Gap 6:** backfilled 6 undocumented CSV-stamp commits (fe697a78 / 6bb64aa6 / aebb73da / 37f53559 / 85ab73b1 / cbe65318) plus Session-264 stamp e3de0a05 into the file's commit ledger body.
+- **Gap 7:** CSV status-string crosswalk table (6 strings: empty, PENDING, DONE v5.78, DONE v5.78 arXiv-LaTeX, DONE v5.78 arXiv-LaTeX (source-repaired), DONE v5.78 upstream-source) with commit-message prefix per type and the canonical re-stamp sequence.
+- **Gap 13:** enumerated 5/5 anchors (SI closure, G1-G8 Lagrangian closure, 27-decade vacuum ledger, Î¾=13/3 R26+KK lock, P1-P14 falsifiability suite) with session numbers, commit hashes, papers, and CP4 #N IDs. Added per-bucket coverage rule (which anchors each bucket MUST cite).
+- **Gap 16:** B4 status line â€” first snapshot at Session 265:
+  - AXIOMS_AND_THEOREMS.md Î¾=13/3 theorem entry: PENDING
+  - Master index PAPER_001 v5.78 closure: DONE (batch 1)
+  - copilot-instructions.md tally update: PENDING (current 935/1000)
+  - Catalog-paper registry sync: PENDING
+  - Full PDF re-verification pass: PARTIAL (45/1199 done)
+- **Gap 17:** CP4 #254-#264 inventory table with paper-side anchor and file location (`CondensedPhysics4.py` + `uqff_pure_calculator.py` honesty-pass surface).
+- **Gap 19:** banner-schema enforcement DECISION â€” schema deprecated for paper bodies, retained as required only for `_template_T_*.tex` files and for new T-PRED papers that make numerical predictions. Backfilling 45 already-DONE papers is deferred until a parser actually consumes the banners.
+
+### Updated DONE counts
+
+| Bucket | Pre-session (Sess 264 end) | Post-session (Sess 265 end) |
+|--------|----------------------------|------------------------------|
+| All buckets | 45 | 45 (unchanged â€” governance only, no paper edits) |
+
+### Carry-forward (Session 266+ candidates)
+
+1. Bucket H batches resume â€” ~600-800 papers still PENDING under revised rule. Priority by topic (cosmology, dark energy, vacuum density) per gap-13 anchor coverage rule.
+2. AXIOMS_AND_THEOREMS.md Î¾=13/3 lock theorem entry (B4 item).
+3. Optional: copilot-instructions.md tally bump (935 â†’ reflect actual session count).
+4. Optional: rotate `pdf_backup_pandoc_2026-05-12/` (24 days old as of Session 265; rotation eligible at +30 days = 2026-06-11) after the next coherence audit.
+
+### Repo memory anchors
+
+- `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline.
+- `/memories/repo/converter_inline_math_only.md` -- inline math only rule.
+- `/memories/repo/v5_78_templates.md` -- canonical constants table.
