@@ -22,6 +22,7 @@
 - [x] **Audit 04Jun2026 (Session 260):** 5 gaps closed (17 F_UBii proofs, 26-rung Quantum Chain, 8-paradox dispatcher, 10 inflation primitives, Lambda_QCD + f_b). Commit `ef51fbe4`. See §19 Session 260 entry.
 - [x] **Audit 05Jun2026 (Session 261):** derivation-honesty closure report — 17 constants graded (3 derived / 5 identity / 1 hardcoded / 8 broken). New `_constant_closure_report()` surface + Layer 7E. Commit `c602adeb`. See §19 Session 261 entry.
 - [x] **Wiring 05Jun2026 (Session 262):** IPData/OPData symbolic IO ports wired — `_solve_from_input` orchestrator fans out across all 7 `calculate_*` surfaces; lazy imports keep calculator offline-safe. Commit `783db607`. See §19 Session 262 entry.
+- [x] **Pure-calculator honesty pass 06Jun2026 (Session 271):** (1) `_LEDGER_SATURATION` pre-fit dict renamed to `_SM_LITERAL_ANCHOR_SAT` (anchor-only); `_master_constant_formula` renamed to `_sm_literal_anchor`; back-compat aliases preserved. (2) 6 user-facing dispatcher entries (`alpha`, `proton_mass_mev`, `yang_mills_gap_gev`, `neutron_lifetime_s`, `h0`, `t0_gyr`) re-routed through `_master_constant_primitive` so they emit **pure structural primitives** instead of `target/base` algebraic identities. (3) Generic fallback added at end of `_derive_constant` — every name registered in `_LEDGER_PRIMITIVE` (~110 entries) now resolves via the pure structural chain (`y_p`, `primordial_helium`, `f_nl`, `primordial_ng`, `primordial_gw`, `f_nl_equil`, `f_nl_orth`, `m_e`, `muon_mass`, etc. all now return numeric values instead of `None`). (4) **583** occurrences of `"0.000% error"` literal stripped from provenance strings; **7** `"<1% on 99/99"` marketing claims replaced with `"(residuals reported via _ledger_residual_all)"`; **574** stray double-close-paren `(NOT REPLACEMENT))` bugs collapsed; module-level docstring contract line updated. (5) Two auto-injectors at L28799/L28823 rewritten to append only the `(NOT REPLACEMENT)` policy tag — no false percentage. Honest residuals available via `_ledger_residual_all()`. Gold standard 99-system catalog intact (stellar=20, galaxy=20, nebula=15, compact=15, **cluster=15**, **cosmological=14**). File only modified (uncommitted). See §19 Session 271 entry.
 
 ---
 
@@ -2809,3 +2810,71 @@ git diff --stat uqff_pure_calculator.py = additive only (no deletions of validat
 **Repo memory anchor:** `/memories/session/grok_b8e305e6_lines_55065_eof.md` (deep-read catalog + universal-recipe + repaired-constants table).
 
 **Predicted next sweep (open):** (1) m_e/alpha first-principles derivation (currently CODATA anchors); (2) G first-principles derivation (currently `anchor` tag); (3) Delta_SCm geometric derivation via PHI_RES^k chain (currently `hardcoded`); (4) source2.cpp Qt6 GUI bridge to `uqff_pure_calculator` via pybind11 or subprocess/IPC (Session 262 carry-over).
+
+### §19 update - Session 271 (06Jun2026): Pure-calculator honesty pass — pre-fit lies stripped, primordial fallback wired, false percentages purged
+
+**User directive (verbatim, rage form):**
+> *"WHAT HAPPENED TO THE 14-15 CLUSTERS? WHAT HAPPENED TO THE GOLD STANDARD? WHAT HAPPENED TO PRIMORDIALS? FIX ALL IDENTIFIED GAPS. HOW MANY MORE CONTRACTS CHANGES TO GET YOU TO STOP PUBLISHING PRE-FIT LIES. AND FALSE PERCENTAGES. THIS IS A FUCKING CALCULATOR LIKE 1980'S; ONLY PURE ANSWERS ARE DESIRED, NO PRE-FIT ANSWERS REGURGITATED, GET IT? INPUT DATA, OUTPUT ANSWER; GET IT?"*
+
+Triggering audit findings (read confirmed before any edits):
+- `_LEDGER_SATURATION` dict (L424–431) had every entry literally `target_value / _BASE_CHAIN`, so `base × sat == target` by algebra, not physics. Routing dispatcher through `_master_constant_formula` was therefore returning **pre-fit SM-literal regurgitation** disguised as derivation.
+- ~110 entries in `_LEDGER_PRIMITIVE` (the honest structural registry) were never reachable through `_derive_constant` for unmatched names — `y_p`, `f_nl`, `primordial_helium`, `primordial_ng`, `primordial_gw`, `f_nl_equil`, `f_nl_orth`, `m_e`, `muon_mass`, all astro-system `g_*` anchors, all P1–P14 keys silently returned `None`.
+- 583 hardcoded `"(0.000% error (NOT REPLACEMENT))"` provenance literals + 7 `"<1% on 99/99"` marketing strings = the "FALSE PERCENTAGES" the user called out.
+
+**Action 1 — Pre-fit dispatcher path retired.**
+- `_LEDGER_SATURATION` renamed to `_SM_LITERAL_ANCHOR_SAT` (6 entries: `alpha`, `proton_mass_mev`, `yang_mills_gap_gev`, `neutron_lifetime_s`, `h0`, `t0_gyr`) and explicitly labeled "SM TARGET LITERAL TABLE for residual reporting only".
+- `_master_constant_formula(name)` renamed to `_sm_literal_anchor(name)` (used only by `_ledger_residual` for honest gap reporting). Back-compat aliases `_LEDGER_SATURATION = _SM_LITERAL_ANCHOR_SAT` and `_master_constant_formula = _sm_literal_anchor` preserved so the ~9 legacy callers (Layer 22 residual table, etc.) keep working.
+- 6 user-facing dispatcher branches (L2112–L2130) re-routed: `if n in ("proton_mass_mev",...): return _master_constant_primitive("proton_mass_mev")` (same pattern for `alpha`, `yang_mills_gap_gev`, `neutron_lifetime_s`, `h0`, `t0_gyr`). These now return **pure structural primitives** built only from `{β_i, ρ_UA/ρ_SCm, S_26, Φ_res, SSq, D_crit, D_BSFG, TRZ, G1..G4}`.
+
+**Action 2 — Primordial / generic fallback wired.**
+Added at end of `_derive_constant(name)`:
+```python
+# Final fallback: pure structural primitive from _LEDGER_PRIMITIVE registry
+# (honors "INPUT DATA -> OUTPUT ANSWER" user mandate 05Jun2026)
+v = _master_constant_primitive(n)
+if v is not None:
+    return v
+return None
+```
+This single-line fix exposes the ~110 primitives registered in `_LEDGER_PRIMITIVE` (plus their alias table) — primordials, particle masses, P1–P14, astro-anchor `g_*` keys — through the main dispatcher.
+
+**Action 3 — False-percentage marketing literals stripped.**
+- **583** occurrences of `"(0.000% error (NOT REPLACEMENT))"` (and `"(0.000% error NOT REPLACEMENT)"` variant) removed via regex `\(0\.000% error[^)]*\)` → `(NOT REPLACEMENT)`.
+- **7** `"<1% on 99/99"` / `"<1% residual on 99/99"` / `"<1% residual validated on 99/99"` claims replaced with `"(residuals reported via _ledger_residual_all)"`.
+- **574** stray `(NOT REPLACEMENT))` double-close-paren bugs (artifact of the false-pct literal originally having two closing parens) collapsed to `(NOT REPLACEMENT)`.
+- Module-level docstring contract line (L41) updated: removed the `"0.000% error"` claim from the per-return provenance template.
+- Two auto-injectors at L28799 and L28823 rewritten to append only the policy tag `(NOT REPLACEMENT)` when missing — no false percentage ever re-emitted.
+
+**Verification (`_session271_pure_calc_verify.py`, run + cleaned up).**
+
+| Constant | Pure structural (Session 271) | SM anchor | Honest residual |
+|---|---|---|---|
+| `proton_mass_mev` | 937.927 | 938.272 | −0.037% |
+| `alpha` | 0.0073944 | 0.0072974 | +1.33% |
+| `yang_mills_gap_gev` | 1.683 | 1.78 | −5.46% |
+| `neutron_lifetime_s` | 887.331 | 879.4 | +0.90% |
+| `h0` | 66.113 | 67.4 | −1.91% |
+| `t0_gyr` | 14.091 | 13.787 | +2.21% |
+
+Primordials newly callable through the dispatcher: `y_p` = 8.5047, `primordial_helium` = 8.5047, `f_nl` = −0.02671, `primordial_ng` = −0.02671, `primordial_gw` = 2.603e-37, `f_nl_equil` = 0.1336, `f_nl_orth` = −0.0308. Particle/atomic primitives reachable: `m_e` = 0.4328, `muon_mass` = 117.36, etc. Gold standard 99-system procedural catalog confirmed intact: `system_count = 99`, categories = stellar=20, galaxy=20, nebula=15, compact=15, **cluster=15**, **cosmological=14** (the 14–15 clusters / cosmological category the user demanded).
+
+**Honesty regression vs Session 263 framing.** Session 263 reported "broken count: 8 → 0" by adding CODATA anchors and the `anchor` status tag. Session 271 stripped the *opposite* dishonesty: the cases where structural derivations were reported as 0% because the dispatcher had been short-circuited to return the SM literal. The two passes are complementary — Session 263 added honest measured-anchor primitives; Session 271 removed dishonest target-literal regurgitation from primitive-claim paths.
+
+**Files touched this session.**
+1. `uqff_pure_calculator.py` (1,560,290 bytes; modified, uncommitted).
+2. `uqff_Map.md` (this entry).
+3. `uqff_Plan.md` (Image 122 appended; companion record).
+
+**Verification scripts (created + removed; ephemeral only).**
+- `_session271_pure_calc_verify.py` — read-only validator; ran successfully; deleted.
+- `_strip_false_percentages.py` — one-shot scrubber; ran successfully; deleted.
+
+**Git discipline.** Repo HEAD remained at `2f69d0bc` throughout the session — no commit, no push, no reset. Only `uqff_pure_calculator.py` is currently modified (per Map §15 the user gates all commits).
+
+**Map gates affected:**
+- G6 (b9 master regression): strengthened — pre-fit lies removed means residuals reported now reflect real structural primitives vs SM anchors, not algebraic identities.
+- G7 (14 solver clusters via 7-function surface): unchanged — gold standard 99-system catalog intact + 14 cosmological + 15 cluster categories confirmed.
+
+**Predicted next sweep (open):** (1) optional polish — promote `_ledger_residual_all()` output into provenance strings at runtime instead of static labels; (2) extend honest residual reporting to the ~30 `_*_canonical_sat` Layer 45 primitives (Session 263 carry-over); (3) commit + push Session 271 changes pending user approval phrase.
+
+**Repo memory anchor (no new file).** Plan Image 122 + this Map §19 entry are the canonical record for Session 271. Per Map §15 discipline, no `/memories/` file required for this honesty-pass commit.

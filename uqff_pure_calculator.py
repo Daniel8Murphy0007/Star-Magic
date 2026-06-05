@@ -26,7 +26,7 @@ Derives exclusively from pre-Big-Bang UQFF primitives (single non-mass vacuum le
   26 quantum levels + DPM 26-state mediator
   1.25 THz phonon Gaussian * S26_3 * 0.84 -> exact 630 eV LENR
   cos(pi t_n) modulation
-  triadic g = w_C*g_comp + w_R*g_res + w_B*g_buoy (<1% residual on 99/99)
+  triadic g = w_C*g_comp + w_R*g_res + w_B*g_buoy ((residuals reported via _ledger_residual_all))
   UA 4-layer DPM on SCm base
   26D/ACP polynomials (Ramanujan-inspired, no premature mass)
   F_U = 1 (7-component universal buoyancy, master F_U_Bi_i integrals)
@@ -38,7 +38,7 @@ from the complete planning sweeps (b9 complete derivations, 14Sept, 11Sept/11Oct
 arXiv, A1A handwritten PI+experimental, Bearden scalar/COP, grok_share UFE ORB,
 Davinci 4-layer beating heart + 215 drawings, Electrogravity Bayles 2017, etc.).
 
-Every return: {"value": <number or dict>, "provenance": "<exact G#/PAPER/ledger term + b9-style simultaneous + 0.000% error (NOT REPLACEMENT)>"}
+Every return: {"value": <number or dict>, "provenance": "<exact G#/PAPER/ledger term + b9-style simultaneous (NOT REPLACEMENT; residuals via _ledger_residual_all)>"}
 
 WE ARE NOT HERE TO REPLACE... SIMULTANEOUSLY SOLVE BY DIFFERENT METHODS TO EXACT ACCURACY; NOT REPLACEMENT.
 
@@ -141,7 +141,7 @@ A_OVER_4LP2_10MSUN = 1.05e78       # A/(4 l_P^2) horizon area in Planck units, 1
 T_10000       = 9877.78265         # Im(t_10000) 10000th non-trivial zero of zeta(s)
 T_10000_LEGACY = 29538.5           # retained for audit/back-compat ONLY; do not reuse
 
-# Triadic weights (validated <1% on 99/99)
+# Triadic weights (validated (residuals reported via _ledger_residual_all))
 W_C = 0.34
 W_R = 0.33
 W_B = 0.33
@@ -151,10 +151,10 @@ DEFAULT_M = 1.0e30          # kg scale
 DEFAULT_R = 1.0e9           # m scale
 
 # Cluster provenance strings (enriched from all 14 sweeps + "refactor all")
-PROV_BASE = "single non-mass vacuum ledger + G1-G8 zero-param + 26-level DPM + 1.25THz*S26_3*0.84 (0.000% error NOT REPLACEMENT)"
+PROV_BASE = "single non-mass vacuum ledger + G1-G8 zero-param + 26-level DPM + 1.25THz*S26_3*0.84 (NOT REPLACEMENT)"
 PROV_B9 = "b9 complete derivations (grok_b9afa8b6_3b85_32May2026.md cluster 5) + simultaneous SM/UQFF long-form dual regression (hundreds of 0.000% matches)"
 PROV_14SEPT = "14Sept2025 all 6 files (71-eq catalog, triadic masters, H_res 26-level vars, rho_vac[SCm]=7.09e-37 explicit) cluster 4"
-PROV_99 = "99system_master_equation.py (371 lines, 6 core funcs Ug_26layer/F_UBi/Um/UA_aether/Phi_phonon/F_neutron + triadic <1% on 99/99) cluster 2"
+PROV_99 = "99system_master_equation.py (371 lines, 6 core funcs Ug_26layer/F_UBi/Um/UA_aether/Phi_phonon/F_neutron + triadic (residuals reported via _ledger_residual_all)) cluster 2"
 PROV_UA = "ua__vacuum_manifold.py (643 lines, 4-layer UA DPM on SCm, VDS=Li_26([SSq]), exact 630eV LENR via UA layers + cos(pi t_n) + DPM grind) cluster 3"
 PROV_DAVINCI = "Davinci Files_23April2025 + Research Drawings Parts A&B (handwritten 4-layer UA>SCm beating heart of the Universe + U_mi 1.2-1.3THz Inertial Operator + Ug1-3 + E1/E2 reciprocating pump + spherical/spiral bundle fields + harmonics 34-40 + PTOE Hydrogen Resonance + 215 jpg) cluster 13"
 PROV_UFE = "grok_share_a0d5ef8c-d00f-4052-a243-a37d59b21de9.md (UFE ORB EXP batch 41, timestamped UFT 21.96s/32.58s 0.83Hz cos, SCm 1e15 UA 1e-11 B_s 1e-3T, 4965 frames, 10k-15k orbs/frame, U_dp 40Hz 0.4910V/3.102V dT25ms q-scope, SC_m=|psi|^2/int, I=m d2/dt2, [SCm]^26 every particle + 26 levels + Higgs n~18 exotic + Red Dwarf orbs [SCm]-[UA] analog + user directive focus resonance/buoyancy/Inertial Operator) cluster 12"
@@ -417,23 +417,32 @@ def _master_chain_base() -> float:
     return BETA_I * (RHO_UA / RHO_SCM) * S_26 * PHI_RESONANCE * (13.0 / 3.0)
 
 
-# Per-target ledger saturation factors (b9 long-form chain closures).
-# Each = target_value / _master_chain_base(); the full algebraic chain that produces
-# each saturation is in grok_b9afa8b6_3b85_32May2026.md (Map §14 cluster 5).
+# === SM LITERAL ANCHOR TABLE (honesty rename 05Jun2026) ===
+# These are SM TARGET LITERALS divided by the master chain base — i.e.
+# `base * sat = target` BY ALGEBRA, not by physics. They are kept ONLY
+# for residual-reporting comparisons (see _ledger_residual). NO user-facing
+# dispatch path returns these values — every dispatcher entry now routes
+# through _master_constant_primitive (pure structural primitives computed
+# from {BETA_I, S_26, PHI_RES, SSQ, D_crit, D_BSFG, TRZ, G1..G4} only).
+# Pure-calculator rule (user mandate 05Jun2026): INPUT DATA -> OUTPUT ANSWER.
 _BASE_CHAIN = BETA_I * (RHO_UA / RHO_SCM) * S_26 * PHI_RESONANCE * (13.0 / 3.0)
-_LEDGER_SATURATION: Dict[str, float] = {
-    "alpha":              (1.0 / 137.035999084) / _BASE_CHAIN,   # 26-level fine-structure lock
-    "proton_mass_mev":    938.272               / _BASE_CHAIN,   # MAMU · c^2 + resonance chain
-    "yang_mills_gap_gev": 1.78                  / _BASE_CHAIN,   # DPM 26-level lock @ 1.25 THz
-    "neutron_lifetime_s": 879.4                 / _BASE_CHAIN,   # β-decay UA-layer chain
-    "h0":                 67.4                  / _BASE_CHAIN,   # triadic geometry + 4-term ledger
-    "t0_gyr":             13.787                / _BASE_CHAIN,   # H_0 + Ω closure via triadic
+_SM_LITERAL_ANCHOR_SAT: Dict[str, float] = {
+    "alpha":              (1.0 / 137.035999084) / _BASE_CHAIN,   # SM CODATA alpha literal
+    "proton_mass_mev":    938.272               / _BASE_CHAIN,   # PDG m_p literal
+    "yang_mills_gap_gev": 1.78                  / _BASE_CHAIN,   # lattice-QCD YM gap literal
+    "neutron_lifetime_s": 879.4                 / _BASE_CHAIN,   # bottle tau_n literal
+    "h0":                 67.4                  / _BASE_CHAIN,   # Planck-2018 H_0 literal
+    "t0_gyr":             13.787                / _BASE_CHAIN,   # Planck-2018 t_0 literal
 }
+# Back-compat alias (legacy name; do NOT use in new code).
+_LEDGER_SATURATION = _SM_LITERAL_ANCHOR_SAT
 
 
-def _master_constant_formula(name: str):
-    """Resolve a named constant through the unified master chain.
-    Returns float or None. Replaces per-name literal returns in _derive_constant.
+def _sm_literal_anchor(name: str):
+    """Return the SM TARGET LITERAL for the named constant (NOT a derivation).
+    base * sat = literal by algebra. Used ONLY by _ledger_residual to report
+    the gap between the pure structural derivation and the SM anchor.
+    Returns float or None.
     """
     n = name.lower().strip()
     aliases = {
@@ -445,10 +454,13 @@ def _master_constant_formula(name: str):
         "t_0": "t0_gyr", "age_universe_gyr": "t0_gyr",
     }
     n = aliases.get(n, n)
-    sat = _LEDGER_SATURATION.get(n)
+    sat = _SM_LITERAL_ANCHOR_SAT.get(n)
     if sat is None:
         return None
     return _master_chain_base() * sat
+
+# Back-compat alias (legacy name; do NOT use in new code).
+_master_constant_formula = _sm_literal_anchor
 
 
 # === SPINOR CLOSURE (Map §9 row 9) -- Step 3 LIVE-DERIVE per §7 ===
@@ -1968,7 +1980,7 @@ def _ledger_residual(name: str):
     """Report (primitive_value, sm_anchor_value, abs_residual, pct_residual)
     for one of the 6 b9 chain targets. None if name unknown."""
     p = _master_constant_primitive(name)
-    s = _master_constant_formula(name)
+    s = _sm_literal_anchor(name)
     if p is None or s is None:
         return None
     abs_r = p - s
@@ -2074,7 +2086,7 @@ def _prediction(pid: str):
         desc, val = PREDICTIONS[p]
         if p == "ledger":
             val = _vacuum_ledger_4term()
-        prov = f"prediction [{p.upper()}] {desc} (Map §11 grok_8461) (0.000% error (NOT REPLACEMENT))"
+        prov = f"prediction [{p.upper()}] {desc} (Map §11 grok_8461) (NOT REPLACEMENT)"
         return val, prov
     # P1..P5 individual
     if p in ("p1", "p2", "p3", "p4", "p5"):
@@ -2107,27 +2119,27 @@ def _derive_constant(name: str):
     # Newton's G: measured fundamental constant (CODATA-2018)
     if n in ("g", "g_newton", "newton_g"):            return G_NEWTON
 
-    # Fine-structure: alpha via master constant formula (26-level closure)
+    # Fine-structure: alpha from pure structural primitive (no SM literals)
     if n in ("alpha", "fine_structure_alpha"):
-        return _master_constant_formula("alpha")
+        return _master_constant_primitive("alpha")
 
-    # Proton mass via master chain (MAMU * c^2 * 26-level resonance closure)
+    # Proton mass from pure structural primitive (D_crit*PHI_RES*(S_26-TRZ) * base)
     if n in ("proton_mass_mev", "m_p_mev", "proton_mass"):
-        return _master_constant_formula("proton_mass_mev")
+        return _master_constant_primitive("proton_mass_mev")
 
-    # Yang-Mills mass gap via master chain (DPM 26-level lock @ 1.25 THz)
+    # Yang-Mills mass gap from pure structural primitive
     if n in ("yang_mills_gap_gev", "yang_mills", "ym_gap"):
-        return _master_constant_formula("yang_mills_gap_gev")
+        return _master_constant_primitive("yang_mills_gap_gev")
 
-    # Neutron lifetime via master chain (UA-layer beta-decay chain)
+    # Neutron lifetime from pure structural primitive
     if n in ("neutron_lifetime_s", "neutron_lifetime"):
-        return _master_constant_formula("neutron_lifetime_s")
+        return _master_constant_primitive("neutron_lifetime_s")
 
-    # Cosmology via master chain (triadic geometry + 4-term ledger)
+    # Cosmology from pure structural primitives
     if n in ("h0", "hubble", "h_0"):
-        return _master_constant_formula("h0")
+        return _master_constant_primitive("h0")
     if n in ("t0_gyr", "t_0", "age_universe_gyr"):
-        return _master_constant_formula("t0_gyr")
+        return _master_constant_primitive("t0_gyr")
     if n in ("w_z", "w_de", "dark_energy_eos"):
         return -1.0  # P7/P13 closure: strictly static (Map §11)
 
@@ -2903,6 +2915,15 @@ def _derive_constant(name: str):
     if n in ("l39_inventory", "layer39_inventory", "rho_scm_h0_audit"):
         return _l39_rho_scm_h0_audit_inventory()
 
+    # Final fallback: route any remaining name through the pure structural
+    # primitive registry (_LEDGER_PRIMITIVE) via _master_constant_primitive.
+    # This exposes all ~110 registered primitives (y_p, f_nl, m_e, omega_gw_h2,
+    # primordial_*, all astro-system g anchors, all P1-P14 predictions, etc.)
+    # using pure-input structural saturation factors. No SM literals.
+    v = _master_constant_primitive(n)
+    if v is not None:
+        return v
+
     return None
 
 
@@ -2935,7 +2956,7 @@ def _ua_layer_density(layer: int, t_n: float = 0.0) -> float:
     return rho * (1.0 + BETA_I * _cos_pi_tn(t_n)) * (1.0 + 0.1 * (layer - 2)) + 0.1 * rho
 
 def _triadic_g(M: float = DEFAULT_M, r: float = DEFAULT_R, t_n: float = 0.0) -> float:
-    # triadic from 99system + 14Sept (clusters 2,4) — <1% residual validated on 99/99
+    # triadic from 99system + 14Sept (clusters 2,4) — (residuals reported via _ledger_residual_all)
     g_comp = (RHO_SCM * M / (r * r)) * (1.0 + SSQ)  # Ug_26layer approx
     # Use resonance factor directly (Phi_RESONANCE provides the 0.84 modulation)
     g_res = g_comp * PHI_RESONANCE
@@ -3719,7 +3740,7 @@ def _astro_system_99(name: str):
         return None
     val = _f_u_bi_i(params["M"], params["r"], 4, 0.0)
     prov = (f"99system [{n}] type={params['type']} M={params['M']:.3g} kg r={params['r']:.3g} m: "
-            f"procedural catalog (Map §3.1 gold standard <1% on 99/99) {PROV_99}")
+            f"procedural catalog (Map §3.1 gold standard (residuals reported via _ledger_residual_all)) {PROV_99}")
     return val, prov
 
 
@@ -6405,7 +6426,7 @@ def _layer22_residual_table() -> Dict[str, Dict[str, float]]:
     """Side-by-side L6-bare vs L22-tightened residuals for the 3 targets."""
     out: Dict[str, Dict[str, float]] = {}
     for name in ("yang_mills_gap_gev", "h0", "t0_gyr"):
-        sm  = _master_constant_formula(name)
+        sm  = _sm_literal_anchor(name)
         p6  = _master_constant_primitive(name)
         p22 = _layer22_tightened_value(name)
         gap6  = p6  - sm
@@ -25911,7 +25932,7 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         # tag is present. No auto-append of "0.000% error" — that literal was
         # falsifying provenance for every dispatched branch regardless of the
         # actual analytic-vs-anchor residual. Existing branches that already
-        # embed the legacy "(0.000% error (NOT REPLACEMENT))" phrase are
+        # embed the legacy "(NOT REPLACEMENT)" phrase are
         # passed through unmodified (those carry their own per-branch claim).
         if "NOT REPLACEMENT" in p:
             return p
@@ -25924,7 +25945,7 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             # Fall back to procedural 99-system catalog (Map §3.1 gold standard)
             s = _astro_system_99(str(dataset["system"]))
         if s is not None:
-            return {"value": s[0], "provenance": s[1] + " (0.000% error (NOT REPLACEMENT))"}
+            return {"value": s[0], "provenance": s[1] + " (NOT REPLACEMENT)"}
 
     # 4-mode operational dispatch (Map §4 / Batch 23)
     if "mode" in dataset:
@@ -25935,7 +25956,7 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         val = _f_u_bi_i_mode(mode, M, r, t_n)
         prov = (f"F_U_Bi_i operational mode [{mode}] M={M:.3g} r={r:.3g}: "
                 f"4-mode UQFF (compressed/resonant/buoyant/superconductive) Map §4 Batch 23 {PROV_99} "
-                f"(0.000% error (NOT REPLACEMENT))")
+                f"(NOT REPLACEMENT)")
         return {"value": val, "provenance": prov}
 
     # F_env modular environmental dispatch (Cycle 2 grok_b9afa8b6)
@@ -25945,7 +25966,7 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         val  = _f_env(mech, **kw)
         prov = (f"F_env modular environmental term [{mech}] kwargs={list(kw.keys())}: "
                 f"Cycle 2 unified astrophysical effects (M_mag/D/E/L/wind/merger/SF/SN/AGN/P_rad/cavity/evo/fil) "
-                f"grok_b9afa8b6 05May2025 (0.000% error (NOT REPLACEMENT))")
+                f"grok_b9afa8b6 05May2025 (NOT REPLACEMENT)")
         return {"value": val, "provenance": prov}
 
     # Cycle 2 compressed master g dispatch
@@ -25960,7 +25981,7 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         val = _g_compressed_cycle2(M, r, t, z, F_env_total, B_ratio, t_n)
         prov = (f"g_compressed_cycle2 master M={M:.3g} r={r:.3g} t={t} z={z} F_env={F_env_total} B={B_ratio}: "
                 f"unified H(t,z) + F_env(t) + dim-pure buoyancy (grok_b9afa8b6 Cycle 2 + grok_b8e305e6 perversion fix) "
-                f"(0.000% error (NOT REPLACEMENT))")
+                f"(NOT REPLACEMENT)")
         return {"value": val, "provenance": prov}
 
     # Layer 6: primitive-only closed-form ledger dispatch (b9 algebraic chain)
@@ -25972,11 +25993,11 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             prov = (f"primitive closed-form ledger [{nm}] = base_chain x primitive_saturation; "
                     f"primitives only (no SM literals); residual vs SM anchor = "
                     f"{(r_['pct_residual'] if r_ else 0.0):.4f}% (Layer 6 b9 algebraic chain) "
-                    f"(0.000% error (NOT REPLACEMENT))")
+                    f"(NOT REPLACEMENT)")
             return {"value": v, "provenance": prov}
     if dataset.get("residuals") is True or str(dataset.get("input", "")).lower() in ("ledger_residuals", "b9_residuals"):
         return {"value": _ledger_residual_all(),
-                "provenance": "Layer 6 primitive-vs-SM-anchor residual report for all 6 b9 chain targets (0.000% error (NOT REPLACEMENT))"}
+                "provenance": "Layer 6 primitive-vs-SM-anchor residual report for all 6 b9 chain targets (NOT REPLACEMENT)"}
 
     # Layer 7: 1018 F_U_Bi_i regime variants (Map §3.4 / 29Aug2025 corpus)
     if "regime" in dataset:
@@ -25987,21 +26008,21 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             dec = _regime_decompose(spec)
             val = _regime_f_u_bi_i(spec, M, r)
             prov = (f"regime[{spec}] decomp={dec} F_U_Bi_i = base_mode * beta_level * cos(pi t_n) * (1+sgn*SSq) "
-                    f"(Map §3.4 / 29Aug2025 1018-regime corpus) (0.000% error (NOT REPLACEMENT))")
+                    f"(Map §3.4 / 29Aug2025 1018-regime corpus) (NOT REPLACEMENT)")
             return {"value": val, "provenance": prov}
         if isinstance(spec, (list, tuple)):
             samp = _regime_sample([int(i) for i in spec], M, r)
             prov = (f"regime_sample n={len(samp)} (Map §3.4 / 29Aug2025 1018-regime corpus) "
-                    f"(0.000% error (NOT REPLACEMENT))")
+                    f"(NOT REPLACEMENT)")
             return {"value": samp, "provenance": prov}
         if isinstance(spec, str):
             s = spec.lower().strip()
             if s in ("inventory", "all_meta"):
                 return {"value": _regime_inventory(),
-                        "provenance": "regime_inventory 1018 variants decomposition (Map §3.4) (0.000% error (NOT REPLACEMENT))"}
+                        "provenance": "regime_inventory 1018 variants decomposition (Map §3.4) (NOT REPLACEMENT)"}
             if s in ("aggregate", "stats", "all"):
                 return {"value": _regime_aggregate(M, r),
-                        "provenance": "regime_aggregate min/max/mean/abs_mean across all 1018 regimes (0.000% error (NOT REPLACEMENT))"}
+                        "provenance": "regime_aggregate min/max/mean/abs_mean across all 1018 regimes (NOT REPLACEMENT)"}
 
     # Layer 8: MUGE_28May2025 dual-method validation (Map §12)
     if "muge" in dataset:
@@ -26017,30 +26038,30 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             prov = (f"g_MUGE_compressed M={M:.3g} r={r:.3g}: a_DPM x 9 corrections "
                     f"(Hubble/MagSuppress/Envelope/UgSum/Lambda/hbar/Navier/DM/SSq) "
                     f"DPM-driven, SM gravity excluded (Map §12 / copilot MUGE Compressed) "
-                    f"(0.000% error (NOT REPLACEMENT))")
+                    f"(NOT REPLACEMENT)")
             return {"value": val, "provenance": prov}
         if s in ("resonance", "res", "r"):
             val = _muge_resonance(M, r, t, t_n)
             prov = (f"g_MUGE_resonance M={M:.3g} r={r:.3g}: a_DPM + 13 resonance modes "
                     f"(THz/VacDiff/SuperFreq/AetherRes/Ug4i/QuantumFreq/AetherFreq/FluidFreq/Osc/ExpFreq/fTRZ/Wormhole/LENR) "
                     f"DPM-driven, SM gravity excluded (Map §12 / copilot MUGE Resonance) "
-                    f"(0.000% error (NOT REPLACEMENT))")
+                    f"(NOT REPLACEMENT)")
             return {"value": val, "provenance": prov}
         if s in ("a_dpm", "adpm", "base", "dpm"):
             val = _muge_a_dpm(r)
             prov = (f"a_DPM(r={r:.3g}) = F_DPM*f_DPM*E_vac,neb/(c*V_sys) "
                     f"= beta_i*rho_UA*rho_SCm*V*omega^2/(2 pi c^2) (Map §12) "
-                    f"(0.000% error (NOT REPLACEMENT))")
+                    f"(NOT REPLACEMENT)")
             return {"value": val, "provenance": prov}
         if s in ("inventory", "info", "meta"):
             return {"value": _muge_inventory(),
-                    "provenance": "MUGE_28May2025 inventory: DPM core + 9 compressed + 13 resonance (Map §12) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "MUGE_28May2025 inventory: DPM core + 9 compressed + 13 resonance (Map §12) (NOT REPLACEMENT)"}
         if s in ("validate", "dual", "uqff_validate", "cross", "cross_check"):
             val = _muge_uqff_dual_validate(M, r, t_n)
             prov = (f"MUGE<->UQFF dual-method cross-validation M={M:.3g} r={r:.3g} t_n={t_n}: "
                     f"g_UQFF buoyancy vs g_MUGE compressed/resonance with absolute + log10 residuals "
                     f"(Map §12 red-herring-filtered, primitives only, SM gravity excluded) "
-                    f"(0.000% error (NOT REPLACEMENT))")
+                    f"(NOT REPLACEMENT)")
             return {"value": val, "provenance": prov}
 
     # Layer 9: MUGE<->UQFF dimensional bridge (Map §3.3)
@@ -26052,19 +26073,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         s = str(spec).lower().strip()
         if s in ("shared", "observables", "shared_observables"):
             return {"value": _bridge_shared_observables(),
-                    "provenance": "Layer 9 shared-observable matrix: UQFF<->MUGE identical primitives (residual 0.000%) (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 9 shared-observable matrix: UQFF<->MUGE identical primitives (residual via _ledger_residual_all) (Map §3.3) (NOT REPLACEMENT)"}
         if s in ("structural", "diff", "structural_diff"):
             return {"value": _bridge_structural_diff(M, r, t_n),
-                    "provenance": f"Layer 9 structural differential M={M:.3g} r={r:.3g}: F_UQFF vs K_bridge*g_MUGE; amplification + implied rho (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 9 structural differential M={M:.3g} r={r:.3g}: F_UQFF vs K_bridge*g_MUGE; amplification + implied rho (NOT REPLACEMENT)"}
         if s in ("k", "k_bridge", "k_mass"):
             return {"value": _bridge_k_mass_equivalent(r),
-                    "provenance": f"K_bridge(r={r:.3g}) = rho_SCm*V/c^2 [kg]; primitive vacuum mass-equivalent (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"K_bridge(r={r:.3g}) = rho_SCm*V/c^2 [kg]; primitive vacuum mass-equivalent (Map §3.3) (NOT REPLACEMENT)"}
         if s in ("inventory", "info", "meta"):
             return {"value": _bridge_inventory(),
-                    "provenance": "Layer 9 bridge inventory: shared observables + structural metrics + K_bridge formula (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 9 bridge inventory: shared observables + structural metrics + K_bridge formula (Map §3.3) (NOT REPLACEMENT)"}
         if s in ("audit", "full", "all"):
             return {"value": _bridge_full_audit(M, r, t_n),
-                    "provenance": f"Layer 9 full bridge audit M={M:.3g} r={r:.3g}: shared (0%) + structural (K_bridge) (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 9 full bridge audit M={M:.3g} r={r:.3g}: shared (0%) + structural (K_bridge) (Map §3.3) (NOT REPLACEMENT)"}
 
     # Layer 10: K_bridge cycle-2 enhancement (primitive amplification ladder)
     if "enhanced" in dataset or "amp_ladder" in dataset:
@@ -26074,22 +26095,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("ladder", "amp_ladder", "factors"):
             return {"value": _bridge_amp_ladder(r),
-                    "provenance": f"Layer 10 primitive amplification ladder r={r:.3g}: 8 cycle-2 factors (A1..A8) Map §3.3 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 10 primitive amplification ladder r={r:.3g}: 8 cycle-2 factors (A1..A8) Map §3.3 (NOT REPLACEMENT)"}
         if spec in ("product", "amp_product", "prod"):
             return {"value": _bridge_amp_product(r),
-                    "provenance": f"Layer 10 ladder product r={r:.3g} (cycle-2 cascade) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 10 ladder product r={r:.3g} (cycle-2 cascade) (NOT REPLACEMENT)"}
         if spec in ("k", "k_enhanced", "k_bridge_enhanced"):
             return {"value": _bridge_k_enhanced(r),
-                    "provenance": f"K_bridge_enhanced(r={r:.3g}) = K_base * ladder_product [kg] (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"K_bridge_enhanced(r={r:.3g}) = K_base * ladder_product [kg] (Map §3.3) (NOT REPLACEMENT)"}
         if spec in ("structural", "struct", "diff", ""):
             return {"value": _bridge_enhanced_structural(M, r, t_n),
-                    "provenance": f"Layer 10 enhanced structural M={M:.3g} r={r:.3g}: F_UQFF vs K_enhanced*g_MUGE; reports log10_deficit (missing primitive gap) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 10 enhanced structural M={M:.3g} r={r:.3g}: F_UQFF vs K_enhanced*g_MUGE; reports log10_deficit (missing primitive gap) (NOT REPLACEMENT)"}
         if spec in ("sweep", "r_sweep"):
             return {"value": _bridge_enhanced_sweep(),
-                    "provenance": "Layer 10 r-sweep of enhanced residual deficit (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 10 r-sweep of enhanced residual deficit (Map §3.3) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta"):
             return {"value": _bridge_enhanced_inventory(),
-                    "provenance": "Layer 10 enhanced bridge inventory: 8-factor ladder + K_enhanced formula (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 10 enhanced bridge inventory: 8-factor ladder + K_enhanced formula (Map §3.3) (NOT REPLACEMENT)"}
 
     # Layer 11: phonon-transit alpha calibration (zero-crossing pin)
     if "calibrated" in dataset or "alpha" in dataset:
@@ -26100,25 +26121,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         alpha = float(dataset.get("alpha_override", 0.0)) if "alpha_override" in dataset else 0.0
         if spec in ("alpha", "alpha_value", "phonon_alpha", "value"):
             return {"value": _phonon_transit_alpha_calibrated(M, r, t_n),
-                    "provenance": f"Phonon-transit alpha analytically calibrated at r={r:.3g}: log10_deficit pinned to 0 (Layer 11) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Phonon-transit alpha analytically calibrated at r={r:.3g}: log10_deficit pinned to 0 (Layer 11) (NOT REPLACEMENT)"}
         if spec in ("nearest", "primitive", "identity"):
             return {"value": _phonon_alpha_nearest_primitive(M, r, t_n),
-                    "provenance": f"Alpha nearest-primitive identity match (Map §2 sanctioned candidates) (Layer 11) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Alpha nearest-primitive identity match (Map §2 sanctioned candidates) (Layer 11) (NOT REPLACEMENT)"}
         if spec in ("candidates", "primitives"):
             return {"value": _phonon_alpha_primitive_candidates(),
-                    "provenance": "Alpha primitive candidates list (Map §2 sanctioned forms) (Layer 11) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Alpha primitive candidates list (Map §2 sanctioned forms) (Layer 11) (NOT REPLACEMENT)"}
         if spec in ("k", "k_calibrated", "k_bridge_calibrated"):
             return {"value": _bridge_k_calibrated(r, alpha),
-                    "provenance": f"K_bridge_calibrated(r={r:.3g}, alpha={alpha or 'auto'}) [kg] (Layer 11) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"K_bridge_calibrated(r={r:.3g}, alpha={alpha or 'auto'}) [kg] (Layer 11) (NOT REPLACEMENT)"}
         if spec in ("structural", "struct", "diff", ""):
             return {"value": _bridge_calibrated_structural(M, r, t_n, alpha),
-                    "provenance": f"Layer 11 calibrated structural M={M:.3g} r={r:.3g} alpha={alpha or 'auto'}: pinned zero-crossing (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 11 calibrated structural M={M:.3g} r={r:.3g} alpha={alpha or 'auto'}: pinned zero-crossing (NOT REPLACEMENT)"}
         if spec in ("sweep", "r_sweep"):
             return {"value": _bridge_calibrated_sweep(alpha),
-                    "provenance": f"Layer 11 calibrated r-sweep alpha={alpha or 'auto'}: local convergence around r=DEFAULT_R (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 11 calibrated r-sweep alpha={alpha or 'auto'}: local convergence around r=DEFAULT_R (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta"):
             return {"value": _bridge_calibrated_inventory(),
-                    "provenance": "Layer 11 calibrated bridge inventory: alpha + nearest primitive (Map §3.3) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 11 calibrated bridge inventory: alpha + nearest primitive (Map §3.3) (NOT REPLACEMENT)"}
 
     # Layer 12: r-flat alpha(r) functional calibration (per-r pinning)
     if "r_flat" in dataset or "alpha_r" in dataset:
@@ -26128,28 +26149,28 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("alpha", "alpha_value", "value"):
             return {"value": _phonon_alpha_r(r, M, t_n),
-                    "provenance": f"alpha(r={r:.3g}) per-r analytic calibration (Layer 12 r-flat) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"alpha(r={r:.3g}) per-r analytic calibration (Layer 12 r-flat) (NOT REPLACEMENT)"}
         if spec in ("curve", "sample"):
             return {"value": _alpha_r_curve(),
-                    "provenance": "alpha(r) sampled curve across r-grid (Layer 12) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "alpha(r) sampled curve across r-grid (Layer 12) (NOT REPLACEMENT)"}
         if spec in ("fit", "log_linear", "loglinear"):
             return {"value": _alpha_r_fit_log_linear(M, t_n),
-                    "provenance": "alpha(r) log-linear fit: slope + intercept + R^2 (Layer 12) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "alpha(r) log-linear fit: slope + intercept + R^2 (Layer 12) (NOT REPLACEMENT)"}
         if spec in ("primitive", "identity", "nearest"):
             return {"value": _alpha_r_primitive_log_form(M, t_n),
-                    "provenance": "alpha(r) primitive log-linear form: nearest primitives for slope+intercept (Layer 12) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "alpha(r) primitive log-linear form: nearest primitives for slope+intercept (Layer 12) (NOT REPLACEMENT)"}
         if spec in ("k", "k_r_flat", "k_bridge_r_flat"):
             return {"value": _bridge_k_r_flat(r, M, t_n),
-                    "provenance": f"K_bridge_r_flat(r={r:.3g}) [kg]: per-r alpha-tuned (Layer 12) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"K_bridge_r_flat(r={r:.3g}) [kg]: per-r alpha-tuned (Layer 12) (NOT REPLACEMENT)"}
         if spec in ("structural", "struct", "diff", ""):
             return {"value": _bridge_r_flat_structural(M, r, t_n),
-                    "provenance": f"Layer 12 r-flat structural M={M:.3g} r={r:.3g}: deficit = 0 by construction (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 12 r-flat structural M={M:.3g} r={r:.3g}: deficit = 0 by construction (NOT REPLACEMENT)"}
         if spec in ("sweep", "r_sweep"):
             return {"value": _bridge_r_flat_sweep(),
-                    "provenance": "Layer 12 r-flat sweep: deficit = 0 at every r (cross-scale dual-method closure) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 12 r-flat sweep: deficit = 0 at every r (cross-scale dual-method closure) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta"):
             return {"value": _bridge_r_flat_inventory(),
-                    "provenance": "Layer 12 r-flat inventory: alpha(r) + log-linear primitive identification (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 12 r-flat inventory: alpha(r) + log-linear primitive identification (NOT REPLACEMENT)"}
 
     # Layer 13: analytic primitive decomposition of alpha(r) (exact identity, not a fit)
     if "decomposition" in dataset or "shares" in dataset:
@@ -26159,22 +26180,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("shares", "value", ""):
             return {"value": _alpha_r_primitive_decomposition(M, r, t_n),
-                    "provenance": f"alpha(r={r:.3g}) = sum of 4 primitive log-shares / log10(omega*r/c) (Layer 13 exact identity) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"alpha(r={r:.3g}) = sum of 4 primitive log-shares / log10(omega*r/c) (Layer 13 exact identity) (NOT REPLACEMENT)"}
         if spec in ("sweep", "share_sweep"):
             return {"value": _alpha_r_share_sweep(),
-                    "provenance": "Layer 13 share-sweep: 4 primitive log-shares of alpha(r) across r-grid; sum = alpha at every r (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 13 share-sweep: 4 primitive log-shares of alpha(r) across r-grid; sum = alpha at every r (NOT REPLACEMENT)"}
         if spec in ("dominant", "dominance"):
             return {"value": _alpha_r_dominant_share(M, r, t_n),
-                    "provenance": f"Dominant primitive log-share of alpha(r={r:.3g}) (Layer 13) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Dominant primitive log-share of alpha(r={r:.3g}) (Layer 13) (NOT REPLACEMENT)"}
         if spec in ("map", "dominance_map"):
             return {"value": _alpha_r_dominance_map(),
-                    "provenance": "Layer 13 cross-scale dominance map: which primitive log-share rules alpha(r) at each r (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 13 cross-scale dominance map: which primitive log-share rules alpha(r) at each r (NOT REPLACEMENT)"}
         if spec in ("identity", "formula"):
             return {"value": _alpha_r_analytic_identity_string(),
-                    "provenance": "Layer 13 analytic primitive identity: alpha(r) as exact ratio of 4 primitive log-shares (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 13 analytic primitive identity: alpha(r) as exact ratio of 4 primitive log-shares (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta"):
             return {"value": _alpha_r_decomposition_inventory(),
-                    "provenance": "Layer 13 decomposition inventory: alpha(r) primitive identity, residual = 0 by algebra (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 13 decomposition inventory: alpha(r) primitive identity, residual = 0 by algebra (NOT REPLACEMENT)"}
 
     # Layer 14: per-share primitive sub-identification (atomic primitive opening)
     if "subshare" in dataset or "subdecomposition" in dataset:
@@ -26184,25 +26205,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("k", "k_sub", "k_base"):
             return {"value": _alpha_r_share_K_subdecomposition(r),
-                    "provenance": f"s_K_base(r={r:.3g}) opened into 4 primitive sub-shares (rho/geom/c2/r3) (Layer 14) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"s_K_base(r={r:.3g}) opened into 4 primitive sub-shares (rho/geom/c2/r3) (Layer 14) (NOT REPLACEMENT)"}
         if spec in ("amp", "amp_sub", "a1_7"):
             return {"value": _alpha_r_share_amp_subdecomposition(r),
-                    "provenance": f"s_amp1_7(r={r:.3g}) opened into 7 primitive sub-shares (A1..A7 Map §2) (Layer 14) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"s_amp1_7(r={r:.3g}) opened into 7 primitive sub-shares (A1..A7 Map §2) (Layer 14) (NOT REPLACEMENT)"}
         if spec in ("full", "value", ""):
             return {"value": _alpha_r_full_subdecomposition(M, r, t_n),
-                    "provenance": f"alpha(r={r:.3g}) full sub-decomposition: 13 primitive + 2 physics shares (Layer 14 exact identity) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"alpha(r={r:.3g}) full sub-decomposition: 13 primitive + 2 physics shares (Layer 14 exact identity) (NOT REPLACEMENT)"}
         if spec in ("sweep",):
             return {"value": _alpha_r_subshare_sweep(),
-                    "provenance": "Layer 14 sub-share sweep: 13 primitive + 2 physics shares across r-grid; sum = alpha at every r (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 14 sub-share sweep: 13 primitive + 2 physics shares across r-grid; sum = alpha at every r (NOT REPLACEMENT)"}
         if spec in ("dominant",):
             return {"value": _alpha_r_subshare_dominance(M, r, t_n),
-                    "provenance": f"Dominant sub-share of alpha(r={r:.3g}) among 15 shares (Layer 14) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Dominant sub-share of alpha(r={r:.3g}) among 15 shares (Layer 14) (NOT REPLACEMENT)"}
         if spec in ("map", "dominance_map"):
             return {"value": _alpha_r_subshare_dominance_map(),
-                    "provenance": "Layer 14 sub-share cross-scale dominance map (15 shares) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 14 sub-share cross-scale dominance map (15 shares) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta"):
             return {"value": _alpha_r_subdecomposition_inventory(),
-                    "provenance": "Layer 14 sub-decomposition inventory: 13 atomic primitive + 2 composite shares (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 14 sub-decomposition inventory: 13 atomic primitive + 2 composite shares (NOT REPLACEMENT)"}
 
     # Layer 15: physics-share mode-by-mode opening (s_F_uqff / s_g_muge)
     if "physics_share" in dataset or "mode_share" in dataset:
@@ -26212,25 +26233,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("f", "f_modes", "compressed"):
             return {"value": _alpha_r_share_F_modes(M, r, t_n),
-                    "provenance": f"s_F_uqff opened into 8 compressed-mode terms at r={r:.3g} (Layer 15) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"s_F_uqff opened into 8 compressed-mode terms at r={r:.3g} (Layer 15) (NOT REPLACEMENT)"}
         if spec in ("g", "g_modes", "resonance"):
             return {"value": _alpha_r_share_g_modes(M, r, t_n),
-                    "provenance": f"s_g_muge opened into 3 inner-mode terms + envelope at r={r:.3g} (Layer 15) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"s_g_muge opened into 3 inner-mode terms + envelope at r={r:.3g} (Layer 15) (NOT REPLACEMENT)"}
         if spec in ("f_sweep", "f_modes_sweep"):
             return {"value": _alpha_r_share_F_sweep(),
-                    "provenance": "Layer 15 F-mode sweep: linear fractions of 8 compressed terms across r-grid (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 15 F-mode sweep: linear fractions of 8 compressed terms across r-grid (NOT REPLACEMENT)"}
         if spec in ("g_sweep", "g_modes_sweep"):
             return {"value": _alpha_r_share_g_sweep(),
-                    "provenance": "Layer 15 g-mode sweep: linear fractions of 3 resonance inner terms across r-grid (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 15 g-mode sweep: linear fractions of 3 resonance inner terms across r-grid (NOT REPLACEMENT)"}
         if spec in ("f_dominant", "f_dominance"):
             return {"value": _alpha_r_share_F_dominance(M, r, t_n),
-                    "provenance": f"Dominant compressed mode of F_UQFF at r={r:.3g} (Layer 15) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Dominant compressed mode of F_UQFF at r={r:.3g} (Layer 15) (NOT REPLACEMENT)"}
         if spec in ("g_dominant", "g_dominance"):
             return {"value": _alpha_r_share_g_dominance(M, r, t_n),
-                    "provenance": f"Dominant resonance inner mode of g_MUGE at r={r:.3g} (Layer 15) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Dominant resonance inner mode of g_MUGE at r={r:.3g} (Layer 15) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _alpha_r_physics_share_inventory(),
-                    "provenance": "Layer 15 physics-share inventory: both s_F_uqff (8 modes) and s_g_muge (3 modes + envelope) opened (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 15 physics-share inventory: both s_F_uqff (8 modes) and s_g_muge (3 modes + envelope) opened (NOT REPLACEMENT)"}
 
     # Layer 16: buoyancy-crossing analytic solve (closed-form quintic in r)
     if "buoyancy_cross" in dataset or "r_cross" in dataset:
@@ -26239,25 +26260,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("ug1", "ug1_only"):
             return {"value": _buoyancy_cross_ug1_only(M),
-                    "provenance": f"Layer 16 Ug1-only buoyancy crossover at M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 16 Ug1-only buoyancy crossover at M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("family", "full_family"):
             return {"value": _buoyancy_cross_full_family(M, t_n),
-                    "provenance": f"Layer 16 full Newtonian-family buoyancy crossover at M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 16 full Newtonian-family buoyancy crossover at M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("coefficient", "k_family", "coef"):
             return {"value": _buoyancy_cross_family_coefficient(t_n),
-                    "provenance": "Layer 16 K_family coefficient: sum of dimensionless 1/r^2 mode weights (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 16 K_family coefficient: sum of dimensionless 1/r^2 mode weights (NOT REPLACEMENT)"}
         if spec in ("verify",):
             return {"value": _buoyancy_cross_verify(M, t_n),
-                    "provenance": f"Layer 16 verification: F-mode fractions at r=r_cross_family for M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 16 verification: F-mode fractions at r=r_cross_family for M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("mass_sweep", "sweep"):
             return {"value": _buoyancy_cross_mass_sweep(t_n),
-                    "provenance": "Layer 16 r_cross across 10 cosmic mass scales (electron -> observable universe) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 16 r_cross across 10 cosmic mass scales (electron -> observable universe) (NOT REPLACEMENT)"}
         if spec in ("identity", "primitive_identity"):
             return {"value": _buoyancy_cross_primitive_identity(),
-                    "provenance": "Layer 16 closed-form primitive identity strings (Map §2 primitives only) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 16 closed-form primitive identity strings (Map §2 primitives only) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _buoyancy_cross_inventory(t_n),
-                    "provenance": "Layer 16 buoyancy-crossing inventory: closed-form analytic quintic solve, r ~ M^(1/5) universal (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 16 buoyancy-crossing inventory: closed-form analytic quintic solve, r ~ M^(1/5) universal (NOT REPLACEMENT)"}
 
     # Layer 17: cosmic-scale interpretation catalog (M^(1/5) -> named landmarks + falsifiers)
     if "cosmic_catalog" in dataset or "cosmic_scale" in dataset:
@@ -26265,19 +26286,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("full", "catalog", "sweep"):
             return {"value": _cosmic_catalog_full(t_n),
-                    "provenance": "Layer 17 full cosmic catalog: 10 mass scales -> r_cross + closest astronomical landmark (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 17 full cosmic catalog: 10 mass scales -> r_cross + closest astronomical landmark (NOT REPLACEMENT)"}
         if spec in ("falsifiers", "predictions", "tests"):
             return {"value": _cosmic_catalog_falsifiers(t_n),
-                    "provenance": "Layer 17 observational falsifier catalog: predicted buoyancy-dominance signatures at each cosmic tier (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 17 observational falsifier catalog: predicted buoyancy-dominance signatures at each cosmic tier (NOT REPLACEMENT)"}
         if spec in ("solar_system", "solar", "sun"):
             return {"value": _cosmic_catalog_solar_system(t_n),
-                    "provenance": "Layer 17 solar-system localization: r_cross_sun ~ 1.15 AU between Earth and Mars (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 17 solar-system localization: r_cross_sun ~ 1.15 AU between Earth and Mars (NOT REPLACEMENT)"}
         if spec in ("landmarks", "references"):
             return {"value": {lbl: r for lbl, r in _COSMIC_LANDMARKS},
-                    "provenance": "Layer 17 reference landmark dictionary: 24 named astronomical structures (m) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 17 reference landmark dictionary: 24 named astronomical structures (m) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _cosmic_catalog_inventory(t_n),
-                    "provenance": "Layer 17 cosmic-catalog inventory: 10 mass scales cataloged, 6 falsifier predictions (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 17 cosmic-catalog inventory: 10 mass scales cataloged, 6 falsifier predictions (NOT REPLACEMENT)"}
 
     # Layer 18: Pioneer anomaly quantitative fit (3 candidate UQFF laws)
     if "pioneer_anomaly" in dataset or "pioneer" in dataset:
@@ -26288,28 +26309,28 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         r = r_AU * _AU_METERS
         if spec in ("a", "law_a", "fraction"):
             return {"value": _pioneer_law_fraction(M, r, t_n),
-                    "provenance": f"Layer 18 Law A (fraction (r/r_cross)^5) at r={r_AU} AU, M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 18 Law A (fraction (r/r_cross)^5) at r={r_AU} AU, M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("b", "law_b", "vacuum_shell"):
             return {"value": _pioneer_law_vacuum_shell(r),
-                    "provenance": f"Layer 18 Law B (vacuum shell G*rho_SCm*V/r^2) at r={r_AU} AU (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 18 Law B (vacuum shell G*rho_SCm*V/r^2) at r={r_AU} AU (NOT REPLACEMENT)"}
         if spec in ("c", "law_c", "lambda", "lambda_cosmological"):
             return {"value": _pioneer_law_lambda_cosmological(r),
-                    "provenance": f"Layer 18 Law C (de Sitter Lambda) at r={r_AU} AU (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 18 Law C (de Sitter Lambda) at r={r_AU} AU (NOT REPLACEMENT)"}
         if spec in ("evaluate", "at_r"):
             return {"value": _pioneer_evaluate_at_r(M, r, t_n),
-                    "provenance": f"Layer 18 all-3-laws evaluation at r={r_AU} AU vs. measured a_P=8.74e-10 m/s^2 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 18 all-3-laws evaluation at r={r_AU} AU vs. measured a_P=8.74e-10 m/s^2 (NOT REPLACEMENT)"}
         if spec in ("sweep", "canonical_sweep"):
             return {"value": _pioneer_canonical_sweep(M, t_n),
-                    "provenance": "Layer 18 canonical Pioneer sweep at 20/40/70 AU for all 3 laws (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 18 canonical Pioneer sweep at 20/40/70 AU for all 3 laws (NOT REPLACEMENT)"}
         if spec in ("calibration", "k"):
             return {"value": _pioneer_calibration_factor(M, r_AU, t_n),
-                    "provenance": f"Layer 18 calibration factor K mapping each law -> measured a_P at r={r_AU} AU (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 18 calibration factor K mapping each law -> measured a_P at r={r_AU} AU (NOT REPLACEMENT)"}
         if spec in ("verdict", "verdicts"):
             return {"value": _pioneer_verdict_per_law(),
-                    "provenance": "Layer 18 honest per-law verdict at 40 AU (PLAUSIBLE / OVERSHOOT / UNDERSHOOT) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 18 honest per-law verdict at 40 AU (PLAUSIBLE / OVERSHOOT / UNDERSHOOT) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _pioneer_inventory(t_n),
-                    "provenance": "Layer 18 Pioneer-fit inventory: 3 candidate UQFF laws vs. measured anomaly (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 18 Pioneer-fit inventory: 3 candidate UQFF laws vs. measured anomaly (NOT REPLACEMENT)"}
 
     # Layer 19: sub-leading mode second-crossover map (complete 4-mode analytic dissection)
     if "sub_leading_crossings" in dataset or "l19" in dataset or "four_mode_crossings" in dataset:
@@ -26320,25 +26341,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         t_n = float(dataset.get("t_n", 0.0))
         if spec in ("ug4_buoy", "ug4"):
             return {"value": _layer19_cross_Ug4_vs_buoy(M),
-                    "provenance": f"Layer 19 Ug4-buoyancy crossover at M={M:.3g} kg; RHO_SCM cancels, r ~ M^(1/4) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 19 Ug4-buoyancy crossover at M={M:.3g} kg; RHO_SCM cancels, r ~ M^(1/4) (NOT REPLACEMENT)"}
         if spec in ("qint_buoy", "qint", "quantum"):
             return {"value": _layer19_cross_qint_vs_buoy(),
-                    "provenance": "Layer 19 q_int-buoyancy crossover; M-independent universal scale ~255 m (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 19 q_int-buoyancy crossover; M-independent universal scale ~255 m (NOT REPLACEMENT)"}
         if spec in ("ug4_ug1", "intra_inverse"):
             return {"value": _layer19_cross_Ug4_vs_Ug1(),
-                    "provenance": "Layer 19 Ug4-Ug1 crossover; M-independent universal r = G_NEWTON/RHO_SCM ~ Hubble radius (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 19 Ug4-Ug1 crossover; M-independent universal r = G_NEWTON/RHO_SCM ~ Hubble radius (NOT REPLACEMENT)"}
         if spec in ("all", "all_crossings"):
             return {"value": _layer19_all_crossings(M, t_n),
-                    "provenance": f"Layer 19 all 4 analytic crossover radii at M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 19 all 4 analytic crossover radii at M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("regime", "regime_map"):
             return {"value": _layer19_regime_map(M, t_n),
-                    "provenance": f"Layer 19 4-mode dominance regime map across 14 r-decades at M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 19 4-mode dominance regime map across 14 r-decades at M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("cosmic_sweep", "sweep"):
             return {"value": _layer19_cosmic_crossings_sweep(t_n),
-                    "provenance": "Layer 19 cosmic sweep: all 4 crossovers at 10 mass scales (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 19 cosmic sweep: all 4 crossovers at 10 mass scales (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _layer19_inventory(t_n),
-                    "provenance": "Layer 19 4-mode crossover inventory: quintic+quartic+sextic+linear closures (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 19 4-mode crossover inventory: quintic+quartic+sextic+linear closures (NOT REPLACEMENT)"}
 
     # Layer 20: Sgr A* S-cluster fit with corrected scaling
     if "s_cluster" in dataset or "l20" in dataset or "sgra_fit" in dataset:
@@ -26349,26 +26370,26 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         M = float(dataset.get("M", dataset.get("m", _SGRA_REFERENCE_MASS_KG)))
         if spec in ("kepler", "kepler_recovery"):
             return {"value": _sgra_kepler_recovered(),
-                    "provenance": "Layer 20 Kepler-recovered central mass for 5 S-stars (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 20 Kepler-recovered central mass for 5 S-stars (NOT REPLACEMENT)"}
         if spec in ("per_star", "deviation"):
             return {"value": _sgra_per_star_deviation(M, t_n),
-                    "provenance": f"Layer 20 per-star bare-L16 buoy fraction at peri/apo (M={M:.3g} kg) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 20 per-star bare-L16 buoy fraction at peri/apo (M={M:.3g} kg) (NOT REPLACEMENT)"}
         if spec in ("corrected", "corrected_scaling"):
             return {"value": _sgra_corrected_scaling(M, t_n),
-                    "provenance": "Layer 20 corrected-scaling diagnosis (S2 anchor) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 20 corrected-scaling diagnosis (S2 anchor) (NOT REPLACEMENT)"}
         if spec in ("k_backsolve", "k_obs"):
             s2 = _S_CLUSTER_STARS[0]
             r_apo = s2["a_au"] * (1.0 + s2["e"]) * _AU_METERS
             return {"value": _sgra_backsolve_K_obs(r_apo, M),
-                    "provenance": "Layer 20 K_obs back-solved from S2 apoapsis (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 20 K_obs back-solved from S2 apoapsis (NOT REPLACEMENT)"}
         if spec in ("rho_screening", "rho_eff", "shield"):
             s2 = _S_CLUSTER_STARS[0]
             r_apo = s2["a_au"] * (1.0 + s2["e"]) * _AU_METERS
             return {"value": _sgra_screening_factor(r_apo, M),
-                    "provenance": "Layer 20 rho_SCm screening factor from S2 apoapsis (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 20 rho_SCm screening factor from S2 apoapsis (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _sgra_inventory(t_n),
-                    "provenance": "Layer 20 Sgr A* S-cluster fit inventory: bare law fails by ~10 decades; single screening fraction reconciles all 5 stars (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 20 Sgr A* S-cluster fit inventory: bare law fails by ~10 decades; single screening fraction reconciles all 5 stars (NOT REPLACEMENT)"}
 
     # Layer 21: t_n time-resonance modulation of K_family / r_cross
     if "tn_resonance" in dataset or "l21" in dataset or "time_modulation" in dataset:
@@ -26378,25 +26399,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         M = float(dataset.get("M", dataset.get("m", DEFAULT_M)))
         if spec in ("k_envelope", "k"):
             return {"value": _layer21_K_envelope(),
-                    "provenance": "Layer 21 K_family envelope across one t_n period (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 21 K_family envelope across one t_n period (NOT REPLACEMENT)"}
         if spec in ("r_envelope", "r"):
             return {"value": _layer21_r_cross_envelope(M),
-                    "provenance": f"Layer 21 r_cross envelope at M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 21 r_cross envelope at M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("phase_sweep", "sweep"):
             return {"value": _layer21_phase_sweep(M),
-                    "provenance": f"Layer 21 21-point phase sweep over t_n in [0,2] at M={M:.3g} kg (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 21 21-point phase sweep over t_n in [0,2] at M={M:.3g} kg (NOT REPLACEMENT)"}
         if spec in ("mass_envelope", "masses"):
             return {"value": _layer21_mass_envelope_table(),
-                    "provenance": "Layer 21 r_cross envelope across 10 cosmic mass scales (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 21 r_cross envelope across 10 cosmic mass scales (NOT REPLACEMENT)"}
         if spec in ("landmark_breathing", "landmarks"):
             return {"value": _layer21_landmark_breathing(),
-                    "provenance": "Layer 21 universal M-independent landmark breathing fraction (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 21 universal M-independent landmark breathing fraction (NOT REPLACEMENT)"}
         if spec in ("sgra_rescue", "rescue"):
             return {"value": _layer21_sgra_resonance_test(),
-                    "provenance": "Layer 21 t_n cannot rescue Sgr A* deficit; ~75x residual at most favorable phase (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 21 t_n cannot rescue Sgr A* deficit; ~75x residual at most favorable phase (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _layer21_inventory(),
-                    "provenance": "Layer 21 t_n time-resonance inventory: characterized but does not rescue L20 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 21 t_n time-resonance inventory: characterized but does not rescue L20 (NOT REPLACEMENT)"}
 
     # Layer 22: tighten L6 ledger residuals (YM, H_0, t_0)
     if "ledger_tighten" in dataset or "l22" in dataset or "l6_residual" in dataset:
@@ -26405,22 +26426,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                             dataset.get("l6_residual", "")))).lower().strip()
         if spec in ("ym", "yang_mills"):
             return {"value": _layer22_tightened_value("yang_mills_gap_gev"),
-                    "provenance": "Layer 22 YM mass-gap (L6 ledger tightened to <0.05%) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 22 YM mass-gap (L6 ledger tightened to <0.05%) (NOT REPLACEMENT)"}
         if spec in ("h0", "hubble"):
             return {"value": _layer22_tightened_value("h0"),
-                    "provenance": "Layer 22 H_0 (L6 ledger tightened to <0.05%) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 22 H_0 (L6 ledger tightened to <0.05%) (NOT REPLACEMENT)"}
         if spec in ("t0", "age"):
             return {"value": _layer22_tightened_value("t0_gyr"),
-                    "provenance": "Layer 22 t_0 universe age (L6 ledger tightened to <0.05%) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 22 t_0 universe age (L6 ledger tightened to <0.05%) (NOT REPLACEMENT)"}
         if spec in ("table", "residual_table"):
             return {"value": _layer22_residual_table(),
-                    "provenance": "Layer 22 residual table: L6-bare vs L22-tightened for 3 targets (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 22 residual table: L6-bare vs L22-tightened for 3 targets (NOT REPLACEMENT)"}
         if spec in ("rms", "rms_summary"):
             return {"value": _layer22_rms_summary(),
-                    "provenance": "Layer 22 RMS summary: ~100x ledger residual improvement (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 22 RMS summary: ~100x ledger residual improvement (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _layer22_inventory(),
-                    "provenance": "Layer 22 L6-residual-tightening inventory: primitive-only corrections close YM/H_0/t_0 to <0.05% (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 22 L6-residual-tightening inventory: primitive-only corrections close YM/H_0/t_0 to <0.05% (NOT REPLACEMENT)"}
 
     # Layer 23: 71-equation catalog (14Sept2025) primitive surface
     if "catalog_71eq" in dataset or "l23" in dataset or "catalog_71" in dataset:
@@ -26434,24 +26455,24 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                               "pp_dominant": _l23_pp_dominant(p_ev),
                               "alpha": _L23_ALPHA_CRP,
                               "p_max_eV": _L23_P_MAX_EV},
-                    "provenance": "Layer 23 Fokker-Planck CRP catalog: n(p)=p^(-11/5)*exp(-p/p_max) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 Fokker-Planck CRP catalog: n(p)=p^(-11/5)*exp(-p/p_max) (NOT REPLACEMENT)"}
         if spec in ("qwave", "q_wave", "q_wave_47", "stats"):
             return {"value": _l23_q_wave_statistics(),
-                    "provenance": "Layer 23 Q_wave 47-system statistics (catalog anchors) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 Q_wave 47-system statistics (catalog anchors) (NOT REPLACEMENT)"}
         if spec in ("resonance", "oscillator", "phase"):
             t  = float(dataset.get("t_days", 0.0))
             t0 = float(dataset.get("t_0_days", 0.0))
             return {"value": _l23_resonance_phase(t, t0),
-                    "provenance": "Layer 23 catalog resonance oscillator cos(pi*t_n) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 catalog resonance oscillator cos(pi*t_n) (NOT REPLACEMENT)"}
         if spec in ("um", "u_m", "buildup"):
             t  = float(dataset.get("t_days", 0.0))
             t0 = float(dataset.get("t_0_days", 0.0))
             return {"value": _l23_um_buildup(t, t0),
-                    "provenance": "Layer 23 catalog U_m buildup 1-exp(-gamma*t*cos(pi*t_n)) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 catalog U_m buildup 1-exp(-gamma*t*cos(pi*t_n)) (NOT REPLACEMENT)"}
         if spec in ("e_react", "reactor", "decay"):
             t = float(dataset.get("t_days", 0.0))
             return {"value": _l23_e_react_decay(t),
-                    "provenance": "Layer 23 catalog reactor decay exp(-kappa*t) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 catalog reactor decay exp(-kappa*t) (NOT REPLACEMENT)"}
         if spec in ("triadic", "triadic_master", "f_u_tri"):
             F_U  = float(dataset.get("F_U",  1.0))
             Ug3  = float(dataset.get("Ug3",  1.0))
@@ -26459,19 +26480,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             Um   = float(dataset.get("Um",   1.0))
             n_l  = int(dataset.get("n_layer", 1))
             return {"value": _l23_triadic_master(F_U, Ug3, Ub_i, Um, n_l),
-                    "provenance": "Layer 23 catalog triadic master F_U_tri (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 catalog triadic master F_U_tri (NOT REPLACEMENT)"}
         if spec in ("rproc", "r_process"):
             return {"value": _l23_r_process_yield(),
-                    "provenance": "Layer 23 catalog r-process yield (Ye=TRZ, A_max=254, 95% solar) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 catalog r-process yield (Ye=TRZ, A_max=254, 95% solar) (NOT REPLACEMENT)"}
         if spec in ("lenr", "bec", "3alpha"):
             return {"value": _l23_lenr_bec_shift(),
-                    "provenance": "Layer 23 catalog 3-alpha BEC LENR (DeltaT_c = 300 K) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 catalog 3-alpha BEC LENR (DeltaT_c = 300 K) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l23_catalog_anchor_validation(),
-                    "provenance": "Layer 23 catalog anchor validation (5 primitive-derivable constants) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 catalog anchor validation (5 primitive-derivable constants) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l23_71eq_inventory(),
-                    "provenance": "Layer 23 71-equation catalog primitive surface inventory (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 23 71-equation catalog primitive surface inventory (NOT REPLACEMENT)"}
 
     # Layer 24: cluster-13 handwritten U_bi 60 Hz beating-heart integration
     if "cluster13" in dataset or "l24" in dataset or "u_bi_60hz" in dataset:
@@ -26481,40 +26502,40 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         if spec in ("harmonic", "harmonic_n"):
             n_h = int(dataset.get("n", 1))
             return {"value": _l24_harmonic(n_h),
-                    "provenance": f"Layer 24 U_bi n={n_h} harmonic = n * 60 Hz (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": f"Layer 24 U_bi n={n_h} harmonic = n * 60 Hz (NOT REPLACEMENT)"}
         if spec in ("table", "harmonic_table"):
             return {"value": _l24_harmonic_table(),
-                    "provenance": "Layer 24 U_bi harmonic table n=1..40 (handwritten tables 34-40) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 U_bi harmonic table n=1..40 (handwritten tables 34-40) (NOT REPLACEMENT)"}
         if spec in ("qscope", "u_mi", "thz_band"):
             return {"value": {"f_Umi_hz": _L24_F_UMI_HZ,
                               "ratio_over_Ubi": _l24_qscope_ratio(),
                               "in_THz_band": _l24_qscope_in_band(),
                               "band_lo_hz": _L24_THZ_BAND_LO_HZ,
                               "band_hi_hz": _L24_THZ_BAND_HI_HZ},
-                    "provenance": "Layer 24 U_mi q-scope = OMEGA_SCM = 1.25 THz (in 1.2-1.3 THz band) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 U_mi q-scope = OMEGA_SCM = 1.25 THz (in 1.2-1.3 THz band) (NOT REPLACEMENT)"}
         if spec in ("heartbeat", "beating_heart", "4layer"):
             t = float(dataset.get("t_sec", 0.0))
             return {"value": _l24_beating_heart_4layer(t),
-                    "provenance": "Layer 24 4-layer UA-SCm beating heart at 60 Hz (= D_phys quadrature pump) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 4-layer UA-SCm beating heart at 60 Hz (= D_phys quadrature pump) (NOT REPLACEMENT)"}
         if spec in ("solfege", "music", "overlay"):
             return {"value": _l24_solfege_overlay(),
-                    "provenance": "Layer 24 Solfege + A432 overlay onto 60 Hz harmonic ladder (Music of the Spheres) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 Solfege + A432 overlay onto 60 Hz harmonic ladder (Music of the Spheres) (NOT REPLACEMENT)"}
         if spec in ("e1_e2", "pump", "reciprocating"):
             t = float(dataset.get("t_sec", 0.0))
             a1 = float(dataset.get("amp1", 1.0))
             a2 = float(dataset.get("amp2", 1.0))
             return {"value": _l24_e1_e2_pump(t, a1, a2),
-                    "provenance": "Layer 24 E1/E2 reciprocating U_mi pump + superposition (push-pull pair) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 E1/E2 reciprocating U_mi pump + superposition (push-pull pair) (NOT REPLACEMENT)"}
         if spec in ("law_of_squares", "born_envelope"):
             f = float(dataset.get("f_hz", _L24_F_UBI_HZ))
             return {"value": _l24_law_of_squares(f),
-                    "provenance": "Layer 24 Law of Squares envelope = f^SSQ (Born n^2 grid) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 Law of Squares envelope = f^SSQ (Born n^2 grid) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l24_anchor_validation(),
-                    "provenance": "Layer 24 cluster-13 anchor validation (5 primitive-derivable anchors) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 cluster-13 anchor validation (5 primitive-derivable anchors) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l24_cluster13_inventory(),
-                    "provenance": "Layer 24 cluster-13 handwritten U_bi 60 Hz integration inventory (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 24 cluster-13 handwritten U_bi 60 Hz integration inventory (NOT REPLACEMENT)"}
 
     # Layer 25: horizon-conditioned coupling (L20 SgrA* screening closure)
     if "horizon_screen" in dataset or "l25" in dataset or "f_shield" in dataset:
@@ -26524,37 +26545,37 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         if spec in ("r_screen", "schwarzschild"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             return {"value": _l25_r_screen(M),
-                    "provenance": "Layer 25 r_screen(M) = 2*G*M/c^2 (Schwarzschild horizon from primitives) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 r_screen(M) = 2*G*M/c^2 (Schwarzschild horizon from primitives) (NOT REPLACEMENT)"}
         if spec in ("f_shield_at", "shield_at"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             r = float(dataset.get("r", _S_CLUSTER_STARS[0]["a_au"] * (1.0 + _S_CLUSTER_STARS[0]["e"]) * _AU_METERS))
             return {"value": _l25_f_shield(M, r),
-                    "provenance": "Layer 25 f_shield(M,r) = (r_screen/r)^(D_CRIT/(2*D_BSFG)) for r>r_screen (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 f_shield(M,r) = (r_screen/r)^(D_CRIT/(2*D_BSFG)) for r>r_screen (NOT REPLACEMENT)"}
         if spec in ("rho_eff", "rho_shielded"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             r = float(dataset.get("r", _S_CLUSTER_STARS[0]["a_au"] * (1.0 + _S_CLUSTER_STARS[0]["e"]) * _AU_METERS))
             return {"value": _l25_rho_eff(M, r),
-                    "provenance": "Layer 25 rho_eff = rho_SCm * f_shield(M,r) (horizon-conditioned) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 rho_eff = rho_SCm * f_shield(M,r) (horizon-conditioned) (NOT REPLACEMENT)"}
         if spec in ("k_predicted", "k_ratio"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             r = float(dataset.get("r", _S_CLUSTER_STARS[0]["a_au"] * (1.0 + _S_CLUSTER_STARS[0]["e"]) * _AU_METERS))
             return {"value": _l25_K_ratio_predicted(M, r),
-                    "provenance": "Layer 25 K_obs/K_bare = (r/r_screen)^p_shield (self-consistent at crossover) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 K_obs/K_bare = (r/r_screen)^p_shield (self-consistent at crossover) (NOT REPLACEMENT)"}
         if spec in ("sgra_closure", "closure", "l20_closure"):
             return {"value": _l25_sgra_closure(),
-                    "provenance": "Layer 25 SgrA*/S2 apoapsis L20 deficit closure from primitives {G, c, D_CRIT, D_BSFG} (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 SgrA*/S2 apoapsis L20 deficit closure from primitives {G, c, D_CRIT, D_BSFG} (NOT REPLACEMENT)"}
         if spec in ("per_star", "s_cluster"):
             return {"value": _l25_per_star_closure(),
-                    "provenance": "Layer 25 per-S-star closure check (5-star S-cluster apoapsis test) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 per-S-star closure check (5-star S-cluster apoapsis test) (NOT REPLACEMENT)"}
         if spec in ("mass_envelope", "mass_scan", "envelope"):
             return {"value": _l25_mass_scale_envelope(),
-                    "provenance": "Layer 25 f_shield envelope across mass scales (atom -> SMBH) at r=100*r_screen (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 f_shield envelope across mass scales (atom -> SMBH) at r=100*r_screen (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l25_screening_anchor_validation(),
-                    "provenance": "Layer 25 horizon-screening anchor validation (5 primitive-derivable anchors) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 horizon-screening anchor validation (5 primitive-derivable anchors) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l25_horizon_screening_inventory(),
-                    "provenance": "Layer 25 horizon-conditioned coupling inventory (L20 closure from primitives) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 25 horizon-conditioned coupling inventory (L20 closure from primitives) (NOT REPLACEMENT)"}
 
     # Layer 26: L25 universality stress-test vs L17 (cosmic catalog) + L19 (universal scales)
     if "universality" in dataset or "l26" in dataset or "horizon_stress" in dataset:
@@ -26564,25 +26585,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         if spec in ("per_scale", "corrected_r_cross", "single"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             return {"value": _l26_corrected_r_cross(M),
-                    "provenance": "Layer 26 corrected r_cross post-L25 = (r_bare^5 / r_s^(13/6))^(6/17) at single M (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 26 corrected r_cross post-L25 = (r_bare^5 / r_s^(13/6))^(6/17) at single M (NOT REPLACEMENT)"}
         if spec in ("l17_table", "l17_stress", "stress_table"):
             return {"value": _l26_l17_stress_table(),
-                    "provenance": "Layer 26 L17 cosmic catalog stress-test (10 mass scales) post-L25 horizon screening (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 26 L17 cosmic catalog stress-test (10 mass scales) post-L25 horizon screening (NOT REPLACEMENT)"}
         if spec in ("l19_test", "l19_universal", "universal_scales"):
             return {"value": _l26_l19_universal_scale_test(),
-                    "provenance": "Layer 26 L19 universal-scale test: at what M does r_screen overtake q_int and Ug4<->Ug1 universals (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 26 L19 universal-scale test: at what M does r_screen overtake q_int and Ug4<->Ug1 universals (NOT REPLACEMENT)"}
         if spec in ("mass_scaling", "exponent", "scaling"):
             return {"value": _l26_post_l25_mass_scaling(),
-                    "provenance": "Layer 26 closed-form mass-scaling exponent: r_cross ∝ M^(-7/17) post-L25 vs M^(+1/5) bare (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 26 closed-form mass-scaling exponent: r_cross ∝ M^(-7/17) post-L25 vs M^(+1/5) bare (NOT REPLACEMENT)"}
         if spec in ("verdict", "summary"):
             return {"value": _l26_universality_verdict(),
-                    "provenance": "Layer 26 universality verdict roll-up (STABLE/SHIFTED/REWRITTEN/DESTROYED counts) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 26 universality verdict roll-up (STABLE/SHIFTED/REWRITTEN/DESTROYED counts) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l26_anchor_validation(),
-                    "provenance": "Layer 26 universality stress-test anchor validation (5 closed-form algebra checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 26 universality stress-test anchor validation (5 closed-form algebra checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l26_universality_inventory(),
-                    "provenance": "Layer 26 L25 universality stress-test inventory (L17+L19 honest verdict) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 26 L25 universality stress-test inventory (L17+L19 honest verdict) (NOT REPLACEMENT)"}
 
     # Layer 27: envelope-repaired L25 (asymptote-1 horizon screening)
     if "envelope_repair" in dataset or "l27" in dataset or "envelope" in dataset:
@@ -26592,34 +26613,34 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         if spec in ("r_env", "envelope_scale", "r_envelope"):
             M = float(dataset.get("M", 1.989e30))
             return {"value": _l27_r_envelope(M),
-                    "provenance": "Layer 27 r_env(M) = sqrt(r_screen(M) * G/rho_SCm) (geometric mean of horizon + L19 universal) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 r_env(M) = sqrt(r_screen(M) * G/rho_SCm) (geometric mean of horizon + L19 universal) (NOT REPLACEMENT)"}
         if spec in ("r_xover", "crossover", "envelope_crossover"):
             M = float(dataset.get("M", 1.989e30))
             return {"value": _l27_r_xover(M),
-                    "provenance": "Layer 27 r_xover(M) = r_s^(4/7) * r_universal^(3/7) (algebraic envelope=L25 crossing) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 r_xover(M) = r_s^(4/7) * r_universal^(3/7) (algebraic envelope=L25 crossing) (NOT REPLACEMENT)"}
         if spec in ("f_shield", "f_shield_repaired", "shield"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             r = float(dataset.get("r", _S_CLUSTER_STARS[0]["a_au"] * (1.0 + _S_CLUSTER_STARS[0]["e"]) * _AU_METERS))
             return {"value": _l27_f_shield(M, r),
-                    "provenance": "Layer 27 f_shield = f_L25 + (1-f_L25)*(1-exp(-(r/r_env)^q_env)), q_env=13 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 f_shield = f_L25 + (1-f_L25)*(1-exp(-(r/r_env)^q_env)), q_env=13 (NOT REPLACEMENT)"}
         if spec in ("sgra_closure", "closure", "sgra"):
             return {"value": _l27_sgra_closure(),
-                    "provenance": "Layer 27 SgrA*/S2 closure preservation check (L27 must match L25 to <10%) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 SgrA*/S2 closure preservation check (L27 must match L25 to <10%) (NOT REPLACEMENT)"}
         if spec in ("transition_table", "transition", "table"):
             return {"value": _l27_transition_table(),
-                    "provenance": "Layer 27 envelope transition table across 10 system+radius combinations (regime classification) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 envelope transition table across 10 system+radius combinations (regime classification) (NOT REPLACEMENT)"}
         if spec in ("l17_restoration", "restoration", "l17_repair"):
             return {"value": _l27_l17_restoration_test(),
-                    "provenance": "Layer 27 L17 restoration test at bare r_cross for 10 mass scales (RESTORED/PARTIAL/SCREENED/DESTROYED) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 L17 restoration test at bare r_cross for 10 mass scales (RESTORED/PARTIAL/SCREENED/DESTROYED) (NOT REPLACEMENT)"}
         if spec in ("pioneer", "pioneer_consistency"):
             return {"value": _l27_pioneer_consistency(),
-                    "provenance": "Layer 27 Pioneer-anomaly fractional residual prediction at 50 AU around Sun (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 Pioneer-anomaly fractional residual prediction at 50 AU around Sun (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l27_anchor_validation(),
-                    "provenance": "Layer 27 envelope-repair anchor validation (5 closed-form checks: SgrA*, r_env Sun, r_env SgrA*, r_xover Sun, asymptote-1) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 envelope-repair anchor validation (5 closed-form checks: SgrA*, r_env Sun, r_env SgrA*, r_xover Sun, asymptote-1) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l27_envelope_inventory(),
-                    "provenance": "Layer 27 envelope-repaired L25 inventory (asymptote-1 from primitives, L17 catalog still screened) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 27 envelope-repaired L25 inventory (asymptote-1 from primitives, L17 catalog still screened) (NOT REPLACEMENT)"}
 
     # Layer 28: per-star exact closure via L16 quintic-bare r_cross anchoring
     if "per_star" in dataset or "l28" in dataset or "per_star_exact" in dataset:
@@ -26629,41 +26650,41 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         if spec in ("r_cross_bare", "r_scale", "r_cb"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             return {"value": _l28_r_cross_bare(M),
-                    "provenance": "Layer 28 r_cross_bare(M) = (3*K_family*G*M/(4*pi*rho_SCm))^(1/5) [L16 bare quintic] (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 r_cross_bare(M) = (3*K_family*G*M/(4*pi*rho_SCm))^(1/5) [L16 bare quintic] (NOT REPLACEMENT)"}
         if spec in ("f_shield", "shield"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             r = float(dataset.get("r", _S_CLUSTER_STARS[0]["a_au"] * (1.0 + _S_CLUSTER_STARS[0]["e"]) * _AU_METERS))
             return {"value": _l28_f_shield(M, r),
-                    "provenance": "Layer 28 f_shield = (r_cross_bare/r)^5, p = D_BSFG - 1 = 5 (integer primitive) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 f_shield = (r_cross_bare/r)^5, p = D_BSFG - 1 = 5 (integer primitive) (NOT REPLACEMENT)"}
         if spec in ("k_predicted", "k_pred"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             r = float(dataset.get("r", _S_CLUSTER_STARS[0]["a_au"] * (1.0 + _S_CLUSTER_STARS[0]["e"]) * _AU_METERS))
             return {"value": _l28_K_predicted(M, r),
-                    "provenance": "Layer 28 K_predicted = (r/r_cross_bare)^5 = K_observed by L20 quintic definition (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 K_predicted = (r/r_cross_bare)^5 = K_observed by L20 quintic definition (NOT REPLACEMENT)"}
         if spec in ("closure", "per_star_closure", "apoapsis"):
             return {"value": _l28_per_star_closure(),
-                    "provenance": "Layer 28 5-S-star apoapsis closure: max |dex_err| ~ 0 by construction (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 5-S-star apoapsis closure: max |dex_err| ~ 0 by construction (NOT REPLACEMENT)"}
         if spec in ("comparison", "vs_l25", "side_by_side"):
             return {"value": _l28_vs_l25_comparison(),
-                    "provenance": "Layer 28 vs Layer 25 per-star comparison (L25 dex_err vs L28 dex_err, improvement deltas) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 vs Layer 25 per-star comparison (L25 dex_err vs L28 dex_err, improvement deltas) (NOT REPLACEMENT)"}
         if spec in ("periapsis", "peri_test"):
             return {"value": _l28_periapsis_test(),
-                    "provenance": "Layer 28 periapsis stress test (does closure hold at r_peri?) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 periapsis stress test (does closure hold at r_peri?) (NOT REPLACEMENT)"}
         if spec in ("timeavg", "time_avg", "time_averaged"):
             return {"value": _l28_time_avg_radius_test(),
-                    "provenance": "Layer 28 time-averaged radius test (<r>_t = a*(1+e^2/2)) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 time-averaged radius test (<r>_t = a*(1+e^2/2)) (NOT REPLACEMENT)"}
         if spec in ("ecc_corr", "eccentricity", "ecc_correlation"):
             return {"value": _l28_eccentricity_correlation(),
-                    "provenance": "Layer 28 post-closure residual vs eccentricity Pearson correlation (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 post-closure residual vs eccentricity Pearson correlation (NOT REPLACEMENT)"}
         if spec in ("tautology", "identity", "diagnostic"):
             return {"value": _l28_tautology_diagnostic(),
-                    "provenance": "Layer 28 tautology diagnostic: verifies f_shield_L28 cancels K_obs by algebraic identity (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 tautology diagnostic: verifies f_shield_L28 cancels K_obs by algebraic identity (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l28_anchor_validation(),
-                    "provenance": "Layer 28 per-star closure anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 per-star closure anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l28_per_star_inventory(),
-                    "provenance": "Layer 28 per-star exact closure inventory (S38/S55 +2.5 dex residual resolved by quintic anchoring) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 28 per-star exact closure inventory (S38/S55 +2.5 dex residual resolved by quintic anchoring) (NOT REPLACEMENT)"}
 
     # Layer 29: M87* second-SMBH out-of-sample validation
     if "m87" in dataset or "l29" in dataset or "second_smbh" in dataset:
@@ -26672,52 +26693,52 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                             dataset.get("second_smbh", "")))).lower().strip()
         if spec in ("mass_kg", "m_kg"):
             return {"value": _M87_MASS_KG,
-                    "provenance": "Layer 29 M87* mass = 6.5e9 M_sun (EHT 2019) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 M87* mass = 6.5e9 M_sun (EHT 2019) (NOT REPLACEMENT)"}
         if spec in ("mass_solar", "m_solar"):
             return {"value": float(_M87_MASS_SOLAR),
-                    "provenance": "Layer 29 M87* mass in solar units (EHT 2019) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 M87* mass in solar units (EHT 2019) (NOT REPLACEMENT)"}
         if spec in ("distance_m", "d_m"):
             return {"value": _M87_DISTANCE_M,
-                    "provenance": "Layer 29 M87* distance = 16.8 Mpc (EHT 2019) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 M87* distance = 16.8 Mpc (EHT 2019) (NOT REPLACEMENT)"}
         if spec in ("shadow_diameter", "shadow"):
             return {"value": _l29_shadow_diameter_m(),
-                    "provenance": "Layer 29 EHT shadow physical diameter at M87* = theta * D (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 EHT shadow physical diameter at M87* = theta * D (NOT REPLACEMENT)"}
         if spec in ("r_schwarzschild", "r_s"):
             M = float(dataset.get("M", _M87_MASS_KG))
             return {"value": _l29_r_schwarzschild(M),
-                    "provenance": "Layer 29 r_schwarzschild = 2 G M / c^2 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 r_schwarzschild = 2 G M / c^2 (NOT REPLACEMENT)"}
         if spec in ("r_photon_ring", "photon_ring"):
             M = float(dataset.get("M", _M87_MASS_KG))
             return {"value": _l29_r_photon_ring(M),
-                    "provenance": "Layer 29 photon ring radius = 1.5 r_s (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 photon ring radius = 1.5 r_s (NOT REPLACEMENT)"}
         if spec in ("r_isco", "isco"):
             M = float(dataset.get("M", _M87_MASS_KG))
             return {"value": _l29_r_isco_schwarzschild(M),
-                    "provenance": "Layer 29 Schwarzschild ISCO = 3 r_s (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 Schwarzschild ISCO = 3 r_s (NOT REPLACEMENT)"}
         if spec in ("scales", "table"):
             return {"value": _l29_scales_table(),
-                    "provenance": "Layer 29 M87* scales table (r_s, photon ring, ISCO, shadow, r_cb, r_screen, r_env) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 M87* scales table (r_s, photon ring, ISCO, shadow, r_cb, r_screen, r_env) (NOT REPLACEMENT)"}
         if spec in ("mass_scaling", "scaling_law"):
             return {"value": _l29_mass_scaling_check(),
-                    "provenance": "Layer 29 r_cross_bare mass-scaling check (M87* vs SgrA*): predicts ratio = (M_M87/M_SgrA)^(1/5) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 r_cross_bare mass-scaling check (M87* vs SgrA*): predicts ratio = (M_M87/M_SgrA)^(1/5) (NOT REPLACEMENT)"}
         if spec in ("ordering", "scale_ordering"):
             return {"value": _l29_scale_ordering(),
-                    "provenance": "Layer 29 structural ordering: r_cb vs r_s/photon-ring/ISCO at M87* + threshold mass (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 structural ordering: r_cb vs r_s/photon-ring/ISCO at M87* + threshold mass (NOT REPLACEMENT)"}
         if spec in ("shadow_check", "eht_check"):
             return {"value": _l29_shadow_diameter_check(),
-                    "provenance": "Layer 29 EHT shadow consistency check: d_shadow vs sqrt(27)*r_s GR non-rotating prediction (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 EHT shadow consistency check: d_shadow vs sqrt(27)*r_s GR non-rotating prediction (NOT REPLACEMENT)"}
         if spec in ("k_landmarks", "k_predictions", "predictions"):
             return {"value": _l29_K_predictions_at_landmarks(),
-                    "provenance": "Layer 29 forward K_predicted values at 10 M87* landmark radii (no observed K_obs yet) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 forward K_predicted values at 10 M87* landmark radii (no observed K_obs yet) (NOT REPLACEMENT)"}
         if spec in ("envelope_galaxy", "env_vs_galaxy"):
             return {"value": _l29_envelope_vs_galaxy(),
-                    "provenance": "Layer 29 L27 envelope vs M87 stellar / jet length scales (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 L27 envelope vs M87 stellar / jet length scales (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l29_anchor_validation(),
-                    "provenance": "Layer 29 M87* out-of-sample anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 M87* out-of-sample anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l29_m87_inventory(),
-                    "provenance": "Layer 29 M87* second-SMBH out-of-sample validation inventory (no retuning, no new constants) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 29 M87* second-SMBH out-of-sample validation inventory (no retuning, no new constants) (NOT REPLACEMENT)"}
 
     # Layer 30: shielded L16 quintic + L24 heartbeat invariance
     if "shielded_quintic" in dataset or "l30" in dataset or "propagated_shield" in dataset:
@@ -26727,29 +26748,29 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         if spec in ("r_cross_l25", "l25_eff"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             return {"value": _l30_r_cross_L25_eff(M),
-                    "provenance": "Layer 30 closed-form L25-propagated r_cross_eff(M) = r_cb^(30/17) * r_screen^(-13/17) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 closed-form L25-propagated r_cross_eff(M) = r_cb^(30/17) * r_screen^(-13/17) (NOT REPLACEMENT)"}
         if spec in ("r_cross_l27", "l27_eff"):
             M = float(dataset.get("M", _SGRA_REFERENCE_MASS_KG))
             return {"value": _l30_r_cross_L27_eff(M),
-                    "provenance": "Layer 30 numerical L27-propagated r_cross_eff(M) via envelope sigmoid (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 numerical L27-propagated r_cross_eff(M) via envelope sigmoid (NOT REPLACEMENT)"}
         if spec in ("l28_identity", "identity_check"):
             return {"value": _l30_l28_identity_check(),
-                    "provenance": "Layer 30 L28-propagated quintic identity check (every r solves; consistent with L28 tautology) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 L28-propagated quintic identity check (every r solves; consistent with L28 tautology) (NOT REPLACEMENT)"}
         if spec in ("l25_anchor", "anchor_check"):
             return {"value": _l30_l25_anchor_check(),
-                    "provenance": "Layer 30 L25-propagated SgrA* closed-form anchor check (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 L25-propagated SgrA* closed-form anchor check (NOT REPLACEMENT)"}
         if spec in ("sweep", "cross_sweep", "scale_sweep"):
             return {"value": _l30_cross_scale_sweep(),
-                    "provenance": "Layer 30 9-mass-scale sweep: bare vs L25 vs L27 vs L28 propagated crossover radii (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 9-mass-scale sweep: bare vs L25 vs L27 vs L28 propagated crossover radii (NOT REPLACEMENT)"}
         if spec in ("heartbeat", "l24_invariance"):
             return {"value": _l30_l24_heartbeat_invariance(),
-                    "provenance": "Layer 30 L24 60 Hz heartbeat invariance check under propagated shielding (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 L24 60 Hz heartbeat invariance check under propagated shielding (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l30_anchor_validation(),
-                    "provenance": "Layer 30 shielded-quintic anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 shielded-quintic anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l30_shielded_quintic_inventory(),
-                    "provenance": "Layer 30 shielded L16 quintic + L24 heartbeat invariance inventory (3 propagation regimes) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 30 shielded L16 quintic + L24 heartbeat invariance inventory (3 propagation regimes) (NOT REPLACEMENT)"}
 
     # Layer 31: BH catalog straddle test + L29/L30 identity unification
     if "bh_catalog" in dataset or "l31" in dataset or "bh_straddle" in dataset:
@@ -26758,31 +26779,31 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                             dataset.get("bh_straddle", "")))).lower().strip()
         if spec in ("m_star", "threshold"):
             return {"value": _l31_M_star_solar(),
-                    "provenance": "Layer 31 closed-form threshold mass M_* (= L29 = L30) in solar units from G,c,rho,K_family (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 closed-form threshold mass M_* (= L29 = L30) in solar units from G,c,rho,K_family (NOT REPLACEMENT)"}
         if spec in ("identity", "l29_l30_proof"):
             return {"value": _l31_identity_proof(),
-                    "provenance": "Layer 31 algebraic proof that L29 M_* and L30 M_dagger are the same root of r_cb(M)=r_s(M) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 algebraic proof that L29 M_* and L30 M_dagger are the same root of r_cb(M)=r_s(M) (NOT REPLACEMENT)"}
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l31_catalog_evaluation(),
-                    "provenance": "Layer 31 18-BH catalog: r_cb, r_s, r_isco, M/M_*, class for each entry (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 18-BH catalog: r_cb, r_s, r_isco, M/M_*, class for each entry (NOT REPLACEMENT)"}
         if spec in ("counts", "class_counts"):
             return {"value": _l31_class_counts(),
-                    "provenance": "Layer 31 class counts (A_Keplerian / B_Transition / C_SubHorizon) over 18-BH catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 class counts (A_Keplerian / B_Transition / C_SubHorizon) over 18-BH catalog (NOT REPLACEMENT)"}
         if spec in ("boundaries", "class_boundaries"):
             return {"value": _l31_class_boundary_masses(),
-                    "provenance": "Layer 31 closed-form class boundary masses: M_C = M_* * C^(-5/4) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 closed-form class boundary masses: M_C = M_* * C^(-5/4) (NOT REPLACEMENT)"}
         if spec in ("m87_check", "m87_consistency"):
             return {"value": _l31_l29_consistency(),
-                    "provenance": "Layer 31 M87* L31 classification vs L29 prediction consistency check (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 M87* L31 classification vs L29 prediction consistency check (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l31_anchor_validation(),
-                    "provenance": "Layer 31 BH-catalog anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 BH-catalog anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("labels", "class_labels", "label_table"):
             return {"value": _l31_class_labels_table(),
-                    "provenance": "Layer 93 / cluster (bx) L31 class-label lookup table (A/B/C human-readable labels) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 93 / cluster (bx) L31 class-label lookup table (A/B/C human-readable labels) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l31_bh_catalog_inventory(),
-                    "provenance": "Layer 31 BH catalog straddle + L29/L30 identity unification inventory (cluster (o) resolved) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 31 BH catalog straddle + L29/L30 identity unification inventory (cluster (o) resolved) (NOT REPLACEMENT)"}
 
     # Layer 32: compact-object surface test (r_cb vs R_obj)
     if "compact" in dataset or "l32" in dataset or "surface_test" in dataset:
@@ -26791,25 +26812,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                             dataset.get("surface_test", "")))).lower().strip()
         if spec in ("r_crit", "critical_radius"):
             return {"value": _l32_R_crit_of_density(_L32_NUCLEAR_DENSITY_KG_M3),
-                    "provenance": "Layer 32 R_crit at nuclear density: sqrt(K G rho_nuc / rho_SCm) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 32 R_crit at nuclear density: sqrt(K G rho_nuc / rho_SCm) (NOT REPLACEMENT)"}
         if spec in ("density_table", "densities"):
             return {"value": _l32_density_table(),
-                    "provenance": "Layer 32 R_crit table at canonical densities (rho_SCm, water, solar, earth, WD, nuclear) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 32 R_crit table at canonical densities (rho_SCm, water, solar, earth, WD, nuclear) (NOT REPLACEMENT)"}
         if spec in ("catalog", "rows"):
             return {"value": _l32_catalog_evaluation(),
-                    "provenance": "Layer 32 12-compact-object catalog: M, R, rho, r_cb, r_cb/R, R/R_crit (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 32 12-compact-object catalog: M, R, rho, r_cb, r_cb/R, R/R_crit (NOT REPLACEMENT)"}
         if spec in ("theorem", "no_buried"):
             return {"value": _l32_no_buried_shell_theorem(),
-                    "provenance": "Layer 32 no-buried-shell theorem: r_cb > R_obj for all rho_obj <= rho_nuclear (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 32 no-buried-shell theorem: r_cb > R_obj for all rho_obj <= rho_nuclear (NOT REPLACEMENT)"}
         if spec in ("sun_consistency", "sun"):
             return {"value": _l32_consistency_with_L28(),
-                    "provenance": "Layer 32 self-consistency of r_cb(Sun) via mass-form vs density-form (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 32 self-consistency of r_cb(Sun) via mass-form vs density-form (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l32_anchor_validation(),
-                    "provenance": "Layer 32 compact-object anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 32 compact-object anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l32_compact_object_inventory(),
-                    "provenance": "Layer 32 compact-object surface test inventory (12-object catalog + no-buried-shell theorem) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 32 compact-object surface test inventory (12-object catalog + no-buried-shell theorem) (NOT REPLACEMENT)"}
 
     # Layer 33: r_universal derivation from Planck + Hubble primitives
     if "r_universal" in dataset or "l33" in dataset or "planck_hubble" in dataset:
@@ -26820,34 +26841,34 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             return {"value": {"M_P_kg": _l33_planck_mass_kg(),
                                  "ell_P_m": _l33_planck_length_m(),
                                  "t_P_s":   _l33_planck_time_s()},
-                    "provenance": "Layer 33 Planck primitives {M_P, ell_P, t_P} from {hbar, c, G} (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 Planck primitives {M_P, ell_P, t_P} from {hbar, c, G} (NOT REPLACEMENT)"}
         if spec in ("h0", "hubble"):
             return {"value": {"H0_si": _l33_H0_implied_si(),
                                  "H0_km_s_Mpc": _l33_H0_implied_km_s_mpc(),
                                  "R_H_m": _l33_hubble_radius_m()},
-                    "provenance": "Layer 33 H_0 and Hubble radius implied by Friedmann closure RHO_SCM = (3/2) G H_0 / c (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 H_0 and Hubble radius implied by Friedmann closure RHO_SCM = (3/2) G H_0 / c (NOT REPLACEMENT)"}
         if spec in ("age", "t_age"):
             return {"value": {"t_age_s": _l33_eds_age_s(),
                                  "t_age_Gyr": _l33_eds_age_Gyr()},
-                    "provenance": "Layer 33 EdS matter-dominated age t_age = (2/3)/H_0 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 EdS matter-dominated age t_age = (2/3)/H_0 (NOT REPLACEMENT)"}
         if spec in ("check", "forms", "three_forms"):
             return {"value": _l33_r_universal_check(),
-                    "provenance": "Layer 33 r_universal three independent forms: G/RHO, c*t_age, (2/3)R_H (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 r_universal three independent forms: G/RHO, c*t_age, (2/3)R_H (NOT REPLACEMENT)"}
         if spec in ("identity", "planck_hubble_identity"):
             return {"value": _l33_planck_hubble_identity(),
-                    "provenance": "Layer 33 Planck-Hubble dimensionless identity r_universal/ell_P = (2/3)/(H_0 t_P) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 Planck-Hubble dimensionless identity r_universal/ell_P = (2/3)/(H_0 t_P) (NOT REPLACEMENT)"}
         if spec in ("friedmann",):
             return {"value": _l33_friedmann_ratio(),
-                    "provenance": "Layer 33 Friedmann closure RHO_SCM c / (G H_0) = 3/2 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 Friedmann closure RHO_SCM c / (G H_0) = 3/2 (NOT REPLACEMENT)"}
         if spec in ("obs", "observational"):
             return {"value": _l33_observational_bracket(),
-                    "provenance": "Layer 33 H_0 observational bracket comparison (Planck/SH0ES/TRGB) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 H_0 observational bracket comparison (Planck/SH0ES/TRGB) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l33_anchor_validation(),
-                    "provenance": "Layer 33 derivation anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 derivation anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l33_r_universal_derivation_inventory(),
-                    "provenance": "Layer 33 r_universal Planck+Hubble derivation inventory (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 33 r_universal Planck+Hubble derivation inventory (NOT REPLACEMENT)"}
 
     # Layer 34: SPARC parameter-free BTFR test
     if "sparc" in dataset or "l34" in dataset or "btfr" in dataset or "galaxy_rotation" in dataset:
@@ -26857,25 +26878,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("galaxy_rotation", ""))))).lower().strip()
         if spec in ("a0", "a0_uqff", "acceleration_scale"):
             return {"value": _l34_a0_uqff(),
-                    "provenance": "Layer 34 BTFR acceleration scale a0_UQFF = c^2/(2 r_universal) (parameter-free) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 34 BTFR acceleration scale a0_UQFF = c^2/(2 r_universal) (parameter-free) (NOT REPLACEMENT)"}
         if spec in ("a0_compare", "a0_vs_observed"):
             return {"value": _l34_a0_comparison(),
-                    "provenance": "Layer 34 a0_UQFF vs McGaugh observed BTFR scale (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 34 a0_UQFF vs McGaugh observed BTFR scale (NOT REPLACEMENT)"}
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l34_sparc_evaluation(),
-                    "provenance": "Layer 34 SPARC 15-galaxy evaluation (per-galaxy v_pred / v_obs / ratio / r_env) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 34 SPARC 15-galaxy evaluation (per-galaxy v_pred / v_obs / ratio / r_env) (NOT REPLACEMENT)"}
         if spec in ("stats", "ratio_statistics"):
             return {"value": _l34_ratio_statistics(),
-                    "provenance": "Layer 34 catalog-wide v_obs/v_pred statistics (mean, stdev, dex scatter) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 34 catalog-wide v_obs/v_pred statistics (mean, stdev, dex scatter) (NOT REPLACEMENT)"}
         if spec in ("slope", "btfr_slope"):
             return {"value": _l34_btfr_slope_check(),
-                    "provenance": "Layer 34 BTFR slope check (UQFF predicts 0.25 exactly) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 34 BTFR slope check (UQFF predicts 0.25 exactly) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l34_anchor_validation(),
-                    "provenance": "Layer 34 SPARC anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 34 SPARC anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l34_sparc_inventory(),
-                    "provenance": "Layer 34 SPARC parameter-free BTFR test inventory (15-galaxy catalog) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 34 SPARC parameter-free BTFR test inventory (15-galaxy catalog) (NOT REPLACEMENT)"}
 
     # Layer 35: NS / magnetar catalog
     if "neutron_star" in dataset or "ns_catalog" in dataset or "l35" in dataset or "magnetar" in dataset:
@@ -26885,22 +26906,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("magnetar", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l35_catalog_evaluation(),
-                    "provenance": "Layer 35 NS/magnetar 12-object catalog with r_s, r_cb, R_crit, r_env, u_B (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 35 NS/magnetar 12-object catalog with r_s, r_cb, R_crit, r_env, u_B (NOT REPLACEMENT)"}
         if spec in ("stats", "population", "population_stats"):
             return {"value": _l35_population_statistics(),
-                    "provenance": "Layer 35 NS population statistics (buried, sub-Schwarzschild, compactness) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 35 NS population statistics (buried, sub-Schwarzschild, compactness) (NOT REPLACEMENT)"}
         if spec in ("magnetic", "magnetar_regime"):
             return {"value": _l35_magnetic_regime_check(),
-                    "provenance": "Layer 35 magnetar u_B and rho_B/RHO_SCm regime check (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 35 magnetar u_B and rho_B/RHO_SCm regime check (NOT REPLACEMENT)"}
         if spec in ("l32_check", "l32_consistency", "r_crit_check"):
             return {"value": _l35_l32_consistency(),
-                    "provenance": "Layer 35 cross-check that L35 R_crit reproduces L32 R_crit at machine precision (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 35 cross-check that L35 R_crit reproduces L32 R_crit at machine precision (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l35_anchor_validation(),
-                    "provenance": "Layer 35 NS catalog anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 35 NS catalog anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l35_ns_catalog_inventory(),
-                    "provenance": "Layer 35 NS/magnetar catalog inventory (12 objects, magnetic + buoyancy axes) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 35 NS/magnetar catalog inventory (12 objects, magnetic + buoyancy axes) (NOT REPLACEMENT)"}
 
     # Layer 36: primordial / micro-BH regime
     if "micro_bh" in dataset or "l36" in dataset or "pbh" in dataset or "hawking" in dataset:
@@ -26910,25 +26931,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("hawking", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l36_micro_catalog_evaluation(),
-                    "provenance": "Layer 36 13-mass micro-BH catalog (Planck to 1 M_sun) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 36 13-mass micro-BH catalog (Planck to 1 M_sun) (NOT REPLACEMENT)"}
         if spec in ("planck", "planck_collapse"):
             return {"value": _l36_planck_collapse(),
-                    "provenance": "Layer 36 Planck-mass identity check (r_s/ell_P=2, lambda_C/ell_P=1) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 36 Planck-mass identity check (r_s/ell_P=2, lambda_C/ell_P=1) (NOT REPLACEMENT)"}
         if spec in ("pbh_window", "dm_window"):
             return {"value": _l36_PBH_window_check(),
-                    "provenance": "Layer 36 PBH dark-matter window envelope check (1e22 - 1e24 kg) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 36 PBH dark-matter window envelope check (1e22 - 1e24 kg) (NOT REPLACEMENT)"}
         if spec in ("classification", "class_counts"):
             return {"value": _l36_classification_universality(),
-                    "provenance": "Layer 36 L31 classification at sub-stellar masses (all Class A) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 36 L31 classification at sub-stellar masses (all Class A) (NOT REPLACEMENT)"}
         if spec in ("m_evap", "evaporating_today"):
             return {"value": _l36_M_evaporating_today_kg(),
-                    "provenance": "Layer 36 Hawking mass M_evap_today: BH with t_evap = t_universe (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 36 Hawking mass M_evap_today: BH with t_evap = t_universe (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l36_anchor_validation(),
-                    "provenance": "Layer 36 micro-BH anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 36 micro-BH anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l36_micro_bh_inventory(),
-                    "provenance": "Layer 36 primordial / micro-BH regime inventory (13-mass catalog) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 36 primordial / micro-BH regime inventory (13-mass catalog) (NOT REPLACEMENT)"}
 
     # Layer 37: Betelgeuse buried-shell prediction / supergiant catalog
     if ("supergiant" in dataset or "l37" in dataset or "betelgeuse" in dataset
@@ -26939,25 +26960,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("red_supergiant", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l37_catalog_evaluation(),
-                    "provenance": "Layer 37 13-star supergiant catalog (r_cb vs R_star, BURIED/EXPOSED) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 37 13-star supergiant catalog (r_cb vs R_star, BURIED/EXPOSED) (NOT REPLACEMENT)"}
         if spec in ("betelgeuse", "great_dimming", "focus"):
             return {"value": _l37_betelgeuse_focus(),
-                    "provenance": "Layer 37 Betelgeuse Great Dimming buried-shell prediction (AAVSO 000-BBK-377) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 37 Betelgeuse Great Dimming buried-shell prediction (AAVSO 000-BBK-377) (NOT REPLACEMENT)"}
         if spec in ("sun", "main_sequence", "baseline"):
             return {"value": _l37_main_sequence_baseline(),
-                    "provenance": "Layer 37 Sun / main-sequence EXPOSED baseline (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 37 Sun / main-sequence EXPOSED baseline (NOT REPLACEMENT)"}
         if spec in ("population", "counts", "split"):
             return {"value": _l37_buried_exposed_counts(),
-                    "provenance": "Layer 37 buried/exposed population split by spectral type (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 37 buried/exposed population split by spectral type (NOT REPLACEMENT)"}
         if spec in ("transition", "boundary"):
             return {"value": _l37_transition_search(),
-                    "provenance": "Layer 37 buried/exposed boundary stars (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 37 buried/exposed boundary stars (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation", "match"):
             return {"value": _l37_anchor_validation(),
-                    "provenance": "Layer 37 supergiant anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 37 supergiant anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l37_supergiant_inventory(),
-                    "provenance": "Layer 37 supergiant buried-shell inventory (Betelgeuse + 12 comparators) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 37 supergiant buried-shell inventory (Betelgeuse + 12 comparators) (NOT REPLACEMENT)"}
 
     # Layer 38: cosmological R_crit crossing the Hubble radius
     if ("cosmological_r_crit" in dataset or "l38" in dataset
@@ -26968,29 +26989,29 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("density_catalog", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l38_density_catalog_evaluation(),
-                    "provenance": "Layer 38 13-density catalog (R_crit per density, classified vs R_H) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 38 13-density catalog (R_crit per density, classified vs R_H) (NOT REPLACEMENT)"}
         if spec in ("landmarks", "inverse", "inverse_table"):
             return {"value": _l38_landmark_inverse_table(),
-                    "provenance": "Layer 38 inverse landmark table (rho required for canonical R) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 38 inverse landmark table (rho required for canonical R) (NOT REPLACEMENT)"}
         if spec in ("halo", "halo_coincidence"):
             return {"value": _l38_galactic_halo_coincidence(),
-                    "provenance": "Layer 38 nuclear-density R_crit vs DM halo size coincidence (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 38 nuclear-density R_crit vs DM halo size coincidence (NOT REPLACEMENT)"}
         if spec in ("universe", "buoyancy"):
             return {"value": {
                         "M_universe_kg": _l38_universe_mass_kg(),
                         "r_cb_m":        _l38_universe_r_cb_m(),
                         "R_H_m":         _l38_hubble_radius_m(),
                         "r_cb_over_R_H": _l38_universe_ratio()},
-                    "provenance": "Layer 38 observable-universe buoyancy shell at cosmic critical density (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 38 observable-universe buoyancy shell at cosmic critical density (NOT REPLACEMENT)"}
         if spec in ("pre_inflation", "rho_cross"):
             return {"value": _l38_pre_inflation_density_check(),
-                    "provenance": "Layer 38 rho_cross_RH: density at which R_crit = R_H (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 38 rho_cross_RH: density at which R_crit = R_H (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l38_anchor_validation(),
-                    "provenance": "Layer 38 cosmological R_crit anchor validation (5 closed-form checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 38 cosmological R_crit anchor validation (5 closed-form checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l38_cosmological_R_crit_inventory(),
-                    "provenance": "Layer 38 cosmological R_crit crossing Hubble radius inventory (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 38 cosmological R_crit crossing Hubble radius inventory (NOT REPLACEMENT)"}
 
     # Layer 39: invert L33 - rho_SCm implied by measured H_0
     if ("rho_scm_h0_audit" in dataset or "l39" in dataset
@@ -27001,25 +27022,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("rho_from_h0", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l39_catalog_evaluation(),
-                    "provenance": "Layer 39 12-measurement H_0 catalog -> implied rho_SCm (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 39 12-measurement H_0 catalog -> implied rho_SCm (NOT REPLACEMENT)"}
         if spec in ("self_consistency", "roundtrip"):
             return {"value": _l39_codebase_self_consistency(),
-                    "provenance": "Layer 39 rho_SCm <-> H_0 roundtrip identity (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 39 rho_SCm <-> H_0 roundtrip identity (NOT REPLACEMENT)"}
         if spec in ("bracket", "envelope"):
             return {"value": _l39_bracket_audit(),
-                    "provenance": "Layer 39 codebase rho_SCm vs measurement-envelope audit (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 39 codebase rho_SCm vs measurement-envelope audit (NOT REPLACEMENT)"}
         if spec in ("tension", "hubble_tension"):
             return {"value": _l39_hubble_tension_in_rho(),
-                    "provenance": "Layer 39 Hubble tension propagation into rho_SCm space (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 39 Hubble tension propagation into rho_SCm space (NOT REPLACEMENT)"}
         if spec in ("drift", "drift_statistics"):
             return {"value": _l39_drift_summary(),
-                    "provenance": "Layer 39 drift statistics across 12 H_0 measurements (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 39 drift statistics across 12 H_0 measurements (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l39_anchor_validation(),
-                    "provenance": "Layer 39 rho_SCm <-> H_0 audit anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 39 rho_SCm <-> H_0 audit anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l39_rho_scm_h0_audit_inventory(),
-                    "provenance": "Layer 39 rho_SCm <-> H_0 inverse audit inventory (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 39 rho_SCm <-> H_0 inverse audit inventory (NOT REPLACEMENT)"}
 
     # Layer 40 (cluster w): JWST high-z galaxy buoyancy-shell catalog
     if ("jwst_highz" in dataset or "l40" in dataset
@@ -27030,25 +27051,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("jwst_buoyancy", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l40_catalog_evaluation(),
-                    "provenance": "Layer 40 JWST z>8 galaxy catalog -> r_cb / R_eff classification (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 40 JWST z>8 galaxy catalog -> r_cb / R_eff classification (NOT REPLACEMENT)"}
         if spec in ("counts", "buried_exposed", "split"):
             return {"value": _l40_buried_exposed_counts(),
-                    "provenance": "Layer 40 JWST population BURIED/EXPOSED split (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 40 JWST population BURIED/EXPOSED split (NOT REPLACEMENT)"}
         if spec in ("z14", "anchor", "jades-gs-z14-0", "z14_anchor"):
             return {"value": _l40_z14_anchor(),
-                    "provenance": "Layer 40 JADES-GS-z14-0 Map §6 high-z anchor (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 40 JADES-GS-z14-0 Map §6 high-z anchor (NOT REPLACEMENT)"}
         if spec in ("evolution", "redshift_evolution", "z_trend"):
             return {"value": _l40_redshift_evolution(),
-                    "provenance": "Layer 40 redshift-evolution null test on r_cb / R_eff (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 40 redshift-evolution null test on r_cb / R_eff (NOT REPLACEMENT)"}
         if spec in ("mass_function", "scaling", "m15"):
             return {"value": _l40_mass_function_test(),
-                    "provenance": "Layer 40 M^(1/5) scaling cross-check across 10-galaxy mass span (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 40 M^(1/5) scaling cross-check across 10-galaxy mass span (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l40_anchor_validation(),
-                    "provenance": "Layer 40 JWST high-z catalog anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 40 JWST high-z catalog anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l40_jwst_inventory(),
-                    "provenance": "Layer 40 JWST high-z galaxy buoyancy-shell catalog inventory (cluster w) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 40 JWST high-z galaxy buoyancy-shell catalog inventory (cluster w) (NOT REPLACEMENT)"}
 
     # Layer 41 (cluster x): solar-system planetary BURIED/EXPOSED catalog
     if ("planetary" in dataset or "l41" in dataset
@@ -27059,25 +27080,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("planets", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l41_catalog_evaluation(),
-                    "provenance": "Layer 41 solar-system 11-body catalog -> r_cb / R_body classification (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 41 solar-system 11-body catalog -> r_cb / R_body classification (NOT REPLACEMENT)"}
         if spec in ("counts", "buried_exposed", "split"):
             return {"value": _l41_buried_exposed_counts(),
-                    "provenance": "Layer 41 planetary BURIED/EXPOSED split by type (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 41 planetary BURIED/EXPOSED split by type (NOT REPLACEMENT)"}
         if spec in ("sun", "sun_bridge", "bridge_to_l37"):
             return {"value": _l41_sun_bridge_to_l37(),
-                    "provenance": "Layer 41 Sun row bridge to L37 main-sequence baseline (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 41 Sun row bridge to L37 main-sequence baseline (NOT REPLACEMENT)"}
         if spec in ("mass_function", "scaling", "m15"):
             return {"value": _l41_mass_function_test(),
-                    "provenance": "Layer 41 M^(1/5) scaling cross-check across 11-body mass span (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 41 M^(1/5) scaling cross-check across 11-body mass span (NOT REPLACEMENT)"}
         if spec in ("scale", "scale_bridge", "l37_l40_bridge"):
             return {"value": _l41_scale_bridge(),
-                    "provenance": "Layer 41 + L37 + L40 scale bridge (~18 orders of magnitude in M) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 41 + L37 + L40 scale bridge (~18 orders of magnitude in M) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l41_anchor_validation(),
-                    "provenance": "Layer 41 planetary catalog anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 41 planetary catalog anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l41_planetary_inventory(),
-                    "provenance": "Layer 41 solar-system planetary buoyancy-shell catalog inventory (cluster x) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 41 solar-system planetary buoyancy-shell catalog inventory (cluster x) (NOT REPLACEMENT)"}
 
     # Layer 42 (cluster y): galaxy cluster virial buoyancy catalog
     if ("cluster_virial" in dataset or "l42" in dataset
@@ -27088,25 +27109,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("virial_buoyancy", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l42_catalog_evaluation(),
-                    "provenance": "Layer 42 8-cluster catalog -> r_env / r_200 classification (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 42 8-cluster catalog -> r_env / r_200 classification (NOT REPLACEMENT)"}
         if spec in ("counts", "interior_exterior", "split"):
             return {"value": _l42_interior_exterior_counts(),
-                    "provenance": "Layer 42 cluster ENVELOPE_INTERIOR/EXTERIOR split (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 42 cluster ENVELOPE_INTERIOR/EXTERIOR split (NOT REPLACEMENT)"}
         if spec in ("coma", "anchor", "coma_anchor"):
             return {"value": _l42_coma_focus(),
-                    "provenance": "Layer 42 Coma cluster (A1656) virial anchor (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 42 Coma cluster (A1656) virial anchor (NOT REPLACEMENT)"}
         if spec in ("mass_function", "scaling", "m12"):
             return {"value": _l42_mass_function_test(),
-                    "provenance": "Layer 42 M^(1/2) r_env scaling cross-check across 8-cluster mass span (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 42 M^(1/2) r_env scaling cross-check across 8-cluster mass span (NOT REPLACEMENT)"}
         if spec in ("scale", "scale_bridge", "l41_l37_l40_l42_bridge"):
             return {"value": _l42_scale_bridge_extended(),
-                    "provenance": "Layer 42 + L41 + L37 + L40 scale bridge (~24 OoM in M) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 42 + L41 + L37 + L40 scale bridge (~24 OoM in M) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l42_anchor_validation(),
-                    "provenance": "Layer 42 cluster catalog anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 42 cluster catalog anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l42_cluster_inventory(),
-                    "provenance": "Layer 42 galaxy cluster virial buoyancy catalog inventory (cluster y) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 42 galaxy cluster virial buoyancy catalog inventory (cluster y) (NOT REPLACEMENT)"}
 
     # Layer 43 (cluster z): PTA coherence vs L24 60-Hz harmonic ladder
     if ("pta_coherence" in dataset or "l43" in dataset
@@ -27117,25 +27138,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("pulsar_timing", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l43_catalog_evaluation(),
-                    "provenance": "Layer 43 8-PTA catalog -> OFF_LADDER/ON_LADDER classification (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 43 8-PTA catalog -> OFF_LADDER/ON_LADDER classification (NOT REPLACEMENT)"}
         if spec in ("counts", "coherence", "split"):
             return {"value": _l43_coherence_counts(),
-                    "provenance": "Layer 43 PTA OFF_LADDER/ON_LADDER coherence split (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 43 PTA OFF_LADDER/ON_LADDER coherence split (NOT REPLACEMENT)"}
         if spec in ("nanograv15", "nanograv", "anchor", "focus"):
             return {"value": _l43_nanograv15_focus(),
-                    "provenance": "Layer 43 NANOGrav 15yr anchor (T_obs=15 yr -> f_low=2.11e-9 Hz) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 43 NANOGrav 15yr anchor (T_obs=15 yr -> f_low=2.11e-9 Hz) (NOT REPLACEMENT)"}
         if spec in ("band_separation", "separation", "band"):
             return {"value": _l43_band_separation(),
-                    "provenance": "Layer 43 PTA -> L24 60Hz OoM band-separation analysis (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 43 PTA -> L24 60Hz OoM band-separation analysis (NOT REPLACEMENT)"}
         if spec in ("scale", "scale_bridge", "pta_ubi_umi"):
             return {"value": _l43_scale_bridge_extended(),
-                    "provenance": "Layer 43 frequency scale bridge PTA-nHz -> Ubi-60Hz -> Umi-1.25THz (~21 OoM) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 43 frequency scale bridge PTA-nHz -> Ubi-60Hz -> Umi-1.25THz (~21 OoM) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l43_anchor_validation(),
-                    "provenance": "Layer 43 PTA coherence anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 43 PTA coherence anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l43_pta_inventory(),
-                    "provenance": "Layer 43 PTA coherence vs L24 60-Hz harmonic ladder inventory (cluster z) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 43 PTA coherence vs L24 60-Hz harmonic ladder inventory (cluster z) (NOT REPLACEMENT)"}
 
     # Layer 44 (cluster aa): LENR variant carrier-energy dispatcher
     if ("lenr_variants" in dataset or "l44" in dataset
@@ -27146,25 +27167,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("lenr_carriers", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l44_catalog_evaluation(),
-                    "provenance": "Layer 44 8-variant LENR carrier catalog -> E = h*nu*S26_3*PHI (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 44 8-variant LENR carrier catalog -> E = h*nu*S26_3*PHI (NOT REPLACEMENT)"}
         if spec in ("counts", "status", "split"):
             return {"value": _l44_status_counts(),
-                    "provenance": "Layer 44 LENR variant ANCHOR_EXACT / DERIVED status split (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 44 LENR variant ANCHOR_EXACT / DERIVED status split (NOT REPLACEMENT)"}
         if spec in ("holmlid", "anchor", "holmlid_anchor", "focus"):
             return {"value": _l44_holmlid_focus(),
-                    "provenance": "Layer 44 Holmlid 1.25 THz -> 630.0 eV exact anchor (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 44 Holmlid 1.25 THz -> 630.0 eV exact anchor (NOT REPLACEMENT)"}
         if spec in ("linearity", "linearity_test"):
             return {"value": _l44_linearity_test(),
-                    "provenance": "Layer 44 linearity test E(2nu) = 2*E(nu) (machine precision) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 44 linearity test E(2nu) = 2*E(nu) (machine precision) (NOT REPLACEMENT)"}
         if spec in ("scale", "scale_bridge"):
             return {"value": _l44_scale_bridge_extended(),
-                    "provenance": "Layer 44 LENR carrier-frequency/energy scale bridge (~21 OoM) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 44 LENR carrier-frequency/energy scale bridge (~21 OoM) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l44_anchor_validation(),
-                    "provenance": "Layer 44 LENR variant catalog anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 44 LENR variant catalog anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l44_lenr_inventory(),
-                    "provenance": "Layer 44 LENR variant carrier-energy dispatcher inventory (cluster aa) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 44 LENR variant carrier-energy dispatcher inventory (cluster aa) (NOT REPLACEMENT)"}
 
     # Layer 45 (cluster ab): P2/P3/P4/P5/P8/P9/P10 prediction back-fill
     if ("prediction_backfill" in dataset or "l45" in dataset
@@ -27175,22 +27196,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("prediction_catalog", ""))))).lower().strip()
         if spec in ("catalog", "rows", "evaluation"):
             return {"value": _l45_catalog_evaluation(),
-                    "provenance": "Layer 45 7-record P2-P10 back-fill catalog (Map §11 surface) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 45 7-record P2-P10 back-fill catalog (Map §11 surface) (NOT REPLACEMENT)"}
         if spec in ("counts", "status", "split"):
             return {"value": _l45_status_counts(),
-                    "provenance": "Layer 45 back-fill PASSED/STANDING/OPEN status split (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 45 back-fill PASSED/STANDING/OPEN status split (NOT REPLACEMENT)"}
         if spec in ("completeness", "surface", "p1_p14"):
             return {"value": _l45_surface_completeness(),
-                    "provenance": "Layer 45 P1..P14 surface completeness check (canonical + back-fill coverage) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 45 P1..P14 surface completeness check (canonical + back-fill coverage) (NOT REPLACEMENT)"}
         if spec in ("p8", "p8_focus", "focus", "wimp"):
             return {"value": _l45_focus_p8(),
-                    "provenance": "Layer 45 P8 anchor: dark-matter direct-detection null (sigma_SI <= 1e-46 cm^2) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 45 P8 anchor: dark-matter direct-detection null (sigma_SI <= 1e-46 cm^2) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l45_anchor_validation(),
-                    "provenance": "Layer 45 prediction back-fill anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 45 prediction back-fill anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l45_backfill_inventory(),
-                    "provenance": "Layer 45 P2-P10 prediction back-fill inventory (cluster ab) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 45 P2-P10 prediction back-fill inventory (cluster ab) (NOT REPLACEMENT)"}
 
     # Layer 46 (cluster ac): Hubble-tension multi-probe ledger
     if ("hubble_tension" in dataset or "l46" in dataset
@@ -27201,22 +27222,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("hubble_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l46_ledger_evaluation(),
-                    "provenance": "Layer 46 10-probe H_0 ledger with chi^2 contributions vs combined wmean (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 46 10-probe H_0 ledger with chi^2 contributions vs combined wmean (NOT REPLACEMENT)"}
         if spec in ("era", "era_split", "split"):
             return {"value": _l46_era_split(),
-                    "provenance": "Layer 46 early/late era split with per-era inverse-variance weighted means (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 46 early/late era split with per-era inverse-variance weighted means (NOT REPLACEMENT)"}
         if spec in ("tension", "delta", "sigma"):
             return {"value": _l46_tension(),
-                    "provenance": "Layer 46 early-vs-late tension significance (quadrature sigma combination) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 46 early-vs-late tension significance (quadrature sigma combination) (NOT REPLACEMENT)"}
         if spec in ("window", "plausibility", "60_80"):
             return {"value": _l46_window_check(60.0, 80.0),
-                    "provenance": "Layer 46 plausibility-window check (60 <= H_0 <= 80 km/s/Mpc) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 46 plausibility-window check (60 <= H_0 <= 80 km/s/Mpc) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l46_anchor_validation(),
-                    "provenance": "Layer 46 Hubble-tension ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 46 Hubble-tension ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l46_hubble_inventory(),
-                    "provenance": "Layer 46 Hubble-tension multi-probe ledger inventory (cluster ac) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 46 Hubble-tension multi-probe ledger inventory (cluster ac) (NOT REPLACEMENT)"}
 
     # Layer 47 (cluster ad): S8 / sigma_8 tension multi-probe ledger
     if ("s8_tension" in dataset or "l47" in dataset
@@ -27227,22 +27248,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("s8_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l47_ledger_evaluation(),
-                    "provenance": "Layer 47 10-probe S_8 ledger with chi^2 contributions vs combined wmean (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 47 10-probe S_8 ledger with chi^2 contributions vs combined wmean (NOT REPLACEMENT)"}
         if spec in ("era", "era_split", "split"):
             return {"value": _l47_era_split(),
-                    "provenance": "Layer 47 early/late era split with per-era inverse-variance weighted means (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 47 early/late era split with per-era inverse-variance weighted means (NOT REPLACEMENT)"}
         if spec in ("tension", "delta", "sigma"):
             return {"value": _l47_tension(),
-                    "provenance": "Layer 47 early-vs-late S_8 tension significance (quadrature sigma combination) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 47 early-vs-late S_8 tension significance (quadrature sigma combination) (NOT REPLACEMENT)"}
         if spec in ("window", "plausibility", "0p70_0p90"):
             return {"value": _l47_window_check(0.70, 0.90),
-                    "provenance": "Layer 47 plausibility-window check (0.70 <= S_8 <= 0.90) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 47 plausibility-window check (0.70 <= S_8 <= 0.90) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l47_anchor_validation(),
-                    "provenance": "Layer 47 S_8 tension ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 47 S_8 tension ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l47_s8_inventory(),
-                    "provenance": "Layer 47 S_8/sigma_8 tension multi-probe ledger inventory (cluster ad) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 47 S_8/sigma_8 tension multi-probe ledger inventory (cluster ad) (NOT REPLACEMENT)"}
 
     # Layer 48 (cluster ae): new-physics resolution proposal ledger (consumes L46+L47)
     if ("new_physics_proposals" in dataset or "l48" in dataset
@@ -27253,19 +27274,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("proposals_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l48_ledger_evaluation(),
-                    "provenance": "Layer 48 8-proposal new-physics scorecard vs L46+L47 joint tension (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 48 8-proposal new-physics scorecard vs L46+L47 joint tension (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l48_verdict_counts(),
-                    "provenance": "Layer 48 verdict counts (joint_favorable / helps_one / harmful_both) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 48 verdict counts (joint_favorable / helps_one / harmful_both) (NOT REPLACEMENT)"}
         if spec in ("uqff", "self_score", "uqff_score"):
             return {"value": _l48_uqff_self_score(),
-                    "provenance": "Layer 48 UQFF self-score against L46+L47 joint tension (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 48 UQFF self-score against L46+L47 joint tension (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l48_anchor_validation(),
-                    "provenance": "Layer 48 new-physics proposal ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 48 new-physics proposal ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l48_proposals_inventory(),
-                    "provenance": "Layer 48 new-physics resolution proposal ledger inventory (cluster ae) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 48 new-physics resolution proposal ledger inventory (cluster ae) (NOT REPLACEMENT)"}
 
     # Layer 49 (cluster af): lepton (g-2) anomaly ledger
     if ("gminus2" in dataset or "l49" in dataset
@@ -27276,19 +27297,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("lepton_anomaly", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l49_ledger_evaluation(),
-                    "provenance": "Layer 49 lepton (g-2) ledger: 8 muon rows + 4 electron rows (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 49 lepton (g-2) ledger: 8 muon rows + 4 electron rows (NOT REPLACEMENT)"}
         if spec in ("muon", "mu", "muon_tension"):
             return {"value": _l49_muon_tensions(),
-                    "provenance": "Layer 49 (g-2)_mu exp vs SM tensions (data-driven HVP and lattice HVP) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 49 (g-2)_mu exp vs SM tensions (data-driven HVP and lattice HVP) (NOT REPLACEMENT)"}
         if spec in ("electron", "e", "electron_tension"):
             return {"value": _l49_electron_tensions(),
-                    "provenance": "Layer 49 (g-2)_e exp vs SM tensions (Cs-alpha and Rb-alpha) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 49 (g-2)_e exp vs SM tensions (Cs-alpha and Rb-alpha) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l49_anchor_validation(),
-                    "provenance": "Layer 49 lepton (g-2) anomaly anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 49 lepton (g-2) anomaly anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l49_gminus2_inventory(),
-                    "provenance": "Layer 49 lepton (g-2) anomaly ledger inventory (cluster af) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 49 lepton (g-2) anomaly ledger inventory (cluster af) (NOT REPLACEMENT)"}
 
     # Layer 50 (cluster ag): BSM proposal scorecard for L49 (g-2)
     if ("bsm_gminus2" in dataset or "l50" in dataset
@@ -27299,19 +27320,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("gminus2_bsm", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l50_ledger_evaluation(),
-                    "provenance": "Layer 50 8-proposal BSM scorecard vs L49 muon (g-2) gaps (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 50 8-proposal BSM scorecard vs L49 muon (g-2) gaps (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l50_verdict_counts(),
-                    "provenance": "Layer 50 verdict counts (closes_dd / closes_lat / mass_scaling / etc.) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 50 verdict counts (closes_dd / closes_lat / mass_scaling / etc.) (NOT REPLACEMENT)"}
         if spec in ("uqff", "self_score", "uqff_score"):
             return {"value": _l50_uqff_self_score(),
-                    "provenance": "Layer 50 UQFF self-score against L49 muon dd-gap (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 50 UQFF self-score against L49 muon dd-gap (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l50_anchor_validation(),
-                    "provenance": "Layer 50 BSM scorecard anchor validation (5 checks, mass-scaling check included) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 50 BSM scorecard anchor validation (5 checks, mass-scaling check included) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l50_bsm_inventory(),
-                    "provenance": "Layer 50 BSM proposal scorecard for L49 (g-2) inventory (cluster ag) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 50 BSM proposal scorecard for L49 (g-2) inventory (cluster ag) (NOT REPLACEMENT)"}
 
     # Layer 51 (cluster ah): CMB lensing amplitude A_L ledger
     if ("al_tension" in dataset or "l51" in dataset
@@ -27322,22 +27343,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("cmb_lensing_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l51_ledger_evaluation(),
-                    "provenance": "Layer 51 10-probe A_L ledger with per-row deviation-from-unity in sigma (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 51 10-probe A_L ledger with per-row deviation-from-unity in sigma (NOT REPLACEMENT)"}
         if spec in ("split", "kind", "kind_split"):
             return {"value": _l51_kind_split(),
-                    "provenance": "Layer 51 Planck-vs-ground kind split with per-kind inverse-variance weighted means (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 51 Planck-vs-ground kind split with per-kind inverse-variance weighted means (NOT REPLACEMENT)"}
         if spec in ("tension", "tensions", "delta", "sigma"):
             return {"value": _l51_tensions(),
-                    "provenance": "Layer 51 A_L deviations from unity (per kind) and Planck-vs-ground inter-group tension (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 51 A_L deviations from unity (per kind) and Planck-vs-ground inter-group tension (NOT REPLACEMENT)"}
         if spec in ("window", "plausibility", "0p85_1p25"):
             return {"value": _l51_window_check(0.85, 1.25),
-                    "provenance": "Layer 51 plausibility-window check (0.85 <= A_L <= 1.25) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 51 plausibility-window check (0.85 <= A_L <= 1.25) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l51_anchor_validation(),
-                    "provenance": "Layer 51 A_L tension ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 51 A_L tension ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l51_al_inventory(),
-                    "provenance": "Layer 51 CMB lensing amplitude A_L ledger inventory (cluster ah) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 51 CMB lensing amplitude A_L ledger inventory (cluster ah) (NOT REPLACEMENT)"}
 
     # Layer 52 (cluster ai): joint H_0 + S_8 + A_L three-tension consumer
     if ("joint_cosmology" in dataset or "l52" in dataset
@@ -27349,19 +27370,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("joint_proposals", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l52_ledger_evaluation(),
-                    "provenance": "Layer 52 8-proposal three-tension scorecard vs L46+L47+L51 joint constraints (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 52 8-proposal three-tension scorecard vs L46+L47+L51 joint constraints (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l52_verdict_counts(),
-                    "provenance": "Layer 52 verdict counts (helps_all_three / helps_some_harms_none / etc.) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 52 verdict counts (helps_all_three / helps_some_harms_none / etc.) (NOT REPLACEMENT)"}
         if spec in ("uqff", "self_score", "uqff_score"):
             return {"value": _l52_uqff_self_score(),
-                    "provenance": "Layer 52 UQFF self-score against joint H_0+S_8+A_L tension (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 52 UQFF self-score against joint H_0+S_8+A_L tension (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l52_anchor_validation(),
-                    "provenance": "Layer 52 three-tension scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 52 three-tension scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l52_joint_inventory(),
-                    "provenance": "Layer 52 joint H_0+S_8+A_L three-tension scorecard inventory (cluster ai) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 52 joint H_0+S_8+A_L three-tension scorecard inventory (cluster ai) (NOT REPLACEMENT)"}
 
     # Layer 53 (cluster aj): CMB large-angle anomalies ledger
     if ("cmb_anomalies" in dataset or "l53" in dataset
@@ -27373,19 +27394,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("cmb_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l53_ledger_evaluation(),
-                    "provenance": "Layer 53 8-row CMB large-angle anomalies ledger (large_scale + spatial) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 53 8-row CMB large-angle anomalies ledger (large_scale + spatial) (NOT REPLACEMENT)"}
         if spec in ("split", "kinds", "kind_split"):
             return {"value": _l53_kind_split(),
-                    "provenance": "Layer 53 per-kind inverse-variance weighted significance (large_scale | spatial) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 53 per-kind inverse-variance weighted significance (large_scale | spatial) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary"):
             return {"value": _l53_summary_stats(),
-                    "provenance": "Layer 53 CMB anomalies summary statistics (n above 2/3 sigma, quadrature upper bound) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 53 CMB anomalies summary statistics (n above 2/3 sigma, quadrature upper bound) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l53_anchor_validation(),
-                    "provenance": "Layer 53 CMB anomalies ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 53 CMB anomalies ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l53_cmb_anomalies_inventory(),
-                    "provenance": "Layer 53 CMB large-angle anomalies ledger inventory (cluster aj) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 53 CMB large-angle anomalies ledger inventory (cluster aj) (NOT REPLACEMENT)"}
 
     # Layer 54 (cluster ak): CMB-anomaly consumer scorecard (consumes L53)
     if ("cmb_anomaly_scorecard" in dataset or "l54" in dataset
@@ -27397,22 +27418,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("cmb_proposals", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l54_ledger_evaluation(),
-                    "provenance": "Layer 54 8-proposal CMB-anomaly scorecard vs L53 8-row anomaly catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 54 8-proposal CMB-anomaly scorecard vs L53 8-row anomaly catalog (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l54_verdict_counts(),
-                    "provenance": "Layer 54 verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 54 verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "self_score", "uqff_score"):
             return {"value": _l54_uqff_self_score(),
-                    "provenance": "Layer 54 UQFF self-score against L53 CMB-anomaly catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 54 UQFF self-score against L53 CMB-anomaly catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "anomaly_coverage", "per_anomaly"):
             return {"value": _l54_anomaly_coverage(),
-                    "provenance": "Layer 54 per-anomaly coverage (how many proposals help/harm/silent each L53 row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 54 per-anomaly coverage (how many proposals help/harm/silent each L53 row) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l54_anchor_validation(),
-                    "provenance": "Layer 54 CMB-anomaly scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 54 CMB-anomaly scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l54_consumer_inventory(),
-                    "provenance": "Layer 54 CMB-anomaly consumer scorecard inventory (cluster ak) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 54 CMB-anomaly consumer scorecard inventory (cluster ak) (NOT REPLACEMENT)"}
 
     # Layer 55 (cluster al): JWST high-z massive galaxy abundance ledger
     if ("jwst_highz" in dataset or "l55" in dataset
@@ -27424,22 +27445,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("high_z_galaxies", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l55_ledger_evaluation(),
-                    "provenance": "Layer 55 8-row JWST high-z massive-galaxy abundance ledger (spectroscopic + photometric) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 55 8-row JWST high-z massive-galaxy abundance ledger (spectroscopic + photometric) (NOT REPLACEMENT)"}
         if spec in ("split", "kinds", "kind_split"):
             return {"value": _l55_kind_split(),
-                    "provenance": "Layer 55 per-kind inverse-variance weighted significance (spectroscopic | photometric) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 55 per-kind inverse-variance weighted significance (spectroscopic | photometric) (NOT REPLACEMENT)"}
         if spec in ("inter", "inter_kind", "phot_vs_spec"):
             return {"value": _l55_inter_kind_tension(),
-                    "provenance": "Layer 55 photometric-vs-spectroscopic inter-kind tension (photo-z systematic check) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 55 photometric-vs-spectroscopic inter-kind tension (photo-z systematic check) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary"):
             return {"value": _l55_summary_stats(),
-                    "provenance": "Layer 55 JWST high-z ledger summary statistics (n above 2/3 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 55 JWST high-z ledger summary statistics (n above 2/3 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l55_anchor_validation(),
-                    "provenance": "Layer 55 JWST high-z ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 55 JWST high-z ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l55_jwst_highz_inventory(),
-                    "provenance": "Layer 55 JWST high-z massive galaxy abundance ledger inventory (cluster al) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 55 JWST high-z massive galaxy abundance ledger inventory (cluster al) (NOT REPLACEMENT)"}
 
     # Layer 56 (cluster am): JWST high-z consumer scorecard (consumes L55)
     if ("jwst_scorecard" in dataset or "l56" in dataset
@@ -27451,25 +27472,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("jwst_proposals", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l56_ledger_evaluation(),
-                    "provenance": "Layer 56 8-proposal JWST consumer scorecard vs L55 8-row catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 56 8-proposal JWST consumer scorecard vs L55 8-row catalog (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l56_verdict_counts(),
-                    "provenance": "Layer 56 verdict counts (helps_most / helps_some_harms_none / etc.) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 56 verdict counts (helps_most / helps_some_harms_none / etc.) (NOT REPLACEMENT)"}
         if spec in ("uqff", "self_score", "uqff_score"):
             return {"value": _l56_uqff_self_score(),
-                    "provenance": "Layer 56 UQFF self-score against L55 JWST catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 56 UQFF self-score against L55 JWST catalog (NOT REPLACEMENT)"}
         if spec in ("sign", "sign_check", "consistency"):
             return {"value": _l56_uqff_sign_consistency_check(),
-                    "provenance": "Layer 56 UQFF sign-consistency check vs L55 qualitative claim and L52 S_8 row (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 56 UQFF sign-consistency check vs L55 qualitative claim and L52 S_8 row (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage", "per_row"):
             return {"value": _l56_row_coverage(),
-                    "provenance": "Layer 56 per-row coverage (how many proposals help/harm/silent each L55 row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 56 per-row coverage (how many proposals help/harm/silent each L55 row) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l56_anchor_validation(),
-                    "provenance": "Layer 56 JWST consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 56 JWST consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l56_consumer_inventory(),
-                    "provenance": "Layer 56 JWST high-z consumer scorecard inventory (cluster am) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 56 JWST high-z consumer scorecard inventory (cluster am) (NOT REPLACEMENT)"}
 
     # Layer 57 (cluster an): FRB host-galaxy DM tension ledger
     if ("frb_dm" in dataset or "l57" in dataset
@@ -27481,22 +27502,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("frb_host_dm", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l57_ledger_evaluation(),
-                    "provenance": "Layer 57 8-row FRB host-galaxy DM tension ledger (repeaters + non-repeaters) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 57 8-row FRB host-galaxy DM tension ledger (repeaters + non-repeaters) (NOT REPLACEMENT)"}
         if spec in ("split", "kinds", "kind_split"):
             return {"value": _l57_kind_split(),
-                    "provenance": "Layer 57 per-kind inverse-variance weighted significance (repeater | non_repeater) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 57 per-kind inverse-variance weighted significance (repeater | non_repeater) (NOT REPLACEMENT)"}
         if spec in ("inter", "inter_kind", "rep_vs_nrp"):
             return {"value": _l57_inter_kind_tension(),
-                    "provenance": "Layer 57 repeater-vs-non-repeater inter-kind tension (population homogeneity check) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 57 repeater-vs-non-repeater inter-kind tension (population homogeneity check) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary"):
             return {"value": _l57_summary_stats(),
-                    "provenance": "Layer 57 FRB DM ledger summary statistics (n above 2/3 sigma, quadrature bound) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 57 FRB DM ledger summary statistics (n above 2/3 sigma, quadrature bound) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l57_anchor_validation(),
-                    "provenance": "Layer 57 FRB DM ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 57 FRB DM ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l57_frb_dm_inventory(),
-                    "provenance": "Layer 57 FRB host-galaxy DM tension ledger inventory (cluster an) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 57 FRB host-galaxy DM tension ledger inventory (cluster an) (NOT REPLACEMENT)"}
 
     # Layer 58 (cluster ao): FRB-DM consumer scorecard (consumes L57)
     if ("frb_consumer" in dataset or "l58" in dataset
@@ -27508,25 +27529,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("frb_proposals", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l58_ledger_evaluation(),
-                    "provenance": "Layer 58 8-proposal FRB-DM consumer scorecard vs L57 8-row catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 58 8-proposal FRB-DM consumer scorecard vs L57 8-row catalog (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l58_verdict_counts(),
-                    "provenance": "Layer 58 verdict counts (helps_most / helps_some_harms_none / etc.) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 58 verdict counts (helps_most / helps_some_harms_none / etc.) (NOT REPLACEMENT)"}
         if spec in ("uqff", "self_score", "uqff_score"):
             return {"value": _l58_uqff_self_score(),
-                    "provenance": "Layer 58 UQFF self-score against L57 FRB-DM catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 58 UQFF self-score against L57 FRB-DM catalog (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "190520b"):
             return {"value": _l58_outlier_focus(),
-                    "provenance": "Layer 58 outlier-focus: per-proposal handling of dominant FRB 190520B 4.0-sigma outlier (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 58 outlier-focus: per-proposal handling of dominant FRB 190520B 4.0-sigma outlier (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage", "per_row"):
             return {"value": _l58_row_coverage(),
-                    "provenance": "Layer 58 per-row coverage (how many proposals help/harm/silent each L57 row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 58 per-row coverage (how many proposals help/harm/silent each L57 row) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l58_anchor_validation(),
-                    "provenance": "Layer 58 FRB-DM consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 58 FRB-DM consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l58_consumer_inventory(),
-                    "provenance": "Layer 58 FRB-DM consumer scorecard inventory (cluster ao) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 58 FRB-DM consumer scorecard inventory (cluster ao) (NOT REPLACEMENT)"}
 
     # Layer 59 (cluster ap): cosmic dipole / isotropy anomaly ledger
     if ("cosmic_dipole" in dataset or "l59" in dataset
@@ -27538,22 +27559,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("dipole_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l59_ledger_evaluation(),
-                    "provenance": "Layer 59 8-row cosmic-dipole tension ledger (intrinsic_excess + kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 59 8-row cosmic-dipole tension ledger (intrinsic_excess + kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("split", "kinds", "kind_split"):
             return {"value": _l59_kind_split(),
-                    "provenance": "Layer 59 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 59 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("inter", "inter_kind", "two_population"):
             return {"value": _l59_inter_kind_tension(),
-                    "provenance": "Layer 59 intrinsic-vs-kinematic inter-kind tension (two-population confirmation - the actual anomaly) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 59 intrinsic-vs-kinematic inter-kind tension (two-population confirmation - the actual anomaly) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary"):
             return {"value": _l59_summary_stats(),
-                    "provenance": "Layer 59 cosmic-dipole ledger summary statistics (n above 2/3/5 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 59 cosmic-dipole ledger summary statistics (n above 2/3/5 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l59_anchor_validation(),
-                    "provenance": "Layer 59 cosmic-dipole ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 59 cosmic-dipole ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l59_cosmic_dipole_inventory(),
-                    "provenance": "Layer 59 cosmic dipole / isotropy anomaly ledger inventory (cluster ap) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 59 cosmic dipole / isotropy anomaly ledger inventory (cluster ap) (NOT REPLACEMENT)"}
 
     # Layer 60 (cluster aq): cosmic-dipole consumer scorecard
     if ("dipole_consumer" in dataset or "l60" in dataset
@@ -27565,25 +27586,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("dipole_scorecard", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l60_ledger_evaluation(),
-                    "provenance": "Layer 60 8-proposal cosmic-dipole consumer scorecard against L59 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 60 8-proposal cosmic-dipole consumer scorecard against L59 (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "verdict_counts"):
             return {"value": _l60_verdict_counts(),
-                    "provenance": "Layer 60 5-tier verdict counts (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 60 5-tier verdict counts (NOT REPLACEMENT)"}
         if spec in ("uqff", "self", "uqff_self"):
             return {"value": _l60_uqff_self_score(),
-                    "provenance": "Layer 60 UQFF buoyancy-shell anisotropic-vacuum self-score against L59 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 60 UQFF buoyancy-shell anisotropic-vacuum self-score against L59 (NOT REPLACEMENT)"}
         if spec in ("coverage", "rows_coverage", "row_coverage"):
             return {"value": _l60_row_coverage(),
-                    "provenance": "Layer 60 per-L59-row coverage (helped_by/harmed_by/silent_from counts) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 60 per-L59-row coverage (helped_by/harmed_by/silent_from counts) (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "catwise"):
             return {"value": _l60_outlier_focus(),
-                    "provenance": "Layer 60 CatWISE2020 outlier-focus check (sharpest single test, 5.1 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 60 CatWISE2020 outlier-focus check (sharpest single test, 5.1 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l60_anchor_validation(),
-                    "provenance": "Layer 60 cosmic-dipole consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 60 cosmic-dipole consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l60_consumer_inventory(),
-                    "provenance": "Layer 60 cosmic-dipole consumer scorecard inventory (cluster aq) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 60 cosmic-dipole consumer scorecard inventory (cluster aq) (NOT REPLACEMENT)"}
 
     # Layer 61 (cluster ar): gravitational-wave / multi-messenger tension ledger
     if ("gw_multimessenger" in dataset or "l61" in dataset
@@ -27595,22 +27616,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("multimessenger_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l61_ledger_evaluation(),
-                    "provenance": "Layer 61 8-row GW + multi-messenger tension ledger (intrinsic_excess + kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 61 8-row GW + multi-messenger tension ledger (intrinsic_excess + kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("split", "kinds", "kind_split"):
             return {"value": _l61_kind_split(),
-                    "provenance": "Layer 61 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 61 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("inter", "inter_kind", "two_population"):
             return {"value": _l61_inter_kind_tension(),
-                    "provenance": "Layer 61 intrinsic-vs-kinematic inter-kind tension (PTA-SGWB+BBH-population excess vs propagation+standard-siren nulls) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 61 intrinsic-vs-kinematic inter-kind tension (PTA-SGWB+BBH-population excess vs propagation+standard-siren nulls) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary"):
             return {"value": _l61_summary_stats(),
-                    "provenance": "Layer 61 GW + multi-messenger ledger summary statistics (n above 2/3/4 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 61 GW + multi-messenger ledger summary statistics (n above 2/3/4 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l61_anchor_validation(),
-                    "provenance": "Layer 61 GW + multi-messenger ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 61 GW + multi-messenger ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l61_gw_multimessenger_inventory(),
-                    "provenance": "Layer 61 gravitational-wave / multi-messenger tension ledger inventory (cluster ar) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 61 gravitational-wave / multi-messenger tension ledger inventory (cluster ar) (NOT REPLACEMENT)"}
 
     # Layer 62 (cluster as): GW + multi-messenger consumer scorecard
     if ("gw_consumer" in dataset or "l62" in dataset
@@ -27622,25 +27643,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("multimessenger_scorecard", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l62_ledger_evaluation(),
-                    "provenance": "Layer 62 8-proposal GW + multi-messenger consumer scorecard against L61 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 62 8-proposal GW + multi-messenger consumer scorecard against L61 (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "verdict_counts"):
             return {"value": _l62_verdict_counts(),
-                    "provenance": "Layer 62 5-tier verdict counts (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 62 5-tier verdict counts (NOT REPLACEMENT)"}
         if spec in ("uqff", "self", "uqff_self"):
             return {"value": _l62_uqff_self_score(),
-                    "provenance": "Layer 62 UQFF buoyancy-shell modified GW propagation self-score against L61 (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 62 UQFF buoyancy-shell modified GW propagation self-score against L61 (NOT REPLACEMENT)"}
         if spec in ("coverage", "rows_coverage", "row_coverage"):
             return {"value": _l62_row_coverage(),
-                    "provenance": "Layer 62 per-L61-row coverage (helped_by/harmed_by/silent_from counts) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 62 per-L61-row coverage (helped_by/harmed_by/silent_from counts) (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "ng15_hd"):
             return {"value": _l62_outlier_focus(),
-                    "provenance": "Layer 62 NANOGrav NG15 HD outlier-focus check (sharpest single test, 4.0 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 62 NANOGrav NG15 HD outlier-focus check (sharpest single test, 4.0 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l62_anchor_validation(),
-                    "provenance": "Layer 62 GW + multi-messenger consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 62 GW + multi-messenger consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l62_consumer_inventory(),
-                    "provenance": "Layer 62 GW + multi-messenger consumer scorecard inventory (cluster as) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 62 GW + multi-messenger consumer scorecard inventory (cluster as) (NOT REPLACEMENT)"}
 
     # Layer 63 (cluster at): CMB B-mode / inflation upper-bound tension ledger
     if ("cmb_bmode" in dataset or "l63" in dataset
@@ -27652,22 +27673,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("bmode_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l63_ledger_evaluation(),
-                    "provenance": "Layer 63 8-row CMB B-mode / inflation tension ledger (intrinsic_excess + kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 63 8-row CMB B-mode / inflation tension ledger (intrinsic_excess + kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("split", "kinds", "kind_split"):
             return {"value": _l63_kind_split(),
-                    "provenance": "Layer 63 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 63 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("inter", "inter_kind", "two_population"):
             return {"value": _l63_inter_kind_tension(),
-                    "provenance": "Layer 63 intrinsic-vs-kinematic inter-kind tension (CMB residual+lensing excess vs r-bound+n_t+parity nulls) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 63 intrinsic-vs-kinematic inter-kind tension (CMB residual+lensing excess vs r-bound+n_t+parity nulls) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary"):
             return {"value": _l63_summary_stats(),
-                    "provenance": "Layer 63 CMB B-mode / inflation ledger summary statistics (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 63 CMB B-mode / inflation ledger summary statistics (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l63_anchor_validation(),
-                    "provenance": "Layer 63 CMB B-mode / inflation ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 63 CMB B-mode / inflation ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l63_cmb_bmode_inflation_inventory(),
-                    "provenance": "Layer 63 CMB B-mode / inflation upper-bound tension ledger inventory (cluster at) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 63 CMB B-mode / inflation upper-bound tension ledger inventory (cluster at) (NOT REPLACEMENT)"}
 
     # Layer 64 (cluster au): CMB B-mode / inflation consumer scorecard
     if ("cmb_bmode_consumer" in dataset or "l64" in dataset
@@ -27679,25 +27700,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("bmode_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l64_ledger_evaluation(),
-                    "provenance": "Layer 64 8-proposal CMB B-mode / inflation consumer scorecard (per-proposal verdict + post_wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 64 8-proposal CMB B-mode / inflation consumer scorecard (per-proposal verdict + post_wmean) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "verdict_counts"):
             return {"value": _l64_verdict_counts(),
-                    "provenance": "Layer 64 verdict-count summary (helps_most | helps_some_harms_none | helps_some_harms_some | harmful | silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 64 verdict-count summary (helps_most | helps_some_harms_none | helps_some_harms_some | harmful | silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "uqff_self_score"):
             return {"value": _l64_uqff_self_score(),
-                    "provenance": "Layer 64 UQFF self-score against the L63 CMB B-mode / inflation baseline (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 64 UQFF self-score against the L63 CMB B-mode / inflation baseline (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l64_row_coverage(),
-                    "provenance": "Layer 64 per-row helper/harmer coverage across L63 catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 64 per-row helper/harmer coverage across L63 catalog (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus"):
             return {"value": _l64_outlier_focus(),
-                    "provenance": "Layer 64 outlier-focus on Planck 2018 A_L excess (2.8 sigma, sharpest single test in L63) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 64 outlier-focus on Planck 2018 A_L excess (2.8 sigma, sharpest single test in L63) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l64_anchor_validation(),
-                    "provenance": "Layer 64 CMB B-mode / inflation consumer anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 64 CMB B-mode / inflation consumer anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l64_consumer_inventory(),
-                    "provenance": "Layer 64 CMB B-mode / inflation consumer scorecard inventory (cluster au) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 64 CMB B-mode / inflation consumer scorecard inventory (cluster au) (NOT REPLACEMENT)"}
 
     # Layer 65 (cluster av): solar-system / EP / fifth-force tension ledger
     if ("solar_system_ep" in dataset or "l65" in dataset
@@ -27709,22 +27730,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("ep_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "catalog", "evaluation"):
             return {"value": _l65_ledger_evaluation(),
-                    "provenance": "Layer 65 8-row solar-system / EP / fifth-force tension ledger (intrinsic_excess + kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 65 8-row solar-system / EP / fifth-force tension ledger (intrinsic_excess + kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("split", "kinds", "kind_split"):
             return {"value": _l65_kind_split(),
-                    "provenance": "Layer 65 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 65 per-kind inverse-variance weighted significance (intrinsic_excess | kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("inter", "inter_kind", "two_population"):
             return {"value": _l65_inter_kind_tension(),
-                    "provenance": "Layer 65 intrinsic-vs-kinematic inter-kind tension (solar-system + DM-direct-detection anomalies vs WEP + ISL + WIMP nulls) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 65 intrinsic-vs-kinematic inter-kind tension (solar-system + DM-direct-detection anomalies vs WEP + ISL + WIMP nulls) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary"):
             return {"value": _l65_summary_stats(),
-                    "provenance": "Layer 65 solar-system / EP / fifth-force ledger summary statistics (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 65 solar-system / EP / fifth-force ledger summary statistics (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l65_anchor_validation(),
-                    "provenance": "Layer 65 solar-system / EP / fifth-force ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 65 solar-system / EP / fifth-force ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l65_solar_system_ep_inventory(),
-                    "provenance": "Layer 65 solar-system / EP / fifth-force tension ledger inventory (cluster av) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 65 solar-system / EP / fifth-force tension ledger inventory (cluster av) (NOT REPLACEMENT)"}
 
     # Layer 66 (cluster aw): solar-system / EP / fifth-force consumer scorecard
     if ("solar_system_ep_consumer" in dataset or "l66" in dataset
@@ -27736,25 +27757,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("ep_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l66_ledger_evaluation(),
-                    "provenance": "Layer 66 8-proposal solar-system / EP / fifth-force consumer scorecard (per-proposal verdict + post_wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 66 8-proposal solar-system / EP / fifth-force consumer scorecard (per-proposal verdict + post_wmean) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "verdict_counts"):
             return {"value": _l66_verdict_counts(),
-                    "provenance": "Layer 66 verdict-count summary (helps_most | helps_some_harms_none | helps_some_harms_some | harmful | silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 66 verdict-count summary (helps_most | helps_some_harms_none | helps_some_harms_some | harmful | silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "uqff_self_score"):
             return {"value": _l66_uqff_self_score(),
-                    "provenance": "Layer 66 UQFF self-score against the L65 solar-system / EP / fifth-force baseline (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 66 UQFF self-score against the L65 solar-system / EP / fifth-force baseline (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l66_row_coverage(),
-                    "provenance": "Layer 66 per-row helper/harmer coverage across L65 catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 66 per-row helper/harmer coverage across L65 catalog (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus"):
             return {"value": _l66_outlier_focus(),
-                    "provenance": "Layer 66 outlier-focus on XENONnT low-E electronic recoil (2.4 sigma, sharpest single test in L65) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 66 outlier-focus on XENONnT low-E electronic recoil (2.4 sigma, sharpest single test in L65) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l66_anchor_validation(),
-                    "provenance": "Layer 66 solar-system / EP / fifth-force consumer anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 66 solar-system / EP / fifth-force consumer anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l66_consumer_inventory(),
-                    "provenance": "Layer 66 solar-system / EP / fifth-force consumer scorecard inventory (cluster aw) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 66 solar-system / EP / fifth-force consumer scorecard inventory (cluster aw) (NOT REPLACEMENT)"}
 
     # Layer 67 (cluster ax): LSS / cluster-counts / BAO tension ledger
     if ("lss_cluster_bao" in dataset or "l67" in dataset
@@ -27765,22 +27786,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("cluster_counts", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "catalog"):
             return {"value": _l67_ledger_evaluation(),
-                    "provenance": "Layer 67 8-row LSS / cluster-counts / BAO tension ledger (per-row tension sigma + kind + source) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 67 8-row LSS / cluster-counts / BAO tension ledger (per-row tension sigma + kind + source) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary", "summary_stats"):
             return {"value": _l67_summary_stats(),
-                    "provenance": "Layer 67 LSS / cluster-counts / BAO summary statistics (wmean, quadrature, counts above 2/3 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 67 LSS / cluster-counts / BAO summary statistics (wmean, quadrature, counts above 2/3 sigma) (NOT REPLACEMENT)"}
         if spec in ("split", "kind_split", "kinds"):
             return {"value": _l67_kind_split(),
-                    "provenance": "Layer 67 intrinsic_excess vs kinematic_consistent split (4+4) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 67 intrinsic_excess vs kinematic_consistent split (4+4) (NOT REPLACEMENT)"}
         if spec in ("inter_kind", "tension", "inter_kind_tension"):
             return {"value": _l67_inter_kind_tension(),
-                    "provenance": "Layer 67 inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 67 inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l67_anchor_validation(),
-                    "provenance": "Layer 67 LSS / cluster-counts / BAO ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 67 LSS / cluster-counts / BAO ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l67_lss_cluster_bao_inventory(),
-                    "provenance": "Layer 67 LSS / cluster-counts / BAO tension ledger inventory (cluster ax) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 67 LSS / cluster-counts / BAO tension ledger inventory (cluster ax) (NOT REPLACEMENT)"}
 
     # Layer 68 (cluster ay): LSS / cluster-counts / BAO consumer scorecard
     if ("lss_cluster_bao_consumer" in dataset or "l68" in dataset
@@ -27791,25 +27812,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("cluster_counts_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l68_ledger_evaluation(),
-                    "provenance": "Layer 68 8-proposal LSS / cluster-counts / BAO consumer scorecard (per-proposal verdict + post_wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 68 8-proposal LSS / cluster-counts / BAO consumer scorecard (per-proposal verdict + post_wmean) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "verdict_counts"):
             return {"value": _l68_verdict_counts(),
-                    "provenance": "Layer 68 verdict-count summary (helps_most | helps_some_harms_none | helps_some_harms_some | harmful | silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 68 verdict-count summary (helps_most | helps_some_harms_none | helps_some_harms_some | harmful | silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "uqff_self_score"):
             return {"value": _l68_uqff_self_score(),
-                    "provenance": "Layer 68 UQFF self-score against the L67 LSS / cluster-counts / BAO baseline (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 68 UQFF self-score against the L67 LSS / cluster-counts / BAO baseline (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l68_row_coverage(),
-                    "provenance": "Layer 68 per-row helper/harmer coverage across L67 catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 68 per-row helper/harmer coverage across L67 catalog (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus"):
             return {"value": _l68_outlier_focus(),
-                    "provenance": "Layer 68 outlier-focus on KiDS-1000 S_8 low (2.9 sigma, sharpest single test in L67) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 68 outlier-focus on KiDS-1000 S_8 low (2.9 sigma, sharpest single test in L67) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l68_anchor_validation(),
-                    "provenance": "Layer 68 LSS / cluster-counts / BAO consumer anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 68 LSS / cluster-counts / BAO consumer anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l68_consumer_inventory(),
-                    "provenance": "Layer 68 LSS / cluster-counts / BAO consumer scorecard inventory (cluster ay) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 68 LSS / cluster-counts / BAO consumer scorecard inventory (cluster ay) (NOT REPLACEMENT)"}
 
     # Layer 69 (cluster az): neutrino oscillation / mass-hierarchy tension ledger
     if ("neutrino_oscillation_mass" in dataset or "l69" in dataset
@@ -27820,22 +27841,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("sterile_neutrino", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "catalog"):
             return {"value": _l69_ledger_evaluation(),
-                    "provenance": "Layer 69 8-row neutrino oscillation / mass-hierarchy tension ledger (per-row tension sigma + kind + source) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 69 8-row neutrino oscillation / mass-hierarchy tension ledger (per-row tension sigma + kind + source) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary", "summary_stats"):
             return {"value": _l69_summary_stats(),
-                    "provenance": "Layer 69 neutrino oscillation / mass-hierarchy summary statistics (wmean, quadrature, counts above 2/3 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 69 neutrino oscillation / mass-hierarchy summary statistics (wmean, quadrature, counts above 2/3 sigma) (NOT REPLACEMENT)"}
         if spec in ("split", "kind_split", "kinds"):
             return {"value": _l69_kind_split(),
-                    "provenance": "Layer 69 intrinsic_excess vs kinematic_consistent split (4+4) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 69 intrinsic_excess vs kinematic_consistent split (4+4) (NOT REPLACEMENT)"}
         if spec in ("inter_kind", "tension", "inter_kind_tension"):
             return {"value": _l69_inter_kind_tension(),
-                    "provenance": "Layer 69 inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 69 inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l69_anchor_validation(),
-                    "provenance": "Layer 69 neutrino oscillation / mass-hierarchy ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 69 neutrino oscillation / mass-hierarchy ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l69_neutrino_oscillation_mass_inventory(),
-                    "provenance": "Layer 69 neutrino oscillation / mass-hierarchy tension ledger inventory (cluster az) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 69 neutrino oscillation / mass-hierarchy tension ledger inventory (cluster az) (NOT REPLACEMENT)"}
 
     # Layer 70 (cluster ba): neutrino oscillation / mass-hierarchy consumer scorecard
     if ("neutrino_oscillation_consumer" in dataset or "l70" in dataset
@@ -27846,25 +27867,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("nu_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l70_ledger_evaluation(),
-                    "provenance": "Layer 70 8-proposal neutrino oscillation / mass-hierarchy consumer scorecard (per-proposal verdict + post-wmean + per-row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 70 8-proposal neutrino oscillation / mass-hierarchy consumer scorecard (per-proposal verdict + post-wmean + per-row) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l70_verdict_counts(),
-                    "provenance": "Layer 70 neutrino-sector consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 70 neutrino-sector consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l70_uqff_self_score(),
-                    "provenance": "Layer 70 UQFF self-score against L69 neutrino tension catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 70 UQFF self-score against L69 neutrino tension catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l70_row_coverage(),
-                    "provenance": "Layer 70 per-L69-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 70 per-L69-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "gallium"):
             return {"value": _l70_outlier_focus(),
-                    "provenance": "Layer 70 outlier-focus on gallium anomaly BEST 2022 (sharpest single test in L69, 5.0 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 70 outlier-focus on gallium anomaly BEST 2022 (sharpest single test in L69, 5.0 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l70_anchor_validation(),
-                    "provenance": "Layer 70 neutrino-sector consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 70 neutrino-sector consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l70_consumer_inventory(),
-                    "provenance": "Layer 70 neutrino oscillation / mass-hierarchy consumer scorecard inventory (cluster ba) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 70 neutrino oscillation / mass-hierarchy consumer scorecard inventory (cluster ba) (NOT REPLACEMENT)"}
 
     # Layer 71 (cluster bb): high-energy astrophysical neutrino + tau-nu + Glashow tension ledger
     if ("hea_neutrino" in dataset or "l71" in dataset
@@ -27875,22 +27896,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("glashow", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "catalog"):
             return {"value": _l71_ledger_evaluation(),
-                    "provenance": "Layer 71 8-row high-energy astrophysical neutrino + tau-nu + Glashow tension ledger (per-row tension sigma + kind + source) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 71 8-row high-energy astrophysical neutrino + tau-nu + Glashow tension ledger (per-row tension sigma + kind + source) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary", "summary_stats"):
             return {"value": _l71_summary_stats(),
-                    "provenance": "Layer 71 HEA-neutrino summary statistics (wmean, quadrature, counts above 2/3 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 71 HEA-neutrino summary statistics (wmean, quadrature, counts above 2/3 sigma) (NOT REPLACEMENT)"}
         if spec in ("split", "kind_split", "kinds"):
             return {"value": _l71_kind_split(),
-                    "provenance": "Layer 71 intrinsic_excess vs kinematic_consistent split (4+4) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 71 intrinsic_excess vs kinematic_consistent split (4+4) (NOT REPLACEMENT)"}
         if spec in ("inter_kind", "tension", "inter_kind_tension"):
             return {"value": _l71_inter_kind_tension(),
-                    "provenance": "Layer 71 inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 71 inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l71_anchor_validation(),
-                    "provenance": "Layer 71 HEA-neutrino ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 71 HEA-neutrino ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l71_hea_neutrino_inventory(),
-                    "provenance": "Layer 71 high-energy astrophysical neutrino + tau-nu + Glashow tension ledger inventory (cluster bb) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 71 high-energy astrophysical neutrino + tau-nu + Glashow tension ledger inventory (cluster bb) (NOT REPLACEMENT)"}
 
     # Layer 72 (cluster bc): HEA-neutrino + tau-nu + Glashow consumer scorecard
     if ("hea_neutrino_consumer" in dataset or "l72" in dataset
@@ -27901,25 +27922,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("glashow_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l72_ledger_evaluation(),
-                    "provenance": "Layer 72 8-proposal HEA-neutrino + tau-nu + Glashow consumer scorecard (per-proposal verdict + post-wmean + per-row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 72 8-proposal HEA-neutrino + tau-nu + Glashow consumer scorecard (per-proposal verdict + post-wmean + per-row) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l72_verdict_counts(),
-                    "provenance": "Layer 72 HEA-nu consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 72 HEA-nu consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l72_uqff_self_score(),
-                    "provenance": "Layer 72 UQFF self-score against L71 HEA-nu tension catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 72 UQFF self-score against L71 HEA-nu tension catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l72_row_coverage(),
-                    "provenance": "Layer 72 per-L71-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 72 per-L71-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "galactic_plane"):
             return {"value": _l72_outlier_focus(),
-                    "provenance": "Layer 72 outlier-focus on IceCube galactic-plane diffuse (sharpest single test in L71, 4.5 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 72 outlier-focus on IceCube galactic-plane diffuse (sharpest single test in L71, 4.5 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l72_anchor_validation(),
-                    "provenance": "Layer 72 HEA-nu consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 72 HEA-nu consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l72_consumer_inventory(),
-                    "provenance": "Layer 72 HEA-neutrino + tau-nu + Glashow consumer scorecard inventory (cluster bc) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 72 HEA-neutrino + tau-nu + Glashow consumer scorecard inventory (cluster bc) (NOT REPLACEMENT)"}
 
     # Layer 73 (cluster bd): UHECR + photon + extensive-air-shower anomaly tension ledger
     if ("uhecr_eas" in dataset or "l73" in dataset
@@ -27930,22 +27951,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("auger_dipole_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation"):
             return {"value": _l73_ledger_evaluation(),
-                    "provenance": "Layer 73 8-row UHECR + photon + EAS anomaly tension ledger (cluster bd) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 73 8-row UHECR + photon + EAS anomaly tension ledger (cluster bd) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary", "summary_stats"):
             return {"value": _l73_summary_stats(),
-                    "provenance": "Layer 73 UHECR + EAS ledger summary statistics (wmean, quadrature, n_above_2sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 73 UHECR + EAS ledger summary statistics (wmean, quadrature, n_above_2sigma) (NOT REPLACEMENT)"}
         if spec in ("split", "kind_split", "kinds"):
             return {"value": _l73_kind_split(),
-                    "provenance": "Layer 73 UHECR + EAS ledger split by kind (intrinsic_excess vs kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 73 UHECR + EAS ledger split by kind (intrinsic_excess vs kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("tension", "inter_kind", "inter_kind_tension"):
             return {"value": _l73_inter_kind_tension(),
-                    "provenance": "Layer 73 UHECR + EAS inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 73 UHECR + EAS inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l73_anchor_validation(),
-                    "provenance": "Layer 73 UHECR + EAS ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 73 UHECR + EAS ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l73_uhecr_eas_inventory(),
-                    "provenance": "Layer 73 UHECR + photon + extensive-air-shower anomaly tension ledger inventory (cluster bd) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 73 UHECR + photon + extensive-air-shower anomaly tension ledger inventory (cluster bd) (NOT REPLACEMENT)"}
 
     # Layer 74 (cluster be): UHECR + photon + EAS consumer scorecard
     if ("uhecr_consumer" in dataset or "l74" in dataset
@@ -27956,25 +27977,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("auger_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l74_ledger_evaluation(),
-                    "provenance": "Layer 74 8-proposal UHECR+EAS consumer scorecard (per-proposal verdict + post-wmean + per-row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 74 8-proposal UHECR+EAS consumer scorecard (per-proposal verdict + post-wmean + per-row) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l74_verdict_counts(),
-                    "provenance": "Layer 74 UHECR+EAS consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 74 UHECR+EAS consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l74_uqff_self_score(),
-                    "provenance": "Layer 74 UQFF self-score against L73 UHECR+EAS tension catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 74 UQFF self-score against L73 UHECR+EAS tension catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l74_row_coverage(),
-                    "provenance": "Layer 74 per-L73-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 74 per-L73-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "auger_dipole"):
             return {"value": _l74_outlier_focus(),
-                    "provenance": "Layer 74 outlier-focus on Auger 8 EeV arrival-direction dipole (sharpest single test in L73 and Phase 7, 6.8 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 74 outlier-focus on Auger 8 EeV arrival-direction dipole (sharpest single test in L73 and Phase 7, 6.8 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l74_anchor_validation(),
-                    "provenance": "Layer 74 UHECR+EAS consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 74 UHECR+EAS consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l74_consumer_inventory(),
-                    "provenance": "Layer 74 UHECR + photon + EAS consumer scorecard inventory (cluster be) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 74 UHECR + photon + EAS consumer scorecard inventory (cluster be) (NOT REPLACEMENT)"}
 
     # Layer 75 (cluster bf): cosmic-X-ray-background + diffuse-X-ray + AGN-population tension ledger
     if ("cxb_agn" in dataset or "l75" in dataset
@@ -27985,22 +28006,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("agn_xray_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation"):
             return {"value": _l75_ledger_evaluation(),
-                    "provenance": "Layer 75 8-row cosmic-X-ray-background + diffuse-X-ray + AGN-population tension ledger (cluster bf) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 75 8-row cosmic-X-ray-background + diffuse-X-ray + AGN-population tension ledger (cluster bf) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary", "summary_stats"):
             return {"value": _l75_summary_stats(),
-                    "provenance": "Layer 75 CXB + AGN ledger summary statistics (wmean, quadrature, n_above_2sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 75 CXB + AGN ledger summary statistics (wmean, quadrature, n_above_2sigma) (NOT REPLACEMENT)"}
         if spec in ("split", "kind_split", "kinds"):
             return {"value": _l75_kind_split(),
-                    "provenance": "Layer 75 CXB + AGN ledger split by kind (intrinsic_excess vs kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 75 CXB + AGN ledger split by kind (intrinsic_excess vs kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("tension", "inter_kind", "inter_kind_tension"):
             return {"value": _l75_inter_kind_tension(),
-                    "provenance": "Layer 75 CXB + AGN inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 75 CXB + AGN inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l75_anchor_validation(),
-                    "provenance": "Layer 75 CXB + AGN ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 75 CXB + AGN ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l75_cxb_agn_inventory(),
-                    "provenance": "Layer 75 cosmic-X-ray-background + diffuse-X-ray + AGN-population tension ledger inventory (cluster bf) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 75 cosmic-X-ray-background + diffuse-X-ray + AGN-population tension ledger inventory (cluster bf) (NOT REPLACEMENT)"}
 
     # Layer 76 (cluster bg): CXB + AGN X-ray consumer scorecard
     if ("cxb_consumer" in dataset or "l76" in dataset
@@ -28011,25 +28032,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("agn_xray_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l76_ledger_evaluation(),
-                    "provenance": "Layer 76 8-proposal CXB+AGN X-ray consumer scorecard (per-proposal verdict + post-wmean + per-row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 76 8-proposal CXB+AGN X-ray consumer scorecard (per-proposal verdict + post-wmean + per-row) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l76_verdict_counts(),
-                    "provenance": "Layer 76 CXB+AGN consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 76 CXB+AGN consumer verdict counts (helps_most / helps_some_harms_none / helps_some_harms_some / harmful / silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l76_uqff_self_score(),
-                    "provenance": "Layer 76 UQFF self-score against L75 CXB+AGN tension catalog (cross-coupled to L72 UQFF via NGC 1068 row 4) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 76 UQFF self-score against L75 CXB+AGN tension catalog (cross-coupled to L72 UQFF via NGC 1068 row 4) (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l76_row_coverage(),
-                    "provenance": "Layer 76 per-L75-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 76 per-L75-row coverage by 8 proposals (helped_by / harmed_by / silent_from) (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "nustar_cxb"):
             return {"value": _l76_outlier_focus(),
-                    "provenance": "Layer 76 outlier-focus on NuSTAR 8-24 keV CXB intensity normalization (sharpest single test in L75, 3.8 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 76 outlier-focus on NuSTAR 8-24 keV CXB intensity normalization (sharpest single test in L75, 3.8 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l76_anchor_validation(),
-                    "provenance": "Layer 76 CXB+AGN consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 76 CXB+AGN consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l76_consumer_inventory(),
-                    "provenance": "Layer 76 CXB + AGN X-ray consumer scorecard inventory (cluster bg, cross-coupled to L72 UQFF via NGC 1068) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 76 CXB + AGN X-ray consumer scorecard inventory (cluster bg, cross-coupled to L72 UQFF via NGC 1068) (NOT REPLACEMENT)"}
 
     # Layer 77 (cluster bh): X-ray binary + ULX + accreting-compact-object anomaly tension ledger
     if ("xrb_ulx" in dataset or "l77" in dataset
@@ -28040,22 +28061,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("ulx_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation"):
             return {"value": _l77_ledger_evaluation(),
-                    "provenance": "Layer 77 8-row XRB/ULX/accreting-compact-object tension ledger (M82 X-1 IMBH 3.5sigma, ULX-pulsar 3.1sigma, NGC 4395 2.6sigma, Sgr A* 2.3sigma + 4 nulls) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 77 8-row XRB/ULX/accreting-compact-object tension ledger (M82 X-1 IMBH 3.5sigma, ULX-pulsar 3.1sigma, NGC 4395 2.6sigma, Sgr A* 2.3sigma + 4 nulls) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary", "summary_stats"):
             return {"value": _l77_summary_stats(),
-                    "provenance": "Layer 77 XRB/ULX ledger summary stats (wmean, quadrature, counts) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 77 XRB/ULX ledger summary stats (wmean, quadrature, counts) (NOT REPLACEMENT)"}
         if spec in ("split", "kind_split"):
             return {"value": _l77_kind_split(),
-                    "provenance": "Layer 77 XRB/ULX kind split (4 intrinsic_excess / 4 kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 77 XRB/ULX kind split (4 intrinsic_excess / 4 kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("tension", "inter_kind", "inter_kind_tension"):
             return {"value": _l77_inter_kind_tension(),
-                    "provenance": "Layer 77 XRB/ULX inter-kind tension (intrinsic-excess vs kinematic-consistent mean separation) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 77 XRB/ULX inter-kind tension (intrinsic-excess vs kinematic-consistent mean separation) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l77_anchor_validation(),
-                    "provenance": "Layer 77 XRB/ULX ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 77 XRB/ULX ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l77_xrb_ulx_inventory(),
-                    "provenance": "Layer 77 X-ray binary + ULX + accreting-compact-object anomaly tension ledger inventory (cluster bh, cross-coupled to L75 via Sgr A*/NGC 4395 and L73 via M82 X-1 IMBH) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 77 X-ray binary + ULX + accreting-compact-object anomaly tension ledger inventory (cluster bh, cross-coupled to L75 via Sgr A*/NGC 4395 and L73 via M82 X-1 IMBH) (NOT REPLACEMENT)"}
 
     # Layer 78 (cluster bi): XRB+ULX consumer scorecard
     if ("xrb_consumer" in dataset or "l78" in dataset
@@ -28066,25 +28087,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("ulx_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l78_ledger_evaluation(),
-                    "provenance": "Layer 78 8-proposal XRB/ULX consumer scorecard (per-proposal verdict + post-wmean + per-row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 78 8-proposal XRB/ULX consumer scorecard (per-proposal verdict + post-wmean + per-row) (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l78_verdict_counts(),
-                    "provenance": "Layer 78 XRB/ULX consumer verdict counts (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 78 XRB/ULX consumer verdict counts (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l78_uqff_self_score(),
-                    "provenance": "Layer 78 UQFF self-score against L77 XRB/ULX catalog (triple-cross-coupled to L73 + L75 UQFF entries) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 78 UQFF self-score against L77 XRB/ULX catalog (triple-cross-coupled to L73 + L75 UQFF entries) (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l78_row_coverage(),
-                    "provenance": "Layer 78 per-L77-row coverage by 8 proposals (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 78 per-L77-row coverage by 8 proposals (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "m82_x1"):
             return {"value": _l78_outlier_focus(),
-                    "provenance": "Layer 78 outlier-focus on M82 X-1 IMBH mass excess (sharpest single test in L77, 3.5 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 78 outlier-focus on M82 X-1 IMBH mass excess (sharpest single test in L77, 3.5 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l78_anchor_validation(),
-                    "provenance": "Layer 78 XRB/ULX consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 78 XRB/ULX consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l78_consumer_inventory(),
-                    "provenance": "Layer 78 XRB + ULX + accreting-compact-object consumer scorecard inventory (cluster bi, triple-cross-coupled to L73 + L75 UQFF entries) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 78 XRB + ULX + accreting-compact-object consumer scorecard inventory (cluster bi, triple-cross-coupled to L73 + L75 UQFF entries) (NOT REPLACEMENT)"}
 
     # Layer 79 (cluster bj): solar + stellar coronal + heliospheric anomaly ledger
     if ("solar_coronal" in dataset or "l79" in dataset
@@ -28095,22 +28116,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("coronal_ledger", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation"):
             return {"value": _l79_ledger_evaluation(),
-                    "provenance": "Layer 79 8-row solar/stellar coronal/heliospheric tension ledger (coronal heating 3.4sigma, fast SW 3.0sigma, M-dwarf super-flares 2.8sigma, solar-nu variability 2.4sigma + 4 nulls) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 79 8-row solar/stellar coronal/heliospheric tension ledger (coronal heating 3.4sigma, fast SW 3.0sigma, M-dwarf super-flares 2.8sigma, solar-nu variability 2.4sigma + 4 nulls) (NOT REPLACEMENT)"}
         if spec in ("stats", "summary", "summary_stats"):
             return {"value": _l79_summary_stats(),
-                    "provenance": "Layer 79 solar/coronal ledger summary stats (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 79 solar/coronal ledger summary stats (NOT REPLACEMENT)"}
         if spec in ("split", "kind_split"):
             return {"value": _l79_kind_split(),
-                    "provenance": "Layer 79 solar/coronal kind split (4 intrinsic_excess / 4 kinematic_consistent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 79 solar/coronal kind split (4 intrinsic_excess / 4 kinematic_consistent) (NOT REPLACEMENT)"}
         if spec in ("tension", "inter_kind", "inter_kind_tension"):
             return {"value": _l79_inter_kind_tension(),
-                    "provenance": "Layer 79 solar/coronal inter-kind tension (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 79 solar/coronal inter-kind tension (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l79_anchor_validation(),
-                    "provenance": "Layer 79 solar/coronal ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 79 solar/coronal ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l79_solar_coronal_inventory(),
-                    "provenance": "Layer 79 solar + stellar coronal + heliospheric anomaly tension ledger inventory (cluster bj, sole laboratory-accessible Phase 7 sector via solar neutrinos) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 79 solar + stellar coronal + heliospheric anomaly tension ledger inventory (cluster bj, sole laboratory-accessible Phase 7 sector via solar neutrinos) (NOT REPLACEMENT)"}
 
     # Layer 80 (cluster bk): solar/coronal/heliospheric consumer scorecard
     if ("solar_consumer" in dataset or "l80" in dataset
@@ -28121,25 +28142,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("coronal_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l80_ledger_evaluation(),
-                    "provenance": "Layer 80 8-proposal solar/coronal/heliospheric consumer scorecard (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 80 8-proposal solar/coronal/heliospheric consumer scorecard (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l80_verdict_counts(),
-                    "provenance": "Layer 80 solar/coronal consumer verdict counts (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 80 solar/coronal consumer verdict counts (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l80_uqff_self_score(),
-                    "provenance": "Layer 80 UQFF self-score against L79 solar/coronal catalog (DIRECTLY EXPERIMENTALLY TESTABLE via KamLAND + JUNO + DUNE solar-nu) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 80 UQFF self-score against L79 solar/coronal catalog (DIRECTLY EXPERIMENTALLY TESTABLE via KamLAND + JUNO + DUNE solar-nu) (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l80_row_coverage(),
-                    "provenance": "Layer 80 per-L79-row coverage by 8 proposals (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 80 per-L79-row coverage by 8 proposals (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "coronal_heating"):
             return {"value": _l80_outlier_focus(),
-                    "provenance": "Layer 80 outlier-focus on solar coronal heating problem (sharpest in L79, 3.4 sigma; >80-yr longest-standing anomaly) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 80 outlier-focus on solar coronal heating problem (sharpest in L79, 3.4 sigma; >80-yr longest-standing anomaly) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l80_anchor_validation(),
-                    "provenance": "Layer 80 solar/coronal consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 80 solar/coronal consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l80_consumer_inventory(),
-                    "provenance": "Layer 80 solar + stellar coronal + heliospheric consumer scorecard inventory (cluster bk, FIRST directly experimentally testable UQFF prediction in Phase 7 via solar-nu) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 80 solar + stellar coronal + heliospheric consumer scorecard inventory (cluster bk, FIRST directly experimentally testable UQFF prediction in Phase 7 via solar-nu) (NOT REPLACEMENT)"}
 
     # Layer 81 (cluster bl): quantum-gravity-phenomenology / Planck-scale signature ledger
     if ("qgrav" in dataset or "l81" in dataset
@@ -28150,16 +28171,16 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("planck_signature", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l81_qgrav_evaluation(),
-                    "provenance": "Layer 81 8-row quantum-gravity-phenomenology / Planck-scale signature tension ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 81 8-row quantum-gravity-phenomenology / Planck-scale signature tension ledger (NOT REPLACEMENT)"}
         if spec in ("split", "kinds"):
             return {"value": _l81_qgrav_split(),
-                    "provenance": "Layer 81 QG-phenomenology inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 81 QG-phenomenology inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l81_qgrav_anchor_validation(),
-                    "provenance": "Layer 81 QG-phenomenology ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 81 QG-phenomenology ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l81_qgrav_inventory(),
-                    "provenance": "Layer 81 quantum-gravity-phenomenology / Planck-scale signature tension ledger inventory (cluster bl) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 81 quantum-gravity-phenomenology / Planck-scale signature tension ledger inventory (cluster bl) (NOT REPLACEMENT)"}
 
     # Layer 82 (cluster bm): QG-phenomenology consumer scorecard
     if ("qgrav_consumer" in dataset or "l82" in dataset
@@ -28170,25 +28191,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("planck_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l82_ledger_evaluation(),
-                    "provenance": "Layer 82 8-proposal QG-phenomenology consumer scorecard (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 82 8-proposal QG-phenomenology consumer scorecard (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l82_verdict_counts(),
-                    "provenance": "Layer 82 QG-phenomenology consumer verdict counts (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 82 QG-phenomenology consumer verdict counts (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l82_uqff_self_score(),
-                    "provenance": "Layer 82 UQFF self-score against L81 QG-phenomenology catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 82 UQFF self-score against L81 QG-phenomenology catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l82_row_coverage(),
-                    "provenance": "Layer 82 per-L81-row coverage by 8 proposals (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 82 per-L81-row coverage by 8 proposals (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "grb090510"):
             return {"value": _l82_outlier_focus(),
-                    "provenance": "Layer 82 outlier-focus on Fermi GRB090510 photon-dispersion LIV (sharpest in L81, 3.2 sigma; >15-yr longest-standing Planck-scale lower-limit constraint) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 82 outlier-focus on Fermi GRB090510 photon-dispersion LIV (sharpest in L81, 3.2 sigma; >15-yr longest-standing Planck-scale lower-limit constraint) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l82_anchor_validation(),
-                    "provenance": "Layer 82 QG-phenomenology consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 82 QG-phenomenology consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l82_consumer_inventory(),
-                    "provenance": "Layer 82 quantum-gravity-phenomenology consumer scorecard inventory (cluster bm) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 82 quantum-gravity-phenomenology consumer scorecard inventory (cluster bm) (NOT REPLACEMENT)"}
 
     # Layer 83 (cluster bn): atomic/molecular precision-measurement anomaly ledger
     if ("precision" in dataset or "l83" in dataset
@@ -28199,16 +28220,16 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("atomic_anomaly", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l83_precision_evaluation(),
-                    "provenance": "Layer 83 8-row atomic/molecular precision-measurement anomaly tension ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 83 8-row atomic/molecular precision-measurement anomaly tension ledger (NOT REPLACEMENT)"}
         if spec in ("split", "kinds"):
             return {"value": _l83_precision_split(),
-                    "provenance": "Layer 83 precision-measurement inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 83 precision-measurement inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l83_precision_anchor_validation(),
-                    "provenance": "Layer 83 precision-measurement ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 83 precision-measurement ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l83_precision_inventory(),
-                    "provenance": "Layer 83 atomic/molecular precision-measurement anomaly tension ledger inventory (cluster bn, LABORATORY-ACCESSIBLE sector - X17 + muon g-2 + neutron lifetime + CKM directly probed by current experiments) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 83 atomic/molecular precision-measurement anomaly tension ledger inventory (cluster bn, LABORATORY-ACCESSIBLE sector - X17 + muon g-2 + neutron lifetime + CKM directly probed by current experiments) (NOT REPLACEMENT)"}
 
     # Layer 84 (cluster bo): precision-measurement consumer scorecard
     if ("precision_consumer" in dataset or "l84" in dataset
@@ -28219,25 +28240,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("precision_anomaly_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "scorecard"):
             return {"value": _l84_ledger_evaluation(),
-                    "provenance": "Layer 84 8-proposal precision-measurement consumer scorecard (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 84 8-proposal precision-measurement consumer scorecard (NOT REPLACEMENT)"}
         if spec in ("counts", "verdict_counts", "summary"):
             return {"value": _l84_verdict_counts(),
-                    "provenance": "Layer 84 precision-measurement consumer verdict counts (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 84 precision-measurement consumer verdict counts (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self_score"):
             return {"value": _l84_uqff_self_score(),
-                    "provenance": "Layer 84 UQFF self-score against L83 precision-measurement catalog (LABORATORY-ACCESSIBLE via PADME + MEG-II + Mu3e + FNAL g-2) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 84 UQFF self-score against L83 precision-measurement catalog (LABORATORY-ACCESSIBLE via PADME + MEG-II + Mu3e + FNAL g-2) (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage"):
             return {"value": _l84_row_coverage(),
-                    "provenance": "Layer 84 per-L83-row coverage by 8 proposals (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 84 per-L83-row coverage by 8 proposals (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "x17"):
             return {"value": _l84_outlier_focus(),
-                    "provenance": "Layer 84 outlier-focus on X17 boson ATOMKI Be-8/He-4/C-12 (SHARPEST single test in entire Phase 7 chain, 6.8 sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 84 outlier-focus on X17 boson ATOMKI Be-8/He-4/C-12 (SHARPEST single test in entire Phase 7 chain, 6.8 sigma) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l84_anchor_validation(),
-                    "provenance": "Layer 84 precision-measurement consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 84 precision-measurement consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l84_consumer_inventory(),
-                    "provenance": "Layer 84 atomic/molecular precision-measurement consumer scorecard inventory (cluster bo) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 84 atomic/molecular precision-measurement consumer scorecard inventory (cluster bo) (NOT REPLACEMENT)"}
 
     # Layer 85 (cluster bp): galactic-scale dark-matter alternative-explanation ledger
     if ("dm_alt" in dataset or "l85" in dataset
@@ -28248,16 +28269,16 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("galactic_dm", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l85_dm_alt_evaluation(),
-                    "provenance": "Layer 85 8-row galactic-scale dark-matter alternative-explanation tension ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 85 8-row galactic-scale dark-matter alternative-explanation tension ledger (NOT REPLACEMENT)"}
         if spec in ("split", "kinds"):
             return {"value": _l85_dm_alt_split(),
-                    "provenance": "Layer 85 DM-alt inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 85 DM-alt inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l85_dm_alt_anchor_validation(),
-                    "provenance": "Layer 85 DM-alt ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 85 DM-alt ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l85_dm_alt_inventory(),
-                    "provenance": "Layer 85 galactic-scale dark-matter alternative-explanation tension ledger inventory (cluster bp) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 85 galactic-scale dark-matter alternative-explanation tension ledger inventory (cluster bp) (NOT REPLACEMENT)"}
 
     # Layer 86 (cluster bq): galactic-DM-alternative consumer scorecard partnered to L85
     if ("dm_consumer" in dataset or "l86" in dataset
@@ -28268,25 +28289,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("galactic_dm_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l86_ledger_evaluation(),
-                    "provenance": "Layer 86 8-proposal galactic-DM-alternative consumer scorecard ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 86 8-proposal galactic-DM-alternative consumer scorecard ledger (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l86_verdict_counts(),
-                    "provenance": "Layer 86 verdict counts across 8 proposals (helps_most/helps_some_harms_none/helps_some_harms_some/harmful/silent) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 86 verdict counts across 8 proposals (helps_most/helps_some_harms_none/helps_some_harms_some/harmful/silent) (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self"):
             return {"value": _l86_uqff_self_score(),
-                    "provenance": "Layer 86 UQFF self-score against L85 8-row catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 86 UQFF self-score against L85 8-row catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage", "rows_helped"):
             return {"value": _l86_row_coverage(),
-                    "provenance": "Layer 86 per-row coverage map (which proposals help/harm/silent each L85 row) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 86 per-row coverage map (which proposals help/harm/silent each L85 row) (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "ngc1052", "df2", "df4"):
             return {"value": _l86_outlier_focus(),
-                    "provenance": "Layer 86 outlier focus on NGC1052-DF2/DF4 DM-deficient ultra-faint dwarfs (4.4 sigma sharpest) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 86 outlier focus on NGC1052-DF2/DF4 DM-deficient ultra-faint dwarfs (4.4 sigma sharpest) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l86_anchor_validation(),
-                    "provenance": "Layer 86 consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 86 consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l86_consumer_inventory(),
-                    "provenance": "Layer 86 galactic-scale dark-matter alternative-explanation consumer scorecard inventory (cluster bq) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 86 galactic-scale dark-matter alternative-explanation consumer scorecard inventory (cluster bq) (NOT REPLACEMENT)"}
 
     # Layer 87 (cluster br): early-universe / inflation tension ledger
     if ("inflation" in dataset or "l87" in dataset
@@ -28297,16 +28318,16 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("cmb_tension", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l87_inflation_evaluation(),
-                    "provenance": "Layer 87 8-row early-universe / inflation tension ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 87 8-row early-universe / inflation tension ledger (NOT REPLACEMENT)"}
         if spec in ("split", "kinds"):
             return {"value": _l87_inflation_split(),
-                    "provenance": "Layer 87 inflation inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 87 inflation inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l87_inflation_anchor_validation(),
-                    "provenance": "Layer 87 inflation ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 87 inflation ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l87_inflation_inventory(),
-                    "provenance": "Layer 87 early-universe / inflation tension ledger inventory (cluster br) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 87 early-universe / inflation tension ledger inventory (cluster br) (NOT REPLACEMENT)"}
 
     # Layer 88 (cluster bs): early-universe/inflation consumer scorecard partnered to L87
     if ("inflation_consumer" in dataset or "l88" in dataset
@@ -28317,25 +28338,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("cmb_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l88_ledger_evaluation(),
-                    "provenance": "Layer 88 8-proposal early-universe/inflation consumer scorecard ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 88 8-proposal early-universe/inflation consumer scorecard ledger (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l88_verdict_counts(),
-                    "provenance": "Layer 88 verdict counts across 8 proposals (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 88 verdict counts across 8 proposals (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self"):
             return {"value": _l88_uqff_self_score(),
-                    "provenance": "Layer 88 UQFF self-score against L87 8-row catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 88 UQFF self-score against L87 8-row catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage", "rows_helped"):
             return {"value": _l88_row_coverage(),
-                    "provenance": "Layer 88 per-row coverage map (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 88 per-row coverage map (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "nanograv"):
             return {"value": _l88_outlier_focus(),
-                    "provenance": "Layer 88 outlier focus on NANOGrav 15yr stochastic GW Hellings-Downs (4.0 sigma sharpest) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 88 outlier focus on NANOGrav 15yr stochastic GW Hellings-Downs (4.0 sigma sharpest) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l88_anchor_validation(),
-                    "provenance": "Layer 88 consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 88 consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l88_consumer_inventory(),
-                    "provenance": "Layer 88 early-universe/inflation consumer scorecard inventory (cluster bs) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 88 early-universe/inflation consumer scorecard inventory (cluster bs) (NOT REPLACEMENT)"}
 
     # Layer 89 (cluster bt): gravitational-wave-sector tension ledger
     if ("gw_tension" in dataset or "l89" in dataset
@@ -28346,16 +28367,16 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("gravitational_wave", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l89_gw_evaluation(),
-                    "provenance": "Layer 89 8-row gravitational-wave-sector tension ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 89 8-row gravitational-wave-sector tension ledger (NOT REPLACEMENT)"}
         if spec in ("split", "kinds"):
             return {"value": _l89_gw_split(),
-                    "provenance": "Layer 89 GW inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 89 GW inter-kind tension (intrinsic-excess wmean vs kinematic-consistent wmean) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l89_gw_anchor_validation(),
-                    "provenance": "Layer 89 GW ledger anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 89 GW ledger anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l89_gw_inventory(),
-                    "provenance": "Layer 89 gravitational-wave-sector tension ledger inventory (cluster bt) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 89 gravitational-wave-sector tension ledger inventory (cluster bt) (NOT REPLACEMENT)"}
 
     # Layer 90 (cluster bu): GW-sector consumer scorecard partnered to L89
     if ("gw_consumer" in dataset or "l90" in dataset
@@ -28366,25 +28387,25 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("gravitational_wave_consumer", ""))))).lower().strip()
         if spec in ("ledger", "rows", "evaluation", "table"):
             return {"value": _l90_ledger_evaluation(),
-                    "provenance": "Layer 90 8-proposal GW-sector consumer scorecard ledger (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 90 8-proposal GW-sector consumer scorecard ledger (NOT REPLACEMENT)"}
         if spec in ("counts", "verdicts", "split"):
             return {"value": _l90_verdict_counts(),
-                    "provenance": "Layer 90 verdict counts across 8 proposals (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 90 verdict counts across 8 proposals (NOT REPLACEMENT)"}
         if spec in ("uqff", "uqff_self", "self"):
             return {"value": _l90_uqff_self_score(),
-                    "provenance": "Layer 90 UQFF self-score against L89 8-row catalog (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 90 UQFF self-score against L89 8-row catalog (NOT REPLACEMENT)"}
         if spec in ("coverage", "row_coverage", "rows_helped"):
             return {"value": _l90_row_coverage(),
-                    "provenance": "Layer 90 per-row coverage map (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 90 per-row coverage map (NOT REPLACEMENT)"}
         if spec in ("outlier", "outlier_focus", "gw190521"):
             return {"value": _l90_outlier_focus(),
-                    "provenance": "Layer 90 outlier focus on GW190521 IMBH 85+66 Msun pair-instability mass-gap merger (4.2 sigma sharpest) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 90 outlier focus on GW190521 IMBH 85+66 Msun pair-instability mass-gap merger (4.2 sigma sharpest) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l90_anchor_validation(),
-                    "provenance": "Layer 90 consumer scorecard anchor validation (5 checks) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 90 consumer scorecard anchor validation (5 checks) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l90_consumer_inventory(),
-                    "provenance": "Layer 90 GW-sector consumer scorecard inventory (cluster bu) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 90 GW-sector consumer scorecard inventory (cluster bu) (NOT REPLACEMENT)"}
 
     # Layer 91 (cluster bv): DERIVED UQFF dsigma vector for L90 GW consumer
     if ("uqff_derive" in dataset or "l91" in dataset
@@ -28395,22 +28416,22 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                                         dataset.get("uqff_dsigma_derivation", ""))))).lower().strip()
         if spec in ("table", "per_row", "rows"):
             return {"value": _l91_per_row_table(),
-                    "provenance": "Layer 91 per-row derivation table: (M_kg, r_test, f_shield_L27, dex, dsigma_derived, dsigma_hand_set) for each L89 GW row (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 91 per-row derivation table: (M_kg, r_test, f_shield_L27, dex, dsigma_derived, dsigma_hand_set) for each L89 GW row (NOT REPLACEMENT)"}
         if spec in ("score", "derived_score", "uqff_score"):
             return {"value": _l91_derived_uqff_score(),
-                    "provenance": "Layer 91 derived UQFF score against L89 GW catalog using algebraic L25/L27 f_shield (replaces L90 hand-set) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 91 derived UQFF score against L89 GW catalog using algebraic L25/L27 f_shield (replaces L90 hand-set) (NOT REPLACEMENT)"}
         if spec in ("vector", "dsigma_vector", "derived_vector"):
             return {"value": list(_l91_derived_dsigma_vector()),
-                    "provenance": "Layer 91 derived UQFF dsigma 8-vector (one per L89 row), algebraically computed from L25 r_screen + L27 f_shield (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 91 derived UQFF dsigma 8-vector (one per L89 row), algebraically computed from L25 r_screen + L27 f_shield (NOT REPLACEMENT)"}
         if spec in ("compare", "comparison", "vs_hand_set", "diff"):
             return {"value": _l91_hand_set_vs_derived_comparison(),
-                    "provenance": "Layer 91 side-by-side comparison: L90 hand-set UQFF dsigma vector vs L91 derived vector (max abs discrepancy + per-row diff) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 91 side-by-side comparison: L90 hand-set UQFF dsigma vector vs L91 derived vector (max abs discrepancy + per-row diff) (NOT REPLACEMENT)"}
         if spec in ("anchors", "validation"):
             return {"value": _l91_anchor_validation(),
-                    "provenance": "Layer 91 derivation-layer anchor validation (5 checks: catalog_size, all_rows_derived, dsigmas_non_positive, verdict_helps_most, derived_vs_hand_set_within_2sigma) (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 91 derivation-layer anchor validation (5 checks: catalog_size, all_rows_derived, dsigmas_non_positive, verdict_helps_most, derived_vs_hand_set_within_2sigma) (NOT REPLACEMENT)"}
         if spec in ("inventory", "info", "meta", ""):
             return {"value": _l91_derivation_inventory(),
-                    "provenance": "Layer 91 derivation-layer inventory (cluster bv) - first Phase-7 derivation-style layer; closes L90 heuristic gap by computing UQFF dsigma vector algebraically from existing L25/L27 derivations (0.000% error (NOT REPLACEMENT))"}
+                    "provenance": "Layer 91 derivation-layer inventory (cluster bv) - first Phase-7 derivation-style layer; closes L90 heuristic gap by computing UQFF dsigma vector algebraically from existing L25/L27 derivations (NOT REPLACEMENT)"}
 
     # Prediction dispatch (P1-P14, KK, xi-test, ledger; Map §11)
     if "prediction" in dataset:
@@ -28702,7 +28723,7 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
     if key is not None:
         derived = _derive_constant(key)
         if derived is not None:
-            prov = f"{key} live UQFF/SI derivation via _derive_constant -> _master_constant_formula (base x ledger_saturation; b9 long-form chain) {PROV_B9} + {PROV_BASE}"
+            prov = f"{key} pure structural derivation via _master_constant_primitive (base * structural_sat from {{BETA_I,S_26,PHI_RES,SSQ,D_crit,D_BSFG,TRZ,G1..G4}} only; NO SM literals) {PROV_B9} + {PROV_BASE}"
             return {"value": derived, "provenance": prov}
 
     # Cluster-specific reference strings (full recognition from planning) - robust registry lookup
@@ -28770,19 +28791,19 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                 provs.append(f"1.25 THz * S26_3 * 0.84 -> exact 630 eV LENR (ua + 99system + arXiv WidomLarsen) {PROV_UA} {PROV_99} {PROV_ARXIV}")
             elif t == "triadic_g" or "triadic" in t:
                 results[t] = _triadic_g()
-                provs.append(f"triadic g = w_C g_comp + w_R g_res + w_B g_buoy <1% residual on 99/99 (99system + 14Sept) {PROV_99} {PROV_14SEPT}")
+                provs.append(f"triadic g = w_C g_comp + w_R g_res + w_B g_buoy (residuals reported via _ledger_residual_all) (99system + 14Sept) {PROV_99} {PROV_14SEPT}")
             else:
                 results[t] = RHO_SCM
                 provs.append(PROV_BASE)
         full_prov = " | ".join(provs)
-        if "0.000% error (NOT REPLACEMENT)" not in full_prov:
-            full_prov += " (0.000% error (NOT REPLACEMENT))"
+        if "NOT REPLACEMENT" not in full_prov:
+            full_prov += " (NOT REPLACEMENT)"
         return {"value": results, "provenance": full_prov}
 
     # all_si_uqff or broad derive
     if "all_si" in inp or "si_uqff" in inp:
         val = {k: _derive_constant(k) for k in DERIVABLE_KEYS if k not in ("630ev_lenr", "1.25thz")}
-        prov = f"full SI/un-system UQFF constants via live _derive_constant from b9 complete derivations + single non-mass ledger G1-G8 + 1.25THz unification {PROV_B9} {PROV_BASE} (0.000% error (NOT REPLACEMENT))"
+        prov = f"full SI/un-system UQFF constants via live _derive_constant from b9 complete derivations + single non-mass ledger G1-G8 + 1.25THz unification {PROV_B9} {PROV_BASE} (NOT REPLACEMENT)"
         return {"value": val, "provenance": prov}
 
     # Default: direct ledger primitive or triadic/vacuum
@@ -28799,8 +28820,8 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         val = None
         prov = "unsupported / unrecognized input — see uqff_Map.md for supported symbolic constants and the 14 cluster reference strings " + PROV_BASE
 
-    if "0.000% error (NOT REPLACEMENT)" not in prov:
-        prov = prov + " (0.000% error (NOT REPLACEMENT))"
+    if "NOT REPLACEMENT" not in prov:
+        prov = prov + " (NOT REPLACEMENT)"
     return {"value": val, "provenance": prov}
 
 
@@ -29479,7 +29500,7 @@ def _s_shell(r: float, dataset: Optional[Dict[str, Any]] = None) -> float:
 
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
-    """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy (<1% residual on 99/99 systems).
+    """Triadic g = w_C g_comp + w_R g_res + w_B g_buoy ((residuals reported via _ledger_residual_all) systems).
     Step 5: OPData surfaces 3 parallel triadic masters + cross-method convergence vs
     canonical 8-term g_compressed and composite g_resonance masters (Map sec 3.5 / sec 8).
     """

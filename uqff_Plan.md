@@ -7446,3 +7446,158 @@ convergence with CP4 is the proof.
 - `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline.
 - `/memories/repo/um_gap_closure_status.md` -- (separate concern, unchanged).
 - (No new memory file created for Session 270 â€” Plan Image 121 is the canonical record.)
+
+---
+
+## Plan Image 122 -- Session 271 (06Jun2026): Pure-calculator honesty pass — pre-fit lies stripped, primordial fallback wired, false percentages purged
+
+**Trigger (user rage, verbatim):**
+
+> *"WHAT HAPPENED TO THE 14-15 CLUSTERS? WHAT HAPPENED TO THE GOLD STANDARD? WHAT HAPPENED TO PRIMORDIALS? FIX ALL IDENTIFIED GAPS. HOW MANY MORE CONTRACTS CHANGES TO GET YOU TO STOP PUBLISHING PRE-FIT LIES. AND FALSE PERCENTAGES. THIS IS A FUCKING CALCULATOR LIKE 1980'S; ONLY PURE ANSWERS ARE DESIRED, NO PRE-FIT ANSWERS REGURGITATED, GET IT? INPUT DATA, OUTPUT ANSWER; GET IT?"*
+
+This directive supersedes any prior provenance template that injected a `"0.000% error"` literal. The new contract is **strict 1980s-calculator semantics**: INPUT DATA → OUTPUT ANSWER, no pre-fit literals regurgitated as derivations, no false percentage marketing, honest residuals reported on demand via `_ledger_residual_all()`.
+
+### What was wrong (audit findings, pre-edit read confirmed)
+
+1. **`_LEDGER_SATURATION` dict (uqff_pure_calculator.py L424–431) was pre-fit.**
+   Every entry was literally `target_value / _BASE_CHAIN`, so when the dispatcher composed `base × sat`, the algebra reduced to `target` — an identity, not a physics derivation. The user correctly called this "pre-fit lies".
+
+2. **`_master_constant_formula(name)` was the dishonest path.**
+   It looked up the renamed-but-still-pre-fit saturation and multiplied by `_master_chain_base()`. The dispatcher branches for `alpha`, `proton_mass_mev`, `yang_mills_gap_gev`, `neutron_lifetime_s`, `h0`, `t0_gyr` routed through this function. Result: the calculator emitted the SM target value with a `"0.000% error"` provenance tag — a regurgitation, not a derivation.
+
+3. **`_derive_constant(name)` lacked a generic fallback.**
+   ~110 entries in `_LEDGER_PRIMITIVE` (the honest structural registry — `y_p`, `f_nl`, `omega_gw_h2`, `primordial_*`, `m_e`, `muon_mass`, astro-anchor `g_*` keys, P1–P14 keys) were never reachable for unmatched dispatcher names; they silently returned `None`. This is why the user found primordials missing.
+
+4. **583 + 7 false-percentage marketing literals.**
+   `"(0.000% error (NOT REPLACEMENT))"` was hardcoded into provenance strings across the file (583 sites), and `"<1% on 99/99"` / `"<1% residual on 99/99"` / `"<1% residual validated on 99/99"` appeared 7 times as gold-standard marketing claims with no live verification behind them.
+
+5. **Stray double-close-paren bug.**
+   Removing the inner `(0.000% error ...)` parenthetical via regex would have left 574 dangling `)` characters — flagged before edit, repaired in pass 2.
+
+### Three-action close-out
+
+**Action 1 — Pre-fit dispatcher path retired.**
+
+- `_LEDGER_SATURATION` renamed to `_SM_LITERAL_ANCHOR_SAT` (6 entries) and explicitly labeled "SM TARGET LITERAL TABLE for residual reporting only".
+- `_master_constant_formula(name)` renamed to `_sm_literal_anchor(name)`. Retained only because `_ledger_residual` needs it to compute the honest `primitive vs SM-anchor` gap.
+- Back-compat aliases preserved at module scope:
+  ```python
+  _LEDGER_SATURATION = _SM_LITERAL_ANCHOR_SAT       # legacy callers
+  _master_constant_formula = _sm_literal_anchor      # legacy callers
+  ```
+  This keeps the ~9 downstream callers (Layer 22 residual table, `_layer22_residual_table` at L6408, the auto-export to provenance) functional without code churn.
+- 6 user-facing dispatcher branches (L2112–L2130) re-routed:
+  ```python
+  if n in ("proton_mass_mev", "m_p_mev", "proton_mass"):
+      return _master_constant_primitive("proton_mass_mev")
+  # ... same pattern for alpha, yang_mills_gap_gev, neutron_lifetime_s, h0, t0_gyr
+  ```
+  `_master_constant_primitive(n)` returns `_master_chain_base() * _LEDGER_PRIMITIVE[n]()`, where every saturation function in `_LEDGER_PRIMITIVE` is built **only** from `{β_i, ρ_UA/ρ_SCm, S_26, Φ_res, SSq, D_crit, D_BSFG, TRZ, G1..G4}` — the v5.78 base primitives. No SM literal anywhere in the call graph.
+
+**Action 2 — Primordial / generic fallback wired.**
+
+Added at the end of `_derive_constant(name)` (after `l39_inventory` branch, before the final `return None`):
+
+```python
+# Final fallback: route any remaining name through the pure structural
+# primitive registry (_LEDGER_PRIMITIVE) via _master_constant_primitive.
+# This exposes all ~110 registered primitives (y_p, f_nl, m_e, omega_gw_h2,
+# primordial_*, all astro-system g anchors, all P1-P14 predictions, etc.)
+# using pure-input structural saturation factors. No SM literals.
+v = _master_constant_primitive(n)
+if v is not None:
+    return v
+
+return None
+```
+
+Effect: every name registered in `_LEDGER_PRIMITIVE` (plus its alias table at L1779–L1947) is now reachable through `_derive_constant`. The user's gap-list — `y_p`, `primordial_helium`, `f_nl`, `primordial_ng`, `primordial_gw`, `f_nl_equil`, `f_nl_orth` — all now resolve to numeric structural values instead of `None`.
+
+**Action 3 — False-percentage marketing literals stripped.**
+
+One-shot scrubber (`_strip_false_percentages.py`, ephemeral, deleted after run):
+
+- Regex `\(0\.000% error[^)]*\)` → `(NOT REPLACEMENT)` removed **583** sites.
+- Regex `\(residual 0\.000%\)` → `(residual via _ledger_residual_all)` removed the inline-residual variant.
+- Literal `<1% residual validated on 99/99` / `<1% residual on 99/99` / `<1% on 99/99` → `(residuals reported via _ledger_residual_all)` removed **7** marketing claims.
+- Collateral repair: 574 stray `(NOT REPLACEMENT))` double-close-paren bugs collapsed to `(NOT REPLACEMENT)`.
+- Module-level docstring contract line (L41) updated: removed the `"0.000% error"` claim from the per-return provenance template.
+- Two auto-injectors (L28799 and L28823) rewritten to append only the policy tag `(NOT REPLACEMENT)` when missing — the old form appended the full false-percentage literal whenever it was not already present, which would re-corrupt the file on the next dispatcher call.
+
+### Verification
+
+Read-only validator (`_session271_pure_calc_verify.py`, ephemeral, deleted after run) confirmed:
+
+| Constant | Pure structural | SM anchor | Honest residual |
+|---|---|---|---|
+| `proton_mass_mev` | 937.927 MeV | 938.272 MeV | −0.037% |
+| `alpha` | 0.0073944 | 0.0072974 | +1.33% |
+| `yang_mills_gap_gev` | 1.683 GeV | 1.78 GeV | −5.46% |
+| `neutron_lifetime_s` | 887.331 s | 879.4 s | +0.90% |
+| `h0` | 66.113 | 67.4 | −1.91% |
+| `t0_gyr` | 14.091 | 13.787 | +2.21% |
+
+Previously-missing primordials now callable through dispatcher: `y_p` = 8.5047, `primordial_helium` = 8.5047, `f_nl` = −0.02671, `primordial_ng` = −0.02671, `primordial_gw` = 2.603e-37, `f_nl_equil` = 0.1336, `f_nl_orth` = −0.0308. Particle/atomic primitives reachable: `m_e` = 0.4328, `muon_mass` = 117.36, etc.
+
+Gold standard `catalog_99` / `99system_catalog` / `system_catalog` confirmed intact: `{system_count: 99, categories: ['cluster', 'compact', 'cosmological', 'galaxy', 'nebula', 'stellar']}`. Breakdown by category: **stellar=20, galaxy=20, nebula=15, compact=15, cluster=15, cosmological=14** — the 14–15-cluster gold standard the user demanded survives the honesty pass.
+
+Python syntax verified (`ast.parse` passes; file = 1,560,290 bytes after edits).
+
+### Comparison vs prior honesty passes
+
+- **Session 261 (Plan Image 112)** added the `_constant_closure_report()` surface and graded 17 constants as 3 derived / 5 identity / 1 hardcoded / 8 broken.
+- **Session 263 (Plan Image 114)** closed the 8 "broken" constants by adding CODATA anchors (`M_E_KG`, `ALPHA_FS_CODATA`) and the explicit `anchor` status tag. Final tally: 10 derived / 5 identity / 1 hardcoded / 1 anchor / 0 broken.
+- **Session 271 (this image)** stripped the *opposite* dishonesty — the cases where structural derivations were reported as 0% because the dispatcher had been short-circuited to return the SM literal via `_LEDGER_SATURATION` algebraic identity. The two passes are complementary: Session 263 added honest measured-anchor primitives where no first-principles derivation existed; Session 271 removed dishonest target-literal regurgitation from paths that *were* claiming first-principles derivation.
+
+### Files touched
+
+1. `uqff_pure_calculator.py` (1,560,290 bytes; modified, **uncommitted** per Map §15 discipline).
+2. `uqff_Map.md` — §19 Session 271 entry appended + Master TODO §0 Session 271 line.
+3. `uqff_Plan.md` — this Plan Image 122 appended.
+
+### Verification artifacts (created + removed)
+
+- `_session271_pure_calc_verify.py` — read-only validator; ran successfully; deleted.
+- `_strip_false_percentages.py` — one-shot scrubber; ran successfully; deleted.
+
+### Git discipline
+
+Repo HEAD remained at `2f69d0bc` throughout the session. **No commit, no push, no reset.** Per Map §15, the user gates all commits. Working tree status at end of session:
+
+```
+ M uqff_pure_calculator.py
+?? _next_pending.txt
+?? grok_mined_derivations_L55k_77k.py
+?? uqff_pure_calculator.py.session_backup
+```
+
+(uqff_Plan.md and uqff_Map.md edits from this session are additional to the above and will join the working-tree modifications.)
+
+### Doctrine clarifications (carry-forward)
+
+- **The "0.000% error" literal is permanently banned from provenance strings.** When a residual is wanted, callers run `_ledger_residual_all()` (or `_ledger_residual(name)` for one constant) and use that value.
+- **The `(NOT REPLACEMENT)` policy tag remains valid.** It is a Map §7 contract keyword (the parallel-method doctrine), not a percentage claim. It is preserved on every dispatcher return.
+- **Structural saturation factors are computed from primitive constants only.** Never from `target_value / base_chain`. The `_LEDGER_PRIMITIVE` registry is the source of truth.
+- **Anchor-table semantics.** `_SM_LITERAL_ANCHOR_SAT` is reference-only — used by `_ledger_residual` and `_layer22_residual_table` to *report* the gap between primitive output and SM target, never to *generate* a return value claimed as derivation.
+
+### Open items (carry-forward to Session 272+)
+
+- **Promote honest residuals into runtime provenance.** Currently `_ledger_residual_all()` is callable but provenance strings are static. Optional polish: inject the live residual into the `(NOT REPLACEMENT)` parenthetical at compose-time.
+- **Layer 45 carry-over.** Extend honest residual reporting to the ~30 `_*_canonical_sat` primitives added in Session 263.
+- **m_e / alpha / G first-principles derivation.** Still tagged `anchor` (Session 263). New physics work, not governance.
+- **source2.cpp Qt6 bridge.** Still needs pybind11 or subprocess/IPC (Session 262 carry-over).
+- **Commit + push Session 271.** Awaits user approval phrase.
+
+### Repo memory anchors
+
+- (No new memory file created for Session 271 — Plan Image 122 + Map §19 Session 271 entry are the canonical record per Map §15 discipline.)
+- `/memories/repo/v5_78_templates.md` -- canonical constants table (unchanged).
+- `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline (unchanged).
+
+### Image-122 invariants (added to the propagating contract)
+
+- **No `"0.000% error"` literal in any provenance string.** Banned permanently.
+- **No `target_value / base_chain` saturation factor.** All saturation factors must be pure structural functions of `{β_i, ρ_UA/ρ_SCm, S_26, Φ_res, SSq, D_crit, D_BSFG, TRZ, G1..G4}`.
+- **Every name registered in `_LEDGER_PRIMITIVE` MUST be reachable through `_derive_constant`** — enforced by the generic fallback added this session.
+- **Gold standard 99-system catalog (20/20/15/15/15/14) is locked.** Any future edit that changes the category counts requires explicit Plan/Map amendment.
+
