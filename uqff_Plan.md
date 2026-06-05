@@ -7318,3 +7318,131 @@ Get-ChildItem -Directory -Filter 'pdf_backup_pandoc_*'  # -> 3 dirs, ages 24.7/2
 1. `uqff_Plan.md` -- this Plan Image 120 appended.
 2. `uqff_Map.md` -- Session 269 row added to section 20 commit ledger.
 3. `Job B_Update papers with current canonical UQFF v5_78.txt` -- B4 status (Session 269 update) block appended documenting CP4 #259-#264 second-pass sync results.
+
+
+---
+
+## Plan Image 121 -- Session 270 (05Jun2026): Pure Calculator Gap Closure (Real-Data Fix)
+
+**Status:** âœ… DONE | **Commit:** `_pending_` (Session 270 content) + `_pending_` (back-stamp)
+
+### Trigger
+
+User directive after Session 269 audit report:
+> *"Fix all gaps with real data, not false claims."*
+
+Session 269 (governance/verification) identified 5 gaps in / around `uqff_pure_calculator.py`:
+
+1. **GAP 1 (real):** `_LAGRANGIAN_SECTOR_REGISTRY` missing 9 P-suite + ledger papers (PAPER_1170/1171/1173/1175-1180).
+2. **GAP 2 (real):** Map Â§20.1 channel-applicability matrix missing rows for PAPER_1175-1180.
+3. **GAP 3 (deferred):** 33 PENDING/TBD markers (mostly observational-data-pending; out of scope for governance fix).
+4. **GAP 4 (false alarm):** `_CP4_PAPER_REGISTRY` does not exist as a separate registry â€” the only registry is `_LAGRANGIAN_SECTOR_REGISTRY`. GAP 1 fix subsumes this.
+5. **GAP 5 (real):** Doctrine wording in Map Â§20.1 and Job-B GAP 17 claimed pure_calculator carried "honesty-bounded re-exports of #254-#256." Verified false â€” no CP4 imports anywhere; the channel is implemented independently. Wording corrected.
+
+### Work performed (verifiable, all real data)
+
+#### Fix 1: `_LAGRANGIAN_SECTOR_REGISTRY` extended 17 â†’ 26 sectors
+
+File: [uqff_pure_calculator.py](uqff_pure_calculator.py#L29245)
+
+Added 9 entries with verified data (paper titles read from `whitepapers/PAPER_117*.md`
+frontmatter; CP4 line numbers verified by Session 269 inventory):
+
+| PAPER | Domain (verbatim from whitepaper title) | phi_index | Anchor (CP4 line) |
+|---|---|---|---|
+| PAPER_1170 | 27-decade vacuum-energy ledger (R26+KK+BSFG saturation) | phi_vacuum_ledger | CP4:L15741 |
+| PAPER_1171 | KK zero-point tower regulator (Route 1, structural) | phi_KK_regulator | CP4:L15830 |
+| PAPER_1173 | KK tower hbar-tracked + sub-mm Yukawa (P6 carrier) | phi_KK_hbar | CP4:L15926 |
+| PAPER_1175 | P11: LIGO O5 ringdown spectral offset from Kerr | phi_ringdown | CP4:L16013 |
+| PAPER_1176 | P12: Euclid weak-lensing sigma_8 from R26 saturation | phi_sigma8 | CP4:L16072 |
+| PAPER_1177 | 2027 joint falsifier triple (P6+P11+P12) | phi_2027_triple | CP4:L16124 |
+| PAPER_1178 | P13: DESI Y5 d^2w/dz^2=0 strict-static test | phi_w_static | CP4:L16188 |
+| PAPER_1179 | 2027-2028 quadruple falsifier (P6+P10+P11+P12) | phi_2027_quad | CP4:L16230 |
+| PAPER_1180 | P14: CMB-S4 mu-distortion strict bound from R26 | phi_mu_distortion | CP4:L16294 |
+
+Anchor scheme is now explicit in the header comment: `"L<N>"` = grok b9 master
+transcript line; `"CP4:L<N>"` = `CondensedPhysics4.py` line. No b9 line numbers were
+fabricated for papers 1170-1180.
+
+**Smoke test (verified):**
+```
+$ python -c "import uqff_pure_calculator as u; print(len(u._LAGRANGIAN_SECTOR_REGISTRY))"
+26
+$ python -c "import uqff_pure_calculator as u; r = u._lagrangian_sector_residual({'lagrangian_sector': 'PAPER_1170'}); print(r)"
+PAPER_1170 -> 27-decade vacuum-energy ledger (R26+KK+BSFG saturation) | phi_vacuum_ledger | CP4:L15741 | residual=0.0
+```
+
+Additionally, the introspection surface at L29798 already iterates
+`sorted(_LAGRANGIAN_SECTOR_REGISTRY.keys())`, so the new sectors are
+auto-exposed to any caller that introspects `lagrangian_sectors`.
+
+#### Fix 2: Map Â§20.1 applicability matrix +6 rows (PAPER_1175-1180)
+
+File: [uqff_Map.md](uqff_Map.md#L2430)
+
+Each P-suite falsifier added with verified channel assignment based on actual
+physics: P11/P12/P13/P14 + 2027 triple + 2027 quadruple are all
+CP1-applicable (observational) and CP4-applicable (variational closure via
+Î´S/Î´Ï†=0). None are CP2 (no 26D quantum or info-paradox component) or CP3
+(no transient/single-event component). Each row uses the `CP4:L<line>`
+anchor format to be explicit about source vs grok b9 anchors above.
+
+Added explanatory note clarifying that:
+- `CP4:L<N>` anchors refer to `CondensedPhysics4.py`, not grok b9
+- `uqff_pure_calculator.py` mirrors mathematically through
+  `_cp4_variational_path â†’ _stationarity_residual`
+- The calculator does NOT import or re-export the CP4 classes
+- Convergence between the two channels IS the proof (per parallel-engine
+  doctrine)
+
+#### Fix 3: Doctrine wording correction in Job-B GAP 17 narrative
+
+File: [Job B_Update papers with current canonical UQFF v5_78.txt](Job B_Update papers with current canonical UQFF v5_78.txt) at L1165.
+
+Replaced the false claim about "honesty-bounded re-exports of #254-#256"
+with a verified description of what `uqff_pure_calculator.py` actually
+does:
+
+- Imports ZERO classes from `CondensedPhysics4.py` (grep proof)
+- No `__all__` surface defined
+- CP4 channel implemented INDEPENDENTLY (`_cp4_variational_path`)
+- Registry extended Session 270 from 17 â†’ 26 sectors (Fix 1 above)
+
+This eliminates the doctrine mismatch carried forward in Sessions 263, 267,
+and 269 documentation. The parallel-engine convergence test is now described
+honestly: pure_calculator runs an independent CP4-channel implementation;
+convergence with CP4 is the proof.
+
+### Files touched this session
+
+1. [uqff_pure_calculator.py](uqff_pure_calculator.py) â€” `_LAGRANGIAN_SECTOR_REGISTRY` extended 17 â†’ 26 sectors with verified data.
+2. [uqff_Map.md](uqff_Map.md) â€” Â§20.1 matrix +6 rows + honesty note + Session 270 commit-ledger row.
+3. [Job B_Update papers with current canonical UQFF v5_78.txt](Job B_Update papers with current canonical UQFF v5_78.txt) â€” GAP 17 honesty-pass surface rewritten + Session 270 B4 status block.
+4. [uqff_Plan.md](uqff_Plan.md) â€” this Plan Image 121 appended.
+
+### Doctrine clarifications (carry-forward)
+
+- **NO fabricated b9 anchors.** When the source is CP4 (not grok b9), the
+  anchor uses the explicit `CP4:L<N>` prefix.
+- **NO claim that pure_calculator re-exports CP4 classes.** It does not;
+  it runs an independent channel implementation.
+- **Deferred-re-export bucket framing is RETIRED.** That framing was based
+  on a misreading; the correct framing is "Lagrangian sector registry
+  coverage" (now closed for the P-suite via Fix 1).
+
+### Open items still deferred (transparently)
+
+- **GAP 3:** 33 PENDING/TBD markers in `uqff_pure_calculator.py` â€”
+  mostly observational-data-pending (FRB DM_host, JWST spectroscopy);
+  three are structural (spinor_bundle_equations TBD; G_NEWTON geometric
+  derivation; L50 g-2 BSM placeholder). All require new physics work,
+  not governance.
+- **Bucket-A Batch 7** paper authoring (awaits user OK).
+- **PDF backup rotations** eligible 2026-06-11.
+
+### Repo memory anchors (updated)
+
+- `/memories/repo/v5_78_templates.md` -- canonical constants table + Path-A/Path-B authoring workflow.
+- `/memories/repo/session202_backfill_and_no_pandoc_rule.md` -- NO-PANDOC discipline.
+- `/memories/repo/um_gap_closure_status.md` -- (separate concern, unchanged).
+- (No new memory file created for Session 270 â€” Plan Image 121 is the canonical record.)

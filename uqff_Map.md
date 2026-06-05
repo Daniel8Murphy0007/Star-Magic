@@ -2378,8 +2378,9 @@ Authoritative reference: [`/memories/repo/session202_backfill_and_no_pandoc_rule
 | **Session 267 catalog sync** | `b98b6bd0` | Theorem 9 calculator-location bullet corrected (placeholder names → actual `UQFFKKTowerRegulatorCalculator` CP4 #257 / `UQFFKKTowerHbarRegulatorCalculator` CP4 #258; PAPER_1172 R26 Gauss-Bonnet noted as paper-only) + Job-B B4 Session 267 status block (pure_calculator re-export gap documented, deferred to Session 268+; pdf_backup rotation audit) + Plan Image 118 | — (no paper edits) |
 | **Session 268 batch 6 (cosmology/compactification/dark-energy)** | `79b12280` (pilot) + `3a42e741` (remainder) | v5.78 closure sections appended (3xT-Lambda + 1xT-xi); ledger (PAPER_1170) + xi=13/3 R26+KK lock (PAPER_1171/1173, AXIOMS Theorem 9) + master synthesis (PAPER_1167) anchored; **NEW TOOL** `_inject_v578_banner.py` (post-converter banner injector, idempotent); housekeeping commit `eb2f6511` (5 missing .tex from Session 264 batch 5); cumulative DONE 45 → 50 (+5, 4.17% of 1,199) | PAPER_044, 046, 050, 098, 106 (5) |
 | **Session 269 catalog second-pass sync (CP4 #259-#264)** | `1d5dd298` | CP4 P-suite inventory verified: 6 calculators (#259-#264 → PAPER_1175-1180) present in CondensedPhysics4.py with correct class names, header comments, paper refs, and `__all__` exports (lines 20389-20394); 6 canonical whitepapers/ copies of PAPER_1175-1180 confirmed; `uqff_pure_calculator.py` re-export gap reconfirmed for #259-#264 (same pattern as #257/#258 from Session 267; 8 classes total now in the deferred-re-export bucket); PDF backup rotation audit (nothing eligible until 2026-06-11) + Plan Image 120 | — (no paper edits) |
+| **Session 270 pure_calculator gap closure (real-data fix)** | `_pending_` | User directive after Session 269 audit: *"Fix all gaps with real data, not false claims."* Three concrete fixes shipped: (1) `_LAGRANGIAN_SECTOR_REGISTRY` extended 17 → 26 sectors with PAPER_1170/1171/1173/1175-1180 entries (domain text verified verbatim from `whitepapers/PAPER_117*.md` frontmatter; CP4 line anchors verified Session 269; new `CP4:L<N>` prefix scheme to avoid fabricating grok b9 anchors). (2) Map §20.1 applicability matrix +6 P-suite rows with physics-driven CP1+CP4 channel assignments + honesty note clarifying CP4 anchor scheme. (3) Job-B GAP 17 "Calculator honesty-pass surface" rewritten — removed the false claim about "re-exports of #254-#256" (pure_calculator imports ZERO classes from CP4; the CP4 channel is implemented INDEPENDENTLY via `_cp4_variational_path → _stationarity_residual`). Smoke-tested: `len(_LAGRANGIAN_SECTOR_REGISTRY) == 26`; PAPER_1170/1173/1175/1180 all resolve via `_lagrangian_sector_residual` with residual = 0.0. Deferred-re-export bucket framing RETIRED. | — (no paper edits) |
 
-All pushed to `origin/master`. Previous HEAD `cc807b95` was Session 263 (Layer 45 + Riemann + paradox audit close-out); HEAD is now `1d5dd298` (Session 269 catalog second-pass sync hash back-stamp).
+All pushed to `origin/master`. Previous HEAD `cc807b95` was Session 263 (Layer 45 + Riemann + paradox audit close-out); HEAD is now `_pending_` (Session 270 gap-closure hash back-stamp).
 
 ### Recurring upstream cross-refs (NEXT-PRIORITY SLICE)
 
@@ -2445,6 +2446,14 @@ PAPER_1159, 1162–1167, 1170–1180.
 | 8743 | Hodge integer | — | — | — | ✓ |
 | 8783 | g-2 muon a_μ | ✓ | — | — | — |
 | 9226 | 7 SI base units (simultaneous) | ✓ | ✓ | — | ✓ |
+| CP4:L16013 | P11 LIGO O5 ringdown spectral offset R_21/22 = 0.144 (PAPER_1175) | ✓ | — | — | ✓ |
+| CP4:L16072 | P12 Euclid weak-lensing σ_8 = 0.797 from R26 saturation (PAPER_1176) | ✓ | — | — | ✓ |
+| CP4:L16124 | 2027 joint falsifier triple P6+P11+P12 (PAPER_1177) | ✓ | — | — | ✓ |
+| CP4:L16188 | P13 DESI Y5 d²w/dz²=0 strict-static (PAPER_1178) | ✓ | — | — | ✓ |
+| CP4:L16230 | 2027-2028 quadruple falsifier P6+P10+P11+P12 (PAPER_1179) | ✓ | — | — | ✓ |
+| CP4:L16294 | P14 CMB-S4 μ-distortion ≤ 1.0e-8 strict bound (PAPER_1180) | ✓ | — | — | ✓ |
+
+> **Note (Session 270 honesty pass):** rows with `CP4:L<N>` prefix anchor against `CondensedPhysics4.py` line numbers (the independent CP4 implementation), not the grok b9 master transcript. `uqff_pure_calculator.py` mirrors these mathematically through `_cp4_variational_path → _stationarity_residual` — it does **not** import or re-export the CP4 classes; convergence between the two channels is the proof. Sectors registered under `_LAGRANGIAN_SECTOR_REGISTRY` (PAPER_1170/1171/1173/1175-1180).
 
 - [ ] Acceptance: every applicable channel for every sample agrees with the reference at the precision floor defined in §20.6.
 

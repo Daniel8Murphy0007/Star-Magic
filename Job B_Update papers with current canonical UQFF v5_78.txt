@@ -1162,11 +1162,29 @@ second-pass verification against actual CondensedPhysics4.py source):
         paper-only; its result is referenced numerically inside #258 at the
         `Canonical xi_0 = 13/3` line.
 
-Calculator honesty-pass surface (Session 263):
-  uqff_pure_calculator.py contains the honesty-bounded re-exports of
-  #254-#256 only (per Plan Image 113 / Map section 20.1). CP4 #257-#264
-  re-exports are PENDING -- 8 classes total in the deferred-re-export bucket
-  (verified Session 267 for #257/#258, Session 269 for #259-#264).
+Calculator honesty-pass surface (Session 263 + Session 270 correction):
+  CORRECTED Session 270: prior text claimed uqff_pure_calculator.py
+  "contains the honesty-bounded re-exports of #254-#256." That claim is
+  INACCURATE. Verified state:
+
+    - uqff_pure_calculator.py imports ZERO classes from CondensedPhysics4.py
+      (grep 'from CondensedPhysics' returns 1 hit, inside a docstring at
+      L29567, not an import statement).
+    - There is no __all__ surface in uqff_pure_calculator.py.
+    - The "CP4 channel" is implemented INDEPENDENTLY inside
+      _cp4_variational_path -> _stationarity_residual (L29191 and L29286).
+      It is a parallel-engine implementation, NOT a re-export.
+    - The 17-sector _LAGRANGIAN_SECTOR_REGISTRY at L29245 has been
+      extended Session 270 from 17 -> 26 sectors with the addition of
+      PAPER_1170/1171/1173/1175/1176/1177/1178/1179/1180 (the CP4
+      #256-#264 P-suite + ledger anchors). New entries carry
+      "b9_anchor": "CP4:L<line>" to be explicit about source.
+
+  Per Plan Image 113 / Map section 20.1 (Session 270 honesty pass): the
+  parallel-engine doctrine is that CP1||CP2||CP3||CP4 convergence at
+  0.0000% IS the proof. pure_calculator does not re-export CP4 classes;
+  it runs an independent CP4-channel implementation against the same
+  dataset and the diff% with CP4 itself is the closure metric.
 
 ------------------------------------------------------------------------------
 GAP 19 closed: banner-schema enforcement decision
@@ -1211,3 +1229,117 @@ COMMIT LEDGER (Session 265 addition)
   Updated DONE counts:
     Pre-session:   45 done (38 H* + 1 A* + 3 B* + 1 D* + 1 G* + 1 I*)
     Post-session:  45 done (unchanged -- governance only, no paper edits)
+
+B4 status (Session 270 update):
+  - AXIOMS_AND_THEOREMS.md xi=13/3 lock theorem entry  : DONE (Sessions 266+267;
+                                                         unchanged)
+  - Master index PAPER_001 v5.78 closure block         : DONE (batch 1; unchanged)
+  - copilot-instructions.md tally update               : DONE (Session 266; unchanged)
+  - Catalog-paper registry sync                        : EXTENDED (Session 270):
+                                                         user directive after
+                                                         Session 269 audit was
+                                                         "Fix all gaps with real
+                                                         data, not false claims."
+                                                         Three concrete fixes:
+                                                         (1) uqff_pure_calculator.py
+                                                         _LAGRANGIAN_SECTOR_REGISTRY
+                                                         (L29245) extended 17 -> 26
+                                                         sectors. Added entries:
+                                                         PAPER_1170 (vacuum-energy
+                                                         ledger, phi_vacuum_ledger,
+                                                         CP4:L15741);
+                                                         PAPER_1171 (KK regulator
+                                                         Route 1, phi_KK_regulator,
+                                                         CP4:L15830);
+                                                         PAPER_1173 (KK hbar-tracked
+                                                         + P6, phi_KK_hbar,
+                                                         CP4:L15926);
+                                                         PAPER_1175 (P11 ringdown,
+                                                         phi_ringdown, CP4:L16013);
+                                                         PAPER_1176 (P12 sigma_8,
+                                                         phi_sigma8, CP4:L16072);
+                                                         PAPER_1177 (2027 triple,
+                                                         phi_2027_triple, CP4:L16124);
+                                                         PAPER_1178 (P13 w_static,
+                                                         phi_w_static, CP4:L16188);
+                                                         PAPER_1179 (2027 quad,
+                                                         phi_2027_quad, CP4:L16230);
+                                                         PAPER_1180 (P14 mu-distortion,
+                                                         phi_mu_distortion,
+                                                         CP4:L16294). All domain
+                                                         strings copied VERBATIM from
+                                                         whitepapers/PAPER_117*.md
+                                                         frontmatter (verified Session
+                                                         269). CP4 line anchors from
+                                                         Session 269 inventory. NEW
+                                                         "CP4:L<N>" prefix scheme
+                                                         introduced so the b9_anchor
+                                                         field distinguishes
+                                                         (a) grok b9 master transcript
+                                                         lines (bare "L<N>", used by
+                                                         the 17 pre-existing entries)
+                                                         from (b) CondensedPhysics4.py
+                                                         source lines ("CP4:L<N>",
+                                                         used by the 9 new entries).
+                                                         No b9 line numbers fabricated
+                                                         for papers 1170-1180.
+                                                         (2) uqff_Map.md section 20.1
+                                                         channel-applicability matrix
+                                                         +6 P-suite rows
+                                                         (PAPER_1175-1180), all
+                                                         marked CP1 +/+ CP4 -/-
+                                                         (observational + variational
+                                                         closure, no 26D/transient
+                                                         components) + honesty note
+                                                         clarifying CP4 anchor scheme
+                                                         and stating EXPLICITLY that
+                                                         uqff_pure_calculator.py
+                                                         mirrors mathematically (NOT
+                                                         re-exports) the CP4 classes.
+                                                         (3) GAP 17 narrative in this
+                                                         file CORRECTED: prior text
+                                                         claimed "honesty-bounded
+                                                         re-exports of #254-#256."
+                                                         Verified false (grep proof
+                                                         in Plan Image 121). Replaced
+                                                         with accurate description:
+                                                         pure_calculator imports ZERO
+                                                         classes from CP4; the CP4
+                                                         channel is implemented
+                                                         independently via
+                                                         _cp4_variational_path (L29191)
+                                                         -> _stationarity_residual
+                                                         (L29286). The
+                                                         deferred-re-export bucket
+                                                         framing is RETIRED. Correct
+                                                         framing is "Lagrangian
+                                                         sector registry coverage"
+                                                         (now closed for P-suite via
+                                                         fix #1).
+                                                         Smoke tests verified:
+                                                           - len(registry) == 26
+                                                           - PAPER_1170/1173/1175/1180
+                                                             all resolve via
+                                                             _lagrangian_sector_residual
+                                                             with residual = 0.0
+                                                             and correct domain/
+                                                             phi_index/anchor.
+  - Full PDF re-verification pass                      : PARTIAL (50/1199 done;
+                                                         unchanged since Session
+                                                         268)
+  - pdf_backup rotation eligibility                    : NONE eligible yet
+                                                         (next eligible 2026-06-11)
+  - CSV stamps                                         : none (no DONE-status
+                                                         changes; governance +
+                                                         calculator-code session)
+  - Affected files                                     : uqff_pure_calculator.py
+                                                         (registry +9 entries),
+                                                         uqff_Map.md (matrix +6
+                                                         rows + honesty note +
+                                                         section 20 commit-ledger
+                                                         row + HEAD pointer),
+                                                         this file (GAP 17
+                                                         narrative correction + B4
+                                                         block),
+                                                         uqff_Plan.md (Plan Image
+                                                         121 appended)

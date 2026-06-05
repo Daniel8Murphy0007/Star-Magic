@@ -29237,29 +29237,43 @@ def _dse_dispatch(dataset: Dict[str, Any]) -> Dict[str, Any]:
 
 
 # Slice 2 / Plan sec 3.5 / Map sec 20.3 — Lagrangian Sector Registry
-# 17 Lagrangian-derivation papers exposed as dataset['lagrangian_sector'] keys.
+# 26 Lagrangian-derivation papers exposed as dataset['lagrangian_sector'] keys.
 # Closure operator is the single _stationarity_residual (Slice 6); no new public
 # functions. Each sector is a sector of the master action S = integral L d^4x;
 # closure iff delta-S/delta-phi_i = 0 at the configured base point.
+#
+# Anchor scheme:
+#   "L<N>"      = line number in grok b9 master regression transcript
+#   "CP4:L<N>"  = line number in CondensedPhysics4.py (Session 269 inventory)
 
 _LAGRANGIAN_SECTOR_REGISTRY: Dict[str, Dict[str, str]] = {
-    "PAPER_503":  {"domain": "Foundational L_UQFF",                     "b9_anchor": "L8520",  "phi_index": "phi_UQFF"},
-    "PAPER_882":  {"domain": "Inflation sector",                        "b9_anchor": "L8520",  "phi_index": "phi_inflaton"},
-    "PAPER_886":  {"domain": "Horizon problem",                         "b9_anchor": "L8520",  "phi_index": "phi_horizon"},
-    "PAPER_888":  {"domain": "CMB sector (CP4-linked)",                 "b9_anchor": "L11886", "phi_index": "phi_cmb"},
-    "PAPER_894":  {"domain": "Dark energy sector",                      "b9_anchor": "L8520",  "phi_index": "phi_DE"},
-    "PAPER_898":  {"domain": "Dark matter sector",                      "b9_anchor": "L8520",  "phi_index": "phi_DM"},
-    "PAPER_907":  {"domain": "LQG sector",                              "b9_anchor": "L8520",  "phi_index": "phi_LQG"},
-    "PAPER_946":  {"domain": "Merger sector",                           "b9_anchor": "L8520",  "phi_index": "phi_merger"},
-    "PAPER_957":  {"domain": "Quantum gravity sector",                  "b9_anchor": "L8520",  "phi_index": "phi_QG"},
-    "PAPER_1065": {"domain": "UQFF master action expansion",            "b9_anchor": "L8159",  "phi_index": "phi_UQFF"},
-    "PAPER_1066": {"domain": "Variational stationarity",                "b9_anchor": "L8159",  "phi_index": "phi_UQFF"},
-    "PAPER_1089": {"domain": "delta-S/delta-phi=0 closure",             "b9_anchor": "L8159",  "phi_index": "phi_UQFF"},
-    "PAPER_1090": {"domain": "Spinor bundle closure",                   "b9_anchor": "L8159",  "phi_index": "phi_spinor"},
-    "PAPER_1094": {"domain": "F_U=1 normalization derivation",          "b9_anchor": "L8159",  "phi_index": "phi_FU"},
-    "PAPER_1095": {"domain": "Buoyancy coefficient triangular ladder",  "b9_anchor": "L8159",  "phi_index": "phi_buoy"},
-    "PAPER_1103": {"domain": "26-layer Ramanujan amplification",        "b9_anchor": "L8159",  "phi_index": "phi_A26"},
-    "PAPER_1167": {"domain": "Closed UQFF Lagrangian (master)",         "b9_anchor": "L11853", "phi_index": "phi_UQFF"},
+    "PAPER_503":  {"domain": "Foundational L_UQFF",                                  "b9_anchor": "L8520",       "phi_index": "phi_UQFF"},
+    "PAPER_882":  {"domain": "Inflation sector",                                     "b9_anchor": "L8520",       "phi_index": "phi_inflaton"},
+    "PAPER_886":  {"domain": "Horizon problem",                                      "b9_anchor": "L8520",       "phi_index": "phi_horizon"},
+    "PAPER_888":  {"domain": "CMB sector (CP4-linked)",                              "b9_anchor": "L11886",      "phi_index": "phi_cmb"},
+    "PAPER_894":  {"domain": "Dark energy sector",                                   "b9_anchor": "L8520",       "phi_index": "phi_DE"},
+    "PAPER_898":  {"domain": "Dark matter sector",                                   "b9_anchor": "L8520",       "phi_index": "phi_DM"},
+    "PAPER_907":  {"domain": "LQG sector",                                           "b9_anchor": "L8520",       "phi_index": "phi_LQG"},
+    "PAPER_946":  {"domain": "Merger sector",                                        "b9_anchor": "L8520",       "phi_index": "phi_merger"},
+    "PAPER_957":  {"domain": "Quantum gravity sector",                               "b9_anchor": "L8520",       "phi_index": "phi_QG"},
+    "PAPER_1065": {"domain": "UQFF master action expansion",                         "b9_anchor": "L8159",       "phi_index": "phi_UQFF"},
+    "PAPER_1066": {"domain": "Variational stationarity",                             "b9_anchor": "L8159",       "phi_index": "phi_UQFF"},
+    "PAPER_1089": {"domain": "delta-S/delta-phi=0 closure",                          "b9_anchor": "L8159",       "phi_index": "phi_UQFF"},
+    "PAPER_1090": {"domain": "Spinor bundle closure",                                "b9_anchor": "L8159",       "phi_index": "phi_spinor"},
+    "PAPER_1094": {"domain": "F_U=1 normalization derivation",                       "b9_anchor": "L8159",       "phi_index": "phi_FU"},
+    "PAPER_1095": {"domain": "Buoyancy coefficient triangular ladder",               "b9_anchor": "L8159",       "phi_index": "phi_buoy"},
+    "PAPER_1103": {"domain": "26-layer Ramanujan amplification",                     "b9_anchor": "L8159",       "phi_index": "phi_A26"},
+    "PAPER_1167": {"domain": "Closed UQFF Lagrangian (master)",                      "b9_anchor": "L11853",      "phi_index": "phi_UQFF"},
+    # Session 269 second-pass close-out (CP4 #256-#264 P-suite + ledger):
+    "PAPER_1170": {"domain": "27-decade vacuum-energy ledger (R26+KK+BSFG saturation)", "b9_anchor": "CP4:L15741", "phi_index": "phi_vacuum_ledger"},
+    "PAPER_1171": {"domain": "KK zero-point tower regulator (Route 1, structural)",  "b9_anchor": "CP4:L15830",  "phi_index": "phi_KK_regulator"},
+    "PAPER_1173": {"domain": "KK tower hbar-tracked + sub-mm Yukawa (P6 carrier)",   "b9_anchor": "CP4:L15926",  "phi_index": "phi_KK_hbar"},
+    "PAPER_1175": {"domain": "P11: LIGO O5 ringdown spectral offset from Kerr",      "b9_anchor": "CP4:L16013",  "phi_index": "phi_ringdown"},
+    "PAPER_1176": {"domain": "P12: Euclid weak-lensing sigma_8 from R26 saturation", "b9_anchor": "CP4:L16072",  "phi_index": "phi_sigma8"},
+    "PAPER_1177": {"domain": "2027 joint falsifier triple (P6+P11+P12)",             "b9_anchor": "CP4:L16124",  "phi_index": "phi_2027_triple"},
+    "PAPER_1178": {"domain": "P13: DESI Y5 d^2w/dz^2=0 strict-static test",          "b9_anchor": "CP4:L16188",  "phi_index": "phi_w_static"},
+    "PAPER_1179": {"domain": "2027-2028 quadruple falsifier (P6+P10+P11+P12)",       "b9_anchor": "CP4:L16230",  "phi_index": "phi_2027_quad"},
+    "PAPER_1180": {"domain": "P14: CMB-S4 mu-distortion strict bound from R26",      "b9_anchor": "CP4:L16294",  "phi_index": "phi_mu_distortion"},
 }
 
 
