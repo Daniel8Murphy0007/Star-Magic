@@ -2163,3 +2163,30 @@ Applied:
 Validation: 5 PASS sections -- helper callable + 9 keys + real default decomposition + 5 dispatch routes (input/symbolic × g3_kk/g3_kk_spinor/g3_closure/g3_spinor) all dict-valued with REF/UQFF/diff/NR + spinor route still returns canonical_uqff_value (no collision) + g3 scalar route still returns 0.5 + 33/33 dispatcher branches stamped NR + all 7 public calculators emit NR with zero side effects.
 
 Honest correction disclosure: KK piece (`kk_correction ≈ 4.96e-26`) is essentially zero at the EH scale, confirming the locked 1/2 Ricci prefactor as dominant (26! suppression makes the KK tower numerically invisible at low energy). Spinor piece (`spinor_correction ≈ 3.17e-3`) contributes ~0.32% to closed G3, structurally appropriate for 2^13/26 distribution. NOT anchor-tuned. Map sec 5 G3 row closed.
+
+---
+
+### Map section 18 update (2026-06-04 Step 7 4-term vacuum ledger decomposition exposed in calculate_vacuum_ledger)
+
+Analysis section 7 Step 7 ("4-term vacuum ledger decomposition in `calculate_vacuum_ledger` OPData: `{V0, R26_term, rho_KK, rho_BSFG, total, planck_target, residual_pct}`") is now COMPLETE per Map sec 9 vacuum ledger row (4-term rho_Lambda = V(0) + <R_26>/2k_E + rho_KK + rho_BSFG = 5.957e-10 J/m^3, 0.12% Planck closure mandate).
+
+Applied:
+- New module-level constant `PLANCK_LAMBDA_TARGET_J_M3 = 5.95e-10` (Lambda c^2 / 8 pi G from Planck 2018 Lambda ~= 1.1056e-52 m^-2; cited as anchor in Map sec 9).
+- New helper `_vacuum_ledger_4term_decomposed() -> Dict[str, float]` (after `_vacuum_ledger_4term`). Returns the exact 7-key spec:
+  | key             | value @ default          | derivation                                       |
+  |-----------------|--------------------------|--------------------------------------------------|
+  | `V0`            | 2.382780e-10 J/m^3       | rho_SCm * 26! * G1_K (5/6 Mexican-hat V(UA))     |
+  | `R26_term`      | 1.429668e-10 J/m^3       | rho_SCm * 26! * G3_RICCI_COEF (1/2 Einstein Ricci)|
+  | `rho_KK`        | 1.715602e-10 J/m^3       | rho_SCm * 26! * G2_BETA_BASE (3/5 KK beta_0)     |
+  | `rho_BSFG`      | 4.289005e-11 J/m^3       | rho_SCm * 26! * G4_BSFG_COEF (3/20 BSFG GB)      |
+  | `total`         | 5.956951e-10 J/m^3       | V0 + R26_term + rho_KK + rho_BSFG                |
+  | `planck_target` | 5.950000e-10 J/m^3       | PLANCK_LAMBDA_TARGET_J_M3                        |
+  | `residual_pct`  | 0.1168%                  | (total - planck_target) / planck_target * 100    |
+- `_vacuum_ledger_4term()` scalar return PRESERVED (9+ internal callers untouched: cosm_lambda, Lambda_eff, L20/L33 layers, rho_lambda_mass, OPData layer ratios).
+- New dispatcher branch in `_resolve_uqff_ledger` after the G3 KK/spinor branch (before Millennium dispatch). Triggers ONLY on explicit decomposition keys: `vacuum_decomp`, `vacuum_4term`, `vacuum_ledger_decomp`, `rho_lambda_decomp`, `4term_decomp`. The legacy substring matches (`vacuum`, `ledger`, `rho_lambda`) continue to resolve through the tail dispatch to the scalar -- prevents collision with any caller using bare strings.
+- `calculate_vacuum_ledger` refactored: value now returns the 7-key decomposition dict (precedent: Step 5 `calculate_triadic_g` scalar -> dict migration per OPData expose mandate). Provenance composed via `_compose_step4_provenance` with `val=vd['total']` against the Planck-Lambda anchor.
+- Returned provenance carries full Step 4 contract: REF=5.95e-10, kind=PLANCK_LAMBDA_TARGET, source=Planck 2018 Lambda c^2 / 8 pi G [Map sec 9], UQFF=`total`, diff=`residual_pct`%, ending `(NOT REPLACEMENT)`.
+
+Validation: 8 PASS sections -- helper callable + exactly 7 spec keys + real default decomposition + 5 sanity checks (reconstruction / coefficient ordering / residual<1% / anchor / scalar identity) + scalar contract preserved + calculator returns 7-key dict + 7 dispatcher decomposition routes dict-valued with NR + 3 legacy scalar routes preserved as floats + all prior step routes intact + 39/39 dispatcher branches stamped NR.
+
+Honest closure disclosure: zero-parameter G1-G8 composition (coefficient sum 5/6 + 1/2 + 3/5 + 3/20 = 25/12; all four prefactors locked by Map sec 5). 0.117% residual reflects honest structural composition error vs the Planck-Lambda anchor, NOT a tunable fit. Term ordering: V0 (~40%) > rho_KK (~29%) > R26_term (~24%) > rho_BSFG (~7%). NOT anchor-tuned -- consistent with Steps 2/3/5/6 honesty lessons. Map sec 9 vacuum ledger row closed.

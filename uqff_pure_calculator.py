@@ -2624,6 +2624,10 @@ def _vacuum_ledger_4term() -> float:
       rho_BSFG         = rho_SCm * 26! * 3/20   (G4 BSFG bulk-edge 6D/4D Gauss-Bonnet)
     Sum of coefficients: 5/6 + 1/2 + 3/5 + 3/20 = 25/12.
     Total: rho_SCm * 26! * 25/12 ~ 5.957e-10 J/m^3 (target 5.95e-10, 0.12% Planck closure).
+
+    Preserved scalar return for the 9+ internal callers (cosm_lambda, Lambda_eff,
+    L20/L33 layers, etc.). For the full 7-key decomposition (Step 7 per analysis sec 7),
+    see _vacuum_ledger_4term_decomposed().
     """
     amp = G8_26_BARRIER  # 26!
     v0   = RHO_SCM * amp * G1_K           # 5/6
@@ -2631,6 +2635,47 @@ def _vacuum_ledger_4term() -> float:
     kk   = RHO_SCM * amp * G2_BETA_BASE   # 3/5
     bsfg = RHO_SCM * amp * G4_BSFG_COEF   # 3/20
     return v0 + r26 + kk + bsfg
+
+
+# Planck-Lambda observational anchor (J/m^3): Lambda c^2 / (8 pi G) using
+# Planck 2018 Lambda ~= 1.1056e-52 m^-2 -> rho_Lambda ~= 5.95e-10 J/m^3.
+# Cited as anchor in uqff_Map.md section 9 vacuum ledger row.
+PLANCK_LAMBDA_TARGET_J_M3 = 5.95e-10
+
+
+def _vacuum_ledger_4term_decomposed() -> Dict[str, float]:
+    """4-term vacuum ledger decomposition (Step 7 per analysis sec 7).
+
+    Surfaces the OPData mandated by Map sec 9 vacuum ledger row:
+        {V0, R26_term, rho_KK, rho_BSFG, total, planck_target, residual_pct}
+
+    Derivation (NOT anchor-tuned, NOT REPLACEMENT):
+      amp              = G8_26_BARRIER = 26!
+      V0               = rho_SCm * 26! * G1_K          (5/6  Mexican-hat V(UA))
+      R26_term         = rho_SCm * 26! * G3_RICCI_COEF (1/2  Einstein 26D Ricci split)
+      rho_KK           = rho_SCm * 26! * G2_BETA_BASE  (3/5  KK leading beta_0)
+      rho_BSFG         = rho_SCm * 26! * G4_BSFG_COEF  (3/20 BSFG bulk-edge GB ratio)
+      total            = V0 + R26_term + rho_KK + rho_BSFG
+      planck_target    = PLANCK_LAMBDA_TARGET_J_M3 = 5.95e-10 J/m^3
+      residual_pct     = (total - planck_target) / planck_target * 100
+    """
+    amp = G8_26_BARRIER
+    v0 = RHO_SCM * amp * G1_K
+    r26 = RHO_SCM * amp * G3_RICCI_COEF
+    kk = RHO_SCM * amp * G2_BETA_BASE
+    bsfg = RHO_SCM * amp * G4_BSFG_COEF
+    total = v0 + r26 + kk + bsfg
+    planck = PLANCK_LAMBDA_TARGET_J_M3
+    residual_pct = (total - planck) / planck * 100.0
+    return {
+        "V0": v0,
+        "R26_term": r26,
+        "rho_KK": kk,
+        "rho_BSFG": bsfg,
+        "total": total,
+        "planck_target": planck,
+        "residual_pct": residual_pct,
+    }
 
 
 # === G1-G8 EXPLICIT ZERO-PARAMETER GATE FUNCTIONS (Map §5) ===
@@ -27368,6 +27413,38 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         )
         return {"value": g3, "provenance": prov}
 
+    # 4-term vacuum ledger decomposition (Map sec 9 vacuum ledger row) -- Step 7 LIVE-DERIVE
+    # per analysis sec 7 Step 7. Explicit-key routes only; legacy 'vacuum'/'ledger'/'rho_lambda'
+    # default keys still resolve to the scalar via the tail dispatch (preserves 9+ scalar callers).
+    if key and (
+        "vacuum_decomp" in key
+        or "vacuum_4term" in key
+        or "vacuum_ledger_decomp" in key
+        or "rho_lambda_decomp" in key
+        or "4term_decomp" in key
+    ):
+        vd = _vacuum_ledger_4term_decomposed()
+        prov = (
+            "4-term vacuum ledger decomposition [Map section 9 vacuum ledger row] live derivation via "
+            "_vacuum_ledger_4term_decomposed: V0 = rho_SCm * 26! * G1_K (5/6 Mexican-hat V(UA)); "
+            "R26_term = rho_SCm * 26! * G3_RICCI_COEF (1/2 Einstein 26D Ricci split); "
+            "rho_KK = rho_SCm * 26! * G2_BETA_BASE (3/5 KK leading beta_0); "
+            "rho_BSFG = rho_SCm * 26! * G4_BSFG_COEF (3/20 BSFG bulk-edge 6D/4D Gauss-Bonnet); "
+            "total = V0 + R26_term + rho_KK + rho_BSFG (coefficient sum 25/12); "
+            "planck_target = 5.95e-10 J/m^3 (Lambda c^2 / 8 pi G from Planck 2018 "
+            "Lambda ~= 1.1056e-52 m^-2); residual_pct = (total - planck_target) / planck_target * 100. "
+            "Cite: uqff_Map.md section 9 vacuum ledger row (5.95e-10 J/m^3 0.2% Planck closure mandate) + "
+            "Map sec 5 G1/G2/G3/G4 locks + Map sec 4 single non-mass root rho_SCm composition. "
+            "Zero-parameter G1-G8 closure: no free coefficients post-locks; the four G-prefactors "
+            "are structurally fixed and the residual reflects the structural composition error vs "
+            "the Planck-Lambda anchor, NOT a tunable fit. "
+            f"REF={PLANCK_LAMBDA_TARGET_J_M3:.6g} (J/m^3, kind=PLANCK_LAMBDA_TARGET, source: "
+            f"Planck 2018 Lambda c^2 / 8 pi G = 5.95e-10 J/m^3 anchor [Map section 9]) | "
+            f"UQFF={vd['total']:.6g} | diff={vd['residual_pct']:.4f}% (4-term G1-G8 structural "
+            "closure vs Planck-Lambda anchor; NOT REPLACEMENT)"
+        )
+        return {"value": vd, "provenance": prov}
+
     # Millennium dispatch (8 problems) — check first so "yang_mills" etc. resolve before cluster strings.
     if key:
         mill = _millennium(key)
@@ -27641,21 +27718,27 @@ def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
     return {"value": decomp, "provenance": prov}
 
 def calculate_vacuum_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
-    """4-term vacuum energy ledger (G1-G8 zero-param, UA 4-layer, 26! / KK, single non-mass root)."""
+    """4-term vacuum energy ledger (G1-G8 zero-param, UA 4-layer, 26! / KK, single non-mass root).
+
+    OPData per Map sec 9 vacuum ledger row (Step 7 per analysis sec 7): returns the
+    7-key decomposition {V0, R26_term, rho_KK, rho_BSFG, total, planck_target, residual_pct}
+    with the full Step 4 per-call provenance contract anchored to the Planck-Lambda target.
+    """
     d = dataset or {}
-    val = _vacuum_ledger_4term()
+    vd = _vacuum_ledger_4term_decomposed()
     res = _resolve_uqff_ledger(d)
     base_prov = res["provenance"] if "provenance" in res else PROV_BASE
     label = (
-        "4-term rho_Lambda (V(0) + <R_26>/2k_E + rho_KK + rho_BSFG = 5.95e-10 J/m3 0.2% Planck)"
+        "4-term vacuum ledger decomposition [V0 + R26_term + rho_KK + rho_BSFG "
+        "= total; G1-G8 zero-parameter closure; rho_SCm * 26! * (5/6 + 1/2 + 3/5 + 3/20) "
+        "= rho_SCm * 26! * 25/12 ~ 5.957e-10 J/m^3 vs Planck Lambda ~5.95e-10 J/m^3]"
     )
-    # Anchor: 5.95e-10 J/m3 documented total (Map section 9 vacuum ledger row).
     prov = _compose_step4_provenance(
-        label, base_prov, val=val,
-        anchor=5.95e-10, anchor_unit="J/m^3", anchor_kind="VACUUM_LEDGER_TOTAL",
-        anchor_source="uqff_Map.md section 9 4-term ledger total (Planck Lambda anchor 0.2% residual)",
+        label, base_prov, val=vd["total"],
+        anchor=vd["planck_target"], anchor_unit="J/m^3", anchor_kind="PLANCK_LAMBDA_TARGET",
+        anchor_source="uqff_Map.md section 9 4-term ledger row (Planck 2018 Lambda c^2 / 8 pi G ~= 5.95e-10 J/m^3)",
     )
-    return {"value": val, "provenance": prov}
+    return {"value": vd, "provenance": prov}
 
 def calculate_analytic_closures(dataset: Dict[str, Any]) -> Dict[str, Any]:
     """

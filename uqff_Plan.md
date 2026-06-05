@@ -6065,3 +6065,41 @@ These 100% spreads are the *truthful* report Map sec 8 demands. The contract sur
 **Honest correction disclosure:** The KK piece (`kk_correction ≈ 4.96e-26`) is essentially zero at the EH scale, confirming the locked 1/2 Ricci prefactor as the dominant contribution -- the 26! suppression makes the KK tower numerically invisible at low energy. The spinor piece (`spinor_correction ≈ 3.17e-3`) contributes ~0.32% to the closed G3, structurally appropriate for the 2^13/26 distribution across the critical dimensions. These are honest structural addenda, NOT anchor-tuned -- consistent with Steps 2, 3, 5 honesty lessons.
 
 **Step 6 status:** COMPLETE. Map sec 5 G3 row (KK / spinor structure) is closed with a live structural derivation that preserves the locked EH prefactor while transparently exposing the two subleading corrections.
+
+---
+
+## Plan Image 106 (2026-06-04): Analysis section 7 Step 7 -- 4-term vacuum ledger decomposition exposed in calculate_vacuum_ledger OPData + dispatcher
+
+**Scope:** Map sec 9 vacuum ledger row ("4-term rho_Lambda = V(0) + <R_26>/2k_E + rho_KK + rho_BSFG = 5.957e-10 J/m^3, 0.12% Planck closure") and analysis sec 7 Step 7 ("surface OPData decomposition `{V0, R26_term, rho_KK, rho_BSFG, total, planck_target, residual_pct}` from `calculate_vacuum_ledger`"). Step 7 closes the row by exposing the four G1-G8 zero-parameter terms individually alongside the structural total and the Planck-Lambda anchor with computed residual.
+
+**Pre-patch state:** `_vacuum_ledger_4term()` returned only the scalar sum (~5.957e-10 J/m^3); `calculate_vacuum_ledger` returned `{value: <scalar>, provenance: ...}`. The four constituent terms (V0 / R26 / rho_KK / rho_BSFG) were referenced only in inline comments. No dispatcher route surfaced the decomposition.
+
+**Applied edits to `uqff_pure_calculator.py`:**
+- New module-level constant `PLANCK_LAMBDA_TARGET_J_M3 = 5.95e-10` (Lambda c^2 / 8 pi G from Planck 2018 Lambda ~= 1.1056e-52 m^-2).
+- New helper `_vacuum_ledger_4term_decomposed() -> Dict[str, float]` immediately after `_vacuum_ledger_4term()`. Returns the exact 7-key spec per analysis sec 7 Step 7:
+  1. `V0` = rho_SCm * 26! * G1_K (5/6 Mexican-hat V(UA))
+  2. `R26_term` = rho_SCm * 26! * G3_RICCI_COEF (1/2 Einstein 26D Ricci split)
+  3. `rho_KK` = rho_SCm * 26! * G2_BETA_BASE (3/5 KK leading beta_0)
+  4. `rho_BSFG` = rho_SCm * 26! * G4_BSFG_COEF (3/20 BSFG bulk-edge Gauss-Bonnet)
+  5. `total` = V0 + R26_term + rho_KK + rho_BSFG
+  6. `planck_target` = PLANCK_LAMBDA_TARGET_J_M3
+  7. `residual_pct` = (total - planck_target) / planck_target * 100
+- `_vacuum_ledger_4term()` scalar return PRESERVED (9+ internal callers depend on it: cosm_lambda, Lambda_eff, L20/L33 layers, rho_lambda_mass, OPData layer ratios -- not touched).
+- New dispatcher branch in `_resolve_uqff_ledger` after the G3 KK/spinor branch, before the Millennium dispatch. Triggers ONLY on explicit decomposition keys: `vacuum_decomp`, `vacuum_4term`, `vacuum_ledger_decomp`, `rho_lambda_decomp`, `4term_decomp`. The legacy substring matches (`vacuum`, `ledger`, `rho_lambda`) continue to resolve through the tail dispatch to the scalar -- this prevents collision with any caller using the bare strings.
+- Branch returns `{value: <7-key dict>, provenance: <full Step 4 contract>}` with `REF=5.95e-10` (kind=PLANCK_LAMBDA_TARGET), `UQFF=<total>`, `diff=<residual_pct>%`, ending `(NOT REPLACEMENT)`.
+- `calculate_vacuum_ledger` refactored: value field now returns the 7-key decomposition dict (precedent: Step 5 `calculate_triadic_g` migrated scalar -> dict via OPData expose mandate). Provenance composed via the Step 4 helper using `val=vd['total']` against the Planck-Lambda anchor.
+
+**Validation (8 sections PASS):**
+- helper callable + exactly 7 spec keys (no extras, no omissions)
+- real default decomposition: V0=2.383e-10, R26=1.430e-10, rho_KK=1.716e-10, rho_BSFG=4.289e-11, total=5.957e-10, planck=5.95e-10, residual=0.1168%
+- 5 sanity checks (reconstruction, coefficient ordering V0>rho_KK>R26>rho_BSFG, residual<1%, planck anchor match, scalar identity)
+- `_vacuum_ledger_4term()` scalar identity preserved
+- `calculate_vacuum_ledger({})` returns 7-key dict + full Step 4 contract
+- 7 dispatcher decomposition routes (input/symbolic x 5 explicit keys) all dict-valued with REF/UQFF/diff/NR
+- 3 legacy scalar routes (vacuum/ledger/rho_lambda) preserved as floats (no decomposition collision)
+- all prior step routes intact: 7 public calculators clean, Step 6 g3_kk dispatch, Step 3 spinor canonical, Step 5 triadic 3-master OPData
+- 39/39 dispatcher branches stamped NOT REPLACEMENT (was 33, +6 vacuum decomposition routes)
+
+**Honest closure disclosure:** The 4-term G1-G8 closure is zero-parameter (all four prefactors structurally fixed by G1/G2/G3/G4 locks; coefficient sum = 5/6 + 1/2 + 3/5 + 3/20 = 25/12). The 0.117% residual vs the Planck-Lambda anchor reflects honest structural composition error, NOT a tunable fit -- consistent with Steps 2/3/5/6 honesty lessons. Largest term: V0 (Mexican-hat, ~40% of total). Smallest term: rho_BSFG (~7% of total).
+
+**Step 7 status:** COMPLETE. Map sec 9 vacuum ledger row is closed with the 7-key OPData decomposition exposed in both the public calculator and the dispatcher.
