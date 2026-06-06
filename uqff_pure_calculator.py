@@ -5570,6 +5570,96 @@ def _ngc2525_g_master_uqff(r_m: float = R_NGC2525_DISK_M,
     return grav_disk + bh_term + Ug_sum_trz + cosm + lorentz_term - sn_drain
 
 
+# === NGC 3603 (Carina arm starburst, "Extreme star cluster" Hubble image) evolution master Universal Gravity ===
+# Spec: "Master Universal Gravity Equation_'Extreme star cluster bursts into life
+# in new Hubble image' Evolution_08May2025" (Hubble 400,000 M_sun gas+stars at
+# 20 kly, Fermilab star-formation simulations).
+#
+# All leaves already primitivized EXCEPT the composer:
+#   - (G*M(t)/r^2), (1-B/B_crit), Ug1..Ug4, (1+f_TRZ), Lambda*c^2/3 -> magnetar v2 chain
+#   - M(t) = M_init*(1 + M_dot_0*exp(-t/tau_SF))  -> _accretion_mass_growth_uqff (REUSE)
+#   - H_0*t (local: z=0 inside MW)                -> _hubble_unified(z=0, H_0) -> H_0
+#   - q(v x B)(1+rho_UA/rho_SCm)*1e-12            -> _lorentz_acceleration_uqff
+#   - rho * v_wind^2 (ram-pressure base)          -> trivial product
+#   - P(t) = (rho*v_wind^2)*exp(-t/tau_exp)       -> _magnetar_B_decay (generic X_0*exp(-t/tau);
+#                                                    same primitive serving magnetar B-decay,
+#                                                    Pillars erosion envelope, Type-Ia SN decay)
+# Cavity-suppression factor (1-P(t)) wired inside composer (no new primitive).
+# Spec drops quantum-uncertainty, fluid V*g, oscillatory, DM perturbation as
+# "secondary to local effects" -- same convention as Rings / NGC 2525.
+#
+# Existing tapestry_ngc_3603 catalog entry (L2029, 10^4 M_sun for 240-OB core)
+# and _tapestry_g_master_uqff (240-star compact subregion) target a different
+# scale and are LEFT UNTOUCHED -- this composer is the full 400,000 M_sun
+# gas+stars cluster.
+
+M_NGC3603_INIT_KG     = 4.0e5 * M_SUN               # spec: 400,000 M_sun gas+stars
+R_NGC3603_M           = 8.998e15                    # spec: half-span (~1 ly)
+B_NGC3603_T           = 1.0e-5                      # spec: 10^-5 T cluster field
+TAU_SF_NGC3603_S      = 1.0e6 * _YEAR_S_MAGNETAR    # spec: 1 Myr SF timescale
+TAU_EXP_NGC3603_S     = 1.0e6 * _YEAR_S_MAGNETAR    # spec: 1 Myr cavity-expansion timescale
+M_DOT0_NGC3603        = 1.0                         # spec: M_0=1 (M_dot factor)
+V_WIND_NGC3603_MS     = 2.0e6                       # spec: 2000 km/s blue-star wind
+RHO_GAS_NGC3603       = 1.0e-20                     # spec: 10^-20 kg/m^3 gas density
+V_GAS_NGC3603_MS      = 1.0e5                       # spec: 10^5 m/s HII gas velocity (Lorentz term)
+H0_NGC3603_KMSMPC     = 70.0                        # spec: H_0=70 km/s/Mpc (local, z=0)
+T_NGC3603_DEFAULT_S   = 5.0e5 * _YEAR_S_MAGNETAR    # spec example: t = 5e5 yr (mid-cluster-age)
+
+def _ngc3603_g_master_uqff(r_m: float = R_NGC3603_M,
+                              t_s: float = T_NGC3603_DEFAULT_S,
+                              M_initial_kg: float = M_NGC3603_INIT_KG,
+                              M_dot_0: float = M_DOT0_NGC3603,
+                              tau_SF_s: float = TAU_SF_NGC3603_S,
+                              B_T: float = B_NGC3603_T,
+                              B_crit_T: float = B_CRIT_MAGNETAR_T,
+                              rho_gas: float = RHO_GAS_NGC3603,
+                              v_wind_ms: float = V_WIND_NGC3603_MS,
+                              tau_exp_s: float = TAU_EXP_NGC3603_S,
+                              H0_kmsMpc: float = H0_NGC3603_KMSMPC,
+                              Ug2: float = 0.0,
+                              Ug3: float = 0.0,
+                              f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                              Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                              v_gas_ms: float = V_GAS_NGC3603_MS,
+                              q_C: float = EV_J,
+                              m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                              rho_UA_val: float = None,
+                              rho_SCm_val: float = None,
+                              macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """NGC 3603 starburst-cluster evolution master g (spec 08May2025).
+
+    g_NGC3603(r,t) = (G*M(t)/r^2)(1+H_0 t)(1-B/B_crit)(1-P(t))
+                   + (Ug1+Ug2+Ug3+Ug4)(1+f_TRZ)
+                   + Lambda*c^2/3
+                   + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    where M(t) = M_init*(1 + M_dot_0*exp(-t/tau_SF))  [star-formation growth]
+          P(t) = (rho*v_wind^2)*exp(-t/tau_exp)        [wind-cavity pressure envelope]
+
+    Defaults reproduce spec example 1.053e-3 m/s^2 at t=5e5 yr (Lorentz*macro
+    dominates; M(t=5e5) = 1.278e36 kg via 1+exp(-0.5) = 1.6065 factor;
+    P(t=5e5) = 2.426e-8 (negligible cavity suppression at example time)).
+    """
+    M_t = _accretion_mass_growth_uqff(M_initial_kg, t_s, M_dot_0, tau_SF_s)
+    Ug1 = G_NEWTON * M_t / max(r_m * r_m, 1e-300)
+    sc_factor = 1.0 - B_T / max(B_crit_T, 1e-300)
+    H0_kmsMpc_val = _hubble_unified(t_s, 0.0, H0_kmsMpc)             # z=0 -> reduces to H_0
+    H0_si = H0_kmsMpc_val * 1.0e3 / _MPC_M                           # km/s/Mpc -> s^-1
+    P_0 = rho_gas * v_wind_ms * v_wind_ms                            # ram-pressure base (Pa)
+    P_t = _magnetar_B_decay(t_s, P_0, tau_exp_s)                     # generic exp envelope
+    cavity_factor = 1.0 - P_t
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * sc_factor * cavity_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + Ug_sum_trz + cosm + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
