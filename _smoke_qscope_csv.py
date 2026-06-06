@@ -8,7 +8,7 @@ tests = []
 with open('qscope_thz_earth_core_20231003.csv', 'r', encoding='utf-8') as f:
     rows = [r for r in csv.DictReader(line for line in f if not line.startswith('#'))]
 
-tests.append(('CSV row count = 20', len(rows) == 20))
+tests.append(('CSV row count = 30', len(rows) == 30))
 
 for r in rows:
     sid = int(r['signal_id'])
@@ -35,14 +35,16 @@ tests.append(('Min Ch1 power = 0.005 W (V=0.5)',
 ts = [int(r['t_seconds_relative']) for r in rows]
 tests.append(('t_seconds_relative monotone',
               all(ts[i] <= ts[i+1] for i in range(len(ts)-1))))
-tests.append(('Total span = 255 s (16:39:35 -> 16:43:50)',
-              ts[-1] - ts[0] == 255))
+tests.append(('Total span = 385 s (16:39:35 -> 16:46:00)',
+              ts[-1] - ts[0] == 385))
 
-# Batch split: rows 1-10 are batch 1; rows 11-20 are batch 2
+# Batch split: rows 1-10 are batch 1; rows 11-20 are batch 2; rows 21-30 are batch 3
 b1 = [int(r['batch']) for r in rows[:10]]
-b2 = [int(r['batch']) for r in rows[10:]]
+b2 = [int(r['batch']) for r in rows[10:20]]
+b3 = [int(r['batch']) for r in rows[20:]]
 tests.append(('Rows 1-10 are batch 1', all(b == 1 for b in b1)))
 tests.append(('Rows 11-20 are batch 2', all(b == 2 for b in b2)))
+tests.append(('Rows 21-30 are batch 3', all(b == 3 for b in b3)))
 
 passed = sum(1 for _, ok in tests if ok)
 total  = len(tests)
