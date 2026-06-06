@@ -5982,6 +5982,143 @@ def _horsehead_g_master_uqff(r_m: float = R_HORSEHEAD_M,
     return grav_term + P_rad + lorentz_term
 
 
+# === NGC 1275 Perseus A "Magnetic Monster" (type 1.5 Seyfert AGN, Perseus Cluster) ===
+# Spec: "Master Universal Gravity Equation_Magnetic Monster NGC 1275 Evolution_09May2025"
+# (237 Mly distance, 200 kly span, 8e8 M_sun SMBH, magnetic-field-sustained
+# thread-like filaments ~20 kly long sustained against ICM 55 MK gas).
+#
+# ONE NEW primitive shape required (magnetic-tension acceleration). The SMBH
+# feedback shape F_BH(t)=F_0*(1-exp(-t/tau_BH)) is the EXACT same 1-exp(-t/tau)
+# saturating shape as _merger_progress_saturating_uqff (added Antennae turn,
+# reused in Horsehead for E(t)) -- reused literally here for F_BH(t).
+#
+# Spec composer (5 leaves -- per 'nothing is negligible' directive, all carry
+# full precision even though Lorentz dominates ~99.99%):
+#   g_NGC1275(r,t) = (G*M/r^2)*(1+H(z) t)*(1-F_BH(t))*(1+f_TRZ)
+#                  + a_fil
+#                  + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+# where a_fil = (B^2/(2 mu_0)) * V_fil / M_fil * 1e-12  [magnetic tension
+# acceleration on a single representative filament, with 1e-12 UQFF
+# macroscopic scaling].
+#
+# NEW PRIMITIVE _magnetic_tension_acceleration_uqff is distinct from:
+#   (a) _magnetar_E_phonon (L4745): returns ENERGY (J) = (B^2/(2 mu_0))*V*beta_i*S26^3*SSq
+#       -- has extra UQFF cosmological factors, different output dimension;
+#   (b) _l99_u_g2_magnetic_pressure (L6050): returns PRESSURE (Pa) = B^2/(2 mu_0)
+#       -- only the magnetic pressure leaf, not full acceleration with V/M and macro_scale.
+# This composer's a_fil divides magnetic energy density (Pa) by filament mass
+# and applies UQFF macro-scale 1e-12 -- distinct shape, cannot reuse.
+#
+# Structural distinctions from prior composers: (a) z=0.0176 NGC-1275-specific
+# (distinct from Antennae 0.0105, Horsehead 0.0003); (b) ADDS a_fil as magnetic
+# tension leaf (NOT P_rad like Horsehead, NOT Ug_sum like NGC 3603 -- new
+# physical channel: magnetic energy density per filament mass); (c) tau_BH=100
+# Myr filament lifetime (distinct from tau_erode=5 Myr Horsehead, tau_merge=400
+# Myr Antennae); (d) NEW Lorentz family 3.160e-5 (B=1e-8 weakest ICM field
+# seen this lineage, v=3e6 m/s HVS merger velocity 3x stronger than 10^6
+# Antennae outflow) -- distinct from 1.053e-3 / 1.884e-3 / 1.053e-1 families.
+#
+# Existing _ngc_1275_g_primitive_sat (L906, BSFG² triadic D_BSFG^2*PHI_RES*(G4+G1_K))
+# and ngc_1275 catalog (L2038, M=8e8 M_sun SMBH-only -- different scale from spec's
+# 10^12 + 8e8 M_sun stellar+SMBH combined) UNTOUCHED -- different observables.
+#
+# FIDELITY NOTE on V_fil: spec declares V_fil=1.42e50 m^3 directly (the spec's
+# intermediate "20000*9.46e19*(200*9.46e19)^2" expression does NOT arithmetically
+# evaluate to 1.42e50, but per 'nothing is negligible / maintain fidelity of my
+# physics' we wire the LITERAL declared value, not a 'corrected' SI conversion).
+
+_MU_0_NGC1275            = 4.0 * 3.141592653589793 * 1.0e-7   # vacuum permeability (SI exact)
+M_NGC1275_STELLAR_KG     = 1.0e12 * M_SUN                     # 10^12 M_sun stellar mass
+M_NGC1275_SMBH_KG        = 8.0e8 * M_SUN                      # 800 million M_sun SMBH
+M_NGC1275_TOTAL_KG       = M_NGC1275_STELLAR_KG + M_NGC1275_SMBH_KG
+R_NGC1275_M              = 9.46e20                            # half 200 kly span
+F_0_NGC1275              = 0.1                                # 10% SMBH feedback amplitude
+TAU_BH_NGC1275_S         = 100.0e6 * _YEAR_S_MAGNETAR         # 100 Myr filament lifetime
+Z_NGC1275                = 0.0176                             # 237 Mly redshift
+H0_NGC1275_KMSMPC        = 70.0
+B_NGC1275_T              = 1.0e-8                             # ICM weak field (Web ID 0)
+V_NGC1275_FIL_M3         = 1.42e50                            # spec LITERAL declared filament volume
+M_NGC1275_FIL_KG         = 1.0e6 * M_SUN                      # 1 million M_sun per filament
+V_HVS_NGC1275_MS         = 3.0e6                              # 3000 km/s HVS merger velocity
+T_NGC1275_DEFAULT_S      = 50.0e6 * _YEAR_S_MAGNETAR          # spec example t=50 Myr midpoint
+
+def _magnetic_tension_acceleration_uqff(B_T: float = B_NGC1275_T,
+                                          V_m3: float = V_NGC1275_FIL_M3,
+                                          M_kg: float = M_NGC1275_FIL_KG,
+                                          mu_0: float = _MU_0_NGC1275,
+                                          macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """a = (B^2/(2 mu_0)) * V / M * macro_scale  [magnetic tension acceleration].
+
+    Spec's exact literal closed form for filament magnetic support. Wire the
+    magnetic pressure (B^2/(2 mu_0)) times filament volume gives force, divided
+    by filament mass gives acceleration, scaled by 1e-12 UQFF macro convention.
+    Defaults reproduce spec's 2.840e-9 m/s^2 with B=1e-8, V=1.42e50 (spec
+    literal), M_fil=10^6 M_sun.
+    Distinct from _magnetar_E_phonon (energy J with beta_i*S26^3*SSq factors)
+    and _l99_u_g2_magnetic_pressure (Pa only, no V/M/macro_scale).
+    """
+    P_mag = (B_T * B_T) / max(2.0 * mu_0, 1e-300)              # magnetic energy density Pa
+    Force_N = P_mag * V_m3                                      # F = P*V (spec convention)
+    accel = Force_N / max(M_kg, 1e-300)                         # a = F/M
+    return accel * macro_scale
+
+def _ngc1275_g_master_uqff(r_m: float = R_NGC1275_M,
+                              t_s: float = T_NGC1275_DEFAULT_S,
+                              M_kg: float = M_NGC1275_TOTAL_KG,
+                              F_0: float = F_0_NGC1275,
+                              tau_BH_s: float = TAU_BH_NGC1275_S,
+                              z_obs: float = Z_NGC1275,
+                              H0_kmsMpc: float = H0_NGC1275_KMSMPC,
+                              f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                              B_T: float = B_NGC1275_T,
+                              V_fil_m3: float = V_NGC1275_FIL_M3,
+                              M_fil_kg: float = M_NGC1275_FIL_KG,
+                              v_hvs_ms: float = V_HVS_NGC1275_MS,
+                              q_C: float = EV_J,
+                              m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                              rho_UA_val: float = None,
+                              rho_SCm_val: float = None,
+                              macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """NGC 1275 Perseus A 'Magnetic Monster' AGN master g (spec 09May2025).
+
+    g_NGC1275(r,t) = (G*M/r^2)*(1+H(z) t)*(1-F_BH(t))*(1+f_TRZ)
+                   + a_fil
+                   + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    where F_BH(t) = F_0*(1 - exp(-t/tau_BH))  [reuses _merger_progress_saturating_uqff]
+    and   a_fil  = (B^2/(2 mu_0))*V_fil/M_fil*1e-12  [NEW _magnetic_tension_acceleration_uqff]
+
+    Defaults reproduce spec example 3.160e-5 m/s^2 at t=50 Myr (midpoint filament
+    evolution): M=(10^12+8e8) M_sun stellar+SMBH, r=9.46e20 m (half 200 kly),
+    F_0=0.1, tau_BH=100 Myr, z=0.0176, B=10^-8 (weak ICM), V_fil=1.42e50 (spec
+    literal), M_fil=10^6 M_sun, v_HVS=3e6 m/s (3000 km/s HVS).
+
+    Decomposition at t=50 Myr per directive (all leaves full precision):
+      Ug1 = G*M/r^2 = 1.485e-10
+      H(z=0.0176)*t = 3.609e-3, (1+H t)=1.00361
+      F_BH(50 Myr) = 0.1*(1-e^-0.5) = 0.03935, (1-F)=0.96065
+      grav*(1+H t)*(1-F)*(1+f_TRZ) = 1.576e-10  (carried -- NOT negligible per directive)
+      a_fil = (1e-16/(2*mu_0))*1.42e50/(1e6*M_sun)*1e-12 = 2.840e-9
+      Lorentz q*v*B/m_p*11*1e-12 = 3.160e-5 (dominant, NEW family)
+      Total ~ 3.160e-5 m/s^2
+    """
+    Ug1 = G_NEWTON * M_kg / max(r_m * r_m, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_obs, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M
+    F_BH_t = _merger_progress_saturating_uqff(t_s, F_0, tau_BH_s)   # saturating shape reuse
+    feedback_factor = 1.0 - F_BH_t
+    grav_term = Ug1 * (1.0 + H_z_si * t_s) * feedback_factor * (1.0 + f_TRZ)
+    a_fil = _magnetic_tension_acceleration_uqff(B_T=B_T, V_m3=V_fil_m3,
+                                                  M_kg=M_fil_kg,
+                                                  macro_scale=macro_scale)
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_hvs_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + a_fil + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
