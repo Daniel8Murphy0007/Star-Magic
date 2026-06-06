@@ -32774,6 +32774,39 @@ OMEGA_C_MAGNETIC_CYCLE = 2.0 * math.pi / OMEGA_C_PERIOD_S  # rad/s, ~1.585e-8
 P_CORE_SUN             = 1.0           # Core penetration factor (Sun)
 P_CORE_PLANET          = 1.0e-3        # Core penetration factor (planets)
 
+# ===== Quantum-variable bundle 5 (gamma, E_react, f_quasi, R_b, [placeholder]) =====
+# Most already captured:
+#   gamma = 5e-5 /day   -> _L23_GAMMA_PER_DAY (L8911, derived TRZ*SSQ/1000=5.05e-5)
+#                          + _l23_um_buildup (L8957) for (1 - exp(-gamma t cos(pi*t_n)))
+#   kappa = 5e-4 /day   -> _L23_KAPPA_PER_DAY (L8912)
+#                          + _l23_e_react_decay (L8963) returns exp(-kappa t)
+#   f_quasi = 0.01      -> F_QUASI_DEFAULT (bundle 3)
+#   R_b     = 100 AU    -> same numerical value as R_J_MAGNETIC (bundle 2)
+# Adding spec-named clarifying aliases + full dimensional E_react(t) composer.
+GAMMA_DECAY_PER_DAY    = 5.0e-5        # gamma spec value (1/day), ~55-yr decay
+KAPPA_REACT_PER_DAY    = 5.0e-4        # E_react decay rate (1/day), ~5.5-yr
+E_REACT_AMPLITUDE      = 1.0e46        # Reactor efficiency factor amplitude
+R_B_FIELD_BUBBLE       = 1.496e13      # Outer field bubble radius (m, 100 AU)
+
+def _e_react_full(t_days: float = 0.0,
+                    A_0: float = E_REACT_AMPLITUDE,
+                    kappa_per_day: float = KAPPA_REACT_PER_DAY) -> float:
+    """Full dimensional reactor efficiency factor (Reactor Efficiency doc):
+        E_react(t) = A_0 * exp(-kappa * t)
+    Defaults: A_0 = 1e46, kappa = 5e-4 /day.
+    At t=0     -> E_react = 1e46 (spec match eq 6).
+    At t=1000d -> E_react ~ 1e46 * exp(-0.5) = 6.07e45."""
+    return A_0 * math.exp(-kappa_per_day * t_days)
+
+def _u_m_buildup_factor(t_days: float = 0.0, t_0_days: float = 0.0,
+                          gamma_per_day: float = GAMMA_DECAY_PER_DAY) -> float:
+    """Universal Magnetism buildup factor (Decay Rate doc eq 1 inner factor):
+        1 - exp(-gamma * t * cos(pi * t_n)),  t_n = t - t_0.
+    Spec-named alias of _l23_um_buildup using spec gamma = 5e-5 /day.
+    At t=1000d, t_n=1000 (cos(1000 pi)=1) -> 1 - exp(-0.05) ~ 0.04877 (spec match eq 2)."""
+    t_n = t_days - t_0_days
+    return 1.0 - math.exp(-gamma_per_day * t_days * math.cos(math.pi * t_n))
+
 def _mu_j_time_dependent(t: float = 0.0,
                            dc_offset: float = MU_J_DC_OFFSET,
                            ac_amplitude: float = MU_J_AC_AMPLITUDE,
