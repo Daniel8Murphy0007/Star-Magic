@@ -5283,6 +5283,91 @@ def _westerlund2_g_master_uqff(r_m: float = R_WESTERLUND2_M,
     return grav_term + Ug_sum_trz + cosm + lorentz_term
 
 
+# === PILLARS OF CREATION (M16 EAGLE NEBULA) EVOLUTION MASTER g (UQFF) — spec 03/09May2025 ===
+# Spec: "Master Universal Gravity Equation (UQFF & SM Integration)_
+# 'Pillars of Creation' Evolution_03May2025" + Hubble M16 (6,500-7,000 ly,
+# 4-5 ly length) + Fermilab molecular-cloud simulations.
+# Structurally identical to Tapestry + ONE new leaf: erosion factor (1 - E(t))
+# multiplying grav_term, where E(t) = E_0 * exp(-t/tau_erode). The exponential-
+# decay form is already provided by _magnetar_B_decay(t, X_0, tau) -- it is
+# generic X_0 * exp(-t/tau), reusable here with X_0 = E_0. No new primitive
+# needed; only the Pillars-specific composer.
+
+M_PILLARS_INIT_KG     = 10100.0 * M_SUN              # spec: 10,100 M_sun molecular cloud
+R_PILLARS_M           = 4.731e16                     # spec: 4.731e16 m (~5 ly)
+B_PILLARS_T           = 1.0e-6                       # spec: 1e-6 T (M16 nebular field)
+TAU_SF_PILLARS_S      = 1.0e6 * _YEAR_S_MAGNETAR     # spec: 1 Myr SF timescale
+M_DOT0_PILLARS        = 1.0e4 / 10100.0              # spec: M_0 = 10^4 / 10100 = 0.9901
+E0_PILLARS            = 0.1                          # spec: E_0 = 0.1 erosion amplitude
+TAU_ERODE_PILLARS_S   = 1.0e6 * _YEAR_S_MAGNETAR     # spec: 1 Myr erosion timescale
+V_GAS_PILLARS_MS      = 1.0e5                        # spec: 10^5 m/s nebular gas
+T_PILLARS_DEFAULT_S   = 5.0e5 * _YEAR_S_MAGNETAR     # spec: midpoint, t = 5e5 yr
+
+def _pillars_g_master_uqff(r_m: float = R_PILLARS_M,
+                            t_s: float = T_PILLARS_DEFAULT_S,
+                            M_initial_kg: float = M_PILLARS_INIT_KG,
+                            M_dot_0: float = M_DOT0_PILLARS,
+                            tau_SF_s: float = TAU_SF_PILLARS_S,
+                            B_T: float = B_PILLARS_T,
+                            B_crit_T: float = B_CRIT_MAGNETAR_T,
+                            E_0: float = E0_PILLARS,
+                            tau_erode_s: float = TAU_ERODE_PILLARS_S,
+                            H0_si: float = H0_MAGNETAR_SI,
+                            Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                            Ug2: float = 0.0,
+                            Ug3: float = 0.0,
+                            f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                            v_gas_ms: float = V_GAS_PILLARS_MS,
+                            q_C: float = EV_J,
+                            m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                            macro_scale: float = MACROSCOPIC_SCALE_LORENTZ,
+                            rho_UA_val: float = None,
+                            rho_SCm_val: float = None) -> float:
+    """Master Universal Gravity equation for the Pillars of Creation
+    (M16 Eagle Nebula, ~6,500-7,000 ly) evolution -- spec 03/09May2025.
+
+        g_Pillars(r,t) = (G*M(t)/r^2) * (1 + H_0*t) * (1 - B/B_crit) * (1 - E(t))
+                         + (U_g1 + U_g2 + U_g3 + U_g4) * (1 + f_TRZ)
+                         + Lambda*c^2/3
+                         + q (v x B) * (1 + rho_UA/rho_SCm) * macro_scale
+
+      where M(t) = M_initial * (1 + M_dot_0 * exp(-t/tau_SF))
+            E(t) = E_0 * exp(-t/tau_erode)
+            U_g1 = G*M(t)/r^2,  U_g4 = U_g1 * (1 - B/B_crit)
+            (Erosion factor applies ONLY to grav_term per spec; Ug_sum*(1+TRZ)
+             unmodified by erosion.)
+
+    Spec defaults (t=5e5 yr, M_init=10100 M_sun, r=4.731e16 m, B=1e-6 T,
+    M_0=0.9901, tau_SF=tau_erode=1 Myr, E_0=0.1, v_gas=1e5 m/s, f_TRZ=0.1) ->
+        M(5e5 yr) ~ 3.215e34 kg
+        U_g1     ~ 9.588e-10 m/s^2
+        E(5e5 yr) ~ 0.06065, (1-E) ~ 0.93935
+        grav_term ~ 9.005e-10 m/s^2 (erosion-suppressed)
+        Ug_sum*(1+TRZ) ~ 2.109e-9 m/s^2
+        Lorentz*macro  ~ 1.053e-4 m/s^2 (dominant, same as Tapestry)
+        TOTAL g_Pillars ~ 1.053e-4 m/s^2 (matches spec).
+
+    The erosion factor uses _magnetar_B_decay(t, E_0, tau_erode) because that
+    primitive is generic X_0 * exp(-t/tau) -- no new exponential-decay
+    primitive needed. Ram pressure, DM perturbation, quantum, oscillatory, GW
+    leaves remain standalone (spec drops from final closed equation)."""
+    M_t = _accretion_mass_growth_uqff(M_initial_kg, t_s, M_dot_0, tau_SF_s)
+    Ug1 = G_NEWTON * M_t / max(r_m * r_m, 1e-300)
+    sc_factor = 1.0 - B_T / max(B_crit_T, 1e-300)
+    E_t = _magnetar_B_decay(t_s, E_0, tau_erode_s)   # reuse: generic X_0*exp(-t/tau)
+    erosion_factor = 1.0 - E_t
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * sc_factor * erosion_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + Ug_sum_trz + cosm + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
