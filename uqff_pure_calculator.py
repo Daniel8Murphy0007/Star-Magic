@@ -4562,6 +4562,51 @@ def _l96_final_parsec_Ug4(t: float = 0.0, t_n: float = 0.0,
             * math.exp(-alpha * t) * math.cos(math.pi * t_n))
 
 
+# ---- PAPER_1175 Kerr ringdown + R26 vacuum-impedance correction ----
+# Explicit Kerr backbone + UQFF additive correction per user-supplied derivation
+# (2026-06-06 LIGO GW150914 worked example). Distinct from the dimensionless
+# saturation primitives _gw150914_ringdown_primitive_sat (L736) and
+# _p11_ringdown_offset_primitive_sat (L1092) which return structural ratios only.
+# This pair returns Hz with full SI dimensions and explicit M / a* parameters.
+
+def _l96_kerr_f220_hz(M_sun_mult: float = 30.0,
+                        F_a_star: float = 0.3737) -> float:
+    """f_220^Kerr (Hz) = c^3 / (2 pi G M) * F(a*).
+    For Schwarzschild a*=0 -> F=0.3737; Kerr remnant a*~0.67 -> F~0.523.
+    M_sun_mult = remnant mass in solar masses (PAPER_1175 fiducial = 30 M_sun)."""
+    M_kg = M_sun_mult * M_SUN
+    return (C_LIGHT ** 3) / (2.0 * math.pi * G_NEWTON * M_kg) * F_a_star
+
+def _l96_uqff_R26_ringdown_delta_hz(M_sun_mult: float = 30.0,
+                                      F_a_star: float = 0.3737,
+                                      kappa_R26: float = 1.0,
+                                      rho_SCm_val: float = None) -> float:
+    """Δf_220^UQFF (Hz) = f_Kerr * (D_crit/D_BSFG) * (rho_SCm/rho_Pl)^(1/4) * kappa_R26.
+    rho_Pl = c^7/(hbar G^2) (Planck energy density, derived).
+    PAPER_1175 P11 R26 vacuum-impedance offset; kappa_R26=1 CVW-locked."""
+    f_kerr = _l96_kerr_f220_hz(M_sun_mult, F_a_star)
+    HBAR = PLANCK_H / (2.0 * math.pi)
+    rho_Pl = (C_LIGHT ** 7) / (HBAR * G_NEWTON * G_NEWTON)
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    dim_gain = float(D_CRIT) / float(D_BSFG)
+    density_ratio_qrt = (rsc / rho_Pl) ** 0.25
+    return f_kerr * dim_gain * density_ratio_qrt * kappa_R26
+
+def _l96_uqff_f220_total_hz(M_sun_mult: float = 30.0,
+                              F_a_star: float = 0.3737,
+                              kappa_R26: float = 1.0,
+                              rho_SCm_val: float = None) -> float:
+    """f_220^total (Hz) = f_220^Kerr + Δf_220^UQFF.
+    PAPER_1175 dual-derivation closure (GR + UQFF additive R26 correction).
+    Honest disclosure: with PAPER_1175 fiducial M=30 M_sun, a*=0, the Kerr term
+    alone evaluates to ~403 Hz; the user-quoted 250.7 Hz uses M~62 M_sun + a*~0.67
+    (the actual GW150914 remnant). The UQFF Δf is ~10^-35 Hz, far below LIGO's
+    resolution -> total ≡ f_Kerr at any measurable precision (which is the
+    physical claim: UQFF reproduces GR at the LIGO measurement floor)."""
+    return (_l96_kerr_f220_hz(M_sun_mult, F_a_star)
+            + _l96_uqff_R26_ringdown_delta_hz(M_sun_mult, F_a_star, kappa_R26, rho_SCm_val))
+
+
 # === COMPRESSION CYCLE 2 — UNIFIED H(t,z) + F_env(t) + COMPRESSED MASTER g ===
 # (grok_b9afa8b6 Cycle 2 05May2025: streamlined UQFF master equation across 19+
 # astrophysical systems; consolidates M_mag, D(t), E(t), L(t), rho*v_wind^2,
@@ -30054,6 +30099,13 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         "final_parsec_ug4":          ("Ug4_final_parsec_eq21", _l96_final_parsec_Ug4,
                                        ["t", "t_n", "k_4", "M_BH", "d_g", "alpha",
                                         "rho_SCm_val"]),
+        # PAPER_1175 Kerr ringdown + R26 vacuum-impedance correction (2026-06-06)
+        "kerr_f220_hz":              ("f_220_Kerr_Hz", _l96_kerr_f220_hz,
+                                       ["M_sun_mult", "F_a_star"]),
+        "uqff_r26_ringdown_delta":   ("delta_f_220_UQFF_R26_Hz", _l96_uqff_R26_ringdown_delta_hz,
+                                       ["M_sun_mult", "F_a_star", "kappa_R26", "rho_SCm_val"]),
+        "uqff_f220_total_hz":        ("f_220_total_GR_plus_UQFF_Hz", _l96_uqff_f220_total_hz,
+                                       ["M_sun_mult", "F_a_star", "kappa_R26", "rho_SCm_val"]),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
