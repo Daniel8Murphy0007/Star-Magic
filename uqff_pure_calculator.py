@@ -6357,6 +6357,162 @@ def _ngc1792_g_master_uqff(r_m: float = R_NGC1792_M,
     return grav_term + lorentz_term
 
 
+# === Sombrero Galaxy M104 NGC 4594 spiral+SMBH+dust-lane master Universal Gravity ===
+# Spec: "Master Universal Gravity Equation for Sombrero Galaxy Evolution_09May2025"
+# (M104 = NGC 4594, spiral galaxy in Virgo Cluster, 28 Mly distant, 50 kly
+# diameter, prominent dust lane, bright old-star bulge, ~10^11 M_sun total
+# with 10^9 M_sun central SMBH, 2000 globular clusters in extended halo --
+# twice Milky Way's. Hubble WFC3+ACS mosaic combining visible+near-IR).
+#
+# 1 NEW PRIMITIVE required + multiple reuses. Per fidelity directive
+# 'nothing is negligible / maintain fidelity of my physics', the
+# dynamical-friction acceleration shape (rho_drag * v_orbit^2 / rho_medium)
+# is structurally distinct from all prior primitives:
+#   - distinct from _radiation_pressure_acceleration_uqff (L/(4 pi r^2 c)*(rho/m_H))
+#   - distinct from _magnetic_tension_acceleration_uqff (B^2/(2 mu_0)*V/M)
+#   - distinct from _lorentz_acceleration_uqff (q v B/m)
+#   - distinct from _u_g2_magnetic_pressure (B^2/(2 mu_0) only, no V/M)
+# Therefore NEW PRIMITIVE _dynamical_friction_acceleration_uqff is genuinely
+# needed. SMBH separate gravitational leaf is just G*M_BH/r_BH^2 -- SAME
+# structural shape as Ug1 (G*M/r^2), only the parameters differ, so it is
+# wired INLINE (no new primitive required for it). Other leaves reuse:
+#   (a) (1+H(z) t) at z=0.0063 reuses _hubble_unified.
+#   (b) Lorentz reuses _lorentz_acceleration_uqff -- 6TH distinct Lorentz
+#       family: 2.107e-3 (B=10^-5 ISM x v=2e5 m/s orbital = v*B product 2,
+#       exactly 2x the 1.053e-3 v*B=1 family). DISTINCT from prior families:
+#       1.053e-3 (v*B=1), 1.053e-1 (v*B=100), 1.053e-2 (v*B=10),
+#       3.160e-5 (v*B=0.03), 1.884e-3 (v*B=1.789 Bubble).
+#
+# Spec composer (4 ADDITIVE leaves -- per directive, all carry full precision
+# even though a_dust+g_BH dominate):
+#   g_M104(r,t) = (G*M/r^2)*(1+H(z) t)*(1+f_TRZ) + (G*M_BH/r_BH^2) + a_dust
+#               + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+#
+# Structural distinctions from prior lineage composers (BREAKS many prior
+# patterns -- this composer is structurally NOVEL):
+#   (a) FIRST composer with SEPARATE additive SMBH gravitational leaf at
+#       different scale r_BH != r_galaxy -- prior NGC 1275 included SMBH IN
+#       total M only; here the SMBH contributes BOTH (in total M=10^11+10^9)
+#       AND a separate near-core term at r_BH=1e15 m.
+#   (b) FIRST composer with dust dynamical friction additive leaf.
+#   (c) FIRST composer where Lorentz is NOT dominant -- a_dust=4e-1 (75%) +
+#       g_BH=1.327e-1 (25%) dominate; Lorentz=2.107e-3 is only ~0.4%. All
+#       prior composers had Lorentz dominating >99%.
+#   (d) NO M_evo/M_sf growth factor (older quiescent spiral, NOT starburst).
+#   (e) NO F_sn/F_BH/M_merge suppression factor (no active feedback term
+#       in spec -- saturating primitive NOT used in this composer, breaking
+#       the 5-consecutive-use streak Antennae->Horsehead->NGC 1275->HUDF->NGC 1792).
+#   (f) 4 ADDITIVE leaves (vs prior 2-3) -- structurally most complex composer
+#       this lineage so far.
+#   (g) z=0.0063 nearest cosmological z in lineage (Horsehead z=0.0003 is
+#       smaller but Horsehead is local nebula not extragalactic).
+#   (h) t=10 Gyr default (galaxy age, LONGEST integration time in lineage --
+#       vs prior composers 100 Myr to 13 Gyr range, here matches HUDF 13 Gyr
+#       order but Sombrero is at z=0.0063 not z=3).
+
+# NEW PRIMITIVE: dynamical friction acceleration
+# Spec formula: a_dust = (rho_drag * v_orbit^2 / rho_medium) * macro_scale
+# Derivation per spec: D_dust = rho_dust * v_orbit^2  [N/m^2 drag pressure]
+#                      a_dust = D_dust / rho_ISM      [m^2/s^2 / kg/m^3 wrong dim,
+#                                                      but spec uses literal ratio]
+#                      a_dust *= macro_scale=1e-12    [UQFF macroscopic scaling]
+# UQFF convention (NOT SI-pure m/s^2): wired LITERALLY per fidelity directive
+# matching spec's explicit closed form. Distinct from radiation pressure
+# (which uses energy flux L/(4 pi r^2 c)) and from magnetic tension (which
+# uses energy density B^2/(2 mu_0)*V/M). This is a kinetic-pressure / drag
+# shape: drag pressure rho*v^2 divided by medium density.
+def _dynamical_friction_acceleration_uqff(rho_drag_kgm3: float,
+                                            v_orbit_ms: float,
+                                            rho_medium_kgm3: float,
+                                            macro_scale: float = 1.0e-12) -> float:
+    """Dynamical-friction acceleration on orbiting material in a dense medium.
+
+    Spec literal closed form (UQFF convention, NOT SI-pure m/s^2):
+      a_dust = (rho_drag * v_orbit^2 / rho_medium) * macro_scale
+
+    Dimensionally a drag-pressure (rho*v^2 [Pa]) divided by medium density
+    (rho [kg/m^3]) yields m^2/s^2 NOT m/s^2 in pure SI; UQFF macro_scale=1e-12
+    converts to the framework's macroscopic acceleration scale per spec
+    directive. Wired LITERALLY per fidelity rule.
+
+    Distinct from _radiation_pressure_acceleration_uqff (energy flux shape),
+    distinct from _magnetic_tension_acceleration_uqff (B-energy density shape),
+    distinct from _lorentz_acceleration_uqff (q*v*B/m shape).
+    """
+    if rho_medium_kgm3 <= 0.0:
+        return 0.0
+    return (rho_drag_kgm3 * v_orbit_ms * v_orbit_ms / rho_medium_kgm3) * macro_scale
+
+M_SOMBRERO_KG           = 1.0e11 * M_SUN                     # 10^11 M_sun (galaxy total stars+gas+DM)
+M_BH_SOMBRERO_KG        = 1.0e9 * M_SUN                      # 10^9 M_sun central SMBH
+M_TOTAL_SOMBRERO_KG     = M_SOMBRERO_KG + M_BH_SOMBRERO_KG   # 1.01e11 M_sun total
+R_SOMBRERO_M            = 2.36e20                            # half 50 kly diameter
+R_BH_SOMBRERO_M         = 1.0e15                             # ~0.1 pc SMBH influence scale
+RHO_DUST_SOMBRERO       = 1.0e-20                            # kg/m^3 dust lane density
+RHO_ISM_SOMBRERO        = 1.0e-21                            # kg/m^3 ISM (denominator)
+V_ORBIT_SOMBRERO_MS     = 2.0e5                              # 2e5 m/s star/gas orbital velocity
+Z_SOMBRERO              = 0.0063                             # z from 28 Mly distance
+H0_SOMBRERO_KMSMPC      = 70.0
+B_SOMBRERO_T            = 1.0e-5                             # 10^-5 T galactic ISM field
+T_SOMBRERO_DEFAULT_S    = 10.0e9 * _YEAR_S_MAGNETAR          # spec example t=10 Gyr galaxy age
+
+def _sombrero_g_master_uqff(r_m: float = R_SOMBRERO_M,
+                              t_s: float = T_SOMBRERO_DEFAULT_S,
+                              M_total_kg: float = M_TOTAL_SOMBRERO_KG,
+                              M_BH_kg: float = M_BH_SOMBRERO_KG,
+                              r_BH_m: float = R_BH_SOMBRERO_M,
+                              rho_dust: float = RHO_DUST_SOMBRERO,
+                              rho_medium: float = RHO_ISM_SOMBRERO,
+                              v_orbit_ms: float = V_ORBIT_SOMBRERO_MS,
+                              z_obs: float = Z_SOMBRERO,
+                              H0_kmsMpc: float = H0_SOMBRERO_KMSMPC,
+                              f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                              B_T: float = B_SOMBRERO_T,
+                              v_lorentz_ms: float = V_ORBIT_SOMBRERO_MS,
+                              q_C: float = EV_J,
+                              m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                              rho_UA_val: float = None,
+                              rho_SCm_val: float = None,
+                              macro_scale: float = MACROSCOPIC_SCALE_LORENTZ,
+                              macro_scale_dust: float = 1.0e-12) -> float:
+    """Sombrero Galaxy M104 master g (spec 09May2025).
+
+    g_M104(r,t) = (G*M/r^2)*(1+H(z) t)*(1+f_TRZ) + (G*M_BH/r_BH^2) + a_dust
+                + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    Defaults reproduce spec example 5.351e-1 m/s^2 at t=10 Gyr (galaxy age):
+    M=1.01e11 M_sun total (10^11 stars+gas+DM + 10^9 SMBH), r=2.36e20 m
+    (half 50 kly), M_BH=10^9 M_sun, r_BH=1e15 m (~0.1 pc), rho_dust=10^-20,
+    rho_ISM=10^-21, v_orbit=2e5 m/s, z=0.0063 (28 Mly), B=10^-5 T.
+
+    Decomposition at t=10 Gyr per directive (ALL leaves full precision --
+    FIRST composer where Lorentz is NOT dominant):
+      Ug1_galaxy = G*M_total/r^2 = 2.408e-10
+      H(z=0.0063)*t = 2.274e-18 * 3.156e17 = 0.7178  (1+H t=1.7178)
+      grav_galaxy*(1+H t)*(1+f_TRZ) = 4.552e-10  (carried per directive)
+      g_BH = G*M_BH/r_BH^2 = 1.327e-1  (25% contribution -- DOMINANT)
+      a_dust = (rho_dust*v_orbit^2/rho_ISM)*1e-12 = 4e-1  (75% -- MOST DOMINANT)
+      Lorentz q*v*B/m_p*11*1e-12 = 2.107e-3  (NEW 6th family v*B=2,
+        only ~0.4% -- breaks Lorentz-dominance pattern of all prior composers)
+      Total ~ 5.351e-1 m/s^2
+    """
+    Ug1_galaxy = G_NEWTON * M_total_kg / max(r_m * r_m, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_obs, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M
+    grav_galaxy = Ug1_galaxy * (1.0 + H_z_si * t_s) * (1.0 + f_TRZ)
+    g_BH = G_NEWTON * M_BH_kg / max(r_BH_m * r_BH_m, 1e-300)
+    a_dust = _dynamical_friction_acceleration_uqff(rho_drag_kgm3=rho_dust,
+                                                     v_orbit_ms=v_orbit_ms,
+                                                     rho_medium_kgm3=rho_medium,
+                                                     macro_scale=macro_scale_dust)
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_lorentz_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_galaxy + g_BH + a_dust + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
