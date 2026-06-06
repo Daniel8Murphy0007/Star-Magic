@@ -32868,6 +32868,40 @@ def _u_g3_stellar_planetary(P_core: float = P_CORE_SUN,
     Planet:        P_core=1e-3 -> 1.8e46 J/m^3 (spec match eq 14)."""
     return k_3 * B_j_sum * math.cos(omega_s * t * math.pi) * P_core * E_react
 
+# ===== Quantum-variable bundle 7 (S, T_smunu, M_s, omega_s, B_s) =====
+# Already captured:
+#   M_s     -> M_SUN = 1.989e30 kg (L2025)
+#   T_smunu -> default 1.123e7 J/m^3 in _aether_metric_a_munu (bundle 1)
+# Functional only (param defaults without named constants):
+#   omega_s -> defaults in _u_g3_string_magnetism_uqff, _u_g3_stellar_planetary
+#   S       -> inline Heaviside in _u_g2_heliosphere_uqff (bundle 3)
+# Missing derivation:
+#   B_j proportional to B_s (Surface Magnetic Field doc eq 16/17): at B_s=0.4 T
+#   the framework uses B_j=1e3 T (eq 14), implying linear coefficient
+#   B_J_PER_B_S = 1e3 / 0.4 = 2500.0 T/T.
+T_SMUNU_DIAGONAL = 1.123e7             # Stress-energy tensor diagonal (J/m^3)
+OMEGA_S_SUN      = 2.5e-6              # Sun stellar rotation rate (rad/s, ~29-day period)
+B_S_MIN_SUN      = 1.0e-4              # Sun surface magnetic field lower bound (T)
+B_S_MAX_SUN      = 0.4                 # Sun surface magnetic field upper bound (T)
+B_J_PER_B_S      = 2500.0              # Linear scale B_j(B_s); 1e3 T at B_s=0.4 T (eq 16)
+
+def _step_function(r: float, R_b: float = R_B_FIELD_BUBBLE) -> float:
+    """Heaviside step bounding the outer field bubble (Step Function doc eq 2):
+        S(r - R_b) = 1 if r > R_b else 0
+    Spec convention at r==R_b returns 1 (eq 2 footnote: 'assuming framework definition').
+    Default R_b = 100 AU = 1.496e13 m (heliopause-class boundary)."""
+    return 1.0 if r >= R_b else 0.0
+
+def _b_j_from_surface_field(B_s: float = B_S_MAX_SUN,
+                              coefficient: float = B_J_PER_B_S) -> float:
+    """Magnetic-string field B_j as linear function of surface field B_s
+    (Surface Magnetic Field doc eq 16/17):
+        B_j = coefficient * B_s
+    Calibrated such that B_s = 0.4 T -> B_j = 1e3 T (eq 16 -> U_g3 ~ 1.8e49 J/m^3),
+    and B_s = 1e-4 T -> B_j = 0.25 T (eq 17 -> U_g3 ~ 4.5e45 J/m^3).
+    Returns B_j in Tesla."""
+    return coefficient * B_s
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
