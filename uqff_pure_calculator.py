@@ -33035,6 +33035,85 @@ def _oscilloscope_power_rms_W(V_eff_V: float,
     Complement to _oscilloscope_power_W (peak); both exist as closed-form leaves."""
     return (V_eff_V * V_eff_V) / Z_ohm
 
+# ----- Q-scope cycle / envelope / stability algorithms (closed-form analytics) -----
+# Operate on the q-scope CSV columns (t_seconds_relative, flow_state, ch1/ch2 shape,
+# V_ch1_peak_V, V_ch2_peak_V, batch). Inputs are pure arrays so callers can pass
+# any subset; outputs are deterministic numerics. Not observational data — these
+# are derivations (period, envelope, stability index) over the time series.
+
+def _qscope_event_times_s(t_array, label_array, marker: str):
+    """Times at which label_array[i] == marker. Lengths must match.
+        labels = ['a','b','M','c','M']; t = [0,1,2,3,4]; marker='M' -> [2.0, 4.0]."""
+    if len(t_array) != len(label_array):
+        raise ValueError("t_array and label_array must be same length")
+    return [float(t_array[i]) for i in range(len(t_array))
+            if label_array[i] == marker]
+
+def _qscope_mean_period_s(event_times) -> float:
+    """Mean inter-event spacing in seconds.
+        events = [68, 190, 320, 450, 580] -> diffs [122,130,130,130], mean = 128.0.
+    Returns 0.0 if fewer than 2 events (no period defined)."""
+    if len(event_times) < 2:
+        return 0.0
+    diffs = [event_times[i+1] - event_times[i] for i in range(len(event_times)-1)]
+    return math.fsum(diffs) / len(diffs)
+
+def _qscope_batch_envelope(v_array, batch_array) -> Dict[int, Dict[str, float]]:
+    """Per-batch envelope statistics: {batch_id: {max,min,mean,pp_range,n}}.
+        Aggregates a voltage column by batch id (population mean)."""
+    if len(v_array) != len(batch_array):
+        raise ValueError("v_array and batch_array must be same length")
+    grouped: Dict[int, List[float]] = {}
+    for v, b in zip(v_array, batch_array):
+        grouped.setdefault(int(b), []).append(float(v))
+    out: Dict[int, Dict[str, float]] = {}
+    for b, vs in grouped.items():
+        vmax = max(vs); vmin = min(vs); n = len(vs)
+        vmean = math.fsum(vs) / n
+        out[b] = {"max": vmax, "min": vmin, "mean": vmean,
+                  "pp_range": vmax - vmin, "n": float(n)}
+    return out
+
+def _qscope_stability_index(v_array, batch_array,
+                              reference_batch: int = 1) -> Dict[int, float]:
+    """Per-batch stability index: std(batch_b) / std(batch_ref).
+    Population std; ratio < 1 indicates flow stabilizing vs reference batch.
+        batch1 std ~ 0.0673, batch2 std ~ 0.0522 -> stability[2] ~ 0.776."""
+    if len(v_array) != len(batch_array):
+        raise ValueError("v_array and batch_array must be same length")
+    grouped: Dict[int, List[float]] = {}
+    for v, b in zip(v_array, batch_array):
+        grouped.setdefault(int(b), []).append(float(v))
+    def _pop_std(xs: List[float]) -> float:
+        n = len(xs)
+        if n == 0:
+            return 0.0
+        mu = math.fsum(xs) / n
+        var = math.fsum((x - mu) * (x - mu) for x in xs) / n
+        return math.sqrt(var)
+    ref_std = _pop_std(grouped.get(reference_batch, []))
+    if ref_std == 0.0:
+        return {b: 0.0 for b in grouped}
+    return {b: _pop_std(vs) / ref_std for b, vs in grouped.items()}
+
+def _qscope_cycle_summary(t_array, flow_state_array) -> Dict[str, Any]:
+    """Composite cycle summary from flow_state column over the q-scope time series.
+    Locates 'full_reversal_cycle' and 'reversal_cycle_complete' markers; returns
+    counts and mean inter-event periods for each.
+        50-row CSV at HEAD: full_reversal_cycle x 5 (t=68,190,320,450,580) mean
+        period 128.0 s; reversal_cycle_complete x 5 (t=124,242,372,502,632) mean
+        period 127.0 s."""
+    frc = _qscope_event_times_s(t_array, flow_state_array, "full_reversal_cycle")
+    rcc = _qscope_event_times_s(t_array, flow_state_array, "reversal_cycle_complete")
+    return {
+        "full_reversal_cycle_count":          len(frc),
+        "full_reversal_cycle_times_s":        frc,
+        "full_reversal_cycle_mean_period_s":  _qscope_mean_period_s(frc),
+        "reversal_cycle_complete_count":          len(rcc),
+        "reversal_cycle_complete_times_s":        rcc,
+        "reversal_cycle_complete_mean_period_s":  _qscope_mean_period_s(rcc),
+    }
+
 def _u_g2_heliosphere_uqff(k_2: float = 1.2,
                              rho_UA_val: float = None,
                              rho_SCm_val: float = None,
