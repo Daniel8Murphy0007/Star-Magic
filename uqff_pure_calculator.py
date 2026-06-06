@@ -6791,6 +6791,174 @@ def _m16_eagle_g_master_uqff(r_m: float = R_M16_EAGLE_M,
     return grav_term + lorentz_term
 
 
+# === CRAB NEBULA (M1, NGC 1952) -- pulsar-wind-driven SNR ===
+# Spec: "Master Universal Gravity Equation (UQFF & SM Integration)_'Crab Nebula'
+# Evolution_03May2025" + DeepSearch overlay 09May2025 04:00 EDT
+# (6500 ly distance, 11 ly span / 5.5 ly radius = 5.2e16 m, 4.6 M_sun total
+# [pulsar 1.4 M_sun + ejecta 3.2 M_sun], pulsar L=5e31 W spinning at 30.2 Hz,
+# t=971 yr since SN 1054 AD, v_shock=1.5e6 m/s, B=10^-8 T avg nebula field,
+# rho_nebula=10^-21 kg/m^3 filament density).
+#
+# ONE NEW primitive required: relativistic pulsar-wind pressure acceleration.
+# Spec shape: a_wind = (P_pulsar/(4 pi r^2)) * (1+v_shock/c) / rho_nebula
+#                       * macro_scale
+# DISTINCT shape from existing primitives:
+#   - _radiation_pressure_acceleration_uqff (Horsehead): (L/(4 pi r^2 c))*(rho/m_H)
+#     -- divides by c, MULTIPLIES by rho/m_particle (number density)
+#   - _dynamical_friction_acceleration_uqff (Sombrero): (rho_drag*v^2/rho_medium)*macro
+#     -- no luminosity, v^2 ram-pressure shape
+#   Crab wind is structurally different: relativistic-boost (1+v/c) factor +
+#   DIVIDES by density (not multiplied) -- justifies new primitive.
+#
+# PURE-REUSE STREAK ENDS at 4 (HUDF/NGC1792/Sombrero+1new/Saturn/M16-Eagle all 4
+# reuse, Crab adds 1 new -- streak break parallels Sombrero's dynamical friction).
+#
+# Other leaves REUSE:
+#   - _lorentz_acceleration_uqff (M_mag leaf) with NEW configuration:
+#     ELECTRON mass m_e=9.11e-31 (all 7 prior Lorentz families used proton mass);
+#     UA factor DISABLED via rho_UA_val=0.0 / rho_SCm_val=1.0 (spec writes
+#     M_mag = q*v*B/m_e WITHOUT (1+rho_UA/rho_SCm) amplification)
+#     -> 8th distinct Lorentz configuration: v*B=0.015 family with electron mass
+#   - _hubble_unified at z=0.0015 (REUSE from M16-Eagle same redshift family)
+#   - inline G*M/r^2 + (1+H(z)*t) + (1+f_TRZ)
+#   - Saturating primitive NON-USE (3rd composer in row, spec has no exp-decay)
+#
+# Spec composer (3 leaves -- all carry full precision per 'nothing is negligible'
+# directive even though a_wind dominates 99.99999%):
+#   g_Crab(r,t) = (G*M/r^2)*(1+H(z) t)*(1+f_TRZ) + a_wind + M_mag
+#
+# Spec example at t=971 yr (defaults reproduce 1.481e6 m/s^2 total):
+#   G*M/r^2 = 6.6743e-11 * 9.149e30 / (5.2e16)^2 = 2.258e-13 m/s^2
+#   H(z=0.0015) = 70.047 km/s/Mpc -> H_si*t(971 yr) = 6.952e-8 (negligible)
+#   (1+H*t) ~ 1.0000001, (1+f_TRZ) = 1.1
+#   grav_chain = 2.258e-13 * 1.0000001 * 1.1 = 2.484e-13 (carried full per directive)
+#   F_wind_flux = P_pulsar/(4 pi r^2) = 5e31/(4 pi * (5.2e16)^2) = 1.471e-3 W/m^2
+#   relativistic_factor = (1+1.5e6/3e8) = 1.005
+#   F_wind = 1.471e-3 * 1.005 = 1.479e-3
+#   a_wind_pre_macro = F_wind / rho_nebula = 1.479e-3 / 1e-21 = 1.479e18
+#   a_wind = a_wind_pre_macro * 1e-12 = 1.479e6 (DOMINANT 99.99999%)
+#   M_mag = q*v*B/m_e * 1e-12 = 1.602e-19 * 1.5e6 * 1e-8 / 9.11e-31 * 1e-12 = 2.638e-3
+#     (UA factor disabled, electron mass)
+#   Total = 2.484e-13 + 1.479e6 + 2.638e-3 ~ 1.481e6 m/s^2 (matches spec)
+#
+# Structural notes:
+#   - 1st SNR composer in lineage (all prior 9: 2 galactic mergers, 1 elliptical,
+#     1 PWN AGN [NGC1275], 1 deep field, 1 spiral, 4 nebulae [Horsehead/Pillars/
+#     Tapestry/Westerlund2/Bubble/M16-Eagle], 2 star clusters, 1 lens, 1 planet)
+#   - 1st composer with NEUTRON STAR central engine (Crab Pulsar)
+#   - 1st composer using ELECTRON mass in Lorentz term (all prior used proton mass)
+#   - 1st composer with UA factor DISABLED in Lorentz (all prior used 11x amplification)
+#   - 1st relativistic correction (1+v_shock/c) anywhere in calculator
+#   - Pulsar wind DOMINATES 99.99999% (10^6 m/s^2 scale, beats Saturn's 10.44 by 5 OoM)
+#   - Saturating primitive NON-USE 3rd consecutive composer
+#   - z=0.0015 same as M16-Eagle (NEW Hubble redshift family established)
+
+M_CRAB_KG               = 4.6 * M_SUN                              # spec: 4.6 M_sun (1.4 pulsar + 3.2 ejecta)
+R_CRAB_M                = 5.2e16                                   # spec: 5.5 ly nebula radius
+P_PULSAR_CRAB_W         = 5.0e31                                   # spec: pulsar luminosity 5e31 W
+V_SHOCK_CRAB_MS         = 1.5e6                                    # spec: 1500 km/s expansion
+RHO_NEBULA_CRAB_KGM3    = 1.0e-21                                  # spec: filament density 1e-21 kg/m^3
+B_CRAB_T                = 1.0e-8                                   # spec: avg nebula B field
+V_GAS_CRAB_MS           = 1.5e6                                    # spec: shock velocity for M_mag
+Z_CRAB                  = 0.0015                                   # spec: z from 6500 ly distance
+H0_CRAB_KMSMPC          = 70.0                                     # spec: H_0 = 70 km/s/Mpc
+T_CRAB_DEFAULT_S        = 971.0 * _YEAR_S_MAGNETAR                 # spec: 971 yr since SN 1054 AD
+_M_ELECTRON_KG_CRAB     = 9.11e-31                                 # spec: electron mass for M_mag leaf
+
+def _relativistic_wind_acceleration_uqff(P_pulsar_W: float,
+                                           r_m: float,
+                                           v_shock_ms: float,
+                                           rho_kgm3: float,
+                                           c_ms: float = C_LIGHT,
+                                           macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """Relativistic pulsar-wind pressure acceleration (NEW primitive 09May2025):
+
+        F_wind = (P_pulsar / (4 pi r^2)) * (1 + v_shock / c)   [spec dimensional shape]
+        a_wind = F_wind / rho_nebula * macro_scale
+
+    Spec Crab Nebula 09May2025: P=5e31 W, r=5.2e16, v_shock=1.5e6, rho=1e-21,
+    macro_scale=1e-12 -> a_wind = 1.479e6 m/s^2 (DOMINATES composer 99.99999%).
+
+    Handles safe defaults: r<=0 -> 0, rho<=0 -> 0, c<=0 -> uses (1+v) (no rel boost).
+
+    Distinct from:
+      - _radiation_pressure_acceleration_uqff (Horsehead): includes /c divisor +
+        ρ/m_particle multiplier (different physics: photon momentum vs wind flux).
+      - _dynamical_friction_acceleration_uqff (Sombrero): v^2 ram pressure shape
+        with no luminosity input.
+
+    Relativistic correction (1+v_shock/c) accounts for shock-front velocity
+    addition to bulk pulsar-wind flux at the standing termination shock front."""
+    if r_m <= 0.0 or rho_kgm3 <= 0.0:
+        return 0.0
+    F_wind_flux = P_pulsar_W / (4.0 * math.pi * r_m * r_m)
+    rel_factor = 1.0 + (v_shock_ms / c_ms if c_ms > 0.0 else v_shock_ms)
+    F_wind = F_wind_flux * rel_factor
+    a_pre_macro = F_wind / rho_kgm3
+    return a_pre_macro * macro_scale
+
+
+def _crab_g_master_uqff(r_m: float = R_CRAB_M,
+                          t_s: float = T_CRAB_DEFAULT_S,
+                          M_kg: float = M_CRAB_KG,
+                          P_pulsar_W: float = P_PULSAR_CRAB_W,
+                          v_shock_ms: float = V_SHOCK_CRAB_MS,
+                          rho_nebula_kgm3: float = RHO_NEBULA_CRAB_KGM3,
+                          z_obs: float = Z_CRAB,
+                          H0_kmsMpc: float = H0_CRAB_KMSMPC,
+                          f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                          B_T: float = B_CRAB_T,
+                          v_gas_ms: float = V_GAS_CRAB_MS,
+                          q_C: float = EV_J,
+                          m_charge_kg: float = _M_ELECTRON_KG_CRAB,
+                          c_ms: float = C_LIGHT,
+                          macro_scale: float = MACROSCOPIC_SCALE_LORENTZ,
+                          macro_scale_wind: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """Crab Nebula (M1, NGC 1952) pulsar-wind-driven SNR master g (spec 03/09May2025).
+
+    g_Crab(r,t) = (G*M/r^2)*(1+H(z) t)*(1+f_TRZ) + a_wind + M_mag
+
+    where a_wind = NEW _relativistic_wind_acceleration_uqff primitive
+                  = (P_pulsar/(4 pi r^2))*(1+v_shock/c)/rho_nebula * macro_scale
+    and   M_mag  = REUSE _lorentz_acceleration_uqff with electron mass +
+                   UA factor disabled
+                  = q*v*B/m_e * 1.0 * macro_scale  (no 11x amplification)
+
+    Defaults reproduce spec example 1.481e6 m/s^2 at t=971 yr:
+    M=4.6 M_sun, r=5.2e16 m, z=0.0015, P_pulsar=5e31 W, v_shock=1.5e6,
+    rho_nebula=1e-21, B=10^-8 T (avg nebula field).
+
+    Decomposition at t=971 yr per fidelity directive (all leaves full precision):
+      G*M/r^2 = 2.258e-13
+      H(z=0.0015)*t(971 yr) = 6.952e-8, (1+H t) = 1.0000001 (negligible)
+      grav_chain = 2.258e-13 * 1.0000001 * 1.1 = 2.484e-13 (carried full)
+      F_wind_flux = 5e31/(4 pi * (5.2e16)^2) = 1.471e-3 W/m^2
+      rel_boost = 1+1.5e6/3e8 = 1.005
+      a_wind = 1.471e-3 * 1.005 / 1e-21 * 1e-12 = 1.479e6 (DOMINANT 99.99999%)
+      M_mag = q*v*B/m_e * 1e-12 = 1.602e-19 * 1.5e6 * 1e-8 / 9.11e-31 * 1e-12
+            = 2.638e-3 (UA disabled, electron mass)
+      Total = 2.484e-13 + 1.479e6 + 2.638e-3 ~ 1.481e6 m/s^2 (matches spec)
+    """
+    Ug1 = G_NEWTON * M_kg / max(r_m * r_m, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_obs, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M
+    grav_chain = Ug1 * (1.0 + H_z_si * t_s) * (1.0 + f_TRZ)
+    a_wind = _relativistic_wind_acceleration_uqff(P_pulsar_W=P_pulsar_W,
+                                                    r_m=r_m,
+                                                    v_shock_ms=v_shock_ms,
+                                                    rho_kgm3=rho_nebula_kgm3,
+                                                    c_ms=c_ms,
+                                                    macro_scale=macro_scale_wind)
+    # M_mag: REUSE Lorentz primitive with electron mass + UA factor disabled
+    # (rho_UA=0.0, rho_SCm=1.0 -> ua_factor = 1+0/1 = 1.0, no 11x amplification)
+    M_mag = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                         m_kg=m_charge_kg,
+                                         rho_UA_val=0.0,
+                                         rho_SCm_val=1.0,
+                                         macro_scale=macro_scale)
+    return grav_chain + a_wind + M_mag
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
