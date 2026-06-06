@@ -4286,6 +4286,127 @@ def _l95_l_uqff_master_sum(L_GR: float = 0.0, L_SCm: float = 0.0,
             "L_interaction": L_interaction, "L_sectors_sum": L_sectors,
             "L_UQFF_total": L_total, "n_sectors": len(sector_contribs)}
 
+# ---- SM vs UQFF mathematical disproof comparator (PAPER_1167 vs Standard Model) ----
+# Restores the comparator deleted with the redundant L96 capture in b103ed15.
+# Distinct from _master_lagrangian: this is an audit lens, not a duplicate of the
+# Lagrangian. Three layers: SM term table, term-by-term overlap, 5 claim disproofs.
+def _l95_sm_lagrangian_term_table() -> Dict[str, Dict[str, str]]:
+    """Standard Model Lagrangian terms in canonical form (no UQFF substitution).
+    L_SM = L_gauge + L_fermion + L_Higgs + L_Yukawa, with GR added separately
+    via Einstein-Hilbert S_GR = (1/16 pi G) int R sqrt(-g) d4x. Each entry maps
+    the SM term to its closest PAPER_1167 analog (or 'no analog' if structurally
+    absent in SM)."""
+    return {
+        "L_gauge_em":       {"sm": "-1/4 F_munu F^munu (U(1)_em)",
+                              "uqff_analog": "T2 = -1/4 F^DPM_munu F^DPM_munu (PAPER_1167)",
+                              "match": "structural (gauge kinetic), gauge group differs U(1) vs DPM"},
+        "L_gauge_weak":     {"sm": "-1/4 W^a_munu W^a_munu (SU(2)_L)",
+                              "uqff_analog": "absorbed into T2 F^DPM gauge sector",
+                              "match": "no separate UQFF SU(2)_L term"},
+        "L_gauge_strong":   {"sm": "-1/4 G^a_munu G^a_munu (SU(3)_c QCD)",
+                              "uqff_analog": "absorbed into T2 F^DPM gauge sector",
+                              "match": "no separate UQFF SU(3)_c term; quarks not generated from SCm/UA"},
+        "L_fermion":        {"sm": "bar(psi) i gamma^mu D_mu psi (Dirac kinetic + minimal coupling)",
+                              "uqff_analog": "NONE (no spin-1/2 Dirac field in PAPER_1167)",
+                              "match": "no analog"},
+        "L_Higgs_kinetic":  {"sm": "(D_mu Phi)^dagger (D^mu Phi)",
+                              "uqff_analog": "T5 = -1/2 g^munu d_mu UA d_nu UA (scalar kinetic for UA)",
+                              "match": "structural (scalar kinetic), gauge-covariant in SM, free scalar in UQFF"},
+        "L_Higgs_potential":{"sm": "-V(Phi) = -[mu^2 Phi^dagger Phi + lambda (Phi^dagger Phi)^2]",
+                              "uqff_analog": "T6 = -(25/12) rho_SCm [(UA/v_UA)^2 - 1]^2 (Mexican-hat)",
+                              "match": "structural (Mexican-hat), distinct VEV mechanism and coefficient"},
+        "L_Yukawa":         {"sm": "-y_f bar(psi_L) Phi psi_R + h.c.  =>  m_f = y_f v/sqrt(2)",
+                              "uqff_analog": "NONE (no Yukawa coupling; mass via F_U=1 closure instead)",
+                              "match": "no analog"},
+        "L_GR_separate":    {"sm": "S_GR = (1/16 pi G) int R sqrt(-g) d4x  (Einstein-Hilbert, 4D)",
+                              "uqff_analog": "T1 = R_26 / (2 kappa_E) (26D curvature, integrated in)",
+                              "match": "structural (curvature/2kappa), 4D vs 26D and gravity unified with rest of UQFF"},
+        "uqff_only_T3":     {"sm": "NONE",
+                              "uqff_analog": "T3 = sum_{i=1..4} [3(5-i)/20] U_g,i U_b,i (buoyancy interaction)",
+                              "match": "no SM analog (buoyancy ladder beta_i=3(5-i)/20, sum=3/2)"},
+        "uqff_only_T4":     {"sm": "NONE",
+                              "uqff_analog": "T4 = -1/2 |U_m|^2 (inertial operator self-energy)",
+                              "match": "no SM analog (1.25-1.3 THz inertial scalar)"},
+    }
+
+
+def _l95_paper1167_vs_sm_audit(R_26: float = 1.0,
+                                F_DPM_sq: float = 1.0,
+                                U_g: List[float] = None,
+                                U_b: List[float] = None,
+                                U_m_abs: float = 1.0,
+                                U_A: float = 1.0,
+                                v_UA: float = 1.0) -> Dict[str, Any]:
+    """Term-by-term audit: PAPER_1167 closed L_FU vs Standard Model Lagrangian.
+    Evaluates both sides on unit-input probe and reports which UQFF terms have
+    SM analogs (structural match) vs which are UQFF-only (structural absence).
+    Returns {paper1167_terms, sm_terms, overlaps, uqff_only, sm_only, verdict}.
+    """
+    fu = _master_lagrangian(R_26=R_26, F_DPM_sq=F_DPM_sq, U_g=U_g, U_b=U_b,
+                             U_m_abs=U_m_abs, U_A=U_A, v_UA=v_UA)
+    table = _l95_sm_lagrangian_term_table()
+    overlaps  = [k for k, v in table.items() if v["match"].startswith("structural")]
+    uqff_only = [k for k, v in table.items() if k.startswith("uqff_only_")]
+    sm_only   = [k for k, v in table.items() if v["match"] == "no analog"]
+    return {
+        "paper1167_terms": {k: fu[k] for k in
+                            ("T1_R26_over_2kappaE", "T2_DPM_gauge_neg_quarter",
+                             "T3_interaction_sum", "T4_Um_self_energy",
+                             "T5_UA_kinetic", "T6_UA_mexican_hat", "L_FU_total",
+                             "beta_i_ladder", "beta_sum", "F_TRZ")},
+        "sm_terms":        table,
+        "overlaps":        overlaps,
+        "uqff_only":       uqff_only,
+        "sm_only":         sm_only,
+        "n_overlap":       len(overlaps),
+        "n_uqff_only":     len(uqff_only),
+        "n_sm_only":       len(sm_only),
+        "verdict":         ("PAPER_1167 introduces UQFF-only terms (T3, T4) and "
+                            "extends T1 to 26D; SM requires L_fermion + L_Yukawa "
+                            "which have no PAPER_1167 analog. Frameworks are "
+                            "structurally distinct but PAPER_1167 is internally "
+                            "closed (all exact rationals of D_crit=26, D_phys=4)."),
+    }
+
+
+def _l95_sm_uqff_claim_disproof() -> Dict[str, Dict[str, str]]:
+    """Five specific UQFF claims vs canonical Standard Model equation for the
+    same phenomenon. Each entry: claim, sm_equation, uqff_mechanism, structural
+    verdict. Used to answer 'SM mathematical disproof of UQFF' line-by-line."""
+    return {
+        "mass_origin": {
+            "uqff_claim":   "Mass occurs where two F_U forces meet at F_U=1 (belly-button umbilicus, Ug2 shells project location)",
+            "sm_equation":  "m_f = y_f v/sqrt(2), v ~ 246 GeV; macroscopic via T_munu source in G_munu + Lambda g_munu = (8 pi G / c^4) T_munu",
+            "uqff_mechanism": "F_UBi + F_UBi,i = F_U with F_U=1 stationarity (PAPER_1096) + Ug2 = Ug1*[SSq] shell projection",
+            "verdict":      "no structural overlap; SM mass = Yukawa+VEV, UQFF mass = buoyancy crossing at F_U=1",
+        },
+        "electron_orbits": {
+            "uqff_claim":   "Ug2 shells/orbits/heliospheres explain electron orbits",
+            "sm_equation":  "Schrodinger: -hbar^2/(2 m_e) nabla^2 psi - e^2/(4 pi epsilon_0 r) psi = E psi; |psi_nlm|^2 -> shells",
+            "uqff_mechanism": "buoyancy crossing equilibrium r_s where F_Bi = F_Bi,i defines shell radius (atomic + stellar)",
+            "verdict":      "SM uses Coulomb+quantum kinetic; UQFF claims same shells emerge from buoyancy equilibrium - empirical overlap only at hydrogen 1s scale",
+        },
+        "quarks_from_plasma": {
+            "uqff_claim":   "Plasma yields quarks/elemental blocks via SCm/UA reactions in 26-shell field",
+            "sm_equation":  "L_QCD = -1/4 G^a_munu G^a_munu + sum_f bar(q_f)(i gamma^mu D_mu - m_f) q_f; quarks are fundamental input fields",
+            "uqff_mechanism": "26D R_26 curvature + rho_SCm Mexican-hat condensation; not derived from QCD",
+            "verdict":      "no SM analog; QCD treats quarks as elementary, UQFF claims emergent - mathematically orthogonal",
+        },
+        "antiparticles_from_aether": {
+            "uqff_claim":   "Anti-particles are drawn from the Aether",
+            "sm_equation":  "gamma -> e+ + e- (E >= 2 m_e c^2); Dirac negative-energy solutions / creation-annihilation operators",
+            "uqff_mechanism": "DPM pair production at twin-birth 180-degree superposition position on shell r_s",
+            "verdict":      "no Aether term in SM; UQFF re-labels the Dirac sea as DPM/Aether - same observables, different ontology",
+        },
+        "gravity_weak_strong_unification": {
+            "uqff_claim":   "Weak+strong+gravity integrated in every system equation; gravity is local weak F_U=1 effect",
+            "sm_equation":  "L_SM has NO gravity term; GR added separately via S_GR = (1/16 pi G) int R sqrt(-g) d4x; weak/strong via SU(2)xSU(3)",
+            "uqff_mechanism": "PAPER_1167 T1 + T2 + T3 + T4 + T5 + T6 unified in single L_FU; gravity = local F_U=1 stationarity",
+            "verdict":      "SM non-unification is a known incompleteness; UQFF claims unification but at cost of new terms (T3, T4, R_26) absent in SM",
+        },
+    }
+
+
 def _l95_fubi_closure_identity(F_UBi: float = 1.0, F_UBi_i: float = 1.0,
                                  F_U: float = 2.0) -> Dict[str, Any]:
     """Inside/outside closure: F_UBi + F_UBi,i == F_U (PAPER_1096)."""
@@ -30229,6 +30350,15 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
         "l_uqff_master_sum":    ("L_UQFF_master_sum_PAPER_1066", _l95_l_uqff_master_sum,
                                   ["L_GR", "L_SCm", "L_phonon", "L_interaction",
                                    "sector_contribs"]),
+        # SM-vs-UQFF mathematical disproof comparator (PAPER_1167 audit, 2026-06-06)
+        "sm_lagrangian_table":  ("SM_Lagrangian_term_table",
+                                  _l95_sm_lagrangian_term_table, []),
+        "paper1167_vs_sm":      ("PAPER_1167_vs_SM_audit",
+                                  _l95_paper1167_vs_sm_audit,
+                                  ["R_26", "F_DPM_sq", "U_g", "U_b", "U_m_abs",
+                                   "U_A", "v_UA"]),
+        "sm_uqff_claim_disproof": ("SM_vs_UQFF_5_claim_disproof",
+                                    _l95_sm_uqff_claim_disproof, []),
         "fubi_closure_identity":("F_UBi_closure_identity", _l95_fubi_closure_identity,
                                   ["F_UBi", "F_UBi_i", "F_U"]),
         "rho_vac_ladder_n":     ("rho_vac_26_level_ladder", _l95_rho_vac_ladder_n, ["n"]),
