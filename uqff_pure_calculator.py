@@ -5368,6 +5368,123 @@ def _pillars_g_master_uqff(r_m: float = R_PILLARS_M,
     return grav_term + Ug_sum_trz + cosm + lorentz_term
 
 
+# === RINGS OF RELATIVITY (GAL-CLUS-022058s "MOLTEN RING") EVOLUTION MASTER g (UQFF) — spec 03/09May2025 ===
+# Spec: "Master Universal Gravity Equation (UQFF & SM Integration)_
+# 'Rings of Relativity' Evolution_03May2025" + Hubble GAL-CLUS-022058s
+# (Fornax, lens z=0.5, source z=2, M_lens ~ 1e14 M_sun, R_E ~ 10 kpc) +
+# Fermilab cluster-lensing simulations.
+#
+# All leaves already primitivized EXCEPT the Einstein-lensing amplitude
+# L(t) = GM/(c^2 * r) * (D_LS / D_S):
+#   - H(z) = H_0*sqrt(Omega_M*(1+z)^3 + Omega_L)  -> _hubble_unified (L6481, REUSE)
+#   - (G*M/r^2), (1-B/B_crit), Ug1..Ug4, (1+f_TRZ), Lambda*c^2/3 -> magnetar v2 chain
+#   - q (v x B) (1 + rho_UA/rho_SCm) * 1e-12      -> _lorentz_acceleration_uqff
+# Spec drops quantum-uncertainty, fluid V*g, oscillatory, DM perturbation,
+# and ram-pressure from the final closed equation as "secondary to local
+# effects". Mass is static (no SF growth, no accretion) for the cluster lens.
+#
+# The existing _l95_wl_kappa_uqff is the weak-lensing CONVERGENCE kappa
+# (different observable, kappa = Sigma/Sigma_crit), NOT the spec's
+# dimensionless deflection-amplitude factor L(t) = GM/(c^2 r) * (D_LS/D_S).
+# Adding _einstein_lensing_factor_uqff for the latter.
+
+_MPC_M = 3.086e22  # m/Mpc (canonical)
+M_LENS_RINGS_KG     = 1.0e14 * M_SUN              # spec: 10^14 M_sun cluster
+R_EINSTEIN_RINGS_M  = 3.086e20                    # spec: 3.086e20 m (~10 kpc Einstein radius)
+B_RINGS_T           = 1.0e-5                      # spec: 10^-5 T cluster magnetic field
+Z_LENS_RINGS        = 0.5                         # spec: lens redshift
+Z_SOURCE_RINGS      = 2.0                         # spec: background source redshift
+H0_RINGS_KMSMPC     = 70.0                        # spec: 70 km/s/Mpc (NOT 67.4)
+V_GAS_RINGS_MS      = 1.0e6                       # spec: 10^6 m/s cluster gas velocity
+T_RINGS_DEFAULT_S   = 5.0e9 * _YEAR_S_MAGNETAR    # spec: t = 5 Gyr since lens formation
+
+def _D_LS_over_D_S_uqff(z_lens: float = Z_LENS_RINGS,
+                         z_source: float = Z_SOURCE_RINGS) -> float:
+    """Angular-diameter-distance ratio D_LS / D_S (spec approximation):
+        D_LS / D_S ~ (1 + z_lens) / (1 + z_source).
+    Spec note: 'refined estimate'. For z_lens=0.5, z_source=2 -> 0.5."""
+    return (1.0 + z_lens) / max(1.0 + z_source, 1e-300)
+
+def _einstein_lensing_factor_uqff(M_lens_kg: float = M_LENS_RINGS_KG,
+                                    r_lens_m: float = R_EINSTEIN_RINGS_M,
+                                    z_lens: float = Z_LENS_RINGS,
+                                    z_source: float = Z_SOURCE_RINGS) -> float:
+    """Einstein-lensing amplitude factor (spec eq):
+        L(t) = (G * M_lens) / (c^2 * r_lens) * (D_LS / D_S).
+    Dimensionless. This is the gravitational-lensing deflection / Einstein-
+    ring scale amplitude; NOT the weak-lensing convergence kappa (see
+    _l95_wl_kappa_uqff for kappa = Sigma/Sigma_crit, different physics).
+
+    Spec defaults (M=1e14 M_sun, r=3.086e20 m, z_lens=0.5, z_source=2):
+        GM/(c^2 r) = 4.775e-4,  D_LS/D_S = 0.5,  L = 2.388e-4 (spec).
+    """
+    base = G_NEWTON * M_lens_kg / ((C_LIGHT ** 2) * max(r_lens_m, 1e-300))
+    return base * _D_LS_over_D_S_uqff(z_lens, z_source)
+
+def _rings_g_master_uqff(r_m: float = R_EINSTEIN_RINGS_M,
+                          t_s: float = T_RINGS_DEFAULT_S,
+                          M_kg: float = M_LENS_RINGS_KG,
+                          B_T: float = B_RINGS_T,
+                          B_crit_T: float = B_CRIT_MAGNETAR_T,
+                          z_lens: float = Z_LENS_RINGS,
+                          z_source: float = Z_SOURCE_RINGS,
+                          H0_kmsMpc: float = H0_RINGS_KMSMPC,
+                          Lambda_m2: float = LAMBDA_MAGNETAR_M2,
+                          Ug2: float = 0.0,
+                          Ug3: float = 0.0,
+                          f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                          v_gas_ms: float = V_GAS_RINGS_MS,
+                          q_C: float = EV_J,
+                          m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                          macro_scale: float = MACROSCOPIC_SCALE_LORENTZ,
+                          rho_UA_val: float = None,
+                          rho_SCm_val: float = None) -> float:
+    """Master Universal Gravity equation for the Rings of Relativity
+    (Einstein ring GAL-CLUS-022058s, Fornax) -- spec 03/09May2025.
+
+        g_Rings(r,t) = (G*M/r^2) * (1 + H(z)*t) * (1 - B/B_crit) * (1 + L(t))
+                       + (U_g1 + U_g2 + U_g3 + U_g4) * (1 + f_TRZ)
+                       + Lambda*c^2/3
+                       + q (v x B) * (1 + rho_UA/rho_SCm) * macro_scale
+
+      where H(z) = H_0 * sqrt(Omega_M*(1+z)^3 + Omega_L)  (Planck-2018 form)
+            L(t) = (G*M)/(c^2*r) * (D_LS/D_S)             (Einstein lensing)
+            U_g1 = G*M/r^2,  U_g4 = U_g1 * (1 - B/B_crit)
+            (M static for cluster lens; no SF growth, no erosion.)
+
+    Spec defaults (t=5 Gyr, M=1e14 M_sun, r=3.086e20 m, B=1e-5 T,
+    z_lens=0.5, z_source=2, H_0=70 km/s/Mpc, v_gas=1e6 m/s, f_TRZ=0.1) ->
+        U_g1   ~ 1.394e-7 m/s^2
+        H(0.5) ~ 91.63 km/s/Mpc = 2.969e-18 s^-1; H(z)*t ~ 0.4685; (1+H t) ~ 1.4685
+        L(t)   ~ 2.388e-4; (1+L) ~ 1.0002388
+        grav_term ~ 2.047e-7 m/s^2 (lensing-amplified by 1+L)
+        Ug_sum*(1+TRZ) ~ 3.067e-7 m/s^2
+        Lorentz*macro  ~ 1.053e-2 m/s^2 (B and v 10x Westerlund2 -> 100x
+                                         Tapestry; dominant per spec)
+        TOTAL g_Rings ~ 1.053e-2 m/s^2 (matches spec).
+
+    Reuses _hubble_unified for H(z); _einstein_lensing_factor_uqff for L(t).
+    Lorentz amplification scales as q*v*B/m_p: with v=1e6 (10x Westerlund)
+    and B=1e-5 (same as Westerlund), Lorentz term = 10x Westerlund = 1.053e-2.
+    H_0 supplied in km/s/Mpc per spec; converted to s^-1 for time term."""
+    Ug1 = G_NEWTON * M_kg / max(r_m * r_m, 1e-300)
+    sc_factor = 1.0 - B_T / max(B_crit_T, 1e-300)
+    H_z_kmsMpc = _hubble_unified(t_s, z_lens, H0_kmsMpc)
+    H_z_si = H_z_kmsMpc * 1.0e3 / _MPC_M                            # km/s/Mpc -> s^-1
+    L_t = _einstein_lensing_factor_uqff(M_kg, r_m, z_lens, z_source)
+    lensing_factor = 1.0 + L_t
+    grav_term = Ug1 * (1.0 + H_z_si * t_s) * sc_factor * lensing_factor
+    Ug4 = Ug1 * sc_factor
+    Ug_sum_trz = (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ)
+    cosm = Lambda_m2 * (C_LIGHT ** 2) / 3.0
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_gas_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + Ug_sum_trz + cosm + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
