@@ -5660,6 +5660,92 @@ def _ngc3603_g_master_uqff(r_m: float = R_NGC3603_M,
     return grav_term + Ug_sum_trz + cosm + lorentz_term
 
 
+# === Bubble Nebula NGC 7635 (Cassiopeia, BD +60 2522 Wolf-Rayet host) evolution master Universal Gravity ===
+# Spec: "Master Universal Gravity Equation_'Bubble Nebula' Evolution_09May2025"
+# (Hubble WFC3 Feb 2016, 7-ly-wide emission nebula at 7100 ly; Fermilab Wolf-
+# Rayet wind simulations).
+#
+# CLEAN-form spec (4 leaves, structurally DISTINCT from NGC 3603 composer):
+#   g_NGC7635(r,t) = (G*M_star/r^2)*(1+H_0 t)*(1-P(t))*(1+f_TRZ)
+#                 + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+#   where P(t) = P_0 * exp(-t/tau_exp), P_0 = 0.1 (normalized fractional wind
+#   pressure, NOT the raw rho*v_wind^2 Pa used in NGC 3603 spec).
+#
+# Key structural differences from NGC 3603 composer:
+#   (a) f_TRZ is a multiplicative factor on the SAME grav-term (not a separate
+#       additive Ug_sum_trz block).
+#   (b) NO Lambda*c^2/3 cosmological term, NO Ug2/Ug3/Ug4 sum.
+#   (c) P_0 is dimensionless fractional (0.1), not the dimensional rho*v_wind^2.
+#   (d) Static M_star (no SF mass growth); central-star point-mass gravity only.
+#   (e) B=1e-6 T (10x weaker than NGC 3603/Westerlund) and v_wind=1.789e6 m/s
+#       in the Lorentz term -> NEW dominant scaling family 1.884e-3 (not the
+#       1.053e-3 family of prior systems).
+#
+# All physics leaves already primitivized:
+#   - G*M_star/r^2                                -> Ug1 formula inline
+#   - H_0*t (local, z=0)                          -> _hubble_unified(z=0)
+#   - P(t) = P_0*exp(-t/tau_exp)                  -> _magnetar_B_decay (generic
+#                                                    X_0*exp(-t/tau); 6th use case)
+#   - q(v x B)(1+rho_UA/rho_SCm)*1e-12            -> _lorentz_acceleration_uqff
+# Composer wires the spec's exact 4-leaf form per "nothing is negligible /
+# maintain fidelity of my physics" directive -- no extra Ug_sum or Lambda*c^2/3
+# injected via parameter-override of an existing composer.
+#
+# Existing _bubble_g_primitive_sat (L947, BSFG D_BSFG*(G4+G1_K)*PHI_RES
+# saturation triadic) and bubble_nebula catalog entry (L2039, M=44 M_sun)
+# target a different observable / different mass and are LEFT UNTOUCHED.
+
+M_NGC7635_STAR_KG     = 45.0 * M_SUN                # spec: 45 M_sun Wolf-Rayet BD +60 2522
+R_NGC7635_M           = 3.311e16                    # spec: 3.5 ly half-span (3.311e16 m)
+B_NGC7635_T           = 1.0e-6                      # spec: 1e-6 T (weaker than NGC 3603)
+V_WIND_NGC7635_MS     = 1.789e6                     # spec: 4e6 mph Wolf-Rayet wind
+RHO_GAS_NGC7635       = 1.0e-21                     # spec: 1e-21 kg/m^3 emission nebula gas
+P_0_NGC7635           = 0.1                         # spec: 0.1 normalized fractional wind pressure
+TAU_EXP_NGC7635_S     = 4.0e6 * _YEAR_S_MAGNETAR    # spec: 4 Myr (Wolf-Rayet star age)
+H0_NGC7635_KMSMPC     = 70.0                        # spec: H_0=70 km/s/Mpc (local, z=0)
+T_NGC7635_DEFAULT_S   = 4.0e6 * _YEAR_S_MAGNETAR    # spec example: t = 4 Myr (current star age)
+
+def _bubble_nebula_g_master_uqff(r_m: float = R_NGC7635_M,
+                                     t_s: float = T_NGC7635_DEFAULT_S,
+                                     M_star_kg: float = M_NGC7635_STAR_KG,
+                                     P_0: float = P_0_NGC7635,
+                                     tau_exp_s: float = TAU_EXP_NGC7635_S,
+                                     H0_kmsMpc: float = H0_NGC7635_KMSMPC,
+                                     f_TRZ: float = _F_TRZ_DEFAULT_MAGNETAR,
+                                     B_T: float = B_NGC7635_T,
+                                     v_wind_ms: float = V_WIND_NGC7635_MS,
+                                     q_C: float = EV_J,
+                                     m_charge_kg: float = _M_PROTON_KG_MAGNETAR,
+                                     rho_UA_val: float = None,
+                                     rho_SCm_val: float = None,
+                                     macro_scale: float = MACROSCOPIC_SCALE_LORENTZ) -> float:
+    """Bubble Nebula (NGC 7635) clean-form evolution master g (spec 09May2025).
+
+    g_NGC7635(r,t) = (G*M_star/r^2)*(1+H_0 t)*(1-P(t))*(1+f_TRZ)
+                  + q(v x B)(1+rho_UA/rho_SCm)*1e-12
+
+    where P(t) = P_0 * exp(-t/tau_exp), P_0=0.1 (normalized fractional).
+    Defaults reproduce spec example 1.884e-3 m/s^2 at t=4 Myr (Lorentz*macro
+    dominates; v_wind=1.789e6 m/s used directly in Lorentz term since wind
+    velocity is the only macroscopic charged-particle velocity in the nebula).
+    Decomposition: G*M_star/r^2 = 5.449e-12, P(4Myr)=0.1*e^-1=0.0368,
+    (1-P)=0.9632, (1+H_0*t)=1.0003, grav*(1+f_TRZ)=5.78e-12 (negligible);
+    Lorentz q*v_wind*B/m_p*11*1e-12 = 1.884e-3 (dominant).
+    """
+    Ug1 = G_NEWTON * M_star_kg / max(r_m * r_m, 1e-300)
+    H0_kmsMpc_val = _hubble_unified(t_s, 0.0, H0_kmsMpc)             # z=0 local
+    H0_si = H0_kmsMpc_val * 1.0e3 / _MPC_M                           # km/s/Mpc -> s^-1
+    P_t = _magnetar_B_decay(t_s, P_0, tau_exp_s)                     # generic exp envelope
+    cavity_factor = 1.0 - P_t
+    grav_term = Ug1 * (1.0 + H0_si * t_s) * cavity_factor * (1.0 + f_TRZ)
+    lorentz_term = _lorentz_acceleration_uqff(B_T=B_T, v_ms=v_wind_ms, q_C=q_C,
+                                                m_kg=m_charge_kg,
+                                                rho_UA_val=rho_UA_val,
+                                                rho_SCm_val=rho_SCm_val,
+                                                macro_scale=macro_scale)
+    return grav_term + lorentz_term
+
+
 # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
 # Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
 # system requests + 19 UQFF Knowledge Base chunks). Mined content:
