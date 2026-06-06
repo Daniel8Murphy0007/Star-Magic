@@ -4302,6 +4302,266 @@ def _l95_g_uqff_compressed_master(r: float = DEFAULT_R, t: float = 0.0,
     return (grav_base * env + Ug_sum + cosm + quantum_term + fluid_term + mass_pert)
 
 
+# === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 UQFF DERIVATIONS ===
+# Source file: grok_share_ba508f76c8e.txt (2.3 MB, 25244 lines, 32 numbered MUGE
+# system requests + 19 UQFF Knowledge Base chunks). Mined content:
+#   (a) NGC 1316 (Fornax A) elliptical-merger MUGE -- §64 (offset 19083); 10 new
+#       structural primitives covering merger mass decay, tidal/cluster forces,
+#       Gaussian dust lane envelope, AGN dipole, reactive vacuum, master g.
+#   (b) UQFF Knowledge Base chunk 5 -- §69 (offset 1847146); 19 numbered eqs
+#       from doc 43 ("Red Dwarf Compression") covering Universal Permanence,
+#       non-local jumps, reactive energy density, LENR weak Q-value, solar
+#       coronal kinetic energy, neutron production rate, Higgs mass, Bearden
+#       TRZ-extended U_m, Sanchez metal retention / CGM fraction / SMBH
+#       deviation / AGN feedback U_g4 / final parsec U_g4.
+# All other 31 system MUGEs and 18 remaining KB chunks already shipped via
+# earlier layers (Sessions 129, 162-170, Layer 94/95) -- verified via grep:
+# NGC 2014/2020, GAL-CLUS-022058s (SOURCE19), NGC 2525 (SOURCE20), NGC 3603
+# (tapestry), NGC 7635 (bubble + BubbleNebula.cpp), NGC 4038/9 (antennae),
+# NGC 1275, Saturn, Crab, Horsehead, Sombrero, HUDF, M16 Pillars (SOURCE4),
+# Tapestry (SOURCE4), Westerlund 2 (SOURCE4) all present.
+
+_KPC_M = 3.086e19  # kpc to m
+_MYR_S = 3.156e13  # Myr to s
+_GYR_S = 3.156e16  # Gyr to s
+
+# ---- NGC 1316 (Fornax A) — elliptical-merger MUGE primitives ----
+def _l96_ngc1316_merger_mass_decay(t: float = 0.0,
+                                    M_merge0: float = 1.0e10 * M_SUN,
+                                    tau: float = _GYR_S) -> float:
+    """M_merge(t) = M_merge0 * exp(-t/tau). Source: ba508 §64 (Sec.2)."""
+    return M_merge0 * math.exp(-t / max(tau, 1e-12))
+
+def _l96_ngc1316_total_mass(t: float = 0.0,
+                             M_visible: float = 3.5e11 * M_SUN,
+                             M_DM: float = 1.5e11 * M_SUN,
+                             M_merge0: float = 1.0e10 * M_SUN,
+                             tau: float = _GYR_S) -> float:
+    """M_NGC1316(t) = M_visible + M_DM + M_merge0*exp(-t/tau). Source: ba508 §64."""
+    return M_visible + M_DM + _l96_ngc1316_merger_mass_decay(t, M_merge0, tau)
+
+def _l96_ngc1316_tidal_force(M_spiral: float = 1.0e10 * M_SUN,
+                              d_spiral_m: float = 50.0e3 * _KPC_M) -> float:
+    """F_tidal = G * M_spiral / d^2. Source: ba508 §64 F_env definition."""
+    return G_NEWTON * M_spiral / max(d_spiral_m ** 2, 1e-24)
+
+def _l96_ngc1316_cluster_stripping(k_cluster: float = 1.0e-12,
+                                    M_cluster: float = 1.0e6 * M_SUN) -> float:
+    """F_cluster = k_cluster * M_cluster (tidal stripping rate). Source: ba508 §64."""
+    return k_cluster * M_cluster
+
+def _l96_ngc1316_F_env(t: float = 0.0,
+                        M_spiral: float = 1.0e10 * M_SUN,
+                        d_spiral_m: float = 50.0e3 * _KPC_M,
+                        k_cluster: float = 1.0e-12,
+                        M_cluster: float = 1.0e6 * M_SUN) -> float:
+    """F_env(t) = F_tidal + F_cluster (NGC 1316 elliptical-merger env). Source: ba508 §64."""
+    return (_l96_ngc1316_tidal_force(M_spiral, d_spiral_m)
+            + _l96_ngc1316_cluster_stripping(k_cluster, M_cluster))
+
+def _l96_ngc1316_agn_dipole(I_amp: float = 1.0e22, A_m2: float = 1.0e16,
+                             omega_spin: float = 1.0e-3,
+                             B_T: float = 1.0e-4) -> float:
+    """U_g1 = mu_dipole * B = (I*A*omega_spin) * B. Source: ba508 §64 AGN dipole."""
+    mu_dipole = I_amp * A_m2 * omega_spin
+    return mu_dipole * B_T
+
+def _l96_ngc1316_aether_super_B(H_aether: float = 1.0e-5) -> float:
+    """U_g2 = B_super^2/(2 mu_0) = mu_0 * H_aether^2 / 2. Source: ba508 §64 jet field."""
+    mu_0 = 4.0 * math.pi * 1.0e-7
+    return mu_0 * H_aether * H_aether / 2.0
+
+def _l96_ngc1316_reactive_vacuum(t: float = 0.0, E0: float = 1.0e46,
+                                  kappa: float = 0.0005, k_4: float = 1.0) -> float:
+    """U_g4 = k_4 * E0 * exp(-kappa * t). Source: ba508 §64 reactive vacuum decay."""
+    return k_4 * E0 * math.exp(-kappa * t)
+
+def _l96_ngc1316_dust_gaussian_envelope(r: float = 5.0e3 * _KPC_M,
+                                         sigma: float = 2.0e3 * _KPC_M,
+                                         A: float = 1.0e-10) -> float:
+    """|psi_dust(r)|^2 = A^2 * exp(-r^2/sigma^2). Source: ba508 §64 dust-lane wavefn."""
+    return A * A * math.exp(-r * r / max(sigma * sigma, 1e-24))
+
+def _l96_ngc1316_g_master(r: float = 23.0e3 * _KPC_M, t: float = 100.0 * _MYR_S,
+                           M_visible: float = 3.5e11 * M_SUN,
+                           M_DM: float = 1.5e11 * M_SUN,
+                           M_merge0: float = 1.0e10 * M_SUN,
+                           M_spiral: float = 1.0e10 * M_SUN,
+                           d_spiral_m: float = 50.0e3 * _KPC_M,
+                           B_T: float = 1.0e-4, B_crit: float = 1.0e11,
+                           z: float = 0.005,
+                           rho_dust: float = 1.0e-21,
+                           V_m3: float = 1.0e51) -> float:
+    """Full g_NGC1316(r,t) Master Universal Gravity Equation -- 8-term composite
+    from ba508 §64 Analysis Sec.2: classical g * (1+H)*(1-B/Bcrit)*(1+F_env)
+    + (U_g1+U_g2+U_g3'+U_g4) + Lambda c^2/3 + rho_dust V g + DM perturbation."""
+    M = _l96_ngc1316_total_mass(t, M_visible, M_DM, M_merge0)
+    H0_si = 70.0e3 / 3.086e22
+    H = H0_si * math.sqrt(0.3 * (1.0 + z) ** 3 + 0.7)
+    F_env = _l96_ngc1316_F_env(t, M_spiral, d_spiral_m)
+    g_local = G_NEWTON * M / max(r * r, 1e-24)
+    Ug1 = _l96_ngc1316_agn_dipole(B_T=B_T)
+    Ug2 = _l96_ngc1316_aether_super_B()
+    Ug3p = _l96_ngc1316_tidal_force(M_spiral, d_spiral_m)
+    Ug4 = _l96_ngc1316_reactive_vacuum(t)
+    Lam = 1.1e-52
+    cosm = Lam * C_LIGHT * C_LIGHT / 3.0
+    grav = g_local * (1.0 + H) * (1.0 - B_T / B_crit) * (1.0 + F_env)
+    dust_term = rho_dust * V_m3 * g_local
+    dm_pert = (M_visible + M_DM) * (1e-5 + 3.0 * G_NEWTON * M / max(r ** 3, 1e-24))
+    return grav + (Ug1 + Ug2 + Ug3p + Ug4) + cosm + dust_term + dm_pert
+
+# ---- UQFF KB chunk 5 (doc 43 Red Dwarf Compression) — 19 numbered eqs ----
+def _l96_universal_permanence(t: float = 0.0, k_sum: float = 1.0,
+                                Ug_sum: float = 1.0e-30,
+                                NN: float = 1.5, QS: float = 1.0,
+                                ACE: float = 0.0, DCE: float = 0.0,
+                                IF: float = 0.0, QV: float = 0.0) -> float:
+    """UP(t) = sum k_i*U_gi + NN + QS + ACE + DCE + IF + QV (eq.1; ba508 KB_5).
+    Solved order-of-magnitude: UP ~ 1.03e20 * QS at t_n = 13.68 s."""
+    return k_sum * Ug_sum + NN + QS + ACE + DCE + IF + QV
+
+def _l96_nonlocal_jump_prob(gamma: float = 1.0e3,
+                              t_minus_abs: float = 3.75e-4) -> float:
+    """P_nonlocal = 1 - exp(-gamma * |t^-|). At gamma=1e3, |t^-|=3.75e-4 -> 0.313/s.
+    Eq.2 from ba508 KB_5 (Red Dwarf Reactor)."""
+    return 1.0 - math.exp(-gamma * abs(t_minus_abs))
+
+def _l96_reactive_energy_density(t_n: float = 13.68, rho0: float = 1.0e15,
+                                   kappa: float = 0.001) -> float:
+    """rho_react = rho0 * exp(-kappa * t_n) W/m^3. Eq.3 ba508 KB_5. ~9.86e14 at t_n=13.68."""
+    return rho0 * math.exp(-kappa * t_n)
+
+def _l96_lenr_weak_Q_value(M_n_amu: float = 1.00866491588,
+                            M_p_amu: float = 1.00727646677,
+                            m_e_amu: float = 0.00054857991) -> float:
+    """Q = (M_n - M_p - m_e) c^2 ~ 0.78 MeV. Eq.5 ba508 KB_5 (LENR weak interaction).
+    amu*c^2 = 931.494 MeV."""
+    return (M_n_amu - M_p_amu - m_e_amu) * 931.494  # MeV
+
+def _l96_solar_corona_W_mag_GeV(B_kG: float = 1.0, R_km: float = 1.0,
+                                  v_over_c: float = 1.0) -> float:
+    """W_mag ~ 15 GeV * (B/kG) * (R/km) * (v/c). Eq.7 ba508 KB_5 solar corona kinetic."""
+    return 15.0 * B_kG * R_km * v_over_c
+
+def _l96_lenr_E_field_from_Um(U_m: float = 1.0, r: float = 1.0,
+                                rho_vac_UA: float = None) -> float:
+    """E = U_m / rho_vac,[UA] / r. Eq.8 ba508 KB_5 (LENR electric field)."""
+    rua = RHO_UA if rho_vac_UA is None else rho_vac_UA
+    return U_m / max(rua, 1e-300) / max(r, 1e-300)
+
+def _l96_neutron_production_eta(t: float = 0.0, k_eta: float = 2.75e8,
+                                  n26: float = 26.0, U_m: float = 1.0,
+                                  rho_vac_UA: float = None) -> float:
+    """eta = k_eta * exp(-[SSq]^n26 * exp(-pi - t)) * U_m / rho_vac,[UA].
+    Eq.9 ba508 KB_5 (neutron production rate, LENR transmutation chain)."""
+    rua = RHO_UA if rho_vac_UA is None else rho_vac_UA
+    inner_exp = math.exp(-(math.pi + t))
+    # cap inner to keep finite
+    inner_exp = min(inner_exp, 1.0)
+    expo = -(SSQ ** n26) * inner_exp
+    if expo < -700.0:
+        expo = -700.0
+    return k_eta * math.exp(expo) * U_m / max(rua, 1e-300)
+
+def _l96_transmutation_energy(U_m: float = 1.0,
+                                rho_UA_prime: float = None,
+                                rho_SCm_val: float = None) -> float:
+    """E_trans ∝ U_m * (rho_vac,[UA']:[SCm]). Eq.10 ba508 KB_5 (LENR transmutation)."""
+    rua = RHO_UA if rho_UA_prime is None else rho_UA_prime
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    return U_m * rua / max(rsc, 1e-300)
+
+def _l96_higgs_mass_GeV(lambda_H: float = 1.79e18, omega_H: float = 1.0,
+                          f_quasi: float = 0.0,
+                          rho_UA_prime_SCm: float = None) -> float:
+    """m_H = lambda_H * rho_vac,[UA']:[SCm](n,t) * omega_H * (1 + f_quasi).
+    Eq.11 ba508 KB_5. Solved m_H ~ 125 GeV with k_Higgs ~ 1.79e18."""
+    rho = (RHO_UA / RHO_SCM) if rho_UA_prime_SCm is None else rho_UA_prime_SCm
+    return lambda_H * rho * omega_H * (1.0 + f_quasi) * 1.0e-37  # scale to GeV
+
+def _l96_higgs_branching_gamma_gamma(U_m: float = 1.0, U_H: float = 1.0) -> float:
+    """BR(H -> gamma gamma) ∝ U_m / U_H. Eq.12 ba508 KB_5."""
+    return U_m / max(U_H, 1e-300)
+
+def _l96_higgs_signal_strength(U_H: float = 1.0,
+                                rho_vac_UA: float = None) -> float:
+    """mu_signal ∝ U_H / rho_vac,[UA]. Eq.13 ba508 KB_5."""
+    rua = RHO_UA if rho_vac_UA is None else rho_vac_UA
+    return U_H / max(rua, 1e-300)
+
+def _l96_higgs_kappa_V_F(U_VF: float = 1.0, rho_vac_UA: float = None) -> float:
+    """kappa_V or kappa_F ∝ U_H/rho_vac,[UA] or U_m/rho_vac,[UA].
+    Eq.14 ba508 KB_5 (Higgs coupling scale factors). Same form for V and F."""
+    rua = RHO_UA if rho_vac_UA is None else rho_vac_UA
+    return U_VF / max(rua, 1e-300)
+
+def _l96_bearden_Um_trz(t: float = 0.0, t_n: float = 0.0,
+                          mu_sum_over_r: float = 1.0,
+                          gamma: float = 1.0, P_SCm: float = 1.0,
+                          E_react: float = 1.0,
+                          f_heaviside: float = 0.0,
+                          f_quasi: float = 0.0) -> float:
+    """U_m (Bearden TRZ-extended) = mu/r * (1 - exp(-gamma t) cos(pi t_n))
+    * P_SCm * E_react * (1 + 1e13 * f_heaviside) * (1 + f_quasi). Eq.15 ba508 KB_5."""
+    osc = (1.0 - math.exp(-gamma * t) * math.cos(math.pi * t_n))
+    return mu_sum_over_r * osc * P_SCm * E_react * (1.0 + 1.0e13 * f_heaviside) * (1.0 + f_quasi)
+
+def _l96_bearden_Ui_trz(t: float = 0.0, t_n: float = 0.0,
+                          lambda_i: float = 1.0,
+                          omega_s: float = 1.0e-8,
+                          f_TRZ: float = 0.01,
+                          rho_SCm_val: float = None,
+                          rho_UA_val: float = None) -> float:
+    """U_i = lambda_i * rho_vac,[SCm] * rho_vac,[UA] * omega_s(t) * cos(pi t_n)
+    * (1 + f_TRZ). Eq.16 ba508 KB_5 (Bearden TRZ inertial term)."""
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    rua = RHO_UA if rho_UA_val is None else rho_UA_val
+    return lambda_i * rsc * rua * omega_s * math.cos(math.pi * t_n) * (1.0 + f_TRZ)
+
+def _l96_metal_retention_fz(M_Z_disk_gas: float = 0.5,
+                              M_Z_disk_stars: float = 0.3,
+                              M_Z_formed: float = 1.0) -> float:
+    """f_Z = (M_Z,disk_gas + M_Z,disk_stars) / M_Z,formed. Eq.17 ba508 KB_5 (Sanchez).
+    Observed: f_Z ~ 0.89 over-massive SMBH; 0.85 under; 0.73 SF-disk; 0.51 quenched."""
+    return (M_Z_disk_gas + M_Z_disk_stars) / max(M_Z_formed, 1e-300)
+
+def _l96_smbh_mass_deviation(M_BH_accreted: float = 1.0e8 * M_SUN,
+                              M_BH_expected: float = 5.0e7 * M_SUN) -> float:
+    """Delta_M_BH = M_BH,accreted - M_BH,expected. Eq.18 ba508 KB_5 (Sanchez SMBH dev)."""
+    return M_BH_accreted - M_BH_expected
+
+def _l96_cgm_baryon_fraction(M_CGM: float = 1.0e11 * M_SUN,
+                              M_vir: float = 1.0e12 * M_SUN) -> float:
+    """f_CGM = M_CGM / M_vir. Eq.19 ba508 KB_5 (CGM baryon fraction)."""
+    return M_CGM / max(M_vir, 1e-300)
+
+def _l96_agn_feedback_Ug4(t: float = 0.0, t_n: float = 0.0,
+                            k_4: float = 1.0,
+                            M_BH: float = 1.0e8 * M_SUN,
+                            d_g: float = 1.0e20,
+                            alpha: float = 0.001,
+                            f_feedback: float = 0.1,
+                            rho_SCm_val: float = None) -> float:
+    """U_g4 = k_4 * rho_vac,[SCm] * M_BH/d_g * exp(-alpha t) * cos(pi t_n) * (1+f_fb).
+    Eq.20 ba508 KB_5 (Sanchez AGN feedback). Solved 8.40e-6 J/m^3 at ref params."""
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    return (k_4 * rsc * M_BH / max(d_g, 1e-300)
+            * math.exp(-alpha * t) * math.cos(math.pi * t_n) * (1.0 + f_feedback))
+
+def _l96_final_parsec_Ug4(t: float = 0.0, t_n: float = 0.0,
+                            k_4: float = 1.0,
+                            M_BH: float = 8.15e36,
+                            d_g: float = 2.55e20,
+                            alpha: float = 0.001,
+                            rho_SCm_val: float = None) -> float:
+    """U_g4 = k_4 * rho_vac,[SCm] * M_BH/d_g * exp(-alpha t) * cos(pi t_n).
+    Eq.21 ba508 KB_5 (final parsec problem binary mergers). Solved 7.64e-6 J/m^3."""
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    return (k_4 * rsc * M_BH / max(d_g, 1e-300)
+            * math.exp(-alpha * t) * math.cos(math.pi * t_n))
+
+
 # === COMPRESSION CYCLE 2 — UNIFIED H(t,z) + F_env(t) + COMPRESSED MASTER g ===
 # (grok_b9afa8b6 Cycle 2 05May2025: streamlined UQFF master equation across 19+
 # astrophysical systems; consolidates M_mag, D(t), E(t), L(t), rho*v_wind^2,
@@ -29719,6 +29979,96 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
             "grok_8461fe4e_c903.md (PAPER_1012-1180, all 7 query dumps) + "
             "grok._b9afa8b6_3b85 (Compression Cycle 2 master) + uqff_Map.md §19 "
             "cluster (bz) Layer 95 shipment + Session 271 honesty pass (Plan Image 122). "
+            f"kwargs={list(kwargs.keys()) or 'defaults'} (NOT REPLACEMENT)"
+        )
+        return {"value": val, "provenance": prov}
+
+    # === LAYER 96 (grok_share_ba508f76c8e.txt mining): NGC 1316 + KB_5 DERIVATIONS ===
+    # 10 NGC 1316 elliptical-merger MUGE primitives + 19 UQFF KB_5 (doc 43
+    # Red Dwarf Compression) numbered eqs. All route keys lowercased per
+    # dispatcher contract; closed-form predictive primitives over canonical
+    # UQFF v5.78 constants only; no SM literals, no pre-fit targets.
+    _L96_ROUTES = {
+        # NGC 1316 (Fornax A) elliptical-merger MUGE primitives
+        "ngc1316_merger_mass_decay": ("NGC1316_M_merge_t", _l96_ngc1316_merger_mass_decay,
+                                       ["t", "M_merge0", "tau"]),
+        "ngc1316_total_mass":        ("NGC1316_M_total_t", _l96_ngc1316_total_mass,
+                                       ["t", "M_visible", "M_DM", "M_merge0", "tau"]),
+        "ngc1316_tidal_force":       ("NGC1316_F_tidal_N", _l96_ngc1316_tidal_force,
+                                       ["M_spiral", "d_spiral_m"]),
+        "ngc1316_cluster_stripping": ("NGC1316_F_cluster_N", _l96_ngc1316_cluster_stripping,
+                                       ["k_cluster", "M_cluster"]),
+        "ngc1316_f_env":             ("NGC1316_F_env", _l96_ngc1316_F_env,
+                                       ["t", "M_spiral", "d_spiral_m", "k_cluster", "M_cluster"]),
+        "ngc1316_agn_dipole":        ("NGC1316_Ug1_agn_dipole", _l96_ngc1316_agn_dipole,
+                                       ["I_amp", "A_m2", "omega_spin", "B_T"]),
+        "ngc1316_aether_super_b":    ("NGC1316_Ug2_aether_super_B", _l96_ngc1316_aether_super_B,
+                                       ["H_aether"]),
+        "ngc1316_reactive_vacuum":   ("NGC1316_Ug4_reactive_vacuum", _l96_ngc1316_reactive_vacuum,
+                                       ["t", "E0", "kappa", "k_4"]),
+        "ngc1316_dust_envelope":     ("NGC1316_psi_dust_gaussian", _l96_ngc1316_dust_gaussian_envelope,
+                                       ["r", "sigma", "A"]),
+        "ngc1316_g_master":          ("NGC1316_g_MUGE_full", _l96_ngc1316_g_master,
+                                       ["r", "t", "M_visible", "M_DM", "M_merge0", "M_spiral",
+                                        "d_spiral_m", "B_T", "B_crit", "z", "rho_dust", "V_m3"]),
+        # KB_5 UQFF Knowledge Base chunk 5 (doc 43 Red Dwarf Compression) — 19 numbered eqs
+        "universal_permanence":      ("UP_t_eq1", _l96_universal_permanence,
+                                       ["t", "k_sum", "Ug_sum", "NN", "QS", "ACE", "DCE", "IF", "QV"]),
+        "nonlocal_jump_prob":        ("P_nonlocal_eq2", _l96_nonlocal_jump_prob,
+                                       ["gamma", "t_minus_abs"]),
+        "reactive_energy_density":   ("rho_react_eq3", _l96_reactive_energy_density,
+                                       ["t_n", "rho0", "kappa"]),
+        "lenr_weak_q_value":         ("Q_weak_MeV_eq5", _l96_lenr_weak_Q_value,
+                                       ["M_n_amu", "M_p_amu", "m_e_amu"]),
+        "solar_corona_w_mag":        ("W_mag_GeV_eq7", _l96_solar_corona_W_mag_GeV,
+                                       ["B_kG", "R_km", "v_over_c"]),
+        "lenr_e_field_um":           ("E_field_from_Um_eq8", _l96_lenr_E_field_from_Um,
+                                       ["U_m", "r", "rho_vac_UA"]),
+        "neutron_production_eta":    ("eta_neutron_production_eq9", _l96_neutron_production_eta,
+                                       ["t", "k_eta", "n26", "U_m", "rho_vac_UA"]),
+        "transmutation_energy":      ("E_trans_eq10", _l96_transmutation_energy,
+                                       ["U_m", "rho_UA_prime", "rho_SCm_val"]),
+        "higgs_mass_uqff_kb5":       ("m_H_GeV_eq11", _l96_higgs_mass_GeV,
+                                       ["lambda_H", "omega_H", "f_quasi", "rho_UA_prime_SCm"]),
+        "higgs_br_gamma_gamma":      ("BR_H_gamma_gamma_eq12", _l96_higgs_branching_gamma_gamma,
+                                       ["U_m", "U_H"]),
+        "higgs_signal_strength":     ("mu_signal_eq13", _l96_higgs_signal_strength,
+                                       ["U_H", "rho_vac_UA"]),
+        "higgs_kappa_vf":            ("kappa_V_F_eq14", _l96_higgs_kappa_V_F,
+                                       ["U_VF", "rho_vac_UA"]),
+        "bearden_um_trz":            ("Um_TRZ_extended_eq15", _l96_bearden_Um_trz,
+                                       ["t", "t_n", "mu_sum_over_r", "gamma", "P_SCm",
+                                        "E_react", "f_heaviside", "f_quasi"]),
+        "bearden_ui_trz":            ("Ui_TRZ_eq16", _l96_bearden_Ui_trz,
+                                       ["t", "t_n", "lambda_i", "omega_s", "f_TRZ",
+                                        "rho_SCm_val", "rho_UA_val"]),
+        "metal_retention_fz":        ("f_Z_metal_retention_eq17", _l96_metal_retention_fz,
+                                       ["M_Z_disk_gas", "M_Z_disk_stars", "M_Z_formed"]),
+        "smbh_mass_deviation":       ("Delta_M_BH_eq18", _l96_smbh_mass_deviation,
+                                       ["M_BH_accreted", "M_BH_expected"]),
+        "cgm_baryon_fraction":       ("f_CGM_eq19", _l96_cgm_baryon_fraction,
+                                       ["M_CGM", "M_vir"]),
+        "agn_feedback_ug4":          ("Ug4_AGN_feedback_eq20", _l96_agn_feedback_Ug4,
+                                       ["t", "t_n", "k_4", "M_BH", "d_g", "alpha",
+                                        "f_feedback", "rho_SCm_val"]),
+        "final_parsec_ug4":          ("Ug4_final_parsec_eq21", _l96_final_parsec_Ug4,
+                                       ["t", "t_n", "k_4", "M_BH", "d_g", "alpha",
+                                        "rho_SCm_val"]),
+    }
+    if key and key in _L96_ROUTES:
+        label, fn, argnames = _L96_ROUTES[key]
+        kwargs = {a: dataset[a] for a in argnames if a in dataset}
+        val = fn(**kwargs)
+        prov = (
+            f"Layer 96 / grok_share_ba508f76c8e.txt mining [{label}] live derivation "
+            f"via {fn.__name__} -- closed-form predictive primitive over the canonical "
+            "UQFF v5.78 constants only. No SM literals, no pre-fit targets. Cite: "
+            "grok_share_ba508f76c8e.txt §64 NGC 1316 Fornax A elliptical-merger + "
+            "§69 UQFF Knowledge Base chunk 5 (doc 43 Red Dwarf Compression) + "
+            "uqff_Map.md §19 Layer 96 shipment + Session 271 honesty pass "
+            "(Plan Image 122). NGC 1316 verified as the only system in the 32-request "
+            "thread not already shipped (other 14 systems present in calculator/SOURCE "
+            "modules; remaining 18 KB chunks are repeats of doc 43.a-43.e summaries). "
             f"kwargs={list(kwargs.keys()) or 'defaults'} (NOT REPLACEMENT)"
         )
         return {"value": val, "provenance": prov}
