@@ -5097,6 +5097,105 @@ def _l96_uqff_f220_total_hz(M_sun_mult: float = 30.0,
             + _l96_uqff_R26_ringdown_delta_hz(M_sun_mult, F_a_star, kappa_R26, rho_SCm_val))
 
 
+# ---- EHT 2022 Sgr A* emission ring diameter (PAPER_1095 horizon buoyancy + PAPER_1175 R26) ----
+# EHT Collaboration 2022 ApJ Letters 930 L12-L17: measured ring diameter
+# theta_ring = 51.8 +/- 2.3 microarcsec (68% credible interval; 4.4% precision).
+# Stellar-orbit M_Sgr_A = 4.3e6 M_sun, D = 8.2 kpc (GRAVITY Coll. + Keck).
+# GR Kerr prediction (Schwarzschild a*~0): theta_ring = 2 * 3 sqrt(3) * GM/(c^2 D).
+# UQFF correction reuses the PAPER_1175 R26 vacuum-impedance multiplier
+# (D_crit/D_BSFG) * (rho_SCm/rho_Pl)^(1/4) -> ~1.52e-37 multiplicative offset,
+# i.e. delta_theta ~ 7.9e-36 microarcsec, 36 orders below EHT precision.
+_KPC_TO_M    = 3.0856775814913673e19        # 1 kpc in metres (IAU 2015)
+_RAD_TO_UAS  = (180.0 / math.pi) * 3600.0 * 1.0e6  # 1 rad in microarcsec
+_EHT_SGRA_THETA_UAS  = 51.8                   # EHT 2022 central value (microarcsec)
+_EHT_SGRA_SIGMA_UAS  = 2.3                    # EHT 2022 1-sigma (microarcsec)
+_M_SGR_A_SOLAR       = 4.3e6                  # M_Sgr_A* in solar masses
+_D_SGR_A_KPC         = 8.2                    # distance to Galactic centre
+
+def _l96_gr_kerr_shadow_uas(M_sun_mult: float = _M_SGR_A_SOLAR,
+                              D_kpc: float = _D_SGR_A_KPC,
+                              shadow_factor: float = None) -> float:
+    """GR Kerr emission-ring diameter (microarcsec) =
+       2 * shadow_factor * G M / (c^2 D), converted rad -> microarcsec.
+    Default shadow_factor = 3 sqrt(3) (Schwarzschild photon-sphere impact
+    parameter; appropriate for Sgr A* low-spin consensus). Returns the raw GR
+    formula at the input mass and distance - NO calibration to the EHT central.
+    With M=4.3e6 M_sun, D=8.2 kpc => ~53.8 microarcsec, consistent with the EHT
+    51.8 +/- 2.3 microarcsec central at <1 sigma."""
+    if shadow_factor is None:
+        shadow_factor = 3.0 * math.sqrt(3.0)
+    M_kg = M_sun_mult * M_SUN
+    D_m  = D_kpc * _KPC_TO_M
+    theta_rad = 2.0 * shadow_factor * G_NEWTON * M_kg / ((C_LIGHT ** 2) * D_m)
+    return theta_rad * _RAD_TO_UAS
+
+def _l96_uqff_R26_shadow_delta_uas(theta_gr_uas: float = _EHT_SGRA_THETA_UAS,
+                                     kappa_R26: float = 1.0,
+                                     rho_SCm_val: float = None) -> float:
+    """delta_theta^UQFF (microarcsec) = theta_GR * (D_crit/D_BSFG)
+       * (rho_SCm/rho_Pl)^(1/4) * kappa_R26.
+    Same PAPER_1175 R26 vacuum-impedance multiplier used for ringdown delta.
+    Default theta_gr_uas = 51.8 (EHT central) so the UQFF correction is
+    quoted relative to the observed central; pass the raw GR formula output
+    to get the correction on the predicted value. kappa_R26 = 1 CVW-locked."""
+    HBAR = PLANCK_H / (2.0 * math.pi)
+    rho_Pl = (C_LIGHT ** 7) / (HBAR * G_NEWTON * G_NEWTON)
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    dim_gain = float(D_CRIT) / float(D_BSFG)              # 26/6 = 13/3 ~ 4.333
+    density_ratio_qrt = (rsc / rho_Pl) ** 0.25            # ~ 3.51e-38
+    return theta_gr_uas * dim_gain * density_ratio_qrt * kappa_R26
+
+def _l96_eht_sgrA_vs_uqff_probe(M_sun_mult: float = _M_SGR_A_SOLAR,
+                                  D_kpc: float = _D_SGR_A_KPC,
+                                  shadow_factor: float = None,
+                                  kappa_R26: float = 1.0,
+                                  theta_eht_uas: float = _EHT_SGRA_THETA_UAS,
+                                  sigma_eht_uas: float = _EHT_SGRA_SIGMA_UAS,
+                                  rho_SCm_val: float = None) -> Dict[str, Any]:
+    """Side-by-side: GR Kerr vs UQFF total (= GR + R26 delta) vs EHT 2022 datum.
+    Returns {theta_gr_kerr, delta_uqff, theta_uqff_total, theta_eht, sigma_eht,
+    delta_gr_minus_eht, delta_uqff_minus_eht, n_sigma_gr, n_sigma_uqff,
+    compatible_1sigma_uqff, compatible_2sigma_uqff, dim_gain, density_ratio_qrt,
+    multiplier, eht_inputs}.
+
+    With defaults: theta_gr ~ 53.8 microarcsec, delta_uqff ~ 7.9e-36 microarcsec,
+    theta_uqff = theta_gr at any measurable precision (36 decades below EHT
+    sigma). Probe demonstrates UQFF reproduces GR + R26 correction is
+    structurally present but observationally negligible."""
+    theta_gr = _l96_gr_kerr_shadow_uas(M_sun_mult, D_kpc, shadow_factor)
+    delta_u  = _l96_uqff_R26_shadow_delta_uas(theta_gr, kappa_R26, rho_SCm_val)
+    theta_uq = theta_gr + delta_u
+    d_gr   = theta_gr - theta_eht_uas
+    d_uq   = theta_uq - theta_eht_uas
+    n_gr   = abs(d_gr) / max(sigma_eht_uas, 1e-300)
+    n_uq   = abs(d_uq) / max(sigma_eht_uas, 1e-300)
+    HBAR = PLANCK_H / (2.0 * math.pi)
+    rho_Pl = (C_LIGHT ** 7) / (HBAR * G_NEWTON * G_NEWTON)
+    rsc = RHO_SCM if rho_SCm_val is None else rho_SCm_val
+    return {
+        "theta_gr_kerr_uas":         theta_gr,
+        "delta_uqff_uas":            delta_u,
+        "theta_uqff_total_uas":      theta_uq,
+        "theta_eht_uas":             theta_eht_uas,
+        "sigma_eht_uas":             sigma_eht_uas,
+        "delta_gr_minus_eht_uas":    d_gr,
+        "delta_uqff_minus_eht_uas":  d_uq,
+        "n_sigma_gr":                n_gr,
+        "n_sigma_uqff":              n_uq,
+        "compatible_1sigma_uqff":    abs(d_uq) < sigma_eht_uas,
+        "compatible_2sigma_uqff":    abs(d_uq) < 2.0 * sigma_eht_uas,
+        "compatible_1sigma_gr":      abs(d_gr) < sigma_eht_uas,
+        "dim_gain":                  float(D_CRIT) / float(D_BSFG),
+        "density_ratio_qrt":         (rsc / rho_Pl) ** 0.25,
+        "multiplier":                (float(D_CRIT) / float(D_BSFG)) * (rsc / rho_Pl) ** 0.25 * kappa_R26,
+        "rho_Pl_J_per_m3":           rho_Pl,
+        "eht_inputs":                {"theta_uas": theta_eht_uas, "sigma_uas": sigma_eht_uas,
+                                       "M_Sgr_A_solar": M_sun_mult, "D_kpc": D_kpc,
+                                       "source": "EHT Collaboration 2022 ApJ Lett 930 L12-L17"},
+        "uqff_basis":                "PAPER_1095 horizon buoyancy + PAPER_1175 R26 vacuum-impedance",
+    }
+
+
 # ---- PAPER_1167 closed UQFF Lagrangian ----
 # MOVED 2026-06-06: PAPER_1167 form is now the canonical _master_lagrangian
 # (L3416). The standalone L96 capture (_l96_triangular_beta_i,
@@ -30655,6 +30754,16 @@ def _resolve_uqff_ledger(dataset: Dict[str, Any]) -> Dict[str, Any]:
                                        ["M_sun_mult", "F_a_star", "kappa_R26", "rho_SCm_val"]),
         "uqff_f220_total_hz":        ("f_220_total_GR_plus_UQFF_Hz", _l96_uqff_f220_total_hz,
                                        ["M_sun_mult", "F_a_star", "kappa_R26", "rho_SCm_val"]),
+        # EHT 2022 Sgr A* emission-ring diameter (PAPER_1095 horizon buoyancy + PAPER_1175 R26)
+        "gr_kerr_shadow_uas":        ("theta_ring_GR_Kerr_microarcsec", _l96_gr_kerr_shadow_uas,
+                                       ["M_sun_mult", "D_kpc", "shadow_factor"]),
+        "uqff_r26_shadow_delta_uas": ("delta_theta_UQFF_R26_microarcsec",
+                                       _l96_uqff_R26_shadow_delta_uas,
+                                       ["theta_gr_uas", "kappa_R26", "rho_SCm_val"]),
+        "eht_sgra_vs_uqff_probe":    ("EHT_Sgr_A_vs_UQFF_shadow_probe",
+                                       _l96_eht_sgrA_vs_uqff_probe,
+                                       ["M_sun_mult", "D_kpc", "shadow_factor", "kappa_R26",
+                                        "theta_eht_uas", "sigma_eht_uas", "rho_SCm_val"]),
     }
     if key and key in _L96_ROUTES:
         label, fn, argnames = _L96_ROUTES[key]
