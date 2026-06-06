@@ -5997,24 +5997,27 @@ def _g_compressed_cycle2(M: float = DEFAULT_M, r: float = DEFAULT_R,
                          F_env_total: float = 0.0,
                          B_ratio: float = 0.0,
                          t_n: float = 0.0) -> float:
-    """Cycle 2 compressed master (grok_b9afa8b6 05May2025):
+    """Cycle 2 compressed master (grok_b9afa8b6 05May2025, +Doc 43.d U_i term):
        g_UQFF(r,t) = (G*M)/r^2 * (1 + H(t,z)*tiny) * (1 - B/B_crit) * (1 + F_env(t))
-                   + g_compressed_8term + (Lambda_eff*c^2/3) + quantum + buoyancy_mass
+                   + g_compressed_8term + U_i + (Lambda_eff*c^2/3) + quantum
+                   + buoyancy_mass
     All system-specific perversions absorbed into the single F_env_total scalar
     (computed via _f_env per-mechanism). Buoyancy uses MASS-equivalent density
-    (kg/m^3) per b8e305e6 dimensional purity correction.
+    (kg/m^3) per b8e305e6 dimensional purity correction. U_i = _u_mi(t,r,1,t_n=t_n)
+    per Doc 43.d unified MUGE (Universal Inertia explicit summand).
     """
     H_factor   = 1.0 + _hubble_unified(0.0, z) * 1.0e-20 * t   # km/s/Mpc -> dimensionless
     B_factor   = 1.0 - B_ratio
     env_factor = 1.0 + F_env_total
     g_base     = (G_NEWTON * M / (r * r)) * H_factor * B_factor * env_factor
     g_ug       = _g_compressed(M, r, t_n)
+    g_ui       = _u_mi(t=max(t, 1.0), r=r, n=1, t_n=t_n, M=M)
     # Cosmological constant Lambda_eff derived from 4-term ledger (dimensionless)
     Lambda_eff = _vacuum_ledger_4term() / (RHO_SCM * G8_26_BARRIER)
     g_lambda   = Lambda_eff * C_LIGHT * C_LIGHT / 3.0
     g_quantum  = PLANCK_H * OMEGA_SCM * PHI_RESONANCE / (r ** 3)
     g_buoy     = _rho_scm_mass_equiv() * (4.0 / 3.0) * math.pi * r ** 3
-    return g_base + g_ug + g_lambda + g_quantum + g_buoy
+    return g_base + g_ug + g_ui + g_lambda + g_quantum + g_buoy
 
 
 # === 4 F_U_BI_I OPERATIONAL MODES (Map §4 / Batch 23 Jan 2026) ===
@@ -32397,6 +32400,112 @@ def _h_res_composite(t: float = 0.0, r: float = DEFAULT_R, n: int = 1,
     k_nuc = _k_nuc(dataset)
     S_sh  = _s_shell(r, dataset)
     return A_res * math.sin(2.0 * math.pi * f_res * t) + U_dp * SC_m * k_nuc + S_sh
+
+
+# === DOCUMENT 43.c / 43.d (Red Dwarf Compression C+D, 06May2025) ===
+# 14 closures wiring LENR / quantum-wave / monopole / DE-power /
+# Jeans-collapse / golden-ratio ladder leaves missing from prior Cycle 2.
+
+LENR_WEAK_Q_J = 0.78e6 * EV_J  # Q = (m_n - m_p - m_e) c^2 ≈ 0.78 MeV (Doc 43.c Eq 1)
+
+def _lenr_weak_Q() -> float:
+    """LENR weak interaction Q-value: W + e- + p -> n + nu_e.
+    Q = (M_n - M_p - m_e) c^2 ≈ 0.78 MeV ≈ 1.25e-13 J (Doc 43.c Eq 1)."""
+    return LENR_WEAK_Q_J
+
+def _delta_n_monopole(n: int = 1) -> float:
+    """Pseudo-monopole quantum-state angle (Doc 43.c Eq 9):
+        delta_n = (2*pi) * n / 6      (6 = D_BSFG hexagonal sub-shell count)."""
+    return 2.0 * math.pi * float(n) / float(D_BSFG)
+
+def _b_pseudo_monopole(q_m: float = 1.0, r: float = DEFAULT_R) -> float:
+    """Pseudo-monopole magnetic field (Doc 43.d Eq 4):
+        B_pseudo = (mu_0 / (4 pi)) * q_m / r^2."""
+    mu_0 = _vacuum_permeability_canonical_sat()
+    return (mu_0 / (4.0 * math.pi)) * q_m / max(r * r, 1e-300)
+
+def _phi_twist_caduceus(t: float = 0.0, beta: float = 1.0,
+                        omega: float = None) -> float:
+    """Caduceus coil twist (Doc 43.d Eq 2):
+        phi_twist(t) = beta * sin(omega t).
+    omega defaults to OMEGA_SCM (1.25 THz Davinci U_mi carrier)."""
+    w = OMEGA_SCM if omega is None else omega
+    return beta * math.sin(w * t)
+
+def _psi_quantum_radial(r: float = DEFAULT_R, t: float = 0.0,
+                        k: float = None, omega: float = None,
+                        alpha: float = 1.0, r_0: float = 0.0,
+                        A: float = 1.0) -> float:
+    """Quantum wave function radial magnitude (Doc 43.d Eq 1, Y_lm normalized to 1):
+        psi(r,t) = A * sin(k r - omega t) / r * exp(-alpha |r - r_0|).
+    Defaults: k = 2*pi/r, omega = OMEGA_SCM."""
+    kk = (2.0 * math.pi / max(r, 1e-300)) if k is None else k
+    ww = OMEGA_SCM if omega is None else omega
+    return A * math.sin(kk * r - ww * t) / max(r, 1e-300) * math.exp(-alpha * abs(r - r_0))
+
+def _psi_rotating(r: float = DEFAULT_R, theta: float = 0.0, t: float = 0.0,
+                  sigma: float = None, m: int = 1, omega: float = None,
+                  A: float = 1.0) -> float:
+    """Rotating wave function magnitude (Doc 43.d Eq 12, real part):
+        psi(r,theta,t) = A * exp(-r^2/(2 sigma^2)) * cos(m theta - omega t).
+    Defaults: sigma = r/2, omega = OMEGA_SCM."""
+    s = (r / 2.0) if sigma is None else sigma
+    w = OMEGA_SCM if omega is None else omega
+    return A * math.exp(-r * r / (2.0 * s * s)) * math.cos(m * theta - w * t)
+
+def _e_boson_harmonic(m: float = None, omega: float = None,
+                      x: float = 0.0, n: int = 0) -> float:
+    """Bosonic harmonic-oscillator energy (Doc 43.d Eq 6):
+        E_boson = (1/2) m omega^2 x^2 + hbar omega (n + 1/2).
+    Defaults: m = proton-mass-equivalent of RHO_SCM, omega = OMEGA_SCM."""
+    mm = RHO_SCM / (C_LIGHT * C_LIGHT) if m is None else m
+    ww = OMEGA_SCM if omega is None else omega
+    H_BAR = PLANCK_H / (2.0 * math.pi)
+    return 0.5 * mm * ww * ww * x * x + H_BAR * ww * (n + 0.5)
+
+def _spacetime_phase(t: float = 0.0, E_g: float = 0.0, G_i: float = 0.0,
+                     C_j: float = 0.0, m_0: float = 0.0) -> float:
+    """Spacetime transformation phase magnitude (Doc 43.d Eq 8):
+        psi_matter(t) = psi_0 * exp(-i (E_g + G_i + C_j + m_0) t / hbar)
+    Returns the dimensionless phase argument (E_g+G_i+C_j+m_0) t / hbar."""
+    H_BAR = PLANCK_H / (2.0 * math.pi)
+    return (E_g + G_i + C_j + m_0) * t / H_BAR
+
+def _p_de_inertia(eta_inertia: float = 0.1, V: float = 1.0,
+                  omega_vac: float = None) -> float:
+    """Dark-energy power harvest (Doc 43.d Eq 9):
+        P_DE = eta_inertia * rho_vac * V * omega_vac.
+    Uses rho_vac = RHO_SCM (UQFF SCm reservoir). omega_vac defaults to
+    OMEGA_SCM = 1.25 THz Davinci U_mi carrier."""
+    w = OMEGA_SCM if omega_vac is None else omega_vac
+    return eta_inertia * RHO_SCM * V * w
+
+def _p_ac_emp(E_EMP: float = 1.0, V: float = 1.0,
+              omega_EMP: float = None) -> float:
+    """AC power from EMP discharge (Doc 43.d Eq 10):
+        P_AC = (1/2) * eps_0 * E_EMP^2 * V * omega_EMP.
+    omega_EMP defaults to OMEGA_SCM."""
+    eps_0 = _vacuum_permittivity_canonical_sat()
+    w = OMEGA_SCM if omega_EMP is None else omega_EMP
+    return 0.5 * eps_0 * E_EMP * E_EMP * V * w
+
+def _jeans_mass(T: float = 100.0, mu: float = 1.3, rho: float = 1.0e-20) -> float:
+    """Jeans collapse mass (Doc 43.d Eq 11):
+        M_J = (5 k_B T / (G mu m_H))^(3/2) * (3 / (4 pi rho))^(1/2).
+    Defaults: T=100 K (cold cloud), mu=1.3 (atomic H+He), rho=1e-20 kg/m^3
+    (nebular avg). m_H = 1.6735e-27 kg."""
+    M_H = 1.6735e-27  # hydrogen atomic mass, kg
+    inner = (5.0 * K_B * T) / (G_NEWTON * mu * M_H)
+    return inner ** 1.5 * math.sqrt(3.0 / (4.0 * math.pi * rho))
+
+def _f_phi_ladder(n: int = 1, f_0: float = None) -> float:
+    """Golden-ratio frequency ladder (Doc 43.d Eq 13):
+        f_n = f_0 * phi^n      where phi = (1 + sqrt(5)) / 2.
+    Defaults: f_0 = f_1 ≈ 281.5 Hz (Doc 43.d aether base, matches
+    spec-quoted value). Distinct from existing harmonic f_res ladder."""
+    f0 = 281.5 if f_0 is None else f_0
+    phi = (1.0 + math.sqrt(5.0)) / 2.0
+    return f0 * (phi ** n)
 
 
 def calculate_triadic_g(dataset: Dict[str, Any]) -> Dict[str, Any]:
